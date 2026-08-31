@@ -778,3 +778,183 @@ Cut: `then` *(core)* · `we'll go through it slowly` **(new)** · `all three of 
 **"all three of us"**
 - BUILD: "all three of us together" · "with all three of us" · "all three of us, then" · "all three of us here"
 - USE: "We'll do it together, all three of us." · "It's better with all three of us here." · "Let's make a start, all three of us." · "Sit down and we'll go through it slowly, all three of us." · "All three of us, then — let's make a start."
+
+### HG17 — "Hello, my name's Siân — I'm looking after you today. What would you like me to call you?"
+
+Cut: `hello` *(core)* · `my name's Siân` *(core frame + name)* · `I'm looking after you` **(new)** · `today` *(core)* · `what would you like me to call you` **(new — kept whole: the worn ask)**
+
+**"I'm looking after you"**
+- BUILD: "I'm looking after you today" · "I'm looking after you this morning" · "hello — I'm looking after you" · "I'm looking after you, don't worry"
+- USE: "My name's Siân — I'm looking after you today." · "I'm looking after you this morning." · "Don't worry — I'm looking after you." · "I'm looking after you today, so just ask if you need anything." · "I'm looking after you all day."
+
+**"what would you like me to call you"**
+- BUILD: "and what would you like me to call you?" · "so — what would you like me to call you?" · "now then, what would you like me to call you?" · "tell me, what would you like me to call you?"
+- USE: "What would you like me to call you, then?" · "And you — what would you like me to call you?" · "Now then, what would you like me to call you?" · "What's your name, and what would you like me to call you?" · "Before we start — what would you like me to call you?"
+
+### HG18 — "Lovely to meet you, Peggy. I've got a few little jobs to do with you this morning, if that's alright."
+
+Cut: `lovely to meet you, Peggy` **(new: "lovely to meet you" + name)** · `I've got a few little jobs to do with you` **(new)** · `this morning` *(core)* · `if that's alright` *(scene 0 ask family)*
+
+**"lovely to meet you"**
+- BUILD: "lovely to meet you, Peggy" · "lovely to meet you too" · "well, lovely to meet you" · "lovely to meet you at last"
+- USE: "Lovely to meet you, Peggy." · "Lovely to meet you — I'm looking after you today." · "Lovely to meet you too." · "Lovely to meet you — what would you like me to call you?" · "Lovely to meet you, and thank you for waiting."
+
+**"I've got a few little jobs to do with you"**
+- BUILD: "I've got a few little jobs to do with you this morning" · "I've got a few little jobs to do with you, if that's alright" · "just a few little jobs to do with you" · "I've got a few little jobs to do with you today"
+- USE: "I've got a few little jobs to do with you today." · "I've got a few little jobs to do with you, if that's alright." · "I've got a few little jobs to do with you before lunch." · "I've got a few little jobs to do with you, so shall we make a start?" · "I've got a few little jobs to do with you this morning — nothing big."
+
+### HG19 — "First I just need to check your details. Can you tell me your date of birth?"
+
+Cut: `first` *(core)* · `I just need to check your details` **(new)** · `can you tell me` *(core)* · `your date of birth` **(new)**
+
+**"I just need to check your details"**
+- BUILD: "first I just need to check your details" · "I just need to check your details, if that's alright" · "before we start, I just need to check your details" · "I just need to check your details quickly"
+- USE: "First I just need to check your details, if that's alright." · "Before we start, I just need to check your details." · "I just need to check your details — it won't take a minute." · "I just need to check your details first." · "Right then — I just need to check your details."
+
+**"your date of birth"**
+- BUILD: "can you tell me your date of birth?" · "your date of birth, please" · "and your date of birth?" · "what's your date of birth?"
+- USE: "Can you tell me your date of birth, please?" · "What's your date of birth?" · "And your date of birth as well, please." · "Can you tell me your name and your date of birth?" · "First, can you tell me your date of birth?"
+
+### HG20 — "Can you tell me your date of birth, so I know I've got the right person?"
+
+Cut: `can you tell me your date of birth` *(HG19 + core)* · `so I know I've got the right person` **(new)**
+
+**"so I know I've got the right person"**
+- BUILD: "just so I know I've got the right person" · "so I know I've got the right person, see" · "so I know I've got the right person every time" · "so I know I've got the right person, alright?"
+- USE: "Can you tell me your name, so I know I've got the right person?" · "It's just so I know I've got the right person." · "I ask everyone, so I know I've got the right person." · "Your date of birth, please — just so I know I've got the right person." · "I just need to check your details, so I know I've got the right person."
+
+### HG21 — "It's on my badge, look. Don't worry — there's a lot of us to remember."
+
+Cut: `it's on my badge, look` **(new: "it's on my badge")** · `don't worry` *(core)* · `there's a lot of us to remember` **(new)**
+
+**"it's on my badge"**
+- BUILD: "it's on my badge, look" · "it's on my badge, see" · "it's here on my badge" · "look — it's on my badge"
+- USE: "It's on my badge, see." · "Look — it's on my badge." · "Don't worry — it's on my badge." · "If you forget, it's on my badge." · "It's on my badge if you need it."
+
+**"there's a lot of us to remember"**
+- BUILD: "there's a lot of us to remember here" · "and there's a lot of us to remember" · "don't worry — there's a lot of us to remember" · "there's a lot of us to remember today"
+- USE: "There's a lot of us to remember, I know." · "Don't worry about names — there's a lot of us to remember." · "There's a lot of us to remember in this place." · "It's fine — there's a lot of us to remember." · "Ask again any time — there's a lot of us to remember."
+
+### HG22 — "Before we start, is there anything you need — water, another pillow?"
+
+Cut: `before we start` *(scene 0)* · `is there anything you need` **(new)** · `water` *(core)* · `another pillow` **(new)**
+
+**"is there anything you need"**
+- BUILD: "is there anything you need before we start?" · "is there anything you need right now?" · "and is there anything you need?" · "is there anything you need from me?"
+- USE: "Before we start, is there anything you need?" · "Is there anything you need before I go?" · "Is there anything you need right now?" · "Is there anything you need — anything at all?" · "Now then, is there anything you need?"
+
+**"another pillow"**
+- BUILD: "water, another pillow?" · "would you like another pillow?" · "another pillow, maybe?" · "I can get you another pillow"
+- USE: "Would you like another pillow?" · "I can get you another pillow if you like." · "Do you need another pillow?" · "Shall I get you another pillow?" · "There's another pillow here if you need it."
+
+### HG23 — "I'm here till eight tonight, so you're stuck with me. And if I'm not about, any of the team can help you."
+
+Cut: `I'm here` *(core)* · `till eight tonight` **(new: the "till …" shift frame)** · `so you're stuck with me` **(new: "you're stuck with me")** · `and if I'm not about` **(new: "if I'm not about")** · `any of the team can help you` **(new)**
+
+**"till eight tonight"**
+- BUILD: "I'm here till eight tonight" · "till eight tonight, then home" · "I'm here till eight" · "till eight tonight, so there's no rush"
+- USE: "I'm here till eight tonight." · "I'm looking after you till eight tonight." · "I'm here till eight tonight, so there's no rush." · "I'm here till eight, and then home." · "Don't worry — I'm here till eight tonight."
+
+**"you're stuck with me"**
+- BUILD: "so you're stuck with me" · "you're stuck with me today" · "you're stuck with me till eight" · "I'm afraid you're stuck with me"
+- USE: "You're stuck with me today." · "I'm here till eight, so you're stuck with me." · "I'm afraid you're stuck with me this morning." · "You're stuck with me, I'm afraid — but the people are kind." · "You're stuck with me till eight tonight."
+
+**"if I'm not about"**
+- BUILD: "and if I'm not about" · "if I'm not about, just ask" · "if I'm not about later" · "if I'm not about, don't worry"
+- USE: "If I'm not about, just ask." · "If I'm not about, don't worry." · "If I'm not about, someone will help you." · "If I'm not about later, just say." · "Ask for me — and if I'm not about, ask anyone."
+
+**"any of the team can help you"**
+- BUILD: "any of the team can help you, any time" · "and any of the team can help you" · "any of the team can help you with that" · "any of the team can help you tonight"
+- USE: "If I'm not about, any of the team can help you." · "Any of the team can help you, any time at all." · "Don't worry — any of the team can help you." · "If you need anything, any of the team can help you." · "Any of the team can help you with that."
+
+### HG24 — "Let's get you comfortable. This is your call bell — press it any time you need us, day or night. The bathroom's just through there."
+
+Cut: `let's get you comfortable` **(new)** · `this is your call bell` **(new)** · `press it any time you need us` **(new)** · `day or night` **(new)** · `the bathroom's just through there` **(new)**
+
+**"let's get you comfortable"**
+- BUILD: "right, let's get you comfortable" · "first, let's get you comfortable" · "let's get you comfortable, then" · "come on — let's get you comfortable"
+- USE: "Right then — let's get you comfortable." · "First, let's get you comfortable." · "Let's get you comfortable before lunch." · "Let's get you comfortable, and then we'll make a start." · "Now then — let's get you comfortable."
+
+**"this is your call bell"**
+- BUILD: "this is your call bell, look" · "and this is your call bell" · "this is your call bell, here" · "this is your call bell — press it"
+- USE: "This is your call bell, look — right here." · "This is your call bell; don't be shy with it." · "This is your call bell, and this is the light." · "This is your call bell — it's here if you need us." · "Look — this is your call bell."
+
+**"press it any time you need us"**
+- BUILD: "press it any time you need us, day or night" · "just press it any time you need us" · "and press it any time you need us" · "press it any time"
+- USE: "Press it any time you need us, day or night." · "Just press it any time you need us." · "Press it any time you need us; someone will come." · "You can press it any time you need us." · "Press it any time you need us, and any of the team can help you."
+
+**"day or night"**
+- BUILD: "any time, day or night" · "day or night, press it" · "we're here, day or night" · "day or night, it's no trouble"
+- USE: "Press it any time, day or night." · "We're here, day or night." · "Day or night, someone will come." · "It's no trouble, day or night." · "We're here for you, day or night."
+
+**"the bathroom's just through there"**
+- BUILD: "and the bathroom's just through there" · "the bathroom's just through there, look" · "the bathroom's just through there, on the left" · "the bathroom's through there"
+- USE: "The bathroom's just through there, look." · "The bathroom's just through there, on the left." · "And the bathroom's just through there if you need it." · "The bathroom's just through there — take your time." · "The bathroom's just through there, and the water's here."
+
+### HG25 — "Anything you're not sure about, that's what the bell's for — don't sit there worrying quietly."
+
+Cut: `anything you're not sure about` **(new)** · `that's what the bell's for` **(new)** · `don't sit there worrying quietly` **(new)**
+
+**"anything you're not sure about"**
+- BUILD: "anything you're not sure about, just ask" · "and anything you're not sure about" · "anything you're not sure about, any time" · "if there's anything you're not sure about"
+- USE: "Anything you're not sure about, just ask." · "If there's anything you're not sure about, just say." · "Anything you're not sure about, you tell me." · "Anything you're not sure about — it's never a silly question." · "Tell me if there's anything you're not sure about."
+
+**"that's what the bell's for"**
+- BUILD: "because that's what the bell's for" · "and that's what the bell's for" · "that's what the bell's for, remember" · "well, that's what the bell's for"
+- USE: "Press it any time — that's what the bell's for." · "Don't worry about asking — that's what the bell's for." · "That's what the bell's for, day or night." · "If you need anything, that's what the bell's for." · "That's what the bell's for, remember."
+
+**"don't sit there worrying quietly"**
+- BUILD: "and don't sit there worrying quietly" · "don't sit there worrying quietly, now" · "don't sit there worrying quietly tonight" · "whatever it is, don't sit there worrying quietly"
+- USE: "Don't sit there worrying quietly — press the bell." · "Don't sit there worrying quietly; that's what the bell's for." · "Whatever it is, don't sit there worrying quietly." · "Don't sit there worrying quietly — just ask." · "Don't sit there worrying quietly tonight — we're here."
+
+### HG26 — "Your things go in the cupboard there — and valuables are best going home with the family, if that's possible."
+
+Cut: `your things go in the cupboard there` **(new)** · `valuables are best going home with the family` **(new)** · `if that's possible` *(core)*
+
+**"your things go in the cupboard there"**
+- BUILD: "your things go in the cupboard there, look" · "and your things go in the cupboard there" · "your things go in the cupboard" · "your things go in the cupboard there, alright?"
+- USE: "Your things go in the cupboard there, look." · "Your things go in the cupboard there, next to the bed." · "Your things go in the cupboard there — plenty of room." · "Your things go in the cupboard there, and the water's here." · "Your things go in the cupboard there, alright?"
+
+**"valuables are best going home with the family"**
+- BUILD: "and valuables are best going home with the family" · "valuables are best going home with the family, if that's possible" · "valuables are best going home with the family tonight" · "but valuables are best going home with the family"
+- USE: "Valuables are best going home with the family, if that's possible." · "Valuables are best going home with the family tonight." · "Valuables are best going home with the family — it's safer." · "But valuables are best going home with the family, if that's possible." · "If someone's coming tonight, valuables are best going home with the family."
+
+### HG27 — "Visiting's two till eight, so plenty of time. Two visitors at a time, that's the only rule."
+
+Cut: `visiting's two till eight` **(new)** · `so plenty of time` **(new: "plenty of time")** · `two visitors at a time` **(new)** · `that's the only rule` **(new)**
+
+**"visiting's two till eight"**
+- BUILD: "visiting's two till eight every day" · "and visiting's two till eight" · "visiting's two till eight here" · "visiting's two till eight, remember"
+- USE: "Visiting's two till eight every day." · "Visiting's two till eight, so he can come after work." · "Don't worry — visiting's two till eight." · "Visiting's two till eight, remember." · "Visiting's two till eight — plenty of time after lunch."
+
+**"plenty of time"**
+- BUILD: "so plenty of time" · "plenty of time, then" · "there's plenty of time" · "plenty of time before tonight"
+- USE: "There's plenty of time, don't worry." · "You've got plenty of time." · "Plenty of time — visiting's two till eight." · "There's plenty of time before they come." · "No rush — there's plenty of time."
+
+**"two visitors at a time"**
+- BUILD: "just two visitors at a time" · "two visitors at a time, mind" · "only two visitors at a time" · "two visitors at a time, that's the only rule"
+- USE: "It's two visitors at a time, that's all." · "Just two visitors at a time, mind." · "Two visitors at a time — that's the only rule." · "Only two visitors at a time, I'm afraid." · "Remember — two visitors at a time."
+
+**"that's the only rule"**
+- BUILD: "and that's the only rule" · "that's the only rule here" · "that's the only rule, honestly" · "but that's the only rule"
+- USE: "That's the only rule here." · "That's the only rule, honestly." · "That's the only rule — everything else is easy." · "Don't worry, that's the only rule." · "That's the only rule, and it's an easy one."
+
+### HG28 — "It can get a bit busy some nights, I won't lie to you. But we keep the lights down, and you tell us if you can't sleep."
+
+Cut: `it can get a bit busy some nights` **(new)** · `I won't lie to you` **(new)** · `but we keep the lights down` **(new: "we keep the lights down")** · `and you tell us if you can't sleep` **(new: "you tell us if you can't sleep")**
+
+**"it can get a bit busy some nights"**
+- BUILD: "it can get a bit busy some nights, mind" · "and it can get a bit busy some nights" · "it can get a bit busy here" · "it can get a bit busy after lunch"
+- USE: "It can get a bit busy some nights, mind." · "It can get a bit busy here after lunch." · "It can get a bit busy some nights, but you tell us." · "It can get a bit busy in the mornings." · "It can get a bit busy, but the people are kind."
+
+**"I won't lie to you"**
+- BUILD: "I won't lie to you —" · "and I won't lie to you" · "I won't lie to you, now" · "I won't lie to you about that"
+- USE: "It's a long day, I won't lie to you." · "I won't lie to you — it can get a bit busy some nights." · "I won't lie to you about that." · "I won't lie to you — the weather takes some getting used to." · "It's not always quiet, I won't lie to you."
+
+**"we keep the lights down"**
+- BUILD: "but we keep the lights down" · "we keep the lights down at night" · "and we keep the lights down" · "we keep the lights down for you"
+- USE: "We keep the lights down at night." · "Don't worry — we keep the lights down." · "We keep the lights down, and it's quieter after ten." · "We keep the lights down so you can sleep." · "But we keep the lights down, I promise."
+
+**"you tell us if you can't sleep"**
+- BUILD: "and you tell us if you can't sleep" · "you tell us if you can't sleep tonight" · "just tell us if you can't sleep" · "you tell us, any time, if you can't sleep"
+- USE: "You tell us if you can't sleep, alright?" · "You tell us if you can't sleep — that's what the bell's for." · "You tell us if you can't sleep tonight." · "Don't sit there worrying quietly — you tell us if you can't sleep." · "You tell us if you can't sleep, day or night."
