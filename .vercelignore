@@ -47,6 +47,12 @@ tests/
 # /docs/pods stays IN the upload: src/content/pod-thinking-docs.js imports from it at build time
 /docs/*
 !/docs/pods/
+# ...but only the .md/.txt src/content/pod-thinking-docs.js actually globs — the
+# JSON/PSV/CSV sweep logs that accumulate there (118MB, 2026-08-31) are not
+# read at build time and blow the Vercel deploy past its 10MB request-body limit.
+/docs/pods/*.json
+/docs/pods/*.psv
+/docs/pods/*.csv
 
 # Archive
 archive/
