@@ -249,3 +249,48 @@ it will be redone.
 
 **Decided by:** agent, under Tom's 2026-08-30 ruling on the spaced-rep rendering; the ordering
 question (A-307) was deliberately left untouched.
+
+---
+
+## 2026-08-31 — The Voice Lab's three gaps: the consent key, hearing a voice with no clip, and a judging set
+
+Tom, looking at the live page: *"1 - there is no way to give consent to a voice here. 2 - there is
+no way to hear a voice that does not currently have a clip. 3 - there is only one clip per voice."*
+
+**Gap 1, and it was ours.** Consent became REQUIRED to cast on 2026-08-31 — refused server-side at
+every door — and the only routes that could SATISFY it created a NEW voice. Nine voices already in
+the estate were refused everywhere with no door anywhere. This branch built a key; so, within the
+hour, did another worker, for the cast screens (61d0b9122, `ConsentStep.vue` +
+`POST /voices/:id/consent-declaration`). **Theirs stayed and mine was deleted** — it is better
+argued (a dashboard session rather than admin, because the people who hit the lock are course
+leaders; and a capture that cannot overturn a recorded no). One component, one route, one wording,
+three screens. The Voice Lab's contribution is WHERE it opens — the chip that says a voice has no
+consent IS the door, opening the panel under the row it was tapped in — plus two optional controls
+on the shared panel, both off by default: hearing the voice before consenting to it, and a refusal
+of exactly the same weight as the yes.
+
+The old freeform consent form (status dropdown, name, date, note) went with it. It could mark a
+voice `authorised` on typing alone, which was a second meaning of the word consent one screen from
+the first.
+
+**Gap 3 — what a judging set is, and why.** Three lines from ONE named course: the median line
+(unchanged from the single line this module always picked, so every cached clip in the estate stays
+valid and the row's one-press fair comparison still renders identical words for every voice), a
+SHORT line (onset and tail, where a clone clips its first consonant or hangs a breath), and a LONG
+one (breath, pace and drift, which four words cannot show). The short slot prefers a QUESTION where
+the corpus has one, because rising intonation is where a clone most often gives itself away.
+Deterministic, so two voices are never compared on different words.
+
+**Per VOICE, not per row, and that is the cost decision.** The row press renders one line for every
+candidate — the fair comparison that makes a shortlist. Three lines for eighty candidates would
+triple the bill to answer a question nobody asked about seventy-seven of them, so the spend follows
+the attention: a voice gets its extra clips when somebody opens it.
+
+**Two defects found by driving it rather than by reading it.** `ConsentStep`'s `clipFile` was a
+plain `let` behind a computed, so the spoken route could not be completed by anybody — you read the
+line aloud and the button stayed disabled. And in the two-column guide layout the consent chip was
+being clipped underneath the neighbouring card, unclickable: a decision that looks as though it was
+never offered.
+
+**Decided by:** agent, under Tom's 2026-08-31 gaps brief; the consent mechanism itself is his
+2026-08-31 ruling and was reused, never re-invented.
