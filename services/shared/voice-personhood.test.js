@@ -146,6 +146,17 @@ describe("a person's own recording is not a voice cloned from them", () => {
     expect(requiresConsent(source.voice_id, source)).toBe(false)
   })
 
+  it("does not gate a recordist the cast route auto-registered as tts_engine 'human'", () => {
+    // LIVE, 2026-08-31, and no test would have found it: casting a row-less
+    // recordist makes the cast route register one — `type: 'tts'`,
+    // `tts_engine: 'human'`, display_name = the id — and `human` in an engine
+    // column is the opposite of a vendor voice. This exact row is what came
+    // back for Sasha from the deployed API mid-verification.
+    const autoRegistered = { voice_id: 'human_sasha_wanasky_deu_at', type: 'tts', tts_engine: 'human', tts_voice_name: null, provider_id: null, display_name: 'human_sasha_wanasky_deu_at', metadata_source: null, consent_status: 'not_recorded' }
+    expect(classify(autoRegistered.voice_id, autoRegistered)).toBe('recordist')
+    expect(requiresConsent(autoRegistered.voice_id, autoRegistered)).toBe(false)
+  })
+
   it('still honours a recordist who has said no', () => {
     for (const status of ['refused', 'withdrawn']) {
       const row = { voice_id: 'human_welsh_target1', type: 'human', consent_status: status, consent_person: 'Welsh Speaker 1' }

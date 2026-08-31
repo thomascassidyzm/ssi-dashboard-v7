@@ -86,8 +86,9 @@
  *   - A VENDOR SYNTHESIS IDENTITY on the row — `tts_engine`, `provider_id` or
  *     `tts_voice_name`. This is the structural half and the load-bearing one.
  *     A person's own recording has no vendor voice: it is files, and all 17
- *     recordist rows carry null in all three, under an id with no provider
- *     prefix. A clone cannot exist without one,
+ *     recordist rows carry null in all three, under an id with no vendor
+ *     prefix — and `tts_engine: 'human'` is not a vendor. A clone cannot exist
+ *     without one,
  *     because a clone IS a voice sitting at a provider under an id. So a
  *     human_* row that acquires a provider voice is something synthesised in
  *     that person's voice whatever it is called, and it is gated.
@@ -116,8 +117,19 @@ const CLONE_PROVENANCE = /\bclon(e|ed|ing)\b/i
  */
 const AZURE_CATALOGUE_ID = /^[a-z]{2,3}(-[A-Za-z]{2,8})?-[A-Za-z0-9]+Neural$/
 
-/** An id that names a voice sitting at a provider. `cartesia_e7ed10ad-…`. */
-const PROVIDER_PREFIXED_ID = /^(azure|xai|elevenlabs|google|narakeet|cartesia)_/i
+/**
+ * The vendors this estate can SYNTHESISE with. `human` is deliberately absent
+ * though it is one of clip-identity's PROVIDERS: `tts_engine: 'human'` is what
+ * the cast route writes when it auto-registers a recordist who had no row, and
+ * it is the OPPOSITE of a vendor voice — it says the audio is a person's own
+ * takes. Treating it as one gated `human_sasha_wanasky_deu_at` the moment she
+ * was cast, which is exactly the failure this module exists to stop (caught by
+ * the live probe, 2026-08-31, not by a test).
+ */
+const SYNTHESIS_VENDORS = new Set(['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'cartesia'])
+
+/** An id that names a voice sitting at a vendor. `cartesia_e7ed10ad-…`. */
+const PROVIDER_PREFIXED_ID = new RegExp(`^(${[...SYNTHESIS_VENDORS].join('|')})_`, 'i')
 
 function text (v) { return v === null || v === undefined ? '' : String(v) }
 
@@ -142,11 +154,8 @@ function carriesSynthesisIdentity (voiceId, voice = null) {
   // are `human_*` and carry no provider prefix at all.
   if (PROVIDER_PREFIXED_ID.test(text(voiceId).trim())) return true
   if (!voice) return false
-  return Boolean(
-    text(voice.tts_engine).trim() ||
-    text(voice.provider_id).trim() ||
-    text(voice.tts_voice_name).trim(),
-  )
+  if (SYNTHESIS_VENDORS.has(text(voice.tts_engine).trim().toLowerCase())) return true
+  return Boolean(text(voice.provider_id).trim() || text(voice.tts_voice_name).trim())
 }
 
 /** Does the row's own provenance say a vendor catalogue put it there? */
@@ -298,5 +307,6 @@ module.exports = {
   looksLikeCatalogueProvenance,
   looksLikeStockCatalogue,
   CATALOGUE_ONLY_ENGINES,
+  SYNTHESIS_VENDORS,
   AZURE_CATALOGUE_ID,
 }
