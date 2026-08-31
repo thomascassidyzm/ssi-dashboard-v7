@@ -28,3 +28,15 @@ jobs:
       # than becoming a second mechanism to keep alive.
       - name: Service entrypoint syntax gate
         run: node tools/check-service-syntax.cjs
+      # Added 2026-08-31, the afternoon a Voice Lab rewrite deleted `canRecord`,
+      # `pickFile`, `canSubmitClone` and the whole MediaRecorder block from
+      # LanguagesPanel.vue's script while leaving their buttons in the template.
+      # Vue compiles an unknown identifier to `_ctx.<name>` and says nothing, so
+      # the build was green and "Record it here" shipped permanently disabled,
+      # blaming the browser. Tom hit it live in front of Aran. This is the only
+      # step here that needs a package, so it installs the one it needs and
+      # nothing else; the script exits 0 if that install ever fails.
+      - name: Vue template-symbol gate
+        run: |
+          npm install --no-save --no-audit --no-fund @vue/compiler-sfc@3 || true
+          node tools/check-vue-template-symbols.cjs
