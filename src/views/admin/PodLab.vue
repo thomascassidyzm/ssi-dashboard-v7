@@ -20,6 +20,7 @@
  */
 import { ref, computed, reactive, watch } from 'vue'
 import CoursePicker from '../../components/CoursePicker.vue'
+import ConsentStep from './voicelab/ConsentStep.vue'
 // Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
 // runs) — see src/lib/podEngine + tools/sync-pod-engine.sh. Vendored, not
 // cross-repo-imported, because Popty's Vercel build is single-repo.
@@ -1705,10 +1706,19 @@ async function previewVoice(gender) {
       }),
     })
     const body = await res.json().catch(() => ({}))
-    if (!res.ok || !body.audio) throw new Error(body.error || `HTTP ${res.status}`)
+    if (!res.ok || !body.audio) throw Object.assign(new Error(body.error || `HTTP ${res.status}`), { status: res.status, data: body })
     await playDataUri(body.audio)
   } catch (e) {
-    pickerMsg.value = `Preview failed: ${e.message}`
+    // Auditioning a voice renders it, so it takes the same lock as casting it —
+    // and therefore deserves the same key rather than a dead end one step
+    // earlier than the one the picker already handles.
+    const refusal = consentRefusal(e)
+    if (refusal) {
+      consentNeeded.value = { ...refusal, retry: () => previewVoice(gender) }
+      pickerMsg.value = ''
+    } else {
+      pickerMsg.value = `Preview failed: ${e.message}`
+    }
   } finally {
     pickerBusy.value = ''
   }
@@ -1750,9 +1760,47 @@ async function writeCast(m, f) {
     }),
   })
   const body = await res.json().catch(() => ({}))
-  if (!res.ok) throw new Error(body.error || `HTTP ${res.status}`)
+  // The route rides its branch flags (`code`, `voiceId`, `where`) alongside the
+  // sentence, and the consent refusal is the one this page has to BRANCH on
+  // rather than merely print — so the body travels with the error instead of
+  // being flattened to a string a caller would have to pattern-match.
+  if (!res.ok) throw Object.assign(new Error(body.error || `HTTP ${res.status}`), { status: res.status, data: body })
   if (!body.ok) throw new Error('the endpoint did not confirm a write — is this build deployed?')
   return body
+}
+
+// ── THE CONSENT STEP — the key to the lock that refuses an unconsented cast ──
+//
+// Tom, 2026-08-31: "we are never going to use a voice without consent." The
+// block is real and it refuses here, correctly. What it had no answer for was
+// this screen: consent could only be captured when a voice was BORN — in the
+// Voice Lab's clone flows or in recordist onboarding — and this page casts
+// voices it did not create. So casting a new pod speaker whose consent nobody
+// had recorded was impossible for anybody, with the refusal shown as a flat
+// "Failed:" line and nothing to do about it.
+//
+// It is the SAME mechanism, not a second one: ConsentStep is the Voice Lab's
+// declaration — the line read aloud and checked by whisper on the box, or the
+// named written statement — talking to the same declaration.cjs and writing the
+// same consent_* columns. This page only decides WHEN to show it.
+//
+// And it finishes the job it interrupted: recording the consent re-runs the
+// cast that was refused, so the human goes from blocked to cast in one pass
+// rather than being sent to another screen and back.
+const consentNeeded = ref(null) // { voiceId, reason, retry }
+
+/** A refusal this page can do something about, or null. */
+function consentRefusal(e) {
+  const d = (e && e.data) || {}
+  if (d.code !== 'NO_RECORDED_CONSENT' && d.code !== 'CONSENT_UNREADABLE') return null
+  return { voiceId: d.voiceId || '', reason: e.message, where: d.where || null }
+}
+
+async function onConsentRecorded() {
+  const retry = consentNeeded.value?.retry
+  consentNeeded.value = null
+  pickerMsg.value = 'Consent recorded. Re-running what it blocked…'
+  if (retry) await retry()
 }
 
 async function applyVoices() {
@@ -1781,7 +1829,13 @@ async function applyVoices() {
     await loadCasting(course)
     currentPodId.value = podId
   } catch (e) {
-    pickerMsg.value = `Failed: ${e.message}`
+    const refusal = consentRefusal(e)
+    if (refusal) {
+      consentNeeded.value = { ...refusal, retry: applyVoices }
+      pickerMsg.value = ''
+    } else {
+      pickerMsg.value = `Failed: ${e.message}`
+    }
   } finally {
     pickerBusy.value = ''
   }
@@ -2603,6 +2657,18 @@ loadLiveConfig()
                 </span>
                 <span v-if="pickerMsg" class="chip" :class="{ err: pickerMsg.startsWith('Failed') || pickerMsg.startsWith('Preview failed') }">{{ pickerMsg }}</span>
               </div>
+              <!-- The key to the consent lock, shown WHERE THE REFUSAL HAPPENED
+                   and nowhere else. Recording the consent re-runs the cast or
+                   the audition it blocked, so this is one pass rather than a
+                   trip to another screen. -->
+              <ConsentStep
+                v-if="consentNeeded"
+                :voice-id="consentNeeded.voiceId"
+                :reason="consentNeeded.reason"
+                :language="casting?.course?.target_lang || ''"
+                @recorded="onConsentRecorded"
+                @cancel="consentNeeded = null"
+              />
             </div>
 
             <!-- THE COMPARISON. One column per candidate cast, each carrying its
