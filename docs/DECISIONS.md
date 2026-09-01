@@ -5,6 +5,56 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-01 — machine-generated evidence leaves the tracked tree; a fresh worktree costs 60 MB, not 352
+
+**Decision.** Tom ruled "yes, move 290MB of machine logs out of the repo". 1,922 tracked
+files — 279 MB of sweep dryrun/applied/verify logs, queue tails, censuses, snapshots,
+screenshots and sample mp3s under `docs/` and `archive/docs-retired-2026-08-24` — were
+copied byte-for-byte to `~/ssi-evidence/ssi-dashboard-v7/<same path>` with a
+`MANIFEST.tsv` (git blob SHA + bytes + the commit removed at), then `git rm`'d at the
+tip. `.gitignore` now excludes `*.json`/`*.jsonl`/`*.gz` and image/audio under `docs/`
+and `archive/`, with named exceptions for schemas and the eight files committed tools
+and tests actually read. `docs/EVIDENCE.md` and `tools/lib/evidence-path.cjs` say where
+new evidence goes.
+
+**Why it can't be reverse-engineered.** A fresh `git worktree add` was **352 MB**; it is
+now **60 MB**. Job #625 measured the estate writing ~10 GB/day and found every byte was
+`git worktree add` — ~30 a day, ~300 MB each, 195 accumulated. Its hourly reaper made
+that survivable; this removes the cause. History is untouched, so the old bytes are
+still there: only NEW worktrees are cheap.
+
+**Better:** the churn is deleted at source rather than swept up hourly, and `docs/` goes
+back to being 9 MB of markdown a human can actually read.
+**Simpler:** one predicate — machine formats don't live in `docs/` — expressed as
+gitignore patterns, no size gate, no per-tool retrofit, no lifecycle hook.
+**Cheaper (total):** one copy, one commit. Tools may still write into `docs/`; the
+gitignore means it never enters the tree, so no tool had to change for the number to
+move. The store is one directory on this box, mirroring repo paths, addressable by the
+same path anyone already knew.
+
+**Searched & rejected.** `git filter-branch`/`filter-repo` to reclaim the history bytes —
+rewrites every SHA on a repo with dozens of live worktrees and two deploy checkouts, for
+disk that costs nothing per worktree (objects are shared); #625 rejected it too.
+Sparse-checkout excluding `docs/` — workers write and publish from `docs/`, so the cone
+fights the work. A size threshold — not expressible in `.gitignore`, so the tree and the
+gate would drift apart. Deleting outright — the data is not worthless, and "move it
+somewhere addressable" costs 284 MB of disk we have.
+
+**Verified before removing.** Published docs render from the surface DB `content` column
+(2,752 rows, zero empty; `/d/<id>` in `server.js` never touches `src` on disk) — one
+published doc has a `src` inside `archive/docs-retired-2026-08-24` and still renders. No
+done card points at a repo file (33 non-`/d/` URLs, all external sites). Nothing in
+`services/` statically serves `docs/`. A grep over all 1,658 tracked non-doc files for
+`docs|archive` path literals found 28 references, 8 of which resolve to a tracked file —
+all 8 kept.
+
+**Not done, said instead.** Worktrees on other branches keep the files until those
+branches take this change; nobody else's worktree was touched. One-off scripts under the
+gitignored `scripts/` that read moved paths will need the `~/ssi-evidence` prefix — they
+are spent one-offs and were not retrofitted.
+
+---
+
 ## 2026-08-31 — The metagraph is ratified past its derivation counts, and CORE is a placement, not a coverage number
 
 **Decision.** The store now carries the ratified discursive layer — N301–N306 /

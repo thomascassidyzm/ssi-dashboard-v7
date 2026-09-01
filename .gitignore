@@ -206,3 +206,46 @@ database/*.db
 *.deb
 .vercel
 .env*
+
+# --------------------------
+# Machine-generated evidence under docs/ and archive/ (2026-09-01, Tom's ruling
+# "yes, move 290MB of machine logs out of the repo"). Sweep dryrun/applied/verify
+# logs, queue tails, censuses, snapshots and screenshots are a WORKER'S output,
+# not repo content: 278 MB of them were tracked, so every `git worktree add` wrote
+# ~300 MB before anybody typed — ~30 a day, which was the estate's 10 GB/day disk
+# churn (job #625). The files moved to ~/ssi-evidence/ssi-dashboard-v7/<same path>,
+# with a MANIFEST.tsv; they also remain in git history at 7672f9b66.
+# Tools may still WRITE here — the point is only that it never enters the tree.
+# Where new evidence belongs: docs/EVIDENCE.md.
+# --------------------------
+docs/**/*.json
+docs/**/*.jsonl
+docs/**/*.gz
+archive/**/*.json
+archive/**/*.jsonl
+archive/**/*.gz
+docs/**/*.png
+docs/**/*.jpg
+docs/**/*.jpeg
+docs/**/*.gif
+docs/**/*.mp3
+docs/**/*.wav
+archive/**/*.png
+archive/**/*.jpg
+archive/**/*.jpeg
+archive/**/*.gif
+archive/**/*.mp3
+archive/**/*.wav
+
+# Kept in the tree deliberately: schemas, and the handful of evidence files that
+# committed tools and tests read by path (verified by grep over tracked code,
+# 2026-09-01). Anything added here must be small and must be READ by code.
+!**/*.schema.json
+!docs/pods/pod1-recast-regen-queue-by-language-2026-08-23.json
+!docs/pods/chunk-audio-cut-candidates-2026-07-17.json
+!docs/pods/pod0-welsh-drafts-applied-log.json
+!docs/pods/ita_for_eng-pod-1-off-role-rerender-2026-08-24-applied-log.json
+!docs/pods/pod-overlap-2026-08-14.json
+!docs/pods/nld-inflight-session-repair-2026-08-24-applied-log.json
+!docs/a108/a136-nld-noor-drop-sample.json
+!docs/spa-bare-lego-repair-sample-2026-08-26.json

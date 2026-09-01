@@ -53,6 +53,7 @@ You are applying the SaySomethingin method — the thing every phrase a learner 
 
 ### File placement (keep the repo clean)
 - **Never create files in repo root** (only essential configs).
+- **Machine-generated evidence does not go in the tracked tree.** Sweep logs, queue tails, censuses, snapshots and screenshots go to `~/ssi-evidence/ssi-dashboard-v7/<repo-relative path>` (helper: `tools/lib/evidence-path.cjs`); `.gitignore` blocks `*.json`/`*.jsonl`/`*.gz`/images/audio under `docs/` and `archive/`. Anything Tom must read is *published* to the surface, not pointed at. Why, and the 279 MB that moved on 2026-09-01: `docs/EVIDENCE.md`.
 - `scripts/` is your gitignored workspace (experiments, one-off fixes, agent-generated). `tools/` is committed, stable, shared-with-Kai utilities. `docs/` for docs. Check `.gitignore` before creating files.
 
 ---

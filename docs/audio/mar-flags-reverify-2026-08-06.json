@@ -1,8 +1,0 @@
-{
-  "query": "select seed_number from course_seeds where course_code='eng_for_mar' and flagged_at is not null order by seed_number",
-  "count": 18,
-  "seed_numbers": [114, 118, 123, 124, 149, 159, 195, 201, 204, 223, 235, 236, 237, 238, 241, 245, 248, 269],
-  "matches_prior_list": true,
-  "prior_list": [114, 118, 123, 124, 149, 159, 195, 201, 204, 223, 235, 236, 237, 238, 241, 245, 248, 269],
-  "diff": []
-}
