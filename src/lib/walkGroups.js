@@ -15,7 +15,7 @@
  *      quietly vanishing from the one page meant to show everything.
  */
 
-import { PARKED_FACTS, PAIR_OVERLAYS } from './walkFacts.js'
+import { PAIR_OVERLAYS } from './walkFacts.js'
 
 export const CATEGORY_GROUPS = [
   {
@@ -102,8 +102,6 @@ export function decorateWalk (entry, { dbPods = [], targets = {}, coverage = {},
     // Only a slug that exists in the store has a script page to open. A
     // mapping-only or parked walk gets no link rather than a link to a 404.
     to: db ? `/canonical/scripts/${entry.slug}` : null,
-    // Measured facts the registry does not carry — a dated snapshot, labelled
-    // as one on the page. See walkFacts.js for why they are not computed.
     // REGISTRY BEHIND REALITY. A status of mapping-only or parked is a claim
     // that the walk is NOT in the canonical store. When the store has rows for
     // it anyway, the registry is stale — and on 2026-09-01 that happened within
@@ -112,7 +110,9 @@ export function decorateWalk (entry, { dbPods = [], targets = {}, coverage = {},
     // never quietly resolves a contradiction between the two sources, because
     // the contradiction is the thing worth seeing.
     drift: !!db && (entry.status === 'mapping-only' || entry.status === 'parked'),
-    facts: PARKED_FACTS[entry.slug] || null,
+    // `size` is the registry's own measurement for a parked walk — dated, and
+    // carrying the query it came from. Read, never recomputed.
+    facts: entry.size || null,
     overlay: PAIR_OVERLAYS[entry.slug] || null,
     // The registry carries no dedicated overlay field, so the flag is read out
     // of the note it is actually written in. A worker never signs off

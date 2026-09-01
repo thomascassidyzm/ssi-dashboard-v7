@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { buildGroups, decorateWalk } from './walkGroups.js'
+import { buildGroups, decorateWalk, isIngestable } from './walkGroups.js'
 import CORPORA from '../../tools/pods/pod-corpora.json'
 
 // The canonical store as it actually stood on 2026-09-01, AFTER the pod-0 →
@@ -65,10 +65,17 @@ describe('the walk registry, joined to the canonical store', () => {
 
   it('links only slugs that exist in the store — a mapping is not a walk', () => {
     const groups = buildGroups(CORPORA, { dbPods: DB_AFTER })
-    expect(find(groups, 'pod-1').to).toBe('/canonical/scripts/pod-1')
-    expect(find(groups, 'care-work').to).toBeNull()
-    expect(find(groups, 'care-work').status).toBe('mapping-only')
-    expect(find(groups, 'health').to).toBeNull() // authored, not ingested
+    // In the store: linked. Not in the store: no link, rather than a link to a
+    // 404. Asserted against the fixture, not against which walks are ingested
+    // today, because that changes hourly.
+    const inStore = new Set(DB_AFTER.map(p => p.slug))
+    for (const w of flat(groups)) {
+      expect(w.to).toBe(inStore.has(w.slug) ? `/canonical/scripts/${w.slug}` : null)
+    }
+    // And whatever is still mapping-only is a mapping, not a walk.
+    for (const w of CORPORA.walks.filter(x => x.status === 'mapping-only')) {
+      expect(find(groups, w.slug).corpus).toBeFalsy()
+    }
   })
 
   it('shows the parked pair as parked, out of the canonical store', () => {
@@ -120,16 +127,17 @@ describe('decorateWalk', () => {
 describe('ingestability — the same rule the ingest tool uses', () => {
   it('is authored + corpus + format, and nothing else', () => {
     const groups = buildGroups(CORPORA, { dbPods: DB_AFTER })
-    // Authored with a corpus file and a format: the tool will take these.
-    for (const slug of ['health', 'retail', 'trades', 'hospitality']) {
-      expect(find(groups, slug).ingestable).toBe(true)
+    // Derived from the registry, never from a list of slugs: statuses move.
+    // care-work was mapping-only at 11:29 on 2026-09-01 and authored by 11:40,
+    // and a test naming it would have gone red for the work going right.
+    for (const w of [...CORPORA.walks, ...CORPORA.parked]) {
+      expect(find(groups, w.slug).ingestable)
+        .toBe(w.status === 'authored' && !!w.corpus && !!w.format)
     }
-    // A mapping is not a walk — skipped with a reason, never an error.
-    expect(find(groups, 'care-work').ingestable).toBe(false)
-    expect(find(groups, 'public-services').ingestable).toBe(false)
-    // Parked is deliberately not ingested.
-    expect(find(groups, 'music').ingestable).toBe(false)
-    // The core slate has no markdown corpus — the DB is canon for it.
+    // Parked is deliberately never ingested, whatever else it carries.
+    for (const p of CORPORA.parked) expect(find(groups, p.slug).ingestable).toBe(false)
+    // And the core slate has no markdown corpus at all — the DB is canon for it.
+    expect(find(groups, 'pod-1').corpus).toBeFalsy()
     expect(find(groups, 'pod-1').ingestable).toBe(false)
   })
 })
@@ -166,47 +174,95 @@ describe('the measured facts the registry does not carry', () => {
 })
 
 describe('registry-vs-database drift', () => {
-  // The store moved WHILE this page was being built: five themed walks were
-  // ingested on 2026-09-01 at 11:29, and care-work landed in the store while
-  // the registry still recorded it as a mapping. The page must show that
-  // contradiction, not resolve it silently in either direction.
-  const DB_WITH_THEMED = [
-    ...DB_AFTER,
-    { slug: 'health', lines: 438, scenes: 23 },
-    { slug: 'retail', lines: 330, scenes: 25 },
-    { slug: 'trades', lines: 414, scenes: 23 },
-    { slug: 'hospitality', lines: 330, scenes: 21 },
-    { slug: 'care-work', lines: 306, scenes: 20 },
+  // THE RULE IS TESTED, NOT A WALK. This drift was found live on 2026-09-01,
+  // when care-work was ingested while still recorded as mapping-only — and it
+  // was then RESOLVED, within the hour, by correcting the registry entry. A test
+  // naming care-work would now be red for the best possible reason. So the
+  // contradiction is CONSTRUCTED here, and the live registry is asserted
+  // separately to be free of it.
+  const CONTRADICTION = {
+    walks: [
+      { slug: 'ghost', name: 'Ghost', category: 'themed', status: 'mapping-only', corpus: null, format: 'sector-flows' },
+      { slug: 'real', name: 'Real', category: 'themed', status: 'authored', corpus: 'x.md', format: 'sector-flows' },
+    ],
+    parked: [{ slug: 'sleeper', name: 'Sleeper', category: 'themed', status: 'parked' }],
+  }
+  const DB = [
+    { slug: 'ghost', lines: 306, scenes: 20 },
+    { slug: 'real', lines: 330, scenes: 25 },
+    { slug: 'sleeper', lines: 749, scenes: 8 },
   ]
 
-  it('flags a mapping-only walk that is nonetheless in the store', () => {
-    const groups = buildGroups(CORPORA, { dbPods: DB_WITH_THEMED })
-    const careWork = find(groups, 'care-work')
-    expect(careWork.status).toBe('mapping-only')
-    expect(careWork.inStore).toBe(true)
-    expect(careWork.lines).toBe(306)
-    expect(careWork.drift).toBe(true)
+  it('flags a walk whose status claims it is absent while the store holds it', () => {
+    const groups = buildGroups(CONTRADICTION, { dbPods: DB })
+    expect(find(groups, 'ghost').drift).toBe(true)
+    expect(find(groups, 'ghost').lines).toBe(306)
+    // Parked means "deliberately not canon", so an ingested parked walk is the
+    // same contradiction wearing a different word.
+    expect(find(groups, 'sleeper').drift).toBe(true)
   })
 
   it('does not flag an authored walk that is in the store — that is the normal case', () => {
-    const groups = buildGroups(CORPORA, { dbPods: DB_WITH_THEMED })
-    for (const slug of ['health', 'retail', 'trades', 'hospitality', 'pod-1']) {
-      expect(find(groups, slug).drift).toBe(false)
-    }
+    const groups = buildGroups(CONTRADICTION, { dbPods: DB })
+    expect(find(groups, 'real').drift).toBe(false)
   })
 
-  it('flags a parked walk if one is ever ingested — parked means not canon', () => {
-    const groups = buildGroups(CORPORA, { dbPods: [...DB_AFTER, { slug: 'music', lines: 749, scenes: 8 }] })
-    expect(find(groups, 'music').drift).toBe(true)
+  it('does not flag anything when the store is empty — absence is not drift', () => {
+    const groups = buildGroups(CONTRADICTION, { dbPods: [] })
+    for (const slug of ['ghost', 'real', 'sleeper']) expect(find(groups, slug).drift).toBe(false)
+  })
+
+  it('the live registry currently agrees with the live store', () => {
+    // Nine canonical walks as of 2026-09-01; public-services is still authoring.
+    const live = [
+      'pod-1', 'learning-flagship', 'method-pod-43-scene', 'method-pod-chapters',
+      'health', 'retail', 'trades', 'hospitality', 'care-work',
+    ].map(slug => ({ slug, lines: 1, scenes: 1 }))
+    const groups = buildGroups(CORPORA, { dbPods: live })
+    for (const w of flat(groups)) expect(w.drift).toBe(false)
   })
 
   it('stops offering INGESTABLE once a walk has actually landed', () => {
-    const before = buildGroups(CORPORA, { dbPods: DB_AFTER })
-    const after = buildGroups(CORPORA, { dbPods: DB_WITH_THEMED })
-    expect(find(before, 'health').ingestable && !find(before, 'health').inStore).toBe(true)
-    expect(find(after, 'health').ingestable && !find(after, 'health').inStore).toBe(false)
-    // And it gains a script to open, which it did not have before.
-    expect(find(before, 'health').to).toBeNull()
-    expect(find(after, 'health').to).toBe('/canonical/scripts/health')
+    const before = buildGroups(CONTRADICTION, { dbPods: [] })
+    const after = buildGroups(CONTRADICTION, { dbPods: DB })
+    expect(find(before, 'real').ingestable && !find(before, 'real').inStore).toBe(true)
+    expect(find(after, 'real').ingestable && !find(after, 'real').inStore).toBe(false)
+    expect(find(before, 'real').to).toBeNull()
+    expect(find(after, 'real').to).toBe('/canonical/scripts/real')
+  })
+})
+
+describe('the ingestable rule has ONE home', () => {
+  it('implements exactly the predicate the registry states', () => {
+    // The registry is the authority; this function is one of its two
+    // implementations. If the field is reworded, this fails and someone has to
+    // look — which is the entire point of hoisting the rule out of both readers.
+    expect(CORPORA.ingestableRule).toBeTruthy()
+    expect(CORPORA.ingestableRule.split(' — ')[0])
+      .toBe("status === 'authored' && corpus && format")
+  })
+
+  it('agrees with the registry rule on every entry in the registry', () => {
+    for (const w of [...CORPORA.walks, ...CORPORA.parked]) {
+      const byRule = w.status === 'authored' && !!w.corpus && !!w.format
+      expect(isIngestable(w)).toBe(byRule)
+    }
+  })
+})
+
+describe('the parked size comes from the registry, not from us', () => {
+  it('reads parked[].size through, with its measurement provenance', () => {
+    const groups = buildGroups(CORPORA, { dbPods: [] })
+    const music = find(groups, 'music')
+    expect(music.facts).toMatchObject({ turns: 749, scenes: 8, targetClips: 585, knownClips: 491 })
+    expect(music.facts.measured).toMatch(/2026-09-01/)
+    // ONE scene, and one known clip — not eight, and not "no audio".
+    const travel = find(groups, 'travel-situations')
+    expect(travel.facts).toMatchObject({ turns: 72, scenes: 1, targetClips: 0, knownClips: 1 })
+  })
+
+  it('gives an unsized walk no facts rather than inventing them', () => {
+    const groups = buildGroups(CORPORA, { dbPods: [] })
+    expect(find(groups, 'health').facts).toBeNull()
   })
 })

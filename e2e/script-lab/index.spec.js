@@ -43,9 +43,18 @@ test('every walk, with its labels', async ({ page }) => {
   await expect(page.locator('[data-slug="health"] .cat-themed')).toHaveText('THEMED')
   await expect(page.getByText(/sector pods/i)).toHaveCount(0)
 
-  // Status.
-  await expect(page.locator('[data-slug="care-work"] .st-mapping-only')).toHaveText('MAPPING-ONLY')
-  await expect(page.locator('[data-slug="music"] .st-parked')).toHaveText('PARKED')
+  // Status, read off the registry rather than off a remembered list — the third
+  // time this bit: care-work was mapping-only at 11:29 and authored by 11:40.
+  for (const w of [...CORPORA.walks, ...CORPORA.parked]) {
+    await expect(page.locator(`[data-slug="${w.slug}"] .st-${w.status}`))
+      .toHaveText(w.status.toUpperCase())
+  }
+  // And whatever is mapping-only shows as a mapping with no walk to open.
+  for (const w of CORPORA.walks.filter(x => x.status === 'mapping-only')) {
+    const card = page.locator(`[data-slug="${w.slug}"]`)
+    await expect(card).toContainText('not in the canonical store')
+    await expect(card.getByRole('link', { name: 'Open the script →' })).toHaveCount(0)
+  }
 
   // The Welsh health overlay is labelled wherever it appears.
   await expect(page.locator('[data-slug="health"] .st-draft')).toContainText('DRAFT FOR ARAN')
@@ -119,6 +128,23 @@ test('every walk, with its labels', async ({ page }) => {
   // CORE slate maps through the graph rather than reading 0/36 unmapped.
   await expect(page.locator('[data-slug="pod-1"]')).not.toContainText('0/36 shapes traversed')
   await expect(page.locator('[data-slug="pod-1"]')).toContainText('shapes traversed')
+  await expect(page.locator('[data-slug="pod-1"]')).toContainText('read off row references')
+
+  // THE DISTINCTION THAT MATTERS. A corpus declaring NO shapes and a corpus
+  // declaring shapes the store cannot place are OPPOSITE facts, and must never
+  // render the same. health declares none — it gets words, and must not show a
+  // traversed count at all. trades declares 84 and fails to resolve 40 — it
+  // gets numbers, and must not show the no-claims wording.
+  await expect(health).toContainText('No shape claims')
+  await expect(health).toContainText('not zero coverage')
+  await expect(health).not.toContainText('shapes traversed')
+
+  const trades = page.locator('[data-slug="trades"]')
+  await expect(trades).toContainText('shape declarations UNRESOLVED')
+  await expect(trades).not.toContainText('No shape claims')
+
+  // The registry's rule is CITED on the page, not paraphrased.
+  await expect(page.getByText("status === 'authored' && corpus && format")).toBeVisible()
 
   await page.screenshot({ path: `${OUT}/desktop.png`, fullPage: true })
 

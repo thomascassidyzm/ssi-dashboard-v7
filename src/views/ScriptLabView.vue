@@ -107,6 +107,11 @@
         <p><strong class="text-muted">The graph.</strong> {{ graph.nodes.length }} shapes, {{ graph.compositionEdges.length }} composition edges, {{ graph.survivability.length }} survivability edges, {{ graph.outcomes.length }} outcome shapes under the selector.</p>
         <p>Source: <code>{{ graph.source }}</code>. {{ graph.provenance }}</p>
         <p>The walk registry is <code>tools/pods/pod-corpora.json</code> — one file, two readers. Adding a walk is one entry there plus its corpus file, and no code change on this page.</p>
+        <!-- CITED, not restated. The rule has one home and two implementations;
+             printing the registry's own words means the page cannot drift from
+             it silently, and a reader can see the authority rather than a
+             paraphrase of it. -->
+        <p><strong class="text-muted">Ingestable</strong> means <code>{{ ingestableRule }}</code> — the registry's definition, verbatim, shared with the ingest tool.</p>
       </div>
     </div>
   </div>
@@ -148,6 +153,9 @@ import CORPORA from '../../tools/pods/pod-corpora.json'
 
 const graph = loadGraph()
 const core = GENERATED_CORE
+// The rule's first clause is the predicate; the rest of the field is the
+// explanation of why it lives in the registry. The page prints the predicate.
+const ingestableRule = String(CORPORA.ingestableRule || '').split(' — ')[0]
 const dbPods = ref([])     // what the canonical store holds, by slug
 const coverage = ref({})   // slug -> { coverage, unresolved, declarations } | { error }
 const targets = ref({})    // slug -> { rows, langs[] }
@@ -206,12 +214,35 @@ async function load () {
           const walk = (b.walk || []).length
             ? walkFromStoredPod(scenarios, b.walk, graph, { id: pod.slug, slug: pod.slug })
             : walkFromCanonicalRows(scenarios, graph, { id: pod.slug, slug: pod.slug })
+          const declarations = (walk.declarations || []).length
+
+          // THREE DIFFERENT FACTS, AND TWO OF THEM LOOK IDENTICAL IN NUMBERS.
+          //
+          //   graph-rows — the CORE slate. Its rows ARE the graph's g<n>
+          //     reference space, so coverage is read straight off row numbers.
+          //
+          //   declared — the corpus claims shapes, and the store either matches
+          //     them or does not. Unresolved declarations are a real finding:
+          //     this walk says it walks a shape the store cannot place.
+          //
+          //   no-declarations — the corpus makes NO shape claims at all, so no
+          //     walk steps were ever parsed. Coverage is NOT ZERO here, it is
+          //     NOT APPLICABLE, and rendering it as "0 of 36 traversed" would
+          //     libel a corpus for failing a test it never sat. Aran's health
+          //     corpus is the case that forces the distinction: 438 hand-written
+          //     lines, and it would read as the worst-covered walk on the page.
+          const mode = walk.refSpace === 'g'
+            ? 'graph-rows'
+            : (declarations ? 'declared' : 'no-declarations')
+
           coverage.value = {
             ...coverage.value,
             [pod.slug]: {
-              coverage: computeCoverage(graph, walk),
+              mode,
+              coverage: mode === 'no-declarations' ? null : computeCoverage(graph, walk),
               unresolved: (walk.unresolved || []).length,
-              declarations: (walk.declarations || []).length,
+              declarations,
+              steps: (walk.steps || []).length,
             },
           }
         })

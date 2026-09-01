@@ -18,17 +18,10 @@
  * is the more expensive kind of wrong.
  */
 
-export const MEASURED_ON = '1 September 2026'
-
-/**
- * The two parked walks, which live only in `listening_pods` under one course.
- * No lab can read them, which is why they were invisible until this page.
- * Note travel-situations: ONE scene, and one known clip — not "no audio".
- */
-export const PARKED_FACTS = {
-  music: { course: 'spa_for_eng', turns: 749, scenes: 8, targetClips: 585, knownClips: 491 },
-  'travel-situations': { course: 'spa_for_eng', turns: 72, scenes: 1, targetClips: 0, knownClips: 1 },
-}
+// The parked walks' sizes USED TO LIVE HERE. They are `parked[].size` in
+// tools/pods/pod-corpora.json now, measured and dated by the registry itself,
+// so the copy here was deleted rather than kept in parallel — which is what the
+// header above says to do the moment the registry grows a field.
 
 /**
  * The GENERATED core walk — the layer where audio actually exists. Reported

@@ -11,7 +11,6 @@
  * to what the canonical store actually returned. Nothing is hardcoded per slug.
  */
 import { computed } from 'vue'
-import { MEASURED_ON } from '@/lib/walkFacts.js'
 
 const props = defineProps({ walk: { type: Object, required: true } })
 
@@ -49,9 +48,8 @@ const factsLine = computed(() => {
   const f = w.value.facts
   if (!f) return ''
   return `${f.turns} turns · ${f.scenes} ${f.scenes === 1 ? 'scene' : 'scenes'} · `
-    + `${f.targetClips} target clips · ${f.knownClips} known clips rendered, in ${f.course}`
+    + `${f.targetClips} target clips · ${f.knownClips} known clips rendered`
 })
-const measuredOn = MEASURED_ON
 </script>
 
 <template>
@@ -79,14 +77,33 @@ const measuredOn = MEASURED_ON
       <span v-if="targetLine" :class="w.target?.rows ? 'text-accent-2' : 'text-faint'">{{ targetLine }}</span>
     </div>
 
-    <div v-if="w.cov?.coverage" class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
+    <!-- NO SHAPE CLAIMS IS NOT ZERO COVERAGE. A corpus that declares no
+         metagraph shapes never sat the test, so it cannot fail it. Rendering
+         this as "0 of 36 traversed" beside a walk that declared shapes and
+         failed to resolve them would present opposite facts identically — and
+         would libel Aran's 438-line health corpus as the worst-covered thing on
+         the page. It gets words, not numbers. -->
+    <p v-if="w.cov?.mode === 'no-declarations'" class="mt-2 text-xs no-claims rounded px-2.5 py-1.5">
+      <strong>No shape claims.</strong> This corpus declares no metagraph shapes, so no walk steps were
+      parsed and there is no coverage to compute. That is <em>not</em> zero coverage — nothing was claimed,
+      so nothing failed. Its {{ w.lines }} lines are in the store and readable; encoding its walk is the
+      next step, not a repair.
+    </p>
+
+    <div v-else-if="w.cov?.coverage" class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
       <span class="text-muted">{{ w.cov.coverage.totals.traversed }}/{{ w.cov.coverage.totals.nodes }} shapes traversed</span>
       <span class="text-muted">{{ w.cov.coverage.totals.hitTwice }} hit twice+</span>
       <span :class="w.cov.coverage.totals.neverReached ? 'text-danger font-semibold' : 'text-accent-2'">
         {{ w.cov.coverage.totals.neverReached }} never reached
       </span>
       <span class="text-faint">{{ w.cov.coverage.totals.unmapped }} unmapped</span>
-      <span v-if="w.cov.declarations" class="text-accent">{{ w.cov.unresolved }}/{{ w.cov.declarations }} shape declarations UNRESOLVED</span>
+      <!-- The opposite fact to the block above, and it must never read the
+           same: this corpus DID claim shapes, and the store cannot place some
+           of them. -->
+      <span v-if="w.cov.declarations" class="text-accent">
+        {{ w.cov.unresolved }}/{{ w.cov.declarations }} shape declarations UNRESOLVED
+      </span>
+      <span v-if="w.cov.mode === 'graph-rows'" class="text-faint">read off row references, not declarations</span>
     </div>
     <div v-else-if="w.cov?.error" class="mt-2 text-xs text-danger">coverage unavailable — {{ w.cov.error }}</div>
 
@@ -105,7 +122,7 @@ const measuredOn = MEASURED_ON
 
     <p v-if="factsLine" class="mt-2 text-xs text-muted">
       {{ factsLine }}
-      <span class="text-faint">— measured {{ measuredOn }}, not a live read-out</span>
+      <span class="text-faint">— measured {{ w.facts.measured }}. A snapshot, not a live read-out.</span>
     </p>
 
     <!-- A pair overlay is a target-language DRAFT on a branch. It is not target
@@ -152,6 +169,7 @@ const measuredOn = MEASURED_ON
 .st-draft { color: #f59e0b; }
 .st-ingestable { color: #38bdf8; }
 .st-drift { color: #ef4444; }
+.no-claims { border: 1px solid var(--line); border-left: 3px solid #38bdf8; line-height: 1.5; color: var(--muted); }
 .drift-note { border: 1px solid #ef4444; border-left-width: 3px; background: rgba(239, 68, 68, 0.1); line-height: 1.5; }
 .overlay { border: 1px solid #f59e0b; border-left-width: 3px; background: rgba(245, 158, 11, 0.08); }
 .overlay code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
