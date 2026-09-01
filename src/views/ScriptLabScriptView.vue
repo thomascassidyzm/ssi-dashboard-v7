@@ -553,124 +553,13 @@ onMounted(load)
 </script>
 
 <style scoped>
+@import '@/styles/script-rows.css';
 .error-box { color: var(--danger); border-color: var(--danger); background: color-mix(in srgb, var(--danger) 14%, var(--surface)); }
 :root[data-theme="light"] .error-box { background: color-mix(in srgb, var(--danger) 8%, #ffffff); }
 .deficit { background: color-mix(in srgb, var(--danger) 8%, var(--surface)); }
 
 /* Tap is the only affordance: every control here is a button with a finger-sized
    target. No drag, no swipe, no long-press — Tom reads this on a 430px phone. */
-/* ── The row/table treatment, lifted from src/views/production/SeedEditor.vue ──
-   Named column heads, 0.6rem/1rem cell padding, a per-row bottom border,
-   alternating shading and a hover state. Cells render text and let the row grow:
-   that is what makes a three-line pod sentence readable without dragging a
-   resize handle. Legibility beats density here — the complaint being fixed is
-   that the line under edit could not be read. */
-.script-table { width: 100%; border-collapse: collapse; }
-.script-table thead { background: var(--surface-2); }
-.script-table th {
-  font-size: 0.7rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--muted);
-  text-align: left;
-  padding: 0.5rem 1rem;
-  border-bottom: 1px solid var(--line);
-}
-.script-table td {
-  padding: 0.6rem 1rem;
-  font-size: 0.9rem;
-  color: var(--ink);
-  border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
-  vertical-align: top;
-}
-.script-row.row-alt { background: color-mix(in srgb, var(--ink) 3%, transparent); }
-.script-row:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
-/* An uncommitted canonical edit LOOKS different from a saved row. */
-.script-row.dirty { box-shadow: inset 3px 0 0 var(--accent); }
-
-.col-ref { width: 6.5rem; white-space: nowrap; }
-.ref-num { font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: 0.75rem; color: var(--faint); }
-.ref-kind { display: block; font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: 0.7rem; }
-.col-speaker { width: 6rem; font-size: 0.8rem; color: var(--muted); }
-.col-state { width: 11rem; }
-.state-stack { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
-
-/* The editable canonical cell. Full text, wrapped, never clipped. */
-.canonical-read { cursor: pointer; }
-.canonical-text { white-space: pre-wrap; word-break: break-word; line-height: 1.5; }
-.edit-hint { margin-left: 0.5rem; font-size: 0.7rem; color: transparent; white-space: nowrap; }
-.canonical-read:hover .edit-hint { color: var(--faint); }
-
-.canonical-input {
-  width: 100%;
-  display: block;
-  overflow: hidden;          /* height is driven by autoGrow, never by a scrollbar */
-  resize: none;
-  font: inherit;
-  line-height: 1.5;
-  white-space: pre-wrap;
-  word-break: break-word;
-  padding: 0.4rem 0.5rem;
-  border-radius: 4px;
-  color: var(--ink);
-  background: var(--canvas);
-  border: 1px solid var(--accent);
-  outline: none;
-}
-.was-line {
-  margin-top: 6px;
-  font-size: 0.78rem;
-  line-height: 1.45;
-  color: var(--muted);
-  white-space: pre-wrap;
-  word-break: break-word;
-}
-.was-label { color: var(--faint); text-transform: uppercase; font-size: 0.65rem; letter-spacing: 0.05em; margin-right: 0.35rem; }
-.confirm-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 8px; }
-.btn-confirm {
-  min-height: 34px;
-  padding: 4px 14px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--canvas);
-  background: var(--accent-2);
-  border: 1px solid var(--accent-2);
-}
-.btn-confirm[disabled] { opacity: 0.4; }
-.btn-discard {
-  min-height: 34px;
-  padding: 4px 12px;
-  border-radius: 6px;
-  font-size: 12px;
-  color: var(--muted);
-  background: transparent;
-  border: 1px solid var(--line);
-}
-.unsaved-flag { font-size: 11px; color: var(--accent); }
-
-.specimen { margin-top: 6px; font-size: 0.78rem; font-style: italic; color: var(--muted); line-height: 1.45; }
-/* An RTL specimen resolves its own trailing neutrals without moving the column. */
-.specimen-run { unicode-bidi: isolate; text-align: left; }
-.row-note { margin-top: 6px; font-size: 0.72rem; }
-
-.history-row td { padding: 0 1rem 0.75rem; }
-
-/* Phone: a four-column table at 430px would re-create the squeeze this fixes, so
-   the rows stack and each cell keeps its full width. */
-@media (max-width: 760px) {
-  .script-table thead { display: none; }
-  .script-table tr { display: block; border-bottom: 1px solid var(--line); }
-  .script-table td { display: block; border-bottom: 0; padding: 0.25rem 0.9rem; }
-  .script-table td:first-child { padding-top: 0.7rem; }
-  .script-table td:last-child { padding-bottom: 0.7rem; }
-  .col-ref, .col-speaker, .col-state { width: auto; }
-  .ref-kind { display: inline; margin-left: 0.5rem; }
-  .state-stack { flex-direction: row; align-items: center; justify-content: flex-start; flex-wrap: wrap; }
-  .edit-hint { color: var(--faint); }
-}
-
 .chip {
   min-height: 32px;
   padding: 4px 10px;
