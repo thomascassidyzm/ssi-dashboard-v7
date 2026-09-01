@@ -523,3 +523,324 @@ carrying chunks. ✓
 | never let a dog near the important one — t14 | mai lasciare un cane vicino a quella importante | D | bare-infinitive prohibition; *vicino a / cerca de* |
 
 **Chapter 9 verdict:** clean; NN line's six claims verified; new find: the *venire*-passive.
+
+### Chapter 10 — *Due giorni*
+
+**No line changed.**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| how often? — t1 | quanto spesso? | D | **NN absence (verified):** no Spanish adverb — *¿con qué frecuencia?* is the strained reach |
+| there's a lot there — t1 | c'è tanta roba, lì | D | **NN reverse trap (verified):** *roba* — sp. *ropa* is clothes |
+| there is, isn't there — t3 | eh, sì | E | tag + ellipsis erase to the particle |
+| first, how. then when. — t4 | prima il come. poi il quando. | I | nominalised interrogatives — **NN anchor:** *el cómo, el cuándo* match |
+| start with how — t5 | comincia dal come | D | ZUT with the t4 frame ✓ |
+| I did a day of Mandarin last summer — t6 | l'estate scorsa ho fatto un giorno di cinese | D | **NN trap-lite:** gender flips on the season — *l'estate scorsA* against *el verano pasadO* |
+| because you'd changed it all in between — t6 | perché nel frattempo avevi cambiato tutto | D | pluperfect ✓ |
+| I was thinking in Chinese — t6 | pensavo in cinese | D | imperfect — *pensaba* anchor |
+| more than a month of hard work would have given me — t6 | più di quello che mi avrebbe dato un mese di lavoro duro | D | *di quello che / de lo que* — near-anchor |
+| and I've done the month — t6 | e il mese l'ho fatto | I | fronting + doubling ✓ the pattern's fourth appearance |
+| I've got mine on film — t9 | i miei ce li ho filmati | I | ***ce li*** + agreement *filmati* — **NN void (verified):** the have-cluster |
+| a native speaker — t9 | un madrelingua | D | **NN (verified):** one word where Spanish needs two (*hablante nativo*) |
+| pleased with myself, not bad — t9 | contento di me, niente male | D | *contento DI*; *niente male / nada mal* anchor |
+| the first real intimation of "I can do this" — t9 | la prima vera avvisaglia di «ce la posso fare» | I | ***farcela*** — **NN void (verified), flagship** |
+| still a couple of hundred words — t9 | ancora un paio di centinaia di parole | D | *un paio di / un par de* anchor |
+| I could pick most of them up and turn them round — t9 | quasi tutte le sapevo tirare fuori e girare | I | can-of-skill = *sapere* ✓; **NN absence:** *tirare fuori* against *sacar* |
+| something was going on — t9 | stava succedendo qualcosa | D | *stare* + gerund ✓ postverbal subject |
+| you waited sixteen months to test one word? — t12 | hai aspettato sedici mesi per testare una parola? | D | **NN systemic, big (new):** *aspettare* covers only wait — sp. *esperar* is wait + hope + expect; the three-way unbundling (*aspettare / sperare / aspettarsi*) runs the whole course |
+| you're mad — t12 | sei matto | D | *essere* where Spanish says *estás loco* — the estar-instinct again ✓ |
+| since you've just called me mad — t13 | visto che mi hai appena dato del matto | I | **NN absence (verified):** *dare del matto* — no *dar de loco* exists |
+| you tested yourself — t15 | ti sei messo alla prova | D | **NN near-anchor (verified):** *te pusiste a prueba* |
+| nobody asked you to — t15 | nessuno te l'aveva chiesto | E | the "to"-ellipsis rebuilds as *l'* + pluperfect |
+| and you were proud of it — t15 | ed eri pure fiero | D | **NN false friend, big (new):** *fiero* = proud; sp. *fiero* = fierce — identical form, hostile meaning |
+| to see if the first one was still there — t15 | per vedere se il primo c'era ancora | D | *c'era* ✓; *ancora*-still ✓ |
+| mad, both of us — t17 | matti, tutti e due | D | S4 agreement family ✓ (masc. this time — pinned by referent) |
+| and it's still there? — t20 | ed è ancora lì? | D | |
+| but I can say it — t21 | ma lo so dire | I | **NN (verified):** *sapere* for can — *sé decirlo* actually matches; anchor |
+| that's what I want people to see — t21 | è questo che voglio far vedere alla gente | I | cleft + causative *far vedere* ✓ |
+| we're not losing atoms of water — t22 | non stiamo perdendo atomi d'acqua | D | *stare* + gerund ✓ — and the line Ch. 11 will retrieve, verbatim ✓ |
+| you didn't lose the Manx — t22 | il manx non l'hai perso | I | fronting + doubling ✓ |
+| a place you haven't been for three years — t22 | un posto dove non vai da tre anni | I | perfect → present + *da* ✓ the duration remap again |
+| never once in my life — t23 | in vita mia non ho mai pensato, nemmeno una volta | D | **NN anchor-with-article-drop (verified):** *in vita mia / en mi vida* |
+| and I've done two days of it now — t23 | e adesso ne ho fatti due giorni | I | *ne* + agreement *fatti* — **NN void (verified)** |
+| a man willing to make the material — t23 | uno disposto a fare il materiale | D | *disposto a / dispuesto a* anchor |
+| unfinished business — t23 | un conto in sospeso | D | *cuenta pendiente* — near-anchor, noun swapped |
+| I'm going to learn more Manx — t23 | imparerò altro manx | I | **NN trap (new), split S6:** more = *altro* (additional), never *più* here — sp. *más* covers both and the Spanish ear cannot pick |
+| I don't know if I'll ever get there — t23 | non so se arriverò mai a parlarlo davvero | D | *arrivare a* ✓ |
+| that's allowed — t26 | è permesso | D | *essere* where Spanish says *está permitido* ✓ |
+| the only reason I've ever actually needed — t27 | l'unica ragione di cui abbia mai avuto davvero bisogno | D | subj after *l'unica* — matched mood; the have-need frame (split S3) ✓ |
+| so when's day three? — t28 | allora, il terzo giorno quand'è? | D | pivot-so → *allora* ✓ ledger |
+| that's on me — t29 | questa è colpa mia | D | **NN anchor (verified):** *culpa mía* |
+| I've been waiting — t29 | sono stato ad aspettare | I | **NN void (verified):** *stare a* + infinitive |
+| I told myself I needed fifteen new dialogues — t29 | mi ero detto che mi servivano quindici dialoghi nuovi | D | *servire* ✓ ZUT with the need-frame course-wide |
+| and I haven't got fifteen — t29 | e quindici non ce li ho | I | ***ce li ho*** — **NN void:** the ce-have form (*ce l'ho* family) — Spanish *no los tengo* has no *ce* |
+| I've sat on that for a year as if it were a reason — t29 | ci sono rimasto seduto sopra per un anno come se fosse una ragione | I | *ci…sopra* ✓; *come se* + subj ✓ |
+| it isn't — t29 | non lo è | D | predicative *lo* — **NN anchor:** *no lo es*, matched |
+| an excuse with a number on it — t29 | una scusa con un numero attaccato | D | |
+| enough for half a day — t29 | bastano per mezza giornata | D | *bastare* ✓ |
+| so I stop waiting — t29 | quindi smetto di aspettare | D | *smettere di* ✓; *aspettare* ✓ |
+| the price of having waited — t29 | il prezzo di aver aspettato | D | past infinitive ✓ |
+| nobody said days come in one size — t32 | nessuno ha detto che i giorni vengono in una taglia sola | D | **NN anchor-with-a-consonant (verified):** *taglia/talla*; postposed *sola* |
+| then un-say it — t34 | allora ritiralo | D | pod §7 flag stands (*rimangiatelo* the spoken alternative) |
+
+**Chapter 10 verdict:** clean; NN line's fifteen claims verified; new finds: the
+*aspettare/sperare/aspettarsi* unbundling of *esperar*, *fiero/fiero*, the *altro*-more split.
+
+### Chapter 11 — *I soldi*
+
+**One line changed** — t2, fork F-A again: the closing *"Go on."* was *"Dai."*; standardised:
+> t2 ARAN — "…Tu entri, ti siedi, e dici: «Vorrei un mutuo». **Vai.**" *(was "Dai.")*
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| where does a bank get the money for a mortgage? — t1 | ma dove li prende, una banca, i soldi per un mutuo? | I | double dislocation with clitic doubling — the most Italian sentence-shape in the pod; **NN false friend (verified), headline:** *mutuo* — sp. *mutuo* = mutual; **NN absence (verified):** *i soldi* against *el dinero* |
+| I'll be the bank, you be you — t2 | io faccio la banca, tu fai te | I | play-role = *fare* — **NN systemic:** *hacer de* exists but the frame differs; the fare-of-roles |
+| "I'd like a mortgage." — t3 | «Vorrei un mutuo» | D | the *vorrei* service frame — the canon's most-attested |
+| and it invents the money. there. now it exists. — t4 | e inventa i soldi. ecco. adesso esistono. | D | *ecco* ✓ (presentational — split S1); plural *esistono* with *i soldi* |
+| a second ago it didn't exist — t4 | un secondo fa non esistevano | D | *fa* ✓ ago |
+| it didn't come out of anybody else's account — t4 | non sono usciti dal conto di nessun altro | D | *uscire* + essere ✓ |
+| from nowhere. a magic wand. — t6 | da nessuna parte. una bacchetta magica. | D | ✓ matched build |
+| everybody wants you to pay it back — t7 | tutti vogliono che tu glieli ripaghi | D | *volere che* + subj — *quieren que* matched; ***glieli*** — **NN void (verified):** the fused cluster against *se los* |
+| what did you say, an hour ago? — t8 | cos'hai detto, un'ora fa? | D | *fa* ✓ |
+| there's a fixed number of atoms on the planet — t8 | sul pianeta c'è un numero fisso di atomi | D | ZUT with Ch. 10 t22 verbatim ✓ — the retrieval works because the words match |
+| it's all still here — it's just in the shops — t10 | è ancora tutta qui — è solo nei negozi | D | **NN false friend (new):** *negozio* = shop; sp. *negocio* = business |
+| you haven't lost any of it — t10 | non ne hai persa nemmeno un po' | I | *ne* + agreement *persa* + *nemmeno un po'* — **NN (verified)** |
+| you've been saving that up — t11 | te la tenevi da parte | I | **NN void (verified):** *tenersi da parte* — and the imperfect carries "have been" |
+| I was waiting for it to come round — t12 | aspettavo che tornasse il momento | D | **NN anchor (verified):** imperfect subjunctive matched — *esperaba que volviera*; *aspettare* ✓ |
+| good callback — t13 | bel richiamo | D | pod §7 flag stands (*bel callback* the loanword option) |
+| I just gave them somewhere to go — t14 | io gli ho solo dato un posto dove andare | D | *dove* + infinitive — *donde ir* anchor |
+| I stop humans using it — t16 | impedisco agli esseri umani di usarla | D | **NN trap (new):** *impedire A qualcuno DI fare* — Spanish *impedir a alguien hacer*, no *de*; the di-linkage |
+| this is real time: an email, just now — t16 | questo è in diretta: un'email, adesso | D | **NN anchor-with-article-drop (verified):** *in diretta / en directo* |
+| the people thinking of investing in us — t16 | le persone che stanno pensando di investire in noi | D | **NN trap (new):** *pensare DI* + inf — sp. *pensar* + bare infinitive |
+| we'll need details of your IP — t16 | ci serviranno i dettagli della vostra proprietà intellettuale | D | *servire* ✓ ZUT course-wide ✓ |
+| of course they do — t17 | per forza | D | **NN absence (verified):** *per forza* |
+| I'm sitting here typing — t18 | io sono qui che scrivo | I | **NN absence (new):** the *essere qui che* progressive — Spanish says *estoy aquí escribiendo* |
+| yes, we've got IP, loads of it. because we have. — t18 | sì, ce l'abbiamo, un sacco. perché ce l'abbiamo. | I | ***ce l'abbiamo*** ×2 — **NN void (verified):** the ce-have form, three times in one turn with t? — the possession pro-form Spanish builds bare |
+| so. horizon one. — t19 | ecco. orizzonte uno. | D | presentational-so → *ecco* per split S1 ✓ |
+| you'd like to think in ideas and not worry about the rest — t19 | ti piacerebbe pensare solo a idee e non preoccuparti del resto | D | *piacere* conditional ✓; **NN trap (new):** *pensare A* against *pensar EN*; *preoccuparsi DI* against *preocuparse POR* |
+| and we both still need to eat — t19 | e tutti e due dobbiamo ancora mangiare | D | *tutti e due* ✓ S4 |
+| the bank invented the money; somebody still has to pay it back — t19 | la banca i soldi li ha inventati; a fine mese qualcuno li deve ripagare lo stesso | I | fronting + doubling + agreement *inventati*; *lo stesso* ✓ anyway-form ZUT ✓ |
+| right — where was I — t20 | bene — dov'ero rimasto | I | **NN absence (verified):** *rimanere* for where-was-I — *¿dónde estaba?* uses estar |
+| walls round atoms — t20 | muri intorno agli atomi | D | postposed-preposition build; *alrededor de* anchor-ish |
+
+**Chapter 11 verdict:** one correction (F-A); NN line's eleven claims verified; new finds:
+*negozio/negocio*, *pensare a/di* against *pensar en/*∅, *impedire di*, the *essere qui che*
+progressive.
+
+### Chapter 12 — *Efficienza e velocità*
+
+**No line changed.**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| here's what I actually want — t1 | ecco cosa voglio davvero | D | *ecco* ✓ presentational |
+| one day a year each — t1 | un giorno all'anno ciascuna | D | *al año* anchor; *ciascuna / cada una* |
+| and I'm speaking all ten — badly, and happily — t1 | e le parlo tutte e dieci — male, e felice | I | doubling *le* + floated *tutte e dieci* — the tutti-e-N family generalised (S4) |
+| it's the only thing I care about — t1 | è l'unica cosa che mi interessa | D | *interessare* dative — *me interesa* anchor |
+| you care about efficiency until you need something — t2 | ti interessa l'efficienza finché non ti serve qualcosa | I | ***finché non*** — **NN trap (verified), headline:** the pleonastic *non* that *hasta que* never takes; *servire* ✓ |
+| you need Chinese by October — t2 | ti serve il cinese per ottobre | D | *servire* ✓ ZUT; by-deadline = *per* |
+| you dive in and hammer at it — t2 | ti butti dentro e ci martelli sopra | I | **NN absence + void (verified):** *buttarsi*; *ci…sopra* ✓ third appearance — one frame |
+| and you don't care what it costs — t2 | e non ti importa quanto costa | D | *importare* ✓ ZUT with Ch. 7 |
+| but so is speed — t2 | ma lo è anche la velocità | I | predicative *lo* — **NN anchor:** *pero también lo es* |
+| the number that matters to the person who needs it — t4 | il numero che conta per chi ne ha bisogno | D | *chi*-clause ✓; the have-need frame (split S3) ✓ |
+| then we're not going to agree — t5 | allora non ci metteremo d'accordo | D | **NN (verified):** *metterci d'accordo / ponernos de acuerdo* — matched reflexive idiom, lexeme swapped |
+| then we'll put it on pause. like the thirteen weeks. — t7 | allora la mettiamo in pausa. come le tredici settimane. | D | ZUT with Ch. 7 t27 — **the refused callback lands on the identical words**, which is the design ✓ |
+| we put the thirteen weeks on pause because it doesn't matter who's right — t8 | le tredici settimane le abbiamo messe in pausa perché non importa chi di noi due ha ragione | I | fronting + doubling + agreement *messe*; *avere ragione* ✓; *importare* ✓ |
+| you said so yourself — t8 | l'hai detto tu | D | stressed *tu* ✓ |
+| out loud, every day — t8 | ad alta voce, ogni giorno | D | *en voz alta* anchor |
+| leave it standing — t8 | lasciamolo in piedi | D | **NN anchor (verified):** *in piedi / en pie* |
+| the learners will tell us which of us was right — t9 | chi impara ci dirà chi di noi due aveva ragione | D | *chi impara* ✓ ZUT with Ch. 6; *avere ragione* ✓ |
+| coming? — t11 | vieni? | D | bare present invitation — *¿vienes?* anchor |
+| from anyone else: no. from you: yes. — t12 | da chiunque altro: no. da te: sì. | D | **NN trap (verified):** *da* for from-a-person — Spanish *de* |
+| molecular physics, not my thing — t12 | la fisica molecolare non fa per me | D | **NN absence (verified):** *non fa per me* |
+| I've already said yes — t12 | ho già detto di sì | D | *dire di sì* ✓ ZUT with Ch. 8 |
+| because you wouldn't have asked — t12 | perché tu non me l'avresti chiesto | D | **NN anchor (verified):** *no me lo habrías pedido* — cluster + conditional perfect matched |
+| what you're giving me isn't a recommendation, it's a guarantee — yours — t14 | quello che mi dai non è un consiglio, è una garanzia — la tua | D | the possessive stands alone with its article — *la tua / la tuya* anchor |
+| and that's what a tribe is — t14 | ed è questo una tribù | I | the what-cleft inverts to *è questo X* |
+| driving all of us towards people who already agree with us — t14 | ci sta spingendo tutti verso chi è già d'accordo con noi | D | *essere d'accordo* — *estar de acuerdo*: the estar-instinct again ✓ |
+| we just spent ten minutes not agreeing — t14 | abbiamo appena passato dieci minuti a non essere d'accordo | I | **NN trap (new):** *passare tempo A* + infinitive — Spanish spends time on a gerund (*pasamos diez minutos discutiendo*) |
+| and I'm still coming to Hong Kong — t14 | e a Hong Kong ci vengo lo stesso | I | locative *ci* + *lo stesso* ✓ ZUT anyway-form |
+| so — Breton, for a weekend? — t15 | allora — bretone, per un fine settimana? | D | pivot-so → *allora* ✓ |
+| why not — t16 | perché no | D | **NN anchor (verified):** *por qué no* |
+| that's the hour. let's stop there. — t17 | è passata l'ora. fermiamoci qui. | D | **NN (verified):** *essere* as the auxiliary of *passare* — *ha pasado* takes haber; *fermiamoci / parémonos* matched |
+| the routes to four thousand words are all different — t18 | le strade per arrivare a quattromila parole sono tutte diverse | D | routes = *strade* ✓ split S2 holds at the far end of the pod |
+| whatever road you took — t20 | qualunque strada tu abbia preso | D | **NN anchor (verified):** *cualquier camino que hayas tomado* — matched mood |
+| nobody can tell which one you used — t20 | nessuno sa dire quale hai usato | I | *sapere dire* ✓ the sapere-can family |
+| from there on — t20 | da lì in poi | D | *de ahí en adelante* — near |
+| we're not stopping — t21 | non ci fermiamo | D | ✓ |
+| stop the recording, start another one — t23 | ferma la registrazione, fanne partire un'altra | I | ***fanne*** — **NN void (verified):** *fa'* + *ne* on the pod's last owned line; causative *far partire* ✓ |
+
+**Chapter 12 verdict:** clean; NN line's thirteen claims verified; new find: *passare tempo a* +
+infinitive.
+
+---
+
+## 2. The four classes — what the mapping did, in numbers
+
+Counted mechanically from §1's tables (script in `$CS_SCRATCH`, not in the repo) —
+**436 classified rows**:
+
+| class | rows | share | what it means here |
+|---|---|---|---|
+| **deterministic** | 304 | 70% | chunk → one Italian form, structure survives; agreement, articles and governed prepositions absorbed inside the chunk |
+| **inversion** | 115 | 26% | the frame relocates — and almost every one is clitic machinery (*ne, ci*, clusters, fronting-with-doubling) or a dative-experiencer verb |
+| **erasure** | 13 | 3% | the will-future, the do-ellipsis/tag system, the aux-echo question, bare *senza* — all reception-side, all harmless |
+| **split** | 4 | 1% | the three corrected forks (F-A ×2, F-B) plus the gendered *tutti/tutte e due* agreement split — everything else died inside its chunk (§3) |
+
+The headline: **the great majority of the Method Pod's Italian is deterministic at conversation
+granularity, and the inversions are almost all one machine** — the clitic system (*ne, ci, ce
+ne, glieli, farcela, ci vorrà, ce l'ho*) plus object-fronting with doubling. Where Welsh
+relocated frames one at a time (possession, duration, welcome), Italian relocates through a
+single apparatus that recurs in every chapter. The erasures are all reception-side and all the
+same three English machines: the will-future, the do-ellipsis/tag system, and the aux-echo
+question. For the Bologna instrument the consequence is sharp: eng→ita at this granularity is
+not where the errors will come from — **the errors will come from the Spanish shadow, which is
+what §5's register is for.**
+
+---
+
+## 3. The splits — every fork found, and how each was resolved
+
+Per the ruling: where an English chunk would map two ways, the unit is re-cut or the ledger
+pins one form — never a word blocked. Three forks were real and produced corrections; the rest
+die inside their carrying chunks.
+
+**The corrections (the change list, complete):**
+
+- **F-A — "Go on." forked three ways** (*Dai, racconta* Ch. 2 t2 · *Vai* Ch. 8 t21, Ch. 11 t15 ·
+  *Dai* Ch. 11 t2). Same known, three targets — a hard ZUT break. **Standardised to "Vai."**;
+  changed: Ch. 2 t2 (*"Dai, racconta." → "Vai."*), Ch. 11 t2 (*"Dai." → "Vai."*). Reason: *Vai*
+  is the only form already licensed in two chapters and reads correctly in all four sites.
+  Reception loses a little warmth at Ch. 2; ZUT outranks naturalness, by standing ruling.
+- **F-B — "Tell me." forked** (*Dimmi* Ch. 5 t11 · *Racconta* Ch. 8 t11). **Standardised to
+  "Dimmi."**; changed: Ch. 8 t11. Reason: *Dimmi* is the all-context form; *Racconta* was
+  claimed by nothing else but cannot coexist with *Dimmi* under the same English.
+- **F-C — pivot-"So —" forked** (*Allora* Ch. 1 t8, Ch. 10 t4/t28, Ch. 12 t15 · *Quindi* Ch. 2
+  t18). **Standardised: pivot-so → "Allora"**; changed: Ch. 2 t18 (*"Quindi — aspetta." →
+  "Allora — aspetta."*). The full so-rule is split S1 below.
+
+**The splits that stand, resolved by cut, not blocked:**
+
+- **S1 — "so" is three intentions, three forms.** Inferential so ("so it can't be a thing",
+  "so what you're saying is") → *quindi*; pivot-so ("So — start small") → *allora*;
+  presentational-so, handing an artefact over ("So. Horizon one.", "There's your answer") →
+  *ecco*. Every occurrence in both documents was checked against this rule after F-C; the rule
+  holds. *Ecco* also receives "That's it." and "There." — convergence, reception-side, welcome.
+- **S2 — "street/road" is two intentions.** Route-streets, the city-knowledge metaphor → *le
+  strade* (Ch. 1, Ch. 8 t31 "the road", Ch. 12 t18 "the routes"); the street you live in →
+  *la via* (Ch. 5 t7, Ch. 8 t19/t21/t25/t30). Each carrying chunk is deterministic; "street"
+  never surfaces as a free unit; no fork reaches production. (The Welsh overlay's "anything"
+  exhibit, in Italian clothes.)
+- **S3 — "need" is two frames.** Where the needed thing can be the subject → *servire* + dative
+  (*me ne servono tre, ti serve il cinese, mi servivano quindici dialoghi, ci serviranno i
+  dettagli*) — the pod's dominant form, ZUT-consistent across five chapters. The bare have-need
+  frame inside relative clauses → *avere bisogno* (*chi ne ha bisogno* Ch. 12, *di cui abbia mai
+  avuto bisogno* Ch. 10). No identical English chunk maps both ways; the fork dies inside the
+  carrying phrases. One residue is C3 (§6).
+- **S4 — "both / all N of us" splits by gender agreement**, exactly Welsh's *dau/dwy*: *tutti e
+  due* (mixed/masc — Ch. 1, Ch. 10, Ch. 11), *tutte e due* (two feminine referents — Ch. 6),
+  *tutte e dieci* (the ten languages — Ch. 12). Pinned by referent, never a free choice; hazard
+  flagged for any regenerated context where the referent's gender flips.
+- **S5 — "that's all (it is)" is two closers:** *tutto qui* closes an offer/demonstration;
+  *tutto lì* caps a verdict. Two knowns, two forms, no fork.
+- **S6 — "more" is two intentions:** degree-more → *più / di più*; additional-more → *altro*
+  (*altro manx, altre dieci, un'altra*). Spanish *más* covers both — which makes this a
+  register row as well as a split.
+- **Died-inside exhibits (the granularity ruling working), recorded, no action:** "about the
+  fish" → *del pesce / per il pesce* (governed by *dire* vs *vero*, Ch. 4); "the curve has had
+  it" ± *già* (the *già* maps Ch. 8's "by the next week", absent in Ch. 9); comparative
+  than-clauses *di quanto / di quello che* (different English builds: "than you think" vs
+  "than what X gave"); "a lot" bare → *tanto* vs "a lot of X" → *un sacco di X*.
+
+**The sweep.** Two mechanical passes, both scripted in scratch. (1) Over §1's 436 mapped rows,
+grouped by normalised English chunk: **0 divergent knowns of 433**. (2) Over the pod's own
+short dialogue turns (≤8 words), grouped the same way: exactly two divergences — *"Go on"*
+(*Dai, racconta* / *Vai*) and *"Tell me"* (*Dimmi* / *Racconta*) — **which are forks F-A and
+F-B, both corrected above**; the sub-turn fork F-C was found by hand and corrected. After the
+corrections, **the sweep is clean.**
+
+---
+
+## 4. Where the curriculum relocates for Italian
+
+The constructions the Italian side requires that the English side never shows. At conversation
+granularity the learner meets them inside worn chunks, never as grammar. Most load-bearing
+first — and the first item is half the list:
+
+1. **The clitic system, whole.** Accusative/dative (*lo, la, li, le, gli, mi, ti, ci, vi*),
+   partitive ***ne*** (*me ne servono tre, ne ho fatti due giorni, non ne hai persa nemmeno un
+   po'*), locative/existential ***ci*** (*non ci abita nessuno, non ci sono, ci vengo lo
+   stesso*), and the fused clusters (*me l', te la, glieli, gliel', ce ne, ce li, ce l'ho*).
+   The single heaviest dependency — in nearly every turn of both scripts.
+2. **Lexicalised clitic verbs:** *farcela, ci vorrà / ci vuole, tenerci, riuscirci, pensarci,
+   scommetterci, ci…sopra (riderci/martellarci sopra), starle dietro, prendersela, tenersi da
+   parte, dov'ero rimasto, andarsene*-family. Each is a vocabulary item wearing grammar.
+3. **Object-fronting with clitic doubling** — *il mese l'ho fatto; una trascrizione la leggi
+   prima; le tredici settimane le abbiamo messe in pausa; la mia metafora la stai guidando tu* —
+   the pod's signature spoken word order, appearing in nine of twelve chapters.
+4. **Participle agreement with preverbal clitics** (*l'ho persa* but *ho perso quella*; *ce li
+   ho filmati; se l'è mangiata; le abbiamo messe*) — Chapter 9 shows the rule both ways in ten
+   words.
+5. **The dative-experiencer verbs:** *piacere, servire, bastare, importare, interessare,
+   costare, fare male, sfuggire, succedere* — the learner's subject habitually becomes Italian's
+   indirect object.
+6. **Essere as auxiliary and its agreement** (*sono andato, si è messa, era diventato, è
+   passata l'ora, sarebbe sparito, le sono costate*) — plus the essere/avere selection itself.
+7. **The subjunctive at spoken register:** after *penso che / credo che* (affirmative!), *prima
+   che, peccato che, chiunque/qualunque, volere che, aspettare che* (imperfect subj.:
+   *aspettavo che tornasse*), and after *l'unica cosa che*.
+8. **Stare:** *stare* + gerund, *stare per*, *stare a* + infinitive, *stare attento*, and
+   location-*stare* (*dove stanno*).
+9. **The causative:** *fare* + infinitive (*ti faccio ripetere, fammi vedere, far vedere alla
+   gente, far partire, non ti ha mai fatto camminare, mi fa pensare*).
+10. **Negative concord with postverbal negatives** (*non gioca mai nessuno, non c'è mai da
+    nessuna parte*), ***finché non***, *non…più*, and *niente* as determiner (*niente modulo*).
+11. **The duration/recency system:** *da* + present (*da tre anni, da anni*), postposed *fa*
+    (ago), *appena* + compound past (just-did), *tra* (in-N-hours), *è da tanto tempo che non…*
+12. **Small machinery:** the *è X a fare* and *è così che* clefts; the *venire*-passive;
+    partitive articles (*del vero, degli incidenti*); impersonal *si*; *ecco*; nominalised
+    interrogatives (*il come, il quando*); bare-infinitive prohibitions (*mai lasciare…*);
+    imperative + attached clitic (*dillo, prendile, tienile, lasciamolo, fermiamoci, fanne*).
+
+---
+
+## 5. The near-neighbour register
+
+Lives as its own document — `spanish-italian-near-neighbour-register-2026-09-01.md` — because
+it spans both scripts and is the Bologna pre-test's instrument; a section here would bury the
+flagship's rows. Every claim in the chapters' Near-neighbour lines was verified during §1;
+verdicts are recorded per chapter above, and the register carries the consolidated table.
+
+---
+
+## 6. Decision candidates for Tom and Aran — one line each, answerable cold
+
+1. **(Tom) The chapter cut is the overlay's binding** — confirm, or redirect to the 43-scene
+   cut (§7 prices the move)?
+2. **(Aran) The three standardisations** — *Vai* for "Go on." (losing Ch. 2's *Dai, racconta*),
+   *Dimmi* for "Tell me.", *Allora* for pivot-so: keep all three, or re-rule any?
+3. **(Aran) Ch. 3 t10** — *"pensano di averne bisogno tutte"*: keep, or take *"pensano che
+   gliene servano tutte"* (fixes the floated *tutte* and returns the *servire* family)?
+4. **(Aran) split S2** — *via* for the home street, *strada* for routes: confirm the two-form
+   ruling, or flatten to *strada* everywhere?
+5. **(Aran) *gli* as spoken dative-plural** ("them") throughout — colloquially exactly right,
+   or tighten to *a loro* anywhere?
+6. **(Aran) the pod's own §7 taste flags** (eight carried + six new-line doubts) remain his,
+   untouched here — rule when convenient; nothing in this overlay depends on them.
+
+---
+
+## 7. Explicit gaps
+
+- **The 43-scene cut was not re-mapped.** If Tom picks it over the chapter cut, the mapping
+  transfers wherever the Italian is shared (most of it), but the three corrections (F-A, F-B,
+  F-C) would need re-applying at the scene cut's own sites, and its scene-only lines (notably
+  Scene 13's crocodile opener) were never audited here.
+- **No database query and no store write was made in this job.** The pod's zero-admission
+  stretches were not re-checked against the live canon; this overlay maps text against text.
+- **The Italian remains my rendering layered on the pod author's rendering — no line here has
+  native sign-off.** Every line is DRAFT-FOR-ARAN, including the three corrections.
+- **Part 3 of the corpus is lost** (inherited fact; nothing here claims otherwise).
+- **Class counts are counted over my chunk tables, not over every word** — a chunk cut another
+  way would move individual numbers a few points; the distribution's shape is robust, the third
+  decimal is not.
