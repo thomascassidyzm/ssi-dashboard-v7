@@ -1,5 +1,13 @@
 # Bound-form / licensor-outside-chunk defects fixed across 19 courses
 
+> **⚠️ SUPERSEDED FOR WELSH (2026-09-01, later the same day).** Kai ruled that the Welsh
+> courses are hand-built and that the mutated form on the card is Aran's deliberate authoring
+> choice, not a defect: *"Please undo the fixes."* **All eight Welsh LEGO edits in
+> `cym_s_for_eng`, `cym_n_for_eng` and `cym_nnew_for_eng` have been reverted, their audio
+> links restored and their re-record flags cleared.** Everything this document says about
+> Welsh describes a state that no longer exists. The other courses stand.
+> See `docs/course-optimization/welsh-mutation-revert-2026-09-01.md`.
+
 *2026-09-01. Executing Kai's ruling, verbatim: **"Yup, fix all and regenerate."** This is
 the repair pass for every confirmed finding in
 `docs/course-optimization/bound-form-licensor-scan-2026-09-01.md`, applied to the live
