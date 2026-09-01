@@ -1447,3 +1447,589 @@ form carries it.
 - Seed: **"Why not."**
 - Cut: `why not` **(new)**
 - Job: one LEGO — the lightest yes in the corpus, and the standing clash's true ending.
+
+### Block J — the dog, the debt, and the recovery
+
+**MW154 — the interruption (near-ZERO)**
+- Source c206, ch8 (TOM): "Hang on. The dog."
+- Seed: **"Hang on. The dog."**
+- Cut: `hang on` *(MW010)* · `the dog` **(new — content: the interruption's proper name)**
+- Job: one LEGO — real life arriving mid-argument, flagged in four syllables.
+
+**MW155 — the dog? (ZERO)**
+- Source c207, ch8 (ARAN): "The dog?"
+- Seed: **"The dog?"**
+- Cut: `the dog` *(MW154)* · question intonation *(MW003)*
+- Job: **zero admission.** The echo-question doing its cheapest work yet.
+
+**MW156 — this will take a while**
+- Source c208, ch8 (TOM): "The dog has opinions. Someone's at the door, and the dog has
+  views about the door, and about the person behind it. This will take a while."
+- Seed: **"The dog has opinions. This will take a while."** *(edit: the middle's comic
+  elaboration stays receptive)*
+- Cut: `the dog` *(MW154)* · `has opinions` **(new)** · `this will take a while` **(new)**
+- Job: two LEGOs — the delay named and sized; the corpus's warmest apology.
+
+**MW157 — banking the thread**
+- Source c209 (front), ch8 (ARAN) = s81: "Fine. We'll pick this up next time —"
+- Seed: **"Fine. We'll pick this up next time."**
+- Cut: `fine` **(new — the bare acceptance, a register below "good")** · `we'll pick this
+  up next time` **(new)**
+- Job: two LEGOs — the thread banked instead of dropped: the move that makes the recovery
+  block possible at all. (This row carries three acts — the banking, the debt, the
+  scheduling — split across MW157–MW159, the CORE g24 precedent.)
+
+**MW158 — the debt declared**
+- Source c209 (middle), ch8 (ARAN): "—you owe me a third thing."
+- Seed: **"You owe me a third thing."**
+- Cut: `you owe me a third thing` **(new — worn whole; "the third one" (MW059) is its
+  ordinal cousin, and the debt formula wears as one move)**
+- Job: one LEGO — the conversational debt, named like money.
+
+**MW159 — when? (near-ZERO)**
+- Source c209 (tail), ch8 (ARAN) = s103: "When? Are you free on Tuesday?"
+- Seed: **"When? Are you free on Tuesday?"**
+- Cut: `when` **(new — the bare wh-word as a whole turn)** · `are you free` **(new)** ·
+  `on Tuesday` *(core — days)*
+- Job: two LEGOs — scheduling opened; the floor owns ask-to-talk (CP152), not the bare
+  availability check.
+
+**MW160 — the day declined**
+- Source c210, ch8 (TOM): "Tuesday, no. I have something on Tuesday."
+- Seed: **"Tuesday, no. I have something on Tuesday."**
+- Cut: `Tuesday` *(core)* · `no` *(CP036)* · `I have something on` **(new — the vague-
+  commitment decline, minted beside CP153's "I'm busy tomorrow", decision-12)**
+- Job: one LEGO — the second worn decline, day-slotted.
+
+**MW161 — Thursday, then? (ZERO)**
+- Source c211, ch8 (ARAN): "Thursday, then?"
+- Seed: **"Thursday, then?"**
+- Cut: `Thursday` *(core)* · `then` *(core)* · question intonation *(MW003)*
+- Job: **zero admission.** The counter-offer from core material alone.
+
+**MW162 — not here (near-ZERO)**
+- Source c212, ch8 (TOM): "Thursday I'm not here."
+- Seed: **"Thursday I'm not here."**
+- Cut: `Thursday` *(core)* · `I'm not here` **(new — CP154's "I'm away all afternoon" is
+  its floor sibling; the bare absence form mints)**
+- Job: one LEGO — the decline by absence.
+
+**MW163 — tomorrow (ZERO)**
+- Source c213, ch8 (ARAN): "…Tomorrow."
+- Seed: **"…Tomorrow."**
+- Cut: `tomorrow` *(side of CP152's "can we talk tomorrow")*
+- Job: **zero admission.** The escalating counter-offer in one owned word.
+
+**MW164 — tomorrow? (ZERO)**
+- Source c214, ch8 (TOM): "Tomorrow?"
+- Seed: **"Tomorrow?"**
+- Cut: `tomorrow` *(MW163's side)* · question intonation *(MW003)*
+- Job: **zero admission.** Surprise at the stakes, for free.
+
+**MW165 — I'll be there (near-ZERO)**
+- Source c215, ch8 (ARAN): "Tomorrow. I'll be there at two."
+- Seed: **"Tomorrow. I'll be there at two."**
+- Cut: `tomorrow` *(side)* · `I'll be there` **(new)** · `at two` *(core — clock)*
+- Job: one LEGO — the commitment made concrete.
+
+**MW166 — noted (near-ZERO)**
+- Source c216, ch8 (TOM) = s110-family: "Tomorrow. At two. Four hours going, four hours
+  going home, for two hours of talking with me. …Okay. Tomorrow at two. I'll be here.
+  Noted. The third thing, tomorrow."
+- Seed: **"Tomorrow. At two. …Okay. I'll be here. Noted."** *(edit: the eight-hours-of-
+  driving marvel stays receptive — its arithmetic is listening material; the ratifying run
+  is the move)*
+- Cut: `tomorrow` / `at two` *(owned/core)* · `okay` *(MW046)* · `I'll be here` **(new —
+  MW165's chunk, deixis flipped; minted, the there/here pair is two intentions)** · `noted`
+  **(new)**
+- Job: two LEGOs — the arrangement read back and stamped; "noted" is the receipt token the
+  whole estate's D10 gap has been waiting for a corpus to attest.
+
+**MW167 — collecting the debt (near-ZERO)**
+- Source c217, ch9 (TOM): "Before anything else. You owed me a third thing."
+- Seed: **"Before anything else. You owed me a third thing."**
+- Cut: `before anything else` **(new)** · `you owed me a third thing` *(side of MW158,
+  tense-flip)*
+- Job: one LEGO — the session opened by calling in yesterday's debt: continuity as a move.
+
+**MW168 — the debt acknowledged (ZERO)**
+- Source c218, ch9 (ARAN): "I owed you a third thing."
+- Seed: **"I owed you a third thing."**
+- Cut: `I owed you a third thing` *(side of MW158, person- and tense-flip)*
+- Job: **zero admission.** The debt echoed back, owned.
+
+**MW169 — the replay (ZERO)**
+- Source c219, ch9 (TOM): "The dog. You said 'the third thing, and this is the important
+  one, is that when you actually—' and then the dog."
+- Seed: **"The dog. You said 'the third thing' — and then the dog."** *(edit: the full
+  quotation is compressed to its handle; the interrupted clause itself is MW172's material
+  and must not pre-arrive)*
+- Cut: `the dog` *(MW154)* · `you said` *(side)* · `the third thing` *(side of MW158)* ·
+  `and then` *(CP065)*
+- Job: **zero admission.** The crash site reconstructed from owned pieces.
+
+**MW170 — I've lost it**
+- Source c220, ch9 (ARAN): "And then the dog. …I've lost it."
+- Seed: **"And then the dog. …I've lost it."**
+- Cut: `and then` *(CP065)* · `the dog` *(MW154)* · `I've lost it` **(new)**
+- Job: one LEGO — the admission the recovery turns on: the thread is gone and saying so is
+  the first step of getting it back.
+
+**MW171 — the important one (near-ZERO)**
+- Source c221, ch9 (TOM): "You've lost the important one."
+- Seed: **"You've lost the important one."**
+- Cut: `you've lost` *(side of MW170, person-flip)* · `the important one` **(new)**
+- Job: one LEGO — the loss sized; the teasing audit of the other chair's memory.
+
+**MW172 — give me the first two (near-ZERO)**
+- Source c222, ch9 (ARAN): "I've lost the important one. I don't know what it was. Give me
+  the first two."
+- Seed: **"I've lost the important one. I don't know what it was. Give me the first two."**
+- Cut: `I've lost` *(side)* · `the important one` *(MW171)* · `I don't know` *(core)* ·
+  `what it was` **(new)** · `give me` **(new)** · `the first two` *(core — ordinals via
+  MW059's "the third one" family)*
+- Job: two LEGOs — the recovery protocol's first move: ask for the scaffolding you still
+  have.
+
+**MW173 — the recap, numbered**
+- Source s257, sc41 (TOM); c223 carries the chapters version with its provenance trail:
+  "One: the evening class is short on edges. Two: it's short on repetition, so by next week
+  it's gone. Three: 'when you actually—'"
+- Seed: **"One: the evening class is short on edges. Two: it's short on repetition, so by
+  next week it's gone. Three: 'when you actually—'"**
+- Cut: `one` / `two` / `three` *(core)* · `the evening class` **(new — content: the
+  method's foil)** · `is short on edges` **(new — "the edges" owned at MW049; the
+  short-on frame wears with its object)** · `it's short on repetition` **(new)** · `so by
+  next week it's gone` **(new)** · `when you actually` **(new — the interrupted fragment,
+  minted AS a fragment: it is the debt's handle, worn incomplete in the corpus three
+  times)**
+- Job: the numbered recap — the discussant rebuilding the other chair's argument from
+  memory. Four LEGOs and the walk's clearest demonstration that heard material was owned
+  all along.
+
+**MW174 — the third thing lands (near-ZERO)**
+- Source c224, ch9 (ARAN) = s258: "—go and use it. Yes. That's it. When you actually go and
+  use it — if you've already walked the paths, it isn't a step-change any more. It's the
+  same thing you've been doing, in a bigger room. That's the third thing. That's the whole
+  reason it works…"
+- Seed: **"Go and use it. When you actually go and use it — if you've already walked the
+  paths — it's the same thing you've been doing, in a bigger room."** *(edit: the
+  ratification tokens are owned; the step-change clause stays receptive — "step-change" is
+  jargon the canonical layer declines)*
+- Cut: `go and use it` **(new)** · `when you actually` *(MW173)* · `if you've already`
+  *(core glue)* · `walked the paths` *(side of MW073, tense-flip)* · `the same thing you've
+  been doing` *(MW074)* · `in a bigger room` *(MW074)*
+- Job: **one LEGO buys the walk's thesis.** The recovered third thing tiles almost
+  entirely from owned material — the seed the whole admission economy was built to make
+  possible.
+
+**MW175 — said three times (near-ZERO)**
+- Source c226, ch9 (ARAN): "Then I've said it three times."
+- Seed: **"Then I've said it three times."**
+- Cut: `then` *(core)* · `I've said it` *(side of MW085's "you said it", person-flip)* ·
+  `three times` **(new — "times" as multiplicative counter is not coda core)**
+- Job: one LEGO — repetition noticed and counted. (c225, the bigger-room provenance recap,
+  is pure owned material and stays a receptive echo — its one new noun, "the cliff", never
+  reaches a discussant mouth in producible form and is logged in §8.)
+
+**MW176 — that's the method (near-ZERO)**
+- Source c227–c228, ch9 (TOM, ARAN) — one exchange, two rows: "Everything in this
+  conversation gets said three times." / "That's the method. Debt paid?"
+- Seed: **"Everything in this conversation gets said three times. — That's the method.
+  Debt paid?"**
+- Cut: `everything in this conversation` **(new)** · `gets said` **(new — small)** · `three
+  times` *(MW175)* · `that's the method` **(new)** · `debt paid` **(new)**
+- Job: the walk names itself: repetition IS the method, and the debt closes. Four LEGOs
+  across the corpus's most self-aware exchange. (Two rows, one seed — the reply is the
+  point of the observation; stated for the ledger.)
+
+**MW177 — debt paid (ZERO)**
+- Source c229, ch9 (TOM): "Debt paid."
+- Seed: **"Debt paid."**
+- Cut: `debt paid` *(MW176)*
+- Job: **zero admission.** The receipt echoed — settlement by repetition.
+
+**MW178 — never let a dog near (near-ZERO)**
+- Source c230, ch9 (ARAN): "Debt paid. Never let a dog near the important one."
+- Seed: **"Debt paid. Never let a dog near the important one."**
+- Cut: `debt paid` *(MW176)* · `never let a dog near` **(new — the mock-maxim frame,
+  worn with its comic subject)** · `the important one` *(MW171)*
+- Job: one LEGO — the episode closed as a rule for next time; the corpus laughing at its
+  own machinery.
+
+### Block K — the testimony (two days, three years, and what I actually want)
+
+**MW179 — how did you find it?**
+- Source c231, ch10 (ARAN): "How did you find it? When? Where? How much time, every day?
+  How often? — There's a lot there."
+- Seed: **"How did you find it? When? Where? How much time, every day? How often? —
+  There's a lot there."**
+- Cut: `how did you find it` **(new — the experience-probe)** · `when` *(MW159)* · `where`
+  *(side of CP133-family wh-chunks)* · `how much time` *(MW108's side)* · `every day`
+  *(side of CP051's "a little every day")* · `how often` *(CP120)* · `there's a lot there`
+  **(new)**
+- Job: two LEGOs — the interview stack, almost all of it floor property, then the stack
+  itself noticed and named.
+
+**MW180 — the agenda (near-ZERO)**
+- Source c234, ch10 (TOM): "Yes. A lot. So — first, how. Then when. Then how much, and how
+  often. And after that you can say: but is it good? And I say: I talk. That's all."
+- Seed: **"Yes. A lot. So — first, how. Then when. Then how much, and how often. And after
+  that you can say: but is it good? And I say: I talk. That's all."**
+- Cut: `yes` *(CP009)* · `a lot` *(MW109)* · `first` / `then` *(core)* · wh-stack *(owned,
+  MW179)* · `after that` *(core)* · `but is it good` **(new — side-family of MW027's
+  good/bad pair, the bare quality probe)** · `and I say` *(side of CP144)* · `I talk`
+  **(new — the method's two-word answer)** · `that's all` *(MW007)*
+- Job: two LEGOs — the answer's table of contents, then its punchline. The corpus's
+  longest producible turn, and nearly free.
+
+**MW181 — start with how (near-ZERO)**
+- Source c235, ch10 (ARAN): "Start with how."
+- Seed: **"Start with how."**
+- Cut: `start with` **(new)** · `how` *(owned)*
+- Job: one LEGO — the agenda accepted and pointed.
+
+**MW182 — a day of Mandarin**
+- Source c236 (front), ch10 (TOM) = s213 (front): "How: I did a day of Mandarin last
+  summer. One day. And another this year — different words, different structures, because
+  you'd changed it all in between, obviously."
+- Seed: **"I did a day of Mandarin last summer. One day. And another this year."** *(edit:
+  the changed-material aside stays receptive)*
+- Cut: `I did a day of Mandarin` **(new — the doing-report frame with its language slot)** ·
+  `last summer` **(new — seasons are not coda core)** · `one day` *(core)* · `and another`
+  *(side of CP065's "and then another cone")* · `this year` **(new — small)**
+- Job: three LEGOs — the learner's own two-day testimony opens: what, when, and again.
+
+**MW183 — thinking in Chinese**
+- Source c236 (middle), ch10 (TOM) = s213 (middle): "And by the end of that second day I
+  was thinking in Chinese. Not well. But it felt like more than a month of hard work would
+  have given me…"
+- Seed: **"By the end of that second day, I was thinking in Chinese. Not well."**
+- Cut: `by the end of that second day` **(new — "the third one"'s ordinal family, worn as
+  the timestamp)** · `I was thinking in Chinese` **(new — language slot)** · `not well`
+  **(new — the honest qualifier, a whole move in two words)**
+- Job: three LEGOs — the claim, dated, and immediately cut down to honest size. The walk's
+  model of how to talk about your own progress.
+
+**MW184 — what it buys (near-ZERO)**
+- Source c236 (tail), ch10 (TOM) = s213 (tail): "…it felt like more than a month of hard
+  work would have given me, and I've done the month, in other languages, and I know what it
+  buys."
+- Seed: **"It felt like more than a month of hard work. And I know what it buys."** *(edit:
+  the comparative-perfect machinery is compressed to the worn comparison — the full
+  conditional stays receptive)*
+- Cut: `it felt like` **(new)** · `more than a month of hard work` **(new)** · `I know
+  what it buys` **(new)**
+- Job: three LEGOs — feeling offered as evidence, priced against known cost.
+
+**MW185 — a year apart (near-ZERO)**
+- Source c237, ch10 (ARAN): "Two days, a year apart."
+- Seed: **"Two days, a year apart."**
+- Cut: `two days` *(core)* · `a year apart` **(new)**
+- Job: one LEGO — the echo-distillation compressing the testimony to its shape.
+
+**MW186 — the echo (ZERO)**
+- Source c238, ch10 (TOM): "A year apart."
+- Seed: **"A year apart."**
+- Cut: `a year apart` *(MW185)*
+- Job: **zero admission.** The shape ratified by repetition.
+
+**MW187 — sixteen months apart (ZERO)**
+- Source c240, ch10 (TOM): "Sixteen months apart."
+- Seed: **"Sixteen months apart."**
+- Cut: `sixteen months` *(core)* · `apart` *(side of MW185's chunk)*
+- Job: **zero admission.** The same shape re-slotted — the corpus teaching the frame by
+  minimal difference.
+
+**MW188 — something was going on**
+- Source c239 (tail), ch10 (ARAN): "…still small, still a couple of hundred words, nowhere
+  near seven hundred, but I could pick most of them up and turn them round. Something was
+  going on."
+- Seed: **"Something was going on."** *(edit: Aran's Manx film testimony stays receptive —
+  speaker-specific biography; its closing verdict is the reusable move)*
+- Cut: `something was going on` **(new)**
+- Job: one LEGO — the understated breakthrough report.
+
+**MW189 — you don't need the third one (ZERO)**
+- Source c241, ch10 (ARAN): "Two days. And you don't need the third one to know."
+- Seed: **"Two days. And you don't need the third one to know."**
+- Cut: `two days` *(core)* · `you don't need` *(side of MW064)* · `the third one` *(MW059)*
+  · `to know` *(core glue)*
+- Job: **zero admission.** Blocks E and J's material recombining across the walk — the
+  set's cleanest proof of admission economy at range.
+
+**MW190 — you're mad**
+- Source c242, ch10 (TOM): "You waited sixteen months to test one word? You're mad."
+- Seed: **"You waited sixteen months to test one word? You're mad."**
+- Cut: `you waited sixteen months` **(new — "waited" arrives worn with its span)** · `to
+  test one word` **(new — "to test" is the walk's verb of honest curiosity)** · `you're
+  mad` **(new — the affectionate accusation)**
+- Job: three LEGOs — the tease that the corpus immediately turns into a mirror.
+
+**MW191 — oh no (near-ZERO)**
+- Source c244, ch10 (TOM): "Oh no."
+- Seed: **"Oh no."**
+- Cut: `oh no` **(new — the seen-it-coming dread token, a single move)**
+- Job: one LEGO — bracing for the mirror. (c245, Aran turning the accusation round, stays
+  receptive — its content is Tom's own biography, already minted at MW182.)
+
+**MW192 — completely right (ZERO)**
+- Source c246, ch10 (TOM): "…No, you're completely right."
+- Seed: **"…No, you're completely right."**
+- Cut: `no` *(CP036)* · `you're` + `completely` *(MW028's "you're right" composed with
+  MW067's "completely" — both owned faces)*
+- Job: **zero admission.** The concession, upgraded, from owned parts.
+
+**MW193 — that's why it works (near-ZERO)**
+- Source c247, ch10 (ARAN) = s64: "Mad, both of us. That's why it works. Day one. Then day
+  two. And after day two — no more. That was all."
+- Seed: **"Mad, both of us. That's why it works. Day one. Then day two. And after day two —
+  no more. That was all."**
+- Cut: `mad` *(side of MW190)* · `both of us` *(side of MW012's "both")* · `that's why it
+  works` **(new)** · `day one` / `day two` *(core)* · `no more` *(side of MW110)* · `that
+  was all` *(side of MW007's "that's all", tense-flip)*
+- Job: one LEGO — the maxim; everything else is the walk's own material converging.
+
+**MW194 — still there? (near-ZERO)**
+- Source c250, ch10 (TOM): "Three years. And it's still there?"
+- Seed: **"Three years. And it's still there?"**
+- Cut: `three years` *(core)* · `it's still there` **(new)** · question intonation *(MW003)*
+- Job: one LEGO — the retention question, the walk's whole experiment in three words.
+  (c248 "For two years." and c249 "Three. Not two — three years." are strict zeros of core
+  number material and stand as the ledger's cheapest rows — manufactured zeros MW-Z1 and
+  MW-Z2 within this block's numbering: c248 and c249 mint nothing and are logged as
+  consolidated-to-core representation.)
+
+**MW195 — I can say it**
+- Source c251, ch10 (ARAN): "Still there. Not all of it. But I can say it — slowly, today,
+  but I can say it. Day one, day two, three years — and it's still there. That's what I
+  want people to see."
+- Seed: **"Still there. Not all of it. But I can say it — slowly, today, but I can say it.
+  That's what I want people to see."** *(edit: the day-count recap is owned material and
+  stays as receptive repetition)*
+- Cut: `still there` *(MW194)* · `not all of it` **(new)** · `I can say it` **(new — the
+  walk's quietest triumph)** · `slowly` *(side, CP038-family)* · `today` *(core)* · `that's
+  what I want people to see` **(new — "I want" core, worn into the witness statement)**
+- Job: three LEGOs — the honest inventory of what survived, and why it matters out loud.
+
+**MW196 — the atoms**
+- Source c252 (front), ch10 (TOM) = s206/s208-family: "Three years. — There's a fixed
+  number of atoms on the planet. We're not losing atoms of water."
+- Seed: **"There's a fixed number of atoms on the planet. We're not losing atoms of
+  water."**
+- Cut: `there's a fixed number of atoms on the planet` **(new — worn whole; the walk's
+  most-repeated callback line, delivered verbatim three times)** · `we're not losing atoms
+  of water` **(new — its refrain half)**
+- Job: two LEGOs — the metaphor that outlives its chapter: minted once, collected at zero
+  in the money scene.
+
+**MW197 — somewhere you haven't been (near-ZERO)**
+- Source c252 (tail), ch10 (TOM): "You didn't lose the Manx. It's just somewhere you
+  haven't been for three years."
+- Seed: **"You didn't lose the Manx. It's just somewhere you haven't been for three
+  years."**
+- Cut: `you didn't lose` **(new — the consoling negation of MW170's loss)** · `the Manx`
+  *(slot — language name)* · `it's just somewhere you haven't been` **(new — worn
+  whole)** · `for three years` *(core)*
+- Job: two LEGOs — the walk's kindest claim: nothing is lost, only unvisited.
+
+**MW198 — never once**
+- Source c253 (front), ch10 (ARAN) = s219 (front): "Somewhere I haven't been. — I have
+  never once in my life thought: I want to learn Manx. Never."
+- Seed: **"I have never once in my life thought: I want to learn Manx. Never."**
+- Cut: `I have never once in my life thought` **(new — the emphatic-negative frame, worn
+  whole)** · `I want` *(core)* · `to learn` *(side of CP021/CP038's learning family)* ·
+  `the Manx → Manx` *(slot)* · `never` **(new — the bare absolute as its own move)**
+- Job: two LEGOs — the confession of accidental love, opening the walk's best argument
+  for curiosity.
+
+**MW199 — unfinished business**
+- Source c253 (tail), ch10 (ARAN) = s219 (tail): "…And now I've got unfinished business.
+  I'm going to learn more Manx. I don't know if I'll ever be properly conversational in
+  it — I really don't — but I'm going to learn more."
+- Seed: **"I've got unfinished business. I'm going to learn more Manx. I don't know if
+  I'll ever be properly conversational — I really don't — but I'm going to learn more."**
+- Cut: `I've got unfinished business` **(new)** · `I'm going to` *(MW048)* · `learn more`
+  *(side of CP183's "I need to learn more words")* · `Manx` *(slot)* · `I don't know`
+  *(core)* · `if I'll ever be properly conversational` **(new — the honest-doubt clause,
+  worn whole)** · `I really don't` *(side of "I don't know", intensified — core glue)*
+- Job: two LEGOs — motive without a goal, doubt without surrender: the learner
+  self-description this walk exists to hand over.
+
+**MW200 — that's allowed**
+- Source c256, ch10 (TOM): "No. …That's allowed. Unfinished business is a good reason.
+  Better than most."
+- Seed: **"That's allowed. Unfinished business is a good reason. Better than most."**
+  *(edit: the echo "No." head is CP036's token and stays with the row)*
+- Cut: `that's allowed` **(new — permission as verdict)** · `unfinished business`
+  *(MW199)* · `is a good reason` **(new)** · `better than most` **(new)**
+- Job: three LEGOs — the benediction: doubt ratified, motive graded, comparison closed.
+  (c254 "You don't know if you'll get there." — the read-back — mints `you'll get there`
+  with everything else owned; folded here as this exchange's near-zero sibling and listed
+  in the ledger under MW200's family: cut `you don't know` (MW026) · `if` (core) ·
+  `you'll get there` **(new)**.)
+
+**MW201 — the only reason (near-ZERO)**
+- Source c257, ch10 (ARAN): "It's the only reason I've ever actually needed."
+- Seed: **"It's the only reason I've ever actually needed."**
+- Cut: `it's` *(core)* · `the only reason I've ever actually needed` **(new — worn whole)**
+- Job: one LEGO — the maxim sealing the motive argument.
+
+**MW202 — when's day three? (ZERO)**
+- Source c258, ch10 (TOM) = s224/s237: "Then learn more Manx. So when's day three?"
+- Seed: **"Then learn more Manx. So when's day three?"**
+- Cut: `then` *(core)* · `learn more` *(side)* · `Manx` *(slot)* · `so` *(core)* · `when's`
+  *(side of MW159's "when")* · `day three` *(core)*
+- Job: **zero admission.** Advice returned as imperative, then the diary opened — all
+  owned.
+
+**MW203 — an excuse with a number on it**
+- Source c259, ch10 (ARAN) = s219-family: "…That's on me. I've been waiting. I told myself
+  I needed fifteen new dialogues for a day, and I haven't got fifteen, and I've sat on that
+  for a year as if it were a reason. It isn't. It's an excuse with a number on it. …So I
+  stop waiting, and do the half day, and the half day is the price of having waited."
+- Seed: **"That's on me. I've been waiting. It's an excuse with a number on it. So I stop
+  waiting."** *(edit: the fifteen-dialogues accounting stays receptive — the confession's
+  arithmetic is listening material; the four moves are the spine)*
+- Cut: `that's on me` **(new — fault owned, no ceremony)** · `I've been waiting` **(new —
+  MW095's "I was waiting" in the perfect: a different confession, minted)** · `it's an
+  excuse with a number on it` **(new — worn whole)** · `so I stop waiting` **(new —
+  small; the decision said as it is made)**
+- Job: four LEGOs — the self-audit: blame taken, delay named, excuse unmasked, action
+  begun. The walk's model of accountability.
+
+**MW204 — half a day (near-ZERO)**
+- Source c260–c261, ch10 (TOM, ARAN) — the echo pair: "Half a day." / "Half a day. With
+  the seven."
+- Seed: **"Half a day. With the seven."**
+- Cut: `half a day` **(new — "half" outside the clock idiom is not coda core)** · `with
+  the seven` *(core — numbers)*
+- Job: one LEGO — the resized commitment ratified by echo (c260 is the echo's first half
+  and consolidates here).
+
+**MW205 — days come in one size (near-ZERO)**
+- Source c262, ch10 (TOM): "Then that's day three. Nobody said days come in one size."
+- Seed: **"Then that's day three. Nobody said days come in one size."**
+- Cut: `then that's day three` *(core + owned)* · `nobody said` **(new — the nobody-family's
+  fifth member)** · `days come in one size` **(new — worn whole)**
+- Job: two LEGOs — the permission-by-absence argument: no rule says otherwise.
+
+**MW206 — nobody did. I did. (ZERO)**
+- Source c263, ch10 (ARAN): "Nobody did. I did."
+- Seed: **"Nobody did. I did."**
+- Cut: `nobody did` *(side of MW205's "nobody said" — the family's bare past)* · `I did`
+  *(core glue — subject + dummy do)*
+- Job: **zero admission.** The corpus's finest four words: the rule's author unmasked as
+  oneself. The nobody-family pays off at zero.
+
+**MW207 — un-say it (near-ZERO)**
+- Source c264, ch10 (TOM): "Then un-say it. Half a day, and the atoms are still there."
+- Seed: **"Then un-say it. Half a day, and the atoms are still there."**
+- Cut: `then` *(core)* · `un-say it` **(new — the corpus's own coinage, worn as a move;
+  the overlay renders the intention, not the morphology — noted in §8)** · `half a day`
+  *(MW204)* · `the atoms` *(MW196's side)* · `are still there` *(side of MW194's "it's
+  still there")*
+- Job: one LEGO — the retraction license, and the chapter's threads braided shut from
+  owned material.
+
+**MW208 — the role-play (near-ZERO)**
+- Source c266, ch11 (ARAN): "It doesn't. Watch — I'll be the bank, you be you. You come
+  in, you sit down, and you say it: 'I'd like a mortgage.' Go on."
+- Seed: **"Watch — I'll be the bank, you be you. Go on."** *(edit: the stage directions
+  stay receptive; the game-opening is the move)*
+- Cut: `watch` **(new — the demonstration-opener)** · `I'll be the bank` **(new — the
+  role-claim frame with its slot)** · `you be you` **(new — small, worn)** · `go on`
+  *(MW008)*
+- Job: three LEGOs — the let's-pretend frame, the corpus teaching by acting it out.
+  (c267, Tom's "I'd like a mortgage.", is `I'd like` (core) plus `a mortgage` (content
+  slot) — a near-zero logged in the ledger as MW208's dependent row, minting the slot
+  noun the scene turns on.)
+
+**MW209 — of course they do (ZERO)**
+- Source c281, ch11 (TOM): "Of course they do."
+- Seed: **"Of course they do."**
+- Cut: `of course` *(CP012)* · `they do` *(core glue — pronoun + dummy do)*
+- Job: **zero admission.** The wry ratification, floor and glue only.
+
+**MW210 — we are where we are**
+- Source c283, ch11 (TOM) = s204: "So. Horizon one. We are where we are, and we start
+  where we are. …and we both still need to eat. That's us."
+- Seed: **"We are where we are, and we start where we are. And we both still need to eat.
+  That's us."** *(edit: the horizon-one label and the bank recap stay receptive)*
+- Cut: `we are where we are` **(new — worn whole)** · `and we start where we are` **(new —
+  its action half)** · `we both still need to eat` **(new — the corpus's realism motto)** ·
+  `that's us` **(new — small)**
+- Job: four LEGOs — idealism squared with rent: the walk's grown-up economics in three
+  sentences. (c284's opening echo "We both still need to eat." consolidates here; c285
+  "Walls round atoms. And the atoms are all still here." is a strict zero — `walls round
+  atoms` arrives below, its atoms half is MW196's material — logged in the ledger.)
+
+**MW211 — walls round atoms (near-ZERO)**
+- Source c284 (tail), ch11 (ARAN): "…Walls round atoms."
+- Seed: **"Walls round atoms."**
+- Cut: `walls round atoms` **(new — the IP argument compressed to its image; the
+  exposition that built it (c278–c280) stays receptive)**
+- Job: one LEGO — the topic resumed by its handle after the digression — MW102's
+  where-was-I paying off. (c272's atoms half and c273's "We're not losing atoms of
+  water." are strict zeros over MW196 and are logged as the callback's collected rows;
+  c274's "Same as the Manx. It's in a place you haven't been." rides sides of MW197 with
+  one small mint, `same as`, carried in this seed's family; c278's "Your atoms. I just
+  gave them somewhere to go." mints `I just gave them somewhere to go` likewise as a
+  family row.)*
+
+**MW212 — what I actually want**
+- Source c286, ch12 (TOM): "Here's what I actually want. Ten languages, in parallel, one
+  day a year each. Three years, and I'm speaking all ten — badly, and happily. Minimum
+  total effort. That's the only thing I care about."
+- Seed: **"Here's what I actually want. Ten languages, in parallel, one day a year each.
+  Three years, and I'm speaking all ten — badly, and happily. Minimum total effort.
+  That's the only thing I care about."**
+- Cut: `here's what I actually want` **(new)** · `ten languages` *(core + content)* · `in
+  parallel` **(new)** · `one day a year each` *(core + "each" glue)* · `three years`
+  *(core)* · `I'm speaking all ten` *(side of CP042's speaking family + core)* · `badly,
+  and happily` **(new — the walk's flag, worn as one)** · `minimum total effort` **(new)**
+  · `that's the only thing I care about` **(new — worn whole)**
+- Job: five LEGOs — the learner's charter: the whole want, stated with its trade-offs
+  owned. The seed the Bologna trial's production moment is for.
+
+**MW213 — the routes to four thousand**
+- Source c303, ch12 (ARAN) = s272-family: "One thing. Somebody at Cardiff: the routes to
+  four thousand words are all different. After four thousand, they're all the same."
+- Seed: **"One thing. The routes to four thousand words are all different. After four
+  thousand, they're all the same."** *(edit: the attribution stays receptive —
+  scholarship)*
+- Cut: `one thing` **(new — the door-handle move: one more item, offered at the exit)** ·
+  `the routes to four thousand words` **(new — content, worn whole)** · `are all
+  different` **(new)** · `after four thousand, they're all the same` **(new — the
+  counterpart, worn with its pivot)**
+- Job: four LEGOs — the walk's closing bombshell, and the different/same paradigm pair.
+
+**MW214 — the hour called (near-ZERO)**
+- Source c302, ch12 (TOM): "Right. That's the hour. Let's stop there."
+- Seed: **"Right. That's the hour. Let's stop there."**
+- Cut: `right` *(side of CP046)* · `that's the hour` **(new)** · `let's stop there` **(new —
+  beside CP153's "let's talk": the stopping face)**
+- Job: two LEGOs — the session closed by the clock, the move the corpus exists to refuse.
+
+**MW215 — we're not stopping**
+- Source c306, ch12 (TOM): "We're not stopping."
+- Seed: **"We're not stopping."**
+- Cut: `we're not stopping` **(new)**
+- Job: one LEGO — the resisted goodbye: the close refused because the idea is better than
+  the schedule.
+
+**MW216 — you said the hour (ZERO)**
+- Source c307, ch12 (ARAN): "You said the hour."
+- Seed: **"You said the hour."**
+- Cut: `you said` *(side)* · `the hour` *(MW214's side)*
+- Job: **zero admission.** The quote-back audit, one last time, for free.
+
+**MW217 — start another one (near-ZERO)**
+- Source c308, ch12 (TOM): "I said the hour. Stop the recording, start another one. Part
+  two. Now."
+- Seed: **"I said the hour. Stop the recording, start another one. Part two. Now."**
+- Cut: `I said` *(CP144)* · `the hour` *(side)* · `stop the recording` **(new — content:
+  the walk's frame is a recording and says so)** · `start another one` **(new)** · `part
+  two` *(core)* · `now` *(core)*
+- Job: two LEGOs — the rule owned, then broken on one's own authority: the corpus's last
+  word on who makes the rules. (c309, Aran's "Now.", is the echo — consolidated.)
