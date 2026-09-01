@@ -155,6 +155,13 @@ module.exports = function (ctx) {
       });
       console.log(`[REBUILD] ${courseCode} snapshot batch ${rebuildBatchId}: ${rangeSeeds.length} seed(s) captured before delete`);
 
+      // One event for the wipe — the deleted rows leave nothing to stamp, so this is the record.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: { seed_numbers: rangeSeeds, rows: totalItems },
+          })
+        : null;
+
       // Execute the wipe
       const { count: phrasesDeleted } = await ctx.supabase
         .from('course_practice_phrases').delete({ count: 'exact' })
@@ -167,7 +174,7 @@ module.exports = function (ctx) {
         .gte('seed_number', from_seed).lte('seed_number', to_seed);
 
       const { count: seedsReset } = await ctx.supabase
-        .from('course_seeds').update({ decomposed_at: null, approved_at: null }, { count: 'exact' })
+        .from('course_seeds').update({ decomposed_at: null, approved_at: null, last_edit_event_id: eventId }, { count: 'exact' })
         .eq('course_code', courseCode)
         .gte('seed_number', from_seed).lte('seed_number', to_seed);
 
@@ -216,6 +223,11 @@ module.exports = function (ctx) {
       });
       console.log(`[REDO] ${courseCode} snapshot batch ${batchId}: ${snapshots.length} seed(s) captured before delete`);
 
+      // One event for the whole redo wipe — the deleted rows leave nothing to stamp.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({ scope: { seed_numbers: seedNumbers, rows: seedNumbers.length } })
+        : null;
+
       // Wipe each seed (delete phrases + LEGOs, reset decomposed_at)
       let totalPhrasesDeleted = 0;
       let totalLegosDeleted = 0;
@@ -231,7 +243,7 @@ module.exports = function (ctx) {
           .eq('course_code', courseCode).eq('seed_number', seedNum);
 
         const { count: seedsReset } = await ctx.supabase
-          .from('course_seeds').update({ decomposed_at: null, approved_at: null, flagged_at: null }, { count: 'exact' })
+          .from('course_seeds').update({ decomposed_at: null, approved_at: null, flagged_at: null, last_edit_event_id: eventId }, { count: 'exact' })
           .eq('course_code', courseCode).eq('seed_number', seedNum);
 
         totalPhrasesDeleted += phrasesDeleted || 0;
@@ -427,9 +439,14 @@ module.exports = function (ctx) {
     const { courseCode } = req.params;
     try {
       const now = new Date().toISOString();
+      // The set is a selector, not a list — the seeds are only known after the update.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({ scope: { selector: 'decomposed, unflagged, unapproved' } })
+        : null;
+
       const { data, error } = await ctx.supabase
         .from('course_seeds')
-        .update({ approved_at: now })
+        .update({ approved_at: now, last_edit_event_id: eventId })
         .eq('course_code', courseCode)
         .not('decomposed_at', 'is', null)
         .is('approved_at', null)
@@ -488,9 +505,13 @@ module.exports = function (ctx) {
     }
     try {
       const now = new Date().toISOString();
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({ scope: { seed_numbers: seeds, rows: seeds.length } })
+        : null;
+
       const { data, error } = await ctx.supabase
         .from('course_seeds')
-        .update({ flagged_at: now })
+        .update({ flagged_at: now, last_edit_event_id: eventId })
         .eq('course_code', courseCode)
         .in('seed_number', seeds)
         .select('seed_number');
@@ -506,9 +527,18 @@ module.exports = function (ctx) {
     const { courseCode } = req.params;
     const { seeds } = req.body; // array of seed numbers, or omit to clear all flags
     try {
+      // Seeds may be omitted, in which case every flagged seed clears — a selector, not a list.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: Array.isArray(seeds) && seeds.length > 0
+              ? { seed_numbers: seeds, rows: seeds.length }
+              : { selector: 'all flagged' },
+          })
+        : null;
+
       let query = ctx.supabase
         .from('course_seeds')
-        .update({ flagged_at: null })
+        .update({ flagged_at: null, last_edit_event_id: eventId })
         .eq('course_code', courseCode)
         .not('flagged_at', 'is', null);
       if (Array.isArray(seeds) && seeds.length > 0) {
@@ -1132,6 +1162,16 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
       const errors = [];
       let totalInserted = 0;
 
+      // One event for the whole backfill batch; every USE row it writes carries its id.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: {
+              lego_ids: phrases.map(e => `S${String(e.seed_number).padStart(4, '0')}L${String(e.lego_index).padStart(2, '0')}`),
+              rows: phrases.length,
+            },
+          })
+        : null;
+
       for (const entry of phrases) {
         const { seed_number, lego_index, use = [] } = entry;
         const label = `S${String(seed_number).padStart(4, '0')}L${String(lego_index).padStart(2, '0')}`;
@@ -1234,7 +1274,8 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
             scored_at: new Date().toISOString()
           },
           status: 'draft',
-          version: 1
+          version: 1,
+          last_edit_event_id: eventId
         }));
 
         const { error: insertErr } = await ctx.supabase
@@ -1254,7 +1295,7 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
       if (totalInserted > 0) {
         const backfilledSeeds = [...new Set(phrases.map(p => p.seed_number))];
         ctx.supabase.from('course_seeds')
-          .update({ flagged_at: null })
+          .update({ flagged_at: null, last_edit_event_id: eventId })
           .eq('course_code', courseCode)
           .in('seed_number', backfilledSeeds)
           .not('flagged_at', 'is', null)

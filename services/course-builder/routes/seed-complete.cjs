@@ -576,6 +576,11 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
+      // One event for the whole submit; its id rides along on the lego and its phrases.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({ scope: { seed_numbers: [seed], lego_ids: [legoId] } })
+        : null;
+
       const { error: legoError } = await ctx.supabase
         .from('course_legos')
         .upsert({
@@ -589,6 +594,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           components: components || null,
           status: 'draft',
           version: 1,
+          last_edit_event_id: eventId,
         }, { onConflict: 'course_code,seed_number,lego_index' });
 
       if (legoError) throw legoError;
@@ -658,6 +664,7 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
 
         if (allPhraseRows.length > 0) {
+          allPhraseRows.forEach(r => { r.last_edit_event_id = eventId; });
           const { error: phraseError } = await ctx.supabase
             .from('course_practice_phrases')
             .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
@@ -761,6 +768,13 @@ module.exports = function seedCompleteRoutes(ctx) {
       let zutViolations = [];
       let duplicates = 0;
 
+      // One event for the batch — every row it writes points back at it.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: { seed_numbers: [...new Set(legos.map(l => l.seed))], rows: legos.length },
+          })
+        : null;
+
       for (const lego of legos) {
         const legoId = `S${String(lego.seed).padStart(4,'0')}L${String(lego.idx).padStart(2,'0')}`;
 
@@ -802,6 +816,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             components: lego.components || null,
             status: 'draft',
             version: 1,
+            last_edit_event_id: eventId,
           }, { onConflict: 'course_code,seed_number,lego_index' });
 
         if (legoError) throw legoError;
@@ -857,6 +872,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           }
 
           if (allPhraseRows.length > 0) {
+            allPhraseRows.forEach(r => { r.last_edit_event_id = eventId; });
             const { error: phraseError } = await ctx.supabase
               .from('course_practice_phrases')
               .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
@@ -1825,6 +1841,11 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       // ── DRAFT PATH ──
       if (isDraft) {
+        // Drafts land in course_seed_drafts, which has no row to stamp — the event is the record.
+        if (req.contentEdit) {
+          await req.contentEdit.record({ scope: { seed_numbers: [seed_number], rows: legos.length } });
+        }
+
         const { error: draftError } = await ctx.supabase
           .from('course_seed_drafts')
           .upsert({
@@ -1866,6 +1887,16 @@ module.exports = function seedCompleteRoutes(ctx) {
       // ── INSERT PHASE ──
       console.log(`\nInserting ${seedId}...`);
 
+      // One event for the seed's whole decomposition — seed, legos and phrases all carry its id.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: {
+              seed_numbers: [seed_number],
+              lego_ids: legos.map(l => `${seedId}L${String(l.idx).padStart(2, '0')}`),
+            },
+          })
+        : null;
+
       const { error: seedError } = await ctx.supabase
         .from('course_seeds')
         .upsert({
@@ -1877,6 +1908,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           status: 'released',
           decomposed_at: new Date().toISOString(),
           version: 1,
+          last_edit_event_id: eventId,
         }, { onConflict: 'course_code,seed_number' });
 
       if (seedError) throw new Error(`Seed insert failed: ${seedError.message}`);
@@ -1905,6 +1937,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             components: lego.components || null,
             status: 'draft',
             version: 1,
+            last_edit_event_id: eventId,
           }, { onConflict: 'course_code,seed_number,lego_index' });
 
         if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
@@ -2068,6 +2101,7 @@ module.exports = function seedCompleteRoutes(ctx) {
 
         // Insert all phrases
         if (allPhraseRows.length > 0) {
+          allPhraseRows.forEach(r => { r.last_edit_event_id = eventId; });
           const { error: phraseError } = await ctx.supabase
             .from('course_practice_phrases')
             .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
@@ -2152,6 +2186,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               introduce: true,
               status: 'draft',
               version: 1,
+              last_edit_event_id: eventId,
             });
 
           if (seedPhraseError) {

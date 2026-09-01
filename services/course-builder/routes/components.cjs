@@ -114,6 +114,22 @@ module.exports = function (ctx) {
       return res.status(400).json({ error: 'Request body must include a non-empty "legos" array' });
     }
 
+    // One event for the whole backfill; the legos and their component rows carry its id.
+    // No identity, no write — this handler has no outer catch, so the record is guarded here.
+    let eventId = null;
+    try {
+      if (req.contentEdit) {
+        eventId = await req.contentEdit.record({
+          scope: {
+            lego_ids: legos.map(l => `S${String(l.seed_number).padStart(4, '0')}L${String(l.lego_index).padStart(2, '0')}`),
+            rows: legos.length,
+          },
+        });
+      }
+    } catch (err) {
+      return res.status(500).json({ error: err.message });
+    }
+
     const results = [];
     const errors = [];
 
@@ -147,7 +163,7 @@ module.exports = function (ctx) {
         // 1. Update the components JSONB
         const { error: updateErr } = await ctx.supabase
           .from('course_legos')
-          .update({ components })
+          .update({ components, last_edit_event_id: eventId })
           .eq('course_code', courseCode)
           .eq('seed_number', seed_number)
           .eq('lego_index', lego_index);
@@ -208,7 +224,7 @@ module.exports = function (ctx) {
             for (let i = 0; i < existingPhrases.length; i++) {
               const { error: finalErr } = await ctx.supabase
                 .from('course_practice_phrases')
-                .update({ position: componentCount + 1 + i })
+                .update({ position: componentCount + 1 + i, last_edit_event_id: eventId })
                 .eq('id', existingPhrases[i].id);
               if (finalErr) {
                 throw new Error(`Failed to finalize position for ${existingPhrases[i].id}: ${finalErr.message}`);
@@ -238,6 +254,7 @@ module.exports = function (ctx) {
           version: 1,
           created_at: now,
           updated_at: now,
+          last_edit_event_id: eventId,
         }));
 
         if (componentPhrases.length > 0) {

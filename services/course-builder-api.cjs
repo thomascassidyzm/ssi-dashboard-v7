@@ -35,6 +35,18 @@ const ctx = createContext(supabase);
 // Share supabase client with briefs module
 setSupabase(supabase);
 
+// ─── Editor identity on save (Tom's ruling, 2026-09-01) ───────────────
+// Course Builder has no auth of its own — it sits behind production-api's
+// proxy gate. That gate answers "may you touch this course"; it never answered
+// "who are you", so an edit landed with no record of who made it. This gate
+// resolves an editor identity for every route in
+// services/shared/content-write-surfaces.cjs and REFUSES the request when it
+// cannot, before any handler reaches the database. Non-content routes are
+// untouched. Mounted after express.json so it can read the body for a course
+// code, and before every router so no content write can slip in front of it.
+const { contentEditGate } = require('./shared/content-edit-gate.cjs');
+app.use(contentEditGate({ supabase, service: 'course-builder' }));
+
 // ─── Mount route modules ──────────────────────────────────────────────
 
 // DISABLED: preflight route used Anthropic SDK directly (phrase-scorer.cjs),

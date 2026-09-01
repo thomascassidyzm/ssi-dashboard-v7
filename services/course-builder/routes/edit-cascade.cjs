@@ -190,9 +190,18 @@ module.exports = function(ctx) {
               + `(known side unchanged: "${seed.known_text}"). No write performed.`,
           });
         }
+        // The target-only half of the edit is still an edit: attribute it before
+        // the write, and stamp the seed row with the event it belongs to.
+        const briefEventId = req.contentEdit
+          ? await req.contentEdit.record({
+            scope: { seed_numbers: [Number(seed_number)] },
+            detail: { before: { target_text: seed.target_text }, after: { target_text: newTarget } },
+          })
+          : null;
+
         await ctx.supabase
           .from('course_seeds')
-          .update({ target_text: newTarget })
+          .update({ target_text: newTarget, last_edit_event_id: briefEventId })
           .eq('course_code', courseCode)
           .eq('seed_number', seed_number);
 
@@ -282,9 +291,22 @@ module.exports = function(ctx) {
       // ── Apply: new target, clear decomposition, delete old LEGOs/phrases ───
       // Deleting drops the audio_id pointers, so the re-inserted rows are
       // null-audio and the audio step below picks them up (spec §2d).
+      // Attribute the whole cascade — seed, the LEGOs/phrases it destroys, and the
+      // re-inserted breakdown — to one event, recorded before the first write.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+          scope: {
+            seed_numbers: [Number(seed_number)],
+            lego_ids: (oldLegos || []).map(l => l.lego_id).filter(Boolean),
+            phrase_ids: (oldPhrases || []).map(p => p.id).filter(Boolean),
+          },
+          detail: { before: { target_text: seed.target_text }, after: { target_text: newTarget } },
+        })
+        : null;
+
       const { error: updErr } = await ctx.supabase
         .from('course_seeds')
-        .update({ target_text: newTarget, decomposed_at: null })
+        .update({ target_text: newTarget, decomposed_at: null, last_edit_event_id: eventId })
         .eq('course_code', courseCode)
         .eq('seed_number', seed_number);
       if (updErr) throw new Error(`Failed to update seed target: ${updErr.message}`);
@@ -295,12 +317,22 @@ module.exports = function(ctx) {
       // ── Re-insert the new breakdown through the existing gate path ──────────
       // /seed/complete runs tiling/ZUT/vocab/count gates atomically, assigns
       // deterministic phrase IDs, builds M-LEGO build-ups, and sets decomposed_at.
+      // The inner hop is itself a gated content write. Forward the caller's own
+      // bearer token so a human proofreader's re-insert attributes to them, not to
+      // an anonymous loopback caller; x-service-name is the fallback for agent
+      // callers that arrive without one.
       const submit = await postJson(`${SELF_URL}/api/seed/complete`, {
         course_code: courseCode,
         seed_number,
         known_text: seed.known_text,   // canonical known side — unchanged
         target_text: newTarget,
         legos,
+      }, {
+        headers: {
+          ...(req.headers.authorization ? { Authorization: req.headers.authorization } : {}),
+          'x-service-name': 'edit-cascade',
+          ...(eventId ? { 'x-content-edit-event': eventId } : {}),
+        },
       });
 
       if (!submit.ok) {

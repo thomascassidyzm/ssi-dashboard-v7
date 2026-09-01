@@ -186,6 +186,15 @@ app.use((req, res, next) => {
   next()
 })
 
+// ─── Editor identity on save (Tom's ruling, 2026-09-01) ───────────────────────
+// production-api writes course content directly on a handful of routes (phrase
+// edit, phrase delete, batch delete, decomposition backfill). Those routes are
+// listed in services/shared/content-write-surfaces.cjs; this gate resolves an
+// editor identity for each and refuses the request when it cannot, before the
+// handler touches Supabase. Every other route on this service is untouched.
+const { contentEditGate } = require('./shared/content-edit-gate.cjs')
+app.use(contentEditGate({ supabase: supabaseClient.getClient(), service: 'production-api', logger }))
+
 // =============================================================================
 // AUTH ROUTES
 // =============================================================================
@@ -1584,7 +1593,22 @@ async function proxyCourseBuilder(req, res) {
         'Content-Type': req.headers['content-type'] || 'application/json',
         // Forward the caller's identity so 3471 can attribute/log the spawn and
         // make its own decisions (defence-in-depth). Previously dropped.
-        ...(req.headers.authorization ? { Authorization: req.headers.authorization } : {})
+        ...(req.headers.authorization ? { Authorization: req.headers.authorization } : {}),
+        // Mark the hop — but ONLY for traffic that actually came from outside.
+        // Without this, a browser-originated write arrives at 3471 on bare
+        // loopback and its editor-identity gate would read it as a same-host
+        // caller, which is the one class of request that must never get
+        // same-host leniency. A genuine same-host caller (agent, service mesh)
+        // is left alone, so this deploy cannot break it.
+        ...(isLoopbackDirectRequest(req) ? {} : {
+          'x-forwarded-for': req.headers['x-forwarded-for']
+            || req.headers['x-real-ip']
+            || req.socket?.remoteAddress
+            || 'unknown',
+        }),
+        ...(req.headers['x-agent-id'] ? { 'x-agent-id': req.headers['x-agent-id'] } : {}),
+        ...(req.headers['x-agent-role'] ? { 'x-agent-role': req.headers['x-agent-role'] } : {}),
+        ...(req.headers['x-service-name'] ? { 'x-service-name': req.headers['x-service-name'] } : {})
       },
       body
     }
@@ -3611,6 +3635,9 @@ app.delete('/api/production/:courseCode/phrases/:phraseId', async (req, res) => 
 
     const supabase = supabaseClient.getClient()
 
+    // A deleted row cannot carry a stamp, so the event is the whole record.
+    if (req.contentEdit) await req.contentEdit.record({ scope: { phrase_ids: [phraseId], rows: 1 } })
+
     // Delete the phrase from course_practice_phrases
     const { error } = await supabase
       .from('course_practice_phrases')
@@ -3653,6 +3680,8 @@ app.post('/api/production/:courseCode/phrases/batch-delete', async (req, res) =>
     }
 
     const supabase = supabaseClient.getClient()
+
+    if (req.contentEdit) await req.contentEdit.record({ scope: { phrase_ids: phraseIds, rows: phraseIds.length } })
 
     // Delete all phrases in the batch
     const { error, count } = await supabase
@@ -8646,6 +8675,18 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
       return res.status(400).json({ error: 'No valid update fields provided' })
     }
 
+    // Single row edited by hand: worth carrying the before/after text.
+    updateData.last_edit_event_id = req.contentEdit ? await req.contentEdit.record({
+      scope: { phrase_ids: [phraseId], seed_numbers: [existingPhrase.seed_number] },
+      detail: {
+        before: { known_text: existingPhrase.known_text, target_text: existingPhrase.target_text },
+        after: {
+          known_text: updateData.known_text ?? existingPhrase.known_text,
+          target_text: updateData.target_text ?? existingPhrase.target_text
+        }
+      }
+    }) : null
+
     // Perform the update
     const { data: updatedPhrase, error: updateError } = await supabase
       .from('course_practice_phrases')
@@ -12585,6 +12626,11 @@ app.post('/api/admin/decomposition-backfill', async (req, res) => {
       courseList = data || []
     }
 
+    // One event for the whole sweep; every row it rewrites points back at it.
+    const eventId = req.contentEdit ? await req.contentEdit.record({
+      scope: { course_code: courseCode || 'ALL', limit: maxRows, dry_run: dryRun }
+    }) : null
+
     let moreRemaining = false
     let cutoffReached = false
 
@@ -12672,7 +12718,7 @@ app.post('/api/admin/decomposition-backfill', async (req, res) => {
 
             const { error: updateErr } = await sb
               .from('course_practice_phrases')
-              .update({ decomposition: blocks, decomposition_course_version: courseVersion })
+              .update({ decomposition: blocks, decomposition_course_version: courseVersion, last_edit_event_id: eventId })
               .eq('id', row.id)
             if (updateErr) throw updateErr
             updated++

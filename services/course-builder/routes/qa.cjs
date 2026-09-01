@@ -825,6 +825,19 @@ end tell`;
         });
       }
 
+      // Attribution before the write, while the flagged row is still named.
+      if (req.contentEdit) {
+        await req.contentEdit.record({
+          scope: {
+            ...(phrase_id ? { phrase_ids: [phrase_id] } : {}),
+            ...(seed_number ? { seed_numbers: [seed_number] } : {}),
+            ...(lego_id ? { lego_ids: [lego_id] } : {}),
+            rows: 1
+          },
+          detail: { check_type, severity: severity || 'warning' }
+        });
+      }
+
       // Check if flag already exists for this phrase+check_type
       let existingFlag = null;
       if (phrase_id) {
@@ -916,6 +929,14 @@ end tell`;
         }
       }
 
+      // One event for the whole bulk save; the qa_checked stamp below rides it.
+      const eventId = req.contentEdit ? await req.contentEdit.record({
+        scope: {
+          phrase_ids: [...new Set(flags.map(f => f.phrase_id).filter(Boolean))],
+          rows: flags.length
+        }
+      }) : null;
+
       let created = 0;
       let updated = 0;
       const phraseIdsToMark = new Set();
@@ -972,7 +993,7 @@ end tell`;
       if (phraseIdsToMark.size > 0) {
         const { error: markError } = await supabase
           .from('course_practice_phrases')
-          .update({ qa_checked: new Date().toISOString() })
+          .update({ qa_checked: new Date().toISOString(), last_edit_event_id: eventId })
           .in('id', [...phraseIdsToMark]);
         if (markError) console.error('[QA] Error marking flagged phrases as checked:', markError.message);
       }
@@ -1009,9 +1030,14 @@ end tell`;
         return res.status(400).json({ error: 'seed_min must be <= seed_max' });
       }
 
+      // Range, not row ids: the update selects by seed span, so the scope says so.
+      const eventId = req.contentEdit ? await req.contentEdit.record({
+        scope: { course_code, seed_min, seed_max }
+      }) : null;
+
       const { data, error } = await supabase
         .from('course_practice_phrases')
-        .update({ qa_checked: new Date().toISOString() })
+        .update({ qa_checked: new Date().toISOString(), last_edit_event_id: eventId })
         .eq('course_code', course_code)
         .gte('seed_number', seed_min)
         .lte('seed_number', seed_max)
@@ -1059,9 +1085,13 @@ end tell`;
         });
       }
 
+      const eventId = req.contentEdit ? await req.contentEdit.record({
+        scope: { phrase_ids, rows: phrase_ids.length }
+      }) : null;
+
       const { error } = await supabase
         .from('course_practice_phrases')
-        .update({ qa_checked: new Date().toISOString() })
+        .update({ qa_checked: new Date().toISOString(), last_edit_event_id: eventId })
         .in('id', phrase_ids);
 
       if (error) throw error;
@@ -1153,6 +1183,18 @@ end tell`;
       }
 
       updates.updated_at = new Date().toISOString();
+
+      // The human phrase-edit path: keep the before/after, it is one row.
+      updates.last_edit_event_id = req.contentEdit ? await req.contentEdit.record({
+        scope: { phrase_ids: [id], seed_numbers: [current.seed_number] },
+        detail: {
+          before: { known_text: current.known_text, target_text: current.target_text },
+          after: {
+            known_text: updates.known_text ?? current.known_text,
+            target_text: updates.target_text ?? current.target_text
+          }
+        }
+      }) : null;
 
       const { data, error } = await supabase
         .from('course_practice_phrases')
@@ -1463,6 +1505,9 @@ end tell`;
     try {
       const { phraseId } = req.params;
 
+      // Nothing survives to stamp, so the event is the only record of the delete.
+      if (req.contentEdit) await req.contentEdit.record({ scope: { phrase_ids: [phraseId], rows: 1 } });
+
       // Remove flags first (FK constraint: flags reference phrases)
       await supabase
         .from('course_qa_flags')
@@ -1530,6 +1575,13 @@ end tell`;
           flags_count: flags.length,
           phrases: phraseIds,
           flags: flags
+        });
+      }
+
+      // Recorded after the dry-run return: a dry run deletes nothing.
+      if (req.contentEdit) {
+        await req.contentEdit.record({
+          scope: { phrase_ids: phraseIds, rows: phraseIds.length, flags: flags.length }
         });
       }
 
@@ -1697,10 +1749,14 @@ end tell`;
       const { courseCode } = req.params;
       const { clear_flags = false } = req.body || {};
 
+      const eventId = req.contentEdit ? await req.contentEdit.record({
+        scope: { course_code: courseCode, clear_flags }
+      }) : null;
+
       // Clear qa_checked on all phrases
       const { error: resetError } = await supabase
         .from('course_practice_phrases')
-        .update({ qa_checked: null })
+        .update({ qa_checked: null, last_edit_event_id: eventId })
         .eq('course_code', courseCode)
         .not('qa_checked', 'is', null);
 
@@ -1757,6 +1813,13 @@ end tell`;
 
       const phraseIds = [...new Set((openFlags || []).map(f => f.phrase_id).filter(Boolean))];
       const flagIds = (openFlags || []).map(f => f.id);
+
+      // Deletes leave no row to stamp; the event carries the ids.
+      if (req.contentEdit) {
+        await req.contentEdit.record({
+          scope: { course_code: courseCode, phrase_ids: phraseIds, rows: phraseIds.length }
+        });
+      }
 
       if (flagIds.length > 0) {
         await supabase.from('course_qa_flags').delete().in('id', flagIds);

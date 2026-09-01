@@ -59,7 +59,7 @@ If any generic examples below show a different language in the known_text positi
 
 1. You BUILD seed decompositions
 2. You write the markdown to /tmp/seedN.md
-3. You SUBMIT directly: \`curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" -H "Content-Type: text/markdown" --data-binary @/tmp/seedN.md\`
+3. You SUBMIT directly: \`curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" -H "Content-Type: text/markdown" -H "X-Agent-Id: creator-${courseCode}" --data-binary @/tmp/seedN.md\`
 4. If the API rejects, read the error, fix, and resubmit
 5. Post heartbeat: \`curl -s -X POST "http://localhost:3471/api/heartbeat/${courseCode}" -H "Content-Type: application/json" -d '{"current_seed": N, "agent_role": "creator"}'\`
 6. Move to the next seed immediately
@@ -255,7 +255,7 @@ loop, and a phrase that is wrong in ${langName} is yours to fix before you submi
 ### Step 5: Write and submit
 Write the decomposition as markdown to \`/tmp/seed$N.md\` using the format below, then submit:
 \`\`\`bash
-curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" -H "Content-Type: text/markdown" --data-binary @/tmp/seed$N.md
+curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" -H "Content-Type: text/markdown" -H "X-Agent-Id: creator-${courseCode}" --data-binary @/tmp/seed$N.md
 \`\`\`
 If rejected, fix the issue and resubmit. If unfixable after 3 attempts, skip and move on.
 

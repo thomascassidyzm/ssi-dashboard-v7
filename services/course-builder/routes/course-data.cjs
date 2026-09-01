@@ -934,9 +934,33 @@ USE:
     if (target_text) updateFields.target_text = target_text;
     if (known_text) updateFields.known_text = known_text;
 
+    // This is the proofreading surface the identity ruling came from, so the
+    // event carries the before/after text as well as the seed it belongs to.
+    const { data: before } = await ctx.supabase
+      .from('course_seeds')
+      .select('known_text, target_text')
+      .eq('course_code', courseCode)
+      .eq('seed_number', seedNum)
+      .maybeSingle();
+
+    let eventId = null;
+    try {
+      if (req.contentEdit) {
+        eventId = await req.contentEdit.record({
+          scope: { seed_numbers: [seedNum] },
+          detail: {
+            before: { known_text: before?.known_text, target_text: before?.target_text },
+            after: { known_text: known_text || before?.known_text, target_text: target_text || before?.target_text },
+          },
+        });
+      }
+    } catch (err) {
+      return res.status(500).json({ error: `Could not record who made this edit: ${err.message}` });
+    }
+
     const { error } = await ctx.supabase
       .from('course_seeds')
-      .update(updateFields)
+      .update({ ...updateFields, last_edit_event_id: eventId })
       .eq('course_code', courseCode)
       .eq('seed_number', seedNum);
 
@@ -961,6 +985,10 @@ USE:
     }
 
     try {
+      // Nothing survives a course delete to carry a stamp, so the event recorded
+      // here is the only record that this course ever existed and who removed it.
+      if (req.contentEdit) await req.contentEdit.record({ scope: { course_code: courseCode } });
+
       const results = {};
       const tables = [
         'course_qa_flags',
@@ -1041,6 +1069,12 @@ USE:
         return res.status(404).json({ ok: false, error: `Course "${courseCode}" not found` });
       }
 
+      // Recorded before the first delete; the re-created seed shells below carry
+      // the same event id, so the wipe and its replacement read as one action.
+      const wipeEventId = req.contentEdit
+        ? await req.contentEdit.record({ scope: { course_code: courseCode } })
+        : null;
+
       const results = {};
       const tables = [
         'course_qa_flags',
@@ -1119,6 +1153,7 @@ USE:
             seed_number: c.seed_number,
             known_text: knownLang === 'eng' ? engText : '',
             target_text: targetLang === 'eng' ? engText : '',
+            last_edit_event_id: wipeEventId,
           };
         });
 
