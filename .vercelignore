@@ -43,6 +43,17 @@ tests/
 # you also un-ignore it here and verify the deployed route live.
 !tools/pod-sync.cjs
 
+# ...and the walk registry. src/views/ScriptLabView.vue imports
+# tools/pods/pod-corpora.json at BUILD time, so `tools/*` stripping it made the
+# Vercel build fail outright — "Could not resolve ../../tools/pods/pod-corpora.json"
+# — while building fine locally (2026-09-01, deployment dpl_3nvccUjFhXGXEQ4EpP8TKtGJGYDo).
+# Same git-ignore-style dance as above, one level deeper: un-ignore the directory,
+# re-exclude its children, then keep the one file. Nothing else under tools/pods
+# rides along.
+!tools/pods
+tools/pods/*
+!tools/pods/pod-corpora.json
+
 # Documentation (root docs/, NOT public/docs/ which is used in build)
 # /docs/pods stays IN the upload: src/content/pod-thinking-docs.js imports from it at build time
 /docs/*
