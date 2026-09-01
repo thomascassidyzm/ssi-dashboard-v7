@@ -1,0 +1,1290 @@
+{
+  "$schema": "../../../../schemas/metagraph-v1-schema.json",
+  "concept": "walk-set",
+  "version": 1,
+  "walk_set": "public-services",
+  "authored": true,
+  "status": "AUTHORED PROPOSAL — written from nothing against the ratified store plus the proposal layer; not ratified, not loaded, no learner hears a word of it until Tom says so.",
+  "source": {
+    "kind": "authored",
+    "job": "Author the public-services themed walk — canonical English dialogue, 2026-09-01. The sector mapping recorded corpus: NONE in its own words; this file is the corpus that did not exist.",
+    "mapping": "docs/sector-pods/ireland-public-services-metagraph-mapping-2026-08-30.md — used as the SPEC, not as prose to expand: its encounter inventory E1–E15 says what must be covered; the dialogue below covers it. Its two node mints (N401, N402) and one move mint (F401), constructed-only until now, receive their first authored attestations here.",
+    "document": "docs/pods/walk-public-services-2026-09-01.md",
+    "statement": "AUTHORED, NOT TRANSCRIBED. Every surface line was written for this walk. No row, no g-number, no attested speech stands behind any line. Do not merge these counts into any corpus accounting."
+  },
+  "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Copied from walks/core-scene-0.json so coverage stays computable without parsing prose.",
+  "walk_kind": "listening",
+  "register": {
+    "sector_free_note": "This is a THEMED walk selected by interest, never a sector category. Its register is entitlement and proof: the counterpart is bound by rules they did not write, and non-delivery-with-reason — U1, the floor of the outcome overlay — is the ORDINARY case here, not the exception. It is the estate's best site for teaching a learner to survive a refusal they cannot argue with, and the walk is built around that.",
+    "culture_free": true,
+    "nation_free": true,
+    "note": "No Ireland, no Wales, no Gaeilge, no agency names, no currency units, no dialect warmth. A public office with a front counter and a deciding desk exists in every country a course ships to; a register of payments, an allowance, an appeals office and a proof-of-address are furniture found everywhere. The proposal file's Irish particulars (PPS numbers, the 20% mandate, Intreo) appear nowhere; a national instance is a mask laid over this set, never inside it.",
+    "known_text": "English is the canonical known text and is pair-invariant. No target language, no pair, no course code appears anywhere in this file.",
+    "role": "Roles are DERIVED, not authored — see roles_derived. The dialogue has both ends; production is only your own turns."
+  },
+  "scene_0": {
+    "policy": "Scene 0, the medium contract (N1201), sits at the front of every walk unconditionally. Both ratified realisations are REFERENCED here and re-authored nowhere: walks/core-scene-0.json (W1201–W1204, the offer, with the decline branch) and walks/core-scene-0-notice.json (W1401, the notice). This walk begins at scene 1, in the granted medium, and stays there.",
+    "s404_note": "The mapping's S404 — the medium re-negotiated mid-business — is N101's own failure branch and belongs where the contract is staged, in scene 0's set. It is deliberately NOT staged here: an honest gap named, not a hole. In-flight repair inside this walk uses only the F7/F8 licence scene 0 already issues."
+  },
+  "attachment": {
+    "policy": "A recovery ATTACHES rather than appends: every branch walk arrives at a named step of its trunk walk — same counter, same ask — and its recovery runs inside the same encounter. What selects the continuation is the STATE OF THE WORLD at that step: the route that was already tried (W1902), the record that disagrees (W1904), the anger that lands on the wrong target (W1913), the apology that is refused (W1917). Never a mood."
+  },
+  "world": {
+    "mask": "One town, one public office, one continuing story across four visits. The resident is newly arrived — which is what makes every encounter necessary rather than staged.",
+    "cast": {
+      "Resident": "Ana Marsh, moved to the town with her family some weeks before scene 1. The learner-typical seat.",
+      "Clerk": "The front counter: routing, queues, complaints. Holds no decision.",
+      "Officer": "The registrations and claims desk: the record, verdicts, refusals — every one of them held in trust for a scheme the Officer did not write."
+    },
+    "stake": "The housing allowance wants five qualifying years of payments; Ana has four years and three months. The missing year was a season's work at the harbour, paid cash, never recorded — so the record is RIGHT, nothing can prove the year, the refusal stands, and the appeal honestly fails. What remains real: the months now being paid in complete the five years next summer. The walk refuses the consolation of a won appeal because the register's one irreplaceable lesson is the no that cannot be argued with — and the future that survives it.",
+    "threads": {
+      "registration": "scenes 1–7: wrong desk → identity → intake → suspended for one paper → the queue held → finished on the spot → the certificate bought. This thread COMPLETES — the machine works, which is what earns the second thread its weight.",
+      "allowance": "scenes 8–14: the verdict → the story against the record → the refusal → the appeal lodged → the wait bounded → the complaint → the second no, survived."
+    }
+  },
+  "accounting": {
+    "authored_walks": 18,
+    "turns_per_walk": 6,
+    "turns_total": 108,
+    "corpus_rows": 0,
+    "scenes": 14,
+    "trunk_walks": 14,
+    "branch_walks": 4,
+    "admissions": "Each scene admits at most ONE new response position beyond the every-optional-walk floor (the CORE pod set, 195 sequenced seeds, plus scene 0 and the outcome overlay's W201/W202 rung). Twelve scenes admit one position each; two admit ZERO — the fee (scene 7) and the finish-on-the-spot (scene 6) run entirely on owned positions in the new world, which is the highest-yield kind. Branch walks widen response families at their branch point and admit nothing.",
+    "admission_ledger": [
+      { "scene": 1, "admits": "absorb the referral — receive 'that's not us' without offence and bank the route with its conditions" },
+      { "scene": 2, "admits": "answer to confirm — known-answer questions with no return, and the silent match" },
+      { "scene": 3, "admits": "the survivable hedge — say 'I couldn't tell you exactly' and hand over the anchor or the artefact" },
+      { "scene": 4, "admits": "bank the task — condition, alternatives, read-back, and the re-entry it buys" },
+      { "scene": 5, "admits": "receive the held thread — your place banked across an interruption, and the counterpart's own aside received" },
+      { "scene": 6, "admits": "ZERO — re-entry spends scene 4's banking; everything else is floor" },
+      { "scene": 7, "admits": "ZERO — order, reckoning, payment, receipt: the floor's own transaction in the new world; P2 re-attested" },
+      { "scene": 8, "admits": "receive the norm — a verdict against a line you do not hold, challenged for its meaning, never its truth" },
+      { "scene": 9, "admits": "hold against the record — a disagreement with an institution held with a bound, parked without rupture" },
+      { "scene": 10, "admits": "bank the contest path — absorb a disowned refusal and take the instrument, the deadline, the forum" },
+      { "scene": 11, "admits": "the aside made and closed — step out of the frame under real weight, and take yourself back to business" },
+      { "scene": 12, "admits": "accept the bounded promise — a bound nobody present controls, its threshold, and the reference as the handle" },
+      { "scene": 13, "admits": "complain to the blameless — aim at the institution, accept sorry-on-behalf, get the number" },
+      { "scene": 14, "admits": "the terminal absorb — survive the second no with the contest path spent, and take the future that is actually there" }
+    ]
+  },
+  "floor_inheritance": {
+    "defers": "Ritual open/close, thanks, the repair licence, transactions and paying, arrangement and decline-with-counter, read-backs (P3/F9), elicit chains (P5), instruction-banking, refusal-survived at the everyday rung (W201/W202), disclosure-received (N204/F204) — all spent here, none re-taught.",
+    "floor_guarantee_items": {
+      "N13": "scene 3 — 'It'll be on the lease, whatever it says there' — the not-know held with status, the knowledge living in the artefact, licensing the question that follows.",
+      "N14": "scene 8 — 'Five years — says who?' — the ground of the norm demanded and supplied, received without offence.",
+      "O7": "both directions: scene 5, the Clerk's own aside about the morning the system died, received without fixing; scene 11, the Resident's winter-rent disclosure, made and closed by its own discloser.",
+      "O8": "scene 9 — disagreement about the world, held explicitly with a bound and parked (N15's explicit park, on the record's terms).",
+      "story_with_challenge": "scene 9 — a real told story, the harbour year, really challenged. Health FAILED this floor item because its signature move ratifies every telling; this register produces the challenge NATURALLY, because auditing the citizen's account against the record is the counterpart's job. The one floor item the health register resists is the one this register does for a living."
+    }
+  },
+  "coverage_of_the_graph": {
+    "store_nodes": ["N2", "N13", "N14", "N15", "N17"],
+    "health_proposal_nodes": ["N103", "N104", "N105", "N106", "N107", "N109", "N110"],
+    "overlay_proposal_nodes": ["N204"],
+    "sector_proposal_nodes": ["N401", "N402"],
+    "moves": ["F1", "F2", "F3", "F9", "F14", "F15", "F16", "F21", "F101", "F102", "F103", "F202", "F401"],
+    "outcomes_reached": {
+      "O1": "the register's ordinary case — scenes 4, 8, 10, 14 are all non-delivery with a reason at ascending weight",
+      "O4": "scene 11 — a read-back wrong, corrected, re-read: the outcome health attested the precondition of and never reached",
+      "O7": "scenes 5 and 11, both directions",
+      "O8": "scene 9",
+      "O9": "scene 14 — a second no, delivered by a second mouth with the settle position gone. Honest siting caveat: the store sites O9 on N7 arrangement; this is O9's shape at the institutional rung and the walk claims the shape, not the siting."
+    },
+    "pairs": "P2 reckoning-and-pay re-attested at scene 7 — the pair the health corpus went dark on, recovered exactly as the mapping's E11 predicted.",
+    "survivability_edges_touched": ["S401", "S402", "S403"],
+    "s404": "deliberately not staged — see scene_0.s404_note.",
+    "minted_here": "NOTHING. No shape in this dialogue needed an id the store and the proposal layer lack. The 19xx range is spent on walk ids only. N401, N402 and F401 move from constructed-only to authored attestation; that was the point."
+  },
+  "register_deaths": {
+    "note": "What this register RESISTS, reported as honest deaths rather than forced: F11 dies at K2 — the Resident who has given her date of birth cannot ask the Officer's, and no line below pretends otherwise. N5's return half and N11's tail die the same way: nobody trades assessments with the desk as a peer. F18's peer agreement dies at K3 — 'that's not normal, is it?' is answered from the record (F102, scene 12), never with an emphatic yes. O2 never lands: the official always knows who knows (N105 routing, scenes 1 and 8). None of these is a gap; each is the asymmetry doing exactly what the ladder says it does."
+  },
+  "roles_derived": {
+    "note": "Role is a projection of the finished dialogue — these are whoever's mouths exist in it, counted over all 18 walks.",
+    "Resident": { "turns": 54, "gloss": "the citizen seat; the learner-typical projection" },
+    "Officer": { "turns": 39, "gloss": "the deciding desk: record, verdict, refusal, all held in trust" },
+    "Clerk": { "turns": 15, "gloss": "the front counter: routing, queue, complaint intake; a strict subset of the Officer's production — every Clerk position (route, hold, record, sorry-on-behalf) also occurs in Officer turns, so Clerk is to Officer what health's general is to nurse" }
+  },
+  "walks": [
+    {
+      "id": "W1901",
+      "name": "Scene 1 — the wrong desk, and the route banked whole",
+      "scene": 1,
+      "nodes_traversed": ["N105"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "E2 triage. The first door is almost never the right door, and the walk opens on that fact so the learner meets 'that's not us' before anything worse. The route arrives with its CONDITIONS attached — hours, what to bring — because a route without conditions is a second wasted trip. Admission: absorb the referral and bank the whole route.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Morning. I've just moved here, and I'm told I need to register the new address — but I don't honestly know where I start.",
+          "move": null,
+          "note": "The vague ask, owned as vague. The world motivates it: she is new, and newness is the one excuse every counter accepts."
+        },
+        {
+          "step": 2,
+          "node": "N105",
+          "position": 2,
+          "speaker": "Clerk",
+          "surface": "You've come to the right building and the wrong floor — happens ten times a day. Is it just the address, or are you new to the town altogether?",
+          "move": "F3",
+          "note": "Cannot settle it here, said without a flicker of blame, and the elicit that decides WHICH route. 'Happens ten times a day' de-personalises the miss before it can land as a failure."
+        },
+        {
+          "step": 3,
+          "node": "N105",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "New altogether. We moved in about five weeks ago.",
+          "move": "F1",
+          "note": "The differentiator supplied plainly."
+        },
+        {
+          "step": 4,
+          "node": "N105",
+          "position": 3,
+          "speaker": "Clerk",
+          "surface": "Then it's registrations you want — second floor, room four. Mornings only, eight till one. Take your lease and something with your name on it, or they'll send you straight back down to me.",
+          "move": "F2",
+          "note": "The named desk, its hours, what to bring — and the reason the conditions matter, spoken: the route without the papers is a circle. The grant carries more than was asked, which is F2's whole test."
+        },
+        {
+          "step": 5,
+          "node": "N105",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "Second floor, room four, mornings, lease and something with my name. Is that everything?",
+          "move": "F9",
+          "note": "The bank, read back whole. This is the admitted position: the route received as a TASK, not as trivia — conditions and all."
+        },
+        {
+          "step": 6,
+          "node": "N105",
+          "position": 4,
+          "speaker": "Clerk",
+          "surface": "That's everything. Take a ticket from the machine by the door up there — it moves quicker than it looks.",
+          "move": "F2",
+          "note": "Confirm, plus one more unasked-for thing worth having. The encounter closes warm at zero cost to anyone — the register's baseline, before the walk starts raising the stakes."
+        }
+      ]
+    },
+    {
+      "id": "W1902",
+      "name": "Scene 1 — the loop: 'they sent me here', and the routing taken on",
+      "scene": 1,
+      "nodes_traversed": ["N105"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "attaches_to": { "walk": "W1901", "step": 2, "node": "N105", "position": 2 },
+      "note": "E2's failure branch: the circle. What selects this continuation is the state of the world — a route was already tried and it bounced. The recovery is the mapping's own: re-route with a DIFFERENTIATOR, or take the routing on yourself. The Clerk does both, and the differentiator explains the bounce instead of blaming either side of it.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Morning. I need to register a new address, and I'm going in circles — I queued upstairs yesterday and they sent me away.",
+          "move": null,
+          "note": "The same need, arriving with a history. The circle is named up front because it is the whole problem."
+        },
+        {
+          "step": 2,
+          "node": "N105",
+          "position": 2,
+          "speaker": "Clerk",
+          "surface": "Sent you away where — down here?",
+          "move": "F3",
+          "note": "Before re-routing, find out what the last route was. A route issued blind is how circles are made."
+        },
+        {
+          "step": 3,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "They said the town office does it now. And the town office told me on the phone that it's you. Somebody's wrong, and I'd love to know who.",
+          "move": null,
+          "note": "The loop stated whole, with the frustration in it — aimed at the situation, not yet at a person. That aim is a choice the walk teaches by showing it."
+        },
+        {
+          "step": 4,
+          "node": "N105",
+          "position": 3,
+          "speaker": "Clerk",
+          "surface": "Nobody's wrong, oddly — and that's the trap. Room four is right, but only for people already on the register, and you're not on it yet, so they bounced you. Let's stop the circle here: I'll ring room four myself while you're stood in front of me.",
+          "move": "F2",
+          "note": "The differentiator that explains the bounce — both other answers were true for somebody, just not for her — and then the routing taken on personally. This is the mapping's 'let me ring them myself', and it is the recovery the loop exists to teach: when routes contradict, a person takes the thread."
+        },
+        {
+          "step": 5,
+          "node": "N105",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "Thank you. I was starting to think I'd imagined the whole errand.",
+          "move": "F1",
+          "note": "The bank, and the relief said out loud. Nothing needed fixing in her — the system crossed its own wires, and hearing that is half the recovery."
+        },
+        {
+          "step": 6,
+          "node": "N105",
+          "position": 3,
+          "speaker": "Clerk",
+          "surface": "You hadn't imagined a thing. Right — ten o'clock tomorrow, room four, the desk on the left, and they'll have your name in front of them. Bring the lease and something with your name on it.",
+          "move": "F2",
+          "note": "The undertaking comes back CONCRETE: a time, a desk, a name already passed along, and the same conditions as the trunk. The loop closes with the route stronger than a first-time route would have been — which is what a good recovery buys."
+        }
+      ]
+    },
+    {
+      "id": "W1903",
+      "name": "Scene 2 — who you are: questions with the answers already held",
+      "scene": 2,
+      "nodes_traversed": ["N103"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "E3 identity verification. The strangest little register in public life: questions asked by someone who can see the answer, with no return leg — the Resident cannot ask the Officer's date of birth back, and the walk does not pretend she could (F11's death at K2, on-page by absence). Admission: answer to confirm, and let the silent match pass without ceremony.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N103",
+          "position": 1,
+          "speaker": "Officer",
+          "surface": "Good morning — sit yourself down. Before we touch anything I need to be sure I've got the right person. Full name, please?",
+          "move": null,
+          "note": "The known-answer question announced AS what it is — a check, not curiosity. Naming the frame is what makes the oddness of the register ordinary."
+        },
+        {
+          "step": 2,
+          "node": "N103",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "Ana Marsh.",
+          "move": "F1",
+          "note": "Supplied bare. No elaboration is wanted and none is given — the admitted position is exactly this economy."
+        },
+        {
+          "step": 3,
+          "node": "N103",
+          "position": 1,
+          "speaker": "Officer",
+          "surface": "And your date of birth?",
+          "move": null,
+          "note": "The chain continues. Identity checks run in chains, and each link is as flat as the last."
+        },
+        {
+          "step": 4,
+          "node": "N103",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "The third of May, nineteen eighty-four.",
+          "move": "F1",
+          "note": "Same economy. Dates are floor vocabulary; what is new is only the frame they are spoken in."
+        },
+        {
+          "step": 5,
+          "node": "N103",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "That matches what I've got — thank you. I have to ask even when the answer's on my screen; the file won't open until you've said it. Now — what are we doing for you today?",
+          "move": "F1",
+          "note": "The silent match made audible once, with its reason: the question was never for the Officer, it was for the file. One honest sentence teaches the whole register better than any explanation could — and business resumes in the same breath."
+        },
+        {
+          "step": 6,
+          "node": "N103",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "Registering a new address. Four Mill Row — we moved in five weeks ago.",
+          "move": "F1",
+          "note": "Business opens on the confirmed identity. The scene cost six turns and nothing else, which is what it should cost."
+        }
+      ]
+    },
+    {
+      "id": "W1904",
+      "name": "Scene 2 — the record disagrees, and the record is the one that bends",
+      "scene": 2,
+      "nodes_traversed": ["N103", "N106"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "attaches_to": { "walk": "W1903", "step": 5, "node": "N103", "position": 3 },
+      "note": "E3's failure branch, with E9's correction composed in: the answers are right and the RECORD is wrong. The halt is the same halt as a mismatch that suspects the person — the register cannot tell those apart until it checks, which is exactly why it halts. The correction is then named against evidence, recorded, and confirmed — and the fix is declared to TRAVEL, because a record fixed quietly is a record still broken everywhere else.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N103",
+          "position": 1,
+          "speaker": "Officer",
+          "surface": "Before we touch anything — full name and date of birth, please.",
+          "move": null,
+          "note": "The same chain, compressed to one link for the branch."
+        },
+        {
+          "step": 2,
+          "node": "N103",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "Ana Marsh. The third of May, nineteen eighty-four.",
+          "move": "F1",
+          "note": "Identical answers to the trunk. The branch is in what the file says next, never in what she said."
+        },
+        {
+          "step": 3,
+          "node": "N106",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "Hm. The name I have. The birthday I haven't — the file says June. I can't open a thing until we know which of you is wrong, you or the record. So, slowly: May, on your papers?",
+          "move": null,
+          "branch_point": true,
+          "note": "The halt, with its licence spoken: nothing moves while identity is uncertain. 'You or the record' puts both candidates on the table honestly — the register genuinely does not know yet, and pretending otherwise in either direction would be the failure."
+        },
+        {
+          "step": 4,
+          "node": "N106",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "May, on everything I own — here, it's on my card. June is news to me.",
+          "move": "F1",
+          "note": "Re-verified from the artefact, not from repetition. Evidence is what ends a mismatch; saying it louder is not."
+        },
+        {
+          "step": 5,
+          "node": "N106",
+          "position": 5,
+          "speaker": "Officer",
+          "surface": "Then the record's the one that's wrong, and the record is what we'll fix. I'm correcting it now, and noting what I saw — the card, today's date. That correction follows you to every desk in this building, so it was worth the minute.",
+          "move": "F103",
+          "note": "The correction recorded WITH its evidence, and the reach of the record said out loud — K3 taught as a fact of the world, not a rule. The minute of friction is priced and justified in the same sentence."
+        },
+        {
+          "step": 6,
+          "node": "N106",
+          "position": 6,
+          "speaker": "Resident",
+          "surface": "Glad it was caught here and not somewhere it mattered more. Right — the address, then?",
+          "move": "F1",
+          "note": "The halt endorsed by the person it inconvenienced — the position health's medication-round attests, in administrative clothes — and business resumed by the Resident herself."
+        }
+      ]
+    },
+    {
+      "id": "W1905",
+      "name": "Scene 3 — the form, and the hedge that is taken up instead of refused",
+      "scene": 3,
+      "nodes_traversed": ["N13"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "E4 intake. The intake counter is where the split K1 shows: the Officer knows the form, the Resident knows her life, and the form is filled where the two meet. Her 'I couldn't tell you exactly' SURVIVES and is anchored — the citizen's side of the F15 seat-split — and N13 lands whole: the not-know held with status, because the knowledge lives in the artefact. Admission: the survivable hedge.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N13",
+          "position": 1,
+          "speaker": "Officer",
+          "surface": "New address it is. When did you move in — the exact date, if you have it?",
+          "move": null,
+          "note": "P5's elicit opening the chain, asking for precision without demanding it — 'if you have it' is the uptake being licensed in advance."
+        },
+        {
+          "step": 2,
+          "node": "N13",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "The exact date I couldn't tell you. End of the month before last — it was a weekend, I know that much.",
+          "move": "F15",
+          "note": "The hedge, offered with what she DOES hold. This is the admitted position: an 'I'm not sure' that hands over its own partial anchors instead of stopping dead."
+        },
+        {
+          "step": 3,
+          "node": "N13",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "That's plenty to be going on with — most people can't do better, and the form doesn't need your memory anyway. It'll be on the lease. Do you have it with you?",
+          "move": "F2",
+          "note": "The hedge RATIFIED and routed to the artefact — S102's recovery running in the official's mouth, exactly as the mapping's F15 ruling says it must. Nobody is made to feel small for not knowing a date."
+        },
+        {
+          "step": 4,
+          "node": "N13",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "Here. It'll say whatever it says — my husband dealt with the signing, so the lease knows more than I do.",
+          "move": "F1",
+          "note": "N13 whole: the not-know held WITH STATUS — the knowledge exists, it lives in the paper and the husband, and saying so is itself a competent answer. The floor's N13 guarantee lands here."
+        },
+        {
+          "step": 5,
+          "node": "N13",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "The fourteenth, it says. So: Ana Marsh, four Mill Row, moved in on the fourteenth — and I've written it exactly as the lease has it, so nobody can ever quarrel with you about it.",
+          "move": "F103",
+          "note": "The artefact answers the question the person could not, the read-back runs over the whole entry, and the record's protective face shows for the first time: written EXACTLY as the paper says is armour, and she is told so."
+        },
+        {
+          "step": 6,
+          "node": "N13",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "The fourteenth — there we are, I'd have sworn the twelfth. Good job you asked the lease and not me.",
+          "move": "F9",
+          "note": "Confirmation with the moral said back lightly by the person who just learnt it. The scene taught 'route your own uncertainty to the artefact' without one word of instruction."
+        }
+      ]
+    },
+    {
+      "id": "W1906",
+      "name": "Scene 4 — the missing paper: suspended, preserved, and the task handed across",
+      "scene": 4,
+      "nodes_traversed": ["N402"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["S402"],
+      "note": "E7, and the first authored attestation of N402 suspend-and-task, all six positions across two encounters — position 6, re-entry, is scene 6. The business can neither complete nor fail here. What the shape exists to prevent is the SILENT death: an application that lapses because nobody banked the task. Hence the read-back at position 5 — it is not politeness, it is the safety catch. Admission: bank the task.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N402",
+          "position": 1,
+          "speaker": "Officer",
+          "surface": "Lease, your card, the form — nearly there. Last thing on my list is proof you're actually living at Mill Row: a bill in your name at the new address, or a letter from your bank. Anything like that on you?",
+          "move": null,
+          "note": "The request in progress, and the checklist visible — the gap is about to be named AGAINST something, not conjured."
+        },
+        {
+          "step": 2,
+          "node": "N402",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "Nothing yet. Five weeks in — the first bills haven't even found us.",
+          "move": null,
+          "outcome_branch": true,
+          "note": "The gap, from the world: new houses take weeks to produce paper. Nobody failed; the timeline itself is the reason, which is what keeps this scene O1-shaped rather than fault-shaped."
+        },
+        {
+          "step": 3,
+          "node": "N402",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "Then I can't finish it today — that's the one paper the register won't move without. But hear the whole of it before that sinks too far: everything else is done, checked, and stays done. I'm holding the file exactly as it is, and nothing you've given me today will ever be asked for twice.",
+          "move": "F2",
+          "note": "The refusal-half and the preservation-half in one turn, in that order — the no first, then everything the no does NOT take away. 'Hear the whole of it' is the turn managing the sinking feeling it can see coming; the declared preservation is N402's position 3 exactly."
+        },
+        {
+          "step": 4,
+          "node": "N402",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "And when the bill finally comes — is it the ticket machine and the whole morning again?",
+          "move": "F3",
+          "note": "The fear behind every suspension, asked straight: does re-entry cost what entry cost? The question earns the shape's best answer."
+        },
+        {
+          "step": 5,
+          "node": "N402",
+          "position": 4,
+          "speaker": "Officer",
+          "surface": "No queue and no morning. Any one of three things finishes it on the spot: a bill, a bank letter, or a line from your landlord with the address on it. Whichever lands first, bring it straight to this desk — no ticket, just knock.",
+          "move": "F2",
+          "note": "The task handed back across the counter with its re-entry condition and its alternatives — three doors, any one of which opens it. The plural is the kindness: a single named document is a trap when the world won't produce it."
+        },
+        {
+          "step": 6,
+          "node": "N402",
+          "position": 5,
+          "speaker": "Resident",
+          "surface": "A bill, a bank letter, or a note from the landlord — first one that arrives, this desk, no ticket. I've got it, and I'll be back inside the month.",
+          "move": "F9",
+          "note": "The bank with the read-back — the safety catch clicked shut. An unbanked task kills an application silently; this turn is the walk teaching the learner to never leave a counter without performing exactly this."
+        }
+      ]
+    },
+    {
+      "id": "W1907",
+      "name": "Scene 5 — the queue held: the desk closes, the place survives",
+      "scene": 5,
+      "nodes_traversed": ["N17", "N204"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "E13, opening the second visit. Two things the register does daily: the counterpart's OWN small disclosure — the morning the system died — received without fixing (O7 in the direction health rarely showed), and the interruption banked institution-side: the thread named, the place preserved, N17 walked with its recovery half, which the store holds unattested. Admission: receive the held thread.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N17",
+          "position": 1,
+          "speaker": "Clerk",
+          "surface": "Next, please. Morning — what have we got?",
+          "move": "F21",
+          "note": "The summons: F21's solicit seat plus ritual, exactly what the mapping refused to mint a shape for. Floor material doing floor work."
+        },
+        {
+          "step": 2,
+          "node": "N17",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Morning. A bank letter — I'm finishing a registration that's held on file upstairs. I was told this desk first, no ticket.",
+          "move": null,
+          "note": "The banked task from scene 4 being SPENT, its own terms quoted back. The walk's threads paying each other off is the continuity a learner can feel."
+        },
+        {
+          "step": 3,
+          "node": "N204",
+          "position": 2,
+          "speaker": "Clerk",
+          "surface": "Quite right, and it's all here waiting. Bear with me one moment though — the system's been down all morning and it's only just crawling back to life. Whatever the screen does next, don't take it personally.",
+          "move": null,
+          "note": "The official's own unbidden aside — O7 running counter-direction, the disclosure flowing freer because less is at stake on it, exactly as the mapping's ladder note predicts. It also does honest work: it explains the wait before the wait happens."
+        },
+        {
+          "step": 4,
+          "node": "N204",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "No rush at all. Sounds like the kind of morning you'll be glad to see the back of.",
+          "move": "F204",
+          "note": "Received, matched, and NOT fixed — no advice, no questions about the system. F204's clean form, learner-side, at the cheapest possible stakes: the right place to own it before scene 11 needs it received about winter rent."
+        },
+        {
+          "step": 5,
+          "node": "N17",
+          "position": 2,
+          "speaker": "Clerk",
+          "surface": "The truth of it. — Ah, and now I'm being called through as well, of course I am. Right: I'm flagging you to the next window before I go. You keep your place, your letter's already on the pile, and you will not be starting again.",
+          "move": null,
+          "note": "The break arrives mid-recovery, because bad mornings stack — and the thread is named and banked INSTITUTION-SIDE before the Clerk moves a step: place, letter, guarantee. N17's position 3 with the recovery half the store lists as unattested, supplied by the register that performs it hourly."
+        },
+        {
+          "step": 6,
+          "node": "N17",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "Next window, same place, letter's on the pile — go, I'm grand here. And good luck with the rest of the morning.",
+          "move": "F9",
+          "note": "The bank read back from the receiving side, and the aside closed with warmth she owes nobody. Six turns, two shapes, zero friction — the register at its daily best, staged on purpose before the walk descends."
+        }
+      ]
+    },
+    {
+      "id": "W1908",
+      "name": "Scene 6 — finished on the spot: the banked task comes home",
+      "scene": 6,
+      "nodes_traversed": ["N402", "N110"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["S402"],
+      "note": "N402 position 6 — re-entry at the preserved state — and a ZERO-ADMISSION scene: every position here was bought earlier and is merely spent. The walk stages the payoff deliberately: a learner who has just banked a task needs to SEE the bank honoured, or the banking was rhetoric. The machine works; that fact is what gives scenes 10 and 14 their weight, because the same machine will shortly say no.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N402",
+          "position": 6,
+          "speaker": "Officer",
+          "surface": "Ana Marsh — there you are. Held on file from last month, one paper short. Is that it in your hand?",
+          "move": null,
+          "note": "The preserved state retrieved by name, unprompted — the declaration of scene 4 ('stays done') proving true. Re-entry begins where the suspension promised it would."
+        },
+        {
+          "step": 2,
+          "node": "N402",
+          "position": 6,
+          "speaker": "Resident",
+          "surface": "The bank letter — it came on Tuesday. Name and the new address on it, like you said.",
+          "move": "F1",
+          "note": "The task returned against its own condition, quoted. Nothing new is being negotiated; that is the point."
+        },
+        {
+          "step": 3,
+          "node": "N402",
+          "position": 6,
+          "speaker": "Officer",
+          "surface": "Name… address… that's the gap filled. Finishing it now — and there it is. Registered, from the fourteenth, exactly as the lease had it.",
+          "move": "F1",
+          "note": "The completion narrated as it happens, so the moment is audible. 'Exactly as the lease had it' calls back scene 3 — the record keeping the promise the intake made."
+        },
+        {
+          "step": 4,
+          "node": "N110",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "That's it? After the wrong floor, the wrong birthday and a month of watching the letterbox — done, just like that?",
+          "move": null,
+          "note": "The disbelief that real bureaucracy earns, spoken with the whole journey in it. It solicits the signpost, which is what the next turn is."
+        },
+        {
+          "step": 5,
+          "node": "N110",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "Done, and on the register tonight. The confirmation reaches you by post inside the week — and I've put a note on the file so nobody ever asks you for that bank letter again.",
+          "move": "F2",
+          "note": "What happens next, when she'll hear, and one unasked kindness that costs the Officer a keystroke — F2 in its purest register form, and the note-on-the-file motif that scene 14 will reach for at far higher stakes."
+        },
+        {
+          "step": 6,
+          "node": "N110",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "By post, inside the week. Thank you — truly. You've been straight with me from the first day, and it made the whole thing bearable.",
+          "move": "F1",
+          "note": "Assent, and the relationship named for what it was: straightness, not warmth, is the currency of this register, and the walk says so through her rather than about her."
+        }
+      ]
+    },
+    {
+      "id": "W1909",
+      "name": "Scene 7 — the certificate: money changes hands, and nothing else happens",
+      "scene": 7,
+      "nodes_traversed": ["N2"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "E11, ZERO-ADMISSION, and the re-attestation of P2 reckoning-and-pay — the bound pair the health corpus went dark on, recovered exactly where the mapping's E11 said it would be. Every position is floor: order, grant, reckoning, payment, receipt, onward solicit. The scene exists to prove to the learner that the new world runs on machinery they already own — and to hand the allowance thread its opening.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N2",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "While I'm sat here — can I get a certificate of the registration? I'm told the allowance people ask to see one.",
+          "move": null,
+          "note": "The order, with its reason attached — and the reason is the bridge: the allowance enters the walk as a word in a subordinate clause, the way real troubles enter real errands."
+        },
+        {
+          "step": 2,
+          "node": "N2",
+          "position": 5,
+          "speaker": "Officer",
+          "surface": "You can, and it prints right here. That's twelve — card or cash, whichever suits.",
+          "move": "F1",
+          "note": "Grant and reckoning in one breath. The amount is a bare number by design: no currency, no nation, and every pair instantiates it untouched."
+        },
+        {
+          "step": 3,
+          "node": "N2",
+          "position": 6,
+          "speaker": "Resident",
+          "surface": "Card, please. … There we go.",
+          "move": "F1",
+          "note": "P2's citizen half, performed without a wrinkle — the pair health could not reach because nobody pays a nurse. Here, paying the state is as ordinary as coffee."
+        },
+        {
+          "step": 4,
+          "node": "N2",
+          "position": 7,
+          "speaker": "Officer",
+          "surface": "And there's your certificate, stamped today, with the receipt folded inside the back page — keep that receipt, the allowance people like to see how recent it is.",
+          "move": "F2",
+          "note": "Delivery, receipt, and one volunteered fact that will save her a future trip. F2 again — this register's counters throw useful things in constantly, and the walk shows it as the norm it is."
+        },
+        {
+          "step": 5,
+          "node": "N2",
+          "position": 7,
+          "speaker": "Resident",
+          "surface": "Certificate and receipt, stamped today. Is there anything else they'll want from me, the allowance people?",
+          "move": "F9",
+          "note": "Receipt read back, and her own onward solicit — the Resident driving the encounter now, five scenes of competence behind her. The learner should feel the ground firm underfoot exactly here, because the next scene is where it tilts."
+        },
+        {
+          "step": 6,
+          "node": "N2",
+          "position": 1,
+          "speaker": "Officer",
+          "surface": "Just the certificate and your payment record — and the payment record we can see from this desk. Anything else while you're in the chair?",
+          "move": "F21",
+          "note": "The answer, and F21's own solicit handing her the opening. The trunk transaction closes; the allowance thread is one sentence away, invited rather than launched."
+        }
+      ]
+    },
+    {
+      "id": "W1910",
+      "name": "Scene 8 — am I entitled? The verdict against a line nobody in the room drew",
+      "scene": 8,
+      "nodes_traversed": ["N104", "N14", "N105"],
+      "composition_edges_used": ["C401"],
+      "survivability_edges_touched": [],
+      "note": "E5, the entitlement check: N104 result delivery with the norm held by neither speaker, N14's premise audit landing as the floor guarantees, and the official's F15 converting to N105 exactly as the seat-split rule requires — the Officer may not stay uncertain about the rules, so the uncertainty routes to the deciding officer. Admission: receive the norm — challenge its meaning, never its truth.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N104",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "There is one thing, since you're asking. The housing allowance — am I entitled? The rent's gone up twice since we moved in, and it's starting to bite.",
+          "move": null,
+          "note": "The eligibility question, with its stake attached in one clause. The stake is real and stays the CITIZEN'S — K4 raising cost, not changing positions, exactly as ruled."
+        },
+        {
+          "step": 2,
+          "node": "N104",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "Let's look properly. … The allowance wants five qualifying years, paid in. You're showing four years and three months — so as the record stands, that's a no. You're nine months short.",
+          "move": "F2",
+          "note": "The verdict delivered against the norm, number against number, with no softening and no blame. 'As the record stands' is load-bearing: it names what could change without promising that it will."
+        },
+        {
+          "step": 3,
+          "node": "N14",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "Five years — says who? Where does that line come from?",
+          "move": "F3",
+          "note": "The premise audit, aimed at the norm itself — N14's how-do-we-know-that, and the floor's N14 guarantee landing. In this register the audit is not rude; it is the citizen's one lever, and the walk shows it used cleanly."
+        },
+        {
+          "step": 4,
+          "node": "N14",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "From the scheme itself — it's written down, and it's the same line for every person who applies. Nobody at this desk drew it, and nobody at this desk can move it, in either direction — that last part protects you as much as it blocks you, on the days the desk likes somebody else better.",
+          "move": "F1",
+          "note": "The ground supplied, disowned, and then the disowning EARNED: the rule that cannot bend for her cannot bend against her either. One sentence carries the whole civics of the register without a word of explanation-speak."
+        },
+        {
+          "step": 5,
+          "node": "N104",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "Then what counts as a qualifying year? I've worked every year since we came — some of it part time, some of it seasonal.",
+          "move": "F3",
+          "note": "The challenge FOR MEANING, not against truth — the admitted position. She does not argue with 'four years and three months'; she interrogates what the counting rules are, which is the only argument this register can hear."
+        },
+        {
+          "step": 6,
+          "node": "N105",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "A qualifying year is any year with enough paid in across it — and part time can clear that bar, if the months were declared. Which is exactly why my reading isn't the one that matters: apply anyway. The deciding officer rules on the full record, not on what I can see from this chair, and you'll have it in writing either way.",
+          "move": "F2",
+          "note": "The reference points supplied, and then the conversion the F15 seat-split demands: the Officer will not guess about the rules' fine edge, so the question routes to the person licensed to answer it. 'Apply anyway' is the register's honest generosity — and it is also the hinge the rest of the walk turns on."
+        }
+      ]
+    },
+    {
+      "id": "W1911",
+      "name": "Scene 9 — the year that isn't there: a story, and the record that can't see it",
+      "scene": 9,
+      "nodes_traversed": ["N15"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "The floor's story-with-challenge and O8, staged where this register produces both NATURALLY: the citizen's account audited against the record — the job health's register structurally could not do, because ratifying the telling is health's signature move. A real story, really challenged; disagreement held with a bound; N15's explicit park, civil on both sides. Admission: hold against the record without rupture.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N15",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Four years and three months can't be right, though — listen. Our first year in the country, I worked the whole season at the harbour. Six days a week, gutting and packing from before light, cash in an envelope every Friday. Ask anyone who was on that quay. That's my missing year, sat right there.",
+          "move": "F19",
+          "note": "The story, told whole — time, place, texture, witnesses — because the floor item needs a real telling, not a claim. Everything in it is true. That is what makes the scene hurt, and what makes it worth teaching."
+        },
+        {
+          "step": 2,
+          "node": "N15",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "I believe every word of the season. And I'm looking at that year on the screen now, and it is empty — not one month showing, not one payment in. If nothing was paid in, the record cannot see you, however hard the work was. Those are two different truths and only one of them counts here.",
+          "move": null,
+          "note": "The challenge — sceptical where it must be, and precisely aimed: not at whether she worked, but at whether the scheme can count it. 'Two different truths' is the whole scene in four words, and the challenge comes from the record, never from a mood."
+        },
+        {
+          "step": 3,
+          "node": "N15",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "I'm telling you the year happened. Half the town saw me on that quay — does every one of them count for nothing against a screen?",
+          "move": "F16",
+          "note": "The counter held, and sharpened into the register's oldest question: testimony against the record. She concedes nothing and neither will the next turn — this is O8 in its honest form, disagreement about the world held open."
+        },
+        {
+          "step": 4,
+          "node": "N15",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "Against this screen — yes, I'm sorry, it does. The record moves on paper and on nothing else: payslips, a contract, anything from the boat with your name and that year on it. Bring one sheet of it and the year comes alive. Word of mouth won't do it, and mine wouldn't either, and that's the truth even when I hate it.",
+          "move": "F16",
+          "note": "The counter held from the other chair, with the bound stated: here is exactly what would move the record, and here is what never will — the Officer's own word included, which is the disowning that keeps this civil. Sympathetic and constrained in the same breath: the register's defining voice."
+        },
+        {
+          "step": 5,
+          "node": "N15",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "Then we don't agree, and I can see we're not going to today. I'll go looking for paper — there was an office on the quay once, there might be something in a drawer somewhere.",
+          "move": null,
+          "note": "The explicit park, resident-side: the disagreement named AS unresolved, and the energy turned toward the one thing the bound said could work. Parking without surrender, and without pretending to be persuaded — the position the floor exists to guarantee."
+        },
+        {
+          "step": 6,
+          "node": "N15",
+          "position": 4,
+          "speaker": "Officer",
+          "surface": "That's exactly the right next move, and I mean that. And whatever you find or don't — put the whole harbour story in the application anyway, in your own words. The deciding officer reads every line, and a true story is never wasted paper.",
+          "move": "F2",
+          "note": "The park ratified warm, and one more unasked gift: the story has a place to go even unproven. The scene ends with both people right, which is the hardest ending to write and the only honest one this register has."
+        }
+      ]
+    },
+    {
+      "id": "W1912",
+      "name": "Scene 10 — the refusal: not my no, and here is how you fight it",
+      "scene": 10,
+      "nodes_traversed": ["N401", "N107"],
+      "composition_edges_used": ["C401"],
+      "survivability_edges_touched": ["S401"],
+      "note": "E6, the walk's heart, and the first authored attestation of N401 bound-refusal-with-a-contest-path: the refusal disowned by its deliverer, the rule cited as a rule, and the instrument to contest it — path, deadline, forum — handed over UNBIDDEN, with N107's deadline machinery composed into the handover. U1 territory: the plain no as the ordinary case, survived on-page. Admission: bank the contest path.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N401",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "This came Saturday. Refused. I've read it three times at the kitchen table and I still want to hear it from a person.",
+          "move": null,
+          "note": "The decision fallen due, and the real reason people bring letters to counters: paper refuses you in the third person, and something in us needs the no said to our face before we can start surviving it."
+        },
+        {
+          "step": 2,
+          "node": "N401",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "Then you'll hear it plainly. The scheme wants five qualifying years; the record shows four years and three months; so the answer is no. And it is not my no, and it wasn't the signing officer's either — the line is written in the scheme, and neither of us can cross it any more than you can. Nobody in this building decided against you.",
+          "move": null,
+          "outcome_branch": true,
+          "note": "N401 position 2 whole: refuse by the rule, disowned — with N104's norm-referenced reason composed in (C401), number against number. 'Nobody decided against you' is the disowning done properly: it removes the enemy without removing the no."
+        },
+        {
+          "step": 3,
+          "node": "N401",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "So that's the end of it, then. A letter, a line in a scheme, and done.",
+          "move": null,
+          "note": "The flat after-voice of a landed refusal. It is not a question, and the next turn treats it as the thing it really is: the moment the contest path must arrive, asked for or not."
+        },
+        {
+          "step": 4,
+          "node": "N401",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "It is not the end, and the letter should have said so in bigger print. You can appeal — to the appeals office, and it costs you nothing. One month, to the day, from the date at the top of that letter; after the month the door shuts and nobody alive can hold it open. The form is in this drawer and I'm giving it to you now.",
+          "move": "F2",
+          "note": "The contest instrument handed over UNBIDDEN — path, deadline, forum, and the form physically crossing the counter — with N107's trigger-and-loss composed in. This position pair, disowned refusal then unrequested contest path, is exactly what N401 was minted for; no store shape can say this turn."
+        },
+        {
+          "step": 5,
+          "node": "N401",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "One month from the date on the letter, to the appeals office, on this form. … All right. Then I'm not done — I'm just not done TODAY.",
+          "move": "F202",
+          "note": "The admitted position: absorb, and bank the path. F202's absorb-and-move with the move aimed at the FORUM, not the refuser — S401's recovery, authored. The last sentence is the survival itself, said in her own words."
+        },
+        {
+          "step": 6,
+          "node": "N401",
+          "position": 6,
+          "speaker": "Officer",
+          "surface": "You're not done. Send it early rather than late, and put everything in — the payments, the dates, the harbour year, all of it, even what you think they already know. They only rule on what's in front of them.",
+          "move": "F14",
+          "note": "The close with the relationship intact and one piece of craft handed over: appeals are ruled on their contents. The Officer remains what the register makes them — sympathetic, constrained, and genuinely on nobody's side but the process's."
+        }
+      ]
+    },
+    {
+      "id": "W1913",
+      "name": "Scene 10 — the press on the person: 'you could sort this if you wanted'",
+      "scene": 10,
+      "nodes_traversed": ["N401"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["S403"],
+      "attaches_to": { "walk": "W1912", "step": 4, "node": "N401", "position": 4 },
+      "note": "N401's failure branch, S403: the contest lands on the person who did not author the refusal. The recovery is position 5 — drop the self, hold the rule, re-route the press to the process — and the walk gives it its best form: the anger is not extinguished, it is AIMED. What pressing the person buys is nothing; what the same words buy on paper is an appeal.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N401",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "This came Saturday. Refused. I've read it three times at the kitchen table and I still want to hear it from a person.",
+          "move": null,
+          "note": "Identical to the trunk. The branch is in the fourth turn, never in the ask."
+        },
+        {
+          "step": 2,
+          "node": "N401",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "Then you'll hear it plainly. The scheme wants five qualifying years; the record shows four years and three months; so the answer is no. And it is not my no — the line is written in the scheme, and I can't cross it any more than you can.",
+          "move": null,
+          "note": "The same disowned refusal, compressed. Same counter, same rule, same no."
+        },
+        {
+          "step": 3,
+          "node": "N401",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "What you can do is appeal — the appeals office, one month to the day from the date on the letter, and it costs nothing. The form's here in the drawer.",
+          "move": "F2",
+          "note": "The instrument arrives unbidden here too — the branch point sits in what she does WITH it. Compressing positions 2 and 3 into adjacent turns keeps the branch honest: she was handed everything the trunk's Resident was handed."
+        },
+        {
+          "step": 4,
+          "node": "N401",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "Don't hide behind the scheme. You people sit here with the whole record in front of you — one signature from somebody in this building and my year counts. You could sort this if you wanted to. You just won't.",
+          "move": null,
+          "branch_point": true,
+          "note": "The contest of the person: 'you people', the imagined signature, the will read as malice. Every counter on earth hears this weekly, and the walk stages it because the learner will one day be the person saying it — or hearing it."
+        },
+        {
+          "step": 5,
+          "node": "N401",
+          "position": 5,
+          "speaker": "Officer",
+          "surface": "You're right to be angry — nine months short after four years' work would make anyone burn. But being angry at me can't change the number, because there is no signature in this building that can — that pen sits in the appeals office and nowhere else. So take everything you just said to me and say it to them, on that form, where it can actually win you something.",
+          "move": "F16",
+          "note": "The recovery whole: concede the anger (F16's concede-and-hold), drop the self, hold the rule, and re-route the press to the process — S403's attested response run at full pressure. The anger is treated as fuel with a wrong address, not as a sin."
+        },
+        {
+          "step": 6,
+          "node": "N401",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "… On paper, then. Give me the form. And the thing I said about the four years' work — I'm putting that in word for word.",
+          "move": "F202",
+          "note": "The press lands where it can win: the branch converges back to the trunk's bank, with the heat conserved rather than spent. The learner sees that the angry road and the calm road end at the same form — one of them just costs more to walk."
+        }
+      ]
+    },
+    {
+      "id": "W1914",
+      "name": "Scene 11 — lodging the appeal: one wrong read-back, and one true thing said sideways",
+      "scene": 11,
+      "nodes_traversed": ["N107", "N204"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "Two rare birds in one scene, both world-motivated. O4 — the read-back WRONG and corrected — which health attested the precondition of and never reached: here the stakes of a mis-banked instruction are a dead appeal, so the register corrects read-backs hard. And O7 learner-side: the disclosure made under real weight and CLOSED BY ITS OWN DISCLOSER, the full N204 arc with the discloser doing her own position 4. Admission: the aside made and closed.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N107",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "The appeal form — filled in, every box. The payments listed, the dates, and the harbour year told straight through, like you said.",
+          "move": null,
+          "note": "The instrument from scene 10 coming back armed. 'Like you said' — the walk's threads keep honouring each other, which is what makes a world instead of a set of drills."
+        },
+        {
+          "step": 2,
+          "node": "N107",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "That's a well-made form. Now the part people get wrong: it does NOT come to me. You post it yourself, to the appeals office — the address is printed on the back — and you tear off the strip at the bottom and keep it, because that strip is your proof and your reference, both.",
+          "move": "F1",
+          "note": "The conditional instruction with its urgency plain. The register's instructions are load-bearing in a way café instructions never are: a mis-step here kills the case silently, which is why the next two turns exist."
+        },
+        {
+          "step": 3,
+          "node": "N107",
+          "position": 5,
+          "speaker": "Resident",
+          "surface": "Right — so I bring it back to this desk tomorrow and you send it up with my file.",
+          "move": "F9",
+          "note": "O4: the read-back, and it is WRONG — she has folded the new instruction into the shape of every previous visit, which is exactly how real mishearings happen: not noise, but the old pattern eating the new one."
+        },
+        {
+          "step": 4,
+          "node": "N107",
+          "position": 4,
+          "speaker": "Officer",
+          "surface": "No — stop there, because that's the mistake that sinks people. It never touches this desk. You post it, yourself, to the appeals office. If it comes here it sits in the wrong building while your month runs out, and no one may even notice it sitting there.",
+          "move": "F1",
+          "note": "The correction, delivered at the weight the stake deserves — naming the failure mode in full, silence included. O4's recovery is not embarrassment management; it is the wrong version dismantled and the right one re-laid."
+        },
+        {
+          "step": 5,
+          "node": "N204",
+          "position": 2,
+          "speaker": "Resident",
+          "surface": "I post it myself. I keep the strip. … You'll forgive me — my hands are shaking a bit. If this doesn't come through, I honestly don't know how we make the winter rent, with the two children. — Anyway. You don't need my worries on your counter. The post office on the square, is it?",
+          "move": "F9",
+          "note": "The corrected read-back, and then the disclosure — unbidden, mid-business, under real weight — and then N204 position 4 done by its OWN discloser: 'Anyway.' The admitted position is the whole arc in one turn: step out of the frame, say the true thing, and bring yourself back before anyone has to fetch you."
+        },
+        {
+          "step": 6,
+          "node": "N204",
+          "position": 3,
+          "speaker": "Officer",
+          "surface": "It's a heavy thing you're carrying, and there's no shame in a shaking hand at this counter — I see them every day. The square, yes — and the first collection goes at four, so today still counts.",
+          "move": "F204",
+          "note": "Acknowledged WITHOUT fixing — no advice, no routing to a support service, though this counter's whole instinct is to route: the pull the mapping names is resisted on-page. Then the resume she asked for, with one useful fact in it. The business continues because she chose for it to."
+        }
+      ]
+    },
+    {
+      "id": "W1915",
+      "name": "Scene 12 — the wait: a promise nobody present can make, bounded honestly",
+      "scene": 12,
+      "nodes_traversed": ["N109"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "N109 with the bound licensed by JURISDICTION rather than knowledge — the mapping's own refinement: the Officer doesn't lack the fact, they lack the standing, because the timetable belongs to an absent principal. F102 supplies the standard; the threshold question gets its threshold; and the reference number is installed as the HANDLE the whole waiting period hangs from. Admission: accept the bounded promise.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N109",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Last thing and I'll let you be. When do I hear? The rent won't wait on a mystery, and neither will my sleep.",
+          "move": null,
+          "note": "The guarantee sought, with the stake named lightly — the register's most-asked question, asked the way people actually ask it."
+        },
+        {
+          "step": 2,
+          "node": "N109",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "I can't promise you a date — and I want you to hear why, because it's not dodging: once the form is posted, the case is out of this building's hands entirely. It belongs to the appeals office and to nobody else, me included.",
+          "move": null,
+          "note": "The bound, with its jurisdictional licence spoken whole. The refusal to promise is itself held in trust — the timetable is the processing team's, not the speaker's — and saying so plainly is what makes the bound acceptable rather than evasive."
+        },
+        {
+          "step": 3,
+          "node": "N109",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "What I can give you is the standard: most appeals are answered inside six weeks, and yours is a paper case, which tend to run quicker than the ones that need a hearing.",
+          "move": "F102",
+          "note": "F102 — the normality asserted from the record, not from hope. The standard is the register's substitute for a promise, and the walk teaches the learner to take it as one: real information, honestly capped."
+        },
+        {
+          "step": 4,
+          "node": "N109",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "Six weeks as the usual. And if week seven arrives and my letterbox is still empty?",
+          "move": "F3",
+          "note": "The threshold question — the citizen's side of N107 machinery, run against a timetable instead of a form. She is not contesting the bound; she is instrumenting it, which is the admitted position maturing on-page."
+        },
+        {
+          "step": 5,
+          "node": "N109",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "Then you ring the number printed on your tear-off strip and read them the reference on it. That reference is the whole key — with it, whoever answers has your case on the screen before you've finished your sentence. Without it, you're a stranger in a queue.",
+          "move": "F2",
+          "note": "The threshold answered with the HANDLE: the reference as the difference between a case and a stranger. K3 taught one last way — in this register, you are findable exactly to the degree that you kept the paper."
+        },
+        {
+          "step": 6,
+          "node": "N109",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "Six weeks as the usual, ring after that, reference off the strip — and the strip lives in my wallet from today. All right. That I can live with.",
+          "move": "F1",
+          "note": "The bound accepted and read back with the plan inside it. 'That I can live with' is the admitted position stated in six words: not satisfied — equipped."
+        }
+      ]
+    },
+    {
+      "id": "W1916",
+      "name": "Scene 13 — the complaint: seven weeks, and a sorry from someone who didn't do it",
+      "scene": 13,
+      "nodes_traversed": ["N105"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": [],
+      "note": "E10, and the first authored attestation of F401 sorry-on-behalf: an apology for a fault that is real, belongs to an absent principal, concedes no personal fault and seeks no absolution — moving to record and remedy in the same turn. F101 ratifies the telling first; F103 gives the complaint teeth by numbering it; and the scene turns on its own routing when the record answers back. Admission: complain to the blameless.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "I want to say something and I want it written down. Seven weeks ago I posted an appeal. Six weeks is the standard — your own desk told me so. I've rung the number twice and got a holding message, and the rent I told you about fell due last Friday. Somebody, somewhere, is sitting on my winter.",
+          "move": null,
+          "note": "The complaint, built the way earned complaints are: the institution's own standard quoted back at it, the receipts in order, and the stake at the end. 'I want it written down' — she has learnt the register's one true lever, and she pulls it in her opening sentence."
+        },
+        {
+          "step": 2,
+          "node": "N105",
+          "position": 2,
+          "speaker": "Clerk",
+          "surface": "Then you're right to be standing here saying it. I'm sorry you've been left hanging past the mark we ourselves gave you — that shouldn't happen, and it isn't how this is meant to work. I'm logging your complaint now, word for word as you said it.",
+          "move": "F401",
+          "note": "F101's ratification first — the telling was correct to make — then F401 whole: sorry on behalf of a party that is not the speaker, fault real, no personal blame taken, no absolution sought, and the move to record in the same breath. Not P101's ritual self-blame, not F203's own-fault trade: the mint earning its id."
+        },
+        {
+          "step": 3,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Logged where, though? I've had things 'logged' before. Logged has a way of meaning buried.",
+          "move": "F3",
+          "note": "The scepticism the word has earned everywhere on earth. She is not contesting the Clerk — she is auditing the machinery, which scene 8 taught her to do."
+        },
+        {
+          "step": 4,
+          "node": "N105",
+          "position": 3,
+          "speaker": "Clerk",
+          "surface": "Logged with a number of its own — there, hear it printing. A numbered complaint can't be buried: it goes to the section that owns delays, and they have to answer it in writing, to you, inside a fixed time. And while that prints — give me your appeal reference, and let's see where the thing itself has actually got to.",
+          "move": "F103",
+          "note": "The answer to 'buried' is the same answer this register gives to everything: paper with a number on it, owed a reply on a clock. Then the Clerk reaches past the complaint to the CASE — remedy alongside record, which is F401's second half honoured."
+        },
+        {
+          "step": 5,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Here — off the strip, like I was taught. It's lived in my wallet seven weeks.",
+          "move": "F1",
+          "note": "Scene 12's handle, produced at the exact moment it was installed for. The learner watches their own earlier lesson pay out in real time."
+        },
+        {
+          "step": 6,
+          "node": "N105",
+          "position": 3,
+          "speaker": "Clerk",
+          "surface": "And there's your answer, hiding inside the bad news: it isn't lost — it's DECIDED. The letter went out Friday, so it's crossed your complaint in the post. What it says, I can't see from this desk and wouldn't read you secondhand if I could — but the deciding office upstairs can put it in front of you today. Take a ticket; I'll tell them you're coming.",
+          "move": "F2",
+          "note": "The routed close: the complaint stands and STAYS logged — the delay was real regardless of the outcome — and the case routes to the mouth licensed to speak it. The scene refuses the tidy ending where a complaint magically produces the answer; what it produces is the next door, which is what complaints really buy."
+        }
+      ]
+    },
+    {
+      "id": "W1917",
+      "name": "Scene 13 — 'don't be sorry, be responsible': the apology refused",
+      "scene": 13,
+      "nodes_traversed": ["N105"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["S403"],
+      "attaches_to": { "walk": "W1916", "step": 2, "node": "N105", "position": 2 },
+      "note": "E10's failure branch: the complainer wants the official to OWN it personally, and sorry-on-behalf is heard as sorry-instead-of-doing. The recovery is the same hold as W1913 — drop the self, hold the process — but run at the front counter, where the holder has even less power than the Officer had. What responsibility actually looks like in this register is the scene's one sentence.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Seven weeks since I posted the appeal — six is your own standard. Two phone calls, a holding message, and my rent fell due Friday. I want it written down.",
+          "move": null,
+          "note": "The same earned complaint, compressed. The branch lives entirely in what she does with the apology."
+        },
+        {
+          "step": 2,
+          "node": "N105",
+          "position": 2,
+          "speaker": "Clerk",
+          "surface": "You're right to be standing here saying it. I'm sorry you've been left hanging past our own mark — that shouldn't happen. I'm logging it now, word for word.",
+          "move": "F401",
+          "note": "The same F401, verbatim in substance. The apology is correct and complete — which is exactly why the next turn stings: it gets refused anyway."
+        },
+        {
+          "step": 3,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Don't be sorry — be responsible. YOU told me six weeks. I don't want a sorry from the one person here who's been decent, I want somebody in this building to pick the thing up and MOVE it.",
+          "move": null,
+          "branch_point": true,
+          "note": "The refusal of on-behalf: she can hear the apology is personal-shaped and the fault is institution-shaped, and the mismatch reads as evasion. 'The one person here who's been decent' keeps her fair while she presses — anger at the register's honest best."
+        },
+        {
+          "step": 4,
+          "node": "N105",
+          "position": 2,
+          "speaker": "Clerk",
+          "surface": "If moving it were mine to do, it would have moved before you finished your first sentence — I want you to believe that. It isn't. Nothing at this counter reaches into the appeals office; that's built that way on purpose, so that nobody's case moves because they shouted and nobody's stalls because they couldn't.",
+          "move": "F16",
+          "note": "Drop the self, hold the process — and then the register's deepest card, played face up: the same wall that blocks her PROTECTS her. The insulation of the deciding office from the counter is not indifference; it is why shouting-power isn't the currency. Scene 8's 'protects you as much as it blocks you', paid off at full pressure."
+        },
+        {
+          "step": 5,
+          "node": "N105",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "So no one in this building is responsible for anything. That's the system working, is it?",
+          "move": "F3",
+          "note": "The bitter summary, offered as a challenge. It deserves a real answer, and the register has one — it is just slower and duller than the answer she wants."
+        },
+        {
+          "step": 6,
+          "node": "N105",
+          "position": 3,
+          "speaker": "Clerk",
+          "surface": "Someone is responsible — a named section, and your complaint is on its way to them with a number on it, and they now owe you an answer in writing on a clock. That's what responsibility looks like in here: slower than you want, duller than you want, and on paper. It's also the only kind that's ever once paid anyone's rent. Don't lose that number — and give me your appeal reference, because the least I can do from this chair is find out where the thing is.",
+          "move": "F2",
+          "note": "The hold completed without a single concession against the process — and then the pivot to remedy, same as the trunk: check the case itself. The branch converges on W1916 step 6's discovery. She got no satisfaction and everything the counter actually had; learning the difference is the branch's whole cargo."
+        }
+      ]
+    },
+    {
+      "id": "W1918",
+      "name": "Scene 14 — the second no, and the future that is actually there",
+      "scene": 14,
+      "nodes_traversed": ["N401", "N110"],
+      "composition_edges_used": [],
+      "survivability_edges_touched": ["S401"],
+      "note": "O9 at the institutional rung — the same ask refused a second time, by a second mouth, with the contest path SPENT and the settle position gone. Health could not produce this scene: its register accepts the first no. This register is where a learner meets the no that stays no — and the walk's last lesson is that surviving it is not rhetoric: the future offered is arithmetic, not comfort. Admission: the terminal absorb.",
+      "steps": [
+        {
+          "step": 1,
+          "node": "N401",
+          "position": 1,
+          "speaker": "Officer",
+          "surface": "I have the decision here in front of me. Do you want it read out as written, or plain, in my own words?",
+          "move": null,
+          "note": "The offer of register — the one mercy the deliverer of a bound no actually owns. Small, real, and worth teaching: even inside the tightest constraint there is always one thing left that is yours to give."
+        },
+        {
+          "step": 2,
+          "node": "N401",
+          "position": 1,
+          "speaker": "Resident",
+          "surface": "Plain. I've had enough letters.",
+          "move": "F1",
+          "note": "The choice made in four words. She has been refused before; she knows how she wants it now, and asking for it plainly is itself the competence the walk has been building."
+        },
+        {
+          "step": 3,
+          "node": "N401",
+          "position": 2,
+          "speaker": "Officer",
+          "surface": "The appeal is refused. The appeals officer went looking for the harbour year — you can see the search in the notes, they took the story seriously — and they found what we found: nothing paid in, and no paper anywhere to put it there. Without paper the year can't be counted; without the year you're short; and for this application, that is final. There is no third door.",
+          "move": null,
+          "outcome_branch": true,
+          "note": "The second no, complete and disowned like the first — but with the contest instrument gone and its absence stated rather than smoothed: 'no third door'. That the appeals officer visibly TRIED is not decoration; it is what makes the no survivable, because a no from a process that looked is a different animal from a no from a process that didn't."
+        },
+        {
+          "step": 4,
+          "node": "N401",
+          "position": 4,
+          "speaker": "Resident",
+          "surface": "… So a year of my life counts for nothing because nobody wrote it down. That's the sentence I take home to my husband, is it?",
+          "move": null,
+          "note": "The absorb at its hardest: nothing left to bank, nowhere left to route, and the loss said out loud in its true size. The walk does not shrink this turn, because the learner's own version of it will not be shrinkable either."
+        },
+        {
+          "step": 5,
+          "node": "N401",
+          "position": 5,
+          "speaker": "Officer",
+          "surface": "For that scheme, that year — yes, and I won't dress it up; you've never once let me. But take home the other sentence too, because it's just as true: you're paying in now, every month, and those months are already on the record where nothing can unwrite them. Nine more and the five years stand on their own — no harbour, no appeal, no arguing, nothing held in anyone's trust but the arithmetic. That's next summer. Apply the day it lands — and I'm putting a note on the file today so that whoever's in this chair sees the whole story and expects you.",
+          "move": "F2",
+          "note": "The future, made of record instead of hope: dates, months, arithmetic — the same machinery that said no twice, now measurably counting toward yes. The note-on-the-file is scene 6's smallest kindness returning at the walk's heaviest moment: what the register can still give when it can give nothing else is CONTINUITY. F2 to the last."
+        },
+        {
+          "step": 6,
+          "node": "N110",
+          "position": 3,
+          "speaker": "Resident",
+          "surface": "Next summer, on my own numbers, with the story already on the file. … All right. That, I can carry home. Thank you — for the no as much as the rest. You never once pretended, and it turns out that's the thing that kept me standing.",
+          "move": "F14",
+          "note": "The terminal absorb, completed: the second no survived with the relationship intact and a real date in her pocket. Her last line is the walk's thesis said by the person it happened to — in this register, the kindness that holds people up is not softness; it is being told the truth at every counter, all the way down. End of walk."
+        }
+      ]
+    }
+  ]
+}
