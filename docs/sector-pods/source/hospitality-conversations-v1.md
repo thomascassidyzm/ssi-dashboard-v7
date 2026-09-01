@@ -413,3 +413,162 @@ reformulating. The repair never proposes a third language; the menu and the fing
 - **W:** "That's exactly right. And 'here you are' was perfect — I'm learning this language too, you know."
 - **G:** "You also?! It is hard, yes?"
 - **W:** "It's hard, and then one day it's Tuesday and it's easier. Come back and practise on us — we're free."
+
+---
+
+# Part 2: The shift
+
+*(The learner's other family of encounters: worker to worker. The costliest failure in this
+register is worker-to-worker — the allergen chain is a relay, and the dropped baton kills in the
+back-of-house, not at the table. That is why the ⚠ lines below live at the pass.)*
+
+## 2.0 Linguistic situation opener (shift-facing)
+
+### Flow 1 *(happy path — the first shift)*
+- **W:** "Before service — you should know I'm learning your language. I'll stay in it as much as I can, but if I get stuck mid-rush I'll switch to mine rather than slow the pass down."
+- **C:** "Fair enough. On the pass, clear beats clever — say it however it comes out fastest."
+- **W:** "That's what I figured. And if I call something wrong, shout — I'd rather be shouted at than send the wrong plate."
+- **C:** "Oh, I'll shout. Ask anyone. Numbers first, always: table, then dish. You'll pick it up."
+- **W:** "Table, then dish. Got it. Where do you want me tonight?"
+- **C:** "Section by the window, with Marta. She talks even more than the customers — you'll be fluent by Friday."
+
+### Flow 2 *(problem — the rush carve-out)*
+- **W:** "Can I try running the pass calls in your language tonight? I need the practice."
+- **C:** "Not mid-service — the pass is no place for a muddle, and Saturday's a zoo. We do service in yours."
+- **W:** "Understood. Service in mine, no argument."
+- **C:** "But after close, when we're cleaning down? All you like. I'll even slow down for you, which is more than I do for the owner."
+- **W:** "Deal. And the allergy calls — those stay in whichever's clearest, always?"
+- **C:** ⚠ "Allergy calls stay in whatever the whole kitchen understands first time, every time. That one's not about your learning, and you already know it."
+
+---
+
+## 2.1 The pre-service briefing
+
+### Flow 1 *(happy path — the lineup)*
+- **K:** "Right, tonight: the special's the crab linguine, and the sea bass is low — maybe eight portions, so don't oversell it."
+- **W:** "Crab special, bass is low. What's in the crab — any of the usual suspects?"
+- **K:** "Good question — shellfish obviously, and there's chilli in it, so warn the timid. Table fifteen is an anniversary: dessert plate's written, it's on the house."
+- **W:** "Fifteen, anniversary, dessert on the house. Who's running the terrace?"
+- **K:** "You are, with Marta — you've not run it before, right? Stay on her shoulder for the first hour."
+- **W:** "On her shoulder, hour one. Ready when you are."
+
+### Flow 2 *(problem — the briefing missed, re-run at speed)*
+- **W:** "Marta — quick one, mid-service: what did I miss about the crab? A guest just asked and I blanked."
+- **K:** "Chilli. There's chilli in it — that's the thing people want to know."
+- **W:** "Chilli in the crab, got it. And the bass — are we still selling it?"
+- **K:** "Dead as of ten minutes ago — chef 86'd it. Push the hake."
+- **W:** "Bass dead, push the hake. Sorry — I should have caught the lineup properly."
+- **K:** "You caught it now, that's what matters. Go — your window couple are waving."
+
+---
+
+## 2.2 The 86 and the pass
+
+### Flow 1 *(happy path — the call relayed)*
+- **C:** "86 the sea bass! Last one just went."
+- **W:** "Heard — 86 the bass. I've got a table mid-order on it, so I'll go and turn them around now."
+- **C:** "Do that. The hake's good and I've got plenty."
+- **W:** "Hake it is. And Marta's section — does she know?"
+- **C:** "You're relaying it, so she will in a minute, won't she?"
+- **W:** "On my way. 86 the bass, long live the hake."
+
+### Flow 2 *(question — the sequencing negotiation)*
+- **W:** "Chef — I need mains on twelve held. They're mid-speech out there, glasses up and everything."
+- **C:** "How long? Five minutes I can do. Twenty, and it's re-fired and you're paying me in pints."
+- **W:** "It's a short speech — the best man's already lost his notes. Call it eight."
+- **C:** "Eight, then, and not a second more — the fish won't forgive either of us."
+- **W:** "Understood — held for eight, and I'll give you the nod the moment the glasses come down."
+- **C:** "Watch for my hand. And tell the best man he owes the kitchen a round."
+
+### Flow 3 *(problem — the relay failed, the own-fault admission)*
+- **W:** "Chef — my fault: table nine ordered the bass after the 86. I never relayed it to myself, basically — I took the order on autopilot."
+- **C:** "The bass I don't have. So what have you told them?"
+- **W:** "Nothing yet — I came to you first. I'll offer them the hake and tell them straight it was my mistake, not the kitchen's."
+- **C:** "Right answer, twice. Hake's four minutes, and I'll bump it up the queue."
+- **W:** "Thanks, chef — the re-fire's on me. Anything to sweeten it for them?"
+- **C:** "Send the good bread while they wait. And stop ordering on autopilot — you're better than that."
+
+---
+
+## 2.3 The stop call at the pass ⚠
+
+### Flow 1 *(safety-critical ⚠ — the learner stops the plate)*
+- **W:** ⚠ "WAIT — twelve is the nut allergy. Is that the satay? Don't send it."
+- **C:** "Hands off the plate. Talk to me — what's twelve, exactly?"
+- **W:** ⚠ "Nut allergy, serious, it's on the ticket — and satay's peanut through and through."
+- **C:** "Ticket says… you're right. That plate was for fourteen, but they've swapped tables, so good catch either way. Twelve gets the grilled chicken."
+- **W:** ⚠ "Confirming: twelve, grilled chicken, nut-safe. I'll carry it myself so it can't cross with anything."
+- **C:** "Do that. That's what the stop call is for — never apologise for one."
+
+### Flow 2 *(safety-critical ⚠ — the learner is stopped)*
+- **C:** ⚠ "STOP — that dressing. Who's it for?"
+- **W:** "Table six, the salad… oh no. Six is the dairy intolerance, isn't it."
+- **C:** ⚠ "It is, and that dressing's half cream. Fresh salad, oil and lemon — two minutes. Nothing's happened; that's why we stop things."
+- **W:** "Fresh salad, oil and lemon, for six. Thanks, chef — I'd have walked it straight over."
+- **C:** "That's why the pass has two pairs of eyes. Check the ticket, then check it again."
+- **W:** "Ticket, then again. It won't need catching twice."
+
+### Flow 3 *(safety-critical ⚠ — the stop resented, and held)*
+- **W:** ⚠ "Hold it — is there almond in that? Twelve is the nut allergy."
+- **C:** "It's fine, it's the almond oil — it barely—"
+- **W:** ⚠ "Not for twelve it isn't. On allergies the stop call outranks everyone — you taught me that in week one."
+- **C:** "…I did, didn't I. Alright. Plate's dead — remake without, three minutes."
+- **W:** "Thank you, chef. I'll tell the table their food's three minutes out and worth it."
+- **C:** "And you were right to dig in. Mid-rush I forget my own rules — that's exactly when they matter."
+
+---
+
+## 2.4 The shift handover
+
+### Flow 1 *(happy path — the state of the floor)*
+- **W:** "Right, handover: nine's on desserts and they're comped — check on them, they've had a night. Twelve is a nut allergy, it's on the ticket. The window couple are pre-theatre — they need the bill by twenty past seven."
+- **K:** "Nine comped and minded, twelve nuts, window billed by seven-twenty. What's open besides?"
+- **W:** "One thing in flight: 204's heating — maintenance are coming back tomorrow, it's all in the book, and the guest knows. Float's counted, forty in the tin."
+- **K:** "In the book, float's forty. Anything about the specials?"
+- **W:** "Crab's got chilli in it — say so before they order, not after. And the bass is long gone, push the hake."
+- **K:** "Chilli warned, hake pushed. Go home — I've got it from here."
+
+### Flow 2 *(problem — the incoming worker wasn't told)*
+- **K:** "Why is table nine asking me about a free dessert? Nobody told me anything about nine."
+- **W:** "It's in the book — look: 'nine comped, rough night, check on them.' I wrote it before I did the bins."
+- **K:** "…So it is. I came in through the kitchen and never opened the book. My fault."
+- **W:** "No blame — but the book's the handover, not me. If I'm gone and it's written, it happened."
+- **K:** "Fair. So what do I actually do with nine right now?"
+- **W:** "Smile, bring the dessert, say it's on the house, and don't mention the muddle — they've had enough of a night without our admin."
+
+### Flow 3 *(question — the learner receives the handover)*
+- **K:** "Handing over: fifteen's mid-tasting-menu, two courses left, and the wine pairings are written on the ticket — don't freelance them."
+- **W:** "Fifteen, two courses left, pairings as written. What else?"
+- **K:** "The corner table asked for the manager earlier — it's resolved, but if they wave, fetch her, don't relitigate it yourself."
+- **W:** "Corner waves, I fetch, I don't fix. Anything on the floor I should watch?"
+- **K:** "The candle on eight is nearly out and the replacements are — honestly, I don't know where they live. Ask Marta, she knows where everything lives."
+- **W:** "Candles via Marta. Go on, off with you — I've got it from here."
+
+---
+
+## 2.5 Cabin talk
+
+### Flow 1 *(human moment — the post-mortem)*
+- **K:** "That table nine, though."
+- **W:** "Tell me about it. Three re-fires and a speech about the old chef. I aged a year."
+- **K:** "You handled it, mind. The manager said so — 'didn't argue once', she said."
+- **W:** "I argued plenty. Just inside my head, where it's legal."
+- **K:** "That's the whole job, that is. Inside voice for the floor, outside voice for the cabin."
+- **W:** "And a pint for both voices. Whose round is it?"
+
+### Flow 2 *(question — the story challenged)*
+- **K:** "So this stag do walks in — twelve of them — and I swear, the best man orders eleven pints and a glass of milk."
+- **W:** "Come off it. Eleven pints and a milk? Nobody orders a milk."
+- **K:** "On my life! The groom was driving — the milk was his."
+- **W:** "A groom, driving, at his own stag? Now I know you're making it up."
+- **K:** "Ask Marta! She poured the milk! She put a little umbrella in it and everything."
+- **W:** "The umbrella I believe — that's exactly Marta. Fine: half a point for the milk, no points for 'eleven'."
+
+### Flow 3 *(human moment — the mutual assessment after a bad one)*
+- **K:** "Honest answer: how bad was tonight, one to ten?"
+- **W:** "A seven. The heating thing, the bass thing, and the man who wanted the law changed for his birthday."
+- **K:** "I'd say a six — you turned the anniversary table around, and that was heading for the reviews page."
+- **W:** "They did leave smiling, didn't they. Alright, six and a half, and you get the half for the speech-hold at the pass."
+- **K:** "Chef held it for eight whole minutes. I've never seen him hold a fish for eight minutes for anybody."
+- **W:** "That's because nobody ever tells him the truth about the speech. Same again tomorrow?"
+
