@@ -1,6 +1,6 @@
 <template>
   <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
-    <div class="max-w-6xl mx-auto">
+    <div class="max-w-[1400px] mx-auto">
       <div class="flex items-center gap-3 mb-4 text-sm">
         <router-link to="/" class="text-accent-2 hover:opacity-80">Home</router-link>
         <span class="text-faint">/</span>
@@ -151,7 +151,8 @@
                 <tr>
                   <th class="col-ref">#</th>
                   <th class="col-speaker">Speaker</th>
-                  <th class="col-canonical">Canonical English</th>
+                  <th class="col-canonical">{{ canonicalColumn.label }}</th>
+                  <th v-for="col in overlayColumns" :key="col.key" class="col-overlay">{{ col.label }}</th>
                   <th class="col-state">State</th>
                 </tr>
               </thead>
@@ -159,6 +160,10 @@
                 <template v-for="(step, i) in scene.steps" :key="step.payload.id || i">
                   <tr class="script-row" :class="{ 'row-alt': i % 2 === 1, dirty: rowDirty(step) }">
                     <td class="col-ref">
+                      <!-- The Seed Editor's per-row dot, carried over. It reports
+                           only honest state — unsaved / has a target / has none.
+                           No quality score is invented, so there is no third colour. -->
+                      <span class="status-dot" :class="dotClass(step)" :title="dotTitle(step)"></span>
                       <span class="ref-num">{{ step.ref || '·' }}</span>
                       <span class="ref-kind" :title="stepTitle(step)"
                             :class="step.kind === 'move' ? 'text-accent-2' : step.kind === 'branch' ? 'text-accent' : step.kind === 'unmapped' ? 'text-danger' : 'text-faint'">
@@ -168,85 +173,15 @@
 
                     <td class="col-speaker" :title="step.payload.speaker">{{ step.payload.speaker }}</td>
 
+                    <!-- ══ CANONICAL — THE INVARIANT COLUMN ══
+                         One pod is authored once; known and target are overlays
+                         ON this. Here — the canonical script lab, with no course
+                         loaded — this column IS the master being authored, so it
+                         is editable; on a per-course page the same text is
+                         read-only, and that asymmetry is what stops a course
+                         forking the pod. -->
                     <td class="col-canonical">
-                      <!-- RESTING: the whole line, wrapped, never clipped. One tap opens it. -->
-                      <div v-if="!isEditing(step, 'english')" class="canonical-read" :class="{ parked: isDirty(step, 'english') }" @click="startEdit(step, 'english', $event)">
-                        <span class="canonical-text">{{ displayText(step, 'english') }}</span>
-                        <span v-if="isDirty(step, 'english')" class="edit-hint unsaved">unsaved · tap to carry on</span>
-                        <span v-else class="edit-hint">tap to edit</span>
-                      </div>
-
-                      <!-- EDITING: the draft is held locally. Blur does NOT save. Only the
-                           explicit Save canonical button commits — canonical text is the
-                           English master every course flexes from, so an accidental
-                           keystroke or a stray click must never write it. -->
-                      <div v-else class="canonical-edit">
-                        <textarea
-                          :ref="el => registerGrower(el, 'english:' + step.payload.id)"
-                          v-model="drafts['english:' + step.payload.id]"
-                          class="canonical-input"
-                          rows="1"
-                          @input="autoGrow($event.target)"
-                          @keydown.escape.prevent="discardEdit(step, 'english')"
-                          @keydown.enter.ctrl.prevent="commitEdit(step, 'english')"
-                          @keydown.enter.meta.prevent="commitEdit(step, 'english')"
-                        />
-                        <p v-if="isDirty(step, 'english')" class="was-line">
-                          <span class="was-label">was</span> {{ step.payload.text }}
-                        </p>
-                        <div class="confirm-bar">
-                          <button type="button" class="btn-confirm" :disabled="!isDirty(step, 'english') || step.payload._saving" @click="commitEdit(step, 'english')">
-                            {{ step.payload._saving ? 'Saving…' : 'Save canonical' }}
-                          </button>
-                          <button type="button" class="btn-discard" @click="discardEdit(step, 'english')">Discard</button>
-                          <span v-if="isDirty(step, 'english')" class="unsaved-flag">unsaved — nothing is written until you save</span>
-                          <span v-else class="text-xs text-faint">no change yet · Esc closes · Ctrl/⌘+Enter saves</span>
-                        </div>
-                      </div>
-
-                      <!-- THE TARGET, EDITABLE (2026-09-01). It sits under the canonical
-                           text rather than taking a column of its own, because it is a
-                           rendering OF this line and it is absent on most rows. It was
-                           read-only until the Welsh health overlay landed here as a
-                           DRAFT: a draft nobody can correct on the page is a page you can
-                           only look at. Same tap-to-open, same explicit save, same
-                           history — one versioned route for both fields. -->
-                      <template v-if="hasTarget(step)">
-                        <p v-if="!isEditing(step, 'target')" class="specimen" :class="{ parked: isDirty(step, 'target') }" @click="startEdit(step, 'target', $event)">
-                          <span class="specimen-run" :dir="dirFor(displayText(step, 'target'))">{{ displayText(step, 'target') || '— no target line yet —' }}</span>
-                          <span class="text-faint not-italic"> · {{ step.payload.targetLang }}</span>
-                          <span v-if="isDirty(step, 'target')" class="edit-hint unsaved">unsaved · tap to carry on</span>
-                          <span v-else class="edit-hint">tap to edit</span>
-                        </p>
-                        <div v-else class="canonical-edit">
-                          <textarea
-                            :ref="el => registerGrower(el, 'target:' + step.payload.id)"
-                            v-model="drafts['target:' + step.payload.id]"
-                            class="canonical-input target-input"
-                            :dir="dirFor(drafts['target:' + step.payload.id] || '')"
-                            rows="1"
-                            @input="autoGrow($event.target)"
-                            @keydown.escape.prevent="discardEdit(step, 'target')"
-                            @keydown.enter.ctrl.prevent="commitEdit(step, 'target')"
-                            @keydown.enter.meta.prevent="commitEdit(step, 'target')"
-                          />
-                          <p v-if="isDirty(step, 'target')" class="was-line">
-                            <span class="was-label">was</span> {{ step.payload.target }}
-                          </p>
-                          <div class="confirm-bar">
-                            <button type="button" class="btn-confirm" :disabled="!isDirty(step, 'target') || step.payload._saving" @click="commitEdit(step, 'target')">
-                              {{ step.payload._saving ? 'Saving…' : `Save ${step.payload.targetLang}` }}
-                            </button>
-                            <button type="button" class="btn-discard" @click="discardEdit(step, 'target')">Discard</button>
-                            <span v-if="isDirty(step, 'target')" class="unsaved-flag">unsaved — nothing is written until you save</span>
-                            <span v-else class="text-xs text-faint">no change yet · Esc closes · Ctrl/⌘+Enter saves</span>
-                          </div>
-                        </div>
-                      </template>
-                      <p v-else-if="step.payload.target" class="specimen">
-                        <span class="specimen-run" :dir="dirFor(step.payload.target)">{{ step.payload.target }}</span>
-                        <span class="text-faint not-italic"> · specimen, no language declared on this row</span>
-                      </p>
+                      <ScriptLineCell :step="step" :col="canonicalColumn" :ed="ed" />
 
                       <p v-if="step.branch" class="row-note text-accent">
                         fork · {{ step.branch.key }} arm{{ step.branch.continues ? '' : ' · no uptake' }}
@@ -254,6 +189,13 @@
                       <p v-else-if="step.variant" class="row-note text-faint">
                         another way of saying {{ step.variant.of }}
                       </p>
+                    </td>
+
+                    <!-- ══ THE OVERLAY COLUMNS ══
+                         Driven by a list, never hand-written: North Welsh beside
+                         South Welsh over one canonical is one more descriptor. -->
+                    <td v-for="col in overlayColumns" :key="col.key" class="col-overlay" :class="'col-' + col.key">
+                      <ScriptLineCell :step="step" :col="col" :ed="ed" />
                     </td>
 
                     <td class="col-state">
@@ -283,7 +225,7 @@
                   </tr>
 
                   <tr v-if="openLine === step.payload.id" class="history-row" :class="{ 'row-alt': i % 2 === 1 }">
-                    <td colspan="4">
+                    <td :colspan="colCount">
                       <div class="history">
                         <p v-if="hist(step.payload.id).loading" class="text-xs text-faint py-2">Loading history…</p>
                         <p v-else-if="hist(step.payload.id).error" class="text-xs text-danger py-2">{{ hist(step.payload.id).error }}</p>
@@ -340,6 +282,7 @@ import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.j
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 import { wordDiff } from '@/lib/wordDiff.js'
 import { dirFor } from '@/utils/textDirection.js'
+import ScriptLineCell from '@/components/scriptlab/ScriptLineCell.vue'
 
 const KIND_TAG = { coda: 'ADMITS', branch: 'BRANCH', alternative: 'VARIANT', unmapped: 'UNMAPPED' }
 const route = useRoute()
@@ -402,6 +345,82 @@ const displayText = (step, field) => (hasDraft(step, field) ? drafts[dkey(step, 
 /** A target editor is offered only where the line HAS a target language. */
 const hasTarget = step => !!step.payload.targetLang
 
+/*
+ * ══ CANONICAL || KNOWN || TARGET, ACROSS THE PAGE ══
+ *
+ * The canonical column is the INVARIANT: one pod is authored once, and known and
+ * target are both per-course OVERLAYS on it. For zho_for_spa all three columns
+ * are three different strings; for any *_for_eng course canonical and known
+ * coincide, and BOTH are still shown — seeing the line you cannot change beside
+ * the one you can is the point, so that duplication is deliberate.
+ *
+ * The overlays come from a LIST, never from hand-written cells. Pod content is
+ * shared across dialect courses, so North Welsh and South Welsh are two TARGET
+ * columns over one canonical and never a fork — the day that lands it is one
+ * more descriptor in `overlayColumns`, not a rebuilt component.
+ */
+const canonicalColumn = {
+  key: 'canonical',
+  label: 'Canonical English',
+  field: 'english',
+  editable: true,
+  saveLabel: 'Save canonical'
+}
+
+/*
+ * THE KNOWN COLUMN HAS NO SOURCE OF TRUTH YET, AND SAYS SO.
+ *
+ * canonical_pod_scenarios carries english_text, target_text and target_lang and
+ * nothing else; EDITABLE_FIELDS in api/lib/canonical-script-versions.js has no
+ * known field; walk.js never carries one. So the known layer is shown as what it
+ * actually is today — the canonical English, coinciding with canonical, marked
+ * as coinciding, and NOT editable. A cell that accepts an edit and writes
+ * nowhere would be worse than no cell at all.
+ */
+const KNOWN_COLUMN = {
+  key: 'known',
+  label: 'Known',
+  editable: false,
+  readsFrom: 'text',
+  mirrorsCanonical: true,
+  mirrorNote: 'This pod carries no separate known-language layer yet — the known text IS the canonical English, so it is shown read-only rather than pretending to be editable.'
+}
+
+/** The target language declared on this script, for the column head. */
+const targetLang = computed(() => walk.value?.steps?.find(s => s.payload.targetLang)?.payload.targetLang || null)
+
+const overlayColumns = computed(() => [
+  KNOWN_COLUMN,
+  {
+    key: 'target',
+    label: targetLang.value ? `Target · ${targetLang.value}` : 'Target',
+    field: 'target',
+    editable: true,
+    saveLabel: step => `Save ${step.payload.targetLang}`
+  }
+])
+
+/** # + Speaker + canonical + the overlays + State — the history row spans them all. */
+const colCount = computed(() => 3 + overlayColumns.value.length + 1)
+
+/*
+ * THE PER-ROW DOT, carried over from the Seed Editor's # column. It reports only
+ * state this page actually knows: an unsaved draft, a line that has target text,
+ * a line that has none. There is no quality score here and none is invented, so
+ * there is no third colour.
+ */
+function dotClass (step) {
+  if (rowDirty(step)) return 'amber'
+  if (step.payload.target) return 'green'
+  return ''
+}
+function dotTitle (step) {
+  if (rowDirty(step)) return 'unsaved draft on this line'
+  if (step.payload.target) return 'this line has a target rendering'
+  return 'no target rendering on this line yet'
+}
+
+
 function startEdit (step, field, ev) {
   const id = step.payload.id
   if (!id) return
@@ -453,6 +472,16 @@ function autoGrow (el) {
   el.style.height = 'auto'
   el.style.height = `${el.scrollHeight}px`
 }
+
+/*
+ * THE EDITING SURFACE HANDED TO EACH COLUMN CELL.
+ *
+ * ScriptLineCell renders one column and reimplements NOTHING: tap-to-open,
+ * one-editor-at-a-time, the parked draft and the explicit Save are these
+ * functions, passed down. Splitting the stacked cell into columns must not cost
+ * the editing behaviour that was just repaired.
+ */
+const ed = { drafts, stored, isEditing, isDirty, displayText, startEdit, commitEdit, discardEdit, registerGrower, autoGrow }
 
 /* Uncommitted canonical edits must not vanish silently on a reload. */
 function warnUnsaved (e) {
@@ -660,6 +689,45 @@ onMounted(load)
 .error-box { color: var(--danger); border-color: var(--danger); background: color-mix(in srgb, var(--danger) 14%, var(--surface)); }
 :root[data-theme="light"] .error-box { background: color-mix(in srgb, var(--danger) 8%, #ffffff); }
 .deficit { background: color-mix(in srgb, var(--danger) 8%, var(--surface)); }
+
+/*
+ * ══ THREE CONTENT COLUMNS ══
+ *
+ * The proportions are the Seed Editor's: the number and speaker stay narrow, the
+ * content columns take the width, and State sits at the right-hand end. These
+ * rules are scoped to THIS view rather than added to the shared script-rows.css,
+ * because CanonicalPodView.vue still renders a four-column table off that same
+ * stylesheet and must not be re-proportioned by a change made for this page.
+ */
+.col-canonical, .col-overlay { width: auto; min-width: 0; }
+.script-table { table-layout: fixed; }
+.col-state { width: 8.5rem; }
+
+/* The Seed Editor's dot, in the number column. */
+.status-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-right: 0.45rem;
+  vertical-align: middle;
+  border: 1px solid var(--line);
+}
+.status-dot.green { background: var(--accent-2); border-color: var(--accent-2); }
+.status-dot.amber { background: #fbbf24; border-color: #fbbf24; }
+:root[data-theme="light"] .status-dot.amber { background: #d97706; border-color: #d97706; }
+
+/*
+ * PHONE, 430px. Six columns do not fit a phone, and a sideways-scrolling table
+ * is a page you cannot read a sentence on. script-rows.css already stacks the
+ * row into blocks below 760px; the overlay cells join that stack, each one
+ * labelled by ScriptLineCell, in canonical → known → target order.
+ */
+@media (max-width: 760px) {
+  .script-table { table-layout: auto; }
+  .col-canonical, .col-overlay { width: auto; }
+  .col-state { width: auto; }
+}
 
 /* Tap is the only affordance: every control here is a button with a finger-sized
    target. No drag, no swipe, no long-press — Tom reads this on a 430px phone. */
