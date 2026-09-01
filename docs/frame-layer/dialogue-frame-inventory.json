@@ -1,0 +1,3027 @@
+{
+  "generated": "2026-08-31T13:09:44.997Z",
+  "known_language": "eng",
+  "source": {
+    "table": "canonical_pod_scenarios",
+    "pods": [
+      "pod-0",
+      "pod-0.5",
+      "pod-1"
+    ],
+    "rows": 932,
+    "dialogue_rows": 916,
+    "narrator_rows_excluded": 16,
+    "sector_sources": [
+      "docs/sector-pods/source/health-sector-conversations-v3.md"
+    ],
+    "sector_rows": 438,
+    "sector_unparsed_lines": 0,
+    "canon_max_updated_at": "2026-08-31T10:55:28.689559+00:00"
+  },
+  "counts": {
+    "sentence_frames": 12,
+    "exchange_frames": 6,
+    "adjacent_pairs": 798,
+    "rows_firing_a_seed_frame": 777,
+    "rows_firing_a_dialogue_frame": 262,
+    "residue": 59
+  },
+  "seed_frames_attested_by_pods": [
+    {
+      "id": "P20",
+      "name": "question",
+      "pod_rows": 330,
+      "in_response_position": 218
+    },
+    {
+      "id": "P28",
+      "name": "time adjunct",
+      "pod_rows": 166,
+      "in_response_position": 137
+    },
+    {
+      "id": "P21",
+      "name": "wh-question",
+      "pod_rows": 132,
+      "in_response_position": 86
+    },
+    {
+      "id": "P4",
+      "name": "modal can/could",
+      "pod_rows": 128,
+      "in_response_position": 94
+    },
+    {
+      "id": "P24",
+      "name": "comparative/superlative",
+      "pod_rows": 108,
+      "in_response_position": 90
+    },
+    {
+      "id": "P18",
+      "name": "It's-adjective",
+      "pod_rows": 99,
+      "in_response_position": 85
+    },
+    {
+      "id": "P13",
+      "name": "temporal clause",
+      "pod_rows": 86,
+      "in_response_position": 65
+    },
+    {
+      "id": "P14",
+      "name": "conditional if (real)",
+      "pod_rows": 77,
+      "in_response_position": 52
+    },
+    {
+      "id": "P23",
+      "name": "negation",
+      "pod_rows": 74,
+      "in_response_position": 63
+    },
+    {
+      "id": "P16",
+      "name": "relative clause",
+      "pod_rows": 72,
+      "in_response_position": 54
+    },
+    {
+      "id": "P12",
+      "name": "matrix say/tell",
+      "pod_rows": 71,
+      "in_response_position": 58
+    },
+    {
+      "id": "P31",
+      "name": "like/enjoy (dative)",
+      "pod_rows": 67,
+      "in_response_position": 47
+    },
+    {
+      "id": "P3",
+      "name": "progressive",
+      "pod_rows": 58,
+      "in_response_position": 40
+    },
+    {
+      "id": "P10",
+      "name": "matrix know/sure",
+      "pod_rows": 56,
+      "in_response_position": 50
+    },
+    {
+      "id": "P29",
+      "name": "perfect",
+      "pod_rows": 56,
+      "in_response_position": 49
+    },
+    {
+      "id": "P15",
+      "name": "because / so / but",
+      "pod_rows": 55,
+      "in_response_position": 43
+    },
+    {
+      "id": "P1",
+      "name": "want-chain",
+      "pod_rows": 47,
+      "in_response_position": 33
+    },
+    {
+      "id": "P22",
+      "name": "embedded question",
+      "pod_rows": 43,
+      "in_response_position": 29
+    },
+    {
+      "id": "P9",
+      "name": "matrix think/believe",
+      "pod_rows": 39,
+      "in_response_position": 30
+    },
+    {
+      "id": "P6",
+      "name": "have to / need to",
+      "pod_rows": 29,
+      "in_response_position": 20
+    },
+    {
+      "id": "P26",
+      "name": "imperative",
+      "pod_rows": 25,
+      "in_response_position": 22
+    },
+    {
+      "id": "P7",
+      "name": "should / ought",
+      "pod_rows": 15,
+      "in_response_position": 13
+    },
+    {
+      "id": "P2",
+      "name": "going-to future",
+      "pod_rows": 14,
+      "in_response_position": 5
+    },
+    {
+      "id": "P8",
+      "name": "must / may / might",
+      "pod_rows": 14,
+      "in_response_position": 9
+    },
+    {
+      "id": "P25",
+      "name": "as ... as",
+      "pod_rows": 5,
+      "in_response_position": 2
+    },
+    {
+      "id": "P5",
+      "name": "be able to",
+      "pod_rows": 4,
+      "in_response_position": 2
+    },
+    {
+      "id": "P11",
+      "name": "matrix hope/wish",
+      "pod_rows": 4,
+      "in_response_position": 3
+    },
+    {
+      "id": "P19",
+      "name": "there is/are",
+      "pod_rows": 3,
+      "in_response_position": 3
+    },
+    {
+      "id": "P27",
+      "name": "what's-it-like",
+      "pod_rows": 3,
+      "in_response_position": 2
+    }
+  ],
+  "sentence_frames": [
+    {
+      "id": "D1",
+      "name": "ritual open/close",
+      "shape": "hello|good morning|goodbye|see you ( , [NAME] )",
+      "grain": "sentence",
+      "position": "either",
+      "fixed_material": [
+        [
+          "hello"
+        ],
+        [
+          "hi"
+        ],
+        [
+          "good morning"
+        ],
+        [
+          "good afternoon"
+        ],
+        [
+          "good evening"
+        ],
+        [
+          "goodbye"
+        ],
+        [
+          "bye"
+        ],
+        [
+          "welcome"
+        ],
+        [
+          "see you"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "shape_nodes": [
+        "N1"
+      ],
+      "notes": "the frame the seed corpus cannot attest at all: no seed opens a conversation",
+      "count": 35,
+      "by_source": {
+        "pod-0": 21,
+        "pod-1": 4,
+        "health-sector-conversations-v3": 10
+      },
+      "attestation_rows": [
+        "pod-0:SC01-S01",
+        "pod-0:SC01-S02",
+        "pod-0:SC01-S04",
+        "pod-0:SC03-S01",
+        "pod-0:SC03-S02",
+        "pod-0:SC03-S10",
+        "pod-0:SC04-S01",
+        "pod-0:SC04-S02",
+        "pod-0:SC04-S03",
+        "pod-0:SC05-S01",
+        "pod-0:SC05-S02",
+        "pod-0:SC06-S01",
+        "pod-0:SC07-S01",
+        "pod-0:SC07-S13",
+        "pod-0:SC08-S01",
+        "pod-0:SC09-S01",
+        "pod-0:SC09-S02",
+        "pod-0:SC11-S01",
+        "pod-0:SC11-S02",
+        "pod-0:SC12-S01",
+        "pod-0:SC14-S01",
+        "pod-1:SC01-S01",
+        "pod-1:SC05-S01",
+        "pod-1:SC10-S12",
+        "pod-1:SC16-S14",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 1 (happy path + detail)#37",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#43",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 3 (human moment - reassurance)#49",
+        "health-sector-conversations-v3:1.11 Going home / Flow 3 (safety-critical ⚠ - who to call)#234",
+        "health-sector-conversations-v3:2.1 Opening the consultation / Flow 1 (happy path)#259",
+        "health-sector-conversations-v3:2.1 Opening the consultation / Flow 2 (question - here about results)#265",
+        "health-sector-conversations-v3:2.1 Opening the consultation / Flow 3 (human moment - apologetic)#271",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 1 (happy path)#421",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 2 (question - when can I go home)#427",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 3 (safety-critical ⚠ - pain returned)#433"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC01-S01",
+          "speaker": "Neighbour (8 am)",
+          "scene": "A Day of Greetings (i) - 8 am",
+          "register": "social",
+          "text": "Good morning, Sarah!",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC01-S02",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (i) - 8 am",
+          "register": "social",
+          "text": "Good morning. How are you?",
+          "initiating_row": "pod-0:SC01-S01"
+        },
+        {
+          "row": "pod-0:SC01-S04",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (i) - 8 am",
+          "register": "social",
+          "text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+          "initiating_row": "pod-0:SC01-S03"
+        },
+        {
+          "row": "pod-0:SC03-S01",
+          "speaker": "Barista (3 pm)",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "service",
+          "text": "Good afternoon. What can I get you?",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC03-S02",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "social",
+          "text": "Good afternoon. I'd like a coffee, please. With milk but with no sugar. To take away.",
+          "initiating_row": "pod-0:SC03-S01"
+        },
+        {
+          "row": "pod-0:SC03-S10",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "social",
+          "text": "Thank you very much. Goodbye.",
+          "initiating_row": "pod-0:SC03-S09"
+        },
+        {
+          "row": "pod-0:SC04-S01",
+          "speaker": "Friend (7 pm)",
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social",
+          "text": "Hello, good evening!",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC04-S02",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social",
+          "text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+          "initiating_row": "pod-0:SC04-S01"
+        },
+        {
+          "row": "pod-0:SC04-S03",
+          "speaker": "Friend",
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social",
+          "text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+          "initiating_row": "pod-0:SC04-S02"
+        },
+        {
+          "row": "pod-0:SC05-S01",
+          "speaker": "Neighbour (10:30 pm)",
+          "scene": "A Day of Greetings (v) - 10:30 pm",
+          "register": "social",
+          "text": "Good evening, Sarah. Did you have a long day?",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC05-S02",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (v) - 10:30 pm",
+          "register": "social",
+          "text": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+          "initiating_row": "pod-0:SC05-S01"
+        },
+        {
+          "row": "pod-0:SC06-S01",
+          "speaker": "James",
+          "scene": "Introductions",
+          "register": "social",
+          "text": "Excuse me. Hello. What's your name?",
+          "initiating_row": null
+        }
+      ]
+    },
+    {
+      "id": "D2",
+      "name": "polar response + elaboration",
+      "shape": "yes|no|of course , [CLAUSE]",
+      "grain": "sentence",
+      "position": "response",
+      "fixed_material": [
+        [
+          "yes"
+        ],
+        [
+          "no"
+        ],
+        [
+          "of course"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "shape_nodes": [
+        "N2",
+        "N3",
+        "N9"
+      ],
+      "notes": "the strongest single argument for the whole design: the particle is cut early in essentially every pair, so the response register becomes reachable at almost zero cost",
+      "count": 70,
+      "by_source": {
+        "pod-0": 33,
+        "pod-0.5": 4,
+        "pod-1": 13,
+        "health-sector-conversations-v3": 20
+      },
+      "attestation_rows": [
+        "pod-0:SC01-S04",
+        "pod-0:SC02-S02",
+        "pod-0:SC03-S06",
+        "pod-0:SC03-S07",
+        "pod-0:SC03-S08",
+        "pod-0:SC04-S03",
+        "pod-0:SC05-S02",
+        "pod-0:SC06-S10",
+        "pod-0:SC07-S05",
+        "pod-0:SC07-S09",
+        "pod-0:SC07-S12",
+        "pod-0:SC08-S13",
+        "pod-0:SC09-S06",
+        "pod-0:SC09-S11",
+        "pod-0:SC10-S02",
+        "pod-0:SC10-S09",
+        "pod-0:SC11-S02",
+        "pod-0:SC11-S03",
+        "pod-0:SC11-S06",
+        "pod-0:SC11-S10",
+        "pod-0:SC12-S02",
+        "pod-0:SC12-S08",
+        "pod-0:SC13-S02",
+        "pod-0:SC13-S04",
+        "pod-0:SC13-S09",
+        "pod-0:SC14-S02",
+        "pod-0:SC14-S06",
+        "pod-0:SC14-S09",
+        "pod-0:SC16-S09",
+        "pod-0:SC17-S09",
+        "pod-0:SC21-S08",
+        "pod-0:SC22-S02",
+        "pod-0:SC22-S05",
+        "pod-0.5:SC01-S02",
+        "pod-0.5:SC04-S03a",
+        "pod-0.5:SC04-S03b",
+        "pod-0.5:SC06-S02",
+        "pod-1:SC01-S04",
+        "pod-1:SC01-S08",
+        "pod-1:SC01-S09",
+        "pod-1:SC03-S04",
+        "pod-1:SC03-S07",
+        "pod-1:SC03-S12",
+        "pod-1:SC06-S11",
+        "pod-1:SC07-S08",
+        "pod-1:SC09-S15",
+        "pod-1:SC10-S06",
+        "pod-1:SC14-S08",
+        "pod-1:SC15-S03",
+        "pod-1:SC15-S04",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 1 (happy path)#2",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 3 (problem - graceful switch)#15",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 3 (problem - graceful switch)#16",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 3 (human moment - family helper)#33",
+        "health-sector-conversations-v3:1.3 Taking observations / Flow 1 (happy path)#74",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 1 (happy path - needs relief)#94",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 2 (question - doesn't understand the scale)#99",
+        "health-sector-conversations-v3:1.8 Helping with mobility / Flow 1 (happy path)#164",
+        "health-sector-conversations-v3:1.9 Comfort round / Flow 1 (happy path - small requests)#183",
+        "health-sector-conversations-v3:1.9 Comfort round / Flow 3 (problem - needs the toilet, apologetic)#195",
+        "health-sector-conversations-v3:1.11 Going home / Flow 3 (safety-critical ⚠ - who to call)#231",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / Welsh version - flow 2 (problem - switch to English)#244",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / English version - flow 2 (human moment - family helper)#255",
+        "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 1 (happy path)#297",
+        "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 2 (safety-critical ⚠ - penicillin allergy)#304",
+        "health-sector-conversations-v3:2.4 Narrating an examination / Flow 2 (safety-critical ⚠ - tender spot)#320",
+        "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 2 (question - didn't follow)#339",
+        "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 2 (question - didn't follow)#342",
+        "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#351",
+        "health-sector-conversations-v3:2.9 Giving results / Flow 2 (question - how high)#414"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC01-S04",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (i) - 8 am",
+          "register": "social",
+          "text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+          "initiating_row": "pod-0:SC01-S03"
+        },
+        {
+          "row": "pod-0:SC02-S02",
+          "speaker": "Passenger",
+          "scene": "A Day of Greetings (ii) - a seat",
+          "register": "service",
+          "text": "No, it's free. Please, go ahead.",
+          "initiating_row": "pod-0:SC02-S01"
+        },
+        {
+          "row": "pod-0:SC03-S06",
+          "speaker": "Barista",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "service",
+          "text": "No, we've only got drinks.",
+          "initiating_row": "pod-0:SC03-S05"
+        },
+        {
+          "row": "pod-0:SC03-S07",
+          "speaker": "Barista",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "service",
+          "text": "Yes, would you like the menu?",
+          "initiating_row": "pod-0:SC03-S06"
+        },
+        {
+          "row": "pod-0:SC03-S08",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "social",
+          "text": "Yes, please.",
+          "initiating_row": "pod-0:SC03-S07"
+        },
+        {
+          "row": "pod-0:SC04-S03",
+          "speaker": "Friend",
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social",
+          "text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then.",
+          "initiating_row": "pod-0:SC04-S02"
+        },
+        {
+          "row": "pod-0:SC05-S02",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (v) - 10:30 pm",
+          "register": "social",
+          "text": "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+          "initiating_row": "pod-0:SC05-S01"
+        },
+        {
+          "row": "pod-0:SC06-S10",
+          "speaker": "Anna",
+          "scene": "Introductions",
+          "register": "social",
+          "text": "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+          "initiating_row": "pod-0:SC06-S09"
+        },
+        {
+          "row": "pod-0:SC07-S05",
+          "speaker": "Barista",
+          "scene": "Coffee Shop",
+          "register": "service",
+          "text": "Of course. Would you like to sit-in or takeaway?",
+          "initiating_row": "pod-0:SC07-S04"
+        },
+        {
+          "row": "pod-0:SC07-S09",
+          "speaker": "Customer 2",
+          "scene": "Coffee Shop",
+          "register": "service",
+          "text": "Yes, can I have a glass of water as well, please.",
+          "initiating_row": "pod-0:SC07-S08"
+        },
+        {
+          "row": "pod-0:SC07-S12",
+          "speaker": "Barista",
+          "scene": "Coffee Shop",
+          "register": "service",
+          "text": "Of course. There's the machine.",
+          "initiating_row": "pod-0:SC07-S11"
+        },
+        {
+          "row": "pod-0:SC08-S13",
+          "speaker": "Bartender",
+          "scene": "Pub",
+          "register": "service",
+          "text": "Yes, of course. Here it is. The fish and chips are very good.",
+          "initiating_row": "pod-0:SC08-S12"
+        }
+      ]
+    },
+    {
+      "id": "D3",
+      "name": "thanks / gratitude close",
+      "shape": "thank you ( for [NP|VPing] ) | thanks ( , [CLAUSE] )",
+      "grain": "sentence",
+      "position": "either",
+      "fixed_material": [
+        [
+          "thank you"
+        ],
+        [
+          "thanks"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "shape_nodes": [
+        "N2",
+        "N10"
+      ],
+      "count": 56,
+      "by_source": {
+        "pod-0": 13,
+        "pod-1": 9,
+        "health-sector-conversations-v3": 34
+      },
+      "attestation_rows": [
+        "pod-0:SC01-S03",
+        "pod-0:SC03-S10",
+        "pod-0:SC10-S03",
+        "pod-0:SC10-S07",
+        "pod-0:SC10-S09",
+        "pod-0:SC12-S09",
+        "pod-0:SC13-S10",
+        "pod-0:SC20-S04",
+        "pod-0:SC20-S06",
+        "pod-0:SC20-S08",
+        "pod-0:SC20-S10",
+        "pod-0:SC22-S03",
+        "pod-0:SC22-S05",
+        "pod-1:SC01-S05",
+        "pod-1:SC02-S13",
+        "pod-1:SC07-S08",
+        "pod-1:SC07-S14",
+        "pod-1:SC08-S04",
+        "pod-1:SC08-S05",
+        "pod-1:SC13-S03",
+        "pod-1:SC14-S09",
+        "pod-1:SC16-S12",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 3 (problem - graceful switch)#16",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#21",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#48",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 1 (happy path - valuables)#60",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 2 (question - visiting times)#66",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 3 (problem - can't sleep)#72",
+        "health-sector-conversations-v3:1.3 Taking observations / Flow 3 (problem - drip in the way)#88",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 1 (happy path - needs relief)#96",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 2 (question - doesn't understand the scale)#102",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 3 (safety-critical ⚠ - refusing tablets)#108",
+        "health-sector-conversations-v3:1.5 Medication round / Flow 3 (safety-critical ⚠ - wrong tablets)#125",
+        "health-sector-conversations-v3:1.6 Taking blood / cannula / Flow 2 (question - what's it for)#138",
+        "health-sector-conversations-v3:1.7 Meals and drinking / Flow 2 (safety-critical ⚠ - dietary need)#154",
+        "health-sector-conversations-v3:1.7 Meals and drinking / Flow 3 (safety-critical ⚠ - nausea, off food)#158",
+        "health-sector-conversations-v3:1.7 Meals and drinking / Flow 3 (safety-critical ⚠ - nausea, off food)#162",
+        "health-sector-conversations-v3:1.9 Comfort round / Flow 3 (problem - needs the toilet, apologetic)#196",
+        "health-sector-conversations-v3:1.9 Comfort round / Flow 3 (problem - needs the toilet, apologetic)#198",
+        "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#204",
+        "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 2 (safety-critical ⚠ - regular medication)#210",
+        "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#222",
+        "health-sector-conversations-v3:1.11 Going home / Flow 2 (question - missed dose)#228",
+        "health-sector-conversations-v3:1.11 Going home / Flow 3 (safety-critical ⚠ - who to call)#234",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / Welsh version - flow 2 (problem - switch to English)#244",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / English version - flow 1 (happy path)#249",
+        "health-sector-conversations-v3:2.1 Opening the consultation / Flow 2 (question - here about results)#270",
+        "health-sector-conversations-v3:2.4 Narrating an examination / Flow 2 (safety-critical ⚠ - tender spot)#323",
+        "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#354",
+        "health-sector-conversations-v3:2.7 Prescribing / Flow 1 (happy path)#372",
+        "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#386",
+        "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#390",
+        "health-sector-conversations-v3:2.8 Safety netting / Flow 3 (problem - doesn't like to fuss)#402",
+        "health-sector-conversations-v3:2.9 Giving results / Flow 1 (happy path)#404",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 2 (question - when can I go home)#432",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 3 (safety-critical ⚠ - pain returned)#438"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC01-S03",
+          "speaker": "Neighbour",
+          "scene": "A Day of Greetings (i) - 8 am",
+          "register": "social",
+          "text": "I'm very well, thank you. Are you going to work?",
+          "initiating_row": "pod-0:SC01-S02"
+        },
+        {
+          "row": "pod-0:SC03-S10",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "social",
+          "text": "Thank you very much. Goodbye.",
+          "initiating_row": "pod-0:SC03-S09"
+        },
+        {
+          "row": "pod-0:SC10-S03",
+          "speaker": "Customer",
+          "scene": "Shop",
+          "register": "service",
+          "text": "Thank you. And do you have any painkillers for children?",
+          "initiating_row": "pod-0:SC10-S02"
+        },
+        {
+          "row": "pod-0:SC10-S07",
+          "speaker": "Customer",
+          "scene": "Shop",
+          "register": "service",
+          "text": "Thank you, you've been very helpful. I'm very grateful.",
+          "initiating_row": "pod-0:SC10-S06"
+        },
+        {
+          "row": "pod-0:SC10-S09",
+          "speaker": "Customer",
+          "scene": "Shop",
+          "register": "service",
+          "text": "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak [target language] better. Thank you very much, and goodbye.",
+          "initiating_row": "pod-0:SC10-S08"
+        },
+        {
+          "row": "pod-0:SC12-S09",
+          "speaker": "Customer",
+          "scene": "Chemist's",
+          "register": "service",
+          "text": "Thank you. Could I also get a packet of plasters?",
+          "initiating_row": "pod-0:SC12-S08"
+        },
+        {
+          "row": "pod-0:SC13-S10",
+          "speaker": "Tourist",
+          "scene": "Directions",
+          "register": "service",
+          "text": "Thank you very much. You've been very helpful.",
+          "initiating_row": "pod-0:SC13-S09"
+        },
+        {
+          "row": "pod-0:SC20-S04",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "Thank you for all your work.",
+          "initiating_row": "pod-0:SC20-S03"
+        },
+        {
+          "row": "pod-0:SC20-S06",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "Thank you for helping me.",
+          "initiating_row": "pod-0:SC20-S05"
+        },
+        {
+          "row": "pod-0:SC20-S08",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "That's very kind of you.",
+          "initiating_row": "pod-0:SC20-S07"
+        },
+        {
+          "row": "pod-0:SC20-S10",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "Thank you for being so friendly.",
+          "initiating_row": "pod-0:SC20-S09"
+        },
+        {
+          "row": "pod-0:SC22-S03",
+          "speaker": "Learner",
+          "scene": "First conversation",
+          "register": "social",
+          "text": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
+          "initiating_row": "pod-0:SC22-S02"
+        }
+      ]
+    },
+    {
+      "id": "D4",
+      "name": "apology / attention-getter",
+      "shape": "excuse me , [CLAUSE|WH-Q] | (I'm) sorry , [CLAUSE]",
+      "grain": "sentence",
+      "position": "initiating",
+      "fixed_material": [
+        [
+          "excuse me"
+        ],
+        [
+          "sorry"
+        ],
+        [
+          "i'm sorry"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "shape_nodes": [
+        "N2",
+        "N6"
+      ],
+      "count": 21,
+      "by_source": {
+        "pod-0": 10,
+        "pod-1": 6,
+        "health-sector-conversations-v3": 5
+      },
+      "attestation_rows": [
+        "pod-0:SC02-S01",
+        "pod-0:SC04-S02",
+        "pod-0:SC06-S01",
+        "pod-0:SC06-S09",
+        "pod-0:SC09-S05",
+        "pod-0:SC10-S01",
+        "pod-0:SC13-S01",
+        "pod-0:SC15-S10",
+        "pod-0:SC16-S10",
+        "pod-0:SC18-S09",
+        "pod-1:SC01-S12",
+        "pod-1:SC03-S02",
+        "pod-1:SC03-S05",
+        "pod-1:SC03-S16",
+        "pod-1:SC10-S04",
+        "pod-1:SC11-S08",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#44",
+        "health-sector-conversations-v3:1.7 Meals and drinking / Flow 3 (safety-critical ⚠ - nausea, off food)#159",
+        "health-sector-conversations-v3:1.9 Comfort round / Flow 3 (problem - needs the toilet, apologetic)#194",
+        "health-sector-conversations-v3:1.9 Comfort round / Flow 3 (problem - needs the toilet, apologetic)#196",
+        "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 2 (question - didn't follow)#338"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC02-S01",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (ii) - a seat",
+          "register": "social",
+          "text": "Excuse me, is this seat taken?",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC04-S02",
+          "speaker": "Sarah",
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social",
+          "text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+          "initiating_row": "pod-0:SC04-S01"
+        },
+        {
+          "row": "pod-0:SC06-S01",
+          "speaker": "James",
+          "scene": "Introductions",
+          "register": "social",
+          "text": "Excuse me. Hello. What's your name?",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC06-S09",
+          "speaker": "James",
+          "scene": "Introductions",
+          "register": "social",
+          "text": "I'm sorry, I didn't understand you. I'm learning [target language]. Could you say that again more slowly?",
+          "initiating_row": "pod-0:SC06-S08"
+        },
+        {
+          "row": "pod-0:SC09-S05",
+          "speaker": "Customer 1",
+          "scene": "Restaurant",
+          "register": "service",
+          "text": "Excuse me - do you have anything gluten-free? Or for vegetarians?",
+          "initiating_row": "pod-0:SC09-S04"
+        },
+        {
+          "row": "pod-0:SC10-S01",
+          "speaker": "Customer",
+          "scene": "Shop",
+          "register": "service",
+          "text": "Excuse me. Do you have any painkillers?",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC13-S01",
+          "speaker": "Tourist",
+          "scene": "Directions",
+          "register": "service",
+          "text": "Excuse me, do you know how to get to the nearest supermarket?",
+          "initiating_row": null
+        },
+        {
+          "row": "pod-0:SC15-S10",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "I'm sorry I can't speak very quickly.",
+          "initiating_row": "pod-0:SC15-S09"
+        },
+        {
+          "row": "pod-0:SC16-S10",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "I'm sorry, I don't have any cash.",
+          "initiating_row": "pod-0:SC16-S09"
+        },
+        {
+          "row": "pod-0:SC18-S09",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "I'm sorry, my son lost his ticket.",
+          "initiating_row": "pod-0:SC18-S08"
+        },
+        {
+          "row": "pod-1:SC01-S12",
+          "speaker": "Paul",
+          "scene": "Hello Stranger",
+          "register": "social",
+          "text": "Sorry — who's back?",
+          "initiating_row": "pod-1:SC01-S11"
+        },
+        {
+          "row": "pod-1:SC03-S02",
+          "speaker": "Ana",
+          "scene": "Say That Again",
+          "register": "social",
+          "text": "Sorry, I didn't catch that — it's so loud in here.",
+          "initiating_row": "pod-1:SC03-S01"
+        }
+      ]
+    },
+    {
+      "id": "D5",
+      "name": "deictic handover",
+      "shape": "here's [NP] | here you are | here it is | there's [NP]",
+      "grain": "sentence",
+      "position": "response",
+      "fixed_material": [
+        [
+          "here you are"
+        ],
+        [
+          "here it is"
+        ],
+        [
+          "here's"
+        ],
+        [
+          "here is"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service"
+      ],
+      "shape_nodes": [
+        "N2"
+      ],
+      "notes": "the physical hand-over move; the seeds have no deixis-in-situation at all",
+      "count": 10,
+      "by_source": {
+        "pod-0": 6,
+        "health-sector-conversations-v3": 4
+      },
+      "attestation_rows": [
+        "pod-0:SC03-S09",
+        "pod-0:SC07-S12",
+        "pod-0:SC08-S13",
+        "pod-0:SC09-S02",
+        "pod-0:SC11-S03",
+        "pod-0:SC14-S07",
+        "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#217",
+        "health-sector-conversations-v3:1.11 Going home / Flow 2 (question - missed dose)#223",
+        "health-sector-conversations-v3:1.11 Going home / Flow 3 (safety-critical ⚠ - who to call)#229",
+        "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 1 (happy path)#335"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC03-S09",
+          "speaker": "Barista",
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "service",
+          "text": "Here's your coffee.",
+          "initiating_row": "pod-0:SC03-S08"
+        },
+        {
+          "row": "pod-0:SC07-S12",
+          "speaker": "Barista",
+          "scene": "Coffee Shop",
+          "register": "service",
+          "text": "Of course. There's the machine.",
+          "initiating_row": "pod-0:SC07-S11"
+        },
+        {
+          "row": "pod-0:SC08-S13",
+          "speaker": "Bartender",
+          "scene": "Pub",
+          "register": "service",
+          "text": "Yes, of course. Here it is. The fish and chips are very good.",
+          "initiating_row": "pod-0:SC08-S12"
+        },
+        {
+          "row": "pod-0:SC09-S02",
+          "speaker": "Waiter",
+          "scene": "Restaurant",
+          "register": "service",
+          "text": "Welcome. Please follow me. Here are the menus.",
+          "initiating_row": "pod-0:SC09-S01"
+        },
+        {
+          "row": "pod-0:SC11-S03",
+          "speaker": "Guest",
+          "scene": "Hotel",
+          "register": "service",
+          "text": "Of course. Here's my passport.",
+          "initiating_row": "pod-0:SC11-S02"
+        },
+        {
+          "row": "pod-0:SC14-S07",
+          "speaker": "Driver",
+          "scene": "Taxi",
+          "register": "service",
+          "text": "Here we are. That's twelve pound fifty.",
+          "initiating_row": "pod-0:SC14-S06"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#217",
+          "speaker": "HW",
+          "scene": "1.11 Going home",
+          "register": "clinical",
+          "text": "Here's your medication to take home. One in the morning, one at night, with food. Your follow-up letter will come in the post. Any questions before you go?",
+          "initiating_row": null
+        },
+        {
+          "row": "health-sector-conversations-v3:1.11 Going home / Flow 2 (question - missed dose)#223",
+          "speaker": "HW",
+          "scene": "1.11 Going home",
+          "register": "clinical",
+          "text": "Here's your medication. One in the morning, one at night, with food. Any questions?",
+          "initiating_row": null
+        },
+        {
+          "row": "health-sector-conversations-v3:1.11 Going home / Flow 3 (safety-critical ⚠ - who to call)#229",
+          "speaker": "HW",
+          "scene": "1.11 Going home",
+          "register": "clinical",
+          "text": "Here's your medication and your discharge sheet. Any questions before you go?",
+          "initiating_row": null
+        },
+        {
+          "row": "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 1 (happy path)#335",
+          "speaker": "HW",
+          "scene": "2.5 Explaining what's going on",
+          "register": "clinical",
+          "text": "So here's the plan: a week of antibiotics, plenty of rest and fluids, and I want to hear from you if you're not clearly better by Friday.",
+          "initiating_row": "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 1 (happy path)#334"
+        }
+      ]
+    },
+    {
+      "id": "D6",
+      "name": "reciprocal return",
+      "shape": "[ANSWER] . and you ? | what about you ?",
+      "grain": "sentence",
+      "position": "response",
+      "fixed_material": [
+        [
+          "and you"
+        ],
+        [
+          "what about you"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "shape_nodes": [
+        "N5"
+      ],
+      "notes": "the sentence projection of X1. THE WORKED CASE: spa_for_eng has cut no \"and you\", no \"y tu\", no bare \"tu\" — so this frame is unreachable for spa at every position, and the gate must say so",
+      "count": 22,
+      "by_source": {
+        "pod-0": 4,
+        "pod-0.5": 2,
+        "pod-1": 5,
+        "health-sector-conversations-v3": 11
+      },
+      "attestation_rows": [
+        "pod-0:SC06-S02",
+        "pod-0:SC06-S05",
+        "pod-0:SC06-S08",
+        "pod-0:SC10-S06",
+        "pod-0.5:SC06-S02",
+        "pod-0.5:SC06-S05",
+        "pod-1:SC02-S04",
+        "pod-1:SC02-S09",
+        "pod-1:SC08-S12",
+        "pod-1:SC12-S08",
+        "pod-1:SC14-S09",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#43",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 3 (problem - can't sleep)#69",
+        "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#119",
+        "health-sector-conversations-v3:1.6 Taking blood / cannula / Flow 2 (question - what's it for)#135",
+        "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 3 (human moment - nervous)#211",
+        "health-sector-conversations-v3:1.11 Going home / Flow 3 (safety-critical ⚠ - who to call)#229",
+        "health-sector-conversations-v3:1.11 Going home / Flow 3 (safety-critical ⚠ - who to call)#233",
+        "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 1 (happy path)#297",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 1 (happy path)#423",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 1 (happy path)#425",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 2 (question - when can I go home)#429"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC06-S02",
+          "speaker": "Anna",
+          "scene": "Introductions",
+          "register": "social",
+          "text": "My name is Anna. And you?",
+          "initiating_row": "pod-0:SC06-S01"
+        },
+        {
+          "row": "pod-0:SC06-S05",
+          "speaker": "James",
+          "scene": "Introductions",
+          "register": "social",
+          "text": "I'm from Manchester, but I live in London now. And you?",
+          "initiating_row": "pod-0:SC06-S04"
+        },
+        {
+          "row": "pod-0:SC06-S08",
+          "speaker": "Anna",
+          "scene": "Introductions",
+          "register": "social",
+          "text": "I'm a nurse, at the hospital just round the corner. And you?",
+          "initiating_row": "pod-0:SC06-S07"
+        },
+        {
+          "row": "pod-0:SC10-S06",
+          "speaker": "Assistant",
+          "scene": "Shop",
+          "register": "service",
+          "text": "Sunscreen is down there on your right, and you'll find toothpaste just round the corner.",
+          "initiating_row": "pod-0:SC10-S05"
+        },
+        {
+          "row": "pod-0.5:SC06-S02",
+          "speaker": "Learner",
+          "scene": "Tell Me About Your Family",
+          "register": "social",
+          "text": "That's a good question. The truth is, I'm not sure. It's not easy to think of something to ask! So, let me think. How about your family? Yes, tell me about your family.",
+          "initiating_row": "pod-0.5:SC06-S01"
+        },
+        {
+          "row": "pod-0.5:SC06-S05",
+          "speaker": "Friend",
+          "scene": "Tell Me About Your Family",
+          "register": "social",
+          "text": "We live in [target city]… but I'd like us to move out of the city… maybe when either my husband or I… can get a raise. But it would be awkward for my husband… to live outside the city with his work… so we'll have to figure out… what we might be able to do later on. I'd really like the children to grow up… with more fields and trees around them. I don't think it's very healthy… to live in the middle of the city. And it gets far too hot in the summer… I really don't like it when it's hot. I prefer to be cold… because at least you can put on… an extra sweater or a coat or something. How about you? Do you want to keep living… in the same place you are now… or would you like to move to somewhere else?",
+          "initiating_row": "pod-0.5:SC06-S04b"
+        },
+        {
+          "row": "pod-1:SC02-S04",
+          "speaker": "Joe",
+          "scene": "And What About You?",
+          "register": "social",
+          "text": "I know. And what about you? How did the interview go?",
+          "initiating_row": "pod-1:SC02-S03"
+        },
+        {
+          "row": "pod-1:SC02-S09",
+          "speaker": "Amy",
+          "scene": "And What About You?",
+          "register": "social",
+          "text": "Most mornings, yes. It keeps me sane. And you? How's the five-a-side going?",
+          "initiating_row": "pod-1:SC02-S08"
+        },
+        {
+          "row": "pod-1:SC08-S12",
+          "speaker": "Ben",
+          "scene": "You Look Well",
+          "register": "social",
+          "text": "Agreed. And your hair's different, isn't it? It really suits you.",
+          "initiating_row": "pod-1:SC08-S11"
+        },
+        {
+          "row": "pod-1:SC12-S08",
+          "speaker": "Ben",
+          "scene": "If I Were You",
+          "register": "social",
+          "text": "You've wanted a garden for years. And you'd only regret losing it.",
+          "initiating_row": "pod-1:SC12-S07"
+        },
+        {
+          "row": "pod-1:SC14-S09",
+          "speaker": "Katie",
+          "scene": "Guess What",
+          "register": "social",
+          "text": "Thank you. And you? You said you had news too.",
+          "initiating_row": "pod-1:SC14-S08"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#43",
+          "speaker": "HW",
+          "scene": "1.1 Names and first meeting",
+          "register": "clinical",
+          "text": "Hello, I'm Siân, one of the nurses on today. And you are?",
+          "initiating_row": null
+        }
+      ]
+    },
+    {
+      "id": "D7",
+      "name": "uptake assessment",
+      "shape": "[ASSESSMENT] . [CONTINUATION]",
+      "grain": "sentence",
+      "position": "response",
+      "fixed_material": [
+        [
+          "lovely"
+        ],
+        [
+          "perfect"
+        ],
+        [
+          "great"
+        ],
+        [
+          "of course"
+        ],
+        [
+          "no problem"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "shape_nodes": [
+        "N2",
+        "N8"
+      ],
+      "notes": "same frame carries a service uptake (\"Excellent choice\") and a clinical graceful-switch (\"Of course, no problem at all\") — which is what the register tag is for",
+      "count": 24,
+      "by_source": {
+        "pod-0": 4,
+        "pod-1": 6,
+        "health-sector-conversations-v3": 14
+      },
+      "attestation_rows": [
+        "pod-0:SC09-S14",
+        "pod-0:SC11-S04",
+        "pod-0:SC11-S09",
+        "pod-0:SC13-S08",
+        "pod-1:SC05-S06",
+        "pod-1:SC11-S15",
+        "pod-1:SC13-S13",
+        "pod-1:SC13-S15",
+        "pod-1:SC16-S09",
+        "pod-1:SC16-S13",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#20",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 1 (happy path + detail)#39",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 1 (happy path - valuables)#56",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 1 (happy path - valuables)#59",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 2 (question - doesn't understand the scale)#99",
+        "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#111",
+        "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#113",
+        "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#203",
+        "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#219",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / Welsh version - flow 1 (happy path)#236",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / English version - flow 1 (happy path)#248",
+        "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#353",
+        "health-sector-conversations-v3:2.7 Prescribing / Flow 2 (question - alcohol)#378",
+        "health-sector-conversations-v3:2.10 Ward round review / Flow 1 (happy path)#423"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC09-S14",
+          "speaker": "Waiter",
+          "scene": "Restaurant",
+          "register": "service",
+          "text": "Excellent choice. I'll bring it right over.",
+          "initiating_row": "pod-0:SC09-S13"
+        },
+        {
+          "row": "pod-0:SC11-S04",
+          "speaker": "Receptionist",
+          "scene": "Hotel",
+          "register": "service",
+          "text": "Lovely. The room is on the third floor, room 709.",
+          "initiating_row": "pod-0:SC11-S03"
+        },
+        {
+          "row": "pod-0:SC11-S09",
+          "speaker": "Guest",
+          "scene": "Hotel",
+          "register": "service",
+          "text": "Wonderful. Is it possible for us to have a late check-out?",
+          "initiating_row": "pod-0:SC11-S08"
+        },
+        {
+          "row": "pod-0:SC13-S08",
+          "speaker": "Tourist",
+          "scene": "Directions",
+          "register": "service",
+          "text": "Wonderful. And is there a cashpoint nearby?",
+          "initiating_row": "pod-0:SC13-S07"
+        },
+        {
+          "row": "pod-1:SC05-S06",
+          "speaker": "Mark",
+          "scene": "Tell Me About It",
+          "register": "social",
+          "text": "Exactly. And have you seen the price of coffee now?",
+          "initiating_row": "pod-1:SC05-S05"
+        },
+        {
+          "row": "pod-1:SC11-S15",
+          "speaker": "Priya",
+          "scene": "Shall We Say Half Past?",
+          "register": "social",
+          "text": "Perfect. I'll text you if anything else changes.",
+          "initiating_row": "pod-1:SC11-S14"
+        },
+        {
+          "row": "pod-1:SC13-S13",
+          "speaker": "Rob",
+          "scene": "To Be Honest",
+          "register": "social",
+          "text": "Exactly how I feel. Shall we keep this to ourselves at work?",
+          "initiating_row": "pod-1:SC13-S12"
+        },
+        {
+          "row": "pod-1:SC13-S15",
+          "speaker": "Rob",
+          "scene": "To Be Honest",
+          "register": "social",
+          "text": "An experience. Perfect. That's exactly what I'll say.",
+          "initiating_row": "pod-1:SC13-S14"
+        },
+        {
+          "row": "pod-1:SC16-S09",
+          "speaker": "Paul",
+          "scene": "Anyway, I'd Better Go",
+          "register": "social",
+          "text": "Perfect. Right — I'm really going now.",
+          "initiating_row": "pod-1:SC16-S08"
+        },
+        {
+          "row": "pod-1:SC16-S13",
+          "speaker": "Paul",
+          "scene": "Anyway, I'd Better Go",
+          "register": "social",
+          "text": "I know, I know. Lovely to see you, Grace!",
+          "initiating_row": "pod-1:SC16-S12"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#20",
+          "speaker": "P",
+          "scene": "1.0 Linguistic situation opener (nurse)",
+          "register": "clinical",
+          "text": "That's no problem at all. You're very clear, don't worry.",
+          "initiating_row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#19"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.1 Names and first meeting / Flow 1 (happy path + detail)#39",
+          "speaker": "HW",
+          "scene": "1.1 Names and first meeting",
+          "register": "clinical",
+          "text": "Lovely to meet you, Peggy. I've got a few little jobs to do with you this morning, if that's alright.",
+          "initiating_row": "health-sector-conversations-v3:1.1 Names and first meeting / Flow 1 (happy path + detail)#38"
+        }
+      ]
+    },
+    {
+      "id": "D8",
+      "name": "ellipted order",
+      "shape": "[NP] , please   (no finite verb)",
+      "grain": "sentence",
+      "position": "initiating",
+      "fixed_material": [
+        [
+          "please"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "shape_nodes": [
+        "N2"
+      ],
+      "notes": "ellipsis IS the frame — \"Four single tickets to town, please\" has no verb and no seed looks like it",
+      "count": 7,
+      "by_source": {
+        "pod-0": 6,
+        "health-sector-conversations-v3": 1
+      },
+      "attestation_rows": [
+        "pod-0:SC07-S13",
+        "pod-0:SC09-S04",
+        "pod-0:SC09-S16",
+        "pod-0:SC15-S07",
+        "pod-0:SC15-S08",
+        "pod-0:SC17-S03",
+        "health-sector-conversations-v3:1.7 Meals and drinking / Flow 1 (happy path)#146"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC07-S13",
+          "speaker": "Customer 3",
+          "scene": "Coffee Shop",
+          "register": "service",
+          "text": "Good morning. Two Americanos and a cup of tea, please.",
+          "initiating_row": "pod-0:SC07-S12"
+        },
+        {
+          "row": "pod-0:SC09-S04",
+          "speaker": "Customer 2",
+          "scene": "Restaurant",
+          "register": "service",
+          "text": "We'd like one bottle of sparkling water and one bottle of still water, please.",
+          "initiating_row": "pod-0:SC09-S03"
+        },
+        {
+          "row": "pod-0:SC09-S16",
+          "speaker": "Customer 1",
+          "scene": "Restaurant",
+          "register": "service",
+          "text": "Just two coffees, please. Decaf for me.",
+          "initiating_row": "pod-0:SC09-S15"
+        },
+        {
+          "row": "pod-0:SC15-S07",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "Four single tickets to town, please.",
+          "initiating_row": "pod-0:SC15-S06"
+        },
+        {
+          "row": "pod-0:SC15-S08",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "Two return tickets to town, please.",
+          "initiating_row": "pod-0:SC15-S07"
+        },
+        {
+          "row": "pod-0:SC17-S03",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "Can we put it on the room, please?",
+          "initiating_row": "pod-0:SC17-S02"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.7 Meals and drinking / Flow 1 (happy path)#146",
+          "speaker": "P",
+          "scene": "1.7 Meals and drinking",
+          "register": "clinical",
+          "text": "The chicken, please. I'm starving.",
+          "initiating_row": "health-sector-conversations-v3:1.7 Meals and drinking / Flow 1 (happy path)#145"
+        }
+      ]
+    },
+    {
+      "id": "D9",
+      "name": "reckoning",
+      "shape": "that's [AMOUNT] ( altogether )",
+      "grain": "sentence",
+      "position": "initiating",
+      "fixed_material": [
+        [
+          "that's"
+        ],
+        [
+          "that is"
+        ]
+      ],
+      "register": [
+        "service"
+      ],
+      "shape_nodes": [
+        "N2"
+      ],
+      "count": 2,
+      "by_source": {
+        "pod-0": 2
+      },
+      "attestation_rows": [
+        "pod-0:SC07-S10",
+        "pod-0:SC14-S07"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC07-S10",
+          "speaker": "Barista",
+          "scene": "Coffee Shop",
+          "register": "service",
+          "text": "That's eight pound forty altogether.",
+          "initiating_row": "pod-0:SC07-S09"
+        },
+        {
+          "row": "pod-0:SC14-S07",
+          "speaker": "Driver",
+          "scene": "Taxi",
+          "register": "service",
+          "text": "Here we are. That's twelve pound fifty.",
+          "initiating_row": "pod-0:SC14-S06"
+        }
+      ]
+    },
+    {
+      "id": "D10",
+      "name": "read-back receipt",
+      "shape": "[REPEATED INSTRUCTION] . got it | understood | will do",
+      "grain": "sentence",
+      "position": "response",
+      "fixed_material": [
+        [
+          "got it"
+        ],
+        [
+          "understood"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "social"
+      ],
+      "shape_nodes": [
+        "N4"
+      ],
+      "notes": "mined from the health source, as the design predicted the sector sources would add: the learner says the instruction back and marks receipt",
+      "count": 11,
+      "by_source": {
+        "pod-1": 1,
+        "health-sector-conversations-v3": 10
+      },
+      "attestation_rows": [
+        "pod-1:SC03-S13",
+        "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#114",
+        "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#118",
+        "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#202",
+        "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#218",
+        "health-sector-conversations-v3:2.1 Opening the consultation / Flow 2 (question - here about results)#267",
+        "health-sector-conversations-v3:2.4 Narrating an examination / Flow 3 (safety-critical ⚠ - can't breathe deep)#329",
+        "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#353",
+        "health-sector-conversations-v3:2.6 Ordering tests / Flow 2 (question - what for / worried)#360",
+        "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#388",
+        "health-sector-conversations-v3:2.8 Safety netting / Flow 2 (safety-critical ⚠ - what to look for)#396"
+      ],
+      "attestations": [
+        {
+          "row": "pod-1:SC03-S13",
+          "speaker": "Sam",
+          "scene": "Say That Again",
+          "register": "social",
+          "text": "Got it. Do you mean the road down by the water?",
+          "initiating_row": "pod-1:SC03-S12"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#114",
+          "speaker": "P",
+          "scene": "1.5 Medication round",
+          "register": "clinical",
+          "text": "Understood. I'll wait for you.",
+          "initiating_row": "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#113"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#118",
+          "speaker": "P",
+          "scene": "1.5 Medication round",
+          "register": "clinical",
+          "text": "Instead of, not as well as. Got it. There's a lot to keep track of, isn't there?",
+          "initiating_row": "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#117"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#202",
+          "speaker": "P",
+          "scene": "1.10 Preparing for a procedure",
+          "register": "clinical",
+          "text": "Understood. My son's bringing my dressing gown in tonight anyway.",
+          "initiating_row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#201"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#218",
+          "speaker": "P",
+          "scene": "1.11 Going home",
+          "register": "clinical",
+          "text": "Hang on, let me write this down. One in the morning, one at night, with food. Got it.",
+          "initiating_row": "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#217"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.1 Opening the consultation / Flow 2 (question - here about results)#267",
+          "speaker": "HW",
+          "scene": "2.1 Opening the consultation",
+          "register": "clinical",
+          "text": "That's right, I did - and there's nothing to be alarmed about. We'll go through it all now. How have you been feeling in yourself?",
+          "initiating_row": "health-sector-conversations-v3:2.1 Opening the consultation / Flow 2 (question - here about results)#266"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.4 Narrating an examination / Flow 3 (safety-critical ⚠ - can't breathe deep)#329",
+          "speaker": "HW",
+          "scene": "2.4 Narrating an examination",
+          "register": "clinical",
+          "text": "Noted. Pop your shirt back on and have a seat, and I'll tell you what I'm thinking.",
+          "initiating_row": "health-sector-conversations-v3:2.4 Narrating an examination / Flow 3 (safety-critical ⚠ - can't breathe deep)#328"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#353",
+          "speaker": "HW",
+          "scene": "2.6 Ordering tests",
+          "register": "clinical",
+          "text": "Exactly right. Keep taking the tablets in the meantime - don't wait for the results.",
+          "initiating_row": "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#352"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.6 Ordering tests / Flow 2 (question - what for / worried)#360",
+          "speaker": "P",
+          "scene": "2.6 Ordering tests",
+          "register": "clinical",
+          "text": "A text if it's normal, a call if it's not. Understood.",
+          "initiating_row": "health-sector-conversations-v3:2.6 Ordering tests / Flow 2 (question - what for / worried)#359"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#388",
+          "speaker": "P",
+          "scene": "2.8 Safety netting",
+          "register": "clinical",
+          "text": "Breathlessness, same day. Understood.",
+          "initiating_row": "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#387"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.8 Safety netting / Flow 2 (safety-critical ⚠ - what to look for)#396",
+          "speaker": "P",
+          "scene": "2.8 Safety netting",
+          "register": "clinical",
+          "text": "Breathless, blood, fever. There - word perfect.",
+          "initiating_row": "health-sector-conversations-v3:2.8 Safety netting / Flow 2 (safety-critical ⚠ - what to look for)#395"
+        }
+      ]
+    },
+    {
+      "id": "D11",
+      "name": "reassurance / normalising",
+      "shape": "don't worry | that's normal | you're doing [ADV]",
+      "grain": "sentence",
+      "position": "response",
+      "fixed_material": [
+        [
+          "don't worry"
+        ],
+        [
+          "that's normal"
+        ],
+        [
+          "not at all"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "social"
+      ],
+      "shape_nodes": [
+        "N12"
+      ],
+      "count": 10,
+      "by_source": {
+        "pod-1": 2,
+        "health-sector-conversations-v3": 8
+      },
+      "attestation_rows": [
+        "pod-1:SC02-S08",
+        "pod-1:SC10-S05",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 2 (question)#10",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#20",
+        "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#45",
+        "health-sector-conversations-v3:1.3 Taking observations / Flow 2 (question - worried about a high reading)#81",
+        "health-sector-conversations-v3:1.6 Taking blood / cannula / Flow 1 (happy path - first-time success)#129",
+        "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 3 (human moment - nervous)#213",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / English version - flow 1 (happy path)#248",
+        "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 1 (happy path)#297"
+      ],
+      "attestations": [
+        {
+          "row": "pod-1:SC02-S08",
+          "speaker": "Joe",
+          "scene": "And What About You?",
+          "register": "social",
+          "text": "I will, don't worry. Are you still running, by the way?",
+          "initiating_row": "pod-1:SC02-S07"
+        },
+        {
+          "row": "pod-1:SC10-S05",
+          "speaker": "Nia",
+          "scene": "I'd Love To, But",
+          "register": "social",
+          "text": "Don't worry. Can we do something another week instead?",
+          "initiating_row": "pod-1:SC10-S04"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 2 (question)#10",
+          "speaker": "P",
+          "scene": "1.0 Linguistic situation opener (nurse)",
+          "register": "clinical",
+          "text": "A year? Well, you're doing marvellous. My grandson's learning in school, you know.",
+          "initiating_row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 2 (question)#9"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#20",
+          "speaker": "P",
+          "scene": "1.0 Linguistic situation opener (nurse)",
+          "register": "clinical",
+          "text": "That's no problem at all. You're very clear, don't worry.",
+          "initiating_row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#19"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#45",
+          "speaker": "HW",
+          "scene": "1.1 Names and first meeting",
+          "register": "clinical",
+          "text": "Siân. It's on my badge, look. Don't worry - there's a lot of us to remember.",
+          "initiating_row": "health-sector-conversations-v3:1.1 Names and first meeting / Flow 2 (question - forgot the name)#44"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.3 Taking observations / Flow 2 (question - worried about a high reading)#81",
+          "speaker": "HW",
+          "scene": "1.3 Taking observations",
+          "register": "clinical",
+          "text": "One high reading on its own is nothing to worry about - that's exactly why we keep checking.",
+          "initiating_row": "health-sector-conversations-v3:1.3 Taking observations / Flow 2 (question - worried about a high reading)#80"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.6 Taking blood / cannula / Flow 1 (happy path - first-time success)#129",
+          "speaker": "HW",
+          "scene": "1.6 Taking blood / cannula",
+          "register": "clinical",
+          "text": "There we are - in first time. Keep pressing for a minute. You might get a little bruise, nothing to worry about.",
+          "initiating_row": "health-sector-conversations-v3:1.6 Taking blood / cannula / Flow 1 (happy path - first-time success)#128"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 3 (human moment - nervous)#213",
+          "speaker": "HW",
+          "scene": "1.10 Preparing for a procedure",
+          "register": "clinical",
+          "text": "You'll be asleep for all of it, and someone's with you every single minute. Nervous is completely normal.",
+          "initiating_row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 3 (human moment - nervous)#212"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / English version - flow 1 (happy path)#248",
+          "speaker": "P",
+          "scene": "2.0 Linguistic situation opener (doctor)",
+          "register": "clinical",
+          "text": "That's no trouble, doctor. You're very clear.",
+          "initiating_row": "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / English version - flow 1 (happy path)#247"
+        },
+        {
+          "row": "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 1 (happy path)#297",
+          "speaker": "HW",
+          "scene": "2.3 Medication and allergy check",
+          "register": "clinical",
+          "text": "Amlodipine, that's the one. And you're taking it every day? No trouble with it?",
+          "initiating_row": "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 1 (happy path)#296"
+        }
+      ]
+    },
+    {
+      "id": "D12",
+      "name": "compliance commitment",
+      "shape": "I will | I'll [VP] ( , then )",
+      "grain": "sentence",
+      "position": "response",
+      "fixed_material": [
+        [
+          "i will"
+        ],
+        [
+          "will do"
+        ],
+        [
+          "i'll"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "social"
+      ],
+      "shape_nodes": [
+        "N4"
+      ],
+      "notes": "the confirm position of N4; distinct from D10 because it commits forward rather than echoing back",
+      "count": 32,
+      "by_source": {
+        "pod-0": 2,
+        "pod-1": 8,
+        "health-sector-conversations-v3": 22
+      },
+      "attestation_rows": [
+        "pod-0:SC19-S08",
+        "pod-0:SC19-S09",
+        "pod-1:SC01-S11",
+        "pod-1:SC01-S15",
+        "pod-1:SC02-S08",
+        "pod-1:SC05-S15",
+        "pod-1:SC07-S14",
+        "pod-1:SC10-S11",
+        "pod-1:SC14-S16",
+        "pod-1:SC16-S11",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 1 (happy path)#4",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 2 (question)#12",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#22",
+        "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 1 (happy path)#24",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 1 (happy path - valuables)#58",
+        "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 2 (question - visiting times)#66",
+        "health-sector-conversations-v3:1.3 Taking observations / Flow 3 (problem - drip in the way)#90",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 1 (happy path - needs relief)#96",
+        "health-sector-conversations-v3:1.4 Pain assessment / Flow 3 (safety-critical ⚠ - refusing tablets)#108",
+        "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#110",
+        "health-sector-conversations-v3:1.8 Helping with mobility / Flow 1 (happy path)#166",
+        "health-sector-conversations-v3:1.9 Comfort round / Flow 1 (happy path - small requests)#186",
+        "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#200",
+        "health-sector-conversations-v3:1.11 Going home / Flow 2 (question - missed dose)#228",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / Welsh version - flow 1 (happy path)#238",
+        "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / English version - flow 1 (happy path)#250",
+        "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 1 (happy path)#300",
+        "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 3 (human moment - can't remember them all)#312",
+        "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#354",
+        "health-sector-conversations-v3:2.7 Prescribing / Flow 1 (happy path)#368",
+        "health-sector-conversations-v3:2.7 Prescribing / Flow 3 (safety-critical ⚠ - stopped last time)#383",
+        "health-sector-conversations-v3:2.7 Prescribing / Flow 3 (safety-critical ⚠ - stopped last time)#384"
+      ],
+      "attestations": [
+        {
+          "row": "pod-0:SC19-S08",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "I promise I won't be late.",
+          "initiating_row": "pod-0:SC19-S07"
+        },
+        {
+          "row": "pod-0:SC19-S09",
+          "speaker": "Learner",
+          "scene": "Extra phrases",
+          "register": "social",
+          "text": "I promise we won't be late.",
+          "initiating_row": "pod-0:SC19-S08"
+        },
+        {
+          "row": "pod-1:SC01-S11",
+          "speaker": "Grace",
+          "scene": "Hello Stranger",
+          "register": "social",
+          "text": "I will. Oh — before I forget. You know Sara's back?",
+          "initiating_row": "pod-1:SC01-S10"
+        },
+        {
+          "row": "pod-1:SC01-S15",
+          "speaker": "Grace",
+          "scene": "Hello Stranger",
+          "register": "social",
+          "text": "Deal. It's so good to see you, Paul.",
+          "initiating_row": "pod-1:SC01-S14"
+        },
+        {
+          "row": "pod-1:SC02-S08",
+          "speaker": "Joe",
+          "scene": "And What About You?",
+          "register": "social",
+          "text": "I will, don't worry. Are you still running, by the way?",
+          "initiating_row": "pod-1:SC02-S07"
+        },
+        {
+          "row": "pod-1:SC05-S15",
+          "speaker": "Laura",
+          "scene": "Tell Me About It",
+          "register": "social",
+          "text": "Deal. See — the rain brings out the best in you.",
+          "initiating_row": "pod-1:SC05-S14"
+        },
+        {
+          "row": "pod-1:SC07-S14",
+          "speaker": "Adam",
+          "scene": "Poor You",
+          "register": "social",
+          "text": "I will. Thanks for covering for me… I really appreciate it.",
+          "initiating_row": "pod-1:SC07-S13"
+        },
+        {
+          "row": "pod-1:SC10-S11",
+          "speaker": "Nia",
+          "scene": "I'd Love To, But",
+          "register": "social",
+          "text": "I will. Next Thursday instead? I won't cancel twice, I promise.",
+          "initiating_row": "pod-1:SC10-S10"
+        },
+        {
+          "row": "pod-1:SC14-S16",
+          "speaker": "Ryan",
+          "scene": "Guess What",
+          "register": "social",
+          "text": "I will. Funny old week — the best and worst news in one day.",
+          "initiating_row": "pod-1:SC14-S15"
+        },
+        {
+          "row": "pod-1:SC16-S11",
+          "speaker": "Paul",
+          "scene": "Anyway, I'd Better Go",
+          "register": "social",
+          "text": "I will. And good luck for the first day! You'll be brilliant.",
+          "initiating_row": "pod-1:SC16-S10"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 1 (happy path)#4",
+          "speaker": "P",
+          "scene": "1.0 Linguistic situation opener (nurse)",
+          "register": "clinical",
+          "text": "I will, don't you worry. I'm not shy.",
+          "initiating_row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 1 (happy path)#3"
+        },
+        {
+          "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 2 (question)#12",
+          "speaker": "P",
+          "scene": "1.0 Linguistic situation opener (nurse)",
+          "register": "clinical",
+          "text": "Righto. I'll keep you right where I can.",
+          "initiating_row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 2 (question)#11"
+        }
+      ]
+    }
+  ],
+  "exchange_frames": [
+    {
+      "id": "X1",
+      "name": "reciprocal return",
+      "shape": "[WH-Q] -> [A] + and you ? -> [A]",
+      "grain": "exchange",
+      "positions": [
+        "answer-plus-return",
+        "return-answer"
+      ],
+      "fixed_material": [
+        [
+          "and you"
+        ],
+        [
+          "what about you"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "social"
+      ],
+      "sentence_projection": "D6",
+      "shape_nodes": [
+        "N5"
+      ],
+      "notes": "the design's worked case, quoted live from pod-0 SC06",
+      "count": 7,
+      "by_source": {
+        "pod-0": 2,
+        "pod-0.5": 1,
+        "pod-1": 2,
+        "health-sector-conversations-v3": 2
+      },
+      "attestations": [
+        {
+          "rows": [
+            "pod-0:SC06-S01",
+            "pod-0:SC06-S02",
+            "pod-0:SC06-S03"
+          ],
+          "texts": [
+            "Excuse me. Hello. What's your name?",
+            "My name is Anna. And you?",
+            "I'm James. Pleased to meet you."
+          ],
+          "scene": "Introductions",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC06-S04",
+            "pod-0:SC06-S05",
+            "pod-0:SC06-S06"
+          ],
+          "texts": [
+            "Pleased to meet you too. Where are you from?",
+            "I'm from Manchester, but I live in London now. And you?",
+            "I'm from France. I've been here for two years."
+          ],
+          "scene": "Introductions",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0.5:SC06-S01",
+            "pod-0.5:SC06-S02",
+            "pod-0.5:SC06-S03a"
+          ],
+          "texts": [
+            "I think you can speak [target language] very well… for someone who hasn't been learning… for a very long time… congratulations. Do you have any questions… you'd like to ask me… while we're still talking?",
+            "That's a good question. The truth is, I'm not sure. It's not easy to think of something to ask! So, let me think. How about your family? Yes, tell me about your family.",
+            "I'm not married. I don't have a partner at the moment."
+          ],
+          "scene": "Tell Me About Your Family",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-1:SC02-S08",
+            "pod-1:SC02-S09",
+            "pod-1:SC02-S10"
+          ],
+          "texts": [
+            "I will, don't worry. Are you still running, by the way?",
+            "Most mornings, yes. It keeps me sane. And you? How's the five-a-side going?",
+            "Don't ask. I did my ankle in two weeks ago… I've been watching from the bench ever since."
+          ],
+          "scene": "And What About You?",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-1:SC12-S07",
+            "pod-1:SC12-S08",
+            "pod-1:SC12-S09"
+          ],
+          "texts": [
+            "Just like that?",
+            "You've wanted a garden for years. And you'd only regret losing it.",
+            "That's true. But the money worries me a bit."
+          ],
+          "scene": "If I Were You",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#118",
+            "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#119",
+            "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#120"
+          ],
+          "texts": [
+            "Instead of, not as well as. Got it. There's a lot to keep track of, isn't there?",
+            "There is, and you keep asking every time - you're the best safety check we've got.",
+            "Well! Nobody's ever called me that before."
+          ],
+          "scene": "1.5 Medication round",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:2.10 Ward round review / Flow 2 (question - when can I go home)#428",
+            "health-sector-conversations-v3:2.10 Ward round review / Flow 2 (question - when can I go home)#429",
+            "health-sector-conversations-v3:2.10 Ward round review / Flow 2 (question - when can I go home)#430"
+          ],
+          "texts": [
+            "When exactly can I go home, doctor? I've been in a week now.",
+            "I hear you - a week is plenty. If today's scan is clear and you stay this well overnight, then tomorrow. I won't promise what I can't be sure of, but that's the honest plan.",
+            "Tomorrow, all being well. I'll settle for that."
+          ],
+          "scene": "2.10 Ward round review",
+          "register": "clinical"
+        }
+      ]
+    },
+    {
+      "id": "X2",
+      "name": "polar-response-to-question",
+      "shape": "[POLAR Q] -> yes|no , [CLAUSE]",
+      "grain": "exchange",
+      "positions": [
+        "question",
+        "polar-response"
+      ],
+      "fixed_material": [
+        [
+          "yes"
+        ],
+        [
+          "no"
+        ],
+        [
+          "of course"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service",
+        "social"
+      ],
+      "sentence_projection": "D2",
+      "shape_nodes": [
+        "N3",
+        "N9"
+      ],
+      "notes": "the commonest exchange in the corpus and the cheapest to make instantiable",
+      "count": 48,
+      "by_source": {
+        "pod-0": 29,
+        "pod-0.5": 2,
+        "pod-1": 6,
+        "health-sector-conversations-v3": 11
+      },
+      "attestations": [
+        {
+          "rows": [
+            "pod-0:SC01-S03",
+            "pod-0:SC01-S04"
+          ],
+          "texts": [
+            "I'm very well, thank you. Are you going to work?",
+            "Yes, I've got a busy day today. I hope you have a good day. See you later."
+          ],
+          "scene": "A Day of Greetings (i) - 8 am",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC02-S01",
+            "pod-0:SC02-S02",
+            "pod-0:SC02-S03"
+          ],
+          "texts": [
+            "Excuse me, is this seat taken?",
+            "No, it's free. Please, go ahead.",
+            "How far is it into town?"
+          ],
+          "scene": "A Day of Greetings (ii) - a seat",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "pod-0:SC03-S05",
+            "pod-0:SC03-S06",
+            "pod-0:SC03-S07"
+          ],
+          "texts": [
+            "Do you have crisps, or nuts, or anything?",
+            "No, we've only got drinks.",
+            "Yes, would you like the menu?"
+          ],
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "pod-0:SC03-S07",
+            "pod-0:SC03-S08",
+            "pod-0:SC03-S09"
+          ],
+          "texts": [
+            "Yes, would you like the menu?",
+            "Yes, please.",
+            "Here's your coffee."
+          ],
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC04-S02",
+            "pod-0:SC04-S03"
+          ],
+          "texts": [
+            "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+            "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then."
+          ],
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC05-S01",
+            "pod-0:SC05-S02"
+          ],
+          "texts": [
+            "Good evening, Sarah. Did you have a long day?",
+            "Yes, very. I'm very tired now. Good night. See you tomorrow."
+          ],
+          "scene": "A Day of Greetings (v) - 10:30 pm",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC06-S09",
+            "pod-0:SC06-S10",
+            "pod-0:SC06-S11"
+          ],
+          "texts": [
+            "I'm sorry, I didn't understand you. I'm learning [target language]. Could you say that again more slowly?",
+            "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+            "I teach English, but not in a school. I work with adults. I'm on holiday here with my wife and children. We're having a lovely time."
+          ],
+          "scene": "Introductions",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC07-S08",
+            "pod-0:SC07-S09",
+            "pod-0:SC07-S10"
+          ],
+          "texts": [
+            "Right away. Would you like anything else?",
+            "Yes, can I have a glass of water as well, please.",
+            "That's eight pound forty altogether."
+          ],
+          "scene": "Coffee Shop",
+          "register": "service"
+        }
+      ]
+    },
+    {
+      "id": "X3",
+      "name": "repair",
+      "shape": "[TURN] -> non-understanding + request -> [REFORMULATION]",
+      "grain": "exchange",
+      "positions": [
+        "trouble-source",
+        "repair-initiation",
+        "reformulation"
+      ],
+      "fixed_material": [
+        [
+          "sorry"
+        ],
+        [
+          "i don't understand"
+        ],
+        [
+          "say that again"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "social"
+      ],
+      "sentence_projection": "D4",
+      "shape_nodes": [
+        "N6"
+      ],
+      "notes": "the one exchange whose whole point is that the FIRST turn failed; a sentence-grain map cannot see it",
+      "count": 31,
+      "by_source": {
+        "pod-0": 10,
+        "pod-0.5": 2,
+        "pod-1": 11,
+        "health-sector-conversations-v3": 8
+      },
+      "attestations": [
+        {
+          "rows": [
+            "pod-0:SC04-S01",
+            "pod-0:SC04-S02",
+            "pod-0:SC04-S03"
+          ],
+          "texts": [
+            "Hello, good evening!",
+            "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+            "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then."
+          ],
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC04-S02",
+            "pod-0:SC04-S03"
+          ],
+          "texts": [
+            "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+            "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then."
+          ],
+          "scene": "A Day of Greetings (iv) - 7 pm",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC06-S08",
+            "pod-0:SC06-S09",
+            "pod-0:SC06-S10"
+          ],
+          "texts": [
+            "I'm a nurse, at the hospital just round the corner. And you?",
+            "I'm sorry, I didn't understand you. I'm learning [target language]. Could you say that again more slowly?",
+            "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?"
+          ],
+          "scene": "Introductions",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC15-S09",
+            "pod-0:SC15-S10"
+          ],
+          "texts": [
+            "I prefer to try to speak your language, I think it's polite.",
+            "I'm sorry I can't speak very quickly."
+          ],
+          "scene": "Extra phrases",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC16-S09",
+            "pod-0:SC16-S10"
+          ],
+          "texts": [
+            "No, we only take cash.",
+            "I'm sorry, I don't have any cash."
+          ],
+          "scene": "Extra phrases",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC18-S08",
+            "pod-0:SC18-S09",
+            "pod-0:SC18-S10"
+          ],
+          "texts": [
+            "Am I wrong about that?",
+            "I'm sorry, my son lost his ticket.",
+            "We have paid, but my daughter has lost her ticket."
+          ],
+          "scene": "Extra phrases",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC21-S06",
+            "pod-0:SC21-S07",
+            "pod-0:SC21-S08"
+          ],
+          "texts": [
+            "It's down there on the right.",
+            "Can you say that again?",
+            "Yes, I said it's over there."
+          ],
+          "scene": "Extra phrases",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "pod-0:SC22-S02",
+            "pod-0:SC22-S03",
+            "pod-0:SC22-S04"
+          ],
+          "texts": [
+            "Of course, no problem. You seem to speak it very well. I can understand you easily.",
+            "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
+            "Am I speaking slowly enough for you now?"
+          ],
+          "scene": "First conversation",
+          "register": "social"
+        }
+      ]
+    },
+    {
+      "id": "X4",
+      "name": "instruction -> read-back",
+      "shape": "[INSTRUCTION] -> [INSTRUCTION REPEATED] + receipt",
+      "grain": "exchange",
+      "positions": [
+        "instruct",
+        "read-back"
+      ],
+      "fixed_material": [
+        [
+          "got it"
+        ],
+        [
+          "understood"
+        ],
+        [
+          "i will"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "social"
+      ],
+      "sentence_projection": "D10",
+      "shape_nodes": [
+        "N4"
+      ],
+      "notes": "the safety-critical shape of the health source: the learner proves uptake by saying it back",
+      "count": 9,
+      "by_source": {
+        "pod-1": 1,
+        "health-sector-conversations-v3": 8
+      },
+      "attestations": [
+        {
+          "rows": [
+            "pod-1:SC03-S12",
+            "pod-1:SC03-S13",
+            "pod-1:SC03-S14"
+          ],
+          "texts": [
+            "Of course. Forty-two… Harbour Road.",
+            "Got it. Do you mean the road down by the water?",
+            "That's the one. Oh — and she said it's a potluck."
+          ],
+          "scene": "Say That Again",
+          "register": "social"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#113",
+            "health-sector-conversations-v3:1.5 Medication round / Flow 1 (happy path)#114"
+          ],
+          "texts": [
+            "Lovely. I'll be back with the after-lunch one, so don't take anything in the meantime.",
+            "Understood. I'll wait for you."
+          ],
+          "scene": "1.5 Medication round",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#117",
+            "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#118",
+            "health-sector-conversations-v3:1.5 Medication round / Flow 2 (question - new tablet)#119"
+          ],
+          "texts": [
+            "That's the new one the doctor started yesterday - for your blood pressure. It's instead of the old blue one, not as well as.",
+            "Instead of, not as well as. Got it. There's a lot to keep track of, isn't there?",
+            "There is, and you keep asking every time - you're the best safety check we've got."
+          ],
+          "scene": "1.5 Medication round",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#201",
+            "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#202",
+            "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#203"
+          ],
+          "texts": [
+            "Good. Someone will come first thing to put a name band on and go through the checklist with you.",
+            "Understood. My son's bringing my dressing gown in tonight anyway.",
+            "Perfect. Any worries in the night, ring the bell - the night staff know all about tomorrow."
+          ],
+          "scene": "1.10 Preparing for a procedure",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:2.4 Narrating an examination / Flow 3 (safety-critical ⚠ - can't breathe deep)#328",
+            "health-sector-conversations-v3:2.4 Narrating an examination / Flow 3 (safety-critical ⚠ - can't breathe deep)#329",
+            "health-sector-conversations-v3:2.4 Narrating an examination / Flow 3 (safety-critical ⚠ - can't breathe deep)#330"
+          ],
+          "texts": [
+            "Right here when I cough, doctor. Same spot every time.",
+            "Noted. Pop your shirt back on and have a seat, and I'll tell you what I'm thinking.",
+            "Don't keep me waiting, now."
+          ],
+          "scene": "2.4 Narrating an examination",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#352",
+            "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#353",
+            "health-sector-conversations-v3:2.6 Ordering tests / Flow 1 (happy path)#354"
+          ],
+          "texts": [
+            "Look and know rather than guess. I like that.",
+            "Exactly right. Keep taking the tablets in the meantime - don't wait for the results.",
+            "Righto. Tablets regardless. Thank you, doctor."
+          ],
+          "scene": "2.6 Ordering tests",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:2.6 Ordering tests / Flow 2 (question - what for / worried)#359",
+            "health-sector-conversations-v3:2.6 Ordering tests / Flow 2 (question - what for / worried)#360"
+          ],
+          "texts": [
+            "The nurse can do it today - and we'll text you if it's normal, or ring you if anything needs a chat.",
+            "A text if it's normal, a call if it's not. Understood."
+          ],
+          "scene": "2.6 Ordering tests",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#387",
+            "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#388",
+            "health-sector-conversations-v3:2.8 Safety netting / Flow 1 (happy path)#389"
+          ],
+          "texts": [
+            "Good. And I mean it about the breathlessness - that one's a same-day call, never a wait-and-see.",
+            "Breathlessness, same day. Understood.",
+            "That's everything from me. Any last questions before you go?"
+          ],
+          "scene": "2.8 Safety netting",
+          "register": "clinical"
+        }
+      ]
+    },
+    {
+      "id": "X5",
+      "name": "order -> deictic handover",
+      "shape": "[ORDER|REQUEST] -> here you are | here's [NP]",
+      "grain": "exchange",
+      "positions": [
+        "order",
+        "deliver"
+      ],
+      "fixed_material": [
+        [
+          "here you are"
+        ],
+        [
+          "here it is"
+        ],
+        [
+          "here's"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service"
+      ],
+      "sentence_projection": "D5",
+      "shape_nodes": [
+        "N2"
+      ],
+      "count": 7,
+      "by_source": {
+        "pod-0": 6,
+        "health-sector-conversations-v3": 1
+      },
+      "attestations": [
+        {
+          "rows": [
+            "pod-0:SC03-S08",
+            "pod-0:SC03-S09",
+            "pod-0:SC03-S10"
+          ],
+          "texts": [
+            "Yes, please.",
+            "Here's your coffee.",
+            "Thank you very much. Goodbye."
+          ],
+          "scene": "A Day of Greetings (iii) - 3 pm",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "pod-0:SC07-S11",
+            "pod-0:SC07-S12",
+            "pod-0:SC07-S13"
+          ],
+          "texts": [
+            "Could I pay by card? Do you have contactless?",
+            "Of course. There's the machine.",
+            "Good morning. Two Americanos and a cup of tea, please."
+          ],
+          "scene": "Coffee Shop",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "pod-0:SC08-S12",
+            "pod-0:SC08-S13",
+            "pod-0:SC08-S14"
+          ],
+          "texts": [
+            "I'm not sure if I'm hungry. Do you have a menu?",
+            "Yes, of course. Here it is. The fish and chips are very good.",
+            "Can we have some bread? And a bowl of chips for the table."
+          ],
+          "scene": "Pub",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "pod-0:SC09-S01",
+            "pod-0:SC09-S02",
+            "pod-0:SC09-S03"
+          ],
+          "texts": [
+            "Good evening. We have a booking for two, under the name Davies.",
+            "Welcome. Please follow me. Here are the menus.",
+            "Would you like still or sparkling water to start?"
+          ],
+          "scene": "Restaurant",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "pod-0:SC11-S02",
+            "pod-0:SC11-S03",
+            "pod-0:SC11-S04"
+          ],
+          "texts": [
+            "Welcome. Yes, you have a double room for three nights. Could I see some ID, please?",
+            "Of course. Here's my passport.",
+            "Lovely. The room is on the third floor, room 709."
+          ],
+          "scene": "Hotel",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "pod-0:SC14-S06",
+            "pod-0:SC14-S07",
+            "pod-0:SC14-S08"
+          ],
+          "texts": [
+            "Yes, I'll drop you right by the ticket office.",
+            "Here we are. That's twelve pound fifty.",
+            "Could I pay by card?"
+          ],
+          "scene": "Taxi",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 1 (happy path)#334",
+            "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 1 (happy path)#335",
+            "health-sector-conversations-v3:2.5 Explaining what's going on / Flow 1 (happy path)#336"
+          ],
+          "texts": [
+            "Three or four days. I can cope with that.",
+            "So here's the plan: a week of antibiotics, plenty of rest and fluids, and I want to hear from you if you're not clearly better by Friday.",
+            "Makes sense. What do I do if it's the weekend, though?"
+          ],
+          "scene": "2.5 Explaining what's going on",
+          "register": "clinical"
+        }
+      ]
+    },
+    {
+      "id": "X6",
+      "name": "thanks -> downgrade",
+      "shape": "thank you -> not at all | no problem | you're welcome",
+      "grain": "exchange",
+      "positions": [
+        "thank",
+        "downgrade"
+      ],
+      "fixed_material": [
+        [
+          "not at all"
+        ],
+        [
+          "no problem"
+        ],
+        [
+          "you're welcome"
+        ]
+      ],
+      "register": [
+        "clinical",
+        "service"
+      ],
+      "sentence_projection": "D11",
+      "shape_nodes": [
+        "N10",
+        "N2"
+      ],
+      "count": 3,
+      "by_source": {
+        "pod-0": 1,
+        "health-sector-conversations-v3": 2
+      },
+      "attestations": [
+        {
+          "rows": [
+            "pod-0:SC10-S07",
+            "pod-0:SC10-S08",
+            "pod-0:SC10-S09"
+          ],
+          "texts": [
+            "Thank you, you've been very helpful. I'm very grateful.",
+            "You're welcome. Are you here on holiday? You speak very good [target language].",
+            "That's very kind of you! Yes, I'm on holiday, and I need to practice more to speak [target language] better. Thank you very much, and goodbye."
+          ],
+          "scene": "Shop",
+          "register": "service"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 3 (problem - graceful switch)#16",
+            "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 3 (problem - graceful switch)#17",
+            "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 3 (problem - graceful switch)#18"
+          ],
+          "texts": [
+            "Thank you, love. No offence meant - I'm just tired today.",
+            "None taken at all. Right - first, I just need to take your blood pressure.",
+            "Go on then. Do your worst."
+          ],
+          "scene": "1.0 Linguistic situation opener (nurse)",
+          "register": "clinical"
+        },
+        {
+          "rows": [
+            "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / Welsh version - flow 2 (problem - switch to English)#244",
+            "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / Welsh version - flow 2 (problem - switch to English)#245",
+            "health-sector-conversations-v3:2.0 Linguistic situation opener (doctor) / Welsh version - flow 2 (problem - switch to English)#246"
+          ],
+          "texts": [
+            "Thank you. No offence to your Welsh, now.",
+            "None taken at all - you've done me a favour. So, what's brought you in today?",
+            "These headaches. My wife made me come, if I'm honest."
+          ],
+          "scene": "2.0 Linguistic situation opener (doctor)",
+          "register": "clinical"
+        }
+      ]
+    }
+  ],
+  "residue_rows": [
+    {
+      "row": "pod-0:SC06-S03",
+      "speaker": "James",
+      "text": "I'm James. Pleased to meet you."
+    },
+    {
+      "row": "pod-0:SC09-S09",
+      "speaker": "Customer 1",
+      "text": "I'll have the lamb, please. With a side of greens."
+    },
+    {
+      "row": "pod-0:SC09-S10",
+      "speaker": "Customer 2",
+      "text": "And the risotto for me. With a small green salad to start."
+    },
+    {
+      "row": "pod-0:SC09-S13",
+      "speaker": "Customer 2",
+      "text": "A bottle of the house red would be lovely."
+    },
+    {
+      "row": "pod-0:SC13-S05",
+      "speaker": "Local",
+      "text": "At the second roundabout, take the first exit."
+    },
+    {
+      "row": "pod-0:SC13-S07",
+      "speaker": "Local",
+      "text": "You'll see the supermarket on your left, just opposite the bus stop."
+    },
+    {
+      "row": "pod-0:SC17-S06",
+      "speaker": "Learner",
+      "text": "We'll pay by card again, please."
+    },
+    {
+      "row": "pod-0:SC18-S01",
+      "speaker": "Learner",
+      "text": "That's a bad idea."
+    },
+    {
+      "row": "pod-0:SC20-S02",
+      "speaker": "Learner",
+      "text": "And then another cone with one scoop of lemon and one of blueberry."
+    },
+    {
+      "row": "pod-0:SC20-S07",
+      "speaker": "Learner",
+      "text": "Good luck with that!"
+    },
+    {
+      "row": "pod-0:SC20-S09",
+      "speaker": "Learner",
+      "text": "You're very kind."
+    },
+    {
+      "row": "pod-0.5:SC04-S04b",
+      "speaker": "Learner",
+      "text": "We don't have children."
+    },
+    {
+      "row": "pod-0.5:SC04-S04c",
+      "speaker": "Learner",
+      "text": "I don't have children."
+    },
+    {
+      "row": "pod-0.5:SC06-S03b",
+      "speaker": "Friend",
+      "text": "I do have a partner. My husband works in a tech company."
+    },
+    {
+      "row": "pod-0.5:SC06-S04a",
+      "speaker": "Friend",
+      "text": "We don't have children."
+    },
+    {
+      "row": "pod-1:SC01-S02",
+      "speaker": "Paul",
+      "text": "Grace! I was just thinking about you the other day."
+    },
+    {
+      "row": "pod-1:SC01-S07",
+      "speaker": "Grace",
+      "text": "I got it! I start in two weeks."
+    },
+    {
+      "row": "pod-1:SC01-S13",
+      "speaker": "Grace",
+      "text": "Sara. From the old office. She's moved back from Leeds."
+    },
+    {
+      "row": "pod-1:SC03-S06",
+      "speaker": "Ana",
+      "text": "Maya's. You met her at the quiz night… the one with the red glasses."
+    },
+    {
+      "row": "pod-1:SC03-S10",
+      "speaker": "Ana",
+      "text": "Forty-two, Harbour Road."
+    },
+    {
+      "row": "pod-1:SC04-S04",
+      "speaker": "Marta",
+      "text": "We got on the wrong bus on the first day."
+    },
+    {
+      "row": "pod-1:SC04-S06",
+      "speaker": "Marta",
+      "text": "We were tired from the flight… and I just read the number wrong."
+    },
+    {
+      "row": "pod-1:SC05-S03",
+      "speaker": "Laura",
+      "text": "Same here. And the buses were all over the place again."
+    },
+    {
+      "row": "pod-1:SC06-S07",
+      "speaker": "Josh",
+      "text": "Maybe I wasn't in the right mood for it, then."
+    },
+    {
+      "row": "pod-1:SC08-S02",
+      "speaker": "Ben",
+      "text": "A week in Spain, back on Sunday. I clearly needed it."
+    },
+    {
+      "row": "pod-1:SC08-S03",
+      "speaker": "Priya",
+      "text": "It suits you. You look ten years younger."
+    },
+    {
+      "row": "pod-1:SC08-S08",
+      "speaker": "Ben",
+      "text": "Worth a try. Seriously, though… Spain was exactly what I needed."
+    },
+    {
+      "row": "pod-1:SC09-S14",
+      "speaker": "Owen",
+      "text": "All right, all right — you've talked me into it."
+    },
+    {
+      "row": "pod-1:SC11-S09",
+      "speaker": "Priya",
+      "text": "The river one. The market one shut last month."
+    },
+    {
+      "row": "pod-1:SC11-S14",
+      "speaker": "Tom",
+      "text": "Two it is, then. Saturday, two o'clock, by the river."
+    },
+    {
+      "row": "pod-1:SC13-S07",
+      "speaker": "Rob",
+      "text": "The desserts were lovely, mind you. I'll give them that."
+    },
+    {
+      "row": "pod-1:SC13-S11",
+      "speaker": "Rob",
+      "text": "Don't get me wrong — I'm glad we tried it."
+    },
+    {
+      "row": "pod-1:SC14-S12",
+      "speaker": "Ryan",
+      "text": "He lost his job on Friday. The whole team went."
+    },
+    {
+      "row": "pod-1:SC15-S09",
+      "speaker": "Emma",
+      "text": "That's the word! A chihuahua, in a little coat."
+    },
+    {
+      "row": "pod-1:SC15-S11",
+      "speaker": "Emma",
+      "text": "Both, actually. Matching ones."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / Welsh version - flow 1 (happy path)#6",
+      "speaker": "P",
+      "text": "Fire away, bach."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 3 (human moment - family helper)#34",
+      "speaker": "P",
+      "text": "She'll be glad of that. She worries, see."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.0 Linguistic situation opener (nurse) / English version - flow 3 (human moment - family helper)#35",
+      "speaker": "HW",
+      "text": "That's what family's for. Right, with you both here, let's make a start."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.1 Names and first meeting / Flow 1 (happy path + detail)#42",
+      "speaker": "P",
+      "text": "Third of March, nineteen forty-one. I'm no spring chicken."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.1 Names and first meeting / Flow 3 (human moment - reassurance)#54",
+      "speaker": "P",
+      "text": "Course. Twelfth of June, nineteen thirty-eight."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.2 Settling a new patient in / Flow 2 (question - visiting times)#63",
+      "speaker": "HW",
+      "text": "Visiting's two till eight, so plenty of time. Two visitors at a time, that's the only rule."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.7 Meals and drinking / Flow 1 (happy path)#148",
+      "speaker": "P",
+      "text": "You read my mind. Sponge and custard, lovely."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.9 Comfort round / Flow 1 (happy path - small requests)#185",
+      "speaker": "HW",
+      "text": "Right, you're all set. I'll be past again in an hour or so anyway."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 1 (happy path)#201",
+      "speaker": "HW",
+      "text": "Good. Someone will come first thing to put a name band on and go through the checklist with you."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 2 (safety-critical ⚠ - regular medication)#208",
+      "speaker": "P",
+      "text": "Written down would be lovely. I don't trust my memory these days."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 2 (safety-critical ⚠ - regular medication)#209",
+      "speaker": "HW",
+      "text": "Leave it with me - it'll be there in black and white by your bed."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.10 Preparing for a procedure / Flow 3 (human moment - nervous)#215",
+      "speaker": "HW",
+      "text": "About an hour, then a couple of hours coming round with us keeping an eye on you. You'll be back on the ward for lunch."
+    },
+    {
+      "row": "health-sector-conversations-v3:1.11 Going home / Flow 1 (happy path - writes it down)#220",
+      "speaker": "P",
+      "text": "Thursday, the nurse. I'll put this note on the fridge."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.2 Exploring the symptom / Flow 2 (question - which symptom)#286",
+      "speaker": "P",
+      "text": "The pain came first, maybe a month ago. The dizziness is newer - a week or so."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.2 Exploring the symptom / Flow 3 (problem - vague timeline)#294",
+      "speaker": "P",
+      "text": "Whatever you need, doctor."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 1 (happy path)#298",
+      "speaker": "P",
+      "text": "Every day with my breakfast, regular as clockwork."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.3 Medication and allergy check / Flow 2 (safety-critical ⚠ - penicillin allergy)#302",
+      "speaker": "P",
+      "text": "I'm allergic to penicillin. It brings me out in a terrible rash."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.4 Narrating an examination / Flow 1 (happy path)#316",
+      "speaker": "P",
+      "text": "Clear! Well, that's something, at least."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.4 Narrating an examination / Flow 2 (safety-critical ⚠ - tender spot)#324",
+      "speaker": "P",
+      "text": "There we are. All yours."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.6 Ordering tests / Flow 3 (problem - can't do today)#365",
+      "speaker": "HW",
+      "text": "Book at the desk to be safe. And keep taking the tablets in the meantime - don't wait for results."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.6 Ordering tests / Flow 3 (problem - can't do today)#366",
+      "speaker": "P",
+      "text": "Text good, call thorough, tablets regardless. You've a way of making it simple."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.7 Prescribing / Flow 2 (question - alcohol)#376",
+      "speaker": "P",
+      "text": "A week off the wine. My wife will be delighted."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.8 Safety netting / Flow 3 (problem - doesn't like to fuss)#400",
+      "speaker": "P",
+      "text": "Alright, alright, I promise. My daughter will make me anyway."
+    },
+    {
+      "row": "health-sector-conversations-v3:2.9 Giving results / Flow 1 (happy path)#408",
+      "speaker": "P",
+      "text": "Three months. That's a fair challenge. I'll take it."
+    }
+  ]
+}

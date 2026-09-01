@@ -64,7 +64,22 @@ const ROOT = path.join(__dirname, '..', '..');
 const VERDICTS = path.join(__dirname, 'verdicts.ndjson');
 const CANDIDATES = JOBS.CANDIDATES;
 const TASTE_FILE = path.join(__dirname, 'taste-languages.json');
-const MAPPING_DOC = JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/pair-mapping-classes.json'), 'utf8'));
+/**
+ * The frame layer's mapping table, read once at require time. It is TRACKED source
+ * (docs/frame-layer/*.md is rendered from these .json companions), and the .gitignore
+ * exception at the bottom of that file is what keeps it in every checkout.
+ *
+ * The read is guarded because production-api.cjs mounts this lab at require time: on
+ * 2026-09-01 the repo-size sweep gitignored this file as if it were a log, and the next
+ * -prod restart crash-looped the whole API on ENOENT — a read-and-judge lab page taking
+ * the production API down with it. A missing table now costs exactly what it should: the
+ * grid says "no mapping classes recorded" per column, and nothing else changes.
+ */
+const MAPPING_DOC = (() => {
+  const f = path.join(ROOT, 'docs/frame-layer/pair-mapping-classes.json');
+  try { return JSON.parse(fs.readFileSync(f, 'utf8')); }
+  catch (e) { console.error(`[basket-lab] mapping classes unavailable (${e.code || e.message}) at ${f} — columns will report no mapping classes. This file is tracked; a checkout missing it is broken.`); return null; }
+})();
 
 /**
  * WHICH COLUMNS ARE TASTE AND WHICH ARE MEASUREMENT.

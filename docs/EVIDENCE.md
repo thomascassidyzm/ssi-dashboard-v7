@@ -37,6 +37,27 @@ output never enters the tracked tree, so a fresh worktree stays small.
   repo, so the link survives this move and every future one.
 - **Screenshots** → `public/evidence/`, per standing doctrine, never `docs/`.
 
-Exceptions kept in the tree are listed at the bottom of `.gitignore`: schemas, and
-the eight evidence files that committed tools and tests read by path. To add one it
-must be small and it must be *read by code*.
+Exceptions kept in the tree are listed at the bottom of `.gitignore`: schemas, the
+eight evidence files that committed tools and tests read by path, and the frame
+layer's three source `.json` files. To add one it must be small and it must be
+*read by code*.
+
+## What this rule is NOT for
+
+**A `.json` under `docs/` is not automatically evidence.** Some of them are machine-readable
+*source* that a human render sits on top of — `docs/frame-layer/*.md` is generated FROM its
+`.json` companion by `tools/frame-layer/render-mapping.cjs`, and nothing generates the `.json`;
+it is hand-authored analysis. Those belong in the tree, and the first sweep took three of them
+out with the logs. `labs/basket-lab/server.cjs` reads `pair-mapping-classes.json` with a
+`readFileSync` at **require** time and `services/production-api.cjs` mounts that lab, so the
+next production-api restart crash-looped on ENOENT — eleven hours after the commit, because
+nothing had restarted until then.
+
+Two lessons worth keeping:
+
+- **Ask what produces the file, not where it sits.** A log is a worker's output and can be
+  regenerated or recovered from the store; a hand-authored input cannot be regenerated at all.
+- **A grep for path literals only finds the crash you already understand.** Before moving files
+  out of the tree, check the surviving references for *reads*, and check whether any of them run
+  at require time inside a long-running service. Untracking a file is a change whose blast radius
+  arrives at the next restart, which may be hours or days later.

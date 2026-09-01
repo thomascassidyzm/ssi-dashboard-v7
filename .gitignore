@@ -249,3 +249,16 @@ archive/**/*.wav
 !docs/pods/nld-inflight-session-repair-2026-08-24-applied-log.json
 !docs/a108/a136-nld-noor-drop-sample.json
 !docs/spa-bare-lego-repair-sample-2026-08-26.json
+
+# NOT evidence: the frame layer's machine-readable SOURCE. Each docs/frame-layer/*.md
+# is a human RENDER of its .json companion (see docs/frame-layer/README.md's table and
+# tools/frame-layer/render-mapping.cjs, which writes the .md FROM the .json). No
+# generator produces these — they are hand-authored analysis — so a checkout without
+# them is a checkout with a missing input, not a checkout missing a log. The 2026-09-01
+# sweep took them out with the logs and production-api crash-looped on the next restart:
+# labs/basket-lab/server.cjs readFileSyncs pair-mapping-classes.json at REQUIRE time and
+# production-api.cjs mounts it (services/production-api.cjs). Listed here are the three
+# that committed code reads by path; the rest of the frame layer's JSON stays out.
+!docs/frame-layer/pair-mapping-classes.json
+!docs/frame-layer/english-pattern-inventory.json
+!docs/frame-layer/dialogue-frame-inventory.json
