@@ -84,7 +84,7 @@ function flowKey (label) {
 function declaredIds (text) {
   const out = []
   const seen = new Set()
-  for (const m of String(text || '').matchAll(/\b([NPOF]\d{1,3})\b/g)) {
+  for (const m of String(text || '').matchAll(/\b([NPOF]\d{1,4})\b/g)) {
     if (seen.has(m[1])) continue
     seen.add(m[1])
     out.push(m[1])

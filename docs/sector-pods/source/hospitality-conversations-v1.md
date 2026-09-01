@@ -42,6 +42,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.0 Linguistic situation opener (guest-facing)
 
+*Walks:* N1201
+
 ### Flow 1 *(happy path)*
 - **W:** "Evening — just so you know, I'm learning your language, and I'd like to look after you in it tonight if that's alright. If I get stuck, I might have to ask you to switch to mine for a moment."
 - **G:** "Good for you! Of course that's alright. We're in no hurry at all."
@@ -69,6 +71,8 @@ received without defensiveness, and the check-back mid-service.
 ---
 
 ## 1.1 The welcome, the booking, the walk-in
+
+*Walks:* N1, N103, N110, P2, N9
 
 ### Flow 1 *(happy path)*
 - **W:** "Good evening — welcome. Do you have a booking with us?"
@@ -98,6 +102,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.2 Check-in at the desk
 
+*Walks:* N1, N103, N110, P2, N9
+
 ### Flow 1 *(happy path — the walk-through)*
 - **W:** "Good afternoon — welcome. What name is the booking under?"
 - **G:** "Jones. A double, three nights."
@@ -117,6 +123,8 @@ received without defensiveness, and the check-back mid-service.
 ---
 
 ## 1.3 Taking the order
+
+*Walks:* N2, P1, N3, F6, P3, F21
 
 ### Flow 1 *(happy path — the option chains)*
 - **W:** "Are you ready to order, or do you need another minute?"
@@ -146,6 +154,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.4 The recommendation and the concierge
 
+*Walks:* N8, N4, N105, P3
+
 ### Flow 1 *(happy path — the upsell, offered once)*
 - **W:** "Just the two mains, was it? I'll say one thing before I send it — the tasting menu tonight is the chef's good mood on a plate, and it's only a little more."
 - **G:** "Oh? What's on it?"
@@ -165,6 +175,8 @@ received without defensiveness, and the check-back mid-service.
 ---
 
 ## 1.5 The allergy ⚠
+
+*Walks:* N108, N105, N109, F103
 
 ### Flow 1 *(safety-critical ⚠ — declared, checked, recorded)*
 - **W:** "Before I take the order — any allergies or intolerances at the table?"
@@ -194,6 +206,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.6 The check-back and the complaint
 
+*Walks:* F401, F2, F6, O1, N105
+
 ### Flow 1 *(happy path — the ritual close)*
 - **W:** "How is everything over here?"
 - **G:** "Lovely, thanks. The lamb's perfect."
@@ -221,6 +235,8 @@ received without defensiveness, and the check-back mid-service.
 ---
 
 ## 1.7 Refusing the guest ⚠
+
+*Walks:* N401, F201
 
 ### Flow 1 *(problem — the refusal, absorbed)*
 - **W:** "I'm sorry — I can't serve you another one. It's my licence, not my choice."
@@ -250,6 +266,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.8 The narrated intrusion
 
+*Walks:* N102, O101
+
 ### Flow 1 *(happy path — licence sought, counter-conditioned)*
 - **W:** "Are you still working on that, or can I take it?"
 - **G:** "Still picking, if that's alright. We're slow eaters in this family."
@@ -269,6 +287,8 @@ received without defensiveness, and the check-back mid-service.
 ---
 
 ## 1.9 The bill and the reckoning
+
+*Walks:* N2, P2, N104, F16
 
 ### Flow 1 *(happy path — the reckoning)*
 - **W:** "Here's the bill whenever you're ready — no rush at all."
@@ -298,6 +318,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.10 The guest's trouble
 
+*Walks:* N12, N105, N109, F101, N110
+
 ### Flow 1 *(problem — the bounded commitment)*
 - **G:** "Excuse me — there's no hot water in 204."
 - **W:** "I'm sorry about that — let's get it sorted. Maintenance are on until ten, so I'll have them up to you within the half hour."
@@ -325,6 +347,8 @@ received without defensiveness, and the check-back mid-service.
 ---
 
 ## 1.11 The booking on the phone
+
+*Walks:* N7, N108, P3, N110, N109, P2, F6
 
 ### Flow 1 *(happy path — no fit at eight, the counter)*
 - **W:** "Good afternoon, the Harbour House — how can I help?"
@@ -354,6 +378,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.12 The occasion disclosure
 
+*Walks:* N204, O7
+
 ### Flow 1 *(human moment — acknowledged, not fixed)*
 - **W:** "Here's the dessert menu — take your time."
 - **G:** "Thank you. You know — this is our first trip away since my husband died. He'd have loved this place."
@@ -374,6 +400,8 @@ received without defensiveness, and the check-back mid-service.
 
 ## 1.13 The regulars
 
+*Walks:* N5, F11
+
 ### Flow 1 *(human moment — across the weeks)*
 - **W:** "You're back! How was the wedding?"
 - **G:** "Rained on and perfect. My feet have only just recovered."
@@ -393,6 +421,8 @@ received without defensiveness, and the check-back mid-service.
 ---
 
 ## 1.14 The struggling visitor — the seats reversed
+
+*Walks:* N6, O3, F8
 
 *(The learner sits on the fluent side for the first time: a visiting guest is struggling in the
 local language, and the worker — still a learner themselves — does the slowing-down and the
@@ -424,6 +454,8 @@ back-of-house, not at the table. That is why the ⚠ lines below live at the pas
 
 ## 2.0 Linguistic situation opener (shift-facing)
 
+*Walks:* N1201
+
 ### Flow 1 *(happy path — the first shift)*
 - **W:** "Before service — you should know I'm learning your language. I'll stay in it as much as I can, but if I get stuck mid-rush I'll switch to mine rather than slow the pass down."
 - **C:** "Fair enough. On the pass, clear beats clever — say it however it comes out fastest."
@@ -444,6 +476,8 @@ back-of-house, not at the table. That is why the ⚠ lines below live at the pas
 
 ## 2.1 The pre-service briefing
 
+*Walks:* N4, P5, P3, N108
+
 ### Flow 1 *(happy path — the lineup)*
 - **K:** "Right, tonight: the special's the crab linguine, and the sea bass is low — maybe eight portions, so don't oversell it."
 - **W:** "Crab special, bass is low. What's in the crab — any of the usual suspects?"
@@ -463,6 +497,8 @@ back-of-house, not at the table. That is why the ⚠ lines below live at the pas
 ---
 
 ## 2.2 The 86 and the pass
+
+*Walks:* F6, N7, F5, N15
 
 ### Flow 1 *(happy path — the call relayed)*
 - **C:** "86 the sea bass! Last one just went."
@@ -492,6 +528,8 @@ back-of-house, not at the table. That is why the ⚠ lines below live at the pas
 
 ## 2.3 The stop call at the pass ⚠
 
+*Walks:* N106, O101
+
 ### Flow 1 *(safety-critical ⚠ — the learner stops the plate)*
 - **W:** ⚠ "WAIT — twelve is the nut allergy. Is that the satay? Don't send it."
 - **C:** "Hands off the plate. Talk to me — what's twelve, exactly?"
@@ -520,6 +558,8 @@ back-of-house, not at the table. That is why the ⚠ lines below live at the pas
 
 ## 2.4 The shift handover
 
+*Walks:* N402, N4, P3, F103, P2
+
 ### Flow 1 *(happy path — the state of the floor)*
 - **W:** "Right, handover: nine's on desserts and they're comped — check on them, they've had a night. Twelve is a nut allergy, it's on the ticket. The window couple are pre-theatre — they need the bill by twenty past seven."
 - **K:** "Nine comped and minded, twelve nuts, window billed by seven-twenty. What's open besides?"
@@ -547,6 +587,8 @@ back-of-house, not at the table. That is why the ⚠ lines below live at the pas
 ---
 
 ## 2.5 Cabin talk
+
+*Walks:* N301, N302, N303, N304, N305, N306, F301, F302, F303, F304, F305, F306, N5, N11, F11, F18, N17
 
 ### Flow 1 *(human moment — the post-mortem)*
 - **K:** "That table nine, though."

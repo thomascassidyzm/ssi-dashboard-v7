@@ -111,6 +111,12 @@ eq(flowKey('Welsh version - flow 1'), 'welsh-flow-01', 'health’s Welsh arm')
 eq(flowKey('English version - flow 2'), 'english-flow-02', 'health’s English arm')
 eq(declaredIds('E3 — admits F302, N109 [health, proposed]; survivability S703, under K4, walk W1201').join(','),
   'F302,N109', 'only the store’s own N/P/O/F registers are read as declarations')
+// N1201 (Medium contract) is a real store node with a FOUR-digit id, and hospitality's
+// two linguistic-situation openers declare it. The id class was \d{1,3}, so N1201 was
+// read as nothing at all and those scenes declared silently nothing. W1201 is a core
+// walk file, not a shape, and must still be ignored — the two live one character apart.
+eq(declaredIds('the medium contract N1201 at the front; core walk W1201 is not a shape').join(','),
+  'N1201', 'a four-digit store node is a declaration, and W1201 is still not')
 
 console.log(fails ? `\n${fails} FAILED` : '\nall passed')
 process.exit(fails ? 1 : 0)

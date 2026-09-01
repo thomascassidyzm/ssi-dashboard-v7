@@ -118,7 +118,7 @@ function resolveShape (decl, store) {
         : "the control arm's own 23-move numbering (method-pod-full-2026-08-30.md §1c); no crosswalk entry"
     }
   }
-  if (/^[NP]\d{1,3}$/.test(raw)) {
+  if (/^[NP]\d{1,4}$/.test(raw)) {
     return store.nodeIds.has(raw)
       ? { nodeId: raw, register: 'node', resolution: 'id', note: null }
       : { nodeId: null, register: 'node', resolution: 'unresolved', note: `no node ${raw} in the store` }
@@ -128,7 +128,7 @@ function resolveShape (decl, store) {
       ? { nodeId: raw, register: 'outcome', resolution: 'id', note: null }
       : { nodeId: null, register: 'outcome', resolution: 'unresolved', note: `no outcome ${raw} in the store` }
   }
-  if (/^F\d{1,3}$/.test(raw)) {
+  if (/^F\d{1,4}$/.test(raw)) {
     return store.moveIds.has(raw)
       ? { nodeId: raw, register: 'move-F', resolution: 'id', note: null }
       : { nodeId: null, register: 'move-F', resolution: 'unresolved', note: `no move ${raw} in the store` }
