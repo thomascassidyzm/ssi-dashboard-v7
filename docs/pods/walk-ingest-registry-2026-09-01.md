@@ -1,6 +1,8 @@
 # The walk registry drives the ingest, and the four themed walks parse
 
-**Branch `feat/walk-ingest-discovery`, commit `a2713e6fd`. Dry run only — no database write of any kind. Not merged, not deployed.**
+**Branch `feat/walk-ingest-discovery`. Dry run only — no database write of any kind, and `--execute` was never passed to any command. Not merged, not deployed.**
+
+Migration #732 has since completed. The canonical table now holds `learning-flagship` 367, `method-pod-43-scene` 276, `method-pod-chapters` 309 and `pod-1` 231, with no `pod-0` and no `pod-0.5`. Nothing in this work reads or writes any of those rows.
 
 ---
 
@@ -28,20 +30,38 @@ WHAT THE REGISTRY RESOLVED TO
 |---|---|---|---|
 | health | 23 / 73 / 438 | **23 / 73 / 438** | exact |
 | trades | 23 / 69 / 414 | **23 / 69 / 414** | exact |
-| retail | 25 / 53 / 318 | **25 / 55 / 330** | scenes exact; **the published flow and turn figures are wrong** |
+| retail | 25 / 53 / 318 | **25 / 55 / 330** | scenes exact; the two-flow difference is reconciled below, not an error |
 | hospitality | none | 21 / 55 / 330 | **unverified against a second source** |
 
 The three pod-table walks hold their previous numbers exactly — 367 / 309 / 276 lines — so nothing regressed under the rewrite.
 
-### Retail: the published figure is the one that is wrong
+### Retail: a reconciled difference, not an error
 
-`docs/sector-pods/retail-walk-report-2026-09-01.md` line 4 says *"25 scenes, 53 six-turn flows, 318 turns"*. Three independent pieces of evidence say 55 and 330:
+The parse gives 25 scenes / 55 flows / 330 turns. `docs/sector-pods/retail-walk-report-2026-09-01.md` says *"25 scenes, 53 six-turn flows, 318 turns"*. The gap is exactly two flows and twelve turns, and it is explained rather than wrong.
 
-1. **The same report's own §5 speaker table sums to 330**, not 318: worker 158 + customer 122 + regular 12 + colleague 12 + manager 6 + new starter 6 + specialist 2 = 330. A raw `grep -c` of the corpus's speaker bullets gives exactly those seven numbers.
-2. **Every flow in the corpus is exactly six turns** — the parse's turns-per-flow histogram is `{ '6': 55 }`, with no exceptions. 55 × 6 = 330. 53 × 6 = 318, so the headline is self-consistent only with a flow count of 53.
-3. **A raw `grep -c '^### '` finds 55 flow headings**, all of them inside scenes, and the report's own prose names four flows in R0 and three in R19 — both of which the parse reproduces.
+Scene R0, "The contract at the counter", holds four flows of six turns each. The corpus's own header says R0 is **"inherited, not re-authored"** — a re-instantiation of CORE scene 0 whose turns "are resolved against those walks in the companion report — defers named as defers". 55 − 2 = 53 and 330 − 12 = 318: the published count excludes two of R0's four flows as pure defers to CORE scene 0. It is an editorial claim about provenance, and a correct one.
 
-The headline was almost certainly written before two flows were added and never re-derived. The scene count of 25 is right in both. I have not edited the report: it is another worker's branch.
+**For ingest the document is canon** (Tom's ruling). All 25 scenes, 55 flows and 330 turns are ingested. A row is dialogue that exists; a report's flow count is a claim about where that dialogue came from, and the two answer different questions. Nothing was trimmed to match the report, and the report was not edited — it is another worker's branch.
+
+The parse is corroborated three ways: the same report's §5 speaker table sums to 330, not 318 — worker 158 + customer 122 + regular 12 + colleague 12 + manager 6 + new starter 6 + specialist 2 — and a raw `grep -c` of the corpus's speaker bullets returns exactly those seven numbers; every flow is uniformly six turns, histogram `{ '6': 55 }` with no exceptions; and `grep -c '^### '` finds 55 flow headings, all inside scenes.
+
+### Two independent counts agree, on all four walks
+
+A second count was run deliberately without reading this parser, applying only the defining rule. It matches line for line: health 23 / 73 / 438, retail 25 / 55 / 330, trades 23 / 69 / 414, hospitality 21 / 55 / 330. There is no disagreement to resolve.
+
+The retail scene-by-scene breakdown, offered as the evidence behind that agreement — every flow six turns, no exceptions:
+
+| scene | flows | | scene | flows | | scene | flows |
+|---|---|---|---|---|---|---|---|
+| R0 | **4** | | R9 | 2 | | R17 | **3** |
+| R1 | 2 | | R10 | 2 | | R18 | **1** |
+| R2 | 2 | | R11 | 2 | | R19 | **3** |
+| R3 | 2 | | R12 | 2 | | R20 | 2 |
+| R4 | 2 | | R13 | 2 | | R21 | **3** |
+| R5 | 2 | | R14 | 2 | | R22 | 2 |
+| R6 | **3** | | R15 | 2 | | R23 | 2 |
+| R7 | 2 | | R16 | 2 | | R24 | 2 |
+| R8 | 2 | | | | | **total** | **55 × 6 = 330** |
 
 ## The defining rule, and what it excluded
 
@@ -95,6 +115,34 @@ I added a ninth entry to `walks[]` and a two-turn corpus file, ran the tool, and
 
 **One JSON entry, one corpus file, zero code.** The registry now says so in an `addingAWalk` field at its top. The one thing that still needs code is a new *format* — a parser plus its entry in `PARSERS` — and that is correct: a format is code.
 
+## Skipped and refused are different sentences
+
+`pod-1`, `learning-flagship`, `method-pod-chapters` and `method-pod-43-scene` all have live rows now, and the two states they can be in are not the same fact:
+
+- **Skipped** — the entry has no markdown to ingest, so the tool has nothing to do and never asks the database anything. `pod-1` is the case that matters: an authored walk whose canon lives in the DB rather than in a corpus file. Its 231 live rows are the point, not an obstacle, and this run neither read nor touched them.
+- **Refused** — the entry has a corpus, it parsed, the write was ready, and live rows were found in the way. That is a collision with somebody's Script Lab edits and needs `--reimport-destructive`.
+
+A run that said "skipped" when it meant "refused" would report a walk as having no content when the truth is the tool declined to overwrite its content. They now print different sentences and occupy different rows in the summary table, which lists every registry entry rather than only the ingestable ones:
+
+```
+WHAT THE REGISTRY RESOLVED TO
+  'skipped' = no markdown to ingest, the DB was never asked. 'refused' = parsed and ready,
+  live rows in the way. They are different facts and they are never the same row.
+  walk                  format          scenes  flows  lines  steps  status
+  pod-1                 —                    —      —      —      —  skipped: no corpus, the DB is canon
+  care-work             sector-flows         —      —      —      —  skipped: mapping-only, no walk yet
+  public-services       sector-flows         —      —      —      —  skipped: mapping-only, no walk yet
+  learning-flagship     pod-table           11     11    367     72  dry run
+  method-pod-chapters   pod-table           12     12    309     75  dry run
+  method-pod-43-scene   pod-table           43     43    276     77  dry run
+  health                sector-flows        23     73    438      0  dry run
+  retail                sector-flows        25     55    330     35  dry run
+  trades                sector-flows        23     69    414     84  dry run
+  hospitality           sector-flows        21     55    330      0  dry run
+```
+
+**One honest gap:** the refusal branch only runs under `--execute`, which this job did not pass, so its new wording has been verified by reading and by a syntax check, not by seeing it print. The execute pass will be the first time that sentence appears — and on the three pod-table walks it will appear, because they all have live rows.
+
 ## Failure paths, exercised
 
 Removing the trades corpus and rerunning `--pod=all`: trades reported `MISSING CORPUS` with the branch to fetch it from, hospitality still ran after it, the summary table showed the failure, and the tool exited 1. An unknown `--pod` prints the whole registry with each entry's ingestable state and reason.
@@ -108,4 +156,4 @@ Removing the trades corpus and rerunning `--pod=all`: trades reported `MISSING C
 
 ## The execute pass, when the gate on job #732 is clean
 
-`node tools/pods/ingest-canonical-pods.cjs --pod=health --execute`, and the same for retail, trades and hospitality. Expect 1,512 scenario rows and 119 walk steps across the four. The tool refuses if rows already exist under a slug.
+`node tools/pods/ingest-canonical-pods.cjs --pod=health --execute`, and the same for retail, trades and hospitality. Expect 1,512 scenario rows and 119 walk steps across the four — health 438/0, retail 330/35, trades 414/84, hospitality 330/0. All four slugs are new, so none should refuse; `--pod=all --execute` would additionally refuse the three pod-table walks against their live rows and skip `pod-1` without asking the database anything.

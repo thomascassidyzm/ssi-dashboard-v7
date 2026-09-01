@@ -52,20 +52,42 @@ const SECTIONS = (arg('sections', '') || '').split(',').filter(Boolean).map(Numb
 const MANIFEST = path.join(__dirname, 'pod-corpora.json')
 
 /** The walk registry, and what each entry means for THIS tool.
- *  - status 'authored' + a corpus  → ingestable
- *  - status 'mapping-only', or a null corpus → SKIPPED with its reason printed. A
- *    mapping is not a walk, and pod-1 is canon in the DB rather than in markdown.
- *  Entries in `parked[]` are never read here: they are deliberately not canon. */
+ *
+ * SKIPPED AND REFUSED ARE DIFFERENT FACTS AND MUST NOT SHARE A SENTENCE.
+ *   SKIPPED — this entry has no markdown to ingest, so the tool has nothing to do
+ *             and never asks the database anything. `pod-1` is the case that
+ *             matters: it is an authored walk whose canon lives in the DB, not in
+ *             a corpus file, and its 231 live rows are the point, not an obstacle.
+ *   REFUSED — this entry HAS a corpus, the tool parsed it and was ready to write,
+ *             and then found live rows it would have destroyed. That is a
+ *             collision with somebody's edits and it needs `--reimport-destructive`.
+ * A run that says "skipped" when it means "refused" would report a walk as having
+ * no content when the truth is that the tool declined to overwrite its content.
+ *
+ * Entries in `parked[]` are never read here: they are deliberately not canon. */
 function loadManifest () {
   const m = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
-  return (m.walks || []).map(e => ({
-    ...e,
-    ingestable: e.status === 'authored' && !!e.corpus && !!e.format,
-    skipReason: e.status !== 'authored'
-      ? `status '${e.status}' — not an authored walk`
-      : (!e.corpus ? 'no corpus: the DB is canon for this one, or authoring is in flight'
-        : (!e.format ? 'no format declared' : null))
-  }))
+  return (m.walks || []).map(e => {
+    const ingestable = e.status === 'authored' && !!e.corpus && !!e.format
+    let skipReason = null
+    let skipShort = null
+    if (!ingestable) {
+      if (e.status === 'mapping-only') {
+        skipReason = "status 'mapping-only' — a metagraph mapping exists but no corpus does. A mapping is not a walk."
+        skipShort = 'skipped: mapping-only, no walk yet'
+      } else if (e.status !== 'authored') {
+        skipReason = `status '${e.status}' — not an authored walk`
+        skipShort = `skipped: status '${e.status}'`
+      } else if (!e.corpus) {
+        skipReason = 'no corpus — THE DATABASE IS CANON for this walk. Nothing to parse, nothing to write, and its live rows are untouched and unread by this run.'
+        skipShort = 'skipped: no corpus, the DB is canon'
+      } else {
+        skipReason = `no format declared — add "format" to its registry entry`
+        skipShort = 'skipped: no format declared'
+      }
+    }
+    return { ...e, ingestable, skipReason, skipShort }
+  })
 }
 
 const DDL = `
@@ -152,11 +174,13 @@ async function main () {
 
   const entries = loadManifest()
   const which = arg('pod', '')
+  const skipped = []
   let selected
   if (which === 'all') {
     selected = entries.filter(e => e.ingestable)
     for (const e of entries.filter(e => !e.ingestable)) {
       console.log(`── ${e.slug} — SKIPPED: ${e.skipReason}`)
+      skipped.push({ slug: e.slug, format: e.format || '—', status: e.skipShort, scenes: '—', flows: '—', lines: '—', steps: '—' })
     }
   } else {
     const e = entries.find(x => x.slug === which)
@@ -236,10 +260,11 @@ async function main () {
 
     const existing = await countRows('canonical_pod_scenarios', e.slug)
     if (existing > 0 && !REIMPORT) {
-      console.log(`   REFUSED: ${existing} rows already live under '${e.slug}'. The DB is canon; a re-import`)
-      console.log('   would overwrite edits made in the Script Lab. Pass --reimport-destructive to destroy them.')
+      console.log(`   REFUSED: ${existing} rows are already live under '${e.slug}'. This corpus PARSED — ${sum.lines} lines`)
+      console.log('   are ready to write — and the write is being declined, not skipped: those live rows are edits')
+      console.log('   made in the Script Lab and a re-import destroys them. Pass --reimport-destructive to do that.')
       report.push({ ...sum, wrote: 0, refused: existing })
-      table.push({ slug: e.slug, format: e.format, status: `REFUSED (${existing} live rows)`, scenes: sum.sections, flows, lines: sum.lines, steps: sum.walkSteps })
+      table.push({ slug: e.slug, format: e.format, status: `refused: ${existing} rows already live`, scenes: sum.sections, flows, lines: sum.lines, steps: sum.walkSteps })
       continue
     }
     if (existing > 0 && REIMPORT) {
@@ -258,8 +283,10 @@ async function main () {
 
   // One line per walk, so a human can see what the registry resolved to.
   console.log('\nWHAT THE REGISTRY RESOLVED TO')
+  console.log("  'skipped' = no markdown to ingest, the DB was never asked. 'refused' = parsed and ready,")
+  console.log('  live rows in the way. They are different facts and they are never the same row.')
   console.log(`  ${'walk'.padEnd(22)}${'format'.padEnd(15)}${'scenes'.padStart(7)}${'flows'.padStart(7)}${'lines'.padStart(7)}${'steps'.padStart(7)}  status`)
-  for (const r of table) {
+  for (const r of [...skipped, ...table]) {
     console.log(`  ${r.slug.padEnd(22)}${String(r.format).padEnd(15)}${String(r.scenes).padStart(7)}${String(r.flows).padStart(7)}${String(r.lines).padStart(7)}${String(r.steps).padStart(7)}  ${r.status}`)
   }
   const errs = report.filter(r => r.error)
@@ -269,7 +296,7 @@ async function main () {
   // the old path under docs/ was gitignored, so the log was being written nowhere
   // a second machine could find it.
   const out = evidencePath('docs/pods/pod-ingest-log.json')
-  fs.writeFileSync(out, JSON.stringify({ ran: new Date().toISOString(), execute: EXECUTE, report, table }, null, 2))
+  fs.writeFileSync(out, JSON.stringify({ ran: new Date().toISOString(), execute: EXECUTE, report, skipped, table }, null, 2))
   console.log(`\nlog → ${out}`)
   if (errs.length) process.exit(1)
 }
