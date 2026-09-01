@@ -15,8 +15,10 @@
             Four things you can change about a speaking round: how much
             repetition a learner gets, how long a phrase is allowed to be, how
             much time they get to say it, and which phrases get filtered at all.
-            Pick a mode below and everything on the page follows it. Changes
-            reach new sessions within about five minutes.
+            Pick a mode below and everything on the page follows it. A change
+            you save reaches anyone starting a session instantly. Anyone
+            already mid-session keeps what they started with until they
+            come back.
           </p>
         </div>
       </div>
