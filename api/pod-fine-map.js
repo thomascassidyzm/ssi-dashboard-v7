@@ -3,9 +3,21 @@
  *
  *   PATCH /api/pod-fine-map   body: { id, atom_map_fine }   auth required
  *
- * Writes ONLY listening_pod_sentences.atom_map_fine (the draft column the Pod
- * Lab's seam editor reads) — by construction this endpoint cannot touch the
- * live atom_map or anything learners hear. The submitted units are verified
+ * Writes ONLY listening_pod_sentences.atom_map_fine (the column the Pod Lab's
+ * seam editor reads). It does not touch the live atom_map.
+ *
+ * IT IS NOT, HOWEVER, INVISIBLE TO LEARNERS, and this comment said it was until
+ * 2026-09-01. `atom_map_fine` is read LIVE on the learner path: Listening Mode →
+ * Dialogues → Drill selects it straight off listening_pod_sentences
+ * (ssi-learning-app packages/player-vue/src/composables/useListeningPods.ts:179)
+ * and feeds it to buildFusionGroups on every fetch — no cache, no render step,
+ * nothing to approve. The slice-playback kill switch (packages/core/src/pods/
+ * fusionDrill.ts:38) suppresses the sub-sentence AUDIO only, and says so in its
+ * own words: "text chunking and glosses stay fully intact". So a seam or gloss
+ * edited here is read by the next learner to open that pod. Treat it as a live
+ * write, because it is one.
+ *
+ * The submitted units are verified
  * server-side to TILE the row's target_text per sentence (surfaces in order
  * reconstruct each sentence, never crossing a sentence boundary) so a bad
  * client can't persist seams the future Take G render couldn't cut at.

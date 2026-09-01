@@ -46,22 +46,41 @@ label still standing over the controls when you get there.
 |---|---|---|
 | Listening Lab | **LIVE NOW** | `PATCH /api/algorithm-config` via `useAlgorithmConfig` |
 | Speaking Lab | **LIVE NOW** | `PATCH /api/algorithm-config` via `useAlgorithmConfig` |
+| **Pod Lab** | **LIVE NOW** | `PATCH /api/pod-fine-map` — `atom_map_fine` is read **live** by the learner's Drill. Its other three writes are deferred; the tier is the highest reach on the page. |
 | Voice Lab | **LIVE AT NEXT GENERATION** | `POST /api/voices/declare` — locks a course side to a voice as versioned `algorithm_config`; no audio touched until the next render |
-| Pod Lab | **LIVE AT NEXT GENERATION** | `POST /api/pod-cast-voices`; `POST /api/admin/pods/:course/generate-audio` (sample fill, real spend). Never `algorithm_config`. |
 | Script Lab | **LIVE AT NEXT GENERATION** | a versioned canonical script save — changes the English master every course flexes from, and changes no generated pod until re-translation |
-| VAD Lab | **NOTHING** | analysis POSTs to the recorder API only |
+| VAD Lab | **NOTHING** | `POST /api/vad-recordings` — stores admin takes under `s3://ssi-audio-stage/vad-lab/`. No learner-facing code reads that prefix. |
 | Basket Lab | **NOTHING** | nothing — mounted `readOnly: true` |
 | Capture A/B | **NOTHING** | nothing — records in the browser, prints numbers, uploads nothing |
 
-**Two placements are not where feel would put them**, and they are the entire point of the
-middle tier — a deferred change looks safe at the moment you make it and lands long after
-you have forgotten making it.
+### Pod Lab was classified wrong, and an adversarial audit caught it
 
-*Pod Lab* says truthfully that it never writes `algorithm_config`, and also casts voices
-and can fill missing clips, which is real spend and real audio. Filing it under NOTHING
-would have reproduced the exact misdescription this work exists to remove.
+I first filed Pod Lab as DEFERRED, on the strength of the endpoint's **own comment** —
+`api/pod-fine-map.js`: *"by construction this endpoint cannot touch the live `atom_map` or
+anything learners hear."* **That sentence is false**, and worker #723 proved it:
 
-*Script Lab* edits the language-neutral English masters and regenerates nothing, so the
+- The learner's Listening Mode → Dialogues → **Drill** selects `atom_map_fine` straight off
+  `listening_pod_sentences`
+  (`ssi-learning-app packages/player-vue/src/composables/useListeningPods.ts:179`) and feeds
+  it to `buildFusionGroups` on **every fetch** — no cache, no render, nothing to approve.
+- The slice-playback kill switch (`packages/core/src/pods/fusionDrill.ts:38`) suppresses the
+  sub-sentence **audio** only, and says so itself: *"text chunking and glosses stay fully
+  intact."*
+
+So a seam or gloss saved in Pod Lab's fine-map editor is read by the next learner to open
+that pod. **Pod Lab is LIVE NOW.** I verified both citations myself before moving it.
+
+That is the failure this whole piece of work exists to prevent, and it very nearly shipped
+inside the fix. The rule it forced into writing, now stated in `blastRadius.js`: **a lab's
+tier is its highest-reaching control, not its typical one** — a label pitched at the average
+control lies about the dangerous one, and the average is never the thing that bites you.
+
+Corrected at source, not just in the tier: the false comment in `api/pod-fine-map.js`, the
+"SAFETY: preview/export only" header in `PodLab.vue`, and the same claim where it had
+already propagated into `docs/pods/walk-census-2026-09-01.md`. Pod Lab now wears a LIVE NOW
+banner naming the fine-map editor specifically.
+
+**One placement is still not where feel would put it.** *Script Lab* edits the language-neutral English masters and regenerates nothing, so the
 change is **owed** to every course rather than applied to it. That is the most deferred
 write in the estate — and it is also the distinction the canonical seed and a course's
 known text turn on: one canonical set, identical by definition; a course's known English
@@ -97,12 +116,27 @@ merely asserted.
   Basket Lab banner reads NOTHING, and re-shot the index at 430px. Six screenshots taken
   and read; one real defect found that way — the banner's two sentences ran together
   because Vue trims whitespace inside a `<template>` tag — fixed and re-shot.
-- **Specs**: 10 new, all green (`src/views/admin/LabsIndex.test.js`).
+- **Specs**: 11 new, all green (`src/views/admin/LabsIndex.test.js`) — including one that
+  pins Pod Lab to LIVE NOW and names why.
 - **Suite**: 3186/3191 passed. The 5 failures and 1 error are **identical on untouched
   `origin/main`**, verified by running the same six files in a baseline worktree:
   autocue session-review-chunks, LearningJourneyAudioFlags, and four `tools/*` scripts.
   None are files this work touched.
 - **Build**: `vite build` clean.
+
+## Also surfaced by the audit, outside this work's scope
+
+- **`api/vad-recordings.js` has no auth check at all**, unlike its sibling admin endpoints.
+  It writes admin voice takes to S3. Not touched here — flagging it.
+- **`services/shared/voice-declarations.cjs`** (the "renderer's corridor check" that is
+  supposed to enforce a declared voice at render time) is not `require()`'d by the render
+  pipeline — only by its own test and `tools/declare-course-voices.mjs`. Voice Lab's DEFERRED
+  tier is therefore conservative in the safe direction, not optimistic.
+- **Two adjacent admin write-surfaces are not labs and are not on the index**, correctly, but
+  raise the same who/when question: `PodDetailView.vue` (edits pod sentence text live, nulls
+  that row's audio in the same save) and `AdminRecording.vue` (writes untraced).
+- **`POST /generate-audio` cannot delete or replace existing clips** — the queue is built only
+  from null-audio rows. Checked because make-before-break makes it worth knowing.
 
 ## Not verified, and why
 

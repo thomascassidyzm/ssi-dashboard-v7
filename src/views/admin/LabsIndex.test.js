@@ -63,9 +63,20 @@ describe('Labs index — the labels are the point of the page', () => {
     }
   })
 
-  it('puts Listening and Speaking — and only those — in LIVE NOW', () => {
+  it('puts Listening, Speaking and Pod Lab in LIVE NOW', () => {
     const live = Object.entries(LAB_BLAST_RADIUS).filter(([, v]) => v.tier === 'live').map(([k]) => k)
-    expect(live.sort()).toEqual(['listening', 'speaking'])
+    expect(live.sort()).toEqual(['listening', 'pods', 'speaking'])
+  })
+
+  it('rates Pod Lab by its highest-reaching write, not its typical one', () => {
+    // Three of Pod Lab's four writes are genuinely deferred, and the fourth is
+    // not: PATCH /api/pod-fine-map sets atom_map_fine, which the learner's Drill
+    // reads live on every fetch. It was classified 'deferred' on the strength of
+    // that endpoint's own comment claiming it "cannot touch ... anything
+    // learners hear", which is false. A label pitched at the average control on
+    // a page is a label that lies about the dangerous one.
+    expect(LAB_BLAST_RADIUS.pods.tier).toBe('live')
+    expect(LAB_BLAST_RADIUS.pods.writes).toMatch(/pod-fine-map/)
   })
 
   it('does not file Basket Lab or Capture A/B as reaching anyone', () => {
@@ -76,11 +87,11 @@ describe('Labs index — the labels are the point of the page', () => {
   })
 
   it('does not file the deferred writers as read-only', () => {
-    // Voice Lab declares a course side's voice; Pod Lab casts and can render
-    // sample clips; Script Lab edits the English masters every course flexes
-    // from. None of them changes anything today. All of them change everything
-    // at the next generation.
-    for (const key of ['voice', 'pods', 'scripts']) {
+    // Voice Lab declares a course side's voice; Script Lab edits the English
+    // masters every course flexes from. Neither changes anything today. Both
+    // change everything at the next generation. (Pod Lab was here until an
+    // adversarial audit found its fine-map write on the live learner path.)
+    for (const key of ['voice', 'scripts']) {
       expect(LAB_BLAST_RADIUS[key].tier).toBe('deferred')
     }
   })
