@@ -88,7 +88,19 @@ export const LAB_BLAST_RADIUS = {
   speaking: { tier: 'live', writes: 'PATCH /api/algorithm-config via useAlgorithmConfig (algorithmConfigShared.js)' },
   voice: { tier: 'deferred', writes: 'POST /api/voices/declare — locks a course side to a voice as versioned algorithm_config; no audio is touched until the next render' },
   pods: { tier: 'live', writes: 'PATCH /api/pod-fine-map — atom_map_fine is read LIVE by the learner\'s Drill (useListeningPods.ts:179 → buildFusionGroups). Its other three writes (pod-cast-voices, pod-voice-approval, generate-audio) are deferred; the tier is the highest reach on the page.' },
-  scripts: { tier: 'deferred', writes: 'POST a versioned canonical script save — changes the English master every course flexes from, and changes no generated pod until re-translation' },
+  // SCRIPT LAB IS DEFERRED, AND THE ARGUMENT FOR 'live' HAS BEEN CHECKED AND
+  // REJECTED (2026-09-01). Its only write is `POST /api/canonical-script`
+  // (src/views/ScriptLabScriptView.vue), which UPDATEs
+  // `canonical_pod_scenarios.english_text` and files a version row. Nothing
+  // learner-facing reads that table: `services/pod-dialogue-generator.cjs`
+  // FLEXES it into `listening_pod_sentences` at generation time, so the change
+  // is OWED to every course rather than applied to any. The LIVE NOW evidence
+  // in circulation — `useListeningPods.ts:179` reading `atom_map_fine` — is POD
+  // LAB's fine-map editor, not this lab, and is why Pod Lab above is live.
+  // Labelling the most deferred write in the estate LIVE NOW would be exactly
+  // the class of lie this file exists to prevent. If a control is ever added to
+  // the Script Lab that reaches a learner directly, this flips to 'live'.
+  scripts: { tier: 'deferred', writes: 'POST /api/canonical-script — a versioned save onto canonical_pod_scenarios.english_text, the English master every course flexes from. No generated pod changes until re-translation.' },
   vad: { tier: 'none', writes: 'POST /api/vad-recordings — stores admin takes + scores under s3://ssi-audio-stage/vad-lab/. No learner-facing code reads that prefix.' },
   basket: { tier: 'none', writes: 'nothing — mounted readOnly: true at services/production-api.cjs:176' },
   'capture-ab': { tier: 'none', writes: 'nothing — records in the browser, decodes, prints numbers. Nothing uploaded, nothing stored.' },
