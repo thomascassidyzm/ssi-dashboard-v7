@@ -496,9 +496,8 @@ discipline.
 - **P:** "Perfectly well. I've cooked for myself for fifty years; I don't need meals on wheels yet, thank you."
 - **CW:** "Fifty years earns some believing. Do something for me anyway — walk me through yesterday, from waking up. Not what you CAN do; just what actually happened."
 - **P:** "Well. Tea and a biscuit at seven. Soup at… I had soup somewhere in there. And Weetabix for supper, because — well, because the tin opener beat me, if you must know. The soup was Sunday, now I think back."
-- **CW:** "So yesterday was tea, a biscuit and a Weetabix — and a tin opener winning fights it shouldn't. That's not a cooking problem, Joan; that's a jam-jar-and-tin-opener problem, and there are gadgets for both that'll have you back in charge by next week."
-- **P:** "Gadgets, not meals on wheels?"
-- **CW:** "Gadgets first, and a carer alongside for the heavy pans while your wrist's weak — you cooking, us fetching. If yesterday's still Weetabix in a month, we'll talk again — and it'll be your call then too."
+- **CW:** "So yesterday was tea, a biscuit and a Weetabix — and a tin opener winning fights it shouldn't. That's not a cooking problem, Joan; that's a gadget problem, and there are openers made for wrists like yours. Gadgets first, then, and a carer alongside for the heavy pans — you cooking, us fetching. If yesterday's still Weetabix in a month, we talk again, and it's your call then too."
+- **P:** "Gadgets, and I stay the cook. Well — that's the first sensible thing anyone with a clipboard has said to me since October."
 
 ---
 
