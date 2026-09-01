@@ -1,0 +1,168 @@
+{
+  "concept": "the walk registry — every walk in the estate, in one file",
+  "why": "The ingest tool used to carry a hardcoded three-entry map, so a corpus that existed could not be ingested without editing code, and nothing new ever appeared in the Script Lab. THE MECHANISM IS THIS MANIFEST: adding the eighth walk is one entry here plus its corpus file, and no code change anywhere. Two readers, one file — tools/pods/ingest-canonical-pods.cjs discovers what to ingest, and the Script Lab reads the labels a human needs to tell walks apart.",
+  "version": 2,
+
+  "vocabulary": {
+    "category": "core = the COMPULSORY DEFAULT CHAIN, the ladder a learner descends by NOT choosing (Tom, 2026-09-01: numbering was retired as a content label — a themed walk is named by what it masks — but numbers name the default chain). themed = chosen. method-cut = a competing realisation of the same material, awaiting a choice. flagship = the learning flagship.",
+    "selector": "for a themed walk, WHY a learner picks it. THE SELECTOR IS INTEREST, NOT OCCUPATION — a sector is one reason among several, and the category is never called 'sector pods'.",
+    "status": "authored = a corpus exists and is ingestable. mapping-only = a metagraph mapping exists but corpus is NONE — a mapping is not a walk. parked = real content, deliberately not canon. draft = present but not signed off.",
+    "format": "sector-flows = '## scene' / '### Flow N' / '- **SPEAKER:** \"line\"' bullet dialogue. pod-table = '### Chapter|Scene N — *Title*' with a markdown dialogue table."
+  },
+
+  "walks": [
+    {
+      "slug": "pod-1",
+      "name": "CORE — pod 1",
+      "category": "core",
+      "selector": null,
+      "status": "authored",
+      "corpus": null,
+      "format": null,
+      "targetLang": null,
+      "mapping": null,
+      "note": "the live CORE pod and the first rung of the compulsory default chain. Already in the canonical store; formerly pod_slug 'pod-0' until the 2026-09-01 rename. Not ingestable from markdown — the DB is canon."
+    },
+    {
+      "slug": "learning-flagship",
+      "name": "The Learning flagship",
+      "category": "flagship",
+      "selector": null,
+      "status": "authored",
+      "corpus": "docs/pods/learning-flagship-pod-2026-08-30.md",
+      "format": "pod-table",
+      "unit": "Chapter",
+      "targetLang": null,
+      "mapping": null,
+      "note": "11 chapters, English only."
+    },
+    {
+      "slug": "method-pod-chapters",
+      "name": "The Method Pod — chapter cut",
+      "category": "method-cut",
+      "selector": null,
+      "status": "authored",
+      "corpus": "docs/pods/method-pod-chapters-2026-08-30.md",
+      "format": "pod-table",
+      "unit": "Chapter",
+      "targetLang": "ita",
+      "mapping": null,
+      "competesWith": "method-pod-43-scene",
+      "note": "12 chapters, English beside Italian. One of TWO competing realisations of the same material — not two walks. Tom's choice is outstanding."
+    },
+    {
+      "slug": "method-pod-43-scene",
+      "name": "The Method Pod — 43-scene cut",
+      "category": "method-cut",
+      "selector": null,
+      "status": "authored",
+      "corpus": "docs/pods/method-pod-full-2026-08-30.md",
+      "format": "pod-table",
+      "unit": "Scene",
+      "targetLang": "ita",
+      "mapping": null,
+      "competesWith": "method-pod-chapters",
+      "note": "43 scenes, English beside Italian — the control arm the chapter cut is measured against. One of TWO competing realisations. Tom's choice is outstanding."
+    },
+
+    {
+      "slug": "health",
+      "name": "Health",
+      "category": "themed",
+      "selector": "an interest in health and care — the ward, the surgery, the appointment",
+      "status": "authored",
+      "corpus": "docs/sector-pods/source/health-sector-conversations-v3.md",
+      "format": "sector-flows",
+      "targetLang": null,
+      "mapping": "services/shared/metagraph/proposed/health-additions-2026-08-30.json",
+      "branch": "main",
+      "note": "Aran's hand-authored corpus — the exemplar every other themed walk is written against. 23 contexts, 73 flows, 438 turns. A Welsh pair overlay exists and is DRAFT-FOR-ARAN, never signed off by a worker."
+    },
+    {
+      "slug": "retail",
+      "name": "Retail",
+      "category": "themed",
+      "selector": "an interest in shop-floor and counter work",
+      "status": "authored",
+      "corpus": "docs/sector-pods/source/retail-walk-conversations-2026-09-01.md",
+      "format": "sector-flows",
+      "targetLang": null,
+      "mapping": "services/shared/metagraph/proposed/retail-2026-08-30.json",
+      "branch": "feat/retail-walk",
+      "note": "Authored 2026-09-01 from nothing — the mapping records corpus NONE. The mapping now HAS a walk."
+    },
+    {
+      "slug": "trades",
+      "name": "Trades",
+      "category": "themed",
+      "selector": "an interest in the trades — the quote, the job, the return visit",
+      "status": "authored",
+      "corpus": "docs/sector-pods/source/trades-conversations-v1.md",
+      "format": "sector-flows",
+      "targetLang": null,
+      "mapping": "services/shared/metagraph/proposed/trades-2026-08-30.json",
+      "branch": "feat/trades-walk-canonical",
+      "note": "Authored 2026-09-01 from nothing — the mapping records corpus NONE. The mapping now HAS a walk."
+    },
+    {
+      "slug": "hospitality",
+      "name": "Hospitality",
+      "category": "themed",
+      "selector": "an interest in hospitality — the floor, the bar, the desk, the pass",
+      "status": "authored",
+      "corpus": "docs/sector-pods/source/hospitality-conversations-v1.md",
+      "format": "sector-flows",
+      "targetLang": null,
+      "mapping": "services/shared/metagraph/proposed/hospitality-2026-08-30.json",
+      "branch": "feat/hospitality-walk",
+      "note": "Authored 2026-09-01 from nothing — the mapping records corpus NONE. The mapping now HAS a walk."
+    },
+    {
+      "slug": "care-work",
+      "name": "Care work",
+      "category": "themed",
+      "selector": "an interest in care work — the visit, the round, the household",
+      "status": "mapping-only",
+      "corpus": null,
+      "format": "sector-flows",
+      "targetLang": null,
+      "mapping": "services/shared/metagraph/proposed/care-work-2026-08-30.json",
+      "branch": null,
+      "note": "A MAPPING, NOT A WALK — the proposal records \"corpus\": \"NONE\". Authoring is in flight. Fill in corpus + branch when it lands; that is the whole change."
+    },
+    {
+      "slug": "public-services",
+      "name": "Public services",
+      "category": "themed",
+      "selector": "an interest in public services — the counter, the form, the entitlement",
+      "status": "mapping-only",
+      "corpus": null,
+      "format": "sector-flows",
+      "targetLang": null,
+      "mapping": "services/shared/metagraph/proposed/ireland-public-services-2026-08-30.json",
+      "branch": null,
+      "note": "A MAPPING, NOT A WALK — the proposal records \"corpus\": \"NONE\". Authoring is in flight. Fill in corpus + branch when it lands; that is the whole change."
+    }
+  ],
+
+  "parked": [
+    {
+      "slug": "music",
+      "name": "Music (Música)",
+      "category": "themed",
+      "selector": "an interest in music",
+      "status": "parked",
+      "livesIn": "listening_pods / listening_pod_sentences, course spa_for_eng only",
+      "note": "Tom, 2026-09-01: \"music and travel are old thinking — done as POC, not relevant, and done pre-metagraph… it might be better to park them for now.\" DELIBERATELY NOT INGESTED into the canonical store. Shown here so it stops being invisible, not so it can be treated as canon."
+    },
+    {
+      "slug": "travel-situations",
+      "name": "Travel situations (Viajando)",
+      "category": "themed",
+      "selector": "an interest in travel",
+      "status": "parked",
+      "livesIn": "listening_pods / listening_pod_sentences, course spa_for_eng only",
+      "note": "Same ruling as music — pre-metagraph POC, parked."
+    }
+  ]
+}
