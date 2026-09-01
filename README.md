@@ -23,6 +23,11 @@ cp .env.example .env   # Configure environment variables
 npm run dev            # Frontend (port 5173)
 ```
 
+Note: the `generate-manifest` script referenced in older docs (`node generate-course-manifest.js`)
+no longer exists in this repo — `npm run build:local` will fail if it still calls it. The learner
+app reads course content directly from Supabase; it does not consume a generated manifest file
+(see "Where things live" in `CLAUDE.md`).
+
 ### Environment Variables
 
 ```bash
@@ -70,35 +75,52 @@ Audio Generation: Phase 8 (Port 3465)
 ─────────────────────────────────────
 Supabase content → TTS generation → S3 upload → course_audio table
 
-Manifest Compilation: Phase 9 (Port 3466)
+Manifest Compilation: Phase 9 (Port 3466) — NOT RUNNING, see Services table below
 ─────────────────────────────────────────
 course_audio → 100% coverage check → course_manifest.json
+(legacy: the learner app reads Supabase directly, not this manifest)
 ```
 
 ### S3 Storage
 
+Only one bucket is live: `ssi-audio-stage` (eu-west-1). It holds both staging and mastered audio
+(`S3_BUCKET` defaults to it everywhere in `services/`, and no systemd unit sets `S3_PROD_BUCKET`).
+A second bucket, `ssiborg-assets`, is referenced as a "production" target in `s3-deploy-service.cjs`
+and as a legacy fallback key prefix in `s3-production-service.cjs`, but nothing in the live
+deployment points there — it's dead code paths, not a bucket in active use. Don't write new code
+against it without confirming first.
+
 ```
 S3 (ssi-audio-stage)
     └── courses/{course_code}/
-         ├── lego_pairs.json      (Phase 2 output - SSoT)
-         ├── lego_baskets.json    (Phase 3 output - SSoT)
-         └── course_manifest.json (Phase 9 output)
-
-S3 (ssiborg-assets)
-    └── mastered/{uuid}.mp3       (all audio files)
+         ├── lego_pairs.json      (legacy Phase 2 output — deprecated, see below)
+         ├── lego_baskets.json    (legacy Phase 3 output — deprecated, see below)
+         └── course_manifest.json (legacy Phase 9 output — not on the learner path)
+    └── mastered/{uuid}.mp3       (all audio files, keyed from course_audio.s3_key)
 ```
 
 ### Supabase Schema
 
+Course content (seeds, LEGOs, phrases, audio) lives in these tables — see "Course Builder" above:
+
 ```
-Tables:
-├── voices              # TTS and human voice registry
-├── audio_samples       # Master Audio Registry (MAR)
-├── course_audio_usage  # Which courses use which audio
-├── sample_flags        # QA workflow state
-├── recording_provenance # Human recording metadata
-└── courses             # Course configuration
+├── course_seeds            # Seed sentences (known/target text)
+├── course_legos            # LEGO decomposition units
+├── course_practice_phrases # BUILD/USE practice phrases
+└── course_audio            # Audio metadata (TTS + human), S3 keys
 ```
+
+Plus voice/QA workflow tables:
+
+```
+├── voices               # TTS and human voice registry
+├── course_audio_usage   # Which courses use which audio
+├── sample_flags          # QA workflow state
+├── recording_provenance  # Human recording metadata
+└── courses               # Course configuration
+```
+
+**Deprecated (no longer exist in the live schema):** `audio_samples`, `texts`, `audio_files`.
 
 ### Pipeline (APML v14.0)
 
@@ -106,7 +128,7 @@ Tables:
 |---------|------|-------------|
 | **Course Builder** | **3471** | **Content creation (replaces Phase 1-3)** |
 | Audio Generator | 3465 | TTS generation → Supabase + S3 |
-| Manifest Compiler | 3466 | Compile manifest from Supabase |
+| Manifest Compiler | 3466 | Compile manifest from Supabase — **not running**, legacy (see Services table) |
 | Production API | 3470 | QA workflow + WebSocket |
 | Orchestrator | 3456 | Proxy hub for all services |
 
@@ -133,7 +155,7 @@ Tables:
 | GET | `/status/:courseCode` | Check job status |
 | GET | `/health` | Health check |
 
-#### Phase 9 Manifest Compiler (port 3466)
+#### Phase 9 Manifest Compiler (port 3466) — legacy, no service running this port
 | Method | Endpoint | Description |
 |--------|----------|-------------|
 | POST | `/compile` | Compile manifest from Supabase |
@@ -156,7 +178,7 @@ systemctl --user status popty-orchestrator.service
 | orchestrator | 3456 | Main proxy hub | Active |
 | **course-builder** | **3471** | **Content creation API** | **Active** |
 | phase8-audio | 3465 | Audio generation (Supabase) | Active |
-| phase9-manifest | 3466 | Manifest compilation (Supabase) | Active |
+| ~~phase9-manifest~~ | ~~3466~~ | ~~Manifest compilation (Supabase)~~ | **Not running** — no `popty-phase9-manifest` unit exists (verified via `systemctl --user list-units 'popty-*'`); the learner app reads Supabase directly and never consumes a compiled manifest |
 | production-api | 3470 | QA workflow + WebSocket | Active |
 | ~~phase1-translation~~ | ~~3457~~ | ~~Translation server~~ | Deprecated |
 | ~~phase2-conflict~~ | ~~3458~~ | ~~Conflict resolution~~ | Deprecated |
@@ -198,4 +220,4 @@ vercel --prod
 **APML:** v14.0 (Course Builder Consolidation)
 **Pipeline:** v3.0 (Course Builder + Supabase)
 **S3 Bucket:** ssi-audio-stage (eu-west-1)
-**Date:** 2026-01-15
+**Date:** 2026-09-01 (facts re-verified against live code/systemd/DB schema this pass)
