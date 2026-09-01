@@ -75,7 +75,7 @@ received without defensiveness, and the check-back mid-service.
 - **G:** "We do. Two of us, under the name Davies."
 - **W:** "Davies, table for two — here you are. Can I take your coats?"
 - **G:** "Oh, lovely — thank you. It's wild out there tonight."
-- **W:** "So I hear. You're by the window — follow me, and I'll bring you the menus."
+- **W:** "Not at all. You're by the window — follow me, and I'll bring you the menus."
 - **G:** "Perfect. Lead the way."
 
 ### Flow 2 *(problem — no booking found)*
@@ -392,7 +392,7 @@ received without defensiveness, and the check-back mid-service.
 
 ---
 
-## 1.14 The guest with little English of ours — the seats reversed
+## 1.14 The struggling visitor — the seats reversed
 
 *(The learner sits on the fluent side for the first time: a visiting guest is struggling in the
 local language, and the worker — still a learner themselves — does the slowing-down and the
