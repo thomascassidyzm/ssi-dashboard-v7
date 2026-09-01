@@ -870,13 +870,12 @@ say them back — it's not politeness, it's how I get faster"), which is the lic
 trade's own currency — a seed-set candidate, not a contract re-author.
 
 Scene admissions: **19 scenes admit exactly one new response position** (named per scene in the
-*Admits* header); **4 are zero-admission** — the doorstep (2, one F401 turn aside), the
-reckoning (13), living-with-the-job (14, N107 owned from scene 12), the merchant's counter (17)
-and the cabin (23) walk material the floor already owns, in trade furniture. (That is five
-listed against four claimed: scene 2's F401 turn is its one admission, so the strict count is
-19 admitting / 4 zero.) Zero-admission scenes are deliberate — they are where the walk proves
-the per-stretch rule: F11 and F18, dead through every pinned stretch, revive at the counter and
-in the cabin.
+*Admits* header) and **4 are zero-admission** — the reckoning (13), living-with-the-job (14,
+N107 owned from scene 12), the merchant's counter (17) and the cabin (23) walk material the
+floor already owns, in trade furniture. The doorstep (2) is a near-miss of that class: every
+act in it is CORE in work boots except its single F401 turn, which is its admission.
+Zero-admission scenes are deliberate — they are where the walk proves the per-stretch rule:
+F11 and F18, dead through every pinned stretch, revive at the counter and in the cabin.
 
 **Shapes traversed** — store: N1, N2, N3, N4, N7, N8, N12, N13, N15, N16, P1–P5, F5, F6, F11,
 F16, F18, F302, F601 (care work's move, re-attested in a third register at scene 9 flow 3),
