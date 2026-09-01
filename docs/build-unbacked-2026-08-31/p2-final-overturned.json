@@ -76,5 +76,14 @@
   "same_known": false,
   "was_flagged": true,
   "why": "known ਇੱਥੋਂ = \"from here\": the span is backed"
+ },
+ {
+  "id": "eng_for_pan:S0220L01B02",
+  "course": "eng_for_pan",
+  "span": " here",
+  "known": "ਟੀਵੀ ਦੇਖਣਾ",
+  "target": "television here",
+  "corrected_target": "television",
+  "why": "REVERTED after the fact. Verifier 4 (#596) had already overturned this row in pass one on test 3 — the Punjabi known ਟੀਵੀ ਦੇਖਣਾ means WATCHING television, and the remnant \"television\" drops the verb, so it still does not say what the known says. The pass-two mechanical filter re-convicted it and it was applied; reverted to \"television here\" and the audio relinked to its original clips (whisper-verified, CER 0). Logged as a judgement item: both states are defective, and the honest repair is not a deletion."
  }
 ]

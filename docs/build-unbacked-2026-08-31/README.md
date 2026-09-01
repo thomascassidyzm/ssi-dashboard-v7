@@ -268,3 +268,24 @@ method is the right one. **Find leaks with a small high-precision sample, then
 expand each confirmed leak by exact string and clear it with one counterpart
 decision per cluster.** That found 242 rows the detector could not see, at a
 fraction of the reading cost, and it needs no lexicon, so it ports to any pair.
+
+---
+
+## Correction — one row reverted, 2026-09-01
+
+`eng_for_pan:S0220L01B02` was applied in the second pass **against a ruling the
+verifier had already made in the first.** Verifier 4 overturned it on test 3: the
+Punjabi known `ਟੀਵੀ ਦੇਖਣਾ` means *watching* television, and the remnant
+"television" drops the verb, so the row still does not say what the known says.
+The pass-two mechanical filter had no way to see that ruling and re-convicted it.
+
+**Reverted to "television here".** The audio relinked to its original clips and
+both were whisper-verified on the deployed bytes, CER 0. Logged as a judgement
+item — both states are defective, and the honest repair is not a deletion.
+
+It was the **only** collision: of 242 pass-two applications, one contradicted a
+pass-one overturn and zero rows were edited twice. The lesson for any future
+combined pass: **a mechanical second pass must be diffed against the first pass's
+overturns before it is applied**, not after.
+
+**Final total: 568 rows repaired across 49 courses.**
