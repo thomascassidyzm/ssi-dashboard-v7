@@ -201,3 +201,216 @@ spoken so the unknown has a name before it has a price.
 - **T:** "If it were mine? Patch it now, save up, and do the proper job in spring when the heating's off anyway — it's a cheaper job with the system cold."
 - **C:** "Then that's what we'll do. Patch today, and pencil us in for April."
 - **T:** "Patch today, April in the book. And if that noise changes — gets faster, or you ever see water — ring me. Don't wait for April."
+
+---
+
+# Part 2: The job — hands on the house
+
+## Scene 6 — The narrated intervention
+
+*Walks:* N102 [health, proposed] consent-and-narrated-act, with the customer's PROPERTY in the
+undergoing position — the mapping's confirmed reading that N102's variable was undergoing, never
+flesh. Flow 2 is O101 [health, proposed] → N106: the halt branch. Flow 3 is position 2's
+counter-condition, granted.
+*Admits:* the act announced before it is done, narrated as it goes, the undergoing acknowledged
+— "you'll hear the pipes knock" before the pipes knock.
+*Branch set:* narrated through / halted mid-flight / counter-conditioned.
+
+### Flow 1 *(happy path — the water goes off)*
+- **T:** "I'm going to turn your water off now — the whole house, ten minutes. You'll hear the pipes knock when it goes off, and again when it comes back. That's them emptying, not breaking."
+- **C:** "Go on then. Do I need to do anything?"
+- **T:** "Just don't run any taps till I say. Right — off it goes… and there's your knock, bang on cue."
+- **C:** "Heard it! Like someone kicking the skirting board."
+- **T:** "That's the one. I'm cutting the old fitting out now — there'll be a screech for a minute, sounds worse than it is… done. Worst noise of the day is behind you."
+- **C:** "That wasn't so bad. Shout when the water's back — the dinner won't start itself."
+
+### Flow 2 *(safety-critical ⚠ — the halt)*
+- **T:** "Next job's the new pipe run. I'm drilling into this wall, just above the skirting."
+- **C:** ⚠ "Wait — stop. That's the wall with the wiring in it — the electrician ran cables up that side when we had the kitchen done."
+- **T:** "Stopped — drill's down. Good catch, and never feel daft for shouting: that's exactly what I want you to do."
+- **C:** "It might be nothing. I just remember the sparky kneeling right about there."
+- **T:** "'Might be nothing' is worth two minutes every time. The detector's going over the whole wall before the drill touches it… and there's your cable — six inches left of where I was about to go."
+- **C:** "Six inches. Well — glad I opened my mouth."
+
+### Flow 3 *(safety-critical ⚠ — the counter-condition)*
+- **T:** "I need the power off for the next bit — the whole board, about twenty minutes."
+- **C:** "Can it wait till after ten? My mother's on her oxygen machine upstairs till the carer comes."
+- **T:** ⚠ "It waits — that's not a maybe, that's a stop. Machines like that come first, full stop. What time does the carer land?"
+- **C:** "Ten, most days. She's regular as clockwork."
+- **T:** "Then here's the order: quiet jobs now, power off at ten past ten once the carer's in, and I'll knock on the stairs before I flick anything."
+- **C:** "Perfect. And thank you for not making it a fuss."
+
+## Scene 7 — Bad news mid-job
+
+*Walks:* N402 [ireland, proposed] suspend-and-task — the trades re-attestation the mapping
+predicted: gap named against the evidence, state preserved and DECLARED preserved, the decision
+handed back with its re-entry condition and deadline. F501 exhibits the discovery first; flow 2
+is the press for the original price, held by F103's record; flow 3 settles by scope, N16's
+professional register.
+*Admits:* the suspend-and-task handover — "I've left it opened up and safe; have a think and
+ring me in the morning."
+*Branch set:* the task banked / the press for the original price / decided on the spot.
+
+### Flow 1 *(happy path — worse under the boxing)*
+- **T:** "Can you come through a minute? I've stopped work — there's something you need to see before I go any further."
+- **C:** "That sentence never means good news. Go on."
+- **T:** "See how the plaster's all powder behind here? Crumbles like biscuit. The leak's been getting into this wall far longer than that pipe's been banging — the timber behind it wants looking at."
+- **C:** "Oh, marvellous. What does that do to the price?"
+- **T:** "Honestly: if the timber's sound, it's a day extra — call it three hundred. If it's not, it's a joiner's job before it's mine, and I'd only be guessing at his number. I've left it opened up and safe — nothing's live, nothing leaks. Have a think tonight and ring me in the morning; if it's the full repair, I need to order the timber Tuesday."
+- **C:** "So nothing gets worse overnight while we decide?"
+- **T:** "Nothing gets worse — it's dry, it's safe, and your water's back on. The only thing that moves overnight is Tuesday getting closer."
+
+### Flow 2 *(problem — the press for the original price)*
+- **C:** "We agreed six hundred. I haven't got a magic drawer of money — can't you just do what we agreed?"
+- **T:** "I can, and I will if that's your call — original job, original price. But I'm writing down what I found, with photos, and it goes with the invoice. Powder plaster doesn't get better on its own."
+- **C:** "That feels like you covering yourself."
+- **T:** "It is — and it covers you too. If the wall gets worse, or you ever sell up, there's a date and a photo saying what was known and when. Nobody gets to rewrite the story later, me included."
+- **C:** "Alright. Do the agreed job — and leave me the photos and your best guess in writing."
+- **T:** "Done: agreed job today, the note and photos with the invoice, and the timber quote stays on the table till spring. No pressure from me past that."
+
+### Flow 3 *(decided on the spot — and moved by scope)*
+- **C:** "No thinking needed — if the timber's bad I want it done right. But three hundred on top of six is making my eyes water."
+- **T:** "Understood. The three hundred is the wall done and made good. If your brother-in-law's still got the plastering business, I can close the wall ready for his first coat, and you're a hundred and forty lighter instead of three."
+- **C:** "He owes me a favour, as it happens. So you do the timber and the boards, and he does the skim?"
+- **T:** "Exactly that — and I'll text him what he's walking into, so there's no surprises between trades."
+- **C:** "Do it that way. He can moan at you instead of me."
+- **T:** "That's what we're for. Right — timber ordered Tuesday, and today carries on as planned."
+
+## Scene 8 — The baby and the boiler
+
+*Walks:* O7 the unbidden disclosure, all five positions, in the sector whose
+violation-by-fixing is the DISCOUNT — acknowledge without fixing, and let the discloser close.
+Flow 2 teaches the boundary's other side: once the disclosure becomes a spoken request, meeting
+it is N9's grant-and-limit, not a violation. Flow 3 is the tradesperson's own aside — the
+low-stakes direction, flowing freely and self-closed.
+*Admits:* acknowledgement that holds its ground — no discount, no re-prioritising, no rescue,
+until the customer actually asks.
+*Branch set:* disclosure acknowledged / disclosure become request / the tradesperson's own.
+
+### Flow 1 *(human moment — two weeks home)*
+- **T:** "So with the part on order, you're without heating till Thursday — hot water's fine, it's just the radiators."
+- **C:** "Right. It's just — we've got the baby home two weeks tomorrow. Everything feels enormous at the moment, even a cold front room."
+- **T:** "Two weeks. That's the deep end and no mistake — my sister didn't sleep for a year."
+- **C:** "That's it exactly. You plan for the nappies, and nobody mentions the boiler picking its moment."
+- **T:** "They always know, boilers. Worst possible week, every time."
+- **C:** "Clearly. Right — Thursday, then. We'll dig out the fan heater and survive till you're back."
+
+### Flow 2 *(the disclosure becomes a request — and gets a real answer)*
+- **C:** "Before you go — is there any way at all we get heat before Thursday? I wouldn't ask, but with the baby in the house I'm honestly a bit scared of the cold nights."
+- **T:** "That's a different question, and I'm glad you asked it straight. The part I can't magic up — but let's see what we can do with what's here."
+- **C:** "Anything. Even one warm room would change everything."
+- **T:** "One warm room I can give you: the towel rail runs off the hot water side, so the bathroom's warm from tonight. And there's a decent electric heater in the van you can borrow till Thursday — a proper one, not a fire risk."
+- **C:** "You'd leave us your heater? I could cry, honestly."
+- **T:** "It sits in the van most weeks — better working in your front room than rattling round with the spanners. Back Thursday, first thing. Ring me before that if anything worries you."
+
+### Flow 3 *(the tradesperson's own aside)*
+- **C:** "You look shattered, if you don't mind me saying. Busy week?"
+- **T:** "You could say that — the van failed its MOT Monday, so I've been carting tools round in my brother's hatchback all week. Pipe benders in a Fiesta, honestly."
+- **C:** "Oh no. There's never a good week for the van, is there?"
+- **T:** "Never. Anyway — that's my moaning done. Your side of things: the system's refilled, and I want to watch the pressure while we run it hot."
+- **C:** "Tea while it heats up? You've earned it, Fiesta and all."
+- **T:** "That offer I'll take. Watch the dial with me — you'll see it climb to about one and a half, and that's it happy."
+
+## Scene 9 — Refusing unsafe work
+
+*Walks:* N401 [ireland, proposed] bound refusal, in trades clothes — the rule cited, authorship
+disowned, the second-opinion path handed over unbidden; flow 2 is the press on the person,
+re-routed to the process; flow 3 is F601 (store, ratified from care work) — the need answered
+instead of the question — re-attesting in a third register.
+*Admits:* the disowned refusal — "I'm not allowed, and I wouldn't anyway" — with the alternative
+standing in the same turn.
+*Branch set:* refused with the path named / pressed and held / the ask downgraded to its need.
+
+### Flow 1 *(safety-critical ⚠ — the bigger fuse)*
+- **C:** "While you're here — the shower trips the fuse box now and then. My mate says you can just fit a bigger fuse and it'll stop doing it."
+- **T:** ⚠ "It would stop doing it — that's true. The trip is the only thing telling you something's wrong. Take it away, and the next warning you get is smoke."
+- **C:** "It's been fine for years, though. It only does it in winter."
+- **T:** "It's not me being precious — I'm not allowed to oversize that fuse, and I wouldn't if I were. What I can do is test the shower circuit and find out why it trips. That's an hour, and then you'll know."
+- **C:** "And if I get someone else in to do the fuse?"
+- **T:** "Anyone registered will tell you the same thing, word for word — get the second opinion if you like, I mean that. Just don't let anyone unregistered near it."
+
+### Flow 2 *(the press on the person)*
+- **C:** "Come on. Nobody would ever know. I won't tell if you won't."
+- **T:** "You'd know, and I'd know — and the fuse would know, which is the one that matters."
+- **C:** "I thought you lot did this stuff all the time. The last fella wasn't half so holy about it."
+- **T:** "Then the last fella was gambling with your house, not his. This isn't my rule to bend — it's the regs, and they're written after fires, not before them."
+- **C:** "So that's a flat no."
+- **T:** ⚠ "Flat no on the fuse — full yes on finding the real fault. That's the swap on the table, and it's the only one I've got."
+
+### Flow 3 *(the ask downgraded — the need behind the question)*
+- **C:** "Alright, forget the fuse. Can you at least move that socket into the airing cupboard? Right next to the tank is fine."
+- **T:** "Next to the tank it can't go — water and sockets keep their distance, and that's not negotiable. But tell me what you're plugging in, and let's solve that instead."
+- **C:** "Just the dehumidifier — the cupboard gets damp in winter."
+- **T:** "Then you don't want a socket — you want the damp gone. A vent in that door is twenty minutes, and it solves it for nothing a year. Or if you're set on the dehumidifier, the socket goes on the landing wall and the lead reaches fine."
+- **C:** "The vent's cheaper than both, isn't it. Do the vent."
+- **T:** "The vent it is. Good result, that — the safe answer and the cheap answer turned out to be the same one."
+
+## Scene 10 — Warn and waiver
+
+*Walks:* N104's advice delivered, then **F502 [trades, proposed] the countersigned telling** —
+the record made against the party present, liability for the telling transferred to the told,
+nothing conceded and no absolution sought. Flow 2 is its failure branch: no signature, no
+proceed. Flow 3 carries an N107-form alarm instruction early — safety does not wait for scene
+12, and the accounting says so.
+*Admits:* the countersign solicit — "it doesn't stop you; it just says I told you."
+*Branch set:* signed / refused, and the job refused back / the record interrogated first.
+
+### Flow 1 *(the declined-advice waiver)*
+- **T:** ⚠ "My advice is replacement — that flue's at the end of its life. I can service it and it'll run, but I want us both clear that I've said this out loud."
+- **C:** "I hear you. It's a no for now, though — replacement's a spring job at best, money-wise."
+- **T:** "That's your call, and I'll respect it. What I'll need is your signature on the job sheet — one line, saying I advised replacement and you declined for now."
+- **C:** "A signature? Is that you saying you don't trust me?"
+- **T:** "It doesn't stop you doing anything, and it doesn't cost you anything — it just says I told you. If anything happens down the line, neither of us is relying on memory. It protects your side of the story as much as mine."
+- **C:** "When you put it like that — give us the pen. And write 'spring' on it, so future me gets the nudge."
+
+### Flow 2 *(problem — the signature refused)*
+- **C:** "I'm not signing anything. No offence, but paperwork's how people get had."
+- **T:** "None taken — and no signature, no service: that's where I stand. Not to strong-arm you. It's just that the two of us can't share a risk that isn't written down."
+- **C:** "You'd walk away from paid work over one line on a sheet?"
+- **T:** ⚠ "Over that line, yes — because that line is me telling you the flue's on borrowed time, and unsaid, it becomes my secret. I don't carry those."
+- **C:** "…You've thought about this more than I have. Go on then — what am I signing, exactly? Read it to me first."
+- **T:** "Word for word: 'Advised flue replacement. Customer declined at this time. Appliance serviced and safe to run this season.' That last part is your protection, not mine."
+
+### Flow 3 *(safety-critical ⚠ — the record interrogated)*
+- **C:** "Before I sign — 'end of its life'. What does that mean in real numbers? Weeks? Years?"
+- **T:** "Fair question. It's not about to fail tomorrow — it passed today's test, which is why I can leave it running. But the liner's pitted, and pitting only goes one way. Two more winters is my honest guess; I wouldn't promise three."
+- **C:** "And what does failing actually look like? Worst case."
+- **T:** ⚠ "Worst case is fumes coming into the room instead of going up the flue — that's why this gets a signature and a sticker, not a shrug. Your alarm there is the backstop: test it monthly, and if it ever sounds — everything off, windows open, and ring the gas emergency line before you ring me."
+- **C:** "Right. That's clear enough that I'll remember it. Where do I sign?"
+- **T:** "Just there. And I'm putting my guess in writing too: 'liner pitted, expect replacement within two years.' We're both on the record, fair and square."
+
+## Scene 11 — The compelled make-safe
+
+*Walks:* **N501 (store, ratified)** — the walk's apex, and the axis's best case: the danger
+declared against the meter's norm, the act announced and DONE with consent not sought and
+refusal unavailable, the record affixed with its reinstatement condition, the onward path
+routed. Flow 2 is S501, the sector's highest-cost recovery: survive the customer's anger while
+the gas stays off — drop the self, hold the duty, name the forum. Flow 3 is the tenant, N108's
+absent-beneficiary logic plus N401's forum position handed to the powerless party.
+*Admits:* the compelled act — announced and done against refusal, with the tag and the
+reinstatement condition spoken in the same breath.
+*Branch set:* absorbed / contested / the absent landlord.
+
+### Flow 1 *(safety-critical ⚠ — found mid-other-business)*
+- **T:** ⚠ "Leave the tea a second — I need you in here. While I was at the boiler I caught a smell of gas by your cooker, and the test has just confirmed it: that hose is perished, and it's leaking."
+- **C:** "Leaking?! I can't smell anything — and that cooker's only three years old."
+- **T:** ⚠ "The meter's sure even where our noses aren't — look, still climbing. You stop smelling what you live with; that's how these go unnoticed for years. So the next bit isn't a choice, for either of us: I'm disconnecting the cooker and capping that pipe, right now."
+- **C:** "Right now? As in, before we even talk about it?"
+- **T:** ⚠ "Before anything — and it's done: capped, and tagged, and this notice stays on the pipe. Nobody reconnects it till a registered fitter has fitted a new hose and tested it — not you, not me tonight, nobody. And here's the way out: our gas fitter can be here Tuesday morning, and I'll book him before I leave your drive."
+- **C:** "Tuesday. Alright. It's a shock — but better a dead cooker than a live leak, I suppose."
+
+### Flow 2 *(safety-critical ⚠ — the press, and the duty held)*
+- **C:** "It was fine yesterday! We cooked a full roast on it. Put it back on and we'll get it seen to next week — I'm not feeding four kids on toast till Tuesday."
+- **T:** ⚠ "It wasn't fine yesterday — you just couldn't smell it. The cap stays on, and I know exactly what I'm asking of you when I say that."
+- **C:** "You're not asking, though, are you? You're telling me. In my own kitchen."
+- **T:** "You're right — and I hate this bit of the job, truly. But it isn't my rule to bend: it's the same duty for every fitter in the country, and it's written after house fires, not before them. If it helps, ring Gas Safe and ask them about a capped hose — they'll stand behind every word."
+- **C:** "Four kids, though. What do I actually feed them tonight?"
+- **T:** "The hob's the dead half — your oven side is electric, so tonight is oven chips and beans, not toast. And Tuesday's booked before I leave, first slot. I'll make sure of it."
+
+### Flow 3 *(safety-critical ⚠ — the tenant, and the absent landlord)*
+- **TEN:** "You can't just cap the boiler — I only rent here. The landlord will go mad, and it's his boiler, not mine."
+- **T:** ⚠ "It's his boiler and your lungs — the cap protects the person breathing the air, and today that's you. The notice isn't aimed at you at all: it's for him, and the law says he fixes it, not you."
+- **TEN:** "He takes weeks to answer about a dripping tap. Weeks, in winter, with no heating?"
+- **T:** "That's why more than a notice goes on file: I'm reporting the defect today, in writing, and once it's reported he's on a legal clock — days, not weeks. You get a copy of everything, with today's date on it."
+- **TEN:** "And if he still drags his feet? What do I do with your bits of paper?"
+- **T:** "Then those bits of paper are your teeth: environmental health at the council, with the report attached — and they don't write letters, they enforce. I hope it's Tuesday and a new part. But if it isn't, you're not standing there empty-handed."
