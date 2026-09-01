@@ -122,6 +122,14 @@ Learner-facing pod slugs do not map to canonical slugs, and the naming is invert
 - `listening_pods.slug = 'pod-0'` — **46 courses, 2 to 232 rows, 40 of them stuck in the 100–230
   band**. The same slate, generated incompletely.
 
+The "same slate" claim was tested rather than assumed. Normalising punctuation and case, and
+matching each course's `known_text` against canonical `pod-0`'s 231 English lines: `cat_for_eng`
+102/142, `ell_for_eng` 105/142, `dan_for_eng` 90/142 — and the two full-size outliers,
+`ara_sy_for_eng` and `fin_for_eng`, **226 of 232**. The size distribution is 40 courses at 142
+lines, 2 at 232, one at 24 and one at 2. A ragged partial render of the live slate, not an
+unrelated corpus; the lines that do not match are the per-course known-side differentiation this
+document describes two sections below.
+
 No course carries both. The sacked canonical `pod-1` has been generated to nobody, which is
 correct. So the fleet is mid-cutover: 22 courses complete under the new name, 46 ragged under the
 old one. That is a coverage gap to close, not a mystery.
@@ -163,15 +171,31 @@ space"*; that is not the word SACKED.
 
 ## Deliverable 3 — the front door and the admin IA
 
-### Why there is no front door
+### Why the front door is in the wrong building
+
+*Corrected 2026-09-01 on a re-read of the navbar. The first cut of this section said "from
+`/home`, `/admin` or `/admin/configs` there is no route in." That overstates it, and the true
+shape is a sharper finding than the false one.*
 
 `/canonical/scripts` **is** in the navbar — `src/components/AppNavbar.vue:361` — but inside
 `if (isCoursesBoard || isCanonical)`, where `isCanonical` is `route.path.startsWith('/canonical/')`
 and `isCoursesBoard` is `route.path === '/courses'`. **The link only renders once you are already
-there.** From `/home`, `/admin` or `/admin/configs` there is no route in. The only other doors are
-a button on `/canonical/metagraph` (same trap) and a `router-link` at **line 2361** of
-`PodLab.vue`. That is the whole of the front door: a link visible only to people who have already
-arrived.
+in the Courses section.**
+
+There *is* a route in, and it is two clicks: `primaryTabs` at `AppNavbar.vue:287` is documented in
+its own comment as "always visible everywhere", and its first entry is **Courses → `/courses`**.
+Land there and the second row appears — Library, Seeds, Content, Pods, **Script Lab**, Metagraph.
+
+So the defect is not reachability. It is **filing**. Every other lab in the estate lives under
+Admin → Configs; the Script Lab lives under **Courses**, and nothing on the Admin side names it or
+hints it exists. Someone who goes looking for "the labs" goes to Admin, finds six tiles, and the
+one they want is not among them — with no breadcrumb suggesting a different tab entirely. The only
+other doors compound it: a button on `/canonical/metagraph` (inside the same section) and a
+`router-link` at **line 2361** of `PodLab.vue` — a link from one lab to another, visible only to
+someone already inside a lab.
+
+That is the whole of it: the Script Lab is two clicks from anywhere and invisible from the place
+you would look.
 
 ### The shape the room settled on — grouped by blast radius, not by feel
 
