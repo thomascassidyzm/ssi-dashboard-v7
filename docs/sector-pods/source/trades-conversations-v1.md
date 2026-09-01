@@ -587,3 +587,246 @@ we're square."
 - **T:** "That's the bit to change — the door I'll plane in twenty minutes, but silence I can't fix. So: I'm there Thursday for the door, and you're happy to settle the invoice once it shuts sweet?"
 - **C:** "Thursday, and the money's yours the same day — that was the only thing, promise."
 - **T:** "Then we've both learned the cheap way: you ring me about doors, and I don't let an invoice go sixty days quiet. Deal."
+
+---
+
+# Part 4: The site — peers, apprentices, and the stop call
+
+## Scene 17 — The merchant's counter
+
+*Walks:* N2, N3, F6, P2 — POD-1 verbatim, exactly as the mapping ruled: this scene exists to
+say so. F11 and F18 are alive at the counter — rung 1 with banter at the edges.
+*Admits:* ZERO-ADMISSION, by design. Every act here is CORE at a trade counter; what changes is
+the furniture, and furniture is never a node.
+*Branch set:* the order on account / the substitute / the banter.
+
+### Flow 1 *(happy path — the usual)*
+- **T:** "Morning, Dave. Twenty metres of 22mm, a bag of the usual clips, and two of those elbow fittings — the good ones, not the ones from last month."
+- **M:** "Morning. The 22's no problem, clips no problem — and I'll pretend I didn't hear that about the elbows. On the account?"
+- **T:** "On the account. And stick a roll of PTFE on — I'm always one roll from disaster."
+- **M:** "Aren't we all. Right: twenty of 22, clips, two elbows — the good ones — and your tape. Round the back in five minutes."
+- **T:** "Champion. Is the trade coffee machine fixed, or is it still doing that thing?"
+- **M:** "It's doing a new thing now. Braver men than you have tried it this week."
+
+### Flow 2 *(problem — no 22 till Thursday)*
+- **T:** "I need 22mm copper, three-metre lengths — six of them, today."
+- **M:** "Today's your problem — no 22 till Thursday, the wagon's let us down. I've got 15 all day long, if you want to twin it for the run."
+- **T:** "Twinned 15's no good on this one — it's a boiler feed, and the spec says 22. What about the branch in town — any joy?"
+- **M:** "Hang on, I'll look… they're showing eight lengths. Want me to ring and have them put six behind the counter?"
+- **T:** "Do that and you've saved my afternoon. Everything else stays on the order here for Thursday."
+- **M:** "Done — ask for Karen, they'll be under your name. Thursday for the rest."
+
+### Flow 3 *(the counter banter — the families revive)*
+- **M:** "You look like a man who's been under a floor all morning."
+- **T:** "Under a floor, in a loft, and briefly in a hedge — don't ask. How's your week going, anyway?"
+- **M:** "Quiet Monday, mental since. These new consumer units are flying out — everyone's upgrading all of a sudden."
+- **T:** "Tell me about it — fiddly things, aren't they? The terminals are half the size my fingers are."
+- **M:** "That's what the sparkies keep saying. Right — anything else, or is it just the moan and the washers?"
+- **T:** "The moan, the washers, and a bacon roll from next door if you're timing me. See you Thursday."
+
+## Scene 18 — The site briefing
+
+*Walks:* N4 + N108 [health, proposed] + P5 constraint elicit + P3 read-backs + **F502 [trades,
+proposed]** run dyadically per hearer — the induction sheet is the countersigned telling at
+scale, and the load-bearing exchanges are one-to-one exactly as the mapping ruled. The
+one-to-many horn signal stays walk colour: the store is dyadic and this walk does not smuggle
+topology in as shape. Flow 3 flips the seat — the learner RECEIVES an induction, role
+annotation absorbing the flip.
+*Admits:* the constraint elicit with assignment — "anyone not worked at height before? Right,
+you're with Dai."
+*Branch set:* delivered and signed / not followed, re-run dyadically / received.
+
+### Flow 1 *(the toolbox talk)*
+- **T:** "Right, gather round — two minutes, then tools. Today's hazards: the scaffold's signed off to the second lift only, so nobody above that rail. And the floor's out in the back bedroom — bare joists, so it's boards down before anyone steps in there."
+- **A:** "Second lift, back bedroom on boards. What's happening above the second lift, then?"
+- **T:** "Nothing, by anyone, till the scaffolders re-sign it Thursday — that's the whole point. Now — has everyone here worked at height before? Straight answers; it's not a test you can fail."
+- **A:** "Not properly, no. Ladders at home, that's it."
+- **T:** "Then that's today sorted: you're with Dai, ground and first lift only — and that's a good place to be, he taught me. Sign here to say you've heard all that; the sheet is how the site knows who was told what."
+- **A:** "Signing now. Ground and first with Dai — and honestly, I'd rather learn it right than blag it."
+
+### Flow 2 *(safety-critical ⚠ — the briefing not followed)*
+- **T:** ⚠ "Jack — down off there, now, and come to me. …That's the third lift. What did we say at eight o'clock this morning?"
+- **A:** "Second lift only. I know — I was just nipping up for the drill. Thirty seconds."
+- **T:** ⚠ "The scaffold doesn't know it's thirty seconds. It's not signed off up there — that rail could be hand-tight, and hand-tight looks exactly like torqued from where you were stood."
+- **A:** "I didn't think of it like that. It looked solid."
+- **T:** "It always looks solid — that's why we use the sheet and not our eyes. So we re-run it, you and me: nobody past the second lift till Thursday's re-sign, whatever's been left up there — if it's urgent, we send for the scaffold crew. Say it back."
+- **A:** "Nobody past the second lift till the re-sign — and if something's stranded up there, we call the scaffolders, not climb. Understood. Properly, this time."
+
+### Flow 3 *(the seat flipped — inducted on another firm's site)*
+- **O:** "Morning — you're the plumber's crew? Before anyone's boots go past the cabin: induction. Five minutes, and yes, everyone moans."
+- **T:** "No moaning here — go on."
+- **O:** ⚠ "Site rules: hard hat and hi-vis past the gate, no exceptions. The crane's lifting till noon, so the yard is a no-walk zone — you go the long way, behind the cabins. And if you hear three short blasts on the horn, that's stop-and-look, wherever you are, whatever's in your hands."
+- **T:** "Round the back of the cabins till noon — and three blasts means stop and look, even mid-job. What about isolations — who signs off if I need the water main off?"
+- **O:** "Good question — that's a permit, from me, before any valve turns. Nothing on this site gets isolated by memory or by favour."
+- **T:** "Permit from you before the main moves. Signing your sheet now — and I'll brief my lad the same before he's past the gate."
+
+## Scene 19 — The apprentice
+
+*Walks:* N4 + P3 + P4; F104 [health, proposed] — the read-back solicited, not waited for;
+show-then-do staying a P3 variant with acts as the medium, per the refusal both priors made.
+Flow 2 is the read-back failure branch — the correction cheap here and dear later, which is the
+whole reason the read-back is drilled. Flow 3 ratifies asking over guessing (F101) and lets the
+house outrank the drawing (K3).
+*Admits:* confirm-and-extend — "690, and keep your fixings clear of the run at the top."
+*Branch set:* read back and extended / read back wrong / the question instead of the guess.
+
+### Flow 1 *(happy path — first one watched)*
+- **T:** "Next job: fixings for the radiator brackets. 690 centres, and keep every fixing clear of the pipe run at the top — it's marked in pencil. Say the number back to me."
+- **A:** "690 centres, fixings clear of the pencil line."
+- **T:** "690 it is — and you said the line without me asking, which is the whole game. Do the first one while I watch, then you're on your own."
+- **A:** "First hole going in… that's it fixed. Level says spot on."
+- **T:** "Spot on it is. One upgrade before the next: mark all your centres first, the whole wall, then drill the lot — twice as fast, and the line stays true."
+- **A:** "Mark everything, then drill everything. That's why your walls look like that and mine don't — yet."
+
+### Flow 2 *(problem — 18 heard as 80)*
+- **T:** "Waste pipe next: it falls 18 millimetres per metre, away from the trap. Say it back."
+- **A:** "80 millimetres per metre, away from the trap."
+- **T:** ⚠ "Stop there — 18. One-eight. And this is exactly why we say it back: 80 sounds close in a noisy room, and it's a flood in a ceiling. At 80 the water outruns the solids and the pipe blocks itself inside a month."
+- **A:** "18 — one-eight — per metre. I heard 'eighty' clear as day, honestly."
+- **T:** "I believe you — that pair catches everyone once. From now on, numbers like that get fingers: one-eight, two fingers up, the way the merchants do it across a loud yard."
+- **A:** "One-eight, with the fingers. Cheap lesson today, then."
+
+### Flow 3 *(the question instead of the guess)*
+- **A:** "Before I cut into this — the drawing says 15mm, but the pipe in the wall's 22. Do I just… make it work with a reducer?"
+- **T:** "You just earned your dinner — asking beats guessing, every day of the week. No reducer yet: if the wall says 22 and the paper says 15, one of them's wrong, and we find out which before anything gets cut."
+- **A:** "How do we find out? The drawing's all we've got."
+- **T:** "The house outranks the drawing — the pipe is real; the paper's a hope. We trace the 22 back to the manifold and see what it feeds. Drawings get drawn in offices; pipes get put in on Fridays."
+- **A:** "Tracing it now… it feeds the bathroom AND the kitchen. The drawing only shows the bathroom."
+- **T:** "And there's your answer — cut it as 15 and the kitchen goes cold. Photograph it, mark up the drawing, and that's the office's phone call, not ours. Good catch — properly good."
+
+## Scene 20 — The stop call
+
+*Walks:* N106 + O101 [health, proposed] — Family B outside clinical, with K4 on the LEARNER'S
+side for the first time: the body at stake is your own and your mates'. Runs in BOTH directions
+across the learner's seat, as the mapping requires. Flow 3 is S503, the resentment branch — the
+rank-free hold: on site the stop call outranks the CV, and the hold is made of evidence, not
+authority. "BELOW!" — the shouted one-position warning — is walk colour, not a shape, per the
+mapping's eleventh refusal.
+*Admits:* the halt, immediate and unsoftened — and surviving its resentment with the evidence
+doing the holding.
+*Branch set:* the learner stops / the learner is stopped / the stop resented.
+
+### Flow 1 *(safety-critical ⚠ — the missing board)*
+- **T:** ⚠ "STOP — Dai. Don't step back. Stand still… now look down at your heel. The board's gone — you're on the last inch of it."
+- **O:** "…Bloody hell. I was sure I had another board behind me."
+- **T:** "Everyone's sure, right up until they're not. Come forward, toward me — there. Solid ground."
+- **O:** "Good shout. My head was in the pipework, not my feet."
+- **T:** "That's what mates on site are for — my feet are yours, yours are mine. Let's board that gap before either of us thinks about anything else."
+- **O:** "Boarding it now. And — thanks. Properly, thanks."
+
+### Flow 2 *(safety-critical ⚠ — the learner is stopped)*
+- **O:** ⚠ "STOP — put the grinder down. Your glasses are on your hat, not your face."
+- **T:** "…So they are. Grinder's down."
+- **O:** "You'd have felt daft in A&E explaining that one."
+- **T:** "I'd have felt daft with one eye, never mind A&E. Thanks — I was three seconds from pulling that trigger."
+- **O:** "It's the end-of-day ones that get you — everyone's brain's already in the van."
+- **T:** "Mine certainly was. Right — glasses ON, and then the last two cuts. Watch me do it properly this time."
+
+### Flow 3 *(safety-critical ⚠ — the resentment, and the rank-free hold)*
+- **T:** ⚠ "Stop — hold up. That ladder's footed on the ramp, and it's walking left every time you shift your weight. Come down a second."
+- **O:** "I've been on ladders since before you had your first van, son. I know what I'm doing."
+- **T:** ⚠ "You have, and you do — and it's still walking left. This isn't about your CV; it's about the ramp. Come down, watch the feet while I climb it — and if I'm wrong, you can enjoy that all week."
+- **O:** "…Go on then, climb. …Right. It moved. I felt it from here."
+- **T:** "Two inches, and I wasn't even reaching. That's all this ever was — the ramp, not you."
+- **O:** "Fair play — I'd have said the same in your boots. And you'd have taken it worse than I did, mind."
+
+## Scene 21 — Cross-trade coordination
+
+*Walks:* N7 + F5 chains — the sequencing negotiation; N15 the parked disagreement, walked
+UPWARD in flow 2: "we both live with what he says" is the park with a forum attached. Flow 3
+escalates with the record — F103's photos and the programme, K3 deciding between peers. First
+constructed N15 outside the Method Pod, now with dialogue under it.
+*Admits:* the park-upward — the disagreement handed to a third party both sides pre-accept.
+*Branch set:* negotiated / parked upward / the overrun, escalated with the record.
+
+### Flow 1 *(the sequencing negotiation)*
+- **O:** "When are your lot second-fixing the bathroom? I can't tile till your pipework's done and tested."
+- **T:** "And I can't second-fix till the plasterers are out — so we're both waiting on the same wall. They're saying Wednesday."
+- **O:** "Wednesday means Thursday with that crew. If I say Friday for tiles, is your testing done by then — actually done?"
+- **T:** "If the wall's dry Thursday morning, I'm in Thursday, tested by four. Friday's real for you — not hopeful."
+- **O:** "Then Friday it is. And if the plaster slips, ring me Thursday lunchtime, not Friday morning — my tiler books two jobs a day."
+- **T:** "Thursday lunchtime either way — you'll hear 'go' or 'slip' from me, not from the grapevine. Deal."
+
+### Flow 2 *(the parked disagreement — taken upward)*
+- **O:** "Your soil stack's in the way of my ducting run — it needs to move a foot left."
+- **T:** "It can't move a foot left — there's a joist hanger there, and the fall stops working. Your ducting's got more give than my gravity has."
+- **O:** "My drawing says the duct goes exactly there. I've got a drawing; you've got an opinion."
+- **T:** "I've got a drawing too — that's the problem: we've each got one, and they disagree. We could argue all morning, or we take both drawings to the site agent and we both live with what he says."
+- **O:** "…The agent it is. Loser buys the bacon rolls?"
+- **T:** "Loser buys the bacon rolls. And whichever way it goes — it's the drawings fighting, not us. Same team after."
+
+### Flow 3 *(the overrun — escalated with the record)*
+- **T:** "It's Thursday. I'm booked into this room today — and your boards are still stacked where my run goes."
+- **O:** "We're a day behind, what can I tell you. Give us till Monday."
+- **T:** "Monday costs me a booked crew with nowhere to stand — that's real money, not diary-shuffling. Look at the programme: week eight, this room, my name on it. In writing."
+- **O:** "The programme says a lot of things. Nobody holds to it after week two."
+- **T:** "I do — which is why I photographed this room on Tuesday, and why the agent gets the photo and the programme page today. Not to drop you in it: so the delay has a name, and it isn't mine."
+- **O:** "…Fair enough — that's clean, at least. Boards out by two, and can you work round us till then?"
+
+## Scene 22 — Snagging
+
+*Walks:* N402 [ireland, proposed] with the task burden REVERSED — the customer hands the list,
+the tradesperson banks the tasks with dates, role annotation absorbing the reversal exactly as
+predicted. The disputed item is settled by the record (F103's photos); the growing list meets
+the scope boundary — N104 + F6, "that's not snagging, that's a variation." Flow 3 releases the
+retention and closes the money arc.
+*Admits:* the variation boundary — the line between putting right and new work, held warmly.
+*Branch set:* the walkthrough / the growing list / sign-off and release.
+
+### Flow 1 *(the walkthrough against the list)*
+- **C:** "Right, the list. One: the en-suite door catches. Two: there's a mark on the hall ceiling. Three: the outside tap's drippy."
+- **T:** "Let's walk them. Door first… yes, that's mine — it's caught since the new floor went down. Planed and re-hung Friday; it's on the list."
+- **C:** "The ceiling mark, then. That wasn't there before you started — I'm fairly sure."
+- **T:** "Look at my Tuesday photos — it's there, faint, before my ladder ever came in. That's an old stain bleeding through the emulsion: a decorator's job, not damage. I'll show you the two photos side by side."
+- **C:** "Hm — it is there. Faint, but there. And the tap?"
+- **T:** "The tap's mine, and it's a washer — two minutes, Friday, same visit as the door. So: door and tap Friday, we re-inspect together Friday afternoon, and the ceiling goes on your decorator's list, not mine."
+
+### Flow 2 *(problem — the list that keeps growing)*
+- **C:** "While you're coming Friday anyway — I've added a few. The gate latch, the wonky shelf in the pantry, and can you look at the shed light?"
+- **T:** "Let's sort the pile honestly. The gate latch I never touched — that's a new job, happy to quote it. The shelf, same. The shed light's electrics, so that's a quote AND possibly not me, depending what's out there."
+- **C:** "I thought while you were here anyway, it'd all just… fold in."
+- **T:** "Snagging is me putting right what I did — that list is me doing new work for free, and the free version is how jobs go sour. But 'while I'm here' does count for something real: no second call-out charge, and small stuff gets small prices."
+- **C:** "That's more reasonable than I made it sound. Quote me the latch and the shelf, then, and I'll ask a sparky about the shed."
+- **T:** "In your inbox tonight, both numbers. And Friday stays Friday: the door, the tap, the re-inspect — the proper list, done properly."
+
+### Flow 3 *(sign-off — and the retention released)*
+- **T:** "Friday, as promised: door planed, tap re-washered. Walk it with me and tell me we're done — properly done, not polite done."
+- **C:** "Door… smooth as anything. Tap… dry as a bone. I'm trying to find something wrong and failing, which is annoying."
+- **T:** "Best kind of annoying. Then I'll say the words: the list is cleared, and I'm asking for sign-off and the retention."
+- **C:** "Signed — and the transfer's going through now. There… done. That's the lot."
+- **T:** "Received, with thanks. Paperwork's complete both sides, then — and the guarantee clock starts today: twelve months from sign-off, written on the receipt."
+- **C:** "Twelve months, noted. Well — it's been surprisingly painless. You'll be hearing from half the street; I've been talking."
+
+## Scene 23 — The cabin
+
+*Walks:* rung 0, and that is the finding made audible: F11 and F18 — dead all through the
+pinned stretches — REVIVE the moment the kinds unpin, exactly as the mapping's per-stretch rule
+says. N909 story-matched-story in flow 2; the learner's own rung-0 in flow 3, deictic per the
+canonical convention, with the measurement stakes tying the medium back to the trade.
+*Admits:* ZERO-ADMISSION, by design — the tea break is CORE's register with plaster dust on it.
+The scene exists so the walk opens and closes at rung 0, as a real trades day does.
+*Branch set:* the tea break / the matched story / talking about talking.
+
+### Flow 1 *(the tea break — the families revive)*
+- **O:** "Kettle's on. These new consumer units are fiddly little things, aren't they?"
+- **T:** "Tell me about it — terminals like doll's furniture. Whoever designs them has never worn gloves in their life."
+- **O:** "Never been in a loft in January, either. How's your tea — builder's, I assume?"
+- **T:** "Builder's, two sugars, and don't let it see the milk for long. How's the new van treating you, anyway?"
+- **O:** "Like a palace with a tax bill. The racking took me a whole weekend, but it's a thing of beauty now."
+- **T:** "A tidy van's a tidy mind, my old boss used to say. His van was a skip, mind."
+
+### Flow 2 *(story, matched story)*
+- **O:** "Funny one this morning: the customer's parrot. Whole first hour it's shouting 'MIND THE CABLES!' in the husband's voice. I nearly downed tools twice."
+- **T:** "That's nothing — I had a house where the dog fetched my spanners. Wrong ones, every time, proud as anything. Adjustable when I asked for the grips; grips when I asked for the adjustable."
+- **O:** "A dog with opinions about tools. Was he ever right?"
+- **T:** "Once — and I swear he knew it. Carried that one spanner round all afternoon like a trophy."
+- **O:** "The parrot never helped once. Just criticism, all morning, in two voices."
+- **T:** "That's the difference between dogs and parrots, that is. One wants to be on the crew — the other wants to be the foreman."
+
+### Flow 3 *(talking about talking — the learner's own rung 0)*
+- **O:** "Your language has come on, by the way. Six months ago you were all nouns and pointing — no offence."
+- **T:** "None taken — it WAS all nouns and pointing. It's the site that's done it: you can't pass a stop call up a scaffold in mime."
+- **O:** "Ha — no. What's the hardest bit now, then?"
+- **T:** "The numbers, still. When it's loud and someone shouts a measurement, my head translates it twice before my hands believe it. So keep making me say them back — it's not politeness, it's how I get faster."
+- **O:** "Deal. And for what it's worth — your swearing's completely fluent."
+- **T:** "That was week one. Priorities. The rest is catching up."
