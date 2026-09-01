@@ -33,6 +33,8 @@ against those walks in the companion report — defers named as defers, sector-n
 
 ## R0. The contract at the counter *(prologue — re-instantiates CORE scene 0; admits nothing at position level)*
 
+*Walks:* N1201
+
 ### Flow 1 *(happy path — the offer, granted at a quiet counter)*
 - **W:** "Morning! Before we start — I'm learning your language, and I'd love to serve you in it, if you don't mind. If I get stuck, we'll hop back to mine."
 - **C:** "Well, good for you! Go on then, we'll give it a go."
@@ -539,6 +541,8 @@ against those walks in the companion report — defers named as defers, sector-n
 
 ## R23. The new starter *(E14 — zero admission: instruction, read-back and continuer are owned; what the scene stages is the wrong read-back corrected cheaply — the outcome health's register could never produce — and the premise audit received as a gift)*
 
+*Walks:* N4, P3, P4
+
 ### Flow 1 *(problem — the read-back is wrong, and the correction is cheap)*
 - **W:** "Jack — face up aisles seven and eight. Dairy first, because it's got a clock on it, and blues to the front, always."
 - **J:** "Face up seven and eight, blues first, then dairy."
@@ -558,6 +562,8 @@ against those walks in the companion report — defers named as defers, sector-n
 ---
 
 ## R24. The staff room *(E13-adjacent, rung 0 — zero admission: disagreement about the world held explicitly, the not-know held with status, and the returned question alive again — the peer register the counter suppresses)*
+
+*Walks:* N15
 
 ### Flow 1 *(problem — disagreed about the world, held and settled out loud)*
 - **K:** "The new layout's a disaster. Nobody can find the eggs, and I'm the complaints desk for it."
