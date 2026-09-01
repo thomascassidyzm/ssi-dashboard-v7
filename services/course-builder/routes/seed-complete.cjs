@@ -282,7 +282,8 @@ async function analyzePatternRecency(ctx, courseCode, windowSize) {
 // and contract lookup — NEVER for DB keys.
 const baseCourseCode = (c) => (c || '').replace(/_v\d+$/, '');
 
-async function initializeCourseSeeds(ctx, courseCode) {
+// `req` is optional so the skeleton is stamped with the submit that caused it.
+async function initializeCourseSeeds(ctx, courseCode, req = null) {
   const parts = baseCourseCode(courseCode).split('_for_');
   const targetLang = parts[0] || '';
   const knownLang = parts[1] || '';
@@ -356,9 +357,13 @@ async function initializeCourseSeeds(ctx, courseCode) {
     };
   });
 
+  const eventId = req?.contentEdit
+    ? await req.contentEdit.record({ scope: { course_code: courseCode, rows: courseSeeds.length } })
+    : null;
+
   const { error: insertError } = await ctx.supabase
     .from('course_seeds')
-    .insert(courseSeeds);
+    .insert(courseSeeds.map(r => ({ ...r, last_edit_event_id: eventId })));
 
   if (insertError) {
     throw new Error('Failed to initialize course seeds: ' + insertError.message);
@@ -1051,7 +1056,7 @@ module.exports = function seedCompleteRoutes(ctx) {
       if (seedLookupError || !canonicalSeed) {
         console.log(`Seed ${seedId} not found for ${course_code}, attempting auto-initialization...`);
         try {
-          const initResult = await initializeCourseSeeds(ctx, course_code);
+          const initResult = await initializeCourseSeeds(ctx, course_code, req);
           if (initResult.initialized) {
             console.log(`Auto-initialized ${course_code}: ${initResult.count} seeds (${initResult.language})`);
             const retry = await ctx.supabase

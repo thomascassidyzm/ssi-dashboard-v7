@@ -80,8 +80,15 @@ function makeApp(supabase, { onWrite } = {}) {
     const eventId = req.contentEdit ? await req.contentEdit.record({ scope: { seed_numbers: [42] } }) : null
     res.json({ ok: true, eventId, identity: req.editorIdentity })
   })
-  app.get('/api/course/:courseCode/seed-editor', (req, res) => {
+  app.get('/api/course/:courseCode/health-check', (req, res) => {
     res.json({ ok: true, gated: !!req.contentEdit })
+  })
+  // A record-only surface: writes content as a side effect of a read.
+  app.get('/api/course/:courseCode/seed-editor', async (req, res) => {
+    const eventId = req.contentEdit && req.query.initialise
+      ? await req.contentEdit.record({ scope: { course_code: req.params.courseCode, rows: 668 } })
+      : null
+    res.json({ ok: true, gated: !!req.contentEdit, eventId })
   })
   return app
 }
@@ -138,7 +145,7 @@ describe('the gate refuses a content write with no identity', () => {
 
   it('leaves routes that do not write course content completely alone', async () => {
     await listen(makeApp(supabaseWithHuman()))
-    const res = await fetch(`${base}/api/course/eng_for_hin/seed-editor`, { headers: BROWSER })
+    const res = await fetch(`${base}/api/course/eng_for_hin/health-check`, { headers: BROWSER })
     expect(res.status).toBe(200)
     expect((await res.json()).gated).toBe(false)
   })
@@ -251,6 +258,43 @@ describe('an internal hop joins the action it is part of', () => {
       body: '{}',
     })
     expect((await res.json()).eventId).toMatch(/^evt-/)
+  })
+})
+
+// initializeCourseSeeds lays down 668 course_seeds rows the first time anyone
+// opens the translation view or the seed editor on an uninitialised course. It
+// is a content write behind a GET, found by the 2026-09-01 sweep. Refusing a GET
+// would break the editor for someone whose only sin is reading, so these
+// surfaces record and never refuse.
+describe('record-only surfaces: a read that writes', () => {
+  it('never refuses, even with no identity at all', async () => {
+    await listen(makeApp(supabaseWithHuman()))
+    const res = await fetch(`${base}/api/course/eng_for_hin/seed-editor?initialise=1`, { headers: BROWSER })
+    expect(res.status, 'a GET must not 401 — that would break the editor UI').toBe(200)
+    expect((await res.json()).eventId, 'nothing honest to record, so nothing is recorded').toBe(null)
+  })
+
+  it('attributes the skeleton when the reader IS identified', async () => {
+    const sb = supabaseWithHuman()
+    await listen(makeApp(sb))
+    const res = await fetch(`${base}/api/course/eng_for_hin/seed-editor?initialise=1`, {
+      headers: { ...BROWSER, Authorization: `Bearer ${TOKEN}` },
+    })
+    expect(res.status).toBe(200)
+    const event = sb.inserted.find(i => i.table === 'content_edit_events').row
+    expect(event).toMatchObject({ operation: 'seed-initialise', actor_label: 'Shuchita', actor_verified: true })
+    expect(event.scope).toEqual({ course_code: 'eng_for_hin', rows: 668 })
+  })
+
+  it('files nothing on the far commoner case: a plain read', async () => {
+    const sb = supabaseWithHuman()
+    await listen(makeApp(sb))
+    await fetch(`${base}/api/course/eng_for_hin/seed-editor`, {
+      headers: { ...BROWSER, Authorization: `Bearer ${TOKEN}` },
+    })
+    await new Promise(r => setTimeout(r, 50))
+    expect(sb.inserted.filter(i => i.table === 'content_edit_events'),
+      'every page load must not file an edit').toHaveLength(0)
   })
 })
 

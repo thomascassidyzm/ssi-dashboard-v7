@@ -77,6 +77,11 @@ function contentEditGate({ supabase, service, logger = console }) {
       if (mode() === 'observe' && isTrustedLoopback(req)) {
         identity = { ...UNDECLARED, label: `undeclared same-host caller (${req.headers['user-agent'] || 'no user-agent'})` };
         logger.warn?.(`[content-edit-gate] UNDECLARED loopback write: ${req.method} ${req.path} — declare x-agent-id / x-agent-role / x-service-name`);
+      } else if (surface.recordOnly) {
+        // A record-only surface never refuses. With no identity to record there
+        // is nothing honest to write, so it passes through unattributed rather
+        // than inventing an actor — and the row's NULL says exactly that.
+        return next();
       } else {
         logger.warn?.(`[content-edit-gate] REFUSED ${req.method} ${req.path} — no editor identity`);
         return res.status(401).json({
@@ -132,6 +137,9 @@ function contentEditGate({ supabase, service, logger = console }) {
     // Safety net: a 2xx from a handler that never recorded still gets an event.
     res.on('finish', () => {
       if (eventId || recording) return;
+      // A record-only GET logs only when its handler actually initialised
+      // something. Without this, every page load would file an edit.
+      if (surface.recordOnly) return;
       if (res.statusCode < 200 || res.statusCode >= 300) return;
       record({ scope: { recorded_by: 'gate-default' } }).catch(err =>
         logger.error?.(`[content-edit-gate] default event failed for ${surfaceLabel}: ${err.message}`));

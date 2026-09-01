@@ -30,11 +30,13 @@ const MUTATION = /\.(update|upsert|insert|delete)\s*\(/;
 // reason, so the exception list cannot quietly become the escape hatch.
 const NOT_AN_EDITING_SURFACE = new Map([
   ['/api/build/job-done/:jobId', 'build lifecycle bookkeeping; content writes happen in the submit routes it supervises'],
+  ['/api/seed/translate', 'seed-translate.cjs is never mounted — dead code, so it is not a surface. '
+    + 'The "is it still unmounted" test below turns this reason into an assertion.'],
 ]);
 
 function routeDeclarations(src) {
   const out = [];
-  const re = /\b(?:router|app)\.(post|put|patch|delete|all)\(\s*(['"`])([^'"`]+)\2/g;
+  const re = /\b(?:router|app)\.(get|post|put|patch|delete|all)\(\s*(['"`])([^'"`]+)\2/g;
   let m;
   while ((m = re.exec(src))) {
     out.push({ index: m.index, method: m[1].toUpperCase(), rawPath: m[3] });
@@ -51,6 +53,7 @@ function derivedSurfaces() {
   ];
 
   const found = new Map(); // "METHOD path" -> { file, line }
+  const helpers = [];
   for (const { file, prefix } of files) {
     const abs = path.join(REPO, file);
     if (!fs.existsSync(abs)) continue;
@@ -73,17 +76,24 @@ function derivedSurfaces() {
       for (const d of decls) {
         if (d.index <= lineStart[i]) owner = d; else break;
       }
-      if (!owner) continue;
+      if (!owner) {
+        // A content write in a helper ABOVE every route declaration. This is the
+        // blind spot that hid initializeCourseSeeds — 668 course_seeds rows
+        // written from two GET routes, invisible because the scanner attributed
+        // writes only to a route declared before them. Collected, not dropped.
+        helpers.push(`${file}:${i + 1} writes ${table} from a top-level helper`);
+        continue;
+      }
       const full = (owner.rawPath.startsWith('/api') ? '' : prefix) + owner.rawPath;
       found.set(`${owner.method} ${full}`, { file, line: i + 1, table });
     }
   }
-  return found;
+  return { found, helpers };
 }
 
 describe('content-write surface manifest', () => {
   const manifest = new Set(SURFACES.map(s => `${s.method} ${s.path}`));
-  const derived = derivedSurfaces();
+  const { found: derived, helpers } = derivedSurfaces();
 
   it('finds content writes to check (the scanner itself still works)', () => {
     expect(derived.size).toBeGreaterThan(10);
@@ -100,6 +110,35 @@ describe('content-write surface manifest', () => {
     expect(missing, 'These routes write course content but are not in content-write-surfaces.cjs, '
       + 'so they would save with no editor identity. Add them (or, with a reason, to '
       + 'NOT_AN_EDITING_SURFACE in this test):\n' + missing.join('\n')).toEqual([]);
+  });
+
+  // Content writes that live in a helper rather than a route body. Each one is
+  // reachable only through a route that IS gated, so identity is captured; what
+  // varies is whether the helper can stamp the rows it writes. Listed here with
+  // that status, so a NEW helper write shows up as a failure rather than as
+  // nothing at all.
+  it('accounts for every content write that lives in a helper', () => {
+    const ACCOUNTED = [
+      // Stamped: `req` is threaded through and the rows carry the event.
+      'services/course-builder/routes/translation.cjs writes course_seeds from a top-level helper',
+      'services/course-builder/routes/seed-complete.cjs writes course_seeds from a top-level helper',
+    ];
+    const unaccounted = helpers.filter(h => !ACCOUNTED.some(a => h.replace(/:\d+ /, ' ') === a));
+    expect(unaccounted, 'A content write in a helper is invisible to the route scan — the class '
+      + 'that hid initializeCourseSeeds. Thread the identity through and list it here:\n'
+      + unaccounted.join('\n')).toEqual([]);
+  });
+
+  // The exemption above is only true while the module stays unmounted. Pin it,
+  // so wiring seed-translate.cjs up fails here instead of quietly shipping an
+  // ungated content write.
+  it('seed-translate.cjs is still unmounted, which is what excuses it', () => {
+    const entry = fs.readFileSync(path.join(REPO, 'services/course-builder-api.cjs'), 'utf8');
+    expect(entry.includes('seed-translate'),
+      'seed-translate.cjs is now mounted — it writes course_seeds, course_legos and '
+      + 'course_practice_phrases, so add it to content-write-surfaces.cjs and drop the '
+      + 'exemption in NOT_AN_EDITING_SURFACE. Note it reads its course from ?course=, '
+      + 'which courseCodeFrom() does not look at.').toBe(false);
   });
 
   it('every listed course-builder route still exists in the sources', () => {

@@ -23,7 +23,11 @@ module.exports = function (ctx) {
   // initializeCourseSeeds — inline until extracted to a shared lib module
   // TODO: Extract to ../lib/seed-initializer.cjs and share with other routes
   // ---------------------------------------------------------------------------
-  async function initializeCourseSeeds(courseCode) {
+  // `req` is passed so the skeleton this lays down is attributed to whoever
+  // caused it to exist. It is optional and never required: this runs off a GET,
+  // and a read must not fail because nobody could be identified — an
+  // unattributed skeleton row is honest, an invented editor is not.
+  async function initializeCourseSeeds(courseCode, req = null) {
     // Parse course code: target_for_known (e.g., zho_for_eng)
     const parts = courseCode.split('_for_');
     const targetLang = parts[0] || '';
@@ -122,10 +126,16 @@ module.exports = function (ctx) {
       };
     });
 
-    // Insert
+    // Insert. Recorded HERE, not in the gate's response hook: this is the only
+    // point at which we know the skeleton is actually being written, rather than
+    // the far commoner case of a page load on an already-initialised course.
+    const eventId = req?.contentEdit
+      ? await req.contentEdit.record({ scope: { course_code: courseCode, rows: courseSeeds.length } })
+      : null;
+
     const { error: insertError } = await supabase
       .from('course_seeds')
-      .insert(courseSeeds);
+      .insert(courseSeeds.map(r => ({ ...r, last_edit_event_id: eventId })));
 
     if (insertError) {
       throw new Error('Failed to initialize course seeds: ' + insertError.message);
@@ -163,7 +173,7 @@ module.exports = function (ctx) {
 
     // Initialize course if needed
     try {
-      await initializeCourseSeeds(courseCode);
+      await initializeCourseSeeds(courseCode, req);
     } catch (err) {
       console.error('Init error:', err.message);
     }
@@ -253,7 +263,7 @@ module.exports = function (ctx) {
 
     // Initialize course seeds if needed
     try {
-      await initializeCourseSeeds(courseCode);
+      await initializeCourseSeeds(courseCode, req);
     } catch (err) {
       console.error('Init error:', err.message);
     }

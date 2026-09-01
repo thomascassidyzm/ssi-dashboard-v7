@@ -28,7 +28,6 @@ const COURSE_BUILDER = [
   { method: 'POST',   path: '/api/seed/complete',                          operation: 'decomposition-submit' },
   { method: 'POST',   path: '/api/lego',                                   operation: 'lego-submit' },
   { method: 'POST',   path: '/api/batch',                                  operation: 'batch-submit' },
-  { method: 'POST',   path: '/api/seed/translate',                         operation: 'seed-translate' },
   { method: 'POST',   path: '/api/v2/decompose/finalize/:courseCode',      operation: 'decomposition-finalize' },
   { method: 'POST',   path: '/api/v2/phrases/:courseCode',                 operation: 'phrases-write' },
   { method: 'POST',   path: '/api/course/:code/finalize',                  operation: 'draft-finalize' },
@@ -62,6 +61,23 @@ const COURSE_BUILDER = [
   { method: 'POST',   path: '/api/orchestrator/chat/:courseCode',          operation: 'orchestrator-seed-edit' },
 ].map(r => ({ ...r, service: 'course-builder' }));
 
+// RECORD-ONLY surfaces. These are GET routes that write course content as a
+// side effect — `initializeCourseSeeds` lays down a course's canonical seed
+// skeleton the first time anyone opens the translation view or the seed editor
+// on an uninitialised course. Found by the 2026-09-01 worker sweep.
+//
+// They are gated differently on purpose: the gate NEVER refuses them. Refusing a
+// GET would break the editor UI for a caller whose only sin is reading, and
+// first-fill of the canonical skeleton is initialisation, not an edit. What the
+// gate does do is capture the identity that already exists — these routes sit
+// behind production-api's course-scope gate, so a remote caller is already a
+// resolved dashboard user — and record it, so the skeleton is attributed to
+// whoever caused it to exist rather than to nobody.
+const RECORD_ONLY = [
+  { method: 'GET', path: '/api/course/:courseCode/translate',    operation: 'seed-initialise' },
+  { method: 'GET', path: '/api/course/:courseCode/seed-editor',  operation: 'seed-initialise' },
+].map(r => ({ ...r, service: 'course-builder', recordOnly: true }));
+
 // ─── production-api (port 3470) — direct content writes, not proxied ──────
 const PRODUCTION_API = [
   { method: 'PATCH',  path: '/api/production/:courseCode/phrase/:phraseId',   operation: 'phrase-edit' },
@@ -70,7 +86,7 @@ const PRODUCTION_API = [
   { method: 'POST',   path: '/api/admin/decomposition-backfill',             operation: 'decomposition-backfill' },
 ].map(r => ({ ...r, service: 'production-api' }));
 
-const SURFACES = [...COURSE_BUILDER, ...PRODUCTION_API];
+const SURFACES = [...COURSE_BUILDER, ...RECORD_ONLY, ...PRODUCTION_API];
 
 /** Turn '/api/course/:courseCode/edit-cascade' into a matcher. */
 function toMatcher(route) {
@@ -116,4 +132,4 @@ function courseCodeFrom(params, pathname, body) {
   return null;
 }
 
-module.exports = { SURFACES, COURSE_BUILDER, PRODUCTION_API, findSurface, courseCodeFrom, COURSE_CODE_RE };
+module.exports = { SURFACES, COURSE_BUILDER, RECORD_ONLY, PRODUCTION_API, findSurface, courseCodeFrom, COURSE_CODE_RE };

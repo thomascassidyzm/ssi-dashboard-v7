@@ -135,6 +135,44 @@ using a nonexistent course so nothing could be mutated:
 
 None of the four refused requests wrote an event, and no content row changed.
 
+## What the sweep found afterwards, and what was done about it
+
+Three workers stamped the handlers; between them they turned up four things the
+first pass had missed. All four are verified against the code, not taken on
+report:
+
+1. **A read that writes 668 rows.** `initializeCourseSeeds()` lays down a
+   course's canonical seed skeleton, and it is called from two **GET** routes —
+   `GET /course/:courseCode/translate` and `GET /course/:courseCode/seed-editor`.
+   Merely opening the seed editor on an uninitialised course wrote 668
+   `course_seeds` rows with nobody attached. Fixed with a **record-only** surface
+   class: the gate resolves and records the identity (which already exists —
+   these sit behind production-api's course-scope gate) but **never refuses**,
+   because refusing a GET would break the editor for someone whose only sin is
+   reading. `req` is threaded through both copies of the helper so the skeleton
+   carries the event.
+2. **The drift test could not see it,** which is why it hid: the scanner
+   attributed writes only to a route declared *above* them, and skipped GET
+   routes entirely. Both fixed. A content write in a helper is now collected and
+   must be listed with its status, so the next one fails a test instead of
+   passing unnoticed.
+3. **`seed-translate.cjs` is never mounted.** It writes all three content tables
+   but no router mounts it. Removed from the manifest — an unmounted route is not
+   a surface — and the exemption is backed by a test asserting it stays
+   unmounted, so wiring it up fails rather than shipping an ungated write. It
+   also reads its course from `?course=`, which `courseCodeFrom()` does not look
+   at; that is in the failure message for whoever wires it.
+4. **Two places capture identity but cannot stamp the rows:**
+   `POST /build/redo-undo` writes through `restoreSnapshot()` in the snapshot
+   lib, and `/seed/complete`'s draft path writes `course_seed_drafts`, which has
+   no stamp column. In both, the event records who; the rows do not point back.
+   Stamping them means changing a lib signature and adding a column — worth
+   doing, not worth forcing into this pass.
+
+Also confirmed harmless: `POST /api/qa/flag` is in the manifest but writes only
+`course_qa_flags`. It stays gated — a human flagging content is attributable
+work — and stamps nothing, because there is no content row to stamp.
+
 ## Notes for whoever touches this next
 
 - Adding a route that writes `course_seeds` / `course_legos` /
