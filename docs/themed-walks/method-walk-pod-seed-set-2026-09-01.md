@@ -1029,3 +1029,421 @@ form carries it.
   garden` *(side of MW097's garden, person-flip)* · `just agreed with me` **(new)**
 - Job: one LEGO — the return sealed by claiming the detour as evidence: the corpus's model
   of a digression PAYING.
+
+### Block H — schools, and the hundred hours (numbers as negotiation)
+
+**MW104 — the how-would-you question (near-ZERO)**
+- Source c140, ch7 (TOM): "Schools. How would you do it in a school?"
+- Seed: **"Schools. How would you do it in a school?"**
+- Cut: `schools` *(topic-naming: side of CP032's "not in a school")* · `how would you do it`
+  **(new)** · `in a school` *(side of CP032)*
+- Job: one LEGO — the hypothetical-design probe, plus the corpus's topic-fronting device
+  (name the subject bare, then ask).
+
+**MW105 — out of practice**
+- Source c141, ch7 (ARAN): "It's been a long time since I've worked in schools. I'm out of
+  practice, and I haven't thought about it much."
+- Seed: **"It's been a long time. I'm out of practice, and I haven't thought about it
+  much."** *(edit: the schools clause is compressed out — its content is owned topic
+  material and the hedge stack is the move)*
+- Cut: `it's been a long time` **(new)** · `I'm out of practice` **(new)** · `I haven't
+  thought about it much` **(new)**
+- Job: the triple hedge before an opinion — the honest wind-up the floor has no frame for.
+
+**MW106 — the bet**
+- Source s40 (tail), sc7 (ARAN); c143 carries the chapters variant: "…That's what I'd want
+  to test, and I'd bet on it."
+- Seed: **"That's what I'd want to test, and I'd bet on it."** *(edit: the one-day-a-week
+  model stays receptive — the design is listening material; the epistemic stance is the
+  move)*
+- Cut: `that's what I'd want to test` **(new)** · `I'd bet on it` **(new)**
+- Job: the two commitment-grades of the walk's epistemology — test it, then back it.
+
+**MW107 — looks big, suspect not**
+- Source s42, sc7 (ARAN); c145 (front) carries the chapters variant: "It looks big. But I
+  suspect you wouldn't even need the whole year."
+- Seed: **"It looks big. But I suspect you wouldn't even need the whole year."**
+- Cut: `it looks big` **(new)** · `I suspect` **(new — frame-opener M)** · `you wouldn't
+  even need` **(new)** · `the whole year` *(core — time)*
+- Job: concede the appearance, then undercut it with a hedge — three LEGOs, one of them
+  ("I suspect") a frame the testimony block reuses.
+
+**MW108 — the cost question (near-ZERO)**
+- Source s29, sc6 (TOM); c152 carries it with the day-a-week head: "How much time is it
+  going to take?"
+- Seed: **"How much time is it going to take?"**
+- Cut: `how much time` *(side of CP090's "how much is that")* · `is it going to take`
+  **(new — beside CP129's "it will take", decision-12)**
+- Job: one LEGO — the commitment question every learner asks; the hundred-hours ladder
+  opens here.
+
+**MW109 — a lot**
+- Source c153, ch7 (ARAN): "A lot."
+- Seed: **"A lot."**
+- Cut: `a lot` **(new)**
+- Job: one LEGO — the unwelcome answer, whole.
+
+**MW110 — more (near-ZERO)**
+- Source c155, ch7 (ARAN): "More. Ten hours — and then ten more."
+- Seed: **"More. Ten hours — and then ten more."**
+- Cut: `more` **(new — the bare escalation answer)** · `ten hours` *(core)* · `and then`
+  *(CP065)*
+- Job: one LEGO — and the ladder's rhythm is set: number, then "and then … more".
+
+**MW111 — the ladder climbs (ZERO)**
+- Source c157, ch7 (ARAN): "And then ten more. And then ten more."
+- Seed: **"And then ten more. And then ten more."**
+- Cut: `and then` *(CP065)* · `ten` *(core)* · `more` *(MW110)*
+- Job: **zero admission.** The ladder's next rung is pure recombination — the corpus
+  teaching numbers-as-rhetoric for free. (c156's "And then?" between these rungs is CP125
+  verbatim and defers to the floor.)
+
+**MW112 — altogether (near-ZERO)**
+- Source c158, ch7 (TOM): "So how much altogether? A hundred?"
+- Seed: **"So how much altogether? A hundred?"**
+- Cut: `how much` *(side of CP090)* · `altogether` **(new — CORE heard it only in the
+  reckoning's service mouth; the asking face mints here)** · `a hundred` *(core)*
+- Job: one LEGO — the totalling question.
+
+**MW113 — take them as you want (near-ZERO)**
+- Source c159, ch7 (ARAN): "A hundred hours. It's a hundred hours. Ten hours, and then ten
+  more, and then ten more — a hundred hours. Take them as you want."
+- Seed: **"A hundred hours. It's a hundred hours. Take them as you want."** *(edit: the
+  ladder recap in the middle is MW110–MW111's material restated and stays in the row as
+  receptive repetition)*
+- Cut: `a hundred hours` *(core — numbers + time)* · `it's` *(core)* · `take them as you
+  want` **(new)**
+- Job: one LEGO — the total granted with its terms left free; the answer the walk's whole
+  numbers scene lands on.
+
+**MW114 — the counter-model**
+- Source c160, ch7 (TOM) = s89: "Then I'll take them like this. Thirteen weeks. One full day
+  to start, then two hours a week for eleven weeks, then one full day to close. That would
+  probably be plenty."
+- Seed: **"Then I'll take them like this. Thirteen weeks. One full day to start, then two
+  hours a week for eleven weeks, then one full day to close. That would probably be
+  plenty."**
+- Cut: `then I'll take them like this` **(new — MW033's taking, plural object, with the
+  manner pointer worn in)** · `thirteen weeks` *(core)* · `one full day` **(new)** · `to
+  start` *(CP085)* · `two hours a week` *(core)* · `for eleven weeks` *(core)* · `to close`
+  **(new — beside "to start": the pair completes the bracket)** · `that would probably be
+  plenty` **(new)**
+- Job: the counter-proposal in full — the learner designing their own course out loud. Four
+  LEGOs carry the corpus's densest negotiation turn.
+
+**MW115 — inclined not to**
+- Source c161, ch7 (ARAN): "Mm. I'd be inclined not to differentiate that much. Here's the
+  model: five days, then a year of an hour or two a week, then five days again. With your
+  thirteen weeks you'd surprise a few people. And you'd lose a few."
+- Seed: **"Mm. I'd be inclined not to differentiate that much. Here's the model: five days,
+  then a year of an hour or two a week, then five days again. With your thirteen weeks
+  you'd surprise a few people. And you'd lose a few."**
+- Cut: `mm` *(core)* · `I'd be inclined not to` **(new — the softened refusal frame, the
+  politest disagreement in the corpus)** · `differentiate that much` **(new — content)** ·
+  `here's the model` **(new — CP104's "here's" carrying the pitch move)** · `five days` /
+  `a year` / `an hour or two a week` *(core — time)* · `then … again` *(core glue)* · `with
+  your thirteen weeks` *(core + possessive)* · `you'd surprise a few people` **(new)** ·
+  `and you'd lose a few` **(new)**
+- Job: the full counter-counter — hedge, model, and the balanced two-sided verdict
+  (surprise a few / lose a few) that block I's standing clash will formalise.
+
+**MW116 — fewer than you think**
+- Source c162, ch7 (TOM): "Fewer than you think."
+- Seed: **"Fewer than you think."**
+- Cut: `fewer than you think` **(new — worn whole)**
+- Job: one LEGO — the four-word rebuttal; comparison as retort.
+
+**MW117 — the risk verdict**
+- Source c163, ch7 (ARAN): "Maybe. But one day, twelve weeks, one day — some of them will
+  hear that and think it isn't enough to be worth doing. To me the risk doesn't seem worth
+  it. Five days."
+- Seed: **"Maybe. To me the risk doesn't seem worth it. Five days."** *(edit: the middle
+  models the sceptic's hearing — receptive; the verdict is the move)*
+- Cut: `maybe` *(side of CP151's "you said maybe" / CP189's "maybe it does add up")* ·
+  `to me` **(new — the ownership marker on a judgement)** · `the risk doesn't seem worth
+  it` **(new)** · `five days` *(core)*
+- Job: two LEGOs — concession, then the verdict owned as one's own ("to me"), then the
+  position restated bare. The shape of respectful refusal.
+
+**MW118 — still standing (near-ZERO)**
+- Source c164, ch7 (TOM): "And I still like my thirteen weeks."
+- Seed: **"And I still like my thirteen weeks."**
+- Cut: `I still like` **(new — "I like" is core; the "still" face is the position-holding
+  move and wears as one chunk)** · `my thirteen weeks` *(core + possessive)*
+- Job: one LEGO — the position restated after hearing the case against it: disagreement
+  without damage.
+
+**MW119 — I know, and I still don't (near-ZERO)**
+- Source c165, ch7 (ARAN): "I know. And I still don't."
+- Seed: **"I know. And I still don't."**
+- Cut: `I know` *(side of CP185's "I know that")* · `and I still don't` **(new)**
+- Job: one LEGO — the counter-position held with full acknowledgement; the corpus's most
+  compressed standing disagreement.
+
+**MW120 — on pause**
+- Source c166, ch7 (TOM): "Then we'll put it on pause. Okay."
+- Seed: **"Then we'll put it on pause. Okay."**
+- Cut: `then` *(core)* · `we'll put it on pause` **(new)** · `okay` *(MW046)*
+- Job: one LEGO — the parked clash: disagreement suspended by agreement, the move the
+  final chapter will pointedly refuse.
+
+**MW121 — either way (ZERO)**
+- Source c167, ch7 (ARAN): "On pause. A hundred hours either way."
+- Seed: **"On pause. A hundred hours either way."**
+- Cut: `on pause` *(side of MW120)* · `a hundred hours` *(core)* · `either way` *(CP191)*
+- Job: **zero admission.** The pause ratified and the common ground named — floor and walk
+  chunks composing.
+
+### Block I — one to one, and the standing clash
+
+**MW122 — the offer**
+- Source c168, ch8 (TOM): "There's a school that wants you. Five days, a group of twelve.
+  Will you do it?"
+- Seed: **"There's a school that wants you. Five days, a group of twelve. Will you do it?"**
+- Cut: `there's a school that wants you` **(new)** · `five days` *(core)* · `a group of
+  twelve` **(new — "a group of" plus its number slot)** · `will you do it` **(new)**
+- Job: the proposition laid out plainly — three LEGOs, ending on the bare commitment
+  question. (The "No." that answers it is CP036's token doing the pod's most famous work —
+  the act is the walk's, the mapping the floor's; nothing to mint.)
+
+**MW123 — not even? (near-ZERO)**
+- Source c172, ch8 (TOM): "Not even for a week? They're keen. They'd pay properly."
+- Seed: **"Not even for a week? They're keen. They'd pay properly."**
+- Cut: `not even for a week` **(new — the incredulous minimiser, worn with its object)** ·
+  `they're keen` **(new)** · `they'd pay properly` **(new)**
+- Job: the refusal tested at its edge, then sweetened — the three-step push every learner
+  will meet from the other chair.
+
+**MW124 — one to one**
+- Source c173, ch8 (ARAN) = s150-family: "No. One to one. That's all I say yes to now."
+- Seed: **"No. One to one. That's all I say yes to now."**
+- Cut: `no` *(CP036)* · `one to one` **(new — the walk's totem policy)** · `that's all I say
+  yes to now` **(new — "that's all" side, worn into the policy sentence)**
+- Job: two LEGOs — the refusal explained by policy, not excuse: the corpus's model of a
+  clean no.
+
+**MW125 — relaying the no**
+- Source s149, sc24 (TOM): "…I'll tell them no."
+- Seed: **"I'll tell them no."**
+- Cut: `I'll tell them no` **(new — "tell" owned at MW009; the relay-of-refusal wears as
+  one chunk)**
+- Job: one LEGO — carrying someone else's no to a third party.
+
+**MW126 — the amended relay (ZERO)**
+- Source s150, sc24 (ARAN): "Tell them one to one. Then yes."
+- Seed: **"Tell them one to one. Then yes."**
+- Cut: `tell them` *(side of MW125)* · `one to one` *(MW124)* · `then` *(core)* · `yes`
+  *(CP009)*
+- Job: **zero admission.** The no converted to a conditional yes entirely from owned
+  material — the negotiation resolved at zero cost.
+
+**MW127 — watched, not read**
+- Source c177, ch8 (ARAN): "Two bad days. I've watched it."
+- Seed: **"Two bad days. I've watched it."**
+- Cut: `two bad days` **(new — "a bad idea"'s adjective on new ground, worn as the
+  scenario's name)** · `I've watched it` **(new)**
+- Job: two LEGOs — the evidence-grade claim: not read about it, watched it. The anecdote
+  contract's serious face.
+
+**MW128 — the echo lands (ZERO)**
+- Source c176, ch8 (TOM): "Two bad days."
+- Seed: **"Two bad days."**
+- Cut: `two bad days` *(MW127)*
+- Job: **zero admission.** The scenario's name handed back — the echo-distillation on
+  minted material. (In the walk this echo precedes c177; admission order inverts them, and
+  the pod's own repetition makes both faces worn.)
+
+**MW129 — challenge, not verdict**
+- Source c183, ch8 (ARAN): "Exactly that. And nonetheless — that's the challenge, not the
+  verdict. The group dynamic. Because if you solve for the dynamic…"
+- Seed: **"And nonetheless — that's the challenge, not the verdict."** *(edit: the front
+  ratification is MW015's token; the solve-for-the-dynamic exposition stays receptive)*
+- Cut: `and nonetheless` **(new — the concessive pivot, a register up from "but")** ·
+  `that's the challenge` **(new)** · `not the verdict` **(new)**
+- Job: the reframe move — bad evidence accepted, conclusion refused. Three LEGOs the
+  disagreement register was missing.
+
+**MW130 — the whole job**
+- Source c184, ch8 (TOM): "Then it's the whole job."
+- Seed: **"Then it's the whole job."**
+- Cut: `then` *(core)* · `it's` *(core)* · `the whole job` **(new)**
+- Job: one LEGO — the reframe accepted and named at full size.
+
+**MW131 — nobody's done it (near-ZERO)**
+- Source c185, ch8 (ARAN): "The whole job. And nobody's done it."
+- Seed: **"The whole job. And nobody's done it."**
+- Cut: `the whole job` *(MW130)* · `nobody's done it` **(new)**
+- Job: one LEGO — the nobody-family's fourth member; the frontier named.
+
+**MW132 — sounds fantastic — and then? (near-ZERO)**
+- Source c193, ch8 (ARAN): "Sounds fantastic. And what happened to that group?"
+- Seed: **"Sounds fantastic. And what happened to that group?"**
+- Cut: `sounds fantastic` **(new — CP173's "it sounds as though" family, the bare verdict
+  face)** · `what happened to` **(new — frame M)** · `that group` *(side of MW122's "a
+  group of")*
+- Job: two LEGOs — praise, then the autopsy question: the corpus's kindest scepticism.
+
+**MW133 — gone cold**
+- Source c194, ch8 (TOM): "…It's gone cold."
+- Seed: **"…It's gone cold."**
+- Cut: `it's gone cold` **(new)**
+- Job: one LEGO — the project-death idiom, the honest answer to MW132.
+
+**MW134 — how many of you? (near-ZERO)**
+- Source c195, ch8 (ARAN): "How many of you were there?"
+- Seed: **"How many of you were there?"**
+- Cut: `how many of you were there` **(new — worn whole; the wh-existential wears as one
+  move)**
+- Job: one LEGO — the diagnostic follow-up.
+
+**MW135 — there's your answer**
+- Source c197 (front), ch8 (ARAN) = s54 (front): "There's your answer. Fifteen people in a
+  whole street, and every one of them without time…"
+- Seed: **"There's your answer."** *(edit: the time-poverty diagnosis stays receptive —
+  explainer material)*
+- Cut: `there's your answer` **(new)**
+- Job: one LEGO — the diagnosis delivered as a pointer to the patient's own words.
+
+**MW136 — the road trip (near-ZERO)**
+- Source c199, ch8 (ARAN): "—a car. Yes. I like the road trip. And it goes wider than that."
+- Seed: **"Yes. I like the road trip. And it goes wider than that."**
+- Cut: `yes` *(CP009)* · `I like` *(core)* · `the road trip` **(new — content: the
+  learning-together metaphor's name)** · `it goes wider than that` **(new)**
+- Job: two LEGOs — the metaphor accepted by name, then enlarged.
+
+**MW137 — wider how? (near-ZERO)**
+- Source c200, ch8 (TOM): "Wider how?"
+- Seed: **"Wider how?"**
+- Cut: `wider how` **(new — the adjective-echo probe, worn as one move)**
+- Job: one LEGO — the enlargement asked to show itself.
+
+**MW138 — driving my metaphor**
+- Source c202, ch8 (TOM): "Now you're driving my metaphor."
+- Seed: **"Now you're driving my metaphor."**
+- Cut: `now` *(core)* · `you're driving my metaphor` **(new — worn whole)**
+- Job: one LEGO — joint construction noticed out loud.
+
+**MW139 — the keys**
+- Source c203, ch8 (ARAN) = s67-family: "You gave me the keys."
+- Seed: **"You gave me the keys."**
+- Cut: `you gave me the keys` **(new — worn whole; the scene bears its name)**
+- Job: one LEGO — the transfer defended: you handed this over.
+
+**MW140 — keep them (near-ZERO)**
+- Source c204, ch8 (TOM): "Keep them."
+- Seed: **"Keep them."**
+- Cut: `keep them` **(new)**
+- Job: one LEGO — the transfer completed for good; the smallest gift in the corpus.
+
+**MW141 — efficiency is lovely**
+- Source c287 (tail), ch12 (ARAN): "…Efficiency is lovely. But so is speed, and speed is
+  the one that answers to a date."
+- Seed: **"Efficiency is lovely. But so is speed — and speed is the one that answers to a
+  date."** *(edit: the Chinese-by-October wind-up stays receptive)*
+- Cut: `efficiency is lovely` **(new — the walk's two abstract nouns arrive in praise
+  clothing)** · `but so is speed` **(new)** · `the one that answers to a date` **(new —
+  worn whole)**
+- Job: three LEGOs — concede the value, match it, then name the tiebreaker.
+
+**MW142 — a feeling and a number (near-ZERO)**
+- Source c288, ch12 (TOM): "Speed is a feeling. Efficiency is a number."
+- Seed: **"Speed is a feeling. Efficiency is a number."**
+- Cut: `speed is a feeling` **(new — both nouns owned; the aphorism pair wears whole)** ·
+  `efficiency is a number` **(new)**
+- Job: the aphorism duel — definition against definition, the standing clash's opening
+  exchange.
+
+**MW143 — not going to agree (near-ZERO)**
+- Source c290, ch12 (TOM): "Then we're not going to agree."
+- Seed: **"Then we're not going to agree."**
+- Cut: `then` *(core)* · `we're not going to agree` **(new — the negative face of CP190's
+  "we're going to agree about this"; minted, because declaring the deadlock is its own
+  move)**
+- Job: one LEGO — the deadlock named without heat.
+
+**MW144 — like the thirteen weeks (ZERO)**
+- Source c292, ch12 (TOM): "Then we'll put it on pause. Like the thirteen weeks."
+- Seed: **"Then we'll put it on pause. Like the thirteen weeks."**
+- Cut: `then` *(core)* · `we'll put it on pause` *(MW120)* · `like` *(core)* · `the
+  thirteen weeks` *(core + article)*
+- Job: **zero admission.** The parked-clash move re-offered by precedent — pure
+  recombination, and the setup for the walk's most important refusal.
+
+**MW145 — leave it standing**
+- Source c293, ch12 (ARAN): "No. Not on pause. The thirteen weeks went on pause because it
+  doesn't matter which of us is right… This one matters. …Leave it standing."
+- Seed: **"No. Not on pause. This one matters. Leave it standing."** *(edit: the
+  building-two-different-things exposition stays receptive — the distinction's argument is
+  listening material; the refusal and its flag are the moves)*
+- Cut: `no` *(CP036)* · `not on pause` *(side of MW120)* · `this one matters` **(new)** ·
+  `leave it standing` **(new)**
+- Job: two LEGOs — the pause refused and the disagreement promoted to a standing one: the
+  walk's most grown-up move, and the pattern's name for it.
+
+**MW146 — the standing terms**
+- Source c294, ch12 (TOM): "Good. Leave it standing. I build for efficiency, you sell it
+  for speed, and the learners tell us which of us was right."
+- Seed: **"Good. Leave it standing. I build for efficiency, you sell it for speed, and the
+  learners tell us which of us was right."**
+- Cut: `good` *(MW007)* · `leave it standing` *(MW145)* · `I build for efficiency` **(new)**
+  · `you sell it for speed` **(new)** · `the learners tell us` **(new)** · `which of us was
+  right` **(new)**
+- Job: the standing clash given its working terms — four LEGOs, the corpus's constitution
+  for disagreeing well.
+
+**MW147 — next thing (near-ZERO)**
+- Source c295, ch12 (ARAN): "Standing. Next thing."
+- Seed: **"Standing. Next thing."**
+- Cut: `standing` *(side of MW145)* · `next thing` **(new)**
+- Job: one LEGO — the agenda advanced in two words; closure without resolution.
+
+**MW148 — coming? (near-ZERO)**
+- Source c296, ch12 (TOM): "Next thing. Two days on molecular physics. In Hong Kong.
+  Coming?"
+- Seed: **"Next thing. Two days on molecular physics. In Hong Kong. Coming?"**
+- Cut: `next thing` *(MW147)* · `two days` *(core)* · `on molecular physics` **(new —
+  content slot: the topic-of-the-thing frame)** · `in Hong Kong` *(core — place slot)* ·
+  `coming` **(new — the one-word invitation)**
+- Job: two LEGOs — the invitation at its most compressed: time, topic, place, verb.
+
+**MW149 — from you, yes**
+- Source c297, ch12 (ARAN): "From anyone else: no. Sorry — molecular physics, not my thing.
+  From you: yes. I've already said yes. Because you wouldn't have asked."
+- Seed: **"From anyone else: no. Sorry — not my thing. From you: yes. I've already said
+  yes. Because you wouldn't have asked."** *(edit: the topic repeat is compressed out —
+  owned content)*
+- Cut: `from anyone else: no` **(new)** · `sorry` *(side of CP038's "I'm sorry")* · `not my
+  thing` **(new)** · `from you: yes` *(side of the from-frame, CP009)* · `I've already said
+  yes` **(new)** · `because you wouldn't have asked` **(new — worn whole; the trust
+  argument in six words)**
+- Job: four LEGOs — the walk's deepest yes: refusal by taste, reversed by trust.
+
+**MW150 — almost nothing to explain (near-ZERO)**
+- Source c298, ch12 (TOM): "I almost don't have to explain anything."
+- Seed: **"I almost don't have to explain anything."**
+- Cut: `I almost don't have to` **(new)** · `explain anything` **(new)**
+- Job: two small LEGOs — the shared-context marvel, said from inside it.
+
+**MW151 — still coming (near-ZERO)**
+- Source c299 (tail), ch12 (ARAN): "…We just spent ten minutes not agreeing, and I'm still
+  coming to Hong Kong."
+- Seed: **"We just spent ten minutes not agreeing — and I'm still coming to Hong Kong."**
+  *(edit: the tribe-and-algorithm exposition stays receptive — explainer material)*
+- Cut: `we just spent ten minutes` **(new)** · `not agreeing` *(side of MW143's chunk)* ·
+  `and I'm still coming` **(new — "coming" owned; the still-face is the loyalty move)** ·
+  `to Hong Kong` *(core — place)*
+- Job: two LEGOs — the walk's thesis about disagreement, said as a fact about the
+  afternoon.
+
+**MW152 — Breton, for a weekend? (near-ZERO)**
+- Source c300, ch12 (TOM): "So — Breton, for a weekend?"
+- Seed: **"So — Breton, for a weekend?"**
+- Cut: `so` *(core)* · `Breton` *(slot — language name)* · `for a weekend` **(new — the
+  bare duration-offer; "weekend" is not in the coda core)**
+- Job: one LEGO — the invitation reduced to topic and duration; the tribe in five words.
+
+**MW153 — why not**
+- Source c301, ch12 (ARAN): "Why not."
+- Seed: **"Why not."**
+- Cut: `why not` **(new)**
+- Job: one LEGO — the lightest yes in the corpus, and the standing clash's true ending.
