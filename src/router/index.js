@@ -33,6 +33,7 @@ import IntroductionsViewer from '../components/IntroductionsViewer.vue'
 import Login from '../views/Login.vue'
 import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
+import { LEGACY_LAB_REDIRECTS } from './legacyLabRedirects'
 
 // Production Suite v2.1 Components (APML-generated) - Now the default
 const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
@@ -570,61 +571,75 @@ const routes = [
   },
 
   // ===========================================
-  // Global admin — algorithm_config tweaker. Lives outside /production
-  // because it's not per-course. Split by domain under /admin/configs:
-  // an index hub, then Listening + Speaking surfaces.
+  // THE LABS — /admin/labs, an index and the seven-plus surfaces under it.
+  //
+  // These used to live under /admin/configs, which made a category claim that
+  // was wrong in both directions: Basket Lab is mounted readOnly and writes
+  // nothing, and Capture A/B stores nothing and had no link anywhere in src/.
+  // A lab is not a kind of config (Tom, 2026-09-01: "maybe we should just have
+  // it as admin/labs? we have 7 labs now"), so the tree stops saying it is.
+  // The index groups them by BLAST RADIUS — see views/admin/LabsIndex.vue.
+  //
+  // Route NAMES are unchanged on purpose: sectionTabs, tests and any
+  // `router.push({ name })` keep working across the move, and only the paths
+  // are new. Every old /admin/configs* path redirects below, so no bookmark
+  // breaks.
   {
-    path: '/admin/configs',
-    name: 'ConfigsIndex',
-    component: () => import('../views/admin/ConfigsIndex.vue'),
-    meta: { title: 'Configs - Admin' }
+    path: '/admin/labs',
+    name: 'LabsIndex',
+    component: () => import('../views/admin/LabsIndex.vue'),
+    meta: { title: 'Labs - Admin' }
   },
   {
-    path: '/admin/configs/listening',
+    path: '/admin/labs/listening',
     name: 'ListeningConfig',
     component: () => import('../views/ListeningConfig.vue'),
-    meta: { title: 'Listening Config - Admin' }
+    meta: { title: 'Listening Lab - Admin' }
   },
   {
-    path: '/admin/configs/speaking',
+    path: '/admin/labs/speaking',
     name: 'SpeakingConfig',
     component: () => import('../views/admin/SpeakingConfig.vue'),
-    meta: { title: 'Speaking Config - Admin' }
+    meta: { title: 'Speaking Lab - Admin' }
   },
   {
-    path: '/admin/configs/pods',
+    path: '/admin/labs/pods',
     name: 'PodLab',
     component: () => import('../views/admin/PodLab.vue'),
     meta: { title: 'Pod Lab - Admin' }
   },
   {
-    path: '/admin/configs/voice',
+    path: '/admin/labs/voice',
     name: 'VoiceLab',
     component: () => import('../views/admin/VoiceLab.vue'),
     meta: { title: 'Voice Lab - Admin' }
   },
   {
-    path: '/admin/configs/vad',
+    path: '/admin/labs/vad',
     name: 'VadLab',
     component: () => import('../views/admin/VadLab.vue'),
     meta: { title: 'VAD Lab - Admin' }
   },
   {
-    path: '/admin/configs/basket',
+    path: '/admin/labs/basket',
     name: 'BasketLab',
     component: () => import('../views/admin/BasketLab.vue'),
     meta: { title: 'Basket Lab - Admin' }
   },
   {
     // Capture A/B — record the same line under each mic profile and measure
-    // both, on the phone that actually does the recording.
-    path: '/admin/capture-ab',
+    // both, on the phone that actually does the recording. It joins the labs
+    // here because it IS one; before this it was linked from nowhere in src/.
+    path: '/admin/labs/capture-ab',
     name: 'CaptureAB',
     component: () => import('../views/admin/CaptureAB.vue'),
     meta: { title: 'Capture A/B - Admin' }
   },
-  // Legacy path — the old single Listening page lived here. Redirect bookmarks.
-  { path: '/admin/listening', redirect: '/admin/configs/listening' },
+  // Legacy paths. Bookmarks, the six months of links in reports and chats, and
+  // the e2e specs all keep working — a redirect costs one line and breaking a
+  // path someone saved costs their afternoon. Table + rationale:
+  // ./legacyLabRedirects.js, which a test asserts against the live lab list.
+  ...LEGACY_LAB_REDIRECTS,
   // (Stage 0 Tuner retired 2026-06-24 — absorbed into the Listening config,
   // which now sets Stage 0 structurally AND previews the full arc. The
   // standalone public/stage0-tuner.html iframe tool is gone.)

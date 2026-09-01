@@ -1,6 +1,6 @@
 <script setup>
 /**
- * VOICE LAB — /admin/configs/voice
+ * VOICE LAB — /admin/labs/voice
  *
  * The fifth lab, beside Listening, Speaking, Pods and VAD, and built to the
  * same three-layer shape Tom asked for on 2026-08-06: "an actual LAB with
@@ -42,6 +42,7 @@
  * being the entrance, which is a different thing from stopping existing.
  */
 import { ref, computed } from 'vue'
+import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import { probe, labBase, useCloudBackend } from './voicelab/labApi'
 import LanguagesPanel from './voicelab/LanguagesPanel.vue'
 import PlayPanel from './voicelab/PlayPanel.vue'
@@ -124,7 +125,7 @@ const showB = ref(false)
   <div class="lab">
     <header class="lab-header">
       <nav class="admin-crumbs">
-        <router-link to="/admin/configs" class="crumb-link">Configs</router-link>
+        <router-link to="/admin/labs" class="crumb-link">Labs</router-link>
         <span class="crumb-sep">/</span>
         <span class="crumb-here">Voice Lab</span>
       </nav>
@@ -146,6 +147,19 @@ const showB = ref(false)
         <span class="hdr-chip">writes no course audio</span>
       </div>
     </header>
+
+    <!-- BLAST RADIUS (2026-09-01). The chip above says "writes no course audio",
+         which is true and is the reassuring half of the story. The other half:
+         Declare, in ESTATE, POSTs /api/voices/declare, which LOCKS a course side
+         to a voice as versioned algorithm_config. Tom: "Voice Lab is irrelevant
+         to the learner - it's about voices chosen that impact the next time
+         audio is generated." Nothing is wrong the day you declare. Everything in
+         that language is, the day it renders. The lab carried this only in a
+         source comment until now. -->
+    <BlastRadiusBanner
+      tier="deferred"
+      note="Declaring a voice here locks a course side to it; the next render is when a learner hears the consequence."
+    />
 
     <!-- The backend banner. A missing lab is a deployment fact, said plainly. -->
     <div v-if="backendError" class="backend-warn">
@@ -213,6 +227,9 @@ const showB = ref(false)
 </template>
 
 <style scoped>
+/* The blast-radius banner sits between the header and the lab body. */
+.lab > :deep(.blast-banner) { margin-bottom: 1rem; }
+
 @import './voicelab/lab.css';
 
 .lab { padding: 1.5rem 2rem 4rem; max-width: 1400px; margin: 0 auto; }

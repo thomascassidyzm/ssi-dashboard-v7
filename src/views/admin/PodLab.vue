@@ -1,9 +1,9 @@
 <script setup>
 /**
- * Pod Lab — /admin/configs/pods
+ * Pod Lab — /admin/labs/pods
  *
  * A tuning + audition surface for the Layer-2 pod acquisition ladder, sibling to
- * the Pause Lab (/admin/configs/speaking). Two modes on the same real line:
+ * the Pause Lab (/admin/labs/speaking). Two modes on the same real line:
  * THE LADDER — the unified climb (Tom 2026-07-03): fusion rungs from finest
  * units to the whole turn, then the speed cascade to pure 2× — and STAGE ARC,
  * today's live engine output, for comparison.
@@ -2333,7 +2333,7 @@ loadLiveConfig()
 <template>
   <div class="podlab">
     <nav class="admin-crumbs">
-      <router-link to="/admin/configs">Configs</router-link>
+      <router-link to="/admin/labs">Labs</router-link>
       <span class="sep">/</span>
       <span class="cur">Pod Lab</span>
     </nav>

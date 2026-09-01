@@ -308,9 +308,15 @@ const sectionTabs = computed(() => {
     return [
       { label: 'Admin', to: '/admin', active: isAdminHub.value },
       {
-        label: 'Configs',
-        to: '/admin/configs',
-        active: route.path.startsWith('/admin/configs') || route.path.startsWith('/admin/listening')
+        // Labs, not Configs (2026-09-01). The six surfaces here were never
+        // configs — three of them write nothing at all — and the Script Lab
+        // could not be reached from the admin tree in any way. One tab, one
+        // index, grouped by blast radius.
+        label: 'Labs',
+        to: '/admin/labs',
+        active: route.path.startsWith('/admin/labs')
+          || route.path.startsWith('/admin/configs')
+          || route.path.startsWith('/admin/listening')
       },
       { label: 'Insights', to: '/insights', active: isInsights.value },
       {
