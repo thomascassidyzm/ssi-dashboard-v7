@@ -137,9 +137,15 @@ module.exports = function (ctx) {
           const seedMatch = (message || '').match(/seed\s+(\d+)/i);
           const seedNum = seedMatch ? parseInt(seedMatch[1]) : (metadata?.seed_number || null);
           if (seedNum) {
+            // Approving a seed from chat is a content write like any other — it
+            // names who approved it, not just that someone did.
+            const eventId = req.contentEdit
+              ? await req.contentEdit.record({ scope: { seed_numbers: [seedNum] } })
+              : null;
+
             await ctx.supabase
               .from('course_seeds')
-              .update({ approved_at: new Date().toISOString() })
+              .update({ approved_at: new Date().toISOString(), last_edit_event_id: eventId })
               .eq('course_code', courseCode)
               .eq('seed_number', seedNum);
             console.log(`[CHAT] Seed ${seedNum} approved for ${courseCode}`);

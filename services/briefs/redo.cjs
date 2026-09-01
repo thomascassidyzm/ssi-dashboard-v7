@@ -90,6 +90,8 @@ If a "Decomposition You Are Replacing" section appears above, start from that ve
 \`\`\`bash
 curl -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" \\
   -H "Content-Type: application/json" \\
+  -H "X-Agent-Role: redo" \\
+  -H "X-Agent-Id: redo-${courseCode}" \\
   -d '{ "course_code": "${courseCode}", "seed_number": N, "legos": [...] }'
 \`\`\`
 

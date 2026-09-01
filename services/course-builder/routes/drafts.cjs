@@ -290,6 +290,12 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
       // Delete old LEGOs and phrases for ALL drafted seeds before writing.
       // This prevents orphan LEGOs from prior builds with different decompositions.
       const draftSeedList = [...draftedSeedNumbers];
+
+      // One event for the finalize — the cleanup delete and every row written below carry it.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({ scope: { seed_numbers: draftSeedList, rows: draftSeedList.length } })
+        : null;
+
       if (draftSeedList.length > 0) {
         // Delete phrases first (FK dependency)
         const { error: delPhraseErr } = await ctx.supabase
@@ -329,7 +335,8 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
             target_text: draft.target_text,
             status: 'released',
             decomposed_at: new Date().toISOString(),
-            version: 1
+            version: 1,
+            last_edit_event_id: eventId
           }, { onConflict: 'course_code,seed_number' });
 
         if (seedError) throw new Error(`Seed ${draft.seed_number} insert failed: ${seedError.message}`);
@@ -355,7 +362,8 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
               target_text: lego.target,
               components: lego.components || null,
               status: 'draft',
-              version: 1
+              version: 1,
+              last_edit_event_id: eventId
             }, { onConflict: 'course_code,seed_number,lego_index' });
 
           if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
@@ -488,6 +496,7 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
 
           // Insert phrases
           if (allPhraseRows.length > 0) {
+            allPhraseRows.forEach(r => { r.last_edit_event_id = eventId; });
             const { error: phraseError } = await ctx.supabase
               .from('course_practice_phrases')
               .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
@@ -568,7 +577,8 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
                   score: 8
                 },
                 status: 'draft',
-                version: 1
+                version: 1,
+                last_edit_event_id: eventId
               });
 
             if (seedPhraseError) {

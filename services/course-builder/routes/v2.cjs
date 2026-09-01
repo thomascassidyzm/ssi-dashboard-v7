@@ -432,6 +432,12 @@ module.exports = function(ctx) {
 
       // STEP 5: Clean up old LEGOs/phrases for drafted seeds, then write LEGOs only (NO phrases)
       const draftSeedList = [...draftedSeedNumbers];
+
+      // One event for the finalize — the cleanup delete and every row written below carry it.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({ scope: { seed_numbers: draftSeedList, rows: draftSeedList.length } })
+        : null;
+
       if (draftSeedList.length > 0) {
         const { error: delPhraseErr } = await ctx.supabase
           .from('course_practice_phrases')
@@ -468,7 +474,8 @@ module.exports = function(ctx) {
             target_text: draft.target_text,
             status: 'released',
             decomposed_at: new Date().toISOString(),
-            version: 1
+            version: 1,
+            last_edit_event_id: eventId
           }, { onConflict: 'course_code,seed_number' });
 
         if (seedError) throw new Error(`Seed ${draft.seed_number} insert failed: ${seedError.message}`);
@@ -490,7 +497,8 @@ module.exports = function(ctx) {
               target_text: lego.target,
               components: lego.components || null,
               status: 'draft',
-              version: 1
+              version: 1,
+              last_edit_event_id: eventId
             }, { onConflict: 'course_code,seed_number,lego_index' });
 
           if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
@@ -563,7 +571,8 @@ module.exports = function(ctx) {
               lego_position: computeLegoPosition(draft.target_text, bestLegoTarget),
               metadata: { format: 'build_use', source: 'seed_sentence', source_seed: draft.seed_number, score: 8 },
               status: 'draft',
-              version: 1
+              version: 1,
+              last_edit_event_id: eventId
             };
             await ctx.supabase.from('course_practice_phrases').insert(usePhraseRow);
             // Build-time phrase decomposition. Non-blocking — see writer module.
@@ -637,6 +646,16 @@ module.exports = function(ctx) {
       const chinese = isChinese(courseCode);
       const errors = [];
       let totalInserted = 0;
+
+      // One event for the whole phrase batch; every row it writes points back at it.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: {
+              lego_ids: phrases.map(e => `S${String(e.seed_number).padStart(4, '0')}L${String(e.lego_index).padStart(2, '0')}`),
+              rows: phrases.length,
+            },
+          })
+        : null;
 
       // Cache vocab per seed_number to avoid repeated DB queries within a batch
       const vocabBySeed = new Map();
@@ -820,6 +839,7 @@ module.exports = function(ctx) {
 
         // 6. Insert phrases
         if (allPhraseRows.length > 0) {
+          allPhraseRows.forEach(r => { r.last_edit_event_id = eventId; });
           const { error: phraseError } = await ctx.supabase
             .from('course_practice_phrases')
             .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });

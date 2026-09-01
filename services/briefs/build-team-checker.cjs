@@ -112,6 +112,7 @@ Rewrite bad grammar. Replace unnatural phrases. Drop nonsense and write replacem
 curl -s -X POST "http://localhost:3471/api/seed/complete?course=${courseCode}" \\
   -H "Content-Type: application/json" \\
   -H "X-Agent-Role: checker" \\
+  -H "X-Agent-Id: checker-${courseCode}" \\
   -d '{
     "course_code": "${courseCode}",
     "seed_number": N,

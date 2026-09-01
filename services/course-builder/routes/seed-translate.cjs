@@ -148,6 +148,16 @@ module.exports = function createSeedTranslateRoutes(ctx) {
 
       // ── INSERT PHASE ──
 
+      // One event for the seed's whole translation — seed, legos and phrases carry its id.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: {
+              seed_numbers: [seed_number],
+              lego_ids: targetLegos.map(tl => `${seedId}L${String(tl.lego_index).padStart(2, '0')}`),
+            },
+          })
+        : null;
+
       // 1. Upsert course_seeds
       const { error: seedError } = await ctx.supabase
         .from('course_seeds')
@@ -159,6 +169,7 @@ module.exports = function createSeedTranslateRoutes(ctx) {
           status: 'released',
           decomposed_at: new Date().toISOString(),
           version: 1,
+          last_edit_event_id: eventId,
         }, { onConflict: 'course_code,seed_number' });
 
       if (seedError) throw new Error(`Seed insert failed: ${seedError.message}`);
@@ -216,6 +227,7 @@ module.exports = function createSeedTranslateRoutes(ctx) {
             target_lego_id: targetLego.id,
             status: 'draft',
             version: 1,
+            last_edit_event_id: eventId,
           }, { onConflict: 'course_code,seed_number,lego_index' });
 
         if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
@@ -248,6 +260,7 @@ module.exports = function createSeedTranslateRoutes(ctx) {
               target_phrase_id: tp.id,
               status: 'draft',
               version: 1,
+              last_edit_event_id: eventId,
             });
           }
 

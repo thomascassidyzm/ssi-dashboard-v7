@@ -340,6 +340,14 @@ module.exports = function (ctx) {
       return res.status(404).json({ error: `Course not found: ${courseCode}` });
     }
 
+    // Approval touches no content row (it stamps courses.quality_rules), so the
+    // event is the whole record of who signed the translations off.
+    try {
+      if (req.contentEdit) await req.contentEdit.record({ scope: { rows: 1 } });
+    } catch (err) {
+      return res.status(500).json({ error: `Could not record who approved this: ${err.message}` });
+    }
+
     const merged = { ...(course.quality_rules || {}), translations_approved_at: new Date().toISOString() };
     const { error: updateErr } = await supabase
       .from('courses')
@@ -376,6 +384,19 @@ module.exports = function (ctx) {
     const knownLang = parts[1] || '';
     const knownIsEng = knownLang === 'eng';
 
+    // One event for the batch, named by the seeds it covers, recorded before the
+    // first row goes in so every stamped row points at an event that exists.
+    let eventId = null;
+    try {
+      if (req.contentEdit) {
+        eventId = await req.contentEdit.record({
+          scope: { seed_numbers: translations.map(t => Number(t.seed_number)).filter(Boolean) },
+        });
+      }
+    } catch (err) {
+      return res.status(500).json({ error: `Could not record who made this edit: ${err.message}` });
+    }
+
     let updated = 0;
     let errors = [];
 
@@ -396,7 +417,7 @@ module.exports = function (ctx) {
 
       const { error } = await supabase
         .from('course_seeds')
-        .update(updateData)
+        .update({ ...updateData, last_edit_event_id: eventId })
         .eq('course_code', courseCode)
         .eq('seed_number', t.seed_number);
 
@@ -689,9 +710,16 @@ module.exports = function (ctx) {
     }
 
     // Wipe translations
+    let resetEventId = null;
+    try {
+      if (req.contentEdit) resetEventId = await req.contentEdit.record({ scope: { rows: count || 0 } });
+    } catch (err) {
+      return res.status(500).json({ error: `Could not record who reset these translations: ${err.message}` });
+    }
+
     const { error: updateErr } = await supabase
       .from('course_seeds')
-      .update({ target_text: '' })
+      .update({ target_text: '', last_edit_event_id: resetEventId })
       .eq('course_code', courseCode);
 
     if (updateErr) {
