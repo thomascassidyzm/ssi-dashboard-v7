@@ -143,6 +143,24 @@ WHAT THE REGISTRY RESOLVED TO
 
 **One honest gap:** the refusal branch only runs under `--execute`, which this job did not pass, so its new wording has been verified by reading and by a syntax check, not by seeing it print. The execute pass will be the first time that sentence appears — and on the three pod-table walks it will appear, because they all have live rows.
 
+## One rule, two readers
+
+The Script Lab has adopted the ingestable predicate verbatim — `isIngestable()` in `src/lib/walkGroups.js` on `feat/script-lab-page` is `status === 'authored' && corpus && format`, and badges health, retail, trades and hospitality as ingestable-but-not-yet-in-the-store, with care-work and public-services correctly excluded.
+
+That is the right rule in two places, which is one place too many: if they ever drift, the lab shows a walk as ready that the tool will not touch, or hides one it would. The rule now lives in the registry itself as `ingestableRule`, and both readers' comments name it as their source. Change the field and both readers together, never one. It is a string beside `addingAWalk`; no field in `walks[]` or `parked[]` moved.
+
+## The slug rename has an inverted guard nobody owns
+
+Flagged while checking my own code for slug couplings. `GRAPH_REF_SLUG` in `src/lib/metagraph/walk.js` still reads `'pod-0'`, which made the core pod report 0 of 36 shapes traversed; that one is fixed on `feat/script-lab-page` (48d33e5b5). **The one still live is sharper than a stale reference.** `src/views/MetagraphView.vue:267`:
+
+```js
+const HIDDEN = new Set(['pod-1', 'pod-0.5'])
+```
+
+That set was written to hide two sacked slates whose row numbers collided with the graph's by accident. After the 2026-09-01 rename, `pod-1` **is** the live CORE pod — the 231-row slate formerly called `pod-0`. So the guard now hides the very pod it was written to protect, while `ORDER`, `LABELS` and `ORIGINS` in the same file all key on `'pod-0'`, which no longer exists. The CORE pod is currently both hidden and unlabelled on that view.
+
+I have not touched it: it is not my file, another session is working in that area, and it is a view change outside a dry-run parser job. Naming it because a rename that inverts a guard is exactly the kind of thing that reads as "working" until someone opens the page.
+
 ## Failure paths, exercised
 
 Removing the trades corpus and rerunning `--pod=all`: trades reported `MISSING CORPUS` with the branch to fetch it from, hospitality still ran after it, the summary table showed the failure, and the tool exited 1. An unknown `--pod` prints the whole registry with each entry's ingestable state and reason.

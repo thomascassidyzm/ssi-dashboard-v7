@@ -53,6 +53,13 @@ const MANIFEST = path.join(__dirname, 'pod-corpora.json')
 
 /** The walk registry, and what each entry means for THIS tool.
  *
+ * THE INGESTABLE PREDICATE IS NOT DEFINED HERE. It is `ingestableRule` in
+ * pod-corpora.json, because this tool is not its only reader — the Script Lab's
+ * isIngestable() in src/lib/walkGroups.js badges cards with the same rule. Two
+ * readers, one rule: if they drift, the lab shows a walk as ready that this tool
+ * will not touch. The line below implements that field; change the field and both
+ * readers together, never one.
+ *
  * SKIPPED AND REFUSED ARE DIFFERENT FACTS AND MUST NOT SHARE A SENTENCE.
  *   SKIPPED — this entry has no markdown to ingest, so the tool has nothing to do
  *             and never asks the database anything. `pod-1` is the case that
