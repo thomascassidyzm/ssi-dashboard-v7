@@ -1,5 +1,13 @@
 # The ratification pass — 2026-08-31
 
+> **SUPERSEDED IN ONE RESPECT — the slug was renamed on 2026-09-01.** Where this
+> document says `pod-0` is the live canonical slate, read **`pod-1`**: the live slate
+> was renamed `pod-0` → `pod-1` that day, and the sacked slates that then held the
+> names `pod-1` (236 rows) and `pod-0.5` (27 rows) were archived and deleted. The
+> content, counts and findings below are unchanged and still stand — 231 rows, 22
+> scenes — only the name moved. See
+> [the migration note](./canonical-pod-slug-migration-2026-09-01.md).
+
 The prior job (docs/pods/pod-union-coverage-2026-08-31.md, merged at `cc49c3776`) classified the
 Method Pod's "170 unmapped lines" and found zero unmapped material: every scene declares a shape;
 the names resolved to nothing in the store. This pass ratifies the reading work — loads what

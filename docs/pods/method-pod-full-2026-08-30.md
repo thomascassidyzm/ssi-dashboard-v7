@@ -1,5 +1,13 @@
 # The Method Pod in Italian — the full script
 
+> **SUPERSEDED IN ONE RESPECT — the slug was renamed on 2026-09-01.** Where this
+> document says `pod-0` is the live canonical slate, read **`pod-1`**: the live slate
+> was renamed `pod-0` → `pod-1` that day, and the sacked slates that then held the
+> names `pod-1` (236 rows) and `pod-0.5` (27 rows) were archived and deleted. The
+> content, counts and findings below are unchanged and still stand — 231 rows, 22
+> scenes — only the name moved. See
+> [the migration note](./canonical-pod-slug-migration-2026-09-01.md).
+
 > **PRIVATE. Unlisted, Italian only, audience of two — Tom and Aran.** Nothing here is listed, scaled, rendered or written to production. No row is written, no pod is edited, no audio is queued or rendered, no course is touched. This is one document holding the whole canonical Italian Method Pod script, end to end, so it can be read by ear from start to finish and, next, loaded by the configs/script tool as its first script. The three earlier documents — `method-pod-first-specimens-2026-08-29.md` (scenes 1–4), `method-pod-round-two-2026-08-29.md` (scenes 5–16), `method-pod-re-cut-2026-08-30.md` (the container of all sixteen) — stay in place as the working record; nothing in them is rewritten here.
 
 **What this document is.** Forty-three scenes. The sixteen ratified scenes, copied in their re-cut form with their per-scene detail restated so the file is self-contained; and **twenty-seven new scenes, 17–43**, selected by coverage of the shape graph (`shape-graph-2026-08-30.md`) and by the round-two deficit list, written on the re-cut grammar. Every scene carries the same six things: **Owns**, **Newly admits** (one response position), **Shape witnessed** (the general node, written so a pod about cooking or grief could walk it), **Surface forms admitted** (availability only — heard is not owned, never a prompt target), the near-neighbour selection points (Italian against its Spanish shadow), and one sentence tying the container to a measured number. English column, Italian beside it. Scenes are walks; delivery order stays derived and is not authored here.

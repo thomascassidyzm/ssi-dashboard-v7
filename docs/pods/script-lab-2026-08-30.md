@@ -1,5 +1,13 @@
 # The Script Lab — the canonical pod scripts, course-free, with coverage as the headline
 
+> **SUPERSEDED IN ONE RESPECT — the slug was renamed on 2026-09-01.** Where this
+> document says `pod-0` is the live canonical slate, read **`pod-1`**: the live slate
+> was renamed `pod-0` → `pod-1` that day, and the sacked slates that then held the
+> names `pod-1` (236 rows) and `pod-0.5` (27 rows) were archived and deleted. The
+> content, counts and findings below are unchanged and still stand — 231 rows, 22
+> scenes — only the name moved. See
+> [the migration note](./canonical-pod-slug-migration-2026-09-01.md).
+
 **Date:** 2026-08-30. This one executes: it is running UI in the Popty dashboard at
 **`/canonical/scripts`**, not a report. Read-only against `canonical_pod_scenarios` except for
 the line edit that was already there.

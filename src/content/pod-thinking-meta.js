@@ -7,6 +7,13 @@
 //
 // badge: 'LIVE' | 'IN DISCUSSION' | 'SUPERSEDED'
 export const podThinkingMeta = {
+  'canonical-pod-slug-migration-2026-09-01': {
+    title: 'The canonical pod slug migration — pod-0 became pod-1',
+    description: 'The live canonical slate was renamed pod-0 → pod-1 and the two sacked pre-metagraph slates were archived and deleted. Why the number is right, what deliberately did not move, where the archive is and how to restore from it, and the two latent bugs the rename exposed.',
+    date: '2026-09-01',
+    status: 'Done — DB migrated and verified live',
+    badge: 'LIVE'
+  },
   'pod-ladder-proposal': {
     title: 'The Pod Ladder — Pods 0–3 to B2',
     description: 'Design proposal: the discourse-type ramp from transactional pod-0 to native podcast comprehension — ramp model, scenario slates, sample scenes, and the TTS renderability rule.',
