@@ -219,7 +219,7 @@ import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph } from '@/lib/metagraph/loadGraph.js'
 import { computeLayout } from '@/lib/metagraph/layout.js'
-import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.js'
+import { walkFromCanonicalRows, walkFromStoredPod, GRAPH_REF_SLUG } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
 const graph = loadGraph()
@@ -251,23 +251,39 @@ async function authedFetch (path, init = {}) {
   return fetch(`${getApiUrl()}${path}`, { ...init, headers })
 }
 
+// Keyed by DATABASE SLUG. The core slate is `pod-1` since the 2026-09-01
+// rename; its human name was already POD 1 and has not changed.
 const LABELS = {
-  'pod-0': 'POD 1',
+  'pod-1': 'POD 1',
   'learning-flagship': 'Learning flagship',
   'method-pod-chapters': 'Method Pod — chapters',
   'method-pod-43-scene': 'Method Pod — 43 scenes'
 }
 
-const ORDER = ['pod-0', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
+const ORDER = ['pod-1', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
 
-// pod-1 and pod-0.5 are separate slates whose row numbers collide with this
-// graph's by accident: they read as 0 of 35 shapes and every tile red, which is
-// true of the numbers and a lie about the pods. They are not shown here at all —
-// nothing on this graph is theirs to say. Reversible in one line.
-const HIDDEN = new Set(['pod-1', 'pod-0.5'])
+// This set hid two sacked slates whose row numbers collided with this graph's
+// by accident: they read as 0 of 35 shapes and every tile red, which was true
+// of the numbers and a lie about the pods.
+//
+// IT IS EMPTY NOW, AND EMPTYING IT WAS NOT OPTIONAL. Migration #732 DELETED
+// both of those slates and renamed the core slate from `pod-0` to `pod-1` — so
+// the set was left naming the live CORE pod and hiding the exact thing it was
+// written to protect, on the one view whose whole subject it is. The names
+// inverted under it; the rule did not change.
+//
+// The mechanism stays as the seam. If a slate is ever sacked again and left in
+// the store, name it here and it disappears from this view — reversible in one
+// line, which is how it was built.
+const HIDDEN = new Set([])
 
 // The store names each shape's provenance in its own slugs; the page says them
 // the way a person says them. Same shape, one name, everywhere on screen.
+//
+// 'pod-0' HERE IS PROVENANCE AND IS CORRECT — it records where a shape was
+// drawn from, and provenance does not get rewritten by a rename. The live slug
+// moved to `pod-1` in LABELS and ORDER above; this key must not follow it, and
+// nor must the `node.origin !== 'pod-0'` test in the template.
 const ORIGINS = {
   'pod-0': 'POD 1',
   'method-pod': 'the Method Pod',
@@ -332,7 +348,7 @@ const byOrigin = computed(() => {
  *  accounting it is. Not a defect in this page and not hidden: the walks that
  *  place those lines have not been encoded yet. */
 const walkGap = computed(() => {
-  if (active.value !== 'pod-0') return ''
+  if (active.value !== GRAPH_REF_SLUG) return ''
   const a = graph.accounting
   if (!a?.complete_walks_encoded_here || !a?.complete_walks_in_corpus) return ''
   return ` — ${a.complete_walks_encoded_here} of its ${a.complete_walks_in_corpus} complete walks are encoded in the store so far`
@@ -422,7 +438,7 @@ async function select (slug) {
     const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(slug)}`)
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-    // A pod carrying a stored walk is read through it; pod-0 and the sacked
+    // A pod carrying a stored walk is read through it; the core slate and the
     // slates carry none and keep the row-reference path. Same reading as the
     // Script Lab — no second opinion about what a pod's walk is.
     const w = (body.walk || []).length
@@ -452,12 +468,12 @@ onMounted(async () => {
       .sort((a, b) => rank(a.slug) - rank(b.slug) || a.slug.localeCompare(b.slug))
   } catch (e) {
     podsError.value = e.message
-    pods.value = [{ slug: 'pod-0', label: LABELS['pod-0'], lines: null }]
+    pods.value = [{ slug: GRAPH_REF_SLUG, label: LABELS[GRAPH_REF_SLUG], lines: null }]
   }
   // Arrive with a picture, not with a grey lattice: POD 1 is the pod this graph
   // was derived from and the one whose overlay tells the story. "Graph only" is
   // still one tap away.
-  if (active.value === null && pods.value.some(p => p.slug === 'pod-0')) await select('pod-0')
+  if (active.value === null && pods.value.some(p => p.slug === GRAPH_REF_SLUG)) await select(GRAPH_REF_SLUG)
 })
 </script>
 

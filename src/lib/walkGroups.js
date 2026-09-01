@@ -15,6 +15,8 @@
  *      quietly vanishing from the one page meant to show everything.
  */
 
+import { PARKED_FACTS, PAIR_OVERLAYS } from './walkFacts.js'
+
 export const CATEGORY_GROUPS = [
   {
     id: 'core',
@@ -70,10 +72,16 @@ const UNREGISTERED_NOTE =
   + 'or the registry has fallen behind the database. Find out which before editing it.'
 
 /**
- * Whether the ingest tool will pick this walk up — VERBATIM the rule
- * tools/pods/ingest-canonical-pods.cjs uses, so the lab and the tool cannot
- * disagree about what is ingestable. Anything else is skipped with a reason,
- * never errored: a mapping-only entry is not a broken walk, it is not a walk.
+ * Whether the ingest tool will pick this walk up.
+ *
+ * THE RULE'S ONE AUTHORITY IS THE REGISTRY — `ingestableRule` in
+ * tools/pods/pod-corpora.json states it in words. There are two IMPLEMENTATIONS
+ * of it: this function, and tools/pods/ingest-canonical-pods.cjs. Neither is the
+ * source; both cite the field. Change the rule and you change all three, or the
+ * lab badges a walk as ready that the tool will not touch.
+ *
+ * Anything failing it is skipped with a reason, never errored: a mapping-only
+ * entry is not a broken walk, it is not a walk.
  */
 export function isIngestable (entry) {
   return entry.status === 'authored' && !!entry.corpus && !!entry.format
@@ -94,10 +102,23 @@ export function decorateWalk (entry, { dbPods = [], targets = {}, coverage = {},
     // Only a slug that exists in the store has a script page to open. A
     // mapping-only or parked walk gets no link rather than a link to a 404.
     to: db ? `/canonical/scripts/${entry.slug}` : null,
+    // Measured facts the registry does not carry — a dated snapshot, labelled
+    // as one on the page. See walkFacts.js for why they are not computed.
+    // REGISTRY BEHIND REALITY. A status of mapping-only or parked is a claim
+    // that the walk is NOT in the canonical store. When the store has rows for
+    // it anyway, the registry is stale — and on 2026-09-01 that happened within
+    // minutes, when care-work was ingested while still recorded as a mapping.
+    // Surfaced loudly, on the same principle as the unregistered row: this page
+    // never quietly resolves a contradiction between the two sources, because
+    // the contradiction is the thing worth seeing.
+    drift: !!db && (entry.status === 'mapping-only' || entry.status === 'parked'),
+    facts: PARKED_FACTS[entry.slug] || null,
+    overlay: PAIR_OVERLAYS[entry.slug] || null,
     // The registry carries no dedicated overlay field, so the flag is read out
     // of the note it is actually written in. A worker never signs off
     // target-language text, so wherever it appears it appears labelled.
-    draftOverlay: /DRAFT-FOR-ARAN/i.test(entry.note || ''),
+    draftOverlay: PAIR_OVERLAYS[entry.slug]?.status === 'DRAFT-FOR-ARAN'
+      || /DRAFT-FOR-ARAN/i.test(entry.note || ''),
   }
 }
 

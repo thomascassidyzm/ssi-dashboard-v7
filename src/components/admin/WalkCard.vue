@@ -11,6 +11,7 @@
  * to what the canonical store actually returned. Nothing is hardcoded per slug.
  */
 import { computed } from 'vue'
+import { MEASURED_ON } from '@/lib/walkFacts.js'
 
 const props = defineProps({ walk: { type: Object, required: true } })
 
@@ -37,6 +38,20 @@ const storeLine = computed(() => {
   if (w.value.status === 'parked') return w.value.livesIn || 'not in the canonical store'
   return 'not in the canonical store'
 })
+
+/**
+ * A parked walk's real size, measured on the generated side because that is the
+ * only place it exists. Said with its date, because it is a snapshot and not a
+ * live read-out — and said precisely: travel-situations is ONE scene with one
+ * known clip, which is not the same thing as no audio.
+ */
+const factsLine = computed(() => {
+  const f = w.value.facts
+  if (!f) return ''
+  return `${f.turns} turns · ${f.scenes} ${f.scenes === 1 ? 'scene' : 'scenes'} · `
+    + `${f.targetClips} target clips · ${f.knownClips} known clips rendered, in ${f.course}`
+})
+const measuredOn = MEASURED_ON
 </script>
 
 <template>
@@ -52,6 +67,7 @@ const storeLine = computed(() => {
       <!-- Same rule the ingest tool uses, so the two cannot disagree about
            what it will pick up. -->
       <span v-if="w.ingestable && !w.inStore" class="chip st-ingestable">INGESTABLE — NOT YET IN THE STORE</span>
+      <span v-if="w.drift" class="chip st-drift">REGISTRY IS BEHIND THE DATABASE</span>
     </div>
 
     <p v-if="w.selector" class="mt-1 text-xs text-muted">
@@ -81,6 +97,33 @@ const storeLine = computed(() => {
       <span v-if="w.format">format <code>{{ w.format }}</code></span>
     </div>
 
+    <p v-if="w.drift" class="mt-2 text-xs drift-note rounded px-2.5 py-1.5">
+      The registry says <strong>{{ w.status }}</strong>, which claims this is not in the canonical store.
+      The store holds <strong>{{ w.lines }} lines across {{ w.scenes }} scenes</strong> for it. One of the two is
+      out of date — believe the database, and fix the registry entry.
+    </p>
+
+    <p v-if="factsLine" class="mt-2 text-xs text-muted">
+      {{ factsLine }}
+      <span class="text-faint">— measured {{ measuredOn }}, not a live read-out</span>
+    </p>
+
+    <!-- A pair overlay is a target-language DRAFT on a branch. It is not target
+         text in the canonical store, whose only target language is Italian, and
+         a worker never signs it off. -->
+    <div v-if="w.overlay" class="overlay mt-2 rounded px-2.5 py-2 text-xs">
+      <p class="font-semibold">
+        Pair overlay {{ w.overlay.pair }} — {{ w.overlay.status }}
+      </p>
+      <p class="mt-1 leading-relaxed text-muted">
+        On {{ w.overlay.scope }} — <strong>not</strong> on {{ w.overlay.notOn }}.
+        {{ w.overlay.audio }}
+      </p>
+      <p class="mt-1 text-faint">
+        branch <code>{{ w.overlay.branch }}</code> · <code>{{ w.overlay.file }}</code>
+      </p>
+    </div>
+
     <p v-if="w.note" class="mt-2 text-xs text-muted leading-relaxed">{{ w.note }}</p>
 
     <router-link v-if="w.to" :to="w.to" class="inline-block mt-3 text-xs text-accent-2 hover:opacity-80">
@@ -108,6 +151,10 @@ const storeLine = computed(() => {
 .st-parked { color: #94a3b8; }
 .st-draft { color: #f59e0b; }
 .st-ingestable { color: #38bdf8; }
+.st-drift { color: #ef4444; }
+.drift-note { border: 1px solid #ef4444; border-left-width: 3px; background: rgba(239, 68, 68, 0.1); line-height: 1.5; }
+.overlay { border: 1px solid #f59e0b; border-left-width: 3px; background: rgba(245, 158, 11, 0.08); }
+.overlay code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
 .st-unregistered { color: #ef4444; }
 .prov { font-size: 0.6875rem; }
 .prov code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }

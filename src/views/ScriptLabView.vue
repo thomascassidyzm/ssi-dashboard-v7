@@ -29,10 +29,13 @@
         <p class="text-muted leading-relaxed">
           These two are different objects. One canonical set exists, identical by definition.
           Each course's known English is <strong>derived</strong> from it and legitimately differs per pair:
-          canonical seed 1 has <strong>116 distinct known texts across 130 courses</strong>, and the canonical
-          pod line “Good morning, Sarah!” appears as <strong>24 distinct known texts across 46 courses</strong>.
-          Saving here changes the master and propagates to none of them — re-translation is a separate
-          pipeline step, so your change is <strong>owed</strong> to every course rather than applied to it.
+          the core pod's first line, “Good morning, Sarah!”, appears as
+          <strong>24 distinct known texts across 46 courses</strong> — “¡Buenos días, Sarah!”, “Bonjour, Sarah !”,
+          “Guten Morgen, Sarah!”, “Good morning, Sara!”, “Hello, good morning, Sarah!”. Slot 2 is 21 across 46,
+          slot 3 is 24 across 45, and canonical seed 1 has <strong>116 distinct known texts across 130 courses</strong>.
+          That spread is genuine per-pair translation AND legitimate per-course differentiation, which is the point:
+          saving here changes the master and propagates to none of them. Re-translation is a separate pipeline step,
+          so your change is <strong>owed</strong> to every course rather than applied to it.
         </p>
       </div>
 
@@ -42,10 +45,31 @@
         </router-link>
       </div>
 
-      <p class="text-xs text-faint mb-6 border border-line rounded px-3 py-2 bg-surface leading-relaxed">
-        <strong class="text-muted">Audio.</strong> The canonical store holds no audio at all — not for any walk on this
-        page. Audio exists against generated pods, per course, downstream of these masters. There is nothing to render here.
-      </p>
+      <div class="text-xs text-faint mb-6 border border-line rounded px-3 py-2 bg-surface leading-relaxed space-y-1.5">
+        <p>
+          <strong class="text-muted">Audio is not a property of this layer.</strong>
+          The canonical store has no audio column and nothing points at one, so for every walk on this page
+          the honest answer is <em>n/a here</em> — audio exists only against the generated pods, per course,
+          downstream of these masters.
+        </p>
+        <p>
+          <strong class="text-muted">At that layer, the core walk is fully rendered.</strong>
+          {{ core.newSlate.courses }} courses, {{ core.newSlate.sentences.toLocaleString() }} sentences,
+          {{ core.newSlate.targetClips.toLocaleString() }} target clips and
+          {{ core.newSlate.knownClips.toLocaleString() }} known clips — 100% on both sides.
+        </p>
+        <!-- The trap: mid-cutover, `pod-1` names two different objects in two
+             tables with two different sets of numbers. Seeing that without being
+             told would reasonably read as the page being broken. -->
+        <p class="text-accent">
+          <strong>One slug, two meanings, while the cutover runs.</strong>
+          In the canonical store <code>pod-1</code> is the core canon above, renamed from <code>pod-0</code> —
+          that rename has landed. On the generated side <code>pod-1</code> is the new slate and <code>pod-0</code>
+          is still the old one ({{ core.oldSlate.courses }} courses, {{ core.oldSlate.sentences.toLocaleString() }} sentences).
+          The learner-side cutover is {{ core.coursesDone }} of {{ core.coursesTotal }} courses in, runs on its own
+          tooling, and is nothing this page touches.
+        </p>
+      </div>
 
       <p v-if="stale" class="text-accent text-xs mb-4 border border-line rounded px-3 py-2 bg-surface">
         This API has not been restarted onto the script index yet, so the database column below is empty.
@@ -117,11 +141,13 @@ import { loadGraph } from '@/lib/metagraph/loadGraph.js'
 import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 import { buildGroups } from '@/lib/walkGroups.js'
+import { GENERATED_CORE } from '@/lib/walkFacts.js'
 import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import WalkCard from '@/components/admin/WalkCard.vue'
 import CORPORA from '../../tools/pods/pod-corpora.json'
 
 const graph = loadGraph()
+const core = GENERATED_CORE
 const dbPods = ref([])     // what the canonical store holds, by slug
 const coverage = ref({})   // slug -> { coverage, unresolved, declarations } | { error }
 const targets = ref({})    // slug -> { rows, langs[] }

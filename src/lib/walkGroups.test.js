@@ -133,3 +133,80 @@ describe('ingestability — the same rule the ingest tool uses', () => {
     expect(find(groups, 'pod-1').ingestable).toBe(false)
   })
 })
+
+describe('the measured facts the registry does not carry', () => {
+  it('gives the parked pair their real size, travel-situations at ONE scene', () => {
+    const groups = buildGroups(CORPORA, { dbPods: DB_AFTER })
+    expect(find(groups, 'music').facts).toMatchObject({ turns: 749, scenes: 8, targetClips: 585, knownClips: 491 })
+    // One scene, not eight — and one known clip, which is not "no audio".
+    expect(find(groups, 'travel-situations').facts).toMatchObject({ turns: 72, scenes: 1, targetClips: 0, knownClips: 1 })
+  })
+
+  it('attaches the Welsh overlay to health as a pair overlay, not as target text', () => {
+    const groups = buildGroups(CORPORA, { dbPods: DB_AFTER })
+    const health = find(groups, 'health')
+    expect(health.overlay.status).toBe('DRAFT-FOR-ARAN')
+    expect(health.overlay.pair).toBe('eng → cym_n')
+    expect(health.draftOverlay).toBe(true)
+    // It is on the seed set, NOT on the conversation corpus the walk is made of.
+    expect(health.overlay.scope).toMatch(/seed set/)
+    expect(health.overlay.notOn).toMatch(/438-turn/)
+    // And it is not target text: the canonical store's only target language is
+    // Italian, so health must still report none.
+    expect(health.target).toBeNull()
+  })
+
+  it('gives no other walk an overlay or measured facts', () => {
+    const groups = buildGroups(CORPORA, { dbPods: DB_AFTER })
+    for (const slug of ['pod-1', 'retail', 'trades', 'hospitality', 'learning-flagship']) {
+      expect(find(groups, slug).overlay).toBeNull()
+      expect(find(groups, slug).facts).toBeNull()
+    }
+  })
+})
+
+describe('registry-vs-database drift', () => {
+  // The store moved WHILE this page was being built: five themed walks were
+  // ingested on 2026-09-01 at 11:29, and care-work landed in the store while
+  // the registry still recorded it as a mapping. The page must show that
+  // contradiction, not resolve it silently in either direction.
+  const DB_WITH_THEMED = [
+    ...DB_AFTER,
+    { slug: 'health', lines: 438, scenes: 23 },
+    { slug: 'retail', lines: 330, scenes: 25 },
+    { slug: 'trades', lines: 414, scenes: 23 },
+    { slug: 'hospitality', lines: 330, scenes: 21 },
+    { slug: 'care-work', lines: 306, scenes: 20 },
+  ]
+
+  it('flags a mapping-only walk that is nonetheless in the store', () => {
+    const groups = buildGroups(CORPORA, { dbPods: DB_WITH_THEMED })
+    const careWork = find(groups, 'care-work')
+    expect(careWork.status).toBe('mapping-only')
+    expect(careWork.inStore).toBe(true)
+    expect(careWork.lines).toBe(306)
+    expect(careWork.drift).toBe(true)
+  })
+
+  it('does not flag an authored walk that is in the store — that is the normal case', () => {
+    const groups = buildGroups(CORPORA, { dbPods: DB_WITH_THEMED })
+    for (const slug of ['health', 'retail', 'trades', 'hospitality', 'pod-1']) {
+      expect(find(groups, slug).drift).toBe(false)
+    }
+  })
+
+  it('flags a parked walk if one is ever ingested — parked means not canon', () => {
+    const groups = buildGroups(CORPORA, { dbPods: [...DB_AFTER, { slug: 'music', lines: 749, scenes: 8 }] })
+    expect(find(groups, 'music').drift).toBe(true)
+  })
+
+  it('stops offering INGESTABLE once a walk has actually landed', () => {
+    const before = buildGroups(CORPORA, { dbPods: DB_AFTER })
+    const after = buildGroups(CORPORA, { dbPods: DB_WITH_THEMED })
+    expect(find(before, 'health').ingestable && !find(before, 'health').inStore).toBe(true)
+    expect(find(after, 'health').ingestable && !find(after, 'health').inStore).toBe(false)
+    // And it gains a script to open, which it did not have before.
+    expect(find(before, 'health').to).toBeNull()
+    expect(find(after, 'health').to).toBe('/canonical/scripts/health')
+  })
+})
