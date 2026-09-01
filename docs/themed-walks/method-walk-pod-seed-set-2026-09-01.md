@@ -2096,3 +2096,26 @@ seed below is the authoritative admission and the note is provenance.
   whole)**
 - Job: one LEGO — the borrowed idea returned with interest; the walk's definition of
   collaboration in nine words.
+
+---
+
+## 5. Cuts and baskets — in order, as deep as quality allowed
+
+**The rules these baskets follow** (identical to the health and CORE sets', restated once):
+the cut never goes below a phrase and must tile its seed exactly. Only **new** LEGOs get
+baskets — owned chunks enter as `is_new = false`, tiling and vocabulary, no round, no
+learning event. Floors: **at least 4 BUILD and 5 USE per new LEGO** — fewer phrases is a
+fail; variety is a bonus on top of volume, never a substitute. BUILD phrases may be
+fragments but must extend into natural full English by appending or prepending owned
+chunks; USE phrases are complete natural sentences, tier-1 or they die. Every phrase
+composes only from this seed's LEGO, chunks owned at that point in this document's order
+(floor CP001–CP195 included — the floor travels with the walk), assumed course-core strings
+(Appendix A), and core glue — no forward references. A pod sentence, intact, is a
+legitimate USE phrase wherever it contains the LEGO (Tom's ruling) — baskets are encouraged
+to reuse corpus sentences verbatim as USE material. Register note for this walk: the
+baskets speak PEER ENGLISH — the ideas-conversation register, not the service counter; a
+basket phrase that would sound wrong between two old friends arguing happily is a fail
+even if grammatical. One register ruling taken at assembly and stated once: in this walk a
+USE phrase is a complete natural TURN, and in peer talk a turn may be elliptical — "Five
+days, a group of twelve." is a well-formed answer, exactly as CORE's own baskets used
+"Yes." and "Of course!"; the fragment test is turn-shape, not clause-shape.
