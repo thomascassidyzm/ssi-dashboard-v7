@@ -699,9 +699,15 @@ onMounted(load)
  * because CanonicalPodView.vue still renders a four-column table off that same
  * stylesheet and must not be re-proportioned by a change made for this page.
  */
-.col-canonical, .col-overlay { width: auto; min-width: 0; }
 .script-table { table-layout: fixed; }
-.col-state { width: 8.5rem; }
+.col-ref { width: 6rem; }
+.col-speaker { width: 4.5rem; }
+.col-state { width: 8rem; }
+/* The three content columns share the rest evenly — CANONICAL || KNOWN ||
+   TARGET reads as three columns of one width, not as one wide column with two
+   offcuts. `table-layout: fixed` is what makes the percentages hold whatever
+   the sentences do. */
+.col-canonical, .col-overlay { width: 27%; min-width: 0; }
 
 /* The Seed Editor's dot, in the number column. */
 .status-dot {
@@ -725,8 +731,7 @@ onMounted(load)
  */
 @media (max-width: 760px) {
   .script-table { table-layout: auto; }
-  .col-canonical, .col-overlay { width: auto; }
-  .col-state { width: auto; }
+  .col-ref, .col-speaker, .col-canonical, .col-overlay, .col-state { width: auto; }
 }
 
 /* Tap is the only affordance: every control here is a button with a finger-sized
