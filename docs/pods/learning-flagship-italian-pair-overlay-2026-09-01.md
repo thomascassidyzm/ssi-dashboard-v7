@@ -304,3 +304,197 @@ ri-derivati*) is the chapter's new machine. Taste flags: *come il prezzo del pes
 **Chapter 3 verdict:** the chapter's own keyword does the best work in Italian — *sentire*
 covers hear-and-feel, so *"possiamo sentirlo, e non possiamo sentirlo"* carries an extra layer
 the English doesn't have, free. Taste flags: *inudibile*, *ritmo* for "rate".
+
+### Chapter 4 — *Màs*
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Now. | Adesso. |
+| ARAN | Now? | Adesso? |
+| TOM | The parked one. You said you wanted to fight about the label arriving last, and you've just spent two chapters agreeing with me, so let's have it while you're weakened. | Quella parcheggiata. Hai detto che volevi litigare sull'etichetta che arriva per ultima, e hai appena passato due capitoli a darmi ragione, quindi facciamola adesso che sei indebolito. |
+| ARAN | I've been agreeing with you about everything except the bit you care about. Scene first — agreed, always, no label before the felt thing. One distinction per blink — agreed; every item I've ever built is two options, one difference. The label is an agreement, not a derivation — agreed, you can have that too. | Ti sto dando ragione su tutto tranne che sul pezzo che ti interessa. Prima la scena — d'accordo, sempre, nessuna etichetta prima della cosa sentita. Una distinzione per battito di ciglia — d'accordo; ogni item che ho mai costruito è due opzioni, una differenza. L'etichetta è un accordo, non una derivazione — d'accordo, puoi prenderti anche quella. |
+| TOM | So describe the item. The physics one. Say it exactly. | Allora descrivi l'item. Quello di fisica. Dillo esatto. |
+| ARAN | Flick a malteser off the table. Now flick a watermelon. Push a chair across the room, now push a car. Which one fought back? That's the scene, that's the felt floor, ten-year-old's body scale. And then — same session, next screen — "the scientific name: màs. Unit: cilogramau." And the child has the word. | Dai un colpetto a un malteser e buttalo giù dal tavolo. Adesso dai un colpetto a un'anguria. Spingi una sedia attraverso la stanza, adesso spingi una macchina. Quale ha fatto resistenza? Quella è la scena, quello è il pavimento sentito, alla scala del corpo di un bambino di dieci anni. E poi — stessa sessione, schermata successiva — «il nome scientifico: màs. Unità: cilogramau.» E il bambino ha la parola. |
+| TOM | Next screen. | Schermata successiva. |
+| ARAN | Next screen. While their thumb still remembers the watermelon. | Schermata successiva. Mentre il pollice si ricorda ancora l'anguria. |
+| TOM | And that's where we split. | Ed è lì che ci dividiamo. |
+| ARAN | Let me sell it properly first, because your own subscription argument is my best witness. A distinction with no name has no address. You can't bill maintenance on it. You can't ask the child about it on Thursday, they can't ask each other, the teacher can't reach it, it can't come up at tea. The name is the account number — and you want the direct debit set up while the scene is warm, because that's when it's cheapest. | Lascia che prima te la venda come si deve, perché il tuo stesso argomento dell'abbonamento è il mio testimone migliore. Una distinzione senza nome non ha indirizzo. Non puoi fatturarci sopra la manutenzione. Non puoi chiedere al bambino di quella cosa giovedì, non possono chiedersela tra loro, l'insegnante non può raggiungerla, non può saltare fuori a cena. Il nome è il numero di conto — e l'addebito automatico lo vuoi attivare mentre la scena è calda, perché è lì che costa meno. |
+| TOM | That's genuinely good. It's wrong, but it's the best wrong version I've heard, including mine. | È sinceramente buono. È sbagliato, ma è la migliore versione sbagliata che abbia mai sentito, compresa la mia. |
+| ARAN | Your turn, then. The rule. | Tocca a te, allora. La regola. |
+| TOM | Four stages, in order. Grounded experience — your malteser, no quarrel. Understanding of the quantity — the child can use the thing, predict with it, before anyone says a word over it. Drill of the quantity — it comes out under pressure, in their own words, "the heavy one fights back". | Quattro fasi, in ordine. L'esperienza a terra — il tuo malteser, nessuna discussione. La comprensione della quantità — il bambino sa usare la cosa, sa fare previsioni con quella, prima che qualcuno ci dica sopra una parola. L'esercizio della quantità — esce sotto pressione, con parole sue, «quella pesante fa resistenza». |
+| ARAN | And then the word. | E poi la parola. |
+| TOM | LAST, the equivalence: by the way, the thing you already own — examiners call it mass. Drilled both directions, because the dropped mark is the child who owns the thing and goes blank at the word. The name is a fact. An agreement. It gets its own slot, joined to the built thing — never allowed to pretend it's the building. | PER ULTIMA, l'equivalenza: comunque, la cosa che già possiedi — gli esaminatori la chiamano massa. Esercitata in tutte e due le direzioni, perché il punto perso è il bambino che possiede la cosa e va in bianco sulla parola. Il nome è un fatto. Un accordo. Ha la sua casella, agganciata alla cosa costruita — e non gli è mai permesso fingere di essere l'edificio. |
+| ARAN | You struck your own harder rule, though. Say that part. | Però la tua regola più dura l'hai cancellata tu stesso. Dilla, quella parte. |
+| TOM | I did. I used to say some names never arrive at all. That's gone — struck it myself, because the exam speaks the agreement layer and full marks live there. So we already agree the name gets bought. | Sì. Una volta dicevo che certi nomi non arrivano mai. Non c'è più — l'ho cancellata io, perché l'esame parla lo strato degli accordi e il punteggio pieno vive lì. Quindi siamo già d'accordo che il nome si compra. |
+| ARAN | Which makes this a fight about the delivery date, and you're treating it like a fight about the soul. | Il che rende questa una lite sulla data di consegna, e tu la stai trattando come una lite sull'anima. |
+| TOM | Because the delivery date IS the soul. Buy the name early and the name starts answering the questions. Ask about the watermelon and "màs" comes back, and you cannot tell whether that's the distinction speaking or the label doing an impression of it. The word is cheap to say and expensive to be fooled by. Every natural sequence we walked — the bird, the note, the orange — buys the label after stability, and I don't think nature is being sentimental. | Perché la data di consegna È l'anima. Compra il nome presto e il nome comincia a rispondere alle domande. Chiedi dell'anguria e torna indietro «màs», e non sai dire se è la distinzione che parla o l'etichetta che la imita. La parola costa poco a dirla e costa cara quando ti frega. Ogni sequenza naturale che abbiamo percorso — l'uccello, la nota, l'arancia — compra l'etichetta dopo la stabilità, e non credo che la natura stia facendo la sentimentale. |
+| ARAN | The child in the classroom isn't in nature. They're in a school, where the word is the currency of the whole building, all year. | Il bambino in aula non è nella natura. È in una scuola, dove la parola è la moneta di tutto l'edificio, tutto l'anno. |
+| TOM | Whale song, though. Having the word "whale song" doesn't let you hear it. | Però: il canto delle balene. Avere le parole «canto delle balene» non te lo fa sentire. |
+| ARAN | And nobody hands out words for things below the bottom rung — my scene puts the rung in first. That's what the malteser is FOR. And there's a thing you've never once weighed, because it isn't in any of your ledgers: the word is a trophy. A ten-year-old who says "inertia" at tea on Thursday is showing the family a thing they caught. That word does more for the standing order than any schedule of yours — pride pays subscriptions. | E nessuno distribuisce parole per cose sotto il piolo più basso — la mia scena il piolo lo mette prima. È a questo che serve il malteser. E c'è una cosa che non hai mai pesato, nemmeno una volta, perché non sta in nessuno dei tuoi registri: la parola è un trofeo. Un bambino di dieci anni che giovedì a cena dice «inerzia» sta facendo vedere alla famiglia una cosa che ha catturato. Quella parola fa più per l'addebito ricorrente di qualunque tuo calendario — l'orgoglio paga gli abbonamenti. |
+| TOM | So what you're saying is the name is scaffolding, and scaffolding comes down. | Quindi quello che stai dicendo è: il nome è un'impalcatura, e le impalcature si smontano. |
+| ARAN | No. Wrong fight. Scaffolding comes down — the name stays up forever. I'm saying the name is part of the building. You're the one treating it as decoration bolted on for the inspectors. | No. Lite sbagliata. Le impalcature si smontano — il nome resta su per sempre. Sto dicendo che il nome è parte dell'edificio. Sei tu quello che lo tratta come una decorazione avvitata sopra per gli ispettori. |
+| TOM | Taken. Then let's haggle the date, since you've made it a delivery problem. I'll come to: after the first successful transfer — the child uses the distinction on something the scene never showed them, then the word, same week. | Preso. Allora contrattiamo la data, visto che ne hai fatto un problema di consegna. Io arrivo fino a: dopo il primo trasferimento riuscito — il bambino usa la distinzione su qualcosa che la scena non gli ha mai fatto vedere, poi la parola, stessa settimana. |
+| ARAN | Too late. End of the same session. The scene, the play, and the word goes on it while it's hot — one session, closed. | Troppo tardi. Fine della stessa sessione. La scena, il gioco, e la parola ci va sopra mentre è calda — una sessione, chiusa. |
+| TOM | End of session buys the impression-problem back. Anything said that soon gets credited to the word. | Fine sessione ricompra il problema dell'imitazione. Qualunque cosa detta così presto viene accreditata alla parola. |
+| ARAN | And your "first transfer" can be weeks, and for those weeks the thing has no handle in a building run entirely on handles. | E il tuo «primo trasferimento» possono essere settimane, e per quelle settimane la cosa non ha maniglia in un edificio che va avanti solo a maniglie. |
+| TOM | Then neither of us moves. | Allora nessuno dei due si muove. |
+| ARAN | Neither of us moves. | Nessuno dei due si muove. |
+| TOM | Good — because this is the one fork we own that isn't philosophy. Two arms, same scenes, same items, only the delivery date differs. Then watch two numbers: the recall rung on the name, and transfer to scenes neither arm has seen. If early names close questions, my arm's transfer beats yours and your recall beats mine early and evaporates. If the trophy pays subscriptions, your retention curve embarrasses me by Christmas. | Bene — perché questa è l'unica biforcazione che abbiamo che non è filosofia. Due bracci, stesse scene, stessi item, cambia solo la data di consegna. Poi guardi due numeri: il piolo del richiamo sul nome, e il trasferimento a scene che nessuno dei due bracci ha visto. Se i nomi comprati presto chiudono le domande, il trasferimento del mio braccio batte il tuo, e il tuo richiamo batte il mio presto e poi evapora. Se il trofeo paga gli abbonamenti, la tua curva di ritenzione mi umilia entro Natale. |
+| ARAN | Testable on telemetry rather than arguable. | Verificabile sulla telemetria, invece che discutibile. |
+| TOM | And we've been arguing anyway, because it's Tuesday and there's wine. | E abbiamo discusso lo stesso, perché è martedì e c'è il vino. |
+| ARAN | Telemetry, then. | Telemetria, allora. |
+| TOM | Telemetry. You'll lose. | Telemetria. Perderai. |
+| ARAN | One of us will. | Uno di noi due, sì. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| now. / now? | adesso. / adesso? | D | ZUT — the Method Pod's closing word, same form ✓ |
+| the parked one | quella parcheggiata | D | *parcheggiato* ✓ ledger — never *in pausa*, which is the pause-callback's property |
+| you've just spent two chapters agreeing with me | hai appena passato due capitoli a darmi ragione | I | *passare…a* ✓; agree-with-person → *dare ragione* ✓ shared ledger |
+| the bit you care about | il pezzo che ti interessa | D | *interessare* dative ✓ |
+| one distinction per blink | una distinzione per battito di ciglia | D | **NN:** *battito di ciglia* against *parpadeo* — different anatomy of the same idiom |
+| flick a malteser off the table | dai un colpetto a un malteser e buttalo giù dal tavolo | I | the flick-verb has no Italian; decomposes into *colpetto* + *buttare giù* — *buttare* family ✓ |
+| now push a car | adesso spingi una macchina | D | *macchina* — the register's false friend, in the child's own scene |
+| which one fought back? | quale ha fatto resistenza? | I | fought-back → *fare resistenza* — the fare-support system ✓ (and *fa resistenza* returns at t13, same lexeme, ZUT ✓) |
+| while their thumb still remembers the watermelon | mentre il pollice si ricorda ancora l'anguria | D | *ricordarsi* ✓; **NN absence:** *anguria* against *sandía* |
+| and that's where we split | ed è lì che ci dividiamo | I | the where-cleft *è lì che* ✓ shared ledger |
+| let me sell it properly first | lascia che prima te la venda come si deve | I | *lascia che* + subjunctive — **NN anchor:** *deja que te la venda*; *come si deve* ✓ |
+| you can't bill maintenance on it | non puoi fatturarci sopra la manutenzione | I | *ci…sopra* ✓ — fourth verb on the frame |
+| they can't ask each other | non possono chiedersela tra loro | I | *chieder-se-la* — reciprocal + double clitic on the infinitive |
+| it can't come up at tea | non può saltare fuori a cena | I | tea (the meal) resolves to *cena* — deixis of the British day; *saltare fuori* |
+| the direct debit set up while the scene is warm | l'addebito automatico lo vuoi attivare mentre la scena è calda | I | fronting + doubling ✓ |
+| that's when it's cheapest | è lì che costa meno | I | when-cleft → *è lì che* ✓ same frame as the where-cleft — one Italian machine for both |
+| the best wrong version I've heard | la migliore versione sbagliata che abbia mai sentito | D | subjunctive after superlative — **NN anchor:** *que haya oído* matches the mood, *sentito* ✓ the hear-verb |
+| your turn, then | tocca a te, allora | D | *toccare a* ✓ ZUT with Ch. 2 |
+| the child can use the thing, predict with it | il bambino sa usare la cosa, sa fare previsioni | I | can-of-skill → *sapere* ✓ |
+| goes blank at the word | va in bianco sulla parola | D | *andare in bianco* — **NN absence:** *quedarse en blanco* — the quedar-void again, resolved with *andare* |
+| never allowed to pretend it's the building | non gli è mai permesso fingere di essere l'edificio | D | *è permesso* ✓; *fingere di* — **NN trap:** *fingir* + bare inf; the *di*-linkage class |
+| you struck your own harder rule | la tua regola più dura l'hai cancellata tu stesso | I | fronting + doubling + agreement + stressed *tu stesso* — four machines |
+| I used to say some names never arrive at all | una volta dicevo che certi nomi non arrivano mai | E | used-to → imperfect + *una volta* ✓ ZUT with Ch. 3 |
+| that's gone | non c'è più | D | *non…più* ✓ |
+| the name gets bought | il nome si compra | I | the get-passive → impersonal *si* ✓ |
+| which makes this a fight about the delivery date | il che rende questa una lite sulla data di consegna | I | *il che* ✓; make-X-Y → ***rendere*** — **NN systemic:** Spanish scatters over *hacer que / volver / poner* |
+| you cannot tell whether that's the distinction speaking | non sai dire se è la distinzione che parla | I | *sapere dire* ✓ shared ledger; the that's-X-doing-it cleft |
+| cheap to say and expensive to be fooled by | costa poco a dirla e costa cara quando ti frega | I | the by-phrase dissolves; *fregare* — spoken register, flagged; *costare caro* agreement |
+| I don't think nature is being sentimental | non credo che la natura stia facendo la sentimentale | I | *non credo che* + subj ✓; being-X → ***fare la*** + adjective — the fare-of-roles ✓ |
+| that's what the malteser is FOR | è a questo che serve il malteser | I | the for-frame → *servire* cleft — **ledger addition:** "that's what X is for" → *è a questo che serve X* |
+| there's a thing you've never once weighed | c'è una cosa che non hai mai pesato, nemmeno una volta | D | *nemmeno una volta* ✓ |
+| it isn't in any of your ledgers | non sta in nessuno dei tuoi registri | D | location-*stare* ✓ |
+| is showing the family a thing they caught | sta facendo vedere alla famiglia una cosa che ha catturato | I | *fare vedere* ✓ causative |
+| scaffolding comes down | le impalcature si smontano | D | |
+| the name stays up forever | il nome resta su per sempre | D | *restare* ✓ — the stay-verb, never *restar*'s meaning |
+| you're the one treating it as… | sei tu quello che lo tratta come… | I | the you're-the-one cleft → *sei tu quello che* — **NN anchor:** *eres tú el que* |
+| since you've made it a delivery problem | visto che ne hai fatto un problema di consegna | I | *ne* — "made a problem OF IT" ✓ |
+| the word goes on it while it's hot | la parola ci va sopra mentre è calda | I | *ci…sopra* ✓ fifth verb on the frame — one frame, many verbs, no fork |
+| gets credited to the word | viene accreditata alla parola | I | the *venire*-passive ✓ ZUT with Method Ch. 9 |
+| a building run entirely on handles | un edificio che va avanti solo a maniglie | I | runs-on → *andare avanti a* |
+| neither of us moves | nessuno dei due si muove | D | ✓ repeated verbatim — the standoff lands on identical forms |
+| only the delivery date differs | cambia solo la data di consegna | I | differs → *cambia* — subject-verb flip |
+| embarrasses me by Christmas | mi umilia entro Natale | D | happen-by → *entro*; need-by → *per* (Method Ch. 12 *per ottobre*) — two frames, died-inside, noted |
+| rather than arguable | invece che discutibile | D | *invece che* — **NN absence:** *en vez de* takes nouns, not adjectives, comfortably |
+| and we've been arguing anyway | e abbiamo discusso lo stesso | D | *lo stesso* ✓ the anyway-form, ZUT |
+| one of us will | uno di noi due, sì | E | the will-ellipsis erases into the bare affirmation — the *adesso sì* machine |
+
+**Chapter 4 verdict:** the fork's two arms translate without tilting — *fare resistenza* gives
+the malteser scene its verb, and the four-stage rule keeps its registers (*va in bianco*,
+*è permesso*, *si compra*). One deixis call flagged: *tea* → *cena* (the British evening meal,
+not *tè*), which is exactly the kind of call the pre-test should watch a cold speaker miss.
+
+### Chapter 5 — *Un grafo, porca miseria*
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | Back up a level, because we've been talking about learners and I want one more go at the thing being learned. The rules of grammar. Where do they live, in the head? | Torna su di un livello, perché stiamo parlando di chi impara e io voglio un altro giro sulla cosa imparata. Le regole della grammatica. Dove stanno, nella testa? |
+| TOM | Ask it at the level of neurons. | Falla al livello dei neuroni. |
+| ARAN | That's exactly the discipline. How would it even work? A parallel system — word types, categories, a machine for putting them in order, another machine checking the first machine, somewhere to store all that, and a way for a three-year-old to build it before she can tie her shoes. You say it out loud and you can hear it getting complicated, fast. And that's the tell. It's complicated, so that can't be a thing. | È esattamente questa la disciplina. Come funzionerebbe, anche solo in teoria? Un sistema parallelo — tipi di parole, categorie, una macchina per metterle in ordine, un'altra macchina che controlla la prima, un posto dove tenere tutto questo, e un modo perché una bambina di tre anni lo costruisca prima di sapersi allacciare le scarpe. Lo dici ad alta voce e lo senti diventare complicato, in fretta. Ed è quello il segnale. È complicato, quindi non può essere una cosa vera. |
+| TOM | The razor. Still the sharpest thing you own. | Il rasoio. Ancora la cosa più affilata che possiedi. |
+| ARAN | It's done twenty years of work and it's never once needed sharpening. The rules exist — in the book, as a perfectly good description of what comes out of people's mouths, four hundred years of scholastic hotchpotch, Latin forced onto English, you can't split an infinitive because in Latin it's one word. Barking mad. But a description of the outputs and the machinery producing them are different things, and nobody has a model of the machinery that survives the neuron question. | Ha fatto vent'anni di lavoro e non ha mai avuto bisogno di essere affilato, nemmeno una volta. Le regole esistono — nel libro, come una descrizione perfettamente buona di quello che esce dalla bocca della gente, quattrocento anni di guazzabuglio scolastico, il latino forzato sopra l'inglese, non puoi spezzare un infinito perché in latino è una parola sola. Da matti. Ma una descrizione degli output e il macchinario che li produce sono due cose diverse, e nessuno ha un modello del macchinario che sopravviva alla domanda dei neuroni. |
+| TOM | Then what's in there? | E allora cosa c'è là dentro? |
+| ARAN | Here's how far it goes, and I still get vertigo relaying it. Alison Wray — formulaic language, about as highly regarded as the field gets — has been saying in conversation, I don't think she's published it: there's no such thing as a word. There aren't any. And every time I've heard her say it I've thought — yep, my brain is already hurting, and I can't keep up, and she might be right. | Ecco fin dove arriva, e a riferirlo mi gira ancora la testa. Alison Wray — linguaggio formulaico, stimata quanto si può essere stimati nel campo — da qualche anno lo dice in conversazione, non credo l'abbia pubblicato: le parole non esistono. Non ce ne sono. E ogni volta che gliel'ho sentito dire ho pensato — sì, mi fa già male il cervello, e non ce la faccio a starle dietro, e potrebbe avere ragione. |
+| TOM | Woo. | Woo. |
+| ARAN | Fully woo. But try to define "word" so that "to boldly go" comes out as three of them and "listless" comes out as one, and watch every definition die. Unit of contained meaning? Then "to boldly go" is one word. | Woo completo. Ma prova a definire «parola» in modo che «to boldly go» ne escano tre e «listless» ne esca una, e guarda morire ogni definizione. Unità di significato contenuto? Allora «to boldly go» è una parola sola. |
+| TOM | So if words are shaky and rules are a description — what's actually in there? | Quindi se le parole traballano e le regole sono una descrizione — cosa c'è davvero là dentro? |
+| ARAN | Two ingredients. Information about items — call them words, even if they don't exist — and information about the edges between them. Which item can follow which. Red bus, red house, one that's red — never red went. Not a rule anybody stored; there are paths from this cluster to those, and none to that one. And two ingredients is enough — items plus edges gives you emergent behaviour. You don't need the second machine. There's no grammar module. There's a landscape. | Due ingredienti. Informazione sugli item — chiamali parole, anche se non esistono — e informazione sui collegamenti tra loro. Quale item può seguire quale. Autobus rosso, una casa rossa, uno rosso — mai «rosso andava». Non una regola che qualcuno ha immagazzinato; ci sono sentieri da questo grappolo a quelli, e nessuno verso quello lì. E due ingredienti bastano — item più collegamenti ti danno comportamento emergente. Non ti serve la seconda macchina. Non c'è nessun modulo della grammatica. C'è un paesaggio. |
+| TOM | And when a learner says "it just felt right" — | E quando chi impara dice «mi suonava giusto e basta» — |
+| ARAN | —there were no roads going anywhere else. We did that one. | —non c'erano strade che andavano da nessun'altra parte. Quella l'abbiamo già fatta. |
+| TOM | So now the consequence, and check it against twenty years of learners. If the thing is items and edges, the thing is a graph. It's a bloody graph. You can go in any direction you like. | E adesso la conseguenza, e verificala contro vent'anni di gente che impara. Se la cosa è item e collegamenti, la cosa è un grafo. È un grafo, porca miseria. Puoi andare in qualunque direzione vuoi. |
+| ARAN | And a syllabus? | E un programma? |
+| TOM | One walk through it — somebody's walk, usually a dead somebody's — sold to the child as if the walk were the territory. Chapter three comes after chapter two because it did in 1975. The subject doesn't have an order. It has neighbourhoods. | Una passeggiata sola dentro il grafo — la passeggiata di qualcuno, di solito di un morto — venduta al bambino come se la passeggiata fosse il territorio. Il capitolo tre viene dopo il capitolo due perché così era nel 1975. La materia non ha un ordine. Ha quartieri. |
+| ARAN | So what you're saying is nobody has ever taught anybody grammar. | Quindi quello che stai dicendo è: nessuno ha mai insegnato la grammatica a nessuno. |
+| TOM | Roughly that, said dangerously. | Più o meno quello, detto in modo pericoloso. |
+| ARAN | Then let me say it more dangerously, because I've watched the bill get paid. Everyone who ended up with grammar built it themselves, out of exposure to edges — and then the school charged them for the description, and the ones who couldn't pay twice were told they were bad at languages. That's the sharpened version. It's not that teaching grammar fails. It's that it never happened. There's no such event. | Allora lascia che lo dica in modo ancora più pericoloso, perché il conto l'ho visto pagare. Tutti quelli che si sono ritrovati con la grammatica se la sono costruita da soli, dall'esposizione ai collegamenti — e poi la scuola gli ha fatto pagare la descrizione, e a quelli che non potevano pagare due volte hanno detto che erano negati per le lingue. Questa è la versione affilata. Non è che insegnare la grammatica fallisca. È che non è mai successo. Un evento così non esiste. |
+| TOM | Taken, sharpened, and slightly frightening. So here's my objective function, and you tell me if it survives contact. Minimum admitted, maximum minted. The minimum number of things we have to introduce and state — and then the maximum of things the learner can mint as a result. Admit items, admit the felt floors. Everything else is minted, by the learner, in the landscape. The whole curriculum question becomes: what's the smallest set of admissions with the biggest minting yield? | Presa, affilata, e leggermente spaventosa. Allora ecco la mia funzione obiettivo, e tu dimmi se sopravvive al contatto. Minimo ammesso, massimo coniato. Il numero minimo di cose che dobbiamo introdurre e dichiarare — e poi il massimo di cose che chi impara può coniare di conseguenza. Ammetti gli item, ammetti i pavimenti sentiti. Tutto il resto è coniato, da chi impara, nel paesaggio. Tutta la domanda del programma diventa: qual è l'insieme più piccolo di ammissioni con la resa di coniatura più grande? |
+| ARAN | Say the word again. | Dilla ancora, quella parola. |
+| TOM | Minted. | Coniato. |
+| ARAN | Minted. Because that's what the play is. When I finally understood why the playful bit mattered — it's the mint. Give people permission to combine, even when the combination doesn't communicate anything yet, and every combination that clicks is a coin they struck themselves. Your drama game — | Coniato. Perché il gioco è questo. Quando finalmente ho capito perché il pezzo giocoso contava — è la zecca. Dai alla gente il permesso di combinare, anche quando la combinazione non comunica ancora niente, e ogni combinazione che scatta è una moneta che si sono battuti da soli. Il tuo gioco di teatro — |
+| TOM | Holy Dickhead Batman. Everyone stands in a circle and recombines it. Holy BatHead ManDick. Holy DickMan Bathead. Pointless, joyful, and every single recombination is teaching your mouth that the units are units. | Holy Dickhead Batman. Tutti in cerchio a ricombinarlo. Holy BatHead ManDick. Holy DickMan BatHead. Inutile, gioioso, e ogni singola ricombinazione insegna alla tua bocca che le unità sono unità. |
+| ARAN | And nobody ever forgot a coin they struck themselves. Which brings me to the evening class, since you've handed me the loaded gun. Twice a week, two hours. New vocabulary items, a bit of conjugation, if you're lucky some role-play. Five to ten years to a real conversation, and everyone around you on the same timetable, so it feels normal. | E nessuno ha mai dimenticato una moneta che si è battuto da solo. Il che mi porta al corso serale, visto che la pistola carica me l'hai passata tu. Due volte alla settimana, due ore. Item nuovi di vocabolario, un po' di coniugazione, se ti va bene un po' di role-play. Da cinque a dieci anni per una conversazione vera, e tutti intorno a te sulla stessa tabella di marcia, così sembra normale. |
+| TOM | Item-rich, edge-poor. | Ricco di item, povero di collegamenti. |
+| ARAN | And no model of memory at all, on top. What you learned in week one is gone by week two, and week two is new stuff anyway, and the syllabus never comes back except at random. | E nessun modello della memoria, per giunta. Quello che hai imparato la prima settimana è sparito entro la seconda, e la seconda settimana è comunque roba nuova, e il programma non torna mai indietro se non a caso. |
+| TOM | The path isn't just the wrong shape. It's unmaintained. | Il sentiero non è solo della forma sbagliata. È senza manutenzione. |
+| ARAN | And then the bit that actually breaks my heart, and I'm going to say it the way I always say it. You'll see kids who really care, really trying, and you look at their workbooks and they're full of fucking highlighting. | E poi il pezzo che mi spacca davvero il cuore, e lo dico come lo dico sempre. Vedi ragazzi a cui importa davvero, che ci provano davvero, e guardi i loro quaderni e sono pieni di evidenziature del cazzo. |
+| TOM | And the results are in. | E i risultati ci sono. |
+| ARAN | It does nothing. Worse than nothing; it costs the time it takes. Nobody told them how to form a memory, because their teachers aren't memory specialists either and were never told themselves. They're busting their guts on a method proven not to work, and we're letting them down. Just shatteringly. | Non fa niente. Peggio di niente: costa il tempo che ci vuole. Nessuno gli ha detto come si forma una memoria, perché nemmeno i loro insegnanti sono specialisti della memoria, e a loro non l'ha mai detto nessuno. Si spaccano la schiena su un metodo che è dimostrato che non funziona, e noi li stiamo deludendo. In modo devastante. |
+| TOM | Systemic. Not one villain anywhere in it. | Sistemico. Nemmeno un cattivo, da nessuna parte. |
+| ARAN | Not one. Everyone in the building is doing what they saw done. That's what a bad graph walk looks like from the inside — it looks like tradition. | Nemmeno uno. Tutti nell'edificio fanno quello che hanno visto fare. Ecco l'aspetto che ha una brutta passeggiata nel grafo vista da dentro — ha l'aspetto della tradizione. |
+| TOM | So the mint isn't a nicety. It's the difference between a subject you own and a route you were bussed along. | Quindi la zecca non è un vezzo. È la differenza tra una materia che possiedi e un percorso lungo il quale ti hanno portato in autobus. |
+| ARAN | And they remember the bus. That's the cruel bit. They remember the bus and think it was the country. | E loro si ricordano l'autobus. È quello il pezzo crudele. Si ricordano l'autobus e pensano che fosse il paese. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| where do they live, in the head? | dove stanno, nella testa? | D | ZUT — the Method Pod Ch. 4 form for the same English, verbatim ✓ (the cross-pod rhyme the ear should catch) |
+| ask it at the level of neurons | falla al livello dei neuroni | D | *fare una domanda* ✓ family — the question is *la* |
+| how would it even work? | come funzionerebbe, anche solo in teoria? | D | ZUT — Method Ch. 4 verbatim ✓ |
+| before she can tie her shoes | prima di sapersi allacciare le scarpe | D | ZUT — Method's *saperti allacciare le scarpe*, person shifted ✓ |
+| you can hear it getting complicated | lo senti diventare complicato | I | *sentire* + *diventare* — the hear-verb and the become-void in one clause |
+| it's never once needed sharpening | non ha mai avuto bisogno di essere affilato, nemmeno una volta | D | the have-need frame ✓ S3's territory, no collision |
+| a perfectly good description of what comes out of people's mouths | una descrizione perfettamente buona di quello che esce dalla bocca della gente | D | ZUT — Method Ch. 4 verbatim ✓ |
+| barking mad | da matti | I | **NN absence:** *da matti* — the *da*-of-quality; *de locos* actually parallels — near-anchor |
+| that survives the neuron question | che sopravviva alla domanda dei neuroni | D | subj after *nessuno ha* ✓; *sopravvivere A* — the dative survival |
+| then what's in there? | e allora cosa c'è là dentro? | D | ZUT — Method Ch. 4 verbatim ✓ |
+| I still get vertigo relaying it | a riferirlo mi gira ancora la testa | I | *girare la testa* + dative — the *fare male* family; fronted *a riferirlo* |
+| as highly regarded as the field gets | stimata quanto si può essere stimati nel campo | I | the as-X-as-it-gets frame → *quanto si può essere* — impersonal *si* |
+| there's no such thing as a word. there aren't any. | le parole non esistono. non ce ne sono. | D | ZUT — Method Ch. 4 verbatim, both lines ✓ |
+| so that "to boldly go" comes out as three of them | in modo che «to boldly go» ne escano tre | I | *ne* + subjunctive — purpose clause with the partitive |
+| words are shaky | le parole traballano | I | adjective → verb *traballare* |
+| red bus, red house, one that's red | autobus rosso, una casa rossa, uno rosso | D | ZUT — Method Ch. 1's exact triple ✓ the deepest cross-pod anchor there is |
+| two ingredients is enough | due ingredienti bastano | D | *bastare* ✓ |
+| it's a bloody graph | è un grafo, porca miseria | I | the expletive relocates to a tag — register call flagged (*cazzo* the stronger option; corpus swears, Tom's ruling allows it) |
+| in any direction you like | in qualunque direzione vuoi | D | |
+| because it did in 1975 | perché così era nel 1975 | E | the do-ellipsis erases into *così era* |
+| the subject / a subject you own | la materia / una materia che possiedi | D | **NN anchor:** *materia* — matched school-word |
+| nobody has ever taught anybody grammar | nessuno ha mai insegnato la grammatica a nessuno | D | double *nessuno* concord — and no personal-*a* worry: the *a* here is the real dative ✓ |
+| I've watched the bill get paid | il conto l'ho visto pagare | I | fronting + *visto* + infinitive ✓ |
+| built it themselves | se la sono costruita da soli | I | reflexive-benefactive + doubling + agreement — three machines |
+| the school charged them for the description | la scuola gli ha fatto pagare la descrizione | I | charge → causative *fare pagare* ✓ |
+| were told they were bad at languages | hanno detto che erano negati per le lingue | I | passive → impersonal 3pl ✓; **NN anchor:** *negato per* — *negado para*, matched idiom |
+| it's not that teaching grammar fails | non è che insegnare la grammatica fallisca | D | *non è che* + subj — **NN:** *no es que falle*, matched mood ✓ |
+| there's no such event | un evento così non esiste | I | no-such → *non esiste* ✓ one frame, third use |
+| minimum admitted, maximum minted | minimo ammesso, massimo coniato | D | **NN absence:** *coniare* against *acuñar* — no bridge |
+| it's the mint | è la zecca | D | **NN absence-with-comedy:** *zecca* = the mint, and also a tick; Spanish *ceca* is a fossil |
+| a coin they struck themselves | una moneta che si sono battuti da soli | D | *moneta* ✓ ZUT (Method Ch. 11 currency) |
+| the permission | il permesso | D | ZUT — Method Ch. 5's noun, same article ✓ |
+| you've handed me the loaded gun | la pistola carica me l'hai passata tu | I | fronting + doubling + agreement + stressed *tu* ✓ |
+| item-rich, edge-poor | ricco di item, povero di collegamenti | D | ZUT — *povero di collegamenti* is Method Ch. 8 verbatim ✓; *ricco DI* the preposition trap ✓ |
+| gone by week two | sparito entro la seconda | D | *sparito* ✓; happen-by → *entro* ✓ consistent |
+| at random | a caso | D | *al azar* — anchor-shaped |
+| breaks my heart | mi spacca il cuore | D | ZUT — Method Ch. 7 verbatim ✓ |
+| kids who really care | ragazzi a cui importa davvero | D | ZUT — Method Ch. 7 verbatim ✓ |
+| full of fucking highlighting | pieni di evidenziature del cazzo | D | register kept per ruling; *evidenziatore* family ✓ |
+| the results are in | i risultati ci sono | D | ZUT — Method Ch. 7 verbatim ✓ |
+| it costs the time it takes | costa il tempo che ci vuole | I | *ci vuole* ✓ shared ledger |
+| busting their guts | si spaccano la schiena | D | ZUT — Method Ch. 7 verbatim ✓ |
+| we're letting them down | li stiamo deludendo | D | |
+| what they saw done | quello che hanno visto fare | D | *visto fare* ✓ |
+| what a bad graph walk looks like | l'aspetto che ha una brutta passeggiata nel grafo | I | the looks-like frame ✓ ZUT with Ch. 2/Ch. 3 of this pod |
+| a route you were bussed along | un percorso lungo il quale ti hanno portato in autobus | I | passive → impersonal 3pl ✓; *in autobus* |
+| think it was the country | pensano che fosse il paese | D | subj ✓; **NN trap:** *paese* = country AND village — sp. *país* is only the country; the Spanish ear under-reads it |
+
+**Chapter 5 verdict:** the chapter with the most cross-pod ZUT anchors (nine verbatim reuses of
+Method Pod forms — the two pods now demonstrably speak one Italian). Register calls flagged:
+*porca miseria* vs *cazzo* for "bloody" (t14) — the chapter already spends *del cazzo* at t29,
+so the milder tag at t14 keeps the escalation audible; Aran's call.
