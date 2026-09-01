@@ -118,10 +118,12 @@ merely asserted.
   because Vue trims whitespace inside a `<template>` tag — fixed and re-shot.
 - **Specs**: 11 new, all green (`src/views/admin/LabsIndex.test.js`) — including one that
   pins Pod Lab to LIVE NOW and names why.
-- **Suite**: 3186/3191 passed. The 5 failures and 1 error are **identical on untouched
-  `origin/main`**, verified by running the same six files in a baseline worktree:
-  autocue session-review-chunks, LearningJourneyAudioFlags, and four `tools/*` scripts.
-  None are files this work touched.
+- **Suite**: 3187/3192 passed. The 5 failures and 1 error are in **exactly the same six
+  files that fail on untouched `origin/main`**, verified by running those six in a baseline
+  worktree: autocue session-review-chunks, LearningJourneyAudioFlags, and four `tools/*`
+  scripts. None are files this work touched. (One intermediate run showed a seventh failing
+  file; re-running produced the baseline six, so one of the `tools/*` specs is flaky —
+  noted, not fixed.)
 - **Build**: `vite build` clean.
 
 ## Also surfaced by the audit, outside this work's scope
