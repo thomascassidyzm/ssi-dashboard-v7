@@ -62,7 +62,7 @@ await page.getByRole('button', { name: 'Sign In' }).click()
 await page.waitForURL((u) => !u.pathname.startsWith('/login'), { timeout: 90_000 })
 console.log('signed in')
 
-await page.goto(`${BASE}/admin/configs/voice`)
+await page.goto(`${BASE}/admin/labs/voice`)
 await page.locator('.ui-table').first().waitFor()
 await page.locator('.ui-search').fill('english')
 await page.getByRole('button', { name: 'Voices' }).first().click()

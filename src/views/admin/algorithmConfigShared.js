@@ -3,8 +3,8 @@
 //
 // The config lives in one place (the algorithm_config table, one row per key,
 // edited via PATCH /api/algorithm-config). The UI is split across pages by
-// domain — Listening (/admin/configs/listening) edits the listening rows,
-// Speaking (/admin/configs/speaking) edits the script/playback rows — but both
+// domain — Listening (/admin/labs/listening) edits the listening rows,
+// Speaking (/admin/labs/speaking) edits the script/playback rows — but both
 // load the SAME rows and share these presentational helpers, so nothing is
 // duplicated and a save on either page hits the same endpoint.
 // ============================================================================

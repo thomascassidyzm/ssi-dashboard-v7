@@ -29,7 +29,7 @@ async function signIn (page) {
 function card (page) { return page.locator('tbody tr.vl-expanded, tbody tr').last() }
 
 async function openLanguage (page) {
-  await page.goto('/admin/configs/voice')
+  await page.goto('/admin/labs/voice')
   await expect(page.locator('.ui-table')).toBeVisible({ timeout: 60_000 })
   await page.locator('.ui-search').fill(LANGUAGE)
   await page.getByRole('button', { name: 'Voices' }).first().click()

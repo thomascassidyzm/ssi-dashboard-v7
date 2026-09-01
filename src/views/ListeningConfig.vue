@@ -4,7 +4,7 @@
       <nav class="admin-crumbs">
         <router-link to="/" class="crumb-link">Home</router-link>
         <span class="crumb-sep">/</span>
-        <router-link to="/admin/configs" class="crumb-link">Configs</router-link>
+        <router-link to="/admin/labs" class="crumb-link">Labs</router-link>
         <span class="crumb-sep">/</span>
         <span class="crumb-here">Listening</span>
       </nav>
@@ -262,7 +262,7 @@ import { isolateText } from '../utils/textDirection.js'
 const { isAdmin, learner: currentUser } = useAuth()
 
 // The script/playback rows (script_shape, easy_mode, fast_mode) live on a
-// SEPARATE page now (/admin/configs/speaking) — they govern the speaking
+// SEPARATE page now (/admin/labs/speaking) — they govern the speaking
 // practice script, not listening. This page still LOADS them (the preview's
 // listening/speaking ratio reads script_shape) but renders no editor for them.
 //

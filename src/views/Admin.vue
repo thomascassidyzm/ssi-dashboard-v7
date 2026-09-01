@@ -11,7 +11,7 @@
       <div class="header-titles">
         <div>
           <h1 class="page-title">Admin</h1>
-          <p class="page-subtitle">Platform-wide tooling — applies across every course and learner.</p>
+          <p class="page-subtitle">Platform-wide tooling. What each surface reaches varies — the Labs index says so per lab.</p>
         </div>
       </div>
     </header>
@@ -58,16 +58,20 @@
 </template>
 
 <script setup>
-// Admin hub. Cards are platform-wide surfaces — global configs first,
-// then the operational boards. Writes everywhere are RLS-gated to admins;
-// non-admins can browse but saves fail (same convention as ListeningAdmin).
+// Admin hub. Cards are platform-wide surfaces — the Labs index first, then the
+// operational boards. Writes everywhere are RLS-gated to admins; non-admins can
+// browse but saves fail (same convention as ListeningAdmin).
 const cards = [
   {
-    title: 'Configs',
-    to: '/admin/configs',
-    badge: 'global',
-    description: 'Global algorithm config — Listening and Speaking surfaces, applied to every course, every learner.',
-    action: 'Open Configs',
+    // Was "Configs" until 2026-09-01. The card promised "global … every course,
+    // every learner", which was true of two of the surfaces underneath it and
+    // false of the other four — Basket Lab is mounted readOnly and writes
+    // nothing at all. Labs, grouped by blast radius, is the honest heading.
+    title: 'Labs',
+    to: '/admin/labs',
+    badge: 'eight',
+    description: 'Every lab in one place — Listening, Speaking, Voice, Pod, Script, VAD, Basket and Capture A/B — grouped by blast radius: who a change reaches, and when.',
+    action: 'Open Labs',
     accent: '#a855f7',
     glow: 'rgba(168, 85, 247, 0.15)',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>',
