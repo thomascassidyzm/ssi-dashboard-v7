@@ -16,7 +16,7 @@ It does now. `/canonical/scripts` lists all twelve — the core pod, the flagshi
 
 **Audio.** Said once, plainly, at the top: the canonical store holds no audio at all, for any walk on the page. Audio exists against generated pods, downstream. No invented column.
 
-**Status,** from the registry: authored, mapping-only, parked. Care-work and public-services show MAPPING-ONLY — a mapping is not a walk, and the page says so in their own words.
+**Status,** from the registry: authored, mapping-only, parked. `public-services` shows MAPPING-ONLY — a mapping is not a walk, so it carries no link to open.
 
 **The Welsh health overlay** wears WELSH OVERLAY — DRAFT FOR ARAN on the health card. A worker never signs off target-language text.
 
@@ -34,15 +34,29 @@ Nothing on the page keys on a slug. The registry `tools/pods/pod-corpora.json` i
 
 That mattered within the hour. Job #732's migration landed while I was building: the store now holds four slugs, `pod-1` at 231 rows and 22 scenes, and the two sacked slates are gone. The page needed no edit. Twelve unit tests assert it against the store as it stood on **both sides** of that rename.
 
-## The estate moved under the page, twice, and it held
+## No shape claims is not zero coverage
+
+The change that matters most. `health`, `hospitality` and `care-work` declare no shapes in their corpora, so no walk steps were parsed and coverage computes as 0 of 36 traversed. Rendered as numbers, that is a libel — Aran's 438-line hand-authored exemplar would have read as the worst-covered walk on the page.
+
+Declaring nothing and failing to resolve what you declared are opposite facts, and they now render differently:
+
+- **No declarations** — words, no numbers: *"This corpus declares no metagraph shapes, so no walk steps were parsed and there is no coverage to compute. That is not zero coverage — nothing was claimed, so nothing failed. Encoding its walk is the next step, not a repair."*
+- **Declared** — numbers, including the unresolved count, which *is* a finding. Retail 23 of 35 unresolved, trades 40 of 84.
+- **Graph rows** — the core slate, whose rows are the graph's own reference space, labelled "read off row references, not declarations".
+
+The mode is derived rather than configured: `refSpace === 'g'` means the core slate, otherwise the declaration count decides.
+
+## The estate moved under the page, three times, and it held
 
 **Migration #732 landed mid-build.** The store went to four slugs, `pod-1` at 231 rows. The page needed no edit — nothing in it keys on a slug.
 
 **Then five themed walks were ingested at 11:29,** while I was writing the tests. Health, retail, trades, hospitality and care-work all appeared in `canonical_pod_scenarios`. The page absorbed it: their INGESTABLE badges cleared, their store counts and coverage arrived, and they gained script pages to open.
 
-**And that surfaced a real drift.** `care-work` landed in the store with 306 rows while the registry still records it as `mapping-only` — a status that *claims* it is not in the store. The page now flags exactly that contradiction: a red REGISTRY IS BEHIND THE DATABASE chip and a plain sentence saying which source to believe. Same principle as the unregistered row — this page never quietly resolves a disagreement between its two sources, because the disagreement is the thing worth seeing.
+**That surfaced a real drift.** `care-work` landed in the store with 306 rows while the registry still recorded it as `mapping-only` — a status that *claims* it is not in the store. The page flags exactly that contradiction: a red REGISTRY IS BEHIND THE DATABASE chip and a plain sentence saying which source to believe. Same principle as the unregistered row — this page never quietly resolves a disagreement between its two sources, because the disagreement is the thing worth seeing.
 
-A consequence for the tests, which is the honest way round: INGESTABLE and DRIFT are asserted as **invariants read off the registry**, not as a list of which walks are in the store. A test naming that list would have gone red for being right.
+**Then the write pass landed and the drift resolved.** The store holds nine walks; `care-work` is `authored` with a corpus and a branch, so its flag cleared on its own. `public-services` stays `mapping-only` — its branch exists but carries no corpus — so it shows as a mapping without a walk and offers no link. The drift machinery stays, because the next one will not announce itself.
+
+**The lesson landed in the tests, hard.** Three separate specs broke this session because they named `care-work` as mapping-only; it moved twice in twenty minutes. Statuses, ingestability, drift and links are now all derived from the registry, and the drift case is tested against a *constructed* contradiction plus a live assertion that the real registry currently has none. A test that goes red because the work went right is a bad test.
 
 ## The bugs the rebuild found
 
@@ -52,9 +66,7 @@ Driving the page showed the core pod reading **0/36 shapes traversed, 231 lines 
 
 Two nearby strings deliberately not renamed with it, and the comment now says why: the bundled walk file `walks/pod-0.json`, and the `origin: 'pod-0'` provenance labels in `fromStore.js`. Provenance does not get rewritten by a rename.
 
-**The second bug was sharper, and I fixed it too.** `MetagraphView.vue` had `HIDDEN = new Set(['pod-1', 'pod-0.5'])` — written to hide two sacked slates whose row numbers collided with the graph's by accident. The rename handed one of those names to the live CORE pod, so the guard was hiding the exact pod that view exists for, while `LABELS` and `ORDER` keyed on a `'pod-0'` that no longer exists: the core pod was both hidden and unlabelled. Swapping the strings would have been wrong — the sacked slates are *deleted*, so the set is now empty, with the mechanism kept as the seam for the next time one is sacked. `LABELS`, `ORDER` and the fallback key off `GRAPH_REF_SLUG`. `ORIGINS` and the `node.origin` test still say `'pod-0'` deliberately — provenance, not a live slug. The Script Lab links to that view, so a view where the core pod is hidden would have made my own page point at a lie.
-
-I took this on because the session that owned the file had exited; a peer flagged the inversion and neither of us owned it.
+**The second was the `MetagraphView.vue` guard inversion** — `HIDDEN` hiding the live core pod after the rename. I fixed it when the owning session had exited, and it was then fixed properly on the base branch. On merging I took **their** version wholesale at the conflict: it is their fix, and their two-namespace comment is the authority. I then checked my own page against that same distinction. The only slug literals left in it are in `walkFacts.js`, and they are `listening_pods` slugs on the generated side — named deliberately, because the entire point of that sentence is that the two namespaces disagree.
 
 ## Verified how
 
@@ -62,7 +74,7 @@ A real browser, against a real `production-api` on port 3470 and the live canoni
 
 Screenshots: `~/ssi-evidence/ssi-dashboard-v7/script-lab-shots/` — `desktop.png`, `phone.png`, `labs-index.png`, `metagraph.png`.
 
-Also green: 20 unit tests on the join, 11 on #714's labs index, and a full `vite build`. I did not run the repo-wide suite.
+Also green: 25 unit tests on the join, 11 on #714's labs index, and a full `vite build`. I did not run the repo-wide suite.
 
 One hazard worth recording for the next worker on this box: Playwright's Chromium could not start, missing `libnspr4.so`, and there is no sudo here. Other sessions had already extracted the NSS libs into scratch; copying that set and putting it on `LD_LIBRARY_PATH` got a browser up. Without that trick this would have been a reported gap rather than a screenshot.
 
@@ -74,4 +86,4 @@ One hazard worth recording for the next worker on this box: Playwright's Chromiu
 
 **The registry has no counts for the parked pair.** `music` is 749 turns across 8 scenes, `travel-situations` 72 turns in 1 scene, and both live only in `listening_pods`, which the Script Lab cannot read. I did **not** add a field to the shared contract — it is not mine to edit. The parked cards show provenance without size, and job #48 has been told.
 
-**I adopted the ingestability rule verbatim** — `status === 'authored' && corpus && format` — and after the registry gained an `ingestableRule` field, pointed the comment at that field as the single authority. One authority, two implementations, so the lab cannot badge a walk as ready that the tool will not touch.
+**The registry's fields are now read, not duplicated.** `parked[].size` replaced my local snapshot, which I deleted rather than maintain in parallel, and the page shows the registry's own `measured` provenance string beside it. `ingestableRule` is **cited verbatim** in the footer rather than paraphrased, and a test asserts our predicate still implements exactly what the field says — reword the field and the test fails, which is the point of hoisting it.
