@@ -41,6 +41,8 @@ discipline.
 
 ## 1.0 The standing arrangement (the medium contract in a standing relationship)
 
+*Walks:* N1201
+
 ### Flow 1 *(happy path — the one-line re-invocation)*
 - **CW:** "Morning, Eileen — it's only me. Are we in yours today, then?"
 - **P:** "Course we are. We always are — you'll not get out of it that easily."
@@ -97,6 +99,8 @@ discipline.
 
 ## 1.2 The wash
 
+*Walks:* N102, N110, N5, F11, F18, O101
+
 ### Flow 1 *(happy path — the act announced and narrated)*
 - **CW:** "Ready when you are. I'll do your back and your feet, and you do the rest — same as always. Alright?"
 - **P:** "Go on, then. No dawdling — the water goes cold in this bathroom."
@@ -125,6 +129,8 @@ discipline.
 
 ## 1.3 "I'm not having it today" — the refusal
 
+*Walks:* F202, F103, N201
+
 ### Flow 1 *(happy path — refused, accepted, recorded)*
 - **CW:** "Shall we get your wash done before the news comes on?"
 - **P:** "I'm not having a wash today. I'm cold, and I'm comfortable, and you can't make me."
@@ -152,6 +158,8 @@ discipline.
 ---
 
 ## 1.4 The tablets
+
+*Walks:* N102, N103, F103, N106, O101
 
 ### Flow 1 *(happy path — the check, even after years)*
 - **CW:** "Tablet time. You know it's not me being funny — I have to look at the sheet every time, even after two years of your tea."
@@ -201,6 +209,8 @@ discipline.
 
 ## 1.6 "You won't tell anyone" — the disclosure
 
+*Walks:* N204, O7, F204, N109
+
 ### Flow 1 *(human moment — heard, not fixed)*
 - **CW:** "There's your tea. I'll do the sink while you drink it."
 - **P:** "Leave the sink a minute. Sit down by me. It gets very quiet in this house, Anna. After you go, there's nobody till the morning."
@@ -229,6 +239,8 @@ discipline.
 
 ## 1.7 The pass-on
 
+*Walks:* N501, F101, F103, N105, F16
+
 ### Flow 1 *(safety-critical ⚠ — announced, and done)*
 - **CW:** "Before I go, I'm saying it plainly so there's no surprises: what you told me about Gary and the card, I'm reporting to the safeguarding team this afternoon."
 - **P:** "And if I say don't?"
@@ -249,6 +261,8 @@ discipline.
 
 ## 1.8 "She's not herself"
 
+*Walks:* N12, F302, F101, N105, N107, F103
+
 ### Flow 1 *(safety-critical ⚠ — the gut reading, priced and escalated)*
 - **CW:** *(on the phone)* "Is that the district nurse? It's Anna — I'm with Eileen Prosser, and I want eyes on her today."
 - **C:** "Go on — what are you seeing?"
@@ -268,6 +282,8 @@ discipline.
 ---
 
 ## 1.9 The daughter
+
+*Walks:* N104, N109, F401, F501, N401
 
 ### Flow 1 *(happy path — the update, referenced to her own baseline)*
 - **F:** "How's she doing, Anna? Honestly, now."
@@ -297,6 +313,8 @@ discipline.
 
 ## 1.10 "Not allowed, my love"
 
+*Walks:* N401, P101
+
 ### Flow 1 *(problem — the will)*
 - **P:** "Anna — sit down a minute. I want you to witness my will. You're the only one I trust since all this Gary business."
 - **CW:** "Oh, Eileen. That's a big thing to say to me, and I'm going to say no to it — I'm not allowed, my love. Not because I don't want to."
@@ -316,6 +334,8 @@ discipline.
 ---
 
 ## 1.11 The shopping, and the doorway
+
+*Walks:* P2, F103, N104, N105, F6
 
 ### Flow 1 *(happy path — the purse held in trust)*
 - **CW:** "Shopping's in. Here's the receipt, and here's your change — count it with me? I make it four items, and the receipt agrees."
@@ -344,6 +364,8 @@ discipline.
 ---
 
 ## 1.12 The office and the rota
+
+*Walks:* N9, N109, N402, N105
 
 ### Flow 1 *(question — the fit-in call, with its true cost)*
 - **C:** *(on the phone)* "Anna, it's Donna. Can you fit in a welfare call to Mrs Hartley after Eileen's? Ten minutes, just eyes on her."
@@ -387,6 +409,8 @@ discipline.
 
 ## 2.1 The morning, with Arthur
 
+*Walks:* N102, N110, N5, F11, F18, O101
+
 ### Flow 1 *(happy path — the act narrated, the assent read)*
 - **CW:** "Morning, Arthur. Shall we get you freshened up before breakfast? I've warmed a flannel for you."
 - **P:** "…Breakfast."
@@ -406,6 +430,8 @@ discipline.
 ---
 
 ## 2.2 "When's Nancy coming?"
+
+*Walks:* F601, F1
 
 ### Flow 1 *(human moment — answer the need)*
 - **P:** "What time's Nancy coming? She's late. She's never late."
@@ -435,6 +461,8 @@ discipline.
 
 ## 2.3 The handover
 
+*Walks:* N4, P3, F103, N110
+
 ### Flow 1 *(happy path — given, read back, and written)*
 - **CW:** "Sam — handover for Arthur, two things that matter tonight. One: cream on the RIGHT leg after his wash, the left one's healed and gets nothing. Two: he was off his tea at five, so offer him toast about eight — he'll say no the first time and yes the second. Say it back to me?"
 - **C:** "Cream on the right leg only. Toast at eight, ask twice. What's the cream for — is it new?"
@@ -463,6 +491,8 @@ discipline.
 
 ## 2.4 The review
 
+*Walks:* N8, N15, N108, F501, F16
+
 ### Flow 1 *(problem — the specifics against the rank)*
 - **C:** "The physio's report has Arthur independent on stairs, so we're minuting that he's fit for the ground-floor move next week."
 - **CW:** "Before that's minuted — can I put what I see against it? The assessment was one good afternoon and ten minutes. I take him down those stairs at seven every morning."
@@ -483,6 +513,8 @@ discipline.
 
 ## 2.5 The first visit — Joan
 
+*Walks:* P5, N108, N110
+
 ### Flow 1 *(happy path — the elicit chains, and the constraints that outlive the meeting)*
 - **CW:** "So this hour is yours, Joan — no forms till the end. Start me simple: mornings. What do you manage easily, and what's become a battle?"
 - **P:** "Getting up's fine. Buttons are the battle — these fingers won't do buttons any more. And the bath frightens me since I slipped in October, if I'm honest."
@@ -502,6 +534,8 @@ discipline.
 ---
 
 ## 2.6 The quiet room
+
+*Walks:* N105, N109, F14, F204
 
 ### Flow 1 *(human moment — the family summoned, with what can be said)*
 - **CW:** *(on the phone)* "Michael, it's Anna, from the home. I'm ringing about your dad — he's been taken poorly this morning, and the doctor's with him now."
