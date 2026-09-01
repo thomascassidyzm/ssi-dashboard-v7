@@ -186,7 +186,7 @@ discipline.
 - **P:** "The cheese and potato. The chops can be tomorrow, when there's more of me to chew them."
 - **CW:** "Cheese and potato it is, and I'll cut up an apple for after. You had the full bowl of porridge this morning — that's going on the chart, it's the best breakfast this week."
 - **P:** "That chart of yours knows more about my stomach than I do."
-- **CW:** "That's the point of it — the night girl reads it, and the nurse reads it, so nobody has to guess and nobody keeps asking you. Eat well today and tomorrow the chart says so."
+- **CW:** "That's the point of it — the evening carer reads it, and the nurse reads it, so nobody has to guess and nobody keeps asking you. Eat well today and tomorrow the chart says so."
 - **P:** "Then put the apple on it as well. Every bite counts, you said."
 
 ### Flow 2 *(problem — the fridge, with dignity)*
@@ -253,9 +253,9 @@ discipline.
 - **CW:** *(on the phone)* "Is that the district nurse? It's Anna — I'm with Eileen Prosser, and I want eyes on her today."
 - **C:** "Go on — what are you seeing?"
 - **CW:** "I can't put my finger on it, and I'll say that straight out — no fever, no fall. She's just not right. She didn't want her toast, and she always wants her toast. She's muddled her granddaughter's name twice, and that's not her — she's sharp as you like, normally."
-- **C:** "Off her food and new confusion, in an older lady — that's worth listening to. Any burning when she spends a penny, has she said?"
-- **CW:** "She'd not tell me straight, but she's been to the bathroom four times this morning — that's in the book too, with times."
-- **C:** ⚠ "Then I'm coming this morning, and hear me on this: if she goes drowsy, or you can't rouse her properly, don't wait for me — ring for an ambulance straight away. Say that back to me before I go."
+- **C:** ⚠ "Off her food and new confusion, in an older lady — that's worth listening to, and I'm coming this morning. And hear me on this before I go: if she goes drowsy, or you can't rouse her properly, don't wait for me — ring for an ambulance straight away. Say that back to me."
+- **CW:** "Drowsy, or I can't rouse her properly: ambulance straight away, you second, no waiting. And it's going in the book with the time you said it."
+- **C:** "That's it exactly. I'll be there within the hour — and keep writing what you're seeing, times and all. It's the times that tell the story."
 
 ### Flow 2 *(problem — the report pressed until it's taken up)*
 - **CW:** *(on the phone)* "Donna, it's Anna again — about Eileen. I rang yesterday, and nothing's been out yet."
@@ -331,14 +331,14 @@ discipline.
 - **P:** "I've walked on worse. I had children in the war winters, I'll have you know."
 - **CW:** ⚠ "And I can't stop you, and I wouldn't try — it's your front door and your two feet. But I have to say my piece plainly: that ice frightens me, your bones aren't the bones you had in the war winters, and I'm writing down that I've said so — that's not me being dramatic, it's my job."
 - **P:** "You and your book. So I'm a prisoner till it thaws, am I?"
-- **CW:** "Not a bit — pick your ending: I go for the pension now and you keep your feet dry, or we both go after eleven when the sun's been on that pavement, arm in arm, and you show me which house had the doodlebug. Either way the pension's home by dinner."
+- **CW:** "Not a bit — pick your ending: I go for the pension now and you keep your feet dry, or we both go after eleven when the sun's been on that pavement, arm in arm, and you can tell me the story of every front door between here and the corner. Either way the pension's home by dinner."
 
 ### Flow 3 *(question — the pension, and the arm)*
 - **P:** "After eleven, then. But I'm collecting it myself — it's my name on the book, and the girl behind the counter knows me."
 - **CW:** "Wouldn't dream of it any other way. You do the counter; I'm just the arm and the company."
 - **P:** "And don't you go gripping me like a bag of shopping, either. Light, like we're strolling."
 - **CW:** "Light it is. You set the pace and I'll match it — we're not catching a train."
-- **P:** "The last time I ran for a train, Churchill was on the wireless. Here — take the corner slow, that drain always ices."
+- **P:** "The last time I ran for a train, the trains were steam. Here — take the corner slow, that drain always ices."
 - **CW:** "See, this is why you lead — fifty years of knowing which drain ices. You watch the drains, I'll watch you, and the girl at the counter can watch the pair of us."
 
 ---
@@ -428,7 +428,7 @@ discipline.
 - **CW:** "You were never late for a gate in your life, I'd bet. Arthur — before the walk, there's tea just made, and it's bitter out. Have a warm one with me first, and then I'll walk out with you."
 - **P:** "…The gate shuts at eight, mind."
 - **CW:** "We'll keep an eye on the clock together. Here — blue mug. Tell me about the yard while it cools; who's on the gate these days?"
-- **P:** "Old Ffrancon — no, no, he's… it's a young lad now, I forget. They come and go so fast."
+- **P:** "Old Foley — no, no, he's… it's a young lad now, I forget. They come and go so fast."
 - **CW:** "They do come and go. You stayed forty years, though — that's the bit worth telling. Start me at your first morning; I've got all the time you need."
 
 ---
