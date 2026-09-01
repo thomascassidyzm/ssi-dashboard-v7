@@ -219,7 +219,7 @@ import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph } from '@/lib/metagraph/loadGraph.js'
 import { computeLayout } from '@/lib/metagraph/layout.js'
-import { walkFromCanonicalRows, walkFromStoredPod, GRAPH_REF_SLUG } from '@/lib/metagraph/walk.js'
+import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.js'
 import { computeCoverage } from '@/lib/metagraph/coverage.js'
 
 const graph = loadGraph()
@@ -251,8 +251,6 @@ async function authedFetch (path, init = {}) {
   return fetch(`${getApiUrl()}${path}`, { ...init, headers })
 }
 
-// Keyed by DATABASE SLUG. The core slate is `pod-1` since the 2026-09-01
-// rename; its human name was already POD 1 and has not changed.
 const LABELS = {
   'pod-1': 'POD 1',
   'learning-flagship': 'Learning flagship',
@@ -262,28 +260,33 @@ const LABELS = {
 
 const ORDER = ['pod-1', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
 
-// This set hid two sacked slates whose row numbers collided with this graph's
-// by accident: they read as 0 of 35 shapes and every tile red, which was true
-// of the numbers and a lie about the pods.
+// THIS SET IS DELIBERATELY EMPTY, and that is the fix, not an oversight.
+// It used to hold ['pod-1', 'pod-0.5'] — two SACKED SLATES whose row numbers
+// collided with this graph's by accident, so they read as 0 of 35 shapes and
+// every tile red: true of the numbers and a lie about the pods.
 //
-// IT IS EMPTY NOW, AND EMPTYING IT WAS NOT OPTIONAL. Migration #732 DELETED
-// both of those slates and renamed the core slate from `pod-0` to `pod-1` — so
-// the set was left naming the live CORE pod and hiding the exact thing it was
-// written to protect, on the one view whose whole subject it is. The names
-// inverted under it; the rule did not change.
+// The 2026-09-01 slug migration DELETED both of those slates and RENAMED the
+// live CORE pod from `pod-0` to `pod-1`. So the old guard inverted: the string
+// `pod-1` stopped naming a sacked slate and started naming the very pod the
+// guard existed to protect, and this view hid it. Swapping the string for
+// `pod-0` would have been the other half of the same mistake — it would guard
+// against a slate that no longer exists.
 //
-// The mechanism stays as the seam. If a slate is ever sacked again and left in
-// the store, name it here and it disappears from this view — reversible in one
-// line, which is how it was built.
+// There is nothing left to hide, so nothing is hidden. The mechanism stays
+// because the next sacked slate is a one-entry change.
 const HIDDEN = new Set([])
 
 // The store names each shape's provenance in its own slugs; the page says them
 // the way a person says them. Same shape, one name, everywhere on screen.
 //
-// 'pod-0' HERE IS PROVENANCE AND IS CORRECT — it records where a shape was
-// drawn from, and provenance does not get rewritten by a rename. The live slug
-// moved to `pod-1` in LABELS and ORDER above; this key must not follow it, and
-// nor must the `node.origin !== 'pod-0'` test in the template.
+// `pod-0` HERE IS NOT A STALE SLUG — DO NOT "FIX" IT. These keys are the
+// METAGRAPH STORE's own provenance namespace (`provenance` in
+// services/shared/metagraph/nodes.json, reaching this file as `origin` via
+// src/lib/metagraph/fromStore.js:84), and the store was not touched by the
+// database slug migration. Twelve nodes still declare `provenance: "pod-0"`,
+// and the schema's provenance enum is still ["pod-0", "method-pod"].
+// LABELS and ORDER above key on `canonical_pod_scenarios.pod_slug`, which IS
+// renamed. Two namespaces, the same pod, and both correctly render "POD 1".
 const ORIGINS = {
   'pod-0': 'POD 1',
   'method-pod': 'the Method Pod',
@@ -348,7 +351,7 @@ const byOrigin = computed(() => {
  *  accounting it is. Not a defect in this page and not hidden: the walks that
  *  place those lines have not been encoded yet. */
 const walkGap = computed(() => {
-  if (active.value !== GRAPH_REF_SLUG) return ''
+  if (active.value !== 'pod-1') return ''
   const a = graph.accounting
   if (!a?.complete_walks_encoded_here || !a?.complete_walks_in_corpus) return ''
   return ` — ${a.complete_walks_encoded_here} of its ${a.complete_walks_in_corpus} complete walks are encoded in the store so far`
@@ -438,8 +441,8 @@ async function select (slug) {
     const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(slug)}`)
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-    // A pod carrying a stored walk is read through it; the core slate and the
-    // slates carry none and keep the row-reference path. Same reading as the
+    // A pod carrying a stored walk is read through it; the CORE pod `pod-1`
+    // carries none and keeps the row-reference path. Same reading as the
     // Script Lab — no second opinion about what a pod's walk is.
     const w = (body.walk || []).length
       ? walkFromStoredPod(body.scenarios || [], body.walk, graph, { id: slug, slug })
@@ -468,12 +471,12 @@ onMounted(async () => {
       .sort((a, b) => rank(a.slug) - rank(b.slug) || a.slug.localeCompare(b.slug))
   } catch (e) {
     podsError.value = e.message
-    pods.value = [{ slug: GRAPH_REF_SLUG, label: LABELS[GRAPH_REF_SLUG], lines: null }]
+    pods.value = [{ slug: 'pod-1', label: LABELS['pod-1'], lines: null }]
   }
   // Arrive with a picture, not with a grey lattice: POD 1 is the pod this graph
   // was derived from and the one whose overlay tells the story. "Graph only" is
   // still one tap away.
-  if (active.value === null && pods.value.some(p => p.slug === GRAPH_REF_SLUG)) await select(GRAPH_REF_SLUG)
+  if (active.value === null && pods.value.some(p => p.slug === 'pod-1')) await select('pod-1')
 })
 </script>
 
