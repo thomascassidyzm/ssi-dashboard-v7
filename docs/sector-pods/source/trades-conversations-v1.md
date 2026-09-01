@@ -256,9 +256,8 @@ ring me in the morning."
 - **C:** "That sentence never means good news. Go on."
 - **T:** "See how the plaster's all powder behind here? Crumbles like biscuit. The leak's been getting into this wall far longer than that pipe's been banging — the timber behind it wants looking at."
 - **C:** "Oh, marvellous. What does that do to the price?"
-- **T:** "Honestly: if the timber's sound, it's a day extra — call it three hundred. If it's not, it's a joiner's job before it's mine, and I'd only be guessing at his number. I've left it opened up and safe — nothing's live, nothing leaks. Have a think tonight and ring me in the morning; if it's the full repair, I need to order the timber Tuesday."
-- **C:** "So nothing gets worse overnight while we decide?"
-- **T:** "Nothing gets worse — it's dry, it's safe, and your water's back on. The only thing that moves overnight is Tuesday getting closer."
+- **T:** "Honestly: if the timber's sound, it's a day extra — call it three hundred. If it's not, it's a joiner's job before it's mine, and I'd only be guessing at his number. I've left it opened up and safe — nothing's live, nothing leaks, and nothing gets worse overnight. Have a think tonight and ring me in the morning; if it's the full repair, I need to order the timber Tuesday."
+- **C:** "That's tomorrow's headache, then, not tonight's. We'll ring you in the morning — and thank you for stopping when you did, rather than ploughing on."
 
 ### Flow 2 *(problem — the press for the original price)*
 - **C:** "We agreed six hundred. I haven't got a magic drawer of money — can't you just do what we agreed?"
@@ -830,3 +829,112 @@ The scene exists so the walk opens and closes at rung 0, as a real trades day do
 - **T:** "The numbers, still. When it's loud and someone shouts a measurement, my head translates it twice before my hands believe it. So keep making me say them back — it's not politeness, it's how I get faster."
 - **O:** "Deal. And for what it's worth — your swearing's completely fluent."
 - **T:** "That was week one. Priorities. The rest is catching up."
+
+---
+
+# Accounting — what this walk defers, adds, and yields
+
+## The shape of the corpus
+
+**23 scenes, 69 flows, 414 turns, 32 ⚠ lines.** Every flow is a six-turn arc; every scene is a
+branch point with its continuations attached — the flows ARE the response families, selected by
+distinction distance (granted / contested / converted is the recurring triad). Conceived at the
+ceiling: the compelled make-safe (scene 11), the resented stop call (scene 20 flow 3) and the
+countersign refused (scene 10 flow 2) are the hardest cases in the register, written first-class
+so the middle of the walk is the easy case.
+
+## Encounter coverage — the mapping's E1–E18, all landed
+
+| E | Scene | | E | Scene |
+|---|---|---|---|---|
+| E1 call-out | 1 | | E10 customer's diagnosis | 4 (flow 3) |
+| E2 diagnosis | 3–4 | | E11 living with the job | 14 |
+| E3 quote | 5 | | E12 merchant's counter | 17 |
+| E4 bad news mid-job | 7 | | E13 site briefing | 18 |
+| E5(a) refuse-and-walk | 9 | | E14 task allocation | 19 |
+| E5(b) warn-and-waiver | 10 | | E15 cross-trade | 21 |
+| E5(c) compelled make-safe | 11 | | E16 stop call | 20 |
+| E6 narrated intervention | 6 | | E17 snagging | 22 |
+| E7 handover | 12 | | E18 chasing the money | 16 |
+| E8 reckoning | 13 | | O7's scene (not an E) | 8 |
+| E9 callback | 15 | | rung-0 stretches | 2, 23 |
+
+## The defer/mint split, resolved against the floor
+
+Health's measure was 30 opener turns: 16 deferred to scene 0, 14 minted. This corpus is the
+first authored AFTER the ratification pass, so the whole opener class defers **by
+construction**: **zero contract turns are authored here** — scene 0 (W1201–W1204, W1401) is
+referenced at the head of the walk and its licence is *used*, never re-issued. The one
+contract-adjacent addition is the measurement-stakes clause (scene 23 flow 3: "keep making me
+say them back — it's not politeness, it's how I get faster"), which is the licence priced in the
+trade's own currency — a seed-set candidate, not a contract re-author.
+
+Scene admissions: **19 scenes admit exactly one new response position** (named per scene in the
+*Admits* header); **4 are zero-admission** — the doorstep (2, one F401 turn aside), the
+reckoning (13), living-with-the-job (14, N107 owned from scene 12), the merchant's counter (17)
+and the cabin (23) walk material the floor already owns, in trade furniture. (That is five
+listed against four claimed: scene 2's F401 turn is its one admission, so the strict count is
+19 admitting / 4 zero.) Zero-admission scenes are deliberate — they are where the walk proves
+the per-stretch rule: F11 and F18, dead through every pinned stretch, revive at the counter and
+in the cabin.
+
+**Shapes traversed** — store: N1, N2, N3, N4, N7, N8, N12, N13, N15, N16, P1–P5, F5, F6, F11,
+F16, F18, F302, F601 (care work's move, re-attested in a third register at scene 9 flow 3),
+N909, **N501** (the ratified trades node, given its first authored dialogue), O7's five
+positions at scene 8. Health proposals re-attested: N102 (on property, confirming the mapping's
+undergoing-not-flesh reading), N104, N105, N107, N108, N109, N110, O101, F101, F102, F103,
+F104. Ireland proposals re-attested: N401, N402 (twice, burden both ways), F401. Trades
+proposals staged: **F501** the exhibit (scenes 4, 7, 15, 22 — it recurs because the sector
+runs on it), **F502** the countersigned telling (scenes 10 and 18, the waiver and the induction
+sheet — one move, two masks, as the mapping predicted). **N103 does not appear**, and the
+dialogue confirms the mapping's position-perfect miss: every identity-flavoured question in
+this corpus is a genuine enquiry — there is no person-file to check anyone against.
+
+## Mints in the 16xx range: ZERO
+
+Nothing in 414 turns forced a shape the estate does not already hold — which is the port
+verdict of the mapping confirmed in dialogue: it predicted the trunk expresses trades at one
+node and two moves, and authoring against it needed nothing further. Two honest gap candidates
+are named rather than minted, because neither shows two consecutive novel positions in the
+lines that attest it:
+
+1. **The broadcast signal** — "BELOW!", the three horn blasts (scene 18 flow 3), the shouted
+   one-position warning. One position, no adjacency pair, one-to-many topology; the store is
+   dyadic and the mapping's eleventh refusal already ruled it. Walk colour it stays.
+2. **The wager on the verdict** — "loser buys the bacon rolls" (scene 21 flow 2), "if I'm
+   wrong you can enjoy that all week" (scene 20 flow 3). A recurring peer device that
+   de-personalises a contested call by pricing it in banter before the evidence rules. As
+   written it rides N15 and N106 as one position of colour, F303-adjacent. If a real trades
+   corpus ever shows it with its own response family, it is a move candidate and 16xx is
+   reserved; on authored evidence alone it is not minted.
+
+One sequencing note, recorded rather than hidden: an N107-form alarm instruction runs early at
+scene 10 flow 3 ("if it ever sounds — everything off, windows open, ring the emergency line"),
+two scenes before scene 12 formally admits the conditional instruction. Safety would not wait
+for its own scene, and the world-must-motivate rule outranked the bookkeeping.
+
+## Roles derived — the mouths this walk yields
+
+Role is a projection: production is only your own turns. The dialogue yields:
+
+| Role | Turns | Note |
+|---|---|---|
+| **Tradesperson (T)** — the learner seat | **207** | 128 customer-facing (scenes 1–16), 79 site-facing (17–23) |
+| Customer (C) | 150 | + the tenant (TEN), 3 — the customer family, 153 |
+| Other trade / site (O) | 30 | inductor, mate, foreman-adjacent — the peer seat |
+| Apprentice (A) | 15 | a strict subset of the site register — the natural second learner seat |
+| Merchant (M) | 9 | POD-1's counter-keeper in trade clothes |
+
+The customer-facing T projection stands alone as a public-facing role (the analogue of health's
+"general"); the site-facing turns extend it rather than replacing it — a learner who owns
+scenes 1–16 owns every act scenes 17–23 need except the stop call and the briefing, which is
+why the site part sits second.
+
+## Form of the deliverable, decided
+
+This corpus is the deliverable, in the health-v3 format, because that format is the estate's
+proven walk-authoring standard (16 of 18 CORE shapes, 9 of 9 recoveries, uncommissioned) and
+the walk census already treats such a file as a walk. No parallel walk-steps JSON was authored:
+health's precedent is corpus first, mapping to steps as a downstream job, and two encodings of
+414 turns is a sync burden with no reader. The shape headers above carry everything that
+mapping job needs.
