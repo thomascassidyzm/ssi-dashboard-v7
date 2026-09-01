@@ -67,15 +67,24 @@ the data is still live.
 
 To put the world back exactly as it was on 2026-09-01:
 
-```sql
-DELETE FROM canonical_pod_scenarios WHERE pod_slug = 'pod-1';  -- the renamed live slate
-\i restore.sql                                                  -- restores all four sets
+```
+psql "$DATABASE_URL" -f RESTORE.sql      # or any client that speaks Postgres
 ```
 
-**This was not assumed to work — it was proven.** Before the first delete,
-`scripts/pod-canon/rehearse.cjs` ran the whole migration *and* this restore inside
-a single transaction that was rolled back, and hash-compared the reconstruction
-against the live state: byte-identical, including `updated_at`. The archive lives
+`RESTORE.sql` is the file to run and it is standalone — no psql meta-commands, no
+other file, because the machine this was written on had no psql and a restore you
+cannot run is not a restore. It asserts the live slate is the 231 rows this archive
+expects to replace, removes them, and re-inserts all four sets. **Do not run
+`restore.sql` instead:** the sacked slate's row ids are `pod-1:SC01-S01` and the
+renamed live rows now carry those same ids, so `ON CONFLICT (id) DO NOTHING` would
+silently insert nothing for the 236 sacked rows and leave you believing it worked.
+
+**This was not assumed to work — it was proven, twice.** Before the first delete,
+the whole migration *and* the restore ran inside a single transaction that was
+rolled back, hash-compared against the live state: byte-identical, including
+`updated_at`. Then, after the migration, `RESTORE.sql` itself was executed against
+the migrated database in another rolled-back transaction: 231 + 236 + 27 rows came
+back verbatim, and the live state was unchanged afterwards. The archive lives
 in the evidence store rather than the repo per `docs/EVIDENCE.md` (Tom's ruling,
 2026-09-01); it is **not** in git, and that is the one thing to know about it.
 
