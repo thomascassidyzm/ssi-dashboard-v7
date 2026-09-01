@@ -18,7 +18,7 @@
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { createFakeSupabase, createFakeRes } from './lib/fake-supabase.js'
-import { hasOriginal, patchFor, versionList, editSummary } from './lib/canonical-script-versions.js'
+import { hasOriginal, patchFor, versionList, editSummary, originalRowFrom, saveRowFrom, EDITABLE_FIELDS } from './lib/canonical-script-versions.js'
 
 const state = vi.hoisted(() => ({ db: null, user: { email: 'aran@ssi.app' } }))
 
@@ -238,5 +238,38 @@ describe('the rules, without a database', () => {
       { id: 2, kind: 'save', english_text: 'b', saved_at: 't2', saved_by: 's' },
     ]
     expect(versionList(rows).map(v => v.versionId)).toEqual([2, 1])
+  })
+
+  // ── the target, editable since 2026-09-01 ───────────────────────────────────
+  // The Welsh health overlay lands in this store as a DRAFT for Aran, and a
+  // draft nobody can correct on the page is a page you can only look at. The
+  // target rides the SAME freeze-then-append path as the English, so these
+  // assertions are the English ones with the column swapped.
+  it('target_text is an editable field', () => {
+    expect(EDITABLE_FIELDS).toContain('target_text')
+  })
+
+  it('patchFor picks up a target-only edit and ignores a target no-op', () => {
+    const line = { english_text: 'a', target_text: 'os dw i', speaker: null, author_notes: null }
+    expect(patchFor(line, { target_text: 'os dw i' })).toEqual({})
+    expect(patchFor(line, { target_text: 'os dan ni' })).toEqual({ target_text: 'os dan ni' })
+    // Editing the target must not drag the English along for the ride.
+    expect(patchFor(line, { english_text: 'a', target_text: 'os dan ni' })).toEqual({ target_text: 'os dan ni' })
+  })
+
+  it('the frozen original carries the pre-edit target, not just the English', () => {
+    const line = { id: 'x', pod_slug: 'health-general-welsh', english_text: 'a', target_text: 'os dw i', target_lang: 'cym_n' }
+    expect(originalRowFrom(line, 'tom')).toMatchObject({ target_text: 'os dw i', target_lang: 'cym_n' })
+  })
+
+  it('a save row carries the line in full — English AND target', () => {
+    const line = { id: 'x', pod_slug: 'p', english_text: 'a', target_text: 'os dw i', target_lang: 'cym_n' }
+    const row = saveRowFrom(line, { target_text: 'os dan ni' }, 'tom')
+    expect(row).toMatchObject({ kind: 'save', english_text: 'a', target_text: 'os dan ni', target_lang: 'cym_n' })
+  })
+
+  it('versionList exposes the target so the page can diff it', () => {
+    const rows = [{ id: 1, kind: 'original', english_text: 'a', target_text: 'os dw i', target_lang: 'cym_n', saved_at: 't', saved_by: 's' }]
+    expect(versionList(rows)[0]).toMatchObject({ targetText: 'os dw i', targetLang: 'cym_n' })
   })
 })

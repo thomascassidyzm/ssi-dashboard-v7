@@ -51,6 +51,10 @@
 /* A row whose editor was collapsed while typing was parked in it. The words on
    show are the DRAFT, so the row has to say so at rest, on every viewport. */
 .edit-hint.unsaved { color: var(--accent); }
+/* The target line is tappable too now, so it needs the same affordance as the
+   canonical one — the hint on hover, and the accent when a draft is parked. */
+.specimen { cursor: pointer; }
+.specimen:hover .edit-hint { color: var(--faint); }
 .canonical-read.parked .canonical-text { color: var(--ink); }
 
 .canonical-input {

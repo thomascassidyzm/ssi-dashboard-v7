@@ -32,13 +32,18 @@ const fs = require('fs')
 const path = require('path')
 const { parsePod } = require('./parse-pod-markdown.cjs')
 const { parseSectorWalk } = require('./parse-sector-walk.cjs')
+const { parseHealthOverlay } = require('./parse-health-overlay.cjs')
 const { evidencePath } = require('../lib/evidence-path.cjs')
 
-// The two import formats the registry's `format` field selects between. A new
+// The import formats the registry's `format` field selects between. A new
 // format is a new entry here plus its parser; nothing else in this file moves.
 const PARSERS = {
   'pod-table': (md, e, store) => parsePod(md, { slug: e.slug, unit: e.unit || 'Chapter', targetLang: e.targetLang || null, store }),
-  'sector-flows': (md, e, store) => parseSectorWalk(md, { slug: e.slug, store })
+  'sector-flows': (md, e, store) => parseSectorWalk(md, { slug: e.slug, store }),
+  // A PAIR OVERLAY IS NOT A DIALOGUE. It is a seed set with a drafted target line
+  // and a chunk-mapping table per seed, so it declares no walk steps: it makes no
+  // claim about the metagraph and none is invented for it.
+  'pair-overlay': (md, e) => parseHealthOverlay(md, { slug: e.slug, targetLang: e.targetLang || null })
 }
 
 const REPO = path.resolve(__dirname, '../..')

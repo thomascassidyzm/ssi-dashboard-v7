@@ -8,7 +8,7 @@
     "category": "core = the COMPULSORY DEFAULT CHAIN, the ladder a learner descends by NOT choosing (Tom, 2026-09-01: numbering was retired as a content label — a themed walk is named by what it masks — but numbers name the default chain). themed = chosen. method-cut = a competing realisation of the same material, awaiting a choice. flagship = the learning flagship.",
     "selector": "for a themed walk, WHY a learner picks it. THE SELECTOR IS INTEREST, NOT OCCUPATION — a sector is one reason among several, and the category is never called 'sector pods'.",
     "status": "authored = a corpus exists and is ingestable. mapping-only = a metagraph mapping exists but corpus is NONE — a mapping is not a walk. parked = real content, deliberately not canon. draft = present but not signed off.",
-    "format": "sector-flows = '## scene' / '### Flow N' / '- **SPEAKER:** \"line\"' bullet dialogue. pod-table = '### Chapter|Scene N — *Title*' with a markdown dialogue table.",
+    "format": "pair-overlay = '### Block X' seed blocks, each with a canonical English sentence, a '> **Draft:**' target line and a chunk-mapping table; declares no walk steps. sector-flows = '## scene' / '### Flow N' / '- **SPEAKER:** \"line\"' bullet dialogue. pod-table = '### Chapter|Scene N — *Title*' with a markdown dialogue table.",
     "size": "for a parked walk, how much there actually is, measured not estimated. A parked entry with provenance but no size is still half invisible, and the size is what makes the parking decision reviewable — 749 rendered turns is a different thing to leave parked than 72 is."
   },
   "walks": [
@@ -129,6 +129,20 @@
       "mapping": "services/shared/metagraph/proposed/care-work-2026-08-30.json",
       "branch": "feat/care-work-walk",
       "note": "Authored 2026-09-01 from nothing — the mapping records corpus NONE. The mapping now HAS a walk. This entry is the ninth-walk proof in the flesh: it went from mapping-only to ingestable by editing three fields here and copying one markdown file, with no code change anywhere."
+    },
+    {
+      "slug": "health-general-welsh",
+      "name": "Health — general role, Welsh pair overlay",
+      "category": "themed",
+      "selector": "an interest in health and care — the ward, the surgery, the appointment",
+      "status": "authored",
+      "corpus": "docs/sector-pods/health-welsh-pair-overlay-2026-09-01.md",
+      "format": "pair-overlay",
+      "targetLang": "cym_n",
+      "mapping": null,
+      "branch": "docs/health-welsh-pair-overlay-2026-09-01",
+      "note": "The eng\u2192cym_n pair overlay for the 57-seed general-role health seed set \u2014 57 seeds in eight blocks, 205 chunk mappings. EVERY WELSH LINE IS DRAFT-FOR-ARAN: no worker signs off target-language text, nothing here renders, and no audio pass may be queued from it. Welsh is human-voice only. The corpus deliberately stays on its own branch \u2014 the database is canon once ingested, and Tom corrects the Welsh line by line in the Script Lab. Not the same artefact as the 'health' walk, which is Aran's English dialogue corpus.",
+      "targetEditable": true
     },
     {
       "slug": "public-services",

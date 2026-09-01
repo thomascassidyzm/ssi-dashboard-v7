@@ -20,8 +20,17 @@
  * author_notes, saved_at, saved_by }, with kind 'original' | 'save'.
  */
 
-/** The editable fields of a canonical line — the ones a version row carries. */
-export const EDITABLE_FIELDS = ['english_text', 'speaker', 'author_notes'];
+/**
+ * The editable fields of a canonical line — the ones a version row carries.
+ *
+ * target_text joined them on 2026-09-01. It used to be a read-only specimen
+ * rendered beside the English, which is fine while the target is a machine
+ * rendering of somebody else's decision — and useless the moment the target is
+ * a DRAFT waiting for a human to correct it line by line, which is what the
+ * Welsh health overlay is. It saves through exactly the same freeze-then-append
+ * path as the English: same history, same diff, same restore.
+ */
+export const EDITABLE_FIELDS = ['english_text', 'speaker', 'author_notes', 'target_text'];
 
 /** Has this line's pre-edit state been frozen yet? Exactly one 'original' ever. */
 export function hasOriginal(rows) {
@@ -42,6 +51,8 @@ export function originalRowFrom(line, savedBy = 'unknown') {
     english_text: line.english_text ?? '',
     speaker: line.speaker ?? null,
     author_notes: line.author_notes ?? null,
+    target_text: line.target_text ?? null,
+    target_lang: line.target_lang ?? null,
     saved_by: savedBy
   };
 }
@@ -74,6 +85,8 @@ export function saveRowFrom(line, patch, savedBy = 'unknown') {
     english_text: next.english_text ?? '',
     speaker: next.speaker ?? null,
     author_notes: next.author_notes ?? null,
+    target_text: next.target_text ?? null,
+    target_lang: next.target_lang ?? null,
     saved_by: savedBy
   };
 }
@@ -97,6 +110,8 @@ export function versionList(rows) {
       englishText: r.english_text ?? '',
       speaker: r.speaker ?? null,
       authorNotes: r.author_notes ?? null,
+      targetText: r.target_text ?? null,
+      targetLang: r.target_lang ?? null,
       savedAt: r.saved_at ?? null,
       savedBy: r.saved_by ?? null
     }));

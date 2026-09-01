@@ -157,7 +157,7 @@
               </thead>
               <tbody>
                 <template v-for="(step, i) in scene.steps" :key="step.payload.id || i">
-                  <tr class="script-row" :class="{ 'row-alt': i % 2 === 1, dirty: isDirty(step) }">
+                  <tr class="script-row" :class="{ 'row-alt': i % 2 === 1, dirty: rowDirty(step) }">
                     <td class="col-ref">
                       <span class="ref-num">{{ step.ref || '·' }}</span>
                       <span class="ref-kind" :title="stepTitle(step)"
@@ -170,9 +170,9 @@
 
                     <td class="col-canonical">
                       <!-- RESTING: the whole line, wrapped, never clipped. One tap opens it. -->
-                      <div v-if="!isEditing(step)" class="canonical-read" :class="{ parked: isDirty(step) }" @click="startEdit(step, $event)">
-                        <span class="canonical-text">{{ displayText(step) }}</span>
-                        <span v-if="isDirty(step)" class="edit-hint unsaved">unsaved · tap to carry on</span>
+                      <div v-if="!isEditing(step, 'english')" class="canonical-read" :class="{ parked: isDirty(step, 'english') }" @click="startEdit(step, 'english', $event)">
+                        <span class="canonical-text">{{ displayText(step, 'english') }}</span>
+                        <span v-if="isDirty(step, 'english')" class="edit-hint unsaved">unsaved · tap to carry on</span>
                         <span v-else class="edit-hint">tap to edit</span>
                       </div>
 
@@ -182,35 +182,70 @@
                            keystroke or a stray click must never write it. -->
                       <div v-else class="canonical-edit">
                         <textarea
-                          :ref="el => registerGrower(el, step.payload.id)"
-                          v-model="drafts[step.payload.id]"
+                          :ref="el => registerGrower(el, 'english:' + step.payload.id)"
+                          v-model="drafts['english:' + step.payload.id]"
                           class="canonical-input"
                           rows="1"
                           @input="autoGrow($event.target)"
-                          @keydown.escape.prevent="discardEdit(step)"
-                          @keydown.enter.ctrl.prevent="commitEdit(step)"
-                          @keydown.enter.meta.prevent="commitEdit(step)"
+                          @keydown.escape.prevent="discardEdit(step, 'english')"
+                          @keydown.enter.ctrl.prevent="commitEdit(step, 'english')"
+                          @keydown.enter.meta.prevent="commitEdit(step, 'english')"
                         />
-                        <p v-if="isDirty(step)" class="was-line">
+                        <p v-if="isDirty(step, 'english')" class="was-line">
                           <span class="was-label">was</span> {{ step.payload.text }}
                         </p>
                         <div class="confirm-bar">
-                          <button type="button" class="btn-confirm" :disabled="!isDirty(step) || step.payload._saving" @click="commitEdit(step)">
+                          <button type="button" class="btn-confirm" :disabled="!isDirty(step, 'english') || step.payload._saving" @click="commitEdit(step, 'english')">
                             {{ step.payload._saving ? 'Saving…' : 'Save canonical' }}
                           </button>
-                          <button type="button" class="btn-discard" @click="discardEdit(step)">Discard</button>
-                          <span v-if="isDirty(step)" class="unsaved-flag">unsaved — nothing is written until you save</span>
+                          <button type="button" class="btn-discard" @click="discardEdit(step, 'english')">Discard</button>
+                          <span v-if="isDirty(step, 'english')" class="unsaved-flag">unsaved — nothing is written until you save</span>
                           <span v-else class="text-xs text-faint">no change yet · Esc closes · Ctrl/⌘+Enter saves</span>
                         </div>
                       </div>
 
-                      <!-- The target specimen is a rendering of THIS line, not a parallel
-                           column of its own: it is read-only here and absent on most rows,
-                           so it sits under the canonical text rather than costing every row
-                           a column of width. -->
-                      <p v-if="step.payload.target" class="specimen">
+                      <!-- THE TARGET, EDITABLE (2026-09-01). It sits under the canonical
+                           text rather than taking a column of its own, because it is a
+                           rendering OF this line and it is absent on most rows. It was
+                           read-only until the Welsh health overlay landed here as a
+                           DRAFT: a draft nobody can correct on the page is a page you can
+                           only look at. Same tap-to-open, same explicit save, same
+                           history — one versioned route for both fields. -->
+                      <template v-if="hasTarget(step)">
+                        <p v-if="!isEditing(step, 'target')" class="specimen" :class="{ parked: isDirty(step, 'target') }" @click="startEdit(step, 'target', $event)">
+                          <span class="specimen-run" :dir="dirFor(displayText(step, 'target'))">{{ displayText(step, 'target') || '— no target line yet —' }}</span>
+                          <span class="text-faint not-italic"> · {{ step.payload.targetLang }}</span>
+                          <span v-if="isDirty(step, 'target')" class="edit-hint unsaved">unsaved · tap to carry on</span>
+                          <span v-else class="edit-hint">tap to edit</span>
+                        </p>
+                        <div v-else class="canonical-edit">
+                          <textarea
+                            :ref="el => registerGrower(el, 'target:' + step.payload.id)"
+                            v-model="drafts['target:' + step.payload.id]"
+                            class="canonical-input target-input"
+                            :dir="dirFor(drafts['target:' + step.payload.id] || '')"
+                            rows="1"
+                            @input="autoGrow($event.target)"
+                            @keydown.escape.prevent="discardEdit(step, 'target')"
+                            @keydown.enter.ctrl.prevent="commitEdit(step, 'target')"
+                            @keydown.enter.meta.prevent="commitEdit(step, 'target')"
+                          />
+                          <p v-if="isDirty(step, 'target')" class="was-line">
+                            <span class="was-label">was</span> {{ step.payload.target }}
+                          </p>
+                          <div class="confirm-bar">
+                            <button type="button" class="btn-confirm" :disabled="!isDirty(step, 'target') || step.payload._saving" @click="commitEdit(step, 'target')">
+                              {{ step.payload._saving ? 'Saving…' : `Save ${step.payload.targetLang}` }}
+                            </button>
+                            <button type="button" class="btn-discard" @click="discardEdit(step, 'target')">Discard</button>
+                            <span v-if="isDirty(step, 'target')" class="unsaved-flag">unsaved — nothing is written until you save</span>
+                            <span v-else class="text-xs text-faint">no change yet · Esc closes · Ctrl/⌘+Enter saves</span>
+                          </div>
+                        </div>
+                      </template>
+                      <p v-else-if="step.payload.target" class="specimen">
                         <span class="specimen-run" :dir="dirFor(step.payload.target)">{{ step.payload.target }}</span>
-                        <span class="text-faint not-italic"> · {{ step.payload.targetLang }} specimen, not editable here</span>
+                        <span class="text-faint not-italic"> · specimen, no language declared on this row</span>
                       </p>
 
                       <p v-if="step.branch" class="row-note text-accent">
@@ -226,7 +261,7 @@
                         <span v-if="step.payload._saving" class="text-accent text-xs">saving…</span>
                         <span v-else-if="step.payload._saved" class="text-accent-2 text-xs">saved ✓</span>
                         <span v-else-if="step.payload._err" class="text-danger text-xs" :title="step.payload._err">error</span>
-                        <span v-else-if="isDirty(step)" class="text-accent text-xs">unsaved</span>
+                        <span v-else-if="rowDirty(step)" class="text-accent text-xs">unsaved</span>
 
                         <!-- The chip is the whole affordance: tap to see what this line
                              used to say, tap a version to put it back. No drag, no
@@ -265,7 +300,7 @@
                               <span class="text-xs text-faint">{{ stamp(v.savedAt) }}</span>
                               <span class="text-xs text-muted truncate">{{ v.savedBy }}</span>
                               <button
-                                v-if="v.englishText !== step.payload.text"
+                                v-if="!sameAsNow(v, step)"
                                 type="button"
                                 class="chip restore"
                                 :disabled="hist(step.payload.id).restoring === v.versionId"
@@ -275,6 +310,9 @@
                             </div>
                             <p class="diff">
                               <span v-for="(r, k) in diffOf(v, step)" :key="k" :class="r.kind">{{ r.text }}</span>
+                            </p>
+                            <p v-if="hasTarget(step)" class="diff diff-target" :dir="dirFor(step.payload.target || '')">
+                              <span v-for="(r, k) in diffOfTarget(v, step)" :key="k" :class="r.kind">{{ r.text }}</span>
                             </p>
                           </div>
                         </template>
@@ -342,17 +380,32 @@ const unresolvedByRegister = computed(() => {
  * typed words and its unsaved flag, and tapping it again brings the editor back
  * with the words intact. The old promise is kept; the stacking is not.
  */
-const drafts = reactive({})            // scenario_id -> uncommitted text
-const openId = ref(null)               // the ONE row whose editor is expanded
-const hasDraft = step => Object.prototype.hasOwnProperty.call(drafts, step.payload.id)
-const isEditing = step => openId.value != null && openId.value === step.payload.id
-const isDirty = step => hasDraft(step) && drafts[step.payload.id] !== step.payload.text
+/*
+ * TWO EDITABLE FIELDS PER LINE (2026-09-01): the canonical English, and the
+ * TARGET. The target used to be a read-only specimen — fine while it was a
+ * machine rendering of somebody else's decision, useless the moment it is a
+ * DRAFT a human has to correct line by line, which is what the Welsh health
+ * overlay is. It saves through the identical versioned route: same freeze, same
+ * append, same history, same restore. Every field below is keyed `field:id`.
+ */
+const FIELDS = { english: 'english_text', target: 'target_text' }
+const drafts = reactive({})            // `${field}:${scenario_id}` -> uncommitted text
+const openKey = ref(null)              // the ONE editor that is expanded, anywhere
+const dkey = (step, field) => `${field}:${step.payload.id}`
+const stored = (step, field) => (field === 'target' ? step.payload.target : step.payload.text) ?? ''
+const hasDraft = (step, field) => Object.prototype.hasOwnProperty.call(drafts, dkey(step, field))
+const isEditing = (step, field) => openKey.value != null && openKey.value === dkey(step, field)
+const isDirty = (step, field) => hasDraft(step, field) && drafts[dkey(step, field)] !== stored(step, field)
+const rowDirty = step => isDirty(step, 'english') || isDirty(step, 'target')
 /** What the resting row shows: a parked draft's words, not the stale master. */
-const displayText = step => (hasDraft(step) ? drafts[step.payload.id] : step.payload.text)
+const displayText = (step, field) => (hasDraft(step, field) ? drafts[dkey(step, field)] : stored(step, field))
+/** A target editor is offered only where the line HAS a target language. */
+const hasTarget = step => !!step.payload.targetLang
 
-function startEdit (step, ev) {
+function startEdit (step, field, ev) {
   const id = step.payload.id
   if (!id) return
+  const k = dkey(step, field)
   // Collapsing the row that WAS open removes a screenful; without this the page
   // jumps and the row you just tapped is no longer where you tapped it. The
   // anchor has to be the <tr>, not the tapped div — the div is swapped out for
@@ -360,12 +413,12 @@ function startEdit (step, ev) {
   const anchor = ev?.currentTarget?.closest('tr') || null
   const before = anchor?.getBoundingClientRect().top ?? null
 
-  openId.value = id
+  openKey.value = k
   // Reopening a parked draft must bring the typed words back, not reset them.
-  if (!hasDraft(step)) drafts[id] = step.payload.text ?? ''
+  if (!hasDraft(step, field)) drafts[k] = stored(step, field)
   step.payload._err = ''
   nextTick(() => {
-    autoGrow(growers[id])
+    autoGrow(growers[k])
     if (before != null && anchor?.isConnected) {
       window.scrollBy(0, anchor.getBoundingClientRect().top - before)
     }
@@ -373,26 +426,27 @@ function startEdit (step, ev) {
 }
 
 /** Close the editor and throw the typing away — the explicit Discard button. */
-function discardEdit (step) {
-  delete drafts[step.payload.id]
-  if (openId.value === step.payload.id) openId.value = null
+function discardEdit (step, field) {
+  const k = dkey(step, field)
+  delete drafts[k]
+  if (openKey.value === k) openKey.value = null
 }
 
-async function commitEdit (step) {
-  const id = step.payload.id
-  if (!isDirty(step)) { discardEdit(step); return }
-  const ok = await saveLine(step, drafts[id])
+async function commitEdit (step, field) {
+  const k = dkey(step, field)
+  if (!isDirty(step, field)) { discardEdit(step, field); return }
+  const ok = await saveLine(step, field, drafts[k])
   if (ok) {
-    delete drafts[id]
-    if (openId.value === id) openId.value = null
+    delete drafts[k]
+    if (openKey.value === k) openKey.value = null
   }
 }
 
 /* The row must grow with its content — that is the whole complaint being fixed —
    so the textarea is sized to its own scrollHeight on mount and on every input. */
 const growers = {}
-function registerGrower (el, id) {
-  if (el) { growers[id] = el; autoGrow(el) } else { delete growers[id] }
+function registerGrower (el, key) {
+  if (el) { growers[key] = el; autoGrow(el) } else { delete growers[key] }
 }
 function autoGrow (el) {
   if (!el) return
@@ -466,6 +520,14 @@ function ago (iso) {
 function diffOf (version, step) {
   return wordDiff(version.englishText, step.payload.text ?? '')
 }
+/** The same comparison for the target — the second editable field on a line. */
+function diffOfTarget (version, step) {
+  return wordDiff(version.targetText ?? '', step.payload.target ?? '')
+}
+/** A version row is the state of the WHOLE line, so "this is the line now" has
+ *  to mean both fields match — otherwise a target-only edit hides its own way back. */
+const sameAsNow = (v, step) =>
+  v.englishText === (step.payload.text ?? '') && (v.targetText ?? '') === (step.payload.target ?? '')
 
 async function loadSummary () {
   try {
@@ -502,8 +564,13 @@ async function restore (step, versionId) {
       method: 'POST',
       body: JSON.stringify({ versionId })
     })
+    // A restore puts the WHOLE line back — English and target together, because
+    // a version row is the state of the line, not of one column of it.
     step.payload.text = body.line?.englishText ?? step.payload.text
-    delete drafts[id]
+    if (body.line && 'targetText' in body.line) step.payload.target = body.line.targetText
+    delete drafts[`english:${id}`]
+    delete drafts[`target:${id}`]
+    if (openKey.value === `english:${id}` || openKey.value === `target:${id}`) openKey.value = null
     step.payload._saved = true
     setTimeout(() => { step.payload._saved = false }, 2000)
     await Promise.all([loadHistory(id), loadSummary()])
@@ -554,20 +621,22 @@ async function load () {
  * The versioned save. Called ONLY from commitEdit — never from a blur, never from
  * a watcher. Returns true when the text is safely stored.
  */
-async function saveLine (step, value) {
+async function saveLine (step, field, value) {
   const p = step.payload
   const text = String(value ?? '')
-  if (text === p.text) return true
+  if (text === stored(step, field)) return true
   p._saving = true; p._saved = false; p._err = ''
   try {
     // The versioned save: it freezes the pre-edit words the first time this
     // line is touched, appends this edit, and only then moves the live text.
     // The old PATCH straight onto canonical_pod_scenarios kept nothing.
+    // The target goes down the SAME route as the English — one history per line.
     const body = await vercelFetch(`/api/canonical-script?line=${encodeURIComponent(p.id)}`, {
       method: 'POST',
-      body: JSON.stringify({ english_text: text })
+      body: JSON.stringify({ [FIELDS[field]]: text })
     })
-    p.text = body.line?.englishText ?? text
+    if (field === 'target') p.target = body.line?.targetText ?? text
+    else p.text = body.line?.englishText ?? text
     p._saved = true
     setTimeout(() => { p._saved = false }, 2000)
     if (!body.unchanged) {

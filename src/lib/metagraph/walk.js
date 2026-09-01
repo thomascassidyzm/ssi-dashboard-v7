@@ -86,6 +86,11 @@ export function walkFromCanonicalRows (rows, graph, opts = {}) {
         id: row.id,
         speaker: row.speaker,
         text: row.english_text,
+        // The target travelled on the stored-walk path only, so a pod with a
+        // target and NO declared walk steps — a pair overlay is exactly that —
+        // arrived here with its target dropped and rendered English-only.
+        target: row.target_text,
+        targetLang: row.target_lang,
         notes: row.author_notes,
         globalOrder: g,
         sentenceNumber: row.sentence_number

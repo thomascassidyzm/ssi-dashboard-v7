@@ -3,7 +3,7 @@
  *
  *   GET  /api/canonical-script?line=<scenario_id>          → the line, its current text, its versions
  *   GET  /api/canonical-script?slug=<pod_slug>&history=1   → every edited line in that script
- *   POST /api/canonical-script?line=<scenario_id>          → save. Body: { english_text, speaker?, author_notes? }
+ *   POST /api/canonical-script?line=<scenario_id>          → save. Body: { english_text?, target_text?, speaker?, author_notes? }
  *   POST /api/canonical-script?line=<id>&restore=1         → restore. Body: { versionId }
  *
  * Until this route existed, editing a canonical script line was a straight
@@ -70,7 +70,7 @@ function flagged(req, name) {
 async function loadLine(supabase, id) {
   const { data, error } = await supabase
     .from(LINES)
-    .select('id, pod_slug, scene_number, sentence_number, speaker, english_text, author_notes')
+    .select('id, pod_slug, scene_number, sentence_number, speaker, english_text, author_notes, target_text, target_lang')
     .eq('id', id)
     .maybeSingle();
   return { line: data ?? null, error };
@@ -79,7 +79,7 @@ async function loadLine(supabase, id) {
 async function loadVersions(supabase, scenarioId) {
   const { data, error } = await supabase
     .from(VERSIONS)
-    .select('id, scenario_id, pod_slug, kind, english_text, speaker, author_notes, saved_at, saved_by')
+    .select('id, scenario_id, pod_slug, kind, english_text, speaker, author_notes, target_text, target_lang, saved_at, saved_by')
     .eq('scenario_id', scenarioId)
     .order('id', { ascending: true });
   return { rows: data || [], error };
@@ -149,7 +149,9 @@ export default async function handler(req, res) {
         podSlug: line.pod_slug,
         speaker: line.speaker ?? null,
         englishText: line.english_text ?? '',
-        authorNotes: line.author_notes ?? null
+        authorNotes: line.author_notes ?? null,
+        targetText: line.target_text ?? null,
+        targetLang: line.target_lang ?? null
       },
       versions: versionList(rows),
       edits: rows.filter(r => r.kind === 'save').length
@@ -173,7 +175,8 @@ export default async function handler(req, res) {
     const patch = patchFor(line, {
       english_text: target.english_text ?? '',
       speaker: target.speaker ?? '',
-      author_notes: target.author_notes ?? ''
+      author_notes: target.author_notes ?? '',
+      target_text: target.target_text ?? ''
     });
     if (!Object.keys(patch).length) {
       return res.json({ ok: true, unchanged: true, versionId: Number(target.id), line: { id: line.id, englishText: line.english_text } });
@@ -184,18 +187,22 @@ export default async function handler(req, res) {
 
     const { data: updated, error: upErr } = await supabase
       .from(LINES).update(patch).eq('id', line.id)
-      .select('id, english_text, speaker, author_notes').maybeSingle();
+      .select('id, english_text, speaker, author_notes, target_text').maybeSingle();
     if (upErr) return res.status(500).json({ error: upErr.message });
 
     return res.json({
       ok: true, restored: true, fromVersionId: Number(target.id),
       versionId: rec.versionId, savedAt: rec.savedAt,
-      line: { id: line.id, englishText: updated?.english_text ?? patch.english_text ?? line.english_text }
+      line: {
+        id: line.id,
+        englishText: updated?.english_text ?? patch.english_text ?? line.english_text,
+        targetText: updated?.target_text ?? patch.target_text ?? line.target_text ?? null
+      }
     });
   }
 
   // ── Save ──────────────────────────────────────────────────────────────────
-  if (typeof req.body?.english_text === 'string' && req.body.english_text.length > MAX_CHARS) {
+  if (EDITABLE_FIELDS.some(f => typeof req.body?.[f] === 'string' && req.body[f].length > MAX_CHARS)) {
     return res.status(413).json({ error: 'Too large' });
   }
   if (!EDITABLE_FIELDS.some(f => typeof req.body?.[f] === 'string')) {
@@ -209,7 +216,10 @@ export default async function handler(req, res) {
   // Nothing typed. A blur is not an edit, and a no-op save that minted a version
   // row would fill the history with duplicates of the same words.
   if (!Object.keys(patch).length) {
-    return res.json({ ok: true, unchanged: true, line: { id: line.id, englishText: line.english_text } });
+    return res.json({
+      ok: true, unchanged: true,
+      line: { id: line.id, englishText: line.english_text, targetText: line.target_text ?? null }
+    });
   }
 
   const rec = await recordVersion(supabase, line, rows, patch, editor);
@@ -217,7 +227,7 @@ export default async function handler(req, res) {
 
   const { data: updated, error: upErr } = await supabase
     .from(LINES).update(patch).eq('id', line.id)
-    .select('id, english_text, speaker, author_notes').maybeSingle();
+    .select('id, english_text, speaker, author_notes, target_text, target_lang').maybeSingle();
   if (upErr) return res.status(500).json({ error: upErr.message });
 
   return res.json({
@@ -230,7 +240,9 @@ export default async function handler(req, res) {
       id: line.id,
       englishText: updated?.english_text ?? patch.english_text ?? line.english_text,
       speaker: updated?.speaker ?? line.speaker ?? null,
-      authorNotes: updated?.author_notes ?? line.author_notes ?? null
+      authorNotes: updated?.author_notes ?? line.author_notes ?? null,
+      targetText: updated?.target_text ?? patch.target_text ?? line.target_text ?? null,
+      targetLang: updated?.target_lang ?? line.target_lang ?? null
     }
   });
 }
