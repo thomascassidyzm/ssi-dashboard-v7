@@ -252,22 +252,41 @@ async function authedFetch (path, init = {}) {
 }
 
 const LABELS = {
-  'pod-0': 'POD 1',
+  'pod-1': 'POD 1',
   'learning-flagship': 'Learning flagship',
   'method-pod-chapters': 'Method Pod — chapters',
   'method-pod-43-scene': 'Method Pod — 43 scenes'
 }
 
-const ORDER = ['pod-0', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
+const ORDER = ['pod-1', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
 
-// pod-1 and pod-0.5 are separate slates whose row numbers collide with this
-// graph's by accident: they read as 0 of 35 shapes and every tile red, which is
-// true of the numbers and a lie about the pods. They are not shown here at all —
-// nothing on this graph is theirs to say. Reversible in one line.
-const HIDDEN = new Set(['pod-1', 'pod-0.5'])
+// THIS SET IS DELIBERATELY EMPTY, and that is the fix, not an oversight.
+// It used to hold ['pod-1', 'pod-0.5'] — two SACKED SLATES whose row numbers
+// collided with this graph's by accident, so they read as 0 of 35 shapes and
+// every tile red: true of the numbers and a lie about the pods.
+//
+// The 2026-09-01 slug migration DELETED both of those slates and RENAMED the
+// live CORE pod from `pod-0` to `pod-1`. So the old guard inverted: the string
+// `pod-1` stopped naming a sacked slate and started naming the very pod the
+// guard existed to protect, and this view hid it. Swapping the string for
+// `pod-0` would have been the other half of the same mistake — it would guard
+// against a slate that no longer exists.
+//
+// There is nothing left to hide, so nothing is hidden. The mechanism stays
+// because the next sacked slate is a one-entry change.
+const HIDDEN = new Set([])
 
 // The store names each shape's provenance in its own slugs; the page says them
 // the way a person says them. Same shape, one name, everywhere on screen.
+//
+// `pod-0` HERE IS NOT A STALE SLUG — DO NOT "FIX" IT. These keys are the
+// METAGRAPH STORE's own provenance namespace (`provenance` in
+// services/shared/metagraph/nodes.json, reaching this file as `origin` via
+// src/lib/metagraph/fromStore.js:84), and the store was not touched by the
+// database slug migration. Twelve nodes still declare `provenance: "pod-0"`,
+// and the schema's provenance enum is still ["pod-0", "method-pod"].
+// LABELS and ORDER above key on `canonical_pod_scenarios.pod_slug`, which IS
+// renamed. Two namespaces, the same pod, and both correctly render "POD 1".
 const ORIGINS = {
   'pod-0': 'POD 1',
   'method-pod': 'the Method Pod',
@@ -332,7 +351,7 @@ const byOrigin = computed(() => {
  *  accounting it is. Not a defect in this page and not hidden: the walks that
  *  place those lines have not been encoded yet. */
 const walkGap = computed(() => {
-  if (active.value !== 'pod-0') return ''
+  if (active.value !== 'pod-1') return ''
   const a = graph.accounting
   if (!a?.complete_walks_encoded_here || !a?.complete_walks_in_corpus) return ''
   return ` — ${a.complete_walks_encoded_here} of its ${a.complete_walks_in_corpus} complete walks are encoded in the store so far`
@@ -422,8 +441,8 @@ async function select (slug) {
     const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(slug)}`)
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-    // A pod carrying a stored walk is read through it; pod-0 and the sacked
-    // slates carry none and keep the row-reference path. Same reading as the
+    // A pod carrying a stored walk is read through it; the CORE pod `pod-1`
+    // carries none and keeps the row-reference path. Same reading as the
     // Script Lab — no second opinion about what a pod's walk is.
     const w = (body.walk || []).length
       ? walkFromStoredPod(body.scenarios || [], body.walk, graph, { id: slug, slug })
@@ -452,12 +471,12 @@ onMounted(async () => {
       .sort((a, b) => rank(a.slug) - rank(b.slug) || a.slug.localeCompare(b.slug))
   } catch (e) {
     podsError.value = e.message
-    pods.value = [{ slug: 'pod-0', label: LABELS['pod-0'], lines: null }]
+    pods.value = [{ slug: 'pod-1', label: LABELS['pod-1'], lines: null }]
   }
   // Arrive with a picture, not with a grey lattice: POD 1 is the pod this graph
   // was derived from and the one whose overlay tells the story. "Graph only" is
   // still one tap away.
-  if (active.value === null && pods.value.some(p => p.slug === 'pod-0')) await select('pod-0')
+  if (active.value === null && pods.value.some(p => p.slug === 'pod-1')) await select('pod-1')
 })
 </script>
 

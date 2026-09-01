@@ -2,18 +2,15 @@
   "concept": "the walk registry — every walk in the estate, in one file",
   "why": "The ingest tool used to carry a hardcoded three-entry map, so a corpus that existed could not be ingested without editing code, and nothing new ever appeared in the Script Lab. THE MECHANISM IS THIS MANIFEST: adding the eighth walk is one entry here plus its corpus file, and no code change anywhere. Two readers, one file — tools/pods/ingest-canonical-pods.cjs discovers what to ingest, and the Script Lab reads the labels a human needs to tell walks apart.",
   "version": 2,
-
   "ingestableRule": "status === 'authored' && corpus && format — the ONE definition of what gets picked up, and it lives here rather than in either reader because there are two of them: tools/pods/ingest-canonical-pods.cjs decides what to ingest, and the Script Lab's isIngestable() in src/lib/walkGroups.js decides what to badge. If those two ever disagree the lab shows a walk as ready that the tool will not touch, or hides one it would. CHANGE THIS FIELD AND BOTH READERS TOGETHER, NEVER ONE. An entry failing the rule is SKIPPED, never an error: a mapping-only entry has no walk yet, and a null-corpus entry means the DATABASE IS CANON for that walk — pod-1 is the case, and its live rows are the point, not an obstacle.",
-
   "addingAWalk": "ONE ENTRY HERE PLUS ONE CORPUS FILE, AND NO CODE CHANGE ANYWHERE. Append to walks[] with slug, name, category, selector, status 'authored', corpus (a repo-relative path), format ('sector-flows' or 'pod-table'), and for pod-table its unit ('Chapter' or 'Scene'). Then `node tools/pods/ingest-canonical-pods.cjs --pod=<slug>` dry-runs it and `--execute` writes it. Proven by construction on 2026-09-01: a ninth walk was added, ingested in dry run and removed with tools/pods/ working tree untouched. A new FORMAT is the one thing that still needs code — a parser plus its entry in PARSERS in the ingest tool.",
-
   "vocabulary": {
     "category": "core = the COMPULSORY DEFAULT CHAIN, the ladder a learner descends by NOT choosing (Tom, 2026-09-01: numbering was retired as a content label — a themed walk is named by what it masks — but numbers name the default chain). themed = chosen. method-cut = a competing realisation of the same material, awaiting a choice. flagship = the learning flagship.",
     "selector": "for a themed walk, WHY a learner picks it. THE SELECTOR IS INTEREST, NOT OCCUPATION — a sector is one reason among several, and the category is never called 'sector pods'.",
     "status": "authored = a corpus exists and is ingestable. mapping-only = a metagraph mapping exists but corpus is NONE — a mapping is not a walk. parked = real content, deliberately not canon. draft = present but not signed off.",
-    "format": "sector-flows = '## scene' / '### Flow N' / '- **SPEAKER:** \"line\"' bullet dialogue. pod-table = '### Chapter|Scene N — *Title*' with a markdown dialogue table."
+    "format": "sector-flows = '## scene' / '### Flow N' / '- **SPEAKER:** \"line\"' bullet dialogue. pod-table = '### Chapter|Scene N — *Title*' with a markdown dialogue table.",
+    "size": "for a parked walk, how much there actually is, measured not estimated. A parked entry with provenance but no size is still half invisible, and the size is what makes the parking decision reviewable — 749 rendered turns is a different thing to leave parked than 72 is."
   },
-
   "walks": [
     {
       "slug": "pod-1",
@@ -68,7 +65,6 @@
       "competesWith": "method-pod-chapters",
       "note": "43 scenes, English beside Italian — the control arm the chapter cut is measured against. One of TWO competing realisations. Tom's choice is outstanding."
     },
-
     {
       "slug": "health",
       "name": "Health",
@@ -148,7 +144,6 @@
       "note": "A MAPPING, NOT A WALK — the proposal records \"corpus\": \"NONE\". Authoring is in flight. Fill in corpus + branch when it lands; that is the whole change."
     }
   ],
-
   "parked": [
     {
       "slug": "music",
@@ -157,7 +152,14 @@
       "selector": "an interest in music",
       "status": "parked",
       "livesIn": "listening_pods / listening_pod_sentences, course spa_for_eng only",
-      "note": "Tom, 2026-09-01: \"music and travel are old thinking — done as POC, not relevant, and done pre-metagraph… it might be better to park them for now.\" DELIBERATELY NOT INGESTED into the canonical store. Shown here so it stops being invisible, not so it can be treated as canon."
+      "note": "Tom, 2026-09-01: \"music and travel are old thinking — done as POC, not relevant, and done pre-metagraph… it might be better to park them for now.\" DELIBERATELY NOT INGESTED into the canonical store. Shown here so it stops being invisible, not so it can be treated as canon.",
+      "size": {
+        "turns": 749,
+        "scenes": 8,
+        "targetClips": 585,
+        "knownClips": 491,
+        "measured": "2026-09-01, listening_pod_sentences joined to listening_pods, course spa_for_eng"
+      }
     },
     {
       "slug": "travel-situations",
@@ -166,7 +168,14 @@
       "selector": "an interest in travel",
       "status": "parked",
       "livesIn": "listening_pods / listening_pod_sentences, course spa_for_eng only",
-      "note": "Same ruling as music — pre-metagraph POC, parked."
+      "note": "Same ruling as music — pre-metagraph POC, parked.",
+      "size": {
+        "turns": 72,
+        "scenes": 1,
+        "targetClips": 0,
+        "knownClips": 1,
+        "measured": "2026-09-01, listening_pod_sentences joined to listening_pods, course spa_for_eng"
+      }
     }
   ]
 }
