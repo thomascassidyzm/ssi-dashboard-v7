@@ -27,6 +27,17 @@ function visitedRows (walk) {
   return set
 }
 
+/** A pair overlay carries target text over another script's English and
+ * declares no walk of its own — so it makes no claim about the shape graph.
+ * Both must hold: a stored-walk pod that happens to carry a target is still
+ * making a claim (it has declarations) and keeps its coverage panel; a plain
+ * canonical walk with no target is not an overlay, just unmapped. */
+export function isPairOverlay (walk) {
+  const hasTarget = (walk.steps || []).some(s => s.payload?.targetLang)
+  const declaresNoWalk = (walk.declarations || []).length === 0 && walk.refSpace !== 'g'
+  return hasTarget && declaresNoWalk
+}
+
 export function computeCoverage (graph, walk) {
   const rows = visitedRows(walk)
   const scenesTouching = new Map()   // nodeId -> Set(sceneNumber)

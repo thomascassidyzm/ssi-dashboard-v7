@@ -27,6 +27,15 @@
             <h2 class="font-semibold text-ink">Coverage — this script as a walk over the graph</h2>
           </div>
 
+          <!-- a pair overlay makes no metagraph claim — say so, not a deficit -->
+          <div v-if="pairOverlay" class="px-4 sm:px-5 py-4 text-sm text-muted">
+            <p><span class="font-semibold text-faint">Coverage — not applicable.</span>
+              This is a pair overlay: it carries <code>{{ overlayTargetLang }}</code> target text over
+              another script's English and declares no walk of its own, so it makes no claim about the
+              shape graph. Coverage is measured on the script it overlays.</p>
+          </div>
+
+          <template v-else>
           <div class="grid grid-cols-3 divide-x divide-line border-b border-line text-center">
             <div class="py-3">
               <div class="text-2xl font-bold text-ink">{{ cov.totals.traversed }}<span class="text-faint text-base">/{{ cov.totals.nodes }}</span></div>
@@ -121,6 +130,7 @@
             </p>
             <p>Graph: <code>{{ graph.source }}</code> — {{ graph.provenance }}</p>
           </div>
+          </template>
         </section>
 
         <!-- ══ THE SCRIPT ══
@@ -337,7 +347,7 @@ import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph } from '@/lib/metagraph/loadGraph.js'
 import { walkFromCanonicalRows, walkFromStoredPod } from '@/lib/metagraph/walk.js'
-import { computeCoverage } from '@/lib/metagraph/coverage.js'
+import { computeCoverage, isPairOverlay } from '@/lib/metagraph/coverage.js'
 import { wordDiff } from '@/lib/wordDiff.js'
 import { dirFor } from '@/utils/textDirection.js'
 
@@ -352,6 +362,11 @@ const loading = ref(true)
 const error = ref(null)
 const title = computed(() => `Canonical script · ${slug}`)
 const exercised = computed(() => (cov.value?.survivability || []).filter(s => s.exercised))
+const pairOverlay = computed(() => isPairOverlay(walk.value))
+const overlayTargetLang = computed(() => {
+  const step = (walk.value?.steps || []).find(s => s.payload?.targetLang)
+  return step?.payload?.targetLang || 'its target language'
+})
 const unresolvedByRegister = computed(() => {
   const by = {}
   for (const d of walk.value?.unresolved || []) by[d.register] = (by[d.register] || 0) + 1
