@@ -170,9 +170,10 @@
 
                     <td class="col-canonical">
                       <!-- RESTING: the whole line, wrapped, never clipped. One tap opens it. -->
-                      <div v-if="!isEditing(step)" class="canonical-read" @click="startEdit(step)">
-                        <span class="canonical-text">{{ step.payload.text }}</span>
-                        <span class="edit-hint">tap to edit</span>
+                      <div v-if="!isEditing(step)" class="canonical-read" :class="{ parked: isDirty(step) }" @click="startEdit(step, $event)">
+                        <span class="canonical-text">{{ displayText(step) }}</span>
+                        <span v-if="isDirty(step)" class="edit-hint unsaved">unsaved · tap to carry on</span>
+                        <span v-else class="edit-hint">tap to edit</span>
                       </div>
 
                       <!-- EDITING: the draft is held locally. Blur does NOT save. Only the
@@ -328,30 +329,63 @@ const unresolvedByRegister = computed(() => {
  * `drafts`; blur does nothing; the value reaches /api/canonical-script only when
  * the Save canonical button (or Ctrl/⌘+Enter) is pressed. Escape discards.
  *
- * A draft outlives the click that opened it: open another row and this one stays
- * open, flagged unsaved, so an edit is never silently thrown away either.
+ * ONE LINE IS OPEN AT A TIME (2026-09-01). `drafts` used to be both "which rows
+ * are open" and "what has been typed into them", so every tap added another
+ * editor to the page and none of them ever closed. On a 430px phone that is the
+ * whole complaint: the first editor sits there, the page grows by a screenful
+ * under your thumb, and the row you meant to tap next has moved by the time the
+ * tap lands — which reads as "it won't re-open" and "it goes janky".
+ *
+ * So the two jobs are separate now. `openId` is the ONE expanded row; `drafts`
+ * is still only what has been typed. Closing a row by opening another does NOT
+ * throw its typing away: the draft stays parked, the row keeps showing the
+ * typed words and its unsaved flag, and tapping it again brings the editor back
+ * with the words intact. The old promise is kept; the stacking is not.
  */
 const drafts = reactive({})            // scenario_id -> uncommitted text
-const isEditing = step => Object.prototype.hasOwnProperty.call(drafts, step.payload.id)
-const isDirty = step => isEditing(step) && drafts[step.payload.id] !== step.payload.text
+const openId = ref(null)               // the ONE row whose editor is expanded
+const hasDraft = step => Object.prototype.hasOwnProperty.call(drafts, step.payload.id)
+const isEditing = step => openId.value != null && openId.value === step.payload.id
+const isDirty = step => hasDraft(step) && drafts[step.payload.id] !== step.payload.text
+/** What the resting row shows: a parked draft's words, not the stale master. */
+const displayText = step => (hasDraft(step) ? drafts[step.payload.id] : step.payload.text)
 
-function startEdit (step) {
+function startEdit (step, ev) {
   const id = step.payload.id
   if (!id) return
-  drafts[id] = step.payload.text ?? ''
+  // Collapsing the row that WAS open removes a screenful; without this the page
+  // jumps and the row you just tapped is no longer where you tapped it. The
+  // anchor has to be the <tr>, not the tapped div — the div is swapped out for
+  // the editor, so it is gone by the time we measure again.
+  const anchor = ev?.currentTarget?.closest('tr') || null
+  const before = anchor?.getBoundingClientRect().top ?? null
+
+  openId.value = id
+  // Reopening a parked draft must bring the typed words back, not reset them.
+  if (!hasDraft(step)) drafts[id] = step.payload.text ?? ''
   step.payload._err = ''
-  nextTick(() => autoGrow(growers[id]))
+  nextTick(() => {
+    autoGrow(growers[id])
+    if (before != null && anchor?.isConnected) {
+      window.scrollBy(0, anchor.getBoundingClientRect().top - before)
+    }
+  })
 }
 
+/** Close the editor and throw the typing away — the explicit Discard button. */
 function discardEdit (step) {
   delete drafts[step.payload.id]
+  if (openId.value === step.payload.id) openId.value = null
 }
 
 async function commitEdit (step) {
   const id = step.payload.id
   if (!isDirty(step)) { discardEdit(step); return }
   const ok = await saveLine(step, drafts[id])
-  if (ok) delete drafts[id]
+  if (ok) {
+    delete drafts[id]
+    if (openId.value === id) openId.value = null
+  }
 }
 
 /* The row must grow with its content — that is the whole complaint being fixed —

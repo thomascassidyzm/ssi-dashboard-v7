@@ -48,6 +48,10 @@
 .canonical-text { white-space: pre-wrap; word-break: break-word; line-height: 1.5; }
 .edit-hint { margin-left: 0.5rem; font-size: 0.7rem; color: transparent; white-space: nowrap; }
 .canonical-read:hover .edit-hint { color: var(--faint); }
+/* A row whose editor was collapsed while typing was parked in it. The words on
+   show are the DRAFT, so the row has to say so at rest, on every viewport. */
+.edit-hint.unsaved { color: var(--accent); }
+.canonical-read.parked .canonical-text { color: var(--ink); }
 
 .canonical-input {
   width: 100%;
