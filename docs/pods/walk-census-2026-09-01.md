@@ -197,7 +197,9 @@ Unchanged.
 **The canonical seed and a course's known text are different objects.**
 
 - `canonical_seeds` — **668 rows**. `/canonical/seeds` PATCHes `canonical_seeds.source_text`. One
-  row, identical by definition, **cascades to every course**.
+  row, identical by definition. Note the mechanism: the endpoint comment states that editing the
+  canonical **does not auto-propagate** — re-translation is a separate pipeline step. Canonical means
+  identical, so the change is owed to every course; it simply is not automatic.
 - `course_seeds.known_text` — for seed 1 alone: **130 course rows carrying 116 distinct known
   texts**. Derived, and legitimately differentiated per pair. The known side is a teaching
   instrument, not a copy of the seed.
@@ -217,44 +219,60 @@ name is actively feeding the confusion it is at the centre of.
 
 ### Every lab, with the column that matters
 
-Seven labs. The write/ephemeral split is traced through each lab's endpoints into
-`services/` — not guessed.
+Seven labs. Six are titled "… Lab" on the Configs index itself; the seventh is the Script Lab.
+The write/ephemeral column is traced through each lab into `services/` — not guessed.
 
 | lab | URL | writes or ephemeral | what it touches | blast radius | linked from `admin/configs`? |
 |---|---|---|---|---|---|
-| **Script Lab** | `/canonical/scripts`, `/canonical/scripts/:slug` | **WRITES** — `POST /api/canonical-script` | `canonical_pod_scenarios.english_text` + a version row in `canonical_script_versions` | **canonical content — every learner in every course, cascades** | **no** |
-| **Metagraph** | `/canonical/metagraph` | ephemeral — GET only, zero write methods | reads `canonical_pod_scenarios` | nobody | **no** |
-| **Pod Lab** | `/admin/configs/pods` | **WRITES** — `POST /api/algorithm-config`, `POST /api/pod-voice-approval`, `PATCH /api/pod-fine-map` | live algorithm config, voice approvals, fine maps | **live settings — every learner immediately**, plus per-course casting | yes |
-| **Voice Lab** | `/admin/configs/voice` | **WRITES, and spends money** — `/api/voicelab/voices/cartesia/clone`, `/clone-from-estate`, `POST /api/voices/declare` | creates real voice clones at an external provider; declares voices of record | **irreversible + billable**, then every learner of that language | yes |
-| **VAD Lab** | `/admin/configs/vad` | **WRITES** — `/api/vad-recordings` | its own calibration corpus | nobody but itself | yes |
-| **Basket Lab** | `/admin/configs/basket` | **ephemeral** — mounted `{ readOnly: true }` at `production-api.cjs:176` | reads courses, computes in the browser | nobody | yes |
-| **Capture A/B** | `/admin/capture-ab` | **ephemeral** — makes no `/api/` calls at all | records and measures locally on the phone | nobody | **no** |
+| **Listening Lab** | `/admin/configs/listening` | **WRITES** — `PATCH /api/algorithm-config` via `algorithmConfigShared.js:104` | `algorithm_config`, key `listening` | **live settings — every learner, every course, ~5-min cache TTL, no draft/env split** | yes |
+| **Speaking Lab** | `/admin/configs/speaking` | **WRITES** — same endpoint, key `speaking` | `algorithm_config` | **live settings — every learner, every course, immediately** | yes |
+| **Pod Lab** | `/admin/configs/pods` | **WRITES, but never config** — `PATCH /api/pod-fine-map`, `POST /api/pod-cast-voices`, `POST /api/pod-voice-approval` | `atom_map_fine` (a draft column), `listening_pods.speakers`, voice approvals | **one course**, and none of the three is immediate — casting sits until a re-render is approved | yes |
+| **Voice Lab** | `/admin/configs/voice` | **WRITES, and spends money** — ~15 routes in `services/voicelab/router.cjs`, incl. `cartesia/clone`, `clone-from-estate`, slot cast `PUT`/`DELETE` | creates real clones at an external provider; `voice_language_roles` | **irreversible + billable**; slot casts reach every course in that language **on the next render**, never existing audio | yes |
+| **VAD Lab** | `/admin/configs/vad` | **WRITES** — `POST /api/vad-recordings` | S3 `ssi-audio-stage/vad-lab/recordings/` | **nobody** — a private research corpus with no learner path | yes |
+| **Basket Lab** | `/admin/configs/basket` | **ephemeral** — mounted `{ readOnly: true }` at `production-api.cjs:176`; generation 403s on this mount, verdicts go to a local `verdicts.ndjson` | nothing in the DB | nobody | yes |
+| **Script Lab** | `/canonical/scripts`, `/canonical/scripts/:slug` | **WRITES** — `POST /api/canonical-script` | `canonical_pod_scenarios.english_text` (+ speaker, notes), versioned in `canonical_script_versions` | **canonical content — the master every course flexes from** | **no** |
 
-Also present and not a lab, but on the same tree: `/admin/configs/listening` and
-`/admin/configs/speaking` — both **live settings**, both linked.
+Two more surfaces on the same tree, neither a lab:
+
+- **Metagraph**, `/canonical/metagraph` — read-only, zero write methods, GET only. Also **not**
+  linked from Configs.
+- **Capture A/B**, `/admin/capture-ab` — ephemeral by its own copy (*"Nothing on this page is
+  uploaded or saved. Reload and it is gone"*), and a **true orphan**: zero `router-link`, `to=` or
+  `href` references to it anywhere in `src/`.
+
+**Three labs deliberately refuse to write `algorithm_config`, and each says why in the same words.**
+Pod Lab's header comment: *"`algorithm_config` writes are immediately global to every learner
+(~5-min cache TTL, no draft/env split), so this Lab never writes config — it reads the LIVE config
+as a starting point … and exports the tuned JSON for a human to apply deliberately."* The same
+sentence appears in `VoiceLab.vue:31-33` and `ExperimentsPanel.vue:12`. The estate already knows
+which surfaces are live and has been routing around them by hand, in comments, because the IA does
+not carry the distinction.
 
 ### What exists today against that shape, and the gap
 
-`ConfigsIndex.vue` offers exactly six tiles: **basket, listening, pods, speaking, vad, voice**. It
-offers **no route to the Script Lab, the Metagraph or Capture A/B.** So of the seven labs, four are
-reachable from the configs hub and three are reachable only by typing the URL — and the one Tom
-went looking for is in the unreachable three.
+`ConfigsIndex.vue` offers exactly six tiles — Listening Lab, Speaking Lab, Pod Lab, Voice Lab, VAD
+Lab, Basket Lab — under the subtitle *"Global algorithm config — applies across every course and
+every learner."* It offers **no route to the Script Lab, the Metagraph or Capture A/B.**
+
+The Script Lab is not merely unlinked from Configs; it is on a **different branch of the nav tree**.
+Its sub-tab row — Library / Seeds / Content / Pods / Script Lab / Metagraph — renders only when
+`route.path === '/courses'` or `route.path.startsWith('/canonical/')`. Someone standing in Admin
+never sees that it exists.
 
 The gap, stated as four lines:
 
-1. **There is no `admin/labs`.** Labs are scattered across `/admin/configs/*`, `/canonical/*` and
-   `/admin/capture-ab`, with no index anywhere. Three of the seven have no link at all.
-2. **Labs are nested under configs, which is the wrong tree.** Basket Lab and VAD Lab sit beside
-   Listening Config and Speaking Config as if they were the same kind of thing. One is a place to
-   mess about; the other changes what every learner hears on their next session.
-3. **Nothing is labelled by blast radius.** The two labs that write live — Pod Lab into
-   `algorithm_config`, Voice Lab into a billable external clone endpoint — carry no marking that
-   distinguishes them from Basket Lab, which is mounted read-only and cannot write at all.
-4. **The one cascading-canonical surface is the least findable page in the estate.** The Script
-   Lab writes the master text every course flexes from, and it is reachable only from inside
-   `/canonical/*`, from a button on a page with the same problem, or from line 2361 of another
-   lab. It also does not say which of its six scripts are sacked — which is how an edit landed on
-   `pod-0.5` yesterday morning.
+1. **There is no `admin/labs`.** Seven labs, no index. Three surfaces have no link from the configs
+   hub, and Capture A/B has no link anywhere in the codebase.
+2. **Labs are nested under configs, which is the wrong tree** — and the Configs subtitle actively
+   misdescribes what is under it. Basket Lab is mounted read-only and cannot write anything; it sits
+   beneath a heading claiming everything there applies to every course and every learner.
+3. **Nothing is labelled by blast radius.** Listening and Speaking Lab genuinely are immediately
+   global — and are, to their credit, labelled so on their own pages. Voice Lab's slot casting
+   reaches every course in a language on the next render and carries **no such banner**, only a code
+   comment.
+4. **The one cascading-canonical surface is the least findable page in the estate**, and it does not
+   say which of its six scripts are sacked — which is how an edit landed on `pod-0.5` yesterday
+   morning.
 
 ---
 
@@ -265,14 +283,21 @@ The gap, stated as four lines:
 `course_seeds`, and a schema-wide search for any other dialogue-bearing table (none found).
 `services/production-api.cjs` (canonical-pods and canonical-seeds endpoints),
 `tools/pods/ingest-canonical-pods.cjs`, `src/router/index.js`, `src/components/AppNavbar.vue`,
-`src/views/ScriptLabView.vue`, `ScriptLabScriptView.vue`, `MetagraphView.vue`, all five
-`src/views/admin/*Lab.vue` plus `ConfigsIndex.vue` and `src/views/admin/voicelab/`,
+`src/views/ScriptLabView.vue`, `ScriptLabScriptView.vue`, `MetagraphView.vue`, all six lab views
+plus `ConfigsIndex.vue`, `Admin.vue`, `src/views/admin/algorithmConfigShared.js`,
+`src/views/admin/voicelab/`, `services/voicelab/router.cjs`, `labs/basket-lab/server.cjs`,
+`api/canonical-script.js`, `api/pod-fine-map.js`, `api/pod-cast-voices.js`, `api/vad-recordings.js`,
 `services/shared/metagraph/` including all four `walks/` and all twelve `proposed/` files,
 `docs/sector-pods/` in full, and the `docs/pods/` and `docs/corpus/talk-bollocks/` corpus files.
 
 **Did not read, and it does not change the census:** the archived `archive/docs-retired-2026-08-24/`
 tree beyond a grep; the learning-app's player code (delivery, not content); the audio object store
 itself — clip counts here come from `listening_pod_sentences` audio-id columns, not from S3.
+
+**Corrected after publication:** my first pass listed Metagraph among the seven labs and credited
+Pod Lab with writing `algorithm_config`. Both were wrong — the six Configs tiles are each titled
+"… Lab", and Pod Lab only *reads* config, at `PodLab.vue:197`, with an explicit safety comment
+saying why. The table above is the corrected one.
 
 **Not verified:** whether the two Spanish choice pods play correctly for a learner today. They are
 marked `visibility: 'live'` with audio attached; I did not open the app.
