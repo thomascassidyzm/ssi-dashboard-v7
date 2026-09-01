@@ -4,7 +4,7 @@
       <nav class="admin-crumbs">
         <router-link to="/" class="crumb-link">Home</router-link>
         <span class="crumb-sep">/</span>
-        <router-link to="/admin/configs" class="crumb-link">Configs</router-link>
+        <router-link to="/admin/labs" class="crumb-link">Labs</router-link>
         <span class="crumb-sep">/</span>
         <span class="crumb-here">Speaking</span>
       </nav>

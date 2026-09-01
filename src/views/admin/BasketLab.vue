@@ -1,6 +1,6 @@
 <script setup>
 /**
- * Basket Lab — /admin/configs/basket
+ * Basket Lab — /admin/labs/basket
  *
  * THE UNIT BEING JUDGED IS THE BASKET: one LEGO's phrases, live in the course
  * today beside a newly generated candidate set, both scored against the same
@@ -24,6 +24,7 @@
  * and prints the command. Read and judge here; generate on the box.
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 
@@ -102,7 +103,7 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
         <span class="crumb-sep">/</span>
         <router-link to="/admin" class="crumb-link">Admin</router-link>
         <span class="crumb-sep">/</span>
-        <router-link to="/admin/configs" class="crumb-link">Configs</router-link>
+        <router-link to="/admin/labs" class="crumb-link">Labs</router-link>
         <span class="crumb-sep">/</span>
         <span class="crumb-here">Basket Lab</span>
       </nav>
@@ -112,6 +113,17 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
         against the same floors. The seed is how you navigate; the basket is what you judge.
       </p>
     </header>
+
+    <!-- BLAST RADIUS (2026-09-01). This lab used to sit under a Configs heading
+         promising that everything beneath it "applies across every course and
+         every learner", while being mounted readOnly: true at
+         services/production-api.cjs:176 and unable to write a single byte. The
+         tree misdescribed its own contents; it no longer does, and neither does
+         the page. -->
+    <BlastRadiusBanner
+      tier="none"
+      note="The mounted copy is readOnly: true — it reads, scores and shows. Generation is a deliberate local act on the box, and the lab prints the command."
+    />
 
     <form class="bl-controls" @submit.prevent="show">
       <label>course <input v-model="course" size="12" spellcheck="false" /></label>
@@ -152,6 +164,8 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
 </template>
 
 <style scoped>
+.basket-lab > :deep(.blast-banner) { margin-bottom: 1rem; }
+
 /* House style: every colour is a semantic token from src/style.css, so light
    mode follows for free. No fallback hexes — `var(--text, #e5e7eb)` used to
    sit here, and since --text is not a token in this codebase the page title

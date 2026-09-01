@@ -2,7 +2,7 @@
  * THE LANGUAGES TAB, TIMED IN A REAL BROWSER (2026-08-31).
  *
  * Tom asked why the page is slow, so the answer has to come from a page, not a
- * curl. This logs in as the real E2E user, opens /admin/configs/voice against
+ * curl. This logs in as the real E2E user, opens /admin/labs/voice against
  * whichever backend E2E_API_BASE names, and reports three numbers:
  *
  *   request     what the browser's own Resource Timing says the
@@ -39,7 +39,7 @@ test('languages tab load', async ({ page }) => {
   await page.waitForURL((url) => !url.pathname.startsWith('/login'), { timeout: 60_000 })
 
   const t0 = Date.now()
-  await page.goto('/admin/configs/voice')
+  await page.goto('/admin/labs/voice')
   await expect(page.locator('.ui-table')).toBeVisible({ timeout: 60_000 })
   const rows = await page.locator('.ui-table tbody tr').count()
   const toTable = Date.now() - t0

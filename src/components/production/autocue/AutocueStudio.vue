@@ -1218,7 +1218,7 @@ onUnmounted(() => {
   padding: 2rem;
 }
 
-/* House breadcrumbs — same markup and same colours as ConfigsIndex/BasketLab. */
+/* House breadcrumbs — same markup and same colours as LabsIndex/BasketLab. */
 .admin-crumbs { display: flex; align-items: center; flex-wrap: wrap; gap: 0.5rem; font-size: 0.8125rem; margin-bottom: 0.75rem; }
 .admin-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; }
 .admin-crumbs .crumb-sep { color: var(--surface-3); }

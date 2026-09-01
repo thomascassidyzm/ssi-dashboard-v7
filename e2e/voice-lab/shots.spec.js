@@ -27,7 +27,7 @@ test('shots', async ({ page }) => {
   await page.getByRole('button', { name: 'Sign In' }).click()
   await page.waitForURL((url) => !url.pathname.startsWith('/login'), { timeout: 30_000 })
 
-  await page.goto('/admin/configs/voice')
+  await page.goto('/admin/labs/voice')
 
   // LANGUAGES is the landing tab.
   await expect(page.locator('.ui-table')).toBeVisible({ timeout: 30_000 })
@@ -54,7 +54,7 @@ test('shots', async ({ page }) => {
 
   // PHONE — where Tom actually reads.
   await page.setViewportSize({ width: 390, height: 844 })
-  await page.goto('/admin/configs/voice')
+  await page.goto('/admin/labs/voice')
   await expect(page.locator('.ui-table')).toBeVisible({ timeout: 30_000 })
   await page.screenshot({ path: `${OUT}/phone-languages.png`, fullPage: true })
 

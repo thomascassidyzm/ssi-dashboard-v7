@@ -25,7 +25,7 @@ export const STEP_KINDS = {
 }
 
 /**
- * Build a walk from `canonical_pod_scenarios` rows (the pod-1 shape).
+ * Build a walk from `canonical_pod_scenarios` rows (the pod-1 core-slate shape).
  * `refSpace` names the reference space the graph's attestations are written in;
  * only rows in that space can map, and rows outside it are honestly UNMAPPED.
  */
@@ -39,7 +39,10 @@ export const STEP_KINDS = {
  * coverage out of an off-by-one. Any slug but this one walks in its own reference
  * space and every line comes back UNMAPPED, which is the true answer.
  *
- * This constant is the one place the live slate is named. Nothing infers it.
+ * This constant is a DATABASE SLUG and had to move with the rename: left at
+ * 'pod-0' it made the Script Lab report the core pod as 0/36 shapes traversed
+ * and 231 lines unmapped — a lie about the one walk the whole graph is derived
+ * from. This constant is the one place the live slate is named. Nothing infers it.
  */
 export const GRAPH_REF_SLUG = 'pod-1'
 

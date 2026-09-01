@@ -1,9 +1,9 @@
 <script setup>
 /**
- * Pod Lab — /admin/configs/pods
+ * Pod Lab — /admin/labs/pods
  *
  * A tuning + audition surface for the Layer-2 pod acquisition ladder, sibling to
- * the Pause Lab (/admin/configs/speaking). Two modes on the same real line:
+ * the Pause Lab (/admin/labs/speaking). Two modes on the same real line:
  * THE LADDER — the unified climb (Tom 2026-07-03): fusion rungs from finest
  * units to the whole turn, then the speed cascade to pure 2× — and STAGE ARC,
  * today's live engine output, for comparison.
@@ -13,12 +13,23 @@
  * runs. This is the surface that lets us retire the hand-ported copy in
  * src/lib/podArcCompose.js.
  *
- * SAFETY: preview/export only. `algorithm_config` writes are immediately global
+ * CONFIG: preview/export only. `algorithm_config` writes are immediately global
  * to every learner (~5-min cache TTL, no draft/env split), so this Lab never
  * writes config — it reads the LIVE config as a starting point, lets you tune
  * in-session, and exports the tuned JSON for a human to apply deliberately.
+ *
+ * THAT IS NOT THE SAME AS "SAFETY: preview/export only", which is what this
+ * header said until 2026-09-01. The Lab has four other writes, and one of them
+ * lands on a learner today: PATCH /api/pod-fine-map sets atom_map_fine, which
+ * the learner's Drill reads live off listening_pod_sentences on every fetch
+ * (useListeningPods.ts:179 → buildFusionGroups). The other three — casting,
+ * voice approval, and the sample-clip fill — are deferred to the next render.
+ * The blast-radius banner on the page states the highest of the four, which is
+ * the only honest thing a single label can state. See
+ * src/components/admin/blastRadius.js.
  */
 import { ref, computed, reactive, watch } from 'vue'
+import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import CoursePicker from '../../components/CoursePicker.vue'
 import ConsentStep from './voicelab/ConsentStep.vue'
 // Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
@@ -2333,7 +2344,7 @@ loadLiveConfig()
 <template>
   <div class="podlab">
     <nav class="admin-crumbs">
-      <router-link to="/admin/configs">Configs</router-link>
+      <router-link to="/admin/labs">Labs</router-link>
       <span class="sep">/</span>
       <span class="cur">Pod Lab</span>
     </nav>
@@ -2347,11 +2358,23 @@ loadLiveConfig()
         through today's <strong>real</strong> <code>@ssi/core/pods</code> engine for comparison.
       </p>
       <p class="safety">
-        Preview &amp; export only — this Lab never writes <code>algorithm_config</code> (those writes
-        hit every learner within ~5&nbsp;min). Tune the ladder <em>and the gaps</em> here, hear it,
-        then export the JSON and apply it deliberately.
+        This Lab never writes <code>algorithm_config</code> (those writes hit every learner within
+        ~5&nbsp;min). Tune the ladder <em>and the gaps</em> here, hear it, then export the JSON and
+        apply it deliberately. Its <em>other</em> writes are a different question — see the banner.
       </p>
     </header>
+
+    <!-- BLAST RADIUS (2026-09-01). This header said "Preview & export only" for
+         months, which is true of the CONFIG and false of the page. Saving a seam
+         in the fine-map editor writes atom_map_fine, which the learner's Drill
+         reads live off listening_pod_sentences on every fetch — no render, no
+         approval. Casting, voice approval and the sample fill are deferred. The
+         tier states the highest of the four, because a label pitched at the
+         average control is a label that lies about the dangerous one. -->
+    <BlastRadiusBanner
+      tier="live"
+      note="That is the fine-map editor specifically: a seam or gloss saved here is read by the next learner to open this pod's Drill. Casting, voice approval and the sample-clip fill are deferred to the next render."
+    />
 
     <!-- Signpost (2026-08-31). Tom looked for the canonical scripts HERE, because
          this is the pod surface. They are not here: this Lab tunes the acquisition
@@ -2977,6 +3000,8 @@ loadLiveConfig()
 </template>
 
 <style scoped>
+.podlab > :deep(.blast-banner) { margin-bottom: 1rem; }
+
 .podlab {
   max-width: 1180px;
   margin: 0 auto;

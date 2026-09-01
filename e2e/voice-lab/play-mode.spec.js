@@ -32,7 +32,7 @@ async function login (page) {
 test.describe('Voice Lab — Play mode is the front door', () => {
   test.beforeEach(async ({ page }) => {
     await login(page)
-    await page.goto('/admin/configs/voice')
+    await page.goto('/admin/labs/voice')
     // The lab will not render at all without its params payload.
     await expect(page.getByRole('heading', { name: 'Voice Lab' })).toBeVisible()
     // LANDING TAB IS LANGUAGES since 2026-08-28 — Play is one click in, and

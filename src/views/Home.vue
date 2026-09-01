@@ -11,7 +11,7 @@
       <div class="header-titles">
         <div>
           <h1 class="page-title">Popty</h1>
-          <p class="page-subtitle">Course production, documentation, and platform admin — one place.</p>
+          <p class="page-subtitle">Course production, documentation, the labs, and platform admin — one place.</p>
         </div>
       </div>
       <HowThisWorks section="home" />
@@ -84,6 +84,39 @@
             </div>
           </router-link>
 
+          <!-- Labs — the front door (2026-09-01). Before this, the Script Lab
+               was reachable only from inside /courses or /canonical/*, and
+               Capture A/B was reachable from nowhere in src/ at all. A lab you
+               can only arrive at sideways is one you arrive at not knowing what
+               you have walked into. -->
+          <router-link to="/admin/labs" class="hub-card card-labs">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9 2v6.5L4.2 17A2 2 0 0 0 6 20h12a2 2 0 0 0 1.8-3L15 8.5V2"/>
+                    <line x1="8" y1="2" x2="16" y2="2"/>
+                    <line x1="6.8" y1="13" x2="17.2" y2="13"/>
+                  </svg>
+                </div>
+                <div class="card-badge labs">
+                  <span class="badge-label">by blast radius</span>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">Labs</h2>
+                <p class="card-description">All eight labs in one place — Listening, Speaking, Voice, Pod, Script, VAD, Basket, Capture A/B — each showing who a change there reaches, and when.</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">Open Labs</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
           <!-- Admin -->
           <router-link to="/admin" class="hub-card card-admin">
             <div class="card-glow"></div>
@@ -101,7 +134,7 @@
               </div>
               <div class="card-body">
                 <h2 class="card-title">Admin</h2>
-                <p class="card-description">Global configs, insights, activity, maintenance, and user management.</p>
+                <p class="card-description">Insights, activity, maintenance, user management and board reports.</p>
               </div>
               <div class="card-footer">
                 <span class="card-action">Open Admin</span>
@@ -132,6 +165,7 @@ const courseCount = computed(() => courses.value?.length || 0)
 
 .card-courses { --hub-accent: #10b981; --hub-glow: rgba(16, 185, 129, 0.15); }
 .card-docs    { --hub-accent: #3b82f6; --hub-glow: rgba(59, 130, 246, 0.15); }
+.card-labs    { --hub-accent: #f59e0b; --hub-glow: rgba(245, 158, 11, 0.15); }
 .card-admin   { --hub-accent: #a855f7; --hub-glow: rgba(168, 85, 247, 0.15); }
 
 .hub-header :deep(.htw) { margin-top: 0.75rem; }

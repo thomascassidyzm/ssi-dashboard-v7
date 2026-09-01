@@ -1,6 +1,6 @@
 <script setup>
 /**
- * VAD Lab — /admin/configs/vad
+ * VAD Lab — /admin/labs/vad
  *
  * The prosody-measurement work made audible and visible. Sibling to the Pod
  * Lab. Data is the 2026-07-28 invariance study (774 clips, 388 pairs) baked
@@ -772,7 +772,7 @@ function openRecordTab() {
     <nav class="admin-crumbs">
       <router-link to="/">Home</router-link><span class="sep">/</span>
       <router-link to="/admin">Admin</router-link><span class="sep">/</span>
-      <router-link to="/admin/configs">Configs</router-link><span class="sep">/</span>
+      <router-link to="/admin/labs">Labs</router-link><span class="sep">/</span>
       <span class="cur">VAD Lab</span>
     </nav>
 

@@ -42,6 +42,73 @@ built to prevent that exact deletion. They are archived and still live; open for
 
 **Decided by:** agent, under Tom's 2026-09-01 migration brief and his ruling on the
 compulsory default chain; the append-only carve-out is the agent's call and is flagged.
+## 2026-09-01 — a corpus that exists is ingestable without editing code; the walk registry replaces the hardcoded map
+
+**Decision.** `tools/pods/ingest-canonical-pods.cjs` carried a hardcoded three-entry `PODS`
+map, so the Script Lab showed three walks and had never shown a fourth. The map is gone,
+replaced by `tools/pods/pod-corpora.json` — the walk registry. One file, two readers: the
+ingest tool discovers what to ingest, and the Script Lab reads the labels a human needs to
+tell walks apart. Adding a walk is one JSON entry plus its corpus file.
+
+A second parser, `tools/pods/parse-sector-walk.cjs`, reads the themed-walk format
+(`## scene` / `### Flow N` / `- **W:** "line"`), which the existing pod-table parser cannot
+see. A flow becomes a `variant_key`, which is what that column already existed for. Nine
+walks are now in `canonical_pod_scenarios`, up from four: health 438, trades 414, retail 330,
+hospitality 330, care-work 306.
+
+**Why it can't be reverse-engineered.** The claim was tested rather than asserted. The
+care-work corpus landed mid-job; promoting it from mapping-only to ingested took editing
+three fields and copying one file, with no code change anywhere. That is the whole
+justification for the registry, and it is recorded in the entry's own `note`.
+
+Two rulings sit inside it that a later reader would otherwise re-litigate:
+
+*A mapping is not a walk.* Five proposals under `services/shared/metagraph/proposed/` record
+`"corpus": "NONE"`. They are `status: mapping-only` and are skipped by the tool with a
+different sentence from a refusal — "skipped: no corpus" and "refused: rows already live"
+are different facts and are never the same row.
+
+*No shape claims is not zero coverage.* health, hospitality and care-work declare no
+metagraph shapes, so no walk steps were parsed and none were invented. Their coverage reads
+as words, not numbers. Rendering that identically to a walk that declared shapes and failed
+to resolve them would libel the exemplar corpus.
+
+**Better:** a corpus that exists can be seen, which is the thing that was actually broken.
+**Simpler:** one predicate — `status === 'authored' && corpus && format`, hoisted into the
+registry as `ingestableRule` and cited by both readers rather than implemented twice.
+**Cheaper (total):** the marginal cost of walk ten is one JSON entry, and there is no second
+copy of the walk list to drift.
+
+---
+
+## 2026-09-01 — the Script Lab is LIVE AT NEXT GENERATION, and the evidence for LIVE NOW belongs to Pod Lab
+
+**Decision.** The brief for this job said to give the Script Lab a LIVE NOW banner. It wears
+LIVE AT NEXT GENERATION instead, naming `POST /api/canonical-script` as the control.
+
+**Why it can't be reverse-engineered.** The instruction cited job #714's finding that
+"a seam or gloss saved in the fine-map editor is read by the next learner" — but that is
+**Pod Lab's** fine-map editor (`PATCH /api/pod-fine-map` → `atom_map_fine`, read live at
+`useListeningPods.ts:179`), and #714 classified Pod Lab live on exactly that basis. The
+Script Lab's only write is `POST /api/canonical-script`, which updates
+`canonical_pod_scenarios`. Nothing learner-facing reads that table:
+`services/pod-dialogue-generator.cjs` flexes it into `listening_pod_sentences`, and only when
+explicitly invoked — verified that no scheduler triggers it.
+
+#714's own rule is *classify by what the code writes, and a lab's tier is its
+highest-reaching control*. Applying it faithfully gives deferred. Labelling the most deferred
+write in the estate LIVE NOW would be the same class of lie that rule exists to prevent: a
+label pitched wrong teaches people to disbelieve the axis.
+
+This is the same distinction as the canonical seed versus a course's known text, re-measured
+non-circularly on 2026-09-01: at the slot whose canonical line is "Good morning, Sarah!",
+the generated pods hold **24 distinct `known_text` values across 46 courses**, including
+"¡Buenos días, Sarah!" and "Bonjour, Sarah !"; seed 1 has **116 distinct values across 130
+courses**. Editing the canonical does not propagate — the change is *owed* to every course
+rather than applied to it. The page says so, unmissably.
+
+**If a control that reaches a learner is ever added to this page, the tier flips.** The
+banner names the specific write it rests on so the claim stays checkable.
 
 ---
 

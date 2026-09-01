@@ -9,7 +9,7 @@ test.beforeEach(async ({ page }) => {
 // record-yourself flow produces scores end-to-end with Chromium's fake mic.
 
 test('listening tour renders ten cards with contour overlays and syllable ticks', async ({ page }) => {
-  await page.goto('/admin/configs/vad')
+  await page.goto('/admin/labs/vad')
   // 10 cards since the 2026-07-29 language-breadth round (was 6)
   await expect(page.locator('.tour-card')).toHaveCount(10)
   // every card overlays two energy polylines
@@ -21,7 +21,7 @@ test('listening tour renders ten cards with contour overlays and syllable ticks'
 })
 
 test('lab browser: selecting a pair shows dimensions, pitch track and AUC table', async ({ page }) => {
-  await page.goto('/admin/configs/vad')
+  await page.goto('/admin/labs/vad')
   await page.getByRole('button', { name: 'Browse the lab' }).click()
   await page.locator('.pair-row').first().click()
   await expect(page.locator('.pair-detail .combined-row')).toBeVisible()
@@ -35,7 +35,7 @@ test('lab browser: selecting a pair shows dimensions, pitch track and AUC table'
 })
 
 test('record yourself: fake mic attempt gets overlay + phrase-dim scores', async ({ page }) => {
-  await page.goto('/admin/configs/vad')
+  await page.goto('/admin/labs/vad')
   await page.getByRole('button', { name: 'Record yourself' }).click()
   await page.locator('.rec-list .pair-row').first().click()
   await page.getByRole('button', { name: /Record your attempt/ }).click()
