@@ -122,13 +122,13 @@
       "name": "Care work",
       "category": "themed",
       "selector": "an interest in care work — the visit, the round, the household",
-      "status": "mapping-only",
-      "corpus": null,
+      "status": "authored",
+      "corpus": "docs/sector-pods/source/care-work-conversations-v1.md",
       "format": "sector-flows",
       "targetLang": null,
       "mapping": "services/shared/metagraph/proposed/care-work-2026-08-30.json",
-      "branch": null,
-      "note": "A MAPPING, NOT A WALK — the proposal records \"corpus\": \"NONE\". Authoring is in flight. Fill in corpus + branch when it lands; that is the whole change."
+      "branch": "feat/care-work-walk",
+      "note": "Authored 2026-09-01 from nothing — the mapping records corpus NONE. The mapping now HAS a walk. This entry is the ninth-walk proof in the flesh: it went from mapping-only to ingestable by editing three fields here and copying one markdown file, with no code change anywhere."
     },
     {
       "slug": "public-services",
