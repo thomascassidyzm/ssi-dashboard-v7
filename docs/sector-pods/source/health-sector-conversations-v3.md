@@ -13,6 +13,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 1.0 Linguistic situation opener (nurse)
 
+*Walks:* N101, N110, N4, N5, N10, N7, P101, N102, N9, F102, O3
+
 ### Welsh version - flow 1 *(happy path)*
 - **HW:** "I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as possible, but if we get stuck I might need to ask you to speak English, if that's okay. If not, I can call someone who speaks Welsh more confidently than me."
 - **P:** "Chwarae teg i chi! Of course, that's fine. We'll manage together."
@@ -65,6 +67,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 1.1 Names and first meeting
 
+*Walks:* N5, N102, N103, N6, N10, F13, F7
+
 ### Flow 1 *(happy path + detail)*
 - **HW:** "Hello, my name's Siân, I'm one of the nurses looking after you today. What's your name, and what would you like me to call you?"
 - **P:** "Margaret. But everyone calls me Peggy."
@@ -92,6 +96,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 1.2 Settling a new patient in
+
+*Walks:* N4, N3, N8, N107, N9, O7, N12, N105, N1
 
 ### Flow 1 *(happy path - valuables)*
 - **HW:** "Let's get you comfortable. This is your call bell, press it any time you need us. The bathroom's just through there."
@@ -121,6 +127,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 1.3 Taking observations
 
+*Walks:* N102, N104, O7, N8, O1, F6, F1, F3
+
 ### Flow 1 *(happy path)*
 - **HW:** "I'm just going to take your blood pressure and temperature. Can you roll up your sleeve for me?"
 - **P:** "Of course. Which arm do you want?"
@@ -148,6 +156,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 1.4 Pain assessment
+
+*Walks:* P5, N12, N107, N6, O1, F101, N105, P101, O3
 
 ### Flow 1 *(happy path - needs relief)*
 - **HW:** "How's your pain at the moment? On a scale of nought to ten, with ten the worst you can imagine? Would you like something for it?"
@@ -177,6 +187,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 1.5 Medication round
 
+*Walks:* N2, N4, N102, N107, N3, F6, P3, N10, N106, N103, N105
+
 ### Flow 1 *(happy path)*
 - **HW:** "Here are your tablets for this morning. Have you got some water there? Just the two white ones now, the other one's after lunch."
 - **P:** "Righto. I've still got the water from breakfast here."
@@ -204,6 +216,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 1.6 Taking blood / cannula
+
+*Walks:* N102, N10, N3, O7, N8, N7, F102, F12
 
 ### Flow 1 *(happy path - first-time success)*
 - **HW:** "I need to take a little blood from you now. Sharp scratch coming... well done, all finished. Just press on that for me."
@@ -233,6 +247,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 1.7 Meals and drinking
 
+*Walks:* N2, P1, F21, N107, N108, F6, O1, O7, P5, N12, N105, P101
+
 ### Flow 1 *(happy path)*
 - **HW:** "What would you like for lunch, the chicken or the soup? And try to drink a bit more water for me if you can."
 - **P:** "The chicken, please. I'm starving."
@@ -260,6 +276,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 1.8 Helping with mobility
+
+*Walks:* N102, P3, O7, N106, F101, N7, N109
 
 ### Flow 1 *(happy path)*
 - **HW:** "Shall we get you up for a little walk? Take your time, no rush. Hold onto my arm."
@@ -289,6 +307,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 1.9 Comfort round
 
+*Walks:* N2, F2, N107, N3, N5, P101
+
 ### Flow 1 *(happy path - small requests)*
 - **HW:** "Just checking in on you. Are you comfortable? Do you need the toilet? Can I get you anything before I go?"
 - **P:** "Could you top up my water? And pass me my glasses from the drawer?"
@@ -317,6 +337,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 1.10 Preparing for a procedure
 
+*Walks:* N107, P3, N4, N108, F101, N105, F103, O7, N3, F102
+
 ### Flow 1 *(happy path)*
 - **HW:** "Nothing to eat or drink after midnight, alright? They'll come for you about nine. You'll need to take your jewellery off and pop this gown on."
 - **P:** "Right you are. Nothing after midnight."
@@ -344,6 +366,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 1.11 Going home
+
+*Walks:* N4, P3, F103, N1, O5, F6, N107, F14
 
 ### Flow 1 *(happy path - writes it down)*
 - **HW:** "Here's your medication to take home. One in the morning, one at night, with food. Your follow-up letter will come in the post. Any questions before you go?"
@@ -374,6 +398,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 # Part 2: The doctor sequence
 
 ## 2.0 Linguistic situation opener (doctor)
+
+*Walks:* N101, N110, N2, N7, P101, N9, O3
 
 ### Welsh version - flow 1 *(happy path)*
 - **HW:** "Before we start - I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as possible. If we get stuck, I might ask you to speak English, or call a colleague who's more confident. Is that alright?"
@@ -411,6 +437,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 2.1 Opening the consultation
 
+*Walks:* N1, N12, P5, N110, N2, N3, N11, P101, N17, F17, O7
+
 ### Flow 1 *(happy path)*
 - **HW:** "Hello, come in, take a seat. What can I do for you today?"
 - **P:** "It's this cough. I've had it three weeks now and it won't shift."
@@ -438,6 +466,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 2.2 Exploring the symptom
+
+*Walks:* P5, N6, F4, N110, F10, O3
 
 ### Flow 1 *(happy path)*
 - **HW:** "When did it start? Is it there all the time, or does it come and go? Does anything make it better or worse?"
@@ -467,6 +497,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 2.3 Medication and allergy check
 
+*Walks:* P5, F4, N110, N102, N108, F103, N9, O1, N8
+
 ### Flow 1 *(happy path)*
 - **HW:** "Are you taking any medication at the moment? Anything over the counter? Any allergies that you know of?"
 - **P:** "Just the blood pressure tablet. Amlodipine, I think it's called."
@@ -494,6 +526,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 2.4 Narrating an examination
+
+*Walks:* N102, N110, P5, F101
 
 ### Flow 1 *(happy path)*
 - **HW:** "I'm just going to listen to your chest. Take a deep breath in for me... and out. And again. Now I'll press on your tummy - tell me if anything hurts."
@@ -523,6 +557,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 2.5 Explaining what's going on
 
+*Walks:* N8, N107, N6, P3, P6, O7, N109, F7, F8, O3
+
 ### Flow 1 *(happy path)*
 - **HW:** "So what I think is happening is a chest infection. That's why you've been coughing and feeling so tired. It's very common at this time of year."
 - **P:** "Ah, right. That makes sense, I suppose."
@@ -550,6 +586,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 2.6 Ordering tests
+
+*Walks:* N7, N9, N107, N3, N8, P3, F5, O1
 
 ### Flow 1 *(happy path)*
 - **HW:** "I'd like to send you for a blood test, just to rule a couple of things out. The nurse will do it today, and we should have results by Friday."
@@ -579,6 +617,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 2.7 Prescribing
 
+*Walks:* N4, P3, P4, N3, N9, N12, F6, N107, O6, F16, N109, F9, O1
+
 ### Flow 1 *(happy path)*
 - **HW:** "I'm going to give you a course of antibiotics. Take one twice a day, morning and evening, and finish the whole course even if you feel better."
 - **P:** "Righto. Twice a day, morning and evening. Finish the lot."
@@ -606,6 +646,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 2.8 Safety netting
+
+*Walks:* N107, F21, F104, P3, O8, N109, F16, O7
 
 ### Flow 1 *(happy path)*
 - **HW:** "If it gets worse, or if you start to feel breathless or feverish, I want you to come straight back or ring 111. Don't wait for your appointment."
@@ -635,6 +677,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 
 ## 2.9 Giving results
 
+*Walks:* N104, N107, N105, O8, F16, O7, O5
+
 ### Flow 1 *(happy path)*
 - **HW:** "Your results have come back and I'm pleased to say everything looks normal. Your blood sugar was a little on the high side, so let's keep an eye on that."
 - **P:** "Oh, thank goodness for that. What a relief."
@@ -662,6 +706,8 @@ Both linguistic-situation openers (Welsh and English) now appear for the nurse s
 ---
 
 ## 2.10 Ward round review
+
+*Walks:* N1, P5, N107, F16, N15, N109, O1, N110, F101, N106, F14, O8
 
 ### Flow 1 *(happy path)*
 - **HW:** "Good morning, how are you feeling today? How did you sleep? Any pain overnight?"
