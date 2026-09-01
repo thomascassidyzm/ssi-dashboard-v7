@@ -414,3 +414,176 @@ reinstatement condition spoken in the same breath.
 - **T:** "That's why more than a notice goes on file: I'm reporting the defect today, in writing, and once it's reported he's on a legal clock — days, not weeks. You get a copy of everything, with today's date on it."
 - **TEN:** "And if he still drags his feet? What do I do with your bits of paper?"
 - **T:** "Then those bits of paper are your teeth: environmental health at the council, with the report attached — and they don't write letters, they enforce. I hope it's Tuesday and a new part. But if it isn't, you're not standing there empty-handed."
+
+---
+
+# Part 3: After the tools — handover, money, and coming back
+
+## Scene 12 — The handover
+
+*Walks:* N4 instruction-giving + P3 read-backs; N107 [health, proposed] conditional instruction
+— the trigger, the threshold, the urgency grade, and the record named; N110 [health, proposed]
+— the paperwork signposted; the warranty bound is N9's grant-plus-limit.
+*Admits:* the conditional instruction — "if it drops below one, top it up; if it KEEPS dropping,
+ring me before you keep topping." The highest-cost sentence a customer takes home.
+*Branch set:* read back and banked / read back wrong, corrected cheap / the threshold enumerated.
+
+### Flow 1 *(happy path — meet your new pipework)*
+- **T:** "Right, all done — come and meet your new pipework. Two things before I pack up. First: this little valve is your new best friend. If ever you see water where water shouldn't be, turn it clockwise till it stops. Try it now, while I'm stood here."
+- **C:** "Clockwise… like this? It's stiffer than I expected."
+- **T:** "That's it — stiff means it's sealing. Second: the pressure dial. It should sit at about one and a half. If it drops below one, top it up with this lever — I'll show you… and if it keeps dropping after you've topped up, that's when you ring me, before you keep topping. A system that keeps losing pressure is telling you something."
+- **C:** "So: below one, top up. Keeps dropping, ring you — don't just keep filling it."
+- **T:** "Word perfect. Paperwork's on the side: certificate on top — that one lives with the house deeds, it matters when you sell. Warranty under it: parts and my labour, twelve months — and it covers the work I did, not the twenty-year-old bits I didn't touch."
+- **C:** "Deeds drawer for the certificate, kitchen drawer for the rest. And your number's on the invoice if the dial misbehaves."
+
+### Flow 2 *(problem — the read-back comes back wrong)*
+- **T:** "Before I go — the new thermostat. Set the schedule once and leave it. If the house feels cold, nudge it one degree and give it an hour. Don't whack it up to thirty — it doesn't heat faster, it just overshoots."
+- **C:** "Got it — cold house, whack it up, gets there quicker."
+- **T:** "Other way round — and it's an easy trap. Thirty doesn't make it heat faster: it heats at the same speed and sails straight past comfortable. One degree, then an hour's patience."
+- **C:** "One degree and wait. Honestly, we've been doing the thirty thing for years with the old one."
+- **T:** "You and half the country — it's the most natural wrong thing in heating. That's exactly why I say it at every handover."
+- **C:** "Well, now we know. One degree, an hour, and the schedule does the rest."
+
+### Flow 3 *(the threshold, enumerated)*
+- **C:** "You said ring you if it keeps dropping. What counts as 'keeps dropping'? I don't want to be the person ringing you over nothing."
+- **T:** "That's never nothing — it's the best question of the day. Here's the line: topping up once a month or less is normal breathing, no call. Once a week — ring me and we book a look; no panic, but it goes on the list. Every day — ring me the same day: something's leaking, even if you can't see it."
+- **C:** "Monthly fine, weekly book you, daily same-day. And if I see actual water somewhere?"
+- **T:** "Actual water jumps the queue: valve off — the one we practised — and ring me straight away, whatever the dial says."
+- **C:** "Valve first, then phone. It's going on the calendar, look — 'monthly fine, weekly ring, daily shout'."
+- **T:** "Better than most of my apprentices. And if you're ever torn between two of those, pick the noisier one — a wasted phone call costs nothing; a soaked ceiling costs a fortune."
+
+## Scene 13 — The reckoning
+
+*Walks:* N2 + P2 — the money at the till, P2's third sector. Flow 2 contests a line and gets
+grounds, E3's logic at the invoice; flow 3 is the staged payment — P2 with N9's grant-and-limit,
+the date spoken so it cannot go soft.
+*Admits:* zero-admission at the till — paying is CORE-owned; what trades adds is only the
+grounds a contested line gets. Deliberate, and stated.
+*Branch set:* paid as quoted / a line contested / the staged payment.
+
+### Flow 1 *(happy path — as quoted)*
+- **T:** "Right — the reckoning. Six hundred as quoted, no surprises: four-twenty labour, one-eighty parts, and the VAT's inside those numbers, not on top."
+- **C:** "As quoted — you'd be amazed how rarely that sentence happens. Card alright?"
+- **T:** "Card's grand — machine's in the van, two minutes… there we go, that's you. Receipt's printing, and the invoice copy comes by email tonight with the photos attached."
+- **C:** "Wonderful. And is there anything I owe the office, or is this everything?"
+- **T:** "This is everything — one bill, one payment, done. If anyone rings you asking for more, it isn't us — it's a scam."
+- **C:** "Noted! Well, thank you. The heating's on, the noise is gone, and the dog's stopped barking at the radiator."
+
+### Flow 2 *(problem — the line contested)*
+- **C:** "Hang on — what's this forty for 'access equipment'? You stood on a ladder. I've got a ladder."
+- **T:** "Fair question, and I'd rather you asked than sat on it. That's the roof ladder and the edge protection for the stack work — your ladder gets me to the gutter; it doesn't get me safely over it."
+- **C:** "It still feels like renting your own kit back to me."
+- **T:** "I get that. Here's the shape of it: the big kit isn't mine — it's hired in for the day, and that forty is what the hire yard charged, passed straight through. The line's their invoice, not my margin — want to see it?"
+- **C:** "…No, that's fair enough. If it's a pass-through, it's a pass-through."
+- **T:** "Always ask, though — any line, on any invoice, from me or from anyone. A tradesman who won't explain a line is telling you something."
+
+### Flow 3 *(the staged payment — half now, and a date, not a feeling)*
+- **C:** "It's a big number to hand over in one go. Can we do half now, half when the plastering's had a week to dry and we know nothing's cracked?"
+- **T:** "We can — with the shape agreed out loud, so it doesn't go soft on us. Half today covers the parts and the lads. The rest gets a date, not a feeling: seven days from today, unless you've rung me about a crack before then."
+- **C:** "So if a crack shows up on day five?"
+- **T:** "Then you ring me, I come and look, and the clock pauses while I put it right — that's what the second half is for. But 'the wall looks fine and I've been busy' doesn't pause anything: day seven, it's due."
+- **C:** "Half now, the rest next Friday, and only a real problem stops the clock. That's fair both ways."
+- **T:** "That's the whole trick with money — fair both ways, and written down before anyone's tired or cross. I'll put it on the invoice now."
+
+## Scene 14 — Living with the job
+
+*Walks:* N107 [health, proposed] walked whole between visits — the interim regime, its
+thresholds, and the threshold USED in flow 3, which is the shape earning its keep. Flow 2 is the
+failure branch: instruction not followed → no blame theatre, re-instruct stronger, record
+(F103). F102 asserts the normality both times.
+*Admits:* zero-admission — the conditional instruction is owned from scene 12; this scene is it
+living in the house. Deliberate, and stated.
+*Branch set:* regime banked / regime broken / threshold used.
+
+### Flow 1 *(the rules of the house)*
+- **T:** "Right — between now and Thursday, the rules of the house. You can flush the loo and run the basin, that's all fine. Nothing down the kitchen sink — not a teacup's worth — till the new run's in."
+- **C:** "Nothing at all? Where does the washing-up go?"
+- **T:** "Bowl it and tip it down the loo — daft as it sounds, that side of the house is a different pipe. And the dishwasher's off the same run as the sink, so that stays off too."
+- **C:** "Loo and basin yes, sink and dishwasher no, washing-up goes upstairs. The kids will think we've gone mad."
+- **T:** "Tell them it's three days of camping. And the important one: if that sink ever backs up on its own — nobody's poured anything, and it rises anyway — ring me the same day. That means the blockage is moving, and moving is the one thing it mustn't do."
+- **C:** "Backs up by itself, same-day call. On the calendar it goes."
+
+### Flow 2 *(problem — the pasta water)*
+- **C:** "Before you say anything — my husband forgot, and drained the pasta in the sink last night. There was a gurgle. I've been dreading telling you."
+- **T:** "Then let's find out what the gurgle cost us — no inquest; it's the most forgettable rule in the world. When you say gurgle: did it drain away in the end, or is it still sitting there?"
+- **C:** "It went down, just slowly. Slower than before, maybe? Or I'm imagining it."
+- **T:** "Either way we treat it as real — 'maybe slower' is information, not imagining. New rule, stronger than the old one: a strip of tape across the taps, so the hand gets reminded before the pasta's airborne."
+- **C:** "Tape on the taps. He'll be mortified — which, frankly, won't hurt."
+- **T:** "It happens in half the houses I do — the hands know the old way. And I'm noting the gurgle on the job sheet, so Thursday-me checks that trap first instead of finding out the hard way."
+
+### Flow 3 *(the threshold used — the midweek call)*
+- **C:** "It's me — the pressure thing. It's dropped to just above the one. Is that a top-up or a ring-you? I can't remember which side of the line this is."
+- **T:** "You've rung at exactly the right moment, so the system works. Just above one is a top-up: lever till the needle's at one and a half, same as we practised."
+- **C:** "Doing it now… one and a half, done. And now I watch it?"
+- **T:** "Now you watch it — but lazily. Once a day, same time — kettle o'clock. If it's still sat at one and a half tomorrow, it was just the new system settling, and we forget it."
+- **C:** "And if it's dropped again by tomorrow?"
+- **T:** "Then it's dropping daily, and that's my 'ring me' from the handover — I'd come Friday and find it. But most of these settle. Kettle o'clock tomorrow, and text me the number either way."
+
+## Scene 15 — The callback
+
+*Walks:* F101 [health, proposed] — the telling ratified before anything else; N104 triage
+against the record, which is K3 deciding: the solder line, the photos, the dates. Flow 1 is O6's
+own-fault turn priced at zero; flow 2 holds the demarcation with the evidence shown, not
+asserted; flow 3 is the contested attribution settled by the record.
+*Admits:* "you were right to ring" — the ratify-then-triage opening that keeps callbacks coming
+early instead of late.
+*Branch set:* mine, owned / not mine, shown / contested, and the record decides.
+
+### Flow 1 *(own fault — owned, and priced at zero)*
+- **C:** "I hate making this call — the joint you fixed is weeping again. There's a saucer under it catching drips."
+- **T:** "You were right to ring, and the saucer was the right move. First things first: is it drips into a saucer, or running water?"
+- **C:** "Just drips. One every couple of minutes, maybe."
+- **T:** "Then it holds till morning, and morning is when I'll be there — eight o'clock, before my first job. And so there's no dance about it: if that's my joint weeping, it's mine. No charge, no quibble — and I find out why, not just tighten it."
+- **C:** "I wasn't looking forward to arguing about it, honestly."
+- **T:** "No argument to have. A callback on my own work is the bill I pay for doing this job — the day I grumble about it is the day I've turned into the wrong plumber."
+
+### Flow 2 *(not mine — the boundary shown, not asserted)*
+- **T:** "Found your leak — come and see, because there's a bit of good news and a bit of geography. Look at the solder: my work's the bright run on the left, up to this joint. The drip's coming from the dull one on the right — that's the original pipework. Nineteen-seventies, that."
+- **C:** "So it's not what you did — it's the old stuff next door to it?"
+- **T:** "Exactly that. And it's not a coincidence, so I'll say it before you wonder: new pipework holds pressure better, and the old weak spot next to it gets found out. My work didn't cause it — but it did expose it."
+- **C:** "I appreciate you saying that unprompted. So where does that leave us — is this a new job?"
+- **T:** "A new job, quoted properly, not sneaked onto the old one: that section in copper, about one-twenty, an hour and a half. Today costs nothing — I came to check my own work, and my own work's fine."
+- **C:** "That's about as fair as bad news gets. Go on — book it in."
+
+### Flow 3 *(contested — the photos have the date)*
+- **C:** "My brother-in-law's been round. He says whoever did the bathroom must have knocked that pipe — and the bathroom was you."
+- **T:** "Then let's not have my word against his — let's have the photos. Every job, I photograph before and after; it's why I'm slow packing up. Here's that pipe the morning I started: see the rust ring on the joint? Already there."
+- **C:** "…That's definitely the same joint. And that stain on the board under it — that's in the photo too."
+- **T:** "Old stain, old rust: that joint's been weeping on and off since before my van ever parked outside. Date's in the corner — the camera writes it, not me."
+- **C:** "Fair enough. I'll show him the photos — he'll enjoy being wrong slightly less than he enjoyed being right."
+- **T:** "They always do. And no hard feelings, his end or mine — checking the story is exactly what I'd tell your family to do. It's what the photos are for."
+
+## Scene 16 — Chasing the money
+
+*Walks:* F5 + N109 [health, proposed] — the counter-offer accepted AND bounded; N401's
+[ireland, proposed] forum position at the escalation — the process named as a road, not a
+threat. Flow 3 finds the dispute hiding inside the silence and routes it to evidence, not
+process. The money composes whole, exactly as the mapping ruled: no money-shape exists, and
+none is needed.
+*Admits:* accept-and-bound — "half Friday, the rest by month-end, and the second fix waits till
+we're square."
+*Branch set:* the counter-offer bounded / the process named / the dispute surfaced.
+
+### Flow 1 *(the excuse, and the shape put on it)*
+- **T:** "It's about the invoice — thirty days yesterday, and it hasn't landed. What's happening your end?"
+- **C:** "I know, I know. Cash-flow's tight this month — the wedding cleaned us out. I can do half on Friday, hand on heart."
+- **T:** "Half Friday I'll take — and let's put a shape on the rest, so neither of us is having this call again: the balance by the last day of the month."
+- **C:** "End of the month works. You've been decent about it — some would've been shirty by now."
+- **T:** "No need for shirty — weddings happen, and you told me straight instead of going quiet, which counts for a lot. One thing, so it's said and not sprung: the second-fix visit waits till we're square. Not punishment — just order of operations."
+- **C:** "Half Friday, rest by month-end, and you're back on the tools after. Fair — and thanks for not making it awkward."
+
+### Flow 2 *(problem — the road named, without heat)*
+- **T:** "It's the third call now, and Friday's half never came — so today's is a different kind of call. I'd rather tell you the road than surprise you on it."
+- **C:** "It's coming, honestly. Things are just mad at the minute."
+- **T:** "I believe you that things are mad. And — the invoice is sixty days old, so here's the road, plainly: seven more days, then it goes to the small-claims process. Costs get added, it marks your credit file, and it stops being a conversation between you and me."
+- **C:** "Small claims? Over one bathroom?"
+- **T:** "Over any job that's done, checked and signed for — the size isn't the point. And I'd genuinely rather not: seven days is plenty to make this never-have-happened. Pay it, or ring me with a real plan by Friday, and the road stays untravelled."
+- **C:** "…Alright. I hear you. My sister owes me — I'll shake that tree today and ring you Friday morning."
+
+### Flow 3 *(the dispute hiding in the silence)*
+- **C:** "I'll be honest about why I've been sitting on it: the landing door catches on the new floor. I know that's not the invoice — but paying full whack for a job that catches felt wrong."
+- **T:** "Then I'm glad I rang, because that's not a money problem — that's a snag, and snags get fixed, not sat on. Why didn't you say, when it started catching?"
+- **C:** "Didn't want the fuss, I suppose. And then the invoice came, and the not-paying sort of… became the saying."
+- **T:** "That's the bit to change — the door I'll plane in twenty minutes, but silence I can't fix. So: I'm there Thursday for the door, and you're happy to settle the invoice once it shuts sweet?"
+- **C:** "Thursday, and the money's yours the same day — that was the only thing, promise."
+- **T:** "Then we've both learned the cheap way: you ring me about doors, and I don't let an invoice go sixty days quiet. Deal."
