@@ -349,3 +349,177 @@ applied; see §3 — *via/strada* resolved as a legitimate chunk-level split, no
 
 **Chapter 5 verdict:** clean; NN line's ten claims verified; the *via/strada* question raised
 and resolved as split S2, no correction.
+
+### Chapter 6 — *Il precipizio*
+
+**No line changed.**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| how do I get to fluent? — t1 | come arrivo a parlare bene? | I | "fluent" has no spoken-register Italian adjective; the intention maps as *parlare bene* — as the pod already ruled |
+| practise. go and use it. — t1 | fai pratica. vai e usala. | D | **NN systemic (verified):** *fare pratica* — fare + noun where Spanish has the bare verb *practica*; the fare-support system |
+| is it? — t3 | davvero? | E | aux-echo erases ✓ ZUT with Ch. 2 t16 — same known, same form |
+| painful if nobody has prepared you for it — t4 | doloroso se nessuno ti ci ha preparato | I | ***ti ci*** — **NN void (verified):** the double clitic Spanish cannot assemble |
+| a pile of words and a rule book — t4 | un mucchio di parole e un libro di regole | D | *mucchio* against *montón* — near-absence |
+| you have to invent every sentence on the spot, live — t4 | devi inventarti ogni frase lì per lì, dal vivo | D | benefactive reflexive *inventarti*; **NN absence (verified):** *lì per lì*; **NN trap (verified):** *DAL vivo* against *EN vivo* — preposition switch on the cognate |
+| that's the cliff — t4 | quello è il precipizio | D | **NN anchor:** *precipizio/precipicio* — exact cognate on the chapter's key noun |
+| if you've already walked a thousand little paths — t4 | ma se hai già percorso mille piccoli sentieri | D | **NN trap-lite:** *percorrere* against *recorrer* — the prefix shifts |
+| it's just more of the same — t4 | è solo altro dello stesso | D | pod §7 taste flag stands |
+| both. at the same time. — t6 | tutte e due. nello stesso momento. | S | the gendered *tutti/tutte e due* split — agreement pinned by referent (two truths, fem.); see §3 S4 |
+| so what you're saying is: films with subtitles — t7 | quindi quello che stai dicendo è: i film … con i sottotitoli | D | ledger ✓ third occurrence, same form |
+| nearly. not subtitles. — t8 | quasi. non i sottotitoli. | D | **NN anchor-with-a-consonant (verified):** *quasi/casi* |
+| it's the whole thing — t10 | è tutta la faccenda | D | pod §7 taste flag stands |
+| your eyes do the work and your ears go to sleep — t10 | il lavoro lo fanno gli occhi e le orecchie si addormentano | I | object-fronting + doubling again; **NN anchor (verified):** the reflexive matches *se duermen* |
+| a transcript you read before — t10 | una trascrizione la leggi prima | I | the same topicalisation frame — third exhibit; Spanish can build it (*la lees antes*) — anchor |
+| then you listen without it — t10 | poi ascolti senza | E | the object erases — bare *senza*; **NN absence:** Spanish *sin* cannot stand bare |
+| now you've got it — t12 | adesso ci sei | D | **NN void (verified):** *ci sei* — essere + ci, no Spanish twin |
+| before they press play — t13 | prima che premano play | D | *prima che* + subj — **NN anchor:** *antes de que* matches the mood; *play* loanword ✓ R2 |
+| they press play. that's it. — t16 | premono play. basta. | D | *basta* — exact anchor |
+| what we do is notice when they stop — t16 | quello che facciamo noi è accorgerci quando si fermano | D | **NN absence (verified):** *accorgersi*, the key verb with no neighbour |
+| we noticed — t16 | ce ne siamo accorti | I | ***ce ne*** — **NN void (verified):** the double clitic on the line that carries the mechanism |
+| we put a few of the early sentences back in front of them — t16 | gli rimettiamo davanti qualche frase delle prime | I | *ri-* ✓ the re-system again; **NN trap:** *qualche* + SINGULAR (*qualche frase*) against *algunas frases* plural |
+| nobody fills in a form — t16 | nessuno compila un modulo | D | **NN false friend (verified):** *modulo* — sp. *módulo* is a module; a form is *formulario* |
+| the thing that's paying attention is us, not them — t16 | la cosa che sta attenta siamo noi, non loro | I | the copula re-agrees with the complement (*siamo noi*) ✓ consistent with Ch. 1 t6 |
+| no form — t17 | niente modulo | I | *niente* as determiner — **NN absence:** *nada de* is the strained equivalent |
+| the same thing you've been doing — t20 | la stessa cosa che facevi già | D | the perfect-progressive relaxes into imperfect + *già* |
+
+**Chapter 6 verdict:** clean; NN line's ten claims verified.
+
+### Chapter 7 — *Un tiro di dadi*
+
+**No line changed.**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| how would you do it in a school? — t1 | come lo faresti in una scuola? | D | *harías* anchor |
+| it's been a long time since I've worked in schools — t2 | è da tanto tempo che non lavoro nelle scuole | I | **NN systemic (verified), headline:** the since-frame builds on *essere* + *da* where Spanish builds on *hacer* (*hace mucho que*) — the essere/hacer remap |
+| and I haven't thought about it much — t2 | e non ci ho pensato molto | I | *pensarci* — the *ci* again |
+| but? — t3 | però? | D | **NN anchor-with-trap (verified):** *però/pero* — stress and final vowel move, and *però* can float (Ch. 1 t23) where *pero* cannot |
+| one day a week — t4 | un giorno alla settimana | D | *a la semana* anchor |
+| not an hour on Tuesday and an hour on Thursday — t4 | non un'ora il martedì e un'ora il giovedì | D | **NN trap:** habitual weekday takes singular article *il martedì* against Spanish plural *los martes* |
+| the paths get walked before they've been forgotten — t4 | i sentieri li percorrono prima di averli dimenticati | I | fronting + doubling + past infinitive — three Italian machines in one clause |
+| and I'd bet on it — t4 | e ci scommetterei | I | *scommetterci* |
+| that's a big bite out of the timetable — t5 | è un bel morso all'orario | D | *bel* truncation |
+| I suspect you wouldn't even need the whole year — t6 | sospetto che non servirebbe nemmeno l'anno intero | D | *servire* ✓ the need-frame, consistent; *nemmeno* ✓ |
+| you know what breaks my heart? — t6 | sai cosa mi spacca il cuore? | D | **NN absence (verified):** *spaccare* against *romper* |
+| the kids who actually care — t6 | i ragazzi a cui importa davvero | D | **NN (verified):** *importare* with bare dative — no resumptive *les* where Spanish demands *a los que LES importa* |
+| the ones making an effort — t6 | quelli che si impegnano | D | **NN absence:** *impegnarsi* — *esforzarse* is the reach |
+| page after page of highlighter — t6 | pagine e pagine di evidenziatore | D | **NN absence:** *evidenziatore* against *rotulador/marcador* |
+| highlighting makes zero difference — t6 | evidenziare non fa nessuna differenza | D | negative concord *non…nessuna* ✓ |
+| worse than zero — it costs them the time — t6 | peggio di nessuna — gli costa il tempo | D | *costare* dative ✓ consistent Ch. 2 |
+| and gives nothing back — t7 | e non rende niente | D | **NN anchor:** *rendere/rendir* |
+| nobody told them how a memory is made — t8 | nessuno gli ha detto come si forma una memoria | D | impersonal *si* ✓ *se forma* anchor |
+| somebody, once, told them "learn it" — t8 | qualcuno, una volta, gli ha detto «imparalo» | D | imperative + clitic — *apréndelo* anchor |
+| an older brother — t8 | un fratello più grande | D | *hermano mayor* — Italian prefers spoken *più grande* over *maggiore* |
+| they're breaking their backs — t8 | si spaccano la schiena | D | **NN anchor (verified):** *se rompen la espalda* — the body-part article matches; *spaccare* ✓ |
+| and we let them — t8 | e noi glielo lasciamo fare | I | ***glielo*** — **NN (verified):** the fused cluster against *se lo*; the *se* is the trap |
+| that's not their failure. that's ours. — t8 | non è un fallimento loro. è nostro. | D | postposed *loro*; **NN absence:** *fallimento* against *fracaso* (and *fallimento* also means bankruptcy — noted) |
+| how much time is it going to take? — t13 | quanto tempo ci vorrà? | I | ***ci vorrà*** — **NN absence (verified), headline:** ci + volere for it-will-take; no Spanish neighbour at all |
+| a lot — t14 | tanto | D | ZUT with Ch. 1 t20 bare-quantifier ✓ |
+| more. ten hours — and then ten more. — t16 | di più. dieci ore — e poi altre dieci. | D | **NN anchor:** *otras diez* — and "more X" → *altre* (see split S6: degree-more = *di più/più*, additional-more = *altro/altre*) |
+| a hundred hours. it's a hundred hours. — t20 | cento ore. sono cento ore. | D | plural copula — *son cien horas* anchor |
+| take them as you want — t20 | prendile come vuoi | D | **NN anchor (verified):** *tómalas* — imperative + clitic matched |
+| I'd be inclined not to differentiate that much — t22 | io sarei propenso a non differenziare così tanto | D | *propenso a* — exact anchor |
+| some you'd surprise. and some you'd lose. — t22 | qualcuno lo sorprenderesti. e qualcuno lo perderesti. | I | fronted indefinite + resumptive *lo* — and **NN systemic, big, new:** no personal *a*. Spanish marks human objects with *a* (*sorprenderías A alguien*); Italian never does — the spurious-*a* error runs the whole course |
+| fewer than you think — t23 | meno di quanto pensi | D | *di quanto* against *de lo que* — near-trap on the comparative clause |
+| maybe — t24 | può darsi | D | **NN absence (verified):** *può darsi* — *puede ser* is the false floor |
+| not enough to be worth doing — t24 | non basta per valerne la pena | D | **NN one-moving-part (verified), the register's flagship:** *valerne la pena* — the Spanish speaker owns *valer la pena* exactly, and Italian inserts *ne* |
+| and I still like my thirteen weeks — t25 | e a me piacciono ancora le mie tredici settimane | D | *piacere* plural — *me gustan* anchor |
+| and I still don't — t26 | e a me continuano a non piacere | E | the English ellipsis rebuilds in full — no *lo* pro-form for a liking |
+| then we'll put it on pause. okay. — t27 | allora la mettiamo in pausa. va bene. | D | ledger ✓ — **NN anchor (verified):** *la ponemos en pausa*, matched clitic |
+| a hundred hours either way — t28 | cento ore in ogni caso | D | *en cualquier caso* near-anchor |
+
+**Chapter 7 verdict:** clean; NN line's nine claims verified; new find: the personal-*a* void —
+promoted to the register as systemic, it touches every animate object in the course.
+
+### Chapter 8 — *Uno a uno*
+
+**One line changed** — the *"Tell me."* turn (t11), fork F-B (§3): was *"Racconta."* here,
+*"Dimmi."* in Chapter 5; same known, two targets. Corrected:
+> t11 TOM — **"Dimmi."** *(was "Racconta.")*
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| there's a school that wants you — t1 | c'è una scuola che ti vuole | D | |
+| will you do it? — t1 | lo fai? | E | will-future erases to bare present — *¿lo haces?* anchor |
+| not even for a week? they're keen. — t5 | nemmeno per una settimana? ci tengono. | I | *nemmeno* ✓; ***ci tengono*** — **NN void (verified):** *tenerci* — and a trap on top: it looks like *tener* and is not |
+| it's the only thing I say yes to now — t6 | è l'unica cosa a cui dico di sì, ormai | D | **NN trap:** *dire DI sì* against *decir QUE sí*; **NN absence (verified):** *ormai* |
+| whoever they are, whatever the room — t8 | chiunque sia, qualunque sia la stanza | D | subj — **NN (verified):** matched mood, different word (*quienquiera que sea*, strained in speech) |
+| one of them has two bad days — t8 | uno di loro ha due giornate storte | D | **NN absence:** *giornata storta* — no *día torcido* |
+| and all of it lands on the other three — t8 | e tutto cade addosso agli altri tre | D | **NN absence (verified):** *cadere addosso a* |
+| tell me — t11 | dimmi | S→D | fork F-B, corrected here |
+| the most positive person in the room paired up with her. on purpose. — t12 | la persona più positiva della stanza si è messa in coppia con lei. apposta. | D | *mettersi in coppia*; **NN absence (verified):** *apposta* against *a propósito* |
+| he was going to bring her round — t12 | la avrebbe tirata su | I | going-to-in-the-past → conditional perfect + agreement (*tirata*); **NN absence:** *tirare su* |
+| he'd become exactly as negative as she was — t12 | era diventato esattamente negativo quanto lei | I | **NN ×2 (verified):** pluperfect with *essere*; *quanto lei* where Spanish uses *como ella* |
+| that's literally how cancer works — t13 | è letteralmente così che funziona il cancro | I | the how-cleft → *è così che* — Spanish *es así como*: the *che/como* joint |
+| and nonetheless — t16 | e ciò nonostante | D | |
+| orders of magnitude more powerful than one person alone — t16 | più potente di ordini di grandezza rispetto a una persona da sola | D | *rispetto a / respecto a* anchor |
+| I've got one too — t19 | ne ho una anch'io | I | *ne* + *una* + *anch'io* — the have-one-of-them cluster; **NN void** on *ne*, anchor on *yo también* |
+| brilliant people — t19 | gente in gamba | D | **NN absence (verified):** *in gamba* |
+| a few years ago — t19 | qualche anno fa | D | **NN trap ×2:** *qualche* + singular; and ago = postposed *fa* against preposed *hace* |
+| food for the whole street — t19 | cibo per tutta la via | D | split S2: home-street = *via* ✓ |
+| I'll say it before you do — t19 | lo dico prima che lo dica tu | D | *prima che* + subj + stressed *tu* ✓ |
+| accept it anyway — t19 | accettala lo stesso | D | ledger — ZUT with Ch. 2 t1, verbatim ✓ the callback lands |
+| that's my line — t20 | quella è una battuta mia | D | **NN false friend (verified), the register's poster child:** *battuta* against sp. *batuta* (a conductor's baton); postposed *mia* |
+| you said it two hours ago — t21 | l'hai detta due ore fa | D | agreement *detta* ✓; *fa* ✓ |
+| it is now — t23 | adesso sì | I | the ellipsis maps to the affirmation particle — **NN anchor:** *ahora sí*, exact |
+| a good line ends up belonging to both — t24 | una bella battuta finisce per appartenere a tutti e due | D | *finire per / acabar por* anchor; *tutti e due* ✓ S4 |
+| you stop knowing who brought what — t24 | non sai più chi ha portato cosa | I | **NN systemic:** *non…più* against *ya no* — the already-no order flips |
+| go on. the street. — t24 | vai. la via. | D | F-A form ✓; S2 *via* ✓ |
+| what happened to that group? — t26 | che fine ha fatto, quel gruppo? | I | **NN absence (verified):** *che fine ha fatto* — no Spanish twin |
+| it's gone cold — t27 | si è raffreddato | D | reflexive + essere — *se enfrió* near-anchor |
+| how many of you were there? — t28 | quanti eravate? | D | **NN anchor (verified):** *¿cuántos erais?* — essere matches for once |
+| all of them busy. all of them time-poor. — t29 | tutti impegnati. tutti poveri di tempo. | D | *povero DI* ✓ the preposition trap again |
+| there's your answer — t30 | ecco la risposta | I | ***ecco*** — **NN absence, headline:** Spanish has no *ecco*; *he aquí* is bookish, *ahí está* a workaround |
+| it wasn't the idea that failed — t30 | non è stata l'idea a fallire | I | the *è stata X a* cleft ✓ consistent with Ch. 2 t20 — one cleft frame, ZUT ✓ |
+| there just aren't many people with time — t30 | è che non c'è tanta gente che ha tempo | D | **NN mood-mismatch trap:** spoken Italian keeps the indicative (*che ha*) where Spanish demands *que TENGA* |
+| nowhere. there never are. — t30 | non c'è mai, da nessuna parte | D | *da nessuna parte* — matched build *de ninguna parte* ✓ |
+| and yet you'd do it again — t31 | eppure lo rifaresti | D | *eppure* ✓; *ri-* ✓ |
+| lives between you and the road — t31 | vive tra voi e la strada | D | S2: road-as-route = *strada* ✓ |
+| it's a trip in— / —a car — t31/32 | è un viaggio in— / —macchina | D | **NN false friend, big (new):** *macchina* — sp. *máquina* is machinery; a car is *coche*; the completion lands on the exact word a Spanish ear can't predict |
+| now you're driving my metaphor — t35 | adesso la mia metafora la stai guidando tu | I | fronting + doubling + stressed *tu*; **NN false friend (verified):** *guidare* = drive; sp. *guiar* = guide |
+| you gave me the keys — t36 | mi hai dato tu le chiavi | D | *le chiavi / las llaves* — the register's anchor exhibit ✓ |
+| keep them — t37 | tienile | D | imperative + clitic |
+| sometimes with the same people, sometimes with new ones — t34 | a volte con le stesse persone, a volte con gente nuova | D | *a volte / a veces* anchor |
+| you'll do more than one — t34 | ne farai più di uno | I | **NN void (verified):** partitive *ne* in its most natural habitat |
+| and there will be crashes — t34 | e ci saranno degli incidenti | D | partitive *degli* ✓; **NN false friend (new):** *incidente* = crash; sp. *incidente* = minor episode (a crash is *accidente*) |
+| it's short on edges — t38 | è povero di collegamenti | D | *povero di* ✓ ZUT with t29 ✓ |
+| the curve has had it — t38 | la curva se l'è già mangiata | D | pod §7 flag stands; the *già* belongs to "by the next week" — see §3 died-inside note against Ch. 9's bare form |
+| hang on. the dog. — t39 | aspetta. il cane. | D | ledger ✓ |
+| this will take a while — t41 | ci vorrà un po' | I | *ci vorrà* ✓ ZUT with Ch. 7 t13 ✓ |
+| you owe me a third thing — t42 | mi devi una terza cosa | D | **NN anchor (verified):** *me debes* |
+| are you free on Tuesday? — t42 | sei libero martedì? | D | **NN trap ×2:** *sei* where Spanish says *estás*; bare *martedì* for the specific day where Spanish needs *el martes* |
+| Tuesday I have something on — t43 | martedì ho un impegno | D | **NN absence:** *impegno* against *compromiso* |
+| Thursday I'm not here — t45 | giovedì non ci sono | I | **NN void (verified):** locative *ci* — *no estoy* has nothing in the slot |
+| I'll be there at two — t48 | sono lì alle due | E | will erases to present + *essere* — *estaré* twice removed |
+| I'll be here. noted. — t49 | io sono qui. segnato. | D | stressed *io*; *segnato / anotado* |
+
+**Chapter 8 verdict:** one correction (F-B); NN line's fifteen claims verified; new finds:
+*macchina/máquina* and *incidente/accidente* (both promoted to the register), *dire di sì*, the
+indicative-where-Spanish-subjunctive existential relative.
+
+### Chapter 9 — *La terza cosa*
+
+**No line changed.** One near-fork examined and cleared: Ch. 8's *"la curva se l'è GIÀ
+mangiata"* against this chapter's *"la curva se l'è mangiata"* — the *già* maps "by the next
+week", which is present in Chapter 8's English and absent here; the fork dies inside the
+carrying chunks. ✓
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| you owed me a third thing — t1 | mi dovevi una terza cosa | D | imperfect — *me debías* anchor ✓ per pod NN line |
+| …I've lost it — t4 | …l'ho persa | D | **NN void (verified), the register's grammar exhibit:** participle agrees with the feminine clitic (*persa*) — *la he perdido* never agrees |
+| you've lost the important one — t5 | hai perso quella importante | D | and one turn later the agreement correctly VANISHES with the full object (*perso*, not *persa*) — the rule shown both ways in ten words; gold for the pre-test |
+| give me the first two — t6 | dammi le prime due | D | *dame* anchor ✓ |
+| you gave it me in the first hour — t7 | me l'hai dato tu nella prima ora | D | *me l'* + stressed *tu* ✓ |
+| the one you wouldn't let me keep — t7 | quello che non mi hai lasciato tenere | D | *lasciare* + inf — *dejar* anchor |
+| —go and use it — t8 | —vai a usarla | D | the completion crosses the turn boundary intact |
+| it isn't a step-change any more — t8 | non è più un salto | D | *non…più* ✓; **NN anchor (verified):** *salto* |
+| it's the same thing you've been doing, in a bigger room — t8 | è la stessa cosa che facevi già, in una stanza più grande | D | ZUT with Ch. 6 t20 — **the callback lands on the identical Italian**, which is what makes it audible ✓ |
+| it never walked you anywhere — t8 | non ti ha mai fatto camminare da nessuna parte | I | causative *fare* ✓; *da nessuna parte* ✓ |
+| you said that before the dog too — t9 | l'avevi detta anche prima del cane | D | pluperfect + agreement ✓ consistent |
+| everything gets said three times — t11 | tutto viene detto tre volte | I | **NN void (new):** the *venire*-passive — Spanish has only *ser/estar* + the se-passive; *viene detto* has no scaffold |
+| debt paid? — t12 | debito saldato? | D | **NN anchor (verified):** *saldar* |
+| never let a dog near the important one — t14 | mai lasciare un cane vicino a quella importante | D | bare-infinitive prohibition; *vicino a / cerca de* |
+
+**Chapter 9 verdict:** clean; NN line's six claims verified; new find: the *venire*-passive.
