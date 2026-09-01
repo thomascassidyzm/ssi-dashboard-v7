@@ -1,7 +1,14 @@
 #!/usr/bin/env node
 /**
- * ingest-canonical-pods — put the three 2026-08-30 pods into the canonical store,
- * once, so the Script Lab can edit and score them.
+ * ingest-canonical-pods — put a walk into the canonical store, once, so the Script
+ * Lab can edit and score it.
+ *
+ * WHAT TO INGEST IS DATA, NOT CODE. This tool used to carry a hardcoded three-entry
+ * map, which is why no new walk ever appeared in the Script Lab: a corpus could
+ * exist and still be un-ingestable without editing this file. It now reads
+ * `tools/pods/pod-corpora.json` — the walk registry — and the Script Lab reads the
+ * same file. ADDING THE NINTH WALK IS ONE JSON ENTRY AND ONE CORPUS FILE, AND NO
+ * CODE CHANGE ANYWHERE.
  *
  * Tom's ruling, 2026-08-30: "it has to then be stored in the DB like everything
  * else in popty editing does." So this is a ONE-WAY, ONE-TIME import. After it
@@ -24,6 +31,15 @@ require('dotenv').config()
 const fs = require('fs')
 const path = require('path')
 const { parsePod } = require('./parse-pod-markdown.cjs')
+const { parseSectorWalk } = require('./parse-sector-walk.cjs')
+const { evidencePath } = require('../lib/evidence-path.cjs')
+
+// The two import formats the registry's `format` field selects between. A new
+// format is a new entry here plus its parser; nothing else in this file moves.
+const PARSERS = {
+  'pod-table': (md, e, store) => parsePod(md, { slug: e.slug, unit: e.unit || 'Chapter', targetLang: e.targetLang || null, store }),
+  'sector-flows': (md, e, store) => parseSectorWalk(md, { slug: e.slug, store })
+}
 
 const REPO = path.resolve(__dirname, '../..')
 const arg = (n, d) => { const h = process.argv.find(a => a.startsWith(`--${n}=`)); return h ? h.slice(n.length + 3) : d }
@@ -33,22 +49,23 @@ const REIMPORT = process.argv.includes('--reimport-destructive')
 // pilot — prove the storage shape on one chapter before paying for ~1,500 rows.
 const SECTIONS = (arg('sections', '') || '').split(',').filter(Boolean).map(Number)
 
-const PODS = {
-  'learning-flagship': {
-    file: 'docs/pods/learning-flagship-pod-2026-08-30.md',
-    unit: 'Chapter', targetLang: null,
-    note: 'the Learning flagship — 11 chapters, English only'
-  },
-  'method-pod-chapters': {
-    file: 'docs/pods/method-pod-chapters-2026-08-30.md',
-    unit: 'Chapter', targetLang: 'ita',
-    note: 'the Method Pod, chapter cut — 12 chapters, English beside Italian'
-  },
-  'method-pod-43-scene': {
-    file: 'docs/pods/method-pod-full-2026-08-30.md',
-    unit: 'Scene', targetLang: 'ita',
-    note: 'the Method Pod, 43-scene cut — the CONTROL ARM the chapter cut is measured against'
-  }
+const MANIFEST = path.join(__dirname, 'pod-corpora.json')
+
+/** The walk registry, and what each entry means for THIS tool.
+ *  - status 'authored' + a corpus  → ingestable
+ *  - status 'mapping-only', or a null corpus → SKIPPED with its reason printed. A
+ *    mapping is not a walk, and pod-1 is canon in the DB rather than in markdown.
+ *  Entries in `parked[]` are never read here: they are deliberately not canon. */
+function loadManifest () {
+  const m = JSON.parse(fs.readFileSync(MANIFEST, 'utf8'))
+  return (m.walks || []).map(e => ({
+    ...e,
+    ingestable: e.status === 'authored' && !!e.corpus && !!e.format,
+    skipReason: e.status !== 'authored'
+      ? `status '${e.status}' — not an authored walk`
+      : (!e.corpus ? 'no corpus: the DB is canon for this one, or authoring is in flight'
+        : (!e.format ? 'no format declared' : null))
+  }))
 }
 
 const DDL = `
@@ -132,54 +149,129 @@ function summarise (slug, parsed) {
 
 async function main () {
   if (process.argv.includes('--ddl')) { console.log(DDL); return }
+
+  const entries = loadManifest()
   const which = arg('pod', '')
-  const slugs = which === 'all' ? Object.keys(PODS) : (PODS[which] ? [which] : null)
-  if (!slugs) { console.error(`--pod=<${Object.keys(PODS).join('|')}|all> required`); process.exit(1) }
+  let selected
+  if (which === 'all') {
+    selected = entries.filter(e => e.ingestable)
+    for (const e of entries.filter(e => !e.ingestable)) {
+      console.log(`── ${e.slug} — SKIPPED: ${e.skipReason}`)
+    }
+  } else {
+    const e = entries.find(x => x.slug === which)
+    if (!e) {
+      console.error(`--pod=<slug|all> required. The registry (tools/pods/pod-corpora.json) holds:`)
+      for (const x of entries) console.error(`   ${x.slug.padEnd(24)} ${x.ingestable ? 'ingestable' : 'not ingestable — ' + x.skipReason}`)
+      process.exit(1)
+    }
+    if (!e.ingestable) { console.error(`── ${e.slug} — not ingestable: ${e.skipReason}`); process.exit(1) }
+    selected = [e]
+  }
+  if (!selected.length) { console.log('nothing ingestable in the registry.'); return }
 
   const store = loadStore()
   const report = []
-  for (const slug of slugs) {
-    const cfg = PODS[slug]
-    const md = fs.readFileSync(path.join(REPO, cfg.file), 'utf8')
-    let parsed = parsePod(md, { slug, unit: cfg.unit, targetLang: cfg.targetLang, store })
+  const table = []
+  for (const e of selected) {
+    console.log(`\n── ${e.slug} — ${e.name} [${e.format}]`)
+    if (e.note) console.log(`   ${e.note}`)
+
+    // A missing corpus file is a named error for THIS entry and nothing else: the
+    // other walks in the run keep going. A silent skip is how a walk goes missing.
+    const full = path.join(REPO, e.corpus)
+    if (!fs.existsSync(full)) {
+      const msg = `CORPUS FILE MISSING: ${e.corpus}${e.branch && e.branch !== 'main' ? ` — the registry says it lives on branch '${e.branch}'; bring it in with \`git checkout origin/${e.branch} -- ${e.corpus}\`` : ''}`
+      console.log(`   ERROR: ${msg}`)
+      report.push({ slug: e.slug, error: msg })
+      table.push({ slug: e.slug, format: e.format, status: 'MISSING CORPUS', scenes: '—', flows: '—', lines: '—', steps: '—' })
+      continue
+    }
+    const parse = PARSERS[e.format]
+    if (!parse) {
+      const msg = `NO PARSER for format '${e.format}' — add it to PARSERS in this file`
+      console.log(`   ERROR: ${msg}`)
+      report.push({ slug: e.slug, error: msg })
+      table.push({ slug: e.slug, format: e.format, status: 'NO PARSER', scenes: '—', flows: '—', lines: '—', steps: '—' })
+      continue
+    }
+
+    let parsed
+    try {
+      parsed = parse(fs.readFileSync(full, 'utf8'), e, store)
+    } catch (err) {
+      const msg = `PARSE FAILED: ${err.message}`
+      console.log(`   ERROR: ${msg}`)
+      report.push({ slug: e.slug, error: msg })
+      table.push({ slug: e.slug, format: e.format, status: 'PARSE FAILED', scenes: '—', flows: '—', lines: '—', steps: '—' })
+      continue
+    }
     if (SECTIONS.length) {
       parsed = {
+        ...parsed,
         scenarios: parsed.scenarios.filter(r => SECTIONS.includes(r.scene_number)),
         steps: parsed.steps.filter(s => SECTIONS.includes(s.scene_number))
       }
       console.log(`   (--sections=${SECTIONS.join(',')} — partial import)`)
     }
-    const sum = summarise(slug, parsed)
-    console.log(`\n── ${slug} — ${cfg.note}`)
-    console.log(`   ${sum.lines} lines across ${sum.sections} ${cfg.unit.toLowerCase()}s; ${sum.walkSteps} walk steps`)
+
+    const sum = summarise(e.slug, parsed)
+    const flows = new Set(parsed.scenarios.map(r => `${r.scene_number}|${r.variant_key || ''}`)).size
+    const unit = (e.unit || 'Scene').toLowerCase()
+    console.log(`   ${sum.lines} lines across ${sum.sections} ${unit}s${parsed.stats ? ` and ${flows} flows` : ''}; ${sum.walkSteps} walk steps`)
     console.log(`   resolution: ${JSON.stringify(sum.byRes)}`)
     console.log(`   unresolved by register: ${JSON.stringify(sum.unresolvedByRegister)}`)
     console.log(`   resolved store shapes: ${sum.resolvedShapes.join(', ') || '(none)'}`)
+    if (parsed.stats) {
+      console.log(`   the defining rule rejected ${parsed.stats.sectionsRejected} of ${parsed.stats.sectionsSeen} '##' sections as not-a-scene`)
+      console.log(`   ${parsed.stats.scenesWithoutDeclaration} of ${parsed.stats.scenes} scenes declare no shape — no walk steps invented for them`)
+    }
 
-    if (!EXECUTE) { console.log('   DRY RUN — nothing written. Add --execute.'); report.push(sum); continue }
+    if (!EXECUTE) {
+      console.log('   DRY RUN — nothing written. Add --execute.')
+      report.push(sum)
+      table.push({ slug: e.slug, format: e.format, status: 'dry run', scenes: sum.sections, flows, lines: sum.lines, steps: sum.walkSteps })
+      continue
+    }
 
-    const existing = await countRows('canonical_pod_scenarios', slug)
+    const existing = await countRows('canonical_pod_scenarios', e.slug)
     if (existing > 0 && !REIMPORT) {
-      console.log(`   REFUSED: ${existing} rows already live under '${slug}'. The DB is canon; a re-import`)
+      console.log(`   REFUSED: ${existing} rows already live under '${e.slug}'. The DB is canon; a re-import`)
       console.log('   would overwrite edits made in the Script Lab. Pass --reimport-destructive to destroy them.')
       report.push({ ...sum, wrote: 0, refused: existing })
+      table.push({ slug: e.slug, format: e.format, status: `REFUSED (${existing} live rows)`, scenes: sum.sections, flows, lines: sum.lines, steps: sum.walkSteps })
       continue
     }
     if (existing > 0 && REIMPORT) {
-      console.log(`   --reimport-destructive: DELETING ${existing} live scenario rows and their walk steps under '${slug}'.`)
-      await rest(`canonical_pod_walk_steps?pod_slug=eq.${encodeURIComponent(slug)}`, { method: 'DELETE' })
-      await rest(`canonical_pod_scenarios?pod_slug=eq.${encodeURIComponent(slug)}`, { method: 'DELETE' })
+      console.log(`   --reimport-destructive: DELETING ${existing} live scenario rows and their walk steps under '${e.slug}'.`)
+      await rest(`canonical_pod_walk_steps?pod_slug=eq.${encodeURIComponent(e.slug)}`, { method: 'DELETE' })
+      await rest(`canonical_pod_scenarios?pod_slug=eq.${encodeURIComponent(e.slug)}`, { method: 'DELETE' })
     }
     const wroteRows = await insertBatched('canonical_pod_scenarios', parsed.scenarios)
     const wroteSteps = await insertBatched('canonical_pod_walk_steps', parsed.steps)
-    const backRows = await countRows('canonical_pod_scenarios', slug)
-    const backSteps = await countRows('canonical_pod_walk_steps', slug)
+    const backRows = await countRows('canonical_pod_scenarios', e.slug)
+    const backSteps = await countRows('canonical_pod_walk_steps', e.slug)
     console.log(`   wrote ${wroteRows} lines / ${wroteSteps} walk steps; READ BACK ${backRows} lines / ${backSteps} walk steps`)
     report.push({ ...sum, wroteRows, wroteSteps, backRows, backSteps })
+    table.push({ slug: e.slug, format: e.format, status: `wrote ${wroteRows}, read back ${backRows}`, scenes: sum.sections, flows, lines: sum.lines, steps: sum.walkSteps })
   }
-  const out = path.join(REPO, 'docs/pods/pod-ingest-2026-08-30-log.json')
-  fs.writeFileSync(out, JSON.stringify({ ran: new Date().toISOString(), execute: EXECUTE, report }, null, 2))
-  console.log(`\nlog → ${path.relative(REPO, out)}`)
+
+  // One line per walk, so a human can see what the registry resolved to.
+  console.log('\nWHAT THE REGISTRY RESOLVED TO')
+  console.log(`  ${'walk'.padEnd(22)}${'format'.padEnd(15)}${'scenes'.padStart(7)}${'flows'.padStart(7)}${'lines'.padStart(7)}${'steps'.padStart(7)}  status`)
+  for (const r of table) {
+    console.log(`  ${r.slug.padEnd(22)}${String(r.format).padEnd(15)}${String(r.scenes).padStart(7)}${String(r.flows).padStart(7)}${String(r.lines).padStart(7)}${String(r.steps).padStart(7)}  ${r.status}`)
+  }
+  const errs = report.filter(r => r.error)
+  if (errs.length) console.log(`\n${errs.length} entr${errs.length === 1 ? 'y' : 'ies'} FAILED: ${errs.map(e => e.slug).join(', ')}`)
+
+  // Machine-generated evidence lives out of the tracked tree (docs/EVIDENCE.md);
+  // the old path under docs/ was gitignored, so the log was being written nowhere
+  // a second machine could find it.
+  const out = evidencePath('docs/pods/pod-ingest-log.json')
+  fs.writeFileSync(out, JSON.stringify({ ran: new Date().toISOString(), execute: EXECUTE, report, table }, null, 2))
+  console.log(`\nlog → ${out}`)
+  if (errs.length) process.exit(1)
 }
 
 main().catch(e => { console.error(e.message); process.exit(1) })

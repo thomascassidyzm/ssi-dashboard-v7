@@ -3,6 +3,8 @@
   "why": "The ingest tool used to carry a hardcoded three-entry map, so a corpus that existed could not be ingested without editing code, and nothing new ever appeared in the Script Lab. THE MECHANISM IS THIS MANIFEST: adding the eighth walk is one entry here plus its corpus file, and no code change anywhere. Two readers, one file — tools/pods/ingest-canonical-pods.cjs discovers what to ingest, and the Script Lab reads the labels a human needs to tell walks apart.",
   "version": 2,
 
+  "addingAWalk": "ONE ENTRY HERE PLUS ONE CORPUS FILE, AND NO CODE CHANGE ANYWHERE. Append to walks[] with slug, name, category, selector, status 'authored', corpus (a repo-relative path), format ('sector-flows' or 'pod-table'), and for pod-table its unit ('Chapter' or 'Scene'). Then `node tools/pods/ingest-canonical-pods.cjs --pod=<slug>` dry-runs it and `--execute` writes it. Proven by construction on 2026-09-01: a ninth walk was added, ingested in dry run and removed with tools/pods/ working tree untouched. A new FORMAT is the one thing that still needs code — a parser plus its entry in PARSERS in the ingest tool.",
+
   "vocabulary": {
     "category": "core = the COMPULSORY DEFAULT CHAIN, the ladder a learner descends by NOT choosing (Tom, 2026-09-01: numbering was retired as a content label — a themed walk is named by what it masks — but numbers name the default chain). themed = chosen. method-cut = a competing realisation of the same material, awaiting a choice. flagship = the learning flagship.",
     "selector": "for a themed walk, WHY a learner picks it. THE SELECTOR IS INTEREST, NOT OCCUPATION — a sector is one reason among several, and the category is never called 'sector pods'.",
