@@ -2119,3 +2119,1854 @@ even if grammatical. One register ruling taken at assembly and stated once: in t
 USE phrase is a complete natural TURN, and in peer talk a turn may be elliptical — "Five
 days, a group of twelve." is a well-formed answer, exactly as CORE's own baskets used
 "Yes." and "Of course!"; the fragment test is turn-shape, not clause-shape.
+
+**How far it reaches: the whole set.** Every one of the 318 new LEGOs carries a complete
+basket at or above the floors: **1,272 BUILD and 1,590 USE phrases**, verified mechanically
+per LEGO against the cut inventory (floors, coverage, and the no-forward-reference window,
+including a substring scan of every phrase against every later-minted chunk). The baskets
+were authored in document order by a ten-range fan-out (jobs #636–#645, disjoint contiguous
+ranges of ~32 LEGOs, per-range availability windows generated mechanically), then swept for
+three systematic defects the first-landed range exposed — naked-LEGO BUILDs (209 across the
+set), filler padding toward the floors, and tier-2 clunk — by three sweep workers
+(#647–#649); range 09, the testimony block, was re-authored whole at assembly. The assembly
+pass also caught and fixed one duplicate USE (MW196), three forward references, and a
+verifier blind spot that had been skipping the first seed of every range file. One
+deliberate exception stands, recorded where it lives: **MW173's "when you actually" mints
+as an interrupted fragment** — the corpus wears it incomplete three times — so its USE set
+is trailing-off utterances, the set's only sanctioned departure from turn-shape. Worker
+judgement calls that stand: sparing person/tense-flip sides (each named in the workers'
+notes), and contiguous sub-spans of a seed's own sentence as worn material (§7.14, flagged
+in §8).
+
+### MW004 — "No. Too much. Again — slowly."
+
+**"too much"**
+- BUILD: "No. Too much." · "Too much, again." · "Just too much." · "Too much — I don't know."
+- USE: "No. Too much. Again — slowly." · "Too much, actually." · "Too much, I think." · "It's too much for me." · "I don't understand — too much."
+
+### MW005 — "Yes. Now I understand."
+
+**"now I understand"**
+- BUILD: "Yes. Now I understand." · "Now I understand, too." · "So, now I understand." · "Now I understand — I think."
+- USE: "Yes. Now I understand." · "Now I understand, actually." · "So — now I understand." · "I think now I understand." · "Now I understand — yes."
+
+### MW006 — "Say it again."
+
+**"say it again"**
+- BUILD: "Say it again — for me." · "Say it again, please." · "Just say it again." · "Say it again — slowly."
+- USE: "Say it again." · "Can you say it again?" · "Say it again, please." · "Just say it again — slowly." · "Could you say it again?"
+
+### MW007 — "Good. That's all."
+
+**"good"**
+- BUILD: "Good. That's all." · "Very good." · "Good — now I understand." · "Good, then."
+- USE: "Good. That's all." · "Good, I think." · "Very good, actually." · "Good — say it again." · "Good. Now I understand."
+
+**"that's all"**
+- BUILD: "Good. That's all." · "So, that's all." · "That's all — now I understand." · "That's all, then."
+- USE: "Good. That's all." · "That's all, actually." · "So — that's all." · "That's all, I think." · "That's all. Good."
+
+### MW008 — "Go on."
+
+**"go on"**
+- BUILD: "Go on — I don't understand." · "Go on, then." · "Just go on." · "Go on — say it again."
+- USE: "Go on." · "Go on, then." · "Go on — now I understand." · "Just go on." · "Go on — that's all."
+
+### MW009 — "Tell me."
+
+**"tell me"**
+- BUILD: "Tell me — go on." · "Just tell me." · "Tell me, then." · "Tell me — say it again."
+- USE: "Tell me." · "Just tell me." · "Tell me, then." · "Go on — tell me." · "So — tell me."
+
+### MW010 — "Interesting. …No. Hang on. Four thousand?"
+
+**"hang on"**
+- BUILD: "Hang on — no." · "Interesting. Hang on." · "Hang on, then." · "Hang on — tell me."
+- USE: "Interesting. …No. Hang on. Four thousand?" · "Hang on, actually." · "Hang on — go on." · "No, hang on." · "Hang on. Tell me."
+
+### MW011 — "Wait. How do we know that?"
+
+**"wait"**
+- BUILD: "Wait — no." · "Wait. How do we know that?" · "Just wait." · "Wait, then."
+- USE: "Wait. How do we know that?" · "Wait, actually." · "Just wait, please." · "No, wait." · "Wait — I don't understand."
+
+**"how do we know that"**
+- BUILD: "But — how do we know that?" · "Wait. How do we know that?" · "So, how do we know that?" · "How do we know that — tell me."
+- USE: "Wait. How do we know that?" · "How do we know that, actually?" · "But how do we know that?" · "I don't know how we know that." · "How do we know that? Tell me."
+
+### MW012 — "Both. Show me the classroom version."
+
+**"both"**
+- BUILD: "Both. Show me." · "Both, then." · "Both — that's all." · "Just both."
+- USE: "Both. Show me the classroom version." · "Both, I think." · "Both, actually." · "Both — tell me." · "Both. Go on."
+
+**"show me"**
+- BUILD: "Show me, then." · "Just show me." · "Show me — go on." · "Show me — both."
+- USE: "Both. Show me the classroom version." · "Show me." · "Just show me, please." · "Show me — I don't understand." · "Show me. Tell me."
+
+**"the classroom version"**
+- BUILD: "Show me the classroom version." · "The classroom version, actually." · "Just the classroom version." · "The classroom version — that's all."
+- USE: "Both. Show me the classroom version." · "Show me the classroom version." · "The classroom version, I think." · "The classroom version — go on." · "The classroom version. That's all."
+
+### MW013 — "Both. At the same time."
+
+**"at the same time"**
+- BUILD: "Both, at the same time." · "At the same time, then." · "Just at the same time." · "At the same time — that's all."
+- USE: "Both. At the same time." · "At the same time, I think." · "At the same time, actually." · "At the same time — go on." · "So, at the same time."
+
+### MW014 — "Exactly."
+
+**"exactly"**
+- BUILD: "Exactly — that's all." · "Exactly, then." · "Exactly — go on." · "Exactly — now I understand."
+- USE: "Exactly." · "Exactly, I think." · "Exactly, actually." · "Exactly — I think so too." · "Exactly. Now I understand."
+
+### MW015 — "Exactly that."
+
+**"exactly that"**
+- BUILD: "Exactly — I think so too." · "Exactly that. That's all." · "Exactly that, then." · "Exactly that — now I understand."
+- USE: "Exactly that." · "Exactly that, I think." · "Yes, exactly that." · "Exactly that — go on." · "Exactly that. Now I understand."
+
+### MW017 — "That's it. Now you've got it."
+
+**"that's it"**
+- BUILD: "That's it. Now you've got it." · "So, that's it." · "That's it, then." · "That's it — now I understand."
+- USE: "That's it. Now you've got it." · "That's it, exactly." · "That's it, I think." · "Yes — that's it." · "That's it. Go on."
+
+**"now you've got it"**
+- BUILD: "That's it. Now you've got it." · "So, now you've got it." · "Now you've got it, then." · "Now you've got it — good."
+- USE: "That's it. Now you've got it." · "Now you've got it, I think." · "Now you've got it — exactly." · "Now you've got it. Good." · "Now you've got it. That's all."
+
+### MW019 — "What, then?"
+
+**"what, then"**
+- BUILD: "What, then? Tell me." · "What, then — show me." · "What, then? Go on." · "What, then — that's all."
+- USE: "What, then?" · "So — what, then?" · "What, then? I don't understand." · "What, then, exactly?" · "But — what, then?"
+
+### MW020 — "Since when?"
+
+**"since when"**
+- BUILD: "But — since when?" · "Wait — since when?" · "Since when — tell me." · "Since when, then?"
+- USE: "Since when?" · "Since when, exactly?" · "Since when? Tell me." · "Since when? I don't understand." · "So — since when?"
+
+### MW021 — "Was it?"
+
+**"was it"**
+- BUILD: "Was it — since when?" · "But was it?" · "Was it, then?" · "Was it — I don't understand."
+- USE: "Was it?" · "Was it, exactly?" · "Was it? Tell me." · "Was it? I don't understand." · "No — was it?"
+
+### MW022 — "Is it?"
+
+**"is it"**
+- BUILD: "Is it — was it?" · "But is it?" · "Is it, then?" · "Is it — since when?"
+- USE: "Is it?" · "Is it, exactly?" · "Is it? Tell me." · "Is it? I don't understand." · "No — is it?"
+
+### MW024 — "Know what?"
+
+**"know what"**
+- BUILD: "Know what — tell me." · "So, know what?" · "Know what, then?" · "Know what — show me."
+- USE: "Know what?" · "Know what, exactly?" · "Know what? Go on." · "Know what? I don't understand." · "Know what — I don't know."
+
+### MW025 — "Who knows. Let's just start anywhere. You start."
+
+**"who knows"**
+- BUILD: "Who knows — let's just start anywhere." · "Who knows, then." · "Who knows — I don't know." · "Who knows — tell me."
+- USE: "Who knows. Let's just start anywhere. You start." · "Who knows, exactly." · "Who knows? Go on." · "Who knows — that's all." · "So — who knows."
+
+**"let's just start anywhere"**
+- BUILD: "Who knows. Let's just start anywhere." · "Let's just start anywhere, actually." · "So, let's just start anywhere." · "Let's just start anywhere — you start."
+- USE: "Who knows. Let's just start anywhere. You start." · "Let's just start anywhere." · "Let's just start anywhere, I think." · "Let's just start anywhere — go on." · "Let's just start anywhere. That's all."
+
+**"you start"**
+- BUILD: "Let's just start anywhere. You start." · "You start, then." · "You start — tell me." · "You start — I don't know."
+- USE: "Who knows. Let's just start anywhere. You start." · "You start." · "You start, then." · "You start — go on." · "You start. Tell me."
+
+### MW026 — "You don't know?"
+
+**"you don't know"**
+- BUILD: "But you don't know?" · "So — you don't know?" · "You don't know, then?" · "You don't know — I don't understand."
+- USE: "You don't know?" · "You don't know, exactly?" · "You don't know? Tell me." · "You don't know. I don't understand." · "You don't know — who knows."
+
+### MW027 — "No. I don't know, and you don't know. Is it a good idea? I don't know. Is it a bad idea? I don't know. And you don't know."
+
+**"is it a good idea"**
+- BUILD: "But is it a good idea?" · "Is it a good idea, then?" · "Is it a good idea — who knows?" · "Is it a good idea — I don't know."
+- USE: "No. I don't know, and you don't know. Is it a good idea? I don't know. Is it a bad idea? I don't know. And you don't know." · "Is it a good idea?" · "Is it a good idea, exactly?" · "Is it a good idea? I don't know." · "Is it a good idea? Tell me."
+
+**"is it a bad idea"**
+- BUILD: "But is it a bad idea?" · "Is it a bad idea, then?" · "Is it a bad idea — who knows?" · "Is it a bad idea — I don't know."
+- USE: "No. I don't know, and you don't know. Is it a good idea? I don't know. Is it a bad idea? I don't know. And you don't know." · "Is it a bad idea?" · "Is it a bad idea, exactly?" · "Is it a bad idea? I don't know." · "Is it a bad idea? Tell me."
+
+### MW028 — "You're right. I don't know."
+
+**"you're right"**
+- BUILD: "You're right — I don't understand." · "You're right, then." · "You're right — who knows." · "You're right — is it a good idea?"
+- USE: "You're right. I don't know." · "You're right, exactly." · "You're right, I think." · "Yes — you're right." · "You're right. That's all."
+
+### MW029 — "So — no. We don't know. We think."
+
+**"we don't know"**
+- BUILD: "So — no. We don't know." · "But we don't know." · "We don't know, then." · "We don't know — who knows."
+- USE: "So — no. We don't know. We think." · "We don't know." · "We don't know, exactly." · "We don't know — you're right." · "We don't know. Tell me."
+
+**"we think"**
+- BUILD: "So — no. We don't know. We think." · "We think, then." · "We think — who knows." · "We think — you're right."
+- USE: "So — no. We don't know. We think." · "We think, actually." · "We think — is it a good idea?" · "We think — that's all." · "We think. That's it."
+
+### MW030 — "We think I can live with."
+
+**"I can live with"**
+- BUILD: "I can live with that" · "I can live with it" · "we think I can live with" · "so I can live with that"
+- USE: "We think I can live with." · "I can live with that." · "I can live with it." · "I think I can live with that." · "I can live with that, actually."
+
+### MW031 — "We think is where every good thing starts."
+
+**"is where every good thing starts"**
+- BUILD: "that is where every good thing starts" · "we think is where every good thing starts" · "and is where every good thing starts" · "so is where every good thing starts"
+- USE: "We think is where every good thing starts." · "I think is where every good thing starts." · "That is where every good thing starts." · "So — is where every good thing starts." · "We think is where every good thing starts, actually."
+
+### MW032 — "I feel it's true. It seems to work."
+
+**"I feel it's true"**
+- BUILD: "but I feel it's true" · "I feel it's true, though" · "I feel it's true, I think" · "I feel it's true — I can live with that"
+- USE: "I feel it's true." · "I feel it's true, but I don't know." · "So — I feel it's true." · "I feel it's true, actually." · "I feel it's true. It seems to work."
+
+**"it seems to work"**
+- BUILD: "and it seems to work" · "it seems to work, though" · "it seems to work, I think" · "it seems to work — I feel it's true"
+- USE: "It seems to work." · "I feel it's true. It seems to work." · "It seems to work, actually." · "It seems to work, but I don't know why." · "And it seems to work, too."
+
+### MW033 — "Then I'll take it. The why is the interesting bit, and nobody's got it."
+
+**"then I'll take it"**
+- BUILD: "so then I'll take it" · "then I'll take it, though" · "then I'll take it — we think" · "then I'll take it — I can live with that"
+- USE: "Then I'll take it." · "Then I'll take it. The why is the interesting bit, and nobody's got it." · "Well, then I'll take it." · "So, then I'll take it — I don't mind." · "Then I'll take it, and we'll see."
+
+**"the why is the interesting bit"**
+- BUILD: "and the why is the interesting bit" · "the why is the interesting bit, though" · "the why is the interesting bit, I think" · "the why is the interesting bit — then I'll take it"
+- USE: "The why is the interesting bit." · "Then I'll take it. The why is the interesting bit, and nobody's got it." · "I think the why is the interesting bit." · "The why is the interesting bit, though." · "Actually, the why is the interesting bit."
+
+**"nobody's got it"**
+- BUILD: "and nobody's got it" · "nobody's got it, though" · "nobody's got it, I think" · "nobody's got it — the why is the interesting bit"
+- USE: "Nobody's got it." · "Then I'll take it. The why is the interesting bit, and nobody's got it." · "I don't know — nobody's got it." · "Nobody's got it, actually." · "So, nobody's got it, then."
+
+### MW034 — "And that's true."
+
+**"that's true"**
+- BUILD: "and that's true" · "that's true, though" · "that's true, I think" · "that's true, then"
+- USE: "And that's true." · "That's true." · "I think that's true, actually." · "That's true, too." · "That's true, but I still don't know."
+
+### MW035 — "It was true about the fish."
+
+**"it was true"**
+- BUILD: "and it was true" · "it was true, though" · "it was true, I think" · "it was true — that's true"
+- USE: "It was true about the fish." · "It was true." · "I think it was true, actually." · "It was true, but I didn't know it." · "It was true, too."
+
+**"the fish"**
+- BUILD: "about the fish" · "the fish — it was true" · "and the fish" · "the fish, too"
+- USE: "It was true about the fish." · "I think it was true about the fish." · "So, the fish." · "The fish, again." · "Well, about the fish — it was true."
+
+### MW037 — "I think — whatever it is — it isn't made of words."
+
+**"whatever it is"**
+- BUILD: "I think — whatever it is" · "whatever it is, then" · "whatever it is, though" · "whatever it is — I feel it's true"
+- USE: "I think — whatever it is — it isn't made of words." · "Whatever it is, I still don't know." · "Whatever it is, it seems to work." · "I don't know what it is, but whatever it is, I feel it's true." · "Whatever it is, it's true."
+
+**"it isn't made of words"**
+- BUILD: "and it isn't made of words" · "it isn't made of words, though" · "it isn't made of words, I think" · "it isn't made of words — whatever it is"
+- USE: "I think — whatever it is — it isn't made of words." · "It isn't made of words." · "I feel it's true — it isn't made of words." · "It isn't made of words, actually." · "It isn't made of words, but it seems to work."
+
+### MW038 — "Good. Now we can start to think. What do you think?"
+
+**"now we can start to think"**
+- BUILD: "good, now we can start to think" · "and now we can start to think" · "now we can start to think, then" · "now we can start to think — that's true"
+- USE: "Good. Now we can start to think. What do you think?" · "Now we can start to think." · "Now we can start to think, actually." · "I think now we can start to think." · "Good — now we can start to think about it."
+
+**"what do you think"**
+- BUILD: "so, what do you think" · "and what do you think" · "what do you think, then" · "what do you think — now we can start to think"
+- USE: "Good. Now we can start to think. What do you think?" · "What do you think?" · "So, what do you think?" · "I don't know — what do you think?" · "What do you think about the fish?"
+
+### MW039 — "So: not rules, not words. Something that starts and stops, and nobody knows what."
+
+**"not rules, not words"**
+- BUILD: "so: not rules, not words" · "not rules, not words, though" · "not rules, not words, I think" · "not rules, not words — it isn't made of words"
+- USE: "So: not rules, not words. Something that starts and stops, and nobody knows what." · "Not rules, not words." · "I think — not rules, not words." · "Not rules, not words, actually." · "It isn't made of words. Not rules, not words."
+
+**"something that starts and stops"**
+- BUILD: "and something that starts and stops" · "something that starts and stops, though" · "something that starts and stops, I think" · "something that starts and stops — not rules, not words"
+- USE: "So: not rules, not words. Something that starts and stops, and nobody knows what." · "Something that starts and stops." · "I feel it's true — something that starts and stops." · "Something that starts and stops, actually." · "It's something that starts and stops."
+
+**"nobody knows what"**
+- BUILD: "and nobody knows what" · "nobody knows what, though" · "nobody knows what, I think" · "nobody knows what — something that starts and stops"
+- USE: "So: not rules, not words. Something that starts and stops, and nobody knows what." · "Nobody knows what." · "I don't know — nobody knows what." · "Nobody knows what, actually." · "Nobody's got it. Nobody knows what."
+
+### MW040 — "So what you're saying is: there are no rules."
+
+**"so what you're saying is"**
+- BUILD: "so what you're saying is, then" · "so what you're saying is, though" · "so what you're saying is — nobody knows what" · "so what you're saying is, I think"
+- USE: "So what you're saying is: there are no rules." · "So what you're saying is you feel it's true." · "So what you're saying is it isn't made of words." · "So what you're saying is — nobody's got it." · "So what you're saying is, then?"
+
+**"there are no rules"**
+- BUILD: "so there are no rules" · "there are no rules, though" · "there are no rules — so what you're saying is" · "there are no rules, then"
+- USE: "So what you're saying is: there are no rules." · "There are no rules." · "I think there are no rules, actually." · "There are no rules, but there's something." · "There are no rules — not rules, not words."
+
+### MW041 — "No. That's not what I'm saying."
+
+**"that's not what I'm saying"**
+- BUILD: "no, that's not what I'm saying" · "that's not what I'm saying, though" · "so, that's not what I'm saying" · "that's not what I'm saying — there are no rules"
+- USE: "No. That's not what I'm saying." · "That's not what I'm saying." · "That's not what I'm saying, actually." · "So, that's not what I'm saying." · "I think that's not what I'm saying."
+
+### MW042 — "So what you're saying is: control arrives before correctness."
+
+**"control arrives before correctness"**
+- BUILD: "so what you're saying is: control arrives before correctness" · "control arrives before correctness, though" · "control arrives before correctness, I think" · "control arrives before correctness — that's not what I'm saying"
+- USE: "So what you're saying is: control arrives before correctness." · "Control arrives before correctness." · "I feel it's true — control arrives before correctness." · "Control arrives before correctness, actually." · "I think control arrives before correctness."
+
+### MW043 — "Nearly. Not subtitles."
+
+**"nearly"**
+- BUILD: "and nearly" · "nearly, then" · "nearly, though" · "nearly — control arrives before correctness"
+- USE: "Nearly. Not subtitles." · "Nearly." · "Nearly, actually." · "I think — nearly." · "Nearly, but I still don't know."
+
+**"not subtitles"**
+- BUILD: "nearly. not subtitles" · "not subtitles, though" · "not subtitles, I think" · "not subtitles, then"
+- USE: "Nearly. Not subtitles." · "Not subtitles." · "Not subtitles, actually." · "Not subtitles, though." · "Nearly — not subtitles, but something."
+
+### MW044 — "…In a sense."
+
+**"in a sense"**
+- BUILD: "well, in a sense" · "and in a sense" · "in a sense, then" · "in a sense — not subtitles"
+- USE: "In a sense." · "I think, in a sense, that's true." · "In a sense, it seems to work." · "In a sense, yes." · "In a sense, nobody's got it."
+
+### MW045 — "In what sense?"
+
+**"in what sense"**
+- BUILD: "so, in what sense" · "in what sense, then" · "in what sense — in a sense" · "in what sense — I think"
+- USE: "In what sense?" · "So, in what sense?" · "In what sense, actually?" · "In what sense is that true?" · "In what sense do you think that?"
+
+### MW046 — "…Okay. So I was thinking: films for learners. You're thinking: films for everyone."
+
+**"okay"**
+- BUILD: "okay, so" · "okay then" · "okay, though" · "okay — in what sense"
+- USE: "Okay. So I was thinking: films for learners." · "Okay." · "Okay, so what do you think?" · "Okay, then." · "Okay, I think that's true."
+
+**"so I was thinking"**
+- BUILD: "okay, so I was thinking" · "so I was thinking, though" · "so I was thinking, then" · "so I was thinking — in a sense"
+- USE: "Okay. So I was thinking: films for learners." · "So I was thinking." · "So I was thinking, actually." · "So I was thinking — you're thinking films for everyone." · "So I was thinking about the fish."
+
+**"films for learners"**
+- BUILD: "so I was thinking: films for learners" · "films for learners, though" · "films for learners, I think" · "films for learners — okay"
+- USE: "Okay. So I was thinking: films for learners." · "Films for learners." · "Films for learners, actually." · "Films for learners — that's true." · "You're thinking films for everyone. I was thinking films for learners."
+
+**"you're thinking"**
+- BUILD: "so you're thinking" · "you're thinking, then" · "you're thinking, though" · "you're thinking — films for learners"
+- USE: "You're thinking: films for everyone." · "You're thinking films for learners." · "So you're thinking that, too." · "You're thinking films for everyone, then." · "I think you're thinking — nearly."
+
+### MW047 — "So you're going to leave it."
+
+**"so you're going to"**
+- BUILD: "so you're going to, then" · "and so you're going to" · "so you're going to, though" · "so you're going to — in what sense"
+- USE: "So you're going to leave it." · "So you're going to, then?" · "So you're going to — I think that's true." · "So you're going to, actually?" · "So you're going to, in a sense."
+
+**"leave it"**
+- BUILD: "and leave it" · "leave it, then" · "leave it, though" · "leave it — so you're going to"
+- USE: "So you're going to leave it." · "Leave it." · "I think we'll leave it." · "Leave it, then." · "Leave it. That's true."
+
+### MW048 — "I'm going to leave it."
+
+**"I'm going to"**
+- BUILD: "I'm going to leave it" · "and I'm going to" · "I'm going to, then" · "I'm going to, though"
+- USE: "I'm going to leave it." · "I'm going to." · "I think I'm going to leave it, actually." · "I'm going to leave it, then." · "I'm going to leave it. Nobody's got it."
+
+### MW049 — "It's not that you know the words. You know what's between the words. The edges."
+
+**"it's not that you know the words"**
+- BUILD: "So it's not that you know the words." · "It's not that you know the words, I think." · "It's not that you know the words, is it?" · "It's not that you know the words — nobody knows what."
+- USE: "It's not that you know the words." · "It's not that you know the words, is it?" · "It's not that you know the words, I think." · "So it's not that you know the words, actually." · "It's not that you know the words — nobody's got it."
+
+**"you know what's between the words"**
+- BUILD: "It's not that you know the words — you know what's between the words." · "You know what's between the words, I think." · "So you know what's between the words." · "You know what's between the words, then."
+- USE: "You know what's between the words." · "It's not that you know the words. You know what's between the words." · "I think you know what's between the words." · "You know what's between the words, actually." · "You know what's between the words, then."
+
+**"the edges"**
+- BUILD: "It's the edges." · "The edges, I think." · "You know the edges." · "The edges — you know what's between the words."
+- USE: "The edges." · "You know what's between the words. The edges." · "It's not that you know the words. You know what's between the words. The edges." · "I think it's the edges." · "So it's the edges, actually."
+
+### MW050 — "…is a building in the middle of a field."
+
+**"a building in the middle of a field"**
+- BUILD: "It's a building in the middle of a field." · "I think it's a building in the middle of a field." · "Just a building in the middle of a field." · "A building in the middle of a field, then."
+- USE: "It's a building in the middle of a field." · "It's just a building in the middle of a field." · "I think it's a building in the middle of a field." · "So it's a building in the middle of a field." · "It's a building in the middle of a field, actually."
+
+### MW051 — "Nobody lives there."
+
+**"nobody lives there"**
+- BUILD: "So nobody lives there." · "Nobody lives there, I think." · "Nobody lives there now." · "Nobody lives there — a building in the middle of a field."
+- USE: "Nobody lives there." · "I think nobody lives there." · "So nobody lives there, actually." · "Nobody lives there now." · "Nobody lives there — a building in the middle of a field."
+
+### MW052 — "I'd like one that's red — but I don't mind."
+
+**"one that's red"**
+- BUILD: "I'd like one that's red." · "One that's red, then." · "One that's red, I think." · "One that's red, please."
+- USE: "I'd like one that's red." · "I'd like one that's red, I think." · "So I'd like one that's red." · "I'd like one that's red, actually." · "I'd like one that's red, please."
+
+**"but I don't mind"**
+- BUILD: "I'd like one that's red, but I don't mind." · "But I don't mind, then." · "But I don't mind, I think." · "But I don't mind — one that's red."
+- USE: "I'd like one that's red — but I don't mind." · "But I don't mind." · "I don't mind, actually." · "So I don't mind." · "But I don't mind, then."
+
+### MW053 — "You can. I said you can't, and you can. Good."
+
+**"you can"**
+- BUILD: "So you can." · "You can, I think." · "You can now." · "You can — I don't mind."
+- USE: "You can." · "I think you can." · "So you can, actually." · "You can now." · "You can, then."
+
+**"you can't"**
+- BUILD: "I said you can't." · "You can't, I think." · "I said you can't, and you can." · "You can't, then."
+- USE: "You can. I said you can't, and you can. Good." · "I said you can't." · "You can't, actually." · "I said you can't, and you can." · "You can't, now."
+
+### MW054 — "There is no such thing as a word."
+
+**"there is no such thing as"**
+- BUILD: "There is no such thing as that." · "There is no such thing as the fish." · "There is no such thing as Mandarin." · "There is no such thing as Manx."
+- USE: "There is no such thing as a word." · "There is no such thing as the fish." · "I think there is no such thing as that." · "There is no such thing as Mandarin, actually." · "There is no such thing as the fish, I think."
+
+**"a word"**
+- BUILD: "There is no such thing as a word." · "Just a word." · "A word, I think." · "A word, then."
+- USE: "There is no such thing as a word." · "It's just a word." · "A word, actually." · "I think it's a word." · "So it's just a word."
+
+### MW056 — "It's one unit of meaning. That's all it is."
+
+**"it's one unit of meaning"**
+- BUILD: "So it's one unit of meaning." · "It's one unit of meaning, I think." · "It's one unit of meaning, is it?" · "It's one unit of meaning — a word."
+- USE: "It's one unit of meaning." · "I think it's one unit of meaning." · "So it's one unit of meaning, actually." · "It's one unit of meaning, is it?" · "It's one unit of meaning, then."
+
+**"that's all it is"**
+- BUILD: "It's one unit of meaning. That's all it is." · "That's all it is, I think." · "So that's all it is." · "That's all it is, then."
+- USE: "It's one unit of meaning. That's all it is." · "That's all it is." · "That's all it is, actually." · "I think that's all it is." · "That's all it is, now."
+
+### MW057 — "I don't need all the words. I need three. Three words. No — two. Two words, and I can talk all day."
+
+**"I don't need all the words"**
+- BUILD: "So I don't need all the words." · "I don't need all the words, I think." · "I don't need all the words now." · "I don't need all the words — that's all it is."
+- USE: "I don't need all the words." · "I don't need all the words, actually." · "So I don't need all the words, I think." · "I don't need all the words now." · "I don't need all the words, then."
+
+**"I need three"**
+- BUILD: "I don't need all the words. I need three." · "I need three, I think." · "I need three now." · "I need three, then."
+- USE: "I need three." · "I need four." · "So I need three, actually." · "I think I need three." · "I need three now."
+
+**"I can talk all day"**
+- BUILD: "Two words, and I can talk all day." · "I can talk all day, I think." · "So I can talk all day." · "I can talk all day, then."
+- USE: "I don't need all the words. I need three. Three words. No — two. Two words, and I can talk all day." · "Two words, and I can talk all day." · "I can talk all day, actually." · "I think I can talk all day." · "I can talk all day, now."
+
+### MW059 — "The third one is you."
+
+**"the third one"**
+- BUILD: "The third one is you." · "The third one, I think." · "So the third one." · "The third one, then."
+- USE: "The third one is you." · "The third one, actually." · "I think the third one is you." · "So the third one is you." · "The third one, now."
+
+### MW060 — "Any two."
+
+**"any two"**
+- BUILD: "So any two." · "Any two, I think." · "Any two, then." · "Any two — the third one."
+- USE: "Any two." · "I think any two." · "So any two, actually." · "Any two — I don't mind." · "Any two, now."
+
+### MW062 — "That's enough for me. Which two?"
+
+**"that's enough for me"**
+- BUILD: "So that's enough for me." · "That's enough for me, I think." · "That's enough for me now." · "That's enough for me — any two."
+- USE: "That's enough for me." · "I think that's enough for me." · "So that's enough for me, actually." · "That's enough for me now." · "That's enough for me, then."
+
+**"which two"**
+- BUILD: "That's enough for me. Which two?" · "So which two?" · "Which two now?" · "Which two, then?"
+- USE: "That's enough for me. Which two?" · "Which two?" · "Which two, actually?" · "So which two?" · "Which two — any two?"
+
+### MW064 — "You don't need all the words."
+
+**"you don't need all the words"**
+- BUILD: "So you don't need all the words." · "You don't need all the words, I think." · "You don't need all the words now." · "You don't need all the words — that's enough for me."
+- USE: "You don't need all the words." · "I think you don't need all the words." · "So you don't need all the words, actually." · "You don't need all the words now." · "You don't need all the words, then."
+
+### MW065 — "Good. That's all. — And I've just done the thing."
+
+**"I've just done the thing"**
+- BUILD: "Good. That's all. And I've just done the thing." · "I've just done the thing, I think." · "So I've just done the thing." · "I've just done the thing, then."
+- USE: "Good. That's all. — And I've just done the thing." · "I've just done the thing." · "I've just done the thing, actually." · "I think I've just done the thing." · "I've just done the thing, now."
+
+### MW066 — "And we were utterly wrong."
+
+**"we were utterly wrong"**
+- BUILD: "And we were utterly wrong." · "We were utterly wrong, I think." · "So we were utterly wrong." · "We were utterly wrong, then."
+- USE: "And we were utterly wrong." · "We were utterly wrong." · "We were utterly wrong, actually." · "I think we were utterly wrong." · "We were utterly wrong, now."
+
+### MW067 — "Completely wrong?"
+
+**"completely wrong"**
+- BUILD: "Completely wrong, is it?" · "So completely wrong?" · "Completely wrong now?" · "Completely wrong, then?"
+- USE: "Completely wrong?" · "Completely wrong, is it?" · "So, completely wrong?" · "Well, completely wrong?" · "Completely wrong now?"
+
+### MW068 — "Utterly."
+
+**"utterly"**
+- BUILD: "So, utterly." · "Utterly, I think." · "Utterly, then." · "Utterly — completely wrong."
+- USE: "Utterly." · "Utterly, actually." · "So, utterly." · "Utterly — we were utterly wrong." · "Utterly, now."
+
+### MW069 — "That still amazes me."
+
+**"that still amazes me"**
+- BUILD: "So that still amazes me." · "That still amazes me, I think." · "That still amazes me now." · "That still amazes me — utterly."
+- USE: "That still amazes me." · "I think that still amazes me." · "So that still amazes me, actually." · "That still amazes me now." · "That still amazes me, then."
+
+### MW071 — "No form. Press play."
+
+**"no form"**
+- BUILD: "So, no form." · "No form, I think." · "No form now." · "No form, then."
+- USE: "No form." · "No form. Press play." · "No form, actually." · "So no form, then." · "No form now."
+
+**"press play"**
+- BUILD: "No form. Press play." · "Press play, I think." · "So, press play." · "Press play, then."
+- USE: "No form. Press play." · "Press play." · "Press play, actually." · "Press play now." · "Press play, then."
+
+### MW073 — "Press play, walk the paths, and then the room."
+
+**"walk the paths"**
+- BUILD: "Press play, walk the paths." · "Walk the paths, I think." · "So, walk the paths." · "Walk the paths, then."
+- USE: "Walk the paths." · "Walk the paths, actually." · "Press play, walk the paths." · "So walk the paths, then." · "Walk the paths now."
+
+**"the room"**
+- BUILD: "And then the room." · "The room, I think." · "So, the room." · "The room, then."
+- USE: "Press play, walk the paths, and then the room." · "And then the room." · "The room, actually." · "So the room, then." · "The room now."
+
+### MW074 — "And the room's the same thing you've been doing. In a bigger room."
+
+**"the same thing you've been doing"**
+- BUILD: "It's the same thing you've been doing." · "The same thing you've been doing, I think." · "So it's the same thing you've been doing." · "The same thing you've been doing, then."
+- USE: "The same thing you've been doing." · "It's the same thing you've been doing." · "I think it's the same thing you've been doing." · "So it's the same thing you've been doing, actually." · "It's the same thing you've been doing, now."
+
+**"in a bigger room"**
+- BUILD: "The room's the same thing you've been doing. In a bigger room." · "In a bigger room, I think." · "So, in a bigger room." · "In a bigger room, then."
+- USE: "And the room's the same thing you've been doing. In a bigger room." · "In a bigger room." · "In a bigger room, actually." · "So, in a bigger room." · "In a bigger room now."
+
+### MW075 — "Oh — I can say a lot of different things. I'm in control of this. I'm enjoying it."
+
+**"I can say a lot of different things"**
+- BUILD: "and I can say a lot of different things" · "now I can say a lot of different things" · "I think I can say a lot of different things" · "actually, I can say a lot of different things"
+- USE: "Oh — I can say a lot of different things." · "I can say a lot of different things now." · "I think I can say a lot of different things." · "I can say a lot of different things too." · "That's it — I can say a lot of different things."
+
+**"I'm in control of this"**
+- BUILD: "so I'm in control of this" · "I'm in control of this now" · "and I'm in control of this" · "I think I'm in control of this"
+- USE: "I'm in control of this." · "I'm in control of this now." · "I think I'm in control of this." · "And I'm in control of this." · "Now I'm in control of this."
+
+**"I'm enjoying it"**
+- BUILD: "I think I'm enjoying it" · "and I'm enjoying it" · "I'm enjoying it too" · "I'm enjoying it now"
+- USE: "I'm enjoying it." · "I'm enjoying it too." · "And I'm enjoying it." · "I'm enjoying it now." · "Actually, I'm enjoying it."
+
+### MW076 — "Oh. That one worked."
+
+**"that one worked"**
+- BUILD: "and that one worked" · "oh — that one worked" · "well, that one worked" · "that one worked too"
+- USE: "Oh. That one worked." · "That one worked." · "That one worked, though." · "That one worked too." · "I think that one worked."
+
+### MW077 — "And then everything clicks together."
+
+**"everything clicks together"**
+- BUILD: "so everything clicks together" · "and then everything clicks together" · "everything clicks together now" · "everything just clicks together"
+- USE: "And then everything clicks together." · "Everything clicks together." · "Everything just clicks together." · "Everything clicks together now." · "I think everything clicks together."
+
+### MW078 — "I've got a story. It proves nothing — accept it anyway."
+
+**"I've got a story"**
+- BUILD: "and I've got a story" · "I've got a story too" · "well, I've got a story" · "I've got a story now"
+- USE: "I've got a story." · "I've got a story too." · "I've got a story, though." · "I think I've got a story." · "So I've got a story."
+
+**"it proves nothing"**
+- BUILD: "so it proves nothing" · "and it proves nothing" · "it proves nothing, though" · "well, it proves nothing"
+- USE: "It proves nothing." · "It proves nothing, though." · "And it proves nothing." · "I know it proves nothing." · "I said it proves nothing."
+
+**"accept it anyway"**
+- BUILD: "and accept it anyway" · "so accept it anyway" · "accept it anyway, though" · "just accept it anyway"
+- USE: "Accept it anyway." · "So accept it anyway." · "Just accept it anyway." · "Accept it anyway, though." · "I've got a story. It proves nothing — accept it anyway."
+
+### MW079 — "I said it proves nothing. But you'll remember it, won't you?"
+
+**"you'll remember it, won't you"**
+- BUILD: "so you'll remember it, won't you" · "but you'll remember it, won't you" · "still, you'll remember it, won't you" · "and you'll remember it, won't you"
+- USE: "But you'll remember it, won't you?" · "You'll remember it, won't you?" · "I said it proves nothing. But you'll remember it, won't you?" · "And you'll remember it, won't you?" · "Still, you'll remember it, won't you?"
+
+### MW080 — "That's a dirty trick. Yes."
+
+**"that's a dirty trick"**
+- BUILD: "and that's a dirty trick" · "well, that's a dirty trick" · "that's a dirty trick, though" · "that's a dirty trick too"
+- USE: "That's a dirty trick. Yes." · "That's a dirty trick." · "So that's a dirty trick." · "Still, that's a dirty trick." · "I think that's a dirty trick."
+
+### MW081 — "Stop that."
+
+**"stop that"**
+- BUILD: "and stop that" · "oh, stop that" · "just stop that" · "stop that now"
+- USE: "Stop that." · "Oh, stop that." · "Just stop that." · "Stop that now." · "Stop that — that's a dirty trick."
+
+### MW082 — "Actually, I've half got it already."
+
+**"I've half got it already"**
+- BUILD: "and I've half got it already" · "actually, I've half got it already" · "I've half got it already now" · "so I've half got it already"
+- USE: "I've half got it already too." · "I've half got it already." · "I've half got it already, though." · "I think I've half got it already." · "Now I've half got it already."
+
+### MW083 — "I've got one too. And I'll say it before you do: it proves nothing. Accept it anyway."
+
+**"I've got one too"**
+- BUILD: "so I've got one too" · "and I've got one too" · "well, I've got one too" · "I've got one too, though"
+- USE: "I've got one too." · "And I've got one too." · "So I've got one too." · "I think I've got one too." · "Still, I've got one too."
+
+**"I'll say it before you do"**
+- BUILD: "so I'll say it before you do" · "and I'll say it before you do" · "well, I'll say it before you do" · "I'll say it before you do, though"
+- USE: "And I'll say it before you do: it proves nothing." · "I'll say it before you do." · "Still, I'll say it before you do." · "I've got one too. And I'll say it before you do: it proves nothing. Accept it anyway." · "I'll say it before you do too."
+
+### MW084 — "That's my line."
+
+**"that's my line"**
+- BUILD: "so that's my line" · "well, that's my line" · "that's my line, though" · "and that's my line"
+- USE: "That's my line." · "Still, that's my line." · "That's my line too." · "And that's my line." · "I think that's my line."
+
+### MW085 — "It's your line. You said it two hours ago."
+
+**"it's your line"**
+- BUILD: "so it's your line" · "well, it's your line" · "it's your line, though" · "no, it's your line"
+- USE: "It's your line. You said it two hours ago." · "It's your line." · "No, it's your line." · "It's your line too." · "You said it two hours ago."
+
+### MW086 — "Please accept my anecdotal evidence. Though by now it's yours too."
+
+**"please accept my anecdotal evidence"**
+- BUILD: "and please accept my anecdotal evidence" · "so please accept my anecdotal evidence" · "well, please accept my anecdotal evidence" · "please accept my anecdotal evidence, though"
+- USE: "Please accept my anecdotal evidence." · "Please accept my anecdotal evidence. Though by now it's yours too." · "So please accept my anecdotal evidence." · "Please accept my anecdotal evidence too." · "Please accept my anecdotal evidence, though."
+
+**"by now it's yours too"**
+- BUILD: "so by now it's yours too" · "though by now it's yours too" · "and by now it's yours too" · "well, by now it's yours too"
+- USE: "Though by now it's yours too." · "By now it's yours too." · "And by now it's yours too." · "Still, by now it's yours too." · "I think by now it's yours too."
+
+### MW088 — "A good line ends up belonging to both. Go on."
+
+**"a good line ends up belonging to both"**
+- BUILD: "so a good line ends up belonging to both" · "well, a good line ends up belonging to both" · "I think a good line ends up belonging to both" · "a good line ends up belonging to both, though"
+- USE: "A good line ends up belonging to both. Go on." · "A good line ends up belonging to both." · "I think a good line ends up belonging to both." · "Still, a good line ends up belonging to both." · "A good line ends up belonging to both too."
+
+### MW089 — "The crocodile — we're still using it? After all these years?"
+
+**"the crocodile"**
+- BUILD: "the crocodile too" · "the crocodile again" · "still the crocodile" · "the crocodile, then"
+- USE: "The crocodile — we're still using it?" · "The crocodile again?" · "The crocodile, then." · "It's the crocodile." · "I know — the crocodile."
+
+**"we're still using it"**
+- BUILD: "so we're still using it" · "we're still using it, then" · "and we're still using it" · "we're still using it now"
+- USE: "We're still using it?" · "We're still using it, after all these years?" · "And we're still using it." · "We're still using it now." · "I think we're still using it."
+
+**"after all these years"**
+- BUILD: "after all these years now" · "and after all these years" · "still, after all these years" · "after all these years, though"
+- USE: "After all these years?" · "The crocodile — we're still using it? After all these years?" · "And after all these years." · "After all these years, though." · "Still, after all these years."
+
+### MW090 — "Careful with that partner. You might wake up in bed with a crocodile."
+
+**"careful with that partner"**
+- BUILD: "and careful with that partner" · "so, careful with that partner" · "well, careful with that partner" · "careful with that partner, though"
+- USE: "Careful with that partner." · "Careful with that partner. You might wake up in bed with a crocodile." · "Careful with that partner too." · "So, careful with that partner." · "I said — careful with that partner."
+
+**"you might wake up in bed with a crocodile"**
+- BUILD: "so you might wake up in bed with a crocodile" · "and you might wake up in bed with a crocodile" · "well, you might wake up in bed with a crocodile" · "you might wake up in bed with a crocodile, though"
+- USE: "You might wake up in bed with a crocodile." · "And you might wake up in bed with a crocodile." · "You might wake up in bed with a crocodile too." · "Careful with that partner. You might wake up in bed with a crocodile." · "I think you might wake up in bed with a crocodile."
+
+### MW091 — "That's exactly where I was about to go."
+
+**"that's exactly where I was about to go"**
+- BUILD: "so that's exactly where I was about to go" · "well, that's exactly where I was about to go" · "and that's exactly where I was about to go" · "that's exactly where I was about to go, though"
+- USE: "That's exactly where I was about to go." · "That's exactly where I was about to go too." · "And that's exactly where I was about to go." · "I think that's exactly where I was about to go." · "Still, that's exactly where I was about to go."
+
+### MW092 — "Word for word. So take it — you're already there."
+
+**"word for word"**
+- BUILD: "and word for word" · "word for word, actually" · "word for word, though" · "just word for word"
+- USE: "Word for word." · "Word for word too." · "Still, word for word." · "I think it's word for word." · "Word for word. So take it — you're already there."
+
+**"so take it"**
+- BUILD: "so take it too" · "so take it now" · "so take it, then" · "well — so take it"
+- USE: "So take it." · "So take it now." · "So take it — you're already there." · "So take it, though." · "So take it, then."
+
+**"you're already there"**
+- BUILD: "so you're already there" · "and you're already there" · "well, you're already there" · "you're already there, though"
+- USE: "You're already there." · "And you're already there." · "You're already there too." · "Word for word. So take it — you're already there." · "I think you're already there."
+
+### MW093 — "Hang on — what did you say, an hour ago?"
+
+**"what did you say"**
+- BUILD: "and what did you say" · "hang on — what did you say" · "what did you say, an hour ago" · "well, what did you say"
+- USE: "Hang on — what did you say, an hour ago?" · "What did you say?" · "What did you say, an hour ago?" · "Still, what did you say?" · "So, what did you say?"
+
+### MW094 — "You've been saving that up."
+
+**"you've been saving that up"**
+- BUILD: "so you've been saving that up" · "well, you've been saving that up" · "and you've been saving that up" · "you've been saving that up, though"
+- USE: "You've been saving that up." · "You've been saving that up too." · "And you've been saving that up." · "I think you've been saving that up." · "Still, you've been saving that up."
+
+### MW095 — "Since you said it. I was waiting for it to come round."
+
+**"I was waiting"**
+- BUILD: "so I was waiting" · "and I was waiting" · "well, I was waiting" · "I was waiting, though"
+- USE: "I was waiting." · "And I was waiting." · "I was waiting too." · "Since you said it. I was waiting for it to come round." · "Still, I was waiting."
+
+**"for it to come round"**
+- BUILD: "just for it to come round" · "I was waiting for it to come round" · "and for it to come round" · "still, for it to come round"
+- USE: "I was waiting for it to come round." · "For it to come round." · "And for it to come round." · "Still, for it to come round." · "I was waiting for it to come round, actually."
+
+### MW096 — "Good callback."
+
+**"callback"**
+- BUILD: "good callback" · "a good callback" · "that callback" · "the callback"
+- USE: "Good callback." · "That's a good callback." · "Now that's a callback." · "Wait — was that a callback?" · "I've got a callback for you."
+
+### MW097 — "Hang on — that makes me think of the garden. Two minutes, I promise."
+
+**"that makes me think of"**
+- BUILD: "just that makes me think of" · "that makes me think of the garden" · "that makes me think of something" · "now that makes me think of"
+- USE: "That makes me think of the garden." · "Hang on — that makes me think of something." · "That makes me think of the third one." · "That makes me think of exactly that." · "Hang on — that makes me think of the garden. Two minutes, I promise."
+
+**"the garden"**
+- BUILD: "the garden too" · "in the garden" · "your garden" · "the garden again"
+- USE: "That makes me think of the garden." · "Hang on — that makes me think of the garden. Two minutes, I promise." · "I'm still thinking about the garden." · "Your garden again?" · "Is it the garden?"
+
+### MW098 — "Clock's running."
+
+**"clock's running"**
+- BUILD: "so clock's running" · "the clock's running" · "clock's still running" · "and the clock's running"
+- USE: "Clock's running." · "The clock's running." · "Clock's still running." · "Hang on — clock's running." · "Two minutes — clock's running."
+
+### MW100 — "It always does. Three minutes?"
+
+**"it always does"**
+- BUILD: "so it always does" · "it always does that" · "it always does again" · "well, it always does"
+- USE: "It always does." · "It always does. Three minutes?" · "It always does that." · "It always does too." · "It always does — clock's running."
+
+### MW101 — "Anyway — where were we?"
+
+**"where were we"**
+- BUILD: "and where were we" · "so, where were we" · "where were we now" · "anyway, where were we"
+- USE: "Where were we?" · "Anyway — where were we?" · "So, where were we?" · "Where were we now?" · "Now, where were we?"
+
+### MW102 — "Right — where was I?"
+
+**"where was I"**
+- BUILD: "and where was I" · "right, where was I" · "where was I now" · "so where was I"
+- USE: "Where was I?" · "Right — where was I?" · "So, where was I?" · "Where was I now?" · "Now, where was I?"
+
+### MW103 — "Control before correctness. And your garden just agreed with me."
+
+**"just agreed with me"**
+- BUILD: "still just agreed with me" · "you just agreed with me" · "and you just agreed with me" · "that just agreed with me"
+- USE: "You just agreed with me." · "And your garden just agreed with me." · "That just agreed with me." · "Control before correctness. And your garden just agreed with me." · "Actually, you just agreed with me."
+
+### MW104 — "Schools. How would you do it in a school?"
+
+**"how would you do it"**
+- BUILD: "and how would you do it" · "how would you do it in a school" · "so how would you do it" · "now how would you do it"
+- USE: "How would you do it?" · "How would you do it in a school?" · "So, how would you do it?" · "Schools. How would you do it in a school?" · "Now, how would you do it?"
+
+### MW105 — "It's been a long time. I'm out of practice, and I haven't thought about it much."
+
+**"it's been a long time"**
+- BUILD: "and it's been a long time" · "it's been a long time now" · "well, it's been a long time" · "it's been a long time, though"
+- USE: "It's been a long time." · "It's been a long time now." · "It's been a long time too." · "Still, it's been a long time." · "It's been a long time. I'm out of practice, and I haven't thought about it much."
+
+**"I'm out of practice"**
+- BUILD: "so I'm out of practice" · "I'm out of practice now" · "I'm still out of practice" · "and I'm out of practice"
+- USE: "I'm out of practice." · "I'm out of practice now." · "I'm still out of practice." · "Well, I'm out of practice." · "It's been a long time. I'm out of practice, and I haven't thought about it much."
+
+**"I haven't thought about it much"**
+- BUILD: "so I haven't thought about it much" · "I haven't thought about it much, actually" · "I still haven't thought about it much" · "and I haven't thought about it much"
+- USE: "I haven't thought about it much." · "I haven't thought about it much, though." · "I still haven't thought about it much." · "And I haven't thought about it much." · "It's been a long time. I'm out of practice, and I haven't thought about it much."
+
+### MW106 — "That's what I'd want to test, and I'd bet on it."
+
+**"that's what I'd want to test"**
+- BUILD: "so that's what I'd want to test" · "that's exactly what I'd want to test" · "now that's what I'd want to test" · "well, that's what I'd want to test"
+- USE: "That's what I'd want to test." · "That's exactly what I'd want to test." · "Now, that's what I'd want to test." · "That's what I'd want to test too." · "That's what I'd want to test, and I'd bet on it."
+
+**"I'd bet on it"**
+- BUILD: "so I'd bet on it" · "and I'd bet on it" · "I'd bet on it too" · "well, I'd bet on it"
+- USE: "I'd bet on it." · "And I'd bet on it." · "I'd bet on it too." · "I'd bet on it, though." · "That's what I'd want to test, and I'd bet on it."
+
+### MW107 — "It looks big. But I suspect you wouldn't even need the whole year."
+
+**"it looks big"**
+- BUILD: "and it looks big" · "it looks too big" · "it still looks big" · "but it looks big"
+- USE: "It looks big." · "It looks too big." · "It still looks big." · "But it looks big." · "It looks big. But I suspect you wouldn't even need the whole year."
+
+**"I suspect"**
+- BUILD: "so I suspect" · "I suspect so" · "but I suspect" · "well, I suspect"
+- USE: "I suspect." · "I suspect so." · "But I suspect." · "Well, I suspect you're right." · "I suspect it's true."
+
+**"you wouldn't even need"**
+- BUILD: "so you wouldn't even need" · "you wouldn't even need it" · "you wouldn't even need the whole year" · "but you wouldn't even need"
+- USE: "You wouldn't even need it." · "You wouldn't even need the whole year." · "But you wouldn't even need it." · "I suspect you wouldn't even need it." · "It looks big. But I suspect you wouldn't even need the whole year."
+
+### MW108 — "How much time is it going to take?"
+
+**"is it going to take"**
+- BUILD: "and is it going to take" · "how much time is it going to take" · "how much time is it going to take now" · "so, how much time is it going to take"
+- USE: "How much time is it going to take?" · "So, how much time is it going to take?" · "How much time is it going to take now?" · "How much time is it going to take, do you think?" · "How much time is it going to take in a school?"
+
+### MW109 — "A lot."
+
+**"a lot"**
+- BUILD: "just a lot" · "a lot of it" · "a lot, actually" · "still a lot"
+- USE: "A lot." · "A lot of it." · "A lot too." · "Still a lot." · "It's a lot."
+
+### MW110 — "More. Ten hours — and then ten more."
+
+**"more"**
+- BUILD: "still more" · "and then more" · "ten more" · "a lot more"
+- USE: "More." · "Ten hours — and then ten more." · "And then more." · "A lot more." · "More. Ten hours — and then ten more."
+
+### MW112 — "So how much altogether? A hundred?"
+
+**"altogether"**
+- BUILD: "a hundred altogether" · "how much altogether" · "so how much altogether" · "altogether now"
+- USE: "How much altogether?" · "So, how much altogether?" · "So how much altogether? A hundred?" · "A hundred, altogether?" · "Is that altogether?"
+
+### MW113 — "A hundred hours. It's a hundred hours. Take them as you want."
+
+**"take them as you want"**
+- BUILD: "so take them as you want" · "just take them as you want" · "take them as you want, then" · "well, take them as you want"
+- USE: "Take them as you want." · "Just take them as you want." · "Take them as you want, then." · "Take them as you want too." · "A hundred hours. It's a hundred hours. Take them as you want."
+
+### MW114 — "Then I'll take them like this. Thirteen weeks. One full day to start, then two hours a week for eleven weeks, then one full day to close. That would probably be plenty."
+
+**"then I'll take them like this"**
+- BUILD: "and then I'll take them like this" · "so, then I'll take them like this" · "well, then I'll take them like this" · "then I'll take them like this, thirteen weeks"
+- USE: "Then I'll take them like this." · "Then I'll take them like this too." · "So, then I'll take them like this." · "Then I'll take them like this, though." · "Then I'll take them like this. Thirteen weeks. One full day to start, then two hours a week for eleven weeks, then one full day to close. That would probably be plenty."
+
+**"one full day"**
+- BUILD: "so one full day" · "one full day to start" · "one full day to close" · "just one full day"
+- USE: "One full day to start." · "One full day to close." · "Just one full day." · "One full day, then two hours a week." · "One full day to start, then two hours a week for eleven weeks, then one full day to close."
+
+**"to close"**
+- BUILD: "and to close" · "one full day to close" · "then to close" · "just to close"
+- USE: "One full day to close." · "Then, to close." · "Just to close." · "To close, one full day." · "One full day to start, then one full day to close."
+
+**"that would probably be plenty"**
+- BUILD: "so that would probably be plenty" · "that would be plenty" · "that would probably be plenty, actually" · "that would probably be plenty too"
+- USE: "That would probably be plenty." · "That would be plenty." · "That would probably be plenty, though." · "Still, that would probably be plenty." · "Then I'll take them like this. Thirteen weeks. One full day to start, then two hours a week for eleven weeks, then one full day to close. That would probably be plenty."
+
+### MW115 — "Mm. I'd be inclined not to differentiate that much. Here's the model: five days, then a year of an hour or two a week, then five days again. With your thirteen weeks you'd surprise a few people. And you'd lose a few."
+
+**"I'd be inclined not to"**
+- BUILD: "and I'd be inclined not to" · "I'd be inclined not to, actually" · "I'd be inclined not to, though" · "I'd be inclined not to now"
+- USE: "I'd be inclined not to." · "I'd be inclined not to too." · "Still, I'd be inclined not to." · "Mm. I'd be inclined not to." · "I'd be inclined not to differentiate that much."
+
+**"differentiate that much"**
+- BUILD: "and differentiate that much" · "not differentiate that much" · "differentiate that much, actually" · "still differentiate that much"
+- USE: "Differentiate that much?" · "I wouldn't differentiate that much." · "I'd be inclined not to differentiate that much." · "Still, differentiate that much?" · "Mm. I'd be inclined not to differentiate that much."
+
+**"here's the model"**
+- BUILD: "and here's the model" · "so, here's the model" · "here's the model now" · "well, here's the model"
+- USE: "Here's the model." · "So, here's the model." · "Well, here's the model." · "Here's the model now." · "Here's the model: five days, then a year of an hour or two a week, then five days again."
+
+**"you'd surprise a few people"**
+- BUILD: "and you'd surprise a few people" · "you'd surprise a few people, actually" · "you'd still surprise a few people" · "you'd surprise a few people too"
+- USE: "You'd surprise a few people." · "You'd surprise a few people, though." · "Still, you'd surprise a few people." · "With your thirteen weeks you'd surprise a few people." · "You'd surprise a few people. And you'd lose a few."
+
+**"and you'd lose a few"**
+- BUILD: "and you'd lose a few too" · "you'd lose a few" · "you'd lose a few, actually" · "and you'd lose a few, though"
+- USE: "And you'd lose a few." · "You'd lose a few." · "You'd lose a few, though." · "Still, you'd lose a few." · "You'd surprise a few people. And you'd lose a few."
+
+### MW116 — "Fewer than you think."
+
+**"fewer than you think"**
+- BUILD: "and fewer than you think" · "fewer than you think, actually" · "fewer than you think, though" · "still fewer than you think"
+- USE: "Fewer than you think." · "Fewer than you think too." · "So, fewer than you think." · "Still fewer than you think." · "It's fewer than you think."
+
+### MW117 — "Maybe. To me the risk doesn't seem worth it. Five days."
+
+**"to me"**
+- BUILD: "To me, that's true." · "To me, that's normal." · "To me, it seems to work." · "To me, that's not what I'm saying."
+- USE: "To me, that's true." · "To me, it seems to work." · "To me, that's normal." · "To me, that's not what I'm saying." · "Maybe. To me the risk doesn't seem worth it. Five days."
+
+**"the risk doesn't seem worth it"**
+- BUILD: "The risk doesn't seem worth it, to me." · "Maybe the risk doesn't seem worth it." · "So the risk doesn't seem worth it." · "And the risk doesn't seem worth it."
+- USE: "The risk doesn't seem worth it." · "To me, the risk doesn't seem worth it." · "Maybe. To me the risk doesn't seem worth it. Five days." · "I don't know, but the risk doesn't seem worth it." · "Actually, the risk doesn't seem worth it."
+
+### MW118 — "And I still like my thirteen weeks."
+
+**"I still like"**
+- BUILD: "I still like it." · "I still like that." · "And I still like it too." · "I still like it, though."
+- USE: "And I still like my thirteen weeks." · "I still like it." · "I still like that." · "But I still like it." · "Actually, I still like it."
+
+### MW119 — "I know. And I still don't."
+
+**"and I still don't"**
+- BUILD: "And I still don't know." · "But I still don't." · "And I still don't, though." · "I know, and I still don't."
+- USE: "I know. And I still don't." · "And I still don't know." · "But I still don't know." · "I know that, and I still don't." · "Actually, I still don't know."
+
+### MW120 — "Then we'll put it on pause. Okay."
+
+**"we'll put it on pause"**
+- BUILD: "Then we'll put it on pause." · "Well, we'll put it on pause." · "So we'll put it on pause." · "We'll put it on pause, okay."
+- USE: "Then we'll put it on pause. Okay." · "We'll put it on pause." · "So we'll put it on pause." · "Okay, we'll put it on pause." · "We'll put it on pause, too."
+
+### MW122 — "There's a school that wants you. Five days, a group of twelve. Will you do it?"
+
+**"there's a school that wants you"**
+- BUILD: "And there's a school that wants you." · "So there's a school that wants you." · "Well, there's a school that wants you." · "There's a school that wants you, too."
+- USE: "There's a school that wants you. Five days, a group of twelve. Will you do it?" · "There's a school that wants you." · "So there's a school that wants you." · "There's a school that wants you, then." · "There's a school that wants you now."
+
+**"a group of twelve"**
+- BUILD: "Five days, a group of twelve." · "A group of twelve, then." · "Just a group of twelve." · "A group of twelve, actually."
+- USE: "Five days, a group of twelve." · "A group of twelve." · "Just a group of twelve." · "A group of twelve, too." · "A group of twelve, and that's all."
+
+**"will you do it"**
+- BUILD: "And will you do it?" · "So will you do it?" · "Well, will you do it?" · "Will you do it, then?"
+- USE: "There's a school that wants you. Five days, a group of twelve. Will you do it?" · "Will you do it?" · "So, will you do it?" · "Will you do it, then?" · "I don't know — will you do it?"
+
+### MW123 — "Not even for a week? They're keen. They'd pay properly."
+
+**"not even for a week"**
+- BUILD: "And not even for a week?" · "So, not even for a week?" · "Not even for a week, then?" · "Not even for a week, now?"
+- USE: "Not even for a week? They're keen. They'd pay properly." · "Not even for a week?" · "So, not even for a week?" · "Not even for a week, then?" · "I know, but not even for a week?"
+
+**"they're keen"**
+- BUILD: "So they're keen." · "And they're keen." · "Well, they're keen." · "They're keen, too."
+- USE: "Not even for a week? They're keen. They'd pay properly." · "They're keen." · "And they're keen." · "They're keen, then." · "I know they're keen."
+
+**"they'd pay properly"**
+- BUILD: "So they'd pay properly." · "And they'd pay properly." · "Well, they'd pay properly." · "They'd pay properly, too."
+- USE: "Not even for a week? They're keen. They'd pay properly." · "They'd pay properly." · "And they'd pay properly, too." · "They're keen, and they'd pay properly." · "They'd pay properly, then."
+
+### MW124 — "No. One to one. That's all I say yes to now."
+
+**"one to one"**
+- BUILD: "And one to one." · "Just one to one." · "One to one, now." · "One to one, actually."
+- USE: "No. One to one. That's all I say yes to now." · "One to one." · "Just one to one." · "One to one, then." · "One to one — that's all."
+
+**"that's all I say yes to now"**
+- BUILD: "So that's all I say yes to now." · "One to one — that's all I say yes to now." · "That's all I say yes to now, actually." · "That's all I say yes to now, too."
+- USE: "No. One to one. That's all I say yes to now." · "That's all I say yes to now." · "One to one — that's all I say yes to now." · "That's all I say yes to now, then." · "I know, but that's all I say yes to now."
+
+### MW125 — "I'll tell them no."
+
+**"I'll tell them no"**
+- BUILD: "And I'll tell them no." · "Well, I'll tell them no." · "So I'll tell them no." · "I'll tell them no, then."
+- USE: "I'll tell them no." · "So I'll tell them no." · "I'll tell them no, too." · "I'll tell them no, then." · "I know, but I'll tell them no."
+
+### MW127 — "Two bad days. I've watched it."
+
+**"two bad days"**
+- BUILD: "And two bad days." · "Just two bad days." · "Two bad days, now." · "Two bad days, actually."
+- USE: "Two bad days. I've watched it." · "Two bad days." · "Just two bad days." · "Two bad days, then." · "Two bad days — that's all."
+
+**"I've watched it"**
+- BUILD: "So I've watched it." · "Well, I've watched it." · "I've watched it, too." · "And I've watched it."
+- USE: "Two bad days. I've watched it." · "I've watched it." · "And I've watched it." · "I've watched it, then." · "I know, I've watched it."
+
+### MW129 — "And nonetheless — that's the challenge, not the verdict."
+
+**"and nonetheless"**
+- BUILD: "And nonetheless, that's true." · "And nonetheless, that's fair." · "And nonetheless, I think." · "And nonetheless, actually."
+- USE: "And nonetheless — that's the challenge, not the verdict." · "And nonetheless, that's true." · "And nonetheless, that's fair." · "I know, and nonetheless." · "And nonetheless, I still like it."
+
+**"that's the challenge"**
+- BUILD: "And that's the challenge." · "Well, that's the challenge." · "That's the challenge, too." · "So that's the challenge."
+- USE: "And nonetheless — that's the challenge, not the verdict." · "That's the challenge." · "That's the challenge, then." · "I think that's the challenge." · "Still, that's the challenge."
+
+**"not the verdict"**
+- BUILD: "So, not the verdict." · "That's the challenge, not the verdict." · "Not the verdict, actually." · "Not the verdict, too."
+- USE: "And nonetheless — that's the challenge, not the verdict." · "Not the verdict." · "That's the challenge, not the verdict." · "Not the verdict, then." · "I think that's the challenge, not the verdict."
+
+### MW130 — "Then it's the whole job."
+
+**"the whole job"**
+- BUILD: "So, the whole job." · "Then it's the whole job." · "Just the whole job." · "The whole job, actually."
+- USE: "Then it's the whole job." · "The whole job." · "It's the whole job." · "It's the whole job, too." · "I think it's the whole job."
+
+### MW131 — "The whole job. And nobody's done it."
+
+**"nobody's done it"**
+- BUILD: "So, nobody's done it." · "And nobody's done it." · "Well, nobody's done it." · "Nobody's done it, too."
+- USE: "The whole job. And nobody's done it." · "Nobody's done it." · "And nobody's done it." · "I think nobody's done it." · "Nobody's done it, then."
+
+### MW132 — "Sounds fantastic. And what happened to that group?"
+
+**"sounds fantastic"**
+- BUILD: "So, sounds fantastic." · "That sounds fantastic." · "Sounds fantastic, actually." · "Sounds fantastic, too."
+- USE: "Sounds fantastic. And what happened to that group?" · "Sounds fantastic." · "That sounds fantastic." · "I think that sounds fantastic." · "Sounds fantastic, then."
+
+**"what happened to"**
+- BUILD: "What happened to that group?" · "What happened to it?" · "So, what happened to that?" · "What happened to that, then?"
+- USE: "Sounds fantastic. And what happened to that group?" · "What happened to that group?" · "What happened to it?" · "So, what happened to that?" · "I don't know — what happened to that?"
+
+### MW133 — "…It's gone cold."
+
+**"it's gone cold"**
+- BUILD: "So, it's gone cold." · "Well, it's gone cold." · "It's gone cold, too." · "I think it's gone cold."
+- USE: "It's gone cold." · "It's gone cold, then." · "Still, it's gone cold." · "I think it's gone cold." · "Sounds fantastic — but it's gone cold."
+
+### MW134 — "How many of you were there?"
+
+**"how many of you were there"**
+- BUILD: "And how many of you were there?" · "So, how many of you were there?" · "How many of you were there, then?" · "I don't know — how many of you were there?"
+- USE: "How many of you were there?" · "So, how many of you were there?" · "How many of you were there, then?" · "Tell me, how many of you were there?" · "I don't know — how many of you were there?"
+
+### MW135 — "There's your answer."
+
+**"there's your answer"**
+- BUILD: "So, there's your answer." · "Well, there's your answer." · "There's your answer, then." · "There's your answer, too."
+- USE: "There's your answer." · "Still, there's your answer." · "There's your answer, then." · "There's your answer, now." · "I think there's your answer."
+
+### MW136 — "Yes. I like the road trip. And it goes wider than that."
+
+**"the road trip"**
+- BUILD: "I like the road trip." · "So, the road trip." · "Just the road trip." · "The road trip, actually."
+- USE: "Yes. I like the road trip. And it goes wider than that." · "I like the road trip." · "The road trip." · "I think I like the road trip." · "I like the road trip, too."
+
+**"it goes wider than that"**
+- BUILD: "So, it goes wider than that." · "And it goes wider than that." · "Well, it goes wider than that." · "It goes wider than that, too."
+- USE: "Yes. I like the road trip. And it goes wider than that." · "It goes wider than that." · "And it goes wider than that." · "I think it goes wider than that." · "It goes wider than that, then."
+
+### MW137 — "Wider how?"
+
+**"wider how"**
+- BUILD: "And wider how?" · "So, wider how?" · "Wider how, then?" · "I don't know — wider how?"
+- USE: "Wider how?" · "So, wider how?" · "Wider how, then?" · "It goes wider than that — wider how?" · "I don't know — wider how?"
+
+### MW138 — "Now you're driving my metaphor."
+
+**"you're driving my metaphor"**
+- BUILD: "Now you're driving my metaphor." · "So, you're driving my metaphor." · "You're driving my metaphor, too." · "Well, you're driving my metaphor."
+- USE: "Now you're driving my metaphor." · "You're driving my metaphor." · "Still, you're driving my metaphor." · "I think you're driving my metaphor." · "You're driving my metaphor, then."
+
+### MW139 — "You gave me the keys."
+
+**"you gave me the keys"**
+- BUILD: "So, you gave me the keys." · "Well, you gave me the keys." · "You gave me the keys, too." · "I think you gave me the keys."
+- USE: "You gave me the keys." · "Still, you gave me the keys." · "You gave me the keys, then." · "I think you gave me the keys." · "I know — you gave me the keys."
+
+### MW140 — "Keep them."
+
+**"keep them"**
+- BUILD: "So, keep them." · "Just keep them." · "Keep them, then." · "Well, keep them."
+- USE: "Keep them." · "Just keep them." · "Keep them, then." · "Keep them — that's fair." · "Keep them, too."
+
+### MW141 — "Efficiency is lovely. But so is speed — and speed is the one that answers to a date."
+
+**"efficiency is lovely"**
+- BUILD: "I think efficiency is lovely." · "Efficiency is lovely — I can live with that." · "You're right, efficiency is lovely." · "We think efficiency is lovely."
+- USE: "Efficiency is lovely." · "I think efficiency is lovely." · "It seems to work — efficiency is lovely." · "We think efficiency is lovely." · "Efficiency is lovely. But so is speed — and speed is the one that answers to a date."
+
+**"but so is speed"**
+- BUILD: "Efficiency is lovely, but so is speed." · "That's true — but so is speed." · "You're right — but so is speed." · "I feel it's true — but so is speed."
+- USE: "But so is speed." · "Efficiency is lovely, but so is speed." · "That's true, but so is speed." · "I think — but so is speed." · "Efficiency is lovely. But so is speed — and speed is the one that answers to a date."
+
+**"the one that answers to a date"**
+- BUILD: "Speed is the one that answers to a date." · "It's the one that answers to a date, though." · "That's true — it's the one that answers to a date." · "Exactly — that's the one that answers to a date."
+- USE: "That's the one that answers to a date." · "It's the one that answers to a date." · "Speed is the one that answers to a date." · "You're right, that's the one that answers to a date." · "Efficiency is lovely. But so is speed — and speed is the one that answers to a date."
+
+### MW142 — "Speed is a feeling. Efficiency is a number."
+
+**"speed is a feeling"**
+- BUILD: "I think speed is a feeling." · "Speed is a feeling — I feel it's true." · "You're right, speed is a feeling." · "We think speed is a feeling."
+- USE: "Speed is a feeling." · "I think speed is a feeling." · "We think speed is a feeling." · "Exactly — speed is a feeling." · "Speed is a feeling. Efficiency is a number."
+
+**"efficiency is a number"**
+- BUILD: "But efficiency is a number." · "Efficiency is a number — that's true." · "You're right, efficiency is a number." · "We don't know — efficiency is a number."
+- USE: "Efficiency is a number." · "But efficiency is a number." · "We think efficiency is a number." · "It seems to work — efficiency is a number." · "Speed is a feeling. Efficiency is a number."
+
+### MW143 — "Then we're not going to agree."
+
+**"we're not going to agree"**
+- BUILD: "Then we're not going to agree." · "I think we're not going to agree." · "We're not going to agree — I can live with that." · "We don't know — we're not going to agree."
+- USE: "We're not going to agree." · "Then we're not going to agree." · "I think we're not going to agree about this." · "We don't know — we're not going to agree." · "Then we're not going to agree."
+
+### MW145 — "No. Not on pause. This one matters. Leave it standing."
+
+**"this one matters"**
+- BUILD: "No — this one matters." · "I think this one matters." · "This one matters — that's true." · "We think this one matters."
+- USE: "This one matters." · "No — this one matters." · "I think this one matters." · "That's true — this one matters." · "No. Not on pause. This one matters. Leave it standing."
+
+**"leave it standing"**
+- BUILD: "This one matters — leave it standing." · "I think we should leave it standing." · "Just leave it standing." · "We think we should leave it standing."
+- USE: "Leave it standing." · "This one matters. Leave it standing." · "I'd leave it standing." · "I think we should leave it standing." · "No. Not on pause. This one matters. Leave it standing."
+
+### MW146 — "Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right."
+
+**"I build for efficiency"**
+- BUILD: "Good — I build for efficiency." · "I build for efficiency, and you sell it for speed." · "You're right, I build for efficiency." · "We think I build for efficiency."
+- USE: "I build for efficiency." · "Good. I build for efficiency." · "I think I build for efficiency." · "That's true — I build for efficiency." · "Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right."
+
+**"you sell it for speed"**
+- BUILD: "I build for efficiency, and you sell it for speed." · "You're right — you sell it for speed." · "We think you sell it for speed." · "It seems to work — you sell it for speed."
+- USE: "You sell it for speed." · "And you sell it for speed." · "I think you sell it for speed." · "That's true, you sell it for speed." · "Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right."
+
+**"the learners tell us"**
+- BUILD: "And the learners tell us." · "I think the learners tell us." · "We think the learners tell us." · "That's true — the learners tell us."
+- USE: "The learners tell us." · "And the learners tell us which of us was right." · "I think the learners tell us." · "We think the learners tell us." · "Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right."
+
+**"which of us was right"**
+- BUILD: "The learners tell us which of us was right." · "I think — which of us was right?" · "We don't know which of us was right." · "So, which of us was right?"
+- USE: "Which of us was right?" · "I don't know which of us was right." · "We don't know which of us was right." · "The learners tell us which of us was right." · "Good. Leave it standing. I build for efficiency, you sell it for speed, and the learners tell us which of us was right."
+
+### MW147 — "Standing. Next thing."
+
+**"next thing"**
+- BUILD: "Standing. Next thing." · "Okay — next thing." · "Tell me the next thing." · "Show me the next thing."
+- USE: "Next thing." · "Standing. Next thing." · "Okay, next thing." · "Go on — next thing." · "Standing. Next thing."
+
+### MW148 — "Next thing. Two days on molecular physics. In Hong Kong. Coming?"
+
+**"on molecular physics"**
+- BUILD: "Two days on molecular physics." · "In Hong Kong, on molecular physics." · "Next thing — on molecular physics." · "Tell me about molecular physics."
+- USE: "Two days on molecular physics." · "It's on molecular physics." · "Two days on molecular physics, in Hong Kong." · "Next thing — two days on molecular physics." · "Next thing. Two days on molecular physics. In Hong Kong. Coming?"
+
+**"coming"**
+- BUILD: "Two days on molecular physics — coming?" · "In Hong Kong — coming?" · "So, coming?" · "Coming, or not?"
+- USE: "Coming?" · "Are you coming?" · "I'm coming." · "Two days on molecular physics — coming?" · "Next thing. Two days on molecular physics. In Hong Kong. Coming?"
+
+### MW149 — "From anyone else: no. Sorry — not my thing. From you: yes. I've already said yes. Because you wouldn't have asked."
+
+**"from anyone else: no"**
+- BUILD: "Sorry — from anyone else: no." · "From anyone else: no, but from you, yes." · "I think — from anyone else: no." · "Well — from anyone else: no."
+- USE: "From anyone else: no." · "From anyone else, no. Sorry." · "I think from anyone else: no." · "From anyone else: no — not my thing." · "From anyone else: no. Sorry — not my thing. From you: yes. I've already said yes. Because you wouldn't have asked."
+
+**"not my thing"**
+- BUILD: "Sorry — not my thing." · "Molecular physics — not my thing." · "From anyone else: no — not my thing." · "It's just not my thing."
+- USE: "Not my thing." · "Sorry, not my thing." · "That's not my thing." · "I know it's not my thing." · "From anyone else: no. Sorry — not my thing. From you: yes. I've already said yes. Because you wouldn't have asked."
+
+**"I've already said yes"**
+- BUILD: "From you: yes. I've already said yes." · "I've already said yes, because you wouldn't have asked." · "We think I've already said yes." · "That's true — I've already said yes."
+- USE: "I've already said yes." · "From you: yes — I've already said yes." · "I think I've already said yes." · "You're right, I've already said yes." · "From anyone else: no. Sorry — not my thing. From you: yes. I've already said yes. Because you wouldn't have asked."
+
+**"because you wouldn't have asked"**
+- BUILD: "I've already said yes — because you wouldn't have asked." · "That's true — because you wouldn't have asked." · "I think it's because you wouldn't have asked." · "We think it's because you wouldn't have asked."
+- USE: "Because you wouldn't have asked." · "That's because you wouldn't have asked." · "I know — because you wouldn't have asked." · "I've already said yes, because you wouldn't have asked." · "From anyone else: no. Sorry — not my thing. From you: yes. I've already said yes. Because you wouldn't have asked."
+
+### MW150 — "I almost don't have to explain anything."
+
+**"I almost don't have to"**
+- BUILD: "I almost don't have to explain anything." · "That's true — I almost don't have to." · "We think I almost don't have to." · "It seems to work — I almost don't have to."
+- USE: "I almost don't have to." · "I think I almost don't have to." · "You're right, I almost don't have to." · "That's true — I almost don't have to." · "I almost don't have to explain anything."
+
+**"explain anything"**
+- BUILD: "I almost don't have to explain anything." · "I don't need to explain anything." · "You don't need to explain anything." · "We don't need to explain anything."
+- USE: "I don't have to explain anything." · "I don't need to explain anything." · "You don't need to explain anything." · "I never have to explain anything." · "I almost don't have to explain anything."
+
+### MW151 — "We just spent ten minutes not agreeing — and I'm still coming to Hong Kong."
+
+**"we just spent ten minutes"**
+- BUILD: "We just spent ten minutes not agreeing." · "That's true — we just spent ten minutes." · "We think we just spent ten minutes." · "I know — we just spent ten minutes."
+- USE: "We just spent ten minutes." · "We just spent ten minutes not agreeing." · "I think we just spent ten minutes." · "We don't know — but we just spent ten minutes." · "We just spent ten minutes not agreeing — and I'm still coming to Hong Kong."
+
+**"and I'm still coming"**
+- BUILD: "We just spent ten minutes not agreeing, and I'm still coming." · "And I'm still coming to Hong Kong." · "I still like the idea, and I'm still coming." · "That's true — and I'm still coming."
+- USE: "And I'm still coming." · "I'm still coming." · "And I'm still coming to Hong Kong." · "I think — and I'm still coming." · "We just spent ten minutes not agreeing — and I'm still coming to Hong Kong."
+
+### MW152 — "So — Breton, for a weekend?"
+
+**"for a weekend"**
+- BUILD: "So — Breton, for a weekend?" · "Just for a weekend?" · "In Hong Kong, for a weekend?" · "We think — for a weekend?"
+- USE: "For a weekend?" · "Just for a weekend." · "I think for a weekend." · "That's it — for a weekend." · "So — Breton, for a weekend?"
+
+### MW153 — "Why not."
+
+**"why not"**
+- BUILD: "So — why not." · "I don't know — why not." · "We think — why not." · "It seems to work, so why not."
+- USE: "Why not?" · "Why not." · "I don't know — why not." · "I can live with that — why not." · "Why not."
+
+### MW154 — "Hang on. The dog."
+
+**"the dog"**
+- BUILD: "Hang on. The dog." · "It's the dog." · "Wait — the dog." · "Tell me about the dog."
+- USE: "The dog." · "It's the dog." · "Hang on — the dog." · "I think it's the dog." · "Hang on. The dog."
+
+### MW156 — "The dog has opinions. This will take a while."
+
+**"has opinions"**
+- BUILD: "The dog has opinions." · "It has opinions, actually." · "We think it has opinions." · "That's true — it has opinions."
+- USE: "The dog has opinions." · "It has opinions." · "I think it has opinions." · "You're right, it has opinions." · "The dog has opinions. This will take a while."
+
+**"this will take a while"**
+- BUILD: "The dog has opinions. This will take a while." · "I think this will take a while." · "We think this will take a while." · "It seems to work — but this will take a while."
+- USE: "This will take a while." · "I think this will take a while." · "You're right, this will take a while." · "We think this will take a while." · "The dog has opinions. This will take a while."
+
+### MW157 — "Fine. We'll pick this up next time."
+
+**"fine"**
+- BUILD: "Fine — we'll pick this up next time." · "Fine, then." · "I can live with that — fine." · "We think — fine."
+- USE: "Fine." · "Fine, then." · "I think — fine." · "That's fine." · "Fine. We'll pick this up next time."
+
+**"we'll pick this up next time"**
+- BUILD: "Fine. We'll pick this up next time." · "I think we'll pick this up next time." · "We think we'll pick this up next time." · "That's true — we'll pick this up next time."
+- USE: "We'll pick this up next time." · "I think we'll pick this up next time." · "You're right, we'll pick this up next time." · "We think we'll pick this up next time." · "Fine. We'll pick this up next time."
+
+### MW158 — "You owe me a third thing."
+
+**"you owe me a third thing"**
+- BUILD: "You're right — you owe me a third thing." · "We think you owe me a third thing." · "That's true — you owe me a third thing." · "I know — you owe me a third thing."
+- USE: "You owe me a third thing." · "I think you owe me a third thing." · "You're right, you owe me a third thing." · "We think you owe me a third thing." · "You owe me a third thing."
+
+### MW159 — "When? Are you free on Tuesday?"
+
+**"when"**
+- BUILD: "So — when?" · "Tell me when." · "We think — when?" · "I don't know — when?"
+- USE: "When?" · "So, when?" · "I don't know — when?" · "Tell me when." · "When? Are you free on Tuesday?"
+
+**"are you free"**
+- BUILD: "When? Are you free?" · "So, are you free?" · "We think — are you free?" · "Tell me — are you free?"
+- USE: "Are you free?" · "Are you free on Tuesday?" · "I think — are you free?" · "So — are you free?" · "When? Are you free on Tuesday?"
+
+### MW160 — "Tuesday, no. I have something on Tuesday."
+
+**"I have something on"**
+- BUILD: "I have something on Tuesday" · "I have something on Monday" · "I have something on Wednesday" · "I have something on again"
+- USE: "Tuesday, no. I have something on Tuesday." · "I have something on Monday." · "No, I have something on Wednesday." · "I have something on Tuesday, but I could do Wednesday." · "I have something on Thursday, actually."
+
+### MW162 — "Thursday I'm not here."
+
+**"I'm not here"**
+- BUILD: "Thursday I'm not here" · "I'm not here on Monday" · "I'm not here at two" · "I'm not here now"
+- USE: "Thursday I'm not here." · "I'm not here on Wednesday." · "I'm not here at two." · "I'm not here, so it can't be then." · "I'm not here again."
+
+### MW165 — "Tomorrow. I'll be there at two."
+
+**"I'll be there"**
+- BUILD: "I'll be there tomorrow" · "I'll be there at two" · "I'll be there again" · "I'll be there now"
+- USE: "Tomorrow. I'll be there at two." · "I'll be there at two." · "I'll be there tomorrow, then." · "I'll be there, don't worry." · "I'll be there, I promise."
+
+### MW166 — "Tomorrow. At two. …Okay. I'll be here. Noted."
+
+**"I'll be here"**
+- BUILD: "I'll be here tomorrow" · "I'll be here at two" · "I'll be here again" · "I'll be here now"
+- USE: "Okay. I'll be here." · "I'll be here tomorrow at two." · "I'll be here, don't worry." · "I'll be here at two, I promise." · "Tomorrow, at two. I'll be here."
+
+**"noted"**
+- BUILD: "noted. Okay" · "tomorrow at two. Noted" · "noted, then" · "okay, noted"
+- USE: "Tomorrow. At two. …Okay. I'll be here. Noted." · "Noted." · "Okay, noted." · "Tuesday at two. Noted." · "Noted, then."
+
+### MW167 — "Before anything else. You owed me a third thing."
+
+**"before anything else"**
+- BUILD: "before anything else, wait" · "before anything else, hang on" · "before anything else, tell me" · "before anything else, say it again"
+- USE: "Before anything else. You owed me a third thing." · "Before anything else, wait." · "Before anything else, hang on." · "Before anything else, tell me." · "Before anything else, say it again."
+
+### MW170 — "And then the dog. …I've lost it."
+
+**"I've lost it"**
+- BUILD: "and then the dog. I've lost it" · "I've lost it again" · "I've lost it now" · "I think I've lost it"
+- USE: "And then the dog. I've lost it." · "I've lost it." · "I think I've lost it." · "I've lost it again." · "I've lost it, actually."
+
+### MW171 — "You've lost the important one."
+
+**"the important one"**
+- BUILD: "you've lost the important one" · "the important one, again" · "I've lost the important one" · "not the important one"
+- USE: "You've lost the important one." · "I've lost the important one." · "Not the important one." · "The important one, again." · "I think you've lost the important one."
+
+### MW172 — "I've lost the important one. I don't know what it was. Give me the first two."
+
+**"what it was"**
+- BUILD: "I don't know what it was" · "what it was, exactly" · "tell me what it was" · "say what it was"
+- USE: "I don't know what it was." · "I've lost the important one. I don't know what it was." · "Tell me what it was." · "Say what it was." · "What it was, then?"
+
+**"give me"**
+- BUILD: "give me the first two" · "give me a lot" · "give me one" · "give me more"
+- USE: "Give me the first two." · "Give me one." · "Give me more." · "Give me a lot." · "Give me the first two, and then I'll take it."
+
+### MW173 — "One: the evening class is short on edges. Two: it's short on repetition, so by next week it's gone. Three: 'when you actually—'"
+
+**"the evening class"**
+- BUILD: "I like the evening class" · "the evening class is short on edges" · "in the evening class" · "the evening class, again"
+- USE: "The evening class is short on edges." · "I like the evening class." · "The evening class, again." · "I think the evening class is short on edges." · "I don't know about the evening class."
+
+**"is short on edges"**
+- BUILD: "the evening class is short on edges" · "it's short on edges" · "is short on edges, actually" · "still short on edges"
+- USE: "The evening class is short on edges." · "It's short on edges." · "It's still short on edges." · "Is it short on edges?" · "I think it's short on edges."
+
+**"it's short on repetition"**
+- BUILD: "it's short on repetition too" · "it's short on repetition again" · "it's still short on repetition" · "I think it's short on repetition"
+- USE: "It's short on repetition." · "It's short on repetition too." · "It's short on repetition, actually." · "It's still short on repetition." · "I think it's short on repetition."
+
+**"so by next week it's gone"**
+- BUILD: "well, so by next week it's gone" · "it's short on repetition, so by next week it's gone" · "I think so by next week it's gone" · "and so by next week it's gone"
+- USE: "It's short on repetition, so by next week it's gone." · "So by next week it's gone." · "By next week it's gone." · "It's gone by next week." · "I think by next week it's gone."
+
+**"when you actually"**
+- BUILD: "well, when you actually" · "and when you actually" · "so when you actually" · "but when you actually"
+- USE: "Three: 'when you actually—'" · "When you actually—" · "So — when you actually—" · "But — when you actually—" · "And when you actually—"
+- NOTE: floor miss — this LEGO mints deliberately as an interrupted fragment (the seed's own gloss: "worn incomplete in the corpus three times"); completing the clause naturally would pre-arrive MW174's material, which the seed explicitly forbids. USE phrases are trailing-off utterances (a real, natural move in fast peer speech), not completed sentences.
+
+### MW174 — "Go and use it. When you actually go and use it — if you've already walked the paths — it's the same thing you've been doing, in a bigger room."
+
+**"go and use it"**
+- BUILD: "go and use it now" · "you go and use it" · "when you actually go and use it" · "so, go and use it"
+- USE: "Go and use it. When you actually go and use it — if you've already walked the paths — it's the same thing you've been doing, in a bigger room." · "Go and use it." · "When you actually go and use it, it's the same thing you've been doing." · "Go and use it, now." · "If you've already walked the paths, go and use it."
+
+### MW175 — "Then I've said it three times."
+
+**"three times"**
+- BUILD: "then I've said it three times" · "three times, then" · "I've said it three times" · "so I've said it three times"
+- USE: "Then I've said it three times." · "I've said it three times." · "So I've said it three times." · "Three times, then." · "I've said it three times now."
+
+### MW176 — "Everything in this conversation gets said three times. — That's the method. Debt paid?"
+
+**"everything in this conversation"**
+- BUILD: "everything in this conversation, again" · "I like everything in this conversation" · "not everything in this conversation" · "I think everything in this conversation"
+- USE: "Everything in this conversation gets said three times. — That's the method. Debt paid?" · "Everything in this conversation, again." · "Not everything in this conversation." · "I like everything in this conversation." · "Everything in this conversation, then."
+
+**"gets said"**
+- BUILD: "gets said three times" · "gets said again" · "gets said now" · "it gets said"
+- USE: "Everything in this conversation gets said three times." · "It gets said three times." · "It gets said again." · "It gets said now." · "So it gets said three times."
+
+**"that's the method"**
+- BUILD: "that's the method, then" · "so that's the method" · "I think that's the method" · "well, that's the method"
+- USE: "That's the method." · "That's the method, then." · "So that's the method." · "That's the method, isn't it." · "I think that's the method."
+
+**"debt paid"**
+- BUILD: "debt paid, then" · "is debt paid" · "so, debt paid" · "I think — debt paid"
+- USE: "Debt paid?" · "Debt paid." · "So, debt paid?" · "Debt paid, then." · "Debt paid, actually."
+
+### MW178 — "Debt paid. Never let a dog near the important one."
+
+**"never let a dog near"**
+- BUILD: "never let a dog near the important one" · "never let a dog near it" · "never let a dog near again" · "never let a dog near, okay"
+- USE: "Debt paid. Never let a dog near the important one." · "Never let a dog near the important one." · "Never let a dog near it." · "Never let a dog near again." · "Never let a dog near, okay?"
+
+### MW179 — "How did you find it? When? Where? How much time, every day? How often? — There's a lot there."
+
+**"how did you find it"**
+- BUILD: "how did you find it, then" · "so how did you find it" · "and how did you find it" · "well, how did you find it"
+- USE: "How did you find it?" · "How did you find it, then?" · "So how did you find it?" · "And how did you find it?" · "How did you find it? When? Where? How much time, every day? How often? — There's a lot there."
+
+**"there's a lot there"**
+- BUILD: "there's a lot there, actually" · "I think there's a lot there" · "so there's a lot there" · "and there's a lot there"
+- USE: "There's a lot there." · "I think there's a lot there." · "So there's a lot there." · "There's a lot there, isn't there." · "There's a lot there, then."
+
+### MW180 — "Yes. A lot. So — first, how. Then when. Then how much, and how often. And after that you can say: but is it good? And I say: I talk. That's all."
+
+**"but is it good"**
+- BUILD: "is it good, then" · "and I say: but is it good" · "so, but is it good" · "I think — but is it good"
+- USE: "After that you can say: but is it good?" · "But is it good?" · "Is it good, then?" · "But is it good, actually?" · "And I say: but is it good?"
+
+**"I talk"**
+- BUILD: "I talk, that's all" · "and I say: I talk" · "I talk again" · "I talk too much"
+- USE: "And I say: I talk. That's all." · "I talk." · "I talk, that's all." · "I talk again." · "I talk too much."
+
+### MW181 — "Start with how."
+
+**"start with"**
+- BUILD: "start with how" · "start with that" · "start with the third one" · "start with Tuesday"
+- USE: "Start with how." · "Start with that." · "Start with the third one." · "Start with Tuesday." · "Start with how, then."
+
+### MW182 — "I did a day of Mandarin last summer. One day. And another this year."
+
+**"I did a day of Mandarin"**
+- BUILD: "I did a day of Mandarin again" · "I did a day of Mandarin last summer" · "so I did a day of Mandarin" · "well, I did a day of Mandarin"
+- USE: "I did a day of Mandarin last summer." · "I did a day of Mandarin." · "I did a day of Mandarin again." · "So I did a day of Mandarin." · "I did a day of Mandarin. One day."
+
+**"last summer"**
+- BUILD: "one day, last summer" · "I did it last summer" · "so, last summer" · "I think it was last summer"
+- USE: "I did a day of Mandarin last summer." · "Last summer." · "Last summer, actually." · "One day, last summer." · "It was last summer."
+
+**"this year"**
+- BUILD: "and another this year" · "not this year" · "so, this year" · "I did it this year"
+- USE: "And another this year." · "This year." · "This year, actually." · "Not this year." · "I did it this year."
+
+### MW183 — "By the end of that second day, I was thinking in Chinese. Not well."
+
+**"by the end of that second day"**
+- BUILD: "by the end of the third day" · "so by the end of that second day" · "I think by the end of that second day" · "and by the end of that second day"
+- USE: "By the end of that second day, I was thinking in Chinese." · "By the end of that second day." · "By the end of that second day, actually." · "So by the end of that second day." · "By the end of the third day."
+
+**"I was thinking in Chinese"**
+- BUILD: "I was thinking in Chinese, not well" · "I was thinking in Mandarin" · "so I was thinking in Chinese" · "by the end of that second day, I was thinking in Chinese"
+- USE: "By the end of that second day, I was thinking in Chinese. Not well." · "I was thinking in Chinese." · "So I was thinking in Chinese." · "I was thinking in Mandarin." · "I was thinking in Chinese, not well."
+
+**"not well"**
+- BUILD: "still not well" · "not very well" · "I was thinking in Chinese, not well" · "so, not well"
+- USE: "Not well." · "Not well, actually." · "Still not well." · "I was thinking in Chinese. Not well." · "Not very well."
+
+### MW184 — "It felt like more than a month of hard work. And I know what it buys."
+
+**"it felt like"**
+- BUILD: "it felt like too much" · "it felt like a lot" · "it felt like a hundred hours" · "and it felt like a long time"
+- USE: "It felt like too much at first — and then it worked." · "It felt like a lot, and it was one day." · "By the end of that second day, it felt like more." · "It felt like a hundred hours. It was two days." · "It felt like more than a month of hard work. And I know what it buys."
+
+**"more than a month of hard work"**
+- BUILD: "it felt like more than a month of hard work" · "more than a month of hard work, in one day" · "that's more than a month of hard work" · "and more than a month of hard work"
+- USE: "It felt like more than a month of hard work." · "One day gave me more than a month of hard work." · "That's more than a month of hard work — I've done the month." · "More than a month of hard work, from one day? I've watched it." · "It felt like more than a month of hard work. And I know what it buys."
+
+**"I know what it buys"**
+- BUILD: "and I know what it buys" · "I've done the month, so I know what it buys" · "now I know what it buys" · "because I know what it buys"
+- USE: "I know what it buys." · "I've done the month, in other languages — I know what it buys." · "Ten minutes a day? I know what it buys." · "I've done the month — so I know what it buys." · "It felt like more than a month of hard work. And I know what it buys."
+
+### MW185 — "Two days, a year apart."
+
+**"a year apart"**
+- BUILD: "two days, a year apart" · "one day of Mandarin, then another — a year apart" · "just a year apart" · "two days of Chinese, a year apart"
+- USE: "Two days, a year apart." · "I did a day of Mandarin last summer, and another this year — a year apart." · "Two days, a year apart — and by the end I was thinking in Chinese." · "A year apart, on purpose — it proves nothing. Accept it anyway." · "Two days, a year apart. That's all it was."
+
+### MW188 — "Something was going on."
+
+**"something was going on"**
+- BUILD: "so something was going on" · "by day two, something was going on" · "something was going on there" · "and something was going on"
+- USE: "Something was going on." · "By the end of that second day, something was going on." · "Not well — but something was going on." · "I don't know what it was — but something was going on." · "Two days, a year apart — and something was going on."
+
+### MW190 — "You waited sixteen months to test one word? You're mad."
+
+**"you waited sixteen months"**
+- BUILD: "so you waited sixteen months" · "you waited sixteen months for that" · "and you waited sixteen months" · "you waited sixteen months — why?"
+- USE: "You waited sixteen months to test one word? You're mad." · "You waited sixteen months?" · "So you waited sixteen months. And it worked." · "You waited sixteen months — and it was still there." · "Hang on — you waited sixteen months?"
+
+**"to test one word"**
+- BUILD: "just to test one word" · "sixteen months, to test one word" · "to test one word of Manx" · "you waited a year to test one word"
+- USE: "You waited sixteen months to test one word? You're mad." · "To test one word? Yes. That." · "Just to test one word — nobody asked you to." · "I did it to test one word. Accept it anyway." · "A year, to test one word. You're mad — both of us."
+
+**"you're mad"**
+- BUILD: "no, you're mad" · "you're mad — sixteen months?" · "you're completely mad" · "well, you're mad"
+- USE: "You waited sixteen months to test one word? You're mad." · "You're mad. And you're right." · "You're completely mad." · "You're mad — and it works." · "Sixteen months? You're mad."
+
+### MW191 — "Oh no."
+
+**"oh no"**
+- BUILD: "oh no — go on" · "oh no, here it comes" · "oh no — you're right" · "oh no, not that"
+- USE: "Oh no." · "Oh no — go on, then." · "Oh no. Go on, then — say it." · "Oh no — you're completely right." · "Oh no, not the fish again."
+
+### MW193 — "Mad, both of us. That's why it works. Day one. Then day two. And after day two — no more. That was all."
+
+**"that's why it works"**
+- BUILD: "and that's why it works" · "mad, both of us — that's why it works" · "I think that's why it works" · "that's exactly why it works"
+- USE: "Mad, both of us. That's why it works. Day one. Then day two. And after day two — no more. That was all." · "That's why it works." · "It costs you something — that's why it works." · "We don't know. We think. And that's why it works." · "Effort makes the memory. That's why it works."
+
+### MW194 — "Three years. And it's still there?"
+
+**"it's still there"**
+- BUILD: "and it's still there" · "three years, and it's still there" · "so it's still there" · "it's still there, then"
+- USE: "Three years. And it's still there?" · "It's still there. Slowly, today — but it's still there." · "Two days, three years ago — and it's still there." · "Three years on — is it still there?" · "You waited sixteen months, and it's still there."
+
+### MW195 — "Still there. Not all of it. But I can say it — slowly, today, but I can say it. That's what I want people to see."
+
+**"not all of it"**
+- BUILD: "still there — not all of it" · "not all of it, but enough" · "no, not all of it" · "not all of it, of course"
+- USE: "Still there. Not all of it. But I can say it — slowly, today, but I can say it. That's what I want people to see." · "Not all of it. But enough." · "Is it still there? Not all of it." · "Three years on, not all of it is still there — but enough is." · "Not all of it — and I think that's normal."
+
+**"I can say it"**
+- BUILD: "but I can say it" · "I can say it slowly" · "I can say it today" · "three years on, I can say it"
+- USE: "Still there. Not all of it. But I can say it — slowly, today, but I can say it. That's what I want people to see." · "I can say it. Slowly — but I can say it." · "Three years, and I can still say it." · "Not well. But I can say it." · "I can say it — slowly, but I can say it."
+
+**"that's what I want people to see"**
+- BUILD: "and that's what I want people to see" · "because that's what I want people to see" · "day one, day two — that's what I want people to see" · "that's what I want people to see, in the end"
+- USE: "Still there. Not all of it. But I can say it — slowly, today, but I can say it. That's what I want people to see." · "That's what I want people to see." · "Two days, three years, still there — that's what I want people to see." · "It's not the words — that's what I want people to see." · "That's what I want people to see: it works."
+
+### MW196 — "There's a fixed number of atoms on the planet. We're not losing atoms of water."
+
+**"there's a fixed number of atoms on the planet"**
+- BUILD: "well, there's a fixed number of atoms on the planet" · "look — there's a fixed number of atoms on the planet" · "but there's a fixed number of atoms on the planet" · "there's a fixed number of atoms on the planet, so"
+- USE: "There's a fixed number of atoms on the planet. We're not losing atoms of water." · "There's a fixed number of atoms on the planet — you don't lose them." · "Hang on — there's a fixed number of atoms on the planet." · "There's a fixed number of atoms on the planet. And the words are still there." · "Nothing is lost — there's a fixed number of atoms on the planet."
+
+**"we're not losing atoms of water"**
+- BUILD: "and we're not losing atoms of water" · "so we're not losing atoms of water" · "we're not losing atoms of water, are we" · "because we're not losing atoms of water"
+- USE: "There's a fixed number of atoms on the planet. We're not losing atoms of water." · "We're not losing atoms of water." · "We're not losing atoms of water — and you're not losing the words." · "We're not losing atoms of water. They're just somewhere else." · "It's still there. We're not losing atoms of water."
+
+### MW197 — "You didn't lose the Manx. It's just somewhere you haven't been for three years."
+
+**"you didn't lose"**
+- BUILD: "you didn't lose the Manx" · "you didn't lose it" · "no — you didn't lose anything" · "you didn't lose the words"
+- USE: "You didn't lose the Manx. It's just somewhere you haven't been for three years." · "You didn't lose it. It's still there." · "You didn't lose anything — we're not losing atoms of water." · "You didn't lose the words. You just haven't said them." · "You didn't lose it, and you didn't lose the year."
+
+**"it's just somewhere you haven't been"**
+- BUILD: "it's just somewhere you haven't been for three years" · "no — it's just somewhere you haven't been" · "it's just somewhere you haven't been, that's all" · "it's just somewhere you haven't been for a while"
+- USE: "You didn't lose the Manx. It's just somewhere you haven't been for three years." · "It's just somewhere you haven't been. So go and use it." · "It's not gone. It's just somewhere you haven't been." · "It's just somewhere you haven't been — that's all it is." · "The words are still there. It's just somewhere you haven't been."
+
+### MW198 — "I have never once in my life thought: I want to learn Manx. Never."
+
+**"I have never once in my life thought"**
+- BUILD: "I have never once in my life thought that" · "and I have never once in my life thought: I want that" · "I have never once in my life thought about it" · "honestly, I have never once in my life thought that"
+- USE: "I have never once in my life thought: I want to learn Manx. Never." · "I have never once in my life thought: I want a hundred hours of this." · "I have never once in my life thought that — and now I've got two days of it." · "I have never once in my life thought it was the edges." · "I have never once in my life thought it would still be there."
+
+**"never"**
+- BUILD: "no — never" · "never, not once" · "never. And now?" · "never in my life"
+- USE: "I have never once in my life thought: I want to learn Manx. Never." · "Never." · "No — never. Not once." · "Did you want to learn it? Never." · "Never — and that's why it's interesting."
+
+### MW199 — "I've got unfinished business. I'm going to learn more Manx. I don't know if I'll ever be properly conversational — I really don't — but I'm going to learn more."
+
+**"I've got unfinished business"**
+- BUILD: "because I've got unfinished business" · "I've got unfinished business with it" · "well, I've got unfinished business" · "I've got unfinished business — that's all"
+- USE: "I've got unfinished business. I'm going to learn more Manx. I don't know if I'll ever be properly conversational — I really don't — but I'm going to learn more." · "I've got unfinished business." · "Why go back? I've got unfinished business." · "I've got unfinished business with the Manx." · "Two days wasn't the end. I've got unfinished business."
+
+**"if I'll ever be properly conversational"**
+- BUILD: "I don't know if I'll ever be properly conversational" · "if I'll ever be properly conversational in it" · "who knows if I'll ever be properly conversational" · "I don't know if I'll ever be properly conversational — I really don't"
+- USE: "I've got unfinished business. I'm going to learn more Manx. I don't know if I'll ever be properly conversational — I really don't — but I'm going to learn more." · "I don't know if I'll ever be properly conversational." · "Who knows if I'll ever be properly conversational — I'm going to learn more." · "I don't know if I'll ever be properly conversational, and I don't mind." · "Will I ever be properly conversational? We don't know. We think."
+
+### MW200 — "That's allowed. Unfinished business is a good reason. Better than most."
+
+**"that's allowed"**
+- BUILD: "no — that's allowed" · "that's allowed, you know" · "and that's allowed" · "of course that's allowed"
+- USE: "That's allowed. Unfinished business is a good reason. Better than most." · "That's allowed." · "Not knowing? That's allowed — we think, remember." · "You don't need all the words — that's allowed." · "That's allowed. Who says it isn't? Nobody."
+
+**"is a good reason"**
+- BUILD: "unfinished business is a good reason" · "that is a good reason" · "I think that is a good reason" · "and that's a good reason"
+- USE: "That's allowed. Unfinished business is a good reason. Better than most." · "Unfinished business is a good reason." · "That's a good reason — better than a form." · "I don't mind is a good reason too." · "It proves nothing, but it's a good reason."
+
+**"better than most"**
+- BUILD: "a good reason — better than most" · "and better than most" · "that one's better than most" · "better than most, I think"
+- USE: "That's allowed. Unfinished business is a good reason. Better than most." · "Better than most." · "Unfinished business? Better than most reasons." · "It's a good reason — better than most." · "I think that's better than most of them."
+
+### MW201 — "It's the only reason I've ever actually needed."
+
+**"the only reason I've ever actually needed"**
+- BUILD: "it's the only reason I've ever actually needed" · "that's the only reason I've ever actually needed" · "the only reason I've ever actually needed — that's it" · "and it's the only reason I've ever actually needed"
+- USE: "It's the only reason I've ever actually needed." · "That's the only reason I've ever actually needed." · "Unfinished business — the only reason I've ever actually needed." · "I want to learn more — it's the only reason I've ever actually needed." · "The only reason I've ever actually needed? I wanted to."
+
+### MW203 — "That's on me. I've been waiting. It's an excuse with a number on it. So I stop waiting."
+
+**"that's on me"**
+- BUILD: "no, that's on me" · "that's on me, not you" · "well — that's on me" · "and that's on me"
+- USE: "That's on me. I've been waiting. It's an excuse with a number on it. So I stop waiting." · "That's on me." · "The waiting? That's on me." · "That's on me — not the seven." · "Nobody stopped me. That's on me."
+
+**"I've been waiting"**
+- BUILD: "and I've been waiting" · "I've been waiting a year" · "I've been waiting for the fifteen" · "so I've been waiting"
+- USE: "That's on me. I've been waiting. It's an excuse with a number on it. So I stop waiting." · "I've been waiting." · "I've been waiting a year — and the year was the price." · "I've been waiting — and the waiting was the excuse." · "When's day three? Well — I've been waiting."
+
+**"it's an excuse with a number on it"**
+- BUILD: "it's just an excuse with a number on it" · "no — it's an excuse with a number on it" · "fifteen? it's an excuse with a number on it" · "and it's an excuse with a number on it"
+- USE: "That's on me. I've been waiting. It's an excuse with a number on it. So I stop waiting." · "It's an excuse with a number on it." · "It isn't a reason. It's an excuse with a number on it." · "A hundred hours or nothing? That's an excuse with a number on it." · "I said I needed fifteen. It's an excuse with a number on it."
+
+**"so I stop waiting"**
+- BUILD: "and so I stop waiting" · "so I stop waiting, now" · "so I stop waiting and do the half day" · "right — so I stop waiting"
+- USE: "That's on me. I've been waiting. It's an excuse with a number on it. So I stop waiting." · "So I stop waiting." · "So I stop waiting, and I do it with the seven." · "That was the excuse. So I stop waiting." · "So I stop waiting — today."
+
+### MW204 — "Half a day. With the seven."
+
+**"half a day"**
+- BUILD: "half a day, with the seven" · "just half a day" · "half a day, then" · "so — half a day"
+- USE: "Half a day. With the seven." · "Half a day." · "Half a day now is better than a full day never." · "Then do half a day — that's allowed." · "Half a day, and I stop waiting."
+
+### MW205 — "Then that's day three. Nobody said days come in one size."
+
+**"nobody said"**
+- BUILD: "nobody said that" · "well, nobody said" · "nobody said you can't" · "and nobody said no"
+- USE: "Then that's day three. Nobody said days come in one size." · "Nobody said that." · "Nobody said you need the fifteen." · "Nobody said it works — we think." · "Nobody said no. So go on."
+
+**"days come in one size"**
+- BUILD: "nobody said days come in one size" · "days come in one size? no" · "so days come in one size, do they" · "as if days come in one size"
+- USE: "Then that's day three. Nobody said days come in one size." · "Days come in one size? Says who?" · "Nobody said days come in one size — take them as you want." · "Days come in one size, do they? No — half a day is a day." · "Half a day counts. Days come in one size? No."
+
+### MW207 — "Then un-say it. Half a day, and the atoms are still there."
+
+**"un-say it"**
+- BUILD: "Then un-say it." · "So un-say it." · "Well, un-say it." · "Just un-say it."
+- USE: "Then un-say it. Half a day, and the atoms are still there." · "You can't un-say it." · "Un-say it, then." · "I'd like to un-say it." · "So, un-say it."
+
+### MW208 — "Watch — I'll be the bank, you be you. Go on."
+
+**"watch"**
+- BUILD: "Watch — go on." · "Just watch." · "Well, watch." · "Now watch."
+- USE: "Watch — I'll be the bank, you be you. Go on." · "Watch." · "Just watch, now." · "Watch, and I'll show you." · "Okay, watch."
+
+**"I'll be the bank"**
+- BUILD: "Watch — I'll be the bank." · "So I'll be the bank." · "Well, I'll be the bank." · "I'll be the bank — go on."
+- USE: "Watch — I'll be the bank, you be you. Go on." · "I'll be the bank." · "So I'll be the bank, and you be you." · "I'll be the bank, now." · "I think I'll be the bank."
+
+**"you be you"**
+- BUILD: "I'll be the bank, you be you." · "And you be you." · "Just you be you." · "Watch — you be you."
+- USE: "Watch — I'll be the bank, you be you. Go on." · "You be you." · "You be you, and I'll be the bank." · "So you be you, now." · "Well, you be you."
+
+### MW210 — "We are where we are, and we start where we are. And we both still need to eat. That's us."
+
+**"we are where we are"**
+- BUILD: "So, we are where we are." · "Well, we are where we are." · "We are where we are, now." · "I think we are where we are."
+- USE: "We are where we are, and we start where we are. And we both still need to eat. That's us." · "We are where we are." · "So we are where we are." · "I know, but we are where we are." · "We are where we are, and that's fine."
+
+**"and we start where we are"**
+- BUILD: "We are where we are, and we start where we are." · "So we start where we are." · "Well, and we start where we are." · "I think we start where we are."
+- USE: "We are where we are, and we start where we are. And we both still need to eat. That's us." · "We are where we are, and we start where we are." · "So we start where we are." · "And we start where we are, and that's the whole idea." · "And we start where we are."
+
+**"we both still need to eat"**
+- BUILD: "And we both still need to eat." · "Well, we both still need to eat." · "We both still need to eat, and that's us." · "So we both still need to eat."
+- USE: "We are where we are, and we start where we are. And we both still need to eat. That's us." · "We both still need to eat." · "I know, but we both still need to eat." · "And we both still need to eat, still." · "So we both still need to eat."
+
+**"that's us"**
+- BUILD: "And we both still need to eat. That's us." · "So that's us." · "Well, that's us." · "That's us, then."
+- USE: "We are where we are, and we start where we are. And we both still need to eat. That's us." · "That's us." · "So that's us, isn't it." · "That's us, still." · "And that's us."
+
+### MW211 — "Walls round atoms."
+
+**"walls round atoms"**
+- BUILD: "So, walls round atoms." · "Well, walls round atoms." · "Just walls round atoms." · "I think — walls round atoms."
+- USE: "Walls round atoms." · "It's walls round atoms, isn't it." · "So it's walls round atoms." · "Walls round atoms, and that's all it is." · "It's just walls round atoms."
+
+### MW212 — "Here's what I actually want. Ten languages, in parallel, one day a year each. Three years, and I'm speaking all ten — badly, and happily. Minimum total effort. That's the only thing I care about."
+
+**"here's what I actually want"**
+- BUILD: "So here's what I actually want." · "Well, here's what I actually want." · "Here's what I actually want, then." · "I think — here's what I actually want."
+- USE: "Here's what I actually want. Ten languages, in parallel, one day a year each." · "Here's what I actually want." · "So here's what I actually want." · "I think — here's what I actually want." · "Here's what I actually want, then."
+
+**"in parallel"**
+- BUILD: "Ten languages, in parallel." · "So, in parallel." · "Well, in parallel." · "In parallel, then."
+- USE: "Ten languages, in parallel, one day a year each." · "In parallel." · "I want to do it in parallel." · "So, in parallel, one day a year each." · "Ten languages, in parallel."
+
+**"badly, and happily"**
+- BUILD: "I'm speaking all ten — badly, and happily." · "So, badly, and happily." · "Well, badly, and happily." · "Badly, and happily, then."
+- USE: "Three years, and I'm speaking all ten — badly, and happily." · "Badly, and happily." · "I'll do it badly, and happily." · "So, badly, and happily — and I don't mind." · "Badly, and happily, then."
+
+**"minimum total effort"**
+- BUILD: "Minimum total effort — here's what I actually want." · "So, minimum total effort." · "Well, minimum total effort." · "Minimum total effort, then."
+- USE: "Minimum total effort. That's the only thing I care about." · "Minimum total effort." · "I want minimum total effort." · "So, minimum total effort — that's all." · "Minimum total effort, then."
+
+**"that's the only thing I care about"**
+- BUILD: "Minimum total effort. That's the only thing I care about." · "So that's the only thing I care about." · "Well, that's the only thing I care about." · "That's the only thing I care about, then."
+- USE: "Minimum total effort. That's the only thing I care about." · "That's the only thing I care about." · "So that's the only thing I care about, isn't it." · "I think that's the only thing I care about." · "That's the only thing I care about, still."
+
+### MW213 — "One thing. The routes to four thousand words are all different. After four thousand, they're all the same."
+
+**"one thing"**
+- BUILD: "So, one thing." · "Well, one thing." · "Just one thing." · "I've got one thing."
+- USE: "One thing. The routes to four thousand words are all different." · "One thing." · "I've got one thing." · "So, one thing, before we stop." · "Just one thing."
+
+**"the routes to four thousand words"**
+- BUILD: "So, the routes to four thousand words." · "Well, the routes to four thousand words." · "The routes to four thousand words, then." · "I think the routes to four thousand words matter."
+- USE: "One thing. The routes to four thousand words are all different." · "The routes to four thousand words are all different." · "I think the routes to four thousand words matter." · "So, the routes to four thousand words — that's the thing." · "The routes to four thousand words, then."
+
+**"are all different"**
+- BUILD: "The routes to four thousand words are all different." · "So, they are all different." · "Well, they are all different." · "I think they are all different."
+- USE: "The routes to four thousand words are all different." · "They are all different." · "I think they are all different." · "So, they are all different, aren't they." · "And they are all different."
+
+**"after four thousand, they're all the same"**
+- BUILD: "So, after four thousand, they're all the same." · "Well, after four thousand, they're all the same." · "After four thousand, they're all the same, then." · "I think after four thousand, they're all the same."
+- USE: "The routes to four thousand words are all different. After four thousand, they're all the same." · "After four thousand, they're all the same." · "I think after four thousand, they're all the same." · "So, after four thousand, they're all the same — that's the whole thing." · "After four thousand, they're all the same, then."
+
+### MW214 — "Right. That's the hour. Let's stop there."
+
+**"that's the hour"**
+- BUILD: "Right. That's the hour." · "So, that's the hour." · "Well, that's the hour." · "That's the hour, then."
+- USE: "Right. That's the hour. Let's stop there." · "That's the hour." · "So that's the hour, isn't it." · "That's the hour, now." · "That's the hour, then."
+
+**"let's stop there"**
+- BUILD: "That's the hour. Let's stop there." · "So, let's stop there." · "Well, let's stop there." · "Let's stop there, then."
+- USE: "Right. That's the hour. Let's stop there." · "Let's stop there." · "So let's stop there, now." · "I think let's stop there." · "Let's stop there, then."
+
+### MW215 — "We're not stopping."
+
+**"we're not stopping"**
+- BUILD: "So, we're not stopping." · "Well, we're not stopping." · "No, we're not stopping." · "I said we're not stopping."
+- USE: "We're not stopping." · "No, we're not stopping." · "I said we're not stopping." · "We're not stopping, still." · "So, we're not stopping."
+
+### MW217 — "I said the hour. Stop the recording, start another one. Part two. Now."
+
+**"stop the recording"**
+- BUILD: "I said the hour — stop the recording." · "So, stop the recording." · "Well, stop the recording." · "Stop the recording, then."
+- USE: "Stop the recording, start another one." · "Stop the recording." · "I said stop the recording." · "So, stop the recording, now." · "Stop the recording, then."
+
+**"start another one"**
+- BUILD: "Stop the recording, start another one." · "So, start another one." · "Well, start another one." · "Start another one, then."
+- USE: "Stop the recording, start another one. Part two. Now." · "Start another one." · "So start another one, now." · "I think — start another one." · "Start another one, then."
+
+### MW223 — "You don't know if you'll get there."
+
+**"you'll get there"**
+- BUILD: "You don't know if you'll get there." · "So, you'll get there." · "Well, you'll get there." · "I think you'll get there."
+- USE: "You don't know if you'll get there." · "You'll get there." · "I think you'll get there." · "You'll get there, still." · "So, you'll get there."
+
+### MW224 — "I'd like a mortgage."
+
+**"a mortgage"**
+- BUILD: "I'd like a mortgage." · "So, a mortgage." · "Well, a mortgage." · "Just a mortgage."
+- USE: "I'd like a mortgage." · "A mortgage." · "I think I'd like a mortgage." · "I'd like a mortgage, now." · "Just a mortgage."
+
+### MW225 — "So it's like atoms, isn't it. Same as the Manx."
+
+**"same as"**
+- BUILD: "Same as the Manx." · "So, same as." · "Well, same as." · "Same as, then."
+- USE: "So it's like atoms, isn't it. Same as the Manx." · "Same as the Manx." · "It's the same as the Manx." · "I think it's the same as." · "Same as, then."
+
+### MW226 — "Your atoms. I just gave them somewhere to go."
+
+**"I just gave them somewhere to go"**
+- BUILD: "Your atoms — I just gave them somewhere to go." · "So, I just gave them somewhere to go." · "Well, I just gave them somewhere to go." · "I just gave them somewhere to go, then."
+- USE: "Your atoms. I just gave them somewhere to go." · "I just gave them somewhere to go." · "I think I just gave them somewhere to go." · "I just gave them somewhere to go, still." · "Your atoms. I just gave them somewhere to go."
+
+
+---
+
+## 6. The coverage ledger — all 585 rows of both arms accounted
+
+**Reconciliation: 275 seeded-or-split + 135 cross-arm consolidations + 20 deferred + 155
+receptive = 585.** Verified mechanically against this document (§7); the chapters arm
+contributes 218 seeded rows of its 309, the 43-scene arm 57 seeded rows of its 276 plus the
+135 verbatim-share consolidations.
+
+**Seeded rows (275).** Every row named in a §4 Source line. Rows carrying more than one act
+were split, each act named at its seed, the CORE g24 precedent: c209 (MW157 + MW158 +
+MW159), c284 (MW210's echo + MW102 + MW211), c272 (MW093 + the atoms zero collected under
+MW196), c252 (MW196 + MW197), c253 (MW198 + MW199), c236 (MW182 + MW183 + MW184), c9
+(MW049 + receptive metaphor tail), c47 (MW032 + receptive head), c103 (MW042's act +
+MW097). Two rows form one seed where the reply is the act's other half: c227+c228 (MW176),
+c260+c261 (MW204).
+
+**Cross-arm consolidations (135).** Every 43-scene row whose English text is verbatim-shared
+with a seeded chapters row consolidates to that row's seed — the "one body, two cuts,
+counted once" rule. The list is mechanical (exact string match over normalised text) and
+regenerable by the §7 script; no judgement calls hide in it.
+
+**Deferred (20).** Rows that ARE floor or core property standing alone, no seed minted:
+"Of course." (c53, s12 → CP012) · "And then?" (c156, s33 → CP125 verbatim) · bare "No."
+(c133, c169, c171, c255, c291, s136, s142, s144, s221, s266 → CP036 — the bare-no ACT is
+the pod's drama; the mapping is the floor's) · bare "Yes." (c232, s118 → CP009) · "Now."
+(c309, s276 → core) · "I don't know." (c84, s24 → Appendix A course-core, the same call
+CORE made for "I think").
+
+**Receptive context (155).** Chapters arm (78): c1 c2 c3 c4 c6 c7 c14 c16 c17 c18 c19 c24
+c25 c26 c27 c30 c31 c34 c35 c36 c38 c41 c62 c75 c76 c77 c78 c80 c83 c92 c93 c94 c96 c101
+c105 c110 c112 c113 c114 c119 c120 c123 c124 c129 c132 c135 c144 c146 c147 c148 c149 c150
+c151 c175 c179 c180 c182 c192 c196 c198 c201 c205 c225 c233 c243 c245 c248 c265 c268 c269
+c270 c271 c273 c280 c282 c285 c289 c305. 43-scene arm (77): s7 s8 s17 s41 s43 s44 s45 s46
+s48 s49 s53 s60 s62 s65 s68 s77 s82 s83 s86 s87 s88 s96 s111 s112 s116 s119 s122 s124 s127
+s135 s138 s148 s151 s154 s155 s157 s161 s162 s165 s170 s171 s172 s174 s175 s180 s181 s182
+s183 s184 s185 s186 s187 s188 s189 s190 s194 s195 s196 s197 s199 s200 s201 s203 s207 s225
+s228 s231 s232 s234 s243 s244 s245 s246 s248 s249 s256 s264.
+
+The receptive bucket has four honest sub-classes, named so nobody re-litigates them row by
+row: **(a) explainer exposition** — the long holds (the map of Rome c82-tail via c75–c80,
+the transcript ladder c129, the cliff c123, the group stories c175/c179, the press-play
+policy c135, the banking and IP runs c265–c282, the tribe c299-body, the four-thousand
+exposition c305) — heard, owned, waiting for the explainer role's own pass; **(b)
+speaker-specific biography and staging** — the show-open c1–c4, the hands and the recording
+c16–c19/c26–c27, the pysgod hook-work c34–c38 (Welsh-specific wordplay, unmappable as
+canonical material), Aran's Manx film c239-body, the drama-game story c110–c114; **(c)
+receptive echoes** — rows made entirely of already-owned chunks that add no act beyond a
+seed already carrying it (c273, c285, c248, s111, s116, s180, s207, c225's provenance
+recap); **(d) designed-refusal content** — c7/s249's "Do some cool shit." (register call,
+§7) and c62/s96's forty-word overload demo, which exists to BE too much and must never be
+a production target. The near-misses were weighed and the call is stated: c31's
+church-challenge stays receptive because MW011/MW021 carry the audit act in reusable form;
+c114/s190's one-word echo "Permission." stays receptive because the echo-distillation move
+is taught at MW055/MW128 on reusable material; c150/s186's "Before anything." stays
+receptive because MW167's "before anything else" is the worn discussant face.
+
+---
+
+## 7. Decisions taken, and the mechanical verification
+
+Decisions, one line each, each overrulable in one word:
+
+1. **The projection is over acts, not speakers** (§1) — both mouths mint where the act is
+   discussant business; long expository holds stay receptive whichever mouth holds them.
+2. **Discussant now, explainer later** — this set is the walk's production floor; the
+   explainer role (a strict superset, like nurse over general) is a future pass over the
+   same corpus, and §6(a) is its ready-made worklist.
+3. **Arm-invariance** — no ruling has chosen between the 43-scene and chapter cuts, so
+   seeds cite both arms and the set survives either being sacked; the union coverage doc's
+   outcome-porting warning stands unchanged.
+4. **Talk Bollocks itself is not extractable** — never delivered as known/target pairs;
+   provenance only. Everything here cuts from `canonical_pod_scenarios` rows.
+5. **The echo-question is one frame, taught once** (MW003) — later echo zeros cite it
+   rather than re-minting intonation per surface.
+6. **"Very well" never mints** (MW062) — its concessive sense would collide on the known
+   side with CP010's wellness sense; one English surface, one intention, per ZUT.
+7. **"Do some cool shit" stays receptive** — register call: the canonical layer does not
+   put profanity in a learner's production path; the pod may keep it as heard colour.
+8. **Un-say it mints as an intention** (MW207) — the overlay renders the retraction move,
+   never the English morphology; flagged in §8 for the mapping job.
+9. **Compressions are stated in place** — where a canonical seed is shorter than its row,
+   the dropped material is named receptive in the entry; nothing is silently reworded.
+10. **Two-row seeds** (MW176, MW204) — where an exchange's reply is the act's other half,
+    one seed carries both rows, stated in the entry and the ledger.
+11. **The nobody-family is minted member by member** ("nobody's got it/done it/said/lives
+    there/knows what"), never as a bare "nobody" atom — each is a whole move; the family
+    pays off at MW206's zero.
+12. **Block L stands as authored** (nine late fills) rather than forcing a renumber — the
+    audit trail is worth more than cosmetic order, CORE's own block-N call.
+13. **Time-unit compositions are course-core** (Appendix A) — cardinal + bare unit ("ten
+    hours", "three years") composes freely; seasons, "times", and "half a day" are NOT in
+    that class and mint where the corpus delivers them (MW182, MW175, MW204).
+14. **Intact-reuse licenses contiguous sub-spans** — a contiguous slice of a seed's own
+    sentence composes nothing novel, so baskets may reuse it even where it touches a
+    same-seed chunk minted later in the cut (MW089, MW176 do). Non-contiguous or reordered
+    reach stays forbidden. Flagged for Tom in §8 as a reading of the intact-sentence
+    ruling, not an extension of it.
+15. **No JSON companion authored** — same call as health and CORE: this document is the
+    canonical artefact; the structured form falls out at registration.
+
+Mechanical verification, run against this document (the discipline both parents closed
+with): **226 seeds, MW001–MW226, contiguous, no duplicates; 318 new LEGOs; zero forward
+references in any cut line** (every `(MWnnn)` citation resolves to an earlier seed);
+**40 strict-zero seeds** (against CORE's 9 and spa_for_eng's 7 in 668 — this corpus's echo
+structure is a zero-manufacturing machine, and the admission economy collected it);
+**275 + 135 + 20 + 155 = 585** rows reconciled exactly, both arms, by script. Baskets:
+**318/318 LEGOs at or above the 4/5 floors, 1,272 BUILD + 1,590 USE**, floor-checked and
+forward-reference-scanned per LEGO by `verify-baskets.py` against the cut inventory. The
+row reconciliation caught nine rows dispositioned in prose but never seeded — block L is
+the honest record of that catch; the basket verifier's own first-seed blind spot was caught
+at assembly and the fixed check re-run clean over the whole set.
+
+---
+
+## 8. Explicit gaps — for Tom, none blocking
+
+- **The explainer role is unminted.** The method's full arguments (the map of Rome, the
+  transcript ladder, press-play-and-notice, the group-dynamic story, the four-thousand
+  exposition) stay receptive. If the Bologna trial wants learners EXPLAINING the method at
+  length, that is a second pass over §6(a)'s named rows — general-then-nurse, as ruled for
+  health.
+- **"The cliff" never reaches a discussant mouth** in producible form (c225's recap names
+  it inside owned material; the cliff exposition c123 is explainer register). If the totem
+  noun should be producible, one line of future walk authoring makes it a one-LEGO
+  near-zero, block-L style.
+- **Three English-structural devices are logged, not minted**: the tag-echo agreement
+  ("There is, isn't there." c233/s119; "They really do." c27/s200), the bare co-completion
+  ("—the web." c19), and the one-word content echo ("Permission." c114). All are summit
+  moves; all are English-syntax-shaped in ways that make canonical-layer minting a trap
+  for the pair overlay (tag systems differ per target). The overlay should decide per pair
+  whether the ACT rides an owned frame or needs an in-pair mint. Pattern-delta for the
+  next walks, where dialogue corpora will pose the same question.
+- **"Un-say it" (MW207)** — the coinage is minted as a retraction-intention; the mapping
+  job must render the intention, not invent target-side morphology. One line for the
+  Italian overlay's brief.
+- **The union-ZUT registration is downstream** — this document's cuts and ownership
+  statements are the gate's inputs; no registration was performed (no DB writes in this
+  job). Building the Method walk's registration, and scheduling it behind the floor's, is
+  open.
+- **The arm choice is still open** (43-scene vs chapters). This set is arm-invariant by
+  construction, but the union coverage doc's warning stands: whichever cut is sacked, its
+  outcome declarations (O6/O7/O9 vs O2) must be ported to the survivor — not this job's to
+  close, restated so it is not lost.
+- **The sub-span reading (§7.14)** — Tom's ruling says a pod sentence "intact" is a
+  legitimate basket phrase; this set reads contiguous sub-spans of the seed's own sentence
+  as covered (they are what the learner heard, in order, composing nothing novel). One
+  word overrules it and the affected phrases get rewritten.
+- **Basket depth is reported in §5** as assembled; wherever it stops short of MW226, the
+  stopping point and reason are stated there rather than papered over.
+
+---
+
+## Appendix A — the assumed course-core inventory (the overlay's per-seed contract)
+
+The union of every *(core)* citation in §4, extending CORE's Appendix A; a pair overlay
+schedules each seed at the earliest base-course position where its own assumed strings are
+owned, and authors anything missing in-pair as `is_new = true`. Normative, not descriptive.
+
+**Everything in CORE's Appendix A** (frame openers "I'd like" · "I want" · "I think" ·
+"I hope" · "can you" · "could you" · "can we" · "I need to"; its glue list; numbers,
+colours, days, months, clock times; names and places as slot content) — restated by
+reference, not copied.
+
+**Method-walk additions, frame openers:** "I don't know" *(the same class as "I think" —
+every base course cuts it early on its own account; c84/s24 defer to it)* · "I like" ·
+"I say / and I say" *(the quotative frame, CP144's "I said" in the present)*.
+
+**Method-walk additions, glue:** "still" · "about" · "like" *(comparison)* · "actually" ·
+"anyway" · "after that" · "each" · "every" · "if" · "first" · "mm" · "oh" · pronoun +
+dummy-do/copula echoes *("I did", "they do", "it is")* · "is you" *(copular tail in
+MW059/MW219)*.
+
+**Time-core extension:** cardinal + bare time unit composes freely — "ten hours",
+"thirteen weeks", "two hours a week", "three years", "an hour ago", "day one / day two /
+day three", "at two". NOT in this class (minted where the corpus delivers them): seasons
+("last summer", MW182), multiplicative "times" (MW175), "half a day" (MW204),
+"a year apart" (MW185), "for a weekend" (MW152).
+
+**Ordinals:** enter as sides of MW059's "the third one" once past it ("the first two",
+MW172; "that second day", MW183); no bare-ordinal core assumption before MW059.
+
+**Slot content:** personal names (Sarah, Anna, James), places (Hong Kong, Cardiff, Rome),
+language names (Manx, Mandarin, Chinese, Welsh, Breton) — slots, never vocabulary. The
+walk's totem objects ("the fish", "the dog", "the garden", "the crocodile", "the room")
+are NOT slots: each is minted content, because each is load-bearing callback material.
