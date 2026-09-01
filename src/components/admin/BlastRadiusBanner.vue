@@ -28,7 +28,10 @@ const radius = computed(() => BLAST_RADIUS[props.tier] || BLAST_RADIUS.none)
   >
     <span class="blast-label">{{ radius.label }}</span>
     <span class="blast-text">
-      {{ radius.detail }}<template v-if="note"> {{ note }}</template>
+      {{ radius.detail }}
+      <!-- Its own element, not an inline template: Vue trims the whitespace
+           inside a <template> tag and the two sentences ran together. -->
+      <span v-if="note" class="blast-note">{{ note }}</span>
     </span>
   </div>
 </template>
@@ -56,4 +59,5 @@ const radius = computed(() => BLAST_RADIUS[props.tier] || BLAST_RADIUS.none)
   white-space: nowrap;
 }
 .blast-text { color: var(--ink, inherit); opacity: 0.9; }
+.blast-note::before { content: ' '; }
 </style>
