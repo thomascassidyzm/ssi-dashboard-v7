@@ -49,6 +49,9 @@ const storeLine = computed(() => {
       <!-- A worker never signs off target-language text. Wherever the Welsh
            health overlay appears, it appears labelled. -->
       <span v-if="w.draftOverlay" class="chip st-draft">WELSH OVERLAY — DRAFT FOR ARAN</span>
+      <!-- Same rule the ingest tool uses, so the two cannot disagree about
+           what it will pick up. -->
+      <span v-if="w.ingestable && !w.inStore" class="chip st-ingestable">INGESTABLE — NOT YET IN THE STORE</span>
     </div>
 
     <p v-if="w.selector" class="mt-1 text-xs text-muted">
@@ -104,6 +107,7 @@ const storeLine = computed(() => {
 .st-mapping-only { color: #f59e0b; }
 .st-parked { color: #94a3b8; }
 .st-draft { color: #f59e0b; }
+.st-ingestable { color: #38bdf8; }
 .st-unregistered { color: #ef4444; }
 .prov { font-size: 0.6875rem; }
 .prov code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }

@@ -25,18 +25,30 @@ export const STEP_KINDS = {
 }
 
 /**
- * Build a walk from `canonical_pod_scenarios` rows (the POD-1 / pod-0 shape).
+ * Build a walk from `canonical_pod_scenarios` rows (the core-slate shape).
  * `refSpace` names the reference space the graph's attestations are written in;
  * only rows in that space can map, and rows outside it are honestly UNMAPPED.
  */
 /**
- * The graph's `g<n>` references are `pod-0`'s `global_order` and nobody else's.
- * `pod-1` and `pod-0.5` are separate slates whose row numbers collide with them
- * by accident, so mapping them through this graph would invent coverage out of
- * an off-by-one. Any slug but `pod-0` walks in its own reference space and every
- * line comes back UNMAPPED, which is the true answer.
+ * The graph's `g<n>` references are the CORE slate's `global_order` and nobody
+ * else's. Every other slate walks in its own reference space, and every line
+ * comes back UNMAPPED — which is the true answer, because their row numbers
+ * collide with the core slate's by accident and mapping them through this graph
+ * would invent coverage out of an off-by-one.
+ *
+ * THE CORE SLATE IS CALLED `pod-1` SINCE 2026-09-01. It was `pod-0` until the
+ * slug migration renamed it and deleted the two sacked slates that used to be
+ * called `pod-1` and `pod-0.5`. This constant is a DATABASE SLUG and had to move
+ * with it: left at 'pod-0' it made the Script Lab report the core pod as 0/36
+ * shapes traversed, 231 lines unmapped — a lie about the one walk the whole
+ * graph is derived from.
+ *
+ * Two nearby strings are NOT this and must not be renamed with it: the bundled
+ * walk file `services/shared/metagraph/walks/pod-0.json`, and the `origin:
+ * 'pod-0'` provenance labels in fromStore.js. Those record where the material
+ * came from historically. Provenance does not get rewritten by a rename.
  */
-export const GRAPH_REF_SLUG = 'pod-0'
+export const GRAPH_REF_SLUG = 'pod-1'
 
 export function walkFromCanonicalRows (rows, graph, opts = {}) {
   const refSpace = opts.refSpace || (opts.slug && opts.slug !== GRAPH_REF_SLUG ? opts.slug : 'g')

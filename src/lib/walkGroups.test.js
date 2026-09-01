@@ -116,3 +116,20 @@ describe('decorateWalk', () => {
     expect(w.to).toBeNull()
   })
 })
+
+describe('ingestability — the same rule the ingest tool uses', () => {
+  it('is authored + corpus + format, and nothing else', () => {
+    const groups = buildGroups(CORPORA, { dbPods: DB_AFTER })
+    // Authored with a corpus file and a format: the tool will take these.
+    for (const slug of ['health', 'retail', 'trades', 'hospitality']) {
+      expect(find(groups, slug).ingestable).toBe(true)
+    }
+    // A mapping is not a walk — skipped with a reason, never an error.
+    expect(find(groups, 'care-work').ingestable).toBe(false)
+    expect(find(groups, 'public-services').ingestable).toBe(false)
+    // Parked is deliberately not ingested.
+    expect(find(groups, 'music').ingestable).toBe(false)
+    // The core slate has no markdown corpus — the DB is canon for it.
+    expect(find(groups, 'pod-1').ingestable).toBe(false)
+  })
+})

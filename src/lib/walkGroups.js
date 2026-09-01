@@ -69,12 +69,23 @@ const UNREGISTERED_NOTE =
   'In the canonical store but not in the walk registry. Either it is a slate awaiting deletion, '
   + 'or the registry has fallen behind the database. Find out which before editing it.'
 
+/**
+ * Whether the ingest tool will pick this walk up — VERBATIM the rule
+ * tools/pods/ingest-canonical-pods.cjs uses, so the lab and the tool cannot
+ * disagree about what is ingestable. Anything else is skipped with a reason,
+ * never errored: a mapping-only entry is not a broken walk, it is not a walk.
+ */
+export function isIngestable (entry) {
+  return entry.status === 'authored' && !!entry.corpus && !!entry.format
+}
+
 /** One registry entry, joined to the database and the async read-outs. */
 export function decorateWalk (entry, { dbPods = [], targets = {}, coverage = {}, registered = true } = {}) {
   const db = dbPods.find(p => p.slug === entry.slug) || null
   return {
     ...entry,
     registered,
+    ingestable: isIngestable(entry),
     inStore: !!db,
     lines: db?.lines ?? null,
     scenes: db?.scenes ?? null,
