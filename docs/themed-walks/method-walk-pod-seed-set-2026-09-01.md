@@ -160,28 +160,28 @@ turn by turn:
 | Turn | Resolution |
 |---|---|
 | the act-frame (propose a time / decline / counter / ratify) | **defers** — scene 0's decline shape and CP152–CP155 already teach it; nothing re-taught |
-| "Are you free on Tuesday?" | mints **MW135** — the availability question itself is not floor property (CP152 asks "can we talk tomorrow", a different move) |
-| "Tuesday, no. I have something on Tuesday." | mints **MW136** — the floor's decline is "I'm busy tomorrow" (CP153); "I have something on <day>" is a second worn decline, minted beside it, decision-12 |
-| "Thursday, then?" | **zero** (MW137) — day + owned glue |
-| "Thursday I'm not here." | mints **MW138** ("I'm not here" — CP154's "I'm away all afternoon" is its floor sibling) |
-| "…Tomorrow." / "Tomorrow?" | **zeros** (MW139–MW140) |
-| "Tomorrow. I'll be there at two." | mints **MW141** ("I'll be there") |
-| "Tomorrow. At two. …Okay. I'll be here. Noted." | mints **MW142** ("I'll be here", "noted") |
+| "Are you free on Tuesday?" | mints **MW159** — the availability question itself is not floor property (CP152 asks "can we talk tomorrow", a different move) |
+| "Tuesday, no. I have something on Tuesday." | mints **MW160** — the floor's decline is "I'm busy tomorrow" (CP153); "I have something on <day>" is a second worn decline, minted beside it, decision-12 |
+| "Thursday, then?" | **zero** (MW161) — day + owned glue |
+| "Thursday I'm not here." | mints **MW162** ("I'm not here" — CP154's "I'm away all afternoon" is its floor sibling) |
+| "…Tomorrow." / "Tomorrow?" | **zeros** (MW163–MW164) |
+| "Tomorrow. I'll be there at two." | mints **MW165** ("I'll be there") |
+| "Tomorrow. At two. …Okay. I'll be here. Noted." | mints **MW166** ("I'll be here", "noted") |
 
 **The bare tokens the floor already owns**, deferring wherever they stand alone: "Of course."
 (c53), "And then?" (c156 = CP125 verbatim), bare "No." (c133, c169, c171, c255, c291), bare
 "Yes." (c232), "Go on." repeats after its mint (c191, c279), "Tell me." repeat (c178),
-"I promise" inside MW073 (CP171), "either way" inside MW097 (CP191), "and then" inside the
-hundred-hours ladder (CP065), "to start" inside MW090 (CP085), "not in a school" side inside
-MW080 (CP032), "how interesting" side at c304 (CP034), "right then" side at MW078 (CP046),
-"it sounds as though" sibling at MW109 (CP173), "do you think" inside "what do you think"
-(CP129), "here's" inside "here's the model" (CP104), "I know that" side at MW095 (CP185),
-"we're going to agree about this" flip at MW119 (CP190), "I'm sorry" side at MW125 (CP038),
-"I need to learn more words" family sides in block E (CP183).
+"I promise" inside MW097 (CP171), "either way" inside MW121 (CP191), "and then" throughout the
+hundred-hours ladder (CP065), "to start" inside MW114 (CP085), "not in a school" side inside
+MW104 (CP032), "how interesting" side at c304 (CP034), "right then" side at MW102 (CP046),
+"it sounds as though" sibling at MW132 (CP173), "do you think" inside "what do you think"
+(CP129), "here's" inside "here's the model" (CP104), "I know that" side at MW119 (CP185),
+"we're going to agree about this" flip at MW143 (CP190), "I'm sorry" side at MW149 (CP038),
+"I need to learn more words" family sides in block K (CP183).
 
-**The walk's own inheritance split, measured over the 41 floor-adjacent turns above and in
-§6: 17 defer or consolidate to floor/scene-0 property; 24 mint a delta the floor does not
-own.** Everything else in the corpus — the anecdote contract, the standing clash, the debt
+**The walk's own inheritance split, measured over the 27 floor-adjacent turns resolved
+above: 11 defer outright to floor property (no seed); 16 seed here — six of the sixteen at
+strict zero admission.** Everything else in the corpus — the anecdote contract, the standing clash, the debt
 and recovery, the callback economy, the testimony — has no floor counterpart at all: that is
 the walk's ADD, and it is why this walk was worth pod-seeds first.
 
@@ -1864,10 +1864,8 @@ form carries it.
 - Cut: `that's allowed` **(new — permission as verdict)** · `unfinished business`
   *(MW199)* · `is a good reason` **(new)** · `better than most` **(new)**
 - Job: three LEGOs — the benediction: doubt ratified, motive graded, comparison closed.
-  (c254 "You don't know if you'll get there." — the read-back — mints `you'll get there`
-  with everything else owned; folded here as this exchange's near-zero sibling and listed
-  in the ledger under MW200's family: cut `you don't know` (MW026) · `if` (core) ·
-  `you'll get there` **(new)**.)
+  (c254 "You don't know if you'll get there." — the read-back — is seeded at MW223,
+  block L.)
 
 **MW201 — the only reason (near-ZERO)**
 - Source c257, ch10 (ARAN): "It's the only reason I've ever actually needed."
@@ -1941,9 +1939,7 @@ form carries it.
   role-claim frame with its slot)** · `you be you` **(new — small, worn)** · `go on`
   *(MW008)*
 - Job: three LEGOs — the let's-pretend frame, the corpus teaching by acting it out.
-  (c267, Tom's "I'd like a mortgage.", is `I'd like` (core) plus `a mortgage` (content
-  slot) — a near-zero logged in the ledger as MW208's dependent row, minting the slot
-  noun the scene turns on.)
+  (c267, Tom's "I'd like a mortgage.", is seeded at MW224, block L.)
 
 **MW209 — of course they do (ZERO)**
 - Source c281, ch11 (TOM): "Of course they do."
@@ -1971,11 +1967,8 @@ form carries it.
   exposition that built it (c278–c280) stays receptive)**
 - Job: one LEGO — the topic resumed by its handle after the digression — MW102's
   where-was-I paying off. (c272's atoms half and c273's "We're not losing atoms of
-  water." are strict zeros over MW196 and are logged as the callback's collected rows;
-  c274's "Same as the Manx. It's in a place you haven't been." rides sides of MW197 with
-  one small mint, `same as`, carried in this seed's family; c278's "Your atoms. I just
-  gave them somewhere to go." mints `I just gave them somewhere to go` likewise as a
-  family row.)*
+  water." are strict zeros over MW196, logged in §6 as the callback's collected rows;
+  c274 is seeded at MW225 and c278 at MW226, block L.)*
 
 **MW212 — what I actually want**
 - Source c286, ch12 (TOM): "Here's what I actually want. Ten languages, in parallel, one
@@ -2033,3 +2026,73 @@ form carries it.
   two` *(core)* · `now` *(core)*
 - Job: two LEGOs — the rule owned, then broken on one's own authority: the corpus's last
   word on who makes the rules. (c309, Aran's "Now.", is the echo — consolidated.)
+
+### Block L — nine late fills (found by the coverage reconciliation)
+
+The mechanical row-reconciliation (§7) caught rows this spine had dispositioned in prose but
+never seeded — including five free zeros and four one-LEGO seeds whose mints were stated
+inside other entries' notes. The CORE set's block-N precedent: record the catch, do not
+renumber. Where an earlier entry (MW200, MW208, MW211) described these mints inline, the
+seed below is the authoritative admission and the note is provenance.
+
+**MW218 — three words, you said two (ZERO)**
+- Source c73, ch3 (TOM): "Three words. You said two."
+- Seed: **"Three words. You said two."**
+- Cut: `three words` *(side of MW057)* · `you said` *(MW058's side)* · `two` *(core)*
+- Job: **zero admission.** The tease-audit closing chapter 3's arithmetic.
+
+**MW219 — still you (ZERO)**
+- Source c74, ch3 (TOM): "The third one is still you."
+- Seed: **"The third one is still you."**
+- Cut: `the third one` *(MW059)* · `is you` *(core glue)* · `still` *(core)*
+- Job: **zero admission.** The callback of MW059, one "still" warmer.
+
+**MW220 — three, not two (ZERO)**
+- Source c249, ch10 (ARAN): "Three. Not two — three years."
+- Seed: **"Three. Not two — three years."**
+- Cut: `three` / `not two` / `three years` *(core numbers + negation glue)*
+- Job: **zero admission.** The other-correction move — MW057 taught self-correction
+  ("No — two"); this is its outward face, free.
+
+**MW221 — how much? ten hours? (ZERO)**
+- Source c154, ch7 (TOM) = s31: "How much? Ten hours?"
+- Seed: **"How much? Ten hours?"**
+- Cut: `how much` *(side of CP090)* · `ten hours` *(core)* · question intonation *(MW003)*
+- Job: **zero admission.** The ladder's opening rung, restored to its place before MW110.
+
+**MW222 — and so? (ZERO)**
+- Source c79, ch4 (TOM) = s47: "And so?"
+- Seed: **"And so?"**
+- Cut: `and so` *(core glue)* · question intonation *(MW003)*
+- Job: **zero admission.** Glue promoted to a whole turn, MW018's precedent — the
+  so-what probe.
+
+**MW223 — you'll get there (near-ZERO)**
+- Source c254, ch10 (TOM) = s220: "You don't know if you'll get there."
+- Seed: **"You don't know if you'll get there."**
+- Cut: `you don't know` *(MW026)* · `if` *(core)* · `you'll get there` **(new)**
+- Job: one LEGO — the doubt read back gently; MW200's entry described this mint and this
+  seed is its admission.
+
+**MW224 — a mortgage (near-ZERO)**
+- Source c267, ch11 (TOM) = s85: "I'd like a mortgage."
+- Seed: **"I'd like a mortgage."**
+- Cut: `I'd like` *(core)* · `a mortgage` **(new — content: the role-play's prop)**
+- Job: one LEGO — the learner's line in MW208's game, said inside the pretend bank.
+
+**MW225 — same as the Manx (near-ZERO)**
+- Source c274 (front), ch11 (ARAN) = s208 (front): "We're not losing atoms of water. So
+  it's like atoms, isn't it. …Same as the Manx. It's in a place you haven't been."
+- Seed: **"So it's like atoms, isn't it. Same as the Manx."** *(edit: the currency
+  exposition stays receptive; the analogy move is the material)*
+- Cut: `so` / `it's like` / `isn't it` *(core glue + comparison)* · `same as` **(new)** ·
+  `the Manx → Manx` *(slot)*
+- Job: one LEGO — the explicit analogy-drawing move, the callback economy's working verb.
+
+**MW226 — somewhere to go (near-ZERO)**
+- Source c278 (front), ch11 (ARAN) = s212: "Your atoms. I just gave them somewhere to go."
+- Seed: **"Your atoms. I just gave them somewhere to go."**
+- Cut: `your atoms` *(side of MW196)* · `I just gave them somewhere to go` **(new — worn
+  whole)**
+- Job: one LEGO — the borrowed idea returned with interest; the walk's definition of
+  collaboration in nine words.
