@@ -17,10 +17,10 @@
     "sector_free": true,
     "culture_free": true,
     "note": "CORE recoveries in CORE's own worlds: a seat on the bus into town, a café counter, a street arrangement between friends, a first conversation. Every one of these exists in every pair a course ships to; nothing here is Wales, nothing is a sector. English is the canonical known text and is pair-invariant; where the canon writes a [target language] bracket, this file renders it deictically ('your language'), per the scene 0 convention, so the pair overlay may substitute names on the target side.",
-    "casts": "Inherited, none invented: Sarah and the Passenger (pod-0 W3), Sarah and the Barista (pod-0 W1), Sarah and the Friend (pod-0 W4), the Learner and the Friend (pod-0 W16)."
+    "casts": "Inherited, none invented: Sarah and the Passenger (pod-1 W3), Sarah and the Barista (pod-1 W1), Sarah and the Friend (pod-1 W4), the Learner and the Friend (pod-1 W16)."
   },
   "attachment": {
-    "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-0.json is not modified and nothing is reordered. Each walk here names the pod-0 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
+    "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-0.json is not modified and nothing is reordered. Each walk here names the pod-1 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
   },
   "accounting": {
     "authored_walks": 5,
@@ -28,13 +28,13 @@
     "restaged_turns": 8,
     "authored_turns": 20,
     "corpus_rows": 0,
-    "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-0 rows and are counted only in walks/pod-0.json.",
+    "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-1 rows and are counted only in walks/pod-0.json.",
     "walks": {
-      "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-0 W3 step 4",
-      "W1302": "M1 (A1002) — 'I don't know', held with status, the third arm on the canon's one stored branch, scene 3, attached at pod-0 W1 step 4",
-      "W1303": "M5 (A1006) — the haggle over WHEN, settled by formula, scene 4, attached at pod-0 W4 step 3",
-      "W1304": "M2 (A1003) — the premise audited, received as a gift, scene 22, attached at pod-0 W16 step 1",
-      "W1305": "M4 (A1005) — the disagreement parked, warm and unresolved, scene 22, attached at pod-0 W16 step 8"
+      "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-1 W3 step 4",
+      "W1302": "M1 (A1002) — 'I don't know', held with status, the third arm on the canon's one stored branch, scene 3, attached at pod-1 W1 step 4",
+      "W1303": "M5 (A1006) — the haggle over WHEN, settled by formula, scene 4, attached at pod-1 W4 step 3",
+      "W1304": "M2 (A1003) — the premise audited, received as a gift, scene 22, attached at pod-1 W16 step 1",
+      "W1305": "M4 (A1005) — the disagreement parked, warm and unresolved, scene 22, attached at pod-1 W16 step 8"
     }
   },
   "coverage_of_the_graph": {
@@ -52,7 +52,7 @@
       "composition_edges_used": [],
       "survivability_edges_touched": ["S2"],
       "attaches_to": { "walk": "W3", "step": 4, "node": "N3", "position": 2, "attachment": "A1001" },
-      "note": "The bus into town, pod-0 W3's world, the morning of the day of greetings. The canon's hedge — 'maybe three or four miles' — is attested five times and taken up never; this walk takes it up. The shape the learner owns when it ends: a hedge is a licence to act plus a licence to be wrong. The hedge propagates into the plan ('I might get off'), the world supplies the correction — a road sign, never a mood — and the recovery is that nobody promised, so nobody is owed an apology. The passenger's last line hands over certainty where certainty genuinely exists: the estimate was hedged, the last stop is not.",
+      "note": "The bus into town, pod-1 W3's world, the morning of the day of greetings. The canon's hedge — 'maybe three or four miles' — is attested five times and taken up never; this walk takes it up. The shape the learner owns when it ends: a hedge is a licence to act plus a licence to be wrong. The hedge propagates into the plan ('I might get off'), the world supplies the correction — a road sign, never a mood — and the recovery is that nobody promised, so nobody is owed an apology. The passenger's last line hands over certainty where certainty genuinely exists: the estimate was hedged, the last stop is not.",
       "steps": [
         {
           "step": 1,
@@ -62,7 +62,7 @@
           "surface": "Can you tell me how far it is into town?",
           "move": null,
           "restaged": true,
-          "note": "Quotation of the canon's ticket (pod-0 W3 step 3). The seat business has already run; this walk begins where the trouble begins."
+          "note": "Quotation of the canon's ticket (pod-1 W3 step 3). The seat business has already run; this walk begins where the trouble begins."
         },
         {
           "step": 2,
@@ -74,7 +74,7 @@
           "hedge": true,
           "restaged": true,
           "branch_point": true,
-          "note": "Quotation of the canon's hedge (pod-0 W3 step 4) — the exact turn S2 hangs on. In the canon no turn takes this up; everything after this step is the continuation the corpus never stored."
+          "note": "Quotation of the canon's hedge (pod-1 W3 step 4) — the exact turn S2 hangs on. In the canon no turn takes this up; everything after this step is the continuation the corpus never stored."
         },
         {
           "step": 3,
@@ -123,7 +123,7 @@
       "survivability_edges_touched": ["M1"],
       "outcome_shape": "O2",
       "attaches_to": { "walk": "W1", "step": 4, "node": "N3", "position": 2, "attachment": "A1002" },
-      "note": "The café, pod-0 W1's world, mid-order: the coffee is already being made. The canon's one stored branch forks the crisps question into yes (g16) and no (g15); this walk is its third arm — the answer that is neither, because the barista genuinely cannot know yet: today's delivery is still in its boxes. The not-knowing is held with status — the boxes have the answer even though the barista does not — and that status is what licenses Sarah's next move: re-route the ask from the person to the means, O2's own recovery, staged transactionally. CORE trains asking, and asking summons this answer; before this walk, no responder anywhere in CORE ever failed to know anything.",
+      "note": "The café, pod-1 W1's world, mid-order: the coffee is already being made. The canon's one stored branch forks the crisps question into yes (g16) and no (g15); this walk is its third arm — the answer that is neither, because the barista genuinely cannot know yet: today's delivery is still in its boxes. The not-knowing is held with status — the boxes have the answer even though the barista does not — and that status is what licenses Sarah's next move: re-route the ask from the person to the means, O2's own recovery, staged transactionally. CORE trains asking, and asking summons this answer; before this walk, no responder anywhere in CORE ever failed to know anything.",
       "steps": [
         {
           "step": 1,
@@ -134,7 +134,7 @@
           "move": null,
           "composed_in": { "node": "N2", "position": 3 },
           "restaged": true,
-          "note": "Quotation of the canon's availability ticket (pod-0 W1 step 3). The coffee was ordered two turns ago and is on its way — that fact does quiet work at step 3."
+          "note": "Quotation of the canon's availability ticket (pod-1 W1 step 3). The coffee was ordered two turns ago and is on its way — that fact does quiet work at step 3."
         },
         {
           "step": 2,
@@ -195,7 +195,7 @@
       "survivability_edges_touched": ["M5"],
       "outcome_shape": "O9",
       "attaches_to": { "walk": "W4", "step": 3, "node": "N7", "position": 3, "attachment": "A1006" },
-      "note": "The street at seven in the evening, pod-0 W4's world — the corpus's only two-sided negotiation, and without knowing it the canon has already walked the haggle's first two positions: Sarah's 'tomorrow' is a number on the table (N16.1) and the friend's 'Saturday' is its counterbid (N16.2). This walk adds positions 3 and 4: the learner's counter is countered again, and the pair settle by formula — take the overlap, say it with 'then', add the precision that makes it real. O9's recovery is 'produce a third position, or yield'; Sarah's third position is Saturday morning. The whole thing stays brisk because the world demands it: Sarah opened by saying she has no time to talk, so a leisurely negotiation would contradict the scene it stands in — and the friend's last line sends her home, honouring the constraint she declared at the start. The PRICE-haggle is explicitly not attached; over money this shape belongs to enrichment, and teaching it at a UK counter would teach a false pragmatic. Over WHEN, everyone haggles honestly.",
+      "note": "The street at seven in the evening, pod-1 W4's world — the corpus's only two-sided negotiation, and without knowing it the canon has already walked the haggle's first two positions: Sarah's 'tomorrow' is a number on the table (N16.1) and the friend's 'Saturday' is its counterbid (N16.2). This walk adds positions 3 and 4: the learner's counter is countered again, and the pair settle by formula — take the overlap, say it with 'then', add the precision that makes it real. O9's recovery is 'produce a third position, or yield'; Sarah's third position is Saturday morning. The whole thing stays brisk because the world demands it: Sarah opened by saying she has no time to talk, so a leisurely negotiation would contradict the scene it stands in — and the friend's last line sends her home, honouring the constraint she declared at the start. The PRICE-haggle is explicitly not attached; over money this shape belongs to enrichment, and teaching it at a UK counter would teach a false pragmatic. Over WHEN, everyone haggles honestly.",
       "steps": [
         {
           "step": 1,
@@ -205,7 +205,7 @@
           "surface": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
           "move": "F5",
           "restaged": true,
-          "note": "Quotation of the canon (pod-0 W4 step 2): decline, account, counter — and, read as a haggle, the first number on the table: tomorrow. The 'I need to go home now' is not scenery; it is the clock the whole walk runs on."
+          "note": "Quotation of the canon (pod-1 W4 step 2): decline, account, counter — and, read as a haggle, the first number on the table: tomorrow. The 'I need to go home now' is not scenery; it is the clock the whole walk runs on."
         },
         {
           "step": 2,
@@ -216,7 +216,7 @@
           "move": "F5",
           "restaged": true,
           "branch_point": true,
-          "note": "Quotation of the canon (pod-0 W4 step 3) — the second no, and the counterbid: Saturday. The canon ends the scene here, with the friend's 'see you then' closing the books on a settlement the learner never actually agreed to. Everything after this step is the continuation the corpus never stored: what the learner does when THEIR number has just been countered."
+          "note": "Quotation of the canon (pod-1 W4 step 3) — the second no, and the counterbid: Saturday. The canon ends the scene here, with the friend's 'see you then' closing the books on a settlement the learner never actually agreed to. Everything after this step is the continuation the corpus never stored: what the learner does when THEIR number has just been countered."
         },
         {
           "step": 3,
@@ -267,7 +267,7 @@
       "composition_edges_used": [],
       "survivability_edges_touched": ["M2"],
       "attaches_to": { "walk": "W16", "step": 1, "node": "N11", "position": 1, "attachment": "A1003" },
-      "note": "The first conversation, pod-0 W16's world. The learner's opening carries a claim about themselves — 'I haven't been learning for very long' — and in the canon that premise sails past unexamined, straight into a compliment. This walk audits it, in scene 22's own register: a friendly 'how long, exactly?', the ground supplied, and then the gift — the learner's own numbers, once on the table, argue against the learner's own self-downgrade, and the canon's compliment lands with evidence under it instead of over the learner's protest. CORE has the learner make claims; a claim summons the audit; the thing to own is that 'how do you know that?' from a friendly mouth is an invitation to stand somewhere solid, not an attack. The claim turns at g223 and g225 offer the same slot; one staging teaches it. The walk rejoins the canon at g224 — 'Am I speaking slowly enough for you now?' follows unchanged.",
+      "note": "The first conversation, pod-1 W16's world. The learner's opening carries a claim about themselves — 'I haven't been learning for very long' — and in the canon that premise sails past unexamined, straight into a compliment. This walk audits it, in scene 22's own register: a friendly 'how long, exactly?', the ground supplied, and then the gift — the learner's own numbers, once on the table, argue against the learner's own self-downgrade, and the canon's compliment lands with evidence under it instead of over the learner's protest. CORE has the learner make claims; a claim summons the audit; the thing to own is that 'how do you know that?' from a friendly mouth is an invitation to stand somewhere solid, not an attack. The claim turns at g223 and g225 offer the same slot; one staging teaches it. The walk rejoins the canon at g224 — 'Am I speaking slowly enough for you now?' follows unchanged.",
       "steps": [
         {
           "step": 1,
@@ -278,7 +278,7 @@
           "move": null,
           "composed_in": { "node": "N11", "position": 1 },
           "restaged": true,
-          "note": "Quotation of the canon's opening (pod-0 W16 step 1), the [target language] bracket rendered deictically per the scene 0 convention. Read as N11 it is the self-downgrade; read as N14 it is a claim — 'not very long' — and a claim is auditable. Both readings are true at once, which is exactly why the audit attaches here."
+          "note": "Quotation of the canon's opening (pod-1 W16 step 1), the [target language] bracket rendered deictically per the scene 0 convention. Read as N11 it is the self-downgrade; read as N14 it is a claim — 'not very long' — and a claim is auditable. Both readings are true at once, which is exactly why the audit attaches here."
         },
         {
           "step": 2,
@@ -339,7 +339,7 @@
           "move": "F16",
           "composed_in": { "node": "N11", "position": 3 },
           "restaged": true,
-          "note": "Quotation of the canon (pod-0 W16 step 7). Read as N11 it is concede-and-hold; read as N15 it is a position — 'I am not there yet' — held for the second time against a friend who keeps saying otherwise."
+          "note": "Quotation of the canon (pod-1 W16 step 7). Read as N11 it is concede-and-hold; read as N15 it is a position — 'I am not there yet' — held for the second time against a friend who keeps saying otherwise."
         },
         {
           "step": 2,
@@ -351,7 +351,7 @@
           "composed_in": { "node": "N11", "position": 4 },
           "restaged": true,
           "branch_point": true,
-          "note": "Quotation of the canon (pod-0 W16 step 8) — the second counter-assessment, with evidence attached. In the canon the learner answers this by talking about something else, and the disagreement just evaporates unwitnessed. Everything after this step is the continuation the corpus never stored: the disagreement allowed to be SEEN, and then set down."
+          "note": "Quotation of the canon (pod-1 W16 step 8) — the second counter-assessment, with evidence attached. In the canon the learner answers this by talking about something else, and the disagreement just evaporates unwitnessed. Everything after this step is the continuation the corpus never stored: the disagreement allowed to be SEEN, and then set down."
         },
         {
           "step": 3,

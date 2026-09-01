@@ -5,6 +5,46 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-01 — the live canonical slate is pod-1: the first rung of the compulsory default chain
+
+**Decision.** `canonical_pod_scenarios`'s live slate, 231 rows in 22 scenes, was renamed
+`pod-0` → `pod-1`. The two sacked pre-metagraph slates that held the names `pod-1` (236
+rows) and `pod-0.5` (27 rows) were archived and deleted to free the name. Order forced:
+delete, then rename, one transaction, row counts asserted per step. Nothing learner-facing
+was touched — `listening_pods` is a separate per-course migration, 22 of 68 done, and its
+counts are identical before and after (46 on `pod-0`, 22 on `pod-1`, 269 and 594
+`learner_pod_state` rows).
+
+**Why the number.** Numbering was retired as a CONTENT label — a walk is named by what it
+masks, and Health is Health, not pod-4 — but numbers name the **compulsory default chain**
+(Tom, 2026-09-01): pod-1, pod-2, pod-3 is the ladder a learner descends by *not choosing*.
+This slate was always the first rung; it had never been named as one.
+
+**Why it can't be reverse-engineered.** Once the rename lands there is no `pod-0` row left
+in the database to check any old claim against, and ~200 documents still say `pod-0` is the
+live pod. Nine that carried it as a standing warning now open with a dated banner;
+`docs/pods/canonical-pod-slug-migration-2026-09-01.md` is the note they point at.
+
+**One thing that was NOT a rename.** `syllableCeiling` was `podSlug === 'pod-0' ? 8 : 12` —
+a pedagogical difficulty tier read off a name. Tom ruled: decouple it, do not just rename
+the string. The tier is declared per slate in `services/shared/pod-tiers.cjs` with the rung
+it sits on, and is read from the canonical slug, not the per-course listening slug. That
+also fixed a live bug: the 22 already-flipped courses were getting the harder 12-syllable
+ceiling for the same beginner content their siblings get at 8.
+
+**One thing deliberately NOT deleted.** `canonical_script_versions`'s six `pod-0.5` rows.
+The audit said "no FK dependents", which is true — but the absence of that FK is the
+feature keeping the history alive, not evidence the rows are safe to bin. Its migration,
+written the day before (`20260831_canonical_script_versions.sql`), enforces append-only with
+a trigger and says "history must survive a line being re-ingested or removed, which is
+exactly when someone wants to read it." Deleting them meant disabling a one-day-old guard
+built to prevent that exact deletion. They are archived and still live; open for Tom.
+
+**Decided by:** agent, under Tom's 2026-09-01 migration brief and his ruling on the
+compulsory default chain; the append-only carve-out is the agent's call and is flagged.
+
+---
+
 ## 2026-09-01 — machine-generated evidence leaves the tracked tree; a fresh worktree costs 60 MB, not 352
 
 **Decision.** Tom ruled "yes, move 290MB of machine logs out of the repo". 1,922 tracked

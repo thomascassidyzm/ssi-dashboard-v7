@@ -77,14 +77,14 @@ const knownSideIsEnglish = (course) => pairOf(course).known === 'eng';
  * bites already and pagination is not optional.
  *
  * `target_text`/`target_lang` are deliberately NOT selected. They exist on the
- * table now (populated for the Method Pod in Italian, null for pod-0/0.5/1) but
+ * table now (populated for the Method Pod in Italian, null for pod-1) but
  * PODS DO NOT CUT: a rendering is a translation of shape-layer material, not an
  * agreement between a known chunk and a target chunk, and the whole safety
  * property of the frame layer rests on pod content contributing ATTESTATION and
  * ZERO VOCABULARY. Selecting the column would put target material one careless
  * line away from the generator; not selecting it makes that impossible here.
  */
-async function loadPodCanon(sb, { pods = ['pod-0', 'pod-0.5', 'pod-1'] } = {}) {
+async function loadPodCanon(sb, { pods = ['pod-1'] } = {}) {
   const rows = await pageAll(sb, 'canonical_pod_scenarios',
     'id,pod_slug,scene_number,scene_title,sentence_number,global_order,speaker,english_text,updated_at',
     q => q.in('pod_slug', pods).order('pod_slug').order('global_order'));

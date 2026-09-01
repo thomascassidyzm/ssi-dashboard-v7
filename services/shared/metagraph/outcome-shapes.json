@@ -9,7 +9,7 @@
   "attestation_classes": {
     "minted": "Attested nowhere in either corpus; must be minted outright",
     "method-pod-only": "Attested in the Method Pod only, with no g<n> support",
-    "thin": "Attested thinly in pod-0 — once, or once in one scene"
+    "thin": "Attested thinly in pod-1 — once, or once in one scene"
   },
   "counts": {
     "outcome_shapes": 9,
@@ -85,7 +85,7 @@
       "attestation_class": "method-pod-only",
       "attested": "Method Pod only — M:1:54, M:4:70, M:4:77",
       "sited_on": "Directions — g120→g126",
-      "why_there": "The corpus’s longest chain, and the place being stranded mid-instruction is most obvious. g90 \"you’ll have to look to make sure\" is the nearest thing pod-0 has and it delegates rather than fails",
+      "why_there": "The corpus’s longest chain, and the place being stranded mid-instruction is most obvious. g90 \"you’ll have to look to make sure\" is the nearest thing pod-1 has and it delegates rather than fails",
       "sequence_position": 4,
       "method_attestation": [
         "M:1:54",
@@ -99,7 +99,7 @@
       "name": "The native does not understand you",
       "recovery_the_learner_must_own": "Reformulate your own turn — shorter, slower — and check it landed",
       "attestation_class": "minted",
-      "attested": "Nowhere. Absent from pod-0; explicitly unattestable in the Method corpus",
+      "attested": "Nowhere. Absent from pod-1; explicitly unattestable in the Method corpus",
       "sited_on": "The café order — g38→g43",
       "why_there": "The shortest, most drilled ticket the learner owns. Failure on the one sentence they are surest of is unmistakable, and the recovery is one turn",
       "sequence_position": 1,
@@ -172,7 +172,7 @@
       "name": "You are disagreed with",
       "recovery_the_learner_must_own": "Hold or yield, explicitly",
       "attestation_class": "method-pod-only",
-      "attested": "Method Pod, in the parked form only — M:2:386→2:401, M:4:148→4:152. pod-0 attests disagreement only with a person’s account of themselves (g226, g228), never about the world",
+      "attested": "Method Pod, in the parked form only — M:2:386→2:401, M:4:148→4:152. pod-1 attests disagreement only with a person’s account of themselves (g226, g228), never about the world",
       "sited_on": "The recommendation — g75→g76→g77",
       "why_there": "Order the thing the waiter advised against. A one-turn wrong turn with a visible fork, and the shape is already built",
       "sequence_position": 8,

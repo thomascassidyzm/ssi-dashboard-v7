@@ -44,7 +44,11 @@ const { diffPod, norm } = require('./pod0-recording-diff.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
-const POD_SLUG = 'pod-0'
+const POD_SLUG = 'pod-0'   // the Welsh LISTENING pod this rewrites
+// The live canonical slate. Renamed from 'pod-0' to 'pod-1' on 2026-09-01 —
+// this is a `canonical_pod_scenarios` slug and is NOT a course's listening-pod
+// slug, which is per-course and still 'pod-0' on most courses.
+const CANONICAL_SLUG = 'pod-1'
 const CANONICAL_STAMP = '2026-08-06'
 const DEFAULT_COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
 const OUT_DIR = path.join(__dirname, '..', '..', 'docs', 'pods', 'welsh-recording-pack')
@@ -345,9 +349,9 @@ async function main() {
   }
 
   const { data: canon, error } = await db.from('canonical_pod_scenarios')
-    .select('*').eq('pod_slug', POD_SLUG).order('global_order')
+    .select('*').eq('pod_slug', CANONICAL_SLUG).order('global_order')
   if (error) throw error
-  if (!canon.length) throw new Error('canonical_pod_scenarios has no pod-0 rows — refusing to align')
+  if (!canon.length) throw new Error(`canonical_pod_scenarios has no ${CANONICAL_SLUG} rows — refusing to align`)
 
   fs.mkdirSync(ARCHIVE_DIR, { recursive: true })
   fs.mkdirSync(OUT_DIR, { recursive: true })

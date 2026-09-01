@@ -97,14 +97,24 @@ function validateScene(inputLines, outLines) {
 // scene generation
 // ---------------------------------------------------------------------------
 
-// Founder ruling (docs/pods/pod-ladder-proposal.md §9a, 2026-07-16): pod-0's
-// breathing ceiling is 8 syllables; pod-1 and every level after it is 12.
-function syllableCeilingForPod(podSlug) {
-  return podSlug === 'pod-0' ? 8 : 12
-}
+// The breathing ceiling is a DECLARED property of the canonical slate the content
+// is flexed from (services/shared/pod-tiers.cjs), never inferred from a slug string
+// — Tom's ruling, 2026-09-01. Note the argument: it is the CANONICAL slug, not the
+// per-course listening pod slug. Those were one parameter until 2026-09-01, which
+// meant a course whose listening pod had been flipped to 'pod-1' silently started
+// getting the 12-syllable ceiling for the same beginner content its unflipped
+// siblings got at 8.
+const { syllableCeilingFor } = require('./shared/pod-tiers.cjs')
+
+// The one canonical English slate every course flexes from. Renamed from 'pod-0'
+// on 2026-09-01; the slates that previously held the names 'pod-1' and 'pod-0.5'
+// were sacked, archived and deleted the same day. This is the slug of a row in
+// `canonical_pod_scenarios` — it is NOT a course's listening-pod slug, which is
+// per-course, still 'pod-0' on most courses, and migrating separately.
+const CANONICAL_LIVE_SLUG = 'pod-1'
 
 /** Generate one scene → [{global_order, target_text, known_text}] (+ warnings). Retries once on hard failure. */
-async function generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, podSlug }) {
+async function generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, canonicalSlug }) {
   // The ledger pins localised character names ("Sarah [S1] → Sophie") which the
   // dialogue text follows — the learner-visible speaker label must follow too.
   const nameMap = parseNameMap(ledger)
@@ -112,7 +122,7 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
     targetLanguage, knownLanguage, cultureNotes, ledger,
     sceneTitle: scene.title || scene.label || `Scene ${scene.number}`,
     lines: scene.lines,
-    syllableCeiling: syllableCeilingForPod(podSlug),
+    syllableCeiling: syllableCeilingFor(canonicalSlug),
   })
   let lastErr = null
   for (let attempt = 1; attempt <= 2; attempt++) {
@@ -258,11 +268,11 @@ async function loadCourse(courseCode) {
 }
 
 /** Canonical scenarios grouped into scenes (ordered). */
-async function loadCanonicalScenes(podSlug) {
+async function loadCanonicalScenes(canonicalSlug) {
   const { data, error } = await supabase
     .from('canonical_pod_scenarios')
     .select('scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text')
-    .eq('pod_slug', podSlug).order('global_order', { ascending: true })
+    .eq('pod_slug', canonicalSlug).order('global_order', { ascending: true })
   if (error) throw new Error(`load canonical: ${error.message}`)
   const byScene = new Map()
   for (const r of data || []) {
@@ -520,7 +530,7 @@ async function updatePodSceneHashes(podId, hashes) {
  * @returns {Promise<{podId, courseCode, totalScenes, alreadyDone, generatedNow,
  *   remaining, more_remaining, cultureSource, warnings, scenesDone:number[]}>}
  */
-async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, mode, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
+async function generatePodBatch({ courseCode, podSlug = 'pod-0', canonicalSlug = CANONICAL_LIVE_SLUG, force = false, mode, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
   const start = Date.now()
   const podId = `${courseCode}:${podSlug}`
   const course = await loadCourse(courseCode)
@@ -533,8 +543,8 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
   const targetLanguage = languageName(targetVariant)
   const knownLanguage = languageName(course.known_lang)
 
-  const canonicalScenes = await loadCanonicalScenes(podSlug)
-  if (canonicalScenes.length === 0) throw new Error(`no canonical scenarios for pod_slug=${podSlug}`)
+  const canonicalScenes = await loadCanonicalScenes(canonicalSlug)
+  if (canonicalScenes.length === 0) throw new Error(`no canonical scenarios for pod_slug=${canonicalSlug}`)
 
   // Refuse before ANY write and before any model spend — this covers every mode
   // ('full', 'sync', 'resume'), because sync is dispatched below.
@@ -550,7 +560,7 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
   //                 pod that already has audio (the original safety behaviour)
   mode = mode || (force ? 'full' : 'resume')
   if (mode === 'sync') {
-    return syncPodToCanonical({ podId, courseCode, podSlug, course, targetVariant, targetLanguage, knownLanguage, canonicalScenes, maxScenes, deadlineMs, start, log })
+    return syncPodToCanonical({ podId, courseCode, podSlug, canonicalSlug, course, targetVariant, targetLanguage, knownLanguage, canonicalScenes, maxScenes, deadlineMs, start, log })
   }
 
   if (mode !== 'full' && await podHasAudio(podId)) {
@@ -587,7 +597,7 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
     if (generatedNow >= maxScenes) break
     if (Date.now() - start >= deadlineMs && generatedNow > 0) break
     log(`  scene ${scene.number} [${scene.label}] ${scene.title} — generating (${scene.lines.length} lines)…`)
-    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, podSlug })
+    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, canonicalSlug })
     const n = await writeSceneSentences({ podId, scene, lines })
     hashes[scene.number] = sceneHash(scene)
     generatedNow++
@@ -619,11 +629,11 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', force = false, 
  * rows), so a downstream recolour + /generate-pods fills just those. Run
  * recolour after sync — upsertPodRow reassigns draft voices for any NEW speaker.
  */
-async function syncPodToCanonical({ podId, courseCode, podSlug, course, targetVariant, targetLanguage, knownLanguage, canonicalScenes, maxScenes, deadlineMs, start, log, allowHandAuthored = false }) {
+async function syncPodToCanonical({ podId, courseCode, podSlug, canonicalSlug = CANONICAL_LIVE_SLUG, course, targetVariant, targetLanguage, knownLanguage, canonicalScenes, maxScenes, deadlineMs, start, log, allowHandAuthored = false }) {
   const { data: pod } = await supabase.from('listening_pods').select('metadata, source_file').eq('id', podId).maybeSingle()
   if (!pod) {
     log(`[${podId}] no existing pod — running a full build instead of sync`)
-    return generatePodBatch({ courseCode, podSlug, force: true, deadlineMs, maxScenes, log })
+    return generatePodBatch({ courseCode, podSlug, canonicalSlug, force: true, deadlineMs, maxScenes, log })
   }
   // SAFETY (totality of impact): a hand-authored pod (synced from a markdown
   // source, not generated from canonical) holds human-crafted text. Machine
@@ -673,7 +683,7 @@ async function syncPodToCanonical({ podId, courseCode, podSlug, course, targetVa
     if (did >= maxScenes) break
     if (Date.now() - start >= deadlineMs && did > 0) break
     log(`  scene ${scene.number} [${scene.label}] CHANGED — re-flexing (${scene.lines.length} lines)…`)
-    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, podSlug })
+    const { lines, warnings: w } = await generateScene({ scene, targetLanguage, knownLanguage, cultureNotes, ledger, canonicalSlug })
     await deleteSceneSentences(podId, scene.number)
     await writeSceneSentences({ podId, scene, lines })
     finalHashes[scene.number] = sceneHash(scene)
@@ -701,7 +711,7 @@ async function syncPodToCanonical({ podId, courseCode, podSlug, course, targetVa
 /** One-off repair for pods generated before speaker labels followed the ledger
  *  name map: relabel existing sentence rows from the STORED ledger (no re-flex,
  *  no audio touched) and rebuild the header so voice-map keys match. */
-async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', log = () => {} }) {
+async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', canonicalSlug = CANONICAL_LIVE_SLUG, log = () => {} }) {
   const podId = `${courseCode}:${podSlug}`
   const course = await loadCourse(courseCode)
   const { data: pod } = await supabase.from('listening_pods').select('metadata, source_file').eq('id', podId).maybeSingle()
@@ -728,7 +738,7 @@ async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', log = () => {
     }
   }
   const targetVariant = courseCode.split('_for_')[0] || course.target_lang
-  const canonicalScenes = await loadCanonicalScenes(podSlug)
+  const canonicalScenes = await loadCanonicalScenes(canonicalSlug)
   await upsertPodRow({ podId, courseCode, podSlug, targetLanguage: languageName(targetVariant), canonicalScenes, knownLang: course.known_lang, targetLang: course.target_lang, ledger })
   log(`[${podId}] relabelled ${relabelled} rows; header speakers rebuilt (${nameMap.length} name-map entries)`)
   return { podId, relabelled, nameMap }

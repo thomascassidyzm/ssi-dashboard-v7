@@ -64,7 +64,7 @@ import { useAuth } from '@/composables/useAuth.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
-const slug = route.params.slug || 'pod-0'
+const slug = route.params.slug || 'pod-1'
 
 const scenes = ref([])
 const loading = ref(true)

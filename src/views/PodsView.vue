@@ -69,7 +69,7 @@
           >
             {{ visBusy ? 'Saving…' : (isHeld(corePod) ? 'Release to learners' : 'Hold back from learners') }}
           </button>
-          <router-link :to="`/production/${courseCode}/canonical/pod-0`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
+          <router-link :to="`/production/${courseCode}/canonical/pod-1`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
           <!-- Create (green) only when there's no serving core pod -->
           <button
             v-if="!corePod"
@@ -231,11 +231,13 @@ async function authedFetch(path, init = {}) {
 
 // Resumable poll loop — the endpoint generates a few scenes per call and
 // returns more_remaining.
-// `slug` is the pod being written. Creating a course's first core pod still
-// writes `pod-0`, because the generator flexes canonical_pod_scenarios rows
-// keyed on that same slug and only `pod-0` has them. Regenerating passes the
-// pod the course ACTUALLY serves, so a 1-based course can never have its
-// pod-1 content wiped into a fresh pod-0 behind its back.
+// `slug` is the LISTENING pod being written, and only that. It used to double as
+// the canonical slate to flex from, which is why creating a course's first core
+// pod still writes `pod-0`: that was the only slug canonical rows existed under.
+// Since 2026-09-01 the canonical slate is named separately by the API
+// (canonicalSlug), so this value means one thing. Regenerating passes the pod the
+// course ACTUALLY serves, so a 1-based course can never have its pod-1 content
+// wiped into a fresh pod-0 behind its back.
 async function generatePod(force = false, slug = 'pod-0') {
   if (generating.value) return
   generating.value = true

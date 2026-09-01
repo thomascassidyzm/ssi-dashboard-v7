@@ -12,7 +12,7 @@
   ],
   "definitions": {
     "id": { "type": "string", "pattern": "^(N|P|F|C|S|M|O|W)[0-9]+$" },
-    "provenance": { "enum": ["pod-0", "method-pod", "talk-bollocks", "trades", "care-work", "medium-negotiation-canonical"] },
+    "provenance": { "enum": ["pod-1", "method-pod", "talk-bollocks", "trades", "care-work", "medium-negotiation-canonical"] },
     "row": { "type": "string", "pattern": "^g[0-9]+$" },
 
     "position": {

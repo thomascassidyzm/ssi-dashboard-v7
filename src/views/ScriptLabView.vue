@@ -21,7 +21,7 @@
       </router-link>
 
       <p v-if="stale" class="text-accent text-xs mb-4 border border-line rounded px-3 py-2 bg-surface">
-        This API has not been restarted onto the script index yet, so only <code>pod-0</code> is listed. The script page itself works.
+        This API has not been restarted onto the script index yet, so only <code>pod-1</code> is listed. The script page itself works.
       </p>
 
       <div v-if="loading" class="text-faint py-12 text-center">Loading…</div>
@@ -83,9 +83,7 @@ async function authedFetch (path, init = {}) {
 }
 
 const NOTES = {
-  'pod-0': 'the live POD 1 — the graph is derived from this slate',
-  'pod-1': 'a separate slate — the graph speaks pod-0’s row numbers, not these',
-  'pod-0.5': 'a separate slate — outside the graph’s reference space',
+  'pod-1': 'the live slate, POD 1 — the graph is derived from this one',
   'learning-flagship': 'the Learning flagship — 11 chapters, English only',
   'method-pod-chapters': 'the Method Pod, chapter cut — 12 chapters, English beside Italian',
   'method-pod-43-scene': 'the Method Pod, 43-scene cut — the control arm the chapter cut is measured against'
@@ -105,7 +103,7 @@ async function load () {
       list = (body.pods || []).map(p => ({ ...p, note: NOTES[p.slug] || '', coverage: null, coverageError: '' }))
     } else if (res.status === 404) {
       stale.value = true
-      list = [{ slug: 'pod-0', note: NOTES['pod-0'], scenes: null, lines: null, coverage: null, coverageError: '' }]
+      list = [{ slug: 'pod-1', note: NOTES['pod-1'], scenes: null, lines: null, coverage: null, coverageError: '' }]
     } else {
       const body = await res.json().catch(() => ({}))
       throw new Error(body?.error || `HTTP ${res.status}`)
@@ -121,8 +119,8 @@ async function load () {
         .then(async r => {
           const b = await r.json()
           if (!r.ok) throw new Error(b?.error || `HTTP ${r.status}`)
-          // A pod that carries a stored walk is read through it; pod-0 and the two
-          // sacked slates carry none and keep the original row-reference path.
+          // A pod that carries a stored walk is read through it; pod-1 carries
+          // none and keeps the original row-reference path.
           const walk = (b.walk || []).length
             ? walkFromStoredPod(b.scenarios || [], b.walk, graph, { id: pod.slug, slug: pod.slug })
             : walkFromCanonicalRows(b.scenarios || [], graph, { id: pod.slug, slug: pod.slug })

@@ -159,6 +159,11 @@ const LIVE_STATUSES = new Set(['released', 'beta'])
 // `${course}:pod-0`. Any other slug is invisible to learners, which is what makes the
 // clone path safe.
 const LEARNER_FACING_SLUG = 'pod-0'
+
+// The live canonical slate — a `canonical_pod_scenarios` slug, renamed from
+// 'pod-0' to 'pod-1' on 2026-09-01. Deliberately NOT the same thing as the
+// learner-facing slug above, which is per-course and still 'pod-0' on most.
+const CANONICAL_SLUG = 'pod-1'
 const CLONE_SLUG = arg('clone-slug') || 'pod-0-unrecorded'
 const FORCE_IN_PLACE = process.argv.includes('--force')
 // Refuse rather than clone. For a caller that wants the guard's verdict without the
@@ -549,11 +554,12 @@ async function main() {
   }
 
   const { data: canon, error } = await db.from('canonical_pod_scenarios')
-    // Always 'pod-0': this is the CANONICAL source Aran wrote, not the destination
-    // pod being rewritten. --pod-slug moves where we write, never what we read.
-    .select('*').eq('pod_slug', 'pod-0').order('global_order')
+    // Always CANONICAL_SLUG: this is the CANONICAL source Aran wrote, not the
+    // destination pod being rewritten. --pod-slug moves where we WRITE, never
+    // what we READ. (That source was named 'pod-0' until 2026-09-01.)
+    .select('*').eq('pod_slug', CANONICAL_SLUG).order('global_order')
   if (error) throw error
-  if (!canon.length) throw new Error('canonical_pod_scenarios has no pod-0 rows — refusing to align')
+  if (!canon.length) throw new Error(`canonical_pod_scenarios has no ${CANONICAL_SLUG} rows — refusing to align`)
 
   fs.mkdirSync(ARCHIVE_DIR, { recursive: true })
 

@@ -68,7 +68,7 @@ function groupsForShape (shapeId, shape, storedWalks) {
 const RECOVERY_RANK = { never: 0, once: 1, twice: 2, repeated: 2 }
 
 export function graphFromStore ({ nodes, edges, moves, outcomeShapes, walkSets = {} }) {
-  const podWalk = walkSets['pod-0'] || null
+  const podWalk = walkSets['pod-1'] || null
   const storedWalks = podWalk?.walks || []
 
   const shapes = [
@@ -81,7 +81,7 @@ export function graphFromStore ({ nodes, edges, moves, outcomeShapes, walkSets =
     title: s.name,
     kind: s.kind,
     sequence: (s.positions || []).map(p => p.name).join(' → '),
-    origin: s.provenance || 'pod-0',
+    origin: s.provenance || 'pod-1',
     attestations: groupsForShape(s.id, s, storedWalks)
   }))
 
@@ -96,7 +96,7 @@ export function graphFromStore ({ nodes, edges, moves, outcomeShapes, walkSets =
   const survivability = [
     ...(edges.survivability?.corpus || []).map(e => ({
       id: e.id,
-      origin: 'pod-0',
+      origin: 'pod-1',
       attemptable: e.b_attemptable_only_if,
       presupposes: e.a_survivable,
       attestedAt: (e.attested_response_positions || []).join('; '),

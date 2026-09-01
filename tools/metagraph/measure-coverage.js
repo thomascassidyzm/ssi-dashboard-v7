@@ -24,7 +24,7 @@ const graph = graphFromStore({
   edges: j('edges.json'),
   moves: j('moves.json'),
   outcomeShapes: j('outcome-shapes.json'),
-  walkSets: { 'pod-0': j('walks/pod-0.json') }
+  walkSets: { 'pod-1': j('walks/pod-1.json') }
 })
 
 function report (title, cov) {
@@ -44,7 +44,7 @@ function report (title, cov) {
 // `method-pod-43-scene` in the store now, so it is read from the store like the
 // rest — one home for the pods, no runtime markdown.
 const slugs = process.argv.slice(2).filter(a => !a.startsWith('-'))
-const podSlugs = slugs.length ? slugs : ['pod-0', 'method-pod-43-scene']
+const podSlugs = slugs.length ? slugs : ['pod-1', 'method-pod-43-scene']
 
 const sb = require(path.join(root, 'services/supabase-client.cjs'))
 const client = sb.getClient()
@@ -64,7 +64,7 @@ for (const slug of podSlugs) {
     'id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, target_text, target_lang, author_notes')
   const steps = await all('canonical_pod_walk_steps', slug,
     'pod_slug, walk_id, walk_name, scene_number, step_order, declared_as, register, resolution, node_id, note')
-  // A pod that carries a stored walk is read through it; pod-0 carries none and
+  // A pod that carries a stored walk is read through it; pod-1 carries none and
   // keeps the row-reference path the graph's g-numbers are written in.
   const walk = steps.length
     ? walkFromStoredPod(rows, steps, graph, { id: slug, title: slug, slug })

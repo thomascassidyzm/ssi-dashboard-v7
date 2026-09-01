@@ -1,5 +1,13 @@
 # CORE and the optional walks — the compulsory-set audit — 2026-08-31
 
+> **SUPERSEDED IN ONE RESPECT — the slug was renamed on 2026-09-01.** Where this
+> document says `pod-0` is the live canonical slate, read **`pod-1`**: the live slate
+> was renamed `pod-0` → `pod-1` that day, and the sacked slates that then held the
+> names `pod-1` (236 rows) and `pod-0.5` (27 rows) were archived and deleted. The
+> content, counts and findings below are unchanged and still stand — 231 rows, 22
+> scenes — only the name moved. See
+> [the migration note](./canonical-pod-slug-migration-2026-09-01.md).
+
 The union-coverage job asked "what does the union cover" and answered *all 23 shapes*. Wrong
 object: **no learner walks the union.** Under Tom's naming ruling — **CORE** is the compulsory
 walk (the live POD 1, slug `pod-0`); everything else is an **optional walk**, and at least one

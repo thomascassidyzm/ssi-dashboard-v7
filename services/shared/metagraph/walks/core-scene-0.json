@@ -9,7 +9,7 @@
     "job": "Re-author CORE scene 0 — the medium contract, staged in the transactional trunk (2026-08-31, second authoring; the first was rejected for the world it was staged in, not the shape)",
     "shape": "N1201 Medium contract, offer realisation, as ratified at cd9d93e2f — the shape is unchanged from the first authoring and was not re-opened",
     "branches": ["S1201 the medium offer declined", "S1202 the offer diverted into biography"],
-    "hosts": "The walks are sited inside two existing pod-0 functional scenarios, casts inherited and none invented: the café order (pod-0 W1 — Barista, Sarah) and the hotel check-in (pod-0 W10 — Guest, Receptionist).",
+    "hosts": "The walks are sited inside two existing pod-1 functional scenarios, casts inherited and none invented: the café order (pod-1 W1 — Barista, Sarah) and the hotel check-in (pod-1 W10 — Guest, Receptionist).",
     "document": "docs/pods/core-scene-0-v2-2026-08-31.md",
     "statement": "AUTHORED, NOT TRANSCRIBED. Every surface line in this file was written for this scene against the ratified shape. There is no corpus behind it: no `row` appears anywhere, no g-number is cited, and no line here is attested speech. The attested speech this shape was extracted from lives in docs/sector-pods/source/health-sector-conversations-v3.md and is transcribed nowhere but walks/pod-0.json's own corpus. Do not merge these counts into a corpus accounting."
   },
@@ -55,7 +55,7 @@
       "nodes_traversed": ["N1201", "N2"],
       "composition_edges_used": [],
       "survivability_edges_touched": [],
-      "note": "The café order, pod-0 W1's world, at a quiet moment. N1's open has already run — the contract wraps the hello rather than replacing it, which is why turn 1 opens 'Before I order'. The grant has a reason the learner can see: nobody is waiting, so the barista has the time the weaker medium costs. Six turns: five positions and the uptake of the pivot.",
+      "note": "The café order, pod-1 W1's world, at a quiet moment. N1's open has already run — the contract wraps the hello rather than replacing it, which is why turn 1 opens 'Before I order'. The grant has a reason the learner can see: nobody is waiting, so the barista has the time the weaker medium costs. Six turns: five positions and the uptake of the pivot.",
       "steps": [
         {
           "step": 1,
@@ -193,7 +193,7 @@
       "composition_edges_used": ["C1202"],
       "survivability_edges_touched": ["S1201"],
       "attaches_to": { "walk": "W1201", "step": 2, "node": "N1201", "position": 2 },
-      "note": "The same branch, the other attested account: STAKES, scoped to a domain rather than to today. Staged at the hotel check-in — pod-0 W10's world — because the stakes account needs something that actually goes wrong if misunderstood, and a booking is dates and numbers with money on them. The scope then bites at the pivot, exactly as the corpus's does at the dosage.",
+      "note": "The same branch, the other attested account: STAKES, scoped to a domain rather than to today. Staged at the hotel check-in — pod-1 W10's world — because the stakes account needs something that actually goes wrong if misunderstood, and a booking is dates and numbers with money on them. The scope then bites at the pivot, exactly as the corpus's does at the dosage.",
       "steps": [
         {
           "step": 1,

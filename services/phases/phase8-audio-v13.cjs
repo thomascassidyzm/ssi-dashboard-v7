@@ -7404,13 +7404,14 @@ async function findExistingAudio(courseCode, text, language, role, voiceId, opts
   return row?.id || null
 }
 
-// ── Canonical pod-0 English: the proof a line may be shared ──────────────────
-// Canon lives in `canonical_pod_scenarios` (pod_slug='pod-0'), seeded from
+// ── Canonical English: the proof a line may be shared ────────────────────────
+// Canon lives in `canonical_pod_scenarios` (pod_slug='pod-1' — renamed from
+// 'pod-0' on 2026-09-01, same 231 rows), seeded from
 // docs/pods/pod0-english-canonical.md. A line carrying the [target language]
 // placeholder is substituted per course by tools/pods/align-pod0-to-canonical.cjs
 // ("I'm learning Welsh" / "…German"), so it is NEVER shareable — it is excluded
 // from the reuse set while still counting as aligned.
-const POD0_CANON_SLUG = 'pod-0'
+const CANON_SLUG = 'pod-1'
 const POD0_CANON_SLUGS = new Set(['pod-0', 'pod-0-unrecorded'])
 const CANON_PLACEHOLDER_RE = /\[target language\]/i
 
@@ -7418,9 +7419,9 @@ async function loadPod0Canon() {
   const { data, error } = await supabase
     .from('canonical_pod_scenarios')
     .select('global_order, english_text')
-    .eq('pod_slug', POD0_CANON_SLUG)
+    .eq('pod_slug', CANON_SLUG)
     .order('global_order')
-  if (error) throw new Error(`canonical pod-0 lookup failed: ${error.message}`)
+  if (error) throw new Error(`canonical lookup failed: ${error.message}`)
   return data || []
 }
 

@@ -20,7 +20,7 @@
     "bound_pairs": "none",
     "walks": "none"
   },
-  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on the same points as the health, Ireland and trades proposals: (1) `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"care-work\" — the same one-line widening the other four proposal files need; (2) attestations carry a `constructed` array of document-encounter citations (E1–E17) because there is no corpus, no g-rows and no flows; (3) the concept `proposed-additions` is not one of the schema's five file kinds. Nothing about the existing store is changed to accommodate any of this.",
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on the same points as the health, Ireland and trades proposals: (1) `provenance` is an enum of [\"pod-1\", \"method-pod\"] and this file needs \"care-work\" — the same one-line widening the other four proposal files need; (2) attestations carry a `constructed` array of document-encounter citations (E1–E17) because there is no corpus, no g-rows and no flows; (3) the concept `proposed-additions` is not one of the schema's five file kinds. Nothing about the existing store is changed to accommodate any of this.",
   "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json and walks/ are byte-identical to origin/main (4dcdddee2). POD-1 is attested evidence and is extended here, never re-cut. The health, outcome-mints, Talk Bollocks, Ireland and trades proposal files are also untouched.",
 
   "port_verdict": {

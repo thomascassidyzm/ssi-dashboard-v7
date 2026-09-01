@@ -235,7 +235,7 @@ import { wordDiff } from '@/lib/wordDiff.js'
 
 const KIND_TAG = { coda: 'ADMITS', branch: 'BRANCH', alternative: 'VARIANT', unmapped: 'UNMAPPED' }
 const route = useRoute()
-const slug = route.params.slug || 'pod-0'
+const slug = route.params.slug || 'pod-1'
 
 const graph = loadGraph()
 const walk = ref({ scenes: [], steps: [] })
