@@ -61,7 +61,7 @@ as the mapping ruled.
 | E8 handover | 2.3 | | E17 assessment | 2.5 |
 | E9 family update | 1.9 f1–f2 | | + the standing contract | 1.0, 2.0 (the mapping's N101 finding) |
 
-Safety-critical ⚠ dialogue lines: 9, across eight ⚠-tagged flows — the flinch, the refusal
+Safety-critical ⚠ dialogue lines: 8, across eight ⚠-tagged flows — the flinch, the refusal
 threshold, the wrong box, the disclosure threshold, the pass-on, the conditional instruction,
 the icy doorway, the wrong read-back.
 
