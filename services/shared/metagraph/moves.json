@@ -54,7 +54,7 @@
       ],
       "position": "TICKET → GRANT → (delivery) → receipt. Position 2.",
       "presupposes": "Prerequisite to everything. Composes into every other shape.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F2",
@@ -85,7 +85,7 @@
       ],
       "position": "TICKET → GRANT+ → receipt. Position 2.",
       "presupposes": "Presupposes F1, and that the asker can survive unrequested information — i.e. F7 repair survivable.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F3",
@@ -104,7 +104,7 @@
       ],
       "position": "TICKET → COUNTER-Q → SPECIFY → grant. Positions 2 and 3 as a bound pair.",
       "presupposes": "Presupposes F7/F8 repair survivable. The corpus’s clearest survivability edge.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F4",
@@ -120,7 +120,7 @@
       ],
       "position": "Q → HEDGED A → (uptake). Position 2.",
       "presupposes": "Presupposes F1, and that the asker can act on an uncommitted answer. Zero uptake anywhere — see U4.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F5",
@@ -133,7 +133,7 @@
       ],
       "position": "PROPOSAL → DECLINE+ACCOUNT+COUNTER → decline+account+counter → accept. Positions 2 and 3.",
       "presupposes": "Presupposes F1 and F14, and surviving the other’s counter-decline. Both attestations in scene 4.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F6",
@@ -149,7 +149,7 @@
       ],
       "position": "TICKET → SUBSTITUTE → re-select. Position 2.",
       "presupposes": "Presupposes F1 and F4, and that the asker can re-select.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F7",
@@ -161,7 +161,7 @@
       ],
       "position": "TURN → REPAIR REQUEST → repeat/reformulate. Position 2.",
       "presupposes": "No prerequisites. Prerequisite to almost everything else.",
-      "provenance": "pod-0",
+      "provenance": "pod-1",
       "drill_rows": [
         153,
         154,
@@ -178,7 +178,7 @@
       ],
       "position": "REPAIR REQUEST → REPAIR GRANT. Position 2.",
       "presupposes": "Presupposes F1. Prerequisite for F3 and F9.",
-      "provenance": "pod-0",
+      "provenance": "pod-1",
       "drill_rows": [
         214
       ]
@@ -195,7 +195,7 @@
       ],
       "position": "INSTRUCTION → READ-BACK → CONFIRM-AND-EXTEND. Positions 2 and 3, bound.",
       "presupposes": "Presupposes F8 — a read-back that is wrong gets corrected.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F10",
@@ -207,7 +207,7 @@
       ],
       "position": "LONG TURN → CONTINUER → continuation. Position 2, inside a chain.",
       "presupposes": "Presupposes F7 survivable — you must survive the continuation you just invited.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F11",
@@ -222,7 +222,7 @@
       ],
       "position": "Q → A + RETURN → A + return → … Position 2, and it is what makes the shape recursive.",
       "presupposes": "Presupposes F1. Composes the acquaintance shape into itself.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F12",
@@ -244,7 +244,7 @@
       ],
       "position": "OFFERING → ASSESSMENT → (uptake). Position 2.",
       "presupposes": "Presupposes F1 and F14. Prerequisite for F13, F17, F18.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F13",
@@ -257,7 +257,7 @@
       ],
       "position": "COMPLIMENT → THANK-AND-DOWNGRADE → (counter-assessment). Position 2.",
       "presupposes": "Presupposes F12 and F14. Prerequisite for F17.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F14",
@@ -285,7 +285,7 @@
       ],
       "position": "HAIL → RETURN. Position 2. Also the closing position of most transaction shapes.",
       "presupposes": "No prerequisites. Composes into the open and the close of every other shape.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F15",
@@ -297,7 +297,7 @@
       ],
       "position": "OFFER → NON-COMMITMENT + DEFER → resource → decide. Position 2.",
       "presupposes": "Presupposes F1 and F3. The only turn in the corpus that refuses to decide.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F16",
@@ -311,7 +311,7 @@
       ],
       "position": "ASSESSMENT → CONCEDE-AND-HOLD → counter-assessment. Position 2.",
       "presupposes": "Presupposes F12, and disagreement survivable. All three attestations in scene 22.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F17",
@@ -324,7 +324,7 @@
       ],
       "position": "SELF-DOWNGRADE → COUNTER-ASSESSMENT. Position 2.",
       "presupposes": "Presupposes F12 and F13. The corpus’s only disagreement of any kind. Both attestations in scene 22.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F18",
@@ -337,7 +337,7 @@
       ],
       "position": "DIFFICULTY → NORMALISE+TAG → EMPHATIC AGREE. Positions 2 and 3, bound.",
       "presupposes": "Presupposes F12 and F16. Both attestations in scene 22, the last two rows of the corpus.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F19",
@@ -350,7 +350,7 @@
       ],
       "position": "WELLBEING-Q → STATE REPORT. Position 2.",
       "presupposes": "Presupposes F14. May be a sub-case of F14 — see U10.",
-      "provenance": "pod-0"
+      "provenance": "pod-1"
     },
     {
       "id": "F21",
@@ -364,7 +364,7 @@
       ],
       "position": "GRANT → ONWARD SOLICIT → new ticket. Position 2→1 pivot.",
       "presupposes": "Presupposes F1. Composes the transaction shape into a chain.",
-      "provenance": "pod-0",
+      "provenance": "pod-1",
       "pivot_capable": true,
       "also_initiating_at": [
         71,

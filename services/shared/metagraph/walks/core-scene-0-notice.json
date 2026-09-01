@@ -9,7 +9,7 @@
     "job": "Author the NOTICE realisation of CORE scene 0 (2026-08-31) — the walk both prior authorings of scene 0 declared as a gap",
     "shape": "N1201 Medium contract, notice realisation, as ratified at cd9d93e2f. The notice is the PRIMITIVE (Tom's ruling of 2026-08-31): it declares the asymmetry and nothing else — no request, no grant, and no branch. The survivability branch belongs to the REQUEST, which is why the offer has a decline family and the notice cannot: with no shared fallback there is nothing to decline into.",
     "closes": "The declared gap in walks/core-scene-0.json (branch feat/core-scene-0-v2-2026-08-31, commits 76f67aa84 and e302afd0f, /d/095af584 and /d/89aab612): 'The notice realisation of position 1 has no walk here.' The two files are siblings — both authored, neither transcribed — and this one adds no branch walks because the shape it realises has none.",
-    "host": "Sited inside an existing pod-0 functional scenario, cast inherited and nobody invented: directions in the street (pod-0 W13, scene 13 — Tourist, Local).",
+    "host": "Sited inside an existing pod-1 functional scenario, cast inherited and nobody invented: directions in the street (pod-1 W13, scene 13 — Tourist, Local).",
     "statement": "AUTHORED, NOT TRANSCRIBED. Every surface line was written for this scene against the ratified shape. There is no corpus behind it: no `row` appears anywhere, no g-number is cited, and no line here is attested speech. Do not merge these counts into a corpus accounting."
   },
   "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Copied from walks/pod-0.json so coverage stays computable without parsing prose.",

@@ -34,7 +34,7 @@
  *
  * Usage:
  *   node tools/frame-layer/extract-dialogue-patterns.cjs
- *   node tools/frame-layer/extract-dialogue-patterns.cjs --pods pod-0,pod-1 --no-sector
+ *   node tools/frame-layer/extract-dialogue-patterns.cjs --pods pod-1 --no-sector
  *   node tools/frame-layer/extract-dialogue-patterns.cjs --json out.json --md out.md
  */
 require('dotenv').config({ quiet: true });
@@ -52,14 +52,14 @@ const DOCS = path.join(ROOT, 'docs', 'frame-layer');
  * meta-conversation frames into a learner's practice pool. It is a CLI switch,
  * not a hard exclusion: `--pods` takes any list.
  */
-const DEFAULT_PODS = ['pod-0', 'pod-0.5', 'pod-1'];
+const DEFAULT_PODS = ['pod-1'];
 const SECTOR_SOURCES = ['docs/sector-pods/source/health-sector-conversations-v3.md'];
 
 /**
  * Register comes MECHANICALLY from the attesting row — never hand-assigned.
  *
  * The design proposed reading it from `scene_title` alone. The corpus refutes
- * that on its own data: pod-0's counter transaction with the Barista ("Here's
+ * that on its own data: pod-1's counter transaction with the Barista ("Here's
  * your coffee.", row SC03-S09) sits inside the scene titled "A Day of Greetings
  * (iii) - 3 pm", so a title-only rule tags a service encounter as social. The
  * SPEAKER is the second mechanical signal and it is the reliable one: a ROLE

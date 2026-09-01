@@ -551,7 +551,7 @@ async function main() {
   const { data: canon, error } = await db.from('canonical_pod_scenarios')
     // Always 'pod-0': this is the CANONICAL source Aran wrote, not the destination
     // pod being rewritten. --pod-slug moves where we write, never what we read.
-    .select('*').eq('pod_slug', 'pod-0').order('global_order')
+    .select('*').eq('pod_slug', 'pod-1').order('global_order')
   if (error) throw error
   if (!canon.length) throw new Error('canonical_pod_scenarios has no pod-0 rows — refusing to align')
 

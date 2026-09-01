@@ -25,18 +25,23 @@ export const STEP_KINDS = {
 }
 
 /**
- * Build a walk from `canonical_pod_scenarios` rows (the POD-1 / pod-0 shape).
+ * Build a walk from `canonical_pod_scenarios` rows (the pod-1 shape).
  * `refSpace` names the reference space the graph's attestations are written in;
  * only rows in that space can map, and rows outside it are honestly UNMAPPED.
  */
 /**
- * The graph's `g<n>` references are `pod-0`'s `global_order` and nobody else's.
- * `pod-1` and `pod-0.5` are separate slates whose row numbers collide with them
- * by accident, so mapping them through this graph would invent coverage out of
- * an off-by-one. Any slug but `pod-0` walks in its own reference space and every
- * line comes back UNMAPPED, which is the true answer.
+ * The graph's `g<n>` references are the live canonical slate's `global_order`
+ * and nobody else's. That slate is `pod-1` — the first rung of the compulsory
+ * default chain, renamed from `pod-0` on 2026-09-01 when the two sacked slates
+ * that held the names `pod-1` and `pod-0.5` were archived and deleted. Any other
+ * slate (`method-pod-chapters`, `learning-flagship`, and anything ingested later)
+ * numbers its rows independently, so mapping it through this graph would invent
+ * coverage out of an off-by-one. Any slug but this one walks in its own reference
+ * space and every line comes back UNMAPPED, which is the true answer.
+ *
+ * This constant is the one place the live slate is named. Nothing infers it.
  */
-export const GRAPH_REF_SLUG = 'pod-0'
+export const GRAPH_REF_SLUG = 'pod-1'
 
 export function walkFromCanonicalRows (rows, graph, opts = {}) {
   const refSpace = opts.refSpace || (opts.slug && opts.slug !== GRAPH_REF_SLUG ? opts.slug : 'g')
@@ -258,8 +263,9 @@ export function walkFromStoredPod (rows, walkSteps, graph, opts = {}) {
     id: opts.id || opts.slug || 'walk',
     title: opts.title || opts.slug || 'walk',
     source: 'canonical-pod + stored walk',
-    // These pods walk in their own reference space: their lines are not pod-0 rows
-    // and mapping them through pod-0's g-numbers would invent coverage.
+    // These pods walk in their own reference space: their lines are not rows of
+    // the graph's reference slate (GRAPH_REF_SLUG) and mapping them through its
+    // g-numbers would invent coverage.
     refSpace: opts.slug || 'pod',
     editable: opts.editable !== false,
     scenes,

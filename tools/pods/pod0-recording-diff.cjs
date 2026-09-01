@@ -207,10 +207,11 @@ if (require.main === module) {
   const { createClient } = require('@supabase/supabase-js')
   const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
   const courses = process.argv.slice(2).filter(a => !a.startsWith('-'))
-  const podSlug = 'pod-0'
+  const podSlug = 'pod-0'          // the per-course LISTENING pod served today
+  const canonicalSlug = 'pod-1'    // the canonical slate, renamed from 'pod-0' on 2026-09-01
   ;(async () => {
     const { data: canon, error: ce } = await db.from('canonical_pod_scenarios')
-      .select('*').eq('pod_slug', podSlug).order('global_order')
+      .select('*').eq('pod_slug', canonicalSlug).order('global_order')
     if (ce) throw ce
     const out = {}
     for (const code of (courses.length ? courses : ['cym_n_for_eng', 'cym_s_for_eng'])) {

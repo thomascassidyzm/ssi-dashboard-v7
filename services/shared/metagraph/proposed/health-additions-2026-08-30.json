@@ -19,7 +19,7 @@
     "survivability_edges": "S101–S107",
     "outcome_shapes": "O101"
   },
-  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on one point only: `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"health-sector-v3\". Widening that enum is a one-line change to the schema and it is deliberately NOT made here. Attestations are carried in an `attestations.health` array of \"<context> flow <n>\" citations, because the schema's `row` pattern (^g[0-9]+$) is a pod-0 row id and health has no g-rows.",
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on one point only: `provenance` is an enum of [\"pod-1\", \"method-pod\"] and this file needs \"health-sector-v3\". Widening that enum is a one-line change to the schema and it is deliberately NOT made here. Attestations are carried in an `attestations.health` array of \"<context> flow <n>\" citations, because the schema's `row` pattern (^g[0-9]+$) is a pod-1 row id and health has no g-rows.",
   "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json and walks/ are byte-identical to 8215a7462. POD-1 is attested evidence and is extended here, never re-cut.",
 
   "nodes": [
@@ -306,7 +306,7 @@
       "nodes": ["P5"],
       "attested_response_positions": ["2.2 flow 3 — 'months, maybe?' → 'was it there at Christmas, say?'", "1.4 flow 2 — the 0-to-10 scale fails → 'let me ask another way'", "2.3 flow 3 — 'I can't remember them all' → 'do you have the repeat list with you?'"],
       "recovery_attested": "repeated",
-      "recovery_note": "Three times. This is the recovery pod-0's S2 records as NEVER attested — 'no turn in the corpus takes up a hedge'. Health takes up the hedge three different ways: anchor it, re-frame the question, route to an artefact.",
+      "recovery_note": "Three times. This is the recovery pod-1's S2 records as NEVER attested — 'no turn in the corpus takes up a hedge'. Health takes up the hedge three different ways: anchor it, re-frame the question, route to an artefact.",
       "answer_slot_class": "failure"
     },
     {
@@ -354,7 +354,7 @@
       "nodes": ["N6"],
       "attested_response_positions": ["2.5 flow 2 — 'could you explain that again? what does that mean, exactly?' → 'an infection in the tubes of your lungs - a bug, basically'", "2.2 flow 2 — 'do you mean the pain or the dizziness?'", "1.1 flow 2 — 'what was your name again?'"],
       "recovery_attested": "repeated",
-      "recovery_note": "Three times, complete, and the reformulation is genuine — not a repeat. pod-0 attests N6 once in 231 rows; health attests it three times in 73 flows and licenses it in advance at N101.",
+      "recovery_note": "Three times, complete, and the reformulation is genuine — not a repeat. pod-1 attests N6 once in 231 rows; health attests it three times in 73 flows and licenses it in advance at N101.",
       "answer_slot_class": "chaining"
     },
     {

@@ -157,7 +157,7 @@
         <div v-if="cov" class="mt-4 border-t border-line pt-3">
           <p v-if="!nodeLines.length" class="text-danger text-sm">
             <strong>{{ activeLabel }} never reaches this shape.</strong>
-            <span class="text-muted"> No line in its script walks it<span v-if="node && node.origin !== 'pod-0'">, and it was not drawn from this pod's corpus — it came from {{ originLabel(node.origin) }}</span>.</span>
+            <span class="text-muted"> No line in its script walks it<span v-if="node && node.origin !== 'pod-1'">, and it was not drawn from this pod's corpus — it came from {{ originLabel(node.origin) }}</span>.</span>
           </p>
           <template v-else>
             <p class="text-xs text-faint mb-2">The lines of {{ activeLabel }} that walk this shape — {{ nodeLines.length }} of them, across {{ nodeScenes }} scenes</p>
@@ -252,24 +252,26 @@ async function authedFetch (path, init = {}) {
 }
 
 const LABELS = {
-  'pod-0': 'POD 1',
+  'pod-1': 'POD 1',
   'learning-flagship': 'Learning flagship',
   'method-pod-chapters': 'Method Pod — chapters',
   'method-pod-43-scene': 'Method Pod — 43 scenes'
 }
 
-const ORDER = ['pod-0', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
+const ORDER = ['pod-1', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
 
-// pod-1 and pod-0.5 are separate slates whose row numbers collide with this
-// graph's by accident: they read as 0 of 35 shapes and every tile red, which is
-// true of the numbers and a lie about the pods. They are not shown here at all —
-// nothing on this graph is theirs to say. Reversible in one line.
-const HIDDEN = new Set(['pod-1', 'pod-0.5'])
+// Slates whose row numbers collide with this graph's by accident read as 0 of 35
+// shapes and every tile red, which is true of the numbers and a lie about the pod.
+// Such a slate is not shown here at all — nothing on this graph is theirs to say.
+// The two that were hidden here, 'pod-1' and 'pod-0.5', were the sacked
+// pre-metagraph slates; they were archived and deleted on 2026-09-01 and the live
+// slate took the name 'pod-1'. Nothing needs hiding today. Reversible in one line.
+const HIDDEN = new Set([])
 
 // The store names each shape's provenance in its own slugs; the page says them
 // the way a person says them. Same shape, one name, everywhere on screen.
 const ORIGINS = {
-  'pod-0': 'POD 1',
+  'pod-1': 'POD 1',
   'method-pod': 'the Method Pod',
   'talk-bollocks': 'Talk Bollocks',
   trades: 'the Trades pod'
@@ -332,7 +334,7 @@ const byOrigin = computed(() => {
  *  accounting it is. Not a defect in this page and not hidden: the walks that
  *  place those lines have not been encoded yet. */
 const walkGap = computed(() => {
-  if (active.value !== 'pod-0') return ''
+  if (active.value !== 'pod-1') return ''
   const a = graph.accounting
   if (!a?.complete_walks_encoded_here || !a?.complete_walks_in_corpus) return ''
   return ` — ${a.complete_walks_encoded_here} of its ${a.complete_walks_in_corpus} complete walks are encoded in the store so far`
@@ -422,9 +424,9 @@ async function select (slug) {
     const res = await authedFetch(`/api/admin/canonical-pods/${encodeURIComponent(slug)}`)
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-    // A pod carrying a stored walk is read through it; pod-0 and the sacked
-    // slates carry none and keep the row-reference path. Same reading as the
-    // Script Lab — no second opinion about what a pod's walk is.
+    // A pod carrying a stored walk is read through it; pod-1 carries none and
+    // keeps the row-reference path. Same reading as the Script Lab — no second
+    // opinion about what a pod's walk is.
     const w = (body.walk || []).length
       ? walkFromStoredPod(body.scenarios || [], body.walk, graph, { id: slug, slug })
       : walkFromCanonicalRows(body.scenarios || [], graph, { id: slug, slug })
@@ -443,8 +445,8 @@ onMounted(async () => {
     const res = await authedFetch('/api/admin/canonical-pods')
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-    // The pod the graph was derived from leads; the two sacked slates go last.
-    // Alphabetical order buried POD 1 in the middle of a row of also-rans.
+    // The pod the graph was derived from leads. Alphabetical order buried POD 1
+    // in the middle of a row of also-rans.
     const rank = s => ORDER.indexOf(s) === -1 ? ORDER.length : ORDER.indexOf(s)
     pods.value = (body.pods || [])
       .filter(p => !HIDDEN.has(p.slug))
@@ -452,12 +454,12 @@ onMounted(async () => {
       .sort((a, b) => rank(a.slug) - rank(b.slug) || a.slug.localeCompare(b.slug))
   } catch (e) {
     podsError.value = e.message
-    pods.value = [{ slug: 'pod-0', label: LABELS['pod-0'], lines: null }]
+    pods.value = [{ slug: 'pod-1', label: LABELS['pod-1'], lines: null }]
   }
   // Arrive with a picture, not with a grey lattice: POD 1 is the pod this graph
   // was derived from and the one whose overlay tells the story. "Graph only" is
   // still one tap away.
-  if (active.value === null && pods.value.some(p => p.slug === 'pod-0')) await select('pod-0')
+  if (active.value === null && pods.value.some(p => p.slug === 'pod-1')) await select('pod-1')
 })
 </script>
 

@@ -222,7 +222,7 @@
       {
         "id": "S1",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "Any ticket (N2, N3)",
         "a_survivable": "Re-select after a substitute",
         "nodes": [
@@ -243,7 +243,7 @@
       {
         "id": "S2",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "Any information question (N3, N4)",
         "a_survivable": "Acting on a hedge",
         "nodes": [
@@ -264,7 +264,7 @@
       {
         "id": "S3",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "Asking anything at all",
         "a_survivable": "Repair — F7 request, F8 reformulation",
         "nodes": [
@@ -280,7 +280,7 @@
       {
         "id": "S4",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "A personal question (N5)",
         "a_survivable": "The question coming straight back",
         "nodes": [
@@ -298,7 +298,7 @@
       {
         "id": "S5",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "Instruction-giving (N4)",
         "a_survivable": "Being corrected inside a confirm",
         "nodes": [
@@ -314,7 +314,7 @@
       {
         "id": "S6",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "A proposal (N7)",
         "a_survivable": "A second no",
         "nodes": [
@@ -330,7 +330,7 @@
       {
         "id": "S7",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "Closing a transaction",
         "a_survivable": "An unsolicited topic shift and a compliment",
         "nodes": [
@@ -347,7 +347,7 @@
       {
         "id": "S8",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "Any self-account (N11)",
         "a_survivable": "Being contradicted",
         "nodes": [
@@ -364,7 +364,7 @@
       {
         "id": "S9",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "An offer (N8)",
         "a_survivable": "Declining to decide",
         "nodes": [
@@ -380,7 +380,7 @@
       {
         "id": "S10",
         "kind": "survivability",
-        "provenance": "pod-0",
+        "provenance": "pod-1",
         "b_attemptable_only_if": "A long instruction (N4)",
         "a_survivable": "Inviting an unbounded turn",
         "nodes": [

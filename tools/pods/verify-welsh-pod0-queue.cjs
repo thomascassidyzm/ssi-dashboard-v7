@@ -28,11 +28,16 @@ const { norm } = require('./pod0-recording-diff.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const ARCHIVE = path.join(__dirname, '..', '..', 'docs', 'pods', 'pod0-welsh-prealign-archive-2026-08-06')
+// The live canonical slate. Renamed from 'pod-0' to 'pod-1' on 2026-09-01 —
+// this is a `canonical_pod_scenarios` slug and is NOT a course's listening-pod
+// slug, which is per-course and still 'pod-0' on most courses.
+const CANONICAL_SLUG = 'pod-1'
+
 const COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
 
 ;(async () => {
   const { data: canonRaw } = await db.from('canonical_pod_scenarios')
-    .select('*').eq('pod_slug', 'pod-0').order('global_order')
+    .select('*').eq('pod_slug', CANONICAL_SLUG).order('global_order')
   const canonEnglish = new Set(canonRaw.map(r => norm(r.english_text.replace(/\[target language\]/gi, 'Welsh'))))
 
   let failures = 0

@@ -21,7 +21,7 @@ const COURSES = [
 
 ;(async () => {
   const { data: canonRaw } = await db.from('canonical_pod_scenarios')
-    .select('*').eq('pod_slug', 'pod-0').order('global_order')
+    .select('*').eq('pod_slug', 'pod-1').order('global_order')  // canonical slate, renamed from 'pod-0' 2026-09-01
   const canon = canonRaw.map(r => ({ ...r, english_text: r.english_text.replace(/\[target language\]/gi, 'Welsh') }))
 
   const L = []

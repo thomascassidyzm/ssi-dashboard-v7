@@ -124,7 +124,7 @@ function coverage(walkSetName, opts = {}) {
     for (const r of stepRefs(w)) counts.set(r.node, (counts.get(r.node) || 0) + 1);
   }
 
-  const universe = (opts.includeMethodPod ? g.nodes : g.nodes.filter(n => n.provenance === 'pod-0'))
+  const universe = (opts.includeMethodPod ? g.nodes : g.nodes.filter(n => n.provenance === 'pod-1'))
     .map(n => n.id);
 
   return {
@@ -155,8 +155,8 @@ function branches(walkSetName) {
  */
 function deliveryOrder(opts = {}) {
   const g = load();
-  const edges = g.survivability.filter(e => opts.includeMethodPod || e.provenance === 'pod-0');
-  const universe = (opts.includeMethodPod ? g.nodes : g.nodes.filter(n => n.provenance === 'pod-0')).map(n => n.id);
+  const edges = g.survivability.filter(e => opts.includeMethodPod || e.provenance === 'pod-1');
+  const universe = (opts.includeMethodPod ? g.nodes : g.nodes.filter(n => n.provenance === 'pod-1')).map(n => n.id);
 
   // B presupposes A: every node the edge names must be survivable before B is attemptable.
   // The corpus edges name their B side in prose, so the derivable relation is A-before-B only

@@ -4685,7 +4685,10 @@ app.get('/api/pod-scripts/:courseCode', async (req, res) => {
 app.post('/api/admin/pods/generate', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   const courseCode = String(req.body?.courseCode || '').trim()
+  // The per-course LISTENING pod to write. Not the canonical slate to read from:
+  // those were one value until 2026-09-01 and are now two (canonicalSlug below).
   const slug = String(req.body?.slug || 'pod-0').trim()
+  const canonicalSlug = req.body?.canonicalSlug ? String(req.body.canonicalSlug).trim() : undefined
   const force = req.body?.force === true
   // mode: 'full' | 'sync' | 'resume'. 'sync' propagates a canonical edit
   // surgically (re-flex only changed scenes, preserve the rest + its audio).
@@ -4694,7 +4697,7 @@ app.post('/api/admin/pods/generate', async (req, res) => {
   try {
     const podGenerator = require('./pod-dialogue-generator.cjs')
     const r = await podGenerator.generatePodBatch({
-      courseCode, podSlug: slug, force, mode,
+      courseCode, podSlug: slug, canonicalSlug, force, mode,
       deadlineMs: 45_000, maxScenes: 4, // bounded per call; UI loops until more_remaining=false
       log: (m) => logger.info('[PodGen] ' + m),
     })
@@ -4805,15 +4808,15 @@ app.get('/api/admin/canonical-pods/:slug', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   try {
     const sb = supabaseClient.getClient()
-    const slug = String(req.params.slug || 'pod-0')
+    const slug = String(req.params.slug || 'pod-1')
     const { data, error } = await sb.from('canonical_pod_scenarios')
       .select('id, scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, target_text, target_lang, author_notes')
       .eq('pod_slug', slug).order('global_order', { ascending: true })
     if (error) throw error
-    // The walk, in node-reference form, from the store beside the dialogue. pod-0's
-    // walk lives in services/shared/metagraph/walks/pod-0.json and is read on the
-    // client; a pod ingested from markdown carries its walk here instead, so this
-    // is empty for pod-0/pod-1/pod-0.5 and the old read path is unchanged.
+    // The walk, in node-reference form, from the store beside the dialogue. The
+    // live slate's walk lives in services/shared/metagraph/walks/pod-1.json and is
+    // read on the client; a pod ingested from markdown carries its walk here
+    // instead, so this is empty for pod-1 and the old read path is unchanged.
     const { data: walk, error: walkError } = await sb.from('canonical_pod_walk_steps')
       .select('id, walk_id, walk_name, scene_number, step_order, kind, node_id, declared_as, register, resolution, scenario_id, note')
       .eq('pod_slug', slug).order('scene_number', { ascending: true }).order('step_order', { ascending: true })

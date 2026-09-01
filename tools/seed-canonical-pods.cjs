@@ -10,7 +10,7 @@
  * Usage:
  *   node tools/seed-canonical-pods.cjs                 # dry run (default) — prints what it would insert
  *   node tools/seed-canonical-pods.cjs --execute       # upsert into canonical_pod_scenarios
- *   node tools/seed-canonical-pods.cjs --file=PATH --slug=pod-0 --execute
+ *   node tools/seed-canonical-pods.cjs --file=PATH --slug=pod-1 --execute
  */
 
 require('dotenv').config()
@@ -19,7 +19,7 @@ const fs = require('fs')
 const arg = (n, d) => { const h = process.argv.find(a => a.startsWith(`--${n}=`)); return h ? h.slice(n.length + 3) : d }
 const EXECUTE = process.argv.includes('--execute')
 const FILE = arg('file', `${process.env.HOME}/Desktop/english-pods.md`)
-const POD_SLUG = arg('slug', 'pod-0')
+const POD_SLUG = arg('slug', 'pod-1')
 
 const pad = (n) => String(n).padStart(2, '0')
 

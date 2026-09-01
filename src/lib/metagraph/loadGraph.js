@@ -19,14 +19,14 @@ import nodes from '../../../services/shared/metagraph/nodes.json'
 import edges from '../../../services/shared/metagraph/edges.json'
 import moves from '../../../services/shared/metagraph/moves.json'
 import outcomeShapes from '../../../services/shared/metagraph/outcome-shapes.json'
-import podZeroWalk from '../../../services/shared/metagraph/walks/pod-0.json'
+import podOneWalk from '../../../services/shared/metagraph/walks/pod-1.json'
 import { graphFromStore } from './fromStore.js'
 
 let cached = null
 
 export function loadGraph () {
   if (!cached) {
-    cached = graphFromStore({ nodes, edges, moves, outcomeShapes, walkSets: { 'pod-0': podZeroWalk } })
+    cached = graphFromStore({ nodes, edges, moves, outcomeShapes, walkSets: { 'pod-1': podOneWalk } })
   }
   return cached
 }

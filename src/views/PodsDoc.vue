@@ -76,7 +76,7 @@
         </div>
         <p class="text-ink mb-5">
           Each row is one line of dialogue in the English master. The primary key encodes provenance, e.g.
-          <code class="font-mono">pod-0:SC01-S003</code> (pod <code class="font-mono">pod-0</code>, scene 1, sentence 3).
+          <code class="font-mono">pod-1:SC01-S003</code> (pod <code class="font-mono">pod-1</code>, scene 1, sentence 3).
         </p>
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
@@ -87,7 +87,7 @@
               </tr>
             </thead>
             <tbody class="text-muted">
-              <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-ink">pod_slug</td><td class="py-2">Pod set the line belongs to (<code class="font-mono">pod-0</code>, <code class="font-mono">travel</code> …)</td></tr>
+              <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-ink">pod_slug</td><td class="py-2">Pod set the line belongs to (<code class="font-mono">pod-1</code>, <code class="font-mono">travel</code> …)</td></tr>
               <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-ink">scene_number / scene_title / scene_subtitle</td><td class="py-2">Scene index and display labels (e.g. "A Day of Greetings" / "Morning to night")</td></tr>
               <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-ink">sentence_number</td><td class="py-2">Line index within the scene</td></tr>
               <tr class="border-b border-line"><td class="py-2 pr-4 font-mono text-ink">global_order</td><td class="py-2">Order across the whole pod set - drives sentence sequencing</td></tr>

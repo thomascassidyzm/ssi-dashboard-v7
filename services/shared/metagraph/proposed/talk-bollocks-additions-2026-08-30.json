@@ -19,7 +19,7 @@
     "survivability_edges": "S301–S305",
     "outcome_shapes": "none minted — attestation extensions to O4, O7, O2 recorded under outcome_attestations_extended"
   },
-  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on two points, both deliberate and neither fixed here: `provenance` is an enum of [\"pod-0\", \"method-pod\"] and this file needs \"talk-bollocks\" (same deviation the health file recorded); attestations are carried as `part:line` strings into the corpus files, matching the store's own M-edge convention (M:1:54) minus the M prefix, because the schema's row pattern (^g[0-9]+$) is a pod-0 row id.",
+  "schema_note": "This file does NOT validate against schemas/metagraph-v1-schema.json as written, on two points, both deliberate and neither fixed here: `provenance` is an enum of [\"pod-1\", \"method-pod\"] and this file needs \"talk-bollocks\" (same deviation the health file recorded); attestations are carried as `part:line` strings into the corpus files, matching the store's own M-edge convention (M:1:54) minus the M prefix, because the schema's row pattern (^g[0-9]+$) is a pod-1 row id.",
   "store_untouched": "nodes.json, moves.json, edges.json, outcome-shapes.json, walks/ and index.cjs are byte-identical to origin/main. POD-1 is attested evidence and is extended here, never re-cut. M1–M5 are extended by S301–S305, no collisions.",
   "ladder_note": "Every entry carries rung 0 and kinds_held_by_other_party [] on #283's ruler. Per-shape kind-death rulings live in each entry's `ladder` and in the mapping document §6.",
 
@@ -44,7 +44,7 @@
       "kinds_held_by_other_party": [],
       "ladder": {
         "changes_at": ["K1"],
-        "K1": "DIES. The completion becomes an answer to be graded; ratification becomes marking. Zero completions in pod-0's 231 rows, zero in health's 438 turns. Remnant: P3/F9 — you may restate, never complete.",
+        "K1": "DIES. The completion becomes an answer to be graded; ratification becomes marking. Zero completions in pod-1's 231 rows, zero in health's 438 turns. Remnant: P3/F9 — you may restate, never complete.",
         "K2": "already dead at K1",
         "K3": "inert",
         "K4": "inert"
@@ -265,7 +265,7 @@
       "thin": "One clean dialogic attestation. The thinnest id in this file; minted because the position is unmistakable on the page and the store holds nothing for it. Strikeable with one word.",
       "rung": 0,
       "kinds_held_by_other_party": [],
-      "ladder": { "changes_at": ["K1"], "K1": "DIES — across an information gradient the ratification position cannot be honestly occupied; no higher-rung form exists, which is why nothing like it appears in pod-0 or health", "K2": "already dead", "K3": "inert", "K4": "inert" }
+      "ladder": { "changes_at": ["K1"], "K1": "DIES — across an information gradient the ratification position cannot be honestly occupied; no higher-rung form exists, which is why nothing like it appears in pod-1 or health", "K2": "already dead", "K3": "inert", "K4": "inert" }
     }
   ],
 

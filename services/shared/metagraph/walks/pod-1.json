@@ -2,14 +2,21 @@
   "$schema": "../../../../schemas/metagraph-v1-schema.json",
   "concept": "walk-set",
   "version": 1,
-  "walk_set": "pod-0",
+  "walk_set": "pod-1",
   "corpus": {
     "table": "canonical_pod_scenarios",
-    "pod_slug": "pod-0",
+    "pod_slug": "pod-1",
     "rows": 231,
     "scenes": 22,
-    "caveat": "pod_slug 'pod-0' IS the live POD 1. The slugs 'pod-1' (236 rows) and 'pod-0.5' (27 rows) are sacked slates and are positively excluded.",
-    "variant_key": "null on all 231 rows — surface variants and outcome branches are indistinguishable in the source data"
+    "caveat": "pod_slug 'pod-1' IS the live canonical slate — the first rung of the compulsory default chain, the walk a learner descends to by not choosing. It was named 'pod-0' until 2026-09-01, when the two sacked pre-metagraph slates that then held the names 'pod-1' (236 rows) and 'pod-0.5' (27 rows) were archived and deleted and this slate was renamed onto its correct name. Documents written before that date say 'pod-0' IS the live pod: that was true then and is not true now.",
+    "variant_key": "null on all 231 rows — surface variants and outcome branches are indistinguishable in the source data",
+    "renamed": {
+      "on": "2026-09-01",
+      "from": "pod-0",
+      "to": "pod-1",
+      "why": "Numbering was retired as a CONTENT label — a walk is named by what it masks — but numbers name the COMPULSORY DEFAULT CHAIN: pod-1, pod-2, pod-3 is the ladder a learner descends by not choosing (Tom's ruling, 2026-09-01). This slate was always the first rung; it had never been named as one.",
+      "archive": "~/ssi-evidence/ssi-dashboard-v7/archive/canonical-pod-slug-migration-2026-09-01/"
+    }
   },
   "source": {
     "document": "docs/pods/shape-graph-2026-08-30.md",
@@ -38,7 +45,7 @@
     "total": 231,
     "complete_walks_in_corpus": 47,
     "complete_walks_encoded_here": 16,
-    "gap": "The document states 47 complete walks and enumerates none of them. The 16 walks encoded here are the ones the document names by attestation run in §2, §3, §4 and §6 — a representative subset covering 12 of the 12 pod-0 nodes, 18 of the 19 composition edges and 10 of the 10 corpus survivability edges. The remaining complete walks, carrying the rows counted in rows_on_complete_walks_not_yet_placed, are a NAMED GAP and are not encoded."
+    "gap": "The document states 47 complete walks and enumerates none of them. The 16 walks encoded here are the ones the document names by attestation run in §2, §3, §4 and §6 — a representative subset covering 12 of the 12 pod-1 nodes, 18 of the 19 composition edges and 10 of the 10 corpus survivability edges. The remaining complete walks, carrying the rows counted in rows_on_complete_walks_not_yet_placed, are a NAMED GAP and are not encoded."
   },
   "coverage_of_the_graph": {
     "nodes": [

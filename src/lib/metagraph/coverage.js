@@ -15,7 +15,7 @@ import { STEP_KINDS } from './walk.js'
 /** The row numbers a walk actually visits, in the graph's own reference space.
  * Only a walk whose refSpace IS the graph's g-space contributes rows: a stored
  * pod's `global_order` is its own numbering, and reading it as a g-number made
- * every stored-walk pod "exercise" pod-0's survivability edges by numeric
+ * every stored-walk pod "exercise" pod-1's survivability edges by numeric
  * coincidence (the identical 10/15 read-out across all four pods). */
 function visitedRows (walk) {
   const set = new Set()

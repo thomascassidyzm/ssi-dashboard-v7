@@ -36,7 +36,7 @@ const g = mg.load({ fresh: true });
 console.log(`\nThe counts the derivation document asserts (${DOC}),`);
 console.log('extended by the 2026-08-31 ratifications (docs/pods/core-walks-ratification-2026-08-31.md,\n  docs/pods/medium-negotiation-ratification-2026-08-31.md)');
 check('nodes', g.nodes.length, 30);
-check('nodes from pod-0', g.nodes.filter(n => n.provenance === 'pod-0').length, 12);
+check('nodes from pod-1', g.nodes.filter(n => n.provenance === 'pod-1').length, 12);
 check('nodes from the Method Pod', g.nodes.filter(n => n.provenance === 'method-pod').length, 10);
 check('nodes from Talk Bollocks', g.nodes.filter(n => n.provenance === 'talk-bollocks').length, 6);
 check('nodes from trades (N501, Tom\'s ruling)', g.nodes.filter(n => n.provenance === 'trades').map(n => n.id), ['N501']);
@@ -51,14 +51,14 @@ check('survivability edges, the medium negotiation', (g.survivabilityByProvenanc
 check('every survivability bucket is loaded, none silently dropped', g.survivability.length,
       Object.values(g.survivabilityByProvenance).reduce((n, b) => n + b.length, 0));
 check('outcome shapes', g.outcomeShapes.length, 9);
-// The CORE set: 12 pod-0 nodes + 6 bound pairs = the audit's 18, plus N1201, which Tom ruled CORE
+// The CORE set: 12 pod-1 nodes + 6 bound pairs = the audit's 18, plus N1201, which Tom ruled CORE
 // and sited as a prologue. A prologue PREPENDS, so nothing is reordered and the set grows 18 -> 19.
-check('CORE shapes (12 pod-0 nodes + 6 bound pairs + the medium contract)',
-      g.nodes.filter(n => n.provenance === 'pod-0').length + g.boundPairs.length
+check('CORE shapes (12 pod-1 nodes + 6 bound pairs + the medium contract)',
+      g.nodes.filter(n => n.provenance === 'pod-1').length + g.boundPairs.length
         + g.nodes.filter(n => n.core_siting).length, 19);
 check('outcome shapes minted from nothing', g.outcomeShapes.filter(o => o.attestation_class === 'minted').length, 4);
 check('outcome shapes attested in the Method Pod only', g.outcomeShapes.filter(o => o.attestation_class === 'method-pod-only').length, 3);
-check('outcome shapes attested thinly in pod-0', g.outcomeShapes.filter(o => o.attestation_class === 'thin').length, 2);
+check('outcome shapes attested thinly in pod-1', g.outcomeShapes.filter(o => o.attestation_class === 'thin').length, 2);
 
 console.log('\nThe null result — no survivability edge rests on anything failing');
 const classes = g.survivabilityByProvenance.corpus.map(e => e.answer_slot_class);
@@ -110,8 +110,8 @@ for (const name of mg.walkSets()) {
   }
 }
 
-const bs = mg.branches('pod-0');
-check('branch points stored in pod-0', bs.length, 1);
+const bs = mg.branches('pod-1');
+check('branch points stored in pod-1', bs.length, 1);
 ok('the branch is g15 vs g16 — the acceptance test',
    bs[0] && bs[0].branches.map(b => b.row).sort().join(',') === 'g15,g16',
    bs[0] ? bs[0].branches.map(b => b.row).join(',') : 'no branch');
@@ -119,7 +119,7 @@ ok('the two branches are mutually exclusive outcomes, not surface variants',
    bs[0] && bs[0].variance === 'outcome' && bs[0].branches.filter(b => b.continues).length === 1);
 
 console.log('\nThe 231 rows reconcile');
-const a = mg.walkSet('pod-0').accounting;
+const a = mg.walkSet('pod-1').accounting;
 check('codas', a.codas, 16);
 check('drill rows, scenes 15-21', a.drill_rows_scenes_15_21, 73);
 check('rows on complete walks', a.rows_on_complete_walks, 138);
@@ -130,12 +130,12 @@ ok('the unencoded complete walks are declared as a gap, not silently dropped',
    typeof a.gap === 'string' && a.rows_on_complete_walks_not_yet_placed > 0);
 
 console.log('\nCoverage is computable without parsing any prose');
-const cov = mg.coverage('pod-0');
-check('pod-0 nodes never reached by the stored walks', cov.never, []);
+const cov = mg.coverage('pod-1');
+check('pod-1 nodes never reached by the stored walks', cov.never, []);
 ok('coverage returns traversed / revisited / never', ['traversed', 'revisited', 'never'].every(k => Array.isArray(cov[k])));
 
 console.log('\nLanguage-agnostic');
-const blob = JSON.stringify([g.meta.nodes, g.meta.moves, g.meta.edges, g.meta.outcomes, mg.walkSet('pod-0')]);
+const blob = JSON.stringify([g.meta.nodes, g.meta.moves, g.meta.edges, g.meta.outcomes, mg.walkSet('pod-1')]);
 ok('no lang_pair anywhere in the store', !/lang_pair|target_lang|language_pair/.test(blob));
 
 console.log('\nSchema');
@@ -149,7 +149,7 @@ if (!Ajv) {
   const validate = ajv.compile(schema);
   for (const [label, doc] of [['nodes.json', g.meta.nodes], ['moves.json', g.meta.moves],
                               ['edges.json', g.meta.edges], ['outcome-shapes.json', g.meta.outcomes],
-                              ['walks/pod-0.json', mg.walkSet('pod-0')]]) {
+                              ['walks/pod-1.json', mg.walkSet('pod-1')]]) {
     ok(`${label} validates`, validate(doc), ajv.errorsText(validate.errors, { separator: '; ' }));
   }
 }
