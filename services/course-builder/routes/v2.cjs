@@ -432,12 +432,6 @@ module.exports = function(ctx) {
 
       // STEP 5: Clean up old LEGOs/phrases for drafted seeds, then write LEGOs only (NO phrases)
       const draftSeedList = [...draftedSeedNumbers];
-
-      // One event for the finalize — the cleanup delete and every row written below carry it.
-      const eventId = req.contentEdit
-        ? await req.contentEdit.record({ scope: { seed_numbers: draftSeedList, rows: draftSeedList.length } })
-        : null;
-
       if (draftSeedList.length > 0) {
         const { error: delPhraseErr } = await ctx.supabase
           .from('course_practice_phrases')
@@ -474,8 +468,7 @@ module.exports = function(ctx) {
             target_text: draft.target_text,
             status: 'released',
             decomposed_at: new Date().toISOString(),
-            version: 1,
-            last_edit_event_id: eventId
+            version: 1
           }, { onConflict: 'course_code,seed_number' });
 
         if (seedError) throw new Error(`Seed ${draft.seed_number} insert failed: ${seedError.message}`);
@@ -497,8 +490,7 @@ module.exports = function(ctx) {
               target_text: lego.target,
               components: lego.components || null,
               status: 'draft',
-              version: 1,
-              last_edit_event_id: eventId
+              version: 1
             }, { onConflict: 'course_code,seed_number,lego_index' });
 
           if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
@@ -571,8 +563,7 @@ module.exports = function(ctx) {
               lego_position: computeLegoPosition(draft.target_text, bestLegoTarget),
               metadata: { format: 'build_use', source: 'seed_sentence', source_seed: draft.seed_number, score: 8 },
               status: 'draft',
-              version: 1,
-              last_edit_event_id: eventId
+              version: 1
             };
             await ctx.supabase.from('course_practice_phrases').insert(usePhraseRow);
             // Build-time phrase decomposition. Non-blocking — see writer module.
@@ -646,16 +637,6 @@ module.exports = function(ctx) {
       const chinese = isChinese(courseCode);
       const errors = [];
       let totalInserted = 0;
-
-      // One event for the whole phrase batch; every row it writes points back at it.
-      const eventId = req.contentEdit
-        ? await req.contentEdit.record({
-            scope: {
-              lego_ids: phrases.map(e => `S${String(e.seed_number).padStart(4, '0')}L${String(e.lego_index).padStart(2, '0')}`),
-              rows: phrases.length,
-            },
-          })
-        : null;
 
       // Cache vocab per seed_number to avoid repeated DB queries within a batch
       const vocabBySeed = new Map();
@@ -798,6 +779,11 @@ module.exports = function(ctx) {
             word_count: (p.target_text || p.target).length,
             lego_count: ((p.known_text || p.known).match(/\s+/g) || []).length + 1,
             phrase_role: 'build',
+            // Explicit, not left to the column default: this row is upserted in one
+            // batch with M-LEGO build-up rows that DO set `introduce`, and PostgREST
+            // fills a key missing from a heterogeneous batch with NULL rather than
+            // the default — which trips the NOT NULL constraint and loses the batch.
+            introduce: true,
             connected_lego_ids: [],
             lego_position: computeLegoPosition(p.target_text || p.target, lego.target_text),
             metadata: { format: 'build_use', pipeline: 'v2' },
@@ -820,6 +806,7 @@ module.exports = function(ctx) {
             word_count: (p.target_text || p.target).length,
             lego_count: ((p.known_text || p.known).match(/\s+/g) || []).length + 1,
             phrase_role: 'use',
+            introduce: true, // see the BUILD rows above — heterogeneous batch, NULL vs default
             connected_lego_ids: [],
             lego_position: computeLegoPosition(p.target_text || p.target, lego.target_text),
             metadata: {
@@ -839,7 +826,6 @@ module.exports = function(ctx) {
 
         // 6. Insert phrases
         if (allPhraseRows.length > 0) {
-          allPhraseRows.forEach(r => { r.last_edit_event_id = eventId; });
           const { error: phraseError } = await ctx.supabase
             .from('course_practice_phrases')
             .upsert(allPhraseRows, { onConflict: 'course_code,seed_number,lego_index,position' });
@@ -1809,7 +1795,7 @@ If 409 (collisions): fix them (merge colliding LEGOs into bigger M-LEGOs), resub
 Loop until clean (200).
 ` : '### Stage 2: FINALIZE — ✅ ALREADY COMPLETE'}
 ${startIdx <= 2 ? (precomputedLegoBatches ? `
-### Stage 3: GENERATE PHRASES (Opus sub-agents)
+### Stage 3: GENERATE PHRASES (Sonnet sub-agents)
 
 **${precomputedLegoBatches.length} batches pre-computed. Spawn ALL sub-agents in a SINGLE message.**
 
@@ -1823,9 +1809,9 @@ ${precomputedLegoBatches.map((batch, i) => {
   return `**Agent ${i + 1}** (${batch.length} LEGOs):\n    ${legoList}`;
 }).join('\n\n')}
 ` : `
-### Stage 3: GENERATE PHRASES (Opus sub-agents)
+### Stage 3: GENERATE PHRASES (Sonnet sub-agents)
 Fetch finalized LEGOs: query course_legos where is_new=true and seed_number >= ${goldenCount + 1}
-Spawn ~${Math.ceil(seedsNeeded / 5)} Opus sub-agents, ~10 LEGOs each.
+Spawn ~${Math.ceil(seedsNeeded / 5)} Sonnet sub-agents, ~10 LEGOs each.
 Each submits phrases: POST http://localhost:3471/api/v2/phrases/${courseCode}
 Monitor: GET http://localhost:3471/api/v2/phrases/progress/${courseCode}
 `) : '### Stage 3: GENERATE PHRASES — ✅ ALREADY COMPLETE'}
@@ -1854,9 +1840,9 @@ Prompt: Decompose seeds {SEED_LIST} into LEGOs only. POST /api/v2/decompose.
 Seeds: GET http://localhost:3471/api/seeds/${courseCode}
 Vocab: GET http://localhost:3471/api/vocab/${courseCode}?seed=N
 
-### For PHRASE sub-agents (Opus — single tier, no fallback, Tom's ruling 2026-08-27):
+### For PHRASE sub-agents (Sonnet):
 \`\`\`
-subagent_type: "general-purpose", model: "opus", run_in_background: true
+subagent_type: "general-purpose", model: "sonnet", run_in_background: true
 \`\`\`
 
 **Sub-agent prompt template** (replace {LEGO_LIST} with the batch assignment above, and {GOLDEN_EXAMPLES} with the golden examples below):
@@ -1867,27 +1853,9 @@ You are a world-class language teacher generating practice phrases for ${courseC
 Your LEGOs:
 {LEGO_LIST}
 
-## How You Get The Phrases — YOU DO NOT WRITE THEM BY HAND
-
-For EACH LEGO, ask the v3 phrase door:
-
-    curl -s -X POST "http://localhost:3471/api/phrases/v3/generate/${courseCode}" \\
-      -H "Content-Type: application/json" -d '{"seed": N, "lego": L}'
-
-It returns { "model": "opus", "build": [...], "use": [...] }. The door assembles the
-v3 prompt against a computed vocabulary table for that exact seed — what can be asked
-for without uncertainty, and what is blocked because the known side would be ambiguous.
-You cannot compute that yourself, which is why sets written by hand from a brief failed
-on 120 of 120 measured LEGOs across six live courses on 2026-08-27.
-
-Each call takes several minutes. That is expected. Run a LEGO's calls in parallel,
-then submit the batch. If a call fails, retry once; if it fails twice, write that one
-set yourself to the bar below and say so.
-
-**BUILD phrases (4+):** the new LEGO plugged into already-introduced vocabulary. Honest
-fragments are fine; never the bare LEGO alone. Move it around — start, filling, end.
-**USE phrases (5+):** complete, deployable thoughts worth having in themselves. Never
-fragments. Vary person, polarity, mood, embedding, tense. Scored 5-9.
+## What You're Building
+**BUILD phrases (5+):** Short fragments — the new LEGO combined with known vocab. Don't need to be full sentences.
+**USE phrases (15+):** Complete, natural sentences a real person would say. Must average 12+ syllables. Scored 5-9.
 
 ## Rules (server enforces — violations = rejection)
 1. **Containment**: Every phrase target MUST contain the LEGO's target text as an exact substring
