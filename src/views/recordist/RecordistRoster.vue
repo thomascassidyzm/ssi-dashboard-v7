@@ -109,12 +109,16 @@ const todoCount = computed(() => props.rows.length - doneCount.value)
   font-size: 0.95rem;
   cursor: pointer;
 }
+/* Its own scrollable panel, framed. Unframed, a list clipped by max-height reads
+   as a page that has gone wrong rather than as a box you can scroll. */
 .roster-list {
   list-style: none;
-  margin: 0.4rem 0 0;
-  padding: 0;
-  max-height: 60vh;
+  margin: 0.4rem 0 0.6rem;
+  padding: 0 0.6rem;
+  max-height: 52vh;
   overflow-y: auto;
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 12px;
 }
 .row {
   display: flex;
