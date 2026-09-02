@@ -1,0 +1,22 @@
+[Unit]
+Description=Nightly standing count of prompts whose text has run ahead of its audio
+Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/audio-gap/README.md
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+ExecStart=/usr/bin/node /home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/audio-gap/nightly.cjs
+# Two grouped aggregates over ~1M content rows and ~800k audio rows. The work is
+# almost all Postgres-side, but this box is four cores carrying Tom's chat, ten
+# Popty services and the render queue: back seat, and a hard cap so a wedged
+# query can never sit on the box until morning.
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=45min
+# Exit 2 means it could not count, and it has already posted a notice saying so
+# by then. Read the log, not systemd's opinion of the unit.
+SuccessExitStatus=0 2
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/ssi-audio-gap-unit.log
+StandardError=append:/home/tomcassidy/.local/log/ssi-audio-gap-unit.log
