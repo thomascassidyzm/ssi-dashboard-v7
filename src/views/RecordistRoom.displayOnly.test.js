@@ -150,6 +150,8 @@ describe('RecordistRoom — done vs outstanding, at a glance', () => {
     expect(ticks[1].classes()).not.toContain('done')   // still owed
     expect(wrapper.find('.strip-words').text()).toContain('1 recorded')
     expect(wrapper.find('.strip-words').text()).toContain('1 still to read')
+    // The card's own top line says the same thing in one sentence.
+    expect(wrapper.find('.rc-progress-line').text()).toBe('2 lines — 1 recorded')
   })
 
   it('opens the full list on one tap, with each line saying which it is', async () => {
@@ -364,16 +366,30 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
 
     const map = wrapper.findAll('.section-map-row')
     expect(map).toHaveLength(3)
-    expect(map[0].find('.sm-name').text()).toBe('Conversations')
-    expect(map[0].find('.sm-count').text()).toBe('2 lines, 1 done')
+    // The headline number of recordings in each section, and under it the two
+    // truths: how many carry a take, and how many of those we want again.
+    expect(map[0].find('.sm-name').text()).toBe('POD-1')
+    expect(map[0].find('.sm-count').text()).toBe('2')
+    expect(map[0].find('.sm-tally').text()).toBe('1 recorded')
     expect(map[1].find('.sm-name').text()).toBe('New sentences')
-    expect(map[1].find('.sm-count').text()).toBe('1 line, 0 done')
-    expect(map[2].find('.sm-name').text()).toBe('Lines to record again')
-    expect(map[2].find('.sm-count').text()).toBe('1 line, 0 done')
+    expect(map[1].find('.sm-count').text()).toBe('1')
+    expect(map[1].find('.sm-tally').text()).toBe('none recorded yet')
+    expect(map[2].find('.sm-name').text()).toBe('Re-recording in this course')
+    expect(map[2].find('.sm-count').text()).toBe('1')
+    // Read once, asked for again: it is a recording AND it is outstanding.
+    expect(map[2].find('.sm-tally').text()).toBe('1 recorded, 1 of those to read again')
 
-    // Our own words never reach a voice artist's screen.
+    // A LINE ALREADY READ IS NOT A LINE NEVER OPENED. Tom, 2026-09-02: he is
+    // "definitely done more than 26 lines recorded - more like 60". The queue is
+    // right to keep asking for a re-record; the SCREEN was wrong to call it
+    // untouched. Two pod lines (one done) plus a re-record with a take = 2.
+    expect(wrapper.find('.rc-progress-line').text()).toBe('4 lines — 2 recorded, 1 of those to read again')
+
+    // POD-1 is the name Tom and the artists use out loud, so it is allowed —
+    // deliberately flipped 2026-09-02. "SEED" is still ours and still banned.
     const shown = wrapper.text()
-    expect(shown).not.toMatch(/\bPOD\b|\bSEED\b/)
+    expect(shown).toContain('POD-1')
+    expect(shown).not.toMatch(/\bSEED\b/i)
   })
 
   it('shows the character on a conversation line and the reason on a re-record', async () => {
@@ -405,5 +421,20 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     const map = wrapper.findAll('.section-map-row')
     expect(map).toHaveLength(1)
     expect(map[0].find('.sm-name').text()).toBe('New sentences')
+  })
+
+  // THE INVARIANT. A line that falls out of the map is the one failure this
+  // screen cannot afford, and neither headline number may exceed the queue.
+  it('never loses a line from the map, and never counts one twice', async () => {
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+    await wrapper.find('.roster-toggle').trigger('click')
+
+    const counts = wrapper.findAll('.section-map-row .sm-count').map(n => Number(n.text()))
+    expect(counts.reduce((a, b) => a + b, 0)).toBe(4)
+    expect(wrapper.findAll('.roster-list .row')).toHaveLength(4)
+    // 2 recorded + 2 never read = the whole queue.
+    expect(wrapper.find('.strip-words').text()).toContain('2 recorded')
+    expect(wrapper.find('.strip-words').text()).toContain('2 still to read')
   })
 })

@@ -4,7 +4,7 @@
          outstanding, in queue order. A phone at arm's length reads this without
          reading anything: Catrin's 161 Welsh lines fit in a few rows of marks,
          and "how far am I" is answered before any words are. -->
-    <div class="strip" :title="`${doneCount} recorded, ${todoCount} still to read`">
+    <div class="strip" :title="`${takeCount} recorded, ${freshCount} still to read`">
       <span
         v-for="r in allRows"
         :key="r.id"
@@ -12,21 +12,29 @@
         :class="{ done: r.done }"
       ></span>
     </div>
+    <!-- THE CAPTION FOR THE MARKS, AND THE HONEST TOTAL. "recorded" here means
+         a take exists — including the lines we have asked to be read again,
+         which the run itself still treats as outstanding. Counting those as
+         untouched is what made Aran's 71 recordings read as 26. -->
     <p class="strip-words">
-      <strong>{{ doneCount }} recorded</strong> · {{ todoCount }} still to read
+      <strong>{{ takeCount }} recorded</strong><span v-if="againCount"> · {{ againCount }} of those to read again</span> · {{ freshCount }} still to read
     </p>
 
     <!-- THE MAP, AND IT IS THE POINT OF THIS COMPONENT. Tom, 2026-09-02, looking
          at Aran's link: "441 lines? why so many??? there's only 231 lines in
          POD-1". One total answered nothing, because the number was three
          different jobs stacked on top of each other. So the three jobs are named
-         here, in a recordist's own words, each carrying its OWN count and its own
-         done-so-far — 80 conversation lines, 305 new sentences, 56 to read again
-         — and a job the reader does not have is not shown at all. -->
+         here, in a recordist's own words, each carrying its OWN headline count
+         and its own recorded-so-far — 80 POD-1 lines, 305 new sentences, 56 to
+         re-record — and a job the reader does not have is not shown at all. -->
     <ul class="section-map">
       <li v-for="s in sections" :key="s.key" class="section-map-row">
+        <!-- THE NUMBER IS THE HEADLINE. Tom, 2026-09-02: "each section should
+             have a headline number of recordings in there". It was a small grey
+             span at the end of a line; on a phone the eye has to land on it. -->
+        <span class="sm-count">{{ s.rows.length }}</span>
         <span class="sm-name">{{ s.heading }}</span>
-        <span class="sm-count">{{ s.rows.length }} {{ s.rows.length === 1 ? 'line' : 'lines' }}, {{ sectionDone(s) }} done</span>
+        <span class="sm-tally">{{ tallyWords(s) }}</span>
         <span class="sm-blurb">{{ s.blurb }}</span>
       </li>
     </ul>
@@ -41,8 +49,8 @@
     <ol v-if="open" class="roster-list">
      <li v-for="s in sections" :key="s.key" class="section">
       <h3 class="section-head">
-        {{ s.heading }}
-        <small>{{ s.rows.length }} {{ s.rows.length === 1 ? 'line' : 'lines' }}, {{ sectionDone(s) }} done</small>
+        <span class="sh-count">{{ s.rows.length }}</span> {{ s.heading }}
+        <small>{{ tallyWords(s) }}</small>
       </h3>
       <ol class="section-rows">
       <li v-for="r in s.rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
@@ -126,7 +134,7 @@
 import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
-  // [{ key, heading, blurb, rows: [{ id, text, done, url, canEdit, speaker, reason, alsoFills }] }]
+  // [{ key, heading, blurb, rows: [{ id, text, done, hasTake, url, canEdit, speaker, reason, alsoFills }] }]
   // Sections arrive already split, ordered and pruned of empties: the booth owns
   // what a KIND of line is, this component owns only how it reads.
   sections: { type: Array, required: true },
@@ -153,9 +161,22 @@ watch(() => props.editingId, (id) => { if (id) open.value = true })
 // Counted from the rows themselves rather than passed in: two numbers that can
 // disagree with the marks above them is precisely the confusion being fixed.
 const allRows = computed(() => props.sections.flatMap(s => s.rows))
-const doneCount = computed(() => allRows.value.reduce((n, r) => n + (r.done ? 1 : 0), 0))
-const todoCount = computed(() => allRows.value.length - doneCount.value)
-function sectionDone(section) { return section.rows.reduce((n, r) => n + (r.done ? 1 : 0), 0) }
+// TWO TRUTHS, NEVER ONE. `done` is "we are not asking for this again" — right
+// for the run, wrong as a measure of what a person has read. `hasTake` is "a
+// recording of this exists". A line that is both read and queued to be read
+// again belongs in the first number and in the second, and saying only the
+// first told Aran he had done a third of the work he had actually done.
+function takes(rows) { return rows.reduce((n, r) => n + (r.hasTake || r.done ? 1 : 0), 0) }
+function agains(rows) { return rows.reduce((n, r) => n + ((r.hasTake || r.done) && !r.done ? 1 : 0), 0) }
+const takeCount = computed(() => takes(allRows.value))
+const againCount = computed(() => agains(allRows.value))
+const freshCount = computed(() => allRows.value.length - takeCount.value)
+function tallyWords(section) {
+  const t = takes(section.rows)
+  if (!t) return 'none recorded yet'
+  const a = agains(section.rows)
+  return a ? `${t} recorded, ${a} of those to read again` : `${t} recorded`
+}
 </script>
 
 <style scoped>
@@ -189,14 +210,25 @@ function sectionDone(section) { return section.rows.reduce((n, r) => n + (r.done
 }
 .section-map-row {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 0 0.6rem;
-  padding: 0.45rem 0;
+  grid-template-columns: auto 1fr;
+  gap: 0 0.75rem;
+  padding: 0.55rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.09);
 }
-.sm-name { font-weight: 700; }
-.sm-count { text-align: right; opacity: 0.85; font-variant-numeric: tabular-nums; }
-.sm-blurb { grid-column: 1 / -1; font-size: 0.82rem; opacity: 0.65; }
+/* The count is the headline, so it is drawn like one: the eye lands on the
+   number, and the name and the tally hang off it. */
+.sm-count {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  align-self: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.sm-name { grid-column: 2; grid-row: 1; font-weight: 700; align-self: end; }
+.sm-tally { grid-column: 2; grid-row: 2; font-size: 0.85rem; opacity: 0.85; font-variant-numeric: tabular-nums; }
+.sm-blurb { grid-column: 2; font-size: 0.82rem; opacity: 0.62; margin-top: 0.2rem; }
 .section { list-style: none; }
 .section-head {
   position: sticky;
@@ -206,7 +238,8 @@ function sectionDone(section) { return section.rows.reduce((n, r) => n + (r.done
   background: var(--color-void, #0f172a);
   font-size: 0.95rem;
 }
-.section-head small { display: block; font-weight: 400; opacity: 0.7; }
+.section-head small { display: block; font-weight: 400; opacity: 0.7; font-variant-numeric: tabular-nums; }
+.sh-count { font-size: 1.25rem; font-weight: 800; font-variant-numeric: tabular-nums; }
 .section-rows { list-style: none; margin: 0; padding: 0; }
 .roster-toggle {
   min-height: 44px;

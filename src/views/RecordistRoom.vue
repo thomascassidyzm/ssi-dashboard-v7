@@ -22,7 +22,7 @@
     <!-- ── Ready ─────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'ready'" class="rc-card">
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
-      <p class="rc-progress-line">{{ progressWords }}</p>
+      <p class="rc-progress-line">{{ queueHeadline }}</p>
 
       <!-- WHAT IS THE MACHINE DOING, IN WORDS. Never left to be inferred from a
            moving bar or a highlighted button: on a phone at arm's length "is
@@ -462,6 +462,19 @@ const doneIds = ref(new Set())
 function isRecorded(l) { return l.recorded || doneIds.value.has(l.id) }
 const recordedCount = computed(() => lines.value.reduce((n, l) => n + (isRecorded(l) ? 1 : 0), 0))
 const progressWords = computed(() => `${recordedCount.value} of ${lines.value.length} recorded`)
+// THE TOP LINE, AND IT HAD TO STOP LYING. `progressWords` above counts what we
+// are no longer asking for, which is the right number for the start button and
+// the wrong number for a person: it told Aran "26 of 441 recorded" when 71 of
+// his lines carry a take he made. So the ready card says both — what he has
+// recorded, and how many of those we are asking him to read again. Record mode
+// keeps `progressWords` untouched; the way lines are served there is Tom's.
+const takeCount = computed(() => rosterRows.value.reduce((n, r) => n + (r.hasTake ? 1 : 0), 0))
+const againCount = computed(() => rosterRows.value.reduce((n, r) => n + (r.hasTake && !r.done ? 1 : 0), 0))
+const queueHeadline = computed(() => {
+  const total = rosterRows.value.length
+  const head = `${total} ${total === 1 ? 'line' : 'lines'} — ${takeCount.value} recorded`
+  return againCount.value ? `${head}, ${againCount.value} of those to read again` : head
+})
 
 // THE WHOLE RUN, FLATTENED FOR THE ROSTER. One row per line in queue order,
 // carrying only what a reader needs: what it says, whether it is done, and the
@@ -481,6 +494,13 @@ const rosterRows = computed(() => lines.value.map(l => ({
   reason: l.rerecordReason || null,
   // How many other copies of the same sentence this one take also fills.
   alsoFills: Number(l.alsoFills) || 0,
+  // ASKED FOR AGAIN — and therefore ALREADY READ ONCE. `done` deliberately
+  // excludes these (the start button must still offer them), but a line Aran
+  // has read and we want improved is not a line he has never opened, and
+  // counting it as untouched told him he had done 26 of 441 when he had really
+  // read 71. Both truths go on screen; neither replaces the other.
+  rerecordWanted: !!l.rerecordWanted,
+  hasTake: isRecorded(l) || !!l.rerecordWanted,
   kind: l.kind || 'pod',
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
@@ -500,8 +520,18 @@ const rosterRows = computed(() => lines.value.map(l => ({
 // not shown at all — most recordists in the estate have only one or two of the
 // three, and an empty heading reading "0 lines" is a question with no answer.
 const SECTION_ORDER = [
-  { key: 'pod', heading: 'Conversations', blurb: 'Your half of a scripted conversation — the other characters are read by someone else.' },
-  { key: 'seed', heading: 'New sentences', blurb: 'Single sentences from the course itself. Most have never been recorded by anyone.' },
+  // POD-1 IS ITS NAME. Tom, 2026-09-02: "we're interested in the PODS — the
+  // conversations — we should call it POD-1, because that's the name we've been
+  // referring to it as". It is the name he and the artists say out loud, so it
+  // is the name on the screen; a generic "Conversations" can come back if there
+  // is ever more than one pod. The slug the database carries is `pod-0` and it
+  // stays there — this string is a display constant, not a value off the wire.
+  { key: 'pod', heading: 'POD-1', blurb: 'Your half of the POD-1 conversations — the other characters are read by someone else.' },
+  // NEVER RECORDED BY ANYONE, and the front of a wave rather than the end of
+  // one: Tom, 2026-09-02, "these are also going to lead to many more phrases
+  // that need recording of course". Said in the blurb because a recordist who
+  // thinks this is the last of it will be surprised twice.
+  { key: 'seed', heading: 'New sentences', blurb: 'Course sentences nobody has recorded yet. Each one will also bring more phrases to record later on.' },
   // TOM'S OWN SET, 2026-09-02: "ideally I just want the minimal phrase set,
   // that I can record so we can test the dice and splice approach." The
   // smallest set of chunks that recombine into every phrase in the course. Its
@@ -513,7 +543,10 @@ const SECTION_ORDER = [
   // the whole natural sentences -- is the 'seed' section directly below it, and
   // the blurb says so rather than duplicating those lines into two places.
   { key: 'quarry', heading: 'The minimal set', blurb: 'The smallest set of chunks that can be recombined into every phrase in the course. Read these slowly, with a clear gap between the words, so each one can be cut out cleanly. The full sentences below are read at your natural pace.' },
-  { key: 'rerecord', heading: 'Lines to record again', blurb: 'Already recorded once, and being asked for again. Each one says why. Nothing is deleted until the new take lands.' },
+  // "Phrases needing re-recording in current course" (Tom, 2026-09-02). The "in
+  // this course" half is load-bearing: it says which body of work these belong
+  // to, so they are not mistaken for the pod above or for old work elsewhere.
+  { key: 'rerecord', heading: 'Re-recording in this course', blurb: 'Phrases from the course you are recording now that need a fresh take. Each one says why. Nothing is deleted until the new take lands.' },
 ]
 const rosterSections = computed(() => {
   const byKind = new Map(SECTION_ORDER.map(s => [s.key, []]))
