@@ -24,6 +24,18 @@
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ progressWords }}</p>
 
+      <!-- WHAT IS THE MACHINE DOING, IN WORDS. Never left to be inferred from a
+           moving bar or a highlighted button: on a phone at arm's length "is
+           this listening to me or playing something back at me?" has to be
+           answered by reading, not by guessing. -->
+      <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
+
+      <RecordistRoster
+        :rows="rosterRows"
+        :playing-id="playingId"
+        @play="togglePlay"
+      />
+
       <!-- Start is the FIRST thing on the card and the only thing needed. One
            tap puts the mic live on the first line that still needs reading —
            there is no line to pick, nothing to navigate to, and no second tap
@@ -115,21 +127,30 @@
     <!-- ── Recording: ONE line, big ───────────────────────────────────────── -->
     <section v-else-if="phase === 'recording'" class="stage">
       <div class="stage-top">
-        <div class="meter" :class="{ clip: recorder.clipping.value }">
-          <div class="meter-fill" :style="{ width: `${Math.min(100, recorder.level.value * 100)}%` }"></div>
+        <div class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
+          <!-- Flat while the mic is held. A bar still twitching to the playback
+               coming out of the speaker is the screen telling the recordist it
+               is recording them when it is not. -->
+          <div class="meter-fill" :style="{ width: micHeld ? '0%' : `${Math.min(100, recorder.level.value * 100)}%` }"></div>
         </div>
         <!-- "Mic live" was printed whether or not the meter was reading a
              thing, so an empty bar next to it looked like a quiet room rather
              than a broken meter. Say which it is. -->
-        <span class="meter-tag" :class="{ clip: recorder.clipping.value }">
-          {{ recorder.clipping.value
-            ? 'Too loud — back off the mic'
-            : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved') }}
+        <span class="meter-tag" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
+          {{ micHeld
+            ? 'Mic paused while you listen'
+            : (recorder.clipping.value
+              ? 'Too loud — back off the mic'
+              : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved')) }}
         </span>
       </div>
-      <p class="stage-progress">
-        <span class="live-dot" :class="{ hot: recorder.lineHasSpeech.value }"></span>
-        Recording · {{ progressWords }}
+      <!-- The one line that says which of the two things is happening. It is the
+           only place the words "Recording" and "Playing back" appear on this
+           screen, and they can never both be true: starting a playback holds the
+           microphone, and the dot only lives while the mic does. -->
+      <p class="stage-progress" :class="activityState.cls">
+        <span class="live-dot" :class="{ hot: recorder.lineHasSpeech.value && !micHeld, off: micHeld }"></span>
+        {{ activityState.words }} · {{ progressWords }}
       </p>
 
       <div class="line-well">
@@ -214,6 +235,14 @@
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
       <p v-if="queue.pendingCount.value > 0" class="note">Keep this page open until everything has saved.</p>
 
+      <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
+
+      <RecordistRoster
+        :rows="rosterRows"
+        :playing-id="playingId"
+        @play="togglePlay"
+      />
+
       <div v-if="sessionLines.length" class="listen-back">
         <h3>Listen back</h3>
         <p class="listen-note">These play the clip stored on the server, not your local recording.
@@ -277,6 +306,7 @@ import { useTapRecorder, DEFAULT_CAPTURE_PROFILE } from '@/composables/useTapRec
 import { useRecordistQueue } from '@/composables/useRecordistQueue'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
+import RecordistRoster from './recordist/RecordistRoster.vue'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
@@ -334,6 +364,18 @@ const doneIds = ref(new Set())
 function isRecorded(l) { return l.recorded || doneIds.value.has(l.id) }
 const recordedCount = computed(() => lines.value.reduce((n, l) => n + (isRecorded(l) ? 1 : 0), 0))
 const progressWords = computed(() => `${recordedCount.value} of ${lines.value.length} recorded`)
+
+// THE WHOLE RUN, FLATTENED FOR THE ROSTER. One row per line in queue order,
+// carrying only what a reader needs: what it says, whether it is done, and the
+// bytes to play if there are any. The three judgements stay HERE — markup
+// parsing, done-ness including this session's takes, and clip precedence — so
+// the roster cannot invent a fourth definition of any of them.
+const rosterRows = computed(() => lines.value.map(l => ({
+  id: l.id,
+  text: plainText(l.text),
+  done: isRecorded(l),
+  url: storedUrlFor(l.id),
+})))
 
 const current = computed(() => lines.value[index.value] || null)
 
@@ -431,6 +473,24 @@ const playingId = ref(null)
 const playbackError = ref(null)
 let audioEl = null
 
+// The microphone is HELD — not stopped — while a stored take plays. Two reasons,
+// and the second is the one that matters: a bar twitching to the speaker looks
+// like the machine is recording you when it is playing at you, and the capture
+// that was running would otherwise file that playback as your take of the line
+// on screen. Holding discards the open capture and re-opens the line when the
+// playback ends, so the two states are mutually exclusive in fact, not just in
+// the wording.
+const micHeld = ref(false)
+
+// What is happening, in words a person reads without thinking. Playback wins
+// over recording because playback holds the mic: if this ever said both, one of
+// them would be a lie.
+const activityState = computed(() => {
+  if (playingId.value) return { cls: 'is-playing', words: 'Playing back your take' }
+  if (phase.value === 'recording') return { cls: 'is-recording', words: 'Recording — read the line aloud' }
+  return { cls: 'is-idle', words: 'Not recording' }
+})
+
 // Which bytes a line's play button points at, in strict precedence — the order
 // IS the honesty. A failed or in-flight NEW take must never fall back to the
 // clip it is replacing: playing the previous take under the word "stored" is
@@ -478,6 +538,22 @@ const failedList = computed(() => sessionLines.value.filter(l => queue.failed.ha
 function stopPlayback() {
   if (audioEl) { audioEl.onended = null; audioEl.onerror = null; audioEl.pause() }
   playingId.value = null
+  releaseMic()
+}
+
+// Give the line back to the microphone after a playback. discardLine() first,
+// always: the recorder kept running through the playback, and that capture is
+// the speaker, not the reader. beginLine() then re-opens the same line clean.
+// Both calls do their work synchronously — the promise discardLine returns is
+// only the discarded blob, which nobody wants.
+function releaseMic() {
+  if (!micHeld.value) return
+  micHeld.value = false
+  if (phase.value !== 'recording') return
+  try {
+    recorder.discardLine()
+    recorder.beginLine()
+  } catch { /* the stream is gone; the phase change will have said so */ }
 }
 
 function togglePlay(lineId) {
@@ -486,6 +562,12 @@ function togglePlay(lineId) {
   const url = storedUrlFor(lineId)
   if (!url) return
   stopPlayback()
+  // Hold the mic BEFORE a byte plays. Doing it after would leave the first
+  // moment of the playback on the take.
+  if (phase.value === 'recording') {
+    micHeld.value = true
+    try { recorder.discardLine() } catch { micHeld.value = false }
+  }
   if (!audioEl) audioEl = new Audio()
   audioEl.src = url
   playingId.value = lineId
@@ -620,6 +702,10 @@ function speechVerdict() {
 
 async function onNext(source = 'tap') {
   if (phase.value !== 'recording' || busy.value || !debounced()) return
+  // Tapping a control while a take is playing means "enough listening". Stop it
+  // and give the line back to the mic before anything is filed, so the playback
+  // never lands inside the take this call is about to close.
+  if (playingId.value) stopPlayback()
   // Exactly one step away from any one line. `busy` cannot do this job: on the
   // normal path there is no await inside the try, so it is true for a
   // synchronous instant and a watcher flushing on the next tick sails past it.
@@ -658,6 +744,9 @@ const AUTO_ADVANCE_QUIET_MS = 1200
 const autoAdvance = ref(true)
 watch(() => recorder.quietMs.value, (ms) => {
   if (!autoAdvance.value || phase.value !== 'recording' || busy.value) return
+  // A held mic is not listening to anybody. Without this, the recordist's own
+  // take coming out of the phone speaker would advance the queue for them.
+  if (micHeld.value || playingId.value) return
   if (!recorder.lineHasSpeech.value) return
   // No cooldown on a freshly-opened line, deliberately: beginLine() sets
   // lineHasSpeech back to false and quietMs to 0, and the guard above means the
@@ -669,6 +758,7 @@ watch(() => recorder.quietMs.value, (ms) => {
 
 async function onAgain() {
   if (phase.value !== 'recording' || busy.value || !debounced()) return
+  if (playingId.value) stopPlayback()
   busy.value = true
   try {
     await recorder.discardLine()
@@ -713,6 +803,7 @@ async function onBack() {
 
 async function onFinish() {
   if (phase.value !== 'recording' || busy.value) return
+  if (playingId.value) stopPlayback()
   busy.value = true
   try {
     const i = index.value
@@ -900,6 +991,29 @@ kbd {
 .meter-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--color-paper-dim, #c1c1bb); white-space: nowrap; }
 .meter-tag.clip { color: var(--color-film-red, #e63946); }
 .stage-progress { margin: 0; font-size: 0.9rem; color: var(--color-paper-dim, #c1c1bb); }
+/* Recording is the room's own green; playing back is the tungsten amber used
+   nowhere else on this screen. Two states, two colours, and the words underneath
+   them say the same thing for anyone who does not read colour. */
+.stage-progress.is-recording { color: var(--color-emerald, #06ffa5); }
+.stage-progress.is-playing { color: var(--color-tungsten, #ffa630); font-weight: 600; }
+.meter.held { opacity: 0.45; }
+.meter-tag.held { color: var(--color-tungsten, #ffa630); }
+.live-dot.off { background: var(--color-graphite, #475569); }
+
+/* The same sentence on the cards, where there is no meter to read it off. */
+.state-pill {
+  display: inline-block;
+  margin: 0 0 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  border: 1px solid var(--color-graphite, #475569);
+  color: var(--color-paper-dim, #c1c1bb);
+}
+.state-pill.is-playing {
+  color: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, #ffa630);
+}
 
 /* THE line. Nothing else on the screen competes with it. */
 .line-well {
