@@ -1,77 +1,592 @@
 {
-"scene": 6, "label": "1.5", "title": "Medication round",
-"turns": [
-{"id":"health:SC06-F01-S01","sp":"HW","en":"Here are your tablets for this morning. Have you got some water there? Just the two white ones now, the other one's after lunch.",
- "cy":"Dyma'ch tabledi chi ar gyfer bore 'ma. Oes gynnoch chi ddŵr yn fan'na? Dim ond y ddwy wen rŵan — mae'r llall ar ôl cinio.",
- "chunks":[["Here are your tablets for this morning","Dyma'ch tabledi chi ar gyfer bore 'ma","D","dyma for presentation"],["Have you got some water there?","Oes gynnoch chi ddŵr yn fan'na?","I","possession relocates to the existential with conjugated gan; 'some' erases inside it"],["Just the two white ones now","Dim ond y ddwy wen rŵan","D","restrictive 'just' → dim ond, kept apart from the erased softener and from jyst; tabled is feminine, hence dwy + gwen→wen"],["the other one's after lunch","mae'r llall ar ôl cinio","D",""]],
- "south":[["gynnoch chi","gyda chi"],["fan'na","fanna"],["rŵan","nawr"]]},
-{"id":"health:SC06-F01-S02","sp":"P","en":"Righto. I've still got the water from breakfast here.",
- "cy":"Reit-o. Mae gen i'r dŵr o frecwast yn fan'ma o hyd.",
- "chunks":[["Righto","Reit-o","D",""],["I've still got the water from breakfast here","Mae gen i'r dŵr o frecwast yn fan'ma o hyd","I","the mae gen i possessive; 'still' lands clause-finally as o hyd"]],
- "south":[["mae gen i","mae … gyda fi — AND A REORDER"],["fan'ma","fan hyn"]],
- "southLine":"Reit-o. Mae'r dŵr o frecwast gyda fi fan hyn o hyd."},
-{"id":"health:SC06-F01-S03","sp":"HW","en":"Perfect. Let me just watch you take those, and then I can sign them off.",
- "cy":"Perffaith. Gadwch i mi jyst eich gwylio chi'n eu cymryd nhw, ac wedyn mi fedra i'w cofnodi nhw.",
- "chunks":[["Perfect","Perffaith","D",""],["Let me just watch you take those","Gadwch i mi jyst eich gwylio chi'n eu cymryd nhw","D","gadwch i mi (R3); the stacked possessive objects eich…chi and eu…nhw"],["and then I can sign them off","ac wedyn mi fedra i'w cofnodi nhw","I","sequential 'then' → wedyn (S1); English's particle verb 'sign off' becomes the single verb cofnodi"]],
- "south":[["gadwch","gadewch"],["mi fedra i","fe alla i"]]},
-{"id":"health:SC06-F01-S04","sp":"P","en":"There. All gone. You can tick your box.",
- "cy":"Dyna fo. Wedi mynd i gyd. Mi gewch chi roi tic yn eich bocs.",
- "chunks":[["There","Dyna fo","D","distinct from 'There we are' → Dyna ni"],["All gone","Wedi mynd i gyd","D","the bare wedi-perfect"],["You can tick your box","Mi gewch chi roi tic yn eich bocs","I","English's denominal verb 'to tick' has no Welsh reflex — rhoi tic, 'put a tick'"]],
- "south":[["dyna fo","dyna fe"],["mi gewch chi","fe gewch chi"]]},
-{"id":"health:SC06-F01-S05","sp":"HW","en":"Lovely. I'll be back with the after-lunch one, so don't take anything in the meantime.",
- "cy":"Hyfryd. Mi fydda i'n ôl efo'r un ar-ôl-cinio, felly peidiwch â chymryd dim byd yn y cyfamser.",
- "chunks":[["Lovely","Hyfryd","D",""],["I'll be back with the after-lunch one","Mi fydda i'n ôl efo'r un ar-ôl-cinio","D",""],["so don't take anything in the meantime","felly peidiwch â chymryd dim byd yn y cyfamser","E","'anything' under a negative imperative → dim byd; the any/some distinction erases"]],
- "south":[["mi fydda i","fe fydda i"],["efo","gyda"]]},
-{"id":"health:SC06-F01-S06","sp":"P","en":"Understood. I'll wait for you.",
- "cy":"Dallt. Mi arhosa i amdanoch chi.",
- "chunks":[["Understood","Dallt","I","English's bare passive participle has no Welsh reflex — the verbal noun stands alone"],["I'll wait for you","Mi arhosa i amdanoch chi","D","aros governs am, conjugated as amdanoch chi"]],
- "south":[["dallt","deall"],["mi arhosa i","fe arhosa i"]]},
-{"id":"health:SC06-F02-S01","sp":"HW","en":"Here are your tablets. Just the two white ones now, the other's after lunch.",
- "cy":"Dyma'ch tabledi chi. Dim ond y ddwy wen rŵan — mae'r llall ar ôl cinio.",
- "chunks":[["Here are your tablets","Dyma'ch tabledi chi","D",""],["Just the two white ones now","Dim ond y ddwy wen rŵan","D",""],["the other's after lunch","mae'r llall ar ôl cinio","D","converges with 'the other one's after lunch' — reception, welcome"]],
- "south":[["rŵan","nawr"]]},
-{"id":"health:SC06-F02-S02","sp":"P","en":"What's this new one for? I don't recognise it.",
- "cy":"I be mae'r un newydd 'ma? Dw i ddim yn ei nabod hi.",
- "chunks":[["What's this new one for?","I be mae'r un newydd 'ma?","I","the same purpose-cleft head as 'that's what the bell's for' (R3), turned into a question"],["I don't recognise it","Dw i ddim yn ei nabod hi","D","nabod for acquaintance-knowing, against gwybod for facts (S5); feminine hi for the tablet"]],
- "south":[]},
-{"id":"health:SC06-F02-S03","sp":"HW","en":"That's the new one the doctor started yesterday - for your blood pressure. It's instead of the old blue one, not as well as.",
- "cy":"Dyna'r un newydd ddechreuodd y doctor ddoe — ar gyfer eich pwysau gwaed chi. Mae hi yn lle'r hen un las, nid yn ogystal â hi.",
- "chunks":[["That's the new one the doctor started yesterday","Dyna'r un newydd ddechreuodd y doctor ddoe","I","the object relative takes a bare mutated verb — no relative pronoun at all"],["for your blood pressure","ar gyfer eich pwysau gwaed chi","D",""],["It's instead of the old blue one, not as well as","Mae hi yn lle'r hen un las, nid yn ogystal â hi","I","English strands 'as well as'; Welsh must restate the pronoun, so the gapping does not survive"]],
- "south":[]},
-{"id":"health:SC06-F02-S04","sp":"P","en":"Instead of, not as well as. Got it. There's a lot to keep track of, isn't there?",
- "cy":"Yn lle, nid yn ogystal â. Dallt. Mae 'na lot i'w gofio, does?",
- "chunks":[["Instead of, not as well as","Yn lle, nid yn ogystal â","D",""],["Got it","Dallt","I","as 'Understood' — one form for the ratifying intention"],["There's a lot to keep track of","Mae 'na lot i'w gofio","I","English's tracking metaphor has no Welsh reflex; cofio carries it"],["isn't there?","does?","I","the verb-echo tag system — Welsh tags with the verb, never with a pronoun"]],
- "south":[["dallt","deall"]]},
-{"id":"health:SC06-F02-S05","sp":"HW","en":"There is, and you keep asking every time - you're the best safety check we've got.",
- "cy":"Oes, ac mi dach chi'n dal i ofyn bob tro — chi ydy'r tsiec diogelwch gorau sy gynnon ni.",
- "chunks":[["There is","Oes","I","the verb-echo answer — Welsh answers an existential with its own verb"],["and you keep asking every time","ac mi dach chi'n dal i ofyn bob tro","D","'keep -ing' → dal i + verbal noun"],["you're the best safety check we've got","chi ydy'r tsiec diogelwch gorau sy gynnon ni","I","identificatory fronting; possession as the relative sy gynnon ni"]],
- "south":[["dach chi","dych chi"],["sy gynnon ni","sy gyda ni"]]},
-{"id":"health:SC06-F02-S06","sp":"P","en":"Well! Nobody's ever called me that before.",
- "cy":"Wel! Does neb erioed wedi fy ngalw i'n hynny o'r blaen.",
- "chunks":[["Well!","Wel!","D",""],["Nobody's ever called me that before","Does neb erioed wedi fy ngalw i'n hynny o'r blaen","I","Welsh negative concord: the existential negative carries neb and erioed together, where English has one negative"]],
- "south":[]},
-{"id":"health:SC06-F03-S01","sp":"HW","warn":true,"en":"Here are your tablets for this morning - the two white ones now.",
- "cy":"Dyma'ch tabledi chi ar gyfer bore 'ma — y ddwy wen rŵan.",
- "chunks":[["Here are your tablets for this morning","Dyma'ch tabledi chi ar gyfer bore 'ma","D","⚠ line"],["the two white ones now","y ddwy wen rŵan","D","⚠ line — feminine dwy + soft-mutated gwen, absorbed inside the chunk"]],
- "south":[["rŵan","nawr"]]},
-{"id":"health:SC06-F03-S02","sp":"P","warn":true,"en":"I don't think these are mine. I usually have three.",
- "cy":"Dw i ddim yn meddwl mai fi pia'r rhain. Dw i'n cael tair fel arfer.",
- "chunks":[["I don't think these are mine","Dw i ddim yn meddwl mai fi pia'r rhain","I","⚠ line — the mai-cleft under a negated matrix, and Welsh's piau possessive predicate"],["I usually have three","Dw i'n cael tair fel arfer","D","⚠ line — feminine tair, agreeing with tabled; 'usually' lands clause-finally"]],
- "south":[]},
-{"id":"health:SC06-F03-S03","sp":"HW","warn":true,"en":"Then let's stop right there and check - you're quite right to say. Can you tell me your full name and date of birth?",
- "cy":"Dewch i ni stopio'n fan'na 'ta, a tsiecio — dach chi'n hollol iawn i ddeud. Fedrwch chi ddeud eich enw llawn a'ch dyddiad geni wrtha i?",
- "chunks":[["Then let's stop right there and check","Dewch i ni stopio'n fan'na 'ta, a tsiecio","D","⚠ line — dewch i ni (R3); 'ta the in-that-case tag (S1)"],["you're quite right to say","dach chi'n hollol iawn i ddeud","D","⚠ line — plain, no idiom"],["Can you tell me your full name and date of birth?","Fedrwch chi ddeud eich enw llawn a'ch dyddiad geni wrtha i?","D","⚠ line — the identity check, same frame as HG19/HG20"]],
- "south":[["fan'na","fanna"],["dach chi","dych chi"],["deud / wrtha i","dweud / wrtho i"],["fedrwch chi","allwch chi"]]},
-{"id":"health:SC06-F03-S04","sp":"P","warn":true,"en":"Margaret Hughes, third of March, forty-one. It's the tablets I don't recognise, see.",
- "cy":"Margaret Hughes, y trydydd o Fawrth, pedwar deg un. Y tabledi dw i ddim yn eu nabod, ylwch.",
- "chunks":[["Margaret Hughes, third of March, forty-one","Margaret Hughes, y trydydd o Fawrth, pedwar deg un","D","⚠ line — the clipped year read as a bare decimal number (R5)"],["It's the tablets I don't recognise","Y tabledi dw i ddim yn eu nabod","I","⚠ line — the focus cleft; Welsh fronts without any dummy 'it is'"],["see","ylwch","D",""]],
- "south":[["ylwch","edrychwch ?"]]},
-{"id":"health:SC06-F03-S05","sp":"HW","warn":true,"en":"Thank you for saying. I'll double-check the chart with the pharmacist right now, and I won't give you anything until we're certain.",
- "cy":"Diolch am ddeud. Mi wna i tsiecio'r siart ddwywaith efo'r fferyllydd rŵan, a wna i ddim rhoi dim byd i chi nes byddwn ni'n siŵr.",
- "chunks":[["Thank you for saying","Diolch am ddeud","D","⚠ line"],["I'll double-check the chart with the pharmacist right now","Mi wna i tsiecio'r siart ddwywaith efo'r fferyllydd rŵan","I","⚠ line — English's prefix 'double-' relocates to the adverb ddwywaith, keeping the one tsiec- lexeme (R7)"],["and I won't give you anything until we're certain","a wna i ddim rhoi dim byd i chi nes byddwn ni'n siŵr","D","⚠ line — the nes clause takes the future, where English uses a present"]],
- "south":[["deud","dweud"],["efo","gyda"],["rŵan","nawr"]]},
-{"id":"health:SC06-F03-S06","sp":"P","warn":true,"en":"Better safe than sorry, my mother always said.",
- "cy":"Gwell diogel nag edifar, medda fy mam i bob amser.",
- "chunks":[["Better safe than sorry","Gwell diogel nag edifar","D","⚠ line — the Welsh proverb runs in the same shape, so nothing relocates"],["my mother always said","medda fy mam i bob amser","I","the quotative medd; 'always' lands clause-finally"]],
- "south":[["medda","meddai"]]}
-]}
+ "scene": 6,
+ "label": "1.5",
+ "title": "Medication round",
+ "turns": [
+  {
+   "id": "health:SC06-F01-S01",
+   "sp": "HW",
+   "en": "Here are your tablets for this morning. Have you got some water there? Just the two white ones now, the other one's after lunch.",
+   "cy": "Dyma'ch tabledi chi ar gyfer bore 'ma. Oes gynnoch chi ddŵr yn fan'na? Dim ond y ddwy wen rŵan — mae'r llall ar ôl cinio.",
+   "chunks": [
+    [
+     "Here are your tablets for this morning",
+     "Dyma'ch tabledi chi ar gyfer bore 'ma",
+     "D",
+     "dyma for presentation"
+    ],
+    [
+     "Have you got some water there?",
+     "Oes gynnoch chi ddŵr yn fan'na?",
+     "I",
+     "possession relocates to the existential with conjugated gan; 'some' erases inside it"
+    ],
+    [
+     "Just the two white ones now",
+     "Dim ond y ddwy wen rŵan",
+     "D",
+     "restrictive 'just' → dim ond, kept apart from the erased softener and from jyst; tabled is feminine, hence dwy + gwen→wen"
+    ],
+    [
+     "the other one's after lunch",
+     "mae'r llall ar ôl cinio",
+     "D",
+     ""
+    ]
+   ],
+   "south": [
+    [
+     "gynnoch chi",
+     "gyda chi"
+    ],
+    [
+     "fan'na",
+     "fanna"
+    ],
+    [
+     "rŵan",
+     "nawr"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F01-S02",
+   "sp": "P",
+   "en": "Righto. I've still got the water from breakfast here.",
+   "cy": "Reit-o. Mae gen i'r dŵr o frecwast yn fan'ma o hyd.",
+   "chunks": [
+    [
+     "Righto",
+     "Reit-o",
+     "D",
+     ""
+    ],
+    [
+     "I've still got the water from breakfast here",
+     "Mae gen i'r dŵr o frecwast yn fan'ma o hyd",
+     "I",
+     "the mae gen i possessive; 'still' lands clause-finally as o hyd"
+    ]
+   ],
+   "south": [
+    [
+     "mae gen i",
+     "mae … gyda fi — AND A REORDER"
+    ],
+    [
+     "fan'ma",
+     "fan hyn"
+    ]
+   ],
+   "southLine": "Reit-o. Mae'r dŵr o frecwast gyda fi fan hyn o hyd."
+  },
+  {
+   "id": "health:SC06-F01-S03",
+   "sp": "HW",
+   "en": "Perfect. Let me just watch you take those, and then I can sign them off.",
+   "cy": "Perffaith. Gadwch i mi jyst eich gwylio chi'n eu cymryd nhw, ac wedyn mi fedra i'w cofnodi nhw.",
+   "chunks": [
+    [
+     "Perfect",
+     "Perffaith",
+     "D",
+     ""
+    ],
+    [
+     "Let me just watch you take those",
+     "Gadwch i mi jyst eich gwylio chi'n eu cymryd nhw",
+     "D",
+     "gadwch i mi (R3); the stacked possessive objects eich…chi and eu…nhw"
+    ],
+    [
+     "and then I can sign them off",
+     "ac wedyn mi fedra i'w cofnodi nhw",
+     "I",
+     "sequential 'then' → wedyn (S1); English's particle verb 'sign off' becomes the single verb cofnodi"
+    ]
+   ],
+   "south": [
+    [
+     "gadwch",
+     "gadewch"
+    ],
+    [
+     "mi fedra i",
+     "fe alla i"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F01-S04",
+   "sp": "P",
+   "en": "There. All gone. You can tick your box.",
+   "cy": "Dyna ni. Wedi mynd i gyd. Mi gewch chi roi tic yn eich bocs.",
+   "chunks": [
+    [
+     "There",
+     "Dyna ni",
+     "D",
+     "consolidated with the presentative at SC02-F02-S04 — see §3, fork F3; it converges with 'There we are', which is reception"
+    ],
+    [
+     "All gone",
+     "Wedi mynd i gyd",
+     "D",
+     "the bare wedi-perfect"
+    ],
+    [
+     "You can tick your box",
+     "Mi gewch chi roi tic yn eich bocs",
+     "I",
+     "English's denominal verb 'to tick' has no Welsh reflex — rhoi tic, 'put a tick'"
+    ]
+   ],
+   "south": [
+    [
+     "dyna fo",
+     "dyna fe"
+    ],
+    [
+     "mi gewch chi",
+     "fe gewch chi"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F01-S05",
+   "sp": "HW",
+   "en": "Lovely. I'll be back with the after-lunch one, so don't take anything in the meantime.",
+   "cy": "Hyfryd. Mi fydda i'n ôl efo'r un ar-ôl-cinio, felly peidiwch â chymryd dim byd yn y cyfamser.",
+   "chunks": [
+    [
+     "Lovely",
+     "Hyfryd",
+     "D",
+     ""
+    ],
+    [
+     "I'll be back with the after-lunch one",
+     "Mi fydda i'n ôl efo'r un ar-ôl-cinio",
+     "D",
+     ""
+    ],
+    [
+     "so don't take anything in the meantime",
+     "felly peidiwch â chymryd dim byd yn y cyfamser",
+     "E",
+     "'anything' under a negative imperative → dim byd; the any/some distinction erases"
+    ]
+   ],
+   "south": [
+    [
+     "mi fydda i",
+     "fe fydda i"
+    ],
+    [
+     "efo",
+     "gyda"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F01-S06",
+   "sp": "P",
+   "en": "Understood. I'll wait for you.",
+   "cy": "Dallt. Mi arhosa i amdanoch chi.",
+   "chunks": [
+    [
+     "Understood",
+     "Dallt",
+     "I",
+     "English's bare passive participle has no Welsh reflex — the verbal noun stands alone"
+    ],
+    [
+     "I'll wait for you",
+     "Mi arhosa i amdanoch chi",
+     "D",
+     "aros governs am, conjugated as amdanoch chi"
+    ]
+   ],
+   "south": [
+    [
+     "dallt",
+     "deall"
+    ],
+    [
+     "mi arhosa i",
+     "fe arhosa i"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F02-S01",
+   "sp": "HW",
+   "en": "Here are your tablets. Just the two white ones now, the other's after lunch.",
+   "cy": "Dyma'ch tabledi chi. Dim ond y ddwy wen rŵan — mae'r llall ar ôl cinio.",
+   "chunks": [
+    [
+     "Here are your tablets",
+     "Dyma'ch tabledi chi",
+     "D",
+     ""
+    ],
+    [
+     "Just the two white ones now",
+     "Dim ond y ddwy wen rŵan",
+     "D",
+     ""
+    ],
+    [
+     "the other's after lunch",
+     "mae'r llall ar ôl cinio",
+     "D",
+     "converges with 'the other one's after lunch' — reception, welcome"
+    ]
+   ],
+   "south": [
+    [
+     "rŵan",
+     "nawr"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F02-S02",
+   "sp": "P",
+   "en": "What's this new one for? I don't recognise it.",
+   "cy": "I be mae'r un newydd 'ma? Dw i ddim yn ei nabod hi.",
+   "chunks": [
+    [
+     "What's this new one for?",
+     "I be mae'r un newydd 'ma?",
+     "I",
+     "the same purpose-cleft head as 'that's what the bell's for' (R3), turned into a question"
+    ],
+    [
+     "I don't recognise it",
+     "Dw i ddim yn ei nabod hi",
+     "D",
+     "nabod for acquaintance-knowing, against gwybod for facts (S5); feminine hi for the tablet"
+    ]
+   ],
+   "south": []
+  },
+  {
+   "id": "health:SC06-F02-S03",
+   "sp": "HW",
+   "en": "That's the new one the doctor started yesterday - for your blood pressure. It's instead of the old blue one, not as well as.",
+   "cy": "Dyna'r un newydd ddechreuodd y doctor ddoe — ar gyfer eich pwysau gwaed chi. Mae hi yn lle'r hen un las, nid yn ogystal â hi.",
+   "chunks": [
+    [
+     "That's the new one the doctor started yesterday",
+     "Dyna'r un newydd ddechreuodd y doctor ddoe",
+     "I",
+     "the object relative takes a bare mutated verb — no relative pronoun at all"
+    ],
+    [
+     "for your blood pressure",
+     "ar gyfer eich pwysau gwaed chi",
+     "D",
+     ""
+    ],
+    [
+     "It's instead of the old blue one, not as well as",
+     "Mae hi yn lle'r hen un las, nid yn ogystal â hi",
+     "I",
+     "English strands 'as well as'; Welsh must restate the pronoun, so the gapping does not survive"
+    ]
+   ],
+   "south": []
+  },
+  {
+   "id": "health:SC06-F02-S04",
+   "sp": "P",
+   "en": "Instead of, not as well as. Got it. There's a lot to keep track of, isn't there?",
+   "cy": "Yn lle, nid yn ogystal â. Dallt. Mae 'na lot i'w gofio, does?",
+   "chunks": [
+    [
+     "Instead of, not as well as",
+     "Yn lle, nid yn ogystal â",
+     "D",
+     ""
+    ],
+    [
+     "Got it",
+     "Dallt",
+     "I",
+     "as 'Understood' — one form for the ratifying intention"
+    ],
+    [
+     "There's a lot to keep track of",
+     "Mae 'na lot i'w gofio",
+     "I",
+     "English's tracking metaphor has no Welsh reflex; cofio carries it"
+    ],
+    [
+     "isn't there?",
+     "does?",
+     "I",
+     "the verb-echo tag system — Welsh tags with the verb, never with a pronoun"
+    ]
+   ],
+   "south": [
+    [
+     "dallt",
+     "deall"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F02-S05",
+   "sp": "HW",
+   "en": "There is, and you keep asking every time - you're the best safety check we've got.",
+   "cy": "Oes, ac mi dach chi'n dal i ofyn bob tro — chi ydy'r tsiec diogelwch gorau sy gynnon ni.",
+   "chunks": [
+    [
+     "There is",
+     "Oes",
+     "I",
+     "the verb-echo answer — Welsh answers an existential with its own verb"
+    ],
+    [
+     "and you keep asking every time",
+     "ac mi dach chi'n dal i ofyn bob tro",
+     "D",
+     "'keep -ing' → dal i + verbal noun"
+    ],
+    [
+     "you're the best safety check we've got",
+     "chi ydy'r tsiec diogelwch gorau sy gynnon ni",
+     "I",
+     "identificatory fronting; possession as the relative sy gynnon ni"
+    ]
+   ],
+   "south": [
+    [
+     "dach chi",
+     "dych chi"
+    ],
+    [
+     "sy gynnon ni",
+     "sy gyda ni"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F02-S06",
+   "sp": "P",
+   "en": "Well! Nobody's ever called me that before.",
+   "cy": "Wel! Does neb erioed wedi fy ngalw i'n hynny o'r blaen.",
+   "chunks": [
+    [
+     "Well!",
+     "Wel!",
+     "D",
+     ""
+    ],
+    [
+     "Nobody's ever called me that before",
+     "Does neb erioed wedi fy ngalw i'n hynny o'r blaen",
+     "I",
+     "Welsh negative concord: the existential negative carries neb and erioed together, where English has one negative"
+    ]
+   ],
+   "south": []
+  },
+  {
+   "id": "health:SC06-F03-S01",
+   "sp": "HW",
+   "warn": true,
+   "en": "Here are your tablets for this morning - the two white ones now.",
+   "cy": "Dyma'ch tabledi chi ar gyfer bore 'ma — y ddwy wen rŵan.",
+   "chunks": [
+    [
+     "Here are your tablets for this morning",
+     "Dyma'ch tabledi chi ar gyfer bore 'ma",
+     "D",
+     "⚠ line"
+    ],
+    [
+     "the two white ones now",
+     "y ddwy wen rŵan",
+     "D",
+     "⚠ line — feminine dwy + soft-mutated gwen, absorbed inside the chunk"
+    ]
+   ],
+   "south": [
+    [
+     "rŵan",
+     "nawr"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F03-S02",
+   "sp": "P",
+   "warn": true,
+   "en": "I don't think these are mine. I usually have three.",
+   "cy": "Dw i ddim yn meddwl mai fi pia'r rhain. Dw i'n cael tair fel arfer.",
+   "chunks": [
+    [
+     "I don't think these are mine",
+     "Dw i ddim yn meddwl mai fi pia'r rhain",
+     "I",
+     "⚠ line — the mai-cleft under a negated matrix, and Welsh's piau possessive predicate"
+    ],
+    [
+     "I usually have three",
+     "Dw i'n cael tair fel arfer",
+     "D",
+     "⚠ line — feminine tair, agreeing with tabled; 'usually' lands clause-finally"
+    ]
+   ],
+   "south": []
+  },
+  {
+   "id": "health:SC06-F03-S03",
+   "sp": "HW",
+   "warn": true,
+   "en": "Then let's stop right there and check - you're quite right to say. Can you tell me your full name and date of birth?",
+   "cy": "Dewch i ni stopio'n fan'na 'ta, a tsiecio — dach chi'n hollol iawn i ddeud. Fedrwch chi ddeud eich enw llawn a'ch dyddiad geni wrtha i?",
+   "chunks": [
+    [
+     "Then let's stop right there and check",
+     "Dewch i ni stopio'n fan'na 'ta, a tsiecio",
+     "D",
+     "⚠ line — dewch i ni (R3); 'ta the in-that-case tag (S1)"
+    ],
+    [
+     "you're quite right to say",
+     "dach chi'n hollol iawn i ddeud",
+     "D",
+     "⚠ line — plain, no idiom"
+    ],
+    [
+     "Can you tell me your full name and date of birth?",
+     "Fedrwch chi ddeud eich enw llawn a'ch dyddiad geni wrtha i?",
+     "D",
+     "⚠ line — the identity check, same frame as HG19/HG20"
+    ]
+   ],
+   "south": [
+    [
+     "fan'na",
+     "fanna"
+    ],
+    [
+     "dach chi",
+     "dych chi"
+    ],
+    [
+     "deud / wrtha i",
+     "dweud / wrtho i"
+    ],
+    [
+     "fedrwch chi",
+     "allwch chi"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F03-S04",
+   "sp": "P",
+   "warn": true,
+   "en": "Margaret Hughes, third of March, forty-one. It's the tablets I don't recognise, see.",
+   "cy": "Margaret Hughes, y trydydd o Fawrth, pedwar deg un. Y tabledi dw i ddim yn eu nabod, ylwch.",
+   "chunks": [
+    [
+     "Margaret Hughes, third of March, forty-one",
+     "Margaret Hughes, y trydydd o Fawrth, pedwar deg un",
+     "D",
+     "⚠ line — the clipped year read as a bare decimal number (R5)"
+    ],
+    [
+     "It's the tablets I don't recognise",
+     "Y tabledi dw i ddim yn eu nabod",
+     "I",
+     "⚠ line — the focus cleft; Welsh fronts without any dummy 'it is'"
+    ],
+    [
+     "see",
+     "ylwch",
+     "D",
+     ""
+    ]
+   ],
+   "south": [
+    [
+     "ylwch",
+     "edrychwch ?"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F03-S05",
+   "sp": "HW",
+   "warn": true,
+   "en": "Thank you for saying. I'll double-check the chart with the pharmacist right now, and I won't give you anything until we're certain.",
+   "cy": "Diolch am ddeud. Mi wna i tsiecio'r siart ddwywaith efo'r fferyllydd rŵan, a wna i ddim rhoi dim byd i chi nes byddwn ni'n siŵr.",
+   "chunks": [
+    [
+     "Thank you for saying",
+     "Diolch am ddeud",
+     "D",
+     "⚠ line"
+    ],
+    [
+     "I'll double-check the chart with the pharmacist right now",
+     "Mi wna i tsiecio'r siart ddwywaith efo'r fferyllydd rŵan",
+     "I",
+     "⚠ line — English's prefix 'double-' relocates to the adverb ddwywaith, keeping the one tsiec- lexeme (R7)"
+    ],
+    [
+     "and I won't give you anything until we're certain",
+     "a wna i ddim rhoi dim byd i chi nes byddwn ni'n siŵr",
+     "D",
+     "⚠ line — the nes clause takes the future, where English uses a present"
+    ]
+   ],
+   "south": [
+    [
+     "deud",
+     "dweud"
+    ],
+    [
+     "efo",
+     "gyda"
+    ],
+    [
+     "rŵan",
+     "nawr"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC06-F03-S06",
+   "sp": "P",
+   "warn": true,
+   "en": "Better safe than sorry, my mother always said.",
+   "cy": "Gwell diogel nag edifar, medda fy mam i bob amser.",
+   "chunks": [
+    [
+     "Better safe than sorry",
+     "Gwell diogel nag edifar",
+     "D",
+     "⚠ line — the Welsh proverb runs in the same shape, so nothing relocates"
+    ],
+    [
+     "my mother always said",
+     "medda fy mam i bob amser",
+     "I",
+     "the quotative medd; 'always' lands clause-finally"
+    ]
+   ],
+   "south": [
+    [
+     "medda",
+     "meddai"
+    ]
+   ]
+  }
+ ]
+}

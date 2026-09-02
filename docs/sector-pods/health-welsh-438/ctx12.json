@@ -1,76 +1,640 @@
 {
-"scene": 12, "label": "1.11", "title": "Going home",
-"turns": [
-{"id":"health:SC12-F01-S01","sp":"HW","en":"Here's your medication to take home. One in the morning, one at night, with food. Your follow-up letter will come in the post. Any questions before you go?",
- "cy":"Dyma'ch moddion chi i fynd adra. Un yn y bore, un gyda'r nos, efo bwyd. Mi ddaw'ch llythyr dilynol chi drwy'r post. Unrhyw gwestiynau cyn i chi fynd?",
- "chunks":[["Here's your medication to take home","Dyma'ch moddion chi i fynd adra","I","English's 'take home' becomes a bare going-verb — the medicine goes, it is not taken"],["One in the morning, one at night, with food","Un yn y bore, un gyda'r nos, efo bwyd","D","Welsh marks evening with gyda'r nos, which English's 'at night' does not distinguish"],["Your follow-up letter will come in the post","Mi ddaw'ch llythyr dilynol chi drwy'r post","D","the post is drwy in Welsh, not yn"],["Any questions before you go?","Unrhyw gwestiynau cyn i chi fynd?","D","the cyn i clause-frame"]],
- "south":[["adra","adre"],["efo","gyda"],["mi ddaw","fe ddaw"]]},
-{"id":"health:SC12-F01-S02","sp":"P","en":"Hang on, let me write this down. One in the morning, one at night, with food. Got it.",
- "cy":"Arhoswch funud — gadwch i mi sgwennu hyn i lawr. Un yn y bore, un gyda'r nos, efo bwyd. Dallt.",
- "chunks":[["Hang on","Arhoswch funud","I","English's particle verb has no Welsh reflex — 'wait a minute' carries it"],["let me write this down","gadwch i mi sgwennu hyn i lawr","D","gadwch i mi (R3)"],["One in the morning, one at night, with food","Un yn y bore, un gyda'r nos, efo bwyd","D",""],["Got it","Dallt","I","one form for the ratifying intention, as at 'Understood'"]],
- "south":[["gadwch","gadewch"],["sgwennu","sgrifennu"],["dallt","deall"]]},
-{"id":"health:SC12-F01-S03","sp":"HW","en":"Perfect. And the district nurse will call on Thursday to check the dressing - you don't need to do anything, she'll just come to the house.",
- "cy":"Perffaith. Ac mi ddaw'r nyrs ardal ddydd Iau i tsiecio'r rhwymyn — does dim angen i chi wneud dim byd, mi ddaw hi i'r tŷ.",
- "chunks":[["Perfect","Perffaith","D",""],["And the district nurse will call on Thursday","Ac mi ddaw'r nyrs ardal ddydd Iau","I","English's 'call' for a home visit relocates to plain dod; the day takes the adverbial mutation"],["to check the dressing","i tsiecio'r rhwymyn","D","tsiec- everywhere (R7)"],["you don't need to do anything","does dim angen i chi wneud dim byd","E","'anything' under negation → dim byd; the negative existential need-frame"],["she'll just come to the house","mi ddaw hi i'r tŷ","E","'just' erased — the plain future carries it"]],
- "south":[["mi ddaw","fe ddaw"]]},
-{"id":"health:SC12-F01-S04","sp":"P","en":"Thursday, the nurse. I'll put this note on the fridge.",
- "cy":"Dydd Iau, y nyrs. Mi ro i'r nodyn 'ma ar yr oergell.",
- "chunks":[["Thursday, the nurse","Dydd Iau, y nyrs","D",""],["I'll put this note on the fridge","Mi ro i'r nodyn 'ma ar yr oergell","D",""]],
- "south":[["mi ro i","fe ro i"]]},
-{"id":"health:SC12-F01-S05","sp":"HW","en":"Right then, Mrs Hughes, you take care of yourself. And nothing heavier than the kettle for two weeks.",
- "cy":"Reit 'ta, Mrs Hughes — cymrwch ofal ohonoch chi'ch hun. A dim byd trymach na'r tegell am bythefnos.",
- "chunks":[["Right then, Mrs Hughes","Reit 'ta, Mrs Hughes","D",""],["you take care of yourself","cymrwch ofal ohonoch chi'ch hun","I","English's ambiguous 'you take' is an imperative here; Welsh must choose, and the conjugated ohonoch carries 'of'"],["And nothing heavier than the kettle for two weeks","A dim byd trymach na'r tegell am bythefnos","D","pythefnos is one word for 'two weeks' — Welsh counts fortnights"]],
- "south":[["reit 'ta","?"],["ohonoch chi","ohonoch chi (shared)"]]},
-{"id":"health:SC12-F01-S06","sp":"P","en":"The kettle I can live with. Thank you for everything, all of you.",
- "cy":"Mi fedra i fyw efo'r tegell. Diolch am bob dim, bob un ohonoch chi.",
- "chunks":[["The kettle I can live with","Mi fedra i fyw efo'r tegell","I","English's fronted object cannot front in Welsh without a cleft — the plain order carries it instead"],["Thank you for everything","Diolch am bob dim","D","bob dim northern"],["all of you","bob un ohonoch chi","D","the conjugated partitive"]],
- "south":[["mi fedra i","fe alla i"],["efo","gyda"],["bob dim","popeth"]]},
-{"id":"health:SC12-F02-S01","sp":"HW","en":"Here's your medication. One in the morning, one at night, with food. Any questions?",
- "cy":"Dyma'ch moddion chi. Un yn y bore, un gyda'r nos, efo bwyd. Unrhyw gwestiynau?",
- "chunks":[["Here's your medication","Dyma'ch moddion chi","D",""],["One in the morning, one at night, with food","Un yn y bore, un gyda'r nos, efo bwyd","D",""],["Any questions?","Unrhyw gwestiynau?","D",""]],
- "south":[["efo","gyda"]]},
-{"id":"health:SC12-F02-S02","sp":"P","en":"What happens if I forget a dose? Do I take two the next time?",
- "cy":"Be sy'n digwydd os dw i'n anghofio dos? Ydw i'n cymryd dau y tro nesa?",
- "chunks":[["What happens if I forget a dose?","Be sy'n digwydd os dw i'n anghofio dos?","D","the sy'-focus interrogative; the Welsh present covers English's future-in-if"],["Do I take two the next time?","Ydw i'n cymryd dau y tro nesa?","D","no do-support"]],
- "south":[["nesa","nesa'"]]},
-{"id":"health:SC12-F02-S03","sp":"HW","en":"If you forget, just take the next one at the normal time. Never double up. There's a leaflet in the box that says the same.",
- "cy":"Os anghofiwch chi, cymrwch yr un nesa ar yr amser arferol. Peidiwch byth â dyblu. Mae 'na daflen yn y bocs sy'n deud yr un peth.",
- "chunks":[["If you forget","Os anghofiwch chi","D","the short future in the if-clause, where English uses a present"],["just take the next one at the normal time","cymrwch yr un nesa ar yr amser arferol","E","'just' softener erased (R3)"],["Never double up","Peidiwch byth â dyblu","I","English's bare 'never' relocates to the peidiwch â negative imperative with byth inside it"],["There's a leaflet in the box that says the same","Mae 'na daflen yn y bocs sy'n deud yr un peth","D","the mae 'na existential with a sy'-relative"]],
- "south":[["nesa","nesa'"],["deud","gweud"]]},
-{"id":"health:SC12-F02-S04","sp":"P","en":"Never double up. Right. I'll put the leaflet somewhere safe.",
- "cy":"Peidio byth â dyblu. Reit. Mi ro i'r daflen yn rhywle saff.",
- "chunks":[["Never double up","Peidio byth â dyblu","I","the patient reports the instruction, so the imperative becomes a verbal noun — Welsh cannot echo an imperative as English does"],["Right","Reit","D",""],["I'll put the leaflet somewhere safe","Mi ro i'r daflen yn rhywle saff","D",""]],
- "south":[["mi ro i","fe ro i"],["saff","?"]]},
-{"id":"health:SC12-F02-S05","sp":"HW","en":"Good. And the follow-up letter comes in the post - ring us if it's not here within two weeks.",
- "cy":"Da iawn. Ac mi ddaw'r llythyr dilynol drwy'r post — ffoniwch ni os nad ydy o yma o fewn pythefnos.",
- "chunks":[["Good","Da iawn","D",""],["And the follow-up letter comes in the post","Ac mi ddaw'r llythyr dilynol drwy'r post","D",""],["ring us if it's not here within two weeks","ffoniwch ni os nad ydy o yma o fewn pythefnos","D","ffonio for telephoning, kept apart from canu for ringing a bell"]],
- "south":[["mi ddaw","fe ddaw"],["ydy o","yw e"]]},
-{"id":"health:SC12-F02-S06","sp":"P","en":"Will do. Thank you for everything.",
- "cy":"Mi wna i. Diolch am bob dim.",
- "chunks":[["Will do","Mi wna i","E","English's subjectless ellipsis has no Welsh reflex — the subject must return"],["Thank you for everything","Diolch am bob dim","D",""]],
- "south":[["bob dim","popeth"]]},
-{"id":"health:SC12-F03-S01","sp":"HW","warn":true,"en":"Here's your medication and your discharge sheet. Any questions before you go?",
- "cy":"Dyma'ch moddion chi a'ch taflen ryddhau. Unrhyw gwestiynau cyn i chi fynd?",
- "chunks":[["Here's your medication and your discharge sheet","Dyma'ch moddion chi a'ch taflen ryddhau","D","⚠ line — taflen is feminine, so rhyddhau soft-mutates after it"],["Any questions before you go?","Unrhyw gwestiynau cyn i chi fynd?","D","⚠ line"]],
- "south":[]},
-{"id":"health:SC12-F03-S02","sp":"P","warn":true,"en":"Who do I ring if something goes wrong over the weekend?",
- "cy":"Pwy dw i'n ei ffonio os eith rhywbeth o'i le dros y penwythnos?",
- "chunks":[["Who do I ring","Pwy dw i'n ei ffonio","D","⚠ line — the resumptive ei after a fronted interrogative"],["if something goes wrong over the weekend?","os eith rhywbeth o'i le dros y penwythnos?","D","⚠ line — mynd o'i le is the fixed go-wrong idiom"]],
- "south":[["eith","aiff"]]},
-{"id":"health:SC12-F03-S03","sp":"HW","warn":true,"en":"It's all on this sheet, look. The ward number's here, your GP, and 111 for out of hours. If it's chest pain or you can't breathe, it's 999 - no hesitating.",
- "cy":"Mae'r cwbl ar y daflen 'ma, ylwch. Mae rhif y ward yn fan'ma, eich meddyg teulu chi, a 111 y tu allan i oriau. Os ydy hi'n boen yn y frest neu os fedrwch chi ddim anadlu, 999 amdani — dim oedi.",
- "chunks":[["It's all on this sheet, look","Mae'r cwbl ar y daflen 'ma, ylwch","D","⚠ line"],["The ward number's here, your GP, and 111 for out of hours","Mae rhif y ward yn fan'ma, eich meddyg teulu chi, a 111 y tu allan i oriau","D","⚠ line — meddyg teulu is what a Welsh speaker says, not the initialism"],["If it's chest pain or you can't breathe","Os ydy hi'n boen yn y frest neu os fedrwch chi ddim anadlu","D","⚠ line — poen feminine (R8), so hi and y boen; the os must be restated on the second clause"],["it's 999 - no hesitating","999 amdani — dim oedi","I","⚠ line — the amdani ratifier does the work of English's 'it's'; 'no hesitating' becomes a bare verbal noun"]],
- "south":[["ylwch","edrychwch ?"],["fan'ma","fan hyn"],["fedrwch chi","allwch chi"]]},
-{"id":"health:SC12-F03-S04","sp":"P","warn":true,"en":"999, no hesitating. My husband will remember that even if I don't.",
- "cy":"999, dim oedi. Mi fydd fy ngŵr i'n cofio hynna hyd yn oed os na fydda i.",
- "chunks":[["999, no hesitating","999, dim oedi","I","⚠ line"],["My husband will remember that even if I don't","Mi fydd fy ngŵr i'n cofio hynna hyd yn oed os na fydda i","I","English's dummy 'don't' has no Welsh reflex — the negative future verb must be restated"]],
- "south":[["mi fydd","fe fydd"],["hynna","hynny"]]},
-{"id":"health:SC12-F03-S05","sp":"HW","warn":true,"en":"Put the sheet somewhere you'll both see it. And you've done really well - off you go home now.",
- "cy":"Rhowch y daflen yn rhywle y gwelwch chi'ch dau hi. Ac rydach chi wedi gneud yn dda iawn — ffwrdd â chi adra rŵan.",
- "chunks":[["Put the sheet somewhere you'll both see it","Rhowch y daflen yn rhywle y gwelwch chi'ch dau hi","S","⚠ line — 'both' forks by gender (S3); pinned MASCULINE here — the pair is the patient and her husband, and Welsh takes dau for a mixed pair; the same English chunk took dwy at SC01-F06-S05 where the pair was mother and daughter. Different worlds, different knowns — see §3"],["And you've done really well","Ac rydach chi wedi gneud yn dda iawn","D","⚠ line"],["off you go home now","ffwrdd â chi adra rŵan","I","the â-propulsion frame, second person"]],
- "south":[["rydach chi","rydych chi"],["gneud","gwneud"],["adra","adre"],["rŵan","nawr"]]},
-{"id":"health:SC12-F03-S06","sp":"P","warn":true,"en":"The fridge, where everything important goes. Goodbye now, and thank you.",
- "cy":"Yr oergell, lle mae bob dim pwysig yn mynd. Hwyl rŵan, a diolch.",
- "chunks":[["The fridge, where everything important goes","Yr oergell, lle mae bob dim pwysig yn mynd","D","⚠ line"],["Goodbye now, and thank you","Hwyl rŵan, a diolch","D",""]],
- "south":[["bob dim","popeth"],["rŵan","nawr"]]}
-]}
+ "scene": 12,
+ "label": "1.11",
+ "title": "Going home",
+ "turns": [
+  {
+   "id": "health:SC12-F01-S01",
+   "sp": "HW",
+   "en": "Here's your medication to take home. One in the morning, one at night, with food. Your follow-up letter will come in the post. Any questions before you go?",
+   "cy": "Dyma'ch moddion chi i fynd adra. Un yn y bore, un gyda'r nos, efo bwyd. Mi ddaw'ch llythyr dilynol chi drwy'r post. Unrhyw gwestiynau cyn i chi fynd?",
+   "chunks": [
+    [
+     "Here's your medication to take home",
+     "Dyma'ch moddion chi i fynd adra",
+     "I",
+     "English's 'take home' becomes a bare going-verb — the medicine goes, it is not taken"
+    ],
+    [
+     "One in the morning, one at night, with food",
+     "Un yn y bore, un gyda'r nos, efo bwyd",
+     "D",
+     "Welsh marks evening with gyda'r nos, which English's 'at night' does not distinguish"
+    ],
+    [
+     "Your follow-up letter will come in the post",
+     "Mi ddaw'ch llythyr dilynol chi drwy'r post",
+     "D",
+     "the post is drwy in Welsh, not yn"
+    ],
+    [
+     "Any questions before you go?",
+     "Unrhyw gwestiynau cyn i chi fynd?",
+     "D",
+     "the cyn i clause-frame"
+    ]
+   ],
+   "south": [
+    [
+     "adra",
+     "adre"
+    ],
+    [
+     "efo",
+     "gyda"
+    ],
+    [
+     "mi ddaw",
+     "fe ddaw"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F01-S02",
+   "sp": "P",
+   "en": "Hang on, let me write this down. One in the morning, one at night, with food. Got it.",
+   "cy": "Arhoswch funud — gadwch i mi sgwennu hyn i lawr. Un yn y bore, un gyda'r nos, efo bwyd. Dallt.",
+   "chunks": [
+    [
+     "Hang on",
+     "Arhoswch funud",
+     "I",
+     "English's particle verb has no Welsh reflex — 'wait a minute' carries it"
+    ],
+    [
+     "let me write this down",
+     "gadwch i mi sgwennu hyn i lawr",
+     "D",
+     "gadwch i mi (R3)"
+    ],
+    [
+     "One in the morning, one at night, with food",
+     "Un yn y bore, un gyda'r nos, efo bwyd",
+     "D",
+     ""
+    ],
+    [
+     "Got it",
+     "Dallt",
+     "I",
+     "one form for the ratifying intention, as at 'Understood'"
+    ]
+   ],
+   "south": [
+    [
+     "gadwch",
+     "gadewch"
+    ],
+    [
+     "sgwennu",
+     "sgrifennu"
+    ],
+    [
+     "dallt",
+     "deall"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F01-S03",
+   "sp": "HW",
+   "en": "Perfect. And the district nurse will call on Thursday to check the dressing - you don't need to do anything, she'll just come to the house.",
+   "cy": "Perffaith. Ac mi ddaw'r nyrs ardal ddydd Iau i tsiecio'r rhwymyn — does dim angen i chi wneud dim byd, mi ddaw hi i'r tŷ.",
+   "chunks": [
+    [
+     "Perfect",
+     "Perffaith",
+     "D",
+     ""
+    ],
+    [
+     "And the district nurse will call on Thursday",
+     "Ac mi ddaw'r nyrs ardal ddydd Iau",
+     "I",
+     "English's 'call' for a home visit relocates to plain dod; the day takes the adverbial mutation"
+    ],
+    [
+     "to check the dressing",
+     "i tsiecio'r rhwymyn",
+     "D",
+     "tsiec- everywhere (R7)"
+    ],
+    [
+     "you don't need to do anything",
+     "does dim angen i chi wneud dim byd",
+     "E",
+     "'anything' under negation → dim byd; the negative existential need-frame"
+    ],
+    [
+     "she'll just come to the house",
+     "mi ddaw hi i'r tŷ",
+     "E",
+     "'just' erased — the plain future carries it"
+    ]
+   ],
+   "south": [
+    [
+     "mi ddaw",
+     "fe ddaw"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F01-S04",
+   "sp": "P",
+   "en": "Thursday, the nurse. I'll put this note on the fridge.",
+   "cy": "Dydd Iau, y nyrs. Mi ro i'r nodyn 'ma ar yr oergell.",
+   "chunks": [
+    [
+     "Thursday, the nurse",
+     "Dydd Iau, y nyrs",
+     "D",
+     ""
+    ],
+    [
+     "I'll put this note on the fridge",
+     "Mi ro i'r nodyn 'ma ar yr oergell",
+     "D",
+     ""
+    ]
+   ],
+   "south": [
+    [
+     "mi ro i",
+     "fe ro i"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F01-S05",
+   "sp": "HW",
+   "en": "Right then, Mrs Hughes, you take care of yourself. And nothing heavier than the kettle for two weeks.",
+   "cy": "Reit 'ta, Mrs Hughes — cymrwch ofal ohonoch chi'ch hun. A dim byd trymach na'r tegell am bythefnos.",
+   "chunks": [
+    [
+     "Right then, Mrs Hughes",
+     "Reit 'ta, Mrs Hughes",
+     "D",
+     ""
+    ],
+    [
+     "you take care of yourself",
+     "cymrwch ofal ohonoch chi'ch hun",
+     "I",
+     "English's ambiguous 'you take' is an imperative here; Welsh must choose, and the conjugated ohonoch carries 'of'"
+    ],
+    [
+     "And nothing heavier than the kettle for two weeks",
+     "A dim byd trymach na'r tegell am bythefnos",
+     "D",
+     "pythefnos is one word for 'two weeks' — Welsh counts fortnights"
+    ]
+   ],
+   "south": [
+    [
+     "reit 'ta",
+     "?"
+    ],
+    [
+     "ohonoch chi",
+     "ohonoch chi (shared)"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F01-S06",
+   "sp": "P",
+   "en": "The kettle I can live with. Thank you for everything, all of you.",
+   "cy": "Mi fedra i fyw efo'r tegell. Diolch am bob dim, bob un ohonoch chi.",
+   "chunks": [
+    [
+     "The kettle I can live with",
+     "Mi fedra i fyw efo'r tegell",
+     "I",
+     "English's fronted object cannot front in Welsh without a cleft — the plain order carries it instead"
+    ],
+    [
+     "Thank you for everything",
+     "Diolch am bob dim",
+     "D",
+     "bob dim northern"
+    ],
+    [
+     "all of you",
+     "bob un ohonoch chi",
+     "D",
+     "the conjugated partitive"
+    ]
+   ],
+   "south": [
+    [
+     "mi fedra i",
+     "fe alla i"
+    ],
+    [
+     "efo",
+     "gyda"
+    ],
+    [
+     "bob dim",
+     "popeth"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F02-S01",
+   "sp": "HW",
+   "en": "Here's your medication. One in the morning, one at night, with food. Any questions?",
+   "cy": "Dyma'ch moddion chi. Un yn y bore, un gyda'r nos, efo bwyd. Unrhyw gwestiynau?",
+   "chunks": [
+    [
+     "Here's your medication",
+     "Dyma'ch moddion chi",
+     "D",
+     ""
+    ],
+    [
+     "One in the morning, one at night, with food",
+     "Un yn y bore, un gyda'r nos, efo bwyd",
+     "D",
+     ""
+    ],
+    [
+     "Any questions?",
+     "Unrhyw gwestiynau?",
+     "D",
+     ""
+    ]
+   ],
+   "south": [
+    [
+     "efo",
+     "gyda"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F02-S02",
+   "sp": "P",
+   "en": "What happens if I forget a dose? Do I take two the next time?",
+   "cy": "Be sy'n digwydd os dw i'n anghofio dos? Ydw i'n cymryd dau y tro nesa?",
+   "chunks": [
+    [
+     "What happens if I forget a dose?",
+     "Be sy'n digwydd os dw i'n anghofio dos?",
+     "D",
+     "the sy'-focus interrogative; the Welsh present covers English's future-in-if"
+    ],
+    [
+     "Do I take two the next time?",
+     "Ydw i'n cymryd dau y tro nesa?",
+     "D",
+     "no do-support"
+    ]
+   ],
+   "south": [
+    [
+     "nesa",
+     "nesa'"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F02-S03",
+   "sp": "HW",
+   "en": "If you forget, just take the next one at the normal time. Never double up. There's a leaflet in the box that says the same.",
+   "cy": "Os anghofiwch chi, cymrwch yr un nesa ar yr amser arferol. Peidiwch byth â dyblu. Mae 'na daflen yn y bocs sy'n deud yr un peth.",
+   "chunks": [
+    [
+     "If you forget",
+     "Os anghofiwch chi",
+     "D",
+     "the short future in the if-clause, where English uses a present"
+    ],
+    [
+     "just take the next one at the normal time",
+     "cymrwch yr un nesa ar yr amser arferol",
+     "E",
+     "'just' softener erased (R3)"
+    ],
+    [
+     "Never double up",
+     "Peidiwch byth â dyblu",
+     "I",
+     "English's bare 'never' relocates to the peidiwch â negative imperative with byth inside it"
+    ],
+    [
+     "There's a leaflet in the box that says the same",
+     "Mae 'na daflen yn y bocs sy'n deud yr un peth",
+     "D",
+     "the mae 'na existential with a sy'-relative"
+    ]
+   ],
+   "south": [
+    [
+     "nesa",
+     "nesa'"
+    ],
+    [
+     "deud",
+     "gweud"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F02-S04",
+   "sp": "P",
+   "en": "Never double up. Right. I'll put the leaflet somewhere safe.",
+   "cy": "Peidio byth â dyblu. Reit. Mi ro i'r daflen yn rhywle saff.",
+   "chunks": [
+    [
+     "Never double up. Right.",
+     "Peidio byth â dyblu. Reit.",
+     "I",
+     "RE-CUT (fork F4): the doctor's instruction and the patient's echo are the same English string but different moves — Welsh cannot echo an imperative as an imperative, so the patient's unit is the whole ratifying move, and the fork dies inside it"
+    ],
+    [
+     "I'll put the leaflet somewhere safe",
+     "Mi ro i'r daflen yn rhywle saff",
+     "D",
+     ""
+    ]
+   ],
+   "south": [
+    [
+     "mi ro i",
+     "fe ro i"
+    ],
+    [
+     "saff",
+     "?"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F02-S05",
+   "sp": "HW",
+   "en": "Good. And the follow-up letter comes in the post - ring us if it's not here within two weeks.",
+   "cy": "Da iawn. Ac mi ddaw'r llythyr dilynol drwy'r post — ffoniwch ni os nad ydy o yma o fewn pythefnos.",
+   "chunks": [
+    [
+     "Good",
+     "Da iawn",
+     "D",
+     ""
+    ],
+    [
+     "And the follow-up letter comes in the post",
+     "Ac mi ddaw'r llythyr dilynol drwy'r post",
+     "D",
+     ""
+    ],
+    [
+     "ring us if it's not here within two weeks",
+     "ffoniwch ni os nad ydy o yma o fewn pythefnos",
+     "D",
+     "ffonio for telephoning, kept apart from canu for ringing a bell"
+    ]
+   ],
+   "south": [
+    [
+     "mi ddaw",
+     "fe ddaw"
+    ],
+    [
+     "ydy o",
+     "yw e"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F02-S06",
+   "sp": "P",
+   "en": "Will do. Thank you for everything.",
+   "cy": "Mi wna i. Diolch am bob dim.",
+   "chunks": [
+    [
+     "Will do",
+     "Mi wna i",
+     "E",
+     "English's subjectless ellipsis has no Welsh reflex — the subject must return"
+    ],
+    [
+     "Thank you for everything",
+     "Diolch am bob dim",
+     "D",
+     ""
+    ]
+   ],
+   "south": [
+    [
+     "bob dim",
+     "popeth"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F03-S01",
+   "sp": "HW",
+   "warn": true,
+   "en": "Here's your medication and your discharge sheet. Any questions before you go?",
+   "cy": "Dyma'ch moddion chi a'ch taflen ryddhau. Unrhyw gwestiynau cyn i chi fynd?",
+   "chunks": [
+    [
+     "Here's your medication and your discharge sheet",
+     "Dyma'ch moddion chi a'ch taflen ryddhau",
+     "D",
+     "⚠ line — taflen is feminine, so rhyddhau soft-mutates after it"
+    ],
+    [
+     "Any questions before you go?",
+     "Unrhyw gwestiynau cyn i chi fynd?",
+     "D",
+     "⚠ line"
+    ]
+   ],
+   "south": []
+  },
+  {
+   "id": "health:SC12-F03-S02",
+   "sp": "P",
+   "warn": true,
+   "en": "Who do I ring if something goes wrong over the weekend?",
+   "cy": "Pwy dw i'n ei ffonio os eith rhywbeth o'i le dros y penwythnos?",
+   "chunks": [
+    [
+     "Who do I ring",
+     "Pwy dw i'n ei ffonio",
+     "D",
+     "⚠ line — the resumptive ei after a fronted interrogative"
+    ],
+    [
+     "if something goes wrong over the weekend?",
+     "os eith rhywbeth o'i le dros y penwythnos?",
+     "D",
+     "⚠ line — mynd o'i le is the fixed go-wrong idiom"
+    ]
+   ],
+   "south": [
+    [
+     "eith",
+     "aiff"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F03-S03",
+   "sp": "HW",
+   "warn": true,
+   "en": "It's all on this sheet, look. The ward number's here, your GP, and 111 for out of hours. If it's chest pain or you can't breathe, it's 999 - no hesitating.",
+   "cy": "Mae'r cwbl ar y daflen 'ma, ylwch. Mae rhif y ward yn fan'ma, eich meddyg teulu chi, a 111 y tu allan i oriau. Os ydy hi'n boen yn y frest neu os fedrwch chi ddim anadlu, 999 amdani — dim oedi.",
+   "chunks": [
+    [
+     "It's all on this sheet, look",
+     "Mae'r cwbl ar y daflen 'ma, ylwch",
+     "D",
+     "⚠ line"
+    ],
+    [
+     "The ward number's here, your GP, and 111 for out of hours",
+     "Mae rhif y ward yn fan'ma, eich meddyg teulu chi, a 111 y tu allan i oriau",
+     "D",
+     "⚠ line — meddyg teulu is what a Welsh speaker says, not the initialism"
+    ],
+    [
+     "If it's chest pain or you can't breathe",
+     "Os ydy hi'n boen yn y frest neu os fedrwch chi ddim anadlu",
+     "D",
+     "⚠ line — poen feminine (R8), so hi and y boen; the os must be restated on the second clause"
+    ],
+    [
+     "it's 999 - no hesitating",
+     "999 amdani — dim oedi",
+     "I",
+     "⚠ line — the amdani ratifier does the work of English's 'it's'; 'no hesitating' becomes a bare verbal noun"
+    ]
+   ],
+   "south": [
+    [
+     "ylwch",
+     "edrychwch ?"
+    ],
+    [
+     "fan'ma",
+     "fan hyn"
+    ],
+    [
+     "fedrwch chi",
+     "allwch chi"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F03-S04",
+   "sp": "P",
+   "warn": true,
+   "en": "999, no hesitating. My husband will remember that even if I don't.",
+   "cy": "999, dim oedi. Mi fydd fy ngŵr i'n cofio hynna hyd yn oed os na fydda i.",
+   "chunks": [
+    [
+     "999, no hesitating",
+     "999, dim oedi",
+     "I",
+     "⚠ line"
+    ],
+    [
+     "My husband will remember that even if I don't",
+     "Mi fydd fy ngŵr i'n cofio hynna hyd yn oed os na fydda i",
+     "I",
+     "English's dummy 'don't' has no Welsh reflex — the negative future verb must be restated"
+    ]
+   ],
+   "south": [
+    [
+     "mi fydd",
+     "fe fydd"
+    ],
+    [
+     "hynna",
+     "hynny"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F03-S05",
+   "sp": "HW",
+   "warn": true,
+   "en": "Put the sheet somewhere you'll both see it. And you've done really well - off you go home now.",
+   "cy": "Rhowch y daflen yn rhywle y gwelwch chi'ch dau hi. Ac rydach chi wedi gneud yn dda iawn — ffwrdd â chi adra rŵan.",
+   "chunks": [
+    [
+     "Put the sheet somewhere you'll both see it",
+     "Rhowch y daflen yn rhywle y gwelwch chi'ch dau hi",
+     "S",
+     "⚠ line — 'both' forks by gender (S3); pinned MASCULINE here — the pair is the patient and her husband, and Welsh takes dau for a mixed pair; the same English chunk took dwy at SC01-F06-S05 where the pair was mother and daughter. Different worlds, different knowns — see §3"
+    ],
+    [
+     "And you've done really well",
+     "Ac rydach chi wedi gneud yn dda iawn",
+     "D",
+     "⚠ line"
+    ],
+    [
+     "off you go home now",
+     "ffwrdd â chi adra rŵan",
+     "I",
+     "the â-propulsion frame, second person"
+    ]
+   ],
+   "south": [
+    [
+     "rydach chi",
+     "rydych chi"
+    ],
+    [
+     "gneud",
+     "gwneud"
+    ],
+    [
+     "adra",
+     "adre"
+    ],
+    [
+     "rŵan",
+     "nawr"
+    ]
+   ]
+  },
+  {
+   "id": "health:SC12-F03-S06",
+   "sp": "P",
+   "warn": true,
+   "en": "The fridge, where everything important goes. Goodbye now, and thank you.",
+   "cy": "Yr oergell, lle mae bob dim pwysig yn mynd. Hwyl rŵan, a diolch.",
+   "chunks": [
+    [
+     "The fridge, where everything important goes",
+     "Yr oergell, lle mae bob dim pwysig yn mynd",
+     "D",
+     "⚠ line"
+    ],
+    [
+     "Goodbye now, and thank you",
+     "Hwyl rŵan, a diolch",
+     "D",
+     ""
+    ]
+   ],
+   "south": [
+    [
+     "bob dim",
+     "popeth"
+    ],
+    [
+     "rŵan",
+     "nawr"
+    ]
+   ]
+  }
+ ]
+}
