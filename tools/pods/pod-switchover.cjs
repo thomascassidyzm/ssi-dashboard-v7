@@ -232,6 +232,34 @@ function planInflightFold ({ course, liveSlug, retiredSlug, promoteTo, plannedKe
   return { actions, refresh, ignored, unknown }
 }
 
+/**
+ * The staged pod's readiness blockers, as a pure function of one count row.
+ *
+ * Extracted from main() on 2026-09-02 so that it can be exercised by a test, because it
+ * was NOT being exercised and it had a hole: `no_known_audio` was counted, printed in the
+ * readiness line, and then silently dropped on the floor — never pushed onto `blockers` —
+ * and `known_text` emptiness was not counted at all. A course could be promoted onto a live
+ * slug with a complete target side and a SILENT KNOWN SIDE, and nothing would refuse.
+ * The known side is half of what a learner hears; it refuses as loudly as the target side now.
+ *
+ * All four content blockers are waived under --rehearsal, exactly as the target-side pair
+ * always was: a rehearsal proves the progress migration on a throwaway clone, and making the
+ * known side bind there would break rehearsals for no safety gain (Tom's framing, 2026-09-02).
+ * The zero-sentence blocker is NOT content readiness and binds in every mode.
+ */
+function readinessBlockers (counts, { rehearsal = false } = {}) {
+  const num = (v) => Number(v || 0)
+  const blockers = []
+  if (num(counts.n) === 0) blockers.push('staged pod has no sentences')
+  if (rehearsal) return blockers
+  if (num(counts.no_text) > 0) blockers.push(`${counts.no_text} staged sentences have no target text`)
+  if (num(counts.draft) > 0) blockers.push(`${counts.draft} staged sentences are still marked draft`)
+  if (num(counts.no_target_audio) > 0) blockers.push(`${counts.no_target_audio} staged sentences have no target audio`)
+  if (num(counts.no_known_text) > 0) blockers.push(`${counts.no_known_text} staged sentences have no known text`)
+  if (num(counts.no_known_audio) > 0) blockers.push(`${counts.no_known_audio} staged sentences have no known audio`)
+  return blockers
+}
+
 async function main () {
   const db = new Client({ connectionString: process.env.DATABASE_URL })
   await db.connect()
@@ -314,6 +342,7 @@ async function main () {
   const { rows: [s] } = await db.query(
     `select count(*) n,
             count(*) filter (where coalesce(btrim(target_text),'') = '') no_text,
+            count(*) filter (where coalesce(btrim(known_text),'') = '') no_known_text,
             count(*) filter (where target_text_draft) draft,
             count(*) filter (where target_audio_id is null) no_target_audio,
             count(*) filter (where known_audio_id is null) no_known_audio
@@ -323,18 +352,15 @@ async function main () {
   const liveN = await countOf(LIVE)
 
   log(`${COURSE}: live ${LIVE}=${liveN} sentences, staged ${STAGED}=${s.n} sentences`)
-  log(`  staged readiness: ${s.no_text} untranslated, ${s.draft} draft, ${s.no_target_audio} without target audio, ${s.no_known_audio} without known audio`)
+  log(`  staged readiness: ${s.no_text} untranslated, ${s.draft} draft, ${s.no_target_audio} without target audio, ` +
+      `${s.no_known_text} without known text, ${s.no_known_audio} without known audio`)
 
-  const blockers = []
-  if (Number(s.n) === 0) blockers.push('staged pod has no sentences')
+  const blockers = readinessBlockers(s, { rehearsal: REHEARSAL })
   if (REHEARSAL) {
     log(`  --rehearsal: content-readiness blockers WAIVED on scratch course ${COURSE} ` +
-        `(${s.no_text} untranslated, ${s.draft} draft, ${s.no_target_audio} unrecorded). ` +
+        `(${s.no_text} untranslated, ${s.draft} draft, ${s.no_target_audio} unrecorded, ` +
+        `${s.no_known_text} without known text, ${s.no_known_audio} without known audio). ` +
         'Migration-correctness blockers still bind.')
-  } else {
-    if (Number(s.no_text) > 0) blockers.push(`${s.no_text} staged sentences have no target text`)
-    if (Number(s.draft) > 0) blockers.push(`${s.draft} staged sentences are still marked draft`)
-    if (Number(s.no_target_audio) > 0) blockers.push(`${s.no_target_audio} staged sentences have no target audio`)
   }
 
   // ---- the cast gate ---------------------------------------------------------
@@ -587,7 +613,7 @@ async function main () {
   await db.end()
 }
 
-module.exports = { planInflightFold }
+module.exports = { planInflightFold, readinessBlockers }
 
 if (require.main === module) {
   main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
