@@ -14,6 +14,32 @@
  * Same text at a wildly different ladder position is not a match; it is a different
  * pedagogical event. The bound is two-part and empirically derived — see POSITION_BOUND.
  *
+ * RESTATED BY TOM, 2026-09-02, and this is the invariant any refactor MUST PRESERVE:
+ * "the same, or close to the same sentence, if it's close to the same position in the
+ * sequence — else revert to the most logical position before that."
+ *
+ * BOTH CONDITIONS OR NEITHER. Text similarity alone is not a match (the same line at a
+ * very different point in the walk is a different pedagogical event) and positional
+ * proximity alone is not a match (a nearby slot holding different content is not the
+ * learner's position). That is `resolve()` below: text first, then corresponded scene,
+ * then within-scene shift. Do not let a refactor simplify it into a slot map — a slot
+ * map IS the mis-credit this file exists to prevent.
+ *
+ * THE ASYMMETRY IS THE WHOLE RULE. Where the match cannot be made, the learner degrades
+ * BACKWARDS — here, the state row drops and the sentence is unseen again. Never forwards.
+ * Sending someone back costs them repetition of material they have already met, which the
+ * estate's own doctrine says is not a punishment. Sending them FORWARD drops them into
+ * material whose prerequisites they have never met, and it is invisible: they read it as
+ * their own inability, not as a migration bug. So: never round up, never split the
+ * difference, never advance on a partial match. Proved in
+ * tools/pods/pod-state-migrate-position.test.cjs, which fails against a slot map.
+ *
+ * ONE PLACE STILL ROUNDS UP, and it is flagged rather than changed: when two old rows
+ * collapse onto one new slot, the merge below keeps `Math.max` of their exposures. Under
+ * the asymmetry the safe choice is `min` — a learner part-way through both halves of a
+ * merged line is not mature on the whole of it. Changing it moves real learners'
+ * scheduling, so it is Tom's call, logged in docs/pods/pod-doors-closed-2026-09-02.md.
+ *
  *   surviving sentence  -> keeps its exposures, moved onto its new slot key
  *   genuinely new       -> arrives unseen (no row is written; absence IS unseen)
  *   removed sentence    -> its row drops, with no penalty

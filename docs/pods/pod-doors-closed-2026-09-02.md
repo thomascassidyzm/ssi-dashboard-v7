@@ -235,3 +235,92 @@ already had — that is what proves each extraction was faithful rather than a r
 - **`promote-pod` still does not carry progress.** It warns. That is an interim, named as
   one, with the fix costed above.
 - **"Eleven" is a read, not a proof.** See the enumeration section.
+
+---
+
+## Addendum, 2026-09-02 — the progress rule Tom named. It is in the code. Nothing asserted it.
+
+**Tom's words:** "we had a nuance to the progress which was 'the same, or close to the same
+sentence, if it's close to the same position in the sequence' else revert to the most
+logical position before that."
+
+**It is already implemented, and I preserved it rather than reimplementing it.** It was
+ruled and built on 2026-08-14 and lives in `planMigration()` in
+`tools/pods/pod-state-migrate.cjs` — the single implementation that `pod-switchover.cjs`
+uses, that `planInflightFold()` re-enters verbatim, and that `promote-pod.cjs` will call
+once the extraction lands.
+
+**Both conditions, enforced together**, in `resolve()`:
+
+1. **Text** — exact after normalisation (whitespace, case, typographic quotes and dashes;
+   *not* punctuation, because "Five. Ten." and "5. 10." are correctly not the same thing to
+   hear). Note this is **stricter than "close to the same"**: a reworded line counts as new,
+   never as a survivor. That is deliberate and it errs in the safe direction — a stricter
+   match drops more rows, and dropping is backwards.
+2. **Position** — the *corresponding* scene, where scenes are corresponded **by content
+   plurality, not by number**, plus a shift of at most 8 places within it. That two-part
+   bound is not a guess: it was measured over all 4,062 content matches across 37 courses
+   (`docs/pods/a107-position-bound-2026-08-14.md`). An index window would have been wrong —
+   the pod grows 142 → 232 rows, so every survivor shifts, median 10 and up to 90. The
+   scene is the invariant, which is what lets old scene 15 legitimately become new scene 22.
+
+**The asymmetry holds.** Every failure path — text absent, text ambiguous, relocated to a
+different scene, moved too far within it — **drops the state row**. A dropped row means the
+sentence is unseen again, which is strictly backwards. Nothing in the plan can carry a
+learner onto a sentence whose text they did not hear; that invariant is now asserted over
+every action, not just the interesting one.
+
+### What was actually missing: the proof
+
+`planMigration()` **had no direct test file.** It was exercised only sideways, through
+`pod-switchover-inflight.test.cjs`'s fixtures. The rule most likely to be quietly
+simplified by a refactor was the one nothing asserted — which is exactly the risk the
+extraction would have run into. `tools/pods/pod-state-migrate-position.test.cjs` now holds
+it, and the header of `pod-state-migrate.cjs` records Tom's restatement verbatim as the
+invariant any refactor must preserve.
+
+**Recorded red, against the naive slot map** — what a swap does with no migration at all,
+and what a "simplification" of `planMigration` collapses into:
+
+```
+FAIL  REFUSES to carry a sentence relocated to a different scene, though the text is identical
+  AssertionError: expected 'carry' to be 'drop' // Object.is equality
+FAIL  REFUSES to credit the learner with the new sentence sitting in their old slot
+  AssertionError: expected 'i would like to pay by card' to be 'where is the station?'
+FAIL  LANDS THE LEARNER EARLIER, NEVER LATER, when no close match at a close position exists
+  AssertionError: expected 'carry' to be 'drop' // Object.is equality
+FAIL  NEVER credits a learner with text they did not hear — the invariant, over every action
+  AssertionError: expected 'i would like to pay by card' to be 'where is the station?'
+FAIL  REFUSES a slot whose sentence was reworded — a changed line is a new line, never a survivor
+  AssertionError: expected 'carry' to be 'drop' // Object.is equality
+FAIL  carries progress across a renumbered scene whose content moved together
+  AssertionError: expected [ 'drop', 'drop', 'drop' ] to deeply equal [ 'carry', 'carry', 'carry' ]
+
+Test Files  1 failed (1)
+     Tests  6 failed | 1 passed (7)
+```
+
+Read the last two together: **the slot map carries the thing it must drop** (an unheard
+line at the same index) **and drops everything it must carry** (a whole scene that moved
+together, the learner's position intact). Text without position and position without text
+are wrong in opposite directions. 8/8 green against the real implementation.
+
+### One decision candidate, flagged and NOT changed
+
+**The merge branch rounds UP.** When two old rows collapse onto one new sentence,
+`planMigration` keeps `Math.max` of their exposures. Under your asymmetry the safe choice
+is `min`: `exposures` is a maturity counter, and a higher value means the line is *served
+less often*, so rounding up advances a learner past material they are only part-way through.
+It is the one place in the rule that rounds up rather than down.
+
+I did not change it — it re-schedules real learners, which is your call, not a refactor's.
+Today's behaviour is now pinned by a test whose own comment says it asserts the current
+answer rather than the right one. **My recommendation: switch it to `min`.** One word, and
+it makes the file honour its own stated rule everywhere. Say the word and it is a ten-minute
+job with the test flipped in the same commit.
+
+### What this changes about the extraction
+
+Nothing about its shape, and it makes it safer: the rule now has a test that fails against
+a slot map, so the extraction cannot quietly simplify it and pass. That test is the thing
+the next job should run first and last.

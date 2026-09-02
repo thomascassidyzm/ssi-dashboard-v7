@@ -150,9 +150,13 @@ export const ROLL_QUIET_MS = 1000
 // never to gate audio.
 //
 // These are the LOUD-MIC end of the scale, and they are absolute numbers on a
-// signal whose gain we deliberately do not control: autoGainControl is off, so
-// how high a real read peaks depends entirely on the device and how far away
-// the mouth is. A phone held at arm's length peaks well under 0.06 while
+// signal whose gain we do not control. (This paragraph was written under the
+// old dry default, when autoGainControl was off. The default is the voice
+// profile now — but the conclusion is unchanged and the numbers below did not
+// need retuning, because nothing here is an absolute test: the floor is
+// measured against this room's own noise, which is what makes it hold across a
+// mic at -60dBFS and a mic at -12.) How high a real read peaks depends entirely
+// on the device, the profile it was asked for, and how far away the mouth is. A phone held at arm's length peaks well under 0.06 while
 // reading perfectly audibly, and every syllable of it then sits below
 // SPEECH_PEAK — the line is judged to have had nothing said on it, and the
 // audio, which exists and is fine, is thrown away.
