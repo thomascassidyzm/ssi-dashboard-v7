@@ -5294,6 +5294,12 @@ async function handleRecordingUpload(req, res) {
           via: 'recording'
         }
       }),
+      // A GAPPED take is protected in the middle. Tom, 2026-09-02: on the
+      // minimal phrase set "we want... to keep the silence between the words,
+      // so that we can dice and splice more easily". The processor reads this
+      // and lowers its minimum-word length so a short first word is not
+      // discarded and amputated; it never touches the gaps either way.
+      readStyle: metadata.cadence === 'gapped' ? 'gapped' : 'natural',
       processRecording: (buffer, options) => audioProcessor.processRecordingBuffer(buffer, options)
     })
 

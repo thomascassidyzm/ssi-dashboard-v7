@@ -62,6 +62,41 @@ function audibleSpanAt(mp3Buffer, floor) {
   return first < 0 ? 0 : (last - first) / SAMPLE_RATE
 }
 
+/**
+ * Every audible region, as {start, end} seconds — not just the outer bounds.
+ *
+ * The gapped read is the reason this exists: a chain that kept a take's LENGTH
+ * but smeared its internal gaps shut would pass every span-length assertion in
+ * this file and still have destroyed the cut points the splice depends on. A
+ * region has to stay quiet for MIN_GAP_SEC to count as a gap, so the ordinary
+ * zero-crossings inside a tone do not split it into hundreds of pieces.
+ */
+function audibleSpans(mp3Buffer, floor, minGapSec = 0.15) {
+  const f = path.join(tmpDir, 'spans.mp3')
+  fs.writeFileSync(f, mp3Buffer)
+  const pcm = execFileSync(
+    'ffmpeg',
+    ['-v', 'quiet', '-i', f, '-f', 's16le', '-ac', '1', '-ar', String(SAMPLE_RATE), '-'],
+    { maxBuffer: 1e8 }
+  )
+  const a = new Int16Array(pcm.buffer, pcm.byteOffset, Math.floor(pcm.length / 2))
+  const minGap = Math.round(minGapSec * SAMPLE_RATE)
+  const spans = []
+  let start = -1
+  let lastLoud = -1
+  for (let i = 0; i < a.length; i++) {
+    if (Math.abs(a[i]) > floor) {
+      if (start < 0) start = i
+      lastLoud = i
+    } else if (start >= 0 && i - lastLoud >= minGap) {
+      spans.push({ start: start / SAMPLE_RATE, end: lastLoud / SAMPLE_RATE })
+      start = -1
+    }
+  }
+  if (start >= 0) spans.push({ start: start / SAMPLE_RATE, end: lastLoud / SAMPLE_RATE })
+  return spans
+}
+
 /** Length of the contiguous speech-level region, in seconds. */
 function audibleSpan(mp3Buffer) {
   return audibleSpanAt(mp3Buffer, SPEECH_FLOOR)
@@ -287,5 +322,56 @@ describe('processRecordingBuffer — silence trim (T-20 regression)', () => {
     // Either the encode yields nothing decodable, or it is far under the
     // handler's 100ms floor. Both mean the take is refused rather than stored.
     expect(metadata.durationMs || 0).toBeLessThan(100)
+  }, 60000)
+
+  // ── THE GAPPED READ ────────────────────────────────────────────────────────
+  // Tom's ruling, 2026-09-02, on the minimal phrase set: "we want, if anything,
+  // to keep the silence between the words, so that we can dice and splice more
+  // easily, right?" Those gaps ARE the cut points, and there are two ways to
+  // lose them, both guarded here.
+  //
+  // 1. The trim discards any non-silent region shorter than TRIM_MIN_SPEECH_SEC
+  //    as a click. On a whole sentence that is right. On a gapped read every
+  //    word is its own region, so a short FIRST word ("y", "lo", "de" -- all
+  //    real pieces in the live zzz set) is discarded, the bounds start at the
+  //    second word, and the trim amputates the first. Measured before the fix:
+  //    the natural path returned this fixture 900ms shorter, starting at word 2.
+  // 2. Anything that collapses the middle. Nothing in the chain does today --
+  //    the cut is one atrim and the loudness stage is gain only -- and this
+  //    pins it, so reintroducing silenceremove or a dynamic normaliser fails
+  //    here rather than in a splice nobody listens to for a week.
+  it('a gapped read keeps its short first word AND every gap between the words', async () => {
+    if (!tmpDir) return
+    const src = path.join(tmpDir, 'gapped.webm')
+    // 1.0s room, a 0.18s first word, 0.7s gap, 0.6s word, 0.7s gap, 0.5s word,
+    // 1.0s room. The first word is deliberately under TRIM_MIN_SPEECH_SEC.
+    execFileSync('ffmpeg', [
+      '-v', 'quiet', '-y',
+      '-f', 'lavfi', '-i', 'sine=f=300:d=0.18:r=48000',
+      '-f', 'lavfi', '-i', 'sine=f=440:d=0.6:r=48000',
+      '-f', 'lavfi', '-i', 'sine=f=520:d=0.5:r=48000',
+      '-filter_complex',
+      '[0]adelay=1000,apad=pad_dur=0.7[a];[1]apad=pad_dur=0.7[b];[2]apad=pad_dur=1.0[c];[a][b][c]concat=n=3:v=0:a=1',
+      '-c:a', 'libopus', '-b:a', '96k', src,
+    ])
+    const take = fs.readFileSync(src)
+    const natural = await processRecordingBuffer(take, {
+      inputFormat: 'webm', trimSilence: true, normalize: false, readStyle: 'natural',
+    })
+    const gapped = await processRecordingBuffer(take, {
+      inputFormat: 'webm', trimSilence: true, normalize: false, readStyle: 'gapped',
+    })
+
+    // The gapped read is LONGER, by about the first word plus the gap after it,
+    // because the natural path threw both away.
+    expect(gapped.metadata.durationMs).toBeGreaterThan(natural.metadata.durationMs + 500)
+
+    // All three words survive, and so do both gaps between them. Counted from
+    // the audible spans rather than asserted on a duration, so a chain that
+    // kept the length but smeared the gaps shut still fails.
+    const spans = audibleSpans(gapped.buffer, SPEECH_FLOOR / 4)
+    expect(spans.length).toBe(3)
+    expect(spans[1].start - spans[0].end).toBeGreaterThan(0.5)
+    expect(spans[2].start - spans[1].end).toBeGreaterThan(0.5)
   }, 60000)
 })

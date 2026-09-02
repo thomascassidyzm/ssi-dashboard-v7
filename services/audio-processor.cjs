@@ -1401,6 +1401,13 @@ async function getAudioMetadata(audioPath) {
 const TRIM_DETECT_DB = -40;         // where the read plainly is, not where it starts
 const TRIM_MIN_SILENCE_SEC = 0.2;   // silence shorter than this is inside the read
 const TRIM_MIN_SPEECH_SEC = 0.3;    // shorter than this is a click, not a word
+// The same question asked of a GAPPED read, where every word is its own region
+// and the short ones are real ("y", "lo", "de"). 60ms is long enough to reject
+// a click and the zero-length regions the inversion produces at a boundary,
+// short enough to keep any word a person can say. NOT zero: at zero the
+// inversion emits an empty read at t=0 whenever the take opens in silence, and
+// the bounds then start at the top of the file and nothing is trimmed at all.
+const GAPPED_MIN_SPEECH_SEC = 0.06;
 const TRIM_MARGIN_SEC = 0.35;       // room left outside the read at each end
 // A take whose raw input peaks above this has audible content in it, whatever
 // the detector later makes of it.
@@ -1451,7 +1458,14 @@ async function measureInputLevel(inputPath) {
  * take of an empty room, a stray click) — which the caller turns into an empty
  * output so the upload handler's silent-take guard refuses it.
  */
-async function detectReadBounds(inputPath) {
+/**
+ * @param {object} [opts]
+ * @param {number} [opts.minSpeechSec] how long a non-silent region must be to
+ *   count as a word rather than a click. Lowered to 0 for a GAPPED read — see
+ *   the gapped-read note in processRecordingBuffer for why the default would
+ *   amputate the first word of one.
+ */
+async function detectReadBounds(inputPath, { minSpeechSec = TRIM_MIN_SPEECH_SEC } = {}) {
   const { stdout, stderr } = await execAsync(
     `ffmpeg -v info -i "${inputPath}" -af silencedetect=noise=${TRIM_DETECT_DB}dB:d=${TRIM_MIN_SILENCE_SEC} -f null - 2>&1`
   );
@@ -1499,10 +1513,10 @@ async function detectReadBounds(inputPath) {
   const reads = [];
   let cursor = 0;
   for (const s of silences) {
-    if (s.start - cursor >= TRIM_MIN_SPEECH_SEC) reads.push({ start: cursor, end: s.start });
+    if (s.start - cursor >= minSpeechSec) reads.push({ start: cursor, end: s.start });
     cursor = Math.max(cursor, s.end);
   }
-  if (duration - cursor >= TRIM_MIN_SPEECH_SEC) reads.push({ start: cursor, end: duration });
+  if (duration - cursor >= minSpeechSec) reads.push({ start: cursor, end: duration });
   if (!reads.length) return null;
 
   return { startSec: reads[0].start, endSec: reads[reads.length - 1].end, durationSec: duration };
@@ -1513,8 +1527,11 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     inputFormat = 'webm',
     trimSilence = true,
     normalize = true,
-    targetLUFS = -16
+    targetLUFS = -16,
+    // 'natural' (everything else) or 'gapped' (the minimal phrase set).
+    readStyle = 'natural'
   } = options;
+  const gapped = readStyle === 'gapped';
 
   // Check FFmpeg
   if (!(await checkFfmpegInstalled())) {
@@ -1599,13 +1616,51 @@ async function processRecordingBuffer(inputBuffer, options = {}) {
     // (trimLeadMarginSec / trimTailMarginSec) and the boundary gate on the
     // upload path (services/recording-speech-gate.cjs, checkTakeBoundaries)
     // refuses the take, which is the only honest repair: read it again.
+    // ── A GAPPED READ: THE SILENCE BETWEEN THE WORDS IS THE DATA ────────────
+    //
+    // Tom's ruling, 2026-09-02: "we want, if anything, to keep the silence
+    // between the words, so that we can dice and splice more easily, right?"
+    //
+    // The minimal phrase set is read slowly with a deliberate gap around every
+    // word, and those gaps ARE the cut points the splice depends on. So on a
+    // gapped take:
+    //
+    //   NEVER collapse or shorten the silence BETWEEN the first word and the
+    //   last. Any silence-removal, gap-collapsing or dynamic normalisation
+    //   applied in the middle of one of these takes destroys the exact thing
+    //   the take exists to capture.
+    //
+    // The chain below already honours that and must go on honouring it: the cut
+    // is a single `atrim` from the first read to the last, the loudness stage is
+    // GAIN ONLY (masterToHouseLoudness — no compressor, no gate, no dynamic
+    // normaliser), and `silenceremove` is banned here for separate reasons
+    // spelled out three paragraphs down. Do not reintroduce any per-region
+    // filter, and do not "tidy" the gaps.
+    //
+    // WHAT DID HAVE TO CHANGE is the detector's minimum speech length. The
+    // default discards any non-silent region shorter than TRIM_MIN_SPEECH_SEC
+    // as a click rather than a word, which is right for a whole sentence read
+    // at pace: the gaps inside it are shorter than TRIM_MIN_SILENCE_SEC, so the
+    // sentence is ONE region and only real clicks get dropped. A gapped read is
+    // the opposite — every word is its own region, separated by silence that is
+    // deliberately long enough to detect — so a short leading word ("y", "lo",
+    // "de", "que", all of which are real pieces in the live zzz set) would be
+    // discarded, `reads[0]` would be the SECOND word, and the trim would
+    // amputate the first word of the take. MEASURED, on a synthetic gapped take
+    // whose first word is 180ms: the natural path returned 2.5s and started at
+    // the SECOND word; the gapped path returns 3.4s and starts at the first.
+    // At GAPPED_MIN_SPEECH_SEC every real word counts, so the bounds are the
+    // first sound to the last. The cost is that a click before the first word
+    // becomes the start, which only ever means a little extra room at the front
+    // — harmless, and reversible, because the raw original is archived before
+    // this runs.
     let trimBounds = null;
     let keptWhole = false;
     let achievedLeadSec = null;
     let achievedTailSec = null;
     if (trimSilence) {
       try {
-        trimBounds = await detectReadBounds(inputPath);
+        trimBounds = await detectReadBounds(inputPath, gapped ? { minSpeechSec: GAPPED_MIN_SPEECH_SEC } : {});
       } catch (err) {
         console.warn(`[AudioProcessor] read detection failed (${err.message}) — take kept whole`);
       }

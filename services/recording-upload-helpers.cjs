@@ -239,6 +239,8 @@ function buildRawTakeKey(s3KeyUuid, extension) {
  * @param {(args: {rawKey: string, buffer: Buffer, contentType: string}) => Promise<any>} args.retainRaw
  * @param {(buffer: Buffer, options: object) => Promise<{buffer: Buffer, metadata: object}>} args.processRecording
  * @param {number} [args.minTakeMs] - silent-take floor (MIN_TAKE_MS)
+ * @param {'natural'|'gapped'} [args.readStyle] - 'gapped' protects a deliberately
+ *   gapped read: its internal silence is the splice's cut points, never trimmed
  * @param {string} [args.audioId] - for log lines only
  * @param {object} [args.logger]
  * @returns {Promise<{rawKey: string|null, rawRetained: boolean, rawError: string|null,
@@ -252,6 +254,10 @@ async function retainAndProcessTake({
   processRecording,
   minTakeMs = 100,
   audioId = null,
+  // 'gapped' on a minimal-phrase-set take: the silence between the words is the
+  // data, and the processor must not treat a short word as a click. Passed
+  // straight through — this helper makes no decision about it.
+  readStyle = 'natural',
   logger = console
 }) {
   const { inputFormat, extension, contentType } = resolveRawFormat(mimeType)
@@ -274,7 +280,8 @@ async function retainAndProcessTake({
     inputFormat,
     trimSilence: true,
     normalize: true,
-    targetLUFS: -16
+    targetLUFS: -16,
+    readStyle
   })
 
   // 3. The two pre-existing refusals, unchanged and still before the mastered PUT.

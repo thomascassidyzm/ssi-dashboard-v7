@@ -87,6 +87,12 @@
              page any time, so both readings have to be true. -->
         <li v-if="autoAdvance">Stop talking and it moves on by itself — you do not have to tap anything.</li>
         <li v-else>When you've finished the line, tap <strong>Next</strong>. Nothing cuts you off mid-sentence.</li>
+        <!-- And on the minimal set it does NOT move on by itself, whatever the
+             line above says: those lines are full of deliberate pauses, so
+             nothing is listening for the end of one. Said here rather than left
+             to be discovered, because a reader waiting for a page that will
+             never turn concludes the thing is broken. -->
+        <li v-if="autoAdvance && quarry">On <strong>the minimal set</strong> it waits for you — tap <strong>Next</strong> after each chunk. The gaps you leave are the point, so nothing listens for you to stop.</li>
         <li>Tap <strong>Again</strong> to re-read a line<span v-if="autoAdvance">, <strong>Next</strong> to push on early</span>.</li>
         <li>Tap <strong>Stop here</strong> when you've had enough. It saves itself.</li>
       </ol>
@@ -540,9 +546,11 @@ const lineKindWords = computed(() => {
   // from everything else on this screen. Saying which of the two speeds this
   // line is is the whole reason the set has two of them.
   if (l.kind === 'quarry') {
+    // The tap is named on the line itself. Nothing is listening for the end of
+    // a gapped read, so "tap Next" is not a hint, it is how the queue moves.
     return l.quarrySource === 'word'
-      ? 'One word - read it slowly, on its own'
-      : 'A chunk - read it slowly, with a gap between the words'
+      ? 'One word - read it slowly, on its own, then tap Next'
+      : 'A chunk - read it slowly, with a gap between the words, then tap Next'
   }
   if (l.kind !== 'seed') return null
   const which = l.role === 'known' ? 'English side' : (l.role === 'target2' ? 'second voice' : null)
@@ -1043,23 +1051,25 @@ async function onNext(source = 'tap') {
 // recorder the same feature would have cut every take.
 const AUTO_ADVANCE_QUIET_MS = 1200
 
-// A GAPPED READ IS FULL OF PAUSES THAT LOOK EXACTLY LIKE THE END OF A TAKE.
+// A GAPPED READ ADVANCES ON A TAP, NEVER ON A SILENCE.
 //
-// The minimal set is read slowly, with deliberate dead space around the words,
-// so a splice cut lands in silence rather than mid-gesture. That is the one new
-// reading style this whole feature exists to capture -- and at 1200ms the
-// studio would advance off the line while the recordist was still mid-chunk,
-// filing a third of a piece and calling it done. The pause IS the performance
-// here, so the line waits longer before it decides the reader has finished.
+// Tom's ruling, 2026-09-02: "for this type of thing I reckon we could easily
+// just have a next button after each phrase has been recorded. That would be
+// fine - with no need for the automatic silence detection."
+//
+// The minimal set is read slowly with a deliberate gap around every word, so
+// every pause in it looks exactly like the end of a take. No threshold tells
+// the two apart, and there was never any point looking for one: the pause IS
+// the performance here, and a button is the honest answer. He taps Next when he
+// has finished the line.
 //
 // This is the only change to record mode, which Tom has otherwise ruled
-// excellent. Nothing else about how a line is served moves: the capture is
-// continuous and never truncated (useTapRecorder keeps the outgoing recorder
-// running for its tail), so auto-advance was the only thing a gapped read could
-// trip.
-const GAPPED_QUIET_MS = 3000
-const quietMsForCurrentLine = computed(() =>
-  current.value && current.value.readStyle === 'gapped' ? GAPPED_QUIET_MS : AUTO_ADVANCE_QUIET_MS)
+// excellent, and it applies to the gapped style ALONE -- a natural-speed read
+// keeps auto-advance exactly as it was. Nothing else about how a line is served
+// moves: capture is continuous and never truncated (useTapRecorder keeps the
+// outgoing recorder running for its tail), so auto-advance was the only thing a
+// gapped read could trip.
+const isGappedLine = computed(() => !!current.value && current.value.readStyle === 'gapped')
 
 // THE VOLUMES Tom named, 2026-09-02. 30 is the default and it is the honest
 // one: 198 lines, about 13 minutes, which is genuinely an evening job. The
@@ -1078,6 +1088,9 @@ function setVolume(n) {
 
 const autoAdvance = ref(true)
 watch(() => recorder.quietMs.value, (ms) => {
+  // The gapped read opts OUT of silence detection entirely, whatever the
+  // checkbox says: its silences are data, not the end of anything.
+  if (isGappedLine.value) return
   if (!autoAdvance.value || phase.value !== 'recording' || busy.value) return
   // A held mic is not listening to anybody. Without this, the recordist's own
   // take coming out of the phone speaker would advance the queue for them.
@@ -1088,7 +1101,7 @@ watch(() => recorder.quietMs.value, (ms) => {
   // watcher cannot fire again until the recordist has actually said something on
   // the NEW line. A timer here would be doing nothing that the recorder is not
   // already doing, so there isn't one.
-  if (ms >= quietMsForCurrentLine.value) onNext('auto')
+  if (ms >= AUTO_ADVANCE_QUIET_MS) onNext('auto')
 })
 
 async function onAgain() {
