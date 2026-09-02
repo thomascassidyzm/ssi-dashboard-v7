@@ -2,21 +2,21 @@
   <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
     <div class="max-w-5xl mx-auto">
       <div class="flex items-center gap-3 mb-4 text-sm">
-        <router-link to="/" class="text-accent-2 hover:opacity-80">Home</router-link>
+        <router-link to="/" class="text-muted hover:text-ink underline underline-offset-2">Home</router-link>
         <span class="text-faint">/</span>
-        <router-link to="/canonical/scripts" class="text-accent-2 hover:opacity-80">Script Lab</router-link>
+        <router-link to="/canonical/scripts" class="text-muted hover:text-ink underline underline-offset-2">Script Lab</router-link>
         <span class="text-faint">/</span>
         <span class="text-muted">Metagraph</span>
       </div>
 
-      <h1 class="text-2xl sm:text-3xl font-bold text-accent-2 mb-1">The metagraph</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">The metagraph</h1>
       <p class="text-muted text-sm mb-1">
         Every shape a conversation can take — <strong>{{ graph.nodes.length }} of them</strong>, drawn from the pods we have written,
         and joined by which shape happens inside which.
         <strong class="text-ink">A pod is a walk through this graph.</strong>
       </p>
       <p class="text-faint text-xs mb-5">
-        Lay a pod over it and the shapes its script reaches go green, the ones it never reaches go red.
+        Lay a pod over it and the shapes its script reaches stay solid; the ones it never reaches go dashed and dim.
         Tap any shape to see the pod's own lines that walk it. Nothing here can be edited — editing lives in the Script Lab.
       </p>
 
@@ -24,13 +24,13 @@
       <div class="flex flex-wrap gap-2 mb-3">
         <button
           class="px-3 py-1.5 rounded border text-xs"
-          :class="active === null ? 'border-accent-2 text-accent-2 bg-surface' : 'border-line text-muted bg-surface hover:border-accent-2'"
+          :class="active === null ? 'border-ink text-ink bg-surface-2 font-semibold' : 'border-line text-muted bg-surface hover:text-ink hover:border-muted'"
           @click="select(null)"
         >Graph only</button>
         <button
           v-for="pod in pods" :key="pod.slug"
           class="px-3 py-1.5 rounded border text-xs"
-          :class="active === pod.slug ? 'border-accent-2 text-accent-2 bg-surface' : 'border-line text-muted bg-surface hover:border-accent-2'"
+          :class="active === pod.slug ? 'border-ink text-ink bg-surface-2 font-semibold' : 'border-line text-muted bg-surface hover:text-ink hover:border-muted'"
           @click="select(pod.slug)"
         >
           {{ pod.label }}
@@ -39,6 +39,11 @@
         </button>
       </div>
 
+      <!-- The ONE surviving red on this page, and deliberately: a failed fetch is
+           a system fault, not a measurement of the content, and /courses — the
+           reference implementation — keeps red for exactly this. Ruling 2's "red
+           comes out entirely" governs the absence channel, which no longer uses
+           it anywhere. -->
       <p v-if="podsError" class="text-danger text-xs mb-3">Pod list unavailable — {{ podsError }}. The graph below is the store and needs no API.</p>
       <p v-if="overlayError" class="text-danger text-xs mb-3">Overlay unavailable — {{ overlayError }}</p>
 
@@ -49,8 +54,9 @@
           <span class="text-muted">{{ cov.totals.steps }} lines of script, in {{ cov.totals.scenes }} scenes</span>
           <span class="text-muted">reaches <strong class="text-ink">{{ cov.totals.traversed }} of the {{ cov.totals.nodes }} shapes</strong></span>
           <span class="text-muted">{{ cov.totals.hitTwice }} of them more than once</span>
-          <span :class="cov.totals.neverReached ? 'text-danger font-semibold' : 'text-accent-2'">
-            {{ cov.totals.neverReached ? cov.totals.neverReached + ' it never reaches' : 'it reaches every shape' }}
+          <span class="text-muted">
+            <template v-if="cov.totals.neverReached"><strong class="text-ink">{{ cov.totals.neverReached }}</strong> it never reaches</template>
+            <template v-else>it reaches every shape</template>
           </span>
         </div>
 
@@ -59,24 +65,24 @@
              covers its OWN corpus completely and none of anybody else's. -->
         <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1">
           <span v-for="g in byOrigin" :key="g.key"
-                :class="g.reached === g.total ? 'text-accent-2' : g.reached ? 'text-muted' : 'text-faint'">
+                :class="g.reached === g.total ? 'text-ink font-semibold' : g.reached ? 'text-muted' : 'text-faint'">
             {{ g.label }} <strong>{{ g.reached }}/{{ g.total }}</strong>
           </span>
         </div>
 
-        <p v-if="fullyCovered.length" class="mt-2 text-accent-2">
+        <p v-if="fullyCovered.length" class="mt-2 text-muted">
           {{ activeLabel }} reaches <strong>every</strong> shape drawn from {{ fullyCovered.join(' and ') }}.
         </p>
 
         <div v-if="cov.neverReached.length" class="mt-2 space-y-0.5">
-          <p v-for="g in neverByOrigin" :key="g.key" class="text-danger">
+          <p v-for="g in neverByOrigin" :key="g.key" class="text-muted">
             <span class="text-muted">Never reached, from {{ g.label }} —</span>
             <span v-for="(n, i) in g.nodes" :key="n.id">{{ i ? ' · ' : ' ' }}{{ n.title }}</span>
           </p>
         </div>
 
         <div class="mt-2 pt-2 border-t border-line flex flex-wrap gap-x-5 gap-y-1">
-          <span :class="cov.totals.outcomesDelivered ? 'text-accent-2' : 'text-muted'">
+          <span class="text-muted">
             <strong>{{ cov.totals.outcomesDelivered }} of {{ cov.outcomes.length }}</strong> outcomes actually delivered by a line
           </span>
           <span v-if="cov.totals.unmapped" class="text-muted">
@@ -98,7 +104,7 @@
           </g>
           <g>
             <g v-for="n in graph.nodes" :key="n.id"
-               class="tile" @click="tapNode(n.id)">
+               :class="['tile', { 'tile-absent': isAbsent(n.id) }]" @click="tapNode(n.id)">
               <rect :x="pos(n.id).x" :y="pos(n.id).y" :width="pos(n.id).w" :height="pos(n.id).h"
                     rx="7" :class="['tile-box', tileClass(n.id)]" />
               <text :x="pos(n.id).x + 9" :y="pos(n.id).y + 19" class="tile-id">{{ n.id }}</text>
@@ -112,10 +118,13 @@
         </svg>
       </div>
 
+      <!-- Two drawn states, not four colours. Reached is solid, filled and full
+           opacity; never-reached is dashed, unfilled and dimmed. How MANY times
+           it was reached is the ×n on the tile — a number, where a number is
+           what is being said. -->
       <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-xs text-faint">
-        <span><span class="key key-never"></span> this pod never reaches it</span>
-        <span><span class="key key-once"></span> reached once</span>
-        <span><span class="key key-twice"></span> reached twice or more <span class="text-faint">(×n on the tile)</span></span>
+        <span><span class="key key-reached"></span> reached — solid and filled <span class="text-faint">(×n on the tile if more than once)</span></span>
+        <span><span class="key key-never"></span> this pod never reaches it — dashed, unfilled, dimmed</span>
         <span><span class="key key-base"></span> no pod laid over the graph</span>
       </div>
       <p class="mt-1 text-xs text-faint">
@@ -126,7 +135,7 @@
       <!-- Detail: whatever was last tapped -->
       <div v-if="node" ref="panel" class="mt-6 bg-surface border border-line rounded-lg p-4">
         <div class="flex flex-wrap items-baseline gap-x-3">
-          <span class="font-mono text-accent-2 text-lg">{{ node.id }}</span>
+          <span class="font-mono text-ink text-lg">{{ node.id }}</span>
           <span class="text-ink font-semibold">{{ node.title }}</span>
           <span class="text-faint text-xs">from {{ node.kind === 'bound-pair' ? 'the bound pairs' : originLabel(node.origin) }}</span>
           <button class="ml-auto ui-chip" @click="backToGraph">↑ back to the graph</button>
@@ -150,12 +159,12 @@
           <p class="text-faint mb-1">What the learner has to survive here</p>
           <p v-for="s in survForNode" :key="s.id" class="text-muted">
             <strong class="text-ink">{{ s.presupposes }}</strong> — a learner can only attempt <em>{{ s.attemptable }}</em> if they can survive this.
-            <span :class="/never/i.test(String(s.recoveryAttested)) ? 'text-danger' : 'text-faint'">How often the scripts show anyone recovering from it: {{ s.recoveryAttested }}</span>
+            <span class="text-faint">How often the scripts show anyone recovering from it: <span :class="/never/i.test(String(s.recoveryAttested)) ? 'attest-none' : ''">{{ s.recoveryAttested }}</span></span>
           </p>
         </div>
 
         <div v-if="cov" class="mt-4 border-t border-line pt-3">
-          <p v-if="!nodeLines.length" class="text-danger text-sm">
+          <p v-if="!nodeLines.length" class="text-muted text-sm">
             <strong>{{ activeLabel }} never reaches this shape.</strong>
             <span class="text-muted"> No line in its script walks it<span v-if="node && node.origin !== 'pod-1'">, and it was not drawn from this pod's corpus — it came from {{ originLabel(node.origin) }}</span>.</span>
           </p>
@@ -163,11 +172,11 @@
             <p class="text-xs text-faint mb-2">The lines of {{ activeLabel }} that walk this shape — {{ nodeLines.length }} of them, across {{ nodeScenes }} scenes</p>
             <div v-for="l in shownLines" :key="l.key" class="text-sm py-1 border-b border-line last:border-0">
               <span class="text-faint text-xs mr-2">sc{{ l.scene }}<span v-if="l.ref"> · {{ l.ref }}</span></span>
-              <span class="text-accent-2 text-xs mr-1">{{ l.speaker }}</span>
+              <span class="text-muted text-xs mr-1">{{ l.speaker }}</span>
               <span class="text-ink">{{ l.text }}</span>
-              <span v-if="l.kind !== 'move'" class="text-accent text-xs ml-2">{{ l.kind }}</span>
+              <span v-if="l.kind !== 'move'" class="text-faint text-xs ml-2">{{ l.kind }}</span>
             </div>
-            <button v-if="nodeLines.length > shownLines.length" class="mt-2 text-xs text-accent-2" @click="showAll = true">
+            <button v-if="nodeLines.length > shownLines.length" class="mt-2 text-xs text-muted underline underline-offset-2 hover:text-ink" @click="showAll = true">
               Show all {{ nodeLines.length }}
             </button>
           </template>
@@ -180,27 +189,27 @@
       <p class="text-xs text-faint mb-2">Listed in the order the course delivers them, not by number. An outcome counts as delivered only when a line actually delivers it.</p>
       <div class="flex flex-wrap gap-2">
         <button v-for="o in outcomes" :key="o.id"
-                class="px-2.5 py-1.5 rounded border text-xs text-left"
+                class="px-2.5 py-1.5 rounded text-xs text-left border"
                 :class="[
-                  selectedOutcome === o.id ? 'border-accent-2' : 'border-line',
-                  o.delivered ? 'bg-surface text-accent-2' : 'bg-surface text-muted'
+                  cov ? (o.delivered ? 'ui-present' : 'ui-absent') : 'ui-present',
+                  selectedOutcome === o.id ? 'is-picked' : ''
                 ]"
                 @click="tapOutcome(o.id)">
           <span class="font-mono">{{ o.id }}</span> {{ o.name }}
-          <span v-if="cov" :class="o.delivered ? 'text-accent-2' : 'text-muted'">· {{ o.delivered ? 'delivered' : (o.siteInWalk ? 'moment present, not delivered' : 'not delivered') }}</span>
+          <span v-if="cov" class="opacity-80">· {{ o.delivered ? 'delivered' : (o.siteInWalk ? 'moment present, not delivered' : 'not delivered') }}</span>
         </button>
       </div>
 
       <div v-if="outcome" class="mt-6 bg-surface border border-line rounded-lg p-4 text-sm">
         <div class="flex flex-wrap items-baseline gap-x-3">
-          <span class="font-mono text-accent-2 text-lg">{{ outcome.id }}</span>
+          <span class="font-mono text-ink text-lg">{{ outcome.id }}</span>
           <span class="text-ink font-semibold">{{ outcome.name }}</span>
           <span class="text-faint text-xs">{{ outcome.mustBeMinted ? 'minted' : outcome.attested }}</span>
           <button class="ml-auto ui-chip" @click="selectedOutcome = null">close</button>
         </div>
         <p class="text-muted mt-2"><span class="text-faint">what the learner must be able to do:</span> {{ outcome.recovery }}</p>
         <p class="text-muted mt-1"><span class="text-faint">where in the script it hangs from:</span> {{ outcome.sitedOn }}</p>
-        <p v-if="cov" class="mt-2" :class="outcome.delivered ? 'text-accent-2' : 'text-accent'">
+        <p v-if="cov" class="mt-2 text-muted">
           {{ activeLabel }}: {{ outcome.delivered ? 'delivered — a line in the script declares it' : 'not delivered' }}<span v-if="!outcome.delivered && outcome.siteInWalk">, although the moment it hangs from IS in the script — the line that delivers it has not been written yet</span>.
         </p>
       </div>
@@ -374,6 +383,13 @@ const neverByOrigin = computed(() => {
 
 const fullyCovered = computed(() =>
   byOrigin.value.filter(g => g.total && g.reached === g.total).map(g => g.label))
+/** Absent = a pod IS laid over the graph and this shape is not on its walk.
+ *  With no overlay nothing is being measured, so nothing is drawn as absent. */
+function isAbsent (id) {
+  if (!cov.value) return false
+  const c = covByNode.value.get(id)
+  return !c || c.status === 'never'
+}
 function tileClass (id) {
   const c = covByNode.value.get(id)
   const sel = selectedNode.value === id ? ' is-selected' : ''
@@ -481,26 +497,79 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+/*
+ * COLOUR MEANS MEASUREMENT (Tom, 2026-09-02). This page used to paint 25 tiles
+ * red for the shapes a pod does NOT reach and 11 green for the ones it does, so
+ * the loudest thing on a coverage map was the absence of coverage. It read as an
+ * accusation rather than as a map with holes.
+ *
+ * Now absence is DRAWN, not coloured. Reached is solid, filled, full opacity;
+ * never-reached is dashed, unfilled and dimmed, with its label still in ink.
+ * Three redundant channels because one dash across 36 small tiles is noise —
+ * and because three channels survive card size, light mode and colourblindness
+ * where a hue does not.
+ */
 .band-label { fill: var(--faint); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; }
 .edge { stroke: var(--line); stroke-width: 1.4; opacity: .85; }
-.edge.is-lit { stroke: var(--accent-2); stroke-width: 2.2; opacity: 1; }
+.edge.is-lit { stroke: var(--ink); stroke-width: 2.2; opacity: 1; }
 .edge.is-dim { opacity: .15; }
 .tile { cursor: pointer; }
+
+/* THE RESTING GRAPH — no pod laid over it, so nothing is being measured. */
 .tile-box { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.2; }
-.tile:hover .tile-box { stroke: var(--accent-2); }
-.tile-box.is-selected { stroke: var(--accent-2); stroke-width: 2.4; }
-.tile-box.is-never { fill: color-mix(in srgb, var(--danger) 16%, var(--surface-2)); stroke: var(--danger); }
-.tile-box.is-once { fill: color-mix(in srgb, var(--accent-2) 20%, var(--surface-2)); stroke: var(--accent-2); }
-.tile-box.is-twice { fill: color-mix(in srgb, var(--accent-2) 42%, var(--surface-2)); stroke: var(--accent-2); }
-.tile-id { fill: var(--accent-2); font-size: 12px; font-weight: 700; font-family: ui-monospace, monospace; }
-.tile-count { fill: var(--ink); font-size: 11px; font-family: ui-monospace, monospace; }
+.tile:hover .tile-box { stroke: var(--ink); }
+/* Selection is a WEIGHT, not a hue: the tile you tapped is drawn heavier. */
+.tile-box.is-selected { stroke: var(--ink); stroke-width: 2.6; }
+
+/* PRESENT — this pod reaches the shape. Solid outline, filled, full opacity.
+   Once and twice are the same STATE; how many times is the ×n on the tile,
+   because a count is a number and should be read as one. */
+.tile-box.is-once,
+.tile-box.is-twice {
+  fill: var(--surface-2);
+  stroke: var(--ink);
+  stroke-width: 1.4;
+  opacity: 1;
+}
+
+/* ABSENT — never reached. Dashed + unfilled + dimmed, all three at once. */
+.tile-box.is-never {
+  fill: none;
+  stroke: var(--faint);
+  stroke-width: 1.2;
+  stroke-dasharray: 5 4;
+  opacity: 0.55;
+}
+/* The label of an absent tile dims with it — the whole card recedes, rather
+   than a dashed frame around full-strength text. */
+.tile-absent .tile-id,
+.tile-absent .tile-name,
+.tile-absent .tile-sub { opacity: 0.55; }
+
+/* Node ids are INK. A node id is a name, not a measurement. */
+.tile-id { fill: var(--ink); font-size: 12px; font-weight: 700; font-family: ui-monospace, monospace; }
+.tile-count { fill: var(--ink); font-size: 11px; font-weight: 700; font-family: ui-monospace, monospace; }
 .tile-name { fill: var(--ink); font-size: 12px; }
 .tile-sub { fill: var(--ink); opacity: .5; font-size: 9.5px; }
-.key { display: inline-block; width: 10px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; border: 1px solid var(--line); }
+
+/* The legend keys are the same three channels at 10px. */
+.key { display: inline-block; width: 12px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; border: 1px solid var(--line); }
 .key-base { background: var(--surface-2); border-color: var(--muted); }
-.key-never { background: color-mix(in srgb, var(--danger) 16%, var(--surface-2)); border-color: var(--danger); }
-.key-once { background: color-mix(in srgb, var(--accent-2) 20%, var(--surface-2)); border-color: var(--accent-2); }
-.key-twice { background: color-mix(in srgb, var(--accent-2) 42%, var(--surface-2)); border-color: var(--accent-2); }
+.key-reached { background: var(--surface-2); border: 1px solid var(--ink); }
+.key-never { background: none; border: 1px dashed var(--faint); opacity: 0.55; }
+
 .chip { display: inline-block; margin: 0 4px 4px 0; padding: 2px 7px; border: 1px solid var(--line); border-radius: 5px; color: var(--muted); font-size: 11px; }
-.chip:hover { border-color: var(--accent-2); color: var(--ink); }
+.chip:hover { border-color: var(--muted); color: var(--ink); }
+
+/* An outcome chip wears ui-present / ui-absent from ui-tokens.css. The one it
+   is showing detail for is drawn heavier — again a weight, never a hue. */
+.is-picked { border-color: var(--ink); border-style: solid; opacity: 1; box-shadow: inset 0 0 0 1px var(--ink); }
+
+/* A selected tile that is ALSO absent keeps its dashes — the selection shows as
+   weight and full opacity, never by turning an absence into a presence. */
+.tile-box.is-never.is-selected { stroke: var(--muted); stroke-width: 2.4; opacity: 0.85; }
+.tile-absent.tile:hover .tile-box { stroke: var(--muted); opacity: 0.85; }
+
+/* "never attested" inside the survivability line: emphasis, in ink. */
+.attest-none { color: var(--ink); font-weight: 600; }
 </style>

@@ -131,13 +131,17 @@ onUnmounted(() => {
 }
 
 .course-button:hover {
-  border-color: var(--color-tungsten, var(--accent));
+  border-color: var(--color-paper-dim, var(--muted));
 }
 
+/* A course code is a NAME, not a measurement (Tom, 2026-09-02) — and this chip
+   sits in the top chrome on every screen, so the amber it used to wear was the
+   loudest non-measurement on the page. Ink. */
 .course-code {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.8125rem;
-  color: var(--color-tungsten, var(--accent));
+  color: var(--color-paper, var(--ink));
+  font-weight: 600;
 }
 
 .course-name {
@@ -146,12 +150,11 @@ onUnmounted(() => {
 }
 
 .create-mode {
-  color: #10b981;
+  color: var(--color-paper, var(--ink));
+  font-style: italic;
 }
 
-:root[data-theme="light"] .create-mode {
-  color: var(--accent-2);
-}
+
 
 .dropdown-arrow {
   color: var(--color-paper-dim, var(--muted));
@@ -221,7 +224,8 @@ onUnmounted(() => {
 .option-code {
   font-family: var(--font-mono, 'JetBrains Mono', monospace);
   font-size: 0.8125rem;
-  color: var(--color-tungsten, var(--accent));
+  color: var(--color-paper, var(--ink));
+  font-weight: 600;
 }
 
 .option-name {

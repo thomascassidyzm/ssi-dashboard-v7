@@ -55,7 +55,7 @@ const factsLine = computed(() => {
 <template>
   <div class="walk-card bg-surface border border-line rounded-lg p-4" :data-slug="w.slug">
     <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-      <span class="font-mono text-accent-2 text-sm">{{ w.slug }}</span>
+      <span class="font-mono text-ink text-sm">{{ w.slug }}</span>
       <span class="text-ink text-sm font-semibold">{{ w.name }}</span>
       <span v-if="w.category" class="chip" :class="`cat-${w.category}`">{{ categoryLabel }}</span>
       <span class="chip" :class="`st-${w.status}`">{{ String(w.status).toUpperCase() }}</span>
@@ -74,7 +74,7 @@ const factsLine = computed(() => {
 
     <div class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
       <span class="text-faint">{{ storeLine }}</span>
-      <span v-if="targetLine" :class="w.target?.rows ? 'text-accent-2' : 'text-faint'">{{ targetLine }}</span>
+      <span v-if="targetLine" :class="w.target?.rows ? 'text-ink' : 'text-faint'">{{ targetLine }}</span>
     </div>
 
     <!-- NO SHAPE CLAIMS IS NOT ZERO COVERAGE. A corpus that declares no
@@ -93,14 +93,16 @@ const factsLine = computed(() => {
     <div v-else-if="w.cov?.coverage" class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-xs">
       <span class="text-muted">{{ w.cov.coverage.totals.traversed }}/{{ w.cov.coverage.totals.nodes }} shapes traversed</span>
       <span class="text-muted">{{ w.cov.coverage.totals.hitTwice }} hit twice+</span>
-      <span :class="w.cov.coverage.totals.neverReached ? 'text-danger font-semibold' : 'text-accent-2'">
-        {{ w.cov.coverage.totals.neverReached }} never reached
+      <!-- A count is a number. It used to be red whenever it was non-zero, so
+           the card shouted its holes and whispered its coverage. -->
+      <span class="text-muted">
+        <strong class="text-ink">{{ w.cov.coverage.totals.neverReached }}</strong> never reached
       </span>
       <span class="text-faint">{{ w.cov.coverage.totals.unmapped }} unmapped</span>
       <!-- The opposite fact to the block above, and it must never read the
            same: this corpus DID claim shapes, and the store cannot place some
            of them. -->
-      <span v-if="w.cov.declarations" class="text-accent">
+      <span v-if="w.cov.declarations" class="text-ink font-semibold">
         {{ w.cov.unresolved }}/{{ w.cov.declarations }} shape declarations UNRESOLVED
       </span>
       <span v-if="w.cov.mode === 'graph-rows'" class="text-faint">read off row references, not declarations</span>
@@ -143,7 +145,7 @@ const factsLine = computed(() => {
 
     <p v-if="w.note" class="mt-2 text-xs text-muted leading-relaxed">{{ w.note }}</p>
 
-    <router-link v-if="w.to" :to="w.to" class="inline-block mt-3 text-xs text-accent-2 hover:opacity-80">
+    <router-link v-if="w.to" :to="w.to" class="inline-block mt-3 text-xs text-muted underline underline-offset-2 hover:text-ink">
       Open the script →
     </router-link>
   </div>
@@ -159,21 +161,32 @@ const factsLine = computed(() => {
   border: 1px solid currentColor;
   white-space: nowrap;
 }
-.cat-core { color: #ef4444; }
-.cat-themed { color: #10b981; }
-.cat-method-cut { color: #f59e0b; }
-.cat-flagship { color: #a78bfa; }
+/* CATEGORY IS A NAME, NOT A MEASUREMENT (Tom, 2026-09-02). CORE / THEMED /
+   METHOD / FLAGSHIP told you nothing that the word itself did not, in four
+   hues that then collided with the coverage read-out below them. Ink and grey. */
+.cat-core, .cat-themed, .cat-method-cut, .cat-flagship { color: var(--ink); }
+
+/* STATUS IS a measurement of the walk — the /courses FREE / PREMIUM / Beta /
+   Live analogue, and the one place on this card colour is spent. It is drawn
+   rather than painted where the fact is an ABSENCE: a walk the store does not
+   hold yet, or a registry that disagrees with the database, recedes into a
+   dashed outline instead of shouting in red. Red is gone from this file. */
 .st-authored { color: var(--muted); }
-.st-mapping-only { color: #f59e0b; }
-.st-parked { color: #94a3b8; }
-.st-draft { color: #f59e0b; }
-.st-ingestable { color: #38bdf8; }
-.st-drift { color: #ef4444; }
-.no-claims { border: 1px solid var(--line); border-left: 3px solid #38bdf8; line-height: 1.5; color: var(--muted); }
-.drift-note { border: 1px solid #ef4444; border-left-width: 3px; background: rgba(239, 68, 68, 0.1); line-height: 1.5; }
-.overlay { border: 1px solid #f59e0b; border-left-width: 3px; background: rgba(245, 158, 11, 0.08); }
+.st-parked { color: var(--faint); }
+.st-mapping-only,
+.st-draft,
+.st-ingestable,
+.st-drift,
+.st-unregistered {
+  color: var(--ink);
+  border-style: dashed;
+  border-color: var(--faint);
+  opacity: 0.75;
+}
+.no-claims { border: 1px solid var(--line); border-left: 3px solid var(--muted); line-height: 1.5; color: var(--muted); }
+.drift-note { border: 1px solid var(--line); border-left: 3px solid var(--ink); background: var(--surface-2); line-height: 1.5; }
+.overlay { border: 1px solid var(--line); border-left: 3px solid var(--ink); background: var(--surface-2); }
 .overlay code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
-.st-unregistered { color: #ef4444; }
 .prov { font-size: 0.6875rem; }
 .prov code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
 </style>

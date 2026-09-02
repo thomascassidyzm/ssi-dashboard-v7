@@ -105,10 +105,15 @@ const readOnlyText = computed(() => {
   return props.step.payload[src] ?? ''
 })
 
-/** An overlay column is offered on a line only where that line HAS the layer. */
+/** An overlay column is offered on a line only where that line HAS the layer —
+ *  and, when the descriptor names a language, only where the line is in THAT
+ *  language. A script with two target languages must not show one language's
+ *  words under the other's column head. */
 const present = computed(() => {
   if (props.col.field !== 'target') return true
-  return !!props.step.payload.targetLang
+  const lang = props.step.payload.targetLang
+  if (!lang) return false
+  return props.col.lang ? props.col.lang === lang : true
 })
 
 const strandedText = computed(() =>

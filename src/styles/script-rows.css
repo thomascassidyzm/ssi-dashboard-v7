@@ -15,7 +15,7 @@
 .script-table { width: 100%; border-collapse: collapse; }
 .script-table thead { background: var(--surface-2); }
 .script-table th {
-  font-size: 0.7rem;
+  font-size: var(--text-label, 0.75rem);
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -26,33 +26,35 @@
 }
 .script-table td {
   padding: 0.6rem 1rem;
-  font-size: 0.9rem;
+  font-size: var(--text-sm, 0.875rem);
   color: var(--ink);
   border-bottom: 1px solid color-mix(in srgb, var(--line) 70%, transparent);
   vertical-align: top;
 }
 .script-row.row-alt { background: color-mix(in srgb, var(--ink) 3%, transparent); }
 .script-row:hover { background: color-mix(in srgb, var(--ink) 6%, transparent); }
-/* An uncommitted canonical edit LOOKS different from a saved row. */
-.script-row.dirty { box-shadow: inset 3px 0 0 var(--accent); }
+/* An uncommitted edit is a STATE OF THE ROW, drawn as a weight at its left
+   edge rather than painted amber (Tom, 2026-09-02: colour means measurement,
+   and amber was doing four other jobs on this page). */
+.script-row.dirty { box-shadow: inset 3px 0 0 var(--ink); }
 
 .col-ref { width: 6.5rem; white-space: nowrap; }
-.ref-num { font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: 0.75rem; color: var(--faint); }
-.ref-kind { display: block; font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: 0.7rem; }
-.col-speaker { width: 6rem; font-size: 0.8rem; color: var(--muted); }
+.ref-num { font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: var(--text-label, 0.75rem); color: var(--faint); }
+.ref-kind { display: block; font-family: var(--font-mono, 'IBM Plex Mono', monospace); font-size: var(--text-label, 0.75rem); }
+.col-speaker { width: 6rem; font-size: var(--text-xs, 0.8125rem); color: var(--muted); }
 .col-state { width: 11rem; }
 .state-stack { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
 
 /* The editable canonical cell. Full text, wrapped, never clipped. */
 .canonical-read { cursor: pointer; }
 .canonical-text { white-space: pre-wrap; word-break: break-word; line-height: 1.5; }
-.edit-hint { margin-left: 0.5rem; font-size: 0.7rem; color: transparent; white-space: nowrap; }
+.edit-hint { margin-left: 0.5rem; font-size: var(--text-label, 0.75rem); color: transparent; white-space: nowrap; }
 .canonical-read:hover .edit-hint { color: var(--faint); }
 /* A row whose editor was collapsed while typing was parked in it. The words on
    show are the DRAFT, so the row has to say so at rest, on every viewport. */
-.edit-hint.unsaved { color: var(--accent); }
+.edit-hint.unsaved { color: var(--ink); font-weight: 600; }
 /* The target line is tappable too now, so it needs the same affordance as the
-   canonical one — the hint on hover, and the accent when a draft is parked. */
+   canonical one — the hint on hover, and ink weight when a draft is parked. */
 .specimen { cursor: pointer; }
 .specimen:hover .edit-hint { color: var(--faint); }
 .canonical-read.parked .canonical-text { color: var(--ink); }
@@ -70,12 +72,12 @@
   border-radius: 4px;
   color: var(--ink);
   background: var(--canvas);
-  border: 1px solid var(--accent);
+  border: 1px solid var(--ink);
   outline: none;
 }
 .was-line {
   margin-top: 6px;
-  font-size: 0.78rem;
+  font-size: var(--text-xs, 0.8125rem);
   line-height: 1.45;
   color: var(--muted);
   white-space: pre-wrap;
@@ -89,9 +91,10 @@
   border-radius: 6px;
   font-size: 12px;
   font-weight: 600;
-  color: var(--canvas);
-  background: var(--accent-2);
-  border: 1px solid var(--accent-2);
+  /* Save is an ACTION, and blue is the single action colour. */
+  color: var(--action-ink);
+  background: var(--action);
+  border: 1px solid var(--action);
 }
 .btn-confirm[disabled] { opacity: 0.4; }
 .btn-discard {
@@ -103,12 +106,12 @@
   background: transparent;
   border: 1px solid var(--line);
 }
-.unsaved-flag { font-size: 11px; color: var(--accent); }
+.unsaved-flag { font-size: var(--text-xs, 0.8125rem); color: var(--ink); font-weight: 600; }
 
-.specimen { margin-top: 6px; font-size: 0.78rem; font-style: italic; color: var(--muted); line-height: 1.45; }
+.specimen { margin-top: 6px; font-size: var(--text-xs, 0.8125rem); font-style: italic; color: var(--muted); line-height: 1.45; }
 /* An RTL specimen resolves its own trailing neutrals without moving the column. */
 .specimen-run { unicode-bidi: isolate; text-align: left; }
-.row-note { margin-top: 6px; font-size: 0.72rem; }
+.row-note { margin-top: 6px; font-size: var(--text-label, 0.75rem); }
 
 .history-row td { padding: 0 1rem 0.75rem; }
 

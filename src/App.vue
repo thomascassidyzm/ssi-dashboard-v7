@@ -28,21 +28,23 @@ const gitCommit = __GIT_COMMIT__
   font-size: 11px;
   font-weight: 600;
   font-family: monospace;
-  color: #00ff88;
-  background: rgba(0, 255, 136, 0.08);
-  border: 1px solid rgba(0, 255, 136, 0.3);
+  /* Neon green here was the loudest colour on every screen and it measured
+     nothing — it is a build sha. Ink and grey (Tom, 2026-09-02). */
+  color: var(--muted);
+  background: var(--surface);
+  border: 1px solid var(--line);
   border-radius: 4px;
   z-index: 9999;
   pointer-events: none;
-  text-shadow: 0 0 8px rgba(0, 255, 136, 0.6);
-  box-shadow: 0 0 12px rgba(0, 255, 136, 0.15);
+  text-shadow: none;
+  box-shadow: none;
 }
 
-/* Light mode: the neon-green-on-black build label washes out on a light canvas
-   (#00ff88 on ~#eef2f6 ≈ 1.19:1). Re-tone to the green accent token (legible,
-   same hue family) and drop the dark-mode glow. Dark mode is untouched. */
+/* Light mode carries the same grey treatment as dark, minus the dark canvas.
+   (This used to re-tone a neon green that was itself the problem: a build sha
+   was the loudest thing on every screen and it measured nothing.) */
 :root[data-theme="light"] .build-label {
-  color: var(--accent-2);
+  color: var(--muted);
   background: var(--surface);
   border-color: var(--line);
   text-shadow: none;
