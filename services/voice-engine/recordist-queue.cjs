@@ -84,6 +84,27 @@ const { canonicalSpeakerName } = require('./pods-registration.cjs')
 const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
 const langService = require('../language-code-service.cjs')
 
+/**
+ * Is this course a TEST FIXTURE rather than something a learner is being served?
+ *
+ * Tom's standing ruling on the zzz courses: "it is a TEST course so it can have
+ * any rules we like." That relaxation is for CONTENT and PEDAGOGY rules only —
+ * consent and data safety bind everywhere — and the one thing hanging off it
+ * here is inline text editing from the recording booth (2026-09-02). Editing a
+ * LIVE pod line in place is forbidden by the content-change migration protocol
+ * (docs/pods/pod-migration-protocol.md): progress is filed under a sentence's
+ * slot, so an in-place edit silently credits a learner with a sentence they
+ * never heard. A test fixture has no learners, so on a test fixture that
+ * objection does not exist.
+ *
+ * The `zzz_` prefix IS the estate's test-course convention, and it is checked
+ * SERVER-SIDE on every write: the booth is a no-login surface, so a client-side
+ * flag would be a suggestion, not a gate.
+ */
+function isTestFixtureCourse(courseCode) {
+  return /^zzz_/.test(String(courseCode || ''))
+}
+
 /** Display name for a canonical database_code, falling back to the code itself. */
 function languageName(language) {
   try {
@@ -570,6 +591,10 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         kind: line.kind || 'pod',
         role: line.role || null,
         rerecordReason: line.rerecordReason || null,
+        // May the recordist rewrite this line's text from the booth? True only
+        // on a test fixture, and the server checks it again on the write — this
+        // is what the screen draws, never what the write trusts.
+        canEditText: isTestFixtureCourse(line.courseCode),
       })
     }
   }
@@ -880,6 +905,7 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
 
 module.exports = {
   clearRerecordWants,
+  isTestFixtureCourse,
   targetRerecordWanted,
   languageName,
   loadPolicies,

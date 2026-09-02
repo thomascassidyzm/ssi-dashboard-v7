@@ -39,6 +39,7 @@ const {
   languageName,
   propagateTakeToDuplicates,
   clearRerecordWants,
+  isTestFixtureCourse,
 } = require('./recordist-queue.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const {
@@ -611,6 +612,102 @@ module.exports = function createRecordistRouter({
       res.redirect(302, url)
     } catch (err) {
       logger.error(`[Recordist] clip: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── 3b. rewrite a line's text (TEST FIXTURES ONLY) ─────────────────────────
+  //
+  // Tom, 2026-09-02: "it is a TEST course so it can have any rules we like" —
+  // so the booth may edit a zzz_ course's line text inline, and he can exercise
+  // edit-then-record and edit-a-recorded-line-then-record-again for real.
+  //
+  // IT MUST NEVER REACH A LIVE COURSE. A live pod line is learner content and
+  // changing it in place breaks the content-change migration protocol silently
+  // (progress is filed under the slot, not the text). The gate is here, on the
+  // server, and not only on the screen: this route has no login by design, so a
+  // client-side check would be a suggestion.
+  //
+  // WHAT HAPPENS TO THE EXISTING AUDIO. Nothing is deleted and nothing is
+  // unlinked. A clip's identity is (language, text_normalized, voice), so the
+  // moment the text changes the line simply stops matching its old take and
+  // reads as OUTSTANDING again — the queue recomputes that from the text on
+  // every read. The old clip stays in course_audio, and the sentence's
+  // target_audio_id still points at it until a new take lands, at which point
+  // propagateTakeToDuplicates upserts the new clip and repoints the FK. That is
+  // make-before-break by construction rather than by remembering to do it.
+  router.patch('/voice/:voiceId/line/:lineId/text', async (req, res) => {
+    try {
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+
+      const text = typeof req.body?.text === 'string' ? req.body.text.trim() : ''
+      if (!text) return res.status(400).json({ error: 'Give the line some text.', reason: 'empty' })
+      if (text.length > 600) return res.status(400).json({ error: 'That line is too long to read in one take.', reason: 'too_long' })
+
+      const lineId = req.params.lineId
+      // The course code is the first half of a pod sentence id, but it is not
+      // trusted from the id: the row is read and its own pod's course is what
+      // the gate is applied to.
+      const { data: sentence, error: sentErr } = await db()
+        .from('listening_pod_sentences')
+        .select('id, pod_id, target_text, known_text')
+        .eq('id', lineId)
+        .maybeSingle()
+      if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
+      if (!sentence) return res.status(404).json({ error: `No line ${lineId}` })
+
+      const { data: pod, error: podErr } = await db()
+        .from('listening_pods')
+        .select('id, course_code')
+        .eq('id', sentence.pod_id)
+        .maybeSingle()
+      if (podErr) throw new Error(`pod lookup failed: ${podErr.message}`)
+      if (!pod) return res.status(404).json({ error: `No pod for line ${lineId}` })
+
+      if (!isTestFixtureCourse(pod.course_code)) {
+        return res.status(403).json({
+          error: 'This line belongs to a live course. Its text is changed on the admin side, under the content-change migration protocol, so that learner progress moves with it.',
+          reason: 'live_course',
+          courseCode: pod.course_code,
+        })
+      }
+
+      // The line has to be one of THIS voice's own lines. The link is the
+      // identity, so the link must not reach past its own queue.
+      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      if (!queue.lines.some((l) => l.id === lineId)) {
+        return res.status(403).json({ error: 'That line is not in your queue.', reason: 'not_yours' })
+      }
+
+      const patch = { target_text: text }
+      // The known side is the recordist's crib. On a fixture whose two sides are
+      // the same string, leaving it behind would put the OLD sentence under the
+      // new one on screen and look like a bug; where the two genuinely differ,
+      // the known side is a real translation and is not ours to rewrite.
+      const knownTracksTarget = (sentence.known_text || '').trim() === (sentence.target_text || '').trim()
+      if (knownTracksTarget) patch.known_text = text
+
+      const { error: updErr } = await db()
+        .from('listening_pod_sentences')
+        .update(patch)
+        .eq('id', lineId)
+      if (updErr) throw new Error(`line update failed: ${updErr.message}`)
+
+      logger.info(`[Recordist] ${recordist.voiceId} rewrote ${lineId} (${pod.course_code}): "${sentence.target_text}" -> "${text}"`)
+      res.json({
+        ok: true,
+        lineId,
+        text,
+        knownText: knownTracksTarget ? text : sentence.known_text,
+        courseCode: pod.course_code,
+        // Said out loud so the screen can say it too: the line is outstanding
+        // again, and the take it used to have is still there, untouched.
+        recorded: false,
+        previousText: sentence.target_text,
+      })
+    } catch (err) {
+      logger.error(`[Recordist] text edit: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

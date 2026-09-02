@@ -24,16 +24,38 @@
     </button>
 
     <ol v-if="open" class="roster-list">
-      <li v-for="r in rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id }]">
-        <span class="row-mark" aria-hidden="true"></span>
-        <span class="row-text">{{ r.text }}</span>
-        <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
-        <button
-          v-if="r.url"
-          class="row-play"
-          type="button"
-          @click="$emit('play', r.id)"
-        >{{ playingId === r.id ? 'Stop' : 'Listen' }}</button>
+      <li v-for="r in rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
+        <!-- Rewriting a line from the list: the row becomes the editor, in
+             place, so the line being changed never leaves the eye. Test courses
+             only — `canEdit` is the server's word and the write is checked
+             again there. -->
+        <template v-if="editingId === r.id">
+          <textarea v-model="draft" class="row-edit" rows="3" :disabled="saving"></textarea>
+          <div class="row-edit-actions">
+            <button class="row-cancel" type="button" :disabled="saving" @click="$emit('cancel-edit')">Cancel</button>
+            <button class="row-save" type="button" :disabled="saving" @click="$emit('save', { id: r.id, text: draft })">
+              {{ saving ? 'Saving…' : 'Save' }}
+            </button>
+          </div>
+          <p v-if="error" class="row-error">{{ error }}</p>
+        </template>
+        <template v-else>
+          <span class="row-mark" aria-hidden="true"></span>
+          <span class="row-text">{{ r.text }}</span>
+          <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
+          <button
+            v-if="r.canEdit"
+            class="row-edit-btn"
+            type="button"
+            @click="startEdit(r)"
+          >Edit</button>
+          <button
+            v-if="r.url"
+            class="row-play"
+            type="button"
+            @click="$emit('play', r.id)"
+          >{{ playingId === r.id ? 'Stop' : 'Listen' }}</button>
+        </template>
       </li>
     </ol>
   </div>
@@ -57,16 +79,29 @@
  * nothing about markup parsing, clip precedence or the queue: the booth owns all
  * three and there is one definition of each.
  */
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
-  rows: { type: Array, required: true },      // [{ id, text, done, url }]
+  rows: { type: Array, required: true },      // [{ id, text, done, url, canEdit }]
   playingId: { type: String, default: null },
+  editingId: { type: String, default: null },
+  saving: { type: Boolean, default: false },
+  error: { type: String, default: null },
   startOpen: { type: Boolean, default: false },
 })
-defineEmits(['play'])
+const emit = defineEmits(['play', 'edit', 'save', 'cancel-edit'])
 
 const open = ref(props.startOpen)
+// The draft lives here rather than in the booth: it is throwaway text that only
+// matters until Save, and the booth owns the request, not the keyboard.
+const draft = ref('')
+function startEdit(row) {
+  draft.value = row.text
+  emit('edit', row.id)
+}
+// Opening the list is how a done line gets edited, so an edit started from
+// anywhere else must not leave it hidden.
+watch(() => props.editingId, (id) => { if (id) open.value = true })
 
 // Counted from the rows themselves rather than passed in: two numbers that can
 // disagree with the marks above them is precisely the confusion being fixed.
@@ -148,4 +183,41 @@ const todoCount = computed(() => props.rows.length - doneCount.value)
   cursor: pointer;
 }
 .row.playing .row-play { background: var(--color-paper, #f7f7f2); color: var(--color-void, #0f172a); }
+.row.editing { flex-wrap: wrap; }
+.row-edit-btn {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: var(--color-paper-dim, #c1c1bb);
+  cursor: pointer;
+}
+.row-edit {
+  flex: 1 1 100%;
+  padding: 0.6rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-tungsten, #ffa630);
+  background: var(--color-void, #0f172a);
+  color: var(--color-paper, #f7f7f2);
+}
+.row-edit-actions { display: flex; gap: 0.5rem; flex: 1 1 100%; }
+.row-cancel, .row-save {
+  flex: 1 1 50%;
+  min-height: 46px;
+  border-radius: 8px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.row-save {
+  background: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, #ffa630);
+  color: var(--color-void, #0f172a);
+  font-weight: 700;
+}
+.row-error { flex: 1 1 100%; margin: 0.4rem 0 0; color: var(--color-film-red, #e63946); font-size: 0.85rem; }
 </style>

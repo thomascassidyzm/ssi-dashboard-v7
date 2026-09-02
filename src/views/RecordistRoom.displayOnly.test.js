@@ -235,3 +235,77 @@ describe('RecordistRoom — recording and playing back can never both look live'
     expect(wrapper.find('.meter-tag').text()).not.toContain('paused')
   })
 })
+
+
+// ── Rewriting a line (TEST COURSES ONLY) ─────────────────────────────────────
+//
+// The safety-critical half is the ABSENCE: Catrin's Welsh lines are live pod
+// content and must never show an edit control. The server refuses the write
+// anyway (recordist-text-edit.test.cjs), but a button she can press that then
+// fails is its own kind of broken.
+
+function stubEditableQueue(canEditText) {
+  global.fetch = vi.fn().mockImplementation((url, opts) => {
+    if (opts && opts.method === 'PATCH') {
+      return Promise.resolve({
+        ok: true, status: 200,
+        json: async () => ({ ok: true, lineId: 'line-2', text: 'A tea, please.', knownText: 'A tea, please.', recorded: false, previousText: 'Nos da' }),
+      })
+    }
+    return Promise.resolve({
+      ok: true, status: 200,
+      json: async () => ({
+        displayName: 'Test Voice', languageName: 'Test Language', total: 2, recorded: 1, remaining: 1,
+        lines: [
+          { id: 'line-1', order: 1, text: 'Bore da', knownText: 'Good morning', recorded: true, clipUrl: '/api/recording/voice/v/line/line-1/clip', canEditText },
+          { id: 'line-2', order: 2, text: 'Nos da', knownText: 'Good night', recorded: false, clipUrl: null, canEditText },
+        ],
+      }),
+    })
+  })
+}
+
+describe('RecordistRoom — rewriting a line', () => {
+  beforeEach(() => { savedTakes.clear() })
+
+  it('offers no edit control at all on a live course', async () => {
+    stubEditableQueue(false)
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_catrinlliar_cym_n' } })
+    await flushPromises()
+    await wrapper.find('.roster-toggle').trigger('click')
+    expect(wrapper.findAll('.row-edit-btn')).toHaveLength(0)
+
+    await wrapper.find('.btn-begin').trigger('click')
+    await flushPromises()
+    expect(wrapper.find('.edit-open').exists()).toBe(false)
+  })
+
+  it('saves the new text and puts the line back to outstanding, without a reload', async () => {
+    stubEditableQueue(true)
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
+    await flushPromises()
+    await wrapper.find('.btn-begin').trigger('click')   // opens on line-2, the outstanding one
+    await flushPromises()
+
+    await wrapper.find('.edit-open').trigger('click')
+    await flushPromises()
+    // The mic is held while the keyboard is up: a live mic under an open
+    // keyboard records the room and files it as the take.
+    expect(wrapper.find('.stage-progress').text()).toContain('Editing')
+    expect(wrapper.find('.meter-tag').text()).toBe('Mic paused while you listen')
+
+    await wrapper.find('.edit-box').setValue('A tea, please.')
+    await wrapper.find('.edit-save').trigger('click')
+    await flushPromises()
+
+    const patch = global.fetch.mock.calls.find(c => c[1] && c[1].method === 'PATCH')
+    expect(patch[0]).toContain('/line/line-2/text')
+    expect(JSON.parse(patch[1].body)).toEqual({ text: 'A tea, please.' })
+
+    // The screen now shows the new words, the mic is live again, and the line
+    // counts as outstanding — one recorded of two, exactly as before the edit.
+    expect(wrapper.find('.line-target').text()).toBe('A tea, please.')
+    expect(wrapper.find('.stage-progress').text()).toContain('Recording')
+    expect(wrapper.find('.stage-progress').text()).toContain('1 of 2 recorded')
+  })
+})

@@ -33,7 +33,13 @@
       <RecordistRoster
         :rows="rosterRows"
         :playing-id="playingId"
+        :editing-id="editingId"
+        :saving="editSaving"
+        :error="editError"
         @play="togglePlay"
+        @edit="beginEdit"
+        @cancel-edit="cancelEdit"
+        @save="saveEdit($event.id, $event.text)"
       />
 
       <!-- Start is the FIRST thing on the card and the only thing needed. One
@@ -153,7 +159,28 @@
         {{ activityState.words }} · {{ progressWords }}
       </p>
 
-      <div class="line-well">
+      <!-- Rewriting the line being read. Test courses only: `canEditText` is the
+           server's word, per line, and the write is checked again there. -->
+      <div v-if="editingId && editingId === current?.id" class="line-well editing">
+        <label class="edit-label">Rewrite this line</label>
+        <textarea
+          v-model="editText"
+          class="edit-box"
+          rows="3"
+          :disabled="editSaving"
+          @keydown.esc="cancelEdit"
+        ></textarea>
+        <p class="edit-note">Saving gives you a line nobody has read yet — the take it had is kept, it just stops belonging to this line.</p>
+        <p v-if="editError" class="note error">{{ editError }}</p>
+        <div class="edit-actions">
+          <button class="edit-cancel" type="button" :disabled="editSaving" @click="cancelEdit">Cancel</button>
+          <button class="edit-save" type="button" :disabled="editSaving" @click="saveEdit(editingId, editText)">
+            {{ editSaving ? 'Saving…' : 'Save and read it' }}
+          </button>
+        </div>
+      </div>
+
+      <div v-else class="line-well">
         <!-- Narration lines carry <src>/<tgt> markup. Parsed into segments in
              JS and rendered as spans — never v-html, because this is database
              text and never as a raw string, because then the recordist reads
@@ -168,6 +195,13 @@
         <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
         <p v-if="current?.rerecordReason" class="line-why">{{ current.rerecordReason }}</p>
       </div>
+
+      <button
+        v-if="current?.canEditText && editingId !== current?.id"
+        class="edit-open"
+        type="button"
+        @click="beginEdit(current.id)"
+      >Edit the text</button>
 
       <!-- WHAT IS COMING. A recordist reading blind, one line at a time, has to
            re-orient at every single line. Seeing the next few makes the whole
@@ -240,7 +274,13 @@
       <RecordistRoster
         :rows="rosterRows"
         :playing-id="playingId"
+        :editing-id="editingId"
+        :saving="editSaving"
+        :error="editError"
         @play="togglePlay"
+        @edit="beginEdit"
+        @cancel-edit="cancelEdit"
+        @save="saveEdit($event.id, $event.text)"
       />
 
       <div v-if="sessionLines.length" class="listen-back">
@@ -375,6 +415,7 @@ const rosterRows = computed(() => lines.value.map(l => ({
   text: plainText(l.text),
   done: isRecorded(l),
   url: storedUrlFor(l.id),
+  canEdit: !!l.canEditText,
 })))
 
 const current = computed(() => lines.value[index.value] || null)
@@ -482,14 +523,98 @@ let audioEl = null
 // the wording.
 const micHeld = ref(false)
 
-// What is happening, in words a person reads without thinking. Playback wins
-// over recording because playback holds the mic: if this ever said both, one of
-// them would be a lie.
+// What is happening, in words a person reads without thinking. Playback and
+// editing both hold the mic, so whichever of the three is true is the only one
+// that can be true: if this ever said two things, one of them would be a lie.
 const activityState = computed(() => {
+  if (editingId.value) return { cls: 'is-editing', words: 'Editing the line — mic paused' }
   if (playingId.value) return { cls: 'is-playing', words: 'Playing back your take' }
   if (phase.value === 'recording') return { cls: 'is-recording', words: 'Recording — read the line aloud' }
   return { cls: 'is-idle', words: 'Not recording' }
 })
+
+// ── Rewriting a line, on a TEST COURSE only ─────────────────────────────────
+// Tom, 2026-09-02: "it is a TEST course so it can have any rules we like", so
+// the booth may rewrite a zzz_ line's text in place and he can walk the real
+// journey — edit, read it, come back, edit again, read it again.
+//
+// `canEditText` comes off the SERVER, per line, and the server checks it again
+// on the write. A live pod line never gets an edit control here and could not
+// be written even if one appeared: changing live pod text in place breaks the
+// content-change migration protocol silently.
+//
+// WHAT HAPPENS TO THE TAKE THE LINE ALREADY HAD. Nothing is deleted. A clip is
+// identified by its text, so new text simply has no take — the line goes back to
+// outstanding, here and on the server, and the old clip stays exactly where it
+// was until a new one lands.
+const editingId = ref(null)
+const editText = ref('')
+const editSaving = ref(false)
+const editError = ref(null)
+
+function beginEdit(lineId) {
+  const l = lines.value.find(x => x.id === lineId)
+  if (!l || !l.canEditText) return
+  stopPlayback()
+  // Same hold as a playback, for the same reason: a live microphone under an
+  // open keyboard is recording the room and calling it his take.
+  if (phase.value === 'recording') {
+    micHeld.value = true
+    try { recorder.discardLine() } catch { micHeld.value = false }
+  }
+  editError.value = null
+  editText.value = plainText(l.text)
+  editingId.value = lineId
+}
+
+function cancelEdit() {
+  editingId.value = null
+  editError.value = null
+  releaseMic()
+}
+
+async function saveEdit(lineId, text) {
+  const l = lines.value.find(x => x.id === lineId)
+  const next = String(text || '').trim()
+  if (!l) return
+  if (!next || next === plainText(l.text)) { cancelEdit(); return }
+  editSaving.value = true
+  editError.value = null
+  try {
+    const res = await fetch(
+      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/line/${encodeURIComponent(lineId)}/text`,
+      {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+        body: JSON.stringify({ text: next }),
+      }
+    )
+    const data = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(data.error || `Could not save that (${res.status})`)
+    // The line is now a line nobody has read: new text, no take, outstanding.
+    // Every count and every control on this page reads off these fields, so
+    // saying it once here is what makes the roster, the progress line and the
+    // Start button all agree without a reload.
+    l.text = data.text
+    if (data.knownText !== undefined) l.knownText = data.knownText
+    l.recorded = false
+    l.clipUrl = null
+    l.rerecordWanted = false
+    doneIds.value.delete(lineId)
+    doneIds.value = new Set(doneIds.value)
+    if (queue.saved.delete) queue.saved.delete(lineId)
+    if (queue.failed.delete) queue.failed.delete(lineId)
+    sessionIds.value = sessionIds.value.filter(id => id !== lineId)
+    if (lastLine.value && lastLine.value.id === lineId) lastLine.value = null
+    lines.value = [...lines.value]
+    editingId.value = null
+  } catch (err) {
+    editError.value = (err && err.message) || 'Could not save that.'
+  } finally {
+    editSaving.value = false
+    releaseMic()
+  }
+}
 
 // Which bytes a line's play button points at, in strict precedence — the order
 // IS the honesty. A failed or in-flight NEW take must never fall back to the
@@ -1013,6 +1138,53 @@ kbd {
 .state-pill.is-playing {
   color: var(--color-tungsten, #ffa630);
   border-color: var(--color-tungsten, #ffa630);
+}
+.state-pill.is-editing,
+.stage-progress.is-editing { color: var(--color-tungsten, #ffa630); }
+
+/* Editing the line, in the same well the line lives in — so the thing being
+   rewritten stays in the place the eye is already on. */
+.line-well.editing { box-shadow: inset 0 0 0 2px var(--color-tungsten, #ffa630); min-height: auto; }
+.edit-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--color-paper-dim, #c1c1bb); }
+.edit-box {
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  font-size: 1.15rem;
+  line-height: 1.4;
+  border-radius: 10px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: var(--color-void, #0f172a);
+  color: var(--color-paper, #f7f7f2);
+}
+.edit-note { font-size: 0.8rem; color: var(--color-paper-dim, #c1c1bb); margin: 0.5rem 0 0; }
+.edit-actions { display: flex; gap: 0.6rem; margin-top: 0.8rem; }
+.edit-cancel, .edit-save {
+  flex: 1 1 50%;
+  min-height: 52px;
+  border-radius: 10px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: inherit;
+}
+.edit-save {
+  background: var(--color-tungsten, #ffa630);
+  border-color: var(--color-tungsten, #ffa630);
+  color: var(--color-void, #0f172a);
+  font-weight: 700;
+}
+.edit-open {
+  align-self: flex-start;
+  margin-top: 0.6rem;
+  min-height: 44px;
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-graphite, #475569);
+  background: transparent;
+  color: var(--color-paper-dim, #c1c1bb);
+  cursor: pointer;
 }
 
 /* THE line. Nothing else on the screen competes with it. */
