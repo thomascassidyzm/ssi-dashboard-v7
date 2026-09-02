@@ -529,9 +529,15 @@ onUnmounted(() => {
   background: var(--color-slate, var(--surface-2));
 }
 
+/* THE ACTIVE TAB IS A STATE, NOT A MEASUREMENT (Tom, 2026-09-02). It was amber,
+   which on the Script Lab also meant Select, "declared, unresolved", "attested
+   nowhere" and the chunk-mapping chip. The fill and the weight already say
+   which tab you are on; the hue was the fifth job amber was doing. */
 .tab-item.active {
-  color: var(--color-tungsten, var(--accent));
+  color: var(--color-paper, var(--ink));
+  font-weight: 600;
   background: var(--color-slate, var(--surface-2));
+  box-shadow: inset 0 -2px 0 var(--color-paper, var(--ink));
 }
 
 .tab-badge {
@@ -606,7 +612,7 @@ onUnmounted(() => {
 }
 
 .avatar-btn:hover {
-  border-color: var(--color-tungsten, var(--accent));
+  border-color: var(--color-paper-dim, var(--muted));
   color: var(--color-paper, var(--ink));
 }
 

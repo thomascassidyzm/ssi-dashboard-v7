@@ -204,3 +204,71 @@
   font-weight: 500;
   white-space: nowrap;
 }
+
+/* ── COLOUR MEANS MEASUREMENT, AND NOTHING ELSE ─────────────────────────────
+   Tom's ruling, 2026-09-02. Popty's colour had no rule: green meant the brand
+   wordmark AND a page heading AND a breadcrumb AND a node id AND "reached";
+   amber meant the active nav tab AND a Select AND "declared, unresolved" AND a
+   chunk-mapping chip. Every colour did three jobs, so the eye could not learn a
+   rule and none of them read as a measurement any more.
+
+   THE RULE. Colour is reserved for a MEASURED FACT about the thing on screen —
+   the way /courses spends it on FREE / PREMIUM / Beta / Live and on nothing
+   else. Titles, headings, breadcrumbs, nav, node ids and inline emphasis are
+   INK AND GREY. Deploy keeps blue as the single action colour.
+
+   ABSENCE IS DRAWN, NOT COLOURED. Red comes out entirely. A thing that was
+   reached is SOLID, FILLED, at full opacity; a thing that was never reached is
+   DASHED, UNFILLED and DIMMED, with its text still in ink. Three redundant
+   channels on purpose: across 36 small cards a dash alone gets noisy and must
+   not carry the signal by itself, and the same three channels survive card
+   size, light mode, and a colourblind reader.
+
+   WHY, in one line: the page used to shout its holes and whisper its coverage —
+   25 red cards for what does not exist, quiet equal-weight cards for the 11
+   shapes actually reached. That reads as an accusation rather than a map with
+   holes. Solid-vs-dashed inverts it back: built is present, unbuilt recedes. */
+
+/* Presence — the thing exists / was reached / is attested. */
+.ui-present {
+  border-style: solid;
+  border-color: var(--line);
+  background: var(--surface-2);
+  color: var(--ink);
+  opacity: 1;
+}
+/* Absence — the thing was never reached. Dashed + unfilled + dimmed, ink text. */
+.ui-absent {
+  border-style: dashed;
+  border-color: var(--faint);
+  background: none;
+  color: var(--ink);
+  opacity: 0.55;
+}
+
+/* The same two states as SVG geometry, for the metagraph tiles. */
+.ui-svg-present { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.2; opacity: 1; }
+.ui-svg-absent  { fill: none; stroke: var(--faint); stroke-width: 1.2; stroke-dasharray: 4 3; opacity: 0.55; }
+
+/* ── THE LIBRARY'S TYPE SCALE, APP-WIDE ─────────────────────────────────────
+   Tom, 2026-09-02: the Script Lab ran ~13px across three ~370px columns and
+   /courses runs the size he named as right. These are the Library's own values,
+   named once so a screen adopts the scale rather than tuning itself. Canonical
+   at full width is what makes the larger size free — one column keeps the
+   measure sane where three did not. */
+:root {
+  --text-body: 0.9375rem;   /* 15px — the reading size, /courses' body */
+  --text-sm:   0.875rem;    /* 14px — dense table rows */
+  --text-xs:   0.8125rem;   /* 13px — captions and stamps, no smaller */
+  --text-label: 0.75rem;    /* 12px — the uppercase column/filter labels */
+
+  /* THE SINGLE ACTION COLOUR. Deploy keeps blue, and blue means "this button
+     does something" and nothing else — the one hue on a screen that is not a
+     measurement. Same family the pipeline board already uses for blue. */
+  --action: #60a5fa;        /* blue-400 on the dark canvas */
+  --action-ink: #0f172a;    /* text on a filled action button */
+}
+:root[data-theme="light"] {
+  --action: #1d4ed8;        /* blue-700 — 7.15:1 on white, as CourseBrowser's */
+  --action-ink: #ffffff;
+}

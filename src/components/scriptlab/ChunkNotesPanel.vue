@@ -125,9 +125,13 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
   border-radius: 999px;
   font-size: 11px;
   line-height: 1.2;
-  color: var(--accent);
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  /* The chunk-mapping chip was amber, which on this page also meant Select,
+     "declared, unresolved" and "attested nowhere — must be minted". Under Tom's
+     2026-09-02 ruling colour means measurement and nothing else, so the chip is
+     ink and grey and the CONTESTED segments below carry the only signal. */
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -135,12 +139,15 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
   text-align: left;
   cursor: pointer;
 }
-.notes-chip.on { background: color-mix(in srgb, var(--accent) 22%, transparent); }
+.notes-chip:hover { color: var(--ink); border-color: var(--muted); }
+.notes-chip.on { color: var(--ink); border-color: var(--ink); font-weight: 600; }
 .chip-lead { color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-size: 10px; }
 .seg { color: var(--muted); }
 /* Split, inversion and erasure are 63 of 205 and are the whole reason to look. */
-.seg.contested { color: var(--accent-2); font-weight: 700; }
-.seg.unsaved-seg { color: var(--accent); font-weight: 700; }
+/* Split, inversion and erasure are 63 of 205 and are the whole reason to look —
+   the one MEASURED fact on this chip, so it is the one thing given weight. */
+.seg.contested { color: var(--ink); font-weight: 700; text-decoration: underline; text-underline-offset: 2px; }
+.seg.unsaved-seg { color: var(--ink); font-weight: 700; }
 
 .notes-body {
   margin-top: 8px;
@@ -172,8 +179,8 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
 /* Deterministic recedes; the three contested classes are the ones that read. */
 .k-D { color: var(--faint); }
 .k-S, .k-I, .k-E {
-  color: var(--accent-2);
-  background: color-mix(in srgb, var(--accent-2) 14%, transparent);
+  color: var(--ink);
+  background: var(--surface-3);
 }
 .k-none { color: var(--faint); }
 
@@ -186,10 +193,11 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
   padding: 4px 12px;
   border-radius: 6px;
   font-size: 12px;
-  color: var(--accent);
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--muted);
+  border: 1px solid var(--line);
   background: transparent;
 }
+.btn-raw:hover { color: var(--ink); border-color: var(--muted); }
 
 @media (max-width: 760px) {
   .chunk-table, .chunk-table tbody, .chunk-table tr, .chunk-table td { display: block; width: auto; }
