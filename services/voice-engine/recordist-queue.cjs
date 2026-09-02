@@ -108,6 +108,7 @@ const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
 const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
+const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const langService = require('../language-code-service.cjs')
 
 /**
@@ -403,6 +404,36 @@ function parseSeedLineId(lineId) {
 function seedLineId(seedId, role) { return `${SEED_LINE_PREFIX}${seedId}:${role}` }
 
 /**
+ * THE MINIMAL SET's line ids.
+ *
+ *   quarry:<courseCode>:lego:<legoId>
+ *   quarry:<courseCode>:word:<normalised word>
+ *
+ * A quarry piece is not a row anybody owns — a fallback word is a span of a
+ * sentence and nothing more — so the id has to carry the course and the piece
+ * rather than point at a primary key. Parsed server-side on the take route, for
+ * the same reason the seed route parses its own: the booth has no login, so a
+ * client's word for what it is recording is a suggestion.
+ */
+const QUARRY_LINE_PREFIX = 'quarry:'
+function quarryLineId(courseCode, source, key) { return `${QUARRY_LINE_PREFIX}${courseCode}:${source}:${key}` }
+function parseQuarryLineId(lineId) {
+  const raw = String(lineId || '')
+  if (!raw.startsWith(QUARRY_LINE_PREFIX)) return null
+  const rest = raw.slice(QUARRY_LINE_PREFIX.length)
+  const first = rest.indexOf(':')
+  if (first <= 0) return null
+  const courseCode = rest.slice(0, first)
+  const after = rest.slice(first + 1)
+  const second = after.indexOf(':')
+  if (second <= 0) return null
+  const source = after.slice(0, second)
+  const key = after.slice(second + 1)
+  if (!['lego', 'word'].includes(source) || !key) return null
+  return { courseCode, source, key }
+}
+
+/**
  * Which POLICY voice, if any, this course casts to a given target/known slot.
  *
  * Read off voice_config.voices[role].voiceId and matched against the language's
@@ -486,7 +517,7 @@ async function audioVoicesById(db, ids) {
   return out
 }
 
-async function buildLanguageLines(db, language) {
+async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED } = {}) {
   const courses = await coursesForLanguage(db, language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
   const empty = { byBucket: new Map(), uncast: 0, duplicatesCollapsed: 0, courses: [...byCourse.keys()] }
@@ -738,6 +769,75 @@ async function buildLanguageLines(db, language) {
       }
     }
 
+    // ── THE MINIMAL PHRASE SET ──────────────────────────────────────────────
+    // Tom, 2026-09-02: "ideally I just want the minimal phrase set, that I can
+    // record so we can test the dice and splice approach."
+    //
+    // The smallest set of pieces that, spliced, regenerates every practice
+    // phrase up to a seed ceiling: the covering LEGOs, plus the single words no
+    // LEGO covers. Computed by services/voice-engine/lego-quarry.cjs, which is
+    // also what the measurement report calls, so the count on the screen and
+    // the count in the report cannot drift apart.
+    //
+    // TEST FIXTURES ONLY, and that gate is the point rather than caution. This
+    // is an experiment about whether spliced audio is acceptable at all; Aran
+    // and Catrin must not open their Welsh link tomorrow to find a section
+    // nobody asked them to read. Same gate as the known-side exception.
+    //
+    // Cast like a seed's target1 — a quarry piece is target-side by
+    // construction, and it belongs to whoever reads that course's target.
+    for (const [courseCode, course] of byCourse.entries()) {
+      if (!isTestFixtureCourse(courseCode)) continue
+      const voice = seedCastEntry(course, policyVoices).target1
+      if (!voice || !voice.gender) continue
+      let quarry = null
+      try {
+        quarry = await buildLegoQuarry(db, courseCode, { maxSeed: quarryMaxSeed })
+      } catch (err) {
+        // A queue that 500s is a recordist who cannot record anything. The
+        // minimal set is an addition to this screen, so it fails as an absence.
+        console.warn(`[Recordist] minimal set unavailable for ${courseCode}: ${err.message}`)
+        continue
+      }
+      if (!quarry) continue
+      const bucket = bucketKey(courseDialect(course), voice.gender)
+      if (!byBucket.has(bucket)) byBucket.set(bucket, [])
+
+      quarry.pieces.forEach((piece, i) => {
+        byBucket.get(bucket).push({
+          id: quarryLineId(courseCode, piece.source, piece.key),
+          podId: null,
+          // Between the re-records and the seed sentences: it is new reading,
+          // but it is the one thing Tom came here to do tonight.
+          order: Number.MAX_SAFE_INTEGER - 1,
+          // Longest first, preserved: the hardest reads happen while the voice
+          // is fresh and the single words are the easy tail.
+          seedOrder: i,
+          text: piece.text,
+          // A LEGO carries its own English; a fallback word is a span of a
+          // sentence and has no gloss of its own. Nothing is invented for it.
+          knownText: piece.knownText,
+          speaker: null,
+          courseCode,
+          textNormalized: normalizeForDb(piece.text),
+          duplicateOf: [],
+          kind: 'quarry',
+          role: 'target1',
+          // THE SPEED. This is what stops the booth advancing off the line
+          // while he is still mid-piece: a gapped read is full of pauses that
+          // look exactly like the end of a take.
+          readStyle: piece.readStyle,
+          quarrySource: piece.source,
+          legoId: piece.legoId,
+          rerecordWanted: false,
+        })
+      })
+
+      // The seed sentences of a fixture course are ALREADY in this queue as
+      // 'seed' lines, read whole at natural pace — which is exactly the second
+      // speed of the minimal set. They are not duplicated here.
+    }
+
     // Seed lines sort after everything else, then by seed number, then by role
     // -- stable across reloads, which is the only property that matters here.
     for (const lines of byBucket.values()) {
@@ -787,8 +887,8 @@ async function fetchRerecordWanted(db, courseCodes) {
  *        (they are always counted; this only decides whether they are listed).
  * @returns {Promise<{lines: Array, total, recorded, remaining, uncast, duplicatesCollapsed}>}
  */
-async function buildQueue(db, recordist, { includeRecorded = false } = {}) {
-  const language = await buildLanguageLines(db, recordist.language)
+async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed } = {}) {
+  const language = await buildLanguageLines(db, recordist.language, { quarryMaxSeed })
   const mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
   return finishQueue(db, recordist, mine, language, { includeRecorded })
 }
@@ -854,6 +954,14 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which seed sentence this is, for the surface to say so in words. Null
         // on every other kind of line.
         seedNumber: line.seedNumber || null,
+        // HOW THIS LINE IS READ. 'gapped' — naturally but slowly, with dead
+        // space around the words so a cut lands in silence — or 'natural', a
+        // whole sentence at speaking pace. The booth draws it AND acts on it:
+        // a gapped read's pauses would otherwise trip auto-advance mid-piece.
+        readStyle: line.readStyle || (line.kind === 'quarry' ? 'gapped' : 'natural'),
+        // Which kind of quarry piece: a LEGO of the course, or a single word no
+        // LEGO covers. Null on every other kind of line.
+        quarrySource: line.quarrySource || null,
         // May the recordist rewrite this line's text from the booth? True only
         // on a test fixture, and the server checks it again on the write — this
         // is what the screen draws, never what the write trusts.
@@ -861,7 +969,9 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // side, under the content-change protocol. Saying so here rather than
         // only on the write is what stops the booth drawing an Edit button that
         // can only ever answer 403.
-        canEditText: line.kind !== 'seed' && isTestFixtureCourse(line.courseCode),
+        // A quarry piece is a SPAN of course content, not a line of its own:
+        // editing it here would edit nothing, so the booth is not offered it.
+        canEditText: line.kind !== 'seed' && line.kind !== 'quarry' && isTestFixtureCourse(line.courseCode),
       })
     }
   }
@@ -1234,6 +1344,8 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
 module.exports = {
   clearRerecordWants,
   isTestFixtureCourse,
+  quarryLineId,
+  parseQuarryLineId,
   targetRerecordWanted,
   languageName,
   loadPolicies,

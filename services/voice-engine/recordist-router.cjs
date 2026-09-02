@@ -41,6 +41,7 @@ const {
   clearRerecordWants,
   isTestFixtureCourse,
   parseSeedLineId,
+  parseQuarryLineId,
   linkSeedTake,
   seedCastEntry,
   policyVoiceList,
@@ -276,7 +277,13 @@ module.exports = function createRecordistRouter({
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
       const includeRecorded = req.query.includeRecorded === '1' || req.query.includeRecorded === 'true'
-      const queue = await buildQueue(db(), recordist, { includeRecorded })
+      // HOW MUCH OF THE COURSE the minimal set covers. Tom asked for the burden
+      // at "30 SEEDS, 50/100/150/300" and this is where that scope arrives:
+      // ?maxSeed=N. Clamped rather than trusted -- the booth is a no-login
+      // surface and an unbounded ceiling is a language-wide scan on tap.
+      const askedSeed = parseInt(req.query.maxSeed, 10)
+      const quarryMaxSeed = Number.isFinite(askedSeed) ? Math.min(Math.max(askedSeed, 1), 1000) : undefined
+      const queue = await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
       res.json({
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
@@ -286,6 +293,9 @@ module.exports = function createRecordistRouter({
         // Which accent this queue is. The recordist should be able to see, on
         // their own page, which of a language's dialects they are reading.
         dialect: recordist.dialect,
+        // Echoed back so the screen can say which volume it is showing rather
+        // than assuming its own query survived.
+        maxSeed: quarryMaxSeed || null,
         total: queue.total,
         recorded: queue.recorded,
         remaining: queue.remaining,
@@ -542,6 +552,239 @@ module.exports = function createRecordistRouter({
     })
   }
 
+  /**
+   * Resolve a MINIMAL-SET piece: which course it belongs to, what its words
+   * are, and whether this recordist is the one who reads them.
+   *
+   * Everything is checked server-side and nothing is taken from the id but the
+   * lookup keys. The booth has no login: `quarry:<course>:lego:<id>` is a claim,
+   * not a credential, and without this a Welsh link could file takes into a
+   * fixture course's LEGOs.
+   */
+  async function resolveQuarryLine(res, recordist, parsed) {
+    // TEST FIXTURES ONLY, checked here as well as in the queue. The minimal set
+    // is an experiment about whether spliced audio is acceptable at all; it does
+    // not get to write into a course with learners on it.
+    if (!isTestFixtureCourse(parsed.courseCode)) {
+      res.status(403).json({
+        error: 'The minimal set is recorded on test fixture courses only.',
+        reason: 'live_course', courseCode: parsed.courseCode,
+      })
+      return null
+    }
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config, target_lang, known_lang').eq('course_code', parsed.courseCode).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${parsed.courseCode}` }); return null }
+
+    let courseLanguage = null
+    try { courseLanguage = canonicalLanguage(course.target_lang) } catch { courseLanguage = null }
+    if (courseLanguage !== recordist.language) {
+      res.status(403).json({
+        error: `That piece belongs to ${course.course_code}, which is ${course.target_lang}, not ${recordist.language}.`,
+        reason: 'wrong_language', courseCode: course.course_code,
+      })
+      return null
+    }
+
+    // Cast like a seed's target1, because that is what a quarry piece is: the
+    // target side of this course, read by whoever reads its target side.
+    const policies = await loadPolicies(db())
+    const policy = policies.find((row) => row.language === recordist.language)
+    const castVoice = seedCastEntry(course, policyVoiceList(policy)).target1
+    if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
+      res.status(403).json({
+        error: castVoice
+          ? `${course.course_code} casts ${castVoice.voiceId} to read its target side, not you.`
+          : `${course.course_code} has nobody cast to read its target side yet.`,
+        reason: castVoice ? 'not_your_slot' : 'uncast_slot', courseCode: course.course_code,
+      })
+      return null
+    }
+
+    // THE WORDS COME FROM THE DATABASE, never from the id. A LEGO piece is read
+    // off its own row; a fallback word is a single normalised word and IS its
+    // own key, but it is only accepted if it genuinely appears in this course's
+    // text -- otherwise the id would be a way to file a take under any words at
+    // all.
+    if (parsed.source === 'lego') {
+      const { data: lego, error } = await db()
+        .from('course_legos').select('lego_id, course_code, target_text, seed_number')
+        .eq('course_code', course.course_code).eq('lego_id', parsed.key).maybeSingle()
+      if (error) throw new Error(`lego lookup failed: ${error.message}`)
+      if (!lego) { res.status(404).json({ error: `No LEGO ${parsed.key} in ${course.course_code}` }); return null }
+      const legoText = String(lego.target_text || '').trim()
+      if (!legoText) { res.status(409).json({ error: 'That LEGO has no target text to read.', reason: 'empty_line' }); return null }
+      return { course, text: legoText, lego }
+    }
+
+    const wanted = String(parsed.key)
+    const { data: hit, error } = await db()
+      .from('course_legos').select('lego_id, target_text')
+      .eq('course_code', course.course_code)
+      .ilike('target_text', `%${wanted}%`)
+      .limit(1)
+    if (error) throw new Error(`word lookup failed: ${error.message}`)
+    // A word that appears inside no LEGO of the course may still be a genuine
+    // fallback -- the fallback set exists precisely because some words no LEGO
+    // covers -- so the LEGO probe cannot refuse it. The phrase table decides.
+    let seen = !!(hit && hit.length)
+    if (!seen) {
+      const { data: ph, error: pErr } = await db()
+        .from('course_practice_phrases').select('id')
+        .eq('course_code', course.course_code)
+        .ilike('target_text', `%${wanted}%`)
+        .limit(1)
+      if (pErr) throw new Error(`word lookup failed: ${pErr.message}`)
+      seen = !!(ph && ph.length)
+    }
+    if (!seen) {
+      res.status(404).json({ error: `"${wanted}" does not appear in ${course.course_code}`, reason: 'not_in_course' })
+      return null
+    }
+    return { course, text: wanted, lego: null }
+  }
+
+  /**
+   * A take for a MINIMAL-SET piece -- a covering LEGO, or a single word no LEGO
+   * covers. Read GAPPED: naturally but slowly, with dead space around the words
+   * so a splice cut lands in silence rather than mid-gesture.
+   *
+   * Same upload seam as everything else on this surface: archive-before-process,
+   * the silent-take refusal, provenance. SCRIPT mode mints the course_audio row,
+   * which is what a fallback word needs -- no table row owns a span of a
+   * sentence, so clip identity (course, text, language, role, voice) is the only
+   * thing that can own it.
+   *
+   * A LEGO piece additionally has its own slot pointed at the new clip, across
+   * every copy of the same words in the course. Make-before-break: the clip
+   * exists before any pointer moves, and nothing is deleted.
+   */
+  async function recordQuarryTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolveQuarryLine(res, recordist, parsed)
+    if (!resolved) return
+
+    if (text && text.trim() && text.trim() !== resolved.text) {
+      return res.status(409).json({
+        error: 'The text on this line has changed since the queue was loaded -- reload before recording it.',
+        expected: resolved.text, received: text.trim(),
+      })
+    }
+
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: resolved.course.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: {
+          mode: 'script',
+          // GAPPED, and it is named rather than left as 'natural'. This clip is
+          // splice quarry: it is deliberately not a natural read, and calling it
+          // one would put a gapped recording into the estate's natural pool. It
+          // is not 'isolated' either -- Pool A never feeds the splicer
+          // (voice-engine/provenance-adapter.cjs), and feeding the splicer is
+          // the entire reason this clip exists.
+          cadence: 'gapped',
+          role: 'target1',
+          kind: 'quarry',
+          text: resolved.text,
+          voiceId: recordist.voiceId,
+          legoId: resolved.lego ? resolved.lego.lego_id : null,
+        },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+
+    const filing = captured.body.filing || null
+    const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
+    let linked = 0
+    if (audioId && resolved.lego) {
+      // Every LEGO row of this course carrying the same words -- one take fills
+      // them all, exactly as a seed take does across its duplicates. A slot
+      // already holding somebody else's clip is left alone.
+      const { data: rows, error } = await db()
+        .from('course_legos').select('lego_id, target_text, target1_audio_id')
+        .eq('course_code', resolved.course.course_code)
+      if (error) logger.error(`[Recordist] lego relink read failed: ${error.message}`)
+      const key = audioKeyCandidates(resolved.text)
+      for (const row of rows || []) {
+        if (!audioKeyCandidates(String(row.target_text || '').trim()).some((k) => key.includes(k))) continue
+        if (row.target1_audio_id === audioId) continue
+        const { error: upErr } = await db()
+          .from('course_legos').update({ target1_audio_id: audioId })
+          .eq('course_code', resolved.course.course_code).eq('lego_id', row.lego_id)
+        if (upErr) { logger.error(`[Recordist] lego link failed for ${row.lego_id}: ${upErr.message}`); continue }
+        linked += 1
+      }
+    } else if (!audioId) {
+      logger.error(`[Recordist] minimal-set take for ${parsed.raw} was NOT filed as a clip: ${filing && filing.reason}`)
+    }
+
+    return res.json({
+      ok: true,
+      audioId,
+      kind: 'quarry',
+      readStyle: 'gapped',
+      quarrySource: parsed.source,
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      alsoFilled: Math.max(0, linked - 1),
+      rawKey: captured.body.rawKey || null,
+      filing,
+    })
+  }
+
+  /**
+   * Play back a minimal-set take. Resolved by CLIP IDENTITY rather than by a
+   * foreign key, because a fallback word has no row that owns it -- and because
+   * the LEGO's own slot may point at somebody else's clip, which is not this
+   * recordist's take to hear.
+   */
+  async function quarryClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolveQuarryLine(res, recordist, parsed)
+    if (!resolved) return
+    const { data, error } = await db()
+      .from('course_audio')
+      .select('id, s3_key, voice_id, language, created_at')
+      .eq('language', recordist.language)
+      .in('voice_id', recordist.spellings)
+      .in('text_normalized', audioKeyCandidates(resolved.text))
+      .order('created_at', { ascending: false })
+      .limit(1)
+    if (error) throw new Error(`clip lookup failed: ${error.message}`)
+    const row = data && data[0] ? data[0] : null
+    if (!row) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+    // Same serving as every other clip on this surface: raw variant, signed
+    // URL, redirect or JSON.
+    if (req.query.variant === 'raw') {
+      const { url, rawKey, notFound } = await s3.getRawSignedUrl(row.s3_key, 3600)
+      if (!rawKey) {
+        return res.status(404).json({
+          error: notFound
+            ? 'The processed clip for this take is missing from storage, so its original cannot be found.'
+            : 'No original was kept for this take.',
+          reason: notFound ? 'mastered_missing' : 'no_raw_retained',
+          audioId: row.id, variant: 'raw',
+        })
+      }
+      if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: rawKey, url, variant: 'raw' })
+      return res.redirect(302, url)
+    }
+    const url = await s3.getAudioSignedUrl(row.id, 3600, { s3Key: row.s3_key })
+    if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: row.s3_key, url, variant: 'processed' })
+    return res.redirect(302, url)
+  }
+
   /** Play back the clip a seed's own slot points at. */
   async function seedClipResponse(req, res, recordist, parsed) {
     const resolved = await resolveSeedLine(res, recordist, parsed)
@@ -623,6 +866,13 @@ module.exports = function createRecordistRouter({
       const seedLine = parseSeedLineId(lineId)
       if (seedLine) {
         return await recordSeedTake({ req, res, recordist, parsed: { ...seedLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+
+      // A MINIMAL-SET piece. Same reasoning as the seed branch: `quarry:...` is
+      // not a uuid, so it must never reach the pod lookup below.
+      const quarryLine = parseQuarryLineId(lineId)
+      if (quarryLine) {
+        return await recordQuarryTake({ req, res, recordist, parsed: { ...quarryLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
 
       // The line decides the course; the recordist decides the voice.
@@ -769,6 +1019,9 @@ module.exports = function createRecordistRouter({
       const seedLine = parseSeedLineId(req.params.lineId)
       if (seedLine) return await seedClipResponse(req, res, recordist, { ...seedLine, raw: req.params.lineId })
 
+      const quarryLine = parseQuarryLineId(req.params.lineId)
+      if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
+
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
         .select('id, target_text, target_audio_id')
@@ -868,6 +1121,15 @@ module.exports = function createRecordistRouter({
         return res.status(403).json({
           error: 'A seed sentence is course content -- its text is changed on the admin side, not from the booth.',
           reason: 'seed_line',
+        })
+      }
+      // A minimal-set piece is a SPAN of course content -- a LEGO, or a single
+      // word inside a sentence. There is no row to rewrite, so editing it here
+      // would edit nothing and silently disagree with the course.
+      if (parseQuarryLineId(lineId)) {
+        return res.status(403).json({
+          error: 'That is a piece of a sentence, not a line of its own -- its words come from the course and are changed there.',
+          reason: 'quarry_line',
         })
       }
       // The course code is the first half of a pod sentence id, but it is not

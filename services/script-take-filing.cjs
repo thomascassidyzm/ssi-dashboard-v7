@@ -100,6 +100,12 @@ function planScriptTakeFiling({ metadata = {}, voiceId = null, course = null }) 
   // A slow take is a measurement, not a clip — it exists to give the aligner
   // pause boundaries and is deliberately never filed.
   if (cadence === 'slow') return { file: false, filing: reasonPayload('slow_cadence') }
+  // 'gapped' (the minimal phrase set) DOES file, and is named here rather than
+  // left to fall through, for the reason the paragraph below gives. A gapped
+  // piece is a covering LEGO or a fallback word read slowly with dead space
+  // around the words: it is splice quarry, so it must exist as a clip, and it
+  // must NOT be filed as 'natural' or the estate's natural pool silently gains
+  // a recording nobody would call natural.
   // 'isolated' (Pool A) DOES file, and deliberately so: it is the teaching clip
   // for that LEGO or component, and the whole point of the two-pool split is
   // that it exists as a clip in its own right. It reaches the splicer never —
