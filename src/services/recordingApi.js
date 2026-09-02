@@ -50,7 +50,10 @@ export function recordingApiBase() {
   // recordist change could never be verified in a real browser.
   if (typeof window !== 'undefined') {
     const host = window.location.hostname
-    if (host === 'popty.app' || host.endsWith('.vercel.app')) return ''
+    // ...and on the watson-1 tailnet staging host, for the same reason again:
+    // the staging server proxies /api/* to the production API on the same
+    // origin, so the page never makes the public-to-local-address-space hop.
+    if (host === 'popty.app' || host.endsWith('.vercel.app') || host.endsWith('.ts.net')) return ''
   }
   if (typeof localStorage !== 'undefined') {
     const pinned = localStorage.getItem('api_base_url')

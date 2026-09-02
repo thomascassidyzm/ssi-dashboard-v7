@@ -19,6 +19,12 @@ const DEFAULT_LOCAL_URL = 'http://localhost:3470'
  * For Vercel/static hosting, user MUST use EnvironmentSwitcher to set the backend URL.
  */
 export function getApiUrl() {
+  // 0. The watson-1 tailnet staging host serves the app and proxies /api/* to
+  // the production API on its OWN origin, so relative is not just safe here, it
+  // is the only correct answer — and it must beat the pin, because the
+  // environment bootstrap writes one on load for anonymous visitors too.
+  if (typeof window !== 'undefined' && window.location.hostname.endsWith('.ts.net')) return ''
+
   // 1. Check localStorage (set by EnvironmentSwitcher) - works everywhere
   const storedUrl = localStorage.getItem('api_base_url')
   if (storedUrl) {
