@@ -25,17 +25,22 @@
         </div>
 
         <!-- Coverage: the whole language, split by the two voices that carry it -->
-        <div class="bar" :title="`${row.recorded} of ${row.total} recorded`">
+        <div class="bar" :title="`${taken(row)} of ${row.total} recorded`">
           <div
             v-for="(v, i) in row.voices || []"
             :key="v.voiceId"
             class="bar-seg"
             :class="`seg-${i % 2}`"
-            :style="{ width: pct(v.recorded, row.total) }"
+            :style="{ width: pct(taken(v), row.total) }"
           ></div>
         </div>
         <p class="bar-caption">
-          {{ row.recorded }} of {{ row.total }} recorded<span v-if="row.total"> — {{ Math.round(row.pct ?? (row.recorded / row.total * 100)) }}%</span>
+          <!-- RECORDED MEANS A TAKE EXISTS, and it has to match what the
+               recordist is told to the line. `row.recorded` is the narrower
+               "not asked for again", which said 64 here while Aran and Catrin
+               between them had read 109. Both truths, same words as their own
+               screens. -->
+          {{ taken(row) }} of {{ row.total }} recorded<span v-if="again(row)">, {{ again(row) }} of those to read again</span><span v-if="row.total"> — {{ Math.round(taken(row) / row.total * 100) }}%</span>
           <span v-if="row.uncast" class="uncast"> · {{ row.uncast }} not cast to a voice</span>
           <!-- Cast to a gender, but in a dialect this language has no voice for.
                Counted separately from `uncast` because the remedy is different:
@@ -48,10 +53,18 @@
             <span class="swatch" :class="`seg-${i % 2}`"></span>
             <span class="voice-name">{{ v.name || v.voiceId }}</span>
             <span class="voice-gender">{{ v.gender }}<template v-if="v.dialect && v.dialect !== 'standard'"> · {{ v.dialect }}</template></span>
-            <span class="voice-count">{{ v.recorded }} of {{ v.total }}</span>
+            <span class="voice-count">{{ taken(v) }} of {{ v.total }}</span>
             <button class="copy-btn" @click="copyLink(v.voiceId)">
               {{ copied === v.voiceId ? 'Copied' : 'Copy link' }}
             </button>
+            <!-- THE THREE JOBS INSIDE ONE TOTAL, named as the booth names them
+                 (Tom, 2026-09-02: POD-1 / new sentences / re-recording in this
+                 course). Without it "441 lines" is a number with no shape, and
+                 this page and the recordist's page cannot be read against each
+                 other except in aggregate. -->
+            <span v-if="kindParts(v).length" class="voice-kinds">
+              <span v-for="k in kindParts(v)" :key="k.key" class="kind">{{ k.label }} {{ k.withTake }}/{{ k.total }}</span>
+            </span>
           </li>
         </ul>
       </li>
@@ -93,6 +106,25 @@ async function authHeaders() {
 function pct(n, total) {
   if (!total) return '0%'
   return `${Math.max(0, Math.min(100, (n / total) * 100))}%`
+}
+
+// ONE DEFINITION OF "RECORDED", SHARED WITH THE RECORDIST'S OWN SCREEN: a take
+// exists, whether or not we have asked for it to be read again. The API's
+// `recorded` is the narrower "not asked for again" and stays on the wire for
+// the run itself; `withTake` is what a person has actually read. The ?? keeps
+// this page honest against an older API build that has not shipped the field.
+function taken(row) { return row.withTake ?? row.recorded ?? 0 }
+function again(row) { return row.again ?? 0 }
+
+// The booth's own headings, so the two screens use one vocabulary. Kinds absent
+// from a voice's queue are not drawn — an empty heading is a question with no
+// answer (the same rule the recordist roster follows).
+const KIND_LABELS = { pod: 'POD-1', seed: 'New sentences', quarry: 'Minimal set', rerecord: 'Re-recording' }
+function kindParts(voice) {
+  const kinds = voice.kinds || {}
+  return Object.keys(KIND_LABELS)
+    .filter((k) => kinds[k] && kinds[k].total)
+    .map((k) => ({ key: k, label: KIND_LABELS[k], total: kinds[k].total, withTake: kinds[k].withTake ?? 0 }))
 }
 
 // The link IS the recordist's identity, so it must be an absolute URL to THIS
@@ -192,6 +224,10 @@ h1 { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.3
 .voice-name { font-weight: 600; }
 .voice-gender, .voice-count { color: var(--color-paper-dim, #c1c1bb); font-size: 0.78rem; }
 .voice-count { margin-left: auto; font-family: 'IBM Plex Mono', monospace; }
+/* Its own row under the voice: a phone has no room for three kinds beside a
+   name, a count and a button, and wrapping mid-list reads as noise. */
+.voice-kinds { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 0.15rem 0.9rem; padding-left: 1.3rem; }
+.kind { color: var(--color-paper-dim, #c1c1bb); font-size: 0.72rem; font-family: 'IBM Plex Mono', monospace; }
 .copy-btn {
   font-family: 'Josefin Sans', sans-serif; font-size: 0.78rem; font-weight: 600;
   color: var(--color-void, #0f172a); background: var(--color-emerald, #06ffa5);

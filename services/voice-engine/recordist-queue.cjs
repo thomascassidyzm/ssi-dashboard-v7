@@ -1074,6 +1074,38 @@ async function recordedTextKeys(db, recordist) {
  * Built from the same derivation as the queues, so the numbers on the bar and
  * the numbers in a recordist's page can never disagree.
  */
+/**
+ * A line HAS A TAKE when a recording of it exists — whether or not we are asking
+ * for it to be read again. `recorded` on the wire means the narrower "not asked
+ * for again", and a wire line carrying `rerecordWanted` is by construction one
+ * that already has a take (finishQueue sets it as `hasTake && line.rerecordWanted`).
+ * So the two are recoverable from the rows without changing finishQueue itself,
+ * which the booth shares and which is correct as it stands.
+ */
+function takeTally(lines) {
+  let withTake = 0
+  let again = 0
+  for (const l of lines) {
+    const hasTake = !!l.recorded || !!l.rerecordWanted
+    if (hasTake) withTake += 1
+    if (hasTake && !l.recorded) again += 1
+  }
+  return { withTake, again, fresh: lines.length - withTake }
+}
+
+/** The same tally, split by the kind of work: pod / seed / quarry / rerecord. */
+function kindTally(lines) {
+  const byKind = new Map()
+  for (const l of lines) {
+    const k = l.kind || 'pod'
+    if (!byKind.has(k)) byKind.set(k, [])
+    byKind.get(k).push(l)
+  }
+  const out = {}
+  for (const [k, rows] of byKind) out[k] = { total: rows.length, ...takeTally(rows) }
+  return out
+}
+
 async function buildCoverage(db) {
   const policies = await loadPolicies(db, { humanOnlyOnly: true })
 
@@ -1104,6 +1136,20 @@ async function buildCoverage(db) {
         dialect: recordist.dialect,
         total: q.total,
         recorded: q.recorded,
+        // ADDITIVE, AND IT IS WHY THIS FUNCTION CHANGED. `recorded` above is
+        // "we are not asking for this again" — right for the remaining count,
+        // and it told Tom's admin page Aran had done 26 of 441 when 71 of
+        // Aran's lines carry a take he made. The recordist's own screen was
+        // fixed the same night (POD-1 commit) to say both truths; two pages
+        // disagreeing about how much work is outstanding is worse than either
+        // being wrong alone, so the SAME two numbers are on the wire here.
+        // Same definition, word for word, as RecordistRoster's takeCount /
+        // againCount: a take exists = done OR asked for again.
+        ...takeTally(q.lines),
+        // The three-or-four jobs stacked inside one total, named as the booth
+        // names them, so the admin page and the recordist page can be read
+        // against each other line by line rather than only in aggregate.
+        kinds: kindTally(q.lines),
       }
     }))).filter(Boolean)
 
@@ -1125,12 +1171,19 @@ async function buildCoverage(db) {
 
     const total = perVoice.reduce((n, v) => n + v.total, 0)
     const recorded = perVoice.reduce((n, v) => n + v.recorded, 0)
+    const withTake = perVoice.reduce((n, v) => n + v.withTake, 0)
+    const again = perVoice.reduce((n, v) => n + v.again, 0)
     return {
       language: policy.language,
       languageName: languageName(policy.language),
       humanOnly: true,
       total,
       recorded,
+      // See takeTally: `recorded` is the narrow count, `withTake` is how much
+      // has actually been read, `again` is the overlap between them.
+      withTake,
+      again,
+      fresh: total - withTake,
       uncast: language.uncast,
       unrouted,
       pct: total ? Math.round((recorded / total) * 1000) / 10 : 0,
@@ -1383,6 +1436,10 @@ module.exports = {
   SEED_LINE_PREFIX,
   buildQueue,
   buildCoverage,
+  // Exported for the coverage-count test: this is the one definition of
+  // "recorded" that Tom's admin page and a recordist's own screen share.
+  takeTally,
+  kindTally,
   recordedTextKeys,
   propagateTakeToDuplicates,
   tryCanonicalVoiceId,
