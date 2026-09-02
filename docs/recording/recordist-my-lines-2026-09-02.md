@@ -91,3 +91,46 @@ Two ways forward, your call:
 The backend route is **already on `main` and live on watson-1** — landed separately, on purpose, so
 the UI could be staged at all. On its own it changes nothing anybody sees: nothing on popty.app calls
 it.
+
+---
+
+## Landed on popty.app — 2026-09-02
+
+Tom's ruling: *"for the Catrin recording test I want the popty links, not the tailnet ones — popty.app"*.
+That is the second of the two ways forward above, so `feat/recordist-my-lines` was fast-forwarded onto
+`main` (`01411642d`) and Vercel deployed it. The tailnet staging host and its two `.ts.net` URLs are
+superseded and no longer the way in; the `.ts.net` same-origin lines stayed on the staging branch and
+were **not** carried to `main`.
+
+**The two live URLs**
+
+- Sign in and see your own list: **https://popty.app/my-recording**
+- The link that is the identity, no login (Tom's zzz test voice): **https://popty.app/r/human_tom_zzz**
+
+**Verified on the real domain, not from a version string**
+
+- The served entry bundle carries the `/my-recording` route and names the lazy chunk
+  `MyRecordingList-DC1pwxPm.js`; that chunk, fetched from popty.app, contains
+  `data-surface="my-recording-list-2026-09-02"`, the `/api/recording/mine` call, and the new
+  microphone wording.
+- Sign-in works because the bundle carries the real Supabase project ref (the thing the Vercel
+  preview was missing).
+- Authenticated end to end: a session minted for `thomas.cassidy+ssi@gmail.com` against
+  `https://popty.app/api/recording/mine` answers **200** with `human_tom_zzz`; without a token it
+  answers 401. `https://popty.app/api/recording/voice/human_tom_zzz?includeRecorded=1` answers 200
+  with **9 lines, 1 recorded, 8 outstanding** — the fixture, intact.
+
+**Who is affected, exactly.** Six logins carry `role = 'recorder'` and are redirected to this page
+instead of the old per-course Record Room: **catrinlliar@gmail.com** and five `@ssi-test.invalid`
+test rows (four e2e voice/consent probes plus `e2e-recordist-list`, which has no `voice_id` and gets
+the page's honest "no recording voice for this login"). Catrin is exposed **from now** — the next
+time she signs in she lands on the list, which reads 161 lines, 38 recorded, 123 still to record.
+Nothing she has recorded is touched and the Record Room is still reachable. Separately, the new Home
+card appears for any login with a `voice_id` — that is Kai and twelve language editors — which is an
+extra card and no change to anything they already do.
+
+**One defect fixed on the way in.** A microphone that will not open used to raise a banner and let
+the tapped row snap silently back to TO RECORD, so on a long list nothing said *which* line had
+failed. The row now carries the failure itself and says "microphone didn't open" rather than
+"not saved" — a recording that was never made is not a file that went missing. Covered by a test in
+`MyRecordingList.drawnState.test.js` (7/7 green).
