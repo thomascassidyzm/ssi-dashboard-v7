@@ -107,7 +107,16 @@ function sql(side) {
       union all
       select 'lego', course_code, lego_id, ${textCol}, ${linkCol}, updated_at from course_legos
       union all
-      select 'seed', course_code, seed_id, ${textCol}, ${linkCol}, updated_at from course_seeds
+      -- Only seeds that have actually been decomposed into LEGOs: a raw,
+      -- undecomposed seed was never going to have audio (most courses stop
+      -- content-building at the seed-300 MVP boundary, services/config/
+      -- course-modes.json), so counting it as a "gap" is meaningless noise.
+      select 'seed', s.course_code, s.seed_id, s.${textCol}, s.${linkCol}, s.updated_at
+        from course_seeds s
+       where exists (
+         select 1 from course_legos l
+          where l.course_code = s.course_code and l.seed_number = s.seed_number
+       )
     ),
     have as (select distinct course_code, text_normalized from course_audio where role = '${role}'),
     j as (
