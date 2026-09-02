@@ -69,6 +69,20 @@ export function createAdvanceLock({ autoGraceMs = AUTO_GRACE_MS, now = () => Dat
       lastAutoAt = -Infinity
     },
 
+    /**
+     * Give a line its step forward back WITHOUT claiming the wheel.
+     *
+     * The queue itself brings lines back now: an edit puts a line back into the
+     * outstanding set, and the run wraps round to it rather than leaving it
+     * stranded behind the cursor. That is not the recordist reaching for Back —
+     * nobody has taken hold of anything, and a thumb may still be in flight
+     * against the automatic advance that just happened — so the auto-grace must
+     * survive it. Only the spent key is forgiven.
+     */
+    reopen(key) {
+      spent.delete(key)
+    },
+
     /** A fresh session starts with a clean sheet. */
     reset() {
       spent.clear()

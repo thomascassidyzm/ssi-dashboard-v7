@@ -258,12 +258,17 @@
       <p v-if="failedNote" class="note error">{{ failedNote }}</p>
       <p v-if="playbackError" class="note error">{{ playbackError }}</p>
 
+      <!-- The transport is dead while the editor is open, and it has to be: the
+           microphone is held, so Next would close a take of nothing and file it
+           under the line being rewritten, and Back would walk away from an
+           unsaved edit with the mic still held. The editor has its own two
+           buttons and they are the only way out of it. -->
       <div class="controls">
-        <button v-if="canGoBack" class="ctl-back" :disabled="busy" @click="onBack">Back</button>
-        <button class="ctl-again" :disabled="busy" @click="onAgain">Again</button>
-        <button class="ctl-next" :disabled="busy" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
+        <button v-if="canGoBack" class="ctl-back" :disabled="busy || !!editingId" @click="onBack">Back</button>
+        <button class="ctl-again" :disabled="busy || !!editingId" @click="onAgain">Again</button>
+        <button class="ctl-next" :disabled="busy || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
       </div>
-      <button class="btn-finish" :disabled="busy" @click="onFinish">Stop here</button>
+      <button class="btn-finish" :disabled="busy || !!editingId" @click="onFinish">Stop here</button>
       <p class="kbd-hint">
         <kbd>Space</kbd> next · <kbd>R</kbd> again<template v-if="canGoBack"> · <kbd>B</kbd> back</template>
       </p>
@@ -491,9 +496,36 @@ const startIndex = computed(() => {
   return i
 })
 
+// WHERE THE RUN GOES NEXT — and it may go BACKWARDS, which is the whole of
+// tonight's fix.
+//
+// Tom, 2026-09-02: "going back and forth threw it out of whack a bit". This
+// scan only ever looked forward, and the outstanding set is no longer something
+// that only shrinks in front of you: rewriting a line puts it back to
+// outstanding wherever it sits, a take that came out silent leaves its line
+// outstanding behind you, and the roster's one-tap "Record" drops the cursor
+// into the middle of the queue with outstanding lines above it. In every one of
+// those cases a forward-only scan reached the end of the list, said "Done", and
+// left work owed that the run could never offer again — while the roster went
+// on truthfully saying "1 still to read". Two counts, both computed from the
+// same lines, disagreeing on the screen. That is the out-of-whack.
+//
+// So when the run is reading OUTSTANDING lines only, it wraps: forward to the
+// end, then round from the top, and it stops only when there is genuinely
+// nothing left anywhere. The line we are standing on is excluded — we have just
+// read it, and a take that failed on it must not put the queue in a loop with
+// itself. Her failure note and the roster's one-tap re-record are the way back
+// to that one.
+//
+// With re-read turned ON the run is a single deliberate pass over everything,
+// so it does not wrap: there would be no end to it.
 function nextIndexFrom(i) {
   for (let k = i + 1; k < lines.value.length; k++) {
     if (includeRecorded.value || !isRecorded(lines.value[k])) return k
+  }
+  if (includeRecorded.value) return -1
+  for (let k = 0; k < i && k < lines.value.length; k++) {
+    if (!isRecorded(lines.value[k])) return k
   }
   return -1
 }
@@ -504,20 +536,26 @@ const hasNext = computed(() => nextIndexFrom(index.value) !== -1)
 const UPCOMING_SHOWN = 6
 const upcoming = computed(() => {
   const out = []
+  // The scan wraps now, so a queue with fewer outstanding lines than this list
+  // is long would otherwise show the same line twice and read as more work than
+  // is owed.
+  const seen = new Set([index.value])
   let k = index.value
   while (out.length < UPCOMING_SHOWN) {
     k = nextIndexFrom(k)
-    if (k === -1) break
+    if (k === -1 || seen.has(k)) break
+    seen.add(k)
     out.push(lines.value[k])
   }
   return out
 })
+// STILL TO READ — the same set the roster counts, and it has to be, because
+// both numbers are on the screen at once. Counting forward from the cursor made
+// them disagree the moment anything became outstanding behind it: the roster
+// said one line was owed and the stage said none were.
 const remainingToRead = computed(() => {
-  let n = 0
-  for (let k = index.value; k < lines.value.length; k++) {
-    if (includeRecorded.value || !isRecorded(lines.value[k])) n++
-  }
-  return n
+  if (includeRecorded.value) return Math.max(0, lines.value.length - index.value)
+  return lines.value.reduce((n, l) => n + (isRecorded(l) ? 0 : 1), 0)
 })
 const firstLinePreview = computed(() => {
   const l = startIndex.value === -1 ? null : lines.value[startIndex.value]
@@ -630,11 +668,15 @@ async function saveEdit(lineId, text) {
     if (lastLine.value && lastLine.value.id === lineId) lastLine.value = null
     lines.value = [...lines.value]
     editingId.value = null
+    // The mic comes back only where the editor has actually closed. Released in
+    // a `finally`, a failed save left the microphone live underneath an open
+    // rewrite box while the screen still said "mic paused" — recording her
+    // typing, and lying about it in the one place that is meant to be certain.
+    releaseMic()
   } catch (err) {
     editError.value = (err && err.message) || 'Could not save that.'
   } finally {
     editSaving.value = false
-    releaseMic()
   }
 }
 
@@ -873,6 +915,10 @@ async function onNext(source = 'tap') {
     if (n !== -1) {
       visited.value = [...visited.value, i]
       index.value = n
+      // The scan wrapped: we are landing on a line the run stepped away from
+      // earlier, and its one step forward has already been spent. Without this
+      // the queue arrives on the rewritten line and then refuses to leave it.
+      if (n <= i) advanceLock.reopen(lineKeyAt(n))
       recorder.beginLine()
     }
     pending.then(blob => commit(i, blob, hadSpeech))
@@ -997,6 +1043,15 @@ async function backToStart() {
 // ── Keyboard ────────────────────────────────────────────────────────────────
 function onKey(e) {
   if (phase.value !== 'recording' || e.repeat) return
+  // EDITING IS TYPING. Space, R and B are letters in a rewrite box long before
+  // they are controls, and this listener is on the window: with the editor open,
+  // every space Tom typed into a line was calling onNext() — advancing the
+  // queue, closing the take, and filing whatever the mic had under the line he
+  // was in the middle of rewriting. He could not type a space at all. That is
+  // the sharpest edge of "going back and forth threw it out of whack".
+  if (editingId.value) return
+  const t = e.target
+  if (t && (t.tagName === 'TEXTAREA' || t.tagName === 'INPUT' || t.isContentEditable)) return
   if (e.code === 'Space') { e.preventDefault(); onNext() }
   else if (e.key === 'r' || e.key === 'R') { e.preventDefault(); onAgain() }
   else if (e.key === 'b' || e.key === 'B') { e.preventDefault(); onBack() }
