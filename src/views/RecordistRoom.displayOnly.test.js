@@ -371,7 +371,7 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     expect(map[0].find('.sm-name').text()).toBe('POD-1')
     expect(map[0].find('.sm-count').text()).toBe('2')
     expect(map[0].find('.sm-tally').text()).toBe('1 recorded')
-    expect(map[1].find('.sm-name').text()).toBe('New sentences')
+    expect(map[1].find('.sm-name').text()).toBe('NEW SEEDS')
     expect(map[1].find('.sm-count').text()).toBe('1')
     expect(map[1].find('.sm-tally').text()).toBe('none recorded yet')
     expect(map[2].find('.sm-name').text()).toBe('Re-recording in this course')
@@ -385,11 +385,15 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     // untouched. Two pod lines (one done) plus a re-record with a take = 2.
     expect(wrapper.find('.rc-progress-line').text()).toBe('4 lines — 2 recorded, 1 of those to read again')
 
-    // POD-1 is the name Tom and the artists use out loud, so it is allowed —
-    // deliberately flipped 2026-09-02. "SEED" is still ours and still banned.
+    // POD-1 and SEEDS are both names Tom and the artists use out loud, so both
+    // are allowed. POD-1 was flipped earlier on 2026-09-02; the SEED ban went
+    // the same way later the same day, when Tom overruled the taste call that
+    // had kept it off the screen -- his words, in full: "it's SEEDS". Do not
+    // re-ban it. What is still ours and still off the screen is "kind".
     const shown = wrapper.text()
     expect(shown).toContain('POD-1')
-    expect(shown).not.toMatch(/\bSEED\b/i)
+    expect(shown).toContain('NEW SEEDS')
+    expect(shown).not.toMatch(/\bkind\b/i)
   })
 
   it('shows the character on a conversation line and the reason on a re-record', async () => {
@@ -420,7 +424,7 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
 
     const map = wrapper.findAll('.section-map-row')
     expect(map).toHaveLength(1)
-    expect(map[0].find('.sm-name').text()).toBe('New sentences')
+    expect(map[0].find('.sm-name').text()).toBe('NEW SEEDS')
   })
 
   // THE INVARIANT. A line that falls out of the map is the one failure this

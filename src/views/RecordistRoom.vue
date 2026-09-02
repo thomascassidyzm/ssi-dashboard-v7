@@ -515,8 +515,10 @@ const rosterRows = computed(() => lines.value.map(l => ({
 // of his half of a two-hander, 305 brand-new Welsh sentences, and 56 takes we
 // are asking him to give us again.
 //
-// The words are a voice artist's, not ours: "pod", "seed" and "kind" are our
-// internal vocabulary and never reach this screen. A kind with no lines in it is
+// The words are a voice artist's, not ours: "kind" is our internal vocabulary
+// and never reaches this screen. "POD" and "SEEDS" DO -- Tom's ruling of
+// 2026-09-02, "it's SEEDS" -- because those two are words he and the artists
+// already say out loud. A kind with no lines in it is
 // not shown at all — most recordists in the estate have only one or two of the
 // three, and an empty heading reading "0 lines" is a question with no answer.
 const SECTION_ORDER = [
@@ -531,7 +533,12 @@ const SECTION_ORDER = [
   // one: Tom, 2026-09-02, "these are also going to lead to many more phrases
   // that need recording of course". Said in the blurb because a recordist who
   // thinks this is the last of it will be surprised twice.
-  { key: 'seed', heading: 'New sentences', blurb: 'Course sentences nobody has recorded yet. Each one will also bring more phrases to record later on.' },
+  //
+  // NEW SEEDS IS ITS NAME, and it is Tom's own word, 2026-09-02: "it's SEEDS",
+  // overruling an earlier taste call that "seed" was internal vocabulary. His
+  // longer phrasing was "SEEDS should be 'NEW SEEDS'". The blurb below stays as
+  // it is and carries the explanation; the heading carries the name.
+  { key: 'seed', heading: 'NEW SEEDS', blurb: 'Course sentences nobody has recorded yet. Each one will also bring more phrases to record later on.' },
   // TOM'S OWN SET, 2026-09-02: "ideally I just want the minimal phrase set,
   // that I can record so we can test the dice and splice approach." The
   // smallest set of chunks that recombine into every phrase in the course. Its
