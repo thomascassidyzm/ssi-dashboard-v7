@@ -145,6 +145,20 @@
       "targetEditable": true
     },
     {
+      "slug": "cym_n_for_eng:health",
+      "name": "Health — North Welsh pair layer",
+      "category": "themed",
+      "selector": "an interest in health and care — the ward, the surgery, the appointment",
+      "status": "authored",
+      "corpus": null,
+      "format": null,
+      "targetLang": "cym_n",
+      "mapping": null,
+      "branch": null,
+      "note": "THE PAIR LAYER OF THE health WALK, NOT A SECOND WALK. Same 438 English turns, carrying the eng\u2192cym_n target line. It exists because canonical_pod_scenarios has ONE target column and NO course column, so a pair writing into the shared \u0027health\u0027 slug consumes the English canon and leaves the second pair nowhere to go; the pair layer therefore keys as <course>:<slug>, the way listening_pods already keys, and cym_s_for_eng:health is free beside it. Re-slugged from \u0027health\u0027 on 2026-09-02 \u2014 docs/pods/health-pair-slug-and-pod0-census-2026-09-02.md. Not ingestable from markdown: THE DATABASE IS CANON, as for pod-1. It declares NO walk steps \u2014 the walk is the English canon\u0027s, singular, and the Script Lab derives one from the rows. EVERY WELSH LINE IS DRAFT-FOR-ARAN: no worker signs off target-language text, nothing here renders, Welsh is human-voice only and no audio pass may be queued from it.",
+      "targetEditable": true
+    },
+    {
       "slug": "public-services",
       "name": "Public services",
       "category": "themed",
