@@ -59,7 +59,27 @@ Two comments were corrected, no behaviour attached:
 - `useTapRecorder.js`'s peak-bar block reasoned from "autoGainControl is off", which stopped being true on 22 August. **The detector itself is not broken** — its floor is measured against the room's own noise rather than chosen as an absolute, which is precisely what makes it hold across profiles. Only the sentence was stale, and the thresholds did not need retuning.
 - `useContinuousRecorder.ts` says its all-false request is "the same request the pod recorder makes". It has not been since 22 August. Left dry on purpose — its VAD is demonstrably broken by the noise suppressor, and the 24 field takes measured above say it is healthy — but the comment now names the divergence and the condition under which it would stop being safe.
 
-## Salvage
+## Salvage: nothing of Catrin's needs rescuing, because nothing of hers is quiet
+
+Tom's question was whether her clips are *quiet but clean* — a missing-gain problem normalisation can lift safely — or *quiet and noisy*, where the lift drags hiss up with the voice and re-recording is the honest answer. Neither. They are **loud and clean**, so the salvage question does not arise. Per clip, all 61:
+
+| | min | median | max |
+|---|---|---|---|
+| raw true peak | −9.8 dBFS | **−4.4 dBFS** | 0.0 dBFS |
+| raw noise floor | −89.6 dBFS | −79.4 dBFS | −46.4 dBFS |
+| raw signal-to-noise | 46.4 dB | **75.3 dB** | 85.2 dB |
+| mastered, integrated | −20.1 LUFS | **−16.3 LUFS** | −14.7 LUFS |
+| mastered noise floor | −84.1 dBFS | −71.8 dBFS | −33.9 dBFS |
+
+**Not one of her 61 takes is below −12 dBFS raw peak**, and her quietest is −9.8. For comparison the dry desktop takes tonight sat at −18.9 and the dry iPhone takes in August at −28.5. Her median SNR of 75 dB is what Tom expected from a Blue Snowball and is what she got — the Snowball's modest output level did not compound with anything, because there was nothing to compound with. Only two takes fall under 50 dB SNR and both are superseded, i.e. she retook them herself on the night.
+
+**And she was never carrying the stale key.** All 61 of her provenance rows read `capture:voice`. Aran's rig had the correct profile on 23 August and still does, which is the one thing that could have made this an evening's lost work and did not.
+
+**Verdict: yes, they are keepable as they stand — no normalisation pass, no re-record, no action at all.**
+
+One small thing worth a follow-up, unrelated to capture: **five of her takes master out 3–4 LUFS under target** (−18.8 to −20.1 LUFS) from raw peaks of −4 to 0 dBFS, so the shortfall is on the mastering side, not the microphone. The raw is retained for all of them, so they can be re-mastered make-before-break whenever someone is in that code — it is a polish item, not a defect a learner would notice against neighbours at −16.3.
+
+## Salvage, everything else
 
 Nothing learner-facing needs it. Catrin's and Aran's Welsh takes are at target. The only quiet clips in existence are 13 of Tom's own in `zzz_test2_for_eng` and `zzz_test_for_eng`: the 7 from tonight are already at −16.6 LUFS and only carry a raised floor, and the 6 from August sit at −26.2 LUFS and would need another +10 dB, which would put their floor around −45 dBFS and be audible. Both sets are test fixtures. **Re-record them; do not re-master anything.**
 
