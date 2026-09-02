@@ -183,6 +183,37 @@ block.
 `src/lib/servingPod.visibility.test.js`, five `services/voice-engine/__tests__/pods-*`), 14 in
 `tools/`, plus the fixture `src/views/admin/__fixtures__/eng_for_guj-cast.json`.
 
+### The learning app — already resolver-based, and it is the good news
+
+`../ssi-learning-app` reads Supabase directly, so a slug rename reaches learners through it. It
+was censused read-only (worker **#76**, and independently re-grepped here). **Only two functional
+sites exist; everything else is comment:**
+
+- `packages/player-vue/src/composables/servedPod.ts:41,44` — `SERVING_POD_SLUGS = ['pod-1', 'pod-0']`
+  and `FALLBACK_POD_SLUG = 'pod-0'`. Its own header records the history: five player read paths
+  (`useListeningPods.ts`, `listeningMetaCache.ts`, `usePodLapScheduler.ts`,
+  `generateLearningScript.ts`, `usePodStage0.ts`) used to hardcode `<course>:pod-0` each; since
+  Tom's 2026-08-22 ruling they share **one resolver**, and every unknown resolves to `pod-0` rather
+  than rejecting.
+- `api/courses/[code]/bundle.ts:412` — `.in('slug', ['pod-1', 'pod-0'])`, with the comment naming
+  `servedPod.ts` as the source of truth.
+
+**6 test files** assert on the literal (`servedPod.test.ts`, `bundle.test.ts`,
+`listeningMetaCache.test.ts`, `usePodLapScheduler.test.ts`, `ListeningOverlay.podScene.test.ts`,
+`revisedAudioRefs.lanes.test.ts`).
+
+**And it writes learner progress against the slug.**
+`packages/core/src/persistence/PodStateStore.ts` upserts `learner_pod_state` on
+`(learner_id, course_code, sentence_id)` — and `sentence_id` is `<course>:<slug>:<tail>`. So a slug
+rename in `listening_pod_sentences` without a matched progress migration does two things at once:
+it orphans the 269 existing rows, and the app immediately starts writing fresh zero-count rows
+under the new key. That is the failure `pod-switchover.cjs` already prevents by doing both in one
+transaction.
+
+The delivery side is therefore **already migration-ready**: the only thing a completed cutover
+would let anyone delete is the `pod-0` fallback constant, and that can only go once every course
+is across.
+
 ### Docs — a count and a shape, because that is the useful answer
 
 218 files, 11,427 occurrences. **Six JSON files carry 9,130 of them (80%)** — spent run logs, led by
