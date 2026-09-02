@@ -8,13 +8,7 @@
     </div>
 
     <header class="hub-header">
-      <nav class="admin-crumbs">
-        <router-link to="/" class="crumb-link">Home</router-link>
-        <span class="crumb-sep">/</span>
-        <router-link to="/admin" class="crumb-link">Admin</router-link>
-        <span class="crumb-sep">/</span>
-        <span class="crumb-here">Labs</span>
-      </nav>
+      <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Admin', to: '/admin' }, { label: 'Labs' }]" />
       <div class="header-titles">
         <div>
           <h1 class="page-title">Labs</h1>
@@ -111,6 +105,7 @@
  * claim is checkable rather than merely asserted.
  */
 import { BLAST_ORDER, BLAST_RADIUS, LAB_BLAST_RADIUS } from '@/components/admin/blastRadius'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 
 const LABS = [
   {
@@ -186,12 +181,9 @@ const groups = BLAST_ORDER
 <style scoped>
 @import '../hub.css';
 
-.admin-crumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; margin-bottom: 0.75rem; }
-.admin-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; }
-.admin-crumbs .crumb-link:hover { color: #6ee7b7; }
-.admin-crumbs .crumb-sep { color: var(--surface-3); }
-.admin-crumbs .crumb-here { color: var(--muted); }
-[data-theme="light"] .admin-crumbs .crumb-link:hover { color: var(--accent-2); }
+/* Labs Index widens beyond hub.css's shared 1400px cap; the card grid itself
+   is untouched, it just has more room to breathe on a wide screen. */
+.hub-main { max-width: none; }
 
 .section-detail {
   margin: -0.25rem 0 1rem;

@@ -1,21 +1,15 @@
 <template>
   <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
-    <div class="max-w-5xl mx-auto">
-      <div class="flex items-center gap-3 mb-4 text-sm">
-        <router-link to="/" class="text-muted hover:text-ink underline underline-offset-2">Home</router-link>
-        <span class="text-faint">/</span>
-        <router-link to="/canonical/scripts" class="text-muted hover:text-ink underline underline-offset-2">Script Lab</router-link>
-        <span class="text-faint">/</span>
-        <span class="text-muted">Metagraph</span>
-      </div>
+    <div class="mx-auto">
+      <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Script Lab', to: '/canonical/scripts' }, { label: 'Metagraph' }]" />
 
       <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">The metagraph</h1>
-      <p class="text-muted text-sm mb-1">
+      <p class="text-muted text-sm mb-1 max-w-4xl">
         Every shape a conversation can take — <strong>{{ graph.nodes.length }} of them</strong>, drawn from the pods we have written,
         and joined by which shape happens inside which.
         <strong class="text-ink">A pod is a walk through this graph.</strong>
       </p>
-      <p class="text-faint text-xs mb-5">
+      <p class="text-faint text-xs mb-5 max-w-4xl">
         Lay a pod over it and the shapes its script reaches stay solid; the ones it never reaches go dashed and dim.
         Tap any shape to see the pod's own lines that walk it. Nothing here can be edited — editing lives in the Script Lab.
       </p>
@@ -224,6 +218,7 @@
 
 <script setup>
 import { ref, computed, nextTick, onMounted } from 'vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph } from '@/lib/metagraph/loadGraph.js'

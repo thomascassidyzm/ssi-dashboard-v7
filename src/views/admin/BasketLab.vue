@@ -25,6 +25,7 @@
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 
@@ -98,15 +99,7 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
 <template>
   <div class="basket-lab">
     <header class="bl-header">
-      <nav class="admin-crumbs">
-        <router-link to="/" class="crumb-link">Home</router-link>
-        <span class="crumb-sep">/</span>
-        <router-link to="/admin" class="crumb-link">Admin</router-link>
-        <span class="crumb-sep">/</span>
-        <router-link to="/admin/labs" class="crumb-link">Labs</router-link>
-        <span class="crumb-sep">/</span>
-        <span class="crumb-here">Basket Lab</span>
-      </nav>
+      <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Admin', to: '/admin' }, { label: 'Labs', to: '/admin/labs' }, { label: 'Basket Lab' }]" />
       <h1 class="page-title">Basket Lab</h1>
       <p class="page-subtitle">
         One LEGO's phrases, live in the course today beside a generated candidate set, both scored
@@ -170,13 +163,7 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
    mode follows for free. No fallback hexes — `var(--text, #e5e7eb)` used to
    sit here, and since --text is not a token in this codebase the page title
    rendered near-white on the light canvas, i.e. invisible. */
-.basket-lab { max-width: 1400px; margin: 0 auto; padding: 1.5rem; color: var(--ink); }
-.admin-crumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; margin-bottom: 0.75rem; }
-.admin-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; }
-.admin-crumbs .crumb-link:hover { color: #6ee7b7; }
-.admin-crumbs .crumb-sep { color: var(--surface-3); }
-.admin-crumbs .crumb-here { color: var(--muted); }
-[data-theme="light"] .admin-crumbs .crumb-link:hover { color: var(--accent-2); }
+.basket-lab { max-width: none; margin: 0 auto; padding: 1.5rem; color: var(--ink); }
 
 .page-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 0.25rem; line-height: 1.2; }
 .page-subtitle { font-size: 0.9375rem; color: var(--muted); margin: 0 0 1.25rem; max-width: 70ch; }

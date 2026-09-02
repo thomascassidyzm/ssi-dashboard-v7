@@ -19,6 +19,7 @@
 -->
 <template>
   <div class="cab">
+    <LabCrumbs :trail="[{ label: 'Labs', to: '/admin/labs' }, { label: 'Capture A/B' }]" />
     <h1>Capture A/B</h1>
     <p class="lede">
       Read the same sentence twice, the same way, at the same distance. The only
@@ -90,6 +91,7 @@
 
 <script setup>
 import { ref, computed, onBeforeUnmount } from 'vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import { CAPTURE_PROFILES, CAPTURE_BITRATE } from '../../composables/useTapRecorder'
 
 const profileNames = Object.keys(CAPTURE_PROFILES)

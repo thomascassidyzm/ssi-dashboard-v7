@@ -28,6 +28,7 @@
  * every study clip is a course_audio row, so nothing is copied anywhere.
  */
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import VadContour from './VadContour.vue'
 import { languageName } from '@/utils/languageNames'
 import { dirFor } from '@/utils/textDirection.js'
@@ -769,12 +770,7 @@ function openRecordTab() {
 
 <template>
   <div class="vadlab">
-    <nav class="admin-crumbs">
-      <router-link to="/">Home</router-link><span class="sep">/</span>
-      <router-link to="/admin">Admin</router-link><span class="sep">/</span>
-      <router-link to="/admin/labs">Labs</router-link><span class="sep">/</span>
-      <span class="cur">VAD Lab</span>
-    </nav>
+    <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Admin', to: '/admin' }, { label: 'Labs', to: '/admin/labs' }, { label: 'VAD Lab' }]" />
 
     <header class="lab-head">
       <h1>VAD Lab — prosody made audible</h1>
@@ -1314,16 +1310,11 @@ function openRecordTab() {
 .pr-text { text-align: left; }
 
 .vadlab {
-  max-width: 1180px;
+  max-width: none;
   margin: 0 auto;
   padding: 20px 22px 60px;
   color: var(--color-paper, var(--ink));
 }
-.admin-crumbs { font-size: 0.8125rem; margin-bottom: 10px; }
-.admin-crumbs a { color: var(--accent-2); text-decoration: none; }
-.admin-crumbs a:hover { color: #6ee7b7; }
-.admin-crumbs .sep { margin: 0 6px; color: var(--surface-3); }
-.admin-crumbs .cur { color: var(--muted); }
 .lab-head h1 { margin: 0 0 6px; font-size: 1.25rem; letter-spacing: -0.01em; }
 .lab-head .sub { margin: 0 0 14px; max-width: 820px; color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
 code { background: var(--surface-2); padding: 1px 5px; border-radius: 4px; font-size: 0.9em; font-family: var(--font-mono, ui-monospace, Menlo, monospace); }

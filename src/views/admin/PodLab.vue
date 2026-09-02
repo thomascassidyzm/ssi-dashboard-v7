@@ -30,6 +30,7 @@
  */
 import { ref, computed, reactive, watch } from 'vue'
 import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import CoursePicker from '../../components/CoursePicker.vue'
 import ConsentStep from './voicelab/ConsentStep.vue'
 // Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
@@ -2343,11 +2344,7 @@ loadLiveConfig()
 
 <template>
   <div class="podlab">
-    <nav class="admin-crumbs">
-      <router-link to="/admin/labs">Labs</router-link>
-      <span class="sep">/</span>
-      <span class="cur">Pod Lab</span>
-    </nav>
+    <LabCrumbs :trail="[{ label: 'Labs', to: '/admin/labs' }, { label: 'Pod Lab' }]" />
 
     <header class="lab-head">
       <h1>Pod Lab</h1>
@@ -3003,28 +3000,10 @@ loadLiveConfig()
 .podlab > :deep(.blast-banner) { margin-bottom: 1rem; }
 
 .podlab {
-  max-width: 1180px;
+  max-width: none;
   margin: 0 auto;
   padding: 20px 22px 60px;
   color: var(--color-paper, var(--ink));
-}
-.admin-crumbs {
-  font-size: 0.8125rem;
-  margin-bottom: 10px;
-}
-.admin-crumbs a {
-  color: var(--accent-2);
-  text-decoration: none;
-}
-.admin-crumbs a:hover {
-  color: #6ee7b7;
-}
-.admin-crumbs .sep {
-  margin: 0 6px;
-  color: var(--surface-3);
-}
-.admin-crumbs .cur {
-  color: var(--muted);
 }
 .lab-head h1 {
   margin: 0 0 6px;

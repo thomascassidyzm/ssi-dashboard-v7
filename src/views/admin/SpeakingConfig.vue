@@ -1,13 +1,7 @@
 <template>
   <div class="speaking-admin">
     <header class="admin-header">
-      <nav class="admin-crumbs">
-        <router-link to="/" class="crumb-link">Home</router-link>
-        <span class="crumb-sep">/</span>
-        <router-link to="/admin/labs" class="crumb-link">Labs</router-link>
-        <span class="crumb-sep">/</span>
-        <span class="crumb-here">Speaking</span>
-      </nav>
+      <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Labs', to: '/admin/labs' }, { label: 'Speaking' }]" />
       <div class="admin-head-main">
         <div class="admin-head-titles">
           <h1>Speaking</h1>
@@ -354,6 +348,7 @@
 
 <script setup>
 import { ref, computed, onMounted } from 'vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import { useAuth } from '../../composables/useAuth'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './algorithmConfigShared'
 import { computePauseDuration, MS_PER_SYLLABLE, SYLLABLE_BUCKETS, DEFAULT_PAUSE_K, DEFAULT_PAUSE_REACTION_MS } from './pauseModel'
@@ -698,7 +693,7 @@ onMounted(loadAll)
 <style scoped>
 .speaking-admin {
   padding: 1.5rem;
-  max-width: 1100px;
+  max-width: none;
   margin: 0 auto;
   color: var(--color-paper, var(--ink));
 }
@@ -709,11 +704,6 @@ onMounted(loadAll)
   flex-direction: column;
   gap: 0.6rem;
 }
-.admin-crumbs { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8125rem; }
-.admin-crumbs .crumb-link { color: var(--accent-2); text-decoration: none; }
-.admin-crumbs .crumb-link:hover { color: #6ee7b7; }
-.admin-crumbs .crumb-sep { color: var(--surface-3); }
-.admin-crumbs .crumb-here { color: var(--muted); }
 .admin-head-main { display: flex; align-items: flex-start; gap: 1rem; }
 .admin-head-titles { flex: 1; min-width: 0; }
 h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }

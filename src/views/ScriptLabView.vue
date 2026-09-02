@@ -1,16 +1,10 @@
 <template>
   <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
-    <div class="max-w-4xl mx-auto">
-      <div class="flex items-center gap-2 mb-4 text-sm flex-wrap">
-        <router-link to="/" class="text-muted hover:text-ink underline underline-offset-2">Home</router-link>
-        <span class="text-faint">/</span>
-        <router-link to="/admin/labs" class="text-muted hover:text-ink underline underline-offset-2">Labs</router-link>
-        <span class="text-faint">/</span>
-        <span class="text-muted">Script Lab</span>
-      </div>
+    <div class="mx-auto">
+      <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Labs', to: '/admin/labs' }, { label: 'Script Lab' }]" />
 
       <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">Script Lab</h1>
-      <p class="text-muted text-sm mb-4">
+      <p class="text-muted text-sm mb-4 max-w-4xl">
         Every walk in the estate, in one place. A walk is a script read as a path over the shape
         metagraph; the read-out beside each one is the coverage that path achieves.
       </p>
@@ -24,7 +18,7 @@
       <!-- THE OBJECT. Conflating these two cost a worker a whole run: the
            canonical seed is one set, identical by definition; a course's known
            English is derived from it and legitimately differs per pair. -->
-      <div class="object-box border rounded-lg p-4 mb-5 text-sm">
+      <div class="object-box border rounded-lg p-4 mb-5 text-sm max-w-4xl">
         <p class="font-semibold text-ink mb-1">You are editing the canonical English master. You are not editing any course's known text.</p>
         <p class="text-muted leading-relaxed">
           These two are different objects. One canonical set exists, identical by definition.
@@ -45,7 +39,7 @@
         </router-link>
       </div>
 
-      <div class="text-xs text-faint mb-6 border border-line rounded px-3 py-2 bg-surface leading-relaxed space-y-1.5">
+      <div class="text-xs text-faint mb-6 border border-line rounded px-3 py-2 bg-surface leading-relaxed space-y-1.5 max-w-4xl">
         <p>
           <strong class="text-muted">Audio is not a property of this layer.</strong>
           The canonical store has no audio column and nothing points at one, so for every walk on this page
@@ -71,7 +65,7 @@
         </p>
       </div>
 
-      <p v-if="stale" class="text-muted text-xs mb-4 border border-line rounded px-3 py-2 bg-surface">
+      <p v-if="stale" class="text-muted text-xs mb-4 border border-line rounded px-3 py-2 bg-surface max-w-4xl">
         This API has not been restarted onto the script index yet, so the database column below is empty.
         The registry still lists every walk, and each script page works.
       </p>
@@ -140,6 +134,7 @@
  * the `scripts` entry.
  */
 import { ref, computed, onMounted } from 'vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { loadGraph } from '@/lib/metagraph/loadGraph.js'

@@ -43,6 +43,7 @@
  */
 import { ref, computed } from 'vue'
 import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import { probe, labBase, useCloudBackend } from './voicelab/labApi'
 import LanguagesPanel from './voicelab/LanguagesPanel.vue'
 import PlayPanel from './voicelab/PlayPanel.vue'
@@ -124,11 +125,7 @@ const showB = ref(false)
 <template>
   <div class="lab">
     <header class="lab-header">
-      <nav class="admin-crumbs">
-        <router-link to="/admin/labs" class="crumb-link">Labs</router-link>
-        <span class="crumb-sep">/</span>
-        <span class="crumb-here">Voice Lab</span>
-      </nav>
+      <LabCrumbs :trail="[{ label: 'Labs', to: '/admin/labs' }, { label: 'Voice Lab' }]" />
       <div class="title-row">
         <h1 class="page-title">Voice Lab</h1>
         <div class="mode-switch">
@@ -232,10 +229,7 @@ const showB = ref(false)
 
 @import './voicelab/lab.css';
 
-.lab { padding: 1.5rem 2rem 4rem; max-width: 1400px; margin: 0 auto; }
-.admin-crumbs { display: flex; gap: 0.5rem; font-size: 0.8125rem; margin-bottom: 0.5rem; }
-.crumb-link { color: var(--accent-2); text-decoration: none; }
-.crumb-sep, .crumb-here { color: var(--muted); }
+.lab { padding: 1.5rem 2rem 4rem; max-width: none; margin: 0 auto; }
 .page-title { font-size: 1.75rem; margin: 0 0 0.25rem; letter-spacing: 0.04em; }
 .title-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
 .mode-switch { display: flex; border: 1px solid var(--surface-3); border-radius: 999px; overflow: hidden; }

@@ -1,19 +1,13 @@
 <template>
   <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
-    <div class="mx-auto" :class="overlayColumns.length ? 'max-w-[1400px]' : 'max-w-4xl'">
-      <div class="flex items-center gap-3 mb-4 text-sm">
-        <router-link to="/" class="text-muted hover:text-ink underline underline-offset-2">Home</router-link>
-        <span class="text-faint">/</span>
-        <router-link to="/canonical/scripts" class="text-muted hover:text-ink underline underline-offset-2">Script Lab</router-link>
-        <span class="text-faint">/</span>
-        <span class="text-muted">{{ slug }}</span>
-      </div>
+    <div class="mx-auto">
+      <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Script Lab', to: '/canonical/scripts' }, { label: slug }]" />
 
       <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">{{ title }}</h1>
-      <p class="text-muted text-sm mb-1">
+      <p class="text-muted text-sm mb-1 max-w-4xl">
         The whole script, scene by scene, with no course loaded — and what it does to the graph.
       </p>
-      <p class="text-muted text-xs mb-4">
+      <p class="text-muted text-xs mb-4 max-w-4xl">
         Edits change the language-neutral English master every course flexes from. They change no generated pod.
       </p>
 
@@ -365,6 +359,7 @@
 
 <script setup>
 import { ref, reactive, computed, onMounted, onBeforeUnmount, nextTick } from 'vue'
+import LabCrumbs from '@/components/LabCrumbs.vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
