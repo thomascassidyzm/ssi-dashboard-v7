@@ -198,6 +198,13 @@
             :class="['seg', 'seg-' + seg.kind]"
           >{{ seg.text }}</span>
         </p>
+        <!-- WHAT KIND OF LINE THIS IS, in words, and only when it is not the
+             ordinary case. A seed sentence reads exactly like a pod line and
+             files somewhere completely different, so the line has to say so
+             itself. No badge, no tick, no colour -- the booth's rule is that
+             state is drawn, not annotated, and this is not state, it is what
+             the thing IS. -->
+        <p v-if="lineKindWords" class="line-kind">{{ lineKindWords }}</p>
         <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
         <p v-if="current?.rerecordReason" class="line-why">{{ current.rerecordReason }}</p>
       </div>
@@ -441,6 +448,19 @@ const rosterRows = computed(() => lines.value.map(l => ({
 })))
 
 const current = computed(() => lines.value[index.value] || null)
+
+// A seed sentence is the sentence a course is built from, and its take lands in
+// course_seeds' own audio slot rather than in a pod. On a TEST FIXTURE course
+// the KNOWN (English) side is recordable too, and then two lines carry the same
+// words in different languages -- so which side this one is has to be said out
+// loud or they are indistinguishable.
+const lineKindWords = computed(() => {
+  const l = current.value
+  if (!l || l.kind !== 'seed') return null
+  const which = l.role === 'known' ? 'English side' : (l.role === 'target2' ? 'second voice' : null)
+  const number = l.seedNumber ? `Seed sentence ${l.seedNumber}` : 'Seed sentence'
+  return which ? `${number} - ${which}` : number
+})
 
 /**
  * Split a line into readable segments.
@@ -1279,6 +1299,13 @@ kbd {
 .line-target {
   margin: 0; font-size: 2.1rem; line-height: 1.3; font-weight: 500;
   color: var(--color-paper, #f7f7f2);
+}
+.line-kind {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  opacity: 0.5;
 }
 .line-known {
   margin: 1rem 0 0; font-size: 1rem; line-height: 1.5;
