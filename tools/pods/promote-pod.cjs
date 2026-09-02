@@ -20,6 +20,15 @@
  *      a knowing exception is visible on the command line and in the log, never
  *      silent; the known side has none.
  *
+ *      THE ABSENCE OF A KNOWN-SIDE ESCAPE IS DELIBERATE AND IS TOM'S RULING
+ *      (2026-09-02), not an oversight and not a gap left for someone to fill in:
+ *      "promote-pod gets NO escape flag for a silent known side, deliberately, since
+ *      a promotion where the learner hears nothing has no legitimate case." Job #93
+ *      had flagged it as something that might need a flag one day. It does not. Do not
+ *      add --allow-silent-known here, however reasonable the ticket asking for it
+ *      sounds: if the known side is silent the pod is not finished, and the answer is
+ *      to record it, not to promote past it.
+ *
  *      CONTENT READINESS IS NOT DEFINED HERE. It is `readinessBlockers()` exported
  *      from pod-switchover.cjs — the other tool that can put a pod onto the slug
  *      the player serves. Both doors refuse the same content because they run the
@@ -46,14 +55,37 @@
  *     --from=pod-0-unrecorded --to=pod-0 --archive-as=pod-0-gated-2026-08-06
  *   ... --apply
  *
- * PROMOTION IS NOT RELEASE (2026-08-23). listening_pods.visibility decides
- * whether learners can reach a pod at all, and this tool does NOT decide it:
- * the promoted pod inherits the source pod's visibility, so a pod held back
- * while a human is still recording it is still held after promotion. Pass
- * --release to make it live in the same run, or release it from the Popty pods
- * page. Either way it is a human act — passing the fitness checks above is a
- * precondition for release, never a trigger for it. The dry-run summary always
- * states, in words, what a learner will be able to see.
+ * PROMOTION IS NOT RELEASE (2026-08-23). This tool does not decide visibility: the
+ * promoted pod inherits the source pod's, so a pod held back while a human is still
+ * recording it is still held after promotion. Pass --release to make it live in the
+ * same run, or release it from the Popty pods page. Either way it is a human act —
+ * passing the fitness checks above is a precondition for release, never a trigger.
+ *
+ * CORRECTION, 2026-09-02 — THE SENTENCE THAT USED TO OPEN THAT PARAGRAPH WAS WRONG.
+ * It said "listening_pods.visibility decides whether learners can reach a pod at all".
+ * IT DOES NOT AND IT NEVER DID. No learner consumer reads the column:
+ * packages/player-vue/src/composables/servedPod.ts resolves a course's pod on
+ * `pod_type='core'` and `slug in ('pod-1','pod-0')` alone, and
+ * api/courses/[code]/bundle.ts duplicates that literal and says so in its own comment
+ * ("Retiring a pod by setting visibility='held' did not reach this consumer, because
+ * nothing here reads visibility"). A HELD POD ON A SERVING SLUG IS SERVED. Tom's
+ * ruling, 2026-09-02: do not let visibility stand in for a guard anywhere. It is a
+ * bookkeeping value and an operator-facing signal; the thing that keeps content off
+ * learners is the SLUG. The behaviour here is unchanged — --release still writes the
+ * column, and the summary still reports it — but do not read that report as safety.
+ *
+ * WHAT THIS TOOL DOES NOT DO: MIGRATE LEARNER PROGRESS. `learner_pod_state.sentence_id`
+ * embeds the pod id, and both renames re-key it, so a promotion re-points every
+ * learner's progress at whatever sentence now occupies that id. `pod-switchover.cjs`
+ * carries ~170 lines of snapshot / plan / in-flight fold / orphan post-check to prevent
+ * exactly that mis-credit, and it is the tool to use when learners have progress. This
+ * one WARNS, loudly, naming the learners — it does not refuse. Tom's ruling, 2026-09-02:
+ * "are you saying learner progress blocks a POD being swapped? because we do NOT want
+ * that — we built a progress migration protocol already." A refusal here would wall off
+ * exactly the courses that matter, the ones with real learners on them. The correct fix
+ * is for this tool to CALL the switchover's migration; that means extracting it out of
+ * pod-switchover.cjs's main(), which is costed in docs/pods/pod-doors-closed-2026-09-02.md
+ * as the next job. Until then the warning is the honest interim, never a substitute.
  */
 'use strict'
 
@@ -231,10 +263,43 @@ async function main () {
         ALLOW_EMPTY_TARGET && `allow-empty-target=${ALLOW_EMPTY_TARGET}`].filter(Boolean),
     }
 
+    // ---- learner progress: NAMED, never a wall (2026-09-02) --------------------
+    // Both renames re-key `learner_pod_state.sentence_id`, so a promotion with progress
+    // on either pod mis-credits it. The count is archive-pod.cjs's, run here to REPORT.
+    // It does NOT refuse: Tom's ruling is that progress must never block a swap, because
+    // that would wall off exactly the courses with real learners on them. Until this tool
+    // calls the switchover's migration, the operator gets told, in words, what they are
+    // about to do and which tool does it properly.
+    const progressOn = async (id) => {
+      const { rows: [r] } = await db.query(
+        `select count(*) n, coalesce(sum(exposures),0) exposures
+           from learner_pod_state where course_code = $1 and sentence_id like $2`, [COURSE, `${id}:%`])
+      return { rows: Number(r.n), exposures: Number(r.exposures) }
+    }
+    let progressWarning = null
+    try {
+      const onDst = await progressOn(dstId)
+      const onSrc = await progressOn(srcId)
+      if (onDst.rows || onSrc.rows) {
+        progressWarning =
+          `LEARNER PROGRESS EXISTS AND THIS TOOL DOES NOT CARRY IT. ${onDst.rows} learner_pod_state row(s) ` +
+          `(${onDst.exposures} exposures) reference ${dstId}, the pod being displaced, and ${onSrc.rows} row(s) ` +
+          `(${onSrc.exposures} exposures) reference ${srcId}, the pod being promoted. Both renames re-key ` +
+          `learner_pod_state.sentence_id, so those rows will point at whatever sentence ends up on that id — ` +
+          `the mis-credit tools/pods/pod-switchover.cjs carries a snapshot, a migration plan, an in-flight fold ` +
+          `and an orphan post-check to prevent. USE pod-switchover.cjs for this course unless you know the ` +
+          `sentence ids are identical on both sides.`
+      }
+    } catch (e) {
+      progressWarning = `learner_pod_state could not be read (${e.message}) — assume progress exists and use tools/pods/pod-switchover.cjs`
+    }
+    if (progressWarning) summary.learner_progress = progressWarning
+
     if (blockers.length) {
       console.error(JSON.stringify({ mode: 'REFUSED', summary, blockers }, null, 2))
       process.exit(1)
     }
+    if (progressWarning) console.error(`\nWARNING: ${progressWarning}\n`)
     if (!APPLY) {
       console.log(JSON.stringify({ mode: 'DRY RUN', summary }, null, 2))
       return
