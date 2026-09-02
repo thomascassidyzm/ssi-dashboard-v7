@@ -47,6 +47,10 @@ vi.mock('@/composables/useTapRecorder', () => ({
     lineHasSpeech: ref(true), quietMs: ref(0), meterTrusted: ref(true),
     inputPeak: ref(0.4), roomTone: ref(0.001),
     listDevices: vi.fn(), start: vi.fn().mockResolvedValue(undefined),
+    // The settling period at a cold start. Already satisfied here: these tests
+    // are about what the well shows, not about when it shows it.
+    awaitLeadIn: vi.fn().mockResolvedValue(1200),
+    activeAgeMs: () => 1200,
     beginLine: (recorderSpies.beginLine ||= vi.fn()),
     // A blob comfortably over the 1200-byte silence floor.
     endLine: vi.fn(() => Promise.resolve(new Blob([new Uint8Array(4096)], { type: 'audio/webm' }))),

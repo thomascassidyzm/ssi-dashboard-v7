@@ -168,6 +168,12 @@
     <!-- ── Recording: ONE line, big ───────────────────────────────────────── -->
     <section v-else-if="phase === 'recording'" class="stage">
       <div class="stage-top">
+        <!-- ON AIR. A status light, not ceremony (Tom, 2026-09-02): the mic is
+             open before the line appears, so something has to say so while
+             there is nothing to read. It arms, then settles to live at the
+             instant the line is revealed — the transition itself is the go
+             signal, and there is no counting down at anybody. -->
+        <span class="onair" :class="{ arming }">{{ arming ? 'Getting ready' : 'On air' }}</span>
         <div class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
           <!-- Flat while the mic is held. A bar still twitching to the playback
                coming out of the speaker is the screen telling the recordist it
@@ -213,6 +219,16 @@
             {{ editSaving ? 'Saving…' : 'Save and read it' }}
           </button>
         </div>
+      </div>
+
+      <!-- THE LINE IS HELD BACK WHILE THE RECORDER FILLS.
+           The first take of a session is the one clip with no standby to
+           promote (see COLD_START_SETTLE_MS in useTapRecorder). If the line
+           were on screen the instant the mic opened, she would read it into a
+           recorder that is nought ms old and the trim would have nothing to
+           spend. So the mic opens first and the line follows. -->
+      <div v-else-if="arming" class="line-well arming-well">
+        <p class="arming-words">Getting ready…</p>
       </div>
 
       <div v-else class="line-well">
@@ -300,11 +316,11 @@
            unsaved edit with the mic still held. The editor has its own two
            buttons and they are the only way out of it. -->
       <div class="controls">
-        <button v-if="canGoBack" class="ctl-back" :disabled="busy || !!editingId" @click="onBack">Back</button>
-        <button class="ctl-again" :disabled="busy || !!editingId" @click="onAgain">Again</button>
-        <button class="ctl-next" :disabled="busy || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
+        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || !!editingId" @click="onBack">Back</button>
+        <button class="ctl-again" :disabled="busy || arming || !!editingId" @click="onAgain">Again</button>
+        <button class="ctl-next" :disabled="busy || arming || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
       </div>
-      <button class="btn-finish" :disabled="busy || !!editingId" @click="onFinish">Stop here</button>
+      <button class="btn-finish" :disabled="busy || arming || !!editingId" @click="onFinish">Stop here</button>
       <p class="kbd-hint">
         <kbd>Space</kbd> next · <kbd>R</kbd> again<template v-if="canGoBack"> · <kbd>B</kbd> back</template>
       </p>
@@ -733,6 +749,9 @@ let audioEl = null
 // playback ends, so the two states are mutually exclusive in fact, not just in
 // the wording.
 const micHeld = ref(false)
+// The settling period at a cold start: the mic is open and capturing, the line
+// is not yet on screen, and the transport is inert. See COLD_START_SETTLE_MS.
+const arming = ref(false)
 
 // What is happening, in words a person reads without thinking. Playback and
 // editing both hold the mic, so whichever of the three is true is the only one
@@ -745,6 +764,7 @@ const activityState = computed(() => {
     return { cls: 'is-editing', words: phase.value === 'recording' ? 'Editing the line — mic paused' : 'Editing the line' }
   }
   if (playingId.value) return { cls: 'is-playing', words: 'Playing back your take' }
+  if (arming.value) return { cls: 'is-arming', words: 'Getting ready — the mic is already open' }
   if (phase.value === 'recording') return { cls: 'is-recording', words: 'Recording — read the line aloud' }
   return { cls: 'is-idle', words: 'Not recording' }
 })
@@ -944,6 +964,27 @@ async function begin() {
   advanceLock.reset()
   index.value = startIndex.value
   phase.value = 'recording'
+  await settleThenReveal()
+}
+
+// OPEN THE MIC, THEN SHOW THE LINE (Tom's ruling, 2026-09-02).
+//
+// The recorder has been running since recorder.start() returned; this holds the
+// line off the screen until it has captured enough room tone for the trim to
+// take its margin out of, and only then reveals it. The reveal is the go
+// signal.
+//
+// It costs nothing where nothing is owed: awaitLeadIn() settles at once when
+// the active recorder is already old enough, which is every boundary inside a
+// session, where #104's standby has been running through the quiet. Only a cold
+// start — a session opening, or one line re-opened from the done screen —
+// actually waits, and only for as long as it is short by.
+async function settleThenReveal() {
+  arming.value = true
+  try {
+    await recorder.awaitLeadIn()
+  } catch { /* a dead recorder shows itself elsewhere; never trap her here */ }
+  arming.value = false
   recorder.beginLine()
 }
 
@@ -1046,7 +1087,7 @@ function speechVerdict() {
 }
 
 async function onNext(source = 'tap') {
-  if (phase.value !== 'recording' || busy.value || !debounced()) return
+  if (phase.value !== 'recording' || arming.value || busy.value || !debounced()) return
   // Tapping a control while a take is playing means "enough listening". Stop it
   // and give the line back to the mic before anything is filed, so the playback
   // never lands inside the take this call is about to close.
@@ -1131,7 +1172,7 @@ watch(() => recorder.quietMs.value, (ms) => {
   // The gapped read opts OUT of silence detection entirely, whatever the
   // checkbox says: its silences are data, not the end of anything.
   if (isGappedLine.value) return
-  if (!autoAdvance.value || phase.value !== 'recording' || busy.value) return
+  if (!autoAdvance.value || phase.value !== 'recording' || arming.value || busy.value) return
   // A held mic is not listening to anybody. Without this, the recordist's own
   // take coming out of the phone speaker would advance the queue for them.
   if (micHeld.value || playingId.value) return
@@ -1145,7 +1186,7 @@ watch(() => recorder.quietMs.value, (ms) => {
 })
 
 async function onAgain() {
-  if (phase.value !== 'recording' || busy.value || !debounced()) return
+  if (phase.value !== 'recording' || arming.value || busy.value || !debounced()) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
@@ -1171,7 +1212,7 @@ async function onAgain() {
 // drops its stored clip until the new one lands, and commit() no longer counts
 // the re-read as a second line.
 async function onBack() {
-  if (phase.value !== 'recording' || busy.value || !visited.value.length || !backDebounced()) return
+  if (phase.value !== 'recording' || arming.value || busy.value || !visited.value.length || !backDebounced()) return
   busy.value = true
   try {
     await recorder.discardLine()
@@ -1190,7 +1231,7 @@ async function onBack() {
 }
 
 async function onFinish() {
-  if (phase.value !== 'recording' || busy.value) return
+  if (phase.value !== 'recording' || arming.value || busy.value) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
@@ -1227,7 +1268,7 @@ async function recordOne(lineId) {
   advanceLock.release(lineKeyAt(i))
   index.value = i
   phase.value = 'recording'
-  recorder.beginLine()
+  await settleThenReveal()
 }
 
 async function backToStart() {
@@ -1237,7 +1278,7 @@ async function backToStart() {
 
 // ── Keyboard ────────────────────────────────────────────────────────────────
 function onKey(e) {
-  if (phase.value !== 'recording' || e.repeat) return
+  if (phase.value !== 'recording' || arming.value || e.repeat) return
   // EDITING IS TYPING. Space, R and B are letters in a rewrite box long before
   // they are controls, and this listener is on the window: with the editor open,
   // every space Tom typed into a line was calling onNext() — advancing the
@@ -1414,6 +1455,26 @@ kbd {
 /* Recording stage */
 .stage { display: flex; flex-direction: column; gap: 0.85rem; padding-top: 0.75rem; }
 .stage-top { display: flex; align-items: center; gap: 0.75rem; }
+/* ON AIR: one small steady word. Live is the calm state, so it is the plain
+   one; arming is the one that is dimmed, and the change between them is the
+   whole message. */
+.onair {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: 0.2rem 0.5rem;
+  border-radius: 999px;
+  color: var(--color-emerald, #06ffa5);
+  border: 1px solid var(--color-emerald, #06ffa5);
+}
+.onair.arming {
+  color: var(--color-paper-dim, #c1c1bb);
+  border-color: var(--color-graphite, #475569);
+}
+.arming-well { display: flex; align-items: center; justify-content: center; }
+.arming-words { font-size: 1.1rem; color: var(--color-paper-dim, #c1c1bb); margin: 0; }
 .meter {
   flex: 1; height: 10px; border-radius: 5px; overflow: hidden;
   background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569);
@@ -1448,6 +1509,8 @@ kbd {
 }
 .state-pill.is-editing,
 .stage-progress.is-editing { color: var(--color-tungsten, #ffa630); }
+.state-pill.is-arming,
+.stage-progress.is-arming { color: var(--color-paper-dim, #c1c1bb); }
 
 /* Editing the line, in the same well the line lives in — so the thing being
    rewritten stays in the place the eye is already on. */

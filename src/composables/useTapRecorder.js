@@ -156,6 +156,32 @@ export const PRE_ROLL_MAX_MS = 2500
 // even a wrong call here is covered by audio the new recorder already holds.
 export const ROLL_QUIET_MS = 1000
 
+// THE COLD START HAS NO STANDBY TO PROMOTE.
+//
+// #104 fixed every boundary INSIDE a session by keeping a standby recorder
+// running through the quiet and promoting it at Next/Again/Back, so the
+// recorder taking over already holds room tone. The first line of a session
+// cannot be fixed that way: the mic has only just been granted, there is no
+// prior quiet to have captured, and the recorder is exactly as old as the tap
+// that opened it. So the first take of a session was the one clip in the whole
+// day guaranteed to hand the trim nothing.
+//
+// The fix is not audio, it is ORDER. The recorder opens first, the line stays
+// hidden while it fills, and the reveal of the line is the go signal. By the
+// time the recordist has read the words and drawn breath, the recorder is
+// already at least this old and holds real room tone.
+//
+// The number is not a new one and is deliberately not a guess: it is
+// PRE_ROLL_MIN_MS, the floor this recorder already guarantees at every other
+// boundary. It covers what the trim asks for (TRIM_MARGIN_SEC = 0.35s in
+// services/audio-processor.cjs) with 450ms of headroom for the encoder's own
+// spin-up — MediaRecorder.start() returns before audio arrives — and it sits
+// far above the upload gate's 100ms floor (minTakeMs, recording-upload-helpers).
+// Matching the steady-state floor also means the first clip of a session and
+// the two-hundredth are trimmed from the same amount of room, which is the
+// property the forensics wanted and never had.
+export const COLD_START_SETTLE_MS = PRE_ROLL_MIN_MS
+
 // Peak-level bars, on the raw meter peak. Only ever used for timing decisions,
 // never to gate audio.
 //
@@ -581,6 +607,30 @@ export function useTapRecorder() {
     }
   }
 
+  // How much audio the recorder about to be used for the next take is holding,
+  // in ms. This is the only currency the trim can spend: a clip's lead-in is
+  // its recorder's age at the first word, and nothing downstream can invent it.
+  function activeAgeMs() {
+    return active ? now() - active.startedAt : 0
+  }
+
+  // Resolve once the active recorder is old enough to hand the trim its margin,
+  // and NOT A MOMENT LATER. If one already is — every boundary inside a
+  // session, where #104's standby has been running through the quiet — this
+  // settles synchronously on the next microtask and the caller reveals the line
+  // immediately. Only the cold start actually waits.
+  function awaitLeadIn(minMs = COLD_START_SETTLE_MS) {
+    if (!active) active = spawnRecorder()
+    return new Promise((resolve) => {
+      const check = () => {
+        const age = activeAgeMs()
+        if (age >= minMs) { resolve(age); return }
+        setTimeout(check, Math.max(10, minMs - age))
+      }
+      check()
+    })
+  }
+
   // Mark the start of a line. Does NOT touch the recorder — capture is already
   // running and has been since before this line was on screen.
   function beginLine() {
@@ -670,5 +720,6 @@ export function useTapRecorder() {
     isRecording, level, clipping, devices, appliedSettings, profile, error,
     lineHasSpeech, quietMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
+    activeAgeMs, awaitLeadIn,
   }
 }
