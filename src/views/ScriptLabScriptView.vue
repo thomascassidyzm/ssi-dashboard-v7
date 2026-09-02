@@ -133,6 +133,23 @@
           </template>
         </section>
 
+        <!-- ══ THE CHUNK-MAPPING CAVEAT ══
+             Shown once, at the top, when any line on this page carries a chunk
+             mapping. It exists because divergence marks in a mapping are made
+             CHUNK BY CHUNK, and a divergence that runs right through the
+             document is therefore marked on no row at all. Putting an invented
+             badge on the affected rows would be a green nobody made; saying it
+             once, here, is the honest form. It names no language and no pod, so
+             the Italian overlay inherits it unchanged. -->
+        <p v-if="chunkMappedLines" class="mb-4 text-xs text-muted bg-surface border border-line rounded-lg px-4 py-2">
+          <span class="text-accent-2 font-semibold">Chunk mappings</span> —
+          {{ chunkMappedLines }} of {{ totalLines }} lines record one.
+          Divergence marks are per chunk, so a divergence that runs through the whole
+          document is marked on <em>no</em> row: read the source document's own
+          page-level notes alongside these. Nothing here is inferred — every mark is
+          one an author wrote.
+        </p>
+
         <!-- ══ THE SCRIPT ══
              The row/table treatment is lifted from src/views/production/SeedEditor.vue —
              a real table with named columns, generous cell padding, alternating rows and a
@@ -234,6 +251,19 @@
                     </td>
                   </tr>
 
+                  <!-- ══ THE CHUNK MAPPING ══
+                       Present when and only when the line CARRIES one, keyed off
+                       author_notes and never off a pod slug — the Italian overlay
+                       lands next and must light this up untouched. Full width
+                       rather than inside a content column: a chunk table squeezed
+                       into a third of the page is not scannable, and scannable is
+                       the requirement. -->
+                  <tr v-if="step.payload.notes" class="notes-row" :class="{ 'row-alt': i % 2 === 1 }">
+                    <td :colspan="colCount">
+                      <ChunkNotesPanel :step="step" :ed="ed" />
+                    </td>
+                  </tr>
+
                   <tr v-if="openLine === step.payload.id" class="history-row" :class="{ 'row-alt': i % 2 === 1 }">
                     <td :colspan="colCount">
                       <div class="history">
@@ -293,6 +323,7 @@ import { computeCoverage, isPairOverlay } from '@/lib/metagraph/coverage.js'
 import { wordDiff } from '@/lib/wordDiff.js'
 import { dirFor } from '@/utils/textDirection.js'
 import ScriptLineCell from '@/components/scriptlab/ScriptLineCell.vue'
+import ChunkNotesPanel from '@/components/scriptlab/ChunkNotesPanel.vue'
 
 const KIND_TAG = { coda: 'ADMITS', branch: 'BRANCH', alternative: 'VARIANT', unmapped: 'UNMAPPED' }
 const route = useRoute()
@@ -346,15 +377,18 @@ const unresolvedByRegister = computed(() => {
  * overlay is. It saves through the identical versioned route: same freeze, same
  * append, same history, same restore. Every field below is keyed `field:id`.
  */
-const FIELDS = { english: 'english_text', target: 'target_text' }
+const FIELDS = { english: 'english_text', target: 'target_text', notes: 'author_notes' }
 const drafts = reactive({})            // `${field}:${scenario_id}` -> uncommitted text
 const openKey = ref(null)              // the ONE editor that is expanded, anywhere
 const dkey = (step, field) => `${field}:${step.payload.id}`
-const stored = (step, field) => (field === 'target' ? step.payload.target : step.payload.text) ?? ''
+const stored = (step, field) =>
+  (field === 'target' ? step.payload.target : field === 'notes' ? step.payload.notes : step.payload.text) ?? ''
 const hasDraft = (step, field) => Object.prototype.hasOwnProperty.call(drafts, dkey(step, field))
 const isEditing = (step, field) => openKey.value != null && openKey.value === dkey(step, field)
 const isDirty = (step, field) => hasDraft(step, field) && drafts[dkey(step, field)] !== stored(step, field)
-const rowDirty = step => isDirty(step, 'english') || isDirty(step, 'target')
+/* The chunk mapping counts as unsaved work on the line like the other two do:
+   it is a decision record a human is correcting, not a comment field. */
+const rowDirty = step => isDirty(step, 'english') || isDirty(step, 'target') || isDirty(step, 'notes')
 /** What the resting row shows: a parked draft's words, not the stale master. */
 const displayText = (step, field) => (hasDraft(step, field) ? drafts[dkey(step, field)] : stored(step, field))
 /** A target editor is offered only where the line HAS a target language. */
@@ -374,6 +408,13 @@ const hasTarget = step => !!step.payload.targetLang
  * columns over one canonical and never a fork — the day that lands it is one
  * more descriptor in `overlayColumns`, not a rebuilt component.
  */
+/* The caveat's own numbers, counted from the walk rather than asserted: a line
+   "records a chunk mapping" exactly when it carries author_notes. No slug is
+   consulted anywhere on this page. */
+const allSteps = computed(() => (walk.value?.scenes || []).flatMap(sc => sc.steps || []))
+const totalLines = computed(() => allSteps.value.length)
+const chunkMappedLines = computed(() => allSteps.value.filter(s => s.payload?.notes).length)
+
 const canonicalColumn = {
   key: 'canonical',
   label: 'Canonical English',
@@ -612,9 +653,11 @@ async function restore (step, versionId) {
     // a version row is the state of the line, not of one column of it.
     step.payload.text = body.line?.englishText ?? step.payload.text
     if (body.line && 'targetText' in body.line) step.payload.target = body.line.targetText
-    delete drafts[`english:${id}`]
-    delete drafts[`target:${id}`]
-    if (openKey.value === `english:${id}` || openKey.value === `target:${id}`) openKey.value = null
+    if (body.line && 'authorNotes' in body.line) step.payload.notes = body.line.authorNotes
+    for (const f of Object.keys(FIELDS)) {
+      delete drafts[`${f}:${id}`]
+      if (openKey.value === `${f}:${id}`) openKey.value = null
+    }
     step.payload._saved = true
     setTimeout(() => { step.payload._saved = false }, 2000)
     await Promise.all([loadHistory(id), loadSummary()])
@@ -680,6 +723,7 @@ async function saveLine (step, field, value) {
       body: JSON.stringify({ [FIELDS[field]]: text })
     })
     if (field === 'target') p.target = body.line?.targetText ?? text
+    else if (field === 'notes') p.notes = body.line?.authorNotes ?? text
     else p.text = body.line?.englishText ?? text
     p._saved = true
     setTimeout(() => { p._saved = false }, 2000)
@@ -718,6 +762,7 @@ onMounted(load)
 .col-ref { width: 6rem; }
 .col-speaker { width: 4.5rem; }
 .col-state { width: 8rem; }
+.notes-row td { padding: 0 1rem 0.5rem; border-top: 0; }
 /* The three content columns share the rest evenly — CANONICAL || KNOWN ||
    TARGET reads as three columns of one width, not as one wide column with two
    offcuts. `table-layout: fixed` is what makes the percentages hold whatever

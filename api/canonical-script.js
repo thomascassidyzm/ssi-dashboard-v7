@@ -196,6 +196,10 @@ export default async function handler(req, res) {
       line: {
         id: line.id,
         englishText: updated?.english_text ?? patch.english_text ?? line.english_text,
+        // A restore puts EVERY editable field back, author_notes among them, so
+        // the response has to say what the notes now are. Without this the caller
+        // holds the pre-restore chunk mapping and cannot tell.
+        authorNotes: updated?.author_notes ?? patch.author_notes ?? line.author_notes ?? null,
         targetText: updated?.target_text ?? patch.target_text ?? line.target_text ?? null
       }
     });
