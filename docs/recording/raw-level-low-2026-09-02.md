@@ -83,6 +83,22 @@ One small thing worth a follow-up, unrelated to capture: **five of her takes mas
 
 Nothing learner-facing needs it. Catrin's and Aran's Welsh takes are at target. The only quiet clips in existence are 13 of Tom's own in `zzz_test2_for_eng` and `zzz_test_for_eng`: the 7 from tonight are already at −16.6 LUFS and only carry a raised floor, and the 6 from August sit at −26.2 LUFS and would need another +10 dB, which would put their floor around −45 dBFS and be audible. Both sets are test fixtures. **Re-record them; do not re-master anything.**
 
+## Landed on popty.app, and verified there
+
+Tom's ruling once the phone re-test came in — "Phone test worked perfectly… the process was excellent, it worked amazingly" — was to promote, because Catrin records tomorrow and a tailnet link is no use to her.
+
+Merged to `main` and deployed. Verified against the live bundle rather than against the deploy log: `https://popty.app/assets/RecordistRoom-nGFESp1P.js` contains **zero** occurrences of `localStorage.getItem("recordist.captureProfile")`, zero of `setItem`, one of `removeItem`, and the amber raw-microphone warning. That chunk is what a browser hitting `/r/human_catrinlliar_cym_n` loads today.
+
+**She has to do nothing.** `popty.app` serves the room's HTML with `cache-control: no-cache, no-store, must-revalidate`, so opening the link tomorrow fetches fresh HTML, which names the new hashed chunk; there is no service worker anywhere in the app to serve her a stale one. If Aran's rig is carrying a stored `dry` value, the first page load clears it and the room opens on the voice profile. No site data to clear, no setting to change, nothing to explain to her.
+
+Her queue was checked live through the same proxy she will use: **161 lines, 38 recorded, 123 still to read.** That also reconciles the three numbers that have been floating about — Tom's "38 real lines" is the queue's *recorded* count, and the 61 provenance rows are those 38 lines plus her retakes on the night.
+
+## The room itself was left alone, deliberately
+
+Checked against what Tom wants her run to feel like tomorrow, and it already does all four: the recording screen names its own state (`Mic live · −18 dB`, or "Level meter not reading — every take will be saved", plus a live dot that lights on speech); the queue visibly shrinks ("Coming up · 123 still to read"); re-recording is one tap on **Again** or the `R` key; and she cannot be made to repeat work, because "re-read lines I've already recorded" is off by default and the room starts her on the first line that has no take. Anything that did not save is listed at the end with a "Record it again" button next to it.
+
+So nothing there was touched. The night before she records is the wrong time to put an untested redesign in her path, and the honest reading of the evidence is that the surface was never the problem — a stored string was.
+
 ## What is not verified
 
-I cannot sit in front of a microphone. The change is verified by build, by three new tests in `RecordistRoom.captureprofile.test.js` (opens on voice with nothing stored; a stored `dry` is neither honoured nor kept; the key is never written back), and by the existing four recorder suites still green — 30 tests, all passing. **What remains open is one real capture**: Tom opening the booth link on the desktop after deploy and reading one line. If the constraint fix has landed, that take's provenance will say `capture:voice` and its raw peak should come in near the phone's −2.5 dBFS rather than −18.9. One tap closes it.
+I cannot sit in front of a microphone. The change is verified by build, by three new tests in `RecordistRoom.captureprofile.test.js` (opens on voice with nothing stored; a stored `dry` is neither honoured nor kept; the key is never written back), and by the existing four recorder suites still green — 30 tests, all passing. **What remains open is one real capture on the desktop.** The deployed code is verified byte by byte and Tom's phone run is verified by ear, but no human has yet read a line into the *desktop* booth since the fix. If it has landed, that take's provenance will say `capture:voice` instead of `capture:dry` and its raw peak should come in near the phone's −2.5 dBFS rather than −18.9. One line closes it, and Catrin's first take tomorrow closes it anyway.
