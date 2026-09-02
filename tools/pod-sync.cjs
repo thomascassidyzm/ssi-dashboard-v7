@@ -35,7 +35,7 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 const approvals = require('../services/pod-voice-approvals.cjs');
-const { servingRefusal } = require('./pods/serving-slug.cjs');
+const { servingRefusal, readServingFactsSupabase } = require('./pods/serving-slug.cjs');
 
 // LAZY on purpose. This module is the one implementation of pod casting
 // (assignVoices), so it is imported by things that must not open a DB
@@ -845,31 +845,6 @@ function syncRefusal ({ podId, slug, podType, podExists, podVisibility, rows = 0
   })
 }
 
-/**
- * The counts syncRefusal needs, read through supabase-js. clone-pod asks the same
- * question in SQL through `pg` because that is the client it has; the RULE is shared,
- * the query is written in each client's own dialect. A read that fails yields null,
- * which the rule treats as a reason to refuse — never as a reason to allow.
- */
-async function readServingFacts(courseCode, podId) {
-  const { data: pod } = await db()
-    .from('listening_pods').select('id, pod_type, visibility').eq('id', podId).maybeSingle();
-  const { count: rows } = await db()
-    .from('listening_pod_sentences').select('id', { count: 'exact', head: true }).eq('pod_id', podId);
-  let learnersOnCourse = null;
-  let learnersOnPod = null;
-  try {
-    const { data: state, error } = await db()
-      .from('learner_pod_state').select('learner_id, sentence_id').eq('course_code', courseCode);
-    if (error) throw new Error(error.message);
-    learnersOnCourse = new Set((state || []).map(r => r.learner_id)).size;
-    learnersOnPod = new Set((state || []).filter(r => String(r.sentence_id || '').startsWith(`${podId}:`)).map(r => r.learner_id)).size;
-  } catch (e) {
-    console.error(`WARNING: learner_pod_state count failed (${e.message}) — the destination gate will treat the count as unavailable`);
-  }
-  return { pod, rows: rows || 0, learnersOnCourse, learnersOnPod };
-}
-
 async function syncPod(markdownPath, options) {
   const { courseCode, podType, slug, dryRun = false, verbose = false, serveNow = false } = options;
   if (!fs.existsSync(markdownPath)) throw new Error(`File not found: ${markdownPath}`);
@@ -912,7 +887,7 @@ async function syncPod(markdownPath, options) {
 
   // SERVING-DESTINATION GATE. Runs before any write and in DRY RUN too, so a --dry-run
   // tells the truth about what the real thing would do. See syncRefusal() above.
-  const facts = await readServingFacts(courseCode, podId);
+  const facts = await readServingFactsSupabase(db(), courseCode, podId, { warn: (m) => console.error(`WARNING: ${m}`) });
   const refusal = syncRefusal({
     podId, slug,
     // A pod that does not exist yet will be CREATED carrying the --type you passed.

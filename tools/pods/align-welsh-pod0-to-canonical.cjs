@@ -30,7 +30,10 @@
  * assertion; any drift aborts the whole run before a single write.
  *
  *   node tools/pods/align-welsh-pod0-to-canonical.cjs            # dry run
- *   node tools/pods/align-welsh-pod0-to-canonical.cjs --apply
+ *   node tools/pods/align-welsh-pod0-to-canonical.cjs --apply --serve-now
+ *
+ * --serve-now IS REQUIRED (2026-09-02): pod-0 is a slug the player serves, and this tool
+ * blanks text on it. Without the flag it refuses and names the learners on the pod.
  *   node tools/pods/align-welsh-pod0-to-canonical.cjs --course=cym_n_for_eng
  */
 'use strict'
@@ -41,6 +44,9 @@ const path = require('path')
 const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const { diffPod, norm } = require('./pod0-recording-diff.cjs')
+// ONE definition of "does writing here put content in front of learners?" — shared with
+// clone-pod, pod-sync and the pod generator. Never a second copy.
+const { servingRefusal, readServingFactsSupabase } = require('./serving-slug.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
@@ -55,6 +61,12 @@ const OUT_DIR = path.join(__dirname, '..', '..', 'docs', 'pods', 'welsh-recordin
 const ARCHIVE_DIR = path.join(__dirname, '..', '..', 'docs', 'pods', 'pod0-welsh-prealign-archive-2026-08-06')
 
 const APPLY = process.argv.includes('--apply')
+// YES, DELIBERATELY write the pod learners are served. This tool's whole purpose is the
+// LIVE Welsh pod-0, so --serve-now will be passed on nearly every real run — that is the
+// point, not a nuisance. It exists so the run states out loud, in the log and in the
+// refusal it replaces, how many learners are on the pod being rewritten. --apply says
+// "write"; --serve-now says "write the thing 32,000 former Welsh learners are queued on".
+const SERVE_NOW = process.argv.includes('--serve-now')
 const courseArg = process.argv.find(a => a.startsWith('--course='))
 const COURSES = courseArg ? [courseArg.split('=')[1]] : DEFAULT_COURSES
 
@@ -340,10 +352,49 @@ async function restoreFromArchive(course) {
   return { course, rows: (now || []).length, verified: true }
 }
 
+/**
+ * SERVING-DESTINATION GATE (2026-09-02, the ELEVENTH door — job #93 enumerated ten and
+ * this one was not among them).
+ *
+ * WHY IT BELONGS HERE. `POD_SLUG` is the literal 'pod-0', which is a slug the player
+ * resolves for ~68 courses. This tool blanks known_text and target_text on every slot
+ * whose English changed (line ~165), and its --restore-from-archive path DELETEs every
+ * sentence row of that pod before re-inserting. Its sibling
+ * align-pod0-to-canonical.cjs refuses to rewrite the live pod-0 of a released or beta
+ * course; this one has never had any such check — only --apply. Two tools, one job, one
+ * guard between them.
+ *
+ * It does NOT wall the tool off: --serve-now goes through, and writing the live Welsh
+ * pod-0 is what this tool is FOR. It makes the write deliberate and names who is on it.
+ */
+async function assertNotServingUnasked (course) {
+  const podId = `${course}:${POD_SLUG}`
+  const facts = await readServingFactsSupabase(db, course, podId, { warn: (m) => console.error(`WARNING: ${m}`) })
+  const refusal = servingRefusal({
+    podId,
+    slug: POD_SLUG,
+    podType: facts.pod ? facts.pod.pod_type : 'core',
+    podExists: !!facts.pod,
+    podVisibility: facts.pod ? facts.pod.visibility : null,
+    rows: facts.rows,
+    learnersOnCourse: facts.learnersOnCourse,
+    learnersOnPod: facts.learnersOnPod,
+    serveNow: SERVE_NOW,
+    action: 'This alignment blanks the known and target text of every slot whose English changed, and --restore-from-archive deletes every sentence row of the pod outright,',
+    harm: 'so learners on it hear an empty pod until a human has recorded the new lines.',
+    escape: '--serve-now',
+    remedy: 'Align a parked copy (tools/pods/clone-pod.cjs makes one) and switch over with tools/pods/pod-switchover.cjs, which carries learner progress across',
+  })
+  if (refusal) throw new Error(`REFUSING to align: ${refusal}`)
+}
+
 async function main() {
   if (process.argv.includes('--restore-from-archive')) {
     const out = []
-    for (const course of COURSES) out.push(await restoreFromArchive(course))
+    for (const course of COURSES) {
+      await assertNotServingUnasked(course)
+      out.push(await restoreFromArchive(course))
+    }
     console.log(JSON.stringify({ mode: 'RESTORED FROM ARCHIVE', out }, null, 2))
     return
   }
@@ -358,6 +409,8 @@ async function main() {
 
   const summary = []
   for (const course of COURSES) {
+    // Refuses in DRY RUN too, so the dry run tells the truth about what --apply would do.
+    await assertNotServingUnasked(course)
     const p = await planCourse(course, canon)
 
     // Full-fidelity archive of the pre-alignment rows, ALWAYS, dry run included.

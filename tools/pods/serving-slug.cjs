@@ -91,4 +91,33 @@ function servingRefusal ({
     `${remedy} — or pass ${escape} if serving this destination immediately is the deliberate intent.`
 }
 
-module.exports = { SERVING_POD_SLUGS, servesLearners, learnersAtRisk, servingRefusal }
+/**
+ * The facts `servingRefusal()` needs, read through a supabase-js client. THREE tools now
+ * ask this question in that dialect (pod-sync, pod-dialogue-generator,
+ * align-welsh-pod0-to-canonical), so the query is written once here rather than three
+ * times; clone-pod and promote-pod ask it in SQL through `pg` because that is the client
+ * they hold. The RULE above is shared by all of them either way.
+ *
+ * A read that fails yields null, which the rule treats as a reason to REFUSE — never as
+ * a reason to allow.
+ */
+async function readServingFactsSupabase (client, courseCode, podId, { warn = () => {} } = {}) {
+  const { data: pod } = await client
+    .from('listening_pods').select('id, pod_type, visibility').eq('id', podId).maybeSingle()
+  const { count: rows } = await client
+    .from('listening_pod_sentences').select('id', { count: 'exact', head: true }).eq('pod_id', podId)
+  let learnersOnCourse = null
+  let learnersOnPod = null
+  try {
+    const { data: state, error } = await client
+      .from('learner_pod_state').select('learner_id, sentence_id').eq('course_code', courseCode)
+    if (error) throw new Error(error.message)
+    learnersOnCourse = new Set((state || []).map(r => r.learner_id)).size
+    learnersOnPod = new Set((state || []).filter(r => String(r.sentence_id || '').startsWith(`${podId}:`)).map(r => r.learner_id)).size
+  } catch (e) {
+    warn(`learner_pod_state count failed (${e.message}) — the serving gate will treat the count as unavailable`)
+  }
+  return { pod, rows: rows || 0, learnersOnCourse, learnersOnPod }
+}
+
+module.exports = { SERVING_POD_SLUGS, servesLearners, learnersAtRisk, servingRefusal, readServingFactsSupabase }

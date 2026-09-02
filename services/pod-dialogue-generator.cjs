@@ -387,32 +387,20 @@ async function assertNotGated(podId, { force = false, log = () => {} } = {}) {
  */
 async function assertNotServing(podId, { courseCode, podSlug, serveNow = false, log = () => {} } = {}) {
   const { generationRefusal } = require('./pod-generate-guard.cjs')
-  const { data: pod } = await supabase
-    .from('listening_pods').select('id, pod_type, visibility').eq('id', podId).maybeSingle()
-  // The pod that does not exist yet will be created as pod_type 'core' — that is what
-  // upsertPodRow writes, unconditionally — so it is judged as core.
-  const podType = pod ? pod.pod_type : 'core'
-
-  const { count: rows } = await supabase
-    .from('listening_pod_sentences').select('id', { count: 'exact', head: true }).eq('pod_id', podId)
-
-  // Who is at risk. Read inside a try so a failure yields "unavailable", which the rule
-  // treats as a reason to refuse, never as a reason to allow.
-  let learnersOnCourse = null
-  let learnersOnPod = null
-  try {
-    const { data: state, error } = await supabase
-      .from('learner_pod_state').select('learner_id, sentence_id').eq('course_code', courseCode)
-    if (error) throw new Error(error.message)
-    learnersOnCourse = new Set((state || []).map(r => r.learner_id)).size
-    learnersOnPod = new Set((state || []).filter(r => String(r.sentence_id || '').startsWith(`${podId}:`)).map(r => r.learner_id)).size
-  } catch (e) {
-    log(`[${podId}] WARNING: learner_pod_state count failed (${e.message}) — the serving gate will treat the count as unavailable`)
-  }
-
+  const { readServingFactsSupabase } = require('../tools/pods/serving-slug.cjs')
+  const facts = await readServingFactsSupabase(supabase, courseCode, podId, { warn: (m) => log(`[${podId}] WARNING: ${m}`) })
   const refusal = generationRefusal({
-    podId, slug: podSlug, podType, podExists: !!pod, podVisibility: pod ? pod.visibility : null,
-    rows: rows || 0, learnersOnCourse, learnersOnPod, serveNow,
+    podId,
+    slug: podSlug,
+    // A pod that does not exist yet will be created as pod_type 'core' — that is what
+    // upsertPodRow writes, unconditionally — so it is judged as core.
+    podType: facts.pod ? facts.pod.pod_type : 'core',
+    podExists: !!facts.pod,
+    podVisibility: facts.pod ? facts.pod.visibility : null,
+    rows: facts.rows,
+    learnersOnCourse: facts.learnersOnCourse,
+    learnersOnPod: facts.learnersOnPod,
+    serveNow,
   })
   if (refusal) throw new Error(`REFUSING to generate ${refusal}`)
 }
