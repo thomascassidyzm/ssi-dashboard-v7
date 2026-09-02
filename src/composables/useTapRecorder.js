@@ -72,11 +72,21 @@
 //
 //   * A recorder is ALWAYS running while the mic is open — from start(), before
 //     the first line is even shown, and continuously thereafter.
-//   * At a line boundary the NEW recorder is started BEFORE the old one is
-//     stopped. Two MediaRecorders on one stream overlap for the tail window, so
-//     there is no instant at which nothing is capturing. That overlap IS the
-//     next line's pre-roll: the encoder for line N+1 has been warm and writing
-//     audio since before the recordist even looked at line N+1.
+//   * A STANDBY recorder runs through the quiet alongside the active one, and a
+//     line boundary PROMOTES it rather than constructing a new one. That is what
+//     makes the next line's pre-roll real: the promoted recorder has been
+//     writing audio since the last thing anybody said, so the clip begins with
+//     the room rather than with the word. A recorder constructed at the boundary
+//     holds nothing at the boundary, which is what used to make a re-read — where
+//     the recordist does not stop to read the line again — come back snipped
+//     flush against its first syllable while first takes came back clean.
+//   * The standby is thrown away and respawned on the first quiet frame after
+//     any speech, so a promoted recorder can never carry the previous read into
+//     the next clip. If there is no clean standby (no trusted meter, or the room
+//     talking right up to the boundary) a fresh recorder is made, exactly as
+//     before: never worse, usually much better.
+//   * The old recorder is never left unobserved: its successor has been running
+//     since long before it was retired.
 //   * The old recorder keeps running for TAIL_MS after the boundary, so the
 //     clip carries a generous tail whatever the tap timing was. It is stopped
 //     EARLY only once we have heard real silence and then the next utterance
@@ -296,6 +306,11 @@ export function useTapRecorder() {
   let peak = 0
   let lastQuietSince = 0
   let lineOpenedAt = 0
+  // The warm recorder waiting to be promoted at the next boundary, and whether
+  // it has heard anything since it was spawned. A dirty standby is never
+  // promoted — it would carry the previous read into the next clip.
+  let standby = null
+  let standbyDirty = false
 
   async function listDevices() {
     try {
@@ -346,12 +361,49 @@ export function useTapRecorder() {
     return p
   }
 
-  // Hand over to a fresh recorder and return the one that was active, still
-  // running. The new one is live BEFORE the old one is touched, so the stream is
-  // never unobserved.
+  // Hand over and return the one that was active, still running. The
+  // replacement is live BEFORE the old one is touched, so the stream is never
+  // unobserved.
+  //
+  // A FRESH RECORDER HAS NO PRE-ROLL. THAT WAS THE WHOLE DEFECT.
+  //
+  // This used to be `active = spawnRecorder()` and nothing else, and the
+  // comments around it claimed the replacement carried pre-roll because it was
+  // "already live". Live is not the same as full. A MediaRecorder constructed
+  // at the instant of a boundary holds ZERO audio at that instant, so the only
+  // lead-in the next clip ever got was however long the recordist happened to
+  // hesitate before speaking. Measured on Tom's 34 zzz takes of 2026-09-02
+  // (docs/audio-forensics-2026-09-02/): 30 clips got the trim's full 350ms
+  // margin because he spent 1.2-3.0s reading the line first, and 4 did not —
+  // one with 0ms of lead, two with ~292ms, one where the read filled the whole
+  // take. Every one of those four is a take that began within a few hundred ms
+  // of a hand-over. The trim was identical on all 34; the capture is what was
+  // short, exactly as the block at audio-processor.cjs:1370 says it would be.
+  //
+  // A re-read is that case every time. `discardLine()` hands over and the
+  // caller opens the line in the same tick, and a recordist re-reading a line
+  // they have just read does not stop to read it again — so the re-take's
+  // recorder is reliably near-empty at the first word, where a first take's is
+  // reliably seconds full. Same code, opposite outcomes.
+  //
+  // So the replacement is no longer made at the boundary. A STANDBY recorder is
+  // kept running through the quiet, and the boundary PROMOTES it — it arrives
+  // already holding the room tone recorded since the last thing anybody said,
+  // which is precisely the lead-in the trim wants and cannot invent. The
+  // standby is discarded and respawned the moment it hears speech, so a
+  // promoted recorder can never carry the previous read into the next clip.
+  //
+  // When there is no clean standby to promote — no trusted meter, or the room
+  // has been talking right up to the boundary — this falls back to exactly what
+  // it did before. Never worse than a fresh recorder; usually much better.
   function handOver() {
     const outgoing = active
-    active = spawnRecorder()
+    if (standby && !standbyDirty && meterTrusted.value) {
+      active = standby
+      standby = null
+    } else {
+      active = spawnRecorder()
+    }
     return outgoing
   }
 
@@ -485,21 +537,47 @@ export function useTapRecorder() {
 
     quietMs.value = lineHasSpeech.value ? t - lastQuietSince : 0
 
+    // KEEP A CLEAN STANDBY WARM.
+    //
+    // The standby exists to hold the next clip's lead-in, so the one thing it
+    // must never contain is speech. It is therefore thrown away and respawned
+    // on the first quiet frame after anything is heard: from then on it holds
+    // room tone and nothing else, ageing until a boundary promotes it.
+    if (p > speechFloor()) {
+      standbyDirty = true
+    } else if (!standby) {
+      standby = spawnRecorder()
+      standbyDirty = false
+    } else if (standbyDirty) {
+      const soiled = standby
+      standby = spawnRecorder()
+      standbyDirty = false
+      harvest(soiled)
+    }
+
     // Roll the pre-roll over, but only while nothing has been said on this line
-    // and the room has genuinely been quiet for a while. The outgoing recorder
-    // is retired through the same tail path as a line boundary, so it keeps
-    // running for the full overlap before it is dropped.
+    // and the room has genuinely been quiet for a while — and only into a
+    // standby that already holds a full PRE_ROLL_MIN_MS. Rolling into an empty
+    // recorder is the defect this whole mechanism exists to prevent, and it is
+    // what the old `handOver()` here did every ~2.5s for as long as a recordist
+    // sat reading a line: for the 800ms after each roll the active recorder held
+    // nothing at all, and a read begun in that window arrived flush against its
+    // own first syllable. Waiting for the standby to be full instead keeps the
+    // active recorder's lead-in inside [PRE_ROLL_MIN_MS, ~PRE_ROLL_MAX_MS] at
+    // every instant, which is what the header has always claimed it did.
     if (
       active &&
       !lineHasSpeech.value &&
       t - active.startedAt > PRE_ROLL_MAX_MS &&
-      t - lastQuietSince > ROLL_QUIET_MS
+      t - lastQuietSince > ROLL_QUIET_MS &&
+      standby && !standbyDirty && t - standby.startedAt >= PRE_ROLL_MIN_MS
     ) {
       const stale = handOver()
-      // Discarded, not returned — this is dead air ahead of a line that has not
-      // started. It is dropped only after PRE_ROLL_MIN_MS of overlap, so the
-      // audio it holds is also held by the recorder that replaced it.
-      setTimeout(() => { harvest(stale) }, PRE_ROLL_MIN_MS)
+      // Dropped immediately, not after an overlap timer: the recorder that
+      // replaced it has been running since long before this one was retired, so
+      // every sample the stale one holds is already held by its successor. The
+      // overlap is banked in advance now rather than paid for afterwards.
+      harvest(stale)
     }
   }
 
@@ -549,8 +627,13 @@ export function useTapRecorder() {
     })
   }
 
-  // Close the current line and throw the audio away (re-read). The replacement
-  // recorder is already live, so the re-read has its pre-roll too.
+  // Close the current line and throw the audio away (re-read).
+  //
+  // The re-read is promoted onto the standby by handOver(), so it opens holding
+  // the room tone captured since the discarded read finished — a real lead-in,
+  // not the bare instant of the tap. Before that it opened on a recorder
+  // constructed in this very call, which is why a re-read came back snipped
+  // tighter than the take it replaced.
   function discardLine() {
     isRecording.value = false
     if (!active) return Promise.resolve()
@@ -565,8 +648,10 @@ export function useTapRecorder() {
     isRecording.value = false
     lineHasSpeech.value = false
     quietMs.value = 0
-    const all = [active, ...retiring].filter(Boolean)
+    const all = [active, standby, ...retiring].filter(Boolean)
     active = null
+    standby = null
+    standbyDirty = false
     retiring = []
     for (const entry of all) { try { await harvest(entry) } catch { /* already gone */ } }
     if (rafId) { cancelAnimationFrame(rafId); rafId = null }
