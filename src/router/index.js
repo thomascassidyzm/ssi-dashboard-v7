@@ -468,17 +468,24 @@ const routes = [
   },
 
   // ============================================
-  // MY LINES — the signed-in recordist's own outstanding queue (2026-09-02)
+  // THE LOGIN DOOR ONTO THE BOOTH (Tom's ruling, 2026-09-02)
   // ============================================
-  // Tom: "think of an easier way to surface what needs recording by user login
-  // to popty". /r/:voiceId answers it for whoever holds the LINK; this answers
-  // it for whoever holds the LOGIN. Not public: the whole point is that the
-  // session says who you are, so GET /api/recording/mine can look your voice up
-  // (dashboard_users.voice_id ∪ language_recording_policy voices by email).
+  // This WAS a second recording page — a tap-a-row list of the signed-in
+  // recordist's outstanding lines. Tom tested it against the booth and ruled the
+  // booth is the recording experience ("the link to the second tool is way
+  // better - so we will persist with that one"), so this path is no longer a
+  // page at all: it is a RESOLVER. It asks GET /api/recording/mine which voice
+  // this login is and redirects into /r/:voiceId. One destination, two ways in —
+  // a link, or a login — instead of two competing surfaces.
+  //
+  // The path itself is kept so every bookmark, every Home hub card and the
+  // recorder-confinement block below keep working. Not public: the whole point
+  // is that the session says who you are (dashboard_users.voice_id ∪
+  // language_recording_policy voices by email).
   {
     path: '/my-recording',
     name: 'MyRecording',
-    component: () => import('../views/MyRecordingList.vue'),
+    component: () => import('../views/MyRecordingEntry.vue'),
     meta: { title: 'My lines to record', requiresAuth: true }
   },
 
@@ -926,10 +933,13 @@ router.beforeEach(async (to, from, next) => {
     const courses = learner.value?.courses
     const courseList = Array.isArray(courses) ? courses : []
     const firstCourse = courseList[0] || null
-    // A recordist who signs in wants ONE thing: the lines they still owe. That
-    // is /my-recording, and it is now where a signed-in recorder lands and where
-    // they stay. The old per-course Record Room is still reachable and still
-    // theirs — it is simply no longer the answer to "what do I record next?".
+    // A recordist who signs in wants ONE thing: the lines they still owe. They
+    // land on /my-recording, which is now a resolver, not a page — it looks the
+    // login up and sends them straight into the booth at /r/:voiceId. The booth
+    // is `public: true` and this whole block is skipped for it, so a confined
+    // recorder reaches it and stays there. The old per-course Record Room is
+    // still reachable and still theirs — it is simply no longer the answer to
+    // "what do I record next?".
     const homeRoom = { name: 'MyRecording' }
 
     if (to.name === 'MyRecording') return next()

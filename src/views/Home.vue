@@ -137,7 +137,7 @@
                 <p class="card-description">Everything still waiting on your voice, in the order to read it.</p>
               </div>
               <div class="card-footer">
-                <span class="card-action">Open my list</span>
+                <span class="card-action">Open the recording booth</span>
                 <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
