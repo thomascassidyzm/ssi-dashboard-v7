@@ -687,3 +687,188 @@ downgrade, the flag) and does — seven verbatim reuses. One product-level flag 
 the chapter's two knife-lines land on Italian's own machinery — *DAGLIELO, il nome* for "then
 NAME it", *si veste da assioma / porta un camice* for the lab coat. Session one ends on the
 same dog in both pods, in the same words (*il cane*).
+
+---
+
+## 2. Session two — Chapters 8 to 11
+
+### Chapter 8 — *Dov'eravamo*
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | Where were we? | Dov'eravamo? |
+| TOM | Repair budget. Corrections. | Budget di riparazione. Correzioni. |
+| ARAN | "The way corrections" — you got six words in. Finish the sentence. Same six words. | «Il modo in cui le correzioni» — eri arrivato a sei parole. Finisci la frase. Le stesse sei parole. |
+| TOM | There's a cheaper instrument that's been sitting in the telemetry the whole time, and it doesn't need the budget to start paying. It's the way corrections behave. | C'è uno strumento più economico che è rimasto seduto nella telemetria per tutto questo tempo, e non gli serve il budget per cominciare a pagare. È il modo in cui le correzioni si comportano. |
+| ARAN | Behave. | Si comportano. |
+| TOM | A correction is the signal of another rung — that's the axiom's own small print, and it's the testable bit. If the premise is right, then when a learner gets something wrong, the wrongness isn't noise and it isn't a verdict — it's an arrow pointing at a rung that isn't there yet. Supply the rung, and that correction should never come back. Not "less often". Not come back. | Una correzione è il segnale di un altro piolo — sono le clausole in piccolo dell'assioma stesso, ed è il pezzo verificabile. Se la premessa è giusta, allora quando chi impara sbaglia qualcosa, lo sbaglio non è rumore e non è un verdetto — è una freccia che punta a un piolo che non c'è ancora. Fornisci il piolo, e quella correzione non dovrebbe tornare mai più. Non «meno spesso». Non tornare. |
+| ARAN | And if it does come back? | E se invece torna? |
+| TOM | Then watch WHERE it comes back, because the two worlds sign their names differently. If ability is a wall, recurring corrections cluster by child — the same children stumble everywhere, whatever you do about rungs, and the premise is dead and I want to know. | Allora guarda DOVE torna, perché i due mondi si firmano in modo diverso. Se la capacità è un muro, le correzioni che tornano si raggruppano per bambino — gli stessi bambini inciampano dappertutto, qualunque cosa tu faccia con i pioli, e la premessa è morta e io lo voglio sapere. |
+| ARAN | And if you're right? | E se hai ragione tu? |
+| TOM | They cluster by node — everyone stumbles at the same missing rung, bright kids and slow kids alike, and the child washes out of the signature entirely. Same telemetry we already collect. No new machinery. No budget needed to start reading it. | Si raggruppano per nodo — tutti inciampano sullo stesso piolo mancante, i ragazzi svegli e i ragazzi lenti allo stesso modo, e il bambino sparisce del tutto dalla firma. La stessa telemetria che già raccogliamo. Zero macchinario nuovo. Zero budget per cominciare a leggerla. |
+| ARAN | Clusters by child, or clusters by node. That's a real instrument. That's actually a beautiful instrument. | Raggruppate per bambino, o raggruppate per nodo. Questo è uno strumento vero. È uno strumento bellissimo, davvero. |
+| TOM | So the fortress gets a window, and the siege can stand down. | Quindi la fortezza si prende una finestra, e l'assedio può ritirarsi. |
+| ARAN | …You think I was besieging you. | …Tu pensi che ti stessi assediando. |
+| TOM | Weren't you? | Ah, no? |
+| ARAN | No — and I want this one corrected on the record. I wasn't attacking the castle; I want the premise to be true more than you do — I've bet more years on it than you have. My whole charge was about the COAT. I did exactly this to you about Bjork, remember — we think, not we know — and did we stop shipping? We shipped for five more years. Honest labels and full speed are not opposites. | No — e questa la voglio corretta a verbale. Non stavo attaccando il castello; io voglio che la premessa sia vera più di quanto lo voglia tu — ci ho scommesso sopra più anni io di te. Tutta la mia accusa era sul CAMICE. Ti ho fatto esattamente questo su Bjork, ricordi — lo pensiamo, non lo sappiamo — e abbiamo smesso di shippare? Abbiamo shippato per altri cinque anni. Etichette oneste e velocità piena non sono contrari. |
+| TOM | Taken, and the record so shows. I heard "prove it or drop it" and you were saying "name it and keep going". Those are different sentences and I defended against the wrong one. | Preso, e il verbale lo mostra. Io ho sentito «dimostralo o mollalo», e tu stavi dicendo «dagli il nome e vai avanti». Sono due frasi diverse, e io mi sono difeso da quella sbagliata. |
+| ARAN | Good. Then in the spirit of honest labels: the window you just installed — corrections clustering — that tests the RUNG story. It still doesn't test "anything at all". The summit half of your premise stays creed even with the window open. | Bene. Allora, nello spirito delle etichette oneste: la finestra che hai appena installato — le correzioni che si raggruppano — quella verifica la storia dei PIOLI. Non verifica ancora il «qualunque cosa». La metà della vetta, nella tua premessa, resta credo anche con la finestra aperta. |
+| TOM | It does. The signature can kill the premise — clusters by child and I'm finished — but it can't crown it. For the crown you need the budget, pre-committed, and a summit nobody believes a ten-year-old can reach, and years. | È così. La firma può uccidere la premessa — raggruppate per bambino e sono finito — ma non può incoronarla. Per la corona ti servono il budget, impegnato prima, e una vetta che nessuno crede che un bambino di dieci anni possa raggiungere, e anni. |
+| ARAN | So write the number down. Tonight, while it costs nothing. The budget — this much re-grounding, this many splittings, priced. You said yourself: no pre-committed budget, no test, ever. | Allora scrivilo, il numero. Stasera, che non costa niente. Il budget — questo tanto di ri-ancoraggio, questo tanto di spezzature, prezzato. L'hai detto tu: nessun budget impegnato prima, nessun test, mai. |
+| TOM | …Not tonight. And here's the true sentence underneath that, which you can have at full price: if the signature comes back clusters-by-child, I'll write the number the same day, because I'll need to know what I'm wrong about. Until then I'm going to keep building as if the premise holds, because that's the bet the whole thing IS. | …Non stasera. Ed ecco la frase vera che ci sta sotto, e te la puoi prendere a prezzo pieno: se la firma torna raggruppata per bambino, scrivo il numero il giorno stesso, perché avrò bisogno di sapere su cosa mi sbaglio. Fino ad allora continuo a costruire come se la premessa tenesse, perché quella scommessa è quello che tutta questa cosa È. |
+| ARAN | That's a promise with a proviso. From the man I fined for provisos yesterday. | È una promessa con una clausola. Dall'uomo che ieri ho multato per le clausole. |
+| TOM | It's the best true sentence I have. | È la migliore frase vera che ho. |
+| ARAN | Then I'm writing down that you didn't write it down. | Allora io scrivo che tu non l'hai scritto. |
+| TOM | Noted. | Segnato. |
+| ARAN | We think. We don't know. We think. | Lo pensiamo. Non lo sappiamo. Lo pensiamo. |
+| TOM | And we build anyway. That's either the whole method or the whole disease, and the dog stopped us finding out which. | E costruiamo lo stesso. Che è o tutto il metodo o tutta la malattia, e il cane ci ha impedito di scoprire quale. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| where were we? | dov'eravamo? | D | ZUT — Method Ch. 5 verbatim ✓ (*eravamo* where Spanish says *estábamos*) |
+| you got six words in | eri arrivato a sei parole | I | got-N-in → *arrivare a* + pluperfect |
+| the recovery turn (t4) | c'è uno strumento più economico… si comportano | D | verbatim resume of Ch. 7's cut line + two words — the recovery only works because the Italian matches to the letter ✓ |
+| the axiom's own small print | le clausole in piccolo dell'assioma stesso | I | small print → *clausole in piccolo*; *clausola* ✓ ZUT (proviso) |
+| a learner gets something wrong | chi impara sbaglia qualcosa | D | *sbagliare* — the pod's wrongness-verb, owned here and spent through Ch. 9 |
+| it should never come back. not "less often". | non dovrebbe tornare mai più. non «meno spesso». | D | *mai più*; *meno spesso* ✓ the *quanto spesso* family |
+| and if it does come back? | e se invece torna? | E | the do-emphasis erases into *invece* |
+| the two worlds sign their names differently | i due mondi si firmano in modo diverso | D | |
+| cluster by child / by node | si raggruppano per bambino / per nodo | D | distributive *per* — **NN anchor:** *por niño / por nodo* |
+| whatever you do about rungs | qualunque cosa tu faccia con i pioli | D | *qualunque* + subj ✓ |
+| bright kids and slow kids alike | i ragazzi svegli e i ragazzi lenti allo stesso modo | D | **NN trap:** *sveglio* = bright/awake — sp. *despierto* only awake; *listo* the bright-word, itself a trap (essere/stare *listo* comedy) |
+| the fortress gets a window | la fortezza si prende una finestra | I | gets → *prendersi* ✓ |
+| you think I was besieging you | tu pensi che ti stessi assediando | D | *pensare che* + IMPERFECT subjunctive + stare-gerund — the mood rule under load; **NN:** *pensabas que te estaba asediando* — Spanish indicative! the flip again |
+| weren't you? | ah, no? | E | the aux-echo erases ✓ one frame with *davvero?* |
+| I want this one corrected on the record | questa la voglio corretta a verbale | I | fronting + doubling + *a verbale* ✓ |
+| more than you do | più di quanto lo voglia tu | I | the do-ellipsis rebuilds with predicative *lo* + subjunctive + stressed *tu* — three machines on four English words |
+| I've bet more years on it than you have | ci ho scommesso sopra più anni io di te | I | *ci…sopra* + *scommettere* ✓ ZUT Method Ch. 7 |
+| did we stop shipping? | abbiamo smesso di shippare? | D | *smettere di* ✓; *shippare* — the loanword their register would actually use; flagged (native option: *far uscire il prodotto*) |
+| for five more years | per altri cinque anni | D | additional-more → *altri* ✓ split S6 |
+| I defended against the wrong one | mi sono difeso da quella sbagliata | D | *difendersi da* ✓ the da-of-source |
+| it does (the concession) | è così | E | the pro-verb erases to *è così* |
+| clusters by child and I'm finished | raggruppate per bambino e sono finito | D | |
+| you need the budget, pre-committed | ti servono il budget, impegnato prima | D | *servire* ✓ |
+| so write the number down. tonight, while it costs nothing. | allora scrivilo, il numero. stasera, che non costa niente. | I | right-dislocation ✓; while-because → spoken causal *che* — deliberately NOT *finché non*, which would flip the meaning to "until"; the *finché/finché non/mentre* triangle is a register row |
+| you said so yourself | l'hai detto tu | D | ZUT — Method Ch. 12 verbatim ✓ |
+| the true sentence underneath that | la frase vera che ci sta sotto | D | *starci sotto* — the ci again |
+| I'll need to know what I'm wrong about | avrò bisogno di sapere su cosa mi sbaglio | D | have-need frame ✓ S3; *sbagliarsi* ✓ |
+| as if the premise holds | come se la premessa tenesse | D | *come se* + subj ✓; *tenere* = hold ✓ |
+| the man I fined for provisos | l'uomo che ieri ho multato per le clausole | D | |
+| noted | segnato | D | ZUT — Method Ch. 8 ✓ |
+| and we build anyway | e costruiamo lo stesso | D | *lo stesso* ✓ |
+| the dog stopped us finding out which | il cane ci ha impedito di scoprire quale | D | *impedire a…di* ✓ ZUT Method Ch. 11 |
+
+**Chapter 8 verdict:** the bank-and-recover crosses the session break on letter-identical
+Italian, which was the whole point of banking it. One register flag: *shippare* (t15) — the
+loanword is honest to how they talk; Aran may prefer it unborrowed.
+
+### Chapter 9 — *Lo sbaglio*
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Now the one I've been saving, because you built something and I don't think either of us has ever said out loud what it is. Your exam trees. Walk me down one. | Adesso quella che mi tenevo da parte, perché tu hai costruito una cosa, e non credo che nessuno dei due abbia mai detto ad alta voce cos'è. I tuoi alberi d'esame. Accompagnami giù per uno. |
+| ARAN | The arholiad trees. Forty a subject, two levels deep, every one written by hand. | Gli alberi arholiad. Quaranta a materia, due livelli di profondità, ognuno scritto a mano. |
+| TOM | The heater. | La stufa. |
+| ARAN | A twenty-ohm heater on two hundred and forty volts — what's the current? Child gets it wrong. Don't mark it — descend: you've got two hundred and forty volts and twenty ohms; how do you find the current? Wrong again — descend again: if you divide a voltage by a resistance, what do you get? That one they can nearly always answer. Then you climb back up, and the top question that was a wall three minutes ago is a doorstep. | Una stufa da venti ohm su duecentoquaranta volt — qual è la corrente? Il bambino sbaglia. Non dargli il voto — scendi: hai duecentoquaranta volt e venti ohm; come trovi la corrente? Sbaglia ancora — scendi ancora: se dividi una tensione per una resistenza, cosa ti viene? A quella riescono a rispondere quasi sempre. Poi risali, e la domanda in cima che tre minuti fa era un muro è un gradino di casa. |
+| TOM | And my machine, on the same wrong answer, does something that sounds identical and is a different move in a different structure. Which is the fork, so let's get both on the table properly before we start swinging. | E la mia macchina, sullo stesso sbaglio, fa una cosa che suona identica ed è una mossa diversa in una struttura diversa. Che è la biforcazione, quindi mettiamole tutte e due sul tavolo come si deve, prima di cominciare a tirare pugni. |
+| ARAN | Yours drops a rung. | La tua scende di un piolo. |
+| TOM | Mine drops a rung on the SAME question. The ladder under every node runs seven deep — recall at the top, then construct, precision, method, type and units, magnitude, and category at the bottom: is it even a fish. | La mia scende di un piolo sulla STESSA domanda. La scala sotto ogni nodo va giù per sette — richiamo in cima, poi costruzione, precisione, metodo, tipo e unità, grandezza, e categoria in fondo: ma è almeno un pesce? |
+| ARAN | Walk the heater down it. | Accompagnaci giù la stufa. |
+| TOM | Miss at precision and the next question is the same heater with wider distinctions — did you get the magnitude right, are you in amps at all — down, if it keeps going wrong, to "is current even the kind of thing we're looking for". Same node. Wider apart. Your whale rule running the show: if they missed it, maybe the question was inaudible — make it audible, find the rung they CAN hear. | Sbagli sulla precisione e la domanda dopo è la stessa stufa con distinzioni più larghe — la grandezza l'hai presa giusta, sei almeno negli ampere — giù, se continua ad andare storto, fino a «ma la corrente è almeno il tipo di cosa che stiamo cercando?». Stesso nodo. Più distanti. Con la tua regola delle balene al comando: se l'hanno sbagliata, forse la domanda era inudibile — rendila udibile, trova il piolo che RIESCONO a sentire. |
+| ARAN | Same trigger, two descents. | Stesso grilletto, due discese. |
+| TOM | Two structures. I walk down the LADDER — the distinction axis, inside one question. You walk down the ASSEMBLY — out of the question entirely, toward the prerequisite it's built from. And here's what should worry both of us: an hour ago I said a correction is the signal of another rung, and you let it straight through. | Due strutture. Io scendo giù per la SCALA — l'asse delle distinzioni, dentro una sola domanda. Tu scendi giù per l'ASSEMBLAGGIO — fuori dalla domanda del tutto, verso il prerequisito da cui è costruita. Ed ecco cosa dovrebbe preoccupare tutti e due: un'ora fa ho detto che una correzione è il segnale di un altro piolo, e tu l'hai lasciata passare liscia. |
+| ARAN | Rung of what? | Piolo di cosa? |
+| TOM | Exactly that. Rung of what. My ladder has rungs. Your tree has rungs. The sentence doesn't know which structure it lives in, and neither of us noticed for five years. | Esatto, proprio così. Piolo di cosa. La mia scala ha pioli. Il tuo albero ha pioli. La frase non sa in quale struttura vive, e nessuno dei due se n'è accorto per cinque anni. |
+| ARAN | Then let me name what your machine actually is, because I've been inside it now. It's clean. The cleanest architecture in the building — the frontier decides what you're ready for, the mastery gate swears you own the prerequisites, so by the time a question reaches you, a prerequisite failure is supposed to be impossible, and the ladder only ever has to handle slips. | Allora lascia che dica io cos'è davvero la tua macchina, perché adesso ci sono stato dentro. È pulita. L'architettura più pulita dell'edificio — la frontiera decide per cosa sei pronto, il cancello di padronanza giura che possiedi i prerequisiti, così quando una domanda ti arriva, un fallimento da prerequisito dovrebbe essere impossibile, e la scala deve gestire solo le sviste. |
+| TOM | That's the design, yes. | Il progetto è quello, sì. |
+| ARAN | And that's precisely where it's blind. The gate's oath is only as good as the graph, and the graph is always slightly wrong about what a real child owns on a real Tuesday. Your architecture handles the world where your bookkeeping is right. Mine handles the world. | Ed è esattamente lì che è cieca. Il giuramento del cancello vale quanto vale il grafo, e il grafo si sbaglia sempre un po' su cosa possiede un bambino vero un martedì vero. La tua architettura gestisce il mondo in cui la tua contabilità è giusta. La mia gestisce il mondo. |
+| TOM | And let me name what you actually built. You hand-authored, forty times a subject, by ear, the exact walk a prerequisite graph would generate — every one of your trees is a stack of assembly edges, written by a man who swears the graph doesn't need to exist. You built the second axis. My engine even HAS the machinery for it, and it's wired to selection time, never to a miss. You wired it to the miss. By hand. Forty times. | E lascia che dica io cos'hai costruito tu, davvero. Hai scritto a mano, quaranta volte a materia, a orecchio, esattamente la passeggiata che genererebbe un grafo dei prerequisiti — ognuno dei tuoi alberi è una pila di collegamenti di assemblaggio, scritta da un uomo che giura che il grafo non ha bisogno di esistere. Hai costruito il secondo asse. Il mio motore il macchinario CE L'HA pure, ed è cablato al momento della selezione, mai allo sbaglio. Tu l'hai cablato allo sbaglio. A mano. Quaranta volte. |
+| ARAN | So we've each built half of one machine, and the fight is over which half answers the phone. | Quindi abbiamo costruito mezza macchina a testa, e la lite è su quale metà risponde al telefono. |
+| TOM | The FIRST wrong answer. That's the whole fork. One event, one default. Taxonomy first, though, because we agree on more than we're about to pretend: some misses are slips— | Il PRIMO sbaglio. È tutta qui la biforcazione. Un evento, un default. Però prima la tassonomia, perché siamo d'accordo su più di quanto stiamo per fingere: certi sbagli sono sviste— |
+| ARAN | —precision, fumble, misread, the ladder's meat, no argument— | —precisione, dita che scivolano, lettura sbagliata, il pane della scala, nessuna discussione— |
+| TOM | —some are inaudible questions, distinction too fine, still ladder— | —certi sono domande inudibili, distinzione troppo fine, ancora scala— |
+| ARAN | —and some are debts. The prerequisite was never owned, the gate swore falsely, and no amount of widening THIS question touches it, because the hole is two nodes upstream. | —e certi sono debiti. Il prerequisito non è mai stato posseduto, il cancello ha giurato il falso, e per quanto allarghi QUESTA domanda il debito non lo tocchi, perché il buco è due nodi più a monte. |
+| TOM | Both structures needed. Obviously. Nobody's arguing axes exist. | Tutte e due le strutture servono. Ovviamente. Nessuno sta discutendo se gli assi esistano. |
+| ARAN | The default, then. Your machine hears the miss first — what does it do? | Il default, allora. La tua macchina sente lo sbaglio per prima — cosa fa? |
+| TOM | Ladder. Always ladder first. It's the cheapest probe there is: one wider question, same node, and a slip declares itself instantly — most misses ARE slips, and sending every fumble on a tour of the prerequisites turns a typo into a remedial event. If the fish rung fails, THEN jump structures, because now it can't be a slip. The ladder is the diagnostic; the assembly is the treatment. | Scala. Sempre prima la scala. È la sonda più economica che c'è: una domanda più larga, stesso nodo, e una svista si dichiara da sola all'istante — la maggior parte degli sbagli SONO sviste, e mandare ogni scivolone a fare il giro dei prerequisiti trasforma un refuso in un evento di recupero. Se il piolo del pesce fallisce, ALLORA salti di struttura, perché adesso non può essere una svista. La scala è la diagnosi; l'assemblaggio è la cura. |
+| ARAN | And I say by the time your fish rung fails you've marched a child through three failures in a row to confirm what the first one was screaming. Listen to the tree again — the child gets the FLOOR. Every descent of mine ends, within two questions, on something they can answer, and then they climb back up on their own legs and take the summit that beat them three minutes ago. | E io dico che quando il tuo piolo del pesce fallisce, hai già fatto marciare un bambino attraverso tre fallimenti di fila per confermare quello che il primo stava urlando. Riascolta l'albero — al bambino tocca il PAVIMENTO. Ogni mia discesa finisce, entro due domande, su qualcosa a cui sanno rispondere, e poi risalgono con le loro gambe e si prendono la vetta che li aveva battuti tre minuti fa. |
+| TOM | And mine? | E la mia? |
+| ARAN | Yours bottoms out at "is it even a fish" — the question whose honest translation is "do you know anything at all?" — and you'd serve it to a child who was one missing rung from glory. That's not a diagnostic sequence. That's an experience, being had by a person. | La tua tocca il fondo con «ma è almeno un pesce?» — la domanda la cui traduzione onesta è «ma sai qualcosa, tu?» — e la serviresti a un bambino che era a un piolo dalla gloria. Quella non è una sequenza diagnostica. È un'esperienza, che una persona sta avendo. |
+| TOM | The dignity argument. | L'argomento della dignità. |
+| ARAN | The dignity FINDING. I tested it. Forty trees, two subjects, real children, real exams — it's the best-tested thing either of us owns and I didn't theorise it, I watched it work and wrote down more of it. | La SCOPERTA della dignità. L'ho testata. Quaranta alberi, due materie, bambini veri, esami veri — è la cosa meglio testata che possediamo tra tutti e due, e non l'ho teorizzata: l'ho guardata funzionare e ne ho scritto ancora. |
+| TOM | So what you're saying is a wrong answer is a referral. | Quindi quello che stai dicendo è: uno sbaglio è un rinvio. |
+| ARAN | No. | No. |
+| TOM | Then say the bedrock, because we're there. Mine: a wrong answer is INFORMATION ABOUT THE QUESTION. The child is the one fixed point I trust; the miss tells me my question was mis-pitched or my graph is lying, and the machine's first duty is to interrogate ITSELF — which the ladder does, cheaply, before it dares conclude anything about the learner. | Allora di' la roccia in fondo, perché ci siamo. La mia: uno sbaglio è INFORMAZIONE SULLA DOMANDA. Il bambino è l'unico punto fisso di cui mi fido; lo sbaglio mi dice che la mia domanda era tarata male o che il mio grafo sta mentendo, e il primo dovere della macchina è interrogare SE STESSA — cosa che la scala fa, a poco prezzo, prima di osare concludere qualunque cosa su chi impara. |
+| ARAN | And mine: a wrong answer is AN EXPERIENCE OF A CHILD. Whatever it tells your bookkeeping, it is also, right now, a person being wrong, and what happens in the next thirty seconds decides whether they come back tomorrow. The machine's first duty is to the person having the worst moment of the session. Everything else can be logged and settled later. | E la mia: uno sbaglio è UN'ESPERIENZA DI UN BAMBINO. Qualunque cosa dica alla tua contabilità, è anche, proprio adesso, una persona che sta sbagliando, e quello che succede nei prossimi trenta secondi decide se domani tornano. Il primo dovere della macchina è verso la persona che sta avendo il momento peggiore della sessione. Tutto il resto si può registrare e sistemare dopo. |
+| TOM | Both of those are true. | Sono vere tutte e due. |
+| ARAN | Both of those are true, and they give different orders to the same machine, and one of them has to answer the phone. | Sono vere tutte e due, e danno ordini diversi alla stessa macchina, e una delle due deve rispondere al telefono. |
+| TOM | Then it stands. | Allora resta in piedi. |
+| ARAN | It stands. And notice we didn't do the thing we did with the names — there's no telemetry sentence coming, because we'd both predict the same mixed result. Some misses slips, some misses debts, film at eleven. The instrument doesn't split us. The default is a decision about what a wrong answer IS, and that's a selection, not a measurement. | Resta in piedi. E guarda che non abbiamo fatto la cosa che abbiamo fatto con i nomi — non sta arrivando nessuna frase sulla telemetria, perché tutti e due predirremmo lo stesso risultato misto. Certi sbagli sviste, certi sbagli debiti, grande notizia. Lo strumento non ci divide. Il default è una decisione su cosa È uno sbaglio, e quella è una selezione, non una misurazione. |
+| TOM | The scarce thing was always the selector. | La cosa scarsa è sempre stata il selettore. |
+| ARAN | Even here. Especially here. | Anche qui. Soprattutto qui. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| the one I've been saving | quella che mi tenevo da parte | D | *tenersi da parte* ✓ ZUT Method Ch. 11 — the saving-up frame, third outing |
+| walk me down one | accompagnami giù per uno | I | walk-someone-down has no Italian verb; *accompagnare giù* minted, reused at t8 ✓ one form |
+| every one written by hand / by ear | ognuno scritto a mano / a orecchio | D | the ***a*-of-manner** (*a mano, a orecchio, a memoria*) — **NN trap:** Spanish wobbles between *a/de* (*de memoria, a mano, de oído*) |
+| child gets it wrong / wrong again | il bambino sbaglia / sbaglia ancora | D | *sbagliare* carries the whole chapter — wrongness is a verb in Italian, an adjective in English (I at the frame level, D thereafter) |
+| don't mark it | non dargli il voto | I | negative imperative = *non* + infinitive ✓; marking → *dare il voto* |
+| what do you get? | cosa ti viene? | I | result-get → ***venire* + dative** — **NN void:** *¿qué te da?* uses dar; the venire-of-results is Italian's own |
+| that one they can nearly always answer | a quella riescono a rispondere quasi sempre | I | fronted dative + *riuscire a* ✓ |
+| then you climb back up | poi risali | D | *ri-* ✓ one verb where English needs three words |
+| a doorstep | un gradino di casa | I | the metaphor re-grounds (*gradino* keeps the ladder family in earshot — deliberate) |
+| let's get both on the table | mettiamole tutte e due sul tavolo | I | imperative + clitic + floated *tutte e due* ✓ |
+| is it even a fish | ma è almeno un pesce? | I | the even-question → *ma…almeno* — **NN:** *¿siquiera es un pez?* — the even-particle differs |
+| did you get the magnitude right | la grandezza l'hai presa giusta | I | fronting + doubling + agreement — the signature shape on a six-word question |
+| if it keeps going wrong | se continua ad andare storto | D | *continuare a* + *andare storto* ✓ both ledger |
+| you let it straight through | tu l'hai lasciata passare liscia | I | *lasciar passare* + the idiomatic feminine *liscia* |
+| rung of what? | piolo di cosa? | D | the pod's one new question survives at three words ✓ |
+| neither of us noticed | nessuno dei due se n'è accorto | I | *accorgersi* + *ne* ✓ ZUT Method Ch. 6 (*ce ne siamo accorti*) |
+| let me name what your machine actually is | lascia che dica io cos'è davvero la tua macchina | I | *lascia che* + subj + stressed *io* ✓; reused symmetrically at t17 ✓ |
+| I've been inside it now | adesso ci sono stato dentro | I | locative *ci* + essere ✓ |
+| a prerequisite failure | un fallimento da prerequisito | D | the ***da*-of-type** ✓ (*versione da aula*, Method Ch. 1) |
+| only as good as the graph | vale quanto vale il grafo | I | as-good-as → *valere quanto valere* — the valere family ✓ |
+| the graph is always slightly wrong | il grafo si sbaglia sempre un po' | D | *sbagliarsi* ✓ |
+| my engine even HAS the machinery | il mio motore il macchinario CE L'HA pure | I | fronting + ***ce l'ha*** — the ce-have void carrying the turn's stress, exactly where English uses caps |
+| we've each built half of one machine | abbiamo costruito mezza macchina a testa | D | *a testa* ✓ ZUT Ch. 2 |
+| which half answers the phone | quale metà risponde al telefono | D | *rispondere A* — and reused verbatim at t36 ✓ |
+| we agree on more than we're about to pretend | siamo d'accordo su più di quanto stiamo per fingere | D | *stare per* ✓; *fingere* ✓ |
+| no amount of widening THIS question touches it | per quanto allarghi QUESTA domanda il debito non lo tocchi | I | *per quanto* + subj — the however-much frame; the object resurfaces as *il debito* + doubling because Italian's *lo* needs an antecedent in the room |
+| both structures needed | tutte e due le strutture servono | I | needed → *servire* ✓ — the frame's shortest outing |
+| nobody's arguing axes exist | nessuno sta discutendo se gli assi esistano | D | embedded question + subj |
+| a slip declares itself instantly | una svista si dichiara da sola all'istante | D | |
+| sending every fumble on a tour of the prerequisites | mandare ogni scivolone a fare il giro dei prerequisiti | I | *fare il giro* — the fare-support again |
+| you've marched a child through three failures | hai fatto marciare un bambino attraverso tre fallimenti | I | causative *fare* ✓ |
+| in a row | di fila | D | temporal ✓ split held |
+| the child gets the FLOOR | al bambino tocca il PAVIMENTO | I | *toccare a* ✓ — the allotment frame, on the chapter's warmest line |
+| on their own legs | con le loro gambe | D | |
+| take the summit that beat them | si prendono la vetta che li aveva battuti | D | *prendersi* ✓; pluperfect + agreement *battuti* |
+| bottoms out at | tocca il fondo con | D | *toccare il fondo* |
+| whose honest translation is | la cui traduzione onesta è | D | ***la cui*** — **NN anchor:** *cuya*, exact |
+| do you know anything at all? | ma sai qualcosa, tu? | I | the postposed accusing *tu* — Italian's own cruelty, register-true |
+| one missing rung from glory | a un piolo dalla gloria | D | the *a X da Y* distance frame |
+| an experience, being had by a person | un'esperienza, che una persona sta avendo | I | the being-had passive inverts to an active relative — Italian refuses the progressive passive |
+| the best-tested thing either of us owns | la cosa meglio testata che possediamo tra tutti e due | D | invariable *meglio* + participle ✓ |
+| a referral | un rinvio | D | |
+| say the bedrock, because we're there | di' la roccia in fondo, perché ci siamo | D | *ci siamo* ✓ the ci-of-arrival |
+| the one fixed point I trust | l'unico punto fisso di cui mi fido | D | *fidarsi DI* ✓ ZUT Ch. 1 |
+| my question was mis-pitched | la mia domanda era tarata male | D | *tarare* — the calibration verb |
+| before it dares conclude anything about the learner | prima di osare concludere qualunque cosa su chi impara | D | *chi impara* ✓ |
+| whatever it tells your bookkeeping | qualunque cosa dica alla tua contabilità | D | subj ✓ |
+| whether they come back tomorrow | se domani tornano | D | |
+| everything else can be logged and settled later | tutto il resto si può registrare e sistemare dopo | I | the can-passive → *si può* ✓ |
+| both of those are true | sono vere tutte e due | I | floated quantifier + agreement — said twice, identical ✓ |
+| then it stands / it stands | allora resta in piedi / resta in piedi | D | *in piedi* ✓ ZUT Method Ch. 12 — the standing-clash lands on the pause-refusal's own words |
+| film at eleven | grande notizia | I | the idiom has no Italian; the irony maps as deadpan *grande notizia* — taste flag |
+| a selection, not a measurement | una selezione, non una misurazione | D | |
+| the scarce thing was always the selector | la cosa scarsa è sempre stata il selettore | D | Tom's own currency, kept literal by design |
+
+**Chapter 9 verdict:** the fork's Italian advantage is structural — *sbagliare/sbaglio* makes
+wrongness a verb-family where English juggles "wrong answer / miss / failure", so the two
+credos (*informazione sulla domanda / un'esperienza di un bambino*) sit on one clean root.
+Taste flags: *grande notizia* for "film at eleven"; *gradino di casa* for "doorstep".
