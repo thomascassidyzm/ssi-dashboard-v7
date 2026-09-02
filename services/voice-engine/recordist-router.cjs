@@ -40,6 +40,10 @@ const {
   propagateTakeToDuplicates,
   clearRerecordWants,
   isTestFixtureCourse,
+  parseSeedLineId,
+  linkSeedTake,
+  seedCastEntry,
+  policyVoiceList,
 } = require('./recordist-queue.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const {
@@ -374,6 +378,188 @@ module.exports = function createRecordistRouter({
     })
   }
 
+  /**
+   * The seed sentence a seed line names, plus the cast that says whether THIS
+   * recordist is the one who reads it.
+   *
+   * The cast check is done here, from the course row, rather than by rebuilding
+   * the queue: it is the same rule (voice_config.voices[role] resolved against
+   * the language policy) and it costs two reads instead of a full derivation.
+   * Without it the link would reach past its own queue -- /r/<anyone> could file
+   * a take into any seed slot of their language.
+   */
+  async function resolveSeedLine(res, recordist, parsed) {
+    const { data: seed, error: seedErr } = await db()
+      .from('course_seeds')
+      .select('id, course_code, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .eq('id', parsed.seedId)
+      .maybeSingle()
+    if (seedErr && seedErr.code !== '22P02') throw new Error(`seed lookup failed: ${seedErr.message}`)
+    if (!seed) { res.status(404).json({ error: `No seed ${parsed.seedId}` }); return null }
+
+    // THE KNOWN-SIDE EXCEPTION, CHECKED ON THE SERVER. The booth has no login,
+    // so the client's word for "this is a test course" is a suggestion. Only a
+    // zzz_ fixture may have its English side recorded (Tom, 2026-09-02).
+    if (parsed.role === 'known' && !isTestFixtureCourse(seed.course_code)) {
+      res.status(403).json({
+        error: 'The known side of a live course is not recorded here. Only a test fixture course records its English.',
+        reason: 'known_side_live_course',
+        courseCode: seed.course_code,
+      })
+      return null
+    }
+
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config').eq('course_code', seed.course_code).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${seed.course_code}` }); return null }
+
+    const policies = await loadPolicies(db())
+    const policy = policies.find((row) => row.language === recordist.language)
+    const cast = seedCastEntry(course, policyVoiceList(policy))
+    const castVoice = cast[parsed.role]
+    if (!castVoice || !recordist.spellings.includes(castVoice.voiceId)) {
+      res.status(403).json({
+        error: castVoice
+          ? `${seed.course_code} casts ${castVoice.voiceId} to read its ${parsed.role} seeds, not you.`
+          : `${seed.course_code} has nobody cast to read its ${parsed.role} seed sentences yet, so there is nothing here for you to record. Someone has to name a voice in the course's voice_config first.`,
+        reason: castVoice ? 'not_your_slot' : 'uncast_slot',
+        courseCode: seed.course_code,
+        role: parsed.role,
+      })
+      return null
+    }
+
+    const text = String((parsed.role === 'known' ? seed.known_text : seed.target_text) || '').trim()
+    return { seed, course, text, role: parsed.role }
+  }
+
+  /**
+   * A take for a SEED SENTENCE. Same upload seam as everything else on this
+   * surface -- archive-before-process, the silent-take refusal, provenance --
+   * in SCRIPT mode, which is the mode that mints a course_audio row for content
+   * that has no audio identity yet (services/script-take-filing.cjs).
+   *
+   * Then the seed's own FK is pointed at that row, and at every duplicate of the
+   * sentence across the language. The clip exists before the pointer moves and
+   * nothing is deleted: make-before-break by construction.
+   */
+  async function recordSeedTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolveSeedLine(res, recordist, parsed)
+    if (!resolved) return
+
+    if (!resolved.text) {
+      return res.status(409).json({ error: `Seed ${resolved.seed.seed_number} has no ${parsed.role} text to read.`, reason: 'empty_line' })
+    }
+    if (text && text.trim() && text.trim() !== resolved.text) {
+      // Same rule as a pod line: the stored text is authoritative, and a client
+      // that disagrees is a stale queue. Filing it anyway would put the take
+      // under an identity no queue will look up again.
+      return res.status(409).json({
+        error: 'The text on this line has changed since the queue was loaded -- reload before recording it.',
+        expected: resolved.text,
+        received: text.trim(),
+      })
+    }
+
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: resolved.seed.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: {
+          // SCRIPT mode: no pre-existing course_audio row, so one is minted and
+          // filed. `cadence: natural` is deliberate -- a seed sentence read in
+          // the booth is a whole natural read, which is the one cadence filing
+          // accepts as a clip in its own right.
+          mode: 'script',
+          cadence: 'natural',
+          role: parsed.role,
+          kind: parsed.role,
+          text: resolved.text,
+          voiceId: recordist.voiceId,
+          seedId: resolved.seed.id,
+          seedNumber: resolved.seed.seed_number,
+        },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+
+    // Filing is what makes the take playable. It never fails the upload, so its
+    // verdict has to be READ rather than assumed -- an unfiled take is bytes in
+    // S3 with nothing that can serve them, which is the 2026-08-19 silence.
+    const filing = captured.body.filing || null
+    const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
+    let linked = { linked: [] }
+    if (audioId) {
+      try {
+        linked = await linkSeedTake({ db: db(), recordist, seedId: resolved.seed.id, role: parsed.role, audioId, logger })
+      } catch (linkErr) {
+        logger.error(`[Recordist] seed link failed (take is stored and filed): ${linkErr.message}`)
+      }
+    } else {
+      logger.error(`[Recordist] seed take for ${resolved.seed.id} ${parsed.role} was NOT filed as a clip: ${filing && filing.reason}`)
+    }
+
+    return res.json({
+      ok: true,
+      audioId,
+      kind: 'seed',
+      role: parsed.role,
+      seedNumber: resolved.seed.seed_number,
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      // How many other copies of this sentence, in any course of this language,
+      // this one take also filled.
+      alsoFilled: Math.max(0, linked.linked.length - 1),
+      rawKey: captured.body.rawKey || null,
+      filing,
+    })
+  }
+
+  /** Play back the clip a seed's own slot points at. */
+  async function seedClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolveSeedLine(res, recordist, parsed)
+    if (!resolved) return
+    const audioId = resolved.seed[`${parsed.role}_audio_id`]
+    if (!audioId) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+
+    const { data: row, error } = await db()
+      .from('course_audio').select('id, s3_key, voice_id').eq('id', audioId).maybeSingle()
+    if (error) throw new Error(`seed clip lookup failed: ${error.message}`)
+    if (!row) return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
+
+    if (req.query.variant === 'raw') {
+      const { url, rawKey, notFound } = await s3.getRawSignedUrl(row.s3_key, 3600)
+      if (!rawKey) {
+        return res.status(404).json({
+          error: notFound
+            ? 'The processed clip for this take is missing from storage, so its original cannot be found.'
+            : 'No original was kept for this take.',
+          reason: notFound ? 'mastered_missing' : 'no_raw_retained',
+          audioId: row.id,
+          variant: 'raw',
+        })
+      }
+      if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: rawKey, url, variant: 'raw' })
+      return res.redirect(302, url)
+    }
+
+    const url = await s3.getAudioSignedUrl(row.id, 3600, { s3Key: row.s3_key })
+    if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: row.s3_key, url, variant: 'processed' })
+    res.redirect(302, url)
+  }
+
   // ── 2. a take ──────────────────────────────────────────────────────────────
   router.post('/voice/:voiceId/take', async (req, res) => {
     try {
@@ -413,6 +599,16 @@ module.exports = function createRecordistRouter({
       // A PACK take never reaches the upload seam. Branch is here rather than
       // at the top of the route so the multipart parse stays shared.
       if (pack) return await recordPackTake({ res, pack, itemId: lineId, audioBase64, mimeType, device })
+
+      // A SEED line carries a synthetic id (`seed:<uuid>:<role>`), because one
+      // seed row is up to three recordable lines. Branched on the prefix BEFORE
+      // any table lookup -- the same shape as the pack branch above, and
+      // necessary rather than tidy: `seed:...` is not a uuid, so handing it to
+      // the pod lookup below is a 22P02 rather than a 404.
+      const seedLine = parseSeedLineId(lineId)
+      if (seedLine) {
+        return await recordSeedTake({ req, res, recordist, parsed: { ...seedLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
 
       // The line decides the course; the recordist decides the voice.
       const { data: sentence, error: sentErr } = await db()
@@ -555,6 +751,9 @@ module.exports = function createRecordistRouter({
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
 
+      const seedLine = parseSeedLineId(req.params.lineId)
+      if (seedLine) return await seedClipResponse(req, res, recordist, { ...seedLine, raw: req.params.lineId })
+
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
         .select('id, target_text, target_audio_id')
@@ -646,6 +845,16 @@ module.exports = function createRecordistRouter({
       if (text.length > 600) return res.status(400).json({ error: 'That line is too long to read in one take.', reason: 'too_long' })
 
       const lineId = req.params.lineId
+      // Seed sentences are course content, not booth content: their text is
+      // changed on the admin side. Refused here explicitly, because a seed line
+      // id is not a uuid and the pod lookup below would answer with a database
+      // type error instead of a sentence.
+      if (parseSeedLineId(lineId)) {
+        return res.status(403).json({
+          error: 'A seed sentence is course content -- its text is changed on the admin side, not from the booth.',
+          reason: 'seed_line',
+        })
+      }
       // The course code is the first half of a pod sentence id, but it is not
       // trusted from the id: the row is read and its own pod's course is what
       // the gate is applied to.

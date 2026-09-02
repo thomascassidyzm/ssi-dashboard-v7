@@ -66,9 +66,35 @@
  *        - course_audio.rerecord_wanted — the clip's flag, which is the only
  *          one that can reach content types that are not pod dialogue.
  *
- * TARGET SIDE ONLY. The known side of every one of these courses is English,
- * 'eng' is not human_only, and so it never enters a queue. known_text rides
- * along on each line as the recordist's crib, never as something to record.
+ *   7. SEED SENTENCES — the third source (2026-09-02). A seed sentence
+ *      (course_seeds) is a real audio unit: the row carries its own
+ *      known_audio_id / target1_audio_id / target2_audio_id and the player walks
+ *      the table directly. Welsh North is at 2.8% on that column — 649 of 668
+ *      seeds have no target1 take — because it cannot fall back on TTS. Seeds
+ *      ride source (2)'s precedent rather than a bespoke path.
+ *
+ *      CAST, NEVER GUESSED. A pod line knows who reads it because the pod has a
+ *      SPEAKER and voice_config.podCast maps that speaker to a gender. A seed
+ *      sentence has no speaker. So it is cast from the course's own
+ *      voice_config.voices.target1/.target2 — the same slots the rest of the
+ *      pipeline reads — and a course that casts no human voice for a role puts
+ *      its seeds in NOBODY's queue and counts as `uncast`. That is the rule this
+ *      file already applies to a pod speaker with no cast entry, and it matters:
+ *      cym_n_for_eng currently casts neither target slot, and inventing a rule
+ *      ("the man takes target1") would hand 649 lines to somebody nobody chose.
+ *
+ * TARGET SIDE ONLY — WITH ONE EXCEPTION, AND IT STOPS AT THE TEST FIXTURE.
+ * The known side of every one of these courses is English, 'eng' is not
+ * human_only, and so it never enters a queue. known_text rides along on each
+ * line as the recordist's crib, never as something to record.
+ *
+ * Tom, 2026-09-02: "just so I can record the English and perhaps also record the
+ * X." So on a TEST FIXTURE course — and only there, checked by
+ * isTestFixtureCourse() below, server-side, because the booth is a no-login
+ * surface — a seed's KNOWN side also enters the queue, as a role:'known' line
+ * that links course_seeds.known_audio_id. No live language gains a known-side
+ * queue: not Welsh, not any other. The exception exists so the process can be
+ * driven end to end by one person on a course with no learners.
  *
  * A speaker with no podCast gender entry is NOT guessed at and NOT silently
  * dropped: it lands in neither queue and is counted as `uncast` on the coverage
@@ -351,6 +377,105 @@ function targetRerecordWanted(sentence) {
  *
  * @returns {Promise<{byBucket: Map<string, Array>, uncast, duplicatesCollapsed, courses: string[]}>}
  */
+
+/** The synthetic line id a seed sentence wears on the wire. */
+const SEED_LINE_PREFIX = 'seed:'
+
+/** ROLES a seed sentence can be read in. `known` is fixture-only (see header). */
+const SEED_TARGET_ROLES = ['target1', 'target2']
+
+/**
+ * Parse a seed line id back into (seedId, role). Returns null for anything that
+ * is not one — which is how the router keeps its branch cheap and total.
+ */
+function parseSeedLineId(lineId) {
+  const raw = String(lineId || '')
+  if (!raw.startsWith(SEED_LINE_PREFIX)) return null
+  const rest = raw.slice(SEED_LINE_PREFIX.length)
+  const at = rest.lastIndexOf(':')
+  if (at <= 0) return null
+  const seedId = rest.slice(0, at)
+  const role = rest.slice(at + 1)
+  if (!seedId || !['known', 'target1', 'target2'].includes(role)) return null
+  return { seedId, role }
+}
+
+function seedLineId(seedId, role) { return `${SEED_LINE_PREFIX}${seedId}:${role}` }
+
+/**
+ * Which POLICY voice, if any, this course casts to a given target/known slot.
+ *
+ * Read off voice_config.voices[role].voiceId and matched against the language's
+ * policy voices (including their declared aliases), so a course naming an older
+ * spelling still routes to the right person. Anything that is not a policy voice
+ * — a TTS voice id, an empty string, a name nobody recognises — is NOT a human
+ * recordist and returns null.
+ */
+function seedCastEntry(course, policyVoices) {
+  const out = {}
+  const voices = (course.voice_config && course.voice_config.voices) || {}
+  for (const role of Object.keys(voices)) {
+    const declared = String((voices[role] || {}).voiceId || '').trim()
+    if (!declared) continue
+    for (const entry of policyVoices) {
+      const aliases = new Set(Array.isArray(entry.aliases) ? entry.aliases : [])
+      if (entry.voiceId === declared || aliases.has(declared)) { out[role] = entry; break }
+    }
+  }
+  return out
+}
+
+/** The language's policy voices, flattened to {voiceId, gender, dialect, aliases}. */
+function policyVoiceList(policy) {
+  const voices = (policy && policy.voices) || {}
+  const out = []
+  for (const slot of Object.keys(voices)) {
+    const entry = voices[slot] || {}
+    if (!entry.voiceId) continue
+    out.push({
+      voiceId: entry.voiceId,
+      gender: String(entry.gender || slot.split(':')[0] || '').toLowerCase(),
+      dialect: canonicalDialect(entry.dialect),
+      aliases: Array.isArray(entry.aliases) ? entry.aliases : [],
+    })
+  }
+  return out
+}
+
+/** Page through course_seeds for a set of courses. */
+async function fetchSeeds(db, courseCodes) {
+  if (!courseCodes.length) return []
+  const PAGE = 1000
+  const out = []
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await db
+      .from('course_seeds')
+      .select('id, course_code, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .in('course_code', courseCodes)
+      .order('course_code', { ascending: true })
+      .order('seed_number', { ascending: true })
+      .range(from, from + PAGE - 1)
+    if (error) throw new Error(`seed read failed: ${error.message}`)
+    out.push(...(data || []))
+    if ((data || []).length < PAGE) break
+  }
+  return out
+}
+
+/** voice_id of each of a set of course_audio rows, in one paged read. */
+async function audioVoicesById(db, ids) {
+  const wanted = [...new Set(ids.filter(Boolean))]
+  const out = new Map()
+  const PAGE = 500
+  for (let i = 0; i < wanted.length; i += PAGE) {
+    const { data, error } = await db
+      .from('course_audio').select('id, voice_id').in('id', wanted.slice(i, i + PAGE))
+    if (error) throw new Error(`seed clip voice read failed: ${error.message}`)
+    for (const row of data || []) out.set(row.id, row.voice_id)
+  }
+  return out
+}
+
 async function buildLanguageLines(db, language) {
   const courses = await coursesForLanguage(db, language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
@@ -363,9 +488,10 @@ async function buildLanguageLines(db, language) {
     .in('course_code', [...byCourse.keys()])
   if (podErr) throw new Error(`pod list failed: ${podErr.message}`)
   const podById = new Map((pods || []).map((p) => [p.id, p]))
-  if (!podById.size) return empty
-
-  const sentences = await fetchAllSentences(db, [...podById.keys()])
+  // A language whose courses have no pods still has SEEDS (pdc_for_eng is the
+  // live case: 668 seeds, no pod). Returning early here used to be safe because
+  // pods were the only source; it is not any more.
+  const sentences = podById.size ? await fetchAllSentences(db, [...podById.keys()]) : []
 
   // Deterministic and stable, oldest-needed first: course, then pod, then the
   // line's own order within the pod. The recordist's queue must not reshuffle
@@ -499,6 +625,119 @@ async function buildLanguageLines(db, language) {
     byBucket.get(bucket).push(line)
   }
 
+  // ---- THIRD SOURCE: SEED SENTENCES ---------------------------------------
+  //
+  // See point 7 in the header. A seed is a real audio unit with its own FK, it
+  // is CAST from voice_config.voices rather than guessed at, and on a TEST
+  // FIXTURE its known (English) side is recordable too.
+  //
+  // Collapsed by clip identity in their OWN namespace, per role. Two things
+  // hang on that. Welsh has 668 seed rows carrying 306 distinct sentences, so
+  // the collapse is most of the work: one take fills every copy. And a seed line
+  // must NOT collapse into a pod line that happens to read the same, because a
+  // pod take links a pod sentence FK and would leave the seed's own FK empty --
+  // the two look identical on screen and are different rows to fill.
+  const policy = (await loadPolicies(db)).find((row) => {
+    try { return canonicalLanguage(row.language) === language } catch { return false }
+  })
+  const policyVoices = policyVoiceList(policy)
+  if (policyVoices.length) {
+    const seeds = await fetchSeeds(db, [...byCourse.keys()])
+    const seedsByCourse = new Map()
+    for (const seed of seeds) {
+      if (!seedsByCourse.has(seed.course_code)) seedsByCourse.set(seed.course_code, [])
+      seedsByCourse.get(seed.course_code).push(seed)
+    }
+
+    // One read for every clip a seed slot already points at, so "recorded" is
+    // decided by the SLOT being filled by THIS voice -- not by "some clip of
+    // this text exists somewhere", which is what the pod path can afford and a
+    // seed cannot: a known-side take is filed under language 'eng' and would
+    // never appear in a zzz recordist's own recorded-text set.
+    const linkedIds = []
+    for (const seed of seeds) {
+      linkedIds.push(seed.known_audio_id, seed.target1_audio_id, seed.target2_audio_id)
+    }
+    const clipVoice = await audioVoicesById(db, linkedIds)
+
+    const seedSeen = new Map()   // bucket -> Map(namespaced key -> representative)
+    for (const [courseCode, course] of byCourse.entries()) {
+      const cast = seedCastEntry(course, policyVoices)
+      const roles = [...SEED_TARGET_ROLES]
+      // The one exception, and it is checked here rather than trusted from a
+      // client: a fixture course's KNOWN side is recordable.
+      if (isTestFixtureCourse(courseCode)) roles.push('known')
+      const courseSeeds = seedsByCourse.get(courseCode) || []
+      if (!courseSeeds.length) continue
+
+      for (const role of roles) {
+        const voice = cast[role]
+        if (!voice || !voice.gender) {
+          // Not cast to a human recordist. Counted ONCE per (course, role) --
+          // the uncast thing is the slot, not each of 668 sentences.
+          uncast += 1
+          continue
+        }
+        const bucket = bucketKey(courseDialect(course), voice.gender)
+        if (!byBucket.has(bucket)) byBucket.set(bucket, [])
+        if (!seedSeen.has(bucket)) seedSeen.set(bucket, new Map())
+        const seenHere = seedSeen.get(bucket)
+
+        for (const seed of courseSeeds) {
+          const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
+          if (!text) continue
+          const fkVoice = clipVoice.get(seed[`${role}_audio_id`]) || null
+          const key = `${role} ${normalizeForDb(text)}`
+          if (seenHere.has(key)) {
+            const rep = seenHere.get(key)
+            rep.duplicateOf.push({ seedId: seed.id, courseCode, role })
+            // Recorded means EVERY copy's slot is filled by this voice. A rep
+            // that is linked while its duplicate is not would otherwise read as
+            // done and leave the duplicate empty for good.
+            rep.seedFilledBy.push(fkVoice)
+            duplicatesCollapsed += 1
+            continue
+          }
+          const line = {
+            id: seedLineId(seed.id, role),
+            podId: null,
+            // After every pod line and every wanted re-record, in seed order,
+            // stably: a recordist's list must not reshuffle between loads.
+            order: Number.MAX_SAFE_INTEGER,
+            seedOrder: seed.seed_number,
+            text,
+            // The crib. On the known-side line the target is the crib, and on a
+            // target line the known side is -- each says what the other is.
+            knownText: role === 'known'
+              ? (seed.target_text || null)
+              : (seed.known_text || null),
+            speaker: null,
+            courseCode,
+            textNormalized: normalizeForDb(text),
+            duplicateOf: [],
+            kind: 'seed',
+            role,
+            seedId: seed.id,
+            seedNumber: seed.seed_number,
+            seedFilledBy: [fkVoice],
+            rerecordWanted: false,
+          }
+          seenHere.set(key, line)
+          byBucket.get(bucket).push(line)
+        }
+      }
+    }
+
+    // Seed lines sort after everything else, then by seed number, then by role
+    // -- stable across reloads, which is the only property that matters here.
+    for (const lines of byBucket.values()) {
+      lines.sort((a, b) => (a.order - b.order) ||
+        ((a.seedOrder || 0) - (b.seedOrder || 0)) ||
+        String(a.role || '').localeCompare(String(b.role || '')) ||
+        String(a.id).localeCompare(String(b.id)))
+    }
+  }
+
   return { byBucket, uncast, duplicatesCollapsed, courses: [...byCourse.keys()] }
 }
 
@@ -555,9 +794,20 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
   let recorded = 0
   const lines = []
   for (const line of mine) {
-    // Both conventions on both sides — the queue's text and the stored key are
-    // each widened, so neither spelling of the same sentence can hide the other.
-    const hasTake = audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))
+    // A SEED line is scored by its own SLOT, not by "a clip of this text exists".
+    // Two reasons, both load-bearing. The known-side line is filed under the
+    // course's KNOWN language ('eng'), so it can never appear in a zzz or cym
+    // recordist's own recorded-text set and would read as outstanding forever.
+    // And a seed's target1 and target2 are two different slots holding the same
+    // words: a text-keyed check cannot tell the filled one from the empty one.
+    // `seedFilledBy` carries the voice on every copy's FK, so the line is done
+    // only when EVERY copy this take would fill is filled, by THIS voice.
+    const hasTake = line.kind === 'seed'
+      ? (line.seedFilledBy || []).length > 0 &&
+        (line.seedFilledBy || []).every((v) => v && recordist.spellings.includes(v))
+      // Both conventions on both sides — the queue's text and the stored key are
+      // each widened, so neither spelling of the same sentence can hide the other.
+      : audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))
     // A wanted line is outstanding even though a take exists. The take is not
     // touched — it stays linked and playable, and the recordist can A/B it on
     // this very page — it simply stops counting as done.
@@ -575,7 +825,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Playback of the STORED bytes, never a local blob (route 3). Keyed off
         // hasTake, NOT isRecorded: a line queued for a re-record still has an
         // old take, and hearing it is the whole point of re-recording it.
-        clipUrl: hasTake ? `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${line.id}/clip` : null,
+        clipUrl: hasTake ? `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(line.id)}/clip` : null,
         // There is an existing take AND we are asking for it again — the surface
         // badges these as "re-record" rather than "not recorded yet", and it is
         // the flag the A/B preview hangs off.
@@ -591,10 +841,17 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         kind: line.kind || 'pod',
         role: line.role || null,
         rerecordReason: line.rerecordReason || null,
+        // Which seed sentence this is, for the surface to say so in words. Null
+        // on every other kind of line.
+        seedNumber: line.seedNumber || null,
         // May the recordist rewrite this line's text from the booth? True only
         // on a test fixture, and the server checks it again on the write — this
         // is what the screen draws, never what the write trusts.
-        canEditText: isTestFixtureCourse(line.courseCode),
+        // A SEED sentence is course content — its text is changed on the admin
+        // side, under the content-change protocol. Saying so here rather than
+        // only on the write is what stops the booth drawing an Edit button that
+        // can only ever answer 403.
+        canEditText: line.kind !== 'seed' && isTestFixtureCourse(line.courseCode),
       })
     }
   }
@@ -848,6 +1105,67 @@ async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Ke
  * clears a flag rather than deleting anything. A failure here leaves a line
  * queued a second time — visible and harmless — so it never fails the take.
  */
+/**
+ * Point a seed's own audio slot at a take that ALREADY EXISTS -- and every
+ * duplicate of that seed across the language, which is the other half of the
+ * queue's collapse promise.
+ *
+ * MAKE-BEFORE-BREAK BY CONSTRUCTION. The course_audio row is filed by the upload
+ * seam before this runs; nothing is deleted and nothing is unlinked. A slot
+ * already pointing at ANOTHER voice's clip is left exactly as it is -- that
+ * voice's course keeps working -- and only a slot that is empty, or already this
+ * voice's own earlier take, moves.
+ *
+ * Why this is explicit rather than left to the audio_autolink trigger: the
+ * trigger refuses to link when the course names no configured voice for the role
+ * (audio_configured_voice), which is the case on cym_n_for_eng, where both
+ * target slots are the empty string. Pod sentence FKs are re-pointed explicitly
+ * for the same class of reason.
+ *
+ * @returns {Promise<{linked: Array<{seedId, courseCode, from}>}>}
+ */
+async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = console }) {
+  const out = { linked: [] }
+  if (!audioId) return out
+
+  const { data: seed, error: seedErr } = await db
+    .from('course_seeds').select('id, course_code, known_text, target_text').eq('id', seedId).maybeSingle()
+  if (seedErr) throw new Error(`seed read failed: ${seedErr.message}`)
+  if (!seed) return out
+
+  const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
+  if (!text) return out
+  const key = normalizeForDb(text)
+
+  const courses = await coursesForLanguage(db, recordist.language)
+  const siblings = await fetchSeeds(db, courses.map((c) => c.course_code))
+  const owners = new Map()
+  const candidates = siblings.filter((row) => {
+    const rowText = String((role === 'known' ? row.known_text : row.target_text) || '').trim()
+    return rowText && normalizeForDb(rowText) === key
+  })
+  const held = candidates.map((row) => row[`${role}_audio_id`]).filter(Boolean)
+  if (held.length) {
+    const voices = await audioVoicesById(db, held)
+    for (const [id, voice] of voices.entries()) owners.set(id, voice)
+  }
+
+  for (const row of candidates) {
+    const current = row[`${role}_audio_id`]
+    if (current === audioId) continue
+    if (current && !recordist.spellings.includes(owners.get(current))) {
+      // Somebody else's clip is in that slot. Not ours to move.
+      logger.warn(`[Recordist] seed ${row.id} ${role} already holds ${owners.get(current) || 'an unknown voice'} -- left alone`)
+      continue
+    }
+    const { error } = await db
+      .from('course_seeds').update({ [`${role}_audio_id`]: audioId }).eq('id', row.id)
+    if (error) { logger.error(`[Recordist] seed link failed for ${row.id}: ${error.message}`); continue }
+    out.linked.push({ seedId: row.id, courseCode: row.course_code, from: current || null })
+  }
+  return out
+}
+
 async function clearRerecordWants({ db, recordist, text, sentenceId = null, logger = console }) {
   const keys = audioKeyCandidates(String(text || '').trim())
   const cleared = { clips: 0, sentences: 0 }
@@ -916,6 +1234,12 @@ module.exports = {
   recordedSpellings,
   castEntryFor,
   buildLanguageLines,
+  linkSeedTake,
+  seedCastEntry,
+  policyVoiceList,
+  parseSeedLineId,
+  seedLineId,
+  SEED_LINE_PREFIX,
   buildQueue,
   buildCoverage,
   recordedTextKeys,
