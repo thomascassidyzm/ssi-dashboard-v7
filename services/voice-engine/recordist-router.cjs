@@ -296,6 +296,9 @@ module.exports = function createRecordistRouter({
         // Echoed back so the screen can say which volume it is showing rather
         // than assuming its own query survived.
         maxSeed: quarryMaxSeed || null,
+        // How big the minimal set is, in the two units a recordist standing at
+        // a microphone actually cares about. Null when the course has no set.
+        quarry: queue.quarry,
         total: queue.total,
         recorded: queue.recorded,
         remaining: queue.remaining,
@@ -619,24 +622,30 @@ module.exports = function createRecordistRouter({
     }
 
     const wanted = String(parsed.key)
+    // A WHOLE WORD, not a substring. `ilike '%yo%'` matches "yolanda", and a
+    // take filed under a word this course never says on its own is a clip the
+    // splicer would happily reach for. The ilike narrows the read; the boundary
+    // test decides.
+    const isWholeWord = (text) => new RegExp(`(^|[^\\p{L}\\p{N}])${wanted.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([^\\p{L}\\p{N}]|$)`, 'iu')
+      .test(String(text || ''))
     const { data: hit, error } = await db()
       .from('course_legos').select('lego_id, target_text')
       .eq('course_code', course.course_code)
       .ilike('target_text', `%${wanted}%`)
-      .limit(1)
+      .limit(50)
     if (error) throw new Error(`word lookup failed: ${error.message}`)
     // A word that appears inside no LEGO of the course may still be a genuine
     // fallback -- the fallback set exists precisely because some words no LEGO
     // covers -- so the LEGO probe cannot refuse it. The phrase table decides.
-    let seen = !!(hit && hit.length)
+    let seen = (hit || []).some((r) => isWholeWord(r.target_text))
     if (!seen) {
       const { data: ph, error: pErr } = await db()
-        .from('course_practice_phrases').select('id')
+        .from('course_practice_phrases').select('id, target_text')
         .eq('course_code', course.course_code)
         .ilike('target_text', `%${wanted}%`)
-        .limit(1)
+        .limit(50)
       if (pErr) throw new Error(`word lookup failed: ${pErr.message}`)
-      seen = !!(ph && ph.length)
+      seen = (ph || []).some((r) => isWholeWord(r.target_text))
     }
     if (!seen) {
       res.status(404).json({ error: `"${wanted}" does not appear in ${course.course_code}`, reason: 'not_in_course' })

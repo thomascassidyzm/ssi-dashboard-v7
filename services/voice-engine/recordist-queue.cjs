@@ -520,7 +520,7 @@ async function audioVoicesById(db, ids) {
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED } = {}) {
   const courses = await coursesForLanguage(db, language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  const empty = { byBucket: new Map(), uncast: 0, duplicatesCollapsed: 0, courses: [...byCourse.keys()] }
+  const empty = { byBucket: new Map(), uncast: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
   if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
@@ -546,6 +546,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   })
 
   const byBucket = new Map()
+  // The minimal set's own arithmetic, so the screen can say how big the job is
+  // in lines and minutes without re-deriving it from the rows it was handed.
+  let quarryStats = null
   const seen = new Map()   // bucket -> Map(normalized text -> representative line)
   let uncast = 0
   let duplicatesCollapsed = 0
@@ -800,12 +803,27 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         continue
       }
       if (!quarry) continue
+      quarryStats = {
+        courseCode,
+        maxSeed: quarry.maxSeed,
+        pieces: quarry.stats.quarryPieces,
+        legos: quarry.stats.quarryLegos,
+        words: quarry.stats.quarryFallbackWords,
+        sentences: quarry.stats.seedsWhole,
+        lines: quarry.stats.lines,
+        // Rounded to whole minutes on purpose: this is an estimate of how long
+        // an evening's reading is, and a decimal place would be a lie about it.
+        minutes: Math.max(1, Math.round(quarry.stats.totalSeconds / 60)),
+      }
       const bucket = bucketKey(courseDialect(course), voice.gender)
       if (!byBucket.has(bucket)) byBucket.set(bucket, [])
 
       quarry.pieces.forEach((piece, i) => {
         byBucket.get(bucket).push({
-          id: quarryLineId(courseCode, piece.source, piece.key),
+          // The LEGO's OWN id, not its normalised text: on this estate lego_id
+          // IS the target text, and the two differ the moment a LEGO carries
+          // punctuation or a capital. The take route looks the row up by it.
+          id: quarryLineId(courseCode, piece.source, piece.source === 'lego' ? piece.legoId : piece.key),
           podId: null,
           // Between the re-records and the seed sentences: it is new reading,
           // but it is the one thing Tom came here to do tonight.
@@ -848,7 +866,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
   }
 
-  return { byBucket, uncast, duplicatesCollapsed, courses: [...byCourse.keys()] }
+  return { byBucket, uncast, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
 }
 
 /**
@@ -983,6 +1001,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     remaining: mine.length - recorded,
     uncast: language.uncast,
     duplicatesCollapsed: language.duplicatesCollapsed,
+    quarry: language.quarry || null,
     courses: language.courses,
   }
 }

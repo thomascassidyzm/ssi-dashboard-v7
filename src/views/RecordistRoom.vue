@@ -30,6 +30,29 @@
            answered by reading, not by guessing. -->
       <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
 
+      <!-- HOW MUCH OF THE COURSE. Tom asked for the burden at "30 SEEDS,
+           50/100/150/300" and this is where he can see it scale: the minimal
+           set is the only thing on this screen whose size is a choice, so the
+           control lives with it and nowhere else. Shown only when there IS a
+           set — every other recordist on this estate has none. -->
+      <div v-if="quarry" class="volume-card">
+        <h3>The minimal set — {{ quarry.lines }} lines, about {{ quarry.minutes }} minutes</h3>
+        <p class="volume-note">
+          {{ quarry.legos }} chunks and {{ quarry.words }} single words, read slowly, plus
+          {{ quarry.sentences }} whole sentences at your natural pace. Spliced back together, they make every
+          phrase in the first {{ quarry.maxSeed }} sentences of the course.
+        </p>
+        <div class="volume-row">
+          <span class="volume-label">How much of the course?</span>
+          <button
+            v-for="n in SEED_VOLUMES" :key="n" type="button"
+            class="volume-btn" :class="{ on: (quarry.maxSeed || 0) === n }"
+            :disabled="phase !== 'ready'"
+            @click="setVolume(n)"
+          >{{ n }}</button>
+        </div>
+      </div>
+
       <RecordistRoster
         :sections="rosterSections"
         :playing-id="playingId"
@@ -453,6 +476,9 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // How many other copies of the same sentence this one take also fills.
   alsoFills: Number(l.alsoFills) || 0,
   kind: l.kind || 'pod',
+  // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
+  // are told apart at a glance, and onNext acts on it below.
+  readStyle: l.readStyle || 'natural',
 })))
 
 // THE THREE KINDS OF WORK, NAMED. Tom, 2026-09-02: "I want all the TYPES of
@@ -470,6 +496,17 @@ const rosterRows = computed(() => lines.value.map(l => ({
 const SECTION_ORDER = [
   { key: 'pod', heading: 'Conversations', blurb: 'Your half of a scripted conversation — the other characters are read by someone else.' },
   { key: 'seed', heading: 'New sentences', blurb: 'Single sentences from the course itself. Most have never been recorded by anyone.' },
+  // TOM'S OWN SET, 2026-09-02: "ideally I just want the minimal phrase set,
+  // that I can record so we can test the dice and splice approach." The
+  // smallest set of chunks that recombine into every phrase in the course. Its
+  // internal names -- LEGO, quarry, covering set -- never reach this screen,
+  // for the same reason "pod" and "seed" do not.
+  //
+  // It sits between the re-records and the new sentences because it is new
+  // reading, but it is the thing he came here to do. The set's SECOND speed --
+  // the whole natural sentences -- is the 'seed' section directly below it, and
+  // the blurb says so rather than duplicating those lines into two places.
+  { key: 'quarry', heading: 'The minimal set', blurb: 'The smallest set of chunks that can be recombined into every phrase in the course. Read these slowly, with a clear gap between the words, so each one can be cut out cleanly. The full sentences below are read at your natural pace.' },
   { key: 'rerecord', heading: 'Lines to record again', blurb: 'Already recorded once, and being asked for again. Each one says why. Nothing is deleted until the new take lands.' },
 ]
 const rosterSections = computed(() => {
@@ -498,7 +535,16 @@ const current = computed(() => lines.value[index.value] || null)
 // loud or they are indistinguishable.
 const lineKindWords = computed(() => {
   const l = current.value
-  if (!l || l.kind !== 'seed') return null
+  if (!l) return null
+  // A minimal-set piece is a CHUNK, not a sentence, and it is read differently
+  // from everything else on this screen. Saying which of the two speeds this
+  // line is is the whole reason the set has two of them.
+  if (l.kind === 'quarry') {
+    return l.quarrySource === 'word'
+      ? 'One word - read it slowly, on its own'
+      : 'A chunk - read it slowly, with a gap between the words'
+  }
+  if (l.kind !== 'seed') return null
   const which = l.role === 'known' ? 'English side' : (l.role === 'target2' ? 'second voice' : null)
   const number = l.seedNumber ? `Seed sentence ${l.seedNumber}` : 'Seed sentence'
   return which ? `${number} - ${which}` : number
@@ -996,6 +1042,40 @@ async function onNext(source = 'tap') {
 // early costs nothing but a slightly longer clip. Under the old per-line
 // recorder the same feature would have cut every take.
 const AUTO_ADVANCE_QUIET_MS = 1200
+
+// A GAPPED READ IS FULL OF PAUSES THAT LOOK EXACTLY LIKE THE END OF A TAKE.
+//
+// The minimal set is read slowly, with deliberate dead space around the words,
+// so a splice cut lands in silence rather than mid-gesture. That is the one new
+// reading style this whole feature exists to capture -- and at 1200ms the
+// studio would advance off the line while the recordist was still mid-chunk,
+// filing a third of a piece and calling it done. The pause IS the performance
+// here, so the line waits longer before it decides the reader has finished.
+//
+// This is the only change to record mode, which Tom has otherwise ruled
+// excellent. Nothing else about how a line is served moves: the capture is
+// continuous and never truncated (useTapRecorder keeps the outgoing recorder
+// running for its tail), so auto-advance was the only thing a gapped read could
+// trip.
+const GAPPED_QUIET_MS = 3000
+const quietMsForCurrentLine = computed(() =>
+  current.value && current.value.readStyle === 'gapped' ? GAPPED_QUIET_MS : AUTO_ADVANCE_QUIET_MS)
+
+// THE VOLUMES Tom named, 2026-09-02. 30 is the default and it is the honest
+// one: 198 lines, about 13 minutes, which is genuinely an evening job. The
+// others are here so he can see what the burden does as the course grows
+// before anyone commits a community recordist to it.
+const SEED_VOLUMES = [30, 50, 100, 150, 300]
+const maxSeed = ref(null)
+const quarry = ref(null)
+function setVolume(n) {
+  if (maxSeed.value === n) return
+  maxSeed.value = n
+  // A reload, not a filter: the set is COMPUTED from the ceiling, so a bigger
+  // volume is different lines rather than more of the same ones.
+  load()
+}
+
 const autoAdvance = ref(true)
 watch(() => recorder.quietMs.value, (ms) => {
   if (!autoAdvance.value || phase.value !== 'recording' || busy.value) return
@@ -1008,7 +1088,7 @@ watch(() => recorder.quietMs.value, (ms) => {
   // watcher cannot fire again until the recordist has actually said something on
   // the NEW line. A timer here would be doing nothing that the recorder is not
   // already doing, so there isn't one.
-  if (ms >= AUTO_ADVANCE_QUIET_MS) onNext('auto')
+  if (ms >= quietMsForCurrentLine.value) onNext('auto')
 })
 
 async function onAgain() {
@@ -1131,8 +1211,9 @@ async function load() {
     // locally. The re-read checkbox then toggles instantly instead of costing a
     // round trip mid-session, and the progress line can say "8 of 87" — which
     // it cannot do if the server has already dropped the 8.
+    const seedParam = maxSeed.value ? `&maxSeed=${maxSeed.value}` : ''
     const res = await fetch(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1`,
+      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}`,
       { headers: { 'ngrok-skip-browser-warning': 'true' } }
     )
     if (res.status === 404) { phase.value = 'unknown'; return }
@@ -1146,6 +1227,12 @@ async function load() {
     // would file a third of a take and call it done. The reader can still turn
     // it back on with the checkbox; this only decides where it starts.
     if (data.autoAdvance === false) autoAdvance.value = false
+    // Read back from the SERVER's answer, never assumed from what we asked for:
+    // the ceiling is clamped there, and a screen that reports the number it
+    // requested rather than the one it got is the kind of quiet lie this booth
+    // has been bitten by before.
+    quarry.value = data.quarry || null
+    if (data.quarry && data.quarry.maxSeed) maxSeed.value = data.quarry.maxSeed
     lines.value = Array.isArray(data.lines) ? data.lines : []
     doneIds.value = new Set()
     sessionIds.value = []
@@ -1221,6 +1308,29 @@ kbd {
   background: var(--color-void, #0f172a); color: var(--color-paper, #f7f7f2);
   border: 1px solid var(--color-graphite, #475569); font-size: 1rem; min-height: 48px;
 }
+/* THE MINIMAL SET's own card. Deliberately quiet: it sits above the roster and
+   answers "how big is this job" in one line, which is the question a recordist
+   standing at a microphone is actually asking. */
+.volume-card {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  margin: 1rem 0 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+}
+.volume-card h3 { margin: 0 0 0.35rem; font-size: 1rem; }
+.volume-note { margin: 0 0 0.7rem; font-size: 0.85rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
+.volume-row { display: flex; flex-wrap: wrap; align-items: center; gap: 0.45rem; }
+.volume-label { font-size: 0.85rem; color: var(--color-paper-dim, #c1c1bb); margin-right: 0.25rem; }
+.volume-btn {
+  min-width: 3.2rem; min-height: 2.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px; background: transparent;
+  color: inherit; font: inherit; font-size: 0.9rem; cursor: pointer;
+}
+.volume-btn.on { background: var(--color-emerald, #06ffa5); color: #07110c; border-color: transparent; font-weight: 600; }
+.volume-btn:disabled { opacity: 0.5; cursor: default; }
+
 .toggle-row { display: flex; gap: 0.7rem; align-items: flex-start; cursor: pointer; margin: 1rem 0 1.5rem; }
 .toggle-row input { margin-top: 0.2rem; width: 20px; height: 20px; accent-color: var(--color-emerald, #06ffa5); flex-shrink: 0; }
 .toggle-row strong { display: block; font-size: 0.95rem; }
