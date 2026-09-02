@@ -9,10 +9,15 @@
  *      host profiles + design notes → listening_pods.metadata
  *
  * Usage:
- *   node tools/pod-sync.cjs <markdown-file> --course=spa_for_eng --type=core --slug=pod-0
- *   node tools/pod-sync.cjs ~/Desktop/spanish-pods.md --course=spa_for_eng --type=core --slug=pod-0
+ *   node tools/pod-sync.cjs ~/Desktop/spanish-pods.md --course=spa_for_eng --type=core --slug=pod-0-unrecorded
  *   node tools/pod-sync.cjs ~/Desktop/spanish-podcast-music.md --course=spa_for_eng --type=choice --slug=music
  *   node tools/pod-sync.cjs <file> --dry-run   # parse + print summary, don't write
+ *
+ * THE EXAMPLES DELIBERATELY DO NOT SAY --slug=pod-0 (2026-09-02). They used to, twice,
+ * which handed every operator a live serving slug as the worked example of a destructive
+ * resync. `pod-0` and `pod-1` are what the player resolves a course's pod by, and this
+ * tool now REFUSES them unless --serve-now is passed. Sync to a parked slug and switch
+ * over with tools/pods/pod-switchover.cjs, which carries learner progress across.
  *
  * Upsert semantics:
  *   - Pod row is upserted by (course_code, slug) — safe to re-run on edits.
@@ -20,6 +25,9 @@
  *     Audio IDs on course_audio survive because the sentences table has ON DELETE
  *     SET NULL on those FKs — but once sentences are re-inserted, audio links must
  *     be re-established by the Phase 8 pod-audio step (matches on text+role hash).
+ *     That is why a resync onto a served pod is not a small act: the learners hear
+ *     nothing until Phase 8 has run, and their progress rows point at ids that were
+ *     deleted and rewritten underneath them.
  */
 
 require('dotenv').config({ path: require('path').resolve(__dirname, '../.env') });
@@ -27,6 +35,7 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 const approvals = require('../services/pod-voice-approvals.cjs');
+const { servingRefusal } = require('./pods/serving-slug.cjs');
 
 // LAZY on purpose. This module is the one implementation of pod casting
 // (assignVoices), so it is imported by things that must not open a DB
@@ -807,8 +816,62 @@ function parseMarkdown(markdown) {
 // DB upsert
 // ---------------------------------------------------------------------------
 
+/**
+ * PURE. Would this sync empty and refill a pod learners are being served? Returns the
+ * refusal text, or null. (2026-09-02 — the second of the three doors job #93 left open.)
+ *
+ * WHY THIS EXISTS. This tool's write is WHOLESALE REPLACE: DELETE every sentence row of
+ * the pod, then INSERT the markdown's. It knew nothing about which slugs the player
+ * SERVES, it carries no progress migration, and the rows it re-inserts have no audio
+ * ids at all. Point it at a live course's pod-0 with a markdown one line different and
+ * you empty a served pod under live learners, orphan their progress against deleted
+ * sentence ids, and leave the pod silent until Phase 8 re-records it. Its own usage
+ * examples handed you `--slug=pod-0` as the way to do that.
+ *
+ * The rule is NOT written here — it lives once in tools/pods/serving-slug.cjs, shared
+ * with clone-pod and the pod generator. This function is only pod-sync's wording.
+ *
+ * It refuses an UNDELIBERATE write, not a legitimate swap: --serve-now goes through, and
+ * a pod switchover (which carries progress) does not come through this tool at all.
+ */
+function syncRefusal ({ podId, slug, podType, podExists, podVisibility, rows = 0, learnersOnCourse, learnersOnPod, serveNow = false }) {
+  return servingRefusal({
+    podId, slug, podType, podExists, podVisibility, rows,
+    learnersOnCourse, learnersOnPod, serveNow,
+    action: 'This sync DELETES every sentence row of that pod and re-inserts the markdown,',
+    harm: 'so their progress rows point at sentence ids that no longer exist, and the re-inserted rows carry no audio at all until the Phase 8 pod-audio step re-links them — the pod plays silent in the meantime.',
+    escape: '--serve-now',
+    remedy: 'Sync to a parked slug (pod-0-unrecorded is the convention) and switch over with tools/pods/pod-switchover.cjs, which carries learner progress across',
+  })
+}
+
+/**
+ * The counts syncRefusal needs, read through supabase-js. clone-pod asks the same
+ * question in SQL through `pg` because that is the client it has; the RULE is shared,
+ * the query is written in each client's own dialect. A read that fails yields null,
+ * which the rule treats as a reason to refuse — never as a reason to allow.
+ */
+async function readServingFacts(courseCode, podId) {
+  const { data: pod } = await db()
+    .from('listening_pods').select('id, pod_type, visibility').eq('id', podId).maybeSingle();
+  const { count: rows } = await db()
+    .from('listening_pod_sentences').select('id', { count: 'exact', head: true }).eq('pod_id', podId);
+  let learnersOnCourse = null;
+  let learnersOnPod = null;
+  try {
+    const { data: state, error } = await db()
+      .from('learner_pod_state').select('learner_id, sentence_id').eq('course_code', courseCode);
+    if (error) throw new Error(error.message);
+    learnersOnCourse = new Set((state || []).map(r => r.learner_id)).size;
+    learnersOnPod = new Set((state || []).filter(r => String(r.sentence_id || '').startsWith(`${podId}:`)).map(r => r.learner_id)).size;
+  } catch (e) {
+    console.error(`WARNING: learner_pod_state count failed (${e.message}) — the destination gate will treat the count as unavailable`);
+  }
+  return { pod, rows: rows || 0, learnersOnCourse, learnersOnPod };
+}
+
 async function syncPod(markdownPath, options) {
-  const { courseCode, podType, slug, dryRun = false, verbose = false } = options;
+  const { courseCode, podType, slug, dryRun = false, verbose = false, serveNow = false } = options;
   if (!fs.existsSync(markdownPath)) throw new Error(`File not found: ${markdownPath}`);
 
   const markdown = fs.readFileSync(markdownPath, 'utf8');
@@ -846,6 +909,22 @@ async function syncPod(markdownPath, options) {
   ]);
   const pin = checkCastPin(courseCode, podId, approvalsMap[courseCode] || null, existingCastPods, speakers);
   if (!pin.ok) throw new Error(pin.message);
+
+  // SERVING-DESTINATION GATE. Runs before any write and in DRY RUN too, so a --dry-run
+  // tells the truth about what the real thing would do. See syncRefusal() above.
+  const facts = await readServingFacts(courseCode, podId);
+  const refusal = syncRefusal({
+    podId, slug,
+    // A pod that does not exist yet will be CREATED carrying the --type you passed.
+    podType: facts.pod ? facts.pod.pod_type : podType,
+    podExists: !!facts.pod,
+    podVisibility: facts.pod ? facts.pod.visibility : null,
+    rows: facts.rows,
+    learnersOnCourse: facts.learnersOnCourse,
+    learnersOnPod: facts.learnersOnPod,
+    serveNow,
+  });
+  if (refusal) throw new Error(`REFUSING to sync: ${refusal}`);
 
   console.log(`\n🎧 Pod Sync: ${markdownPath}`);
   console.log(`   Target:   ${podId}  (type=${podType})`);
@@ -956,10 +1035,13 @@ Options:
   --slug=<slug>       Pod slug (required) e.g. pod-0, music, travel-situations
   --dry-run           Parse + print summary, do not write to DB
   --verbose           Show per-section and per-speaker breakdown
+  --serve-now         YES, DELIBERATELY sync onto a slug learners are served (pod-0,
+                      pod-1). Without it this tool refuses those slugs, because the
+                      sync empties the pod and the re-inserted rows have no audio.
 
 Examples:
   node tools/pod-sync.cjs ~/Desktop/spanish-pods.md \\
-    --course=spa_for_eng --type=core --slug=pod-0
+    --course=spa_for_eng --type=core --slug=pod-0-unrecorded
 
   node tools/pod-sync.cjs ~/Desktop/spanish-podcast-music.md \\
     --course=spa_for_eng --type=choice --slug=music --verbose
@@ -986,6 +1068,7 @@ Examples:
   const slug = getArg('--slug');
   const dryRun = !!getArg('--dry-run');
   const verbose = !!getArg('--verbose');
+  const serveNow = !!getArg('--serve-now');
 
   if (!courseCode || !podType || !slug) {
     console.error('❌ --course, --type, and --slug are required');
@@ -998,7 +1081,7 @@ Examples:
 
   try {
     await syncPod(path.resolve(markdownPath.replace(/^~/, process.env.HOME)), {
-      courseCode, podType, slug, dryRun, verbose,
+      courseCode, podType, slug, dryRun, verbose, serveNow,
     });
     console.log('\n✨ Done!\n');
   } catch (err) {
@@ -1013,5 +1096,5 @@ module.exports = {
   parseMarkdown, syncPod, assignVoices, resolveCast,
   canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
   loadVoicePools, poolKeyFor, poolKeysForCourse, normaliseOverrides,
-  checkCastPin,
+  checkCastPin, syncRefusal,
 };
