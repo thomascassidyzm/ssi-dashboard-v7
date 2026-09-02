@@ -331,3 +331,79 @@ describe('RecordistRoom — one tap back onto a line', () => {
     expect(wrapper.find('.stage-progress').text()).toContain('Recording')
   })
 })
+
+
+// THE MAP TOM ASKED FOR. Three kinds of work in one queue, and until 2026-09-02
+// the screen added them together into a single number that answered nothing:
+// "441 lines?  why so many??? there's only 231 lines in POD-1". Each kind now
+// carries its own count and its own done-so-far, in his order, and the sections
+// must always add back up to the whole queue — a line that falls out of the map
+// is the one failure this screen cannot afford.
+function stubThreeKindQueue() {
+  global.fetch = vi.fn().mockResolvedValue({
+    ok: true, status: 200,
+    json: async () => ({
+      displayName: 'Aran', languageName: 'Welsh', total: 4, recorded: 1, remaining: 3,
+      lines: [
+        { id: 'p-1', order: 1, text: 'Bore da', speaker: 'James', kind: 'pod', recorded: true, clipUrl: '/c/p-1', alsoFills: 2 },
+        { id: 'p-2', order: 2, text: 'Sut mae?', speaker: 'Waiter', kind: 'pod', recorded: false, clipUrl: null },
+        { id: 's-1', order: 3, text: 'Dw i eisiau mynd', kind: 'seed', seedNumber: 12, recorded: false, clipUrl: null },
+        { id: 'r-1', order: 4, text: 'Llygaid blin', kind: 'rerecord', recorded: false, rerecordWanted: true,
+          rerecordReason: 'The text says angry eyes but the recording says pretty.', clipUrl: '/c/r-1' },
+      ],
+    }),
+  })
+}
+
+describe('RecordistRoom — the three kinds of work, disambiguated', () => {
+  beforeEach(() => { stubThreeKindQueue() })
+
+  it('names each kind with its own count and its own done-so-far, in Tom\'s order', async () => {
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+
+    const map = wrapper.findAll('.section-map-row')
+    expect(map).toHaveLength(3)
+    expect(map[0].find('.sm-name').text()).toBe('Conversations')
+    expect(map[0].find('.sm-count').text()).toBe('2 lines, 1 done')
+    expect(map[1].find('.sm-name').text()).toBe('New sentences')
+    expect(map[1].find('.sm-count').text()).toBe('1 line, 0 done')
+    expect(map[2].find('.sm-name').text()).toBe('Lines to record again')
+    expect(map[2].find('.sm-count').text()).toBe('1 line, 0 done')
+
+    // Our own words never reach a voice artist's screen.
+    const shown = wrapper.text()
+    expect(shown).not.toMatch(/\bPOD\b|\bSEED\b/)
+  })
+
+  it('shows the character on a conversation line and the reason on a re-record', async () => {
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+    await wrapper.find('.roster-toggle').trigger('click')
+
+    const sections = wrapper.findAll('.roster-list .section')
+    expect(sections).toHaveLength(3)
+    expect(sections[0].find('.row-speaker').text()).toBe('James')
+    expect(sections[0].find('.row-also').text()).toContain('2 other lines')
+    expect(sections[2].find('.row-reason').text()).toContain('angry eyes')
+
+    // Every line in the queue is in exactly one section: nothing disappears.
+    expect(wrapper.findAll('.roster-list .row')).toHaveLength(4)
+  })
+
+  it('hides a kind the recordist has none of, rather than showing it as zero', async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true, status: 200,
+      json: async () => ({
+        displayName: 'Someone', languageName: 'Welsh', total: 1, recorded: 0, remaining: 1,
+        lines: [{ id: 's-1', order: 1, text: 'Dw i eisiau mynd', kind: 'seed', recorded: false, clipUrl: null }],
+      }),
+    })
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'someone' } })
+    await flushPromises()
+
+    const map = wrapper.findAll('.section-map-row')
+    expect(map).toHaveLength(1)
+    expect(map[0].find('.sm-name').text()).toBe('New sentences')
+  })
+})

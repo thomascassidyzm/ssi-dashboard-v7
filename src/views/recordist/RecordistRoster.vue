@@ -6,7 +6,7 @@
          and "how far am I" is answered before any words are. -->
     <div class="strip" :title="`${doneCount} recorded, ${todoCount} still to read`">
       <span
-        v-for="r in rows"
+        v-for="r in allRows"
         :key="r.id"
         class="tick"
         :class="{ done: r.done }"
@@ -16,15 +16,36 @@
       <strong>{{ doneCount }} recorded</strong> · {{ todoCount }} still to read
     </p>
 
+    <!-- THE MAP, AND IT IS THE POINT OF THIS COMPONENT. Tom, 2026-09-02, looking
+         at Aran's link: "441 lines? why so many??? there's only 231 lines in
+         POD-1". One total answered nothing, because the number was three
+         different jobs stacked on top of each other. So the three jobs are named
+         here, in a recordist's own words, each carrying its OWN count and its own
+         done-so-far — 80 conversation lines, 305 new sentences, 56 to read again
+         — and a job the reader does not have is not shown at all. -->
+    <ul class="section-map">
+      <li v-for="s in sections" :key="s.key" class="section-map-row">
+        <span class="sm-name">{{ s.heading }}</span>
+        <span class="sm-count">{{ s.rows.length }} {{ s.rows.length === 1 ? 'line' : 'lines' }}, {{ sectionDone(s) }} done</span>
+        <span class="sm-blurb">{{ s.blurb }}</span>
+      </li>
+    </ul>
+
     <!-- The whole list is one tap away and CLOSED by default. The page it
          replaced was a wall of rows and that is exactly what made it unreadable;
          the wall is still worth having, it is just not what you land on. -->
     <button class="roster-toggle" type="button" @click="open = !open">
-      {{ open ? 'Hide every line' : `See every line (${rows.length})` }}
+      {{ open ? 'Hide every line' : `See every line (${allRows.length})` }}
     </button>
 
     <ol v-if="open" class="roster-list">
-      <li v-for="r in rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
+     <li v-for="s in sections" :key="s.key" class="section">
+      <h3 class="section-head">
+        {{ s.heading }}
+        <small>{{ s.rows.length }} {{ s.rows.length === 1 ? 'line' : 'lines' }}, {{ sectionDone(s) }} done</small>
+      </h3>
+      <ol class="section-rows">
+      <li v-for="r in s.rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
         <!-- Rewriting a line from the list: the row becomes the editor, in
              place, so the line being changed never leaves the eye. Test courses
              only — `canEdit` is the server's word and the write is checked
@@ -41,6 +62,9 @@
         </template>
         <template v-else>
           <span class="row-mark" aria-hidden="true"></span>
+          <!-- WHO IS SPEAKING. A two-hander read without the character names is
+               one man talking to himself; the name is on the row so it never is. -->
+          <span v-if="r.speaker" class="row-speaker">{{ r.speaker }}</span>
           <span class="row-text">{{ r.text }}</span>
           <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
           <!-- ONE TAP BACK ONTO A LINE. Re-reading something used to mean
@@ -65,8 +89,17 @@
             type="button"
             @click="$emit('play', r.id)"
           >{{ playingId === r.id ? 'Stop' : 'Listen' }}</button>
+          <!-- WHY this one is being asked for again. The reason is already on
+               every such row on the wire; a recordist re-reading a line they
+               thought was finished deserves to be told why it came back. -->
+          <p v-if="r.reason" class="row-reason">{{ r.reason }}</p>
+          <!-- One take, several copies of the same sentence filled. True, cheap,
+               and the most encouraging number on the page. -->
+          <p v-if="r.alsoFills" class="row-also">This take also fills {{ r.alsoFills }} other {{ r.alsoFills === 1 ? 'line' : 'lines' }}.</p>
         </template>
       </li>
+      </ol>
+     </li>
     </ol>
   </div>
 </template>
@@ -85,14 +118,18 @@
  * question is "which line", not "how many". The list stays closed by default —
  * a wall of rows is what sank the page this replaced.
  *
- * Rows come in already flattened (id, text, done, url) so this component knows
- * nothing about markup parsing, clip precedence or the queue: the booth owns all
- * three and there is one definition of each.
+ * Rows come in already split into their sections and already flattened, so this
+ * component knows nothing about markup parsing, clip precedence, what a KIND of
+ * line is, or the queue: the booth owns all four and there is one definition of
+ * each.
  */
 import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
-  rows: { type: Array, required: true },      // [{ id, text, done, url, canEdit }]
+  // [{ key, heading, blurb, rows: [{ id, text, done, url, canEdit, speaker, reason, alsoFills }] }]
+  // Sections arrive already split, ordered and pruned of empties: the booth owns
+  // what a KIND of line is, this component owns only how it reads.
+  sections: { type: Array, required: true },
   playingId: { type: String, default: null },
   editingId: { type: String, default: null },
   saving: { type: Boolean, default: false },
@@ -115,8 +152,10 @@ watch(() => props.editingId, (id) => { if (id) open.value = true })
 
 // Counted from the rows themselves rather than passed in: two numbers that can
 // disagree with the marks above them is precisely the confusion being fixed.
-const doneCount = computed(() => props.rows.reduce((n, r) => n + (r.done ? 1 : 0), 0))
-const todoCount = computed(() => props.rows.length - doneCount.value)
+const allRows = computed(() => props.sections.flatMap(s => s.rows))
+const doneCount = computed(() => allRows.value.reduce((n, r) => n + (r.done ? 1 : 0), 0))
+const todoCount = computed(() => allRows.value.length - doneCount.value)
+function sectionDone(section) { return section.rows.reduce((n, r) => n + (r.done ? 1 : 0), 0) }
 </script>
 
 <style scoped>
@@ -143,6 +182,32 @@ const todoCount = computed(() => props.rows.length - doneCount.value)
   font-size: 0.95rem;
   opacity: 0.85;
 }
+.section-map {
+  list-style: none;
+  margin: 0 0 0.6rem;
+  padding: 0;
+}
+.section-map-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 0.6rem;
+  padding: 0.45rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.09);
+}
+.sm-name { font-weight: 700; }
+.sm-count { text-align: right; opacity: 0.85; font-variant-numeric: tabular-nums; }
+.sm-blurb { grid-column: 1 / -1; font-size: 0.82rem; opacity: 0.65; }
+.section { list-style: none; }
+.section-head {
+  position: sticky;
+  top: 0;
+  margin: 0;
+  padding: 0.5rem 0 0.35rem;
+  background: var(--color-void, #0f172a);
+  font-size: 0.95rem;
+}
+.section-head small { display: block; font-weight: 400; opacity: 0.7; }
+.section-rows { list-style: none; margin: 0; padding: 0; }
 .roster-toggle {
   min-height: 44px;
   padding: 0.4rem 0;
@@ -239,6 +304,20 @@ const todoCount = computed(() => props.rows.length - doneCount.value)
   border-color: var(--color-tungsten, #ffa630);
   color: var(--color-void, #0f172a);
   font-weight: 700;
+}
+.row-speaker {
+  flex: 0 0 auto;
+  font-size: 0.78rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-graphite, #475569);
+  opacity: 0.9;
+}
+.row-reason, .row-also {
+  flex: 1 1 100%;
+  margin: 0.25rem 0 0;
+  font-size: 0.82rem;
+  opacity: 0.75;
 }
 .row-error { flex: 1 1 100%; margin: 0.4rem 0 0; color: var(--color-film-red, #e63946); font-size: 0.85rem; }
 </style>

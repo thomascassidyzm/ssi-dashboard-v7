@@ -31,7 +31,7 @@
       <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
 
       <RecordistRoster
-        :rows="rosterRows"
+        :sections="rosterSections"
         :playing-id="playingId"
         :editing-id="editingId"
         :saving="editSaving"
@@ -290,7 +290,7 @@
       <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
 
       <RecordistRoster
-        :rows="rosterRows"
+        :sections="rosterSections"
         :playing-id="playingId"
         :editing-id="editingId"
         :saving="editSaving"
@@ -445,7 +445,49 @@ const rosterRows = computed(() => lines.value.map(l => ({
   done: isRecorded(l),
   url: storedUrlFor(l.id),
   canEdit: !!l.canEditText,
+  // A pod line's CHARACTER. Straight off the wire, and only pod lines have one.
+  speaker: l.speaker || null,
+  // Why this line is being asked for again. Written when the want was made, and
+  // it belongs on screen rather than in a database nobody reading is looking at.
+  reason: l.rerecordReason || null,
+  // How many other copies of the same sentence this one take also fills.
+  alsoFills: Number(l.alsoFills) || 0,
+  kind: l.kind || 'pod',
 })))
+
+// THE THREE KINDS OF WORK, NAMED. Tom, 2026-09-02: "I want all the TYPES of
+// lines he has to record disambiguated… this map of the whole thing SHOULD be
+// just the POD lines / then just the NEW SEEDS / then just the Re-Recording."
+// His ordering, his split. Aran's link said "441 lines" and he could not tell
+// what they were, because 441 was three unrelated jobs added together: 80 lines
+// of his half of a two-hander, 305 brand-new Welsh sentences, and 56 takes we
+// are asking him to give us again.
+//
+// The words are a voice artist's, not ours: "pod", "seed" and "kind" are our
+// internal vocabulary and never reach this screen. A kind with no lines in it is
+// not shown at all — most recordists in the estate have only one or two of the
+// three, and an empty heading reading "0 lines" is a question with no answer.
+const SECTION_ORDER = [
+  { key: 'pod', heading: 'Conversations', blurb: 'Your half of a scripted conversation — the other characters are read by someone else.' },
+  { key: 'seed', heading: 'New sentences', blurb: 'Single sentences from the course itself. Most have never been recorded by anyone.' },
+  { key: 'rerecord', heading: 'Lines to record again', blurb: 'Already recorded once, and being asked for again. Each one says why. Nothing is deleted until the new take lands.' },
+]
+const rosterSections = computed(() => {
+  const byKind = new Map(SECTION_ORDER.map(s => [s.key, []]))
+  // A kind we did not plan for gets a section of its own rather than vanishing:
+  // a line silently missing from the map is the one failure this screen cannot
+  // afford, and the sections must always add back up to the whole queue.
+  const other = []
+  for (const row of rosterRows.value) {
+    if (byKind.has(row.kind)) byKind.get(row.kind).push(row)
+    else other.push(row)
+  }
+  const out = SECTION_ORDER
+    .map(s => ({ ...s, rows: byKind.get(s.key) }))
+    .filter(s => s.rows.length)
+  if (other.length) out.push({ key: 'other', heading: 'Everything else', blurb: 'Lines that do not fall into the groups above.', rows: other })
+  return out
+})
 
 const current = computed(() => lines.value[index.value] || null)
 
