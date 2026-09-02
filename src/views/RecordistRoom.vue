@@ -542,7 +542,12 @@ const micHeld = ref(false)
 // editing both hold the mic, so whichever of the three is true is the only one
 // that can be true: if this ever said two things, one of them would be a lie.
 const activityState = computed(() => {
-  if (editingId.value) return { cls: 'is-editing', words: 'Editing the line — mic paused' }
+  // "mic paused" is only true where the mic was ever live. On the ready and done
+  // cards nothing was listening in the first place, and saying it was paused
+  // there is the same species of lie as saying it is live.
+  if (editingId.value) {
+    return { cls: 'is-editing', words: phase.value === 'recording' ? 'Editing the line — mic paused' : 'Editing the line' }
+  }
   if (playingId.value) return { cls: 'is-playing', words: 'Playing back your take' }
   if (phase.value === 'recording') return { cls: 'is-recording', words: 'Recording — read the line aloud' }
   return { cls: 'is-idle', words: 'Not recording' }
