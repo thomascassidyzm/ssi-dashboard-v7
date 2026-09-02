@@ -17,13 +17,17 @@ import { ref, reactive } from 'vue'
 import { mount, flushPromises } from '@vue/test-utils'
 
 const queueTake = vi.fn()
-const markFailed = vi.fn()
+// The real markFailed writes the reason into `failed`, and the row reads it
+// from there — a stub that only counts calls would pass while the recordist
+// still saw nothing on the row.
+const failed = reactive(new Map())
+const markFailed = vi.fn((lineId, reason) => failed.set(lineId, reason))
 
 vi.mock('@/composables/useRecordistQueue', () => ({
   useRecordistQueue: () => ({
     queueTake, markFailed, reset: vi.fn(),
     pendingCount: ref(0), savedCount: ref(0),
-    saved: reactive(new Map()), failed: reactive(new Map()),
+    saved: reactive(new Map()), failed,
   }),
 }))
 
@@ -78,7 +82,7 @@ async function mountReady() {
   return wrapper
 }
 
-beforeEach(() => { vi.clearAllMocks() })
+beforeEach(() => { vi.clearAllMocks(); failed.clear(); start.mockResolvedValue(undefined) })
 
 describe('MyRecordingList', () => {
   it('draws outstanding lines as dashed-outline slots and recorded lines as solid', async () => {
@@ -131,6 +135,24 @@ describe('MyRecordingList', () => {
     await others[0].trigger('click')
     await flushPromises()
     expect(beginLine).toHaveBeenCalledTimes(1)
+  })
+
+  // 3. A FAILURE IS MARKED ON THE LINE IT HAPPENED TO. When the mic will not
+  //    open, a banner at the top of the page is not enough: the row that was
+  //    tapped went straight back to looking untouched, so nothing said which
+  //    line had failed. The row itself must carry it.
+  it('marks the tapped row when the microphone will not open, not just the page', async () => {
+    const wrapper = await mountReady()
+    start.mockRejectedValueOnce(Object.assign(new Error('no device'), { name: 'NotFoundError' }))
+    await wrapper.findAll('.row-tap')[0].trigger('click')
+    await flushPromises()
+
+    const row = wrapper.findAll('.row')[0]
+    expect(row.classes()).not.toContain('is-live')
+    expect(row.classes()).toContain('is-failed')
+    expect(row.text()).toContain('No microphone found')
+    expect(row.text()).not.toContain('TO RECORD')
+    expect(markFailed).toHaveBeenCalledWith('a', 'No microphone found.')
   })
 
   it('says plainly when the login has no recording voice, and names the address it looked under', async () => {

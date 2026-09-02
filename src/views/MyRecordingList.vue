@@ -170,6 +170,9 @@ const playingId = ref(null)
 // same information without the list jumping.
 const doneThisSession = reactive(new Set())
 const failures = queue.failed
+// Lines whose tap never got as far as an open microphone. Kept apart from the
+// take failures only so the row can say which of the two happened.
+const micFailed = reactive(new Set())
 let audio = null
 let streamOpen = false
 
@@ -193,6 +196,10 @@ function rowClass(line) {
 
 function stateWord(line) {
   if (activeId.value === line.id) return 'Reading — tap to finish'
+  // A mic that never opened is not a take that failed to save, and saying
+  // "Not saved" about a recording that was never made sends the recordist
+  // looking for a lost file. Name what actually happened.
+  if (micFailed.has(line.id)) return "Microphone didn't open"
   if (failures.has(line.id)) return 'Not saved'
   if (doneThisSession.has(line.id)) return 'Recorded just now'
   if (line.rerecordWanted) return 'Recorded — a new take was asked for'
@@ -220,6 +227,7 @@ async function onRowTap(line) {
   if (activeId.value !== null) return   // one degree of freedom
   busy.value = true
   micError.value = null
+  micFailed.delete(line.id)
   try {
     stopPlayback()
     await ensureStream()
@@ -227,7 +235,15 @@ async function onRowTap(line) {
     recorder.beginLine()
     activeId.value = line.id
   } catch (err) {
-    micError.value = friendlyMicError(err)
+    // THE ROW HAS TO CARRY IT. The banner alone told a recordist that A
+    // microphone was missing while the row they had just tapped snapped
+    // silently back to TO RECORD — on a list of two hundred lines, nothing on
+    // screen said WHICH line had refused to open. Mark the tapped row, in the
+    // same place and the same words a refused take is marked.
+    const message = friendlyMicError(err)
+    micError.value = message
+    micFailed.add(line.id)
+    queue.markFailed(line.id, message)
   } finally { busy.value = false }
 }
 
@@ -273,6 +289,7 @@ function onFile(line, event) {
   event.target.value = ''
   if (!file) return
   failures.delete(line.id)
+  micFailed.delete(line.id)
   if (file.size < 1200) {
     queue.markFailed(line.id, 'That file is empty.')
     return
