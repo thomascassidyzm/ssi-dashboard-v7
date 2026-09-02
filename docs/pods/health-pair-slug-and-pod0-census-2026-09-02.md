@@ -210,9 +210,38 @@ it orphans the 269 existing rows, and the app immediately starts writing fresh z
 under the new key. That is the failure `pod-switchover.cjs` already prevents by doing both in one
 transaction.
 
-The delivery side is therefore **already migration-ready**: the only thing a completed cutover
-would let anyone delete is the `pod-0` fallback constant, and that can only go once every course
-is across.
+**Two more structural sites, from #76's full report and re-verified here:**
+
+- `packages/player-vue/src/composables/usePodStage0.ts:104` — `.like('id', \`${course}:${podSlug}:%\`)`.
+  A **prefix match on the slug embedded in the sentence id**. It reads the slug from the resolver, so
+  it survives a rename *provided the ids are rewritten in lockstep with the pod row* — which is
+  precisely the landmine `tools/pods/reslug-pod-rows.cjs` exists to defuse, and which bit for real on
+  2026-08-10 (19 rows).
+- `api/courses/[code]/bundle.ts:414` — `.order('pod_order', { ascending: true, nullsFirst: true })`.
+  **The same null-ordering problem as `pods-plan.cjs`, on the learner's download path**: `pod_order`
+  is NULL on 45 of 46 `pod-0` rows and all 22 `pod-1` rows, so download priority is arbitrary today.
+  This strengthens the `pod_order` recommendation below — it is not only a build-side concern.
+
+The delivery side is otherwise **already migration-ready**: the only thing a completed cutover
+would let anyone delete is the `pod-0` fallback constant, and that can only go once every course is
+across. #76's own reading is worth quoting: the real cost there is **not string-replace volume** —
+it is redesigning the fallback semantics in `servedPod.ts` (what does a query error degrade to, once
+`pod-0` no longer exists?) and the `learner_pod_state` migration.
+
+**Two corrections to what the code says about itself:**
+
+- **Nine comments across the learning app still say "the ~68 older courses serve `pod-0`"** — that
+  was true before the switchover started and is now overstated by 22. The live split is **46 on
+  `pod-0`, 22 on `pod-1`, 68 total**.
+- #76 flagged `supabase/schema.sql:3016-3066` (`pod0 AS (… WHERE p.slug = 'pod-0')`) as something it
+  could not verify from the delivery repo. **Closed here against the live database: `estate_map()`
+  is a real function in `public`, it does hardcode `'pod-0'`, and it does emit the `pod_0` and
+  `courses_with_pod_0` keys.** It is live, not a captured ad-hoc query.
+
+**Grep noise, for shape:** #76's raw grep over its whole checkout returned 832 hits, of which
+**714 (86%) were exact duplicates across seven parallel worktrees**. The real primary-tree count is
+96 hits, and **only two files are gating logic**. The same lesson as the Popty docs count: a raw
+occurrence number across a working estate measures worktrees and spent logs, not work.
 
 ### Docs — a count and a shape, because that is the useful answer
 
