@@ -4,7 +4,9 @@
 
 ## Verdict
 
-**Usable as they are.** Catrin's clips are quiet-but-clean — the classic rescuable pattern — except they don't even need rescuing: the mastering chain already lands them within a whisker of the −16 LUFS target, and the raw noise floor sits 50+ dB below the speech, essentially matching Tom's own known-good phone reference recorded tonight. Nothing needs re-recording. The hardware explanation (Blue Snowball, decent SNR) holds up under measurement — it is not crowding out a stale-profile finding, because there is no stale-profile finding here: her capture device string shows `capture:voice` throughout, the same profile job #96 made the default tonight.
+**Usable as they are.** Judged on her own absolute numbers against the −16 LUFS mastering target and the fixed reference figures in `capture-profile-voice-vs-dry-2026-08-22.md`: Catrin's clips are quiet-but-clean, and the mastering chain already lands them within a whisker of −16 LUFS with a noise floor 50+ dB below the speech. Nothing needs re-recording. The hardware explanation (Blue Snowball, decent SNR) holds up under measurement — it is not crowding out a stale-profile finding, because there is no stale-profile finding here: her capture device string shows `capture:voice` throughout, the same profile job #96 made the default tonight.
+
+**Correction to the original brief:** Tom's zzz clips from tonight were a process-workflow test recorded in a loud room with the AC running, not a fidelity reference — his own words. They are used below for exactly one thing, and one thing only: confirming which capture profile fired, by raw peak level. They are never a quality baseline, here or anywhere downstream.
 
 ## What the database actually holds
 
@@ -31,16 +33,28 @@ Every one of the 61 rows has a `raw_s3_key` — **no gap here**: 100% of her tak
 
 **After mastering**, her clips land at a median **−16.3 LUFS** (mean −16.6) against the −16 target — already on the mark — with the floor still sitting at a median **−75.1 dBFS**, comfortably inaudible.
 
-## The two reference points, from tonight's session
+## Judged against the absolute yardsticks
 
-| | Tom's phone (`capture:voice`, post-fix, "worked amazingly") | Tom's desktop (`capture:dry`, broken profile) | Catrin (live 56) |
+The only fixed reference points available are the two populations in `capture-profile-voice-vs-dry-2026-08-22.md` (a different, earlier population — Tom's own dry vs AGC-on takes, 2026-08-22) and the −16 LUFS mastering target itself:
+
+| Measure | Dry/broken population (yardstick) | AGC-on/healthy population (yardstick) | **Catrin (live 56, median)** |
 |---|---|---|---|
-| Raw peak median | −1.6 dBFS | −18.2 dBFS | −4.7 dBFS |
-| Noise floor median | −76.7 dBFS | −60.3 dBFS | −80.1 dBFS |
-| SNR median | 49.8 dB | 22.1 dB | 55.2 dB |
-| Gain needed to −16 LUFS | +5.1 dB | +18.5 dB | +5.5 dB |
+| Raw peak | −28.5 dBFS mean | −4.0 dBFS mean | **−4.7 dBFS** |
+| Noise floor | ~−88 dBFS | −80 to −131 dBFS | **−80.1 dBFS** |
+| Gain needed to −16 LUFS | +30.6 dB | +7.5 dB | **+5.5 dB** |
+| Resulting mastered LUFS | −26.2 (10 dB short) | −17.8 (near target) | **−16.3 (on target)** |
 
-Catrin's clips sit **on par with — if anything slightly cleaner than — Tom's own known-good phone take from tonight**, and nowhere near his known-bad desktop reference. Note Tom's phone reference has a loud AC unit running in the background (his own description), so his floor is not a silent-room baseline; Catrin still comes out quieter-floored than that population. The hardware hypothesis (Snowball → decent SNR) is confirmed by the number, not merely assumed.
+Catrin's numbers sit inside the healthy/AGC-on population's range on every measure, and her mastered loudness lands closer to target than either reference population did. This is a clean, absolute verdict — not a comparison to anyone's take from tonight.
+
+## Capture-profile confirmation (level signature only, not a quality reference)
+
+Tom's zzz clips from tonight are a process fixture — recorded in a loud room with the AC running, testing the workflow, not the audio. Their noise floor is meaningless (it's the AC) and they must never be used as a quality baseline anywhere downstream. The only thing they're good for: confirming which capture profile actually fired, by raw peak level.
+
+| | Tom's zzz `capture:voice` (post-fix) | Tom's zzz `capture:dry` (broken) |
+|---|---|---|
+| Raw peak, measured median | −1.6 dBFS | −18.2 dBFS |
+
+That matches the stated signature (≈−2.5 dBFS for voice, ≈−18.9 dBFS for dry) closely enough to confirm the fix is doing what it says — a level check, not a fidelity comparison. Catrin's own `recording_device` string reads `capture:voice` on every one of her 61 rows, independently confirming she was on the healthy profile throughout, without needing to lean on his numbers at all.
 
 ## What normalisation would do (not run — nothing needs it)
 
@@ -48,8 +62,12 @@ Since the live population needs only **+1.5 to +10.5 dB** of gain to reach −16
 
 ## What I could not measure / gaps
 
-- None on the audio side: 100% raw-archive coverage, 100% measurement success (0 ffmpeg errors across 122 Catrin files + 36 Tom reference files).
+- None on the audio side: 100% raw-archive coverage, 100% measurement success (0 ffmpeg errors across 122 Catrin files + 36 Tom zzz fixture files).
 - The "38 vs 56" reconciliation above is a plain report of a mismatch, not a resolved one — flagging rather than guessing which count Tom meant.
+
+## Standing note for anything downstream
+
+**The zzz test clips (`human_tom_zzz`, `zzz_test2_for_eng`) must never be used as reference audio or a quality baseline, anywhere.** They are process fixtures for exercising the recording workflow — recorded in a loud room with the AC running — not audio Tom was trying to make sound good. The one legitimate use, demonstrated above, is confirming which capture profile fired via raw peak level; that is a level signature, not a fidelity judgement.
 
 ## Method note (for anyone re-running this)
 
