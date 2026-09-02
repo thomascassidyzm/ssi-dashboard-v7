@@ -262,3 +262,8 @@ archive/**/*.wav
 !docs/frame-layer/pair-mapping-classes.json
 !docs/frame-layer/english-pattern-inventory.json
 !docs/frame-layer/dialogue-frame-inventory.json
+
+# The Health walk authored in Welsh — the target lines apply-target-overlay.cjs
+# writes. This is authored content, not an audit log: it is the reproducible source
+# of 438 live rows, so it is committed like the frame-layer inventories above.
+!docs/sector-pods/health-welsh-438/*.json

@@ -1,0 +1,184 @@
+{
+"scene": 1, "label": "1.0", "title": "Linguistic situation opener (nurse)",
+"turns": [
+{"id":"health:SC01-F01-S01","sp":"HW","en":"I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as possible, but if we get stuck I might need to ask you to speak English, if that's okay. If not, I can call someone who speaks Welsh more confidently than me.",
+ "cy":"Dw i'n dysgu Cymraeg ar y funud, felly mi dria i aros yn y Gymraeg gymaint â phosib — ond os awn ni'n sownd, ella bydd raid i mi ofyn i chi siarad Saesneg, os ydy hynny'n iawn. Os nad ydy o, mi fedra i alw ar rywun sy'n siarad Cymraeg yn fwy hyderus na fi.",
+ "chunks":[["I'm learning Welsh at the moment","dw i'n dysgu Cymraeg ar y funud","D","the walk's opening frame — bare present, no article on the language as object"],["so","felly","D","the so/then fork: felly here, never 'ta (S1)"],["I'll try to stay in Welsh as much as possible","mi dria i aros yn y Gymraeg gymaint â phosib","D","mi + short future; the language takes the article as a location: yn y Gymraeg"],["but if we get stuck","ond os awn ni'n sownd","D","HG03's stuck-idiom reused verbatim — mynd yn sownd"],["I might need to ask you to speak English","ella bydd raid i mi ofyn i chi siarad Saesneg","I","English stacks two modals; Welsh relocates to adverb ella + the impersonal obligation frame bydd raid i mi"],["if that's okay","os ydy hynny'n iawn","D",""],["If not","Os nad ydy o","D","negative conditional with the dummy o"],["I can call someone who speaks Welsh more confidently than me","mi fedra i alw ar rywun sy'n siarad Cymraeg yn fwy hyderus na fi","I","HG03 verbatim — calling a person takes ar, the summons preposition"]],
+ "south":[["mi","fe / bare"],["ella","falle"],["mi fedra i","fe alla i"]]},
+
+{"id":"health:SC01-F01-S02","sp":"P","en":"Chwarae teg i chi! Of course, that's fine. We'll manage together.",
+ "cy":"Chwarae teg i chi! Wrth gwrs, mae hynny'n iawn. Mi ddown ni i ben efo'n gilydd.",
+ "chunks":[["Chwarae teg i chi!","Chwarae teg i chi!","D","already Welsh in the canonical English — carried through verbatim, not re-rendered"],["Of course","Wrth gwrs","D",""],["that's fine","mae hynny'n iawn","D",""],["We'll manage together","Mi ddown ni i ben efo'n gilydd","I","English intransitive 'manage' relocates to the dod i ben accomplishment idiom"]],
+ "south":[["mi","fe / bare"],["efo'n gilydd","gyda'n gilydd"]]},
+
+{"id":"health:SC01-F01-S03","sp":"HW","en":"Diolch, that's very kind. And remember, if anything I say isn't clear, just stop me - any time at all.",
+ "cy":"Diolch, mae hynna'n glên iawn. A chofiwch — os dw i'n deud rhywbeth sydd ddim yn glir, stopiwch fi. Unrhyw bryd o gwbl.",
+ "chunks":[["Diolch","Diolch","D","already Welsh in the canonical English — carried verbatim"],["that's very kind","mae hynna'n glên iawn","D","clên is the walk's one kind-lexeme (R7)"],["And remember","A chofiwch","D","-wch imperative, the walk's whole production register"],["if anything I say isn't clear","os dw i'n deud rhywbeth sydd ddim yn glir","I","HG01's inversion: the English relative subject becomes a Welsh object clause — 'if I say something that isn't clear'"],["just stop me","stopiwch fi","E","'just' as imperative softener erases — the -wch form and intonation carry it (R3)"],["any time at all","unrhyw bryd o gwbl","D",""]],
+ "south":[["glên","ffeind / caredig"],["deud","dweud"],["hynna","hynny (unreduced)"]]},
+
+{"id":"health:SC01-F01-S04","sp":"P","en":"I will, don't you worry. I'm not shy.",
+ "cy":"Mi wna i, peidiwch chi â phoeni. Dw i ddim yn swil.",
+ "chunks":[["I will","Mi wna i","D","the short-future echo answer — Welsh has no bare auxiliary to strand"],["don't you worry","peidiwch chi â phoeni","D","peidiwch â negative imperative; the emphatic chi carries English's 'you'"],["I'm not shy","Dw i ddim yn swil","D",""]],
+ "south":[["mi","fe / bare"]]},
+
+{"id":"health:SC01-F01-S05","sp":"HW","en":"Good. Right then, first things first - I need to take your blood pressure.",
+ "cy":"Da iawn. Reit 'ta — y peth cynta'n gynta: dw i angen cymryd eich pwysau gwaed chi.",
+ "chunks":[["Good","Da iawn","D",""],["Right then","Reit 'ta","D","the in-that-case 'ta, not felly (S1)"],["first things first","y peth cynta'n gynta","E","English's plural idiom singularises; Welsh has no plural reflex here"],["I need to take your blood pressure","dw i angen cymryd eich pwysau gwaed chi","D","HG31 verbatim; the bare angen need-frame (R3)"]],
+ "south":[["reit 'ta","?"],["cynta","cynta' (reduced differently)"],["angen","mae angen i fi"]]},
+
+{"id":"health:SC01-F01-S06","sp":"P","en":"Fire away, bach.",
+ "cy":"Ffwrdd â chi, bach.",
+ "chunks":[["Fire away","Ffwrdd â chi","I","the â-propulsion frame (cf. HG48 ffwrdd â ni); English's firearm metaphor has no Welsh reflex"],["bach","bach","D","already Welsh in the canonical English — the corpus's own endearment, carried verbatim"]],
+ "south":[]},
+
+{"id":"health:SC01-F02-S01","sp":"HW","en":"I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as I can, but I might need to ask for help now and then, if that's alright.",
+ "cy":"Dw i'n dysgu Cymraeg ar y funud, felly mi dria i aros yn y Gymraeg gymaint ag y medra i — ond ella bydd raid i mi ofyn am help rŵan ac yn y man, os ydy hynny'n iawn.",
+ "chunks":[["I'm learning Welsh at the moment","dw i'n dysgu Cymraeg ar y funud","D",""],["so","felly","D",""],["I'll try to stay in Welsh as much as I can","mi dria i aros yn y Gymraeg gymaint ag y medra i","D","kept distinct from 'as much as possible' → gymaint â phosib: two knowns, two forms, no fork"],["but I might need to ask for help","ond ella bydd raid i mi ofyn am help","I","same modal relocation as F01-S01"],["now and then","rŵan ac yn y man","D",""],["if that's alright","os ydy hynny'n iawn","D","converges with 'if that's okay' — reception, welcome"]],
+ "south":[["mi","fe / bare"],["ella","falle"],["medra i","galla i"],["rŵan","nawr"]]},
+
+{"id":"health:SC01-F02-S02","sp":"P","en":"Where are you learning, then? Are you doing the classes?",
+ "cy":"Lle dach chi'n dysgu, 'ta? Dach chi'n gneud y dosbarthiadau?",
+ "chunks":[["Where are you learning","Lle dach chi'n dysgu","D",""],["then?","'ta?","D","the in-that-case tag, per S1 — never wedyn, never felly here"],["Are you doing the classes?","Dach chi'n gneud y dosbarthiadau?","D","bare intonation question; Welsh needs no do-support"]],
+ "south":[["dach chi","dych chi"],["gneud","gwneud"],["'ta","?"]]},
+
+{"id":"health:SC01-F02-S03","sp":"HW","en":"Through work, mostly - a little bit every day. I've been at it about a year now.",
+ "cy":"Drwy'r gwaith, gan fwya — rhyw chydig bob dydd. Dw i wrthi ers rhyw flwyddyn rŵan.",
+ "chunks":[["Through work, mostly","Drwy'r gwaith, gan fwya","D","HG08 verbatim"],["a little bit every day","rhyw chydig bob dydd","D",""],["I've been at it about a year now","Dw i wrthi ers rhyw flwyddyn rŵan","I","the perfect-duration relocation: present + ers, and 'at it' becomes the conjugated wrthi"]],
+ "south":[["gan fwya","gan fwyaf"],["chydig","tipyn / bach o"],["rŵan","nawr"]]},
+
+{"id":"health:SC01-F02-S04","sp":"P","en":"A year? Well, you're doing marvellous. My grandson's learning in school, you know.",
+ "cy":"Blwyddyn? Wel, dach chi'n gneud yn ardderchog. Mae fy ŵyr i'n dysgu yn yr ysgol, wyddoch chi.",
+ "chunks":[["A year?","Blwyddyn?","E","the English indefinite article erases — Welsh has none"],["Well","Wel","D",""],["you're doing marvellous","dach chi'n gneud yn ardderchog","D","the adverbial yn is obligatory where English drops -ly"],["My grandson's learning in school","mae fy ŵyr i'n dysgu yn yr ysgol","D","the echo possessive fy…i"],["you know","wyddoch chi","D","the tag takes the irregular short gwybod, not a periphrasis"]],
+ "south":[["dach chi","dych chi"],["gneud","gwneud"]]},
+
+{"id":"health:SC01-F02-S05","sp":"HW","en":"That's lovely to hear. Right, shall we make a start? Just stop me if I lose you.",
+ "cy":"Mae hynna'n hyfryd i'w glywed. Reit — wnawn ni ddechra? Stopiwch fi os dw i'n eich colli chi.",
+ "chunks":[["That's lovely to hear","Mae hynna'n hyfryd i'w glywed","I","the i'w + verbal-noun frame pre-poses the object English leaves stranded"],["Right","Reit","D",""],["shall we make a start?","wnawn ni ddechra?","D","HG11 verbatim (R3)"],["Just stop me","Stopiwch fi","E","'just' softener erased (R3)"],["if I lose you","os dw i'n eich colli chi","D","the eich…chi echo object"]],
+ "south":[["hynna","hynny"],["dechra","dechre"]]},
+
+{"id":"health:SC01-F02-S06","sp":"P","en":"Righto. I'll keep you right where I can.",
+ "cy":"Reit-o. Mi gadwa i chi'n iawn lle medra i.",
+ "chunks":[["Righto","Reit-o","D","the corpus's own ratifier; the borrow is register, not laziness (R6)"],["I'll keep you right","Mi gadwa i chi'n iawn","D","kept distinct from 'Right you are' → O'r gorau"],["where I can","lle medra i","D",""]],
+ "south":[["mi","fe / bare"],["medra i","galla i"]]},
+
+{"id":"health:SC01-F03-S01","sp":"HW","en":"I'm learning Welsh at the moment, so I'll try to stay in Welsh, but if we get stuck I might ask you to speak English, if that's okay.",
+ "cy":"Dw i'n dysgu Cymraeg ar y funud, felly mi dria i aros yn y Gymraeg — ond os awn ni'n sownd, ella y gwna i ofyn i chi siarad Saesneg, os ydy hynny'n iawn.",
+ "chunks":[["I'm learning Welsh at the moment","dw i'n dysgu Cymraeg ar y funud","D",""],["so I'll try to stay in Welsh","felly mi dria i aros yn y Gymraeg","D",""],["but if we get stuck","ond os awn ni'n sownd","D",""],["I might ask you to speak English","ella y gwna i ofyn i chi siarad Saesneg","D","distinct from 'I might NEED to ask' → ella bydd raid i mi — one modal, one frame; no fork"],["if that's okay","os ydy hynny'n iawn","D",""]],
+ "south":[["mi","fe / bare"],["ella","falle"]]},
+
+{"id":"health:SC01-F03-S02","sp":"P","en":"Actually, I'd rather stick to English today if that's alright, love. I'm not feeling up to it.",
+ "cy":"A deud y gwir, mae'n well gen i lynu at y Saesneg heddiw os ydy hynny'n iawn, del. Dw i ddim yn teimlo'n ddigon da i hynny.",
+ "chunks":[["Actually","A deud y gwir","I","English's sentence adverb relocates to a verbal-noun clause, 'and telling the truth'"],["I'd rather stick to English today","mae'n well gen i lynu at y Saesneg heddiw","I","preference relocates to the mae'n well gen i frame (HG57) — the N-form fork"],["if that's alright","os ydy hynny'n iawn","D",""],["love","del","D","the patient's endearment to the young nurse; the corpus's own 'bach' register"],["I'm not feeling up to it","Dw i ddim yn teimlo'n ddigon da i hynny","I","English's 'up to it' capacity idiom relocates to a digon da sufficiency frame"]],
+ "south":[["deud","dweud"],["mae'n well gen i","mae'n well gyda fi — AND A REORDER"],["del","neis / pert ?"]],
+ "southLine":"A gweud y gwir, mae'n well gyda fi lynu at y Saesneg heddiw os yw hynny'n iawn, bach. Dw i ddim yn teimlo'n ddigon da i hynny."},
+
+{"id":"health:SC01-F03-S03","sp":"HW","en":"Of course, no problem at all. English it is. Let's get you sorted.",
+ "cy":"Wrth gwrs, dim problem o gwbl. Saesneg amdani. Dewch i ni'ch sortio chi.",
+ "chunks":[["Of course","Wrth gwrs","D",""],["no problem at all","dim problem o gwbl","D",""],["English it is","Saesneg amdani","D","the X amdani ratifier (R3) — binds to scene 0's yield"],["Let's get you sorted","Dewch i ni'ch sortio chi","D","dewch i ni for 'let's' (R3); the wedi'ch sortio passive family (HG53)"]],
+ "south":[]},
+
+{"id":"health:SC01-F03-S04","sp":"P","en":"Thank you, love. No offence meant - I'm just tired today.",
+ "cy":"Diolch, del. Do'n i ddim yn trio'ch digio chi — jyst wedi blino ydw i heddiw.",
+ "chunks":[["Thank you","Diolch","D",""],["love","del","D",""],["No offence meant","Do'n i ddim yn trio'ch digio chi","I","English's agentless passive relocates to an agentive imperfect; digio is the walk's one offence-lexeme (HG04, HG07)"],["I'm just tired today","jyst wedi blino ydw i heddiw","I","identificatory fronting — Welsh puts the predicate first to carry English's 'just'"]],
+ "south":[["del","neis / pert ?"]]},
+
+{"id":"health:SC01-F03-S05","sp":"HW","en":"None taken at all. Right - first, I just need to take your blood pressure.",
+ "cy":"Dw i ddim wedi digio o gwbl. Reit — gynta, dw i jyst angen cymryd eich pwysau gwaed chi.",
+ "chunks":[["None taken at all","Dw i ddim wedi digio o gwbl","I","HG07 verbatim — English's elliptical noun phrase becomes a full Welsh clause"],["Right","Reit","D",""],["first","gynta","D",""],["I just need to take your blood pressure","dw i jyst angen cymryd eich pwysau gwaed chi","D","'just' outside the imperative keeps jyst (R3)"]],
+ "south":[["angen","mae angen i fi"],["gynta","cynta'"]]},
+
+{"id":"health:SC01-F03-S06","sp":"P","en":"Go on then. Do your worst.",
+ "cy":"Ewch amdani 'ta. Gnewch eich gwaetha.",
+ "chunks":[["Go on then","Ewch amdani 'ta","I","the amdani propulsion idiom; English's particle verb has no Welsh reflex"],["Do your worst","Gnewch eich gwaetha","D",""]],
+ "south":[["gnewch","gwnewch"],["'ta","?"],["gwaetha","gwaetha'"]]},
+
+{"id":"health:SC01-F04-S01","sp":"HW","en":"English isn't my first language, so if you have any trouble understanding me, just let me know and I'll explain myself more clearly - it's really important that you understand everything.",
+ "cy":"Dim Saesneg ydy fy iaith gynta i, felly os dach chi'n cael unrhyw drafferth fy nallt i, rhowch wybod i mi — ac mi esbonia i'n gliriach. Mae'n bwysig iawn eich bod chi'n dallt bob dim.",
+ "chunks":[["English isn't my first language","Dim Saesneg ydy fy iaith gynta i","I","HG02's identificatory fronting, with the deixis landing on Saesneg because the fiction's worker speaks English"],["so","felly","D",""],["if you have any trouble understanding me","os dach chi'n cael unrhyw drafferth fy nallt i","D","the nasal mutation fy nallt i is absorbed inside the chunk"],["just let me know","rhowch wybod i mi","D","kept distinct from 'just tell me' → deudwch wrtha i — anti-erasure, ZUT hygiene"],["I'll explain myself more clearly","mi esbonia i'n gliriach","E","English's reflexive 'myself' has no Welsh reflex — erased"],["it's really important that you understand everything","mae'n bwysig iawn eich bod chi'n dallt bob dim","D","the eich bod chi that-clause; bob dim northern"]],
+ "south":[["dach chi","dych chi"],["dallt / nallt","deall / ddeall"],["bob dim","popeth"],["gynta","cynta'"],["mi","fe / bare"]]},
+
+{"id":"health:SC01-F04-S02","sp":"P","en":"That's no problem at all. You're very clear, don't worry.",
+ "cy":"Dydy hynny'n ddim problem o gwbl. Dach chi'n glir iawn, peidiwch â phoeni.",
+ "chunks":[["That's no problem at all","Dydy hynny'n ddim problem o gwbl","D","the negative copula carries English's 'no'"],["You're very clear","Dach chi'n glir iawn","D",""],["don't worry","peidiwch â phoeni","D","peidiwch â, the walk's negative imperative"]],
+ "south":[["dydy","dyw"],["dach chi","dych chi"]]},
+
+{"id":"health:SC01-F04-S03","sp":"HW","en":"Thank you. And if I say anything that isn't clear, please stop me and I'll say it again.",
+ "cy":"Diolch. Ac os dw i'n deud rhywbeth sydd ddim yn glir, stopiwch fi, plîs — ac mi ddeuda i o eto.",
+ "chunks":[["Thank you","Diolch","D",""],["And if I say anything that isn't clear","Ac os dw i'n deud rhywbeth sydd ddim yn glir","E","HG01 verbatim; 'anything' → rhywbeth in the existential frame — the any/some distinction erases (S9)"],["please stop me","stopiwch fi, plîs","D","imperative + plîs, never plîs + imperative (R3)"],["I'll say it again","mi ddeuda i o eto","D","the northern object pronoun o is absorbed inside the chunk"]],
+ "south":[["deud / ddeuda","dweud / ddweda"],["mi","fe / bare"],["o","e"]]},
+
+{"id":"health:SC01-F04-S04","sp":"P","en":"I will. Go on, love, where do you want me?",
+ "cy":"Mi wna i. Ewch amdani, del — lle dach chi isio fi?",
+ "chunks":[["I will","Mi wna i","D",""],["Go on","Ewch amdani","I","the amdani propulsion idiom"],["love","del","D",""],["where do you want me?","lle dach chi isio fi?","D","isio takes no yn — the northern want-frame"]],
+ "south":[["isio","eisiau / moyn"],["dach chi","dych chi"],["del","neis / pert ?"]]},
+
+{"id":"health:SC01-F04-S05","sp":"HW","en":"Let's start with a few quick checks. Can you roll up your sleeve for me?",
+ "cy":"Dewch i ni ddechra efo chydig o tsiecs sydyn. Fedrwch chi dorchi'ch llawes i mi?",
+ "chunks":[["Let's start with a few quick checks","Dewch i ni ddechra efo chydig o tsiecs sydyn","D","HG29 verbatim; tsiec- is the walk's one check-lexeme (R7)"],["Can you roll up your sleeve for me?","Fedrwch chi dorchi'ch llawes i mi?","D","soft-mutated fedrwch question form; the benefactive i mi"]],
+ "south":[["efo","gyda"],["chydig","tipyn / bach o"],["fedrwch chi","allwch chi"],["dechra","dechre"]]},
+
+{"id":"health:SC01-F04-S06","sp":"P","en":"Right you are.",
+ "cy":"O'r gorau.",
+ "chunks":[["Right you are","O'r gorau","I","English's inverted idiom has no Welsh reflex; kept distinct from 'Righto' → Reit-o"]],
+ "south":[]},
+
+{"id":"health:SC01-F05-S01","sp":"HW","en":"English isn't my first language, so if you have trouble understanding me, just tell me and I'll explain more clearly.",
+ "cy":"Dim Saesneg ydy fy iaith gynta i, felly os dach chi'n cael trafferth fy nallt i, deudwch wrtha i — ac mi esbonia i'n gliriach.",
+ "chunks":[["English isn't my first language","Dim Saesneg ydy fy iaith gynta i","I","as F04-S01"],["if you have trouble understanding me","os dach chi'n cael trafferth fy nallt i","D","distinct from 'any trouble' → unrhyw drafferth"],["just tell me","deudwch wrtha i","D","the conjugated wrtha i; distinct from 'let me know' → rhowch wybod i mi"],["I'll explain more clearly","mi esbonia i'n gliriach","D",""]],
+ "south":[["dach chi","dych chi"],["deudwch / nallt","dwedwch / ddeall"],["wrtha i","wrtho i"],["mi","fe / bare"]]},
+
+{"id":"health:SC01-F05-S02","sp":"P","en":"Where are you from, if you don't mind me asking?",
+ "cy":"O lle dach chi'n dod, os nad oes ots gynnoch chi i mi ofyn?",
+ "chunks":[["Where are you from","O lle dach chi'n dod","I","Welsh fronts the preposition with the interrogative: 'from where'"],["if you don't mind me asking?","os nad oes ots gynnoch chi i mi ofyn?","I","the mind-frame relocates to an existential with a conjugated gan: 'if there is no matter with you'"]],
+ "south":[["dach chi","dych chi"],["gynnoch chi","gyda chi"]]},
+
+{"id":"health:SC01-F05-S03","sp":"HW","en":"I'm from the Philippines - from Manila. I've been in Wales three years now.",
+ "cy":"Dw i'n dod o'r Philippines — o Manila. Dw i yng Nghymru ers tair blynedd rŵan.",
+ "chunks":[["I'm from the Philippines","Dw i'n dod o'r Philippines","I","Welsh has no 'be from' — it uses the motion verb dod"],["from Manila","o Manila","D",""],["I've been in Wales three years now","Dw i yng Nghymru ers tair blynedd rŵan","I","HG09's perfect-duration relocation: present + ers; feminine tair + blynedd"]],
+ "south":[["rŵan","nawr"]]},
+
+{"id":"health:SC01-F05-S04","sp":"P","en":"Three years, is it? And how are you finding it? Apart from the weather.",
+ "cy":"Tair blynedd, ia? A sut dach chi'n ei chael hi? Heblaw am y tywydd.",
+ "chunks":[["Three years","Tair blynedd","D","feminine tair, and the special counting form blynedd"],["is it?","ia?","D","the ie/nage answer system — an identificatory tag, not a verb echo"],["And how are you finding it?","A sut dach chi'n ei chael hi?","I","the feminine dummy object hi; English's 'it' has no referent to translate"],["Apart from the weather","Heblaw am y tywydd","D",""]],
+ "south":[["ia","ie"],["dach chi","dych chi"]]},
+
+{"id":"health:SC01-F05-S05","sp":"HW","en":"The weather takes some getting used to! But the people are kind. Now then, let's have a look at you.",
+ "cy":"Mae isio arfer efo'r tywydd! Ond mae'r bobl yn glên. Rŵan 'ta — dewch i ni gael golwg arnoch chi.",
+ "chunks":[["The weather takes some getting used to!","Mae isio arfer efo'r tywydd!","I","HG10 verbatim — English's subject-raising becomes a Welsh impersonal need-frame"],["But the people are kind","Ond mae'r bobl yn glên","D",""],["Now then","Rŵan 'ta","D",""],["let's have a look at you","dewch i ni gael golwg arnoch chi","D","dewch i ni (R3); the conjugated arnoch chi"]],
+ "south":[["isio","eisiau / moyn"],["efo","gyda"],["glên","ffeind / caredig"],["rŵan 'ta","?"]]},
+
+{"id":"health:SC01-F05-S06","sp":"P","en":"Ask away, love.",
+ "cy":"Gofynnwch faint fynnoch chi, del.",
+ "chunks":[["Ask away","Gofynnwch faint fynnoch chi","I","the X-away frame relocates to 'as much as you will' (cf. HG57 Canwch chi faint fynnoch chi)"],["love","del","D",""]],
+ "south":[["del","neis / pert ?"]]},
+
+{"id":"health:SC01-F06-S01","sp":"HW","en":"English isn't my first language, so if anything I say isn't clear, please stop me - it's important you understand everything clearly.",
+ "cy":"Dim Saesneg ydy fy iaith gynta i, felly os dw i'n deud rhywbeth sydd ddim yn glir, stopiwch fi, plîs — mae'n bwysig eich bod chi'n dallt bob dim yn glir.",
+ "chunks":[["English isn't my first language","Dim Saesneg ydy fy iaith gynta i","I","as F04-S01"],["if anything I say isn't clear","os dw i'n deud rhywbeth sydd ddim yn glir","I","HG01's inversion"],["please stop me","stopiwch fi, plîs","D",""],["it's important you understand everything clearly","mae'n bwysig eich bod chi'n dallt bob dim yn glir","D","distinct from 'really important that you understand everything' — two knowns, two forms"]],
+ "south":[["deud / dallt","dweud / deall"],["bob dim","popeth"]]},
+
+{"id":"health:SC01-F06-S02","sp":"P","en":"My daughter usually helps me with the medical stuff. Is it alright if she stays?",
+ "cy":"Fy merch i sy'n fy helpu i efo'r petha meddygol fel arfer. Ydy hi'n iawn iddi hi aros?",
+ "chunks":[["My daughter usually helps me with the medical stuff","Fy merch i sy'n fy helpu i efo'r petha meddygol fel arfer","I","sy'-focus: Welsh fronts the helper as the identified subject, and 'usually' lands clause-finally as fel arfer"],["Is it alright if she stays?","Ydy hi'n iawn iddi hi aros?","I","the English if-clause relocates to an i + subject + verbal-noun clause"]],
+ "south":[["efo","gyda"],["petha","pethe"]]},
+
+{"id":"health:SC01-F06-S03","sp":"HW","en":"Of course - she's very welcome. Two pairs of ears are better than one.",
+ "cy":"Wrth gwrs — mae croeso mawr iddi hi. Mae dau bâr o glustiau'n well nag un.",
+ "chunks":[["Of course","Wrth gwrs","D",""],["she's very welcome","mae croeso mawr iddi hi","I","HG14 verbatim — 'welcome' relocates to an existential with croeso i"],["Two pairs of ears are better than one","Mae dau bâr o glustiau'n well nag un","D","masculine dau + soft mutation absorbed in the chunk"]],
+ "south":[["iddi hi","iddi hi (shared)"]]},
+
+{"id":"health:SC01-F06-S04","sp":"P","en":"She'll be glad of that. She worries, see.",
+ "cy":"Mi fydd hi'n falch o hynny. Mae hi'n poeni, ylwch.",
+ "chunks":[["She'll be glad of that","Mi fydd hi'n falch o hynny","D","the o complement of balch"],["She worries","Mae hi'n poeni","D",""],["see","ylwch","D","the northern discourse tag, an imperative of edrych"]],
+ "south":[["mi","fe / bare"],["ylwch","edrychwch ?"]]},
+
+{"id":"health:SC01-F06-S05","sp":"HW","en":"That's what family's for. Right, with you both here, let's make a start.",
+ "cy":"Dyna i be mae teulu. Reit — efo chi'ch dwy yma, dewch i ni ddechra.",
+ "chunks":[["That's what family's for","Dyna i be mae teulu","I","HG15 verbatim — the purpose-cleft relocates to dyna i be mae X (R3)"],["Right","Reit","D",""],["with you both here","efo chi'ch dwy yma","S","'both' forks by gender (S3); pinned feminine — the helper is the daughter"],["let's make a start","dewch i ni ddechra","D",""]],
+ "south":[["efo","gyda"],["dechra","dechre"]]},
+
+{"id":"health:SC01-F06-S06","sp":"P","en":"We're ready when you are.",
+ "cy":"Dan ni'n barod pan dach chi'n barod.",
+ "chunks":[["We're ready","Dan ni'n barod","D",""],["when you are","pan dach chi'n barod","I","English gapping does not survive — Welsh repeats the predicate"]],
+ "south":[["dan ni / dach chi","dyn ni / dych chi"]]}
+]}
