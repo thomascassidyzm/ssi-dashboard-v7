@@ -219,9 +219,28 @@ test('a pod line flagged rerecord_wanted is outstanding even though a take exist
   const q = await buildQueue(stubDb(wanted), await resolveRecordist(stubDb(wanted), 'human_aran_cym_n'), { includeRecorded: true })
   const line = q.lines.find((l) => l.text === 'Bore da.')
   assert.equal(line.recorded, false, 'the want outranks the take')
-  assert.equal(line.rerecordWanted, true, 'and the surface is told WHY it is outstanding')
-  assert.ok(line.clipUrl, 'MAKE BEFORE BREAK: the old take is still linked and still playable')
+  // TOM, 2026-09-02: "they must NOT see any clips that have already been ruled
+  // unusable - they must just see those as lines that still need recording."
+  // The artist's wire used to carry rerecordWanted:true and a clipUrl to the
+  // rejected take. It now carries neither, and the line is indistinguishable
+  // from one nobody has ever read. MAKE BEFORE BREAK is untouched by this: the
+  // clip is still in course_audio, still linked, still what the learner hears —
+  // it is the ARTIST who is not shown it.
+  assert.equal(line.rerecordWanted, false, 'no verdict on the artist wire')
+  assert.equal(line.rerecordReason, null, 'and no reason')
+  assert.equal(line.clipUrl, null, 'and no way to play the take we rejected')
   assert.equal(q.remaining, q.total, 'nothing on this voice counts as done')
+
+  // ...and Tom's own page still sees every bit of it.
+  const admin = await buildQueue(stubDb(wanted), await resolveRecordist(stubDb(wanted), 'human_aran_cym_n'),
+    { includeRecorded: true, maskRejectedHistory: false })
+  const adminLine = admin.lines.find((l) => l.text === 'Bore da.')
+  assert.equal(adminLine.rerecordWanted, true, 'the record is not destroyed, only hidden from the reader')
+  assert.ok(adminLine.clipUrl, 'and the rejected take is still retrievable by us')
+  assert.equal(adminLine.recorded, admin.lines.find((l) => l.text === 'Bore da.').recorded,
+    'masking moves no line in or out of the outstanding set')
+  assert.equal(admin.total, q.total, 'so the two pages cannot disagree about the work')
+  assert.equal(admin.recorded, q.recorded, 'nor about how much of it is done')
 })
 
 test('a want on ANY course’s copy of a collapsed line wants the one recording', async () => {
@@ -251,8 +270,36 @@ test('a CLIP flagged rerecord_wanted re-opens the pod line of the same identity'
   const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
   const line = q.lines.find((l) => l.text === 'Bore da.')
   assert.equal(line.recorded, false)
-  assert.equal(line.rerecordReason, 'trim-chain damage', 'the reason rides along to the recordist')
+  // The reason used to ride along to the recordist. Tom ruled it off their
+  // screen on 2026-09-02 — "trim-chain damage" is our note to ourselves about
+  // our own pipeline, and it reached the person who read the line.
+  assert.equal(line.rerecordReason, null, 'the reason never reaches the reader')
   assert.equal(q.lines.filter((l) => l.kind === 'rerecord').length, 0, 'still ONE line, not two')
+
+  const admin = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'),
+    { includeRecorded: true, maskRejectedHistory: false })
+  assert.equal(admin.lines.find((l) => l.text === 'Bore da.').rerecordReason, 'trim-chain damage',
+    'it is still on the wire for us')
+})
+
+// ── the queue is one LANGUAGE's work, and the clip flag never overrode that ──
+
+test('a want on a clip in ANOTHER language never enters this queue', async () => {
+  // The header of recordist-queue has always said TARGET SIDE ONLY, and the pod
+  // and seed sources have always obeyed it. This third source never checked, so
+  // routing was by GENDER alone: on 2026-09-02, 28 of the 56 lines in Aran's
+  // Welsh queue were ENGLISH — 18 presentation clips and 10 known-side lines,
+  // "to escape from these angry eyes" among them — because they belonged to
+  // cym_n_for_eng and the want named a male voice. He was one morning away from
+  // being asked to read English in a Welsh session.
+  const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  f.course_audio.push({ id: 'ca-eng', course_code: 'cym_n_for_eng', role: 'known', language: 'eng',
+    voice_id: 'human', text: 'these angry eyes', rerecord_wanted: { reason: 'eyes defect', voice_gender: 'm' } })
+  f.course_audio.push({ id: 'ca-cym', course_code: 'cym_n_for_eng', role: 'target1', language: 'cym',
+    voice_id: 'human_aran_cym_n', text: 'y llygaid blin yma', rerecord_wanted: { reason: 'eyes defect', voice_gender: 'm' } })
+  const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(q.lines.filter((l) => l.text === 'these angry eyes').length, 0, 'the English line is not his work')
+  assert.equal(q.lines.filter((l) => l.text === 'y llygaid blin yma').length, 1, 'the Welsh one still is')
 })
 
 // ── dialect: the second filter (Tom, 2026-08-19) ────────────────────────────

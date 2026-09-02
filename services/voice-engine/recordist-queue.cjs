@@ -521,7 +521,7 @@ async function audioVoicesById(db, ids) {
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED } = {}) {
   const courses = await coursesForLanguage(db, language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  const empty = { byBucket: new Map(), uncast: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
+  const empty = { byBucket: new Map(), uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
   if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
@@ -561,6 +561,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   let quarryStats = null
   const seen = new Map()   // bucket -> Map(normalized text -> representative line)
   let uncast = 0
+  // Wants belonging to a clip in a DIFFERENT language than this queue's. Counted
+  // rather than silently dropped, by the same rule as `uncast`.
+  let crossLanguage = 0
   let duplicatesCollapsed = 0
 
   for (const s of sentences) {
@@ -645,6 +648,19 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       uncast += 1
       continue
     }
+    // TARGET SIDE ONLY, ENFORCED — the header has always claimed this and the
+    // pod and seed sources have always obeyed it, but this third source never
+    // checked. `rerecord_wanted` is a flag on a CLIP, and a clip carries its own
+    // language: 28 of the 56 lines in Aran's Welsh "re-record" section on
+    // 2026-09-02 were ENGLISH — 18 presentation clips and 10 known-side lines,
+    // "to escape from these angry eyes" among them — routed here purely because
+    // they belonged to cym_n_for_eng and the want named a male voice. He was
+    // one morning away from being asked to read English in a Welsh session.
+    // Gender says WHICH voice; it never says which language, and only the
+    // clip's own language does.
+    let wLang = null
+    try { wLang = canonicalLanguage(w.language) } catch { wLang = null }
+    if (wLang !== language) { crossLanguage += 1; continue }
     // A clip belongs to a course, and the course states the dialect. Nothing is
     // read off the clip itself: a presentation clip is stored under the shared
     // untagged voice 'human', so it carries no dialect of its own to trust.
@@ -883,7 +899,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
   }
 
-  return { byBucket, uncast, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
+  return { byBucket, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
 }
 
 /**
@@ -898,7 +914,7 @@ async function fetchRerecordWanted(db, courseCodes) {
   for (let from = 0; ; from += PAGE) {
     const { data, error } = await db
       .from('course_audio')
-      .select('id, course_code, role, text, rerecord_wanted')
+      .select('id, course_code, role, text, language, rerecord_wanted')
       .in('course_code', courseCodes)
       .not('rerecord_wanted', 'is', null)
       .order('course_code', { ascending: true })
@@ -922,10 +938,13 @@ async function fetchRerecordWanted(db, courseCodes) {
  *        (they are always counted; this only decides whether they are listed).
  * @returns {Promise<{lines: Array, total, recorded, remaining, uncast, duplicatesCollapsed}>}
  */
-async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed } = {}) {
+async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed, maskRejectedHistory = true } = {}) {
   const language = await buildLanguageLines(db, recordist.language, { quarryMaxSeed })
   const mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
-  return finishQueue(db, recordist, mine, language, { includeRecorded })
+  // MASKED BY DEFAULT, because the only caller in production is the artist's own
+  // page and the failure that matters is showing them a verdict on their work.
+  // A caller that wants the whole truth has to say so.
+  return finishQueue(db, recordist, mine, language, { includeRecorded, maskRejectedHistory })
 }
 
 /**
@@ -933,7 +952,7 @@ async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSee
  * shape them for the wire. Split out so buildQueue and buildCoverage share one
  * definition of `recorded`.
  */
-async function finishQueue(db, recordist, mine, language, { includeRecorded = false } = {}) {
+async function finishQueue(db, recordist, mine, language, { includeRecorded = false, maskRejectedHistory = true } = {}) {
   const recordedKeys = await recordedTextKeys(db, recordist)
 
   let recorded = 0
@@ -952,6 +971,25 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // Tom's pending ruling on unaccepted takes is a change to the second one.
     const hasTake = lineHasTake(line, { recordedKeys, spellings: recordist.spellings })
     const isRecorded = countsAsRecorded(line, hasTake)
+    // A REJECTED TAKE IS AN UNRECORDED LINE. Tom, 2026-09-02: "they must NOT see
+    // any clips that have already been ruled unusable - they must just see those
+    // as lines that still need recording."
+    //
+    // A `rerecordWanted` line is one our own quality machinery has already ruled
+    // against — clipped at the boundary, no speech in the take, trim-chain
+    // damage. Every want in the estate on the night this landed was one of
+    // those. Masking hides the JUDGEMENT, never the line and never the take: the
+    // clip stays in course_audio with its provenance, the learner's serving path
+    // is untouched, and the line still sits in the outstanding set exactly where
+    // it did. What goes is the badge, the reason, and the button that plays the
+    // artist their own rejected read back at them.
+    //
+    // This is a property of WHO IS LOOKING, so it is a parameter and not a rule:
+    // Tom's own coverage page passes `maskRejectedHistory: false` and still sees
+    // all of it. The two pages cannot disagree about how much work is
+    // outstanding, because masking does not move a single line in or out of that
+    // set — `isRecorded` above is computed before it and is untouched by it.
+    const masked = maskRejectedHistory && !!line.rerecordWanted
     if (isRecorded) recorded += 1
     if (!isRecorded || includeRecorded) {
       lines.push({
@@ -965,11 +1003,10 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Playback of the STORED bytes, never a local blob (route 3). Keyed off
         // hasTake, NOT isRecorded: a line queued for a re-record still has an
         // old take, and hearing it is the whole point of re-recording it.
-        clipUrl: hasTake ? `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(line.id)}/clip` : null,
-        // There is an existing take AND we are asking for it again — the surface
-        // badges these as "re-record" rather than "not recorded yet", and it is
-        // the flag the A/B preview hangs off.
-        rerecordWanted: !!(hasTake && line.rerecordWanted),
+        clipUrl: (hasTake && !masked) ? `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(line.id)}/clip` : null,
+        // There is an existing take AND we are asking for it again. On an
+        // ARTIST's wire this is always false — see `masked` above.
+        rerecordWanted: !!(hasTake && line.rerecordWanted && !masked),
         // How many other pod lines, in any course of this language, this one
         // recording also fills.
         alsoFills: line.duplicateOf.length,
@@ -980,7 +1017,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // aloud as tags, and because a re-record deserves to say why.
         kind: line.kind || 'pod',
         role: line.role || null,
-        rerecordReason: line.rerecordReason || null,
+        rerecordReason: masked ? null : (line.rerecordReason || null),
         // Which seed sentence this is, for the surface to say so in words. Null
         // on every other kind of line.
         seedNumber: line.seedNumber || null,
@@ -1161,7 +1198,14 @@ async function buildCoverage(db) {
       if (!recordist) return null
       const bucket = bucketKey(recordist.dialect, recordist.gender)
       claimed.add(bucket)
-      const q = await finishQueue(db, recordist, language.byBucket.get(bucket) || [], language, { includeRecorded: true })
+      // TOM'S PAGE SEES EVERYTHING. The artist's wire masks rejected history
+      // (finishQueue's `maskRejectedHistory`, default on); this one must not, or
+      // the estate loses the only screen that says how much work was rejected
+      // and why. `total` and `recorded` are identical either way — masking moves
+      // no line in or out of the outstanding set — so the two pages still agree
+      // about the work, and this one additionally shows the take/again split.
+      const q = await finishQueue(db, recordist, language.byBucket.get(bucket) || [], language,
+        { includeRecorded: true, maskRejectedHistory: false })
       return {
         voiceId: recordist.voiceId,
         name: recordist.displayName,

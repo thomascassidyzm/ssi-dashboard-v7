@@ -12,12 +12,13 @@
         :class="{ done: r.done }"
       ></span>
     </div>
-    <!-- THE CAPTION FOR THE MARKS, AND THE HONEST TOTAL. "recorded" here means
-         a take exists — including the lines we have asked to be read again,
-         which the run itself still treats as outstanding. Counting those as
-         untouched is what made Aran's 71 recordings read as 26. -->
+    <!-- THE CAPTION FOR THE MARKS, AND THE HONEST TOTAL. Two numbers that add
+         up to the whole run, and no third. It briefly carried "N of those to
+         read again", which was true of the takes we had rejected — and Tom
+         ruled on 2026-09-02 that a rejected take is not something the reader
+         is shown at all. Recorded, and still to read. -->
     <p class="strip-words">
-      <strong>{{ takeCount }} recorded</strong><span v-if="againCount"> · {{ againCount }} of those to read again</span> · {{ freshCount }} still to read
+      <strong>{{ takeCount }} recorded</strong> · {{ freshCount }} still to read
     </p>
 
     <!-- THE MAP, AND IT IS THE POINT OF THIS COMPONENT. Tom, 2026-09-02, looking
@@ -25,8 +26,9 @@
          POD-1". One total answered nothing, because the number was three
          different jobs stacked on top of each other. So the three jobs are named
          here, in a recordist's own words, each carrying its OWN headline count
-         and its own recorded-so-far — 80 POD-1 lines, 305 new sentences, 56 to
-         re-record — and a job the reader does not have is not shown at all. -->
+         and its own recorded-so-far, and a job the reader does not have is not
+         shown at all. None of them is named for a judgement we have made about
+         the reader's earlier takes (Tom, 2026-09-02). -->
     <ul class="section-map">
       <li v-for="s in sections" :key="s.key" class="section-map-row">
         <!-- THE NUMBER IS THE HEADLINE. Tom, 2026-09-02: "each section should
@@ -97,10 +99,11 @@
             type="button"
             @click="$emit('play', r.id)"
           >{{ playingId === r.id ? 'Stop' : 'Listen' }}</button>
-          <!-- WHY this one is being asked for again. The reason is already on
-               every such row on the wire; a recordist re-reading a line they
-               thought was finished deserves to be told why it came back. -->
-          <p v-if="r.reason" class="row-reason">{{ r.reason }}</p>
+          <!-- The reason a take was rejected used to print here, under the
+               row. Tom, 2026-09-02: a line whose take we have ruled unusable
+               must read as a line that still needs recording, and nothing more.
+               The booth no longer passes a reason and the server no longer
+               sends one. -->
           <!-- One take, several copies of the same sentence filled. True, cheap,
                and the most encouraging number on the page. -->
           <p v-if="r.alsoFills" class="row-also">This take also fills {{ r.alsoFills }} other {{ r.alsoFills === 1 ? 'line' : 'lines' }}.</p>
@@ -134,7 +137,7 @@
 import { ref, computed, watch } from 'vue'
 
 const props = defineProps({
-  // [{ key, heading, blurb, rows: [{ id, text, done, hasTake, url, canEdit, speaker, reason, alsoFills }] }]
+  // [{ key, heading, blurb, rows: [{ id, text, done, hasTake, url, canEdit, speaker, alsoFills }] }]
   // Sections arrive already split, ordered and pruned of empties: the booth owns
   // what a KIND of line is, this component owns only how it reads.
   sections: { type: Array, required: true },
@@ -161,21 +164,19 @@ watch(() => props.editingId, (id) => { if (id) open.value = true })
 // Counted from the rows themselves rather than passed in: two numbers that can
 // disagree with the marks above them is precisely the confusion being fixed.
 const allRows = computed(() => props.sections.flatMap(s => s.rows))
-// TWO TRUTHS, NEVER ONE. `done` is "we are not asking for this again" — right
-// for the run, wrong as a measure of what a person has read. `hasTake` is "a
-// recording of this exists". A line that is both read and queued to be read
-// again belongs in the first number and in the second, and saying only the
-// first told Aran he had done a third of the work he had actually done.
+// ONE TRUTH. There were briefly two — `done` ("we are not asking for this
+// again") and `hasTake` ("a recording of this exists") — because a line could be
+// read AND queued to be read again, and calling that untouched told Aran he had
+// done 26 of 441 when he had really read 71. Tom's ruling of 2026-09-02 removes
+// the state that made two numbers necessary: a take we have rejected is not a
+// take the reader has, it is a line still to read. So every count on this
+// component is `done`, and the sections always sum to the whole run.
 function takes(rows) { return rows.reduce((n, r) => n + (r.hasTake || r.done ? 1 : 0), 0) }
-function agains(rows) { return rows.reduce((n, r) => n + ((r.hasTake || r.done) && !r.done ? 1 : 0), 0) }
 const takeCount = computed(() => takes(allRows.value))
-const againCount = computed(() => agains(allRows.value))
 const freshCount = computed(() => allRows.value.length - takeCount.value)
 function tallyWords(section) {
   const t = takes(section.rows)
-  if (!t) return 'none recorded yet'
-  const a = agains(section.rows)
-  return a ? `${t} recorded, ${a} of those to read again` : `${t} recorded`
+  return t ? `${t} recorded` : 'none recorded yet'
 }
 </script>
 

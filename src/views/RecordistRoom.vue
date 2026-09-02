@@ -135,10 +135,6 @@
         <h3>What you've already recorded</h3>
         <p class="listen-note">These play the clip stored on the server. Tap <strong>Compare</strong> to hear your original
           take next to the processed one learners hear.</p>
-        <p v-if="wantedAgainCount" class="listen-note">
-          {{ wantedAgainCount === alreadyRecorded.length ? 'All of these are' : `${wantedAgainCount} of these are` }}
-          queued for a fresh take. Nothing has been deleted — the old take stays until the new one lands.
-        </p>
         <ul>
           <li v-for="l in alreadyRecorded" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
             <div class="listen-row">
@@ -251,7 +247,10 @@
              the thing IS. -->
         <p v-if="lineKindWords" class="line-kind">{{ lineKindWords }}</p>
         <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
-        <p v-if="current?.rerecordReason" class="line-why">{{ current.rerecordReason }}</p>
+        <!-- The line being read never carries a verdict on an earlier take of
+             it (Tom, 2026-09-02). The server no longer sends one; this stays
+             deleted rather than merely unset so a future wire field cannot
+             quietly light it up again. -->
       </div>
 
       <button
@@ -485,11 +484,14 @@ const progressWords = computed(() => `${recordedCount.value} of ${lines.value.le
 // recorded, and how many of those we are asking him to read again. Record mode
 // keeps `progressWords` untouched; the way lines are served there is Tom's.
 const takeCount = computed(() => rosterRows.value.reduce((n, r) => n + (r.hasTake ? 1 : 0), 0))
-const againCount = computed(() => rosterRows.value.reduce((n, r) => n + (r.hasTake && !r.done ? 1 : 0), 0))
+// ONE NUMBER, BECAUSE THERE IS ONE TRUTH NOW. This used to end ", N of those to
+// read again" — our verdict on the reader's work, in the first sentence on their
+// page. Tom, 2026-09-02: a line whose take we have rejected is a line still to
+// record, so it is already inside the outstanding half of this sentence and has
+// nothing further to say for itself.
 const queueHeadline = computed(() => {
   const total = rosterRows.value.length
-  const head = `${total} ${total === 1 ? 'line' : 'lines'} — ${takeCount.value} recorded`
-  return againCount.value ? `${head}, ${againCount.value} of those to read again` : head
+  return `${total} ${total === 1 ? 'line' : 'lines'} — ${takeCount.value} recorded`
 })
 
 // THE WHOLE RUN, FLATTENED FOR THE ROSTER. One row per line in queue order,
@@ -505,18 +507,15 @@ const rosterRows = computed(() => lines.value.map(l => ({
   canEdit: !!l.canEditText,
   // A pod line's CHARACTER. Straight off the wire, and only pod lines have one.
   speaker: l.speaker || null,
-  // Why this line is being asked for again. Written when the want was made, and
-  // it belongs on screen rather than in a database nobody reading is looking at.
-  reason: l.rerecordReason || null,
   // How many other copies of the same sentence this one take also fills.
   alsoFills: Number(l.alsoFills) || 0,
-  // ASKED FOR AGAIN — and therefore ALREADY READ ONCE. `done` deliberately
-  // excludes these (the start button must still offer them), but a line Aran
-  // has read and we want improved is not a line he has never opened, and
-  // counting it as untouched told him he had done 26 of 441 when he had really
-  // read 71. Both truths go on screen; neither replaces the other.
-  rerecordWanted: !!l.rerecordWanted,
-  hasTake: isRecorded(l) || !!l.rerecordWanted,
+  // A TAKE THIS RECORDIST STILL HAS. Once it meant "recorded OR asked for
+  // again", so that a line Aran had read and we wanted improved still counted
+  // as read. Under Tom's 2026-09-02 ruling there is no such middle state on his
+  // screen any more: a take we have ruled unusable is not a take he has, it is a
+  // line he has not read yet, and the server no longer sends the flag that used
+  // to say otherwise. So this is simply "done".
+  hasTake: isRecorded(l),
   kind: l.kind || 'pod',
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
@@ -566,10 +565,16 @@ const SECTION_ORDER = [
   // the whole natural sentences -- is the 'seed' section directly below it, and
   // the blurb says so rather than duplicating those lines into two places.
   { key: 'quarry', heading: 'The minimal set', blurb: 'The smallest set of chunks that can be recombined into every phrase in the course. Read these slowly, with a clear gap between the words, so each one can be cut out cleanly. The full sentences below are read at your natural pace.' },
-  // "Phrases needing re-recording in current course" (Tom, 2026-09-02). The "in
-  // this course" half is load-bearing: it says which body of work these belong
-  // to, so they are not mistaken for the pod above or for old work elsewhere.
-  { key: 'rerecord', heading: 'Re-recording in this course', blurb: 'Phrases from the course you are recording now that need a fresh take. Each one says why. Nothing is deleted until the new take lands.' },
+  // THIS SECTION USED TO BE CALLED "Re-recording in this course", and every row
+  // in it carried the reason we had rejected the take. Tom, 2026-09-02: "they
+  // must NOT see any clips that have already been ruled unusable - they must
+  // just see those as lines that still need recording." A heading that names our
+  // verdict on somebody's work is exactly what he ruled out, so the section is
+  // named for what the lines ARE — individual course lines with no take on them
+  // — and says nothing about how they got here. Aran would otherwise have read
+  // "Aran's are all junk. All clipped badly at either or both ends" off his own
+  // screen on the morning of the session.
+  { key: 'rerecord', heading: 'MORE LINES', blurb: 'Single lines from the course that still need a recording — some from the conversations, some on their own.' },
 ]
 const rosterSections = computed(() => {
   const byKind = new Map(SECTION_ORDER.map(s => [s.key, []]))
@@ -865,8 +870,16 @@ function storedUrlFor(lineId) {
   if (queue.saved.has(lineId)) return recordistClipUrl(props.voiceId, lineId)
   if (sessionIds.value.includes(lineId)) return null              // this session's take is still in flight
   const line = lines.value.find(l => l.id === lineId)
-  // clipUrl, not `recorded`: a line queued for a re-record still HAS a take,
-  // and hearing it is the whole reason it is being re-recorded.
+  // clipUrl, and the SERVER decides what that is. It used to be sent for any
+  // line with a take, including one whose take we had rejected, so a "Listen"
+  // button played the reader their own junk read back at them. Under Tom's
+  // 2026-09-02 ruling the server sends null for those, and this needs no rule of
+  // its own: no clip on the wire, no button. The three checks ABOVE this line
+  // are all THIS SESSION's — a take just made still plays, refused or not.
+  // BELT AND BRACES on the one thing this screen must never do. The server
+  // already withholds clipUrl for a rejected take; refusing to play a line that
+  // still admits `rerecordWanted` means the leak needs BOTH sides to fail.
+  if (line?.rerecordWanted) return null
   return line?.clipUrl ? recordistClipUrl(props.voiceId, lineId) : null  // a take from a previous session
 }
 function isPending(lineId) {
@@ -894,7 +907,6 @@ const failedNote = computed(() => {
 // as outstanding, and keying this off `recorded` emptied the section and took
 // Compare with it — exactly when he most needs to hear what he already gave us.
 const alreadyRecorded = computed(() => lines.value.filter(l => l.clipUrl))
-const wantedAgainCount = computed(() => alreadyRecorded.value.reduce((n, l) => n + (l.rerecordWanted ? 1 : 0), 0))
 const sessionLines = computed(() =>
   sessionIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean)
 )

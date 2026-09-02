@@ -16,12 +16,16 @@
  * that resolver cannot make identical is a real divergence, and
  * tools/recording/verify-take-invariant.cjs counts them for a whole course.
  *
- * They are separated because they are DIFFERENT QUESTIONS and Tom has a ruling
- * pending on the second one ("if they are NOT accepted, then we don't have the
- * recordings really", 2026-09-02). Whichever way that lands — hide the
- * unaccepted takes, or wipe them — it is a change to countsAsRecorded() and to
- * nothing else, rather than a hunt for `hasTake && !rerecordWanted` scattered
- * through a queue builder, a coverage builder and a Vue view.
+ * They are separated because they are DIFFERENT QUESTIONS, and the ruling that
+ * was pending here has now landed. Tom, 2026-09-02: "they must NOT see any clips
+ * that have already been ruled unusable - they must just see those as lines that
+ * still need recording." It did NOT change countsAsRecorded — a wanted line was
+ * already outstanding by this predicate, which is why the ruling moved no line
+ * in or out of the outstanding set. It is a VISIBILITY rule, and it lives one
+ * layer out, in finishQueue's `maskRejectedHistory`: the artist's wire drops the
+ * flag, the reason and the clip; Tom's coverage page passes the mask off and
+ * still sees all three. Nothing here hides anything, and nothing here is
+ * destroyed.
  *
  * WHY A LINE HAS TWO WAYS OF HAVING A TAKE (2026-09-02 forensic count):
  *
@@ -74,10 +78,12 @@ function lineHasTake(line, { recordedKeys, spellings }) {
  * Does an existing take COUNT as a recording — i.e. is this line done?
  *
  * A wanted line is outstanding even though a take exists. The take is not
- * touched: it stays linked and playable, and the recordist can A/B it on the
- * page — it simply stops counting as done.
+ * touched: it stays linked, it stays what the learner hears, and it stays
+ * retrievable by us — it simply stops counting as done.
  *
- * THIS IS THE PREDICATE TOM'S PENDING RULING CHANGES. Nothing else.
+ * UNCHANGED BY THE 2026-09-02 RULING, and that is the point of it: a rejected
+ * take was ALREADY not a recording by this predicate, so hiding it from the
+ * artist moved no line in or out of the outstanding set. See the header.
  */
 function countsAsRecorded(line, hasTake) {
   return !!hasTake && !line.rerecordWanted

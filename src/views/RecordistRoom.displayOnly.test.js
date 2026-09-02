@@ -28,13 +28,19 @@ const recorderSpies = vi.hoisted(() => ({
 // playable stored clip on the "you just read" bar, which is what the mic-hold
 // test needs to play.
 const savedTakes = vi.hoisted(() => new Map())
+// THIS SESSION'S REFUSALS. Deliberately a separate map from the wire, because
+// that separation IS the line Tom's 2026-09-02 ruling is drawn along: the wire
+// carries HISTORY (masked) and this carries what just happened in the room
+// (shown, loudly). A take refused the instant she reads it has to say so, or
+// she walks away from a line she never actually recorded.
+const failedTakes = vi.hoisted(() => new Map())
 
 vi.mock('@/composables/useRecordistQueue', () => ({
   useRecordistQueue: () => ({
     queueTake: (take) => { savedTakes.set(take.lineId, true); return queueTake(take) },
     markFailed,
     pendingCount: ref(0), savedCount: ref(0), failedCount: ref(0),
-    saved: savedTakes, failed: new Map(),
+    saved: savedTakes, failed: failedTakes,
     flush: vi.fn(), retryFailed: vi.fn(),
   }),
 }))
@@ -354,6 +360,11 @@ function stubThreeKindQueue() {
         { id: 'p-1', order: 1, text: 'Bore da', speaker: 'James', kind: 'pod', recorded: true, clipUrl: '/c/p-1', alsoFills: 2 },
         { id: 'p-2', order: 2, text: 'Sut mae?', speaker: 'Waiter', kind: 'pod', recorded: false, clipUrl: null },
         { id: 's-1', order: 3, text: 'Dw i eisiau mynd', kind: 'seed', seedNumber: 12, recorded: false, clipUrl: null },
+        // DELIBERATELY THE OLD WIRE, still carrying the verdict, the reason and
+        // a playable clip. The server stopped sending all three on 2026-09-02
+        // (recordist-queue's `maskRejectedHistory`); this fixture keeps them so
+        // the tests below prove the SCREEN refuses them on its own too. A leak
+        // this screen must never spring needs both sides to fail, not one.
         { id: 'r-1', order: 4, text: 'Llygaid blin', kind: 'rerecord', recorded: false, rerecordWanted: true,
           rerecordReason: 'The text says angry eyes but the recording says pretty.', clipUrl: '/c/r-1' },
       ],
@@ -362,7 +373,7 @@ function stubThreeKindQueue() {
 }
 
 describe('RecordistRoom — the three kinds of work, disambiguated', () => {
-  beforeEach(() => { stubThreeKindQueue() })
+  beforeEach(() => { savedTakes.clear(); failedTakes.clear(); stubThreeKindQueue() })
 
   it('names each kind with its own count and its own done-so-far, in Tom\'s order', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
@@ -378,16 +389,21 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     expect(map[1].find('.sm-name').text()).toBe('NEW SEEDS')
     expect(map[1].find('.sm-count').text()).toBe('1')
     expect(map[1].find('.sm-tally').text()).toBe('none recorded yet')
-    expect(map[2].find('.sm-name').text()).toBe('Re-recording in this course')
+    // NAMED FOR WHAT THE LINES ARE, NOT FOR OUR VERDICT ON THEM. This heading
+    // read "Re-recording in this course" until Tom's ruling of 2026-09-02:
+    // "they must NOT see any clips that have already been ruled unusable - they
+    // must just see those as lines that still need recording."
+    expect(map[2].find('.sm-name').text()).toBe('MORE LINES')
     expect(map[2].find('.sm-count').text()).toBe('1')
-    // Read once, asked for again: it is a recording AND it is outstanding.
-    expect(map[2].find('.sm-tally').text()).toBe('1 recorded, 1 of those to read again')
+    // A REJECTED TAKE IS NOT A RECORDING. The line has a take on the wire and a
+    // want against it, and it reads here exactly as a line nobody has opened.
+    expect(map[2].find('.sm-tally').text()).toBe('none recorded yet')
 
-    // A LINE ALREADY READ IS NOT A LINE NEVER OPENED. Tom, 2026-09-02: he is
-    // "definitely done more than 26 lines recorded - more like 60". The queue is
-    // right to keep asking for a re-record; the SCREEN was wrong to call it
-    // untouched. Two pod lines (one done) plus a re-record with a take = 2.
-    expect(wrapper.find('.rc-progress-line').text()).toBe('4 lines — 2 recorded, 1 of those to read again')
+    // ONE NUMBER. It used to end ", 1 of those to read again" — our judgement of
+    // the reader's own work, in the first sentence on their page.
+    expect(wrapper.find('.rc-progress-line').text()).toBe('4 lines — 1 recorded')
+    expect(wrapper.text()).not.toMatch(/read again/i)
+    expect(wrapper.text()).not.toMatch(/re-record/i)
 
     // POD-1 and SEEDS are both names Tom and the artists use out loud, so both
     // are allowed. POD-1 was flipped earlier on 2026-09-02; the SEED ban went
@@ -400,7 +416,7 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     expect(shown).not.toMatch(/\bkind\b/i)
   })
 
-  it('shows the character on a conversation line and the reason on a re-record', async () => {
+  it('shows the character on a conversation line, and NEVER why a take was rejected', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
     await flushPromises()
     await wrapper.find('.roster-toggle').trigger('click')
@@ -409,9 +425,30 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     expect(sections).toHaveLength(3)
     expect(sections[0].find('.row-speaker').text()).toBe('James')
     expect(sections[0].find('.row-also').text()).toContain('2 other lines')
-    expect(sections[2].find('.row-reason').text()).toContain('angry eyes')
+
+    // THE REJECTED LINE, READ AS AN UNRECORDED ONE. Tom, 2026-09-02. Its row
+    // says "To record", offers "Record" rather than "Record again", prints no
+    // reason, and gives no way to hear the take we threw away — even though the
+    // fixture's wire still offers all three.
+    const rejected = sections[2].findAll('.row')
+    expect(rejected).toHaveLength(1)
+    expect(rejected[0].find('.row-state').text()).toBe('To record')
+    expect(rejected[0].find('.row-record').text()).toBe('Record')
+    expect(rejected[0].find('.row-reason').exists()).toBe(false)
+    expect(rejected[0].find('.row-play').exists()).toBe(false)
+    expect(rejected[0].text()).not.toContain('angry eyes')
+
+    // ...and it reads identically to a line nobody has ever recorded: the
+    // never-touched seed row above it. Indistinguishable is the whole ruling.
+    const untouched = sections[1].findAll('.row')[0]
+    expect(rejected[0].find('.row-state').text()).toBe(untouched.find('.row-state').text())
+    expect(rejected[0].find('.row-record').text()).toBe(untouched.find('.row-record').text())
+    expect(rejected[0].find('.row-play').exists()).toBe(untouched.find('.row-play').exists())
+    expect(rejected[0].classes()).toContain('is-todo')
 
     // Every line in the queue is in exactly one section: nothing disappears.
+    // The RECORD is not destroyed — the clip is still in the database and still
+    // on Tom's coverage page. It is this screen that does not mention it.
     expect(wrapper.findAll('.roster-list .row')).toHaveLength(4)
   })
 
@@ -431,6 +468,47 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     expect(map[0].find('.sm-name').text()).toBe('NEW SEEDS')
   })
 
+  // WHERE THE LINE IS DRAWN, AND IT IS THE WHOLE SUBTLETY OF THE RULING.
+  //
+  // Tom, 2026-09-02, is ruling about HISTORY: "they must NOT see any clips that
+  // have already been ruled unusable". A take refused THIS SECOND, on a line she
+  // has just this moment read, is not history — it is the only way she learns to
+  // read it again, and taking it away would cost her the line silently. So the
+  // two live side by side on one screen and must be told apart by WHERE THE
+  // JUDGEMENT CAME FROM, not by how harsh it is:
+  //
+  //   - off the WIRE  (rerecordWanted / rerecordReason / clipUrl) = history. Gone.
+  //   - off THIS SESSION (queue.failed, filled by the upload's own response) = now. Kept.
+  //
+  // A reload turns the second into the first by construction: a refused take was
+  // never saved, so there is no clip and no want, and the line is simply owed.
+  it('says nothing about a take we rejected before today, and everything about one refused just now', async () => {
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+    await wrapper.find('.roster-toggle').trigger('click')
+
+    // HISTORY IS SILENT, on the page she lands on. The rejected line's own
+    // reason is nowhere, even though the fixture's wire still offers it.
+    expect(wrapper.text()).not.toContain('angry eyes')
+    expect(wrapper.text()).not.toContain('pretty')
+
+    // Now she reads a line and the speech gate refuses it on the spot.
+    await wrapper.find('.btn-begin').trigger('click')
+    await flushPromises()
+    failedTakes.set('p-2', "That take didn't capture any speech — check the right microphone is selected, then read the line again.")
+    await wrapper.find('.ctl-next').trigger('click')
+    await flushPromises()
+
+    // THIS SESSION IS LOUD. The gate's own words, verbatim, still reach her —
+    // and they must, or she walks away from a line she never recorded.
+    expect(wrapper.text()).toContain("didn't capture any speech")
+    // ...and it is the NOTE that carries it, the one element the ruling must
+    // not sweep away with the wire's reason field.
+    expect(wrapper.find('.note.error').text()).toContain("didn't capture any speech")
+    // And still not one word about the take we rejected in August.
+    expect(wrapper.text()).not.toContain('angry eyes')
+  })
+
   // THE INVARIANT. A line that falls out of the map is the one failure this
   // screen cannot afford, and neither headline number may exceed the queue.
   it('never loses a line from the map, and never counts one twice', async () => {
@@ -441,8 +519,10 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     const counts = wrapper.findAll('.section-map-row .sm-count').map(n => Number(n.text()))
     expect(counts.reduce((a, b) => a + b, 0)).toBe(4)
     expect(wrapper.findAll('.roster-list .row')).toHaveLength(4)
-    // 2 recorded + 2 never read = the whole queue.
-    expect(wrapper.find('.strip-words').text()).toContain('2 recorded')
-    expect(wrapper.find('.strip-words').text()).toContain('2 still to read')
+    // 1 recorded + 3 still to read = the whole queue. The rejected line counts
+    // in the second number, which is the entire point of the ruling, and the two
+    // numbers still sum to 4.
+    expect(wrapper.find('.strip-words').text()).toContain('1 recorded')
+    expect(wrapper.find('.strip-words').text()).toContain('3 still to read')
   })
 })
