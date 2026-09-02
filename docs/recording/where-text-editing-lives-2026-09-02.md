@@ -1,6 +1,6 @@
 # Where "edit the text" lives — and why it is not a box in the booth
 
-**2026-09-02. Decision needed from Tom: one word.**
+**2026-09-02. RULED, later the same evening — see "What Tom decided" at the end.**
 
 ## The ask
 
@@ -62,3 +62,42 @@ of work rather than something to bolt on at the end of a UX pass. It was left
 out on purpose and reported rather than quietly dropped.
 
 **The decision Tom owes, in one word:** should the flag be built next — YES or NO?
+
+
+---
+
+## What Tom decided (same evening)
+
+**Editing is IN for the test course.** His standing ruling: "it is a TEST course
+so it can have any rules we like." A test fixture has no learners, so the
+migration protocol's objection does not exist there — and the relaxation is for
+CONTENT and PEDAGOGY rules only; consent and data-safety rules bind everywhere.
+
+So the booth now has real inline text editing, gated to `zzz_` courses:
+
+- `PATCH /api/recording/voice/:voiceId/line/:lineId/text` rewrites the line.
+  Anything that is not a `zzz_` course gets a 403 and **nothing is written** —
+  the gate is on the server, because the booth has no login and a screen-side
+  check would be a suggestion. Proven on the live site against a real Welsh line:
+  `{"reason":"live_course"}`.
+- The queue carries `canEditText` per line, so the control is drawn only where
+  the write would be allowed. Catrin's 161 Welsh rows show **zero** edit buttons.
+- Editing is offered in two places: the line being read, and any row of the
+  roster.
+
+**What happens to the audio when the text changes** — the question worth being
+explicit about. A clip's identity is `(language, text_normalized, voice)`. So:
+
+1. Nothing is deleted and nothing is unlinked.
+2. The new text simply has no take, so the line reads as OUTSTANDING again,
+   immediately, on the screen and on the server.
+3. The old clip stays in `course_audio` exactly where it was, and the sentence's
+   `target_audio_id` still points at it until a new take lands.
+4. The next take upserts a clip under the NEW text and repoints the sentence.
+
+That is make-before-break by construction rather than by remembering to do it —
+there is no window in which the line has neither the old audio nor the new.
+
+**The flag idea is therefore parked**, not built. For a LIVE course the
+recommendation above still stands: report from the booth, edit on the admin side
+under the migration protocol.
