@@ -80,6 +80,33 @@ describe('recordist advance lock — one line, one step forward', () => {
     expect(lock.claim('A', 'tap')).toBe(true)
   })
 
+  // The queue itself brings lines back now — an edit puts a line back to
+  // outstanding and the run wraps round to it. That is not the recordist
+  // reaching for Back, so it must forgive the line WITHOUT handing him the
+  // wheel: a thumb already in flight against the automatic advance that just
+  // happened must still be refused, or the wrap re-opens Aran's double-advance
+  // on exactly the moment the queue is moving under him.
+  it('reopen forgives the line but leaves the auto-grace armed', () => {
+    const { lock, tick } = lockAt()
+    lock.claim('A', 'tap')
+    lock.claim('B', 'auto')          // arms the grace
+    lock.reopen('A')
+    expect(lock.isSpent('A')).toBe(false)
+    tick(100)
+    expect(lock.claim('A', 'tap')).toBe(false)   // his thumb was aimed at B
+    tick(AUTO_GRACE_MS)
+    expect(lock.claim('A', 'tap')).toBe(true)
+  })
+
+  it('release, unlike reopen, does hand him the wheel', () => {
+    const { lock, tick } = lockAt()
+    lock.claim('A', 'tap')
+    lock.claim('B', 'auto')
+    lock.release('A')
+    tick(100)
+    expect(lock.claim('A', 'tap')).toBe(true)
+  })
+
   it('refuses a line with no identity rather than guessing', () => {
     const { lock } = lockAt()
     expect(lock.claim(null, 'tap')).toBe(false)

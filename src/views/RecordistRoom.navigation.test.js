@@ -54,6 +54,16 @@ vi.mock('@/composables/useTapRecorder', () => ({
 
 import RecordistRoom from './RecordistRoom.vue'
 
+// Next and Again share a 250ms bounce guard, so two taps in the same tick are
+// one tap as far as the booth is concerned. A person moving through a queue is
+// not doing that, and the clock is what says so.
+let clock = 1_000_000
+async function tapNext(wrapper) {
+  clock += 400
+  await wrapper.find('.ctl-next').trigger('click')
+  await flushPromises()
+}
+
 // Her real shape, minimised: some lines already have a take, some do not, and
 // the outstanding ones are NOT contiguous — which is what a session with any
 // re-recording or rewriting in it looks like after ten minutes.
@@ -81,7 +91,12 @@ function stubGappyQueue() {
 }
 
 describe('RecordistRoom — an outstanding line behind the cursor is never stranded', () => {
-  beforeEach(() => { queueTake.mockClear(); savedTakes.clear(); stubGappyQueue() })
+  beforeEach(() => {
+    queueTake.mockClear(); savedTakes.clear(); stubGappyQueue()
+    clock = 1_000_000
+    vi.spyOn(Date, 'now').mockImplementation(() => clock)
+  })
+  afterEach(() => { vi.restoreAllMocks() })
 
   it('offers the line above her when she starts in the middle of the list', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
@@ -104,8 +119,7 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     // And the forward control is Next, not Done: the run is not over.
     expect(wrapper.find('.ctl-next').text()).toBe('Next')
 
-    await wrapper.find('.ctl-next').trigger('click')
-    await flushPromises()
+    await tapNext(wrapper)
     // It wrapped round to the one line still owed instead of ending the session
     // on top of it.
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
@@ -131,17 +145,17 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     expect(wrapper.find('.line-target').text()).toBe('llinell pedwar')
     expect(wrapper.find('.upnext-list').text()).toContain('te, os gwelwch yn dda')
 
-    await wrapper.find('.ctl-next').trigger('click')
-    await flushPromises()
+    await tapNext(wrapper)
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
-    await wrapper.find('.ctl-next').trigger('click')
-    await flushPromises()
+    await tapNext(wrapper)
     // The rewritten line is offered again rather than sitting silently owed —
     // and its one step forward has been given back, so Next can leave it.
     expect(wrapper.find('.line-target').text()).toBe('te, os gwelwch yn dda')
-    await wrapper.find('.ctl-next').trigger('click')
-    await flushPromises()
-    expect(wrapper.find('.stage-progress').text()).toContain('4 of 4 recorded')
+    await tapNext(wrapper)
+    // Nothing left anywhere, so the run ends — and the roster on the done
+    // screen agrees with it, which is the whole of what went out of whack.
+    expect(wrapper.find('.strip-words').text()).toContain('4 recorded')
+    expect(wrapper.find('.strip-words').text()).toContain('0 still to read')
   })
 
   it('does not list the same coming-up line twice once the scan wraps', async () => {
@@ -173,9 +187,9 @@ describe('RecordistRoom — the keyboard belongs to the keyboard while she is ty
 
     // A space, an r and a b — the three shortcuts — typed as words, from inside
     // the box, bubbling to the window listener exactly as they do in a browser.
-    await box.trigger('keydown', { code: 'Space', key: ' ', bubbles: true })
-    await box.trigger('keydown', { key: 'r', bubbles: true })
-    await box.trigger('keydown', { key: 'b', bubbles: true })
+    for (const init of [{ code: 'Space', key: ' ' }, { key: 'r' }, { key: 'b' }]) {
+      box.element.dispatchEvent(new window.KeyboardEvent('keydown', { ...init, bubbles: true, cancelable: true }))
+    }
     await flushPromises()
 
     // Still editing the same line, no take filed, nothing advanced.
