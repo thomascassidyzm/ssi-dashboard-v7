@@ -309,3 +309,25 @@ describe('RecordistRoom — rewriting a line', () => {
     expect(wrapper.find('.stage-progress').text()).toContain('1 of 2 recorded')
   })
 })
+
+
+describe('RecordistRoom — one tap back onto a line', () => {
+  beforeEach(() => { savedTakes.clear(); stubMixedQueue() })
+
+  it('re-records a finished line straight from the list, without the re-read switch', async () => {
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'test-voice' } })
+    await flushPromises()
+    await wrapper.find('.roster-toggle').trigger('click')
+
+    const rows = wrapper.findAll('.roster-list .row')
+    expect(rows[0].find('.row-record').text()).toBe('Record again')   // already recorded
+    expect(rows[1].find('.row-record').text()).toBe('Record')         // still outstanding
+
+    await rows[0].find('.row-record').trigger('click')
+    await flushPromises()
+
+    // The mic is open on THAT line — not on the first outstanding one.
+    expect(wrapper.find('.line-target').text()).toBe('Bore da')
+    expect(wrapper.find('.stage-progress').text()).toContain('Recording')
+  })
+})

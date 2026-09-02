@@ -43,6 +43,16 @@
           <span class="row-mark" aria-hidden="true"></span>
           <span class="row-text">{{ r.text }}</span>
           <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
+          <!-- ONE TAP BACK ONTO A LINE. Re-reading something used to mean
+               ticking the re-read switch and starting the whole queue again;
+               through a hundred lines that is the difference between a run and
+               a chore. This opens the mic on this line and nothing else, and the
+               run carries on from the next outstanding line afterwards. -->
+          <button
+            class="row-record"
+            type="button"
+            @click="$emit('record', r.id)"
+          >{{ r.done ? 'Record again' : 'Record' }}</button>
           <button
             v-if="r.canEdit"
             class="row-edit-btn"
@@ -89,7 +99,7 @@ const props = defineProps({
   error: { type: String, default: null },
   startOpen: { type: Boolean, default: false },
 })
-const emit = defineEmits(['play', 'edit', 'save', 'cancel-edit'])
+const emit = defineEmits(['play', 'edit', 'save', 'cancel-edit', 'record'])
 
 const open = ref(props.startOpen)
 // The draft lives here rather than in the booth: it is throwaway text that only
@@ -157,8 +167,9 @@ const todoCount = computed(() => props.rows.length - doneCount.value)
 }
 .row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.5rem;
   padding: 0.55rem 0.2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.07);
 }
@@ -184,6 +195,16 @@ const todoCount = computed(() => props.rows.length - doneCount.value)
 }
 .row.playing .row-play { background: var(--color-paper, #f7f7f2); color: var(--color-void, #0f172a); }
 .row.editing { flex-wrap: wrap; }
+.row-record {
+  flex: 0 0 auto;
+  min-height: 40px;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-emerald, #06ffa5);
+  background: transparent;
+  color: var(--color-emerald, #06ffa5);
+  cursor: pointer;
+}
 .row-edit-btn {
   flex: 0 0 auto;
   min-height: 40px;
