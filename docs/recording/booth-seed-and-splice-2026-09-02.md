@@ -164,9 +164,103 @@ See "The measurement" below.
 
 ---
 
-## The measurement
+## The measurement — is this an afternoon, or a week?
 
-*(filled in at the end of the job — see the published version)*
+Tom's question: a community course must not need someone recording phrases for a
+week before it is usable. Someone picks ~100 seeds as a taster; Popty computes the
+minimal set a human reads so that dice-and-splice regenerates the rest.
+
+Measured on 2026-09-02 by `tools/recording/measure-lego-quarry-2026-09-02.cjs`
+(read-only) on two real courses at seeds 1..100 — one with a legacy recording
+corpus, one with nothing at all.
+
+### `pdc_for_eng` — Pennsylvania Dutch, the true from-scratch community course
+
+259 LEGO rows (253 distinct), 2,543 practice phrases, 100 seeds, **one** audio row
+in the whole course, no TTS, `human_only` with nobody cast.
+
+| | |
+|---|---|
+| **(a) covering set** | **250 distinct LEGOs** regenerate every phrase — plus **220 single words** no LEGO covers. **470 pieces.** |
+| **(b) already free** | **0.** Nothing is recorded and there is no pod to mine. |
+| **(c) a human must read** | **470 quarry pieces, gapped** + **100 seed sentences, whole, at natural speed** |
+| **(d) roughly** | **~29 min** gapped quarry + **~10 min** seeds = **about 40 minutes of reading** |
+
+**Forty minutes, not a week.** The comparison that makes it: recording every phrase
+whole is 2,543 lines against 570. That is the answer to the question Tom actually
+asked.
+
+### `cym_n_for_eng` — Welsh North, which has a legacy corpus
+
+154 LEGOs and 942 phrases in seeds 1..100, and **every one of them already has a
+human `target1` clip** (`origin: human`, `voice_id: legacy_import` — genuine human
+audio from the old SSi corpus, not TTS; 152 of 154 LEGOs and 939 of 942 phrases,
+the remainder TTS).
+
+| | |
+|---|---|
+| **(a) covering set** | 135 distinct LEGOs, plus 121 word-sized fallbacks |
+| **(b) already free** | **135 of 135** — the entire quarry is already recorded |
+| **(c) a human must read** | **0 LEGOs.** **93 seed sentences.** No phrase lacks a whole recording. |
+| **(d) roughly** | **~8 minutes** |
+
+So for Welsh the splice question does not arise in seeds 1..100: every phrase
+already has its own real whole recording, and a real whole recording always beats
+an assembled one. **The entire Welsh gap in this range is seed sentences** — which
+is exactly what the first half of this job makes recordable.
+
+### The finding that qualifies Tom's LEGO ruling
+
+**The LEGO covering set alone does NOT regenerate every phrase.** Only 1,104 of
+2,543 pdc phrases (43%) and 375 of 942 Welsh phrases (40%) tile from the LEGO
+inventory with nothing left over. The rest need word-sized fallback pieces — 220 on
+pdc, 121 on Welsh.
+
+That is not a refutation of the ruling; the ruling already names words as the
+fallback. But the fallback is not a rounding error, it is **47% of the pieces a pdc
+recordist reads**, and it is where the coarticulation damage Tom named actually
+lands. Worth knowing before anyone promises the splice will sound like LEGOs
+throughout.
+
+### Against the measured document
+
+`docs/recording/pods-first-welsh-recording-scope-2026-08-31.md` found pods buy about
+2% as read (37 of 1,896 lines), rising to 1,492 of 1,896 if you cut at every LEGO
+boundary. **I get the same answer for the as-read case and I decline to count the
+cut-at-LEGO-boundaries case at all** — and the disagreement is worth naming rather
+than burying.
+
+Pods are natural speech. `services/voice-engine/align.cjs` reads its boundaries
+from the *pauses* in a gapped read, and on real Welsh takes it found **zero of 88**
+LEGO boundaries in natural-cadence audio
+(`docs/recording/natural-take-lego-extraction-eval-2026-08-22.md`). "Chop a pod at
+LEGO joints" is therefore not a capability this estate has today. Counting it as
+free coverage would hand a recordist a short list that cannot actually be assembled.
+Pod mining is scoped **by language**, never by course (Tom, 2026-09-02) — an audit
+that counts a course's own rows manufactures phantom backlog.
+
+### A spliced sample, so the ear decides
+
+One real Welsh phrase, assembled through the estate's own splicer
+(`services/voice-engine/splicer.cjs`, house loudness per piece, concat demuxer):
+
+> **fedra i ddim cofio beth dw i angen deud** — *"I can't remember what I need to say"*
+> assembled from five existing human LEGO clips: *fedra i ddim · cofio · beth · dw i angen · deud*
+
+- assembled: https://popty.app/evidence/splice-sample-2026-09-02/assembled-from-lego-clips.mp3
+- the same phrase recorded whole: https://popty.app/evidence/splice-sample-2026-09-02/recorded-whole.mp3
+
+**Read the demo honestly.** These pieces are Pool A teaching clips — isolated reads,
+each with its own attack and decay and no coarticulation at all. Kai's ruling is that
+Pool A is *never* spliced, so this is deliberately the wrong material, used because it
+is the only material that exists today. A proper gapped-read quarry should sound
+*better* than this, not worse. It is a floor, not a sample of the product.
+
+**And the honest unknown: one good spliced phrase is not evidence that four thousand
+of them are good.** Nothing here tells you whether quality holds across a whole
+course. That question needs a gapped read of a real quarry and a listen across a
+spread of phrase lengths and junction types — which is a session with a human in it,
+not another measurement.
 
 ---
 
