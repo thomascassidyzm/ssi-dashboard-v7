@@ -56,6 +56,44 @@
         </div>
       </div>
 
+      <!-- How much of the course this session covers. ?maxSeed=N already
+           existed on the link; this is the affordance over it, and it shows
+           what each choice COSTS — Tom, 2026-09-02: "just to see wha the scope
+           was". The counts come from the course itself, never from a guess. -->
+      <div class="volume-choice" @click.stop>
+        <span class="volume-choice-label" id="volume-choice-label">How much of the course?</span>
+        <p v-if="volumesError" class="volume-note">
+          We couldn't count the course just now, so the sizes below are missing.
+          Choosing still works.
+        </p>
+        <p v-else-if="volumesLoading" class="volume-note">Counting the course…</p>
+        <div class="volume-options" role="radiogroup" aria-labelledby="volume-choice-label">
+          <button
+            v-for="opt in volumeOptions"
+            :key="opt.key"
+            class="volume-option"
+            :class="{ active: selectedVolume === opt.maxSeed }"
+            type="button"
+            role="radio"
+            :aria-checked="selectedVolume === opt.maxSeed"
+            @click.stop="chooseVolume(opt.maxSeed)"
+          >
+            <span class="volume-option-title">{{ opt.label }}</span>
+            <span v-if="opt.stats" class="volume-option-detail">
+              {{ opt.stats.lines.toLocaleString() }} lines to read
+              · about {{ formatDuration(opt.stats.estimatedMinutes) }}
+              <br>
+              {{ opt.stats.legos.toLocaleString() }} LEGOs
+              · {{ opt.stats.phrases.toLocaleString() }} phrases
+            </span>
+          </button>
+        </div>
+        <p class="volume-note volume-rate">
+          Times assume 6 seconds a line, the rate this booth has always quoted —
+          reading only, no retakes.
+        </p>
+      </div>
+
       <!-- Short warm-up run so a new recorder (and whoever is reviewing them)
            can hear real audio back within a couple of minutes, instead of
            committing to the whole course before anyone has checked the mic,
@@ -119,8 +157,9 @@
 
 
 <script setup>
-import { ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
+import { getApiUrl } from '@/services/api'
 
 const emit = defineEmits(['select'])
 const selectedMode = ref(null)
@@ -168,9 +207,80 @@ function chooseOrder(order) {
   router.replace({ query })
 }
 
+// The seed volumes Tom asked to be able to compare, plus the whole course.
+// They set the ?maxSeed the recording-script endpoint has always understood —
+// nothing new caps anything, this only makes the existing cap choosable.
+const VOLUME_CHOICES = [
+  { maxSeed: 30, label: 'First 30 seeds' },
+  { maxSeed: 50, label: 'First 50 seeds' },
+  { maxSeed: 100, label: 'First 100 seeds' },
+  { maxSeed: 150, label: 'First 150 seeds' },
+  { maxSeed: 300, label: 'First 300 seeds' },
+  { maxSeed: null, label: 'The whole course' }
+]
+
+const linkCapOnLoad = parseInt(route.query.maxSeed, 10)
+const selectedVolume = ref(
+  Number.isInteger(linkCapOnLoad) && linkCapOnLoad > 0 ? linkCapOnLoad : null
+)
+const volumeStats = ref({})
+const volumesLoading = ref(false)
+const volumesError = ref(false)
+
+const volumeOptions = computed(() =>
+  VOLUME_CHOICES.map(c => ({
+    ...c,
+    key: c.maxSeed ?? 'all',
+    stats: volumeStats.value[c.maxSeed ?? 'all'] || null
+  }))
+)
+
+// Minutes are useless above an hour or so on a screen this size — the whole
+// point of the comparison is "afternoon or week?", so say it in those units.
+function formatDuration(minutes) {
+  if (!Number.isFinite(minutes)) return '—'
+  if (minutes < 90) return `${minutes} min`
+  const hours = minutes / 60
+  return `${hours < 10 ? hours.toFixed(1) : Math.round(hours)} hours`
+}
+
+// One request answers every volume: the server counts the course once.
+async function loadVolumes() {
+  if (!courseCode) return
+  volumesLoading.value = true
+  try {
+    const base = localStorage.getItem('api_base_url') || getApiUrl()
+    const res = await fetch(
+      `${base}/api/production/${courseCode}/recording-volumes`,
+      { headers: { 'ngrok-skip-browser-warning': 'true' } }
+    )
+    if (!res.ok) throw new Error(String(res.status))
+    const data = await res.json()
+    const next = {}
+    for (const v of data.volumes || []) next[v.maxSeed ?? 'all'] = v
+    volumeStats.value = next
+  } catch {
+    // Never block the choice on the count: a booth with no numbers still records.
+    volumesError.value = true
+  } finally {
+    volumesLoading.value = false
+  }
+}
+
+onMounted(loadVolumes)
+
+// The URL stays the source of truth for the cap, same as the order chooser.
+function chooseVolume(maxSeed) {
+  selectedVolume.value = maxSeed
+  const query = { ...route.query }
+  if (maxSeed) query.maxSeed = String(maxSeed)
+  else delete query.maxSeed
+  router.replace({ query })
+}
+
 function selectMode(mode) {
   selectedMode.value = mode
-  emit('select', mode, { order: scriptOrder.value })
+  emit('select', mode, { order: scriptOrder.value, maxSeed: selectedVolume.value })
 }
 
 // Same flow as Mode 1, capped. @click.stop keeps the card's own handler from
@@ -384,6 +494,77 @@ function goToPods() {
 .test-batch-btn:hover {
   background: var(--accent);
   color: var(--canvas);
+}
+
+/* Volume chooser — same stacked-row shape as the order chooser, because it
+   answers the same kind of question and shares the phone-width constraint. */
+.volume-choice {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.volume-choice-label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.volume-note {
+  margin: 0 0 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--muted);
+}
+
+.volume-rate {
+  margin: 0.75rem 0 0;
+}
+
+.volume-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.volume-option {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.625rem 0.875rem;
+  text-align: left;
+  font: inherit;
+  background: var(--surface-2);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.volume-option:hover {
+  border-color: var(--accent);
+}
+
+.volume-option.active {
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, var(--surface-2));
+}
+
+.volume-option-title {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.volume-option-detail {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--muted);
 }
 
 @media (max-width: 768px) {

@@ -46,6 +46,11 @@ const SKIPPED_PHRASE_ROLES = new Set(['component'])
 // than silently vanishing.
 const NO_LEGO_INDEX = Number.MAX_SAFE_INTEGER
 
+// The house estimate for a read: 6 seconds a line, the same rate the recording
+// script endpoint has always quoted. Not measured per course — named, so a
+// number on screen can be traced to it.
+const SECONDS_PER_LINE = 6
+
 /**
  * Order rows into Kai's reading sequence.
  *
@@ -109,6 +114,47 @@ function buildCourseOrderItems({ seeds = [], legos = [], phrases = [] } = {}) {
     items.push(r)
   }
   return items
+}
+
+/**
+ * The recording burden at each of several seed volumes, in ONE pass over the
+ * course.
+ *
+ * Tom, 2026-09-02: "I'd LIKE to do it for any SEED volume - i.e. 30 SEEDS,
+ * 50/100/150/300 — just to see wha the scope was". The question behind it is
+ * whether recording a community course is an afternoon or a week, so the answer
+ * has to be in lines and minutes, not seeds.
+ *
+ * Counting a PREFIX of the whole-course item list gives exactly what
+ * ?maxSeed=V returns: the cap filters rows by seed_number and the ordering is
+ * by seed, so the deduped list under a cap is the prefix of the uncapped one.
+ * That is what lets six volumes cost one load instead of six.
+ *
+ * @returns {Array<{maxSeed:number|null, seeds:number, legos:number,
+ *   phrases:number, lines:number, estimatedMinutes:number}>}
+ */
+function buildVolumeBreakdown({ seeds = [], legos = [], phrases = [] } = {}, volumes = []) {
+  const items = buildCourseOrderItems({ seeds, legos, phrases })
+  const upTo = (rows, v) => rows.filter(r => v == null || (r.seed_number ?? Infinity) <= v).length
+
+  return volumes.map((v) => {
+    const lines = items.filter(i => v == null || (i.seedNumber ?? Infinity) <= v).length
+    return {
+      maxSeed: v == null ? null : v,
+      seeds: upTo(seeds, v),
+      legos: upTo(legos, v),
+      // Component rows are tiling glosses and are never read — counting them
+      // here would overstate the job by roughly a fifth.
+      phrases: upTo(phrases.filter(p => !SKIPPED_PHRASE_ROLES.has(p.phrase_role)), v),
+      lines,
+      estimatedMinutes: Math.round((lines * SECONDS_PER_LINE) / 60),
+    }
+  })
+}
+
+/** Read-only: the volume breakdown for a course. */
+async function loadVolumeBreakdown(supabase, courseCode, volumes) {
+  return buildVolumeBreakdown(await fetchCourseRows(supabase, courseCode, null), volumes)
 }
 
 /**
@@ -215,6 +261,9 @@ async function fetchAll(makeQuery, pageSize = 1000) {
 
 module.exports = {
   buildCourseOrderItems,
+  buildVolumeBreakdown,
+  loadVolumeBreakdown,
+  SECONDS_PER_LINE,
   loadCourseOrderScript,
   loadRecordedProgress,
   SKIPPED_PHRASE_ROLES

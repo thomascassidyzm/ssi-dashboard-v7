@@ -10,7 +10,7 @@
 
 import { describe, it, expect } from 'vitest'
 
-const { buildCourseOrderItems } = require('./course-order-script.cjs')
+const { buildCourseOrderItems, buildVolumeBreakdown } = require('./course-order-script.cjs')
 
 // One small course: two seeds, two LEGOs each, phrases on each LEGO, plus the
 // component rows a learner never hears.
@@ -162,5 +162,32 @@ describe('loadRecordedProgress', () => {
   it('is zero only when this voice really has nothing — not when another voice has takes', async () => {
     const out = await loadRecordedProgress(supabase(), 'deu_at_for_eng', { role: 'known' })
     expect(out.alreadyRecorded).toBe(0)
+  })
+})
+
+// The volume picker's whole claim: what it shows for "first N seeds" is what
+// the recording script actually hands the recordist under ?maxSeed=N.
+describe('buildVolumeBreakdown', () => {
+  const rows = { seeds: SEEDS, legos: LEGOS, phrases: PHRASES }
+
+  it('counts the same lines a capped script would return', () => {
+    const [first, all] = buildVolumeBreakdown(rows, [1, null])
+    expect(first.lines).toBe(buildCourseOrderItems({
+      seeds: SEEDS.filter(s => s.seed_number <= 1),
+      legos: LEGOS.filter(l => l.seed_number <= 1),
+      phrases: PHRASES.filter(p => p.seed_number <= 1),
+    }).length)
+    expect(all.lines).toBe(buildCourseOrderItems(rows).length)
+  })
+
+  it('reports LEGOs and phrases per volume, never counting component rows', () => {
+    const [first] = buildVolumeBreakdown(rows, [1])
+    expect(first).toMatchObject({ maxSeed: 1, seeds: 1, legos: 2, phrases: 3 })
+  })
+
+  it('quotes minutes at the booth’s stated 6 seconds a line', () => {
+    const [all] = buildVolumeBreakdown(rows, [null])
+    expect(all.maxSeed).toBeNull()
+    expect(all.estimatedMinutes).toBe(Math.round((all.lines * 6) / 60))
   })
 })

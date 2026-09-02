@@ -8733,7 +8733,7 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 // Import the recording optimizer algorithm
 const { generateRecordingScript, generateTwoPoolScript } = require('../tools/recording-optimizer/generate-recording-script.cjs')
 const { buildScriptItems, buildCourseScriptItems, buildTwoPoolScriptItems, isNaturalOnly } = require('./recording-script-items.cjs')
-const { loadCourseOrderScript, loadRecordedProgress } = require('./course-order-script.cjs')
+const { loadCourseOrderScript, loadRecordedProgress, loadVolumeBreakdown } = require('./course-order-script.cjs')
 
 // GET /api/production/:courseCode/recording-optimizer
 // Runs the GuaranteedCoverage algorithm to find minimum recording set
@@ -8798,6 +8798,38 @@ async function readRecordedProgress(courseCode, { maxSeed = null, role = 'target
     return { totalInCourse: null, alreadyRecorded: null }
   }
 }
+
+// GET /api/production/:courseCode/recording-volumes
+// What recording this course actually COSTS at each seat of the seed cap —
+// Tom, 2026-09-02: "I'd LIKE to do it for any SEED volume - i.e. 30 SEEDS,
+// 50/100/150/300 — just to see wha the scope was". The volume picker in the
+// booth shows this before anyone commits to a run; ?maxSeed=N (which already
+// existed) is what a choice then sets. One pass over the course answers every
+// volume, so the picker costs a single query, not one per option.
+const DEFAULT_RECORDING_VOLUMES = [30, 50, 100, 150, 300, null]
+
+app.get('/api/production/:courseCode/recording-volumes', async (req, res) => {
+  try {
+    if (!supabaseClient.isInitialized()) {
+      return res.status(503).json({ error: 'The database is unreachable, so the volumes cannot be counted.' })
+    }
+    const { courseCode } = req.params
+    // ?volumes=30,50 overrides the defaults; "all" (or a bare trailing comma)
+    // means the uncapped whole course.
+    const requested = String(req.query.volumes || '')
+      .split(',').map(v => v.trim()).filter(Boolean)
+    const volumes = requested.length
+      ? requested.map(v => (v.toLowerCase() === 'all' ? null : parseInt(v, 10)))
+          .filter(v => v === null || (Number.isInteger(v) && v > 0))
+      : DEFAULT_RECORDING_VOLUMES
+
+    const breakdown = await loadVolumeBreakdown(supabaseClient.getClient(), courseCode, volumes)
+    res.json({ courseCode, secondsPerLine: 6, volumes: breakdown })
+  } catch (err) {
+    logger.error('[Recording Volumes] error:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
 
 // GET /api/production/:courseCode/recording-script
 // Returns the optimizer's script formatted for the autocue — interleaved normal/slow pairs
