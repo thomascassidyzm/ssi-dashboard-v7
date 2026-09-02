@@ -410,9 +410,24 @@ module.exports = function createRecordistRouter({
     }
 
     const { data: course, error: cErr } = await db()
-      .from('courses').select('course_code, voice_config').eq('course_code', seed.course_code).maybeSingle()
+      .from('courses').select('course_code, voice_config, target_lang').eq('course_code', seed.course_code).maybeSingle()
     if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
     if (!course) { res.status(404).json({ error: `No course ${seed.course_code}` }); return null }
+
+    // WRONG LANGUAGE, said in those words. Checked before the cast, because the
+    // cast is resolved against the RECORDIST's own language policy: a Welsh
+    // voice pointed at a zzz seed would otherwise be told "nobody is cast",
+    // which is false and sends whoever reads it to change the wrong thing.
+    let courseLanguage = null
+    try { courseLanguage = canonicalLanguage(course.target_lang) } catch { courseLanguage = null }
+    if (courseLanguage !== recordist.language) {
+      res.status(403).json({
+        error: `That seed belongs to ${seed.course_code}, which is ${course.target_lang}, not ${recordist.language}.`,
+        reason: 'wrong_language',
+        courseCode: seed.course_code,
+      })
+      return null
+    }
 
     const policies = await loadPolicies(db())
     const policy = policies.find((row) => row.language === recordist.language)
