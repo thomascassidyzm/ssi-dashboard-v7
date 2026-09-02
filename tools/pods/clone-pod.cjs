@@ -29,8 +29,17 @@
  * pod already holds sentence rows — re-cloning over a half-aligned pod would be the
  * one way this could destroy work.
  *
+ * IT ALSO REFUSES A DESTINATION SLUG THE PLAYER SERVES (2026-09-02). `pod-1` and
+ * `pod-0` are what the resolver reads; a clone landing on either is in front of
+ * learners the moment its header row exists, and the align that follows this tool
+ * would then empty a served pod underneath them. The refusal names how many learners
+ * are at risk. `--serve-now` is the deliberate escape, and it waives ONLY that check —
+ * a destination that already holds sentence rows is refused regardless. See
+ * serviceRefusal() below and tools/pods/clone-pod-serving-destination.test.cjs.
+ *
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-0-unrecorded
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-0-unrecorded --apply
+ *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-1 --serve-now --apply
  */
 'use strict'
 
@@ -39,38 +48,108 @@ const { Client } = require('pg')
 const { checkPodCast, loadClipsForRows } = require('./pod-cast-gate.cjs')
 const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
-const APPLY = process.argv.includes('--apply')
+/**
+ * The only slugs a learner path ever reads, in preference order. MIRRORED, not
+ * imported: the authority is `SERVING_POD_SLUGS` in the learning app's
+ * packages/player-vue/src/composables/servedPod.ts, which api/courses/[code]/bundle.ts
+ * already duplicates as a literal for the same reason — the two repos share a database,
+ * not a module graph. If that list ever widens, widen this one in the same change.
+ */
+const SERVING_POD_SLUGS = ['pod-1', 'pod-0']
+
+/**
+ * Would writing to this destination put a clone in front of learners? PURE, so it is
+ * testable — every DB read it needs is passed in. Returns the refusal text, or null.
+ *
+ * WHY THIS EXISTS. This tool's whole job is to make a copy that learners cannot see, so
+ * that a destructive align can run off the live pod. It knew how to refuse a destination
+ * that already held rows, and nothing else. It did not know which slugs are SERVED.
+ *
+ * The resolver serves by slug: `pod_type = 'core'` and `slug in ('pod-1','pod-0')`, first
+ * match wins, no row count, no text, and — checked against the code on 2026-09-02 — no
+ * reading of `visibility` in either consumer. So a `held` destination is no defence, and
+ * neither is an absent one: creating the header row IS the moment the pod starts being
+ * served. Clone onto a slug that happens to be serving and the align that follows empties
+ * a served pod under live learners, with no promotion tool involved at all.
+ *
+ * THE REFUSAL NAMES THE LEARNERS. A generic guard gets waved through; "9 of this course's
+ * 12 learners have progress on this pod" does not. If the count cannot be read the answer
+ * is still a refusal that SAYS so — never a write permitted because the risk could not be
+ * measured.
+ */
+function serviceRefusal ({
+  dstPodId, toSlug, podType, destExists, destVisibility, destRows = 0,
+  learnersOnCourse, learnersOnDestPod, serveNow = false,
+}) {
+  // Not waivable by --serve-now: this one is about destroying work, not about learners.
+  if (destRows > 0) return `${dstPodId} already holds ${destRows} sentence row(s); refusing to clone over it`
+  if (!SERVING_POD_SLUGS.includes(toSlug)) return null
+  // The resolver filters pod_type='core'; anything else on a serving slug is not served.
+  if (podType !== 'core') return null
+  if (serveNow) return null
+
+  const n = (v) => (v === null || v === undefined ? null : Number(v))
+  const onCourse = n(learnersOnCourse)
+  const onPod = n(learnersOnDestPod)
+  const who = onCourse === null || onPod === null
+    ? 'the learner count was UNAVAILABLE — refusing anyway, because a risk that cannot be measured is not a risk that has been cleared'
+    : onCourse === 0
+      ? '0 learners currently have progress on this course'
+      : `${onPod} of this course's ${onCourse} learners have progress on this pod`
+  return `${dstPodId} is a SERVING slug — ${toSlug} is one of ${SERVING_POD_SLUGS.join(', ')}, which is what the ` +
+    `player resolves by (packages/player-vue/src/composables/servedPod.ts). ` +
+    `The destination pod row ${destExists ? `already exists (visibility '${destVisibility}', which the resolver does not read)` : 'does not exist yet, and creating it is what starts the serving'}` +
+    ` and holds ${destRows} sentence row(s). ${who}. ` +
+    `Cloning here puts a working copy in front of them, and the align that follows this ` +
+    `tool would empty it underneath them. Clone to a parked slug instead (pod-0-unrecorded ` +
+    `is the convention), or pass --serve-now if serving this destination immediately is the ` +
+    `deliberate intent.`
+}
+
 const arg = (n) => {
   const a = process.argv.find(x => x.startsWith(`--${n}=`))
   return a ? a.split('=').slice(1).join('=') : null
 }
-const COURSE = arg('course')
-const FROM = arg('from') || 'pod-0'
-const TO = arg('to')
-const TITLE_SUFFIX = arg('title-suffix') || ' — UNRECORDED working copy, not learner-facing'
-// listening_pods.visibility DEFAULTS TO 'live', so an insert that omits the column
-// creates a learner-visible pod. This tool's whole purpose is a copy that is NOT
-// learner-facing, so it writes the column explicitly and defaults it to 'held'.
-// (Omitting it is how 40 non-serving pods came to be 'live' and needed the
-// 2026-08-23 sweep: docs/pods/hold-40-non-serving-pods-2026-08-23.md.)
-const VISIBILITY_FLAG = arg('visibility')
-if (!COURSE || !TO) {
-  console.error('FAILED: --course=<code> and --to=<slug> are both required')
-  process.exit(1)
-}
-if (VISIBILITY_FLAG && !['held', 'live', 'draft'].includes(VISIBILITY_FLAG)) {
-  console.error(`FAILED: --visibility=${VISIBILITY_FLAG} is not one of held|live|draft`)
-  process.exit(1)
-}
-if (TO === FROM) {
-  console.error('FAILED: --to must differ from --from')
-  process.exit(1)
+
+/**
+ * Argument parsing lives in a function, not at module scope, so this file can be
+ * REQUIRED by a test without process.exit() firing on the way in. The destination
+ * gate is the thing worth testing and it was unreachable while the whole tool ran
+ * on import.
+ */
+function parseArgs () {
+  const APPLY = process.argv.includes('--apply')
+  const SERVE_NOW = process.argv.includes('--serve-now')
+  const COURSE = arg('course')
+  const FROM = arg('from') || 'pod-0'
+  const TO = arg('to')
+  const TITLE_SUFFIX = arg('title-suffix') || ' — UNRECORDED working copy, not learner-facing'
+  // listening_pods.visibility DEFAULTS TO 'live', so an insert that omits the column
+  // creates a learner-visible pod. This tool's whole purpose is a copy that is NOT
+  // learner-facing, so it writes the column explicitly and defaults it to 'held'.
+  // (Omitting it is how 40 non-serving pods came to be 'live' and needed the
+  // 2026-08-23 sweep: docs/pods/hold-40-non-serving-pods-2026-08-23.md.)
+  const VISIBILITY_FLAG = arg('visibility')
+  if (!COURSE || !TO) {
+    console.error('FAILED: --course=<code> and --to=<slug> are both required')
+    process.exit(1)
+  }
+  if (VISIBILITY_FLAG && !['held', 'live', 'draft'].includes(VISIBILITY_FLAG)) {
+    console.error(`FAILED: --visibility=${VISIBILITY_FLAG} is not one of held|live|draft`)
+    process.exit(1)
+  }
+  if (TO === FROM) {
+    console.error('FAILED: --to must differ from --from')
+    process.exit(1)
+  }
+  return { APPLY, SERVE_NOW, COURSE, FROM, TO, TITLE_SUFFIX, VISIBILITY_FLAG }
 }
 
-const srcPodId = `${COURSE}:${FROM}`
-const dstPodId = `${COURSE}:${TO}`
+async function main () {
+  const { APPLY, SERVE_NOW, COURSE, FROM, TO, TITLE_SUFFIX, VISIBILITY_FLAG } = parseArgs()
+  const srcPodId = `${COURSE}:${FROM}`
+  const dstPodId = `${COURSE}:${TO}`
 
-;(async () => {
   const db = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   await db.connect()
   try {
@@ -81,10 +160,39 @@ const dstPodId = `${COURSE}:${TO}`
     const VISIBILITY = VISIBILITY_FLAG || (src && src.visibility) || 'held'
     if (!src) throw new Error(`${srcPodId}: no such pod`)
 
-    const dstExisting = (await db.query(`select id, visibility from listening_pods where id=$1`, [dstPodId])).rows[0]
+    const dstExisting = (await db.query(`select id, visibility, pod_type from listening_pods where id=$1`, [dstPodId])).rows[0]
     const dstRows = Number((await db.query(
       `select count(*) n from listening_pod_sentences where pod_id=$1`, [dstPodId])).rows[0].n)
-    if (dstRows > 0) throw new Error(`${dstPodId} already holds ${dstRows} sentence row(s); refusing to clone over it`)
+
+    // Who is at risk if this destination turns out to be served? Counted the way
+    // pod-switchover.cjs scopes it — learner_pod_state by course_code — plus the
+    // sharper number: those whose state points at a row of the destination pod
+    // itself. Read inside a try so a failure yields "unavailable", which the gate
+    // treats as a reason to refuse, never as a reason to allow.
+    let learnersOnCourse = null
+    let learnersOnDestPod = null
+    try {
+      const { rows: [l] } = await db.query(
+        `select count(distinct learner_id) on_course,
+                count(distinct learner_id) filter (where sentence_id like $2) on_pod
+           from learner_pod_state where course_code = $1`, [COURSE, `${dstPodId}:%`])
+      learnersOnCourse = Number(l.on_course)
+      learnersOnDestPod = Number(l.on_pod)
+    } catch (e) {
+      console.error(`WARNING: learner_pod_state count failed (${e.message}) — the destination gate will treat the count as unavailable`)
+    }
+
+    // The destination gate. Refuses in DRY RUN as well as under --apply, so the dry
+    // run tells the truth about what the real thing would do.
+    const refusal = serviceRefusal({
+      // An existing destination is judged on its OWN pod_type; a destination that does
+      // not exist yet will be created carrying the source's, because that is what the
+      // insert below copies.
+      dstPodId, toSlug: TO, podType: dstExisting ? dstExisting.pod_type : src.pod_type,
+      destExists: !!dstExisting, destVisibility: dstExisting && dstExisting.visibility,
+      destRows, learnersOnCourse, learnersOnDestPod, serveNow: SERVE_NOW,
+    })
+    if (refusal) throw new Error(refusal)
 
     const sentences = (await db.query(
       `select * from listening_pod_sentences where pod_id=$1 order by global_order`, [srcPodId])).rows
@@ -198,4 +306,10 @@ const dstPodId = `${COURSE}:${TO}`
   } finally {
     await db.end()
   }
-})().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
+}
+
+module.exports = { serviceRefusal }
+
+if (require.main === module) {
+  main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
+}
