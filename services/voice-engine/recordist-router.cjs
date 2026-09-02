@@ -12,6 +12,7 @@
  * Aran gets a link, taps it, and reads. Nothing else. The admin routes (4/5)
  * keep the estate's normal auth, because they change what everyone else sees.
  *
+ *   GET  /mine                              which voice(s) the SIGNED-IN user reads
  *   GET  /voice/:voiceId                    the by-language queue (recordist-queue.cjs)
  *   POST /voice/:voiceId/take               a take → the EXISTING upload seam
  *   GET  /voice/:voiceId/line/:lineId/clip  the STORED bytes, for playback
@@ -31,6 +32,7 @@ const express = require('express')
 const Busboy = require('busboy')
 const {
   resolveRecordist,
+  voicesForEmail,
   buildQueue,
   buildCoverage,
   loadPolicies,
@@ -101,6 +103,10 @@ module.exports = function createRecordistRouter({
   getDb,
   logger = console,
   requireAdmin,
+  // Resolves ANY signed-in dashboard identity (recorder, editor, admin). Only
+  // /mine takes it: that route answers "which voice am I?", which is a question
+  // about the caller and cannot be answered without knowing who the caller is.
+  requireDashboardUser,
   handleRecordingUpload,
   // Injectable only so the route's variant handling is testable without S3.
   s3 = require('../s3-production-service.cjs'),
@@ -224,6 +230,38 @@ module.exports = function createRecordistRouter({
     }
     res.redirect(302, url)
   }
+
+  // ── 0. who am I? ───────────────────────────────────────────────────────────
+  // The ONE authenticated recordist route. Everything below it is still
+  // link-is-identity; this exists so a recordist who signs in to Popty does not
+  // have to hold a link to find their own outstanding lines. It returns
+  // identity only — the queue itself is route 1, unchanged, so there is exactly
+  // one piece of code that decides what is left to record.
+  router.get('/mine', async (req, res) => {
+    try {
+      if (typeof requireDashboardUser !== 'function') {
+        return res.status(501).json({ error: 'Sign-in is not wired up on this service.' })
+      }
+      const user = await requireDashboardUser(req, res)
+      if (!user) return // requireDashboardUser has already answered 401/403
+      const voices = await voicesForEmail(db(), user.email)
+      res.json({
+        email: user.email,
+        name: user.name || null,
+        voices: voices.map((v) => ({
+          voiceId: v.voiceId,
+          displayName: v.displayName,
+          language: v.language,
+          languageName: v.languageName,
+          gender: v.gender,
+          dialect: v.dialect,
+        })),
+      })
+    } catch (err) {
+      logger.error(`[Recordist] mine: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
 
   // ── 1. the queue ───────────────────────────────────────────────────────────
   router.get('/voice/:voiceId', async (req, res) => {

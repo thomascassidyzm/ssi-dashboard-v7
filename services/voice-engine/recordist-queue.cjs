@@ -215,6 +215,58 @@ async function resolveRecordist(db, voiceIdParam) {
 }
 
 /**
+ * Which recording voices belong to a LOGGED-IN Popty identity.
+ *
+ * The link-is-identity surface (/r/:voiceId) needs no login, but a recordist who
+ * signs in should not have to hold a link to find their own work. The mapping
+ * from a person to a voice is already modelled, in two places, and both are
+ * real: `dashboard_users.voice_id` is the login's own voice (Catrin), and
+ * `language_recording_policy.voices[slot].email` is the language's record of who
+ * reads it (Aran, whose dashboard row is an admin with no voice_id). Neither
+ * alone covers both people, so this reads both and unions them.
+ *
+ * Every candidate is then resolved through resolveRecordist, which is the ONE
+ * gate on whether a voice is live: a stale dashboard_users.voice_id naming a
+ * voice no policy mentions resolves to null and is dropped, so this can never
+ * conjure a queue the recordist surface itself would 404.
+ *
+ * @returns {Promise<Array>} resolveRecordist shapes, deduped by voiceId
+ */
+async function voicesForEmail(db, email) {
+  const norm = String(email || '').trim().toLowerCase()
+  if (!norm) return []
+
+  const candidates = new Set()
+
+  // 1. the login's own voice. `ilike` because dashboard_users.email is stored
+  //    as typed (Eoghan's row is mixed-case) while a JWT email arrives lowercased.
+  const { data: rows, error } = await db
+    .from('dashboard_users').select('voice_id').ilike('email', norm)
+  if (error) throw new Error(`dashboard_users read failed: ${error.message}`)
+  for (const row of rows || []) if (row.voice_id) candidates.add(row.voice_id)
+
+  // 2. every policy voice that names this person.
+  for (const policy of await loadPolicies(db)) {
+    const voices = policy.voices || {}
+    for (const slot of Object.keys(voices)) {
+      const entry = voices[slot] || {}
+      if (!entry.voiceId) continue
+      if (String(entry.email || '').trim().toLowerCase() === norm) candidates.add(entry.voiceId)
+    }
+  }
+
+  const out = []
+  const seen = new Set()
+  for (const voiceId of candidates) {
+    const recordist = await resolveRecordist(db, voiceId)
+    if (!recordist || seen.has(recordist.voiceId)) continue
+    seen.add(recordist.voiceId)
+    out.push(recordist)
+  }
+  return out
+}
+
+/**
  * Every voice_id spelling a stored clip of this recordist might carry.
  *
  * Three sources, all read-side only (nothing here is ever written):
@@ -834,6 +886,7 @@ module.exports = {
   loadAliasMap,
   coursesForLanguage,
   resolveRecordist,
+  voicesForEmail,
   recordedSpellings,
   castEntryFor,
   buildLanguageLines,

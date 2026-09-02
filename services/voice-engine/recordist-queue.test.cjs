@@ -12,7 +12,7 @@
 
 const test = require('node:test')
 const assert = require('node:assert')
-const { buildQueue, resolveRecordist, recordedSpellings } = require('./recordist-queue.cjs')
+const { buildQueue, resolveRecordist, recordedSpellings, voicesForEmail } = require('./recordist-queue.cjs')
 
 /** Minimal PostgREST-shaped stub: only the calls this module actually makes. */
 function stubDb(tables) {
@@ -23,6 +23,13 @@ function stubDb(tables) {
         select() { return q },
         eq(col, val) { rows = rows.filter((r) => r[col] === val); return q },
         in(col, vals) { rows = rows.filter((r) => vals.includes(r[col])); return q },
+        // Case-insensitive equality — dashboard_users.email is stored as typed,
+        // while a JWT email arrives lowercased.
+        ilike(col, val) {
+          const want = String(val).toLowerCase()
+          rows = rows.filter((r) => String(r[col] || '').toLowerCase() === want)
+          return q
+        },
         // Only the one form the queue uses: .not(col, 'is', null)
         not(col, op, val) {
           if (op === 'is' && val === null) rows = rows.filter((r) => r[col] != null)
@@ -363,4 +370,61 @@ test('dialect tags are compared case- and space-insensitively', async () => {
   const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
   assert.deepEqual(aran.lines.map((l) => l.text), ['Bore da.'],
     'spelling drift must never silently empty a recordist’s queue')
+})
+
+
+// ── /api/recording/mine: a LOGIN → its voice(s) ──────────────────────────────
+// The two sources are both real and neither covers both people: Catrin's
+// dashboard_users row carries her voice_id; Aran's is an admin row with none,
+// and it is the policy that names aran@hey.com as the Welsh male voice.
+
+function mineFixture(extra = {}) {
+  const f = fixture()
+  f.dashboard_users = extra.dashboard_users || []
+  return f
+}
+
+test('a login named only by the POLICY resolves to its voice', async () => {
+  const db = stubDb(mineFixture())
+  const voices = await voicesForEmail(db, 'aran@hey.com')
+  assert.deepStrictEqual(voices.map((v) => v.voiceId), ['human_aran_cym_n'])
+  assert.strictEqual(voices[0].language, 'cym')
+})
+
+test('a login named only by dashboard_users.voice_id resolves to its voice', async () => {
+  const db = stubDb(mineFixture({
+    dashboard_users: [{ email: 'Catrin@Example.COM', voice_id: 'human_catrinlliar_cym_n' }],
+  }))
+  const voices = await voicesForEmail(db, 'catrin@example.com')
+  assert.deepStrictEqual(voices.map((v) => v.voiceId), ['human_catrinlliar_cym_n'])
+})
+
+test('both sources naming the same person yield ONE voice, not two', async () => {
+  const db = stubDb(mineFixture({
+    dashboard_users: [{ email: 'aran@hey.com', voice_id: 'human_aran_cym_n' }],
+  }))
+  const voices = await voicesForEmail(db, 'aran@hey.com')
+  assert.strictEqual(voices.length, 1)
+})
+
+test('an ALIAS spelling on the login row resolves to the canonical voice', async () => {
+  const db = stubDb(mineFixture({
+    dashboard_users: [{ email: 'c@x.com', voice_id: 'human_catrinlliar_cym_s' }],
+  }))
+  const voices = await voicesForEmail(db, 'c@x.com')
+  assert.deepStrictEqual(voices.map((v) => v.voiceId), ['human_catrinlliar_cym_n'])
+})
+
+test('a stale voice_id no policy names is DROPPED, never a queue', async () => {
+  const db = stubDb(mineFixture({
+    dashboard_users: [{ email: 'erik@x.com', voice_id: 'human_erikwallis_pdc' }],
+  }))
+  assert.deepStrictEqual(await voicesForEmail(db, 'erik@x.com'), [])
+})
+
+test('an unknown or empty email gets no voices', async () => {
+  const db = stubDb(mineFixture())
+  assert.deepStrictEqual(await voicesForEmail(db, 'nobody@x.com'), [])
+  assert.deepStrictEqual(await voicesForEmail(db, ''), [])
+  assert.deepStrictEqual(await voicesForEmail(db, null), [])
 })

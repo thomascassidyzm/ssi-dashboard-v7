@@ -495,6 +495,7 @@ app.use('/api/recording',
     getDb: () => (supabaseClient.isInitialized() ? supabaseClient.getClient() : null),
     logger,
     requireAdmin,
+    requireDashboardUser,
     handleRecordingUpload,
   }))
 
