@@ -125,8 +125,9 @@ async function insertChunked(table, rows) {
     let dl = sb.from('course_legos').delete().eq('course_code', DEST)
     let dp = sb.from('course_practice_phrases').delete().eq('course_code', DEST)
     if (MAX_SEED) { dl = dl.lte('seed_number', MAX_SEED); dp = dp.lte('seed_number', MAX_SEED) }
-    const e1 = (await dl).error; if (e1) throw new Error(`lego delete: ${e1.message}`)
+    // Phrases first: course_practice_phrases carries a FK onto course_legos.
     const e2 = (await dp).error; if (e2) throw new Error(`phrase delete: ${e2.message}`)
+    const e1 = (await dl).error; if (e1) throw new Error(`lego delete: ${e1.message}`)
 
     await insertChunked('course_legos', legoRows)
     await insertChunked('course_practice_phrases', phraseRows)
