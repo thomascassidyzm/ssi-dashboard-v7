@@ -462,11 +462,21 @@ async function fetchSeeds(db, courseCodes) {
   return out
 }
 
-/** voice_id of each of a set of course_audio rows, in one paged read. */
+/**
+ * voice_id of each of a set of course_audio rows, in one paged read.
+ *
+ * PAGE is 100, not 500, and that is not a taste call. PostgREST echoes the
+ * whole `id=in.(...)` filter back in a response header, so a page of 500 uuids
+ * returns ~22KB of headers and undici rejects it with UND_ERR_HEADERS_OVERFLOW
+ * ("TypeError: fetch failed") before any row is read. Welsh is the live case:
+ * cym_n + cym_s carry 504 seed-clip ids between them, so the FIRST page failed
+ * and the entire Welsh recordist queue 500'd. 100 uuids is ~4.5KB — well inside
+ * the 16KB default with room for the rest of the response's headers.
+ */
 async function audioVoicesById(db, ids) {
   const wanted = [...new Set(ids.filter(Boolean))]
   const out = new Map()
-  const PAGE = 500
+  const PAGE = 100
   for (let i = 0; i < wanted.length; i += PAGE) {
     const { data, error } = await db
       .from('course_audio').select('id, voice_id').in('id', wanted.slice(i, i + PAGE))
