@@ -1,0 +1,44 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A recordist signs in and sees what they still owe — 2026-09-02</title>
+<style>
+  body { background:#0f172a; color:#f7f7f2; font-family: system-ui, sans-serif;
+         max-width: 780px; margin: 0 auto; padding: 1.25rem 1rem 4rem; line-height:1.6; }
+  h1 { font-size: 1.4rem; line-height:1.3; margin: 0 0 .25rem; }
+  h2 { font-size: 1.05rem; margin: 2rem 0 .35rem; }
+  p, li { color:#c1c1bb; font-size: .95rem; }
+  img { width: 100%; height: auto; border: 1px solid #475569; border-radius: 12px; margin:.5rem 0 .25rem; }
+  .cap { font-size:.82rem; color:#94a3b8; margin:0 0 1.25rem; }
+  code { font-family: ui-monospace, monospace; font-size:.85em; }
+  .lede { color:#f7f7f2; }
+</style>
+
+<h1>A recordist signs in and sees what they still owe</h1>
+<p class="cap">Popty · <code>/my-recording</code> · 2 September 2026 · branch <code>feat/recordist-my-lines</code></p>
+
+<p class="lede">Signed in through the real login form as a recordist cast to Catrin's voice.
+No auth stub. The page found the voice from the login, loaded the live Welsh queue, and drew
+<strong>123 lines still to record, 38 of 161 done</strong> — the same numbers the queue API returns.</p>
+
+<h2>Phone — the list as it lands</h2>
+<img src="phone-top.png" alt="Phone: Catrin · Welsh, 123 lines still to record, dashed rows">
+<p class="cap">390&nbsp;×&nbsp;844. Every row is a dashed, dimmed outline: an empty slot with no recording in it.
+The Welsh line is the biggest thing on the row; everything else is furniture.</p>
+
+<h2>Phone — both states in one screen</h2>
+<img src="phone-both-states.png" alt="Phone: recorded rows drawn solid and filled">
+<p class="cap">With “show the lines I've already recorded” turned on. Recorded rows are solid and filled.
+No tick, no badge, no red or green — the only colour on the page is the level meter while a line is being read.</p>
+
+<h2>Desktop — same list, wider gutters</h2>
+<img src="desktop-both-states.png" alt="Desktop: the same list at 1440 wide">
+<p class="cap">1440&nbsp;×&nbsp;900. Nothing changes shape between the two.</p>
+
+<h2>What a tap does</h2>
+<ul>
+  <li>Tap a line — the mic opens on that line and a level meter appears under it.</li>
+  <li>Tap it again — the take is filed through the existing upload seam, the row redraws solid, and the count at the top drops.</li>
+  <li>While one line is live every other line is inert. One degree of freedom.</li>
+  <li><em>Upload a file</em> is the same seam for anyone who records elsewhere; <em>Listen back</em> plays the clip stored on the server, never a local blob.</li>
+</ul>

@@ -459,11 +459,15 @@ onBeforeUnmount(() => {
 }
 .row-meta { opacity: 0.65; }
 
-.row-tools { display: flex; gap: 0.5rem; padding: 0 0.9rem 0.35rem; }
+.row-tools { display: flex; padding: 0 0.9rem 0.2rem; }
+/* Quiet on purpose. The LINE is what a recordist is here to read, and it must
+   stay the biggest thing on the row — a bordered button per tool made the
+   furniture louder than the work. Still 44px of tap. */
 .tool {
-  display: inline-flex; align-items: center; min-height: 44px; padding: 0.4rem 0.85rem;
-  border: 1px solid var(--color-graphite, #475569); border-radius: 8px; cursor: pointer;
-  background: transparent; color: var(--color-paper-dim, #c1c1bb); font-size: 0.82rem;
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0.3rem 0.1rem;
+  margin-right: 1.1rem; border: none; background: transparent; cursor: pointer;
+  color: var(--color-paper-dim, #c1c1bb); font-size: 0.78rem;
+  text-decoration: underline; text-underline-offset: 3px; opacity: 0.75;
 }
 .tool.off { opacity: 0.35; cursor: default; }
 .hidden-file { display: none; }
