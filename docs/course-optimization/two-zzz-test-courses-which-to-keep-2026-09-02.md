@@ -33,6 +33,14 @@ What would change my mind: if the E2E pod-recording suite is relied on by CI rig
 
 Before Tom can actually record against the survivor, it needs real seed sentences — right now it has none. That's the next step, not a blocker to the keep/delete call.
 
+## Update, same evening: seed content populated
+
+Tom's ruling: "We can use the canonical SEEDs as the English SEEDS - we are testing the process" — he doesn't need bespoke pedagogy for a process test, just real content.
+
+Action taken (content only, no code, no audio): all 668 rows of the `canonical_seeds` table (the language-neutral English SSoT behind every real course build) were upserted into `zzz_test2_for_eng`'s `course_seeds`, `known_text` = `target_text` = the canonical `source_text` with its `{target}` placeholder resolved to "Zzz" (this course's own target-language code, capitalised as a stand-in proper noun — e.g. seed 1 reads "I want to speak Zzz with you now."). Nothing invented: every sentence is the same one used to open every real SSi course. `course_legos` was left untouched (0 rows) — decomposing into LEGOs is pedagogical work Tom explicitly said this test doesn't need; if the seed-recording flow turns out to require LEGO rows to drive, that's a separate, later step.
+
+`zzz_test2_for_eng` now has 668 seeds, 0 LEGOs, and its earlier pod-dialogue content (`listening_pods`/`listening_pod_sentences`, tested successfully tonight) untouched alongside it.
+
 ## Taste-safe default applied
 
 Both courses carry some of Tom's own real recordings, so per standing default I did not recommend outright destructive deletion of a course with human takes on it without flagging it — but here the takes on the course marked for deletion (`zzz_test_for_eng`) are the stale mid-August set, already superseded by fuller and more recent work elsewhere, and the course itself is a self-regenerating test fixture. If Tom wants those 12 August clips preserved for any reason, they should be exported/archived before deletion; otherwise this is a clean keep/delete call, not a genuine judgement-fork.
