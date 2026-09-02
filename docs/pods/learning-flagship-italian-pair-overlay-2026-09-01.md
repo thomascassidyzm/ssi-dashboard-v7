@@ -498,3 +498,192 @@ not *tè*), which is exactly the kind of call the pre-test should watch a cold s
 Method Pod forms — the two pods now demonstrably speak one Italian). Register calls flagged:
 *porca miseria* vs *cazzo* for "bloody" (t14) — the chapter already spends *del cazzo* at t29,
 so the milder tag at t14 keeps the escalation audible; Aran's call.
+
+### Chapter 6 — *Un'ora all'anno*
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | My turn to bring the loaded gun. Pimsleur — first person to build spaced repetition into language courses, and clever about it. He said repetitions collapse in value, so revisit the word just before you forget it. Lovely rule, everyone still quotes it, and I think he made one interesting, non-obvious mistake. | Tocca a me portare la pistola carica. Pimsleur — la prima persona a costruire la ripetizione spaziata dentro i corsi di lingua, e in modo intelligente. Diceva che le ripetizioni crollano di valore, quindi ritorna sulla parola appena prima di dimenticarla. Bella regola, tutti la citano ancora, e io penso che abbia fatto un errore interessante e non ovvio. |
+| TOM | Which was? | E sarebbe? |
+| ARAN | Bjork. Desirable difficulty: the early repetitions fail precisely because they're too easy. Say pysgod ten times in a row and you're not forming a memory at all. The act of making effort is a significant contributor to the act of forming the memory. And if effort is implicated in memory formation — then Pimsleur is inverted. The right time to revisit isn't just before you forget. | Bjork. La difficoltà desiderabile: le prime ripetizioni falliscono proprio perché sono troppo facili. Di' pysgod dieci volte di fila e non stai formando nessuna memoria. L'atto di fare fatica contribuisce in modo significativo all'atto di formare la memoria. E se la fatica è implicata nella formazione della memoria — allora Pimsleur va rovesciato. Il momento giusto per ritornarci non è appena prima di dimenticare. |
+| TOM | Just after. | Appena dopo. |
+| ARAN | Just after. Or long after. So I started stretching the gap, on myself, to find the edge. A week — still too easy. A month. Kept going. | Appena dopo. O molto dopo. Così ho cominciato ad allungare l'intervallo, su me stesso, per trovare il bordo. Una settimana — ancora troppo facile. Un mese. Ho continuato. |
+| TOM | Sixteen months? | Sedici mesi? |
+| ARAN | Sixteen months, and here's the protocol, because the shape of it matters. Teach me a sentence of Manx on day one — I want to watch football at the weekend. Leave it sixteen months, no contact. Prompt me: guaranteed, absolutely guaranteed, I cannot produce it. That was sixteen months ago, up yours. | Sedici mesi, ed ecco il protocollo, perché la forma conta. Insegnami una frase di manx il primo giorno — voglio guardare il calcio nel fine settimana. Lasciala lì sedici mesi, zero contatto. Fammi il prompt: garantito, assolutamente garantito, non riesco a tirarla fuori. Era sedici mesi fa, vaffanculo. |
+| TOM | And then? | E poi? |
+| ARAN | You tell me the answer — once. Come back the day after and ask again, and I have got it nailed. The struggle followed by the restimulation. Five repetitions total, spread over a year and a half, and it holds like a rock. | Tu mi dici la risposta — una volta. Torna il giorno dopo e chiedi ancora, e ce l'ho inchiodata. La lotta seguita dalla ristimolazione. Cinque ripetizioni in tutto, sparse su un anno e mezzo, e tiene come una roccia. |
+| TOM | Sample size? | Campione di quanti? |
+| ARAN | One. Hello, me. Plus a steady trickle of other people's letters saying the same shape, which is a pile of anecdotes and not a study, and I fly that flag myself before you reach for it. | Uno. Ciao, sono io. Più un filo costante di lettere di altre persone che dicono la stessa forma, che è un mucchio di aneddoti e non uno studio, e quella bandierina la pianto io da solo prima che tu ci arrivi. |
+| TOM | Then let me do the thing properly, because I did it to you five years ago and I'd do it again. How do we know that? Effort makes the memory — I feel it's true, it seems to work. But where are we, actually? Is it mapped, peer-reviewed, "proven scientific fact"? Or is it one careful man in California with a good idea, and us with a feeling? | Allora lascia che faccia la cosa come si deve, perché te l'ho fatta cinque anni fa e te la rifarei. Come lo sappiamo? È la fatica a fare la memoria — io sento che è vero, sembra funzionare. Ma a che punto siamo, davvero? È tutto mappato, con la peer review, «fatto scientifico dimostrato»? O è un signore attento in California con una buona idea, e noi con una sensazione? |
+| ARAN | Closer to the man in California, still. Bjork's careful and the work is good, and proven is not the word. What I've got on top is me, testing myself for years, and other people's letters. That's not proof; that's a story with a flag on it. So — we think. We don't know. We think. | Ancora più vicino al signore in California. Bjork è uno attento e il lavoro è buono, e «dimostrato» non è la parola. Quello che ho in più sono io, che mi testo da anni, e le lettere degli altri. Non è una prova; è una storia con una bandierina sopra. Quindi — lo pensiamo. Non lo sappiamo. Lo pensiamo. |
+| TOM | We think. Held. And the practice works anyway, which is the strangest part of this whole field — truth in the practice with no consistency about the why. | Lo pensiamo. Tenuto. E la pratica funziona lo stesso, che è la parte più strana di tutto questo campo — del vero nella pratica, senza nessuna coerenza sul perché. |
+| ARAN | Ebbinghaus all the way down. Now cash it, because the inversion isn't a curiosity — it splits your world in half. If longer gaps mean fewer total repetitions, then there are two different things you could be minimising, and they are not the same thing. | Ebbinghaus fino in fondo. Adesso incassala, perché il rovesciamento non è una curiosità — ti spacca il mondo a metà. Se intervalli più lunghi vogliono dire meno ripetizioni totali, allora ci sono due cose diverse che potresti star minimizzando, e non sono la stessa cosa. |
+| TOM | Say the axes. | Dilli, gli assi. |
+| ARAN | X: minimum elapsed time from start to ability. Y: minimum total effort to get there. And they pull apart, genuinely. Down at my end of Y: an hour a year for thirty years and you'll speak the language — the model breaker, and I think it would broadly work. A day a year, and three or four years in you're having conversations that make you proud. Nobody sells that product, because nobody believes it until it happens to them. | X: minimo tempo trascorso dall'inizio alla capacità. Y: minimo sforzo totale per arrivarci. E si separano, sul serio. Giù in fondo alla mia Y: un'ora all'anno per trent'anni e parlerai la lingua — lo spacca-modello, e penso che grosso modo funzionerebbe. Un giorno all'anno, e dopo tre o quattro anni stai facendo conversazioni che ti rendono fiero. Nessuno vende quel prodotto, perché nessuno ci crede finché non gli succede. |
+| TOM | It happened to me. Two days of Mandarin, a year apart — and by the end of the second day I had more felt competence than a hard month has ever given me. Thinking in Chinese, feeling the structures move. Two days. The system is extraordinary and what it is, is intelligent laziness — a month's mountain for two days of walking, because the year in between did the carrying. | A me è successo. Due giorni di cinese, a un anno di distanza — e alla fine del secondo giorno avevo più competenza sentita di quanta me ne abbia mai data un mese duro. Pensavo in cinese, sentivo le strutture muoversi. Due giorni. Il sistema è straordinario, e quello che è, è pigrizia intelligente — la montagna di un mese per due giorni di camminata, perché l'anno in mezzo ha fatto lui il trasporto. |
+| ARAN | And then say the next thing you said, five years ago, because it's the other half and you always forget you said it. | E adesso di' la cosa che hai detto subito dopo, cinque anni fa, perché è l'altra metà e ti dimentichi sempre di averla detta. |
+| TOM | …That if I actually needed Chinese by the end of October, the method was no use to me, because the course didn't exist yet and the gaps do the work and gaps take calendar. | …Che se il cinese mi fosse servito davvero per fine ottobre, il metodo non mi serviva a niente, perché il corso non esisteva ancora, e il lavoro lo fanno gli intervalli, e gli intervalli si prendono calendario. |
+| ARAN | Efficiency is lovely. But so is speed. | L'efficienza è bellissima. Ma lo è anche la velocità. |
+| TOM | Speed means you can start using it now. And using it is where all the actual value lives — the conversations, the connections, the compounding. An hour a year optimises the integral and forfeits a decade of use. | La velocità vuol dire che puoi cominciare a usarla adesso. E usarla è dove vive tutto il valore vero — le conversazioni, i legami, l'interesse composto. Un'ora all'anno ottimizza l'integrale e rinuncia a dieci anni di uso. |
+| ARAN | So: two axes, two honest products, and every learner sits somewhere on the trade — the heritage learner who wants five sentences for her great-grandfather is at one corner, your October deadline is at the other, and the bootcamp-year-bootcamp is a bet placed on both at once. All fine. Now — your theory. Name it for the recording. | Quindi: due assi, due prodotti onesti, e chiunque impari sta da qualche parte sullo scambio — chi impara per eredità e vuole cinque frasi per il bisnonno sta in un angolo, la tua scadenza di ottobre sta nell'altro, e il bootcamp-anno-bootcamp è una scommessa puntata su tutti e due insieme. Tutto bene. Adesso — la tua teoria. Dille il nome, per la registrazione. |
+| TOM | Least-time learning. | Least-time learning. |
+| ARAN | Mm. Go on, the whole shape. | Mm. Vai, tutta la forma. |
+| TOM | Fermat. Light takes the path of least time through a medium; the subject is the medium, distinction density is the refractive index, the learner is the ray, and the curriculum is the geodesic. The quantity being minimised is learner effort-time — the felt cost at the blink, the hesitations, the debt when a false bridge gets repaid. Everything the theory prices, it prices in that currency. | Fermat. La luce prende il sentiero di tempo minimo attraverso un mezzo; la materia è il mezzo, la densità di distinzioni è l'indice di rifrazione, chi impara è il raggio, e il programma è la geodetica. La quantità che viene minimizzata è il tempo-fatica di chi impara — il costo sentito al battito di ciglia, le esitazioni, il debito quando un ponte falso viene ripagato. Tutto quello che la teoria prezza, lo prezza in quella moneta. |
+| ARAN | Effort-time. Which is my Y axis. You've built a least-EFFORT theory, and you've hung least-TIME over the door. Run your own shop rule on your own signage: a name is bought when payoff beats cost. What this name buys you is a conflation — intensives sell speed, polyglots hear "least time" and think October. Elapsed and integrated are different quantities that happen to share a unit, and sharing a unit is exactly how conflations get into a building. | Tempo-fatica. Che è il mio asse Y. Hai costruito una teoria del minimo SFORZO, e sopra la porta hai appeso il minimo TEMPO. Applica la tua regola di bottega alla tua stessa insegna: un nome si compra quando il guadagno batte il costo. Quello che questo nome ti compra è una confusione — gli intensivi vendono velocità, i poliglotti sentono «least time» e pensano a ottobre. Trascorso e integrato sono quantità diverse che si trovano a condividere un'unità, e condividere un'unità è esattamente il modo in cui le confusioni entrano in un edificio. |
+| TOM | I priced the alternatives. Least-action is righter and worse — "action" charges a parse toll and drags half of physics in with it. Time is owned by everyone. The name is honest at the level of the unit, and the unit is where the theory does its accounting. | Ho prezzato le alternative. Il minimo di azione è più giusto e peggiore — «azione» fa pagare un pedaggio di lettura e si trascina dietro mezza fisica. Il tempo è di tutti. Il nome è onesto al livello dell'unità, e l'unità è dove la teoria fa i suoi conti. |
+| ARAN | The unit is where the theory does its accounting, and the AXIS is where the customer does theirs. | L'unità è dove la teoria fa i suoi conti, e l'ASSE è dove il cliente fa i suoi. |
+| TOM | So what you're saying is I should rename it least-effort learning. | Quindi quello che stai dicendo è: dovrei rinominarla least-effort learning. |
+| ARAN | No. I'm saying you haven't decided which product you're selling, and the name is hiding the indecision from you. The hour-a-year learner and the bootcamp learner are buying different promises, and one brand is currently making both of them. That's not a signage problem. | No. Sto dicendo che non hai deciso quale prodotto stai vendendo, e il nome ti sta nascondendo l'indecisione. Chi impara un'ora all'anno e chi impara col bootcamp stanno comprando promesse diverse, e al momento tutte e due le fa lo stesso marchio. Non è un problema di insegna. |
+| TOM | Then here's what I'll give you, and it's all I'll give you. The name stays. And the caveat travels with it — said out loud, every time, forever: least-time is an effort theory, and any compressed intensive is optimising the other axis. | Allora ecco cosa ti do, ed è tutto quello che ti do. Il nome resta. E l'avvertenza viaggia insieme al nome — detta ad alta voce, ogni volta, per sempre: least-time è una teoria dello sforzo, e qualunque intensivo compresso sta ottimizzando l'altro asse. |
+| ARAN | Then you'll be saying that sentence for the rest of your life. | Allora quella frase la dirai per il resto della vita. |
+| TOM | Good. Some subscriptions are worth the standing order. | Bene. Certi abbonamenti valgono l'addebito ricorrente. |
+| ARAN | And which axis is the promise? Because "both" is not an answer, it's a brochure. | E quale asse è la promessa? Perché «tutti e due» non è una risposta, è una brochure. |
+| TOM | I know. Not tonight. | Lo so. Non stasera. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| my turn to bring the loaded gun | tocca a me portare la pistola carica | I | *toccare a* ✓ third use; the gun ✓ ZUT with Ch. 5's *pistola carica* |
+| which was? | e sarebbe? | I | the elicitation runs on the conditional — **NN absence:** *¿y sería?* doesn't work; *¿o sea?* is the reach |
+| ten times in a row | dieci volte di fila | D | temporal in-a-row = *di fila*; spatial row = *in fila* (Method Ch. 1's bangs) — two knowns, two forms, died-inside ✓ |
+| you're not forming a memory at all | non stai formando nessuna memoria | D | ZUT — Method Ch. 2's frame ✓ |
+| the act of making effort | l'atto di fare fatica | D | *fatica* ✓ THE register invariant, in its verb frame *fare fatica* |
+| then Pimsleur is inverted | allora Pimsleur va rovesciato | I | the andare-passive ✓ third appearance — one machine |
+| the right time to revisit | il momento giusto per ritornarci | I | *ritornarci* — ci on the infinitive ✓ |
+| kept going | ho continuato | E | the ellipsis rebuilds — no bare pro-verb |
+| here's the protocol, because the shape of it matters | ecco il protocollo, perché la forma conta | D | *contare* = matter ✓ ZUT Method Ch. 12 (*questa conta*) |
+| leave it sixteen months | lasciala lì sedici mesi | D | ZUT — Method Ch. 2's *lo lasciamo lì* frame ✓ |
+| I cannot produce it | non riesco a tirarla fuori | D | *riuscire* (thwarted) ✓ + *tirare fuori* ✓ ZUT Method Ch. 10 |
+| up yours | vaffanculo | D | register per ruling — the corpus swears |
+| I have got it nailed | ce l'ho inchiodata | I | ***ce l'ho*** + agreement — the ce-have void, with the participle agreeing |
+| it holds like a rock | tiene come una roccia | D | *tenere* = hold ✓ the hold-frame from Ch. 2 |
+| sample size? | campione di quanti? | I | **NN trap:** *campione* = sample AND champion — sp. *muestra/campeón* split what Italian merges |
+| I fly that flag myself | quella bandierina la pianto io da solo | I | fronting + doubling + stressed *io* — and *bandierina* ✓ ZUT |
+| before you reach for it | prima che tu ci arrivi | D | *prima che* + subj ✓; *arrivarci* ✓ |
+| how do we know that? | come lo sappiamo? | D | ZUT — Method Ch. 2 verbatim ✓ (the audit's own question, both pods, one form) |
+| effort makes the memory | è la fatica a fare la memoria | I | ZUT — the *è X a fare* cleft, Method Ch. 2 verbatim ✓ |
+| where are we, actually? | a che punto siamo, davvero? | D | ZUT — Method Ch. 2 verbatim ✓; *siamo* where Spanish reaches for *estamos* |
+| one careful man in California… and us with a feeling | un signore attento in California… e noi con una sensazione | D | ZUT — Method Ch. 2 near-verbatim ✓ |
+| that's not proof; that's a story with a flag on it | non è una prova; è una storia con una bandierina sopra | D | ZUT — Method Ch. 2 verbatim ✓ |
+| we think. we don't know. we think. | lo pensiamo. non lo sappiamo. lo pensiamo. | D | ledger ✓ — order follows the English |
+| and the practice works anyway | e la pratica funziona lo stesso | D | *lo stesso* ✓ the anyway-form |
+| truth in the practice | del vero nella pratica | I | partitive *del* ✓ ZUT Method Ch. 2 |
+| now cash it | adesso incassala | D | *incassare* — the money register the pod runs on |
+| fewer total repetitions | meno ripetizioni totali | D | fewer → *meno* — degree side of split S6 ✓ |
+| say the axes | dilli, gli assi | I | imperative + clitic + right-dislocation — the say-the-X frame ✓ |
+| and they pull apart, genuinely | e si separano, sul serio | D | |
+| conversations that make you proud | conversazioni che ti rendono fiero | I | make-X-Y → *rendere* ✓ ZUT Ch. 4; **NN false friend:** *fiero* ✓ register |
+| nobody believes it until it happens to them | nessuno ci crede finché non gli succede | I | *crederci* + *finché non* ✓ + dative *succedere* — three ledger machines in seven words |
+| it happened to me | a me è successo | D | fronted dative ✓ |
+| a year apart | a un anno di distanza | D | ZUT — Method Ch. 10 verbatim ✓ |
+| than a hard month has ever given me | di quanta me ne abbia mai data un mese duro | I | *ne* + subjunctive + agreement (*data*) — the comparative clause at full machinery |
+| the gaps do the work | il lavoro lo fanno gli intervalli | I | ZUT — the fronting frame of Method Ch. 6 (*il lavoro lo fanno gli occhi*) reused on new arguments ✓ |
+| needed Chinese by the end of October | se il cinese mi fosse servito davvero per fine ottobre | D | *servire* ✓; need-by → *per* ✓ ZUT with Method Ch. 12 (*per ottobre*) |
+| the method was no use to me | il metodo non mi serviva a niente | D | *servire* again as be-of-use — welcome convergence inside one verb |
+| efficiency is lovely. but so is speed. | l'efficienza è bellissima. ma lo è anche la velocità. | D | ZUT — Method Ch. 12 verbatim, same English ✓ |
+| the connections | i legami | D | *legame* ✓ ZUT Method Ch. 3 |
+| every learner sits somewhere on the trade | chiunque impari sta da qualche parte sullo scambio | D | *chiunque* + subj ✓; location-*stare* ✓ |
+| name it for the recording | dille il nome, per la registrazione | I | name-the-thing → *dare il nome* + dative *le* |
+| least-time learning | least-time learning | D | the theory's name stays English — loanword rule; flagged as a call for Tom (an Italian name would be a product decision, not a translation) |
+| the quantity being minimised / gets repaid | che viene minimizzata / viene ripagato | I | the venire-passive ✓ ×2 |
+| everything the theory prices, it prices in that currency | tutto quello che la teoria prezza, lo prezza in quella moneta | I | doubling ✓; *moneta* ✓ |
+| that happen to share a unit | che si trovano a condividere un'unità | I | happen-to → ***trovarsi a*** — **NN void:** *que resultan compartir* is strained; the chance-aspect verb has no Spanish twin |
+| time is owned by everyone | il tempo è di tutti | I | ownership passive → bare *essere di* |
+| the name stays | il nome resta | D | *restare* ✓ |
+| you'll be saying that sentence for the rest of your life | quella frase la dirai per il resto della vita | I | fronting + doubling; *della vita* — the article where English has "your" |
+| some subscriptions are worth the standing order | certi abbonamenti valgono l'addebito ricorrente | D | *valere* ✓; both nouns ZUT with Ch. 3 ✓ |
+
+**Chapter 6 verdict:** the chapter that had to rhyme hardest with the Method Pod (the audit, the
+downgrade, the flag) and does — seven verbatim reuses. One product-level flag for Tom:
+*least-time learning* kept in English as the theory's name.
+
+### Chapter 7 — *Qualunque bambino di dieci anni*
+
+| | English | Italiano |
+|---|---|---|
+| ARAN | Right. The flag from an hour ago. Dig it up — nobody is a wall, everyone is a rate. Full strength this time. | Bene. La bandierina di un'ora fa. Tirala su — nessuno è un muro, tutti sono un ritmo. A piena forza, stavolta. |
+| TOM | Full strength. Every ten-year-old has both the experience and the vocabulary necessary to learn anything at all — anything — provided the grounding is real and the subsequent steps are small enough. It's a claim about the graph, not about children: the territory is connected, all the way from things a ten-year-old has felt to every summit there is. There is no summit with no path. Ability is a rate coefficient. It is never a wall. | A piena forza. Ogni bambino di dieci anni ha sia l'esperienza sia il vocabolario necessari per imparare qualunque cosa — qualunque — a patto che l'ancoraggio sia reale e i passi successivi siano abbastanza piccoli. È un'affermazione sul grafo, non sui bambini: il territorio è connesso, per tutta la strada dalle cose che un bambino di dieci anni ha sentito fino a ogni vetta che c'è. Non c'è nessuna vetta senza sentiero. La capacità è un coefficiente di ritmo. Non è mai un muro. |
+| ARAN | Anything at all. | Qualunque cosa. |
+| TOM | Anything at all. And notice what it does to the school equation, because this is the whole inversion: school holds time constant and lets learning vary — everyone gets the year, and some children get the physics. The premise holds learning constant and lets time vary — everyone gets the physics, and the year takes as long as it takes. One knob, moved from one variable to the other, and the entire moral architecture of "bad at maths" falls over. | Qualunque cosa. E guarda cosa fa all'equazione della scuola, perché il rovesciamento è tutto qui: la scuola tiene fermo il tempo e lascia variare l'apprendimento — a tutti tocca l'anno, e ad alcuni bambini tocca la fisica. La premessa tiene fermo l'apprendimento e lascia variare il tempo — a tutti tocca la fisica, e l'anno ci mette quello che ci mette. Una manopola, spostata da una variabile all'altra, e tutta l'architettura morale del «negato per la matematica» cade per terra. |
+| ARAN | It's beautiful. You know it's beautiful. Now hold still. | È bellissimo. Lo sai che è bellissimo. Adesso stai fermo. |
+| TOM | Here it comes. | Eccola che arriva. |
+| ARAN | How do we know that? Your question — I'm returning it in its original packaging. Effort and memory got the full customs inspection an hour ago: where are we, is it mapped, is it proven, or is it a man with a good idea and a feeling. So: the connected graph, the rate that's never a wall. Where are we? | Come lo sappiamo? La tua domanda — te la restituisco nella confezione originale. La fatica e la memoria hanno avuto l'ispezione doganale completa un'ora fa: a che punto siamo, è mappato, è dimostrato, o è un signore con una buona idea e una sensazione. Quindi: il grafo connesso, il ritmo che non è mai un muro. A che punto siamo? |
+| TOM | Asserted. | Asserito. |
+| ARAN | Asserted. | Asserito. |
+| TOM | Fifteen years of watching learners do things they'd been told they couldn't, which is a mountain of the same anecdote — and you taught me this evening what a pile of anecdotes is. It's a story with a flag on it. So: asserted. We think. We don't know. | Quindici anni a guardare gente che impara fare cose che le avevano detto che non poteva fare, che è una montagna dello stesso aneddoto — e stasera mi hai insegnato tu cos'è un mucchio di aneddoti. È una storia con una bandierina sopra. Quindi: asserito. Lo pensiamo. Non lo sappiamo. |
+| ARAN | Then I want to press on something worse than "we don't know", because I've been turning it over since you said "provided". Twice. Provided the grounding is real, provided the steps are small enough. Now watch what those two do in the wild. A child fails to learn a thing. What do we say? | Allora voglio premere su una cosa peggiore di «non lo sappiamo», perché me la rigiro in testa da quando hai detto «a patto che». Due volte. A patto che l'ancoraggio sia reale, a patto che i passi siano abbastanza piccoli. Adesso guarda cosa fanno quei due in natura. Un bambino non riesce a imparare una cosa. Noi cosa diciamo? |
+| TOM | The grounding wasn't real. Or a step was too big. | L'ancoraggio non era reale. O un passo era troppo grande. |
+| ARAN | Fix, retry. Fails again? Same diagnosis, always available, forever. There is no possible failure that counts AGAINST the premise, because the provisos absorb every one of them. That's not a foundation, Tom. That's a fortress. Nothing gets in. | Aggiusti, riprovi. Fallisce ancora? Stessa diagnosi, sempre disponibile, per sempre. Non esiste nessun fallimento possibile che conti CONTRO la premessa, perché le clausole se li assorbono tutti. Non sono fondamenta, Tom. È una fortezza. Non entra niente. |
+| TOM | And you're about to say what would have to be true for it to be testable— | E stai per dire cosa dovrebbe essere vero perché sia verificabile— |
+| ARAN | —I am— | —sto per dirlo— |
+| TOM | —and it's exactly where I was going, so I'll say it for both of us and the credit is yours: you'd have to commit the repair budget in advance. Before the child starts. This much re-grounding, this many step-splittings, priced and written down — and if we spend the budget and the learning still hasn't landed, THEN the failure counts. No pre-committed budget, no test, ever. The provisos eat the evidence forever. | —ed è esattamente lì che stavo andando, quindi lo dico per tutti e due e il merito è tuo: dovresti impegnare il budget di riparazione in anticipo. Prima che il bambino cominci. Questo tanto di ri-ancoraggio, questo tanto di spezzature dei passi, prezzato e messo per iscritto — e se spendiamo il budget e l'apprendimento non è ancora atterrato, ALLORA il fallimento conta. Nessun budget impegnato prima, nessun test, mai. Le clausole si mangiano le prove per sempre. |
+| ARAN | So you know. You've known the whole time. And here's what I actually want to ask, and it isn't rhetorical. There was a test designed, wasn't there — the ordering claim checks out as refutable on the telemetry you already collect, no new machinery. And the premise needs the budget. And you looked at all of it and called it— | Quindi lo sai. L'hai sempre saputo. Ed ecco cosa voglio chiederti davvero, e non è retorico. Un test era stato progettato, no? — l'affermazione sull'ordinamento risulta confutabile sulla telemetria che già raccogli, zero macchinario nuovo. E la premessa ha bisogno del budget. E tu hai guardato tutto questo e l'hai chiamato— |
+| TOM | A vanity project. I said we're going to do what we think is best and do that as fast as possible. And I'll defend it, so hear the whole shape before you swing. The premise isn't functioning as a hypothesis in this system. It's functioning as a founding commitment — the thing you select before the evidence, that then generates everything. | Un progetto di vanità. Ho detto che faremo quello che pensiamo sia meglio, e lo faremo il più veloce possibile. E lo difenderò, quindi senti tutta la forma prima di tirare il pugno. La premessa non sta funzionando da ipotesi, in questo sistema. Sta funzionando da impegno fondativo — la cosa che scegli prima delle prove, e che poi genera tutto. |
+| ARAN | Go on. | Vai. |
+| TOM | The way "all men are created equal" wasn't a finding. Nobody ran a trial. It's a selection, frozen, and its justification is what it builds, not what it predicts. My system is honest exactly as long as it names its axioms as axioms. | Come «tutti gli uomini sono creati uguali» non era una scoperta. Nessuno ha fatto una sperimentazione. È una selezione, congelata, e la sua giustificazione è quello che costruisce, non quello che predice. Il mio sistema è onesto esattamente finché chiama i suoi assiomi con il loro nome: assiomi. |
+| ARAN | Then NAME it. That's the whole charge. That sentence doesn't dress like an axiom. It wears a lab coat. "Every ten-year-old CAN" sounds like a discovery about children, and parents will hear one, and when a child's year goes wrong the fortress will do what fortresses do. If it's a creed, print CREED on it. You — the man who makes examiners' agreements wear their own name — don't get to let your deepest sentence pass as the other kind of thing. | E allora DAGLIELO, il nome. È tutta qui l'accusa. Quella frase non si veste da assioma. Porta un camice da laboratorio. «Ogni bambino di dieci anni PUÒ» suona come una scoperta sui bambini, e i genitori sentiranno una scoperta, e quando l'anno di un bambino va storto la fortezza farà quello che fanno le fortezze. Se è un credo, stampaci sopra CREDO. Tu — l'uomo che fa portare agli accordi degli esaminatori il loro proprio nome — non hai il diritto di lasciare che la tua frase più profonda passi per l'altro tipo di cosa. |
+| TOM | …That landed. I want one thing on the record before I answer properly, though, because there's a third door — it's not creed-or-trial, there's a cheaper instrument that's been sitting in the telemetry the whole time, and it doesn't need the budget to start paying. It's the way corrections— | …Questa è atterrata. Però voglio una cosa a verbale prima di rispondere come si deve, perché c'è una terza porta — non è credo-o-sperimentazione, c'è uno strumento più economico che è rimasto seduto nella telemetria per tutto questo tempo, e non gli serve il budget per cominciare a pagare. È il modo in cui le correzioni— |
+| ARAN | Dog. That's the dog. | Il cane. È il cane. |
+| TOM | Of course it's the dog. Five years. Same dog. | Certo che è il cane. Cinque anni. Lo stesso cane. |
+| ARAN | She has a sense of structure. Bank it — say the word so we can find it again. | Lei ha il senso della struttura. Mettila in banca — di' la parola, così la ritroviamo. |
+| TOM | Repair budget. And "the way corrections" — mine, unfinished, I want it back exactly there. | Budget di riparazione. E «il modo in cui le correzioni» — mia, non finita, la rivoglio esattamente lì. |
+| ARAN | Repair budget, corrections, banked. Next lockdown? | Budget di riparazione, correzioni, in banca. Al prossimo lockdown? |
+| TOM | Don't even joke. Go and see to your dog. | Non scherzarci nemmeno. Vai dal tuo cane. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| dig it up | tirala su | D | *tirare su* ✓ ZUT Method Ch. 8 — the same verb, now literal |
+| both the experience and the vocabulary | sia l'esperienza sia il vocabolario | D | ***sia…sia*** — **NN:** *tanto…como* — the both-and correlative differs |
+| provided the grounding is real | a patto che l'ancoraggio sia reale | D | ***a patto che*** + subj — **NN anchor:** *con tal de que* matches the mood; the premise's own hinge-word |
+| things a ten-year-old has felt | cose che un bambino di dieci anni ha sentito | D | *sentire* ✓ the feel-side of the hear/feel merger — the premise leans on the polysemy |
+| every summit there is | ogni vetta che c'è | D | *che c'è* ✓ |
+| school holds time constant | la scuola tiene fermo il tempo | D | the hold-still frame ✓ ZUT Ch. 2 of this pod |
+| lets learning vary | lascia variare l'apprendimento | D | *lasciare* + inf ✓ |
+| everyone gets the year / some children get the physics | a tutti tocca l'anno / ad alcuni bambini tocca la fisica | I | gets-allotted → ***toccare a*** ✓ — the frame's best outing; **NN anchor:** *a todos les toca* — with the Spanish resumptive *les* Italian refuses |
+| the year takes as long as it takes | l'anno ci mette quello che ci mette | I | *metterci* ✓ ZUT Ch. 1 — doubled into the shrug idiom |
+| "bad at maths" | «negato per la matematica» | D | *negato per* ✓ ZUT Ch. 5 — **NN anchor:** *negado para* |
+| falls over | cade per terra | D | |
+| now hold still | adesso stai fermo | D | *stare fermo* ✓ same frame, imperative key |
+| here it comes | eccola che arriva | I | *ecco* + clitic + *che* ✓ ZUT Ch. 2 (*eccolo che parte*) |
+| I'm returning it in its original packaging | te la restituisco nella confezione originale | D | cluster *te la* ✓ |
+| learners do things they'd been told they couldn't | gente che impara fa cose che le avevano detto che non poteva fare | I | passive → impersonal 3pl ✓; can't-verdict → *potere* ✓ the split holds |
+| I've been turning it over since you said "provided" | me la rigiro in testa da quando hai detto «a patto che» | I | *ri-* + doubling + *da quando* — three ledger machines |
+| a child fails to learn a thing | un bambino non riesce a imparare una cosa | D | fails-to → *non riuscire a* ✓ the thwarted-attempt arm |
+| fix, retry | aggiusti, riprovi | D | *riprovare* ✓ ZUT Method Ch. 3 |
+| no possible failure that counts against the premise | nessun fallimento possibile che conti contro la premessa | D | subj after *nessuno* ✓; *contare* = count/matter ✓ one lexeme |
+| the provisos absorb every one of them | le clausole se li assorbono tutti | I | doubling + floated *tutti* ✓ |
+| nothing gets in | non entra niente | D | postverbal negative ✓ |
+| you're about to say | stai per dire | D | *stare per* ✓ |
+| —I am— | —sto per dirlo— | E | the ellipsis rebuilds on the same *stare per* + *lo* — English's bare auxiliary has no Italian |
+| it's exactly where I was going | è esattamente lì che stavo andando | D | the cleft ✓ — one notch off Method Ch. 2's *stavo per andare* because the English differs by exactly that notch |
+| priced and written down | prezzato e messo per iscritto | D | *per iscritto* |
+| the provisos eat the evidence forever | le clausole si mangiano le prove per sempre | D | reflexive-intensive *mangiarsi* ✓ ZUT Method Ch. 8 (*se l'è mangiata*) |
+| there was a test designed, wasn't there | un test era stato progettato, no? | D | tag → *no?* ✓; *progettare* ✓ |
+| what we think is best | quello che pensiamo sia meglio | D | subj ✓ the penso-che rule in relative form |
+| functioning as a hypothesis / as a founding commitment | funzionando da ipotesi / da impegno fondativo | I | role-as → ***da*** — the da-of-function; **NN trap:** Spanish uses *de* or *como* |
+| nobody ran a trial | nessuno ha fatto una sperimentazione | D | run-a-X → *fare* ✓ the support verb |
+| frozen | congelata | D | Tom's own currency — *frozen value* — kept literal by design |
+| as long as it names its axioms as axioms | finché chiama i suoi assiomi con il loro nome | D | positive *finché* (no *non*) against temporal *finché non* — the pair the learner must keep apart; **NN:** *mientras* vs *hasta que no* — Spanish splits them differently |
+| then NAME it | e allora DAGLIELO, il nome | I | ***daglielo*** — the fused triple cluster on the imperative, right-dislocated — the hardest owned form in the pod, and the chapter's hit lands on it |
+| that sentence doesn't dress like an axiom | quella frase non si veste da assioma | I | *vestirsi da* — the da-of-role again ✓ one frame |
+| it wears a lab coat | porta un camice da laboratorio | D | *camice* — **NN trap-lite:** *bata* is the Spanish coat; *camice/camisa* misfire |
+| when a child's year goes wrong | quando l'anno di un bambino va storto | D | *andare storto* ✓ ZUT Method Ch. 8 (*giornate storte*) — one lexeme family |
+| print CREED on it | stampaci sopra CREDO | I | *ci…sopra* ✓ sixth verb on the frame |
+| the man who makes examiners' agreements wear their own name | l'uomo che fa portare agli accordi degli esaminatori il loro proprio nome | I | causative *fare* + dative agent ✓ |
+| you don't get to let it pass as… | non hai il diritto di lasciare che passi per… | I | get-to modality → *avere il diritto di*; *lasciare che* + subj ✓; *passare per* |
+| that landed | questa è atterrata | D | *atterrare* ✓ ZUT — the feedback that lands, both pods |
+| on the record | a verbale | D | |
+| that's been sitting in the telemetry the whole time | che è rimasto seduto nella telemetria per tutto questo tempo | D | *rimanere seduto* ✓ ZUT Method Ch. 10 |
+| it doesn't need the budget | non gli serve il budget | D | *servire* ✓ |
+| bank it | mettila in banca | D | the bank-the-thread frame — literal, as the pod's own N17 term |
+| I want it back exactly there | la rivoglio esattamente lì | D | *rivolere* ✓ ZUT Ch. 2 |
+| don't even joke | non scherzarci nemmeno | I | negative imperative = *non* + infinitive — **NN anchor:** *no bromees* conjugates where Italian refuses to; *scherzarci* the ci again |
+| go and see to your dog | vai dal tuo cane | D | *da* + person(dog) ✓ ZUT Method Ch. 12 — the da-of-going-to-someone |
+
+**Chapter 7 verdict:** the premise survives at full strength on *a patto che* + subjunctive, and
+the chapter's two knife-lines land on Italian's own machinery — *DAGLIELO, il nome* for "then
+NAME it", *si veste da assioma / porta un camice* for the lab coat. Session one ends on the
+same dog in both pods, in the same words (*il cane*).
