@@ -2,14 +2,14 @@
   <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
     <div class="max-w-4xl mx-auto">
       <div class="flex items-center gap-2 mb-4 text-sm flex-wrap">
-        <router-link to="/" class="text-accent-2 hover:opacity-80">Home</router-link>
+        <router-link to="/" class="text-muted hover:text-ink underline underline-offset-2">Home</router-link>
         <span class="text-faint">/</span>
-        <router-link to="/admin/labs" class="text-accent-2 hover:opacity-80">Labs</router-link>
+        <router-link to="/admin/labs" class="text-muted hover:text-ink underline underline-offset-2">Labs</router-link>
         <span class="text-faint">/</span>
         <span class="text-muted">Script Lab</span>
       </div>
 
-      <h1 class="text-2xl sm:text-3xl font-bold text-accent-2 mb-1">Script Lab</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">Script Lab</h1>
       <p class="text-muted text-sm mb-4">
         Every walk in the estate, in one place. A walk is a script read as a path over the shape
         metagraph; the read-out beside each one is the coverage that path achieves.
@@ -40,7 +40,7 @@
       </div>
 
       <div class="flex flex-wrap gap-2 mb-5">
-        <router-link to="/canonical/metagraph" class="inline-block px-3 py-1.5 rounded border border-line bg-surface text-xs text-accent-2 hover:border-accent-2">
+        <router-link to="/canonical/metagraph" class="inline-block px-3 py-1.5 rounded border border-line bg-surface text-xs text-muted hover:text-ink hover:border-muted">
           See the graph itself, with these scripts as overlays through it →
         </router-link>
       </div>
@@ -61,8 +61,8 @@
         <!-- The trap: mid-cutover, `pod-1` names two different objects in two
              tables with two different sets of numbers. Seeing that without being
              told would reasonably read as the page being broken. -->
-        <p class="text-accent">
-          <strong>One slug, two meanings, while the cutover runs.</strong>
+        <p class="text-muted">
+          <strong class="text-ink">One slug, two meanings, while the cutover runs.</strong>
           In the canonical store <code>pod-1</code> is the core canon above, renamed from <code>pod-0</code> —
           that rename has landed. On the generated side <code>pod-1</code> is the new slate and <code>pod-0</code>
           is still the old one ({{ core.oldSlate.courses }} courses, {{ core.oldSlate.sentences.toLocaleString() }} sentences).
@@ -71,7 +71,7 @@
         </p>
       </div>
 
-      <p v-if="stale" class="text-accent text-xs mb-4 border border-line rounded px-3 py-2 bg-surface">
+      <p v-if="stale" class="text-muted text-xs mb-4 border border-line rounded px-3 py-2 bg-surface">
         This API has not been restarted onto the script index yet, so the database column below is empty.
         The registry still lists every walk, and each script page works.
       </p>
@@ -90,7 +90,7 @@
           <!-- The two Method cuts are ONE decision shown as two realisations,
                so they are rendered inside one frame rather than as two walks. -->
           <div v-if="group.paired" class="paired border rounded-lg p-3 sm:p-4">
-            <p class="text-xs text-accent font-semibold mb-3">
+            <p class="text-xs text-ink font-semibold mb-3">
               One decision, two realisations of the same material. Tom's choice is outstanding — picking one sacks the other.
             </p>
             <div class="grid gap-3 sm:grid-cols-2">
@@ -262,9 +262,14 @@ onMounted(load)
 .error-box { color: var(--danger); border-color: var(--danger); background: color-mix(in srgb, var(--danger) 14%, var(--surface)); }
 :root[data-theme="light"] .error-box { background: color-mix(in srgb, var(--danger) 8%, #ffffff); }
 
-/* The one thing on this page nobody is allowed to skim past. */
-.object-box { border-color: #f59e0b; border-left-width: 3px; background: rgba(245, 158, 11, 0.1); }
+/* The one thing on this page nobody is allowed to skim past. Emphasis is a
+   heavier ink rule and a raised surface, not amber — amber on this page was
+   also doing the active-nav-tab job and the "declared, unresolved" job, and a
+   colour doing three jobs teaches the eye nothing. */
+.object-box { border-color: var(--line); border-left: 3px solid var(--ink); background: var(--surface-2); }
 
-/* One frame around the two Method cuts, so they read as one decision. */
-.paired { border-color: #f59e0b; border-style: dashed; background: rgba(245, 158, 11, 0.05); }
+/* One frame around the two Method cuts, so they read as one decision. The
+   dashes here mean "not yet decided" — the same absence channel the metagraph
+   and the walk cards use. */
+.paired { border-color: var(--faint); border-style: dashed; background: none; }
 </style>

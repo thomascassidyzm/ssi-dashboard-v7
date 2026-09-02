@@ -1,0 +1,69 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Colour means measurement — acceptance evidence, 2026-09-02</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+         max-width: 960px; margin: 0 auto; padding: 24px 16px 80px; }
+  h1 { font-size: 1.5rem; margin-bottom: .2rem; }
+  h2 { font-size: 1.1rem; margin: 2.2rem 0 .3rem; }
+  .lede { opacity: .75; margin-top: 0; }
+  p { margin: .3rem 0 .8rem; }
+  .grid { display: grid; gap: 18px; grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .grid { grid-template-columns: 1fr 1fr; } }
+  figure { margin: 0; }
+  img { width: 100%; border: 1px solid #8884; border-radius: 6px; display: block; }
+  figcaption { font-size: .8rem; opacity: .7; margin-top: 4px; }
+  .missing { border: 1px dashed #8886; border-radius: 6px; padding: 24px; text-align: center; }
+  code { font-family: ui-monospace, monospace; font-size: .9em; }
+  .note { border-left: 3px solid currentColor; padding-left: 12px; opacity: .8; font-size: .92rem; }
+</style>
+<h1>Colour means measurement</h1>
+<p class="lede">Acceptance evidence for Tom's ruling of 2026-09-02. Three screens, two widths, both themes.</p>
+
+<p class="note"><strong>This is a harness, and it says so.</strong> Every photograph was taken by a real
+Chromium signing in through the real login form as the seeded E2E admin, against the real
+production-api on port 3470 and the real canonical store. Auth is not stubbed and no row is faked.
+Every request the harness makes is a GET; it writes nothing and spends nothing.
+Source: <code>e2e/colour-rule/shots.spec.js</code>.</p>
+
+<p class="note">Alongside the photographs, the harness asserts the rule itself: it walks every
+rendered element on each page, reads its computed colour, border, background, fill and stroke, and
+fails if any of them lands in the red or amber families. One exemption, named in the code: the
+Environment Switcher's connection dot, which is a fault light rather than a measurement — the same
+place <code>/courses</code>, the reference implementation, keeps red.</p>
+
+<section><h2>Script Lab — no language selected</h2><p>Canonical only, at full width, with the LANGUAGE chip row that used to be missing. KNOWN and TARGET are gone because with nothing selected they carried zero bits — a byte-identical copy and a column of em-dashes.</p><div class="grid">
+<figure><a href="dark--desktop-1440x900--a-scriptlab-canonical-only--table.png"><img src="dark--desktop-1440x900--a-scriptlab-canonical-only--table.png" alt="Script Lab — no language selected, dark, 1440×900"></a><figcaption>dark · 1440×900</figcaption></figure>
+<figure><a href="dark--phone-430--a-scriptlab-canonical-only--table.png"><img src="dark--phone-430--a-scriptlab-canonical-only--table.png" alt="Script Lab — no language selected, dark, 430px"></a><figcaption>dark · 430px</figcaption></figure>
+<figure><a href="light--desktop-1440x900--a-scriptlab-canonical-only--table.png"><img src="light--desktop-1440x900--a-scriptlab-canonical-only--table.png" alt="Script Lab — no language selected, light, 1440×900"></a><figcaption>light · 1440×900</figcaption></figure>
+<figure><a href="light--phone-430--a-scriptlab-canonical-only--table.png"><img src="light--phone-430--a-scriptlab-canonical-only--table.png" alt="Script Lab — no language selected, light, 430px"></a><figcaption>light · 430px</figcaption></figure>
+</div></section>
+<section><h2>Script Lab — a language selected</h2><p>Pick <code>ita</code> and the three columns come back, all three now worth their width: canonical, known, and 276 lines of real Italian.</p><div class="grid">
+<figure><a href="dark--desktop-1440x900--b-scriptlab-three-columns--table.png"><img src="dark--desktop-1440x900--b-scriptlab-three-columns--table.png" alt="Script Lab — a language selected, dark, 1440×900"></a><figcaption>dark · 1440×900</figcaption></figure>
+<figure><a href="dark--phone-430--b-scriptlab-three-columns--table.png"><img src="dark--phone-430--b-scriptlab-three-columns--table.png" alt="Script Lab — a language selected, dark, 430px"></a><figcaption>dark · 430px</figcaption></figure>
+<figure><a href="light--desktop-1440x900--b-scriptlab-three-columns--table.png"><img src="light--desktop-1440x900--b-scriptlab-three-columns--table.png" alt="Script Lab — a language selected, light, 1440×900"></a><figcaption>light · 1440×900</figcaption></figure>
+<figure><a href="light--phone-430--b-scriptlab-three-columns--table.png"><img src="light--phone-430--b-scriptlab-three-columns--table.png" alt="Script Lab — a language selected, light, 430px"></a><figcaption>light · 430px</figcaption></figure>
+</div></section>
+<section><h2>Script Lab — a script with no language layer</h2><p>pod-1 carries no target language at all, so the chip row says so in a sentence rather than offering a dead control.</p><div class="grid">
+<figure><a href="dark--desktop-1440x900--a2-scriptlab-no-language-layer--table.png"><img src="dark--desktop-1440x900--a2-scriptlab-no-language-layer--table.png" alt="Script Lab — a script with no language layer, dark, 1440×900"></a><figcaption>dark · 1440×900</figcaption></figure>
+<figure><a href="dark--phone-430--a2-scriptlab-no-language-layer--table.png"><img src="dark--phone-430--a2-scriptlab-no-language-layer--table.png" alt="Script Lab — a script with no language layer, dark, 430px"></a><figcaption>dark · 430px</figcaption></figure>
+<figure><a href="light--desktop-1440x900--a2-scriptlab-no-language-layer--table.png"><img src="light--desktop-1440x900--a2-scriptlab-no-language-layer--table.png" alt="Script Lab — a script with no language layer, light, 1440×900"></a><figcaption>light · 1440×900</figcaption></figure>
+<figure><a href="light--phone-430--a2-scriptlab-no-language-layer--table.png"><img src="light--phone-430--a2-scriptlab-no-language-layer--table.png" alt="Script Lab — a script with no language layer, light, 430px"></a><figcaption>light · 430px</figcaption></figure>
+</div></section>
+<section><h2>The metagraph card grid</h2><p>18 reached shapes are solid, filled and full opacity with their ×n counts. 18 never-reached shapes are dashed, unfilled and dimmed. No red anywhere, and the deficit list under the count is plain grey body text.</p><div class="grid">
+<figure><a href="dark--desktop-1440x900--c-metagraph-cards--full.png"><img src="dark--desktop-1440x900--c-metagraph-cards--full.png" alt="The metagraph card grid, dark, 1440×900"></a><figcaption>dark · 1440×900</figcaption></figure>
+<figure><a href="dark--phone-430--c-metagraph-cards--full.png"><img src="dark--phone-430--c-metagraph-cards--full.png" alt="The metagraph card grid, dark, 430px"></a><figcaption>dark · 430px</figcaption></figure>
+<figure><a href="light--desktop-1440x900--c-metagraph-cards--full.png"><img src="light--desktop-1440x900--c-metagraph-cards--full.png" alt="The metagraph card grid, light, 1440×900"></a><figcaption>light · 1440×900</figcaption></figure>
+<figure><a href="light--phone-430--c-metagraph-cards--full.png"><img src="light--phone-430--c-metagraph-cards--full.png" alt="The metagraph card grid, light, 430px"></a><figcaption>light · 430px</figcaption></figure>
+</div></section>
+<h2>What changed, in one line each</h2>
+<ul>
+  <li><strong>Absence is drawn, not coloured.</strong> Reached = solid outline, filled, full opacity. Never reached = dashed, unfilled, dimmed, ink text. Three redundant channels.</li>
+  <li><strong>Red is gone</strong> from both screens except one fault light.</li>
+  <li><strong>Headings, breadcrumbs, node ids, the active nav tab, the chunk-mapping chip, the course-code chip and the build sha</strong> are ink and grey.</li>
+  <li><strong>Blue is the single action colour</strong> — the Save button now wears it.</li>
+  <li><strong>Script Lab is canonical-only at full width</strong> until a language is picked, from a chip row lifted off the Metagraph.</li>
+  <li><strong>The Library's type scale</strong> is now a named token set, adopted rather than re-tuned per screen.</li>
+</ul>

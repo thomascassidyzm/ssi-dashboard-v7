@@ -1,19 +1,19 @@
 <template>
   <div class="min-h-screen bg-canvas text-ink p-4 sm:p-8">
-    <div class="max-w-[1400px] mx-auto">
+    <div class="mx-auto" :class="overlayColumns.length ? 'max-w-[1400px]' : 'max-w-4xl'">
       <div class="flex items-center gap-3 mb-4 text-sm">
-        <router-link to="/" class="text-accent-2 hover:opacity-80">Home</router-link>
+        <router-link to="/" class="text-muted hover:text-ink underline underline-offset-2">Home</router-link>
         <span class="text-faint">/</span>
-        <router-link to="/canonical/scripts" class="text-accent-2 hover:opacity-80">Script Lab</router-link>
+        <router-link to="/canonical/scripts" class="text-muted hover:text-ink underline underline-offset-2">Script Lab</router-link>
         <span class="text-faint">/</span>
         <span class="text-muted">{{ slug }}</span>
       </div>
 
-      <h1 class="text-2xl sm:text-3xl font-bold text-accent-2 mb-1">{{ title }}</h1>
+      <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">{{ title }}</h1>
       <p class="text-muted text-sm mb-1">
         The whole script, scene by scene, with no course loaded — and what it does to the graph.
       </p>
-      <p class="text-accent text-xs mb-4">
+      <p class="text-muted text-xs mb-4">
         Edits change the language-neutral English master every course flexes from. They change no generated pod.
       </p>
 
@@ -46,21 +46,26 @@
               <div class="text-xs text-muted">hit twice or more</div>
             </div>
             <div class="py-3">
-              <div class="text-2xl font-bold" :class="cov.totals.neverReached ? 'text-danger' : 'text-accent-2'">{{ cov.totals.neverReached }}</div>
+              <div class="text-2xl font-bold text-ink">{{ cov.totals.neverReached }}</div>
               <div class="text-xs text-muted">never reached</div>
             </div>
           </div>
 
           <!-- the deficit list, live -->
+          <!-- THE DEFICIT LIST IS NOW PLAIN GREY BODY TEXT. The cards on the
+               metagraph carry the signal — dashed, unfilled, dimmed — so a red
+               list here was the page stating its deficit a second time, louder
+               than it states its coverage. The count above is the measurement;
+               this is the roll-call under it. -->
           <div class="px-4 sm:px-5 py-4 deficit border-b border-line">
-            <h3 class="text-sm font-semibold text-danger mb-2">Never reached — the deficit list</h3>
-            <p v-if="!cov.neverReached.length" class="text-xs text-accent-2">Every shape in the graph is traversed by this walk.</p>
+            <h3 class="text-sm font-semibold text-ink mb-2">Never reached — the deficit list</h3>
+            <p v-if="!cov.neverReached.length" class="text-xs text-muted">Every shape in the graph is traversed by this walk.</p>
             <ul v-else class="space-y-1.5">
               <li v-for="n in cov.neverReached" :key="n.id" class="text-sm flex flex-wrap gap-x-2">
-                <span class="font-mono text-xs text-danger pt-0.5">{{ n.id }}</span>
-                <span class="text-ink">{{ n.title }}</span>
+                <span class="font-mono text-xs text-muted pt-0.5">{{ n.id }}</span>
+                <span class="text-muted">{{ n.title }}</span>
                 <span class="text-xs text-faint w-full sm:w-auto">{{ n.sequence }}</span>
-                <span v-if="n.partialGroups" class="text-xs text-accent">{{ n.partialGroups }} attestation{{ n.partialGroups === 1 ? '' : 's' }} only partly present</span>
+                <span v-if="n.partialGroups" class="text-xs text-faint">{{ n.partialGroups }} attestation{{ n.partialGroups === 1 ? '' : 's' }} only partly present</span>
               </li>
             </ul>
           </div>
@@ -72,10 +77,11 @@
               An outcome counts as delivered only when a line declares it. The ask it is <em>sited on</em> being present is not delivery.
             </p>
             <ul class="space-y-1">
-              <li v-for="o in cov.outcomes" :key="o.id" class="text-sm flex flex-wrap gap-x-2 items-baseline">
-                <span class="font-mono text-xs" :class="o.delivered ? 'text-accent-2' : 'text-danger'">{{ o.id }}</span>
-                <span :class="o.delivered ? 'text-muted' : 'text-ink'">{{ o.name }}</span>
-                <span v-if="o.mustBeMinted" class="text-xs text-accent">attested nowhere — must be minted</span>
+              <li v-for="o in cov.outcomes" :key="o.id" class="text-sm flex flex-wrap gap-x-2 items-baseline"
+                  :class="o.delivered ? 'out-delivered' : 'out-missing'">
+                <span class="font-mono text-xs">{{ o.id }}</span>
+                <span>{{ o.name }}</span>
+                <span v-if="o.mustBeMinted" class="text-xs text-faint">attested nowhere — must be minted</span>
                 <span v-else-if="!o.delivered" class="text-xs text-faint">{{ o.attested }}</span>
                 <span class="text-xs text-faint w-full sm:w-auto">recovery: {{ o.recovery }}</span>
               </li>
@@ -92,10 +98,10 @@
             </p>
             <ul class="space-y-1">
               <li v-for="s in exercised" :key="s.id" class="text-sm flex flex-wrap gap-x-2 items-baseline">
-                <span class="font-mono text-xs text-accent-2">{{ s.id }}</span>
+                <span class="font-mono text-xs text-muted">{{ s.id }}</span>
                 <span class="text-ink">{{ s.presupposes }}</span>
-                <span class="text-xs" :class="s.recoveryRank === 0 ? 'text-danger font-semibold' : s.recoveryRank === 1 ? 'text-accent' : 'text-muted'">
-                  <span v-if="s.recoveryRank === 0">⚠ </span>recovery: {{ s.recoveryAttested }}
+                <span class="text-xs text-muted" :class="s.recoveryRank === 0 ? 'font-semibold text-ink' : ''">
+                  recovery: {{ s.recoveryAttested }}
                 </span>
               </li>
             </ul>
@@ -108,7 +114,7 @@
               {{ cov.totals.branches }} on a branch ·
               {{ cov.totals.codas }} scene-exit vocabulary drips ·
               {{ cov.totals.alternatives }} surface variants ·
-              <span :class="cov.totals.unmapped ? 'text-accent' : ''">{{ cov.totals.unmapped }} UNMAPPED</span>
+              <span :class="cov.totals.unmapped ? 'text-ink font-semibold' : ''">{{ cov.totals.unmapped }} UNMAPPED</span>
             </p>
             <p v-if="cov.totals.unmapped">
               Unmapped means the graph has nothing to say about the line — not that the line is wrong.
@@ -123,7 +129,7 @@
               <span class="text-muted">Shape declarations:</span>
               {{ walk.declarations.length }} declared ·
               {{ walk.declarations.length - walk.unresolved.length }} resolved against the store ·
-              <span class="text-accent">{{ walk.unresolved.length }} UNRESOLVED</span>
+              <span class="text-ink font-semibold">{{ walk.unresolved.length }} UNRESOLVED</span>
               ({{ unresolvedByRegister }}).
               An unresolved declaration is a shape the pod names that the store has no id for. It is
               counted, never guessed into a mapping.
@@ -132,6 +138,44 @@
           </div>
           </template>
         </section>
+
+        <!-- ══ THE LANGUAGE SELECTOR ══
+             Tom, 2026-09-02: "I could find no way to choose the course for the
+             pod on display." There IS a global "Choose course…" in the top
+             chrome, but it reads as site-wide furniture and is not discoverable
+             as THIS screen's control — that is the defect, not the absence of a
+             control. The Metagraph's chip row (Graph only / POD 1 / Method Pod)
+             is exactly the right shape, so it is REUSED rather than redesigned,
+             with "Canonical only" as the leftmost chip and the default, exactly
+             as "Graph only" is there.
+
+             And it is the same control as Ruling 3: with nothing selected,
+             KNOWN was a byte-identical copy of CANONICAL with "= canonical"
+             stamped under every row and TARGET was a column of em-dashes — two
+             thirds of the width carrying zero bits. Canonical runs at FULL
+             WIDTH until a language is picked. -->
+        <div class="lang-picker flex flex-wrap items-center gap-2 mb-4">
+          <span class="text-xs uppercase tracking-wide text-faint mr-1">Language</span>
+          <button
+            type="button"
+            class="lang-chip"
+            :class="selectedLang === null ? 'is-on' : ''"
+            @click="selectedLang = null"
+          >Canonical only</button>
+          <button
+            v-for="l in availableLangs" :key="l.code"
+            type="button"
+            class="lang-chip"
+            :class="selectedLang === l.code ? 'is-on' : ''"
+            @click="selectedLang = l.code"
+          >
+            {{ l.code }}
+            <span class="text-faint ml-1">{{ l.lines }} lines</span>
+          </button>
+          <span v-if="!availableLangs.length" class="text-xs text-faint">
+            This script carries no target-language layer yet, so there is nothing to lay beside the canonical.
+          </span>
+        </div>
 
         <!-- ══ THE CHUNK-MAPPING CAVEAT ══
              Shown once, at the top, when any line on this page carries a chunk
@@ -142,7 +186,7 @@
              once, here, is the honest form. It names no language and no pod, so
              the Italian overlay inherits it unchanged. -->
         <p v-if="chunkMappedLines" class="mb-4 text-xs text-muted bg-surface border border-line rounded-lg px-4 py-2">
-          <span class="text-accent-2 font-semibold">Chunk mappings</span> —
+          <span class="text-ink font-semibold">Chunk mappings</span> —
           {{ chunkMappedLines }} of {{ totalLines }} lines record one.
           Divergence marks are per chunk, so a divergence that runs through the whole
           document is marked on <em>no</em> row: read the source document's own
@@ -161,19 +205,19 @@
         <div class="space-y-6">
           <div v-for="(scene, idx) in walk.scenes" :key="scene.number" class="bg-surface border border-line rounded-lg overflow-hidden">
             <div class="px-4 sm:px-5 py-3 border-b border-line flex flex-wrap items-baseline gap-2 sm:gap-3">
-              <span class="text-xs font-mono text-accent-2 bg-surface-2 border border-line px-1.5 py-0.5 rounded">{{ idx + 1 }}/{{ walk.scenes.length }}</span>
+              <span class="text-xs font-mono text-ink bg-surface-2 border border-line px-1.5 py-0.5 rounded">{{ idx + 1 }}/{{ walk.scenes.length }}</span>
               <span class="text-xs font-mono text-faint">{{ scene.label || ('Scene ' + scene.number) }}</span>
               <span class="font-semibold text-ink">{{ scene.title }}</span>
               <span v-if="scene.subtitle" class="text-xs italic text-faint">{{ scene.subtitle }}</span>
-              <span class="ml-auto text-xs" :class="sceneShapes(scene).length ? 'text-accent-2' : 'text-faint'">
+              <span class="ml-auto text-xs" :class="sceneShapes(scene).length ? 'text-muted' : 'text-faint'">
                 {{ sceneShapes(scene).join(' ') || 'no shape' }}
               </span>
-              <span v-if="sceneUnresolved(scene).length" class="basis-full text-xs text-accent">
+              <span v-if="sceneUnresolved(scene).length" class="basis-full text-xs text-muted">
                 declared, unresolved: {{ sceneUnresolved(scene).join(' · ') }}
               </span>
             </div>
 
-            <table class="script-table">
+            <table class="script-table" :class="{ 'canonical-only': !overlayColumns.length }">
               <thead>
                 <tr>
                   <th class="col-ref">#</th>
@@ -192,8 +236,12 @@
                            No quality score is invented, so there is no third colour. -->
                       <span class="status-dot" :class="dotClass(step)" :title="dotTitle(step)"></span>
                       <span class="ref-num">{{ step.ref || '·' }}</span>
+                      <!-- A step kind is a NAME, not a measurement — ink for the
+                           mapped ones, grey for the rest. UNMAPPED used to be red;
+                           the page already says in words that unmapped means the
+                           graph has nothing to say, not that the line is wrong. -->
                       <span class="ref-kind" :title="stepTitle(step)"
-                            :class="step.kind === 'move' ? 'text-accent-2' : step.kind === 'branch' ? 'text-accent' : step.kind === 'unmapped' ? 'text-danger' : 'text-faint'">
+                            :class="step.kind === 'move' ? 'text-muted' : 'text-faint'">
                         {{ step.nodeId || (step.kind === 'move' ? '' : KIND_TAG[step.kind]) }}
                       </span>
                     </td>
@@ -210,7 +258,7 @@
                     <td class="col-canonical">
                       <ScriptLineCell :step="step" :col="canonicalColumn" :ed="ed" />
 
-                      <p v-if="step.branch" class="row-note text-accent">
+                      <p v-if="step.branch" class="row-note text-faint">
                         fork · {{ step.branch.key }} arm{{ step.branch.continues ? '' : ' · no uptake' }}
                       </p>
                       <p v-else-if="step.variant" class="row-note text-faint">
@@ -227,10 +275,13 @@
 
                     <td class="col-state">
                       <div class="state-stack">
-                        <span v-if="step.payload._saving" class="text-accent text-xs">saving…</span>
-                        <span v-else-if="step.payload._saved" class="text-accent-2 text-xs">saved ✓</span>
+                        <span v-if="step.payload._saving" class="text-muted text-xs">saving…</span>
+                        <span v-else-if="step.payload._saved" class="text-ink text-xs font-semibold">saved ✓</span>
+                        <!-- The one surviving red on this page: a failed write is a
+                             system fault, not a measurement. /courses keeps red for
+                             exactly this and it is the reference implementation. -->
                         <span v-else-if="step.payload._err" class="text-danger text-xs" :title="step.payload._err">error</span>
-                        <span v-else-if="rowDirty(step)" class="text-accent text-xs">unsaved</span>
+                        <span v-else-if="rowDirty(step)" class="text-ink text-xs font-semibold">unsaved</span>
 
                         <!-- The chip is the whole affordance: tap to see what this line
                              used to say, tap a version to put it back. No drag, no
@@ -276,7 +327,7 @@
                           </p>
                           <div v-for="v in hist(step.payload.id).versions" :key="v.versionId" class="version">
                             <div class="version-head">
-                              <span class="text-xs" :class="v.kind === 'original' ? 'text-accent' : 'text-muted'">
+                              <span class="text-xs" :class="v.kind === 'original' ? 'text-ink font-semibold' : 'text-muted'">
                                 {{ v.kind === 'original' ? 'original' : 'save' }} #{{ v.versionId }}
                               </span>
                               <span class="text-xs text-faint">{{ stamp(v.savedAt) }}</span>
@@ -288,7 +339,7 @@
                                 :disabled="hist(step.payload.id).restoring === v.versionId"
                                 @click="restore(step, v.versionId)"
                               >{{ hist(step.payload.id).restoring === v.versionId ? 'restoring…' : 'restore' }}</button>
-                              <span v-else class="text-xs text-accent-2">this is the line now</span>
+                              <span v-else class="text-xs text-muted">this is the line now</span>
                             </div>
                             <p class="diff">
                               <span v-for="(r, k) in diffOf(v, step)" :key="k" :class="r.kind">{{ r.text }}</span>
@@ -442,19 +493,53 @@ const KNOWN_COLUMN = {
   mirrorNote: 'This pod carries no separate known-language layer yet — the known text IS the canonical English, so it is shown read-only rather than pretending to be editable.'
 }
 
-/** The target language declared on this script, for the column head. */
-const targetLang = computed(() => walk.value?.steps?.find(s => s.payload.targetLang)?.payload.targetLang || null)
+/*
+ * ══ THE COLUMNS ARE EMPTY BY CONSTRUCTION UNTIL A LANGUAGE IS PICKED ══
+ *
+ * Tom's Ruling 3, 2026-09-02. With no language selected, KNOWN was a
+ * byte-identical copy of CANONICAL with "= canonical" stamped under every row
+ * and TARGET was a column of em-dashes: two thirds of a 1400px page carrying
+ * zero bits, and the reason the body type had to run at 13px to fit. So the
+ * default is CANONICAL ONLY, at full width — and the larger type scale that
+ * makes readable comes free with the single column.
+ *
+ * Picking a language is what brings the overlays back, and then all three are
+ * worth their width: canonical, the known side, and that language's target.
+ */
+const selectedLang = ref(null)
 
-const overlayColumns = computed(() => [
-  KNOWN_COLUMN,
-  {
-    key: 'target',
-    label: targetLang.value ? `Target · ${targetLang.value}` : 'Target',
-    field: 'target',
-    editable: true,
-    saveLabel: step => `Save ${step.payload.targetLang}`
+/** Every target language actually present on this script's lines, with how many
+ *  lines carry it. Counted from the walk — never a list somebody typed. */
+const availableLangs = computed(() => {
+  const counts = new Map()
+  for (const st of walk.value?.steps || []) {
+    const lang = st.payload?.targetLang
+    if (lang) counts.set(lang, (counts.get(lang) || 0) + 1)
   }
-])
+  return [...counts.entries()].sort((a, b) => a[0].localeCompare(b[0]))
+    .map(([code, lines]) => ({ code, lines }))
+})
+
+/** A language that vanishes when the script reloads must not leave a dead
+ *  selection behind, so the pick is validated against what is actually there. */
+const activeLang = computed(() =>
+  availableLangs.value.some(l => l.code === selectedLang.value) ? selectedLang.value : null
+)
+
+const overlayColumns = computed(() => {
+  if (!activeLang.value) return []
+  return [
+    KNOWN_COLUMN,
+    {
+      key: 'target',
+      label: `Target · ${activeLang.value}`,
+      field: 'target',
+      lang: activeLang.value,
+      editable: true,
+      saveLabel: step => `Save ${step.payload.targetLang}`
+    }
+  ]
+})
 
 /** # + Speaker + canonical + the overlays + State — the history row spans them all. */
 const colCount = computed(() => 3 + overlayColumns.value.length + 1)
@@ -466,9 +551,13 @@ const colCount = computed(() => 3 + overlayColumns.value.length + 1)
  * there is no third colour.
  */
 function dotClass (step) {
-  if (rowDirty(step)) return 'amber'
-  if (step.payload.target) return 'green'
-  return ''
+  // NAMED FOR WHAT THEY MEAN, NOT FOR WHAT COLOUR THEY USED TO BE. They were
+  // 'amber' and 'green'; under Tom's 2026-09-02 ruling neither is painted a hue
+  // any more, and a class called `.amber` that renders ink is how the next
+  // person re-introduces amber by accident.
+  if (rowDirty(step)) return 'dot-unsaved'
+  if (step.payload.target) return 'dot-has-target'
+  return 'dot-none'
 }
 function dotTitle (step) {
   if (rowDirty(step)) return 'unsaved draft on this line'
@@ -747,7 +836,15 @@ onMounted(load)
 @import '@/styles/script-rows.css';
 .error-box { color: var(--danger); border-color: var(--danger); background: color-mix(in srgb, var(--danger) 14%, var(--surface)); }
 :root[data-theme="light"] .error-box { background: color-mix(in srgb, var(--danger) 8%, #ffffff); }
-.deficit { background: color-mix(in srgb, var(--danger) 8%, var(--surface)); }
+/* The deficit panel used to sit on a red wash. It is a roll-call under a count,
+   so it sits on the same surface as everything else and reads as body text. */
+.deficit { background: var(--surface); }
+
+/* An outcome that a line delivers, and one that no line delivers. Presence is
+   ink; absence is dimmed ink — the same two states as the metagraph tiles, at
+   list scale where an outline would be noise. */
+.out-delivered { color: var(--ink); }
+.out-missing { color: var(--ink); opacity: 0.55; }
 
 /*
  * ══ THREE CONTENT COLUMNS ══
@@ -769,6 +866,50 @@ onMounted(load)
    the sentences do. */
 .col-canonical, .col-overlay { width: 27%; min-width: 0; }
 
+/*
+ * CANONICAL ONLY — the default, and full width (Tom's Ruling 3, 2026-09-02).
+ * One column keeps the measure sane at the Library's type size, which is why
+ * Ruling 5's larger scale costs nothing here: the width that used to be spent
+ * on a byte-identical KNOWN copy and a column of em-dashes now buys legibility.
+ */
+.script-table.canonical-only .col-canonical { width: auto; }
+.script-table.canonical-only .col-state { width: 9rem; }
+.script-table.canonical-only td { font-size: var(--text-body); }
+
+/*
+ * ══ THE LANGUAGE CHIP ROW ══
+ * The Metagraph's own control, reused. INK AND GREY only: which chip is on is
+ * a state of the page, not a measurement of the content, so it is drawn with
+ * weight and fill rather than painted amber.
+ */
+.lang-chip {
+  padding: 0.25rem 0.75rem;
+  border-radius: 0.35rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  color: var(--muted);
+  font-size: var(--text-label);
+  font-family: inherit;
+  cursor: pointer;
+  transition: color .15s, border-color .15s, background-color .15s;
+}
+.lang-chip:hover { color: var(--ink); border-color: var(--muted); }
+.lang-chip.is-on {
+  border-color: var(--ink);
+  background: var(--surface-2);
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/*
+ * ══ THE LIBRARY'S TYPE SCALE ══
+ * Tom, 2026-09-02: the body ran ~13px across three ~370px columns and /courses
+ * runs the size he named as right. The tokens live in ui-tokens.css so a screen
+ * ADOPTS the scale rather than tuning itself into its own private one.
+ */
+.script-table td { font-size: var(--text-sm); }
+.script-table th { font-size: var(--text-label); }
+
 /* The Seed Editor's dot, in the number column. */
 .status-dot {
   display: inline-block;
@@ -779,9 +920,12 @@ onMounted(load)
   vertical-align: middle;
   border: 1px solid var(--line);
 }
-.status-dot.green { background: var(--accent-2); border-color: var(--accent-2); }
-.status-dot.amber { background: #fbbf24; border-color: #fbbf24; }
-:root[data-theme="light"] .status-dot.amber { background: #d97706; border-color: #d97706; }
+/* The per-row dot reports HAS-A-TARGET / NO-TARGET / UNSAVED. Presence is a
+   filled ink dot; absence is an unfilled dashed ring; an unsaved draft is the
+   filled dot plus the row's own inset bar, which is the louder channel. */
+.status-dot.dot-has-target { background: var(--ink); border-color: var(--ink); }
+.status-dot.dot-unsaved { background: var(--ink); border-color: var(--ink); box-shadow: 0 0 0 2px var(--surface), 0 0 0 3px var(--ink); }
+.status-dot.dot-none { background: none; border-style: dashed; border-color: var(--faint); opacity: 0.6; }
 
 /*
  * PHONE, 430px. Six columns do not fit a phone, and a sideways-scrolling table
@@ -800,14 +944,15 @@ onMounted(load)
   min-height: 32px;
   padding: 4px 10px;
   border-radius: 999px;
-  font-size: 11px;
+  font-size: var(--text-xs);
   line-height: 1.2;
-  color: var(--accent);
-  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
-  background: color-mix(in srgb, var(--accent) 10%, transparent);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: var(--surface-2);
 }
-.chip.on { background: color-mix(in srgb, var(--accent) 22%, transparent); }
-.chip.restore { color: var(--accent-2); border-color: color-mix(in srgb, var(--accent-2) 45%, transparent); background: color-mix(in srgb, var(--accent-2) 10%, transparent); }
+.chip:hover { color: var(--ink); border-color: var(--muted); }
+.chip.on { color: var(--ink); border-color: var(--ink); font-weight: 600; }
+.chip.restore { color: var(--ink); border-color: var(--muted); }
 .chip[disabled] { opacity: 0.5; }
 
 .history {
@@ -821,7 +966,11 @@ onMounted(load)
 .version:first-of-type { border-top: 0; }
 .version-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 4px; }
 .diff { font-size: 13px; line-height: 1.5; color: var(--ink); white-space: pre-wrap; word-break: break-word; }
-.diff .add { color: var(--accent-2); text-decoration: underline; }
-.diff .del { color: var(--danger); text-decoration: line-through; }
+/* A word diff is already TWO redundant channels without a hue — underline for
+   what comes in, strike-through for what goes. Ink for both: the decoration is
+   the measurement, and it survives a colourblind reader where green/red does
+   not. */
+.diff .add { color: var(--ink); font-weight: 600; text-decoration: underline; }
+.diff .del { color: var(--muted); text-decoration: line-through; }
 .diff .same { opacity: 0.6; }
 </style>

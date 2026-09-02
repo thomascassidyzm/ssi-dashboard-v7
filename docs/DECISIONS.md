@@ -451,3 +451,63 @@ never offered.
 
 **Decided by:** agent, under Tom's 2026-08-31 gaps brief; the consent mechanism itself is his
 2026-08-31 ruling and was reused, never re-invented.
+
+---
+
+## 2026-09-02 — Colour means measurement, and absence is drawn rather than coloured
+
+**Tom's ruling, implemented — not a design exploration.** Popty's colour had no rule. Green meant
+the brand wordmark AND a page heading AND a breadcrumb AND a node id AND "reached/attested". Red
+meant "never reached" AND the body text of a long paragraph. Amber meant the active nav tab AND
+Select AND "declared, unresolved" AND "attested nowhere — must be minted" AND the chunk-mapping
+chip. Every colour did three jobs, so the eye could not learn a rule and none of them read as a
+measurement any more.
+
+**Ruling 1 — colour is spent on a measured fact and on nothing else.** Titles, headings,
+breadcrumbs, nav, node ids and inline emphasis go to ink and grey. Blue is the single action colour.
+`/courses` is the reference implementation and was matched, not improved: it already spends colour
+only on FREE / PREMIUM / Beta / Live, and it was left untouched.
+
+**Ruling 2 — absence is DRAWN, not coloured. Red comes out.** Attested = solid outline, filled, full
+opacity. Not reached = dashed outline, no fill, reduced opacity, ink text. Three redundant channels
+deliberately: across 36 small cards a dash alone is noise and must not carry the signal by itself,
+and the same three channels survive card size, light mode and a colourblind reader where a hue does
+not. The page used to invert its own measurement — 25 red cards and a red deficit list for the
+things that do not exist, with the 11 shapes actually reached sitting quiet at equal weight, which
+reads as an accusation rather than as a map with holes. Consequences that fell out of the one rule
+rather than being separate asks: the deficit list became plain grey body text (the cards now carry
+the signal, and the page stops stating its deficit twice), and "attested nowhere — must be minted",
+"declared, unresolved" and the chunk-mapping chips lost their amber.
+
+**Light mode was not tuned separately.** It looked worse for the identical cause — pastel red/green
+fills reading as a spreadsheet with conditional formatting — so the rule was fixed once, in tokens,
+and both modes were verified.
+
+**Ruling 3 — Script Lab is canonical-only at full width by default.** With no course loaded KNOWN
+was a byte-identical copy of CANONICAL with "= canonical" stamped under every row, and TARGET was a
+column of em-dashes: two thirds of a 1400px page carrying zero bits, and the reason the body type
+had to run at ~13px to fit. KNOWN and TARGET now appear only when a language is selected.
+
+**Ruling 4 — the missing selector already existed one tab across.** There IS a global "Choose
+course…" in the top chrome; it reads as site-wide furniture and is not discoverable as this screen's
+control, and THAT was the defect. The Metagraph's chip row was REUSED, with "Canonical only" as the
+leftmost chip and the default, exactly as "Graph only" is there. The languages are counted from the
+walk, never from a list somebody typed, and a script with no language layer says so in a sentence
+rather than offering a dead control.
+
+**Ruling 5 — the Library's type scale, app-wide.** `--text-body / --text-sm / --text-xs /
+--text-label` are named once in `src/assets/ui-tokens.css` so a screen ADOPTS the scale rather than
+tuning itself into a private one. Canonical-only is what makes it free: one column keeps the measure
+sane at the larger size where three did not.
+
+**One red survives, and it is named in the code and in the harness.** A failed fetch or a failed
+write is a system fault, not a measurement of the content, and `/courses` — the answer sheet — keeps
+red for exactly that (its `.error-panel`, and the Environment Switcher's connection dot).
+
+**Verified by a declared harness, not by a stub.** `e2e/colour-rule/shots.spec.js` signs in through
+the real login form as the seeded E2E admin, against the real production-api and the real canonical
+store, and photographs three screens at 1440×900 and 430px in both themes. It also asserts the rule:
+it reads the computed colour, border, background, fill and stroke of every rendered element on each
+page and fails if any lands in the red or amber families. It writes nothing; every request is a GET.
+
+**Decided by:** Tom, 2026-09-02. Implemented as ruled.

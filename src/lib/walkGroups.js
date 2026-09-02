@@ -17,26 +17,32 @@
 
 import { PAIR_OVERLAYS } from './walkFacts.js'
 
+/* The `accent` on each group used to be a hue per category — red for Core,
+   violet for Flagship, amber for Method, emerald for Themed — and it measured
+   nothing: a section heading is a NAME. Tom's ruling, 2026-09-02: colour means
+   measurement and nothing else, so every one of these is now ink. The field
+   stays because it is the one place a heading colour could ever be spent, and
+   naming it is what keeps the next hue out of the template. */
 export const CATEGORY_GROUPS = [
   {
     id: 'core',
     category: 'core',
     title: 'Core — the default chain',
-    accent: '#ef4444',
+    accent: 'var(--ink)',
     blurb: 'Compulsory. The ladder a learner descends by NOT choosing. Numbers name this chain and nothing else.',
   },
   {
     id: 'flagship',
     category: 'flagship',
     title: 'Flagship',
-    accent: '#a78bfa',
+    accent: 'var(--ink)',
     blurb: 'The Learning flagship.',
   },
   {
     id: 'method',
     category: 'method-cut',
     title: 'Method Pod — awaiting a choice',
-    accent: '#f59e0b',
+    accent: 'var(--ink)',
     // ONE decision, TWO realisations — rendered inside a single frame so the
     // page cannot be read as offering two walks.
     paired: true,
@@ -46,7 +52,7 @@ export const CATEGORY_GROUPS = [
     id: 'themed',
     category: 'themed',
     title: 'Themed — chosen',
-    accent: '#10b981',
+    accent: 'var(--ink)',
     // THE SELECTOR IS INTEREST, NOT OCCUPATION. A sector is one reason among
     // several. This category is never called "sector pods", here or anywhere.
     blurb: 'A learner picks these. The selector is INTEREST, not occupation — a sector is one reason among several, never the category.',
@@ -56,14 +62,14 @@ export const CATEGORY_GROUPS = [
 export const PARKED_GROUP = {
   id: 'parked',
   title: 'Parked — real content, deliberately not canon',
-  accent: '#94a3b8',
+  accent: 'var(--ink)',
   blurb: 'Pre-metagraph proofs of concept, living only in listening_pods. Visible so they stop being invisible, not so they can be treated as canon. Never ingested into the canonical store.',
 }
 
 export const UNREGISTERED_GROUP = {
   id: 'unregistered',
   title: 'Unregistered — in the database, not in the registry',
-  accent: '#ef4444',
+  accent: 'var(--ink)',
   blurb: 'Slugs the canonical store returns that the registry does not name. Shown with their real counts rather than hidden.',
 }
 
