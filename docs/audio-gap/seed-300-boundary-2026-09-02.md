@@ -8,7 +8,18 @@
 
 It is not an unfinished render run. **No learner is affected today.**
 
-## What settles it
+## The build mode is called "MVP", and it is 300 seeds
+
+The pipeline names it. `services/config/course-modes.json` defines three build modes, and two of them are the two ceilings the estate actually sits on:
+
+* **`mvp_course`** — *"Big 10 language pairs"* — **`"seeds": 300`**
+* **`full_course`** — *"Complete legacy-scale course — extends MVP to 668 seeds"* — **`"seeds": 668`**
+
+The course builder even carries `CHECKPOINT_SEEDS: [10, 50, 150, 300]` (`services/course-builder/context.cjs`) — 300 is the last QA checkpoint of the MVP pass. And a prior audit already named this exact frontier: `docs/paid-english-courses-status-2026-08-06.md` calls it *"the seed-300 approval frontier… the single biggest number in the programme."*
+
+So 300 is not a number anyone has to infer. It is the documented size of the MVP build, and 59 courses have had that build and not the extension.
+
+## What settles it in the data
 
 Every course carries all 668 seeds of the master seed bank from the moment it is created. What varies is how far it has been *built*. The estate has exactly two build ceilings and almost nothing in between:
 
@@ -66,6 +77,21 @@ The 12,078 are working as designed. The 1,083 are a real gap, and they have noth
 
 That is ordinary drift of the kind the nightly already tracks, mis-filed under a boundary it does not belong to.
 
+## The one course where this really is an unfinished render
+
+`ara_eg_for_eng` is the exception that proves the rule. Its content **is** built and approved all the way to 668 — LEGOs, phrases and round-index rows all reach 668, and 360 seeds past 300 carry an `approved_at`. Its seed audio still stops at 300, and there is **no `audio_pass_requests` row asking for seeds 301–668**. That is a genuine un-queued backlog item, not a scope boundary.
+
+The learner is still protected from it: `ssi-learning-app/api/_utils/courseBoundary.ts` sets `MVP_MAX_SEED = 300` and applies it by name to exactly two courses — `ara_eg_for_eng` and `ara_lb_for_eng` — under Tom's 2026-08-04 decision, so the player stops at 300 regardless. The cap exists precisely because those two are the only courses where the round map would otherwise run past the audio.
+
+## Where seed audio actually reaches a learner
+
+Worth recording, because it is not where you would look. The Vercel API routes do not drive it — `cycles.ts`, `round-map.ts` and `infplay-cycles.ts` never touch `course_seeds`. It is read client-side by `packages/player-vue/src/providers/generateLearningScript.ts`, and feeds two enrichment layers:
+
+* **Layer-1 listening cups** (`useLayer1Scheduler.ts`) — `if (!seed?.target1_audio_id) continue`
+* **Seed-phase spaced review** at offset ≥144 — with seed audio the learner gets a whole-sentence sandwich; without it, the code falls through to the use-phrase review
+
+Both fail soft. A missing seed clip is never silence and never an error — it is a slightly thinner review. That is the third reason nobody noticed.
+
 ## One inconsistency worth a line
 
 `eng_for_spa` has seeds 301–668 marked `status='released'` while `decomposed_at` is NULL and they have no LEGOs — the flag disagrees with the content. It also carries 311 target-side seed clips past 300 for seeds that were never built. Cosmetic today, since the round map still stops at 300, but the status flag is lying.
@@ -80,4 +106,4 @@ Nothing, unless the decision is to extend those 59 courses from 300 seeds to 668
 
 ---
 
-*Established from `course_seeds`, `course_legos`, `course_practice_phrases`, `course_round_index` and `course_audio` on the live database, plus the delivery code in `ssi-learning-app/api/courses/[code]/bundle.ts`. Two independent workers (#978 delivery path, #979 render history) reached the same verdict separately.*
+*Established from `services/config/course-modes.json`, `course_seeds`, `course_legos`, `course_practice_phrases`, `course_round_index` and `course_audio` on the live database, plus the delivery code in `ssi-learning-app/api/courses/[code]/bundle.ts`. Two independent workers (#978 delivery path, #979 render history) reached the same verdict separately.*
