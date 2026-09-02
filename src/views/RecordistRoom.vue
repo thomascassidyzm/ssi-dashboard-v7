@@ -67,8 +67,13 @@
                @change="captureProfile = $event.target.checked ? 'dry' : 'voice'" />
         <span><strong>Record the raw microphone</strong>
           <small>Off = the phone cleans up the sound as it records, the way a voice note does. Turn it on only to
-            capture the room exactly as it is — it will sound quieter and rougher.</small></span>
+            capture the room exactly as it is — it will sound quieter and rougher. It goes back off by itself
+            next time you open this room.</small></span>
       </label>
+      <p v-if="captureProfile === 'dry'" class="dry-warning">
+        Raw microphone is on. Takes will record much quieter than normal — turn it off unless you are
+        deliberately measuring the room.
+      </p>
 
       <label class="toggle-row">
         <input type="checkbox" v-model="includeRecorded" />
@@ -296,14 +301,24 @@ const includeRecorded = ref(false)
 const selectedDeviceId = ref(null)
 // Which mic profile to ask for. Voice-processed by default — on a phone that
 // is what makes a take sound like a voice note rather than like a raw tap held
-// at arm's length. Remembered, because whoever changes it means it for the
-// session after this one too.
-const captureProfile = ref(
-  (typeof localStorage !== 'undefined' && localStorage.getItem('recordist.captureProfile')) || DEFAULT_CAPTURE_PROFILE
-)
-watch(captureProfile, v => {
-  try { localStorage.setItem('recordist.captureProfile', v) } catch { /* private mode */ }
-})
+// at arm's length.
+//
+// NOT remembered, deliberately, and this is the whole of tonight's fix. It used
+// to persist in localStorage under 'recordist.captureProfile', which meant one
+// tick of a diagnostic toggle pinned that browser to the raw tap for every
+// session afterwards, silently, with nothing on screen at the start of the next
+// session saying so. Measured on Tom's 2026-09-02 session: the desktop, on the
+// remembered dry profile, arrived at -18.9 dBFS raw peak needing +19.5 dB of
+// lift and mastering out with a -34.9 dBFS noise floor; the phone, a browser
+// with no stored key and therefore on the default, arrived at -2.5 dBFS and
+// mastered to a -62.7 dBFS floor. Same person, same room, four minutes apart.
+// He read it as a desktop-versus-phone difference. It was a stored preference.
+//
+// So the raw tap is now what it always was in intent: a per-session diagnostic,
+// one tick away whenever it is wanted, and gone the next time the room opens.
+// The stale key is cleared on sight so no browser is still carrying one.
+const captureProfile = ref(DEFAULT_CAPTURE_PROFILE)
+try { localStorage.removeItem('recordist.captureProfile') } catch { /* private mode */ }
 // The mic this take was read into, and how it was asked for — the take's
 // provenance row. The profile belongs in it: two takes of the same line under
 // the two profiles are different recordings, and nothing else on the clip says
@@ -870,6 +885,11 @@ kbd {
 .toggle-row input { margin-top: 0.2rem; width: 20px; height: 20px; accent-color: var(--color-emerald, #06ffa5); flex-shrink: 0; }
 .toggle-row strong { display: block; font-size: 0.95rem; }
 .toggle-row small { display: block; font-size: 0.8rem; color: var(--color-paper-dim, #c1c1bb); line-height: 1.45; margin-top: 0.15rem; }
+.dry-warning {
+  margin: -1rem 0 1.5rem; padding: 0.6rem 0.8rem; border-radius: 6px;
+  background: rgba(255, 176, 32, 0.12); border: 1px solid rgba(255, 176, 32, 0.45);
+  color: var(--color-paper, #f4f4ef); font-size: 0.85rem; line-height: 1.45;
+}
 
 .btn-begin {
   display: block; width: 100%;
