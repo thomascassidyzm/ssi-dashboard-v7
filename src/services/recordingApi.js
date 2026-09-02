@@ -42,7 +42,16 @@ export function recordingApiBase() {
   // A pin is a development affordance, and on popty.app the same-origin proxy is
   // always present and always better, so there is nothing for a pin to usefully
   // say here. Off popty.app it still decides everything.
-  if (typeof window !== 'undefined' && window.location.hostname === 'popty.app') return ''
+  // ...and on a Vercel PREVIEW of the same project, for the same reason. The
+  // rewrite in vercel.json is part of the deployment, not of the production
+  // alias, so every preview host proxies /api/recording/* exactly as popty.app
+  // does — and a preview page reaching out to watson-1 directly is refused by
+  // the browser exactly as popty.app's would be. Without this, staging a
+  // recordist change could never be verified in a real browser.
+  if (typeof window !== 'undefined') {
+    const host = window.location.hostname
+    if (host === 'popty.app' || host.endsWith('.vercel.app')) return ''
+  }
   if (typeof localStorage !== 'undefined') {
     const pinned = localStorage.getItem('api_base_url')
     if (pinned) return pinned

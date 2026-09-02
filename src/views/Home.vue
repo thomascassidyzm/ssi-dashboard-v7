@@ -117,6 +117,34 @@
             </div>
           </router-link>
 
+          <!-- My lines to record — only for a login that HAS a recording voice.
+               Aran is an admin as well as a voice; without this the only way to
+               his own outstanding queue was a link somebody sent him. -->
+          <router-link v-if="hasVoice" to="/my-recording" class="hub-card card-record">
+            <div class="card-glow"></div>
+            <div class="card-content">
+              <div class="card-header">
+                <div class="card-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/>
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                    <path d="M12 19v3"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="card-body">
+                <h2 class="card-title">My lines to record</h2>
+                <p class="card-description">Everything still waiting on your voice, in the order to read it.</p>
+              </div>
+              <div class="card-footer">
+                <span class="card-action">Open my list</span>
+                <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </div>
+            </div>
+          </router-link>
+
           <!-- Admin -->
           <router-link to="/admin" class="hub-card card-admin">
             <div class="card-glow"></div>
@@ -153,11 +181,19 @@
 <script setup>
 import { computed } from 'vue'
 import { useCourses } from '../composables/useCourses'
+import { useAuth } from '../composables/useAuth'
 import HowThisWorks from '../components/explainer/HowThisWorks.vue'
 import NoticingInvitations from '../components/explainer/NoticingInvitations.vue'
 
 const { courses } = useCourses()
 const courseCount = computed(() => courses.value?.length || 0)
+
+// The card shows for a login the DATA says is a voice. `voice_id` on the
+// dashboard_users row is that claim; a login with no voice never sees the card,
+// and one that has a stale voice gets the page's own honest "no recording voice
+// for this login" rather than a queue that isn't theirs.
+const { learner, isRecorder } = useAuth()
+const hasVoice = computed(() => !!learner.value?.voice_id || isRecorder.value)
 </script>
 
 <style scoped>
@@ -167,6 +203,7 @@ const courseCount = computed(() => courses.value?.length || 0)
 .card-docs    { --hub-accent: #3b82f6; --hub-glow: rgba(59, 130, 246, 0.15); }
 .card-labs    { --hub-accent: #f59e0b; --hub-glow: rgba(245, 158, 11, 0.15); }
 .card-admin   { --hub-accent: #a855f7; --hub-glow: rgba(168, 85, 247, 0.15); }
+.card-record  { --hub-accent: #f59e0b; --hub-glow: rgba(245, 158, 11, 0.15); }
 
 .hub-header :deep(.htw) { margin-top: 0.75rem; }
 .hub-main :deep(.noticing) { margin-bottom: 1.5rem; }

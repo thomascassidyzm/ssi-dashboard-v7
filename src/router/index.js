@@ -467,6 +467,21 @@ const routes = [
     meta: { title: 'Recording', public: true }
   },
 
+  // ============================================
+  // MY LINES — the signed-in recordist's own outstanding queue (2026-09-02)
+  // ============================================
+  // Tom: "think of an easier way to surface what needs recording by user login
+  // to popty". /r/:voiceId answers it for whoever holds the LINK; this answers
+  // it for whoever holds the LOGIN. Not public: the whole point is that the
+  // session says who you are, so GET /api/recording/mine can look your voice up
+  // (dashboard_users.voice_id ∪ language_recording_policy voices by email).
+  {
+    path: '/my-recording',
+    name: 'MyRecording',
+    component: () => import('../views/MyRecordingList.vue'),
+    meta: { title: 'My lines to record', requiresAuth: true }
+  },
+
   // Record Room — the OLD recording shell. Kept alive so nothing Aran already
   // holds 404s, but a link carrying ?podVoice= (every link the cast panel ever
   // produced) now lands on the one surface instead.
@@ -911,9 +926,13 @@ router.beforeEach(async (to, from, next) => {
     const courses = learner.value?.courses
     const courseList = Array.isArray(courses) ? courses : []
     const firstCourse = courseList[0] || null
-    // One course → straight into that room. Several (Catrin records North
-    // AND South) → the bare Record Room renders the room picker.
-    const homeRoom = courseList.length === 1 ? `/record/${firstCourse}` : { name: 'RecordRoom' }
+    // A recordist who signs in wants ONE thing: the lines they still owe. That
+    // is /my-recording, and it is now where a signed-in recorder lands and where
+    // they stay. The old per-course Record Room is still reachable and still
+    // theirs — it is simply no longer the answer to "what do I record next?".
+    const homeRoom = { name: 'MyRecording' }
+
+    if (to.name === 'MyRecording') return next()
 
     if (to.name !== 'RecordRoom') {
       return next(homeRoom)
