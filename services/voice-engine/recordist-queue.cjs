@@ -108,6 +108,7 @@ const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
 const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
+const { lineHasTake, countsAsRecorded } = require('./take-selection.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -545,6 +546,15 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       String(a.id).localeCompare(String(b.id))
   })
 
+  // WHICH VOICE ALREADY FILLS EACH LINE'S SLOT.
+  //
+  // A pod line's own FK is the estate's statement that this slot is filled, and
+  // by whom. It sees what a text lookup cannot: pod-0's rebuild on 2026-08-11
+  // added "…" pause cues to the sentences, so six of Aran's June takes are
+  // filed under the un-cued spelling of the very line they are linked to and
+  // already playing on. Read-only, voice-agnostic, computed once per language.
+  const slotVoiceById = await fetchClipVoices(db, sentences.map((s) => s.target_audio_id))
+
   const byBucket = new Map()
   // The minimal set's own arithmetic, so the screen can say how big the job is
   // in lines and minutes without re-deriving it from the rows it was handed.
@@ -575,6 +585,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // representative so a finished take can fill every course's pod.
       const rep = seenForGender.get(key)
       rep.duplicateOf.push({ sentenceId: s.id, podId: s.pod_id, courseCode: pod.course_code })
+      // One recording fills every copy, so a filled slot on ANY copy is that
+      // one recording — the collapse promise, read back.
+      const dupVoice = slotVoiceById.get(s.target_audio_id)
+      if (dupVoice && !rep.filledBy.includes(dupVoice)) rep.filledBy.push(dupVoice)
       // A want on ANY copy of this text wants the one recording that fills them
       // all — the collapse is by clip identity, so the flag has to collapse with
       // it or a want on cym_s's copy would be silently dropped.
@@ -592,6 +606,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       courseCode: pod.course_code,
       textNormalized: key,
       duplicateOf: [],
+      // The voice(s) already occupying this line's slot, via its own FK and
+      // every collapsed copy's. Empty when nothing is linked.
+      filledBy: slotVoiceById.get(s.target_audio_id) ? [slotVoiceById.get(s.target_audio_id)] : [],
       rerecordWanted: targetRerecordWanted(s),
     }
     seenForGender.set(key, line)
@@ -930,16 +947,11 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // words: a text-keyed check cannot tell the filled one from the empty one.
     // `seedFilledBy` carries the voice on every copy's FK, so the line is done
     // only when EVERY copy this take would fill is filled, by THIS voice.
-    const hasTake = line.kind === 'seed'
-      ? (line.seedFilledBy || []).length > 0 &&
-        (line.seedFilledBy || []).every((v) => v && recordist.spellings.includes(v))
-      // Both conventions on both sides — the queue's text and the stored key are
-      // each widened, so neither spelling of the same sentence can hide the other.
-      : audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))
-    // A wanted line is outstanding even though a take exists. The take is not
-    // touched — it stays linked and playable, and the recordist can A/B it on
-    // this very page — it simply stops counting as done.
-    const isRecorded = hasTake && !line.rerecordWanted
+    // BOTH questions live in take-selection.cjs, and only there: "is there a
+    // take of this line by this voice" and "does that take count as done".
+    // Tom's pending ruling on unaccepted takes is a change to the second one.
+    const hasTake = lineHasTake(line, { recordedKeys, spellings: recordist.spellings })
+    const isRecorded = countsAsRecorded(line, hasTake)
     if (isRecorded) recorded += 1
     if (!isRecorded || includeRecorded) {
       lines.push({
@@ -1004,6 +1016,27 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     quarry: language.quarry || null,
     courses: language.courses,
   }
+}
+
+/**
+ * voice_id behind each of these clip ids, as Map<audioId, voiceId>.
+ *
+ * Chunked because PostgREST puts the id list in the URL. Ids that no longer
+ * resolve are simply absent — a dangling FK means the slot is not filled.
+ */
+async function fetchClipVoices(db, audioIds) {
+  const ids = [...new Set((audioIds || []).filter(Boolean))]
+  const out = new Map()
+  const CHUNK = 200
+  for (let i = 0; i < ids.length; i += CHUNK) {
+    const { data, error } = await db
+      .from('course_audio')
+      .select('id, voice_id')
+      .in('id', ids.slice(i, i + CHUNK))
+    if (error) throw new Error(`clip voice lookup failed: ${error.message}`)
+    for (const row of data || []) out.set(row.id, row.voice_id)
+  }
+  return out
 }
 
 /** Page through listening_pod_sentences — PostgREST caps a single read at 1000. */
