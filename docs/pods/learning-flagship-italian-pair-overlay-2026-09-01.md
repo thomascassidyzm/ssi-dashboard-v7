@@ -872,3 +872,336 @@ loanword is honest to how they talk; Aran may prefer it unborrowed.
 wrongness a verb-family where English juggles "wrong answer / miss / failure", so the two
 credos (*informazione sulla domanda / un'esperienza di un bambino*) sit on one clean root.
 Taste flags: *grande notizia* for "film at eleven"; *gradino di casa* for "doorstep".
+
+### Chapter 10 — *Il pub*
+
+| | English | Italiano |
+|---|---|---|
+| TOM | Communities, then. And I owe you a pizza from two nights ago. | Le comunità, allora. E ti devo una pizza da due sere fa. |
+| ARAN | You do. But I get to earn it with a story first, and the story proves nothing— | Sì che me la devi. Ma prima me la guadagno con una storia, e la storia non dimostra niente— |
+| TOM | —lost your foot in that river, I know. Accept it anyway. | —hai perso il piede in quel fiume, lo so. Accettala lo stesso. |
+| ARAN | Always. So: Jeremy Vine. He'd got himself in hot water — a Twitter storm about Welsh, mostly a misunderstanding — and I went down to London expecting the crews to be bracing for the angry Welshman. Instead, every single person I was introduced to — editors, producers, camera people — had prepped a word or two of Welsh. Each of them. Badly, with effort, in the wrong order. And I stood there receiving it, and something in me went: oh no. We were wrong. | Sempre. Allora: Jeremy Vine. Si era messo nei guai — una tempesta su Twitter sul gallese, in gran parte un malinteso — e io sono sceso a Londra aspettandomi che le troupe si stessero preparando al gallese arrabbiato. Invece, ogni singola persona che mi hanno presentato — editor, produttori, gente delle telecamere — si era preparata una parola o due di gallese. Ognuno di loro. Male, con fatica, nell'ordine sbagliato. E io stavo lì a ricevere, e qualcosa dentro di me ha fatto: oh no. Ci sbagliavamo. |
+| TOM | Wrong about what, exactly — say the old position. | Sbagliavate su cosa, esattamente — di' la vecchia posizione. |
+| ARAN | The old position was the language-activist reflex: three words of Welsh is classic tokenism, an empty gesture, to hell with you. We used to laugh about it. And we were utterly wrong. Every one of those people, with their two words, formed a connection that would not otherwise have existed — instantly, on a plate, and it required them to have learned nothing else. | La vecchia posizione era il riflesso dell'attivista della lingua: tre parole di gallese sono tokenismo classico, un gesto vuoto, andate al diavolo. Ci ridevamo sopra. E ci sbagliavamo completamente. Ognuna di quelle persone, con le sue due parole, ha creato un legame che altrimenti non ci sarebbe stato — all'istante, servito su un piatto, e non hanno dovuto imparare nient'altro. |
+| TOM | And then you taught him the sentence. | E poi gli hai insegnato la frase. |
+| ARAN | Seventy per cent of a sentence. I want to learn to speak Welsh today, because — and the producers are making cut-throat signs at me because I will not leave the studio until he's finished it, and he never finished it. Seventy per cent. | Il settanta per cento di una frase. Voglio imparare a parlare gallese oggi, perché — e i produttori mi fanno il gesto di tagliarsi la gola perché io non voglio uscire dallo studio finché non l'ha finita, e lui non l'ha finita mai. Il settanta per cento. |
+| TOM | And then? | E poi? |
+| ARAN | The part that still stops me. That was a year and a half ago, and he hasn't had a single guest on since then slagging off the language. Not one booking. Because now, when someone rings in with "they're all bastards, let me tell my story", his filter goes — really? Can you back that up? Two extra questions. That's all a worldview is, operationally. Two extra questions at the door. | La parte che ancora mi ferma. Era un anno e mezzo fa, e da allora non ha avuto in trasmissione nemmeno un ospite che parlasse male della lingua. Nemmeno una prenotazione. Perché adesso, quando qualcuno telefona con «sono tutti bastardi, fatemi raccontare la mia storia», il suo filtro fa — davvero? Me lo puoi dimostrare? Due domande in più. Un'intera visione del mondo, in pratica, è tutta lì. Due domande in più alla porta. |
+| TOM | So look at what you're describing, priced. Seventy per cent of one sentence — call it an hour of effort, all in. And it bought eighteen months of changed editorial behaviour on a platform with millions of listeners, and it's still paying. That's not communication. That's value created once and never destroyed — it just keeps moving. It's the best specimen I own of the thing I keep trying to tell economists. | Allora guarda cosa stai descrivendo, prezzato. Il settanta per cento di una frase — diciamo un'ora di fatica, tutto compreso. E ha comprato diciotto mesi di comportamento editoriale cambiato su una piattaforma con milioni di ascoltatori, e sta ancora pagando. Quella non è comunicazione. È valore creato una volta e mai distrutto — continua solo a muoversi. È il miglior esemplare che possiedo della cosa che continuo a provare a dire agli economisti. |
+| ARAN | And you can aim it. That's the part that scales: twenty or thirty opinion formers in London, one sentence each, and the whole media conversation about Wales changes. Or the general form — where there's conflict and distrust, teach group A one sentence in the language of group B, and group B one sentence in the language of group A, and you've probably got a significant dampening effect immediately. Real emotional connections. One sentence each way. | E puoi puntarlo. È quella la parte che scala: venti o trenta persone che formano l'opinione a Londra, una frase a testa, e tutta la conversazione dei media sul Galles cambia. Oppure la forma generale — dove c'è conflitto e sfiducia, insegna al gruppo A una frase nella lingua del gruppo B, e al gruppo B una frase nella lingua del gruppo A, e probabilmente hai subito un effetto smorzante significativo. Legami emotivi veri. Una frase per parte. |
+| TOM | Which no fluency programme would ever have bought, at any budget. | Cosa che nessun programma di fluenza avrebbe mai comprato, a nessun budget. |
+| ARAN | Right — and before I cash your pizza, a detour, because it explains why Vine had me on at all. Detour. Flagged. | Giusto — e prima di incassare la tua pizza, una deviazione, perché spiega perché Vine mi ha invitato, tanto per cominciare. Deviazione. Con la bandierina. |
+| TOM | Clock's running. | Il tempo corre. |
+| ARAN | The pub myth. He'd had a guest with the hoary old chestnut: I walked into a pub in Wales and they all stopped speaking English and switched to Welsh about me. The myth is immortal because it's a confirmation-bias machine. Bilinguals in casual settings code-switch constantly. A monoglot walks in, hears the word "fridge" float past, and his brain files the whole conversation as English. Then he listens properly, hears it's Welsh, and concludes: they've changed languages because I'm here. | Il mito del pub. Aveva avuto un ospite con la solita vecchia storia: sono entrato in un pub in Galles e hanno smesso tutti di parlare inglese e sono passati al gallese per colpa mia. Il mito è immortale perché è una macchina da bias di conferma. I bilingui, in contesti informali, cambiano lingua in continuazione. Un monoglotta entra, sente la parola «fridge» che gli passa accanto, e il suo cervello archivia tutta la conversazione come inglese. Poi ascolta come si deve, sente che è gallese, e conclude: hanno cambiato lingua perché ci sono io. |
+| TOM | And how did they know? | E loro come lo sapevano? |
+| ARAN | THAT'S the question he never asks! What was the magical instrument that detected him before the door opened? Was he wearing his I-don't-speak-Welsh t-shirt? There aren't any of those. And your relationship with a person tends to be a linguistic relationship — parents and kids who both speak fluent Welsh will still speak English to each other forever if that's how they started. Nobody switches AT you. The whole myth needs Welsh to be a conspiracy rather than a language. | È QUELLA la domanda che non fa mai! Qual era lo strumento magico che l'ha rilevato prima che si aprisse la porta? Portava la maglietta «non parlo gallese»? Non ne esistono. E il rapporto che hai con una persona tende a essere un rapporto linguistico — genitori e figli che parlano tutti e due un gallese perfetto continueranno a parlarsi in inglese per sempre, se hanno cominciato così. Nessuno cambia lingua CONTRO di te. Tutto il mito ha bisogno che il gallese sia una cospirazione invece che una lingua. |
+| TOM | Detour returned? | Deviazione rientrata? |
+| ARAN | Returned. Forty seconds over budget, worth every one. The point of it: one live myth, in one influential head, cost the language more than a thousand learners could repair — and one sentence, spoken with effort, retired it. That's the exchange rate we're dealing in. | Rientrata. Quaranta secondi oltre il budget, e ne valeva ognuno. Il punto: un mito vivo, in una testa influente, è costato alla lingua più di quanto mille studenti potessero riparare — e una frase, detta con fatica, l'ha mandato in pensione. È questo il tasso di cambio con cui abbiamo a che fare. |
+| TOM | So now the groups, because everything so far is one person's sentence. And I know this one's a wound, so I'll ask it straight: come and run one. Five days, a group, Cambridge, my filter on the door. | E adesso i gruppi, perché finora è tutto la frase di una persona sola. E lo so che questa è una ferita, quindi te lo chiedo dritto: vieni a farne uno. Cinque giorni, un gruppo, Cambridge, il mio filtro alla porta. |
+| ARAN | No. | No. |
+| TOM | I'll fill the room with people you'd pick yourself. | Ti riempio la stanza di gente che sceglieresti tu. |
+| ARAN | Still no — and here's the reason. One on one, I can guarantee the experience: whatever the working memory or the nerves, I can calibrate, and they leave taller. With a group, the learning isn't the risk — the FORMATION is. Four people, five days, a bed and breakfast in rural Wales, and one of them just having a couple of bad-tempered days — not even a bad person — and every drop of it lands on the learning of the other three. | Ancora no — ed ecco la ragione. Uno a uno, posso garantire l'esperienza: qualunque sia la memoria di lavoro o il nervosismo, posso tarare, e se ne vanno più alti. Con un gruppo, il rischio non è l'apprendimento — è la FORMAZIONE. Quattro persone, cinque giorni, un bed and breakfast nel Galles rurale, e uno di loro che ha solo un paio di giornate storte — nemmeno una persona cattiva — e ogni goccia cade sull'apprendimento degli altri tre. |
+| TOM | The pairing story. Tell it, because it's the whole mechanism in one couple. | La storia della coppia. Raccontala, perché è tutto il meccanismo in una coppia sola. |
+| ARAN | One group. One genuinely negative person in it. And the most positive man in the room paired with her — deliberately, kindly, to encourage her, I watched him decide to do it. By the end of the session he was as negative as she was. It went the wrong way down the wire. | Un gruppo. Dentro, una persona davvero negativa. E l'uomo più positivo della stanza si è messo in coppia con lei — apposta, con gentilezza, per incoraggiarla, l'ho guardato decidere di farlo. Alla fine della sessione era negativo quanto lei. È andata dal verso sbagliato lungo il filo. |
+| TOM | That's literally how cancer works. | È letteralmente così che funziona il cancro. |
+| ARAN | That is literally how cancer works. And it's why I stopped — not because groups don't work. The opposite, and this is what makes it hurt: solve the formation problem and a group is orders of magnitude more powerful than anything I can do alone. | È letteralmente così che funziona il cancro. Ed è per questo che ho smesso — non perché i gruppi non funzionino. Il contrario, ed è questo che fa male: risolvi il problema della formazione e un gruppo è più potente di ordini di grandezza di qualunque cosa possa fare io da solo. |
+| TOM | Say the afterwards part. | Di' la parte del dopo. |
+| ARAN | The group achieves communicative confidence TOGETHER, and then forever, when they bump into each other at the pub — a little bit of this language, out it comes, no appointment needed. The practice-partner problem, the great gear-change failure of every solo learner, just doesn't exist for them. | Il gruppo raggiunge la sicurezza comunicativa INSIEME, e poi per sempre, quando si incontrano per caso al pub — un po' di questa lingua, e salta fuori, senza bisogno di appuntamento. Il problema del compagno di pratica, il grande fallimento del cambio di marcia di chiunque impari da solo, per loro semplicemente non esiste. |
+| TOM | Because they didn't learn a language. They became a place where it's spoken. | Perché non hanno imparato una lingua. Sono diventati un posto dove la si parla. |
+| ARAN | And your road trip thing is the right container for it — I've come round on that completely. Flexible, temporary, bonds you can't buy, and crashes. Actual crashes, and the crashes are load-bearing: nobody on that trip is getting any practice at being alive with other humans anywhere else in their week. The algorithm has us siloed with people who already agree with us. A learning road trip is the antidote sold as a holiday. | E la tua cosa del viaggio in macchina è il contenitore giusto per questo — su quello ho cambiato idea completamente. Flessibile, temporaneo, legami che non si possono comprare, e incidenti. Incidenti veri, e gli incidenti sono portanti: nessuno, in quel viaggio, si sta facendo pratica a stare vivo con altri esseri umani da nessun'altra parte della sua settimana. L'algoritmo ci tiene in silos con chi è già d'accordo con noi. Un viaggio in macchina per imparare è l'antidoto venduto come vacanza. |
+| TOM | Then here's the lift, and it's the pizza. Justice holds because people keep agreeing to hold it — two children, one pizza, the agreement is the floor. Now scale it. A community IS people who keep agreeing to hold things — that's all it is, a standing pattern of held agreements. Which means a community can LEARN: it can come to hold a distinction none of its members needed to hold alone. | Allora ecco il sollevamento, ed è la pizza. La giustizia tiene perché la gente continua a essere d'accordo di tenerla — due bambini, una pizza, l'accordo è il pavimento. Adesso portala su scala. Una comunità È gente che continua a essere d'accordo di tenere delle cose — è tutto lì, un pattern stabile di accordi tenuti. Il che vuol dire che una comunità può IMPARARE: può arrivare a tenere una distinzione che nessuno dei suoi membri aveva bisogno di tenere da solo. |
+| ARAN | Vine's newsroom. | La redazione di Vine. |
+| TOM | Owns a filter now. The town that learns group B's sentence owns a rung. And if a community is a learner, everything we said all evening applies one level up — it has a budget, it has whale song it can't hear yet, it has a bottom rung you have to find, and there's a least-time path THROUGH a community the same as through a child. Same functional. Two scales. Learner-seconds and community-hours. | Adesso possiede un filtro. La città che impara la frase del gruppo B possiede un piolo. E se una comunità è qualcuno che impara, tutto quello che abbiamo detto per tutta la sera si applica un livello più su — ha un budget, ha un canto delle balene che non riesce ancora a sentire, ha un piolo più basso che devi trovare, e c'è un sentiero di tempo minimo ATTRAVERSO una comunità esattamente come attraverso un bambino. Stesso funzionale. Due scale. Secondi-di-chi-impara e ore-di-comunità. |
+| ARAN | A community is a learner. Say it like that, flat, because it's better flat. | Una comunità è qualcuno che impara. Dilla così, piatta, perché è meglio piatta. |
+| TOM | A community is a learner. | Una comunità è qualcuno che impara. |
+| ARAN | And nobody in development or education talks like that. They talk about delivering programmes TO communities — pallets of curriculum off the back of a lorry. Nobody asks what the community can currently hear. | E nessuno, nello sviluppo o nell'istruzione, parla così. Parlano di consegnare programmi ALLE comunità — bancali di programma giù dal camion. Nessuno chiede cosa riesce a sentire adesso la comunità. |
+| TOM | So pitch it. You're in front of a town council — Gwynedd, Cambridge, anywhere — thirty seconds, and you can't say "complex adaptive system" or they'll have you removed. | Allora vendila. Sei davanti a un consiglio comunale — Gwynedd, Cambridge, dove vuoi — trenta secondi, e non puoi dire «sistema adattivo complesso» o ti fanno portare via. |
+| ARAN | Councillors. I'm not asking you for money and I'm not teaching your residents Spanish. I'll show you what your town can do that it doesn't know it can do — and I'll prove it in an hour, with one sentence, at the point of maximum grumpiness. Give me your most sceptical councillor, right now. If nothing happens in this room that surprises you, I'll leave. I'm giving you my personal guarantee, and I've never once had to pay out on it. | Consiglieri. Non vi sto chiedendo soldi e non insegnerò lo spagnolo ai vostri residenti. Vi faccio vedere cosa sa fare la vostra città che non sa di saper fare — e ve lo dimostro in un'ora, con una frase, nel punto di massima scontrosità. Datemi il vostro consigliere più scettico, adesso. Se in questa stanza non succede niente che vi sorprenda, me ne vado. Vi do la mia garanzia personale, e non ho mai dovuto pagarla, nemmeno una volta. |
+| TOM | And the guarantee is the road trip trick again — they're not trusting the method, they're trusting you. | E la garanzia è di nuovo il trucco del viaggio in macchina — non si stanno fidando del metodo, si stanno fidando di te. |
+| ARAN | For the first hour. That's all trust is for. After that the thing works in the room, and the room does the rest — the room always does the rest. | Per la prima ora. La fiducia serve a questo. Dopo, la cosa funziona nella stanza, e il resto lo fa la stanza — il resto lo fa sempre la stanza. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| I owe you a pizza | ti devo una pizza | D | *dovere* ✓ ZUT (*mi devi una terza cosa*) |
+| you do | sì che me la devi | E | the do-ellipsis rebuilds as *sì che* + full clause + clitics |
+| lost your foot in that river / accept it anyway | hai perso il piede in quel fiume / accettala lo stesso | D | ZUT — Method Ch. 8 verbatim, person-shifted; the co-owned line lands on its own words ✓ |
+| he'd got himself in hot water | si era messo nei guai | I | the idiom re-grounds — *mettersi nei guai* |
+| expecting the crews to be bracing | aspettandomi che le troupe si stessero preparando | I | ***aspettarsi*** — the expect-arm of the *esperar* unbundling, + imperfect subj + stare-gerund |
+| every single person I was introduced to | ogni singola persona che mi hanno presentato | I | passive → impersonal 3pl ✓ |
+| badly, with effort, in the wrong order | male, con fatica, nell'ordine sbagliato | D | ZUT — Method Ch. 3's triple, verbatim ✓ |
+| something in me went: oh no | qualcosa dentro di me ha fatto: oh no | I | quotative go → *fare* — the fare-support again |
+| we were wrong / utterly wrong | ci sbagliavamo / ci sbagliavamo completamente | D | ZUT — Method Ch. 3 verbatim ✓ |
+| to hell with you | andate al diavolo | D | |
+| we used to laugh about it | ci ridevamo sopra | D | ZUT — Method Ch. 3 verbatim ✓ |
+| formed a connection that would not otherwise have existed | ha creato un legame che altrimenti non ci sarebbe stato | D | ZUT — Method Ch. 3 verbatim ✓ |
+| until he's finished it, and he never finished it | finché non l'ha finita, e lui non l'ha finita mai | D | *finché non* ✓; agreement *finita* ×2 |
+| he hasn't had a single guest on since then | da allora non ha avuto in trasmissione nemmeno un ospite | D | *da allora* — the duration remap; *nemmeno* ✓ |
+| slagging off the language | che parlasse male della lingua | I | imperfect subjunctive in the relative — the mood the English gerund hides |
+| that's all a worldview is | un'intera visione del mondo è tutta lì | D | *tutta lì* ✓ the verdict-closer |
+| call it an hour of effort, all in | diciamo un'ora di fatica, tutto compreso | D | *fatica* ✓ |
+| it just keeps moving | continua solo a muoversi | D | *continuare a* ✓ |
+| one sentence each | una frase a testa | D | *a testa* ✓ |
+| before I cash your pizza | prima di incassare la tua pizza | D | *incassare* ✓ ZUT Ch. 6 |
+| clock's running | il tempo corre | D | ZUT — Method Ch. 5 verbatim ✓ (the detour is clocked in both pods with the same words) |
+| the hoary old chestnut | la solita vecchia storia | I | the idiom has no Italian tree in it — taste item |
+| switched to Welsh about me | sono passati al gallese per colpa mia | I | about-me-the-victim → *per colpa mia* — *colpa* ✓ |
+| a confirmation-bias machine | una macchina da bias di conferma | D | the *da*-of-type ✓; *bias* the loanword Italian actually uses |
+| hears the word "fridge" float past | sente la parola «fridge» che gli passa accanto | I | *sentire* ✓ + the *che*-progressive + dative *gli* |
+| because I'm here | perché ci sono io | I | locative *ci* + stressed *io* — six English words into three Italian machines |
+| how did they know? | e loro come lo sapevano? | D | imperfect *sapevano* — knowing-state; **NN:** the *supieron/sabían* pretérito trap has no Italian purchase |
+| there aren't any of those | non ne esistono | I | *ne* ✓ |
+| who both speak fluent Welsh | che parlano tutti e due un gallese perfetto | D | floated *tutti e due* ✓; "fluent" again dodged into *perfetto* — consistent with Ch. 6's *parlare bene* ruling |
+| nobody switches AT you | nessuno cambia lingua CONTRO di te | I | the hostile-AT → *contro di* |
+| needs Welsh to be a conspiracy | ha bisogno che il gallese sia una cospirazione | D | have-need + *che* + subj ✓ S3 |
+| worth every one | e ne valeva ognuno | I | *valere* + *ne* ✓ |
+| more than a thousand learners could repair | più di quanto mille studenti potessero riparare | D | *di quanto* + imperfect subjunctive |
+| retired it | l'ha mandato in pensione | I | retire-a-myth → *mandare in pensione* — the causative-flavoured idiom |
+| the exchange rate we're dealing in | il tasso di cambio con cui abbiamo a che fare | D | rate-of-exchange = *tasso* (money) against rate-of-learning = *ritmo* (Ch. 3) — two knowns, two forms, split noted |
+| come and run one | vieni a farne uno | I | *ne* ✓; run-a-group → *fare* |
+| whatever the working memory or the nerves | qualunque sia la memoria di lavoro o il nervosismo | D | ZUT — Method Ch. 8's *qualunque sia la stanza* frame ✓ |
+| they leave taller | se ne vanno più alti | I | ***andarsene*** — the pronominal leave-verb, first outing |
+| a couple of bad-tempered days | un paio di giornate storte | D | ZUT — Method Ch. 8 verbatim ✓ |
+| tell it | raccontala | D | tell-a-story + object → *raccontare* — distinct known from "Tell me." (*Dimmi.*), no collision ✓ |
+| paired with her. on purpose. | si è messo in coppia con lei. apposta. | D | ZUT — Method Ch. 8 verbatim ✓ |
+| he was as negative as she was | era negativo quanto lei | D | ZUT — *quanto lei*, Method Ch. 8 verbatim ✓ |
+| that's literally how cancer works | è letteralmente così che funziona il cancro | D | ZUT — Method Ch. 8 verbatim ✓ |
+| not because groups don't work | non perché i gruppi non funzionino | D | *non perché* + subj — **NN anchor:** *no porque funcionen* matches the mood |
+| orders of magnitude more powerful | più potente di ordini di grandezza | D | ZUT — Method Ch. 8 verbatim ✓ |
+| out it comes | e salta fuori | D | *saltare fuori* ✓ ZUT Ch. 4 |
+| every solo learner | chiunque impari da solo | D | *chiunque* + subj ✓ |
+| they became a place where it's spoken | sono diventati un posto dove la si parla | I | *diventare* ✓ + ***la si*** — the si-impersonal with an object clitic, a cluster Spanish nearly matches (*se la habla*) — anchor-with-order-trap |
+| I've come round on that completely | su quello ho cambiato idea completamente | I | come-round → *cambiare idea* |
+| bonds you can't buy | legami che non si possono comprare | D | *legami* ✓; *si possono* ✓ |
+| with people who already agree with us | con chi è già d'accordo con noi | D | ZUT — Method Ch. 12 verbatim ✓ |
+| here's the lift, and it's the pizza | ecco il sollevamento, ed è la pizza | D | *ecco* ✓; the pizza returns on its own words (*due bambini, una pizza*) ✓ |
+| that's all it is | è tutto lì | D | ✓ ledger |
+| none of its members needed to hold alone | nessuno dei suoi membri aveva bisogno di tenere da solo | D | have-need ✓; *tenere* the hold-verb, fifth outing — one frame end to end |
+| a community is a learner | una comunità è qualcuno che impara | I | **the register's finding:** English's noun "learner" has no Italian (or Spanish) noun — *chi impara / qualcuno che impara* is the only spoken form, so the pod's thesis line is structurally longer in Italian. Flagged as the chapter's one taste call |
+| pallets of curriculum off the back of a lorry | bancali di programma giù dal camion | D | |
+| so pitch it | allora vendila | D | pitch → *vendere* ✓ ZUT Ch. 4 (*te la venda*) |
+| or they'll have you removed | o ti fanno portare via | I | causative *fare* ✓ |
+| the pitch (t40) | consiglieri. non vi sto chiedendo soldi… | D | the council is ***voi*** (plural you), not formal *Lei* — the tu-world's one plural, flagged as the register decision it is |
+| what your town can do that it doesn't know it can do | cosa sa fare la vostra città che non sa di saper fare | I | *sapere* three ways in nine words — can-of-skill ×2 + know-of-fact; the chain is the line's engine |
+| if nothing happens that surprises you | se non succede niente che vi sorprenda | D | subj after negated antecedent ✓ |
+| I'll leave | me ne vado | I | *andarsene* ✓ present-for-future |
+| I've never once had to pay out on it | non ho mai dovuto pagarla, nemmeno una volta | D | *nemmeno una volta* ✓ |
+| they're trusting you | si stanno fidando di te | D | *fidarsi di* ✓ |
+| that's all trust is for | la fiducia serve a questo | I | the for-frame → *servire a* ✓ ledger |
+| the room does the rest | il resto lo fa la stanza | I | fronting + doubling ✓ — twice, verbatim, as the English repeats ✓ |
+
+**Chapter 10 verdict:** the most reuse-dense chapter — fourteen Method Pod forms land verbatim
+(the shared Part-2 substance surfacing in both pods), which is exactly what makes the callback
+fabric audible across the whole programme. The one structural finding: "learner" has no Italian
+noun, so *una comunità è qualcuno che impara* runs longer than its English — logged in the
+register as an absence that costs the thesis line its flatness.
+
+### Chapter 11 — *Lo strato sopra*
+
+| | English | Italiano |
+|---|---|---|
+| TOM | So. Small end done — two sessions of it. The deal was that we'd then be allowed the future. Say the order, because five years ago you corrected me on it and the dog ate the rest. | Ecco. Parte piccola: fatta — due sessioni intere. Il patto era che poi ci sarebbe stato permesso il futuro. Di' l'ordine, perché cinque anni fa mi hai corretto proprio su quello, e il resto se l'è mangiato il cane. |
+| ARAN | Education layer first. Not the currency — the currency is where we're going, and I still believe we'll get there, but it's not the first move. The first move is a full play for the education layer: every language through every language, then every subject. A full-stack remote school — you subscribe to the school, wherever you are, because obviously you do; it's the school. Reinvested so deep and so wide that attacking it is nobody's good idea. | Prima lo strato dell'istruzione. Non la moneta — la moneta è dove stiamo andando, e credo ancora che ci arriveremo, ma non è la prima mossa. La prima mossa è una giocata piena per lo strato dell'istruzione: ogni lingua attraverso ogni lingua, poi ogni materia. Una scuola remota completa — ti abboni alla scuola, ovunque tu sia, perché ovviamente ti abboni; è la scuola. Reinvestita così in profondità e così in largo che attaccarla non è una buona idea per nessuno. |
+| TOM | And above it? | E sopra? |
+| ARAN | The layer above builds itself, nearly. Someone learns physics with you and gets good — they now WANT terrific physics programmes, and they want their groups, and it's all inside the same subscription. There's a natural layer up there that becomes your entertainment layer, and you're producing it anyway. | Lo strato sopra si costruisce da solo, quasi. Qualcuno impara la fisica con te e diventa bravo — adesso VUOLE programmi di fisica fantastici, e vuole i suoi gruppi, ed è tutto dentro lo stesso abbonamento. Lassù c'è uno strato naturale che diventa il tuo strato di intrattenimento, e lo stai già producendo comunque. |
+| TOM | Which is where the Netflix collision happens. | Che è dove succede lo scontro con Netflix. |
+| ARAN | Where the Netflix collision fails to happen, if we're right. For the learner it's not competition — transcripts rather than subtitles, and that distinction is load-bearing: read the transcript first, then listen with your ears and nothing else. Condensations, synopses, the stepladder into real media. Netflix isn't taking any of that on. And a person who learned English inside your world has to actively decide to leave it for Netflix — first mover, held by value. | Dove lo scontro con Netflix non riesce a succedere, se abbiamo ragione noi. Per chi impara non è concorrenza — trascrizioni invece che sottotitoli, e quella distinzione è portante: prima leggi la trascrizione, poi ascolti con le orecchie e basta. Condensazioni, riassunti, la scaletta dentro i media veri. Netflix non si sta prendendo niente di tutto questo. E una persona che ha imparato l'inglese dentro il tuo mondo deve decidere attivamente di andarsene per Netflix — primo arrivato, tenuto dal valore. |
+| TOM | And the content itself tilts good, which sounds naive and isn't. | E il contenuto stesso pende verso il buono, che suona ingenuo e non lo è. |
+| ARAN | It's a structural fact, not a hope. It is genuinely hard to write a script encouraging people to hate other people — it makes you look shitty, and you do that stuff behind closed doors, and when it does get out everyone hates it. Storytelling is such a human activity that it curves towards being kind to humans. So the layer pumps positivity by default — you'd have to work against the grain to make it do otherwise. | È un fatto strutturale, non una speranza. È sinceramente difficile scrivere un copione che incoraggi la gente a odiare altra gente — ti fa fare una figura di merda, e quella roba la fai dietro porte chiuse, e quando salta fuori la odiano tutti. Raccontare storie è un'attività così umana che curva verso l'essere gentili con gli umani. Quindi lo strato pompa positività di default — dovresti andare contropelo per fargli fare il contrario. |
+| TOM | Now the part where somebody listening says: lovely, and why are two men in a farmhouse planning a Netflix. Say the engine honestly, because we said it five years ago and I've never wanted to change a word. | Adesso la parte in cui qualcuno che ascolta dice: bellissimo, e perché due uomini in una fattoria stanno progettando una Netflix. Di' il motore onestamente, perché l'abbiamo detto cinque anni fa e non ho mai voluto cambiare una parola. |
+| ARAN | We're a language company. Loads of those. It's a tenner a month and it's extremely good value for a tenner a month — no lock-in tricks, no worker exploitation, no consumer exploitation. A pretty morally acceptable formula, and — because it scales — capable of extracting very large amounts of capital anyway. And the extraction is the point. The extraction device is where we get the capacity to start freeing up people's time. | Siamo un'azienda di lingue. Ce ne sono un sacco. Costa dieci sterline al mese e vale molto più di dieci sterline al mese — niente trucchi di lock-in, niente sfruttamento dei lavoratori, niente sfruttamento dei consumatori. Una formula moralmente abbastanza accettabile, e — siccome scala — capace comunque di estrarre quantità molto grandi di capitale. E l'estrazione è il punto. Il dispositivo di estrazione è da dove prendiamo la capacità di cominciare a liberare il tempo della gente. |
+| TOM | Which is the actual scarce resource. Everyone thinks the bottleneck is money or ideas. Cambridge taught me otherwise — fifteen people, university think-tank, genuinely brilliant, solving energy for the world, and the ten-year project went cold in two because every one of those fifteen was time-poor. Caught in the structure they were trying to fix. Meanwhile the same project with five thousand time-rich people in Gwynedd — which do you back? | Che è la vera risorsa scarsa. Tutti pensano che il collo di bottiglia siano i soldi o le idee. Cambridge mi ha insegnato il contrario — quindici persone, think-tank universitario, sinceramente brillanti, a risolvere l'energia per il mondo, e il progetto di dieci anni si è raffreddato in due perché ognuna di quelle quindici era povera di tempo. Intrappolate nella struttura che provavano ad aggiustare. Intanto lo stesso progetto con cinquemila persone ricche di tempo a Gwynedd — tu su quale scommetti? |
+| ARAN | And we've already started, at toy scale: ten people work for us, nobody does more than about twenty hours, everyone gets a full-time salary. Freed time. You fund an ignition event, the ignition event frees more time, the freed time funds the next ignition event — and somewhere in there it stops needing you and looks like a cascade. | E abbiamo già cominciato, su scala giocattolo: dieci persone lavorano per noi, nessuno fa più di venti ore circa, a tutti tocca uno stipendio pieno. Tempo liberato. Finanzi un evento di accensione, l'evento di accensione libera altro tempo, il tempo liberato finanzia l'evento di accensione dopo — e a un certo punto lì in mezzo smette di avere bisogno di te e ha l'aspetto di una cascata. |
+| TOM | The currency mechanics are on the old tape — demurrage, the refund taper, the council tax move — and the dog ate the ending, so tonight I'll spend one sentence on it and no more: solve for the thing that's consuming people's resources, and that thing is needing to work for currency. The rest is mechanism, and mechanism keeps. | La meccanica della moneta è sul vecchio nastro — il demurrage, il rimborso a scalare, la mossa della tassa comunale — e la fine se l'è mangiata il cane, quindi stasera ci spendo sopra una frase e non di più: risolvi per la cosa che sta consumando le risorse della gente, e quella cosa è il dover lavorare per la moneta. Il resto è meccanismo, e il meccanismo si conserva. |
+| ARAN | Agreed. One sentence and banked, and this time I'm not giving you the word to find it by. | D'accordo. Una frase e in banca, e stavolta non ti do la parola per ritrovarla. |
+| TOM | And the reason none of this is fantasy economics: scarcity is provably wrong by every metric that matters. We're not losing atoms of water. The sun's daily flux is absurd. The shortages are all in the plumbing, and plumbing is a solvable class of problem — the fight is only ever with whoever owns the current pipes. | E la ragione per cui niente di questo è economia fantastica: la scarsità è dimostrabilmente sbagliata su ogni metrica che conta. Non stiamo perdendo atomi d'acqua. Il flusso giornaliero del sole è assurdo. Le carenze stanno tutte nelle tubature, e le tubature sono una classe di problemi risolvibile — la lite è sempre e solo con chiunque possieda i tubi di adesso. |
+| ARAN | Which is why they'll reach for the legislature, and why the politics matters less than it looks like it should — because politics, as we knew it— | Ed è per questo che allungheranno le mani sul legislatore, e per questo la politica conta meno di quanto sembri che dovrebbe — perché la politica, come la conoscevamo— |
+| TOM | —is already dead. It just doesn't know it yet. | —è già morta. Solo che ancora non lo sa. |
+| ARAN | We both said that five years ago, more or less in unison, and I've seen nothing since to revive the patient. Does anyone still believe the elected structures have the CAPACITY for decisions at this complexity — never mind the intentions? The world got too complex for the instrument. You don't fight an instrument like that. You build the alternative and let it shrivel. | L'abbiamo detta tutti e due cinque anni fa, più o meno all'unisono, e da allora non ho visto niente che rianimasse il paziente. Qualcuno crede ancora che le strutture elette abbiano la CAPACITÀ per decisioni a questa complessità — lasciamo perdere le intenzioni? Il mondo è diventato troppo complesso per lo strumento. Uno strumento così non lo combatti. Costruisci l'alternativa e lo lasci appassire. |
+| TOM | And the money to build alternatives wants to be spent. Feeney — the man who gave away eight billion, in his own lifetime, and kept the flat in New York and finished poor. Deliberately. Because giving it away in real time, watching it work, turned out to be the good bit. There are more of him coming. Show a working ignition event and the co-funding walks in — it doesn't have to be all your own money and it never was. | E i soldi per costruire alternative vogliono essere spesi. Feeney — l'uomo che ha regalato otto miliardi, mentre era ancora vivo, e si è tenuto l'appartamento a New York ed è finito povero. Apposta. Perché regalarli in tempo reale, guardandoli lavorare, si è rivelato la parte bella. Ne stanno arrivando altri come lui. Fai vedere un evento di accensione che funziona e il co-finanziamento entra da solo — non devono essere tutti soldi tuoi, e non lo sono mai stati. |
+| ARAN | And schools, in this picture — I keep coming back to your line about them. | E le scuole, in questo quadro — continuo a tornare sulla tua frase su di loro. |
+| TOM | Maybe it's schools that don't have a future, exactly — universities extend to all ages, schools merge into them and become outreach, reaching down into communities. Multi-generational learning communities with the content made super-cheap and super-good underneath them. Which — notice — is your road trip and my pizza and the whole of last chapter wearing institutional clothes. | Forse sono le scuole a non avere un futuro, esattamente — le università si estendono a tutte le età, le scuole si fondono dentro di loro e diventano braccia sul territorio, che scendono nelle comunità. Comunità di apprendimento multigenerazionali con il contenuto fatto super-economico e super-buono sotto di loro. Che — guarda — è il tuo viaggio in macchina e la mia pizza e tutto il capitolo di prima vestiti con i vestiti delle istituzioni. |
+| ARAN | It is. The town that learns together. We keep arriving at the same building from different streets. | Lo è. La città che impara insieme. Continuiamo ad arrivare allo stesso palazzo da strade diverse. |
+| TOM | So let me walk back down the funnel, because we made a deal in the first ten minutes and I want to check we kept it. We were only allowed all this — the layers, the currency, the eight billion minds doing cool shit very, very quickly — if we did the smallest thing first. | Allora lascia che torni giù per l'imbuto, perché nei primi dieci minuti abbiamo fatto un patto e voglio controllare che l'abbiamo mantenuto. Tutto questo ci era permesso — gli strati, la moneta, gli otto miliardi di menti che fanno cose fighe molto, molto in fretta — solo se prima facevamo la cosa più piccola. |
+| ARAN | And did we? | E l'abbiamo fatta? |
+| TOM | The claim of the whole evening is that the tower actually rests there: one distinction, stabilising, on a signal that never stops being a signal. A community can hold one. A newsroom held one for eighteen months off seventy per cent of a sentence. Get the smallest thing right and every layer above it is engineering. Get it wrong and the tower is a warehouse for receipts — at planetary scale, with a subscription model. | L'affermazione di tutta la serata è che la torre poggia davvero lì: una distinzione, che si stabilizza, su un segnale che non smette mai di essere un segnale. Una comunità può tenerne una. Una redazione ne ha tenuta una per diciotto mesi con il settanta per cento di una frase. Fai giusta la cosa più piccola e ogni strato sopra è ingegneria. Falla sbagliata e la torre è un magazzino di ricevute — su scala planetaria, con un modello in abbonamento. |
+| ARAN | Warehouses for receipts. Still having it. | Magazzini di ricevute. Me la prendo ancora. |
+| TOM | It was always yours. And one more piece of housekeeping before the dog wakes up: the ledger. Read out what's still open, because I think the open items are the evening's actual product. | È sempre stata tua. E un ultimo pezzo di pulizie prima che il cane si svegli: il registro. Leggi ad alta voce cosa è ancora aperto, perché penso che le voci aperte siano il vero prodotto della serata. |
+| ARAN | The ledger, then. One: the name — when it's bought. Telemetry pending; we both still expect to win, which is the healthy kind of pending. Two: your theory's promise — effort or elapsed, which axis; the caveat travels but the question didn't close. Three: the repair budget — unwritten, and I have it minuted that it's unwritten. Four: the wrong answer — ladder or assembly, information or experience. | Il registro, allora. Uno: il nome — quando si compra. Telemetria in sospeso; tutti e due ci aspettiamo ancora di vincere, che è il tipo sano di sospeso. Due: la promessa della tua teoria — sforzo o trascorso, quale asse; l'avvertenza viaggia ma la domanda non si è chiusa. Tre: il budget di riparazione — non scritto, e ho messo a verbale che non è scritto. Quattro: lo sbaglio — scala o assemblaggio, informazione o esperienza. |
+| TOM | And four stands. Not pending — standing. There's no instrument coming for it, because it's a selection, and we're the selectors, and we selected differently. | E la quattro resta in piedi. Non in sospeso — in piedi. Non sta arrivando nessuno strumento per lei, perché è una selezione, e i selettori siamo noi, e abbiamo selezionato in modo diverso. |
+| ARAN | Four open, none fudged. That's a good evening. That might be the definition of a good evening. | Quattro aperte, nessuna truccata. È una bella serata. Forse è la definizione di una bella serata. |
+| TOM | It's the healthiest ledger we've ever had. And notice what buys it — there's nothing between us. No record, no rank, no reason either of us has to be right. Two people with nothing to hold over each other can afford to leave four things standing. Most rooms can't. Most classrooms can't, which might be half of what's wrong with them. | È il registro più sano che abbiamo mai avuto. E guarda cosa lo compra — tra di noi non c'è niente. Niente pagelle, niente gradi, nessuna ragione per cui uno dei due debba avere ragione. Due persone che non hanno niente da tenersi sopra la testa possono permettersi di lasciare quattro cose in piedi. Quasi nessuna stanza può. Quasi nessuna aula può, e forse è metà di quello che non va nelle aule. |
+| ARAN | The dog's asleep. | Il cane dorme. |
+| TOM | First time in five years she's let us finish. | La prima volta in cinque anni che ci lascia finire. |
+| ARAN | We haven't finished. We've got four open items and a currency you banked with no retrieval word. | Non abbiamo finito. Abbiamo quattro voci aperte e una moneta che hai messo in banca senza parola per ritrovarla. |
+| TOM | Part six, then. | Parte sei, allora. |
+| ARAN | Of four. | Di quattro. |
+| TOM | Of four. Naturally. Same time next lockdown. | Di quattro. Naturalmente. Alla stessa ora, al prossimo lockdown. |
+
+**The mapping:**
+
+| chunk | Italian | class | note |
+|---|---|---|---|
+| the dog ate the rest / the dog ate the ending | il resto se l'è mangiato il cane / la fine se l'è mangiata il cane | I | fronting + *mangiarsi* + agreement flipping with the object's gender — ZUT with Method Ch. 8's curve-eater, one idiom family ✓ |
+| we'd be allowed the future | ci sarebbe stato permesso il futuro | D | *è permesso* ✓ conditional past |
+| you subscribe to the school | ti abboni alla scuola | D | *abbonarsi* — the noun *abbonamento* (Ch. 3) conjugated ✓ one family |
+| because obviously you do | perché ovviamente ti abboni | E | the do-ellipsis rebuilds with the full verb ✓ |
+| gets good | diventa bravo | D | *diventare* ✓; **NN trap:** *bravo* = good-at — sp. *bravo* = fierce/angry; the praise-word is a false friend |
+| where the collision fails to happen | dove lo scontro non riesce a succedere | D | *riuscire* ✓ — even events fail with riuscire |
+| transcripts rather than subtitles | trascrizioni invece che sottotitoli | D | ZUT — Method Ch. 6's pair, verbatim ✓; *invece che* ✓ |
+| listen with your ears and nothing else | ascolti con le orecchie e basta | D | *e basta* ✓ |
+| first mover, held by value | primo arrivato, tenuto dal valore | I | first-mover re-grounds as *primo arrivato*; *tenere* ✓ |
+| tilts good | pende verso il buono | I | nominalised *il buono* ✓ the article machine |
+| which sounds naive and isn't | che suona ingenuo e non lo è | I | predicative *lo* ✓ |
+| it makes you look shitty | ti fa fare una figura di merda | I | causative *fare* + ***fare una figura*** — the figure-idiom Spanish builds as *quedar mal*: the quedar-void again |
+| when it does get out | quando salta fuori | D | *saltare fuori* ✓; the do-emphasis erases |
+| to make it do otherwise | per fargli fare il contrario | I | double *fare* — causative on the support verb |
+| loads of those | ce ne sono un sacco | I | *ce ne sono* ✓ ZUT Method Ch. 4 + *un sacco* ✓ |
+| a tenner a month | dieci sterline al mese | D | *al mese* ✓ the distributive article; the tenner stays sterling — deixis kept, they are British speakers |
+| everyone thinks the bottleneck is money | tutti pensano che il collo di bottiglia siano i soldi | D | *pensare che* + subj ✓ + plural copula agreement *siano* ✓; *soldi* ✓ |
+| went cold | si è raffreddato | D | ZUT — Method Ch. 8 verbatim ✓ |
+| time-poor / time-rich | povera di tempo / ricche di tempo | D | ZUT — *poveri di tempo* Method Ch. 8 ✓ + the *ricco di* mirror |
+| which do you back? | tu su quale scommetti? | D | *scommettere su* ✓ |
+| everyone gets a full-time salary | a tutti tocca uno stipendio pieno | I | *toccare a* ✓ the allotment frame again |
+| it stops needing you | smette di avere bisogno di te | D | *smettere di* ✓ + have-need ✓ |
+| looks like a cascade | ha l'aspetto di una cascata | I | the looks-like frame ✓ ZUT with Chs. 2/5 |
+| I'll spend one sentence on it | ci spendo sopra una frase | I | *ci…sopra* ✓ — seventh verb on the frame across the pair |
+| mechanism keeps | il meccanismo si conserva | I | intransitive keep → *conservarsi* |
+| we're not losing atoms of water | non stiamo perdendo atomi d'acqua | D | ZUT — Method Chs. 10/11 verbatim ✓ — the atoms line now lives in three chapters of two pods on identical words |
+| the shortages are all in the plumbing | le carenze stanno tutte nelle tubature | D | location-*stare* + floated *tutte* ✓ |
+| whoever owns the current pipes | chiunque possieda i tubi di adesso | D | subj ✓ |
+| matters less than it looks like it should | conta meno di quanto sembri che dovrebbe | D | *contare* ✓; *di quanto* + subj ✓ |
+| as we knew it | come la conoscevamo | D | *conoscere* — the know-a-thing arm; imperfect |
+| it just doesn't know it yet | solo che ancora non lo sa | D | *sapere* — the know-a-fact arm, one turn apart from *conoscere*: the split shown live ✓ |
+| nothing since to revive the patient | niente che rianimasse il paziente | D | imperfect subj + *ri-* ✓ |
+| never mind the intentions | lasciamo perdere le intenzioni | I | *lasciar perdere* — the lasciare family's idiom arm |
+| you don't fight an instrument like that | uno strumento così non lo combatti | I | fronting + doubling ✓ — the generic-you stays *tu* |
+| let it shrivel | lo lasci appassire | D | *lasciare* + inf ✓ |
+| in his own lifetime | mentre era ancora vivo | I | the noun dissolves into a clause |
+| kept the flat | si è tenuto l'appartamento | D | *tenersi* ✓ |
+| deliberately | apposta | D | ZUT — Method Ch. 8 ✓ |
+| turned out to be the good bit | si è rivelato la parte bella | D | *rivelarsi* |
+| there are more of him coming | ne stanno arrivando altri come lui | I | *ne* + *altri* — both splits in one clause ✓ |
+| it never was | non lo sono mai stati | I | predicative *lo* + plural agreement — the ellipsis at full machinery |
+| I keep coming back to your line | continuo a tornare sulla tua frase | D | ZUT — Ch. 3's *continuo a tornare* ✓ |
+| maybe it's schools that don't have a future | forse sono le scuole a non avere un futuro | I | the *è X a* cleft ✓ negated infinitive |
+| wearing institutional clothes | vestiti con i vestiti delle istituzioni | D | ZUT — Ch. 1's *vestita con i tuoi vestiti* ✓ the pod's own callback, same frame |
+| the same building from different streets | allo stesso palazzo da strade diverse | D | *palazzo/strade* — the Method Pod's founding metaphor closes the flagship, on the register's key false friend ✓ |
+| and did we? | e l'abbiamo fatta? | E | the do-ellipsis rebuilds with clitic + agreement ✓ |
+| a signal that never stops being a signal | un segnale che non smette mai di essere un segnale | D | ZUT — Ch. 1 verbatim ✓ the funnel walked back down on identical words |
+| a community can hold one | una comunità può tenerne una | I | *ne* ✓ |
+| get the smallest thing right / get it wrong | fai giusta la cosa più piccola / falla sbagliata | I | the get-X-right frame → *fare giusto/sbagliato* + agreement — minted pair, one frame |
+| warehouse for receipts | magazzino di ricevute | D | ZUT — Ch. 1 ✓ |
+| still having it | me la prendo ancora | D | ZUT — Ch. 1's *me la prendo* ✓ |
+| before the dog wakes up | prima che il cane si svegli | D | *prima che* + subj ✓ |
+| telemetry pending | telemetria in sospeso | D | *in sospeso* ✓ ZUT Method Ch. 10 (*conto in sospeso*) — pending and unfinished-business share one form, welcome convergence |
+| we both still expect to win | tutti e due ci aspettiamo ancora di vincere | D | ***aspettarsi di*** ✓ the expect-arm again |
+| and four stands. not pending — standing. | e la quattro resta in piedi. non in sospeso — in piedi. | D | *in piedi* ✓ ZUT Method Ch. 12 — the ledger line rests on the pause-refusal's own words, as designed |
+| no record, no rank | niente pagelle, niente gradi | D | *niente* + noun ✓; *pagella* — the school record-card, register-true |
+| nothing to hold over each other | niente da tenersi sopra la testa | I | the hold-over idiom re-grounds on *tenere* + *sopra* |
+| most rooms can't | quasi nessuna stanza può | I | most-can't inverts to *quasi nessuna…può* — negative-quantifier flip |
+| what's wrong with them | quello che non va nelle aule | I | wrongness → *non andare* — the *andare storto* family's plain arm |
+| she's let us finish | ci lascia finire | D | *lasciare* + inf ✓; the dog stays *lei* in the English and needs nothing in the Italian — pro-drop erases the pronoun question |
+| of four | di quattro | D | ZUT — Ch. 1's second turn is the pod's last-but-one ✓ |
+
+**Chapter 11 verdict:** the close walks the funnel down on letter-identical reuses of Chapter 1
+(*un segnale che non smette mai…*, *magazzino di ricevute*, *me la prendo*, *di quattro*), and
+the last callback of the whole programme — *allo stesso palazzo da strade diverse* — lands on
+the register's founding trap (*palazzo/palacio*), which no one planned and the pair of languages
+supplied for free.
+
+---
+
+## 3. The four classes — what the mapping did, in numbers
+
+Counted mechanically from §1–§2's mapping tables (same script and same caveat as the Method Pod
+overlay: chunks at conversation granularity, so the shape is robust and the third decimal is
+not) — **532 classified rows**:
+
+| class | rows | share |
+|---|---|---|
+| **deterministic** | 316 | 59% |
+| **inversion** | 202 | 38% |
+| **erasure** | 14 | 3% |
+| **split** | 0 | — (all six splits are the shared ledger's; none minted here) |
+
+Read against the Method Pod overlay's 70 / 26 / 3 / 1: the flagship runs a few points heavier
+on inversion, because authored Italian leans into the spoken machines (fronting-with-doubling,
+the clitic clusters, *fare*-support) exactly where a hold has stress to carry — and because the
+mapping tables here row-ise the interesting chunks and absorb long deterministic stretches, so
+the D share is understated relative to the Method Pod's exhaustive tables. The honest sentence:
+**eng→ita at conversation granularity is deterministic wherever nothing is at stake and
+clitic-shaped wherever something is** — and neither of those is where a Spanish-shadowed speaker
+will err, which is the register's job.
+
+## 4. The splits, and the sweep
+
+This document mints no new splits beyond the shared ledger's (S1 so → quindi/allora/ecco ·
+S2 street → strada/via · S3 need → servire/avere bisogno · S4 tutti-e-N gender agreement ·
+S5 tutto qui/lì · S6 more → più/altro), and adds three **died-inside** records:
+
+- **"rate"** → *ritmo* (learning rate, Chs. 3/7) against *tasso* (exchange rate, Ch. 10) —
+  distinct carrying chunks, no free unit;
+- **"in a row"** → *di fila* (temporal) against *in fila* (spatial, Method Ch. 1);
+- **"can't"** → *non potere* (bare verdict) against *non riuscire a* (thwarted attempt) —
+  resolved at the carrying-chunk level in Ch. 3 and held document-wide;
+- **need-by / happen-by** → *per* / *entro* (Ch. 4 note, consistent with Method Ch. 12).
+
+**The sweep.** The same mechanical pass as the Method Pod overlay's, run over **both documents'
+mapping tables jointly** (they share one ledger, so the sweep must be joint): **968 mapped rows,
+958 distinct normalised English knowns, 0 divergent — the sweep is clean.** Every same-English
+chunk across the two documents maps to one Italian form; the three forks the audit found in the
+Method Pod's pre-existing Italian (F-A "Go on", F-B "Tell me", F-C pivot-"So") were corrected
+there before this document was authored against the shared ledger, so no fork was ever minted
+here.
+
+## 5. Where the curriculum relocates
+
+The flagship adds no new machinery class to the Method Pod overlay's §4 list — it *loads* the
+same twelve harder (the clitic system, fronting-with-doubling, participle agreement,
+dative-experiencer verbs, essere-auxiliaries, spoken subjunctive, stare, the causative,
+negative concord, the duration system, clefts, small machinery). New individual items worth a
+worn chunk of their own, found only here: ***dagliene / daglielo*** (imperative triple
+clusters, Chs. 2 and 7), ***ci si*** (impersonal + reflexive, Ch. 2), ***eccolo che*** (Ch. 2,
+Ch. 7), the ***andare*-passive of obligation** (*va spiegato*, Ch. 2), ***trovarsi a***
+(happen-to, Ch. 6), ***andarsene*** (Ch. 10), the ***venire* + dative of results** (*cosa ti
+viene*, Ch. 9), and the ***sia…sia*** correlative (Ch. 7).
+
+## 6. Decision candidates for Tom and Aran — one line each, answerable cold
+
+1. **(Aran) Register of the whole overlay:** *tu* throughout between the two speakers — confirm
+   (the default taken), or re-rule; the change is mechanical.
+2. **(Aran) The swearing dial:** *vaffanculo* (Ch. 6), *del cazzo* (Ch. 5), *figura di merda*
+   (Ch. 11) match the corpus's register per Tom's ruling; *porca miseria* holds the milder slot
+   at Ch. 5 t14 — keep the escalation as set, or flatten?
+3. **(Tom) The theory's name:** *least-time learning* kept in English (Ch. 6) — a product call,
+   not a translation call; ratify or name it in Italian.
+4. **(Aran) The thesis line:** *una comunità è qualcuno che impara* — Italian has no noun for
+   "learner"; accept the longer line, or coin (*un'imparante*?) — coinage not recommended.
+5. **(Aran) *shippare*** (Ch. 8) and *il pattern* (Ch. 1) — keep the loanwords their register
+   would use, or unborrow.
+6. **(Aran) Taste list, one look each:** *l'in-mezzo* (Chs. 1/2) · *pronte a tutto* (Ch. 1) ·
+   *come il prezzo del pesce* (Ch. 2) · *inudibile* (Ch. 3) · *ritmo* for rate (Chs. 3/7) ·
+   *grande notizia* for "film at eleven" (Ch. 9) · *gradino di casa* (Ch. 9) · *la solita
+   vecchia storia* (Ch. 10).
+7. **(Both) The pitch's addressee** (Ch. 10 t40): the council is *voi*, plural-you, inside a
+   *tu* pod — confirm, or push the pitch to *Lei*-register as an outsider-facing set piece.
+
+## 7. Explicit gaps
+
+- **Every Italian line here is authored by me from the canonical English — no native speaker
+  has read a word of it.** That is the document's standing condition, not a footnote: the
+  flagship had no Italian before today, and this is its first draft, DRAFT-FOR-ARAN throughout.
+- **The English was not touched.** No turn was found unmappable at any cut; no §7-grade
+  unmappability gap exists — the nearest cases (funnel wordplay "it's mostly a triangle",
+  "film at eleven", "un-say it"-adjacent jokes) all mapped with taste flags rather than gaps.
+- **No database query, no store write, no audio, nothing executed.** The zero-admission
+  machinery of the Method Pod has no counterpart here (the flagship is not admission-tracked,
+  by its own commission), so no canon word-list checks applied.
+- **The measurement instrument was not re-run on the Italian.** The English-side figures in
+  the flagship doc (§12 there) stand; Italian runs a few percent longer per turn, same caveat
+  the Method Pod carries.
+- **Class counts are counted over mapping tables that absorb uniform stretches** — stated in
+  §3; the flagship's D-share is understated by construction relative to the Method Pod's
+  exhaustive tables.
