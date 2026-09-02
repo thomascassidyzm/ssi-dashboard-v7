@@ -55,7 +55,10 @@ const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritan
  * already duplicates as a literal for the same reason — the two repos share a database,
  * not a module graph. If that list ever widens, widen this one in the same change.
  */
-const SERVING_POD_SLUGS = ['pod-1', 'pod-0']
+// The rule — which slugs the player serves, and how to name the learners at risk —
+// lives ONCE, in ./serving-slug.cjs, shared with the pod generator, its HTTP route and
+// pod-sync. This file composes clone-pod's own wording around it and nothing more.
+const { SERVING_POD_SLUGS, servingRefusal } = require('./serving-slug.cjs')
 
 /**
  * Would writing to this destination put a clone in front of learners? PURE, so it is
@@ -83,27 +86,14 @@ function serviceRefusal ({
 }) {
   // Not waivable by --serve-now: this one is about destroying work, not about learners.
   if (destRows > 0) return `${dstPodId} already holds ${destRows} sentence row(s); refusing to clone over it`
-  if (!SERVING_POD_SLUGS.includes(toSlug)) return null
-  // The resolver filters pod_type='core'; anything else on a serving slug is not served.
-  if (podType !== 'core') return null
-  if (serveNow) return null
-
-  const n = (v) => (v === null || v === undefined ? null : Number(v))
-  const onCourse = n(learnersOnCourse)
-  const onPod = n(learnersOnDestPod)
-  const who = onCourse === null || onPod === null
-    ? 'the learner count was UNAVAILABLE — refusing anyway, because a risk that cannot be measured is not a risk that has been cleared'
-    : onCourse === 0
-      ? '0 learners currently have progress on this course'
-      : `${onPod} of this course's ${onCourse} learners have progress on this pod`
-  return `${dstPodId} is a SERVING slug — ${toSlug} is one of ${SERVING_POD_SLUGS.join(', ')}, which is what the ` +
-    `player resolves by (packages/player-vue/src/composables/servedPod.ts). ` +
-    `The destination pod row ${destExists ? `already exists (visibility '${destVisibility}', which the resolver does not read)` : 'does not exist yet, and creating it is what starts the serving'}` +
-    ` and holds ${destRows} sentence row(s). ${who}. ` +
-    `Cloning here puts a working copy in front of them, and the align that follows this ` +
-    `tool would empty it underneath them. Clone to a parked slug instead (pod-0-unrecorded ` +
-    `is the convention), or pass --serve-now if serving this destination immediately is the ` +
-    `deliberate intent.`
+  return servingRefusal({
+    podId: dstPodId, slug: toSlug, podType, podExists: destExists, podVisibility: destVisibility,
+    rows: destRows, learnersOnCourse, learnersOnPod: learnersOnDestPod, serveNow,
+    action: 'Cloning here puts a working copy in front of them,',
+    harm: 'and the align that follows this tool would empty it underneath them.',
+    escape: '--serve-now',
+    remedy: 'Clone to a parked slug instead (pod-0-unrecorded is the convention)',
+  })
 }
 
 const arg = (n) => {

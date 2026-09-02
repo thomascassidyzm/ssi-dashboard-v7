@@ -366,6 +366,57 @@ async function assertNotGated(podId, { force = false, log = () => {} } = {}) {
   throw new Error(`REFUSING to generate ${podId}: ${detail}`)
 }
 
+/**
+ * REFUSE to generate onto a slug the player SERVES, unless serveNow says the operator
+ * means it (2026-09-02 — the third of the three doors job #93 enumerated and left open).
+ *
+ * WHY THIS AND NOT `visibility`. `upsertPodRow()` below reasons that a pod "is born held"
+ * and that nothing becomes learner-reachable merely by being created. That reasoning is
+ * VOID and has been all along: no learner consumer reads `listening_pods.visibility` —
+ * api/courses/[code]/bundle.ts says so in its own comment, and the resolver
+ * (packages/player-vue/src/composables/servedPod.ts) selects on `pod_type='core'` and
+ * `slug in ('pod-1','pod-0')` alone. So a core header row on a serving slug is SERVED
+ * the moment it exists, held or not, and creating one is the harm rather than the
+ * prelude to it. Tom's ruling, 2026-09-02: "do not let visibility stand in for a guard
+ * anywhere." The `visibility='held'` write stays — removing it is a separate decision
+ * nobody has made — but it is not, and never was, this guard.
+ *
+ * Runs BEFORE any write and before any model spend, alongside the other two refusals.
+ * The rule itself lives once, in tools/pods/serving-slug.cjs; the wording is composed in
+ * ./pod-generate-guard.cjs, which the HTTP route shares.
+ */
+async function assertNotServing(podId, { courseCode, podSlug, serveNow = false, log = () => {} } = {}) {
+  const { generationRefusal } = require('./pod-generate-guard.cjs')
+  const { data: pod } = await supabase
+    .from('listening_pods').select('id, pod_type, visibility').eq('id', podId).maybeSingle()
+  // The pod that does not exist yet will be created as pod_type 'core' — that is what
+  // upsertPodRow writes, unconditionally — so it is judged as core.
+  const podType = pod ? pod.pod_type : 'core'
+
+  const { count: rows } = await supabase
+    .from('listening_pod_sentences').select('id', { count: 'exact', head: true }).eq('pod_id', podId)
+
+  // Who is at risk. Read inside a try so a failure yields "unavailable", which the rule
+  // treats as a reason to refuse, never as a reason to allow.
+  let learnersOnCourse = null
+  let learnersOnPod = null
+  try {
+    const { data: state, error } = await supabase
+      .from('learner_pod_state').select('learner_id, sentence_id').eq('course_code', courseCode)
+    if (error) throw new Error(error.message)
+    learnersOnCourse = new Set((state || []).map(r => r.learner_id)).size
+    learnersOnPod = new Set((state || []).filter(r => String(r.sentence_id || '').startsWith(`${podId}:`)).map(r => r.learner_id)).size
+  } catch (e) {
+    log(`[${podId}] WARNING: learner_pod_state count failed (${e.message}) — the serving gate will treat the count as unavailable`)
+  }
+
+  const refusal = generationRefusal({
+    podId, slug: podSlug, podType, podExists: !!pod, podVisibility: pod ? pod.visibility : null,
+    rows: rows || 0, learnersOnCourse, learnersOnPod, serveNow,
+  })
+  if (refusal) throw new Error(`REFUSING to generate ${refusal}`)
+}
+
 /** Upsert the listening_pods header row (speakers + metadata). */
 async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canonicalScenes, knownLang, targetLang, ledger }) {
   // Voice-map keys must match the (localised) labels written on sentence rows —
@@ -401,13 +452,25 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
     updated_at: new Date().toISOString(),
   }
   // A POD IS BORN HELD (Tom, 2026-08-23). The column's DB default is 'live' so
-  // that the 110 pods that already existed keep behaving exactly as they did —
-  // but nothing should become learner-reachable merely by being CREATED, least
-  // of all a machine-written draft with no audio and no proofread. So the
-  // generator overrides the default on creation, and creation only: on a
+  // that the 110 pods that already existed keep behaving exactly as they did.
+  // The generator overrides the default on creation, and creation only: on a
   // regeneration `existing` is set and `visibility` is left out of the row
   // entirely, which means the upsert's UPDATE path never touches it. A live pod
   // stays live when you re-flex it; a held pod stays held.
+  //
+  // CORRECTION, 2026-09-02 — READ THIS BEFORE RELYING ON THE LINE BELOW. This
+  // comment used to claim that held-on-creation meant "nothing becomes
+  // learner-reachable merely by being CREATED". THAT IS NOT TRUE and was not true
+  // when it was written. NO LEARNER CONSUMER READS `listening_pods.visibility`:
+  // packages/player-vue/src/composables/servedPod.ts resolves on `pod_type='core'`
+  // and `slug in ('pod-1','pod-0')` alone, and api/courses/[code]/bundle.ts
+  // duplicates that literal and says so in its own comment ("Retiring a pod by
+  // setting visibility='held' did not reach this consumer, because nothing here
+  // reads visibility"). A held core pod on a serving slug is SERVED. So this write
+  // is a bookkeeping default and an operator-facing signal — it is NOT a guard, and
+  // Tom's ruling of 2026-09-02 is that visibility never stands in for one anywhere.
+  // What actually keeps a generation off learners is assertNotServing() above.
+  // The write itself stays: removing it is a separate decision nobody has made.
   //
   // Release is a human act through POST /api/admin/pods/:course/:slug/visibility.
   // Do not add a "…and set it live when it's finished" branch here.
@@ -530,7 +593,7 @@ async function updatePodSceneHashes(podId, hashes) {
  * @returns {Promise<{podId, courseCode, totalScenes, alreadyDone, generatedNow,
  *   remaining, more_remaining, cultureSource, warnings, scenesDone:number[]}>}
  */
-async function generatePodBatch({ courseCode, podSlug = 'pod-0', canonicalSlug = CANONICAL_LIVE_SLUG, force = false, mode, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
+async function generatePodBatch({ courseCode, podSlug = 'pod-0', canonicalSlug = CANONICAL_LIVE_SLUG, force = false, mode, serveNow = false, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
   const start = Date.now()
   const podId = `${courseCode}:${podSlug}`
   const course = await loadCourse(courseCode)
@@ -550,6 +613,9 @@ async function generatePodBatch({ courseCode, podSlug = 'pod-0', canonicalSlug =
   // ('full', 'sync', 'resume'), because sync is dispatched below.
   await assertNoForeignRowIds(podId, { force, log })
   await assertNotGated(podId, { force, log })
+  // NOT waivable by `force`. force says "overwrite this pod's content"; it has never
+  // said "and serve it to learners while you do". Only serveNow says that.
+  await assertNotServing(podId, { courseCode, podSlug, serveNow, log })
 
   // mode: 'full'  = clean rebuild (today's `force`: wipe + re-flex every scene)
   //       'sync'  = incremental: diff canonical vs the live pod, re-flex ONLY
@@ -746,26 +812,34 @@ async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', canonicalSlug
 
 module.exports = { generatePodBatch, generateScene, validateScene, parseLines, loadCanonicalScenes, loadCourse, buildPodGlossary, parseNameMap, localiseSpeakerLabel, relabelPodSpeakers }
 
-// CLI: node services/pod-dialogue-generator.cjs <courseCode> [--force|--sync|--relabel] [--max=N]
-//   --force    full rebuild (wipe + re-flex all)
-//   --sync     incremental: re-flex only canonical scenes that changed
-//   --relabel  repair-only: apply the stored ledger's name map to existing
-//              speaker labels (no re-flex, no audio touched)
+// CLI: node services/pod-dialogue-generator.cjs <courseCode> [--slug=<slug>] [--force|--sync|--relabel] [--max=N] [--serve-now]
+//   --slug=<s>   the pod to write. Defaults to pod-0 for compatibility, but pod-0 is a
+//                slug the player SERVES, so that default now refuses unless --serve-now.
+//   --force      full rebuild (wipe + re-flex all)
+//   --sync       incremental: re-flex only canonical scenes that changed
+//   --relabel    repair-only: apply the stored ledger's name map to existing
+//                speaker labels (no re-flex, no audio touched)
+//   --serve-now  YES, DELIBERATELY generate onto a slug learners are served. Not
+//                implied by --force: force says "overwrite the content", never "and
+//                serve it while you do".
 if (require.main === module) {
   require('dotenv').config()
   const courseCode = process.argv.find(a => !a.startsWith('--') && a.includes('_'))
   const force = process.argv.includes('--force')
+  const serveNow = process.argv.includes('--serve-now')
+  const slugArg = process.argv.find(a => a.startsWith('--slug='))
+  const podSlug = slugArg ? slugArg.slice(7) : undefined
   const mode = process.argv.includes('--sync') ? 'sync' : undefined
   const maxArg = process.argv.find(a => a.startsWith('--max='))
   const maxScenes = maxArg ? Number(maxArg.slice(6)) : Infinity
-  if (!courseCode) { console.error('usage: node services/pod-dialogue-generator.cjs <courseCode> [--force|--sync|--relabel] [--max=N]'); process.exit(1) }
+  if (!courseCode) { console.error('usage: node services/pod-dialogue-generator.cjs <courseCode> [--slug=<slug>] [--force|--sync|--relabel] [--max=N] [--serve-now]'); process.exit(1) }
   ;(async () => {
     if (process.argv.includes('--relabel')) {
       const r = await relabelPodSpeakers({ courseCode, log: (...a) => console.log(...a) })
       console.log('\nRESULT:', JSON.stringify(r, null, 1))
       return
     }
-    const r = await generatePodBatch({ courseCode, force, mode, maxScenes, log: (...a) => console.log(...a) })
+    const r = await generatePodBatch({ courseCode, ...(podSlug ? { podSlug } : {}), force, mode, serveNow, maxScenes, log: (...a) => console.log(...a) })
     console.log('\nRESULT:', JSON.stringify({ ...r, warnings: r.warnings.length }, null, 1))
     if (r.warnings.length) { console.log('\nwarnings:'); r.warnings.forEach(w => console.log('  - ' + w)) }
   })().catch(e => { console.error('FATAL:', e.message); process.exit(1) })

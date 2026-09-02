@@ -4683,22 +4683,25 @@ app.get('/api/pod-scripts/:courseCode', async (req, res) => {
 // Generated sentences have no audio yet, so they're a reviewable/editable DRAFT
 // until audio is run.
 // Refuses to overwrite a pod that already has audio unless { force: true }.
+//
+// THE SLUG HAS NO DEFAULT (2026-09-02). It used to read
+// `String(req.body?.slug || 'pod-0').trim()` — a caller could omit the single most
+// dangerous parameter and land on a slug the player serves for ~68 courses, with
+// force:true and mode:'full' in the same body wiping every sentence row first. Absent
+// or blank slug is now a 400, and a serving destination is refused by the generator
+// unless `serveNow: true` says the operator means it. Parsing and the refusal are pure
+// and tested in ./pod-generate-guard.cjs; the serving rule itself lives once, in
+// tools/pods/serving-slug.cjs, shared with clone-pod.
 app.post('/api/admin/pods/generate', async (req, res) => {
   if (!await requireAdmin(req, res)) return
-  const courseCode = String(req.body?.courseCode || '').trim()
-  // The per-course LISTENING pod to write. Not the canonical slate to read from:
-  // those were one value until 2026-09-01 and are now two (canonicalSlug below).
-  const slug = String(req.body?.slug || 'pod-0').trim()
-  const canonicalSlug = req.body?.canonicalSlug ? String(req.body.canonicalSlug).trim() : undefined
-  const force = req.body?.force === true
-  // mode: 'full' | 'sync' | 'resume'. 'sync' propagates a canonical edit
-  // surgically (re-flex only changed scenes, preserve the rest + its audio).
-  const mode = ['full', 'sync', 'resume'].includes(req.body?.mode) ? req.body.mode : undefined
-  if (!courseCode) return res.status(400).json({ error: 'courseCode required' })
+  const { parsePodGenerateRequest } = require('./pod-generate-guard.cjs')
+  const parsed = parsePodGenerateRequest(req.body)
+  if (parsed.error) return res.status(400).json({ error: parsed.error })
+  const { courseCode, slug, canonicalSlug, force, mode, serveNow } = parsed
   try {
     const podGenerator = require('./pod-dialogue-generator.cjs')
     const r = await podGenerator.generatePodBatch({
-      courseCode, podSlug: slug, canonicalSlug, force, mode,
+      courseCode, podSlug: slug, canonicalSlug, force, mode, serveNow,
       deadlineMs: 45_000, maxScenes: 4, // bounded per call; UI loops until more_remaining=false
       log: (m) => logger.info('[PodGen] ' + m),
     })
