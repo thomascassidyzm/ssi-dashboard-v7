@@ -116,7 +116,18 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
 
 .chunk-notes { padding: 2px 0 8px; }
 
+/* .chip lives in ScriptLabScriptView's SCOPED styles, so it does not reach a
+   child component's inner elements. The pill is restated here rather than
+   hoisted into script-rows.css, which CanonicalPodView also reads. */
 .notes-chip {
+  min-height: 32px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1.2;
+  color: var(--accent);
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
   display: inline-flex;
   flex-wrap: wrap;
   align-items: center;
@@ -124,6 +135,7 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
   text-align: left;
   cursor: pointer;
 }
+.notes-chip.on { background: color-mix(in srgb, var(--accent) 22%, transparent); }
 .chip-lead { color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; font-size: 10px; }
 .seg { color: var(--muted); }
 /* Split, inversion and erasure are 63 of 205 and are the whole reason to look. */
@@ -183,7 +195,7 @@ const dirty = computed(() => props.ed.isDirty(props.step, 'notes'))
   .chunk-table, .chunk-table tbody, .chunk-table tr, .chunk-table td { display: block; width: auto; }
   .chunk-table tr { padding: 6px 0; border-bottom: 1px solid color-mix(in srgb, var(--line) 55%, transparent); }
   .chunk-table td { border-bottom: 0; padding: 1px 0; }
-  .c-arrow { display: none; }
+  .chunk-table .c-arrow { display: none; }
   .c-target::before { content: '→ '; color: var(--faint); }
   .c-class { text-align: left; }
 }
