@@ -332,6 +332,14 @@ const sectionTabs = computed(() => {
         badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
       },
       { label: 'Users', to: '/users', active: isUsers.value },
+      {
+        // Human Recording (2026-09-02). The page existed and was reachable by
+        // URL only. No badge here on purpose: the page carries the counts, and
+        // a second place for them is a second place for them to disagree.
+        label: 'Recording',
+        to: '/admin/recording',
+        active: route.path.startsWith('/admin/recording')
+      },
       { label: 'Stock-take', to: '/stocktake', active: false }
     ]
   }
