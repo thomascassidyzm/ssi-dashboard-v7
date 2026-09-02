@@ -1,0 +1,589 @@
+{
+ "courseCode": "cym_n_for_eng",
+ "language": "cym",
+ "checkedAt": "2026-09-02T23:18:28.446Z",
+ "lines": 231,
+ "checks": 462,
+ "agree": 156,
+ "notAHumanTake": 0,
+ "disagree": [],
+ "learnerSilent": [],
+ "servingRejectedTake": [
+  {
+   "line": "cym_n_for_eng:pod-0:SC01-S002",
+   "track": "known",
+   "speaker": "Sarah",
+   "learner": "mastered/0CB87785-D392-4F8E-95E0-D50B4A51DFE6.mp3",
+   "recordist": "mastered/0CB87785-D392-4F8E-95E0-D50B4A51DFE6.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC01-S004",
+   "track": "known",
+   "speaker": "Sarah",
+   "learner": "mastered/4F108D9D-EA27-4974-9A2D-13ED2C0FC5B7.mp3",
+   "recordist": "mastered/4F108D9D-EA27-4974-9A2D-13ED2C0FC5B7.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC02-S001",
+   "track": "known",
+   "speaker": "Sarah",
+   "learner": "mastered/5C5DFCC9-EC62-483A-AA70-FB14881F09E3.mp3",
+   "recordist": "mastered/5C5DFCC9-EC62-483A-AA70-FB14881F09E3.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC03-S001",
+   "track": "known",
+   "speaker": "Barista (3 pm)",
+   "learner": "mastered/16F373A0-F9B2-4938-98A4-5E9240B61DE8.mp3",
+   "recordist": "mastered/16F373A0-F9B2-4938-98A4-5E9240B61DE8.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC03-S002",
+   "track": "known",
+   "speaker": "Sarah",
+   "learner": "mastered/E0424E1D-00B6-4A9B-BC5C-220F5DBBCF55.mp3",
+   "recordist": "mastered/E0424E1D-00B6-4A9B-BC5C-220F5DBBCF55.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC03-S010",
+   "track": "known",
+   "speaker": "Sarah",
+   "learner": "mastered/5DA491E7-9C7A-4373-A4F3-E3A7A76F55D0.mp3",
+   "recordist": "mastered/5DA491E7-9C7A-4373-A4F3-E3A7A76F55D0.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC04-S002",
+   "track": "known",
+   "speaker": "Sarah",
+   "learner": "mastered/04FE4E68-6D2B-4A6B-8D98-6396E264A202.mp3",
+   "recordist": "mastered/04FE4E68-6D2B-4A6B-8D98-6396E264A202.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC06-S002",
+   "track": "known",
+   "speaker": "Anna",
+   "learner": "mastered/A8332C57-0180-4558-A822-DE62DACB909D.mp3",
+   "recordist": "mastered/A8332C57-0180-4558-A822-DE62DACB909D.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC06-S004",
+   "track": "known",
+   "speaker": "Anna",
+   "learner": "mastered/BFF8C769-05FD-4780-BB0A-C15B63EC70AE.mp3",
+   "recordist": "mastered/BFF8C769-05FD-4780-BB0A-C15B63EC70AE.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC06-S006",
+   "track": "known",
+   "speaker": "Anna",
+   "learner": "mastered/C8C45DBA-4BB0-43A5-8B24-FE0986702595.mp3",
+   "recordist": "mastered/C8C45DBA-4BB0-43A5-8B24-FE0986702595.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC06-S008",
+   "track": "known",
+   "speaker": "Anna",
+   "learner": "mastered/E0EE35A4-D87E-42D7-82DF-71555B23A352.mp3",
+   "recordist": "mastered/E0EE35A4-D87E-42D7-82DF-71555B23A352.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC06-S010",
+   "track": "known",
+   "speaker": "Anna",
+   "learner": "mastered/87772D77-AA73-4B51-9850-4BA9AE05A7A7.mp3",
+   "recordist": "mastered/87772D77-AA73-4B51-9850-4BA9AE05A7A7.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC06-S012",
+   "track": "known",
+   "speaker": "Anna",
+   "learner": "mastered/9DC61FE3-069B-4724-B4D2-76207F71DB72.mp3",
+   "recordist": "mastered/9DC61FE3-069B-4724-B4D2-76207F71DB72.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC10-S001",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/EAA7D0B2-BD9F-4424-A5F7-70CDA244D3BC.mp3",
+   "recordist": "mastered/EAA7D0B2-BD9F-4424-A5F7-70CDA244D3BC.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC10-S005",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/AAEEC3AD-298B-4298-9D81-9502D0C283A2.mp3",
+   "recordist": "mastered/AAEEC3AD-298B-4298-9D81-9502D0C283A2.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC10-S007",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/2333485F-3A34-4D6D-8089-8E83FF8C39AE.mp3",
+   "recordist": "mastered/2333485F-3A34-4D6D-8089-8E83FF8C39AE.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC10-S009",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/0F180901-9993-45CF-96F5-2327D9E379A4.mp3",
+   "recordist": "mastered/0F180901-9993-45CF-96F5-2327D9E379A4.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC10-S010",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/A64A5545-552C-44F7-A0D1-90995FA50314.mp3",
+   "recordist": "mastered/A64A5545-552C-44F7-A0D1-90995FA50314.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC11-S001",
+   "track": "target",
+   "speaker": "Guest",
+   "learner": "mastered/58652E3E-24F4-443F-A424-4A0094F7A88E.mp3",
+   "recordist": "mastered/58652E3E-24F4-443F-A424-4A0094F7A88E.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC11-S003",
+   "track": "target",
+   "speaker": "Guest",
+   "learner": "mastered/14117585-81B0-483A-B235-A18E880E42A4.mp3",
+   "recordist": "mastered/14117585-81B0-483A-B235-A18E880E42A4.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC11-S005",
+   "track": "target",
+   "speaker": "Guest",
+   "learner": "mastered/C5B30F68-C814-4556-A3F6-29B30F695DBC.mp3",
+   "recordist": "mastered/C5B30F68-C814-4556-A3F6-29B30F695DBC.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC11-S007",
+   "track": "target",
+   "speaker": "Guest",
+   "learner": "mastered/D3CDC9C1-0287-4FC5-B5B8-A61895935AE4.mp3",
+   "recordist": "mastered/D3CDC9C1-0287-4FC5-B5B8-A61895935AE4.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC11-S009",
+   "track": "target",
+   "speaker": "Guest",
+   "learner": "mastered/FFEFD6C4-CD9E-43A9-9C61-259B452EEDF0.mp3",
+   "recordist": "mastered/FFEFD6C4-CD9E-43A9-9C61-259B452EEDF0.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC11-S011",
+   "track": "target",
+   "speaker": "Guest",
+   "learner": "mastered/55FC3A6A-5F9D-446B-946A-06049E72DD60.mp3",
+   "recordist": "mastered/55FC3A6A-5F9D-446B-946A-06049E72DD60.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC11-S013",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/64A49DF2-8813-4AE5-98B6-5CCE134530D5.mp3",
+   "recordist": "mastered/64A49DF2-8813-4AE5-98B6-5CCE134530D5.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S001",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/F2CBCF73-524F-4935-8F05-9B7151105391.mp3",
+   "recordist": "mastered/F2CBCF73-524F-4935-8F05-9B7151105391.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S002",
+   "track": "target",
+   "speaker": "Pharmacist",
+   "learner": "mastered/7F854427-E704-4DE4-B76F-8F30FA786406.mp3",
+   "recordist": "mastered/7F854427-E704-4DE4-B76F-8F30FA786406.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S003",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/7F5C16F6-1059-4F12-A1DF-104E1D519447.mp3",
+   "recordist": "mastered/7F5C16F6-1059-4F12-A1DF-104E1D519447.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S004",
+   "track": "target",
+   "speaker": "Pharmacist",
+   "learner": "mastered/36932C08-88D5-4D2F-A610-AAD5E1CC99B6.mp3",
+   "recordist": "mastered/36932C08-88D5-4D2F-A610-AAD5E1CC99B6.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S005",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/EEBD1163-D146-4188-B650-F054BEF20C67.mp3",
+   "recordist": "mastered/EEBD1163-D146-4188-B650-F054BEF20C67.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S006",
+   "track": "target",
+   "speaker": "Pharmacist",
+   "learner": "mastered/B112F5A4-698A-4FEA-B2D1-620F22C89058.mp3",
+   "recordist": "mastered/B112F5A4-698A-4FEA-B2D1-620F22C89058.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S007",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/925D8D28-5360-4E00-BF92-3277525014B5.mp3",
+   "recordist": "mastered/925D8D28-5360-4E00-BF92-3277525014B5.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S008",
+   "track": "target",
+   "speaker": "Pharmacist",
+   "learner": "mastered/64CA0D32-8F49-4A79-97B1-CB4C0CCA1583.mp3",
+   "recordist": "mastered/64CA0D32-8F49-4A79-97B1-CB4C0CCA1583.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S009",
+   "track": "target",
+   "speaker": "Customer",
+   "learner": "mastered/D77B0CEE-9DD1-485E-B5F4-ACFBEBF9A762.mp3",
+   "recordist": "mastered/D77B0CEE-9DD1-485E-B5F4-ACFBEBF9A762.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC12-S010",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/6F09D142-88B2-48D2-B462-B48A28ADF747.mp3",
+   "recordist": "mastered/6F09D142-88B2-48D2-B462-B48A28ADF747.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S001",
+   "track": "target",
+   "speaker": "Tourist",
+   "learner": "mastered/0374A268-63A5-4976-901F-F553E886C623.mp3",
+   "recordist": "mastered/0374A268-63A5-4976-901F-F553E886C623.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S002",
+   "track": "target",
+   "speaker": "Local",
+   "learner": "mastered/936ECA87-BCF0-4CCC-A451-ECE7895003F8.mp3",
+   "recordist": "mastered/936ECA87-BCF0-4CCC-A451-ECE7895003F8.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S003",
+   "track": "target",
+   "speaker": "Tourist",
+   "learner": "mastered/42225F13-F15F-40FD-B674-3660D84962A8.mp3",
+   "recordist": "mastered/42225F13-F15F-40FD-B674-3660D84962A8.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S004",
+   "track": "target",
+   "speaker": "Local",
+   "learner": "mastered/C54B5EF4-08D7-4502-8E16-FD661A4C72ED.mp3",
+   "recordist": "mastered/C54B5EF4-08D7-4502-8E16-FD661A4C72ED.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S005",
+   "track": "target",
+   "speaker": "Local",
+   "learner": "mastered/A81829E4-0E37-4DE8-929A-AB0E7617A468.mp3",
+   "recordist": "mastered/A81829E4-0E37-4DE8-929A-AB0E7617A468.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S006",
+   "track": "target",
+   "speaker": "Tourist",
+   "learner": "mastered/4ED44ACE-F01E-4FCB-83D2-E328BD7BCF80.mp3",
+   "recordist": "mastered/4ED44ACE-F01E-4FCB-83D2-E328BD7BCF80.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S007",
+   "track": "target",
+   "speaker": "Local",
+   "learner": "mastered/426AC416-0B41-401D-958D-249FD93A3A27.mp3",
+   "recordist": "mastered/426AC416-0B41-401D-958D-249FD93A3A27.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S008",
+   "track": "target",
+   "speaker": "Tourist",
+   "learner": "mastered/E49FCA22-3647-462D-8DF3-7EE8854E6ED0.mp3",
+   "recordist": "mastered/E49FCA22-3647-462D-8DF3-7EE8854E6ED0.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S009",
+   "track": "target",
+   "speaker": "Local",
+   "learner": "mastered/901B2C18-3265-48BD-B124-38C314A482B5.mp3",
+   "recordist": "mastered/901B2C18-3265-48BD-B124-38C314A482B5.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S010",
+   "track": "target",
+   "speaker": "Tourist",
+   "learner": "mastered/CF756796-1617-431B-B3CB-334D11EB30E2.mp3",
+   "recordist": "mastered/CF756796-1617-431B-B3CB-334D11EB30E2.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC13-S011",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/E05D46CC-11B8-4786-8266-1858A276A7FC.mp3",
+   "recordist": "mastered/E05D46CC-11B8-4786-8266-1858A276A7FC.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC14-S002",
+   "track": "target",
+   "speaker": "Driver",
+   "learner": "mastered/1DED0977-1768-407B-BB09-3B79EC1CC613.mp3",
+   "recordist": "mastered/1DED0977-1768-407B-BB09-3B79EC1CC613.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC14-S004",
+   "track": "target",
+   "speaker": "Driver",
+   "learner": "mastered/801B87E7-558E-4BD8-9DE1-7EFB0B35491B.mp3",
+   "recordist": "mastered/801B87E7-558E-4BD8-9DE1-7EFB0B35491B.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC14-S006",
+   "track": "target",
+   "speaker": "Driver",
+   "learner": "mastered/C6D0906C-673E-4034-B637-5F5639BA23F8.mp3",
+   "recordist": "mastered/C6D0906C-673E-4034-B637-5F5639BA23F8.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC14-S007",
+   "track": "target",
+   "speaker": "Driver",
+   "learner": "mastered/6C44EEB3-CD9A-4ADC-AEB8-0B76D58FBF0A.mp3",
+   "recordist": "mastered/6C44EEB3-CD9A-4ADC-AEB8-0B76D58FBF0A.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC14-S009",
+   "track": "target",
+   "speaker": "Driver",
+   "learner": "mastered/0CCABF44-94C6-49EC-9C25-7C8CD8293D8F.mp3",
+   "recordist": "mastered/0CCABF44-94C6-49EC-9C25-7C8CD8293D8F.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC14-S010",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/159B1BC1-0962-4634-AFD2-F850A55E0366.mp3",
+   "recordist": "mastered/159B1BC1-0962-4634-AFD2-F850A55E0366.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC15-S011",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/6AC24E92-E20B-4CA3-B24C-928E0F7F8C95.mp3",
+   "recordist": "mastered/6AC24E92-E20B-4CA3-B24C-928E0F7F8C95.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC16-S011",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/D820B822-3739-4F5A-8A36-12537518B23B.mp3",
+   "recordist": "mastered/D820B822-3739-4F5A-8A36-12537518B23B.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC17-S011",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/71851266-718F-4D56-8D58-5AB335A34DA5.mp3",
+   "recordist": "mastered/71851266-718F-4D56-8D58-5AB335A34DA5.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC18-S011",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/538848D4-B791-453E-B034-00218A63B92E.mp3",
+   "recordist": "mastered/538848D4-B791-453E-B034-00218A63B92E.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC19-S011",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/91F48936-406C-4755-9200-56DE3A2279DC.mp3",
+   "recordist": "mastered/91F48936-406C-4755-9200-56DE3A2279DC.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC20-S011",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/CD1AF9EE-5FDF-4EA4-B459-91BF7E3C31EB.mp3",
+   "recordist": "mastered/CD1AF9EE-5FDF-4EA4-B459-91BF7E3C31EB.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC21-S014",
+   "track": "target",
+   "speaker": "Narrator",
+   "learner": "mastered/C653DBD8-2691-417D-BAA4-F478486FBCE7.mp3",
+   "recordist": "mastered/C653DBD8-2691-417D-BAA4-F478486FBCE7.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC22-S002",
+   "track": "target",
+   "speaker": "Friend",
+   "learner": "mastered/AE3400B0-C4DD-48E9-B92B-E90BAD39FA92.mp3",
+   "recordist": "mastered/AE3400B0-C4DD-48E9-B92B-E90BAD39FA92.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC22-S004",
+   "track": "target",
+   "speaker": "Friend",
+   "learner": "mastered/310DB51C-150D-48AD-BACE-9CF8E1914FA5.mp3",
+   "recordist": "mastered/310DB51C-150D-48AD-BACE-9CF8E1914FA5.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC22-S006",
+   "track": "target",
+   "speaker": "Friend",
+   "learner": "mastered/23A4ABAA-F45C-42BB-92A9-34CAAD72A832.mp3",
+   "recordist": "mastered/23A4ABAA-F45C-42BB-92A9-34CAAD72A832.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC22-S008",
+   "track": "target",
+   "speaker": "Friend",
+   "learner": "mastered/E6C54434-46DD-4DF1-8BB5-51F1290B9392.mp3",
+   "recordist": "mastered/E6C54434-46DD-4DF1-8BB5-51F1290B9392.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  },
+  {
+   "line": "cym_n_for_eng:pod-0:SC22-S010",
+   "track": "target",
+   "speaker": "Friend",
+   "learner": "mastered/99B8AF7E-7F47-4477-9FB5-E1D6C0AB76CD.mp3",
+   "recordist": "mastered/99B8AF7E-7F47-4477-9FB5-E1D6C0AB76CD.mp3",
+   "recordistVoice": "human_aran_cym_n",
+   "via": "slot"
+  }
+ ]
+}

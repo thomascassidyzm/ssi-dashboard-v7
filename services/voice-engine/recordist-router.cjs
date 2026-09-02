@@ -57,6 +57,7 @@ const {
 } = require('./clone-source-store.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const { resolveCurrentClip } = require('./take-selection.cjs')
 const { bucketKey } = require('../shared/dialect.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 
@@ -1039,28 +1040,19 @@ module.exports = function createRecordistRouter({
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
       if (!sentence) return res.status(404).json({ error: `No line ${req.params.lineId}` })
 
-      let row = null
-      if (sentence.target_audio_id) {
-        const { data } = await db()
-          .from('course_audio').select('id, s3_key, voice_id, language')
-          .eq('id', sentence.target_audio_id).maybeSingle()
-        // Only the recordist's OWN take is served back to them here: a line
-        // whose FK still points at another voice's clip is not "their clip".
-        if (data && recordist.spellings.includes(data.voice_id)) row = data
-      }
-      if (!row) {
-        // The FK may not have been set (another course's copy of the same line),
-        // so fall back to the clip's identity: (language, text, voice).
-        const { data } = await db()
-          .from('course_audio')
-          .select('id, s3_key, voice_id, language, created_at')
-          .eq('language', recordist.language)
-          .in('voice_id', recordist.spellings)
-          .in('text_normalized', audioKeyCandidates((sentence.target_text || '').trim()))
-          .order('created_at', { ascending: false })
-          .limit(1)
-        row = data && data[0] ? data[0] : null
-      }
+      // THE ONE RESOLVER, asked in its recordist mode: the line's own slot
+      // first — the very column the learner's bundle plays, so a filled slot
+      // means this button and the learner are on the same file by construction
+      // — then, only if the slot is empty or holds another voice, this
+      // recordist's own take of the same text.
+      const clip = await resolveCurrentClip(db(), {
+        sentence,
+        track: 'target',
+        language: recordist.language,
+        restrictToVoices: recordist.spellings,
+        allowIdentityFallback: true,
+      })
+      const row = clip ? { id: clip.audioId, s3_key: clip.s3Key, voice_id: clip.voiceId } : null
       if (!row) {
         return res.status(404).json({ error: 'No stored take for this line yet', reason: 'no_take' })
       }

@@ -8,7 +8,29 @@
 
 const test = require('node:test')
 const assert = require('node:assert')
-const { lineHasTake, countsAsRecorded, pickCurrentTake } = require('./take-selection.cjs')
+const { lineHasTake, countsAsRecorded, pickCurrentTake, resolveCurrentClip } = require('./take-selection.cjs')
+
+/** Stub db: one course_audio table, only the calls the resolver makes. */
+function stubDb(rows) {
+  return {
+    from() {
+      let out = rows.slice()
+      const q = {
+        select() { return q },
+        eq(col, val) { out = out.filter((r) => r[col] === val); return q },
+        in(col, vals) { out = out.filter((r) => vals.includes(r[col])); return q },
+        order(col, opts) {
+          const dir = opts && opts.ascending === false ? -1 : 1
+          out = out.slice().sort((a, b) => (String(a[col]) > String(b[col]) ? dir : -dir))
+          return q
+        },
+        limit(n) { out = out.slice(0, n); return Promise.resolve({ data: out, error: null }) },
+        maybeSingle() { return Promise.resolve({ data: out[0] || null, error: null }) },
+      }
+      return q
+    },
+  }
+}
 
 const spellings = ['human_aran_cym_n', 'human_aran_cym_n_2']
 
@@ -59,5 +81,50 @@ test.describe('pickCurrentTake', () => {
     ]
     assert.strictEqual(pickCurrentTake(rows).id, 'august')
     assert.strictEqual(pickCurrentTake([]), null)
+  })
+})
+
+test.describe('resolveCurrentClip — the one resolver', () => {
+  const clips = [
+    { id: 'slot-clip', s3_key: 'mastered/SLOT.mp3', voice_id: 'human_aran_cym_n', language: 'cym', text_normalized: 'a be ydy cyfrinair y wifi', created_at: '2026-06-15T00:00:00Z' },
+    { id: 'newer-identity', s3_key: 'mastered/NEWER.mp3', voice_id: 'human_aran_cym_n', language: 'cym', text_normalized: 'noswaith dda', created_at: '2026-08-23T00:00:00Z' },
+    { id: 'older-identity', s3_key: 'mastered/OLDER.mp3', voice_id: 'human_aran_cym_n_2', language: 'cym', text_normalized: 'noswaith dda', created_at: '2026-06-15T00:00:00Z' },
+  ]
+  const db = stubDb(clips)
+
+  test('THE LEARNER AND THE RECORDIST GET THE SAME FILE when the slot is filled', async () => {
+    const sentence = { target_audio_id: 'slot-clip', target_text: 'A be ydy… cyfrinair y wifi?' }
+    const learner = await resolveCurrentClip(db, { sentence, track: 'target' })
+    const recordist = await resolveCurrentClip(db, {
+      sentence, track: 'target', language: 'cym',
+      restrictToVoices: ['human_aran_cym_n', 'human_aran_cym_n_2'], allowIdentityFallback: true,
+    })
+    assert.strictEqual(learner.s3Key, 'mastered/SLOT.mp3')
+    assert.strictEqual(recordist.s3Key, learner.s3Key)
+    assert.strictEqual(learner.source, 'slot')
+  })
+
+  test('the learner view never invents a clip for an empty slot', async () => {
+    const sentence = { target_audio_id: null, target_text: 'Noswaith dda.' }
+    assert.strictEqual(await resolveCurrentClip(db, { sentence, track: 'target' }), null)
+  })
+
+  test('the recordist view falls back to their own NEWEST take, across spellings', async () => {
+    const sentence = { target_audio_id: null, target_text: 'Noswaith dda.' }
+    const got = await resolveCurrentClip(db, {
+      sentence, track: 'target', language: 'cym',
+      restrictToVoices: ['human_aran_cym_n', 'human_aran_cym_n_2'], allowIdentityFallback: true,
+    })
+    assert.strictEqual(got.s3Key, 'mastered/NEWER.mp3')
+    assert.strictEqual(got.source, 'identity')
+  })
+
+  test('a slot filled by another voice is not this recordist\'s clip', async () => {
+    const sentence = { target_audio_id: 'slot-clip', target_text: 'A be ydy… cyfrinair y wifi?' }
+    const got = await resolveCurrentClip(db, {
+      sentence, track: 'target', language: 'cym',
+      restrictToVoices: ['human_catrinlliar_cym_n'], allowIdentityFallback: false,
+    })
+    assert.strictEqual(got, null)
   })
 })

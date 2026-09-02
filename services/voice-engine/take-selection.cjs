@@ -4,7 +4,17 @@
  *
  *   1. DOES A TAKE OF THIS LINE BY THIS VOICE EXIST?      → lineHasTake()
  *   2. DOES THAT TAKE COUNT AS A RECORDING?               → countsAsRecorded()
- *   3. WHICH TAKE OF A LINE IS THE CURRENT ONE?           → pickCurrentTake()
+ *   3. WHICH TAKE OF A LINE IS THE CURRENT ONE?           → resolveCurrentClip()
+ *                                                           (pickCurrentTake is its tie-break)
+ *
+ * THE INVARIANT (Tom, 2026-09-02): "we should be able to know for sure that
+ * what we record IS what is served to the learner." That cannot be held by
+ * three read paths that happen to agree — the recordist's queue, the Listen
+ * button and the learner's own playback. It is held by ONE resolver they all
+ * ask, whose two callers differ only in DECLARED parameters (may I fall back
+ * past the slot? whose voices count as mine?) rather than in code. Anything
+ * that resolver cannot make identical is a real divergence, and
+ * tools/recording/verify-take-invariant.cjs counts them for a whole course.
  *
  * They are separated because they are DIFFERENT QUESTIONS and Tom has a ruling
  * pending on the second one ("if they are NOT accepted, then we don't have the
@@ -74,6 +84,64 @@ function countsAsRecorded(line, hasTake) {
 }
 
 /**
+ * THE RESOLVER. Which stored clip IS this line, right now.
+ *
+ * THE SLOT DECIDES. A pod line's own FK (`target_audio_id` / `known_audio_id`)
+ * is what the learner's bundle plays — it reads that column and nothing else —
+ * so any other read path that wants to agree with the learner must start from
+ * the same column. It does not "usually" agree; it is the same row.
+ *
+ * The two callers differ only in what they are allowed to do, and both say so
+ * out loud:
+ *   - the LEARNER view: no voice restriction, NO fallback. If the slot is
+ *     empty the learner hears nothing, and this returns null rather than
+ *     inventing a clip the learner would never get.
+ *   - the RECORDIST view: restricted to their own spellings (a slot filled by
+ *     somebody else is not their take), and allowed to fall back to the clip's
+ *     identity — because a recordist may legitimately have a take of a line
+ *     whose slot was never linked, and hearing it is how they find that out.
+ *
+ * A divergence between the two is therefore never an accident of ordering. It
+ * is one of exactly two facts: the slot is empty, or the slot holds somebody
+ * else's voice.
+ *
+ * @returns {Promise<{audioId, s3Key, voiceId, source: 'slot'|'identity'}|null>}
+ */
+async function resolveCurrentClip(db, {
+  sentence,
+  track = 'target',
+  language = null,
+  restrictToVoices = null,
+  allowIdentityFallback = false,
+}) {
+  if (!sentence) return null
+  const slotId = sentence[`${track}_audio_id`]
+  if (slotId) {
+    const { data, error } = await db
+      .from('course_audio').select('id, s3_key, voice_id, language, created_at')
+      .eq('id', slotId).maybeSingle()
+    if (error) throw new Error(`slot clip lookup failed: ${error.message}`)
+    if (data && (!restrictToVoices || restrictToVoices.includes(data.voice_id))) {
+      return { audioId: data.id, s3Key: data.s3_key, voiceId: data.voice_id, source: 'slot' }
+    }
+  }
+  if (!allowIdentityFallback) return null
+  const text = String(sentence[`${track}_text`] || '').trim()
+  if (!text || !restrictToVoices || !language) return null
+  const { data, error } = await db
+    .from('course_audio')
+    .select('id, s3_key, voice_id, language, created_at')
+    .eq('language', language)
+    .in('voice_id', restrictToVoices)
+    .in('text_normalized', audioKeyCandidates(text))
+    .order('created_at', { ascending: false })
+    .limit(5)
+  if (error) throw new Error(`identity clip lookup failed: ${error.message}`)
+  const row = pickCurrentTake(data || [])
+  return row ? { audioId: row.id, s3Key: row.s3_key, voiceId: row.voice_id, source: 'identity' } : null
+}
+
+/**
  * Which of several stored rows for one line is the CURRENT take.
  *
  * Newest wins, by the server's own created_at — never a client-supplied
@@ -91,4 +159,4 @@ function pickCurrentTake(rows) {
   }, null)
 }
 
-module.exports = { lineHasTake, countsAsRecorded, pickCurrentTake }
+module.exports = { lineHasTake, countsAsRecorded, pickCurrentTake, resolveCurrentClip }
