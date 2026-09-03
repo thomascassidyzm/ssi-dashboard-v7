@@ -42,6 +42,9 @@ const {
   isTestFixtureCourse,
   parseSeedLineId,
   parseQuarryLineId,
+  podKnownLineId,
+  parsePodKnownLineId,
+  clearKnownRerecordWant,
   linkSeedTake,
   seedCastEntry,
   policyVoiceList,
@@ -828,6 +831,91 @@ module.exports = function createRecordistRouter({
     res.redirect(302, url)
   }
 
+  /**
+   * A take of a pod line's KNOWN (English) track.
+   *
+   * Only ever for a line that asked: rerecord_wanted.known is the ask, and this
+   * refuses without it. Filed as kind 'known' so it lands in known_audio_id,
+   * through the same upload seam as every other take. No propagation: the
+   * English of a bespoke pod is shared with nothing, which is why a human is
+   * reading it at all.
+   */
+  async function recordPodKnownTake({ req, res, recordist, sentenceId, text, audioBase64, mimeType, device }) {
+    const { data: sentence, error: sentErr } = await db()
+      .from('listening_pod_sentences')
+      .select('id, pod_id, known_text, rerecord_wanted')
+      .eq('id', sentenceId)
+      .maybeSingle()
+    if (sentErr && sentErr.code !== '22P02') throw new Error(`line lookup failed: ${sentErr.message}`)
+    if (!sentence) return res.status(404).json({ error: `No line ${sentenceId}` })
+    if (!(sentence.rerecord_wanted && sentence.rerecord_wanted.known)) {
+      return res.status(409).json({
+        error: 'That line is not asking for its English to be recorded. The known side is normally ' +
+          'synthesised; a human reads it only where the pod line itself says so.',
+      })
+    }
+    const { data: pod, error: podErr } = await db()
+      .from('listening_pods').select('id, course_code').eq('id', sentence.pod_id).maybeSingle()
+    if (podErr) throw new Error(`pod lookup failed: ${podErr.message}`)
+    if (!pod) return res.status(404).json({ error: `Line ${sentenceId} has no pod` })
+
+    const lineText = (sentence.known_text || '').trim()
+    if (text && text.trim() && text.trim() !== lineText) {
+      return res.status(409).json({
+        error: 'The text on this line has changed since the queue was loaded — reload before recording it.',
+        expected: lineText,
+        received: text.trim(),
+      })
+    }
+
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: pod.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: {
+          mode: 'pod',
+          podId: pod.id,
+          sentenceId: sentence.id,
+          kind: 'known',
+          text: lineText,
+          voiceId: recordist.voiceId,
+        },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+
+    // The ask is satisfied. Retired last, after the take is stored, and never
+    // allowed to fail the take.
+    let retired = 0
+    try {
+      retired = await clearKnownRerecordWant({ db: db(), sentenceId: sentence.id, logger })
+    } catch (wantErr) {
+      logger.error(`[Recordist] known want retirement failed (take is stored): ${wantErr.message}`)
+    }
+
+    return res.json({
+      ok: true,
+      audioId: captured.body.uuid,
+      kind: 'known',
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(podKnownLineId(sentence.id))}/clip`,
+      alsoFilled: 0,
+      rawKey: captured.body.rawKey || null,
+      wantsRetired: retired,
+    })
+  }
+
   // ── 2. a take ──────────────────────────────────────────────────────────────
   router.post('/voice/:voiceId/take', async (req, res) => {
     try {
@@ -883,6 +971,14 @@ module.exports = function createRecordistRouter({
       const quarryLine = parseQuarryLineId(lineId)
       if (quarryLine) {
         return await recordQuarryTake({ req, res, recordist, parsed: { ...quarryLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+
+      // A POD LINE'S KNOWN (English) TRACK, which a pod line has to ask for —
+      // see recordist-queue.cjs. Same reasoning as the two branches above:
+      // `podknown:<uuid>` is not a uuid.
+      const podKnownLine = parsePodKnownLineId(lineId)
+      if (podKnownLine) {
+        return await recordPodKnownTake({ req, res, recordist, sentenceId: podKnownLine.sentenceId, text, audioBase64, mimeType, device })
       }
 
       // The line decides the course; the recordist decides the voice.
@@ -1032,10 +1128,14 @@ module.exports = function createRecordistRouter({
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
 
+      // A pod line's KNOWN track is the same row, read through its own columns.
+      const podKnownLine = parsePodKnownLineId(req.params.lineId)
+      const track = podKnownLine ? 'known' : 'target'
+
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
-        .select('id, target_text, target_audio_id')
-        .eq('id', req.params.lineId)
+        .select('id, target_text, target_audio_id, known_text, known_audio_id')
+        .eq('id', podKnownLine ? podKnownLine.sentenceId : req.params.lineId)
         .maybeSingle()
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
       if (!sentence) return res.status(404).json({ error: `No line ${req.params.lineId}` })
@@ -1047,10 +1147,13 @@ module.exports = function createRecordistRouter({
       // recordist's own take of the same text.
       const clip = await resolveCurrentClip(db(), {
         sentence,
-        track: 'target',
-        language: recordist.language,
+        track,
+        // A known take is filed under the course's KNOWN language, and the
+        // identity fallback would otherwise look for English words among this
+        // recordist's Welsh clips. The slot is the only honest answer here.
+        language: track === 'known' ? null : recordist.language,
         restrictToVoices: recordist.spellings,
-        allowIdentityFallback: true,
+        allowIdentityFallback: track !== 'known',
       })
       const row = clip ? { id: clip.audioId, s3_key: clip.s3Key, voice_id: clip.voiceId } : null
       if (!row) {
