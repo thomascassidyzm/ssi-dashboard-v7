@@ -105,6 +105,18 @@ alignment of its parent chunk**, drawn as a tile on that chunk's card. Here the 
 carries होगा. So कल comes, exactly as Kai asked, *inside a certain context* — and the learner is never asked to
 answer it alone.
 
+**Independently verified** (worker #324, adversarial, read-only). Three findings beyond my own trace:
+`generateLearningScript.ts:850-892` puts `phrase_role='component'` rows into `componentPhrasesByLego`,
+which is **written at :890 and never read again** — no cycle is ever emitted from it; the `'component_intro'`
+/ `'component_practice'` string literals appear only in the type union and in skip conditions, never in a
+push, i.e. dead type surface. `LegoAssembly.vue`, the tile renderer, has no `defineEmits`/`emit()` at all.
+And decisively: the vocab gate reads `comp.target` (the **English** "tomorrow"), never `comp.known`
+(`vocab-cache.cjs:66`, `validation.cjs:110`) — so this component can only ever enter the *target*-side
+inventory, and **cannot make कल reachable as known-side vocabulary on any path**. Every dashboard surface
+that shows components (`CalibrationReview.vue`, `CourseEditor.vue`, `LegoBasketViewer.vue`,
+`TextGeneration.vue`) renders them as a nested sub-list under the parent LEGO row, never standalone.
+#324 re-ran the gate live and got `seeds_failed: 46`, matching.
+
 **What it fixes.** Before this, the English word *"tomorrow"* had **no teaching unit anywhere in the course** (a
 sibling job removed this component earlier today on the belief that a component is a spoken cue). The consequence was
 that 52 phrases carried कल in the Hindi prompt with **no chunk at all** on the tiling — the most extreme form of "used
