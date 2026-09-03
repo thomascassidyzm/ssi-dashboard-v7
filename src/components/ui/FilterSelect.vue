@@ -147,13 +147,25 @@ const firstEnabled = computed(() =>
 )
 
 const panelStyle = computed(() => {
+  const vw = typeof window !== 'undefined' ? window.innerWidth : 0
+  const vh = typeof window !== 'undefined' ? window.innerHeight : 0
   const width = props.panelWidth || Math.max(rect.value.width, 220)
-  const maxLeft = Math.max(4, (typeof window !== 'undefined' ? window.innerWidth : 0) - width - 4)
-  return {
-    top: `${rect.value.bottom + 4}px`,
+  const maxLeft = Math.max(4, vw - width - 4)
+  const style = {
     left: `${Math.min(Math.max(4, rect.value.left), maxLeft)}px`,
     width: `${width}px`,
   }
+  // Flip above the button when there is no room below — a dropdown near the
+  // bottom of a phone screen is otherwise a panel you cannot reach.
+  const below = vh - rect.value.bottom
+  if (below < 220 && rect.value.top > below) {
+    style.bottom = `${Math.max(4, vh - rect.value.top + 4)}px`
+    style.maxHeight = `${Math.max(160, rect.value.top - 12)}px`
+  } else {
+    style.top = `${rect.value.bottom + 4}px`
+    style.maxHeight = `${Math.max(160, below - 12)}px`
+  }
+  return style
 })
 
 function sameValue(a, b) {
@@ -326,7 +338,13 @@ defineExpose({ open, query })
   border-color: var(--accent-2, var(--accent, #10b981));
 }
 
+.fs-panel {
+  display: flex;
+  flex-direction: column;
+}
+
 .fs-panel .fs-list {
+  flex: 1 1 auto;
   max-height: min(60vh, 320px);
   overflow-y: auto;
 }
