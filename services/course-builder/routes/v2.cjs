@@ -18,7 +18,7 @@ const { isChinese, getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, checkBuildUsePhrases, generateBuildupPhrases, isBareLegoPhrase, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadCourseVocab, loadTranslationVocab, addToCourseVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
-const { checkTiling, checkVocabViolations, formatDecompositionPatterns } = require('../lib/validation.cjs');
+const { checkTiling, checkVocabViolations, formatDecompositionPatterns, loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
 const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cjs');
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
@@ -315,6 +315,7 @@ module.exports = function(ctx) {
         }
       }
       console.log(`  Baseline: ${knownLegoMap.size} unique LEGOs from non-drafted seeds`);
+      const genderLicence = await loadGenderVariantLicence(ctx.supabase, courseCode);
 
       // STEP 3: Process drafts — dedup + collision detection
       const collisions = [];
@@ -335,7 +336,15 @@ module.exports = function(ctx) {
             const existingTarget = normalizeForStorage(existing.target_text);
             const newTarget = normalizeForStorage(lego.target);
 
-            if (existingTarget === newTarget) {
+            // Licensed gender variant — the same evidence-based licence the
+            // LEGO gate uses: a stored target-side female/male reading pair is
+            // one LEGO answered by two voices, not a collision. Deduped, so the
+            // canonical (male-reading) LEGO stays the one row.
+            if (existingTarget !== newTarget &&
+                isLicensedGenderVariant(genderLicence, existing.target_text, lego.target)) {
+              legoStatuses.set(lego.idx, 'duplicate');
+              totalDeduplicated++;
+            } else if (existingTarget === newTarget) {
               legoStatuses.set(lego.idx, 'duplicate');
               totalDeduplicated++;
             } else {

@@ -11,7 +11,7 @@ const { Router } = require('express');
 const { getTargetLang, isChinese, checkLegoSyllables } = require('../lib/language-config.cjs');
 const { normalizeForContainment, stripBookendPunctuation } = require('../lib/text-normalization.cjs');
 const { makePhraseId, computeLegoPosition } = require('../lib/phrase-structure.cjs');
-const { checkLegoConflict } = require('../lib/validation.cjs');
+const { checkLegoConflict, isDedupConflict } = require('../lib/validation.cjs');
 const { courseFamily } = require('../lib/course-family.cjs');   // sector-helix §5b: ZUT is family-wide
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
@@ -189,7 +189,7 @@ module.exports = function createSeedTranslateRoutes(ctx) {
           ctx.supabase, course_code, knownText, targetLego.target_text, seed_number,
           { family: await courseFamily(ctx.supabase, course_code) }
         );
-        const isDuplicate = conflictResult.conflict === 'duplicate';
+        const isDuplicate = isDedupConflict(conflictResult);
         if (isDuplicate) {
           duplicateLegos.push(targetLego.id);
         }

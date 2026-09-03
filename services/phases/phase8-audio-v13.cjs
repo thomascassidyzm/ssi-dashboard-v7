@@ -49,6 +49,19 @@ const audioProcessor = require('../audio-processor.cjs')
 const loudnessTier = require('../audio-intelligence/tiers/loudness.cjs')
 const genderService = require('../gender-expansion-service.cjs')
 const genderHaikuService = require('../gender-haiku-service.cjs')
+
+// Memoised gender map for the single-clip regeneration routes below. They ask per
+// role, and the map is a whole-course read; without this a three-role repair would
+// pull every expansion row three times. 30s is long enough for one repair, short
+// enough that a freshly written pairing is picked up by the next one.
+const _GMAP_TTL_MS = 30_000
+let _gmapMemo = { courseCode: null, at: 0, map: null }
+async function loadGenderMapMemo(courseCode, supabase) {
+  if (_gmapMemo.courseCode === courseCode && Date.now() - _gmapMemo.at < _GMAP_TTL_MS) return _gmapMemo.map
+  const map = await genderHaikuService.loadGenderMap(courseCode, supabase)
+  _gmapMemo = { courseCode, at: Date.now(), map }
+  return map
+}
 const veracity = require('../audio-veracity.cjs')
 
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
@@ -2682,9 +2695,16 @@ app.post('/generate/:courseCode', async (req, res) => {
     ).values()].slice(0, limit)
     logger.info(`After dedup: ${uniqueNeeded.length} unique items`)
 
-    // Load pre-computed gender expansions from DB
+    // Load pre-computed gender expansions from DB.
+    // Loaded UNCONDITIONALLY (2026-09-03). GENDERED_LANGUAGES means "this language
+    // agrees with the SPEAKER's gender" and gates the Haiku expander; it is the wrong
+    // question for the two-voice referent mechanism, where the known side leaves a
+    // third-person referent open and the target (e.g. English) must choose his/her.
+    // The map is course-scoped and comes back empty for every course with no rows,
+    // so nothing changes anywhere else. Do NOT add 'eng' to GENDERED_LANGUAGES —
+    // that would set the expander generating speaker-gender English estate-wide.
     let genderMap = new Map()
-    if (genderHaikuService.GENDERED_LANGUAGES.includes(course.target_lang) && !dryRun) {
+    if (!dryRun) {
       genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
       logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
     }
@@ -3346,11 +3366,16 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       ? course.known_lang
       : course.target_lang
 
-    // Load pre-computed gender expansions from DB
+    // Load pre-computed gender expansions from DB.
+    // Loaded UNCONDITIONALLY (2026-09-03). GENDERED_LANGUAGES means "this language
+    // agrees with the SPEAKER's gender" and gates the Haiku expander; it is the wrong
+    // question for the two-voice referent mechanism, where the known side leaves a
+    // third-person referent open and the target (e.g. English) must choose his/her.
+    // The map is course-scoped and comes back empty for every course with no rows,
+    // so nothing changes anywhere else. Do NOT add 'eng' to GENDERED_LANGUAGES —
+    // that would set the expander generating speaker-gender English estate-wide.
     let genderMap = new Map()
-    if ((role === 'target1' || role === 'target2') &&
-        genderHaikuService.GENDERED_LANGUAGES.includes(language) &&
-        !dryRun) {
+    if ((role === 'target1' || role === 'target2') && !dryRun) {
       genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
       logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
     }
@@ -4855,16 +4880,21 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     // 4. Gender expansion
     let textForTTS = text
     const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
-    if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(lang)) {
-      // Try Haiku gender expansion
+    // Read the STORED expansion, exactly as the bulk render does. This used to call
+    // genderHaikuService.expandGender(), which does not exist and never has — every
+    // call threw straight into the catch below, so a clip repaired through this route
+    // came back speaking the wrong reading, silently. Fixed 2026-09-03. The DB is the
+    // one authority for which reading each voice speaks; nothing is regenerated here.
+    if (role === 'target1' || role === 'target2') {
       try {
-        const result = await genderHaikuService.expandGender(text, lang, role)
-        if (result?.wasModified) {
-          textForTTS = result.expandedText
+        const gmap = await loadGenderMapMemo(courseCode, supabase)
+        const gr = gmap.get(`${text}|${lang}|${role}`)
+        if (gr?.wasModified) {
+          textForTTS = gr.expandedText
           logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
         }
       } catch (e) {
-        logger.warn(`Gender expansion failed, using original text: ${e.message}`)
+        logger.warn(`Gender expansion lookup failed, using original text: ${e.message}`)
       }
     }
     // Fallback: marker-based expansion
@@ -5579,15 +5609,19 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
 
       // Gender expansion (target1/target2 only) — Haiku first, marker regex fallback.
       let textForTTS = text
-      if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(language)) {
+      // Stored expansion, same as the bulk render. Was expandGender() — a function
+      // that does not exist, so this branch always threw and the clip came back in
+      // the wrong reading with only a warning. Fixed 2026-09-03.
+      if (role === 'target1' || role === 'target2') {
         try {
-          const gr = await genderHaikuService.expandGender(text, language, role)
+          const gmap = await loadGenderMapMemo(courseCode, supabase)
+          const gr = gmap.get(`${text}|${language}|${role}`)
           if (gr?.wasModified) {
             textForTTS = gr.expandedText
             logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
           }
         } catch (e) {
-          logger.warn(`Gender expansion failed, using original text: ${e.message}`)
+          logger.warn(`Gender expansion lookup failed, using original text: ${e.message}`)
         }
       }
       if (textForTTS === text && (role === 'target1' || role === 'target2') && genderService.hasGenderMarker(text)) {
@@ -5965,15 +5999,19 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
 
       // Gender expansion (target1/target2 only) — Haiku first, marker regex fallback.
       let textForTTS = text
-      if ((role === 'target1' || role === 'target2') && genderHaikuService.GENDERED_LANGUAGES.includes(language)) {
+      // Stored expansion, same as the bulk render. Was expandGender() — a function
+      // that does not exist, so this branch always threw and the clip came back in
+      // the wrong reading with only a warning. Fixed 2026-09-03.
+      if (role === 'target1' || role === 'target2') {
         try {
-          const gr = await genderHaikuService.expandGender(text, language, role)
+          const gmap = await loadGenderMapMemo(courseCode, supabase)
+          const gr = gmap.get(`${text}|${language}|${role}`)
           if (gr?.wasModified) {
             textForTTS = gr.expandedText
             logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
           }
         } catch (e) {
-          logger.warn(`Gender expansion failed, using original text: ${e.message}`)
+          logger.warn(`Gender expansion lookup failed, using original text: ${e.message}`)
         }
       }
       if (textForTTS === text && (role === 'target1' || role === 'target2') && genderService.hasGenderMarker(text)) {
@@ -6373,12 +6411,17 @@ app.post('/generate-components/:courseCode', async (req, res) => {
     // 7. Start generation
     startWork('generate-components', courseCode, uniqueNeeded.length)
 
-    // Load gender expansions if needed
+    // Load pre-computed gender expansions from DB.
+    // Loaded UNCONDITIONALLY (2026-09-03). GENDERED_LANGUAGES means "this language
+    // agrees with the SPEAKER's gender" and gates the Haiku expander; it is the wrong
+    // question for the two-voice referent mechanism, where the known side leaves a
+    // third-person referent open and the target (e.g. English) must choose his/her.
+    // The map is course-scoped and comes back empty for every course with no rows,
+    // so nothing changes anywhere else. Do NOT add 'eng' to GENDERED_LANGUAGES —
+    // that would set the expander generating speaker-gender English estate-wide.
     let genderMap = new Map()
-    if (genderHaikuService.GENDERED_LANGUAGES.includes(targetLang)) {
-      genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
-      logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
-    }
+    genderMap = await genderHaikuService.loadGenderMap(courseCode, supabase)
+    logger.info(`Loaded ${genderMap.size} gender expansions from DB`)
 
     const results = { success: 0, failed: 0, errors: [] }
     const reuseOpts = reuseOptsFromRequest(req)

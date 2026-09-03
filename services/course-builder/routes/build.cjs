@@ -7,6 +7,7 @@ const { Router } = require('express');
 const fs = require('fs');
 const path = require('path');
 const { getBuildProgress, stopBuild, getBuildStatus } = require('../lib/build-manager.cjs');
+const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
 const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
@@ -1009,8 +1010,20 @@ module.exports = function (ctx) {
         if (!byK.has(k)) byK.set(k, new Map());
         byK.get(k).set(nt(p.target_text), p.target_text);
       }
+      // A stored female/male reading pair is the two-voice answer to a known side
+      // that leaves the referent's gender open — it is licensed, not a collision.
+      // Collapse each licensed pair to one representative before counting, so the
+      // resolver agent is never briefed to "eliminate" the mechanism.
+      const genderLicence = await loadGenderVariantLicence(ctx.supabase, courseCode);
       const collisions = [];
-      for (const [k, m] of byK) if (m.size >= 2) collisions.push({ known: k, n: m.size, targets: [...m.values()].slice(0, 4) });
+      for (const [k, m] of byK) {
+        let targets = [...m.values()];
+        if (genderLicence.size) {
+          targets = targets.filter((t, i) =>
+            !targets.some((o, j) => j < i && isLicensedGenderVariant(genderLicence, t, o)));
+        }
+        if (targets.length >= 2) collisions.push({ known: k, n: targets.length, targets: targets.slice(0, 4) });
+      }
       collisions.sort((a, b) => b.n - a.n);
       res.json({
         ok: true, course_code: courseCode, total_phrases: phrases.length,

@@ -8,6 +8,7 @@ const { isChinese } = require('../lib/language-config.cjs');
 const { normalizePhrase, normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, generateBuildupPhrases, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadTranslationVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
+const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
 
 module.exports = function(ctx) {
   const router = Router();
@@ -119,6 +120,7 @@ module.exports = function(ctx) {
         }
       }
       console.log(`  Baseline: ${knownLegoMap.size} unique LEGOs from non-drafted seeds`);
+      const genderLicence = await loadGenderVariantLicence(ctx.supabase, courseCode);
 
       // =====================================================================
       // STEP 3: Process drafts in seed order -- dedup + collision detection
@@ -145,7 +147,15 @@ module.exports = function(ctx) {
             const existingTarget = normalizeForStorage(existing.target_text);
             const newTarget = normalizeForStorage(lego.target);
 
-            if (existingTarget === newTarget) {
+            // Licensed gender variant — the same evidence-based licence the
+            // LEGO gate uses: a stored target-side female/male reading pair is
+            // one LEGO answered by two voices, not a collision. Deduped, so the
+            // canonical (male-reading) LEGO stays the one row.
+            if (existingTarget !== newTarget &&
+                isLicensedGenderVariant(genderLicence, existing.target_text, lego.target)) {
+              legoStatuses.set(lego.idx, 'duplicate');
+              totalDeduplicated++;
+            } else if (existingTarget === newTarget) {
               // DUPLICATE: Same known + same target -> mark for dedup
               legoStatuses.set(lego.idx, 'duplicate');
               totalDeduplicated++;

@@ -470,6 +470,86 @@ function checkPhraseBalance(phrases, balanceData, courseCode) {
   return { balanced: true };
 }
 
+// ─── Licensed gender variants (the two-voice referent mechanism) ───────
+// Some known languages leave a third-person referent's gender open where the
+// target language is forced to choose. Hindi is the worked case: उसका नाम is
+// "his name" or "her name" and the Hindi says nothing either way. Tom's ruling
+// (2026-09-03): where the known side is genuinely open, the course answers with
+// BOTH readings — the female target voice speaks the "her" reading, the male
+// target voice speaks the "his" reading — and nothing is explained anywhere.
+//
+// That makes ONE known text legitimately carry TWO targets, which the ZUT gate
+// rejects on sight. The licence is granted by EVIDENCE, never by assertion: a
+// pair is licensed only if course_gender_expansions already holds a target-side
+// row for this course whose {expanded_f, expanded_m} is exactly the pair being
+// submitted. A seed cannot claim two readings — the two rows that will carry the
+// two voices must already exist. Every other collision misses this lookup and
+// falls through to the unchanged rejection, so the rule is not loosened anywhere
+// else.
+//
+// Scoped to text_side='target': the same table also holds known-side rows that
+// vary the gender of the SPEAKER (eng_for_hin alone has ~2,500 of them). Those
+// are the opposite axis and must never license a target collision.
+const GENDER_LICENCE_TTL_MS = 30_000;
+const _genderLicenceCache = new Map(); // courseCode -> { at, pairs:Set<string> }
+
+function _licenceKey(a, b) {
+  const x = normalizeForStorage(a || ''), y = normalizeForStorage(b || '');
+  return x < y ? `${x}\u0000${y}` : `${y}\u0000${x}`;
+}
+
+/**
+ * Load the set of licensed {female, male} target pairs for a course.
+ * Returns a Set of order-independent keys; empty for every course with no rows,
+ * which is why callers can consult it unconditionally.
+ */
+async function loadGenderVariantLicence(supabase, courseCode) {
+  const codes = Array.isArray(courseCode) ? courseCode : [courseCode];
+  const cacheKey = codes.join(',');
+  const hit = _genderLicenceCache.get(cacheKey);
+  if (hit && Date.now() - hit.at < GENDER_LICENCE_TTL_MS) return hit.pairs;
+
+  const pairs = new Set();
+  try {
+    const { data, error } = await supabase
+      .from('course_gender_expansions')
+      .select('expanded_f, expanded_m')
+      .in('course_code', codes)
+      .eq('text_side', 'target');
+    if (error) throw new Error(error.message);
+    for (const r of data || []) {
+      if (!r.expanded_f || !r.expanded_m) continue;
+      if (normalizeForStorage(r.expanded_f) === normalizeForStorage(r.expanded_m)) continue;
+      pairs.add(_licenceKey(r.expanded_f, r.expanded_m));
+    }
+  } catch (e) {
+    // A licence that cannot be read grants nothing. ZUT stays strict.
+    console.warn(`[gender-licence] could not load for ${cacheKey}: ${e.message}`);
+  }
+
+  _genderLicenceCache.set(cacheKey, { at: Date.now(), pairs });
+  return pairs;
+}
+
+/** True when these two targets are exactly a stored female/male reading pair. */
+function isLicensedGenderVariant(licence, targetA, targetB) {
+  if (!licence || licence.size === 0) return false;
+  if (normalizeForStorage(targetA || '') === normalizeForStorage(targetB || '')) return false;
+  return licence.has(_licenceKey(targetA, targetB));
+}
+
+/**
+ * True for the conflict verdicts that mean "link to the existing LEGO, do not
+ * insert": an exact duplicate, and a licensed gender variant (one LEGO, two
+ * readings carried by the two target voices).
+ */
+function isDedupConflict(result) {
+  return result?.conflict === 'duplicate' || result?.conflict === 'licensed_variant';
+}
+
+/** Test seam — the cache is process-lived and would otherwise outlast a fixture. */
+function _clearGenderVariantLicenceCache() { _genderLicenceCache.clear(); }
+
 // ─── LEGO conflict detection (ZUT + overlap) ───────────────────────────
 // A sector segment is registered as its own course code but is one course to
 // the learner, so every check below takes an optional `opts.family` and reads
@@ -514,6 +594,23 @@ async function checkLegoConflict(supabase, courseCode, knownText, targetText, cu
       conflict: 'duplicate',
       existing: sameTarget,
       legoId: `S${String(sameTarget.seed_number).padStart(4,'0')}L${String(sameTarget.lego_index).padStart(2,'0')}`,
+    };
+  }
+
+  // Licensed gender variant? Only when a stored target-side pair matches exactly
+  // one of the existing targets against the submitted one. Treated downstream the
+  // way a duplicate is: link to the existing LEGO, do not insert a second row —
+  // there is one LEGO, and the two readings ride the two target voices.
+  // Read across the whole ZUT scope: a family is one course to the learner, so a
+  // sibling's stored pair licenses the same collision a sibling's LEGO raised.
+  const licence = await loadGenderVariantLicence(supabase, scope);
+  const licensed = existing.find(e => isLicensedGenderVariant(licence, e.target_text, targetText));
+  if (licensed) {
+    return {
+      conflict: 'licensed_variant',
+      existing: licensed,
+      legoId: `S${String(licensed.seed_number).padStart(4,'0')}L${String(licensed.lego_index).padStart(2,'0')}`,
+      note: `Licensed gender variant: "${knownText}" is open in the known language; "${licensed.target_text}" and "${targetText}" are the stored male/female readings.`,
     };
   }
 
@@ -674,11 +771,15 @@ async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber =
   const existing = (await Promise.all(
     scope.flatMap(code => [fetch('course_practice_phrases', code), fetch('course_legos', code)])
   )).flat();
+  // Same licence as the LEGO gate: a stored female/male reading pair is not a
+  // collision, it is the two-voice answer to an open known side.
+  const licence = await loadGenderVariantLicence(supabase, scope);
 
   const collisions = [], seen = new Set();
   for (const e of existing) {
     const sub = subByKnown.get(nk(e.known_text));
     if (!sub) continue;
+    if (isLicensedGenderVariant(licence, e.target_text, sub.target)) continue;
     if (nt(e.target_text) !== sub.normTarget) {
       const key = `${nk(e.known_text)}|${nt(e.target_text)}`;
       if (seen.has(key)) continue; seen.add(key);
@@ -1090,6 +1191,10 @@ module.exports = {
   calculateLegoBalanceScores,
   checkPhraseBalance,
   checkLegoConflict,
+  loadGenderVariantLicence,
+  isLicensedGenderVariant,
+  isDedupConflict,
+  _clearGenderVariantLicenceCache,
   checkLegoOverlap,
   checkPhraseZUT,
   checkBasketFrameCoverage,
