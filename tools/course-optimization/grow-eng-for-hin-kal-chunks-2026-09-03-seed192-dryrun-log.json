@@ -1,0 +1,56 @@
+{
+  "course": "eng_for_hin",
+  "seed": 192,
+  "legoId": "S0192L02",
+  "ranAt": "2026-09-03T19:14:12.508Z",
+  "mode": "dry-run",
+  "from": {
+    "known": "कल रात",
+    "target": "tomorrow night"
+  },
+  "to": {
+    "known": "मैं कल रात व्यस्त हूँ",
+    "target": "I'm busy tomorrow night"
+  },
+  "sister": {
+    "legoId": "S0192L01",
+    "known": "मैं व्यस्त हूँ",
+    "target": "I'm busy"
+  },
+  "marker": "हूँ — an overt present copula. Hindi present tense cannot host कल = yesterday, so the grown chunk dates itself forward. The sister already wraps the कल chunk, so the grown unit is the seed sentence and is contiguous in both languages.",
+  "ownPhrases": 9,
+  "surviving": 1,
+  "dropped": [
+    "eng_for_hin:S0192L02B01",
+    "eng_for_hin:S0192L02B02",
+    "eng_for_hin:S0192L02U01",
+    "eng_for_hin:S0192L02U05",
+    "eng_for_hin:S0192L02U02",
+    "eng_for_hin:S0192L02U03",
+    "eng_for_hin:S0192L02U04",
+    "eng_for_hin:S0192L02U06"
+  ],
+  "downstreamTilers": [
+    {
+      "id": "eng_for_hin:S0193L01U05",
+      "seed": 193,
+      "target": "I'm sorry but I'm busy tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0193L02B02",
+      "seed": 193,
+      "target": "I'm too busy tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0249L02U04",
+      "seed": 249,
+      "target": "I want you to help me tomorrow night"
+    }
+  ],
+  "clipsBefore": {
+    "known": "f9e4b426-1133-4050-8ebb-0da4820043b1",
+    "target1": "d45e4f51-396e-425c-ad86-adadb2d2f4a8",
+    "target2": "2792e1cc-79b2-42d6-9ef9-0a1013590364"
+  },
+  "problems": []
+}

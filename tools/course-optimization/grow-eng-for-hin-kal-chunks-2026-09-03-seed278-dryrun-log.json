@@ -1,0 +1,31 @@
+{
+  "course": "eng_for_hin",
+  "seed": 278,
+  "legoId": "S0278L02",
+  "ranAt": "2026-09-03T19:11:20.654Z",
+  "mode": "dry-run",
+  "from": {
+    "known": "कल रात सब",
+    "target": "everything last night"
+  },
+  "to": {
+    "known": "क्या आपको कल रात सब पूरा करना था",
+    "target": "did you have to finish everything last night"
+  },
+  "sister": {
+    "legoId": "S0278L01",
+    "known": "क्या आपको पूरा करना था",
+    "target": "did you have to finish"
+  },
+  "marker": "करना था — past obligation. The sister already wraps the कल chunk, so the grown unit is the seed sentence itself and is contiguous in both languages.",
+  "ownPhrases": 9,
+  "surviving": 9,
+  "dropped": [],
+  "downstreamTilers": [],
+  "clipsBefore": {
+    "known": null,
+    "target1": null,
+    "target2": null
+  },
+  "problems": []
+}

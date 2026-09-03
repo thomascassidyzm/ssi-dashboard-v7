@@ -1,0 +1,54 @@
+{
+  "course": "eng_for_hin",
+  "seed": 278,
+  "legoId": "S0278L02",
+  "ranAt": "2026-09-03T19:11:26.325Z",
+  "mode": "apply",
+  "from": {
+    "known": "कल रात सब",
+    "target": "everything last night"
+  },
+  "to": {
+    "known": "क्या आपको कल रात सब पूरा करना था",
+    "target": "did you have to finish everything last night"
+  },
+  "sister": {
+    "legoId": "S0278L01",
+    "known": "क्या आपको पूरा करना था",
+    "target": "did you have to finish"
+  },
+  "marker": "करना था — past obligation. The sister already wraps the कल chunk, so the grown unit is the seed sentence itself and is contiguous in both languages.",
+  "ownPhrases": 9,
+  "surviving": 9,
+  "dropped": [],
+  "downstreamTilers": [],
+  "clipsBefore": {
+    "known": null,
+    "target1": null,
+    "target2": null
+  },
+  "problems": [],
+  "decoration": {
+    "decorated": 9,
+    "skipped": 0
+  },
+  "presentationInserted": [
+    {
+      "id": "d5667e2d-9d43-4e9b-a853-06f16f5de656",
+      "text": "अंग्रेज़ी में — 'क्या आपको कल रात सब पूरा करना था' — में :"
+    }
+  ],
+  "introText": "अंग्रेज़ी में — 'क्या आपको कल रात सब पूरा करना था' — में :",
+  "verifiedAfter": {
+    "known_text": "क्या आपको कल रात सब पूरा करना था",
+    "target_text": "did you have to finish everything last night",
+    "clips": {
+      "known": null,
+      "target1": null,
+      "target2": null
+    },
+    "presentationLinkUnchanged": true,
+    "redecorated": 9,
+    "concatMismatches": 0
+  }
+}

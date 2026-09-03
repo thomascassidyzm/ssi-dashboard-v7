@@ -16,40 +16,77 @@ never carried.
 > When it comes up in a seed sentence next, introduce it again… this time with the other sense, and
 > drill the new one with phrases it works in."*
 
-**Outcome in one line.** The merges are all still priced in rounds, so none were done — but the
-"as in" mechanism turned out to be broken for fifteen known languages *and* stale on this course,
-and both were fixed: seven introductions now carry a hand-chosen context that pins the direction,
-four second-sense drills were added, and the code no longer speaks an empty quotation aloud.
+**Outcome in one line.** Two of the six कल chunks now carry their own tense marker and **no round was
+deleted to do it** — the "LEGOs may not overlap" premise that made this look impossible is false, and
+this course disproves it at seed 42. Of the other four, one is prepared and waiting on a single
+decision from Kai and three genuinely cannot be grown; those fall back to the "as in" context, which
+turned out to be broken for fifteen known languages *and* stale on this course. Both were fixed.
 
 ---
 
-## 1. Step one: can any of the six be attached to a sister LEGO cheaply? — **No, and here is why**
+## 1. Kai's question: does the sister LEGO actually hold the tense?
 
-Hindi is verb-final. Every span between कल and the verb that would fix its tense is already owned by
-a sibling LEGO, so growing the chunk either **overlaps** a sibling or leaves a **gap** — both banned.
-The only compliant move is a **merge**, and a merge removes one `is_new` LEGO.
+> *"does the sister merge you were planning involve a sister lego that actually holds the
+> past/future context? Because if they don't, it's pointless as a teaching opportunity! And whether
+> it's cheap is not relevant, I don't care about losing a few phrases, just make new ones"*
+> — Kai, 2026-09-03
 
-**One `is_new` LEGO is exactly one round.** Verified, not assumed: `course_round_index` holds
-**1,321 rows** for this course, one per `(lego_id, seed_number, lego_index)`, indexed by
-`round_index`. Deleting a LEGO deletes its row and shifts every later `round_index` — a learner
-progress migration under the standing content-change protocol.
+**First, a premise that turned out to be false, and it changes the whole shape of the answer.**
 
-My brief says: *if it would delete a round, STOP and report rather than doing it.* So **no merge was
-performed**, including the two cheap ones. Job **#348** is re-pricing all six against today's data
-(the course changed under us: `course_practice_phrases` was 10,947 this morning and 10,945 when I
-took my baseline). The earlier pricing, for reference and **not to be quoted as current**:
+Every earlier pass said the कल chunk cannot be *grown* to reach its verb, because everything in
+between belongs to a sibling and **LEGOs may not overlap** — so the only move was a *merge*, which
+deletes an `is_new` LEGO and therefore a round on a live course.
 
-| LEGO | chunk | phrases that stop tiling | newly failing seeds | round cost |
+**This course already ships two overlapping LEGOs, on this very word.** At seed 42,
+`S0042L02 के मुक़ाबले` is wholly contained inside `S0042L03 कल रात के मुक़ाबले`, both `is_new`, and the
+seed **passes** the course's own gate. Re-verified today through `POST /v2/validate` with an
+in-memory override, which gives the exact downstream blast radius without touching the DB.
+
+So the कल chunk can be **grown to the tensed unit while the sister stays exactly where it is**. The
+LEGO count does not change, `course_round_index` does not move, **no round is deleted and there is
+no learner-progress migration.** The learner gets the sister as one rung and the grown, self-dating
+chunk as the next — which is the ordinary SSi build ladder.
+
+That removes cost from the argument entirely, exactly as Kai asked, and leaves only his question.
+
+### The six, as a table
+
+| seed | the sister LEGO, quoted | does it supply the tense? | verdict | why |
 |---|---|---|---|---|
-| S0030L03 | कल | 99 | 47 | 1 |
-| S0155L04 | कल सुबह | 45 | 32 | 1 |
-| S0167L02 | कल दोपहर | 13 | 9 | 1 |
-| S0192L02 | कल रात | 6 | 5 | 1 |
-| S0042L03 | कल रात के मुक़ाबले | 3 | 1 | 1 |
-| S0278L02 | कल रात सब | 0 | 0 | 1 |
+| **278** | `क्या आपको पूरा करना था` — *"did you have to finish"* | **Yes — करना था, past obligation** | **GROWN ✔ applied** | Sister already wraps the कल chunk, so the grown unit is the seed sentence, contiguous in both languages. All 9 existing drills already contain it; **0** phrases anywhere else tiled the old chunk. Cost: nothing at all. |
+| **192** | `मैं व्यस्त हूँ` — *"I'm busy"* | **Yes — हूँ, an overt present copula** (Hindi present cannot host कल = *yesterday*) | **GROWN ✔ applied** | Same wrap. Drill set re-authored whole (8 new, every frame taught by seed 192, every one keeping हूँ); the 2 phrases elsewhere that tiled `कल रात` repaired to आज रात. |
+| **167** | `आपको क्या करना है` — *"what do you need to do"* | **Yes — करना है, present obligation** | **grow-eligible, NOT applied — one decision for Kai** | Same wrap, and it qualifies on the criterion. But the grown chunk is a whole question, so its drills can only prefix or append (the 278 pattern), and growing it strips *"tomorrow afternoon"* from the learner's kit: **11 phrases in 8 unrelated seeds** would have to have their time word changed — sentences about taking a book, seeing your mother, going to the doctor, that have nothing to do with कल. Ready to go on one word from Kai; plan in §1b. |
+| **42** | `ज़्यादा अच्छा महसूस करने लगा था` — *"I was starting to feel better"* | **Yes — करने लगा था, past inceptive** | **do not grow — quality, not cost** | Adjacent, and **0** downstream users, so it is free. But the grown chunk is 45 characters and seed 42 is early: only **two** sentence frames exist by then (लेकिन *but*, क्योंकि *because*). Six of its eight drills would be padding, which the canon forbids outright. The "as in" context in §3 does the job without that. |
+| **30** | `आपसे पूछना` — *"to ask you"*: a **bare infinitive, no tense.** `मैं चाहता था` — *"I wanted"*: has चाहता था, but it is discontinuous and its English half sits at the **opposite end** of the sentence from *"yesterday"* | **No — not adjacently** | **no growth** | The only unit containing both is the whole sentence, and growing to it deletes standalone *"yesterday"* from the course: **104 phrases across 66 seeds** tile that chunk. कल alone is the one that most needs the "as in" fallback, and gets it. |
+| **155** | `कुछ मिनट` — *"for a few minutes"*: **no tense.** `मुझे कोई आपत्ति नहीं` — *"I don't mind"*: a present frame with an **elided** copula, no overt marker at all | **No** | **no growth** | The nearest sister supplies nothing; the only thing that would is the whole sentence, three legos away, and even then the "tense" is an elision. That is precisely the pointless case. **43 phrases across 35 seeds** tile `कल सुबह`. |
 
-**S0278L02 and S0042L03 remain the two cheap ones and are Kai's to call.** Say the word and each is
-a short job — but each costs a round, and that is the whole of the decision.
+**Result: 2 grown, 1 waiting on Kai, 3 on the "as in" fallback.** Not one round was deleted.
+
+### 1b. Seed 167, prepared and waiting
+
+If Kai says go: `S0167L02` grows from `कल दोपहर` to `आपको कल दोपहर क्या करना है` /
+*"what do you need to do tomorrow afternoon"*, keeping `S0167L01`. Drills follow seed 278's shape —
+prefix (`तो` *so*, `और` *and*, `लेकिन` *but*) and append (`काम पर` *at work*, `यहाँ` *here*), because
+an embedded question is unreachable in this course (the 47-row finding of 2026-09-03). The 11
+downstream repairs are a same-slot swap of `कल दोपहर` for a taught, unambiguous time word — none of
+them carries a single clip, so they cost no audio:
+
+| phrase | becomes |
+|---|---|
+| s169 *what do you want me to do tomorrow afternoon?* | …this evening? (आज शाम) |
+| s171 *do you want me to help you tomorrow afternoon?* | …this evening? |
+| s171 *…help you look for it tomorrow afternoon?* | …this afternoon? (आज दोपहर बाद) |
+| s175 *what do you want to do tomorrow afternoon?* | …tonight? (आज रात) |
+| s179 *what are you going to do tomorrow afternoon?* | …next week? (अगले हफ़्ते) |
+| s181 *I have to take that book tomorrow afternoon* | …this evening |
+| s181 *I'd like to see my mother tomorrow afternoon* | …next week |
+| s181 *I want to go to the doctor tomorrow afternoon* | …next month (अगले महीने) |
+| s186 *…talk about the story tomorrow afternoon?* | …on Sunday morning? (रविवार सुबह) |
+| s190 *do you mind if I ask you tomorrow afternoon?* | …this evening? |
+| s249 *I want you to help me tomorrow afternoon* | …this afternoon |
+
+**The one thing worth Kai's eye:** eleven sentences that have nothing to do with कल would change what
+they say. That is the only reason this one was not just done.
 
 ---
 
@@ -117,8 +154,14 @@ contain the chunk, and to sit under the engine's own chunk/context overlap limit
 | 42 | S0042L03 | कल रात के मुक़ाबले → *than last night* | past | मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था। | करने लगा था |
 | **155** | S0155L04 | कल सुबह → *tomorrow morning* | **future — the reintroduction** | मैं कल सुबह मिलना चाहूँगा। | चाहूँगा |
 | 167 | S0167L02 | कल दोपहर → *tomorrow afternoon* | future | क्या आप कल दोपहर जाना चाहते हैं? | चाहते हैं |
-| 192 | S0192L02 | कल रात → *tomorrow night* | future | मुझे कल रात जाना है। | जाना है |
-| **278** | S0278L02 | कल रात सब → *everything last night* | **past — both senses now in play** | क्या आपको कल रात सब पूरा करना था? | करना था |
+| 192 | S0192L02 | कल रात → *tomorrow night* | future | मुझे कल रात जाना है। | जाना है — **superseded: this chunk has since been GROWN to `मैं कल रात व्यस्त हूँ` and dates itself** |
+| **278** | S0278L02 | कल रात सब → *everything last night* | **past — both senses now in play** | क्या आपको कल रात सब पूरा करना था? | करना था — **superseded: this chunk has since been GROWN to the full question and dates itself** |
+
+**Two of these seven have since been superseded by the growths in §1** — seeds 192 and 278 no longer
+need an "as in" context, because the chunk the learner is prompted with now carries its own tense
+marker. Their contexted introductions were left in place as pending rows (nothing is deleted here)
+and a Frame A introduction quoting the grown chunk was authored beside them. The remaining five —
+seeds 12, 30, 42, 155, 167 — are the live "as in" set.
 
 **The collisions, stated deliberately.** Kai authorised these: *"won't matter that it causes a ZUT —
 because we're handling it."*
@@ -212,49 +255,65 @@ estate-wide to every present-tense "than / compared to" construction, not just t
 
 ---
 
-## 6. Measured, before and after
+## 6. Measured, before and after — the whole day's work
+
+Baseline taken by me at the start, re-taken after every write. The course changed under this job
+(another pass re-authored phrases at 10:47), which is why nothing here is quoted from an earlier report.
 
 | | before | after |
 |---|---|---|
 | `POST /api/v2/validate/eng_for_hin` — seeds passed | 622 | **622** |
 | seeds failed | 46 | **46** |
-| failing seed **set** | — | **identical, 0 newly failing, 0 newly passing** |
-| `course_round_index` rows | 1,321 | **1,321** |
+| failing seed **set** | — | **identical: 0 newly failing, 0 newly passing** |
+| `course_round_index` rows | 1,321 | **1,321 — not one round moved** |
+| `course_legos` | 1,489 | **1,489 — no LEGO added or deleted** |
 | phrases losing tileability | — | **0** |
-| decompositions concatenating back to `target_text` | 10,915 / 10,915 | **10,919 / 10,919, 0 mismatched** |
-| `course_practice_phrases` | 10,945 | 10,949 (+4) |
+| decompositions concatenating back to `target_text` | 10,915 / 10,915 | **10,918 / 10,918, 0 mismatched** |
+| `course_practice_phrases` | 10,945 | 10,948 |
+| `course_audio` presentation rows | 2,964 | 2,973 (+9, all pending) |
+| rows deleted | — | 9 (seed 192's superseded drill set, replaced in the same run) |
 | कल prompts with no internal tense context | 1 (seed 74) | **0** |
-| `course_audio` presentation rows | 2,964 | 2,971 (+7) |
-| `course_legos.presentation_audio_id` moved | — | **0** |
-| rows deleted | — | **0** |
+| bare कल LEGO debut cues | 6 | **4** — 278 and 192 now carry their own tense |
+
+**Writes, all on production Supabase, all re-read after the write:**
+1. Seven "as in" introductions authored as pending rows; `linksUnchanged: true`.
+2. Four second-sense drills added (LEGOs 8 → 9 phrases).
+3. Seed 74's verbless gratitude phrase rewritten (`कल` → `पिछले महीने`).
+4. **`S0278L02` grown** to `क्या आपको कल रात सब पूरा करना था`; 9 drills re-decomposed; full sweep
+   unchanged at 622/46.
+5. **`S0192L02` grown** to `मैं कल रात व्यस्त हूँ`; its 9 drills replaced with 8 authored ones; the 2
+   downstream phrases that tiled the old chunk repaired to आज रात; 19 phrases re-decomposed; full
+   sweep unchanged at 622/46.
 
 ### Audio — counted, none generated
 
 | | |
 |---|---|
-| Presentation clips now wanted | **7** (one per authored introduction) |
-| Practice clips now wanted | **12** (4 phrases × known + target1 + target2) |
-| Clip links dropped or nulled by this work | **0** |
+| Presentation clips now wanted | **9** |
+| Practice clips now wanted | **12** (4 new drills) + **24** (8 re-authored seed-192 drills) |
+| Clip links nulled by the growths | **5** — `S0192L02` known/target1/target2, and its presentation link (nulled by the DB's own text-change trigger, not by this job) |
+| Clip links dropped elsewhere | **0** — every other row touched carried no clips at all |
 | `course_audio` rows deleted | **0** |
 | TTS generated | **none** |
-| Audio pass queued | **yes**, twice, naming both sets |
+| Audio pass queued | **yes**, naming each set |
 
-**None of these 19 clips can be rendered today, by anyone.** All four of this course's voices —
-known, target1, target2 and presentation — are **xAI**, and xAI is retired; phase8 passes the
-provider explicitly, so a render hard-fails rather than falling back. That is a standing estate
-condition Kai holds, reported here as a number, not solved.
+**None of these clips can be rendered today, by anyone.** All four voices on this course —
+known, target1, target2, presentation — are **xAI**, and xAI is retired; phase8 passes the provider
+explicitly, so a render hard-fails rather than falling back. Reported as a number, not solved.
 
-For scale: only **1,240 of 10,945** practice phrases on this course (11.3%) currently have all three
-clips, and the learner walk **drops** any phrase missing them (`phraseHasFullAudio`,
-`ssi-learning-app/api/courses/[code]/cycles.ts`). The four new drills join that queue — they are not
-new silent slots, and they reach a learner the moment the course is recast.
+**One honest regression to name.** Growing `S0192L02` nulled its known clip and its presentation
+link, so that LEGO's debut is **silent** until the recast, where before it was audible-but-wrong (the
+old introduction said *"the English for 'busy'…"* and answered *"tomorrow night"*). Everything else
+touched was already silent: only **1,240 of 10,948** phrases on this course (11.3%) have all three
+clips, and the learner walk **drops** the rest (`phraseHasFullAudio`,
+`ssi-learning-app/api/courses/[code]/cycles.ts`) rather than playing a gap.
 
 ---
 
 ## 7. What is still open
 
-1. **The six merges are unpriced-for-today and undone** — pending job #348, and then Kai's call.
-   Each costs one round.
+1. **Seed 167** — grow-eligible on Kai's criterion, fully prepared in §1b, waiting on one word from
+   him because it changes what eleven unrelated sentences say. Nothing else about it is unresolved.
 2. **777 stale introductions on this course.** Out of scope here, and the largest thing found. A
    course-wide `/regenerate-presentations` would recompute them all — but it uses a **random roll**
    (~15–30% get no context at all) rather than the Frame A/B judgment agent the redesign specified
