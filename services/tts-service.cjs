@@ -264,10 +264,71 @@ async function assertConsentedVoice(config, provider = null) {
 
 function assertNotHumanVoiceCourse(config) {
   const courseCode = config?.courseCode;
-  if (courseCode && isHumanVoiceCourse(courseCode)) {
-    throw new Error(`Human-voice course blocked (403): ${courseCode} is human-voiced only — no TTS may ever be generated (Tom's ruling 2026-07-25). Skip this course at the pipeline entry point.`);
-  }
+  if (!courseCode || !isHumanVoiceCourse(courseCode)) return;
+  if (isKnownSideOfHumanVoiceCourse(courseCode, config?.language)) return;
+  throw new Error(`Human-voice course blocked (403): ${courseCode} is human-voiced only — no TTS may ever be generated (Tom's ruling 2026-07-25). Skip this course at the pipeline entry point.`);
 }
+
+/**
+ * THE ONE THING A HUMAN-VOICE COURSE MAY STILL SYNTHESISE: its KNOWN side.
+ *
+ * NARROWED on Tom's instruction, 2026-09-03: "the English lines will be TTS,
+ * because it is fast and cheap." Every reason the human-voice rulings give is
+ * about the human-voiced LANGUAGE — "a synthesised Welsh clip reaching a
+ * learner is a defect", "Aran's and Catrin's recordings are never overwritten
+ * by synthesis", "Welsh gaps are a RECORDING worklist". None of them is about
+ * English. Every other pod in the estate synthesises its English known track
+ * already; the Welsh pods did not only because pod-0 happened to cast both
+ * tracks to humans.
+ *
+ * So the guard now asks which LANGUAGE this clip is, and permits exactly one
+ * answer: the known half of the course's own code. It is deliberately narrow in
+ * three ways, because getting this wrong means a synthesised Welsh clip.
+ *
+ *   - Permission is by the COURSE CODE's known half, never by a blocklist of
+ *     languages. `isHumanVoiceLang` cannot be used here: it speaks the estate's
+ *     database codes ('cym', 'bre') and a TTS config speaks BCP-47 ('cy', 'br'),
+ *     so it would answer "not human-voiced" for a Welsh clip and open the very
+ *     hole this closes.
+ *   - A call with NO language stated is refused, exactly as before. Silence is
+ *     not permission.
+ *   - The ENTRY GUARDS are untouched. phase 8's /generate, the audio-pass
+ *     runner and every rescue sweep still skip these courses whole, so no bulk
+ *     queue can reach here; this only ever opens for a caller that names one
+ *     course, one track and one language on purpose.
+ *
+ * cym_n_for_eng + 'en' → allowed (English gloss). cym_n_for_eng + 'cy' →
+ * refused. bre_for_fra + 'fr' → allowed; + 'br' → refused. pdc_for_eng + 'de'
+ * → refused. The residual risk is a Welsh clip mislabelled as English by its
+ * caller, which is a defect the clip-language guard exists to catch and which
+ * this check does not make more likely.
+ */
+// The BCP-47 primary subtag each known-side language is spelt as in a TTS
+// config, beside the estate database code the course code is spelt in. An
+// EXPLICIT table, not a prefix test: 'jpn' does not start with 'ja', and a
+// prefix test that got that wrong once would get something worse wrong later. A
+// tag that is not in this table is refused, so adding a known side is a
+// deliberate line here rather than something that quietly starts working.
+const KNOWN_SIDE_TAG = {
+  eng: 'en',
+  fra: 'fr',
+  jpn: 'ja',
+  yor: 'yo',
+  spa: 'es',
+  deu: 'de',
+  cmn: 'zh',
+  zho: 'zh',
+};
+
+function isKnownSideOfHumanVoiceCourse(courseCode, language) {
+  const parts = String(courseCode).split('_for_');
+  if (parts.length !== 2) return false;
+  const known = parts[1].toLowerCase();
+  const tag = String(language || '').toLowerCase().split('-')[0].trim();
+  if (!tag) return false;                       // silence is not permission
+  return tag === known || tag === KNOWN_SIDE_TAG[known];
+}
+
 
 /**
  * Generate speech using ElevenLabs API
@@ -965,6 +1026,7 @@ function getVoiceForRole(role, voiceMapping) {
 }
 
 module.exports = {
+  isKnownSideOfHumanVoiceCourse,
   assertConsentedVoice,
   generate,
   generateWithRetry,
