@@ -512,8 +512,8 @@
               v-for="cell in seedGrid"
               :key="cell.seed"
               class="seed-cell w-5 h-5 rounded-sm cursor-pointer transition-colors"
-              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
-              :data-seed="cell.seed"
+              :class="[seedCellClass(cell), genderPairSeeds.has(cell.seed) ? 'has-gender-pair' : '', selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
+              :data-seed="genderPairSeeds.has(cell.seed) ? cell.seed + ' ♂/♀' : cell.seed"
               @click="selectSeed(cell.seed)"
             ></div>
           </div>
@@ -526,6 +526,9 @@
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
+            <span v-if="genderPairSeeds.size > 0" class="flex items-center gap-1.5">
+              <span class="w-3 h-3 rounded-sm bg-surface-2/30 gender-pair-swatch"></span> ♂/♀ cue pair ({{ genderPairSeeds.size }})
+            </span>
           </div>
         </div>
       </section>
@@ -541,7 +544,11 @@
           <div v-if="seedViewSeedText" class="mb-4 p-3 bg-surface/60 border border-line/40 rounded">
             <div class="text-[10px] text-faint mb-1 font-mono tracking-wider uppercase">Seed</div>
             <div class="flex items-start gap-2 flex-wrap">
-              <span class="text-base font-medium text-ink">{{ seedViewSeedText.known_text || '…' }}</span>
+              <GenderPairText
+                class="text-base font-medium text-ink"
+                :text="seedViewSeedText.known_text || '…'"
+                :pair="genderPairFor(seedViewSeedText.known_text)"
+              />
               <span class="text-faint text-sm mt-0.5">→</span>
               <span
                 class="text-base text-emerald-400"
@@ -559,7 +566,11 @@
                 <span class="text-[10px] font-mono text-faint">L{{ lego.lego_index }}</span>
                 <template v-if="lego.meta">
                   <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-surface-2/40 text-muted'">{{ lego.meta.type || lego.meta.lego_type }}</span>
-                  <span class="text-base font-medium text-ink">{{ lego.meta.known_text }}</span>
+                  <GenderPairText
+                    class="text-base font-medium text-ink"
+                    :text="lego.meta.known_text"
+                    :pair="genderPairFor(lego.meta.known_text)"
+                  />
                   <span class="text-faint text-sm">→</span>
                   <span
                     class="text-base font-medium text-emerald-400"
@@ -573,7 +584,7 @@
                 <span class="font-mono w-8 shrink-0 text-xs" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-faint' : 'text-amber-400/70'">
                   {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
                 </span>
-                <span class="text-ink">{{ phrase.known_text }}</span>
+                <GenderPairText class="text-ink" :text="phrase.known_text" :pair="genderPairFor(phrase.known_text)" />
                 <span class="text-faint shrink-0">→</span>
                 <span
                   class="text-muted"
@@ -623,7 +634,8 @@ import { useRouter } from 'vue-router'
 import { getApiUrl, fetchJson } from '@/services/api'
 import { dirFor } from '@/utils/textDirection.js'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
-import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail } from '@/services/supabase'
+import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail, getKnownGenderPairs } from '@/services/supabase'
+import GenderPairText from '@/components/production/GenderPairText.vue'
 
 const router = useRouter()
 
@@ -735,6 +747,30 @@ function showActionError(msg) {
 // Seed grid state
 const seedGrid = ref([])
 const seedGridExpanded = ref(true)
+
+// Known-side gender pairs (male/female speaker wordings of the same cue).
+// Loaded once per course, in one batched read; empty for ungendered courses.
+const genderPairs = ref(new Map())
+const genderPairSeeds = ref(new Set())
+let genderPairsCourse = null
+async function loadGenderPairs() {
+  const courseCode = effectiveCourseCode.value
+  if (!courseCode || courseCode === genderPairsCourse || !isSupabaseConfigured()) return
+  genderPairsCourse = courseCode
+  try {
+    const { pairs, seeds } = await getKnownGenderPairs(courseCode)
+    genderPairs.value = pairs
+    genderPairSeeds.value = seeds
+  } catch (err) {
+    console.warn('Failed to load known-side gender pairs:', err)
+    genderPairs.value = new Map()
+    genderPairSeeds.value = new Set()
+  }
+}
+// Both speaker wordings for a known text, or null when it has no pair
+function genderPairFor(text) {
+  return (text && genderPairs.value.get(text)) || null
+}
 
 // Build monitor — direct Supabase reads + Realtime (replaces HTTP polling)
 const buildMonitor = useBuildMonitor(effectiveCourseCode)
@@ -1895,6 +1931,7 @@ onMounted(async () => {
     if (isSupabaseConfigured()) {
       fetchProgress()
       fetchSeedGrid()
+      loadGenderPairs()
     }
     checkComponentGaps()
   }
@@ -2025,6 +2062,26 @@ onUnmounted(() => {
 }
 .seed-cell:hover::after {
   opacity: 1;
+}
+
+/* Known-side gender pair: a corner dot on the cell, so a scan of the grid shows
+   which cues have a male/female speaker wording. Status colours are untouched. */
+.gender-pair-swatch,
+.seed-cell.has-gender-pair {
+  position: relative;
+}
+.gender-pair-swatch::before,
+.seed-cell.has-gender-pair::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  width: 5px;
+  height: 5px;
+  border-radius: 9999px;
+  background: rgb(232 121 249);
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.45);
+  pointer-events: none;
 }
 
 /* ── LIGHT MODE status-text contrast ──

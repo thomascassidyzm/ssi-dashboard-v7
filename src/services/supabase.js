@@ -432,6 +432,74 @@ export async function getSeedGrid(courseCode) {
 }
 
 /**
+ * Get known-side gender pairs for a course.
+ *
+ * Gendered known languages (e.g. Hindi) mark the SPEAKER's gender, so a cue can
+ * exist in a male-speaker and a female-speaker wording. Those pairs live in
+ * `course_gender_expansions` with `text_side = 'known'`, keyed on the exact
+ * `original_text` (same match rule the TTS-time lookup uses in
+ * services/gender-haiku-service.cjs `loadGenderMap`).
+ *
+ * Display only — nothing here touches audio, alternation or approval state.
+ * Returns empty structures for a course with no known-side rows.
+ *
+ * @param {string} courseCode
+ * @returns {Promise<{pairs: Map<string, {m: string, f: string}>, seeds: Set<number>}>}
+ *   pairs — known text (either wording) -> both wordings
+ *   seeds — seed numbers whose own cue carries a pair (for the grid marker)
+ */
+export async function getKnownGenderPairs(courseCode) {
+  const empty = { pairs: new Map(), seeds: new Set() }
+  if (!supabase || !courseCode) return empty
+
+  // One batched read of the expansions (paged: PostgREST caps a page at 1000,
+  // and offset paging needs an explicit order) + one read of the seed cues.
+  const fetchExpansions = async () => {
+    const rows = []
+    for (let from = 0; ; from += 1000) {
+      const { data, error } = await supabase
+        .from('course_gender_expansions')
+        .select('original_text, expanded_f, expanded_m')
+        .eq('course_code', courseCode)
+        .eq('text_side', 'known')
+        .order('original_text', { ascending: true })
+        .range(from, from + 999)
+      if (error) {
+        console.warn('[Supabase] getKnownGenderPairs error:', error.message)
+        return rows
+      }
+      rows.push(...(data || []))
+      if (!data || data.length < 1000) return rows
+    }
+  }
+
+  const [expansions, seedsRes] = await Promise.all([
+    fetchExpansions(),
+    supabase
+      .from('course_seeds')
+      .select('seed_number, known_text')
+      .eq('course_code', courseCode)
+  ])
+
+  const pairs = new Map()
+  for (const r of expansions) {
+    if (!r.expanded_f || !r.expanded_m || r.expanded_f === r.expanded_m) continue
+    const pair = { m: r.expanded_m, f: r.expanded_f }
+    // Key on both wordings so a lookup hits whichever one the row stores.
+    pairs.set(r.original_text, pair)
+    pairs.set(r.expanded_m, pair)
+    pairs.set(r.expanded_f, pair)
+  }
+
+  const seeds = new Set()
+  for (const s of seedsRes.data || []) {
+    if (s.known_text && pairs.has(s.known_text)) seeds.add(s.seed_number)
+  }
+
+  return { pairs, seeds }
+}
+
+/**
  * Get QA summary (flagged seed counts)
  * Replaces: /api/production/:code/qa-summary
  * Note: Flags live on course_seeds, not course_practice_phrases
