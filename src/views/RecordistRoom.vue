@@ -356,6 +356,11 @@
         @save="saveEdit($event.id, $event.text)"
       />
 
+      <!-- The list on this screen edits too, so it needs the same one short
+           line. Without it an edit made here that DID clear a take said nothing
+           at all — the one case where silence is wrong. -->
+      <p v-if="savedNote" class="saved-note">{{ savedNote }}</p>
+
       <div v-if="sessionLines.length" class="listen-back">
         <h3>Listen back</h3>
         <p class="listen-note">These play the clip stored on the server, not your local recording.
