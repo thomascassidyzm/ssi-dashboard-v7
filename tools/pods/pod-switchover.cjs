@@ -73,6 +73,7 @@ const { planMigration, POSITION_BOUND } = require('./pod-state-migrate.cjs')
 const { realHumanLearners } = require('../../services/shared/learner-counts.cjs')
 const { checkPodCast, loadPodForCastCheck, sameVoiceAddress } = require('./pod-cast-gate.cjs')
 const { findInheritedSplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
+const { planPodLegoRemap } = require('./pod-legos-remap.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const ROLLBACK = process.argv.includes('--rollback')
@@ -148,6 +149,37 @@ const reslug = (id, oldSlug, newSlug) => {
 /** Move a whole pod — header row and every sentence — from one slug to another.
  *  Insert-then-delete rather than UPDATE, because listening_pod_sentences.pod_id is a
  *  foreign key with no ON UPDATE CASCADE. */
+/**
+ * CARRY THE PROVENANCE POINTERS TOO (2026-09-03, job #157's residue).
+ *
+ * `pod_legos.first_seen_sentence` is a slot key like the rest, and this tool never
+ * carried it — so all 22 courses that crossed to `pod-1` left it naming ids that no
+ * longer existed. Measured 2026-09-03: 7,802 dangling rows across 19 courses,
+ * repaired in one pass by `repair-pod-legos-first-seen.cjs`. Doing the carry HERE is
+ * what stops it accruing one course at a time forever.
+ *
+ * Nothing joins on the column, so this is provenance, not plumbing — which is why it
+ * is not a gate and never aborts the flip on its own. It runs inside the same
+ * transaction as the pod move, using the same proved-remap rule
+ * (`pod-legos-remap.cjs`): a row is rewritten only when the rewritten id already
+ * exists, never guessed.
+ */
+async function carryPodLegos (db, course, fromSlug, toSlug) {
+  const legos = (await db.query(
+    `select id, first_seen_sentence from pod_legos
+      where first_seen_sentence like $1`, [`${course}:${fromSlug}:%`])).rows
+  if (!legos.length) return 0
+  const live = new Set((await db.query(
+    `select id from listening_pod_sentences where pod_id = $1`, [`${course}:${toSlug}`])).rows.map(r => r.id))
+  const { remap } = planPodLegoRemap({ legos, liveSentenceIds: live })
+  for (const r of remap) {
+    await db.query(
+      `update pod_legos set first_seen_sentence = $1 where id = $2 and first_seen_sentence = $3`,
+      [r.to, r.legoId, r.from])
+  }
+  return remap.length
+}
+
 async function movePod (db, fromSlug, toSlug, title) {
   const fromId = `${COURSE}:${fromSlug}`
   const toId = `${COURSE}:${toSlug}`
@@ -298,6 +330,7 @@ async function main () {
       // Strip the retirement marker as the pod comes back to life, so a rolled-back course
       // is not left showing learners a title that says [RETIRED].
       await movePod(db, RETIRED, LIVE, (retired.title || '').replace(/^\[RETIRED [^\]]+\] /, '') || null)
+      await carryPodLegos(db, COURSE, PROMOTE_TO, LIVE)
       if (backPlan) {
         for (const a of backPlan.actions) {
           const del = () => db.query(
@@ -507,6 +540,7 @@ async function main () {
   try {
     const archived = await movePod(db, LIVE, RETIRED, `[RETIRED ${STAMP}] ${live.title || LIVE}`)
     const promoted = await movePod(db, STAGED, PROMOTE_TO, newTitle || null)
+    const legosCarried = await carryPodLegos(db, COURSE, LIVE, PROMOTE_TO)
     // Post-conditions asserted inside the transaction: nothing lost, slug now live.
     const after = Number((await db.query('select count(*) c from listening_pod_sentences where pod_id = $1', [`${COURSE}:${PROMOTE_TO}`])).rows[0].c)
     if (after !== Number(s.n)) throw new Error(`post-check failed: live pod holds ${after} sentences, expected ${s.n}`)
@@ -607,6 +641,7 @@ async function main () {
 
     await db.query('commit')
     log(`\nswitched. archived ${archived} → ${RETIRED}, promoted ${promoted} → ${PROMOTE_TO}.`)
+    log(`  pod_legos.first_seen_sentence carried: ${legosCarried} row(s)`)
     if (plan) log(`learner progress: ${carried} carried, ${dropped} dropped.`)
   } catch (e) { await db.query('rollback'); throw e }
 
