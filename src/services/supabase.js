@@ -432,97 +432,59 @@ export async function getSeedGrid(courseCode) {
 }
 
 /**
- * Get known-side gender pairs for a course.
+ * Get the gender pairs for a course, both sides.
  *
- * Gendered known languages (e.g. Hindi) mark the SPEAKER's gender, so a cue can
- * exist in a male-speaker and a female-speaker wording. Those pairs live in
- * `course_gender_expansions` with `text_side = 'known'`, keyed on the exact
- * `original_text` (same match rule the TTS-time lookup uses in
+ * A text can exist in two gendered wordings, and the two sides vary on
+ * DIFFERENT AXES. A gendered known language (e.g. Hindi) marks WHO IS SPEAKING
+ * — करता / करती. The target side marks WHO IS BEING TALKED ABOUT — him / her.
+ * They are independent, so they are returned as two separate maps and the view
+ * gives each its own control; one switch could only ever reach 2 of the 4
+ * combinations of a row paired on both sides.
+ *
+ * Pairs live in `course_gender_expansions`, keyed on the exact `original_text`
+ * (same match rule the TTS-time lookup uses in
  * services/gender-haiku-service.cjs `loadGenderMap`).
  *
- * A seed is marked when ANY of its known-side text is paired — the seed cue,
- * a LEGO, a LEGO component, or a practice phrase (build / use / component). A
- * seed whose own cue is ungendered but whose phrases are gendered is exactly
- * the case the marker has to catch, so every layer is checked, not just the cue.
- *
- * Cost is kept down by asking each table for the known-side columns only, and
- * by reading the expansions FIRST: a course with no known-side rows stops there
- * and never touches the phrase table.
+ * One read per course, both sides at once, and no content tables are touched:
+ * the maps are looked up against text the seed view has already loaded.
  *
  * Display only — nothing here touches audio, alternation or approval state.
- * Returns empty structures for a course with no known-side rows.
+ * Returns empty maps for a course with no expansion rows, which is the great
+ * majority of the estate.
  *
  * @param {string} courseCode
- * @returns {Promise<{pairs: Map<string, {m: string, f: string}>, seeds: Set<number>}>}
- *   pairs — known text (either wording) -> both wordings
- *   seeds — seed numbers with a pair at any layer (for the grid marker)
+ * @returns {Promise<{known: Map<string, {m: string, f: string}>, target: Map<string, {m: string, f: string}>}>}
+ *   each map: text (original or either wording) -> both wordings
  */
-export async function getKnownGenderPairs(courseCode) {
-  const empty = { pairs: new Map(), seeds: new Set() }
+export async function getGenderPairs(courseCode) {
+  const empty = { known: new Map(), target: new Map() }
   if (!supabase || !courseCode) return empty
 
-  // A course's whole known-side expansion set in one read. PAGE_MAX is a
-  // ceiling, not a page size — PostgREST returns the lot in a single response,
-  // so there is no offset paging here and no ordering to keep stable.
+  // A course's whole expansion set in one read. PAGE_MAX is a ceiling, not a
+  // page size — PostgREST returns the lot in a single response, so there is no
+  // offset paging here and no ordering to keep stable.
   const PAGE_MAX = 99999
   const { data: expansions, error } = await supabase
     .from('course_gender_expansions')
-    .select('original_text, expanded_f, expanded_m')
+    .select('original_text, expanded_f, expanded_m, text_side')
     .eq('course_code', courseCode)
-    .eq('text_side', 'known')
     .range(0, PAGE_MAX)
   if (error) {
-    console.warn('[Supabase] getKnownGenderPairs error:', error.message)
+    console.warn('[Supabase] getGenderPairs error:', error.message)
     return empty
   }
 
-  const pairs = new Map()
+  const out = { known: new Map(), target: new Map() }
   for (const r of expansions || []) {
     if (!r.expanded_f || !r.expanded_m || r.expanded_f === r.expanded_m) continue
+    const map = out[r.text_side === 'target' ? 'target' : 'known']
     const pair = { m: r.expanded_m, f: r.expanded_f }
     // Key on both wordings so a lookup hits whichever one the row stores.
-    pairs.set(r.original_text, pair)
-    pairs.set(r.expanded_m, pair)
-    pairs.set(r.expanded_f, pair)
+    map.set(r.original_text, pair)
+    map.set(r.expanded_m, pair)
+    map.set(r.expanded_f, pair)
   }
-  // Ungendered course: stop before reading any content.
-  if (pairs.size === 0) return empty
-
-  // Which seeds have a paired known text at any layer. Only the two columns
-  // needed to answer that are fetched — never the target text or the rest.
-  // The three reads run together; a cold phrase table occasionally hits the
-  // statement timeout under that load, so a failed layer is retried once
-  // rather than silently leaving its seeds unmarked.
-  const layer = async (table, columns) => {
-    const read = () => supabase
-      .from(table)
-      .select(columns)
-      .eq('course_code', courseCode)
-      .range(0, PAGE_MAX)
-    let res = await read()
-    if (res.error) res = await read()
-    if (res.error) console.warn(`[Supabase] getKnownGenderPairs ${table}:`, res.error.message)
-    return res
-  }
-  const layers = await Promise.all([
-    layer('course_seeds', 'seed_number, known_text'),
-    // `components` carries an M-LEGO's component known texts, which are a layer
-    // of their own: a few are gendered without the LEGO or any phrase being so.
-    layer('course_legos', 'seed_number, known_text, components'),
-    layer('course_practice_phrases', 'seed_number, known_text')
-  ])
-
-  const seeds = new Set()
-  for (const res of layers) {
-    for (const row of res.data || []) {
-      if (row.known_text && pairs.has(row.known_text)) seeds.add(row.seed_number)
-      for (const c of Array.isArray(row.components) ? row.components : []) {
-        if (c && c.known && pairs.has(c.known)) seeds.add(row.seed_number)
-      }
-    }
-  }
-
-  return { pairs, seeds }
+  return out
 }
 
 /**

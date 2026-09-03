@@ -510,8 +510,8 @@
               v-for="cell in seedGrid"
               :key="cell.seed"
               class="seed-cell w-5 h-5 rounded-sm cursor-pointer transition-colors"
-              :class="[seedCellClass(cell), genderPairSeeds.has(cell.seed) ? 'has-gender-pair' : '', selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
-              :data-seed="genderPairSeeds.has(cell.seed) ? cell.seed + ' ♂/♀' : cell.seed"
+              :class="[seedCellClass(cell), selectedSeed === cell.seed ? 'ring-2 ring-white/60 ring-offset-1 ring-offset-surface' : '']"
+              :data-seed="cell.seed"
               @click="selectSeed(cell.seed)"
             ></div>
           </div>
@@ -524,9 +524,6 @@
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
-            <span v-if="genderPairSeeds.size > 0" class="flex items-center gap-1.5" title="Seed cue, LEGO, component or practice phrase has a male/female speaker wording">
-              <span class="w-3 h-3 rounded-sm bg-surface-2/30 gender-pair-swatch"></span> ♂/♀ pair in seed ({{ genderPairSeeds.size }})
-            </span>
           </div>
         </div>
       </section>
@@ -541,18 +538,20 @@
           <!-- Seed sentence -->
           <div v-if="seedViewSeedText" class="mb-4 p-3 bg-surface/60 border border-line/40 rounded">
             <div class="text-[10px] text-faint mb-1 font-mono tracking-wider uppercase">Seed</div>
-            <div class="flex items-start gap-2 flex-wrap">
+            <div class="flex flex-col sm:flex-row sm:items-start gap-x-2">
               <GenderPairText
                 class="text-base font-medium text-ink"
                 :text="seedViewSeedText.known_text || '…'"
-                :pair="genderPairFor(seedViewSeedText.known_text)"
+                :pair="knownPairFor(seedViewSeedText.known_text)"
               />
-              <span class="text-faint text-sm mt-0.5">→</span>
-              <span
+              <span class="text-faint text-sm mt-0.5 hidden sm:inline">→</span>
+              <GenderPairText
                 class="text-base text-emerald-400"
+                axis="referent"
+                :text="seedViewSeedText.target_text || '…'"
+                :pair="targetPairFor(seedViewSeedText.target_text)"
                 :dir="dirFor(seedViewSeedText.target_text)"
-                style="unicode-bidi: isolate"
-              >{{ seedViewSeedText.target_text || '…' }}</span>
+              />
             </div>
           </div>
           <div v-if="seedViewLoading" class="text-sm text-faint animate-pulse py-2">Loading...</div>
@@ -560,46 +559,55 @@
           <div v-else class="space-y-3">
             <div v-for="lego in seedViewPhrases" :key="lego.lego_index" class="border border-line/40 rounded p-3">
               <!-- LEGO header -->
-              <div class="flex items-center gap-2 mb-2">
+              <div class="flex flex-wrap items-center gap-x-2 mb-2">
                 <span class="text-[10px] font-mono text-faint">L{{ lego.lego_index }}</span>
                 <template v-if="lego.meta">
                   <span class="text-[10px] px-1 rounded font-mono" :class="(lego.meta.type || lego.meta.lego_type) === 'M' ? 'bg-violet-900/40 text-violet-400' : 'bg-surface-2/40 text-muted'">{{ lego.meta.type || lego.meta.lego_type }}</span>
                   <GenderPairText
                     class="text-base font-medium text-ink"
                     :text="lego.meta.known_text"
-                    :pair="genderPairFor(lego.meta.known_text)"
+                    :pair="knownPairFor(lego.meta.known_text)"
                   />
                   <span class="text-faint text-sm">→</span>
-                  <span
+                  <GenderPairText
                     class="text-base font-medium text-emerald-400"
+                    axis="referent"
+                    :text="lego.meta.target_text"
+                    :pair="targetPairFor(lego.meta.target_text)"
                     :dir="dirFor(lego.meta.target_text)"
-                    style="unicode-bidi: isolate"
-                  >{{ lego.meta.target_text }}</span>
+                  />
                 </template>
               </div>
               <!-- Components of an M-LEGO, shown only where one carries a
-                   gender pair: otherwise the same text is already readable as
-                   a CMP phrase row below, and this would just add noise. -->
+                   gender pair on either side: otherwise the same text is
+                   already readable as a CMP phrase row below, and this would
+                   just add noise. -->
               <div v-if="pairedComponents(lego).length" class="flex flex-wrap gap-x-4 gap-y-1 mb-2 pl-3 text-sm">
-                <span v-for="(c, i) in pairedComponents(lego)" :key="i" class="flex gap-1.5 items-start">
-                  <span class="font-mono text-xs text-faint mt-0.5">CPT</span>
-                  <GenderPairText class="text-ink" :text="c.known" :pair="genderPairFor(c.known)" />
-                  <span class="text-faint">→</span>
-                  <span class="text-muted" :dir="dirFor(c.target)" style="unicode-bidi: isolate">{{ c.target }}</span>
+                <span v-for="(c, i) in pairedComponents(lego)" :key="i" class="flex flex-col sm:flex-row gap-x-1.5 sm:items-start">
+                  <span class="flex gap-1.5 sm:contents">
+                    <span class="font-mono text-xs text-faint mt-0.5">CPT</span>
+                    <GenderPairText class="text-ink" :text="c.known" :pair="knownPairFor(c.known)" />
+                  </span>
+                  <span class="text-faint hidden sm:inline">→</span>
+                  <GenderPairText class="text-muted pl-8 sm:pl-0" axis="referent" :text="c.target" :pair="targetPairFor(c.target)" :dir="dirFor(c.target)" />
                 </span>
               </div>
               <!-- Phrases -->
-              <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-sm py-0.5 pl-3">
-                <span class="font-mono w-8 shrink-0 text-xs" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-faint' : 'text-amber-400/70'">
-                  {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
-                </span>
-                <GenderPairText class="text-ink" :text="phrase.known_text" :pair="genderPairFor(phrase.known_text)" />
-                <span class="text-faint shrink-0">→</span>
-                <span
-                  class="text-muted"
+              <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex flex-col sm:flex-row sm:items-baseline gap-x-2 text-sm py-0.5 pl-3">
+                <div class="flex gap-2 sm:contents">
+                  <span class="font-mono w-8 shrink-0 text-xs" :class="phrase.phrase_role === 'use' ? 'text-emerald-400/70' : phrase.phrase_role === 'component' ? 'text-faint' : 'text-amber-400/70'">
+                    {{ phrase.phrase_role === 'use' ? 'USE' : phrase.phrase_role === 'component' ? 'CMP' : 'BLD' }}
+                  </span>
+                  <GenderPairText class="text-ink" :text="phrase.known_text" :pair="knownPairFor(phrase.known_text)" />
+                </div>
+                <span class="text-faint shrink-0 hidden sm:inline">→</span>
+                <GenderPairText
+                  class="text-muted pl-10 sm:pl-0"
+                  axis="referent"
+                  :text="phrase.target_text"
+                  :pair="targetPairFor(phrase.target_text)"
                   :dir="dirFor(phrase.target_text)"
-                  style="unicode-bidi: isolate"
-                >{{ phrase.target_text }}</span>
+                />
               </div>
             </div>
           </div>
@@ -643,7 +651,7 @@ import { useRouter } from 'vue-router'
 import { getApiUrl, fetchJson } from '@/services/api'
 import { dirFor } from '@/utils/textDirection.js'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
-import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail, getKnownGenderPairs } from '@/services/supabase'
+import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail, getGenderPairs } from '@/services/supabase'
 import GenderPairText from '@/components/production/GenderPairText.vue'
 import FilterSelect from '@/components/ui/FilterSelect.vue'
 
@@ -764,38 +772,41 @@ function showActionError(msg) {
 const seedGrid = ref([])
 const seedGridExpanded = ref(true)
 
-// Known-side gender pairs (male/female speaker wordings of the same text).
-// Loaded once per course; genderPairSeeds holds every seed with a pair at any
-// layer — cue, LEGO, LEGO component or practice phrase — and is empty for
-// ungendered courses.
-const genderPairs = ref(new Map())
-const genderPairSeeds = ref(new Set())
+// Gender pairs, both sides. The two sides vary on DIFFERENT AXES: the known
+// side is who is SPEAKING, the target side is who is being TALKED ABOUT. They
+// are kept apart so each gets its own independent tap target on a row paired on
+// both. One read per course; both maps are empty for an ungendered course, and
+// every layer then renders as plain text.
+const genderPairs = ref({ known: new Map(), target: new Map() })
 let genderPairsCourse = null
 async function loadGenderPairs() {
   const courseCode = effectiveCourseCode.value
   if (!courseCode || courseCode === genderPairsCourse || !isSupabaseConfigured()) return
   genderPairsCourse = courseCode
   try {
-    const { pairs, seeds } = await getKnownGenderPairs(courseCode)
-    genderPairs.value = pairs
-    genderPairSeeds.value = seeds
+    genderPairs.value = await getGenderPairs(courseCode)
   } catch (err) {
-    console.warn('Failed to load known-side gender pairs:', err)
-    genderPairs.value = new Map()
-    genderPairSeeds.value = new Set()
+    console.warn('Failed to load gender pairs:', err)
+    genderPairs.value = { known: new Map(), target: new Map() }
   }
 }
-// Both speaker wordings for a known text, or null when it has no pair
-function genderPairFor(text) {
-  return (text && genderPairs.value.get(text)) || null
+// Both wordings for a known text, or null when it has no pair
+function knownPairFor(text) {
+  return (text && genderPairs.value.known.get(text)) || null
 }
-// An M-LEGO's components whose known text carries a gender pair. Components
-// live in the LEGO's `components` jsonb; most are mirrored as CMP phrase rows,
-// but not all, so a marked seed could otherwise show no ♂/♀ anywhere.
+// Both wordings for a target text, or null when it has no pair
+function targetPairFor(text) {
+  return (text && genderPairs.value.target.get(text)) || null
+}
+// An M-LEGO's components carrying a gender pair on either side. Components live
+// in the LEGO's `components` jsonb; most are mirrored as CMP phrase rows, but
+// not all, so this is a layer of its own. Unpaired components stay hidden —
+// their text is already readable as a CMP row below, and showing them all would
+// just add noise.
 function pairedComponents(lego) {
   const components = lego?.meta?.components
   if (!Array.isArray(components)) return []
-  return components.filter(c => c && c.known && genderPairs.value.has(c.known))
+  return components.filter(c => c && (knownPairFor(c.known) || targetPairFor(c.target)))
 }
 
 // Build monitor — direct Supabase reads + Realtime (replaces HTTP polling)
@@ -2088,27 +2099,6 @@ onUnmounted(() => {
 }
 .seed-cell:hover::after {
   opacity: 1;
-}
-
-/* Known-side gender pair: a corner dot on the cell, so a scan of the grid shows
-   which seeds contain a male/female speaker wording — at the cue, a LEGO, a
-   LEGO component or a practice phrase. Status colours are untouched. */
-.gender-pair-swatch,
-.seed-cell.has-gender-pair {
-  position: relative;
-}
-.gender-pair-swatch::before,
-.seed-cell.has-gender-pair::before {
-  content: '';
-  position: absolute;
-  top: 1px;
-  right: 1px;
-  width: 5px;
-  height: 5px;
-  border-radius: 9999px;
-  background: rgb(232 121 249);
-  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.45);
-  pointer-events: none;
 }
 
 /* ── LIGHT MODE status-text contrast ──
