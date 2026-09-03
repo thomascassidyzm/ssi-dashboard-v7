@@ -67,11 +67,6 @@ function lineHasTake(line, { recordedKeys, spellings }) {
     const filled = line.seedFilledBy || []
     return filled.length > 0 && filled.every((v) => v && spellings.includes(v))
   }
-  // A SLOT-ONLY line is scored the same way and for the same reason: a pod
-  // line's KNOWN track is filed under the course's known language ('eng'), so
-  // it can never appear in a Welsh recordist's recorded-text set, and a text
-  // lookup could only ever answer this wrong.
-  if (line.slotOnly) return (line.filledBy || []).some((v) => v && spellings.includes(v))
   if (audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))) return true
   // ANY copy of a collapsed line being filled by this voice is enough: the
   // collapse promise is that one recording fills every course's copy, so a

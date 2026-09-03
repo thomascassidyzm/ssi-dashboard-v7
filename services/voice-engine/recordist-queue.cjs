@@ -434,41 +434,6 @@ function parseSeedLineId(lineId) {
 function seedLineId(seedId, role) { return `${SEED_LINE_PREFIX}${seedId}:${role}` }
 
 /**
- * A POD LINE'S KNOWN (English) TRACK — the one exception to "target side only",
- * and it is opt-in per sentence.
- *
- * The known side of every human_only course is English, English has TTS, and so
- * a known pod line has never belonged in a human queue. That default is right
- * and is unchanged: a pod that does not ask for it sees no difference.
- *
- * It stopped being the whole story when a pod arrived whose English exists
- * nowhere else in the estate — the Senedd/S4C evidence session built for one
- * learner (Tom, 2026-09-03). There is nothing to reuse and no TTS pass planned,
- * so the human reading the Welsh reads the English too, line by line, because
- * that is what the pod delivery mechanism pairs. The flag that asks is the one
- * pods-plan.cjs already reads for exactly this — rerecord_wanted.known naming a
- * voice — so the two recording surfaces cannot disagree about what is
- * outstanding.
- *
- *   podknown:<sentenceId>
- */
-const POD_KNOWN_PREFIX = 'podknown:'
-function podKnownLineId(sentenceId) { return `${POD_KNOWN_PREFIX}${sentenceId}` }
-function parsePodKnownLineId(lineId) {
-  const raw = String(lineId || '')
-  if (!raw.startsWith(POD_KNOWN_PREFIX)) return null
-  const sentenceId = raw.slice(POD_KNOWN_PREFIX.length)
-  return sentenceId ? { sentenceId } : null
-}
-
-/** The voice a pod sentence's known track is wanted from, or null. */
-function knownRerecordWant(sentence) {
-  const wanted = sentence && sentence.rerecord_wanted
-  if (!wanted || typeof wanted !== 'object') return null
-  return wanted.known ? String(wanted.known) : null
-}
-
-/**
  * THE MINIMAL SET's line ids.
  *
  *   quarry:<courseCode>:lego:<legoId>
@@ -615,30 +580,6 @@ async function audioVoicesById(db, ids) {
   return out
 }
 
-/**
- * voiceId (and every alias spelling) -> the (gender, dialect) it reads in.
- *
- * A known-track want NAMES a voice, and pods-plan routes it to that voice
- * regardless of who the line is cast to — the known side is a different job
- * from the character being played. This index is what lets this queue honour
- * the same rule without resolving a recordist per sentence.
- */
-async function voiceBucketIndex(db, { cache } = {}) {
-  const [policies, aliasMap] = await Promise.all([loadPolicies(db, { cache }), loadAliasMap(db, { cache })])
-  const index = new Map()
-  for (const policy of policies) {
-    for (const [slot, entry] of Object.entries(policy.voices || {})) {
-      if (!entry || !entry.voiceId) continue
-      const gender = String(entry.gender || slot.split(':')[0] || '').toLowerCase()
-      const dialect = canonicalDialect(entry.dialect)
-      const spellings = new Set(recordedSpellings(entry.voiceId, aliasMap))
-      for (const a of Array.isArray(entry.aliases) ? entry.aliases : []) spellings.add(a)
-      for (const spelling of spellings) index.set(spelling, { gender, dialect })
-    }
-  }
-  return index
-}
-
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
   const courses = await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
@@ -674,16 +615,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // added "…" pause cues to the sentences, so six of Aran's June takes are
   // filed under the un-cued spelling of the very line they are linked to and
   // already playing on. Read-only, voice-agnostic, computed once per language.
-  const slotVoiceById = await fetchClipVoices(db, [
-    ...sentences.map((s) => s.target_audio_id),
-    // The known side too, and only ever read: a known-track line is scored by
-    // its own slot, never by a text lookup — its clip is filed under the
-    // course's KNOWN language and could never appear in a Welsh recordist's
-    // recorded-text set.
-    ...sentences.map((s) => s.known_audio_id),
-  ])
-  // Only paid for once per language, and only used by the known track below.
-  const voiceBuckets = await voiceBucketIndex(db, { cache })
+  const slotVoiceById = await fetchClipVoices(db, sentences.map((s) => s.target_audio_id))
 
   const byBucket = new Map()
   // The minimal set's own arithmetic, so the screen can say how big the job is
@@ -746,53 +678,6 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
     seenForGender.set(key, line)
     byBucket.get(bucket).push(line)
-
-    // ── THE KNOWN TRACK, when this line asks for it ─────────────────────────
-    const knownWant = knownRerecordWant(s)
-    const knownText = (s.known_text || '').trim()
-    if (knownWant && knownText) {
-      const seat = voiceBuckets.get(knownWant) || voiceBuckets.get(tryCanonicalVoiceId(knownWant) || knownWant)
-      if (!seat || !seat.gender) {
-        // Never guessed — surfaced by the same counter as an uncast speaker.
-        uncast += 1
-      } else {
-        const kBucket = bucketKey(seat.dialect, seat.gender)
-        if (!byBucket.has(kBucket)) { byBucket.set(kBucket, []); seen.set(kBucket, new Map()) }
-        // Its own key namespace: an English line and a Welsh line are never the
-        // same recording even if they normalise alike.
-        const kKey = `known ${normalizeForDb(knownText)}`
-        const seenForKnown = seen.get(kBucket)
-        const kSlotVoice = slotVoiceById.get(s.known_audio_id)
-        if (seenForKnown.has(kKey)) {
-          const rep = seenForKnown.get(kKey)
-          rep.duplicateOf.push({ sentenceId: s.id, podId: s.pod_id, courseCode: pod.course_code, track: 'known' })
-          if (kSlotVoice && !rep.filledBy.includes(kSlotVoice)) rep.filledBy.push(kSlotVoice)
-          duplicatesCollapsed += 1
-        } else {
-          seenForKnown.set(kKey, {
-            id: podKnownLineId(s.id),
-            podId: s.pod_id,
-            order: s.global_order,
-            text: knownText,
-            // The crib on a known line is the Welsh it belongs to — and it says
-            // out loud why an English line is in a Welsh queue at all, so that
-            // nobody meeting the shape later strips it as a bug.
-            knownText: `ENGLISH — read this line aloud in English. Deliberate: this pod's ` +
-              `English exists nowhere else, so it is recorded, not synthesised. Welsh: ${text}`,
-            speaker: s.speaker,
-            courseCode: pod.course_code,
-            textNormalized: kKey,
-            duplicateOf: [],
-            filledBy: kSlotVoice ? [kSlotVoice] : [],
-            // Scored by the SLOT alone, for the same reason a seed line is.
-            slotOnly: true,
-            kind: 'podKnown',
-            rerecordWanted: false,
-          })
-          byBucket.get(kBucket).push(seenForKnown.get(kKey))
-        }
-      }
-    }
   }
 
   // ── SECOND SOURCE: anything else that needs re-recording ──────────────────
@@ -1277,7 +1162,7 @@ async function fetchAllSentences(db, podIds) {
   try {
     return await pagedRead((from, to) => db
       .from('listening_pod_sentences')
-      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, known_audio_id, rerecord_wanted')
+      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted')
       .in('pod_id', podIds)
       .order('id')
       .range(from, to))
@@ -1684,35 +1569,11 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
   return cleared
 }
 
-/**
- * Retire ONE sentence's known-track want, after its English take has landed.
- *
- * Narrower than clearRerecordWants on purpose: a known line is bespoke by
- * definition — that is why a human is reading it at all — so there is no
- * identity-wide want across the language to retire with it, and clearing by
- * clip identity would be reaching for rows nobody asked about.
- */
-async function clearKnownRerecordWant({ db, sentenceId, logger = console }) {
-  const { data: row, error } = await db
-    .from('listening_pod_sentences').select('id, rerecord_wanted').eq('id', sentenceId).maybeSingle()
-  if (error || !row || !row.rerecord_wanted) return 0
-  const { known: _retired, ...rest } = row.rerecord_wanted
-  const next = Object.keys(rest).length ? rest : null
-  const { error: upErr } = await db
-    .from('listening_pod_sentences').update({ rerecord_wanted: next }).eq('id', sentenceId)
-  if (upErr) { logger.error(`[Recordist] known want clear failed for ${sentenceId}: ${upErr.message}`); return 0 }
-  return 1
-}
-
 module.exports = {
   clearRerecordWants,
   isTestFixtureCourse,
   quarryLineId,
   parseQuarryLineId,
-  podKnownLineId,
-  parsePodKnownLineId,
-  knownRerecordWant,
-  clearKnownRerecordWant,
   targetRerecordWanted,
   languageName,
   loadPolicies,
