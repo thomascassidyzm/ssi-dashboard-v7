@@ -110,13 +110,14 @@ describe('buildCourseOrderItems', () => {
 const { loadCourseOrderScript, loadRecordedProgress } = require('./course-order-script.cjs')
 
 // Minimal stand-in for the supabase client: enough chaining for the three
-// content reads and the course_audio read, paging in one page.
-function fakeSupabase({ seeds, legos, phrases, audio }) {
+// content reads, the course_audio read and the one-row cast read.
+function fakeSupabase({ seeds, legos, phrases, audio, courses = [] }) {
   const tables = {
     course_seeds: seeds,
     course_legos: legos,
     course_practice_phrases: phrases,
     course_audio: audio,
+    courses,
   }
   return {
     from(table) {
@@ -127,7 +128,9 @@ function fakeSupabase({ seeds, legos, phrases, audio }) {
           if (col !== 'course_code') rows = rows.filter(r => r[col] === val)
           return q
         },
+        in: (col, vals) => { rows = rows.filter(r => vals.includes(r[col])); return q },
         lte: (col, val) => { rows = rows.filter(r => r[col] != null && r[col] <= val); return q },
+        maybeSingle: () => Promise.resolve({ data: rows[0] || null, error: null }),
         range: (from, to) => Promise.resolve({ data: rows.slice(from, to + 1), error: null }),
       }
       return q
@@ -135,21 +138,34 @@ function fakeSupabase({ seeds, legos, phrases, audio }) {
   }
 }
 
-// Two of the nine lines above are in the can for target2 — one recorded with
-// different casing, which normalizeForAudio is meant to see through.
+// Two of the nine lines above are in the can for THIS voice — one recorded with
+// different casing, which normalizeForAudio is meant to see through. The rest
+// of the fixture is everything that must NOT count: an import in the same slot,
+// another dialect's artist in the same slot, this voice in another slot, and a
+// synthetic render.
+const VOICE = 'human_sasha_wanasky_deu_at'
 const AUDIO = [
-  { text: 'I wüü', role: 'target2', origin: 'human' },
-  { text: 'wos suachst denn?', role: 'target2', origin: 'human' },
-  { text: 'lernen', role: 'target1', origin: 'human' },   // another voice's take
-  { text: 'i wüü des', role: 'target2', origin: 'tts' },  // synthetic — not recorded
+  { text: 'I wüü', role: 'target2', origin: 'human', voice_id: VOICE },
+  { text: 'wos suachst denn?', role: 'target2', origin: 'human', voice_id: VOICE },
+  { text: 'lernen', role: 'target2', origin: 'human', voice_id: 'legacy_import' },
+  { text: 'wos suachst', role: 'target2', origin: 'human', voice_id: 'human_other_deu_de' },
+  { text: 'i wüü des', role: 'target1', origin: 'human', voice_id: VOICE },
+  { text: 'wos suachst?', role: 'target2', origin: 'tts', voice_id: VOICE },
 ]
+const COURSES = [{
+  course_code: 'deu_at_for_eng',
+  voice_config: { voices: {
+    target1: { voiceId: 'de-AT-JonasNeural', provider: 'azure' },
+    target2: { voiceId: VOICE, provider: 'human' },
+  } },
+}]
 
 describe('loadRecordedProgress', () => {
-  const supabase = () => fakeSupabase({ seeds: SEEDS, legos: LEGOS, phrases: PHRASES, audio: AUDIO })
+  const supabase = () => fakeSupabase({ seeds: SEEDS, legos: LEGOS, phrases: PHRASES, audio: AUDIO, courses: COURSES })
 
   it('counts this voice’s own human takes, and nobody else’s', async () => {
     const out = await loadRecordedProgress(supabase(), 'deu_at_for_eng', { role: 'target2' })
-    expect(out).toEqual({ totalInCourse: 9, alreadyRecorded: 2 })
+    expect(out).toEqual({ totalInCourse: 9, alreadyRecorded: 2, voiceId: VOICE })
   })
 
   it('reports the same figure the course-order script prunes by', async () => {
@@ -162,6 +178,60 @@ describe('loadRecordedProgress', () => {
   it('is zero only when this voice really has nothing — not when another voice has takes', async () => {
     const out = await loadRecordedProgress(supabase(), 'deu_at_for_eng', { role: 'known' })
     expect(out.alreadyRecorded).toBe(0)
+  })
+})
+
+// ── THE VOICE IS PART OF THE KEY ─────────────────────────────────────────────
+// A take from one voice must never satisfy another's slot. Before this, the
+// match was (course, role, origin=human) and so a Northern artist's clips, and
+// 6,375 legacy imports, counted as the cast recordist's own work — a line that
+// reads as recorded is a line nobody is ever asked to record.
+describe('recorded pruning is keyed on the voice, not just the slot', () => {
+  const withAudio = (audio, courses = COURSES) =>
+    fakeSupabase({ seeds: SEEDS, legos: LEGOS, phrases: PHRASES, audio, courses })
+
+  it('does not count an import filed in the same slot', async () => {
+    const out = await loadRecordedProgress(
+      withAudio([{ text: 'I wüü', role: 'target2', origin: 'human', voice_id: 'legacy_import' }]),
+      'deu_at_for_eng', { role: 'target2' })
+    expect(out.alreadyRecorded).toBe(0)
+  })
+
+  it('does not count another artist’s take of the same line in the same slot', async () => {
+    const out = await loadRecordedProgress(
+      withAudio([{ text: 'I wüü', role: 'target2', origin: 'human', voice_id: 'human_aran_cym_n' }]),
+      'deu_at_for_eng', { role: 'target2' })
+    expect(out.alreadyRecorded).toBe(0)
+  })
+
+  it('prunes nothing at all when the course casts no human in the slot', async () => {
+    const uncast = [{ course_code: 'deu_at_for_eng', voice_config: { voices: {} } }]
+    const script = await loadCourseOrderScript(
+      withAudio(AUDIO, uncast), 'deu_at_for_eng', { role: 'target2', excludeRecorded: true })
+    expect(script.voiceId).toBe(null)
+    expect(script.alreadyRecorded).toBe(0)
+    expect(script.items.length).toBe(script.totalInCourse)
+  })
+
+  it('prunes nothing when the slot is cast to a synthetic voice', async () => {
+    const out = await loadRecordedProgress(withAudio(AUDIO), 'deu_at_for_eng', { role: 'target1' })
+    expect(out.voiceId).toBe(null)
+    expect(out.alreadyRecorded).toBe(0)
+  })
+
+  it('still finds the voice’s takes under a different spelling of its id', async () => {
+    const courses = [{ course_code: 'deu_at_for_eng', voice_config: { voices: {
+      target2: { voiceId: 'azure_de-AT-IngridNeural', provider: 'human' } } } }]
+    const out = await loadRecordedProgress(
+      withAudio([{ text: 'I wüü', role: 'target2', origin: 'human', voice_id: 'de-AT-IngridNeural' }], courses),
+      'deu_at_for_eng', { role: 'target2' })
+    expect(out.alreadyRecorded).toBe(1)
+  })
+
+  it('an explicit voiceId overrides the cast', async () => {
+    const out = await loadRecordedProgress(
+      withAudio(AUDIO), 'deu_at_for_eng', { role: 'target2', voiceId: 'human_other_deu_de' })
+    expect(out.alreadyRecorded).toBe(1)
   })
 })
 

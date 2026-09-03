@@ -8839,12 +8839,12 @@ app.get('/api/production/:courseCode/recording-optimizer', async (req, res) => {
 // Read-only. Returns nulls — never zeros — when it cannot be computed, so the
 // screen says "not available" instead of asserting that nothing is recorded.
 async function readRecordedProgress(courseCode, { maxSeed = null, role = 'target1' } = {}) {
-  if (!supabaseClient.isInitialized()) return { totalInCourse: null, alreadyRecorded: null }
+  if (!supabaseClient.isInitialized()) return { totalInCourse: null, alreadyRecorded: null, voiceId: null }
   try {
     return await loadRecordedProgress(supabaseClient.getClient(), courseCode, { maxSeed, role })
   } catch (err) {
     logger.warn(`[Recording Script] already-recorded count unavailable for ${courseCode}: ${err.message}`)
-    return { totalInCourse: null, alreadyRecorded: null }
+    return { totalInCourse: null, alreadyRecorded: null, voiceId: null }
   }
 }
 
@@ -8954,6 +8954,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         naturalOnly: false,
         totalInCourse: poolProgress.totalInCourse,
         alreadyRecorded: poolProgress.alreadyRecorded,
+        recordedVoiceId: poolProgress.voiceId ?? null,
         minPieceWords,
         totalItems: poolItems.length,
         totalPoolA: poolResult.poolA.items.length,
@@ -8973,7 +8974,7 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
       if (!supabaseClient.isInitialized()) {
         return res.status(503).json({ error: 'The database is unreachable, so the course script cannot be read.' })
       }
-      const { items: courseItems, totalInCourse, alreadyRecorded } = await loadCourseOrderScript(
+      const { items: courseItems, totalInCourse, alreadyRecorded, voiceId } = await loadCourseOrderScript(
         supabaseClient.getClient(), courseCode, { maxSeed, role, excludeRecorded }
       )
       if (!totalInCourse) {
@@ -9004,6 +9005,11 @@ app.get('/api/production/:courseCode/recording-script', async (req, res) => {
         totalDirect: 0,
         totalInCourse,
         alreadyRecorded: recordedSoFar,
+        // WHOSE count that is. null means the course casts no human in this
+        // slot, so nothing was pruned and the script is the whole course —
+        // which a screen should be able to say out loud rather than leave the
+        // recordist to infer from a suspiciously long list.
+        recordedVoiceId: voiceId,
         estimatedMinutes: Math.round((items.length * 6) / 60),
         items
       })

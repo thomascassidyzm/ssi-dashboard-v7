@@ -38,6 +38,10 @@ const {
   verifyAssembly,
   DEFAULT_MIN_PIECE_WORDS,
 } = require('../../services/recording-pools.cjs');
+// One definition of "whose takes are these?", shared with the course-order path
+// so the two readers of the same pool cannot disagree about it.
+const { castVoiceId } = require('../../services/course-order-script.cjs');
+const { voiceSpellings } = require('../../services/shared/clip-identity-lookup.cjs');
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
@@ -419,8 +423,18 @@ async function getAllSeeds(courseCode, maxSeed) {
  * recorder a short script and leave that voice permanently incomplete. This
  * defaulted to 'target1' for every caller, which was correct only ever for the
  * first voice.
+ *
+ * AND THE SLOT ALONE IS NOT THE VOICE. A slot holds whatever has ever been
+ * filed in it — imports, another dialect's artist, a previous cast. Matching on
+ * (course, role, origin=human) counted all of that as this recordist's own
+ * work: 6,375 `legacy_import` clips pruned cym_n_for_eng's target2 script, and
+ * cym_s_for_eng, which casts no human at all, was pruned by 6,685 more. So the
+ * voice is part of the query, widened to every spelling a stored row may carry,
+ * and NO CAST VOICE PRUNES NOTHING — the same rule the course-order path states
+ * at length in services/course-order-script.cjs.
  */
-async function getExistingHumanAudioTexts(courseCode, role = 'target1') {
+async function getExistingHumanAudioTexts(courseCode, role = 'target1', voiceId = null) {
+  if (!voiceId) return [];
   const PAGE = 1000;
   const texts = [];
   for (let from = 0; ; from += PAGE) {
@@ -430,6 +444,7 @@ async function getExistingHumanAudioTexts(courseCode, role = 'target1') {
       .eq('course_code', courseCode)
       .eq('role', role)
       .eq('origin', 'human')
+      .in('voice_id', voiceSpellings(voiceId))
       .range(from, from + PAGE - 1);
     if (error) throw error;
     texts.push(...(data || []).map(r => r.text));
@@ -592,8 +607,11 @@ async function generateRecordingScript(courseCode, options = {}) {
   let coverUniverse = universeKeys;
   let alreadyCoveredCount = 0;
   if (excludeRecorded) {
-    if (verbose) console.log(`\n🎧 Checking existing human recordings for ${role}...`);
-    const existingTexts = await getExistingHumanAudioTexts(courseCode, role);
+    const voiceId = options.voiceId !== undefined
+      ? options.voiceId
+      : await castVoiceId(supabase, courseCode, role);
+    if (verbose) console.log(`\n🎧 Checking existing human recordings for ${role} (${voiceId || 'no human cast — pruning nothing'})...`);
+    const existingTexts = await getExistingHumanAudioTexts(courseCode, role, voiceId);
     const alreadyCovered = new Set();
     for (const text of existingTexts) {
       const words = tokenize(text);

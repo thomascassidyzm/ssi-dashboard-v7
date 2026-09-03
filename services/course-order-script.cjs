@@ -35,6 +35,7 @@
 // database.
 
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
+const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs')
 
 // Component rows are tiling glosses, not learner-facing lines. Everything else
 // a course carries (build, use, and any role added later) is read.
@@ -164,26 +165,34 @@ async function loadVolumeBreakdown(supabase, courseCode, volumes) {
  * @param {string} courseCode
  * @param {object} opts
  * @param {number|null} opts.maxSeed - cap to seeds 1..N (null = whole course)
- * @param {string|null} opts.role - voice slot; with excludeRecorded, prunes
- *   lines this slot has already recorded. Slots are different PEOPLE and never
- *   interchangeable, so the pool must be per-slot.
- * @param {boolean} opts.excludeRecorded - drop lines already recorded by that slot
+ * @param {string|null} opts.role - voice slot to build the script FOR
+ * @param {string|null} opts.voiceId - the human voice recording that slot.
+ *   Omitted, it is read from the course's own cast (voice_config.voices[role]).
+ *   No cast voice = nothing is pruned; see fetchRecordedKeys.
+ * @param {boolean} opts.excludeRecorded - drop lines this VOICE has recorded
+ * @returns {{items, totalInCourse, alreadyRecorded, voiceId}} voiceId is the
+ *   voice the count is ABOUT, so a caller can say whose it is — or that no
+ *   voice is cast — rather than reporting a bare number.
  */
 async function loadCourseOrderScript(supabase, courseCode, opts = {}) {
   const { maxSeed = null, role = 'target1', excludeRecorded = true } = opts
+
+  const voiceId = opts.voiceId !== undefined
+    ? opts.voiceId
+    : await castVoiceId(supabase, courseCode, role)
 
   let items = buildCourseOrderItems(await fetchCourseRows(supabase, courseCode, maxSeed))
   const totalInCourse = items.length
 
   let alreadyRecorded = 0
   if (excludeRecorded) {
-    const recorded = await fetchRecordedKeys(supabase, courseCode, role)
+    const recorded = await fetchRecordedKeys(supabase, courseCode, role, voiceId)
     const before = items.length
-    items = items.filter(i => !recorded.has(normalizeForAudio(i.target)))
+    items = items.filter(i => !recorded.has(recordedKey(voiceId, i.target)))
     alreadyRecorded = before - items.length
   }
 
-  return { items, totalInCourse, alreadyRecorded }
+  return { items, totalInCourse, alreadyRecorded, voiceId }
 }
 
 /**
@@ -196,20 +205,23 @@ async function loadCourseOrderScript(supabase, courseCode, opts = {}) {
  * a coverage-order screen with no already-recorded stat read as a fresh start
  * to someone who had 225 clips recorded).
  *
- * @returns {{ totalInCourse: number, alreadyRecorded: number }}
+ * @returns {{ totalInCourse: number, alreadyRecorded: number, voiceId: string|null }}
  */
 async function loadRecordedProgress(supabase, courseCode, opts = {}) {
   const { maxSeed = null, role = 'target1' } = opts
+  const voiceId = opts.voiceId !== undefined
+    ? opts.voiceId
+    : await castVoiceId(supabase, courseCode, role)
   const [rows, recorded] = await Promise.all([
     fetchCourseRows(supabase, courseCode, maxSeed),
-    fetchRecordedKeys(supabase, courseCode, role),
+    fetchRecordedKeys(supabase, courseCode, role, voiceId),
   ])
   const items = buildCourseOrderItems(rows)
   let alreadyRecorded = 0
   for (const i of items) {
-    if (recorded.has(normalizeForAudio(i.target))) alreadyRecorded++
+    if (recorded.has(recordedKey(voiceId, i.target))) alreadyRecorded++
   }
-  return { totalInCourse: items.length, alreadyRecorded }
+  return { totalInCourse: items.length, alreadyRecorded, voiceId }
 }
 
 /** The three content tables a course's reading list is built from. Read-only. */
@@ -230,21 +242,84 @@ async function fetchCourseRows(supabase, courseCode, maxSeed = null) {
 }
 
 /**
- * Lines this voice slot has already recorded, as normalized keys. Human origin
- * only: a TTS clip is exactly what this session exists to replace.
+ * THE KEY IS (VOICE, TEXT). NOT TEXT.
+ *
+ * A recorded key names WHO read the line as well as WHAT the line was, so a
+ * lookup cannot ask "is this text recorded" without naming a voice — which is
+ * the shape of the bug this replaced. The old match was (course_code, role,
+ * origin=human) alone, so ANY human clip in that slot counted as this
+ * recordist's own work:
+ *
+ *   - cym_n_for_eng target2 was pruned by 6,375 `legacy_import` clips, so
+ *     Aran's script showed the course as all but recorded when he had read 89
+ *     lines of it;
+ *   - cym_s_for_eng, which casts no human at all, was pruned by 6,685 more —
+ *     a whole Southern course reading as recorded with not one Southern take
+ *     in it;
+ *   - and 152 of Aran's NORTHERN clips counted towards Catrin's target1 pool.
+ *
+ * A dialect is its own language on this estate. A take from one voice never
+ * satisfies another's slot, and the only way to say that in a lookup is to put
+ * the voice in the key.
+ *
+ * NO CAST VOICE = NOTHING IS PRUNED, and that is the honest answer rather than
+ * a regression: nobody is recording that slot, so nobody has recorded any of
+ * it. The rule that a screen must never tell a recordist they have recorded
+ * nothing (Sascha, 2026-08-23) is about a recordist WITH clips — hers are filed
+ * under her own voice_id and still prune, as do Kai's, Aran's, Catrin's and
+ * Tom's. Only imports and other people's takes stop counting.
+ *
+ * Human origin only: a TTS clip is exactly what this session exists to replace.
+ * Voice ids widen to every spelling a stored row may carry
+ * (clip-identity-lookup) — the estate is mid-canonicalisation and a narrow read
+ * loses real takes.
  */
-async function fetchRecordedKeys(supabase, courseCode, role) {
+async function fetchRecordedKeys(supabase, courseCode, role, voiceId) {
+  if (!voiceId) return new Set()
   const rows = await fetchAll(() => supabase.from('course_audio')
     .select('text')
     .eq('course_code', courseCode)
     .eq('role', role)
-    .eq('origin', 'human'))
+    .eq('origin', 'human')
+    .in('voice_id', voiceSpellings(voiceId)))
   const keys = new Set()
   for (const r of rows) {
-    const k = normalizeForAudio(r.text)
+    const k = recordedKey(voiceId, r.text)
     if (k) keys.add(k)
   }
   return keys
+}
+
+/**
+ * One line, read by one voice. NUL-joined because neither a voice id nor a line
+ * of course text can contain it, so no two different (voice, line) pairs
+ * collide. Empty text gives '' so an empty key is never stored or looked up.
+ */
+function recordedKey(voiceId, text) {
+  const k = normalizeForAudio(text)
+  return k ? `${voiceId}\u0000${k}` : ''
+}
+
+/**
+ * The human voice a course casts in a slot — the course's own answer to "whose
+ * takes are these?", read from courses.voice_config.voices[role].
+ *
+ * Null when the course casts nobody there, or casts a synthetic voice: a TTS
+ * voice has no takes to prune with, and pretending otherwise is how a slot ends
+ * up "recorded" by a machine.
+ */
+async function castVoiceId(supabase, courseCode, role) {
+  const { data, error } = await supabase.from('courses')
+    .select('voice_config')
+    .eq('course_code', courseCode)
+    .maybeSingle()
+  if (error) throw new Error(error.message)
+  const entry = data && data.voice_config && data.voice_config.voices
+    ? data.voice_config.voices[role]
+    : null
+  if (!entry || !entry.voiceId) return null
+  if (entry.provider && String(entry.provider).toLowerCase() !== 'human') return null
+  return entry.voiceId
 }
 
 /** Page through a supabase query — courses run to five figures of rows. */
@@ -261,6 +336,9 @@ async function fetchAll(makeQuery, pageSize = 1000) {
 
 module.exports = {
   buildCourseOrderItems,
+  fetchRecordedKeys,
+  recordedKey,
+  castVoiceId,
   buildVolumeBreakdown,
   loadVolumeBreakdown,
   SECONDS_PER_LINE,
