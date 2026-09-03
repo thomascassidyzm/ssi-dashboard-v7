@@ -486,12 +486,30 @@ describe("generatePodAudio — the clip's language and the TTS cue are two thing
 describe('resolvePresentationVoiceId — four paths, one spelling', () => {
   const withConfig = (known_lang, voice_config) => ({ known_lang, voice_config })
 
-  it('returns the canonical clone for an English-known course', () => {
+  // TOM'S RULING, 2026-09-03: the default English male voice is his CARTESIA
+  // clone, estate-wide. The old assertions here are flipped deliberately —
+  // they asserted the xAI clone, and that a stored xAI presentation voice won
+  // over it. xAI is retired from selection, so neither can stand.
+  it('returns the canonical Cartesia clone for an English-known course', () => {
     expect(presentationAuthor.resolvePresentationVoiceId(withConfig('eng', {})))
-      .toBe('xai_gfzdpspr5fdp')
+      .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+  })
+
+  it('a stored xAI presentation voice no longer outranks the clone', () => {
+    // deu_for_eng and fra_for_eng both carried Tom's own xAI clone here, so
+    // honouring the stored value would have pinned them to the dead provider.
     expect(presentationAuthor.resolvePresentationVoiceId(
       withConfig('eng', { voices: { presentation: { provider: 'xai', voiceId: 'leo' } } })))
-      .toBe('xai_leo')
+      .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+  })
+
+  it('the constant matches the voice the language cast names', () => {
+    // ONE VOICE, WRITTEN DOWN TWICE ON PURPOSE (see the comment on
+    // ENG_PRESENTATION_VOICE). This test is the thing that stops the two
+    // copies drifting: the id below is the voice_language_roles row
+    // ('eng','m','phrase',rank 0) as applied on 2026-09-03.
+    expect(presentationAuthor.ENG_PRESENTATION_VOICE)
+      .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
   })
 
   it('spells the explicit-config and bare-config paths the same way', () => {

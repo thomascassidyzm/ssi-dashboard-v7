@@ -14,7 +14,14 @@ Read off the live database and the code on `origin/main` — not off documents. 
 | 2 | `voice_language_roles` | **zero rows** | every course role, via `services/shared/language-voice-cast.cjs` — the table the estate DESIGNED as the single definition, which nothing had ever written to |
 | 3 | `courses.voice_config` per course | 18 courses naming `gfzdpspr5fdp` by hand | one course each — the "94 copies of one decision" the language cast exists to replace |
 
-The xAI voice id appears in **no code file on `origin/main`**. It was pure data.
+**Correction (2026-09-03, after an independent code map by worker #391):** a FOURTH definition
+existed, in code, on the live render path — `services/phases/presentation-author.cjs`
+`ENG_PRESENTATION_VOICE = 'xai_gfzdpspr5fdp'`. It fires for the `presentation` role of **every**
+English-known course and it OUTRANKS the course's own config. An earlier statement in this document
+that the xAI id appeared in no code file was wrong: it was produced by a truncated grep. The id
+appears in 38 files, almost all of them correctly naming it as historic identity (retirement is from
+selection, never from clip identity) — but that one was a live default. It is now the Cartesia clone,
+and a stored xAI presentation voice no longer outranks it.
 
 ## What changed
 

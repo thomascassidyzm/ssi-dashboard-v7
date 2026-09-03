@@ -24,10 +24,23 @@ const logger = createLogger('PresentationAuthor')
 
 const SONNET_MODEL = process.env.CLAUDE_SONNET_MODEL || 'sonnet'
 
-// Tom's xAI clone — the estate-wide English voice (ruled 2026-07-04).
-// Presentation intros are known-language audio, so English-known courses
-// default to the clone unless voice_config explicitly says otherwise.
-const ENG_PRESENTATION_VOICE = 'xai_gfzdpspr5fdp'
+// Tom's clone — the estate-wide English voice (ruled 2026-07-04). Presentation
+// intros are known-language audio, so English-known courses default to it.
+//
+// CARTESIA, NOT xAI, since 2026-09-03: "his Cartesia clone becomes the default
+// English male voice, estate-wide". xAI is the deprecated provider and is
+// retired from selection entirely (services/shared/tts-provider-policy.cjs).
+//
+// THE DEFINITION OF THAT DEFAULT IS THE CAST ROW — voice_language_roles
+// ('eng','m','phrase',rank 0) — which every COURSE role resolves through and
+// which tools/pod-sync.cjs derives each pod pool's primary from. This constant
+// cannot read it: resolvePresentationVoiceId is pure and synchronous, and
+// `presentation` sits outside CAST_ROLES on purpose (it is the course's own
+// presenter, not a specimen of the language — services/shared/
+// language-voice-cast.cjs). So this is the one place the same voice is written
+// down twice, deliberately and with a pointer, rather than by accident. Change
+// the row and change this line; the test below holds them to the same value.
+const ENG_PRESENTATION_VOICE = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
 
 // Last resort when a course carries no presentation and no known voice at all.
 const DEFAULT_PRESENTATION_VOICE = 'azure_en-GB-SoniaNeural'
@@ -373,9 +386,17 @@ async function recordAuthorFlags(supabase, courseCode, flags) {
 /**
  * Presentation TTS voice.
  * English-known courses: Tom's clone is THE estate English voice (ruled
- * 2026-07-04) — it wins over the legacy Azure entries most voice_configs
- * were scaffolded with. A deliberately chosen xAI presentation voice in the
- * config is respected.
+ * 2026-07-04, moved to his Cartesia clone 2026-09-03) — it wins over the
+ * legacy Azure entries most voice_configs were scaffolded with.
+ *
+ * A stored xAI presentation voice USED to win here, so that a deliberate pick
+ * was respected. It no longer does: xAI is retired from selection (Tom,
+ * 2026-08-27) and the only two English-known courses that carried one — 
+ * deu_for_eng and fra_for_eng — carried Tom's own xAI clone, i.e. the very
+ * default this line states. Honouring it would have pinned exactly those two
+ * courses to the deprecated provider. No course loses a deliberate choice:
+ * an eng-known course with a non-xAI presentation voice never won this branch
+ * in the first place, so nothing else about their resolution changes.
  * Other known languages: explicit presentation config, else the known-role
  * voice (intros are known-language audio).
  *
@@ -390,10 +411,7 @@ function resolvePresentationVoiceId(course) {
   const cfg = course.voice_config || {}
   const voices = cfg.voices || cfg
   const pres = voices.presentation
-  if (course.known_lang === 'eng') {
-    if (pres?.provider === 'xai' && pres?.voiceId) return canonicalVoiceId(pres.voiceId, { provider: 'xai' })
-    return canonicalVoiceId(ENG_PRESENTATION_VOICE)
-  }
+  if (course.known_lang === 'eng') return canonicalVoiceId(ENG_PRESENTATION_VOICE)
   if (pres?.voiceId) return canonicalVoiceId(pres.voiceId, { provider: pres.provider })
   if (typeof cfg.presentation === 'string') return canonicalVoiceId(cfg.presentation)
   const known = voices.known
