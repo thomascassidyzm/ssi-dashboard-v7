@@ -1,8 +1,8 @@
 {
  "course": "eng_for_hin",
  "apply": false,
- "at": "2026-09-03T18:22:05.842Z",
- "ready": 54,
+ "at": "2026-09-03T18:34:05.544Z",
+ "ready": 55,
  "refused": 0,
  "written": 0,
  "rows": [
@@ -454,6 +454,39 @@
      "known": "कल सुबह",
      "legoId": "S0155L04",
      "target": " tomorrow morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s572 L1 p8",
+   "id": "eng_for_hin:S0572L01U05",
+   "kind": "replace",
+   "known_before": "मुझे डर है कि क्या आप भूल गए कि क्या होता है।",
+   "known_after": "क्या आप भूल गए कि जवाब क्या है?",
+   "target_before": "I'm afraid have you forgotten what happens",
+   "target_after": "have you forgotten what the answer is?",
+   "decomposition": [
+    {
+     "known": "क्या आप भूल गए कि",
+     "legoId": "S0572L01",
+     "target": "have you forgotten",
+     "isGhost": false
+    },
+    {
+     "known": "जवाब क्या है",
+     "legoId": "S0017L03",
+     "target": " what the answer is",
      "isGhost": false
     },
     {
