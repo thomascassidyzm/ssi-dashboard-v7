@@ -1,22 +1,13 @@
 <template>
-  <div class="roster" data-surface="recordist-roster-2026-09-02">
-    <!-- THE RUN, AT A GLANCE. One mark per line, filled for done and hollow for
-         outstanding, in queue order. A phone at arm's length reads this without
-         reading anything: Catrin's 161 Welsh lines fit in a few rows of marks,
-         and "how far am I" is answered before any words are. -->
-    <div class="strip" :title="`${takeCount} recorded, ${freshCount} still to read`">
-      <span
-        v-for="r in allRows"
-        :key="r.id"
-        class="tick"
-        :class="{ done: r.done }"
-      ></span>
-    </div>
-    <!-- THE CAPTION FOR THE MARKS, AND THE HONEST TOTAL. Two numbers that add
-         up to the whole run, and no third. It briefly carried "N of those to
-         read again", which was true of the takes we had rejected — and Tom
-         ruled on 2026-09-02 that a rejected take is not something the reader
-         is shown at all. Recorded, and still to read. -->
+  <div class="roster" data-surface="recordist-roster-2026-09-03">
+    <!-- THE HONEST TOTAL, IN WORDS, AND NO MARKS ABOVE IT ANY MORE. There used
+         to be ONE strip of 385 marks here, over the whole run. Tom, 2026-09-03:
+         "I really like the completeness grid, but I suspect it would be more
+         helpful if it's done in sections - i.e. PODS are one section and so
+         on." One block of marks hid that this is two different jobs, and it
+         contradicted the page's own headings directly underneath it. So the
+         marks moved down into the sections, where each one carries its own
+         count, and this line stays as the only whole-run number. -->
     <p class="strip-words">
       <strong>{{ takeCount }} recorded</strong> · {{ freshCount }} still to read
     </p>
@@ -24,11 +15,13 @@
     <!-- THE MAP, AND IT IS THE POINT OF THIS COMPONENT. Tom, 2026-09-02, looking
          at Aran's link: "441 lines? why so many??? there's only 231 lines in
          POD-1". One total answered nothing, because the number was three
-         different jobs stacked on top of each other. So the three jobs are named
-         here, in a recordist's own words, each carrying its OWN headline count
-         and its own recorded-so-far, and a job the reader does not have is not
-         shown at all. None of them is named for a judgement we have made about
-         the reader's earlier takes (Tom, 2026-09-02). -->
+         different jobs stacked on top of each other. So the jobs are named
+         here, in a recordist's own words, each carrying its OWN headline count,
+         its own recorded-so-far AND SINCE 2026-09-03 ITS OWN GRID, so that "my
+         pod half is nearly done and the seeds are the mountain" is read off the
+         marks without reading a number at all. None of them is named for a
+         judgement we have made about the reader's earlier takes (Tom,
+         2026-09-02). -->
     <ul class="section-map">
       <li v-for="s in sections" :key="s.key" class="section-map-row">
         <!-- THE NUMBER IS THE HEADLINE. Tom, 2026-09-02: "each section should
@@ -37,6 +30,60 @@
         <span class="sm-count">{{ s.rows.length }}</span>
         <span class="sm-name">{{ s.heading }}</span>
         <span class="sm-tally">{{ tallyWords(s) }}</span>
+
+        <!-- THIS SECTION'S RUN, AT A GLANCE. One mark per line, filled for done
+             and hollow for outstanding, in queue order.
+             EVERY MARK IS A BUTTON. Tom, 2026-09-03: "rolling over/clicking on
+             the squares in the grid should show that item's detail, like in the
+             seed grid… tapping should take you there". A button and not a
+             hover-only tooltip because the artists record on PHONES, where
+             there is no hover at all — the seed grid's own tooltip
+             (components/generation/SeedProgressGrid.vue) is mouse-tracked and
+             would never open under a thumb. Hover is kept as the desktop
+             nicety it is: it previews, tap decides. -->
+        <div class="strip">
+          <template v-for="r in s.rows" :key="r.id">
+            <button
+              type="button"
+              class="tick"
+              :class="{ done: r.done, on: peekId === r.id }"
+              :title="r.text"
+              :aria-label="`${r.text} — ${r.done ? 'recorded' : 'not recorded'}`"
+              @mouseenter="hoverId = r.id"
+              @mouseleave="hoverId === r.id && (hoverId = null)"
+              @click="peekId = peekId === r.id ? null : r.id"
+            ></button>
+
+            <!-- WHICH LINE IS THAT. The one question a mark cannot answer on
+                 its own — answered ON THE ROW THE MARK IS IN, because it is a
+                 full-width item inside the same wrapping strip. It first opened
+                 under the whole section and that was wrong on a phone: tapping
+                 a mark in the third row of 23 put the answer twenty rows below
+                 the thumb, off the screen entirely.
+                 IT SAYS TWO THINGS AND ONLY TWO: the words, and recorded or
+                 not. Tom's ruling of 2026-09-02 stands over this panel in
+                 particular — a take we have ruled unusable is shown as a line
+                 that still needs recording and NOTHING else, so there is no
+                 flag, no reason, no score and no "re-record this" state to leak
+                 in here. -->
+            <div v-if="peekedId === r.id" class="peek">
+              <span v-if="r.speaker" class="peek-speaker">{{ r.speaker }}</span>
+              <span class="peek-text">{{ r.text }}</span>
+              <span class="peek-state">{{ r.done ? 'Recorded' : 'Not recorded' }}</span>
+              <!-- AND THIS IS THE PRIZE. "I want to read that one again" is
+                   what an artist actually wants from a picture of their
+                   progress, so the mark is a way back onto the line and not
+                   just a report about it. It opens the mic on that line and
+                   nothing else; the last take is the accepted take, so
+                   re-reading simply replaces it and there is no confirm step
+                   here on purpose. -->
+              <button class="peek-record" type="button" @click="$emit('record', r.id)">
+                {{ r.done ? 'Read it again' : 'Record this line' }}
+              </button>
+            </div>
+          </template>
+        </div>
+
         <span class="sm-blurb">{{ s.blurb }}</span>
       </li>
     </ul>
@@ -150,6 +197,22 @@ const props = defineProps({
 const emit = defineEmits(['play', 'edit', 'save', 'cancel-edit', 'record'])
 
 const open = ref(props.startOpen)
+// WHICH MARK IS OPEN. Two separate pieces of state on purpose: `peekId` is a
+// decision the reader made with a tap and survives the pointer leaving, and
+// `hoverId` is a desktop preview that must never survive it. Everything on this
+// component works with `hoverId` permanently null — that is the phone.
+const peekId = ref(null)
+const hoverId = ref(null)
+// The mark whose line is open: a tap wins over a hover, and the panel is drawn
+// inline next to that mark rather than in a floating box a thumb would cover.
+const peekedId = computed(() => peekId.value || hoverId.value)
+// A section that disappears (the queue reloaded, the volume changed) must not
+// leave a panel open over somebody else's line.
+watch(() => props.sections, (list) => {
+  const ids = new Set(list.flatMap(s => s.rows.map(r => r.id)))
+  if (peekId.value && !ids.has(peekId.value)) peekId.value = null
+  if (hoverId.value && !ids.has(hoverId.value)) hoverId.value = null
+})
 // The draft lives here rather than in the booth: it is throwaway text that only
 // matters until Save, and the booth owns the request, not the keyboard.
 const draft = ref('')
@@ -174,30 +237,90 @@ const allRows = computed(() => props.sections.flatMap(s => s.rows))
 function takes(rows) { return rows.reduce((n, r) => n + (r.hasTake || r.done ? 1 : 0), 0) }
 const takeCount = computed(() => takes(allRows.value))
 const freshCount = computed(() => allRows.value.length - takeCount.value)
+// TWO NUMBERS PER SECTION, since 2026-09-03: the marks beside them are this
+// section's own run, so the caption has to add up to this section and not to
+// the page. Recorded, and still to read — never a third state.
 function tallyWords(section) {
   const t = takes(section.rows)
-  return t ? `${t} recorded` : 'none recorded yet'
+  const left = section.rows.length - t
+  return `${t ? `${t} recorded` : 'none recorded yet'} · ${left} still to read`
 }
 </script>
 
 <style scoped>
 .roster { margin-top: 1.1rem; }
+/* One section's marks. It sits inside the section row so the marks are always
+   read together with the name and the count they belong to. */
 .strip {
+  grid-column: 2;
   display: flex;
   flex-wrap: wrap;
   gap: 4px;
-  margin-bottom: 0.5rem;
+  margin: 0.35rem 0 0.1rem;
 }
 .tick {
-  width: 12px;
-  height: 12px;
+  /* 14px with a 4px gap: the smallest mark a thumb still lands on, and 305 of
+     them still fit in a phone width without scrolling. */
+  width: 14px;
+  height: 14px;
+  padding: 0;
   border-radius: 3px;
   border: 1px solid var(--color-graphite, #475569);
   background: transparent;   /* outstanding: an empty slot looks empty */
+  cursor: pointer;
+  /* TAP IS THE ONLY AFFORDANCE (Tom, 2026-09-03). No drag, no swipe, no
+     long-press — and this is what stops a thumb dragged across the grid from
+     being read as a text selection instead of a tap. */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 .tick.done {
   background: var(--color-paper, #f7f7f2);
   border-color: var(--color-paper, #f7f7f2);
+}
+/* The open mark, and the ONLY third appearance a mark ever has: it says "this
+   is the one you are looking at", never anything about the take. */
+.tick.on {
+  outline: 2px solid var(--color-emerald, #06ffa5);
+  outline-offset: 1px;
+}
+.tick:focus-visible { outline: 2px solid var(--color-emerald, #06ffa5); outline-offset: 1px; }
+
+/* WHICH LINE IS THAT. Deliberately quiet: it is a caption for a mark, and the
+   green Start button above it stays the loudest thing on the page. */
+.peek {
+  /* A full-width item in the wrapping strip: it breaks the line straight after
+     the mark that was tapped, so the answer appears on the row of the question. */
+  flex: 1 1 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.55rem;
+  margin: 0.35rem 0 0.15rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--color-graphite, #475569);
+  border-radius: 10px;
+}
+.peek-speaker {
+  font-size: 0.72rem;
+  padding: 0.05rem 0.4rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-graphite, #475569);
+  opacity: 0.9;
+}
+.peek-text { flex: 1 1 100%; font-size: 0.98rem; }
+.peek-state { font-size: 0.72rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.03em; }
+.peek-record {
+  margin-left: auto;
+  min-height: 44px;
+  padding: 0.35rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-emerald, #06ffa5);
+  background: transparent;
+  color: var(--color-emerald, #06ffa5);
+  font-size: 0.9rem;
+  cursor: pointer;
+  touch-action: manipulation;
 }
 .strip-words {
   margin: 0 0 0.5rem;
@@ -221,7 +344,9 @@ function tallyWords(section) {
 .sm-count {
   grid-column: 1;
   grid-row: 1 / 3;
-  align-self: center;
+  /* Was centred over a two-line row. Now the row is as tall as its grid, and a
+     number floating halfway down 23 rows of marks belongs to nothing. */
+  align-self: start;
   font-size: 1.9rem;
   font-weight: 800;
   line-height: 1;

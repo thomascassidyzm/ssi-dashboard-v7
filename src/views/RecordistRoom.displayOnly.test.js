@@ -385,10 +385,12 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     // truths: how many carry a take, and how many of those we want again.
     expect(map[0].find('.sm-name').text()).toBe('POD-1')
     expect(map[0].find('.sm-count').text()).toBe('2')
-    expect(map[0].find('.sm-tally').text()).toBe('1 recorded')
+    // Both numbers per section since 2026-09-03: each section now carries its
+    // own grid of marks, so its caption has to add up to that section alone.
+    expect(map[0].find('.sm-tally').text()).toBe('1 recorded · 1 still to read')
     expect(map[1].find('.sm-name').text()).toBe('NEW SEEDS')
     expect(map[1].find('.sm-count').text()).toBe('1')
-    expect(map[1].find('.sm-tally').text()).toBe('none recorded yet')
+    expect(map[1].find('.sm-tally').text()).toBe('none recorded yet · 1 still to read')
     // NAMED FOR WHAT THE LINES ARE, NOT FOR OUR VERDICT ON THEM. This heading
     // read "Re-recording in this course" until Tom's ruling of 2026-09-02:
     // "they must NOT see any clips that have already been ruled unusable - they
@@ -397,7 +399,7 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     expect(map[2].find('.sm-count').text()).toBe('1')
     // A REJECTED TAKE IS NOT A RECORDING. The line has a take on the wire and a
     // want against it, and it reads here exactly as a line nobody has opened.
-    expect(map[2].find('.sm-tally').text()).toBe('none recorded yet')
+    expect(map[2].find('.sm-tally').text()).toBe('none recorded yet · 1 still to read')
 
     // ONE NUMBER. It used to end ", 1 of those to read again" — our judgement of
     // the reader's own work, in the first sentence on their page.
