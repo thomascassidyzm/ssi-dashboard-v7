@@ -8,20 +8,32 @@
 // against the phone's -2.5 dBFS four minutes later, and he read the 16 dB as a
 // desktop-versus-phone difference because nothing on screen said otherwise.
 //
-// So: the room always opens on the voice profile, a legacy stored value is
-// cleared rather than honoured, and while the raw tap IS armed the room says so
-// in words. All three are load-bearing — the first is the fix, the second is
-// what unsticks the browsers already carrying the key, and the third is what
-// stops the next recordist arming it and forgetting.
+// So: the room always opens on WHAT THIS DEVICE SHOULD HAVE, a legacy stored
+// value is cleared rather than honoured, and while the room is on something
+// other than that it says so in words. All three are load-bearing — the first
+// is the fix, the second is what unsticks the browsers already carrying the
+// key, and the third is what stops the next recordist arming something and
+// forgetting.
+//
+// "Should have" stopped being a constant on 2026-09-03: a phone or a Safari
+// device gets the voice chain, a desktop browser that is not Safari gets the
+// raw tap, because Aran's Chrome-on-ChromeOS takes through the voice chain came
+// back dead above 16 kHz. The invariant these tests exist for is unchanged —
+// nothing is remembered, nothing is written back — so it is now asserted
+// against resolveCaptureProfile() rather than against the word "voice".
 
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
-import { DEFAULT_CAPTURE_PROFILE } from '@/composables/useTapRecorder'
+import { resolveCaptureProfile } from '@/composables/useTapRecorder'
 
 vi.mock('@/composables/useTapRecorder', async () => {
   const { ref } = await import('vue')
   return {
     DEFAULT_CAPTURE_PROFILE: 'voice',
+    // The real one, deliberately: what the room opens on IS this function's
+    // answer, so mocking it out would leave the assertions below testing
+    // nothing at all.
+    resolveCaptureProfile: (await import('@/composables/useTapRecorder')).resolveCaptureProfile,
     useTapRecorder: () => ({
       isRecording: ref(false), level: ref(0), clipping: ref(false), devices: ref([]),
       appliedSettings: ref({}), profile: ref('voice'), error: ref(null),
@@ -48,25 +60,29 @@ const mountRoom = async () => {
 }
 
 describe('the raw-microphone toggle does not survive the session', () => {
-  it('opens on the voice profile with nothing stored', async () => {
+  it('opens on what this device should have, with nothing stored', async () => {
     const w = await mountRoom()
-    expect(w.vm.captureProfile ?? DEFAULT_CAPTURE_PROFILE).toBe('voice')
+    expect(w.vm.captureProfile).toBe(resolveCaptureProfile())
   })
 
-  it('does not honour a stored dry preference, and clears it', async () => {
-    localStorage.setItem('recordist.captureProfile', 'dry')
+  it('does not honour a stored preference, and clears it', async () => {
+    // The opposite of whatever this device should have, so the assertion is a
+    // real one on every device the suite might run on.
+    const other = resolveCaptureProfile() === 'dry' ? 'voice' : 'dry'
+    localStorage.setItem('recordist.captureProfile', other)
     const w = await mountRoom()
-    expect(w.vm.captureProfile ?? 'voice').toBe('voice')
+    expect(w.vm.captureProfile).toBe(resolveCaptureProfile())
     expect(localStorage.getItem('recordist.captureProfile')).toBe(null)
   })
 
   it('never writes the key back, however the toggle is moved', async () => {
     const w = await mountRoom()
-    w.vm.captureProfile = 'dry'
+    w.vm.captureProfile = w.vm.captureProfile === 'dry' ? 'voice' : 'dry'
     await flushPromises()
     // the read-back proves the toggle actually moved, so the null below is a
     // real absence of a write rather than a setter that quietly did nothing
-    expect(w.vm.captureProfile).toBe('dry')
+    expect(w.vm.captureProfile).not.toBe(resolveCaptureProfile())
     expect(localStorage.getItem('recordist.captureProfile')).toBe(null)
+    expect(localStorage.getItem('recordist.captureProfile.v2')).toBe(null)
   })
 })

@@ -13,6 +13,7 @@
 
 import { ref, computed, onUnmounted } from 'vue'
 import { useVAD, type VADConfig, type ChunkGap, type TakePauseReport } from './useVAD'
+import { CAPTURE_PROFILES, resolveCaptureProfile } from './useTapRecorder'
 
 export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   // Auto-upload after capturing segment
@@ -294,12 +295,15 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
       // no phone in this surface's corpus yet. If one arrives quiet, this is
       // the line, and the fix is a profile plus a VAD floor measured against
       // the room the way useTapRecorder's already is.
+      //
+      // Which of the two profiles that resolves to is now the DEVICE's call,
+      // shared with the tap recorder rather than fixed here — the two halves
+      // of one recording room used to disagree about this outright. On a
+      // desktop browser it is still the dry capture described above. On WebKit
+      // and on phones it is the voice chain, because there `dry` selects
+      // RemoteIO and there is no gain stage behind it at all (Tom, 2026-08-22).
       stream = await navigator.mediaDevices.getUserMedia({
-        audio: {
-          echoCancellation: false,
-          noiseSuppression: false,
-          autoGainControl: false
-        }
+        audio: { ...CAPTURE_PROFILES[resolveCaptureProfile()] }
       })
 
       // Name the take's origin while the track is in hand. Truncated to the

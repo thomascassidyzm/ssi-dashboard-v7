@@ -17,6 +17,7 @@ import {
   useTapRecorder,
   CAPTURE_PROFILES,
   DEFAULT_CAPTURE_PROFILE,
+  resolveCaptureProfile,
   CAPTURE_BITRATE,
 } from './useTapRecorder'
 
@@ -92,11 +93,42 @@ describe('capture profile', () => {
     expect(rec.profile.value).toBe('dry')
   })
 
-  it('falls back to the default rather than an undefined constraint set', async () => {
+  it('falls back to what the device should have rather than an undefined constraint set', async () => {
     const rec = useTapRecorder()
     await rec.start(null, 'nonsense')
-    expect(gumCalls[0].audio.echoCancellation).toBe(CAPTURE_PROFILES[DEFAULT_CAPTURE_PROFILE].echoCancellation)
-    expect(rec.profile.value).toBe(DEFAULT_CAPTURE_PROFILE)
+    const expected = resolveCaptureProfile()
+    expect(gumCalls[0].audio.echoCancellation).toBe(CAPTURE_PROFILES[expected].echoCancellation)
+    expect(rec.profile.value).toBe(expected)
+  })
+
+  // THE 2026-09-03 DEVICE-AWARE DEFAULT.
+  //
+  // Aran's takes of 2026-09-03 were captured on a Blue Snowball through Chrome
+  // on ChromeOS with the voice profile, and every one of them is dead above
+  // 16 kHz — Chrome's WebRTC processing runs a 32 kHz internal path. His own
+  // takes on the same mic before the profile change carry content to 20 kHz.
+  // A desktop browser that is not Safari must therefore start dry. Tom's
+  // 2026-08-22 ruling is untouched: WebKit and phones still get the voice
+  // chain, because on WebKit `dry` means RemoteIO with no gain stage at all.
+  describe('resolveCaptureProfile', () => {
+    const cases = [
+      ['dry', 'Mozilla/5.0 (X11; CrOS x86_64 14541.0.0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36'],
+      ['dry', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36'],
+      ['dry', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:130.0) Gecko/20100101 Firefox/130.0'],
+      ['dry', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Safari/537.36 Edg/151.0.0.0'],
+      ['voice', 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Safari/605.1.15'],
+      ['voice', 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_5 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.5 Mobile/15E148 Safari/604.1'],
+      ['voice', 'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36'],
+    ]
+    for (const [expected, ua] of cases) {
+      it(`gives ${expected} for ${ua.slice(0, 48)}...`, () => {
+        expect(resolveCaptureProfile(ua)).toBe(expected)
+      })
+    }
+
+    it('falls back to the voice chain when there is no user agent to read', () => {
+      expect(resolveCaptureProfile('')).toBe(DEFAULT_CAPTURE_PROFILE)
+    })
   })
 
   it('reports the profile alongside what the browser actually gave back', async () => {

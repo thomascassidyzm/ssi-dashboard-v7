@@ -116,13 +116,15 @@
         <input type="checkbox" :checked="captureProfile === 'dry'"
                @change="captureProfile = $event.target.checked ? 'dry' : 'voice'" />
         <span><strong>Record the raw microphone</strong>
-          <small>Off = the phone cleans up the sound as it records, the way a voice note does. Turn it on only to
-            capture the room exactly as it is — it will sound quieter and rougher. It goes back off by itself
-            next time you open this room.</small></span>
+          <small>On = the microphone exactly as it is, which is what a proper mic on a computer wants. Off = the
+            device cleans the sound up as it records, the way a voice note does, which is what a phone wants. It is
+            already set the way this device should be, and it goes back to that by itself next time you open this
+            room.</small></span>
       </label>
-      <p v-if="captureProfile === 'dry'" class="dry-warning">
-        Raw microphone is on. Takes will record much quieter than normal — turn it off unless you are
-        deliberately measuring the room.
+      <p v-if="captureProfile !== recommendedProfile" class="dry-warning">
+        {{ captureProfile === 'dry'
+          ? 'Raw microphone is on, and on this device that is not the usual setting. Takes may record much quieter than normal — turn it off unless you are deliberately measuring the room.'
+          : 'The device is cleaning the sound up, and on this device that is not the usual setting. It will take the top off the voice — turn it back on unless you are deliberately comparing the two.' }}
       </p>
 
       <label class="toggle-row">
@@ -414,7 +416,7 @@
 // no course code appears anywhere on this page.
 import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
-import { useTapRecorder, DEFAULT_CAPTURE_PROFILE } from '@/composables/useTapRecorder'
+import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
 import { useRecordistQueue } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
@@ -455,7 +457,18 @@ const selectedDeviceId = ref(null)
 // So the raw tap is now what it always was in intent: a per-session diagnostic,
 // one tick away whenever it is wanted, and gone the next time the room opens.
 // The stale key is cleared on sight so no browser is still carrying one.
-const captureProfile = ref(DEFAULT_CAPTURE_PROFILE)
+//
+// WHICH PROFILE IS THE DEFAULT IS NOW THE DEVICE'S CALL (2026-09-03). The note
+// above is about REMEMBERING a choice, and it stands untouched — nothing is
+// stored, and a tick still lasts one session. What changed is what the room
+// starts from. A phone or a Safari device still starts on the voice chain, for
+// exactly the reason above. A desktop browser that is not Safari — where a
+// voice artist with a real microphone sits — starts on the raw tap, because
+// Aran's 2026-09-03 takes through Chrome's processing on a Blue Snowball came
+// back dead above 16 kHz, 12-15 dB down on his own takes on the same mic before
+// the profile change. Reasoning and measurements: useTapRecorder.js.
+const recommendedProfile = resolveCaptureProfile()
+const captureProfile = ref(recommendedProfile)
 try { localStorage.removeItem('recordist.captureProfile') } catch { /* private mode */ }
 // The mic this take was read into, and how it was asked for — the take's
 // provenance row. The profile belongs in it: two takes of the same line under
@@ -467,7 +480,15 @@ function micLabel() {
     ? list.find(d => d.deviceId === selectedDeviceId.value)
     : list[0]
   const mic = (chosen && chosen.label) || null
-  return [mic, `capture:${captureProfile.value}`].filter(Boolean).join(' · ')
+  // What the browser ACTUALLY did, not only what was asked for. The profile is
+  // a request; getSettings() is the answer, and the two can differ — WebKit
+  // ignores autoGainControl entirely. Without it, a take from after the
+  // 2026-09-03 device-aware default cannot be told apart from one before it.
+  const a = recorder.appliedSettings.value
+  const got = a
+    ? `got:ec${a.echoCancellation ? 1 : 0}ns${a.noiseSuppression ? 1 : 0}agc${a.autoGainControl ? 1 : 0}@${Math.round((a.sampleRate || 0) / 1000)}k`
+    : null
+  return [mic, `capture:${captureProfile.value}`, got].filter(Boolean).join(' · ')
 }
 const index = ref(0)
 // THE PATH HE ACTUALLY WALKED, not index arithmetic. nextIndexFrom() skips

@@ -24,6 +24,7 @@ vi.mock('@/composables/useRecordistQueue', () => ({
 
 vi.mock('@/composables/useTapRecorder', () => ({
   DEFAULT_CAPTURE_PROFILE: 'voice',
+  resolveCaptureProfile: () => 'dry',
   useTapRecorder: () => ({
     isRecording: ref(true), level: ref(0.3), clipping: ref(false),
     devices: ref([]), appliedSettings: ref({}), profile: ref('voice'), error: ref(null),
