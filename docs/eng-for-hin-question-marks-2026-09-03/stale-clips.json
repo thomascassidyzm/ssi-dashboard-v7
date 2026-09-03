@@ -1,0 +1,568 @@
+{
+ "stamp": "2026-09-03",
+ "course": "eng_for_hin",
+ "note": "These phrases kept their existing English clips through the question-mark edit, so each clip now speaks a question with statement intonation. Re-render needed; blocked while xAI is retired.",
+ "count": 70,
+ "phrases": [
+  {
+   "id": "eng_for_hin:S0203L01B01",
+   "seed": 203,
+   "phrase_role": "build",
+   "text_now": "what would you do today?",
+   "target1_audio_id": "4731ca13-5cff-4fbd-a880-a797efd788d1",
+   "target2_audio_id": "b66cc0d8-0d07-4309-ac6d-d300d3b36519"
+  },
+  {
+   "id": "eng_for_hin:S0203L02B01",
+   "seed": 203,
+   "phrase_role": "build",
+   "text_now": "what would you do if I asked you?",
+   "target1_audio_id": "73728d35-3df2-42a3-bfbe-ff477b95922c",
+   "target2_audio_id": "b18e82b2-516e-4dcc-af82-f866c29c3b3a"
+  },
+  {
+   "id": "eng_for_hin:S0203L03U01",
+   "seed": 203,
+   "phrase_role": "use",
+   "text_now": "what would you do if I asked you to help me?",
+   "target1_audio_id": "92c26974-e035-4ea2-abb2-6ef8de131571",
+   "target2_audio_id": "35ccb10a-a7cf-4827-8ec7-e1954f6e2959"
+  },
+  {
+   "id": "eng_for_hin:S0214L01B01",
+   "seed": 214,
+   "phrase_role": "build",
+   "text_now": "did you have a good time today?",
+   "target1_audio_id": "24a051ce-fc20-4d55-8662-17d17c302d3d",
+   "target2_audio_id": "4bb79210-df86-43ae-b592-5e97641f3e6d"
+  },
+  {
+   "id": "eng_for_hin:S0214L02B01",
+   "seed": 214,
+   "phrase_role": "build",
+   "text_now": "did you have a good time at the weekend?",
+   "target1_audio_id": "a893754d-0939-4284-aac3-01a4cb2f788d",
+   "target2_audio_id": "bb7e5104-0d3f-4325-8e9e-4bbfbb8032f5"
+  },
+  {
+   "id": "eng_for_hin:S0214L01U03",
+   "seed": 214,
+   "phrase_role": "use",
+   "text_now": "did you have a good time with them?",
+   "target1_audio_id": "cb20e58d-e5d5-4649-886e-f82b0e5eb4d5",
+   "target2_audio_id": "fb4d9c2f-35f6-49fe-845f-04119de4482d"
+  },
+  {
+   "id": "eng_for_hin:S0220L02B01",
+   "seed": 220,
+   "phrase_role": "build",
+   "text_now": "did you watch a bit of television?",
+   "target1_audio_id": "6b5a2b0a-d175-4c1b-bcce-b16f3a944658",
+   "target2_audio_id": "f5d095f8-4662-47d4-89f9-55867c3b879f"
+  },
+  {
+   "id": "eng_for_hin:S0250L03B01",
+   "seed": 250,
+   "phrase_role": "build",
+   "text_now": "can you tell me something before I answer?",
+   "target1_audio_id": "0ca52031-c9c3-4d1c-8c81-94532751b5b5",
+   "target2_audio_id": "e66bb22f-51e7-4052-999b-3b8eb0f412af"
+  },
+  {
+   "id": "eng_for_hin:S0263L02B02",
+   "seed": 263,
+   "phrase_role": "build",
+   "text_now": "can you tell me who you mean?",
+   "target1_audio_id": "722c2eda-baf2-47cf-b54e-aa0964b4193f",
+   "target2_audio_id": "37624555-3a2f-4404-9382-de44904c7c72"
+  },
+  {
+   "id": "eng_for_hin:S0271L02B01",
+   "seed": 271,
+   "phrase_role": "build",
+   "text_now": "would you like to come?",
+   "target1_audio_id": "3790405b-cb97-4db4-9608-30a7399026a5",
+   "target2_audio_id": "b23d180f-257c-4392-ba36-0dc9c770dd85"
+  },
+  {
+   "id": "eng_for_hin:S0281L01B01",
+   "seed": 281,
+   "phrase_role": "build",
+   "text_now": "do you mind if I finish my coffee?",
+   "target1_audio_id": "b33b9f99-f629-4baf-b309-564dd23e66da",
+   "target2_audio_id": "6b389e49-9754-484f-87f9-1ef6290ffb9d"
+  },
+  {
+   "id": "eng_for_hin:S0284L01U03",
+   "seed": 284,
+   "phrase_role": "use",
+   "text_now": "do you know an old friend?",
+   "target1_audio_id": "58520b3f-42c5-4266-8ffc-8255f8f69342",
+   "target2_audio_id": "dadc1af0-cdd6-4ad0-8b77-d867d2cbc775"
+  },
+  {
+   "id": "eng_for_hin:S0329L01U02",
+   "seed": 329,
+   "phrase_role": "use",
+   "text_now": "do you think that it's important?",
+   "target1_audio_id": "bdbb96ee-cd3f-4840-8b92-bd4092e2bb0c",
+   "target2_audio_id": "e53cf846-ed1d-48ba-a07d-77219df351f5"
+  },
+  {
+   "id": "eng_for_hin:S0330L03U01",
+   "seed": 330,
+   "phrase_role": "use",
+   "text_now": "do you think that it's very important?",
+   "target1_audio_id": "1cfee138-86ea-410f-b59c-d7fbf9e9d882",
+   "target2_audio_id": "c0aed44c-7093-4470-8148-816b18b0c1e5"
+  },
+  {
+   "id": "eng_for_hin:S0349L01B02",
+   "seed": 349,
+   "phrase_role": "build",
+   "text_now": "did he want to go?",
+   "target1_audio_id": "1b7f3c14-085a-49ef-9e54-537c6e7a7b97",
+   "target2_audio_id": "40485e2b-7c62-47da-bb1d-8ee73a0129b1"
+  },
+  {
+   "id": "eng_for_hin:S0349L02U01",
+   "seed": 349,
+   "phrase_role": "use",
+   "text_now": "did he want to go out?",
+   "target1_audio_id": "9a0458ea-c48b-4ba0-8a67-8a6cca874df3",
+   "target2_audio_id": "31c62ab0-b4b4-41ce-819b-f016ba6e774b"
+  },
+  {
+   "id": "eng_for_hin:S0360L02B03",
+   "seed": 360,
+   "phrase_role": "build",
+   "text_now": "did your friend say anything else today?",
+   "target1_audio_id": "df82d2c5-a043-45ce-8004-f281b5de9deb",
+   "target2_audio_id": "d870ae01-7a02-4f75-8653-ce4b2e3e7392"
+  },
+  {
+   "id": "eng_for_hin:S0360L02U01",
+   "seed": 360,
+   "phrase_role": "use",
+   "text_now": "did your friend say anything else yesterday?",
+   "target1_audio_id": "5e066c6a-33da-48cd-ac41-6b95c9f30f06",
+   "target2_audio_id": "6cf7c0f4-1550-454d-92bc-6d8c5788aa27"
+  },
+  {
+   "id": "eng_for_hin:S0366L01B02",
+   "seed": 366,
+   "phrase_role": "build",
+   "text_now": "did you hear what he said?",
+   "target1_audio_id": "c5e44ca9-8d27-457c-821f-159a70b6996f",
+   "target2_audio_id": "7a0b468c-5f84-469e-9863-33fbf09465dc"
+  },
+  {
+   "id": "eng_for_hin:S0377L01B01",
+   "seed": 377,
+   "phrase_role": "build",
+   "text_now": "did you go anywhere today?",
+   "target1_audio_id": "64f63752-3398-4de4-88b7-2642f2e32f96",
+   "target2_audio_id": "93154f58-8b0b-4843-9ac4-236f841ece32"
+  },
+  {
+   "id": "eng_for_hin:S0377L02B01",
+   "seed": 377,
+   "phrase_role": "build",
+   "text_now": "did you go anywhere in the world?",
+   "target1_audio_id": "b8776586-ee9e-4a60-b0ff-4512fe1f3a8d",
+   "target2_audio_id": "1200baea-2cbc-4dab-b138-12bc7ce55177"
+  },
+  {
+   "id": "eng_for_hin:S0377L03U04",
+   "seed": 377,
+   "phrase_role": "use",
+   "text_now": "did you go anywhere in the world last year?",
+   "target1_audio_id": "d67033e3-0b10-4233-ac27-ff52ab8eade8",
+   "target2_audio_id": "dca4f7ec-dc73-4354-adb5-dcaaa308bd90"
+  },
+  {
+   "id": "eng_for_hin:S0382L01U03",
+   "seed": 382,
+   "phrase_role": "use",
+   "text_now": "did you ask what she was doing?",
+   "target1_audio_id": "41d97a91-95f3-4eae-820f-1567b5fa0d1a",
+   "target2_audio_id": "e658300a-cd5e-4d24-aaf3-b80cfa7b9d40"
+  },
+  {
+   "id": "eng_for_hin:S0405L01B01",
+   "seed": 405,
+   "phrase_role": "build",
+   "text_now": "should we ask today?",
+   "target1_audio_id": "23d19b06-ead7-4bd7-bbf1-24367e4e03e7",
+   "target2_audio_id": "36f4bd1c-cd5c-4bc2-a1ca-bac7839703e7"
+  },
+  {
+   "id": "eng_for_hin:S0405L02B01",
+   "seed": 405,
+   "phrase_role": "build",
+   "text_now": "should we ask if we have to book?",
+   "target1_audio_id": "ce8456f0-fc9b-4160-8680-04cb78f1e75b",
+   "target2_audio_id": "8a894793-07db-49d0-948c-7cac6b8dc3bb"
+  },
+  {
+   "id": "eng_for_hin:S0407L02B01",
+   "seed": 407,
+   "phrase_role": "build",
+   "text_now": "shouldn't we try to set a good example?",
+   "target1_audio_id": "d653b622-aab2-458b-879d-9b2e0131c983",
+   "target2_audio_id": "55a64ce5-2de5-4091-933c-ff14f17d165a"
+  },
+  {
+   "id": "eng_for_hin:S0414L02B01",
+   "seed": 414,
+   "phrase_role": "build",
+   "text_now": "could we have a bottle of red wine?",
+   "target1_audio_id": "368a939f-fcca-4c03-aa41-47fd1457a0e0",
+   "target2_audio_id": "2bb740ac-a034-48f1-98a8-620ae1a5bdf1"
+  },
+  {
+   "id": "eng_for_hin:S0414L01U01",
+   "seed": 414,
+   "phrase_role": "use",
+   "text_now": "could we have something?",
+   "target1_audio_id": "be652dee-9151-4bc9-b077-25e03cd21300",
+   "target2_audio_id": "b1061e30-6b23-44d7-890d-a61e35f0b103"
+  },
+  {
+   "id": "eng_for_hin:S0414L03U01",
+   "seed": 414,
+   "phrase_role": "use",
+   "text_now": "could we have a bottle of red wine please?",
+   "target1_audio_id": "b8c5d04e-e612-4f8e-b3da-bbfe621f1933",
+   "target2_audio_id": "872afa9e-628a-4866-8714-d3d5b83a3d48"
+  },
+  {
+   "id": "eng_for_hin:S0417L03B01",
+   "seed": 417,
+   "phrase_role": "build",
+   "text_now": "do they want to kill those ants?",
+   "target1_audio_id": "de1b24f6-f6cb-4495-a444-c4afdac3c778",
+   "target2_audio_id": "212614b6-c05f-4dd5-8a90-25f0b19f0b11"
+  },
+  {
+   "id": "eng_for_hin:S0423L02B01",
+   "seed": 423,
+   "phrase_role": "build",
+   "text_now": "do they need to ask such an obvious question?",
+   "target1_audio_id": "9e604194-fe93-4933-9444-aaebd8d40712",
+   "target2_audio_id": "60539ff0-a6e1-4015-8073-dea038ce8a5c"
+  },
+  {
+   "id": "eng_for_hin:S0428L03B01",
+   "seed": 428,
+   "phrase_role": "build",
+   "text_now": "would they like to visit us on Tuesday?",
+   "target1_audio_id": "2eb03bd6-8240-4888-a3ea-55e04049f5b4",
+   "target2_audio_id": "437820df-11cc-47a4-a480-46d2e279684a"
+  },
+  {
+   "id": "eng_for_hin:S0434L02B01",
+   "seed": 434,
+   "phrase_role": "build",
+   "text_now": "could they cut the number of students they take?",
+   "target1_audio_id": "b6e7e3f5-8666-4eee-8b83-380bb1346a52",
+   "target2_audio_id": "9c21a24e-18c3-4960-b232-aaedff7f2756"
+  },
+  {
+   "id": "eng_for_hin:S0442L03B01",
+   "seed": 442,
+   "phrase_role": "build",
+   "text_now": "did they want to develop a new approach?",
+   "target1_audio_id": "41077962-b9a8-4dda-a68b-eee13731457a",
+   "target2_audio_id": "1d678801-4ea4-46d1-81ea-5dc1b2a3f988"
+  },
+  {
+   "id": "eng_for_hin:S0447L02B01",
+   "seed": 447,
+   "phrase_role": "build",
+   "text_now": "will they be able to drive us home after the meal?",
+   "target1_audio_id": "3c6011df-3ae7-4bfa-8b22-ca91a94c2b2d",
+   "target2_audio_id": "093d2beb-7f14-4538-8b3b-a7262cbb11f6"
+  },
+  {
+   "id": "eng_for_hin:S0453L02B01",
+   "seed": 453,
+   "phrase_role": "build",
+   "text_now": "did they say who they saw last night?",
+   "target1_audio_id": "99177551-91d9-440b-b362-b3cd75cfff8a",
+   "target2_audio_id": "2a5a1d1a-704d-41d1-9e48-f1ea9a6c4fc2"
+  },
+  {
+   "id": "eng_for_hin:S0453L01U04",
+   "seed": 453,
+   "phrase_role": "use",
+   "text_now": "did they say what they wanted to do?",
+   "target1_audio_id": "6dbfaf2a-db65-4519-bef9-7a7179bfa39d",
+   "target2_audio_id": "93585e97-5e60-496c-ab43-0c1d9797037a"
+  },
+  {
+   "id": "eng_for_hin:S0470L02B01",
+   "seed": 470,
+   "phrase_role": "build",
+   "text_now": "how high do you want to climb before we stop?",
+   "target1_audio_id": "8e65c11c-4540-4adf-9506-c89bf1b6aff3",
+   "target2_audio_id": "89e5ca63-c602-46c3-be1f-94bfcb68ba3c"
+  },
+  {
+   "id": "eng_for_hin:S0470L01B03",
+   "seed": 470,
+   "phrase_role": "build",
+   "text_now": "how high do you want to climb today?",
+   "target1_audio_id": "24692bed-ae4a-45c2-8b95-0442a67073ab",
+   "target2_audio_id": "aa48a51d-1024-4341-bcff-ebcd61a17922"
+  },
+  {
+   "id": "eng_for_hin:S0471L02B01",
+   "seed": 471,
+   "phrase_role": "build",
+   "text_now": "do you want to stop for a rest?",
+   "target1_audio_id": "bd2ae18b-2878-4d3e-8a51-87d964320e00",
+   "target2_audio_id": "48d16ebb-9a7c-466e-b1a1-da8c03552e30"
+  },
+  {
+   "id": "eng_for_hin:S0493L01U01",
+   "seed": 493,
+   "phrase_role": "use",
+   "text_now": "do you know what's going to come next?",
+   "target1_audio_id": "80dcac65-1b21-4e4f-8a27-ce2886a8e0a3",
+   "target2_audio_id": "04fc1fcd-2d36-4417-99e3-9cd8868efb56"
+  },
+  {
+   "id": "eng_for_hin:S0494L02B01",
+   "seed": 494,
+   "phrase_role": "build",
+   "text_now": "what happens after the first part of the show?",
+   "target1_audio_id": "192df6ed-1f5b-4772-906d-92606823929b",
+   "target2_audio_id": "1ab892b4-92bf-4af1-9dd0-5a96b6d5db2d"
+  },
+  {
+   "id": "eng_for_hin:S0494L01U01",
+   "seed": 494,
+   "phrase_role": "use",
+   "text_now": "do you know what happens?",
+   "target1_audio_id": "523b6649-14c4-4a50-854c-f7d0dd92758e",
+   "target2_audio_id": "e604dc43-7225-4140-ac16-b9b7860504ad"
+  },
+  {
+   "id": "eng_for_hin:S0500L02B01",
+   "seed": 500,
+   "phrase_role": "build",
+   "text_now": "why don't you want to sit between the two girls?",
+   "target1_audio_id": "2bba7275-9562-4ead-a09a-903527269c79",
+   "target2_audio_id": "689a4027-858c-428f-ae23-9db04042949e"
+  },
+  {
+   "id": "eng_for_hin:S0512L02B01",
+   "seed": 512,
+   "phrase_role": "build",
+   "text_now": "can you hold the door open while I fetch the keys?",
+   "target1_audio_id": "933c3486-a7a2-449e-b73f-d8819608d621",
+   "target2_audio_id": "82994722-ec36-46dc-9571-58bfaaaea68e"
+  },
+  {
+   "id": "eng_for_hin:S0559L02B01",
+   "seed": 559,
+   "phrase_role": "build",
+   "text_now": "have you found the path through the wood?",
+   "target1_audio_id": "e17c2f69-81ac-47c6-9124-a99d5adc9dca",
+   "target2_audio_id": "c01b5121-0563-44e0-9d99-cae3e7061c66"
+  },
+  {
+   "id": "eng_for_hin:S0569L02B01",
+   "seed": 569,
+   "phrase_role": "build",
+   "text_now": "have you decided how much you are willing to pay?",
+   "target1_audio_id": "a18bebf6-19f9-4d2c-a82f-a0148cf2ecba",
+   "target2_audio_id": "baeefac7-ef88-4a31-84ba-6c3556ad4892"
+  },
+  {
+   "id": "eng_for_hin:S0572L02B01",
+   "seed": 572,
+   "phrase_role": "build",
+   "text_now": "have you forgotten what happened?",
+   "target1_audio_id": "3240e6d7-485d-4164-8628-729edd691181",
+   "target2_audio_id": "c1f04f1a-58c0-4c69-a40f-634dd8736dbc"
+  },
+  {
+   "id": "eng_for_hin:S0572L03B01",
+   "seed": 572,
+   "phrase_role": "build",
+   "text_now": "have you forgotten what happened the last time they visited us?",
+   "target1_audio_id": "537f0c91-02ce-4b62-be1f-7086aae54157",
+   "target2_audio_id": "231b2972-5761-4a90-9e07-59ce9a824dc7"
+  },
+  {
+   "id": "eng_for_hin:S0582L02B01",
+   "seed": 582,
+   "phrase_role": "build",
+   "text_now": "what's it like to grow up here?",
+   "target1_audio_id": "598fed02-b315-4d2d-8b1e-6bf056a8b78f",
+   "target2_audio_id": "d2b55923-2c4e-43ba-9fa6-247ae9524be3"
+  },
+  {
+   "id": "eng_for_hin:S0583L01B01",
+   "seed": 583,
+   "phrase_role": "build",
+   "text_now": "what's it like in this part of the world?",
+   "target1_audio_id": "6244bbd8-bb22-46e8-a131-92c4426424bf",
+   "target2_audio_id": "6afb2c62-ed1a-409f-b65b-fa0ec6fe61d1"
+  },
+  {
+   "id": "eng_for_hin:S0584L01B01",
+   "seed": 584,
+   "phrase_role": "build",
+   "text_now": "what's it like to wake up every morning?",
+   "target1_audio_id": "0d3a064f-308d-4944-8c60-758ed24106d2",
+   "target2_audio_id": "34c2a389-5b5d-46ce-90ee-5d29fc27f9d7"
+  },
+  {
+   "id": "eng_for_hin:S0584L02B01",
+   "seed": 584,
+   "phrase_role": "build",
+   "text_now": "what's it like to wake up every morning and see the mountains?",
+   "target1_audio_id": "ac29a8ca-3719-4ca4-b743-936c21ce4acc",
+   "target2_audio_id": "862dad6f-7a04-455e-bcbc-ebaf4e1754f8"
+  },
+  {
+   "id": "eng_for_hin:S0588L02U03",
+   "seed": 588,
+   "phrase_role": "use",
+   "text_now": "what's it like to grow up?",
+   "target1_audio_id": "c2eeb69d-676a-4f12-9d83-47ebaff393f7",
+   "target2_audio_id": "b1149a6a-5045-4193-9f07-2c0609bab482"
+  },
+  {
+   "id": "eng_for_hin:S0601L02U05",
+   "seed": 601,
+   "phrase_role": "use",
+   "text_now": "can you tell me how it all started?",
+   "target1_audio_id": "ac174a25-63ca-45c6-8bc1-21fb84b16d78",
+   "target2_audio_id": "356c079e-e210-49a3-b45e-7a484a336cc9"
+  },
+  {
+   "id": "eng_for_hin:S0602L01U01",
+   "seed": 602,
+   "phrase_role": "use",
+   "text_now": "do you know how it started in the first place?",
+   "target1_audio_id": "78aa6e44-0f70-40e8-b9e1-6b3854cf7771",
+   "target2_audio_id": "a724e9a5-7c74-4107-932a-be5e413332e3"
+  },
+  {
+   "id": "eng_for_hin:S0625L01B01",
+   "seed": 625,
+   "phrase_role": "build",
+   "text_now": "do you want something to drink?",
+   "target1_audio_id": "955a1e74-dc86-448f-9fa1-0e621b334cab",
+   "target2_audio_id": "dc80225c-879d-461e-b520-e58357399dda"
+  },
+  {
+   "id": "eng_for_hin:S0630L01B01",
+   "seed": 630,
+   "phrase_role": "build",
+   "text_now": "can I have something to drink please?",
+   "target1_audio_id": "1d06658d-2657-418f-b517-685f2d9085aa",
+   "target2_audio_id": "af78be0d-069c-4172-a571-e730f6b353ab"
+  },
+  {
+   "id": "eng_for_hin:S0630L01U02",
+   "seed": 630,
+   "phrase_role": "use",
+   "text_now": "can I have something to drink?",
+   "target1_audio_id": "4ae63eff-4f55-446c-8a24-69a66918bbf1",
+   "target2_audio_id": "c5295d23-92aa-4459-9532-fcbf9a0f2bc4"
+  },
+  {
+   "id": "eng_for_hin:S0632L01U01",
+   "seed": 632,
+   "phrase_role": "use",
+   "text_now": "can I have a glass of water please?",
+   "target1_audio_id": "9ae24b0a-1d07-4cb6-ab46-cfaaf9888e91",
+   "target2_audio_id": "bd360b2a-9bba-4218-b9d1-52a32d037e5d"
+  },
+  {
+   "id": "eng_for_hin:S0632L01U02",
+   "seed": 632,
+   "phrase_role": "use",
+   "text_now": "do you want a glass of water?",
+   "target1_audio_id": "a1d441f6-6d4d-47dc-8f41-8a84c9f458b8",
+   "target2_audio_id": "2ff3b540-3efd-4539-82b9-e5011afff349"
+  },
+  {
+   "id": "eng_for_hin:S0634L01U02",
+   "seed": 634,
+   "phrase_role": "use",
+   "text_now": "can I have one of those please?",
+   "target1_audio_id": "f54f43fb-482a-4a69-8d39-4899ba827f19",
+   "target2_audio_id": "284ed4d6-6dde-4a92-b677-3eed14dd97ec"
+  },
+  {
+   "id": "eng_for_hin:S0634L01U03",
+   "seed": 634,
+   "phrase_role": "use",
+   "text_now": "do you want one of those?",
+   "target1_audio_id": "2673f661-7adc-4adb-b310-d0cbdc6ce943",
+   "target2_audio_id": "7e904939-e741-4dd0-bdac-7d0a0c7f895f"
+  },
+  {
+   "id": "eng_for_hin:S0639L02B02",
+   "seed": 639,
+   "phrase_role": "build",
+   "text_now": "are you ready sir?",
+   "target1_audio_id": "0d6fe8af-d5a1-4c03-9e26-cb6d82e966f8",
+   "target2_audio_id": "1cad4ce5-fa98-4339-af01-4d67ae0cea87"
+  },
+  {
+   "id": "eng_for_hin:S0642L01B01",
+   "seed": 642,
+   "phrase_role": "build",
+   "text_now": "how do you feel at the moment?",
+   "target1_audio_id": "3906b011-c150-4fbe-9605-dff608927704",
+   "target2_audio_id": "1236708e-6ab6-4e41-939c-381497058c85"
+  },
+  {
+   "id": "eng_for_hin:S0642L02B01",
+   "seed": 642,
+   "phrase_role": "build",
+   "text_now": "how do you feel madam?",
+   "target1_audio_id": "4caf6433-31a6-4dc0-b4d7-20f11029f95d",
+   "target2_audio_id": "b876fff0-f39f-42b1-9dd0-bf79f11d2ba3"
+  },
+  {
+   "id": "eng_for_hin:S0642L01B03",
+   "seed": 642,
+   "phrase_role": "build",
+   "text_now": "how do you feel madam?",
+   "target1_audio_id": "4caf6433-31a6-4dc0-b4d7-20f11029f95d",
+   "target2_audio_id": "b876fff0-f39f-42b1-9dd0-bf79f11d2ba3"
+  },
+  {
+   "id": "eng_for_hin:S0642L02U01",
+   "seed": 642,
+   "phrase_role": "use",
+   "text_now": "do you mind madam?",
+   "target1_audio_id": "9eb73689-10b3-4763-a729-a29de54035ed",
+   "target2_audio_id": "58f84e98-529a-4e4a-abce-08f039efea8a"
+  },
+  {
+   "id": "eng_for_hin:S0642L02U02",
+   "seed": 642,
+   "phrase_role": "use",
+   "text_now": "what do you think madam?",
+   "target1_audio_id": "32f3f356-04a2-4f96-b3b5-78a1a5cefb13",
+   "target2_audio_id": "04fc407b-346f-4898-81c8-706289cf3eb6"
+  },
+  {
+   "id": "eng_for_hin:S0644L01B01",
+   "seed": 644,
+   "phrase_role": "build",
+   "text_now": "could you say that sir?",
+   "target1_audio_id": "eedaea50-5f6d-4979-8e61-b1535e665a26",
+   "target2_audio_id": "58835d38-b12d-4211-90f3-4982ea8072ea"
+  }
+ ]
+}
