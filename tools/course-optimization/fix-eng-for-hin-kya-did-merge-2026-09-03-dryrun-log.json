@@ -1,0 +1,142 @@
+{
+ "mode": "dry-run",
+ "at": "2026-09-03T18:27:28.487Z",
+ "steps": [
+  {
+   "step": "A.before",
+   "lego": {
+    "lego_id": "S0355L03",
+    "type": "M",
+    "components": [
+     {
+      "known": "क्या",
+      "target": "did"
+     },
+     {
+      "known": "उसे",
+      "target": "she"
+     }
+    ],
+    "known_text": "क्या उसे",
+    "target_text": "did she",
+    "known_audio_id": "b40d5b57-0a01-4205-adfc-9d2fea093162",
+    "target1_audio_id": "0ebf59ba-7718-40d2-8251-1c62a59b391e",
+    "target2_audio_id": "5aa10680-51bc-4bde-92f9-b644a13490a7"
+   }
+  },
+  {
+   "step": "A.plan",
+   "delete_component_rows": [
+    {
+     "id": "eng_for_hin:S0355L03C01",
+     "position": 1,
+     "known_text": "क्या",
+     "target_text": "did"
+    },
+    {
+     "id": "eng_for_hin:S0355L03C02",
+     "position": 2,
+     "known_text": "उसे",
+     "target_text": "she"
+    }
+   ],
+   "renormalise": 9
+  },
+  {
+   "step": "B.before",
+   "lego": {
+    "lego_id": "S0385L01",
+    "known_text": "उससे सहमत थे",
+    "target_text": "agree with her",
+    "components": [
+     {
+      "known": "उससे",
+      "target": "her",
+      "introduce": false
+     },
+     {
+      "known": "सहमत",
+      "target": "agree",
+      "introduce": false
+     },
+     {
+      "known": "थे",
+      "target": "were",
+      "introduce": false
+     }
+    ],
+    "known_audio_id": "a5ed8595-8b8b-41ec-b5e4-e12a8642daac",
+    "target1_audio_id": "8537569f-968b-4c0b-a977-bd3ccc5d11cc",
+    "target2_audio_id": "b6eec8ca-c959-4bc7-9754-901a02353888",
+    "presentation_audio_id": "2742022a-9afe-4b94-8b05-31d85208ab2c"
+   }
+  },
+  {
+   "step": "B.clip",
+   "role": "known",
+   "clip": "5931f8ce-9fd0-4ff8-8018-f317d33d4490",
+   "voice": "eve",
+   "text": "क्या आप उससे सहमत थे?"
+  },
+  {
+   "step": "B.clip",
+   "role": "target1",
+   "clip": "76396694-8cf2-457c-975a-3ff4d20d4567",
+   "voice": "bedd6226",
+   "text": "Did you agree with her?"
+  },
+  {
+   "step": "B.clip",
+   "role": "target2",
+   "clip": "0df22ccc-1a43-42ba-8ae2-28b4d034a746",
+   "voice": "xai_gfzdpspr5fdp",
+   "text": "Did you agree with her?"
+  },
+  {
+   "step": "C.plan",
+   "rebuilt": 8,
+   "detail": [
+    {
+     "id": "eng_for_hin:S0385L01B01",
+     "target": "agree with her",
+     "tiles": 3
+    },
+    {
+     "id": "eng_for_hin:S0385L01B02",
+     "target": "you agree with her",
+     "tiles": 4
+    },
+    {
+     "id": "eng_for_hin:S0385L01B03",
+     "target": "did you agree with her there?",
+     "tiles": 2
+    },
+    {
+     "id": "eng_for_hin:S0385L01U01",
+     "target": "did you agree with her?",
+     "tiles": 2
+    },
+    {
+     "id": "eng_for_hin:S0385L01U02",
+     "target": "did you agree with her today?",
+     "tiles": 3
+    },
+    {
+     "id": "eng_for_hin:S0385L01U03",
+     "target": "did you agree with her last night?",
+     "tiles": 4
+    },
+    {
+     "id": "eng_for_hin:S0385L01U04",
+     "target": "did you agree with her last year?",
+     "tiles": 3
+    },
+    {
+     "id": "eng_for_hin:S0385L01U05",
+     "target": "did you agree with her here?",
+     "tiles": 3
+    }
+   ]
+  }
+ ]
+}
