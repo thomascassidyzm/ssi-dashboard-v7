@@ -175,20 +175,31 @@
              signal, and there is no counting down at anybody. -->
         <span class="onair" :class="{ arming }">{{ arming ? 'Getting ready' : 'On air' }}</span>
         <div class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
-          <!-- Flat while the mic is held. A bar still twitching to the playback
-               coming out of the speaker is the screen telling the recordist it
-               is recording them when it is not. -->
-          <div class="meter-fill" :style="{ width: micHeld ? '0%' : `${Math.min(100, recorder.level.value * 100)}%` }"></div>
+          <!-- A WAVEFORM, NOT A BAR. Aran, 2026-09-03: "some kind of visual
+               representative of the waveform would give people confidence that
+               they are doing it right". It is drawn from the SAME numbers the
+               bar drew — the peaks the existing meter loop in useTapRecorder
+               already computes — kept for two seconds and painted from one rAF
+               tick. No second AnalyserNode, no second AudioContext, no extra
+               per-frame FFT, and nothing on the capture path.
+
+               Flat while the mic is held, for exactly the reason the bar was:
+               a trace still twitching to the playback coming out of the speaker
+               is the screen telling the recordist it is recording them when it
+               is not. -->
+          <canvas ref="waveCanvas" class="wave"></canvas>
         </div>
         <!-- "Mic live" was printed whether or not the meter was reading a
              thing, so an empty bar next to it looked like a quiet room rather
              than a broken meter. Say which it is. -->
         <span class="meter-tag" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
-          {{ micHeld
+          {{ paused
+            ? 'Paused — nothing is being recorded'
+            : (micHeld
             ? 'Mic paused while you listen'
             : (recorder.clipping.value
               ? 'Too loud — back off the mic'
-              : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved')) }}
+              : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved'))) }}
         </span>
       </div>
       <!-- The one line that says which of the two things is happening. It is the
@@ -323,14 +334,36 @@
            under the line being rewritten, and Back would walk away from an
            unsaved edit with the mic still held. The editor has its own two
            buttons and they are the only way out of it. -->
+      <!-- PAUSE THROWS THE ATTEMPT AWAY. Aran, 2026-09-03: "a pause button which
+           automatically discards that attempt and starts from fresh when they
+           hit play would be brilliant" — he needs a word, or the dog barks, and
+           background noise KEEPS THE RECORDING GOING. So this discards the open
+           capture and stops the microphone being a witness to whatever happens
+           next; Play re-opens the SAME line clean. Nothing reaches the server
+           either way.
+
+           It is the booth's existing hold, not a second one: `micHeld` is what
+           playback and editing already use, and `paused` only says WHICH of the
+           three holds it. Full width and above the transport so it is findable
+           mid-flow without looking down, and a tap — no long-press, no gesture. -->
+      <button
+        class="ctl-pause"
+        :class="{ paused }"
+        :disabled="arming || !!editingId || (busy && !paused)"
+        type="button"
+        @click="togglePause"
+      >{{ paused ? 'Play' : 'Pause' }}</button>
+      <!-- Dead while paused as well as while editing, and for the same reason:
+           the mic is held, so Next would close a take of nothing and file it
+           under the line on screen. Play is the only way back. -->
       <div class="controls">
-        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || !!editingId" @click="onBack">Back</button>
-        <button class="ctl-again" :disabled="busy || arming || !!editingId" @click="onAgain">Again</button>
-        <button class="ctl-next" :disabled="busy || arming || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
+        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || paused || !!editingId" @click="onBack">Back</button>
+        <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
+        <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
       </div>
-      <button class="btn-finish" :disabled="busy || arming || !!editingId" @click="onFinish">Stop here</button>
+      <button class="btn-finish" :disabled="busy || arming || paused || !!editingId" @click="onFinish">Stop here</button>
       <p class="kbd-hint">
-        <kbd>Space</kbd> next · <kbd>R</kbd> again<template v-if="canGoBack"> · <kbd>B</kbd> back</template>
+        <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause<template v-if="canGoBack"> · <kbd>B</kbd> back</template>
       </p>
     </section>
 
@@ -785,6 +818,12 @@ let audioEl = null
 // playback ends, so the two states are mutually exclusive in fact, not just in
 // the wording.
 const micHeld = ref(false)
+// WHY the mic is held, when the reason is Aran deliberately pausing. There is
+// exactly one notion of "the mic is not listening" in this booth and it is
+// `micHeld`; this is a label on it, never a second copy of it. It is only ever
+// set true in the same breath as micHeld, and releaseMic() — the one door out —
+// clears it, so the two cannot drift apart.
+const paused = ref(false)
 // The settling period at a cold start: the mic is open and capturing, the line
 // is not yet on screen, and the transport is inert. See COLD_START_SETTLE_MS.
 const arming = ref(false)
@@ -799,6 +838,7 @@ const activityState = computed(() => {
   if (editingId.value) {
     return { cls: 'is-editing', words: phase.value === 'recording' ? 'Editing the line — mic paused' : 'Editing the line' }
   }
+  if (paused.value) return { cls: 'is-editing', words: 'Paused — nothing is being recorded' }
   if (playingId.value) return { cls: 'is-playing', words: 'Playing back your take' }
   if (arming.value) return { cls: 'is-arming', words: 'Getting ready — the mic is already open' }
   if (phase.value === 'recording') return { cls: 'is-recording', words: 'Recording — read the line aloud' }
@@ -1038,6 +1078,7 @@ function stopPlayback() {
 // Both calls do their work synchronously — the promise discardLine returns is
 // only the discarded blob, which nobody wants.
 function releaseMic() {
+  paused.value = false
   if (!micHeld.value) return
   micHeld.value = false
   if (phase.value !== 'recording') return
@@ -1203,6 +1244,74 @@ function db(v) {
 }
 const micDb = computed(() => `${db(recorder.inputPeak.value)} · room ${db(recorder.roomTone.value)}`)
 
+// ── The waveform ────────────────────────────────────────────────────────────
+// Aran wants a confidence signal, not a tool: "some kind of visual
+// representative of the waveform would give people confidence that they are
+// doing it right". So this is movement over time and nothing else — no axis, no
+// timeline, no scrubbing, no controls hanging off it.
+//
+// IT COSTS NOTHING ON THE CAPTURE PATH, and that is the whole design. The peaks
+// are the ones useTapRecorder's existing meter loop already computes every frame
+// for the bar this replaces; all that is added is a fixed 120-slot ring (two
+// seconds at 60fps) of plain numbers — deliberately NOT reactive, so a value
+// changing sixty times a second cannot drag Vue's renderer along with it — and
+// one requestAnimationFrame that paints it. No second AnalyserNode, no second
+// AudioContext, no second getUserMedia, no extra FFT.
+const waveCanvas = ref(null)
+const WAVE_SAMPLES = 120
+const waveRing = new Float32Array(WAVE_SAMPLES)
+let waveHead = 0
+let waveRaf = null
+let waveW = 0
+let waveH = 0
+
+function paintWave() {
+  waveRaf = requestAnimationFrame(paintWave)
+  const el = waveCanvas.value
+  if (!el) return
+  // A held mic writes silence, so the trace visibly FLATTENS rather than the
+  // screen merely saying it is paused. Same reason the bar read 0%.
+  waveRing[waveHead] = micHeld.value ? 0 : Math.min(1, recorder.inputPeak.value || 0)
+  waveHead = (waveHead + 1) % WAVE_SAMPLES
+
+  const dpr = Math.min(2, window.devicePixelRatio || 1)
+  const w = Math.round(el.clientWidth * dpr)
+  const h = Math.round(el.clientHeight * dpr)
+  if (!w || !h) return
+  if (w !== waveW || h !== waveH) { el.width = w; el.height = h; waveW = w; waveH = h }
+
+  const ctx = el.getContext('2d')
+  if (!ctx) return
+  ctx.clearRect(0, 0, w, h)
+  ctx.fillStyle = (recorder.clipping.value && !micHeld.value) ? '#e63946' : '#06ffa5'
+  const step = w / WAVE_SAMPLES
+  const barW = Math.max(1, step - dpr)
+  const mid = h / 2
+  for (let i = 0; i < WAVE_SAMPLES; i++) {
+    const v = waveRing[(waveHead + i) % WAVE_SAMPLES]
+    // Half-height each side of the centre line, with a floor of one pixel so the
+    // trace stays a line rather than disappearing in a quiet room.
+    const a = Math.max(dpr / 2, (v * h) / 2)
+    ctx.fillRect(i * step, mid - a, barW, a * 2)
+  }
+}
+
+function startWave() {
+  if (waveRaf != null) return
+  waveW = 0; waveH = 0
+  waveRing.fill(0)
+  waveRaf = requestAnimationFrame(paintWave)
+}
+function stopWave() {
+  if (waveRaf != null) { cancelAnimationFrame(waveRaf); waveRaf = null }
+}
+// Only while there is a canvas to paint into: the loop must not idle through the
+// roster and done screens.
+watch(phase, (p) => {
+  if (p === 'recording') nextTick(startWave)
+  else stopWave()
+})
+
 // What the recorder can honestly say about whether this line was read: true,
 // false, or null for "no idea". Null is what a meter that is not delivering
 // samples is entitled to say, and it is the only answer that never destroys a
@@ -1213,7 +1322,7 @@ function speechVerdict() {
 }
 
 async function onNext(source = 'tap') {
-  if (phase.value !== 'recording' || arming.value || busy.value || !debounced()) return
+  if (phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
   // Tapping a control while a take is playing means "enough listening". Stop it
   // and give the line back to the mic before anything is filed, so the playback
   // never lands inside the take this call is about to close.
@@ -1312,13 +1421,46 @@ watch(() => recorder.quietMs.value, (ms) => {
 })
 
 async function onAgain() {
-  if (phase.value !== 'recording' || arming.value || busy.value || !debounced()) return
+  if (phase.value !== 'recording' || arming.value || busy.value || paused.value || !debounced()) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
     await recorder.discardLine()
     recorder.beginLine()
   } finally { busy.value = false }
+}
+
+// ── Pause ───────────────────────────────────────────────────────────────────
+// The distinction from Again, which matters: onAgain() discards and IMMEDIATELY
+// starts capturing again — "I fluffed it, let me read that once more". Pause
+// discards AND STOPS CAPTURING until he chooses to come back, which is the whole
+// point when the dog is barking or somebody is talking to him. Both stay.
+//
+// Nothing is uploaded, nothing is filed, and no red "that take came out silent"
+// row appears: discardLine() throws the open capture away and the line is never
+// closed, so the queue never hears about it.
+function pauseTake() {
+  if (phase.value !== 'recording' || arming.value || editingId.value) return
+  // A playback holds the mic too; stop it first so there is one hold, not two
+  // fighting over the same flag.
+  if (playingId.value) stopPlayback()
+  if (micHeld.value) return
+  paused.value = true
+  micHeld.value = true
+  try { recorder.discardLine() } catch { micHeld.value = false; paused.value = false }
+}
+
+// "Starts from fresh when they hit play" — releaseMic() discards whatever the
+// held recorder caught while he was away and re-opens the SAME line clean. It is
+// the same door playback and editing come back through.
+function resumeTake() {
+  if (!paused.value) return
+  releaseMic()
+}
+
+function togglePause() {
+  if (paused.value) resumeTake()
+  else pauseTake()
 }
 
 // ── Back ────────────────────────────────────────────────────────────────────
@@ -1338,7 +1480,7 @@ async function onAgain() {
 // drops its stored clip until the new one lands, and commit() no longer counts
 // the re-read as a second line.
 async function onBack() {
-  if (phase.value !== 'recording' || arming.value || busy.value || !visited.value.length || !backDebounced()) return
+  if (phase.value !== 'recording' || arming.value || busy.value || paused.value || !visited.value.length || !backDebounced()) return
   busy.value = true
   try {
     await recorder.discardLine()
@@ -1357,7 +1499,7 @@ async function onBack() {
 }
 
 async function onFinish() {
-  if (phase.value !== 'recording' || arming.value || busy.value) return
+  if (phase.value !== 'recording' || arming.value || busy.value || paused.value) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
@@ -1416,6 +1558,7 @@ function onKey(e) {
   if (t && (t.tagName === 'TEXTAREA' || t.tagName === 'INPUT' || t.isContentEditable)) return
   if (e.code === 'Space') { e.preventDefault(); onNext() }
   else if (e.key === 'r' || e.key === 'R') { e.preventDefault(); onAgain() }
+  else if (e.key === 'p' || e.key === 'P') { e.preventDefault(); togglePause() }
   else if (e.key === 'b' || e.key === 'B') { e.preventDefault(); onBack() }
 }
 function beforeUnloadGuard(e) {
@@ -1472,6 +1615,7 @@ onMounted(() => {
   recorder.listDevices()
 })
 onBeforeUnmount(() => {
+  stopWave()
   window.removeEventListener('keydown', onKey)
   window.removeEventListener('beforeunload', beforeUnloadGuard)
   stopPlayback()
@@ -1601,12 +1745,13 @@ kbd {
 }
 .arming-well { display: flex; align-items: center; justify-content: center; }
 .arming-words { font-size: 1.1rem; color: var(--color-paper-dim, #c1c1bb); margin: 0; }
+/* Tall enough for a trace to have a shape, and no taller — it sits in the row
+   the 10px bar sat in, between ON AIR and the dB tag. */
 .meter {
-  flex: 1; height: 10px; border-radius: 5px; overflow: hidden;
+  flex: 1; height: 26px; border-radius: 6px; overflow: hidden;
   background: var(--color-shadow, #1e293b); border: 1px solid var(--color-graphite, #475569);
 }
-.meter-fill { height: 100%; background: var(--color-emerald, #06ffa5); transition: width 0.06s linear; }
-.meter.clip .meter-fill { background: var(--color-film-red, #e63946); }
+.wave { display: block; width: 100%; height: 100%; }
 .meter-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--color-paper-dim, #c1c1bb); white-space: nowrap; }
 .meter-tag.clip { color: var(--color-film-red, #e63946); }
 .stage-progress { margin: 0; font-size: 0.9rem; color: var(--color-paper-dim, #c1c1bb); }
@@ -1746,7 +1891,23 @@ kbd {
   border-radius: 14px; border: none; cursor: pointer;
   background: var(--color-emerald, #06ffa5); color: var(--color-void, #0f172a);
 }
-.ctl-back:disabled, .ctl-again:disabled, .ctl-next:disabled, .btn-finish:disabled { opacity: 0.5; cursor: default; }
+/* Full width and above the transport: he is mid-flow with a script in front of
+   him, so it has to be findable with a thumb without looking down. Nothing else
+   shrank to make room for it. */
+.ctl-pause {
+  width: 100%; min-height: 56px;
+  font-family: 'Josefin Sans', sans-serif; font-size: 1.05rem; font-weight: 600;
+  border-radius: 14px; cursor: pointer;
+  background: var(--color-shadow, #1e293b); color: var(--color-paper, #f7f7f2);
+  border: 1px solid var(--color-graphite, #475569);
+}
+/* Paused is the tungsten amber this screen already uses for "the mic is not
+   listening", and it is the only lit thing on the page while it is true. */
+.ctl-pause.paused {
+  background: var(--color-tungsten, #ffa630); color: var(--color-void, #0f172a);
+  border-color: var(--color-tungsten, #ffa630);
+}
+.ctl-back:disabled, .ctl-again:disabled, .ctl-next:disabled, .btn-finish:disabled, .ctl-pause:disabled { opacity: 0.5; cursor: default; }
 .btn-finish {
   align-self: center; font-family: 'Josefin Sans', sans-serif; font-size: 0.85rem;
   color: var(--color-paper-dim, #c1c1bb); background: transparent;
@@ -1822,5 +1983,6 @@ kbd {
 :root[data-theme="light"] .btn-ghost,
 :root[data-theme="light"] .btn-finish,
 :root[data-theme="light"] .ctl-back,
-:root[data-theme="light"] .ctl-again { border-color: var(--line); }
+:root[data-theme="light"] .ctl-again,
+:root[data-theme="light"] .ctl-pause:not(.paused) { border-color: var(--line); }
 </style>
