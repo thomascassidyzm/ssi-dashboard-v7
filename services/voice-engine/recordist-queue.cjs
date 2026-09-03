@@ -503,6 +503,36 @@ function policyVoiceList(policy) {
   return out
 }
 
+/**
+ * The (dialect, gender) bucket a course's seed lines for `role` land in — the
+ * ONE rule that decides WHOSE QUEUE a seed sentence appears in. Null when the
+ * course casts no human recordist for that role (`uncast`).
+ *
+ * Extracted so the queue and the LINKER cannot disagree about it. They did, and
+ * it cost Aran six lines: the queue put a seed in his list because its target2
+ * slot was not his, and linkSeedTake then refused to move that same slot because
+ * it was not his — so the line came back every time he recorded it.
+ */
+function seedBucketFor(course, role, policyVoices) {
+  const voice = seedCastEntry(course, policyVoices)[role]
+  if (!voice || !voice.gender) return null
+  return bucketKey(courseDialect(course), voice.gender)
+}
+
+/** This language's policy voices, and every spelling any of them answers to. */
+async function policyVoicesForLanguage(db, language, { cache } = {}) {
+  const policy = (await loadPolicies(db, { cache })).find((row) => {
+    try { return canonicalLanguage(row.language) === language } catch { return false }
+  })
+  const voices = policyVoiceList(policy)
+  const spellings = new Set()
+  for (const v of voices) {
+    spellings.add(v.voiceId)
+    for (const a of v.aliases || []) spellings.add(a)
+  }
+  return { voices, spellings }
+}
+
 /** Page through course_seeds for a set of courses. */
 /**
  * PostgREST caps one read at 1000 rows, so a big set is read in pages — and read
@@ -801,7 +831,6 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
 
     const seedSeen = new Map()   // bucket -> Map(namespaced key -> representative)
     for (const [courseCode, course] of byCourse.entries()) {
-      const cast = seedCastEntry(course, policyVoices)
       const roles = [...SEED_TARGET_ROLES]
       // The one exception, and it is checked here rather than trusted from a
       // client: a fixture course's KNOWN side is recordable.
@@ -810,14 +839,13 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       if (!courseSeeds.length) continue
 
       for (const role of roles) {
-        const voice = cast[role]
-        if (!voice || !voice.gender) {
+        const bucket = seedBucketFor(course, role, policyVoices)
+        if (!bucket) {
           // Not cast to a human recordist. Counted ONCE per (course, role) --
           // the uncast thing is the slot, not each of 668 sentences.
           uncast += 1
           continue
         }
-        const bucket = bucketKey(courseDialect(course), voice.gender)
         if (!byBucket.has(bucket)) byBucket.set(bucket, [])
         if (!seedSeen.has(bucket)) seedSeen.set(bucket, new Map())
         const seenHere = seedSeen.get(bucket)
@@ -1486,7 +1514,17 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   const key = normalizeForDb(text)
 
   const courses = await coursesForLanguage(db, recordist.language)
-  const siblings = await fetchSeeds(db, courses.map((c) => c.course_code))
+  // ONLY THE COURSES WHOSE SEEDS ARE IN THIS RECORDIST'S OWN QUEUE, by the same
+  // rule that put them there (seedBucketFor). Before this, a take was linked
+  // into EVERY course of the language holding the same sentence, so a Northern
+  // Welsh take reached cym_s_for_eng's seed slots -- a course cast to nobody,
+  // in the other dialect. Eight such rows exist and are left alone; this stops
+  // the ninth.
+  const { voices: policyVoices, spellings: policySpellings } =
+    await policyVoicesForLanguage(db, recordist.language)
+  const myBucket = bucketKey(recordist.dialect, recordist.gender)
+  const mineCourses = courses.filter((c) => seedBucketFor(c, role, policyVoices) === myBucket)
+  const siblings = await fetchSeeds(db, mineCourses.map((c) => c.course_code))
   const owners = new Map()
   const candidates = siblings.filter((row) => {
     const rowText = String((role === 'known' ? row.known_text : row.target_text) || '').trim()
@@ -1501,10 +1539,24 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   for (const row of candidates) {
     const current = row[`${role}_audio_id`]
     if (current === audioId) continue
-    if (current && !recordist.spellings.includes(owners.get(current))) {
-      // Somebody else's clip is in that slot. Not ours to move.
-      logger.warn(`[Recordist] seed ${row.id} ${role} already holds ${owners.get(current) || 'an unknown voice'} -- left alone`)
-      continue
+    const holder = owners.get(current) || null
+    if (current && !recordist.spellings.includes(holder)) {
+      // ANOTHER RECORDIST'S CLIP IS NOT OURS TO MOVE, and that is still the
+      // rule -- but only when the holder IS another recordist. A slot held by
+      // an imported or synthesised clip is precisely what this artist was asked
+      // to replace: the queue lists the line BECAUSE the slot is not theirs, so
+      // refusing to move it here is the queue asking for a take it will then
+      // decline to accept, forever. Six of Aran's 2026-09-03 seed takes landed
+      // in exactly that loop, every one of them behind a `legacy_import` clip.
+      //
+      // Make-before-break is untouched: the take is already filed and stored
+      // before this runs, and the displaced clip is only unlinked, never
+      // deleted -- it stays in course_audio and stays retrievable.
+      if (policySpellings.has(holder)) {
+        logger.warn(`[Recordist] seed ${row.id} ${role} already holds ${holder} -- left alone`)
+        continue
+      }
+      logger.log(`[Recordist] seed ${row.id} ${role} held by ${holder || 'an unknown voice'} -- replaced by ${recordist.voiceId}'s take (old clip kept)`)
     }
     const { error } = await db
       .from('course_seeds').update({ [`${role}_audio_id`]: audioId }).eq('id', row.id)
@@ -1580,6 +1632,7 @@ module.exports = {
   loadAliasMap,
   coursesForLanguage,
   resolveRecordist,
+  seedBucketFor,
   voicesForEmail,
   recordedSpellings,
   castEntryFor,
