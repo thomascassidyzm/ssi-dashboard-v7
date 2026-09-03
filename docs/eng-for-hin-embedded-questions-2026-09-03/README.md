@@ -3,7 +3,7 @@
 **Course:** `eng_for_hin`. Known side = Hindi (the cue). Target side = **English** (the answer the
 learner produces). `new_app_status = live` — verified against `courses` in production Supabase.
 
-**Status: PROPOSAL. Nothing was written to the live DB.** See "Why nothing was applied" below.
+**Status: APPLIED 2026-09-03 18:42 UTC — all 55 rows are live in production Supabase, verified live.** See [`APPLIED-2026-09-03.md`](./APPLIED-2026-09-03.md) for the apply run, the before/after validator and the audio consequences. The "Why nothing was applied" section below records the state before Kai approved.
 
 ---
 
