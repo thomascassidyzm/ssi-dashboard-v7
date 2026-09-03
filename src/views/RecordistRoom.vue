@@ -282,6 +282,16 @@
              state is drawn, not annotated, and this is not state, it is what
              the thing IS. -->
         <p v-if="lineKindWords" class="line-kind">{{ lineKindWords }}</p>
+        <!-- WHO WROTE THE WORDS. A machine drafted this line and nobody has
+             read it since, so the person best placed to catch it is the one
+             looking at it right now. It says so, and it says what to do about
+             it, and then it gets out of the way: it is a note, not a gate.
+             Nothing waits, nothing is approved, the line records normally if
+             the artist just reads it (Tom, 2026-09-03). Hidden while the
+             editor is open, because by then they are already fixing it. -->
+        <p v-if="current?.machineDrafted && editingId !== current?.id" class="line-drafted">
+          A machine wrote this line. If it's wrong, tap it and fix it.
+        </p>
         <p v-if="current?.knownText" class="line-known">{{ plainText(current.knownText) }}</p>
         <!-- The line being read never carries a verdict on an earlier take of
              it (Tom, 2026-09-02). The server no longer sends one; this stays
@@ -998,6 +1008,11 @@ async function saveEdit(lineId, text) {
     l.recorded = false
     l.clipUrl = null
     l.rerecordWanted = false
+    // A HUMAN HAS NOW WRITTEN THESE WORDS. The server clears the draft marker
+    // on the row in the same call (buildSentenceEditPatch), so saying it here
+    // is not optimism, it is the same fact — and without it the note would sit
+    // over a line the artist has just fixed themselves.
+    l.machineDrafted = false
     doneIds.value.delete(lineId)
     doneIds.value = new Set(doneIds.value)
     if (queue.saved.delete) queue.saved.delete(lineId)
@@ -1929,6 +1944,12 @@ kbd {
   letter-spacing: 0.04em;
   text-transform: uppercase;
   opacity: 0.5;
+}
+/* The machine-wrote-this note. Present enough to be read before the line is,
+   quiet enough that it never competes with the words themselves. */
+.line-drafted {
+  margin: 0.6rem 0 0; font-size: 0.9rem; line-height: 1.4;
+  color: var(--color-tungsten, #ffa630); opacity: 0.85;
 }
 .line-known {
   margin: 1rem 0 0; font-size: 1rem; line-height: 1.5;

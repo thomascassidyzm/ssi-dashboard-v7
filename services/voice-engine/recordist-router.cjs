@@ -46,6 +46,7 @@ const {
   seedCastEntry,
   policyVoiceList,
 } = require('./recordist-queue.cjs')
+const { buildSentenceEditPatch } = require('./pods-cast.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const {
   takeKey,
@@ -1186,14 +1187,23 @@ module.exports = function createRecordistRouter({
         })
       }
 
-      // THE TAKE GOES WITH THE WORDS. See the note above the route.
-      const patch = { target_text: text, target_audio_id: null }
       // The known side is the recordist's crib. On a fixture whose two sides are
       // the same string, leaving it behind would put the OLD sentence under the
       // new one on screen and look like a bug; where the two genuinely differ,
       // the known side is a real translation and is not ours to rewrite.
       const knownTracksTarget = (sentence.known_text || '').trim() === (sentence.target_text || '').trim()
-      if (knownTracksTarget) patch.known_text = text
+
+      // THE TAKE GOES WITH THE WORDS, AND SO DOES THE DRAFT MARKER. One builder
+      // for every text edit in the estate — the pods surface's PATCH /sentence
+      // route uses the same one — because the four things an edit has to do are
+      // the same four wherever it is typed: set the words, drop the audio
+      // pointer so the line resurfaces, clear `target_text_draft` (a human
+      // editing the line IS the proofread the draft was waiting for), and clear
+      // any approval, so a verdict about the OLD words cannot outlive them.
+      // Hand-rolling the patch here is what left a corrected line still marked
+      // machine-written in the booth, for ever.
+      const patch = buildSentenceEditPatch(
+        knownTracksTarget ? { target_text: text, known_text: text } : { target_text: text })
 
       // ONE LINE ON SCREEN IS ONE LINE IN THE COURSE. The queue collapses every
       // sentence row that reads the same, in this voice's bucket, into one line
@@ -1230,6 +1240,9 @@ module.exports = function createRecordistRouter({
         // Said out loud so the screen can say it too: the line is outstanding
         // again, and the take it used to have is still there, untouched.
         recorded: false,
+        // A HUMAN WROTE THESE WORDS NOW. Said out loud so the booth's note can
+        // come off the card in the same breath as the correction.
+        machineDrafted: false,
         previousText: sentence.target_text,
         alsoChanged: ids.length - 1,
         // The clip that used to fill this slot. Nothing was deleted — it is

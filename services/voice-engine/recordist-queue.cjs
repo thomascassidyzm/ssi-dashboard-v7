@@ -389,6 +389,30 @@ function targetRerecordWanted(sentence) {
 }
 
 /**
+ * Did a MACHINE write this line's target words, with no human having touched
+ * them since?
+ *
+ * The row already says so: `target_text_draft` is set by the drafting pipeline
+ * and comes off the moment a human edits the line (buildSentenceEditPatch in
+ * pods-cast.cjs — "a human editing the target line IS the proofread a draft was
+ * waiting for"). An APPROVAL does not change the answer here, and that is
+ * deliberate: pod-text-approval.cjs uses `approved_at` to decide whether the
+ * words may be SPENT MONEY ON, which is a different question from who wrote
+ * them. In the booth the artist is the ear, so what they need to know is
+ * provenance, not permission.
+ *
+ * `=== true` and not `!== false`: a projection that omits the column must read
+ * as "not drafted" rather than lighting a badge on every line in the queue.
+ *
+ * INFORMATIONAL ONLY, everywhere it goes. Nothing in the booth blocks on it —
+ * no gate, no wait, no approval step (Tom, 2026-09-03: the artist edits in
+ * place, they do not approve in advance).
+ */
+function machineDrafted(sentence) {
+  return !!sentence && sentence.target_text_draft === true
+}
+
+/**
  * Every pod line of a language, partitioned by (DIALECT, GENDER) — the dialect
  * its own course declares and the gender its own course cast names — collapsed
  * by clip identity, computed ONCE per language.
@@ -688,6 +712,12 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // all — the collapse is by clip identity, so the flag has to collapse with
       // it or a want on cym_s's copy would be silently dropped.
       if (targetRerecordWanted(s)) rep.rerecordWanted = true
+      // PROVENANCE COLLAPSES THE SAME WAY THE TEXT DOES. These rows all say the
+      // same words, so "a machine wrote these words" is true of the line the
+      // artist sees if it is true of ANY copy of it. Erring towards telling them
+      // is the cheap direction: the badge costs a glance, an unmarked machine
+      // line costs a wrong recording.
+      if (machineDrafted(s)) rep.machineDrafted = true
       duplicatesCollapsed += 1
       continue
     }
@@ -705,6 +735,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // every collapsed copy's. Empty when nothing is linked.
       filledBy: slotVoiceById.get(s.target_audio_id) ? [slotVoiceById.get(s.target_audio_id)] : [],
       rerecordWanted: targetRerecordWanted(s),
+      // WHO WROTE THESE WORDS. Off the row's own draft marker — see
+      // machineDrafted() above. Informational the whole way to the screen: it
+      // never moves a line in or out of the queue.
+      machineDrafted: machineDrafted(s),
     }
     seenForGender.set(key, line)
     byBucket.get(bucket).push(line)
@@ -1119,6 +1153,11 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which kind of quarry piece: a LEGO of the course, or a single word no
         // LEGO covers. Null on every other kind of line.
         quarrySource: line.quarrySource || null,
+        // WHO WROTE THE WORDS ON SCREEN. True when a machine drafted this
+        // line's target text and no human has edited it since. The booth SAYS
+        // so on the card, next to the line, and does nothing else with it:
+        // a drafted line is read, queued and counted exactly like any other.
+        machineDrafted: !!line.machineDrafted,
         // May the recordist rewrite this line's text from the booth?
         //
         // A POD LINE: YES, live courses included (Tom, 2026-09-03 — Aran could
@@ -1190,7 +1229,7 @@ async function fetchAllSentences(db, podIds) {
   try {
     return await pagedRead((from, to) => db
       .from('listening_pod_sentences')
-      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted')
+      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted, target_text_draft, target_text_approved_at, target_text_approved_by')
       .in('pod_id', podIds)
       .order('id')
       .range(from, to))
@@ -1637,6 +1676,7 @@ module.exports = {
   recordedSpellings,
   castEntryFor,
   buildLanguageLines,
+  machineDrafted,
   linkSeedTake,
   seedCastEntry,
   policyVoiceList,

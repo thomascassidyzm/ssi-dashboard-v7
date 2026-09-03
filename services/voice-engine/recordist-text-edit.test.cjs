@@ -210,7 +210,17 @@ test('collapsed duplicates move with the line the artist edited', async () => {
 test('a live pod leaves the English crib alone', async () => {
   const r = await call({ voiceId: 'human_aran_cym_n', lineId: 'LIVE', text: 'Prynhawn da.' })
   const patch = r.updates.find((u) => u.table === 'listening_pod_sentences').patch
-  assert.deepEqual(patch, { target_text: 'Prynhawn da.', target_audio_id: null })
+  // The draft/approval fields come from buildSentenceEditPatch, shared with the
+  // pods surface: a human editing the line IS the proofread, and a verdict about
+  // the old words must not outlive them.
+  assert.deepEqual(patch, {
+    target_text: 'Prynhawn da.',
+    target_audio_id: null,
+    target_text_draft: false,
+    target_text_approved_at: null,
+    target_text_approved_by: null,
+    target_text_review: null,
+  })
   assert.equal(r.body.knownText, 'Good morning.', 'the known side is a real translation and is not ours to rewrite')
 })
 
@@ -222,7 +232,18 @@ test('a TEST fixture line is rewritten, and the known crib follows it', async ()
   assert.equal(r.body.recorded, false, 'new text has no take -- the line is outstanding again')
   assert.equal(r.body.previousText, 'A coffee, please.')
   const patch = r.updates.find((u) => u.table === 'listening_pod_sentences').patch
-  assert.deepEqual(patch, { target_text: 'A tea, please.', target_audio_id: null, known_text: 'A tea, please.' })
+  assert.deepEqual(patch, {
+    target_text: 'A tea, please.',
+    target_audio_id: null,
+    target_text_draft: false,
+    target_text_approved_at: null,
+    target_text_approved_by: null,
+    target_text_review: null,
+    known_text: 'A tea, please.',
+    // The crib's own clip goes with the crib's own words, for exactly the
+    // reason the target clip goes with the target words.
+    known_audio_id: null,
+  })
 })
 
 // ── WHAT IS STILL REFUSED ────────────────────────────────────────────────────
