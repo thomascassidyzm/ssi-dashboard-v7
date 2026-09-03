@@ -1800,6 +1800,9 @@ kbd {
   .recordist { max-width: none; padding: 1.25rem 2rem; }
   .line-target { max-width: 34ch; }
   .line-known, .line-why { max-width: 68ch; }
+  /* Prose keeps a reading measure for the same reason the line does. The
+     centred cards are left alone — a capped paragraph in one stops being centred. */
+  .rc-card:not(.center) p, .how-to, .toggle-row small { max-width: 68ch; }
   /* Back and Again stop scaling with the viewport at this width; Next still
      takes the rest of the row and is still the biggest thing in it. */
   .ctl-back, .ctl-again { flex: 0 0 9rem; }
