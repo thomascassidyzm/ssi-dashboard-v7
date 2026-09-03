@@ -47,6 +47,12 @@ const POD_ID = `${COURSE}:${SLUG}`
 const EXPECT_ROWS = 309
 
 const APPLY = process.argv.includes('--apply')
+// --recast: rewrite the header's speakers map from CAST above and unlink any
+// clip that was rendered on a voice the cast no longer names, so the renderer
+// picks it up again. Unlink only — the old course_audio rows and their S3
+// objects are never touched (make-before-break; the replacement is generated
+// before anything old could be removed, and nothing old is removed at all).
+const RECAST = process.argv.includes('--recast')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 // THE CAST. Two men who talk to each other for 309 turns, so they must sound
@@ -58,28 +64,34 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 // VOICE IDS ARE BARE for Cartesia: generateCartesia passes the cast's voice_id
 // verbatim to the vendor, which does not know the estate's `cartesia_` prefix.
 //
-// Italian (target): xAI, because the estate has NO Cartesia Italian voice
-// registered — the three Cartesia clones are declared English-only. Enzo is
-// the voice ita_for_eng:pod-1 already renders its men on; Matteo is a second
-// registered Italian male so the two speakers are distinguishable.
+// Italian (target): CARTESIA TOO. The estate's `voices` table registers no
+// Cartesia Italian voice, but Cartesia's own voice library does — 13 Italian
+// voices, queried live 2026-09-04 — and xAI is not merely deprecated, it is
+// RETIRED FROM SELECTION (services/shared/tts-provider-policy.cjs, Tom
+// 2026-08-27): tts-service 403s every new xAI render. The first chapter-1
+// probe was cast on xAI Enzo/Matteo and phase 8's xAI→Azure safety net caught
+// all 27 Italian clips and rendered them in it-IT-ElsaNeural — ONE FEMALE
+// AZURE VOICE FOR BOTH MEN. That is precisely the unlistenable failure this
+// cast exists to prevent, and it is why the two Italian voices below are
+// named Cartesia ids rather than inherited from ita_for_eng:pod-1.
+//
+// Lorenzo and Luca are both conversational Italian adult males, so the two
+// speakers stay distinguishable across 309 turns.
 const CAST = {
   Tom: {
     gender: 'm',
     variants: ['Tom', 'TOM'],
     known: { name: 'Tom', provider: 'cartesia', locale: 'en-GB', voice_id: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2' },
-    target: { name: 'Enzo', provider: 'xai', locale: 'it', voice_id: 'x7avnu1k' },
+    target: { name: 'Lorenzo', provider: 'cartesia', locale: 'it', voice_id: 'ee16f140-f6dc-490e-a1ed-c1d537ea0086' },
   },
   Aran: {
     gender: 'm',
     variants: ['Aran', 'ARAN'],
     known: { name: 'Aran', provider: 'cartesia', locale: 'en-GB', voice_id: '33890587-a29f-4416-ba61-2615c74f92fe' },
-    target: { name: 'Matteo', provider: 'xai', locale: 'it', voice_id: 'bcs7l2c3' },
+    target: { name: 'Luca', provider: 'cartesia', locale: 'it', voice_id: 'e019ed7e-6079-4467-bc7f-b599a5dccf6f' },
   },
 }
 
-// The canonical rows store TOM/ARAN in transcript caps. The estate's live pods
-// store display-cased speaker names and key the cast on them, so the rows are
-// written cased and the caps survive as `variants`.
 const SPEAKER = { TOM: 'Tom', ARAN: 'Aran' }
 
 const pad = (n, w) => String(n).padStart(w, '0')
@@ -136,7 +148,53 @@ function chapterMeta(rows) {
   return [...byScene.values()].sort((a, b) => a.number - b.number)
 }
 
+async function recast() {
+  const { data: pod, error } = await supabase.from('listening_pods').select('speakers').eq('id', POD_ID).single()
+  if (error) throw new Error(`pod read failed: ${error.message}`)
+  const wanted = new Set()
+  for (const e of Object.values(CAST)) for (const t of ['known', 'target']) wanted.add(`${e[t].provider}:${e[t].voice_id}`)
+  console.log(`cast voices now: ${[...wanted].join(', ')}`)
+
+  const rows = []
+  for (let from = 0; ; from += 1000) {
+    const { data } = await supabase.from('listening_pod_sentences')
+      .select('id, speaker, target_audio_id, known_audio_id').eq('pod_id', POD_ID).order('global_order').range(from, from + 999)
+    rows.push(...(data || []))
+    if (!data || data.length < 1000) break
+  }
+  const linked = [...new Set(rows.flatMap(r => [r.target_audio_id, r.known_audio_id]).filter(Boolean))]
+  const clips = new Map()
+  for (let i = 0; i < linked.length; i += 200) {
+    const { data } = await supabase.from('course_audio').select('id, voice_id, role').in('id', linked.slice(i, i + 200))
+    for (const c of (data || [])) clips.set(c.id, c)
+  }
+  const offCast = []
+  for (const r of rows) {
+    for (const [col, track] of [['target_audio_id', 'target'], ['known_audio_id', 'known']]) {
+      const id = r[col]; if (!id) continue
+      const clip = clips.get(id); if (!clip) continue
+      const bare = String(clip.voice_id || '').replace(/^(xai|cartesia|azure|elevenlabs|human)_/, '')
+      const ok = [...wanted].some(w => w.split(':')[1] === bare)
+      if (!ok) offCast.push({ id: r.id, col, clip: id, voice: clip.voice_id })
+    }
+  }
+  console.log(`${rows.length} rows; ${offCast.length} clip link(s) are off the cast`)
+  offCast.slice(0, 5).forEach(o => console.log(`  ${o.id} ${o.col} → ${o.voice}`))
+  if (!APPLY) { console.log('DRY RUN — header not written, nothing unlinked.'); return }
+
+  const { error: hErr } = await supabase.from('listening_pods').update({ speakers: CAST }).eq('id', POD_ID)
+  if (hErr) throw new Error(`header recast failed: ${hErr.message}`)
+  console.log('header speakers rewritten')
+  for (const o of offCast) {
+    const { error } = await supabase.from('listening_pod_sentences').update({ [o.col]: null }).eq('id', o.id).eq(o.col, o.clip)
+    if (error) throw new Error(`unlink ${o.id}: ${error.message}`)
+  }
+  console.log(`${offCast.length} link(s) cleared — the renderer will regenerate them on the cast voices`)
+  write('recast', { pod: POD_ID, at: new Date().toISOString(), cast: CAST, unlinked: offCast })
+}
+
 async function main() {
+  if (RECAST) return recast()
   const src = await readSource()
   const problems = checkSource(src)
   if (problems.length) { problems.forEach(p => console.error(`  ! ${p}`)); throw new Error(`${problems.length} source problem(s) — nothing written`) }
