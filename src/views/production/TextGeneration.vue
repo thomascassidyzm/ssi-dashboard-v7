@@ -526,8 +526,8 @@
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
-            <span v-if="genderPairSeeds.size > 0" class="flex items-center gap-1.5">
-              <span class="w-3 h-3 rounded-sm bg-surface-2/30 gender-pair-swatch"></span> ♂/♀ cue pair ({{ genderPairSeeds.size }})
+            <span v-if="genderPairSeeds.size > 0" class="flex items-center gap-1.5" title="Seed cue, LEGO, component or practice phrase has a male/female speaker wording">
+              <span class="w-3 h-3 rounded-sm bg-surface-2/30 gender-pair-swatch"></span> ♂/♀ pair in seed ({{ genderPairSeeds.size }})
             </span>
           </div>
         </div>
@@ -578,6 +578,17 @@
                     style="unicode-bidi: isolate"
                   >{{ lego.meta.target_text }}</span>
                 </template>
+              </div>
+              <!-- Components of an M-LEGO, shown only where one carries a
+                   gender pair: otherwise the same text is already readable as
+                   a CMP phrase row below, and this would just add noise. -->
+              <div v-if="pairedComponents(lego).length" class="flex flex-wrap gap-x-4 gap-y-1 mb-2 pl-3 text-sm">
+                <span v-for="(c, i) in pairedComponents(lego)" :key="i" class="flex gap-1.5 items-start">
+                  <span class="font-mono text-xs text-faint mt-0.5">CPT</span>
+                  <GenderPairText class="text-ink" :text="c.known" :pair="genderPairFor(c.known)" />
+                  <span class="text-faint">→</span>
+                  <span class="text-muted" :dir="dirFor(c.target)" style="unicode-bidi: isolate">{{ c.target }}</span>
+                </span>
               </div>
               <!-- Phrases -->
               <div v-for="phrase in lego.phrases" :key="phrase.id" class="flex gap-2 text-sm py-0.5 pl-3">
@@ -748,8 +759,10 @@ function showActionError(msg) {
 const seedGrid = ref([])
 const seedGridExpanded = ref(true)
 
-// Known-side gender pairs (male/female speaker wordings of the same cue).
-// Loaded once per course, in one batched read; empty for ungendered courses.
+// Known-side gender pairs (male/female speaker wordings of the same text).
+// Loaded once per course; genderPairSeeds holds every seed with a pair at any
+// layer — cue, LEGO, LEGO component or practice phrase — and is empty for
+// ungendered courses.
 const genderPairs = ref(new Map())
 const genderPairSeeds = ref(new Set())
 let genderPairsCourse = null
@@ -770,6 +783,14 @@ async function loadGenderPairs() {
 // Both speaker wordings for a known text, or null when it has no pair
 function genderPairFor(text) {
   return (text && genderPairs.value.get(text)) || null
+}
+// An M-LEGO's components whose known text carries a gender pair. Components
+// live in the LEGO's `components` jsonb; most are mirrored as CMP phrase rows,
+// but not all, so a marked seed could otherwise show no ♂/♀ anywhere.
+function pairedComponents(lego) {
+  const components = lego?.meta?.components
+  if (!Array.isArray(components)) return []
+  return components.filter(c => c && c.known && genderPairs.value.has(c.known))
 }
 
 // Build monitor — direct Supabase reads + Realtime (replaces HTTP polling)
@@ -2065,7 +2086,8 @@ onUnmounted(() => {
 }
 
 /* Known-side gender pair: a corner dot on the cell, so a scan of the grid shows
-   which cues have a male/female speaker wording. Status colours are untouched. */
+   which seeds contain a male/female speaker wording — at the cue, a LEGO, a
+   LEGO component or a practice phrase. Status colours are untouched. */
 .gender-pair-swatch,
 .seed-cell.has-gender-pair {
   position: relative;
