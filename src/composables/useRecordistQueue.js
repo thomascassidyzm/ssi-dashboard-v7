@@ -58,8 +58,14 @@ const UPLOAD_TIMEOUT_MS = 90000
 // that works: a localStorage claim with a timestamp, stale after LOCK_TTL_MS,
 // so a tab that dies holding it blocks nobody for longer than that.
 const LOCK_KEY = 'ssi-recordist-drain-lock'
-const LOCK_TTL_MS = 20000
-const LOCK_RETRY_MS = 5000
+// The tab holding the lock refreshes it every LOCK_BEAT_MS, so the TTL is
+// deliberately short: a tab that was KILLED mid-upload is the normal case here,
+// not the exotic one, and its stale claim must not keep the reopened booth
+// waiting. Eight seconds is long enough to survive a busy main thread and short
+// enough that reopening the booth after a crash starts uploading almost at once.
+const LOCK_TTL_MS = 8000
+const LOCK_BEAT_MS = 3000
+const LOCK_RETRY_MS = 4000
 
 // A slow heartbeat so a queue that is waiting on nothing in particular — the
 // network came back without an `online` event, the phone woke without a
@@ -237,6 +243,11 @@ export function useRecordistQueue(options = {}) {
   async function drain() {
     if (draining || stopped || !voiceId) return
     draining = true
+    // Keep the claim fresh for as long as this tab is actually working, so the
+    // TTL above only ever expires on a tab that has stopped existing.
+    const beat = setInterval(() => {
+      try { if (holdsLock()) localStorage.setItem(LOCK_KEY, JSON.stringify({ owner: tabId, ts: Date.now() })) } catch { /* no lock, no problem */ }
+    }, LOCK_BEAT_MS)
     try {
       const s = await ensureStore()
       for (;;) {
@@ -286,6 +297,7 @@ export function useRecordistQueue(options = {}) {
       lastError.value = (err && err.message) || String(err)
       scheduleWake(HEARTBEAT_MS)
     } finally {
+      clearInterval(beat)
       draining = false
       releaseLock()
       try { await refreshCounts() } catch { /* counts are cosmetic; the shelf is not */ }
