@@ -1,0 +1,148 @@
+{
+  "course": "eng_for_hin",
+  "ranAt": "2026-09-03T18:57:55.611Z",
+  "mode": "apply",
+  "problems": [],
+  "rows": [
+    {
+      "id": "eng_for_hin:S0155L04U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 155,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "क्या आप कल सुबह बात करना चाहते हैं?",
+      "target_text": "do you want to speak tomorrow morning?",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "end",
+      "word_count": 38,
+      "lego_count": 8,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "kal two-sense teaching (Kai 2026-09-03)",
+        "sense": "future",
+        "pin": "चाहते हैं — a want points forward; Hindi present cannot host कल = yesterday"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0167L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 167,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "मुझे कल दोपहर इंतज़ार करने में कोई आपत्ति नहीं।",
+      "target_text": "I don't mind waiting tomorrow afternoon",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "end",
+      "word_count": 39,
+      "lego_count": 9,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "kal two-sense teaching (Kai 2026-09-03)",
+        "sense": "future",
+        "pin": "present-tense frame with no past marker — the waiting is still ahead"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0192L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 192,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "मुझे कल रात इंतज़ार करने में कोई आपत्ति नहीं।",
+      "target_text": "I don't mind waiting tomorrow night",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "end",
+      "word_count": 35,
+      "lego_count": 9,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "kal two-sense teaching (Kai 2026-09-03)",
+        "sense": "future",
+        "pin": "same present frame — and the round before it taught कल रात as tomorrow night"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0278L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 278,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "क्या आपको कल रात सब जल्दी पूरा करना था?",
+      "target_text": "did you have to finish everything last night quickly?",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 53,
+      "lego_count": 9,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "kal two-sense teaching (Kai 2026-09-03)",
+        "sense": "past",
+        "pin": "करना था — past obligation. This is the LEGO where कल रात comes back in the OTHER direction, 86 seeds after seed 192 taught it as tomorrow night"
+      }
+    }
+  ],
+  "inserted": [
+    {
+      "id": "eng_for_hin:S0155L04U06",
+      "seed_number": 155,
+      "target_text": "do you want to speak tomorrow morning?"
+    },
+    {
+      "id": "eng_for_hin:S0167L02U06",
+      "seed_number": 167,
+      "target_text": "I don't mind waiting tomorrow afternoon"
+    },
+    {
+      "id": "eng_for_hin:S0192L02U06",
+      "seed_number": 192,
+      "target_text": "I don't mind waiting tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0278L02U06",
+      "seed_number": 278,
+      "target_text": "did you have to finish everything last night quickly?"
+    }
+  ],
+  "decoration": {
+    "decorated": 4,
+    "skipped": 0
+  },
+  "verifiedAfter": [
+    {
+      "id": "eng_for_hin:S0155L04U06",
+      "blocks": 5,
+      "concatMatches": true
+    },
+    {
+      "id": "eng_for_hin:S0167L02U06",
+      "blocks": 3,
+      "concatMatches": true
+    },
+    {
+      "id": "eng_for_hin:S0192L02U06",
+      "blocks": 3,
+      "concatMatches": true
+    },
+    {
+      "id": "eng_for_hin:S0278L02U06",
+      "blocks": 4,
+      "concatMatches": true
+    }
+  ]
+}

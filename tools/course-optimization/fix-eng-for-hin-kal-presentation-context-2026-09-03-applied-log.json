@@ -1,0 +1,202 @@
+{
+  "course": "eng_for_hin",
+  "ranAt": "2026-09-03T18:49:54.360Z",
+  "mode": "apply",
+  "template": "{target_lang_name} में — '{known}' — जैसे — '{seed}' — में :",
+  "presentationVoiceId": "xai_eve",
+  "planned": 7,
+  "toInsert": 7,
+  "alreadyAuthored": 0,
+  "problems": [],
+  "rows": [
+    {
+      "lego_id": "S0012L03",
+      "seed_number": 12,
+      "chunk": "कल क्या होगा",
+      "target": "what's going to happen tomorrow",
+      "sense": "future",
+      "why": "होगा — future copula inside the chunk itself",
+      "context": "मैं यह अंदाज़ा नहीं लगाना चाहूँगा कि कल क्या होगा।",
+      "context_from": "seed 12 known_text",
+      "overlap": 0.24,
+      "text": "अंग्रेज़ी में — 'कल क्या होगा' — जैसे — 'मैं यह अंदाज़ा नहीं लगाना चाहूँगा कि कल क्या होगा।' — में :",
+      "already_authored": false,
+      "existing_rows": [
+        {
+          "id": "6f4d6dc6-003b-4274-9036-e7f8a9d7e53f",
+          "text": "अंग्रेज़ी में — 'कल आगे क्या होगा' — जैसे — 'मैं कल आगे क्या होगा समझाना कोशिश कर रहा हूँ।' — में :",
+          "rendered": true,
+          "voice_id": "eve"
+        }
+      ],
+      "currently_linked": "6f4d6dc6-003b-4274-9036-e7f8a9d7e53f"
+    },
+    {
+      "lego_id": "S0030L03",
+      "seed_number": 30,
+      "chunk": "कल",
+      "target": "yesterday",
+      "sense": "past",
+      "why": "चाहता था — past imperfect; कल cannot be tomorrow under a past want",
+      "context": "मैं कल आपसे कुछ पूछना चाहता था।",
+      "context_from": "seed 30 known_text",
+      "overlap": 0.065,
+      "text": "अंग्रेज़ी में — 'कल' — जैसे — 'मैं कल आपसे कुछ पूछना चाहता था।' — में :",
+      "already_authored": false,
+      "existing_rows": [
+        {
+          "id": "22ad7aaf-c415-4b32-ac24-e4f80cf39de2",
+          "text": "अंग्रेज़ी में — 'कल को' — जैसे — 'मैं कल को बोलना बहुत अच्छी चाहता था।' — में :",
+          "rendered": true,
+          "voice_id": "eve"
+        }
+      ],
+      "currently_linked": "22ad7aaf-c415-4b32-ac24-e4f80cf39de2"
+    },
+    {
+      "lego_id": "S0042L03",
+      "seed_number": 42,
+      "chunk": "कल रात के मुक़ाबले",
+      "target": "than last night",
+      "sense": "past",
+      "why": "करने लगा था — past inceptive; the comparison is to a night already had",
+      "context": "मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था।",
+      "context_from": "seed 42 known_text",
+      "overlap": 0.327,
+      "text": "अंग्रेज़ी में — 'कल रात के मुक़ाबले' — जैसे — 'मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था।' — में :",
+      "already_authored": false,
+      "existing_rows": [],
+      "currently_linked": null
+    },
+    {
+      "lego_id": "S0155L04",
+      "seed_number": 155,
+      "chunk": "कल सुबह",
+      "target": "tomorrow morning",
+      "sense": "future",
+      "why": "चाहूँगा — future form; wanting to meet is necessarily ahead",
+      "context": "मैं कल सुबह मिलना चाहूँगा।",
+      "context_from": "seed 155 L4 use phrase",
+      "overlap": 0.269,
+      "text": "अंग्रेज़ी में — 'कल सुबह' — जैसे — 'मैं कल सुबह मिलना चाहूँगा।' — में :",
+      "already_authored": false,
+      "existing_rows": [],
+      "currently_linked": null
+    },
+    {
+      "lego_id": "S0167L02",
+      "seed_number": 167,
+      "chunk": "कल दोपहर",
+      "target": "tomorrow afternoon",
+      "sense": "future",
+      "why": "चाहते हैं — present desiderative; a want to go points forward",
+      "context": "क्या आप कल दोपहर जाना चाहते हैं?",
+      "context_from": "seed 167 L2 use phrase",
+      "overlap": 0.25,
+      "text": "अंग्रेज़ी में — 'कल दोपहर' — जैसे — 'क्या आप कल दोपहर जाना चाहते हैं?' — में :",
+      "already_authored": false,
+      "existing_rows": [
+        {
+          "id": "1938ab89-52d0-4888-bf8e-d3ce310f2dbc",
+          "text": "अंग्रेज़ी में — 'कल दोपहर' — जैसे — 'मुझे बहुत खुशी है कल दोपहर' — में :",
+          "rendered": true,
+          "voice_id": "xai_eve"
+        }
+      ],
+      "currently_linked": "1938ab89-52d0-4888-bf8e-d3ce310f2dbc"
+    },
+    {
+      "lego_id": "S0192L02",
+      "seed_number": 192,
+      "chunk": "कल रात",
+      "target": "tomorrow night",
+      "sense": "future",
+      "why": "जाना है — present obligation; Hindi present cannot host कल = yesterday",
+      "context": "मुझे कल रात जाना है।",
+      "context_from": "seed 192 L2 use phrase",
+      "overlap": 0.3,
+      "text": "अंग्रेज़ी में — 'कल रात' — जैसे — 'मुझे कल रात जाना है।' — में :",
+      "already_authored": false,
+      "existing_rows": [
+        {
+          "id": "76b72dc6-18ac-49c5-844f-5b657426bb18",
+          "text": "अंग्रेज़ी में — 'व्यस्त' — जैसे — 'मैं अगले हफ्ते व्यस्त हूँ।' — में :",
+          "rendered": true,
+          "voice_id": "eve"
+        }
+      ],
+      "currently_linked": "76b72dc6-18ac-49c5-844f-5b657426bb18"
+    },
+    {
+      "lego_id": "S0278L02",
+      "seed_number": 278,
+      "chunk": "कल रात सब",
+      "target": "everything last night",
+      "sense": "past",
+      "why": "करना था — past obligation; the night is over",
+      "context": "क्या आपको कल रात सब पूरा करना था?",
+      "context_from": "seed 278 known_text",
+      "overlap": 0.273,
+      "text": "अंग्रेज़ी में — 'कल रात सब' — जैसे — 'क्या आपको कल रात सब पूरा करना था?' — में :",
+      "already_authored": false,
+      "existing_rows": [],
+      "currently_linked": null
+    }
+  ],
+  "inserted": [
+    {
+      "id": "4adba207-1edc-4808-b05c-6cfd49d3e5f8",
+      "lego_id": "S0012L03",
+      "text": "अंग्रेज़ी में — 'कल क्या होगा' — जैसे — 'मैं यह अंदाज़ा नहीं लगाना चाहूँगा कि कल क्या होगा।' — में :",
+      "s3_key": "pending/EB39AF68-B756-4869-B038-53C7F7CBA6AA.mp3"
+    },
+    {
+      "id": "01b3f5d8-5662-4d9b-8b4f-7cde1bce1d02",
+      "lego_id": "S0030L03",
+      "text": "अंग्रेज़ी में — 'कल' — जैसे — 'मैं कल आपसे कुछ पूछना चाहता था।' — में :",
+      "s3_key": "pending/78352E7A-336E-4D1F-B843-56CE2A4E7E33.mp3"
+    },
+    {
+      "id": "2e92effe-1d1b-4694-8cce-ca9615907a87",
+      "lego_id": "S0042L03",
+      "text": "अंग्रेज़ी में — 'कल रात के मुक़ाबले' — जैसे — 'मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था।' — में :",
+      "s3_key": "pending/ADB8AF58-D3BA-4D04-8E24-4D450B639933.mp3"
+    },
+    {
+      "id": "6bd8d460-af71-4eb0-a2dd-15d605f4a6e6",
+      "lego_id": "S0155L04",
+      "text": "अंग्रेज़ी में — 'कल सुबह' — जैसे — 'मैं कल सुबह मिलना चाहूँगा।' — में :",
+      "s3_key": "pending/681F3B7A-6108-4FA5-AAAE-45F36CC7C660.mp3"
+    },
+    {
+      "id": "10aa0a24-0b88-4a8d-8a58-d5f6aa43ba4a",
+      "lego_id": "S0167L02",
+      "text": "अंग्रेज़ी में — 'कल दोपहर' — जैसे — 'क्या आप कल दोपहर जाना चाहते हैं?' — में :",
+      "s3_key": "pending/C2F0E765-34E4-4140-86D7-DF2089CA93BD.mp3"
+    },
+    {
+      "id": "35508684-5577-436d-8929-6f63ebce8a08",
+      "lego_id": "S0192L02",
+      "text": "अंग्रेज़ी में — 'कल रात' — जैसे — 'मुझे कल रात जाना है।' — में :",
+      "s3_key": "pending/759B7FCB-259D-4BC3-8AA3-EADC9FE3EBA2.mp3"
+    },
+    {
+      "id": "bc8da07b-2074-462e-9141-5199a140d7c3",
+      "lego_id": "S0278L02",
+      "text": "अंग्रेज़ी में — 'कल रात सब' — जैसे — 'क्या आपको कल रात सब पूरा करना था?' — में :",
+      "s3_key": "pending/17FF8C38-5B90-4BB2-A8C6-400A2580792B.mp3"
+    }
+  ],
+  "verifiedAfter": {
+    "presentationRowsPerLego": {
+      "S0012L03": 2,
+      "S0030L03": 2,
+      "S0042L03": 1,
+      "S0155L04": 1,
+      "S0167L02": 2,
+      "S0192L02": 2,
+      "S0278L02": 1
+    },
+    "linksUnchanged": true
+  }
+}

@@ -109,16 +109,83 @@ Reply with ONLY the template string, nothing else.`
 }
 
 /**
+ * The hand-written "as in" clauses, one per known language that has ever had a
+ * template. Kept first and unchanged: every language listed here already
+ * strips correctly and must keep producing byte-identical Frame A text.
+ */
+const SEED_CLAUSE_PATTERNS = / as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| come in — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g
+
+/**
  * Frame A (bare) is the stored Frame B template with its "as in — '{seed}'"
  * clause stripped. One place for the stripping — previously duplicated at two
  * sites in phase8 with slightly different pattern lists.
+ *
+ * WHY THERE IS A STRUCTURAL FALLBACK (2026-09-03). The list above is a list of
+ * LANGUAGES, and templates are generated per known language by Haiku
+ * (getOrCreatePresentationTemplate), so a language nobody added to the list
+ * fell through every pattern and only `{seed}` itself was replaced — leaving
+ * an EMPTY QUOTED SLOT in the spoken line. Hindi's template
+ * ("{target_lang_name} में — '{known}' — जैसे — '{seed}' — में :") is the
+ * specimen: 479 of eng_for_hin's 1,055 rendered presentations say
+ * "अंग्रेज़ी में — 'X' — जैसे — '' — में :" — "the English for 'X', as in '',
+ * is:" — a clip that speaks an empty quotation to a learner.
+ *
+ * The fallback needs no per-language knowledge: Frame A is the template minus
+ * everything from the close of the {known} slot up to and including the close
+ * of the {seed} slot. It runs ONLY when the list left a {seed} behind, and
+ * only when the template has the shape it assumes ({seed} after {known}, each
+ * flanked by a non-word quote character), so no listed language can reach it.
  */
 function stripSeedClause(template) {
-  return template
+  const listed = template
     .replace(/, as in — '\{seed\}',/g, ',')
     .replace(/, as in '\{seed\}'/g, '')
-    .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| come in — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
-    .replace(/\{seed\}/g, '')
+    .replace(SEED_CLAUSE_PATTERNS, '')
+  if (!listed.includes('{seed}')) return listed
+
+  const structural = stripSeedClauseStructurally(listed)
+  if (structural !== null) return structural
+
+  // Shape we don't recognise — the old behaviour, which at least removes the
+  // placeholder. An empty quote is bad; a literal "{seed}" spoken aloud is worse.
+  return listed.replace(/\{seed\}/g, '')
+}
+
+/**
+ * Cut everything between the {known} slot and the {seed} slot, plus the {seed}
+ * slot itself. Returns null when {seed} does not follow {known}, which is the
+ * only shape this cannot reason about.
+ *
+ * Two details earn their keep:
+ *  - {known}'s own quote marks are KEPT (the chunk is still quoted in Frame A),
+ *    but only when it really has a matched pair — Japanese's template opens
+ *    with a bare {known} and the character after it is a comma, not a quote.
+ *  - a particle bound to the {seed} quote with no space is part of the "as in"
+ *    clause and goes with it: Japanese 「{seed}」のように, Korean '{seed}'처럼.
+ *    A space-separated word is left alone — it may belong to the frame.
+ */
+function stripSeedClauseStructurally(template) {
+  const kIdx = template.indexOf('{known}')
+  const sIdx = template.indexOf('{seed}')
+  if (kIdx === -1 || sIdx === -1 || sIdx < kIdx) return null
+
+  const kEnd = kIdx + '{known}'.length
+  const sEnd = sIdx + '{seed}'.length
+  const isQuote = (ch) => Boolean(ch) && /[^\p{L}\p{N}\s]/u.test(ch)
+
+  const knownQuoted = isQuote(template[kIdx - 1]) && isQuote(template[kEnd])
+  const cutFrom = knownQuoted ? kEnd + 1 : kEnd
+
+  const seedQuoted = isQuote(template[sIdx - 1]) && isQuote(template[sEnd])
+  let cutTo = seedQuoted ? sEnd + 1 : sEnd
+  const bound = /^[\p{L}\p{M}]+/u.exec(template.slice(cutTo))
+  if (bound) cutTo += bound[0].length
+
+  if (cutTo <= cutFrom) return null
+
+  return (template.slice(0, cutFrom) + template.slice(cutTo))
+    .replace(/\s{2,}/g, ' ')
+    .trim()
 }
 
 /** Render the intro text for one item under the chosen frame. */
