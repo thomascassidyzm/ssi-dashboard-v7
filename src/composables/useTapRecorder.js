@@ -72,11 +72,21 @@
 //
 //   * A recorder is ALWAYS running while the mic is open — from start(), before
 //     the first line is even shown, and continuously thereafter.
-//   * At a line boundary the NEW recorder is started BEFORE the old one is
-//     stopped. Two MediaRecorders on one stream overlap for the tail window, so
-//     there is no instant at which nothing is capturing. That overlap IS the
-//     next line's pre-roll: the encoder for line N+1 has been warm and writing
-//     audio since before the recordist even looked at line N+1.
+//   * A STANDBY recorder runs through the quiet alongside the active one, and a
+//     line boundary PROMOTES it rather than constructing a new one. That is what
+//     makes the next line's pre-roll real: the promoted recorder has been
+//     writing audio since the last thing anybody said, so the clip begins with
+//     the room rather than with the word. A recorder constructed at the boundary
+//     holds nothing at the boundary, which is what used to make a re-read — where
+//     the recordist does not stop to read the line again — come back snipped
+//     flush against its first syllable while first takes came back clean.
+//   * The standby is thrown away and respawned on the first quiet frame after
+//     any speech, so a promoted recorder can never carry the previous read into
+//     the next clip. If there is no clean standby (no trusted meter, or the room
+//     talking right up to the boundary) a fresh recorder is made, exactly as
+//     before: never worse, usually much better.
+//   * The old recorder is never left unobserved: its successor has been running
+//     since long before it was retired.
 //   * The old recorder keeps running for TAIL_MS after the boundary, so the
 //     clip carries a generous tail whatever the tap timing was. It is stopped
 //     EARLY only once we have heard real silence and then the next utterance
@@ -127,54 +137,6 @@ export const CAPTURE_PROFILES = {
 }
 export const DEFAULT_CAPTURE_PROFILE = 'voice'
 
-// WHICH PROFILE A DEVICE SHOULD GET, DECIDED BY THE DEVICE (2026-09-03).
-//
-// The 2026-08-22 ruling above stands exactly as written, and this does not
-// touch it: on WebKit `echoCancellation` picks the audio unit, `dry` means
-// RemoteIO with no gain stage at all, and a phone recording that way lands
-// tens of dB too quiet. Every WebKit device, and every phone, still gets the
-// voice chain.
-//
-// What that ruling never covered is the case Aran is actually in. Measured
-// from his own takes (provenance rows, 2026-09-03): a Blue Snowball on a
-// Chromebook, Chrome 151 on ChromeOS. There is no VoiceProcessingIO on that
-// path and no gain problem to solve — his raw takes arrive peaking at -4.8 to
-// -8.1 dBFS and -23.5 to -24.4 LUFS integrated, which is a healthy signal, so
-// the one thing the voice profile was adopted to buy is a thing he already
-// has. What it costs him is measurable: Chrome's WebRTC audio processing
-// module runs the capture through a 32 kHz internal path, and every take from
-// this session dies at ~15.7 kHz with nothing above 16 kHz at all. Against his
-// OWN takes on the SAME microphone from 2026-08-10, before the profile change,
-// through the identical 128 kbps LAME encoder: energy above 16 kHz sits 12-15
-// dB lower relative to the voice (-47 dB vs -33 dB), and the older files carry
-// real content all the way to 20 kHz. That is the top octave of a condenser
-// mic — the air on a voice — removed at capture, irreversibly, before the
-// archive is even written. Noise suppression and AGC on a treated read into a
-// real mic are the classic cause of a good take sounding thin and gated;
-// bandwidth loss you can put a number on, so that is the number quoted here.
-//
-// The split is therefore: WebKit or a phone -> voice (the gain staging is the
-// point, and on WebKit there is no other route to it). Anything else — a
-// desktop or laptop browser that is not Safari, which is where a voice artist
-// with a real microphone and an interface actually sits — -> dry.
-//
-// Deliberately NOT a control. The recordist surface gains nothing; this only
-// changes which profile it starts from.
-export function resolveCaptureProfile(userAgent) {
-  const ua = userAgent
-    || (typeof navigator !== 'undefined' && navigator.userAgent)
-    || ''
-  if (!ua) return DEFAULT_CAPTURE_PROFILE
-  // Anything hand-held reads at arm's length and wants the gain staging —
-  // including Chrome on Android, which is not WebKit but is still a phone.
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(ua)) return 'voice'
-  // Real WebKit (Safari), as opposed to every Chromium UA that also says
-  // "AppleWebKit". Chrome/Chromium/Edge/OPR all carry their own token.
-  const isWebKit = /AppleWebKit/i.test(ua) && !/Chrome|Chromium|Edg\/|OPR\//i.test(ua)
-  if (isWebKit) return 'voice'
-  return 'dry'
-}
-
 // Bitrate for the per-line encoder. Well above transparent for one mono voice
 // in either codec; the encoder was never the thing costing us quality, the
 // level going into it was.
@@ -194,13 +156,43 @@ export const PRE_ROLL_MAX_MS = 2500
 // even a wrong call here is covered by audio the new recorder already holds.
 export const ROLL_QUIET_MS = 1000
 
+// THE COLD START HAS NO STANDBY TO PROMOTE.
+//
+// #104 fixed every boundary INSIDE a session by keeping a standby recorder
+// running through the quiet and promoting it at Next/Again/Back, so the
+// recorder taking over already holds room tone. The first line of a session
+// cannot be fixed that way: the mic has only just been granted, there is no
+// prior quiet to have captured, and the recorder is exactly as old as the tap
+// that opened it. So the first take of a session was the one clip in the whole
+// day guaranteed to hand the trim nothing.
+//
+// The fix is not audio, it is ORDER. The recorder opens first, the line stays
+// hidden while it fills, and the reveal of the line is the go signal. By the
+// time the recordist has read the words and drawn breath, the recorder is
+// already at least this old and holds real room tone.
+//
+// The number is not a new one and is deliberately not a guess: it is
+// PRE_ROLL_MIN_MS, the floor this recorder already guarantees at every other
+// boundary. It covers what the trim asks for (TRIM_MARGIN_SEC = 0.35s in
+// services/audio-processor.cjs) with 450ms of headroom for the encoder's own
+// spin-up — MediaRecorder.start() returns before audio arrives — and it sits
+// far above the upload gate's 100ms floor (minTakeMs, recording-upload-helpers).
+// Matching the steady-state floor also means the first clip of a session and
+// the two-hundredth are trimmed from the same amount of room, which is the
+// property the forensics wanted and never had.
+export const COLD_START_SETTLE_MS = PRE_ROLL_MIN_MS
+
 // Peak-level bars, on the raw meter peak. Only ever used for timing decisions,
 // never to gate audio.
 //
 // These are the LOUD-MIC end of the scale, and they are absolute numbers on a
-// signal whose gain we deliberately do not control: autoGainControl is off, so
-// how high a real read peaks depends entirely on the device and how far away
-// the mouth is. A phone held at arm's length peaks well under 0.06 while
+// signal whose gain we do not control. (This paragraph was written under the
+// old dry default, when autoGainControl was off. The default is the voice
+// profile now — but the conclusion is unchanged and the numbers below did not
+// need retuning, because nothing here is an absolute test: the floor is
+// measured against this room's own noise, which is what makes it hold across a
+// mic at -60dBFS and a mic at -12.) How high a real read peaks depends entirely
+// on the device, the profile it was asked for, and how far away the mouth is. A phone held at arm's length peaks well under 0.06 while
 // reading perfectly audibly, and every syllable of it then sits below
 // SPEECH_PEAK — the line is judged to have had nothing said on it, and the
 // audio, which exists and is fine, is thrown away.
@@ -340,6 +332,11 @@ export function useTapRecorder() {
   let peak = 0
   let lastQuietSince = 0
   let lineOpenedAt = 0
+  // The warm recorder waiting to be promoted at the next boundary, and whether
+  // it has heard anything since it was spawned. A dirty standby is never
+  // promoted — it would carry the previous read into the next clip.
+  let standby = null
+  let standbyDirty = false
 
   async function listDevices() {
     try {
@@ -390,25 +387,59 @@ export function useTapRecorder() {
     return p
   }
 
-  // Hand over to a fresh recorder and return the one that was active, still
-  // running. The new one is live BEFORE the old one is touched, so the stream is
-  // never unobserved.
+  // Hand over and return the one that was active, still running. The
+  // replacement is live BEFORE the old one is touched, so the stream is never
+  // unobserved.
+  //
+  // A FRESH RECORDER HAS NO PRE-ROLL. THAT WAS THE WHOLE DEFECT.
+  //
+  // This used to be `active = spawnRecorder()` and nothing else, and the
+  // comments around it claimed the replacement carried pre-roll because it was
+  // "already live". Live is not the same as full. A MediaRecorder constructed
+  // at the instant of a boundary holds ZERO audio at that instant, so the only
+  // lead-in the next clip ever got was however long the recordist happened to
+  // hesitate before speaking. Measured on Tom's 34 zzz takes of 2026-09-02
+  // (docs/audio-forensics-2026-09-02/): 30 clips got the trim's full 350ms
+  // margin because he spent 1.2-3.0s reading the line first, and 4 did not —
+  // one with 0ms of lead, two with ~292ms, one where the read filled the whole
+  // take. Every one of those four is a take that began within a few hundred ms
+  // of a hand-over. The trim was identical on all 34; the capture is what was
+  // short, exactly as the block at audio-processor.cjs:1370 says it would be.
+  //
+  // A re-read is that case every time. `discardLine()` hands over and the
+  // caller opens the line in the same tick, and a recordist re-reading a line
+  // they have just read does not stop to read it again — so the re-take's
+  // recorder is reliably near-empty at the first word, where a first take's is
+  // reliably seconds full. Same code, opposite outcomes.
+  //
+  // So the replacement is no longer made at the boundary. A STANDBY recorder is
+  // kept running through the quiet, and the boundary PROMOTES it — it arrives
+  // already holding the room tone recorded since the last thing anybody said,
+  // which is precisely the lead-in the trim wants and cannot invent. The
+  // standby is discarded and respawned the moment it hears speech, so a
+  // promoted recorder can never carry the previous read into the next clip.
+  //
+  // When there is no clean standby to promote — no trusted meter, or the room
+  // has been talking right up to the boundary — this falls back to exactly what
+  // it did before. Never worse than a fresh recorder; usually much better.
   function handOver() {
     const outgoing = active
-    active = spawnRecorder()
+    if (standby && !standbyDirty && meterTrusted.value) {
+      active = standby
+      standby = null
+    } else {
+      active = spawnRecorder()
+    }
     return outgoing
   }
 
   // Acquire the mic + start the meter + start capturing. Call from a user
   // gesture. Capture begins HERE, not at the first line: the pre-roll for line
   // one is the whole gap between tapping Start and the first word.
-  async function start(deviceId = null, profileName = null) {
+  async function start(deviceId = null, profileName = DEFAULT_CAPTURE_PROFILE) {
     error.value = null
-    // No profile named means "whatever this device should have" — see
-    // resolveCaptureProfile above. A named one is still honoured exactly.
-    const fallback = resolveCaptureProfile()
-    const dsp = CAPTURE_PROFILES[profileName] || CAPTURE_PROFILES[fallback]
-    profile.value = CAPTURE_PROFILES[profileName] ? profileName : fallback
+    const dsp = CAPTURE_PROFILES[profileName] || CAPTURE_PROFILES[DEFAULT_CAPTURE_PROFILE]
+    profile.value = CAPTURE_PROFILES[profileName] ? profileName : DEFAULT_CAPTURE_PROFILE
     const audio = {
       ...dsp,
       channelCount: 1,
@@ -532,22 +563,72 @@ export function useTapRecorder() {
 
     quietMs.value = lineHasSpeech.value ? t - lastQuietSince : 0
 
+    // KEEP A CLEAN STANDBY WARM.
+    //
+    // The standby exists to hold the next clip's lead-in, so the one thing it
+    // must never contain is speech. It is therefore thrown away and respawned
+    // on the first quiet frame after anything is heard: from then on it holds
+    // room tone and nothing else, ageing until a boundary promotes it.
+    if (p > speechFloor()) {
+      standbyDirty = true
+    } else if (!standby) {
+      standby = spawnRecorder()
+      standbyDirty = false
+    } else if (standbyDirty) {
+      const soiled = standby
+      standby = spawnRecorder()
+      standbyDirty = false
+      harvest(soiled)
+    }
+
     // Roll the pre-roll over, but only while nothing has been said on this line
-    // and the room has genuinely been quiet for a while. The outgoing recorder
-    // is retired through the same tail path as a line boundary, so it keeps
-    // running for the full overlap before it is dropped.
+    // and the room has genuinely been quiet for a while — and only into a
+    // standby that already holds a full PRE_ROLL_MIN_MS. Rolling into an empty
+    // recorder is the defect this whole mechanism exists to prevent, and it is
+    // what the old `handOver()` here did every ~2.5s for as long as a recordist
+    // sat reading a line: for the 800ms after each roll the active recorder held
+    // nothing at all, and a read begun in that window arrived flush against its
+    // own first syllable. Waiting for the standby to be full instead keeps the
+    // active recorder's lead-in inside [PRE_ROLL_MIN_MS, ~PRE_ROLL_MAX_MS] at
+    // every instant, which is what the header has always claimed it did.
     if (
       active &&
       !lineHasSpeech.value &&
       t - active.startedAt > PRE_ROLL_MAX_MS &&
-      t - lastQuietSince > ROLL_QUIET_MS
+      t - lastQuietSince > ROLL_QUIET_MS &&
+      standby && !standbyDirty && t - standby.startedAt >= PRE_ROLL_MIN_MS
     ) {
       const stale = handOver()
-      // Discarded, not returned — this is dead air ahead of a line that has not
-      // started. It is dropped only after PRE_ROLL_MIN_MS of overlap, so the
-      // audio it holds is also held by the recorder that replaced it.
-      setTimeout(() => { harvest(stale) }, PRE_ROLL_MIN_MS)
+      // Dropped immediately, not after an overlap timer: the recorder that
+      // replaced it has been running since long before this one was retired, so
+      // every sample the stale one holds is already held by its successor. The
+      // overlap is banked in advance now rather than paid for afterwards.
+      harvest(stale)
     }
+  }
+
+  // How much audio the recorder about to be used for the next take is holding,
+  // in ms. This is the only currency the trim can spend: a clip's lead-in is
+  // its recorder's age at the first word, and nothing downstream can invent it.
+  function activeAgeMs() {
+    return active ? now() - active.startedAt : 0
+  }
+
+  // Resolve once the active recorder is old enough to hand the trim its margin,
+  // and NOT A MOMENT LATER. If one already is — every boundary inside a
+  // session, where #104's standby has been running through the quiet — this
+  // settles synchronously on the next microtask and the caller reveals the line
+  // immediately. Only the cold start actually waits.
+  function awaitLeadIn(minMs = COLD_START_SETTLE_MS) {
+    if (!active) active = spawnRecorder()
+    return new Promise((resolve) => {
+      const check = () => {
+        const age = activeAgeMs()
+        if (age >= minMs) { resolve(age); return }
+        setTimeout(check, Math.max(10, minMs - age))
+      }
+      check()
+    })
   }
 
   // Mark the start of a line. Does NOT touch the recorder — capture is already
@@ -596,8 +677,13 @@ export function useTapRecorder() {
     })
   }
 
-  // Close the current line and throw the audio away (re-read). The replacement
-  // recorder is already live, so the re-read has its pre-roll too.
+  // Close the current line and throw the audio away (re-read).
+  //
+  // The re-read is promoted onto the standby by handOver(), so it opens holding
+  // the room tone captured since the discarded read finished — a real lead-in,
+  // not the bare instant of the tap. Before that it opened on a recorder
+  // constructed in this very call, which is why a re-read came back snipped
+  // tighter than the take it replaced.
   function discardLine() {
     isRecording.value = false
     if (!active) return Promise.resolve()
@@ -612,8 +698,10 @@ export function useTapRecorder() {
     isRecording.value = false
     lineHasSpeech.value = false
     quietMs.value = 0
-    const all = [active, ...retiring].filter(Boolean)
+    const all = [active, standby, ...retiring].filter(Boolean)
     active = null
+    standby = null
+    standbyDirty = false
     retiring = []
     for (const entry of all) { try { await harvest(entry) } catch { /* already gone */ } }
     if (rafId) { cancelAnimationFrame(rafId); rafId = null }
@@ -632,5 +720,6 @@ export function useTapRecorder() {
     isRecording, level, clipping, devices, appliedSettings, profile, error,
     lineHasSpeech, quietMs, meterTrusted, inputPeak, roomTone,
     listDevices, start, beginLine, endLine, discardLine, stop,
+    activeAgeMs, awaitLeadIn,
   }
 }

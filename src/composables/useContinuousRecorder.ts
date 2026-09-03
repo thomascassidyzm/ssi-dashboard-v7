@@ -13,7 +13,6 @@
 
 import { ref, computed, onUnmounted } from 'vue'
 import { useVAD, type VADConfig, type ChunkGap, type TakePauseReport } from './useVAD'
-import { CAPTURE_PROFILES, resolveCaptureProfile } from './useTapRecorder'
 
 export interface ContinuousRecorderConfig extends Partial<VADConfig> {
   // Auto-upload after capturing segment
@@ -277,21 +276,30 @@ export function useContinuousRecorder(config: Partial<ContinuousRecorderConfig> 
 
     try {
       // Get microphone access
-      // DSP OFF, deliberately — the same request the pod recorder makes.
-      // Browser noiseSuppression gates exactly the quiet onset consonants the
-      // VAD then fails to hear, so the two defects compounded: the mic pushed
-      // /s/, /f/, /h/ and nasals further under the trip point and the recorder
-      // started after it. Capture the dry voice and let the server be the only
-      // processing stage.
+      // DSP OFF, deliberately. Browser noiseSuppression gates exactly the quiet
+      // onset consonants the VAD then fails to hear, so the two defects
+      // compounded: the mic pushed /s/, /f/, /h/ and nasals further under the
+      // trip point and the recorder started after it. Capture the dry voice and
+      // let the server be the only processing stage.
       //
-      // Which of the two profiles that resolves to is now the DEVICE's call,
-      // shared with the tap recorder rather than fixed here — the two halves
-      // of one recording room used to disagree about this outright. On a
-      // desktop browser it is still the dry capture described above. On WebKit
-      // and on phones it is the voice chain, because there `dry` selects
-      // RemoteIO and there is no gain stage behind it at all (Tom, 2026-08-22).
+      // NOT the same request the pod recorder makes — it was when this was
+      // written, and it stopped being on 2026-08-22 (41980443b), when that path
+      // moved to the voice profile because on iOS the dry tap has no gain at
+      // all. This path stayed dry on purpose: it is driven by a VAD that the
+      // noise suppressor demonstrably breaks, and it is measured healthy in the
+      // field — 24 script takes sampled 2026-09-02 (Sasha on a RØDE, Kai on
+      // Linux) came in at -5 to -8 dBFS raw peak and mastered to -17 LUFS. That
+      // holds because desktop Chrome/Firefox still hand you usable gain with
+      // AGC off. It would NOT hold for a recordist on an iPhone, and there is
+      // no phone in this surface's corpus yet. If one arrives quiet, this is
+      // the line, and the fix is a profile plus a VAD floor measured against
+      // the room the way useTapRecorder's already is.
       stream = await navigator.mediaDevices.getUserMedia({
-        audio: { ...CAPTURE_PROFILES[resolveCaptureProfile()] }
+        audio: {
+          echoCancellation: false,
+          noiseSuppression: false,
+          autoGainControl: false
+        }
       })
 
       // Name the take's origin while the track is in hand. Truncated to the
