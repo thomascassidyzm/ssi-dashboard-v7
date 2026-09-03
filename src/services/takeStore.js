@@ -129,7 +129,16 @@ export function createTakeStore(backend, { now = () => Date.now() } = {}) {
       return due.length ? Math.min(...due) : null
     },
 
-    /** A transient failure: count it, push the next attempt out, KEEP the bytes. */
+    /**
+     * A transient failure: count it, push the next attempt out, KEEP the bytes.
+     *
+     * If the take was superseded by a re-read while this attempt was in flight
+     * the record is gone and this does nothing. If the delete lands in the gap
+     * between the read and the write below, the old take comes back and goes up
+     * before the newer one — which drains second, being newer, and wins on the
+     * server. Erring towards an extra upload rather than a lost one is the
+     * whole posture of this file.
+     */
     async recordFailure(id, message, rand) {
       const rec = (await backend.getAll()).find(r => r.id === id)
       if (!rec) return null
