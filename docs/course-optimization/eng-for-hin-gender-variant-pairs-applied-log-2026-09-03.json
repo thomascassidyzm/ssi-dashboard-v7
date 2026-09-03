@@ -1,0 +1,4712 @@
+{
+  "course": "eng_for_hin",
+  "applied": true,
+  "at": "2026-09-03T10:45:59.281Z",
+  "rejected": [
+    {
+      "id": "eng_for_hin:S0355L03U05",
+      "verdict": "AMBIGUOUS",
+      "male": "did he need to talk to him?",
+      "female": "did she need to talk to her?",
+      "reason": "उसे and उससे both oblique and unmarked",
+      "stored": "did she need to talk to him?",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02B01",
+      "verdict": "AMBIGUOUS",
+      "male": "what he said to him",
+      "female": "what she said to her",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02B02",
+      "verdict": "AMBIGUOUS",
+      "male": "I heard what he said to him",
+      "female": "I heard what she said to her",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "I heard what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02B03",
+      "verdict": "AMBIGUOUS",
+      "male": "what he said to him today",
+      "female": "what she said to her today",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "what she said to him today",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02U01",
+      "verdict": "AMBIGUOUS",
+      "male": "I didn't hear what he said to him",
+      "female": "I didn't hear what she said to her",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "I didn't hear what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02U02",
+      "verdict": "AMBIGUOUS",
+      "male": "I don't know what he said to him",
+      "female": "I don't know what she said to her",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "I don't know what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02U03",
+      "verdict": "AMBIGUOUS",
+      "male": "I know what he said to him",
+      "female": "I know what she said to her",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "I know what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02U04",
+      "verdict": "AMBIGUOUS",
+      "male": "I just heard what he said to him",
+      "female": "I just heard what she said to her",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "I just heard what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "eng_for_hin:S0365L02U05",
+      "verdict": "AMBIGUOUS",
+      "male": "I thought I heard what he said to him",
+      "female": "I thought I heard what she said to her",
+      "reason": "उसने ergative and उसे dative, both unmarked",
+      "stored": "I thought I heard what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "S0365L02",
+      "verdict": "AMBIGUOUS",
+      "male": "what he said to him",
+      "female": "what she said to her",
+      "reason": "उसने ergative + उसे dative, two open referents",
+      "stored": "what she said to him",
+      "why": "neither reading matches the stored text"
+    },
+    {
+      "id": "S0365",
+      "verdict": "AMBIGUOUS",
+      "male": "I didn't hear what he said to him.",
+      "female": "I didn't hear what she said to her.",
+      "reason": "उसने ergative + उससे oblique, two open referents",
+      "stored": "I didn't hear what she said to him.",
+      "why": "neither reading matches the stored text"
+    }
+  ],
+  "flips": [],
+  "already_male": [
+    {
+      "id": "eng_for_hin:S0020L01C01",
+      "table": "course_practice_phrases",
+      "text": "his"
+    },
+    {
+      "id": "eng_for_hin:S0020L01B01",
+      "table": "course_practice_phrases",
+      "text": "to learn his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L01B02",
+      "table": "course_practice_phrases",
+      "text": "to find out his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L01B03",
+      "table": "course_practice_phrases",
+      "text": "to remember his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L01U01",
+      "table": "course_practice_phrases",
+      "text": "I want to find out his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L01U02",
+      "table": "course_practice_phrases",
+      "text": "she wants to learn his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L01U03",
+      "table": "course_practice_phrases",
+      "text": "we want to find out his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L01U04",
+      "table": "course_practice_phrases",
+      "text": "I'm trying to remember his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L01U05",
+      "table": "course_practice_phrases",
+      "text": "I'm not sure if I can remember his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L02B03",
+      "table": "course_practice_phrases",
+      "text": "to learn his name quickly"
+    },
+    {
+      "id": "eng_for_hin:S0020L02U04",
+      "table": "course_practice_phrases",
+      "text": "I want to remember his name quickly"
+    },
+    {
+      "id": "eng_for_hin:S0020L03B02",
+      "table": "course_practice_phrases",
+      "text": "you want to learn his name"
+    },
+    {
+      "id": "eng_for_hin:S0020L03U01",
+      "table": "course_practice_phrases",
+      "text": "you want to learn his name quickly"
+    },
+    {
+      "id": "eng_for_hin:S0024L02U01",
+      "table": "course_practice_phrases",
+      "text": "I'm not going to be able to remember his name tomorrow"
+    },
+    {
+      "id": "eng_for_hin:S0024L02U04",
+      "table": "course_practice_phrases",
+      "text": "I'm not going to be able to remember his name this evening"
+    },
+    {
+      "id": "eng_for_hin:S0026L01U05",
+      "table": "course_practice_phrases",
+      "text": "I like feeling as if I can remember his name"
+    },
+    {
+      "id": "eng_for_hin:S0029L03U05",
+      "table": "course_practice_phrases",
+      "text": "I want to remember his name as soon as I can"
+    },
+    {
+      "id": "eng_for_hin:S0030L03U03",
+      "table": "course_practice_phrases",
+      "text": "I wanted to remember his name yesterday"
+    },
+    {
+      "id": "eng_for_hin:S0033L01B03",
+      "table": "course_practice_phrases",
+      "text": "how long have you been learning his name"
+    },
+    {
+      "id": "eng_for_hin:S0038L01U02",
+      "table": "course_practice_phrases",
+      "text": "I've been learning his name"
+    },
+    {
+      "id": "eng_for_hin:S0038L02U01",
+      "table": "course_practice_phrases",
+      "text": "I've been learning his name for about a week"
+    },
+    {
+      "id": "eng_for_hin:S0052L04B01",
+      "table": "course_practice_phrases",
+      "text": "to write to his friend"
+    },
+    {
+      "id": "eng_for_hin:S0052L04B02",
+      "table": "course_practice_phrases",
+      "text": "a letter to his friend"
+    },
+    {
+      "id": "eng_for_hin:S0052L04B03",
+      "table": "course_practice_phrases",
+      "text": "to write to his friend today"
+    },
+    {
+      "id": "eng_for_hin:S0053L02B03",
+      "table": "course_practice_phrases",
+      "text": "to put his letter"
+    },
+    {
+      "id": "eng_for_hin:S0053L03B01",
+      "table": "course_practice_phrases",
+      "text": "to read his letter"
+    },
+    {
+      "id": "eng_for_hin:S0053L03B02",
+      "table": "course_practice_phrases",
+      "text": "his letter today"
+    },
+    {
+      "id": "eng_for_hin:S0053L03B03",
+      "table": "course_practice_phrases",
+      "text": "to write his letter"
+    },
+    {
+      "id": "eng_for_hin:S0053L03U01",
+      "table": "course_practice_phrases",
+      "text": "she wanted to read his letter"
+    },
+    {
+      "id": "eng_for_hin:S0053L03U02",
+      "table": "course_practice_phrases",
+      "text": "I want to read his letter"
+    },
+    {
+      "id": "eng_for_hin:S0053L03U03",
+      "table": "course_practice_phrases",
+      "text": "she wanted to put his letter today"
+    },
+    {
+      "id": "eng_for_hin:S0053L03U04",
+      "table": "course_practice_phrases",
+      "text": "I need to read his letter"
+    },
+    {
+      "id": "eng_for_hin:S0053L03U05",
+      "table": "course_practice_phrases",
+      "text": "she wanted to read his letter yesterday"
+    },
+    {
+      "id": "eng_for_hin:S0053L04U03",
+      "table": "course_practice_phrases",
+      "text": "she doesn't want to put his letter in her bag"
+    },
+    {
+      "id": "eng_for_hin:S0053L04U05",
+      "table": "course_practice_phrases",
+      "text": "she wanted to put his letter in her bag this morning"
+    },
+    {
+      "id": "eng_for_hin:S0057L01B01",
+      "table": "course_practice_phrases",
+      "text": "I can't remember his name"
+    },
+    {
+      "id": "eng_for_hin:S0057L01U04",
+      "table": "course_practice_phrases",
+      "text": "I can't remember his name this morning"
+    },
+    {
+      "id": "eng_for_hin:S0059L01B02",
+      "table": "course_practice_phrases",
+      "text": "I know his name"
+    },
+    {
+      "id": "eng_for_hin:S0059L01U05",
+      "table": "course_practice_phrases",
+      "text": "I know his name this morning"
+    },
+    {
+      "id": "eng_for_hin:S0060L03U02",
+      "table": "course_practice_phrases",
+      "text": "I can't remember his name yet"
+    },
+    {
+      "id": "eng_for_hin:S0084L02B01",
+      "table": "course_practice_phrases",
+      "text": "to find out what he said"
+    },
+    {
+      "id": "eng_for_hin:S0084L02B02",
+      "table": "course_practice_phrases",
+      "text": "to remember what he said"
+    },
+    {
+      "id": "eng_for_hin:S0084L02B03",
+      "table": "course_practice_phrases",
+      "text": "what he said today"
+    },
+    {
+      "id": "eng_for_hin:S0084L02U01",
+      "table": "course_practice_phrases",
+      "text": "I don't agree with what he said"
+    },
+    {
+      "id": "eng_for_hin:S0084L02U02",
+      "table": "course_practice_phrases",
+      "text": "I don't understand what he said"
+    },
+    {
+      "id": "eng_for_hin:S0084L02U03",
+      "table": "course_practice_phrases",
+      "text": "I can't remember what he said"
+    },
+    {
+      "id": "eng_for_hin:S0084L02U04",
+      "table": "course_practice_phrases",
+      "text": "I know what he said"
+    },
+    {
+      "id": "eng_for_hin:S0084L02U05",
+      "table": "course_practice_phrases",
+      "text": "I don't agree with what he said today"
+    },
+    {
+      "id": "eng_for_hin:S0084L03U01",
+      "table": "course_practice_phrases",
+      "text": "I don't agree with what he said about my friend"
+    },
+    {
+      "id": "eng_for_hin:S0084L03U02",
+      "table": "course_practice_phrases",
+      "text": "I don't understand what he said about my friend"
+    },
+    {
+      "id": "eng_for_hin:S0084L03U04",
+      "table": "course_practice_phrases",
+      "text": "I can't remember what he said about my friend"
+    },
+    {
+      "id": "eng_for_hin:S0105L02B01",
+      "table": "course_practice_phrases",
+      "text": "he didn't know the answer"
+    },
+    {
+      "id": "eng_for_hin:S0105L02B02",
+      "table": "course_practice_phrases",
+      "text": "he didn't know the truth"
+    },
+    {
+      "id": "eng_for_hin:S0105L02B03",
+      "table": "course_practice_phrases",
+      "text": "he didn't know the story"
+    },
+    {
+      "id": "eng_for_hin:S0105L02U01",
+      "table": "course_practice_phrases",
+      "text": "that is why he didn't know the truth"
+    },
+    {
+      "id": "eng_for_hin:S0105L02U02",
+      "table": "course_practice_phrases",
+      "text": "I think that he didn't know the answer"
+    },
+    {
+      "id": "eng_for_hin:S0105L02U03",
+      "table": "course_practice_phrases",
+      "text": "he didn't know why it's not working"
+    },
+    {
+      "id": "eng_for_hin:S0105L02U04",
+      "table": "course_practice_phrases",
+      "text": "I'm not sure if he didn't know the answer"
+    },
+    {
+      "id": "eng_for_hin:S0105L02U05",
+      "table": "course_practice_phrases",
+      "text": "he didn't know what we're doing"
+    },
+    {
+      "id": "eng_for_hin:S0113L01B03",
+      "table": "course_practice_phrases",
+      "text": "why can't I remember his name?"
+    },
+    {
+      "id": "eng_for_hin:S0124L01B02",
+      "table": "course_practice_phrases",
+      "text": "I thought he didn't know the answer"
+    },
+    {
+      "id": "eng_for_hin:S0124L01U02",
+      "table": "course_practice_phrases",
+      "text": "I thought he didn't know the truth"
+    },
+    {
+      "id": "eng_for_hin:S0148L01B01",
+      "table": "course_practice_phrases",
+      "text": "I think he wasn't very patient"
+    },
+    {
+      "id": "eng_for_hin:S0148L01B02",
+      "table": "course_practice_phrases",
+      "text": "I believe that he wasn't very patient"
+    },
+    {
+      "id": "eng_for_hin:S0148L01B03",
+      "table": "course_practice_phrases",
+      "text": "that is why he wasn't very patient"
+    },
+    {
+      "id": "eng_for_hin:S0148L01U01",
+      "table": "course_practice_phrases",
+      "text": "I'm not sure if he wasn't very patient"
+    },
+    {
+      "id": "eng_for_hin:S0148L01U02",
+      "table": "course_practice_phrases",
+      "text": "I'm sorry that he wasn't very patient"
+    },
+    {
+      "id": "eng_for_hin:S0148L01U03",
+      "table": "course_practice_phrases",
+      "text": "I'm surprised he wasn't very patient"
+    },
+    {
+      "id": "eng_for_hin:S0148L01U04",
+      "table": "course_practice_phrases",
+      "text": "that was a surprise because he wasn't very patient"
+    },
+    {
+      "id": "eng_for_hin:S0148L01U05",
+      "table": "course_practice_phrases",
+      "text": "he wasn't very patient today"
+    },
+    {
+      "id": "eng_for_hin:S0148L02B03",
+      "table": "course_practice_phrases",
+      "text": "I think he wasn't very patient when I couldn't answer"
+    },
+    {
+      "id": "eng_for_hin:S0148L02U01",
+      "table": "course_practice_phrases",
+      "text": "I'm not sure if he wasn't very patient when I couldn't answer"
+    },
+    {
+      "id": "eng_for_hin:S0148L02U03",
+      "table": "course_practice_phrases",
+      "text": "I believe that he wasn't very patient when I couldn't answer"
+    },
+    {
+      "id": "eng_for_hin:S0148L02U04",
+      "table": "course_practice_phrases",
+      "text": "that is why he wasn't very patient when I couldn't answer"
+    },
+    {
+      "id": "eng_for_hin:S0148L02U05",
+      "table": "course_practice_phrases",
+      "text": "I'm sorry that he wasn't very patient when I couldn't answer"
+    },
+    {
+      "id": "eng_for_hin:S0176L02C01",
+      "table": "course_practice_phrases",
+      "text": "he"
+    },
+    {
+      "id": "eng_for_hin:S0176L03C02",
+      "table": "course_practice_phrases",
+      "text": "him"
+    },
+    {
+      "id": "eng_for_hin:S0176L03B01",
+      "table": "course_practice_phrases",
+      "text": "I'll ask him if"
+    },
+    {
+      "id": "eng_for_hin:S0176L03B03",
+      "table": "course_practice_phrases",
+      "text": "on Sunday I'll ask him if"
+    },
+    {
+      "id": "eng_for_hin:S0176L03B04",
+      "table": "course_practice_phrases",
+      "text": "today I'll ask him if"
+    },
+    {
+      "id": "eng_for_hin:S0224L01U01",
+      "table": "course_practice_phrases",
+      "text": "he's started to learn"
+    },
+    {
+      "id": "eng_for_hin:S0224L01U02",
+      "table": "course_practice_phrases",
+      "text": "he's just started to learn"
+    },
+    {
+      "id": "eng_for_hin:S0224L01U05",
+      "table": "course_practice_phrases",
+      "text": "he's started to learn now"
+    },
+    {
+      "id": "eng_for_hin:S0241L01U01",
+      "table": "course_practice_phrases",
+      "text": "I want to give it to him"
+    },
+    {
+      "id": "eng_for_hin:S0241L01U03",
+      "table": "course_practice_phrases",
+      "text": "I want to give him more"
+    },
+    {
+      "id": "eng_for_hin:S0263L01U01",
+      "table": "course_practice_phrases",
+      "text": "I don't know what he said"
+    },
+    {
+      "id": "eng_for_hin:S0290L01C01",
+      "table": "course_practice_phrases",
+      "text": "to him"
+    },
+    {
+      "id": "eng_for_hin:S0290L01B01",
+      "table": "course_practice_phrases",
+      "text": "he knows the answer"
+    },
+    {
+      "id": "eng_for_hin:S0290L01B02",
+      "table": "course_practice_phrases",
+      "text": "he knows the answer now"
+    },
+    {
+      "id": "eng_for_hin:S0290L01B03",
+      "table": "course_practice_phrases",
+      "text": "he knows the answer or not?"
+    },
+    {
+      "id": "eng_for_hin:S0290L01B04",
+      "table": "course_practice_phrases",
+      "text": "he knows the answer already"
+    },
+    {
+      "id": "eng_for_hin:S0290L01U01",
+      "table": "course_practice_phrases",
+      "text": "I wonder if he knows the answer"
+    },
+    {
+      "id": "eng_for_hin:S0290L01U02",
+      "table": "course_practice_phrases",
+      "text": "I don't know if he knows the answer"
+    },
+    {
+      "id": "eng_for_hin:S0290L01U03",
+      "table": "course_practice_phrases",
+      "text": "I wonder if he knows the answer already"
+    },
+    {
+      "id": "eng_for_hin:S0290L01U04",
+      "table": "course_practice_phrases",
+      "text": "I think he knows the answer"
+    },
+    {
+      "id": "eng_for_hin:S0290L01U05",
+      "table": "course_practice_phrases",
+      "text": "do you know if he knows the answer?"
+    },
+    {
+      "id": "eng_for_hin:S0293L01U02",
+      "table": "course_practice_phrases",
+      "text": "I have to find out what he said"
+    },
+    {
+      "id": "eng_for_hin:S0320L01C01",
+      "table": "course_practice_phrases",
+      "text": "he"
+    },
+    {
+      "id": "eng_for_hin:S0320L01B01",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy"
+    },
+    {
+      "id": "eng_for_hin:S0320L01B02",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy my book"
+    },
+    {
+      "id": "eng_for_hin:S0320L01B03",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy something"
+    },
+    {
+      "id": "eng_for_hin:S0320L01U01",
+      "table": "course_practice_phrases",
+      "text": "I think that he doesn't need to buy"
+    },
+    {
+      "id": "eng_for_hin:S0320L01U02",
+      "table": "course_practice_phrases",
+      "text": "he said that he doesn't need to buy"
+    },
+    {
+      "id": "eng_for_hin:S0320L01U03",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy something today"
+    },
+    {
+      "id": "eng_for_hin:S0320L01U04",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy your car"
+    },
+    {
+      "id": "eng_for_hin:S0320L01U05",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy my keys"
+    },
+    {
+      "id": "eng_for_hin:S0320L02B02",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy another television"
+    },
+    {
+      "id": "eng_for_hin:S0320L02U01",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy another television now"
+    },
+    {
+      "id": "eng_for_hin:S0320L02U03",
+      "table": "course_practice_phrases",
+      "text": "I think that he doesn't need to buy another television"
+    },
+    {
+      "id": "eng_for_hin:S0320L02U05",
+      "table": "course_practice_phrases",
+      "text": "he said that he doesn't need to buy another television"
+    },
+    {
+      "id": "eng_for_hin:S0320L03U01",
+      "table": "course_practice_phrases",
+      "text": "he doesn't need to buy another television this year"
+    },
+    {
+      "id": "eng_for_hin:S0320L03U03",
+      "table": "course_practice_phrases",
+      "text": "I think that he doesn't need to buy this year"
+    },
+    {
+      "id": "eng_for_hin:S0320L03U05",
+      "table": "course_practice_phrases",
+      "text": "he said that he doesn't need to buy something this year"
+    },
+    {
+      "id": "eng_for_hin:S0325L01U05",
+      "table": "course_practice_phrases",
+      "text": "he has to think about possible problems"
+    },
+    {
+      "id": "eng_for_hin:S0325L02B04",
+      "table": "course_practice_phrases",
+      "text": "he needs to consider"
+    },
+    {
+      "id": "eng_for_hin:S0325L02U01",
+      "table": "course_practice_phrases",
+      "text": "he needs to consider possible problems"
+    },
+    {
+      "id": "eng_for_hin:S0325L02U02",
+      "table": "course_practice_phrases",
+      "text": "he needs to consider some possible problems"
+    },
+    {
+      "id": "eng_for_hin:S0325L02U03",
+      "table": "course_practice_phrases",
+      "text": "I think he needs to consider this"
+    },
+    {
+      "id": "eng_for_hin:S0325L02U04",
+      "table": "course_practice_phrases",
+      "text": "he needs to consider it"
+    },
+    {
+      "id": "eng_for_hin:S0325L02U05",
+      "table": "course_practice_phrases",
+      "text": "he needs to consider more problems"
+    },
+    {
+      "id": "eng_for_hin:S0325L03U01",
+      "table": "course_practice_phrases",
+      "text": "he needs to consider ten possible problems"
+    },
+    {
+      "id": "eng_for_hin:S0325L03U02",
+      "table": "course_practice_phrases",
+      "text": "I think that he needs to consider ten possible problems"
+    },
+    {
+      "id": "eng_for_hin:S0325L03U03",
+      "table": "course_practice_phrases",
+      "text": "he needs to consider ten problems"
+    },
+    {
+      "id": "eng_for_hin:S0325L03U05",
+      "table": "course_practice_phrases",
+      "text": "he sent me ten emails"
+    },
+    {
+      "id": "eng_for_hin:S0339L02B02",
+      "table": "course_practice_phrases",
+      "text": "he's hurt me badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L02B03",
+      "table": "course_practice_phrases",
+      "text": "he's hurt you quite badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L02B04",
+      "table": "course_practice_phrases",
+      "text": "he's hurt me today"
+    },
+    {
+      "id": "eng_for_hin:S0339L02U01",
+      "table": "course_practice_phrases",
+      "text": "he's hurt me"
+    },
+    {
+      "id": "eng_for_hin:S0339L02U02",
+      "table": "course_practice_phrases",
+      "text": "he's hurt you"
+    },
+    {
+      "id": "eng_for_hin:S0339L02U03",
+      "table": "course_practice_phrases",
+      "text": "I think he's hurt me"
+    },
+    {
+      "id": "eng_for_hin:S0339L02U04",
+      "table": "course_practice_phrases",
+      "text": "he's hurt me quite badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L02U05",
+      "table": "course_practice_phrases",
+      "text": "no he's hurt me badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L03B01",
+      "table": "course_practice_phrases",
+      "text": "hurt himself"
+    },
+    {
+      "id": "eng_for_hin:S0339L03B02",
+      "table": "course_practice_phrases",
+      "text": "hurt himself badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L03B03",
+      "table": "course_practice_phrases",
+      "text": "himself quite badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L03U01",
+      "table": "course_practice_phrases",
+      "text": "he's hurt himself"
+    },
+    {
+      "id": "eng_for_hin:S0339L03U02",
+      "table": "course_practice_phrases",
+      "text": "no I think he's hurt himself quite badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L03U03",
+      "table": "course_practice_phrases",
+      "text": "I think he's hurt himself badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L03U04",
+      "table": "course_practice_phrases",
+      "text": "he's hurt himself quite badly"
+    },
+    {
+      "id": "eng_for_hin:S0339L03U05",
+      "table": "course_practice_phrases",
+      "text": "no he's hurt himself"
+    },
+    {
+      "id": "eng_for_hin:S0344L02U02",
+      "table": "course_practice_phrases",
+      "text": "he's ready to help you"
+    },
+    {
+      "id": "eng_for_hin:S0344L02U04",
+      "table": "course_practice_phrases",
+      "text": "I'm sure he's happy to help you"
+    },
+    {
+      "id": "eng_for_hin:S0344L03C01",
+      "table": "course_practice_phrases",
+      "text": "he"
+    },
+    {
+      "id": "eng_for_hin:S0344L03B01",
+      "table": "course_practice_phrases",
+      "text": "he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0344L03B02",
+      "table": "course_practice_phrases",
+      "text": "he's very happy"
+    },
+    {
+      "id": "eng_for_hin:S0344L03B03",
+      "table": "course_practice_phrases",
+      "text": "he's happy about it"
+    },
+    {
+      "id": "eng_for_hin:S0344L03U01",
+      "table": "course_practice_phrases",
+      "text": "I'm sure he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0344L03U02",
+      "table": "course_practice_phrases",
+      "text": "he's happy to help you"
+    },
+    {
+      "id": "eng_for_hin:S0344L03U03",
+      "table": "course_practice_phrases",
+      "text": "I think he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0344L03U04",
+      "table": "course_practice_phrases",
+      "text": "he's very happy today"
+    },
+    {
+      "id": "eng_for_hin:S0344L03U05",
+      "table": "course_practice_phrases",
+      "text": "who said that he's happy to help you"
+    },
+    {
+      "id": "eng_for_hin:S0345L02U02",
+      "table": "course_practice_phrases",
+      "text": "he's not ready to leave"
+    },
+    {
+      "id": "eng_for_hin:S0345L02U04",
+      "table": "course_practice_phrases",
+      "text": "he's happy to leave"
+    },
+    {
+      "id": "eng_for_hin:S0345L02U05",
+      "table": "course_practice_phrases",
+      "text": "I'm sure he's ready to leave"
+    },
+    {
+      "id": "eng_for_hin:S0345L04C01",
+      "table": "course_practice_phrases",
+      "text": "he"
+    },
+    {
+      "id": "eng_for_hin:S0345L04B01",
+      "table": "course_practice_phrases",
+      "text": "he's not ready"
+    },
+    {
+      "id": "eng_for_hin:S0345L04B02",
+      "table": "course_practice_phrases",
+      "text": "he's not ready now"
+    },
+    {
+      "id": "eng_for_hin:S0345L04B03",
+      "table": "course_practice_phrases",
+      "text": "he's not quite ready"
+    },
+    {
+      "id": "eng_for_hin:S0345L04U01",
+      "table": "course_practice_phrases",
+      "text": "I think he's not ready"
+    },
+    {
+      "id": "eng_for_hin:S0345L04U02",
+      "table": "course_practice_phrases",
+      "text": "I'm sure he's not ready"
+    },
+    {
+      "id": "eng_for_hin:S0345L04U03",
+      "table": "course_practice_phrases",
+      "text": "who said that he's not ready"
+    },
+    {
+      "id": "eng_for_hin:S0345L04U04",
+      "table": "course_practice_phrases",
+      "text": "he's not ready today"
+    },
+    {
+      "id": "eng_for_hin:S0345L04U05",
+      "table": "course_practice_phrases",
+      "text": "he's not ready to help you"
+    },
+    {
+      "id": "eng_for_hin:S0347L01U04",
+      "table": "course_practice_phrases",
+      "text": "he wanted to know what he said"
+    },
+    {
+      "id": "eng_for_hin:S0348L01U03",
+      "table": "course_practice_phrases",
+      "text": "she didn't want to know what he said"
+    },
+    {
+      "id": "eng_for_hin:S0352L01B01",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to I'll be ready"
+    },
+    {
+      "id": "eng_for_hin:S0352L01B02",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to I'm going to be late"
+    },
+    {
+      "id": "eng_for_hin:S0352L01B03",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to it's important"
+    },
+    {
+      "id": "eng_for_hin:S0352L01U01",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to I've got too much work"
+    },
+    {
+      "id": "eng_for_hin:S0352L01U02",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to I can stay here"
+    },
+    {
+      "id": "eng_for_hin:S0352L01U03",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to she's going to be there"
+    },
+    {
+      "id": "eng_for_hin:S0352L01U04",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to I want to start"
+    },
+    {
+      "id": "eng_for_hin:S0352L01U05",
+      "table": "course_practice_phrases",
+      "text": "even if he wanted to I don't have enough time"
+    },
+    {
+      "id": "eng_for_hin:S0354L01U01",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear"
+    },
+    {
+      "id": "eng_for_hin:S0354L01U02",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear today"
+    },
+    {
+      "id": "eng_for_hin:S0354L01U03",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear here"
+    },
+    {
+      "id": "eng_for_hin:S0354L01U04",
+      "table": "course_practice_phrases",
+      "text": "I think he didn't need to appear"
+    },
+    {
+      "id": "eng_for_hin:S0354L01U05",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear now"
+    },
+    {
+      "id": "eng_for_hin:S0354L02U01",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear angry"
+    },
+    {
+      "id": "eng_for_hin:S0354L02U02",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear angry today"
+    },
+    {
+      "id": "eng_for_hin:S0354L02U03",
+      "table": "course_practice_phrases",
+      "text": "I think he didn't need to appear angry"
+    },
+    {
+      "id": "eng_for_hin:S0354L02U04",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear angry here"
+    },
+    {
+      "id": "eng_for_hin:S0354L02U05",
+      "table": "course_practice_phrases",
+      "text": "he didn't need to appear angry now"
+    },
+    {
+      "id": "eng_for_hin:S0355L01B04",
+      "table": "course_practice_phrases",
+      "text": "need to talk to him"
+    },
+    {
+      "id": "eng_for_hin:S0355L01U03",
+      "table": "course_practice_phrases",
+      "text": "did I need to talk to him?"
+    },
+    {
+      "id": "eng_for_hin:S0355L01U05",
+      "table": "course_practice_phrases",
+      "text": "did you need to talk to him?"
+    },
+    {
+      "id": "eng_for_hin:S0363L01B02",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking"
+    },
+    {
+      "id": "eng_for_hin:S0363L01U01",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking today"
+    },
+    {
+      "id": "eng_for_hin:S0363L01U03",
+      "table": "course_practice_phrases",
+      "text": "I thought he felt like talking"
+    },
+    {
+      "id": "eng_for_hin:S0363L01U04",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking here"
+    },
+    {
+      "id": "eng_for_hin:S0363L01U05",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking now"
+    },
+    {
+      "id": "eng_for_hin:S0363L02B02",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking a lot"
+    },
+    {
+      "id": "eng_for_hin:S0363L02U01",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking a lot today"
+    },
+    {
+      "id": "eng_for_hin:S0363L02U03",
+      "table": "course_practice_phrases",
+      "text": "I thought he felt like talking a lot"
+    },
+    {
+      "id": "eng_for_hin:S0363L02U04",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking a lot here"
+    },
+    {
+      "id": "eng_for_hin:S0363L02U05",
+      "table": "course_practice_phrases",
+      "text": "he felt like talking a lot over there"
+    },
+    {
+      "id": "eng_for_hin:S0364L01B03",
+      "table": "course_practice_phrases",
+      "text": "he heard that"
+    },
+    {
+      "id": "eng_for_hin:S0364L01U03",
+      "table": "course_practice_phrases",
+      "text": "he heard that I was here"
+    },
+    {
+      "id": "eng_for_hin:S0364L03B03",
+      "table": "course_practice_phrases",
+      "text": "he didn't like it"
+    },
+    {
+      "id": "eng_for_hin:S0364L03U01",
+      "table": "course_practice_phrases",
+      "text": "he didn't like that place"
+    },
+    {
+      "id": "eng_for_hin:S0364L03U03",
+      "table": "course_practice_phrases",
+      "text": "I heard that he didn't like that place"
+    },
+    {
+      "id": "eng_for_hin:S0364L03U04",
+      "table": "course_practice_phrases",
+      "text": "he didn't like this place"
+    },
+    {
+      "id": "eng_for_hin:S0365L01B03",
+      "table": "course_practice_phrases",
+      "text": "he didn't hear"
+    },
+    {
+      "id": "eng_for_hin:S0365L01U03",
+      "table": "course_practice_phrases",
+      "text": "he didn't hear that I was there"
+    },
+    {
+      "id": "eng_for_hin:S0365L01U05",
+      "table": "course_practice_phrases",
+      "text": "I didn't hear that he didn't like that place"
+    },
+    {
+      "id": "eng_for_hin:S0365L02C02",
+      "table": "course_practice_phrases",
+      "text": "to him"
+    },
+    {
+      "id": "eng_for_hin:S0366L01B02",
+      "table": "course_practice_phrases",
+      "text": "did you hear what he said?"
+    },
+    {
+      "id": "eng_for_hin:S0366L01U04",
+      "table": "course_practice_phrases",
+      "text": "and did you hear what he said?"
+    },
+    {
+      "id": "eng_for_hin:S0372L01B02",
+      "table": "course_practice_phrases",
+      "text": "did you see what he said?"
+    },
+    {
+      "id": "eng_for_hin:S0372L01U04",
+      "table": "course_practice_phrases",
+      "text": "and did you see what he said?"
+    },
+    {
+      "id": "eng_for_hin:S0375L02B02",
+      "table": "course_practice_phrases",
+      "text": "I didn't know what he said"
+    },
+    {
+      "id": "eng_for_hin:S0380L01B02",
+      "table": "course_practice_phrases",
+      "text": "I asked what he said"
+    },
+    {
+      "id": "eng_for_hin:S0382L01B02",
+      "table": "course_practice_phrases",
+      "text": "did you ask what he said?"
+    },
+    {
+      "id": "eng_for_hin:S0384L01B01",
+      "table": "course_practice_phrases",
+      "text": "I couldn't agree with what he said"
+    },
+    {
+      "id": "eng_for_hin:S0384L02B01",
+      "table": "course_practice_phrases",
+      "text": "I don't know what he said a moment ago"
+    },
+    {
+      "id": "eng_for_hin:S0384L02B02",
+      "table": "course_practice_phrases",
+      "text": "did you hear what he said a moment ago?"
+    },
+    {
+      "id": "eng_for_hin:S0384L02B03",
+      "table": "course_practice_phrases",
+      "text": "I have to find out what he said a moment ago"
+    },
+    {
+      "id": "eng_for_hin:S0384L02U01",
+      "table": "course_practice_phrases",
+      "text": "I don't have the faintest idea what he said a moment ago"
+    },
+    {
+      "id": "eng_for_hin:S0384L02U02",
+      "table": "course_practice_phrases",
+      "text": "can you tell me what he said a moment ago?"
+    },
+    {
+      "id": "eng_for_hin:S0384L02U03",
+      "table": "course_practice_phrases",
+      "text": "I didn't know what he said a moment ago"
+    },
+    {
+      "id": "eng_for_hin:S0384L02U04",
+      "table": "course_practice_phrases",
+      "text": "I asked what he said a moment ago"
+    },
+    {
+      "id": "eng_for_hin:S0384L02U05",
+      "table": "course_practice_phrases",
+      "text": "I want to find out what he said a moment ago"
+    },
+    {
+      "id": "eng_for_hin:S0421L02B02",
+      "table": "course_practice_phrases",
+      "text": "they already know what he said"
+    },
+    {
+      "id": "eng_for_hin:S0433L01B02",
+      "table": "course_practice_phrases",
+      "text": "they couldn't find out what he said"
+    },
+    {
+      "id": "eng_for_hin:S0438L02C01",
+      "table": "course_practice_phrases",
+      "text": "he"
+    },
+    {
+      "id": "eng_for_hin:S0438L02B01",
+      "table": "course_practice_phrases",
+      "text": "what he should do"
+    },
+    {
+      "id": "eng_for_hin:S0438L02B02",
+      "table": "course_practice_phrases",
+      "text": "to decide what he should do"
+    },
+    {
+      "id": "eng_for_hin:S0438L02B03",
+      "table": "course_practice_phrases",
+      "text": "to know what he should do"
+    },
+    {
+      "id": "eng_for_hin:S0438L02U01",
+      "table": "course_practice_phrases",
+      "text": "they didn't want to decide what he should do"
+    },
+    {
+      "id": "eng_for_hin:S0438L02U02",
+      "table": "course_practice_phrases",
+      "text": "I don't know what he should do"
+    },
+    {
+      "id": "eng_for_hin:S0438L02U03",
+      "table": "course_practice_phrases",
+      "text": "do you know what he should do?"
+    },
+    {
+      "id": "eng_for_hin:S0438L02U04",
+      "table": "course_practice_phrases",
+      "text": "they want to decide what he should do"
+    },
+    {
+      "id": "eng_for_hin:S0438L02U05",
+      "table": "course_practice_phrases",
+      "text": "we need to decide what he should do"
+    },
+    {
+      "id": "eng_for_hin:S0451L01U01",
+      "table": "course_practice_phrases",
+      "text": "they said what he said"
+    },
+    {
+      "id": "eng_for_hin:S0452L01U01",
+      "table": "course_practice_phrases",
+      "text": "they didn't say what he said"
+    },
+    {
+      "id": "eng_for_hin:S0453L01U01",
+      "table": "course_practice_phrases",
+      "text": "did they say what he said?"
+    },
+    {
+      "id": "eng_for_hin:S0478L01U05",
+      "table": "course_practice_phrases",
+      "text": "he has such a kind heart"
+    },
+    {
+      "id": "eng_for_hin:S0480L03U01",
+      "table": "course_practice_phrases",
+      "text": "whatever he says it's not far ahead now"
+    },
+    {
+      "id": "eng_for_hin:S0480L03U02",
+      "table": "course_practice_phrases",
+      "text": "whatever he says, I don't want it"
+    },
+    {
+      "id": "eng_for_hin:S0482L01B02",
+      "table": "course_practice_phrases",
+      "text": "the only real hope is that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0482L01U03",
+      "table": "course_practice_phrases",
+      "text": "I don't think the only real hope is that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0482L01U05",
+      "table": "course_practice_phrases",
+      "text": "the only real hope is that he's happy if you ask me"
+    },
+    {
+      "id": "eng_for_hin:S0497L01B01",
+      "table": "course_practice_phrases",
+      "text": "that sounds as though he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0497L01U03",
+      "table": "course_practice_phrases",
+      "text": "that sounds as though he's not ready"
+    },
+    {
+      "id": "eng_for_hin:S0505L01B03",
+      "table": "course_practice_phrases",
+      "text": "so that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0505L01U03",
+      "table": "course_practice_phrases",
+      "text": "I'm waiting for a friend so that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0505L01U05",
+      "table": "course_practice_phrases",
+      "text": "I'm going to run at six o'clock so that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0525L01B01",
+      "table": "course_practice_phrases",
+      "text": "to check if he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0525L01U01",
+      "table": "course_practice_phrases",
+      "text": "I'll call you back to check if he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0525L01U02",
+      "table": "course_practice_phrases",
+      "text": "I'm going to run across the grass to check if he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0525L01U03",
+      "table": "course_practice_phrases",
+      "text": "I'm waiting for a friend to check if he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0525L01U04",
+      "table": "course_practice_phrases",
+      "text": "I'll call you back in three or four minutes to check if he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0526L01B03",
+      "table": "course_practice_phrases",
+      "text": "I'm finding it hard to believe that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0531L01B03",
+      "table": "course_practice_phrases",
+      "text": "it isn't true that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0536L01B02",
+      "table": "course_practice_phrases",
+      "text": "I used to think that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0538L01B02",
+      "table": "course_practice_phrases",
+      "text": "I don't want to seem as though he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0538L01U01",
+      "table": "course_practice_phrases",
+      "text": "I think that I don't want to seem as though he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0538L01U03",
+      "table": "course_practice_phrases",
+      "text": "I'm sure I don't want to seem as though he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0542L01B01",
+      "table": "course_practice_phrases",
+      "text": "whenever he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0542L01U01",
+      "table": "course_practice_phrases",
+      "text": "I'll be ready whenever he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0542L01U03",
+      "table": "course_practice_phrases",
+      "text": "I'll call you back whenever he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0542L01U04",
+      "table": "course_practice_phrases",
+      "text": "I'm going to run across the grass whenever he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0544L01B02",
+      "table": "course_practice_phrases",
+      "text": "whoever said he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0544L03B02",
+      "table": "course_practice_phrases",
+      "text": "whoever said he's happy was absolutely right"
+    },
+    {
+      "id": "eng_for_hin:S0571L01B03",
+      "table": "course_practice_phrases",
+      "text": "I'm not convinced that he's happy"
+    },
+    {
+      "id": "eng_for_hin:S0597L02B01",
+      "table": "course_practice_phrases",
+      "text": "he's heard"
+    },
+    {
+      "id": "eng_for_hin:S0597L02B02",
+      "table": "course_practice_phrases",
+      "text": "he's heard now"
+    },
+    {
+      "id": "eng_for_hin:S0597L02B03",
+      "table": "course_practice_phrases",
+      "text": "he's heard again"
+    },
+    {
+      "id": "eng_for_hin:S0597L02B04",
+      "table": "course_practice_phrases",
+      "text": "he's heard here"
+    },
+    {
+      "id": "eng_for_hin:S0597L02U01",
+      "table": "course_practice_phrases",
+      "text": "I suspect that he's heard about it"
+    },
+    {
+      "id": "eng_for_hin:S0597L02U02",
+      "table": "course_practice_phrases",
+      "text": "he's heard about it"
+    },
+    {
+      "id": "eng_for_hin:S0597L02U03",
+      "table": "course_practice_phrases",
+      "text": "he's heard about it today"
+    },
+    {
+      "id": "eng_for_hin:S0597L02U04",
+      "table": "course_practice_phrases",
+      "text": "he's heard this"
+    },
+    {
+      "id": "eng_for_hin:S0597L02U05",
+      "table": "course_practice_phrases",
+      "text": "he's heard it"
+    },
+    {
+      "id": "eng_for_hin:S0597L03U01",
+      "table": "course_practice_phrases",
+      "text": "I suspect that he's heard a hundred stories about it"
+    },
+    {
+      "id": "eng_for_hin:S0597L03U02",
+      "table": "course_practice_phrases",
+      "text": "he's heard a hundred stories"
+    },
+    {
+      "id": "eng_for_hin:S0597L03U03",
+      "table": "course_practice_phrases",
+      "text": "he's heard a hundred stories about it"
+    },
+    {
+      "id": "eng_for_hin:S0597L03U04",
+      "table": "course_practice_phrases",
+      "text": "he's heard a hundred stories today"
+    },
+    {
+      "id": "eng_for_hin:S0597L03U05",
+      "table": "course_practice_phrases",
+      "text": "I suspect that he's heard a hundred stories"
+    },
+    {
+      "id": "eng_for_hin:S0598L01U01",
+      "table": "course_practice_phrases",
+      "text": "he's heard a thousand stories"
+    },
+    {
+      "id": "eng_for_hin:S0598L01U02",
+      "table": "course_practice_phrases",
+      "text": "he's heard a thousand stories today"
+    },
+    {
+      "id": "eng_for_hin:S0598L01U03",
+      "table": "course_practice_phrases",
+      "text": "he's heard a thousand stories about it"
+    },
+    {
+      "id": "eng_for_hin:S0598L01U04",
+      "table": "course_practice_phrases",
+      "text": "I suspect that he's heard a thousand stories"
+    },
+    {
+      "id": "eng_for_hin:S0598L01U05",
+      "table": "course_practice_phrases",
+      "text": "he's heard a thousand stories here"
+    },
+    {
+      "id": "eng_for_hin:S0598L02U01",
+      "table": "course_practice_phrases",
+      "text": "he's heard a thousand stories about what they were doing"
+    },
+    {
+      "id": "eng_for_hin:S0598L02U03",
+      "table": "course_practice_phrases",
+      "text": "he's heard about what they were doing"
+    },
+    {
+      "id": "eng_for_hin:S0598L02U04",
+      "table": "course_practice_phrases",
+      "text": "he's heard a hundred stories about what they were doing"
+    },
+    {
+      "id": "eng_for_hin:S0598L02U05",
+      "table": "course_practice_phrases",
+      "text": "he's heard about what they were doing today"
+    },
+    {
+      "id": "eng_for_hin:S0610L01B02",
+      "table": "course_practice_phrases",
+      "text": "he needs to look for work"
+    },
+    {
+      "id": "eng_for_hin:S0610L01U01",
+      "table": "course_practice_phrases",
+      "text": "he needs to look for work now"
+    },
+    {
+      "id": "eng_for_hin:S0610L01U02",
+      "table": "course_practice_phrases",
+      "text": "I think he needs to look for work"
+    },
+    {
+      "id": "eng_for_hin:S0610L01U05",
+      "table": "course_practice_phrases",
+      "text": "he needs to look for work here because he has nothing"
+    },
+    {
+      "id": "S0020L01",
+      "table": "course_legos",
+      "text": "his name"
+    },
+    {
+      "id": "S0052L04",
+      "table": "course_legos",
+      "text": "to his friend"
+    },
+    {
+      "id": "S0053L03",
+      "table": "course_legos",
+      "text": "his letter"
+    },
+    {
+      "id": "S0084L02",
+      "table": "course_legos",
+      "text": "what he said"
+    },
+    {
+      "id": "S0105L02",
+      "table": "course_legos",
+      "text": "he didn't know"
+    },
+    {
+      "id": "S0148L01",
+      "table": "course_legos",
+      "text": "he wasn't very patient"
+    },
+    {
+      "id": "S0176L03",
+      "table": "course_legos",
+      "text": "I'll ask him if"
+    },
+    {
+      "id": "S0290L01",
+      "table": "course_legos",
+      "text": "he knows the answer"
+    },
+    {
+      "id": "S0320L01",
+      "table": "course_legos",
+      "text": "he doesn't need to buy"
+    },
+    {
+      "id": "S0332L03",
+      "table": "course_legos",
+      "text": "for his sister"
+    },
+    {
+      "id": "S0339L03",
+      "table": "course_legos",
+      "text": "himself"
+    },
+    {
+      "id": "S0344L03",
+      "table": "course_legos",
+      "text": "he's happy"
+    },
+    {
+      "id": "S0345L04",
+      "table": "course_legos",
+      "text": "he's not ready"
+    },
+    {
+      "id": "S0352L01",
+      "table": "course_legos",
+      "text": "even if he wanted to"
+    },
+    {
+      "id": "S0384L02",
+      "table": "course_legos",
+      "text": "what he said a moment ago"
+    },
+    {
+      "id": "S0438L02",
+      "table": "course_legos",
+      "text": "what he should do"
+    },
+    {
+      "id": "S0597L02",
+      "table": "course_legos",
+      "text": "he's heard"
+    },
+    {
+      "id": "S0020",
+      "table": "course_seeds",
+      "text": "You want to learn his name quickly."
+    },
+    {
+      "id": "S0053",
+      "table": "course_seeds",
+      "text": "She wanted to put his letter in her bag."
+    },
+    {
+      "id": "S0084",
+      "table": "course_seeds",
+      "text": "I don't agree with what he said about my friend."
+    },
+    {
+      "id": "S0105",
+      "table": "course_seeds",
+      "text": "That is why he didn't know the answer."
+    },
+    {
+      "id": "S0148",
+      "table": "course_seeds",
+      "text": "He wasn't very patient when I couldn't answer."
+    },
+    {
+      "id": "S0224",
+      "table": "course_seeds",
+      "text": "He's just started to learn."
+    },
+    {
+      "id": "S0241",
+      "table": "course_seeds",
+      "text": "I don't want to give it to him."
+    },
+    {
+      "id": "S0290",
+      "table": "course_seeds",
+      "text": "I wonder if he knows the answer."
+    },
+    {
+      "id": "S0320",
+      "table": "course_seeds",
+      "text": "He doesn't need to buy another television this year."
+    },
+    {
+      "id": "S0323",
+      "table": "course_seeds",
+      "text": "He said that he doesn't need to walk to school."
+    },
+    {
+      "id": "S0325",
+      "table": "course_seeds",
+      "text": "I think that he needs to consider ten possible problems."
+    },
+    {
+      "id": "S0339",
+      "table": "course_seeds",
+      "text": "No I think he's hurt himself quite badly."
+    },
+    {
+      "id": "S0344",
+      "table": "course_seeds",
+      "text": "Who said that he's happy to help you."
+    },
+    {
+      "id": "S0345",
+      "table": "course_seeds",
+      "text": "Who said that he's not ready to leave yet."
+    },
+    {
+      "id": "S0354",
+      "table": "course_seeds",
+      "text": "He didn't need to appear angry."
+    },
+    {
+      "id": "S0363",
+      "table": "course_seeds",
+      "text": "Yes he felt like talking a lot."
+    },
+    {
+      "id": "S0364",
+      "table": "course_seeds",
+      "text": "I heard that he didn't like that place."
+    },
+    {
+      "id": "S0384",
+      "table": "course_seeds",
+      "text": "I couldn't agree with what he said a moment ago."
+    },
+    {
+      "id": "S0438",
+      "table": "course_seeds",
+      "text": "They didn't want to decide what he should do."
+    },
+    {
+      "id": "S0477",
+      "table": "course_seeds",
+      "text": "He's been sick since the second day of the holidays."
+    },
+    {
+      "id": "S0480",
+      "table": "course_seeds",
+      "text": "Whatever he says it's not far ahead now."
+    },
+    {
+      "id": "S0597",
+      "table": "course_seeds",
+      "text": "I suspect that he's heard a hundred stories about it."
+    },
+    {
+      "id": "S0598",
+      "table": "course_seeds",
+      "text": "He's heard a thousand stories about what they were doing."
+    },
+    {
+      "id": "S0610",
+      "table": "course_seeds",
+      "text": "He needs to look for work."
+    }
+  ],
+  "pairs": [
+    {
+      "original_text": "his",
+      "expanded_m": "his",
+      "expanded_f": "her"
+    },
+    {
+      "original_text": "to learn his name",
+      "expanded_m": "to learn his name",
+      "expanded_f": "to learn her name"
+    },
+    {
+      "original_text": "to find out his name",
+      "expanded_m": "to find out his name",
+      "expanded_f": "to find out her name"
+    },
+    {
+      "original_text": "to remember his name",
+      "expanded_m": "to remember his name",
+      "expanded_f": "to remember her name"
+    },
+    {
+      "original_text": "I want to find out his name",
+      "expanded_m": "I want to find out his name",
+      "expanded_f": "I want to find out her name"
+    },
+    {
+      "original_text": "she wants to learn his name",
+      "expanded_m": "she wants to learn his name",
+      "expanded_f": "she wants to learn her name"
+    },
+    {
+      "original_text": "we want to find out his name",
+      "expanded_m": "we want to find out his name",
+      "expanded_f": "we want to find out her name"
+    },
+    {
+      "original_text": "I'm trying to remember his name",
+      "expanded_m": "I'm trying to remember his name",
+      "expanded_f": "I'm trying to remember her name"
+    },
+    {
+      "original_text": "I'm not sure if I can remember his name",
+      "expanded_m": "I'm not sure if I can remember his name",
+      "expanded_f": "I'm not sure if I can remember her name"
+    },
+    {
+      "original_text": "to learn his name quickly",
+      "expanded_m": "to learn his name quickly",
+      "expanded_f": "to learn her name quickly"
+    },
+    {
+      "original_text": "I want to remember his name quickly",
+      "expanded_m": "I want to remember his name quickly",
+      "expanded_f": "I want to remember her name quickly"
+    },
+    {
+      "original_text": "you want to learn his name",
+      "expanded_m": "you want to learn his name",
+      "expanded_f": "you want to learn her name"
+    },
+    {
+      "original_text": "you want to learn his name quickly",
+      "expanded_m": "you want to learn his name quickly",
+      "expanded_f": "you want to learn her name quickly"
+    },
+    {
+      "original_text": "to find out his name quickly",
+      "expanded_m": "to find out his name quickly",
+      "expanded_f": "to find out her name quickly"
+    },
+    {
+      "original_text": "I can remember his name",
+      "expanded_m": "I can remember his name",
+      "expanded_f": "I can remember her name"
+    },
+    {
+      "original_text": "to say his name",
+      "expanded_m": "to say his name",
+      "expanded_f": "to say her name"
+    },
+    {
+      "original_text": "I'd like to find out his name",
+      "expanded_m": "I'd like to find out his name",
+      "expanded_f": "I'd like to find out her name"
+    },
+    {
+      "original_text": "why do you want to find out his name?",
+      "expanded_m": "why do you want to find out his name?",
+      "expanded_f": "why do you want to find out her name?"
+    },
+    {
+      "original_text": "she wants to find out his name today",
+      "expanded_m": "she wants to find out his name today",
+      "expanded_f": "she wants to find out her name today"
+    },
+    {
+      "original_text": "we want to learn his name quickly",
+      "expanded_m": "we want to learn his name quickly",
+      "expanded_f": "we want to learn her name quickly"
+    },
+    {
+      "original_text": "I want to learn his name with you",
+      "expanded_m": "I want to learn his name with you",
+      "expanded_f": "I want to learn her name with you"
+    },
+    {
+      "original_text": "I'm not going to be able to remember his name tomorrow",
+      "expanded_m": "I'm not going to be able to remember his name tomorrow",
+      "expanded_f": "I'm not going to be able to remember her name tomorrow"
+    },
+    {
+      "original_text": "I'm not going to be able to remember his name this evening",
+      "expanded_m": "I'm not going to be able to remember his name this evening",
+      "expanded_f": "I'm not going to be able to remember her name this evening"
+    },
+    {
+      "original_text": "I like feeling as if I can remember his name",
+      "expanded_m": "I like feeling as if I can remember his name",
+      "expanded_f": "I like feeling as if I can remember her name"
+    },
+    {
+      "original_text": "I want to remember his name as soon as I can",
+      "expanded_m": "I want to remember his name as soon as I can",
+      "expanded_f": "I want to remember her name as soon as I can"
+    },
+    {
+      "original_text": "I wanted to remember his name yesterday",
+      "expanded_m": "I wanted to remember his name yesterday",
+      "expanded_f": "I wanted to remember her name yesterday"
+    },
+    {
+      "original_text": "how long have you been learning his name",
+      "expanded_m": "how long have you been learning his name",
+      "expanded_f": "how long have you been learning her name"
+    },
+    {
+      "original_text": "I've been learning his name",
+      "expanded_m": "I've been learning his name",
+      "expanded_f": "I've been learning her name"
+    },
+    {
+      "original_text": "I've been learning his name for about a week",
+      "expanded_m": "I've been learning his name for about a week",
+      "expanded_f": "I've been learning her name for about a week"
+    },
+    {
+      "original_text": "to write to his friend",
+      "expanded_m": "to write to his friend",
+      "expanded_f": "to write to her friend"
+    },
+    {
+      "original_text": "a letter to his friend",
+      "expanded_m": "a letter to his friend",
+      "expanded_f": "a letter to her friend"
+    },
+    {
+      "original_text": "to write to his friend today",
+      "expanded_m": "to write to his friend today",
+      "expanded_f": "to write to her friend today"
+    },
+    {
+      "original_text": "to put in his bag",
+      "expanded_m": "to put in his bag",
+      "expanded_f": "to put in her bag"
+    },
+    {
+      "original_text": "to put his letter",
+      "expanded_m": "to put his letter",
+      "expanded_f": "to put her letter"
+    },
+    {
+      "original_text": "to read his letter",
+      "expanded_m": "to read his letter",
+      "expanded_f": "to read her letter"
+    },
+    {
+      "original_text": "his letter today",
+      "expanded_m": "his letter today",
+      "expanded_f": "her letter today"
+    },
+    {
+      "original_text": "to write his letter",
+      "expanded_m": "to write his letter",
+      "expanded_f": "to write her letter"
+    },
+    {
+      "original_text": "she wanted to read his letter",
+      "expanded_m": "she wanted to read his letter",
+      "expanded_f": "she wanted to read her letter"
+    },
+    {
+      "original_text": "I want to read his letter",
+      "expanded_m": "I want to read his letter",
+      "expanded_f": "I want to read her letter"
+    },
+    {
+      "original_text": "she wanted to put his letter today",
+      "expanded_m": "she wanted to put his letter today",
+      "expanded_f": "she wanted to put her letter today"
+    },
+    {
+      "original_text": "I need to read his letter",
+      "expanded_m": "I need to read his letter",
+      "expanded_f": "I need to read her letter"
+    },
+    {
+      "original_text": "she wanted to read his letter yesterday",
+      "expanded_m": "she wanted to read his letter yesterday",
+      "expanded_f": "she wanted to read her letter yesterday"
+    },
+    {
+      "original_text": "a letter in his bag",
+      "expanded_m": "a letter in his bag",
+      "expanded_f": "a letter in her bag"
+    },
+    {
+      "original_text": "in his bag today",
+      "expanded_m": "in his bag today",
+      "expanded_f": "in her bag today"
+    },
+    {
+      "original_text": "the story in his bag",
+      "expanded_m": "the story in his bag",
+      "expanded_f": "the story in her bag"
+    },
+    {
+      "original_text": "she doesn't want to put his letter in her bag",
+      "expanded_m": "she doesn't want to put his letter in her bag",
+      "expanded_f": "she doesn't want to put her letter in her bag"
+    },
+    {
+      "original_text": "she wanted to put his letter in her bag this morning",
+      "expanded_m": "she wanted to put his letter in her bag this morning",
+      "expanded_f": "she wanted to put her letter in her bag this morning"
+    },
+    {
+      "original_text": "I can't remember his name",
+      "expanded_m": "I can't remember his name",
+      "expanded_f": "I can't remember her name"
+    },
+    {
+      "original_text": "I can't remember his name this morning",
+      "expanded_m": "I can't remember his name this morning",
+      "expanded_f": "I can't remember her name this morning"
+    },
+    {
+      "original_text": "I know his name",
+      "expanded_m": "I know his name",
+      "expanded_f": "I know her name"
+    },
+    {
+      "original_text": "I know his name this morning",
+      "expanded_m": "I know his name this morning",
+      "expanded_f": "I know her name this morning"
+    },
+    {
+      "original_text": "I can't remember his name yet",
+      "expanded_m": "I can't remember his name yet",
+      "expanded_f": "I can't remember her name yet"
+    },
+    {
+      "original_text": "to find out what he said",
+      "expanded_m": "to find out what he said",
+      "expanded_f": "to find out what she said"
+    },
+    {
+      "original_text": "to remember what he said",
+      "expanded_m": "to remember what he said",
+      "expanded_f": "to remember what she said"
+    },
+    {
+      "original_text": "what he said today",
+      "expanded_m": "what he said today",
+      "expanded_f": "what she said today"
+    },
+    {
+      "original_text": "I don't agree with what he said",
+      "expanded_m": "I don't agree with what he said",
+      "expanded_f": "I don't agree with what she said"
+    },
+    {
+      "original_text": "I don't understand what he said",
+      "expanded_m": "I don't understand what he said",
+      "expanded_f": "I don't understand what she said"
+    },
+    {
+      "original_text": "I can't remember what he said",
+      "expanded_m": "I can't remember what he said",
+      "expanded_f": "I can't remember what she said"
+    },
+    {
+      "original_text": "I know what he said",
+      "expanded_m": "I know what he said",
+      "expanded_f": "I know what she said"
+    },
+    {
+      "original_text": "I don't agree with what he said today",
+      "expanded_m": "I don't agree with what he said today",
+      "expanded_f": "I don't agree with what she said today"
+    },
+    {
+      "original_text": "I don't agree with what he said about my friend",
+      "expanded_m": "I don't agree with what he said about my friend",
+      "expanded_f": "I don't agree with what she said about my friend"
+    },
+    {
+      "original_text": "I don't understand what he said about my friend",
+      "expanded_m": "I don't understand what he said about my friend",
+      "expanded_f": "I don't understand what she said about my friend"
+    },
+    {
+      "original_text": "I can't remember what he said about my friend",
+      "expanded_m": "I can't remember what he said about my friend",
+      "expanded_f": "I can't remember what she said about my friend"
+    },
+    {
+      "original_text": "he didn't know the answer",
+      "expanded_m": "he didn't know the answer",
+      "expanded_f": "she didn't know the answer"
+    },
+    {
+      "original_text": "he didn't know the truth",
+      "expanded_m": "he didn't know the truth",
+      "expanded_f": "she didn't know the truth"
+    },
+    {
+      "original_text": "he didn't know the story",
+      "expanded_m": "he didn't know the story",
+      "expanded_f": "she didn't know the story"
+    },
+    {
+      "original_text": "that is why he didn't know the truth",
+      "expanded_m": "that is why he didn't know the truth",
+      "expanded_f": "that is why she didn't know the truth"
+    },
+    {
+      "original_text": "I think that he didn't know the answer",
+      "expanded_m": "I think that he didn't know the answer",
+      "expanded_f": "I think that she didn't know the answer"
+    },
+    {
+      "original_text": "he didn't know why it's not working",
+      "expanded_m": "he didn't know why it's not working",
+      "expanded_f": "she didn't know why it's not working"
+    },
+    {
+      "original_text": "I'm not sure if he didn't know the answer",
+      "expanded_m": "I'm not sure if he didn't know the answer",
+      "expanded_f": "I'm not sure if she didn't know the answer"
+    },
+    {
+      "original_text": "he didn't know what we're doing",
+      "expanded_m": "he didn't know what we're doing",
+      "expanded_f": "she didn't know what we're doing"
+    },
+    {
+      "original_text": "why can't I remember his name?",
+      "expanded_m": "why can't I remember his name?",
+      "expanded_f": "why can't I remember her name?"
+    },
+    {
+      "original_text": "I thought he didn't know the answer",
+      "expanded_m": "I thought he didn't know the answer",
+      "expanded_f": "I thought she didn't know the answer"
+    },
+    {
+      "original_text": "I thought he didn't know the truth",
+      "expanded_m": "I thought he didn't know the truth",
+      "expanded_f": "I thought she didn't know the truth"
+    },
+    {
+      "original_text": "when he saw me feeling nervous",
+      "expanded_m": "when he saw me feeling nervous",
+      "expanded_f": "when she saw me feeling nervous"
+    },
+    {
+      "original_text": "when he saw me in the pub",
+      "expanded_m": "when he saw me in the pub",
+      "expanded_f": "when she saw me in the pub"
+    },
+    {
+      "original_text": "when he saw me this morning",
+      "expanded_m": "when he saw me this morning",
+      "expanded_f": "when she saw me this morning"
+    },
+    {
+      "original_text": "that was a surprise when he saw me",
+      "expanded_m": "that was a surprise when he saw me",
+      "expanded_f": "that was a surprise when she saw me"
+    },
+    {
+      "original_text": "that was a surprise when he saw me feeling nervous",
+      "expanded_m": "that was a surprise when he saw me feeling nervous",
+      "expanded_f": "that was a surprise when she saw me feeling nervous"
+    },
+    {
+      "original_text": "I think he wasn't very patient",
+      "expanded_m": "I think he wasn't very patient",
+      "expanded_f": "I think she wasn't very patient"
+    },
+    {
+      "original_text": "I believe that he wasn't very patient",
+      "expanded_m": "I believe that he wasn't very patient",
+      "expanded_f": "I believe that she wasn't very patient"
+    },
+    {
+      "original_text": "that is why he wasn't very patient",
+      "expanded_m": "that is why he wasn't very patient",
+      "expanded_f": "that is why she wasn't very patient"
+    },
+    {
+      "original_text": "I'm not sure if he wasn't very patient",
+      "expanded_m": "I'm not sure if he wasn't very patient",
+      "expanded_f": "I'm not sure if she wasn't very patient"
+    },
+    {
+      "original_text": "I'm sorry that he wasn't very patient",
+      "expanded_m": "I'm sorry that he wasn't very patient",
+      "expanded_f": "I'm sorry that she wasn't very patient"
+    },
+    {
+      "original_text": "I'm surprised he wasn't very patient",
+      "expanded_m": "I'm surprised he wasn't very patient",
+      "expanded_f": "I'm surprised she wasn't very patient"
+    },
+    {
+      "original_text": "that was a surprise because he wasn't very patient",
+      "expanded_m": "that was a surprise because he wasn't very patient",
+      "expanded_f": "that was a surprise because she wasn't very patient"
+    },
+    {
+      "original_text": "he wasn't very patient today",
+      "expanded_m": "he wasn't very patient today",
+      "expanded_f": "she wasn't very patient today"
+    },
+    {
+      "original_text": "I think he wasn't very patient when I couldn't answer",
+      "expanded_m": "I think he wasn't very patient when I couldn't answer",
+      "expanded_f": "I think she wasn't very patient when I couldn't answer"
+    },
+    {
+      "original_text": "I'm not sure if he wasn't very patient when I couldn't answer",
+      "expanded_m": "I'm not sure if he wasn't very patient when I couldn't answer",
+      "expanded_f": "I'm not sure if she wasn't very patient when I couldn't answer"
+    },
+    {
+      "original_text": "I believe that he wasn't very patient when I couldn't answer",
+      "expanded_m": "I believe that he wasn't very patient when I couldn't answer",
+      "expanded_f": "I believe that she wasn't very patient when I couldn't answer"
+    },
+    {
+      "original_text": "that is why he wasn't very patient when I couldn't answer",
+      "expanded_m": "that is why he wasn't very patient when I couldn't answer",
+      "expanded_f": "that is why she wasn't very patient when I couldn't answer"
+    },
+    {
+      "original_text": "I'm sorry that he wasn't very patient when I couldn't answer",
+      "expanded_m": "I'm sorry that he wasn't very patient when I couldn't answer",
+      "expanded_f": "I'm sorry that she wasn't very patient when I couldn't answer"
+    },
+    {
+      "original_text": "he",
+      "expanded_m": "he",
+      "expanded_f": "she"
+    },
+    {
+      "original_text": "him",
+      "expanded_m": "him",
+      "expanded_f": "her"
+    },
+    {
+      "original_text": "I'll ask him if",
+      "expanded_m": "I'll ask him if",
+      "expanded_f": "I'll ask her if"
+    },
+    {
+      "original_text": "on Sunday I'll ask him if",
+      "expanded_m": "on Sunday I'll ask him if",
+      "expanded_f": "on Sunday I'll ask her if"
+    },
+    {
+      "original_text": "today I'll ask him if",
+      "expanded_m": "today I'll ask him if",
+      "expanded_f": "today I'll ask her if"
+    },
+    {
+      "original_text": "I'll ask him where",
+      "expanded_m": "I'll ask him where",
+      "expanded_f": "I'll ask her where"
+    },
+    {
+      "original_text": "I'll ask him where he",
+      "expanded_m": "I'll ask him where he",
+      "expanded_f": "I'll ask her where she"
+    },
+    {
+      "original_text": "today I'll ask him where",
+      "expanded_m": "today I'll ask him where",
+      "expanded_f": "today I'll ask her where"
+    },
+    {
+      "original_text": "that he",
+      "expanded_m": "that he",
+      "expanded_f": "that she"
+    },
+    {
+      "original_text": "I wanted him to",
+      "expanded_m": "I wanted him to",
+      "expanded_f": "I wanted her to"
+    },
+    {
+      "original_text": "I wanted him to deal with the arrangements",
+      "expanded_m": "I wanted him to deal with the arrangements",
+      "expanded_f": "I wanted her to deal with the arrangements"
+    },
+    {
+      "original_text": "I wanted him to help you today",
+      "expanded_m": "I wanted him to help you today",
+      "expanded_f": "I wanted her to help you today"
+    },
+    {
+      "original_text": "I wanted him to help you",
+      "expanded_m": "I wanted him to help you",
+      "expanded_f": "I wanted her to help you"
+    },
+    {
+      "original_text": "I wanted him to help you to deal with the arrangements",
+      "expanded_m": "I wanted him to help you to deal with the arrangements",
+      "expanded_f": "I wanted her to help you to deal with the arrangements"
+    },
+    {
+      "original_text": "I wanted him to help you now",
+      "expanded_m": "I wanted him to help you now",
+      "expanded_f": "I wanted her to help you now"
+    },
+    {
+      "original_text": "he's started to learn",
+      "expanded_m": "he's started to learn",
+      "expanded_f": "she's started to learn"
+    },
+    {
+      "original_text": "he's just started to learn",
+      "expanded_m": "he's just started to learn",
+      "expanded_f": "she's just started to learn"
+    },
+    {
+      "original_text": "he's started to learn now",
+      "expanded_m": "he's started to learn now",
+      "expanded_f": "she's started to learn now"
+    },
+    {
+      "original_text": "I want to give it to him",
+      "expanded_m": "I want to give it to him",
+      "expanded_f": "I want to give it to her"
+    },
+    {
+      "original_text": "I want to give him more",
+      "expanded_m": "I want to give him more",
+      "expanded_f": "I want to give her more"
+    },
+    {
+      "original_text": "I'm going to give it to him",
+      "expanded_m": "I'm going to give it to him",
+      "expanded_f": "I'm going to give it to her"
+    },
+    {
+      "original_text": "I want to give him more time",
+      "expanded_m": "I want to give him more time",
+      "expanded_f": "I want to give her more time"
+    },
+    {
+      "original_text": "I wanted him to help you tomorrow morning",
+      "expanded_m": "I wanted him to help you tomorrow morning",
+      "expanded_f": "I wanted her to help you tomorrow morning"
+    },
+    {
+      "original_text": "I think I wanted him to help you",
+      "expanded_m": "I think I wanted him to help you",
+      "expanded_f": "I think I wanted her to help you"
+    },
+    {
+      "original_text": "I wanted him to help you at the weekend",
+      "expanded_m": "I wanted him to help you at the weekend",
+      "expanded_f": "I wanted her to help you at the weekend"
+    },
+    {
+      "original_text": "I wanted him to help you this afternoon",
+      "expanded_m": "I wanted him to help you this afternoon",
+      "expanded_f": "I wanted her to help you this afternoon"
+    },
+    {
+      "original_text": "I'm not sure if I wanted him to help you",
+      "expanded_m": "I'm not sure if I wanted him to help you",
+      "expanded_f": "I'm not sure if I wanted her to help you"
+    },
+    {
+      "original_text": "I don't know what he said",
+      "expanded_m": "I don't know what he said",
+      "expanded_f": "I don't know what she said"
+    },
+    {
+      "original_text": "he sent",
+      "expanded_m": "he sent",
+      "expanded_f": "she sent"
+    },
+    {
+      "original_text": "he sent me",
+      "expanded_m": "he sent me",
+      "expanded_f": "she sent me"
+    },
+    {
+      "original_text": "he sent them last week",
+      "expanded_m": "he sent them last week",
+      "expanded_f": "she sent them last week"
+    },
+    {
+      "original_text": "he sent me last week",
+      "expanded_m": "he sent me last week",
+      "expanded_f": "she sent me last week"
+    },
+    {
+      "original_text": "he sent me this morning",
+      "expanded_m": "he sent me this morning",
+      "expanded_f": "she sent me this morning"
+    },
+    {
+      "original_text": "he sent me and I'm happy",
+      "expanded_m": "he sent me and I'm happy",
+      "expanded_f": "she sent me and I'm happy"
+    },
+    {
+      "original_text": "he sent me an email",
+      "expanded_m": "he sent me an email",
+      "expanded_f": "she sent me an email"
+    },
+    {
+      "original_text": "he sent an email last week",
+      "expanded_m": "he sent an email last week",
+      "expanded_f": "she sent an email last week"
+    },
+    {
+      "original_text": "he sent me two emails",
+      "expanded_m": "he sent me two emails",
+      "expanded_f": "she sent me two emails"
+    },
+    {
+      "original_text": "he sent me two emails last week",
+      "expanded_m": "he sent me two emails last week",
+      "expanded_f": "she sent me two emails last week"
+    },
+    {
+      "original_text": "he sent two emails this morning",
+      "expanded_m": "he sent two emails this morning",
+      "expanded_f": "she sent two emails this morning"
+    },
+    {
+      "original_text": "to him",
+      "expanded_m": "to him",
+      "expanded_f": "to her"
+    },
+    {
+      "original_text": "he knows the answer",
+      "expanded_m": "he knows the answer",
+      "expanded_f": "she knows the answer"
+    },
+    {
+      "original_text": "he knows the answer now",
+      "expanded_m": "he knows the answer now",
+      "expanded_f": "she knows the answer now"
+    },
+    {
+      "original_text": "he knows the answer or not?",
+      "expanded_m": "he knows the answer or not?",
+      "expanded_f": "she knows the answer or not?"
+    },
+    {
+      "original_text": "he knows the answer already",
+      "expanded_m": "he knows the answer already",
+      "expanded_f": "she knows the answer already"
+    },
+    {
+      "original_text": "I wonder if he knows the answer",
+      "expanded_m": "I wonder if he knows the answer",
+      "expanded_f": "I wonder if she knows the answer"
+    },
+    {
+      "original_text": "I don't know if he knows the answer",
+      "expanded_m": "I don't know if he knows the answer",
+      "expanded_f": "I don't know if she knows the answer"
+    },
+    {
+      "original_text": "I wonder if he knows the answer already",
+      "expanded_m": "I wonder if he knows the answer already",
+      "expanded_f": "I wonder if she knows the answer already"
+    },
+    {
+      "original_text": "I think he knows the answer",
+      "expanded_m": "I think he knows the answer",
+      "expanded_f": "I think she knows the answer"
+    },
+    {
+      "original_text": "do you know if he knows the answer?",
+      "expanded_m": "do you know if he knows the answer?",
+      "expanded_f": "do you know if she knows the answer?"
+    },
+    {
+      "original_text": "I have to find out what he said",
+      "expanded_m": "I have to find out what he said",
+      "expanded_f": "I have to find out what she said"
+    },
+    {
+      "original_text": "to see him",
+      "expanded_m": "to see him",
+      "expanded_f": "to see her"
+    },
+    {
+      "original_text": "I know him",
+      "expanded_m": "I know him",
+      "expanded_f": "I know her"
+    },
+    {
+      "original_text": "to tell him",
+      "expanded_m": "to tell him",
+      "expanded_f": "to tell her"
+    },
+    {
+      "original_text": "I've never seen him before",
+      "expanded_m": "I've never seen him before",
+      "expanded_f": "I've never seen her before"
+    },
+    {
+      "original_text": "I want to meet him today",
+      "expanded_m": "I want to meet him today",
+      "expanded_f": "I want to meet her today"
+    },
+    {
+      "original_text": "I want to show him something",
+      "expanded_m": "I want to show him something",
+      "expanded_f": "I want to show her something"
+    },
+    {
+      "original_text": "I want to tell him",
+      "expanded_m": "I want to tell him",
+      "expanded_f": "I want to tell her"
+    },
+    {
+      "original_text": "I know him well",
+      "expanded_m": "I know him well",
+      "expanded_f": "I know her well"
+    },
+    {
+      "original_text": "he needs to move",
+      "expanded_m": "he needs to move",
+      "expanded_f": "she needs to move"
+    },
+    {
+      "original_text": "he needs to move now",
+      "expanded_m": "he needs to move now",
+      "expanded_f": "she needs to move now"
+    },
+    {
+      "original_text": "he needs to move over there",
+      "expanded_m": "he needs to move over there",
+      "expanded_f": "she needs to move over there"
+    },
+    {
+      "original_text": "I think that he needs to move",
+      "expanded_m": "I think that he needs to move",
+      "expanded_f": "I think that she needs to move"
+    },
+    {
+      "original_text": "he said that he needs to move",
+      "expanded_m": "he said that he needs to move",
+      "expanded_f": "she said that she needs to move"
+    },
+    {
+      "original_text": "he needs to move quickly",
+      "expanded_m": "he needs to move quickly",
+      "expanded_f": "she needs to move quickly"
+    },
+    {
+      "original_text": "he needs to move today",
+      "expanded_m": "he needs to move today",
+      "expanded_f": "she needs to move today"
+    },
+    {
+      "original_text": "I think that he needs to move quickly",
+      "expanded_m": "I think that he needs to move quickly",
+      "expanded_f": "I think that she needs to move quickly"
+    },
+    {
+      "original_text": "he needs to move to a different country",
+      "expanded_m": "he needs to move to a different country",
+      "expanded_f": "she needs to move to a different country"
+    },
+    {
+      "original_text": "he needs to move to a different country now",
+      "expanded_m": "he needs to move to a different country now",
+      "expanded_f": "she needs to move to a different country now"
+    },
+    {
+      "original_text": "I think that he needs to move to a different country",
+      "expanded_m": "I think that he needs to move to a different country",
+      "expanded_f": "I think that she needs to move to a different country"
+    },
+    {
+      "original_text": "he said that he needs to move to a different country",
+      "expanded_m": "he said that he needs to move to a different country",
+      "expanded_f": "she said that she needs to move to a different country"
+    },
+    {
+      "original_text": "he doesn't need to buy",
+      "expanded_m": "he doesn't need to buy",
+      "expanded_f": "she doesn't need to buy"
+    },
+    {
+      "original_text": "he doesn't need to buy my book",
+      "expanded_m": "he doesn't need to buy my book",
+      "expanded_f": "she doesn't need to buy my book"
+    },
+    {
+      "original_text": "he doesn't need to buy something",
+      "expanded_m": "he doesn't need to buy something",
+      "expanded_f": "she doesn't need to buy something"
+    },
+    {
+      "original_text": "I think that he doesn't need to buy",
+      "expanded_m": "I think that he doesn't need to buy",
+      "expanded_f": "I think that she doesn't need to buy"
+    },
+    {
+      "original_text": "he said that he doesn't need to buy",
+      "expanded_m": "he said that he doesn't need to buy",
+      "expanded_f": "she said that she doesn't need to buy"
+    },
+    {
+      "original_text": "he doesn't need to buy something today",
+      "expanded_m": "he doesn't need to buy something today",
+      "expanded_f": "she doesn't need to buy something today"
+    },
+    {
+      "original_text": "he doesn't need to buy your car",
+      "expanded_m": "he doesn't need to buy your car",
+      "expanded_f": "she doesn't need to buy your car"
+    },
+    {
+      "original_text": "he doesn't need to buy my keys",
+      "expanded_m": "he doesn't need to buy my keys",
+      "expanded_f": "she doesn't need to buy my keys"
+    },
+    {
+      "original_text": "he doesn't need to buy another television",
+      "expanded_m": "he doesn't need to buy another television",
+      "expanded_f": "she doesn't need to buy another television"
+    },
+    {
+      "original_text": "he doesn't need to buy another television now",
+      "expanded_m": "he doesn't need to buy another television now",
+      "expanded_f": "she doesn't need to buy another television now"
+    },
+    {
+      "original_text": "I think that he doesn't need to buy another television",
+      "expanded_m": "I think that he doesn't need to buy another television",
+      "expanded_f": "I think that she doesn't need to buy another television"
+    },
+    {
+      "original_text": "he said that he doesn't need to buy another television",
+      "expanded_m": "he said that he doesn't need to buy another television",
+      "expanded_f": "she said that she doesn't need to buy another television"
+    },
+    {
+      "original_text": "he doesn't need to buy another television this year",
+      "expanded_m": "he doesn't need to buy another television this year",
+      "expanded_f": "she doesn't need to buy another television this year"
+    },
+    {
+      "original_text": "I think that he doesn't need to buy this year",
+      "expanded_m": "I think that he doesn't need to buy this year",
+      "expanded_f": "I think that she doesn't need to buy this year"
+    },
+    {
+      "original_text": "he said that he doesn't need to buy something this year",
+      "expanded_m": "he said that he doesn't need to buy something this year",
+      "expanded_f": "she said that she doesn't need to buy something this year"
+    },
+    {
+      "original_text": "he needs to read a book",
+      "expanded_m": "he needs to read a book",
+      "expanded_f": "she needs to read a book"
+    },
+    {
+      "original_text": "he needs to read a story today",
+      "expanded_m": "he needs to read a story today",
+      "expanded_f": "she needs to read a story today"
+    },
+    {
+      "original_text": "he needs to read an interesting book",
+      "expanded_m": "he needs to read an interesting book",
+      "expanded_f": "she needs to read an interesting book"
+    },
+    {
+      "original_text": "he needs to read the same book now",
+      "expanded_m": "he needs to read the same book now",
+      "expanded_f": "she needs to read the same book now"
+    },
+    {
+      "original_text": "he needs to read my book",
+      "expanded_m": "he needs to read my book",
+      "expanded_f": "she needs to read my book"
+    },
+    {
+      "original_text": "he said",
+      "expanded_m": "he said",
+      "expanded_f": "she said"
+    },
+    {
+      "original_text": "he said that he",
+      "expanded_m": "he said that he",
+      "expanded_f": "she said that she"
+    },
+    {
+      "original_text": "he said that he needs to read a book",
+      "expanded_m": "he said that he needs to read a book",
+      "expanded_f": "she said that she needs to read a book"
+    },
+    {
+      "original_text": "he said that he needs to read my book",
+      "expanded_m": "he said that he needs to read my book",
+      "expanded_f": "she said that she needs to read my book"
+    },
+    {
+      "original_text": "he said that he needs to read the same book",
+      "expanded_m": "he said that he needs to read the same book",
+      "expanded_f": "she said that she needs to read the same book"
+    },
+    {
+      "original_text": "he said that he needs to read a story",
+      "expanded_m": "he said that he needs to read a story",
+      "expanded_f": "she said that she needs to read a story"
+    },
+    {
+      "original_text": "he said that he needs to move today",
+      "expanded_m": "he said that he needs to move today",
+      "expanded_f": "she said that she needs to move today"
+    },
+    {
+      "original_text": "he said that he needs to read an interesting book",
+      "expanded_m": "he said that he needs to read an interesting book",
+      "expanded_f": "she said that she needs to read an interesting book"
+    },
+    {
+      "original_text": "he said that he needs to read a book now",
+      "expanded_m": "he said that he needs to read a book now",
+      "expanded_f": "she said that she needs to read a book now"
+    },
+    {
+      "original_text": "he has to think about possible problems",
+      "expanded_m": "he has to think about possible problems",
+      "expanded_f": "she has to think about possible problems"
+    },
+    {
+      "original_text": "he needs to consider",
+      "expanded_m": "he needs to consider",
+      "expanded_f": "she needs to consider"
+    },
+    {
+      "original_text": "he needs to consider possible problems",
+      "expanded_m": "he needs to consider possible problems",
+      "expanded_f": "she needs to consider possible problems"
+    },
+    {
+      "original_text": "he needs to consider some possible problems",
+      "expanded_m": "he needs to consider some possible problems",
+      "expanded_f": "she needs to consider some possible problems"
+    },
+    {
+      "original_text": "I think he needs to consider this",
+      "expanded_m": "I think he needs to consider this",
+      "expanded_f": "I think she needs to consider this"
+    },
+    {
+      "original_text": "he needs to consider it",
+      "expanded_m": "he needs to consider it",
+      "expanded_f": "she needs to consider it"
+    },
+    {
+      "original_text": "he needs to consider more problems",
+      "expanded_m": "he needs to consider more problems",
+      "expanded_f": "she needs to consider more problems"
+    },
+    {
+      "original_text": "he needs to consider ten possible problems",
+      "expanded_m": "he needs to consider ten possible problems",
+      "expanded_f": "she needs to consider ten possible problems"
+    },
+    {
+      "original_text": "I think that he needs to consider ten possible problems",
+      "expanded_m": "I think that he needs to consider ten possible problems",
+      "expanded_f": "I think that she needs to consider ten possible problems"
+    },
+    {
+      "original_text": "he needs to consider ten problems",
+      "expanded_m": "he needs to consider ten problems",
+      "expanded_f": "she needs to consider ten problems"
+    },
+    {
+      "original_text": "he sent me ten emails",
+      "expanded_m": "he sent me ten emails",
+      "expanded_f": "she sent me ten emails"
+    },
+    {
+      "original_text": "he needs to sell a book",
+      "expanded_m": "he needs to sell a book",
+      "expanded_f": "she needs to sell a book"
+    },
+    {
+      "original_text": "he needs to sell a story",
+      "expanded_m": "he needs to sell a story",
+      "expanded_f": "she needs to sell a story"
+    },
+    {
+      "original_text": "he needs to sell a book today",
+      "expanded_m": "he needs to sell a book today",
+      "expanded_f": "she needs to sell a book today"
+    },
+    {
+      "original_text": "he needs to sell the same book",
+      "expanded_m": "he needs to sell the same book",
+      "expanded_f": "she needs to sell the same book"
+    },
+    {
+      "original_text": "I don't think that he needs to sell something",
+      "expanded_m": "I don't think that he needs to sell something",
+      "expanded_f": "I don't think that she needs to sell something"
+    },
+    {
+      "original_text": "he needs to sell the company",
+      "expanded_m": "he needs to sell the company",
+      "expanded_f": "she needs to sell the company"
+    },
+    {
+      "original_text": "I don't think that he needs to sell the company",
+      "expanded_m": "I don't think that he needs to sell the company",
+      "expanded_f": "I don't think that she needs to sell the company"
+    },
+    {
+      "original_text": "he needs to sell the company today",
+      "expanded_m": "he needs to sell the company today",
+      "expanded_f": "she needs to sell the company today"
+    },
+    {
+      "original_text": "I don't think that he needs to sell the company today",
+      "expanded_m": "I don't think that he needs to sell the company today",
+      "expanded_f": "I don't think that she needs to sell the company today"
+    },
+    {
+      "original_text": "he needs to offer help",
+      "expanded_m": "he needs to offer help",
+      "expanded_f": "she needs to offer help"
+    },
+    {
+      "original_text": "he needs to offer an idea",
+      "expanded_m": "he needs to offer an idea",
+      "expanded_f": "she needs to offer an idea"
+    },
+    {
+      "original_text": "he needs to offer something",
+      "expanded_m": "he needs to offer something",
+      "expanded_f": "she needs to offer something"
+    },
+    {
+      "original_text": "he needs to offer a good idea",
+      "expanded_m": "he needs to offer a good idea",
+      "expanded_f": "she needs to offer a good idea"
+    },
+    {
+      "original_text": "do you think that he needs to offer something?",
+      "expanded_m": "do you think that he needs to offer something?",
+      "expanded_f": "do you think that she needs to offer something?"
+    },
+    {
+      "original_text": "he needs to offer another way",
+      "expanded_m": "he needs to offer another way",
+      "expanded_f": "she needs to offer another way"
+    },
+    {
+      "original_text": "do you think that he needs to offer another way?",
+      "expanded_m": "do you think that he needs to offer another way?",
+      "expanded_f": "do you think that she needs to offer another way?"
+    },
+    {
+      "original_text": "he needs to offer another way today",
+      "expanded_m": "he needs to offer another way today",
+      "expanded_f": "she needs to offer another way today"
+    },
+    {
+      "original_text": "I don't think that he needs to offer another way",
+      "expanded_m": "I don't think that he needs to offer another way",
+      "expanded_f": "I don't think that she needs to offer another way"
+    },
+    {
+      "original_text": "he needs to offer another way quickly",
+      "expanded_m": "he needs to offer another way quickly",
+      "expanded_f": "she needs to offer another way quickly"
+    },
+    {
+      "original_text": "he ought to",
+      "expanded_m": "he ought to",
+      "expanded_f": "she ought to"
+    },
+    {
+      "original_text": "yes he ought to",
+      "expanded_m": "yes he ought to",
+      "expanded_f": "yes she ought to"
+    },
+    {
+      "original_text": "I think he ought to",
+      "expanded_m": "I think he ought to",
+      "expanded_f": "I think she ought to"
+    },
+    {
+      "original_text": "I don't think he ought to",
+      "expanded_m": "I don't think he ought to",
+      "expanded_f": "I don't think she ought to"
+    },
+    {
+      "original_text": "yes I think he ought to",
+      "expanded_m": "yes I think he ought to",
+      "expanded_f": "yes I think she ought to"
+    },
+    {
+      "original_text": "I don't think that he ought to",
+      "expanded_m": "I don't think that he ought to",
+      "expanded_f": "I don't think that she ought to"
+    },
+    {
+      "original_text": "do you think that he ought to?",
+      "expanded_m": "do you think that he ought to?",
+      "expanded_f": "do you think that she ought to?"
+    },
+    {
+      "original_text": "he ought to now",
+      "expanded_m": "he ought to now",
+      "expanded_f": "she ought to now"
+    },
+    {
+      "original_text": "he ought to today",
+      "expanded_m": "he ought to today",
+      "expanded_f": "she ought to today"
+    },
+    {
+      "original_text": "he's hurt me badly",
+      "expanded_m": "he's hurt me badly",
+      "expanded_f": "she's hurt me badly"
+    },
+    {
+      "original_text": "he's hurt you quite badly",
+      "expanded_m": "he's hurt you quite badly",
+      "expanded_f": "she's hurt you quite badly"
+    },
+    {
+      "original_text": "he's hurt me today",
+      "expanded_m": "he's hurt me today",
+      "expanded_f": "she's hurt me today"
+    },
+    {
+      "original_text": "he's hurt me",
+      "expanded_m": "he's hurt me",
+      "expanded_f": "she's hurt me"
+    },
+    {
+      "original_text": "he's hurt you",
+      "expanded_m": "he's hurt you",
+      "expanded_f": "she's hurt you"
+    },
+    {
+      "original_text": "I think he's hurt me",
+      "expanded_m": "I think he's hurt me",
+      "expanded_f": "I think she's hurt me"
+    },
+    {
+      "original_text": "he's hurt me quite badly",
+      "expanded_m": "he's hurt me quite badly",
+      "expanded_f": "she's hurt me quite badly"
+    },
+    {
+      "original_text": "no he's hurt me badly",
+      "expanded_m": "no he's hurt me badly",
+      "expanded_f": "no she's hurt me badly"
+    },
+    {
+      "original_text": "hurt himself",
+      "expanded_m": "hurt himself",
+      "expanded_f": "hurt herself"
+    },
+    {
+      "original_text": "hurt himself badly",
+      "expanded_m": "hurt himself badly",
+      "expanded_f": "hurt herself badly"
+    },
+    {
+      "original_text": "himself quite badly",
+      "expanded_m": "himself quite badly",
+      "expanded_f": "herself quite badly"
+    },
+    {
+      "original_text": "he's hurt himself",
+      "expanded_m": "he's hurt himself",
+      "expanded_f": "she's hurt herself"
+    },
+    {
+      "original_text": "no I think he's hurt himself quite badly",
+      "expanded_m": "no I think he's hurt himself quite badly",
+      "expanded_f": "no I think she's hurt herself quite badly"
+    },
+    {
+      "original_text": "I think he's hurt himself badly",
+      "expanded_m": "I think he's hurt himself badly",
+      "expanded_f": "I think she's hurt herself badly"
+    },
+    {
+      "original_text": "he's hurt himself quite badly",
+      "expanded_m": "he's hurt himself quite badly",
+      "expanded_f": "she's hurt herself quite badly"
+    },
+    {
+      "original_text": "no he's hurt himself",
+      "expanded_m": "no he's hurt himself",
+      "expanded_f": "no she's hurt herself"
+    },
+    {
+      "original_text": "he's worried about the economy",
+      "expanded_m": "he's worried about the economy",
+      "expanded_f": "she's worried about the economy"
+    },
+    {
+      "original_text": "who said that he's worried about the economy",
+      "expanded_m": "who said that he's worried about the economy",
+      "expanded_f": "who said that she's worried about the economy"
+    },
+    {
+      "original_text": "I'm sure he's worried about the economy",
+      "expanded_m": "I'm sure he's worried about the economy",
+      "expanded_f": "I'm sure she's worried about the economy"
+    },
+    {
+      "original_text": "he's worried",
+      "expanded_m": "he's worried",
+      "expanded_f": "she's worried"
+    },
+    {
+      "original_text": "he's very worried",
+      "expanded_m": "he's very worried",
+      "expanded_f": "she's very worried"
+    },
+    {
+      "original_text": "he's worried now",
+      "expanded_m": "he's worried now",
+      "expanded_f": "she's worried now"
+    },
+    {
+      "original_text": "I think he's worried",
+      "expanded_m": "I think he's worried",
+      "expanded_f": "I think she's worried"
+    },
+    {
+      "original_text": "he's worried about it",
+      "expanded_m": "he's worried about it",
+      "expanded_f": "she's worried about it"
+    },
+    {
+      "original_text": "he's worried today",
+      "expanded_m": "he's worried today",
+      "expanded_f": "she's worried today"
+    },
+    {
+      "original_text": "he's not worried",
+      "expanded_m": "he's not worried",
+      "expanded_f": "she's not worried"
+    },
+    {
+      "original_text": "I'm sure he's worried",
+      "expanded_m": "I'm sure he's worried",
+      "expanded_f": "I'm sure she's worried"
+    },
+    {
+      "original_text": "he's ready to help you",
+      "expanded_m": "he's ready to help you",
+      "expanded_f": "she's ready to help you"
+    },
+    {
+      "original_text": "I'm sure he's happy to help you",
+      "expanded_m": "I'm sure he's happy to help you",
+      "expanded_f": "I'm sure she's happy to help you"
+    },
+    {
+      "original_text": "he's happy",
+      "expanded_m": "he's happy",
+      "expanded_f": "she's happy"
+    },
+    {
+      "original_text": "he's very happy",
+      "expanded_m": "he's very happy",
+      "expanded_f": "she's very happy"
+    },
+    {
+      "original_text": "he's happy about it",
+      "expanded_m": "he's happy about it",
+      "expanded_f": "she's happy about it"
+    },
+    {
+      "original_text": "I'm sure he's happy",
+      "expanded_m": "I'm sure he's happy",
+      "expanded_f": "I'm sure she's happy"
+    },
+    {
+      "original_text": "he's happy to help you",
+      "expanded_m": "he's happy to help you",
+      "expanded_f": "she's happy to help you"
+    },
+    {
+      "original_text": "I think he's happy",
+      "expanded_m": "I think he's happy",
+      "expanded_f": "I think she's happy"
+    },
+    {
+      "original_text": "he's very happy today",
+      "expanded_m": "he's very happy today",
+      "expanded_f": "she's very happy today"
+    },
+    {
+      "original_text": "who said that he's happy to help you",
+      "expanded_m": "who said that he's happy to help you",
+      "expanded_f": "who said that she's happy to help you"
+    },
+    {
+      "original_text": "he's not ready to leave",
+      "expanded_m": "he's not ready to leave",
+      "expanded_f": "she's not ready to leave"
+    },
+    {
+      "original_text": "he's happy to leave",
+      "expanded_m": "he's happy to leave",
+      "expanded_f": "she's happy to leave"
+    },
+    {
+      "original_text": "I'm sure he's ready to leave",
+      "expanded_m": "I'm sure he's ready to leave",
+      "expanded_f": "I'm sure she's ready to leave"
+    },
+    {
+      "original_text": "he's not ready",
+      "expanded_m": "he's not ready",
+      "expanded_f": "she's not ready"
+    },
+    {
+      "original_text": "he's not ready now",
+      "expanded_m": "he's not ready now",
+      "expanded_f": "she's not ready now"
+    },
+    {
+      "original_text": "he's not quite ready",
+      "expanded_m": "he's not quite ready",
+      "expanded_f": "she's not quite ready"
+    },
+    {
+      "original_text": "I think he's not ready",
+      "expanded_m": "I think he's not ready",
+      "expanded_f": "I think she's not ready"
+    },
+    {
+      "original_text": "I'm sure he's not ready",
+      "expanded_m": "I'm sure he's not ready",
+      "expanded_f": "I'm sure she's not ready"
+    },
+    {
+      "original_text": "who said that he's not ready",
+      "expanded_m": "who said that he's not ready",
+      "expanded_f": "who said that she's not ready"
+    },
+    {
+      "original_text": "he's not ready today",
+      "expanded_m": "he's not ready today",
+      "expanded_f": "she's not ready today"
+    },
+    {
+      "original_text": "he's not ready to help you",
+      "expanded_m": "he's not ready to help you",
+      "expanded_f": "she's not ready to help you"
+    },
+    {
+      "original_text": "his book",
+      "expanded_m": "his book",
+      "expanded_f": "her book"
+    },
+    {
+      "original_text": "to read his book",
+      "expanded_m": "to read his book",
+      "expanded_f": "to read her book"
+    },
+    {
+      "original_text": "his book now",
+      "expanded_m": "his book now",
+      "expanded_f": "her book now"
+    },
+    {
+      "original_text": "his book here",
+      "expanded_m": "his book here",
+      "expanded_f": "her book here"
+    },
+    {
+      "original_text": "I like his book",
+      "expanded_m": "I like his book",
+      "expanded_f": "I like her book"
+    },
+    {
+      "original_text": "I want to read his book",
+      "expanded_m": "I want to read his book",
+      "expanded_f": "I want to read her book"
+    },
+    {
+      "original_text": "he wants to read his book",
+      "expanded_m": "he wants to read his book",
+      "expanded_f": "he wants to read her book"
+    },
+    {
+      "original_text": "I like his book a lot",
+      "expanded_m": "I like his book a lot",
+      "expanded_f": "I like her book a lot"
+    },
+    {
+      "original_text": "do you want to read his book?",
+      "expanded_m": "do you want to read his book?",
+      "expanded_f": "do you want to read her book?"
+    },
+    {
+      "original_text": "I liked his book",
+      "expanded_m": "I liked his book",
+      "expanded_f": "I liked her book"
+    },
+    {
+      "original_text": "I liked his book a lot",
+      "expanded_m": "I liked his book a lot",
+      "expanded_f": "I liked her book a lot"
+    },
+    {
+      "original_text": "him to know",
+      "expanded_m": "him to know",
+      "expanded_f": "her to know"
+    },
+    {
+      "original_text": "I wanted him to know",
+      "expanded_m": "I wanted him to know",
+      "expanded_f": "I wanted her to know"
+    },
+    {
+      "original_text": "I wanted him to know that it's important",
+      "expanded_m": "I wanted him to know that it's important",
+      "expanded_f": "I wanted her to know that it's important"
+    },
+    {
+      "original_text": "I wanted him to know that I liked this book",
+      "expanded_m": "I wanted him to know that I liked this book",
+      "expanded_f": "I wanted her to know that I liked this book"
+    },
+    {
+      "original_text": "I wanted him to know that I liked that book",
+      "expanded_m": "I wanted him to know that I liked that book",
+      "expanded_f": "I wanted her to know that I liked that book"
+    },
+    {
+      "original_text": "I wanted him to know that it's very important",
+      "expanded_m": "I wanted him to know that it's very important",
+      "expanded_f": "I wanted her to know that it's very important"
+    },
+    {
+      "original_text": "him to",
+      "expanded_m": "him to",
+      "expanded_f": "her to"
+    },
+    {
+      "original_text": "yes I wanted him to",
+      "expanded_m": "yes I wanted him to",
+      "expanded_f": "yes I wanted her to"
+    },
+    {
+      "original_text": "no I wanted him to",
+      "expanded_m": "no I wanted him to",
+      "expanded_f": "no I wanted her to"
+    },
+    {
+      "original_text": "of course I wanted him to",
+      "expanded_m": "of course I wanted him to",
+      "expanded_f": "of course I wanted her to"
+    },
+    {
+      "original_text": "I wanted him to know that I liked his book",
+      "expanded_m": "I wanted him to know that I liked his book",
+      "expanded_f": "I wanted her to know that I liked her book"
+    },
+    {
+      "original_text": "I wanted him to know that I liked this story",
+      "expanded_m": "I wanted him to know that I liked this story",
+      "expanded_f": "I wanted her to know that I liked this story"
+    },
+    {
+      "original_text": "I wanted him to like his book",
+      "expanded_m": "I wanted him to like his book",
+      "expanded_f": "I wanted her to like her book"
+    },
+    {
+      "original_text": "he wanted to know what he said",
+      "expanded_m": "he wanted to know what he said",
+      "expanded_f": "he wanted to know what she said"
+    },
+    {
+      "original_text": "she didn't want to know what he said",
+      "expanded_m": "she didn't want to know what he said",
+      "expanded_f": "she didn't want to know what she said"
+    },
+    {
+      "original_text": "even if he wanted to I'll be ready",
+      "expanded_m": "even if he wanted to I'll be ready",
+      "expanded_f": "even if she wanted to I'll be ready"
+    },
+    {
+      "original_text": "even if he wanted to I'm going to be late",
+      "expanded_m": "even if he wanted to I'm going to be late",
+      "expanded_f": "even if she wanted to I'm going to be late"
+    },
+    {
+      "original_text": "even if he wanted to it's important",
+      "expanded_m": "even if he wanted to it's important",
+      "expanded_f": "even if she wanted to it's important"
+    },
+    {
+      "original_text": "even if he wanted to I've got too much work",
+      "expanded_m": "even if he wanted to I've got too much work",
+      "expanded_f": "even if she wanted to I've got too much work"
+    },
+    {
+      "original_text": "even if he wanted to I can stay here",
+      "expanded_m": "even if he wanted to I can stay here",
+      "expanded_f": "even if she wanted to I can stay here"
+    },
+    {
+      "original_text": "even if he wanted to she's going to be there",
+      "expanded_m": "even if he wanted to she's going to be there",
+      "expanded_f": "even if she wanted to she's going to be there"
+    },
+    {
+      "original_text": "even if he wanted to I want to start",
+      "expanded_m": "even if he wanted to I want to start",
+      "expanded_f": "even if she wanted to I want to start"
+    },
+    {
+      "original_text": "even if he wanted to I don't have enough time",
+      "expanded_m": "even if he wanted to I don't have enough time",
+      "expanded_f": "even if she wanted to I don't have enough time"
+    },
+    {
+      "original_text": "he needed to run",
+      "expanded_m": "he needed to run",
+      "expanded_f": "she needed to run"
+    },
+    {
+      "original_text": "he needed to run today",
+      "expanded_m": "he needed to run today",
+      "expanded_f": "she needed to run today"
+    },
+    {
+      "original_text": "he needed to run here",
+      "expanded_m": "he needed to run here",
+      "expanded_f": "she needed to run here"
+    },
+    {
+      "original_text": "I think he needed to run",
+      "expanded_m": "I think he needed to run",
+      "expanded_f": "I think she needed to run"
+    },
+    {
+      "original_text": "he needed to run around the field",
+      "expanded_m": "he needed to run around the field",
+      "expanded_f": "she needed to run around the field"
+    },
+    {
+      "original_text": "he needed to run around the field today",
+      "expanded_m": "he needed to run around the field today",
+      "expanded_f": "she needed to run around the field today"
+    },
+    {
+      "original_text": "he needed to run around the field now",
+      "expanded_m": "he needed to run around the field now",
+      "expanded_f": "she needed to run around the field now"
+    },
+    {
+      "original_text": "I think he needed to run around the field",
+      "expanded_m": "I think he needed to run around the field",
+      "expanded_f": "I think she needed to run around the field"
+    },
+    {
+      "original_text": "he didn't need to appear",
+      "expanded_m": "he didn't need to appear",
+      "expanded_f": "she didn't need to appear"
+    },
+    {
+      "original_text": "he didn't need to appear today",
+      "expanded_m": "he didn't need to appear today",
+      "expanded_f": "she didn't need to appear today"
+    },
+    {
+      "original_text": "he didn't need to appear here",
+      "expanded_m": "he didn't need to appear here",
+      "expanded_f": "she didn't need to appear here"
+    },
+    {
+      "original_text": "I think he didn't need to appear",
+      "expanded_m": "I think he didn't need to appear",
+      "expanded_f": "I think she didn't need to appear"
+    },
+    {
+      "original_text": "he didn't need to appear now",
+      "expanded_m": "he didn't need to appear now",
+      "expanded_f": "she didn't need to appear now"
+    },
+    {
+      "original_text": "he didn't need to appear angry",
+      "expanded_m": "he didn't need to appear angry",
+      "expanded_f": "she didn't need to appear angry"
+    },
+    {
+      "original_text": "he didn't need to appear angry today",
+      "expanded_m": "he didn't need to appear angry today",
+      "expanded_f": "she didn't need to appear angry today"
+    },
+    {
+      "original_text": "I think he didn't need to appear angry",
+      "expanded_m": "I think he didn't need to appear angry",
+      "expanded_f": "I think she didn't need to appear angry"
+    },
+    {
+      "original_text": "he didn't need to appear angry here",
+      "expanded_m": "he didn't need to appear angry here",
+      "expanded_f": "she didn't need to appear angry here"
+    },
+    {
+      "original_text": "he didn't need to appear angry now",
+      "expanded_m": "he didn't need to appear angry now",
+      "expanded_f": "she didn't need to appear angry now"
+    },
+    {
+      "original_text": "need to talk to him",
+      "expanded_m": "need to talk to him",
+      "expanded_f": "need to talk to her"
+    },
+    {
+      "original_text": "did I need to talk to him?",
+      "expanded_m": "did I need to talk to him?",
+      "expanded_f": "did I need to talk to her?"
+    },
+    {
+      "original_text": "did you need to talk to him?",
+      "expanded_m": "did you need to talk to him?",
+      "expanded_f": "did you need to talk to her?"
+    },
+    {
+      "original_text": "did he",
+      "expanded_m": "did he",
+      "expanded_f": "did she"
+    },
+    {
+      "original_text": "did he need to talk to that woman now?",
+      "expanded_m": "did he need to talk to that woman now?",
+      "expanded_f": "did she need to talk to that woman now?"
+    },
+    {
+      "original_text": "did he need to talk to someone here?",
+      "expanded_m": "did he need to talk to someone here?",
+      "expanded_f": "did she need to talk to someone here?"
+    },
+    {
+      "original_text": "did he need to talk to that woman yesterday?",
+      "expanded_m": "did he need to talk to that woman yesterday?",
+      "expanded_f": "did she need to talk to that woman yesterday?"
+    },
+    {
+      "original_text": "did he need to talk to that woman you know?",
+      "expanded_m": "did he need to talk to that woman you know?",
+      "expanded_f": "did she need to talk to that woman you know?"
+    },
+    {
+      "original_text": "did he need to talk to that woman?",
+      "expanded_m": "did he need to talk to that woman?",
+      "expanded_f": "did she need to talk to that woman?"
+    },
+    {
+      "original_text": "did he need to talk to someone?",
+      "expanded_m": "did he need to talk to someone?",
+      "expanded_f": "did she need to talk to someone?"
+    },
+    {
+      "original_text": "did he need to talk to that woman today?",
+      "expanded_m": "did he need to talk to that woman today?",
+      "expanded_f": "did she need to talk to that woman today?"
+    },
+    {
+      "original_text": "she wanted to send him something",
+      "expanded_m": "she wanted to send him something",
+      "expanded_f": "she wanted to send her something"
+    },
+    {
+      "original_text": "she wanted to send him something important",
+      "expanded_m": "she wanted to send him something important",
+      "expanded_f": "she wanted to send her something important"
+    },
+    {
+      "original_text": "she wanted to send him a message",
+      "expanded_m": "she wanted to send him a message",
+      "expanded_f": "she wanted to send her a message"
+    },
+    {
+      "original_text": "she wanted to send him a message now",
+      "expanded_m": "she wanted to send him a message now",
+      "expanded_f": "she wanted to send her a message now"
+    },
+    {
+      "original_text": "he just",
+      "expanded_m": "he just",
+      "expanded_f": "she just"
+    },
+    {
+      "original_text": "he just now",
+      "expanded_m": "he just now",
+      "expanded_f": "she just now"
+    },
+    {
+      "original_text": "he just here",
+      "expanded_m": "he just here",
+      "expanded_f": "she just here"
+    },
+    {
+      "original_text": "no she just wanted to send him a message",
+      "expanded_m": "no she just wanted to send him a message",
+      "expanded_f": "no she just wanted to send her a message"
+    },
+    {
+      "original_text": "she just wanted to send him something",
+      "expanded_m": "she just wanted to send him something",
+      "expanded_f": "she just wanted to send her something"
+    },
+    {
+      "original_text": "he felt like talking",
+      "expanded_m": "he felt like talking",
+      "expanded_f": "she felt like talking"
+    },
+    {
+      "original_text": "he felt like talking today",
+      "expanded_m": "he felt like talking today",
+      "expanded_f": "she felt like talking today"
+    },
+    {
+      "original_text": "I thought he felt like talking",
+      "expanded_m": "I thought he felt like talking",
+      "expanded_f": "I thought she felt like talking"
+    },
+    {
+      "original_text": "he felt like talking here",
+      "expanded_m": "he felt like talking here",
+      "expanded_f": "she felt like talking here"
+    },
+    {
+      "original_text": "he felt like talking now",
+      "expanded_m": "he felt like talking now",
+      "expanded_f": "she felt like talking now"
+    },
+    {
+      "original_text": "he felt like talking a lot",
+      "expanded_m": "he felt like talking a lot",
+      "expanded_f": "she felt like talking a lot"
+    },
+    {
+      "original_text": "he felt like talking a lot today",
+      "expanded_m": "he felt like talking a lot today",
+      "expanded_f": "she felt like talking a lot today"
+    },
+    {
+      "original_text": "I thought he felt like talking a lot",
+      "expanded_m": "I thought he felt like talking a lot",
+      "expanded_f": "I thought she felt like talking a lot"
+    },
+    {
+      "original_text": "he felt like talking a lot here",
+      "expanded_m": "he felt like talking a lot here",
+      "expanded_f": "she felt like talking a lot here"
+    },
+    {
+      "original_text": "he felt like talking a lot over there",
+      "expanded_m": "he felt like talking a lot over there",
+      "expanded_f": "she felt like talking a lot over there"
+    },
+    {
+      "original_text": "he heard that",
+      "expanded_m": "he heard that",
+      "expanded_f": "she heard that"
+    },
+    {
+      "original_text": "he heard that I was here",
+      "expanded_m": "he heard that I was here",
+      "expanded_f": "she heard that I was here"
+    },
+    {
+      "original_text": "he didn't like it",
+      "expanded_m": "he didn't like it",
+      "expanded_f": "she didn't like it"
+    },
+    {
+      "original_text": "he didn't like that place",
+      "expanded_m": "he didn't like that place",
+      "expanded_f": "she didn't like that place"
+    },
+    {
+      "original_text": "I heard that he didn't like that place",
+      "expanded_m": "I heard that he didn't like that place",
+      "expanded_f": "I heard that she didn't like that place"
+    },
+    {
+      "original_text": "he didn't like this place",
+      "expanded_m": "he didn't like this place",
+      "expanded_f": "she didn't like this place"
+    },
+    {
+      "original_text": "he didn't hear",
+      "expanded_m": "he didn't hear",
+      "expanded_f": "she didn't hear"
+    },
+    {
+      "original_text": "he didn't hear that I was there",
+      "expanded_m": "he didn't hear that I was there",
+      "expanded_f": "she didn't hear that I was there"
+    },
+    {
+      "original_text": "I didn't hear that he didn't like that place",
+      "expanded_m": "I didn't hear that he didn't like that place",
+      "expanded_f": "I didn't hear that she didn't like that place"
+    },
+    {
+      "original_text": "did you hear what he said?",
+      "expanded_m": "did you hear what he said?",
+      "expanded_f": "did you hear what she said?"
+    },
+    {
+      "original_text": "and did you hear what he said?",
+      "expanded_m": "and did you hear what he said?",
+      "expanded_f": "and did you hear what she said?"
+    },
+    {
+      "original_text": "did you see what he said?",
+      "expanded_m": "did you see what he said?",
+      "expanded_f": "did you see what she said?"
+    },
+    {
+      "original_text": "and did you see what he said?",
+      "expanded_m": "and did you see what he said?",
+      "expanded_f": "and did you see what she said?"
+    },
+    {
+      "original_text": "I didn't know what he said",
+      "expanded_m": "I didn't know what he said",
+      "expanded_f": "I didn't know what she said"
+    },
+    {
+      "original_text": "I asked what he said",
+      "expanded_m": "I asked what he said",
+      "expanded_f": "I asked what she said"
+    },
+    {
+      "original_text": "did you ask what he said?",
+      "expanded_m": "did you ask what he said?",
+      "expanded_f": "did you ask what she said?"
+    },
+    {
+      "original_text": "I couldn't agree with what he said",
+      "expanded_m": "I couldn't agree with what he said",
+      "expanded_f": "I couldn't agree with what she said"
+    },
+    {
+      "original_text": "I don't know what he said a moment ago",
+      "expanded_m": "I don't know what he said a moment ago",
+      "expanded_f": "I don't know what she said a moment ago"
+    },
+    {
+      "original_text": "did you hear what he said a moment ago?",
+      "expanded_m": "did you hear what he said a moment ago?",
+      "expanded_f": "did you hear what she said a moment ago?"
+    },
+    {
+      "original_text": "I have to find out what he said a moment ago",
+      "expanded_m": "I have to find out what he said a moment ago",
+      "expanded_f": "I have to find out what she said a moment ago"
+    },
+    {
+      "original_text": "I don't have the faintest idea what he said a moment ago",
+      "expanded_m": "I don't have the faintest idea what he said a moment ago",
+      "expanded_f": "I don't have the faintest idea what she said a moment ago"
+    },
+    {
+      "original_text": "can you tell me what he said a moment ago?",
+      "expanded_m": "can you tell me what he said a moment ago?",
+      "expanded_f": "can you tell me what she said a moment ago?"
+    },
+    {
+      "original_text": "I didn't know what he said a moment ago",
+      "expanded_m": "I didn't know what he said a moment ago",
+      "expanded_f": "I didn't know what she said a moment ago"
+    },
+    {
+      "original_text": "I asked what he said a moment ago",
+      "expanded_m": "I asked what he said a moment ago",
+      "expanded_f": "I asked what she said a moment ago"
+    },
+    {
+      "original_text": "I want to find out what he said a moment ago",
+      "expanded_m": "I want to find out what he said a moment ago",
+      "expanded_f": "I want to find out what she said a moment ago"
+    },
+    {
+      "original_text": "agree with him",
+      "expanded_m": "agree with him",
+      "expanded_f": "agree with her"
+    },
+    {
+      "original_text": "you agree with him",
+      "expanded_m": "you agree with him",
+      "expanded_f": "you agree with her"
+    },
+    {
+      "original_text": "did you agree with him there?",
+      "expanded_m": "did you agree with him there?",
+      "expanded_f": "did you agree with her there?"
+    },
+    {
+      "original_text": "did you agree with him?",
+      "expanded_m": "did you agree with him?",
+      "expanded_f": "did you agree with her?"
+    },
+    {
+      "original_text": "did you agree with him today?",
+      "expanded_m": "did you agree with him today?",
+      "expanded_f": "did you agree with her today?"
+    },
+    {
+      "original_text": "did you agree with him last night?",
+      "expanded_m": "did you agree with him last night?",
+      "expanded_f": "did you agree with her last night?"
+    },
+    {
+      "original_text": "did you agree with him last year?",
+      "expanded_m": "did you agree with him last year?",
+      "expanded_f": "did you agree with her last year?"
+    },
+    {
+      "original_text": "did you agree with him here?",
+      "expanded_m": "did you agree with him here?",
+      "expanded_f": "did you agree with her here?"
+    },
+    {
+      "original_text": "agreed with him",
+      "expanded_m": "agreed with him",
+      "expanded_f": "agreed with her"
+    },
+    {
+      "original_text": "I agreed with him today",
+      "expanded_m": "I agreed with him today",
+      "expanded_f": "I agreed with her today"
+    },
+    {
+      "original_text": "he agreed with him",
+      "expanded_m": "he agreed with him",
+      "expanded_f": "he agreed with her"
+    },
+    {
+      "original_text": "I agreed with him",
+      "expanded_m": "I agreed with him",
+      "expanded_f": "I agreed with her"
+    },
+    {
+      "original_text": "I agreed with him last night",
+      "expanded_m": "I agreed with him last night",
+      "expanded_f": "I agreed with her last night"
+    },
+    {
+      "original_text": "I agreed with him here",
+      "expanded_m": "I agreed with him here",
+      "expanded_f": "I agreed with her here"
+    },
+    {
+      "original_text": "I thought I agreed with him",
+      "expanded_m": "I thought I agreed with him",
+      "expanded_f": "I thought I agreed with her"
+    },
+    {
+      "original_text": "I agreed with him last year",
+      "expanded_m": "I agreed with him last year",
+      "expanded_f": "I agreed with her last year"
+    },
+    {
+      "original_text": "they already know what he said",
+      "expanded_m": "they already know what he said",
+      "expanded_f": "they already know what she said"
+    },
+    {
+      "original_text": "they couldn't find out what he said",
+      "expanded_m": "they couldn't find out what he said",
+      "expanded_f": "they couldn't find out what she said"
+    },
+    {
+      "original_text": "what he should do",
+      "expanded_m": "what he should do",
+      "expanded_f": "what she should do"
+    },
+    {
+      "original_text": "to decide what he should do",
+      "expanded_m": "to decide what he should do",
+      "expanded_f": "to decide what she should do"
+    },
+    {
+      "original_text": "to know what he should do",
+      "expanded_m": "to know what he should do",
+      "expanded_f": "to know what she should do"
+    },
+    {
+      "original_text": "they didn't want to decide what he should do",
+      "expanded_m": "they didn't want to decide what he should do",
+      "expanded_f": "they didn't want to decide what she should do"
+    },
+    {
+      "original_text": "I don't know what he should do",
+      "expanded_m": "I don't know what he should do",
+      "expanded_f": "I don't know what she should do"
+    },
+    {
+      "original_text": "do you know what he should do?",
+      "expanded_m": "do you know what he should do?",
+      "expanded_f": "do you know what she should do?"
+    },
+    {
+      "original_text": "they want to decide what he should do",
+      "expanded_m": "they want to decide what he should do",
+      "expanded_f": "they want to decide what she should do"
+    },
+    {
+      "original_text": "we need to decide what he should do",
+      "expanded_m": "we need to decide what he should do",
+      "expanded_f": "we need to decide what she should do"
+    },
+    {
+      "original_text": "they said what he said",
+      "expanded_m": "they said what he said",
+      "expanded_f": "they said what she said"
+    },
+    {
+      "original_text": "they didn't say what he said",
+      "expanded_m": "they didn't say what he said",
+      "expanded_f": "they didn't say what she said"
+    },
+    {
+      "original_text": "did they say what he said?",
+      "expanded_m": "did they say what he said?",
+      "expanded_f": "did they say what she said?"
+    },
+    {
+      "original_text": "I told him my room number",
+      "expanded_m": "I told him my room number",
+      "expanded_f": "I told her my room number"
+    },
+    {
+      "original_text": "I told him the answer",
+      "expanded_m": "I told him the answer",
+      "expanded_f": "I told her the answer"
+    },
+    {
+      "original_text": "I told him the story",
+      "expanded_m": "I told him the story",
+      "expanded_f": "I told her the story"
+    },
+    {
+      "original_text": "I told him my room number today",
+      "expanded_m": "I told him my room number today",
+      "expanded_f": "I told her my room number today"
+    },
+    {
+      "original_text": "I told him the answer yesterday",
+      "expanded_m": "I told him the answer yesterday",
+      "expanded_f": "I told her the answer yesterday"
+    },
+    {
+      "original_text": "I think I told him the answer",
+      "expanded_m": "I think I told him the answer",
+      "expanded_f": "I think I told her the answer"
+    },
+    {
+      "original_text": "I told him something new",
+      "expanded_m": "I told him something new",
+      "expanded_f": "I told her something new"
+    },
+    {
+      "original_text": "I'm not sure if I told him the answer",
+      "expanded_m": "I'm not sure if I told him the answer",
+      "expanded_f": "I'm not sure if I told her the answer"
+    },
+    {
+      "original_text": "I told him my room number once",
+      "expanded_m": "I told him my room number once",
+      "expanded_f": "I told her my room number once"
+    },
+    {
+      "original_text": "I told him the answer once",
+      "expanded_m": "I told him the answer once",
+      "expanded_f": "I told her the answer once"
+    },
+    {
+      "original_text": "I think I told him the answer once",
+      "expanded_m": "I think I told him the answer once",
+      "expanded_f": "I think I told her the answer once"
+    },
+    {
+      "original_text": "I want to ask him next time",
+      "expanded_m": "I want to ask him next time",
+      "expanded_f": "I want to ask her next time"
+    },
+    {
+      "original_text": "I will ask him",
+      "expanded_m": "I will ask him",
+      "expanded_f": "I will ask her"
+    },
+    {
+      "original_text": "next time I will ask him what his name is",
+      "expanded_m": "next time I will ask him what his name is",
+      "expanded_f": "next time I will ask her what her name is"
+    },
+    {
+      "original_text": "I will ask his name",
+      "expanded_m": "I will ask his name",
+      "expanded_f": "I will ask her name"
+    },
+    {
+      "original_text": "I will ask where he is",
+      "expanded_m": "I will ask where he is",
+      "expanded_f": "I will ask where she is"
+    },
+    {
+      "original_text": "next time I will ask him",
+      "expanded_m": "next time I will ask him",
+      "expanded_f": "next time I will ask her"
+    },
+    {
+      "original_text": "he has such a kind heart",
+      "expanded_m": "he has such a kind heart",
+      "expanded_f": "she has such a kind heart"
+    },
+    {
+      "original_text": "he has a kind heart",
+      "expanded_m": "he has a kind heart",
+      "expanded_f": "she has a kind heart"
+    },
+    {
+      "original_text": "he has a very kind heart",
+      "expanded_m": "he has a very kind heart",
+      "expanded_f": "she has a very kind heart"
+    },
+    {
+      "original_text": "whatever he says it's not far ahead now",
+      "expanded_m": "whatever he says it's not far ahead now",
+      "expanded_f": "whatever she says it's not far ahead now"
+    },
+    {
+      "original_text": "whatever he says, I don't want it",
+      "expanded_m": "whatever he says, I don't want it",
+      "expanded_f": "whatever she says, I don't want it"
+    },
+    {
+      "original_text": "the only real hope is that he's happy",
+      "expanded_m": "the only real hope is that he's happy",
+      "expanded_f": "the only real hope is that she's happy"
+    },
+    {
+      "original_text": "I don't think the only real hope is that he's happy",
+      "expanded_m": "I don't think the only real hope is that he's happy",
+      "expanded_f": "I don't think the only real hope is that she's happy"
+    },
+    {
+      "original_text": "the only real hope is that he's happy if you ask me",
+      "expanded_m": "the only real hope is that he's happy if you ask me",
+      "expanded_f": "the only real hope is that she's happy if you ask me"
+    },
+    {
+      "original_text": "that sounds as though he's happy",
+      "expanded_m": "that sounds as though he's happy",
+      "expanded_f": "that sounds as though she's happy"
+    },
+    {
+      "original_text": "that sounds as though he's not ready",
+      "expanded_m": "that sounds as though he's not ready",
+      "expanded_f": "that sounds as though she's not ready"
+    },
+    {
+      "original_text": "so that he's happy",
+      "expanded_m": "so that he's happy",
+      "expanded_f": "so that she's happy"
+    },
+    {
+      "original_text": "I'm waiting for a friend so that he's happy",
+      "expanded_m": "I'm waiting for a friend so that he's happy",
+      "expanded_f": "I'm waiting for a friend so that she's happy"
+    },
+    {
+      "original_text": "I'm going to run at six o'clock so that he's happy",
+      "expanded_m": "I'm going to run at six o'clock so that he's happy",
+      "expanded_f": "I'm going to run at six o'clock so that she's happy"
+    },
+    {
+      "original_text": "to check if he's happy",
+      "expanded_m": "to check if he's happy",
+      "expanded_f": "to check if she's happy"
+    },
+    {
+      "original_text": "I'll call you back to check if he's happy",
+      "expanded_m": "I'll call you back to check if he's happy",
+      "expanded_f": "I'll call you back to check if she's happy"
+    },
+    {
+      "original_text": "I'm going to run across the grass to check if he's happy",
+      "expanded_m": "I'm going to run across the grass to check if he's happy",
+      "expanded_f": "I'm going to run across the grass to check if she's happy"
+    },
+    {
+      "original_text": "I'm waiting for a friend to check if he's happy",
+      "expanded_m": "I'm waiting for a friend to check if he's happy",
+      "expanded_f": "I'm waiting for a friend to check if she's happy"
+    },
+    {
+      "original_text": "I'll call you back in three or four minutes to check if he's happy",
+      "expanded_m": "I'll call you back in three or four minutes to check if he's happy",
+      "expanded_f": "I'll call you back in three or four minutes to check if she's happy"
+    },
+    {
+      "original_text": "I'm finding it hard to believe that he's happy",
+      "expanded_m": "I'm finding it hard to believe that he's happy",
+      "expanded_f": "I'm finding it hard to believe that she's happy"
+    },
+    {
+      "original_text": "it isn't true that he's happy",
+      "expanded_m": "it isn't true that he's happy",
+      "expanded_f": "it isn't true that she's happy"
+    },
+    {
+      "original_text": "I used to think that he's happy",
+      "expanded_m": "I used to think that he's happy",
+      "expanded_f": "I used to think that she's happy"
+    },
+    {
+      "original_text": "I don't want to seem as though he's happy",
+      "expanded_m": "I don't want to seem as though he's happy",
+      "expanded_f": "I don't want to seem as though she's happy"
+    },
+    {
+      "original_text": "I think that I don't want to seem as though he's happy",
+      "expanded_m": "I think that I don't want to seem as though he's happy",
+      "expanded_f": "I think that I don't want to seem as though she's happy"
+    },
+    {
+      "original_text": "I'm sure I don't want to seem as though he's happy",
+      "expanded_m": "I'm sure I don't want to seem as though he's happy",
+      "expanded_f": "I'm sure I don't want to seem as though she's happy"
+    },
+    {
+      "original_text": "whenever he's happy",
+      "expanded_m": "whenever he's happy",
+      "expanded_f": "whenever she's happy"
+    },
+    {
+      "original_text": "I'll be ready whenever he's happy",
+      "expanded_m": "I'll be ready whenever he's happy",
+      "expanded_f": "I'll be ready whenever she's happy"
+    },
+    {
+      "original_text": "I'll call you back whenever he's happy",
+      "expanded_m": "I'll call you back whenever he's happy",
+      "expanded_f": "I'll call you back whenever she's happy"
+    },
+    {
+      "original_text": "I'm going to run across the grass whenever he's happy",
+      "expanded_m": "I'm going to run across the grass whenever he's happy",
+      "expanded_f": "I'm going to run across the grass whenever she's happy"
+    },
+    {
+      "original_text": "whoever said he's happy",
+      "expanded_m": "whoever said he's happy",
+      "expanded_f": "whoever said she's happy"
+    },
+    {
+      "original_text": "whoever said he's happy was absolutely right",
+      "expanded_m": "whoever said he's happy was absolutely right",
+      "expanded_f": "whoever said she's happy was absolutely right"
+    },
+    {
+      "original_text": "I'm not convinced that he's happy",
+      "expanded_m": "I'm not convinced that he's happy",
+      "expanded_f": "I'm not convinced that she's happy"
+    },
+    {
+      "original_text": "he told me",
+      "expanded_m": "he told me",
+      "expanded_f": "she told me"
+    },
+    {
+      "original_text": "he told me this",
+      "expanded_m": "he told me this",
+      "expanded_f": "she told me this"
+    },
+    {
+      "original_text": "he told me again",
+      "expanded_m": "he told me again",
+      "expanded_f": "she told me again"
+    },
+    {
+      "original_text": "he told me here",
+      "expanded_m": "he told me here",
+      "expanded_f": "she told me here"
+    },
+    {
+      "original_text": "he told me it's a good idea",
+      "expanded_m": "he told me it's a good idea",
+      "expanded_f": "she told me it's a good idea"
+    },
+    {
+      "original_text": "he told me about it",
+      "expanded_m": "he told me about it",
+      "expanded_f": "she told me about it"
+    },
+    {
+      "original_text": "he told me it's very special",
+      "expanded_m": "he told me it's very special",
+      "expanded_f": "she told me it's very special"
+    },
+    {
+      "original_text": "he told me today",
+      "expanded_m": "he told me today",
+      "expanded_f": "she told me today"
+    },
+    {
+      "original_text": "he told me it's my choice",
+      "expanded_m": "he told me it's my choice",
+      "expanded_f": "she told me it's my choice"
+    },
+    {
+      "original_text": "he'd just seen",
+      "expanded_m": "he'd just seen",
+      "expanded_f": "she'd just seen"
+    },
+    {
+      "original_text": "he'd just seen this",
+      "expanded_m": "he'd just seen this",
+      "expanded_f": "she'd just seen this"
+    },
+    {
+      "original_text": "he'd just seen it here",
+      "expanded_m": "he'd just seen it here",
+      "expanded_f": "she'd just seen it here"
+    },
+    {
+      "original_text": "he'd just seen a lot",
+      "expanded_m": "he'd just seen a lot",
+      "expanded_f": "she'd just seen a lot"
+    },
+    {
+      "original_text": "he told me he'd just seen the last bus",
+      "expanded_m": "he told me he'd just seen the last bus",
+      "expanded_f": "she told me she'd just seen the last bus"
+    },
+    {
+      "original_text": "he'd just seen the last bus",
+      "expanded_m": "he'd just seen the last bus",
+      "expanded_f": "she'd just seen the last bus"
+    },
+    {
+      "original_text": "he'd just seen it",
+      "expanded_m": "he'd just seen it",
+      "expanded_f": "she'd just seen it"
+    },
+    {
+      "original_text": "he'd just seen the children",
+      "expanded_m": "he'd just seen the children",
+      "expanded_f": "she'd just seen the children"
+    },
+    {
+      "original_text": "he'd just seen the mountains",
+      "expanded_m": "he'd just seen the mountains",
+      "expanded_f": "she'd just seen the mountains"
+    },
+    {
+      "original_text": "he's heard",
+      "expanded_m": "he's heard",
+      "expanded_f": "she's heard"
+    },
+    {
+      "original_text": "he's heard now",
+      "expanded_m": "he's heard now",
+      "expanded_f": "she's heard now"
+    },
+    {
+      "original_text": "he's heard again",
+      "expanded_m": "he's heard again",
+      "expanded_f": "she's heard again"
+    },
+    {
+      "original_text": "he's heard here",
+      "expanded_m": "he's heard here",
+      "expanded_f": "she's heard here"
+    },
+    {
+      "original_text": "I suspect that he's heard about it",
+      "expanded_m": "I suspect that he's heard about it",
+      "expanded_f": "I suspect that she's heard about it"
+    },
+    {
+      "original_text": "he's heard about it",
+      "expanded_m": "he's heard about it",
+      "expanded_f": "she's heard about it"
+    },
+    {
+      "original_text": "he's heard about it today",
+      "expanded_m": "he's heard about it today",
+      "expanded_f": "she's heard about it today"
+    },
+    {
+      "original_text": "he's heard this",
+      "expanded_m": "he's heard this",
+      "expanded_f": "she's heard this"
+    },
+    {
+      "original_text": "he's heard it",
+      "expanded_m": "he's heard it",
+      "expanded_f": "she's heard it"
+    },
+    {
+      "original_text": "I suspect that he's heard a hundred stories about it",
+      "expanded_m": "I suspect that he's heard a hundred stories about it",
+      "expanded_f": "I suspect that she's heard a hundred stories about it"
+    },
+    {
+      "original_text": "he's heard a hundred stories",
+      "expanded_m": "he's heard a hundred stories",
+      "expanded_f": "she's heard a hundred stories"
+    },
+    {
+      "original_text": "he's heard a hundred stories about it",
+      "expanded_m": "he's heard a hundred stories about it",
+      "expanded_f": "she's heard a hundred stories about it"
+    },
+    {
+      "original_text": "he's heard a hundred stories today",
+      "expanded_m": "he's heard a hundred stories today",
+      "expanded_f": "she's heard a hundred stories today"
+    },
+    {
+      "original_text": "I suspect that he's heard a hundred stories",
+      "expanded_m": "I suspect that he's heard a hundred stories",
+      "expanded_f": "I suspect that she's heard a hundred stories"
+    },
+    {
+      "original_text": "he's heard a thousand stories",
+      "expanded_m": "he's heard a thousand stories",
+      "expanded_f": "she's heard a thousand stories"
+    },
+    {
+      "original_text": "he's heard a thousand stories today",
+      "expanded_m": "he's heard a thousand stories today",
+      "expanded_f": "she's heard a thousand stories today"
+    },
+    {
+      "original_text": "he's heard a thousand stories about it",
+      "expanded_m": "he's heard a thousand stories about it",
+      "expanded_f": "she's heard a thousand stories about it"
+    },
+    {
+      "original_text": "I suspect that he's heard a thousand stories",
+      "expanded_m": "I suspect that he's heard a thousand stories",
+      "expanded_f": "I suspect that she's heard a thousand stories"
+    },
+    {
+      "original_text": "he's heard a thousand stories here",
+      "expanded_m": "he's heard a thousand stories here",
+      "expanded_f": "she's heard a thousand stories here"
+    },
+    {
+      "original_text": "he's heard a thousand stories about what they were doing",
+      "expanded_m": "he's heard a thousand stories about what they were doing",
+      "expanded_f": "she's heard a thousand stories about what they were doing"
+    },
+    {
+      "original_text": "he's heard about what they were doing",
+      "expanded_m": "he's heard about what they were doing",
+      "expanded_f": "she's heard about what they were doing"
+    },
+    {
+      "original_text": "he's heard a hundred stories about what they were doing",
+      "expanded_m": "he's heard a hundred stories about what they were doing",
+      "expanded_f": "she's heard a hundred stories about what they were doing"
+    },
+    {
+      "original_text": "he's heard about what they were doing today",
+      "expanded_m": "he's heard about what they were doing today",
+      "expanded_f": "she's heard about what they were doing today"
+    },
+    {
+      "original_text": "he offered to let us stay",
+      "expanded_m": "he offered to let us stay",
+      "expanded_f": "she offered to let us stay"
+    },
+    {
+      "original_text": "I thought he offered to let us stay",
+      "expanded_m": "I thought he offered to let us stay",
+      "expanded_f": "I thought she offered to let us stay"
+    },
+    {
+      "original_text": "he offered to let us stay with him",
+      "expanded_m": "he offered to let us stay with him",
+      "expanded_f": "she offered to let us stay with her"
+    },
+    {
+      "original_text": "I know that he offered to let us stay",
+      "expanded_m": "I know that he offered to let us stay",
+      "expanded_f": "I know that she offered to let us stay"
+    },
+    {
+      "original_text": "he offered to let us stay and we were very happy",
+      "expanded_m": "he offered to let us stay and we were very happy",
+      "expanded_f": "she offered to let us stay and we were very happy"
+    },
+    {
+      "original_text": "he offered to let us stay at the time",
+      "expanded_m": "he offered to let us stay at the time",
+      "expanded_f": "she offered to let us stay at the time"
+    },
+    {
+      "original_text": "he needs to look for work",
+      "expanded_m": "he needs to look for work",
+      "expanded_f": "she needs to look for work"
+    },
+    {
+      "original_text": "he needs to look for work now",
+      "expanded_m": "he needs to look for work now",
+      "expanded_f": "she needs to look for work now"
+    },
+    {
+      "original_text": "I think he needs to look for work",
+      "expanded_m": "I think he needs to look for work",
+      "expanded_f": "I think she needs to look for work"
+    },
+    {
+      "original_text": "he needs to look for work here because he has nothing",
+      "expanded_m": "he needs to look for work here because he has nothing",
+      "expanded_f": "she needs to look for work here because she has nothing"
+    },
+    {
+      "original_text": "he said it was broken",
+      "expanded_m": "he said it was broken",
+      "expanded_f": "she said it was broken"
+    },
+    {
+      "original_text": "he thought it was broken",
+      "expanded_m": "he thought it was broken",
+      "expanded_f": "she thought it was broken"
+    },
+    {
+      "original_text": "I wouldn't have dared to tell him",
+      "expanded_m": "I wouldn't have dared to tell him",
+      "expanded_f": "I wouldn't have dared to tell her"
+    },
+    {
+      "original_text": "I wouldn't have dared to tell him that it was broken",
+      "expanded_m": "I wouldn't have dared to tell him that it was broken",
+      "expanded_f": "I wouldn't have dared to tell her that it was broken"
+    },
+    {
+      "original_text": "I wouldn't have dared to tell him that",
+      "expanded_m": "I wouldn't have dared to tell him that",
+      "expanded_f": "I wouldn't have dared to tell her that"
+    },
+    {
+      "original_text": "his bag",
+      "expanded_m": "his bag",
+      "expanded_f": "her bag"
+    },
+    {
+      "original_text": "his bag is here",
+      "expanded_m": "his bag is here",
+      "expanded_f": "her bag is here"
+    },
+    {
+      "original_text": "I like his bag",
+      "expanded_m": "I like his bag",
+      "expanded_f": "I like her bag"
+    },
+    {
+      "original_text": "his bag is ready",
+      "expanded_m": "his bag is ready",
+      "expanded_f": "her bag is ready"
+    },
+    {
+      "original_text": "where is his bag?",
+      "expanded_m": "where is his bag?",
+      "expanded_f": "where is her bag?"
+    },
+    {
+      "original_text": "is his bag here?",
+      "expanded_m": "is his bag here?",
+      "expanded_f": "is her bag here?"
+    },
+    {
+      "original_text": "I don't know where his bag is",
+      "expanded_m": "I don't know where his bag is",
+      "expanded_f": "I don't know where her bag is"
+    },
+    {
+      "original_text": "his bag is not there",
+      "expanded_m": "his bag is not there",
+      "expanded_f": "her bag is not there"
+    },
+    {
+      "original_text": "I think his bag is ready",
+      "expanded_m": "I think his bag is ready",
+      "expanded_f": "I think her bag is ready"
+    },
+    {
+      "original_text": "his name",
+      "expanded_m": "his name",
+      "expanded_f": "her name"
+    },
+    {
+      "original_text": "to his friend",
+      "expanded_m": "to his friend",
+      "expanded_f": "to her friend"
+    },
+    {
+      "original_text": "his letter",
+      "expanded_m": "his letter",
+      "expanded_f": "her letter"
+    },
+    {
+      "original_text": "in his bag",
+      "expanded_m": "in his bag",
+      "expanded_f": "in her bag"
+    },
+    {
+      "original_text": "what he said",
+      "expanded_m": "what he said",
+      "expanded_f": "what she said"
+    },
+    {
+      "original_text": "he didn't know",
+      "expanded_m": "he didn't know",
+      "expanded_f": "she didn't know"
+    },
+    {
+      "original_text": "when he saw me",
+      "expanded_m": "when he saw me",
+      "expanded_f": "when she saw me"
+    },
+    {
+      "original_text": "he wasn't very patient",
+      "expanded_m": "he wasn't very patient",
+      "expanded_f": "she wasn't very patient"
+    },
+    {
+      "original_text": "for his sister",
+      "expanded_m": "for his sister",
+      "expanded_f": "for her sister"
+    },
+    {
+      "original_text": "himself",
+      "expanded_m": "himself",
+      "expanded_f": "herself"
+    },
+    {
+      "original_text": "even if he wanted to",
+      "expanded_m": "even if he wanted to",
+      "expanded_f": "even if she wanted to"
+    },
+    {
+      "original_text": "what he said a moment ago",
+      "expanded_m": "what he said a moment ago",
+      "expanded_f": "what she said a moment ago"
+    },
+    {
+      "original_text": "I told him",
+      "expanded_m": "I told him",
+      "expanded_f": "I told her"
+    },
+    {
+      "original_text": "You want to learn his name quickly.",
+      "expanded_m": "You want to learn his name quickly.",
+      "expanded_f": "You want to learn her name quickly."
+    },
+    {
+      "original_text": "Why are you learning his name?",
+      "expanded_m": "Why are you learning his name?",
+      "expanded_f": "Why are you learning her name?"
+    },
+    {
+      "original_text": "She wanted to put his letter in her bag.",
+      "expanded_m": "She wanted to put his letter in her bag.",
+      "expanded_f": "She wanted to put her letter in her bag."
+    },
+    {
+      "original_text": "I don't agree with what he said about my friend.",
+      "expanded_m": "I don't agree with what he said about my friend.",
+      "expanded_f": "I don't agree with what she said about my friend."
+    },
+    {
+      "original_text": "That is why he didn't know the answer.",
+      "expanded_m": "That is why he didn't know the answer.",
+      "expanded_f": "That is why she didn't know the answer."
+    },
+    {
+      "original_text": "He wasn't very patient when I couldn't answer.",
+      "expanded_m": "He wasn't very patient when I couldn't answer.",
+      "expanded_f": "She wasn't very patient when I couldn't answer."
+    },
+    {
+      "original_text": "I wanted him to help you to deal with the arrangements.",
+      "expanded_m": "I wanted him to help you to deal with the arrangements.",
+      "expanded_f": "I wanted her to help you to deal with the arrangements."
+    },
+    {
+      "original_text": "He's just started to learn.",
+      "expanded_m": "He's just started to learn.",
+      "expanded_f": "She's just started to learn."
+    },
+    {
+      "original_text": "I don't want to give it to him.",
+      "expanded_m": "I don't want to give it to him.",
+      "expanded_f": "I don't want to give it to her."
+    },
+    {
+      "original_text": "I want to give him more time.",
+      "expanded_m": "I want to give him more time.",
+      "expanded_f": "I want to give her more time."
+    },
+    {
+      "original_text": "Yes he sent me two emails last week.",
+      "expanded_m": "Yes he sent me two emails last week.",
+      "expanded_f": "Yes she sent me two emails last week."
+    },
+    {
+      "original_text": "I wonder if he knows the answer.",
+      "expanded_m": "I wonder if he knows the answer.",
+      "expanded_f": "I wonder if she knows the answer."
+    },
+    {
+      "original_text": "No I've never seen him before.",
+      "expanded_m": "No I've never seen him before.",
+      "expanded_f": "No I've never seen her before."
+    },
+    {
+      "original_text": "He needs to move to a different country.",
+      "expanded_m": "He needs to move to a different country.",
+      "expanded_f": "She needs to move to a different country."
+    },
+    {
+      "original_text": "He doesn't need to buy another television this year.",
+      "expanded_m": "He doesn't need to buy another television this year.",
+      "expanded_f": "She doesn't need to buy another television this year."
+    },
+    {
+      "original_text": "He said that he needs to read the same book.",
+      "expanded_m": "He said that he needs to read the same book.",
+      "expanded_f": "She said that she needs to read the same book."
+    },
+    {
+      "original_text": "He said that he doesn't need to walk to school.",
+      "expanded_m": "He said that he doesn't need to walk to school.",
+      "expanded_f": "She said that she doesn't need to walk to school."
+    },
+    {
+      "original_text": "I think that he needs to consider ten possible problems.",
+      "expanded_m": "I think that he needs to consider ten possible problems.",
+      "expanded_f": "I think that she needs to consider ten possible problems."
+    },
+    {
+      "original_text": "I don't think that he needs to sell the company.",
+      "expanded_m": "I don't think that he needs to sell the company.",
+      "expanded_f": "I don't think that she needs to sell the company."
+    },
+    {
+      "original_text": "Do you think that he needs to offer another way?",
+      "expanded_m": "Do you think that he needs to offer another way?",
+      "expanded_f": "Do you think that she needs to offer another way?"
+    },
+    {
+      "original_text": "Yes I think he should.",
+      "expanded_m": "Yes I think he should.",
+      "expanded_f": "Yes I think she should."
+    },
+    {
+      "original_text": "No I think he's hurt himself quite badly.",
+      "expanded_m": "No I think he's hurt himself quite badly.",
+      "expanded_f": "No I think she's hurt herself quite badly."
+    },
+    {
+      "original_text": "Who said that he's worried about the economy.",
+      "expanded_m": "Who said that he's worried about the economy.",
+      "expanded_f": "Who said that she's worried about the economy."
+    },
+    {
+      "original_text": "Who said that he's happy to help you.",
+      "expanded_m": "Who said that he's happy to help you.",
+      "expanded_f": "Who said that she's happy to help you."
+    },
+    {
+      "original_text": "Who said that he's not ready to leave yet.",
+      "expanded_m": "Who said that he's not ready to leave yet.",
+      "expanded_f": "Who said that she's not ready to leave yet."
+    },
+    {
+      "original_text": "I wanted him to know that I liked his book.",
+      "expanded_m": "I wanted him to know that I liked his book.",
+      "expanded_f": "I wanted her to know that I liked her book."
+    },
+    {
+      "original_text": "He needed to run around the field.",
+      "expanded_m": "He needed to run around the field.",
+      "expanded_f": "She needed to run around the field."
+    },
+    {
+      "original_text": "He didn't need to appear angry.",
+      "expanded_m": "He didn't need to appear angry.",
+      "expanded_f": "She didn't need to appear angry."
+    },
+    {
+      "original_text": "Did he need to talk to that woman you know?",
+      "expanded_m": "Did he need to talk to that woman you know?",
+      "expanded_f": "Did she need to talk to that woman you know?"
+    },
+    {
+      "original_text": "No she just wanted to send him a message.",
+      "expanded_m": "No she just wanted to send him a message.",
+      "expanded_f": "No she just wanted to send her a message."
+    },
+    {
+      "original_text": "Yes he felt like talking a lot.",
+      "expanded_m": "Yes he felt like talking a lot.",
+      "expanded_f": "Yes she felt like talking a lot."
+    },
+    {
+      "original_text": "I heard that he didn't like that place.",
+      "expanded_m": "I heard that he didn't like that place.",
+      "expanded_f": "I heard that she didn't like that place."
+    },
+    {
+      "original_text": "I couldn't agree with what he said a moment ago.",
+      "expanded_m": "I couldn't agree with what he said a moment ago.",
+      "expanded_f": "I couldn't agree with what she said a moment ago."
+    },
+    {
+      "original_text": "Did you agree with him?",
+      "expanded_m": "Did you agree with him?",
+      "expanded_f": "Did you agree with her?"
+    },
+    {
+      "original_text": "Yes I agreed with him.",
+      "expanded_m": "Yes I agreed with him.",
+      "expanded_f": "Yes I agreed with her."
+    },
+    {
+      "original_text": "They didn't want to decide what he should do.",
+      "expanded_m": "They didn't want to decide what he should do.",
+      "expanded_f": "They didn't want to decide what she should do."
+    },
+    {
+      "original_text": "Next time I will ask him what his name is.",
+      "expanded_m": "Next time I will ask him what his name is.",
+      "expanded_f": "Next time I will ask her what her name is."
+    },
+    {
+      "original_text": "He's been sick since the second day of the holidays.",
+      "expanded_m": "He's been sick since the second day of the holidays.",
+      "expanded_f": "She's been sick since the second day of the holidays."
+    },
+    {
+      "original_text": "He has such a kind heart.",
+      "expanded_m": "He has such a kind heart.",
+      "expanded_f": "She has such a kind heart."
+    },
+    {
+      "original_text": "Whatever he says it's not far ahead now.",
+      "expanded_m": "Whatever he says it's not far ahead now.",
+      "expanded_f": "Whatever she says it's not far ahead now."
+    },
+    {
+      "original_text": "He told me he'd just seen the last bus.",
+      "expanded_m": "He told me he'd just seen the last bus.",
+      "expanded_f": "She told me she'd just seen the last bus."
+    },
+    {
+      "original_text": "I suspect that he's heard a hundred stories about it.",
+      "expanded_m": "I suspect that he's heard a hundred stories about it.",
+      "expanded_f": "I suspect that she's heard a hundred stories about it."
+    },
+    {
+      "original_text": "He's heard a thousand stories about what they were doing.",
+      "expanded_m": "He's heard a thousand stories about what they were doing.",
+      "expanded_f": "She's heard a thousand stories about what they were doing."
+    },
+    {
+      "original_text": "He offered to let us stay with him.",
+      "expanded_m": "He offered to let us stay with him.",
+      "expanded_f": "She offered to let us stay with her."
+    },
+    {
+      "original_text": "He needs to look for work.",
+      "expanded_m": "He needs to look for work.",
+      "expanded_f": "She needs to look for work."
+    },
+    {
+      "original_text": "I wouldn't have dared to tell him that it was broken.",
+      "expanded_m": "I wouldn't have dared to tell him that it was broken.",
+      "expanded_f": "I wouldn't have dared to tell her that it was broken."
+    },
+    {
+      "original_text": "Where is his bag?",
+      "expanded_m": "Where is his bag?",
+      "expanded_f": "Where is her bag?"
+    }
+  ],
+  "flips_held": 305
+}

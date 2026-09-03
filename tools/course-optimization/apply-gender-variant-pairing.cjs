@@ -25,7 +25,11 @@
  * that was not already owed. Queue it immediately after applying.
  *
  * Usage:
- *   node tools/course-optimization/apply-gender-variant-pairing.cjs <course> <verdicts.tsv> [--apply]
+ *   node tools/course-optimization/apply-gender-variant-pairing.cjs <course> <verdicts.tsv> [--apply] [--pairs-only]
+ *
+ * --pairs-only writes step 1 and skips step 2. That is the safe half: the pairs are
+ * inert until a render reads them, while the flips take audio off live rows. Use it
+ * when the course cannot be re-rendered yet, then run again without it once it can.
  *
  * Verdict TSV (no header): id \t AMBIGUOUS|DETERMINED \t male_reading \t female_reading \t reason
  * ids are course_seeds.seed_id, course_legos.lego_id or course_practice_phrases.id.
@@ -39,6 +43,7 @@ require('dotenv').config();
 
 const [courseCode, verdictPath] = process.argv.slice(2).filter(a => !a.startsWith('--'));
 const APPLY = process.argv.includes('--apply');
+const PAIRS_ONLY = process.argv.includes('--pairs-only');
 if (!courseCode || !verdictPath) {
   console.error('usage: apply-gender-variant-pairing.cjs <course> <verdicts.tsv> [--apply]');
   process.exit(2);
@@ -124,6 +129,32 @@ async function main() {
 
   log.pairs = [...pairByMale].map(([m, f]) => ({ original_text: m, expanded_m: m, expanded_f: f }));
 
+  // A pairing is keyed by TEXT, so it reaches every row in the course whose target
+  // text is that string. If a row the verdicts called DETERMINED happens to store
+  // the same English as some other row's male reading, the female voice would speak
+  // "her" over a known side that says "his" — the exact defect this whole change
+  // exists to remove. Refuse those pairs rather than ship them.
+  const ambiguousIds = new Set(ambiguous.map(v => v.id));
+  const males = log.pairs.map(p => p.original_text);
+  const clashing = new Set();
+  for (const { table, idCol } of TABLES) {
+    for (let i = 0; i < males.length; i += 100) {
+      const { data, error } = await supabase.from(table)
+        .select(`${idCol}, target_text`).eq('course_code', courseCode).in('target_text', males.slice(i, i + 100));
+      if (error) throw new Error(`clash check ${table}: ${error.message}`);
+      for (const row of data) if (!ambiguousIds.has(row[idCol])) clashing.add(row.target_text);
+    }
+  }
+  if (clashing.size) {
+    log.clashes = [...clashing];
+    log.pairs = log.pairs.filter(p => !clashing.has(p.original_text));
+    const before = log.flips.length + log.already_male.length;
+    log.flips = log.flips.filter(f => !clashing.has(f.to));
+    log.already_male = log.already_male.filter(r => !clashing.has(r.text));
+    for (const v of ambiguous) if (clashing.has(v.male)) log.rejected.push({ ...v, why: 'male reading is also the stored text of a row this pass did not call ambiguous' });
+    console.log(`  ⚠ ${clashing.size} pair(s) dropped — the male reading is stored elsewhere as a determined answer (${before - log.flips.length - log.already_male.length} rows dropped with them)`);
+  }
+
   console.log(`  pairs to store : ${log.pairs.length}`);
   console.log(`  rows to flip   : ${log.flips.length}  (seeds ${log.flips.filter(f => f.table === 'course_seeds').length}, legos ${log.flips.filter(f => f.table === 'course_legos').length}, phrases ${log.flips.filter(f => f.table === 'course_practice_phrases').length})`);
   console.log(`  already male   : ${log.already_male.length}`);
@@ -142,6 +173,11 @@ async function main() {
 
     // 2. flips, one row at a time, each asserting its own before-state.
     let done = 0;
+    if (PAIRS_ONLY) {
+      log.flips_held = log.flips.length;
+      console.log(`  ⏸ ${log.flips.length} text flips HELD (--pairs-only) — re-run without the flag once the course can be re-rendered`);
+      log.flips = [];
+    }
     for (const f of log.flips) {
       const { data, error } = await supabase.from(f.table)
         .update({ target_text: f.to })
@@ -155,7 +191,7 @@ async function main() {
     console.log(`  ✓ flipped ${done} rows`);
   }
 
-  const out = verdictPath.replace(/\.tsv$/, '') + (APPLY ? '-applied-log.json' : '-dryrun-log.json');
+  const out = verdictPath.replace(/\.tsv$/, '') + (APPLY ? (PAIRS_ONLY ? '-pairs-applied-log.json' : '-applied-log.json') : '-dryrun-log.json');
   fs.writeFileSync(out, JSON.stringify(log, null, 2));
   console.log(`log: ${out}`);
 }
