@@ -51,7 +51,11 @@ async function main() {
   const ctx = {
     knownLang: course.known_lang,
     targetLang: course.target_lang,
-    knownVoice: { voice_id: 'gfzdpspr5fdp', provider: 'xai', gender: 'm' },
+    // Fallback only — every speaker in this pod is cast explicitly
+    // (tools/pods/senedd/set-senedd-cast.sql). CARTESIA, not xAI: the estate's
+    // standard English pod clone gfzdpspr5fdp is an xAI voice and xAI is being
+    // wound down, so this pod is not born on it (Tom, 2026-09-03).
+    knownVoice: { voice_id: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', provider: 'cartesia', gender: 'm', locale: 'en-GB' },
     voiceConfig: course.voice_config || {},
   }
 
@@ -72,7 +76,7 @@ async function main() {
     .map(r => {
       const cast = pod.speakers && (pod.speakers[r.speaker] || pod.speakers._default)
       const voice = cast && cast.known && cast.known.voice_id
-        ? { voice_id: cast.known.voice_id, provider: cast.known.provider || 'xai', gender: cast.gender || 'n', locale: cast.known.locale || null }
+        ? { voice_id: cast.known.voice_id, provider: cast.known.provider || 'cartesia', gender: cast.gender || 'n', locale: cast.known.locale || null }
         : ctx.knownVoice
       // The one thing that must never happen here.
       if (String(voice.provider) === 'human') throw new Error(`${r.id}: known track is cast to a human — this tool renders TTS only`)
@@ -83,6 +87,7 @@ async function main() {
   console.log(`${rows.length} sentences, ${rows.filter(r => r.known_audio_id).length} already have English audio`)
   console.log(`${work.length} English clip(s) to render on ${JSON.stringify(work[0] && work[0].voice)}`)
   console.log(`WELSH TRACK IS NOT TOUCHED — Aran records it.`)
+  console.log(`English-only floor turns (empty target_text) render their known side like any other row.`)
   if (DRY) {
     writeLog('dryrun', work.map(w => ({ ...w, audioId: null })))
     console.log('DRY RUN — nothing rendered.')
