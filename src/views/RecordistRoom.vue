@@ -1789,6 +1789,22 @@ kbd {
   border: none; border-radius: 8px; padding: 0.5rem 0.9rem; cursor: pointer; min-height: 40px;
 }
 
+/* DESKTOP: USE THE SCREEN (Tom, 2026-09-03). A min-width query, so not one
+   pixel below 900px moves — Aran and Catrin record on phones and the phone
+   layout above is exactly what ships today. Nothing is added to fill the space:
+   the completeness grid simply gets many more marks per row, the roster and
+   listen-back rows stop wrapping, and the controls have room. The spoken line
+   keeps its reading measure inside the now-wide well: a 2.1rem line stretched
+   to 1900px is harder to read aloud from than the column it replaced. */
+@media (min-width: 900px) {
+  .recordist { max-width: none; padding: 1.25rem 2rem; }
+  .line-target { max-width: 34ch; }
+  .line-known, .line-why { max-width: 68ch; }
+  /* Back and Again stop scaling with the viewport at this width; Next still
+     takes the rest of the row and is still the biggest thing in it. */
+  .ctl-back, .ctl-again { flex: 0 0 9rem; }
+}
+
 @media (max-width: 480px) {
   .recordist { padding: 0.6rem; }
   .line-target, .edit-box { font-size: 1.8rem; }
