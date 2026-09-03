@@ -3861,12 +3861,10 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
     const knownLang = canonicalLanguage(course.known_lang)
     const targetLangName = getLocalisedLangName(course.target_lang, knownLang)
     const template = await getOrCreatePresentationTemplate(knownLang)
-    // Short form (no "as in" context) — same stripping the course-wide endpoint uses.
-    const shortTemplate = template
-      .replace(/, as in — '\{seed\}',/g, ',')
-      .replace(/, as in '\{seed\}'/g, '')
-      .replace(/ as in — '\{seed\}' —/g, ' ')
-      .replace(/\{seed\}/g, '')
+    // Short form (no "as in" context) — the shared strip, so a known language
+    // outside the hand-written pattern list (Hindi, 2026-09-03) does not end up
+    // with an empty quoted slot spoken aloud.
+    const shortTemplate = presentationAuthor.stripSeedClause(template)
     const voiceConfig = course.voice_config || {}
     // Match the generator's voice_id format exactly (provider_voiceId), else the
     // pending row's voice_id won't reconcile with the generated row → duplicate.
@@ -4033,10 +4031,10 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     }
 
     // Generate presentation text for each LEGO
-    // Short template (no "as in" context) for alternating in early seeds
-    const shortTemplate = template
-      .replace(/, as in — '\{seed\}',/g, ',')
-      .replace(/ as in — '\{seed\}' —| como en — '\{seed\}' —| comme dans — '\{seed\}' —| wie in — '\{seed\}' —| como em — '\{seed\}' —| come in — '\{seed\}' —| fel yn — '\{seed\}' —| — 「\{seed\}」のように —| — '\{seed\}'처럼 —| كما في — '\{seed\}' —| kaip — '\{seed\}' —| 如「\{seed\}」—|, as in '\{seed\}'|，如"\{seed\}"|, fel yn '\{seed\}'|, como en '\{seed\}'/g, '')
+    // Short template (no "as in" context) for alternating in early seeds.
+    // Shared strip: this site used to carry its own copy of the pattern list,
+    // and a known language missing from it (Hindi) rendered "— '' —" aloud.
+    const shortTemplate = presentationAuthor.stripSeedClause(template)
 
     // Load USE phrases for context fallback when seed sentence doesn't contain the known_text
     // Group by seed_number + lego_index for efficient lookup
