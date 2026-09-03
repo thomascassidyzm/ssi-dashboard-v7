@@ -171,11 +171,44 @@ asserted to concatenate back to the target text exactly — the player's Strateg
 
 ---
 
-## 5. Step six: does every कल sentence carry its own context?
+## 5. Step six: does every कल sentence carry its own context? — one more found and fixed
 
-The 2026-09-03 pass before this one rewrote 13 practice phrases to satisfy Kai's rule. That claim
-was re-verified independently today by job **#346**, reading rather than pattern-matching, and the
-four phrases added above were gate-tested and read individually. See §7 for what #346 found.
+The 2026-09-03 pass before this one rewrote 13 practice phrases to satisfy Kai's rule. Job **#346**
+re-verified that claim independently today against the live DB, **reading all 344 कल-bearing rows**
+(15 seeds, 12 LEGOs, 317 practice phrases) rather than classifying them by regex.
+
+**It found one genuine miss, now fixed.** `eng_for_hin:S0074L01U02`:
+
+> कल समझने में मेरी मदद करने के लिए बहुत-बहुत शुक्रिया। — *"thank you very much for helping me to
+> understand yesterday"*
+
+The frame is a bare nominal — करने के लिए … शुक्रिया, "thanks for X-ing" — with **no finite verb
+anywhere**, so nothing in the Hindi fixes the direction. The earlier pass had *declared* this one a
+judgement call ("a gratitude frame is compliant — thanking is retrospective by construction"); #346,
+reading it cold, called it ambiguous, because thanking in advance is idiomatic in both languages.
+Two readings, so the safer one wins.
+
+**Fixed on the precedent of seed 305** in that same earlier pass: the LEGO being taught is
+`समझने में मेरी मदद करने के लिए → "for helping me to understand"`, and कल is an **incidental
+adverbial** in a slot the seed's other seven phrases fill with आज / यहाँ / अंग्रेज़ी में / आज सुबह /
+पिछले हफ़्ते. It is now **पिछले महीने → "last month"** — taught at seed 37, unambiguously past, not
+already used in this LEGO's set, and re-teaching no कल sense by proxy. The row carried **no clips at
+all**, so the edit dropped nothing; decomposition rewritten and asserted to concatenate.
+
+**#346 also found zero Hindi/English direction disagreements** across all 344 rows — including the
+reported-speech and embedded-clause cases, which it traced individually rather than assuming the
+outer verb governs.
+
+### One rule for Kai to ratify or overturn
+
+#346 independently reached the **same** judgement the earlier pass had flagged for Kai, on the **same
+10 rows**: present-tense comparative frames (`X के मुक़ाबले बेहतर बोलता हूँ`, `कल से बुरा कर रहा हूँ`)
+carry no tense marker, but you cannot presently benchmark yourself against a night that has not
+happened — so the comparative construction *is* the context.
+
+Two independent readings agreeing is worth something, but neither is Kai's. **If he overturns it,
+those 10 rows (seeds 42, 114, 117, 118) are the next working set**, and the rule would apply
+estate-wide to every present-tense "than / compared to" construction, not just these.
 
 ---
 
@@ -190,6 +223,7 @@ four phrases added above were gate-tested and read individually. See §7 for wha
 | phrases losing tileability | — | **0** |
 | decompositions concatenating back to `target_text` | 10,915 / 10,915 | **10,919 / 10,919, 0 mismatched** |
 | `course_practice_phrases` | 10,945 | 10,949 (+4) |
+| कल prompts with no internal tense context | 1 (seed 74) | **0** |
 | `course_audio` presentation rows | 2,964 | 2,971 (+7) |
 | `course_legos.presentation_audio_id` moved | — | **0** |
 | rows deleted | — | **0** |
@@ -230,5 +264,6 @@ new silent slots, and they reach a learner the moment the course is recast.
    (`'{known}' ඉතින්.`), `aze` (`'{known}' kimi budur:`) keep a space-separated word left over from
    the "as in" clause. No longer an empty quotation, but they want a native reading before anyone
    calls them correct.
-4. **Seed 155 still ships three byte-identical USE phrases** (`मुझे कल सुबह इंतज़ार करने में कोई
+4. **The 10 comparative rows** above — a rule two agents have now proposed and nobody has ratified.
+5. **Seed 155 still ships three byte-identical USE phrases** (`मुझे कल सुबह इंतज़ार करने में कोई
    आपत्ति नहीं।` ×3), noted by the previous pass and still true. Not a कल ambiguity, not touched.

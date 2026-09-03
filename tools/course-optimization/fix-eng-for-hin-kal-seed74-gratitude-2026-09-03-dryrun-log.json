@@ -1,0 +1,44 @@
+{
+  "course": "eng_for_hin",
+  "id": "eng_for_hin:S0074L01U02",
+  "ranAt": "2026-09-03T19:03:42.724Z",
+  "mode": "dry-run",
+  "before": {
+    "id": "eng_for_hin:S0074L01U02",
+    "seed_number": 74,
+    "lego_index": 1,
+    "position": 5,
+    "phrase_role": "use",
+    "known_text": "कल समझने में मेरी मदद करने के लिए बहुत-बहुत शुक्रिया।",
+    "target_text": "thank you very much for helping me to understand yesterday",
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null,
+    "decomposition": [
+      {
+        "known": "बहुत-बहुत शुक्रिया",
+        "legoId": "S0073L01",
+        "target": "thank you very much",
+        "isGhost": false
+      },
+      {
+        "known": "समझने में मेरी मदद करने के लिए",
+        "legoId": "S0074L01",
+        "target": " for helping me to understand",
+        "isGhost": false
+      },
+      {
+        "known": "कल",
+        "legoId": "S0030L03",
+        "target": " yesterday",
+        "isGhost": false
+      }
+    ],
+    "version": 2
+  },
+  "after": {
+    "known": "पिछले महीने समझने में मेरी मदद करने के लिए बहुत-बहुत शुक्रिया।",
+    "target": "thank you very much for helping me to understand last month"
+  },
+  "problems": []
+}
