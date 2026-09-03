@@ -120,4 +120,63 @@ async function readServingFactsSupabase (client, courseCode, podId, { warn = () 
   return { pod, rows: rows || 0, learnersOnCourse, learnersOnPod }
 }
 
-module.exports = { SERVING_POD_SLUGS, servesLearners, learnersAtRisk, servingRefusal, readServingFactsSupabase }
+/**
+ * PURE. Given a course's pod rows, which one does it SERVE? The other half of the
+ * same rule: `servesLearners` asks "would writing here reach a learner?", this asks
+ * "which pod is the learner reading?" — same slug list, same preference order, so a
+ * reader and a writer can never disagree about which pod is the live one.
+ *
+ * WHY IT EXISTS (2026-09-03). Readers across the back office defaulted to a LITERAL
+ * slug instead of resolving one — `/api/pod-scripts` to `pod-1`, the LEGO extractor
+ * and the TTS bulk-migrator to `pod-0`. Tom's 1-based ruling of 2026-08-22 moved 22
+ * courses onto `pod-1` and left the rest on `pod-0`, so every one of those literals
+ * is now wrong for most of the estate: the pod-script review page showed 45 of 67
+ * courses as EMPTY, both Welsh courses among them. A default is not a resolution.
+ *
+ * `visibility` is NOT consulted, for the same reason `servesLearners` ignores it —
+ * Tom, 2026-09-02: "do not let visibility stand in for a guard anywhere." A held pod
+ * on a serving slug is still the pod that course has, and back-office readers exist
+ * to look at content before it is released.
+ *
+ * Returns the pod row, or null when the course has no serving core pod — a NAMED
+ * gap, never a guessed slug.
+ *
+ * @param {Array<{id?:string, slug?:string, pod_type?:string}>} pods
+ */
+function pickServingPod (pods) {
+  const slugOf = (p) => {
+    if (p && p.slug) return p.slug
+    const id = String((p && p.id) || '')
+    const i = id.indexOf(':')
+    return i < 0 ? '' : id.slice(i + 1)
+  }
+  // pod_type is absent from some callers' projections; absence is not evidence of a
+  // non-core pod, so only an explicit non-'core' value disqualifies.
+  const core = (pods || []).filter(p => p && (p.pod_type == null || p.pod_type === 'core'))
+  for (const slug of SERVING_POD_SLUGS) {
+    const hit = core.find(p => slugOf(p) === slug)
+    if (hit) return hit
+  }
+  return null
+}
+
+/** One small read through a supabase-js client, then `pickServingPod`.
+ *  Returns the slug the course serves, or null. */
+async function fetchServingSlug (client, courseCode) {
+  const { data, error } = await client
+    .from('listening_pods').select('id, course_code, slug, pod_type')
+    .eq('course_code', courseCode).in('slug', SERVING_POD_SLUGS)
+  if (error) throw new Error(`resolve serving slug for ${courseCode}: ${error.message}`)
+  const pod = pickServingPod(data || [])
+  return pod ? pod.slug : null
+}
+
+module.exports = {
+  SERVING_POD_SLUGS,
+  servesLearners,
+  learnersAtRisk,
+  servingRefusal,
+  readServingFactsSupabase,
+  pickServingPod,
+  fetchServingSlug,
+}

@@ -132,3 +132,45 @@ describe('servingRefusal — one rule, five doors', () => {
     expect(servingRefusal(serving({ slug: 'pod-0-unrecorded' }))).toBeNull()
   })
 })
+
+// ---------------------------------------------------------------------------
+// pickServingPod — the READER's half of the rule (2026-09-03).
+// The literals it replaces: /api/pod-scripts defaulted to 'pod-1' and showed 45
+// of 67 courses as EMPTY; the LEGO extractor and pod-state-report defaulted to
+// 'pod-0' and reported nothing for the 22 courses that moved.
+// ---------------------------------------------------------------------------
+describe('pickServingPod', () => {
+  const { pickServingPod } = require(MOD)
+  const p = (slug, extra = {}) => ({ id: `c:${slug}`, slug, pod_type: 'core', ...extra })
+
+  it('prefers pod-1 when both exist', () => {
+    expect(pickServingPod([p('pod-0'), p('pod-1')]).slug).toBe('pod-1')
+  })
+  it('falls back to pod-0 — the two thirds of the estate that never moved', () => {
+    expect(pickServingPod([p('pod-0')]).slug).toBe('pod-0')
+  })
+  it('resolves a course whose only core pod is pod-1', () => {
+    expect(pickServingPod([p('pod-1')]).slug).toBe('pod-1')
+  })
+  it('never picks a retired or gated pod, which keep pod_type=core through a rename', () => {
+    expect(pickServingPod([p('pod-0-retired-2026-08-22'), p('pod-0-gated-2026-08-06')])).toBe(null)
+  })
+  it('the Welsh shape: pod-0 alongside an archived gated sibling', () => {
+    expect(pickServingPod([p('pod-0'), p('pod-0-gated-2026-08-06')]).slug).toBe('pod-0')
+  })
+  it('ignores non-core pods', () => {
+    expect(pickServingPod([p('pod-1', { pod_type: 'themed' })])).toBe(null)
+  })
+  it('treats an absent pod_type as core — thin projections are not evidence', () => {
+    expect(pickServingPod([{ id: 'c:pod-1', slug: 'pod-1' }]).slug).toBe('pod-1')
+  })
+  it('derives the slug from the id when the row has no slug column', () => {
+    expect(pickServingPod([{ id: 'cym_n_for_eng:pod-0' }]).id).toBe('cym_n_for_eng:pod-0')
+  })
+  it('a course with no serving pod is null, never a guessed pod-0', () => {
+    expect(pickServingPod([])).toBe(null)
+  })
+  it('does NOT consult visibility — a held pod on a serving slug is still the served pod', () => {
+    expect(pickServingPod([p('pod-0', { visibility: 'held' })]).slug).toBe('pod-0')
+  })
+})

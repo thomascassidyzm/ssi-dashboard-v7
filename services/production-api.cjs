@@ -4521,6 +4521,30 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
 
 const RETIRED_SLUG = /-retired-/
 
+// THE SERVING SLUG IS A PER-COURSE FACT, never a literal (Tom, 2026-08-22:
+// "We want to not have a Pod 0 from now on. We want this first one to be called
+// Pod 1."). The list and its preference order live once, in
+// tools/pods/serving-slug.cjs, shared with clone-pod, the pod generator and the
+// generator's HTTP route; it mirrors the player's own resolver
+// (packages/player-vue/src/composables/servedPod.ts). Imported, not re-declared,
+// so this page cannot drift from what the learner is actually served.
+const { SERVING_POD_SLUGS, pickServingPod, fetchServingSlug } = require('../tools/pods/serving-slug.cjs')
+
+/** The one serving core pod for each course, grouped from a fleet-wide read.
+ *  The RULE itself is not written here — `pickServingPod` in
+ *  tools/pods/serving-slug.cjs is the estate's single definition, shared with
+ *  clone-pod, the pod generator and the LEGO extractor. */
+function pickServingPodPerCourse (pods) {
+  const byCourse = new Map()
+  for (const p of pods || []) {
+    if (!byCourse.has(p.course_code)) byCourse.set(p.course_code, [])
+    byCourse.get(p.course_code).push(p)
+  }
+  return [...byCourse.keys()].sort()
+    .map(code => pickServingPod(byCourse.get(code)))
+    .filter(Boolean)
+}
+
 /** Page past PostgREST's 1000-row default. Ordered, because offset paging without
  *  an ORDER BY can repeat or skip rows. */
 async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false } = {}) {
@@ -4543,25 +4567,40 @@ async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false
   return out
 }
 
-// GET /api/pod-scripts — the fleet index: every course that has a live pod-1,
-// each with the summary Tom scans (scenes, lines, cast, violation counts) so he
-// can see which courses are worst without opening each one.
+// GET /api/pod-scripts — the fleet index: every course that has a live SERVING
+// pod, whatever its slug, each with the summary Tom scans (scenes, lines, cast,
+// violation counts) so he can see which courses are worst without opening each
+// one.
+//
+// IT NO LONGER ASSUMES A SLUG. Until 2026-09-03 this route defaulted to the
+// literal `pod-1` and the index was "every course that HAS a pod-1". Tom's
+// 1-based ruling of 2026-08-22 moved 22 courses across; the rest — including
+// both Welsh courses — still serve `pod-0`, so 45 of 67 courses read as EMPTY
+// on this page. Nothing was broken; the default was simply wrong for two thirds
+// of the estate. The serving slug is a PER-COURSE fact and is resolved the same
+// way the player resolves it (pickServingSlug below), never defaulted to a
+// literal. An explicit `?slug=` is still honoured verbatim, which is how a
+// retired pod is read by name.
 app.get('/api/pod-scripts', async (req, res) => {
   try {
-    const slug = String(req.query.slug || 'pod-1')
+    const askedSlug = req.query.slug ? String(req.query.slug) : null
     const track = req.query.track === 'known' ? 'known' : 'target'
     const supabase = supabaseClient.getClient()
     const { buildPodScript } = require('../tools/pods/pod-script-view.cjs')
 
-    const { data: pods, error: podsErr } = await supabase
+    let query = supabase
       .from('listening_pods')
-      .select('id, course_code, slug, title, speakers')
-      .eq('slug', slug)
+      .select('id, course_code, slug, title, speakers, pod_type, visibility')
       .order('course_code')
+    // Without an explicit slug, ask for the whole serving family and let the
+    // per-course resolver pick; with one, behave exactly as before.
+    query = askedSlug ? query.eq('slug', askedSlug) : query.in('slug', SERVING_POD_SLUGS)
+    const { data: pods, error: podsErr } = await query
     if (podsErr) throw podsErr
 
-    const live = (pods || []).filter(p => !RETIRED_SLUG.test(p.slug))
-    if (!live.length) return res.json({ slug, track, courses: [], errors: [] })
+    const notRetired = (pods || []).filter(p => !RETIRED_SLUG.test(p.slug))
+    const live = askedSlug ? notRetired : pickServingPodPerCourse(notRetired)
+    if (!live.length) return res.json({ slug: askedSlug, track, courses: [], errors: [] })
 
     const rows = await fetchAllPodSentences(supabase, live.map(p => p.id))
     const byPod = new Map(live.map(p => [p.id, []]))
@@ -4585,7 +4624,7 @@ app.get('/api/pod-scripts', async (req, res) => {
         logger.error(`[Pod scripts] ${pod.id}: ${e?.message || e}`)
       }
     }
-    res.json({ slug, track, courses, errors })
+    res.json({ slug: askedSlug, track, courses, errors })
   } catch (err) {
     logger.error(`[Pod scripts index] ${err.message}`)
     res.status(500).json({ error: err.message })
@@ -4596,7 +4635,8 @@ app.get('/api/pod-scripts', async (req, res) => {
 // playing order, with each line's character, voice (name + gender), target and
 // known text, and its casting violations already marked.
 //
-//   ?slug=   default pod-1; pass a retired slug explicitly to read it
+//   ?slug=   omitted → the slug this course actually serves, resolved per
+//            course (pod-1, else pod-0); pass a retired slug to read it by name
 //   ?track=  target (default) | known
 //   ?clips=0 skip the clip load. ON by default since 2026-08-24: Tom — "this is
 //            pointless unless I can actually hear it … I need the clips right
@@ -4611,12 +4651,15 @@ app.get('/api/pod-scripts', async (req, res) => {
 app.get('/api/pod-scripts/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
-    const slug = String(req.query.slug || 'pod-1')
     const track = req.query.track === 'known' ? 'known' : 'target'
     const wantClips = !(req.query.clips === '0' || req.query.clips === 'false')
-    const podId = `${courseCode}:${slug}`
     const supabase = supabaseClient.getClient()
     const { buildPodScript } = require('../tools/pods/pod-script-view.cjs')
+
+    // No `?slug=` means "the pod this course serves" — resolved, not assumed.
+    const slug = req.query.slug ? String(req.query.slug) : await fetchServingSlug(supabase, courseCode)
+    if (!slug) return res.status(404).json({ error: `${courseCode} has no serving core pod (looked for ${SERVING_POD_SLUGS.join(', ')})` })
+    const podId = `${courseCode}:${slug}`
 
     const { data: pod, error: podErr } = await supabase
       .from('listening_pods')

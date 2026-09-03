@@ -48,10 +48,10 @@
           </select>
 
           <span v-if="fleetLoading" class="text-xs text-faint">Loading courses…</span>
-          <span v-else class="text-xs text-faint">{{ fleet.length }} Pod 1 courses</span>
+          <span v-else class="text-xs text-faint">{{ fleet.length }} courses with a pod</span>
 
           <router-link
-            v-if="courseCode"
+            v-if="courseCode && slug"
             :to="`/production/${courseCode}/pods/${slug}`"
             class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2 ml-auto"
           >Open editable pod detail</router-link>
@@ -409,7 +409,7 @@ const track = ref('target')
 const selected = ref('')
 
 const courseCode = computed(() => route.params.courseCode || '')
-const slug = computed(() => (script.value && script.value.slug) || 'pod-1')
+const slug = computed(() => (script.value && script.value.slug) || '')
 
 const sortedFleet = computed(() =>
   [...fleet.value].sort((a, b) =>

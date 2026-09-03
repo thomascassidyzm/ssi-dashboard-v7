@@ -32,7 +32,11 @@ try {
   /* dotenv optional; rely on process env */
 }
 
-const POD0_SUFFIX = 'pod-0'
+// NO LITERAL SLUG. This report used to filter on a hard-coded `pod-0` suffix,
+// which since Tom's 1-based ruling of 2026-08-22 reports ZERO sentences for the
+// 22 courses that moved to `pod-1`. The rule lives once, in
+// tools/pods/serving-slug.cjs.
+const { fetchServingSlug } = require('./pods/serving-slug.cjs')
 
 function getSupabase() {
   let createClient
@@ -80,8 +84,9 @@ async function reportCourse(supabase, courseCode, { allPods }) {
     rows.push(...(data || []))
     if (!data || data.length < PAGE) break
   }
+  const servingPodId = allPods ? null : `${courseCode}:${await fetchServingSlug(supabase, courseCode)}`
   const sents = rows.filter((r) =>
-    allPods ? true : String(r.pod_id || '').endsWith(POD0_SUFFIX),
+    allPods ? true : String(r.pod_id || '') === servingPodId,
   )
   const has = (v) => v !== null && v !== undefined && v !== '' &&
     !(Array.isArray(v) && v.length === 0)

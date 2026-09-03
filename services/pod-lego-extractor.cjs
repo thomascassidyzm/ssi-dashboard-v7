@@ -329,7 +329,11 @@ function getSupabase() {
   })
 }
 
-const TARGET_POD_SUFFIX = 'pod-0'
+// NO LITERAL SLUG. This read used to keep `pod-0` as a constant, which since Tom's
+// 1-based ruling of 2026-08-22 silently extracts NOTHING for the 22 courses that
+// moved to `pod-1`. The serving slug is a per-course fact; the rule lives once, in
+// tools/pods/serving-slug.cjs.
+const { fetchServingSlug } = require('../tools/pods/serving-slug.cjs')
 
 /** Load pod sentences + their existing explainer_decomposition for a course. */
 async function loadSentences(supabase, courseCode, { allPods = false } = {}) {
@@ -339,8 +343,9 @@ async function loadSentences(supabase, courseCode, { allPods = false } = {}) {
     .like('pod_id', `${courseCode}:%`)
   const { data, error } = await q
   if (error) throw new Error(`load sentences: ${error.message}`)
+  const servingPodId = allPods ? null : `${courseCode}:${await fetchServingSlug(supabase, courseCode)}`
   const rows = (data || []).filter((r) =>
-    allPods ? true : String(r.pod_id || '').endsWith(TARGET_POD_SUFFIX),
+    allPods ? true : String(r.pod_id || '') === servingPodId,
   )
   return rows.map((r) => ({
     id: r.id,

@@ -24,7 +24,7 @@
         <div class="flex-1 min-w-0">
           <!-- No serving core pod yet: this is the create step -->
           <template v-if="!corePod">
-            <div class="text-sm font-semibold text-ink">Generate Pod 0 from canonical scenarios</div>
+            <div class="text-sm font-semibold text-ink">Generate Pod 1 from canonical scenarios</div>
             <div class="text-xs text-muted mt-0.5">
               Flexes the 10 English scenarios into {{ getCourseName(courseCode) }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
             </div>
@@ -77,7 +77,7 @@
             @click="generatePod(false)"
             class="text-sm px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-medium"
           >
-            {{ generating ? 'Generating…' : 'Generate Pod 0' }}
+            {{ generating ? 'Generating…' : 'Generate Pod 1' }}
           </button>
           <!-- Regenerate (amber, confirmed) once it exists -->
           <button
@@ -233,12 +233,16 @@ async function authedFetch(path, init = {}) {
 // returns more_remaining.
 // `slug` is the LISTENING pod being written, and only that. It used to double as
 // the canonical slate to flex from, which is why creating a course's first core
-// pod still writes `pod-0`: that was the only slug canonical rows existed under.
-// Since 2026-09-01 the canonical slate is named separately by the API
-// (canonicalSlug), so this value means one thing. Regenerating passes the pod the
-// course ACTUALLY serves, so a 1-based course can never have its pod-1 content
-// wiped into a fresh pod-0 behind its back.
-async function generatePod(force = false, slug = 'pod-0') {
+// pod wrote `pod-0`: that was the only slug canonical rows existed under. Since
+// 2026-09-01 the canonical slate is named separately by the API (canonicalSlug),
+// so this value means one thing — and since 2026-09-03 a course's FIRST core pod
+// is created on `pod-1`, per Tom's ruling of 2026-08-22: "We want to not have a
+// Pod 0 from now on. We want this first one to be called Pod 1." The default is
+// only ever used by the green Create button, which renders solely when the course
+// has no serving core pod at all. Regenerating passes the pod the course ACTUALLY
+// serves, so a 1-based course can never have its pod-1 content wiped into a fresh
+// pod-0 behind its back.
+async function generatePod(force = false, slug = 'pod-1') {
   if (generating.value) return
   generating.value = true
   genError.value = ''
