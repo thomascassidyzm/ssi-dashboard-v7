@@ -63,6 +63,7 @@ const { execFileSync } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
 const { diffPod, norm } = require('./pod0-recording-diff.cjs')
 const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
+const { baseSlate } = require('../../services/shared/canonical-slate.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
@@ -553,11 +554,14 @@ async function main() {
     return
   }
 
-  const { data: canon, error } = await db.from('canonical_pod_scenarios')
+  const { data: __slateRaw, error } = await db.from('canonical_pod_scenarios')
     // Always CANONICAL_SLUG: this is the CANONICAL source Aran wrote, not the
     // destination pod being rewritten. --pod-slug moves where we WRITE, never
     // what we READ. (That source was named 'pod-0' until 2026-09-01.)
     .select('*').eq('pod_slug', CANONICAL_SLUG).order('global_order')
+  // Base slate only — a variant row is a continuation attached to a coordinate,
+  // not an extra line of the walk (services/shared/canonical-slate.cjs).
+  const canon = baseSlate(__slateRaw || [])
   if (error) throw error
   if (!canon.length) throw new Error(`canonical_pod_scenarios has no ${CANONICAL_SLUG} rows — refusing to align`)
 

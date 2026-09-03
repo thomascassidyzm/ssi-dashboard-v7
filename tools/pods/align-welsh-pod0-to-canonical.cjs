@@ -47,6 +47,7 @@ const { diffPod, norm } = require('./pod0-recording-diff.cjs')
 // ONE definition of "does writing here put content in front of learners?" — shared with
 // clone-pod, pod-sync and the pod generator. Never a second copy.
 const { servingRefusal, readServingFactsSupabase } = require('./serving-slug.cjs')
+const { baseSlate } = require('../../services/shared/canonical-slate.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
@@ -399,8 +400,11 @@ async function main() {
     return
   }
 
-  const { data: canon, error } = await db.from('canonical_pod_scenarios')
+  const { data: __slateRaw, error } = await db.from('canonical_pod_scenarios')
     .select('*').eq('pod_slug', CANONICAL_SLUG).order('global_order')
+  // Base slate only — a variant row is a continuation attached to a coordinate,
+  // not an extra line of the walk (services/shared/canonical-slate.cjs).
+  const canon = baseSlate(__slateRaw || [])
   if (error) throw error
   if (!canon.length) throw new Error(`canonical_pod_scenarios has no ${CANONICAL_SLUG} rows — refusing to align`)
 

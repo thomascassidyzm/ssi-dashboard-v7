@@ -105,6 +105,7 @@ function validateScene(inputLines, outLines) {
 // getting the 12-syllable ceiling for the same beginner content its unflipped
 // siblings got at 8.
 const { syllableCeilingFor } = require('./shared/pod-tiers.cjs')
+const { baseSlate } = require('./shared/canonical-slate.cjs')
 
 // The one canonical English slate every course flexes from. Renamed from 'pod-0'
 // on 2026-09-01; the slates that previously held the names 'pod-1' and 'pod-0.5'
@@ -271,11 +272,15 @@ async function loadCourse(courseCode) {
 async function loadCanonicalScenes(canonicalSlug) {
   const { data, error } = await supabase
     .from('canonical_pod_scenarios')
-    .select('scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text')
+    .select('scene_number, scene_label, scene_title, scene_subtitle, sentence_number, global_order, speaker, english_text, variant_key')
     .eq('pod_slug', canonicalSlug).order('global_order', { ascending: true })
   if (error) throw new Error(`load canonical: ${error.message}`)
+  // A variant row on a slate that HAS a walk is a continuation attached to a
+  // coordinate, not the next line of the scene — services/shared/canonical-slate.cjs.
+  // Without this the six CORE recovery halves would flatten into scenes 2/3/4/5/22
+  // and lengthen every learner's walk from 231 to 266.
   const byScene = new Map()
-  for (const r of data || []) {
+  for (const r of baseSlate(data || [])) {
     if (!byScene.has(r.scene_number)) {
       byScene.set(r.scene_number, { number: r.scene_number, label: r.scene_label, title: r.scene_title, subtitle: r.scene_subtitle, lines: [] })
     }

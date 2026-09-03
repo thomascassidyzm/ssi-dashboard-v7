@@ -25,6 +25,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.e
 const fs = require('fs')
 const { createClient } = require('@supabase/supabase-js')
 const { diffPod } = require('./pod0-recording-diff.cjs')
+const { baseSlate } = require('../../services/shared/canonical-slate.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 const arg = (n) => { const a = process.argv.find(x => x.startsWith(`--${n}=`)); return a ? a.split('=').slice(1).join('=') : null }
@@ -51,8 +52,11 @@ const isPod0 = (slug) => slug === 'pod-0' || slug === 'pod-0-unrecorded'
 const CANONICAL_SLUG = 'pod-1'
 
 ;(async () => {
-  const { data: canonRaw, error: ce } = await db.from('canonical_pod_scenarios')
+  const { data: __slateRaw, error: ce } = await db.from('canonical_pod_scenarios')
     .select('*').eq('pod_slug', CANONICAL_SLUG).order('global_order')
+  // Base slate only — a variant row is a continuation attached to a coordinate,
+  // not an extra line of the walk (services/shared/canonical-slate.cjs).
+  const canonRaw = baseSlate(__slateRaw || [])
   if (ce) throw new Error(`canonical: ${ce.message}`)
   const CANON_N = canonRaw.length
 

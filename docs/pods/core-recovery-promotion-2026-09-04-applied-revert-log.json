@@ -1,0 +1,147 @@
+{
+  "ts": "2026-09-03T23:45:52.117Z",
+  "mode": "applied",
+  "direction": "revert",
+  "flows": [
+    "recovery-s2"
+  ],
+  "rows": [
+    {
+      "before": {
+        "id": "pod-1:SC02-RS2-S01",
+        "pod_slug": "pod-1",
+        "global_order": 10001,
+        "author_notes": "edge S2 (A1001); RESTAGED verbatim from pod-1 g8 — quotation of the canon, not new material."
+      },
+      "after": {
+        "id": "core-recoveries:SC02-RS2-S01",
+        "pod_slug": "core-recoveries",
+        "global_order": 1,
+        "author_notes": "edge S2 (A1001); RESTAGED verbatim from pod-1 g8 — quotation of the canon, not new material."
+      },
+      "unchanged": {
+        "scene_number": 2,
+        "sentence_number": 1,
+        "variant_key": "recovery-s2",
+        "speaker": "Sarah",
+        "english_text": "Can you tell me how far it is into town?"
+      }
+    },
+    {
+      "before": {
+        "id": "pod-1:SC02-RS2-S02",
+        "pod_slug": "pod-1",
+        "global_order": 10002,
+        "author_notes": "edge S2 (A1001); RESTAGED verbatim from pod-1 g9 — quotation of the canon, not new material."
+      },
+      "after": {
+        "id": "core-recoveries:SC02-RS2-S02",
+        "pod_slug": "core-recoveries",
+        "global_order": 2,
+        "author_notes": "edge S2 (A1001); RESTAGED verbatim from pod-1 g9 — quotation of the canon, not new material."
+      },
+      "unchanged": {
+        "scene_number": 2,
+        "sentence_number": 2,
+        "variant_key": "recovery-s2",
+        "speaker": "Passenger",
+        "english_text": "It's not very far. Maybe three or four miles."
+      }
+    },
+    {
+      "before": {
+        "id": "pod-1:SC02-RS2-S03",
+        "pod_slug": "pod-1",
+        "global_order": 10003,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "after": {
+        "id": "core-recoveries:SC02-RS2-S03",
+        "pod_slug": "core-recoveries",
+        "global_order": 3,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "unchanged": {
+        "scene_number": 2,
+        "sentence_number": 3,
+        "variant_key": "recovery-s2",
+        "speaker": "Sarah",
+        "english_text": "Three or four miles — I could walk that. I might get off at the next stop, then, and walk the rest. It's a nice morning for it."
+      }
+    },
+    {
+      "before": {
+        "id": "pod-1:SC02-RS2-S04",
+        "pod_slug": "pod-1",
+        "global_order": 10004,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "after": {
+        "id": "core-recoveries:SC02-RS2-S04",
+        "pod_slug": "core-recoveries",
+        "global_order": 4,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "unchanged": {
+        "scene_number": 2,
+        "sentence_number": 4,
+        "variant_key": "recovery-s2",
+        "speaker": "Passenger",
+        "english_text": "Oh — hold on. There's the sign: six miles to town. It's further than I thought. I'm sorry."
+      }
+    },
+    {
+      "before": {
+        "id": "pod-1:SC02-RS2-S05",
+        "pod_slug": "pod-1",
+        "global_order": 10005,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "after": {
+        "id": "core-recoveries:SC02-RS2-S05",
+        "pod_slug": "core-recoveries",
+        "global_order": 5,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "unchanged": {
+        "scene_number": 2,
+        "sentence_number": 5,
+        "variant_key": "recovery-s2",
+        "speaker": "Sarah",
+        "english_text": "Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way."
+      }
+    },
+    {
+      "before": {
+        "id": "pod-1:SC02-RS2-S06",
+        "pod_slug": "pod-1",
+        "global_order": 10006,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "after": {
+        "id": "core-recoveries:SC02-RS2-S06",
+        "pod_slug": "core-recoveries",
+        "global_order": 6,
+        "author_notes": "edge S2 (A1001); authored recovery turn — attaches to pod-1 scene 2, does not append to it."
+      },
+      "unchanged": {
+        "scene_number": 2,
+        "sentence_number": 6,
+        "variant_key": "recovery-s2",
+        "speaker": "Passenger",
+        "english_text": "Do that. It's the last stop, anyway — you can't miss it."
+      }
+    }
+  ],
+  "walkBefore": {
+    "count": 231,
+    "total": 237,
+    "sha256": "c6146d76abed0feb9cdd9922d565d1f264d52a5467fbe00cbf2924cbeaf47451"
+  },
+  "walkAfter": {
+    "count": 231,
+    "total": 231,
+    "sha256": "c6146d76abed0feb9cdd9922d565d1f264d52a5467fbe00cbf2924cbeaf47451"
+  },
+  "reconciled": 6
+}

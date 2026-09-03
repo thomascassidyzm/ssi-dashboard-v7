@@ -26,6 +26,7 @@ const { createClient } = require('@supabase/supabase-js')
 const { S3Client, PutObjectCommand, HeadObjectCommand, GetObjectCommand } = require('@aws-sdk/client-s3')
 const { v4: uuidv4 } = require('uuid')
 const { AUDIO_CACHE_CONTROL } = require('../shared/audio-cache-control.cjs')
+const { baseSlate } = require('../shared/canonical-slate.cjs')
 const { swapClipInPlace, writeOrSwapClip } = require('../shared/audio-revision-swap.cjs')
 const fs = require('fs-extra')
 const path = require('path')
@@ -7459,11 +7460,14 @@ const CANON_PLACEHOLDER_RE = /\[target language\]/i
 async function loadPod0Canon() {
   const { data, error } = await supabase
     .from('canonical_pod_scenarios')
-    .select('global_order, english_text')
+    .select('global_order, english_text, variant_key')
     .eq('pod_slug', CANON_SLUG)
     .order('global_order')
   if (error) throw new Error(`canonical lookup failed: ${error.message}`)
-  return data || []
+  // Base rows only: podCanonReuseTexts refuses the whole pod when the counts
+  // disagree, so an attached continuation would silently switch OFF cross-course
+  // audio reuse for every pod-1 course and cost real TTS.
+  return baseSlate(data || [])
 }
 
 /**
