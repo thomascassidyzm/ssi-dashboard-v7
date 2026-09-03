@@ -365,6 +365,48 @@ const BOUNDARY_MIN_MARGIN_SEC = Number(process.env.RECORDING_GATE_BOUNDARY_MARGI
 const BOUNDARY_MIN_RANGE_DB = Number(process.env.RECORDING_GATE_BOUNDARY_MIN_RANGE_DB || 12)
 
 /**
+ * How long a near-speech run has to be before it counts as the FIRST or LAST
+ * word rather than a tick.
+ *
+ * ── WHY THIS EXISTS (Tom's zzz session, 2026-09-03 00:15-00:18 UTC) ─────────
+ *
+ * Four of twelve takes were refused as truncated. None of them was truncated.
+ * Measured on the archived raw bytes of all four, frame envelope, same code
+ * path as below — what the boundary was being taken from, against what the
+ * read actually was:
+ *
+ *   take        edge run the gate stopped on      the real first/last word
+ *   3A0B0B65    0.06 s,  10 ms, -34.4 dB          1.96 s, 240 ms, -16.8 dB
+ *   A82355A4    0.05 s,  20 ms, -33.5 dB          2.24 s, 420 ms, -13.2 dB
+ *   1D8D62DA    0.05 s,  20 ms, -38.1 dB          1.73 s, 200 ms, -17.4 dB
+ *   C5143A1C    7.03 s (tail), 10 ms, -34.4 dB    ends 5.84 s, 1.29 s of room
+ *
+ * Every one is a 10-30 ms tick at the very edge of the capture -- the stream
+ * start/stop transient -- sitting 17 to 21 dB under the read. The 90th-
+ * percentile speech level on those takes is low enough that the tick clears
+ * `speechDb - 10`, so it was being read as the first word, the lead margin came
+ * out at 0.05-0.06 s against a 0.10 s floor, and four good reads with one and
+ * two SECONDS of room in front of them were thrown away.
+ *
+ * A LENGTH TEST, NOT A LOUDER LINE. Moving the dB line would have to move it
+ * past a genuinely quiet first consonant, which is the one thing this gate must
+ * never do. What separates these two populations cleanly is duration: 10-30 ms
+ * against 200-840 ms on the same eight takes, a factor of nearly seven at its
+ * narrowest. 60 ms sits 2x above the longest tick measured and 3.3x below the
+ * shortest real word measured. No adult voice puts a syllable in 60 ms.
+ *
+ * SAFE IN THE DIRECTION THAT MATTERS. A genuinely clipped take -- Aran's, the
+ * population this gate was built for -- opens at frame zero on a whole WORD,
+ * hundreds of milliseconds long. That run passes this floor, the lead is still
+ * 0.00 s, and it is still refused. And if no run anywhere in a take reaches the
+ * floor, `found` goes false, which the caller treats as UNCHECKED and flags --
+ * never as a refusal. This can lose a refusal; it cannot lose a take.
+ *
+ * DEFAULT, not a ruling.
+ */
+const EDGE_MIN_RUN_SEC = Number(process.env.RECORDING_GATE_EDGE_MIN_RUN_SEC || 0.06)
+
+/**
  * How much room is there outside the read, at each end? Pure — this is the part
  * the tests pin, and it takes samples so a test can build its own signal.
  *
@@ -386,10 +428,22 @@ function boundaryMargins (samples, sampleRate, opts = {}) {
     return { ...base, nearSpeechDb: null, leadSec: null, tailSec: null, found: false }
   }
   const nearSpeechDb = lv.speechDb - belowDb
+  // The first and last frames of a near-speech run LONG ENOUGH TO BE A WORD.
+  // A bare "first frame over the line" stops on the capture's own start/stop
+  // tick -- see EDGE_MIN_RUN_SEC above for the four takes that cost.
+  const minRun = Math.max(1, Math.round(
+    (opts.minRunSec != null ? opts.minRunSec : EDGE_MIN_RUN_SEC) * 1000 / fr.hopMs
+  ))
   let first = -1
   let last = -1
-  for (let i = 0; i < fr.db.length; i++) {
-    if (fr.db[i] >= nearSpeechDb) { if (first < 0) first = i; last = i }
+  let runStart = -1
+  for (let i = 0; i <= fr.db.length; i++) {
+    const over = i < fr.db.length && fr.db[i] >= nearSpeechDb
+    if (over) { if (runStart < 0) runStart = i; continue }
+    if (runStart >= 0) {
+      if (i - runStart >= minRun) { if (first < 0) first = runStart; last = i - 1 }
+      runStart = -1
+    }
   }
   if (first < 0) return { ...base, nearSpeechDb, leadSec: null, tailSec: null, found: false }
   const hopSec = fr.hopMs / 1000
@@ -495,4 +549,5 @@ module.exports = {
   NEAR_SPEECH_BELOW_DB,
   BOUNDARY_MIN_MARGIN_SEC,
   BOUNDARY_MIN_RANGE_DB,
+  EDGE_MIN_RUN_SEC,
 }

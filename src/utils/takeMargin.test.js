@@ -43,9 +43,25 @@ describe('marginVerdict', () => {
     expect(marginVerdict(3.0, 3.0).state).toBe('tight')
   })
 
-  it('calls a clip longer than its own original what it is', () => {
-    const v = marginVerdict(3.0, 3.4)
+  it('calls a clip a whole second longer than its original what it is', () => {
+    const v = marginVerdict(3.0, 4.5)
     expect(v.state).toBe('impossible')
     expect(v.text).toContain('not the same take')
+  })
+
+  /**
+   * THE 2026-09-03 FALSE ALARM, pinned. "no voy a poder" measured 5.23 s raw
+   * and 5.28 s processed IN THE BROWSER and was declared a different take. The
+   * two S3 objects decode to 5.240 s and 5.237 s — the same take, 3 ms apart.
+   * The 44 ms is WebM/Opus and LAME MP3 disagreeing about their own length.
+   */
+  it('does not cry mismatch over codec padding', () => {
+    const v = marginVerdict(5.23, 5.28)
+    expect(v.state).toBe('tight')
+    expect(v.text).not.toContain('not the same take')
+  })
+
+  it('still says nothing was trimmed, because that part was true', () => {
+    expect(marginVerdict(5.23, 5.28).text).toContain('no room to spare')
   })
 })

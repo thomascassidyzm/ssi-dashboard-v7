@@ -21,6 +21,24 @@ import { recordingApiBase as apiBase } from '@/services/recordingApi'
 const MAX_RETRIES = 3
 const RETRY_BACKOFF = [1000, 3000, 8000]
 
+/**
+ * How long one upload attempt may run before it counts as failed.
+ *
+ * `fetch` has no timeout of its own. On a phone that walks out of signal
+ * mid-post, the promise below simply never settles: the take sits on "Saving…
+ * not playable yet" for ever, the whole sequential queue stops behind it, and
+ * every line the recordist reads after that point queues up behind a request
+ * that is never coming back. There is no terminal state and nothing on the
+ * screen ever says so — which is the one failure this queue must not have.
+ *
+ * 90 s is deliberately generous: a 250 KB take on a bad connection, plus the
+ * server's own trim, master, S3 write and provenance row, is a few seconds on a
+ * good day and tens on a bad one. This is the "the network has gone" line, not
+ * a performance budget. A timeout is transient, so it retries under the backoff
+ * above and only becomes a refusal — in words, on the line — after all three.
+ */
+const UPLOAD_TIMEOUT_MS = 90000
+
 
 export function useRecordistQueue() {
   const queue = []
@@ -101,10 +119,30 @@ export function useRecordistQueue() {
     form.append('lineId', String(item.lineId))
     form.append('text', item.text || '')
     if (item.device) form.append('device', item.device)
-    const res = await fetch(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(item.voiceId)}/take`,
-      { method: 'POST', headers: { 'ngrok-skip-browser-warning': 'true' }, body: form }
-    )
+    const ctl = typeof AbortController === 'function' ? new AbortController() : null
+    const timer = ctl ? setTimeout(() => ctl.abort(), UPLOAD_TIMEOUT_MS) : null
+    let res
+    try {
+      res = await fetch(
+        `${apiBase()}/api/recording/voice/${encodeURIComponent(item.voiceId)}/take`,
+        {
+          method: 'POST',
+          headers: { 'ngrok-skip-browser-warning': 'true' },
+          body: form,
+          ...(ctl ? { signal: ctl.signal } : {}),
+        }
+      )
+    } catch (err) {
+      // An abort is this timeout firing, and it must read as a network failure
+      // rather than as the browser's own 'AbortError' — the recordist is being
+      // told what happened to their take, not what happened to a promise.
+      if (err && err.name === 'AbortError') {
+        throw new Error('That take took too long to reach the server — trying again.')
+      }
+      throw err
+    } finally {
+      if (timer) clearTimeout(timer)
+    }
     if (!res.ok) {
       const data = await res.json().catch(() => ({}))
       const err = new Error(data.error || `That take did not save (${res.status}).`)

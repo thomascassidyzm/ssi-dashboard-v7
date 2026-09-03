@@ -208,6 +208,60 @@ describe('boundaryMargins', () => {
     expect(m.found).toBe(false)
     expect(m.leadSec).toBeNull()
   })
+
+  /**
+   * THE 2026-09-03 REGRESSION, and the reason EDGE_MIN_RUN_SEC exists.
+   *
+   * A `tick` is the capture's own start/stop transient: 10-30 ms, and 17-21 dB
+   * under the read on all four of the takes Tom lost that night. It clears
+   * `speechDb - 10` and used to BE the boundary, so a take with two seconds of
+   * room in front of it measured 0.05 s of lead and was refused as truncated.
+   */
+  function withTick (samples, { atSec, lenSec = 0.02, db = -18 }) {
+    const s = Float32Array.from(samples)
+    const from = Math.round(atSec * SR)
+    const to = Math.min(s.length, from + Math.round(lenSec * SR))
+    const amp = Math.pow(10, db / 20)
+    for (let i = from; i < to; i++) s[i] = amp * Math.sin((2 * Math.PI * 900 * i) / SR)
+    return s
+  }
+
+  it('does not take its boundary from a tick at the very edge of the capture', () => {
+    const clean = take({ leadSec: 1.5, speechSec: 1, tailSec: 1.5 })
+    const m = G.boundaryMargins(withTick(clean, { atSec: 0.05 }), SR)
+    expect(m.found).toBe(true)
+    // The read still starts where it started, not at the tick.
+    expect(m.leadSec).toBeGreaterThan(1.2)
+  })
+
+  it('does not take its tail from a tick either', () => {
+    const clean = take({ leadSec: 1.5, speechSec: 1, tailSec: 1.5 })
+    const m = G.boundaryMargins(withTick(clean, { atSec: 3.95 }), SR)
+    expect(m.tailSec).toBeGreaterThan(1.2)
+  })
+
+  /**
+   * THE THING THIS MUST NOT COST. Aran's clipped clips open at frame zero on a
+   * whole WORD, hundreds of milliseconds long. That run is far over the floor,
+   * so the lead is still 0 and the take is still refused. Verified on the real
+   * bytes too, 2026-09-03: 4EDDD4BF, 23C30920, 9763189B and 8B5EBE6C all still
+   * refuse after this change.
+   */
+  it('still reads a whole word at frame zero as a clipped take', () => {
+    const m = G.boundaryMargins(take({ leadSec: 0, speechSec: 1, tailSec: 0.4 }), SR)
+    expect(m.leadSec).toBeLessThan(0.02)
+  })
+
+  it('leaves a room-and-tick take to the dynamic-range guard, not to a refusal', () => {
+    // Nothing here is a read. The margins this returns are meaningless either
+    // way, and what stops that becoming a refusal is BOUNDARY_MIN_RANGE_DB —
+    // the take comes back UNCHECKED, which the caller flags. Pinned because the
+    // edge-run floor must never become the only thing standing between an
+    // unreadable take and a refusal.
+    const room = take({ leadSec: 2, speechSec: 0, tailSec: 0 })
+    const m = G.boundaryMargins(withTick(room, { atSec: 0.05 }), SR)
+    expect(m.rangeDb).toBeLessThan(G.BOUNDARY_MIN_RANGE_DB)
+  })
 })
 
 describe('checkTakeBoundaries — the operating point', () => {
