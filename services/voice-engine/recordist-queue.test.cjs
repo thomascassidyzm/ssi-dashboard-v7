@@ -226,13 +226,68 @@ test('a want on ANY course’s copy of a collapsed line wants the one recording'
   assert.equal(q.lines.find((l) => l.text === 'Bore da.').recorded, false)
 })
 
-test('a want on the KNOWN track never reaches the target queue', async () => {
-  // The known side of a human_only course is English and is somebody else's
-  // queue entirely; reading it here would put lines in the wrong person's list.
+// ── the known track (Tom, 2026-09-03) ───────────────────────────────────────
+//
+// WAS: "a want on the KNOWN track never reaches the target queue" — the known
+// side is English, English has TTS, and reading it here would put lines in the
+// wrong person's list. That is still the default and still what happens to
+// every pod line that does not ask otherwise. It stopped being the whole story
+// when a pod arrived whose English exists nowhere else in the estate (the
+// Senedd/S4C pod, built for one learner): there is no English recording to
+// reuse and no TTS pass planned, so the human reading the Welsh reads the
+// English too. The ask is per SENTENCE, so it cannot leak into another pod.
+
+test('a known want does not change the TARGET line it sits on', async () => {
   const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
   f.listening_pod_sentences[0].rerecord_wanted = { known: 'human_aran_cym_n' }
   const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
   assert.equal(q.lines.find((l) => l.text === 'Bore da.').recorded, true)
+})
+
+test('a known want puts the ENGLISH line in the named voice\'s queue', async () => {
+  const f = fixture()
+  f.listening_pod_sentences[0].rerecord_wanted = { known: 'human_aran_cym_n' }
+  const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  const known = q.lines.find((l) => l.kind === 'known')
+  assert.ok(known, 'the English line is queued')
+  assert.equal(known.text, 'Good morning.')
+  assert.equal(known.id, 's1#known', 'the track rides on the id, so the recorder needs no new field')
+  assert.match(known.knownText, /ENGLISH/, 'and it says out loud why an English line is here')
+})
+
+test('no known want, no English anywhere in the queue', async () => {
+  const q = await buildQueue(stubDb(fixture()), await resolveRecordist(stubDb(fixture()), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(q.lines.filter((l) => l.kind === 'known').length, 0)
+  assert.equal(q.lines.some((l) => l.text === 'Good morning.'), false)
+})
+
+test('a known want routes to the voice it NAMES, not to the line\'s cast', async () => {
+  // The line is cast to Aran; the English is asked of Catrin. pods-plan states
+  // this rule for the same flag, and the two surfaces must not disagree.
+  const f = fixture()
+  f.listening_pod_sentences[0].rerecord_wanted = { known: 'human_catrinlliar_cym_n' }
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  const catrin = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_catrinlliar_cym_n'), { includeRecorded: true })
+  assert.equal(aran.lines.filter((l) => l.kind === 'known').length, 0)
+  assert.deepEqual(catrin.lines.filter((l) => l.kind === 'known').map((l) => l.text), ['Good morning.'])
+})
+
+test('an English line is scored against ENGLISH clips, never Welsh ones', async () => {
+  // A Welsh clip whose text happens to normalise the same must not mark the
+  // English line done — that is the whole reason the language rides on the line.
+  const f = fixture({ audio: [
+    { language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'good morning' },
+  ] })
+  f.listening_pod_sentences[0].rerecord_wanted = { known: 'human_aran_cym_n' }
+  let q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(q.lines.find((l) => l.kind === 'known').recorded, false)
+
+  const g = fixture({ audio: [
+    { language: 'eng', voice_id: 'human_aran_cym_n', text_normalized: 'good morning' },
+  ] })
+  g.listening_pod_sentences[0].rerecord_wanted = { known: 'human_aran_cym_n' }
+  q = await buildQueue(stubDb(g), await resolveRecordist(stubDb(g), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(q.lines.find((l) => l.kind === 'known').recorded, true)
 })
 
 test('a CLIP flagged rerecord_wanted re-opens the pod line of the same identity', async () => {

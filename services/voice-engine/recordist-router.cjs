@@ -37,6 +37,8 @@ const {
   languageName,
   propagateTakeToDuplicates,
   clearRerecordWants,
+  clearKnownRerecordWant,
+  splitLineId,
 } = require('./recordist-queue.cjs')
 const { canonicalLanguage, canonicalVoiceId, ClipIdentityError } = require('../shared/clip-identity.cjs')
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
@@ -259,11 +261,16 @@ module.exports = function createRecordistRouter({
       }
       if (!lineId) return res.status(400).json({ error: 'lineId required' })
 
+      // A queue id may name the KNOWN track of a pod line (`<id>#known`) — the
+      // opt-in exception described in recordist-queue.cjs. The suffix decides
+      // which track the take is filed under, and nothing else.
+      const { sentenceId: lineSentenceId, track } = splitLineId(lineId)
+
       // The line decides the course; the recordist decides the voice.
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
-        .select('id, pod_id, target_text, target_audio_id')
-        .eq('id', lineId)
+        .select('id, pod_id, target_text, known_text, target_audio_id, rerecord_wanted')
+        .eq('id', lineSentenceId)
         .maybeSingle()
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
 
@@ -291,7 +298,14 @@ module.exports = function createRecordistRouter({
       if (podErr) throw new Error(`pod lookup failed: ${podErr.message}`)
       if (!pod) return res.status(404).json({ error: `Line ${lineId} has no pod` })
 
-      const lineText = (sentence.target_text || '').trim()
+      const isKnownTrack = track === 'known'
+      if (isKnownTrack && !(sentence.rerecord_wanted && sentence.rerecord_wanted.known)) {
+        return res.status(409).json({
+          error: 'That line is not asking for its English to be recorded. The known side is normally ' +
+            'synthesised; a human reads it only where the pod line itself says so.',
+        })
+      }
+      const lineText = (isKnownTrack ? (sentence.known_text || '') : (sentence.target_text || '')).trim()
       if (text && text.trim() && text.trim() !== lineText) {
         // The stored line is authoritative; a client-sent text that disagrees is
         // a stale queue, and silently recording it would file the take under an
@@ -319,7 +333,7 @@ module.exports = function createRecordistRouter({
             mode: 'pod',
             podId: pod.id,
             sentenceId: sentence.id,
-            kind: 'target',
+            kind: isKnownTrack ? 'known' : 'target',
             text: lineText,
             voiceId: recordist.voiceId,
           },
@@ -339,6 +353,27 @@ module.exports = function createRecordistRouter({
       // One recording fills every duplicate of this line across the language —
       // the other half of the queue's dedupe promise. Runs AFTER the take is
       // stored (make-before-break); a failure here never fails the take.
+      // A known take is bespoke by definition — that is why a human is reading
+      // it at all — so nothing else in the language shares it: no propagation,
+      // and only this one sentence's want to retire.
+      if (isKnownTrack) {
+        let knownRetired = 0
+        try {
+          knownRetired = await clearKnownRerecordWant({ db: db(), sentenceId: sentence.id, logger })
+        } catch (wantErr) {
+          logger.error('[Recordist] known want retirement failed (take is stored): ' + wantErr.message)
+        }
+        return res.json({
+          ok: true,
+          audioId: captured.body.uuid,
+          kind: 'known',
+          clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(lineId)}/clip`,
+          alsoFilled: 0,
+          rawKey: captured.body.rawKey || null,
+          wantsRetired: knownRetired,
+        })
+      }
+
       let propagation = { linked: [] }
       try {
         propagation = await propagateTakeToDuplicates({
@@ -398,32 +433,39 @@ module.exports = function createRecordistRouter({
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
 
+      const { sentenceId: clipSentenceId, track: clipTrack } = splitLineId(req.params.lineId)
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
-        .select('id, target_text, target_audio_id')
-        .eq('id', req.params.lineId)
+        .select('id, target_text, known_text, target_audio_id, known_audio_id')
+        .eq('id', clipSentenceId)
         .maybeSingle()
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
       if (!sentence) return res.status(404).json({ error: `No line ${req.params.lineId}` })
 
+      const isKnownTrack = clipTrack === 'known'
+      const trackText = (isKnownTrack ? sentence.known_text : sentence.target_text) || ''
+      const trackAudioId = isKnownTrack ? sentence.known_audio_id : sentence.target_audio_id
+
       let row = null
-      if (sentence.target_audio_id) {
+      if (trackAudioId) {
         const { data } = await db()
           .from('course_audio').select('id, s3_key, voice_id, language')
-          .eq('id', sentence.target_audio_id).maybeSingle()
+          .eq('id', trackAudioId).maybeSingle()
         // Only the recordist's OWN take is served back to them here: a line
         // whose FK still points at another voice's clip is not "their clip".
         if (data && recordist.spellings.includes(data.voice_id)) row = data
       }
-      if (!row) {
+      if (!row && !isKnownTrack) {
         // The FK may not have been set (another course's copy of the same line),
-        // so fall back to the clip's identity: (language, text, voice).
+        // so fall back to the clip's identity: (language, text, voice). Target
+        // track only — a known clip is stored under the KNOWN language, and
+        // widening this read to it would serve back the wrong language.
         const { data } = await db()
           .from('course_audio')
           .select('id, s3_key, voice_id, language, created_at')
           .eq('language', recordist.language)
           .in('voice_id', recordist.spellings)
-          .in('text_normalized', audioKeyCandidates((sentence.target_text || '').trim()))
+          .in('text_normalized', audioKeyCandidates(trackText.trim()))
           .order('created_at', { ascending: false })
           .limit(1)
         row = data && data[0] ? data[0] : null
