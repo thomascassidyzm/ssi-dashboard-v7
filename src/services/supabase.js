@@ -441,13 +441,13 @@ export async function getSeedGrid(courseCode) {
  * services/gender-haiku-service.cjs `loadGenderMap`).
  *
  * A seed is marked when ANY of its known-side text is paired — the seed cue,
- * a LEGO, or a practice phrase (build / use / component). A seed whose own cue
- * is ungendered but whose phrases are gendered is exactly the case the marker
- * has to catch, so all three layers are checked, not just the cue.
+ * a LEGO, a LEGO component, or a practice phrase (build / use / component). A
+ * seed whose own cue is ungendered but whose phrases are gendered is exactly
+ * the case the marker has to catch, so every layer is checked, not just the cue.
  *
- * Cost is kept down by asking each table for `seed_number, known_text` only,
- * and by reading the expansions FIRST: a course with no known-side rows stops
- * there and never touches the phrase table.
+ * Cost is kept down by asking each table for the known-side columns only, and
+ * by reading the expansions FIRST: a course with no known-side rows stops there
+ * and never touches the phrase table.
  *
  * Display only — nothing here touches audio, alternation or approval state.
  * Returns empty structures for a course with no known-side rows.
@@ -493,10 +493,10 @@ export async function getKnownGenderPairs(courseCode) {
   // The three reads run together; a cold phrase table occasionally hits the
   // statement timeout under that load, so a failed layer is retried once
   // rather than silently leaving its seeds unmarked.
-  const layer = async (table) => {
+  const layer = async (table, columns) => {
     const read = () => supabase
       .from(table)
-      .select('seed_number, known_text')
+      .select(columns)
       .eq('course_code', courseCode)
       .range(0, PAGE_MAX)
     let res = await read()
@@ -505,15 +505,20 @@ export async function getKnownGenderPairs(courseCode) {
     return res
   }
   const layers = await Promise.all([
-    layer('course_seeds'),
-    layer('course_legos'),
-    layer('course_practice_phrases')
+    layer('course_seeds', 'seed_number, known_text'),
+    // `components` carries an M-LEGO's component known texts, which are a layer
+    // of their own: a few are gendered without the LEGO or any phrase being so.
+    layer('course_legos', 'seed_number, known_text, components'),
+    layer('course_practice_phrases', 'seed_number, known_text')
   ])
 
   const seeds = new Set()
   for (const res of layers) {
     for (const row of res.data || []) {
       if (row.known_text && pairs.has(row.known_text)) seeds.add(row.seed_number)
+      for (const c of Array.isArray(row.components) ? row.components : []) {
+        if (c && c.known && pairs.has(c.known)) seeds.add(row.seed_number)
+      }
     }
   }
 
