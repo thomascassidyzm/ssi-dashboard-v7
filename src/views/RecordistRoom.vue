@@ -1,6 +1,16 @@
 <template>
   <!-- data-surface: a marker a human can grep for in the served bundle to prove this shipped -->
-  <div class="recordist" data-surface="one-recordist-surface-2026-08-14">
+  <div class="recordist" data-surface="one-recordist-surface-2026-08-14" :data-durable-takes="DURABLE_TAKES_FEATURE">
+    <!-- IS MY WORK SAFE? Answered in words, at the top, in every phase.
+         Before 2026-09-03 the only answer on this screen was "Saving…" on the
+         done card, an artist could not tell a take that was on its way from one
+         that had already been thrown away after three failed tries, and Aran
+         finished a ~250-line session unable to tell. The three states below are
+         genuinely different things and they must never be worded the same. -->
+    <div v-if="safetyBanner" class="safety-banner" :class="safetyBanner.cls">
+      <strong>{{ safetyBanner.head }}</strong>
+      <span>{{ safetyBanner.detail }}</span>
+    </div>
     <!-- Loading -->
     <section v-if="phase === 'loading'" class="rc-card center">
       <div class="rc-spinner"></div>
@@ -372,9 +382,14 @@
 
     <!-- ── Done ───────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'done'" class="rc-card">
-      <h2>{{ queue.pendingCount.value > 0 ? 'Saving…' : 'All saved' }}</h2>
+      <h2>{{ doneHeadline }}</h2>
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
-      <p v-if="queue.pendingCount.value > 0" class="note">Keep this page open until everything has saved.</p>
+      <!-- "Keep this page open until everything has saved" was the honest thing
+           to say while the takes lived in a JavaScript array. It is not the
+           honest thing to say now: the recordings are on the device and they go
+           up next time the booth opens. Saying the frightening thing when the
+           reassuring one is TRUE is its own kind of lie. -->
+      <p v-if="queue.pendingCount.value > 0" class="note">{{ doneNote }}</p>
 
       <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
 
@@ -453,7 +468,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
-import { useRecordistQueue } from '@/composables/useRecordistQueue'
+import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
@@ -1040,9 +1055,60 @@ function storedUrlFor(lineId) {
   return line?.clipUrl ? recordistClipUrl(props.voiceId, lineId) : null  // a take from a previous session
 }
 function isPending(lineId) {
+  // `isUnsent` is the durable answer — it covers takes carried over from a
+  // previous session, which sessionIds knows nothing about.
+  if (queue.isUnsent(lineId)) return true
   return !queue.saved.has(lineId) && !queue.failed.has(lineId) && sessionIds.value.includes(lineId)
 }
 function hasFailed(lineId) { return queue.failed.has(lineId) }
+
+// ── Is my work safe? ────────────────────────────────────────────────────────
+// Three states, three sets of words, and they are never interchangeable:
+//   • the device is not persisting     — closing this tab really does lose work
+//   • takes are waiting to go up       — the bytes are safe, the upload is not done
+//   • everything is on the server      — nothing said, because nothing is wrong
+// The middle one is the one that did not exist before, and the one Aran needed
+// on the night he could not tell whether his session had survived.
+const unsentCount = computed(() => queue.pendingCount.value)
+function takesWord(n) { return n === 1 ? 'take' : 'takes' }
+
+const safetyBanner = computed(() => {
+  if (!queue.persistent.value && unsentCount.value > 0) {
+    return {
+      cls: 'risk',
+      head: `${unsentCount.value} ${takesWord(unsentCount.value)} not saved on this device`,
+      detail: 'This browser will not keep recordings, so keep this page open until they have all uploaded.',
+    }
+  }
+  if (queue.refusedCount.value > 0 && unsentCount.value === 0) {
+    return {
+      cls: 'refused',
+      head: `${queue.refusedCount.value} ${takesWord(queue.refusedCount.value)} the server would not accept`,
+      detail: 'They are listed below with the reason. Read those lines again when you can.',
+    }
+  }
+  if (unsentCount.value > 0) {
+    const carried = queue.carriedOverCount.value
+    return {
+      cls: 'waiting',
+      head: `${unsentCount.value} ${takesWord(unsentCount.value)} still to upload`,
+      detail: carried > 0
+        ? `Saved on this device — including ${carried} from an earlier session — and uploading now. Nothing is lost if you close this page.`
+        : 'Saved on this device and uploading now. Nothing is lost if you close this page.',
+    }
+  }
+  return null
+})
+
+const doneHeadline = computed(() => {
+  if (unsentCount.value === 0) return 'All saved'
+  return queue.persistent.value ? 'Saved on this device — still uploading' : 'Saving…'
+})
+const doneNote = computed(() => {
+  if (!queue.persistent.value) return 'Keep this page open until everything has saved.'
+  const n = unsentCount.value
+  return `${n} ${takesWord(n)} still to upload — they are saved on this device and will finish next time you open the booth.`
+})
 
 // ── Compare: raw original vs processed ──────────────────────────────────────
 // One open at a time. The panel owns its own audio element, so opening a second
@@ -1565,7 +1631,13 @@ function onKey(e) {
   else if (e.key === 'b' || e.key === 'B') { e.preventDefault(); onBack() }
 }
 function beforeUnloadGuard(e) {
-  if (phase.value === 'recording' || queue.pendingCount.value > 0) { e.preventDefault(); e.returnValue = '' }
+  // A take in progress is genuinely lost by leaving, and so is an unsent take
+  // on a device that will not persist it. An unsent take on a device that WILL
+  // is not at risk, and throwing the browser's "Leave site?" dialog at the
+  // artist over it would be telling them their work is in danger when it is
+  // not. The banner says what is happening; this only stops a real loss.
+  const atRisk = phase.value === 'recording' || (queue.pendingCount.value > 0 && !queue.persistent.value)
+  if (atRisk) { e.preventDefault(); e.returnValue = '' }
 }
 
 // ── Load ────────────────────────────────────────────────────────────────────
@@ -1600,6 +1672,10 @@ async function load() {
     quarry.value = data.quarry || null
     if (data.quarry && data.quarry.maxSeed) maxSeed.value = data.quarry.maxSeed
     lines.value = Array.isArray(data.lines) ? data.lines : []
+    // RESUME. Anything left on the device by an earlier session — a tab closed
+    // mid-upload, a phone that slept, a chalet with no signal — is picked up
+    // here and starts going up before he reads a word.
+    queue.attach(props.voiceId)
     doneIds.value = new Set()
     sessionIds.value = []
     lastLine.value = null
@@ -1623,6 +1699,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('beforeunload', beforeUnloadGuard)
   stopPlayback()
   if (recorder.isRecording.value) recorder.stop()
+  queue.teardown()
 })
 
 watch(() => props.voiceId, load, { immediate: true })
@@ -1647,6 +1724,27 @@ watch(() => props.voiceId, load, { immediate: true })
   margin-top: 1.5rem;
 }
 .rc-card.center { text-align: center; }
+
+/* The safety banner. Above everything, in every phase, and it takes no room
+   at all when there is nothing to say — a badge that is always on screen stops
+   being read within a session. Colour carries the same three-way distinction
+   as the words, never instead of them. */
+.safety-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  line-height: 1.45;
+  border: 1px solid transparent;
+}
+.safety-banner strong { font-size: 0.92rem; font-weight: 600; }
+.safety-banner span { color: inherit; opacity: 0.85; }
+.safety-banner.waiting { background: rgba(56, 132, 255, 0.13); border-color: rgba(56, 132, 255, 0.4); color: #cfe0ff; }
+.safety-banner.risk { background: rgba(220, 78, 65, 0.15); border-color: rgba(220, 78, 65, 0.5); color: #ffd3ce; }
+.safety-banner.refused { background: rgba(232, 160, 42, 0.14); border-color: rgba(232, 160, 42, 0.45); color: #ffe2b0; }
 .rc-hello { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.35rem; }
 .rc-card h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0 0 0.6rem; }
 .rc-card h3 { font-size: 0.95rem; margin: 1.25rem 0 0.35rem; }
