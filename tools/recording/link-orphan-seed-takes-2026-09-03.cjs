@@ -109,10 +109,20 @@ async function main() {
     }
     log.push({ ...item, action: APPLY ? 'linked' : 'would-link', from: current, fromVoice: holder })
     if (!APPLY) continue
-    const { error: upErr } = await db.from('course_seeds')
+    // The before-state guard is the write's own WHERE clause. An EMPTY slot has
+    // to be matched with IS NULL: `.eq(col, null)` sends `eq.null`, which Postgres
+    // reads as the literal string "null" and rejects on a uuid column (observed
+    // 2026-09-03 on the first of Kai's 20 empty slots — the run aborted having
+    // written nothing wrong).
+    let q = db.from('course_seeds')
       .update({ [`${item.role}_audio_id`]: item.audioId })
-      .eq('id', item.seedId).eq(`${item.role}_audio_id`, current)
+      .eq('id', item.seedId)
+    q = current ? q.eq(`${item.role}_audio_id`, current) : q.is(`${item.role}_audio_id`, null)
+    const { data: written, error: upErr } = await q.select('id')
     if (upErr) throw new Error(`link failed for ${item.seedId}: ${upErr.message}`)
+    // A guard that matches nothing returns no error, only an empty set. Drift is
+    // an abort, never a silent no-op.
+    if (!written || written.length !== 1) throw new Error(`before-state drift for ${item.seedId}: ${written ? written.length : 0} rows matched`)
   }
 
   const out = path.join(__dirname, `link-orphan-seed-takes-2026-09-03-${APPLY ? 'applied' : 'dryrun'}-log.json`)
