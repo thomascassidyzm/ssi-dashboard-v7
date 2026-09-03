@@ -1,0 +1,802 @@
+{
+ "course": "eng_for_hin",
+ "applied": false,
+ "at": "2026-09-03T18:15:07.633Z",
+ "course_version": 4388,
+ "rows": [
+  {
+   "id": "eng_for_hin:S0042L03B01",
+   "seed": 42,
+   "lego": "S0042L03",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0042L03B01",
+    "seed_number": 42,
+    "lego_index": 3,
+    "phrase_role": "build",
+    "known_text": "कल रात के मुक़ाबले बेहतर",
+    "target_text": "better than last night",
+    "decomposition": [
+     {
+      "known": "बेहतर",
+      "legoId": "S0029L02",
+      "target": "better",
+      "isGhost": false
+     },
+     {
+      "known": "कल रात के मुक़ाबले",
+      "legoId": "S0042L03",
+      "target": " than last night",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 1895,
+    "known_audio_id": null,
+    "target1_audio_id": "71d6a6ee-a476-48a4-86e2-b7885626c2ae",
+    "target2_audio_id": "2f74250b-435e-4f55-9aea-b61fed93136c"
+   },
+   "patch": {
+    "known_text": "लेकिन मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था",
+    "target_text": "but I was starting to feel better than last night",
+    "decomposition": [
+     {
+      "legoId": "S0019L01",
+      "target": "but",
+      "known": "लेकिन",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0042L01",
+      "target": " I was starting to feel better",
+      "known": "ज़्यादा अच्छा महसूस करने लगा था",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0042L03",
+      "target": " than last night",
+      "known": "कल रात के मुक़ाबले",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   }
+  },
+  {
+   "id": "eng_for_hin:S0044L01B02",
+   "seed": 44,
+   "lego": "S0044L01",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0044L01B02",
+    "seed_number": 44,
+    "lego_index": 1,
+    "phrase_role": "build",
+    "known_text": "या कि कल",
+    "target_text": "or tomorrow",
+    "decomposition": [
+     {
+      "known": "या कि",
+      "legoId": "S0044L01",
+      "target": "or",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " tomorrow",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": 1904,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मैं कल मिलना चाहता हूँ या कि आज रात",
+    "target_text": "I want to meet tomorrow or tonight",
+    "decomposition": [
+     {
+      "legoId": "S0001L01",
+      "target": "I want",
+      "known": "मैं चाहता हूँ",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0018L01",
+      "target": " to meet",
+      "known": "मिलना",
+      "isGhost": false
+     },
+     {
+      "legoId": null,
+      "target": " tomorrow",
+      "known": "",
+      "isGhost": true
+     },
+     {
+      "legoId": "S0044L01",
+      "target": " or",
+      "known": "या कि",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0031L01",
+      "target": " tonight",
+      "known": "आज रात",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0155L04B01",
+   "seed": 155,
+   "lego": "S0155L04",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0155L04B01",
+    "seed_number": 155,
+    "lego_index": 4,
+    "phrase_role": "build",
+    "known_text": "कल सुबह मिलना",
+    "target_text": "to meet tomorrow morning",
+    "decomposition": [
+     {
+      "known": "मिलना",
+      "legoId": "S0018L01",
+      "target": "to meet",
+      "isGhost": false
+     },
+     {
+      "known": "कल सुबह",
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2437,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मैं कल सुबह मिलना चाहता हूँ",
+    "target_text": "I want to meet tomorrow morning",
+    "decomposition": [
+     {
+      "legoId": "S0001L01",
+      "target": "I want",
+      "known": "मैं चाहता हूँ",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0018L01",
+      "target": " to meet",
+      "known": "मिलना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "known": "कल सुबह",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0155L04B02",
+   "seed": 155,
+   "lego": "S0155L04",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0155L04B02",
+    "seed_number": 155,
+    "lego_index": 4,
+    "phrase_role": "build",
+    "known_text": "कल सुबह जागना",
+    "target_text": "to wake tomorrow morning",
+    "decomposition": [
+     {
+      "known": "जागना",
+      "legoId": "S0108L02",
+      "target": "to wake",
+      "isGhost": false
+     },
+     {
+      "known": "कल सुबह",
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2437,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मुझे कल सुबह जागना है",
+    "target_text": "I need to wake tomorrow morning",
+    "decomposition": [
+     {
+      "legoId": "S0044L02",
+      "target": "I need",
+      "known": "मुझे ज़रूरत है",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0108L02",
+      "target": " to wake",
+      "known": "जागना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "known": "कल सुबह",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0155L04B03",
+   "seed": 155,
+   "lego": "S0155L04",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0155L04B03",
+    "seed_number": 155,
+    "lego_index": 4,
+    "phrase_role": "build",
+    "known_text": "कल सुबह बात करना",
+    "target_text": "to speak tomorrow morning",
+    "decomposition": [
+     {
+      "known": "बात करना",
+      "legoId": "S0001L02",
+      "target": "to speak",
+      "isGhost": false
+     },
+     {
+      "known": "कल सुबह",
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2437,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मैं कल सुबह बात करना चाहता हूँ",
+    "target_text": "I want to speak tomorrow morning",
+    "decomposition": [
+     {
+      "legoId": "S0001L01",
+      "target": "I want",
+      "known": "मैं चाहता हूँ",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0001L02",
+      "target": " to speak",
+      "known": "बात करना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "known": "कल सुबह",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0156L02B03",
+   "seed": 156,
+   "lego": "S0156L02",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0156L02B03",
+    "seed_number": 156,
+    "lego_index": 2,
+    "phrase_role": "build",
+    "known_text": "कल सुबह किसी रेस्टोरेंट में जाना",
+    "target_text": "to go to a restaurant tomorrow morning",
+    "decomposition": [
+     {
+      "known": "",
+      "legoId": null,
+      "target": "to",
+      "isGhost": true
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " go",
+      "isGhost": true
+     },
+     {
+      "known": "किसी रेस्टोरेंट में",
+      "legoId": "S0156L02",
+      "target": " to a restaurant",
+      "isGhost": false
+     },
+     {
+      "known": "कल सुबह",
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2441,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "क्या आप कल सुबह किसी रेस्टोरेंट में जाना चाहते हैं?",
+    "target_text": "do you want to go to a restaurant tomorrow morning?",
+    "decomposition": [
+     {
+      "legoId": "S0156L01",
+      "target": "do you want to go",
+      "known": "क्या आप जाना चाहते हैं",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0156L02",
+      "target": " to a restaurant",
+      "known": "किसी रेस्टोरेंट में",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "known": "कल सुबह",
+      "isGhost": false
+     },
+     {
+      "legoId": null,
+      "target": "?",
+      "known": "",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0167L02B01",
+   "seed": 167,
+   "lego": "S0167L02",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0167L02B01",
+    "seed_number": 167,
+    "lego_index": 2,
+    "phrase_role": "build",
+    "known_text": "कल दोपहर मिलना",
+    "target_text": "to meet tomorrow afternoon",
+    "decomposition": [
+     {
+      "known": "मिलना",
+      "legoId": "S0018L01",
+      "target": "to meet",
+      "isGhost": false
+     },
+     {
+      "known": "कल दोपहर",
+      "legoId": "S0167L02",
+      "target": " tomorrow afternoon",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2496,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मैं कल दोपहर मिलना चाहता हूँ",
+    "target_text": "I want to meet tomorrow afternoon",
+    "decomposition": [
+     {
+      "legoId": "S0001L01",
+      "target": "I want",
+      "known": "मैं चाहता हूँ",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0018L01",
+      "target": " to meet",
+      "known": "मिलना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0167L02",
+      "target": " tomorrow afternoon",
+      "known": "कल दोपहर",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0167L02B02",
+   "seed": 167,
+   "lego": "S0167L02",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0167L02B02",
+    "seed_number": 167,
+    "lego_index": 2,
+    "phrase_role": "build",
+    "known_text": "कल दोपहर आराम करना",
+    "target_text": "to relax tomorrow afternoon",
+    "decomposition": [
+     {
+      "known": "आराम करना",
+      "legoId": "S0110L03",
+      "target": "to relax",
+      "isGhost": false
+     },
+     {
+      "known": "कल दोपहर",
+      "legoId": "S0167L02",
+      "target": " tomorrow afternoon",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2496,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मैं कल दोपहर आराम करना चाहता हूँ",
+    "target_text": "I want to relax tomorrow afternoon",
+    "decomposition": [
+     {
+      "legoId": "S0001L01",
+      "target": "I want",
+      "known": "मैं चाहता हूँ",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0110L03",
+      "target": " to relax",
+      "known": "आराम करना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0167L02",
+      "target": " tomorrow afternoon",
+      "known": "कल दोपहर",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0167L02B03",
+   "seed": 167,
+   "lego": "S0167L02",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0167L02B03",
+    "seed_number": 167,
+    "lego_index": 2,
+    "phrase_role": "build",
+    "known_text": "कल दोपहर बात करना",
+    "target_text": "to speak tomorrow afternoon",
+    "decomposition": [
+     {
+      "known": "बात करना",
+      "legoId": "S0001L02",
+      "target": "to speak",
+      "isGhost": false
+     },
+     {
+      "known": "कल दोपहर",
+      "legoId": "S0167L02",
+      "target": " tomorrow afternoon",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2496,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मुझे कल दोपहर बात करना है",
+    "target_text": "I need to speak tomorrow afternoon",
+    "decomposition": [
+     {
+      "legoId": "S0044L02",
+      "target": "I need",
+      "known": "मुझे ज़रूरत है",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0001L02",
+      "target": " to speak",
+      "known": "बात करना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0167L02",
+      "target": " tomorrow afternoon",
+      "known": "कल दोपहर",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0181L03B03",
+   "seed": 181,
+   "lego": "S0181L03",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0181L03B03",
+    "seed_number": 181,
+    "lego_index": 3,
+    "phrase_role": "build",
+    "known_text": "कल सुबह डॉक्टर के पास जाना",
+    "target_text": "to go to the doctor tomorrow morning",
+    "decomposition": [
+     {
+      "known": "जाना",
+      "legoId": "S0177L01",
+      "target": "to go",
+      "isGhost": false
+     },
+     {
+      "known": "डॉक्टर के पास",
+      "legoId": "S0181L03",
+      "target": " to the doctor",
+      "isGhost": false
+     },
+     {
+      "known": "कल सुबह",
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2546,
+    "known_audio_id": "b7a30c12-720d-42ae-a93f-d54c24cc181c",
+    "target1_audio_id": "51f2510c-0014-4c3a-8191-a16d2f5bdea5",
+    "target2_audio_id": "b59043ae-d015-42d4-8d02-a36e4106cc61"
+   },
+   "patch": {
+    "known_text": "क्या आप कल सुबह डॉक्टर के पास जाना चाहते हैं?",
+    "target_text": "do you want to go to the doctor tomorrow morning?",
+    "decomposition": [
+     {
+      "legoId": "S0156L01",
+      "target": "do you want to go",
+      "known": "क्या आप जाना चाहते हैं",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0181L03",
+      "target": " to the doctor",
+      "known": "डॉक्टर के पास",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0155L04",
+      "target": " tomorrow morning",
+      "known": "कल सुबह",
+      "isGhost": false
+     },
+     {
+      "legoId": null,
+      "target": "?",
+      "known": "",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": 4388,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   }
+  },
+  {
+   "id": "eng_for_hin:S0192L02B01",
+   "seed": 192,
+   "lego": "S0192L02",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0192L02B01",
+    "seed_number": 192,
+    "lego_index": 2,
+    "phrase_role": "build",
+    "known_text": "कल रात मिलना",
+    "target_text": "to meet tomorrow night",
+    "decomposition": [
+     {
+      "known": "मिलना",
+      "legoId": "S0018L01",
+      "target": "to meet",
+      "isGhost": false
+     },
+     {
+      "known": "कल रात",
+      "legoId": "S0192L02",
+      "target": " tomorrow night",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2593,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मुझे कल रात मिलना है",
+    "target_text": "I need to meet tomorrow night",
+    "decomposition": [
+     {
+      "legoId": "S0044L02",
+      "target": "I need",
+      "known": "मुझे ज़रूरत है",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0018L01",
+      "target": " to meet",
+      "known": "मिलना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0192L02",
+      "target": " tomorrow night",
+      "known": "कल रात",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0192L02B02",
+   "seed": 192,
+   "lego": "S0192L02",
+   "role": "build",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0192L02B02",
+    "seed_number": 192,
+    "lego_index": 2,
+    "phrase_role": "build",
+    "known_text": "कल रात आराम करना",
+    "target_text": "to relax tomorrow night",
+    "decomposition": [
+     {
+      "known": "आराम करना",
+      "legoId": "S0110L03",
+      "target": "to relax",
+      "isGhost": false
+     },
+     {
+      "known": "कल रात",
+      "legoId": "S0192L02",
+      "target": " tomorrow night",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 2593,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "मैं कल रात आराम करना चाहता हूँ",
+    "target_text": "I want to relax tomorrow night",
+    "decomposition": [
+     {
+      "legoId": "S0001L01",
+      "target": "I want",
+      "known": "मैं चाहता हूँ",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0110L03",
+      "target": " to relax",
+      "known": "आराम करना",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0192L02",
+      "target": " tomorrow night",
+      "known": "कल रात",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  },
+  {
+   "id": "eng_for_hin:S0305L01U02",
+   "seed": 305,
+   "lego": "S0305L01",
+   "role": "use",
+   "kind": "unanchored",
+   "before": {
+    "id": "eng_for_hin:S0305L01U02",
+    "seed_number": 305,
+    "lego_index": 1,
+    "phrase_role": "use",
+    "known_text": "वह औरत कल आपकी मदद कर देती।",
+    "target_text": "that woman would help you tomorrow",
+    "decomposition": [
+     {
+      "known": "वह औरत आपकी मदद कर देती",
+      "legoId": "S0229L01",
+      "target": "that woman would help you",
+      "isGhost": false
+     },
+     {
+      "known": "",
+      "legoId": null,
+      "target": " tomorrow",
+      "isGhost": true
+     }
+    ],
+    "decomposition_course_version": 3045,
+    "known_audio_id": null,
+    "target1_audio_id": null,
+    "target2_audio_id": null
+   },
+   "patch": {
+    "known_text": "वह औरत आज रात आपकी मदद कर देती।",
+    "target_text": "that woman would help you tonight",
+    "decomposition": [
+     {
+      "legoId": "S0229L01",
+      "target": "that woman would help you",
+      "known": "वह औरत आपकी मदद कर देती",
+      "isGhost": false
+     },
+     {
+      "legoId": "S0294L03",
+      "target": " tonight",
+      "known": "आज रात",
+      "isGhost": false
+     }
+    ],
+    "decomposition_course_version": 4388
+   }
+  }
+ ]
+}
