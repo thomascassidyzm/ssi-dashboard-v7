@@ -69,8 +69,8 @@
 
       <div v-if="audition" class="compare">
         <div class="compare-pick">
-          <label>A <select v-model="voiceA"><option v-for="v in audition.freeVoices" :key="v.voiceId" :value="v.voiceId">{{ v.voiceId }}</option></select></label>
-          <label>B <select v-model="voiceB"><option v-for="v in audition.freeVoices" :key="v.voiceId" :value="v.voiceId">{{ v.voiceId }}</option></select></label>
+          <label>A <FilterSelect v-model="voiceA" :options="freeVoiceOptions" placeholder="Select…" filter-placeholder="Type a voice…" /></label>
+          <label>B <FilterSelect v-model="voiceB" :options="freeVoiceOptions" placeholder="Select…" filter-placeholder="Type a voice…" /></label>
         </div>
         <table class="grid">
           <thead><tr><th>sentence</th><th>{{ blind ? 'A' : voiceA }}</th><th>{{ blind ? 'B' : voiceB }}</th></tr></thead>
@@ -233,6 +233,7 @@
 import { ref, computed } from 'vue'
 import { useAuth } from '../../../composables/useAuth'
 import { dirFor } from '@/utils/textDirection.js'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
 import ConsentStep from './ConsentStep.vue'
 import { decodeTo16kMono, extractFeatures, activeSpeechDb } from '../vadProsody'
 
@@ -257,6 +258,10 @@ const busy = ref(false)
 const error = ref('')
 
 const audition = ref(null)
+
+/** The audition's free voices, in the shared dropdown's option shape. */
+const freeVoiceOptions = computed(() =>
+  (audition.value?.freeVoices || []).map((v) => ({ value: v.voiceId, label: v.voiceId })))
 const report = ref(null)
 const declarations = ref(null)
 const capability = ref(null)

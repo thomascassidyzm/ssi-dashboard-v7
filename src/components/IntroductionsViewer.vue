@@ -21,16 +21,15 @@
       <!-- Course Selector -->
       <div class="mb-6 bg-surface border border-line rounded-lg p-4">
         <label class="block text-sm font-medium text-ink mb-2">Select Course</label>
-        <select
+        <FilterSelect
           v-model="selectedCourseCode"
+          class="w-full"
+          :options="availableCourses"
+          placeholder="-- Select a course --"
+          filter-placeholder="Type a course…"
+          button-class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink"
           @change="loadIntroductions"
-          class="w-full bg-canvas border border-line rounded px-4 py-2 text-ink"
-        >
-          <option value="">-- Select a course --</option>
-          <option v-for="course in availableCourses" :key="course" :value="course">
-            {{ course }}
-          </option>
-        </select>
+        />
       </div>
 
       <!-- Loading State -->
@@ -174,6 +173,7 @@
 <script setup>
 import { ref, computed } from 'vue'
 import api from '../services/api'
+import FilterSelect from './ui/FilterSelect.vue'
 
 const availableCourses = ref(['spa_for_eng', 'cmn_for_eng'])
 const selectedCourseCode = ref('')

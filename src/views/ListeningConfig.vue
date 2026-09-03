@@ -138,14 +138,13 @@
         />
         <div class="arc-controls">
           <label class="arc-pick">Sentence
-            <select v-model.number="arcSentenceIdx">
-              <!-- An <option> holds text, not elements, so there is no child to
-                   bind `dir` on and the LTR "12. " index would move if we
-                   directed the option itself. `isolateText` wraps the sentence
-                   in Unicode isolate controls instead — the plaintext form of
-                   the same fix, index stays put, trailing `!` lands correctly. -->
-              <option v-for="(s, i) in coursePodSentences" :key="i" :value="i">{{ i + 1 }}. {{ isolateText(s.target_text) }}</option>
-            </select>
+            <FilterSelect
+              v-model="arcSentenceIdx"
+              :options="arcSentenceOptions"
+              placeholder="Pick a sentence"
+              filter-placeholder="Type a sentence…"
+              button-class="arc-pick-select"
+            />
           </label>
           <button class="arc-play" :disabled="!arcIndexed.length || arcPlayingIdx >= 0" @click="playArc">▶ Play {{ showFullArc ? 'full arc' : 'breakdown' }} · {{ arcIndexed.length }} plays</button>
           <button class="arc-stop" :disabled="arcPlayingIdx < 0" @click="stopArc">■ Stop</button>
@@ -253,6 +252,7 @@ import { fetchServingPodId } from '../lib/servingPod'
 import CoursePicker from '../components/CoursePicker.vue'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
 import { isolateText } from '../utils/textDirection.js'
+import FilterSelect from '../components/ui/FilterSelect.vue'
 
 const { isAdmin, learner: currentUser } = useAuth()
 
@@ -601,6 +601,15 @@ function setTierFusion(idx, raw) {
 // 1-N) for one real sentence with the SHARED composer, then play it through.
 // Uses the live DRAFT config, so structural edits show immediately.
 // ============================================================================
+// One row per pod sentence — the value stays the numeric index, and the label
+// is byte-for-byte what the <option> rendered. A row holds text, not elements,
+// so there is no child to bind `dir` on and the LTR "12. " index would move if
+// we directed the row itself. `isolateText` wraps the sentence in Unicode
+// isolate controls instead — the plaintext form of the same fix, index stays
+// put, trailing `!` lands correctly.
+const arcSentenceOptions = computed(() =>
+  coursePodSentences.value.map((s, i) => ({ value: i, label: `${i + 1}. ${isolateText(s.target_text)}` }))
+)
 const arcSentence = computed(() => coursePodSentences.value[arcSentenceIdx.value] || null)
 const arcPlays = computed(() => {
   const s = arcSentence.value
@@ -1173,7 +1182,7 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 /* Full-arc preview */
 .arc-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.6rem; }
 .arc-pick { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--muted); }
-.arc-pick select { max-width: 420px; background: rgba(0,0,0,0.25); border: 1px solid var(--surface-3); border-radius: 5px; color: var(--ink); padding: 0.3rem 0.45rem; }
+.arc-pick :deep(.arc-pick-select) { max-width: 420px; background: rgba(0,0,0,0.25); border: 1px solid var(--surface-3); border-radius: 5px; color: var(--ink); padding: 0.3rem 0.45rem; }
 .arc-play, .arc-stop {
   border-radius: 6px; border: 1px solid var(--surface-3); background: transparent;
   color: var(--ink); padding: 0.4rem 0.8rem; cursor: pointer; font-size: 0.82rem;

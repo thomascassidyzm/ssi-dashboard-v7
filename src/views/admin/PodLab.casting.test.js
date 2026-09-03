@@ -10,6 +10,21 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
 import fixture from './__fixtures__/eng_for_guj-cast.json'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
+
+// The two cast dropdowns are the shared FilterSelect now (Tom's filter-at-the-
+// top ruling, 2026-09-03), so the test drives them as components: its subject
+// is the casting, never the element the casting is chosen with.
+const castPickers = (w) => w.findAll('.vpick-row').map((r) => r.findComponent(FilterSelect))
+const castLabels = (w) => castPickers(w)[0].props('options').map((o) => o.label)
+const pickedLabel = (picker) => {
+  const chosen = picker.props('options').find((o) => o.value === picker.props('modelValue'))
+  return chosen ? chosen.label : ''
+}
+async function setPick(picker, value) {
+  picker.vm.$emit('update:modelValue', value)
+  await flushPromises()
+}
 
 const SPEAKERS = fixture.pod.speakers
 const SENTENCES = fixture.sentences
@@ -274,20 +289,20 @@ describe('PodLab casting mode', () => {
       const rows = w.findAll('.vpick-row')
       expect(rows).toHaveLength(2)
       expect(rows.map((r) => r.find('.vp-slot').text())).toEqual(['Male', 'Female'])
-      expect(w.findAll('.vpick-row select')).toHaveLength(2)
+      expect(castPickers(w).filter((p) => p.exists())).toHaveLength(2)
       expect(w.findAll('.vpick-row .vp-play')).toHaveLength(2)
     })
 
     it('initialises to the voices the current cast uses for each gender', async () => {
       const w = await mountLab()
-      const [male, female] = w.findAll('.vpick-row select')
+      const [male, female] = castPickers(w)
       // The fixture is a BROKEN five-voice cast — the case the picker exists
       // for — so each slot opens on the voice carrying the most lines of that
       // gender: Jian across the male labels, Xia across the female ones.
-      expect(male.element.value).toBe('xai|jpi39icg|zh')
-      expect(female.element.value).toBe('xai|33g9t0jl|zh')
-      // …and the option they are sitting on names itself as the current cast.
-      expect(male.find('option:checked').text()).toContain('cast now')
+      expect(male.props('modelValue')).toBe('xai|jpi39icg|zh')
+      expect(female.props('modelValue')).toBe('xai|33g9t0jl|zh')
+      // …and the row they are sitting on names itself as the current cast.
+      expect(pickedLabel(male)).toContain('cast now')
     })
 
     it('nothing to apply until the human actually moves a dropdown', async () => {
@@ -297,7 +312,7 @@ describe('PodLab casting mode', () => {
 
     it('marks a voice steered at the wrong language, and names the pool', async () => {
       const w = await mountLab()
-      const opts = w.findAll('.vpick-row select option').map((o) => o.text())
+      const opts = castLabels(w)
       // The cast's own zh voice on an English course — flagged in the row.
       expect(opts.some((t) => t.includes('jpi39icg') && t.includes('WRONG LANGUAGE'))).toBe(true)
       // The curated pool is offered, marked as the pool, and is not flagged.
@@ -323,9 +338,9 @@ describe('PodLab casting mode', () => {
 
     it('applies the chosen pair to the CURRENT pod, casting only', async () => {
       const w = await mountLab()
-      const [male, female] = w.findAll('.vpick-row select')
-      await male.setValue('xai|gfzdpspr5fdp|en')
-      await female.setValue('xai|bedd6226|en')
+      const [male, female] = castPickers(w)
+      await setPick(male, 'xai|gfzdpspr5fdp|en')
+      await setPick(female, 'xai|bedd6226|en')
       expect(w.find('.vp-apply').attributes('disabled')).toBeUndefined()
 
       await w.find('.vp-apply').trigger('click')
@@ -357,7 +372,7 @@ describe('PodLab casting mode', () => {
       // written when nothing was.
       const w = await mountLab()
       global.fetch.mockImplementation(async () => ({ ok: true, json: async () => ({}) }))
-      await w.findAll('.vpick-row select')[0].setValue('xai|gfzdpspr5fdp|en')
+      await setPick(castPickers(w)[0], 'xai|gfzdpspr5fdp|en')
       await w.find('.vp-apply').trigger('click')
       await flushPromises()
       expect(w.text()).toMatch(/Failed: the endpoint did not confirm a write/)
@@ -375,9 +390,9 @@ describe('PodLab casting mode', () => {
   // cannot claim the candidate's.
   describe('candidate casts, side by side', () => {
     async function addCandidatePair(w) {
-      const [male, female] = w.findAll('.vpick-row select')
-      await male.setValue('xai|gfzdpspr5fdp|en')
-      await female.setValue('xai|bedd6226|en')
+      const [male, female] = castPickers(w)
+      await setPick(male, 'xai|gfzdpspr5fdp|en')
+      await setPick(female, 'xai|bedd6226|en')
       await w.find('.vp-add').trigger('click')
       await flushPromises()
       return w

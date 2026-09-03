@@ -21,6 +21,7 @@
  *   the honest shape for a gate whose number cannot yet be threaded.
  */
 import { computed } from 'vue'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
 
 const props = defineProps({
   modelValue: { type: Object, required: true },
@@ -59,6 +60,23 @@ const voiceGroups = computed(() => {
   }
   return [...groups.entries()].map(([name, list]) => ({ name, list }))
 })
+
+/** Same rows, in the shared dropdown's shape: groups of { value, label, hint }. */
+const voiceOptions = computed(() =>
+  voiceGroups.value.map((g) => ({
+    label: g.name,
+    options: g.list.map((v) => ({
+      value: v.id,
+      label: v.name || v.id,
+      hint: v.clips ? `${v.clips.toLocaleString()} clips` : '',
+    })),
+  })))
+
+const providerOptions = computed(() =>
+  (props.params.providers || []).map((p) => ({ value: p.id, label: p.name || p.id })))
+
+const languageOptions = computed(() =>
+  (props.params.languages || []).map((l) => ({ value: l.code, label: l.name, hint: l.code })))
 
 function pickVoice (id) {
   const v = (language.value?.voices || []).find((x) => x.id === id)
@@ -141,28 +159,34 @@ function prettyKey (k) {
     <h4>Render</h4>
     <div class="vl-fields">
       <label class="vl-field">Provider
-        <select :value="modelValue.provider" @change="onProvider($event.target.value)">
-          <option v-for="p in params.providers" :key="p.id" :value="p.id">{{ p.name || p.id }}</option>
-        </select>
+        <FilterSelect
+          :model-value="modelValue.provider"
+          :options="providerOptions"
+          placeholder="Select…"
+          filter-placeholder="Type a provider…"
+          @update:model-value="onProvider"
+        />
       </label>
 
       <label class="vl-field">Language
-        <select :value="modelValue.language" @change="onLanguage($event.target.value)">
-          <option v-for="l in params.languages" :key="l.code" :value="l.code">
-            {{ l.name }} ({{ l.code }})
-          </option>
-        </select>
+        <FilterSelect
+          :model-value="modelValue.language"
+          :options="languageOptions"
+          placeholder="Select…"
+          filter-placeholder="Type a language…"
+          @update:model-value="onLanguage"
+        />
         <span class="vl-why">steered as <code>{{ language?.steer || '—' }}</code></span>
       </label>
 
       <label class="vl-field">Voice
-        <select :value="modelValue.voiceId" @change="pickVoice($event.target.value)">
-          <optgroup v-for="g in voiceGroups" :key="g.name" :label="g.name">
-            <option v-for="v in g.list" :key="v.id" :value="v.id">
-              {{ v.name || v.id }}{{ v.clips ? ` · ${v.clips.toLocaleString()} clips` : '' }}
-            </option>
-          </optgroup>
-        </select>
+        <FilterSelect
+          :model-value="modelValue.voiceId"
+          :options="voiceOptions"
+          placeholder="Select…"
+          filter-placeholder="Type a voice…"
+          @update:model-value="pickVoice"
+        />
         <span v-if="!voiceGroups.length" class="vl-why vl-warn">no {{ modelValue.provider }} voice here</span>
       </label>
 
@@ -267,5 +291,19 @@ function prettyKey (k) {
   color: var(--muted);
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   margin-bottom: 0.35rem;
+}
+
+/* The shared dropdown replaces three <select>s here; `.vl-field select` in
+   lab.css cannot reach a component, so the same box is restated for it. */
+.vl-field :deep(.fs-root) { width: 100%; }
+.vl-field :deep(.fs-button) {
+  width: 100%;
+  padding: 0.4rem 0.5rem;
+  border-radius: 6px;
+  border: 1px solid var(--surface-3);
+  background: var(--surface-2);
+  color: inherit;
+  font-size: 0.8125rem;
+  font-family: inherit;
 }
 </style>

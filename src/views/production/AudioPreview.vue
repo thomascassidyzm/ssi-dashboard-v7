@@ -5,14 +5,15 @@
     <div class="flex items-start justify-between gap-4 mb-4 flex-wrap">
       <div class="flex items-center gap-3 flex-wrap">
         <h2 class="text-lg font-semibold text-ink">Audio Preview</h2>
-        <select
+        <FilterSelect
           v-if="courses.length"
           v-model="activeCourse"
           data-walk="audio-preview-course-picker"
-          class="px-2.5 py-1 bg-surface-2 border border-line rounded text-sm font-mono text-accent-2"
-        >
-          <option v-for="c in courses" :key="c.code" :value="c.code">{{ courseName(c.code) }}</option>
-        </select>
+          :options="courseOptions"
+          placeholder="Course"
+          filter-placeholder="Type a course…"
+          button-class="px-2.5 py-1 bg-surface-2 border border-line rounded text-sm font-mono text-accent-2"
+        />
         <span v-else class="px-2.5 py-1 bg-surface-2 border border-line rounded text-sm text-accent-2">
           {{ courseName(activeCourse) }}
         </span>
@@ -262,6 +263,7 @@ import { courseName, sortCourses } from '@/utils/languageNames'
 import AudioPreviewClip from './components/AudioPreviewClip.vue'
 import AudioPreviewMissing from './components/AudioPreviewMissing.vue'
 import AudioPreviewCourseGaps from './components/AudioPreviewCourseGaps.vue'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
 
 const props = defineProps({
   courseCode: { type: String, default: '' },
@@ -299,6 +301,9 @@ const roleTabs = [
 ]
 
 const courses = ref([])
+
+// Same list, same order as `courses` — sortCourses has already ordered it.
+const courseOptions = computed(() => courses.value.map((c) => ({ value: c.code, label: courseName(c.code) })))
 const activeCourse = ref(props.courseCode || localStorage.getItem(LAST_COURSE_KEY) || '')
 const filter = ref('checked')
 const role = ref('all')

@@ -74,24 +74,22 @@
               Language Pair
             </label>
             <div v-if="isNewCourse" class="grid grid-cols-2 gap-4">
-              <select
+              <FilterSelect
                 v-model="knownLang"
-                class="bg-surface-2/50 border border-line/50 rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
-              >
-                <option value="">Select known language</option>
-                <option v-for="lang in languages" :key="lang.code" :value="lang.code">
-                  {{ getLanguageName(lang.code) }}
-                </option>
-              </select>
-              <select
+                class="w-full"
+                :options="languageOptions"
+                placeholder="Select known language"
+                filter-placeholder="Type a language…"
+                button-class="w-full bg-surface-2/50 border border-line/50 rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
+              />
+              <FilterSelect
                 v-model="targetLang"
-                class="bg-surface-2/50 border border-line/50 rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
-              >
-                <option value="">Select target language</option>
-                <option v-for="lang in languages" :key="lang.code" :value="lang.code">
-                  {{ getLanguageName(lang.code) }}
-                </option>
-              </select>
+                class="w-full"
+                :options="languageOptions"
+                placeholder="Select target language"
+                filter-placeholder="Type a language…"
+                button-class="w-full bg-surface-2/50 border border-line/50 rounded-lg px-4 py-3 text-ink focus:outline-none focus:border-emerald-500/50 focus:ring-1 focus:ring-emerald-500/20"
+              />
             </div>
             <div v-else class="text-lg text-ink">
               {{ displayName }}
@@ -797,6 +795,7 @@ import { LanguageBriefEditor } from '../components/generation'
 import { getApiUrl } from '@/services/api'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
 import { useCourses } from '../composables/useCourses'
+import FilterSelect from '../components/ui/FilterSelect.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -1093,6 +1092,12 @@ const languages = ref([
   { code: 'kor' },
   { code: 'ara' }
 ])
+
+// Option rows for the language pair pickers — same codes, same order, same
+// display names as the native <select> they replaced.
+const languageOptions = computed(() =>
+  languages.value.map((lang) => ({ value: lang.code, label: getLanguageName(lang.code) }))
+)
 
 const courseSizes = [
   { seeds: 30, label: 'Test' },

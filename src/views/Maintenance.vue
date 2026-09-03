@@ -107,44 +107,30 @@
       </p>
 
       <div class="filter-row">
-        <select v-model="filterTable" @change="resetAndLoad">
-          <option value="">All tables</option>
-          <optgroup label="Course content">
-            <option value="course_legos">course_legos</option>
-            <option value="course_seeds">course_seeds</option>
-            <option value="course_practice_phrases">course_practice_phrases</option>
-            <option value="course_audio">course_audio</option>
-            <option value="courses">courses</option>
-          </optgroup>
-          <optgroup label="Shared / canonical">
-            <option value="canonical_seeds">canonical_seeds</option>
-            <option value="canonical_seed_translations">canonical_seed_translations</option>
-            <option value="lego_introductions">lego_introductions</option>
-            <option value="voices">voices</option>
-            <option value="shared_audio">shared_audio</option>
-          </optgroup>
-          <optgroup label="Listening pods">
-            <option value="listening_pods">listening_pods</option>
-            <option value="listening_pod_sentences">listening_pod_sentences</option>
-          </optgroup>
-        </select>
+        <FilterSelect
+          v-model="filterTable"
+          :options="tableOptions"
+          placeholder="All tables"
+          filter-placeholder="Type a table…"
+          button-class="maint-select"
+          @change="resetAndLoad"
+        />
 
-        <select v-model="filterChangeType" @change="resetAndLoad">
-          <option value="">All ops</option>
-          <option value="UPDATE">UPDATE only</option>
-          <option value="DELETE">DELETE only</option>
-        </select>
+        <FilterSelect
+          v-model="filterChangeType"
+          :options="changeTypeOptions"
+          placeholder="All ops"
+          button-class="maint-select"
+          @change="resetAndLoad"
+        />
 
-        <select v-model.number="filterHours" @change="resetAndLoad">
-          <option :value="0.25">Last 15 min</option>
-          <option :value="0.5">Last 30 min</option>
-          <option :value="1">Last hour</option>
-          <option :value="6">Last 6h</option>
-          <option :value="24">Last 24h</option>
-          <option :value="72">Last 3 days</option>
-          <option :value="168">Last 7 days</option>
-          <option :value="720">Last 30 days</option>
-        </select>
+        <FilterSelect
+          v-model="filterHours"
+          :options="hoursOptions"
+          placeholder="Last 24h"
+          button-class="maint-select"
+          @change="resetAndLoad"
+        />
 
         <input
           v-model="filterQuery"
@@ -276,12 +262,14 @@
       <div class="decomp-controls">
         <label class="course-select">
           Course
-          <select v-model="decompCourse" @change="loadDecompAudit">
-            <option value="">— select —</option>
-            <option v-for="c in availableCourses" :key="c.code" :value="c.code">
-              {{ getCourseName(c.code) }}
-            </option>
-          </select>
+          <FilterSelect
+            v-model="decompCourse"
+            :options="decompCourseOptions"
+            placeholder="— select —"
+            filter-placeholder="Type a course…"
+            button-class="maint-course-select"
+            @change="loadDecompAudit"
+          />
         </label>
         <button
           class="page-btn"
@@ -427,6 +415,7 @@ import { useCourses } from '../composables/useCourses'
 import { dirFor } from '../utils/textDirection.js'
 import UptimePanel from '../components/UptimePanel.vue'
 import RecoveryPanel from '../components/RecoveryPanel.vue'
+import FilterSelect from '../components/ui/FilterSelect.vue'
 
 const { getAccessToken } = useAuth()
 const { getCourseName } = useCourses()
@@ -453,6 +442,42 @@ const eventsError = ref('')
 const filterTable = ref('')
 const filterChangeType = ref('')
 const filterHours = ref(24)
+
+// Dropdown option lists for the change-feed filters. Same values, same order
+// and same groupings the native <select>s carried — FilterSelect just puts a
+// filter field above them once the list is longer than 8.
+const tableOptions = [
+  { value: '', label: 'All tables' },
+  {
+    label: 'Course content',
+    options: ['course_legos', 'course_seeds', 'course_practice_phrases', 'course_audio', 'courses'],
+  },
+  {
+    label: 'Shared / canonical',
+    options: ['canonical_seeds', 'canonical_seed_translations', 'lego_introductions', 'voices', 'shared_audio'],
+  },
+  {
+    label: 'Listening pods',
+    options: ['listening_pods', 'listening_pod_sentences'],
+  },
+]
+const changeTypeOptions = [
+  { value: '', label: 'All ops' },
+  { value: 'UPDATE', label: 'UPDATE only' },
+  { value: 'DELETE', label: 'DELETE only' },
+]
+// Numeric values, so the hours land in the model as numbers exactly as
+// v-model.number used to deliver them.
+const hoursOptions = [
+  { value: 0.25, label: 'Last 15 min' },
+  { value: 0.5, label: 'Last 30 min' },
+  { value: 1, label: 'Last hour' },
+  { value: 6, label: 'Last 6h' },
+  { value: 24, label: 'Last 24h' },
+  { value: 72, label: 'Last 3 days' },
+  { value: 168, label: 'Last 7 days' },
+  { value: 720, label: 'Last 30 days' },
+]
 const filterQuery = ref('')
 const PAGE_SIZE = 50
 const offset = ref(0)
@@ -750,6 +775,10 @@ function closeRestoreModal() {
 
 const availableCourses = ref([])
 const decompCourse = ref('')
+const decompCourseOptions = computed(() => [
+  { value: '', label: '— select —' },
+  ...availableCourses.value.map((c) => ({ value: c.code, label: getCourseName(c.code), hint: c.code })),
+])
 const decompAudit = ref(null)
 const decompAuditLoading = ref(false)
 const decompAuditError = ref('')
@@ -1107,7 +1136,7 @@ onMounted(() => {
   margin-bottom: 16px;
   flex-wrap: wrap;
 }
-.filter-row select,
+.filter-row :deep(.maint-select),
 .filter-row .search-input {
   background: var(--surface-2);
   border: 1px solid var(--line);
@@ -1467,7 +1496,7 @@ onMounted(() => {
   font-size: 14px;
   color: var(--ink);
 }
-.course-select select {
+.course-select :deep(.maint-course-select) {
   background: var(--surface-2);
   border: 1px solid var(--line);
   color: var(--ink);

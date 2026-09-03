@@ -42,8 +42,29 @@
             <!-- Dropdown -->
             <Transition name="dropdown">
               <div v-if="openDropdown === facet.key" class="filter-dropdown" :class="`dropdown-${facet.key}`">
+                <!--
+                  Filter at the very top (Tom, 2026-09-03: "we do NOT want people
+                  having to scan down a whole long list of choices"). Target and
+                  Known hold dozens of languages. Same threshold the shared
+                  FilterSelect uses — past 8 options — and the same matcher, so a
+                  language typed here behaves as it does in every other dropdown.
+                -->
+                <div v-if="facet.options.length > 8" class="dropdown-filter-wrap">
+                  <input
+                    :ref="setFacetFilterInput"
+                    v-model="facetQuery"
+                    type="text"
+                    class="dropdown-filter"
+                    :placeholder="`Type a ${facet.label.toLowerCase()}…`"
+                    autocomplete="off"
+                    autocorrect="off"
+                    autocapitalize="none"
+                    spellcheck="false"
+                    @keydown.escape.stop.prevent="closeDropdown(facet.key)"
+                  />
+                </div>
                 <button
-                  v-for="opt in facet.options"
+                  v-for="opt in visibleOptions(facet)"
                   :key="opt.value"
                   class="dropdown-option"
                   :class="{ selected: activeFilters[facet.key] === opt.value }"
@@ -52,6 +73,7 @@
                   <span class="opt-label">{{ opt.label }}</span>
                   <span class="opt-count">{{ opt.count }}</span>
                 </button>
+                <div v-if="!visibleOptions(facet).length" class="dropdown-empty">No matches</div>
               </div>
             </Transition>
           </div>
@@ -149,9 +171,10 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 import { useRouter } from 'vue-router'
 import { useCourses } from '../composables/useCourses'
+import { filterOptions } from '../utils/optionFilter'
 
 const props = defineProps({
   courses: {
@@ -292,12 +315,38 @@ const hasActiveFilters = computed(() => {
   return Object.keys(activeFilters.value).length > 0 || searchQuery.value.trim() !== ''
 })
 
+// One query for all the facets, because only one panel is ever open. It clears
+// on every open and close, so a panel never reopens holding yesterday's filter.
+const facetQuery = ref('')
+const facetFilterInput = ref(null)
+
+// Focus the filter when a panel opens. A plain `ref="…"` inside a v-for
+// collects an ARRAY, and `document` is not in scope in a template expression,
+// so the element is captured here — only one facet panel is ever open.
+function setFacetFilterInput(el) {
+  facetFilterInput.value = el || null
+}
+
+watch(openDropdown, (key) => {
+  if (!key) return
+  nextTick(() => facetFilterInput.value?.focus?.())
+})
+
+/** The facet's option rows surviving the filter — counts and order untouched. */
+function visibleOptions(facet) {
+  return facetQuery.value.trim() ? filterOptions(facetQuery.value, facet.options) : facet.options
+}
+
 function toggleDropdown(key) {
+  facetQuery.value = ''
   openDropdown.value = openDropdown.value === key ? null : key
 }
 
 function closeDropdown(key) {
-  if (openDropdown.value === key) openDropdown.value = null
+  if (openDropdown.value === key) {
+    openDropdown.value = null
+    facetQuery.value = ''
+  }
 }
 
 function selectFilter(key, value) {
@@ -310,6 +359,7 @@ function selectFilter(key, value) {
     activeFilters.value = { ...activeFilters.value, [key]: value }
   }
   openDropdown.value = null
+  facetQuery.value = ''
 }
 
 function clearFilter(key) {
@@ -644,6 +694,33 @@ function cycleLegacyStatus(course) {
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
   z-index: 100;
   padding: 0.25rem;
+}
+
+.dropdown-filter-wrap {
+  padding: 0.25rem 0.25rem 0.375rem;
+}
+
+.dropdown-filter {
+  width: 100%;
+  padding: 0.4rem 0.55rem;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  border-radius: 6px;
+  color: var(--color-paper, var(--ink));
+  font-family: inherit;
+  font-size: 0.8125rem;
+  outline: none;
+}
+
+.dropdown-filter:focus {
+  border-color: var(--accent-2, var(--accent));
+}
+
+.dropdown-empty {
+  padding: 0.5rem 0.625rem;
+  color: var(--color-paper-dim, var(--muted));
+  font-size: 0.8125rem;
+  text-align: center;
 }
 
 .dropdown-option {

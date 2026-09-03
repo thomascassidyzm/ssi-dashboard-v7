@@ -176,16 +176,13 @@
 
               <!-- Locale Filter -->
               <div class="locale-filter">
-                <select v-model="localeFilter" class="locale-select">
-                  <option value="all">All Regions ({{ discoveredVoices.length }})</option>
-                  <option
-                    v-for="locale in availableLocales"
-                    :key="locale.code"
-                    :value="locale.code"
-                  >
-                    {{ locale.name }}
-                  </option>
-                </select>
+                <FilterSelect
+                  v-model="localeFilter"
+                  :options="localeOptions"
+                  :placeholder="`All Regions (${discoveredVoices.length})`"
+                  filter-placeholder="Type a region…"
+                  button-class="locale-select"
+                />
               </div>
 
               <!-- Gender Filter -->
@@ -324,6 +321,7 @@ import { languageName } from '@/utils/languageNames'
 import { dirFor } from '@/utils/textDirection.js'
 import ConsentStep from '@/views/admin/voicelab/ConsentStep.vue'
 import { isConfigured as isSupabaseConfigured, getVoiceConfig, getSeedPhrasesPreview } from '@/services/supabase'
+import FilterSelect from './ui/FilterSelect.vue'
 
 const props = defineProps({
   courseCode: {
@@ -621,6 +619,14 @@ const availableLocales = computed(() => {
     })
     .map(([code, name]) => ({ code, name }))
 })
+
+// Same rows the native <select> carried: "All Regions (n)" then one per locale,
+// in availableLocales order. The locale code rides along as the hint so typing
+// `en-GB` finds the row as readily as typing its name.
+const localeOptions = computed(() => [
+  { value: 'all', label: `All Regions (${discoveredVoices.value.length})` },
+  ...availableLocales.value.map((locale) => ({ value: locale.code, label: locale.name, hint: locale.code })),
+])
 
 const filteredVoices = computed(() => {
   let voices = discoveredVoices.value
@@ -1639,7 +1645,13 @@ onMounted(() => {
   margin-bottom: 12px;
 }
 
-.locale-select {
+/* FilterSelect draws its own chevron, so the old appearance:none +
+   background-image arrow is gone; everything else is the select's look. */
+.locale-filter :deep(.fs-root) {
+  display: block;
+}
+
+.locale-filter :deep(.locale-select) {
   width: 100%;
   padding: 8px 12px;
   background: var(--surface);
@@ -1648,15 +1660,9 @@ onMounted(() => {
   color: var(--ink);
   font-size: 0.8rem;
   cursor: pointer;
-  appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: right 8px center;
-  background-size: 16px;
-  padding-right: 32px;
 }
 
-.locale-select:focus {
+.locale-filter :deep(.locale-select:focus) {
   outline: none;
   border-color: var(--accent-2);
 }

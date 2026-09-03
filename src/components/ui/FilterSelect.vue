@@ -17,6 +17,11 @@
     A two- or three-way toggle renders as a plain tappable list, no filter.
 
     Interaction is TAP AND TYPE only: no drag, no swipe, no long-press.
+
+    Use this for every new dropdown. The one other filterable select in the
+    estate is voicelab's SearchSelect (2026-08-31), which adds attribute chips
+    and an attribute-wide haystack for the 421-voice lists — reach for that only
+    when a row needs to say more about itself than a label and a hint.
   -->
   <div class="fs-root" ref="rootRef">
     <button
@@ -170,7 +175,12 @@ const panelStyle = computed(() => {
 
 function sameValue(a, b) {
   if (a === b) return true
-  if (a === null || a === undefined || b === null || b === undefined) return false
+  // null and undefined are the same "nothing" — an `:value="null"` option (the
+  // "all voices" row, say) must read as selected when the model is null. They
+  // are NOT the same as '', which call sites use as a distinct empty choice.
+  const aNil = a === null || a === undefined
+  const bNil = b === null || b === undefined
+  if (aNil || bNil) return aNil && bNil
   return String(a) === String(b)
 }
 

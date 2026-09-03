@@ -28,18 +28,14 @@
       <div class="bg-surface border border-line rounded-lg p-4 mb-6">
         <div class="flex items-center gap-3 flex-wrap">
           <label class="text-xs text-muted uppercase tracking-wide">Course</label>
-          <select
+          <FilterSelect
             v-model="selected"
+            :options="fleetOptions"
+            placeholder="— pick a course —"
+            filter-placeholder="Type a course…"
+            button-class="bg-canvas border border-line rounded px-3 py-2 text-sm text-ink min-w-[16rem]"
             @change="onPick"
-            class="bg-canvas border border-line rounded px-3 py-2 text-sm text-ink min-w-[16rem]"
-          >
-            <option value="">— pick a course —</option>
-            <option v-for="c in fleet" :key="c.course_code" :value="c.course_code">
-              {{ c.course_code }} · {{ c.summary.lines }} lines
-              <template v-if="c.summary.fails"> · {{ c.summary.fails }} fail</template>
-              <template v-if="c.summary.warns"> · {{ c.summary.warns }} warn</template>
-            </option>
-          </select>
+          />
 
           <label class="text-xs text-muted uppercase tracking-wide ml-2">Track</label>
           <select v-model="track" @change="reload" class="bg-canvas border border-line rounded px-3 py-2 text-sm text-ink">
@@ -379,6 +375,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { buildPlayQueue, nextPlayable, indexOfLine, isPlayable } from '@/lib/podPlayQueue.js'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
 
 // Both routes are read-only, but the per-course one carries a :courseCode param
 // and so passes through the API's course-scope gate — which 401s anything that
@@ -410,6 +407,17 @@ const selected = ref('')
 
 const courseCode = computed(() => route.params.courseCode || '')
 const slug = computed(() => (script.value && script.value.slug) || '')
+
+// Fleet rows for the course picker, in the fleet's own order: the code is the
+// searchable label, the lines/fails/warns tally rides along as the hint.
+const fleetOptions = computed(() =>
+  fleet.value.map((c) => {
+    let hint = `${c.summary.lines} lines`
+    if (c.summary.fails) hint += ` · ${c.summary.fails} fail`
+    if (c.summary.warns) hint += ` · ${c.summary.warns} warn`
+    return { value: c.course_code, label: c.course_code, hint }
+  })
+)
 
 const sortedFleet = computed(() =>
   [...fleet.value].sort((a, b) =>

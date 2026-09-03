@@ -33,16 +33,15 @@
       <div v-else class="space-y-6">
         <div class="bg-surface border border-line rounded-lg p-6">
           <label class="block text-sm font-medium text-ink mb-2">Select Course</label>
-          <select
+          <FilterSelect
             v-model="selectedCourse"
+            class="w-full"
+            :options="courseOptions"
+            placeholder="-- All Courses Overview --"
+            filter-placeholder="Type a course…"
+            button-class="w-full bg-canvas border border-line rounded-lg px-4 py-2 text-ink focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none"
             @change="onCourseChange"
-            class="w-full bg-canvas border border-line rounded-lg px-4 py-2 text-ink focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 outline-none"
-          >
-            <option value="">-- All Courses Overview --</option>
-            <option v-for="courseCode in availableCourses" :key="courseCode" :value="courseCode">
-              {{ getCourseName(courseCode) }}
-            </option>
-          </select>
+          />
         </div>
 
         <!-- All Courses Overview -->
@@ -503,6 +502,7 @@ import { ref, computed, onMounted } from 'vue'
 import { useRouter, useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { useCourses } from '../composables/useCourses'
+import FilterSelect from '../components/ui/FilterSelect.vue'
 
 const router = useRouter()
 const route = useRoute()
@@ -528,6 +528,13 @@ const availableCourses = computed(() => {
   if (!allValidation.value || !allValidation.value.courses) return []
   return Object.keys(allValidation.value.courses).sort()
 })
+
+// The empty value is a real state here — it is the all-courses overview — so it
+// stays a selectable row as well as the button's resting text.
+const courseOptions = computed(() => [
+  { value: '', label: '-- All Courses Overview --' },
+  ...availableCourses.value.map((courseCode) => ({ value: courseCode, label: getCourseName(courseCode) })),
+])
 
 // APML v10.0 phase labels
 const PHASE_LABELS = {

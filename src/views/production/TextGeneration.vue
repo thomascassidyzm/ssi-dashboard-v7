@@ -8,27 +8,25 @@
         <div class="grid grid-cols-2 gap-6">
           <div>
             <label class="block text-xs text-faint mb-2">Known Language (Learning FROM)</label>
-            <select
+            <FilterSelect
               v-model="knownLanguage"
-              class="w-full bg-surface-2 border border-line rounded-lg px-3 py-2 text-ink text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            >
-              <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select known language' }}</option>
-              <option v-for="lang in languages" :key="lang.code" :value="lang.code">
-                {{ lang.name }} ({{ lang.code }})
-              </option>
-            </select>
+              class="w-full"
+              :options="languageOptions"
+              :placeholder="languagesLoading ? 'Loading...' : 'Select known language'"
+              filter-placeholder="Type a language…"
+              button-class="w-full bg-surface-2 border border-line rounded-lg px-3 py-2 text-ink text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            />
           </div>
           <div>
             <label class="block text-xs text-faint mb-2">Target Language (Learning TO)</label>
-            <select
+            <FilterSelect
               v-model="targetLanguage"
-              class="w-full bg-surface-2 border border-line rounded-lg px-3 py-2 text-ink text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            >
-              <option value="" disabled selected>{{ languagesLoading ? 'Loading...' : 'Select target language' }}</option>
-              <option v-for="lang in languages" :key="lang.code" :value="lang.code">
-                {{ lang.name }} ({{ lang.code }})
-              </option>
-            </select>
+              class="w-full"
+              :options="languageOptions"
+              :placeholder="languagesLoading ? 'Loading...' : 'Select target language'"
+              filter-placeholder="Type a language…"
+              button-class="w-full bg-surface-2 border border-line rounded-lg px-3 py-2 text-ink text-sm focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+            />
           </div>
         </div>
 
@@ -647,6 +645,7 @@ import { dirFor } from '@/utils/textDirection.js'
 import { useBuildMonitor } from '@/composables/useBuildMonitor'
 import { isConfigured as isSupabaseConfigured, getCourseProgress, getSeedGrid as sbGetSeedGrid, getSeedDetail, getKnownGenderPairs } from '@/services/supabase'
 import GenderPairText from '@/components/production/GenderPairText.vue'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
 
 const router = useRouter()
 
@@ -665,6 +664,12 @@ const knownLanguage = ref('')
 const targetLanguage = ref('')
 const languages = ref([])
 const languagesLoading = ref(true)
+
+// Option rows for the language pickers: the name is the searchable label, the
+// ISO code rides along as the hint — the same "Name (code)" pair as before.
+const languageOptions = computed(() =>
+  languages.value.map((lang) => ({ value: lang.code, label: lang.name, hint: lang.code }))
+)
 const creatingCourse = ref(false)
 
 // Computed course code from language selection

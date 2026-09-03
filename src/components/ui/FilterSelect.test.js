@@ -130,6 +130,19 @@ describe('option filtering', () => {
     expect(filterOptions('spanish', options).map((o) => o.value)).toEqual(['spa_for_eng'])
   })
 
+  it('treats a null option value as selected when the model is null', async () => {
+    const wrapper = mount(FilterSelect, {
+      props: { options: [{ value: null, label: 'all voices' }, { value: 'v1', label: 'Voice one' }], modelValue: null },
+      attachTo: document.body,
+    })
+    await openPanel(wrapper)
+    const selected = [...document.querySelectorAll('.fs-panel .fs-option.selected')].map((n) => n.textContent.trim())
+    expect(selected).toEqual(['all voices'])
+    wrapper.unmount()
+  })
+})
+
+describe('option filtering', () => {
   it('keeps numeric option values usable', () => {
     const [{ options }] = normaliseOptions([
       { value: 24, label: 'Last 24h' },

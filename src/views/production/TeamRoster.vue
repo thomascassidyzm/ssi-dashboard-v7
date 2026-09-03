@@ -148,12 +148,14 @@
               <span v-if="s.voiceId">Currently a computer voice</span>
               <span v-else>Not assigned yet</span>
             </div>
-            <select v-model="slotPick[s.slot]" class="slot-select" :disabled="saving">
-              <option value="">Choose a team member…</option>
-              <option v-for="m in unassignedMembers" :key="m.email" :value="m.email">
-                {{ m.name || m.email }}
-              </option>
-            </select>
+            <FilterSelect
+              v-model="slotPick[s.slot]"
+              :options="memberOptions"
+              placeholder="Choose a team member…"
+              filter-placeholder="Type a name or email…"
+              button-class="slot-select"
+              :disabled="saving"
+            />
             <button
               class="btn small primary"
               :disabled="saving || !slotPick[s.slot]"
@@ -214,6 +216,7 @@ import { useCourses } from '../../composables/useCourses'
 // The SAME strip the Voice Lab uses, deliberately — one confirm/reject
 // mechanism in the estate, not two that can drift apart.
 import CloneConfirm from '../admin/voicelab/CloneConfirm.vue'
+import FilterSelect from '../../components/ui/FilterSelect.vue'
 
 const props = defineProps({
   courseCode: { type: String, required: true },
@@ -228,6 +231,17 @@ const error = ref(null)
 const members = ref([])
 const slots = ref([])
 const slotPick = ref({ target1: '', target2: '' })
+// The assignable people, same rows and same order the <select> carried. Email
+// stays the value; it doubles as the hint when the person has a name, so the
+// filter finds them either way.
+const memberOptions = computed(() => [
+  { value: '', label: 'Choose a team member…' },
+  ...unassignedMembers.value.map((m) => ({
+    value: m.email,
+    label: m.name || m.email,
+    hint: m.name ? m.email : '',
+  })),
+])
 
 // ── CONSENT, THE ONBOARDING STEP (Tom, 2026-08-31) ────────────────────────
 // "A person being onboarded to record for us is exactly who should be stating,
@@ -643,7 +657,11 @@ onMounted(loadTeam)
   color: var(--muted);
 }
 .slot-empty { color: var(--faint); font-size: 0.875rem; }
-.slot-select {
+.slot-card :deep(.fs-root) {
+  display: block;
+}
+
+.slot-card :deep(.slot-select) {
   width: 100%;
   border: 1px solid var(--line);
   border-radius: 8px;

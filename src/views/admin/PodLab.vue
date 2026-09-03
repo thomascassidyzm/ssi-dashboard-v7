@@ -32,6 +32,7 @@ import { ref, computed, reactive, watch } from 'vue'
 import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import LabCrumbs from '@/components/LabCrumbs.vue'
 import CoursePicker from '../../components/CoursePicker.vue'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
 import ConsentStep from './voicelab/ConsentStep.vue'
 // Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
 // runs) — see src/lib/podEngine + tools/sync-pod-engine.sh. Vendored, not
@@ -1625,6 +1626,12 @@ function voiceLabel(v) {
   if (ok === false) bits.push('⚠ WRONG LANGUAGE')
   return bits.join(' · ')
 }
+/** The same rows the cast dropdown always showed, in FilterSelect's shape.
+    The key carries provider|voice_id|locale, so typing "azure", an id or a
+    locale narrows the list even though the label reads as one sentence. */
+function voiceSelectOptions(gender) {
+  return (gender === 'm' ? optionsM.value : optionsF.value).map((o) => ({ value: o.key, label: voiceLabel(o) }))
+}
 function chosen(gender) {
   return (gender === 'm' ? optionsM.value : optionsF.value).find((o) => o.key === pick.value[gender]) || null
 }
@@ -2650,12 +2657,13 @@ loadLiveConfig()
               <div v-if="pickerError" class="chip err">{{ pickerError }}</div>
               <div v-for="slot in [{ g: 'm', t: 'Male' }, { g: 'f', t: 'Female' }]" :key="slot.g" class="vpick-row">
                 <span class="vp-slot">{{ slot.t }}</span>
-                <select v-model="pick[slot.g]" class="vp-select">
-                  <option v-if="!pick[slot.g]" value="">— no voice cast —</option>
-                  <option v-for="o in (slot.g === 'm' ? optionsM : optionsF)" :key="o.key" :value="o.key">
-                    {{ voiceLabel(o) }}
-                  </option>
-                </select>
+                <FilterSelect
+                  v-model="pick[slot.g]"
+                  :options="voiceSelectOptions(slot.g)"
+                  placeholder="— no voice cast —"
+                  filter-placeholder="Type a voice, provider or locale…"
+                  button-class="vp-select"
+                />
                 <button
                   class="vp-play"
                   :disabled="!!pickerBusy || !pick[slot.g]"
@@ -3973,6 +3981,10 @@ code {
   font-weight: 600;
   color: var(--muted);
 }
+/* The cast picker is the shared FilterSelect now: its root is what the row
+   flexes, and `.vp-select` rides on the button inside it. */
+.vpick-row :deep(.fs-root) { flex: 1 1 auto; min-width: 0; }
+.vpick-row :deep(.fs-button.vp-select) { width: 100%; }
 .vp-select {
   flex: 1 1 auto;
   min-width: 0;

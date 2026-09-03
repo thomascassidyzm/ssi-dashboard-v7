@@ -16,20 +16,15 @@
       <!-- Course Selector -->
       <div class="mb-4">
         <label class="text-sm font-medium text-ink mb-2 block">Select Course:</label>
-        <select
+        <FilterSelect
           v-model="selectedCourseCode"
+          class="w-full"
+          :options="courseOptions"
+          placeholder="-- Select a course --"
+          filter-placeholder="Type a course…"
+          button-class="w-full px-4 py-2 bg-surface-2 text-ink border border-line rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
           @change="onCourseChange"
-          class="w-full px-4 py-2 bg-surface-2 text-ink border border-line rounded focus:outline-none focus:ring-2 focus:ring-emerald-500"
-        >
-          <option value="">-- Select a course --</option>
-          <option
-            v-for="course in availableCourses"
-            :key="course.course_code"
-            :value="course.course_code"
-          >
-            {{ getLanguageName(course.target_language) }} for {{ getLanguageName(course.source_language) }} ({{ course.course_code }})
-          </option>
-        </select>
+        />
       </div>
 
       <!-- Course Context Header -->
@@ -485,13 +480,15 @@ import { useToast } from 'vue-toastification'
 import { languageName } from '@/utils/languageNames'
 import { dirFor } from '@/utils/textDirection.js'
 import AudioPreviewPlayer from './AudioPreviewPlayer.vue'
+import FilterSelect from './ui/FilterSelect.vue'
 
 const toast = useToast()
 
 export default {
   name: 'LegoBasketViewer',
   components: {
-    AudioPreviewPlayer
+    AudioPreviewPlayer,
+    FilterSelect
   },
   props: {
     courseCode: {
@@ -524,6 +521,15 @@ export default {
     }
   },
   computed: {
+    // "<Target> for <Known>" is the searchable label; the course code rides
+    // alongside as the hint, exactly the pair the old <option> ran together.
+    courseOptions() {
+      return this.availableCourses.map(course => ({
+        value: course.course_code,
+        label: `${this.getLanguageName(course.target_language)} for ${this.getLanguageName(course.source_language)}`,
+        hint: course.course_code
+      }))
+    },
     availableSeeds() {
       // Get available seeds from the loaded course data
       if (!this.courseData || !this.courseData.translations) {

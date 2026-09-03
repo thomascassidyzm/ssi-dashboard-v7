@@ -205,14 +205,14 @@
           >
             {{ c.label }}
           </button>
-          <select
+          <FilterSelect
             v-model="voiceFilter"
+            :options="voiceFilterOptions"
+            placeholder="all voices"
+            filter-placeholder="Type a voice…"
+            button-class="bg-surface border border-line rounded px-2 py-1 text-xs text-ink"
             @change="fetchReport()"
-            class="bg-surface border border-line rounded px-2 py-1 text-xs text-ink"
-          >
-            <option :value="null">all voices</option>
-            <option v-for="v in voiceRows" :key="v.voiceId" :value="v.voiceId">{{ v.voiceId }}</option>
-          </select>
+          />
           <span class="text-xs text-faint">{{ matched }} clip(s)</span>
         </div>
 
@@ -315,6 +315,7 @@
 <script setup>
 import { ref, computed, onUnmounted, watch } from 'vue'
 import { getApiUrl } from '@/services/api'
+import FilterSelect from '@/components/ui/FilterSelect.vue'
 
 const props = defineProps({
   courseCode: { type: String, required: true },
@@ -367,6 +368,12 @@ const voiceRows = computed(() =>
     .map(([voiceId, b]) => ({ voiceId, ...b }))
     .sort((a, b) => (b.flagRate ?? 0) - (a.flagRate ?? 0))
 )
+
+/** Same rows for the shared dropdown, with the null "all voices" row first. */
+const voiceFilterOptions = computed(() => [
+  { value: null, label: 'all voices' },
+  ...voiceRows.value.map((v) => ({ value: v.voiceId, label: v.voiceId })),
+])
 
 function rateClass(rate) {
   if (rate == null) return 'text-faint'
