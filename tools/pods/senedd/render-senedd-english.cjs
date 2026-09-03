@@ -55,7 +55,7 @@ async function main() {
     // (tools/pods/senedd/set-senedd-cast.sql). CARTESIA, not xAI: the estate's
     // standard English pod clone gfzdpspr5fdp is an xAI voice and xAI is being
     // wound down, so this pod is not born on it (Tom, 2026-09-03).
-    knownVoice: { voice_id: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', provider: 'cartesia', gender: 'm', locale: 'en-GB' },
+    knownVoice: { voice_id: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', provider: 'cartesia', gender: 'm', locale: 'en-GB' },
     voiceConfig: course.voice_config || {},
   }
 
