@@ -128,6 +128,11 @@
                 @click="onTextTap(r, $event)">{{ r.text }}</span>
           <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
           <p v-if="error && editingId === r.id" class="row-error">{{ error }}</p>
+          <!-- ON THE ROW, not under the list. It first rendered after the whole
+               roster, which on Catrin's 466 lines put it several screens below
+               the row she had just edited — a message nobody will ever see is
+               the same as no message. -->
+          <p v-if="savedNote && savedId === r.id" class="row-saved">{{ savedNote }}</p>
         <template v-if="editingId !== r.id">
           <!-- ONE TAP BACK ONTO A LINE. Re-reading something used to mean
                ticking the re-read switch and starting the whole queue again;
@@ -190,6 +195,10 @@ const props = defineProps({
   sections: { type: Array, required: true },
   playingId: { type: String, default: null },
   editingId: { type: String, default: null },
+  // The one short line, and which row it belongs to. Empty in the common case,
+  // which is the ruling: fixing a line nobody has read says nothing.
+  savedNote: { type: String, default: '' },
+  savedId: { type: String, default: null },
   saving: { type: Boolean, default: false },
   error: { type: String, default: null },
   startOpen: { type: Boolean, default: false },
@@ -504,5 +513,6 @@ function tallyWords(section) {
   font-size: 0.82rem;
   opacity: 0.75;
 }
+.row-saved { flex: 1 1 100%; margin: 0.35rem 0 0; font-size: 0.85rem; color: var(--color-tungsten, #ffa630); }
 .row-error { flex: 1 1 100%; margin: 0.4rem 0 0; color: var(--color-film-red, #e63946); font-size: 0.85rem; }
 </style>

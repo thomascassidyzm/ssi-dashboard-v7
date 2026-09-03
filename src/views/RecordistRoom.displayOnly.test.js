@@ -333,7 +333,7 @@ describe('RecordistRoom — rewriting a line', () => {
     // read is not an edit with a consequence — there is no take to clear and
     // nothing goes back into the queue, so there is nothing to report. The
     // corrected line IS the receipt.
-    expect(wrapper.find('.saved-note').exists()).toBe(false)
+    expect(wrapper.find('.saved-note, .row-saved').exists()).toBe(false)
   })
 
   it('says one short line, and only when the edit actually cost a take', async () => {
@@ -348,9 +348,13 @@ describe('RecordistRoom — rewriting a line', () => {
     await wrapper.find('.row-edit').trigger('blur')
     await flushPromises()
 
-    // One element, never a stack.
-    expect(wrapper.findAll('.saved-note')).toHaveLength(1)
-    expect(wrapper.find('.saved-note').text()).toBe('Saved, read it again.')
+    // One element, never a stack — and ON THE ROW that was edited, not under
+    // the whole list. Catrin's roster is 466 rows long; a message several
+    // screens below the row she just changed is a message nobody reads.
+    const saved = wrapper.findAll('.row-saved')
+    expect(saved).toHaveLength(1)
+    expect(saved[0].text()).toBe('Saved, read it again.')
+    expect(wrapper.findAll('.roster-list .row')[0].find('.row-saved').exists()).toBe(true)
   })
 
   it('Esc puts the original words back and saves nothing', async () => {
@@ -372,7 +376,7 @@ describe('RecordistRoom — rewriting a line', () => {
 
     expect(global.fetch.mock.calls.find(c => c[1] && c[1].method === 'PATCH')).toBeUndefined()
     expect(wrapper.find('.line-target').text()).toBe('Nos da')
-    expect(wrapper.find('.saved-note').exists()).toBe(false)
+    expect(wrapper.find('.saved-note, .row-saved').exists()).toBe(false)
   })
 })
 

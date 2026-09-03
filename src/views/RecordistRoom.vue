@@ -59,17 +59,14 @@
         :editing-id="editingId"
         :saving="editSaving"
         :error="editError"
+        :saved-note="savedNote"
+        :saved-id="savedId"
         @play="togglePlay"
         @record="recordOne"
         @edit="beginEdit"
         @cancel-edit="cancelEdit"
         @save="saveEdit($event.id, $event.text)"
       />
-
-      <!-- The same one short line, for an edit made from the list. It appears
-           only where the edit cost a take; the common case stays silent. Above
-           Start, never over it — Start is still the loudest thing here. -->
-      <p v-if="savedNote" class="saved-note">{{ savedNote }}</p>
 
       <!-- Start is the FIRST thing on the card and the only thing needed. One
            tap puts the mic live on the first line that still needs reading —
@@ -349,17 +346,14 @@
         :editing-id="editingId"
         :saving="editSaving"
         :error="editError"
+        :saved-note="savedNote"
+        :saved-id="savedId"
         @play="togglePlay"
         @record="recordOne"
         @edit="beginEdit"
         @cancel-edit="cancelEdit"
         @save="saveEdit($event.id, $event.text)"
       />
-
-      <!-- The list on this screen edits too, so it needs the same one short
-           line. Without it an edit made here that DID clear a take said nothing
-           at all — the one case where silence is wrong. -->
-      <p v-if="savedNote" class="saved-note">{{ savedNote }}</p>
 
       <div v-if="sessionLines.length" class="listen-back">
         <h3>Listen back</h3>
@@ -816,15 +810,19 @@ const editBoxHeight = ref('auto')
 // something — see saveEdit. A single ref, overwritten, so there is no stack and
 // nothing to dismiss.
 const savedNote = ref('')
+// WHICH ROW it belongs to. The roster puts it on that row rather than under the
+// whole list — see RecordistRoster.
+const savedId = ref(null)
 let savedTimer = null
 // Esc blurs the box on its way out, and blur is what saves. This says which of
 // the two just happened.
 let abandoning = false
 
-function say(words) {
+function say(words, lineId = null) {
   savedNote.value = words
+  savedId.value = lineId
   clearTimeout(savedTimer)
-  savedTimer = setTimeout(() => { savedNote.value = '' }, 4000)
+  savedTimer = setTimeout(() => { savedNote.value = ''; savedId.value = null }, 6000)
 }
 
 // TAP THE WORD YOU MEANT. The offset is worked out from where the thumb landed
@@ -851,6 +849,7 @@ function beginEdit(lineId, caretAt = null) {
   abandoning = false
   editError.value = null
   savedNote.value = ''
+  savedId.value = null
   editText.value = plainText(l.text)
   editingId.value = lineId
   nextTick(() => {
@@ -939,7 +938,7 @@ async function saveEdit(lineId, text) {
     if (hadTake) {
       say(data.alsoChanged
         ? `Saved, read it again — also fixed on ${data.alsoChanged} other ${data.alsoChanged === 1 ? 'line' : 'lines'}.`
-        : 'Saved, read it again.')
+        : 'Saved, read it again.', lineId)
     }
     // The mic comes back only where the editor has actually closed. Released in
     // a `finally`, a failed save left the microphone live underneath an open
