@@ -526,8 +526,8 @@
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-rose-500/70 ring-1 ring-inset ring-rose-400"></span> Flagged</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-400/70"></span> Drafted</span>
             <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500/80"></span> Complete</span>
-            <span v-if="genderPairSeeds.size > 0" class="flex items-center gap-1.5">
-              <span class="w-3 h-3 rounded-sm bg-surface-2/30 gender-pair-swatch"></span> ♂/♀ cue pair ({{ genderPairSeeds.size }})
+            <span v-if="genderPairSeeds.size > 0" class="flex items-center gap-1.5" title="Seed cue, LEGO or practice phrase has a male/female speaker wording">
+              <span class="w-3 h-3 rounded-sm bg-surface-2/30 gender-pair-swatch"></span> ♂/♀ pair in seed ({{ genderPairSeeds.size }})
             </span>
           </div>
         </div>
@@ -748,8 +748,9 @@ function showActionError(msg) {
 const seedGrid = ref([])
 const seedGridExpanded = ref(true)
 
-// Known-side gender pairs (male/female speaker wordings of the same cue).
-// Loaded once per course, in one batched read; empty for ungendered courses.
+// Known-side gender pairs (male/female speaker wordings of the same text).
+// Loaded once per course; genderPairSeeds holds every seed with a pair at any
+// layer — cue, LEGO or practice phrase — and is empty for ungendered courses.
 const genderPairs = ref(new Map())
 const genderPairSeeds = ref(new Set())
 let genderPairsCourse = null
@@ -2065,7 +2066,8 @@ onUnmounted(() => {
 }
 
 /* Known-side gender pair: a corner dot on the cell, so a scan of the grid shows
-   which cues have a male/female speaker wording. Status colours are untouched. */
+   which seeds contain a male/female speaker wording — at the cue, a LEGO or a
+   practice phrase. Status colours are untouched. */
 .gender-pair-swatch,
 .seed-cell.has-gender-pair {
   position: relative;
