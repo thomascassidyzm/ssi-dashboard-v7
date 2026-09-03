@@ -170,11 +170,73 @@ const MALE_NAMES = new Set([
 
 // Voice pools live in app_config.pod_voice_pools (JSONB). See migration
 // 20260505_app_config_pod_voice_pools.sql for shape and policy.
+//
+// THE PRIMARY OF EACH (language, gender) IS NOT STORED HERE — IT IS DERIVED.
+// Tom's ruling of 2026-09-03 ("his Cartesia clone becomes the default English
+// male voice, estate-wide") landed on an estate that stated the default English
+// male voice in TWO places that did not know about each other: this pool, whose
+// eng.m[0] cast every new pod speaker, and voice_language_roles, which
+// services/shared/language-voice-cast.cjs reads for every COURSE role. Two
+// statements of one decision is the estate's recurring bug shape — a hardcoded
+// list standing in for a derivation — so the pool now takes its PRIMARY from
+// the cast and keeps its own list as DEPTH behind it.
+//
+// One row changes the default everywhere: pods and courses both.
+//
+// The invariant, kept deliberately and tested: WITH NO CAST ROWS the pools are
+// returned byte-identically, so nothing about a language nobody has cast
+// changes. Only rank-0 'phrase' rows are read — a backup (rank 1) is a
+// contingency for the course resolver, not a pod casting decision, and the
+// guide slot is not a pod concept at all.
 async function loadVoicePools() {
   const { data, error } = await db()
     .from('app_config').select('value').eq('key', 'pod_voice_pools').single();
   if (error) throw new Error(`load pod_voice_pools: ${error.message}`);
-  return data.value;
+  const { data: cast } = await db()
+    .from('voice_language_roles')
+    .select('language, gender, rank, slot, voice_id')
+    .eq('slot', 'phrase').eq('rank', 0);
+  if (!cast || !cast.length) return data.value;
+  const ids = [...new Set(cast.map((r) => r.voice_id))];
+  const { data: voices } = await db()
+    .from('voices').select('voice_id, tts_engine, display_name, human_name, is_active').in('voice_id', ids);
+  return overlayCastPrimaries(data.value, cast, voices || []);
+}
+
+// Fold the language cast's rank-0 primaries onto the front of the matching
+// pools. PURE, so the rule is testable without a database.
+//
+// A cast voice that is missing from `voices`, or inactive, is SKIPPED rather
+// than cast — same rule as pickCastVoice() in language-voice-cast.cjs, and the
+// pool's own head then stands, which is the honest fallback.
+//
+// A human voice is never folded in: pod human casting lives in
+// courses.voice_config.podCast (services/voice-engine/pods-cast.cjs) and these
+// pools are the TTS side. Folding a human voice id in here would hand a
+// recording id to a TTS provider.
+function overlayCastPrimaries(pools, castRows, voices) {
+  const byId = new Map((voices || []).map((v) => [v.voice_id, v]));
+  const out = JSON.parse(JSON.stringify(pools));
+  for (const row of castRows || []) {
+    const voice = byId.get(row.voice_id);
+    if (!voice || voice.is_active === false) continue;
+    const engine = String(voice.tts_engine || '').trim().toLowerCase();
+    if (!engine || engine === 'human') continue;
+    const gender = row.gender === 'm' || row.gender === 'f' ? row.gender : null;
+    if (!gender) continue;
+    // The pool speaks BARE provider ids ('gfzdpspr5fdp', 'en-GB-RyanNeural');
+    // the voices table and clip identity spell them '<provider>_<id>'.
+    const bare = voice.voice_id.startsWith(`${engine}_`) ? voice.voice_id.slice(engine.length + 1) : voice.voice_id;
+    const entry = { name: voice.display_name || voice.human_name || bare, provider: engine, voice_id: bare };
+    const key = row.language;
+    if (!out[key]) out[key] = { f: [], m: [] };
+    if (!Array.isArray(out[key][gender])) out[key][gender] = [];
+    // Depth is preserved, never duplicated: the same voice further down the
+    // list moves to the front rather than appearing twice.
+    const rest = out[key][gender].filter((e) => e && e.voice_id !== bare);
+    out[key][gender] = [entry, ...rest];
+  }
+  return out;
 }
 
 function normaliseName(speaker) {
@@ -1070,6 +1132,6 @@ if (require.main === module) main();
 module.exports = {
   parseMarkdown, syncPod, assignVoices, resolveCast,
   canonicalSpeakerName, extractGenderMarker, inferGenderFromName,
-  loadVoicePools, poolKeyFor, poolKeysForCourse, normaliseOverrides,
+  loadVoicePools, overlayCastPrimaries, poolKeyFor, poolKeysForCourse, normaliseOverrides,
   checkCastPin, syncRefusal,
 };
