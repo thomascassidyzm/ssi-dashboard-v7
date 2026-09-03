@@ -143,16 +143,38 @@ function languageName(language) {
 }
 
 /**
+ * ONE READ PER REQUEST, not one read per caller.
+ *
+ * `courses` and `language_recording_policy` are small reference tables that this
+ * module re-reads from scratch every time any of its helpers needs them. In a
+ * single /api/recording/coverage build that came to EIGHT reads of `courses`
+ * and EIGHT of `language_recording_policy` — 16 of the request's 47 database
+ * round-trips fetching bytes it already had, at ~100-200ms of Supabase latency
+ * each. Nothing in that request could have changed either table.
+ *
+ * The cache is created by the top-level builder and lives exactly as long as
+ * one call, so it can never serve a stale row to a later request: pass no cache
+ * and every read happens exactly as it did before. The PROMISE is what is
+ * stored, not the result, so two callers that ask at the same moment join one
+ * read rather than racing two.
+ */
+function memoRead(cache, key, read) {
+  if (!cache) return read()
+  if (!cache.has(key)) cache.set(key, read())
+  return cache.get(key)
+}
+
+/**
  * Every course whose TARGET language canonicalises to `language`.
  * Canonicalisation is JS-side (clip-identity.cjs owns it), so this reads the
  * course list once and filters in memory rather than guessing in SQL.
  */
-async function coursesForLanguage(db, language) {
-  const { data, error } = await db
+async function coursesForLanguage(db, language, { cache } = {}) {
+  const { data, error } = await memoRead(cache, 'courses:list', () => db
     .from('courses')
     // `dialect` rides along on every read of this list: it is a property of the
     // course's content, and every consumer here routes on it.
-    .select('course_code, target_lang, known_lang, voice_config, dialect')
+    .select('course_code, target_lang, known_lang, voice_config, dialect'))
   if (error) throw new Error(`course list failed: ${error.message}`)
   return (data || []).filter((c) => {
     try {
@@ -171,8 +193,9 @@ async function coursesForLanguage(db, language) {
  * "human_aranv3_cym_n"], ...}. The map is estate-wide because a recordist's
  * link is estate-wide: Aran's old per-course link must keep resolving to him.
  */
-async function loadAliasMap(db) {
-  const { data, error } = await db.from('courses').select('course_code, voice_config')
+async function loadAliasMap(db, { cache } = {}) {
+  const { data, error } = await memoRead(cache, 'courses:voiceConfig',
+    () => db.from('courses').select('course_code, voice_config'))
   if (error) throw new Error(`alias map load failed: ${error.message}`)
   const map = new Map()
   for (const row of data || []) {
@@ -188,10 +211,12 @@ async function loadAliasMap(db) {
 }
 
 /** All policy rows, newest schema shape: {language, human_only, voices, notes}. */
-async function loadPolicies(db, { humanOnlyOnly = false } = {}) {
-  let q = db.from('language_recording_policy').select('*').order('language')
-  if (humanOnlyOnly) q = q.eq('human_only', true)
-  const { data, error } = await q
+async function loadPolicies(db, { humanOnlyOnly = false, cache } = {}) {
+  const { data, error } = await memoRead(cache, `policies:${humanOnlyOnly}`, () => {
+    let q = db.from('language_recording_policy').select('*').order('language')
+    if (humanOnlyOnly) q = q.eq('human_only', true)
+    return q
+  })
   if (error) throw new Error(`language_recording_policy read failed: ${error.message}`)
   return data || []
 }
@@ -206,11 +231,11 @@ async function loadPolicies(db, { humanOnlyOnly = false } = {}) {
  *
  * @returns {Promise<null | {voiceId, displayName, email, gender, language, languageName, spellings: string[]}>}
  */
-async function resolveRecordist(db, voiceIdParam) {
+async function resolveRecordist(db, voiceIdParam, { cache } = {}) {
   const asked = String(voiceIdParam || '').trim()
   if (!asked) return null
 
-  const [policies, aliasMap] = await Promise.all([loadPolicies(db), loadAliasMap(db)])
+  const [policies, aliasMap] = await Promise.all([loadPolicies(db, { cache }), loadAliasMap(db, { cache })])
 
   // An alias in the URL → the canonical voice it stands for.
   let canonical = asked
@@ -241,11 +266,15 @@ async function resolveRecordist(db, voiceIdParam) {
       const matches = entry.voiceId === canonical || entry.voiceId === asked ||
         declared.has(asked) || (aliasMap.get(entry.voiceId) || new Set()).has(asked)
       if (!matches) continue
-      for (const a of declared) {
-        const set = aliasMap.get(entry.voiceId) || new Set()
-        set.add(a)
-        aliasMap.set(entry.voiceId, set)
-      }
+      // The policy's declared aliases, unioned with the course-derived ones, for
+      // THIS voice only. Built as a fresh one-entry map rather than written back
+      // into aliasMap: under `cache` that map is shared with the next voice
+      // resolved in the same request, and a shared map that each caller edits is
+      // how one recordist's aliases end up widening another's clip lookup. The
+      // union is identical to what the write-back produced, and it was never
+      // read again within a call.
+      const merged = new Map([[entry.voiceId,
+        new Set([...(aliasMap.get(entry.voiceId) || []), ...declared])]])
       return {
         voiceId: entry.voiceId,
         displayName: entry.name || entry.voiceId,
@@ -256,7 +285,7 @@ async function resolveRecordist(db, voiceIdParam) {
         language: policy.language,
         languageName: languageName(policy.language),
         humanOnly: !!policy.human_only,
-        spellings: recordedSpellings(entry.voiceId, aliasMap),
+        spellings: recordedSpellings(entry.voiceId, merged),
       }
     }
   }
@@ -475,23 +504,51 @@ function policyVoiceList(policy) {
 }
 
 /** Page through course_seeds for a set of courses. */
+/**
+ * PostgREST caps one read at 1000 rows, so a big set is read in pages — and read
+ * one page at a time those pages are pure latency: the four pages of Welsh's
+ * seeds were 601ms of the coverage build's 1.8s, sitting idle between round
+ * trips. The pages are independent reads of one stable ordering, so a BATCH of
+ * them can be in flight together; the batch stops the moment a page comes back
+ * short, which is the same stop condition the serial loop used. Rows are
+ * concatenated in page order, so the result is byte-for-byte what the serial
+ * loop returned.
+ *
+ * A page beyond the end costs one empty read and is discarded — cheaper than
+ * the round-trip it saves.
+ *
+ * @param {number} page rows per read
+ * @param {number} batch pages in flight at once
+ * @param {(from:number, to:number) => Promise} read one page
+ */
+async function pagedRead(read, { page = 1000, batch = 4 } = {}) {
+  const out = []
+  for (let base = 0; ; base += page * batch) {
+    const results = await Promise.all(
+      Array.from({ length: batch }, (_, i) => read(base + i * page, base + (i + 1) * page - 1)))
+    let short = false
+    for (const { data, error } of results) {
+      if (error) throw error
+      out.push(...(data || []))
+      if ((data || []).length < page) { short = true; break }
+    }
+    if (short) return out
+  }
+}
+
 async function fetchSeeds(db, courseCodes) {
   if (!courseCodes.length) return []
-  const PAGE = 1000
-  const out = []
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await db
+  try {
+    return await pagedRead((from, to) => db
       .from('course_seeds')
       .select('id, course_code, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
       .in('course_code', courseCodes)
       .order('course_code', { ascending: true })
       .order('seed_number', { ascending: true })
-      .range(from, from + PAGE - 1)
-    if (error) throw new Error(`seed read failed: ${error.message}`)
-    out.push(...(data || []))
-    if ((data || []).length < PAGE) break
+      .range(from, to))
+  } catch (err) {
+    throw new Error(`seed read failed: ${err.message}`)
   }
-  return out
 }
 
 /**
@@ -509,17 +566,22 @@ async function audioVoicesById(db, ids) {
   const wanted = [...new Set(ids.filter(Boolean))]
   const out = new Map()
   const PAGE = 100
-  for (let i = 0; i < wanted.length; i += PAGE) {
-    const { data, error } = await db
-      .from('course_audio').select('id, voice_id').in('id', wanted.slice(i, i + PAGE))
+  // CONCURRENTLY. The id list is known in full before the first read, so the
+  // chunks depend on nothing but themselves — and run one after another they
+  // were 566ms of the coverage page's 2.3s, six round-trips of pure waiting.
+  const chunks = []
+  for (let i = 0; i < wanted.length; i += PAGE) chunks.push(wanted.slice(i, i + PAGE))
+  const results = await Promise.all(chunks.map((ids) =>
+    db.from('course_audio').select('id, voice_id').in('id', ids)))
+  for (const { data, error } of results) {
     if (error) throw new Error(`seed clip voice read failed: ${error.message}`)
     for (const row of data || []) out.set(row.id, row.voice_id)
   }
   return out
 }
 
-async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED } = {}) {
-  const courses = await coursesForLanguage(db, language)
+async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
+  const courses = await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
   const empty = { byBucket: new Map(), uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
   if (!courses.length) return empty
@@ -714,7 +776,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // must NOT collapse into a pod line that happens to read the same, because a
   // pod take links a pod sentence FK and would leave the seed's own FK empty --
   // the two look identical on screen and are different rows to fill.
-  const policy = (await loadPolicies(db)).find((row) => {
+  const policy = (await loadPolicies(db, { cache })).find((row) => {
     try { return canonicalLanguage(row.language) === language } catch { return false }
   })
   const policyVoices = policyVoiceList(policy)
@@ -939,7 +1001,7 @@ async function fetchRerecordWanted(db, courseCodes) {
  * @returns {Promise<{lines: Array, total, recorded, remaining, uncast, duplicatesCollapsed}>}
  */
 async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed, maskRejectedHistory = true } = {}) {
-  const language = await buildLanguageLines(db, recordist.language, { quarryMaxSeed })
+  const language = await buildLanguageLines(db, recordist.language, { quarryMaxSeed, cache: new Map() })
   const mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
@@ -1065,11 +1127,13 @@ async function fetchClipVoices(db, audioIds) {
   const ids = [...new Set((audioIds || []).filter(Boolean))]
   const out = new Map()
   const CHUNK = 200
-  for (let i = 0; i < ids.length; i += CHUNK) {
-    const { data, error } = await db
-      .from('course_audio')
-      .select('id, voice_id')
-      .in('id', ids.slice(i, i + CHUNK))
+  // CONCURRENTLY, for the same reason as audioVoicesById: the ids are all known
+  // up front and the chunks are independent.
+  const chunks = []
+  for (let i = 0; i < ids.length; i += CHUNK) chunks.push(ids.slice(i, i + CHUNK))
+  const results = await Promise.all(chunks.map((c) =>
+    db.from('course_audio').select('id, voice_id').in('id', c)))
+  for (const { data, error } of results) {
     if (error) throw new Error(`clip voice lookup failed: ${error.message}`)
     for (const row of data || []) out.set(row.id, row.voice_id)
   }
@@ -1078,20 +1142,16 @@ async function fetchClipVoices(db, audioIds) {
 
 /** Page through listening_pod_sentences — PostgREST caps a single read at 1000. */
 async function fetchAllSentences(db, podIds) {
-  const PAGE = 1000
-  const out = []
-  for (let from = 0; ; from += PAGE) {
-    const { data, error } = await db
+  try {
+    return await pagedRead((from, to) => db
       .from('listening_pod_sentences')
       .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted')
       .in('pod_id', podIds)
       .order('id')
-      .range(from, from + PAGE - 1)
-    if (error) throw new Error(`pod sentence read failed: ${error.message}`)
-    out.push(...(data || []))
-    if (!data || data.length < PAGE) break
+      .range(from, to))
+  } catch (err) {
+    throw new Error(`pod sentence read failed: ${err.message}`)
   }
-  return out
 }
 
 /**
@@ -1177,7 +1237,9 @@ function kindTally(lines) {
 }
 
 async function buildCoverage(db) {
-  const policies = await loadPolicies(db, { humanOnlyOnly: true })
+  // ONE cache for this request, discarded with it. See memoRead.
+  const cache = new Map()
+  const policies = await loadPolicies(db, { humanOnlyOnly: true, cache })
 
   // CONCURRENTLY, because this is Tom's dashboard and it was costing him the
   // page. Done language-by-language it took 7.7s cold against the live estate —
@@ -1190,11 +1252,11 @@ async function buildCoverage(db) {
     // ONE pass over the language's pods, whatever the cast size — and it runs
     // even when the language has no cast at all, which is the only way pdc's
     // and bre's uncast lines are visible rather than reported as a flat zero.
-    const language = await buildLanguageLines(db, policy.language)
+    const language = await buildLanguageLines(db, policy.language, { cache })
 
     const claimed = new Set()
     const perVoice = (await Promise.all(Object.keys(voices).map(async (slot) => {
-      const recordist = await resolveRecordist(db, voices[slot].voiceId)
+      const recordist = await resolveRecordist(db, voices[slot].voiceId, { cache })
       if (!recordist) return null
       const bucket = bucketKey(recordist.dialect, recordist.gender)
       claimed.add(bucket)
