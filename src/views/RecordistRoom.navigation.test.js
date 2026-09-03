@@ -133,9 +133,10 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
 
     // Rewriting a recorded line from the list puts it back to outstanding.
     await wrapper.find('.roster-toggle').trigger('click')
-    await wrapper.findAll('.roster-list .row')[1].find('.row-edit-btn').trigger('click')
+    await wrapper.findAll('.roster-list .row')[1].find('.row-text').trigger('click')
     await wrapper.find('.row-edit').setValue('te, os gwelwch yn dda')
-    await wrapper.find('.row-save').trigger('click')
+    // No Save button anywhere: looking away is what saves it.
+    await wrapper.find('.row-edit').trigger('blur')
     await flushPromises()
     expect(wrapper.find('.strip-words').text()).toContain('3 still to read')
 
@@ -180,7 +181,7 @@ describe('RecordistRoom — the keyboard belongs to the keyboard while she is ty
     await flushPromises()
     expect(wrapper.find('.line-target').text()).toBe('llinell un')
 
-    await wrapper.find('.edit-open').trigger('click')
+    await wrapper.find('.line-target').trigger('click')
     await flushPromises()
     const box = wrapper.find('.edit-box')
     expect(box.exists()).toBe(true)
@@ -203,7 +204,7 @@ describe('RecordistRoom — the keyboard belongs to the keyboard while she is ty
     await flushPromises()
     await wrapper.find('.btn-begin').trigger('click')
     await flushPromises()
-    await wrapper.find('.edit-open').trigger('click')
+    await wrapper.find('.line-target').trigger('click')
     await flushPromises()
 
     for (const sel of ['.ctl-again', '.ctl-next', '.btn-finish']) {

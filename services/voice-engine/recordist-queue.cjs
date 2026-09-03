@@ -1091,16 +1091,33 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which kind of quarry piece: a LEGO of the course, or a single word no
         // LEGO covers. Null on every other kind of line.
         quarrySource: line.quarrySource || null,
-        // May the recordist rewrite this line's text from the booth? True only
-        // on a test fixture, and the server checks it again on the write — this
-        // is what the screen draws, never what the write trusts.
-        // A SEED sentence is course content — its text is changed on the admin
-        // side, under the content-change protocol. Saying so here rather than
-        // only on the write is what stops the booth drawing an Edit button that
-        // can only ever answer 403.
-        // A quarry piece is a SPAN of course content, not a line of its own:
-        // editing it here would edit nothing, so the booth is not offered it.
-        canEditText: line.kind !== 'seed' && line.kind !== 'quarry' && isTestFixtureCourse(line.courseCode),
+        // May the recordist rewrite this line's text from the booth?
+        //
+        // A POD LINE: YES, live courses included (Tom, 2026-09-03 — Aran could
+        // not fix a wrong Welsh line before reading it). A pod sentence is a row
+        // of its own, it belongs to exactly one (dialect, gender) bucket and so
+        // to exactly one artist, and the write migrates learner progress in the
+        // same call — see the PATCH route in recordist-router.cjs.
+        //
+        // A SEED sentence: NO, and this is a floor rather than caution. A seed's
+        // LEGOs must recompose it exactly; rewriting the sentence without
+        // re-decomposing leaves the tiling silently wrong, and re-decomposing is
+        // the course-builder's redo path (snapshot, wipe phrases + LEGOs, rebuild),
+        // which is not a thing to fire from a phone with the mic live.
+        //
+        // A QUARRY piece is a SPAN of course content, not a line of its own:
+        // editing it here would edit nothing.
+        //
+        // A RERECORD want is a course_audio clip, not a sentence: there is no
+        // text row to rewrite.
+        canEditText: (line.kind || 'pod') === 'pod',
+        // The other sentence rows this ONE line stands for, collapsed by clip
+        // identity. The artist sees one line and means one line, so an edit has
+        // to move all of them together or the collapse quietly splits in two.
+        // Server-side bookkeeping the booth never reads.
+        duplicateSentenceIds: (line.kind || 'pod') === 'pod'
+          ? (line.duplicateOf || []).map((d) => d.sentenceId).filter(Boolean)
+          : [],
       })
     }
   }

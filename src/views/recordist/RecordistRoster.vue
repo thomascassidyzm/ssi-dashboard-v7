@@ -104,17 +104,21 @@
       <ol class="section-rows">
       <li v-for="r in s.rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
         <!-- Rewriting a line from the list: the row becomes the editor, in
-             place, so the line being changed never leaves the eye. Test courses
-             only — `canEdit` is the server's word and the write is checked
-             again there. -->
+             place, so the line being changed never leaves the eye. It saves
+             itself when you look away; Esc puts the original back. `canEdit` is
+             the server's word and the write is checked again there. -->
         <template v-if="editingId === r.id">
-          <textarea v-model="draft" class="row-edit" rows="3" :disabled="saving"></textarea>
-          <div class="row-edit-actions">
-            <button class="row-cancel" type="button" :disabled="saving" @click="$emit('cancel-edit')">Cancel</button>
-            <button class="row-save" type="button" :disabled="saving" @click="$emit('save', { id: r.id, text: draft })">
-              {{ saving ? 'Saving…' : 'Save' }}
-            </button>
-          </div>
+          <textarea
+            ref="rowBox"
+            v-model="draft"
+            class="row-edit"
+            rows="2"
+            :disabled="saving"
+            @keydown.esc.prevent="abandon"
+            @keydown.enter.prevent="commit(r.id)"
+            @blur="commit(r.id)"
+          ></textarea>
+          <p class="row-hint">{{ saving ? 'Saving…' : 'Change the words and look away.' }}</p>
           <p v-if="error" class="row-error">{{ error }}</p>
         </template>
         <template v-else>
@@ -122,7 +126,9 @@
           <!-- WHO IS SPEAKING. A two-hander read without the character names is
                one man talking to himself; the name is on the row so it never is. -->
           <span v-if="r.speaker" class="row-speaker">{{ r.speaker }}</span>
-          <span class="row-text">{{ r.text }}</span>
+          <!-- Tap the words to change them. Tap is the only affordance here too. -->
+          <span class="row-text" :class="{ tappable: r.canEdit }"
+                @click="r.canEdit && startEdit(r)">{{ r.text }}</span>
           <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
           <!-- ONE TAP BACK ONTO A LINE. Re-reading something used to mean
                ticking the re-read switch and starting the whole queue again;
@@ -134,12 +140,6 @@
             type="button"
             @click="$emit('record', r.id)"
           >{{ r.done ? 'Record again' : 'Record' }}</button>
-          <button
-            v-if="r.canEdit"
-            class="row-edit-btn"
-            type="button"
-            @click="startEdit(r)"
-          >Edit</button>
           <button
             v-if="r.url"
             class="row-play"
@@ -181,7 +181,7 @@
  * line is, or the queue: the booth owns all four and there is one definition of
  * each.
  */
-import { ref, computed, watch } from 'vue'
+import { ref, computed, watch, nextTick } from 'vue'
 
 const props = defineProps({
   // [{ key, heading, blurb, rows: [{ id, text, done, hasTake, url, canEdit, speaker, alsoFills }] }]
@@ -216,9 +216,32 @@ watch(() => props.sections, (list) => {
 // The draft lives here rather than in the booth: it is throwaway text that only
 // matters until Save, and the booth owns the request, not the keyboard.
 const draft = ref('')
+const rowBox = ref(null)
+// Esc blurs the box on its way out, and blur is what saves. This says which of
+// the two just happened.
+let abandoning = false
+
 function startEdit(row) {
+  if (props.editingId === row.id) return
+  abandoning = false
   draft.value = row.text
   emit('edit', row.id)
+  nextTick(() => {
+    const el = Array.isArray(rowBox.value) ? rowBox.value[0] : rowBox.value
+    if (el && el.focus) { el.focus(); try { el.select() } catch {} }
+  })
+}
+
+function abandon() {
+  abandoning = true
+  emit('cancel-edit')
+}
+
+// It saves itself. No Save button, and nothing to confirm.
+function commit(id) {
+  if (abandoning) { abandoning = false; return }
+  if (props.editingId !== id || props.saving) return
+  emit('save', { id, text: draft.value })
 }
 // Opening the list is how a done line gets edited, so an edit started from
 // anywhere else must not leave it hidden.
@@ -406,6 +429,8 @@ function tallyWords(section) {
 .is-done .row-mark { background: var(--color-paper, #f7f7f2); border-color: var(--color-paper, #f7f7f2); }
 .is-todo { opacity: 0.72; }
 .row-text { flex: 1 1 auto; font-size: 0.95rem; }
+.row-text.tappable { cursor: text; -webkit-tap-highlight-color: rgba(255, 166, 48, 0.25); }
+.row-text.tappable:active { color: var(--color-tungsten, #ffa630); }
 .row-state { flex: 0 0 auto; font-size: 0.78rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.03em; }
 .row-play {
   flex: 0 0 auto;
@@ -429,16 +454,6 @@ function tallyWords(section) {
   color: var(--color-emerald, #06ffa5);
   cursor: pointer;
 }
-.row-edit-btn {
-  flex: 0 0 auto;
-  min-height: 40px;
-  padding: 0.3rem 0.7rem;
-  border-radius: 8px;
-  border: 1px solid var(--color-graphite, #475569);
-  background: transparent;
-  color: var(--color-paper-dim, #c1c1bb);
-  cursor: pointer;
-}
 .row-edit {
   flex: 1 1 100%;
   padding: 0.6rem;
@@ -448,22 +463,7 @@ function tallyWords(section) {
   background: var(--color-void, #0f172a);
   color: var(--color-paper, #f7f7f2);
 }
-.row-edit-actions { display: flex; gap: 0.5rem; flex: 1 1 100%; }
-.row-cancel, .row-save {
-  flex: 1 1 50%;
-  min-height: 46px;
-  border-radius: 8px;
-  border: 1px solid var(--color-graphite, #475569);
-  background: transparent;
-  color: inherit;
-  cursor: pointer;
-}
-.row-save {
-  background: var(--color-tungsten, #ffa630);
-  border-color: var(--color-tungsten, #ffa630);
-  color: var(--color-void, #0f172a);
-  font-weight: 700;
-}
+.row-hint { flex: 1 1 100%; margin: 0.35rem 0 0; font-size: 0.8rem; opacity: 0.65; }
 .row-speaker {
   flex: 0 0 auto;
   font-size: 0.78rem;

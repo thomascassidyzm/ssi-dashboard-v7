@@ -1084,26 +1084,43 @@ module.exports = function createRecordistRouter({
     }
   })
 
-  // ── 3b. rewrite a line's text (TEST FIXTURES ONLY) ─────────────────────────
+  // ── 3b. rewrite a line's text ──────────────────────────────────────────────
   //
-  // Tom, 2026-09-02: "it is a TEST course so it can have any rules we like" —
-  // so the booth may edit a zzz_ course's line text inline, and he can exercise
-  // edit-then-record and edit-a-recorded-line-then-record-again for real.
+  // Tom, 2026-09-03: Aran is recording Welsh and could not work out how to fix a
+  // wrong line before reading it. "build it and enable it so it's DELIGHTFUL to
+  // use." The two people best placed to catch a wrong Welsh line are the two
+  // Welsh speakers reading it aloud, so a POD LINE IS EDITABLE ON A LIVE COURSE.
   //
-  // IT MUST NEVER REACH A LIVE COURSE. A live pod line is learner content and
-  // changing it in place breaks the content-change migration protocol silently
-  // (progress is filed under the slot, not the text). The gate is here, on the
-  // server, and not only on the screen: this route has no login by design, so a
-  // client-side check would be a suggestion.
+  // WHAT THAT COSTS, AND WHO PAYS IT. Learner progress is filed under a
+  // sentence's SLOT, not its text (docs/pods/pod-migration-protocol.md, standing
+  // doctrine A-111), so an in-place edit would otherwise credit a learner with a
+  // sentence they have never heard. The protocol's own answer applies: rule 6, a
+  // sentence that changed at all counts as NEW, and rule 4, a new sentence
+  // arrives UNSEEN — absence IS unseen. So the edit drops this sentence's
+  // learner_pod_state rows in the same call. Progress cannot go backwards from
+  // that: `exposures` is a per-sentence maturity counter floored on the derived
+  // main-flow value, and course progress rides an independent ratchet.
   //
-  // WHAT HAPPENS TO THE EXISTING AUDIO. Nothing is deleted and nothing is
-  // unlinked. A clip's identity is (language, text_normalized, voice), so the
-  // moment the text changes the line simply stops matching its old take and
-  // reads as OUTSTANDING again — the queue recomputes that from the text on
-  // every read. The old clip stays in course_audio, and the sentence's
-  // target_audio_id still points at it until a new take lands, at which point
-  // propagateTakeToDuplicates upserts the new clip and repoints the FK. That is
-  // make-before-break by construction rather than by remembering to do it.
+  // A SEED sentence and a QUARRY piece are still refused, and that is a floor
+  // rather than caution — see canEditText in recordist-queue.cjs.
+  //
+  // WHAT HAPPENS TO THE EXISTING AUDIO. Nothing is deleted. The clip row keeps
+  // its bytes and its provenance, filed under the words it actually says.
+  //
+  // BUT THE SLOT IS UNLINKED, and that is not optional. This route used to
+  // reason that clip identity is (language, text_normalized, voice), so new text
+  // would stop matching its old take by itself. That stopped being true at
+  // 06189d68c — "a filled slot is a take, even when the pause cue moved the
+  // text" — which made the sentence's own target_audio_id the evidence. Proved
+  // in a browser on 2026-09-03: after an edit the queue still answered
+  // recorded:true and still handed out the old clip's URL. That is the one way
+  // this feature can do real damage — a learner hearing yesterday's words under
+  // today's sentence — so the FK goes with the text.
+  //
+  // This is not a break-before-make: the alternative to unlinking is not a
+  // working clip, it is a WRONG clip. A silent slot is honest and is back in the
+  // artist's queue within the same second; a clip saying something else is not.
+  // The audio id is logged, and the clip is still findable by its own text.
   router.patch('/voice/:voiceId/line/:lineId/text', async (req, res) => {
     try {
       const recordist = await recordistOr404(req, res)
@@ -1138,7 +1155,7 @@ module.exports = function createRecordistRouter({
       // the gate is applied to.
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
-        .select('id, pod_id, target_text, known_text')
+        .select('id, pod_id, target_text, known_text, target_audio_id')
         .eq('id', lineId)
         .maybeSingle()
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
@@ -1152,22 +1169,25 @@ module.exports = function createRecordistRouter({
       if (podErr) throw new Error(`pod lookup failed: ${podErr.message}`)
       if (!pod) return res.status(404).json({ error: `No pod for line ${lineId}` })
 
-      if (!isTestFixtureCourse(pod.course_code)) {
+      // The line has to be one of THIS voice's own lines. The link is the
+      // identity, so the link must not reach past its own queue. This is also
+      // the CROSS-ARTIST answer: a pod sentence is bucketed by (dialect, gender)
+      // and a bucket routes to one voice, so a line in Aran's queue is never in
+      // Catrin's, and this check refuses the case anyway.
+      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      const mine = queue.lines.find((l) => l.id === lineId)
+      if (!mine) {
+        return res.status(403).json({ error: 'That line is not in your queue.', reason: 'not_yours' })
+      }
+      if (!mine.canEditText) {
         return res.status(403).json({
-          error: 'This line belongs to a live course. Its text is changed on the admin side, under the content-change migration protocol, so that learner progress moves with it.',
-          reason: 'live_course',
-          courseCode: pod.course_code,
+          error: 'That line comes from the course itself, so its words are changed there rather than here.',
+          reason: 'not_editable',
         })
       }
 
-      // The line has to be one of THIS voice's own lines. The link is the
-      // identity, so the link must not reach past its own queue.
-      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
-      if (!queue.lines.some((l) => l.id === lineId)) {
-        return res.status(403).json({ error: 'That line is not in your queue.', reason: 'not_yours' })
-      }
-
-      const patch = { target_text: text }
+      // THE TAKE GOES WITH THE WORDS. See the note above the route.
+      const patch = { target_text: text, target_audio_id: null }
       // The known side is the recordist's crib. On a fixture whose two sides are
       // the same string, leaving it behind would put the OLD sentence under the
       // new one on screen and look like a bug; where the two genuinely differ,
@@ -1175,13 +1195,32 @@ module.exports = function createRecordistRouter({
       const knownTracksTarget = (sentence.known_text || '').trim() === (sentence.target_text || '').trim()
       if (knownTracksTarget) patch.known_text = text
 
+      // ONE LINE ON SCREEN IS ONE LINE IN THE COURSE. The queue collapses every
+      // sentence row that reads the same, in this voice's bucket, into one line
+      // to read — the roster says so out loud ("this take also fills N other
+      // lines"). So an edit moves all of them: leaving the copies behind would
+      // split one line into two and hand the artist back a line they thought
+      // they had just fixed.
+      const ids = [lineId, ...(mine.duplicateSentenceIds || []).filter((id) => id && id !== lineId)]
+
       const { error: updErr } = await db()
         .from('listening_pod_sentences')
         .update(patch)
-        .eq('id', lineId)
+        .in('id', ids)
       if (updErr) throw new Error(`line update failed: ${updErr.message}`)
 
-      logger.info(`[Recordist] ${recordist.voiceId} rewrote ${lineId} (${pod.course_code}): "${sentence.target_text}" -> "${text}"`)
+      // THE PROGRESS MIGRATION, in the same call as the content change. New
+      // words in an old slot is a new sentence (protocol rule 6) and a new
+      // sentence arrives unseen (rule 4) — absence IS unseen, so the row goes.
+      // Nothing is deducted anywhere else: this costs a learner a little
+      // re-listening and nothing more.
+      const { error: progErr, count: progressDropped } = await db()
+        .from('learner_pod_state')
+        .delete({ count: 'exact' })
+        .in('sentence_id', ids)
+      if (progErr) throw new Error(`progress migration failed: ${progErr.message}`)
+
+      logger.info(`[Recordist] ${recordist.voiceId} rewrote ${ids.length} row(s) for ${lineId} (${pod.course_code}): "${sentence.target_text}" -> "${text}"; unlinked take ${sentence.target_audio_id || '(none)'}; dropped ${progressDropped || 0} learner_pod_state row(s)`)
       res.json({
         ok: true,
         lineId,
@@ -1192,6 +1231,11 @@ module.exports = function createRecordistRouter({
         // again, and the take it used to have is still there, untouched.
         recorded: false,
         previousText: sentence.target_text,
+        alsoChanged: ids.length - 1,
+        // The clip that used to fill this slot. Nothing was deleted — it is
+        // still in course_audio under the words it actually says.
+        unlinkedAudioId: sentence.target_audio_id || null,
+        progressDropped: progressDropped || 0,
       })
     } catch (err) {
       logger.error(`[Recordist] text edit: ${err.message}`)

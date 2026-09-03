@@ -285,11 +285,16 @@ describe('RecordistRoom — rewriting a line', () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_catrinlliar_cym_n' } })
     await flushPromises()
     await wrapper.find('.roster-toggle').trigger('click')
-    expect(wrapper.findAll('.row-edit-btn')).toHaveLength(0)
+    expect(wrapper.findAll('.row-text.tappable')).toHaveLength(0)
+    await wrapper.findAll('.roster-list .row')[0].find('.row-text').trigger('click')
+    expect(wrapper.find('.row-edit').exists()).toBe(false)
 
     await wrapper.find('.btn-begin').trigger('click')
     await flushPromises()
-    expect(wrapper.find('.edit-open').exists()).toBe(false)
+    expect(wrapper.find('.line-target').classes()).not.toContain('tappable')
+    await wrapper.find('.line-target').trigger('click')
+    await flushPromises()
+    expect(wrapper.find('.edit-box').exists()).toBe(false)
   })
 
   it('saves the new text and puts the line back to outstanding, without a reload', async () => {
@@ -299,7 +304,7 @@ describe('RecordistRoom — rewriting a line', () => {
     await wrapper.find('.btn-begin').trigger('click')   // opens on line-2, the outstanding one
     await flushPromises()
 
-    await wrapper.find('.edit-open').trigger('click')
+    await wrapper.find('.line-target').trigger('click')
     await flushPromises()
     // The mic is held while the keyboard is up: a live mic under an open
     // keyboard records the room and files it as the take.
@@ -307,7 +312,9 @@ describe('RecordistRoom — rewriting a line', () => {
     expect(wrapper.find('.meter-tag').text()).toBe('Mic paused while you listen')
 
     await wrapper.find('.edit-box').setValue('A tea, please.')
-    await wrapper.find('.edit-save').trigger('click')
+    // NO SAVE BUTTON. Looking away is what saves it.
+    expect(wrapper.find('.edit-save').exists()).toBe(false)
+    await wrapper.find('.edit-box').trigger('blur')
     await flushPromises()
 
     const patch = global.fetch.mock.calls.find(c => c[1] && c[1].method === 'PATCH')
@@ -319,6 +326,32 @@ describe('RecordistRoom — rewriting a line', () => {
     expect(wrapper.find('.line-target').text()).toBe('A tea, please.')
     expect(wrapper.find('.stage-progress').text()).toContain('Recording')
     expect(wrapper.find('.stage-progress').text()).toContain('1 of 2 recorded')
+
+    // AND IT SAYS WHAT HAPPENED, IN ONE SHORT LINE. One element, never a stack.
+    expect(wrapper.findAll('.saved-note')).toHaveLength(1)
+    expect(wrapper.find('.saved-note').text()).toBe('Saved, read it again.')
+  })
+
+  it('Esc puts the original words back and saves nothing', async () => {
+    stubEditableQueue(true)
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
+    await flushPromises()
+    await wrapper.find('.btn-begin').trigger('click')
+    await flushPromises()
+
+    await wrapper.find('.line-target').trigger('click')
+    await flushPromises()
+    await wrapper.find('.edit-box').setValue('something she did not mean')
+    await wrapper.find('.edit-box').trigger('keydown.esc')
+    await flushPromises()
+    // The box is gone the moment Esc lands, so the blur it causes on its way out
+    // has nothing to save from — and `abandoning` catches the browsers that fire
+    // one at a detached node anyway.
+    expect(wrapper.find('.edit-box').exists()).toBe(false)
+
+    expect(global.fetch.mock.calls.find(c => c[1] && c[1].method === 'PATCH')).toBeUndefined()
+    expect(wrapper.find('.line-target').text()).toBe('Nos da')
+    expect(wrapper.find('.saved-note').exists()).toBe(false)
   })
 })
 
