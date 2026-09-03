@@ -18,6 +18,7 @@ const {
   recordXaiOutcome,
   getXaiHealth,
   TTS_MIN_AUDIO_MS,
+  isKnownSideOfHumanVoiceCourse,
 } = require('./tts-service.cjs')
 
 /** xAI's default output format: 128 kbps mp3. */
@@ -107,5 +108,58 @@ describe('xAI degradation pacing', () => {
     // ...but the 08-03 signature (rates climbing past 4%) must.
     for (let i = 0; i < 200; i++) recordXaiOutcome(false)
     expect(getXaiHealth().cooldowns).toBeGreaterThan(before)
+  })
+})
+
+
+/**
+ * THE HUMAN-VOICE GATE, narrowed (Tom, 2026-09-03: "the English lines will be
+ * TTS, because it is fast and cheap").
+ *
+ * A human-voice course may synthesise its KNOWN side and nothing else. These
+ * pin the only question that matters: can a Welsh clip get through? The
+ * dangerous case is the one that used to look safe — isHumanVoiceLang speaks
+ * database codes ('cym') and a TTS config speaks BCP-47 ('cy'), so the guard
+ * must never be written as "is this language human-voiced".
+ */
+describe('a human-voice course may synthesise its known side only', () => {
+  it('lets the English gloss of a Welsh course through', () => {
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', 'en')).toBe(true)
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', 'en-GB')).toBe(true)
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', 'eng')).toBe(true)
+  })
+
+  it('NEVER lets Welsh through, in any spelling', () => {
+    for (const tag of ['cy', 'cy-GB', 'cym', 'cym_n', 'welsh']) {
+      expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', tag)).toBe(false)
+      expect(isKnownSideOfHumanVoiceCourse('cym_s_for_eng', tag)).toBe(false)
+    }
+  })
+
+  it('refuses when no language is stated — silence is not permission', () => {
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', null)).toBe(false)
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', '')).toBe(false)
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', undefined)).toBe(false)
+  })
+
+  it('holds for the other human-voice courses on their own known sides', () => {
+    expect(isKnownSideOfHumanVoiceCourse('bre_for_fra', 'fr')).toBe(true)
+    expect(isKnownSideOfHumanVoiceCourse('bre_for_fra', 'br')).toBe(false)
+    expect(isKnownSideOfHumanVoiceCourse('pdc_for_eng', 'en')).toBe(true)
+    expect(isKnownSideOfHumanVoiceCourse('pdc_for_eng', 'de')).toBe(false)
+  })
+
+  it('reads the known side off the COURSE CODE, including non-English ones', () => {
+    // 'jpn' does not start with 'ja' — a prefix test passes this file and
+    // fails here, which is why the table is explicit.
+    expect(isKnownSideOfHumanVoiceCourse('cym_anthem_for_jpn', 'ja')).toBe(true)
+    expect(isKnownSideOfHumanVoiceCourse('cym_anthem_for_jpn', 'cy')).toBe(false)
+    expect(isKnownSideOfHumanVoiceCourse('cym_for_yor', 'yo')).toBe(true)
+    expect(isKnownSideOfHumanVoiceCourse('cym_for_yor', 'cy')).toBe(false)
+  })
+
+  it('refuses a course code it cannot parse', () => {
+    expect(isKnownSideOfHumanVoiceCourse('cym_n', 'en')).toBe(false)
+    expect(isKnownSideOfHumanVoiceCourse('', 'en')).toBe(false)
   })
 })
