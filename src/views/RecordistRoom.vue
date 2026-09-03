@@ -173,7 +173,10 @@
              there is nothing to read. It arms, then settles to live at the
              instant the line is revealed — the transition itself is the go
              signal, and there is no counting down at anybody. -->
-        <span class="onair" :class="{ arming }">{{ arming ? 'Getting ready' : 'On air' }}</span>
+        <!-- And it must not say ON AIR while he is paused. The pill is the one
+             thing on this screen that claims the microphone is open, so it is
+             the one thing that cannot go on claiming it. -->
+        <span class="onair" :class="{ arming: arming || paused }">{{ paused ? 'Paused' : (arming ? 'Getting ready' : 'On air') }}</span>
         <div class="meter" :class="{ clip: recorder.clipping.value && !micHeld, held: micHeld }">
           <!-- A WAVEFORM, NOT A BAR. Aran, 2026-09-03: "some kind of visual
                representative of the waveform would give people confidence that
