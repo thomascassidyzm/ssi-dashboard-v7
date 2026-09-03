@@ -1,5 +1,67 @@
 [
  {
+  "seed": 290,
+  "li": 1,
+  "pos": 5,
+  "kind": "replace",
+  "target": "he knows the answer today",
+  "known": "आज उसे जवाब पता है।",
+  "tiles": [
+   "S0290L01",
+   "S0007L01"
+  ]
+ },
+ {
+  "seed": 512,
+  "li": 1,
+  "pos": 4,
+  "kind": "replace",
+  "target": "can you hold the door open this morning?",
+  "known": "आज सुबह क्या आप दरवाज़ा खुला रख सकते हैं?",
+  "tiles": [
+   "S0512L01",
+   "S0039L02"
+  ]
+ },
+ {
+  "seed": 525,
+  "li": 2,
+  "pos": 2,
+  "kind": "inplace",
+  "target": "I'm not sure if you were able to finish",
+  "known": "मुझे यकीन नहीं है कि आप पूरा कर पाए या नहीं।",
+  "tiles": [
+   "S0010L03",
+   "S0525L02"
+  ]
+ },
+ {
+  "seed": 525,
+  "li": 2,
+  "pos": 3,
+  "kind": "inplace",
+  "target": "I didn't know if you were able to finish",
+  "known": "मुझे नहीं पता था कि आप पूरा कर पाए या नहीं।",
+  "tiles": [
+   "S0375L02",
+   "S0049L03",
+   "S0525L02"
+  ]
+ },
+ {
+  "seed": 559,
+  "li": 1,
+  "pos": 4,
+  "kind": "replace",
+  "target": "have you found a friend in the office?",
+  "known": "क्या आपको ऑफ़िस में एक दोस्त मिल गया?",
+  "tiles": [
+   "S0559L01",
+   "S0265L01",
+   "S0184L02"
+  ]
+ },
+ {
   "seed": 569,
   "li": 1,
   "pos": 6,

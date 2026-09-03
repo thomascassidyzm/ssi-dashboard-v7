@@ -85,7 +85,7 @@ function buildDecomposition(row, legoById) {
   const legos = await get(`course_legos?course_code=eq.${COURSE}&select=seed_number,lego_index,lego_id,type,known_text,target_text,components&order=seed_number,lego_index`);
   const legoById = Object.fromEntries(legos.map(l => [l.lego_id, l]));
   const legoOfSeed = {};
-  for (const l of legos) if (l.lego_index === 1) legoOfSeed[l.seed_number] = l;
+  for (const l of legos) legoOfSeed[`${l.seed_number}:${l.lego_index}`] = l;
 
   const log = [];
   let ready = 0, refused = 0, written = 0;
@@ -102,7 +102,7 @@ function buildDecomposition(row, legoById) {
       log.push({ key, status: 'SKIP_ALREADY_APPLIED' }); continue;
     }
 
-    const lego = legoOfSeed[row.seed];
+    const lego = legoOfSeed[`${row.seed}:${row.li}`];
     const viol = checkVocabViolations([{ target: row.target }], buildVocab(legos, row.seed), COURSE);
     if (viol.length) { log.push({ key, status: 'ABORT_VOCAB', unknown: viol[0].unknown }); refused++; continue; }
     if (!normalizeForContainment(row.target).includes(normalizeForContainment(lego.target_text))) {

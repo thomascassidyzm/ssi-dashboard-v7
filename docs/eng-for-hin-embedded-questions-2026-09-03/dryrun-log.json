@@ -1,11 +1,170 @@
 {
  "course": "eng_for_hin",
  "apply": false,
- "at": "2026-09-03T18:19:15.791Z",
- "ready": 49,
+ "at": "2026-09-03T18:22:05.842Z",
+ "ready": 54,
  "refused": 0,
  "written": 0,
  "rows": [
+  {
+   "key": "s290 L1 p5",
+   "id": "eng_for_hin:S0290L01B03",
+   "kind": "replace",
+   "known_before": "उसे जवाब पता है या नहीं?",
+   "known_after": "आज उसे जवाब पता है।",
+   "target_before": "he knows the answer or not?",
+   "target_after": "he knows the answer today",
+   "decomposition": [
+    {
+     "known": "उसे जवाब पता है",
+     "legoId": "S0290L01",
+     "target": "he knows the answer",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    }
+   ],
+   "known_audio_id": "32c7dddd-7b89-45f8-94da-5dd0a5306fcc",
+   "target1_audio_id": "01a890b7-41fd-4039-a181-da31e3c4fd81",
+   "target2_audio_id": "cd2839fd-7ce0-460f-8a20-24b3a84755bb",
+   "status": "READY"
+  },
+  {
+   "key": "s512 L1 p4",
+   "id": "eng_for_hin:S0512L01U01",
+   "kind": "replace",
+   "known_before": "मुझे लगता है कि क्या आप दरवाज़ा खुला रख सकते हैं।",
+   "known_after": "आज सुबह क्या आप दरवाज़ा खुला रख सकते हैं?",
+   "target_before": "I think that can you hold the door open",
+   "target_after": "can you hold the door open this morning?",
+   "decomposition": [
+    {
+     "known": "क्या आप दरवाज़ा खुला रख सकते हैं",
+     "legoId": "S0512L01",
+     "target": "can you hold the door open",
+     "isGhost": false
+    },
+    {
+     "known": "आज सुबह",
+     "legoId": "S0039L02",
+     "target": " this morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s525 L2 p2",
+   "id": "eng_for_hin:S0525L02B02",
+   "kind": "inplace",
+   "known_before": "मुझे यकीन नहीं है कि आप पूरा कर पाए या नहीं।",
+   "known_after": "मुझे यकीन नहीं है कि आप पूरा कर पाए या नहीं।",
+   "target_before": "I'm not sure you were able to finish",
+   "target_after": "I'm not sure if you were able to finish",
+   "decomposition": [
+    {
+     "known": "मुझे यकीन नहीं है कि",
+     "legoId": "S0010L03",
+     "target": "I'm not sure if",
+     "isGhost": false
+    },
+    {
+     "known": "आप पूरा कर पाए या नहीं",
+     "legoId": "S0525L02",
+     "target": " you were able to finish",
+     "isGhost": false
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s525 L2 p3",
+   "id": "eng_for_hin:S0525L02B03",
+   "kind": "inplace",
+   "known_before": "मुझे नहीं पता था कि आप पूरा कर पाए या नहीं।",
+   "known_after": "मुझे नहीं पता था कि आप पूरा कर पाए या नहीं।",
+   "target_before": "I didn't know you were able to finish",
+   "target_after": "I didn't know if you were able to finish",
+   "decomposition": [
+    {
+     "known": "मुझे नहीं पता था कि",
+     "legoId": "S0375L02",
+     "target": "I didn't know",
+     "isGhost": false
+    },
+    {
+     "known": "अगर",
+     "legoId": "S0049L03",
+     "target": " if",
+     "isGhost": false
+    },
+    {
+     "known": "आप पूरा कर पाए या नहीं",
+     "legoId": "S0525L02",
+     "target": " you were able to finish",
+     "isGhost": false
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s559 L1 p4",
+   "id": "eng_for_hin:S0559L01U01",
+   "kind": "replace",
+   "known_before": "मुझे लगता है कि क्या आपको एक दोस्त मिल गया।",
+   "known_after": "क्या आपको ऑफ़िस में एक दोस्त मिल गया?",
+   "target_before": "I think that have you found a friend",
+   "target_after": "have you found a friend in the office?",
+   "decomposition": [
+    {
+     "known": "क्या आपको मिल गया",
+     "legoId": "S0559L01",
+     "target": "have you found",
+     "isGhost": false
+    },
+    {
+     "known": "एक दोस्त",
+     "legoId": "S0265L01",
+     "target": " a friend",
+     "isGhost": false
+    },
+    {
+     "known": "ऑफ़िस में",
+     "legoId": "S0184L02",
+     "target": " in the office",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
   {
    "key": "s569 L1 p6",
    "id": "eng_for_hin:S0569L01U03",
