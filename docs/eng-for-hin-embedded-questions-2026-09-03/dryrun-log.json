@@ -1,0 +1,1633 @@
+{
+ "course": "eng_for_hin",
+ "apply": false,
+ "at": "2026-09-03T18:19:15.791Z",
+ "ready": 49,
+ "refused": 0,
+ "written": 0,
+ "rows": [
+  {
+   "key": "s569 L1 p6",
+   "id": "eng_for_hin:S0569L01U03",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि क्या आपने फ़ैसला कर लिया है कि क्या होता है।",
+   "known_after": "क्या आपने फ़ैसला कर लिया है कि जवाब क्या है?",
+   "target_before": "I don't know have you decided what happens",
+   "target_after": "have you decided what the answer is?",
+   "decomposition": [
+    {
+     "known": "क्या आपने फ़ैसला कर लिया है कि",
+     "legoId": "S0569L01",
+     "target": "have you decided",
+     "isGhost": false
+    },
+    {
+     "known": "जवाब क्या है",
+     "legoId": "S0017L03",
+     "target": " what the answer is",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s569 L1 p8",
+   "id": "eng_for_hin:S0569L01U05",
+   "kind": "inplace",
+   "known_before": "क्या आपने फ़ैसला कर लिया है कि आप पूरा कर पाए या नहीं?",
+   "known_after": "क्या आपने फ़ैसला कर लिया है कि आप पूरा कर पाए या नहीं?",
+   "target_before": "have you decided you were able to finish?",
+   "target_after": "have you decided if you were able to finish?",
+   "decomposition": [
+    {
+     "known": "क्या आपने फ़ैसला कर लिया है कि",
+     "legoId": "S0569L01",
+     "target": "have you decided",
+     "isGhost": false
+    },
+    {
+     "known": "अगर",
+     "legoId": "S0049L03",
+     "target": " if",
+     "isGhost": false
+    },
+    {
+     "known": "आप पूरा कर पाए या नहीं",
+     "legoId": "S0525L02",
+     "target": " you were able to finish",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s570 L1 p1",
+   "id": "eng_for_hin:S0570L01B01",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "known_after": "आज आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "target_before": "can you tell me how much are you willing to pay for your ticket?",
+   "target_after": "how much are you willing to pay for your ticket today?",
+   "decomposition": [
+    {
+     "known": "आप अपने टिकट के लिए कितना देने को तैयार हैं",
+     "legoId": "S0570L01",
+     "target": "how much are you willing to pay for your ticket",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s570 L1 p2",
+   "id": "eng_for_hin:S0570L01B02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि आप अपने टिकट के लिए कितना देने को तैयार हैं।",
+   "known_after": "आज शाम आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "target_before": "I don't know how much are you willing to pay for your ticket",
+   "target_after": "how much are you willing to pay for your ticket this evening?",
+   "decomposition": [
+    {
+     "known": "आप अपने टिकट के लिए कितना देने को तैयार हैं",
+     "legoId": "S0570L01",
+     "target": "how much are you willing to pay for your ticket",
+     "isGhost": false
+    },
+    {
+     "known": "आज शाम",
+     "legoId": "S0018L03",
+     "target": " this evening",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": "f3233c4b-263b-4b06-927d-caf1944691d6",
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s570 L1 p4",
+   "id": "eng_for_hin:S0570L01U01",
+   "kind": "replace",
+   "known_before": "क्या आप जानते हैं कि आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "known_after": "अगले महीने आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "target_before": "do you know how much are you willing to pay for your ticket?",
+   "target_after": "how much are you willing to pay for your ticket next month?",
+   "decomposition": [
+    {
+     "known": "आप अपने टिकट के लिए कितना देने को तैयार हैं",
+     "legoId": "S0570L01",
+     "target": "how much are you willing to pay for your ticket",
+     "isGhost": false
+    },
+    {
+     "known": "अगले महीने",
+     "legoId": "S0157L03",
+     "target": " next month",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s570 L1 p5",
+   "id": "eng_for_hin:S0570L01U02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि आप अपने टिकट के लिए कितना देने को तैयार हैं।",
+   "known_after": "अगले साल आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "target_before": "I didn't know how much are you willing to pay for your ticket",
+   "target_after": "how much are you willing to pay for your ticket next year?",
+   "decomposition": [
+    {
+     "known": "आप अपने टिकट के लिए कितना देने को तैयार हैं",
+     "legoId": "S0570L01",
+     "target": "how much are you willing to pay for your ticket",
+     "isGhost": false
+    },
+    {
+     "known": "अगले साल",
+     "legoId": "S0176L01",
+     "target": " next year",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s570 L1 p6",
+   "id": "eng_for_hin:S0570L01U03",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि आप अपने टिकट के लिए कितना देने को तैयार हैं।",
+   "known_after": "सप्ताहांत में आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "target_before": "it doesn't matter how much are you willing to pay for your ticket",
+   "target_after": "how much are you willing to pay for your ticket at the weekend?",
+   "decomposition": [
+    {
+     "known": "आप अपने टिकट के लिए कितना देने को तैयार हैं",
+     "legoId": "S0570L01",
+     "target": "how much are you willing to pay for your ticket",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s570 L1 p7",
+   "id": "eng_for_hin:S0570L01U04",
+   "kind": "replace",
+   "known_before": "किसी को यक़ीन नहीं था कि आप अपने टिकट के लिए कितना देने को तैयार हैं।",
+   "known_after": "कुछ मिनटों में आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "target_before": "nobody was sure how much are you willing to pay for your ticket",
+   "target_after": "how much are you willing to pay for your ticket in a few minutes?",
+   "decomposition": [
+    {
+     "known": "आप अपने टिकट के लिए कितना देने को तैयार हैं",
+     "legoId": "S0570L01",
+     "target": "how much are you willing to pay for your ticket",
+     "isGhost": false
+    },
+    {
+     "known": "कुछ मिनटों में",
+     "legoId": "S0253L02",
+     "target": " in a few minutes",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s570 L1 p8",
+   "id": "eng_for_hin:S0570L01U05",
+   "kind": "replace",
+   "known_before": "क्या आपने फ़ैसला कर लिया है कि आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "known_after": "कल सुबह आप अपने टिकट के लिए कितना देने को तैयार हैं?",
+   "target_before": "have you decided how much are you willing to pay for your ticket?",
+   "target_after": "how much are you willing to pay for your ticket tomorrow morning?",
+   "decomposition": [
+    {
+     "known": "आप अपने टिकट के लिए कितना देने को तैयार हैं",
+     "legoId": "S0570L01",
+     "target": "how much are you willing to pay for your ticket",
+     "isGhost": false
+    },
+    {
+     "known": "कल सुबह",
+     "legoId": "S0155L04",
+     "target": " tomorrow morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s631 L1 p4",
+   "id": "eng_for_hin:S0631L01U01",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि आप क्या लेना चाहेंगे।",
+   "known_after": "आज शाम आप क्या लेना चाहेंगे?",
+   "target_before": "I don't know what would you like",
+   "target_after": "what would you like this evening?",
+   "decomposition": [
+    {
+     "known": "आप क्या लेना चाहेंगे",
+     "legoId": "S0631L01",
+     "target": "what would you like",
+     "isGhost": false
+    },
+    {
+     "known": "आज शाम",
+     "legoId": "S0018L03",
+     "target": " this evening",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s631 L1 p5",
+   "id": "eng_for_hin:S0631L01U02",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि आप क्या लेना चाहेंगे?",
+   "known_after": "सप्ताहांत में आप क्या लेना चाहेंगे?",
+   "target_before": "can you tell me what would you like?",
+   "target_after": "what would you like at the weekend?",
+   "decomposition": [
+    {
+     "known": "आप क्या लेना चाहेंगे",
+     "legoId": "S0631L01",
+     "target": "what would you like",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s631 L1 p6",
+   "id": "eng_for_hin:S0631L01U03",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि आप क्या लेना चाहेंगे।",
+   "known_after": "कल सुबह आप क्या लेना चाहेंगे?",
+   "target_before": "I didn't know what would you like",
+   "target_after": "what would you like tomorrow morning?",
+   "decomposition": [
+    {
+     "known": "आप क्या लेना चाहेंगे",
+     "legoId": "S0631L01",
+     "target": "what would you like",
+     "isGhost": false
+    },
+    {
+     "known": "कल सुबह",
+     "legoId": "S0155L04",
+     "target": " tomorrow morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s631 L1 p7",
+   "id": "eng_for_hin:S0631L01U04",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि आप क्या लेना चाहेंगे।",
+   "known_after": "पब में आप क्या लेना चाहेंगे?",
+   "target_before": "it doesn't matter what would you like",
+   "target_after": "what would you like in the pub?",
+   "decomposition": [
+    {
+     "known": "आप क्या लेना चाहेंगे",
+     "legoId": "S0631L01",
+     "target": "what would you like",
+     "isGhost": false
+    },
+    {
+     "known": "पब में",
+     "legoId": "S0118L03",
+     "target": " in the pub",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s631 L1 p8",
+   "id": "eng_for_hin:S0631L01U05",
+   "kind": "replace",
+   "known_before": "क्या आप जानते हैं कि आप क्या लेना चाहेंगे?",
+   "known_after": "कुछ मिनटों में आप क्या लेना चाहेंगे?",
+   "target_before": "do you know what would you like?",
+   "target_after": "what would you like in a few minutes?",
+   "decomposition": [
+    {
+     "known": "आप क्या लेना चाहेंगे",
+     "legoId": "S0631L01",
+     "target": "what would you like",
+     "isGhost": false
+    },
+    {
+     "known": "कुछ मिनटों में",
+     "legoId": "S0253L02",
+     "target": " in a few minutes",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s642 L1 p4",
+   "id": "eng_for_hin:S0642L01U01",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि आप कैसा महसूस कर रही हैं।",
+   "known_after": "आज सुबह आप कैसा महसूस कर रही हैं?",
+   "target_before": "I don't know how do you feel",
+   "target_after": "how do you feel this morning?",
+   "decomposition": [
+    {
+     "known": "आप कैसा महसूस कर रही हैं",
+     "legoId": "S0642L01",
+     "target": "how do you feel",
+     "isGhost": false
+    },
+    {
+     "known": "आज सुबह",
+     "legoId": "S0039L02",
+     "target": " this morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s642 L1 p5",
+   "id": "eng_for_hin:S0642L01U02",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि आप कैसा महसूस कर रही हैं?",
+   "known_after": "सप्ताहांत में आप कैसा महसूस कर रही हैं?",
+   "target_before": "can you tell me how do you feel?",
+   "target_after": "how do you feel at the weekend?",
+   "decomposition": [
+    {
+     "known": "आप कैसा महसूस कर रही हैं",
+     "legoId": "S0642L01",
+     "target": "how do you feel",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s642 L1 p7",
+   "id": "eng_for_hin:S0642L01U04",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि आप कैसा महसूस कर रही हैं।",
+   "known_after": "काम पर आप कैसा महसूस कर रही हैं?",
+   "target_before": "I didn't know how do you feel",
+   "target_after": "how do you feel at work?",
+   "decomposition": [
+    {
+     "known": "आप कैसा महसूस कर रही हैं",
+     "legoId": "S0642L01",
+     "target": "how do you feel",
+     "isGhost": false
+    },
+    {
+     "known": "काम पर",
+     "legoId": "S0185L02",
+     "target": " at work",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s642 L1 p8",
+   "id": "eng_for_hin:S0642L01U05",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि आप कैसा महसूस कर रही हैं।",
+   "known_after": "आज आप कैसा महसूस कर रही हैं?",
+   "target_before": "it doesn't matter how do you feel",
+   "target_after": "how do you feel today?",
+   "decomposition": [
+    {
+     "known": "आप कैसा महसूस कर रही हैं",
+     "legoId": "S0642L01",
+     "target": "how do you feel",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s644 L1 p6",
+   "id": "eng_for_hin:S0644L01U03",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि क्या आप वह कह सकते हैं।",
+   "known_after": "अंग्रेज़ी में क्या आप वह कह सकते हैं?",
+   "target_before": "I don't know could you say that",
+   "target_after": "could you say that in English?",
+   "decomposition": [
+    {
+     "known": "क्या आप वह कह सकते हैं",
+     "legoId": "S0644L01",
+     "target": "could you say that",
+     "isGhost": false
+    },
+    {
+     "known": "अंग्रेज़ी में",
+     "legoId": "S0004L03",
+     "target": " in English",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s644 L1 p8",
+   "id": "eng_for_hin:S0644L01U05",
+   "kind": "known-fix",
+   "known_before": "एक बार और क्या आप वह कह सकते हैं?",
+   "known_after": "थोड़ा और क्या आप वह कह सकते हैं?",
+   "target_before": "could you say that for a little longer?",
+   "target_after": "could you say that for a little longer?",
+   "decomposition": [
+    {
+     "known": "क्या आप वह कह सकते हैं",
+     "legoId": "S0644L01",
+     "target": "could you say that",
+     "isGhost": false
+    },
+    {
+     "known": "थोड़ा और",
+     "legoId": "S0276L04",
+     "target": " for a little longer",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s652 L1 p3",
+   "id": "eng_for_hin:S0652L01B03",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि आपको किस चीज़ की ज़रूरत है, सर।",
+   "known_after": "आज शाम आपको किस चीज़ की ज़रूरत है, सर?",
+   "target_before": "I don't know what do you need sir",
+   "target_after": "what do you need sir this evening?",
+   "decomposition": [
+    {
+     "known": "आपको किस चीज़ की ज़रूरत है, सर",
+     "legoId": "S0652L01",
+     "target": "what do you need sir",
+     "isGhost": false
+    },
+    {
+     "known": "आज शाम",
+     "legoId": "S0018L03",
+     "target": " this evening",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s652 L1 p4",
+   "id": "eng_for_hin:S0652L01U01",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि आपको किस चीज़ की ज़रूरत है, सर?",
+   "known_after": "सप्ताहांत में आपको किस चीज़ की ज़रूरत है, सर?",
+   "target_before": "can you tell me what do you need sir?",
+   "target_after": "what do you need sir at the weekend?",
+   "decomposition": [
+    {
+     "known": "आपको किस चीज़ की ज़रूरत है, सर",
+     "legoId": "S0652L01",
+     "target": "what do you need sir",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s652 L1 p5",
+   "id": "eng_for_hin:S0652L01U02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि आपको किस चीज़ की ज़रूरत है, सर।",
+   "known_after": "कल सुबह आपको किस चीज़ की ज़रूरत है, सर?",
+   "target_before": "I didn't know what do you need sir",
+   "target_after": "what do you need sir tomorrow morning?",
+   "decomposition": [
+    {
+     "known": "आपको किस चीज़ की ज़रूरत है, सर",
+     "legoId": "S0652L01",
+     "target": "what do you need sir",
+     "isGhost": false
+    },
+    {
+     "known": "कल सुबह",
+     "legoId": "S0155L04",
+     "target": " tomorrow morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s652 L1 p6",
+   "id": "eng_for_hin:S0652L01U03",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि आपको किस चीज़ की ज़रूरत है, सर।",
+   "known_after": "ऑफ़िस में आपको किस चीज़ की ज़रूरत है, सर?",
+   "target_before": "it doesn't matter what do you need sir",
+   "target_after": "what do you need sir in the office?",
+   "decomposition": [
+    {
+     "known": "आपको किस चीज़ की ज़रूरत है, सर",
+     "legoId": "S0652L01",
+     "target": "what do you need sir",
+     "isGhost": false
+    },
+    {
+     "known": "ऑफ़िस में",
+     "legoId": "S0184L02",
+     "target": " in the office",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s652 L1 p7",
+   "id": "eng_for_hin:S0652L01U04",
+   "kind": "replace",
+   "known_before": "क्या आप जानते हैं कि आपको किस चीज़ की ज़रूरत है, सर?",
+   "known_after": "आज आपको किस चीज़ की ज़रूरत है, सर?",
+   "target_before": "do you know what do you need sir?",
+   "target_after": "what do you need sir today?",
+   "decomposition": [
+    {
+     "known": "आपको किस चीज़ की ज़रूरत है, सर",
+     "legoId": "S0652L01",
+     "target": "what do you need sir",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s657 L1 p3",
+   "id": "eng_for_hin:S0657L01B03",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि आप सब कैसा महसूस कर रहे हैं।",
+   "known_after": "आज सुबह आप सब कैसा महसूस कर रहे हैं?",
+   "target_before": "I don't know how do you all feel",
+   "target_after": "how do you all feel this morning?",
+   "decomposition": [
+    {
+     "known": "आप सब कैसा महसूस कर रहे हैं",
+     "legoId": "S0657L01",
+     "target": "how do you all feel",
+     "isGhost": false
+    },
+    {
+     "known": "आज सुबह",
+     "legoId": "S0039L02",
+     "target": " this morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s657 L1 p4",
+   "id": "eng_for_hin:S0657L01U01",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि आप सब कैसा महसूस कर रहे हैं?",
+   "known_after": "सप्ताहांत में आप सब कैसा महसूस कर रहे हैं?",
+   "target_before": "can you tell me how do you all feel?",
+   "target_after": "how do you all feel at the weekend?",
+   "decomposition": [
+    {
+     "known": "आप सब कैसा महसूस कर रहे हैं",
+     "legoId": "S0657L01",
+     "target": "how do you all feel",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s657 L1 p5",
+   "id": "eng_for_hin:S0657L01U02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि आप सब कैसा महसूस कर रहे हैं।",
+   "known_after": "काम पर आप सब कैसा महसूस कर रहे हैं?",
+   "target_before": "I didn't know how do you all feel",
+   "target_after": "how do you all feel at work?",
+   "decomposition": [
+    {
+     "known": "आप सब कैसा महसूस कर रहे हैं",
+     "legoId": "S0657L01",
+     "target": "how do you all feel",
+     "isGhost": false
+    },
+    {
+     "known": "काम पर",
+     "legoId": "S0185L02",
+     "target": " at work",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s657 L1 p7",
+   "id": "eng_for_hin:S0657L01U04",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि आप सब कैसा महसूस कर रहे हैं।",
+   "known_after": "आज आप सब कैसा महसूस कर रहे हैं?",
+   "target_before": "it doesn't matter how do you all feel",
+   "target_after": "how do you all feel today?",
+   "decomposition": [
+    {
+     "known": "आप सब कैसा महसूस कर रहे हैं",
+     "legoId": "S0657L01",
+     "target": "how do you all feel",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s657 L1 p8",
+   "id": "eng_for_hin:S0657L01U05",
+   "kind": "replace",
+   "known_before": "क्या आप जानते हैं कि आप सब कैसा महसूस कर रहे हैं?",
+   "known_after": "ऑफ़िस में आप सब कैसा महसूस कर रहे हैं?",
+   "target_before": "do you know how do you all feel?",
+   "target_after": "how do you all feel in the office?",
+   "decomposition": [
+    {
+     "known": "आप सब कैसा महसूस कर रहे हैं",
+     "legoId": "S0657L01",
+     "target": "how do you all feel",
+     "isGhost": false
+    },
+    {
+     "known": "ऑफ़िस में",
+     "legoId": "S0184L02",
+     "target": " in the office",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s659 L1 p4",
+   "id": "eng_for_hin:S0659L01U01",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि क्या आप सब यह कह सकते हैं।",
+   "known_after": "अंग्रेज़ी में क्या आप सब यह कह सकते हैं?",
+   "target_before": "I don't know could you all say that",
+   "target_after": "could you all say that in English?",
+   "decomposition": [
+    {
+     "known": "क्या आप सब यह कह सकते हैं",
+     "legoId": "S0659L01",
+     "target": "could you all say that",
+     "isGhost": false
+    },
+    {
+     "known": "अंग्रेज़ी में",
+     "legoId": "S0004L03",
+     "target": " in English",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s659 L1 p8",
+   "id": "eng_for_hin:S0659L01U05",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि क्या आप सब यह कह सकते हैं।",
+   "known_after": "जल्दी क्या आप सब यह कह सकते हैं?",
+   "target_before": "I didn't know could you all say that",
+   "target_after": "could you all say that quickly?",
+   "decomposition": [
+    {
+     "known": "क्या आप सब यह कह सकते हैं",
+     "legoId": "S0659L01",
+     "target": "could you all say that",
+     "isGhost": false
+    },
+    {
+     "known": "जल्दी",
+     "legoId": "S0020L02",
+     "target": " quickly",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s664 L1 p3",
+   "id": "eng_for_hin:S0664L01B03",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि क्या आप सब तैयार हैं।",
+   "known_after": "आज सुबह क्या आप सब तैयार हैं?",
+   "target_before": "I don't know are you all ready",
+   "target_after": "are you all ready this morning?",
+   "decomposition": [
+    {
+     "known": "क्या आप सब तैयार हैं",
+     "legoId": "S0664L01",
+     "target": "are you all ready",
+     "isGhost": false
+    },
+    {
+     "known": "आज सुबह",
+     "legoId": "S0039L02",
+     "target": " this morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s664 L1 p4",
+   "id": "eng_for_hin:S0664L01U01",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि क्या आप सब तैयार हैं?",
+   "known_after": "सप्ताहांत में क्या आप सब तैयार हैं?",
+   "target_before": "can you tell me are you all ready?",
+   "target_after": "are you all ready at the weekend?",
+   "decomposition": [
+    {
+     "known": "क्या आप सब तैयार हैं",
+     "legoId": "S0664L01",
+     "target": "are you all ready",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s664 L1 p6",
+   "id": "eng_for_hin:S0664L01U03",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि क्या आप सब तैयार हैं।",
+   "known_after": "कल सुबह क्या आप सब तैयार हैं?",
+   "target_before": "I didn't know are you all ready",
+   "target_after": "are you all ready tomorrow morning?",
+   "decomposition": [
+    {
+     "known": "क्या आप सब तैयार हैं",
+     "legoId": "S0664L01",
+     "target": "are you all ready",
+     "isGhost": false
+    },
+    {
+     "known": "कल सुबह",
+     "legoId": "S0155L04",
+     "target": " tomorrow morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s664 L1 p8",
+   "id": "eng_for_hin:S0664L01U05",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि क्या आप सब तैयार हैं।",
+   "known_after": "आज क्या आप सब तैयार हैं?",
+   "target_before": "it doesn't matter are you all ready",
+   "target_after": "are you all ready today?",
+   "decomposition": [
+    {
+     "known": "क्या आप सब तैयार हैं",
+     "legoId": "S0664L01",
+     "target": "are you all ready",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s666 L1 p2",
+   "id": "eng_for_hin:S0666L01B02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि आप सब क्या सोचते हैं।",
+   "known_after": "आज शाम आप सब क्या सोचते हैं?",
+   "target_before": "I don't know what do you all think",
+   "target_after": "what do you all think this evening?",
+   "decomposition": [
+    {
+     "known": "आप सब क्या सोचते हैं",
+     "legoId": "S0666L01",
+     "target": "what do you all think",
+     "isGhost": false
+    },
+    {
+     "known": "आज शाम",
+     "legoId": "S0018L03",
+     "target": " this evening",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s666 L1 p3",
+   "id": "eng_for_hin:S0666L01B03",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि आप सब क्या सोचते हैं?",
+   "known_after": "सप्ताहांत में आप सब क्या सोचते हैं?",
+   "target_before": "can you tell me what do you all think?",
+   "target_after": "what do you all think at the weekend?",
+   "decomposition": [
+    {
+     "known": "आप सब क्या सोचते हैं",
+     "legoId": "S0666L01",
+     "target": "what do you all think",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s666 L1 p4",
+   "id": "eng_for_hin:S0666L01U01",
+   "kind": "replace",
+   "known_before": "क्या आप जानते हैं कि आप सब क्या सोचते हैं?",
+   "known_after": "अर्थव्यवस्था के बारे में आप सब क्या सोचते हैं?",
+   "target_before": "do you know what do you all think?",
+   "target_after": "what do you all think about the economy?",
+   "decomposition": [
+    {
+     "known": "आप सब क्या सोचते हैं",
+     "legoId": "S0666L01",
+     "target": "what do you all think",
+     "isGhost": false
+    },
+    {
+     "known": "अर्थव्यवस्था के बारे में",
+     "legoId": "S0343L02",
+     "target": " about the economy",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s666 L1 p5",
+   "id": "eng_for_hin:S0666L01U02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि आप सब क्या सोचते हैं।",
+   "known_after": "पब में आप सब क्या सोचते हैं?",
+   "target_before": "I didn't know what do you all think",
+   "target_after": "what do you all think in the pub?",
+   "decomposition": [
+    {
+     "known": "आप सब क्या सोचते हैं",
+     "legoId": "S0666L01",
+     "target": "what do you all think",
+     "isGhost": false
+    },
+    {
+     "known": "पब में",
+     "legoId": "S0118L03",
+     "target": " in the pub",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s666 L1 p6",
+   "id": "eng_for_hin:S0666L01U03",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि आप सब क्या सोचते हैं।",
+   "known_after": "आज आप सब क्या सोचते हैं?",
+   "target_before": "it doesn't matter what do you all think",
+   "target_after": "what do you all think today?",
+   "decomposition": [
+    {
+     "known": "आप सब क्या सोचते हैं",
+     "legoId": "S0666L01",
+     "target": "what do you all think",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s666 L1 p7",
+   "id": "eng_for_hin:S0666L01U04",
+   "kind": "replace",
+   "known_before": "हम बात कर रहे थे कि आप सब क्या सोचते हैं।",
+   "known_after": "कल सुबह आप सब क्या सोचते हैं?",
+   "target_before": "we were talking about what do you all think",
+   "target_after": "what do you all think tomorrow morning?",
+   "decomposition": [
+    {
+     "known": "आप सब क्या सोचते हैं",
+     "legoId": "S0666L01",
+     "target": "what do you all think",
+     "isGhost": false
+    },
+    {
+     "known": "कल सुबह",
+     "legoId": "S0155L04",
+     "target": " tomorrow morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s666 L1 p8",
+   "id": "eng_for_hin:S0666L01U05",
+   "kind": "replace",
+   "known_before": "किसी को यक़ीन नहीं था कि आप सब क्या सोचते हैं।",
+   "known_after": "काम पर आप सब क्या सोचते हैं?",
+   "target_before": "nobody was sure what do you all think",
+   "target_after": "what do you all think at work?",
+   "decomposition": [
+    {
+     "known": "आप सब क्या सोचते हैं",
+     "legoId": "S0666L01",
+     "target": "what do you all think",
+     "isGhost": false
+    },
+    {
+     "known": "काम पर",
+     "legoId": "S0185L02",
+     "target": " at work",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s667 L1 p2",
+   "id": "eng_for_hin:S0667L01B02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता कि आप सबको आपत्ति तो नहीं है।",
+   "known_after": "आज शाम आप सबको आपत्ति तो नहीं है?",
+   "target_before": "I don't know do you all mind",
+   "target_after": "do you all mind this evening?",
+   "decomposition": [
+    {
+     "known": "आप सबको आपत्ति तो नहीं है",
+     "legoId": "S0667L01",
+     "target": "do you all mind",
+     "isGhost": false
+    },
+    {
+     "known": "आज शाम",
+     "legoId": "S0018L03",
+     "target": " this evening",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s667 L1 p3",
+   "id": "eng_for_hin:S0667L01B03",
+   "kind": "replace",
+   "known_before": "क्या आप मुझे बता सकते हैं कि आप सबको आपत्ति तो नहीं है?",
+   "known_after": "सप्ताहांत में आप सबको आपत्ति तो नहीं है?",
+   "target_before": "can you tell me do you all mind?",
+   "target_after": "do you all mind at the weekend?",
+   "decomposition": [
+    {
+     "known": "आप सबको आपत्ति तो नहीं है",
+     "legoId": "S0667L01",
+     "target": "do you all mind",
+     "isGhost": false
+    },
+    {
+     "known": "सप्ताहांत में",
+     "legoId": "S0214L02",
+     "target": " at the weekend",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s667 L1 p4",
+   "id": "eng_for_hin:S0667L01U01",
+   "kind": "replace",
+   "known_before": "क्या आप जानते हैं कि आप सबको आपत्ति तो नहीं है?",
+   "known_after": "कल सुबह आप सबको आपत्ति तो नहीं है?",
+   "target_before": "do you know do you all mind?",
+   "target_after": "do you all mind tomorrow morning?",
+   "decomposition": [
+    {
+     "known": "आप सबको आपत्ति तो नहीं है",
+     "legoId": "S0667L01",
+     "target": "do you all mind",
+     "isGhost": false
+    },
+    {
+     "known": "कल सुबह",
+     "legoId": "S0155L04",
+     "target": " tomorrow morning",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s667 L1 p5",
+   "id": "eng_for_hin:S0667L01U02",
+   "kind": "replace",
+   "known_before": "मुझे नहीं पता था कि आप सबको आपत्ति तो नहीं है।",
+   "known_after": "आज आप सबको आपत्ति तो नहीं है?",
+   "target_before": "I didn't know do you all mind",
+   "target_after": "do you all mind today?",
+   "decomposition": [
+    {
+     "known": "आप सबको आपत्ति तो नहीं है",
+     "legoId": "S0667L01",
+     "target": "do you all mind",
+     "isGhost": false
+    },
+    {
+     "known": "आज",
+     "legoId": "S0007L01",
+     "target": " today",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s667 L1 p6",
+   "id": "eng_for_hin:S0667L01U03",
+   "kind": "replace",
+   "known_before": "इससे कोई फ़र्क़ नहीं पड़ता कि आप सबको आपत्ति तो नहीं है।",
+   "known_after": "ऑफ़िस में आप सबको आपत्ति तो नहीं है?",
+   "target_before": "it doesn't matter do you all mind",
+   "target_after": "do you all mind in the office?",
+   "decomposition": [
+    {
+     "known": "आप सबको आपत्ति तो नहीं है",
+     "legoId": "S0667L01",
+     "target": "do you all mind",
+     "isGhost": false
+    },
+    {
+     "known": "ऑफ़िस में",
+     "legoId": "S0184L02",
+     "target": " in the office",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  },
+  {
+   "key": "s667 L1 p8",
+   "id": "eng_for_hin:S0667L01U05",
+   "kind": "replace",
+   "known_before": "किसी को यक़ीन नहीं था कि आप सबको आपत्ति तो नहीं है।",
+   "known_after": "कुछ मिनटों में आप सबको आपत्ति तो नहीं है?",
+   "target_before": "nobody was sure do you all mind",
+   "target_after": "do you all mind in a few minutes?",
+   "decomposition": [
+    {
+     "known": "आप सबको आपत्ति तो नहीं है",
+     "legoId": "S0667L01",
+     "target": "do you all mind",
+     "isGhost": false
+    },
+    {
+     "known": "कुछ मिनटों में",
+     "legoId": "S0253L02",
+     "target": " in a few minutes",
+     "isGhost": false
+    },
+    {
+     "known": "",
+     "legoId": null,
+     "target": "?",
+     "isGhost": true
+    }
+   ],
+   "known_audio_id": null,
+   "target1_audio_id": null,
+   "target2_audio_id": null,
+   "status": "READY"
+  }
+ ]
+}
