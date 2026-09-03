@@ -176,7 +176,12 @@ module.exports = function (ctx) {
         // 3a. Shift existing build/use phrases to make room for components.
         // Components occupy positions 1..N. LEGO debut (B01) should be at N+1.
         // Remaining build/use phrases follow at N+2, N+3, ...
-        if (componentCount > 0) {
+        // This runs even when componentCount is 0 (a ?force=true call that MERGES
+        // components away): the old component rows have just been deleted, so
+        // without the renormalisation build/use would keep their old positions and
+        // leave positions 1..oldCount empty. Harmless to ordering, but it makes a
+        // merged LEGO's phrase run start at 3 while every other LEGO starts at 1.
+        {
           // Fetch existing build/use phrases ordered by position
           const { data: existingPhrases, error: fetchErr } = await ctx.supabase
             .from('course_practice_phrases')
