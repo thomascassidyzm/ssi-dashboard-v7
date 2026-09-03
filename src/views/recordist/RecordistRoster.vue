@@ -103,33 +103,32 @@
       </h3>
       <ol class="section-rows">
       <li v-for="r in s.rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
-        <!-- Rewriting a line from the list: the row becomes the editor, in
-             place, so the line being changed never leaves the eye. It saves
-             itself when you look away; Esc puts the original back. `canEdit` is
-             the server's word and the write is checked again there. -->
-        <template v-if="editingId === r.id">
-          <textarea
-            ref="rowBox"
-            v-model="draft"
-            class="row-edit"
-            rows="2"
-            :disabled="saving"
-            @keydown.esc.prevent="abandon"
-            @keydown.enter.prevent="commit(r.id)"
-            @blur="commit(r.id)"
-          ></textarea>
-          <p class="row-hint">{{ saving ? 'Saving…' : 'Change the words and look away.' }}</p>
-          <p v-if="error" class="row-error">{{ error }}</p>
-        </template>
-        <template v-else>
           <span class="row-mark" aria-hidden="true"></span>
           <!-- WHO IS SPEAKING. A two-hander read without the character names is
                one man talking to himself; the name is on the row so it never is. -->
           <span v-if="r.speaker" class="row-speaker">{{ r.speaker }}</span>
-          <!-- Tap the words to change them. Tap is the only affordance here too. -->
-          <span class="row-text" :class="{ tappable: r.canEdit }"
-                @click="r.canEdit && startEdit(r)">{{ r.text }}</span>
+          <!-- TAP THE WORDS TO CHANGE THEM, and ONLY the words change: the mark,
+               the character and the state stay exactly where they are, so the
+               row does not jump under the thumb that just tapped it. The
+               textarea inherits the span's own slot and type size. -->
+          <textarea
+            v-if="editingId === r.id"
+            ref="rowBox"
+            v-model="draft"
+            class="row-text row-edit"
+            rows="1"
+            :style="{ height: rowBoxHeight, flex: rowBoxFlex }"
+            :disabled="saving"
+            @input="sizeRowBox"
+            @keydown.esc.prevent="abandon"
+            @keydown.enter.prevent="commit(r.id)"
+            @blur="commit(r.id)"
+          ></textarea>
+          <span v-else class="row-text" :class="{ tappable: r.canEdit }"
+                @click="onTextTap(r, $event)">{{ r.text }}</span>
           <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
+          <p v-if="error && editingId === r.id" class="row-error">{{ error }}</p>
+        <template v-if="editingId !== r.id">
           <!-- ONE TAP BACK ONTO A LINE. Re-reading something used to mean
                ticking the re-read switch and starting the whole queue again;
                through a hundred lines that is the difference between a run and
@@ -182,6 +181,7 @@
  * each.
  */
 import { ref, computed, watch, nextTick } from 'vue'
+import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 
 const props = defineProps({
   // [{ key, heading, blurb, rows: [{ id, text, done, hasTake, url, canEdit, speaker, alsoFills }] }]
@@ -217,19 +217,40 @@ watch(() => props.sections, (list) => {
 // matters until Save, and the booth owns the request, not the keyboard.
 const draft = ref('')
 const rowBox = ref(null)
+const rowBoxHeight = ref('auto')
+// The width the WORDS had, measured before they are swapped for the box. A
+// textarea's intrinsic width comes from `cols`, so without this it sits up
+// beside the character chip while the long span it replaced had wrapped onto its
+// own line — the row jumps under the thumb that just tapped it.
+const rowBoxFlex = ref('1 1 auto')
 // Esc blurs the box on its way out, and blur is what saves. This says which of
 // the two just happened.
 let abandoning = false
 
-function startEdit(row) {
+// Where the thumb landed, measured before the words are replaced by the box.
+function onTextTap(row, ev) {
+  if (!row.canEdit) return
+  const w = ev.currentTarget.offsetWidth
+  rowBoxFlex.value = w ? `0 0 ${w}px` : '1 1 auto'
+  startEdit(row, caretOffsetFromPoint(ev.currentTarget, ev.clientX, ev.clientY))
+}
+
+function startEdit(row, caretAt = null) {
   if (props.editingId === row.id) return
   abandoning = false
   draft.value = row.text
   emit('edit', row.id)
   nextTick(() => {
-    const el = Array.isArray(rowBox.value) ? rowBox.value[0] : rowBox.value
-    if (el && el.focus) { el.focus(); try { el.select() } catch {} }
+    sizeRowBox()
+    openEditorAt(Array.isArray(rowBox.value) ? rowBox.value[0] : rowBox.value, caretAt)
   })
+}
+
+function sizeRowBox() {
+  const el = Array.isArray(rowBox.value) ? rowBox.value[0] : rowBox.value
+  if (!el) return
+  el.style.height = 'auto'
+  rowBoxHeight.value = `${el.scrollHeight}px`
 }
 
 function abandon() {
@@ -454,16 +475,21 @@ function tallyWords(section) {
   color: var(--color-emerald, #06ffa5);
   cursor: pointer;
 }
+/* The words themselves, still in their own slot on the row. No border, no
+   padding, same type — the only thing that changes is that a caret appears. */
 .row-edit {
-  flex: 1 1 100%;
-  padding: 0.6rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  border: 1px solid var(--color-tungsten, #ffa630);
-  background: var(--color-void, #0f172a);
+  margin: 0;
+  padding: 0;
+  border: 0;
+  resize: none;
+  overflow: hidden;
+  font: inherit;
+  font-size: 0.95rem;
+  background: transparent;
   color: var(--color-paper, #f7f7f2);
+  caret-color: var(--color-tungsten, #ffa630);
 }
-.row-hint { flex: 1 1 100%; margin: 0.35rem 0 0; font-size: 0.8rem; opacity: 0.65; }
+.row-edit:focus { outline: none; }
 .row-speaker {
   flex: 0 0 auto;
   font-size: 0.78rem;

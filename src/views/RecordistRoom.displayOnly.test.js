@@ -256,12 +256,14 @@ describe('RecordistRoom — recording and playing back can never both look live'
 // anyway (recordist-text-edit.test.cjs), but a button she can press that then
 // fails is its own kind of broken.
 
-function stubEditableQueue(canEditText) {
+function stubEditableQueue(canEditText, { unlinkedAudioId = null } = {}) {
   global.fetch = vi.fn().mockImplementation((url, opts) => {
     if (opts && opts.method === 'PATCH') {
       return Promise.resolve({
         ok: true, status: 200,
-        json: async () => ({ ok: true, lineId: 'line-2', text: 'A tea, please.', knownText: 'A tea, please.', recorded: false, previousText: 'Nos da' }),
+        // `unlinkedAudioId` is the server's answer to "did this edit take
+        // anything away?" — null when the line had never been read.
+        json: async () => ({ ok: true, lineId: 'line-2', text: 'A tea, please.', knownText: 'A tea, please.', recorded: false, previousText: 'Nos da', unlinkedAudioId }),
       })
     }
     return Promise.resolve({
@@ -327,7 +329,26 @@ describe('RecordistRoom — rewriting a line', () => {
     expect(wrapper.find('.stage-progress').text()).toContain('Recording')
     expect(wrapper.find('.stage-progress').text()).toContain('1 of 2 recorded')
 
-    // AND IT SAYS WHAT HAPPENED, IN ONE SHORT LINE. One element, never a stack.
+    // AND IT SAYS NOTHING AT ALL. Tom, 2026-09-03: fixing a line nobody has
+    // read is not an edit with a consequence — there is no take to clear and
+    // nothing goes back into the queue, so there is nothing to report. The
+    // corrected line IS the receipt.
+    expect(wrapper.find('.saved-note').exists()).toBe(false)
+  })
+
+  it('says one short line, and only when the edit actually cost a take', async () => {
+    // line-1 is the recorded one. Editing it DOES take something away: the take
+    // it had says the wrong words now, so the artist has to know to read it again.
+    stubEditableQueue(true, { unlinkedAudioId: 'clip-1' })
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
+    await flushPromises()
+    await wrapper.find('.roster-toggle').trigger('click')
+    await wrapper.findAll('.roster-list .row')[0].find('.row-text').trigger('click')
+    await wrapper.find('.row-edit').setValue('Bore da iawn')
+    await wrapper.find('.row-edit').trigger('blur')
+    await flushPromises()
+
+    // One element, never a stack.
     expect(wrapper.findAll('.saved-note')).toHaveLength(1)
     expect(wrapper.find('.saved-note').text()).toBe('Saved, read it again.')
   })

@@ -66,6 +66,11 @@
         @save="saveEdit($event.id, $event.text)"
       />
 
+      <!-- The same one short line, for an edit made from the list. It appears
+           only where the edit cost a take; the common case stays silent. Above
+           Start, never over it — Start is still the loudest thing here. -->
+      <p v-if="savedNote" class="saved-note">{{ savedNote }}</p>
+
       <!-- Start is the FIRST thing on the card and the only thing needed. One
            tap puts the mic live on the first line that still needs reading —
            there is no line to pick, nothing to navigate to, and no second tap
@@ -196,36 +201,28 @@
         {{ activityState.words }} · {{ progressWords }}
       </p>
 
-      <!-- REWRITING THE LINE BEING READ. Tap the words, change them, look away:
-           there is no Edit button, no Save button and nothing to confirm. Esc,
-           or tapping the backdrop, puts the original back. `canEditText` is the
-           server's word, per line, and the write is checked again there. -->
-      <div v-if="editingId && editingId === current?.id" class="line-well editing">
-        <textarea
-          ref="editBox"
-          v-model="editText"
-          class="edit-box"
-          rows="2"
-          :disabled="editSaving"
-          @keydown.esc.prevent="cancelEdit"
-          @keydown.enter.prevent="commitEdit"
-          @blur="commitEdit"
-        ></textarea>
-        <p class="edit-hint">{{ editSaving ? 'Saving…' : 'Change the words and look away. Esc puts it back.' }}</p>
-        <p v-if="editError" class="note error">{{ editError }}</p>
-      </div>
-
       <!-- THE LINE IS HELD BACK WHILE THE RECORDER FILLS.
            The first take of a session is the one clip with no standby to
            promote (see COLD_START_SETTLE_MS in useTapRecorder). If the line
            were on screen the instant the mic opened, she would read it into a
            recorder that is nought ms old and the trim would have nothing to
            spend. So the mic opens first and the line follows. -->
-      <div v-else-if="arming" class="line-well arming-well">
+      <div v-if="arming" class="line-well arming-well">
         <p class="arming-words">Getting ready…</p>
       </div>
 
-      <div v-else class="line-well">
+      <!-- REWRITING THE LINE BEING READ happens INSIDE this well, replacing the
+           words and nothing else — the crib underneath, the kind above and the
+           well itself all stay exactly where they are. Tom, 2026-09-03: "at the
+           point of recording, it makes sense to allow the voice artist to edit
+           the lines they are about to record", and "as smooth as possible" is
+           the spec, so nothing on the page may move when the field opens.
+
+           There is no Edit button, no Save button, nothing to confirm — and,
+           when the line has no take yet, nothing said afterwards either.
+           `canEditText` is the server's word, per line, and the write is
+           checked again there. -->
+      <div v-else class="line-well" :class="{ editing: editingId === current?.id }">
         <!-- Narration lines carry <src>/<tgt> markup. Parsed into segments in
              JS and rendered as spans — never v-html, because this is database
              text and never as a raw string, because then the recordist reads
@@ -233,14 +230,28 @@
         <!-- TAP IS THE ONLY AFFORDANCE. The line the artist is looking at IS
              the control; nothing is long-pressed, swiped or dragged anywhere on
              this screen. -->
-        <p class="line-target" :class="{ tappable: current?.canEditText }"
-           @click="current?.canEditText && beginEdit(current.id)">
+        <textarea
+          v-if="editingId === current?.id"
+          ref="editBox"
+          v-model="editText"
+          class="line-target edit-box"
+          rows="1"
+          :style="{ height: editBoxHeight }"
+          :disabled="editSaving"
+          @input="sizeEditBox"
+          @keydown.esc.prevent="cancelEdit"
+          @keydown.enter.prevent="commitEdit"
+          @blur="commitEdit"
+        ></textarea>
+        <p v-else class="line-target" :class="{ tappable: current?.canEditText }"
+           @click="onLineTap($event)">
           <span
             v-for="(seg, i) in currentSegments"
             :key="i"
             :class="['seg', 'seg-' + seg.kind]"
           >{{ seg.text }}</span>
         </p>
+        <p v-if="editError" class="note error">{{ editError }}</p>
         <!-- WHAT KIND OF LINE THIS IS, in words, and only when it is not the
              ordinary case. A seed sentence reads exactly like a pod line and
              files somewhere completely different, so the line has to say so
@@ -406,6 +417,7 @@ import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useTapRecorder, DEFAULT_CAPTURE_PROFILE } from '@/composables/useTapRecorder'
 import { useRecordistQueue } from '@/composables/useRecordistQueue'
+import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import RecordistRoster from './recordist/RecordistRoster.vue'
@@ -792,7 +804,11 @@ const editText = ref('')
 const editSaving = ref(false)
 const editError = ref(null)
 const editBox = ref(null)
-// The one short human line. A single ref, overwritten, so there is no stack and
+// The box grows to the words, from the first frame, so opening the editor moves
+// nothing on the page.
+const editBoxHeight = ref('auto')
+// The one short human line, and it appears ONLY when an edit actually cost
+// something — see saveEdit. A single ref, overwritten, so there is no stack and
 // nothing to dismiss.
 const savedNote = ref('')
 let savedTimer = null
@@ -806,7 +822,16 @@ function say(words) {
   savedTimer = setTimeout(() => { savedNote.value = '' }, 4000)
 }
 
-function beginEdit(lineId) {
+// TAP THE WORD YOU MEANT. The offset is worked out from where the thumb landed
+// before the paragraph is replaced by the box, because afterwards there is
+// nothing left to measure against.
+function onLineTap(ev) {
+  const l = current.value
+  if (!l || !l.canEditText) return
+  beginEdit(l.id, caretOffsetFromPoint(ev.currentTarget, ev.clientX, ev.clientY))
+}
+
+function beginEdit(lineId, caretAt = null) {
   const l = lines.value.find(x => x.id === lineId)
   if (!l || !l.canEditText) return
   if (editingId.value === lineId) return
@@ -824,9 +849,18 @@ function beginEdit(lineId) {
   editText.value = plainText(l.text)
   editingId.value = lineId
   nextTick(() => {
-    const el = editBox.value
-    if (el && el.focus) { el.focus(); try { el.select() } catch {} }
+    sizeEditBox()
+    openEditorAt(editBox.value, caretAt)
   })
+}
+
+// Height follows the words, so a line that wraps onto a third row pushes nothing
+// about and a shorter one leaves no hole.
+function sizeEditBox() {
+  const el = editBox.value
+  if (!el) return
+  el.style.height = 'auto'
+  editBoxHeight.value = `${el.scrollHeight}px`
 }
 
 function cancelEdit() {
@@ -849,6 +883,7 @@ async function saveEdit(lineId, text) {
   const next = String(text || '').trim()
   if (!l) return
   if (!next || next === plainText(l.text)) { cancelEdit(); return }
+  const wasRecorded = isRecorded(l)
   editSaving.value = true
   editError.value = null
   try {
@@ -862,6 +897,15 @@ async function saveEdit(lineId, text) {
     )
     const data = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(data.error || 'That did not save. Try again.')
+    // DID THIS EDIT ACTUALLY COST THE ARTIST ANYTHING?
+    //
+    // The artist's own view of the line, and nothing else. NOT the server's
+    // `unlinkedAudioId`: a slot can hold a clip this artist did not make — a
+    // TTS take, or another voice's — which the booth already shows as a line
+    // still to record. Saying "read it again" about a line they have never read
+    // is the tool talking about itself. Observed on cym_n_for_eng:pod-0:SC08-S006,
+    // whose slot is filled and whose queue entry is recorded:false.
+    const hadTake = wasRecorded
     // The line is now a line nobody has read: new text, no take, outstanding.
     // Every count and every control on this page reads off these fields, so
     // saying it once here is what makes the roster, the progress line and the
@@ -879,11 +923,19 @@ async function saveEdit(lineId, text) {
     if (lastLine.value && lastLine.value.id === lineId) lastLine.value = null
     lines.value = [...lines.value]
     editingId.value = null
-    // ONE SHORT LINE, and it says the thing that matters: the take that line had
-    // no longer belongs to it, so it wants reading again.
-    say(data.alsoChanged
-      ? `Saved, read it again — also fixed on ${data.alsoChanged} other ${data.alsoChanged === 1 ? 'line' : 'lines'}.`
-      : 'Saved, read it again.')
+    // NOTHING IS SAID IN THE COMMON CASE, and that is the point (Tom,
+    // 2026-09-03). Fixing a line before anybody has read it costs nothing:
+    // there is no take to clear, nothing goes back into the queue, and there is
+    // no consequence to report. The corrected line IS the receipt.
+    //
+    // Where a take DID exist, one short line — because there the edit really has
+    // taken something away and the artist has to know to read it again. The
+    // server's own word for it: which clip, if any, this unlinked.
+    if (hadTake) {
+      say(data.alsoChanged
+        ? `Saved, read it again — also fixed on ${data.alsoChanged} other ${data.alsoChanged === 1 ? 'line' : 'lines'}.`
+        : 'Saved, read it again.')
+    }
     // The mic comes back only where the editor has actually closed. Released in
     // a `finally`, a failed save left the microphone live underneath an open
     // rewrite box while the screen still said "mic paused" — recording her
@@ -1561,21 +1613,22 @@ kbd {
 .state-pill.is-arming,
 .stage-progress.is-arming { color: var(--color-paper-dim, #c1c1bb); }
 
-/* Editing the line, in the same well the line lives in — so the thing being
-   rewritten stays in the place the eye is already on. */
-.line-well.editing { box-shadow: inset 0 0 0 2px var(--color-tungsten, #ffa630); min-height: auto; }
+/* THE BOX IS THE LINE. It sits in the line's own place, in the same well, at
+   the same type size, with no border and no padding of its own — so opening the
+   editor moves not one word on the page. The well's outline turns amber and
+   that is the entire visual change. */
+.line-well.editing { box-shadow: inset 0 0 0 2px var(--color-tungsten, #ffa630); }
 .edit-box {
+  display: block;
   width: 100%;
-  margin-top: 0.5rem;
-  padding: 0.8rem;
-  font-size: 1.15rem;
-  line-height: 1.4;
-  border-radius: 10px;
-  border: 1px solid var(--color-graphite, #475569);
-  background: var(--color-void, #0f172a);
-  color: var(--color-paper, #f7f7f2);
+  border: 0;
+  resize: none;
+  overflow: hidden;
+  font-family: inherit;
+  background: transparent;
+  caret-color: var(--color-tungsten, #ffa630);
 }
-.edit-hint { font-size: 0.8rem; color: var(--color-paper-dim, #c1c1bb); margin: 0.5rem 0 0; opacity: 0.8; }
+.edit-box:focus { outline: none; }
 /* IT SAYS WHAT HAPPENED, ONCE, QUIETLY, AND GOES. Not a toast: it has no
    dismiss, it cannot stack, and it never covers the line. */
 .saved-note {
@@ -1713,7 +1766,7 @@ kbd {
 
 @media (max-width: 480px) {
   .recordist { padding: 0.6rem; }
-  .line-target { font-size: 1.8rem; }
+  .line-target, .edit-box { font-size: 1.8rem; }
   .kbd-hint { display: none; }
 }
 
