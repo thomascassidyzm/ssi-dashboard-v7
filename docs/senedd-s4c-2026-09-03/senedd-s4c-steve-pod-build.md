@@ -71,7 +71,7 @@ xAI.** `gfzdpspr5fdp` — the estate's standard male English pod clone, the one
 `tts_engine = 'xai'` in the `voices` table. So this pod would have been born on
 the provider being deprecated.
 
-It is now rendered on **`cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2`**
+It is now rendered on **`8fef4d59-0a7e-4ad2-a261-6a3bb50734d2`**
 (display name `tom_001`), your own Cartesia clone: consent authorised
 2026-09-01, and the only Cartesia Tom clone with production clips behind it —
 91 `spa_for_eng` known clips. **Two other authorised Tom clones exist at
