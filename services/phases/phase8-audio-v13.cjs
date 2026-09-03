@@ -1233,16 +1233,41 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
           return false
         }
 
+        // RE-AUTHORING MUST NOT SILENTLY DROP AN "AS IN" CONTEXT (2026-09-03).
+        // A stale row is replaced by a freshly judged one, and the judge decides
+        // the frame from scratch — so a LEGO whose introduction was deliberately
+        // given a context can come back BARE after an unrelated known_text edit.
+        // eng_for_hin's कल chunks are the specimen: कल is both "yesterday" and
+        // "tomorrow", the context is the only thing that says which, and the
+        // judge answered "bare" for three of the six when asked live, because a
+        // clean standalone word reads as self-sufficient. Whether the row we are
+        // discarding HAD a context is knowable — Frame A is deterministic — so
+        // it is carried across as a pin rather than re-decided.
+        const hadContext = (row, chunk) => {
+          if (!row?.text || !chunk) return false
+          const bare = presentationAuthor.renderIntro({
+            frame: 'A', template, targetLangName: getLocalisedLangName(course.target_lang, course.known_lang), chunk, seed: ''
+          })
+          return row.text.trim() !== bare.trim()
+        }
+
         const fresh = []
         const freshLegoIds = new Set()
         const staleLegoIds = new Set()
+        const contextedLegoIds = new Set()
         for (const r of freshPendingRows) {
           if (isFreshPending(r)) {
             fresh.push(r)
             if (r.lego_id) freshLegoIds.add(r.lego_id)
           } else {
             stalePendingIds.push(r.id)
-            if (r.lego_id) staleLegoIds.add(r.lego_id)
+            if (r.lego_id) {
+              staleLegoIds.add(r.lego_id)
+              // The chunk the discarded row was written for, not today's — a
+              // gloss edit changes the chunk and would make every row look bare.
+              const quoted = /^[^']*'([^']*)'/.exec(r.text || '')
+              if (hadContext(r, quoted ? quoted[1] : null)) contextedLegoIds.add(r.lego_id)
+            }
           }
         }
 
@@ -1257,7 +1282,12 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
           const items = toReauthor
             .map(id => legoById.get(id))
             .filter(l => !isPunctuationOnly(l.known_text))
-            .map(l => ({ lego_id: l.lego_id, chunk: l.known_text, form: l.target_text, seed_number: l.seed_number }))
+            .map(l => ({
+              lego_id: l.lego_id, chunk: l.known_text, form: l.target_text, seed_number: l.seed_number,
+              // Kept, not re-decided — see hadContext above. authorPresentations
+              // still refuses B when the seed does not contain the chunk.
+              ...(contextedLegoIds.has(l.lego_id) ? { forceFrame: 'B' } : {})
+            }))
           const seedNums = [...new Set(items.map(t => t.seed_number).filter(n => n != null))]
           const staleSeedTexts = new Map()
           for (let i = 0; i < seedNums.length; i += 200) {
