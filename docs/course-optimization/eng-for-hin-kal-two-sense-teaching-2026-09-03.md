@@ -62,6 +62,14 @@ That removes cost from the argument entirely, exactly as Kai asked, and leaves o
 
 **Result: 2 grown, 1 waiting on Kai, 3 on the "as in" fallback.** Not one round was deleted.
 
+*A note on the cost figures that are no longer the point.* Job **#348** re-priced all six MERGES
+against today's live state with a calibrated replica (it reproduced 622/622-passed/46-failed exactly
+before it priced anything) and found every earlier figure stale — S0030L03 is 71 phrases / 43 seeds
+today, not 99 / 47. Those numbers priced a *merge* — the chunk removed outright — and so do not
+compare with the *growth* figures in the table above, which replace the chunk with a longer one and
+keep the sister. Both are recorded so nobody reconciles two different counterfactuals. Per Kai's
+ruling, neither drove a decision here.
+
 ### 1b. Seed 167, prepared and waiting
 
 If Kai says go: `S0167L02` grows from `कल दोपहर` to `आपको कल दोपहर क्या करना है` /
@@ -265,8 +273,8 @@ Baseline taken by me at the start, re-taken after every write. The course change
 | `POST /api/v2/validate/eng_for_hin` — seeds passed | 622 | **622** |
 | seeds failed | 46 | **46** |
 | failing seed **set** | — | **identical: 0 newly failing, 0 newly passing** |
-| `course_round_index` rows | 1,321 | **1,321 — not one round moved** |
-| `course_legos` | 1,489 | **1,489 — no LEGO added or deleted** |
+| `course_legos` | 1,489 | **1,489 — no LEGO row inserted or deleted, no `is_new` flag touched** |
+| `course_round_index` rows | 1,321 | **1,321** (corroborating only — see the caveat below) |
 | phrases losing tileability | — | **0** |
 | decompositions concatenating back to `target_text` | 10,915 / 10,915 | **10,918 / 10,918, 0 mismatched** |
 | `course_practice_phrases` | 10,945 | 10,948 |
@@ -274,6 +282,13 @@ Baseline taken by me at the start, re-taken after every write. The course change
 | rows deleted | — | 9 (seed 192's superseded drill set, replaced in the same run) |
 | कल prompts with no internal tense context | 1 (seed 74) | **0** |
 | bare कल LEGO debut cues | 6 | **4** — 278 and 192 now carry their own tense |
+
+**On the round evidence, stated precisely.** The load-bearing invariant is the first row, not the
+second: rounds are a walk over `is_new` LEGOs, and no LEGO was inserted, deleted or flipped. The
+`course_round_index` count corroborates it but is **not** a trustworthy census on this course — see
+§7.6, where it is 62 rows short from seed 483 onward and carries 40 rows for LEGOs that no longer
+exist. That staleness pre-dates this work and is untouched by it: all six कल LEGOs sit in the covered
+early range and every one has a round row (83, 116, 377, 399, 448, 629).
 
 **Writes, all on production Supabase, all re-read after the write:**
 1. Seven "as in" introductions authored as pending rows; `linksUnchanged: true`.
@@ -323,6 +338,14 @@ clips, and the learner walk **drops** the rest (`phraseHasFullAudio`,
    (`'{known}' ඉතින්.`), `aze` (`'{known}' kimi budur:`) keep a space-separated word left over from
    the "as in" clause. No longer an empty quotation, but they want a native reading before anyone
    calls them correct.
-4. **The 10 comparative rows** above — a rule two agents have now proposed and nobody has ratified.
-5. **Seed 155 still ships three byte-identical USE phrases** (`मुझे कल सुबह इंतज़ार करने में कोई
+4. **`course_round_index` is stale on the last quarter of this course** — found by job #348 while
+   re-pricing, verified independently here. **62** `is_new` LEGOs from **seed 483 onward** have no
+   round row at all; **40** round rows point at LEGOs that no longer exist and **6** at LEGOs since
+   flipped to `is_new = false`. (62 − 46 = the 16-row gap against 1,337 `is_new` LEGOs.) The learning
+   app's `round-map.ts` reads this materialised view, so this is worth someone's attention on its own
+   account. The documented remedy is `REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index` —
+   **not run here**, because refreshing it renumbers rounds on a live course, which is exactly the
+   learner-progress migration this whole job was avoiding. Kai's call.
+5. **The 10 comparative rows** above — a rule two agents have now proposed and nobody has ratified.
+6. **Seed 155 still ships three byte-identical USE phrases** (`मुझे कल सुबह इंतज़ार करने में कोई
    आपत्ति नहीं।` ×3), noted by the previous pass and still true. Not a कल ambiguity, not touched.
