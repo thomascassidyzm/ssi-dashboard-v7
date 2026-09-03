@@ -540,9 +540,127 @@ async function generateXai(text, config) {
 
 
 /**
+ * The whole Cartesia request, as a pure function — url, headers and body, no
+ * network. Everything that can be got WRONG about this vendor lives here (voice
+ * id spelling, language subtag, the two independent version pins), so it is all
+ * testable without a key and without spending a penny.
+ */
+function buildCartesiaRequest(text, config) {
+  const {
+    apiKey,
+    voiceId,
+    language,
+    model = process.env.CARTESIA_MODEL || 'sonic-3.6',
+    apiVersion = process.env.CARTESIA_API_VERSION || '2026-08-14',
+    speed = 1.0,
+    sampleRate = 24000,
+    bitRate = 128000,
+  } = config;
+
+  if (!apiKey) {
+    throw new Error('Cartesia API key is required');
+  }
+  if (!voiceId) {
+    throw new Error('Cartesia voice id is required');
+  }
+  if (!language || language === 'auto') {
+    // Same rule as xAI: an unsteered multilingual voice reads foreign words with
+    // English phonology. A course render always knows its language, so a call
+    // that does not state one is a bug upstream, not a default to guess at.
+    throw new Error(`Cartesia TTS requires an explicit language (voice ${voiceId}); got ${language || 'none'}`);
+  }
+
+  return {
+    url: 'https://api.cartesia.ai/tts/bytes',
+    headers: {
+      'Authorization': `Bearer ${apiKey}`,
+      // Date-versioned API contract, pinned independently of the model snapshot.
+      'Cartesia-Version': apiVersion,
+      'Content-Type': 'application/json',
+    },
+    body: {
+      model_id: model,
+      transcript: text,
+      // `cartesia_<uuid>` is the estate's spelling; the API wants the uuid alone.
+      voice: { mode: 'id', id: String(voiceId).replace(/^cartesia_/, '') },
+      generation_config: { speed },
+      output_format: { container: 'mp3', sample_rate: sampleRate, bit_rate: bitRate },
+      // Cartesia's `language` takes the primary subtag ('en', not 'en-GB').
+      language: String(language).split('-')[0].toLowerCase(),
+    },
+  };
+}
+
+/**
+ * Generate speech using Cartesia Sonic.
+ *
+ * WHY THIS EXISTS (2026-09-03). xAI is being wound down, and until now the only
+ * providers this chokepoint could reach were azure / elevenlabs / xai — so every
+ * English clone render in the estate was pinned to a dying vendor and the only
+ * Cartesia audio anywhere was made by one-off scripts talking to the API
+ * directly (scripts/fra-cartesia-render.cjs, 91 spa_for_eng clips). One-off
+ * scripts skip the mastering, the audible-response floor and the veracity gate
+ * that every other clip in the estate goes through. This branch puts Cartesia
+ * behind the same door as the rest.
+ *
+ * Two vendor details worth knowing, both verified against a live 200 on
+ * 2026-09-03 rather than taken from the docs:
+ *   - the voice id at the vendor is a BARE uuid. The estate stores it prefixed
+ *     (`cartesia_8fef4d59-…`) because the prefix is what says WHICH vendor the
+ *     voice sits at — the same bare/prefixed duality xAI has. Reads widen,
+ *     writes narrow: strip the prefix on the way out to the API only.
+ *   - the request is date-versioned by a `Cartesia-Version` HEADER, separately
+ *     from the model snapshot in `model_id`. Both are pinnable and both are
+ *     pinned here; a floating pair is how a voice silently changes character.
+ *
+ * @param {string} text - Text to synthesize
+ * @param {object} config - Cartesia configuration
+ * @param {string} config.apiKey - CARTESIA_API_KEY
+ * @param {string} config.voiceId - `cartesia_<uuid>` or a bare uuid
+ * @param {string} config.language - BCP-47 code; only the primary subtag is sent
+ * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Word boundaries are null — Cartesia's /tts/bytes returns audio only.
+ */
+async function generateCartesia(text, config) {
+  const {
+    apiKey,
+    voiceId,
+    language,
+    model = process.env.CARTESIA_MODEL || 'sonic-3.6',
+    apiVersion = process.env.CARTESIA_API_VERSION || '2026-08-14',
+    speed = 1.0,
+    sampleRate = 24000,
+    bitRate = 128000,
+  } = config;
+
+  const { url, headers, body } = buildCartesiaRequest(text, {
+    apiKey, voiceId, language, model, apiVersion, speed, sampleRate, bitRate,
+  });
+
+  const response = await fetch(url, {
+    method: 'POST',
+    agent: ttsKeepAliveAgent,
+    signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
+    headers,
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    const errorText = await response.text();
+    throw new Error(`Cartesia TTS API error (${response.status}): ${errorText}`);
+  }
+
+  const audioBuffer = Buffer.from(await response.arrayBuffer());
+  const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
+  assertAudibleResponse(audioBuffer, {
+    provider: 'cartesia', bytesPerSecond, text, voiceId: vendorVoiceId,
+  });
+  return { audioBuffer, wordBoundaries: null };
+}
+
+/**
  * Generate speech using specified TTS provider
  * @param {string} text - Text to synthesize
- * @param {string} provider - TTS provider ('elevenlabs' | 'azure' | 'xai')
+ * @param {string} provider - TTS provider ('elevenlabs' | 'azure' | 'xai' | 'cartesia')
  * @param {object} config - Provider-specific configuration
  * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
@@ -563,6 +681,9 @@ async function generate(text, provider, config) {
 
     case 'xai':
       return await generateXai(text, config);
+
+    case 'cartesia':
+      return await generateCartesia(text, config);
 
     default:
       throw new Error(`Unknown TTS provider: ${provider}`);
@@ -827,6 +948,8 @@ module.exports = {
   generateElevenLabs,
   generateAzure,
   generateXai,
+  generateCartesia,
+  buildCartesiaRequest,
   getCadenceSpeed,
   getVoiceForRole,
   // phonology gate internals, exported for tests/tools

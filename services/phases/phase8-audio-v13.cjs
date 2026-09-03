@@ -7046,6 +7046,12 @@ function buildPodTTSConfig(voice, language, courseCode) {
     // native fr/zh, …). toBcp47() strips region (pt-PT→pt=Brazilian), so only
     // use it as the fallback when a voice has no explicit locale.
     base.language = voice.locale || toBcp47(language)
+  } else if (voice.provider === 'cartesia') {
+    // Cartesia steers by language exactly like xAI, and for the same reason: an
+    // unsteered multilingual voice reads foreign words with English phonology.
+    // The clone's own locale wins over toBcp47(), which strips region.
+    base.apiKey = process.env.CARTESIA_API_KEY
+    base.language = voice.locale || toBcp47(language)
   } else if (voice.provider === 'elevenlabs') {
     base.apiKey = process.env.ELEVENLABS_API_KEY
   } else {

@@ -65,7 +65,7 @@ const langService = require('./../language-code-service.cjs');
 const SEP = '\u001f';
 
 /** Providers we accept as the prefix of a canonical voice id. */
-const PROVIDERS = ['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'human'];
+const PROVIDERS = ['azure', 'xai', 'elevenlabs', 'google', 'narakeet', 'cartesia', 'human'];
 
 /**
  * Spellings that appear in the live estate and mean a provider, plus the older
@@ -83,6 +83,13 @@ const PROVIDER_ALIASES = {
   google: 'google',
   gcp: 'google',
   narakeet: 'narakeet',
+  // Added 2026-09-03, when the pod renderer first reached Cartesia. The vendor
+  // was already known to voice-personhood.cjs (SYNTHESIS_VENDORS) and to the
+  // `voices` registry, but not here — so a perfectly good Cartesia render was
+  // synthesised, mastered and then thrown away at the identity step with
+  // "unknown provider hint". Estate voice ids are stored prefixed,
+  // `cartesia_<uuid>`, exactly like the other vendors.
+  cartesia: 'cartesia',
   human: 'human',
 };
 

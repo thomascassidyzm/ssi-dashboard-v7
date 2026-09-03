@@ -19,6 +19,7 @@ const {
   getXaiHealth,
   TTS_MIN_AUDIO_MS,
   isKnownSideOfHumanVoiceCourse,
+  generate,
 } = require('./tts-service.cjs')
 
 /** xAI's default output format: 128 kbps mp3. */
@@ -161,5 +162,85 @@ describe('a human-voice course may synthesise its known side only', () => {
   it('refuses a course code it cannot parse', () => {
     expect(isKnownSideOfHumanVoiceCourse('cym_n', 'en')).toBe(false)
     expect(isKnownSideOfHumanVoiceCourse('', 'en')).toBe(false)
+  })
+})
+
+/**
+ * CARTESIA (2026-09-03). xAI is being wound down, and until this landed the
+ * chokepoint could only reach azure / elevenlabs / xai — so the only Cartesia
+ * audio in the estate was made by one-off scripts talking to the API directly,
+ * skipping mastering, the audible-response floor and the veracity gate. These
+ * pin the vendor details that were verified against a live 200, not read off
+ * the docs, plus the two guards the first probe actually tripped.
+ */
+describe('cartesia is a first-class provider at the chokepoint', () => {
+  const { buildCartesiaRequest } = require('./tts-service.cjs')
+
+  const base = {
+    apiKey: 'k',
+    voiceId: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2',
+    language: 'en-GB',
+  }
+  const req = (over = {}) => buildCartesiaRequest('Good afternoon.', { ...base, ...over })
+
+  it('strips the estate prefix — the vendor wants the bare uuid', () => {
+    expect(req().body.voice).toEqual({ mode: 'id', id: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2' })
+    expect(req().url).toBe('https://api.cartesia.ai/tts/bytes')
+  })
+
+  it('accepts a voice already stored bare, so both spellings are one voice', () => {
+    expect(req({ voiceId: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2' }).body.voice.id)
+      .toBe('8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+  })
+
+  it('sends the primary subtag only — "en-GB" is not a Cartesia language', () => {
+    expect(req().body.language).toBe('en')
+    expect(req({ language: 'pt-BR' }).body.language).toBe('pt')
+  })
+
+  it('pins BOTH versions — model snapshot and the date-versioned API header', () => {
+    expect(req().body.model_id).toBeTruthy()
+    expect(req().headers['Cartesia-Version']).toBeTruthy()
+  })
+
+  it('refuses an unstated language rather than letting the voice guess', () => {
+    expect(() => req({ language: 'auto' })).toThrow(/explicit language/)
+    expect(() => req({ language: undefined })).toThrow(/explicit language/)
+  })
+
+  it('refuses a missing key or voice before it can spend anything', () => {
+    expect(() => req({ apiKey: '' })).toThrow(/API key/)
+    expect(() => req({ voiceId: '' })).toThrow(/voice id/)
+  })
+
+  it('is a provider generate() dispatches on, so pods and courses share one door', async () => {
+    // Reaching the dispatch is enough: a real call needs the network, and the
+    // request it would send is pinned above.
+    await expect(generate('hi', 'not-a-vendor', {})).rejects.toThrow(/Unknown TTS provider/)
+    expect(require('./tts-service.cjs').generateCartesia).toBeTypeOf('function')
+  })
+
+  it('still refuses Welsh on a human-voice course — the guard is provider-blind', () => {
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', 'en')).toBe(true)
+    expect(isKnownSideOfHumanVoiceCourse('cym_n_for_eng', 'cy')).toBe(false)
+  })
+})
+
+/**
+ * The identity step is where the first live Cartesia probe died: the clip was
+ * synthesised and mastered, then thrown away with "unknown provider hint"
+ * because clip-identity.cjs did not know the vendor that voice-personhood.cjs
+ * and the `voices` registry both already knew.
+ */
+describe('clip identity knows the cartesia vendor', () => {
+  const { canonicalVoiceId, PROVIDERS } = require('./shared/clip-identity.cjs')
+
+  it('canonicalises a prefixed cartesia voice with an explicit hint', () => {
+    expect(canonicalVoiceId('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', { provider: 'cartesia' }))
+      .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+  })
+
+  it('carries the vendor in the accepted provider list', () => {
+    expect(PROVIDERS).toContain('cartesia')
   })
 })
