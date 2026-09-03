@@ -1,0 +1,115 @@
+{
+  "concept": "core-recovery-halves",
+  "derived": "2026-09-04",
+  "pod_slug": "core-recoveries",
+  "status": "DRAFT-UNREVIEWED. Six recovery flows for the six survivability edges with no attested recovery anywhere in the corpus (S2, M1, M2, M3, M4, M5). Sited under a distinct slug ON EVIDENCE: services/pod-dialogue-generator.cjs:114 defaults every course regen to canonicalSlug='pod-1' and loadCanonicalScenes() filters only by pod_slug with no variant_key filter, so variant rows on pod-1 would be flexed into 22 courses by the next default regen. Rows here are reachable only if 'core-recoveries' is explicitly named as a canonicalSlug, which nothing does. Each flow records its attachment (the CORE scene and g-numbers it hangs off) in scene_number, scene_subtitle and author_notes.",
+  "sources": {
+    "authored_dialogue": "docs/pods/core-recoveries-2026-08-31.md (W1301-W1305, carried; W1306 authored in this job)",
+    "attachments": "services/shared/metagraph/proposed/core-recovery-attachments-2026-08-31.json (A1001-A1006)",
+    "edges": "services/shared/metagraph/edges.json (survivability.corpus S2; survivability.method_pod M1-M5)"
+  },
+  "draft_marker": "DRAFT-UNREVIEWED (core recovery halves, 2026-09-04)",
+  "flows": [
+    {
+      "variant_key": "recovery-s2",
+      "walk": "W1301",
+      "edge": "S2",
+      "attachment_id": "A1001",
+      "scene_number": 2,
+      "scene_title": "The hedge acted on",
+      "scene_subtitle": "attaches to POD 1 scene 2 at g8–g9 (A1001, edge S2: acting on a hedge)",
+      "rows": [
+        { "speaker": "Sarah", "restaged_from": 8, "english_text": "Can you tell me how far it is into town?" },
+        { "speaker": "Passenger", "restaged_from": 9, "english_text": "It's not very far. Maybe three or four miles." },
+        { "speaker": "Sarah", "english_text": "Three or four miles — I could walk that. I might get off at the next stop, then, and walk the rest. It's a nice morning for it." },
+        { "speaker": "Passenger", "english_text": "Oh — hold on. There's the sign: six miles to town. It's further than I thought. I'm sorry." },
+        { "speaker": "Sarah", "english_text": "Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way." },
+        { "speaker": "Passenger", "english_text": "Do that. It's the last stop, anyway — you can't miss it." }
+      ]
+    },
+    {
+      "variant_key": "recovery-m1",
+      "walk": "W1302",
+      "edge": "M1",
+      "attachment_id": "A1002",
+      "scene_number": 3,
+      "scene_title": "I don't know, held with status",
+      "scene_subtitle": "attaches to POD 1 scene 3 at g14–g16 (A1002, edge M1: the answer being 'I don't know') — the third arm on the canon's yes/no fork",
+      "rows": [
+        { "speaker": "Sarah", "restaged_from": 14, "english_text": "Do you have crisps, or nuts, or anything?" },
+        { "speaker": "Barista", "english_text": "I honestly don't know — today's delivery is still in its boxes. There might be crisps in there; there might not." },
+        { "speaker": "Sarah", "english_text": "Would you have a look? No rush — I'm waiting on my coffee anyway." },
+        { "speaker": "Barista", "english_text": "Right — you're in luck. Crisps, two kinds. No nuts, though." },
+        { "speaker": "Sarah", "english_text": "Crisps will do nicely — salted, please." },
+        { "speaker": "Barista", "english_text": "Here's your coffee — and your crisps." }
+      ]
+    },
+    {
+      "variant_key": "recovery-m5",
+      "walk": "W1303",
+      "edge": "M5",
+      "attachment_id": "A1006",
+      "scene_number": 4,
+      "scene_title": "The counterbid over when",
+      "scene_subtitle": "attaches to POD 1 scene 4 at g21–g22 (A1006, edge M5: the haggle — your number countered). Price-haggle explicitly NOT attached.",
+      "rows": [
+        { "speaker": "Sarah", "restaged_from": 21, "english_text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?" },
+        { "speaker": "Friend", "restaged_from": 22, "english_text": "No, I'm sorry, I'm busy tomorrow. But let's talk on Saturday. See you then." },
+        { "speaker": "Sarah", "english_text": "Saturday's good — but only the morning. I'm away all afternoon." },
+        { "speaker": "Friend", "english_text": "Saturday morning, then. Ten o'clock, at the café?" },
+        { "speaker": "Sarah", "english_text": "Ten at the café — perfect. See you Saturday!" },
+        { "speaker": "Friend", "english_text": "Go on home, then — Saturday at ten!" }
+      ]
+    },
+    {
+      "variant_key": "recovery-m3",
+      "walk": "W1306",
+      "edge": "M3",
+      "attachment_id": "A1004-revised",
+      "scene_number": 5,
+      "scene_title": "The challenge mid-story",
+      "scene_subtitle": "attaches to POD 1 scene 5 at g23 (edge M3: a sceptical challenge landing mid-story). A1004 declared this non-attachable; that verdict predates variant-flow storage and is revised here — the story turn is authored as a variant continuation of the canon's own story invitation, changing no existing row.",
+      "rows": [
+        { "speaker": "Neighbour (10:30 pm)", "restaged_from": 23, "english_text": "Good evening, Sarah. Did you have a long day?" },
+        { "speaker": "Sarah", "english_text": "Yes, a very long day. It started on the bus this morning — I found out town is six miles away. I nearly got off to walk it!" },
+        { "speaker": "Neighbour", "english_text": "Six miles? Are you sure? I've always thought it was much closer than that." },
+        { "speaker": "Sarah", "english_text": "I was surprised too — but there's a sign on the road that says six. I saw it myself from the bus." },
+        { "speaker": "Neighbour", "english_text": "A sign — well then, six it is. I've clearly never looked. Go on — what happened next?" },
+        { "speaker": "Sarah", "english_text": "Coffee, crisps, and a friend I'm seeing on Saturday. And now — bed. Good night!" },
+        { "speaker": "Neighbour", "english_text": "Good night, Sarah. Sleep well — you've earned it." }
+      ]
+    },
+    {
+      "variant_key": "recovery-m2",
+      "walk": "W1304",
+      "edge": "M2",
+      "attachment_id": "A1003",
+      "scene_number": 22,
+      "scene_title": "The premise audited",
+      "scene_subtitle": "attaches to POD 1 scene 22 at g221–g225 (A1003, edge M2: the premise being audited). The audit rides on the canon's own grant of permission.",
+      "rows": [
+        { "speaker": "Learner", "restaged_from": 221, "english_text": "Would you mind if I tried to practise speaking [target language] with you? I haven't been learning for very long, and I still feel a little nervous about speaking with other people." },
+        { "speaker": "Friend", "anchor": { "g": 222, "startsWith": "Of course, no problem." }, "english_text": "Of course, no problem. Not very long — how long is that, exactly?" },
+        { "speaker": "Learner", "english_text": "About six months. A little every day — usually just ten minutes. It doesn't feel like very much." },
+        { "speaker": "Friend", "english_text": "Six months, every single day? That's more than most people ever do. I can understand you easily — and now I know why." },
+        { "speaker": "Learner", "english_text": "Thank you. Maybe it does add up after all. I still feel nervous — but a little less than when we started talking." }
+      ]
+    },
+    {
+      "variant_key": "recovery-m4",
+      "walk": "W1305",
+      "edge": "M4",
+      "attachment_id": "A1005",
+      "scene_number": 22,
+      "scene_title": "The disagreement parked",
+      "scene_subtitle": "attaches to POD 1 scene 22 at g227–g228 (A1005, edge M4: the disagreement parked rather than resolved). The canon's g229 follows the last line without a seam.",
+      "rows": [
+        { "speaker": "Learner", "restaged_from": 227, "english_text": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently." },
+        { "speaker": "Friend", "restaged_from": 228, "english_text": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly." },
+        { "speaker": "Learner", "english_text": "That's kind — but I don't think we're going to agree about this. You hear my sentences; I hear all my gaps." },
+        { "speaker": "Friend", "english_text": "Then let's leave it there — you hear the gaps, I hear the sentences, and we don't have to settle it now. Keep talking to me, and one of us will be proved right." },
+        { "speaker": "Learner", "english_text": "It's a deal. Either way, I need the practice — so let's keep talking." }
+      ]
+    }
+  ]
+}
