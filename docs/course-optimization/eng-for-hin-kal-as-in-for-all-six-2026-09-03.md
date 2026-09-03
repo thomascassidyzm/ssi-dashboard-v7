@@ -362,3 +362,61 @@ re-author cannot silently drop a context.
 
 **Not done, and named as such:** the eight pre-seed-30 rewrites (§5a), the bare-कल-tomorrow LEGO at
 seed 223 (§5a), seed 15's sentence (§5b), the 10 comparatives (§5c), the seed-192 duplicate (§5d).
+
+---
+
+## 8. Independently verified — and the one question it left, now answered
+
+Job **#359** re-read **all 354** कल-bearing rows cold, on sonnet, with instructions to attack rather
+than confirm. Its result:
+
+- **347 of 354 compliant**, including the 10 known comparatives it was told not to re-litigate.
+- **Zero outright Hindi/English direction disagreements.** Its scan flagged 8 candidates and every
+  one was a false positive on inspection — mostly reported speech, where a past matrix verb governs
+  an embedded present-modal clause about कल and *tomorrow* is correct.
+- **All 19 of today's new and restored rows compliant**, each carrying an explicit marker
+  (चाहूँगा, है + infinitive, वाला है, करेंगे/करें, सकते हैं). It named
+  `S0192L02U06` — *मुझे कल रात इंतज़ार करने में कोई आपत्ति नहीं।* — as the weakest of the 19, because
+  its present tense is a zero copula rather than a written one. That row is a restored original,
+  not one of mine, and it is consistent with every other present-frame row in the set.
+- The **7 rows it called ambiguous are the six bare LEGO citations themselves** (plus `S0312L03`) —
+  which is not a new defect but a restatement of the one this job exists to fix: a bare chunk's own
+  row cannot carry its tense, which is exactly why the sense is fixed in the introduction.
+
+### The question it could not answer, and the answer
+
+#359 flagged that a bare chunk with its own `known_audio_id` is **heard in isolation**, and said it
+could not tell whether that clip is guaranteed to play only after its introduction. Traced through
+the learner's own sequence builder (`buildLegoCycles`, `ssi-learning-app/api/courses/[code]/cycles.ts`):
+
+- The **`intro` cycle carries `presentation_audio_id` and is emitted immediately before the `debut`
+  cycle**, which is the bare LEGO. The debut then *claims* the bare LEGO so no later cycle can
+  replay it — a guard with its own regression test, `cycles.bareLegoBuildNeverReplays.test.ts`,
+  written after Tom heard exactly that doubling on fra_for_eng. So the bare chunk is **never met
+  cold**, provided the introduction has audio.
+- Two of the seven rows #359 listed are **`is_new = false` reuse rows** — `S0262L03` (कल) and
+  `S0312L03` (कल रात). A reuse row gets no debut and no introduction, so it is never heard as a bare
+  chunk at all. Its concern does not apply to them.
+
+**But it does apply, today, to one of the six — and this is worth Kai's eye.** Checking the live
+links on all eight bare कल LEGOs:
+
+| LEGO | `is_new` | bare chunk clip | introduction linked |
+|---|---|---|---|
+| `S0030L03` कल | yes | rendered | **yes** |
+| `S0042L03` कल रात के मुक़ाबले | yes | none | **no** |
+| `S0155L04` कल सुबह | yes | **rendered** | **no** ← |
+| `S0167L02` कल दोपहर | yes | rendered | **yes** |
+| `S0192L02` कल रात | yes | rendered (restored today) | **yes** (restored today) |
+| `S0262L03` कल | no | — | reuse row, never debuts |
+| `S0278L02` कल रात सब | yes | none | **no** |
+| `S0312L03` कल रात | no | — | reuse row, never debuts |
+
+**`S0155L04` is the live one:** the learner reaches seed 155, the introduction cycle plays with no
+audio in it, and then they hear the bare clip *कल सुबह* with nothing at all having told them which
+direction is meant. `S0042L03` and `S0278L02` have the same missing link but no bare clip either, so
+they are silent rather than misleading.
+
+All three already have their contexted "as in" introduction authored and waiting as a pending row.
+**Nothing more can be done about it here** — the clip cannot be rendered until this course is recast
+off xAI. It is named so the recast is understood as a correctness fix and not just a voice change.
