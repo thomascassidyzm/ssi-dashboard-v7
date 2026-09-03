@@ -96,6 +96,37 @@ merged over what is there. One live consequence, now fixed: `main`'s
 only knows the bare uuid, so the cast stores it bare. A prefixed id renders fine
 on this branch and 400s under production code.
 
+## The pod would have played silence through every question
+
+Worth knowing, because it nearly shipped. A trace of the learner app found that
+in **immersion mode — the default listening mode** — the overlay's queue builder
+pushed audio only when a row had a TARGET clip. Our 168 English floor lines have
+no target clip by design, so they would have played **pure silence and
+auto-advanced**: Steve would have heard the Welsh answers with nothing where the
+questions were, which is the exact defect this whole job set out to close, arrived
+at from the other end. Drill mode already had the fallback; immersion never got it.
+
+Fixed on the learning app's `dev` branch: a row with **no target TEXT at all**
+falls back to its known clip. The test is the text, not the missing clip, and that
+distinction is the point — a row that HAS Welsh text and no clip is a *gap*, audio
+not recorded yet, and it must stay silent, because speaking its English
+translation instead would put English in the learner's ear during an immersion
+listen and hide a missing recording behind something that sounds perfectly fine.
+
+Two more things that trace turned up, neither of them mine to decide:
+
+- **The main-flow background listening laps skip these rows outright**
+  (`usePodLapScheduler.ts`, `if (!sentence.target_audio_id) continue`). It does
+  not touch Steve today — this pod is only ever reached through the Pods tab —
+  but if you ever want floor-English turns in ordinary spaced-repetition laps,
+  that gate is where it changes, and it is a much bigger call than the one-liner
+  above.
+- **Delivery for this pod already landed tonight, from another session.** `dev`
+  carries "serve a pod that names a role to the person it names": a pod with a
+  `required_role` outranks the slug rule and may sit on any slug — which is what
+  makes a `pod_type='choice'` pod like this one reachable at all. It is still
+  `held`, which is deliberate; going live is your call plus Steve's role grant.
+
 ## The Welsh no-TTS guard is untouched
 
 `cym_n_for_eng` still refuses Welsh TTS in every spelling (`cy`, `cy-GB`, `cym`,
@@ -135,8 +166,19 @@ editing operation performed on the record's words.
 
 1. **Which Cartesia clone.** `tom_001` is in use and authorised; `Tom_002` and
    `Tom_003` are authorised and unused. One word if you want a different one.
-2. **The fleet.** `gfzdpspr5fdp` is the estate's default English pod voice, on
-   the dying provider, well beyond this pod — see the census in the report.
+2. **The fleet, and it is bigger than the pod.** `gfzdpspr5fdp` is on **115
+   pods** across 60+ courses and **18 courses' `voice_config`**, and it carries
+   **327,375 `course_audio` rows** estate-wide (183,194 bare + 144,181 as
+   `xai_gfzdpspr5fdp`). Only **1,819** of those are pod clips: the other
+   **325,556** are ordinary course content — LEGO, BUILD and USE audio. So the
+   migration off xAI is a course-audio problem with a pod problem attached, not
+   the other way round. Heaviest: spa_for_eng 22,276, fra_for_eng 17,976,
+   kor_for_eng 16,629, deu_for_eng 15,557, jpn_for_eng 15,390. In code it is
+   hardcoded as a default in about seven live `services/` files (the pod
+   explainer batch, `production-api`, `presentation-author`, `clone-copy-match`,
+   `clip-identity`, `audio-reuse-planner`, the Voice Lab default) plus a long
+   tail of one-off tools. Its paired female voice, Olivia (`bedd6226`), is on
+   the same provider with another 83,068 rows.
 3. **Steve's access.** `required_role = previewer_001` is on the pod but no grant
    is written: two learner rows match "Steve" and neither is obviously him.
    Somebody who knows which account is his does one INSERT into `learner_roles`.
