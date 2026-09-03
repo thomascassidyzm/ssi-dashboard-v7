@@ -74,16 +74,24 @@
       <!-- Language dropdowns + reset -->
       <div class="mb-5 flex flex-wrap items-center gap-2.5">
         <span class="ui-filter-label">Known</span>
-        <select v-model="knownFilter" class="ui-select">
-          <option value="">All</option>
-          <option v-for="l in knownLangs" :key="l" :value="l">{{ getLanguageName(l) }}</option>
-        </select>
+        <FilterSelect
+          v-model="knownFilter"
+          :options="knownOptions"
+          placeholder="All"
+          filter-placeholder="Type a language…"
+          button-class="ui-select"
+          data-test="known-filter"
+        />
 
         <span class="ui-filter-label ml-2">Target</span>
-        <select v-model="targetFilter" class="ui-select">
-          <option value="">All</option>
-          <option v-for="l in targetLangs" :key="l" :value="l">{{ getLanguageName(l) }}</option>
-        </select>
+        <FilterSelect
+          v-model="targetFilter"
+          :options="targetOptions"
+          placeholder="All"
+          filter-placeholder="Type a language…"
+          button-class="ui-select"
+          data-test="target-filter"
+        />
 
         <button
           v-if="hasActiveFilters"
@@ -247,6 +255,7 @@ import api, { getApiUrl } from '../services/api'
 import { isConfigured as isSupabaseConfigured, getAllCourses, getAllCourseStats } from '../services/supabase'
 import { useCourses } from '../composables/useCourses'
 import { useAuth } from '../composables/useAuth'
+import FilterSelect from '../components/ui/FilterSelect.vue'
 
 const toast = useToast()
 const router = useRouter()
@@ -311,6 +320,17 @@ const knownLangs = computed(() =>
 const targetLangs = computed(() =>
   [...new Set(accessibleCourses.value.map(c => parseLangs(c.course_code).target).filter(Boolean))].sort()
 )
+
+// Language options for the filter dropdowns. The code goes in as the option
+// VALUE (and as the hint) so typing `fra` finds French, the way Tom searches.
+function langOptions(codes) {
+  return [
+    { value: '', label: 'All' },
+    ...codes.map((code) => ({ value: code, label: getLanguageName(code), hint: code })),
+  ]
+}
+const knownOptions = computed(() => langOptions(knownLangs.value))
+const targetOptions = computed(() => langOptions(targetLangs.value))
 
 const hasActiveFilters = computed(() =>
   Object.keys(statusState.value).length > 0 ||
