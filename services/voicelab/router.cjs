@@ -45,6 +45,7 @@ const consent = require('./consent.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
 const declaration = require('./declaration.cjs')
 const consentCapture = require('./consent-capture.cjs')
+const selfConsent = require('./self-consent.cjs')
 const cloneConfirmation = require('./clone-confirmation.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
@@ -1144,6 +1145,43 @@ function mount (app, deps) {
    * Neither is a second opinion about consent: both write the columns that
    * services/voicelab/consent.cjs and declaration.cjs produce, and nothing else.
    */
+  /**
+   * THIS IS MY VOICE — the owner, signed in, consenting to their own clone.
+   *
+   * Tom, 2026-09-04, refused by the block on his own Italian clone: "it is
+   * telling Tom to go and ask Tom." The rule, structurally: when the
+   * AUTHENTICATED USER IS THE OWNER OF THE VOICE, consent is self-evident.
+   *
+   * The rules, every one of them, are services/voicelab/self-consent.cjs — this
+   * route supplies two things it will not take from the browser: the database
+   * and WHO IS ASKING. The claim is always recorded against the session's own
+   * verified address, so there is no body field through which somebody could
+   * claim a voice as somebody else.
+   *
+   * Dashboard tier, the same as the two consent routes below it and for the
+   * same reason: the person whose voice it is need not be an admin, and an
+   * admin-only key leaves the lock shut for exactly the people who hit it.
+   */
+  app.post('/api/voicelab/voices/:voiceId/consent-self', async (req, res) => {
+    const user = await requireDashboardUser(req, res)
+    if (!user) return
+    try {
+      const voiceId = String(req.params.voiceId || '').trim()
+      const out = await selfConsent.claimOwnVoice(supabase(), { voiceId, user })
+      // The same 30-second verdict cache every other consent write drops: a
+      // consent recorded here and an audition pressed immediately after must
+      // not be refused by an answer formed before it.
+      consentGate.clearCache()
+      logger.log?.(`[voicelab] ${out.alreadyAuthorised ? 'self-consent no-op (already authorised)' : 'self-consent recorded'} on ${voiceId} by ${who(user)}`)
+      res.json({
+        ok: true,
+        voiceId,
+        alreadyAuthorised: out.alreadyAuthorised,
+        consent: consent.describe(out.voice),
+      })
+    } catch (err) { fail(res, err, `consent-self ${req.params.voiceId}`) }
+  })
+
   app.post('/api/voicelab/voices/:voiceId/consent-declaration', async (req, res) => {
     // A DASHBOARD SESSION, not admin — deliberately, and here is the reasoning.
     // The screens that get refused are course screens: a course leader casting

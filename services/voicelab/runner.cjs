@@ -274,7 +274,20 @@ async function execute (experimentId, { logger = console } = {}) {
       rendered.push({ clip, cfg, line, mastered })
     } catch (e) {
       logger.error?.(`[voicelab] render failed ${clip.id}: ${e.message}`)
-      patchClip(exp.id, clip.id, { status: 'failed', error: String(e.message).slice(0, 400), summary: `render failed — ${String(e.message).slice(0, 160)}` })
+      // THE CODE RIDES WITH THE SENTENCE. A run is asynchronous, so a refusal
+      // reaches the screen as a stored clip rather than as an HTTP response,
+      // and until 2026-09-04 everything but the prose was thrown away — which
+      // left the browser string-matching English to find out that a render was
+      // refused for consent, exactly what fail()'s `detail` exists to prevent
+      // on the synchronous side. Same contract as fail(): the sentence is the
+      // thing a human reads, the code is the thing code reads.
+      patchClip(exp.id, clip.id, {
+        status: 'failed',
+        error: String(e.message).slice(0, 400),
+        errorCode: e && e.code ? String(e.code) : null,
+        errorDetail: (e && e.detail) || null,
+        summary: `render failed — ${String(e.message).slice(0, 160)}`,
+      })
     }
   }
 

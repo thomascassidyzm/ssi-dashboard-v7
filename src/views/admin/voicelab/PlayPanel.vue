@@ -349,6 +349,51 @@ watch([sentence, configs], refreshEstimate, { deep: true })
 // ── The run ─────────────────────────────────────────────────────────────────
 const running = ref(false)
 const runError = ref('')
+
+// ── "IT IS ASKING A PERSON FOR PERMISSION TO USE THEIR OWN VOICE" ───────────
+//
+// Tom, 2026-09-04, refused by the consent block on his own Italian clone: the
+// wall said "Tom Cassidy has not authorised this voice yet. Ask them." It was
+// telling Tom to go and ask Tom, and the fix eight hours earlier had been to
+// consent ONE voice id by hand, so the same wall came back on the next clone.
+//
+// So the refusal now carries its own answer: when the person reading it is the
+// person the voice belongs to, one tap records that and the render goes
+// through. It is offered on the CODE the server sent, never on the words —
+// the sentence gets redlined, the code does not.
+//
+// It weakens nothing for anybody else: who is claiming comes from the session
+// on the server, a voice already carrying somebody else's address is refused,
+// and a recorded no is never walked back here (services/voicelab/self-consent.cjs).
+const consentBlock = ref(null)
+const claiming = ref(false)
+
+/** A consent refusal, from either the synchronous error or a failed clip. */
+function consentRefusal (payload) {
+  if (!payload || payload.code !== 'NO_RECORDED_CONSENT') return null
+  if (['refused', 'withdrawn'].includes(payload.consentStatus)) return null
+  return {
+    // The id the server refused, which is the spelling the render actually
+    // used — not this screen's copy of it.
+    voiceId: payload.voiceId || voiceId.value,
+    person: payload.person || null,
+  }
+}
+
+async function claimOwnVoice () {
+  if (!consentBlock.value || claiming.value) return
+  claiming.value = true
+  try {
+    await api.selfConsent(consentBlock.value.voiceId)
+    consentBlock.value = null
+    runError.value = ''
+    await generate()
+  } catch (e) {
+    runError.value = e.message
+  } finally {
+    claiming.value = false
+  }
+}
 const experiment = ref(null)
 const revealed = ref(false)
 let stopPolling = null
@@ -368,6 +413,7 @@ const armed = computed(() =>
 async function generate () {
   running.value = true
   runError.value = ''
+  consentBlock.value = null
   experiment.value = null
   revealed.value = false
   autoPlayed = false
@@ -385,6 +431,7 @@ async function generate () {
     stopPolling = poll(exp.id)
   } catch (e) {
     runError.value = e.message
+    consentBlock.value = consentRefusal(e.data)
     running.value = false
   }
 }
@@ -398,6 +445,13 @@ function poll (id) {
       try {
         const { experiment: exp } = await api.getRun(id)
         experiment.value = exp
+        // A refused render fails INSIDE the run, so the refusal arrives here
+        // rather than as an HTTP error — the runner carries the code and the
+        // detail onto the clip for exactly this.
+        for (const c of exp.clips || []) {
+          const refusal = consentRefusal({ code: c.errorCode, ...(c.errorDetail || {}) })
+          if (refusal) { consentBlock.value = refusal; break }
+        }
         // The clip is playable long before the two whisper passes finish, so it
         // plays the moment it exists rather than when the verdict lands.
         maybeAutoPlay(exp)
@@ -658,6 +712,22 @@ function gateDetail (clip) {
     </div>
     <p v-if="runError" class="play-err">{{ runError }}</p>
 
+    <!-- The block, with its own answer on it when you are the person it names -->
+    <div v-if="consentBlock" class="play-consent">
+      <p>
+        This voice has no recorded consent, so nothing will render with it.
+        <strong v-if="consentBlock.person">It is recorded as {{ consentBlock.person }}'s.</strong>
+        If it is yours, say so and it goes through.
+      </p>
+      <button class="play-claim" :disabled="claiming" @click="claimOwnVoice">
+        {{ claiming ? 'Recording…' : 'This is my voice — I consent' }}
+      </button>
+      <p class="play-consent-note">
+        Recorded against the address you are signed in with, on this voice, once.
+        Anybody else's voice still needs their own answer.
+      </p>
+    </div>
+
     <!-- 5 · listen, then one line of verdict -->
     <div v-if="experiment" class="play-result">
       <template v-if="!comparing">
@@ -831,4 +901,9 @@ function gateDetail (clip) {
 .play-note { color: var(--muted); font-size: 0.82rem; line-height: 1.5; max-width: 70ch; }
 .play-caveat { color: var(--muted); font-size: 0.72rem; font-style: italic; margin-top: 1rem; }
 .play-err { color: var(--danger); font-size: 0.82rem; }
+.play-consent { border: 1px solid var(--danger); border-radius: 8px; padding: 0.75rem 0.9rem; margin-top: 0.6rem; }
+.play-consent p { margin: 0 0 0.55rem; font-size: 0.86rem; }
+.play-claim { padding: 0.45rem 0.9rem; border-radius: 6px; cursor: pointer; }
+.play-claim[disabled] { opacity: 0.6; cursor: default; }
+.play-consent-note { margin: 0.55rem 0 0 !important; opacity: 0.75; font-size: 0.78rem !important; }
 </style>
