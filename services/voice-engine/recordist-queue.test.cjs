@@ -475,3 +475,33 @@ test('an unknown or empty email gets no voices', async () => {
   assert.deepStrictEqual(await voicesForEmail(db, ''), [])
   assert.deepStrictEqual(await voicesForEmail(db, null), [])
 })
+
+// WHICH BODY OF WORK EACH LINE BELONGS TO. Tom, 2026-09-04: Aran's Senedd/S4C
+// lines and his POD-1 lines are both kind 'pod' and arrived in one
+// undifferentiated list. The surface cannot separate what the wire does not
+// carry, so the pod's own identity goes on the wire — and stays null on every
+// line that has no pod, which is what the surface reads as "group by kind".
+test('a pod line carries its pod on the wire, and a line with no pod carries none', async () => {
+  const f = fixture()
+  f.listening_pods.push({ id: 'p_n2', course_code: 'cym_n_for_eng', slug: 'senedd-s4c-steve', title: 'Senedd: allegations of bullying at S4C' })
+  f.listening_pod_sentences.push(
+    { id: 's7', pod_id: 'p_n2', global_order: 1, speaker: 'Aran', target_text: 'Diolch, Gadeirydd.', known_text: 'Thank you, Chair.' })
+  const db = stubDb(f)
+  const aran = await resolveRecordist(db, 'human_aran_cym_n')
+  const q = await buildQueue(db, aran, { includeRecorded: true })
+
+  const pod0 = q.lines.find((l) => l.text === 'Bore da.')
+  assert.equal(pod0.podId, 'p_n')
+  assert.equal(pod0.podSlug, 'pod-0')
+  const senedd = q.lines.find((l) => l.text === 'Diolch, Gadeirydd.')
+  assert.equal(senedd.podSlug, 'senedd-s4c-steve')
+  assert.equal(senedd.podTitle, 'Senedd: allegations of bullying at S4C')
+
+  // AND THE ORDER IS THE ONE THE SERVER ALREADY SORTED BY — course, then pod
+  // slug, then position — untouched. 'Nos da.' is cym_s's pod-0, which is why
+  // the slugs read n:pod-0, n:senedd, s:pod-0 rather than all the pod-0s
+  // together: the surface groups on the slug and never re-sorts, so a
+  // recordist's queue cannot reshuffle between two loads of the same page.
+  assert.deepEqual(q.lines.filter((l) => l.kind === 'pod').map((l) => l.podSlug),
+    ['pod-0', 'senedd-s4c-steve', 'pod-0'])
+})

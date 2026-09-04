@@ -618,7 +618,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
 
   const { data: pods, error: podErr } = await db
     .from('listening_pods')
-    .select('id, course_code, slug')
+    .select('id, course_code, slug, title')
     .in('course_code', [...byCourse.keys()])
   if (podErr) throw new Error(`pod list failed: ${podErr.message}`)
   const podById = new Map((pods || []).map((p) => [p.id, p]))
@@ -694,6 +694,16 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     const line = {
       id: s.id,
       podId: s.pod_id,
+      // WHICH BODY OF WORK THIS LINE BELONGS TO. `courseCode` says which course
+      // and `kind` says it is dialogue, but neither can tell one pod from
+      // another -- and a recordist with two pods open at once (Aran, from
+      // 2026-09-03: the POD-1 conversations and the 567-line Senedd/S4C
+      // session) sees them poured into one undifferentiated list. The slug is
+      // the stable handle the surface groups on; the title is the pod's own
+      // human name, there so a pod nobody has written a heading for can still
+      // be named on the screen in words rather than by its slug.
+      podSlug: pod.slug || null,
+      podTitle: pod.title || null,
       order: s.global_order,
       text,
       knownText: s.known_text || null,
@@ -1124,6 +1134,14 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // text carries <src>/<tgt> markup that must be RENDERED, never read
         // aloud as tags, and because a re-record deserves to say why.
         kind: line.kind || 'pod',
+        // THE BODY OF WORK, ON THE WIRE. Null on every line that has no pod --
+        // a re-record want is a course_audio clip, a seed is a course sentence,
+        // a quarry piece is a span -- and the surface treats a null pod as
+        // "this kind is its own group", which is what it did for every line
+        // before this existed.
+        podId: line.podId || null,
+        podSlug: line.podSlug || null,
+        podTitle: line.podTitle || null,
         role: line.role || null,
         rerecordReason: masked ? null : (line.rerecordReason || null),
         // Which seed sentence this is, for the surface to say so in words. Null

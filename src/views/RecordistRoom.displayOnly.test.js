@@ -597,3 +597,68 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
     expect(wrapper.find('.strip-words').text()).toContain('3 still to read')
   })
 })
+
+// TWO PODS ARE TWO BODIES OF WORK. Tom, 2026-09-04: "Aran's lines are now
+// confusing - this special senedd pod lines are mixed in with his recorded
+// already POD lines - this is just confusing and so these would be best
+// separated out." Both are kind 'pod', so before this the screen added a
+// 567-line committee session to his half of the POD-1 conversations and put one
+// heading over the sum. The invariant from the section above is unchanged and
+// is asserted here again on purpose: the sections must add back up to the whole
+// queue, whatever the split is.
+describe('RecordistRoom — two pods, two bodies of work', () => {
+  function stubTwoPodQueue() {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true, status: 200,
+      json: async () => ({
+        displayName: 'Aran', languageName: 'Welsh', total: 6, recorded: 1, remaining: 5,
+        lines: [
+          { id: 'p-1', order: 1, text: 'Bore da', speaker: 'James', kind: 'pod', podId: 'A', podSlug: 'pod-0', podTitle: 'Northern Welsh — Pod 0', recorded: true, clipUrl: '/c/p-1' },
+          { id: 'p-2', order: 2, text: 'Sut mae?', speaker: 'Waiter', kind: 'pod', podId: 'A', podSlug: 'pod-0', podTitle: 'Northern Welsh — Pod 0', recorded: false, clipUrl: null },
+          { id: 'n-1', order: 3, text: 'Diolch, Gadeirydd', speaker: 'Steve', kind: 'pod', podId: 'B', podSlug: 'senedd-s4c-steve', podTitle: 'Senedd: allegations of bullying at S4C', recorded: false, clipUrl: null },
+          { id: 'n-2', order: 4, text: 'Dyna ni', speaker: 'Steve', kind: 'pod', podId: 'B', podSlug: 'senedd-s4c-steve', podTitle: 'Senedd: allegations of bullying at S4C', recorded: false, clipUrl: null },
+          // A POD NOBODY HAS WRITTEN A HEADING FOR. It must not vanish and it
+          // must not be named by its slug — its own title is a human sentence.
+          { id: 'x-1', order: 5, text: 'Rhywbeth arall', speaker: 'Mair', kind: 'pod', podId: 'C', podSlug: 'sector-retail-1', podTitle: 'Retail counter conversations', recorded: false, clipUrl: null },
+          { id: 's-1', order: 6, text: 'Dw i eisiau mynd', kind: 'seed', seedNumber: 12, recorded: false, clipUrl: null },
+        ],
+      }),
+    })
+  }
+  beforeEach(() => { savedTakes.clear(); failedTakes.clear(); stubTwoPodQueue() })
+
+  it('gives each pod its own section, in queue order, named in the artist\'s words', async () => {
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+
+    const map = wrapper.findAll('.section-map-row')
+    const names = map.map(r => r.find('.sm-name').text())
+    // POD-1 first because pod-0 sorts first on the server, and the sections
+    // follow the queue rather than re-sorting it.
+    expect(names).toEqual(['POD-1', 'SENEDD', 'Retail counter conversations', 'NEW SEEDS'])
+    expect(map.map(r => Number(r.find('.sm-count').text()))).toEqual([2, 2, 1, 1])
+    // OUR VOCABULARY NEVER REACHES THE SCREEN.
+    expect(wrapper.text()).not.toContain('senedd-s4c-steve')
+    expect(wrapper.text()).not.toContain('sector-retail-1')
+  })
+
+  it('the sections still add back up to the whole queue', async () => {
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+    const counts = wrapper.findAll('.section-map-row').map(r => Number(r.find('.sm-count').text()))
+    expect(counts.reduce((a, b) => a + b, 0)).toBe(6)
+  })
+
+  it('a pod line with no pod on the wire keeps the one name this screen has always used', async () => {
+    global.fetch = vi.fn().mockResolvedValue({
+      ok: true, status: 200,
+      json: async () => ({
+        displayName: 'Aran', languageName: 'Welsh', total: 1, recorded: 0, remaining: 1,
+        lines: [{ id: 'p-1', order: 1, text: 'Bore da', kind: 'pod', recorded: false, clipUrl: null }],
+      }),
+    })
+    const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
+    await flushPromises()
+    expect(wrapper.findAll('.section-map-row').map(r => r.find('.sm-name').text())).toEqual(['POD-1'])
+  })
+})

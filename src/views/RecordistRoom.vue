@@ -609,6 +609,10 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // to say otherwise. So this is simply "done".
   hasTake: isRecorded(l),
   kind: l.kind || 'pod',
+  // WHICH BODY OF WORK. Only pod lines have one; everything else is null and
+  // groups by its kind exactly as it always did.
+  podSlug: l.podSlug || null,
+  podTitle: l.podTitle || null,
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
   readStyle: l.readStyle || 'natural',
@@ -668,19 +672,66 @@ const SECTION_ORDER = [
   // screen on the morning of the session.
   { key: 'rerecord', heading: 'MORE LINES', blurb: 'Single lines from the course that still need a recording — some from the conversations, some on their own.' },
 ]
+// ONE POD IS NOT EVERY POD. Tom, 2026-09-04: "Aran's lines are now confusing -
+// this special senedd pod lines are mixed in with his recorded already POD
+// lines - this is just confusing and so these would be best separated out."
+// The section above is keyed on `kind`, and both bodies of work are kind 'pod',
+// so 91 lines of the POD-1 conversations and 373 lines of a committee session
+// arrived under one heading reading "POD-1". Splitting on the pod's own slug is
+// the whole fix; these are the headings for the pods we have words for.
+//
+// The slug NEVER reaches the screen -- `senedd-s4c-steve` is our vocabulary and
+// carries a colleague's first name -- for the same reason "kind" and "quarry"
+// do not. A pod nobody has written a heading for falls back to its own title,
+// which is a human sentence a person wrote, and only then to a generic name.
+const POD_SECTIONS = {
+  // POD-1 IS ITS NAME -- Tom's ruling of 2026-09-02, unchanged and not ours to
+  // revisit. The database slug is `pod-0`; this string is a display constant.
+  'pod-0': { heading: 'POD-1', blurb: 'Your half of the POD-1 conversations — the other characters are read by someone else.' },
+  // TASTE CALL, defaulted 2026-09-04 because Tom has not named this section. It
+  // is one line, so overruling it is one line.
+  'senedd-s4c-steve': { heading: 'SENEDD', blurb: 'The S4C committee session at the Senedd, 11 January 2024 — read in session order.' },
+}
+function podSectionFor(row) {
+  const named = POD_SECTIONS[row.podSlug]
+  if (named) return named
+  const blurb = 'Your half of this conversation — the other characters are read by someone else.'
+  // A pod line with NO slug at all is the world before this split existed -- an
+  // older server mid-deploy, or a test fixture -- and there is exactly one such
+  // group, so it keeps the name this screen has always given it.
+  if (!row.podSlug) return { heading: 'POD-1', blurb }
+  // A pod we have not written a heading for is named by its own title, which a
+  // person wrote, and never by its slug.
+  return { heading: row.podTitle || 'MORE CONVERSATIONS', blurb }
+}
 const rosterSections = computed(() => {
   const byKind = new Map(SECTION_ORDER.map(s => [s.key, []]))
   // A kind we did not plan for gets a section of its own rather than vanishing:
   // a line silently missing from the map is the one failure this screen cannot
   // afford, and the sections must always add back up to the whole queue.
   const other = []
+  // Pod lines split one level further, by which pod they belong to. Keyed in
+  // FIRST-APPEARANCE order, which is the queue's own order -- the server sorts
+  // by course, then pod, then position, so each pod's lines are already
+  // contiguous and this introduces no second sort. A pod line with no slug on
+  // the wire (an older server, mid-deploy) keys on '' and gets one group, which
+  // is exactly the single "POD-1" section that existed before.
+  const byPod = new Map()
   for (const row of rosterRows.value) {
-    if (byKind.has(row.kind)) byKind.get(row.kind).push(row)
+    if (row.kind === 'pod') {
+      const key = row.podSlug || ''
+      if (!byPod.has(key)) byPod.set(key, { key: `pod:${key}`, ...podSectionFor(row), rows: [] })
+      byPod.get(key).rows.push(row)
+    } else if (byKind.has(row.kind)) byKind.get(row.kind).push(row)
     else other.push(row)
   }
-  const out = SECTION_ORDER
-    .map(s => ({ ...s, rows: byKind.get(s.key) }))
-    .filter(s => s.rows.length)
+  const out = []
+  for (const s of SECTION_ORDER) {
+    // The 'pod' slot in the order is where the pod groups go, in queue order.
+    if (s.key === 'pod') { for (const g of byPod.values()) out.push(g); continue }
+    const rows = byKind.get(s.key)
+    if (rows.length) out.push({ ...s, rows })
+  }
   if (other.length) out.push({ key: 'other', heading: 'Everything else', blurb: 'Lines that do not fall into the groups above.', rows: other })
   return out
 })
@@ -695,6 +746,12 @@ const current = computed(() => lines.value[index.value] || null)
 const lineKindWords = computed(() => {
   const l = current.value
   if (!l) return null
+  // WHICH BODY OF WORK HE IS IN, while he is in it. The roster names the groups
+  // but the roster is the map; once he taps Start he is one line at a time and
+  // the screen went back to saying nothing about which of two unrelated jobs
+  // this line came from (Tom, 2026-09-04). Same words as the heading above it,
+  // so the two cannot drift apart.
+  if ((l.kind || 'pod') === 'pod') return podSectionFor(l).heading
   // A minimal-set piece is a CHUNK, not a sentence, and it is read differently
   // from everything else on this screen. Saying which of the two speeds this
   // line is is the whole reason the set has two of them.
@@ -1148,7 +1205,12 @@ const alreadyRecorded = computed(() => lines.value.filter(l => l.clipUrl))
 // conversations, chunks and seed sentences reads as one thing rather than as an
 // unexplained jumble.
 const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', quarry: 'The minimal set', rerecord: 'MORE LINES' }
-function kindWords(l) { return KIND_WORDS[l.kind || 'pod'] || 'Everything else' }
+function kindWords(l) {
+  // A pod line is named by ITS OWN pod, not by the word "pod": this list is
+  // searchable, and "senedd" has to find the Senedd lines in it.
+  if ((l.kind || 'pod') === 'pod') return podSectionFor(l).heading
+  return KIND_WORDS[l.kind] || 'Everything else'
+}
 // THE ESTATE RULE, applied to a list rather than a dropdown (Tom, 2026-09-03:
 // "all dropdowns in popty, or in general in ANY of my work should have
 // search/filter at the very top"). Same threshold as FilterSelect: past eight
