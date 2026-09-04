@@ -431,6 +431,8 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
   const base = baseCode || code
   const human = isHumanVoiceLang(base)
   const cartesiaCovers = policy.cartesiaCoversLanguage(base)
+  // Asked once, here, so the row's provider, cause and reason cannot disagree.
+  const defaultRender = providerDefaultFor(base)
   // No course teaches this language; it only ever appears on the known side.
   // Its phrase slots are not a gap, and `statusFor` is told so.
   const knownOnly = langCourses.length === 0
@@ -556,7 +558,12 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
     // The provider a NEW render would actually use, asked of the same module
     // production asks, so this cannot claim something the render path denies.
     // This is a HYPOTHETICAL, and the UI labels it as one ("If re-rendered").
-    defaultProvider: providerFor(base),
+    // The CAUSE rides with it: "azure" alone reads as an estate policy, when
+    // what it actually reports is an unfilled Cartesia cast.
+    defaultProvider: defaultRender.provider,
+    defaultProviderCause: defaultRender.cause,
+    defaultProviderReason: defaultRender.reason,
+    defaultProviderRung: defaultRender.rung,
     // What the language's courses actually have stored, right now. The fact
     // the "If re-rendered" column cannot tell you.
     ...inUse,
@@ -809,18 +816,42 @@ function voiceKind (v) {
 }
 
 /**
- * What a new render for this language would choose. Asked of the policy rather
- * than reasoned about here — two answers to one question is how a screen starts
- * lying about the system it describes.
+ * What a new render for this language would choose, AND WHY.
+ *
+ * Asked of the policy rather than reasoned about here — two answers to one
+ * question is how a screen starts lying about the system it describes. The
+ * `reason` is the policy's own sentence, carried through untouched.
+ *
+ * THE CAUSE IS THE POINT (Tom, 2026-09-04: the column "reads as an estate
+ * policy statement when it is actually a consequence of an unfilled cast").
+ * A bare "azure" in a column headed "If re-rendered" reads as a decision the
+ * estate has made. It is not: the ladder tries Cartesia first and falls to
+ * Azure because no Cartesia voice is CAST for the language. Saying which of
+ * those two it is turns the column from a verdict into a worklist.
+ *
+ * `cause` is the short form for the cell; `reason` is the policy's full
+ * sentence, for the hover. Both are derived from the same call — there is no
+ * second opinion in here.
  */
-function providerFor (code) {
+function providerDefaultFor (code) {
+  let result
   try {
-    return policy.selectProvider({ language: code }).provider
+    result = policy.selectProvider({ language: code })
   } catch (e) {
-    // The policy throws for human-voice content and for uncoverable languages.
-    // Both are real answers, not failures, so they are reported as such.
-    return e && e.code === 'HUMAN_VOICE' ? 'human' : null
+    // The policy throws for human-voice content. That is a real answer, not a
+    // failure, so it is reported as one.
+    if (e && e.code === 'HUMAN_VOICE') {
+      return { provider: 'human', rung: null, cause: 'human-recorded — no TTS provider, ever', reason: e.message }
+    }
+    return { provider: null, rung: null, cause: null, reason: e ? e.message : null }
   }
+  const covered = policy.cartesiaCoversLanguage(code)
+  const cause = result.provider === 'cartesia'
+    ? 'a Cartesia voice is cast for it'
+    : covered
+      ? 'no Cartesia voice cast yet — casting, not coverage, is what is missing'
+      : 'Cartesia does not publish this language'
+  return { provider: result.provider, rung: result.rung ?? null, cause, reason: result.reason || null }
 }
 
 function statusFor ({ human, cartesiaCovers, filled, required, knownOnly = false }) {
@@ -968,4 +999,4 @@ async function cachedBuild (db, opts = {}) {
 /** The casting slots this registry knows about. 'phrase' is the default in the DB. */
 const SLOTS = Object.freeze(['phrase', 'guide'])
 
-module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, providerOfRole, providersInUse, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
+module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
