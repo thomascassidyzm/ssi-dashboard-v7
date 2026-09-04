@@ -31,7 +31,12 @@
           tap <strong>Settings</strong> on that message, turn on <strong>Allow from this source</strong>,
           and then press back. The install carries on from where it stopped. If you ever need to find
           that switch yourself, it lives in Settings → Apps → Special app access → Install unknown apps,
-          under the name of the app you downloaded with, usually Chrome.
+          under the name of the app you opened the file from — usually Chrome, or your phone's Files app.
+        </p>
+        <p>
+          Android may then offer to scan the app before it installs. Let it scan, and carry on when it
+          finishes. If it refuses to install the app outright, stop there and tell us what the message
+          said rather than working around it.
         </p>
       </div>
 
@@ -159,9 +164,12 @@ const formatTime = iso => {
   margin: 0 0 0.4rem;
 }
 .install-help p {
-  margin: 0;
+  margin: 0 0 0.75rem;
   line-height: 1.55;
   opacity: 0.85;
+}
+.install-help p:last-child {
+  margin-bottom: 0;
 }
 .provenance {
   margin-top: 1.5rem;
