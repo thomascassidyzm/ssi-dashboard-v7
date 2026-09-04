@@ -926,6 +926,9 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         continue
       }
       if (!quarry) continue
+      // THE SIZE OF THE SET, not what is left of it. The remainder is the
+      // roster's own tally, computed from this recordist's takes -- two numbers
+      // in two places, neither pretending to be the other.
       quarryStats = {
         courseCode,
         maxSeed: quarry.maxSeed,
@@ -940,6 +943,13 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       }
       const bucket = bucketKey(courseDialect(course), voice.gender)
       if (!byBucket.has(bucket)) byBucket.set(bucket, [])
+
+      // WHOSE VOICE FILLS EACH PIECE'S SLOT. A covering LEGO owns a row, and a
+      // take is linked into course_legos.target1_audio_id -- so the slot is the
+      // estate's own statement that this piece is done, and by whom. Resolved
+      // to a voice rather than left as "has audio", because a slot filled by
+      // somebody else is not this recordist's take (#378, 2026-09-03).
+      const pieceVoice = await audioVoicesById(db, quarry.pieces.map((p) => p.audioId))
 
       quarry.pieces.forEach((piece, i) => {
         byBucket.get(bucket).push({
@@ -970,6 +980,14 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           readStyle: piece.readStyle,
           quarrySource: piece.source,
           legoId: piece.legoId,
+          // A LEGO piece is scored BY ITS OWN SLOT, exactly as a seed is: the
+          // clip in that slot is what the splicer will reach for, so it is what
+          // "recorded" has to mean. Null -- never an empty array -- on a
+          // fallback WORD, which owns no row and is scored by clip identity
+          // instead. take-selection.cjs reads this and nothing else reads it.
+          slotFilledBy: piece.source === 'lego'
+            ? (piece.audioId ? [pieceVoice.get(piece.audioId) || null] : [])
+            : null,
           rerecordWanted: false,
         })
       })

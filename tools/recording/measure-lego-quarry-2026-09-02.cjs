@@ -64,14 +64,17 @@ ${'='.repeat(58)}
                         the aligner reads boundaries from pauses, and found 0 of 88
                         LEGO boundaries in natural-cadence Welsh)
 
-(c) A HUMAN MUST READ  ${s.quarryLegos} LEGOs, gapped, as the splice quarry
+(c) THE SET             ${s.quarryLegos} covering LEGOs, gapped, as the splice quarry
                        ${s.quarryFallbackWords} single words no LEGO covers -- the fallback, read too
                        ${s.quarryPieces} pieces in the quarry altogether
                        ${s.seedsWhole} seed sentences, whole, at natural speed
                        ${s.phrasesWithoutOwnClip} phrases have no whole recording of their own
 
-(d) ROUGHLY            the gapped quarry: ${mins(s.quarrySeconds)}
-                       the seed sentences: ${mins(s.seedSeconds)}
-                       -> ${s.lines} lines, ${mins(s.totalSeconds)} of reading in total
+    STILL TO READ      ${s.toRead.legos} LEGOs and ${s.toRead.words} words -- ${s.toRead.pieces} pieces
+                       ${s.toRead.seeds} seed sentences
+
+(d) ROUGHLY            the whole set: ${s.lines} lines, ${mins(s.totalSeconds)}
+                       (gapped quarry ${mins(s.quarrySeconds)}, seed sentences ${mins(s.seedSeconds)})
+                       still to read: ${s.toRead.lines} lines, ${mins(s.toRead.totalSeconds)}
 `)
 })().catch((e) => { console.error(e.message); process.exit(1) })

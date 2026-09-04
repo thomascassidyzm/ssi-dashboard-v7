@@ -23,6 +23,14 @@
  *     is ground truth that splice never has to touch.
  * Every piece this module returns carries `readStyle`, and the booth reads it.
  *
+ * THE SET IS A FIXED SIZE, AND IT DOES NOT SHRINK AS YOU READ IT (2026-09-03).
+ * Every covering LEGO and every fallback word is returned every time, each
+ * carrying `free`, `freeReason` and the `audioId` already in its slot. Free
+ * pieces used to be filtered out of `pieces` altogether, which meant a piece
+ * disappeared the instant it was recorded and the booth could only ever say
+ * "none recorded yet". Whether a clip counts as a given recordist's own take is
+ * decided in ONE place -- take-selection.cjs -- and never here.
+ *
  * WHAT COUNTS AS ALREADY-FREE, AND WHAT DOES NOT.
  *   - A unit with its own human clip is free, permanently. It is not splice
  *     material; it IS the teaching audio (Pool A, Kai's ruling 2026-08-21).
@@ -119,8 +127,9 @@ function indexInventory(inventory) {
  *        The measurement tool wants it; the queue does not pay for it, because
  *        no zzz course has a pod and the read costs a language-wide scan.
  * @returns {Promise<{courseCode, language, pieces, seeds, stats}|null>}
- *   `pieces` — the quarry, longest first: {key, text, knownText, words,
- *   source:'lego'|'word', legoId, readStyle:'gapped', free, freeReason}
+ *   `pieces` — the WHOLE quarry, longest first, free pieces included:
+ *   {key, text, knownText, words, source:'lego'|'word', legoId, audioId,
+ *   readStyle:'gapped', free, freeReason}
  *   `seeds`  — the whole natural reads: {seedId, seedNumber, text, knownText,
  *   readStyle:'natural', hasClip}
  */
@@ -145,8 +154,15 @@ async function buildLegoQuarry(db, courseCode, { maxSeed = DEFAULT_MAX_SEED, inc
       legoByKey.set(key, {
         key, text: l.target_text, knownText: l.known_text || null,
         words: words(key), audio: !!l.target1_audio_id, legoId: l.lego_id,
+        // WHICH clip fills the slot, not merely that one does. The queue needs
+        // the id so it can ask whose voice it is: a slot filled by somebody else
+        // is not this recordist's take (#378, 2026-09-03).
+        audioId: l.target1_audio_id || null,
       })
-    } else if (l.target1_audio_id) legoByKey.get(key).audio = true
+    } else if (l.target1_audio_id) {
+      legoByKey.get(key).audio = true
+      if (!legoByKey.get(key).audioId) legoByKey.get(key).audioId = l.target1_audio_id
+    }
   }
   const inventory = [...legoByKey.values()].sort((a, b) => b.words.length - a.words.length)
   const byFirstWord = indexInventory(inventory)
@@ -191,28 +207,55 @@ async function buildLegoQuarry(db, courseCode, { maxSeed = DEFAULT_MAX_SEED, inc
     }
   }
 
-  // ---- (c) what a human must actually read ----
-  const quarryKeys = coveringSet.filter((k) => !ownClip.has(k) && !fromPodAsRead.has(k))
-  const fallbackNeeded = [...fallbackWords]
-    .filter((w) => !ownClip.has(w) && !fromPodAsRead.has(w) && !legoByKey.has(w))
+  // ---- (c) THE SET IS THE SET. FREENESS IS A PROPERTY OF A PIECE, NEVER A
+  //          REASON TO DROP IT FROM THE LIST. ------------------------------
+  //
+  // This filtered the free pieces OUT, and that one line was the whole of the
+  // 2026-09-03 booth defect. The moment Tom read a chunk, the take was linked
+  // into course_legos.target1_audio_id, `ownClip` grew by one, and the piece
+  // VANISHED from the set — so his own screen said "none recorded yet · 130
+  // still to read" while 27 of his takes sat in the database, none of them
+  // listed under "what you've already recorded" and none of them countable.
+  // A set that shrinks as you read it cannot show progress: there is nothing
+  // left to mark done.
+  //
+  // So every covering LEGO and every fallback word is returned, always, each
+  // carrying whether it is already free and WHICH CLIP makes it so. Deciding
+  // whether that clip counts as THIS recordist's take is not this module's
+  // job — it belongs to the one resolver in take-selection.cjs, which is the
+  // only thing on the estate allowed to answer it.
+  const fallbackNeeded = [...fallbackWords].filter((w) => !legoByKey.has(w))
+
+  const freeReasonFor = (k) => (ownClip.has(k) ? 'own_clip' : (fromPodAsRead.has(k) ? 'pod_as_read' : null))
 
   // Longest first, so the hardest reads happen while the voice is fresh and the
   // single words are the easy tail (Tom's ordering, 2026-09-02).
   const pieces = [
-    ...quarryKeys.map((k) => {
+    ...coveringSet.map((k) => {
       const l = legoByKey.get(k)
+      const reason = freeReasonFor(k)
       return {
         key: k, text: l.text, knownText: l.knownText, words: l.words.length,
         source: 'lego', legoId: l.legoId, readStyle: 'gapped',
-        free: false, freeReason: null,
+        // The clip already in this LEGO's own slot, if any. Null is "empty".
+        audioId: l.audioId || null,
+        free: !!reason, freeReason: reason,
       }
     }),
     ...fallbackNeeded.map((w) => ({
       key: w, text: w, knownText: null, words: 1,
       source: 'word', legoId: null, readStyle: 'gapped',
+      // A span of a sentence owns no row, so it has no slot to be filled: a
+      // fallback word is only ever scored by clip identity.
+      audioId: null,
       free: false, freeReason: null,
     })),
   ].sort((a, b) => (b.words - a.words) || a.key.localeCompare(b.key))
+
+  // What is STILL TO READ, as its own set — the remainder, kept separately so
+  // the SIZE of the set and the PROGRESS through it are two different numbers
+  // in two different places, and neither has to shrink to express the other.
+  const toRead = pieces.filter((p) => !p.free)
 
   const seeds = seedRows
     .slice()
@@ -225,13 +268,24 @@ async function buildLegoQuarry(db, courseCode, { maxSeed = DEFAULT_MAX_SEED, inc
     .filter((s) => s.text)
 
   // ---- (d) how long ----
-  const quarryWords = pieces.reduce((n, p) => n + p.words, 0)
-  const quarryCuts = pieces.reduce((n, p) => n + Math.max(0, p.words - 1), 0)
-  const quarrySec = pieces.length * SETUP_PER_LINE_SEC +
-    (quarryWords / WORDS_PER_SEC_NATURAL) * GAPPED_SLOWDOWN + quarryCuts * PAUSE_PER_CUT_SEC
-  const seedsWhole = seeds.filter((s) => !s.hasClip)
-  const seedWords = seedsWhole.reduce((n, s) => n + words(s.text).length, 0)
-  const seedSec = seedsWhole.length * SETUP_PER_LINE_SEC + seedWords / WORDS_PER_SEC_NATURAL
+  //
+  // Measured over the WHOLE SET, not over what is left. "The minimal set --
+  // 198 lines, about 13 minutes" is how big the job is, and it is the number a
+  // person uses to choose a seed ceiling; it must not move because somebody has
+  // started. The remainder is `stats.toRead`, and the recordist's own screen
+  // says how far through they are from their own takes rather than from here.
+  const timeFor = (quarryPieces, seedLines) => {
+    const w = quarryPieces.reduce((n, p) => n + p.words, 0)
+    const cuts = quarryPieces.reduce((n, p) => n + Math.max(0, p.words - 1), 0)
+    const qSec = quarryPieces.length * SETUP_PER_LINE_SEC +
+      (w / WORDS_PER_SEC_NATURAL) * GAPPED_SLOWDOWN + cuts * PAUSE_PER_CUT_SEC
+    const sWords = seedLines.reduce((n, s) => n + words(s.text).length, 0)
+    const sSec = seedLines.length * SETUP_PER_LINE_SEC + sWords / WORDS_PER_SEC_NATURAL
+    return { quarrySeconds: Math.round(qSec), seedSeconds: Math.round(sSec), totalSeconds: Math.round(qSec + sSec) }
+  }
+  const seedsUnread = seeds.filter((s) => !s.hasClip)
+  const whole = timeFor(pieces, seeds)
+  const left = timeFor(toRead, seedsUnread)
 
   return {
     courseCode, language, maxSeed, pieces, seeds,
@@ -246,15 +300,27 @@ async function buildLegoQuarry(db, courseCode, { maxSeed = DEFAULT_MAX_SEED, inc
       ownClip: ownClip.size,
       fromPodAsRead: fromPodAsRead.size,
       podChoppable,
-      quarryLegos: quarryKeys.length,
+      quarryLegos: coveringSet.length,
       quarryFallbackWords: fallbackNeeded.length,
       quarryPieces: pieces.length,
-      seedsWhole: seedsWhole.length,
+      seedsWhole: seeds.length,
       phrasesWithoutOwnClip: phrases.filter((p) => !p.target1_audio_id).length,
-      lines: pieces.length + seedsWhole.length,
-      quarrySeconds: Math.round(quarrySec),
-      seedSeconds: Math.round(seedSec),
-      totalSeconds: Math.round(quarrySec + seedSec),
+      lines: pieces.length + seeds.length,
+      quarrySeconds: whole.quarrySeconds,
+      seedSeconds: whole.seedSeconds,
+      totalSeconds: whole.totalSeconds,
+      // THE REMAINDER, for anything that reports the reading burden rather than
+      // the size of the set -- the measurement tool's section (c) and (d).
+      toRead: {
+        legos: toRead.filter((p) => p.source === 'lego').length,
+        words: toRead.filter((p) => p.source === 'word').length,
+        pieces: toRead.length,
+        seeds: seedsUnread.length,
+        lines: toRead.length + seedsUnread.length,
+        quarrySeconds: left.quarrySeconds,
+        seedSeconds: left.seedSeconds,
+        totalSeconds: left.totalSeconds,
+      },
     },
   }
 }

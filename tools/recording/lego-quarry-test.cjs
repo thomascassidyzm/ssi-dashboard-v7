@@ -74,8 +74,22 @@ function stubDb(tables) {
   }), 'zzz_x_for_eng', { maxSeed: 5 })
 
   // Seed 9's LEGO is above the ceiling and must not appear anywhere.
-  check('seed ceiling excludes later LEGOs', q.pieces.map((p) => p.key), ['me gusta', 'bailar'])
-  // 'mucho' already has its own human clip: free, permanently, and NOT quarry.
+  check('seed ceiling excludes later LEGOs', q.pieces.map((p) => p.key).includes('luego'), false)
+  // THE SET DOES NOT SHRINK AS YOU READ IT (2026-09-03). 'mucho' already has its
+  // own human clip, so it is FREE -- and it is still a piece of the set, marked
+  // free and carrying the clip that makes it so. It used to be filtered out of
+  // `pieces` entirely, and that is the whole of the booth defect Tom found: the
+  // moment he read a chunk it vanished, so his screen could only ever say "none
+  // recorded yet" with nothing left to mark done.
+  check('a free piece stays in the set', q.pieces.map((p) => p.key), ['me gusta', 'bailar', 'mucho'])
+  check('a free piece says it is free', q.pieces.find((p) => p.key === 'mucho').free, true)
+  check('a free piece names the clip that fills its slot', q.pieces.find((p) => p.key === 'mucho').audioId, 'clip-1')
+  check('an unread piece is not free', q.pieces.find((p) => p.key === 'me gusta').free, false)
+  // A fallback WORD owns no row, so it never has a slot to be filled.
+  check('a fallback word has no slot', q.pieces.find((p) => p.key === 'bailar').audioId, null)
+  // The size of the set and the reading burden are two numbers, in two places.
+  check('stats size the whole set', q.stats.quarryPieces, 3)
+  check('stats also carry what is left', q.stats.toRead.pieces, 2)
   check('a LEGO with its own clip is free', q.stats.ownClip, 1)
   // The uncovered word is read too — words are the fallback, not free.
   check('fallback word is a quarry piece', q.pieces.find((p) => p.key === 'bailar').source, 'word')

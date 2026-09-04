@@ -63,6 +63,26 @@ test.describe('lineHasTake', () => {
     assert.strictEqual(lineHasTake(filled, { recordedKeys: new Set(), spellings }), true)
     assert.strictEqual(lineHasTake(partial, { recordedKeys: new Set(), spellings }), false)
   })
+
+  // 2026-09-03. A MINIMAL-SET LEGO is scored by its own slot, exactly as a seed
+  // is, because course_legos.target1_audio_id is what the splicer will reach
+  // for. Tom's booth said "none recorded yet · 130 still to read" over 27 of his
+  // own takes; these four cases are the shape of that bug.
+  test('scores a minimal-set LEGO by its own slot', () => {
+    const mine = { kind: 'quarry', quarrySource: 'lego', text: 'esta tarde', slotFilledBy: ['human_aran_cym_n'] }
+    const empty = { kind: 'quarry', quarrySource: 'lego', text: 'esta tarde', slotFilledBy: [] }
+    const theirs = { kind: 'quarry', quarrySource: 'lego', text: 'esta tarde', slotFilledBy: ['human_catrinlliar_cym_n'] }
+    assert.strictEqual(lineHasTake(mine, { recordedKeys: new Set(), spellings }), true)
+    assert.strictEqual(lineHasTake(empty, { recordedKeys: new Set(), spellings }), false)
+    // A slot filled by somebody else is not this recordist's take (#378).
+    assert.strictEqual(lineHasTake(theirs, { recordedKeys: new Set(['esta tarde']), spellings }), false)
+  })
+
+  test('scores a minimal-set WORD by clip identity, because it owns no slot', () => {
+    const word = { kind: 'quarry', quarrySource: 'word', text: 'tarde', slotFilledBy: null }
+    assert.strictEqual(lineHasTake(word, { recordedKeys: new Set(['tarde']), spellings }), true)
+    assert.strictEqual(lineHasTake(word, { recordedKeys: new Set(), spellings }), false)
+  })
 })
 
 test.describe('countsAsRecorded', () => {

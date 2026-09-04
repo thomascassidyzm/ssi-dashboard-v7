@@ -60,12 +60,22 @@ const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
  */
 function lineHasTake(line, { recordedKeys, spellings }) {
   if (!line) return false
-  // A SEED line is scored by its own SLOT, never by "a clip of this text
-  // exists": the known-side line is filed under the course's KNOWN language and
-  // a seed's target1 and target2 are two slots holding the same words.
-  if (line.kind === 'seed') {
-    const filled = line.seedFilledBy || []
-    return filled.length > 0 && filled.every((v) => v && spellings.includes(v))
+  // SCORED BY ITS OWN SLOT — one branch, two kinds of line, and the list of
+  // filled voices is the only thing either of them hands over.
+  //
+  // A SEED line, never by "a clip of this text exists": the known-side line is
+  // filed under the course's KNOWN language and a seed's target1 and target2
+  // are two slots holding the same words.
+  //
+  // A MINIMAL-SET LEGO, for the same reason and one more (2026-09-03). A take
+  // of a covering LEGO is linked into course_legos.target1_audio_id, and that
+  // slot is what the splicer will reach for — so the slot is what "recorded"
+  // has to mean, or the booth would say a piece was done while the splicer
+  // still had nothing to cut. A fallback WORD owns no row, hands over `null`
+  // rather than a list, and falls through to clip identity below.
+  const slot = line.slotFilledBy != null ? line.slotFilledBy : (line.kind === 'seed' ? line.seedFilledBy : null)
+  if (slot) {
+    return slot.length > 0 && slot.every((v) => v && spellings.includes(v))
   }
   if (audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))) return true
   // ANY copy of a collapsed line being filled by this voice is enough: the
