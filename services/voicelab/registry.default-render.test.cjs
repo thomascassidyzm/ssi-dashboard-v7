@@ -16,7 +16,7 @@ const { providerDefaultFor } = require('./registry.cjs')
 test('a Cartesia-published language falls to Azure, and says casting is what is missing', () => {
   const r = providerDefaultFor('fra')
   assert.equal(r.provider, 'azure')
-  assert.match(r.cause, /no Cartesia voice cast yet/)
+  assert.match(r.cause, /no Cartesia voice cast/)
   assert.match(r.reason, /no Cartesia voice is cast for it/)
   assert.equal(r.rung, 3)
 })
@@ -24,7 +24,7 @@ test('a Cartesia-published language falls to Azure, and says casting is what is 
 test('a language Cartesia does not publish says exactly that instead', () => {
   const r = providerDefaultFor('gle')
   assert.equal(r.provider, 'azure')
-  assert.match(r.cause, /does not publish/)
+  assert.match(r.cause, /does not cover/)
 })
 
 test('a human-recorded language is an answer, not a failure', () => {
@@ -38,6 +38,6 @@ test('the provider is never a hardcoded word — it is whatever the policy says'
   // change with it. The point of the test is that the cause tracks the answer.
   const r = providerDefaultFor('eng')
   assert.ok(['azure', 'cartesia'].includes(r.provider))
-  if (r.provider === 'cartesia') assert.match(r.cause, /Cartesia voice is cast/)
-  else assert.match(r.cause, /no Cartesia voice cast yet/)
+  if (r.provider === 'cartesia') assert.match(r.cause, /a Cartesia voice is cast/)
+  else assert.match(r.cause, /no Cartesia voice cast/)
 })

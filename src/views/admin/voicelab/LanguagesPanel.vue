@@ -2587,13 +2587,12 @@ function candidatesFor (lang, slot) {
 
 /* IF RE-RENDERED: the provider, then the cause underneath it in a quieter ink.
    The full policy sentence is on the hover of the cause. */
-.vl-default { white-space: normal; }
+.vl-default { white-space: nowrap; }
 .vl-default-provider { display: block; color: var(--ink); }
 .vl-default-cause {
   display: block;
   font-size: var(--text-xs);
   color: var(--faint);
-  max-width: 22rem;
   cursor: help;
 }
 

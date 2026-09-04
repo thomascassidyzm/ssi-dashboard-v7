@@ -841,16 +841,19 @@ function providerDefaultFor (code) {
     // The policy throws for human-voice content. That is a real answer, not a
     // failure, so it is reported as one.
     if (e && e.code === 'HUMAN_VOICE') {
-      return { provider: 'human', rung: null, cause: 'human-recorded — no TTS provider, ever', reason: e.message }
+      return { provider: 'human', rung: null, cause: 'human-recorded — no TTS', reason: e.message }
     }
     return { provider: null, rung: null, cause: null, reason: e ? e.message : null }
   }
   const covered = policy.cartesiaCoversLanguage(code)
+  // SHORT ENOUGH TO SIT ON ONE LINE. The cause repeats on ~80 rows, so a
+  // sentence here costs three lines of row height eighty times over and buries
+  // the table. The full policy sentence rides along in `reason`, on the hover.
   const cause = result.provider === 'cartesia'
-    ? 'a Cartesia voice is cast for it'
+    ? 'a Cartesia voice is cast'
     : covered
-      ? 'no Cartesia voice cast yet — casting, not coverage, is what is missing'
-      : 'Cartesia does not publish this language'
+      ? 'no Cartesia voice cast'
+      : 'Cartesia does not cover it'
   return { provider: result.provider, rung: result.rung ?? null, cause, reason: result.reason || null }
 }
 
