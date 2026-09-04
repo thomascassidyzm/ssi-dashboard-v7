@@ -64,6 +64,17 @@ describe('RecordistRoster — the sectioned grid', () => {
     for (const t of w.findAll('.tick')) expect(t.element.tagName).toBe('BUTTON')
   })
 
+  it('a mark carries NO title — the browser must not draw the line a second time', () => {
+    const w = mountRoster()
+    // A `title` put the OS tooltip over the grid with exactly the words the
+    // slot was already showing: the same sentence twice in one eyeful, one
+    // copy in a box we cannot place, style or dismiss (Tom's screenshot,
+    // 2026-09-04). The words stay on the mark for a screen reader, where they
+    // draw nothing.
+    for (const t of w.findAll('.tick')) expect(t.attributes('title')).toBeUndefined()
+    expect(w.findAll('.tick')[0].attributes('aria-label')).toBe('Bore da, Sarah! — recorded')
+  })
+
   it('tapping a mark shows that line in the one slot, never inside a grid', async () => {
     const w = mountRoster()
     // The slot is there before anything is selected — that is what stops the
@@ -92,7 +103,8 @@ describe('RecordistRoster — the sectioned grid', () => {
     // or the square he tapped stops looking selected — so it is stripped out
     // and everything else must be identical.
     const shape = () => w.findAll('.strip').map(s =>
-      [...s.element.children].map(n => `${n.tagName}:${n.className.replace(' on', '')}:${n.title}`))
+      [...s.element.children].map(n =>
+        `${n.tagName}:${n.className.replace(' on', '')}:${n.getAttribute('aria-label')}`))
     const before = shape()
     await w.findAll('.strip')[1].findAll('.tick')[0].trigger('click')
     expect(shape()).toEqual(before)

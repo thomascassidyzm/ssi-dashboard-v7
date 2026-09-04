@@ -83,14 +83,20 @@
              there is no hover at all — the seed grid's own tooltip
              (components/generation/SeedProgressGrid.vue) is mouse-tracked and
              would never open under a thumb. Hover is kept as the desktop
-             nicety it is: it previews, tap decides. -->
+             nicety it is: it previews IN THE SLOT, tap decides.
+             AND THERE IS NO `title` ON A MARK. There was, and on a desktop it
+             drew the browser's own tooltip over the grid saying exactly the
+             words the slot was already showing — the same Welsh sentence twice
+             in one eyeful, one copy in an unstyled OS box we cannot place,
+             style or dismiss (Tom's screenshot, 2026-09-04). `aria-label`
+             carries the same words for a screen reader and draws nothing,
+             which is the whole difference. -->
         <div class="strip">
           <button
             v-for="r in s.rows" :key="r.id"
             type="button"
             class="tick"
             :class="{ done: r.done, on: peekId === r.id }"
-            :title="r.text"
             :aria-label="`${r.text} — ${r.done ? 'recorded' : 'not recorded'}`"
             @mouseenter="hoverId = r.id"
             @mouseleave="hoverId === r.id && (hoverId = null)"
