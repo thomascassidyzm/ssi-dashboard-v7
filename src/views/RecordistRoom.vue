@@ -159,27 +159,49 @@
           autocomplete="off"
         />
         <p v-if="recordedFilter && !alreadyRecordedShown.length" class="listen-note">Nothing matches “{{ recordedFilter }}”.</p>
-        <ul>
-          <li v-for="l in alreadyRecordedShown" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
-            <div class="listen-row">
-              <span class="listen-text"><span class="listen-kind">{{ kindWords(l) }}</span>{{ plainText(l.text) }}</span>
-              <div class="listen-actions">
-                <StoredTakeButton
-                  :stored-url="storedUrlFor(l.id)"
-                  :allow-local="false"
-                  :is-playing="playingId === l.id"
-                  @toggle="togglePlay(l.id)"
-                />
-                <button class="cmp-btn" :class="{ open: comparingId === l.id }" type="button" @click="toggleCompare(l.id)">
-                  {{ comparingId === l.id ? 'Hide' : 'Compare' }}
-                </button>
+        <!-- THE SAME SECTIONS AS THE QUEUE, SHUT UNTIL HE OPENS ONE. Tap is the
+             only affordance — the heading IS the button — because the artists
+             work on phones with a thumb and there is no hover, no drag and no
+             long-press here. A section with nothing recorded in it is not drawn
+             at all, and while he is searching the sections holding matches open
+             themselves: a hit hidden inside a shut section is worse than no
+             filter. -->
+        <div v-for="s in recordedSectionList" :key="s.key" class="listen-sec">
+          <button
+            type="button"
+            class="listen-sec-head"
+            :aria-expanded="isRecordedSectionOpen(s) ? 'true' : 'false'"
+            @click="toggleRecordedSection(s.key)"
+          >
+            <span class="lsh-mark" aria-hidden="true">{{ isRecordedSectionOpen(s) ? '–' : '+' }}</span>
+            <span class="lsh-count">{{ s.count }}</span>
+            <span class="lsh-name">{{ s.heading }}</span>
+          </button>
+          <ul v-if="isRecordedSectionOpen(s)">
+            <li v-for="l in s.rows" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
+              <div class="listen-row">
+                <!-- The category word is NOT repeated on the row any more: it is
+                     the heading directly above it, on every row of the section.
+                     kindWords() stays — the filter still matches on it. -->
+                <span class="listen-text">{{ plainText(l.text) }}</span>
+                <div class="listen-actions">
+                  <StoredTakeButton
+                    :stored-url="storedUrlFor(l.id)"
+                    :allow-local="false"
+                    :is-playing="playingId === l.id"
+                    @toggle="togglePlay(l.id)"
+                  />
+                  <button class="cmp-btn" :class="{ open: comparingId === l.id }" type="button" @click="toggleCompare(l.id)">
+                    {{ comparingId === l.id ? 'Hide' : 'Compare' }}
+                  </button>
+                </div>
               </div>
-            </div>
-            <!-- Mounted only on demand: the raw side costs an S3 HEAD per line,
-                 and Catrin's queue is 276 lines long. -->
-            <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
-          </li>
-        </ul>
+              <!-- Mounted only on demand: the raw side costs an S3 HEAD per line,
+                   and Catrin's queue is 276 lines long. -->
+              <RawVsProcessed v-if="comparingId === l.id" :voice-id="voiceId" :line-id="l.id" />
+            </li>
+          </ul>
+        </div>
         <p v-if="playbackError" class="note error">{{ playbackError }}</p>
       </div>
 
@@ -486,6 +508,7 @@ import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import RecordistRoster from './recordist/RecordistRoster.vue'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
+import { recordedSections } from './recordist/recorded-sections.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -1218,12 +1241,42 @@ function kindWords(l) {
 // category, so "minimal" narrows to the chunks.
 const RECORDED_FILTER_THRESHOLD = 8
 const recordedFilter = ref('')
+// The words AND the category, so "senedd" narrows to the Senedd lines and
+// "minimal" to the chunks. One function, used by the grouping below and by the
+// "nothing matches" line, so a filter can never find a row the list then fails
+// to draw.
+function recordedMatches(l, q) {
+  return plainText(l.text).toLowerCase().includes(q) || kindWords(l).toLowerCase().includes(q)
+}
 const alreadyRecordedShown = computed(() => {
   const q = recordedFilter.value.trim().toLowerCase()
   if (!q) return alreadyRecorded.value
-  return alreadyRecorded.value.filter(l =>
-    plainText(l.text).toLowerCase().includes(q) || kindWords(l).toLowerCase().includes(q))
+  return alreadyRecorded.value.filter(l => recordedMatches(l, q))
 })
+// GROUPED LIKE THE QUEUE, AND FROM THE QUEUE'S OWN NAMES. Tom, 2026-09-04: "it
+// would be great if Aran could see the lines already recorded by expandable
+// section". The headings come from kindWords() and the ORDER comes from
+// rosterSections — the queue's own computed — rather than from a second copy of
+// the strings living down here, because a second copy is how the two halves of
+// this screen would come to disagree.
+const recordedSectionList = computed(() => recordedSections(alreadyRecorded.value, {
+  headingFor: kindWords,
+  order: rosterSections.value.map(s => s.heading),
+  filter: recordedFilter.value,
+  matchRow: recordedMatches,
+}))
+// ALL SHUT WHEN HE LANDS. The point of the sections is that the settings panel
+// is SHORT: 168 rows under a heading he has not asked to open is the flat list
+// again with extra steps. His own taps are remembered while the page is open,
+// so clearing a search puts the panel back the way he left it rather than
+// slamming everything shut underneath him.
+const openRecordedSections = ref(new Set())
+function isRecordedSectionOpen(s) { return s.forceOpen || openRecordedSections.value.has(s.key) }
+function toggleRecordedSection(key) {
+  const next = new Set(openRecordedSections.value)
+  if (next.has(key)) next.delete(key); else next.add(key)
+  openRecordedSections.value = next
+}
 const sessionLines = computed(() =>
   sessionIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean)
 )
@@ -2182,6 +2235,22 @@ kbd {
   display: inline-block; margin-right: 0.5rem; font-size: 0.62rem;
   letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.55;
 }
+/* A SECTION OF THE ALREADY-RECORDED LIST. The whole heading is the tap target
+   and it is a full-width button, sized for a thumb — count first then name, the
+   same shape the queue's own section map uses, so the two halves of the screen
+   read as one design. */
+.listen-sec { margin: 0 0 0.5rem; }
+.listen-sec-head {
+  display: flex; align-items: center; gap: 0.6rem; width: 100%; text-align: left;
+  font-family: 'Josefin Sans', sans-serif; color: var(--color-paper, #f7f7f2);
+  background: rgba(255, 255, 255, 0.06); border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 8px; padding: 0.55rem 0.7rem; min-height: 44px; cursor: pointer;
+}
+.listen-sec-head[aria-expanded="true"] { background: rgba(255, 255, 255, 0.1); }
+.lsh-mark { font-size: 1rem; opacity: 0.7; width: 0.9rem; text-align: center; }
+.lsh-count { font-size: 1rem; font-weight: 700; min-width: 1.8rem; }
+.lsh-name { font-size: 0.85rem; letter-spacing: 0.04em; }
+.listen-sec ul { margin-top: 0.5rem; }
 .listen-back ul, .redo-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
 .listen-back li {
   display: flex; align-items: center; gap: 0.75rem; justify-content: space-between;
