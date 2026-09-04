@@ -256,6 +256,8 @@ const isUsers = computed(() => route.path === '/users')
 const isJobs = computed(() => route.path === '/jobs')
 const isMaintenance = computed(() => route.path === '/maintenance')
 const isInsights = computed(() => route.path === '/insights')
+// Test builds — an admin function (what it does), not a personal-account one.
+const isBuilds = computed(() => route.path === '/builds')
 const isAdminHub = computed(() => route.path === '/admin')
 const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
 
@@ -270,7 +272,7 @@ const isCourseSection = computed(() =>
 
 // The Admin section groups platform-wide tooling under one tab row.
 const isAdminSection = computed(() =>
-  route.path.startsWith('/admin') || isStocktake.value || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value
+  route.path.startsWith('/admin') || isStocktake.value || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value || isBuilds.value
 )
 
 // Show the course-count chip only on the Courses library.
@@ -342,6 +344,14 @@ const sectionTabs = computed(() => {
         label: 'Recording',
         to: '/admin/recording',
         active: route.path.startsWith('/admin/recording')
+      },
+      {
+        // Test builds (2026-09-04). Filed by what it does, not by who you are:
+        // it was reachable only from the avatar menu, which is the personal
+        // account menu. Installing the Android test build is an admin job.
+        label: 'Test builds',
+        to: '/builds',
+        active: isBuilds.value
       },
       { label: 'Stock-take', to: '/stocktake', active: false }
     ]
