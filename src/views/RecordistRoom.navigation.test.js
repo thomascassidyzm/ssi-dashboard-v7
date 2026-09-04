@@ -28,7 +28,17 @@ const queueTake = vi.fn()
 const savedTakes = vi.hoisted(() => new Map())
 
 vi.mock('@/composables/useRecordistQueue', () => ({
+  // The component renders this as an attribute on its root element, so a mock
+  // of this module that omits it makes every mount in the file throw. That is
+  // what took all four RecordistRoom suites red on 2026-09-03 -- 26 tests, the
+  // whole of this component's mount coverage, silently gone.
+  DURABLE_TAKES_FEATURE: 'durable-take-store-2026-09-03',
   useRecordistQueue: () => ({
+    // The durable take store, landed 2026-09-03. Every one of these is read by
+    // the component, so a mock missing them throws on render rather than
+    // failing an assertion -- which is how the drift stayed invisible.
+    persistent: ref(true), carriedOverCount: ref(0), refusedCount: ref(0),
+    isUnsent: () => false, attach: vi.fn(), teardown: vi.fn(),
     queueTake: (take) => { savedTakes.set(take.lineId, true); return queueTake(take) },
     markFailed: vi.fn(),
     pendingCount: ref(0), savedCount: ref(0), failedCount: ref(0),

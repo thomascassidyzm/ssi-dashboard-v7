@@ -18,12 +18,15 @@
  * raw tap, a MacBook's built-in wants the device's own voice chain — so one
  * remembered value spanning both is wrong by construction. Remembering per mic
  * makes the memory mean what a person means when they set it, and the room
- * still draws its "this is not the usual setting on this device" warning
- * whenever a restored profile differs from the device's own recommendation, so
- * a stale choice can never again be invisible.
+ * still draws its "not the usual setting" warning whenever a restored profile
+ * differs from the recommendation, so a stale choice can never be invisible.
+ *
+ * This is also what carries Aran's Snowball case now that the recommendation is
+ * the voice chain everywhere (Tom, 2026-09-04): one tick on that microphone is
+ * permanent for that microphone and reaches no other artist and no other mic.
  *
  * A MIC THIS ARTIST HAS NEVER USED HERE INHERITS NOTHING. It starts from the
- * device-aware default (resolveCaptureProfile), which is the honest answer:
+ * recommended default (resolveCaptureProfile), which is the honest answer:
  * we have no evidence about a microphone we have never recorded through.
  *
  * Everything here is pure and synchronous. localStorage throws in private mode

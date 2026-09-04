@@ -1,26 +1,28 @@
 // @vitest-environment jsdom
 
-// The raw-microphone toggle is a per-session diagnostic, and nothing else.
+// The capture profile is REMEMBERED, per artist and per microphone.
 //
-// It used to be remembered in localStorage. Measured on Tom's 2026-09-02
-// session, that is what a remembered value costs: the desktop opened the room
-// already on the raw tap and recorded seven takes at -18.9 dBFS raw peak
+// It was not, for one day, and these tests pinned that. The history is worth
+// keeping because it is why the memory has the shape it has. A flat
+// `recordist.captureProfile` key pinned a whole BROWSER to whatever had last
+// been ticked: measured on Tom's 2026-09-02 session, the desktop opened the
+// room already on the raw tap and recorded seven takes at -18.9 dBFS raw peak
 // against the phone's -2.5 dBFS four minutes later, and he read the 16 dB as a
-// desktop-versus-phone difference because nothing on screen said otherwise.
+// desktop-versus-phone difference because nothing on screen said otherwise. The
+// answer at the time was to stop remembering.
 //
-// So: the room always opens on WHAT THIS DEVICE SHOULD HAVE, a legacy stored
-// value is cleared rather than honoured, and while the room is on something
-// other than that it says so in words. All three are load-bearing — the first
-// is the fix, the second is what unsticks the browsers already carrying the
-// key, and the third is what stops the next recordist arming something and
-// forgetting.
+// Tom, 2026-09-03, having then had to set it again every time he opened the
+// room: persist it. The fault was never memory — it was that the memory was
+// device-blind. A capture profile is a fact about a MICROPHONE, so it is keyed
+// per microphone, and a mic never used here inherits nothing. The safety the
+// removal was reaching for is kept by the OTHER half of the original fix, which
+// is untouched and asserted below: while the room is on something other than
+// the recommendation, it says so in words on screen.
 //
-// "Should have" stopped being a constant on 2026-09-03: a phone or a Safari
-// device gets the voice chain, a desktop browser that is not Safari gets the
-// raw tap, because Aran's Chrome-on-ChromeOS takes through the voice chain came
-// back dead above 16 kHz. The invariant these tests exist for is unchanged —
-// nothing is remembered, nothing is written back — so it is now asserted
-// against resolveCaptureProfile() rather than against the word "voice".
+// The recommendation itself is now the voice chain everywhere (Tom, 2026-09-04,
+// settled by ear on a MacBook Air built-in mic with the AC running), so a
+// legacy stored key is still cleared rather than honoured — it belongs to a
+// scheme that no longer exists.
 
 import { describe, it, expect, beforeEach, vi } from 'vitest'
 import { mount, flushPromises } from '@vue/test-utils'
@@ -59,30 +61,53 @@ const mountRoom = async () => {
   return w
 }
 
-describe('the raw-microphone toggle does not survive the session', () => {
-  it('opens on what this device should have, with nothing stored', async () => {
+describe('the capture profile is remembered, per artist and per microphone', () => {
+  it('opens on the recommendation, with nothing stored', async () => {
     const w = await mountRoom()
     expect(w.vm.captureProfile).toBe(resolveCaptureProfile())
+    expect(resolveCaptureProfile()).toBe('voice')
   })
 
-  it('does not honour a stored preference, and clears it', async () => {
-    // The opposite of whatever this device should have, so the assertion is a
-    // real one on every device the suite might run on.
-    const other = resolveCaptureProfile() === 'dry' ? 'voice' : 'dry'
-    localStorage.setItem('recordist.captureProfile', other)
+  it('clears the legacy flat key rather than honouring it', async () => {
+    // It belongs to a scheme that no longer exists: one value for a whole
+    // browser, spanning every microphone. Honouring it is exactly the bug.
+    localStorage.setItem('recordist.captureProfile', 'dry')
     const w = await mountRoom()
     expect(w.vm.captureProfile).toBe(resolveCaptureProfile())
     expect(localStorage.getItem('recordist.captureProfile')).toBe(null)
   })
 
-  it('never writes the key back, however the toggle is moved', async () => {
+  it('remembers the toggle, so the room is as it was left', async () => {
     const w = await mountRoom()
-    w.vm.captureProfile = w.vm.captureProfile === 'dry' ? 'voice' : 'dry'
+    w.vm.captureProfile = 'dry'
     await flushPromises()
-    // the read-back proves the toggle actually moved, so the null below is a
-    // real absence of a write rather than a setter that quietly did nothing
-    expect(w.vm.captureProfile).not.toBe(resolveCaptureProfile())
-    expect(localStorage.getItem('recordist.captureProfile')).toBe(null)
-    expect(localStorage.getItem('recordist.captureProfile.v2')).toBe(null)
+    const stored = JSON.parse(localStorage.getItem('recordist.booth.v1'))
+    const mine = stored.human_tom_zzz.byDevice[stored.human_tom_zzz.lastMicKey]
+    expect(mine.captureProfile).toBe('dry')
+
+    const again = await mountRoom()
+    expect(again.vm.captureProfile).toBe('dry')
+  })
+
+  it('is visibly different from the recommendation whenever it differs', async () => {
+    // The half of the 2026-09-02 fix that is load-bearing forever: a remembered
+    // choice must never be an invisible one. The template draws `.dry-warning`
+    // off exactly this comparison (`captureProfile !== recommendedProfile`);
+    // this asserts the comparison rather than the element because the warning
+    // lives inside the ready-phase card and this suite never loads a queue.
+    const w = await mountRoom()
+    expect(w.vm.recommendedProfile).toBe('voice')
+    expect(w.vm.captureProfile).toBe(w.vm.recommendedProfile)
+    w.vm.captureProfile = 'dry'
+    await flushPromises()
+    expect(w.vm.captureProfile).not.toBe(w.vm.recommendedProfile)
+  })
+
+  it("one artist's memory is not another's", async () => {
+    const w = await mountRoom()
+    w.vm.captureProfile = 'dry'
+    await flushPromises()
+    const stored = JSON.parse(localStorage.getItem('recordist.booth.v1'))
+    expect(Object.keys(stored)).toEqual(['human_tom_zzz'])
   })
 })

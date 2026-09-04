@@ -126,15 +126,15 @@
         <input type="checkbox" :checked="captureProfile === 'dry'"
                @change="captureProfile = $event.target.checked ? 'dry' : 'voice'" />
         <span><strong>Record the raw microphone</strong>
-          <small>On = the microphone exactly as it is, which is what a proper mic on a computer wants. Off = the
-            device cleans the sound up as it records, the way a voice note does, which is what a phone wants. It is
-            already set the way this device should be, and it goes back to that by itself next time you open this
-            room.</small></span>
+          <small>Off is right for almost everyone — the device cleans the sound up as it records, the way a voice
+            note does, and that is what a laptop or a phone microphone wants. Turn it on only for a proper studio
+            microphone. However you leave it, this room opens on it again next time, for this microphone.</small></span>
       </label>
+      <!-- A remembered choice must never be an invisible one. This is the half
+           of the 2026-09-02 fix that survives the return of persistence. -->
       <p v-if="captureProfile !== recommendedProfile" class="dry-warning">
-        {{ captureProfile === 'dry'
-          ? 'Raw microphone is on, and on this device that is not the usual setting. Takes may record much quieter than normal — turn it off unless you are deliberately measuring the room.'
-          : 'The device is cleaning the sound up, and on this device that is not the usual setting. It will take the top off the voice — turn it back on unless you are deliberately comparing the two.' }}
+        Raw microphone is on, which is not the usual setting. Unless you are on a proper studio microphone,
+        takes may record much quieter than normal — turn it off.
       </p>
 
       <label class="toggle-row">
@@ -516,19 +516,18 @@ const selectedDeviceId = ref(null)
 // mastered to a -62.7 dBFS floor. Same person, same room, four minutes apart.
 // He read it as a desktop-versus-phone difference. It was a stored preference.
 //
-// WHICH PROFILE IS THE DEFAULT IS THE DEVICE'S CALL (2026-09-03). A phone or a
-// Safari device starts on the voice chain, for exactly the reason above. A
-// desktop browser that is not Safari — where a voice artist with a real
-// microphone sits — starts on the raw tap, because Aran's 2026-09-03 takes
-// through Chrome's processing on a Blue Snowball came back dead above 16 kHz,
-// 12-15 dB down on his own takes on the same mic before the profile change.
-// Reasoning and measurements: useTapRecorder.js.
+// RAW OFF IS THE DEFAULT, EVERYWHERE (Tom, 2026-09-04, settled by ear on the
+// hard case — a MacBook Air built-in mic with the air conditioning running:
+// "Raw off, sounded great... so we are in good shape"). The user-agent
+// heuristic that briefly chose per platform is gone; the reasoning for its
+// removal, and for why Aran's Snowball finding is not lost by it, is in
+// useTapRecorder.js.
 //
-// AND IT IS REMEMBERED AGAIN — PER ARTIST AND PER MICROPHONE (Tom, 2026-09-03,
-// having had to set it again every time he opened the room). The old flat key
-// was device-blind, which is what made a stale tick dangerous; the whole
-// reasoning is in recordist/booth-settings.js. The stale key from before is
-// cleared on sight so no browser is still carrying one.
+// AND IT IS REMEMBERED — PER ARTIST AND PER MICROPHONE (Tom, 2026-09-03, having
+// had to set it again every time he opened the room). The old flat key was
+// device-blind, which is what made a stale tick dangerous; the whole reasoning
+// is in recordist/booth-settings.js. That stale key is cleared on sight so no
+// browser is still carrying one.
 const recommendedProfile = resolveCaptureProfile()
 const captureProfile = ref(recommendedProfile)
 try { localStorage.removeItem('recordist.captureProfile') } catch { /* private mode */ }

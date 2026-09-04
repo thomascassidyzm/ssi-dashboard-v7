@@ -137,52 +137,35 @@ export const CAPTURE_PROFILES = {
 }
 export const DEFAULT_CAPTURE_PROFILE = 'voice'
 
-// WHICH PROFILE A DEVICE SHOULD GET, DECIDED BY THE DEVICE (2026-09-03).
+// THE RECOMMENDED PROFILE IS THE VOICE CHAIN, EVERYWHERE (Tom, 2026-09-04).
 //
-// The 2026-08-22 ruling above stands exactly as written, and this does not
-// touch it: on WebKit `echoCancellation` picks the audio unit, `dry` means
-// RemoteIO with no gain stage at all, and a phone recording that way lands
-// tens of dB too quiet. Every WebKit device, and every phone, still gets the
-// voice chain.
+// Settled by ear, on the hard case: "Raw off, sounded great on my macbook air,
+// talking normally into the computer with AC in the background - so we are in
+// good shape." Built-in laptop mic, air conditioning, normal speaking voice —
+// and the device's own cleanup handled it. A verdict from the person whose ear
+// the whole estate is tuned to outranks a level measurement.
 //
-// What that ruling never covered is the case Aran is actually in. Measured
-// from his own takes (recording_provenance, 2026-09-03): a Blue Snowball on a
-// Chromebook, Chrome 151 on ChromeOS. There is no VoiceProcessingIO on that
-// path and no gain problem to solve — his raw takes arrive peaking at -4.8 to
-// -8.1 dBFS and -23.5 to -24.4 LUFS integrated, which is a healthy signal, so
-// the one thing the voice profile was adopted to buy is a thing he already
-// has. What it costs him is measurable: Chrome's WebRTC audio processing
-// module runs the capture through a 32 kHz internal path, and every take from
-// that session dies at ~15.7 kHz with nothing above 16 kHz at all. Against his
-// OWN takes on the SAME microphone from 2026-08-10, before the profile change,
-// through the identical 128 kbps LAME encoder: energy above 16 kHz sits 12-15
-// dB lower relative to the voice (-47 dB vs -33 dB), and the older files carry
-// real content all the way to 20 kHz. That is the top octave of a condenser
-// mic — the air on a voice — removed at capture, irreversibly, before the
-// archive is even written. Noise suppression and AGC on a treated read into a
-// real mic are the classic cause of a good take sounding thin and gated;
-// bandwidth loss you can put a number on, so that is the number quoted here.
+// SO THE DEVICE HEURISTIC IS GONE, AND ITS REMOVAL LOSES NOTHING. It existed
+// for one measured case: Aran's Blue Snowball through Chrome on ChromeOS, where
+// the voice chain's 32 kHz internal path killed everything above ~15.7 kHz —
+// 12-15 dB of air, against his own takes on the same mic before the change. The
+// finding stands; guessing at it from a user-agent string does not. A user
+// agent says which BROWSER is running, and the profile is a fact about a
+// MICROPHONE: the same Chrome on the same laptop is right for a Snowball and
+// wrong for the mic built into the lid. It got Tom's MacBook Air wrong for
+// exactly that reason.
 //
-// The split is therefore: WebKit or a phone -> voice (the gain staging is the
-// point, and on WebKit there is no other route to it). Anything else — a
-// desktop or laptop browser that is not Safari, which is where a voice artist
-// with a real microphone and an interface actually sits — -> dry.
+// What carries Aran's case instead is memory, not inference. The booth now
+// remembers the capture profile per artist AND per microphone
+// (src/views/recordist/booth-settings.js), so one tick on his Snowball is
+// permanent for that mic and reaches no other. Every other artist opens on the
+// chain that just passed the hard case, and nobody has to know what "raw" means
+// to get a usable take — which is the shape a feature is supposed to have.
 //
-// Deliberately NOT a control. The recordist surface gains nothing; this only
-// changes which profile it starts from.
-export function resolveCaptureProfile(userAgent) {
-  const ua = userAgent
-    || (typeof navigator !== 'undefined' && navigator.userAgent)
-    || ''
-  if (!ua) return DEFAULT_CAPTURE_PROFILE
-  // Anything hand-held reads at arm's length and wants the gain staging —
-  // including Chrome on Android, which is not WebKit but is still a phone.
-  if (/Mobi|Android|iPhone|iPad|iPod/i.test(ua)) return 'voice'
-  // Real WebKit (Safari), as opposed to every Chromium UA that also says
-  // "AppleWebKit". Chrome/Chromium/Edge/OPR all carry their own token.
-  const isWebKit = /AppleWebKit/i.test(ua) && !/Chrome|Chromium|Edg\/|OPR\//i.test(ua)
-  if (isWebKit) return 'voice'
-  return 'dry'
+// Deliberately NOT a control. This only decides which profile the room starts
+// from; the toggle is still there for anyone deliberately measuring a room.
+export function resolveCaptureProfile() {
+  return DEFAULT_CAPTURE_PROFILE
 }
 
 // Bitrate for the per-line encoder. Well above transparent for one mono voice
