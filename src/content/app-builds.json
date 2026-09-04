@@ -2,18 +2,18 @@
   "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first).",
   "builds": [
     {
-      "id": "android-9aca2328",
+      "id": "android-9b832acc",
       "platform": "android",
-      "label": "SSi Android wrapper — debug build (dev, 4 Sep 20:53)",
-      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-9aca2328-debug.apk",
-      "filename": "ssi-devwrap-9aca2328-debug.apk",
-      "bytes": 23299091,
-      "sha256": "18a506e8ea00c962cfb8d6955fca690697d9c5d002584b4c1718fd053a885548",
+      "label": "SSi Android wrapper — debug build (dev, 4 Sep 21:15)",
+      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-9b832acc-debug.apk",
+      "filename": "ssi-devwrap-9b832acc-debug.apk",
+      "bytes": 24176997,
+      "sha256": "e82570601851a1c391e0a77eb1e57b121110138b0f9fe555898716821bca3275",
       "repo": "ssi-learning-app",
       "branch": "dev",
-      "commit": "9aca2328",
-      "commitSubject": "verify(staleness): the line on screen in a Capacitor-shaped WebView, both ways",
-      "builtAt": "2026-09-04T19:53:15Z",
+      "commit": "9b832acc",
+      "commitSubject": "docs(android): name the rule, not the sha",
+      "builtAt": "2026-09-04T20:15:36Z",
       "applicationId": "com.saysomethingin.devwrap",
       "appName": "SSi (dev wrap)",
       "versionName": "1.0",
@@ -21,7 +21,7 @@
       "targetSdk": 36,
       "minSdk": 24,
       "buildType": "debug",
-      "provenanceNote": "Cut from dev 9aca2328 — so it carries tonight's belt-panel display grammar and the fast-path position authority (bb0dffd8, absent from every earlier APK) as well as this build's own change: the app can now tell you it is out of date. After installing, the Settings build row reads local-9aca232 with 4 Sept 2026, 20:53 beside it, and the API host ssi-learning-app-git-dev-zenjin.vercel.app on a quiet second line. Web assets stay BUNDLED into the APK by design — offline-first — so 'Tap to update' still cannot fetch new web code and only a new APK can; what is new is that the app now says so, in one quiet line under the build row, and only when it can prove from the live deployment's build time that it is genuinely behind. sha256 verified against the bytes downloaded back out of the bucket."
+      "provenanceNote": "AFTER INSTALLING, the Settings build row reads exactly: local-9b832ac, with 4 Sept 2026, 21:15 beside it on a UK-time phone (20:15 UTC — the row renders in the device's own timezone), and the API host ssi-learning-app-git-dev-zenjin.vercel.app on a quiet second line. Anything else there means an older APK is still installed. Cut from dev 9b832acc, so it carries tonight's belt-panel display grammar and fast-path position authority (bb0dffd8, absent from every earlier APK) plus the new staleness line. Web assets stay BUNDLED in the APK by design — offline-first — so 'Tap to update' cannot fetch new web code and only a new APK can; what is new is that the app now SAYS so, in one quiet line under the build row, and only when it can prove from the live deployment's build time that it is genuinely behind. On a fresh install tonight that line is silent, because this APK is the commit dev is deploying; it will start appearing once dev moves on, which is the point. sha256 verified against the bytes downloaded back out of the bucket."
     },
     {
       "id": "android-89af35fc",
