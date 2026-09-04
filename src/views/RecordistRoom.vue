@@ -2137,7 +2137,10 @@ kbd {
 }
 /* Narration segments. The words the recordist says are all of them — these only
    make the two languages tellable apart at a glance, never add anything to read. */
-.seg-src { color: var(--color-paper-dim, #c1c1bb); font-style: italic; }
+/* Colour alone tells the source segment from the target one: the source is
+   often a script with no italic form, where italic is synthesised by shearing
+   the glyphs (Tom, 2026-09-04). */
+.seg-src { color: var(--color-paper-dim, #c1c1bb); }
 .seg-tgt { color: var(--color-emerald, #06ffa5); }
 .line-why {
   margin: 0.75rem 0 0; font-size: 0.85rem; line-height: 1.4;

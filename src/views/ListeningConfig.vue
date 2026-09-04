@@ -1490,7 +1490,11 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .seed-target { font-weight: 500; }
 .seed-known {
   color: var(--color-paper-dim, var(--muted));
-  font-style: italic;
+  /* No italic: the translation is often Tamil, Han, Hangul, Devanagari or
+     Arabic, none of which HAVE an italic — the browser shears the upright
+     glyphs to fake one (Tom, 2026-09-04). Colour and weight already tell this
+     line apart from the prompt above it, and they work in every script. */
+  font-weight: 400;
   font-size: 0.875rem;
 }
 .preview-seed-pills {

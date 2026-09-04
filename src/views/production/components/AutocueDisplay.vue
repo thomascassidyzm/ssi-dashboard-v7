@@ -219,7 +219,11 @@ function toggleSlowMode() {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
   font-size: 1.25rem;
   color: var(--color-paper-dim, var(--muted));
-  font-style: italic;
+  /* No italic: the translation is often Tamil, Han, Hangul, Devanagari or
+     Arabic, none of which HAVE an italic — the browser shears the upright
+     glyphs to fake one (Tom, 2026-09-04). Colour and weight already tell this
+     line apart from the prompt above it, and they work in every script. */
+  font-weight: 400;
 }
 
 .slow-mode-instructions {
