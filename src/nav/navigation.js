@@ -80,12 +80,15 @@ export const SECTIONS = [
     id: 'admin',
     primary: 'admin',
     hubPath: '/admin',
-    owns: ['/admin*', '/insights', '/jobs', '/maintenance', '/users', '/builds'],
+    // Only the prefixes no item declares. Every item's own `to` is owned
+    // automatically (see ownsOf), so a new destination is ONE entry — it
+    // cannot be a tab the section has never heard of, which is what /builds
+    // was until it was hand-patched into four separate places.
+    owns: ['/admin*'],
     items: [
       {
         label: 'Admin',
         to: '/admin',
-        match: ['/admin'],
         isHubSelf: true // the hub page's own tab; a card pointing at itself would be a loop
       },
       {
@@ -106,7 +109,6 @@ export const SECTIONS = [
       {
         label: 'Insights',
         to: '/insights',
-        match: ['/insights'],
         hub: {
           badge: 'analytics',
           description: 'Cross-course insight boards — lifecycle, rate, coverage, content, and ops signals.',
@@ -119,7 +121,6 @@ export const SECTIONS = [
       {
         label: 'Activity',
         to: '/jobs',
-        match: ['/jobs'],
         badgeKey: 'activeCourses',
         hub: {
           badge: 'live',
@@ -133,7 +134,6 @@ export const SECTIONS = [
       {
         label: 'Maintenance',
         to: '/maintenance',
-        match: ['/maintenance'],
         badgeKey: 'auditStale',
         hub: {
           badge: 'ops',
@@ -147,7 +147,6 @@ export const SECTIONS = [
       {
         label: 'Users',
         to: '/users',
-        match: ['/users'],
         hub: {
           badge: 'access',
           description: 'Manage dashboard accounts, recorders, roles, and invite codes.',
@@ -178,7 +177,6 @@ export const SECTIONS = [
         // handing someone the Android test build is an admin job.
         label: 'Test builds',
         to: '/builds',
-        match: ['/builds'],
         hub: {
           badge: 'android',
           description: 'The current Android test build, how to install it, and where it came from.',
@@ -249,7 +247,7 @@ export const SECTIONS = [
     // The library, a course's own editor page, and the canonical browsers.
     owns: ['/courses*', '/course/*', '/canonical*'],
     items: [
-      { label: 'Library', to: '/courses', match: ['/courses'] },
+      { label: 'Library', to: '/courses' },
       { label: 'Seeds', to: '/canonical/seeds', match: ['@CanonicalSeeds'] },
       { label: 'Content', to: '/canonical/content', match: ['@CanonicalContent'] },
       { label: 'Pods', to: '/canonical/pods', match: ['@PodsDoc'] },
@@ -312,9 +310,19 @@ export const OUTSIDE_NAV = [
 // Derivations. Every rendered nav surface goes through these.
 // ---------------------------------------------------------------------------
 
+/**
+ * Everything a section claims: the prefixes it declares, PLUS every one of its
+ * own destinations. Derived, so a destination can never be listed in a row
+ * while its section disowns the route — the /builds defect by construction.
+ */
+export function ownsOf(section) {
+  const items = typeof section.items === 'function' ? [] : section.items
+  return [...(section.owns || []), ...items.map((i) => i.to)]
+}
+
 /** The section that owns the current route, or null. First match wins. */
 export function sectionFor(route) {
-  return SECTIONS.find((s) => (s.when ? s.when(route) : matchesAny(s.owns, route))) || null
+  return SECTIONS.find((s) => (s.when ? s.when(route) : matchesAny(ownsOf(s), route))) || null
 }
 
 /** True when `primaryId`'s tab should be lit for this route. */
@@ -331,6 +339,11 @@ export function primaryTabs(route) {
   }))
 }
 
+/** What lights an item up: its own declared patterns, or its destination. */
+export function matchOf(item) {
+  return item.match ?? [item.to]
+}
+
 function itemsOf(section, route) {
   return typeof section.items === 'function' ? section.items(route) : section.items
 }
@@ -342,7 +355,7 @@ export function sectionTabs(route, badges = {}) {
   return itemsOf(section, route).map((item) => ({
     label: item.label,
     to: item.to,
-    active: item.match?.includes('*') ? true : matchesAny(item.match, route),
+    active: matchOf(item).includes('*') ? true : matchesAny(matchOf(item), route),
     badge: item.badgeKey ? badges[item.badgeKey] || null : null
   }))
 }

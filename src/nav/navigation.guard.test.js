@@ -23,6 +23,7 @@ import { fileURLToPath } from 'node:url'
 import router from '../router/index.js'
 import {
   SECTIONS,
+  ownsOf,
   OUTSIDE_NAV,
   PRIMARY_TABS,
   matchesAny,
@@ -41,7 +42,7 @@ const destinations = router
   .filter((r) => r.components && Object.keys(r.components).length > 0)
   .filter((r) => r.meta?.public !== true)
 
-const OWNED = SECTIONS.flatMap((s) => s.owns || [])
+const OWNED = SECTIONS.flatMap(ownsOf)
 const EXCLUDED = new Set(OUTSIDE_NAV.map((e) => e.path))
 
 describe('every route is accounted for by the nav declaration', () => {
