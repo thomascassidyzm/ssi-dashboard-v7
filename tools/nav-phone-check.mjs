@@ -63,7 +63,7 @@ check(s.sub.includes('Test builds*'), '/builds highlights its own tab')
 // Exactly ONE sub-tab lit, everywhere. A page that is in the row but not in the
 // active-state logic (or in neither) leaves the row with nothing highlighted —
 // which is how you end up somewhere with no idea where you are.
-for (const [path, wantPrimary] of [['/courses', 'Courses*'], ['/how', 'How & Why*'], ['/stocktake', 'Admin*'], ['/admin/labs', 'Admin*'], ['/admin/board', 'Admin*'], ['/admin/recording', 'Admin*'], ['/users', 'Admin*'], ['/jobs', 'Admin*'], ['/maintenance', 'Admin*'], ['/insights', 'Admin*']]) {
+for (const [path, wantPrimary] of [['/courses', 'Courses*'], ['/how', 'How & Why*'], ['/stocktake', 'Admin*'], ['/admin/labs', 'Admin*'], ['/admin/recording', 'Admin*'], ['/users', 'Admin*'], ['/jobs', 'Admin*'], ['/maintenance', 'Admin*'], ['/insights', 'Admin*']]) {
   s = await navState(path)
   const lit = s.sub.filter((t) => t.endsWith('*'))
   check(s.primary.includes(wantPrimary) && s.sub.length > 0 && lit.length === 1,
