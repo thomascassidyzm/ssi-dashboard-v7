@@ -146,13 +146,23 @@
       <!-- Aran arrives with takes already made. Let him hear them before
            deciding to re-read: the contract already hands us their clips. -->
       <div v-if="includeRecorded && alreadyRecorded.length" class="listen-back">
-        <h3>What you've already recorded</h3>
-        <p class="listen-note">These play the clip stored on the server. Tap <strong>Compare</strong> to hear your original
-          take next to the processed one learners hear.</p>
+        <h3>What you've already recorded — {{ alreadyRecorded.length }}</h3>
+        <p class="listen-note">Everything you have read, in every part of the list. These play the clip stored on the
+          server. Tap <strong>Compare</strong> to hear your original take next to the processed one learners hear.</p>
+        <!-- Past eight rows it gets a filter, never a longer scroll. -->
+        <input
+          v-if="alreadyRecorded.length > RECORDED_FILTER_THRESHOLD"
+          v-model="recordedFilter"
+          type="search"
+          class="listen-filter"
+          placeholder="Find a line…"
+          autocomplete="off"
+        />
+        <p v-if="recordedFilter && !alreadyRecordedShown.length" class="listen-note">Nothing matches “{{ recordedFilter }}”.</p>
         <ul>
-          <li v-for="l in alreadyRecorded" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
+          <li v-for="l in alreadyRecordedShown" :key="l.id" :class="['stacked', { playing: playingId === l.id }]">
             <div class="listen-row">
-              <span class="listen-text">{{ plainText(l.text) }}</span>
+              <span class="listen-text"><span class="listen-kind">{{ kindWords(l) }}</span>{{ plainText(l.text) }}</span>
               <div class="listen-actions">
                 <StoredTakeButton
                   :stored-url="storedUrlFor(l.id)"
@@ -468,6 +478,7 @@
 import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { recordingApiBase as apiBase } from '@/services/recordingApi'
 import { useTapRecorder, resolveCaptureProfile } from '@/composables/useTapRecorder'
+import { loadBoothSettings, saveBoothSettings, micKeyFor } from './recordist/booth-settings.js'
 import { useRecordistQueue, DURABLE_TAKES_FEATURE } from '@/composables/useRecordistQueue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
@@ -505,19 +516,19 @@ const selectedDeviceId = ref(null)
 // mastered to a -62.7 dBFS floor. Same person, same room, four minutes apart.
 // He read it as a desktop-versus-phone difference. It was a stored preference.
 //
-// So the raw tap is now what it always was in intent: a per-session diagnostic,
-// one tick away whenever it is wanted, and gone the next time the room opens.
-// The stale key is cleared on sight so no browser is still carrying one.
+// WHICH PROFILE IS THE DEFAULT IS THE DEVICE'S CALL (2026-09-03). A phone or a
+// Safari device starts on the voice chain, for exactly the reason above. A
+// desktop browser that is not Safari — where a voice artist with a real
+// microphone sits — starts on the raw tap, because Aran's 2026-09-03 takes
+// through Chrome's processing on a Blue Snowball came back dead above 16 kHz,
+// 12-15 dB down on his own takes on the same mic before the profile change.
+// Reasoning and measurements: useTapRecorder.js.
 //
-// WHICH PROFILE IS THE DEFAULT IS NOW THE DEVICE'S CALL (2026-09-03). The note
-// above is about REMEMBERING a choice, and it stands untouched — nothing is
-// stored, and a tick still lasts one session. What changed is what the room
-// starts from. A phone or a Safari device still starts on the voice chain, for
-// exactly the reason above. A desktop browser that is not Safari — where a
-// voice artist with a real microphone sits — starts on the raw tap, because
-// Aran's 2026-09-03 takes through Chrome's processing on a Blue Snowball came
-// back dead above 16 kHz, 12-15 dB down on his own takes on the same mic before
-// the profile change. Reasoning and measurements: useTapRecorder.js.
+// AND IT IS REMEMBERED AGAIN — PER ARTIST AND PER MICROPHONE (Tom, 2026-09-03,
+// having had to set it again every time he opened the room). The old flat key
+// was device-blind, which is what made a stale tick dangerous; the whole
+// reasoning is in recordist/booth-settings.js. The stale key from before is
+// cleared on sight so no browser is still carrying one.
 const recommendedProfile = resolveCaptureProfile()
 const captureProfile = ref(recommendedProfile)
 try { localStorage.removeItem('recordist.captureProfile') } catch { /* private mode */ }
@@ -1130,6 +1141,28 @@ const failedNote = computed(() => {
 // as outstanding, and keying this off `recorded` emptied the section and took
 // Compare with it — exactly when he most needs to hear what he already gave us.
 const alreadyRecorded = computed(() => lines.value.filter(l => l.clipUrl))
+// EVERY CATEGORY, NEVER JUST ONE (Tom, 2026-09-03). This listed only his POD
+// sentences, because a minimal-set piece stopped being a line the moment it was
+// recorded — the quarry dropped free pieces out of the set, so there was nothing
+// left here to list. That is fixed at the source in lego-quarry.cjs; what the
+// row needs from this screen is to SAY which category it is, so a list mixing
+// conversations, chunks and seed sentences reads as one thing rather than as an
+// unexplained jumble.
+const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', quarry: 'The minimal set', rerecord: 'MORE LINES' }
+function kindWords(l) { return KIND_WORDS[l.kind || 'pod'] || 'Everything else' }
+// THE ESTATE RULE, applied to a list rather than a dropdown (Tom, 2026-09-03:
+// "all dropdowns in popty, or in general in ANY of my work should have
+// search/filter at the very top"). Same threshold as FilterSelect: past eight
+// rows nobody should be scrolling to find one line. Matches the words AND the
+// category, so "minimal" narrows to the chunks.
+const RECORDED_FILTER_THRESHOLD = 8
+const recordedFilter = ref('')
+const alreadyRecordedShown = computed(() => {
+  const q = recordedFilter.value.trim().toLowerCase()
+  if (!q) return alreadyRecorded.value
+  return alreadyRecorded.value.filter(l =>
+    plainText(l.text).toLowerCase().includes(q) || kindWords(l).toLowerCase().includes(q))
+})
 const sessionLines = computed(() =>
   sessionIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean)
 )
@@ -1688,6 +1721,61 @@ async function load() {
   }
 }
 
+// ── The booth remembers how you left it ─────────────────────────────────────
+//
+// TWO STEPS, because the microphone is not known until the browser says so.
+// First, at setup, restore this artist's last session outright: one person, one
+// machine, one mic is the ordinary case and it should feel like nothing was
+// forgotten. Then, once the devices resolve, if the mic in use has settings of
+// its OWN they win — a capture profile is a fact about a microphone, and that
+// is the whole reason this is keyed per device (recordist/booth-settings.js).
+//
+// A mic this artist has never used here inherits nothing and starts from
+// `recommendedProfile`, and the "not the usual setting on this device" warning
+// above the toggle draws itself whenever a restored profile disagrees with it —
+// so a remembered choice can never be a silent one.
+let settingsMicKey = null
+function applyBoothSettings(saved) {
+  if (!saved) return
+  if (saved.captureProfile === 'dry' || saved.captureProfile === 'voice') captureProfile.value = saved.captureProfile
+  if (typeof saved.autoAdvance === 'boolean') autoAdvance.value = saved.autoAdvance
+  if (typeof saved.includeRecorded === 'boolean') includeRecorded.value = saved.includeRecorded
+  if (saved.maxSeed) maxSeed.value = saved.maxSeed
+}
+// Synchronous, and BEFORE the load watch below fires: the seed ceiling is part
+// of the request, so restoring it afterwards would cost a second round trip and
+// show him the wrong volume in between.
+applyBoothSettings(loadBoothSettings(props.voiceId))
+
+function rememberBoothSettings() {
+  saveBoothSettings(props.voiceId, settingsMicKey, {
+    captureProfile: captureProfile.value,
+    autoAdvance: autoAdvance.value,
+    includeRecorded: includeRecorded.value,
+    maxSeed: maxSeed.value,
+  })
+}
+// Saved on every change rather than on leave: the booth is closed by shutting a
+// laptop lid at least as often as by navigating away.
+watch([captureProfile, autoAdvance, includeRecorded, maxSeed], rememberBoothSettings)
+
+// WHICH MIC, once the browser will say. Labels only exist after permission, so
+// this runs again when the list refreshes rather than only once.
+watch([() => recorder.devices.value, selectedDeviceId], () => {
+  const list = recorder.devices.value || []
+  if (!list.length) return
+  const chosen = (selectedDeviceId.value ? list.find(d => d.deviceId === selectedDeviceId.value) : null) || list[0]
+  const key = micKeyFor(chosen)
+  if (key === settingsMicKey) return
+  settingsMicKey = key
+  // Only a record belonging to THIS mic overrides what is already on screen.
+  // Anything else would re-apply the last session's settings over a choice he
+  // has just made with his own hands.
+  const own = loadBoothSettings(props.voiceId, key)
+  if (own && own.source === 'device') applyBoothSettings(own)
+  rememberBoothSettings()
+}, { deep: true })
+
 onMounted(() => {
   window.addEventListener('keydown', onKey)
   window.addEventListener('beforeunload', beforeUnloadGuard)
@@ -2019,6 +2107,20 @@ kbd {
 
 /* Done */
 .listen-note { font-size: 0.78rem; margin: 0 0 0.6rem; }
+/* Past eight rows the list gets a filter box, per the estate's dropdown rule. */
+.listen-filter {
+  width: 100%; box-sizing: border-box; margin: 0 0 0.6rem;
+  padding: 0.5rem 0.65rem; font-size: 0.9rem; font: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px;
+  background: rgba(0, 0, 0, 0.25); color: inherit;
+}
+.listen-filter::placeholder { opacity: 0.55; }
+/* Which part of the list this line came from. Small, ahead of the words, so a
+   mixed list reads as one thing. */
+.listen-kind {
+  display: inline-block; margin-right: 0.5rem; font-size: 0.62rem;
+  letter-spacing: 0.06em; text-transform: uppercase; opacity: 0.55;
+}
 .listen-back ul, .redo-list ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.5rem; }
 .listen-back li {
   display: flex; align-items: center; gap: 0.75rem; justify-content: space-between;
