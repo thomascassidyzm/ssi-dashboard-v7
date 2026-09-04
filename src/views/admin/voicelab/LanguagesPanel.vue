@@ -21,7 +21,7 @@
  * fetches its CSV asynchronously and is a front-end module; the server emits
  * the first two legs and a stable code tiebreak underneath this.
  *
- * THE STATUSES ARE NOT INTERCHANGEABLE, and the colours say so:
+ * THE STATUSES ARE NOT INTERCHANGEABLE, and the words say so:
  *   complete  both primary slots (1 male, 1 female) cast — read as written
  *             (Tom, 2026-08-28): TWO voices make a language complete, full
  *             stop. A missing backup never counts against this — it shows as
@@ -32,16 +32,32 @@
  *   human     human-recorded only. NOT a gap: a human recording wins wherever
  *             it exists, so Welsh reads as human, never as a missing voice.
  *
+ * COLOUR MEANS ONE THING HERE (Tom, 2026-09-04: "it's also colour nightmare
+ * times"). It used to mean three at once — red for the status "uncast", red
+ * again for the count beside it, red once more for a provider badge that only
+ * meant "provider" — so the eye could not learn a rule and none of them read.
+ * Now colour says A CAST IS COMPLETE and nothing else; every other state is
+ * drawn, per the doctrine written out above `.ui-present` / `.ui-absent` in
+ * src/assets/ui-tokens.css. Reached is solid, filled, full opacity; never
+ * reached is dashed, unfilled, dimmed, text still in ink. No fact was removed
+ * with the paint.
+ *
  * TWO PROVIDER COLUMNS, AND THEY ARE DIFFERENT QUESTIONS (Tom, 2026-08-29):
  *   IN USE NOW      what the language's courses actually store in their own
- *                   voice_config, counted in COURSES. This is the fact, and it
- *                   is the reason the rework exists: xAI is being deprecated
- *                   and 29 courses are on it today.
- *   IF RE-RENDERED  what the provider policy would choose for a NEW render.
- *                   Hypothetical, still useful, and it answers "azure" almost
- *                   everywhere — which is why it used to be titled "default
- *                   provider" and read as a claim about the estate that was
- *                   simply untrue.
+ *                   voice_config, counted in COURSES. Providers RETIRED FROM
+ *                   SELECTION are not offered here — xAI is off the estate
+ *                   (Tom and Aran, 2026-09-03) — but the audio they rendered
+ *                   still exists and still plays, so it is shown demoted, on
+ *                   the row and on its own filter line, as history.
+ *   IF RE-RENDERED  what the provider policy would choose for a NEW render,
+ *                   AND WHY. Hypothetical, still useful, and it answers
+ *                   "Azure" everywhere today — which read as a claim about the
+ *                   estate until the cause came with it. The cause is the
+ *                   point: the ladder tries Cartesia and falls to Azure
+ *                   because nobody is cast on Cartesia, not because Azure was
+ *                   chosen. Both halves come from services/voicelab/
+ *                   registry.cjs asking the same policy module the render path
+ *                   asks — this file never reasons about providers itself.
  *
  * EVERY LANGUAGE IS NAMED, not just coded. Tom: "I can't tell which language
  * I'm looking at when I select it." Full name beside the code — both, because
@@ -1247,20 +1263,27 @@ const summary = computed(() => data.value?.summary || null)
 /**
  * THE STATUS CHIPS ARE THE SUMMARY. One row instead of two: each chip says how
  * many languages are in that state and filters to them when clicked, so the
- * count and the way to act on it are the same object. `hue` carries the meaning
- * the header comment sets out — these are not interchangeable, and the colour
- * is how a gap reads as a gap without being worked out.
+ * count and the way to act on it are the same object.
+ *
+ * The per-status HUES ARE GONE (Tom, 2026-09-04: "it's also colour nightmare
+ * times"). Each chip used to wear the colour of its status, so the filter row
+ * taught the eye five hues before it had read a word — and the same five hues
+ * were then spent again on the status pills, on the counts and on the provider
+ * badges, meaning three different things at once. A chip now wears the shared
+ * on/off selection state the Course Library uses, and the WORD carries which
+ * status it is. Colour on this table means one thing only: a cast that is
+ * complete. Everything else is drawn.
  */
 const STATUSES = [
-  { value: 'all',      label: 'Every status', hue: 'ui-hue-quiet', key: null },
-  { value: 'complete', label: 'Complete',     hue: 'ui-hue-good',  key: 'complete' },
-  { value: 'partial',  label: 'Partial',      hue: 'ui-hue-warn',  key: 'partial' },
-  { value: 'uncast',   label: 'Uncast',       hue: 'ui-hue-bad',   key: 'uncast' },
-  { value: 'nocover',  label: 'No Cartesia',  hue: 'ui-hue-warn',  key: 'nocover' },
-  { value: 'human',    label: 'Human-voiced', hue: 'ui-hue-info',  key: 'human' },
+  { value: 'all',      label: 'Every status', key: null },
+  { value: 'complete', label: 'Complete',     key: 'complete' },
+  { value: 'partial',  label: 'Partial',      key: 'partial' },
+  { value: 'uncast',   label: 'Uncast',       key: 'uncast' },
+  { value: 'nocover',  label: 'No Cartesia',  key: 'nocover' },
+  { value: 'human',    label: 'Human-voiced', key: 'human' },
   // Known-side only: nothing teaches it, so it has no phrase-voice worklist.
   // It is here so its guide voice can be cast (2026-08-29).
-  { value: 'knownonly', label: 'Known only',  hue: 'ui-hue-quiet', key: 'knownonly' },
+  { value: 'knownonly', label: 'Known only',  key: 'knownonly' },
 ]
 
 const statusChips = computed(() =>
@@ -1271,45 +1294,110 @@ const statusChips = computed(() =>
 )
 
 /**
+ * PROVIDERS RETIRED FROM SELECTION. xAI is off the estate (Tom and Aran,
+ * 2026-09-03 — a values call, not a vendor deadline), so this screen does not
+ * present it as one of the providers work is cast on.
+ *
+ * RETIREMENT IS FROM SELECTION, NEVER FROM THE DATA. Hundreds of thousands of
+ * course_audio rows carry xai_… voice ids, voice_id is part of clip identity,
+ * and every one of those clips keeps playing. So the fact does not disappear
+ * off this screen — it is DEMOTED, out of the live provider row and into a
+ * quiet historic line, in ink and grey, saying what still exists rather than
+ * what is in use. Matches services/shared/tts-provider-policy.cjs, which has
+ * said the same thing about the render path since 2026-08-27.
+ */
+const RETIRED_PROVIDERS = ['xai']
+const isRetired = (p) => RETIRED_PROVIDERS.includes(p)
+
+/**
  * THE PROVIDER CHIPS ARE THE ESTATE SUMMARY, same trick as the status row: the
  * count and the way to act on it are one object. Built from what the courses
- * actually store, xAI first because xAI is what this screen is for.
+ * actually store, minus anything retired from selection.
  */
 const providerChips = computed(() => {
-  const totals = summary.value?.providerTotals || []
+  const totals = (summary.value?.providerTotals || []).filter((t) => !isRetired(t.provider))
   if (!totals.length) return []
   return [
     { value: 'all', label: 'Any provider', count: null },
-    // xAI is being retired, so its chip carries that where its count already
-    // is — the fact belongs to the provider, not to a paragraph above the table.
     ...totals.map((t) => ({
       value: t.provider,
-      label: providerLabel(t.provider) + (t.provider === 'xai' ? ' · retiring' : ''),
+      label: providerLabel(t.provider),
       count: t.courses,
     })),
   ]
 })
 
+/**
+ * The same counts for the retired providers, on their own quiet line. Kept as a
+ * FILTER rather than a sentence because "which languages still hold xAI audio?"
+ * is a real question with a real worklist behind it — losing the chip would
+ * lose the answer, and the fix Tom asked for is that it stops reading as a live
+ * provider, not that it stops existing.
+ */
+const historicChips = computed(() =>
+  (summary.value?.providerTotals || [])
+    .filter((t) => isRetired(t.provider))
+    .map((t) => ({ value: t.provider, label: providerLabel(t.provider), count: t.courses }))
+)
+
+/** Courses on this row still holding audio from a provider nothing renders on. */
+function historicOf (lang) {
+  return (lang.providersInUse || []).filter((p) => isRetired(p.provider))
+}
+/** What the row's courses store on providers a new render may still choose. */
+function liveOf (lang) {
+  return (lang.providersInUse || []).filter((p) => !isRetired(p.provider))
+}
+
 /** Provider names as a person writes them, not as the DB stores them. */
 const PROVIDER_LABEL = { xai: 'xAI', azure: 'Azure', elevenlabs: 'ElevenLabs', cartesia: 'Cartesia', google: 'Google', narakeet: 'Narakeet', human: 'Human', unset: 'not configured', unknown: 'unknown' }
 function providerLabel (p) { return PROVIDER_LABEL[p] || p }
 
-const HUE = {
+/**
+ * ABSENCE IS DRAWN, NOT COLOURED (Tom's colour doctrine, 2026-09-02, written
+ * out in full above `.ui-present` / `.ui-absent` in src/assets/ui-tokens.css).
+ *
+ * This table used to spend five hues on six statuses, three more on providers,
+ * and red/amber/green again on the `0 / 2` count — so one row could carry red
+ * for "uncast", red again for the word beside it, and red once more for a
+ * provider badge that only meant "provider". Three unrelated meanings in one
+ * colour is why none of them read.
+ *
+ * ONE MEANING NOW: colour says A CAST IS COMPLETE, and nothing else on this
+ * table. Everything else is shape and position —
+ *   complete   green, filled: the measured fact, the way /courses spends it
+ *   partial    solid, filled, ink: something is genuinely there
+ *   human      solid, filled, ink: a human recording is presence, not a gap
+ *   uncast     dashed, unfilled, dimmed, text still in ink
+ *   nocover    the same, for the same reason: nobody is cast here either
+ *   knownonly  the same: no phrase-voice worklist exists to be missing
+ * The STATUS WORD is untouched in every case — this removes paint, never a fact.
+ */
+const STATUS_TREATMENT = {
   complete: 'ui-hue-good',
-  partial: 'ui-hue-warn',
-  nocover: 'ui-hue-warn',
-  uncast: 'ui-hue-bad',
-  human: 'ui-hue-info',
-  knownonly: 'ui-hue-quiet',
+  partial: 'ui-present',
+  human: 'ui-present',
+  uncast: 'ui-absent',
+  nocover: 'ui-absent',
+  knownonly: 'ui-absent',
 }
-function hueFor (status) { return HUE[status] || 'ui-hue-quiet' }
+function hueFor (status) { return STATUS_TREATMENT[status] || 'ui-absent' }
 
-/** xAI is the one being deprecated, so it is the one that reads as a warning. */
-function providerHue (p) {
-  if (p === 'xai') return 'ui-hue-bad'
-  if (p === 'human') return 'ui-hue-info'
-  if (p === 'unset' || p === 'unknown') return 'ui-hue-quiet'
-  return 'ui-hue-good'
+/**
+ * A provider is not a measurement, so a provider badge is INK AND GREY. The one
+ * distinction it draws is presence: a live provider is solid and filled, a
+ * retired one is dashed and dimmed — the clips exist, nothing renders on it.
+ */
+function providerHue (p) { return isRetired(p) ? 'ui-absent' : 'ui-present' }
+
+/**
+ * The `0 / 2` cell. Same three channels, no red: full is solid and heavy, part
+ * is solid and plain, empty is dimmed. The NUMBERS are the fact and they are
+ * unchanged — this only stops the cell shouting at the eye before it is read.
+ */
+function countClass (lang) {
+  if (lang.filled >= lang.required) return 'is-full'
+  return lang.filled ? 'is-part' : 'is-empty'
 }
 
 /**
@@ -1856,7 +1944,7 @@ function candidatesFor (lang, slot) {
         v-for="st in statusChips"
         :key="st.value"
         class="ui-chip"
-        :class="filter === st.value ? st.hue : 'ui-chip-off'"
+        :class="filter === st.value ? 'ui-chip-on' : 'ui-chip-off'"
         @click="filter = st.value"
       >
         {{ st.label }}<span v-if="st.count !== null" class="chip-no">{{ st.count }}</span>
@@ -1878,11 +1966,30 @@ function candidatesFor (lang, slot) {
         v-for="p in providerChips"
         :key="p.value"
         class="ui-chip"
-        :class="provFilter === p.value ? providerHue(p.value) : 'ui-chip-off'"
+        :class="provFilter === p.value ? 'ui-chip-on' : 'ui-chip-off'"
         @click="provFilter = p.value"
       >
         {{ p.label }}<span v-if="p.count !== null" class="chip-no">{{ p.count }}</span>
       </button>
+    </div>
+
+    <!-- WHAT STILL EXISTS, NOT WHAT IS IN USE. xAI is off the estate, so it is
+         not offered above as somewhere work is cast; the clips it rendered are
+         untouched and still playing, which is a stock-take fact and reads as
+         one here — quiet, uncoloured, on its own line. -->
+    <div v-if="historicChips.length" class="ui-filter-row vl-filters vl-historic-row">
+      <span class="ui-filter-label">Historic</span>
+      <button
+        v-for="p in historicChips"
+        :key="'hist:' + p.value"
+        class="ui-chip vl-historic-chip"
+        :class="provFilter === p.value ? 'ui-chip-on' : 'ui-chip-off'"
+        :title="`Retired from selection — no new render can choose ${p.label}. These ${p.count} courses keep the audio it already rendered, and it keeps playing.`"
+        @click="provFilter = p.value"
+      >
+        {{ p.label }}<span class="chip-no">{{ p.count }}</span>
+      </button>
+      <span class="vl-muted vl-historic-note">retired provider · audio already rendered, nothing new renders on it</span>
     </div>
 
     <p v-if="error" class="vl-error">{{ error }}</p>
@@ -1918,17 +2025,37 @@ function candidatesFor (lang, slot) {
               <td class="vl-muted vl-wide">{{ lang.courses }}<span v-if="lang.released"> · {{ lang.released }} live</span></td>
               <td class="vl-inuse">
                 <span
-                  v-for="p in lang.providersInUse"
+                  v-for="p in liveOf(lang)"
                   :key="p.provider"
                   class="ui-pill"
                   :class="providerHue(p.provider)"
                   :title="`${p.courses} course${p.courses === 1 ? '' : 's'}, ${p.roles} voice slot${p.roles === 1 ? '' : 's'}`"
                 >{{ providerLabel(p.provider) }} {{ p.courses }}</span>
-                <span v-if="!lang.providersInUse?.length" class="vl-muted">no voices configured</span>
+                <span v-if="!liveOf(lang).length" class="vl-muted">no voices configured</span>
+                <!-- The retired provider, kept and demoted: dashed, dimmed and
+                     labelled as history, so the row still says what audio this
+                     language holds without saying it is where work is cast. -->
+                <span
+                  v-for="p in historicOf(lang)"
+                  :key="'hist:' + p.provider"
+                  class="ui-pill ui-absent vl-historic-pill"
+                  :title="`Retired from selection (${providerLabel(p.provider)} is off the estate). ${p.courses} course${p.courses === 1 ? '' : 's'} here still hold audio it rendered — those clips play untouched, and no new render can choose it.`"
+                >{{ providerLabel(p.provider) }} {{ p.courses }} · historic</span>
               </td>
-              <td class="vl-muted vl-wide">{{ lang.defaultProvider || '—' }}</td>
+              <!-- IF RE-RENDERED, AND WHY. A bare "azure" here read as a
+                   decision the estate had made; it is a consequence of nobody
+                   being cast on Cartesia. Both halves come from one call to the
+                   same policy module the render path asks. -->
+              <td class="vl-wide vl-default">
+                <span class="vl-default-provider">{{ lang.defaultProvider ? providerLabel(lang.defaultProvider) : '—' }}</span>
+                <span
+                  v-if="lang.defaultProviderCause"
+                  class="vl-default-cause"
+                  :title="lang.defaultProviderReason"
+                >{{ lang.defaultProviderCause }}</span>
+              </td>
               <td>
-                <span :class="['vl-count', lang.filled >= lang.required ? 'ok' : lang.filled ? 'warn' : 'fail']">
+                <span class="vl-count" :class="countClass(lang)">
                   {{ lang.filled }} / {{ lang.required }}
                 </span>
               </td>
@@ -1946,7 +2073,7 @@ function candidatesFor (lang, slot) {
                      the row would otherwise read as wholly synthetic. -->
                 <span
                   v-if="humanRowLabel(lang) && lang.status !== 'human'"
-                  class="ui-pill ui-hue-info vl-flag"
+                  class="ui-pill ui-present vl-flag"
                   :title="`A cast here will not speak over these: ${humanCourseList(lang)}`"
                 >{{ humanRowLabel(lang) }}</span>
               </td>
@@ -1978,17 +2105,21 @@ function candidatesFor (lang, slot) {
                   >reference {{ lang.paceReference.reference_seconds.toFixed(2) }}s · {{ lang.paceReference.voices }} voice{{ lang.paceReference.voices === 1 ? '' : 's' }}</span>
                   <span v-else class="vl-ref" title="No voice in this language has been measured from the provider API yet, so there is no reference pace to compare against.">no pace reference yet</span>
                   <span
-                    v-for="p in lang.providersInUse"
+                    v-for="p in liveOf(lang)"
                     :key="p.provider"
-                    class="ui-pill"
-                    :class="providerHue(p.provider)"
+                    class="ui-pill ui-present"
                   >{{ providerLabel(p.provider) }} {{ p.courses }}</span>
+                  <span
+                    v-for="p in historicOf(lang)"
+                    :key="'hist:' + p.provider"
+                    class="ui-pill ui-absent vl-historic-pill"
+                    :title="`Retired from selection. These clips play untouched; no new render can choose ${providerLabel(p.provider)}.`"
+                  >{{ providerLabel(p.provider) }} {{ p.courses }} · historic</span>
                   <button class="ui-sort-btn vl-detail-close" @click="toggleLanguage(lang)">Hide</button>
                 </div>
 
                 <p v-if="lang.knownOnly" class="vl-note vl-muted">Known side only — guide voice, no phrase voices.</p>
                 <p v-else-if="lang.human" class="vl-note vl-muted">Human-recorded — no TTS provider.</p>
-                <p v-else-if="!lang.cartesiaCovers" class="vl-note vl-muted">No Cartesia — a new render falls to Azure.</p>
 
                 <!-- ── WHAT A CAST HERE WILL NOT SPEAK OVER ─────────────────
                      Tom's ruling, 2026-08-31: name the human-recorded courses
@@ -2006,7 +2137,7 @@ function candidatesFor (lang, slot) {
                   <span
                     v-for="c in [...humanOf(lang, 'phrase').courses, ...humanOf(lang, 'guide').courses]"
                     :key="c.course + c.roles.join()"
-                    class="ui-pill ui-hue-info vl-human-course"
+                    class="ui-pill ui-present vl-human-course"
                     :title="c.reasons.join(' ')"
                   ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}<template v-if="c.clips"> · {{ c.clips.toLocaleString('en-GB') }} clips</template></span>
                 </p>
@@ -2019,7 +2150,7 @@ function candidatesFor (lang, slot) {
                   <span
                     v-for="c in skipped[lang.code]"
                     :key="'skip:' + c.course + c.roles.join()"
-                    class="ui-pill ui-hue-info vl-human-course"
+                    class="ui-pill ui-present vl-human-course"
                     :title="c.reasons.join(' ')"
                   ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}</span>
                 </p>
@@ -2091,7 +2222,7 @@ function candidatesFor (lang, slot) {
                     <div v-if="slot.filled" class="vl-slot-filled">
                       <span class="vl-voice">{{ slot.voiceName }}</span>
                       <span class="vl-kind">{{ slot.kind }}</span>
-                      <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <span v-if="slot.active === false" class="ui-pill ui-absent">voice inactive</span>
                       <!-- CONSENT TRAVELS ONTO THE CAST SLOT. This is the one
                            place a voice is actually in front of learners, so it
                            is the one place "who authorised this?" most has to be
@@ -2226,7 +2357,7 @@ function candidatesFor (lang, slot) {
 
                 <p v-if="lang.guide?.inUse?.length" class="vl-note vl-guide-inuse">
                   Speaking now:
-                  <span v-for="u in lang.guide.inUse" :key="u.voiceId" class="ui-pill" :class="u.human ? 'ui-hue-info' : 'ui-hue-good'">
+                  <span v-for="u in lang.guide.inUse" :key="u.voiceId" class="ui-pill ui-present">
                     {{ u.name }} · {{ u.clips }} clip{{ u.clips === 1 ? '' : 's' }}
                   </span>
                 </p>
@@ -2238,7 +2369,7 @@ function candidatesFor (lang, slot) {
                     <div v-if="slot.filled" class="vl-slot-filled">
                       <span class="vl-voice">{{ slot.voiceName }}</span>
                       <span class="vl-kind">{{ slot.kind }}</span>
-                      <span v-if="slot.active === false" class="ui-pill ui-hue-bad">voice inactive</span>
+                      <span v-if="slot.active === false" class="ui-pill ui-absent">voice inactive</span>
                       <!-- CONSENT TRAVELS ONTO THE CAST SLOT. This is the one
                            place a voice is actually in front of learners, so it
                            is the one place "who authorised this?" most has to be
@@ -2440,9 +2571,31 @@ function candidatesFor (lang, slot) {
 .vl-made-from { flex: none; font-size: .75rem; }
 .vl-made-line { flex: 1 1 12rem; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .8125rem; opacity: .75; font-style: italic; }
 .vl-flag { margin-left: .35rem; }
-.vl-count.ok { color: var(--success); font-weight: 600; }
-.vl-count.warn { color: var(--accent); font-weight: 600; }
-.vl-count.fail { color: var(--danger); font-weight: 600; }
+.vl-count { color: var(--ink); }
+/* ABSENCE IS DRAWN, NOT COLOURED (2026-09-02). Full is solid and heavy, part is
+   solid and plain, empty is dimmed — the same three channels the tokens use, so
+   the cell keeps saying how far it got without shouting the hole in red. */
+.vl-count.is-full { font-weight: 700; }
+.vl-count.is-part { font-weight: 500; }
+.vl-count.is-empty { font-weight: 500; opacity: 0.55; }
+
+/* The retired-provider line and its pills: quiet, and never mistakable for a
+   live provider. `ui-absent` supplies the dash, the unfilled body and the dim. */
+.vl-historic-row { margin-top: -0.25rem; }
+.vl-historic-note { font-size: var(--text-xs); }
+.vl-historic-pill { border-style: dashed; }
+
+/* IF RE-RENDERED: the provider, then the cause underneath it in a quieter ink.
+   The full policy sentence is on the hover of the cause. */
+.vl-default { white-space: normal; }
+.vl-default-provider { display: block; color: var(--ink); }
+.vl-default-cause {
+  display: block;
+  font-size: var(--text-xs);
+  color: var(--faint);
+  max-width: 22rem;
+  cursor: help;
+}
 
 .vl-detail td { background: var(--surface-2); }
 .vl-note { margin: .25rem 0 .75rem; }
