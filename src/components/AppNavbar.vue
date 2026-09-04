@@ -50,9 +50,6 @@
             <router-link v-else-if="hasDashboardAccess" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
               Invite Recorder
             </router-link>
-            <router-link to="/builds" class="user-dropdown-item" @click="showUserMenu = false">
-              Test builds
-            </router-link>
             <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
               {{ hasPassword ? 'Change password' : 'Set password' }}
             </button>
@@ -132,6 +129,7 @@ import { useAuth } from '../composables/useAuth'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import RemoteControl from './RemoteControl.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
+import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs } from '../nav/navigation'
 
 const route = useRoute()
 const router = useRouter()
@@ -237,172 +235,41 @@ onUnmounted(() => document.removeEventListener('click', handleClickOutside))
 
 const activeCourseCount = ref(0)
 
-// Hide on auth routes — and for recorders, who live in the Record Room shell
-// and never see the admin console chrome.
-const isHidden = computed(() => route.meta.public === true || isRecorder.value)
-
-// Context detection — route semantics after the nav unification:
-// '/' is the Home hub; the courses library lives at '/courses'.
+// Context, breadcrumb and visibility. EVERY nav surface below is derived from
+// src/nav/navigation.js — the one declaration of sections, their routes and
+// their destinations. Nothing here decides which tab is active on its own: a
+// route the declaration owns lights its section's primary tab automatically,
+// which is what stopped /builds emptying the row underneath you.
 const courseCode = computed(() => route.params.courseCode || null)
 const isCreateMode = computed(() => courseCode.value === 'new')
 const isCoursesBoard = computed(() => route.path === '/courses')
-// How & Why — the founder's "Rulings + How-to" surface (replaced Docs, 2026-07-28)
-const isHow = computed(() => route.path.startsWith('/how'))
-// Stock-take — the compiled reference, admin-on-demand
-const isStocktake = computed(() => route.path.startsWith('/stocktake'))
-// Canonical data browsers (Seeds/Content/Pods) — tools under the Courses section
-const isCanonical = computed(() => route.path.startsWith('/canonical/'))
-const isUsers = computed(() => route.path === '/users')
-const isJobs = computed(() => route.path === '/jobs')
-const isMaintenance = computed(() => route.path === '/maintenance')
-const isInsights = computed(() => route.path === '/insights')
-// Test builds — an admin function (what it does), not a personal-account one.
-const isBuilds = computed(() => route.path === '/builds')
-const isAdminHub = computed(() => route.path === '/admin')
-const isProduction = computed(() => route.path.startsWith('/production/') && route.params.courseCode)
 
-// "Courses" owns the whole course pipeline: the library, the canonical data
-// browsers, a course overview, and every working surface under /production/:code.
-const isCourseSection = computed(() =>
-  route.path.startsWith('/courses') ||
-  route.path.startsWith('/course/') ||
-  isCanonical.value ||
-  (route.path.startsWith('/production/') && !!courseCode.value)
-)
-
-// The Admin section groups platform-wide tooling under one tab row.
-const isAdminSection = computed(() =>
-  route.path.startsWith('/admin') || isStocktake.value || isJobs.value || isMaintenance.value || isInsights.value || isUsers.value || isBuilds.value
-)
+// Hide on auth routes — and for recorders, who live in the Record Room shell
+// and never see the admin console chrome.
+const isHidden = computed(() => route.meta.public === true || isRecorder.value)
 
 // Show the course-count chip only on the Courses library.
 const showSummary = computed(() => isCoursesBoard.value)
 
 // Breadcrumb — on course-scoped routes, show the course name after the brand.
-// "Courses" itself is always one click away via the persistent primary tab.
 const courseCrumb = computed(() => {
   if (isCreateMode.value) return 'New Course'
   if (courseCode.value) return getCourseName(courseCode.value)
   return null
 })
 
-// PRIMARY tabs — always visible everywhere. The persistent top-level nav,
-// with an active-state highlight driven by the current section.
-const primaryTabs = computed(() => [
-  { label: 'Courses', to: '/courses', active: isCourseSection.value },
-  { label: 'How & Why', to: '/how', active: isHow.value },
-  { label: 'Admin', to: '/admin', active: isAdminSection.value }
-])
+// PRIMARY tabs — always visible everywhere; active state comes from which
+// declared section owns the current route.
+const primaryTabs = computed(() => declaredPrimaryTabs(route))
 
-// SECTION sub-tabs — contextual nav rendered as a second row under the
-// primary bar (the per-section tooling: admin tools, course view, How & Why).
-const sectionTabs = computed(() => {
-  // Stock-take — the compiled reference pages, one row while you're in them.
-  // Checked before the admin section so the stock-take pages get their own row.
-  if (isStocktake.value) {
-    return [
-      { label: 'Stock-take', to: '/stocktake', active: route.name === 'StocktakeIndex' },
-      { label: 'Pipeline', to: '/stocktake/pipeline', active: route.name === 'DocsPipeline' },
-      { label: 'Glossary', to: '/stocktake/glossary', active: route.name === 'DocsGlossary' },
-      { label: 'APML', to: '/stocktake/apml', active: route.name === 'DocsApml' }
-    ]
-  }
-
-  // Admin section — platform-wide tooling under one tab row.
-  if (isAdminSection.value) {
-    return [
-      { label: 'Admin', to: '/admin', active: isAdminHub.value },
-      {
-        // Labs, not Configs (2026-09-01). The six surfaces here were never
-        // configs — three of them write nothing at all — and the Script Lab
-        // could not be reached from the admin tree in any way. One tab, one
-        // index, grouped by blast radius.
-        label: 'Labs',
-        to: '/admin/labs',
-        active: route.path.startsWith('/admin/labs')
-          || route.path.startsWith('/admin/configs')
-          || route.path.startsWith('/admin/listening')
-      },
-      { label: 'Insights', to: '/insights', active: isInsights.value },
-      {
-        label: 'Activity',
-        to: '/jobs',
-        active: isJobs.value,
-        badge: activeCourseCount.value > 0 ? activeCourseCount.value : null
-      },
-      {
-        label: 'Maintenance',
-        to: '/maintenance',
-        active: isMaintenance.value,
-        badge: auditStaleDays.value ? `${auditStaleDays.value}d` : null
-      },
-      { label: 'Users', to: '/users', active: isUsers.value },
-      {
-        // Human Recording (2026-09-02). The page existed and was reachable by
-        // URL only. No badge here on purpose: the page carries the counts, and
-        // a second place for them is a second place for them to disagree.
-        label: 'Recording',
-        to: '/admin/recording',
-        active: route.path.startsWith('/admin/recording')
-      },
-      {
-        // Test builds (2026-09-04). Filed by what it does, not by who you are:
-        // it was reachable only from the avatar menu, which is the personal
-        // account menu. Installing the Android test build is an admin job.
-        label: 'Test builds',
-        to: '/builds',
-        active: isBuilds.value
-      },
-      { label: 'Stock-take', to: '/stocktake', active: false }
-    ]
-  }
-
-  if (isProduction.value && !isCreateMode.value) {
-    const code = courseCode.value
-    // ONE door per course (Tom, 2026-06-10): Overview is the hub — every
-    // working surface (Text, Audio, Record Room, QA, …) is a card there.
-    // Per-flow tabs in the navbar just duplicated the hub and confused
-    // community builders.
-    return [
-      {
-        label: 'Overview',
-        to: `/production/${code}`,
-        active: route.name === 'ProductionDashboard'
-      }
-    ]
-  }
-
-  if (isCreateMode.value) {
-    return [
-      { label: 'Text', to: '/production/new/text', active: true }
-    ]
-  }
-
-  // Courses library + the canonical data browsers, one row.
-  if (isCoursesBoard.value || isCanonical.value) {
-    return [
-      { label: 'Library', to: '/courses', active: isCoursesBoard.value },
-      { label: 'Seeds', to: '/canonical/seeds', active: route.name === 'CanonicalSeeds' },
-      { label: 'Content', to: '/canonical/content', active: route.name === 'CanonicalContent' },
-      { label: 'Pods', to: '/canonical/pods', active: route.name === 'PodsDoc' },
-      { label: 'Script Lab', to: '/canonical/scripts', active: route.name === 'ScriptLab' || route.name === 'ScriptLabScript' },
-      // The graph the scripts are walks over. It was reachable only from a button
-      // inside the Script Lab, which is one door too few for a page Tom asked for
-      // by name (2026-08-31).
-      { label: 'Metagraph', to: '/canonical/metagraph', active: route.name === 'Metagraph' }
-    ]
-  }
-
-  if (isHow.value) {
-    return [
-      { label: 'How & Why', to: '/how', active: route.name === 'HowAndWhy' },
-      { label: 'Pedagogy', to: '/how/pedagogy', active: route.name === 'Pedagogy' },
-      { label: 'Pod Thinking', to: '/how/pod-thinking', active: route.name === 'PodThinkingIndex' || route.name === 'PodThinkingDoc' }
-    ]
-  }
-
-  return []
-})
+// SECTION sub-tabs — the owning section's own destinations, second row.
+// Badges are supplied here because they are live counts, not declarations.
+const sectionTabs = computed(() =>
+  declaredSectionTabs(route, {
+    activeCourses: activeCourseCount.value > 0 ? activeCourseCount.value : null,
+    auditStale: auditStaleDays.value ? `${auditStaleDays.value}d` : null
+  })
+)
 
 onMounted(() => {
   loadCourses()
