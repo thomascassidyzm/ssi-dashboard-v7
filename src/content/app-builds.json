@@ -2,6 +2,28 @@
   "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first).",
   "builds": [
     {
+      "id": "android-89af35fc",
+      "platform": "android",
+      "label": "SSi Android wrapper — debug build (dev, 4 Sep evening)",
+      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-89af35fc-debug.apk",
+      "filename": "ssi-devwrap-89af35fc-debug.apk",
+      "bytes": 23290179,
+      "sha256": "df3fc925c0c8c899a2c188ddf3fedca4ee334caf78a123f088c5b57e2b7bc68b",
+      "repo": "ssi-learning-app",
+      "branch": "cs/525-android-apk-provenance-bundled-o",
+      "commit": "89af35fc284e8253c0d2ab35699bd79a026b0de0",
+      "commitSubject": "feat(provenance): a build says which commit it is and which origin it talks to",
+      "builtAt": "2026-09-04T18:20:00Z",
+      "applicationId": "com.saysomethingin.devwrap",
+      "appName": "SSi (dev wrap)",
+      "versionName": "1.0",
+      "versionCode": 1,
+      "targetSdk": 36,
+      "minSdk": 24,
+      "buildType": "debug",
+      "provenanceNote": "Built from commit 89af35fc, which is dev a7a3f68d (the belt-strip glyph, never-refuse navigation and two-strike network gate all included) merged with the Capacitor wrapper branch cs/516-android-dev-apk, plus this build's own provenance change. First APK whose Settings build row carries a real commit sha rather than a clock reading: after installing, that row reads 89af35fc, with the API host ssi-learning-app-git-dev-zenjin.vercel.app on a quiet second line. Web assets are BUNDLED into the APK — 'Tap to update' cannot fetch new web code, only a new APK can. sha256 verified against the bytes downloaded back out of the bucket."
+    },
+    {
       "id": "android-ccbbe2f7",
       "platform": "android",
       "label": "SSi Android wrapper — debug build",
