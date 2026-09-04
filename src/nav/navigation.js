@@ -187,8 +187,14 @@ export const SECTIONS = [
         }
       },
       {
-        // Was a tab with no card, for the same reason in reverse. Its own
-        // section takes over the row once you are inside it.
+        // HUB CARD ONLY, no sub-tab (Tom, 2026-09-04: "Stock-take is weird in
+        // that it appears in a nav, but then kind of has its own page"). It
+        // advertised itself as a sibling of Insights and Users and then, once
+        // you were inside it, took the whole row over with its own four
+        // destinations. Admin is where it is genuinely entered from, so it is
+        // a card there and nothing else; the stocktake section owns the row.
+        // Declared, not conventional — the guard test asserts this shape.
+        hubOnly: true,
         label: 'Stock-take',
         to: '/stocktake',
         match: [],
@@ -344,7 +350,8 @@ export function sectionTabs(route, badges = {}) {
   // A section that declares itself solo renders no row: its primary tab is the
   // destination, and a one-tab bar repeating it is noise.
   if (section.soloTab) return []
-  return itemsOf(section, route).map((item) => ({
+  // hubOnly items are doors on the hub page, not siblings in the row.
+  return itemsOf(section, route).filter((item) => !item.hubOnly).map((item) => ({
     label: item.label,
     to: item.to,
     active: matchOf(item).includes('*') ? true : matchesAny(matchOf(item), route),

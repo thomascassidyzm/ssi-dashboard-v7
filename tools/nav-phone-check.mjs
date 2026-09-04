@@ -15,6 +15,7 @@
 // On watson-1 chromium needs the pre-staged libs first:
 //   export LD_LIBRARY_PATH=/home/tomcassidy/.pwlibs/root/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
 import { chromium } from '@playwright/test'
+import { SECTIONS } from '../src/nav/navigation.js'
 import { createRequire } from 'node:module'
 
 const BASE = process.env.BASE || 'http://127.0.0.1:4179'
@@ -80,11 +81,21 @@ check(s.primary.includes('Pedagogy*') && s.sub.length === 0,
 s = await navState('/admin')
 const cards = await page.$$eval('.hub-card', (els) => els.map((e) => e.getAttribute('href')))
 const tabs = await page.$$eval('.navbar-subtabs .tab-item', (els) => els.map((e) => e.getAttribute('href')))
+// The one destination allowed to be a card without a tab is the one that says
+// so in the declaration (hubOnly — Stock-take, which owns a row of its own).
+// Read from the declaration rather than written down here, so the exception
+// cannot quietly grow a second member.
+const hubOnly = SECTIONS.find((sec) => sec.id === 'admin').items.filter((i) => i.hubOnly).map((i) => i.to)
 const missingCards = tabs.filter((t) => t !== '/admin' && !cards.includes(t))
-const missingTabs = cards.filter((c) => !tabs.includes(c))
+const missingTabs = cards.filter((c) => !tabs.includes(c) && !hubOnly.includes(c))
 say(`admin tabs: ${tabs.join(' ')}`)
-say(`admin cards: ${cards.join(' ')}`)
+say(`admin cards: ${cards.join(' ')}  (card-only by declaration: ${hubOnly.join(' ') || 'none'})`)
 check(missingCards.length === 0 && missingTabs.length === 0, 'the rendered sub-tab row and hub cards list the same destinations', `tab-only=[${missingCards}] card-only=[${missingTabs}]`)
+check(hubOnly.every((h) => !tabs.includes(h)), 'a hubOnly destination is a card and NOT a sub-tab', `hubOnly=[${hubOnly}]`)
+// ...and it still puts a row up once you are inside it, or it would be a page
+// you arrive at with no idea where you are.
+s = await navState(hubOnly[0] || '/stocktake')
+check(s.sub.length > 1 && s.sub.some((t) => t.endsWith('*')), `${hubOnly[0]} raises its own row`, `sub=${s.sub.join(' | ')}`)
 
 // 4. The avatar dropdown is genuinely TAPPABLE on a phone — hit-test, not a screenshot.
 await page.tap('.avatar-btn')

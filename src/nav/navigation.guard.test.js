@@ -116,15 +116,33 @@ describe('every nav destination is real and stays in its own section', () => {
 describe('the two admin surfaces cannot disagree', () => {
   const adminSection = SECTIONS.find((s) => s.id === 'admin')
 
-  it('lists the same destinations as tabs and as cards, bar the hub itself', () => {
+  // Two declared exceptions, and only two: the hub's own tab (a card pointing
+  // at itself would be a loop) and hubOnly items (a door on the hub that is not
+  // a sibling in the row — Stock-take, which owns a row of its own). Anything
+  // else appearing on one surface and not the other is the 2026-09-03 defect.
+  it('lists the same destinations as tabs and as cards, bar the declared exceptions', () => {
     const tabDestinations = adminSection.items
-      .filter((i) => !i.isHubSelf)
+      .filter((i) => !i.isHubSelf && !i.hubOnly)
       .map((i) => i.to)
       .sort()
+    expect(sectionTabs(router.resolve('/admin')).map((t) => t.to).sort()).toEqual(
+      adminSection.items.filter((i) => !i.hubOnly).map((i) => i.to).sort()
+    )
     const cardDestinations = hubCards('admin')
       .map((c) => c.to)
       .sort()
-    expect(cardDestinations).toEqual(tabDestinations)
+    const hubOnlyDestinations = adminSection.items.filter((i) => i.hubOnly).map((i) => i.to)
+    expect(cardDestinations).toEqual([...tabDestinations, ...hubOnlyDestinations].sort())
+  })
+
+  // A hubOnly item must still be a real, reachable place — it is off the row,
+  // not off the nav, and the OUTSIDE_NAV escape hatch is for pages with no
+  // door at all. Its own section is what puts a row up once you are there.
+  it.each(adminSection.items.filter((i) => i.hubOnly))('$to has a card, no tab, and a section of its own', (item) => {
+    expect(hubCards('admin').some((c) => c.to === item.to)).toBe(true)
+    const resolved = router.resolve(item.to)
+    expect(sectionTabs(resolved).some((t) => t.to === item.to)).toBe(true)
+    expect(sectionFor(resolved).id).not.toBe('admin')
   })
 
   it('derives the navbar from the declaration instead of its own list', () => {
