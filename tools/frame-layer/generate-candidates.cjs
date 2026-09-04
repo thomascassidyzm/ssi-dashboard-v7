@@ -82,6 +82,27 @@ function tilesFromVocab(target, vocab) {
 }
 
 /**
+ * THE BASKET'S OWN LEGO IS IN ITS OWN WINDOW. `availableVocab` answers "what
+ * did the learner own BEFORE this lego" (strict <), which is right for the
+ * prompt's base listing — but every phrase in a basket must contain its own
+ * LEGO verbatim, so a tiling window without it rejects EVERYTHING: measured on
+ * spa_for_eng 599, the strict window rejected 36/36 candidate phrases AND
+ * 36/36 of the live database's own phrases. Own components ride along for the
+ * same reason ("been"/"happy" tile inside phrases about "been happy").
+ */
+function generateVocabWindow({ legos = [], components = [], seed }) {
+  return (p) => {
+    const k = p.lego_index == null ? null : +p.lego_index;
+    const v = availableVocab({ legos, components, seed, legoIndex: k });
+    if (k != null) {
+      v.push(...legos.filter(l => l.seed_number === seed && +l.lego_index === k));
+      v.push(...components.filter(c => c.seed_number === seed && +c.lego_index === k));
+    }
+    return v;
+  };
+}
+
+/**
  * Reject before scoring. A phrase that cannot be tiled is not a low-quality
  * phrase, it is an unusable one, and letting it into `scoreBaskets` would let
  * invented vocabulary buy diversity points.
@@ -235,8 +256,7 @@ async function main() {
   // phrase's own basket window — a listing is an offer, the check is the rule.
   const seedVocab = availableVocab({ legos, components, seed: seed, legoIndex: null });
   const pool = instantiableFrameSet({ vocab: seedVocab, priorSeeds, seedRow });
-  const vocabFor = (p) => availableVocab({ legos, components, seed,
-    legoIndex: p.lego_index == null ? null : +p.lego_index });
+  const vocabFor = generateVocabWindow({ legos, components, seed });
   const liveScored = scoreBaskets(phrases, { legos: ownLegos, job, instantiableFrames: pool.length });
   if (!knownSideIsEnglish(course)) {
     console.log(`NOTE: ${course} has a non-English known side; the frame layer's patterns are English regexes and will report nothing here.`);
@@ -319,6 +339,6 @@ async function warnIfInventoryStale() {
   }
 }
 
-module.exports = { tilesFromVocab, rejectUntileable, warnIfInventoryStale };
+module.exports = { tilesFromVocab, rejectUntileable, generateVocabWindow, warnIfInventoryStale };
 
 if (require.main === module) main().catch(e => { console.error(e.message); process.exit(1); });
