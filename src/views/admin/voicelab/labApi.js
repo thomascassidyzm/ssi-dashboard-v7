@@ -247,6 +247,14 @@ export const api = {
   recordConsent: (voiceId, body) =>
     call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent`, { method: 'PUT', body }),
 
+  // THIS IS MY VOICE (Tom, 2026-09-04). The owner, signed in, consenting to
+  // their own clone in one tap — the block was telling Tom to go and ask Tom.
+  // It takes no body at all: WHO is claiming comes from the session on the
+  // server, never from here, so this call cannot claim a voice for anybody but
+  // the person making it. Rules: services/voicelab/self-consent.cjs.
+  selfConsent: (voiceId) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/consent-self`, { method: 'POST', body: {} }),
+
   // THE SECOND STAMP (Tom, 2026-08-31). A clone is born declared-but-unheard and
   // is refused everywhere until the person has heard it and confirmed it. The
   // POST takes 'confirm' or 'reject'; a reject writes `refused`, which is final.
