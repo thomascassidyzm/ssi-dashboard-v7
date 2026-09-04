@@ -1016,8 +1016,28 @@ const consentIn = ref('')
 const consentBusy = ref(false)
 const consentError = ref('')
 
+/**
+ * IS THE PANEL OPEN HERE? One answer, asked by every ConsentStep in this file.
+ *
+ * It used to be written out by hand at each of the four sites, and on
+ * 2026-08-31 the swap from VoiceConsent to ConsentStep (ea039e028) carried the
+ * props across but dropped the `v-if` on the two CAST-SLOT sites. The panel
+ * then drew itself under every filled slot for ever: Tom recorded consent for
+ * his own clone three times on the night of 2026-09-03 and the same "Consent
+ * needed" panel was still sitting there afterwards, next to a green
+ * "authorised" badge, because nothing had ever been asking whether it should
+ * be on screen. The consent itself was written correctly every time.
+ *
+ * So the condition is a function rather than four copies of an expression, and
+ * LanguagesPanel.consent-panel.test.js asserts that every ConsentStep in this
+ * file is gated by it.
+ */
+function consentOpen (voiceId, listKey = '') {
+  return !!voiceId && consentFor.value === voiceId && consentIn.value === listKey
+}
+
 function openConsent (voiceId, listKey = '') {
-  if (consentFor.value === voiceId && consentIn.value === listKey) { consentFor.value = null; return }
+  if (consentOpen(voiceId, listKey)) { closeConsent(); return }
   consentError.value = ''
   consentFor.value = voiceId
   consentIn.value = listKey
@@ -1045,8 +1065,13 @@ const consentCurrent = computed(() => {
  * The panel wrote a consent. Reload, so the chip that opened it becomes the
  * state it now describes — and a Cast button appears where it was refused.
  */
-function consentRecorded () {
+function closeConsent () {
   consentFor.value = null
+  consentIn.value = ''
+}
+
+function consentRecorded () {
+  closeConsent()
   load()
 }
 
@@ -1063,7 +1088,7 @@ async function consentDecide ({ status = 'refused', person }) {
   consentError.value = ''
   try {
     await api.recordConsent(consentFor.value, { status, person })
-    consentFor.value = null
+    closeConsent()
     await load()
   } catch (e) { consentError.value = e.message }
   consentBusy.value = false
@@ -2117,6 +2142,7 @@ function candidatesFor (lang, slot) {
                            the case: the panel opens under the slot it was
                            tapped in, exactly as it does in a candidate list. -->
                       <ConsentStep
+                        v-if="consentOpen(slot.voiceId, slotKey(lang, slot))"
                         :voice-id="slot.voiceId"
                         :person="consentCurrent?.person || ''"
                         :reason="(slot.consent) ? (slot.consent).castWarning || '' : ''"
@@ -2125,7 +2151,7 @@ function candidatesFor (lang, slot) {
                         :playing="playing"
                         allow-refusal
                         @recorded="consentRecorded"
-                        @cancel="consentFor = null"
+                        @cancel="closeConsent()"
                         @refuse="consentDecide"
                         @hear="hearVoice(lang, { voiceId: slot.voiceId, lineIndex: $event })"
                       />
@@ -2163,6 +2189,7 @@ function candidatesFor (lang, slot) {
                       >
                         <template #consent="{ voiceId }">
                           <ConsentStep
+                            v-if="consentOpen(voiceId, slotKey(lang, slot))"
                             :voice-id="voiceId"
                             :person="consentCurrent?.person || ''"
                             :reason="(consentCurrent) ? (consentCurrent).castWarning || '' : ''"
@@ -2171,7 +2198,7 @@ function candidatesFor (lang, slot) {
                             :playing="playing"
                             allow-refusal
                             @recorded="consentRecorded"
-                            @cancel="consentFor = null"
+                            @cancel="closeConsent()"
                             @refuse="consentDecide"
                             @hear="hearVoice(lang, { voiceId, lineIndex: $event })"
                           />
@@ -2262,6 +2289,7 @@ function candidatesFor (lang, slot) {
                            the case: the panel opens under the slot it was
                            tapped in, exactly as it does in a candidate list. -->
                       <ConsentStep
+                        v-if="consentOpen(slot.voiceId, slotKey(lang, slot))"
                         :voice-id="slot.voiceId"
                         :person="consentCurrent?.person || ''"
                         :reason="(slot.consent) ? (slot.consent).castWarning || '' : ''"
@@ -2270,7 +2298,7 @@ function candidatesFor (lang, slot) {
                         :playing="playing"
                         allow-refusal
                         @recorded="consentRecorded"
-                        @cancel="consentFor = null"
+                        @cancel="closeConsent()"
                         @refuse="consentDecide"
                         @hear="hearVoice(lang, { voiceId: slot.voiceId, lineIndex: $event })"
                       />
@@ -2305,6 +2333,7 @@ function candidatesFor (lang, slot) {
                       >
                         <template #consent="{ voiceId }">
                           <ConsentStep
+                            v-if="consentOpen(voiceId, slotKey(lang, slot))"
                             :voice-id="voiceId"
                             :person="consentCurrent?.person || ''"
                             :reason="(consentCurrent) ? (consentCurrent).castWarning || '' : ''"
@@ -2313,7 +2342,7 @@ function candidatesFor (lang, slot) {
                             :playing="playing"
                             allow-refusal
                             @recorded="consentRecorded"
-                            @cancel="consentFor = null"
+                            @cancel="closeConsent()"
                             @refuse="consentDecide"
                             @hear="hearVoice(lang, { voiceId, lineIndex: $event })"
                           />
