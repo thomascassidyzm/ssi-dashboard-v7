@@ -1,0 +1,27 @@
+{
+  "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first).",
+  "builds": [
+    {
+      "id": "android-ccbbe2f7",
+      "platform": "android",
+      "label": "SSi Android wrapper — debug build",
+      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-ccbbe2f7-debug.apk",
+      "filename": "ssi-devwrap-ccbbe2f7-debug.apk",
+      "bytes": 23288367,
+      "sha256": "a5d35c7cc06dfd29a78495ccb4277ef3490613d87823c81181d4a1db2095d960",
+      "repo": "ssi-learning-app",
+      "branch": "android/capacitor-wrapper",
+      "commit": "ccbbe2f7350d3e54643098bb305ea7ad43895c18",
+      "commitSubject": "android: Capacitor debug wrapper for the learner PWA (local dev app id)",
+      "builtAt": "2026-09-04T07:26:00Z",
+      "applicationId": "com.saysomethingin.devwrap",
+      "appName": "SSi (dev wrap)",
+      "versionName": "1.0",
+      "versionCode": 1,
+      "targetSdk": 36,
+      "minSdk": 24,
+      "buildType": "debug",
+      "provenanceNote": "Built from the working tree that became commit ccbbe2f7 (APK written 07:26, commit made 07:27). The branch tip 06be509f is one commit later and adds only docs and e2e probe scripts — nothing that ships inside the APK."
+    }
+  ]
+}

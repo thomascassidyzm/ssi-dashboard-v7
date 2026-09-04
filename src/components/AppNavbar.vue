@@ -50,6 +50,9 @@
             <router-link v-else-if="hasDashboardAccess" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
               Invite Recorder
             </router-link>
+            <router-link to="/builds" class="user-dropdown-item" @click="showUserMenu = false">
+              Test builds
+            </router-link>
             <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
               {{ hasPassword ? 'Change password' : 'Set password' }}
             </button>

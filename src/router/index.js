@@ -450,6 +450,17 @@ const routes = [
     redirect: '/'
   },
 
+  // Test packages for human testers (Tom, 2026-09-04): Popty is the surface for
+  // delivering Android builds; iOS goes via TestFlight. The Popty login is the
+  // whole gate — no roles, no allowlist, no download tokens. The APK itself
+  // lives on public object storage, so nothing here carries a 22 MB payload.
+  {
+    path: '/builds',
+    name: 'AppBuilds',
+    component: () => import('../views/AppBuilds.vue'),
+    meta: { title: 'Test builds', requiresAuth: true }
+  },
+
   // ============================================
   // THE ONE RECORDIST SURFACE (Tom, 2026-08-14)
   // ============================================
@@ -944,7 +955,9 @@ router.beforeEach(async (to, from, next) => {
 
     if (to.name === 'MyRecording') return next()
 
-    if (to.name !== 'RecordRoom') {
+    // …with one exception: the test-build page is for everyone with a Popty
+    // login, and the recordists are exactly the people we hand test APKs to.
+    if (to.name !== 'RecordRoom' && to.name !== 'AppBuilds') {
       return next(homeRoom)
     }
 
