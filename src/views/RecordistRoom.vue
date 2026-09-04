@@ -506,6 +506,7 @@ import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
 import StoredTakeButton from '@/components/production/autocue/StoredTakeButton.vue'
 import RawVsProcessed from '@/components/production/autocue/RawVsProcessed.vue'
 import RecordistRoster from './recordist/RecordistRoster.vue'
+import { useSectionCollapse } from './recordist/section-collapse'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
@@ -1270,13 +1271,11 @@ const recordedSectionList = computed(() => recordedSections(alreadyRecorded.valu
 // again with extra steps. His own taps are remembered while the page is open,
 // so clearing a search puts the panel back the way he left it rather than
 // slamming everything shut underneath him.
-const openRecordedSections = ref(new Set())
-function isRecordedSectionOpen(s) { return s.forceOpen || openRecordedSections.value.has(s.key) }
-function toggleRecordedSection(key) {
-  const next = new Set(openRecordedSections.value)
-  if (next.has(key)) next.delete(key); else next.add(key)
-  openRecordedSections.value = next
-}
+// The state itself lives in section-collapse.js, shared with the every-line
+// list in RecordistRoster: one copy of "which sections are open", two lists.
+const recordedCollapse = useSectionCollapse()
+const isRecordedSectionOpen = recordedCollapse.isOpen
+const toggleRecordedSection = recordedCollapse.toggle
 const sessionLines = computed(() =>
   sessionIds.value.map(id => lines.value.find(l => l.id === id)).filter(Boolean)
 )

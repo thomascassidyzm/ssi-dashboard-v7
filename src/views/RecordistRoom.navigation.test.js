@@ -65,6 +65,15 @@ vi.mock('@/composables/useTapRecorder', () => ({
 
 import RecordistRoom from './RecordistRoom.vue'
 
+// THE EVERY-LINE LIST IS SECTIONED NOW (2026-09-04). It opens onto shut
+// headings, so a test that wants the rows opens the list and then every section
+// in it — the same two taps Aran makes.
+async function openEveryLine(wrapper) {
+  await wrapper.find('.roster-toggle').trigger('click')
+  for (const head of wrapper.findAll('.roster-list .sh-btn')) await head.trigger('click')
+}
+
+
 // Next and Again share a 250ms bounce guard, so two taps in the same tick are
 // one tap as far as the booth is concerned. A person moving through a queue is
 // not doing that, and the clock is what says so.
@@ -115,7 +124,7 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
 
     // She jumps straight onto the LAST line from the list — line-1 is still
     // owed and now sits behind her.
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
     const rows = wrapper.findAll('.roster-list .row')
     expect(rows).toHaveLength(4)
     await rows[3].find('.row-record').trigger('click')
@@ -143,7 +152,7 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
     await flushPromises()
 
     // Rewriting a recorded line from the list puts it back to outstanding.
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
     await wrapper.findAll('.roster-list .row')[1].find('.row-text').trigger('click')
     await wrapper.find('.row-edit').setValue('te, os gwelwch yn dda')
     // No Save button anywhere: looking away is what saves it.
@@ -173,7 +182,7 @@ describe('RecordistRoom — an outstanding line behind the cursor is never stran
   it('does not list the same coming-up line twice once the scan wraps', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
     await flushPromises()
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
     await wrapper.findAll('.roster-list .row')[3].find('.row-record').trigger('click')
     await flushPromises()
     expect(wrapper.findAll('.upnext-list li')).toHaveLength(1)

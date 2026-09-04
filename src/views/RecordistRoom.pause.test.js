@@ -59,6 +59,15 @@ vi.mock('@/composables/useTapRecorder', () => ({
 
 import RecordistRoom from './RecordistRoom.vue'
 
+// THE EVERY-LINE LIST IS SECTIONED NOW (2026-09-04). It opens onto shut
+// headings, so a test that wants the rows opens the list and then every section
+// in it — the same two taps Aran makes.
+async function openEveryLine(wrapper) {
+  await wrapper.find('.roster-toggle').trigger('click')
+  for (const head of wrapper.findAll('.roster-list .sh-btn')) await head.trigger('click')
+}
+
+
 function stubQueue() {
   global.fetch = vi.fn().mockImplementation(() => Promise.resolve({
     ok: true, status: 200,
@@ -75,7 +84,7 @@ function stubQueue() {
 async function intoTheBooth() {
   const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
   await flushPromises()
-  await wrapper.find('.roster-toggle').trigger('click')
+  await openEveryLine(wrapper)
   await wrapper.findAll('.roster-list .row')[0].find('.row-record').trigger('click')
   await flushPromises()
   expect(wrapper.find('.line-target').text()).toBe('llinell un')

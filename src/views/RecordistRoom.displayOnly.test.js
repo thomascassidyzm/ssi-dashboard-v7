@@ -78,6 +78,15 @@ vi.mock('@/composables/useTapRecorder', () => ({
 
 import RecordistRoom from './RecordistRoom.vue'
 
+// THE EVERY-LINE LIST IS SECTIONED NOW (2026-09-04). It opens onto shut
+// headings, so a test that wants the rows opens the list and then every section
+// in it — the same two taps Aran makes.
+async function openEveryLine(wrapper) {
+  await wrapper.find('.roster-toggle').trigger('click')
+  for (const head of wrapper.findAll('.roster-list .sh-btn')) await head.trigger('click')
+}
+
+
 // Verbatim from listening_pod_sentences, 2026-08-23.
 const RAW_FIRST = 'Mae\'r oen yn ardderchog. Mae o… wedi\'i goginio\'n… araf, efo rhosmari.'
 const RAW_SECOND = 'Esgusodwch fi,… ydy\'r sedd yma… wedi\'i chymryd?'
@@ -180,7 +189,7 @@ describe('RecordistRoom — done vs outstanding, at a glance', () => {
     await flushPromises()
 
     expect(wrapper.find('.roster-list').exists()).toBe(false)   // closed by default: no wall of rows
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
 
     const rows = wrapper.findAll('.roster-list .row')
     expect(rows).toHaveLength(2)
@@ -297,7 +306,7 @@ describe('RecordistRoom — rewriting a line', () => {
     stubEditableQueue(false)
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_catrinlliar_cym_n' } })
     await flushPromises()
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
     expect(wrapper.findAll('.row-text.tappable')).toHaveLength(0)
     await wrapper.findAll('.roster-list .row')[0].find('.row-text').trigger('click')
     expect(wrapper.find('.row-edit').exists()).toBe(false)
@@ -353,7 +362,7 @@ describe('RecordistRoom — rewriting a line', () => {
     stubEditableQueue(true, { unlinkedAudioId: 'clip-1' })
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_tom_zzz' } })
     await flushPromises()
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
     await wrapper.findAll('.roster-list .row')[0].find('.row-text').trigger('click')
     await wrapper.find('.row-edit').setValue('Bore da iawn')
     await wrapper.find('.row-edit').trigger('blur')
@@ -398,7 +407,7 @@ describe('RecordistRoom — one tap back onto a line', () => {
   it('re-records a finished line straight from the list, without the re-read switch', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'test-voice' } })
     await flushPromises()
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
 
     const rows = wrapper.findAll('.roster-list .row')
     expect(rows[0].find('.row-record').text()).toBe('Record again')   // already recorded
@@ -490,7 +499,7 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
   it('shows the character on a conversation line, and NEVER why a take was rejected', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
     await flushPromises()
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
 
     const sections = wrapper.findAll('.roster-list .section')
     expect(sections).toHaveLength(3)
@@ -556,7 +565,7 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
   it('says nothing about a take we rejected before today, and everything about one refused just now', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
     await flushPromises()
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
 
     // HISTORY IS SILENT, on the page she lands on. The rejected line's own
     // reason is nowhere, even though the fixture's wire still offers it.
@@ -585,7 +594,7 @@ describe('RecordistRoom — the three kinds of work, disambiguated', () => {
   it('never loses a line from the map, and never counts one twice', async () => {
     const wrapper = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
     await flushPromises()
-    await wrapper.find('.roster-toggle').trigger('click')
+    await openEveryLine(wrapper)
 
     const counts = wrapper.findAll('.section-map-row .sm-count').map(n => Number(n.text()))
     expect(counts.reduce((a, b) => a + b, 0)).toBe(4)

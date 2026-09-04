@@ -97,11 +97,37 @@
 
     <ol v-if="open" class="roster-list">
      <li v-for="s in sections" :key="s.key" class="section">
+      <!-- SHUT UNTIL HE OPENS ONE. Tom, 2026-09-04, looking at this list opened
+           to 769 rows in one continuous scroll: "the same logic shoudl apply to
+           the see all my lines I think — I think that would be clearer". The
+           wall of rows behind one tap was already the point of this panel; it
+           was still a wall once you were inside it. So the panel now opens onto
+           headings, and a section's rows arrive when he asks for that section.
+           THE HEADING IS THE BUTTON — no chevron, no hover, no long-press —
+           because the artists work on a phone with a thumb, and the same
+           reasoning that made every mark in the grid above a button applies
+           here. The mark, then the count, then the name, in the same shape as
+           the already-recorded list on the settings panel: the two lists on
+           this screen are the same lines, so they read the same way. -->
       <h3 class="section-head">
-        <span class="sh-count">{{ s.rows.length }}</span> {{ s.heading }}
-        <small>{{ tallyWords(s) }}</small>
+        <button
+          type="button"
+          class="sh-btn"
+          :aria-expanded="isOpen(s) ? 'true' : 'false'"
+          @click="toggle(s.key)"
+        >
+          <span class="sh-mark" aria-hidden="true">{{ isOpen(s) ? '–' : '+' }}</span>
+          <span class="sh-count">{{ s.rows.length }}</span>
+          <span class="sh-name">{{ s.heading }}</span>
+          <!-- Kept on the shut heading on purpose (Tom asked for it on
+               2026-09-02): it is this section's own two numbers, and it is the
+               one thing worth knowing about a section you have not opened. The
+               queue's explanatory blurb is NOT repeated here — that would undo
+               the shortening this change exists for; it is on the map above. -->
+          <small class="sh-tally">{{ tallyWords(s) }}</small>
+        </button>
       </h3>
-      <ol class="section-rows">
+      <ol v-if="isOpen(s)" class="section-rows">
       <li v-for="r in s.rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
           <span class="row-mark" aria-hidden="true"></span>
           <!-- WHO IS SPEAKING. A two-hander read without the character names is
@@ -187,6 +213,7 @@
  */
 import { ref, computed, watch, nextTick } from 'vue'
 import { caretOffsetFromPoint, openEditorAt } from '@/utils/caretFromPoint'
+import { useSectionCollapse } from './section-collapse'
 
 const props = defineProps({
   // [{ key, heading, blurb, rows: [{ id, text, done, hasTake, url, canEdit, speaker, alsoFills }] }]
@@ -273,9 +300,21 @@ function commit(id) {
   if (props.editingId !== id || props.saving) return
   emit('save', { id, text: draft.value })
 }
+// WHICH SECTIONS ARE OPEN, from the one module the already-recorded list uses
+// too. His taps are remembered for the life of the page: shutting "See every
+// line" and opening it again puts the panel back the way he left it.
+const { isOpen, toggle, openFor } = useSectionCollapse()
+
 // Opening the list is how a done line gets edited, so an edit started from
-// anywhere else must not leave it hidden.
-watch(() => props.editingId, (id) => { if (id) open.value = true })
+// anywhere else must not leave it hidden — AND SINCE THE SECTIONS COLLAPSED,
+// opening the list is no longer enough: the row's own section has to open too,
+// or he is typing into a textarea that is not on the screen.
+watch(() => props.editingId, (id) => {
+  if (!id) return
+  open.value = true
+  const section = props.sections.find(s => s.rows.some(r => r.id === id))
+  if (section) openFor(section.key)
+})
 
 // Counted from the rows themselves rather than passed in: two numbers that can
 // disagree with the marks above them is precisely the confusion being fixed.
@@ -417,8 +456,36 @@ function tallyWords(section) {
   background: var(--color-void, #0f172a);
   font-size: 0.95rem;
 }
-.section-head small { display: block; font-weight: 400; opacity: 0.7; font-variant-numeric: tabular-nums; }
+/* The whole heading is the hit target, full width and thumb-height. */
+.sh-btn {
+  display: grid;
+  grid-template-columns: 1.1rem auto 1fr;
+  align-items: baseline;
+  gap: 0 0.5rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.sh-btn:focus-visible { outline: 2px solid var(--color-emerald, #06ffa5); outline-offset: 2px; }
+.sh-mark { font-size: 1.1rem; font-weight: 700; opacity: 0.8; line-height: 1; }
 .sh-count { font-size: 1.25rem; font-weight: 800; font-variant-numeric: tabular-nums; }
+.sh-name { font-weight: 700; }
+.sh-tally {
+  grid-column: 2 / 4;
+  display: block;
+  font-weight: 400;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  font-variant-numeric: tabular-nums;
+}
 .section-rows { list-style: none; margin: 0; padding: 0; }
 .roster-toggle {
   min-height: 44px;
