@@ -4,7 +4,8 @@
  * explanatory power" paradigm (first: ssi-learning-app, 2026-07-27).
  * Design: docs/self-explaining-popty.md.
  *
- * Reads live truth out of Popty's own source — the nav tabs on AppNavbar.vue,
+ * Reads live truth out of Popty's own source — the nav declaration in
+ * src/nav/navigation.js (labels, destinations and their one-line descriptions),
  * the role model in useAuth.js/UserManagement.vue, the course-builder gates
  * (validation.cjs, language-config.cjs), the voice policy
  * (human-voice-courses.cjs), the phase pipeline in SYSTEM.md — plus the
@@ -21,7 +22,7 @@
 import { readFileSync, writeFileSync, mkdirSync, readdirSync, existsSync, statSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { dirname, join } from 'node:path'
-import { fileURLToPath } from 'node:url'
+import { fileURLToPath, pathToFileURL } from 'node:url'
 
 const HERE = dirname(fileURLToPath(import.meta.url))
 const ROOT = join(HERE, '..', '..')
@@ -39,15 +40,9 @@ const read = (rel) => readFileSync(join(ROOT, rel), 'utf8')
 const failures = []
 const warnings = []
 
-// ─── 1. DERIVE — parse live truth out of the surfaces' own source ───────────
-
-// 1a. Nav tabs from AppNavbar.vue — the literal { label, to } objects in the
-// primaryTabs / sectionTabs computeds. Section attribution by slicing the
-// computed bodies, so a moved tab re-classifies itself.
-const navSrc = read('src/components/AppNavbar.vue')
-const parseTabs = (slice) =>
-  [...slice.matchAll(/\{\s*label:\s*'([^']+)',\s*to:\s*(?:'([^']+)'|`([^`]+)`)/g)]
-    .map((m) => ({ label: m[1], to: m[2] || m[3] }))
+// Slice a source file between two markers — used to read the parts of a file
+// that are declarations (an exports block, a Set literal) without pretending
+// to parse the language.
 const sliceBetween = (src, startRe, endRe) => {
   const start = src.search(startRe)
   if (start < 0) return ''
@@ -55,21 +50,39 @@ const sliceBetween = (src, startRe, endRe) => {
   const end = rest.search(endRe)
   return end < 0 ? rest : rest.slice(0, end)
 }
-const primaryTabs = parseTabs(sliceBetween(navSrc, /const primaryTabs/, /const sectionTabs/))
-const sectionSrc = sliceBetween(navSrc, /const sectionTabs/, /onMounted/)
-// Section order in the computed (IA of 2026-07-28, "Rulings + How-to"):
-// stocktake row → admin row → production → create → courses/canonical → how.
-const stocktakeTabs = parseTabs(sliceBetween(sectionSrc, /isStocktake\.value/, /isAdminSection\.value/))
-const adminTabs = parseTabs(sliceBetween(sectionSrc, /isAdminSection\.value/, /isProduction\.value/))
-const productionTabs = parseTabs(sliceBetween(sectionSrc, /isProduction\.value/, /if \(isCreateMode\.value\)/))
-const coursesTabs = parseTabs(sliceBetween(sectionSrc, /isCoursesBoard\.value \|\| isCanonical\.value/, /isHow\.value/))
-const howTabs = parseTabs(sliceBetween(sectionSrc, /isHow\.value/, /return \[\]/))
-if (primaryTabs.length < 3) failures.push(`DERIVE: only ${primaryTabs.length} primary tabs parsed from AppNavbar.vue`)
-if (!primaryTabs.some((t) => t.label === 'Pedagogy')) failures.push('DERIVE: primary "Pedagogy" tab (the founder-authored rulings surface) not found in AppNavbar.vue')
-if (adminTabs.length < 4) failures.push(`DERIVE: only ${adminTabs.length} admin section tabs parsed from AppNavbar.vue`)
-if (stocktakeTabs.length < 4) failures.push(`DERIVE: only ${stocktakeTabs.length} stock-take tabs parsed from AppNavbar.vue`)
-if (coursesTabs.length < 4) failures.push(`DERIVE: only ${coursesTabs.length} courses-section tabs parsed from AppNavbar.vue`)
-if (!productionTabs.some((t) => t.label === 'Overview')) failures.push('DERIVE: production "Overview" tab not found in AppNavbar.vue')
+
+// ─── 1. DERIVE — parse live truth out of the surfaces' own source ───────────
+
+// 1a. Nav tabs — read straight out of the ONE nav declaration
+// (src/nav/navigation.js, 2026-09-04). Not parsed: that module is plain JS on
+// purpose, so the compiler imports the same objects the navbar renders. Each
+// destination carries a one-line `description` there, and the explanation is
+// built from those — there is no second copy of the nav for anyone to keep in
+// step, which is the whole reason this block stopped regex-scraping
+// AppNavbar.vue (that scrape returned zero tabs the moment the nav moved).
+const nav = await import(pathToFileURL(join(ROOT, 'src/nav/navigation.js')).href)
+const STUB_ROUTE = { path: '/production/:courseCode', name: '', params: { courseCode: ':courseCode' } }
+const tabsOf = (id) => {
+  const section = nav.SECTIONS.find((s) => s.id === id)
+  if (!section) { failures.push(`DERIVE: nav section "${id}" no longer exists in src/nav/navigation.js`); return [] }
+  const items = typeof section.items === 'function' ? section.items(STUB_ROUTE) : section.items
+  return items.map((i) => ({ label: i.label, to: i.to, description: nav.descriptionOf(i) }))
+}
+const primaryTabs = nav.PRIMARY_TABS.map((t) => ({ label: t.label, to: t.to, description: nav.descriptionOf(t) }))
+const stocktakeTabs = tabsOf('stocktake')
+const adminTabs = tabsOf('admin')
+const productionTabs = tabsOf('course')
+const coursesTabs = tabsOf('courses')
+const pedagogyTabs = tabsOf('pedagogy')
+// THE ONE GATE THAT MATTERS HERE: a destination with no description would
+// leave the app unable to say what one of its own pages is for, and there is
+// nowhere else to say it. Adding a page is one entry; describing it is part of
+// that entry.
+for (const t of [...primaryTabs, ...stocktakeTabs, ...adminTabs, ...productionTabs, ...coursesTabs, ...pedagogyTabs]) {
+  if (!t.description) failures.push(`DERIVE: nav destination "${t.label}" (${t.to}) carries no description — the explainer has nothing to say about it`)
+}
+if (!primaryTabs.some((t) => t.label === 'Pedagogy')) failures.push('DERIVE: primary "Pedagogy" tab (the founder-authored rulings surface) not found in the nav declaration')
+if (!productionTabs.some((t) => t.label === 'Overview')) failures.push('DERIVE: production "Overview" tab not found in the nav declaration')
 
 // 1b. Role model — the truth persona rendering hangs off. Roles come from the
 // UserManagement role <option>s plus the role computeds in useAuth.
@@ -184,40 +197,19 @@ const supabaseTables = [...tableRefs.keys()].sort().map((t) => ({
   deprecated: DEPRECATED_TABLES.includes(t) || undefined,
 }))
 
-// NOTE (2026-09-04): this whole 1a block still parses AppNavbar.vue, which no
-// longer holds literal tab objects — the navigation moved to the single
-// declaration in src/nav/navigation.js on 2026-09-04 (78c6173c2), so every
-// DERIVE check below already fails. Repointing it at that declaration is the
-// fix, but the DRIFT gate then demands the founder's ruling prose name every
-// current tab, and that prose is Tom's to write, not a worker's. Left failing
-// and reported rather than half-fixed.
-
-// 1i. Explaining-surface classification (adapted to the 2026-07-28 IA:
-// "Rulings + How-to"). Every tab of the three explaining homes must be
-// declared: COMPILED (the Stock-take pages — derived, never stale), RULINGS
-// (the Pedagogy page — founder-authored prose), or DATA (the canonical
-// browsers under Courses). A new tab on any of these rows that nobody
-// classifies fails the compile, so the estate can't silently grow
-// un-governed pages again. 'Library' is the course library itself, not an
-// explaining surface — exempt.
-const DOCS_SURFACE = {
-  compiled: ['Stock-take', 'Pipeline', 'Glossary', 'APML'],
-  rulings: ['Pedagogy'],
-  data: ['Seeds', 'Content', 'Pods', 'Script Lab', 'Metagraph'],
-}
-{
-  const classified = Object.values(DOCS_SURFACE).flat()
-  const governed = [
-    ...stocktakeTabs,
-    ...howTabs,
-    ...coursesTabs.filter((t) => t.label !== 'Library'),
-  ]
-  for (const t of governed) {
-    if (!classified.includes(t.label)) failures.push(`DERIVE: explaining-surface tab "${t.label}" is not classified compiled/rulings/data in DOCS_SURFACE — rule on it before it ships`)
-  }
-  for (const label of classified) {
-    if (!governed.some((t) => t.label === label)) warnings.push(`DOCS_SURFACE classifies "${label}" but no such tab exists on the stock-take/how/courses rows in AppNavbar.vue`)
-  }
+// 1i. Explaining-surface classification. Every explaining page is COMPILED
+// (the Stock-take row — derived, never stale), RULINGS (the Pedagogy page —
+// founder-authored prose) or DATA (the canonical browsers under Courses).
+// The classification is by NAV SECTION, not by a list of labels: a new page
+// arriving on one of those rows inherits its section's kind and needs no
+// second edit here, and a section disappearing fails the compile. 'Library'
+// is the course library itself, not an explaining surface — exempt.
+const SECTION_KIND = { stocktake: 'compiled', pedagogy: 'rulings', courses: 'data' }
+const DOCS_SURFACE = { compiled: [], rulings: [], data: [] }
+for (const [sectionId, kind] of Object.entries(SECTION_KIND)) {
+  const tabs = { stocktake: stocktakeTabs, pedagogy: pedagogyTabs, courses: coursesTabs }[sectionId]
+  if (!tabs.length) { failures.push(`DERIVE: explaining section "${sectionId}" has no tabs — the ${kind} surface has vanished`); continue }
+  DOCS_SURFACE[kind].push(...tabs.filter((t) => t.label !== 'Library').map((t) => t.label))
 }
 
 // ─── 2. RULINGS — the hand-written persona voices ───────────────────────────
@@ -233,6 +225,31 @@ for (const persona of [...APP_PERSONAS, ...FILE_PERSONAS]) {
     explanations[persona][m[1]] = m[2].trim()
   }
   if (!Object.keys(explanations[persona]).length) failures.push(`RULINGS: ${persona}.md has no "## <section>" sections`)
+}
+
+// 2a. NAV DOORS — the one part of a ruling that has to agree with the nav is
+// not written in the ruling at all. A `{{coursesDoors}}` token expands to that
+// row's destinations and their declared descriptions (src/nav/navigation.js),
+// so a page added, renamed or deleted rewrites the prose on the next compile
+// and nobody hand-patches a second copy. Founder's ruling, 2026-09-04: no
+// hand-written step. Everything AROUND the token is still mechanism prose,
+// which is what a ruling is for.
+const doorProse = (tabs) => tabs.map((t) => `**${t.label}** — ${t.description}`).join(' ')
+const NAV_DOORS = {
+  primaryDoors: primaryTabs,
+  nonAdminDoors: primaryTabs.filter((t) => t.label !== 'Admin'), // an editor never stands in the admin room
+  adminDoors: adminTabs.filter((t) => t.label !== 'Admin'), // the hub's own tab is the page you're on
+  stocktakeDoors: stocktakeTabs,
+  coursesDoors: coursesTabs,
+  pedagogyDoors: pedagogyTabs,
+}
+for (const [persona, sections] of Object.entries(explanations)) {
+  for (const [name, text] of Object.entries(sections)) {
+    sections[name] = text.replace(/\{\{(\w+)\}\}/g, (_, token) => {
+      if (!NAV_DOORS[token]) { failures.push(`RULINGS: ${persona}.md § ${name} uses unknown token {{${token}}}`); return '' }
+      return doorProse(NAV_DOORS[token])
+    })
+  }
 }
 
 // 2b. Docs rulings — the founder-authored prose the Docs surface presents
@@ -287,7 +304,7 @@ const mustName = {
     ...primaryTabs.filter((t) => t.label !== 'Admin'),
     ...productionTabs,
     ...coursesTabs,
-    ...howTabs,
+    ...pedagogyTabs,
   ].map((t) => t.label),
   recorder: ['Record Room'],
 }
@@ -404,7 +421,7 @@ if (failures.length) {
 // ─── 4. ASSEMBLE ────────────────────────────────────────────────────────────
 
 const truth = {
-  navTabs: { primary: primaryTabs, admin: adminTabs, production: productionTabs, courses: coursesTabs, how: howTabs, stocktake: stocktakeTabs },
+  navTabs: { primary: primaryTabs, admin: adminTabs, production: productionTabs, courses: coursesTabs, pedagogy: pedagogyTabs, stocktake: stocktakeTabs },
   roles: [...roles].sort(),
   activeWorkflow: wfMatch?.[1]?.trim() ?? null,
   phasePorts,
@@ -565,7 +582,7 @@ writeFileSync(join(ROOT, 'docs/explainer-dev.md'), [
   `- Active workflow (SYSTEM.md): ${truth.activeWorkflow}`,
   `- Phase servers: ${phasePorts.map((p) => `${p.name} :${p.port}${p.phase !== '-' ? ` (phase ${p.phase})` : ''}`).join(' · ')}`,
   `- Roles (dashboard_users.role): ${truth.roles.join(', ')} — persona rendering hangs off exactly these.`,
-  `- Nav surfaces: ${primaryTabs.map((t) => t.label).join(' / ')}; admin section: ${adminTabs.map((t) => t.label).join(', ')}; rulings: ${howTabs.map((t) => t.label).join(', ')}; stock-take: ${stocktakeTabs.map((t) => t.label).join(', ')}; courses: ${coursesTabs.map((t) => t.label).join(', ')}.`,
+  `- Nav surfaces: ${primaryTabs.map((t) => t.label).join(' / ')}; admin section: ${adminTabs.map((t) => t.label).join(', ')}; rulings: ${pedagogyTabs.map((t) => t.label).join(', ')}; stock-take: ${stocktakeTabs.map((t) => t.label).join(', ')}; courses: ${coursesTabs.map((t) => t.label).join(', ')}.`,
   ``,
 ].join('\n'))
 

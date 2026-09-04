@@ -30,7 +30,8 @@ import {
   sectionFor,
   sectionTabs,
   primaryTabs,
-  hubCards
+  hubCards,
+  descriptionOf
 } from './navigation.js'
 
 const read = (rel) => readFileSync(fileURLToPath(new URL(rel, import.meta.url)), 'utf8')
@@ -157,5 +158,25 @@ describe('the two admin surfaces cannot disagree', () => {
     const hub = read('../views/Admin.vue')
     expect(hub).toContain("from '../nav/navigation'")
     expect(hub).not.toMatch(/title:\s*'/)
+  })
+})
+
+// The explainer compiles the app's self-explanation out of these descriptions
+// (tools/explainer/compile.mjs) rather than out of prose that has to agree
+// with the nav. That only holds if every destination carries one: an
+// undescribed page would be a page the app cannot say anything about, and the
+// old answer — write a sentence about it somewhere else — is the second copy
+// this file exists to abolish.
+describe('every destination says what it is for', () => {
+  const stubRoute = { path: '/production/:courseCode', name: '', params: { courseCode: ':courseCode' } }
+  const everyItem = [
+    ...PRIMARY_TABS,
+    ...SECTIONS.flatMap((s) => (typeof s.items === 'function' ? s.items(stubRoute) : s.items))
+  ]
+
+  it.each(everyItem)('$label carries a one-line description', (item) => {
+    const description = descriptionOf(item)
+    expect(description, `${item.label} (${item.to}) has no description`).toBeTruthy()
+    expect(description.trim()).not.toBe('')
   })
 })

@@ -1,6 +1,6 @@
 # Popty for course-builder agents — compiled
 
-**Version `f222c9ee9159` · generated 2026-08-03. DO NOT EDIT — this file is derived from the course-builder's own source; edit tools/explainer/rulings/agent.md for the voice, or the code for the facts, then recompile.**
+**Version `f6d60e628056` · generated 2026-09-04. DO NOT EDIT — this file is derived from the course-builder's own source; edit tools/explainer/rulings/agent.md for the voice, or the code for the facts, then recompile.**
 
 ### contract
 
@@ -22,9 +22,9 @@ at compile time.
 ## Derived truth (from the code, this compile)
 
 - Endpoints in `services/course-builder/routes/seed-complete.cjs`: `POST /api/lego` · `POST /api/batch` · `POST /api/seed/complete`
-- Validation gates (`validation.cjs` exports): `checkTiling`, `checkMetadataGloss`, `checkKnownSide`, `isKnownVocabBreach`, `checkPhraseComplexity`, `checkVocabViolations`, `checkPhraseBalance`, `checkLegoConflict`, `checkLegoOverlap`, `checkPhraseZUT`, `checkBasketFrameCoverage`, `classifySeedPattern`, `classifyBuildPhrase`, `checkBuildRecombination`
+- Validation gates (`validation.cjs` exports): `checkTiling`, `checkMetadataGloss`, `checkKnownSide`, `isKnownVocabBreach`, `checkPhraseComplexity`, `checkVocabViolations`, `checkPhraseBalance`, `checkLegoConflict`, `isLicensedGenderVariant`, `isDedupConflict`, `checkLegoOverlap`, `checkPhraseZUT`, `checkBasketFrameCoverage`, `classifySeedPattern`, `classifyBuildPhrase`, `checkBuildRecombination`, `checkBuildTeachesWord`, `checkBuildBasketTeachesWord`
 - `MAX_LEGO_SYLLABLES = 8` (`language-config.cjs`; runs even under skip_validation)
 - Known-vocab gate is HARD-BLOCKING (`isKnownVocabBreach`, since b77c75f7): known-side vocab breaches 400 the submission.
-- Pair contracts on disk: eng_for_ben.contract.cjs, eng_for_guj.contract.cjs, eng_for_hin.contract.cjs, eng_for_pan.contract.cjs, eng_for_sin.contract.cjs, eng_for_tam.contract.cjs, eng_for_urd.contract.cjs, fra_for_eng.contract.cjs, zho_for_eng.contract.cjs (+ `_default_eng` fallback for eng-known courses).
-- Human-voice-only courses (TTS refused at the chokepoint): cym_n_for_eng, cym_s_for_eng, bre_for_fra, plus every `cym_*` course.
+- Pair contracts on disk: eng_for_ben.contract.cjs, eng_for_guj.contract.cjs, eng_for_hin.contract.cjs, eng_for_pan.contract.cjs, eng_for_sin.contract.cjs, eng_for_tam.contract.cjs, eng_for_urd.contract.cjs, fra_for_eng.contract.cjs, fur_for_eng.contract.cjs, ind_for_eng.contract.cjs, kan_for_eng.contract.cjs, nap_for_eng.contract.cjs, roh_for_eng.contract.cjs, scn_for_eng.contract.cjs, sme_for_eng.contract.cjs, vec_for_eng.contract.cjs, zho_for_eng.contract.cjs (+ `_default_eng` fallback for eng-known courses).
+- Human-voice-only courses (TTS refused at the chokepoint): cym_n_for_eng, cym_s_for_eng, bre_for_fra, pdc_for_eng, plus every `cym_*` course.
 - Content passes end by QUEUEING an audio pass (`queueAudioPass`), never by running TTS.

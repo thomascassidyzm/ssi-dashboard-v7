@@ -1,106 +1,138 @@
 {
-  "version": "f222c9ee9159",
-  "generatedAt": "2026-08-03",
+  "version": "f6d60e628056",
+  "generatedAt": "2026-09-04",
   "truth": {
     "navTabs": {
       "primary": [
         {
           "label": "Courses",
-          "to": "/courses"
+          "to": "/courses",
+          "description": "The course library, the canonical browsers, and every working surface inside a course."
         },
         {
-          "label": "How & Why",
-          "to": "/how"
+          "label": "Pedagogy",
+          "to": "/pedagogy",
+          "description": "The founder's teaching model — what a LEGO is, the extraction heuristics, and ZUT."
         },
         {
           "label": "Admin",
-          "to": "/admin"
+          "to": "/admin",
+          "description": "The platform room — labs, insights, activity, maintenance, users, recording and builds."
         }
       ],
       "admin": [
         {
           "label": "Admin",
-          "to": "/admin"
+          "to": "/admin",
+          "description": "The platform hub — every admin surface as a card, grouped by what a change reaches."
         },
         {
-          "label": "Configs",
-          "to": "/admin/configs"
+          "label": "Labs",
+          "to": "/admin/labs",
+          "description": "Every lab in one place — Listening, Speaking, Voice, Pod, Script, VAD, Basket and Capture A/B — grouped by blast radius: who a change reaches, and when."
         },
         {
           "label": "Insights",
-          "to": "/insights"
+          "to": "/insights",
+          "description": "Cross-course insight boards — lifecycle, rate, coverage, content, and ops signals."
         },
         {
           "label": "Activity",
-          "to": "/jobs"
+          "to": "/jobs",
+          "description": "Running and recent jobs across the production pipeline — what is building right now."
         },
         {
           "label": "Maintenance",
-          "to": "/maintenance"
+          "to": "/maintenance",
+          "description": "Housekeeping and health — audit log, archive, and platform upkeep."
         },
         {
           "label": "Users",
-          "to": "/users"
+          "to": "/users",
+          "description": "Manage dashboard accounts, recorders, roles, and invite codes."
+        },
+        {
+          "label": "Recording",
+          "to": "/admin/recording",
+          "description": "Which languages we record with people instead of TTS, how far each has got, and the link to send each recordist."
+        },
+        {
+          "label": "Test builds",
+          "to": "/builds",
+          "description": "The current Android test build, how to install it, and where it came from."
         },
         {
           "label": "Stock-take",
-          "to": "/stocktake"
+          "to": "/stocktake",
+          "description": "The compiled current-state reference — pipeline, glossary and APML, regenerated from the code."
         }
       ],
       "production": [
         {
           "label": "Overview",
-          "to": "/production/${code}"
+          "to": "/production/:courseCode",
+          "description": "One course's hub — text, audio, recording and QA, each as a card."
         }
       ],
       "courses": [
         {
           "label": "Library",
-          "to": "/courses"
+          "to": "/courses",
+          "description": "Every course on the estate, with its state, opened for editing."
         },
         {
           "label": "Seeds",
-          "to": "/canonical/seeds"
+          "to": "/canonical/seeds",
+          "description": "The canonical seed sentences, in pedagogical order, with their {target} placeholders."
         },
         {
           "label": "Content",
-          "to": "/canonical/content"
+          "to": "/canonical/content",
+          "description": "The canonical content store — seeds, encouragements and the per-pair welcome messages."
         },
         {
           "label": "Pods",
-          "to": "/canonical/pods"
+          "to": "/canonical/pods",
+          "description": "The listening pods — the canonical English master and the pods generated from it."
+        },
+        {
+          "label": "Script Lab",
+          "to": "/canonical/scripts",
+          "description": "The canonical English master scripts — edited here, and nowhere else."
+        },
+        {
+          "label": "Metagraph",
+          "to": "/canonical/metagraph",
+          "description": "The shape the scripts are walks over — what the learner has to survive, in delivery order."
         }
       ],
-      "how": [
-        {
-          "label": "How & Why",
-          "to": "/how"
-        },
+      "pedagogy": [
         {
           "label": "Pedagogy",
-          "to": "/how/pedagogy"
-        },
-        {
-          "label": "Pod Thinking",
-          "to": "/how/pod-thinking"
+          "to": "/pedagogy",
+          "description": "The teaching model itself — the two extraction heuristics, what a LEGO is, and why ZUT decides."
         }
       ],
       "stocktake": [
         {
           "label": "Stock-take",
-          "to": "/stocktake"
+          "to": "/stocktake",
+          "description": "The index of the compiled reference — what each derived page covers, and when it was compiled."
         },
         {
           "label": "Pipeline",
-          "to": "/stocktake/pipeline"
+          "to": "/stocktake/pipeline",
+          "description": "The phase servers, the agent endpoints, the validation gates and the database tables the code actually touches."
         },
         {
           "label": "Glossary",
-          "to": "/stocktake/glossary"
+          "to": "/stocktake/glossary",
+          "description": "The shared terms, each pinned to the table that holds it or the gate that enforces it."
         },
         {
           "label": "APML",
-          "to": "/stocktake/apml"
+          "to": "/stocktake/apml",
+          "description": "The specification lineage, and the current-state facts it is checked against."
         }
       ]
     },
@@ -170,12 +202,16 @@
         "checkVocabViolations",
         "checkPhraseBalance",
         "checkLegoConflict",
+        "isLicensedGenderVariant",
+        "isDedupConflict",
         "checkLegoOverlap",
         "checkPhraseZUT",
         "checkBasketFrameCoverage",
         "classifySeedPattern",
         "classifyBuildPhrase",
-        "checkBuildRecombination"
+        "checkBuildRecombination",
+        "checkBuildTeachesWord",
+        "checkBuildBasketTeachesWord"
       ],
       "maxLegoSyllables": 8,
       "knownVocabGateBlocking": true,
@@ -188,6 +224,14 @@
         "eng_for_tam.contract.cjs",
         "eng_for_urd.contract.cjs",
         "fra_for_eng.contract.cjs",
+        "fur_for_eng.contract.cjs",
+        "ind_for_eng.contract.cjs",
+        "kan_for_eng.contract.cjs",
+        "nap_for_eng.contract.cjs",
+        "roh_for_eng.contract.cjs",
+        "scn_for_eng.contract.cjs",
+        "sme_for_eng.contract.cjs",
+        "vec_for_eng.contract.cjs",
         "zho_for_eng.contract.cjs"
       ]
     },
@@ -195,7 +239,8 @@
       "humanVoiceCourses": [
         "cym_n_for_eng",
         "cym_s_for_eng",
-        "bre_for_fra"
+        "bre_for_fra",
+        "pdc_for_eng"
       ],
       "cymPrefixRule": true,
       "contentPassesQueueAudio": true
@@ -220,6 +265,18 @@
         "refs": 1
       },
       {
+        "table": "app_config",
+        "refs": 1
+      },
+      {
+        "table": "audio_clip_flags",
+        "refs": 1
+      },
+      {
+        "table": "audio_clip_signoffs",
+        "refs": 1
+      },
+      {
         "table": "audio_flags",
         "refs": 5
       },
@@ -232,6 +289,10 @@
         "refs": 1
       },
       {
+        "table": "audio_repair_candidates",
+        "refs": 1
+      },
+      {
         "table": "build_jobs",
         "refs": 10
       },
@@ -241,7 +302,11 @@
       },
       {
         "table": "canonical_pod_scenarios",
-        "refs": 2
+        "refs": 3
+      },
+      {
+        "table": "canonical_pod_walk_steps",
+        "refs": 1
       },
       {
         "table": "canonical_seed_translations",
@@ -256,12 +321,24 @@
         "refs": 1
       },
       {
+        "table": "content_edit_events",
+        "refs": 1
+      },
+      {
         "table": "content_feedback",
         "refs": 3
       },
       {
         "table": "course_audio",
-        "refs": 20
+        "refs": 31
+      },
+      {
+        "table": "course_audio_envelope",
+        "refs": 1
+      },
+      {
+        "table": "course_audio_revisions",
+        "refs": 4
       },
       {
         "table": "course_checkpoint_config",
@@ -281,19 +358,59 @@
       },
       {
         "table": "course_gender_expansions",
-        "refs": 5
+        "refs": 6
+      },
+      {
+        "table": "course_human_recorded_roles",
+        "refs": 1
       },
       {
         "table": "course_legos",
-        "refs": 42
+        "refs": 47
       },
       {
         "table": "course_practice_phrases",
-        "refs": 38
+        "refs": 44
+      },
+      {
+        "table": "course_qa_clip_status",
+        "refs": 1
+      },
+      {
+        "table": "course_qa_cycle_clips",
+        "refs": 1
+      },
+      {
+        "table": "course_qa_cycle_status",
+        "refs": 1
+      },
+      {
+        "table": "course_qa_estate",
+        "refs": 1
       },
       {
         "table": "course_qa_flags",
         "refs": 6
+      },
+      {
+        "table": "course_qa_gate",
+        "refs": 1
+      },
+      {
+        "table": "course_qa_round_status",
+        "refs": 1
+      },
+      {
+        "table": "course_round_assignments",
+        "refs": 1
+      },
+      {
+        "table": "course_round_signoffs",
+        "refs": 1
+      },
+      {
+        "table": "course_sectors",
+        "refs": 1
       },
       {
         "table": "course_seed_drafts",
@@ -301,11 +418,11 @@
       },
       {
         "table": "course_seeds",
-        "refs": 43
+        "refs": 50
       },
       {
         "table": "courses",
-        "refs": 64
+        "refs": 73
       },
       {
         "table": "dashboard_invite_codes",
@@ -321,7 +438,7 @@
       },
       {
         "table": "dashboard_users",
-        "refs": 5
+        "refs": 7
       },
       {
         "table": "documentation_content",
@@ -329,6 +446,10 @@
       },
       {
         "table": "documentation_sections",
+        "refs": 1
+      },
+      {
+        "table": "human_clip_speakers",
         "refs": 1
       },
       {
@@ -340,20 +461,28 @@
         "refs": 1
       },
       {
+        "table": "language_recording_policy",
+        "refs": 3
+      },
+      {
+        "table": "learner_pod_state",
+        "refs": 1
+      },
+      {
         "table": "learners",
-        "refs": 2
+        "refs": 3
       },
       {
         "table": "lego_introductions",
-        "refs": 4
+        "refs": 5
       },
       {
         "table": "listening_pod_sentences",
-        "refs": 12
+        "refs": 13
       },
       {
         "table": "listening_pods",
-        "refs": 8
+        "refs": 13
       },
       {
         "table": "orchestrator_messages",
@@ -377,7 +506,7 @@
       },
       {
         "table": "recording_provenance",
-        "refs": 2
+        "refs": 4
       },
       {
         "table": "sample_flags",
@@ -400,8 +529,12 @@
         "refs": 1
       },
       {
-        "table": "voices",
+        "table": "voice_language_roles",
         "refs": 2
+      },
+      {
+        "table": "voices",
+        "refs": 9
       }
     ]
   },
@@ -414,14 +547,14 @@
         "APML"
       ],
       "rulings": [
-        "How & Why",
-        "Pedagogy",
-        "Pod Thinking"
+        "Pedagogy"
       ],
       "data": [
         "Seeds",
         "Content",
-        "Pods"
+        "Pods",
+        "Script Lab",
+        "Metagraph"
       ]
     },
     "glossary": [
@@ -527,17 +660,17 @@
   },
   "explanations": {
     "admin": {
-      "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. Three doors at the top: **Courses** is the library, the\ncanonical browsers (**Seeds**, **Content**, **Pods**) and every working surface inside a\ncourse; **How & Why** is the app explaining itself — the how-to for what you do here plus the\nfounder's rulings; and **Admin** is the platform room — the whole estate at a glance.",
+      "home": "Popty is where courses get made — everything a learner ever hears starts here and flows\nthrough Supabase to the learning app. The doors at the top: **Courses** — The course library, the canonical browsers, and every working surface inside a course. **Pedagogy** — The founder's teaching model — what a LEGO is, the extraction heuristics, and ZUT. **Admin** — The platform room — labs, insights, activity, maintenance, users, recording and builds.",
       "courses": "Each course card opens on its Overview hub — one door per course, with every working surface\nas a card inside: text generation, audio, recording, QA. Course content lives in the database,\nnot in files; what you see here is what learners get. Text edits never mint audio by\nthemselves — a content pass ends by queueing an audio-pass request, and audio is only ever\ngenerated after an approved pass, because every minted clip costs real money.",
-      "admin": "The Admin section is the platform-wide view. **Configs** holds per-course voice and listening\nsetup — a course without voice config cannot make audio. **Insights** is the measurement room.\n**Activity** shows the builds and jobs actually running right now; a course that should be\nmoving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts\ndays since the last audit, so a growing number is the system telling you it hasn't been\nchecked. **Users** is where access lives: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room. **Stock-take** is the compiled\nreference — step in when you want to take stock of the system's current state.",
-      "how": "The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one\nsurface: the how-to, written for what the signed-in person actually does, and the founder's\nrulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. Nothing there\nrestates system state, so it doesn't rot.",
-      "stocktake": "The **Stock-take** room is where the facts that can rot live as compiled renders: the\n**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are\nderived from the code and drift-gated, so they cannot go stale. Schema is the one fact even\nthe code can't vouch for — current schema is truth, migrations lie — so the Pipeline page\nrenders it from a live dump of the running database. The **Update docs** button re-reads live\nstate — course list, audio-pass queue, database counts, the schema dump — from the production\nmachine on demand; facts derived from code refresh when a commit deploys."
+      "admin": "The Admin section is the platform-wide view, and the hub page is the same list read as cards:\n**Labs** — Every lab in one place — Listening, Speaking, Voice, Pod, Script, VAD, Basket and Capture A/B — grouped by blast radius: who a change reaches, and when. **Insights** — Cross-course insight boards — lifecycle, rate, coverage, content, and ops signals. **Activity** — Running and recent jobs across the production pipeline — what is building right now. **Maintenance** — Housekeeping and health — audit log, archive, and platform upkeep. **Users** — Manage dashboard accounts, recorders, roles, and invite codes. **Recording** — Which languages we record with people instead of TTS, how far each has got, and the link to send each recordist. **Test builds** — The current Android test build, how to install it, and where it came from. **Stock-take** — The compiled current-state reference — pipeline, glossary and APML, regenerated from the code. Access lives under Users: admins see everything, editors are scoped to their\ngranted courses, recorders only ever see the Record Room. The Maintenance badge counts days\nsince the last audit, so a growing number is the system telling you it hasn't been checked.",
+      "pedagogy": "The app teaches itself — that replaced the old docs-and-manuals shelf. **Pedagogy** — The teaching model itself — the two extraction heuristics, what a LEGO is, and why ZUT decides. It is\nthe founder's own thinking rather than system state, which is why it doesn't rot; the facts\nthat CAN rot live in Stock-take instead, compiled from the code.",
+      "stocktake": "The Stock-take room is where the facts that can rot live as compiled renders:\n**Stock-take** — The index of the compiled reference — what each derived page covers, and when it was compiled. **Pipeline** — The phase servers, the agent endpoints, the validation gates and the database tables the code actually touches. **Glossary** — The shared terms, each pinned to the table that holds it or the gate that enforces it. **APML** — The specification lineage, and the current-state facts it is checked against. They are derived from the code and drift-gated, so they cannot go stale.\nSchema is the one fact even the code can't vouch for — current schema is truth, migrations lie\n— so the Pipeline page renders it from a live dump of the running database. The **Update docs**\nbutton re-reads live state — course list, audio-pass queue, database counts, the schema dump —\nfrom the production machine on demand; facts derived from code refresh when a commit deploys."
     },
     "editor": {
-      "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — your library,\nscoped to the courses you've been granted — and **How & Why**, where the app explains itself.\nEverything you edit here is live content: what the database holds is exactly what learners\nhear.",
-      "courses": "The **Library** lists your courses, and next to it sit the canonical browsers — **Seeds**,\n**Content** and **Pods** — windows onto the canonical material in the database. A course\nopens on its **Overview** hub — one door per course, every working surface a card\ninside it: text, audio, recording, QA. The method under all of it: one known prompt maps to\nexactly one target form, course-wide, and the known side is a controlled language too — the\ngates hold you to both when you submit, and a rejection is the method protecting the learner,\nnot the tool being difficult. Text edits never mint audio directly; a finished content pass\nqueues an audio-pass request, and audio happens after approval, because minted clips cost real\nmoney and some courses are human-voiced and never synthesised at all.",
+      "home": "Popty is where your courses get made. Two doors matter for you: **Courses** — The course library, the canonical browsers, and every working surface inside a course. **Pedagogy** — The founder's teaching model — what a LEGO is, the extraction heuristics, and ZUT. Everything\nyou edit here is live content: what the database holds is exactly what learners hear.",
+      "courses": "Your row: **Library** — Every course on the estate, with its state, opened for editing. **Seeds** — The canonical seed sentences, in pedagogical order, with their {target} placeholders. **Content** — The canonical content store — seeds, encouragements and the per-pair welcome messages. **Pods** — The listening pods — the canonical English master and the pods generated from it. **Script Lab** — The canonical English master scripts — edited here, and nowhere else. **Metagraph** — The shape the scripts are walks over — what the learner has to survive, in delivery order. The Library is scoped to the courses you've been granted; the rest\nare windows onto the canonical material in the database. **Script Lab** is the odd one: it\nholds the pod scripts themselves, the language-neutral English masters, with no course loaded.\nEditing a script there changes the source every course flexes from and changes no generated\npod, so a script edit reaches learners only when a pod is built from it again. Its read-out is\ncoverage — which shapes the script's walk reaches, and which it never does. **Metagraph** is\nthat coverage drawn out: every shape a conversation can take, taken from the pods already\nwritten, joined by which shape happens inside which, and a pod is a walk through it. Lay a pod\nover the graph and the shapes its script reaches light up, the ones it never reaches go red.\nNothing there can be edited — it is the picture, and the editing is back in the Script Lab. A\ncourse opens on its **Overview** hub — one door per course, every working surface a card\ninside it: text, audio, recording, QA. The method under all of it: one known prompt maps to\nexactly one target form, course-wide, and the known side is a controlled language too — the\ngates hold you to both when you submit, and a rejection is the method protecting the learner,\nnot the tool being difficult. Text edits never mint audio directly; a finished content pass\nqueues an audio-pass request, and audio happens after approval, because minted clips cost real\nmoney and some courses are human-voiced and never synthesised at all.",
       "checking": "Checking a course is reading it the way a learner meets it: does each prompt force exactly one\nanswer, does every phrase use only what's been taught, does it read naturally in the known\nlanguage? The known-vocab flags this pack carries per course are the compiled starting point —\nbegin where the flags are earliest, because everything downstream builds on those seeds.",
-      "how": "**How & Why** is one surface with the two things worth reading: the how-to, written for what\nyou actually do here and compiled against the running system so it cannot drift from the app —\nand the rulings, the founder's own thinking: **Pedagogy**, **Pod Thinking**, and the why of\nAPML. Read Pedagogy before authoring anything — the method is the product."
+      "pedagogy": "**Pedagogy** — The teaching model itself — the two extraction heuristics, what a LEGO is, and why ZUT decides. Read it before authoring anything — the method is the product, and every\ngate you will meet downstream is that method being enforced rather than the tool being awkward."
     },
     "recorder": {
       "record-room": "The Record Room is your whole studio. The queue you see is real work waiting: lines the course\nneeds in a human voice, in order. Read each line as it's written, at an easy natural pace —\nrecordings ship at one speed and the app adjusts playback, so never rush a take. Some courses\nare human-voiced only — no synthetic voice is ever allowed to stand in for you there — which is\nwhy a line waiting in your queue can't be filled by anyone but a person. A take you're not\nhappy with is worth redoing: whatever you record is exactly what a learner will hear, thousands\nof times."
@@ -1135,6 +1268,6 @@
       }
     },
     "note": "scripts/vocab-gate/audit-results.json absent on this machine — snapshot carried over from the previous pack (98 courses)",
-    "generatedAt": "2026-08-03"
+    "generatedAt": "2026-09-04"
   }
 }

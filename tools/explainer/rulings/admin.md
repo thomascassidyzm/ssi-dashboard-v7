@@ -1,13 +1,12 @@
-<!-- ssi-admin persona. Mechanism only, never restated state. The drift gate
-requires every surface an admin can stand on to be named here. -->
+<!-- ssi-admin persona. Mechanism only, never restated state. Wherever a
+sentence would have to list nav destinations, it uses a {{...Doors}} token
+instead: the compiler expands it from src/nav/navigation.js, so this file
+never has to be edited when a page arrives, moves or goes. -->
 
 ## home
 
 Popty is where courses get made — everything a learner ever hears starts here and flows
-through Supabase to the learning app. Three doors at the top: **Courses** is the library, the
-canonical browsers (**Seeds**, **Content**, **Pods**) and every working surface inside a
-course; **How & Why** is the app explaining itself — the how-to for what you do here plus the
-founder's rulings; and **Admin** is the platform room — the whole estate at a glance.
+through Supabase to the learning app. The doors at the top: {{primaryDoors}}
 
 ## courses
 
@@ -19,28 +18,22 @@ generated after an approved pass, because every minted clip costs real money.
 
 ## admin
 
-The Admin section is the platform-wide view. **Configs** holds per-course voice and listening
-setup — a course without voice config cannot make audio. **Insights** is the measurement room.
-**Activity** shows the builds and jobs actually running right now; a course that should be
-moving and isn't shows up here first. **Maintenance** is the health sweep — the badge counts
-days since the last audit, so a growing number is the system telling you it hasn't been
-checked. **Users** is where access lives: admins see everything, editors are scoped to their
-granted courses, recorders only ever see the Record Room. **Stock-take** is the compiled
-reference — step in when you want to take stock of the system's current state.
+The Admin section is the platform-wide view, and the hub page is the same list read as cards:
+{{adminDoors}} Access lives under Users: admins see everything, editors are scoped to their
+granted courses, recorders only ever see the Record Room. The Maintenance badge counts days
+since the last audit, so a growing number is the system telling you it hasn't been checked.
 
-## how
+## pedagogy
 
-The app teaches itself — that replaced the old docs-and-manuals shelf. **How & Why** is one
-surface: the how-to, written for what the signed-in person actually does, and the founder's
-rulings — **Pedagogy**, **Pod Thinking**, schema truth, the APML lineage. Nothing there
-restates system state, so it doesn't rot.
+The app teaches itself — that replaced the old docs-and-manuals shelf. {{pedagogyDoors}} It is
+the founder's own thinking rather than system state, which is why it doesn't rot; the facts
+that CAN rot live in Stock-take instead, compiled from the code.
 
 ## stocktake
 
-The **Stock-take** room is where the facts that can rot live as compiled renders: the
-**Pipeline** shape, the **Glossary** of shared terms, the **APML** current state. They are
-derived from the code and drift-gated, so they cannot go stale. Schema is the one fact even
-the code can't vouch for — current schema is truth, migrations lie — so the Pipeline page
-renders it from a live dump of the running database. The **Update docs** button re-reads live
-state — course list, audio-pass queue, database counts, the schema dump — from the production
-machine on demand; facts derived from code refresh when a commit deploys.
+The Stock-take room is where the facts that can rot live as compiled renders:
+{{stocktakeDoors}} They are derived from the code and drift-gated, so they cannot go stale.
+Schema is the one fact even the code can't vouch for — current schema is truth, migrations lie
+— so the Pipeline page renders it from a live dump of the running database. The **Update docs**
+button re-reads live state — course list, audio-pass queue, database counts, the schema dump —
+from the production machine on demand; facts derived from code refresh when a commit deploys.

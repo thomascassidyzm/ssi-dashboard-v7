@@ -1,5 +1,5 @@
 <!-- The schema-truth ruling — HAND-MAINTAINED RULINGS SOURCE, rendered in the
-Rulings layer of How & Why and quoted beside every schema render on the
+Rulings layer of the Pedagogy surface and quoted beside every schema render on the
 Stock-take surface. Founder ruling 2026-07-29. -->
 
 ## current schema is truth, migrations lie

@@ -1,6 +1,6 @@
 # Popty for developers — compiled
 
-**Version `f222c9ee9159` · generated 2026-08-03. DO NOT EDIT — derived; edit tools/explainer/rulings/dev.md or the code, then recompile.**
+**Version `f6d60e628056` · generated 2026-09-04. DO NOT EDIT — derived; edit tools/explainer/rulings/dev.md or the code, then recompile.**
 
 ### orientation
 
@@ -23,4 +23,4 @@ calls at runtime.
 - Active workflow (SYSTEM.md): Phase 1 → 3 → 8 → 9
 - Phase servers: Orchestrator :3456 · Translation + LEGO Extraction :3457 (phase 1) · Conflict Resolution :3458 (phase 2) · Basket Generation :3459 (phase 3) · Legacy Manifest (deprecated) :3464 · Audio Generator (Supabase) :3465 (phase 8) · Manifest Compiler (Supabase) :3466 (phase 9) · Production API (QA + WebSocket) :3470
 - Roles (dashboard_users.role): admin, editor, recorder — persona rendering hangs off exactly these.
-- Nav surfaces: Courses / How & Why / Admin; admin section: Admin, Configs, Insights, Activity, Maintenance, Users, Stock-take; How & Why: How & Why, Pedagogy, Pod Thinking; stock-take: Stock-take, Pipeline, Glossary, APML; courses: Library, Seeds, Content, Pods.
+- Nav surfaces: Courses / Pedagogy / Admin; admin section: Admin, Labs, Insights, Activity, Maintenance, Users, Recording, Test builds, Stock-take; rulings: Pedagogy; stock-take: Stock-take, Pipeline, Glossary, APML; courses: Library, Seeds, Content, Pods, Script Lab, Metagraph.

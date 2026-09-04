@@ -43,10 +43,17 @@ export function matchesAny(patterns, route) {
 // A tab is active when any section that declares it as its primary is active,
 // which is what makes '/builds' (an admin destination) light up Admin.
 // ---------------------------------------------------------------------------
+// `description` — ONE LINE saying what that destination actually does, drafted
+// from what the page renders. It is not decoration: the explainer compiler
+// (tools/explainer/compile.mjs) builds the app's own self-explanation out of
+// these, so the explanation cannot disagree with the nav — there is no second
+// copy to keep in step. An entry without one fails the compile. Admin items
+// already carry theirs as `hub.description` (the card copy); `descriptionOf`
+// reads either, so nothing is written twice.
 export const PRIMARY_TABS = [
-  { id: 'courses', label: 'Courses', to: '/courses' },
-  { id: 'pedagogy', label: 'Pedagogy', to: '/pedagogy' },
-  { id: 'admin', label: 'Admin', to: '/admin' }
+  { id: 'courses', label: 'Courses', to: '/courses', description: 'The course library, the canonical browsers, and every working surface inside a course.' },
+  { id: 'pedagogy', label: 'Pedagogy', to: '/pedagogy', description: "The founder's teaching model — what a LEGO is, the extraction heuristics, and ZUT." },
+  { id: 'admin', label: 'Admin', to: '/admin', description: 'The platform room — labs, insights, activity, maintenance, users, recording and builds.' }
 ]
 
 // ---------------------------------------------------------------------------
@@ -68,10 +75,10 @@ export const SECTIONS = [
     primary: 'admin',
     owns: ['/stocktake*'],
     items: [
-      { label: 'Stock-take', to: '/stocktake', match: ['@StocktakeIndex'] },
-      { label: 'Pipeline', to: '/stocktake/pipeline', match: ['@DocsPipeline'] },
-      { label: 'Glossary', to: '/stocktake/glossary', match: ['@DocsGlossary'] },
-      { label: 'APML', to: '/stocktake/apml', match: ['@DocsApml'] }
+      { label: 'Stock-take', to: '/stocktake', match: ['@StocktakeIndex'], description: 'The index of the compiled reference — what each derived page covers, and when it was compiled.' },
+      { label: 'Pipeline', to: '/stocktake/pipeline', match: ['@DocsPipeline'], description: 'The phase servers, the agent endpoints, the validation gates and the database tables the code actually touches.' },
+      { label: 'Glossary', to: '/stocktake/glossary', match: ['@DocsGlossary'], description: 'The shared terms, each pinned to the table that holds it or the gate that enforces it.' },
+      { label: 'APML', to: '/stocktake/apml', match: ['@DocsApml'], description: 'The specification lineage, and the current-state facts it is checked against.' }
     ]
   },
   {
@@ -89,6 +96,7 @@ export const SECTIONS = [
       {
         label: 'Admin',
         to: '/admin',
+        description: 'The platform hub — every admin surface as a card, grouped by what a change reaches.',
         isHubSelf: true // the hub page's own tab; a card pointing at itself would be a loop
       },
       {
@@ -215,7 +223,7 @@ export const SECTIONS = [
     primary: 'courses',
     owns: [],
     when: (route) => route.params?.courseCode === 'new',
-    items: [{ label: 'Text', to: '/production/new/text', match: ['*'] }]
+    items: [{ label: 'Text', to: '/production/new/text', match: ['*'], description: 'The text surface for a course being created — the first seeds before the course exists.' }]
   },
   {
     // ONE door per course (Tom, 2026-06-10): Overview is the hub — every
@@ -228,7 +236,8 @@ export const SECTIONS = [
       {
         label: 'Overview',
         to: `/production/${route.params.courseCode}`,
-        match: ['@ProductionDashboard']
+        match: ['@ProductionDashboard'],
+        description: 'One course\'s hub — text, audio, recording and QA, each as a card.'
       }
     ]
   },
@@ -239,14 +248,14 @@ export const SECTIONS = [
     // The library, a course's own editor page, and the canonical browsers.
     owns: ['/courses*', '/course/*', '/canonical*'],
     items: [
-      { label: 'Library', to: '/courses' },
-      { label: 'Seeds', to: '/canonical/seeds', match: ['@CanonicalSeeds'] },
-      { label: 'Content', to: '/canonical/content', match: ['@CanonicalContent'] },
-      { label: 'Pods', to: '/canonical/pods', match: ['@PodsDoc'] },
-      { label: 'Script Lab', to: '/canonical/scripts', match: ['@ScriptLab', '@ScriptLabScript'] },
+      { label: 'Library', to: '/courses', description: 'Every course on the estate, with its state, opened for editing.' },
+      { label: 'Seeds', to: '/canonical/seeds', match: ['@CanonicalSeeds'], description: 'The canonical seed sentences, in pedagogical order, with their {target} placeholders.' },
+      { label: 'Content', to: '/canonical/content', match: ['@CanonicalContent'], description: 'The canonical content store — seeds, encouragements and the per-pair welcome messages.' },
+      { label: 'Pods', to: '/canonical/pods', match: ['@PodsDoc'], description: 'The listening pods — the canonical English master and the pods generated from it.' },
+      { label: 'Script Lab', to: '/canonical/scripts', match: ['@ScriptLab', '@ScriptLabScript'], description: "The canonical English master scripts — edited here, and nowhere else." },
       // The graph the scripts are walks over (Tom asked for it by name,
       // 2026-08-31); it was reachable only from a button inside the Script Lab.
-      { label: 'Metagraph', to: '/canonical/metagraph', match: ['@Metagraph'] }
+      { label: 'Metagraph', to: '/canonical/metagraph', match: ['@Metagraph'], description: 'The shape the scripts are walks over — what the learner has to survive, in delivery order.' }
     ]
   },
   {
@@ -261,7 +270,7 @@ export const SECTIONS = [
     // rather than inferred from items.length, because the course sections
     // have one item each and DO want their row (it carries the crumb).
     soloTab: true,
-    items: [{ label: 'Pedagogy', to: '/pedagogy', match: ['@Pedagogy'] }]
+    items: [{ label: 'Pedagogy', to: '/pedagogy', match: ['@Pedagogy'], description: "The teaching model itself — the two extraction heuristics, what a LEGO is, and why ZUT decides." }]
   }
 ]
 
@@ -332,6 +341,15 @@ export function primaryTabs(route) {
     to: t.to,
     active: isPrimaryActive(t.id, route)
   }))
+}
+
+/**
+ * The one-line description of a destination: its own `description`, or the hub
+ * card copy it already carries. One place to read it from, so the explainer
+ * never needs a second copy of the nav.
+ */
+export function descriptionOf(item) {
+  return item.description ?? item.hub?.description ?? null
 }
 
 /** What lights an item up: its own declared patterns, or its destination. */
