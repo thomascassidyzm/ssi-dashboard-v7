@@ -1,7 +1,7 @@
 <script setup>
 // StocktakeIndex — the compiled reference, demoted to admin-on-demand
 // (founder ruling 2026-07-28: the app teaches itself; the primary surface is
-// How & Why at /how). This is where dev/ssi-admin/agents come to TAKE STOCK:
+// Pedagogy at /pedagogy). This is where dev/ssi-admin/agents come to TAKE STOCK:
 // the compiled state pages + the "Update docs" button. The grouping below is
 // not decoration — it renders pack.docs.surface, the same classification the
 // compiler enforces: a new explaining surface nobody classifies fails the
@@ -16,12 +16,10 @@ const { pack } = usePack()
 // labels itself comes from the pack.
 const CARD_META = {
   'Stock-take': null, // this page
-  'How & Why': null, // the primary surface — reachable from the top nav
   APML: { to: '/stocktake/apml', desc: 'The intent-as-code lineage the system grew from, with the current state compiled from the code' },
   Glossary: { to: '/stocktake/glossary', desc: 'The shared terms — every storage and enforcement pointer verified at compile time' },
   Pipeline: { to: '/stocktake/pipeline', desc: 'Phase servers, gates, voice policy, schema and live state — straight from the code' },
-  Pedagogy: { to: '/how/pedagogy', desc: 'The teaching model and the method — read this before authoring anything' },
-  'Pod Thinking': { to: '/how/pod-thinking', desc: 'Design thinking for the listening stream' },
+  Pedagogy: { to: '/pedagogy', desc: 'The teaching model and the method — read this before authoring anything' },
   Seeds: { to: '/canonical/seeds', desc: 'The canonical seed library' },
   Content: { to: '/canonical/content', desc: 'Reference translations and validated content' },
   Pods: { to: '/canonical/pods', desc: 'Listening pods — browsing the pod estate' },
@@ -40,8 +38,8 @@ const groups = computed(() => {
     },
     {
       key: 'rulings',
-      title: 'Rulings — founder-authored (live on How & Why)',
-      note: 'The why: methodology and design thinking. Hand-maintained on purpose; their home is the How & Why surface.',
+      title: 'Rulings — founder-authored',
+      note: 'The why: methodology and design thinking. Hand-maintained on purpose — no code can derive it.',
       cards: build(surface.rulings),
     },
     {
@@ -60,8 +58,8 @@ const groups = computed(() => {
       <h1 class="page-title">Stock-take</h1>
       <p class="page-subtitle">
         The compiled reference — the system's current state, derived from the code and drift-gated
-        so it cannot go stale. Day-to-day guidance lives on
-        <router-link to="/how">How &amp; Why</router-link>; this room is for taking stock.
+        so it cannot go stale. The teaching model lives on
+        <router-link to="/pedagogy">Pedagogy</router-link>; this room is for taking stock.
       </p>
       <UpdateDocsButton class="mt-3" />
     </header>

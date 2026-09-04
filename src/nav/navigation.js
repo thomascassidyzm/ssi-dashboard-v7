@@ -45,7 +45,7 @@ export function matchesAny(patterns, route) {
 // ---------------------------------------------------------------------------
 export const PRIMARY_TABS = [
   { id: 'courses', label: 'Courses', to: '/courses' },
-  { id: 'how', label: 'How & Why', to: '/how' },
+  { id: 'pedagogy', label: 'Pedagogy', to: '/pedagogy' },
   { id: 'admin', label: 'Admin', to: '/admin' }
 ]
 
@@ -244,15 +244,18 @@ export const SECTIONS = [
     ]
   },
   {
-    // How & Why — the founder's rulings + how-to surface.
-    id: 'how',
-    primary: 'how',
-    owns: ['/how*'],
-    items: [
-      { label: 'How & Why', to: '/how', match: ['@HowAndWhy'] },
-      { label: 'Pedagogy', to: '/how/pedagogy', match: ['@Pedagogy'] },
-      { label: 'Pod Thinking', to: '/how/pod-thinking', match: ['@PodThinkingIndex', '@PodThinkingDoc'] }
-    ]
+    // Pedagogy — the founder's teaching model. It was one of three pages under
+    // a "How & Why" tab until Tom deprecated the other two on 2026-09-04, so
+    // the survivor is the tab: one page, one primary tab, no hub in between.
+    id: 'pedagogy',
+    primary: 'pedagogy',
+    owns: [],
+    // A ROW OF ONE IS NOT A ROW. The primary tab already IS this destination,
+    // so a sub-bar underneath it would only repeat itself. Declared here
+    // rather than inferred from items.length, because the course sections
+    // have one item each and DO want their row (it carries the crumb).
+    soloTab: true,
+    items: [{ label: 'Pedagogy', to: '/pedagogy', match: ['@Pedagogy'] }]
   }
 ]
 
@@ -284,7 +287,7 @@ export const OUTSIDE_NAV = [
   { path: '/quality/:courseCode/evolution', why: 'prompt evolution — opened from the quality dashboard' },
   { path: '/quality/:courseCode/health', why: 'health report — opened from the quality dashboard' },
   { path: '/quality/:courseCode/learned-rules', why: 'learned rules — opened from the quality dashboard' },
-  { path: '/recursive-upregulation', why: 'methodology explainer, linked from How & Why prose' },
+  { path: '/recursive-upregulation', why: 'methodology explainer, linked from the Pedagogy page' },
   { path: '/audio-preview', why: 'estate audio preview entry — opened by URL' },
   { path: '/qa-gate', why: 'estate QA gate — opened by URL' },
   { path: '/my-recording', why: 'a recordist\'s own room — the navbar is hidden for recorders' },
@@ -338,6 +341,9 @@ function itemsOf(section, route) {
 export function sectionTabs(route, badges = {}) {
   const section = sectionFor(route)
   if (!section) return []
+  // A section that declares itself solo renders no row: its primary tab is the
+  // destination, and a one-tab bar repeating it is noise.
+  if (section.soloTab) return []
   return itemsOf(section, route).map((item) => ({
     label: item.label,
     to: item.to,

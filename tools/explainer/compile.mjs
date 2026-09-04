@@ -65,10 +65,9 @@ const productionTabs = parseTabs(sliceBetween(sectionSrc, /isProduction\.value/,
 const coursesTabs = parseTabs(sliceBetween(sectionSrc, /isCoursesBoard\.value \|\| isCanonical\.value/, /isHow\.value/))
 const howTabs = parseTabs(sliceBetween(sectionSrc, /isHow\.value/, /return \[\]/))
 if (primaryTabs.length < 3) failures.push(`DERIVE: only ${primaryTabs.length} primary tabs parsed from AppNavbar.vue`)
-if (!primaryTabs.some((t) => t.label === 'How & Why')) failures.push('DERIVE: primary "How & Why" tab (the Rulings + How-to surface) not found in AppNavbar.vue')
+if (!primaryTabs.some((t) => t.label === 'Pedagogy')) failures.push('DERIVE: primary "Pedagogy" tab (the founder-authored rulings surface) not found in AppNavbar.vue')
 if (adminTabs.length < 4) failures.push(`DERIVE: only ${adminTabs.length} admin section tabs parsed from AppNavbar.vue`)
 if (stocktakeTabs.length < 4) failures.push(`DERIVE: only ${stocktakeTabs.length} stock-take tabs parsed from AppNavbar.vue`)
-if (howTabs.length < 3) failures.push(`DERIVE: only ${howTabs.length} How & Why tabs parsed from AppNavbar.vue`)
 if (coursesTabs.length < 4) failures.push(`DERIVE: only ${coursesTabs.length} courses-section tabs parsed from AppNavbar.vue`)
 if (!productionTabs.some((t) => t.label === 'Overview')) failures.push('DERIVE: production "Overview" tab not found in AppNavbar.vue')
 
@@ -185,17 +184,25 @@ const supabaseTables = [...tableRefs.keys()].sort().map((t) => ({
   deprecated: DEPRECATED_TABLES.includes(t) || undefined,
 }))
 
+// NOTE (2026-09-04): this whole 1a block still parses AppNavbar.vue, which no
+// longer holds literal tab objects — the navigation moved to the single
+// declaration in src/nav/navigation.js on 2026-09-04 (78c6173c2), so every
+// DERIVE check below already fails. Repointing it at that declaration is the
+// fix, but the DRIFT gate then demands the founder's ruling prose name every
+// current tab, and that prose is Tom's to write, not a worker's. Left failing
+// and reported rather than half-fixed.
+
 // 1i. Explaining-surface classification (adapted to the 2026-07-28 IA:
 // "Rulings + How-to"). Every tab of the three explaining homes must be
 // declared: COMPILED (the Stock-take pages — derived, never stale), RULINGS
-// (the How & Why surface — founder-authored prose), or DATA (the canonical
+// (the Pedagogy page — founder-authored prose), or DATA (the canonical
 // browsers under Courses). A new tab on any of these rows that nobody
 // classifies fails the compile, so the estate can't silently grow
 // un-governed pages again. 'Library' is the course library itself, not an
 // explaining surface — exempt.
 const DOCS_SURFACE = {
   compiled: ['Stock-take', 'Pipeline', 'Glossary', 'APML'],
-  rulings: ['How & Why', 'Pedagogy', 'Pod Thinking'],
+  rulings: ['Pedagogy'],
   data: ['Seeds', 'Content', 'Pods', 'Script Lab', 'Metagraph'],
 }
 {
@@ -558,7 +565,7 @@ writeFileSync(join(ROOT, 'docs/explainer-dev.md'), [
   `- Active workflow (SYSTEM.md): ${truth.activeWorkflow}`,
   `- Phase servers: ${phasePorts.map((p) => `${p.name} :${p.port}${p.phase !== '-' ? ` (phase ${p.phase})` : ''}`).join(' · ')}`,
   `- Roles (dashboard_users.role): ${truth.roles.join(', ')} — persona rendering hangs off exactly these.`,
-  `- Nav surfaces: ${primaryTabs.map((t) => t.label).join(' / ')}; admin section: ${adminTabs.map((t) => t.label).join(', ')}; How & Why: ${howTabs.map((t) => t.label).join(', ')}; stock-take: ${stocktakeTabs.map((t) => t.label).join(', ')}; courses: ${coursesTabs.map((t) => t.label).join(', ')}.`,
+  `- Nav surfaces: ${primaryTabs.map((t) => t.label).join(' / ')}; admin section: ${adminTabs.map((t) => t.label).join(', ')}; rulings: ${howTabs.map((t) => t.label).join(', ')}; stock-take: ${stocktakeTabs.map((t) => t.label).join(', ')}; courses: ${coursesTabs.map((t) => t.label).join(', ')}.`,
   ``,
 ].join('\n'))
 

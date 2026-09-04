@@ -63,12 +63,18 @@ check(s.sub.includes('Test builds*'), '/builds highlights its own tab')
 // Exactly ONE sub-tab lit, everywhere. A page that is in the row but not in the
 // active-state logic (or in neither) leaves the row with nothing highlighted —
 // which is how you end up somewhere with no idea where you are.
-for (const [path, wantPrimary] of [['/courses', 'Courses*'], ['/how', 'How & Why*'], ['/stocktake', 'Admin*'], ['/admin/labs', 'Admin*'], ['/admin/recording', 'Admin*'], ['/users', 'Admin*'], ['/jobs', 'Admin*'], ['/maintenance', 'Admin*'], ['/insights', 'Admin*']]) {
+// Pedagogy is the exception, and deliberately so: it is a section of one page,
+// so it declares soloTab and renders NO sub-tab row — the primary tab is where
+// you are. Asserted here as its own shape, not waved through.
+for (const [path, wantPrimary] of [['/courses', 'Courses*'], ['/stocktake', 'Admin*'], ['/admin/labs', 'Admin*'], ['/admin/recording', 'Admin*'], ['/users', 'Admin*'], ['/jobs', 'Admin*'], ['/maintenance', 'Admin*'], ['/insights', 'Admin*']]) {
   s = await navState(path)
   const lit = s.sub.filter((t) => t.endsWith('*'))
   check(s.primary.includes(wantPrimary) && s.sub.length > 0 && lit.length === 1,
     `${path} → ${wantPrimary}, row up, exactly one tab lit`, `sub=${s.sub.join(' | ')}`)
 }
+s = await navState('/pedagogy')
+check(s.primary.includes('Pedagogy*') && s.sub.length === 0,
+  '/pedagogy lights its primary tab and shows no row of one', `primary=${s.primary.join(' | ')} sub=${s.sub.join(' | ')}`)
 
 // 3. The two admin surfaces list the same pages, as rendered.
 s = await navState('/admin')

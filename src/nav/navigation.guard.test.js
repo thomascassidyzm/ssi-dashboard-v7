@@ -29,6 +29,7 @@ import {
   matchesAny,
   sectionFor,
   sectionTabs,
+  primaryTabs,
   hubCards
 } from './navigation.js'
 
@@ -89,9 +90,26 @@ describe('every nav destination is real and stays in its own section', () => {
     // you" looked like.
     expect(owner, `${item.to} belongs to no section`).not.toBeNull()
     expect(owner.primary).toBe(section.primary)
-    // And the destination must light itself up in whichever row you land in.
-    const tabs = sectionTabs(resolved)
-    expect(tabs.some((t) => t.active), `nothing is highlighted on ${item.to}`).toBe(true)
+    // And you must be able to see where you are: normally the destination
+    // lights itself up in whichever row you land in, but a solo section
+    // renders no row at all and its PRIMARY tab is the highlight.
+    if (section.soloTab) {
+      expect(
+        primaryTabs(resolved).some((t) => t.active),
+        `${item.to} is a solo section but its primary tab is not lit`
+      ).toBe(true)
+    } else {
+      const tabs = sectionTabs(resolved)
+      expect(tabs.some((t) => t.active), `nothing is highlighted on ${item.to}`).toBe(true)
+    }
+  })
+
+  // soloTab suppresses the sub-tab row. It may only ever do that for a section
+  // that has nothing to show — otherwise it would hide real destinations, which
+  // is the /builds defect wearing a flag.
+  it.each(SECTIONS.filter((s) => s.soloTab))('$id declares soloTab and has one destination', (section) => {
+    expect(section.items).toHaveLength(1)
+    expect(sectionTabs(router.resolve(section.items[0].to))).toEqual([])
   })
 })
 

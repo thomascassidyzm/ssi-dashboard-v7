@@ -56,8 +56,9 @@
             </div>
           </router-link>
 
-          <!-- How & Why — the founder's "Rulings + How-to" surface -->
-          <router-link to="/how" class="hub-card card-docs">
+          <!-- Pedagogy — the founder's teaching model (the whole of the tab
+               since How & Why and Pod Thinking were deprecated, 2026-09-04) -->
+          <router-link to="/pedagogy" class="hub-card card-docs">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -68,15 +69,15 @@
                   </svg>
                 </div>
                 <div class="card-badge docs">
-                  <span class="badge-label">rulings + how-to</span>
+                  <span class="badge-label">the method</span>
                 </div>
               </div>
               <div class="card-body">
-                <h2 class="card-title">How &amp; Why</h2>
-                <p class="card-description">How this place works, written for what you do here — and the rulings behind it: pedagogy, pod thinking, schema truth, the APML lineage.</p>
+                <h2 class="card-title">Pedagogy</h2>
+                <p class="card-description">The teaching model and the method — LEGOs, BUILD and USE phrases, and the rules every course is authored against. Read this before authoring anything.</p>
               </div>
               <div class="card-footer">
-                <span class="card-action">Open How &amp; Why</span>
+                <span class="card-action">Open Pedagogy</span>
                 <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>

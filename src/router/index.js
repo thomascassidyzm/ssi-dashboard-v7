@@ -101,39 +101,22 @@ const routes = [
     meta: { title: 'Insights' }
   },
   // ============================================
-  // How & Why — the founder's "Rulings + How-to" surface (ruling 2026-07-28).
-  // The app teaches itself: ONE surface holding the persona-scoped how-to
-  // (compiled pack explanations) and the founder-authored rulings prose
-  // (Pedagogy, Pod Thinking, the why-of-APML). This replaced the Docs hub.
+  // Pedagogy — the founder-authored teaching model, and now the whole of its
+  // own primary tab. It used to be one of three pages under /how; Tom
+  // deprecated the other two on 2026-09-04 ("nothing really valuable other
+  // than a lot of text" on How & Why; Pod Thinking superseded by the Script
+  // Lab), so the surviving page owns the path rather than hiding one level
+  // down. /how and /how/pedagogy redirect here — those links are in bookmarks.
   // ============================================
   {
-    path: '/how',
+    path: '/pedagogy',
     component: DocsLayout,
     children: [
       {
         path: '',
-        name: 'HowAndWhy',
-        component: () => import('../views/HowAndWhy.vue'),
-        meta: { title: 'How & Why' }
-      },
-      {
-        path: 'pedagogy',
         name: 'Pedagogy',
         component: Pedagogy,
         meta: { title: 'Pedagogical Model' }
-      },
-      {
-        path: 'pod-thinking',
-        name: 'PodThinkingIndex',
-        component: () => import('../views/PodThinkingIndex.vue'),
-        meta: { title: 'Pod Thinking', public: true }
-      },
-      {
-        path: 'pod-thinking/:slug',
-        name: 'PodThinkingDoc',
-        component: () => import('../views/PodThinkingDoc.vue'),
-        props: true,
-        meta: { title: 'Pod Thinking', public: true }
       }
     ]
   },
@@ -245,10 +228,17 @@ const routes = [
   },
 
   // The old /docs/* estate — every route redirects so nothing 404s.
-  { path: '/docs', redirect: '/how' },
-  { path: '/docs/pedagogy', redirect: '/how/pedagogy' },
-  { path: '/docs/pod-thinking', redirect: '/how/pod-thinking' },
-  { path: '/docs/pod-thinking/:slug', redirect: to => `/how/pod-thinking/${to.params.slug}` },
+  { path: '/docs', redirect: '/pedagogy' },
+  { path: '/docs/pedagogy', redirect: '/pedagogy' },
+  // How & Why and Pod Thinking were deprecated 2026-09-04. Pod Thinking's
+  // successor is the Script Lab, in Tom's words: "we have the script lab which
+  // does a better job" — so those links land there rather than nowhere.
+  { path: '/how', redirect: '/pedagogy' },
+  { path: '/how/pedagogy', redirect: '/pedagogy' },
+  { path: '/how/pod-thinking', redirect: '/canonical/scripts' },
+  { path: '/how/pod-thinking/:slug', redirect: '/canonical/scripts' },
+  { path: '/docs/pod-thinking', redirect: '/canonical/scripts' },
+  { path: '/docs/pod-thinking/:slug', redirect: '/canonical/scripts' },
   { path: '/docs/apml', redirect: '/stocktake/apml' },
   { path: '/docs/terminology', redirect: '/stocktake/glossary' },
   { path: '/docs/pipeline', redirect: '/stocktake/pipeline' },
@@ -511,7 +501,7 @@ const routes = [
   { path: '/reference/canonical', redirect: '/canonical/content' },
   { path: '/reference/apml', redirect: '/stocktake/apml' },
   { path: '/reference/terminology', redirect: '/stocktake/glossary' },
-  { path: '/reference/pedagogy', redirect: '/how/pedagogy' },
+  { path: '/reference/pedagogy', redirect: '/pedagogy' },
   { path: '/intelligence', redirect: '/stocktake/pipeline' },
   // DEPRECATED: Skills route - feature not in use
   // {

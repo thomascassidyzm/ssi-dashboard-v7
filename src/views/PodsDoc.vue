@@ -5,7 +5,6 @@
       <h1 class="page-title">Listening Pods</h1>
       <p class="page-subtitle">
         Conversational listening activities - the canonical pod sentences and how they flex into each language course.
-        For the design thinking behind where pods are heading, see <router-link to="/how/pod-thinking">Pod Thinking</router-link>.
       </p>
     </div>
 
