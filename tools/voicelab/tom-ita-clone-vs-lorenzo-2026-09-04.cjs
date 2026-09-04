@@ -23,6 +23,13 @@
  * clone-source doctrine prefers raw; a raw re-record could clone better.
  *
  * Dry run by default. --apply spends (one clone + ~200 characters of TTS).
+ *
+ * THIRD ARM, 2026-09-04 (job #442). Tom then uploaded a second Italian sample
+ * through the Voice Lab — one take, raw rather than mastered, better accent —
+ * and it became the voice `tom_ita_002`. `--arm2-only` renders the same three
+ * lines on that voice with the identical parameters below, and does nothing
+ * else: no clone is created, no take is fetched, and the six clips that
+ * already exist are neither re-rendered nor touched. It casts nothing either.
  */
 const fs = require('fs')
 const path = require('path')
@@ -32,6 +39,8 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env') })
 const { createClient } = require('@supabase/supabase-js')
 
 const APPLY = process.argv.includes('--apply')
+/** Render the third arm only, reusing the six clips that already exist. */
+const ARM2_ONLY = process.argv.includes('--arm2-only')
 const OUT = process.env.CS_SCRATCH || path.join(__dirname, '..', '..', 'scripts')
 
 /** Tom's three lines, in recording order — verbatim, not to be edited. */
@@ -42,6 +51,8 @@ const LINES = [
 ]
 
 const LORENZO = 'ee16f140-f6dc-490e-a1ed-c1d537ea0086'
+/** tom_ita_002 — Tom's raw single-take upload, cloned in the Voice Lab 2026-09-04 00:52 UTC. */
+const TOM_ITA_002 = '5ab58db1-f66d-408e-955f-5f0c1f7445e4'
 const BUCKET_URL = 'https://ssi-audio-stage.s3.eu-west-1.amazonaws.com'
 /** Matched to the estate's Cartesia pod-render path (services/tts-service.cjs). */
 const RENDER = { model: 'sonic-3.6', speed: 1.0, sampleRate: 24000, bitRate: 128000, locale: 'it', apiVersion: '2026-08-14' }
@@ -91,6 +102,8 @@ async function render (text, voiceId) {
 }
 
 async function main () {
+  if (ARM2_ONLY) return arm2Only()
+
   const dir = fs.mkdtempSync(path.join(OUT, 'ita-clone-'))
   console.log(`scratch: ${dir}`)
 
@@ -137,6 +150,34 @@ async function main () {
     out.lines.push(row)
   }
   const logPath = path.join(__dirname, '..', '..', 'docs', 'voicelab', 'tom-ita-clone-vs-lorenzo-2026-09-04-applied-log.json')
+  fs.mkdirSync(path.dirname(logPath), { recursive: true })
+  fs.writeFileSync(logPath, JSON.stringify(out, null, 1))
+  console.log(`log: ${logPath}`)
+}
+
+/**
+ * The third arm on its own: three renders on tom_ita_002, same parameters,
+ * uploaded to the same public bucket. The other two arms are already rendered
+ * and their URLs live in docs/voicelab/tom-italian-clone-vs-lorenzo-2026-09-04.md.
+ */
+async function arm2Only () {
+  if (!APPLY) {
+    console.log('DRY RUN (--arm2-only) — nothing rendered, nothing uploaded.')
+    console.log(`would render ${LINES.length} lines on tom_ita_002 (${TOM_ITA_002}) with`, RENDER)
+    for (const l of LINES) console.log(`  - ${l.text}`)
+    return
+  }
+  const s3 = require(path.join(__dirname, '..', '..', 'services', 's3-service.cjs'))
+  const out = { voice: 'tom_ita_002', voice_id: TOM_ITA_002, render: RENDER, lines: [] }
+  for (const l of LINES) {
+    const buf = await render(l.text, TOM_ITA_002)
+    const uuid = crypto.randomUUID()
+    await s3.uploadAudio(uuid, buf)
+    const url = `${BUCKET_URL}/mastered/${uuid}.mp3`
+    out.lines.push({ text: l.text, tom_ita_002: url, bytes: buf.length })
+    console.log(`  tom_ita_002: ${url} (${buf.length} bytes)`)
+  }
+  const logPath = path.join(__dirname, '..', '..', 'docs', 'voicelab', 'tom-ita-002-arm-2026-09-04-applied-log.json')
   fs.mkdirSync(path.dirname(logPath), { recursive: true })
   fs.writeFileSync(logPath, JSON.stringify(out, null, 1))
   console.log(`log: ${logPath}`)
