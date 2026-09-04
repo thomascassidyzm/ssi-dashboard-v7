@@ -19,8 +19,10 @@
         :href="build.url"
         :download="build.filename"
       >
-        Download the app ({{ megabytes(build.bytes) }} MB)
+        <span class="btn-action">Download build</span>
+        <span class="btn-sha">{{ build.commit.slice(0, 8) }}</span>
       </a>
+      <p class="build-stamp">Built {{ formatLocalTime(build.builtAt) }}</p>
 
       <div class="install-help">
         <h3>If your phone asks about "unknown sources"</h3>
@@ -88,7 +90,13 @@ const androidBuilds = computed(() =>
   (manifest.builds || []).filter(b => b.platform === 'android')
 )
 
-const megabytes = bytes => (bytes / (1024 * 1024)).toFixed(1)
+// The prominent line under the button: the way Tom reads a clock, not the way a manifest does.
+const formatLocalTime = iso => {
+  const d = new Date(iso)
+  return Number.isNaN(d.getTime())
+    ? iso
+    : d.toLocaleString('en-GB', { dateStyle: 'long', timeStyle: 'short', timeZone: 'Europe/London' }) + ' UK time'
+}
 
 const formatTime = iso => {
   const d = new Date(iso)
@@ -154,6 +162,21 @@ const formatTime = iso => {
 }
 .download-btn:hover {
   filter: brightness(1.08);
+}
+.btn-action {
+  margin-right: 0.5rem;
+}
+/* Matches the short sha the app's own Settings row shows, so the two can be compared at a glance. */
+.btn-sha {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 1.05em;
+  letter-spacing: 0.02em;
+}
+.build-stamp {
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin: 0.5rem 0 0;
 }
 .install-help {
   margin-top: 1.5rem;
