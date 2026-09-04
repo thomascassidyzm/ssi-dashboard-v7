@@ -651,8 +651,11 @@ async function generateCartesia(text, config) {
 
   const audioBuffer = Buffer.from(await response.arrayBuffer());
   const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
+  // The id the VENDOR saw — bare, prefix stripped by buildCartesiaRequest. Read
+  // it back off the request body rather than re-deriving it, so the assertion
+  // can never name a different voice from the one that was actually asked for.
   assertAudibleResponse(audioBuffer, {
-    provider: 'cartesia', bytesPerSecond, text, voiceId: vendorVoiceId,
+    provider: 'cartesia', bytesPerSecond, text, voiceId: body.voice.id,
   });
   return { audioBuffer, wordBoundaries: null };
 }
