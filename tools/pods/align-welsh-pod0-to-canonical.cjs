@@ -98,9 +98,14 @@ async function planCourse(course, canonRaw) {
   const podId = `${course}:${POD_SLUG}`
   const { data: pod, error: pe } = await db.from('listening_pods').select('*').eq('id', podId).single()
   if (pe) throw new Error(`load pod ${podId}: ${pe.message}`)
-  const { data: served, error: se } = await db.from('listening_pod_sentences')
+  const { data: servedRaw, error: se } = await db.from('listening_pod_sentences')
     .select('*').eq('pod_id', podId).order('global_order')
   if (se) throw new Error(`load sentences ${podId}: ${se.message}`)
+  // Base rows only — see the same guard in align-pod0-to-canonical.cjs. A
+  // continuation is attached to a coordinate, never a position in the walk, so
+  // it must not be diffed against the canonical walk and retired as stale.
+  const servedAll = servedRaw || []
+  const served = baseSlate(servedAll)
 
   const d = diffPod(served, canon)
   const targetSafe = new Set(d.carry.targetSafe)
@@ -242,14 +247,15 @@ async function planCourse(course, canonRaw) {
     },
   }
 
-  return { course, podId, pod, served, diff: d, ops, surplus, orphanedWelsh, podUpdate, sections }
+  return { course, podId, pod, served, servedAll, diff: d, ops, surplus, orphanedWelsh, podUpdate, sections }
 }
 
 async function applyCourse(p) {
   // Before-state assertions: re-read and abort the whole run on any drift.
-  const { data: fresh, error } = await db.from('listening_pod_sentences')
+  const { data: freshRaw, error } = await db.from('listening_pod_sentences')
     .select('*').eq('pod_id', p.podId)
   if (error) throw new Error(`re-read ${p.podId}: ${error.message}`)
+  const fresh = baseSlate(freshRaw || [])  // same rule as the plan's `served`
   const freshById = new Map(fresh.map(r => [r.id, r]))
   if (fresh.length !== p.served.length) {
     throw new Error(`DRIFT ${p.podId}: row count ${p.served.length} → ${fresh.length}; aborting`)
@@ -420,7 +426,9 @@ async function main() {
     // Full-fidelity archive of the pre-alignment rows, ALWAYS, dry run included.
     // Nothing below is recoverable from git without it.
     fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-pod0-sentences-prealign.json`),
-      JSON.stringify({ pod: p.pod, sentences: p.served }, null, 1))
+      // servedAll, NOT served — a restore deletes the pod down to this file, so
+      // anything absent from it is destroyed. Continuations included.
+      JSON.stringify({ pod: p.pod, sentences: p.servedAll }, null, 1))
     fs.writeFileSync(path.join(ARCHIVE_DIR, `${course}-welsh-needing-translation.json`),
       JSON.stringify(p.orphanedWelsh, null, 1))
     const dr = { ...p.diff }; delete dr.detail; delete dr.carry

@@ -74,10 +74,12 @@ const CANONICAL_SLUG = 'pod-1'
   const ids = pod0s.map(p => p.id)
   for (let i = 0; i < ids.length; i += 20) {
     const { data, error } = await db.from('listening_pod_sentences')
-      .select('id, pod_id, scene_number, sentence_number, global_order, speaker, known_text, target_text, target_audio_id, known_audio_id')
+      .select('id, pod_id, scene_number, sentence_number, global_order, speaker, known_text, target_text, target_audio_id, known_audio_id, variant_key')
       .in('pod_id', ids.slice(i, i + 20)).order('global_order')
     if (error) throw new Error(`sentences: ${error.message}`)
-    for (const r of data) {
+    // Base rows only: a continuation is attached to a coordinate, not a position
+    // in the walk, so counting one would report every pod as longer than canon.
+    for (const r of baseSlate(data || [])) {
       if (!rowsByPod.has(r.pod_id)) rowsByPod.set(r.pod_id, [])
       rowsByPod.get(r.pod_id).push(r)
     }

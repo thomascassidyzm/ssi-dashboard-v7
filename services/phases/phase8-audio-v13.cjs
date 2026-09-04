@@ -7481,7 +7481,14 @@ async function loadPod0Canon() {
  * @param {Array} sentences     the pod's listening_pod_sentences rows
  * @param {string|null} englishCol  which column of the pod holds English
  */
-function podCanonReuseTexts(canon, sentences, englishCol) {
+function podCanonReuseTexts(canon, sentencesRaw, englishCol) {
+  // BASE ROWS ONLY, on BOTH sides of this comparison. loadPod0Canon already
+  // filters the canonical side; from 2026-09-04 a course pod can carry its own
+  // continuation rows too (listening_pod_sentences.variant_key), and an
+  // unfiltered pod side would read 266 against a canon of 231, fail the length
+  // check below, and silently switch OFF cross-course audio reuse for the whole
+  // pod — every clip rendered fresh, real TTS, for every pod-1 course.
+  const sentences = baseSlate(sentencesRaw || [])
   if (!englishCol || !canon.length || !sentences.length) return null
   if (sentences.length !== canon.length) return null
   const byOrder = new Map(sentences.map(s => [s.global_order, s]))

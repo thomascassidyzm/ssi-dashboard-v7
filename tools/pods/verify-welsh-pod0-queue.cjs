@@ -57,8 +57,10 @@ const COURSES = ['cym_n_for_eng', 'cym_s_for_eng']
     const podCast = vc.podCast || {}
     const aliases = vc.podCastAliases || {}
     const { data: pods } = await db.from('listening_pods').select('*').like('id', `${course}:%`)
-    const { data: sentences } = await db.from('listening_pod_sentences')
+    const { data: sentencesRaw } = await db.from('listening_pod_sentences')
       .select('*').in('pod_id', pods.map(p => p.id)).order('global_order')
+    // Base rows only — a continuation is not part of the walk this verifies.
+    const sentences = baseSlate(sentencesRaw || [])
     const draftIds = new Set(sentences.filter(s => s.target_text_draft).map(s => s.id))
 
     const voices = [...new Map(Object.entries(podCast).filter(([k]) => k !== '__explainer__')
