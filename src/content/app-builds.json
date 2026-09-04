@@ -2,6 +2,28 @@
   "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first).",
   "builds": [
     {
+      "id": "android-9aca2328",
+      "platform": "android",
+      "label": "SSi Android wrapper — debug build (dev, 4 Sep 20:53)",
+      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-9aca2328-debug.apk",
+      "filename": "ssi-devwrap-9aca2328-debug.apk",
+      "bytes": 23299091,
+      "sha256": "18a506e8ea00c962cfb8d6955fca690697d9c5d002584b4c1718fd053a885548",
+      "repo": "ssi-learning-app",
+      "branch": "dev",
+      "commit": "9aca2328",
+      "commitSubject": "verify(staleness): the line on screen in a Capacitor-shaped WebView, both ways",
+      "builtAt": "2026-09-04T19:53:15Z",
+      "applicationId": "com.saysomethingin.devwrap",
+      "appName": "SSi (dev wrap)",
+      "versionName": "1.0",
+      "versionCode": 1,
+      "targetSdk": 36,
+      "minSdk": 24,
+      "buildType": "debug",
+      "provenanceNote": "Cut from dev 9aca2328 — so it carries tonight's belt-panel display grammar and the fast-path position authority (bb0dffd8, absent from every earlier APK) as well as this build's own change: the app can now tell you it is out of date. After installing, the Settings build row reads local-9aca232 with 4 Sept 2026, 20:53 beside it, and the API host ssi-learning-app-git-dev-zenjin.vercel.app on a quiet second line. Web assets stay BUNDLED into the APK by design — offline-first — so 'Tap to update' still cannot fetch new web code and only a new APK can; what is new is that the app now says so, in one quiet line under the build row, and only when it can prove from the live deployment's build time that it is genuinely behind. sha256 verified against the bytes downloaded back out of the bucket."
+    },
+    {
       "id": "android-89af35fc",
       "platform": "android",
       "label": "SSi Android wrapper — debug build (dev, 4 Sep evening)",
