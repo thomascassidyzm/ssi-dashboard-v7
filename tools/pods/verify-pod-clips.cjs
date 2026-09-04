@@ -52,7 +52,7 @@ const MODEL_PATH = modelPath(MODEL)
 const STT_THRESHOLD = 0.60
 const WHISPER = path.join(os.homedir(), '.local/bin/whisper-cli')
 
-const norm = (v) => String(v || '').replace(/^(xai_|azure_|eleven_)/, '')
+const norm = (v) => String(v || '').replace(/^(xai_|azure_|eleven_|cartesia_)/, '')
 const canonicalSpeaker = (s) => String(s || '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim()
 
 /**
