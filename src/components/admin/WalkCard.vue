@@ -55,7 +55,7 @@ const factsLine = computed(() => {
 <template>
   <div class="walk-card bg-surface border border-line rounded-lg p-4" :data-slug="w.slug">
     <div class="flex flex-wrap items-baseline gap-x-2 gap-y-1">
-      <span class="font-mono text-ink text-sm">{{ w.slug }}</span>
+      <span class="ident text-sm">{{ w.slug }}</span>
       <span class="text-ink text-sm font-semibold">{{ w.name }}</span>
       <span v-if="w.category" class="chip" :class="`cat-${w.category}`">{{ categoryLabel }}</span>
       <span class="chip" :class="`st-${w.status}`">{{ String(w.status).toUpperCase() }}</span>
@@ -164,7 +164,7 @@ const factsLine = computed(() => {
 /* CATEGORY IS A NAME, NOT A MEASUREMENT (Tom, 2026-09-02). CORE / THEMED /
    METHOD / FLAGSHIP told you nothing that the word itself did not, in four
    hues that then collided with the coverage read-out below them. Ink and grey. */
-.cat-core, .cat-themed, .cat-method-cut, .cat-flagship { color: var(--ink); }
+.cat-core, .cat-themed, .cat-method-cut, .cat-flagship { color: var(--muted); border-color: var(--line); }
 
 /* STATUS IS a measurement of the walk — the /courses FREE / PREMIUM / Beta /
    Live analogue, and the one place on this card colour is spent. It is drawn
@@ -184,8 +184,8 @@ const factsLine = computed(() => {
   opacity: 0.75;
 }
 .no-claims { border: 1px solid var(--line); border-left: 3px solid var(--muted); line-height: 1.5; color: var(--muted); }
-.drift-note { border: 1px solid var(--line); border-left: 3px solid var(--ink); background: var(--surface-2); line-height: 1.5; }
-.overlay { border: 1px solid var(--line); border-left: 3px solid var(--ink); background: var(--surface-2); }
+.drift-note { border: 1px solid var(--line); border-left: 3px solid var(--ink); background: var(--canvas); line-height: 1.5; }
+.overlay { border: 1px solid var(--line); border-left: 3px solid var(--ink); background: var(--canvas); }
 .overlay code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }
 .prov { font-size: 0.6875rem; }
 .prov code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; word-break: break-all; }

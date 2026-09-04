@@ -63,7 +63,7 @@
             class="bg-surface border border-line shadow-sm rounded-lg p-5 hover:border-accent-2 transition">
             <div class="flex items-start gap-4">
               <div class="flex-shrink-0">
-                <div class="font-mono text-sm text-accent-2 font-semibold px-3 py-1 bg-accent-2/10 rounded">
+                <div class="ident text-sm font-semibold px-3 py-1 bg-accent-2/10 rounded">
                   {{ seed.seed_id }}
                 </div>
               </div>
@@ -118,7 +118,7 @@
           </button>
 
           <div v-show="showAbout" class="mt-4 bg-surface border border-line shadow-sm rounded-lg p-8">
-            <div class="prose prose-invert prose-emerald max-w-none text-ink">
+            <div class="prose prose-invert prose-emerald max-w-none text-muted">
               <p>The {{ totalSeeds }} canonical seeds represent 16 years of empirical optimization in language course design. Each seed is a foundational language concept expressed in English (not because English is special, but because they need to be expressed in something).</p>
 
               <h3 class="text-xl font-semibold text-accent-2 mt-6 mb-3">Key Concept: Language-Agnostic Foundation</h3>
@@ -277,17 +277,14 @@ console.log('🌱 Canonical Seeds (SSoT) Loaded')
   gap: 1rem;
 }
 
+/* Colour and weight come from the shared house look in
+   assets/ui-tokens.css — this page sets only its own size. */
 .page-title {
   font-size: 1.875rem;
-  font-weight: 700;
-  color: #10b981;
   margin: 0 0 0.5rem 0;
 }
 
-.page-subtitle {
-  color: var(--muted);
-  margin: 0;
-}
+.page-subtitle { margin: 0; }
 
 .header-actions {
   display: flex;
@@ -343,10 +340,6 @@ console.log('🌱 Canonical Seeds (SSoT) Loaded')
 
 /* Light-mode legibility overrides — dark mode keeps the brighter emerald untouched.
    #10b981 on the light canvas/white is ~2:1 (fails); --accent-2 (#047857) passes AA. */
-:root[data-theme="light"] .page-title {
-  color: var(--accent-2);
-}
-
 :root[data-theme="light"] .btn-edit {
   background: rgba(4, 120, 87, 0.12);
   color: var(--accent-2);

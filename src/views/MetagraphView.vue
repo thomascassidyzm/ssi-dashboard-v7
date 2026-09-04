@@ -3,8 +3,8 @@
     <div class="mx-auto">
       <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Script Lab', to: '/canonical/scripts' }, { label: 'Metagraph' }]" />
 
-      <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">The metagraph</h1>
-      <p class="text-muted text-sm mb-1 max-w-4xl">
+      <h1 class="text-2xl sm:text-3xl page-title mb-1">The metagraph</h1>
+      <p class="page-lede text-sm mb-1 max-w-4xl">
         Every shape a conversation can take — <strong>{{ graph.nodes.length }} of them</strong>, drawn from the pods we have written,
         and joined by which shape happens inside which.
         <strong class="text-ink">A pod is a walk through this graph.</strong>
@@ -18,13 +18,13 @@
       <div class="flex flex-wrap gap-2 mb-3">
         <button
           class="px-3 py-1.5 rounded border text-xs"
-          :class="active === null ? 'border-ink text-ink bg-surface-2 font-semibold' : 'border-line text-muted bg-surface hover:text-ink hover:border-muted'"
+          :class="active === null ? 'ui-chip-on font-semibold' : 'border-line text-muted bg-surface hover:text-ink hover:border-muted'"
           @click="select(null)"
         >Graph only</button>
         <button
           v-for="pod in pods" :key="pod.slug"
           class="px-3 py-1.5 rounded border text-xs"
-          :class="active === pod.slug ? 'border-ink text-ink bg-surface-2 font-semibold' : 'border-line text-muted bg-surface hover:text-ink hover:border-muted'"
+          :class="active === pod.slug ? 'ui-chip-on font-semibold' : 'border-line text-muted bg-surface hover:text-ink hover:border-muted'"
           @click="select(pod.slug)"
         >
           {{ pod.label }}
@@ -129,7 +129,7 @@
       <!-- Detail: whatever was last tapped -->
       <div v-if="node" ref="panel" class="mt-6 bg-surface border border-line rounded-lg p-4">
         <div class="flex flex-wrap items-baseline gap-x-3">
-          <span class="font-mono text-ink text-lg">{{ node.id }}</span>
+          <span class="ident text-lg">{{ node.id }}</span>
           <span class="text-ink font-semibold">{{ node.title }}</span>
           <span class="text-faint text-xs">from {{ node.kind === 'bound-pair' ? 'the bound pairs' : originLabel(node.origin) }}</span>
           <button class="ml-auto ui-chip" @click="backToGraph">↑ back to the graph</button>
@@ -179,7 +179,7 @@
 
 
       <!-- The outcome overlay: nine shapes, delivery not siting -->
-      <h2 class="text-sm font-semibold text-ink mt-7 mb-1">What the learner has to survive — {{ graph.outcomes.length }} outcomes</h2>
+      <h2 class="text-sm font-semibold section-title mt-7 mb-1">What the learner has to survive — {{ graph.outcomes.length }} outcomes</h2>
       <p class="text-xs text-faint mb-2">Listed in the order the course delivers them, not by number. An outcome counts as delivered only when a line actually delivers it.</p>
       <div class="flex flex-wrap gap-2">
         <button v-for="o in outcomes" :key="o.id"
@@ -196,7 +196,7 @@
 
       <div v-if="outcome" class="mt-6 bg-surface border border-line rounded-lg p-4 text-sm">
         <div class="flex flex-wrap items-baseline gap-x-3">
-          <span class="font-mono text-ink text-lg">{{ outcome.id }}</span>
+          <span class="ident text-lg">{{ outcome.id }}</span>
           <span class="text-ink font-semibold">{{ outcome.name }}</span>
           <span class="text-faint text-xs">{{ outcome.mustBeMinted ? 'minted' : outcome.attested }}</span>
           <button class="ml-auto ui-chip" @click="selectedOutcome = null">close</button>
@@ -511,7 +511,7 @@ onMounted(async () => {
 .tile { cursor: pointer; }
 
 /* THE RESTING GRAPH — no pod laid over it, so nothing is being measured. */
-.tile-box { fill: var(--surface-2); stroke: var(--line); stroke-width: 1.2; }
+.tile-box { fill: var(--surface); stroke: var(--line); stroke-width: 1.2; }
 .tile:hover .tile-box { stroke: var(--ink); }
 /* Selection is a WEIGHT, not a hue: the tile you tapped is drawn heavier. */
 .tile-box.is-selected { stroke: var(--ink); stroke-width: 2.6; }
@@ -521,7 +521,7 @@ onMounted(async () => {
    because a count is a number and should be read as one. */
 .tile-box.is-once,
 .tile-box.is-twice {
-  fill: var(--surface-2);
+  fill: var(--surface);
   stroke: var(--ink);
   stroke-width: 1.4;
   opacity: 1;
@@ -541,16 +541,19 @@ onMounted(async () => {
 .tile-absent .tile-name,
 .tile-absent .tile-sub { opacity: 0.55; }
 
-/* Node ids are INK. A node id is a name, not a measurement. */
-.tile-id { fill: var(--ink); font-size: 12px; font-weight: 700; font-family: ui-monospace, monospace; }
+/* A node id is an IDENTIFIER — green mono, the same spend as the CODE column on
+   /courses (Tom, 2026-09-04). The shape's NAME is the tile's primary text and
+   keeps the ink; the origin line under it is tertiary and goes faint, so the
+   three lines of a tile read in three weights instead of three whites. */
+.tile-id { fill: var(--ident); font-size: 12px; font-weight: 700; font-family: ui-monospace, monospace; }
 .tile-count { fill: var(--ink); font-size: 11px; font-weight: 700; font-family: ui-monospace, monospace; }
 .tile-name { fill: var(--ink); font-size: 12px; }
-.tile-sub { fill: var(--ink); opacity: .5; font-size: 9.5px; }
+.tile-sub { fill: var(--faint); font-size: 9.5px; }
 
 /* The legend keys are the same three channels at 10px. */
 .key { display: inline-block; width: 12px; height: 10px; border-radius: 3px; margin-right: 4px; vertical-align: -1px; border: 1px solid var(--line); }
-.key-base { background: var(--surface-2); border-color: var(--muted); }
-.key-reached { background: var(--surface-2); border: 1px solid var(--ink); }
+.key-base { background: var(--surface); border-color: var(--muted); }
+.key-reached { background: var(--surface); border: 1px solid var(--ink); }
 .key-never { background: none; border: 1px dashed var(--faint); opacity: 0.55; }
 
 .chip { display: inline-block; margin: 0 4px 4px 0; padding: 2px 7px; border: 1px solid var(--line); border-radius: 5px; color: var(--muted); font-size: 11px; }

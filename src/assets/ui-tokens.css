@@ -272,3 +272,56 @@
   --action: #1d4ed8;        /* blue-700 — 7.15:1 on white, as CourseBrowser's */
   --action-ink: #ffffff;
 }
+
+/* ── THE HOUSE LOOK — /courses' palette, named once ──────────────────────────
+   Tom, 2026-09-04, reviewing the estate after the colour sweep: "I prefer the
+   look of this page with the green text look as the default"; the other admin
+   pages "are all good as well but again the white is too white and there is no
+   longer the green slightly neon look of the Course Library page"; "maybe it is
+   the chips and the background that I like that makes it pop nicely".
+
+   THIS NARROWS THE 2026-09-02 RULING ABOVE, it does not overturn it. That rule
+   said colour is spent only on a measured fact, and drained green out of
+   headings and identifiers along with it. Green comes back for exactly two
+   jobs, both of which /courses was already doing while the rule was written:
+
+     A PAGE OR SECTION TITLE is green.
+     AN IDENTIFIER — a course code, a pod slug, a node id, a file path — is
+       green, in mono.
+
+   Everything a hue means as a MEASUREMENT (FREE / PREMIUM / Beta / Live,
+   reached / never reached, blue for an action) is untouched, and red and amber
+   are still off these pages.
+
+   THE OTHER HALF, AND THE REASON THE GREEN READS AT ALL: near-white is
+   RATIONED. On /courses it is spent on the primary text of a row — the course
+   name — and on nothing else; the known/target columns are grey, the column
+   heads are fainter grey, and the chips are dark pills with a hairline border
+   rather than filled blocks. A page that spends --ink on every paragraph has
+   nothing left to spend it on, and the green never gets to be the accent.
+
+   So: primary entity name = --ink. Prose, captions, provenance, secondary
+   columns = --muted / --faint. Title and identifier = --ident. */
+:root {
+  --ident: var(--accent-2);   /* the green an identifier is written in */
+}
+
+/* The page's own name. Size stays with the page — this is colour and weight. */
+.page-title { color: var(--accent-2); font-weight: 700; }
+/* The sentence under it, and any standfirst: grey, never ink. `.page-subtitle`
+   is the name five views already gave the same rule; both are listed here so a
+   page can drop its private copy without also being renamed. */
+.page-lede,
+.page-subtitle { color: var(--muted); }
+/* A section heading inside the page. */
+.section-title { color: var(--accent-2); }
+/* An identifier you could type: a code, a slug, a node id, a path. */
+/* The stack is Tailwind's own `font-mono`, verbatim, because that is what the
+   Course Library's CODE column was wearing when Tom approved it — --font-mono
+   names 'IBM Plex Mono', which this app never loads, so it would have quietly
+   changed the one page this look was lifted from. */
+.ident {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  color: var(--ident);
+}

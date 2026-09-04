@@ -525,10 +525,10 @@ onUnmounted(() => {
   flex-direction: column;
 }
 
+/* Colour and weight come from the shared house look in
+   assets/ui-tokens.css — this page sets only its own size. */
 .page-title {
   font-size: 1.25rem;
-  font-weight: 600;
-  color: var(--ink);
   line-height: 1.2;
 }
 

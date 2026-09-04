@@ -8,8 +8,8 @@
         </router-link>
         <div class="flex items-start justify-between">
           <div>
-            <h1 class="text-4xl font-bold text-accent-2 mb-2">Course Library</h1>
-            <p class="text-muted">Browse and edit existing courses</p>
+            <h1 class="text-4xl page-title mb-2">Course Library</h1>
+            <p class="page-lede">Browse and edit existing courses</p>
           </div>
           <router-link
             to="/production/new/text"
@@ -173,7 +173,7 @@
                   @change="toggleSelect(course.course_code)"
                 />
               </td>
-              <td class="px-3 py-2 font-mono text-accent-2 whitespace-nowrap">
+              <td class="px-3 py-2 ident whitespace-nowrap">
                 {{ course.course_code }}
                 <span v-if="highlightedCourses.has(course.course_code)" class="ml-1 text-[10px] text-accent-2 font-sans">• new</span>
               </td>

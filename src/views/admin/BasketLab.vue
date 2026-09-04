@@ -165,7 +165,9 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
    rendered near-white on the light canvas, i.e. invisible. */
 .basket-lab { max-width: none; margin: 0 auto; padding: 1.5rem; color: var(--ink); }
 
-.page-title { font-size: 2rem; font-weight: 700; letter-spacing: -0.02em; color: var(--ink); margin: 0 0 0.25rem; line-height: 1.2; }
+/* Colour and weight come from the shared house look in
+   assets/ui-tokens.css — this page sets only its own size. */
+.page-title { font-size: 2rem; letter-spacing: -0.02em; margin: 0 0 0.25rem; line-height: 1.2; }
 .page-subtitle { font-size: 0.9375rem; color: var(--muted); margin: 0 0 1.25rem; max-width: 70ch; }
 
 .bl-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin-bottom: 0.75rem; }

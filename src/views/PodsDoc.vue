@@ -148,17 +148,14 @@
   margin-bottom: 2rem;
 }
 
+/* Colour and weight come from the shared house look in
+   assets/ui-tokens.css — this page sets only its own size. */
 .page-title {
   font-size: 1.875rem;
-  font-weight: 700;
-  color: var(--accent-2);
   margin: 0 0 0.5rem 0;
 }
 
-.page-subtitle {
-  color: var(--muted);
-  margin: 0;
-}
+.page-subtitle { margin: 0; }
 
 .page-subtitle a {
   color: var(--accent-2);

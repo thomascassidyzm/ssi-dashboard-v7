@@ -86,7 +86,9 @@ const groups = computed(() => {
 <style scoped>
 .docs-hub { padding: 2rem; max-width: 72rem; }
 .docs-header { margin-bottom: 2rem; }
-.page-title { font-size: 1.875rem; font-weight: 700; color: var(--accent-2); margin: 0 0 0.5rem; }
+/* Colour and weight come from the shared house look in
+   assets/ui-tokens.css — this page sets only its own size. */
+.page-title { font-size: 1.875rem; margin: 0 0 0.5rem; }
 .page-subtitle { color: var(--muted); margin: 0 0 0.75rem; max-width: 46rem; line-height: 1.6; }
 .docs-section { margin-bottom: 2.25rem; }
 .section-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.4rem; }

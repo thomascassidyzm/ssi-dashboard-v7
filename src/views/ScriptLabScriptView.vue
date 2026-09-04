@@ -3,7 +3,7 @@
     <div class="mx-auto">
       <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Script Lab', to: '/canonical/scripts' }, { label: slug }]" />
 
-      <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">{{ title }}</h1>
+      <h1 class="text-2xl sm:text-3xl page-title mb-1">{{ title }}</h1>
       <p class="text-muted text-sm mb-1 max-w-4xl">
         The whole script, scene by scene, with no course loaded — and what it does to the graph.
       </p>
@@ -18,7 +18,7 @@
         <!-- ══ COVERAGE — the reason this page exists ══ -->
         <section class="bg-surface border border-line rounded-lg mb-6 overflow-hidden">
           <div class="px-4 sm:px-5 py-3 border-b border-line">
-            <h2 class="font-semibold text-ink">Coverage — this script as a walk over the graph</h2>
+            <h2 class="font-semibold section-title">Coverage — this script as a walk over the graph</h2>
           </div>
 
           <!-- a pair overlay makes no metagraph claim — say so, not a deficit -->
@@ -52,11 +52,11 @@
                than it states its coverage. The count above is the measurement;
                this is the roll-call under it. -->
           <div class="px-4 sm:px-5 py-4 deficit border-b border-line">
-            <h3 class="text-sm font-semibold text-ink mb-2">Never reached — the deficit list</h3>
+            <h3 class="text-sm font-semibold section-title mb-2">Never reached — the deficit list</h3>
             <p v-if="!cov.neverReached.length" class="text-xs text-muted">Every shape in the graph is traversed by this walk.</p>
             <ul v-else class="space-y-1.5">
               <li v-for="n in cov.neverReached" :key="n.id" class="text-sm flex flex-wrap gap-x-2">
-                <span class="font-mono text-xs text-muted pt-0.5">{{ n.id }}</span>
+                <span class="ident text-xs pt-0.5">{{ n.id }}</span>
                 <span class="text-muted">{{ n.title }}</span>
                 <span class="text-xs text-faint w-full sm:w-auto">{{ n.sequence }}</span>
                 <span v-if="n.partialGroups" class="text-xs text-faint">{{ n.partialGroups }} attestation{{ n.partialGroups === 1 ? '' : 's' }} only partly present</span>
@@ -66,14 +66,14 @@
 
           <!-- the overlay's nine -->
           <div class="px-4 sm:px-5 py-4 border-b border-line">
-            <h3 class="text-sm font-semibold text-ink mb-1">Outcome shapes — {{ cov.totals.outcomesDelivered }} delivered, {{ cov.totals.outcomesMissing }} missing</h3>
+            <h3 class="text-sm font-semibold section-title mb-1">Outcome shapes — {{ cov.totals.outcomesDelivered }} delivered, {{ cov.totals.outcomesMissing }} missing</h3>
             <p class="text-xs text-faint mb-2">
               An outcome counts as delivered only when a line declares it. The ask it is <em>sited on</em> being present is not delivery.
             </p>
             <ul class="space-y-1">
               <li v-for="o in cov.outcomes" :key="o.id" class="text-sm flex flex-wrap gap-x-2 items-baseline"
                   :class="o.delivered ? 'out-delivered' : 'out-missing'">
-                <span class="font-mono text-xs">{{ o.id }}</span>
+                <span class="ident text-xs">{{ o.id }}</span>
                 <span>{{ o.name }}</span>
                 <span v-if="o.mustBeMinted" class="text-xs text-faint">attested nowhere — must be minted</span>
                 <span v-else-if="!o.delivered" class="text-xs text-faint">{{ o.attested }}</span>
@@ -84,7 +84,7 @@
 
           <!-- survivability, carrying the corpus's null result -->
           <div class="px-4 sm:px-5 py-4 border-b border-line">
-            <h3 class="text-sm font-semibold text-ink mb-1">
+            <h3 class="text-sm font-semibold section-title mb-1">
               Survivability — {{ exercised.length }} of {{ cov.survivability.length }} edges exercised
             </h3>
             <p class="text-xs text-faint mb-2">
@@ -92,7 +92,7 @@
             </p>
             <ul class="space-y-1">
               <li v-for="s in exercised" :key="s.id" class="text-sm flex flex-wrap gap-x-2 items-baseline">
-                <span class="font-mono text-xs text-muted">{{ s.id }}</span>
+                <span class="ident text-xs">{{ s.id }}</span>
                 <span class="text-ink">{{ s.presupposes }}</span>
                 <span class="text-xs text-muted" :class="s.recoveryRank === 0 ? 'font-semibold text-ink' : ''">
                   recovery: {{ s.recoveryAttested }}
@@ -200,7 +200,7 @@
           <div v-for="(scene, idx) in walk.scenes" :key="scene.number" class="bg-surface border border-line rounded-lg overflow-hidden">
             <div class="px-4 sm:px-5 py-3 border-b border-line flex flex-wrap items-baseline gap-2 sm:gap-3">
               <span class="text-xs font-mono text-ink bg-surface-2 border border-line px-1.5 py-0.5 rounded">{{ idx + 1 }}/{{ walk.scenes.length }}</span>
-              <span class="text-xs font-mono text-faint">{{ scene.label || ('Scene ' + scene.number) }}</span>
+              <span class="ident text-xs">{{ scene.label || ('Scene ' + scene.number) }}</span>
               <span class="font-semibold text-ink">{{ scene.title }}</span>
               <span v-if="scene.subtitle" class="text-xs italic text-faint">{{ scene.subtitle }}</span>
               <span class="ml-auto text-xs" :class="sceneShapes(scene).length ? 'text-muted' : 'text-faint'">

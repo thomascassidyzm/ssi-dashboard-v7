@@ -3,8 +3,8 @@
     <div class="mx-auto">
       <LabCrumbs :trail="[{ label: 'Home', to: '/' }, { label: 'Labs', to: '/admin/labs' }, { label: 'Script Lab' }]" />
 
-      <h1 class="text-2xl sm:text-3xl font-bold text-ink mb-1">Script Lab</h1>
-      <p class="text-muted text-sm mb-4 max-w-4xl">
+      <h1 class="text-2xl sm:text-3xl page-title mb-1">Script Lab</h1>
+      <p class="page-lede text-sm mb-4 max-w-4xl">
         Every walk in the estate, in one place. A walk is a script read as a path over the shape
         metagraph; the read-out beside each one is the coverage that path achieves.
       </p>
@@ -76,7 +76,7 @@
       <div class="space-y-8">
         <section v-for="group in groups" :key="group.id">
           <div class="flex items-baseline gap-3 mb-1">
-            <h2 class="text-sm font-bold tracking-wide uppercase" :style="{ color: group.accent }">{{ group.title }}</h2>
+            <h2 class="text-sm font-bold tracking-wide uppercase section-title">{{ group.title }}</h2>
             <div class="flex-1 h-px bg-line"></div>
           </div>
           <p class="text-xs text-muted mb-3 leading-relaxed max-w-2xl">{{ group.blurb }}</p>
@@ -84,7 +84,7 @@
           <!-- The two Method cuts are ONE decision shown as two realisations,
                so they are rendered inside one frame rather than as two walks. -->
           <div v-if="group.paired" class="paired border rounded-lg p-3 sm:p-4">
-            <p class="text-xs text-ink font-semibold mb-3">
+            <p class="text-xs text-muted font-semibold mb-3">
               One decision, two realisations of the same material. Tom's choice is outstanding — picking one sacks the other.
             </p>
             <div class="grid gap-3 sm:grid-cols-2">
@@ -261,7 +261,7 @@ onMounted(load)
    heavier ink rule and a raised surface, not amber — amber on this page was
    also doing the active-nav-tab job and the "declared, unresolved" job, and a
    colour doing three jobs teaches the eye nothing. */
-.object-box { border-color: var(--line); border-left: 3px solid var(--ink); background: var(--surface-2); }
+.object-box { border-color: var(--line); border-left: 3px solid var(--accent-2); background: var(--surface); }
 
 /* One frame around the two Method cuts, so they read as one decision. The
    dashes here mean "not yet decided" — the same absence channel the metagraph

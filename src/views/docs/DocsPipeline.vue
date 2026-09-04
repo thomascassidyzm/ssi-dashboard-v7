@@ -164,7 +164,9 @@ const unreferencedLiveTables = computed(() =>
 <style scoped>
 .docs-compiled { padding: 2rem; max-width: 64rem; }
 .page-header { margin-bottom: 1.5rem; }
-.page-title { font-size: 1.875rem; font-weight: 700; color: var(--accent-2); margin: 0 0 0.5rem; }
+/* Colour and weight come from the shared house look in
+   assets/ui-tokens.css — this page sets only its own size. */
+.page-title { font-size: 1.875rem; margin: 0 0 0.5rem; }
 .page-subtitle { color: var(--muted); margin: 0 0 0.75rem; }
 .panel {
   background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
