@@ -763,5 +763,19 @@ onUnmounted(() => {
   .navbar-right::-webkit-scrollbar {
     display: none;
   }
+
+  /* ...but overflow-x:auto computes overflow-y to auto too, which CLIPPED the
+     absolutely-positioned user dropdown hanging below the row: on a phone,
+     tapping the avatar opened a menu that was invisible and untappable, so
+     Admin, Users, Test builds, Change password and Sign out were all
+     unreachable from a phone. A fixed-position dropdown escapes an ancestor's
+     overflow clip (no transformed ancestor in this tree), so it is anchored to
+     the viewport instead, just below the navbar's first row. */
+  .user-dropdown {
+    position: fixed;
+    top: 3rem;
+    right: 0.75rem;
+    left: auto;
+  }
 }
 </style>
