@@ -98,6 +98,15 @@ async function postForm (path, form) {
 
 export const api = {
   params: () => call('/api/voicelab/params'),
+  // ── Audition: a voice, a language, one fixed paragraph ──────────────────
+  // The lookup is FREE and answers "have we already paid for this one?", which
+  // is why it is a separate call from the render rather than a flag on it: the
+  // screen asks it on every change of either menu, and a call that might spend
+  // money must never be the one fired by moving a dropdown.
+  auditionOptions: () => call('/api/voicelab/audition/options'),
+  auditionLookup: (q) => call(`/api/voicelab/audition?${new URLSearchParams(q)}`),
+  auditionRender: (body) => call('/api/voicelab/audition', { method: 'POST', body }),
+  auditionHistory: (limit = 60) => call(`/api/voicelab/audition/history?limit=${limit}`),
   courses: () => call('/api/voicelab/courses'),
   sentences: (q) => call(`/api/voicelab/sentences?${new URLSearchParams(q)}`),
   estimate: (body) => call('/api/voicelab/estimate', { method: 'POST', body }),

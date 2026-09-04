@@ -46,6 +46,7 @@ import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import LabCrumbs from '@/components/LabCrumbs.vue'
 import { probe, labBase, useCloudBackend } from './voicelab/labApi'
 import LanguagesPanel from './voicelab/LanguagesPanel.vue'
+import AuditionPanel from './voicelab/AuditionPanel.vue'
 import PlayPanel from './voicelab/PlayPanel.vue'
 import ParametersPanel from './voicelab/ParametersPanel.vue'
 import RunPanel from './voicelab/RunPanel.vue'
@@ -130,6 +131,7 @@ const showB = ref(false)
         <h1 class="page-title">Voice Lab</h1>
         <div class="mode-switch">
           <button :class="{ on: mode === 'languages' }" @click="mode = 'languages'">Languages</button>
+          <button :class="{ on: mode === 'audition' }" @click="mode = 'audition'">Audition</button>
           <button :class="{ on: mode === 'play' }" @click="mode = 'play'">Play</button>
           <button :class="{ on: mode === 'engineering' }" @click="mode = 'engineering'">Engineering</button>
         </div>
@@ -178,6 +180,11 @@ const showB = ref(false)
            for that and still shows what is cast. It needs only the consent
            wording from it — see LanguagesPanel's prop comment. -->
       <LanguagesPanel :params="params" />
+    </section>
+
+    <!-- AUDITION — the fast question, and the only one that needs no config. -->
+    <section v-if="mode === 'audition'">
+      <AuditionPanel />
     </section>
 
     <section v-if="params && mode === 'play'">

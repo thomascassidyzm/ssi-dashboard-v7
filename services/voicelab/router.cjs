@@ -30,6 +30,7 @@ const fs = require('fs')
 
 const lab = require('./lab.cjs')
 const store = require('./store.cjs')
+const audition = require('./audition.cjs')
 const params = require('./params.cjs')
 // A cast slot is keyed on the DIALECT entity ('deu_at'); a PROVIDER only ever
 // knows the base language ('deu'). Everything that steers a render, registers a
@@ -1626,6 +1627,78 @@ function mount (app, deps) {
       if (!exp) return res.status(404).json({ error: 'unknown experiment', code: 'not_found' })
       res.json(lab.exportConfig(exp, (req.body || {}).configKey))
     } catch (err) { fail(res, err, `export ${req.params.id}`) }
+  })
+
+  // ── AUDITION — one voice, one language, one fixed paragraph ───────────────
+  //
+  // The permanent answer to "what does this voice sound like speaking that
+  // language?", which used to be a one-off script every time it was asked.
+  // Reads are free and open to any dashboard user; the render is admin, like
+  // every other call in this lab that can spend money. See audition.cjs for
+  // what it deliberately does not do — no cast, no course write, no gate, and
+  // no consent door of its own.
+
+  app.get('/api/voicelab/audition/options', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      res.json({
+        voices: await audition.voices(),
+        languages: audition.languages(),
+        settings: audition.renderSettings(),
+        spend: {
+          charsToday: store.charsSpentToday(),
+          ceiling: lab.LIMITS.dailyCharCeiling,
+        },
+      })
+    } catch (err) { fail(res, err, 'audition options') }
+  })
+
+  // Is this one already paid for? Spends nothing, and is what lets the button
+  // say "already rendered — free" BEFORE it is pressed rather than after.
+  app.get('/api/voicelab/audition', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const plan = audition.planFor({
+        voiceId: req.query.voiceId,
+        provider: req.query.provider,
+        language: req.query.language,
+      })
+      const hit = audition.cached(plan.key)
+      res.json({
+        cached: Boolean(hit),
+        key: plan.key,
+        chars: plan.chars,
+        text: plan.text,
+        languageName: plan.languageName,
+        steer: plan.steer,
+        ...(hit ? { audition: { ...hit, cached: true, url: `/api/voicelab/clip/${plan.key}.mp3` } } : {}),
+      })
+    } catch (err) { fail(res, err, 'audition lookup') }
+  })
+
+  // The one call that can spend. A cache hit spends nothing and says so, so
+  // pressing the button twice is free the second time.
+  app.post('/api/voicelab/audition', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const body = req.body || {}
+      const out = await audition.audition({
+        voiceId: body.voiceId,
+        provider: body.provider,
+        language: body.language,
+        voiceName: body.voiceName,
+      })
+      logger.log?.(`[voicelab] audition ${out.cached ? 'served cached' : 'rendered'} ${out.provider}/${out.voiceId} in ${out.language} for ${who(user)}`)
+      res.json({ audition: out })
+    } catch (err) { fail(res, err, 'audition') }
+  })
+
+  app.get('/api/voicelab/audition/history', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      res.json({ auditions: audition.history(Number(req.query.limit) || 60) })
+    } catch (err) { fail(res, err, 'audition history') }
   })
 
   // ── The bytes ─────────────────────────────────────────────────────────────
