@@ -1,0 +1,35 @@
+[Unit]
+Description=Nightly check that no voice claims a variety its course does not teach, and that two counts which must agree still do
+Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/voice-variety/README.md
+
+[Service]
+Type=oneshot
+# ── WHY NOT THE SHARED CHECKOUT ─────────────────────────────────────────────
+# tools/qa/audio-gap runs from /home/tomcassidy/SSi/ssi-dashboard-v7-clean and
+# that works only while the shared checkout happens to sit on a branch carrying
+# its files. On 2026-09-04 it was on docs/senedd-s4c-floor-audio-2026-09-03 with
+# a large uncommitted diff and several sessions live in it, so a unit pointed
+# there would have fired into nothing the night this landed. This nightly owns
+# its own detached worktree, refreshes it to origin/main before every run, and
+# therefore always executes the code that is actually landed. Nothing else
+# writes to that directory, so the reset is safe.
+WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/voice-variety/nightly.cjs
+# Grouped aggregates over ~2.6M course_audio rows and ~1M content rows, ~3
+# minutes, almost all of it Postgres-side. This box is four cores carrying
+# Tom's chat, ten Popty services and the render queue, and several other jobs
+# share this Supabase project: back seat, and a hard cap so a wedged query can
+# never sit on the box until morning.
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=30min
+# Exit 2 means it could not run — or could not reproduce a known positive, which
+# is the same thing — and it has already posted a notice saying so by then. Read
+# the log, not systemd's opinion of the unit.
+SuccessExitStatus=0 2
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/ssi-voice-variety-unit.log
+StandardError=append:/home/tomcassidy/.local/log/ssi-voice-variety-unit.log
