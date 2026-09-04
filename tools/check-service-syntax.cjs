@@ -12,12 +12,16 @@
  * `node --check` between "merged to main" and "the -prod checkout executes it".
  *
  * Call sites, deliberately all the same tool:
- *   - CI (.github/workflows/explainer-check.yml) and `npm test`, with no args:
- *     checks every service entrypoint, so a bad merge fails the push.
- *   - The auto-merge workflow, with --all, on the MERGE RESULT before it is
- *     pushed to main. This is the one that would have caught 186af122: the
- *     broken file existed on neither parent, so no check of the branch itself
- *     could see it, and auto-merge pushes without waiting for any other job.
+ *   - `npm test`, with no args: checks every service entrypoint, so a bad
+ *     merge fails the test run of whoever runs it next.
+ *   - NOTE: this gate no longer sees a merge before it reaches main. It used to
+ *     run in GitHub Actions, and again inside the auto-merge workflow with
+ *     --all on the MERGE RESULT — which is the run that would have caught
+ *     186af122, since the broken file existed on neither parent. Actions is off
+ *     on this repo (Tom's ruling, 2026-08-31) and merges now happen by hand or
+ *     through the command surface, so the merge-result check is the deploy
+ *     path's job below, and it catches a bad merge on the way out rather than
+ *     on the way in.
  *   - The deploy path (ops/watchdog/popty-staleness-watchdog.sh), with --range,
  *     after the pull and BEFORE any restart. On failure the checkout is rolled
  *     back and the last-known-good process is left running — make-before-break.
@@ -26,8 +30,9 @@
  *     in the service log instead of looping silently. The last line of defence,
  *     not the first — by then the old process is already gone.
  *
- * Dependency-free node on purpose — CI runs it without an npm install, and
- * ExecStartPre runs it before the service has any environment to speak of.
+ * Dependency-free node on purpose — the deploy path runs it without an npm
+ * install, and ExecStartPre runs it before the service has any environment to
+ * speak of.
  *
  * Usage:
  *   node tools/check-service-syntax.cjs                 # services/ entrypoints
@@ -55,7 +60,7 @@ const IS_JS = /\.(c?js|mjs)$/
 // it parses as CommonJS or as an ES module. That is the honest question anyway —
 // "can anything parse this?" — and it means no file has to be trusted by name.
 // In-process, because --all spans 580 files and a subprocess each turns a 9s gate
-// into a 24s one on the auto-merge critical path. This is what `node --check`
+// into a 24s one on the deploy critical path. This is what `node --check`
 // does: compile inside the CommonJS module wrapper (which is what makes top-level
 // `return` legal) and never run a line of it. Hashbangs are stripped as node does.
 function parsesAsCommonJs(file) {
