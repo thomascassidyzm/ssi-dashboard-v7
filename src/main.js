@@ -5,6 +5,7 @@ import './assets/ui-tokens.css'
 import App from './App.vue'
 import router from './router'
 import { installAuthFetch } from './services/authFetch'
+import { installChunkReloadRecovery } from './router/chunkRecovery'
 
 // Attach the dashboard session token to all API-bound fetch() calls —
 // course-scoped routes are auth-gated server-side. Must install before
@@ -21,6 +22,11 @@ const app = createApp(App)
 
 app.use(pinia)
 app.use(router)
+
+// A deploy renames every route chunk. Without this, an already-open tab's nav
+// links all die silently the moment a new build lands. See chunkRecovery.js.
+installChunkReloadRecovery(router)
+
 app.mount('#app')
 
 // Stale-version detection: check if a newer build has been deployed

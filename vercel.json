@@ -72,7 +72,7 @@
       "destination": "https://watson-1.tail4968cb.ts.net:8443/api/recording/:path*"
     },
     {
-      "source": "/((?!vfs).*)",
+      "source": "/((?!vfs|assets/).*)",
       "destination": "/index.html"
     }
   ]
