@@ -22,6 +22,49 @@
          marks without reading a number at all. None of them is named for a
          judgement we have made about the reader's earlier takes (Tom,
          2026-09-02). -->
+    <!-- WHICH LINE IS THAT — IN ONE PLACE, ALWAYS THE SAME PLACE.
+         Tom, 2026-09-04, watching Aran work: "it would be more the expected
+         behaviour to have a region where the selected grid's text appeared
+         always in the same place". The panel used to open INSIDE the strip, as
+         a full-width item straight after the mark that was tapped. It read
+         well and it made the page unusable: inserting it broke the line, so
+         every mark after it moved, and across 769 marks in three grids the
+         next square he was reaching for was no longer under his thumb.
+         So the slot is OUTSIDE every grid, it is drawn whether or not
+         anything is selected, and its height is FIXED — the grids are in
+         exactly the same pixels with a line open as with nothing open, which
+         is the whole point and is what the reflow test pins.
+         It is sticky so that "the same place" means the same place ON THE
+         SCREEN: tapping a mark two thirds of the way down the SENEDD grid must
+         not put the answer above the fold.
+         IT SAYS TWO THINGS AND ONLY TWO: the words, and recorded or not.
+         Tom's ruling of 2026-09-02 stands over this panel in particular — a
+         take we have ruled unusable is shown as a line that still needs
+         recording and NOTHING else, so there is no flag, no reason, no score
+         and no "re-record this" state to leak in here. -->
+    <div class="peek-slot">
+      <div v-if="peeked" class="peek">
+        <!-- Who says it and whether it is done, small, on one line above the
+             words: the slot is a caption and it has a fixed height to keep, so
+             nothing in it is allowed to be big except the line itself. -->
+        <span class="peek-meta">
+          <span v-if="peeked.speaker" class="peek-speaker">{{ peeked.speaker }}</span>
+          <span class="peek-state">{{ peeked.done ? 'Recorded' : 'Not recorded' }}</span>
+        </span>
+        <span class="peek-text">{{ peeked.text }}</span>
+        <!-- AND THIS IS THE PRIZE. "I want to read that one again" is what an
+             artist actually wants from a picture of their progress, so the
+             mark is a way back onto the line and not just a report about it.
+             It opens the mic on that line and nothing else; the last take is
+             the accepted take, so re-reading simply replaces it and there is
+             no confirm step here on purpose. -->
+        <button class="peek-record" type="button" @click="$emit('record', peeked.id)">
+          {{ peeked.done ? 'Read it again' : 'Record this line' }}
+        </button>
+      </div>
+      <p v-else class="peek-hint">Tap a square to see its line.</p>
+    </div>
+
     <ul class="section-map">
       <li v-for="s in sections" :key="s.key" class="section-map-row">
         <!-- THE NUMBER IS THE HEADLINE. Tom, 2026-09-02: "each section should
@@ -42,46 +85,17 @@
              would never open under a thumb. Hover is kept as the desktop
              nicety it is: it previews, tap decides. -->
         <div class="strip">
-          <template v-for="r in s.rows" :key="r.id">
-            <button
-              type="button"
-              class="tick"
-              :class="{ done: r.done, on: peekId === r.id }"
-              :title="r.text"
-              :aria-label="`${r.text} — ${r.done ? 'recorded' : 'not recorded'}`"
-              @mouseenter="hoverId = r.id"
-              @mouseleave="hoverId === r.id && (hoverId = null)"
-              @click="peekId = peekId === r.id ? null : r.id"
-            ></button>
-
-            <!-- WHICH LINE IS THAT. The one question a mark cannot answer on
-                 its own — answered ON THE ROW THE MARK IS IN, because it is a
-                 full-width item inside the same wrapping strip. It first opened
-                 under the whole section and that was wrong on a phone: tapping
-                 a mark in the third row of 23 put the answer twenty rows below
-                 the thumb, off the screen entirely.
-                 IT SAYS TWO THINGS AND ONLY TWO: the words, and recorded or
-                 not. Tom's ruling of 2026-09-02 stands over this panel in
-                 particular — a take we have ruled unusable is shown as a line
-                 that still needs recording and NOTHING else, so there is no
-                 flag, no reason, no score and no "re-record this" state to leak
-                 in here. -->
-            <div v-if="peekedId === r.id" class="peek">
-              <span v-if="r.speaker" class="peek-speaker">{{ r.speaker }}</span>
-              <span class="peek-text">{{ r.text }}</span>
-              <span class="peek-state">{{ r.done ? 'Recorded' : 'Not recorded' }}</span>
-              <!-- AND THIS IS THE PRIZE. "I want to read that one again" is
-                   what an artist actually wants from a picture of their
-                   progress, so the mark is a way back onto the line and not
-                   just a report about it. It opens the mic on that line and
-                   nothing else; the last take is the accepted take, so
-                   re-reading simply replaces it and there is no confirm step
-                   here on purpose. -->
-              <button class="peek-record" type="button" @click="$emit('record', r.id)">
-                {{ r.done ? 'Read it again' : 'Record this line' }}
-              </button>
-            </div>
-          </template>
+          <button
+            v-for="r in s.rows" :key="r.id"
+            type="button"
+            class="tick"
+            :class="{ done: r.done, on: peekId === r.id }"
+            :title="r.text"
+            :aria-label="`${r.text} — ${r.done ? 'recorded' : 'not recorded'}`"
+            @mouseenter="hoverId = r.id"
+            @mouseleave="hoverId === r.id && (hoverId = null)"
+            @click="peekId = peekId === r.id ? null : r.id"
+          ></button>
         </div>
 
         <span class="sm-blurb">{{ s.blurb }}</span>
@@ -242,6 +256,18 @@ const hoverId = ref(null)
 // The mark whose line is open: a tap wins over a hover, and the panel is drawn
 // inline next to that mark rather than in a floating box a thumb would cover.
 const peekedId = computed(() => peekId.value || hoverId.value)
+// THE ROW ITSELF, found once, because the panel no longer lives beside the mark
+// it belongs to: it is one slot at the top of the roster and it has to fetch the
+// line rather than be rendered inside its loop.
+const peeked = computed(() => {
+  const id = peekedId.value
+  if (!id) return null
+  for (const s of props.sections) {
+    const row = s.rows.find(r => r.id === id)
+    if (row) return row
+  }
+  return null
+})
 // A section that disappears (the queue reloaded, the volume changed) must not
 // leave a panel open over somebody else's line.
 watch(() => props.sections, (list) => {
@@ -378,20 +404,66 @@ function tallyWords(section) {
 }
 .tick:focus-visible { outline: 2px solid var(--color-emerald, #06ffa5); outline-offset: 1px; }
 
-/* WHICH LINE IS THAT. Deliberately quiet: it is a caption for a mark, and the
-   green Start button above it stays the loudest thing on the page. */
+/* THE ONE PLACE THE SELECTED LINE APPEARS. Its height is FIXED, and that is
+   not a detail: an empty slot and a full one must occupy exactly the same
+   pixels, or the grids under it move the moment a square is tapped — which is
+   the bug this replaced. Everything inside it therefore fits or scrolls; it
+   never grows.
+   Sticky, so "always in the same place" is true on the screen and not only in
+   the document: the SENEDD grid is twenty rows deep on a phone and a slot that
+   scrolled away with the top of the page would answer nothing. */
+.peek-slot {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  /* FIXED, and this is the whole trick: a slot that grew when a line was
+     opened would be the very bug it replaced. Three lines of Welsh, a caption
+     line and a 44px way back onto the line. Three because Aran's queue is
+     half pod dialogue (a line and a half) and half committee Welsh with a
+     long tail — three lines names any of them, and the tenth of the queue
+     that runs longer scrolls inside the box rather than moving the grids. */
+  height: 6.3rem;
+  margin: 0 0 0.5rem;
+  /* Opaque, and the CARD's own colour: the marks scroll under it and must not
+     show through, but a panel in a different shade would read as something
+     that had floated in from another screen. */
+  background: var(--color-shadow, #1e293b);
+}
+/* Deliberately quiet: it is a caption for a mark, and the green Start button
+   below it stays the loudest thing on the page. */
 .peek {
-  /* A full-width item in the wrapping strip: it breaks the line straight after
-     the mark that was tapped, so the answer appears on the row of the question. */
-  flex: 1 1 100%;
-  display: flex;
-  flex-wrap: wrap;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto 1fr;
   align-items: center;
-  gap: 0.4rem 0.55rem;
-  margin: 0.35rem 0 0.15rem;
-  padding: 0.5rem 0.6rem;
+  gap: 0.15rem 0.55rem;
+  padding: 0.35rem 0.6rem;
   border: 1px solid var(--color-graphite, #475569);
   border-radius: 10px;
+  /* The slot cannot grow, so nothing inside it may spill out of the frame
+     either — a line of Welsh hanging below the border reads as a bug. */
+  overflow: hidden;
+}
+.peek-meta {
+  grid-column: 1 / 3;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-width: 0;
+}
+/* Says what the empty slot is for, in the space the slot already reserves — so
+   the hint costs no layout and the tap is discoverable without a hover. */
+.peek-hint {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0.35rem 0.6rem;
+  border: 1px dashed rgba(255, 255, 255, 0.14);
+  border-radius: 10px;
+  font-size: 0.85rem;
+  opacity: 0.45;
 }
 .peek-speaker {
   font-size: 0.72rem;
@@ -399,18 +471,34 @@ function tallyWords(section) {
   border-radius: 999px;
   border: 1px solid var(--color-graphite, #475569);
   opacity: 0.9;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.peek-text { flex: 1 1 100%; font-size: 0.98rem; }
-.peek-state { font-size: 0.72rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.03em; }
+/* The words themselves: two lines, and a long committee sentence scrolls
+   inside them rather than pushing the grids down. */
+.peek-text {
+  grid-column: 1;
+  align-self: center;
+  min-height: 0;
+  max-height: 4rem;
+  overflow-y: auto;
+  /* A flick inside the words must not drag the whole page with it. */
+  overscroll-behavior: contain;
+  font-size: 0.98rem;
+  line-height: 1.3;
+}
+.peek-state { font-size: 0.72rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.03em; white-space: nowrap; }
 .peek-record {
-  margin-left: auto;
+  grid-column: 2;
+  align-self: center;
   min-height: 44px;
-  padding: 0.35rem 0.9rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 8px;
   border: 1px solid var(--color-emerald, #06ffa5);
   background: transparent;
   color: var(--color-emerald, #06ffa5);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   cursor: pointer;
   touch-action: manipulation;
 }

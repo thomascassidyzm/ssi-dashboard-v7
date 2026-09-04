@@ -64,21 +64,51 @@ describe('RecordistRoster — the sectioned grid', () => {
     for (const t of w.findAll('.tick')) expect(t.element.tagName).toBe('BUTTON')
   })
 
-  it('tapping a mark shows that line, under its own section', async () => {
+  it('tapping a mark shows that line in the one slot, never inside a grid', async () => {
     const w = mountRoster()
+    // The slot is there before anything is selected — that is what stops the
+    // grids moving when something is.
+    expect(w.find('.peek-slot').exists()).toBe(true)
     expect(w.find('.peek').exists()).toBe(false)
     await w.findAll('.strip')[1].findAll('.tick')[2].trigger('click')
-    const peek = w.find('.peek')
-    expect(peek.text()).toContain('Beth wyt ti eisiau?')
-    // ON THE ROW OF THE MARK, not under the whole grid: the panel is a
-    // full-width item inside the same wrapping strip, immediately after the
-    // mark that was tapped. Under a 23-row grid it was twenty rows off-screen.
-    expect(w.findAll('.strip')[1].find('.peek').exists()).toBe(true)
-    const kids = [...w.findAll('.strip')[1].element.children]
-    expect(kids.indexOf(peek.element)).toBe(kids.findIndex(n => n.classList.contains('on')) + 1)
-    // In the second section's block, not the first one's.
-    expect(w.findAll('.section-map-row')[1].find('.peek').exists()).toBe(true)
-    expect(w.findAll('.section-map-row')[0].find('.peek').exists()).toBe(false)
+    expect(w.find('.peek').text()).toContain('Beth wyt ti eisiau?')
+    // NOT IN A GRID AND NOT IN A SECTION. It used to be a full-width item
+    // inside the strip, straight after the mark that was tapped, and inserting
+    // it moved every mark after it — with 769 marks across three grids the
+    // next square was no longer under Aran's thumb (Tom, 2026-09-04).
+    for (const strip of w.findAll('.strip')) expect(strip.find('.peek').exists()).toBe(false)
+    for (const row of w.findAll('.section-map-row')) expect(row.find('.peek').exists()).toBe(false)
+    // One slot for the whole roster, and it is the first thing in it.
+    expect(w.findAll('.peek-slot').length).toBe(1)
+    expect(w.find('.peek').element.closest('.peek-slot')).toBeTruthy()
+  })
+
+  it('THE GRIDS DO NOT MOVE — no selection, one selection, then another', async () => {
+    const w = mountRoster()
+    // The shape of a grid is what a thumb aims at: the marks, in order, and
+    // NOTHING BETWEEN THEM. Selecting a line must not change that shape, so
+    // every strip's children are compared before and after two taps in a row.
+    // The one thing allowed to change is a mark's own `on` class — it has to,
+    // or the square he tapped stops looking selected — so it is stripped out
+    // and everything else must be identical.
+    const shape = () => w.findAll('.strip').map(s =>
+      [...s.element.children].map(n => `${n.tagName}:${n.className.replace(' on', '')}:${n.title}`))
+    const before = shape()
+    await w.findAll('.strip')[1].findAll('.tick')[0].trigger('click')
+    expect(shape()).toEqual(before)
+    await w.findAll('.strip')[1].findAll('.tick')[2].trigger('click')
+    expect(shape()).toEqual(before)
+    // And the slot's own place in the roster never changes either: it is drawn
+    // whether or not a line is open, so there is nothing to insert or remove.
+    expect(w.findAll('.peek-slot').length).toBe(1)
+  })
+
+  it('keeps the tapped square visibly marked as the one being read', async () => {
+    const w = mountRoster()
+    await w.findAll('.strip')[1].findAll('.tick')[2].trigger('click')
+    const on = w.findAll('.tick').filter(t => t.classes('on'))
+    expect(on.length).toBe(1)
+    expect(on[0].element).toBe(w.findAll('.strip')[1].findAll('.tick')[2].element)
   })
 
   it('says recorded or not recorded and NOTHING else about the take', async () => {
