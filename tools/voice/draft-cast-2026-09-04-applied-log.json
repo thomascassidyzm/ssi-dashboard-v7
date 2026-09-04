@@ -1,0 +1,2311 @@
+{
+ "run": "draft-cast-2026-09-04",
+ "dryRun": false,
+ "only": null,
+ "notes": "draft casting 2026-09-04 — mechanical fill from the Cartesia catalogue in vendor order, no taste applied",
+ "generatedAt": "2026-09-04T01:30:18.209Z",
+ "counts": {
+  "planned": 150,
+  "applied": 146,
+  "refused": 4,
+  "uncovered": 44
+ },
+ "applied": [
+  {
+   "language": "eng",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_47c38ca4-5f35-497b-b1a3-415245fb35e1",
+   "voiceName": "Daniel - Modern Assistant",
+   "dialectOf": null,
+   "poolSize": 209,
+   "skippedCourses": 5,
+   "timestamp": "2026-09-04T01:28:37.770Z"
+  },
+  {
+   "language": "eng",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_db6b0ed5-d5d3-463d-ae85-518a07d3c2b4",
+   "voiceName": "Skylar - Friendly Guide",
+   "dialectOf": null,
+   "poolSize": 207,
+   "skippedCourses": 5,
+   "timestamp": "2026-09-04T01:28:38.501Z"
+  },
+  {
+   "language": "eng",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca",
+   "voiceName": "Gemma - Decisive Agent",
+   "dialectOf": null,
+   "poolSize": 207,
+   "skippedCourses": 5,
+   "timestamp": "2026-09-04T01:28:39.247Z"
+  },
+  {
+   "language": "kor",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_e1717dc3-b87b-4720-aa7f-b6db290e0609",
+   "voiceName": "Taehyun - Friendly Host",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:39.982Z"
+  },
+  {
+   "language": "kor",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_89f4372f-1f73-4b85-8e1e-5d24ed8bc826",
+   "voiceName": "Jaewon - Steady Advisor",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:40.724Z"
+  },
+  {
+   "language": "kor",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_4dd4630e-19e0-4243-bca0-676ff85119b7",
+   "voiceName": "Haeun - Polished Presence",
+   "dialectOf": null,
+   "poolSize": 10,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:41.450Z"
+  },
+  {
+   "language": "kor",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_304fdbd8-65e6-40d6-ab78-f9d18b9efdf9",
+   "voiceName": "Jihyun - Anchorwoman",
+   "dialectOf": null,
+   "poolSize": 10,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:42.204Z"
+  },
+  {
+   "language": "por",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_616c64d7-f541-436b-9b8d-e79cfbe19ef9",
+   "voiceName": "Felipe - Warm Assistant",
+   "dialectOf": null,
+   "poolSize": 9,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:42.954Z"
+  },
+  {
+   "language": "por",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "voiceName": "Rafael - Dynamic Speaker",
+   "dialectOf": null,
+   "poolSize": 9,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:43.700Z"
+  },
+  {
+   "language": "por",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_cb2694c3-715f-4da9-99f3-1c974fff2928",
+   "voiceName": "Eloá - Engaging Explainer",
+   "dialectOf": null,
+   "poolSize": 10,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:44.453Z"
+  },
+  {
+   "language": "por",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_9904416a-0831-44ea-b8ee-5f145e8f9bbf",
+   "voiceName": "Alice - Informative Speaker",
+   "dialectOf": null,
+   "poolSize": 10,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:45.308Z"
+  },
+  {
+   "language": "zho",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_453c418c-125e-4e5a-b048-03fec55d0963",
+   "voiceName": "Feng - Taiwanese Query Specialist",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:46.059Z"
+  },
+  {
+   "language": "zho",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_51afbb31-bc56-468d-b122-4f388b7c25d9",
+   "voiceName": "Jianhao - Helpful Anchor",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:46.924Z"
+  },
+  {
+   "language": "zho",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_6eb8965c-e295-47bd-a9e4-3eeebb3abcff",
+   "voiceName": "Jing - Clear Coordinator",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:47.655Z"
+  },
+  {
+   "language": "zho",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_7a5d4663-88ae-47b7-808e-8f9b9ee4127b",
+   "voiceName": "Hua - Sunny Support",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:48.411Z"
+  },
+  {
+   "language": "fra",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_c6ccfe32-6bee-484a-a8a2-7a51bee93f99",
+   "voiceName": "Étienne - Precise Specialist",
+   "dialectOf": null,
+   "poolSize": 33,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:49.165Z"
+  },
+  {
+   "language": "fra",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_996ec149-0dca-4389-ad08-e2d6f906b4bf",
+   "voiceName": "Mathis - Analytical Explanator",
+   "dialectOf": null,
+   "poolSize": 33,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:49.898Z"
+  },
+  {
+   "language": "fra",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_7c58f4a4-a72c-42fa-a503-41b9408820f3",
+   "voiceName": "Inès\t- Poised Communicator",
+   "dialectOf": null,
+   "poolSize": 35,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:50.663Z"
+  },
+  {
+   "language": "fra",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_92579402-6868-412e-b845-3efed0be7a9e",
+   "voiceName": "Jade - Steady Companion",
+   "dialectOf": null,
+   "poolSize": 35,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:51.409Z"
+  },
+  {
+   "language": "ita",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_526ab945-9cbf-4bd2-9c72-3833d55d4c68",
+   "voiceName": "Fabio - Logistics Expert",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:51.919Z"
+  },
+  {
+   "language": "ita",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_ee16f140-f6dc-490e-a1ed-c1d537ea0086",
+   "voiceName": "Lorenzo - Hospitable Host",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:52.421Z"
+  },
+  {
+   "language": "ita",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_00e9ec78-2002-41dd-8d19-6b1d3b17a461",
+   "voiceName": "Elena - Client Liaison",
+   "dialectOf": null,
+   "poolSize": 6,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:52.915Z"
+  },
+  {
+   "language": "ita",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_d718e944-b313-4998-b011-d1cc078d4ef3",
+   "voiceName": "Liv - Casual Friend",
+   "dialectOf": null,
+   "poolSize": 6,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:53.428Z"
+  },
+  {
+   "language": "spa",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_35b2cfc1-e6fb-4d69-a598-c1780612be4a",
+   "voiceName": "Darío - Steady Operator",
+   "dialectOf": null,
+   "poolSize": 34,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:53.918Z"
+  },
+  {
+   "language": "spa",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_9b67072c-d46c-465d-87dc-f7a1c6db2bf3",
+   "voiceName": "Ramon - Calm Coordinator",
+   "dialectOf": null,
+   "poolSize": 34,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:54.661Z"
+  },
+  {
+   "language": "spa",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_3597a26f-80ef-4bd5-8101-9699bc764917",
+   "voiceName": "Ximena - Calm Navigator",
+   "dialectOf": null,
+   "poolSize": 45,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:55.158Z"
+  },
+  {
+   "language": "spa",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_1cc00672-e9d4-455e-b3fb-31dfb7aad231",
+   "voiceName": "Laura - Trustworthy Guide",
+   "dialectOf": null,
+   "poolSize": 45,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:55.939Z"
+  },
+  {
+   "language": "jpn",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_7ca2afba-a719-4f06-9af2-ea2b8e3cf14c",
+   "voiceName": "Yuto - Logistical Assistant",
+   "dialectOf": null,
+   "poolSize": 14,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:56.677Z"
+  },
+  {
+   "language": "jpn",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_aa3ccc4a-cfd8-405c-acf5-1873a527b006",
+   "voiceName": "Naoki - Polished Professional",
+   "dialectOf": null,
+   "poolSize": 14,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:57.410Z"
+  },
+  {
+   "language": "jpn",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_31c55968-a9f4-4115-8831-3a16952179c8",
+   "voiceName": "Ayumi - Sales Guide",
+   "dialectOf": null,
+   "poolSize": 19,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:58.145Z"
+  },
+  {
+   "language": "jpn",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_cb21b4af-0e46-44f7-9128-51be7f898311",
+   "voiceName": "Yuzuki - Composed Explainer",
+   "dialectOf": null,
+   "poolSize": 19,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:28:58.898Z"
+  },
+  {
+   "language": "ben",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_2ba861ea-7cdc-43d1-8608-4045b5a41de5",
+   "voiceName": "Rubel - City Guide",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:28:59.639Z"
+  },
+  {
+   "language": "ben",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_59ba7dee-8f9a-432f-a6c0-ffb33666b654",
+   "voiceName": "Pooja - Everyday Assistant",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:00.416Z"
+  },
+  {
+   "language": "ben",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_48b9e1de-e2fa-4914-8b32-31c437813548",
+   "voiceName": "Ananya - Paced Helper",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:01.219Z"
+  },
+  {
+   "language": "hrv",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_a1a16724-b1f3-4b27-9e47-8a175115e93c",
+   "voiceName": "Ivan - Bar Companion",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:02.121Z"
+  },
+  {
+   "language": "hrv",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_2a2624ad-bd06-4563-81fd-0519742e25d2",
+   "voiceName": "Petra - Strict Lecturer",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:02.860Z"
+  },
+  {
+   "language": "ara",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_9cbad5f7-fbf6-4416-a22f-1ecc75ad40a2",
+   "voiceName": "Youssef - Clear Communicator",
+   "dialectOf": null,
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:03.605Z"
+  },
+  {
+   "language": "ara",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_40f9b5d1-bc79-43a6-b5cc-1c692b3b40d2",
+   "voiceName": "Zain\t- Dynamic Presenter",
+   "dialectOf": null,
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:04.350Z"
+  },
+  {
+   "language": "ara",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_002622d8-19d0-4567-a16a-f99c7397c062",
+   "voiceName": "Huda - Approachable Speaker",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:05.179Z"
+  },
+  {
+   "language": "ara",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_fc923f89-1de5-4ddf-b93c-6da2ba63428a",
+   "voiceName": "Nour - Engaging Speaker",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:05.911Z"
+  },
+  {
+   "language": "deu",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_57a3a9e0-a91c-4c94-a2bb-e6cbab3ae649",
+   "voiceName": "Clemens - Precise Instructor",
+   "dialectOf": null,
+   "poolSize": 17,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:29:06.735Z"
+  },
+  {
+   "language": "deu",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_b7187e84-fe22-4344-ba4a-bc013fcb533e",
+   "voiceName": "Sebastian - Orator",
+   "dialectOf": null,
+   "poolSize": 17,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:29:07.479Z"
+  },
+  {
+   "language": "deu",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_9b4d08b6-0494-4301-ab92-9150f4ee2718",
+   "voiceName": "Marlene - Elegant Speaker",
+   "dialectOf": null,
+   "poolSize": 16,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:29:08.231Z"
+  },
+  {
+   "language": "deu",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_40e0f496-a220-46bb-975a-7ef465b3d92b",
+   "voiceName": "Vreni - Diligent Advisor",
+   "dialectOf": null,
+   "poolSize": 16,
+   "skippedCourses": 1,
+   "timestamp": "2026-09-04T01:29:08.974Z"
+  },
+  {
+   "language": "ara_eg",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_9cbad5f7-fbf6-4416-a22f-1ecc75ad40a2",
+   "voiceName": "Youssef - Clear Communicator",
+   "dialectOf": "ara",
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:09.408Z"
+  },
+  {
+   "language": "ara_eg",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_40f9b5d1-bc79-43a6-b5cc-1c692b3b40d2",
+   "voiceName": "Zain\t- Dynamic Presenter",
+   "dialectOf": "ara",
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:09.820Z"
+  },
+  {
+   "language": "ara_eg",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_002622d8-19d0-4567-a16a-f99c7397c062",
+   "voiceName": "Huda - Approachable Speaker",
+   "dialectOf": "ara",
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:10.245Z"
+  },
+  {
+   "language": "ara_eg",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_fc923f89-1de5-4ddf-b93c-6da2ba63428a",
+   "voiceName": "Nour - Engaging Speaker",
+   "dialectOf": "ara",
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:10.660Z"
+  },
+  {
+   "language": "ara_sy",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_9cbad5f7-fbf6-4416-a22f-1ecc75ad40a2",
+   "voiceName": "Youssef - Clear Communicator",
+   "dialectOf": "ara",
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:11.082Z"
+  },
+  {
+   "language": "ara_sy",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_40f9b5d1-bc79-43a6-b5cc-1c692b3b40d2",
+   "voiceName": "Zain\t- Dynamic Presenter",
+   "dialectOf": "ara",
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:11.506Z"
+  },
+  {
+   "language": "ara_sy",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_002622d8-19d0-4567-a16a-f99c7397c062",
+   "voiceName": "Huda - Approachable Speaker",
+   "dialectOf": "ara",
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:11.926Z"
+  },
+  {
+   "language": "ara_sy",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_fc923f89-1de5-4ddf-b93c-6da2ba63428a",
+   "voiceName": "Nour - Engaging Speaker",
+   "dialectOf": "ara",
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:12.349Z"
+  },
+  {
+   "language": "deu_at",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_57a3a9e0-a91c-4c94-a2bb-e6cbab3ae649",
+   "voiceName": "Clemens - Precise Instructor",
+   "dialectOf": "deu",
+   "poolSize": 17,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:12.759Z"
+  },
+  {
+   "language": "deu_at",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_b7187e84-fe22-4344-ba4a-bc013fcb533e",
+   "voiceName": "Sebastian - Orator",
+   "dialectOf": "deu",
+   "poolSize": 17,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:13.185Z"
+  },
+  {
+   "language": "deu_at",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_9b4d08b6-0494-4301-ab92-9150f4ee2718",
+   "voiceName": "Marlene - Elegant Speaker",
+   "dialectOf": "deu",
+   "poolSize": 16,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:13.630Z"
+  },
+  {
+   "language": "deu_at",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_40e0f496-a220-46bb-975a-7ef465b3d92b",
+   "voiceName": "Vreni - Diligent Advisor",
+   "dialectOf": "deu",
+   "poolSize": 16,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:14.064Z"
+  },
+  {
+   "language": "por_br",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_616c64d7-f541-436b-9b8d-e79cfbe19ef9",
+   "voiceName": "Felipe - Warm Assistant",
+   "dialectOf": "por",
+   "poolSize": 9,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:14.562Z"
+  },
+  {
+   "language": "por_br",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_07b6f895-78b9-4921-8e10-8a21c99c2e8a",
+   "voiceName": "Rafael - Dynamic Speaker",
+   "dialectOf": "por",
+   "poolSize": 9,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:15.075Z"
+  },
+  {
+   "language": "por_br",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_cb2694c3-715f-4da9-99f3-1c974fff2928",
+   "voiceName": "Eloá - Engaging Explainer",
+   "dialectOf": "por",
+   "poolSize": 10,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:15.557Z"
+  },
+  {
+   "language": "por_br",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_9904416a-0831-44ea-b8ee-5f145e8f9bbf",
+   "voiceName": "Alice - Informative Speaker",
+   "dialectOf": "por",
+   "poolSize": 10,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:16.070Z"
+  },
+  {
+   "language": "spa_mx",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_35b2cfc1-e6fb-4d69-a598-c1780612be4a",
+   "voiceName": "Darío - Steady Operator",
+   "dialectOf": "spa",
+   "poolSize": 34,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:16.497Z"
+  },
+  {
+   "language": "spa_mx",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_9b67072c-d46c-465d-87dc-f7a1c6db2bf3",
+   "voiceName": "Ramon - Calm Coordinator",
+   "dialectOf": "spa",
+   "poolSize": 34,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:16.917Z"
+  },
+  {
+   "language": "spa_mx",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_3597a26f-80ef-4bd5-8101-9699bc764917",
+   "voiceName": "Ximena - Calm Navigator",
+   "dialectOf": "spa",
+   "poolSize": 45,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:17.356Z"
+  },
+  {
+   "language": "spa_mx",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_1cc00672-e9d4-455e-b3fb-31dfb7aad231",
+   "voiceName": "Laura - Trustworthy Guide",
+   "dialectOf": "spa",
+   "poolSize": 45,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:17.791Z"
+  },
+  {
+   "language": "ara_lb",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_9cbad5f7-fbf6-4416-a22f-1ecc75ad40a2",
+   "voiceName": "Youssef - Clear Communicator",
+   "dialectOf": "ara",
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:18.211Z"
+  },
+  {
+   "language": "ara_lb",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_40f9b5d1-bc79-43a6-b5cc-1c692b3b40d2",
+   "voiceName": "Zain\t- Dynamic Presenter",
+   "dialectOf": "ara",
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:18.640Z"
+  },
+  {
+   "language": "ara_lb",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_002622d8-19d0-4567-a16a-f99c7397c062",
+   "voiceName": "Huda - Approachable Speaker",
+   "dialectOf": "ara",
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:19.056Z"
+  },
+  {
+   "language": "ara_lb",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_fc923f89-1de5-4ddf-b93c-6da2ba63428a",
+   "voiceName": "Nour - Engaging Speaker",
+   "dialectOf": "ara",
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:19.474Z"
+  },
+  {
+   "language": "bul",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_d132064c-b931-4a80-bf0d-02a331ec4572",
+   "voiceName": "Georgi - Conversationalist",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:20.555Z"
+  },
+  {
+   "language": "bul",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_fcbecbcc-0cef-4615-8b5a-712fe1b39dd0",
+   "voiceName": "Ivana - Instruction Provider",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:21.290Z"
+  },
+  {
+   "language": "ces",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_82db1f84-5b96-4364-b04a-4c7ff80e2f8a",
+   "voiceName": "Jan - Capable Coordinator",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:22.169Z"
+  },
+  {
+   "language": "ces",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_0b6d3ccb-f421-4e49-80f7-4bfa39f6eb8e",
+   "voiceName": "Marek - Steady Specialist",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:22.903Z"
+  },
+  {
+   "language": "ces",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_b66b3a19-31b3-401f-8b08-40d46a61e4f1",
+   "voiceName": "Milena\t- Composed Clarifier",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:23.670Z"
+  },
+  {
+   "language": "ces",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_f8685385-96f6-4c12-8520-49e4914bcbfe",
+   "voiceName": "Tereza\t- Decisive Agent",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:24.420Z"
+  },
+  {
+   "language": "dan",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_a466f9e2-28eb-4bb7-925c-8e8984950700",
+   "voiceName": "Søren - Steady Strategist",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:25.182Z"
+  },
+  {
+   "language": "dan",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_926e0766-f380-4d77-aeb0-9aa4ebb16b38",
+   "voiceName": "Soren - Executive Voice",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:25.919Z"
+  },
+  {
+   "language": "dan",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_eb929394-68e7-4e08-bd2f-e7055728a5e1",
+   "voiceName": "Mette - Polished Facilitator",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:26.689Z"
+  },
+  {
+   "language": "dan",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_c323c793-41f9-47b8-99dc-9b44b0440b84",
+   "voiceName": "Katrine - Calm Caregiver",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:27.429Z"
+  },
+  {
+   "language": "deu_ch",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_57a3a9e0-a91c-4c94-a2bb-e6cbab3ae649",
+   "voiceName": "Clemens - Precise Instructor",
+   "dialectOf": "deu",
+   "poolSize": 17,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:27.856Z"
+  },
+  {
+   "language": "deu_ch",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_b7187e84-fe22-4344-ba4a-bc013fcb533e",
+   "voiceName": "Sebastian - Orator",
+   "dialectOf": "deu",
+   "poolSize": 17,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:28.273Z"
+  },
+  {
+   "language": "deu_ch",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_9b4d08b6-0494-4301-ab92-9150f4ee2718",
+   "voiceName": "Marlene - Elegant Speaker",
+   "dialectOf": "deu",
+   "poolSize": 16,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:28.683Z"
+  },
+  {
+   "language": "deu_ch",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_40e0f496-a220-46bb-975a-7ef465b3d92b",
+   "voiceName": "Vreni - Diligent Advisor",
+   "dialectOf": "deu",
+   "poolSize": 16,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:29.109Z"
+  },
+  {
+   "language": "ell",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_b45eba5b-2215-4da7-9c7c-121c95ed7b81",
+   "voiceName": "Nikos - Radio Storyteller",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:29.856Z"
+  },
+  {
+   "language": "ell",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_50849023-76e9-46c7-af52-9ec39888a165",
+   "voiceName": "Despina - Motherly Woman",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:30.635Z"
+  },
+  {
+   "language": "fra_ca",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_c6ccfe32-6bee-484a-a8a2-7a51bee93f99",
+   "voiceName": "Étienne - Precise Specialist",
+   "dialectOf": "fra",
+   "poolSize": 33,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:32.259Z"
+  },
+  {
+   "language": "fra_ca",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_996ec149-0dca-4389-ad08-e2d6f906b4bf",
+   "voiceName": "Mathis - Analytical Explanator",
+   "dialectOf": "fra",
+   "poolSize": 33,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:32.764Z"
+  },
+  {
+   "language": "fra_ca",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_7c58f4a4-a72c-42fa-a503-41b9408820f3",
+   "voiceName": "Inès\t- Poised Communicator",
+   "dialectOf": "fra",
+   "poolSize": 35,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:33.253Z"
+  },
+  {
+   "language": "fra_ca",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_92579402-6868-412e-b845-3efed0be7a9e",
+   "voiceName": "Jade - Steady Companion",
+   "dialectOf": "fra",
+   "poolSize": 35,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:33.748Z"
+  },
+  {
+   "language": "heb",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_3e32f3c5-9ac0-4192-9994-87fdb277120f",
+   "voiceName": "Noam - Broadcaster",
+   "dialectOf": null,
+   "poolSize": 11,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:34.482Z"
+  },
+  {
+   "language": "heb",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_84b969ad-19c7-428d-b742-48d387f7f138",
+   "voiceName": "Gil - Friendly Host",
+   "dialectOf": null,
+   "poolSize": 11,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:35.231Z"
+  },
+  {
+   "language": "heb",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_ebc02c0d-61fd-48f2-a6c9-0d6683b7d466",
+   "voiceName": "Ayala - Expert Narrator",
+   "dialectOf": null,
+   "poolSize": 18,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:35.968Z"
+  },
+  {
+   "language": "heb",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_ff857c8e-e7f9-4afd-af42-dce9f3c5ab02",
+   "voiceName": "Yarden - Trusted Advisor",
+   "dialectOf": null,
+   "poolSize": 18,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:36.732Z"
+  },
+  {
+   "language": "hin",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_cb9c954d-bcaa-43ed-82bf-aeb5e88a3cb5",
+   "voiceName": "Kabir - Service Integrator",
+   "dialectOf": null,
+   "poolSize": 26,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:37.463Z"
+  },
+  {
+   "language": "hin",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_4877b818-c7fe-4c89-b1cf-eadf8e23da72",
+   "voiceName": "Rohan - Steady Communicator",
+   "dialectOf": null,
+   "poolSize": 26,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:38.215Z"
+  },
+  {
+   "language": "hin",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_4459a9a5-69d6-4680-b970-e13dc51845b6",
+   "voiceName": "Siya - Bright Conversationalist",
+   "dialectOf": null,
+   "poolSize": 23,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:38.962Z"
+  },
+  {
+   "language": "hin",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_6b02ffe5-e3cb-48c0-a023-c72f85953375",
+   "voiceName": "Sneha - Empathetic Voice",
+   "dialectOf": null,
+   "poolSize": 23,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:39.709Z"
+  },
+  {
+   "language": "hun",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_4c5c7be8-6b3b-4c62-b915-c54d049c198f",
+   "voiceName": "Bence - Focused Facilitator",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:40.697Z"
+  },
+  {
+   "language": "hun",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_36e0c00b-1bfd-4ad7-a0e8-928d4cadca00",
+   "voiceName": "Gabor - Reassuring Voice",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:41.437Z"
+  },
+  {
+   "language": "hun",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_e97c3b37-1aa5-46af-afb7-9545086aaa92",
+   "voiceName": "Eszter - Customer Companion",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:42.181Z"
+  },
+  {
+   "language": "ind",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_a053f6bc-7df4-40de-96d4-de026bc47ce8",
+   "voiceName": "Andi - Dynamic Presenter",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:42.918Z"
+  },
+  {
+   "language": "ind",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_b441c4fd-4910-4c55-ae56-f0291057e2cc",
+   "voiceName": "Siti - Ad Narrator",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:43.657Z"
+  },
+  {
+   "language": "kan",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_6baae46d-1226-45b5-a976-c7f9b797aae2",
+   "voiceName": "Prakash - Instructor",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:44.461Z"
+  },
+  {
+   "language": "kan",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_7c6219d2-e8d2-462c-89d8-7ecba7c75d65",
+   "voiceName": "Divya - Joyful Narrator",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:45.268Z"
+  },
+  {
+   "language": "mar",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_f227bc18-3704-47fe-b759-8c78a450fdfa",
+   "voiceName": "Suresh - Instruction Voice",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:46.018Z"
+  },
+  {
+   "language": "mar",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_5c32dce6-936a-4892-b131-bafe474afe5f",
+   "voiceName": "Anika - Enthusiastic Seller",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:46.775Z"
+  },
+  {
+   "language": "nld",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_da743a82-ddf2-4d9b-8eb8-ff67ca0b138e",
+   "voiceName": "Stijn - Helpful Handler",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:47.527Z"
+  },
+  {
+   "language": "nld",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_95e9fdaf-cf0b-4739-b1de-3350ca50774a",
+   "voiceName": "Thijs - Confident Coordinator",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:48.264Z"
+  },
+  {
+   "language": "nld",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_96355f3d-0179-4c9a-a8d8-11ef0779a9b8",
+   "voiceName": "Noa - Reassuring Responder",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:49.004Z"
+  },
+  {
+   "language": "nld",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_de075c71-b2dd-4723-848d-ea9aa9cd010b",
+   "voiceName": "Fleur - Vibrant Voice",
+   "dialectOf": null,
+   "poolSize": 7,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:49.784Z"
+  },
+  {
+   "language": "nor",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_d6dca1b6-cdd8-4e9c-823c-e03979261740",
+   "voiceName": "Lars - Casual Conversationalist",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:50.515Z"
+  },
+  {
+   "language": "nor",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_4f7b1820-6263-4615-87a7-b105768d8f64",
+   "voiceName": "Kari - Crisp Coordinator",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:51.255Z"
+  },
+  {
+   "language": "pol",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_d358377a-cd1d-45c5-abd0-701314e36cbe",
+   "voiceName": "Marcin - Charismatic Presenter",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:52.045Z"
+  },
+  {
+   "language": "pol",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_43e52207-96fc-4e01-aaf8-cae317e43fdb",
+   "voiceName": "Kacper - Diligent Detailer",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:52.787Z"
+  },
+  {
+   "language": "pol",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_dcf62f33-7cff-4f20-85b2-2efaa68cbc32",
+   "voiceName": "Zofia - Audiobook Muse",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:53.538Z"
+  },
+  {
+   "language": "pol",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_575a5d29-1fdc-4d4e-9afa-5a9a71759864",
+   "voiceName": "Katarzyna - Melodic Storyteller",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:54.266Z"
+  },
+  {
+   "language": "ron",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_3f64ef99-d87b-4b51-b217-df7351f7886a",
+   "voiceName": "Andrei - Conversationalist Guy",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:55.010Z"
+  },
+  {
+   "language": "ron",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_34acfaee-c556-41ee-a5f6-c687fb20357c",
+   "voiceName": "Andrada - Steady Speaker",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:55.752Z"
+  },
+  {
+   "language": "rus",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_1e4176b1-3db9-44d6-a601-4fe68b041942",
+   "voiceName": "Sergei - Steady Supporter",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:56.493Z"
+  },
+  {
+   "language": "rus",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_069ff31a-5524-4945-a403-f746ee617507",
+   "voiceName": "Alexei\t- Articulate Analyst",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:57.279Z"
+  },
+  {
+   "language": "rus",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_064b17af-d36b-4bfb-b003-be07dba1b649",
+   "voiceName": "Tatiana - Friendly Storyteller",
+   "dialectOf": null,
+   "poolSize": 6,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:58.040Z"
+  },
+  {
+   "language": "rus",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_642014de-c0e3-4133-adc0-36b5309c23e6",
+   "voiceName": "Irina - Poetic Voice",
+   "dialectOf": null,
+   "poolSize": 6,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:58.798Z"
+  },
+  {
+   "language": "swe",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_ebe0038b-1790-40bd-98cd-924313e58d3b",
+   "voiceName": "Vidar - Supportive Voice",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:29:59.533Z"
+  },
+  {
+   "language": "swe",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_8c889eba-5b31-4179-8fb2-37bbee22db64",
+   "voiceName": "Nils - Friendly Host",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:00.314Z"
+  },
+  {
+   "language": "swe",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_bcdcad6d-4eb6-4a71-89fd-1ae2ce9f95d8",
+   "voiceName": "Freja - Informative Host",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:01.139Z"
+  },
+  {
+   "language": "swe",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_f852eb8d-a177-48cd-bf63-7e4dcab61a36",
+   "voiceName": "Ingrid - Peaceful Guide",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:01.935Z"
+  },
+  {
+   "language": "tel",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_82c2afc8-ebbc-4802-8ccf-036dc0fa1e3b",
+   "voiceName": "Charan - Clear Concierge",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:02.702Z"
+  },
+  {
+   "language": "tel",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_ebecd063-10f4-422e-a8ff-556ce5c4d4e4",
+   "voiceName": "Pavan - Bright Voice",
+   "dialectOf": null,
+   "poolSize": 3,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:03.487Z"
+  },
+  {
+   "language": "tel",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_4418bb06-8329-49a1-bb11-53bb64ca0547",
+   "voiceName": "Shanti - Calm Authority",
+   "dialectOf": null,
+   "poolSize": 6,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:04.258Z"
+  },
+  {
+   "language": "tel",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_3a8e6fea-81e5-4d4d-8755-86093146cdb8",
+   "voiceName": "Vidya - Empathetic Voice",
+   "dialectOf": null,
+   "poolSize": 6,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:05.011Z"
+  },
+  {
+   "language": "tha",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_5de076e9-7b28-4442-b279-e7d80d573505",
+   "voiceName": "Somchai - Star",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:05.784Z"
+  },
+  {
+   "language": "tha",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_aaa0bf6d-bc07-40f2-bc6b-66afc5fd42f6",
+   "voiceName": "Chakrit - Reliable Communicator",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:06.561Z"
+  },
+  {
+   "language": "tha",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_4ff0f045-c140-4aa3-9210-529083f86fca",
+   "voiceName": "Supannee - Support Concierge",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:07.369Z"
+  },
+  {
+   "language": "tha",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_d051b675-6863-44cc-b7ba-356858ed7df8",
+   "voiceName": "Nisa - System Navigator",
+   "dialectOf": null,
+   "poolSize": 5,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:08.131Z"
+  },
+  {
+   "language": "tur",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_39f753ef-b0eb-41cd-aa53-2f3c284f948f",
+   "voiceName": "Emre - Calming Speaker",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:08.940Z"
+  },
+  {
+   "language": "tur",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_c1cfee3d-532d-47f8-8dd2-8e5b2b66bf1d",
+   "voiceName": "Taylan - Expressive Voice",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:09.690Z"
+  },
+  {
+   "language": "tur",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_fa7bfcdc-603c-4bf1-a600-a371400d2f8c",
+   "voiceName": "Leyla - Story Companion",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:10.496Z"
+  },
+  {
+   "language": "tur",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_bb2347fe-69e9-4810-873f-ffd759fe8420",
+   "voiceName": "Aylin - Warm Guide",
+   "dialectOf": null,
+   "poolSize": 4,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:11.260Z"
+  },
+  {
+   "language": "ukr",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_05ffab9c-d380-4909-8375-cd12f59238c3",
+   "voiceName": "Oleh - Professional Guy",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:12.018Z"
+  },
+  {
+   "language": "guj",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_91925fe5-42ee-4ebe-96c1-c84b12a85a32",
+   "voiceName": "Amit - Sports Student",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:12.822Z"
+  },
+  {
+   "language": "guj",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_4590a461-bc68-4a50-8d14-ac04f5923d22",
+   "voiceName": "Isha - Learner",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:13.685Z"
+  },
+  {
+   "language": "pan",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_8bacd442-a107-4ec1-b6f1-2fcb3f6f4d56",
+   "voiceName": "Gurpreet - Companion",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:14.426Z"
+  },
+  {
+   "language": "pan",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_991c62ce-631f-48b0-8060-2a0ebecbd15b",
+   "voiceName": "Jaspreet - Commercial Woman",
+   "dialectOf": null,
+   "poolSize": 1,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:15.184Z"
+  },
+  {
+   "language": "tam",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_19f28c21-ae34-499f-b64a-f7b09cd9b516",
+   "voiceName": "Karthik - Customer Assistant",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:15.926Z"
+  },
+  {
+   "language": "tam",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_d2870b91-1b4c-47ab-81a8-3718d8e9c222",
+   "voiceName": "Arun - Lively Voice",
+   "dialectOf": null,
+   "poolSize": 2,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:16.684Z"
+  },
+  {
+   "language": "tam",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_fb7d8d97-9730-4165-bd79-36b5ce61b5f2",
+   "voiceName": "Janani - Calm Professional",
+   "dialectOf": null,
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:17.445Z"
+  },
+  {
+   "language": "tam",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_96e6974d-57a9-4325-89c8-43f065f8bd95",
+   "voiceName": "Akshara - Resourceful Assistant",
+   "dialectOf": null,
+   "poolSize": 8,
+   "skippedCourses": 0,
+   "timestamp": "2026-09-04T01:30:18.209Z"
+  }
+ ],
+ "refused": [
+  {
+   "language": "fin",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 0,
+   "voiceId": "cartesia_7849a11e-4107-44ae-bc7e-77bea41ec019",
+   "voiceName": "Matti - Measured Manager",
+   "dialectOf": null,
+   "poolSize": 3,
+   "status": 409,
+   "code": "HUMAN_RECORDED",
+   "error": "Every course that uses fin is human-recorded, so this cast would speak over real recordings and has NOT been saved: fin_for_eng (target1). Their gaps are a recording worklist, not a casting gap (Tom 2026-08-31; services/shared/human-voice-courses.cjs).",
+   "timestamp": "2026-09-04T01:29:30.924Z"
+  },
+  {
+   "language": "fin",
+   "slot": "phrase",
+   "gender": "m",
+   "rank": 1,
+   "voiceId": "cartesia_8ccd7fcd-846a-4594-bde2-5feec2cba73a",
+   "voiceName": "Jari - Reliable Representative",
+   "dialectOf": null,
+   "poolSize": 3,
+   "status": 409,
+   "code": "HUMAN_RECORDED",
+   "error": "Every course that uses fin is human-recorded, so this cast would speak over real recordings and has NOT been saved: fin_for_eng (target1). Their gaps are a recording worklist, not a casting gap (Tom 2026-08-31; services/shared/human-voice-courses.cjs).",
+   "timestamp": "2026-09-04T01:29:31.203Z"
+  },
+  {
+   "language": "fin",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 0,
+   "voiceId": "cartesia_2835e382-643b-4ac6-8f6c-74df549a7ad0",
+   "voiceName": "Milla - Modern Communicator",
+   "dialectOf": null,
+   "poolSize": 2,
+   "status": 409,
+   "code": "HUMAN_RECORDED",
+   "error": "Every course that uses fin is human-recorded, so this cast would speak over real recordings and has NOT been saved: fin_for_eng (target1). Their gaps are a recording worklist, not a casting gap (Tom 2026-08-31; services/shared/human-voice-courses.cjs).",
+   "timestamp": "2026-09-04T01:29:31.483Z"
+  },
+  {
+   "language": "fin",
+   "slot": "phrase",
+   "gender": "f",
+   "rank": 1,
+   "voiceId": "cartesia_65c34eec-42c9-4a75-a8bd-b676fb847b72",
+   "voiceName": "Helmi - Warm Friend",
+   "dialectOf": null,
+   "poolSize": 2,
+   "status": 409,
+   "code": "HUMAN_RECORDED",
+   "error": "Every course that uses fin is human-recorded, so this cast would speak over real recordings and has NOT been saved: fin_for_eng (target1). Their gaps are a recording worklist, not a casting gap (Tom 2026-08-31; services/shared/human-voice-courses.cjs).",
+   "timestamp": "2026-09-04T01:29:31.779Z"
+  }
+ ],
+ "uncovered": [
+  {
+   "language": "cym",
+   "human": true,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "human-voiced language — synthesis is never cast into it"
+  },
+  {
+   "language": "cym_north",
+   "human": true,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "human-voiced language — synthesis is never cast into it"
+  },
+  {
+   "language": "cym_south",
+   "human": true,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "human-voiced language — synthesis is never cast into it"
+  },
+  {
+   "language": "glg",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "bre",
+   "human": true,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "human-voiced language — synthesis is never cast into it"
+  },
+  {
+   "language": "cat",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "eus",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "afr",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "ceb",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "cor",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "est",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "fas",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "fur",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "gla",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "gle",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "gle_connemara",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "gle_munster",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "gle_ulster",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "hak",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "hye",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "isl",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "lav",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "lit",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "lmo",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "mkd",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "mlt",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "nan",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "nap",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "nep",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "pdc",
+   "human": true,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "human-voiced language — synthesis is never cast into it"
+  },
+  {
+   "language": "rgn",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "roh",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "scn",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "sme",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "srp",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "swa",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "vec",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "yid",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "yor",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "yue",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "zzz",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "aze",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "sin",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  },
+  {
+   "language": "urd",
+   "human": false,
+   "cartesiaCovers": false,
+   "pool": {
+    "m": 0,
+    "f": 0,
+    "ungendered": 0
+   },
+   "reason": "Cartesia publishes no voice for this language"
+  }
+ ]
+}
