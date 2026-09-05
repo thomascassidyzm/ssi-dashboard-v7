@@ -554,3 +554,36 @@ it reads the computed colour, border, background, fill and stroke of every rende
 page and fails if any lands in the red or amber families. It writes nothing; every request is a GET.
 
 **Decided by:** Tom, 2026-09-02. Implemented as ruled.
+
+---
+
+## 2026-09-05 — popty.app/builds serves APK bytes, behind a capability URL
+
+**The defect.** `vercel.json`'s catch-all rewrite (`/((?!vfs|assets/).*)` → `/index.html`) swallowed
+every unknown path, so `popty.app/builds/<anything>.apk` returned the 669-byte dashboard shell with
+`HTTP 200`, `content-type: text/html`. Two jobs in one day recorded that URL as a distribution
+surface; nobody could install anything, because a 200 hid it. There was no `/builds` route anywhere
+in the repo — it had never been built.
+
+**The fix.** A `/builds/:path*` rewrite placed ABOVE the catch-all (order decides — Vercel takes the
+first match) onto `https://watson-1.tail4968cb.ts.net:8443/api/builds/:path*`, the tailscale funnel
+that already carries `/api/recording`, into a new `services/builds-router.cjs` on the production API.
+APKs live in `~/apk-serve`, outside every worktree, so a sweep cannot delete the file behind a link
+already handed to a human.
+
+**The auth call.** The capability URL — the link IS the identity, the same call the `/api/recording`
+recordist routes already make. The reader is an external tester with no Popty account; a session
+login would 401 on her phone and fail the actual requirement. Without the token segment there is no
+listing and no download (`/builds` bare → 404).
+
+**Rollback.** Revert to `95b7f1fac`; the change is `2d3da9c42`. Reverting `vercel.json` alone is
+enough to take popty.app back to the old behaviour, and the route on port 3470 is inert without it.
+Misbehaviour looks like: `/builds` serving something unexpected, or the new rewrite shadowing another
+path. Verified still working after the change: the dashboard root, an SPA deep path (`/courses`), and
+`/api/recording` (same 404 through popty.app as on port 3470 directly — the proxy is intact).
+
+**Verified by bytes, not by a status code.** `https://popty.app/builds/<token>/ssi-devwrap-7ccf1288-debug.apk`
+→ 23,347,632 bytes, sha256 `25288a3e2d550e79539b07fdefc76ab117525dcdb83ebc1db081a7a30364f53c`,
+`content-type: application/vnd.android.package-archive`. The bytes crossed the Vercel edge, which is
+outside the tailnet. `services/builds-distribution.test.cjs` holds the line: it asserts the rewrite
+ORDER statically and was proven red against the pre-fix ordering.
