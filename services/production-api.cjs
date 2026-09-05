@@ -499,6 +499,12 @@ app.use('/api/recording',
     handleRecordingUpload,
   }))
 
+// Android test-build distribution. Same auth shape as the recordist routes
+// above — the link IS the identity, via an unguessable token segment — because
+// the readers are external testers with no Popty account. popty.app/builds/*
+// rewrites onto this through the tailscale funnel; see services/builds-router.cjs.
+app.use('/api/builds', require('./builds-router.cjs')({ logger }))
+
 // Course QA / approval gate: per-round human play-through sign-off, derived
 // per-cycle verification status, and the publish block that stops a course
 // reaching learners unsigned. Mounted on its own top-level /api/qa-gate/*
