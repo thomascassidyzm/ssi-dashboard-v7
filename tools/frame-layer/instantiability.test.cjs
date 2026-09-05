@@ -165,6 +165,23 @@ for (const f of FRAMES) {
     () => vocab);
   ok(kept.length === 1 && rejected.length === 1, 'the untileable phrase is rejected BEFORE scoring, not scored low');
   ok(rejected[0].reason.includes('does not tile'), 'the rejection carries its reason');
+
+  // REGRESSION: the basket's own LEGO must be inside its own tiling window.
+  // `availableVocab` is strict-< (what the learner owned BEFORE this lego), and
+  // wiring it straight into the gate rejected 36/36 candidate phrases AND 36/36
+  // live phrases on spa_for_eng 599 — every phrase contains its own LEGO by
+  // rule, so a window without it rejects everything ever written.
+  {
+    const { generateVocabWindow } = require('./generate-candidates.cjs');
+    const legos = [
+      { seed_number: 1, lego_index: 1, known_text: 'I want', target_text: 'quiero' },
+      { seed_number: 2, lego_index: 1, known_text: 'to drive', target_text: 'conducir' },
+    ];
+    const w = generateVocabWindow({ legos, components: [], seed: 2 })({ lego_index: 1 });
+    ok(w.some(v => v.target_text === 'conducir'), "the basket's own LEGO is in its own window");
+    const { tiles } = tilesFromVocab('quiero conducir', w);
+    ok(tiles, 'a phrase made of prior vocab plus its own LEGO must tile');
+  }
 }
 
 // 10. STALENESS must be loud, and must never guess ------------------------
