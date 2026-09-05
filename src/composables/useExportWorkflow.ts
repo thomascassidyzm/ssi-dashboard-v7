@@ -964,7 +964,10 @@ export function useExportWorkflow(courseCode: string) {
       const apiBase = getApiBaseUrl()
       const response = await fetch(`${apiBase}/api/production/${courseCode}/pending-manifest`)
       if (!response.ok) {
-        throw new Error('Failed to fetch pending manifest')
+        // The server names the machine the manifest was generated on when it is not on
+        // this box — swallowing that into a generic message is what wastes the afternoon.
+        const body = await response.json().catch(() => ({}))
+        throw new Error(body.error || 'Failed to fetch pending manifest')
       }
 
       const manifest = await response.json()

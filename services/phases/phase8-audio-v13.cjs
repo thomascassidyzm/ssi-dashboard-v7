@@ -36,6 +36,7 @@ const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const { decideCopy } = require('../shared/clone-copy-match.cjs')
 const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
 const createLogger = require('../shared/logger.cjs')
+const { markWorkInFlight, clearWorkInFlight, reportWorkLostOnRestart } = require('../shared/phase8-in-flight.cjs')
 const { identity: buildIdentity } = require('../shared/build-identity.cjs')
 const ttsService = require('../tts-service.cjs')
 // The language cast reader. phase8 does not go through loadVoiceConfig — it
@@ -1675,6 +1676,9 @@ function startWork(operation, courseCode, total, role = null) {
   currentWork.lastItem = null
   currentWork.errors = []
   logger.info(`[PROGRESS] Started ${operation} for ${courseCode}${role ? ` (${role})` : ''}: ${total} items`)
+  // Breadcrumb only — currentWork stays process-global. This exists so a restart mid-render
+  // is AUDIBLE at boot instead of looking like a clean start. See phase8-in-flight.cjs.
+  markWorkInFlight(currentWork, { logger })
 }
 
 function cancelWork() {
@@ -1702,12 +1706,14 @@ function updateWork(itemText, success = true, errorMsg = null) {
   // Log progress every 10 items or on completion
   if (currentWork.current % 10 === 0 || currentWork.current === currentWork.total) {
     logger.info(`[PROGRESS] ${currentWork.current}/${currentWork.total} (${currentWork.success} ok, ${currentWork.failed} failed)`)
+    markWorkInFlight(currentWork, { logger })
   }
 }
 
 function endWork() {
   logger.info(`[PROGRESS] Completed: ${currentWork.success}/${currentWork.total} success, ${currentWork.failed} failed`)
   currentWork.active = false
+  clearWorkInFlight({ logger })
 }
 
 // =============================================================================
@@ -8661,6 +8667,9 @@ app.get('/reuse-run/:runId', (req, res) => {
 // silently skip app.listen under PM2 and the service would crash-loop.
 
 if (!process.env.PHASE8_NO_LISTEN) {
+  // Before anything else: did the previous process die holding work? Say so, loudly.
+  reportWorkLostOnRestart({ logger })
+
   app.listen(PORT, HOST, () => {
     logger.info(`Phase 8 Audio Service (v13) running on ${HOST}:${PORT}`)
     logger.info(`Supabase: ${process.env.SUPABASE_URL ? 'configured' : 'NOT configured'}`)
