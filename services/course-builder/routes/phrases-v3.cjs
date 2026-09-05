@@ -1,7 +1,13 @@
 /**
  * PHRASE GENERATION ROUTES — the v3 prompt, on Opus, served to builders.
  *
- * Two doors onto `lib/phrase-generation.cjs`:
+ * Three doors onto `lib/phrase-generation.cjs`:
+ *
+ *   GET  /api/phrases/v3/declaration/:courseCode?seed=N&lego=L[&check=live]
+ *        The DECLARATION — what a batch at this position would be built to
+ *        instantiate (derived job, frame pool, splits, floors) — and, with
+ *        check=live, the mechanical verdict of the live basket against it.
+ *        Read-only, calls no model. The declaration is the QA spec.
  *
  *   GET  /api/phrases/v3/prompt/:courseCode?seed=N&lego=L
  *        The assembled prompt as plain text. Read-only, calls no model. This is
@@ -25,7 +31,10 @@
  * and its failure list; nothing downstream should show it to a human.
  */
 
+const path = require('path');
 const { generateLegoPhrases, buildPhrasePrompt, PHRASE_MODEL } = require('../lib/phrase-generation.cjs');
+const { computeDeclaration, checkDeclaration } =
+  require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 
 module.exports = function phrasesV3Routes(ctx) {
   const express = require('express');
@@ -59,13 +68,45 @@ module.exports = function phrasesV3Routes(ctx) {
     }
   });
 
+  /**
+   * GET /api/phrases/v3/declaration/:courseCode?seed=N&lego=L[&check=live]
+   *
+   * Read-only, calls no model, writes nothing. The declaration this door WOULD
+   * record before generating — the QA spec for that basket. With `check=live`
+   * it also fetches the basket's live phrases and judges them against the
+   * declaration mechanically, which is the per-basket QA verdict with nobody
+   * reading the target language. This is the endpoint half of Kai's
+   * instrument; the course-level loop is `tools/frame-layer/qa-report.cjs`.
+   */
+  router.get('/phrases/v3/declaration/:courseCode', async (req, res) => {
+    const { seed, lego, proposedLego, error } = readTarget(req);
+    if (error) return res.status(400).json({ ok: false, error });
+    try {
+      const declaration = await computeDeclaration(ctx.supabase, req.params.courseCode, seed, lego, { proposedLego });
+      let check = null;
+      if (String(req.query.check || '') === 'live') {
+        const { data, error: dbErr } = await ctx.supabase.from('course_practice_phrases')
+          .select('phrase_role,known_text,target_text')
+          .eq('course_code', req.params.courseCode).eq('seed_number', seed).eq('lego_index', lego);
+        if (dbErr) throw new Error(dbErr.message);
+        check = checkDeclaration(declaration, data || []);
+      }
+      res.json({ ok: true, declaration, check });
+    } catch (err) {
+      res.status(400).json({ ok: false, error: err.message });
+    }
+  });
+
   router.post('/phrases/v3/generate/:courseCode', async (req, res) => {
     const { seed, lego, proposedLego, error } = readTarget(req);
     if (error) return res.status(400).json({ ok: false, error });
     const courseCode = req.params.courseCode;
     try {
       const result = await generateLegoPhrases(ctx.supabase, courseCode, seed, lego, { proposedLego });
-      const verdict = result.blocked ? `BLOCKED (${result.gate.failingGates.join(',')})` : 'gate PASS';
+      const declWord = !result.declarationCheck || !result.declarationCheck.checked ? ''
+        : result.declarationCheck.pass ? ' declaration PASS'
+        : ` declaration FAIL (${result.declarationCheck.floor_failures.join(',') || 'claims'})`;
+      const verdict = (result.blocked ? `BLOCKED (${result.gate.failingGates.join(',')})` : 'gate PASS') + declWord;
       console.log(`[phrases-v3] ${courseCode} S${seed}L${lego} — ${result.build.length} BUILD / ${result.use.length} USE on ${result.model} in ${(result.elapsedMs / 1000).toFixed(0)}s — ${verdict} after ${result.attempts.length} attempt(s)`);
       // A blocked set is returned, named, with its failures — never silently
       // dropped and never dressed as a success. 200 with ok:false is the shape

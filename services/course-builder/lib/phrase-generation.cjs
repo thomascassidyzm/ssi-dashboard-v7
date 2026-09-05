@@ -40,6 +40,8 @@ if (!String(process.env.PATH || '').split(path.delimiter).includes(LOCAL_BIN)) {
 const { buildPrompt } = require(path.join(__dirname, '../../../tools/phrase-lab/build-prompt.cjs'));
 const { scoreSet } = require(path.join(__dirname, '../../../tools/phrase-lab/score.cjs'));
 const { makeCourseCtx, checkPhraseSet, failureFeedback } = require(path.join(__dirname, '../../../tools/phrase-gate/gate-check.cjs'));
+const { computeDeclaration, checkDeclaration, recordDeclaration, frameSection } =
+  require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 
 /**
  * THE GATE IS A PRECONDITION, NOT AN INSTRUCTION. Tom's ruling on A-294,
@@ -112,6 +114,9 @@ function normalise(parsed) {
         known: String(p.known).trim(),
         target: String(p.target).trim(),
         tiles: (p.tiles || []).map((t) => ({ known: t.known, target: t.target, legoId: t.legoId })),
+        // The model's own frame claim rides along so the declaration check can
+        // AUDIT it against the matchers — it is never trusted as a fact.
+        ...(p.frame ? { frame: String(p.frame).trim() } : {}),
       });
     }
   }
@@ -163,7 +168,30 @@ function retryPrompt(basePrompt, phrases, reasons) {
 
 async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
   const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true } = opts;
-  const { prompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
+  const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
+
+  // THE DECLARATION, computed and RECORDED before the model is called (Tom's
+  // acceptance condition, 2026-09-05). It states the derived teaching job, the
+  // frame pool this basket can instantiate, the split sides this LEGO admits
+  // and the floors in force — and it is the QA spec everything downstream
+  // judges against. For a non-English known side it says `applicable:false`
+  // honestly and the door behaves exactly as it did before frames existed.
+  // If it cannot be computed at all the generation still runs — a missing
+  // declaration is reported, never a reason to refuse phrases.
+  let declaration = null;
+  let declarationPath = null;
+  try {
+    declaration = await computeDeclaration(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
+    declarationPath = recordDeclaration(declaration);
+  } catch (e) {
+    declaration = { declares: false, applicable: false, reason: `declaration failed: ${e.message}` };
+  }
+
+  // The prompt is a MERGE, not a replacement: the v3 prompt keeps the computed
+  // AVAILABLE/BLOCKED inventory and the doctrine; the declaration adds the
+  // frame pool and the basket brief. Same object in the prompt and in QA, so
+  // the two cannot drift apart.
+  const prompt = basePrompt + frameSection(declaration);
 
   const started = Date.now();
   const gateCtx = runGate ? makeCourseCtx(supabase, courseCode) : null;
@@ -171,6 +199,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   let phrases = null;
   let gate = null;
   let score = null;
+  let declarationCheck = null;
   let currentPrompt = prompt;
 
   for (let attempt = 0; attempt <= (runGate ? MAX_GATE_RETRIES : 0); attempt += 1) {
@@ -204,14 +233,34 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
       score = { error: e.message };
     }
 
-    const reasons = failureFeedback(gate);
-    attempts.push({ attempt: attempt + 1, overallPass: gate.overallPass, failingGates: gate.failingGates, reasons });
-    if (gate.overallPass) break;
+    // THE DECLARATION CHECK — did this batch instantiate what it declared?
+    // Pure re-derivation from the matchers; the model's per-phrase frame tags
+    // are audited, never believed. Its shortfalls join the retry exactly as
+    // gate failures do, each carrying its own rewrite instruction — the tool
+    // that satisfies this gate is the frame section merged into the prompt
+    // above, shipped in the same commit (Tom's ruling on gates and tools).
+    declarationCheck = checkDeclaration(declaration, [
+      ...phrases.build.map((p) => ({ phrase_role: 'build', known_text: p.known, target_text: p.target, frame: p.frame })),
+      ...phrases.use.map((p) => ({ phrase_role: 'use', known_text: p.known, target_text: p.target, frame: p.frame })),
+    ]);
+    const declPass = !declarationCheck.checked || declarationCheck.pass;
+
+    const reasons = [
+      ...failureFeedback(gate),
+      ...(declPass ? [] : declarationCheck.rewrite_instructions),
+    ];
+    attempts.push({ attempt: attempt + 1, overallPass: gate.overallPass && declPass,
+                    failingGates: gate.failingGates,
+                    declarationFloors: declarationCheck.checked ? declarationCheck.floor_failures : null,
+                    reasons });
+    if (gate.overallPass && declPass) break;
     if (attempt === MAX_GATE_RETRIES) break;
     currentPrompt = retryPrompt(prompt, phrases, reasons);
   }
 
-  const blocked = runGate ? !gate.overallPass : false;
+  const blocked = runGate
+    ? !(gate.overallPass && (!declarationCheck || !declarationCheck.checked || declarationCheck.pass))
+    : false;
 
   return {
     courseCode,
@@ -231,6 +280,13 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     // then only show what carries a pass, without re-deriving anything.
     gate,
     score,
+    // The declaration IS the QA spec: what this batch was built to instantiate,
+    // recorded before the model was called, and the mechanical verdict on
+    // whether it did. `declarationPath` is where the record lives on disk,
+    // keyed by the deterministic lego id, surviving regeneration.
+    declaration,
+    declarationCheck,
+    declarationPath,
     blocked,
     attempts,
   };

@@ -262,3 +262,6 @@ archive/**/*.wav
 !docs/frame-layer/pair-mapping-classes.json
 !docs/frame-layer/english-pattern-inventory.json
 !docs/frame-layer/dialogue-frame-inventory.json
+
+# phrase declarations — the door records the QA spec per lego id here (operational data, never tracked)
+data/phrase-declarations/
