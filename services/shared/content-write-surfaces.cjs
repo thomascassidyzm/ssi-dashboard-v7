@@ -12,8 +12,10 @@
 // `operation` is what goes in content_edit_events.operation. `service` names the
 // process, so the log distinguishes the same-looking path on 3470 from 3471.
 
-/** Course-code shape, e.g. spa_for_eng / eng_for_jpn. */
-const COURSE_CODE_RE = /^[a-z]{2,4}_for_[a-z]{2,4}$/;
+// Course-code shape, e.g. spa_for_eng / eng_for_jpn / fra_ca_for_eng. ONE
+// grammar, shared with the proxy course-scope gate — a private copy here filed
+// every suffixed course's edit events as 'unknown'.
+const { COURSE_CODE_RE } = require('./course-code-grammar.cjs');
 
 // ─── course-builder-api (port 3471) ───────────────────────────────────────
 const COURSE_BUILDER = [
