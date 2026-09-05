@@ -6,3 +6,6 @@ Two retirement rounds so far:
 
 - **`docs-retired-2026-08-24/`** — the first sweep, on Tom's ruling of 2026-08-24.
 - **`docs-retired-2026-09-03/`** — the second sweep, on Tom's standing ruling of 2026-09-03: *"agents must read live code… docs are out of date the second they are crystallised."* Its own README names the specimen that provoked it: a document asserting a code change and 59 green tests that were never written.
+- **`schema-retired-2026-09-05/`** — the nominal schema SQL, retired on finding P5: it declared
+  tables `seeds` / `legos` / `baskets` that authoring has never written to. Where the real schema
+  is: `database/README.md`.

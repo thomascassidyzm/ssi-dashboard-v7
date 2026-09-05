@@ -78,6 +78,8 @@ test_*
 # re-include a path whose parent directory is itself excluded.
 /archive/*
 !/archive/docs-retired-2026-08-24/
+!/archive/docs-retired-2026-09-03/
+!/archive/schema-retired-2026-09-05/
 !apml/archive/
 recovered_*/
 extracted-*/
