@@ -35,12 +35,20 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     permissions: ['microphone'],
+    ignoreHTTPSErrors: true,
     launchOptions: {
       args: [
         '--use-fake-device-for-media-stream',
         '--use-fake-ui-for-media-stream',
         '--autoplay-policy=no-user-gesture-required',
         ...(process.env.E2E_MIC_WAV ? [`--use-file-for-fake-audio-capture=${process.env.E2E_MIC_WAV}`] : []),
+        // DRIVING THE DEPLOYED SITE. popty.app is a public origin and watson-1
+        // sits inside the CGNAT range Chromium classes as PRIVATE, so it blocks
+        // the lab's fetches as a public→private subresource request. A browser
+        // network policy, not CORS and not the lab — the same two flags the
+        // Play-mode suite already carries, and only ever set deliberately.
+        ...(process.env.E2E_ALLOW_PRIVATE_NETWORK ? ['--disable-features=BlockInsecurePrivateNetworkRequests,PrivateNetworkAccessSendPreflights,PrivateNetworkAccessRespectPreflightResults,LocalNetworkAccessChecks'] : []),
+        ...(process.env.E2E_RESOLVE ? [`--host-resolver-rules=MAP ${process.env.E2E_RESOLVE.split('=')[0]} ${process.env.E2E_RESOLVE.split('=')[1]}`] : []),
       ],
     },
   },
