@@ -224,6 +224,12 @@ function checkDeclaration(decl, phrases) {
   // path for a dishonest claim. So `pass` is a verdict on the CONTENT FLOORS
   // alone. The detection stays, loud: that audit caught three claims nothing
   // else in the stack would see, and that is the seam working.
+  //
+  // THIS IS A CONDITIONAL RULING WITH A TRIGGER, NOT A PERMANENT ONE. It holds
+  // only while `frame` stays OUT OF THE DATABASE — see PERSISTENCE IS A FILE,
+  // NOT A TABLE at the head of this file. A dishonest claim costs nothing today
+  // because nothing downstream reads it; the day anyone persists a frame tag on
+  // a content row, it becomes load-bearing and this check must gate again.
   return {
     checked: true,
     pass: s.pass,
