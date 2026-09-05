@@ -2,6 +2,28 @@
   "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first).",
   "builds": [
     {
+      "id": "android-5e991962",
+      "platform": "android",
+      "label": "SSi Android wrapper — bottom controls clear the nav bar (5 Sep 13:42)",
+      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-5e991962-debug.apk",
+      "filename": "ssi-devwrap-5e991962-debug.apk",
+      "bytes": 23342884,
+      "sha256": "1321ef95e873121833a82c333713f09f5630be799dbe48cb5576c9096a56f13a",
+      "repo": "ssi-learning-app",
+      "branch": "cs/582-android-bottom-controls-must-cle",
+      "commit": "5e991962",
+      "commitSubject": "fix(android): bottom controls clear the system navigation bar — read the real inset",
+      "builtAt": "2026-09-05T13:42:00Z",
+      "applicationId": "com.saysomethingin.devwrap",
+      "appName": "SSi (dev wrap)",
+      "versionName": "1.0",
+      "versionCode": 1,
+      "targetSdk": 36,
+      "minSdk": 24,
+      "buildType": "debug",
+      "provenanceNote": "THE ONE THING TO CHECK: the bottom control row should now sit clearly ABOVE the phone's own navigation bar, under both gesture and three-button navigation — Deborah's report on the 4 Sep build was that it sat too close to her phone controls. The clearance is read from the real inset the system reports, never a fixed height, so switching navigation mode in Android Settings should keep it right rather than break it. AFTER INSTALLING, the Settings build row reads exactly: local-5e99196, with the API host ssi-learning-app-git-dev-zenjin.vercel.app on a quiet second line, and a NEW third line reading 'insets t/r/b/l · source' — that line is the diagnostic: if its bottom number is 0 and the source says 'none', the phone is not reporting insets to the app and the conservative 64px floor is what is holding the controls clear. Cut from branch cs/582-android-bottom-controls-must-cle, which is dev plus that one fix; NOT MERGED to dev at the time of building. Web assets stay BUNDLED in the APK, so only installing this APK brings the fix to a phone — no merge and no reload can. sha256 verified against the bytes downloaded back out of the bucket."
+    },
+    {
       "id": "android-9b832acc",
       "platform": "android",
       "label": "SSi Android wrapper — debug build (dev, 4 Sep 21:15)",
