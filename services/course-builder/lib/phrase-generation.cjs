@@ -243,21 +243,36 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
       ...phrases.build.map((p) => ({ phrase_role: 'build', known_text: p.known, target_text: p.target, frame: p.frame })),
       ...phrases.use.map((p) => ({ phrase_role: 'use', known_text: p.known, target_text: p.target, frame: p.frame })),
     ]);
+    // CLAIM HONESTY DOES NOT BLOCK AND DOES NOT BURN AN ATTEMPT (Tom's ruling,
+    // 2026-09-05). `declPass` is the CONTENT-FLOOR verdict alone; a wrong frame
+    // tag is carried in `declarationCheck.claim_honesty` for a reader and never
+    // reaches this line. On the four-basket run L02 and L03 — the two strongest
+    // sets — burned all three attempts on claims and repaired none, because
+    // there is no repair path for a dishonest claim.
     const declPass = !declarationCheck.checked || declarationCheck.pass;
 
-    const reasons = [
+    // Claim guidance rides along ONLY when a retry is already happening for a
+    // real floor or gate failure: it costs nothing and may improve the next
+    // attempt, but it never causes one.
+    const floorReasons = [
       ...failureFeedback(gate),
       ...(declPass ? [] : declarationCheck.rewrite_instructions),
     ];
+    const reasons = floorReasons.length
+      ? [...floorReasons, ...(declarationCheck.claim_instructions || [])]
+      : [];
     attempts.push({ attempt: attempt + 1, overallPass: gate.overallPass && declPass,
                     failingGates: gate.failingGates,
                     declarationFloors: declarationCheck.checked ? declarationCheck.floor_failures : null,
+                    claimHonesty: declarationCheck.checked ? declarationCheck.claim_honesty : null,
                     reasons });
     if (gate.overallPass && declPass) break;
     if (attempt === MAX_GATE_RETRIES) break;
     currentPrompt = retryPrompt(prompt, phrases, reasons);
   }
 
+  // `blocked` is a CONTENT verdict: the real gates plus the declaration's five
+  // content floors. Claim honesty is reported in `declarationCheck`, never here.
   const blocked = runGate
     ? !(gate.overallPass && (!declarationCheck || !declarationCheck.checked || declarationCheck.pass))
     : false;

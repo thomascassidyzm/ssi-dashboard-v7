@@ -211,9 +211,22 @@ function checkDeclaration(decl, phrases) {
     }
   }
 
+  // CLAIM HONESTY REPORTS, IT DOES NOT GATE — Tom's ruling, 2026-09-05, after
+  // the four-basket run on spa_for_eng 599: generated baskets scored mean
+  // composite 0.862 against a live baseline of 0.677 measured the same day,
+  // every generated basket cleared every CONTENT floor, and both final FAILs
+  // were the two STRONGEST sets (L02 0.856, L03 0.882) blocked purely on a
+  // frame id the matchers do not fire on. Gating there optimises for
+  // COMPLIANCE TO PASS THE GATE rather than VALUE TO THE LEARNER, which is the
+  // documented cause of the previous generation of bad phrases; and A GATE
+  // WITH NO REPAIR HAS A DELETION DATE — the retry loop burned all three
+  // attempts on L02 and L03 and repaired no claim, because there is no repair
+  // path for a dishonest claim. So `pass` is a verdict on the CONTENT FLOORS
+  // alone. The detection stays, loud: that audit caught three claims nothing
+  // else in the stack would see, and that is the seam working.
   return {
     checked: true,
-    pass: s.pass && wrongClaims.length === 0,
+    pass: s.pass,
     lego_id: decl.lego_id,
     composite: s.composite,
     axes: s.axes,
@@ -223,16 +236,24 @@ function checkDeclaration(decl, phrases) {
     declared_pool: decl.frame_pool.total,
     distinct_frames: s.distinct_frames,
     lego_absent: s.lego_absent,
-    claims_vs_fired: { total: claims.length, wrong: wrongClaims },
+    // A FINDING, NOT A VERDICT. Named so a reader understands it cold and
+    // cannot mistake it for the content score: `checked` claims made, `wrong`
+    // of them dishonest, each finding naming what was claimed and what fired.
+    // Never summed into the composite, never able to turn a PASS into a FAIL.
+    claim_honesty: { checked: claims.length, wrong: wrongClaims.length, findings: wrongClaims },
     pod_frames: { offered: podOffered, instantiated: [...podFired] },
-    // Every shortfall carries its rewrite instruction — the functional steers
-    // the builder, the floors judge (Tom's ruling).
-    rewrite_instructions: rewriteInstructions(s, decl, wrongClaims),
+    // Every FLOOR shortfall carries its rewrite instruction — the functional
+    // steers the builder, the floors judge (Tom's ruling). Claim guidance is
+    // NOT in this list: this list is what drives a retry, and a wrong claim no
+    // longer costs an attempt. It travels separately, for a retry that is
+    // already happening for a real floor failure to carry as extra context.
+    rewrite_instructions: rewriteInstructions(s, decl),
+    claim_instructions: claimInstructions(wrongClaims),
   };
 }
 
-/** One instruction per failed axis, in terms a builder can act on directly. */
-function rewriteInstructions(s, decl, wrongClaims) {
+/** One instruction per failed CONTENT floor, in terms a builder can act on directly. */
+function rewriteInstructions(s, decl) {
   const out = [];
   const say = {
     frame: `FRAME ${s.axes.frame.toFixed(2)} < ${FLOORS.frame}: your matrix clauses collapse to ${s.distinct_frames} shape(s) against a declared pool of ${decl.frame_pool.total}. Vary the MATRIX CLAUSE, not the tail — a swapped tail is the same frame stamped again.`,
@@ -242,8 +263,18 @@ function rewriteInstructions(s, decl, wrongClaims) {
     split: `SPLIT not crossed: ${(s.splits || []).filter(x => !x.crossed).map(x => `${x.id} ${x.name} — each outcome needs >= 2 distinct known-side skeletons`).join('; ')}.`,
   };
   for (const f of s.floor_failures) if (say[f]) out.push(say[f]);
-  for (const c of wrongClaims) out.push(`CLAIM WRONG: "${c.known_text}" claims ${c.claimed} but fires ${c.fired} — instantiate ${c.claimed} for real or claim what you wrote.`);
   return out;
+}
+
+/**
+ * Claim guidance — deliberately NOT in `rewrite_instructions`. A wrong claim is
+ * an observation about LABELLING, not a verdict on the basket, so it never
+ * drives a retry on its own; it rides along as extra context when a retry is
+ * already happening for a real floor failure.
+ */
+function claimInstructions(wrongClaims) {
+  return (wrongClaims || []).map(c =>
+    `CLAIM WRONG (reported, does not block): "${c.known_text}" claims ${c.claimed} but fires ${c.fired} — instantiate ${c.claimed} for real or claim what you wrote.`);
 }
 
 /**
@@ -297,10 +328,12 @@ function frameSection(decl) {
     'LEGO is taught in. Put the LEGO initially, medially and finally. Give it different neighbours.',
     '',
     'Tag every phrase with the frame you are instantiating: add "frame":"<id>" to each phrase object.',
-    'Your tags are AUDITED against the matchers, never trusted — a wrong tag fails the set.',
+    'Your tags are AUDITED against the matchers and never trusted. A wrong tag does NOT fail the set —',
+    'the set is judged on the five floors above and nothing else — but every wrong tag is counted and',
+    'reported by name. Tag honestly: a tag you cannot stand behind is worth less than no tag at all.',
     '',
   ].join('\n');
 }
 
 module.exports = { computeDeclaration, checkDeclaration, recordDeclaration, frameSection,
-                   rewriteInstructions, legoKey, DECLARATIONS_DIR };
+                   rewriteInstructions, claimInstructions, legoKey, DECLARATIONS_DIR };

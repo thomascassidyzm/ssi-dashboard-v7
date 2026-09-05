@@ -103,10 +103,16 @@ module.exports = function phrasesV3Routes(ctx) {
     const courseCode = req.params.courseCode;
     try {
       const result = await generateLegoPhrases(ctx.supabase, courseCode, seed, lego, { proposedLego });
-      const declWord = !result.declarationCheck || !result.declarationCheck.checked ? ''
-        : result.declarationCheck.pass ? ' declaration PASS'
-        : ` declaration FAIL (${result.declarationCheck.floor_failures.join(',') || 'claims'})`;
-      const verdict = (result.blocked ? `BLOCKED (${result.gate.failingGates.join(',')})` : 'gate PASS') + declWord;
+      // The declaration word is a CONTENT verdict; claim honesty is a separate
+      // finding printed as a finding, never as a failure (Tom's ruling,
+      // 2026-09-05 — claim honesty reports, it does not gate).
+      const dc = result.declarationCheck;
+      const declWord = !dc || !dc.checked ? ''
+        : dc.pass ? ' declaration PASS'
+        : ` declaration FAIL (floors: ${dc.floor_failures.join(',')})`;
+      const claimWord = dc && dc.checked && dc.claim_honesty && dc.claim_honesty.wrong
+        ? `  ~ CLAIMS: ${dc.claim_honesty.wrong}/${dc.claim_honesty.checked} frame tags wrong (reported, not gated)` : '';
+      const verdict = (result.blocked ? `BLOCKED (${result.gate.failingGates.join(',')})` : 'gate PASS') + declWord + claimWord;
       console.log(`[phrases-v3] ${courseCode} S${seed}L${lego} — ${result.build.length} BUILD / ${result.use.length} USE on ${result.model} in ${(result.elapsedMs / 1000).toFixed(0)}s — ${verdict} after ${result.attempts.length} attempt(s)`);
       // A blocked set is returned, named, with its failures — never silently
       // dropped and never dressed as a success. 200 with ok:false is the shape
