@@ -212,7 +212,13 @@ export function composeArc(sentence, glossMap, targetClipMap, stage0Cfg, podsSta
     const unitAtomMap = units.length > 1 ? (atomGroups ? atomGroups[ui] : []) : (sentence.atom_map || [])
     const atoms = resolveAtoms(unitAtomMap, glossMap, targetClipMap)
     const clips = { wholeTakeId: u.targetAudioId, translationId: u.knownAudioId, targetText: u.targetText, knownText: u.knownText }
-    const sentLike = { target_audio_id: u.targetAudioId, known_audio_id: u.knownAudioId, explainer_audio_id: null, target_text: u.targetText, known_text: u.knownText }
+    // The explainer clip belongs to the WHOLE ROW: an unsplit row's explainer
+    // is that sentence's explainer and must reach the preview, or a playlist
+    // carrying an 'explainer' slot would show the phase-0 translation fallback
+    // here while the learner hears the explainer clip. A SPLIT row has one
+    // explainer for several sentences and no way to attribute it, so split
+    // units carry none — same conservative choice the runtime split makes.
+    const sentLike = { target_audio_id: u.targetAudioId, known_audio_id: u.knownAudioId, explainer_audio_id: units.length > 1 ? null : (sentence.explainer_audio_id || null), target_text: u.targetText, known_text: u.knownText }
 
     // STAGE 0 — only where at least one atom resolves to a target clip
     if (stage0Cfg && Array.isArray(stage0Cfg.tiers) && atoms.some((a) => a.targetClipId)) {
