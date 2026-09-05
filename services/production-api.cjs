@@ -41,6 +41,7 @@ const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
+const exportArtefact = require('./shared/export-artefact.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -9127,7 +9128,10 @@ app.get('/api/production/:courseCode/export-state', async (req, res) => {
       deployExecutedAt: data.deploy_executed_at,
       updatedAt: data.updated_at,
       pendingManifestPath: data.pending_manifest_path,
-      generatedOnMachine: data.generated_on_machine
+      generatedOnMachine: data.generated_on_machine,
+      // The status above is SHARED; the artefact is workstation-local. Say plainly whether
+      // this machine can honour it, rather than letting the caller assume it can.
+      ...exportArtefact.localArtefactStatus(data)
     })
   } catch (error) {
     logger.error('Error getting export state:', error)
@@ -9478,15 +9482,16 @@ app.get('/api/production/:courseCode/pending-manifest', async (req, res) => {
   try {
     const { courseCode } = req.params
 
-    // Load manifest from temp/course_export_states
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
-      return res.status(404).json({ error: 'No pending manifest found. Generate manifest first (Step 1).' })
-    }
-
-    const manifest = await fs.readJson(manifestPath)
+    // The artefact is local to whichever machine generated it; absence is a named failure.
+    const { manifest } = await exportArtefact.requirePendingManifest(courseCode, {
+      supabase: supabaseClient.isInitialized() ? supabaseClient.getClient() : null
+    })
     res.json(manifest)
   } catch (error) {
+    if (error.code === exportArtefact.EXPORT_ARTEFACT_ABSENT) {
+      logger.error(`[EXPORT] ${error.message}`)
+      return exportArtefact.respondArtefactAbsent(res, error)
+    }
     logger.error(`Get pending manifest error for ${courseCode}:`, error)
     res.status(500).json({ error: error.message })
   }
@@ -9498,13 +9503,9 @@ app.get('/api/production/:courseCode/export-state/manifest', async (req, res) =>
   try {
     const { courseCode } = req.params
 
-    // Check if manifest exists in temp folder
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
-      return res.status(404).json({ error: 'No pending manifest found. Generate manifest first (Step 1).' })
-    }
-
-    const manifest = await fs.readJson(manifestPath)
+    const { manifest } = await exportArtefact.requirePendingManifest(courseCode, {
+      supabase: supabaseClient.isInitialized() ? supabaseClient.getClient() : null
+    })
 
     // Get generation info from Supabase
     if (supabaseClient.isInitialized()) {
@@ -9524,6 +9525,10 @@ app.get('/api/production/:courseCode/export-state/manifest', async (req, res) =>
       res.json({ manifest })
     }
   } catch (error) {
+    if (error.code === exportArtefact.EXPORT_ARTEFACT_ABSENT) {
+      logger.error(`[EXPORT] ${error.message}`)
+      return exportArtefact.respondArtefactAbsent(res, error)
+    }
     logger.error('Error getting cached manifest:', error)
     res.status(500).json({ error: error.message })
   }
@@ -9545,13 +9550,10 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
       return res.status(400).json({ error: 'Version is required' })
     }
 
-    // Check if manifest exists
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
-      return res.status(404).json({ error: 'No pending manifest found. Generate and verify first.' })
-    }
-
-    const manifest = await fs.readJson(manifestPath)
+    // Publishing off a manifest this machine does not have is the failure this names.
+    const { path: manifestPath, manifest } = await exportArtefact.requirePendingManifest(courseCode, {
+      supabase: supabaseClient.isInitialized() ? supabaseClient.getClient() : null
+    })
 
     // Block publishing if any samples have duration 0 (combined presentations not yet fixed)
     const zeroDurationSamples = []
@@ -9607,6 +9609,10 @@ app.post('/api/production/:courseCode/publish-manifest', async (req, res) => {
 
     res.json(result)
   } catch (error) {
+    if (error.code === exportArtefact.EXPORT_ARTEFACT_ABSENT) {
+      logger.error(`[EXPORT] ${error.message}`)
+      return exportArtefact.respondArtefactAbsent(res, error)
+    }
     logger.error('Error publishing manifest:', error)
     res.status(500).json({ error: error.message })
   }
@@ -9667,12 +9673,9 @@ app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
     const targetCode = languageCodeService.legacyToStandard(course.target_lang)
     const courseConfigsId = buildCourseConfigsId(courseCode, course.known_lang, course.target_lang, knownCode, targetCode)
 
-    // Load pending manifest
-    const pendingPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
-    if (!fs.existsSync(pendingPath)) {
-      return res.status(404).json({ error: 'No pending manifest found. Generate one first (Step 1).' })
-    }
-    const pending = await fs.readJson(pendingPath)
+    const { manifest: pending } = await exportArtefact.requirePendingManifest(courseCode, {
+      supabase: supabaseClient.getClient()
+    })
 
     // Load published manifest from course-configs (pull latest first)
     const repoCheck = publishManifestService.checkCourseConfigsRepo()
@@ -9695,6 +9698,10 @@ app.get('/api/production/:courseCode/manifest-diff', async (req, res) => {
     logger.info(`[ManifestDiff] ${courseCode}: ${diff.suggestedBump} bump (${diff.major.length} major, ${diff.minor.length} minor, ${diff.patch.length} patch)`)
     res.json(diff)
   } catch (error) {
+    if (error.code === exportArtefact.EXPORT_ARTEFACT_ABSENT) {
+      logger.error(`[EXPORT] ${error.message}`)
+      return exportArtefact.respondArtefactAbsent(res, error)
+    }
     logger.error('Error computing manifest diff:', error)
     res.status(500).json({ error: error.message })
   }
@@ -10173,14 +10180,20 @@ app.post('/api/production/:courseCode/verify-s3', async (req, res) => {
     const abortController = new AbortController()
     runningVerifications.set(courseCode, { startedAt: Date.now(), abortController })
 
-    // Load manifest from temp/course_export_states
-    const manifestPath = path.join(__dirname, '../temp/course_export_states', `${courseCode}_pending_manifest.json`)
-    if (!fs.existsSync(manifestPath)) {
+    let pendingManifest
+    try {
+      const located = await exportArtefact.requirePendingManifest(courseCode, {
+        supabase: supabaseClient.getClient()
+      })
+      pendingManifest = located.manifest
+    } catch (error) {
       runningVerifications.delete(courseCode)
-      return res.status(404).json({ error: 'No pending manifest found. Generate manifest first.' })
+      if (error.code === exportArtefact.EXPORT_ARTEFACT_ABSENT) {
+        logger.error(`[EXPORT] ${error.message}`)
+        return exportArtefact.respondArtefactAbsent(res, error)
+      }
+      throw error
     }
-
-    const pendingManifest = await fs.readJson(manifestPath)
 
     const uuids = collectManifestUuids(pendingManifest)
     logger.info(`Verifying ${uuids.length} audio files for ${courseCode}`)
@@ -10459,7 +10472,15 @@ async function loadPublishedManifest(courseCode) {
     return { manifest, source: 'local' }
   }
 
-  throw new Error('No published manifest found. Publish manifest first (Step 3).')
+  // Both candidate locations are workstation-local: a manifest published from another
+  // machine leaves no trace on this disk. Name both paths and this machine, so the reader
+  // sees "made somewhere else" rather than "broken".
+  throw new Error(
+    `No published manifest for ${courseCode} on this machine (${require('os').hostname()}). ` +
+    `Checked the course-configs checkout at ${courseConfigsPath} and the local copy at ${localPath}. ` +
+    `Both are workstation-local — if this course was published from another machine, its manifest is ` +
+    `on that machine's disk, not here. Publish from here (Step 3), or clone/pull course-configs to ${courseConfigsRepo}.`
+  )
 }
 
 /**
