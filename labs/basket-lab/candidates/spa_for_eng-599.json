@@ -1,36 +1,105 @@
 {
   "course": "spa_for_eng",
   "seed": 599,
-  "generated": "2026-08-29T03:12:39.751Z",
-  "build_sha": "44cb6df97",
+  "generated": "2026-09-04T13:16:59.121Z",
+  "build_sha": "1d1358116",
   "model": "sonnet",
   "job": {
-    "verdict": "LEXICAL ONLY",
-    "sentence": "Nothing structural is new here: every frame and every side of every split in play has been seen before. The job is lexical — 4 new lego(s): \"I would have\" → \"habría\", \"been happy\" → \"estado encantado\", \"to drive\" → \"conducir\", \"you'd told\" → \"hubieras\"."
+    "verdict": "ATOMISATION",
+    "sentence": "Nothing here is new material — what is new is STATUS. 1 form(s) that the course had only ever made available as glue now become LEGOs with baskets of their own: \"habría\" (L01) was bundled at seed 152 — \"lo habría hecho\"."
+  },
+  "frame_pool": {
+    "total": 36,
+    "seed_attested": 30,
+    "pod": [
+      {
+        "id": "D2",
+        "name": "polar response + elaboration",
+        "position": "response",
+        "register": [
+          "clinical",
+          "service",
+          "social"
+        ],
+        "owned_via": [
+          "yes"
+        ]
+      },
+      {
+        "id": "D3",
+        "name": "thanks / gratitude close",
+        "position": "either",
+        "register": [
+          "clinical",
+          "service",
+          "social"
+        ],
+        "owned_via": [
+          "thank you"
+        ]
+      },
+      {
+        "id": "D4",
+        "name": "apology / attention-getter",
+        "position": "initiating",
+        "register": [
+          "clinical",
+          "service",
+          "social"
+        ],
+        "owned_via": [
+          "i'm sorry"
+        ]
+      },
+      {
+        "id": "D7",
+        "name": "uptake assessment",
+        "position": "response",
+        "register": [
+          "clinical",
+          "service",
+          "social"
+        ],
+        "owned_via": [
+          "lovely"
+        ]
+      },
+      {
+        "id": "D8",
+        "name": "ellipted order",
+        "position": "initiating",
+        "register": [
+          "clinical",
+          "service",
+          "social"
+        ],
+        "owned_via": [
+          "please"
+        ]
+      },
+      {
+        "id": "X2",
+        "name": "polar-response-to-question",
+        "position": "question → polar-response",
+        "register": [
+          "clinical",
+          "service",
+          "social"
+        ],
+        "owned_via": [
+          "yes"
+        ]
+      }
+    ]
   },
   "attempts": [
     {
       "pass": 1,
-      "seed_composite": 0.812,
-      "seed_pass": false,
-      "failing_baskets": [
-        {
-          "lego_index": 4,
-          "lego": "you'd told",
-          "floors": [
-            "neigh",
-            "junct"
-          ]
-        }
-      ],
-      "phrase_count": 36
-    },
-    {
-      "pass": 2,
-      "seed_composite": 0.826,
+      "seed_composite": 0.804,
       "seed_pass": true,
       "failing_baskets": [],
-      "phrase_count": 36
+      "phrase_count": 36,
+      "rejected_untileable": []
     }
   ],
   "phrases": [
@@ -40,7 +109,7 @@
       "known_text": "I would have",
       "target_text": "habría",
       "frame": "P17",
-      "why": "introduces the bare lego alone, no complement yet",
+      "why": "bare stem of the LEGO with no neighbours, the anchor form",
       "position": 1
     },
     {
@@ -49,70 +118,70 @@
       "known_text": "I would have said",
       "target_text": "habría dicho",
       "frame": "P17",
-      "why": "adds a verb complement, still a fragment",
+      "why": "adds a right neighbour, habría still phrase-initial",
       "position": 2
     },
     {
       "lego_index": 1,
       "phrase_role": "build",
-      "known_text": "I would have done",
-      "target_text": "habría hecho",
-      "frame": "P17",
-      "why": "swaps the complement verb to done, showing habría generalises",
+      "known_text": "I think that I would have",
+      "target_text": "pienso que habría",
+      "frame": "P9",
+      "why": "embeds under matrix think/believe, habría now phrase-final with left neighbour que",
       "position": 3
     },
     {
       "lego_index": 1,
       "phrase_role": "use",
-      "known_text": "I would have said something",
-      "target_text": "habría dicho algo",
+      "known_text": "I would have done it",
+      "target_text": "lo habría hecho",
       "frame": "P17",
-      "why": "first complete sentence, adds a direct object",
+      "why": "clitic lo gives habría a new left neighbour, medial position",
       "position": 4
     },
     {
       "lego_index": 1,
       "phrase_role": "use",
-      "known_text": "I would have been happy",
-      "target_text": "habría estado encantado",
+      "known_text": "I would have done something",
+      "target_text": "habría hecho algo",
       "frame": "P17",
-      "why": "composes habría with the estado encantado lego",
+      "why": "swaps the verb after habría from dicho to hecho, new junction",
       "position": 5
     },
     {
       "lego_index": 1,
       "phrase_role": "use",
-      "known_text": "if I had known, I would have said the same thing",
-      "target_text": "si hubiera sabido, habría dicho lo mismo",
-      "frame": "P14",
-      "why": "places habría in the apodosis after a conditional antecedent, new left neighbour",
+      "known_text": "if I had known, I would have said something",
+      "target_text": "si hubiera sabido, habría dicho algo",
+      "frame": "P17",
+      "why": "full double-'d conditional, left neighbour sabido is new",
       "position": 6
     },
     {
       "lego_index": 1,
       "phrase_role": "use",
-      "known_text": "I think that I would have done that",
-      "target_text": "pienso que habría hecho eso",
-      "frame": "P9",
-      "why": "embeds habría under a think-matrix, new left neighbour que",
+      "known_text": "he knew that I would have said something",
+      "target_text": "sabía que habría dicho algo",
+      "frame": "P10",
+      "why": "matrix know/sure frame, habría stays first person inside the embedded clause",
       "position": 7
     },
     {
       "lego_index": 1,
       "phrase_role": "use",
-      "known_text": "he said that I would have said something",
-      "target_text": "Él dijo que habría dicho algo",
-      "frame": "P12",
-      "why": "embeds habría under a say-matrix with a third-person subject",
+      "known_text": "after you left, I would have said something",
+      "target_text": "después de que te fuiste, habría dicho algo",
+      "frame": "P13",
+      "why": "temporal clause frame, left neighbour fuiste is new",
       "position": 8
     },
     {
       "lego_index": 1,
       "phrase_role": "use",
-      "known_text": "if he could, I would have",
-      "target_text": "si pudiera, habría",
-      "frame": "P14",
-      "why": "puts habría bare in final position after a different conditional antecedent",
+      "known_text": "I think that I would have done the same thing",
+      "target_text": "pienso que habría hecho lo mismo",
+      "frame": "P9",
+      "why": "think/believe frame with hecho instead of dicho, new junction que->hecho",
       "position": 9
     },
     {
@@ -121,70 +190,70 @@
       "known_text": "been happy",
       "target_text": "estado encantado",
       "frame": "P17",
-      "why": "introduces the bare lego alone",
+      "why": "bare stem of the LEGO",
       "position": 10
     },
     {
       "lego_index": 2,
       "phrase_role": "build",
-      "known_text": "I'd have been happy",
-      "target_text": "habría estado encantado",
+      "known_text": "I'd have been happy here",
+      "target_text": "habría estado encantado aquí",
       "frame": "P17",
-      "why": "attaches the I'd have auxiliary, first full combination",
+      "why": "adds a locative tail",
       "position": 11
     },
     {
       "lego_index": 2,
       "phrase_role": "build",
-      "known_text": "I'd have been happy to go",
-      "target_text": "habría estado encantado de ir",
+      "known_text": "I'd have been happy with something",
+      "target_text": "habría estado encantado con algo",
       "frame": "P17",
-      "why": "adds an infinitive complement via de, matching the seed's own frame",
+      "why": "adds a prepositional complement",
       "position": 12
     },
     {
       "lego_index": 2,
       "phrase_role": "use",
-      "known_text": "I'd have been happy to do it",
-      "target_text": "habría estado encantado de hacerlo",
+      "known_text": "I'd have been happy to come back",
+      "target_text": "habría estado encantado de volver",
       "frame": "P17",
-      "why": "swaps the infinitive after de to hacerlo",
+      "why": "infinitive complement, bare counterfactual",
       "position": 13
     },
     {
       "lego_index": 2,
       "phrase_role": "use",
-      "known_text": "if I had known, I'd have been happy to come back",
-      "target_text": "si hubiera sabido, habría estado encantado de volver",
-      "frame": "P14",
-      "why": "places the lego in the apodosis of a conditional, new left context",
+      "known_text": "if it had been my choice, I'd have been happy to help",
+      "target_text": "si hubiera sido mi decisión, habría estado encantado de ayudar",
+      "frame": "P17",
+      "why": "full if-clause frame not present in the live basket",
       "position": 14
     },
     {
       "lego_index": 2,
       "phrase_role": "use",
-      "known_text": "I think that I'd have been happy with that",
-      "target_text": "pienso que habría estado encantado con eso",
-      "frame": "P9",
-      "why": "embeds under a think-matrix and switches the complement to a prepositional object",
+      "known_text": "he said that he'd have been happy to come",
+      "target_text": "dijo que habría estado encantado de venir",
+      "frame": "P12",
+      "why": "matrix say/tell frame absent from the live basket",
       "position": 15
     },
     {
       "lego_index": 2,
       "phrase_role": "use",
-      "known_text": "he said that I'd have been happy there",
-      "target_text": "Él dijo que habría estado encantado allí",
-      "frame": "P12",
-      "why": "embeds under a say-matrix with third person and a locative complement",
+      "known_text": "before you go, I'd have been happy to explain",
+      "target_text": "antes de que te vayas, habría estado encantado de explicar",
+      "frame": "P13",
+      "why": "temporal clause frame absent from the live basket",
       "position": 16
     },
     {
       "lego_index": 2,
       "phrase_role": "use",
-      "known_text": "if he could, I'd have been happy",
-      "target_text": "si pudiera, habría estado encantado",
-      "frame": "P14",
-      "why": "puts the lego in final position with no complement after a different antecedent",
+      "known_text": "I think that I'd have been happy there",
+      "target_text": "pienso que habría estado encantado allí",
+      "frame": "P9",
+      "why": "think/believe frame absent from the live basket",
       "position": 17
     },
     {
@@ -193,7 +262,7 @@
       "known_text": "to drive",
       "target_text": "conducir",
       "frame": "P1",
-      "why": "introduces the bare lego alone",
+      "why": "bare stem of the LEGO",
       "position": 18
     },
     {
@@ -202,7 +271,7 @@
       "known_text": "I want to drive",
       "target_text": "quiero conducir",
       "frame": "P1",
-      "why": "first matrix, want-chain frame",
+      "why": "want-chain frame, conducir phrase-final",
       "position": 19
     },
     {
@@ -211,7 +280,7 @@
       "known_text": "I need to drive",
       "target_text": "necesito conducir",
       "frame": "P6",
-      "why": "swaps the matrix verb to necesito, need-frame",
+      "why": "need-to frame, distinct matrix verb from want",
       "position": 20
     },
     {
@@ -220,7 +289,7 @@
       "known_text": "I'd have been happy to drive",
       "target_text": "habría estado encantado de conducir",
       "frame": "P17",
-      "why": "the seed's own combination, conducir final after de",
+      "why": "ties the counterfactual frame back into this LEGO",
       "position": 21
     },
     {
@@ -229,61 +298,61 @@
       "known_text": "I have to drive",
       "target_text": "tengo que conducir",
       "frame": "P6",
-      "why": "switches the matrix to obligation tengo que, conducir final without de",
+      "why": "have-to frame, present tense obligation",
       "position": 22
     },
     {
       "lego_index": 3,
       "phrase_role": "use",
-      "known_text": "I wanted to drive",
-      "target_text": "quería conducir",
+      "known_text": "I wanted to drive home",
+      "target_text": "quería conducir a casa",
       "frame": "P1",
-      "why": "past-tense want-chain, conducir final",
+      "why": "past want-chain with a directional tail",
       "position": 23
     },
     {
       "lego_index": 3,
       "phrase_role": "use",
-      "known_text": "I'm going to drive",
-      "target_text": "voy a conducir",
-      "frame": "P2",
-      "why": "introduces the going-to future frame",
+      "known_text": "you need to drive there",
+      "target_text": "necesitas conducir hasta allí",
+      "frame": "P6",
+      "why": "second-person need-to, new left neighbour necesitas",
       "position": 24
     },
     {
       "lego_index": 3,
       "phrase_role": "use",
-      "known_text": "it's useful to drive",
-      "target_text": "es útil conducir",
+      "known_text": "it's important to drive carefully",
+      "target_text": "es importante conducir con cuidado",
       "frame": "P18",
-      "why": "introduces the impersonal it's-adjective frame",
+      "why": "it's-adjective frame absent elsewhere in the basket",
       "position": 25
     },
     {
       "lego_index": 3,
       "phrase_role": "use",
-      "known_text": "why do you want to drive",
-      "target_text": "por qué quieres conducir",
-      "frame": "P21",
-      "why": "introduces a wh-question frame with conducir final",
+      "known_text": "to drive in a safe way",
+      "target_text": "conducir de manera segura",
+      "frame": "P1",
+      "why": "conducir phrase-initial with a manner tail",
       "position": 26
     },
     {
       "lego_index": 3,
       "phrase_role": "use",
-      "known_text": "I need to drive quickly",
-      "target_text": "necesito conducir rápidamente",
-      "frame": "P6",
-      "why": "adds a manner adverb after conducir, medial position",
+      "known_text": "I'm too tired to drive",
+      "target_text": "estoy demasiado cansado para conducir",
+      "frame": "P18",
+      "why": "predicate-adjective result frame, para instead of de",
       "position": 27
     },
     {
       "lego_index": 3,
       "phrase_role": "use",
-      "known_text": "he could drive",
-      "target_text": "podía conducir",
-      "frame": "P4",
-      "why": "introduces the modal can/could frame with a third-person subject",
+      "known_text": "you are willing to drive",
+      "target_text": "estás dispuesto a conducir",
+      "frame": "P18",
+      "why": "predicate-adjective frame with a different preposition, a",
       "position": 28
     },
     {
@@ -292,7 +361,7 @@
       "known_text": "you'd told",
       "target_text": "hubieras",
       "frame": "P17",
-      "why": "introduces the bare lego alone, initial position",
+      "why": "bare stem of the LEGO, no neighbours",
       "position": 29
     },
     {
@@ -301,61 +370,61 @@
       "known_text": "if you'd told",
       "target_text": "si hubieras",
       "frame": "P17",
-      "why": "adds si, hubieras now final with a new left neighbour",
+      "why": "adds si as left neighbour, hubieras phrase-final",
       "position": 30
     },
     {
       "lego_index": 4,
       "phrase_role": "build",
-      "known_text": "if you'd told me",
-      "target_text": "si me lo hubieras",
+      "known_text": "if you'd told her",
+      "target_text": "si le hubieras",
       "frame": "P17",
-      "why": "adds the clitic cluster me lo, still final but new left neighbour lo",
+      "why": "le replaces si as immediate left neighbour",
       "position": 31
     },
     {
       "lego_index": 4,
       "phrase_role": "use",
-      "known_text": "I would have done that if you'd told me",
-      "target_text": "habría hecho eso si me lo hubieras dicho",
+      "known_text": "if you'd told me, I would have said something",
+      "target_text": "si me hubieras dicho, habría dicho algo",
       "frame": "P17",
-      "why": "first complete sentence, apodosis-first with hubieras medial before dicho",
+      "why": "me as left neighbour, dicho as right neighbour, full double-'d conditional",
       "position": 32
     },
     {
       "lego_index": 4,
       "phrase_role": "use",
-      "known_text": "if you'd told me, I would have said something",
-      "target_text": "si me lo hubieras dicho, habría dicho algo",
+      "known_text": "if you'd told him, I would have been happy",
+      "target_text": "si le hubieras dicho, habría estado encantado",
       "frame": "P17",
-      "why": "flips clause order to protasis-first, a distinct matrix signature",
+      "why": "le+dicho junction, apodosis swapped to been-happy LEGO",
       "position": 33
     },
     {
       "lego_index": 4,
       "phrase_role": "use",
-      "known_text": "I don't know what you'd told",
-      "target_text": "no sé lo que hubieras dicho",
-      "frame": "P22",
-      "why": "embeds hubieras under an embedded-question matrix, new left neighbour que and no me clitic",
+      "known_text": "if you'd told the truth, I would have been happy",
+      "target_text": "si hubieras dicho la verdad, habría estado encantado",
+      "frame": "P17",
+      "why": "no object clitic before hubieras, new si->dicho junction",
       "position": 34
     },
     {
       "lego_index": 4,
       "phrase_role": "use",
-      "known_text": "I'd have been happy if you'd told me",
-      "target_text": "habría estado encantado si me lo hubieras dicho",
+      "known_text": "if you'd told me, I would have been happy to drive",
+      "target_text": "si me lo hubieras dicho, habría estado encantado de conducir",
       "frame": "P17",
-      "why": "pairs with the estado encantado lego as matrix, apodosis-first",
+      "why": "lo as left neighbour, ties all four LEGOs of the seed together",
       "position": 35
     },
     {
       "lego_index": 4,
       "phrase_role": "use",
-      "known_text": "I would have said something if you'd told me the truth",
-      "target_text": "habría dicho algo si me hubieras dicho la verdad",
+      "known_text": "if you'd told her something, I would have done the same thing",
+      "target_text": "si le hubieras dicho algo, habría hecho lo mismo",
       "frame": "P17",
-      "why": "drops the lo clitic since la verdad is the explicit object, new left neighbour me with a different right-side continuation",
+      "why": "apodosis swapped to the done-the-same construction from L01",
       "position": 36
     }
   ],
@@ -363,14 +432,14 @@
     {
       "lego_index": 1,
       "lego": "I would have",
-      "composite": 0.861,
+      "composite": 0.854,
       "pass": true,
       "floor_failures": []
     },
     {
       "lego_index": 2,
       "lego": "been happy",
-      "composite": 0.813,
+      "composite": 0.779,
       "pass": true,
       "floor_failures": []
     },
@@ -384,11 +453,11 @@
     {
       "lego_index": 4,
       "lego": "you'd told",
-      "composite": 0.789,
+      "composite": 0.742,
       "pass": true,
       "floor_failures": []
     }
   ],
   "seed_pass": true,
-  "seed_composite": 0.826
+  "seed_composite": 0.804
 }
