@@ -74,6 +74,9 @@ const { realHumanLearners } = require('../../services/shared/learner-counts.cjs'
 const { checkPodCast, loadPodForCastCheck, sameVoiceAddress } = require('./pod-cast-gate.cjs')
 const { findInheritedSplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 const { planPodLegoRemap } = require('./pod-legos-remap.cjs')
+const { assertPodStateConservation } = require('./podStateConservation.cjs')
+const fs = require('fs')
+const path = require('path')
 
 const APPLY = process.argv.includes('--apply')
 const ROLLBACK = process.argv.includes('--rollback')
@@ -597,8 +600,25 @@ async function main () {
 
     // The learner-progress migration, in the same transaction as the move so progress is
     // never observable against a canon it was not mapped to.
-    let carried = 0, dropped = 0
+    //
+    // Two lessons from the 2026-08-24 flip (jobs #648/#651: 275 carried rows destroyed
+    // across 12 courses, invisible to every orphan check) are enforced here:
+    //   1. every row-level action is recorded and the record is written to docs/pods/,
+    //      not scratch — a migration whose evidence lives in a temp directory is
+    //      unauditable by design, and it is why 6 of those courses could never be audited;
+    //   2. the post-check asserts COUNT CONSERVATION, not merely absence of orphans —
+    //      a deleted row leaves no key to fail resolution, so deletion passes any orphan
+    //      census by construction; what it cannot pass is arithmetic.
+    let carried = 0, dropped = 0, converged = 0
+    const stateLog = []
+    let beforeCount = 0
     if (plan || (folded && folded.actions.length)) {
+      const { rows: [bc] } = await db.query(
+        'select count(*) n from learner_pod_state where course_code=$1', [COURSE])
+      beforeCount = Number(bc.n)
+      const liveKeys = new Set((await db.query(
+        'select learner_id, sentence_id from learner_pod_state where course_code=$1', [COURSE]))
+        .rows.map(r => `${r.learner_id}|${r.sentence_id}`))
       for (const a of (plan ? plan.actions : []).concat(folded ? folded.actions : [])) {
         // Folded actions were planned against a rekeyed lookup id; the row in the table
         // still carries the id the learner wrote, so delete by that.
@@ -609,7 +629,10 @@ async function main () {
         if (FORCE_NO_MIGRATION || a.action === 'drop' || a.action === 'merge') {
           const r = await del()
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
+          liveKeys.delete(`${a.learner_id}|${storedId}`)
           dropped++
+          stateLog.push({ learner_id: a.learner_id, action: FORCE_NO_MIGRATION ? 'discarded' : a.action,
+            stored_key: storedId, target_key: null, exposures: a.exposures, reason: a.reason ?? null })
         } else if (a.action === 'carry' || a.action === 'keep') {
           // `to` targets were planned against the STAGED canon; promotion re-keyed every
           // sentence id onto PROMOTE_TO, so progress must follow onto the same slug.
@@ -618,16 +641,26 @@ async function main () {
           const target = a.stored_sentence_id
             ? a.to
             : reslug(a.to.replace(/:s\d+$/, ''), STAGED, PROMOTE_TO) + (/:s\d+$/.exec(a.to)?.[0] || '')
-          if (target === storedId) continue
+          if (target === storedId) {
+            stateLog.push({ learner_id: a.learner_id, action: 'kept_in_place',
+              stored_key: storedId, target_key: target, exposures: a.exposures })
+            continue
+          }
           const r = await del()
           if (r.rowCount !== 1) throw new Error(`drift: expected 1 state row for ${a.sentence_id}, got ${r.rowCount}`)
+          liveKeys.delete(`${a.learner_id}|${storedId}`)
+          const targetOccupied = liveKeys.has(`${a.learner_id}|${target}`)
           await db.query(
             `insert into learner_pod_state (learner_id, course_code, sentence_id, exposures)
              values ($1,$2,$3,$4)
              on conflict (learner_id, course_code, sentence_id)
              do update set exposures = greatest(learner_pod_state.exposures, excluded.exposures)`,
             [a.learner_id, COURSE, target, a.exposures])
+          if (targetOccupied) converged++
+          else liveKeys.add(`${a.learner_id}|${target}`)
           carried++
+          stateLog.push({ learner_id: a.learner_id, action: targetOccupied ? 'carried_converged' : 'carried',
+            stored_key: storedId, target_key: target, exposures: a.exposures })
         }
       }
       // No state row may be left pointing at a sentence that does not exist.
@@ -637,9 +670,29 @@ async function main () {
             and not exists (select 1 from listening_pod_sentences s
                              where s.id = regexp_replace(ls.sentence_id, ':s\\d+$', ''))`, [COURSE])
       if (Number(orph.n) > 0) throw new Error(`post-check failed: ${orph.n} learner state rows point at no sentence`)
+      // Count conservation — the check deletion cannot pass. Throws (and rolls the whole
+      // flip back) if any state row vanished or appeared beyond what the plan accounts for.
+      const { rows: [ac] } = await db.query(
+        'select count(*) n from learner_pod_state where course_code=$1', [COURSE])
+      assertPodStateConservation({ course: COURSE, before: beforeCount, after: Number(ac.n),
+        dropped, converged })
+      log(`  state-count conservation: ${beforeCount} before, ${Number(ac.n)} after ` +
+          `(${dropped} planned drop(s), ${converged} converged) — conserved`)
     }
 
     await db.query('commit')
+
+    // The per-course row-level record, committed to docs/pods/ — never scratch.
+    if (plan || stateLog.length) {
+      const logPath = path.join(__dirname, '..', '..', 'docs', 'pods',
+        `${COURSE}-pod-flip-${new Date().toISOString().slice(0, 10)}-state-applied-log.json`)
+      fs.writeFileSync(logPath, JSON.stringify({
+        course: COURSE, live: LIVE, staged: STAGED, promote_to: PROMOTE_TO, retired: RETIRED,
+        at: new Date().toISOString(), before: beforeCount, carried, dropped, converged,
+        actions: stateLog
+      }, null, 2))
+      log(`  state migration log: ${logPath} — commit this file with the flip.`)
+    }
     log(`\nswitched. archived ${archived} → ${RETIRED}, promoted ${promoted} → ${PROMOTE_TO}.`)
     log(`  pod_legos.first_seen_sentence carried: ${legosCarried} row(s)`)
     if (plan) log(`learner progress: ${carried} carried, ${dropped} dropped.`)
