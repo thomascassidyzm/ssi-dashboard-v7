@@ -20,6 +20,7 @@ const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat
 const { loadCourseVocab, loadTranslationVocab, addToCourseVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 const { checkTiling, checkVocabViolations, formatDecompositionPatterns, loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
 const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cjs');
+const { writeSeedRow, markSeedDecomposed } = require('../lib/seed-completion.cjs');
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
@@ -467,20 +468,15 @@ module.exports = function(ctx) {
         const legoStatuses = dedupResults.get(draft.seed_number);
         let skippedDuplicates = 0;
 
-        // 5a. Upsert course_seeds with decomposed_at
-        const { error: seedError } = await ctx.supabase
-          .from('course_seeds')
-          .upsert({
-            course_code: courseCode,
-            seed_number: draft.seed_number,
-            known_text: draft.known_text,
-            target_text: draft.target_text,
-            status: 'released',
-            decomposed_at: new Date().toISOString(),
-            version: 1
-          }, { onConflict: 'course_code,seed_number' });
-
-        if (seedError) throw new Error(`Seed ${draft.seed_number} insert failed: ${seedError.message}`);
+        // 5a. Upsert course_seeds WITHOUT the completion marker — it is stamped in
+        // 5d, once this seed's LEGOs are in (see lib/seed-completion.cjs).
+        await writeSeedRow(ctx.supabase, {
+          course_code: courseCode,
+          seed_number: draft.seed_number,
+          known_text: draft.known_text,
+          target_text: draft.target_text,
+          version: 1
+        });
 
         // 5b. Insert LEGOs ONLY (no phrases — that's the v2 phrase stage)
         for (const lego of draftLegos) {
@@ -580,6 +576,9 @@ module.exports = function(ctx) {
             console.log(`  Empty seed ${draft.seed_number} -> USE phrase for S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`);
           }
         }
+
+        // 5d. LAST WRITE for this seed: its LEGOs are in, so it is genuinely decomposed.
+        await markSeedDecomposed(ctx.supabase, { course_code: courseCode, seed_number: draft.seed_number });
 
         seedsWritten++;
         if (seedsWritten % 50 === 0) {

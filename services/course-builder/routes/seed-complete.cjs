@@ -92,6 +92,7 @@ const {
   CHECKPOINT_SEEDS, QA_DRIFT_THRESHOLD,
 } = require('../lib/checkpoint.cjs');
 const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
+const { writeSeedRow, markSeedDecomposed } = require('../lib/seed-completion.cjs');
 
 // ─── Local helpers (only used by these routes) ────────────────────────
 
@@ -1902,21 +1903,18 @@ module.exports = function seedCompleteRoutes(ctx) {
           })
         : null;
 
-      const { error: seedError } = await ctx.supabase
-        .from('course_seeds')
-        .upsert({
-          course_code,
-          seed_number,
-          known_text,
-          target_text,
-          target_text_roman: parsedData.target_roman || null,
-          status: 'released',
-          decomposed_at: new Date().toISOString(),
-          version: 1,
-          last_edit_event_id: eventId,
-        }, { onConflict: 'course_code,seed_number' });
-
-      if (seedError) throw new Error(`Seed insert failed: ${seedError.message}`);
+      // The seed's text lands FIRST, without status/decomposed_at: the completion
+      // marker is the last write of this handler (see lib/seed-completion.cjs).
+      // A throw anywhere in the LEGO/phrase loop below must leave this seed
+      // un-decomposed so the pipeline retries it, rather than complete-and-empty.
+      await writeSeedRow(ctx.supabase, {
+        course_code,
+        seed_number,
+        known_text,
+        target_text,
+        target_text_roman: parsedData.target_roman || null,
+        version: 1,
+      }, eventId);
       console.log(`✓ Seed: "${known_text}" → "${target_text}"`);
 
       let totalPhrases = 0;
@@ -2204,6 +2202,9 @@ module.exports = function seedCompleteRoutes(ctx) {
           console.log(`  ⚠ Empty seed but no introducing LEGO found for any word`);
         }
       }
+
+      // LAST WRITE: every LEGO and phrase is in, so the seed is genuinely decomposed.
+      await markSeedDecomposed(ctx.supabase, { course_code, seed_number, eventId });
 
       console.log(`\n✓ ${seedId} COMPLETE`);
       console.log(`  LEGOs: ${legos.length} (${skippedDuplicates} duplicates)`);
