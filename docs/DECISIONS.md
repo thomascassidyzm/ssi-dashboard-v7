@@ -5,6 +5,49 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-05 — the phrase-door frame work is on `main`, and claim honesty reports rather than gates
+
+**Decision.** The frame-layer chain (jobs #503, #570, #572, #597) was merged to `main` as a
+single `--no-ff` merge, `ac7c8f79b`. It carries the declaration module
+(`tools/frame-layer/declaration.cjs`), the QA instrument with its candidate reader
+(`tools/frame-layer/qa-report.cjs`), the corpus-claim verifier, and the door wiring in
+`services/course-builder/lib/phrase-generation.cjs` and `routes/phrases-v3.cjs`. Popty is
+internal: work lands on `main` with a rollback, not behind a pull request.
+
+**The ruling it carries.** `checkDeclaration`'s `pass` is a verdict on the five CONTENT
+floors alone; the frame-tag audit lives in a top-level `claim_honesty { checked, wrong,
+findings[] }` and can never turn a PASS into a FAIL. On the four-basket spa_for_eng 599
+run both final FAILs were the two strongest sets, blocked purely on a frame id the matchers
+do not fire on — gating there buys compliance, not learner value, and the retry loop has no
+repair path for a dishonest claim. **This is conditional with a trigger:** it holds only
+while `frame` stays out of the database. The day anyone persists a frame tag on a content
+row it becomes load-bearing and must gate again — that trigger is now a comment at the
+decision point in `declaration.cjs`.
+
+**The proof, re-run on `main` rather than quoted.** `qa-report.cjs spa_for_eng --seed 599
+--candidates <baskets> --with-live` reproduces exactly: LIVE 4 baskets, 1 pass / 3 fail,
+mean composite **0.677**; CANDIDATE 4 baskets, 4 pass / 0 fail, mean composite **0.862**.
+Verdict and score lines are byte-identical to #597's recorded run apart from the candidate
+path. The tool writes nothing to any database; `spa_for_eng` row counts were unchanged
+either side (668 seeds / 1,475 legos / 16,325 phrases).
+
+**ROLLBACK, one command.**
+
+```
+git revert -m 1 ac7c8f79b3d3b7c95f0c3d66c83f06cd4218caee && git push origin HEAD:main
+```
+
+(`1fba08e93` is a follow-up comment-only commit on top; revert it the same way, or leave it
+— it changes no behaviour.)
+
+**Merged is not running.** The course-builder API on `:3471` runs from the separate checkout
+`/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod`, which sits at `26fe5c310`, eleven commits
+behind. Picking this up is a pull in that checkout plus
+`systemctl --user restart popty-course-builder-api` — Kai's or Tom's call, deliberately not
+made here.
+
+---
+
 ## 2026-09-01 — the live canonical slate is pod-1: the first rung of the compulsory default chain
 
 **Decision.** `canonical_pod_scenarios`'s live slate, 231 rows in 22 scenes, was renamed
