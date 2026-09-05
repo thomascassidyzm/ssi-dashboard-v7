@@ -2,6 +2,28 @@
   "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first).",
   "builds": [
     {
+      "id": "android-24b6b62f",
+      "platform": "android",
+      "label": "SSi Android wrapper — the app actually starts (5 Sep 21:28)",
+      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-24b6b62-debug.apk",
+      "filename": "ssi-devwrap-24b6b62-debug.apk",
+      "bytes": 23310759,
+      "sha256": "72ba6d1d0c7ab7fe0e67a0d69d331e1bd8068c2133f6967a08b3fd88daea9ff5",
+      "repo": "ssi-learning-app",
+      "branch": "cs/653-diagnose-the-spinning-apk-which- (merged to dev)",
+      "commit": "24b6b62f",
+      "commitSubject": "build(android): the script points gradle at watson-1's jdk and sdk",
+      "builtAt": "2026-09-05T20:28:39Z",
+      "applicationId": "com.saysomethingin.devwrap",
+      "appName": "SSi (dev wrap)",
+      "versionName": "1.0",
+      "versionCode": 1,
+      "targetSdk": 36,
+      "minSdk": 24,
+      "buildType": "debug",
+      "provenanceNote": "THE ONE THING TO CHECK: the app should reach a real screen — the course picture, the belt, and a solid red play button you can press. The previous build (local-5e99196) spun on that button forever over a blank screen, and the reason had nothing to do with the phone: it was built on a machine with no Supabase configuration, so the installed app never made a database client and could not load a single course. It could not have worked on any handset. That build can no longer be made — the build now refuses to produce an APK without that configuration. AFTER INSTALLING, the Settings build row reads exactly: local-24b6b62, with the API host ssi-learning-app-git-dev-zenjin.vercel.app beneath it. If it still says local-5e99196 you are looking at the old install — remove it and install this one. The bottom-controls clearance from the previous build is still in here and still worth a glance under both gesture and three-button navigation. 'A newer version is available' is expected and is not a fault: the dev deployment moves on after every APK is cut."
+    },
+    {
       "id": "android-5e991962",
       "platform": "android",
       "label": "SSi Android wrapper — bottom controls clear the nav bar (5 Sep 13:42)",
