@@ -24,6 +24,28 @@
       </a>
       <p class="build-stamp">Built {{ formatLocalTime(build.builtAt) }}</p>
 
+      <!-- The direct link, in full, so it can be copied and sent to someone who has no Popty
+           login (Tom, 2026-09-06: "so that there's no confusion"). The page is behind the
+           login; the FILE is public object storage. `build.url` is the SAME binding the
+           download button reads above — never a second, hand-kept copy that could drift. -->
+      <div class="share-link">
+        <p class="share-lede">
+          This link is public. Anyone can tap it and install &mdash; no Popty account needed. Copy it
+          and send it straight to a tester.
+        </p>
+        <div class="share-row">
+          <code class="share-url">{{ build.url }}</code>
+          <button type="button" class="copy-btn" @click="copyUrl(build)">
+            {{ copiedId === build.id ? 'Copied' : 'Copy link' }}
+          </button>
+        </div>
+        <p v-if="copyFailedId === build.id" class="copy-failed">
+          Your browser would not let us write to the clipboard &mdash; select the link above and copy it
+          by hand.
+        </p>
+        <p class="share-sha">SHA-256 <code class="sha">{{ build.sha256 }}</code></p>
+      </div>
+
       <div class="install-help">
         <h3>If your phone asks about "unknown sources"</h3>
         <p>
@@ -83,12 +105,31 @@
 </template>
 
 <script setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import manifest from '../content/app-builds.json'
 
 const androidBuilds = computed(() =>
   (manifest.builds || []).filter(b => b.platform === 'android')
 )
+
+// One-tap copy, with the URL left as ordinary selectable text so a refused clipboard
+// (permissions, an insecure context, an old browser) is never a dead end.
+const copiedId = ref(null)
+const copyFailedId = ref(null)
+
+const copyUrl = async build => {
+  copiedId.value = null
+  copyFailedId.value = null
+  try {
+    await navigator.clipboard.writeText(build.url)
+    copiedId.value = build.id
+    setTimeout(() => {
+      if (copiedId.value === build.id) copiedId.value = null
+    }, 2000)
+  } catch {
+    copyFailedId.value = build.id
+  }
+}
 
 // The prominent line under the button: the way Tom reads a clock, not the way a manifest does.
 const formatLocalTime = iso => {
@@ -178,6 +219,59 @@ const formatTime = iso => {
   opacity: 0.75;
   margin: 0.5rem 0 0;
 }
+.share-link {
+  margin-top: 1.25rem;
+  border: 1px solid var(--line, rgba(128, 128, 128, 0.3));
+  border-radius: 0.5rem;
+  padding: 0.85rem;
+}
+.share-lede {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  line-height: 1.5;
+  margin: 0 0 0.6rem;
+}
+.share-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+/* Never truncated: the whole URL wraps, because a half-copied link installs nothing. */
+.share-url {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.78rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+  user-select: all;
+}
+.copy-btn {
+  flex: 0 0 auto;
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.4rem 0.7rem;
+  border-radius: 0.4rem;
+  border: 1px solid var(--line, rgba(128, 128, 128, 0.4));
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.copy-btn:hover {
+  filter: brightness(1.2);
+}
+.copy-failed {
+  font-size: 0.8rem;
+  margin: 0.5rem 0 0;
+  opacity: 0.85;
+}
+.share-sha {
+  font-size: 0.78rem;
+  opacity: 0.7;
+  margin: 0.55rem 0 0;
+  overflow-wrap: anywhere;
+}
 .install-help {
   margin-top: 1.5rem;
 }
@@ -240,6 +334,10 @@ const formatTime = iso => {
   line-height: 1.55;
 }
 @media (max-width: 30rem) {
+  .share-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
   .prov-grid {
     grid-template-columns: 1fr;
     gap: 0.1rem;
