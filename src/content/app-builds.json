@@ -1,6 +1,31 @@
 {
-  "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first).",
+  "note": "Test packages for human testers. Android only — iOS goes via TestFlight. To add a build: upload the APK to the public Supabase 'app-builds' bucket, then prepend an entry here (newest first). A build with \"public\": true is the one served, without a login, at /builds/android — the newest public entry wins.",
   "builds": [
+    {
+      "id": "android-7daba4d3",
+      "platform": "android",
+      "public": true,
+      "label": "SSi Android — full course against staging (6 Sep 12:43)",
+      "url": "https://swfvymspfxmnfhevgdkg.supabase.co/storage/v1/object/public/app-builds/android/ssi-devwrap-7daba4d-staging-debug.apk",
+      "filename": "ssi-devwrap-7daba4d-staging-debug.apk",
+      "bytes": 23326339,
+      "sha256": "4a42e50b09a41843086059bfe02dd8f9d5ee2526102b974c40e1d8f8a70dc130",
+      "repo": "ssi-learning-app",
+      "branch": "dev (merge of cs/676-why-premium-entitlement-resolves + cs/685-stored-bundle-declares-its-entit)",
+      "commit": "7daba4d3",
+      "commitSubject": "merge: the entitlement-cache fix in both halves (#676 server Vary, #685 client heal)",
+      "builtAt": "2026-09-06T11:43:08Z",
+      "apiOrigin": "https://staging.saysomethingin.app",
+      "applicationId": "com.saysomethingin.devwrap",
+      "appName": "SSi (dev wrap)",
+      "versionName": "1.0",
+      "versionCode": 1,
+      "targetSdk": 36,
+      "minSdk": 24,
+      "buildType": "debug",
+      "signerCertSha256": "82d846eaff2ad654d49e892a60dc3ae0b059b8f576e47374f8c21f4c591bcdeb",
+      "provenanceNote": "Signed with the SAME key as the 5 September build (local-24b6b62), verified by comparing signer certificate digests — so this installs straight over what is already on the phone. Nothing needs uninstalling. AFTER INSTALLING, the Settings build row reads exactly: local-7daba4d, with the API host staging.saysomethingin.app beneath it. This build talks to staging rather than dev, so an existing SSi account signs in as normal and the whole course is there. It carries both halves of the entitlement-cache fix: a paid course no longer shows up as a 19-seed free preview because the browser cached the signed-out answer. Web assets are BUNDLED in the APK, so only installing this file brings the change to a phone."
+    },
     {
       "id": "android-24b6b62f",
       "platform": "android",

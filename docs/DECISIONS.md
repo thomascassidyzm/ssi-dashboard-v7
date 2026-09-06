@@ -587,3 +587,39 @@ path. Verified still working after the change: the dashboard root, an SPA deep p
 `content-type: application/vnd.android.package-archive`. The bytes crossed the Vercel edge, which is
 outside the tailnet. `services/builds-distribution.test.cjs` holds the line: it asserts the rewrite
 ORDER statically and was proven red against the pre-fix ordering.
+
+## 2026-09-06 — one public link: popty.app/builds/android, bytes from the public bucket
+
+**Supersedes the 2026-09-05 entry above.** That design (a `/builds/:path*` rewrite onto the
+tailscale funnel) was reverted the same evening in `7becc11ba` because it shadowed `/builds`, a
+real SPA route Kai, Deborah and Tom use. Its test has been red on `main` ever since, asserting a
+rewrite nobody ships.
+
+**The finding that made this cheap.** The bytes were never the problem. `/builds` already links to
+the PUBLIC Supabase Storage bucket `app-builds`, and that bucket already answers a stranger — no
+tailnet, no session — with `HTTP 200`, `content-type: application/vnd.android.package-archive` and
+an exact `content-length`. The only thing gating a field tester was the Popty **login on the page**,
+which is what put a 669-byte HTML shell on Deborah's phone named `.apk`.
+
+**The fix.** One ordinary SPA route, `/builds/android`, marked `meta: { public: true }` — the same
+exemption the recordist room at `/r/:voiceId` already uses. It renders `PublicAndroidBuild.vue`: a
+single build, its download button, the unknown-sources walkthrough, and full provenance including
+the sha256 and the signing certificate digest. No `vercel.json` change at all (the catch-all already
+routes it to the SPA), no rewrite that can shadow `/builds`, no serverless function streaming 23 MB
+(Vercel cannot), no port opened, and nothing that dies when watson-1 reboots.
+
+**The auth call.** Tom, 2026-09-06: *"they still have accounts so it doesn't matter if this build is
+publicly available does it?"* The APK is not the secret; the account is. So the download carries no
+gate. The capability-token shape of the previous design is not needed and is not used.
+
+**One build, never a list.** The public page serves the newest manifest entry carrying
+`"public": true`. Five historical APKs on a public page is a way for a tester to install the wrong
+one; the authed `/builds` page keeps the full list, unchanged.
+
+**Rollback.** Revert this commit. `/builds` is untouched by it, so the authed page cannot be harmed;
+worst case the public page disappears and the bucket URL still works directly.
+
+**Verified by bytes.** `https://popty.app/builds/android` → the page, no login. Its download URL →
+23,326,339 bytes, sha256 `4a42e50b09a41843086059bfe02dd8f9d5ee2526102b974c40e1d8f8a70dc130`,
+first two bytes `PK`. `src/router/publicAndroidBuild.test.js` holds the line: public route exempt,
+`/builds` still guarded and unshadowed, exactly one public build, bucket URL, provenance complete.

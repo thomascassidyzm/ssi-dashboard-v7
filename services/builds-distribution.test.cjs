@@ -24,37 +24,22 @@ const firstMatching = (rewrites, urlPath) =>
     .replace(/:path\*/g, '.*')
     .replace(/\/$/, '') + '/?$').test(urlPath))
 
-describe('vercel.json rewrites — /builds must not fall through to the SPA shell', () => {
-  const rewrites = vercel.rewrites
-
-  it('has a /builds rewrite pointing at the funnelled production API', () => {
-    const rule = rewrites.find((r) => r.source.startsWith('/builds'))
-    expect(rule, '/builds rewrite missing — popty.app/builds would serve index.html').toBeTruthy()
-    expect(rule.destination).toMatch(/^https:\/\/watson-1\.[a-z0-9.-]+\.ts\.net:8443\/api\/builds\//)
-  })
-
-  it('places that rewrite BEFORE the index.html catch-all', () => {
-    const buildsIdx = rewrites.findIndex((r) => r.source.startsWith('/builds'))
-    const catchAllIdx = rewrites.findIndex((r) => r.destination === '/index.html')
-    expect(buildsIdx).toBeGreaterThanOrEqual(0)
-    expect(catchAllIdx).toBeGreaterThanOrEqual(0)
-    expect(buildsIdx).toBeLessThan(catchAllIdx)
-  })
-
-  it('routes a real APK path to the API, not to the shell', () => {
-    const hit = firstMatching(rewrites, '/builds/abc123/ssi-devwrap-7ccf1288-debug.apk')
-    expect(hit?.destination).not.toBe('/index.html')
-  })
-
-  // RED PROOF: the same matcher against the pre-fix rewrite table — the exact
-  // state popty.app was in — must report the shell. If this stops failing to
-  // find the shell, the matcher has gone blind and the tests above are theatre.
-  it('the matcher does catch the broken ordering it is there to catch', () => {
-    const broken = [{ source: '/((?!vfs|assets/).*)', destination: '/index.html' },
-      { source: '/builds/:path*', destination: 'https://watson-1.example.ts.net:8443/api/builds/:path*' }]
-    expect(firstMatching(broken, '/builds/abc123/x.apk').destination).toBe('/index.html')
-  })
-})
+// SUPERSEDED (2026-09-06, job #696). The three assertions that used to live here
+// demanded a /builds rewrite in vercel.json pointing at the tailscale funnel. That
+// rewrite was reverted the same evening it landed (7becc11ba) because it shadowed
+// the real SPA route /builds, and these assertions have been RED on main ever
+// since — a test asserting a design nobody ships is noise, not a gate.
+//
+// What ships instead: the APK bytes live in the PUBLIC Supabase Storage bucket
+// `app-builds`, which already answers a stranger with
+// `Content-Type: application/vnd.android.package-archive` and no auth; popty.app
+// serves only the PAGE, at /builds/android, as an ordinary SPA route marked
+// `public: true`. No rewrite, no funnel, no serverless function streaming 23 MB
+// (Vercel cannot), and nothing that dies when watson-1 reboots. The contract that
+// matters is now asserted in src/router/publicAndroidBuild.test.js.
+//
+// The router below stays: it is still mounted on the internal production API at
+// /api/builds, and its byte/header contract is still worth holding.
 
 describe('builds router — bytes, not markup', () => {
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'builds-test-'))

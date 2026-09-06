@@ -436,6 +436,19 @@ const routes = [
     meta: { title: 'Test builds', requiresAuth: true }
   },
 
+  // The PUBLIC download, for field testers who have an SSi LEARNER account and no
+  // Popty login at all (Tom, 2026-09-06): "they still have accounts so it doesn't
+  // matter if this build is publicly available" — the APK is not the secret, the
+  // account is. `public: true` exempts it from the auth guard, exactly as the
+  // recordist room above does, and the path sits UNDER /builds rather than over it
+  // so the authed list page keeps working untouched. One build only, never a list.
+  {
+    path: '/builds/android',
+    name: 'PublicAndroidBuild',
+    component: () => import('../views/PublicAndroidBuild.vue'),
+    meta: { title: 'Install the SSi app', public: true }
+  },
+
   // ============================================
   // THE ONE RECORDIST SURFACE (Tom, 2026-08-14)
   // ============================================
