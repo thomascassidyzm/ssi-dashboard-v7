@@ -1151,14 +1151,23 @@ const ESTATE_MAP_SEMANTICS = {
     + 'anything. This block is the ruling made countable: `slots_per_course_counting` is the OLD unit, '
     + '`distinct_lines` is the real render cost, and `collapse_factor` is the ratio between them.',
   collapse_factor:
-    'slots_per_course_counting / distinct_lines for a language\'s pod-0 content. It is how much a per-course '
+    'slots_per_course_counting / distinct_lines for a language\'s SERVING pod content (pod-1 where a course has '
+    + 'one, else pod-0). It is how much a per-course '
     + 'count over-states the render. CONSEQUENCE Tom flagged: the ~210k-clip premium-first non-English rebuild '
     + 'queue was counted per-course and should collapse significantly under per-language dedupe. That number '
     + 'wants recounting and publishing BEFORE anyone proposes spend against it.',
+  serving_pod:
+    'Per-COURSE state of THE POD THIS COURSE ACTUALLY SERVES — resolved, never assumed: `pod-1` if the course '
+    + 'has one, else `pod-0`, and the `slug` field says which. It is still the right unit for "can a learner '
+    + 'play this course\'s pod", and the WRONG unit for costing a render. To cost a render, read '
+    + '`pods_by_language`. Both are in this response on purpose, because conflating them is what produced a '
+    + 'per-course render queue.',
   pod_0:
-    'Per-COURSE pod state — still the right unit for "can a learner play this course\'s pod 0", and the WRONG '
-    + 'unit for costing a render. To cost a render, read `pods_by_language`. Both are in this response on '
-    + 'purpose, because conflating them is what produced a per-course render queue.',
+    'THE ORIGINAL NAME FOR `serving_pod`, kept live so every existing reader keeps working — identical object, '
+    + 'same values. It stopped being a truthful name on Tom\'s 1-based ruling of 2026-08-22, and until '
+    + '2026-09-06 it was worse than untruthful: the SQL behind it hardcoded `slug = \'pod-0\'`, so all 22 '
+    + 'courses moved onto `pod-1` reported {exists:false} — no pod at all — while their live pod was counted '
+    + 'as a staging one. Prefer `serving_pod` in anything new.',
   lego_types:
     'An A-LEGO is one word on at least one side, and is therefore unmappable. An M-LEGO is two or more words on '
     + 'BOTH sides, is mappable, and mapping is offered on Intros only. Tom: "It\'s just classification that feeds the mapping."',
@@ -1173,16 +1182,22 @@ const ESTATE_MAP_SEMANTICS = {
 
 /**
  * Decide what a course is blocked on, from its already-derived row plus the live
- * pod-0 voice-approval verdict. Pure — no I/O — so the ordering is readable and testable.
+ * voice-approval verdict on the pod it serves. Pure — no I/O — so the ordering is
+ * readable and testable.
  *
  * Returns EVERY applicable blocker, not just the first. Reporting only the highest
- * would be the bug this endpoint exists to prevent: every one of the 67 pod-0 courses
- * is awaiting voice approval, which would mask the fact that the Welsh pod-0 English
- * track is separately silent. `blocked_reason` is the one to act on; `blocked_reasons`
- * is the truth.
+ * would be the bug this endpoint exists to prevent: every one of the 67 courses with
+ * a pod is awaiting voice approval, which would mask the fact that the Welsh pod's
+ * English track is separately silent. `blocked_reason` is the one to act on;
+ * `blocked_reasons` is the truth.
+ *
+ * READS `serving_pod`, NOT A SLUG. `pod_0` is its alias and is read only as a
+ * fallback, for a payload produced before 2026-09-06. The `pod0_*` reason STRINGS
+ * are deliberately unchanged: they are an API contract that other readers key on,
+ * and renaming them would break those readers to fix a word.
  */
 function estateMapBlockers(course, approval) {
-  const pod0 = course.pod_0 || { exists: false }
+  const pod0 = course.serving_pod || course.pod_0 || { exists: false }
   const out = []
   if ((course.audio?.clips || 0) === 0) {
     out.push({ reason: 'no_audio', detail: 'No audio rows exist for this course at all.' })
@@ -1196,14 +1211,14 @@ function estateMapBlockers(course, approval) {
   if (pod0.exists && (pod0.known_empty > 0 || pod0.known_dead_stubs > 0)) {
     out.push({
       reason: 'pod0_known_track_incomplete',
-      detail: `Pod 0's known-language track has ${pod0.known_empty} empty slots and `
+      detail: `The ${pod0.slug || 'serving'} known-language track has ${pod0.known_empty} empty slots and `
         + `${pod0.known_dead_stubs} linked-but-dead clips out of ${pod0.slots}.`,
     })
   }
   if (pod0.exists && pod0.target_empty > 0) {
     out.push({
       reason: 'pod0_target_track_incomplete',
-      detail: `Pod 0's target-language track has ${pod0.target_empty} empty slots out of ${pod0.slots}.`,
+      detail: `The ${pod0.slug || 'serving'} target-language track has ${pod0.target_empty} empty slots out of ${pod0.slots}.`,
     })
   }
   return out
@@ -1218,22 +1233,24 @@ function estateMapAsText(payload) {
     `courses ${t.courses} | released ${t.released} (live ${t.new_app_live} + beta ${t.new_app_beta}) | `
       + `unreleased ${t.courses - t.released} (drafts/never-shipped) | `
       + `tts ${t.voice_mode.tts} human ${t.voice_mode.human} mixed ${t.voice_mode.mixed} unknown ${t.voice_mode.unknown}`,
-    `pod 0: ${t.with_pod_0} courses have one | blocked: ${t.blocked}`,
+    `serving pod: ${t.with_serving_pod} courses have one (${t.serving_pod_slugs}) | blocked: ${t.blocked}`,
     ...Object.entries(t.blocked_by_reason).map(([r, n]) => `    ${n}  ${r}`),
     '',
-    `pod lines, per-course counting ${t.pod_0_lines.per_course_counting} -> per-LANGUAGE `
-      + `${t.pod_0_lines.distinct_per_language} distinct. Pods are per language, not per course.`,
+    `pod lines, per-course counting ${t.serving_pod_lines.per_course_counting} -> per-LANGUAGE `
+      + `${t.serving_pod_lines.distinct_per_language} distinct. Pods are per language, not per course.`,
     ...payload.pods_by_language.slice(0, 8).map(l =>
       `    ${l.lang.padEnd(5)} ${String(l.slots_per_course_counting).padStart(6)} slots -> `
       + `${String(l.distinct_lines).padStart(5)} lines  (${l.collapse_factor}x)  across `
-      + `${l.courses_with_pod_0} courses`),
+      + `${l.courses_with_serving_pod} courses`),
     '',
-    'COURSE                          REL  VOICE   CLIPS    POD-0 (tgt/known of slots)  BLOCKED ON',
+    'COURSE                          REL  VOICE   CLIPS    SERVING POD (tgt/known of slots)  BLOCKED ON',
   ]
   for (const c of payload.courses) {
-    const pod = c.pod_0.exists
-      ? `${c.pod_0.target_linked}/${c.pod_0.known_linked} of ${c.pod_0.slots}`.padEnd(26)
-      : '—'.padEnd(26)
+    // The slug is ON the line, because "which pod is this?" stopped having one
+    // answer for the whole estate on 2026-08-22 and a column that hides it lies.
+    const pod = c.serving_pod.exists
+      ? `${c.serving_pod.slug} ${c.serving_pod.target_linked}/${c.serving_pod.known_linked} of ${c.serving_pod.slots}`.padEnd(32)
+      : '—'.padEnd(32)
     lines.push(
       c.course_code.padEnd(32)
       + (c.released ? 'yes' : 'no ').padEnd(5)
@@ -1265,7 +1282,8 @@ app.get('/api/estate-map', async (req, res) => {
     const rows = derived?.courses || []
     const podsByLanguage = derived?.pods_by_language || []
 
-    // 2. Overlay the live pod-0 voice-approval verdict. Same code path the real
+    // 2. Overlay the live voice-approval verdict on the pod each course serves.
+    //    Same code path the real
     //    generation gate uses, so a course reported as awaiting approval here is a
     //    course /generate-pods will actually refuse.
     const [{ data: pods, error: podErr }, approvals] = await Promise.all([
@@ -1319,7 +1337,15 @@ app.get('/api/estate-map', async (req, res) => {
           mixed: courses.filter(c => c.audio.voice_mode === 'mixed').length,
           unknown: courses.filter(c => c.audio.voice_mode === 'unknown').length,
         },
-        with_pod_0: courses.filter(c => c.pod_0.exists).length,
+        with_serving_pod: courses.filter(c => c.serving_pod.exists).length,
+        // Kept live under its original name; see the `pod_0` semantics entry.
+        with_pod_0: courses.filter(c => c.serving_pod.exists).length,
+        // Which slugs the estate is actually serving, counted — the fact a
+        // hardcoded `pod-0` made unaskable. 45 pod-0 + 22 pod-1 on 2026-09-06.
+        serving_pod_slugs: Object.entries(courses.reduce((acc, c) => {
+          if (c.serving_pod.exists) acc[c.serving_pod.slug] = (acc[c.serving_pod.slug] || 0) + 1
+          return acc
+        }, {})).sort().map(([s, n]) => `${n} ${s}`).join(' + ') || 'none',
         blocked: courses.filter(c => c.blocked).length,
         // Counted over every applicable blocker, so a course blocked three ways
         // appears under all three. These will sum to more than `blocked`.
@@ -1331,6 +1357,11 @@ app.get('/api/estate-map', async (req, res) => {
         // Pods counted in BOTH units, so the gap between them is impossible to miss.
         // The per-course number is what a render queue gets costed at when nobody
         // remembers that pods are per language.
+        serving_pod_lines: {
+          per_course_counting: podsByLanguage.reduce((n, l) => n + l.slots_per_course_counting, 0),
+          distinct_per_language: podsByLanguage.reduce((n, l) => n + l.distinct_lines, 0),
+        },
+        // Original key, kept live.
         pod_0_lines: {
           per_course_counting: podsByLanguage.reduce((n, l) => n + l.slots_per_course_counting, 0),
           distinct_per_language: podsByLanguage.reduce((n, l) => n + l.distinct_lines, 0),
