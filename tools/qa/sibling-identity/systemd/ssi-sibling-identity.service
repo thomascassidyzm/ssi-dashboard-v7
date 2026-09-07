@@ -1,0 +1,32 @@
+[Unit]
+Description=Nightly check that no variant is byte-identical to its sibling under the same key
+Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/qa/sibling-identity/README.md
+
+[Service]
+Type=oneshot
+# ── WHY NOT THE SHARED CHECKOUT ─────────────────────────────────────────────
+# The shared checkout sits on whatever branch a human session left it on and
+# carries their in-flight edits, so a unit pointed there fires into nothing the
+# night somebody else's branch is checked out. This nightly runs from the
+# detached QA worktree that ssi-voice-variety already uses, refreshed to
+# origin/main before every run, so it always executes the code that landed.
+WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/sibling-identity/nightly.cjs
+# Read-only. Six grouped scans, the largest over ~855k course_practice_phrases
+# rows; ~2 minutes, almost all of it Postgres-side. This box is four cores
+# carrying Tom's chat, ten Popty services and the render queue, and several
+# other jobs share this Supabase project: back seat, and a hard cap so a wedged
+# query can never sit on the box until morning.
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=30min
+# Exit 2 means it could not run — or could not reproduce its known positive,
+# which is the same thing — and it has already posted a notice saying so by
+# then. Read the log, not systemd's opinion of the unit.
+SuccessExitStatus=0 2
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/ssi-sibling-identity-unit.log
+StandardError=append:/home/tomcassidy/.local/log/ssi-sibling-identity-unit.log
