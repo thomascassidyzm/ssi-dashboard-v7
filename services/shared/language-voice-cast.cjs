@@ -70,6 +70,37 @@ const { castKeyForCourse } = require('./cast-language-key.cjs');
 const CAST_ROLES = Object.freeze(['known', 'target1', 'target2', 'instruction', 'encouragement']);
 
 /**
+ * The roles the language cast deliberately does NOT speak for, each with the
+ * reason out loud.
+ *
+ * Until now `presentation` was excluded by ABSENCE — it simply was not in the
+ * list above — and an exclusion nobody has written down is indistinguishable
+ * from an oversight. Every render seam that reads a raw `course.voice_config`
+ * rather than the resolved one turned out, on audit (2026-09-07), to be a
+ * presentation seam relying on exactly this rule, so the rule is now stated
+ * where it is enforced rather than inferred from a gap in an array.
+ *
+ * The pairing matters more than either half: CAST_ROLES and this object must
+ * TOGETHER cover every role a course's voice_config can carry, and must not
+ * overlap. A new role added to the config with no entry on either side fails
+ * services/shared/language-voice-cast.test.cjs, which is the only way a future
+ * role gets a decision made about it rather than a default.
+ */
+const EXCLUDED_ROLES = Object.freeze({
+  presentation:
+    "the course's own presenter, not a specimen of the language it teaches. "
+    + 'Casting it per language would swap Tom\'s clone for a stock voice on every '
+    + 'English-teaching course, and services/audio-reuse-planner.cjs already treats '
+    + 'intros as never-borrowed. A DEFAULT chosen 2026-08-29, not a ruling from Tom: '
+    + 'one word from him moves it into CAST_ROLES.',
+});
+
+/** Is this role deliberately outside the language cast? @returns {string|null} the reason */
+function exclusionReason(role) {
+  return Object.prototype.hasOwnProperty.call(EXCLUDED_ROLES, role) ? EXCLUDED_ROLES[role] : null;
+}
+
+/**
  * ── THE GUIDE ROLES ─────────────────────────────────────────────────────────
  *
  * Tom, 2026-08-29:
@@ -350,6 +381,8 @@ module.exports = {
   isGuideRole,
   slotForRole,
   CAST_ROLES,
+  EXCLUDED_ROLES,
+  exclusionReason,
   GUIDE_ROLES,
   DEFAULT_GENDER,
 };
