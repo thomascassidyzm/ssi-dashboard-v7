@@ -304,7 +304,6 @@ export const OUTSIDE_NAV = [
   { path: '/quality/:courseCode/learned-rules', why: 'learned rules — opened from the quality dashboard' },
   { path: '/recursive-upregulation', why: 'methodology explainer, linked from the Pedagogy page' },
   { path: '/audio-preview', why: 'estate audio preview entry — opened by URL' },
-  { path: '/qa-gate', why: 'estate QA gate — opened by URL' },
   { path: '/my-recording', why: 'a recordist\'s own room — the navbar is hidden for recorders' },
   { path: '/record/:courseCode?', why: 'the Record Room shell — the navbar is hidden for recorders' },
   { path: '/:pathMatch(.*)*', why: 'the 404 catch-all' }

@@ -55,7 +55,7 @@ const STATUS = {
   items: null,
 }
 
-function makeApp ({ user = null, store = {}, gate = {} } = {}) {
+function makeApp ({ user = null, store = {}, clipFlags = {} } = {}) {
   const app = express()
   app.use(express.json())
   const calls = []
@@ -77,15 +77,15 @@ function makeApp ({ user = null, store = {}, gate = {} } = {}) {
     FLAG_MEANING,
   }, store)
 
-  const fakeGate = Object.assign({
+  const fakeClipFlags = Object.assign({
     raiseDetectorFlags: spy('raiseDetectorFlags', () => ({
       courseCode: 'deu_for_eng', raised: 1, alreadyOpen: 0, clearedAlready: 0, flags: [{ id: 'f1', audio_id: 'a1' }],
     })),
-  }, gate)
+  }, clipFlags)
 
   mount(app, {
     store: fakeStore,
-    gate: fakeGate,
+    clipFlags: fakeClipFlags,
     logger: { log () {}, warn () {}, error () {} },
     requireDashboardUser: async (req, res) => {
       if (!user) { res.status(401).json({ error: 'Authentication required' }); return null }
@@ -141,7 +141,7 @@ describe('tail-scan routes — behaviour', () => {
       .toMatchObject({ category: 'duration', voiceId: 'ara', limit: '10', offset: '20' })
   })
 
-  it('the gate seam hands back rows and says, in the payload, that it wrote none', async () => {
+  it('the flag-queue seam hands back rows and says, in the payload, that it wrote none', async () => {
     const { app, calls } = makeApp({ user: PRODUCER })
     const r = await request(app).get('/api/audio/tail-scan/jobs/j1/flag-rows')
     expect(r.status).toBe(200)
@@ -196,11 +196,11 @@ describe('tail-scan routes — behaviour', () => {
   })
 })
 
-// ── raising the detector's findings into the approval gate ──────────────────
+// ── raising the detector's findings into the clip-flag queue ────────────────
 //
 // The one write on this surface. It exists because a finding that dies with the
-// scan process cannot be the machine proof-of-quality step feeding the manual
-// gate — but a scan is still not allowed to pass, repair or delete anything, and
+// scan process cannot be the machine proof-of-quality step feeding whoever repairs
+// clips — but a scan is still not allowed to pass, repair or delete anything, and
 // these tests are where that line is held.
 
 describe('tail-scan routes — raise-flags', () => {
@@ -210,7 +210,7 @@ describe('tail-scan routes — raise-flags', () => {
     expect(res.status).toBe(401)
   })
 
-  it('writes through the GATE, never into the flags table itself', async () => {
+  it('writes through the flag-queue module, never into the flags table itself', async () => {
     // One module owns audio_clip_flags. If this surface ever grew its own insert
     // there would be two places deciding what a flag may be, and they would drift.
     const { app, calls } = makeApp({ user: PRODUCER })
@@ -237,7 +237,7 @@ describe('tail-scan routes — raise-flags', () => {
     // into one number is how a re-run starts looking like new damage.
     const { app } = makeApp({
       user: PRODUCER,
-      gate: { raiseDetectorFlags: () => ({ courseCode: 'deu_for_eng', raised: 2, alreadyOpen: 5, clearedAlready: 1, flags: [] }) },
+      clipFlags: { raiseDetectorFlags: () => ({ courseCode: 'deu_for_eng', raised: 2, alreadyOpen: 5, clearedAlready: 1, flags: [] }) },
     })
     const res = await request(app).post('/api/audio/tail-scan/jobs/j1/raise-flags')
     expect(res.body.written).toBe(true)

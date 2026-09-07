@@ -225,23 +225,6 @@
           <span class="card-arrow">&rarr;</span>
         </router-link>
 
-        <!-- The approval gate. No course reaches learners without a human
-             having played its first X rounds through in the real app
-             (Tom, 2026-08-05). Status is shown here so a course's standing is
-             readable without running anything. -->
-        <router-link :to="`/production/${courseCode}/qa-gate`" class="workflow-card">
-          <div class="card-icon" :class="qaGateIconClass">A</div>
-          <div class="card-content">
-            <h3>Approval Gate &mdash; {{ qaGateLabel }}</h3>
-            <p v-if="qaGateStatus">
-              {{ qaGateStatus.signed_off_rounds }} of {{ qaGateStatus.gate_window_rounds }}
-              required rounds signed off by a human
-            </p>
-            <p v-else>Play through the first rounds and sign each one off</p>
-          </div>
-          <span class="card-arrow">&rarr;</span>
-        </router-link>
-
         <button @click="launchLearningApp" class="workflow-card action">
           <div class="card-icon launch">L</div>
           <div class="card-content">
@@ -285,7 +268,6 @@ import { useProductionStore } from '@/stores/production'
 import { useAuth } from '@/composables/useAuth'
 import { getLanguageName } from '@/composables/useCourses'
 import LegacyExportDialog from '@/components/production/LegacyExportDialog.vue'
-import { qaGate, GATE_STATUS_LABEL } from '@/services/qaGate'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
@@ -326,15 +308,6 @@ const pricingTiers = [
 
 const localStats = ref({ completeSeeds: 0, totalSeeds: 0, legos: 0, phrases: 0 })
 const qaStats = ref({ flags: 0, checked: 0 })
-// The approval gate's row from course_qa_estate, or null if it could not be
-// read — the card degrades to generic copy rather than the overview failing.
-const qaGateStatus = ref(null)
-const qaGateLabel = computed(() =>
-  GATE_STATUS_LABEL[qaGateStatus.value?.gate_status] || 'not passed')
-const qaGateIconClass = computed(() => ({
-  passed: 'gate-passed',
-  in_progress: 'gate-progress',
-}[qaGateStatus.value?.gate_status] || 'gate-unpassed'))
 const isLoadingStats = ref(true)  // Start true, set false when loaded
 const audioStatsLoaded = ref(false)  // Track if audio stats have been fetched
 
@@ -405,19 +378,6 @@ async function loadStats() {
     console.warn('Could not load stats:', err.message)
   } finally {
     isLoadingStats.value = false
-  }
-}
-
-/**
- * The approval gate's standing for this course. Read-only and non-blocking —
- * if it fails, the card falls back to its generic copy rather than taking the
- * overview down.
- */
-async function loadQAGate() {
-  try {
-    qaGateStatus.value = (await qaGate.course(props.courseCode)).estate
-  } catch (err) {
-    qaGateStatus.value = null
   }
 }
 
@@ -520,7 +480,6 @@ onMounted(() => {
   store.loadCourseInfo(props.courseCode)
   loadStats()
   loadQAStats()
-  loadQAGate()
   loadPodDrafts()
 })
 
@@ -529,7 +488,6 @@ watch(() => props.courseCode, () => {
   store.loadCourseInfo(props.courseCode)
   loadStats()
   loadQAStats()
-  loadQAGate()
   loadPodDrafts()
 })
 </script>
@@ -920,9 +878,6 @@ watch(() => props.courseCode, () => {
 .card-icon.launch { background: var(--color-graphite, var(--surface-3)); color: var(--color-tungsten, var(--accent)); }
 /* Approval gate — red until a human has signed the course off, deliberately.
    Every course starts unpassed and the card should say so at a glance. */
-.card-icon.gate-passed { background: #10b981; color: white; }
-.card-icon.gate-progress { background: #f59e0b; color: white; }
-.card-icon.gate-unpassed { background: #dc2626; color: white; }
 
 .card-content {
   flex: 1;

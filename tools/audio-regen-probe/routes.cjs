@@ -47,10 +47,12 @@ const sameVoice = (a, b) => a === b
  *                     it: src/services/api.js:1805 flagAudioSample() has no
  *                     caller. This is the table modelled here, because it is
  *                     the one the regenerate route reads.
- *   audio_clip_flags  what the HUMAN flag button actually writes —
- *                     CourseQAGate.vue:365 -> POST /api/qa-gate/:c/rounds/:i/
- *                     signoff -> course-qa-gate.cjs:336-356. It has a real FK
- *                     to course_audio, ON DELETE CASCADE (see R7).
+ *   audio_clip_flags  the tail-scan detector's queue —
+ *                     POST /api/audio/tail-scan/jobs/:id/raise-flags ->
+ *                     audio-clip-flags.cjs raiseDetectorFlags. It has a real FK
+ *                     to course_audio, ON DELETE CASCADE (see R7). (The human
+ *                     round sign-off that also wrote it was deleted with the
+ *                     play-through approval gate on 2026-09-07.)
  * Neither is read by audio-repair-core.cjs's queue, which runs its own
  * detectors over course_audio — so a human flag does not, on its own, put a
  * clip in front of the repair panel.

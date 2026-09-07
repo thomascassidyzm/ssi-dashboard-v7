@@ -684,15 +684,6 @@ const routes = [
     meta: { title: 'Audio Preview' }
   },
   {
-    // The approval gate across the whole estate (Part 4). Not per-course, so
-    // it sits outside ProductionLayout: this is the view the retrofit of the
-    // already-published courses is prioritised from.
-    path: '/qa-gate',
-    name: 'QAGateEstate',
-    component: () => import('../views/production/QAGateEstate.vue'),
-    meta: { title: 'Approval Gate - Estate' }
-  },
-  {
     // Diagnostic listening artefact (2026-08-06): German seed-1 clips played at
     // the original speed, the belt ramp alone, and the ramp × course global —
     // so the beginner speed can be ruled on by ear. Read-only, public S3 clips,
@@ -747,15 +738,6 @@ const routes = [
         component: () => import('../views/production/TextGeneration.vue'),
         props: true,
         meta: { title: 'Text Generation - Production Suite' }
-      },
-      {
-        // The manual approval gate for this course: the round-by-round
-        // play-through worklist, sign-off, and who is listening to what.
-        path: 'qa-gate',
-        name: 'CourseQAGate',
-        component: () => import('../views/production/CourseQAGate.vue'),
-        props: true,
-        meta: { title: 'Approval Gate - Production Suite' }
       },
       {
         path: 'phrase-qa',

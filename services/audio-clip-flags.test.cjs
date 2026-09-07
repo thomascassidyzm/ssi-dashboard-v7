@@ -1,12 +1,12 @@
-// raiseDetectorFlags — the approval gate's one machine-write.
+// raiseDetectorFlags — the flag queue's one machine-write.
 //
-// The gate's governing law is "machines may flag audio; only humans may pass it".
-// Raising a flag is the one thing a machine IS allowed to do here, because a flag
-// is an annotation: it puts a clip in a human's field of view and touches nothing.
+// The governing law is "machines may flag audio; only humans may clear a flag".
+// Raising one is the one thing a machine IS allowed to do here, because a flag is
+// an annotation: it puts a clip in a human's field of view and touches nothing.
 // These tests hold the edges of that permission — especially the two places where
 // a careless implementation would let a machine overrule a person or drown them.
 import { describe, it, expect } from 'vitest'
-import { createGate, GateError } from './course-qa-gate.cjs'
+import { createClipFlags, FlagError } from './audio-clip-flags.cjs'
 
 /** A supabase double narrow enough to read: only what raiseDetectorFlags touches. */
 function makeDb ({ existingFlags = [] } = {}) {
@@ -33,7 +33,7 @@ function makeDb ({ existingFlags = [] } = {}) {
   return { client, inserted }
 }
 
-const gateOn = (db) => createGate({ getDb: () => db.client, logger: { log () {}, warn () {}, error () {} } })
+const gateOn = (db) => createClipFlags({ getDb: () => db.client, logger: { log () {}, warn () {}, error () {} } })
 
 const row = (over = {}) => ({
   audio_id: 'a1', course_code: 'deu_for_eng', audio_revision: 1,

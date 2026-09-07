@@ -505,24 +505,6 @@ app.use('/api/recording',
 // rewrites onto this through the tailscale funnel; see services/builds-router.cjs.
 app.use('/api/builds', require('./builds-router.cjs')({ logger }))
 
-// Course QA / approval gate: per-round human play-through sign-off, derived
-// per-cycle verification status, and the publish block that stops a course
-// reaching learners unsigned. Mounted on its own top-level /api/qa-gate/*
-// prefix rather than under /api/production/:courseCode so the estate view
-// (every course at once) has somewhere to live.
-// Schema + why: ops/sql/20260805-course-qa-gate.sql.
-require('./api/course-qa-gate-routes.cjs').mount(app, {
-  requireAdmin,
-  requireDashboardUser,
-  getDb: () => supabaseClient.getClient(),
-  logger,
-})
-
-/** The gate, for the publish path below. Lazy: see the mount note above. */
-let _qaGate = null
-const qaGate = () => (_qaGate || (_qaGate = require('./course-qa-gate.cjs')
-  .createGate({ getDb: () => supabaseClient.getClient(), logger })))
-
 // POST /api/auth/login — login with email + code
 app.post('/api/auth/login', async (req, res) => {
   const { email, code } = req.body
@@ -2632,51 +2614,20 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
     }
     const newAppStatus = appStatusMap[dbStatus]
 
-    // ── THE APPROVAL GATE ───────────────────────────────────────────────────
-    // "No course should EVER go out to learners unless it has passed a manual
-    // approval gate." (Tom, 2026-08-05.) new_app_status IN ('live','beta') is
-    // what actually makes a course learner-visible — that is the predicate
-    // ssi-learning-app/api/courses/available.ts selects on — so that is where
-    // this bites.
+    // NO APPROVAL GATE HERE ANY MORE. A manual play-through gate stood at this
+    // point from 2026-08-05 until 2026-09-07 and was never once satisfied: zero
+    // rows were ever written to course_round_signoffs or audio_clip_signoffs, no
+    // course ever reached gate_status='passed', and the only six promotions it
+    // saw went through on Tom's own overrides. Tom's ruling, 2026-09-07:
+    // "let us just remove this - something that has not been used, ever, is
+    // clearly not valuable enough". Gate, tables, views and UI all deleted.
     //
-    // It bites on PROMOTION only. Demotion is always allowed (you must always
-    // be able to pull a course back), and re-saving a course at the status it
-    // already holds is a no-op: 78 courses were already learner-visible when
-    // this gate was built and Tom's ruling explicitly accepts that they
-    // cannot be pulled back in. Blocking an unrelated re-save of one of them
-    // would be the gate punishing the wrong thing.
-    let gateDecision = null
-    try {
-      const { data: currentRow } = await supabaseClient.getClient()
-        .from('courses').select('new_app_status').eq('course_code', courseCode).maybeSingle()
-      gateDecision = await qaGate().checkPublishAllowed({
-        courseCode,
-        targetAppStatus: newAppStatus,
-        currentAppStatus: currentRow?.new_app_status || 'not_available',
-      })
-    } catch (gateErr) {
-      // A gate that cannot be read must not silently wave a course through.
-      logger.error(`[qa-gate] publish check failed for ${courseCode}:`, gateErr)
-      return res.status(503).json({
-        error: 'QA approval gate could not be evaluated, so publication is refused',
-        code: 'gate_unavailable',
-        detail: gateErr.message,
-      })
-    }
-
-    if (!gateDecision.allowed) {
-      logger.warn(`[qa-gate] BLOCKED promotion of ${courseCode} to ${newAppStatus}: ${gateDecision.reason}`)
-      return res.status(409).json({
-        error: gateDecision.message,
-        code: 'qa_gate_unpassed',
-        gate: gateDecision.gate,
-      })
-    }
-    if (gateDecision.reason === 'overridden') {
-      logger.warn(`[qa-gate] ${courseCode} promoted to ${newAppStatus} under an OVERRIDE by ` +
-        `${gateDecision.gate?.override_by}: ${gateDecision.gate?.override_reason}`)
-    }
-
+    // What still stands between a draft and a learner is the CHECK constraint
+    // courses_learner_status_never_ahead_of_internal (ops/sql/20260907-...sql):
+    // new_app_status may sit at or below courses.status, never above it. That
+    // is enforced in the database, so it holds for a hand-written UPDATE too —
+    // which is how four draft courses were served as beta for a month while
+    // this endpoint's gate, standing right here, never saw the write.
     const updatedCourse = await supabaseClient.updateCourseStatus(courseCode, dbStatus, newAppStatus)
     logger.info(`Updated ${courseCode} status to ${dbStatus} (new_app_status: ${newAppStatus})`)
 
@@ -6659,8 +6610,8 @@ require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser
 // is a JOB (start / poll / read the report), never a synchronous request. Every
 // route is a read: no TTS, no writes, nothing on the learner path. Job state is
 // in-process and does not survive a restart — see services/audio-tail-scan.cjs.
-// getDb because /raise-flags writes its findings through the QA gate, which owns
-// audio_clip_flags — the same client the gate surface above is mounted with.
+// getDb because /raise-flags writes its findings through services/audio-clip-flags.cjs,
+// the one module that owns audio_clip_flags.
 require('./api/audio-tail-scan-routes.cjs').mount(app, {
   requireDashboardUser, getDb: () => supabaseClient.getClient(), logger,
 })

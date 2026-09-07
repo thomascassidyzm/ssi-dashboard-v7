@@ -12,7 +12,7 @@
  *   - the two detectors are counted separately and never merged;
  *   - a truncated report SAYS it is truncated;
  *   - a lost job (restart) is a distinguishable 404, not a failure;
- *   - the gate seam produces audio_clip_flags-shaped rows and inserts nothing.
+ *   - the flag seam produces audio_clip_flags-shaped rows and inserts nothing.
  */
 
 import { describe, it, expect } from 'vitest'

@@ -175,16 +175,6 @@
               {{ round.itemCount }} items
             </div>
 
-            <!-- Approval-gate standing for this round. Machines may flag
-                 audio; only humans may pass it, so this badge only ever goes
-                 green off the back of a recorded human play-through. -->
-            <span
-              v-if="qaStatus.get(round.roundNumber)"
-              class="qa-badge text-xs px-2 py-0.5 rounded border"
-              :class="qaBadgeClass(qaStatus.get(round.roundNumber))"
-              :title="qaBadgeTitle(qaStatus.get(round.roundNumber))"
-            >{{ qaBadgeLabel(qaStatus.get(round.roundNumber)) }}</span>
-
             <!-- Open this round in the real learning app — leaves Popty -->
             <button
               class="open-round-btn w-6 h-6 flex items-center justify-center rounded text-muted hover:text-ink hover:bg-surface-3 transition-colors text-base leading-none"
@@ -645,7 +635,6 @@ import { getApiUrl } from '@/services/api'
 import { useAuth } from '@/composables/useAuth.js'
 import { dirFor } from '@/utils/textDirection.js'
 import { buildLearningAppUrl } from '@/utils/learningAppUrl'
-import { qaGate } from '@/services/qaGate'
 // The one rule for what a tap does lives in src/utils/glossPlacement.ts,
 // pure and unit tested — it is the only thing that rewrites a segmentation.
 import { moveGlossWord, type GlossSegment } from '@/utils/glossPlacement'
@@ -1113,41 +1102,6 @@ const roundNumberTitle = (round: RoundData): string => {
   return `Round ${round.roundNumber}`
 }
 
-// ── Approval-gate standing per round ──────────────────────────────────────
-// Read-only and non-blocking: Script View is a proofing tool and must not
-// depend on the gate being reachable. If the fetch fails, no badges render
-// and nothing else changes. Sign-off itself lives on the QA Gate page — this
-// only shows what a human has already recorded.
-const qaStatus = ref(new Map<number, string>())
-
-const qaBadgeLabel = (s: string) => ({
-  passed: 'signed off', flagged: 'flagged', stale: 'stale',
-}[s] || '')
-const qaBadgeTitle = (s: string) => ({
-  passed: 'A human played this round through in the real app and passed it',
-  flagged: 'A human flagged this round',
-  stale: 'Signed off, but the audio or content has changed since',
-}[s] || '')
-const qaBadgeClass = (s: string) => ({
-  passed: 'border-emerald-700 bg-emerald-900/30 text-emerald-300',
-  flagged: 'border-red-700 bg-red-900/30 text-red-300',
-  stale: 'border-amber-700 bg-amber-900/30 text-amber-300',
-}[s] || 'hidden')
-
-async function loadQaStatus() {
-  try {
-    const { rounds } = await qaGate.rounds(props.courseCode, { from: 1, limit: 500 })
-    const map = new Map<number, string>()
-    for (const r of rounds || []) {
-      if (r.status && r.status !== 'not_signed_off') map.set(r.round_index, r.status)
-    }
-    qaStatus.value = map
-  } catch {
-    qaStatus.value = new Map()
-  }
-}
-onMounted(loadQaStatus)
-watch(() => props.courseCode, loadQaStatus)
 
 // Escape closes any open alignment. Every edit gesture is a single tap that
 // saves on its own, so there is no half-made state left to abandon.

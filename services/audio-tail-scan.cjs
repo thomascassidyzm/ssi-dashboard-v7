@@ -94,8 +94,8 @@ function categoriesOf (item) {
 }
 
 /**
- * The scan's flagged clips as rows for `audio_clip_flags` — the approval gate's
- * own table (ops/sql/20260805-course-qa-gate.sql §1), which already carries
+ * The scan's flagged clips as rows for `audio_clip_flags` — the clip-flag queue's
+ * own table (services/audio-clip-flags.cjs), which already carries
  * `source='detector'`, `detector`, `detector_precision` and `metrics` because a
  * machine flag was always meant to land here.
  *
@@ -418,15 +418,13 @@ module.exports = {
 /**
  * ── SEAMS: what this scan is FOR, beyond being read once ────────────────────
  *
- * 1. THE MANUAL APPROVAL GATE (services/course-qa-gate.cjs). Its `audio_clip_flags`
- *    table already has the columns a machine flag needs — source='detector',
- *    detector, detector_precision, metrics — and only a human can clear one.
- *    `flagRowsFromScan(job)` produces exactly those rows. What does NOT exist is
- *    a write path: the gate raises flags only from a human's round sign-off
- *    (`signOffRound` with flaggedAudioIds), and there is no endpoint anywhere
- *    that inserts a detector flag. Adding one is a single insert plus a route,
- *    and it is a WRITE — deliberately left for whoever owns that decision rather
- *    than smuggled into a read-only scan surface.
+ * 1. THE CLIP-FLAG QUEUE (services/audio-clip-flags.cjs). Its `audio_clip_flags`
+ *    table has the columns a machine flag needs — source='detector', detector,
+ *    detector_precision, metrics — and only a human can clear one.
+ *    `flagRowsFromScan(job)` produces exactly those rows, and POST
+ *    /api/audio/tail-scan/jobs/:id/raise-flags makes them durable. That write is
+ *    deliberately a separate, named act rather than something smuggled into a
+ *    read-only scan surface.
  *
  * 2. THE AUDIO PREVIEW SAMPLER (services/audio-preview-router.cjs GET /sample).
  *    It draws a uniform random sample of a course's clips for a human to listen
