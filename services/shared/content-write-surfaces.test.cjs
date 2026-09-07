@@ -12,6 +12,15 @@
 //     without an editor identity. Add it to content-write-surfaces.cjs.
 //   - the manifest lists a route that no longer writes content → delete the
 //     entry, so the list keeps meaning what it says.
+//
+// WHAT THIS TEST DOES NOT PROVE: that a listed route actually ATTRIBUTES its
+// rows. Listing only guarantees the gate refuses an unidentified caller; a
+// handler that never calls req.contentEdit.record() still writes rows with
+// last_edit_event_id NULL, and the gate's res.on('finish') fallback files an
+// event after the response that nothing points at. That is exactly how the two
+// v2 handlers drifted (610/611 finalize events with no row carrying their id,
+// found 2026-09-07). The join is proven per-handler:
+// services/course-builder/routes/v2-content-edit-attribution.test.cjs.
 
 import { describe, it, expect } from 'vitest'
 

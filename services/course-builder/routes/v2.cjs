@@ -439,6 +439,16 @@ module.exports = function(ctx) {
         });
       }
 
+      // One event for the whole finalize; every seed, LEGO and phrase it writes
+      // carries its id, so the rows can be joined back to who caused them.
+      // Recorded BEFORE the writes — the gate's res.on('finish') fallback fires
+      // after the response, too late for anything to be stamped with it.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: { seed_numbers: [...draftedSeedNumbers], rows: drafts.length },
+          })
+        : null;
+
       // STEP 5: Clean up old LEGOs/phrases for drafted seeds, then write LEGOs only (NO phrases)
       const draftSeedList = [...draftedSeedNumbers];
       if (draftSeedList.length > 0) {
@@ -477,7 +487,8 @@ module.exports = function(ctx) {
             target_text: draft.target_text,
             status: 'released',
             decomposed_at: new Date().toISOString(),
-            version: 1
+            version: 1,
+            last_edit_event_id: eventId
           }, { onConflict: 'course_code,seed_number' });
 
         if (seedError) throw new Error(`Seed ${draft.seed_number} insert failed: ${seedError.message}`);
@@ -499,7 +510,8 @@ module.exports = function(ctx) {
               target_text: lego.target,
               components: lego.components || null,
               status: 'draft',
-              version: 1
+              version: 1,
+              last_edit_event_id: eventId
             }, { onConflict: 'course_code,seed_number,lego_index' });
 
           if (legoError) throw new Error(`LEGO insert failed: ${legoError.message}`);
@@ -572,7 +584,8 @@ module.exports = function(ctx) {
               lego_position: computeLegoPosition(draft.target_text, bestLegoTarget),
               metadata: { format: 'build_use', source: 'seed_sentence', source_seed: draft.seed_number, score: 8 },
               status: 'draft',
-              version: 1
+              version: 1,
+              last_edit_event_id: eventId
             };
             await ctx.supabase.from('course_practice_phrases').insert(usePhraseRow);
             // Build-time phrase decomposition. Non-blocking — see writer module.
@@ -646,6 +659,18 @@ module.exports = function(ctx) {
       const chinese = isChinese(courseCode);
       const errors = [];
       let totalInserted = 0;
+
+      // One event for the whole batch; every phrase row it writes carries its id.
+      // Recorded BEFORE the writes — the gate's res.on('finish') fallback fires
+      // after the response, too late for anything to be stamped with it.
+      const eventId = req.contentEdit
+        ? await req.contentEdit.record({
+            scope: {
+              seed_numbers: [...new Set(phrases.map(p => p.seed_number))],
+              rows: phrases.length,
+            },
+          })
+        : null;
 
       // Cache vocab per seed_number to avoid repeated DB queries within a batch
       const vocabBySeed = new Map();
@@ -831,7 +856,10 @@ module.exports = function(ctx) {
           };
         });
 
-        allPhraseRows = [...allPhraseRows, ...buildRows, ...useRows];
+        // Stamped here rather than per-row builder so the auto-generated M-LEGO
+        // build-up rows are attributed too — they are written by this request.
+        allPhraseRows = [...allPhraseRows, ...buildRows, ...useRows]
+          .map(r => ({ ...r, last_edit_event_id: eventId }));
 
         // 6. Insert phrases
         if (allPhraseRows.length > 0) {
