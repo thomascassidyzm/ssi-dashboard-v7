@@ -33,6 +33,13 @@ export const COPY_DOCS = [
     blurb: 'The seven onboarding messages — five emails and two in-app tips, from the hour someone signs up to the end of the free part. Nothing is sending yet, so the words are still entirely open.',
     seedPath: 'docs/copy-surfaces/onboarding-messages.md',
     sourceRef: 'public.onboarding_messages, flattened by tools/htw-copy/build-onboarding.cjs'
+  },
+  {
+    id: 'schools-mailbox',
+    title: 'When we ask a teacher whether their mailbox reaches them',
+    blurb: 'The card a teacher meets once, right after they create a class or copy a join link, asking them to prove our mail actually reaches them. School gateways quarantine our codes, so the escape to a different address is the part that matters.',
+    seedPath: 'docs/copy-surfaces/schools-mailbox.md',
+    sourceRef: 'ssi-learning-app packages/player-vue/src/locales/eng.json schools.ui.mailboxCheck @ branch cs/358-schools-mailbox-confirm-prompt'
   }
 ];
 
