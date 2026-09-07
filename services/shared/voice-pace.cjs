@@ -54,7 +54,9 @@
 /**
  * The speed floor. Below this, TTS output stops sounding slow and starts
  * sounding broken, and the learner app already holds this same number
- * (MIN_SPEED in packages/core/src/learning/ratePolicy.ts). Two copies of one
+ * (MIN_SPEED in packages/player-vue/src/providers/toSimpleRounds.ts — this
+ * line said ratePolicy.ts until 2026-09-07 and that file has never held the
+ * constant; checked against the live sibling checkout). Two copies of one
  * constant is a bug waiting to happen; when the player half lands, ONE of them
  * must import the other.
  */
