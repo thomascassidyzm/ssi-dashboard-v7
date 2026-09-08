@@ -36,7 +36,7 @@
             <tr v-for="(c, i) in parsed.chunks" :key="i">
               <td class="c-chunk">{{ c.chunk || '—' }}</td>
               <td class="c-arrow text-faint">→</td>
-              <td class="c-target">{{ c.target || '—' }}</td>
+              <td class="c-target bidi-isolate" :dir="dirFor(c.target)">{{ c.target || '—' }}</td>
               <td class="c-class">
                 <span v-if="c.klass" class="klass" :class="'k-' + c.klass" :title="c.label">{{ c.klass }}</span>
                 <span v-else class="klass k-none" title="no class recorded on this chunk">·</span>
@@ -66,6 +66,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 /**
  * THE CHUNK MAPPING A POD LINE CARRIES, MADE REVIEWABLE.
  *

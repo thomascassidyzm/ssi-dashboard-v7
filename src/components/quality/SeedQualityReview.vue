@@ -201,7 +201,7 @@
               <div class="text-xs text-faint mb-1">Source</div>
               <div class="text-ink mb-2">{{ seed.source }}</div>
               <div class="text-xs text-faint mb-1">Target</div>
-              <div class="text-ink">{{ seed.target }}</div>
+              <div class="text-ink bidi-isolate" :dir="dirFor(seed.target)">{{ seed.target }}</div>
             </div>
 
             <!-- LEGO Visualization -->
@@ -228,7 +228,7 @@
               <div class="text-xs text-faint mb-1">Source</div>
               <div class="text-ink mb-2">{{ seed.source }}</div>
               <div class="text-xs text-faint mb-1">Target</div>
-              <div class="text-ink">{{ seed.target }}</div>
+              <div class="text-ink bidi-isolate" :dir="dirFor(seed.target)">{{ seed.target }}</div>
             </div>
 
             <!-- LEGO Visualization -->
@@ -390,6 +390,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import LegoVisualizer from '../LegoVisualizer.vue'

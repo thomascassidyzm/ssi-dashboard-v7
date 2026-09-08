@@ -59,8 +59,8 @@
           <span class="dur">{{ clip.durationMs }}ms</span>
         </div>
         <div class="text">
-          <div class="target">{{ clip.role === 'known' ? clip.known : clip.target }}</div>
-          <div class="gloss">{{ clip.role === 'known' ? clip.target : clip.known }}</div>
+          <div class="target bidi-isolate" :dir="dirFor(clip.role === 'known' ? clip.known : clip.target)">{{ clip.role === 'known' ? clip.known : clip.target }}</div>
+          <div class="gloss bidi-isolate" :dir="dirFor(clip.role === 'known' ? clip.target : clip.known)">{{ clip.role === 'known' ? clip.target : clip.known }}</div>
         </div>
         <p v-if="clip.role === 'known'" class="prompt-note">
           Known-language prompt. The app <b>never</b> slows this — B and C are here for reference only.
@@ -93,6 +93,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 import { ref, onBeforeUnmount } from 'vue'
 import clipData from './germanSeed1SpeedClips.json'
 

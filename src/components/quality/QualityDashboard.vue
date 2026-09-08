@@ -275,7 +275,7 @@
                       </span>
                     </div>
                     <div class="text-ink mb-1">{{ seed.source }}</div>
-                    <div class="text-faint text-sm">{{ seed.target }}</div>
+                    <div class="text-faint text-sm bidi-isolate" :dir="dirFor(seed.target)">{{ seed.target }}</div>
                   </div>
 
                   <!-- Quality Score -->
@@ -426,6 +426,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useCourses } from '../../composables/useCourses'
