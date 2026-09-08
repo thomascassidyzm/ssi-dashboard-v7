@@ -48,6 +48,16 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
       .maybeSingle()
 
     if (existing) {
+      // ASYMMETRY WORTH KNOWING BEFORE YOU CALL THIS: `metadata` MERGES, but `reason`
+      // and `requested_by` are REPLACED. There is one pending row per course, and
+      // courses accumulate several unrelated passes between renders — so a second
+      // caller silently erases the first caller's account of what changed and why,
+      // leaving a render request whose stated reason covers only the latest edit.
+      // (Job #407, 2026-09-08: ara_for_eng's pending row already carried the
+      // over-long-label repair; the Arabic dialect-contamination reason had to be
+      // concatenated onto it by hand to avoid destroying that record.)
+      // If your pass is adding to a row that may already exist, read the current
+      // reason first and append to it rather than passing your own text alone.
       const { error } = await supabase
         .from('audio_pass_requests')
         .update({
