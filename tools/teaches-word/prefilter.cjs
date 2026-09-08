@@ -7,7 +7,7 @@
  *
  * THE TWO SIDES ARE JUDGED BY DIFFERENT RULES, AND THE ASYMMETRY IS THE POINT
  * -------------------------------------------------------------------------
- * Canon `docs/course-methodology-canon.md`:
+ * Canon `course-methodology-canon.md`:
  *
  *   K8 — "The TARGET side stays strict, always. Every target sentence tiles from taught chunks,
  *         no exceptions. K6 and K7 are known-side latitude only."

@@ -1,7 +1,7 @@
 /**
  * The reading instructions — TWO SETS, because the two sides are judged by different rules.
  *
- * The wording of the rules is taken from `docs/course-methodology-canon.md`, quoted rather than
+ * The wording of the rules is taken from `course-methodology-canon.md`, quoted rather than
  * paraphrased, so that what a reader is told and what the canon says cannot drift apart.
  *
  *   K8  "The TARGET side stays strict, always. Every target sentence tiles from taught chunks,
