@@ -46,6 +46,7 @@ You are applying the SaySomethingin method — the thing every phrase a learner 
 - **The known side is a controlled language too** — never use known-language words/structures the learner hasn't been given yet.
 - **Vocabulary is known / target / seed** — never "source".
 - **Work slowly, quality over throughput.** Course content is craftsmanship; don't batch/optimise it into mediocrity.
+- **The canon: `course-methodology-canon.md` at the repo root — read it before you fix anything.** Every decision about course content in this estate is judged against it: what a valid seed, LEGO and practice phrase is, which rules are HARD and which are judgement, what a fix obliges you to fix as well, and what is Kai's call rather than yours. It carries Kai's and Tom's rulings as they are made, so it is the live rulebook, not a summary of one.
 - Doctrine + worked examples: `ralph-methodology.md` (decomposition, phrases, tiers) and `synonym-choice-architecture.md` (translation-choice, applied BEFORE decomposition). Read these before authoring/regenerating content.
 
 ### Approval gates (cost / irreversibility)
@@ -106,7 +107,7 @@ Flow: Dashboard → Supabase/S3 → Learning App → Learner.
 
 - [ ] Synced to `origin/main`, read `WORKLIST.md`, claimed your item
 - [ ] Know the methodology rails + approval gates above
-- [ ] Read `ralph-methodology.md` / `synonym-choice-architecture.md` if touching content
+- [ ] Read `course-methodology-canon.md` (and `ralph-methodology.md` / `synonym-choice-architecture.md`) if touching content
 - [ ] Verified any "fact" you're relying on against the actual code
 - [ ] Files going to the right place (not root; `scripts/` gitignored)
 
