@@ -80,9 +80,49 @@
  *
  * Casting writes voice_language_roles and NOTHING else — no render is
  * triggered, no course_audio row is touched, no course voice_config is written.
+ *
+ * ── THE MODE IS THE LANGUAGE (Tom, 2026-09-08) ─────────────────────────────
+ *
+ *   "I want to be able to click on a language, audition available voices, per
+ *    language - assign a voice to male primary, male backup, female primary,
+ *    female backup, guide and all that from a single place … not to have to
+ *    repeat it 4/5 times … the mode I am in is the language - and I want to be
+ *    able to satisfy that whole language in one go basically."
+ *
+ * The page used to render THE WHOLE CANDIDATE LIST INSIDE EVERY EMPTY SLOT —
+ * six duplicated lists, six scrolls, six immediate writes. That is what "it's a
+ * ball ache" was. Three things changed and nothing else:
+ *
+ *   ONE LIST PER LANGUAGE. Auditioning is a property of the language, not of a
+ *   slot: the same voices, the same line, heard once. The list is now drawn
+ *   once, under the cast.
+ *
+ *   ASSIGNMENT IS AN ACT ON A VOICE. Each row carries the six targets — M·pri,
+ *   M·bak, F·pri, F·bak, G·pri, G·bak — so a voice goes somewhere without
+ *   navigating anywhere, and a target a voice cannot take (wrong gender, not a
+ *   guide candidate, human-recorded refusal) is not drawn at all.
+ *
+ *   IT SAVES ONCE. Assignments and clears are STAGED in local state, drawn as
+ *   staged, and committed by one press — the rules and the ordering live in
+ *   stagedCast.js beside this file, with the test that pins them. A slot the
+ *   server refuses (the human-recorded guard, the consent block — both 409s) is
+ *   named in the report and LEFT STAGED, so a refusal can never hide behind the
+ *   word "saved".
+ *
+ * ALL SIX SLOTS ARE IN ONE GRID, and the guide's two are still their own kind
+ * of slot: their own label, their own note underneath, and still never counted
+ * toward complete/partial/uncast. One grid is what "satisfy that whole language
+ * in one go" means; the rule above it is untouched.
+ *
+ * NOTHING WAS DELETED TO GET TIDY. The human-recorded warning, the skipped
+ * courses, the consent badges, the pace readouts, the preview-clip generator
+ * and the "castable, not previewable" reasons are all still here — they moved
+ * BELOW the casting controls, or behind one disclosure, so the first thing
+ * under a language's name is the cast rather than four paragraphs of prose.
  */
 import { ref, computed, onMounted } from 'vue'
 import { api, clipUrl } from './labApi'
+import { planCast, commitCast, saveSentence } from './stagedCast'
 import CandidateVoices from './CandidateVoices.vue'
 import ConsentStep from './ConsentStep.vue'
 import ConsentBadge from './ConsentBadge.vue'
@@ -284,6 +324,11 @@ async function play (lang, voiceId) {
 /** Opening a language loads its samples once; closing stops whatever is sounding. */
 function toggleLanguage (lang) {
   if (audio) { audio.pause(); audio = null; playing.value = '' }
+  // An unsaved cast belongs to the language it was staged in and must never
+  // follow you into another row, where its slot keys would mean someone else's
+  // voices. Closing a language drops what was never saved.
+  staged.value = {}
+  saveReport.value = null
   if (expanded.value === lang.code) { expanded.value = null; return }
   expanded.value = lang.code
   if (!samplesByLang.value[lang.code]) loadSamples(lang)
@@ -1492,44 +1537,154 @@ function humanRowLabel (lang) {
 /** What the last cast did NOT reach, keyed by language, so it survives the reload. */
 const skipped = ref({})
 
+// ── STAGING: the whole language, then one save ─────────────────────────────
+//
+// Tom, 2026-09-08: "not to have to repeat it 4/5 times". Nothing here writes.
+// `staged` is slotKey -> { action, slot, voiceId, voiceName, label }, and it is
+// emptied whenever the open language changes — an unsaved cast must never
+// follow you into a different language's row.
+const staged = ref({})
+const saving = ref(false)
+const saveReport = ref(null)   // { landed, failed, skipped, sentence } after a press
+
+/** Every slot of a language, in the page's own reading order. */
+function allSlots (lang) {
+  return [...slotsOf(lang), ...guideSlotsOf(lang)]
+}
+
+/** The words for a slot, as Tom reads them: "male · primary", "guide · backup". */
+function slotLabel (slot) {
+  const who = slot.slot === 'guide' ? 'guide' : (slot.gender === 'm' ? 'male' : 'female')
+  return `${who} · ${slot.rankName}`
+}
+
+/** The four-character version, for a button on a voice row. */
+function slotShort (slot) {
+  const who = slot.slot === 'guide' ? 'G' : (slot.gender === 'm' ? 'M' : 'F')
+  return `${who}·${String(slot.rankName || '').slice(0, 3)}`
+}
+
+function stagedAt (lang, slot) { return staged.value[slotKey(lang, slot)] || null }
+
+const stagedCount = computed(() => Object.keys(staged.value).length)
+
 /**
- * Cast a voice into a slot.
+ * WHAT THIS SLOT WILL HOLD when the save lands, and whether that is saved yet.
+ * `state` is 'saved' | 'staged' | 'clearing' | 'empty' — drawn, never coloured.
+ */
+function slotView (lang, slot) {
+  const s = stagedAt(lang, slot)
+  if (s && s.action === 'cast') return { state: 'staged', voiceId: s.voiceId, voiceName: s.voiceName, was: slot.filled ? slot.voiceName : '' }
+  if (s && s.action === 'clear') return { state: 'clearing', voiceId: slot.voiceId, voiceName: slot.voiceName }
+  if (slot.filled) return { state: 'saved', voiceId: slot.voiceId, voiceName: slot.voiceName }
+  return { state: 'empty' }
+}
+
+/**
+ * Can this voice take this slot? The three refusals that already existed, in
+ * one place: a phrase slot wants the right gender, a guide slot wants a voice
+ * the guide list offers, and a language whose every course is human-recorded
+ * refuses phrase casting outright (Tom, 2026-08-31 — a visible refusal beats a
+ * quiet one, so the button is not drawn rather than drawn and 409'd).
+ */
+function canTake (lang, slot, c) {
+  if (slot.slot === 'guide') return (lang.guide?.candidates || []).some((g) => g.voiceId === c.voiceId)
+  if (humanBlocks(lang, 'phrase')) return false
+  if (!(lang.candidates || []).some((p) => p.voiceId === c.voiceId)) return false
+  return !c.gender || c.gender === slot.gender
+}
+
+/** The targets drawn on one voice's row, with what each one currently holds. */
+function targetsFor (lang, c) {
+  return allSlots(lang).filter((slot) => canTake(lang, slot, c)).map((slot) => {
+    const view = slotView(lang, slot)
+    const holds = view.voiceName ? `${view.voiceName}${view.state === 'staged' ? ' (staged)' : view.state === 'clearing' ? ' (clearing)' : ''}` : 'empty'
+    return {
+      key: slotKey(lang, slot),
+      short: slotShort(slot),
+      assigned: view.voiceId === c.voiceId && view.state !== 'clearing',
+      title: `${slotLabel(slot)} — holds: ${holds}. One tap stages this voice here; the cast saves on one press above.`,
+    }
+  })
+}
+
+/**
+ * Stage a voice into a slot. WRITES NOTHING.
  *
  * ── NO CONSENT, NO CAST (Tom's ruling, 2026-08-31) ──────────────────────────
  *
  *   "we are never going to use a voice without consent"
  *
- * This used to warn and offer "Cast it anyway?". That was the flagged default
- * of the day before — the comment here said in as many words that a hard block
- * "is Tom's call to make and he has not made it". He has made it. There is now
- * no path through: the picker draws no Cast button for a voice nobody has
- * consented to, and this refuses one anyway, because a stale tab still holds
- * the old markup. The endpoint refuses it a third time, which is the one that
- * actually counts.
- *
- * An authorised voice casts in one tap exactly as before, with no dialog at
- * all — a guard on every cast is a guard people learn to click through.
+ * This used to warn and offer "Cast it anyway?". There is now no path through:
+ * the picker draws no target buttons for a voice nobody has consented to, this
+ * refuses one anyway because a stale tab still holds the old markup, and the
+ * endpoint refuses it a third time — which is the one that actually counts.
  */
-async function cast (lang, slot, voiceId) {
-  if (!voiceId) return
+function assign (lang, key, voiceId) {
+  const slot = allSlots(lang).find((s) => slotKey(lang, s) === key)
+  if (!slot || !voiceId) return
   const candidate = findCandidate(lang, slot, voiceId)
   const k = candidate?.consent
   if (k && k.aboutAPerson && !k.authorised) {
     error.value = `${k.castWarning || k.summary} Record consent for this voice — the "consent…" button beside it — and then cast it.`
     return
   }
-  busy.value = slotKey(lang, slot)
-  try {
-    const out = await api.castSlot(lang.code, {
-      slot: slot.slot || 'phrase', gender: slot.gender, rank: slot.rank, voiceId,
-    })
-    // THE SKIPPED COURSES ARE THE POINT. A cast that quietly reached nine of
-    // eleven courses and said "saved" is the failure this guard exists to
-    // prevent, so the answer is kept and shown beside the slot.
-    skipped.value = { ...skipped.value, [lang.code]: (out && out.skipped) || [] }
-    await load()
-  } catch (e) { error.value = e.message }
-  busy.value = ''
+  const view = slotView(lang, slot)
+  // Tapping the target this voice is already in takes it back out again: an
+  // assignment must be undoable by the same tap that made it.
+  if (view.voiceId === voiceId && view.state !== 'clearing') { unstage(lang, slot); return }
+  staged.value = {
+    ...staged.value,
+    [key]: { action: 'cast', slot, voiceId, voiceName: candidate?.name || voiceId, label: slotLabel(slot) },
+  }
+  saveReport.value = null
+}
+
+/** Stage a slot empty, or drop a staged assignment on it. Still writes nothing. */
+function stageClear (lang, slot) {
+  const key = slotKey(lang, slot)
+  if (staged.value[key]) { unstage(lang, slot); return }
+  if (!slot.filled) return
+  staged.value = { ...staged.value, [key]: { action: 'clear', slot, label: slotLabel(slot) } }
+  saveReport.value = null
+}
+
+function unstage (lang, slot) {
+  const next = { ...staged.value }
+  delete next[slotKey(lang, slot)]
+  staged.value = next
+}
+
+function discardStaged () { staged.value = {}; saveReport.value = null }
+
+/**
+ * THE ONE PRESS. Ordering, per-slot outcomes and the refusal rule live in
+ * stagedCast.js; this is the wiring and what the page does with the answer.
+ *
+ * A refused slot STAYS STAGED — it is still an unsaved intention, and clearing
+ * it here would make the screen agree with a save that did not happen.
+ */
+async function saveCast (lang) {
+  const order = allSlots(lang).map((s) => slotKey(lang, s))
+  const plan = planCast(staged.value, order)
+  if (!plan.length) return
+  saving.value = true
+  error.value = ''
+  saveReport.value = null
+  const out = await commitCast(plan, {
+    castSlot: (body) => api.castSlot(lang.code, body),
+    clearSlot: (body) => api.clearSlot(lang.code, body),
+  })
+  // THE SKIPPED COURSES ARE THE POINT. A cast that quietly reached nine of
+  // eleven courses and said "saved" is the failure this guard exists to
+  // prevent, so the server's own answer is kept and shown with the report.
+  skipped.value = { ...skipped.value, [lang.code]: out.skipped }
+  const keep = {}
+  for (const f of out.failed) if (staged.value[f.key]) keep[f.key] = staged.value[f.key]
+  staged.value = keep
+  saveReport.value = { ...out, sentence: saveSentence(out) }
+  await load()
+  saving.value = false
 }
 
 /**
@@ -1617,14 +1772,9 @@ function referenceTitle (ref) {
   ].join(' · ')
 }
 
-async function clear (lang, slot) {
-  busy.value = slotKey(lang, slot)
-  try {
-    await api.clearSlot(lang.code, { slot: slot.slot || 'phrase', gender: slot.gender, rank: slot.rank })
-    await load()
-  } catch (e) { error.value = e.message }
-  busy.value = ''
-}
+// The DELETE now runs from saveCast() with every other change of this language,
+// so `clear` as an immediate write no longer exists: `stageClear` above stages
+// it. One save, one report, one reload.
 
 /**
  * Candidates for a slot. A PHRASE slot wants the right gender, or one unknown.
@@ -1639,6 +1789,25 @@ function langByCode (code) {
 function candidatesFor (lang, slot) {
   if (slot.slot === 'guide') return lang.guide?.candidates || []
   return (lang.candidates || []).filter((c) => !c.gender || c.gender === slot.gender)
+}
+
+/**
+ * THE ONE LIST. Every voice on offer for this language, phrase and guide alike,
+ * de-duplicated and drawn ONCE — the gender filter that used to select a slot's
+ * candidates now decides which TARGET BUTTONS a row carries (canTake), rather
+ * than which rows exist, because Tom auditions the language's voices, not a
+ * slot's. Phrase candidates first, in the order the server sent them; the
+ * guide-only voices follow.
+ */
+function auditionList (lang) {
+  const seen = new Set()
+  const out = []
+  for (const c of [...(lang.candidates || []), ...(lang.guide?.candidates || [])]) {
+    if (seen.has(c.voiceId)) continue
+    seen.add(c.voiceId)
+    out.push(c)
+  }
+  return out
 }
 </script>
 
@@ -2121,46 +2290,226 @@ function candidatesFor (lang, slot) {
                 <p v-if="lang.knownOnly" class="vl-note vl-muted">Known side only — guide voice, no phrase voices.</p>
                 <p v-else-if="lang.human" class="vl-note vl-muted">Human-recorded — no TTS provider.</p>
 
-                <!-- ── WHAT A CAST HERE WILL NOT SPEAK OVER ─────────────────
-                     Tom's ruling, 2026-08-31: name the human-recorded courses
-                     ON SCREEN, before Cast is tapped. Shown for every language
-                     that has any, including the ones whose status pill says
-                     nothing about it. -->
-                <p
-                  v-if="humanOf(lang, 'phrase').total || humanOf(lang, 'guide').total"
-                  class="vl-note vl-note-human"
-                >
-                  <strong v-if="lang.humanRecorded && lang.humanRecorded.blocked">
-                    Casting refused — every course here is human-recorded:
-                  </strong>
-                  <strong v-else>Human-recorded, a cast will not reach:</strong>
-                  <span
-                    v-for="c in [...humanOf(lang, 'phrase').courses, ...humanOf(lang, 'guide').courses]"
-                    :key="c.course + c.roles.join()"
-                    class="ui-pill ui-present vl-human-course"
-                    :title="c.reasons.join(' ')"
-                  ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}<template v-if="c.clips"> · {{ c.clips.toLocaleString('en-GB') }} clips</template></span>
-                </p>
+                <!-- ══ THE CAST — six slots, one glance, one save ═══════════
+                     Tom, 2026-09-08: "the mode I am in is the language - and I
+                     want to be able to satisfy that whole language in one go".
+                     So the first thing under a language's name is its cast: the
+                     six targets, what each one holds, what is about to change,
+                     and ONE button. Everything that used to sit here — the
+                     human-recorded warning, the skipped courses, the preview
+                     generator — is still on the page, below this block or
+                     behind one disclosure. Nothing was dropped to get tidy. -->
+                <div class="vl-cast">
+                  <div class="vl-cast-head">
+                    <span class="vl-slot-group">The cast</span>
+                    <span v-if="stagedCount" class="vl-muted">{{ stagedCount }} unsaved change{{ stagedCount === 1 ? '' : 's' }}</span>
+                    <span v-else class="vl-muted">saved — nothing staged</span>
+                    <span class="vl-cast-actions">
+                      <button
+                        class="ui-sort-btn vl-save"
+                        :disabled="!stagedCount || saving"
+                        @click="saveCast(lang)"
+                      >{{ saving ? 'Saving…' : `Save cast${stagedCount ? ` — ${stagedCount} slot${stagedCount === 1 ? '' : 's'}` : '' }` }}</button>
+                      <button
+                        v-if="stagedCount && !saving"
+                        class="ui-sort-btn"
+                        title="Drop the staged changes and leave the saved cast exactly as it is"
+                        @click="discardStaged()"
+                      >Discard</button>
+                    </span>
+                  </div>
 
-                <!-- WHAT THE LAST CAST ACTUALLY SKIPPED. The server's own
-                     answer, kept after the reload, so "saved" never stands on
-                     its own when it did not reach everything. -->
-                <p v-if="(skipped[lang.code] || []).length" class="vl-note vl-note-human">
-                  <strong>Saved · skipped {{ skipped[lang.code].length }} human-recorded:</strong>
-                  <span
-                    v-for="c in skipped[lang.code]"
-                    :key="'skip:' + c.course + c.roles.join()"
-                    class="ui-pill ui-present vl-human-course"
-                    :title="c.reasons.join(' ')"
-                  ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}</span>
+                  <!-- A REFUSAL THE EYE CAN SEE (Tom, 2026-08-31). Where every
+                       course a phrase slot could reach is human-recorded, the
+                       phrase targets are not drawn at all — not left tappable
+                       with a 409 waiting behind them — and the reason is here
+                       rather than discovered afterwards. -->
+                  <p v-if="humanBlocks(lang, 'phrase')" class="vl-note vl-note-human">
+                    <strong>Phrase casting refused — every course here is human-recorded.</strong>
+                    The guide slots still cast.
+                  </p>
+
+                  <div class="vl-cast-grid">
+                    <div
+                      v-for="slot in allSlots(lang)"
+                      :key="slotKey(lang, slot)"
+                      class="vl-slot"
+                      :class="{ 'vl-slot-guide': slot.slot === 'guide', 'is-staged': !!stagedAt(lang, slot) }"
+                    >
+                      <div class="vl-slot-label">
+                        {{ slotLabel(slot) }}
+                        <span class="vl-slot-short">{{ slotShort(slot) }}</span>
+                      </div>
+
+                      <div v-if="slotView(lang, slot).state !== 'empty'" class="vl-slot-filled">
+                        <span
+                          class="vl-voice"
+                          :class="{ 'is-going': slotView(lang, slot).state === 'clearing' }"
+                        >{{ slotView(lang, slot).voiceName }}</span>
+                        <!-- STAGED IS VISIBLY UNSAVED. Dashed, and it says what
+                             it is replacing, because a screen that draws an
+                             intention the same as a fact is how a cast gets
+                             believed before it lands. -->
+                        <span
+                          v-if="slotView(lang, slot).state === 'staged'"
+                          class="ui-pill ui-absent vl-stagemark"
+                          :title="slotView(lang, slot).was ? `Not saved yet — replaces ${slotView(lang, slot).was}` : 'Not saved yet'"
+                        >staged<template v-if="slotView(lang, slot).was"> · was {{ slotView(lang, slot).was }}</template></span>
+                        <span
+                          v-else-if="slotView(lang, slot).state === 'clearing'"
+                          class="ui-pill ui-absent vl-stagemark"
+                          title="Not saved yet — this slot empties on the next save"
+                        >clearing</span>
+
+                        <!-- The facts below belong to the voice that is ACTUALLY
+                             cast today, so they are drawn from the saved slot
+                             and not from the staged intention. -->
+                        <template v-if="slot.filled">
+                          <span class="vl-kind">{{ slot.kind }}</span>
+                          <span v-if="slot.active === false" class="ui-pill ui-absent">voice inactive</span>
+                          <!-- CONSENT TRAVELS ONTO THE CAST SLOT. This is the one
+                               place a voice is actually in front of learners, so it
+                               is the one place "who authorised this?" most has to be
+                               answerable at a glance. Drawn only for voices the
+                               question is about — a vendor's stock voice has nobody
+                               behind it to ask. -->
+                          <ConsentBadge v-if="slot.consent && slot.consent.aboutAPerson" :consent="slot.consent" />
+                          <button
+                            v-if="slot.consent && slot.consent.aboutAPerson"
+                            class="ui-sort-btn vl-consent-btn"
+                            title="Record who authorised this voice, and when"
+                            @click="openConsent(slot.voiceId, slotKey(lang, slot))"
+                          >consent…</button>
+                          <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
+                               ramp multiplies, so 0.8x of a brisk voice and 0.8x of
+                               a measured one are nowhere near each other. -->
+                          <span
+                            v-if="slot.pace && slot.pace.effective !== null"
+                            class="vl-pace"
+                            :class="paceClass(slot.pace.effective)"
+                            :title="paceTitle(slot.pace)"
+                          >{{ slot.pace.effective.toFixed(2) }}x pace</span>
+                          <span
+                            v-if="slot.pace && paceSpeeds(slot.pace)"
+                            class="vl-pace vl-speeds"
+                            :title="speedsTitle(slot.pace)"
+                          >{{ slot.pace.easy.toFixed(2) }} easy / {{ slot.pace.fast.toFixed(2) }} fast</span>
+                          <span v-else class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
+                          <!-- The nudge writes ONE column immediately and is not
+                               part of the cast: it corrects a voice that is
+                               already speaking, so batching it behind Save would
+                               make an ear-correction wait on an unrelated cast. -->
+                          <input
+                            v-if="slot.pace && slot.pace.ratio !== null"
+                            class="ui-input vl-nudge"
+                            type="number" step="0.01" min="0.5" max="2"
+                            :value="slot.pace.nudge ?? ''"
+                            placeholder="nudge"
+                            title="Your correction, multiplied on top of the measurement. Saved on its own, immediately. Blank clears it."
+                            :disabled="busy === slotKey(lang, slot)"
+                            @change="nudge(lang, slot, $event.target.value)"
+                          />
+                        </template>
+
+                        <button
+                          class="ui-sort-btn vl-slot-clear"
+                          :disabled="saving"
+                          :title="stagedAt(lang, slot) ? 'Take this staged change back out' : 'Stage this slot empty — it clears on the next save'"
+                          @click="stageClear(lang, slot)"
+                        >{{ stagedAt(lang, slot) ? 'Undo' : 'Clear' }}</button>
+
+                        <!-- A CAST VOICE CAN LOSE ITS CONSENT TOO. Withdrawal is
+                             the case: the panel opens under the slot it was
+                             tapped in, exactly as it does in a candidate list. -->
+                        <template v-if="slot.filled">
+                          <ConsentStep
+                            v-if="consentOpen(slot.voiceId, slotKey(lang, slot))"
+                            :voice-id="slot.voiceId"
+                            :person="consentCurrent?.person || ''"
+                            :reason="(slot.consent) ? (slot.consent).castWarning || '' : ''"
+                            :language="lang.code"
+                            :clips="clipsOf(slot.voiceId)"
+                            :playing="playing"
+                            allow-refusal
+                            @recorded="consentRecorded"
+                            @cancel="closeConsent()"
+                            @refuse="consentDecide"
+                            @hear="hearVoice(lang, { voiceId: slot.voiceId, lineIndex: $event })"
+                          />
+                        </template>
+                      </div>
+
+                      <div v-else class="vl-slot-vacant vl-muted">
+                        empty — tap <b>{{ slotShort(slot) }}</b> on a voice below
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- THE GUIDE IS STILL ITS OWN KIND OF SLOT (Tom, 2026-08-29).
+                       It shares the grid so the whole language can be satisfied
+                       in one go, and it still never counts toward the status
+                       above — which is what this line says out loud. -->
+                  <p class="vl-note vl-muted vl-guide-sub">
+                    Guide — the instructions and encouragements, cast against
+                    {{ langName(lang) }} as a KNOWN language ·
+                    <template v-if="lang.knownCourses">{{ lang.knownCourses }} course{{ lang.knownCourses === 1 ? '' : 's' }} taught from it</template>
+                    <template v-else>no course is taught from it yet</template>
+                    · never counted in the status above
+                    <template v-if="lang.guide?.inUse?.length">
+                      · speaking now:
+                      <span v-for="u in lang.guide.inUse" :key="u.voiceId" class="ui-pill ui-present">
+                        {{ u.name }} · {{ u.clips }} clip{{ u.clips === 1 ? '' : 's' }}
+                      </span>
+                    </template>
+                  </p>
+
+                  <!-- WHAT THE PRESS ACTUALLY DID, SLOT BY SLOT. A partial
+                       failure names which slots landed and which did not, and a
+                       refused slot stays staged above — the word "saved" is
+                       never allowed to stand on its own. -->
+                  <div v-if="saveReport" class="vl-save-report">
+                    <p class="vl-note">
+                      <strong>{{ saveReport.landed.length }} saved</strong>
+                      <span v-for="l in saveReport.landed" :key="'ok:' + l.key" class="ui-pill ui-present">
+                        {{ l.label }}<template v-if="l.action === 'clear'"> · cleared</template><template v-else> · {{ l.voiceName }}</template>
+                      </span>
+                    </p>
+                    <p v-if="saveReport.failed.length" class="vl-note vl-note-human">
+                      <strong>{{ saveReport.failed.length }} refused — still staged:</strong>
+                      <span v-for="f in saveReport.failed" :key="'no:' + f.key" class="ui-pill ui-absent" :title="f.message">
+                        {{ f.label }} — {{ f.message }}
+                      </span>
+                    </p>
+                  </div>
+
+                  <!-- WHAT THE LAST SAVE SKIPPED. The server's own answer, kept
+                       after the reload, so "saved" never stands on its own when
+                       it did not reach everything. -->
+                  <p v-if="(skipped[lang.code] || []).length" class="vl-note vl-note-human">
+                    <strong>Saved · skipped {{ skipped[lang.code].length }} human-recorded:</strong>
+                    <span
+                      v-for="c in skipped[lang.code]"
+                      :key="'skip:' + c.course + c.roles.join()"
+                      class="ui-pill ui-present vl-human-course"
+                      :title="c.reasons.join(' ')"
+                    ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}</span>
+                  </p>
+                </div>
+
+                <!-- ══ AUDITION — ONE LIST, ONCE ════════════════════════════
+                     This list used to be rendered inside EVERY empty slot: six
+                     copies of the same voices, six scrolls, and Tom "repeating
+                     it 4/5 times". Auditioning is a property of the LANGUAGE —
+                     the same voices, the same line — so it is drawn once, and
+                     each row says where that voice goes. -->
+                <p class="vl-slot-group vl-audition-head">
+                  Audition — {{ auditionList(lang).length }} voice{{ auditionList(lang).length === 1 ? '' : 's' }} for {{ langName(lang) }}
                 </p>
 
                 <!-- ── WHAT YOU ARE LISTENING TO, AND WHOSE IT IS ───────
                      Tom's correction, 2026-08-31: VOICE is per language, TEXT
                      is per course. So the line is shown WITH the course it came
-                     from, never as "the" line for the language, and the sentence
-                     below says out loud that casting decides who speaks and not
-                     what is said. -->
+                     from, never as "the" line for the language. -->
                 <div class="vl-sample-line">
                   <template v-if="lineFor(lang)">
                     <p class="vl-line-text" :lang="lang.code">{{ lineFor(lang).text }}</p>
@@ -2176,7 +2525,7 @@ function candidatesFor (lang, slot) {
                   <p v-else class="vl-muted">No course line here — nothing to audition.</p>
 
                   <!-- GENERATE PREVIEW CLIPS — one tap on the language, every
-                       voice above, the SAME line for all of them. The only
+                       voice below, the SAME line for all of them. The only
                        button on this screen that spends money, and it says what
                        it costs before it is pressed. -->
                   <p v-if="previewPlan(lang).n" class="vl-prepare">
@@ -2210,278 +2559,70 @@ function candidatesFor (lang, slot) {
                   </p>
                 </div>
 
-                <!-- PHRASE VOICES — the course material. These are the two
-                     that make a language complete. -->
-                <p class="vl-slot-group">Phrase voices</p>
-                <div class="vl-slots">
-                  <div v-for="slot in slotsOf(lang)" :key="slotKey(lang, slot)" class="vl-slot">
-                    <div class="vl-slot-label">
-                      {{ slot.gender === 'm' ? 'male' : 'female' }} · {{ slot.rankName }}
-                    </div>
+                <CandidateVoices
+                  :candidates="auditionList(lang)"
+                  :samples="samplesFor(lang)"
+                  :unrenderable-why="(samplesByLang[lang.code] || {}).unrenderableWhy || {}"
+                  :playing="playing"
+                  :busy="saving"
+                  :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
+                  :pace-suffix="paceSuffix"
+                  :targets-for="(c) => targetsFor(lang, c)"
+                  no-target-text="no slot here"
+                  :list-key="lang.code + ':audition'"
+                  :open-voice="openVoice"
+                  :open-in="openIn"
+                  :consent-for="consentFor"
+                  :consent-in="consentIn"
+                  :open-clips="openClips"
+                  :rendering="renderingClip"
+                  empty-text="no voice in the estate declares this language"
+                  @play="play(lang, $event)"
+                  @assign="assign(lang, $event.key, $event.voiceId)"
+                  @open="toggleVoice(lang, $event, lang.code + ':audition')"
+                  @hear="hearVoice(lang, $event)"
+                  @consent="openConsent($event, lang.code + ':audition')"
+                >
+                  <template #consent="{ voiceId }">
+                    <ConsentStep
+                      v-if="consentOpen(voiceId, lang.code + ':audition')"
+                      :voice-id="voiceId"
+                      :person="consentCurrent?.person || ''"
+                      :reason="(consentCurrent) ? (consentCurrent).castWarning || '' : ''"
+                      :language="lang.code"
+                      :clips="clipsOf(voiceId)"
+                      :playing="playing"
+                      allow-refusal
+                      @recorded="consentRecorded"
+                      @cancel="closeConsent()"
+                      @refuse="consentDecide"
+                      @hear="hearVoice(lang, { voiceId, lineIndex: $event })"
+                    />
+                  </template>
+                </CandidateVoices>
 
-                    <div v-if="slot.filled" class="vl-slot-filled">
-                      <span class="vl-voice">{{ slot.voiceName }}</span>
-                      <span class="vl-kind">{{ slot.kind }}</span>
-                      <span v-if="slot.active === false" class="ui-pill ui-absent">voice inactive</span>
-                      <!-- CONSENT TRAVELS ONTO THE CAST SLOT. This is the one
-                           place a voice is actually in front of learners, so it
-                           is the one place "who authorised this?" most has to be
-                           answerable at a glance. Drawn only for voices the
-                           question is about — a vendor's stock voice has nobody
-                           behind it to ask. -->
-                      <ConsentBadge v-if="slot.consent && slot.consent.aboutAPerson" :consent="slot.consent" />
-                      <button
-                        v-if="slot.consent && slot.consent.aboutAPerson"
-                        class="ui-sort-btn vl-consent-btn"
-                        title="Record who authorised this voice, and when"
-                        @click="openConsent(slot.voiceId, slotKey(lang, slot))"
-                      >consent…</button>
-                      <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
-                           ramp multiplies, so 0.8x of a brisk voice and 0.8x of
-                           a measured one are nowhere near each other. This says
-                           how brisk THIS voice is relative to the other voices
-                           in its language, measured from clips already rendered
-                           at 1.0x — and lets an ear correct it. -->
-                      <span
-                        v-if="slot.pace && slot.pace.effective !== null"
-                        class="vl-pace"
-                        :class="paceClass(slot.pace.effective)"
-                        :title="paceTitle(slot.pace)"
-                      >{{ slot.pace.effective.toFixed(2) }}x pace</span>
-                      <span
-                        v-if="slot.pace && paceSpeeds(slot.pace)"
-                        class="vl-pace vl-speeds"
-                        :title="speedsTitle(slot.pace)"
-                      >{{ slot.pace.easy.toFixed(2) }} easy / {{ slot.pace.fast.toFixed(2) }} fast</span>
-                      <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
-                      <input
-                        v-if="slot.pace && slot.pace.ratio !== null"
-                        class="ui-input vl-nudge"
-                        type="number" step="0.01" min="0.5" max="2"
-                        :value="slot.pace.nudge ?? ''"
-                        placeholder="nudge"
-                        title="Your correction, multiplied on top of the measurement. Blank clears it. A re-measurement never overwrites this."
-                        :disabled="busy === slotKey(lang, slot)"
-                        @change="nudge(lang, slot, $event.target.value)"
-                      />
-                      <button
-                        class="ui-sort-btn"
-                        :disabled="busy === slotKey(lang, slot)"
-                        @click="clear(lang, slot)"
-                      >Clear</button>
-                      <!-- A CAST VOICE CAN LOSE ITS CONSENT TOO. Withdrawal is
-                           the case: the panel opens under the slot it was
-                           tapped in, exactly as it does in a candidate list. -->
-                      <ConsentStep
-                        v-if="consentOpen(slot.voiceId, slotKey(lang, slot))"
-                        :voice-id="slot.voiceId"
-                        :person="consentCurrent?.person || ''"
-                        :reason="(slot.consent) ? (slot.consent).castWarning || '' : ''"
-                        :language="lang.code"
-                        :clips="clipsOf(slot.voiceId)"
-                        :playing="playing"
-                        allow-refusal
-                        @recorded="consentRecorded"
-                        @cancel="closeConsent()"
-                        @refuse="consentDecide"
-                        @hear="hearVoice(lang, { voiceId: slot.voiceId, lineIndex: $event })"
-                      />
-                    </div>
-
-                    <div v-else class="vl-slot-empty">
-                      <!-- A REFUSAL THE EYE CAN SEE. Where every course this
-                           slot could reach is human-recorded, the candidate
-                           list is replaced by the reason — not left tappable
-                           with a 409 waiting behind it (Tom, 2026-08-31). -->
-                      <p v-if="humanBlocks(lang, 'phrase')" class="vl-muted vl-slot-refused">
-                        Not castable — human-recorded.
-                      </p>
-                      <CandidateVoices
-                        v-else
-                        :candidates="candidatesFor(lang, slot)"
-                        :samples="samplesFor(lang)"
-                        :unrenderable-why="(samplesByLang[lang.code] || {}).unrenderableWhy || {}"
-                        :playing="playing"
-                        :busy="busy === slotKey(lang, slot)"
-                        :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
-                        :pace-suffix="paceSuffix"
-                        :list-key="slotKey(lang, slot)"
-                        :open-voice="openVoice"
-                        :open-in="openIn"
-                        :consent-for="consentFor"
-                        :consent-in="consentIn"
-                        :open-clips="openClips"
-                        :rendering="renderingClip"
-                        @play="play(lang, $event)"
-                        @cast="cast(lang, slot, $event)"
-                        @open="toggleVoice(lang, $event, slotKey(lang, slot))"
-                        @hear="hearVoice(lang, $event)"
-                        @consent="openConsent($event, slotKey(lang, slot))"
-                      >
-                        <template #consent="{ voiceId }">
-                          <ConsentStep
-                            v-if="consentOpen(voiceId, slotKey(lang, slot))"
-                            :voice-id="voiceId"
-                            :person="consentCurrent?.person || ''"
-                            :reason="(consentCurrent) ? (consentCurrent).castWarning || '' : ''"
-                            :language="lang.code"
-                            :clips="clipsOf(voiceId)"
-                            :playing="playing"
-                            allow-refusal
-                            @recorded="consentRecorded"
-                            @cancel="closeConsent()"
-                            @refuse="consentDecide"
-                            @hear="hearVoice(lang, { voiceId, lineIndex: $event })"
-                          />
-                        </template>
-                      </CandidateVoices>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- ── GUIDE VOICE — a different animal, so a separate block ──
-                     Tom, 2026-08-29: the instructions and encouragements "are
-                     not linked to a course per se - they are linked to every
-                     course with the same known language, because these are
-                     messages to the learner". Cast against this language as a
-                     KNOWN language, one voice not a pair, and NEVER counted
-                     toward the status above. -->
-                <p class="vl-slot-group vl-guide-group">
-                  Guide voice — instructions
-                  <span class="vl-muted vl-guide-sub">
-                    <template v-if="lang.knownCourses">{{ lang.knownCourses }} course{{ lang.knownCourses === 1 ? '' : 's' }} taught from {{ langName(lang) }}</template>
-                    <template v-else>no course is taught from {{ langName(lang) }} yet</template>
-                    · not counted above
-                  </span>
-                </p>
-
-                <p v-if="lang.guide?.inUse?.length" class="vl-note vl-guide-inuse">
-                  Speaking now:
-                  <span v-for="u in lang.guide.inUse" :key="u.voiceId" class="ui-pill ui-present">
-                    {{ u.name }} · {{ u.clips }} clip{{ u.clips === 1 ? '' : 's' }}
-                  </span>
-                </p>
-
-                <div class="vl-slots">
-                  <div v-for="slot in guideSlotsOf(lang)" :key="slotKey(lang, slot)" class="vl-slot vl-slot-guide">
-                    <div class="vl-slot-label">guide · {{ slot.rankName }}</div>
-
-                    <div v-if="slot.filled" class="vl-slot-filled">
-                      <span class="vl-voice">{{ slot.voiceName }}</span>
-                      <span class="vl-kind">{{ slot.kind }}</span>
-                      <span v-if="slot.active === false" class="ui-pill ui-absent">voice inactive</span>
-                      <!-- CONSENT TRAVELS ONTO THE CAST SLOT. This is the one
-                           place a voice is actually in front of learners, so it
-                           is the one place "who authorised this?" most has to be
-                           answerable at a glance. Drawn only for voices the
-                           question is about — a vendor's stock voice has nobody
-                           behind it to ask. -->
-                      <ConsentBadge v-if="slot.consent && slot.consent.aboutAPerson" :consent="slot.consent" />
-                      <button
-                        v-if="slot.consent && slot.consent.aboutAPerson"
-                        class="ui-sort-btn vl-consent-btn"
-                        title="Record who authorised this voice, and when"
-                        @click="openConsent(slot.voiceId, slotKey(lang, slot))"
-                      >consent…</button>
-                      <!-- PER-VOICE NATURAL PACE (Tom, 2026-08-29). The belt
-                           ramp multiplies, so 0.8x of a brisk voice and 0.8x of
-                           a measured one are nowhere near each other. This says
-                           how brisk THIS voice is relative to the other voices
-                           in its language, measured from clips already rendered
-                           at 1.0x — and lets an ear correct it. -->
-                      <span
-                        v-if="slot.pace && slot.pace.effective !== null"
-                        class="vl-pace"
-                        :class="paceClass(slot.pace.effective)"
-                        :title="paceTitle(slot.pace)"
-                      >{{ slot.pace.effective.toFixed(2) }}x pace</span>
-                      <span
-                        v-if="slot.pace && paceSpeeds(slot.pace)"
-                        class="vl-pace vl-speeds"
-                        :title="speedsTitle(slot.pace)"
-                      >{{ slot.pace.easy.toFixed(2) }} easy / {{ slot.pace.fast.toFixed(2) }} fast</span>
-                      <span v-else-if="slot.filled" class="vl-pace vl-pace-unknown" title="No pace measured for this voice — it plays exactly as it does today.">pace unmeasured</span>
-                      <input
-                        v-if="slot.pace && slot.pace.ratio !== null"
-                        class="ui-input vl-nudge"
-                        type="number" step="0.01" min="0.5" max="2"
-                        :value="slot.pace.nudge ?? ''"
-                        placeholder="nudge"
-                        title="Your correction, multiplied on top of the measurement. Blank clears it. A re-measurement never overwrites this."
-                        :disabled="busy === slotKey(lang, slot)"
-                        @change="nudge(lang, slot, $event.target.value)"
-                      />
-                      <button
-                        class="ui-sort-btn"
-                        :disabled="busy === slotKey(lang, slot)"
-                        @click="clear(lang, slot)"
-                      >Clear</button>
-                      <!-- A CAST VOICE CAN LOSE ITS CONSENT TOO. Withdrawal is
-                           the case: the panel opens under the slot it was
-                           tapped in, exactly as it does in a candidate list. -->
-                      <ConsentStep
-                        v-if="consentOpen(slot.voiceId, slotKey(lang, slot))"
-                        :voice-id="slot.voiceId"
-                        :person="consentCurrent?.person || ''"
-                        :reason="(slot.consent) ? (slot.consent).castWarning || '' : ''"
-                        :language="lang.code"
-                        :clips="clipsOf(slot.voiceId)"
-                        :playing="playing"
-                        allow-refusal
-                        @recorded="consentRecorded"
-                        @cancel="closeConsent()"
-                        @refuse="consentDecide"
-                        @hear="hearVoice(lang, { voiceId: slot.voiceId, lineIndex: $event })"
-                      />
-                    </div>
-
-                    <!-- The GUIDE slot casts exactly like a phrase slot: same
-                         list, same two taps. Tom named it as the slot that
-                         exists with nothing in it, so it must not feel like an
-                         afterthought. -->
-                    <div v-else class="vl-slot-empty">
-                      <CandidateVoices
-                        :candidates="candidatesFor(lang, slot)"
-                        :samples="samplesFor(lang)"
-                        :unrenderable-why="(samplesByLang[lang.code] || {}).unrenderableWhy || {}"
-                        :playing="playing"
-                        :busy="busy === slotKey(lang, slot)"
-                        :pace-title="(c) => (c.pace ? candidatePace(c) : '')"
-                        :pace-suffix="paceSuffix"
-                        :list-key="slotKey(lang, slot)"
-                        :open-voice="openVoice"
-                        :open-in="openIn"
-                        :consent-for="consentFor"
-                        :consent-in="consentIn"
-                        :open-clips="openClips"
-                        :rendering="renderingClip"
-                        empty-text="no voice in the estate declares this language"
-                        @play="play(lang, $event)"
-                        @cast="cast(lang, slot, $event)"
-                        @open="toggleVoice(lang, $event, slotKey(lang, slot))"
-                        @hear="hearVoice(lang, $event)"
-                        @consent="openConsent($event, slotKey(lang, slot))"
-                      >
-                        <template #consent="{ voiceId }">
-                          <ConsentStep
-                            v-if="consentOpen(voiceId, slotKey(lang, slot))"
-                            :voice-id="voiceId"
-                            :person="consentCurrent?.person || ''"
-                            :reason="(consentCurrent) ? (consentCurrent).castWarning || '' : ''"
-                            :language="lang.code"
-                            :clips="clipsOf(voiceId)"
-                            :playing="playing"
-                            allow-refusal
-                            @recorded="consentRecorded"
-                            @cancel="closeConsent()"
-                            @refuse="consentDecide"
-                            @hear="hearVoice(lang, { voiceId, lineIndex: $event })"
-                          />
-                        </template>
-                      </CandidateVoices>
-                    </div>
-                  </div>
-                </div>
+                <!-- ── WHAT A CAST HERE WILL NOT SPEAK OVER ─────────────────
+                     Tom's ruling, 2026-08-31: name the human-recorded courses
+                     ON SCREEN, before Cast is tapped. Still named, still in
+                     full — moved BELOW the casting controls and behind one
+                     disclosure, because four lines of course codes above the
+                     cast is what buried it. The headline stays visible; the
+                     roster is one tap. Where the cast is actually REFUSED, the
+                     refusal is up in the cast block, not in here. -->
+                <details
+                  v-if="humanOf(lang, 'phrase').total || humanOf(lang, 'guide').total"
+                  class="vl-human-details"
+                >
+                  <summary>{{ humanRowLabel(lang) }} — a cast here will not reach them</summary>
+                  <p class="vl-note vl-note-human">
+                    <span
+                      v-for="c in [...humanOf(lang, 'phrase').courses, ...humanOf(lang, 'guide').courses]"
+                      :key="c.course + c.roles.join()"
+                      class="ui-pill ui-present vl-human-course"
+                      :title="c.reasons.join(' ')"
+                    ><code>{{ c.course }}</code> · {{ c.roles.join(', ') }}<template v-if="c.clips"> · {{ c.clips.toLocaleString('en-GB') }} clips</template></span>
+                  </p>
+                </details>
               </td>
             </tr>
           </template>
@@ -2653,6 +2794,34 @@ function candidatesFor (lang, slot) {
 .vl-speeds { background: rgba(46,160,110,.14); color: #2ea06e; }
 .vl-ref { font-size: .7rem; color: var(--faint); white-space: nowrap; }
 .vl-nudge { width: 4.5rem; font-size: .7rem; padding: .1rem .25rem; }
+/* ── THE CAST BLOCK — first thing under the language's name ────────────────
+   Six cards, three columns, one save bar that stays put while the list below
+   is scrolled: the press must be reachable from wherever an assignment was
+   made, or "save once" becomes "scroll back up and then save once". */
+.vl-cast { margin: .6rem 0 1rem; }
+.vl-cast-head { position: sticky; top: 2.4rem; z-index: 1; display: flex; align-items: center;
+  gap: .6rem; flex-wrap: wrap; padding: .3rem 0; background: var(--surface-2); }
+.vl-cast-head .vl-slot-group { margin: 0; }
+.vl-cast-actions { margin-left: auto; display: flex; gap: .4rem; }
+.vl-save { font-weight: 700; }
+.vl-cast-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
+@media (max-width: 1100px) { .vl-cast-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 700px) { .vl-cast-grid { grid-template-columns: minmax(0, 1fr); } }
+/* Staged is DRAWN, not coloured: dashed edge, and the pill beside the name says
+   the word. Colour on this page means one thing only — a cast is complete. */
+.vl-slot.is-staged { border-style: dashed; }
+.vl-stagemark { font-size: .6875rem; }
+.vl-voice.is-going { text-decoration: line-through; opacity: .6; }
+.vl-slot-short { float: right; opacity: .6; font-variant-numeric: tabular-nums; }
+.vl-slot-vacant { font-size: .8125rem; }
+.vl-slot-clear { font-size: .6875rem; padding: .1rem .4rem; }
+.vl-save-report { margin-top: .6rem; }
+.vl-save-report .ui-pill { margin: .15rem .25rem 0 0; display: inline-block; font-size: .6875rem; }
+.vl-audition-head { margin-top: 1.2rem; padding-top: .8rem; border-top: 1px dashed var(--line); }
+/* The roster of human-recorded courses: the headline is always readable, the
+   four lines of course codes that used to bury the cast are one tap away. */
+.vl-human-details { margin-top: .8rem; font-size: .8125rem; }
+.vl-human-details summary { cursor: pointer; color: var(--muted); }
 .vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .3rem; }
 .vl-slot-filled { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .vl-slot-empty { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }

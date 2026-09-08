@@ -40,6 +40,21 @@ defineProps({
   /** Per-voice pace tooltip, passed in so the panel keeps one copy of that logic. */
   paceTitle: { type: Function, default: () => '' },
   paceSuffix: { type: Function, default: () => '' },
+  /**
+   * WHERE THIS VOICE CAN GO — the six slots of the language, as buttons on the
+   * voice's own row (Tom, 2026-09-08: "assign a voice to male primary, male
+   * backup, female primary, female backup, guide and all that from a single
+   * place … not to have to repeat it 4/5 times").
+   *
+   * Assignment is an act ON A VOICE, not a journey into a slot, so the list is
+   * rendered ONCE for the language and each row says where it goes. Given a
+   * candidate it returns [{ key, short, title, assigned }]; an empty array
+   * means this voice fits nowhere here and the row says so rather than offering
+   * a button that would be refused.
+   */
+  targetsFor: { type: Function, default: () => [] },
+  /** Said in place when targetsFor() is empty — a refusal the eye can see. */
+  noTargetText: { type: String, default: 'no slot here' },
   emptyText: { type: String, default: 'no voice in the estate declares this language' },
   /**
    * voiceId -> why this box cannot render it. A dot that means "not rendered yet"
@@ -66,7 +81,7 @@ defineProps({
   rendering: { type: String, default: '' },
 })
 
-defineEmits(['play', 'cast', 'open', 'hear', 'consent'])
+defineEmits(['play', 'assign', 'open', 'hear', 'consent'])
 
 /**
  * NO CONSENT, NO CAST BUTTON (Tom's ruling, 2026-08-31).
@@ -146,15 +161,31 @@ function blockedFor (c) {
       <span v-if="paceSuffix(c)" class="vl-cand-pace">{{ paceSuffix(c) }}</span>
       <span v-if="samples[c.voiceId] && samples[c.voiceId].free" class="vl-cand-free" title="Already in the estate — hearing it spends nothing">free</span>
 
-      <!-- CAST IT. One tap, no confirm, reversible with Clear.
+      <!-- WHERE IT GOES. One tap per slot, staged rather than written — the
+           whole language is saved on one press up in the cast block above.
+           A target already carrying this voice is drawn solid with a tick and
+           tapping it again takes the voice back out; the others are outlines.
+           No colour: reached is solid, not reached is dashed (ui-tokens.css).
+
            UNLESS NOBODY HAS CONSENTED (Tom, 2026-08-31: "we are never going to
-           use a voice without consent"). Then there is no cast button — not a
-           disabled one you can argue with, and not a dialog you can click
+           use a voice without consent"). Then there are no target buttons — not
+           disabled ones you can argue with, and not a dialog you can click
            through. What sits there instead is THE WAY THROUGH: one tap opens
            the consent panel for this voice. The server refuses the cast
            identically, so a stale tab cannot cast either. -->
       <button v-if="blockedFor(c)" class="vl-cand-noconsent" :title="blockedFor(c)" @click="$emit('consent', c.voiceId)">consent…</button>
-      <button v-else class="vl-cand-cast" :disabled="busy" @click="$emit('cast', c.voiceId)">Cast</button>
+      <span v-else-if="targetsFor(c).length" class="vl-cand-targets">
+        <button
+          v-for="t in targetsFor(c)"
+          :key="t.key"
+          class="vl-cand-target"
+          :class="{ 'is-on': t.assigned }"
+          :title="t.title"
+          :disabled="busy"
+          @click="$emit('assign', { voiceId: c.voiceId, key: t.key })"
+        >{{ t.assigned ? '✓ ' : '' }}{{ t.short }}</button>
+      </span>
+      <span v-else class="vl-cand-notarget">{{ noTargetText }}</span>
     </div>
 
     <!-- THE JUDGING SET. Several lines, of deliberately different lengths, from
@@ -228,6 +259,18 @@ function blockedFor (c) {
 .vl-cand-cast { flex: none; padding: .25rem .7rem; font-size: .8125rem; font-weight: 600; }
 .vl-cand-cast:hover:not(:disabled) { background: var(--accent, #6366f1); border-color: var(--accent, #6366f1); color: #fff; }
 .vl-cand-cast:disabled { opacity: .5; cursor: default; }
+/* The six targets, on the voice's own row. Dashed and dim = this voice is not
+   there; solid and full = it is (staged or saved). Drawn, never coloured. */
+.vl-cand-targets { display: flex; gap: .2rem; flex: none; }
+.vl-cand-target {
+  border: 1px dashed var(--line); background: transparent; color: inherit; opacity: .65;
+  border-radius: 6px; cursor: pointer; font: inherit; font-size: .6875rem; line-height: 1;
+  padding: .3rem .4rem; font-variant-numeric: tabular-nums;
+}
+.vl-cand-target:hover:not(:disabled) { opacity: 1; border-style: solid; }
+.vl-cand-target.is-on { border-style: solid; opacity: 1; font-weight: 700; background: var(--surface-2, rgba(127, 127, 127, .12)); }
+.vl-cand-target:disabled { opacity: .35; cursor: default; }
+.vl-cand-notarget { flex: none; font-size: .6875rem; opacity: .55; }
 /* The state and the door in one control: it says what is missing, and pressing
    it is how you fix it. */
 .vl-cand-noconsent {
