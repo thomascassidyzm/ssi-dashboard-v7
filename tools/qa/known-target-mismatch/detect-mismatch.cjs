@@ -36,7 +36,7 @@ const fs = require('fs');
 const { tokens, terminal } = require('./lib/text.cjs');
 const { buildLexicon, buildBigramLexicon, bigramRendered, rendered, confidence } = require('./lib/align.cjs');
 
-const PACKS = { eng: 'eng', spa: 'spa' };
+const PACKS = { eng: 'eng', spa: 'spa', fra: 'fra' };
 function loadPack(iso) {
   const f = PACKS[iso] ? path.join(__dirname, 'packs', PACKS[iso] + '.cjs') : path.join(__dirname, 'packs', 'generic.cjs');
   return require(f);
