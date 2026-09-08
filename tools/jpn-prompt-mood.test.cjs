@@ -53,9 +53,11 @@ describe('the English prompt must ask for exactly what the Japanese says', () =>
   });
 });
 
-describe('a component verb is not a taught verb', () => {
+describe('a component verb is reported, not condemned', () => {
   // 話す is a component of the M-LEGO 話したい at round 1 and is never a LEGO of
   // its own anywhere in jpn_for_eng — yet round 2's first BUILD asks for it.
+  // Canon K20 makes that LEGAL (a component is available vocabulary), so what
+  // these tests pin is the LIST, not a verdict.
   const legos = [
     { lego_id: 'S0001L01', target_text: '話したい', components: [{ known: 'speak', target: '話す' }, { known: 'want to speak', target: '話したい' }] },
     { lego_id: 'S0001L02', target_text: '日本語を', components: [] },
@@ -74,5 +76,17 @@ describe('a component verb is not a taught verb', () => {
   it('does not flag the phrase that uses the taught chunk itself', () => {
     const never = componentVerbsNeverTaught(legos);
     expect(predicateIsAnswerable('日本語を話したい', never)).toBe(null);
+  });
+
+  it('reports a compound verb whole, never as its own tail', () => {
+    // 思い出す and 出す are both plausible components; a lastIndexOf scan in
+    // insertion order reported 思い出す as 出す, which names the wrong verb.
+    const never = componentVerbsNeverTaught([
+      // declaration order matters: 出す is declared FIRST, as it is in the
+      // course, and the pre-fix lastIndexOf scan answered 出す for this phrase.
+      { lego_id: 'S0327L02', target_text: '出したい', components: [{ known: 'offer', target: '出す' }] },
+      { lego_id: 'S0006L01', target_text: '思い出そうとしてる', components: [{ known: 'remember', target: '思い出す' }] },
+    ]);
+    expect(predicateIsAnswerable('全部思い出す', never)).toBe('思い出す');
   });
 });

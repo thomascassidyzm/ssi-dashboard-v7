@@ -10,10 +10,34 @@
  *     the English side must be present together or absent together.
  *   additiveMoAgreement   — the additive particle も must be answered by
  *     "too" / "either" / "as well" in the prompt.
- *   predicateIsAnswerable — the verb the phrase ends on must be a form the
- *     learner has been TAUGHT as a LEGO by this round. An M-LEGO's `components`
- *     do not count: components are visual tiles, never a spoken cue, so a
- *     phrase that ends on one asks for a form the course never introduced.
+ *   predicateIsAnswerable — REPORTS, DOES NOT JUDGE. It lists phrases whose
+ *     whole predicate is a verb that exists in this course only as an M-LEGO
+ *     `component`, never as a LEGO of its own. That is NOT by itself a defect:
+ *     canon K20 (Tom, 2026-08-28) rules a component to be AVAILABLE vocabulary
+ *     the moment its carrier is taught, and L7/L23 (Kai, closing C13) call the
+ *     component route the designed way a piece later becomes combinable. What
+ *     the list is for is the question underneath it, which the canon does not
+ *     settle: K20 says a component was "on screen and in their ears", and in
+ *     this estate's learner path it is only ever on screen — cycles.ts,
+ *     "Component rows never produce a cycle of any kind". A silent tile met
+ *     once and demanded in the next round is a judgement about the learner's
+ *     experience, and judgement of that kind is Kai's (canon section 7).
+ *
+ * WHAT THIS FILE DOES NOT LICENSE: adding a LEGO to introduce a form the
+ * phrases already use. Canon K15 (Kai, 2026-09-08) forbids it outright --
+ * "the repair direction is always downward into the phrases, never upward
+ * into the curriculum" -- and in jpn_for_eng the seed sentences carry the
+ * -tai forms and never the bare dictionary form, so no such LEGO could be
+ * minted from a seed anyway.
+ *
+ * COVERAGE, stated next to the verdict as the canon's count checklist demands:
+ * the mood and mo rules judge every non-component row, with no early return and
+ * no unparsed class -- 10,583 of 11,864 jpn_for_eng rows, the 1,281 skipped
+ * being `phrase_role = 'component'`, which is never delivered as a prompt.
+ * componentVerbsNeverTaught is NARROWER than its name: VERB_SHAPED only admits
+ * a dictionary form ending in u-row kana, so a component that is a noun, an
+ * adjective, a bare particle or a ta/te form is invisible to it. Its output is
+ * a floor, never a census.
  *
  * WHY THE CHECKS MATCH MORPHEMES, NOT TOKENS: Japanese is written without
  * spaces, so the token-position checks used for Latin-script courses see
@@ -84,13 +108,14 @@ function componentVerbsNeverTaught(legos) {
   return out;
 }
 
-/** Does this phrase end on a verb the course never taught as a LEGO? */
+/** The verb this phrase ends on, if the course never taught it as a LEGO of
+ *  its own. Longest match wins, so a compound is not reported as its tail. */
 function predicateIsAnswerable(targetText, neverTaught) {
   const t = strip(targetText);
-  for (const ct of neverTaught.keys()) {
-    const idx = t.lastIndexOf(ct);
-    if (idx < 0) continue;
-    if (idx + ct.length === t.length) return ct;
+  // Longest first, so a compound verb is never reported as its own tail.
+  const candidates = [...neverTaught.keys()].sort((a, b) => b.length - a.length);
+  for (const ct of candidates) {
+    if (t.endsWith(ct)) return ct;
   }
   return null;
 }
