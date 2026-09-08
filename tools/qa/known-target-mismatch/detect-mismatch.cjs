@@ -69,7 +69,12 @@ function lastClauseTail(toks, connectives) {
 function analyse(row, ctx) {
   const kt = tokens(row.known_text), tt = tokens(row.target_text);
   const sig = [];
-  if (kt.length < 4 || tt.length < 2) return { signals: [], score: 0 };
+  // TOO SHORT TO JUDGE. This is a silent skip, and it is a big one — 28.5% of
+  // fra_for_eng — so it is counted and reported next to the verdict rather
+  // than swallowed. The content signals need a few content words on the known
+  // side before coverage means anything; the TENSE signal does not, so a
+  // short-row tense sweep is a separate, legitimate run.
+  if (kt.length < 4 || tt.length < 2) return { signals: [], score: 0, unjudged: true };
 
   const contentK = kt.filter(w => !ctx.kFunc.has(w));
   const tail = lastClauseTail(kt, ctx.kPack.CONNECTIVES);
@@ -242,8 +247,10 @@ async function main() {
   const rows = all.filter(r => (role === 'all' || r.phrase_role === role) &&
     r.seed_number >= from && r.seed_number <= to && r.known_text && r.target_text);
 
+  let unjudged = 0;
   const results = rows.map(r => {
     const a = analyse(r, ctx);
+    if (a.unjudged) unjudged++;
     return {
       id: r.id, seed: r.seed_number, position: r.position, role: r.phrase_role,
       known: r.known_text, target: r.target_text,
@@ -257,8 +264,11 @@ async function main() {
 
   results.sort((a, b) => b.score - a.score);
   const counts = results.reduce((m, r) => (m[r.band] = (m[r.band] || 0) + 1, m), {});
+  const cov = rows.length ? 100 * (rows.length - unjudged) / rows.length : 0;
   console.error(`swept ${rows.length} ${role} rows in ${course}; pack known=${kPack.code} target=${tPack.code}; ` +
     `HIGH ${counts.HIGH || 0} MEDIUM ${counts.MEDIUM || 0} CLEAN ${counts.CLEAN || 0}`);
+  console.error(`COVERAGE ${cov.toFixed(1)}% — ${unjudged} of ${rows.length} rows were too short to judge ` +
+    `and are NOT part of the verdict above. A verdict without this denominator is not a result.`);
   if (outJson) fs.writeFileSync(outJson, JSON.stringify(results, null, 1));
   else for (const r of results.filter(r => r.band !== 'CLEAN')) {
     console.log(`${r.score}\t${r.band}\t${r.id}\t${r.known}\t||\t${r.target}\t${r.signals.join(',')}`);
