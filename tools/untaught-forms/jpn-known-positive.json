@@ -1,0 +1,19 @@
+{
+  "_note": "Check 20's acceptance test. Hand-derived by a worker on 2026-09-08 under K14/K15 and published at https://watson-1.tail4968cb.ts.net/d/3e8c8a40 — 19 rows to delete, 52 to re-author, jpn_for_eng seeds 1-100. A detector that has not been watched find these is not evidence.",
+  "course": "jpn_for_eng",
+  "seed_range": [1, 100],
+  "delete": {
+    "seed16_form_does_not_exist_yet": ["S0016L03B01", "S0016L03U01", "S0016L03U04"],
+    "seed16_collateral_of_decision_D1": ["S0016L03", "S0016L03B02", "S0016L03U02", "S0016L03U03", "S0016L03U05"],
+    "third_person_negative_desire": ["S0019L01U03", "S0019L01U04", "S0034L01B02", "S0034L01B03", "S0034L01U01", "S0034L01U02", "S0034L02U04", "S0035L01U02", "S0036L01U04"],
+    "pronoun_components": ["S0069L01C01", "S0070L01C01"]
+  },
+  "reauthor": {
+    "third_person_present_desire_to_tagatteru": ["S0017L01U02", "S0017L03U05", "S0018L01U03", "S0018L01U04", "S0018L03U03", "S0019L03U04", "S0020L02U03", "S0021L02U03", "S0022L01U03", "S0022L01U05", "S0044L02U05", "S0085L01U07"],
+    "third_person_negative_desire": ["S0035L01U03", "S0035L02U03", "S0035L03U02"],
+    "third_person_past_desire": ["S0032L01U04", "S0052L01U04", "S0052L01U08", "S0069L01B01", "S0069L01B02", "S0069L01B03", "S0069L01B04", "S0069L01U01", "S0069L01U02", "S0069L01U06", "S0069L01U08", "S0069L03U03", "S0070L01B01", "S0070L01B02", "S0070L01B03", "S0070L01B04", "S0070L01U01", "S0070L01U02", "S0070L01U06", "S0070L01U08"],
+    "lego_glosses_asserting_third_person": ["S0034L01", "S0035L01", "S0069L01", "S0070L01"],
+    "build_phrase_glosses_third_person_citation": ["S0034L01B01", "S0034L01B04", "S0035L01B01", "S0035L01B02", "S0035L01B03", "S0035L01B04"],
+    "seed_sentences": ["SEED16", "SEED34", "SEED35", "SEED52", "SEED53", "SEED69", "SEED70"]
+  }
+}
