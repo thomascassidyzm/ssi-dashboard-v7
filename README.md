@@ -93,11 +93,15 @@ S3 (ssiborg-assets)
 ```
 Tables:
 ├── voices              # TTS and human voice registry
-├── audio_samples       # Master Audio Registry (MAR)
+├── course_audio        # Rendered audio clip registry (per-course, per-slot)
 ├── course_audio_usage  # Which courses use which audio
 ├── sample_flags        # QA workflow state
 ├── recording_provenance # Human recording metadata
 └── courses             # Course configuration
+
+(`audio_samples` does not exist in the live schema — verified against
+ssi-learning-app/supabase/schema.sql, which has no `CREATE TABLE ... audio_samples`.
+`course_audio` is the live table. `texts` and `audio_files` are also gone.)
 ```
 
 ### Pipeline (APML v14.0)
@@ -181,7 +185,12 @@ vercel --prod
 | Manifest | Phase 9 | S3: `courses/{code}/course_manifest.json` |
 | QA flags | Production API | Supabase: `sample_flags` |
 
-**Deprecated (JSON files):** `lego_pairs.json`, `lego_baskets.json` - data now in Supabase
+**Not deprecated:** `lego_pairs.json`, `lego_baskets.json` are still read/written live —
+grep finds them in 21 files under `services/` (including active services `orchestrator.cjs`,
+`production-api.cjs`, `manifest-generator.cjs`, `data-finders.cjs`, `s3-service.cjs`,
+`phase9-manifest-compiler.cjs`) plus 34 more under `tools/`, `database/`, `src/`, and `api/`.
+The Course Builder API path writes seeds/LEGOs/phrases straight to Supabase, but the older
+phase1-3/phase5 basket pipeline these files support has not been removed.
 
 ## Tech Stack
 
@@ -198,4 +207,4 @@ vercel --prod
 **APML:** v14.0 (Course Builder Consolidation)
 **Pipeline:** v3.0 (Course Builder + Supabase)
 **S3 Bucket:** ssi-audio-stage (eu-west-1)
-**Date:** 2026-01-15
+**Date:** 2026-09-08
