@@ -6,7 +6,9 @@ If you are an agent holding a broken row and wondering what you may and may not 
 
 Assembled 2026-08-18 from every source that states a rule: the scan-course checks, the course-builder validator, the skills, both doctrine documents, Kai's written rules, Kai's rulings in conversation, and the findings of the people who review courses by ear.
 
-**Extended 2026-09-08** with fourteen rulings Kai had already given and that this document was still listing as open questions — harvested from his own words across 799 of his turns, each carrying his quote, the date and the conversation it came from. Fourteen clashes left the list; four were tightened to the residue that is genuinely still open; four he has never spoken to and are untouched.
+**Extended 2026-09-08** with fourteen rulings Kai had already given and that this document was still listing as open questions — harvested from his own words across 799 of his turns, each carrying his quote, the date and the conversation it came from. Fourteen clashes left the list; four were tightened to the residue that is genuinely still open; four he had never spoken to.
+
+**Extended again the same day** with six rulings Kai gave in conversation, closing those four (**C11, C12, C18, C19**) plus **C17**, and rewriting **S6**. **Four clashes are left open — C20, C21, C22 and C25** — and the phrase-length rules now carry a worked reference measured against the live Welsh course rather than described.
 
 ---
 
@@ -32,7 +34,9 @@ Every rule below carries: **the rule in one plain sentence · HARD or SOFT · wh
 
 These are places where two sources disagree, or where a check contradicts a stated rule. **They are not resolved here deliberately.** Each is one sentence; each needs one word from Kai.
 
-**Fourteen of them left this list on 2026-09-08**, when a harvest of Kai's own words found that he had already ruled on them — most in one sitting on 2026-08-27, when he walked this list clash by clash and answered it. Each keeps a one-line pointer below saying where its rule now lives; nothing was deleted silently. Four more (C17, C20, C21, C22) are **partly** ruled: what his words settle has been written into the rules, and what is left is tightened to the residue and stays here. Four (C11, C12, C18, C19) he has never spoken to, and they are untouched — **a pattern in his other rulings is not a ruling.**
+**Fourteen of them left this list on 2026-09-08**, when a harvest of Kai's own words found that he had already ruled on them — most in one sitting on 2026-08-27, when he walked this list clash by clash and answered it. Each keeps a one-line pointer below saying where its rule now lives; nothing was deleted silently. Four more (C17, C20, C21, C22) were **partly** ruled: what his words settled was written into the rules, and what was left was tightened to the residue and stayed here.
+
+**Five more left this list later the same day**, when Kai ruled on them directly in conversation: **C11, C12, C18, C19 — the four he had never spoken to — and C17**, which he closed rather than tightened. His words are quoted in the rules they became. The same conversation rewrote **S6**. **C20, C21, C22 and C25 are still open** and are the whole of what is left.
 
 **C0 is RULED and has left this list.** Kai ruled make-before-break on 2026-08-27; the rule now lives at **A4** and the procedure it replaces at **A19**, and the `scan-course.md` passage has been corrected.
 
@@ -62,9 +66,9 @@ These are places where two sources disagree, or where a check contradicts a stat
 
 **C10 is RULED and has left this list.** *(Kai, 2026-08-27.)* The **single-item hesitation** definition wins: one prompt, and whether the learner could reasonably answer it two ways given the LEGOs they hold. The collision test is the mechanised approximation of it, not the definition, and `docs/fix-agent-rules.md:162` guessed the other way. He added a scope clause nobody had: **a USE phrase must satisfy ZUT against the whole course**, because it replays out of context at any later point. The definition now lives at **K2**, the scope clause at **P16**.
 
-**C11 — Phrase length tiers are defined in three incompatible units.** Relative to the LEGO (`ralph`: LEGO + 4–6 syllables), absolute (`course-audit`, `ssi-phrase-variety`: 6–9 syllables), and in words (`course-resume`: 6–9 words). **Six different syllable specs and six different phrase-count specs exist across the estate.**
+**C11 is RULED and has left this list.** *(Kai, 2026-09-08.)* **None of the three units wins, because the unit for a BUILD phrase is LEGOS** — the LEGO plus one to three others, aiming short — and a USE phrase has **no cap at all**, only two constraints. **This supersedes all six competing syllable specs and all six phrase-count specs**; the absolute syllable and word specs are marked stale in the redirect map. The rules now live at **P19** (BUILD) and **P20** (USE), with the measured Welsh reference Kai named.
 
-**C12 — Do phrase tiers block a submission?** `ralph:284` says warning-only, never blocks. `course-audit.md` calls failure HIGH severity. `course-resume.md:153` lists it among errors that fail a submission. The code (`checkPhraseComplexity`) applies hard minimums from seed 6 — **unresolved whether the caller demotes it to a warning.**
+**C12 is RULED and has left this list.** *(Kai, 2026-09-08, in the same words: "As I said, it's not that important.")* Length is a **SOFT preference and never a gate**. The rule now lives at **P21**, which also records, measured against the code, what the tier check actually does today.
 
 **C13 is RULED and has left this list.** *(Kai, 2026-08-27 and 2026-09-04.)* **Yes.** `ralph:120–134` is right and `jpn-analysis-example.md` is wrong: a grammatical particle may be carried as a component of an M-LEGO with `introduce:false`, and that is in fact the designed route by which it later becomes combinable. Permitted is not encouraged — a component earns its place. The rule now lives at **L23**, with the particle side at **L7** and the merge mechanism at **L22**.
 
@@ -78,11 +82,11 @@ These are places where two sources disagree, or where a check contradicts a stat
 
 **C16 is RULED and has left this list.** *(Kai, 2026-08-17, corrected by him the same day, extended 2026-08-26.)* The carve-out in `phrase-fixer.md` is real, it is his own method, and he has stated it more fully than that file does — including the correction that matters most: it is a distinct **known** word per sense that fixes it, not a distinct target word. The rule now lives at **L20**, with the third route at **L24**.
 
-**C17 — Is 我想 one chunk or two?** *(TIGHTENED 2026-09-08 — the general test is ruled, the specific case is not.)* **What is settled and has left this clash:** Kai's own definition of a LEGO — meaningful plus flexible, judged per language pair, and where one side of the pair cannot be broken down the chunk grows on **both** sides rather than being split. That now lives at **L2** (and **L22**), and it means `synonym-choice-architecture.md:108`'s general over-chunking test is not his test. **What is still open, and only this:** he has never adjudicated 我想, or Chinese chunking specifically. Because his test is a judgement and not a decision procedure, `ralph`/`calibrate` and `synonym-choice-architecture` could both be applying it and still disagree. **This needs one word from him and must not be inferred from L2.**
+**C17 is RULED and has left this list.** *(Kai, 2026-09-08 — he closed it rather than tightening it.)* **"I want" is a good chunk for almost all language pairs**, 我想 included, and the reasoning is the durable part: going smaller buys the phrases flexibility and pays for it in learner load, and **the trade goes to the learner**. That reasoning now lives at **L2** alongside his definition of a LEGO, which the 2026-08-27 half of this clash had already settled; `synonym-choice-architecture.md:108`'s general over-chunking test remains not his test.
 
-**C18 — Literal glosses or whole-intention glosses?** `tools/breakdown-flat.cjs:65` — "parts get LITERAL glosses". `ralph:177` — "gloss the whole intention, never the sub-word". May be legitimately scoped to component rows, but it is written as a general instruction and labelled ZUT.
+**C18 is RULED and has left this list.** *(Kai, 2026-09-08.)* **Both, scoped:** "whole intention for a lego, literal for a component." The scoping guess in this clash was right, and `tools/breakdown-flat.cjs:65` is correct **for components only**. He added two things the clash did not ask about: the gloss should match the seed's own translation as closely as possible, and a LEGO that *cannot* be glossed to match its seed is a **chunking signal**. The gloss rule now lives at **L11**; the re-chunk signal is new and lives at **L25**.
 
-**C19 — Two checks are both called "Check 17."** Under-spread LEGOs (line 613) and language-specific patterns (line 1001). The report template prints only the second. Any citation of "Check 17" is ambiguous.
+**C19 is RULED and has left this list.** *(Kai, 2026-09-08 — one word: "renumber".)* The **second** Check 17 (language-specific patterns) is the one that gets a new number; the first (under-spread LEGOs) keeps 17. The rule now lives at **R0.17**, which also lists every place outside this canon that a follow-up job must renumber. **No file outside this canon was edited by that ruling** — the renumbering itself is a separate job, and `scan-course.md` is a shared tooling document (**R0.11**).
 
 **C20 — Should scan-course's own LLM pass judge naturalness, or does the read stay a separate job?** *(TIGHTENED 2026-09-08.)* **What is settled and has left this clash:** that a full read-through of every phrase pair for grammatical wrongness and unnaturalness is **required work**, done against the LEGOs the learner holds. That now lives at **R0.16**. **What is still open, and only this:** scan-course's only LLM pass is instructed "Do NOT judge grammar, spelling, naturalness, or meaning"; Kai has never been shown that instruction and has never said whether it should change or whether the read stays a separate job. On the evidence he commissions separate reads rather than asking for the scanner to be widened — **that is a reading of his behaviour, not a quote.**
 
@@ -90,7 +94,7 @@ These are places where two sources disagree, or where a check contradicts a stat
 
 **C23 is FIXED and has left this list.** *(Raised and closed 2026-08-27.)* `/regenerate-presentations` used to answer "the introduction template text changed" by deleting the LEGO's `course_audio` row in batches of 200 and nulling `presentation_audio_id`, *then* re-rendering — so a run that died in the gap left every slot it had reached silent, with the clip's revision history, flags and sign-offs deleted along with it. The refresh is **addition-only** now: the new pending row goes in beside the old one, the old row and the FK are untouched, and the swap happens per item only after `/generate` has rendered, veracity-gated and uploaded the replacement. Superseded rows are left unlinked for a separate cleanup pass, as the flag-and-regenerate path already does; the legacy null-`lego_id` orphan delete is gone too. The precious-audio guard is unchanged. Proof is a partial-failure test — `tools/audio-regen-probe/intro-change-make-before-break.test.cjs`, real Postgres on the live schema — that kills a run after 7 of 19 renders: the old path leaves **12 slots silent**, the fixed path leaves **0**.
 
-**C22 — Should scan-course Checks 16/17 BLOCK a build, or stay informational?** *(TIGHTENED 2026-09-08.)* **What is settled and has left this clash:** the content requirement underneath is hard — every practice phrase under a LEGO contains the whole LEGO (**P17**), a USE phrase is never demoted to manufacture a BUILD (**P18**), and authoring more phrases is always an acceptable remedy (**P10**). **What is still open, and only this:** Checks 16/17 are documented as "informational… never blocks a build", the legacy check that *did* block has a whitelist escape hatch, and Kai has never spoken to it. C7 and C8 would predict "warn" — **that is a pattern, not a ruling** (see C12).
+**C22 — Should scan-course Checks 16/17 BLOCK a build, or stay informational?** *("17" here is the under-spread check, the one that keeps the number — R0.17.)* *(TIGHTENED 2026-09-08.)* **What is settled and has left this clash:** the content requirement underneath is hard — every practice phrase under a LEGO contains the whole LEGO (**P17**), a USE phrase is never demoted to manufacture a BUILD (**P18**), and authoring more phrases is always an acceptable remedy (**P10**). **What is still open, and only this:** Checks 16/17 are documented as "informational… never blocks a build", the legacy check that *did* block has a whitelist escape hatch, and Kai has never spoken to it. C7 and C8 would predict "warn" — **that is a pattern, not a ruling** (see C12).
 
 **C25 — After enough drilling, may a pattern simply be declared taught (`is_new:false`)?** *(Raised 2026-09-08 and deliberately unresolved.)* Kai, 2026-09-01: "After the first couple legos with 'I'm going to x' we can just start treating it as taught (is new false)." **L17** permits `is_new:false` **only for a pure same-meaning restatement**, calls the lever minor by design (~15 of ~1,100 rounds in the zho audit), and says idiomatic chunks and overlap-ladder rungs keep their debut. These may genuinely conflict: his words license suppressing a debut on grounds of **familiarity**, which L17 does not recognise as a ground at all. Numbered **C25** because the unmerged branch `docs/canon-c14-resolved-2026-08-28` already uses **C24** for a different new clash.
 
@@ -162,6 +166,25 @@ He said the same on 2026-08-19 about the missing-question-mark rule and about ov
 
 Where the language is hard he commissions a reading agent that **first studies the relevant grammar, then reads a span** and reports what is *clearly* wrong "and not just bending the definitions a little bit as we do in other courses such as Finnish and Welsh" (Kai, 2026-09-08) · **P14** is the triage rule that keeps this from becoming a queue of non-defects, and **R0.12** the one that keeps it off Welsh · **Clash C20 is tightened, not closed:** whether `scan-course`'s own LLM pass should change is still unruled.
 
+**R0.17 — A check number names exactly one check. The second "Check 17" — language-specific patterns — gets renumbered; under-spread LEGOs keeps 17.** · **HARD (naming)** · **Kai, 2026-09-08, closing clash C19 — one word: "renumber"** · Two checks sharing a number makes every citation of it ambiguous: a report saying "Check 17: 0 findings" could mean an orphan sweep or a Spanish gerund regex, and a fix pass told to re-run it can re-run the wrong one · Until the renumber lands, **cite the check by its name, never by its number**, and read `17a`–`17d` as belonging to the language-specific one.
+
+**Which one moves, and why that half is the ruling.** Under-spread LEGOs (**P11**) is the older number and the one this canon already cites; the language-specific check is the one that carries sub-letters and is the only one the report template prints, so it is the one that must move together with its `17a`–`17d` children.
+
+**Where the follow-up must renumber — measured on this branch, `.claude/commands/scan-course.md` unless stated.** Nothing outside this canon was edited by this job: `scan-course.md` is a shared tooling document and **R0.11** puts it through Tom.
+
+| Line | What is there |
+|---|---|
+| **1014** | `#### Check 17: Language-specific patterns` — **the definition; the one being renumbered** |
+| **1012** | "See Check 17 below" — points at 1014 |
+| **1018 / 1056 / 1077 / 1095** | sub-checks `17a` Spanish, `17b` Italian, `17c` German, `17d` Japanese |
+| **744** | report template line `[17a] LLEVAR + GERUND (spa only)` — the only place a 17 is printed |
+| **1369** | "re-run the *whole class detector* (Check 17a / Check 18 / etc.)" |
+| **1394** | "cheap deterministic class detectors (Check 17a, Check 18, etc.)" |
+| **613, 800** | `#### Check 17: Under-spread LEGOs (orphans)` and its report line — **these KEEP 17; listed so the follow-up does not renumber them by mistake** |
+| `services/briefs/backfill-phrases.cjs:12` | comment "Check 17 / tools/backfill-spread/analyze.cjs" — refers to the **under-spread** check, so it also **keeps 17**; listed because a text sweep would hit it |
+
+**One observation for whoever runs it, not a decision:** `Check 18` is taken (`scan-course.md:1174`) and 18 is the highest number in the file, so the free number is 19. Three files in `archive/` also cite 17 (`deborahs-findings.md:273,279`, `fix-agent-rules.md:461`, `quality-sweep-romance-2026-08-06/ita_for_eng.md:68`) — archive carries no standing and is out of scope for the renumber. **The number to renumber to is the follow-up job's call, not this one's.**
+
 ---
 
 ## 1. What a SEED is, and what makes one valid
@@ -184,7 +207,13 @@ A **seed** is a sentence from the course curriculum — the thing the learner wi
 
 **S5 — Nothing a seed leans on may be acquired by accident.** · **HARD** · `ralph-methodology.md:23` · "Grokable from context" is fine for reinforcement, **never** for a piece the seed actually needs to be rebuilt · Partly automatic (vocabulary gate); the "declared component" half is human judgement.
 
-**S6 — Stick to the canonical seed. Straying from it is a SOFT rule, not a hard one — but the submission gate is hard.** · **SOFT (Kai's rule) / HARD (the gate)** · Kai, 2026-09-02: "it's best to stick to canon. But sometimes it is easier to stray from it, depending on the language pair. **So it's a soft rule but not a hard one.**"; `ralph-methodology.md:397–399` · The course teaches a different sentence than the curriculum promises · **Automatic — 400 CANONICAL MISMATCH on submission.**
+**S6 — Stick to the canonical seed. The rule is SOFT, but the latitude belongs to considered manual fixes, not to build agents — and the gate that holds build agents to canon stays hard.** · **SOFT (the rule) / HARD (the gate, and what a build agent is held to)** · Kai, 2026-09-02 and 2026-09-08 · The course teaches a different sentence than the curriculum promises · **Automatic — 400 CANONICAL MISMATCH on submission.**
+
+> "it's best to stick to canon. But sometimes it is easier to stray from it, depending on the language pair. **So it's a soft rule but not a hard one.**" — Kai, 2026-09-02
+
+> "That's fine, we can reserve these for the more manual fixes, rather than trusting build agents to make the decision. So I'd say **soften the rule, but still hold the builder to the standard of not straying from canonicals**." — Kai, 2026-09-08
+
+**The resolution is a split by ACTOR, and that is the point.** A departure from canon is a judgement call made once, by a person, on a case where the language pair makes canon awkward — the kind of call that belongs to a manual fix pass. A build agent generating seeds at volume is **not** the actor that call belongs to, and is held to canon exactly as the gate holds it · **This closes the doctrine-versus-code divergence a previous pass flagged here:** the gate is not out of step with a softened rule, because the gate governs the actor the softening does not cover. Do not "reconcile" them by loosening the gate.
 
 **What changed:** this entry read HARD on the doctrine file alone. Kai's 2026-09-02 words make the *methodology* rule soft and language-pair-dependent. The *gate* is unchanged and still rejects — so a departure he would allow still has to be agreed and made deliberately, not submitted and discovered.
 
@@ -216,7 +245,13 @@ A **LEGO** is a chunk the learner is taught as one unit and can then recombine. 
 
 > "A lego is one bit that is not too small to be meaningless, not too big to be inflexible. A perfect lego can be combined with other legos easily without thinking about grammar rules and stuff. It's a balance. **Not many hard rules - it depends on the language pair what makes a good lego.**… Or look at the Welsh courses - they have the gold standard of legos. Some are one word, some are bigger." — Kai, 2026-08-27
 
-**What changed:** this entry stated only the meaningfulness half. Kai's test is **meaningfulness plus flexibility**, and there is **no general over-chunking rule** — `synonym-choice-architecture.md:108`'s claim that a two-morpheme chunk fails because each part is itself a meaningful unit is not his test. Where one side of the pair cannot be broken down, **the chunk grows on both sides rather than being split**: "obviously 'can' doesn't work as a lego, it needs to be bigger", and on the objection that merging hides a productive pattern, "This is not a cost, this is the course working as it should. When one side can't be broken down, the other side follows and grows as well. Works both ways." (Kai, 2026-08-27; see **L22**) · **When the question is open, read Welsh (R0.12).** · **Clash C17 survives, tightened, for 我想 specifically** — do not settle that case from this entry.
+**What changed:** this entry stated only the meaningfulness half. Kai's test is **meaningfulness plus flexibility**, and there is **no general over-chunking rule** — `synonym-choice-architecture.md:108`'s claim that a two-morpheme chunk fails because each part is itself a meaningful unit is not his test. Where one side of the pair cannot be broken down, **the chunk grows on both sides rather than being split**: "obviously 'can' doesn't work as a lego, it needs to be bigger", and on the objection that merging hides a productive pattern, "This is not a cost, this is the course working as it should. When one side can't be broken down, the other side follows and grows as well. Works both ways." (Kai, 2026-08-27; see **L22**) · **When the question is open, read Welsh (R0.12).**
+
+**Which way the balance tips when it is genuinely close: toward the bigger chunk, because the cost of going smaller is paid by the learner.** Kai closed the 我想 case — and clash C17 with it — on 2026-09-08:
+
+> "to me, **'I want' is a good chunk for almost all language pairs**. If we go smaller, it can feel like you're **juggling too many small pieces as a learner**. It gives the phrases more flexibility, but **that makes the learning harder**." — Kai, 2026-09-08
+
+**The reasoning is the durable part, not the verdict on one chunk.** Smaller chunks are genuinely more flexible — the phrases can be built more freely — and that flexibility is bought with learner load. **The trade goes to the learner.** So "this chunk could be split and the pieces would still be meaningful" is not an argument for splitting it; the argument for splitting has to be that the whole is inflexible enough to block phrases the course needs. This does not turn L2 into a count — the balance is still judged per language pair, and **L3**'s 8-syllable cap is still the only size limit that rejects. It says which side of a close call to come down on · **L25** is the other direction of the same move: where a chunk cannot be glossed to match its seed, it grows.
 
 **L3 — A LEGO's target is capped at 8 syllables, and this cap runs even under skip_validation.** · **HARD** · `language-config.cjs:61` (`MAX_LEGO_SYLLABLES = 8`) · Rejection; pedagogically, an oversized LEGO exceeds what the learner can hold as one chunk · **Automatic, always-on. This is the one size limit that genuinely rejects.**
 
@@ -234,7 +269,13 @@ A **LEGO** is a chunk the learner is taught as one unit and can then recombine. 
 
 **L10 — A multi-sense particle is introduced once per real usage, and at least one context must reconstruct the seed's own use of it.** · **HARD — a sense the seed uses but you don't teach is an ERROR** · `ralph-methodology.md:25`.
 
-**L11 — Glosses name the whole communicative intention, never a grammar label or a sub-word.** · **HARD** · `ralph-methodology.md:27,55,177` · "把 = object marker" costs cognitive action and yields zero confidence · Warning-level check exists (`checkMetadataGloss`). **See clash C18.**
+**L11 — A LEGO is glossed by its whole communicative intention; a COMPONENT is glossed literally. Never a grammar label.** · **HARD** · `ralph-methodology.md:27,55,177`; **Kai, 2026-09-08, closing clash C18** · "把 = object marker" costs cognitive action and yields zero confidence · Warning-level check exists (`checkMetadataGloss`).
+
+> "**whole intention for a lego, literal for a component.** Yes, although **we should match the seed translation as much as possible**. If it's not working (the lego can't be translated in a way that matches the seed) we probably need to break the lego up differently, usually that means making it a bigger lego." — Kai, 2026-09-08
+
+**Both instructions were right and neither was general.** `tools/breakdown-flat.cjs:65` — "parts get LITERAL glosses" — is correct **for component rows only** and must not be read as a rule about LEGOs; `ralph:177` is correct for LEGOs. This is the same scoping that **L23** applies to the collision test: a component is held to a different standard because it is never prompted on its own.
+
+**The second half is a constraint on the gloss itself: match the seed's own translation as closely as possible.** A LEGO whose gloss drifts from the wording the seed uses teaches the learner one phrasing and prompts them with another, and the drift is invisible to every gate because both sides are individually fine · **And where the match cannot be made, the gloss is not the thing to fix — see L25.**
 
 **L12 — Idiomatic, non-derivable combinations are taught whole.** · **HARD** · `ralph-methodology.md:31` · The learner composes "prepare + good" and gets something that does not mean "ready".
 
@@ -299,6 +340,12 @@ So `glossary.md:54` is right about clash exposure and `phase1-translation/PROMPT
 
 **Be consistent within a course:** "that sister is really long, prefer the as in method. Probably best to be consistent also - the merging method didn't work for all, so we should use the as in method for all." · **Note the striking part: a DELIBERATE, HANDLED ZUT is acceptable** when the second sense is introduced with contrastive context in the presentation. That is a named exception to **K2**, it is Kai's, and it does not extend to any collision that is merely inconvenient to fix · **L20** is the parent procedure; this is its third route.
 
+**L25 — A LEGO that cannot be glossed to match its seed's translation is a CHUNKING signal, not a glossing problem. Re-chunk it — usually BIGGER.** · **HARD (that it is a chunking signal), SOFT (which redraw)** · **Kai, 2026-09-08, closing the third part of clash C18** · Forcing a gloss that does not match the seed teaches one wording and prompts another; hunting for a cleverer gloss spends the effort on the symptom · The test is mechanical: write the LEGO's whole-intention gloss, put it beside the seed's own translation, and if they cannot be made to say the same thing, the boundary is wrong.
+
+> "Yes, although we should match the seed translation as much as possible. **If it's not working (the lego can't be translated in a way that matches the seed) we probably need to break the lego up differently, usually that means making it a bigger lego.**" — Kai, 2026-09-08
+
+**"Usually bigger" is the direction, and it is the same move as L22 and L5** — when a piece will not map cleanly, it grows to take in the context that makes it mappable, rather than being split into pieces that map even worse. **L2** is why the growth is bounded: bigger until it is meaningful, never so big it is inflexible · This is a fix route that appears in no other document.
+
 ---
 
 ## 3. What a PRACTICE PHRASE is, and what makes one valid
@@ -315,7 +362,7 @@ A **practice phrase** is a sentence the learner is asked to produce. There are t
 
 **P4 — BUILD phrases play once, in context, and are never replayed.** · **HARD** · Kai, 2026-08-17: "Some short bits can be confusing when not in the context of having just heard the presentation… So we only play build phrases in context, and never again." · **Fragments are fine here** — the presentation just framed them · Not eternal-eligible; never enters spaced repetition.
 
-**P5 — BUILD quantity is governed by cognitive load, not an arbitrary count.** · **SOFT** · `ralph-methodology.md:196` · If the LEGO is already long, you add almost nothing · **But note the enforced floor is 3 from seed 4 onward. See clash C11/C12 — six different specs exist.**
+**P5 — BUILD quantity is governed by cognitive load, not an arbitrary count.** · **SOFT** · `ralph-methodology.md:196` · If the LEGO is already long, you add almost nothing · **But note the enforced floor is 3 from seed 4 onward** — that is a floor on the *number* of BUILD phrases, and it is real. **How long each one is is settled: P19, and it never blocks (P21).** Clashes C11 and C12 are closed.
 
 ### USE phrases
 
@@ -335,7 +382,7 @@ A **practice phrase** is a sentence the learner is asked to produce. There are t
 
 **P10 — Every newly-taught LEGO needs practice: at minimum a build phrase and about two use phrases.** · **HARD** for empty (0 build + 0 use), **SOFT** for "fewer than 2 use" · scan-course Check 16 · A LEGO introduced and never practised is not taught · **Reported, never blocks.** Deborah checks this by hand and re-tests it across stages · **Kai hardened the content requirement on 2026-08-28 (see P17 and P18), and the remedy for thin practice is always to AUTHOR MORE PHRASES:** "adding more phrases is great - it improves course quality if the phrases are good. We want to add more phrases. **No reason to try to go for solutions that 'mostly need no new text'.**" · Adequacy of practice stays part of the standing review even after a seed is approved: "do we have enough practice phrases in all the buckets, are all the legos used enough in the rest of the course? These are things we should check even if a seed has been approved" (Kai, 2026-08-11) · **Clash C22 is tightened, not closed** — whether Checks 16/17 should *block* is still unruled.
 
-**P11 — A chunk taught once and never reused later gets no spaced repetition.** · **SOFT — explicitly informational, never blocks** · scan-course Check 17 (first of two with that number) · Hand-crafted Welsh originals sit at 6–9% orphans; machine-built courses left unchecked sit at 20–55% · **Runnable: `node tools/backfill-spread/analyze.cjs {course} --max-uses 1`** — add `--cjk` for unspaced scripts or the numbers are inflated artifacts.
+**P11 — A chunk taught once and never reused later gets no spaced repetition.** · **SOFT — explicitly informational, never blocks** · scan-course Check 17 — **the under-spread check, which keeps that number; the other Check 17 is being renumbered (R0.17)** · Hand-crafted Welsh originals sit at 6–9% orphans; machine-built courses left unchecked sit at 20–55% · **Runnable: `node tools/backfill-spread/analyze.cjs {course} --max-uses 1`** — add `--cjk` for unspaced scripts or the numbers are inflated artifacts.
 
 **P12 — Reinforcement is a taper, and a contrast is never opened before both sides exist.** · **SOFT** · Kai, 2026-08-17: "add LOTS of phrases… to the seed and after… Then add a lot of them for the next few seeds wherever they can fit, then get sparser as you continue." And: "Best not to swap the pronoun before the other one is introduced or it might spook the learners too soon." · Spreading phrases evenly gets the volume right and the shape wrong — the drilling never reaches critical density at the point of confusion.
 
@@ -362,6 +409,35 @@ BUILD phrases play once, in context, and never replay (**P4**), so their ZUT hor
 > "If a sentence is good enough to be a use phrase, there's no point moving it to build. We'd just write more phrases if we need builds. They're different kinds of phrases, and **if we can't have one of the kinds for some reason, then we accept it**, we don't move phrases from use to build just to have build phrases." — Kai, 2026-08-28
 
 Pairs with **L21** (sometimes the answer is to add more, not less) and **R0.3** · Cost is not a reason to economise here — see **A10**.
+
+**P19 — A BUILD phrase is its LEGO plus one to three other LEGOs, and you aim short. The unit is LEGOS, not syllables and not words.** · **SOFT** · **Kai, 2026-09-08, closing clash C11** · Counting a BUILD phrase in syllables measures the language rather than the teaching — the same recombination is a different syllable count in every target, which is why six estate documents give six different numbers for it · Count the LEGOs. There is no gate (**P21**).
+
+> "doesn't matter that much. a build should be a **lego + 1-3 other legos, aiming for shorter**." — Kai, 2026-09-08
+
+**This supersedes every absolute length spec for BUILD phrases** — the six competing syllable specs and the six phrase-count specs recorded in the redirect map all measure the wrong thing. **P3** still governs what a BUILD phrase must *do*; this rule only says how big it is.
+
+**P20 — A USE phrase aims LONGER, and there is no hard cap. Two constraints only: never more than one sentence, and never ridiculously long.** · **HARD (the one-sentence constraint), SOFT (the aim and the outer limit)** · **Kai, 2026-09-08, closing clash C11** · A cap authored against the wrong unit clips exactly the long recombinations a USE phrase exists to drill · Read the phrase: is it one sentence, and would a person say it in one breath without losing the thread?
+
+> "use phrases should aim to be longer, but **there's no hard cap - just not more than one phrase and it shouldn't get ridiculously long**. Look at Welsh course phrase lengths for an example - not sure how the build and use phrases are divided since it's a pre-popty course, but it's a great example for the general phrase length." — Kai, 2026-09-08
+
+**"Not more than one phrase" means one sentence** — it is the same constraint **P7** states from the other side, where a USE phrase must be a complete sentence that stands on its own in a conversation. A USE phrase is therefore exactly one sentence: never a fragment, never two.
+
+**The worked reference — the Welsh course, measured against the live database, 2026-09-08.** Kai named it, so it is measured here rather than described. Both released Welsh-for-English courses were measured (`cym_n_for_eng` and `cym_s_for_eng`, 300 seeds each, 4,997 and 5,365 practice phrases); the figures are target-side words counted from `target_text` and syllables from `target_syllable_count`:
+
+| | BUILD median | BUILD 10th–90th | USE median | USE 10th–90th |
+|---|---:|---:|---:|---:|
+| North (`cym_n_for_eng`) — words | 7 | 4–11 | 8 | 5–12 |
+| North — syllables | 10 | 6–16 | 11 | 7–17 |
+| South (`cym_s_for_eng`) — words | 7 | 4–11 | 8 | 5–12 |
+| South — syllables | 9 | 5–15 | 11 | 6–16 |
+
+The shape matches what Kai says: **USE runs about one word and one to two syllables longer than BUILD**, and the spread is wide — the 99th percentile is 15–16 words and 20–23 syllables, the longest 21 words. **Only 26–39% of Welsh phrases fall inside the "6–9 syllables" spec** the estate documents six times over; that spec does not describe the course Kai calls the example. See **P21** and the redirect map.
+
+**Two honest limits on that measurement, neither of them papered over.** (1) **Legos-per-phrase is not recoverable from this course.** `lego_count` is a stored constant of 1 on 10,314 of 10,362 rows, and the `decomposition` backfill leaves 68–84% of phrases carrying at least one ghost tile (mean 1.9–3.0 ghosts per phrase), so a derived count of 2.5 legos per phrase is a floor, not a figure. **P19's unit therefore has no Welsh number behind it — only Kai's words.** (2) **The build/use division in this course is positional, not authored** — which is Kai's own doubt, confirmed: every one of the 7,638 BUILD rows sits at `position` 1–7 and 1,345 of 1,360 South / all 1,364 North USE rows at position 8+. It was assigned by import, so the BUILD and USE columns above are the two halves of a mechanical split and should be read as *early phrases versus later phrases in each basket*, not as Kai's own judgement of which is which. The undivided distribution is the two halves together: median 7 words / 10 syllables across all 10,362 phrases.
+
+**P21 — Phrase length never blocks a submission. It is a preference, not a gate.** · **SOFT** · **Kai, 2026-09-08, closing clash C12: "As I said, it's not that important."** · A length spec enforced as a gate rejects good recombination for failing an arithmetic it was never meant to carry · No check may be added that rejects on length; the existing one warns.
+
+**What the code does today, stated plainly rather than left buried.** `checkPhraseComplexity` (`validation.cjs:162`) does apply hard minimums from seed 6 — 1+ SHORT, 1+ MEDIUM, 2+ LONG for seeds 6–20 and 2/2/3 from seed 21 — and returns `valid: false` when a basket misses them. **Its single caller demotes that to a warning:** `seed-complete.cjs:1759` logs `PHRASE TIERS (warning, not blocking)` and continues, and it skips the check entirely for any LEGO submitted in the build/use format (`usesBuildUseFormat`). So the doctrine and the code agree in effect — nothing is rejected for length — while the function itself still carries thresholds nobody ruled on. **That is a divergence to be visible, not to be tidied:** the thresholds are the residue of the superseded absolute specs (**P19**), and removing them is a code change, not a canon change.
 
 ---
 
@@ -639,7 +715,7 @@ This section exists because most damage in this system comes from fixes that wer
 
 ## What only warns
 
-Phrase-level ZUT (held out, never rejected — K4) · metadata glosses · frame coverage (self-documented as having false positives and blind to topic-swaps) · known-side construction advisories · **phrase complexity tiers** (see clash C12).
+Phrase-level ZUT (held out, never rejected — K4) · metadata glosses · frame coverage (self-documented as having false positives and blind to topic-swaps) · known-side construction advisories · **phrase complexity tiers** — the function returns a failure and its only caller logs it as a warning and continues (**P21**; clash C12 is closed).
 
 ## Where the checks are blind — read this before quoting a zero
 
@@ -857,7 +933,7 @@ Kai's reasoning, in his own words, 2026-08-18: **"worth cleaning up all the othe
 | **PARTIAL — says less than the canon; an ACTIVE DECOY; priority** | **34** | `CLAUDE.md` L19–20 (auto-loaded), `WORKLIST.md` L25 (auto-read), `validation.cjs` METHODOLOGY_HINTS, `methodology-expert.md`, `course-resume.md` L57 |
 | **CLASHES — do not touch; for Kai** | **31** | clash C1 ×10, clash C2 ×10, clash C3 ×1, plus 10 newly surfaced |
 | LOAD-BEARING — executable; code stays, canon is the intent behind it | 24 | `validation.cjs` (12), `phrase-structure.cjs` (4), `language-config.cjs`, pair-contracts |
-| **STALE — no longer true** | **16** | see below |
+| **STALE — no longer true** | **17** | see below — **item 12 added 2026-09-08** when Kai's C11 ruling superseded every absolute phrase-length spec |
 
 **Note, 2026-09-08:** the 21 locations counted in that CLASHES row under clashes C1, C2 and C3 are **no longer clash-blocked** — those three are ruled, and their rules are at **P7/P8**, **K9** and **K11**. They are not thereby free to edit: **R0.11** puts builder prompts and shared tooling documents through Tom, which is exactly the condition Kai attached to the C2 ruling.
 
@@ -874,7 +950,9 @@ Kai's reasoning, in his own words, 2026-08-18: **"worth cleaning up all the othe
 9. **`docs/fix-agent-rules.md:462–469`** — states that `phrase-fixer.md` contradicts Kai's rules. **It no longer does** — it was rewritten to lead with them. A stale description of a fixed problem, which will send a worker to "fix" a correct file.
 10. **`services/briefs/deprecated/`** — 6 files, ~10 rule restatements. Should be **deleted, not repointed**.
 11. **`docs/qa-landscape-scout-2026-08-04.md:122`** — "absent contract = silent skip" is now true only for non-English-known pairs.
-12–16. Unverified and flagged rather than asserted: whether `checkPhraseComplexity` blocks or warns (`ralph:284`); whether the creator/checker 403 guard still exists (`ralph:744`); whether "Opus Polish" exists (`course-methodology-analysis:38`); the "prefer markdown submission" lesson with a hardcoded `localhost:3471` (`ralph:998–1034`); whether `english_canonical` still exists.
+12. **Every absolute phrase-length spec in the estate — the six syllable specs and the six phrase-count specs.** *(Added 2026-09-08, on Kai's C11 ruling.)* `ralph`'s "LEGO + 4–6 syllables", `course-audit.md` and `ssi-phrase-variety.md`'s "6–9 syllables", `course-resume.md`'s "6–9 words", and the `SHORT`/`MEDIUM`/`LONG` character thresholds behind them are all **superseded by P19 and P20**: a BUILD phrase is counted in **LEGOs** (its own plus one to three others, aiming short) and a USE phrase has **no cap** beyond one sentence and not-ridiculous. Measured against the Welsh course Kai names as the example, only **26–39%** of its phrases sit inside the 6–9-syllable spec — the spec does not describe the reference. **These are stale as *rules*; the character thresholds in `validation.cjs` stay as code until somebody removes them, and they block nothing (P21).**
+
+13–17. Unverified and flagged rather than asserted: **whether `checkPhraseComplexity` blocks or warns is now settled — it returns a failure and its only caller demotes it to a log line (`seed-complete.cjs:1759`), so it warns** (`ralph:284` was right); whether the creator/checker 403 guard still exists (`ralph:744`); whether "Opus Polish" exists (`course-methodology-analysis:38`); the "prefer markdown submission" lesson with a hardcoded `localhost:3471` (`ralph:998–1034`); whether `english_canonical` still exists.
 
 ## Rules that exist in EXACTLY ONE place — blockers for the stripping pass
 
@@ -918,8 +996,12 @@ Reported honestly, because a canon with a known hole is usable and one with an i
 
 12. **No check anywhere covers K17.** The continuity defect Kai named on 2026-08-27 — a known word taught with one target word and later, unannounced, with a completely different one — is **invisible to the collision checker by construction**, because the two rows have different known sides. He approved that it be written down and a check scoped for it. **The rule now exists (K17); the check does not, and none is proposed here.** Until one exists, this class is found only by a person reading a course for continuity.
 
-13. **The rulings written in on 2026-09-08 were harvested from conversation, not re-confirmed with Kai.** Each carries his verbatim words, the date and the conversation it came from, and was transcribed rather than interpreted. Three things the harvest could not settle and this document therefore did not — **the first of them was settled by Tom on 2026-09-08 and now lives at K22**; the remaining two are: whether **C25** genuinely conflicts with **L17**; and the four clashes he has never spoken to (**C11, C12, C18, C19**), where a pattern in his other rulings would predict an answer and has deliberately not been written down.
+13. **The rulings written in on 2026-09-08 were harvested from conversation, not re-confirmed with Kai.** Each carries his verbatim words, the date and the conversation it came from, and was transcribed rather than interpreted. Three things the harvest could not settle and this document therefore did not — **the first of them, whether Kai's 2026-09-04 component ruling (L23) agrees with Tom's 2026-08-28 one, was settled by Tom on 2026-09-08 and now lives at K22**; the second, whether **C25** genuinely conflicts with **L17**, is still open; and the third, the four clashes he had never spoken to (**C11, C12, C18, C19**), **was closed later the same day when Kai ruled all four directly, and closed C17 as well**. Those five are transcription of words he said in conversation, not a harvest; his quotes are in P19, P20, P21, L11, L25, L2 and R0.17, and S6 was rewritten by the same conversation. C20, C21, C22 and C25 remain as described.
 
-14. **The harvest's own arithmetic disagrees with itself by one, and the conservative reading was taken.** Its headline scored "15 RULED, 3 PARTLY RULED"; its per-clash verdicts and summary table give **14 RULED and 4 PARTLY** (C17, C20, C21, C22). The per-item verdicts were followed, so C17 was **tightened rather than closed**. If Kai reads C17 as fully ruled, closing it is a one-line change.
+14. **The harvest's own arithmetic disagrees with itself by one, and the conservative reading was taken.** Its headline scored "15 RULED, 3 PARTLY RULED"; its per-clash verdicts and summary table give **14 RULED and 4 PARTLY** (C17, C20, C21, C22). The per-item verdicts were followed, so C17 was **tightened rather than closed**. *(Settled 2026-09-08: Kai closed C17 himself — "'I want' is a good chunk for almost all language pairs" — so the headline's count was the right one after all, by a route that did not depend on resolving the arithmetic.)*
 
 15. **Pre-2026-08-02 material could not be re-verified.** The conversation record begins 2026-08-02, so rulings this canon dates earlier — C2's "not a standing licence", the 2026-08-06 fix-autonomy note — are taken as given rather than re-confirmed.
+
+16. **The Welsh course cannot say how many LEGOs a phrase should be, and its BUILD/USE split is an import artefact.** *(Measured 2026-09-08 against the live database, for the P20 worked reference.)* Kai named the Welsh course as the example for phrase length and flagged honestly that he did not know how its build and use phrases were divided. Both halves of that doubt are confirmed and neither is papered over: `lego_count` is a stored constant of 1 on 10,314 of the 10,362 rows in `cym_n_for_eng` and `cym_s_for_eng`, and the `decomposition` backfill leaves 68–84% of phrases carrying ghost tiles, so **legos-per-phrase — the unit P19 is stated in — has no measured Welsh figure behind it**; and the `phrase_role` split is **purely positional** (every BUILD row at `position` 1–7, every North USE row and 1,345 of 1,360 South USE rows at 8+), so it records where a phrase sat in its basket at import, not a judgement about what kind of phrase it is. The word and syllable distributions in **P20** are sound; the BUILD/USE columns of that table are the two halves of a mechanical split.
+
+17. **No worked reference exists for P19 in any course.** The BUILD rule is stated in LEGOs, and no course this canon can reach stores a trustworthy lego-count per phrase (gap 16). Until one does, "a lego + 1–3 other legos" is checked by reading the decomposition of the phrase in front of you, and there is no census that could report how far the estate sits from it.
