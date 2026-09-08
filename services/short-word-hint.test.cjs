@@ -6,12 +6,15 @@
 // input as a sentence fragment and speaking it.
 //
 // Deborah's 2026-09-08 check of deu_at_for_eng / deu_ch_for_eng found the
-// defect alive across 2,299 clips, and these tests say why the helper misses
-// them. Two structural gaps, both visible from the signature alone:
+// defect alive, and these tests say why the helper misses it. The words she
+// confirmed BY EAR appear in 1,735 clips; do not trust a larger number derived
+// from clip durations, which cannot separate a spelled-out word from an
+// ordinary short one (clean spa/ita courses score worse on that measure than
+// these two do). Two structural gaps, both visible from the signature alone:
 //
 //   1. It looks at the WHOLE clip text, so a short word inside a longer phrase
 //      is never hinted — and that is where most of the defect lives
-//      ("mi" 568 clips, "di" 432, "s'" 292, "ia" 182 in deu_at alone).
+//      ("mi" 568 clips and "di" 432 in deu_at alone, both confirmed by ear).
 //   2. Its Latin threshold is 2 characters, so a 3-letter dialect token is
 //      never hinted even when the clip IS just that word — "übn" (376 clips)
 //      and "oda" are the confirmed cases.
