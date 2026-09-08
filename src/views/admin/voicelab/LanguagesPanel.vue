@@ -1776,20 +1776,11 @@ function referenceTitle (ref) {
 // so `clear` as an immediate write no longer exists: `stageClear` above stages
 // it. One save, one report, one reload.
 
-/**
- * Candidates for a slot. A PHRASE slot wants the right gender, or one unknown.
- * A GUIDE slot takes any voice that speaks the language — a guide is one voice,
- * and the male/female split belongs to the phrase slots alone.
- */
 /** The row for a code, so a handler holding only a code can reach its language. */
 function langByCode (code) {
   return (data.value?.languages || []).find((l) => l.code === code) || null
 }
 
-function candidatesFor (lang, slot) {
-  if (slot.slot === 'guide') return lang.guide?.candidates || []
-  return (lang.candidates || []).filter((c) => !c.gender || c.gender === slot.gender)
-}
 
 /**
  * THE ONE LIST. Every voice on offer for this language, phrase and guide alike,
@@ -2747,12 +2738,6 @@ function auditionList (lang) {
   background: var(--surface-2, rgba(127, 127, 127, .08));
 }
 .vl-human-course { margin: .15rem .25rem 0 0; display: inline-block; font-size: .6875rem; }
-.vl-slot-refused { margin: 0; line-height: 1.45; }
-/* Two columns, not four: at four the phrase slots squeezed every candidate's
-   NAME to nothing — the one thing a cast is chosen by. Fixed at two so the
-   male/female pair reads as a 2x2 rather than three and an orphan. */
-.vl-slots { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .6rem; }
-@media (max-width: 900px) { .vl-slots { grid-template-columns: minmax(0, 1fr); } }
 .vl-slot { border: 1px solid var(--line); border-radius: .5rem; padding: .5rem; background: var(--surface); }
 .vl-slot-group { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em;
   color: var(--faint); margin: .5rem 0 .4rem; }
@@ -2778,13 +2763,8 @@ function auditionList (lang) {
 .vl-prepare { margin: .55rem 0 0; display: flex; align-items: center; gap: .6rem; flex-wrap: wrap;
               font-size: .8125rem; }
 
-/* The guide block is set apart rather than mixed in with the phrase slots: it
-   is a different kind of audio, cast on a different language role. */
-.vl-guide-group { margin-top: 1.1rem; padding-top: .8rem; border-top: 1px dashed var(--line); }
 .vl-guide-sub { display: block; margin-top: .25rem; text-transform: none; letter-spacing: 0;
   font-size: .75rem; max-width: 70ch; }
-.vl-guide-inuse { font-size: .8125rem; }
-.vl-guide-inuse .ui-pill { margin-right: .25rem; }
 .vl-slot-guide { border-style: dashed; }
 .vl-pace { font-size: .7rem; padding: .1rem .35rem; border-radius: 3px; white-space: nowrap; }
 .vl-pace-fast { background: rgba(124,92,255,.15); color: #7c5cff; }
@@ -2824,7 +2804,6 @@ function auditionList (lang) {
 .vl-human-details summary { cursor: pointer; color: var(--muted); }
 .vl-slot-label { font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; color: var(--faint); margin-bottom: .3rem; }
 .vl-slot-filled { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
-.vl-slot-empty { display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
 .vl-voice { font-weight: 600; }
 .vl-kind { font-size: .75rem; color: var(--muted); }
 .vl-muted { color: var(--muted); }
