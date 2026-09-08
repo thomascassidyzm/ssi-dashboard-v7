@@ -126,7 +126,7 @@ function hasCompound(toks, auxSet, partTest, raw) {
     const r = (raw && raw[i]) || '';
     const prev = (raw && raw[i - 1]) || '';
     const reflexive = /^(m|t|s)'/.test(r) || ['me', 'te', 'se', 'nous', 'vous'].includes(prev);
-    for (let j = i + 1; j <= i + 3 && j < toks.length; j++) {
+    for (let j = i + 1; j <= i + 4 && j < toks.length; j++) {
       if (partTest(toks[j]) || (reflexive && isParticiple(toks[j]))) return true;
       if (!AUX_INFIX.has(toks[j])) break;
     }
