@@ -232,7 +232,13 @@
                   {{ item.legoId }}
                 </div>
                 <div class="flex-1 min-w-0 text-sm text-muted truncate">
-                  {{ item.known_text }} → {{ item.target_text }}
+                  <!-- Both sides are isolated and given their own direction: this line
+                       concatenates two runs into one LTR label, which is exactly how a
+                       trailing neutral (`!`, `.`) ends up on the wrong side of an Arabic
+                       run. The known side needs it too — eng_for_ara is Arabic-KNOWN. -->
+                  <span class="bidi-isolate" :dir="dirFor(item.known_text)">{{ item.known_text }}</span>
+                  →
+                  <span class="bidi-isolate" :dir="dirFor(item.target_text)">{{ item.target_text }}</span>
                 </div>
                 <div class="text-xs text-faint whitespace-nowrap">
                   {{ item.drawCount === 1 ? '1 draw' : `${item.drawCount} draws` }}

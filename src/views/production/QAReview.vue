@@ -101,7 +101,7 @@
           <div class="text-sm mb-1">
             <span class="text-muted">{{ flag.details?.known || '—' }}</span>
             <span class="text-faint mx-1">&rarr;</span>
-            <span class="text-ink">{{ flag.details?.target || '—' }}</span>
+            <span class="text-ink bidi-isolate" :dir="dirFor(flag.details?.target)">{{ flag.details?.target || '—' }}</span>
           </div>
 
           <!-- Issue -->
@@ -145,6 +145,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getQAFlags, getQASummary } from '@/services/supabase'

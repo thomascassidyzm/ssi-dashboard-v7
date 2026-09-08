@@ -282,8 +282,8 @@
               </div>
 
               <div class="pl-8">
-                <div class="text-ink">{{ line.target_text }}</div>
-                <div class="text-muted text-sm mt-0.5">{{ line.known_text }}</div>
+                <div class="text-ink bidi-isolate" :dir="dirFor(line.target_text)">{{ line.target_text }}</div>
+                <div class="text-muted text-sm mt-0.5 bidi-isolate" :dir="dirFor(line.known_text)">{{ line.known_text }}</div>
 
                 <!-- THE CLIPS. Every button below plays the exact bytes the
                      learner is served: the learning-app proxy, with the same
@@ -360,6 +360,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 /**
  * PodScriptsView — the read-only pod script viewer (Tom, 2026-08-24):
  * "Can I not see the scripts anywhere in Popty to have a quick butcher's at
