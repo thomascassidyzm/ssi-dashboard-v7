@@ -139,7 +139,7 @@
                       <span class="text-faint text-xs font-mono">{{ String(index + 1).padStart(3, '0') }}</span>
                       <span class="text-xs text-faint">{{ phrase.legoCount }} building blocks</span>
                     </div>
-                    <p class="text-sm text-ink">{{ phrase.target }}</p>
+                    <p class="text-sm text-ink bidi-isolate" :dir="dirFor(phrase.target)">{{ phrase.target }}</p>
                     <p class="text-xs text-faint mt-0.5">{{ phrase.source }}</p>
                   </div>
                 </div>
@@ -287,6 +287,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 import { ref, computed, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api'

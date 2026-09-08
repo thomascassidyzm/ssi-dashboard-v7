@@ -801,7 +801,7 @@
             </div>
             <div>
               <div class="text-xs text-muted mb-1">Target</div>
-              <div class="text-ink font-mono text-lg">{{ editModal.translation?.target }}</div>
+              <div class="text-ink font-mono text-lg bidi-isolate" :dir="dirFor(editModal.translation?.target)">{{ editModal.translation?.target }}</div>
             </div>
           </div>
 
@@ -1028,6 +1028,7 @@
 </template>
 
 <script setup>
+import { dirFor } from '@/utils/textDirection.js'
 import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { useToast } from 'vue-toastification'

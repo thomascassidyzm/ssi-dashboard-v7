@@ -149,7 +149,7 @@
                 </span>
               </div>
               <div class="text-sm text-ink">{{ seedData.basket?.seed_pair?.known || 'Loading...' }}</div>
-              <div class="text-sm text-accent-2">{{ seedData.basket?.seed_pair?.target || '' }}</div>
+              <div class="text-sm text-accent-2 bidi-isolate" :dir="dirFor(seedData.basket?.seed_pair?.target)">{{ seedData.basket?.seed_pair?.target || '' }}</div>
             </div>
             <div class="flex items-center gap-3">
               <button
