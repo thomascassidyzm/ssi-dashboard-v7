@@ -1,0 +1,122 @@
+[
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "b40deb6e-9260-459e-b418-8ab61145b652",
+    "seed": 332,
+    "legoIndex": 2,
+    "before": {
+      "known": "new (feminine)",
+      "target": "nueva"
+    },
+    "after": {
+      "known": "new",
+      "target": "nueva"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0332L02C02 already reads bare \"new\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "0cef3f71-ce6b-40e7-a2ba-239e3f17e01d",
+    "seed": 398,
+    "legoIndex": 1,
+    "before": {
+      "known": "patient (plural)",
+      "target": "pacientes"
+    },
+    "after": {
+      "known": "patient",
+      "target": "pacientes"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0398L01C03 already reads bare \"patient\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "ab5f78ca-51ab-4f93-81ff-666dcdebd47f",
+    "seed": 454,
+    "legoIndex": 1,
+    "before": {
+      "known": "the (time)",
+      "target": "las"
+    },
+    "after": {
+      "known": "the",
+      "target": "las"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0454L01C01 already reads bare \"the\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "860464ae-f499-4115-a3a5-888381fc90aa",
+    "seed": 642,
+    "legoIndex": 2,
+    "before": {
+      "known": "you (reflexive)",
+      "target": "se"
+    },
+    "after": {
+      "known": "you",
+      "target": "se"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0642L02C01 already reads bare \"you\". Note: seed 642 has a separate, pre-existing, documented bare-USE-line ZUT collision (cue-library-v1-spa.md: se siente vs te sientes@40 / te sientas@542) — untouched by this fix."
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "5de869ce-05a7-42f5-8db5-bcea89dc2997",
+    "seed": 645,
+    "legoIndex": 1,
+    "before": {
+      "known": "you (formal)",
+      "target": "le"
+    },
+    "after": {
+      "known": "you",
+      "target": "le"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0645L01C02 already reads bare \"you\" (register carried by U01/U02 vocative siblings)"
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "b71a47e4-1b06-4065-a7b8-602ee4dc5936",
+    "seed": 653,
+    "legoIndex": 1,
+    "before": {
+      "known": "you (formal)",
+      "target": "le"
+    },
+    "after": {
+      "known": "you",
+      "target": "le"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0653L01C01 already reads bare \"you\" (register already carried by the lego's own known_text \"does it matter to you sir\")"
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "9aa27f68-dff1-463b-af24-470c23a39f02",
+    "seed": 657,
+    "legoIndex": 1,
+    "before": {
+      "known": "you all (reflexive)",
+      "target": "os"
+    },
+    "after": {
+      "known": "you all",
+      "target": "os"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0657L01C01 already reads bare \"you all\""
+  },
+  {
+    "action": "UPDATE_LEGO_COMPONENTS",
+    "id": "999f0b56-cb67-432f-a868-03dea334fe51",
+    "seed": 667,
+    "legoIndex": 1,
+    "before": {
+      "known": "you all (indirect)",
+      "target": "os"
+    },
+    "after": {
+      "known": "you all",
+      "target": "os"
+    },
+    "reason": "stale-duplicate component JSON; sibling S0667L01C01 already reads bare \"you all\""
+  }
+]

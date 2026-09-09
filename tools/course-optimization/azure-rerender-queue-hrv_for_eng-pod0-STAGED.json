@@ -1,0 +1,406 @@
+{
+  "course": "hrv_for_eng",
+  "pod_id": "hrv_for_eng:pod-0",
+  "reason": "ellipsis chunk-ceiling pass (pod-ladder-proposal.md §9a, C=8) — Take-G re-render for touched turns",
+  "voice": "hr-HR-GabrijelaNeural",
+  "provider": "azure",
+  "status": "STAGED — not queued for render, awaiting approval",
+  "turn_count": 65,
+  "clip_count": 65,
+  "total_chars": 4621,
+  "cost_per_million_chars_usd": 4,
+  "estimated_cost_usd": 0.0185,
+  "note": "Cost estimate covers ONLY the Take-G natural-clause clip re-render (1 Azure call/turn, SSML …→<break time=\"400ms\"/> via services/shared/ellipsis-ssml.cjs). Does NOT include atom_map (visual-tile) audio, which breakdown-flat.cjs would separately re-render for the same turns if the visual tiles need re-voicing.",
+  "turns": [
+    {
+      "id": "hrv_for_eng:pod-0:SC08-S007",
+      "global_order": 49,
+      "target_text": "Imamo kućno crno,… kućno bijelo,… ili možete uzeti… jedno od naših vina… iz boce.",
+      "chars": 81
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S001",
+      "global_order": 59,
+      "target_text": "Dobra večer. Imamo rezervaciju… za dvoje… na ime Davies.",
+      "chars": 56
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S003",
+      "global_order": 61,
+      "target_text": "Želite li… negaziranu… ili gaziranu vodu… za početak?",
+      "chars": 53
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S004",
+      "global_order": 62,
+      "target_text": "Željeli bismo jednu… bocu gazirane vode… i jednu bocu… negazirane vode,… molim.",
+      "chars": 79
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S005",
+      "global_order": 63,
+      "target_text": "Izvinite —… imate li nešto… bez glutena? Ili za… vegetarijance?",
+      "chars": 63
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S006",
+      "global_order": 64,
+      "target_text": "Da, losos i rižoto… su bez glutena. Imamo… i nekoliko salata.",
+      "chars": 61
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S007",
+      "global_order": 65,
+      "target_text": "A što biste… preporučili večeras?",
+      "chars": 33
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S008",
+      "global_order": 66,
+      "target_text": "Janjetina je izvrsna. Polako se pekla,… s ružmarinom.",
+      "chars": 53
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S009",
+      "global_order": 67,
+      "target_text": "Uzet ću janjetinu… molim. S prilogom… zelenog povrća.",
+      "chars": 53
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S010",
+      "global_order": 68,
+      "target_text": "A za mene rižoto. S malom… zelenom salatom… za početak.",
+      "chars": 55
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S011",
+      "global_order": 69,
+      "target_text": "Naravno. A što biste željeli… za piće?",
+      "chars": 38
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S012",
+      "global_order": 70,
+      "target_text": "Možemo li vidjeti… vinsku kartu?",
+      "chars": 32
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S013",
+      "global_order": 71,
+      "target_text": "Jedna boca kućnog… crvenog bila bi divna.",
+      "chars": 41
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC09-S017",
+      "global_order": 75,
+      "target_text": "I račun,… kad budete spremni. Možemo li platiti… odvojeno?",
+      "chars": 58
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S001",
+      "global_order": 77,
+      "target_text": "Oprostite. Imate li… kakvih lijekova… protiv bolova?",
+      "chars": 52
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S002",
+      "global_order": 78,
+      "target_text": "Da, nalaze se… u onom prolazu,… s lijeve strane.",
+      "chars": 48
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S003",
+      "global_order": 79,
+      "target_text": "Hvala. A imate li… kakvih lijekova… protiv bolova za djecu?",
+      "chars": 59
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S004",
+      "global_order": 80,
+      "target_text": "Mislim da da,… ali morat ćete… pogledati… da budete sigurni.",
+      "chars": 60
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S005",
+      "global_order": 81,
+      "target_text": "Također trebam kupiti… kremu za sunčanje… i pastu za zube.",
+      "chars": 58
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S006",
+      "global_order": 82,
+      "target_text": "Krema za sunčanje je… tamo s vaše… desne strane,… a pastu za zube ćete… naći odmah iza ugla.",
+      "chars": 92
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S007",
+      "global_order": 83,
+      "target_text": "Hvala, bili ste mi… od velike pomoći. Jako sam zahvalan.",
+      "chars": 56
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S008",
+      "global_order": 84,
+      "target_text": "Nema na čemu. Jeste li ovdje… na odmoru? Vrlo dobro… govorite hrvatski.",
+      "chars": 71
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC10-S009",
+      "global_order": 85,
+      "target_text": "To je od vas… jako lijepo! Da,… na godišnjem sam odmoru,… i trebam više vježbati… da bih bolje govorio… hrvatski. Hvala vam puno… i doviđenja.",
+      "chars": 142
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S001",
+      "global_order": 87,
+      "target_text": "Dobro podne. Imam rezervaciju… na ime Jones.",
+      "chars": 44
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S002",
+      "global_order": 88,
+      "target_text": "Dobrodošli. Da, imate dvokrevetnu… sobu na tri noći. Mogu li vidjeti… osobnu iskaznicu… ili putovnicu, molim?",
+      "chars": 109
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S004",
+      "global_order": 90,
+      "target_text": "Odlično. Soba se nalazi… na trećem katu,… soba sedam nula devet.",
+      "chars": 64
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S007",
+      "global_order": 93,
+      "target_text": "U koliko sati… se poslužuje doručak?",
+      "chars": 36
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S008",
+      "global_order": 94,
+      "target_text": "Od pola osam… do deset sati. Imamo voće… i žitarice… ili topli doručak.",
+      "chars": 71
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S009",
+      "global_order": 95,
+      "target_text": "Odlično. Je li moguće… da imamo… kasnu odjavu?",
+      "chars": 46
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S010",
+      "global_order": 96,
+      "target_text": "Da, možete ostati… do podne,… bez dodatnih troškova.",
+      "chars": 52
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S011",
+      "global_order": 97,
+      "target_text": "A koja je lozinka… za wifi?",
+      "chars": 27
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC11-S012",
+      "global_order": 98,
+      "target_text": "Nalazi se na kartici… dobrodošlice… u vašoj sobi. Ugodan boravak.",
+      "chars": 65
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S001",
+      "global_order": 100,
+      "target_text": "Dobro jutro. Ne osjećam se baš dobro… — možete li mi nešto… preporučiti?",
+      "chars": 72
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S003",
+      "global_order": 102,
+      "target_text": "Imam glavobolju… i bol u grlu od jučer.",
+      "chars": 39
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S004",
+      "global_order": 103,
+      "target_text": "Pokušajte… paracetamol… za glavobolju,… a ove pastile… za grlo.",
+      "chars": 63
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S005",
+      "global_order": 104,
+      "target_text": "Koliko često… trebam uzimati… paracetamol?",
+      "chars": 42
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S006",
+      "global_order": 105,
+      "target_text": "Jednu tabletu svakih… četiri do šest sati,… ne više od osam na dan.",
+      "chars": 67
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S007",
+      "global_order": 106,
+      "target_text": "Mogu li ih uzimati… s hranom?",
+      "chars": 29
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S008",
+      "global_order": 107,
+      "target_text": "Da, s hranom… ili nakon jela… je najbolje.",
+      "chars": 42
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC12-S009",
+      "global_order": 108,
+      "target_text": "Hvala. Mogu li dobiti… i pakiranje flastera?",
+      "chars": 44
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC13-S001",
+      "global_order": 110,
+      "target_text": "Izvinite, znate li… kako doći do najbližeg… supermarketa?",
+      "chars": 57
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC13-S002",
+      "global_order": 111,
+      "target_text": "Da, otprilike… desetak minuta hoda. Idite ravno… ovom cestom.",
+      "chars": 61
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC13-S005",
+      "global_order": 114,
+      "target_text": "Na drugom kružnom toku,… skrenite prvim izlazom.",
+      "chars": 48
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC13-S007",
+      "global_order": 116,
+      "target_text": "Vidjet ćete supermarket… s lijeve strane, točno… nasuprot autobusnog… stajališta.",
+      "chars": 81
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC13-S008",
+      "global_order": 117,
+      "target_text": "Odlično. A ima li tu… negdje bankomat?",
+      "chars": 38
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC13-S009",
+      "global_order": 118,
+      "target_text": "Da, ima jedan… na glavnoj ulici,… pored pekare.",
+      "chars": 47
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC13-S010",
+      "global_order": 119,
+      "target_text": "Hvala vam puno. Bili ste… od velike pomoći.",
+      "chars": 43
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC14-S001",
+      "global_order": 121,
+      "target_text": "Bok. Možete li me odvesti… do kolodvora, molim?",
+      "chars": 47
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC14-S002",
+      "global_order": 122,
+      "target_text": "Da, naravno. Možda će potrajati… malo, trenutno… ima puno prometa.",
+      "chars": 66
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC14-S003",
+      "global_order": 123,
+      "target_text": "Otprilike… koliko dugo mislite… da će trebati?",
+      "chars": 46
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC14-S004",
+      "global_order": 124,
+      "target_text": "Možda… oko dvadeset minuta,… ako ne budemo… imali smole… na semaforima.",
+      "chars": 71
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC14-S005",
+      "global_order": 125,
+      "target_text": "Znate li… gdje mogu kupiti kartu… na kolodvoru?",
+      "chars": 47
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC14-S006",
+      "global_order": 126,
+      "target_text": "Da, ostavit ću vas… točno kod blagajne.",
+      "chars": 39
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC14-S007",
+      "global_order": 127,
+      "target_text": "Izvoli. To je dvanaest eura… pedeset.",
+      "chars": 37
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S001",
+      "global_order": 131,
+      "target_text": "Bi li ti smetalo… da pokušam vježbati… govoriti hrvatski… s tobom? Ne učim ga jako dugo,… i još se uvijek… osjećam malo nervozan… što se tiče govora… s drugim ljudima.",
+      "chars": 167
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S002",
+      "global_order": 132,
+      "target_text": "Naravno, nema problema. Čini se da to govoriš… jako dobro. Lako te razumijem.",
+      "chars": 77
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S003",
+      "global_order": 133,
+      "target_text": "Hvala, dobro je to znati. Moram naučiti… više riječi… i moram vježbati… slušanje. Ne razumijem ljude… jako dobro… kada ne govore… polako.",
+      "chars": 137
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S004",
+      "global_order": 134,
+      "target_text": "Govorim li ti dovoljno… polako sada?",
+      "chars": 36
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S005",
+      "global_order": 135,
+      "target_text": "Da, hvala. Lakše je razgovarati… samo s jednom osobom. Malo je teško smisliti… što reći, ipak. Nisam siguran… što da kažem,… ali osjećam… kao da mogu… govoriti dovoljno… da počnem… imati razgovore.",
+      "chars": 197
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S006",
+      "global_order": 136,
+      "target_text": "Mislim… da se odlično snalaziš. Impresioniran sam. Mislim… da si spreman početi… govoriti hrvatski… s bilo kim… tko govori hrvatski.",
+      "chars": 132
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S007",
+      "global_order": 137,
+      "target_text": "Malo je frustrirajuće… kad ne mogu dovoljno… brzo razmišljati… da bih se… ispravno izrazio. Ali znam… da moram… nastaviti vježbati… ako želim govoriti… samopouzdanije.",
+      "chars": 167
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S008",
+      "global_order": 138,
+      "target_text": "Trebao bi već biti… samopouzdan. Mislim da se snalaziš… puno bolje… nego što misliš. Osjećam se ugodno… razgovarajući s… tobom,… i ne govorim… jako polako.",
+      "chars": 155
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S009",
+      "global_order": 139,
+      "target_text": "Ovo je točno… onakva vrsta vježbe… kakva mi je potrebna. Mislim… da to mogu osjetiti… kako mijenja moj mozak… dok razgovaramo! Stvarno cijenim… tvoju pomoć. Ali iznenađujuće… je kako se umorim… kad govorim na jeziku… koji ne govorim… jako dobro.",
+      "chars": 245
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S010",
+      "global_order": 140,
+      "target_text": "Mislim da je to normalno. Učenje novog jezika… je teško. Ali toliko… je zabavno… kad počneš… imati razgovore… zar ne?",
+      "chars": 117
+    },
+    {
+      "id": "hrv_for_eng:pod-0:SC15-S011",
+      "global_order": 141,
+      "target_text": "Stvarno jest. Stvarno sam sretan… što mogu imati… ovoliko razgovora. I nadam se… da ćemo moći imati… više razgovora… u budućnosti… dok nastavim… napredovati.",
+      "chars": 157
+    }
+  ]
+}
