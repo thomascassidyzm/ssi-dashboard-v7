@@ -145,6 +145,11 @@ const {
 // ruling and now a constant. Still imported from the planner so the per-clip
 // lookup below and the batch planner can never drift apart on it.
 const { isSpeedTrustedVoice } = require('../audio-reuse-planner.cjs')
+// The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
+// BASE tag for every regional course ('deu' for deu_at_for_eng), so computing
+// the steer from it asked Cartesia for plain German on an Austrian course.
+// See services/shared/tts-locale-steer.cjs.
+const { ttsLocaleForRole } = require('../shared/tts-locale-steer.cjs')
 
 // How many candidate rows one sibling lookup may page in. Was 200 while the
 // query still filtered on `role` in SQL; dropping role from the key (A-137)
@@ -2926,7 +2931,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
-            locale: toBcp47(item.language),
+            locale: ttsLocaleForRole(course, item.role, item.language),
             speed
           }))
         } else {
@@ -3513,7 +3518,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceId,
-            locale: toBcp47(language),
+            locale: ttsLocaleForRole(course, role, language),
             speed
           }))
         } else {
@@ -4802,7 +4807,10 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     // 2. Get course voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('course_code, voice_config, known_lang, target_lang')
+      // voice_pool_key/dialect/known_dialect are the columns the cast key and the
+      // TTS steer are computed from (services/shared/cast-language-key.cjs). A
+      // narrow select made both silently degrade to the base language.
+      .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
       .eq('course_code', courseCode)
       .single()
 
@@ -4936,7 +4944,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
           apiKey: process.env.CARTESIA_API_KEY,
           voiceId: voiceId,
-          locale: toBcp47(lang),
+          locale: ttsLocaleForRole(course, role, lang),
           speed
         }))
       } else {
@@ -5080,7 +5088,10 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('course_code, voice_config, known_lang, target_lang')
+      // voice_pool_key/dialect/known_dialect are the columns the cast key and the
+      // TTS steer are computed from (services/shared/cast-language-key.cjs). A
+      // narrow select made both silently degrade to the base language.
+      .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
       .eq('course_code', courseCode)
       .single()
 
@@ -5438,7 +5449,10 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('course_code, voice_config, known_lang, target_lang')
+      // voice_pool_key/dialect/known_dialect are the columns the cast key and the
+      // TTS steer are computed from (services/shared/cast-language-key.cjs). A
+      // narrow select made both silently degrade to the base language.
+      .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
       .eq('course_code', courseCode)
       .single()
 
@@ -5660,7 +5674,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
-            locale: toBcp47(language),
+            locale: ttsLocaleForRole(course, role, language),
             speed
           }))
         } else {
@@ -5842,7 +5856,10 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
     // 1. Load course + voice config
     const { data: course, error: courseError } = await supabase
       .from('courses')
-      .select('course_code, voice_config, known_lang, target_lang')
+      // voice_pool_key/dialect/known_dialect are the columns the cast key and the
+      // TTS steer are computed from (services/shared/cast-language-key.cjs). A
+      // narrow select made both silently degrade to the base language.
+      .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
       .eq('course_code', courseCode)
       .single()
 
@@ -6049,7 +6066,7 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
-            locale: toBcp47(language),
+            locale: ttsLocaleForRole(course, role, language),
             speed
           }))
         } else {
@@ -6531,7 +6548,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
-            locale: toBcp47(item.language),
+            locale: ttsLocaleForRole(course, item.role, item.language),
             speed
           }))
         } else {

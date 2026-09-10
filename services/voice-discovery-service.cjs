@@ -252,12 +252,32 @@ function toBcp47(languageCode) {
     if (dialect) return `ar-${dialect.toUpperCase()}`;
     return 'ar';
   }
-  // Strip dialect suffixes (spa_mx → spa, por_br → pt-BR handled above)
-  const base = lc.includes('_') ? lc.split('_')[0] : lc.split('-')[0];
   // Convert legacy ISO 639-3 to ISO 639-1 where needed
   const map = { spa: 'es', eng: 'en', fra: 'fr', deu: 'de', ita: 'it',
                 por: 'pt', jpn: 'ja', kor: 'ko', nld: 'nl', rus: 'ru',
                 vie: 'vi', hin: 'hi', ben: 'bn', tur: 'tr', pol: 'pl' };
+
+  // A REGIONAL cast key is its own language, not a suffix to throw away
+  // ('deu_at', 'spa_mx', 'fra_ca'). Two letters after the underscore is an
+  // ISO 3166-1 region subtag and becomes a BCP-47 region: 'deu_at' → 'de-AT'.
+  // The two cases above (por_br, ara_*) were this same rule written out one
+  // language at a time; this is the general form, and it is what lets an
+  // Austrian course send Cartesia a de-AT steer instead of a bare German one.
+  //
+  // A NON-region suffix is a dialect NAME with no BCP-47 spelling at all
+  // ('cym_north', 'gle_munster'), and falls through to the base language
+  // exactly as before — inventing 'cy-NORTH' would be worse than answering
+  // 'cy'. The underscore is required: a hyphenated value is already BCP-47
+  // ('en-GB') and keeps its long-standing region-stripping behaviour, because
+  // callers pass those straight off course_audio.language.
+  const regional = lc.match(/^([a-z]{2,3})_([a-z]{2})$/);
+  if (regional) {
+    const regionBase = map[regional[1]] || regional[1];
+    return `${regionBase}-${regional[2].toUpperCase()}`;
+  }
+
+  // Strip dialect suffixes (cym_north → cym, por_br → pt-BR handled above)
+  const base = lc.includes('_') ? lc.split('_')[0] : lc.split('-')[0];
   return map[base] || base;
 }
 
