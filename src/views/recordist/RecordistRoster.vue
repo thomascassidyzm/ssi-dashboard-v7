@@ -49,7 +49,7 @@
              nothing in it is allowed to be big except the line itself. -->
         <span class="peek-meta">
           <span v-if="peeked.speaker" class="peek-speaker">{{ peeked.speaker }}</span>
-          <span class="peek-state">{{ peeked.done ? 'Recorded' : 'Not recorded' }}</span>
+          <span class="peek-state" :class="markClass(peeked)">{{ stateWord(peeked) }}</span>
         </span>
         <span class="peek-text">{{ peeked.text }}</span>
         <!-- AND THIS IS THE PRIZE. "I want to read that one again" is what an
@@ -115,12 +115,18 @@
         </button>
 
         <div v-if="stripShown(s)" class="strip">
+          <!-- FOUR MARKS, NOT TWO, AND THE TWO NEW ONES ARE NOT A VERDICT.
+               A take still on its way up and a take the server refused both
+               drew as a plain hollow square — identical to a line never read —
+               and Aran hit exactly that on 2026-09-10. `stateWord` is the one
+               place any of the four is put into words, so the mark, its label
+               and the panel above cannot disagree. -->
           <button
             v-for="r in s.rows" :key="r.id"
             type="button"
             class="tick"
-            :class="{ done: r.done, on: peekId === r.id }"
-            :aria-label="`${r.text} — ${r.done ? 'recorded' : 'not recorded'}`"
+            :class="[markClass(r), { on: peekId === r.id }]"
+            :aria-label="`${r.text} — ${stateWord(r)}`"
             @mouseenter="hoverId = r.id"
             @mouseleave="hoverId === r.id && (hoverId = null)"
             @click="peekId = peekId === r.id ? null : r.id"
@@ -171,7 +177,7 @@
         </button>
       </h3>
       <ol v-if="isOpen(s)" class="section-rows">
-      <li v-for="r in s.rows" :key="r.id" :class="['row', r.done ? 'is-done' : 'is-todo', { playing: playingId === r.id, editing: editingId === r.id }]">
+      <li v-for="r in s.rows" :key="r.id" :class="['row', 'is-' + markClass(r), { playing: playingId === r.id, editing: editingId === r.id }]">
           <span class="row-mark" aria-hidden="true"></span>
           <!-- WHO IS SPEAKING. A two-hander read without the character names is
                one man talking to himself; the name is on the row so it never is. -->
@@ -195,7 +201,7 @@
           ></textarea>
           <span v-else class="row-text" :class="{ tappable: r.canEdit }"
                 @click="onTextTap(r, $event)">{{ r.text }}</span>
-          <span class="row-state">{{ r.done ? 'Recorded' : 'To record' }}</span>
+          <span class="row-state" :class="markClass(r)">{{ stateWord(r) }}</span>
           <p v-if="error && editingId === r.id" class="row-error">{{ error }}</p>
           <!-- ON THE ROW, not under the list. It first rendered after the whole
                roster, which on Catrin's 466 lines put it several screens below
@@ -212,7 +218,7 @@
             class="row-record"
             type="button"
             @click="$emit('record', r.id)"
-          >{{ r.done ? 'Record again' : 'Record' }}</button>
+          >{{ r.failed ? 'Record it again' : (r.done || r.pending ? 'Record again' : 'Record') }}</button>
           <button
             v-if="r.url"
             class="row-play"
@@ -382,20 +388,67 @@ const allRows = computed(() => props.sections.flatMap(s => s.rows))
 // take the reader has, it is a line still to read. So every count on this
 // component is `done`, and the sections always sum to the whole run.
 function takes(rows) { return rows.reduce((n, r) => n + (r.hasTake || r.done ? 1 : 0), 0) }
+/**
+ * WHICH OF THE FOUR THINGS A LINE IS, in one place, for the mark, the label,
+ * the panel and the row.
+ *
+ * Order matters and it is not arbitrary. FAILED first: a take the server would
+ * not accept is the only one of the four that costs the reader something if he
+ * walks past it, so it outranks everything, including a `done` set optimistically
+ * when the take was queued. SENDING second, for the same reason in reverse — the
+ * bytes are safe and re-reading it is wasted breath. Then done, then not yet.
+ *
+ * None of these is a verdict on the reading. Tom's ruling of 2026-09-02 stands:
+ * a take we have ruled UNUSABLE is shown as a line still to record and nothing
+ * more, and nothing on this component says otherwise. `failed` here is the
+ * server refusing to take the bytes at all — a transport fact the reader is the
+ * only person who can act on.
+ */
+function markClass(r) {
+  if (!r) return 'todo'
+  if (r.failed) return 'failed'
+  if (r.pending) return 'sending'
+  return (r.hasTake || r.done) ? 'done' : 'todo'
+}
+const STATE_WORDS = {
+  failed: 'Did not save — read it again',
+  sending: 'Recorded — still going up',
+  done: 'Recorded',
+  todo: 'To record',
+}
+function stateWord(r) { return STATE_WORDS[markClass(r)] }
 const takeCount = computed(() => takes(allRows.value))
-const freshCount = computed(() => allRows.value.length - takeCount.value)
+// STILL TO READ excludes takes that are on their way up: they have been read.
+// A FAILED one is counted, because that one really does still need reading.
+const sendingCount = computed(() => allRows.value.reduce((n, r) => n + (markClass(r) === 'sending' ? 1 : 0), 0))
+const freshCount = computed(() => allRows.value.length - takeCount.value - sendingCount.value)
 // TWO NUMBERS PER SECTION, since 2026-09-03: the marks beside them are this
 // section's own run, so the caption has to add up to this section and not to
 // the page. Recorded, and still to read — never a third state.
 function tallyWords(section) {
   const t = takes(section.rows)
-  const left = section.rows.length - t
+  const sendingHere = section.rows.reduce((n, r) => n + (markClass(r) === 'sending' ? 1 : 0), 0)
+  const left = section.rows.length - t - sendingHere
   // FINISHED IS ITS OWN SENTENCE, not the same sentence with a zero in it.
   // "80 recorded · 0 still to read" is true and it reads like a status line; a
   // person who has just finished eighty lines is owed a word that says he has
   // finished them.
-  if (!left && section.rows.length) return `✓ all ${section.rows.length} recorded — nothing left to read`
-  return `${t ? `${t} recorded` : 'none recorded yet'} · ${left} still to read`
+  // …but only when there is genuinely nothing outstanding on it. A section whose
+  // last takes are still going up has NOT finished, and telling him it has is
+  // the same lie in a friendlier voice.
+  if (!left && !sendingHere && section.rows.length) return `✓ all ${section.rows.length} recorded — nothing left to read`
+  // AND THE TWO THAT ONLY APPEAR WHEN THEY ARE TRUE. "106 still to read" was
+  // the number Aran was reading while some of those lines held takes he had
+  // just made, so the caption has to be able to say how many of them are
+  // waiting on the network and how many the server would not accept. Both are
+  // silent at zero, which is almost always.
+  const sending = sendingHere
+  const failed = section.rows.reduce((n, r) => n + (markClass(r) === 'failed' ? 1 : 0), 0)
+  const extra = [
+    sending ? `${sending} still going up` : null,
+    failed ? `${failed} did not save` : null,
+  ].filter(Boolean)
+  return [`${t ? `${t} recorded` : 'none recorded yet'} · ${left} still to read`, ...extra].join(' · ')
 }
 // NOTHING LEFT IN IT. Computed from the rows themselves, from the same `takes`
 // every other count on this component uses, so a section can never be drawn as
@@ -446,8 +499,22 @@ function toggleStrip(key) {
   background: var(--color-paper, #f7f7f2);
   border-color: var(--color-paper, #f7f7f2);
 }
-/* The open mark, and the ONLY third appearance a mark ever has: it says "this
-   is the one you are looking at", never anything about the take. */
+/* ON ITS WAY UP: half-filled, so it reads at a glance as "started, not
+   finished" rather than as either of the two ends. The bytes are safe; there is
+   nothing for the reader to do about one of these and the mark must not shout. */
+.tick.sending {
+  background: var(--color-graphite, #475569);
+  border-color: var(--color-paper-dim, #c1c1bb);
+}
+/* DID NOT SAVE: the only mark on this grid that asks for something. Solid, not
+   an outline — an outline is what "not recorded" already looks like, and these
+   two must never be confused again. */
+.tick.failed {
+  background: #ff9d9d;
+  border-color: #ff9d9d;
+}
+/* The open mark, and the ONLY appearance a mark has that is not about the take:
+   it says "this is the one you are looking at". */
 .tick.on {
   outline: 2px solid var(--color-emerald, #06ffa5);
   outline-offset: 1px;
@@ -690,6 +757,14 @@ function toggleStrip(key) {
 }
 .is-done .row-mark { background: var(--color-paper, #f7f7f2); border-color: var(--color-paper, #f7f7f2); }
 .is-todo { opacity: 0.72; }
+/* The same two extra states as the marks, and drawn the same way, so a row and
+   its square in the grid above can never tell him different things. */
+.is-sending .row-mark { background: var(--color-graphite, #475569); border-color: var(--color-paper-dim, #c1c1bb); }
+.is-failed .row-mark { background: #ff9d9d; border-color: #ff9d9d; }
+.row-state.sending { color: var(--color-paper-dim, #c1c1bb); opacity: 1; }
+.row-state.failed { color: #ff9d9d; opacity: 1; }
+.peek-state.sending { color: var(--color-paper-dim, #c1c1bb); }
+.peek-state.failed { color: #ff9d9d; }
 .row-text { flex: 1 1 auto; font-size: 0.95rem; }
 .row-text.tappable { cursor: text; -webkit-tap-highlight-color: rgba(255, 166, 48, 0.25); }
 .row-text.tappable:active { color: var(--color-tungsten, #ffa630); }

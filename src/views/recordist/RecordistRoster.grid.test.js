@@ -72,7 +72,9 @@ describe('RecordistRoster — the sectioned grid', () => {
     // 2026-09-04). The words stay on the mark for a screen reader, where they
     // draw nothing.
     for (const t of w.findAll('.tick')) expect(t.attributes('title')).toBeUndefined()
-    expect(w.findAll('.tick')[0].attributes('aria-label')).toBe('Bore da, Sarah! — recorded')
+    // One vocabulary for all four states now (2026-09-10), so the mark's label,
+    // the panel and the row cannot say three different things about one line.
+    expect(w.findAll('.tick')[0].attributes('aria-label')).toBe('Bore da, Sarah! — Recorded')
   })
 
   it('tapping a mark shows that line in the one slot, never inside a grid', async () => {
@@ -123,12 +125,15 @@ describe('RecordistRoster — the sectioned grid', () => {
     expect(on[0].element).toBe(w.findAll('.strip')[1].findAll('.tick')[2].element)
   })
 
-  it('says recorded or not recorded and NOTHING else about the take', async () => {
+  it('says where the take is and NOTHING else about the take', async () => {
     const w = mountRoster()
     await w.findAll('.tick')[0].trigger('click')
     expect(w.find('.peek-state').text()).toBe('Recorded')
     await w.findAll('.tick')[1].trigger('click')
-    expect(w.find('.peek-state').text()).toBe('Not recorded')
+    // "Not recorded" became "To record" on 2026-09-10, when this panel started
+    // sharing one set of words with the row and the mark's label. Same fact,
+    // one vocabulary — and still no verdict of any kind in it.
+    expect(w.find('.peek-state').text()).toBe('To record')
     // A take we rejected is a line still to read, and nothing on this screen may
     // say otherwise (Tom, 2026-09-02).
     const words = w.find('.peek').text().toLowerCase()

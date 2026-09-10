@@ -676,6 +676,22 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
   readStyle: l.readStyle || 'natural',
+  // WHERE THE TAKE IS, WHICH IS NOT A VERDICT ON IT.
+  //
+  // Aran, 2026-09-10: "if I mouseover some of the phrases that are white/yet to
+  // read, there is stuff that I KNOW I recorded in the session today - so
+  // either those uploads have failed or they are still processing - would be
+  // super handy to know which". Both of those drew as an ordinary unread line,
+  // and they are opposite facts: one is safe and needs nothing, the other has
+  // lost the take unless he reads it again. A screen that cannot tell them
+  // apart makes him re-record what is already safe and abandon what is not.
+  //
+  // Tom's 2026-09-02 ruling — no third state — is about our JUDGEMENT on a
+  // take, and it still holds: nothing here says a take was good or bad. This
+  // says where the bytes are, which is a fact about the machine and is the
+  // thing he asked to be told.
+  pending: isPending(l.id),
+  failed: hasFailed(l.id),
 })))
 
 // THE THREE KINDS OF WORK, NAMED. Tom, 2026-09-02: "I want all the TYPES of
@@ -894,10 +910,24 @@ const currentSegments = computed(() => segmentsFor(current.value?.text))
 // recordist reads `<tgt>` in the queue preview.
 function plainText(text) { return segmentsFor(text).map(s => s.text).join('') }
 
+// A LINE WHOSE TAKE IS STILL GOING UP IS NOT A LINE TO READ.
+//
+// Aran, 2026-09-10: "to be able to carry on recording only items that are not
+// currently in the upload queue." Within one session `isRecorded` already
+// covers it — a queued take marks the line done the moment it is queued. What
+// it never covered is a take carried over on the DEVICE from an earlier
+// session: the server has not got it, so the line comes back saying
+// unrecorded, and the booth would serve it to him again for a read he has
+// already given us.
+//
+// A FAILED take is deliberately NOT settled. That line does still need reading,
+// and it is the one case where offering it again is the whole point.
+function isSettled(l) { return isRecorded(l) || isPending(l.id) }
+
 const startIndex = computed(() => {
   if (!lines.value.length) return -1
   if (includeRecorded.value) return 0
-  const i = lines.value.findIndex(l => !isRecorded(l))
+  const i = lines.value.findIndex(l => !isSettled(l))
   return i
 })
 
@@ -926,11 +956,11 @@ const startIndex = computed(() => {
 // so it does not wrap: there would be no end to it.
 function nextIndexFrom(i) {
   for (let k = i + 1; k < lines.value.length; k++) {
-    if (includeRecorded.value || !isRecorded(lines.value[k])) return k
+    if (includeRecorded.value || !isSettled(lines.value[k])) return k
   }
   if (includeRecorded.value) return -1
   for (let k = 0; k < i && k < lines.value.length; k++) {
-    if (!isRecorded(lines.value[k])) return k
+    if (!isSettled(lines.value[k])) return k
   }
   return -1
 }
@@ -960,7 +990,7 @@ const upcoming = computed(() => {
 // said one line was owed and the stage said none were.
 const remainingToRead = computed(() => {
   if (includeRecorded.value) return Math.max(0, lines.value.length - index.value)
-  return lines.value.reduce((n, l) => n + (isRecorded(l) ? 0 : 1), 0)
+  return lines.value.reduce((n, l) => n + (isSettled(l) ? 0 : 1), 0)
 })
 const firstLinePreview = computed(() => {
   const l = startIndex.value === -1 ? null : lines.value[startIndex.value]
