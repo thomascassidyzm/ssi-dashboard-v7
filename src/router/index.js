@@ -34,6 +34,7 @@ import Login from '../views/Login.vue'
 import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
 import { LEGACY_LAB_REDIRECTS } from './legacyLabRedirects'
+import { retiredPodSlugRedirect } from './retiredPodSlugs'
 
 // Production Suite v2.1 Components (APML-generated) - Now the default
 const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
@@ -892,6 +893,18 @@ router.beforeEach(async (to, from, next) => {
     const v = to.query.podVoice
     const voiceId = Array.isArray(v) ? v[0] : v
     if (voiceId) return next({ name: 'RecordistRoom', params: { voiceId }, replace: true })
+  }
+
+  // A POD LINK SENT BEFORE ITS SLUG WAS RETIRED. See ./retiredPodSlugs.js for
+  // why the name went and why this is a tombstone rather than an alias: the
+  // address bar changes to the pod's real name, so nobody reads the dead one off
+  // their own screen. This runs BEFORE the auth check, like the ?podVoice= block
+  // above and for the same reason — Aran's links are in his chat history, and
+  // holding one has to be enough. Login keeps `redirect` as the full path, so the
+  // rewrite happens once, here, and survives the sign-in.
+  {
+    const moved = retiredPodSlugRedirect(to.path)
+    if (moved) return next({ path: moved, query: to.query, hash: to.hash, replace: true })
   }
 
   // Public routes (login, auth verify) don't need auth

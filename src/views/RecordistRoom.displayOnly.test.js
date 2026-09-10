@@ -622,8 +622,8 @@ describe('RecordistRoom — two pods, two bodies of work', () => {
       json: async () => ({
         displayName: 'Aran', languageName: 'Welsh', total: 6, recorded: 1, remaining: 5,
         lines: [
-          { id: 'p-1', order: 1, text: 'Bore da', speaker: 'James', kind: 'pod', podId: 'A', podSlug: 'pod-0', podTitle: 'Northern Welsh — Pod 0', recorded: true, clipUrl: '/c/p-1' },
-          { id: 'p-2', order: 2, text: 'Sut mae?', speaker: 'Waiter', kind: 'pod', podId: 'A', podSlug: 'pod-0', podTitle: 'Northern Welsh — Pod 0', recorded: false, clipUrl: null },
+          { id: 'p-1', order: 1, text: 'Bore da', speaker: 'James', kind: 'pod', podId: 'A', podSlug: 'pod-1', podTitle: 'Northern Welsh — Pod 1', recorded: true, clipUrl: '/c/p-1' },
+          { id: 'p-2', order: 2, text: 'Sut mae?', speaker: 'Waiter', kind: 'pod', podId: 'A', podSlug: 'pod-1', podTitle: 'Northern Welsh — Pod 1', recorded: false, clipUrl: null },
           { id: 'n-1', order: 3, text: 'Diolch, Gadeirydd', speaker: 'Steve', kind: 'pod', podId: 'B', podSlug: 'senedd-s4c-steve', podTitle: 'Senedd: allegations of bullying at S4C', recorded: false, clipUrl: null },
           { id: 'n-2', order: 4, text: 'Dyna ni', speaker: 'Steve', kind: 'pod', podId: 'B', podSlug: 'senedd-s4c-steve', podTitle: 'Senedd: allegations of bullying at S4C', recorded: false, clipUrl: null },
           // A POD NOBODY HAS WRITTEN A HEADING FOR. It must not vanish and it
@@ -642,7 +642,7 @@ describe('RecordistRoom — two pods, two bodies of work', () => {
 
     const map = wrapper.findAll('.section-map-row')
     const names = map.map(r => r.find('.sm-name').text())
-    // POD-1 first because pod-0 sorts first on the server, and the sections
+    // POD-1 first because the pod sorts first on the server, and the sections
     // follow the queue rather than re-sorting it.
     expect(names).toEqual(['POD-1', 'SENEDD', 'Retail counter conversations', 'NEW SEEDS'])
     expect(map.map(r => Number(r.find('.sm-count').text()))).toEqual([2, 2, 1, 1])

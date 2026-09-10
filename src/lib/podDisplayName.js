@@ -3,20 +3,27 @@
  *
  * Tom's ruling of 2026-08-22 — "We want to not have a Pod 0 from now on. We
  * want this first one to be called Pod 1" — renamed the product, and the rename
- * landed on 22 courses' slugs. It did not land on the other 45, Welsh among
- * them: `cym_n_for_eng:pod-0` still holds the 231 lines and its title column
- * still literally reads "… Listening Pods — Pod 0".
+ * landed on 22 courses' slugs. It did not land on the rest, so on those courses
+ * the slug is still `pod-0` and the title column still literally reads "…
+ * Listening Pods — Pod 0" over a pod everybody calls Pod 1.
  *
- * The recordist's booth has said POD-1 over that same pod since 2026-09-02
+ * The recordist's booth has said POD-1 over such a pod since 2026-09-02
  * (RecordistRoom.vue, POD_SECTIONS) and the production pages had not caught up,
- * so one body of work carried two names across two pages. Aran, who records it,
- * had stopped reporting the double name as a fault and started writing "Pod0/1"
- * as one word — carrying our inconsistency for us.
+ * so one body of work carried two names across two pages. Aran, who records the
+ * Welsh one, had stopped reporting the double name as a fault and started writing
+ * "Pod0/1" as one word — carrying our inconsistency for us.
  *
- * This is a DISPLAY rule and nothing else. The slug is untouched, the route
- * parameter is untouched, and every page that shows the slug keeps showing it
- * verbatim beside the renamed title: renaming the identifier is a migration
- * with a learner-progress protocol attached, not a label change.
+ * WELSH IS NO LONGER ONE OF ITS CUSTOMERS. `cym_n_for_eng` was re-slugged to
+ * `pod-1` on 2026-09-10 (Tom: "THERE IS NO POD-0 anymore by name … we will trip
+ * up over it again at a later date with new agents"), title and all, so nothing
+ * here applies to it any more. This module stays because the 44 courses the
+ * switchover has not reached genuinely still hold the slug `pod-0`, and their
+ * first pod is equally called Pod 1 on screen. It goes when the last of them
+ * comes across — not before, or 44 courses read "Pod 0" again.
+ *
+ * This is a DISPLAY rule and nothing else. It does not rename a slug: a slug
+ * rename is a migration with a learner-progress protocol attached, and the one
+ * that happened for Welsh is tools/pods/retire-pod-slug.cjs.
  *
  * Only the exact slug `pod-0` is renamed. `pod-0-retired-2026-08-22` is a
  * parked pod that keeps its own name, and `pod-1` already says Pod 1.

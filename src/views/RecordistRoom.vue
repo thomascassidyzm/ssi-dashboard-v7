@@ -764,8 +764,8 @@ const SECTION_ORDER = [
   // conversations — we should call it POD-1, because that's the name we've been
   // referring to it as". It is the name he and the artists say out loud, so it
   // is the name on the screen; a generic "Conversations" can come back if there
-  // is ever more than one pod. The slug the database carries is `pod-0` and it
-  // stays there — this string is a display constant, not a value off the wire.
+  // is ever more than one pod. This string is a display constant, not a value off
+  // the wire — the pod's own slug has said `pod-1` since 2026-09-10.
   { key: 'pod', heading: 'POD-1', blurb: 'Your half of the POD-1 conversations — the other characters are read by someone else.' },
   // NEVER RECORDED BY ANYONE, and the front of a wave rather than the end of
   // one: Tom, 2026-09-02, "these are also going to lead to many more phrases
@@ -813,7 +813,13 @@ const SECTION_ORDER = [
 // which is a human sentence a person wrote, and only then to a generic name.
 const POD_SECTIONS = {
   // POD-1 IS ITS NAME -- Tom's ruling of 2026-09-02, unchanged and not ours to
-  // revisit. The database slug is `pod-0`; this string is a display constant.
+  // revisit. TWO KEYS, and they are not an alias for each other. `pod-1` is what
+  // the Welsh pod is actually called since the 2026-09-10 re-slug, and it is the
+  // key this booth hits today. `pod-0` is still the real slug on the 44 courses
+  // the 2026-08-22 switchover has not reached, whose first pod is equally called
+  // POD-1 on screen -- so that entry is for THEM, and it goes the day the last of
+  // them comes across, not before.
+  'pod-1': { heading: 'POD-1', blurb: 'Your half of the POD-1 conversations — the other characters are read by someone else.' },
   'pod-0': { heading: 'POD-1', blurb: 'Your half of the POD-1 conversations — the other characters are read by someone else.' },
   // TASTE CALL, defaulted 2026-09-04 because Tom has not named this section. It
   // is one line, so overruling it is one line.
@@ -1261,7 +1267,7 @@ async function saveEdit(lineId, text) {
     // `unlinkedAudioId`: a slot can hold a clip this artist did not make — a
     // TTS take, or another voice's — which the booth already shows as a line
     // still to record. Saying "read it again" about a line they have never read
-    // is the tool talking about itself. Observed on cym_n_for_eng:pod-0:SC08-S006,
+    // is the tool talking about itself. Observed on cym_n_for_eng:pod-1:SC08-S006,
     // whose slot is filled and whose queue entry is recorded:false.
     const hadTake = wasRecorded
     // The line is now a line nobody has read: new text, no take, outstanding.

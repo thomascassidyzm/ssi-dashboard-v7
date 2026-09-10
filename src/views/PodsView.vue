@@ -273,8 +273,8 @@ async function generatePod(force = false, slug = 'pod-1') {
 }
 
 // WHICH POD THIS CARD MANAGES. Not `pod-0` by assumption: Tom's 1-based ruling
-// of 2026-08-22 put hrv_for_eng onto `pod-1`, while the other ~68 courses stay
-// on `pod-0`. Hard-coding pod-0 showed Croatian the green "Generate Pod 0"
+// of 2026-08-22 put hrv_for_eng onto `pod-1` — 23 courses including cym_n_for_eng
+// are now there, while the other 44 stay on `pod-0`. Hard-coding pod-0 showed Croatian the green "Generate Pod 0"
 // button on a course that already has a full, recorded pod.
 // includeHeld: this card MANAGES the pod, it does not serve it. A held pod is
 // exactly the one being worked on (Tom, 2026-08-23), so hiding it here would
@@ -282,11 +282,12 @@ async function generatePod(force = false, slug = 'pod-1') {
 // same Croatian failure the ruling above fixed, with a different cause.
 const corePod = computed(() => pickServingPod(pods.value, { includeHeld: true }))
 // THE SAME NAME THE CARD ABOVE IT USES. This read the pod's raw title, so on
-// Welsh — whose 231-line pod is still keyed `pod-0` and whose title column
-// still literally reads "… Pod 0" — the manage card said "Pod 0 — already
-// generated" directly under a pod card that had just said Pod 1. One body of
-// work, two names, on one screen. The fallback is renamed too, for a pod with
-// no title at all.
+// Welsh — then keyed `pod-0`, with a title column literally reading "… Pod 0" —
+// the manage card said "Pod 0 — already generated" directly under a pod card
+// that had just said Pod 1. One body of work, two names, on one screen. Welsh
+// itself was re-slugged to `pod-1` on 2026-09-10 so it no longer needs the
+// translation, but the 44 courses the switchover has not reached still do. The
+// fallback is renamed too, for a pod with no title at all.
 const corePodLabel = computed(() => podDisplayLabel(corePod.value))
 const corePodHasAudio = computed(() => {
   const c = corePod.value?.audio_coverage

@@ -2,7 +2,7 @@
 //
 // Aran read this page as a wall of outstanding lines and reasonably took them
 // for his own work. They were not: of the 91 post-Croatia lines in
-// cym_n_for_eng:pod-0, 12 are his and all 12 are recorded; the other 79 belong
+// cym_n_for_eng:pod-1, 12 are his and all 12 are recorded; the other 79 belong
 // to the single character "Learner", cast to Catrin. His own booth is filtered
 // to his cast and never carried him there, correctly. This page is not
 // filtered, and it said nothing at all — a bare em-dash — about who each
@@ -46,7 +46,7 @@ const SENTENCES = [
 const COVERAGE = {
   voices: [{ voiceId: 'human_aran_cym_n', name: 'Aran' }],
   pods: [{
-    podId: 'cym_n_for_eng:pod-0',
+    podId: 'cym_n_for_eng:pod-1',
     sentences: [
       { sentenceId: 's-learner', kinds: { target: { origin: null, recorded: false, voiceId: null } } },
       { sentenceId: 's-dyn', kinds: { target: { origin: null, recorded: false, voiceId: null } } },
@@ -67,7 +67,7 @@ const CAST = {
 }
 
 vi.mock('vue-router', () => ({
-  useRoute: () => ({ params: { courseCode: 'cym_n_for_eng', slug: 'pod-0' }, query: {} }),
+  useRoute: () => ({ params: { courseCode: 'cym_n_for_eng', slug: 'pod-1' }, query: {} }),
 }))
 vi.mock('@/composables/useAuth.js', () => ({
   useAuth: () => ({ isAdmin: { value: true }, getAccessToken: async () => 'token' }),
@@ -83,14 +83,14 @@ import PodDetailView from './PodDetailView.vue'
 beforeEach(() => {
   global.fetch = vi.fn(async (url) => {
     const u = String(url)
-    if (u.includes('/api/pods/cym_n_for_eng/pod-0')) {
+    if (u.includes('/api/pods/cym_n_for_eng/pod-1')) {
       return {
         ok: true,
         json: async () => ({
           pod: {
-            id: 'cym_n_for_eng:pod-0',
-            slug: 'pod-0',
-            title: 'Northern Welsh (colloquial Gogledd Cymru Welsh) Listening Pods — Pod 0',
+            id: 'cym_n_for_eng:pod-1',
+            slug: 'pod-1',
+            title: 'Northern Welsh (colloquial Gogledd Cymru Welsh) Listening Pods — Pod 1',
             speakers: { Learner: {}, Dyn: {}, Narrator: {} },
           },
           sentences: SENTENCES,
@@ -148,13 +148,18 @@ describe('PodDetailView — an outstanding line says whose it is', () => {
 })
 
 describe('PodDetailView — the pod is called Pod 1', () => {
-  it('shows the product name in the heading while the slug stays pod-0', async () => {
+  // It is now called that all the way down. The display shim that read a `pod-0`
+  // row as "Pod 1" is still live for the 44 courses the 2026-08-22 switchover has
+  // not reached, but this pod no longer needs it: the slug itself says pod-1 since
+  // the re-slug of 2026-09-10, so the heading and the identifier agree without a
+  // translation layer between them.
+  it('shows the product name in the heading and the identifier agrees with it', async () => {
     const wrapper = await mountView()
     const heading = wrapper.find('h1').text()
     expect(heading).toContain('Pod 1')
     expect(heading).not.toContain('Pod 0')
-    // The identifier is untouched and still on the page, verbatim.
-    expect(wrapper.text()).toContain('cym_n_for_eng:pod-0')
+    expect(wrapper.text()).toContain('cym_n_for_eng:pod-1')
+    expect(wrapper.text()).not.toContain('cym_n_for_eng:pod-0')
   })
 })
 

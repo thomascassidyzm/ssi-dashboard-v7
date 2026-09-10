@@ -46,8 +46,8 @@ import RecordistRoom from './RecordistRoom.vue'
 const WIRE = {
   displayName: 'Aran', languageName: 'Welsh', total: 4, recorded: 2, remaining: 2,
   lines: [
-    { id: 'p1', order: 1, text: 'Bore da, Sarah!', recorded: true, kind: 'pod', podSlug: 'pod-0', clipUrl: '/c/p1' },
-    { id: 'p2', order: 2, text: 'Sut wyt ti?', recorded: true, kind: 'pod', podSlug: 'pod-0', clipUrl: '/c/p2' },
+    { id: 'p1', order: 1, text: 'Bore da, Sarah!', recorded: true, kind: 'pod', podSlug: 'pod-1', clipUrl: '/c/p1' },
+    { id: 'p2', order: 2, text: 'Sut wyt ti?', recorded: true, kind: 'pod', podSlug: 'pod-1', clipUrl: '/c/p2' },
     { id: 's1', order: 3, text: 'Dw i eisiau siarad', recorded: false, kind: 'seed', clipUrl: null },
     { id: 's2', order: 4, text: 'Mae hi yma', recorded: false, kind: 'seed', clipUrl: null },
   ],

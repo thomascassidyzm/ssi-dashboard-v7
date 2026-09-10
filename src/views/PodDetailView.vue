@@ -802,8 +802,9 @@ async function loadRecordingStatus() {
     recBySentence.value = map
     // Pretty names for voice IDS THE CLIPS ACTUALLY CARRY. The cast is only a
     // lookup table here: it is the plan for the NEXT render and disagrees with
-    // the audio already on the pod (cym_n pod-0 was cast to five HUMAN_*
-    // placeholders while every clip was Aran's own human_aran_cym_n), so a
+    // the audio already on the pod (the Welsh pod, `pod-1` since the re-slug of
+    // 2026-09-10 and `pod-0` before it, was cast to five HUMAN_* placeholders
+    // while every clip was Aran's own human_aran_cym_n), so a
     // voice that isn't in the cast shows its raw id rather than a cast name.
     const names = {}
     for (const v of data.voices || []) if (v.voiceId && v.name) names[v.voiceId] = v.name

@@ -57,7 +57,7 @@ function stubQueue(extra = {}) {
     json: async () => ({
       displayName: 'Aran', languageName: 'Welsh', total: 2, recorded: 0, remaining: 2,
       lines: [
-        { id: 'p1', order: 1, text: 'llinell pod', knownText: 'a pod line', kind: 'pod', podSlug: 'pod-0', recorded: false, clipUrl: null, canEditText: true },
+        { id: 'p1', order: 1, text: 'llinell pod', knownText: 'a pod line', kind: 'pod', podSlug: 'pod-1', recorded: false, clipUrl: null, canEditText: true },
         { id: 's1', order: 2, text: 'brawddeg cwrs', knownText: 'a course sentence', kind: 'seed', seedNumber: 7, recorded: false, clipUrl: null, canEditText: false },
       ],
       ...extra,
@@ -118,7 +118,7 @@ describe('RecordistRoom — the way back, the switch and the crossing', () => {
     // went to her bucket, so they left his queue and his history stopped dead
     // at the last line he still owns — which is exactly the gap at scene 14 he
     // reported. It has to say the takes are still there and still his doing.
-    stubQueue({ handedOn: [{ podId: 'cym_n_for_eng:pod-0', podSlug: 'pod-0', podTitle: 'x', courseCode: 'cym_n_for_eng', castTo: 'Catrin', lines: 29 }] })
+    stubQueue({ handedOn: [{ podId: 'cym_n_for_eng:pod-1', podSlug: 'pod-1', podTitle: 'x', courseCode: 'cym_n_for_eng', castTo: 'Catrin', lines: 29 }] })
     const w = mountBooth()
     await flushPromises()
     const said = w.find('.handed-on')
