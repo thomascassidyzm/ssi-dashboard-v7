@@ -100,3 +100,90 @@ export async function fetchServingPodId(sb, courseCode, opts = {}) {
   const pod = pickServingPod(data || [], opts)
   return pod ? pod.id : null
 }
+
+/**
+ * IS THIS POD PARKED — retired, gated, staged, superseded or empty?
+ *
+ * Tom, 2026-09-10, looking at the production pods page: "what the hell is this
+ * abomination of a page??? why are we even displaying the old archived PODS?"
+ * The row he was reading was `cym_n_for_eng:pod-0-gated-2026-08-06`, titled
+ * "[ARCHIVED 2026-08-11] [GATED 2026-08-06] placeholder — sentences moved to …
+ * until Aran/Catrin record them — supersed…", holding ZERO sentences. Production
+ * bookkeeping on a working page.
+ *
+ * DERIVED FROM THE ROW, never a list of courses or slugs (the hardcoded-list
+ * heuristic): a pod is parked if the switchover stamped a date suffix on its
+ * slug, or a sweep stamped a marker on its title, or it holds nothing. That
+ * means the next retirement is parked the day it lands, with nothing to update
+ * here.
+ *
+ * TWO THINGS THIS MUST NOT DO, and both are pinned by tests:
+ *
+ * 1. HELD IS NOT PARKED. `visibility: 'held'` means no learner can reach it yet
+ *    — which is the state of every pod anyone is actively working on, including
+ *    the 231-line Welsh pod Aran is recording right now. Hiding held pods would
+ *    hide exactly the pod this page exists to follow. The column is not read
+ *    here at all, deliberately.
+ * 2. A SERVING SLUG IS NEVER PARKED. `pod-0`/`pod-1` are the pods the course
+ *    actually serves; if one is somehow empty that is a fact the producer needs
+ *    to SEE, not a row to hide. So the allowlist above short-circuits the
+ *    empty rule, and no filter built on this can ever hide the live pod.
+ *
+ * Choice pods (`senedd-s4c-steve`, `music`, `travel-situations`, `method-pod`)
+ * are real content with real names and match none of these rules, so they keep
+ * showing. So does the `pod-0-unrecorded` working copy, which is unrecorded, not
+ * retired.
+ */
+
+// The switchover tools stamp the date onto the slug: `pod-0-retired-2026-08-22`,
+// `pod-1-staged-2026-08-23`, `pod-0-gated-2026-08-06`. The date is optional here
+// so a hand-made `pod-0-retired` parks too.
+const PARKED_SLUG_SUFFIX = /-(retired|gated|staged)(-\d{4}-\d{2}-\d{2})?$/i
+// The marker a sweep writes into the title when it parks a pod's content.
+const PARKED_TITLE_MARKER = /\[\s*(archived|retired|gated)\b|\bsupersed(ed|es|ing)\b/i
+
+/**
+ * Why this pod is parked, or null if it is current.
+ * @param {{slug?:string, id?:string, title?:string, sentence_count?:number}} pod
+ * @returns {'retired'|'gated'|'staged'|'superseded'|'empty'|null}
+ */
+export function podParkedReason(pod) {
+  if (!pod) return null
+  const slug = slugOfPod(pod)
+  const suffix = slug.match(PARKED_SLUG_SUFFIX)
+  if (suffix) return suffix[1].toLowerCase()
+  const marker = String(pod.title || '').match(PARKED_TITLE_MARKER)
+  if (marker) return marker[1] ? marker[1].toLowerCase() : 'superseded'
+  // A serving slug is never parked — see rule 2 in the header.
+  if (SERVING_SLUGS.includes(slug)) return null
+  if (Number(pod.sentence_count || 0) === 0) return 'empty'
+  return null
+}
+
+/** @returns {boolean} true when this pod is bookkeeping rather than working content. */
+export function isParkedPod(pod) {
+  return podParkedReason(pod) !== null
+}
+
+/**
+ * Split a course's pods into what a producer is working on and what is parked.
+ * The page shows `current` and puts `parked` behind a counted disclosure — the
+ * count is the point: nothing goes dark, it just stops shouting.
+ *
+ * `current` keeps the serving pod first, so "what is the state of this course's
+ * listening content" is answered by the first card on the page.
+ *
+ * @param {Array} pods
+ * @returns {{current: Array, parked: Array}}
+ */
+export function partitionPods(pods) {
+  const current = []
+  const parked = []
+  for (const p of pods || []) (isParkedPod(p) ? parked : current).push(p)
+  const serving = pickServingPod(current, { includeHeld: true })
+  if (serving) {
+    const i = current.indexOf(serving)
+    if (i > 0) current.splice(i, 1), current.unshift(serving)
+  }
+  return { current, parked }
+}
