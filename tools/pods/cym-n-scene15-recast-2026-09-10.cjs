@@ -33,6 +33,15 @@
  * else: never target_text/known_text, never any *_audio_id, never voice_config
  * .voices (asserted byte-identical before commit). No TTS is generated, ever.
  *
+ * APPLIED 2026-09-10 17:33Z, on Tom's approval of the proposal exactly as written
+ * (all four judgement calls unchanged). 17 rows relabelled; scenes 15-22 cast
+ * Aran 74 / Catrin 17; whole pod Aran 171 / Catrin 60 counting each line by the
+ * voice a learner actually hears. All 143 takes verified identical before and
+ * after, scenes 1-14 byte-identical, voice_config.voices byte-identical.
+ * A SECOND RUN CANNOT DOUBLE-APPLY: the before-state assertions above require
+ * podCast.Learner to be Catrin and the two new labels to be absent, so a re-run
+ * throws before it opens a transaction. That check is the guard, not this note.
+ *
  * Usage:
  *   node tools/pods/cym-n-scene15-recast-2026-09-10.cjs           # dry run
  *   node tools/pods/cym-n-scene15-recast-2026-09-10.cjs --apply   # write
