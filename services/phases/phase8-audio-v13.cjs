@@ -3198,7 +3198,51 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       logger.info(`[/regenerate-role] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
       return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
     }
-    const { role, dryRun = false, limit, flaggedOnly = false } = req.body
+    // `phonologyGate` is an OPT-OUT A CALLER HAS TO ASK FOR BY NAME, and it
+    // defaults to on, so every existing caller is unchanged.
+    //
+    // The gate (services/tts-service.cjs) runs whisper over EVERY Cartesia and
+    // xAI clip and re-rolls one whose detected spoken language is English. It
+    // exists for English-dominant multilingual CLONES handed a cross-language
+    // line — the 2026-07-10 Italian pilot, where xAI read 'come stai' as
+    // English 'come'. That is a real defect and this is not a way to stop
+    // caring about it.
+    //
+    // It is also, measured on watson-1 (4 cores) on 2026-09-10, a hard ceiling
+    // of about SEVEN CLIPS A MINUTE: whisper-small at 4 threads, two at a time,
+    // is ~8s of two cores per clip. A role-wide re-voice of a 12,000-clip
+    // course is 30 hours of a shared box for it alone, and the box is shared.
+    //
+    // So a caller re-voicing a whole role onto a vendor's OWN catalogue voice
+    // for that language — a German voice reading German, not a clone reading a
+    // stranger's language — can say so. What it does NOT switch off is the
+    // pre-publish VERACITY gate below, which samples the run and checks what
+    // was actually SPOKEN against the text that was asked for. That is the
+    // stronger of the two checks and the one that would catch an
+    // English-phonology render anyway.
+    // `onlyOtherVoices` MAKES A RE-VOICE RESUMABLE, and it is opt-in.
+    //
+    // A role-wide re-voice is a long job and this box does not let long jobs
+    // finish: ops/watchdog/popty-staleness-watchdog.sh pulls main and restarts
+    // every Popty service within ten minutes of ANY merge, and merges land here
+    // all day. On 2026-09-10 that killed a 12,630-clip deu_at run twice, at 41
+    // and at 431 clips. Re-running from the top is not a recovery — this route
+    // regenerates every row for the role, so the clips already done would be
+    // rendered, and paid for, again.
+    //
+    // With this on, the route regenerates only the rows NOT ALREADY IN THE
+    // CONFIGURED VOICE. That makes it idempotent: run it, get restarted, run it
+    // again, and the second run picks up exactly where the first stopped at no
+    // extra cost. Loop it until it reports nothing left.
+    //
+    // OFF by default, because it is the wrong answer for the other thing this
+    // route does: a REPAIR (flaggedOnly, or an operator saying "these bytes are
+    // bad") is a request for new bytes in the SAME voice, and skipping rows
+    // that already hold that voice would skip the entire job.
+    const {
+      role, dryRun = false, limit, flaggedOnly = false,
+      phonologyGate = true, onlyOtherVoices = false,
+    } = req.body
 
     if (!role) {
       return res.status(400).json({ error: 'Role is required' })
@@ -3366,6 +3410,19 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       }
     }
 
+    // RESUME FILTER — see `onlyOtherVoices` above. Applied here, after the pod
+    // and human exclusions, so a row skipped for being human is skipped for
+    // that reason and reported as such rather than disappearing into this count.
+    let excludedAlreadyInVoice = 0
+    if (onlyOtherVoices && storedVoiceId) {
+      const before = audioToRegenerate.length
+      audioToRegenerate = audioToRegenerate.filter(a => !sameVoice(storedVoiceId, a.voice_id))
+      excludedAlreadyInVoice = before - audioToRegenerate.length
+      if (excludedAlreadyInVoice) {
+        logger.info(`[regenerate-role] skipped ${excludedAlreadyInVoice} clip(s) already in ${storedVoiceId} (onlyOtherVoices)`)
+      }
+    }
+
     // Determine language for this role
     const language = role === 'known' || role === 'presentation' || role === 'encouragement' || role === 'instruction'
       ? course.known_lang
@@ -3396,6 +3453,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         language,
         count: audioToRegenerate.length,
         excludedHuman,
+        excludedAlreadyInVoice,
         sample: audioToRegenerate.slice(0, 5).map(a => ({
           text: a.text.substring(0, 50),
           currentVoice: a.voice_id
@@ -3519,7 +3577,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceId,
             locale: ttsLocaleForRole(course, role, language),
-            speed
+            speed,
+            phonologyGate
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -3743,6 +3802,11 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       courseCode,
       role,
       voiceId,
+      // A run that switched the phonology gate off SAYS SO in its own result,
+      // rather than leaving it to be reconstructed from the request later.
+      phonologyGate,
+      onlyOtherVoices,
+      excludedAlreadyInVoice,
       total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
@@ -8707,6 +8771,9 @@ module.exports.humanRowAtAudioKey = humanRowAtAudioKey
 // The identity spelling of a voice — shared with the render/repair tools so a
 // voice id is spelt exactly the same way in every course_audio row.
 module.exports.canonicalClipVoiceId = canonicalClipVoiceId
+// Exported for services/phases/regenerate-role-resume.test.cjs: the resume
+// filter's whole correctness is that it compares voices, not strings.
+module.exports.sameVoice = sameVoice
 module.exports.findSiblingCourseClip = findSiblingCourseClip
 module.exports.lookupSiblingClip = lookupSiblingClip
 module.exports.reuseSiblingIntoCourse = reuseSiblingIntoCourse
