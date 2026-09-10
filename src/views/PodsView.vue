@@ -121,7 +121,7 @@
           <div class="flex items-start justify-between gap-3 sm:gap-6 flex-wrap">
             <div class="flex-1 min-w-0">
               <div class="flex items-center gap-3 mb-2">
-                <h2 class="text-xl font-semibold text-ink truncate">{{ pod.title }}</h2>
+                <h2 class="text-xl font-semibold text-ink truncate">{{ podDisplayTitle(pod) }}</h2>
                 <span :class="podTypeClass(pod.pod_type)" class="text-xs px-2 py-0.5 rounded-full flex-shrink-0">
                   {{ pod.pod_type }}
                 </span>
@@ -207,6 +207,7 @@ import { useAuth } from '@/composables/useAuth.js'
 import { useCourses } from '@/composables/useCourses'
 import PodCastPanel from '@/components/PodCastPanel.vue'
 import { pickServingPod, slugOfPod } from '@/lib/servingPod.js'
+import { podDisplayTitle } from '@/lib/podDisplayName.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -318,7 +319,7 @@ async function setVisibility(pod, next) {
   // Release asks; hold does not. Undoing a hold costs a tap — undoing a release
   // means learners have already seen it.
   if (next === 'live') {
-    const msg = `Release ${pod.title || pod.slug} to learners on ${courseCode}?\n\n`
+    const msg = `Release ${podDisplayTitle(pod) || pod.slug} to learners on ${courseCode}?\n\n`
       + 'From the moment you confirm, every learner on this course can hear this pod. '
       + 'Only release it if it is finished and you have listened to it.'
     if (!window.confirm(msg)) return
@@ -334,8 +335,8 @@ async function setVisibility(pod, next) {
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
     genStatus.value = next === 'held'
-      ? `Held — no learner can reach ${pod.title || pod.slug}.`
-      : `Released — learners can now reach ${pod.title || pod.slug}.`
+      ? `Held — no learner can reach ${podDisplayTitle(pod) || pod.slug}.`
+      : `Released — learners can now reach ${podDisplayTitle(pod) || pod.slug}.`
     await loadPods()
   } catch (err) {
     genError.value = err?.message || String(err)

@@ -22,7 +22,7 @@
         <!-- Pod header -->
         <div class="mb-8">
           <div class="flex items-center gap-3 mb-2">
-            <h1 class="text-3xl font-bold text-emerald">{{ pod.title }}</h1>
+            <h1 class="text-3xl font-bold text-emerald">{{ podDisplayTitle(pod) }}</h1>
             <span :class="podTypeClass(pod.pod_type)" class="text-xs px-2 py-0.5 rounded-full">{{ pod.pod_type }}</span>
             <span :class="isHeld ? 'vis-held' : 'vis-live'" class="vis-badge">{{ isHeld ? 'HELD' : 'LIVE' }}</span>
           </div>
@@ -341,6 +341,7 @@ import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { getLanguageName, useCourses } from '@/composables/useCourses.js'
 import { dirFor } from '@/utils/textDirection.js'
+import { podDisplayTitle } from '@/lib/podDisplayName.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -574,7 +575,7 @@ async function setVisibility(next) {
   // Releasing puts content in front of learners and cannot be un-seen, so it
   // asks. Holding does not: erring towards invisible is always the safe way.
   if (next === 'live') {
-    const msg = `Release ${pod.value.title || slug} to learners on ${courseCode}?\n\n`
+    const msg = `Release ${podDisplayTitle(pod.value) || slug} to learners on ${courseCode}?\n\n`
       + 'From the moment you confirm, every learner on this course can hear this pod. '
       + 'Only release it if it is finished and you have listened to it.'
     if (!window.confirm(msg)) return
@@ -637,8 +638,48 @@ const castVoices = computed(() => {
   return [...byVoice.values()].sort((a, b) => b.characters.length - a.characters.length)
 })
 
+/**
+ * "Susjed (08:00) (M)" -> "Susjed". A local mirror of canonicalSpeakerName in
+ * tools/pod-voice-colour-n.cjs — the rule the cast itself is keyed by, and two
+ * lines of it, so this page resolves a speaker the same way the recording plan
+ * does rather than nearly the same way.
+ */
+function canonicalSpeaker(speaker) {
+  return String(speaker || '').replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim()
+}
+
+/** The cast entry that owns this character. Mirrors pods-cast.cjs#castVoiceFor:
+ *  canonical name first, raw name second for casts keyed before canonicalisation. */
+function castEntryFor(speaker) {
+  const canon = canonicalSpeaker(speaker)
+  if (canon && podCast.value[canon]?.voiceId) return podCast.value[canon]
+  if (podCast.value[speaker]?.voiceId) return podCast.value[speaker]
+  return null
+}
+
 function castNameFor(speaker) {
-  return podCast.value[speaker]?.name || null
+  const entry = castEntryFor(speaker)
+  return entry?.name || entry?.voiceId || null
+}
+
+/** The KNOWN-language lines are the explainer cast entry's, whoever the
+ *  character is — the reserved key in pods-cast.cjs. */
+const EXPLAINER_SPEAKER = '__explainer__'
+
+/**
+ * WHOSE LINE IS THIS, for a track nobody has recorded yet.
+ *
+ * Aran read the pod page on 2026-09-10 as a wall of anonymous outstanding lines
+ * and reasonably took them for his own; 79 of them are Catrin's, and his own
+ * booth was right to never carry him there. The booth is filtered to a
+ * recordist's cast and this page is not, so this page has to say the thing the
+ * booth says by construction: the name of the person the line is waiting on.
+ */
+function readerFor(sent, kind) {
+  const entry = kind === 'known'
+    ? podCast.value[EXPLAINER_SPEAKER]
+    : castEntryFor(sent?.speaker)
+  return entry?.name || entry?.voiceId || null
 }
 
 // Auth-gated fetch helper for the pod editing/generation doors. Mirrors the
@@ -794,9 +835,11 @@ function clipTitle(sent, kind) {
   return `Play ${kind} (${langName})`
 }
 
-// One compact status chip per sentence. When a line has human takes it names
-// the VOICE — that is the whole reason for listening — falling back to the
-// human n/m count when the clip carries no voice id.
+// One compact status chip per sentence, and it always names a PERSON. When a
+// line has human takes it names the VOICE ON THE CLIP — that is the whole
+// reason for listening — falling back to the human n/m count when the clip
+// carries no voice id. When nobody has recorded it, it names the reader the
+// cast says it is waiting on, rather than saying nothing at all.
 function recChip(sent) {
   const kinds = recBySentence.value?.[sent.id]
   if (!kinds) return null
@@ -808,7 +851,9 @@ function recChip(sent) {
   const title = Object.entries(kinds)
     .map(([kind, k]) => `${kind}: ` + (k.recorded
       ? `human take by ${voiceLabel(k.voiceId) || 'an unnamed voice'}`
-      : (k.origin === 'tts' ? `tts (${voiceLabel(k.voiceId) || 'unknown voice'})` : 'not recorded')))
+      : (k.origin === 'tts'
+        ? `tts (${voiceLabel(k.voiceId) || 'unknown voice'})`
+        : `not recorded` + (readerFor(sent, kind) ? ` — ${readerFor(sent, kind)} to read` : ''))))
     .join(' · ')
   if (human > 0) {
     const voices = [...new Set(humanEntries.map(k => voiceLabel(k.voiceId)).filter(Boolean))]
@@ -821,6 +866,18 @@ function recChip(sent) {
     }
   }
   if (tts > 0) return { text: 'tts', cls: 'bg-surface text-faint border border-line', title }
+  // NOBODY HAS RECORDED THIS, AND THE PAGE SAYS WHOSE JOB IT IS. A bare em-dash
+  // here is what let a wall of Catrin's outstanding lines read as Aran's own
+  // (2026-09-10). Two readers on one line — his target, the explainer's known —
+  // are both named, because both are genuinely outstanding. The dash survives
+  // only for a pod with no cast at all, where there is no name to give.
+  const waitingOn = [...new Set(Object.keys(kinds)
+    .filter(kind => !kinds[kind].recorded && kinds[kind].origin !== 'tts')
+    .map(kind => readerFor(sent, kind))
+    .filter(Boolean))]
+  if (waitingOn.length) {
+    return { text: `${waitingOn.join(' + ')} to read`, cls: 'bg-surface text-faint border border-line', title }
+  }
   return { text: '—', cls: 'bg-surface text-faint border border-line', title }
 }
 
