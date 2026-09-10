@@ -1281,6 +1281,43 @@ Every row carrying a marked form lands in exactly one bucket and the totals prin
 
 Report: bucket totals per detector plus the first ~10 of each. Action: hand proposals to a proofreader or build agent. **This check does not create phrases, and it must not be moved into the course builder** — Kai's ruling: *"We should test it out properly as fixes before thinking about changing the actual course generation."*
 
+#### Check 20: Seed containment — a LEGO may contain only words its own seed says
+
+Kai's rule, 2026-09-09: **a LEGO is a fragment of its own seed sentence, and may contain only words that seed actually says.** In his words, of a LEGO reading `a person` under a seed that never says it: *"'a person' isn't in the seed, so it's not a good thing to have in the lego."*
+
+That one rule bars, at once, without any linguistic knowledge: parenthetical brackets, slashes, grammar labels (`know-pl`, `knows-f-sent-final`, `(Q-2sg-back)`), and — the interesting class — **narrower or simply different glosses the seed never said**. It is pure string containment against the parent seed, which is exactly why it was approved.
+
+**BOTH SIDES.** Kai: *"this is relevant to both target and known."* The two are counted separately and mean different things:
+- The **KNOWN** side is validated by nothing at build time. This is where the independent signal is, and where nearly all the volume is.
+- The **TARGET** side is validated at submit time by `checkTiling`, so a low count there measures the validator as much as the content (canon WC-F5). Target hits are almost all **post-submit drift** — a LEGO or a seed edited after the seed passed — and are individually strong.
+
+**IT WARNS, IT NEVER BLOCKS, AND IT IS NOT A VERDICT.** Kai, authorising it 2026-09-10: *"we shouldn't expect the items it flags to necessarily be wrong, but it'll be good to look at them and why they're different from the seed."* It is a reading list. The tool always exits 0. It prints both sides of every pair (canon K4) so a human can read the row and judge.
+
+**IT IS NOT IN THE BUILDER, DELIBERATELY.** Kai: *"We shouldn't touch the builder without having something that definitely works, and then only through talking to Tom."* Do not move this rule into the course builder or the build validator without that conversation.
+
+```bash
+node tools/check-seed-containment.cjs <course_code>
+node tools/check-seed-containment.cjs <course_code> --tier lexical --limit 40
+node tools/check-seed-containment.cjs --known-lang eng --json
+node tools/check-seed-containment.cjs --all
+```
+
+Rule and tokenisation: `tools/seed-containment/tokenise.cjs`. Tests: `node tools/seed-containment/tokenise.test.cjs` — they pin Kai's own example, four measured false positives, and a planted defect in Arabic and Devanagari so the check cannot go inert in a non-Latin script (canon WC-F2).
+
+**Read the tiers, not the total.**
+
+| tier | means | read it? |
+|---|---|---|
+| `lexical` | a missing word with no relative in the seed at all | **first** |
+| `markup` | the LEGO carries a bracket or a slash | already Checks 1 and 2 |
+| `variant` | every missing word looks like an inflection of a seed word (`shop`/`shops`, `helps`/`helping`) | weakest |
+
+The tool also prints how many rows were cleared **only** by contraction expansion, and the coverage line for each side. Read the coverage: **spaceless scripts are EXCLUDED, never reported clean.** Japanese, Chinese, Thai, Khmer, Lao, Burmese and Tibetan do not delimit words with whitespace, so a whitespace tokeniser is meaningless there; those sides return `excluded_spaceless` and are counted as excluded (7,635 target sides on the English-known estate). A course whose target is one of those has **not** been checked on its target side.
+
+**Measured false-positive behaviour** (114 hits read by hand, 2026-09-10). On the known side, 0 mechanical false positives in 79 read. All four mechanical false positives found were on the target side and all four are now fixed and pinned as tests: Arabic tashkil in the seed but not the LEGO; a Welsh apostrophe clitic (`nhw'n` hiding `nhw`); and a word the seed spaces which the LEGO joins, in both directions. Fixing them cut the target-side count by 26%. What remains on the target side, at roughly 10%, is **initial mutation** (Welsh `ddigwydd` / `digwydd`) and **attached clitics** (Arabic `وأطلع` / `أطلع`) — the seed does say the word, under a change of shape. Read those and move on; do not treat them as defects.
+
+Report: per-side counts by tier, plus the `lexical` rows in full. Action: **none automatic.** Hand the list to whoever owns the course.
+
 ## Step 6: Post-scan pipeline — backfill, final pass, gender prep
 
 Scanner fixes change phrase counts (deletes leave LEGOs thinner, rewrites invalidate audio). After applying fixes from the Remediation Guide, run the build pipeline to fill gaps, re-run quality checks, and prep new items for gender expansion.
