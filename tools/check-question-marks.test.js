@@ -7,7 +7,7 @@
 // FAIL against the old logic and PASS against the new detector, which is the whole
 // difference between a fix that is proven and a fix that is believed.
 import { describe, it, expect } from 'vitest'
-import { classify, calibrate, openerHits, tierOf, suppressed, frameKey, lastSentence, endsQ } from './question-marks/detect.cjs'
+import { classify, calibrate, openerHits, tierOf, suppressed, needsPairedOpen, frameKey, lastSentence, endsQ } from './question-marks/detect.cjs'
 
 // ---------------------------------------------------------------------------
 // The old Check 14, reproduced verbatim from the doc it lived in, so the
@@ -16,6 +16,8 @@ import { classify, calibrate, openerHits, tierOf, suppressed, frameKey, lastSent
 const OLD_STARTERS = {
   eng: /^(what|where|when|why|who|which|whose|how|can|could|will|would|do|does|did|is|are|was|were|am|have|has|had|should|shall|may|might|must)\b/i,
   ita: /^(che|cosa|come|dove|quando|perché|chi|quale|quali|quanto|quanti|quante|puoi|potresti)\b/i,
+  spa: /^(qué|cómo|cuándo|dónde|por qué|quién|cuál|cuáles|cuánto|cuánta|cuántos|cuántas|puedes|podrías|puedo|hay)\b/i,
+  fra: /^(qu'|que|qui|où|quand|comment|pourquoi|quel|quelle|quels|quelles|est-ce|peux-tu|peut-on|peux|y a-t-il)\b/i,
 }
 const OLD_SUB = {
   eng: /^(what|where|when|why|who|which|whose|how)\s+(i|you|we|they|he|she|it|the|a|an|some|my|your|his|her|its|our|their|someone|somebody|anyone|anybody|everyone|everybody|no one|nobody|nothing|something|anything|everything|people|things)\b/i,
@@ -87,16 +89,86 @@ describe('regression: the three ways the old Check 14 was inert', () => {
   })
 })
 
-describe('the accented word-boundary trap (canon: Check 14 never fired on Spanish or French)', () => {
-  it('the old ita pattern cannot match perché; the new one can', () => {
-    expect(OLD_STARTERS.ita.test('perché no')).toBe(false)   // \b after é never matches
-    expect(openerHits('perché non vuoi aspettare', 'ita')).toContain('open')
+describe('the paired opening mark, which the old Check 14 had and this check must not lose', () => {
+  // Spanish only, and it is a class of its own: not a missing question mark but a
+  // missing half of one. Detectable with certainty, nothing to do with word order.
+
+  it('flags a Spanish question that closes with ? and carries no ¿', () => {
+    expect(needsPairedOpen('lo pasaste bien el fin de semana?', 'spa')).toBe(true)
+    expect(needsPairedOpen('¿lo pasaste bien el fin de semana?', 'spa')).toBe(false)
   })
-  it('and the same for Spanish qué / cómo / dónde and French où', () => {
+
+  it('does NOT require the ¿ at position 0 — it opens the clause, not the string', () => {
+    // The old check's `startsSpanishQmark` was anchored, and anchoring called all of
+    // these defects. On spa_for_eng that was the difference between 24 reported and
+    // 2 real: 50% false on the first course it ran on.
+    const correct = [
+      'Si tienes un poco más de tiempo, ¿puedo preguntarte algo antes de que te vayas?',
+      'No estoy seguro de entender así que ¿podrías explicar de nuevo un poco más despacio?',
+      'no voy a esperarte. ¿Por qué no?',
+    ]
+    for (const t of correct) expect(needsPairedOpen(t, 'spa')).toBe(false)
+  })
+
+  it('applies to the SPANISH side whichever side that is, and never to English', () => {
+    // A naive both-sides version flags 1,268 perfectly correct English rows on
+    // spa_for_eng, where English is the known side.
+    expect(needsPairedOpen('did you have a good time?', 'eng')).toBe(false)
+    const out = classify([
+      row('t', 'did you have a good time?', 'lo pasaste bien el fin de semana?'),
+    ], { knownLang: 'eng', targetLang: 'spa' })
+    expect(out.pairedOpen).toHaveLength(1)
+    expect(out.pairedOpen[0].side).toBe('target')
+
+    const flipped = classify([
+      row('k', '¿lo pasaste bien?', 'did you have a good time?'),
+      row('k2', 'lo pasaste bien?', 'did you have a good time?'),
+    ], { knownLang: 'spa', targetLang: 'eng' })
+    expect(flipped.pairedOpen.map((x) => x.id)).toEqual(['k2'])
+  })
+
+  it('carries its own denominator, so a house style is distinguishable from a defect list', () => {
+    const out = classify([
+      row('a', 'x?', '¿y?'), row('b', 'x?', '¿y?'), row('c', 'x?', 'y?'),
+    ], { knownLang: 'eng', targetLang: 'spa' })
+    expect(out.pairedClosers).toBe(3)      // three Spanish rows close with ?
+    expect(out.pairedOpen).toHaveLength(1) // one of them is missing the opener
+  })
+})
+
+describe('the accented word-boundary trap (canon: Check 14 never fired on Spanish or French)', () => {
+  // MEASURED against the literal old patterns, not against the canon's description of
+  // them. The canon says qué, cómo, cuándo, dónde, quién and où are all undetectable.
+  // Only SOME of that is true, and the difference is the actual mechanism: `\b` is a
+  // boundary between a word char and a non-word char, so it fails only when the last
+  // character of the alternative is outside ASCII \w. Six entries die estate-wide —
+  // spa qué and por qué, fra qu' and où, ita perché, por você — and eng, deu and cym
+  // are untouched. Anything with the accent in the MIDDLE is fine.
+  it('the trap bites only when the FINAL character is non-ASCII', () => {
+    expect(OLD_STARTERS.ita.test('perché no')).toBe(false)      // trailing é — dead
+    expect(OLD_STARTERS.spa.test('qué quieres')).toBe(false)    // trailing é — dead
+    expect(OLD_STARTERS.spa.test('cómo estás')).toBe(true)      // accent in the middle — FIRES
+    expect(OLD_STARTERS.spa.test('dónde está')).toBe(true)      // FIRES
+    expect(OLD_STARTERS.spa.test('cuándo vienes')).toBe(true)   // FIRES
+    expect(OLD_STARTERS.spa.test('quién es')).toBe(true)        // FIRES
+  })
+  it("but French qu' is FINE, because what follows it is a letter", () => {
+    // Worth pinning because it is the near-miss. `\b` is a boundary between a word
+    // char and a non-word char, so after the apostrophe it depends entirely on what
+    // comes NEXT: `qu'est-ce` has a letter there and matches, `qué ` has a space and
+    // does not. A first pass at measuring this probed every alternative against a
+    // following space and wrongly called `qu'` dead. The dead list is five entries,
+    // estate-wide: spa qué and por qué, fra où, ita perché, por você.
+    expect(OLD_STARTERS.fra.test("qu'est-ce que c'est")).toBe(true)
+    expect(OLD_STARTERS.fra.test('où est le livre')).toBe(false)
+  })
+  it('the new patterns fire on all of them', () => {
+    expect(openerHits('perché non vuoi aspettare', 'ita')).toContain('open')
     expect(openerHits('qué quieres hacer', 'spa')).toContain('open')
     expect(openerHits('cómo estás', 'spa')).toContain('open')
     expect(openerHits('dónde está', 'spa')).toContain('open')
     expect(openerHits('où est le livre', 'fra')).toContain('open')
+    expect(openerHits("qu'est-ce que c'est", 'fra')).toContain('open')
   })
   it('and does not match a longer word that merely starts the same way', () => {
     expect(openerHits('chessboard is here', 'ita')).toHaveLength(0)

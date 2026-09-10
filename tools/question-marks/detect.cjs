@@ -56,7 +56,18 @@ const endsQ = (t) => ENDS_Q.test(String(t || '').trim());
 // Word boundary that survives an accented letter. See the header.
 const B = '(?![\\p{L}\\p{M}])';
 const rx = (body) => new RegExp(body, 'iu');
-const alt = (words) => `(?:${words.join('|')})${B}`;
+
+/**
+ * An alternation with a word boundary that is correct at BOTH ends of the problem.
+ *
+ * The old check used `\b`, which is ASCII-only and therefore dies after `é` or `'`.
+ * The obvious repair — append `(?![\p{L}\p{M}])` to the whole group — fixes the
+ * accents and then breaks the apostrophes, because French `qu'` is legitimately
+ * followed by a letter: `qu'est-ce que`. The boundary belongs only after an
+ * alternative that actually ENDS IN A LETTER. This bug was in the first version of
+ * this file and was caught by its own test, which is the argument for the test.
+ */
+const alt = (words) => `(?:${words.map((w) => (/[\p{L}\p{M}]$/u.test(w) ? w + B : w)).join('|')})`;
 
 /**
  * Known-side interrogative pattern sets, per language.
@@ -127,6 +138,48 @@ const SUPPRESS = {
   eng: rx('^\\s*' + alt(['what', 'where', 'when', 'why', 'who', 'whose', 'which', 'how']) + '\\s+to\\s+\\p{L}'),
 };
 const suppressed = (text, lang) => Boolean(SUPPRESS[lang] && SUPPRESS[lang].test(String(text || '').trim()));
+
+/**
+ * Paired marks: languages that open a question as well as close it.
+ *
+ * Spanish is the only one in this estate. This was a CLASS OF ITS OWN in the old
+ * Check 14 and it is kept as one here — it is not a missing question mark, it is a
+ * missing HALF of one, it is detectable with certainty, and it has nothing to do with
+ * word order or with any opener pattern.
+ *
+ * IT IS REPORTED WITH ITS OWN DENOMINATOR, and that is the whole care in it. On
+ * spa_for_eng the Spanish side reads 24 missing out of 1,297 that end in `?` — a real
+ * defect list. On cat_for_spa the Spanish KNOWN side reads 5 of 5. A detector that
+ * fires on 100% of a class has found a house style, not a defect population (WC-F1,
+ * WC-F7: uniformity is the signature of an artefact), and that is Kai's call about
+ * the course, not an agent's about a row. The ratio is what tells the two apart, so
+ * the ratio is printed next to the count and never the count alone.
+ *
+ * It is also side-aware: the rule applies to the SPANISH side, whichever side that
+ * is. The old check applied it to whichever field happened to be Spanish, which was
+ * right; a naive both-sides version flags 1,268 perfectly correct English rows on
+ * spa_for_eng.
+ *
+ * AND THE OPENING MARK IS NOT AT POSITION 0. This is the trap the first version of
+ * this rule fell into, caught by reading its own output: the `¿` opens the
+ * INTERROGATIVE CLAUSE, not the string. All of these are correct Spanish —
+ *
+ *     "Si tienes un poco más de tiempo, ¿puedo preguntarte algo?"
+ *     "No estoy seguro, así que ¿podrías explicarlo de nuevo?"
+ *     "no voy a esperarte. ¿Por qué no?"
+ *
+ * — and an anchored `/^\s*¿/` calls every one of them a defect. Anchoring took the
+ * count from 12 real to 24 reported, i.e. 50% false, on the first course it ran on.
+ * The rule is therefore ABSENCE: the row closes with `?` and carries no `¿` anywhere.
+ * The old Check 14 used the anchored form (`startsSpanishQmark`), so this is a defect
+ * inherited from it and fixed here rather than a new one.
+ */
+const PAIRED_OPEN = { spa: { open: '¿', re: /¿/u } };
+const needsPairedOpen = (text, lang) => {
+  const cfg = PAIRED_OPEN[lang];
+  return Boolean(cfg && endsQ(text) && !cfg.re.test(String(text || '')));
+};
+const closesQ = (text, lang) => Boolean(PAIRED_OPEN[lang] && endsQ(text));
 
 const hasOpenerSet = (lang) => Object.prototype.hasOwnProperty.call(OPENERS, lang);
 
@@ -219,11 +272,19 @@ function classify(rows, { knownLang, targetLang } = {}) {
   const fragments = rows.length - judged.length;
   const frames = buildFrames(judged);
 
-  const mismatches = [], candidates = [], suppressedRows = [];
+  const mismatches = [], candidates = [], suppressedRows = [], pairedOpen = [];
+  let pairedClosers = 0;
   const netYield = { mismatch: 0, opener_known: 0, opener_target: 0, frame: 0, tail: 0 };
 
   for (const r of judged) {
     const kq = endsQ(r.known_text), tq = endsQ(r.target_text);
+
+    // The paired-mark class is independent of everything else: a row can be correct
+    // on every other net and still be missing the half of the mark that opens it.
+    for (const [side, text, lang] of [['known', r.known_text, knownLang], ['target', r.target_text, targetLang]]) {
+      if (closesQ(text, lang)) pairedClosers++;
+      if (needsPairedOpen(text, lang)) pairedOpen.push({ ...r, side, lang, mark: PAIRED_OPEN[lang].open });
+    }
 
     if (kq !== tq) {
       // A fact, not a candidate: the row's own two sides disagree.
@@ -272,6 +333,9 @@ function classify(rows, { knownLang, targetLang } = {}) {
     targetOpeners: hasOpenerSet(targetLang),
     mismatches,
     candidates,
+    pairedOpen,
+    pairedClosers,
+    pairedLang: [knownLang, targetLang].find((l) => PAIRED_OPEN[l]) || null,
     suppressed: suppressedRows,
     netYield,
   };
@@ -329,4 +393,4 @@ function calibrate(rows, opts) {
   };
 }
 
-module.exports = { OPENERS, SUPPRESS, suppressed, tierOf, endsQ, openerHits, lastSentence, frameKey, buildFrames, classify, calibrate, hasOpenerSet, FRAME_WORDS };
+module.exports = { OPENERS, SUPPRESS, PAIRED_OPEN, needsPairedOpen, suppressed, tierOf, endsQ, openerHits, lastSentence, frameKey, buildFrames, classify, calibrate, hasOpenerSet, FRAME_WORDS };

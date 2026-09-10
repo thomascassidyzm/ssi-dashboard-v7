@@ -123,6 +123,7 @@ function writeReadingList(r, dir) {
   fs.writeFileSync(listPath, [
     ['class', 'tier', 'kind', 'id', 'nets', 'known_text', 'target_text'].join('\t'),
     ...r.mismatches.map((x) => line(x, 'SIDES_DISAGREE')),
+    ...r.pairedOpen.map((x) => line({ ...x, tier: 'A', nets: [`missing_opening_${x.mark}_on_${x.side}`] }, 'PAIRED_MARK')),
     ...r.candidates.map((x) => line(x, 'CANDIDATE')),
   ].join('\n') + '\n');
   const b = briefs(r, listPath);
@@ -140,6 +141,15 @@ function print(r) {
     console.log(`     ⚠️  recall below ${RECALL_FLOOR}% — treat this run as FAILED, not clean. The misses below name the classes the nets are blind to.`);
     for (const m of c.missed.slice(0, 20)) console.log(`     MISSED  ${m.id}  ${JSON.stringify(m.known_text)} || ${JSON.stringify(m.target_text)}`);
     if (c.missed.length > 20) console.log(`     … ${c.missed.length - 20} more misses`);
+  }
+  if (r.pairedLang) {
+    const pct = r.pairedClosers ? ((100 * r.pairedOpen.length) / r.pairedClosers).toFixed(0) : 0;
+    console.log(`     paired marks (${r.pairedLang}): ${r.pairedOpen.length} of ${r.pairedClosers} rows that close with ? are missing the opening ¿ (${pct}%)`);
+    if (r.pairedClosers && r.pairedOpen.length / r.pairedClosers > 0.9) {
+      console.log(`         ⚠️  that is nearly all of them — this is a HOUSE STYLE, not a defect list. Kai's call about the course, not a row-by-row fix.`);
+    }
+    for (const x of r.pairedOpen.slice(0, 10)) console.log(`       ¿ ${x.id.padEnd(26)} [${x.side}]  ${JSON.stringify(x.side === 'known' ? x.known_text : x.target_text)}`);
+    if (r.pairedOpen.length > 10) console.log(`       … ${r.pairedOpen.length - 10} more`);
   }
   console.log(`     suppressed: ${r.suppressed.length} rows matched an opener but were withheld as never-a-question (wh + infinitive); counted, not dropped — see --json`);
   console.log(`     population: ${r.judged} judged of ${r.rows} rows — ${r.fragments} LEGOs and component tiles excluded as fragments (chunks never carry terminal punctuation)`);
@@ -192,7 +202,7 @@ async function main() {
     const dir = args[i + 1] && !args[i + 1].startsWith('--') ? args[i + 1]
       : path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', 'question-marks');
     const p = writeReadingList(r, dir);
-    console.log(`wrote ${r.mismatches.length + r.candidates.length} rows to ${p}`);
+    console.log(`wrote ${r.mismatches.length + r.pairedOpen.length + r.candidates.length} rows to ${p}`);
     console.log(`and both reading briefs alongside it. Neither pass is done until a reader has read them.`);
     return;
   }

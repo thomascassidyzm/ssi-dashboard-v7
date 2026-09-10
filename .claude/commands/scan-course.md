@@ -446,7 +446,7 @@ Action: For case-only dupes, pick the dominant case and update the outlier. For 
 
 - **"Require BOTH sides to look like questions"** made the easiest class in the whole check invisible *by construction*. When the known side already ends in `?`, `questionNeedsMark` returns false for it, the `&&` fails, and the row is discarded — so a row whose two sides openly contradict each other (`can you do it for me?` / `puoi farlo per me`) was never flagged. **0 of 48 found.** That rule was added to cut false positives on `por_br_for_eng` and it worked, by turning the check off.
 - **The `wordCount < 3` skip** dropped every short complete question: `do you want`, `do you mind`, `why not`, `are you ready`. In the polite- and plural-register block at the end of `ita_for_eng` that is most of the defect population.
-- **`\b` after an accented letter** — the trap this very file documents 700 lines further down. `perché`, `qué`, `cómo`, `cuándo`, `dónde`, `quién`, `où` are all undetectable, so the Italian, Spanish and French halves of the pattern table never fired at all.
+- **`\b` after an accented letter** — the trap this very file documents further down, though it is narrower than it is usually quoted as being. `\b` is a boundary between a word character and a non-word character, so it fails only when an alternative *ends* in a non-ASCII letter and is followed by a space. Measured against the literal patterns, five entries die estate-wide — `qué` and `por qué` (spa), `où` (fra), `perché` (ita), `você` (por) — while `cómo`, `cuándo`, `dónde`, `quién` and French `qu'` all fire perfectly well. It is the smallest of the three causes and contributes nothing at all on an English-known course; it is fixed here anyway, and pinned by a test that asserts both halves.
 
 #### Check 15: Identical known_text and target_text
 
@@ -1228,6 +1228,20 @@ curl -s -X POST http://localhost:4317/api/dispatch -H 'Content-Type: application
 ```
 
 Pass 2's brief is the independent one: read the seeds in order and two or three full spans of practice phrases, *without* the candidate list, and report what it found that the list did not. Both directions of that comparison are the point — it is how you learn whether the regex is good enough to lean on next time.
+
+##### The paired opening mark (Spanish `¿`) is its own class
+
+Carried over from Check 14, because it is not a missing question mark — it is a missing *half* of one, detectable with certainty, and nothing to do with word order or with any opener pattern. It applies to the **Spanish side, whichever side that is**: a naive both-sides version flags 1,268 perfectly correct English rows on `spa_for_eng`.
+
+**The `¿` opens the interrogative clause, not the string.** The old check anchored it at position 0, and all of these are correct Spanish that anchoring calls a defect:
+
+> *Si tienes un poco más de tiempo, ¿puedo preguntarte algo?*
+> *No estoy seguro, así que ¿podrías explicarlo de nuevo?*
+> *no voy a esperarte. ¿Por qué no?*
+
+Anchored, `spa_for_eng` reads 24; on absence-of-`¿`-anywhere it reads **2**, and both are real. That defect is inherited from Check 14 and fixed here.
+
+**It is reported with its own denominator** — "2 of 1,267 rows that close with `?`". A detector that fires on nearly all of a class has found a house style, not a defect population (WC-F1, WC-F7: uniformity is the signature of an artefact), and the tool says so out loud above 90%. Whether a course that simply never uses `¿` should start is Kai's call about the course, not an agent's about a row. Live today: `spa_for_eng` 2, `spa_for_jpn` 2, `cat_for_spa` 2, `spa_mx_for_eng` 1, `eng_for_spa` 0.
 
 ##### It prints its own recall next to its verdict, always
 
