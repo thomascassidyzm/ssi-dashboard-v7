@@ -143,9 +143,26 @@
           <small>Off = only read the lines that still need a recording. New takes replace old ones; nothing is deleted.</small></span>
       </label>
 
+      <!-- ITS OWN SWITCH, BECAUSE IT IS ITS OWN THING. Hearing back what you have
+           already recorded and being served those lines again to READ are two
+           unrelated wants, and until now one checkbox did both: the only way to
+           reach the list below was to tick "Re-read lines I've already recorded",
+           which also re-serves the whole queue from the top. Nobody looking for
+           "let me hear what I've done" would go looking for it behind a label
+           about reading things again — and turning it on to find out changes how
+           the run is served, which is not what they asked for. So the run's
+           switch stays exactly as it is and this list gets a switch that says
+           what it does. -->
+      <label class="toggle-row">
+        <input type="checkbox" v-model="showRecorded" />
+        <span><strong>Show everything I've already recorded</strong>
+          <small>A list of every line you have read, grouped the same way as the map above. Play any of them back. It
+            does not change which lines you are asked to read.</small></span>
+      </label>
+
       <!-- Aran arrives with takes already made. Let him hear them before
            deciding to re-read: the contract already hands us their clips. -->
-      <div v-if="includeRecorded && alreadyRecorded.length" class="listen-back">
+      <div v-if="showRecorded && alreadyRecorded.length" class="listen-back">
         <h3>What you've already recorded — {{ alreadyRecorded.length }}</h3>
         <p class="listen-note">Everything you have read, in every part of the list. These play the clip stored on the
           server. Tap <strong>Compare</strong> to hear your original take next to the processed one learners hear.</p>
@@ -524,6 +541,12 @@ const voice = ref({ displayName: '', languageName: '', total: 0, recorded: 0, re
 const lines = ref([])
 
 const includeRecorded = ref(false)
+// WHETHER THE ALREADY-RECORDED LIST IS OPEN. Separate from `includeRecorded` on
+// purpose: that one decides which lines the RUN serves, this one decides whether
+// a panel is on the page, and a single flag doing both meant an artist who
+// wanted to hear a take back had to change how his session would be served to
+// get at it. Remembered with the rest of the booth's settings.
+const showRecorded = ref(false)
 const selectedDeviceId = ref(null)
 // Which mic profile to ask for. Voice-processed by default — on a phone that
 // is what makes a take sound like a voice note rather than like a raw tap held
@@ -1853,6 +1876,7 @@ function applyBoothSettings(saved) {
   if (saved.captureProfile === 'dry' || saved.captureProfile === 'voice') captureProfile.value = saved.captureProfile
   if (typeof saved.autoAdvance === 'boolean') autoAdvance.value = saved.autoAdvance
   if (typeof saved.includeRecorded === 'boolean') includeRecorded.value = saved.includeRecorded
+  if (typeof saved.showRecorded === 'boolean') showRecorded.value = saved.showRecorded
   if (saved.maxSeed) maxSeed.value = saved.maxSeed
 }
 // Synchronous, and BEFORE the load watch below fires: the seed ceiling is part
@@ -1865,12 +1889,13 @@ function rememberBoothSettings() {
     captureProfile: captureProfile.value,
     autoAdvance: autoAdvance.value,
     includeRecorded: includeRecorded.value,
+    showRecorded: showRecorded.value,
     maxSeed: maxSeed.value,
   })
 }
 // Saved on every change rather than on leave: the booth is closed by shutting a
 // laptop lid at least as often as by navigating away.
-watch([captureProfile, autoAdvance, includeRecorded, maxSeed], rememberBoothSettings)
+watch([captureProfile, autoAdvance, includeRecorded, showRecorded, maxSeed], rememberBoothSettings)
 
 // WHICH MIC, once the browser will say. Labels only exist after permission, so
 // this runs again when the list refreshes rather than only once.
