@@ -3198,7 +3198,29 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       logger.info(`[/regenerate-role] SKIP ${courseCode}: human-voice-only course — no TTS (Tom's ruling 2026-07-25)`)
       return res.json({ skipped: true, reason: 'human-voice-only-course', courseCode })
     }
-    const { role, dryRun = false, limit, flaggedOnly = false } = req.body
+    // `phonologyGate` is an OPT-OUT A CALLER HAS TO ASK FOR BY NAME, and it
+    // defaults to on, so every existing caller is unchanged.
+    //
+    // The gate (services/tts-service.cjs) runs whisper over EVERY Cartesia and
+    // xAI clip and re-rolls one whose detected spoken language is English. It
+    // exists for English-dominant multilingual CLONES handed a cross-language
+    // line — the 2026-07-10 Italian pilot, where xAI read 'come stai' as
+    // English 'come'. That is a real defect and this is not a way to stop
+    // caring about it.
+    //
+    // It is also, measured on watson-1 (4 cores) on 2026-09-10, a hard ceiling
+    // of about SEVEN CLIPS A MINUTE: whisper-small at 4 threads, two at a time,
+    // is ~8s of two cores per clip. A role-wide re-voice of a 12,000-clip
+    // course is 30 hours of a shared box for it alone, and the box is shared.
+    //
+    // So a caller re-voicing a whole role onto a vendor's OWN catalogue voice
+    // for that language — a German voice reading German, not a clone reading a
+    // stranger's language — can say so. What it does NOT switch off is the
+    // pre-publish VERACITY gate below, which samples the run and checks what
+    // was actually SPOKEN against the text that was asked for. That is the
+    // stronger of the two checks and the one that would catch an
+    // English-phonology render anyway.
+    const { role, dryRun = false, limit, flaggedOnly = false, phonologyGate = true } = req.body
 
     if (!role) {
       return res.status(400).json({ error: 'Role is required' })
@@ -3519,7 +3541,8 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceId,
             locale: ttsLocaleForRole(course, role, language),
-            speed
+            speed,
+            phonologyGate
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${voiceProvider}`)
@@ -3743,6 +3766,9 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       courseCode,
       role,
       voiceId,
+      // A run that switched the phonology gate off SAYS SO in its own result,
+      // rather than leaving it to be reconstructed from the request later.
+      phonologyGate,
       total: audioToRegenerate.length,
       success: results.success,
       failed: results.failed,
