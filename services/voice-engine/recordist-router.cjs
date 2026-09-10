@@ -303,6 +303,12 @@ module.exports = function createRecordistRouter({
         total: queue.total,
         recorded: queue.recorded,
         remaining: queue.remaining,
+        // WORK THAT IS THEIRS AND HAS NO WORDS YET. On the wire because it was
+        // the one thing this response could not say: a pod line with no target
+        // text was dropped before it was ever counted, so 168 untranslated
+        // Senedd lines were invisible in Aran's booth AND absent from every
+        // number on it, and he was told twice that nothing was missing.
+        notReady: queue.notReady || [],
         lines: queue.lines,
       })
     } catch (err) {

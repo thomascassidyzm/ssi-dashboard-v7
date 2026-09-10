@@ -655,7 +655,7 @@ function compareQueueLines(a, b) {
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
   const courses = await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  const empty = { byBucket: new Map(), uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
+  const empty = { byBucket: new Map(), notReady: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
   if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
@@ -695,6 +695,14 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   let quarryStats = null
   const seen = new Map()   // bucket -> Map(normalized text -> representative line)
   let uncast = 0
+  // POD LINES THAT HAVE NO TARGET TEXT YET, per (dialect, gender) bucket and
+  // then per pod: bucket -> Map(podId -> {podId, podSlug, podTitle, courseCode,
+  // lines}). Work that exists, is cast, and cannot be read until somebody
+  // writes the words. See the comment at the point it is counted.
+  const notReady = new Map()
+  // The same thing where nobody is cast to read it either — two absences on one
+  // row, so it belongs to neither tally above and is counted on its own.
+  let untranslatedUncast = 0
   // Wants belonging to a clip in a DIFFERENT language than this queue's. Counted
   // rather than silently dropped, by the same rule as `uncast`.
   let crossLanguage = 0
@@ -702,11 +710,45 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
 
   for (const s of sentences) {
     const text = (s.target_text || '').trim()
-    if (!text) continue
     const pod = podById.get(s.pod_id)
     const course = byCourse.get(pod.course_code)
     const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
     const gender = entry && entry.gender ? String(entry.gender).toLowerCase() : null
+    if (!text) {
+      // A LINE WITH NO TARGET TEXT IS NOT A LINE THAT DOES NOT EXIST.
+      //
+      // It used to be dropped here, before anything looked at it, and that
+      // silence is what cost Aran a day: 168 of the 567 Senedd lines have never
+      // been translated into Welsh, so his booth showed him 384 and said
+      // nothing at all about the other 168 — and he read that, correctly, as
+      // work that had gone missing between the pod page and his queue. He was
+      // right that it was invisible and we told him twice that it was not there.
+      //
+      // So it is COUNTED, against the artist it is cast to, and the booth says
+      // it in one line. It is deliberately NOT a queue line: there is nothing to
+      // read, and a blank line offered at a microphone is worse than a number.
+      // Nor is it `uncast` — that word means "nobody is cast to read this", a
+      // different fact with a different fix, and it has never counted a line
+      // that had no text in the first place.
+      if (gender) {
+        const b = bucketKey(courseDialect(course), gender)
+        if (!notReady.has(b)) notReady.set(b, new Map())
+        const forBucket = notReady.get(b)
+        if (!forBucket.has(s.pod_id)) {
+          forBucket.set(s.pod_id, {
+            podId: s.pod_id,
+            podSlug: pod.slug || null,
+            podTitle: pod.title || null,
+            courseCode: pod.course_code,
+            lines: 0,
+          })
+        }
+        forBucket.get(s.pod_id).lines += 1
+      } else {
+        untranslatedUncast += 1
+      }
+      continue
+    }
     if (!gender) {
       // Never guessed, never silently dropped — surfaced as `uncast`.
       uncast += 1
@@ -1063,7 +1105,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // but the queue is now ordered by one rule rather than by two.
   for (const lines of byBucket.values()) lines.sort(compareQueueLines)
 
-  return { byBucket, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
+  return { byBucket, notReady, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
 }
 
 /**
@@ -1237,6 +1279,12 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     total: mine.length,
     recorded,
     remaining: mine.length - recorded,
+    // WORK OF THEIRS THAT IS REAL AND CANNOT BE READ YET, per pod, biggest
+    // first. Never mixed into `total` or `remaining`: those two numbers are
+    // about lines that can be read, and this is a different fact standing
+    // beside them rather than inside them.
+    notReady: [...(language.notReady && language.notReady.get(bucketKey(recordist.dialect, recordist.gender)) || new Map()).values()]
+      .sort((a, b) => b.lines - a.lines),
     uncast: language.uncast,
     duplicatesCollapsed: language.duplicatesCollapsed,
     quarry: language.quarry || null,

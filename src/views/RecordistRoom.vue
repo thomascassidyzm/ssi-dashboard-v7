@@ -78,6 +78,19 @@
         @save="saveEdit($event.id, $event.text)"
       />
 
+      <!-- NOTHING HAS GONE MISSING. The one sentence that was owed to Aran on
+           2026-09-10, said under the map it belongs to rather than tucked
+           anywhere else. Quiet, and not a warning: this is not his problem to
+           fix and there is no button on it. -->
+      <div v-if="notReadyNotes.length" class="not-ready">
+        <p v-for="n in notReadyNotes" :key="n.key">
+          <strong>{{ n.lines }} more {{ n.lines === 1 ? 'line' : 'lines' }} of {{ n.heading }}</strong>
+          {{ n.lines === 1 ? 'is' : 'are' }} still waiting to be written in {{ voice.languageName || 'the language' }}.
+          {{ n.lines === 1 ? 'It' : 'They' }} can't be read until somebody writes {{ n.lines === 1 ? 'it' : 'them' }} —
+          nothing of yours has gone missing.
+        </p>
+      </div>
+
       <!-- Start is the FIRST thing on the card and the only thing needed. One
            tap puts the mic live on the first line that still needs reading —
            there is no line to pick, nothing to navigate to, and no second tap
@@ -782,6 +795,25 @@ const rosterSections = computed(() => {
   if (other.length) out.push({ key: 'other', heading: 'Everything else', blurb: 'Lines that do not fall into the groups above.', rows: other })
   return out
 })
+
+// WORK THAT IS THERE AND CANNOT BE READ YET, IN WORDS.
+//
+// Aran, 2026-09-10: "none of the extra content is visible in there". It was
+// not: 168 of the 567 Senedd lines have never been translated into Welsh, and a
+// pod line with no target text was dropped by the server before it was counted
+// — so his page could not show it and could not even total it, and he read the
+// gap, correctly, as work that had gone missing. It is named for the same
+// section the readable lines of that pod sit in, so the two are obviously one
+// body of work, and it says plainly that nothing has been lost.
+//
+// It is NOT a queue line and never becomes one: there is nothing to read.
+const notReadyNotes = computed(() => notReady.value
+  .filter(n => Number(n.lines) > 0)
+  .map(n => ({
+    key: n.podId || n.podSlug || 'pod',
+    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    lines: Number(n.lines),
+  })))
 
 const current = computed(() => lines.value[index.value] || null)
 
@@ -1632,6 +1664,9 @@ const isGappedLine = computed(() => !!current.value && current.value.readStyle =
 const SEED_VOLUMES = [30, 50, 100, 150, 300]
 const maxSeed = ref(null)
 const quarry = ref(null)
+// LINES OF HIS THAT HAVE NO TARGET TEXT YET, per pod, straight off the wire.
+// See the note where it is read in load(), and the words it becomes below.
+const notReady = ref([])
 function setVolume(n) {
   if (maxSeed.value === n) return
   maxSeed.value = n
@@ -1840,6 +1875,13 @@ async function load() {
     // has been bitten by before.
     quarry.value = data.quarry || null
     if (data.quarry && data.quarry.maxSeed) maxSeed.value = data.quarry.maxSeed
+    // WORK OF HIS THAT HAS NO WORDS YET. Straight off the wire and never
+    // derived from `lines`: these are precisely the lines that are NOT in
+    // `lines`, and the whole failure this closes is that they were nowhere at
+    // all — 168 untranslated Senedd lines, absent from his queue and from
+    // every number on his page, which he read as work gone missing and was
+    // twice told was not there.
+    notReady.value = Array.isArray(data.notReady) ? data.notReady : []
     lines.value = Array.isArray(data.lines) ? data.lines : []
     // RESUME. Anything left on the device by an earlier session — a tab closed
     // mid-upload, a phone that slept, a chalet with no signal — is picked up
@@ -2046,6 +2088,11 @@ kbd {
   border-radius: 8px; padding: 0.75rem 1.4rem; cursor: pointer; margin-top: 1.25rem; min-height: 48px;
 }
 .note { font-size: 0.85rem; margin-top: 0.75rem; }
+/* Quiet, in the room's own muted type. It is information, not an alarm: the
+   thing it describes is nobody-in-this-room's problem. */
+.not-ready { margin: 0.6rem 0 0.9rem; }
+.not-ready p { margin: 0.35rem 0; font-size: 0.82rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
+.not-ready strong { color: var(--color-paper, #efeee9); font-weight: 600; }
 .note.done { color: var(--color-emerald, #06ffa5); }
 .note.error { color: #ff9d9d; }
 

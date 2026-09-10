@@ -560,3 +560,43 @@ test('the three-way union survives the grouped sort: dialogue, then re-records, 
   }
   assert.ok(lastRerecord > lastPod, `re-records must follow the dialogue: ${kinds.join(',')}`)
 })
+
+/**
+ * A POD LINE WITH NO TARGET TEXT IS COUNTED, NOT DROPPED.
+ *
+ * The live case this was written from: 168 of the 567 lines of the Senedd
+ * session have never been translated into Welsh. They were dropped before
+ * anything looked at them, so Aran's booth showed 384 lines and said nothing
+ * about the rest — and when he said the extra content was invisible to him, he
+ * was right and twice told otherwise. `notReady` is that number, per pod,
+ * standing beside `total` and `remaining` rather than inside either.
+ */
+test('untranslated pod lines are reported per pod, not silently dropped', async () => {
+  const f = fixture()
+  f.listening_pods = f.listening_pods.map((p) => (p.id === 'p_n' ? { ...p, title: 'The committee session' } : p))
+  f.listening_pod_sentences.push(
+    { id: 's7', pod_id: 'p_n', global_order: 7, speaker: 'Aran', target_text: '', known_text: 'Nobody has written this in Welsh yet.' },
+    { id: 's8', pod_id: 'p_n', global_order: 8, speaker: 'Aran', target_text: '   ', known_text: 'Nor this one.' },
+    // Cast to somebody else — it is HER missing work, and it must not appear
+    // in his tally.
+    { id: 's9', pod_id: 'p_n', global_order: 9, speaker: 'Catrin', target_text: '', known_text: 'Hers.' },
+    // No text AND nobody cast: two absences on one row, counted as neither.
+    { id: 's10', pod_id: 'p_n', global_order: 10, speaker: 'Ghost', target_text: '', known_text: 'Nobody at all.' },
+  )
+  const db = stubDb(f)
+  const aran = await resolveRecordist(db, 'human_aran_cym_n')
+  const q = await buildQueue(db, aran)
+
+  assert.deepStrictEqual(q.notReady, [{
+    podId: 'p_n',
+    podSlug: 'pod-0',
+    podTitle: 'The committee session',
+    courseCode: 'cym_n_for_eng',
+    lines: 2,
+  }])
+  // And it stays OUT of the readable numbers: a line with no words is not a
+  // line anybody can be asked to read.
+  assert.ok(!q.lines.some((l) => ['s7', 's8', 's9', 's10'].includes(l.id)))
+  // `uncast` has never meant "has no text", and it still does not.
+  assert.strictEqual(q.uncast, 1)
+})
