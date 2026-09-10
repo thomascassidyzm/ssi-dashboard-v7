@@ -31,6 +31,14 @@
 
     <!-- ── Ready ─────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'ready'" class="rc-card">
+      <!-- THE WAY BACK. Aran, 2026-09-10: "When I go to /r/human_aran_cym_n
+           there is no navigation back to the main stuff". There was none, and
+           the room is deliberately uncluttered — one big Start button and
+           nothing to navigate — so this is a quiet link and not a nav bar.
+           IT IS ON THIS CARD ONLY, never on the recording stage: a link within
+           reach of a thumb while the mic is live is a lost take, and the stage
+           already has its own way out in Stop here. -->
+      <router-link to="/" class="rc-back">← Back to Popty</router-link>
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ queueHeadline }}</p>
 
@@ -277,6 +285,24 @@
               : (recorder.meterTrusted.value ? `Mic live · ${micDb}` : 'Level meter not reading — every take will be saved'))) }}
         </span>
       </div>
+      <!-- THE SWITCH, WHERE HE CAN REACH IT MID-SESSION. Aran, 2026-09-10: "if
+           I pause for thought, it starts flicking through items". The rule he
+           asks for is already the rule — nothing advances until the meter has
+           heard speech on this line — but a pause for thought longer than the
+           quiet threshold is indistinguishable from finishing, and there is no
+           right number to retune it to. The fix is the off-switch, which until
+           now lived only on the ready card, behind Stop.
+           IT IS AT THE TOP OF THE STAGE, deliberately far from Again and Next:
+           a control that changes how the run behaves must not sit under the
+           thumb that is reaching for the transport. Nothing here touches the
+           threshold, and the default stays on.
+           Silent on a gapped read, where auto-advance is off by construction
+           and a switch claiming otherwise would be a lie. -->
+      <label v-if="!isGappedLine" class="stage-auto">
+        <input type="checkbox" v-model="autoAdvance" />
+        <span>{{ autoAdvance ? 'Moving on by itself when you stop' : 'Waiting for you — tap Next' }}</span>
+      </label>
+
       <!-- The one line that says which of the two things is happening. It is the
            only place the words "Recording" and "Playing back" appear on this
            screen, and they can never both be true: starting a playback holds the
@@ -284,6 +310,13 @@
       <p class="stage-progress" :class="activityState.cls">
         <span class="live-dot" :class="{ hot: recorder.lineHasSpeech.value && !micHeld, off: micHeld }"></span>
         {{ activityState.words }} · {{ progressWords }}
+      </p>
+
+      <!-- See crossingNote for why this exists and why it is a line and not a
+           modal. Above the well so it is read before the words are, and gone
+           the moment he moves on. -->
+      <p v-if="!arming && crossingNote" class="crossing">
+        You've crossed from <strong>{{ crossingNote.from }}</strong> into <strong>{{ crossingNote.to }}</strong>.
       </p>
 
       <!-- THE LINE IS HELD BACK WHILE THE RECORDER FILLS.
@@ -432,11 +465,16 @@
            the mic is held, so Next would close a take of nothing and file it
            under the line on screen. Play is the only way back. -->
       <div class="controls">
-        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || paused || !!editingId" @click="onBack">Back</button>
+        <!-- BACK IS LIVE WHILE PAUSED (Aran, 2026-09-10: he pressed Pause
+             because he wanted to go back). Again and Next below it are not:
+             those two need the microphone open and file a take. -->
+        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || !!editingId" @click="onBack">Back</button>
         <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
         <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
       </div>
-      <button class="btn-finish" :disabled="busy || arming || paused || !!editingId" @click="onFinish">Stop here</button>
+      <!-- And so is Stop here: it files nothing on the line he is standing on,
+           so there was never anything for the pause guard to protect. -->
+      <button class="btn-finish" :disabled="busy || arming || !!editingId" @click="onFinish">Stop here</button>
       <p class="kbd-hint">
         <kbd>Space</kbd> next · <kbd>R</kbd> again · <kbd>P</kbd> pause<template v-if="canGoBack"> · <kbd>B</kbd> back</template>
       </p>
@@ -831,7 +869,35 @@ const notReadyNotes = computed(() => notReady.value
     lines: Number(n.lines),
   })))
 
+// WHICH BODY OF WORK A LINE BELONGS TO, as the roster names it. One function,
+// so the map's headings and the stage's own words cannot drift apart.
+function sectionHeadingOf(line) {
+  if (!line) return null
+  const kind = line.kind || 'pod'
+  if (kind === 'pod') return podSectionFor(line).heading
+  const named = SECTION_ORDER.find(s => s.key === kind)
+  return named ? named.heading : 'Everything else'
+}
+
 const current = computed(() => lines.value[index.value] || null)
+
+// THE CROSSING, ANNOUNCED. Aran, 2026-09-10, on finding course content in the
+// middle of the flow: the interleaving itself was fixed earlier today, but the
+// crossing from pod DIALOGUE into the course's own SENTENCES stayed nearly
+// silent — a small caption above the crib and nothing else — and a reader one
+// line at a time has no way to know the kind of material has changed under him.
+//
+// It is drawn IN FLOW, above the line, and it interrupts nothing: no modal, no
+// tap to dismiss, no pause in the run. It appears on the first line after a
+// crossing and goes as soon as he moves on, and it compares against the line he
+// last READ rather than against queue position, so it is still right when he
+// has jumped into the middle from the map.
+const crossingNote = computed(() => {
+  const to = sectionHeadingOf(current.value)
+  const from = sectionHeadingOf(lastLine.value)
+  if (!to || !from || to === from) return null
+  return { from, to }
+})
 
 // A seed sentence is the sentence a course is built from, and its take lands in
 // course_seeds' own audio slot rather than in a pod. On a TEST FIXTURE course
@@ -1782,8 +1848,16 @@ function togglePause() {
 // and is the point: queueTake supersedes any earlier take of the same lineId,
 // drops its stored clip until the new one lands, and commit() no longer counts
 // the re-read as a second line.
+// AND IT WORKS WHILE PAUSED. Aran, 2026-09-10: "pause disables the back
+// button" — he pressed Pause BECAUSE he wanted to go back. The lock was written
+// to protect the held microphone, and it treated four buttons alike when they
+// are not alike: Again and Next need the mic open and file a take, so they stay
+// locked; Back files nothing at all and discards the line it leaves, which is
+// exactly what Pause has already done. So it may run, and the one thing it must
+// not do is quietly re-open the mic behind a screen that says Paused: the hold
+// survives the step back, and Play is still the only way out of it.
 async function onBack() {
-  if (phase.value !== 'recording' || arming.value || busy.value || paused.value || !visited.value.length || !backDebounced()) return
+  if (phase.value !== 'recording' || arming.value || busy.value || !visited.value.length || !backDebounced()) return
   busy.value = true
   try {
     await recorder.discardLine()
@@ -1796,16 +1870,33 @@ async function onBack() {
     // second tap on the SAME control; a Back in between is a deliberate change
     // of mind, so the Next that follows it is a fresh intention and must land.
     lastTapAt = 0
-    stopPlayback()
-    recorder.beginLine()
+    // ONLY WHEN SOMETHING IS PLAYING. stopPlayback() releases the microphone
+    // unconditionally, and releasing it is exactly what un-pauses him — so
+    // calling it blind here would have turned every Back into a Play. Same
+    // shape onFinish already uses, for the same reason.
+    if (playingId.value) stopPlayback()
+    // Paused means paused. Stepping back does not un-pause him.
+    if (!paused.value) recorder.beginLine()
   } finally { busy.value = false }
 }
 
+// STOP HERE WORKS WHILE PAUSED TOO, and for the same reason as Back: it files
+// nothing on the line he is standing on. Paused, there is no take to close —
+// Pause threw it away and the recorder has been held ever since — so the open
+// capture is DISCARDED rather than ended, and the session finishes exactly as
+// it would from a line nobody read. Everything already recorded is untouched.
 async function onFinish() {
-  if (phase.value !== 'recording' || arming.value || busy.value || paused.value) return
+  if (phase.value !== 'recording' || arming.value || busy.value) return
   if (playingId.value) stopPlayback()
   busy.value = true
   try {
+    if (paused.value) {
+      try { recorder.discardLine() } catch { /* the stream is gone; finish anyway */ }
+      paused.value = false
+      micHeld.value = false
+      await finish()
+      return
+    }
     const i = index.value
     const hadSpeech = speechVerdict()
     const blob = await recorder.endLine()
@@ -2043,6 +2134,17 @@ watch(() => props.voiceId, load, { immediate: true })
 .safety-banner.waiting { background: rgba(56, 132, 255, 0.13); border-color: rgba(56, 132, 255, 0.4); color: #cfe0ff; }
 .safety-banner.risk { background: rgba(220, 78, 65, 0.15); border-color: rgba(220, 78, 65, 0.5); color: #ffd3ce; }
 .safety-banner.refused { background: rgba(232, 160, 42, 0.14); border-color: rgba(232, 160, 42, 0.45); color: #ffe2b0; }
+/* Small, muted, above everything and out of the flow of the work: it is the
+   door, not part of the job. */
+.rc-back {
+  display: inline-block;
+  margin-bottom: 0.9rem;
+  font-size: 0.82rem;
+  color: var(--color-paper-dim, #c1c1bb);
+  text-decoration: none;
+  opacity: 0.85;
+}
+.rc-back:hover, .rc-back:focus-visible { opacity: 1; text-decoration: underline; }
 .rc-hello { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.35rem; }
 .rc-card h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0 0 0.6rem; }
 .rc-card h3 { font-size: 0.95rem; margin: 1.25rem 0 0.35rem; }
@@ -2158,7 +2260,32 @@ kbd {
 .wave { display: block; width: 100%; height: 100%; }
 .meter-tag { font-family: 'IBM Plex Mono', monospace; font-size: 0.68rem; color: var(--color-paper-dim, #c1c1bb); white-space: nowrap; }
 .meter-tag.clip { color: var(--color-film-red, #e63946); }
+/* Small and quiet, in the status band at the top rather than in the transport:
+   it says what the run is doing and lets him change it, and it is nowhere near
+   a button that files a take. */
+.stage-auto {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.8rem;
+  color: var(--color-paper-dim, #c1c1bb);
+  cursor: pointer;
+}
+.stage-auto input { width: 1rem; height: 1rem; flex: 0 0 auto; accent-color: var(--color-emerald, #06ffa5); }
 .stage-progress { margin: 0; font-size: 0.9rem; color: var(--color-paper-dim, #c1c1bb); }
+/* In flow, above the line, and it stops nothing. Legible at a glance and gone
+   at the next line — a marker, not an alert. */
+.crossing {
+  margin: 0.8rem 0 0.2rem;
+  padding: 0.5rem 0.7rem;
+  border-left: 3px solid var(--color-emerald, #06ffa5);
+  background: rgba(6, 255, 165, 0.07);
+  border-radius: 0 6px 6px 0;
+  font-size: 0.85rem;
+  color: var(--color-paper-dim, #c1c1bb);
+}
+.crossing strong { color: var(--color-paper, #efeee9); }
 /* Recording is the room's own green; playing back is the tungsten amber used
    nowhere else on this screen. Two states, two colours, and the words underneath
    them say the same thing for anyone who does not read colour. */

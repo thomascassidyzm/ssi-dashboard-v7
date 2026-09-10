@@ -124,10 +124,16 @@ describe('RecordistRoom — Pause discards the attempt', () => {
     expect(wrapper.find('.stage-progress').text()).toContain('Paused')
     expect(wrapper.find('.meter-tag').text()).toContain('nothing is being recorded')
 
-    // And nothing else on the transport can file a take while he is away.
+    // Nothing that FILES A TAKE can run while he is away — and that, since
+    // 2026-09-10, is the whole of what the guard is for. Again and Next both
+    // need the mic open and both close a take onto the line on screen.
     expect(wrapper.find('.ctl-next').attributes('disabled')).toBeDefined()
     expect(wrapper.find('.ctl-again').attributes('disabled')).toBeDefined()
-    expect(wrapper.find('.btn-finish').attributes('disabled')).toBeDefined()
+    // STOP HERE IS NOT ONE OF THEM, and neither is Back. Aran, 2026-09-10:
+    // "pause disables the back button" — he pressed Pause BECAUSE he wanted to
+    // step back, and was locked out at exactly that moment. Neither files
+    // anything on the line he is standing on, so neither ever needed the guard.
+    expect(wrapper.find('.btn-finish').attributes('disabled')).toBeUndefined()
 
     // Play starts the SAME line again from scratch: discard whatever was caught
     // while held, then re-open line one clean. Not a resume.
