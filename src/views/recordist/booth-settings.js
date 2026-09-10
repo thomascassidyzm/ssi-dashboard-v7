@@ -101,6 +101,9 @@ export function saveBoothSettings(voiceId, micKey, settings) {
     captureProfile: settings.captureProfile,
     autoAdvance: !!settings.autoAdvance,
     includeRecorded: !!settings.includeRecorded,
+    // Whether the already-recorded list is open. Its own field because it is its
+    // own switch — see RecordistRoom's `showRecorded`.
+    showRecorded: !!settings.showRecorded,
     maxSeed: settings.maxSeed || null,
     savedAt: new Date().toISOString(),
   }

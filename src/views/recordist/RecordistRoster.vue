@@ -66,13 +66,13 @@
     </div>
 
     <ul class="section-map">
-      <li v-for="s in sections" :key="s.key" class="section-map-row">
+      <li v-for="s in sections" :key="s.key" class="section-map-row" :class="{ 'is-complete': isComplete(s) }">
         <!-- THE NUMBER IS THE HEADLINE. Tom, 2026-09-02: "each section should
              have a headline number of recordings in there". It was a small grey
              span at the end of a line; on a phone the eye has to land on it. -->
         <span class="sm-count">{{ s.rows.length }}</span>
         <span class="sm-name">{{ s.heading }}</span>
-        <span class="sm-tally">{{ tallyWords(s) }}</span>
+        <span class="sm-tally" :class="{ done: isComplete(s) }">{{ tallyWords(s) }}</span>
 
         <!-- THIS SECTION'S RUN, AT A GLANCE. One mark per line, filled for done
              and hollow for outstanding, in queue order.
@@ -91,7 +91,30 @@
              style or dismiss (Tom's screenshot, 2026-09-04). `aria-label`
              carries the same words for a screen reader and draws nothing,
              which is the whole difference. -->
-        <div class="strip">
+        <!-- A FINISHED SECTION SAYS SO, AND STAYS ON THE PAGE. Aran finished all
+             80 lines of POD-1 and the only thing that changed on his page was a
+             small grey caption reading "0 still to read" among two other
+             sections that were still going — at the exact moment a person most
+             needs to be told, in words, that a body of work is DONE and that
+             nothing has gone missing. So a section with nothing left in it wears
+             a tick and its own count, and its grid — 80 identical filled squares
+             — folds away behind it, because a finished run is one fact and not
+             eighty. The grid is still one tap away: it is the way back onto a
+             line he wants to read again, and that must not be taken from him
+             just because the section is complete. -->
+        <button
+          v-if="isComplete(s)"
+          type="button"
+          class="sm-done"
+          :aria-expanded="stripShown(s) ? 'true' : 'false'"
+          @click="toggleStrip(s.key)"
+        >
+          <span class="sm-done-mark" aria-hidden="true">✓</span>
+          <span class="sm-done-words">{{ s.rows.length }}/{{ s.rows.length }} done</span>
+          <span class="sm-done-more">{{ stripShown(s) ? 'hide the lines' : 'show the lines' }}</span>
+        </button>
+
+        <div v-if="stripShown(s)" class="strip">
           <button
             v-for="r in s.rows" :key="r.id"
             type="button"
@@ -367,7 +390,28 @@ const freshCount = computed(() => allRows.value.length - takeCount.value)
 function tallyWords(section) {
   const t = takes(section.rows)
   const left = section.rows.length - t
+  // FINISHED IS ITS OWN SENTENCE, not the same sentence with a zero in it.
+  // "80 recorded · 0 still to read" is true and it reads like a status line; a
+  // person who has just finished eighty lines is owed a word that says he has
+  // finished them.
+  if (!left && section.rows.length) return `✓ all ${section.rows.length} recorded — nothing left to read`
   return `${t ? `${t} recorded` : 'none recorded yet'} · ${left} still to read`
+}
+// NOTHING LEFT IN IT. Computed from the rows themselves, from the same `takes`
+// every other count on this component uses, so a section can never be drawn as
+// done while its own tally disagrees.
+function isComplete(section) { return section.rows.length > 0 && takes(section.rows) === section.rows.length }
+// WHICH FINISHED SECTION HE HAS OPENED BACK UP. Local, and deliberately not the
+// shared section-collapse state: that one is "which section of the every-line
+// list is open", and folding a finished grid on the map has nothing to say
+// about it. An unfinished section is never folded, so it is not in here at all.
+const openStrips = ref(new Set())
+function stripShown(section) { return !isComplete(section) || openStrips.value.has(section.key) }
+function toggleStrip(key) {
+  const next = new Set(openStrips.value)
+  if (next.has(key)) next.delete(key)
+  else next.add(key)
+  openStrips.value = next
 }
 </script>
 
@@ -540,7 +584,34 @@ function tallyWords(section) {
 }
 .sm-name { grid-column: 2; grid-row: 1; font-weight: 700; align-self: end; }
 .sm-tally { grid-column: 2; grid-row: 2; font-size: 0.85rem; opacity: 0.85; font-variant-numeric: tabular-nums; }
+.sm-tally.done { opacity: 1; color: var(--color-emerald, #06ffa5); font-weight: 700; }
 .sm-blurb { grid-column: 2; font-size: 0.82rem; opacity: 0.62; margin-top: 0.2rem; }
+/* THE FINISHED SECTION'S OWN ROW. It sits exactly where the grid it replaced
+   sat, so nothing above or below it moves when a section completes. Full-width
+   and tappable rather than a text label, because it is also the way back to the
+   grid — the artists are on phones and a tap is the only affordance here. */
+.sm-done {
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.35rem 0 0.1rem;
+  padding: 0.3rem 0.55rem;
+  border: 1px solid var(--color-emerald, #06ffa5);
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.85rem;
+  text-align: left;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.sm-done-mark { color: var(--color-emerald, #06ffa5); font-weight: 800; }
+.sm-done-words { font-weight: 700; font-variant-numeric: tabular-nums; }
+.sm-done-more { margin-left: auto; opacity: 0.7; }
+.sm-done:focus-visible { outline: 2px solid var(--color-emerald, #06ffa5); outline-offset: 1px; }
 .section { list-style: none; }
 .section-head {
   position: sticky;
