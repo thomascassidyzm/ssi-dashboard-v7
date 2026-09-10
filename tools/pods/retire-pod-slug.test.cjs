@@ -9,7 +9,7 @@
  */
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'node:module'
-const { reslugId, retitle, rewritePointers } = createRequire(import.meta.url)('./retire-pod-slug.cjs')
+const { reslugId, retitle, rewritePointers, snapshotName } = createRequire(import.meta.url)('./retire-pod-slug.cjs')
 
 describe('reslugId — only the slug segment moves', () => {
   it('renames the slug and leaves the tail alone', () => {
@@ -96,5 +96,24 @@ describe('rewritePointers — every pointer, wherever it sits', () => {
 
   it('matches the pod id on its own, not only a sentence under it', () => {
     expect(rewritePointers({ pod_id: FROM }, FROM, TO)).toEqual({ rewritten: { pod_id: TO }, hits: 1 })
+  })
+})
+
+describe('snapshotName — a backup a later step can clobber is not a backup', () => {
+  // THE BUG THIS EXISTS FOR. The filename used to key on (course, from, to,
+  // applied|dryrun) alone, so the resume run of 2026-09-10 — legitimately finding 0
+  // pods and 0 sentences, the pod having already moved — overwrote the pre-change
+  // snapshot of all 231 sentence rows with an empty one.
+  it('gives two runs of the same rename two different files', () => {
+    const a = snapshotName('cym_n_for_eng', 'pod-0', 'pod-1', true, new Date('2026-09-10T16:49:40.123Z'))
+    const b = snapshotName('cym_n_for_eng', 'pod-0', 'pod-1', true, new Date('2026-09-10T17:02:40.331Z'))
+    expect(a).not.toBe(b)
+    expect(a).toContain('20260910T164940Z')
+    expect(b).toContain('20260910T170240Z')
+  })
+
+  it('still says what it is: the course, the rename, and whether it was written', () => {
+    expect(snapshotName('cym_n_for_eng', 'pod-0', 'pod-1', false, new Date('2026-09-10T17:03:22.602Z')))
+      .toBe('docs/pods/retire-pod-slug-cym_n_for_eng-pod-0-to-pod-1-dryrun-20260910T170322Z-snapshot.json')
   })
 })

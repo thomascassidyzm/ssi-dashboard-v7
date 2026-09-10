@@ -139,6 +139,23 @@ function rewritePointers(value, fromId, toId) {
   return { rewritten, hits }
 }
 
+/**
+ * THE SNAPSHOT FILENAME MUST BE UNIQUE PER RUN, and this is not a tidiness point.
+ *
+ * The first version keyed the file on (course, from, to, applied|dryrun) alone. On
+ * 2026-09-10 the resume run — which legitimately found 0 pods and 0 sentences, the
+ * pod having already moved — wrote to the SAME path and overwrote the pre-change
+ * snapshot of all 231 sentence rows with an empty one. Nothing was lost from the
+ * database, but the backup of the change was destroyed by the second half of the
+ * same change. A backup a later step can clobber is not a backup.
+ *
+ * So the run's own instant goes in the name. Runs accumulate; that is the point.
+ */
+function snapshotName(course, fromSlug, toSlug, applied, at) {
+  const stamp = at.toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z')
+  return `docs/pods/retire-pod-slug-${course}-${fromSlug}-to-${toSlug}-${applied ? 'applied' : 'dryrun'}-${stamp}-snapshot.json`
+}
+
 const log = (...a) => console.log(...a)
 
 async function main () {
@@ -236,7 +253,7 @@ async function main () {
       learner_pod_state: state,
       recording_provenance: prov,
     }
-    const snapPath = evidencePath(`docs/pods/retire-pod-slug-${COURSE}-${FROM}-to-${TO}-${APPLY ? 'applied' : 'dryrun'}-snapshot.json`)
+    const snapPath = evidencePath(snapshotName(COURSE, FROM, TO, APPLY, new Date(snapshot.taken_at)))
     fs.writeFileSync(snapPath, JSON.stringify(snapshot, null, 1))
     log(`  snapshot: ${snapPath}`)
 
@@ -307,7 +324,7 @@ async function main () {
   }
 }
 
-module.exports = { reslugId, retitle, rewritePointers }
+module.exports = { reslugId, retitle, rewritePointers, snapshotName }
 
 // Required by its own test as well as run from the shell, so the work only starts
 // when this file IS the command.
