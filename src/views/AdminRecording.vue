@@ -57,6 +57,13 @@
             <button class="copy-btn" @click="copyLink(v.voiceId)">
               {{ copied === v.voiceId ? 'Copied' : 'Copy link' }}
             </button>
+            <!-- OPEN, as well as copy (Tom, 2026-09-10: "could do with the link
+                 as a link you can open as well as copy"). Copying is for sending
+                 the booth to a recordist; opening is for walking into it
+                 yourself, which until now meant pasting the link back into the
+                 bar. Same affordance the pods page's cast card already carries,
+                 deliberately worded and shaped the same. -->
+            <a class="open-btn" :href="recordLink(v.voiceId)" target="_blank" rel="noopener">Open &#8599;</a>
             <!-- THE THREE JOBS INSIDE ONE TOTAL, named as the booth names them
                  (Tom, 2026-09-02: POD-1 / new sentences / re-recording in this
                  course). Without it "441 lines" is a number with no shape, and
@@ -233,6 +240,18 @@ h1 { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.3
   color: var(--color-void, #0f172a); background: var(--color-emerald, #06ffa5);
   border: none; border-radius: 6px; padding: 0.45rem 0.8rem; cursor: pointer; min-height: 38px;
 }
+/* Open sits beside Copy as the quieter twin: same size and hit area so the row
+   still reads as one control, outlined rather than filled so Copy stays the
+   thing your eye lands on. */
+.open-btn {
+  font-family: 'Josefin Sans', sans-serif; font-size: 0.78rem; font-weight: 600;
+  color: var(--color-emerald, #06ffa5); background: transparent;
+  border: 1px solid var(--color-emerald, #06ffa5); border-radius: 6px;
+  padding: 0.45rem 0.8rem; min-height: 38px; text-decoration: none;
+  display: inline-flex; align-items: center; margin-left: 0.4rem;
+}
+.open-btn:hover { background: rgba(6, 255, 165, 0.12); }
+:root[data-theme="light"] .open-btn { color: #065f46; border-color: #047857; }
 
 :root[data-theme="light"] .lang, :root[data-theme="light"] .bar { border-color: var(--line); }
 </style>
