@@ -5,6 +5,8 @@
 > **NOT THIS CHAPTER.** If you have already established the hits are real and are deciding what to do about them, you want the chapter for that defect kind. If a *human* reviewer raised the flag rather than a tool, go to **HB-08** — a human's false positive fails differently and is never a tokeniser. If the detector is fine and the *brief* is what is wrong, that is **HB-12**.
 >
 > **RULES IN PLAY.** `course-methodology-rules.md`: "a raw match count is a hypothesis, not a work order"; "never derive an estate-wide rule from one course"; "check every affected row by hand"; "read the coverage line, not the count"; "Welsh flagging is evidence against the check". Canon ids: **R0.9, R0.6, R0.5, R0.12, A3, K6, K7, K12**.
+>
+> **BEHIND THIS CHAPTER.** [DL-2026-09-10-04](../decision-log/2026-09/2026-09-10-04-check-18-coverage.md) (coverage next to verdict). Each worked case below cites its own entry. **You do not need any of them to use this chapter** — follow one only when a case's single line of evidence is not enough for the argument you are about to make.
 
 ---
 
@@ -53,7 +55,7 @@ A known-side answer-leak detector, itself calibrated on 27 real positives rather
 
 **What caught it:** refusing to hand up a raw count. Sorting by course showed 88% sitting in one minority course, which is the shape of an artefact, not of a defect population. Real positives look nothing like it — `eng_for_spa` S54 `queríamos give you más tiempo` is what a leak actually looks like.
 
-**Take away:** before believing any cross-field string-overlap count, check the **genetic distance** between the two languages. Precision on unrelated pairs was ~96%; without the exemption, the estate's cleanest minority courses read as its worst.
+**Take away:** before believing any cross-field string-overlap count, check the **genetic distance** between the two languages. Precision on unrelated pairs was ~96%; without the exemption, the estate's cleanest minority courses read as its worst. `[DL — WC-F1, to be filed]`
 
 ### The tokeniser cannot read the alphabet — WC-F2, the inert gate
 
@@ -69,7 +71,7 @@ Check 18 reported clean, course after course. Against a known set of **229 drift
 
 **What caught it:** measuring coverage instead of trusting the verdict — running the template against every clip and counting the `continue`s.
 
-**Take away:** the replacement is the model to copy. It parses **delimiters, not sentences**; covers 99.99%; returns an explicit `unparsed` status so nothing is dropped silently; and **exits non-zero below 99%**. It now flags 226 of the 229, and surfaced 2,744 previously invisible drift rows across 70 courses. A detector must report its own coverage next to its verdict, and a coverage shortfall is a **failure, not a footnote**. Any matcher containing `if (!match) continue` is a silent-skip machine.
+**Take away:** the replacement is the model to copy. It parses **delimiters, not sentences**; covers 99.99%; returns an explicit `unparsed` status so nothing is dropped silently; and **exits non-zero below 99%**. A detector must report its own coverage next to its verdict, and a coverage shortfall is a **failure, not a footnote**. Any matcher containing `if (!match) continue` is a silent-skip machine. [DL-2026-09-10-04](../decision-log/2026-09/2026-09-10-04-check-18-coverage.md) — *including the 13,762 narration skeletons, the rejected template-list fix, and the fact that none of the 2,744 rows it surfaced has been verified by listening.*
 
 ### The normaliser was wrong for the script — WC-F4, Arabic
 
@@ -150,4 +152,4 @@ Before you quote any of these numbers, re-derive the blind-spot list from the co
 
 Try **HB-08** (a human raised it), **HB-12** (the detector is fine and the brief is wrong), **HB-14** (the course reports clean and the question is whether to release), **HB-04** (the untaught hits survived and you now have to fix them).
 
-If none of those fit either, escalate under **H3** in `00-index.md` — with a proposed answer, drawn from whichever of the nine cases above is nearest, and say which one and why.
+If none of those fit either, escalate under **H3** in `00-index.md` — with a proposed answer, drawn from whichever of the nine cases above is nearest, and say which one and why. Before you propose it, grep `docs/decision-log/INDEX.md` for your symptom and read the **REJECTED, AND WHY** field of the nearest entry.
