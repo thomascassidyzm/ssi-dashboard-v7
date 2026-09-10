@@ -610,6 +610,48 @@ async function audioVoicesById(db, ids) {
   return out
 }
 
+/**
+ * THE ORDER OF A RECORDIST'S QUEUE.
+ *
+ * Three sources are merged into one list per bucket — pod dialogue, wanted
+ * re-records, and course seed sentences (plus the fixture-only quarry) — and
+ * the recordist reads it top to bottom, so its order is a piece of the booth's
+ * behaviour rather than a presentation detail.
+ *
+ * Two properties, in this order:
+ *
+ *   1. ONE BODY OF WORK AT A TIME. Dialogue first, then the minimal set, then
+ *      the re-records, then the seeds; and WITHIN dialogue, one pod at a time.
+ *      A line number only means anything inside its own pod.
+ *   2. STABLE. The same queue on every load — the last tiebreak is the line's
+ *      own id, so nothing is left to chance.
+ */
+const QUEUE_SORT_TIER = { pod: 0, quarry: 1, rerecord: 2, seed: 3 }
+
+function queueSortTier(line) {
+  const tier = QUEUE_SORT_TIER[line.kind || 'pod']
+  return tier === undefined ? QUEUE_SORT_TIER.pod : tier
+}
+
+/** The body of work a line belongs to: its pod, or failing that its course. */
+function queueSortGroup(line) {
+  if ((line.kind || 'pod') === 'pod') {
+    return `${line.courseCode || ''}\u0000${line.podSlug || line.podId || ''}`
+  }
+  return String(line.courseCode || '')
+}
+
+function compareQueueLines(a, b) {
+  return (queueSortTier(a) - queueSortTier(b)) ||
+    queueSortGroup(a).localeCompare(queueSortGroup(b)) ||
+    // Position within the body of work: global_order for a pod line, and a
+    // constant for every other kind, whose own order is the next key down.
+    ((a.order || 0) - (b.order || 0)) ||
+    ((a.seedOrder || 0) - (b.seedOrder || 0)) ||
+    String(a.role || '').localeCompare(String(b.role || '')) ||
+    String(a.id).localeCompare(String(b.id))
+}
+
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
   const courses = await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
@@ -1006,16 +1048,20 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // 'seed' lines, read whole at natural pace — which is exactly the second
       // speed of the minimal set. They are not duplicated here.
     }
-
-    // Seed lines sort after everything else, then by seed number, then by role
-    // -- stable across reloads, which is the only property that matters here.
-    for (const lines of byBucket.values()) {
-      lines.sort((a, b) => (a.order - b.order) ||
-        ((a.seedOrder || 0) - (b.seedOrder || 0)) ||
-        String(a.role || '').localeCompare(String(b.role || '')) ||
-        String(a.id).localeCompare(String(b.id)))
-    }
   }
+
+  // ONE BODY OF WORK AT A TIME, then the position within it. Sorting the merged
+  // queue by the bare line number is what put a POD-1 line at position 10 of
+  // Aran's 512, stranded inside an otherwise unbroken Senedd run: every pod
+  // numbers its own lines from 1, so POD-1's line 117 and the Senedd pod's line
+  // 117 compare equal and the two sessions comb into each other. The number is
+  // only meaningful INSIDE a pod, so the pod is sorted on first.
+  //
+  // Hoisted out of the seed block deliberately: a language with no policy voices
+  // was skipping this sort entirely and living off insertion order. The
+  // comparator reproduces that insertion order exactly, so nothing moves there —
+  // but the queue is now ordered by one rule rather than by two.
+  for (const lines of byBucket.values()) lines.sort(compareQueueLines)
 
   return { byBucket, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
 }
@@ -1686,6 +1732,7 @@ module.exports = {
   takeTally,
   kindTally,
   recordedTextKeys,
+  compareQueueLines,
   propagateTakeToDuplicates,
   tryCanonicalVoiceId,
 }
