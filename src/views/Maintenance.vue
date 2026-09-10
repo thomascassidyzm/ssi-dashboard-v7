@@ -19,8 +19,11 @@
 
       <div v-if="stats" class="stats-grid">
         <div class="stat-card">
-          <div class="stat-label">Rows in log</div>
-          <div class="stat-value">{{ stats.total_rows.toLocaleString() }}</div>
+          <!-- An exact count of this table is a seq scan of ~24GB that trips the 8s
+               statement timeout, so the API returns Postgres's planner estimate and
+               flags it. Never render this figure as though it were counted. -->
+          <div class="stat-label">Rows in log{{ stats.total_rows_estimated ? ' (estimated)' : '' }}</div>
+          <div class="stat-value">{{ (stats.total_rows_estimated ? '~' : '') + stats.total_rows.toLocaleString() }}</div>
         </div>
         <div class="stat-card">
           <div class="stat-label">Oldest entry</div>

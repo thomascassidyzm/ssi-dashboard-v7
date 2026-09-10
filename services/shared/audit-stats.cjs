@@ -11,7 +11,15 @@ const AUDIT_TABLE = 'content_audit_log'
 
 async function fetchAuditStats(sb, logger) {
   const [countRes, oldestRes] = await Promise.all([
-    sb.from(AUDIT_TABLE).select('*', { count: 'estimated', head: true }),
+    // THE COUNT QUERY MUST BE BOUNDED. PostgREST executes the underlying SELECT even
+    // for a HEAD request, so an unbounded `select('*', { head: true })` seq-scans the
+    // whole ~24GB audit log and trips Postgres's 8s statement_timeout — that, and not
+    // the count itself, is what 500'd this panel from 2026-08-06 to 2026-09-10. Measured
+    // live: unbounded 500 in 8.17s, `select=id&limit=1` 206 in 0.11s. `limit(1)` bounds
+    // the scan; `count: 'estimated'` still returns the planner's reltuples figure, which
+    // is why total_rows is APPROXIMATE and the panel must say so. There is no cheap exact
+    // count of this table — an exact count is the same seq scan that times out.
+    sb.from(AUDIT_TABLE).select('id', { count: 'estimated', head: true }).limit(1),
     sb.from(AUDIT_TABLE).select('changed_at').order('changed_at', { ascending: true }).limit(1)
   ])
   if (countRes.error) throw countRes.error
@@ -26,6 +34,7 @@ async function fetchAuditStats(sb, logger) {
 
   return {
     total_rows: countRes.count ?? 0,
+    // Never presented as an exact figure. See the comment on the count query above.
     total_rows_estimated: true,
     oldest_at,
     days_since_oldest,

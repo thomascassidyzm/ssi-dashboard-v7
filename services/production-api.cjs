@@ -11,6 +11,7 @@ const createLogger = require('./shared/logger.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 const { identity: buildIdentity } = require('./shared/build-identity.cjs')
+const { fetchAuditStats } = require('./shared/audit-stats.cjs')
 
 const logger = createLogger('ProductionAPI')
 
@@ -12208,39 +12209,20 @@ app.post('/api/admin/restart-machine', async (req, res) => {
 // runs the DELETE.
 
 // GET /api/admin/audit-stats — row count, oldest entry, days since oldest.
-// Uses Postgres's planner row estimate (count:'estimated') instead of exact count.
-// The oldest-row query is best-effort: until the changed_at index exists (see
-// migration 20260517_content_audit_log_changed_at_index.sql), ORDER BY changed_at
-// is a full table scan and trips Postgres's 8s statement_timeout on a 4M-row log.
-// We swallow that timeout so the page still loads with row count visible —
-// "oldest" returns null and the panel shows "—" instead of 500-ing the whole tab.
+// The query itself, and why it is shaped the way it is, lives in
+// services/shared/audit-stats.cjs next to the test that holds it there.
+// total_rows is a PLANNER ESTIMATE and the response says so (total_rows_estimated).
 app.get('/api/admin/audit-stats', async (req, res) => {
   if (!await requireAdmin(req, res)) return
   try {
-    const sb = supabaseClient.getClient()
-    const [countRes, oldestRes] = await Promise.all([
-      sb.from('content_audit_log').select('*', { count: 'estimated', head: true }),
-      sb.from('content_audit_log').select('changed_at').order('changed_at', { ascending: true }).limit(1)
-    ])
-    if (countRes.error) throw countRes.error
-    if (oldestRes.error) {
-      logger.warn('[Audit] oldest-row query failed (likely missing index on changed_at):', oldestRes.error?.message)
-    }
-
-    const oldest_at = oldestRes.error ? null : (oldestRes.data?.[0]?.changed_at ?? null)
-    const days_since_oldest = oldest_at
-      ? Math.floor((Date.now() - new Date(oldest_at).getTime()) / (1000 * 60 * 60 * 24))
-      : null
-
-    res.json({
-      total_rows: countRes.count ?? 0,
-      oldest_at,
-      days_since_oldest,
-      oldest_unavailable: !!oldestRes.error,
-    })
+    res.json(await fetchAuditStats(supabaseClient.getClient(), logger))
   } catch (e) {
-    logger.error('[Audit] stats error:', e?.message || e?.code || e)
-    res.status(500).json({ error: e?.message || 'unknown error' })
+    // A bodyless PostgREST failure gives supabase-js an error with an EMPTY message,
+    // which used to reach the panel as the useless string "unknown error". Say what
+    // we actually know instead, so the next person reads a cause rather than a shrug.
+    const detail = e?.message || e?.code || e?.details || e?.hint || ''
+    logger.error('[Audit] stats error:', detail || e)
+    res.status(500).json({ error: detail || 'audit-stats query failed with no error message — check the service log' })
   }
 })
 
