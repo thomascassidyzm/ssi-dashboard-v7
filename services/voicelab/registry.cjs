@@ -442,8 +442,14 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
   // a 'phrase' default, and reading a missing value as anything else would let
   // an old row silently become a guide.
   const isGuide = (r) => r.slot === 'guide'
-  const phraseRoles = roles.filter((r) => !isGuide(r))
+  const isPresentation = (r) => r.slot === 'presentation'
+  // PHRASE is the DEFAULT, never the leftover. This used to read "not a guide",
+  // which meant the presentation rows added on 2026-09-10 would have landed in
+  // the male/female phrase slots and counted toward completeness — a narrator
+  // silently filling the slot of a course-material voice.
+  const phraseRoles = roles.filter((r) => (r.slot || 'phrase') === 'phrase')
   const guideRoles = roles.filter(isGuide)
+  const presentationRoles = roles.filter(isPresentation)
 
   const slots = {}
   for (const g of GENDERS) {
@@ -494,6 +500,34 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
     const role = guideRoles.find((r) => r.rank === rank)
     const voice = role ? voiceById.get(role.voice_id) : null
     guideSlots.push({
+      rank,
+      rankName: rankName(rank),
+      filled: Boolean(voice),
+      active: voice ? voice.is_active !== false : null,
+      voiceId: role ? role.voice_id : null,
+      voiceName: voice ? (voice.display_name || voice.human_name || voice.voice_id) : null,
+      kind: voice ? voiceKind(voice) : null,
+      engine: voice ? (voice.tts_engine || null) : null,
+      gender: role ? role.gender : null,
+      pace: paceOf(voice),
+      consent: voice ? consent.describe(voice) : null,
+      notes: role ? role.notes : null,
+      assignedBy: role ? role.assigned_by : null,
+    })
+  }
+
+  // ── THE PRESENTATION SLOT (Tom, 2026-09-10) ───────────────────────────────
+  // The course narrator — the voice that says "French for 'I want' is:". Same
+  // shape as the guide and for the same reason: it is KNOWN-language audio, so
+  // it is one voice per language with no gender axis, and it never counts
+  // toward completeness. It is a SEPARATE slot from the guide because the app
+  // talking to the learner and the course narrating a LEGO are two decisions
+  // Kai must be able to make apart from each other.
+  const presentationSlots = []
+  for (let rank = 0; rank < REQUIRED_RANKS; rank += 1) {
+    const role = presentationRoles.find((r) => r.rank === rank)
+    const voice = role ? voiceById.get(role.voice_id) : null
+    presentationSlots.push({
       rank,
       rankName: rankName(rank),
       filled: Boolean(voice),
@@ -594,6 +628,17 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       // gender — a guide is one voice, and the male/female split is a property
       // of the phrase slots only.
       candidates: guideCandidates({ code: base, voices, guideRoles, voiceById, inUse: guideInUse, catalogue }),
+    },
+    // ── The narrator, cast against this language as a KNOWN language ────────
+    // No `inUse` here, deliberately: there is no measured view of who narrates
+    // today the way voice_guide_in_use measures the instructions, and reporting
+    // an unmeasured number would be worse than reporting none. The cast row IS
+    // the answer for the presentation role now (services/shared/
+    // language-voice-cast.cjs), so what the slot says is what renders.
+    presentation: {
+      slots: presentationSlots,
+      cast: presentationSlots.some((s) => s.filled && s.active !== false),
+      candidates: guideCandidates({ code: base, voices, guideRoles: presentationRoles, voiceById, inUse: [], catalogue }),
     },
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
@@ -927,6 +972,7 @@ function notes () {
     writes: 'This screen writes voice_language_roles and nothing else. It never writes course_audio, algorithm_config or any course voice_config.',
     inUse: 'The "In use now" column is read from each course\'s own stored voice_config — the per-role provider, never the boilerplate `providers` block every course carries. "If re-rendered" is a different and hypothetical thing: what the provider policy would choose for a NEW render today. A language can be entirely on xAI now and say Azure there.',
     guide: 'The GUIDE slot is the instruction and encouragement voice, and it is cast against the language as a KNOWN language — those clips are messages to the learner, shared by every course with the same known language, not course material (Tom, 2026-08-29). It is one voice, not a male/female pair, and it NEVER counts toward completeness: only twelve of the estate\'s languages are ever a known language. "In use now" beside the slot is measured from the clips that exist, so casting confirms who already speaks rather than choosing from nothing.',
+    presentation: 'The PRESENTATION slot is the course NARRATOR — the voice that introduces each LEGO ("French for \'I want\' is:"). Those clips are KNOWN-language audio, so the slot is cast against the language as a KNOWN language, is one voice rather than a male/female pair, and NEVER counts toward completeness, exactly as the guide slot does. English holds Tom\'s own Cartesia clone (Tom, 2026-09-10): his voice is a person rather than a language slot, which is why it was missing from this table until it had a slot of its own.',
     castable: `Retired and unrenderable voices are not offered for casting: ${[...policy.RETIRED_PROVIDERS].join(', ')} plus rows with no engine. Their clips still play — retirement is from selection only — but a slot filled with a voice that cannot render would read as covered while being broken.`,
   }
 }
@@ -1000,6 +1046,6 @@ async function cachedBuild (db, opts = {}) {
 }
 
 /** The casting slots this registry knows about. 'phrase' is the default in the DB. */
-const SLOTS = Object.freeze(['phrase', 'guide'])
+const SLOTS = Object.freeze(['phrase', 'guide', 'presentation'])
 
 module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }

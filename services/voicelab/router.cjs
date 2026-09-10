@@ -46,6 +46,15 @@ const consentGate = require('../shared/voice-consent-gate.cjs')
 const declaration = require('./declaration.cjs')
 const consentCapture = require('./consent-capture.cjs')
 const selfConsent = require('./self-consent.cjs')
+// The slot shapes are asked of the RESOLVER, never restated here: a slot that
+// is gender-free on the screen and gendered on the render path is two different
+// castings under one name (services/shared/language-voice-cast.cjs).
+const { SINGLE_VOICE_SLOTS } = require('../shared/language-voice-cast.cjs')
+// Which slots are cast against a language as a KNOWN language — the guide (the
+// app talking to the learner) and the presentation (the course narrating a
+// LEGO). Both are known-language audio, so both reach only the courses taught
+// FROM the language.
+const KNOWN_SIDE_SLOTS = Object.freeze(new Set(['guide', 'presentation']))
 const cloneConfirmation = require('./clone-confirmation.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 
@@ -333,8 +342,10 @@ function mount (app, deps) {
    * Cast a voice into a slot: (slot, language, gender, rank).
    *
    * `slot` is 'phrase' (the male/female course-material voices — the default,
-   * and what every existing caller means) or 'guide' (the instruction and
-   * encouragement voice, one per KNOWN language, no gender axis).
+   * and what every existing caller means), 'guide' (the instruction and
+   * encouragement voice, one per KNOWN language, no gender axis) or
+   * 'presentation' (the course NARRATOR — the intro voice — also one per KNOWN
+   * language and also gender-free; Tom, 2026-09-10).
    *
    * SPENDS NOTHING. This writes one row of voice_language_roles and nothing
    * else — no render is triggered, no course_audio row is touched, no
@@ -369,7 +380,10 @@ function mount (app, deps) {
     })
     // How many courses this cast could reach AT ALL, so "all of them are human"
     // is a fact rather than an impression.
-    const reach = slot === 'guide'
+    // A GUIDE and a PRESENTATION cast both reach the courses taught FROM this
+    // language and nothing else: both are known-language audio. A PHRASE cast
+    // reaches either side.
+    const reach = KNOWN_SIDE_SLOTS.has(slot)
       ? list.filter((c) => c.known_lang === language).length
       : list.filter((c) => c.target_lang === language || c.known_lang === language).length
     return { ...affected, reach, blocked: reach > 0 && affected.total >= reach }
@@ -391,7 +405,7 @@ function mount (app, deps) {
       if (!registry.SLOTS.includes(slot)) {
         throw Object.assign(new Error(`slot must be one of ${registry.SLOTS.join(', ')}`), { status: 400 })
       }
-      const gender = slot === 'guide' ? null : (req.body || {}).gender
+      const gender = SINGLE_VOICE_SLOTS.has(slot) ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
 
       if (slot === 'phrase' && !registry.GENDERS.includes(gender)) {
@@ -409,7 +423,7 @@ function mount (app, deps) {
       if (guard.blocked) {
         const names = guard.courses.map((c) => `${c.course} (${c.roles.join(', ')})`).join(', ')
         return res.status(409).json({
-          error: `Every ${slot === 'guide' ? 'course taught from' : 'course that uses'} ${language} is human-recorded, so this cast would speak over real recordings and has NOT been saved: ${names}. Their gaps are a recording worklist, not a casting gap (Tom 2026-08-31; services/shared/human-voice-courses.cjs).`,
+          error: `Every ${KNOWN_SIDE_SLOTS.has(slot) ? 'course taught from' : 'course that uses'} ${language} is human-recorded, so this cast would speak over real recordings and has NOT been saved: ${names}. Their gaps are a recording worklist, not a casting gap (Tom 2026-08-31; services/shared/human-voice-courses.cjs).`,
           code: 'HUMAN_RECORDED',
           language,
           slot,
@@ -525,7 +539,7 @@ function mount (app, deps) {
       // nothing. Where the voice row carries none — Aran's does not — 'm' is
       // written to satisfy the key's NOT NULL, and the one-guide-per-rank index
       // is what actually keeps the slot single.
-      const rowGender = slot === 'guide' ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
+      const rowGender = SINGLE_VOICE_SLOTS.has(slot) ? (registry.GENDERS.includes(voiceGender) ? voiceGender : 'm') : gender
 
       const { error } = await supabase()
         .from('voice_language_roles')

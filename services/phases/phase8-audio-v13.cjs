@@ -2094,8 +2094,17 @@ async function linkPresentationAudio(courseCode) {
   // course_audio rows can carry the same tag and the wrong-voiced one can win.
   // Only a clip in the configured presentation voice may claim the slot.
   const { data: presCourse } = await supabase
-    .from('courses').select('voice_config').eq('course_code', courseCode).single()
-  const wantedPresVoice = resolveVoices(presCourse || {}).presentation
+    .from('courses')
+    // The cast key columns ride along because resolveVoiceConfig needs them to
+    // know which language this course is taught FROM — the presentation slot is
+    // cast on the KNOWN side (2026-09-10).
+    .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
+    .eq('course_code', courseCode).single()
+  const wantedPresVoice = resolveVoices({
+    voice_config: await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: (presCourse || {}).voice_config, course: presCourse, courseCode,
+    }),
+  }).presentation
   const presLedger = new RelinkRefusalLedger(courseCode)
 
   // Get all LEGOs missing presentation_audio_id
@@ -3927,6 +3936,16 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
     const { data: course } = await supabase.from('courses').select('*').eq('course_code', courseCode).single()
     if (!course) return res.status(404).json({ error: 'Course not found' })
 
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE — including the `presentation`
+    // role, which joined CAST_ROLES on 2026-09-10. Without this line the intro
+    // voice this handler stamps would be the course's raw scaffolded config
+    // while /generate rendered the cast voice: one row, two narrators, no error
+    // anywhere. With no rows in voice_language_roles it returns the very same
+    // object and nothing changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
+
     const knownLang = canonicalLanguage(course.known_lang)
     const targetLangName = getLocalisedLangName(course.target_lang, knownLang)
     const template = await getOrCreatePresentationTemplate(knownLang)
@@ -4014,6 +4033,16 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     if (courseError || !course) {
       return res.status(404).json({ error: 'Course not found' })
     }
+
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE — including the `presentation`
+    // role, which joined CAST_ROLES on 2026-09-10. Without this line the intro
+    // voice this handler stamps would be the course's raw scaffolded config
+    // while /generate rendered the cast voice: one row, two narrators, no error
+    // anywhere. With no rows in voice_language_roles it returns the very same
+    // object and nothing changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
 
     const knownLang = canonicalLanguage(course.known_lang)
     const targetLang = canonicalLanguage(course.target_lang)
@@ -4482,9 +4511,11 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
     // rule: only a clip in the configured presentation voice may be bound. The
     // rest are left unlinked and reported, never quietly attached.
     {
-      const { data: presVoiceCourse } = await supabase
-        .from('courses').select('voice_config').eq('course_code', courseCode).single()
-      const wantedPres = resolveVoices(presVoiceCourse || {}).presentation
+      // The gate asks the RESOLVED config — the same object this handler
+      // stamped the pending rows with. It used to re-fetch the raw row, so a
+      // cast presentation voice would have been refused the slot it was
+      // rendered for.
+      const wantedPres = resolveVoices(course).presentation
       const gateLedger = new RelinkRefusalLedger(courseCode)
       const kept = []
       for (const audio of allPresAudio) {
@@ -5162,6 +5193,16 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     if (courseError || !course) {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
+
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE — including the `presentation`
+    // role, which joined CAST_ROLES on 2026-09-10. Without this line the intro
+    // voice this handler stamps would be the course's raw scaffolded config
+    // while /generate rendered the cast voice: one row, two narrators, no error
+    // anywhere. With no rows in voice_language_roles it returns the very same
+    // object and nothing changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
 
     const knownLang = canonicalLanguage(course.known_lang)
     const voiceConfig = course.voice_config || {}

@@ -61,10 +61,6 @@ const DISPOSITIONS = Object.freeze({
     'a helper that takes an already-fetched `course` object. It cannot resolve for '
     + 'itself without a second DB round-trip per call, so the resolution happens once '
     + 'at the caller\'s fetch. The test asserts every caller is itself resolved.',
-  presentation:
-    'reads the `presentation` role only, which sits outside CAST_ROLES on purpose '
-    + '(services/shared/language-voice-cast.cjs EXCLUDED_ROLES). The language cast '
-    + 'never writes this role, so resolving would change nothing.',
   'human-recording':
     'a human-recording path — recordist queue, splicer, coverage — which must read '
     + 'the STORED config. applyLanguageCast\'s human-voice guard is computed from the '
@@ -93,49 +89,17 @@ const RAW_READ_SURFACES = [
     note: 'reached only through getAudioNeeds(), whose four call sites all resolve at their fetch.',
     callersOf: 'getAudioNeeds',
   },
-  {
-    file: 'services/phases/phase8-audio-v13.cjs',
-    scope: 'linkPresentationAudio()',
-    disposition: 'presentation',
-    note: 'the presentation relink voice gate (Kai, 2026-08-19): only a clip in the '
-      + 'configured presentation voice may claim a lego\'s slot.',
-  },
-  {
-    file: 'services/phases/phase8-audio-v13.cjs',
-    scope: 'POST /prepare-presentations-scoped/:courseCode',
-    disposition: 'presentation',
-    note: 'stamps the pending presentation rows with the presentation voice id.',
-  },
-  {
-    file: 'services/phases/phase8-audio-v13.cjs',
-    scope: 'POST /regenerate-presentations/:courseCode',
-    disposition: 'presentation',
-    note: 'the presentation voice id for pending rows, and the presentation relink gate.',
-  },
-  {
-    file: 'services/phases/phase8-audio-v13.cjs',
-    scope: 'POST /regenerate-presentation/:courseCode/:legoId',
-    disposition: 'presentation',
-    note: 'renders ONE intro clip, presentation role only.',
-  },
 
   // ── presentation-author.cjs ─────────────────────────────────────────────
   {
     file: 'services/phases/presentation-author.cjs',
     scope: 'resolvePresentationVoiceId()',
-    disposition: 'presentation',
-    note: 'pure and synchronous by design. Its `voices.known` last-resort branch DOES '
-      + 'see the cast, because its only caller (POST /generate/:courseCode) hands it a '
-      + 'course whose voice_config was resolved at the fetch.',
-  },
-
-  // ── phase2-conflict-resolution/detect.cjs ───────────────────────────────
-  {
-    file: 'services/phases/phase2-conflict-resolution/detect.cjs',
-    scope: 'generatePresentationTexts()',
-    disposition: 'presentation',
-    note: 'writes presentation TEXT rows and stamps them with the flat legacy '
-      + 'voice_config.presentation string.',
+    disposition: 'caller-resolved',
+    note: 'pure and synchronous by design, and since 2026-09-10 the presentation role '
+      + 'is CAST — so what it reads out of `voices.presentation` IS the cast row, put '
+      + 'there by resolveVoiceConfig() at each caller\'s fetch. Making it async would '
+      + 'push a database round trip into a per-item loop. Every phase8 route that '
+      + 'reaches it resolves; the scan above is what holds them to that.',
   },
 
   // ── generate-legacy-manifest.cjs ────────────────────────────────────────

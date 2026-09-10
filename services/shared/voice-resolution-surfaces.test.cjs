@@ -22,7 +22,9 @@ const path = require('path');
 const {
   RENDER_PATH_FILES, DISPOSITIONS, RAW_READ_SURFACES, findRawReadSurface,
 } = require('./voice-resolution-surfaces.cjs');
-const { CAST_ROLES, EXCLUDED_ROLES, exclusionReason } = require('./language-voice-cast.cjs');
+const {
+  CAST_ROLES, EXCLUDED_ROLES, exclusionReason, slotForRole, isSingleVoiceSlot,
+} = require('./language-voice-cast.cjs');
 
 const REPO = path.resolve(__dirname, '../..');
 
@@ -141,9 +143,17 @@ describe('voice-resolution surface manifest', () => {
         + 'in services/shared/language-voice-cast.cjs:\n' + undecided.join(', ')).toEqual([]);
     });
 
-    it('presentation is excluded on purpose, with the reason written down', () => {
-      expect(CAST_ROLES).not.toContain('presentation');
-      expect(exclusionReason('presentation')).toMatch(/presenter/);
+    // FLIPPED ON 2026-09-10, deliberately. This asserted the opposite for as
+    // long as `presentation` sat outside the cast, and the exclusion note said
+    // out loud that "one word from him moves it into CAST_ROLES". Tom said the
+    // word. What the estate needs asserted now is the other half of the same
+    // safety property: the role is cast, and the ENGLISH cast row exists, so
+    // "obey the table" cannot mean "lose Tom's clone".
+    it('presentation is CAST, against the known language, in its own slot', () => {
+      expect(CAST_ROLES).toContain('presentation');
+      expect(exclusionReason('presentation')).toBeNull();
+      expect(slotForRole('presentation')).toBe('presentation');
+      expect(isSingleVoiceSlot('presentation')).toBe(true);
     });
 
     it('a role is never both cast and excluded', () => {

@@ -58,42 +58,38 @@ const { castKeyForCourse } = require('./cast-language-key.cjs');
 /**
  * The roles the language cast speaks for.
  *
- * `presentation` is DELIBERATELY EXCLUDED. It is the intro / clone voice — the
- * course's own presenter, not a specimen of the target language — and
- * services/audio-reuse-planner.cjs already treats intros as never-borrowed.
- * Casting it per language would swap Tom's clone for a stock voice on every
- * course that teaches English. Its per-course config is left untouched.
+ * `presentation` JOINED THIS LIST ON 2026-09-10, on Tom's word. It was excluded
+ * as a DEFAULT on 2026-08-29 with the note "one word from him moves it into
+ * CAST_ROLES", and the word was said: asked "want me to put the clone into the
+ * casting table as the English presentation voice? Then the principle stands
+ * and nothing touches your voice", he answered "yes".
  *
- * This is a DEFAULT chosen on 2026-08-29, not a ruling from Tom: one word from
- * him moves `presentation` into this list.
+ * The exclusion was protecting the right thing for the wrong reason. The danger
+ * — swapping Tom's clone for a stock voice on every English-teaching course —
+ * came from the TABLE not holding his clone, not from the rule. His clone is a
+ * person, not a language slot, so Voice Lab's "two standard voices per
+ * language" shape never had a place to put it. It has one now: the
+ * PRESENTATION slot below, cast against the KNOWN language, one voice per
+ * language, holding cartesia_8fef4d59-… for 'eng'. Obeying the table and
+ * keeping Tom's voice stopped being opposites when the row was written.
  */
-const CAST_ROLES = Object.freeze(['known', 'target1', 'target2', 'instruction', 'encouragement']);
+const CAST_ROLES = Object.freeze(['known', 'target1', 'target2', 'instruction', 'encouragement', 'presentation']);
 
 /**
  * The roles the language cast deliberately does NOT speak for, each with the
  * reason out loud.
  *
- * Until now `presentation` was excluded by ABSENCE — it simply was not in the
- * list above — and an exclusion nobody has written down is indistinguishable
- * from an oversight. Every render seam that reads a raw `course.voice_config`
- * rather than the resolved one turned out, on audit (2026-09-07), to be a
- * presentation seam relying on exactly this rule, so the rule is now stated
- * where it is enforced rather than inferred from a gap in an array.
- *
- * The pairing matters more than either half: CAST_ROLES and this object must
- * TOGETHER cover every role a course's voice_config can carry, and must not
- * overlap. A new role added to the config with no entry on either side fails
- * services/shared/language-voice-cast.test.cjs, which is the only way a future
- * role gets a decision made about it rather than a default.
+ * EMPTY since 2026-09-10, when `presentation` — its only ever entry — moved
+ * into CAST_ROLES. Empty is not the same as gone: the pairing is what carries
+ * the meaning. CAST_ROLES and this object must TOGETHER cover every role a
+ * course's voice_config can carry, and must not overlap, so a role added to
+ * the config with no entry on either side fails
+ * services/shared/voice-resolution-surfaces.test.cjs. That is the only way a
+ * future role gets a decision made about it rather than a default — which is
+ * exactly how `presentation` was excluded by ACCIDENT (by absence from an
+ * array) until 2026-09-07.
  */
-const EXCLUDED_ROLES = Object.freeze({
-  presentation:
-    "the course's own presenter, not a specimen of the language it teaches. "
-    + 'Casting it per language would swap Tom\'s clone for a stock voice on every '
-    + 'English-teaching course, and services/audio-reuse-planner.cjs already treats '
-    + 'intros as never-borrowed. A DEFAULT chosen 2026-08-29, not a ruling from Tom: '
-    + 'one word from him moves it into CAST_ROLES.',
-});
+const EXCLUDED_ROLES = Object.freeze({});
 
 /** Is this role deliberately outside the language cast? @returns {string|null} the reason */
 function exclusionReason(role) {
@@ -135,12 +131,53 @@ const GUIDE_ROLES = Object.freeze(new Set(['instruction', 'encouragement']));
 function isGuideRole(role) { return GUIDE_ROLES.has(role); }
 
 /**
+ * ── THE PRESENTATION SLOT (Tom, 2026-09-10) ─────────────────────────────────
+ *
+ * The intro voice — the one that says "French for 'I want' is:" — is KNOWN
+ * language audio, not target-language audio, so it takes the GUIDE's shape and
+ * not the phrase pair's:
+ *
+ *   • cast against the course's KNOWN language, because the narrator speaks to
+ *     the learner in the language the learner already has. Casting it against
+ *     the TARGET would be a category error and would put a stock French voice
+ *     on fra_for_eng's English intros;
+ *   • ONE voice per language, not a male/female pair — Tom's clone narrates
+ *     every English-known course, so there is nothing for a gender axis to
+ *     choose between;
+ *   • and, like the guide, it NEVER counts toward a language's completeness
+ *     (services/voicelab/registry.cjs): only about twelve of the estate's
+ *     sixty-eight languages are ever a known language, so counting it would
+ *     turn every other row amber and stop the screen saying anything.
+ *
+ * It is its own slot rather than a second guide role because a guide is the
+ * app talking to the learner and a presentation is the course's narrator: two
+ * decisions Kai must be able to make separately, on one screen, per language.
+ */
+const PRESENTATION_ROLES = Object.freeze(new Set(['presentation']));
+
+/** Is this role spoken by the course's narrator? */
+function isPresentationRole(role) { return PRESENTATION_ROLES.has(role); }
+
+/**
  * Which casting slot a role reads from. A row with no `slot` is a PHRASE row:
  * the column landed on 2026-08-29 with a 'phrase' default, and reading a
  * missing value as anything else would let an old row silently become a guide.
  */
-function slotForRole(role) { return isGuideRole(role) ? 'guide' : 'phrase'; }
+function slotForRole(role) {
+  if (isGuideRole(role)) return 'guide';
+  if (isPresentationRole(role)) return 'presentation';
+  return 'phrase';
+}
 function slotOfRow(r) { return r.slot || 'phrase'; }
+
+/**
+ * Slots that hold ONE voice per language rather than a male/female pair, and
+ * therefore have no gender axis to resolve on. Asked in one place so the
+ * registry, the router and this resolver cannot disagree about which slots are
+ * single.
+ */
+const SINGLE_VOICE_SLOTS = Object.freeze(new Set(['guide', 'presentation']));
+function isSingleVoiceSlot(slot) { return SINGLE_VOICE_SLOTS.has(slot); }
 
 /**
  * Which language a role speaks — as a CAST ENTITY, not as a base tag.
@@ -165,7 +202,7 @@ function slotOfRow(r) { return r.slot || 'phrase'; }
  */
 function languageForRole(role, course) {
   if (!course) return null;
-  const knownSide = role === 'known' || isGuideRole(role);
+  const knownSide = role === 'known' || isGuideRole(role) || isPresentationRole(role);
   return castKeyForCourse(course, knownSide ? 'known' : 'target');
 }
 
@@ -219,10 +256,10 @@ function pickCastVoice(roles, voiceById, language, gender, slot = 'phrase') {
   const slots = roles
     .filter((r) => slotOfRow(r) === slot)
     .filter((r) => r.language === language)
-    // A GUIDE is one voice per language, so gender is not part of the key and
-    // is deliberately not matched on. A PHRASE slot is a male/female pair, so
-    // it is.
-    .filter((r) => slot === 'guide' || r.gender === gender)
+    // A GUIDE or a PRESENTATION is one voice per language, so gender is not
+    // part of the key and is deliberately not matched on. A PHRASE slot is a
+    // male/female pair, so it is.
+    .filter((r) => isSingleVoiceSlot(slot) || r.gender === gender)
     .sort((a, b) => a.rank - b.rank);
   for (const slot of slots) {
     const voice = voiceById.get(slot.voice_id);
@@ -330,8 +367,8 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [], human
     if (!language) { decisions.push({ role, source: 'stored', reason: 'no language on course' }); continue; }
 
     const slot = slotForRole(role);
-    // A guide has no gender axis; reading one would be inventing a key.
-    const gender = slot === 'guide' ? null : genderForRole(role, roleConfig, voiceGenderById);
+    // A single-voice slot has no gender axis; reading one would be inventing a key.
+    const gender = isSingleVoiceSlot(slot) ? null : genderForRole(role, roleConfig, voiceGenderById);
     const cast = pickCastVoice(roles, voiceById, language, gender, slot);
     if (!cast) {
       decisions.push({
@@ -379,10 +416,14 @@ module.exports = {
   pickCastVoice,
   providerOfVoice,
   isGuideRole,
+  isPresentationRole,
+  isSingleVoiceSlot,
   slotForRole,
   CAST_ROLES,
   EXCLUDED_ROLES,
   exclusionReason,
   GUIDE_ROLES,
+  PRESENTATION_ROLES,
+  SINGLE_VOICE_SLOTS,
   DEFAULT_GENDER,
 };

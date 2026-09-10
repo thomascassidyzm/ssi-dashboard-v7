@@ -67,13 +67,16 @@ describe('applyLanguageCast — the cast winning', () => {
     expect(decisions.find((d) => d.role === 'target1').source).toBe('language-cast');
   });
 
-  it('leaves presentation alone — it is the course\'s own presenter', () => {
+  it('a PHRASE cast still leaves presentation alone — the narrator has its own slot', () => {
     const { config } = applyLanguageCast({
       voiceConfig: storedConfig(), course, voices,
       roles: cast(row('eng', 'm', 0, 'cartesia_en-m-1'), row('eng', 'f', 0, 'cartesia_fr-f-1')),
     });
     expect(config.voices.presentation.voiceId).toBe('gfzdpspr5fdp');
-    expect(CAST_ROLES).not.toContain('presentation');
+    // Cast since 2026-09-10 — but from the PRESENTATION slot, never from the
+    // phrase pair. That is what keeps an English male phrase cast from
+    // narrating, and what kept this assertion true across the change.
+    expect(CAST_ROLES).toContain('presentation');
     // `known` DOES take the English cast, at the gender its stored voice has (m).
     expect(config.voices.known.voiceId).toBe('cartesia_en-m-1');
   });
@@ -334,7 +337,6 @@ describe('the guide slot and the phrase slots do not leak into each other', () =
   it('names the guide roles and only the guide roles', () => {
     expect(CAST_ROLES).toContain('instruction');
     expect(CAST_ROLES).toContain('encouragement');
-    expect(CAST_ROLES).not.toContain('presentation');
     expect(isGuideRole('instruction')).toBe(true);
     expect(isGuideRole('known')).toBe(false);
     expect(slotForRole('encouragement')).toBe('guide');
@@ -468,5 +470,97 @@ describe('applyLanguageCast — the dialect is its own language', () => {
     const roles = [{ slot: 'phrase', language: 'fra', gender: 'm', rank: 0, voice_id: 'cartesia_moritz' }];
     const { config } = applyLanguageCast({ voiceConfig: cfg(), course: fra, roles, voices: germanVoices });
     expect(config.voices.target1.voiceId).toBe('cartesia_moritz');
+  });
+});
+
+// ── THE PRESENTATION SLOT (Tom, 2026-09-10) ─────────────────────────────────
+//
+// The acceptance test in Tom's own terms. Watson offered him a branch whose
+// principle was right — the render path should obey the casting table — and
+// whose effect was to move the English narrator on ~50 eng_for_* courses off
+// his Cartesia clone onto whatever stock Azure voice their voice_config had
+// been scaffolded with. His answer: "no way - that's insane - why would a
+// worker suggest replacing my voice clone with Azure???"
+//
+// The rule was right and the DATA was wrong: his clone is a person, not a
+// language slot, so Voice Lab had nowhere to put it and it was never in the
+// table to be cast. These tests are the two halves of the fix. An eng-known
+// course configured for Azure Sonia resolves to the CLONE because the cast row
+// says so; and a language with no presentation cast row resolves exactly as it
+// did before, byte for byte.
+
+const presRow = (language, rank, voice_id, gender = 'm') => ({ language, gender, rank, voice_id, slot: 'presentation' });
+
+const engAzureCourse = { course_code: 'fra_for_eng', known_lang: 'eng', target_lang: 'fra' };
+const azureStored = () => ({
+  version: '1.0',
+  voices: {
+    known: { name: 'Sonia', voiceId: 'en-GB-SoniaNeural', provider: 'azure', settings: { speed: 1 } },
+    target1: { name: 'Eve', voiceId: 'eve', provider: 'xai', settings: { speed: 1 } },
+    // 43 of the 83 eng-known courses carried exactly this on 2026-09-10.
+    presentation: { name: 'Sonia', voiceId: 'en-GB-SoniaNeural', provider: 'azure', settings: { speed: 1 } },
+  },
+});
+const TOM_CLONE = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2';
+const presVoices = [
+  ...voices,
+  { voice_id: TOM_CLONE, gender: 'm', tts_engine: 'cartesia', is_active: true, display_name: 'tom_001' },
+  { voice_id: 'azure_en-GB-SoniaNeural', gender: 'f', tts_engine: 'azure', is_active: true, display_name: 'Sonia' },
+];
+
+describe('the presentation slot — Tom\'s clone is castable, and cast', () => {
+  it('an eng-known course configured for Azure narrates in the CAST voice', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: azureStored(), course: engAzureCourse, voices: presVoices,
+      roles: [presRow('eng', 0, TOM_CLONE)],
+    });
+    expect(config.voices.presentation.voiceId).toBe(TOM_CLONE);
+    expect(config.voices.presentation.provider).toBe('cartesia');
+    const d = decisions.find((x) => x.role === 'presentation');
+    expect(d.source).toBe('language-cast');
+    expect(d.slot).toBe('presentation');
+    expect(d.language).toBe('eng');       // the KNOWN side, not 'fra'
+    expect(d.gender).toBeNull();          // one voice per language, no pair
+  });
+
+  it('is cast against the KNOWN language: a cast on the target never narrates', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: azureStored(), course: engAzureCourse, voices: presVoices,
+      roles: [presRow('fra', 0, TOM_CLONE)],
+    });
+    expect(config.voices.presentation.voiceId).toBe('en-GB-SoniaNeural');
+    expect(decisions.find((x) => x.role === 'presentation').source).toBe('stored');
+  });
+
+  it('WITH NO PRESENTATION CAST ROW, resolution is the stored config, byte for byte', () => {
+    const cfg = azureStored();
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: cfg, course: engAzureCourse, voices: presVoices,
+      // A full PHRASE cast on the same language, and a guide cast too: neither
+      // may reach the narrator.
+      roles: [row('eng', 'm', 0, 'cartesia_en-m-1'), guideRow('eng', 0, 'elevenlabs_NEW')],
+    });
+    expect(config.voices.presentation).toEqual(cfg.voices.presentation);
+    expect(decisions.find((x) => x.role === 'presentation').source).toBe('stored');
+  });
+
+  it('honours an explicit course override on the narrator', () => {
+    const cfg = azureStored();
+    cfg.voices.presentation.overrideLanguageCast = true;
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: cfg, course: engAzureCourse, voices: presVoices,
+      roles: [presRow('eng', 0, TOM_CLONE)],
+    });
+    expect(config.voices.presentation.voiceId).toBe('en-GB-SoniaNeural');
+    expect(decisions.find((x) => x.role === 'presentation').source).toBe('course-override');
+  });
+
+  it('falls to the rank-1 narrator only when the primary voice is deactivated', () => {
+    const { config } = applyLanguageCast({
+      voiceConfig: azureStored(), course: engAzureCourse,
+      voices: [...presVoices, { voice_id: 'cartesia_dead', gender: 'm', tts_engine: 'cartesia', is_active: false, display_name: 'gone' }],
+      roles: [presRow('eng', 0, 'cartesia_dead'), presRow('eng', 1, TOM_CLONE)],
+    });
+    expect(config.voices.presentation.voiceId).toBe(TOM_CLONE);
   });
 });

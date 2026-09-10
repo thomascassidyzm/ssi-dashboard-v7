@@ -91,7 +91,13 @@ const TARGET_ROLES = Object.freeze(['target1', 'target2']);
  * returns. Getting that the other way round would drop the guard off every
  * Welsh dialect course at once.
  */
-const KNOWN_SIDE_ROLES = Object.freeze(['known', 'instruction', 'encouragement']);
+// `presentation` joined this list on 2026-09-10 with the ruling that made it a
+// cast role: the intro is spoken in the language the learner already has, so
+// the human-voice guard must protect it on the KNOWN side. Reading it as a
+// target-side role would drop the guard off every Welsh-known course's narrator
+// at once. The twin in language-voice-cast.cjs says the same thing and a test
+// holds the two together on every role.
+const KNOWN_SIDE_ROLES = Object.freeze(['known', 'instruction', 'encouragement', 'presentation']);
 function languageSpokenBy(role, course) {
   return castKeyForCourse(course, KNOWN_SIDE_ROLES.includes(role) ? 'known' : 'target');
 }
@@ -187,7 +193,12 @@ function humanRolesForCourse({ course, voiceConfig = null, humanRows = [], roles
  */
 function humanRecordedForLanguage({ language, slot = 'phrase', courses = [], humanRows = [] }) {
   const lang = String(language || '').trim();
-  const wanted = slot === 'guide' ? ['instruction', 'encouragement'] : [...PHRASE_ROLES];
+  // A PRESENTATION cast reaches the narrator role only, and like the guide it
+  // is known-language audio (Tom, 2026-09-10) — so the guard asks about the
+  // courses taught FROM this language, never the ones that teach it.
+  const wanted = slot === 'guide' ? ['instruction', 'encouragement']
+    : slot === 'presentation' ? ['presentation']
+      : [...PHRASE_ROLES];
   const affected = [];
   for (const c of courses) {
     // Which of the wanted roles this cast would actually reach on this course.
@@ -197,7 +208,7 @@ function humanRecordedForLanguage({ language, slot = 'phrase', courses = [], hum
     // teaches the operator to ignore it.
     const targetKey = targetCastKey(c);
     const reach = wanted.filter((role) => (
-      role === 'known' || role === 'instruction' || role === 'encouragement'
+      KNOWN_SIDE_ROLES.includes(role)
         ? c.known_lang === lang
         : targetKey === lang
     ));

@@ -385,20 +385,50 @@ async function recordAuthorFlags(supabase, courseCode, flags) {
 
 /**
  * Presentation TTS voice.
- * English-known courses: Tom's clone is THE estate English voice (ruled
- * 2026-07-04, moved to his Cartesia clone 2026-09-03) — it wins over the
- * legacy Azure entries most voice_configs were scaffolded with.
  *
- * A stored xAI presentation voice USED to win here, so that a deliberate pick
- * was respected. It no longer does: xAI is retired from selection (Tom,
- * 2026-08-27) and the only two English-known courses that carried one — 
- * deu_for_eng and fra_for_eng — carried Tom's own xAI clone, i.e. the very
- * default this line states. Honouring it would have pinned exactly those two
- * courses to the deprecated provider. No course loses a deliberate choice:
- * an eng-known course with a non-xAI presentation voice never won this branch
- * in the first place, so nothing else about their resolution changes.
- * Other known languages: explicit presentation config, else the known-role
- * voice (intros are known-language audio).
+ * THE CAST ROW IS THE ANSWER (Tom, 2026-09-10). `presentation` is a CAST_ROLE
+ * as of that date, cast against the course's KNOWN language in the
+ * `presentation` slot of voice_language_roles, and English holds Tom's own
+ * Cartesia clone. So the voice arrives here ALREADY RESOLVED, inside
+ * `course.voice_config.voices.presentation`, put there by
+ * voiceConfigService.resolveVoiceConfig() at the caller's fetch — every phase8
+ * route and the production-api proxy resolve at their own SELECT, and
+ * services/shared/voice-resolution-surfaces.test.cjs fails when a new one does
+ * not.
+ *
+ * WHY THE CALLER RESOLVES AND NOT THIS FUNCTION. This is pure and synchronous,
+ * and the cast needs two database reads. Making it async would push a round
+ * trip into every per-item loop that calls it; resolving once at the fetch
+ * costs one read per render and is the shape the rest of phase8 already uses.
+ *
+ * PRECEDENCE, and the one place it deliberately departs from "config wins":
+ *
+ *   1. the resolved config's presentation entry — which IS the cast row when
+ *      one exists for the known language, and a deliberate course override
+ *      (voice_config.overrideLanguageCast) when a human has set one;
+ *   2. for an English-known course with NO presentation cast row, Tom's clone,
+ *      AHEAD of the stored config;
+ *   3. the stored config's flat legacy `presentation` string;
+ *   4. the known-role voice — intros are known-language audio;
+ *   5. DEFAULT_PRESENTATION_VOICE.
+ *
+ * Leg 2 is the departure and it is on purpose. Every eng_for_* voice_config in
+ * the estate was scaffolded with a stock Azure narrator nobody chose — 43 of
+ * them carry en-GB-SoniaNeural today — so letting the stored config outrank the
+ * English default would move fifty courses off Tom's voice the moment the cast
+ * row went missing, silently, with no error path. That is the exact swap he
+ * refused on 2026-09-10 ("no way - that's insane - why would a worker suggest
+ * replacing my voice clone with Azure?"). A course that genuinely wants its own
+ * narrator says so out loud with `overrideLanguageCast`, which wins at leg 1;
+ * an absent row is not a decision and must never read as one.
+ *
+ * A stored xAI presentation voice is never honoured: xAI is retired from
+ * selection (Tom, 2026-08-27) and the only two eng-known courses that carried
+ * one — deu_for_eng and fra_for_eng — carried Tom's own xAI clone, i.e. the
+ * very default leg 2 states.
+ *
+ * ENG_PRESENTATION_VOICE above and the ('eng', 'presentation', rank 0) cast row
+ * must name the same voice; the test below holds them to it.
  *
  * The return value is a course_audio.voice_id, so it is CANONICAL on every
  * path. It used to have four returns in two spellings — two prefixed, two bare
@@ -411,8 +441,14 @@ function resolvePresentationVoiceId(course) {
   const cfg = course.voice_config || {}
   const voices = cfg.voices || cfg
   const pres = voices.presentation
+  // A CAST voice, or a course override, or a stored pick — all three arrive in
+  // the same place. `castFrom` is stamped by applyLanguageCast and is what
+  // makes a cast row distinguishable in a log, not a second code path.
+  const overridden = cfg.overrideLanguageCast === true || pres?.overrideLanguageCast === true
+  if (pres?.voiceId && (pres.castFrom || overridden || course.known_lang !== 'eng')) {
+    return canonicalVoiceId(pres.voiceId, { provider: pres.provider })
+  }
   if (course.known_lang === 'eng') return canonicalVoiceId(ENG_PRESENTATION_VOICE)
-  if (pres?.voiceId) return canonicalVoiceId(pres.voiceId, { provider: pres.provider })
   if (typeof cfg.presentation === 'string') return canonicalVoiceId(cfg.presentation)
   const known = voices.known
   if (known?.voiceId) return canonicalVoiceId(known.voiceId, { provider: known.provider })

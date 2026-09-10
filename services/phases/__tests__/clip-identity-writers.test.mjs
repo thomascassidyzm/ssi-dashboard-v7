@@ -506,10 +506,47 @@ describe('resolvePresentationVoiceId — four paths, one spelling', () => {
   it('the constant matches the voice the language cast names', () => {
     // ONE VOICE, WRITTEN DOWN TWICE ON PURPOSE (see the comment on
     // ENG_PRESENTATION_VOICE). This test is the thing that stops the two
-    // copies drifting: the id below is the voice_language_roles row
-    // ('eng','m','phrase',rank 0) as applied on 2026-09-03.
+    // copies drifting: the id below is the voice_language_roles rows
+    // ('eng','m','phrase',rank 0), applied 2026-09-03, and
+    // ('eng','m','presentation',rank 0), applied 2026-09-10.
     expect(presentationAuthor.ENG_PRESENTATION_VOICE)
       .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+  })
+
+  // ── THE ACCEPTANCE TEST FOR THE 2026-09-10 CAST ──────────────────────────
+  //
+  // Tom, on being offered a branch that would have moved ~50 eng_for_* courses
+  // from his Cartesia clone onto their scaffolded Azure voice: "no way -
+  // that's insane - why would a worker suggest replacing my voice clone with
+  // Azure???" The principle (obey the casting table) was right; the table was
+  // missing his clone. Now the cast row IS the answer, and these two say so.
+  it('an eng-known course configured for Azure still narrates in the CAST clone', () => {
+    // What a phase8 route actually hands this function: a voice_config already
+    // resolved through applyLanguageCast, so the presentation entry carries
+    // `castFrom` from the ('eng','presentation',rank 0) row.
+    const resolved = withConfig('eng', { voices: { presentation: {
+      provider: 'cartesia',
+      voiceId: 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2',
+      castFrom: { slot: 'presentation', language: 'eng', gender: null, rank: 0 },
+    } } })
+    expect(presentationAuthor.resolvePresentationVoiceId(resolved))
+      .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+  })
+
+  it('a stored Azure narrator never outranks the clone on an eng-known course', () => {
+    // 43 of the 83 eng-known courses carried en-GB-SoniaNeural here on
+    // 2026-09-10. If the cast row were ever deleted, this is the leg that
+    // stops fifty courses swapping narrator silently: an absent row is not a
+    // decision. A course that genuinely wants its own says overrideLanguageCast.
+    expect(presentationAuthor.resolvePresentationVoiceId(
+      withConfig('eng', { voices: { presentation: { provider: 'azure', voiceId: 'en-GB-SoniaNeural' } } })))
+      .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+
+    expect(presentationAuthor.resolvePresentationVoiceId(
+      withConfig('eng', { voices: { presentation: {
+        provider: 'azure', voiceId: 'en-GB-SoniaNeural', overrideLanguageCast: true,
+      } } })))
+      .toBe('azure_en-GB-SoniaNeural')
   })
 
   it('spells the explicit-config and bare-config paths the same way', () => {

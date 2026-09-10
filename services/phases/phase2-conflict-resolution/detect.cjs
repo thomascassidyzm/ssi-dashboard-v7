@@ -19,6 +19,8 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 const { v4: uuidv4 } = require('uuid')
 const { canonicalLanguage, canonicalVoiceId } = require('../../shared/clip-identity.cjs')
 const { normalizeForDb } = require('../../shared/text-normalize.cjs')
+const voiceConfigService = require('../../voice-config-service.cjs')
+const presentationAuthor = require('../presentation-author.cjs')
 
 // Language name mapping for presentation text
 const LANG_NAMES = {
@@ -42,7 +44,10 @@ async function generatePresentationTexts(courseCode) {
   // Get course info
   const { data: course, error: courseError } = await supabase
     .from('courses')
-    .select('known_lang, target_lang, voice_config')
+    // course_code and the cast-key columns ride along: the presentation slot is
+    // cast on the KNOWN side, and resolveVoiceConfig cannot key a course it
+    // cannot identify (services/shared/cast-language-key.cjs).
+    .select('course_code, known_lang, target_lang, voice_config, voice_pool_key, dialect, known_dialect')
     .eq('course_code', courseCode)
     .single()
 
@@ -54,9 +59,22 @@ async function generatePresentationTexts(courseCode) {
   const targetLangName = LANG_NAMES[course.target_lang] || course.target_lang
   const fullTemplate = "The {target_lang_name} for — '{known}' — as in — '{seed}' — is:"
   const shortTemplate = "The {target_lang_name} for — '{known}' — is:"
-  // voice_config.presentation is the flat legacy string and its shape is
-  // unconstrained, so canonicalise rather than trust it.
-  const voiceId = canonicalVoiceId(course.voice_config?.presentation || 'azure_en-GB-SoniaNeural')
+  // THE SAME RESOLVER THE RENDER USES. These rows are stamped PENDING with a
+  // voice id, and a pending row stamped with a voice the render will not use
+  // never reconciles with the clip that replaces it. This used to read the flat
+  // legacy `voice_config.presentation` string alone, which the language cast
+  // never writes — so from 2026-09-10 it would have stamped stock Azure on
+  // exactly the courses /generate narrates in Tom's clone.
+  course.voice_config = await voiceConfigService.resolveVoiceConfig({
+    voiceConfig: course.voice_config, course, courseCode,
+  })
+  let voiceId
+  try {
+    voiceId = presentationAuthor.resolvePresentationVoiceId(course)
+  } catch (err) {
+    console.log(`      Could not resolve a presentation voice (${err.message}) — falling back to the estate default`)
+    voiceId = canonicalVoiceId('azure_en-GB-SoniaNeural')
+  }
   const language = canonicalLanguage(course.known_lang)
 
   // Get all NEW LEGOs with their seed context
