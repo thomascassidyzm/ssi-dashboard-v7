@@ -27,6 +27,8 @@
  * voice_id pass it in `patch` with their eyes open.
  */
 
+const { audioKeyCandidates } = require('./text-normalize.cjs')
+
 /**
  * Swap the bytes an existing course_audio row points at, versioned.
  *
@@ -166,7 +168,12 @@ async function swapClipInPlace ({
  * @param {object} o
  * @param {object} o.supabase
  * @param {object} o.identity   { course_code, text_normalized, language, role, voice_id }
- *                              — the unique key. Matched exactly.
+ *                              — the unique key. Every column is matched
+ *                              exactly EXCEPT text_normalized, which is matched
+ *                              against audioKeyCandidates() of the raw text; see
+ *                              the note above findHolder.
+ * @param {string} [o.identity.text] Raw (un-normalised) text, if it is not
+ *                              `insertRow.text`. Never used as a filter column.
  * @param {object} o.insertRow  Full row to INSERT when the key is free.
  * @param {object} o.swapPatch  Columns to write when swapping onto an existing row.
  *                              Must NOT include text/identity columns.
@@ -182,10 +189,44 @@ async function writeOrSwapClip ({
   supabase, identity, insertRow, swapPatch, newS3Key, durationMs = null,
   source, acceptedBy, reason = null, logger = null,
 }) {
-  const findHolder = async (single) => {
-    let q = supabase.from('course_audio').select('id')
-    for (const [col, val] of Object.entries(identity)) q = q.eq(col, val)
-    return single ? q.single() : q.maybeSingle()
+  // THE KEY COLUMN DOES NOT HOLD ONE CONVENTION, SO IT CANNOT BE MATCHED WITH .eq().
+  // `course_audio.text_normalized` is rewritten on every write by the trigger
+  // trg_course_audio_normalize, whose normalize_text() strips a trailing '?' that
+  // the JS normalizeForAudio() keeps — and rows written before that trigger keep
+  // theirs. Callers hand us normalizeForAudio(text), so an .eq() lookup on a
+  // question could not see its own row: it missed, INSERTed, hit 23505 on
+  // unique_course_audio_per_voice, and the race retry (the same .eq()) missed
+  // again, so the route 500'd AFTER paying for the render. Live on
+  // ita_for_eng:S0154L01U01. See services/shared/text-normalize.cjs.
+  const rawText = identity.text ?? insertRow?.text ?? identity.text_normalized
+  const keyCandidates = [...new Set(
+    [...audioKeyCandidates(rawText), identity.text_normalized].filter(Boolean)
+  )]
+
+  const findHolder = async () => {
+    let q = supabase.from('course_audio').select('id, text_normalized')
+    for (const [col, val] of Object.entries(identity)) {
+      if (col === 'text') continue                        // raw text is not a key column
+      if (col === 'text_normalized') { q = q.in(col, keyCandidates); continue }
+      q = q.eq(col, val)
+    }
+    const { data, error } = await q
+    if (error) {
+      // A read that failed is not a key that is free — but neither is it a
+      // holder. Fall through as before: the INSERT decides, and a 23505 comes
+      // back here.
+      if (logger?.warn) logger.warn(`[RevisionSwap] holder lookup failed: ${error.message}`)
+      return null
+    }
+    const rows = data || []
+    if (rows.length <= 1) return rows[0] || null
+    // Both conventions are present under this key. Prefer the spelling the
+    // trigger writes today — that is the row a fresh INSERT would collide with.
+    for (const candidate of keyCandidates) {
+      const hit = rows.find(row => row.text_normalized === candidate)
+      if (hit) return hit
+    }
+    return rows[0]
   }
 
   const swapOnto = async (audioId, why) => {
@@ -196,7 +237,7 @@ async function writeOrSwapClip ({
     return { audioId, created: false, revision: out.revision }
   }
 
-  const { data: holder } = await findHolder(false)
+  const holder = await findHolder()
   if (holder) return swapOnto(holder.id, reason)
 
   const { data: inserted, error: insertError } = await supabase
@@ -210,8 +251,8 @@ async function writeOrSwapClip ({
 
   // Lost the race. Someone created the row after our lookup — swap onto it
   // rather than letting the collision either 500 or overwrite unversioned.
-  const { data: raced, error: racedErr } = await findHolder(true)
-  if (racedErr || !raced) throw insertError
+  const raced = await findHolder()
+  if (!raced) throw insertError
   return swapOnto(raced.id, reason ? `${reason} (concurrent-create race)` : 'concurrent-create race')
 }
 
