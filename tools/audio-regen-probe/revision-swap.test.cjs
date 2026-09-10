@@ -44,7 +44,7 @@ const NEW_GOOD = 'mastered/NEW-GOOD-0001.mp3'
 
 /**
  * The supabase-js surface swapClipInPlace actually uses, over PGlite.
- * Deliberately minimal: .from().select().eq().single()/maybeSingle(),
+ * Deliberately minimal: .from().select().eq()/.in().single()/maybeSingle(),
  * .from().update().eq(), .from().upsert(..., {onConflict}). Anything the module
  * starts using that is not here will throw rather than silently pass.
  */
@@ -55,14 +55,18 @@ function supabaseOver (db) {
     from (table) {
       const state = { table, filters: [], op: null, payload: null, onConflict: null, columns: '*' }
 
+      // .eq -> `col = $n`; .in -> `col = ANY($n)`, which is how PostgREST
+      // renders `.in()` too, so a multi-candidate key lookup is exercised for real.
+      const clause = (f, i) => f.vals ? `${f.col} = ANY($${i + 1})` : `${f.col} = $${i + 1}`
       const where = () => state.filters.length
-        ? ' WHERE ' + state.filters.map((f, i) => `${f.col} = $${i + 1}`).join(' AND ')
+        ? ' WHERE ' + state.filters.map((f, i) => clause(f, i)).join(' AND ')
         : ''
-      const params = () => state.filters.map(f => f.val)
+      const params = () => state.filters.map(f => f.vals || f.val)
 
       const api = {
         select (cols) { state.columns = cols || '*'; if (!state.op) state.op = 'select'; return api },
         eq (col, val) { state.filters.push({ col, val }); return api },
+        in (col, vals) { state.filters.push({ col, vals }); return api },
 
         update (payload) { state.op = 'update'; state.payload = payload; return api },
         insert (payload) { state.op = 'insert'; state.payload = payload; return api },
@@ -97,7 +101,7 @@ function supabaseOver (db) {
             const sets = cols.map((c, i) => `${c} = $${i + 1}`).join(', ')
             const vals = cols.map(c => state.payload[c])
             const filterSql = state.filters.length
-              ? ' WHERE ' + state.filters.map((f, i) => `${f.col} = $${cols.length + i + 1}`).join(' AND ')
+              ? ' WHERE ' + state.filters.map((f, i) => clause(f, cols.length + i)).join(' AND ')
               : ''
             await run(`UPDATE ${state.table} SET ${sets}${filterSql}`, [...vals, ...params()])
             return { data: null, error: null }
@@ -465,6 +469,131 @@ test('W3. concurrent create — the race lands on the versioned swap, never an u
   assert.strictEqual((await history(db, raced)).length, 1)
 
   console.log('W3. The 23505 is still caught (no 500), but the collision now moves the learner ref.')
+})
+
+// ===========================================================================
+// The split text_normalized column — services/shared/text-normalize.cjs.
+// The DB trigger trg_course_audio_normalize writes normalize_text(), which
+// STRIPS a trailing '?'. normalizeForAudio() KEEPS it. So a caller that looks
+// the key up with normalizeForAudio alone cannot see its own row.
+// ===========================================================================
+
+const Q_TEXT = '¿Quieres hablar?'
+const Q_IDENTITY = {
+  course_code: COURSE,
+  text_normalized: '¿quieres hablar?',     // what normalizeForAudio(Q_TEXT) gives phase8
+  language: 'spa',
+  role: 'target1',
+  voice_id: 'azure_es-ES-ElviraNeural',
+}
+const Q_INPUT = {
+  identity: Q_IDENTITY,
+  insertRow: { ...Q_IDENTITY, text: Q_TEXT, origin: 'tts', s3_key: NEW_GOOD, duration_ms: 1500 },
+  swapPatch: { origin: 'tts' },
+  newS3Key: NEW_GOOD,
+  durationMs: 1500,
+  acceptedBy: 'test',
+}
+
+/** Insert through the real trigger, so text_normalized is whatever the DB decides. */
+async function questionClip (db, { text = Q_TEXT, s3Key = OLD_BAD } = {}) {
+  const res = await db.query(
+    `INSERT INTO course_audio (course_code, text, language, role, voice_id, origin, s3_key, duration_ms)
+     VALUES ($1,$2,'spa','target1','azure_es-ES-ElviraNeural','tts',$3,1000)
+     RETURNING id, text_normalized`,
+    [COURSE, text, s3Key]
+  )
+  return res.rows[0]
+}
+
+/**
+ * A row in the OTHER convention. The trigger recomputes text_normalized on every
+ * UPDATE as well as every INSERT, so there is no write that leaves a trailing '?'
+ * in the column — which is exactly why the 5,305 rows that carry one all predate
+ * the trigger. Reproduce that by writing the row the way history did: with the
+ * trigger off.
+ */
+async function legacyClip (db, { text, textNormalized, s3Key }) {
+  await db.exec('ALTER TABLE course_audio DISABLE TRIGGER trg_course_audio_normalize')
+  try {
+    const res = await db.query(
+      `INSERT INTO course_audio (course_code, text, text_normalized, language, role, voice_id, origin, s3_key, duration_ms)
+       VALUES ($1,$2,$3,'spa','target1','azure_es-ES-ElviraNeural','tts',$4,1000)
+       RETURNING id, text_normalized`,
+      [COURSE, text, textNormalized, s3Key]
+    )
+    return res.rows[0]
+  } finally {
+    await db.exec('ALTER TABLE course_audio ENABLE TRIGGER trg_course_audio_normalize')
+  }
+}
+
+test('W4. QUESTION MARK — the holder is found even though the DB stripped the ?', async () => {
+  const db = await r.createRouteFixture()
+  const held = await questionClip(db)
+
+  line(); console.log('W4. regenerate-phrase on a question — reproduced live on ita_for_eng:S0154L01U01')
+  show('stored by the trigger', { text: Q_TEXT, text_normalized: held.text_normalized })
+  show('what the caller looks up with', { text_normalized: Q_IDENTITY.text_normalized })
+  assert.strictEqual(held.text_normalized, '¿quieres hablar',
+    'the trigger strips the ? — this is the premise of the bug, assert it rather than assume it')
+
+  const out = await writeOrSwapClip({
+    supabase: supabaseOver(db), ...Q_INPUT,
+    source: 'phase8-regenerate-phrase', reason: 'W4',
+  })
+  const after = await clip(db, held.id)
+  show('result', out); show('after', after)
+
+  assert.strictEqual(out.created, false, 'THE FIX: the existing row is found, not re-inserted')
+  assert.strictEqual(out.audioId, held.id, 'the same row id — no holder FK moves')
+  assert.strictEqual(after.s3_key, NEW_GOOD, 'new bytes')
+  assert.strictEqual(after.audio_revision, 2, 'and versioned, so the learner ref moves')
+  assert.strictEqual((await db.query('SELECT id FROM course_audio')).rows.length, 1, 'exactly one row, still')
+
+  console.log('W4. Before the fix: lookup missed -> INSERT -> 23505 -> the retry lookup missed too -> 500,')
+  console.log('W4. thrown AFTER the TTS render had already been paid for.')
+})
+
+test('W5. LEGACY CONVENTION — a pre-trigger row stored WITH the ? is reachable too', async () => {
+  const db = await r.createRouteFixture()
+  const held = await legacyClip(db, { text: Q_TEXT, textNormalized: '¿quieres hablar?', s3Key: OLD_BAD })
+
+  line(); console.log('W5. the other half of the split column — 5,305 rows written Jan-Feb 2026')
+  show('stored', held)
+
+  const out = await writeOrSwapClip({
+    supabase: supabaseOver(db), ...Q_INPUT,
+    source: 'phase8-regenerate-lego', reason: 'W5',
+  })
+  show('result', out)
+
+  assert.strictEqual(out.created, false, 'both conventions are reachable from one lookup')
+  assert.strictEqual(out.audioId, held.id)
+  assert.strictEqual((await clip(db, held.id)).audio_revision, 2)
+
+  console.log('W5. audioKeyCandidates() addresses both spellings; .eq() on either one can only reach half.')
+})
+
+test('W6. BOTH CONVENTIONS PRESENT — the DB-normalised row wins, deterministically', async () => {
+  const db = await r.createRouteFixture()
+  const legacy = await legacyClip(db, { text: Q_TEXT, textNormalized: '¿quieres hablar?', s3Key: 'mastered/LEGACY.mp3' })
+  const dbForm = await questionClip(db)   // '¿quieres hablar', the spelling the trigger writes
+
+  line(); console.log('W6. two rows match the candidate set — the choice must not be arbitrary')
+  show('rows', { legacy: legacy.text_normalized, dbForm: dbForm.text_normalized })
+
+  const out = await writeOrSwapClip({
+    supabase: supabaseOver(db), ...Q_INPUT,
+    source: 'phase8-regenerate-phrase', reason: 'W6',
+  })
+  show('result', out)
+
+  assert.strictEqual(out.audioId, dbForm.id,
+    'the row spelled the way the trigger spells it is the one a fresh write would collide with')
+  assert.strictEqual((await clip(db, legacy.id)).s3_key, 'mastered/LEGACY.mp3', 'the legacy row is left alone')
+
+  console.log('W6. Candidate order is the tie-break: normalizeForDb first, because that is what the trigger writes.')
 })
 
 // ===========================================================================
