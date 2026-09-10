@@ -503,6 +503,34 @@ describe('resolvePresentationVoiceId — four paths, one spelling', () => {
       .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
   })
 
+  // THE /generate <-> /regenerate-presentation DIVERGENCE (fixed 2026-09-10).
+  // The eng-known branch used to be checked FIRST and returned unconditionally,
+  // so POST /generate/:courseCode rendered Tom's clone for every English-known
+  // course no matter what its voice_config said - while the sibling route
+  // POST /regenerate-presentation/:courseCode/:legoId read the course's own
+  // presentation voice and rendered that. Same row, two narrators, no error.
+  // The course's own configured voice now wins on both paths.
+  it("an eng-known course's OWN configured presentation voice wins", () => {
+    expect(presentationAuthor.resolvePresentationVoiceId(
+      withConfig('eng', { voices: { presentation: { provider: 'azure', voiceId: 'en-GB-SoniaNeural' } } })))
+      .toBe('azure_en-GB-SoniaNeural')
+  })
+
+  it("an eng-known course's flat legacy presentation string wins too", () => {
+    expect(presentationAuthor.resolvePresentationVoiceId(
+      withConfig('eng', { presentation: 'azure_en-GB-AdaMultilingualNeural' })))
+      .toBe('azure_en-GB-AdaMultilingualNeural')
+  })
+
+  // The regression guard for the branch's ORIGINAL intent: an English-known
+  // course with NO presentation voice configured at all still gets the clone,
+  // never DEFAULT_PRESENTATION_VOICE and never the known-role voice.
+  it('an eng-known course with no presentation configured still gets the clone', () => {
+    expect(presentationAuthor.resolvePresentationVoiceId(
+      withConfig('eng', { voices: { known: { provider: 'azure', voiceId: 'en-GB-RyanNeural' } } })))
+      .toBe('cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2')
+  })
+
   it('the constant matches the voice the language cast names', () => {
     // ONE VOICE, WRITTEN DOWN TWICE ON PURPOSE (see the comment on
     // ENG_PRESENTATION_VOICE). This test is the thing that stops the two

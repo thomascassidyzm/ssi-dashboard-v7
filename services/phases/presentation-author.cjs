@@ -385,18 +385,29 @@ async function recordAuthorFlags(supabase, courseCode, flags) {
 
 /**
  * Presentation TTS voice.
- * English-known courses: Tom's clone is THE estate English voice (ruled
- * 2026-07-04, moved to his Cartesia clone 2026-09-03) — it wins over the
- * legacy Azure entries most voice_configs were scaffolded with.
  *
- * A stored xAI presentation voice USED to win here, so that a deliberate pick
- * was respected. It no longer does: xAI is retired from selection (Tom,
- * 2026-08-27) and the only two English-known courses that carried one — 
- * deu_for_eng and fra_for_eng — carried Tom's own xAI clone, i.e. the very
- * default this line states. Honouring it would have pinned exactly those two
- * courses to the deprecated provider. No course loses a deliberate choice:
- * an eng-known course with a non-xAI presentation voice never won this branch
- * in the first place, so nothing else about their resolution changes.
+ * PRECEDENCE, and why it is this way round: the course's OWN configured
+ * presentation voice wins first, on every known language. It used to lose to
+ * an unconditional English-known branch, and that branch was the whole of the
+ * /generate divergence: POST /generate/:courseCode resolved through here and
+ * handed every eng_for_* course Tom's clone, while its sibling route
+ * POST /regenerate-presentation/:courseCode/:legoId read voice_config's own
+ * presentation entry and rendered THAT. One row, two narrators, no error
+ * anywhere — a course configured for Azure Sonia rendered as the clone on the
+ * new-LEGO path and as Sonia on the re-render path. The two routes now agree.
+ *
+ * The English-known branch survives as a DEFAULT, which is what it was for:
+ * Tom's clone is THE estate English voice (ruled 2026-07-04, moved to his
+ * Cartesia clone 2026-09-03), so an eng-known course that configures no
+ * presentation voice at all still gets the clone rather than
+ * DEFAULT_PRESENTATION_VOICE or its known-role voice.
+ *
+ * A stored xAI presentation voice never wins on the English-known path: xAI
+ * is retired from selection
+ * (Tom, 2026-08-27), and the eng-known courses carrying one carry Tom's own xAI clone or
+ * xAI Eve. Honouring it would pin them to the dead provider, so it falls
+ * through to the defaults instead.
+ *
  * Other known languages: explicit presentation config, else the known-role
  * voice (intros are known-language audio).
  *
@@ -411,9 +422,15 @@ function resolvePresentationVoiceId(course) {
   const cfg = course.voice_config || {}
   const voices = cfg.voices || cfg
   const pres = voices.presentation
-  if (course.known_lang === 'eng') return canonicalVoiceId(ENG_PRESENTATION_VOICE)
-  if (pres?.voiceId) return canonicalVoiceId(pres.voiceId, { provider: pres.provider })
+  const engKnown = course.known_lang === 'eng'
+  // A retired provider is not a choice anybody can honour: xAI is out of
+  // selection (Tom, 2026-08-27), so on the English-known path a stored xAI
+  // voice falls through to the clone rather than winning here. Non-English
+  // resolution is left exactly as it was.
+  const presUsable = pres?.voiceId && !(engKnown && pres.provider === 'xai')
+  if (presUsable) return canonicalVoiceId(pres.voiceId, { provider: pres.provider })
   if (typeof cfg.presentation === 'string') return canonicalVoiceId(cfg.presentation)
+  if (engKnown) return canonicalVoiceId(ENG_PRESENTATION_VOICE)
   const known = voices.known
   if (known?.voiceId) return canonicalVoiceId(known.voiceId, { provider: known.provider })
   return canonicalVoiceId(DEFAULT_PRESENTATION_VOICE)
