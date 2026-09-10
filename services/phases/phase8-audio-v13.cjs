@@ -5798,6 +5798,12 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         voice_id: voiceId,
         origin: 'tts',
         word_boundaries: wordBoundaries || null,
+        // The SAME authoritative new text the insert branch carries. The swap
+        // branch is reached when the new text keys to the row that already
+        // exists — a punctuation- or case-only edit — so without this the row
+        // ends up holding the new audio under the old label. text_normalized is
+        // deliberately absent: it is the identity key and this is the same clip.
+        text,
         ...verdictColumns,
       }
 
@@ -6201,6 +6207,11 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
         voice_id: voiceId,
         origin: 'tts',
         word_boundaries: wordBoundaries || null,
+        // The spoken text, on the swap branch too. This route LOCKS the text
+        // and therefore lands on the existing row as its normal case, so it is
+        // the route where a stale label survives longest — the audio is the
+        // punctuated variant and the row must say so.
+        text,
         ...verdictColumns,
       }
 

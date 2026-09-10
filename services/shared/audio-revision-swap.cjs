@@ -19,12 +19,13 @@
  * `phase8 reuseRenderClip` and `audio-repair-core accept` already got right,
  * lifted out so there is one copy of it instead of eight.
  *
- * What it does NOT do, deliberately: it never writes text, text_normalized,
- * language, role or voice_id. Leaving those alone is what keeps
- * `unique_course_audio_per_voice` satisfied and the row id stable, and a stable
- * id is what makes the swap hole-free — no holder FK moves, so the course
- * cannot reference a missing clip at any instant. Callers that need to change
- * voice_id pass it in `patch` with their eyes open.
+ * What it does NOT do, deliberately: it never writes text_normalized, language
+ * or role. Leaving those alone is what keeps `unique_course_audio_per_voice`
+ * satisfied and the row id stable, and a stable id is what makes the swap
+ * hole-free — no holder FK moves, so the course cannot reference a missing clip
+ * at any instant. Callers that need to change voice_id — or the display `text`
+ * — pass it in `patch` with their eyes open; see the note at the delete lines
+ * for why those two are different from text_normalized.
  */
 
 const { audioKeyCandidates } = require('./text-normalize.cjs')
@@ -40,6 +41,12 @@ const { audioKeyCandidates } = require('./text-normalize.cjs')
  * @param {number}   [o.fileSizeBytes]
  * @param {object}   [o.patch]       Extra columns to write in the same UPDATE
  *                                   (origin, word_boundaries, veracity_*, …).
+ *                                   May carry `text` — the display label — when
+ *                                   the caller holds the authoritative new
+ *                                   wording. It may NOT move the row's identity
+ *                                   key: a `text` that normalises to something
+ *                                   other than the row's own text_normalized is
+ *                                   refused, loudly, before anything is written.
  * @param {string}   o.source        Which route did this — lands in history.
  * @param {string}   o.acceptedBy    Who/what asked for it — lands in history (NOT NULL).
  * @param {string}   [o.reason]
@@ -68,11 +75,30 @@ async function swapClipInPlace ({
 
   const { data: row, error: readErr } = await supabase
     .from('course_audio')
-    .select('id, course_code, s3_key, duration_ms, audio_revision')
+    .select('id, course_code, s3_key, duration_ms, audio_revision, text_normalized')
     .eq('id', audioId)
     .single()
   if (readErr || !row) {
     throw new Error(`swap target ${audioId} not readable: ${readErr?.message || 'no row'}`)
+  }
+
+  // A caller-supplied `text` is a RELABEL, never a re-identification. The
+  // BEFORE UPDATE trigger trg_course_audio_normalize recomputes
+  // text_normalized := normalize_text(NEW.text) on every write, so a `text`
+  // that normalises differently moves the identity key out from under the row
+  // whatever this function deletes from the patch — deleting text_normalized
+  // alone cannot stop it. That is a NEW clip identity, which means a new row
+  // and a new uuid (writeOrSwapClip's insert branch), not a swap. Refuse it
+  // here, before the ledger row is written and before a revision is burned.
+  if (Object.prototype.hasOwnProperty.call(patch, 'text')) {
+    const candidates = audioKeyCandidates(patch.text)
+    if (row.text_normalized && !candidates.includes(row.text_normalized)) {
+      throw new Error(
+        `swapClipInPlace: patch.text ${JSON.stringify(String(patch.text).slice(0, 60))} ` +
+        `normalises to ${JSON.stringify(candidates[0])}, but ${row.id} is keyed on ` +
+        `${JSON.stringify(row.text_normalized)} — that is a new clip identity, not a swap`
+      )
+    }
   }
 
   const previousRevision = row.audio_revision ?? 1
@@ -109,9 +135,26 @@ async function swapClipInPlace ({
   const update = { ...patch, s3_key: newS3Key, audio_revision: revision }
   if (durationMs !== null && durationMs !== undefined) update.duration_ms = durationMs
   if (fileSizeBytes !== null && fileSizeBytes !== undefined) update.file_size_bytes = fileSizeBytes
-  // Never ours to move: doing so breaks the unique key or the stable id.
+  // TWO COLUMNS, TWO DIFFERENT REASONS — and only one of them is ours to hold.
+  //
+  // `text_normalized` IS THE IDENTITY. It is the key column of
+  // unique_course_audio_per_voice (course_code + text_normalized + language +
+  // role + voice_id) and what writeOrSwapClip's holder lookup matches on.
+  // Moving it re-identifies the clip, so it never travels through a swap: a
+  // genuinely different text is a different clip, which means a new row and a
+  // new uuid, not new bytes under this one. Stripped unconditionally. (The
+  // guard above is what makes that stick, because the normalize trigger would
+  // otherwise recompute it from a changed `text` anyway.)
+  //
+  // `text` IS THE DISPLAY LABEL. It is not in the unique key and no lookup
+  // matches on it, so writing it moves nothing. Stripping it was a real bug:
+  // a punctuation-only or wording re-render — an Italian question mark, say —
+  // lands on the same identity key, swaps the bytes correctly, and then left
+  // the OLD label on the row forever. Measured 2026-09-10: 322 of 324 audited
+  // ita_for_eng slots held correct audio under a stale label. So a caller that
+  // holds the authoritative new wording passes it in `patch` and it is written.
+  // DO NOT "fix" this back by deleting text again.
   delete update.id
-  delete update.text
   delete update.text_normalized
 
   const { error: swapErr } = await supabase
@@ -176,7 +219,14 @@ async function swapClipInPlace ({
  *                              `insertRow.text`. Never used as a filter column.
  * @param {object} o.insertRow  Full row to INSERT when the key is free.
  * @param {object} o.swapPatch  Columns to write when swapping onto an existing row.
- *                              Must NOT include text/identity columns.
+ *                              Must NOT include identity columns
+ *                              (text_normalized, language, role). It SHOULD
+ *                              include `text` when the caller holds the
+ *                              authoritative new wording: the swap branch is
+ *                              reached precisely when the new text keys to the
+ *                              same row, i.e. a punctuation- or case-only
+ *                              change, and without it that row keeps the old
+ *                              label under the new audio.
  * @param {string} o.newS3Key
  * @param {number} [o.durationMs]
  * @param {string} o.source

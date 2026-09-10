@@ -178,7 +178,12 @@ async function fileScriptTake({ supabase, courseCode, plan, s3Key, durationMs = 
         audioId: existing.id,
         newS3Key: s3Key,
         durationMs,
-        patch: { origin: 'human' },
+        // The row was found by NORMALISED text, so the script line the recordist
+        // actually read can differ from the label on the row it lands on — by a
+        // question mark, a full stop, capitalisation. The take is the truth
+        // about what was said, so the label follows it. Identity is untouched:
+        // the lookup matched, so the key is the same either way.
+        patch: { origin: 'human', text: plan.text },
         source: 'recordist-retake',
         // NOT NULL in the history table. 'recordist' is an honest fallback when
         // the upload carried no identity — better than failing the swap and

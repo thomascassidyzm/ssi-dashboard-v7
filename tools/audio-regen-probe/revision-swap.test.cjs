@@ -297,26 +297,96 @@ test('V5. make-before-break — the row is not pointed at bytes that are not the
 })
 
 // ===========================================================================
-test('V6. the swap refuses to move clip identity — text and id are never patched', async () => {
+// V6/V6b/V6c REPLACE the old "the swap never writes text" test, deliberately.
+// That test asserted the bug: `text` is the DISPLAY LABEL and is not part of
+// unique_course_audio_per_voice, so stripping it left a punctuation- or
+// wording-corrected re-render holding NEW audio under the OLD label — 322 of
+// 324 audited ita_for_eng slots, 2026-09-10. `text_normalized` IS the identity
+// key and is still stripped unconditionally, which is what V6b and V6c hold.
+test('V6. a caller-supplied text RELABELS the row — the new audio stops lying about itself', async () => {
   const db = await r.createRouteFixture()
   const id = await oneClip(db)
+  const before = (await db.query('SELECT text, text_normalized FROM course_audio WHERE id=$1', [id])).rows[0]
 
-  line(); console.log('V6. a caller passes text/id in the patch by mistake')
+  line(); console.log('V6. a punctuation-only re-render: same clip identity, corrected label')
+  show('before', before)
+
   await swapClipInPlace({
     supabase: supabaseOver(db), audioId: id, newS3Key: NEW_GOOD, durationMs: 1800,
-    patch: { text: 'SOMETHING ELSE', text_normalized: 'something else', origin: 'tts' },
+    // The Italian question-mark shape: normalize_text() strips the '?', so this
+    // keys to the very same row — which is exactly why the label went stale.
+    patch: { text: 'Quiero hablar?', origin: 'tts' },
+    source: 'phase8-regenerate-lego', acceptedBy: 'test',
+  })
+
+  const after = await clip(db, id)
+  const raw = (await db.query('SELECT text, text_normalized FROM course_audio WHERE id=$1', [id])).rows[0]
+  show('after', raw)
+
+  assert.strictEqual(raw.text, 'Quiero hablar?', 'THE FIX: the label follows the audio')
+  assert.strictEqual(raw.text_normalized, before.text_normalized, 'identity key did NOT move')
+  assert.strictEqual(after.id, id, 'and neither did the row id, so no holder FK is orphaned')
+  assert.strictEqual(after.audio_revision, 2, 'the swap itself still happened')
+  assert.strictEqual(after.s3_key, NEW_GOOD)
+
+  console.log('V6. Same uuid, same identity key, new bytes, and a label that describes them.')
+})
+
+// ===========================================================================
+test('V6b. text_normalized handed in the patch is still stripped — identity is not the swap\'s to move', async () => {
+  const db = await r.createRouteFixture()
+  const id = await oneClip(db)
+  const before = (await db.query('SELECT text, text_normalized FROM course_audio WHERE id=$1', [id])).rows[0]
+
+  line(); console.log('V6b. a caller passes text_normalized and id in the patch by mistake')
+  await swapClipInPlace({
+    supabase: supabaseOver(db), audioId: id, newS3Key: NEW_GOOD, durationMs: 1800,
+    patch: { text_normalized: 'something else entirely', id: '00000000-0000-0000-0000-000000000000', origin: 'tts' },
     source: 'test', acceptedBy: 'test',
   })
 
   const after = await clip(db, id)
   const raw = (await db.query('SELECT text, text_normalized FROM course_audio WHERE id=$1', [id])).rows[0]
-  show('text after swap', raw)
+  show('after', { ...raw, id: after.id })
 
-  assert.strictEqual(raw.text, 'Quiero hablar', 'text is NOT the swap helper\'s to move')
+  assert.strictEqual(raw.text_normalized, before.text_normalized, 'the unique key is untouched')
+  assert.strictEqual(raw.text, before.text, 'and no label was invented from it')
+  assert.strictEqual(after.id, id, 'the row id is untouched')
   assert.strictEqual(after.audio_revision, 2, 'the swap itself still happened')
 
-  console.log('V6. Leaving text/identity alone is what keeps unique_course_audio_per_voice satisfied')
-  console.log('V6. and the row id stable — a stable id is why no holder FK is ever orphaned.')
+  console.log('V6b. text_normalized keys unique_course_audio_per_voice — a different one is a different clip.')
+})
+
+// ===========================================================================
+test('V6c. a text that would RE-KEY the row is refused before anything is written', async () => {
+  const db = await r.createRouteFixture()
+  const id = await oneClip(db)
+
+  line(); console.log('V6c. a caller tries to relabel a clip into a different identity')
+  // The normalize trigger recomputes text_normalized from text on every UPDATE,
+  // so allowing this would move the unique key regardless of what the patch
+  // strips. That is a new clip, and a new clip is an INSERT.
+  await assert.rejects(
+    () => swapClipInPlace({
+      supabase: supabaseOver(db), audioId: id, newS3Key: NEW_GOOD, durationMs: 1800,
+      patch: { text: 'Quiero comer', origin: 'tts' },
+      source: 'test', acceptedBy: 'test',
+    }),
+    /new clip identity, not a swap/,
+    'it must refuse'
+  )
+
+  const after = await clip(db, id)
+  const raw = (await db.query('SELECT text, text_normalized FROM course_audio WHERE id=$1', [id])).rows[0]
+  show('after refusal', { ...raw, rev: after.audio_revision, s3: after.s3_key })
+
+  assert.strictEqual(raw.text, 'Quiero hablar', 'nothing was relabelled')
+  assert.strictEqual(raw.text_normalized, 'quiero hablar', 'and the identity key stands')
+  assert.strictEqual(after.s3_key, OLD_BAD, 'the bytes did not move either')
+  assert.strictEqual(after.audio_revision, 1, 'no revision was burned')
+  assert.strictEqual((await history(db, id)).length, 0, 'and no ledger row was written for it')
+
+  console.log('V6c. Refused before the ledger write — a rejected relabel costs the clip nothing.')
 })
 
 // ===========================================================================

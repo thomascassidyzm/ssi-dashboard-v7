@@ -114,6 +114,22 @@ describe('a re-record of a line that already has a clip', () => {
     expect(db.updates.some(u => u.audio_revision === 2)).toBe(true)
   })
 
+  it('relabels the row to the line that was actually read', async () => {
+    // The lookup matches on NORMALISED text, so the row a retake lands on can
+    // carry an older spelling of the same line — a stripped question mark, a
+    // different capitalisation. The take is the truth about what was said, so
+    // the label follows it while the identity key stays put. Without this the
+    // row holds new audio under an old label, silently and forever.
+    const db = fakeSupabase({
+      existing: { ...EXISTING, text: 'I wü iatz wos auf Deitsch sogn.', text_normalized: LINE.toLowerCase() },
+    })
+    await file(db)
+    const relabel = db.updates.find(u => 'text' in u)
+    expect(relabel).toBeTruthy()
+    expect(relabel.text).toBe(LINE)
+    expect('text_normalized' in relabel).toBe(false)
+  })
+
   it('DELETES NOTHING — the ledger names the previous object so it stays findable', async () => {
     const db = fakeSupabase({ existing: EXISTING })
     await file(db)
