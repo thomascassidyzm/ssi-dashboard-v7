@@ -38,3 +38,26 @@ export function podDisplayTitle(pod) {
   // The separator and the case are the title's own; only the digit is ours.
   return title.replace(/\bPod([\s-]?)0\b/gi, (m, sep) => `${m.slice(0, 3)}${sep}1`)
 }
+
+/**
+ * The name to put on a pod when there may be no title to work from.
+ *
+ * The pod CARDS and the detail header call podDisplayTitle directly, because a
+ * pod row always has a title there. The manage card cannot assume that, and
+ * before 2026-09-10 its fallback built a label straight off the slug — so on
+ * Welsh, whose 231-line pod is still keyed `pod-0`, it read "Pod 0 — already
+ * generated" directly under a card that had just said Pod 1. One body of work,
+ * two names, on one screen, which is exactly what the rename exists to stop.
+ *
+ * Exported rather than inlined so the rule is pinned by a test of the thing
+ * that ships, not by a copy of the expression in a test file.
+ *
+ * @param {{title?:string, slug?:string, id?:string}} pod
+ */
+export function podDisplayLabel(pod) {
+  const titled = podDisplayTitle(pod)
+  if (titled) return titled
+  const slug = slugOfPod(pod)
+  if (!slug) return ''
+  return `Pod ${slug === RENAMED_SLUG ? '1' : slug.replace(/^pod-/, '')}`
+}

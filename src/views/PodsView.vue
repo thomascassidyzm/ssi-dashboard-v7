@@ -207,7 +207,7 @@ import { useAuth } from '@/composables/useAuth.js'
 import { useCourses } from '@/composables/useCourses'
 import PodCastPanel from '@/components/PodCastPanel.vue'
 import { pickServingPod, slugOfPod } from '@/lib/servingPod.js'
-import { podDisplayTitle } from '@/lib/podDisplayName.js'
+import { podDisplayTitle, podDisplayLabel } from '@/lib/podDisplayName.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -281,7 +281,13 @@ async function generatePod(force = false, slug = 'pod-1') {
 // show the green "Generate Pod 0" button over a pod that already exists — the
 // same Croatian failure the ruling above fixed, with a different cause.
 const corePod = computed(() => pickServingPod(pods.value, { includeHeld: true }))
-const corePodLabel = computed(() => corePod.value?.title || `Pod ${slugOfPod(corePod.value).replace(/^pod-/, '')}`)
+// THE SAME NAME THE CARD ABOVE IT USES. This read the pod's raw title, so on
+// Welsh — whose 231-line pod is still keyed `pod-0` and whose title column
+// still literally reads "… Pod 0" — the manage card said "Pod 0 — already
+// generated" directly under a pod card that had just said Pod 1. One body of
+// work, two names, on one screen. The fallback is renamed too, for a pod with
+// no title at all.
+const corePodLabel = computed(() => podDisplayLabel(corePod.value))
 const corePodHasAudio = computed(() => {
   const c = corePod.value?.audio_coverage
   return !!c && (c.target > 0 || c.known > 0)

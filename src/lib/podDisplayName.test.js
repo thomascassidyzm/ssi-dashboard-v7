@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest'
-import { podDisplayTitle } from './podDisplayName.js'
+import { podDisplayTitle, podDisplayLabel } from './podDisplayName.js'
 
 // THE RULE IS A DISPLAY RULE. Every case here is about what a person reads;
 // nothing in this file may ever assert anything about a slug changing.
@@ -36,5 +36,24 @@ describe('podDisplayTitle', () => {
     expect(podDisplayTitle(null)).toBe('')
     expect(podDisplayTitle({})).toBe('')
     expect(podDisplayTitle({ slug: 'pod-0' })).toBe('')
+  })
+})
+
+// AND THE MANAGE CARD USES IT TOO.
+//
+// Tom, 2026-09-10: "It is the old links in the pods. They are the problem."
+// The pod cards and the detail header were renamed on 2026-09-09; the manage
+// card's own label was not, so on Welsh it read "Pod 0 — already generated"
+// directly under a card that had just said Pod 1 — one body of work, two names,
+// on one screen. This pins the shape that fixed it: a pod with no title at all
+// still gets the renamed fallback, which is what the card falls back to.
+describe('the label a pod falls back to when it has no title', () => {
+  it('renames the fallback as well as the title', () => {
+    const label = podDisplayLabel
+    expect(label({ slug: 'pod-0', title: '' })).toBe('Pod 1')
+    expect(label({ slug: 'pod-1', title: '' })).toBe('Pod 1')
+    expect(label({ slug: 'pod-0', title: 'Welsh Listening Pods — Pod 0' })).toBe('Welsh Listening Pods — Pod 1')
+    // A parked pod keeps its own name, here as everywhere else.
+    expect(label({ slug: 'pod-0-retired-2026-08-22', title: 'Old Pod 0' })).toBe('Old Pod 0')
   })
 })
