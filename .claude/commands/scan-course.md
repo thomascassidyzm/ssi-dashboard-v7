@@ -438,89 +438,15 @@ Report:
 
 Action: For case-only dupes, pick the dominant case and update the outlier. For outliers, bulk-update to match dominant convention (unless it's a proper noun case).
 
-#### Check 14: Missing question marks
+#### Check 14: Missing question marks → **superseded by Check 21**
 
-Direct questions must end with `?`. Spanish also requires opening `¿`.
+**Do not hand-roll this one either.** Run `node tools/check-question-marks.cjs <course_code>`. The full description is under **Check 21** below; this entry stays only so that anyone who remembers "Check 14" is redirected rather than left reading a snippet.
 
-```javascript
-const QUESTION_STARTERS = {
-  eng: /^(what|where|when|why|who|which|whose|how|can|could|will|would|do|does|did|is|are|was|were|am|have|has|had|should|shall|may|might|must)\b/i,
-  spa: /^(qué|cómo|cuándo|dónde|por qué|quién|cuál|cuáles|cuánto|cuánta|cuántos|cuántas|puedes|podrías|puedo|hay)\b/i,
-  fra: /^(qu'|que|qui|où|quand|comment|pourquoi|quel|quelle|quels|quelles|est-ce|peux-tu|peut-on|peux|y a-t-il)\b/i,
-  ita: /^(che|cosa|come|dove|quando|perché|chi|quale|quali|quanto|quanti|quante|puoi|potresti)\b/i,
-  por: /^(o que|que|como|onde|quando|por que|quem|qual|quais|quanto|quantas|quantos|você|posso)\b/i,
-  deu: /^(was|wo|wann|warum|wer|welche|welches|welcher|wie|kannst|bist|ist|hast|hat|habt|könntest|würdest|darf)\b/i,
-  cym: /^(beth|ble|pryd|pam|pwy|pa|sut|oes|ydw|ydy|wyt|oeddwn)\b/i,
-};
+⚠️ **Why the old inline snippet was removed (2026-09-10).** It was measured against a 214-defect hand-confirmed set on `ita_for_eng` and **found 53 of them — 25%**. Three separate causes, each pinned by a test in `tools/check-question-marks.test.js`:
 
-// Subordinate-clause patterns: question word + subject is a subordinate clause,
-// NOT a direct question. Direct questions have subject-verb inversion
-// ("what IS he doing?" vs subordinate "what HE is doing").
-const SUBORDINATE_STARTERS = {
-  eng: /^(what|where|when|why|who|which|whose|how)\s+(i|you|we|they|he|she|it|the|a|an|some|my|your|his|her|its|our|their|someone|somebody|anyone|anybody|everyone|everybody|no one|nobody|nothing|something|anything|everything|people|things)\b/i,
-  por: /^(o que|que|quando|onde|como|por que|quem)\s+(eu|tu|você|vocês|ele|ela|nós|eles|elas|o|a|os|as|um|uma|uns|umas|alguém|todos|ninguém|algo|tudo|nada|pessoas|gente)\b/i,
-  spa: /^(qué|cómo|cuándo|dónde|por qué|quién)\s+(yo|tú|usted|ustedes|él|ella|nosotros|vosotros|ellos|ellas|el|la|los|las|un|una|unos|unas|alguien|todos|nadie|algo|todo|nada|gente)\b/i,
-  ita: /^(che|cosa|come|dove|quando|perché|chi)\s+(io|tu|lei|lui|noi|voi|loro|il|la|i|le|l'|un|una|qualcuno|tutti|nessuno|qualcosa|tutto|niente|gente)\b/i,
-  fra: /^(qu'|que|qui|où|quand|comment|pourquoi)\s+(je|tu|il|elle|on|nous|vous|ils|elles|le|la|les|l'|un|une|des|quelqu'un|tout|personne|quelque chose|rien|gens)\b/i,
-  deu: /^(was|wo|wann|warum|wer|wie)\s+(ich|du|er|sie|es|wir|ihr|sie|der|die|das|den|dem|ein|eine|einen|jemand|niemand|alle|etwas|nichts|leute)\b/i,
-};
-
-const endsWithQmark = (t) => /[?？]\s*$/.test((t || '').trim());
-const startsSpanishQmark = (t) => /^\s*¿/.test(t || '');
-
-// Infinitive-after-wh patterns: "how to say", "what to do", "where to go"
-// are infinitive/gerund constructions, not questions.
-const INFINITIVE_STARTERS = {
-  eng: /^(what|where|when|why|who|how|whose|which)\s+to\s+\w/i,
-  por: /^(o que|que|como|onde|quando|por que|quem)\s+\w+r\b/i, // ends with infinitive -ar/-er/-ir
-};
-
-function questionNeedsMark(text, lang) {
-  if (!text) return false;
-  const rx = QUESTION_STARTERS[lang];
-  if (!rx) return false;
-  const trimmed = text.trim();
-  if (!rx.test(trimmed)) return false;
-  // Skip very short fragments — bare LEGO components like "why" / "how"
-  // aren't questions, they're vocabulary being introduced.
-  const wordCount = trimmed.split(/\s+/).length;
-  if (wordCount < 3) return false;
-  // Exclude subordinate-clause patterns (wh-word + subject = not a question)
-  const sub = SUBORDINATE_STARTERS[lang];
-  if (sub && sub.test(trimmed)) return false;
-  // Exclude infinitive constructions (wh-word + "to" + verb)
-  const inf = INFINITIVE_STARTERS[lang];
-  if (inf && inf.test(trimmed)) return false;
-  return !endsWithQmark(text);
-}
-
-// Require BOTH sides to look like questions to avoid false positives.
-// Question starters like "when", "que", "what" also appear in subordinate clauses:
-//   "when we learn, it changes everything" (eng subordinate)
-//   "que eu podia fazer" = "that I could do" (por subordinate)
-// Real direct questions have question-starter on BOTH sides.
-const missingQmark = phrases.filter(p => {
-  const knownIsQ = questionNeedsMark(p.known_text, course.known_lang);
-  const targetIsQ = questionNeedsMark(p.target_text, course.target_lang);
-  return knownIsQ && targetIsQ;
-});
-
-// Spanish-specific: missing opening ¿ (when phrase already has closing ?)
-const missingSpanishOpen = [];
-for (const p of phrases) {
-  const lang = course.known_lang === 'spa' ? 'known' : course.target_lang === 'spa' ? 'target' : null;
-  if (!lang) continue;
-  const text = p[`${lang}_text`];
-  if (endsWithQmark(text) && !startsSpanishQmark(text)) missingSpanishOpen.push(p);
-}
-```
-
-Note: Indirect questions ("I wonder what...", "tell me where...") do NOT start with a question starter and won't be flagged. That's correct — they don't need `?`.
-
-Note: The "both sides must look like questions" requirement is strict but necessary — on por_br_for_eng this cut false positives from 208 (mostly subordinate clauses) to a handful of real ones. If a finding seems to be missed, it's likely because one side is an indirect question — which is fine.
-
-Report: count by field (known vs target) + 10 samples + Spanish ¿ violations separately.
-Action: Bulk-append `?` (and prepend `¿` for Spanish). This is an audio-affecting change — null the known_audio_id / target_audio_id on modified phrases for regen.
+- **"Require BOTH sides to look like questions"** made the easiest class in the whole check invisible *by construction*. When the known side already ends in `?`, `questionNeedsMark` returns false for it, the `&&` fails, and the row is discarded — so a row whose two sides openly contradict each other (`can you do it for me?` / `puoi farlo per me`) was never flagged. **0 of 48 found.** That rule was added to cut false positives on `por_br_for_eng` and it worked, by turning the check off.
+- **The `wordCount < 3` skip** dropped every short complete question: `do you want`, `do you mind`, `why not`, `are you ready`. In the polite- and plural-register block at the end of `ita_for_eng` that is most of the defect population.
+- **`\b` after an accented letter** — the trap this very file documents 700 lines further down. `perché`, `qué`, `cómo`, `cuándo`, `dónde`, `quién`, `où` are all undetectable, so the Italian, Spanish and French halves of the pattern table never fired at all.
 
 #### Check 15: Identical known_text and target_text
 
@@ -789,7 +715,7 @@ After the scan, the user will decide what to fix. Here's how to handle each issu
 4. Strip trailing periods
 5. Fix lowercase I
 6. Fix capitalisation outliers (case-only dupes first, then outliers)
-7. Add missing question marks (and Spanish `¿`)
+7. Add missing question marks (Check 21) — **only from a list a reader has confirmed and Kai has approved**, and queue an audio pass after
 8. Fix identical known/target (flag seeds for rebuild)
 9. **Re-scan for ZUT conflicts** (stripping parens/slashes can reveal hidden duplicates)
 10. Resolve ZUT conflicts
@@ -912,27 +838,14 @@ for (const p of outliers) {
 
 ### Fixing missing question marks
 
-Bulk-append `?` to phrases that match the question-starter regex but don't end with `?`. For Spanish, also prepend `¿`.
+**Read Check 21 first, and do not bulk-apply.** The old text here told you to append `?` in a loop and null the audio ids. Both halves are wrong:
 
-```javascript
-for (const p of missingQmark) {
-  const updates = {};
-  if (questionNeedsMark(p.known_text, course.known_lang)) {
-    updates.known_text = p.known_text.trim() + '?';
-    updates.known_audio_id = null;
-  }
-  if (questionNeedsMark(p.target_text, course.target_lang)) {
-    let fixed = p.target_text.trim() + '?';
-    if (course.target_lang === 'spa' && !fixed.startsWith('¿')) fixed = '¿' + fixed;
-    updates.target_text = fixed;
-    updates.target1_audio_id = null;
-    updates.target2_audio_id = null;
-  }
-  await supabase.from('course_practice_phrases').update(updates).eq('id', p.id);
-}
-```
+- **Nulling the audio id by hand is wrong.** The database already unlinks for you (canon A5 — `trg_null_*_audio_on_text_change`), and it does it *better* than a manual null: it keeps the link when the clip still speaks the new words, re-links to a same-voice clip when one exists, and logs every drop to `content_audio_link_drops`. Hand-nulling skips all of that and leaves the slot **silent** rather than stale — the fra_for_eng shape (A19, O11: make before you break, and delete nothing).
+- **In this specific case the trigger will keep the link, and that is the trap.** `normalize_text()` **strips a trailing `?`**, so as far as the database is concerned nothing changed. The statement-intoned clip stays attached to what is now a question, with no error, no silence and nothing anywhere that will complain. Canon A7: *"Question marks can make it sound different so they're significant enough to regenerate if needed."* A9: the mark must be there **before** the audio is generated.
 
-**Audio regen required** — `?` changes TTS intonation. Null audio_ids and let Phase 8 regenerate.
+So the sequence is: **propose the list → Kai approves it → apply the text → queue an audio pass** (`node tools/course-optimization/queue-audio-pass.cjs <course> --reason "question marks"`, O8). Never run TTS from the check.
+
+And do not bulk-apply even an approved list without the reading pass behind it. On `ita_for_eng` the candidate list ran at 61% false positives in its strongest regex tier; a loop over the raw output would have appended a question mark to hundreds of declaratives and paid to re-render every one.
 
 ### Fixing identical known/target
 
@@ -1281,6 +1194,73 @@ Every row carrying a marked form lands in exactly one bucket and the totals prin
 
 Report: bucket totals per detector plus the first ~10 of each. Action: hand proposals to a proofreader or build agent. **This check does not create phrases, and it must not be moved into the course builder** — Kai's ruling: *"We should test it out properly as fixes before thinking about changing the actual course generation."*
 
+#### Check 21: Missing question marks, both sides
+
+A question mark is not cosmetic in this estate. **The voice reads intonation off it** — canon A7 (Kai, 2026-08-17): *"Full stop makes no difference btw! Question marks can make it sound different so they're significant enough to regenerate if needed."* A9 goes further: the mark must be present **before** the audio is generated. So a missing `?` is a defect the learner *hears*, and every fix costs a re-render. That is why this check proposes and never applies.
+
+```bash
+node tools/check-question-marks.cjs <course_code>                 # human-readable, always exits 0
+node tools/check-question-marks.cjs <course_code> --json          # machine-readable
+node tools/check-question-marks.cjs <course_code> --calibrate     # recall only
+node tools/check-question-marks.cjs <course_code> --reading-list  # write the list + both reading briefs
+```
+
+Warn-only by design: it never blocks a course, never writes content, never generates audio, and never appends a `?`.
+
+##### It is TWO passes, and one of them is a reader
+
+Kai's method, 2026-09-10, in his own words: *"a mix of regex (to get lists that it then reads through FULLY to confirm - NEVER trust it on its own!) and reading through spans of seeds to try to catch all missing question marks on both the known and target side."*
+
+**The tool is only pass 1.** It produces a reading list. On `ita_for_eng` that list was 61% false in its strongest tier, so applying it unread means appending question marks to hundreds of declaratives and paying to re-render each one. `--reading-list` writes the candidates and **two briefs** next to them; the check is not finished until both have been read:
+
+```bash
+node tools/check-question-marks.cjs <course> --reading-list
+# → ~/ssi-evidence/ssi-dashboard-v7/question-marks/<course>-question-mark-candidates.tsv
+#   plus <course>-reading-brief-pass1.txt and -pass2.txt
+```
+
+The CLI cannot dispatch the reader itself — it has no surface credentials. Dispatch it from the session running the scan, one worker per brief, **on sonnet** (this is checking work, and checking work is never a higher tier than the work it checks):
+
+```bash
+curl -s -X POST http://localhost:4317/api/dispatch -H 'Content-Type: application/json' \
+  -H "x-cs-conv: $CS_CONV_TOKEN" \
+  -d "{\"cwd\":\"$PWD\",\"label\":\"qmark-read-<course>\",\"model\":\"sonnet\",\"parent\":\"<your conv id>\",\"prompt\":$(jq -Rs . < .../<course>-reading-brief-pass1.txt)}"
+```
+
+Pass 2's brief is the independent one: read the seeds in order and two or three full spans of practice phrases, *without* the candidate list, and report what it found that the list did not. Both directions of that comparison are the point — it is how you learn whether the regex is good enough to lean on next time.
+
+##### It prints its own recall next to its verdict, always
+
+Every course carries a free set of known positives: the rows already marked on both sides. The check strips their marks, re-runs itself over them **one at a time** (leave-one-out — a whole family stripped at once destroys the sibling evidence the frame net runs on, and that is not a situation the check ever faces), and reports how many it would have found.
+
+**A run below 98% recall is a FAILED run, not a clean course** (canon A3; WC-F2 — the check that reported clean because it could not read the alphabet). The misses are printed, and they should be read as a list of *classes*, not of individual failures: on `ita_for_eng` the first version scored 919/957 and its 38 misses named exactly the three nets that were missing.
+
+##### The four nets, and why each one exists
+
+| Net | What it is | Measured on `ita_for_eng` |
+|---|---|---|
+| **A — sides disagree** | One side ends in `?`, the other does not. No patterns, no language knowledge. A fact about the row, not an inference. | **48 of 48 true** |
+| **B — openers** | Interrogative openers and inverted word order, run against *every* side that has a pattern set. | 159 of 493 true (**32%**) |
+| **C — sibling frames** | Group rows by their first three known-side words; if the siblings sharing the frame are marked and this one is not, flag it. **The only net that can reach an intonation question**, where word order is a statement's and the punctuation is the whole signal. | 7 of 12 true (**58%**) |
+| **D — target-only / weak frame** | Everything else. | **0 of 281 true** |
+
+**Which side carries the signal is a property of the pair, not a constant.** English marks questions by word order, so on an English-known course the known side is the detector — and the Italian target side produced 511 candidates and **zero** real defects, because Italian yes/no questions have statement word order. On `eng_for_ita` that is exactly reversed. The check runs the openers on both sides and reports the two yields separately so you can see which one is working instead of discovering it at row 500.
+
+A language with no pattern set still gets nets A, C and D, and the tool prints **`NO PATTERN SET`** rather than a zero. Never read that as a clean course; add a set to `tools/question-marks/detect.cjs` and re-run `--calibrate`.
+
+##### What it excludes, and what it withholds — both counted, neither dropped
+
+- **Fragments**: LEGOs and component tiles are chunks by construction and do not carry terminal punctuation (in all of `ita_for_eng`, exactly one LEGO in 1,457 carried a `?`, correctly). They are excluded from the judged population and the count is printed next to it.
+- **Suppressions**: a wh-word followed by an infinitive is a noun clause, never a direct question — `how to speak`, `what to do`. 20 such rows on `ita_for_eng`, 0 of them real. They are *returned* in the JSON, not silently `continue`d past (WC-F3: any matcher with a quiet `continue` is a silent-skip machine).
+
+##### Reading the candidate list
+
+It is sorted strongest-evidence-first — tier B, then C, then D — because the complaint this check exists to answer is **speed**. Read down and watch the yield die. The real saving is not that the regex is clever: it is that 15,632 rows become a few hundred, and a few hundred is an afternoon.
+
+When a short build step is question-shaped but you cannot tell whether it is a whole question — `how much`, `what happens`, `can you tell me` — put it in a **judgement list for Kai** rather than confirming it. That is a content decision, not a pattern, and it wants one policy rather than twenty-seven rulings.
+
+Report: the sides-disagree class in full (it needs no triage), then the candidate count by tier, then the recall line. Action: hand the confirmed list to Kai. **Every fix obliges a queued audio pass** — see "Fixing missing question marks" in the Remediation Guide for why hand-nulling the audio id is the wrong move.
+
 ## Step 6: Post-scan pipeline — backfill, final pass, gender prep
 
 Scanner fixes change phrase counts (deletes leave LEGOs thinner, rewrites invalidate audio). After applying fixes from the Remediation Guide, run the build pipeline to fill gaps, re-run quality checks, and prep new items for gender expansion.
@@ -1366,7 +1346,7 @@ The signal for "ready for Deborah": 0 under-threshold, 0 flagged, final-pass com
 
 A fix script's "ok=N failed=0" log is proof that *the rows the script targeted* updated. It is **not** proof that the failure class is gone. Coverage holes are how Deborah-flagged classes survive multiple "fix" rounds (spa_for_eng llevar word-order, 2026-04-20 → 2026-04-30: a narrow fix touched S0038L03 only, then reviewer caught 11 untouched siblings two passes later).
 
-**Definition of done after any fix pass:** re-run the *whole class detector* (Check 17a / Check 18 / etc.) against the course and require zero hits. If the detector fires on rows the fix didn't touch, the fix wasn't comprehensive — sweep those too before declaring the card ready.
+**Definition of done after any fix pass:** re-run the *whole class detector* (Check 17a / Check 18 / etc.) against the course and require zero hits. (**Not Check 21** — it is warn-only and emits a reading list, not hits. "Zero candidates" there would mean the nets had been narrowed until they found nothing, which is the failure mode, not the goal. Its definition of done is: the confirmed list is empty, and recall is still above the floor.) If the detector fires on rows the fix didn't touch, the fix wasn't comprehensive — sweep those too before declaring the card ready.
 
 Specifically, fix-script template should end with the same regex/predicate that *defined* the issue, not a hand-curated verify list:
 
