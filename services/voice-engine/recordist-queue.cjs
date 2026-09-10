@@ -652,10 +652,28 @@ function compareQueueLines(a, b) {
     String(a.id).localeCompare(String(b.id))
 }
 
+/**
+ * The (dialect, gender) bucket the artist BEHIND a stored clip belongs to.
+ *
+ * Any spelling of a voice resolves to the one policy voice, because a clip
+ * filed under `human_aran_cym_n_2` is Aran's exactly as much as one filed under
+ * `human_aran_cym_n`. Returns null for a clip by somebody the policy does not
+ * name — TTS, the shared untagged `human`, a retired voice — which is correct:
+ * there is nobody to report it to.
+ *
+ * The DIALECT is the COURSE's, never the clip's, for the same reason the queue
+ * itself routes on the course: a clip carries no dialect of its own to trust.
+ */
+function canonicalOwnerBucket(clipVoiceId, aliasOwner, dialect) {
+  const owner = aliasOwner.get(String(clipVoiceId || ''))
+  if (!owner || !owner.gender) return null
+  return bucketKey(dialect, owner.gender)
+}
+
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
   const courses = await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  const empty = { byBucket: new Map(), notReady: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
+  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
   if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
@@ -703,6 +721,29 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // The same thing where nobody is cast to read it either — two absences on one
   // row, so it belongs to neither tally above and is counted on its own.
   let untranslatedUncast = 0
+  // LINES ALREADY READ BY ONE ARTIST AND SINCE CAST TO ANOTHER, keyed by the
+  // bucket of whoever DID the reading: bucket -> Map(podId -> {..., castTo,
+  // lines}). See the comment at the point it is filled.
+  const handedOn = new Map()
+  // Which policy voice a stored clip's voice_id belongs to, across every
+  // spelling of it. Aran's takes are split over human_aran_cym_n and
+  // human_aran_cym_n_2 (found 2026-08-14), so a lookup on one spelling would
+  // see part of a recast and miss the rest.
+  //
+  // READS WIDEN, exactly as recordedSpellings does. BOTH alias registers are
+  // folded in — the policy's own list AND every course's podCastAliases — for
+  // the reason the file already gives about the estate-wide map: a spelling
+  // recorded under one register and not the other would otherwise make a take
+  // look like a stranger's. Nothing here writes.
+  const aliasOwner = new Map()
+  const courseAliases = await loadAliasMap(db, { cache })
+  for (const v of policyVoiceList((await loadPolicies(db, { cache })).find((row) => {
+    try { return canonicalLanguage(row.language) === language } catch { return false }
+  }))) {
+    aliasOwner.set(v.voiceId, v)
+    for (const a of v.aliases || []) aliasOwner.set(a, v)
+    for (const a of courseAliases.get(v.voiceId) || []) aliasOwner.set(a, v)
+  }
   // Wants belonging to a clip in a DIFFERENT language than this queue's. Counted
   // rather than silently dropped, by the same rule as `uncast`.
   let crossLanguage = 0
@@ -756,6 +797,48 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
     // From the COURSE, never from the cast — the whole ruling in one line.
     const bucket = bucketKey(courseDialect(course), gender)
+
+    // A LINE THIS ARTIST READ AND SOMEBODY ELSE NOW OWNS.
+    //
+    // 29 lines of the Welsh pod were RECAST from Aran to Catrin on purpose, to
+    // separate the two roles (Tom, 2026-09-10). His takes of them are still
+    // there and still linked and still what a learner hears — but the line
+    // belongs to HER bucket now, so it left his queue entirely and his own
+    // history simply stopped at the last line he still owns. That is what he
+    // saw and reported: his recordings running to scene 14 and nothing after.
+    //
+    // The take is a fact about HIM; the casting is a fact about the LINE. They
+    // are different facts and the queue only ever carried the second, so this
+    // records the first: a line whose slot is filled by a voice OTHER than the
+    // one now cast to read it is handed on, and it is reported to whoever
+    // actually recorded it.
+    //
+    // It never becomes a queue line and never enters a count of work: it is
+    // finished, by him, and re-offering it would be asking a voice artist to
+    // re-record something he has already done — the worst outcome available
+    // here. Whether those takes stay, move or are superseded when she records
+    // hers is an editorial call and nothing here touches them.
+    const slotVoice = slotVoiceById.get(s.target_audio_id)
+    if (slotVoice) {
+      const castVoiceId = entry && entry.voiceId ? String(entry.voiceId) : null
+      const readerBucket = canonicalOwnerBucket(slotVoice, aliasOwner, courseDialect(course))
+      if (readerBucket && readerBucket !== bucket) {
+        if (!handedOn.has(readerBucket)) handedOn.set(readerBucket, new Map())
+        const forReader = handedOn.get(readerBucket)
+        if (!forReader.has(s.pod_id)) {
+          forReader.set(s.pod_id, {
+            podId: s.pod_id,
+            podSlug: pod.slug || null,
+            podTitle: pod.title || null,
+            courseCode: pod.course_code,
+            castTo: (entry && entry.name) || castVoiceId || 'somebody else',
+            lines: 0,
+          })
+        }
+        forReader.get(s.pod_id).lines += 1
+      }
+    }
+
     if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
     const key = normalizeForDb(text)
     const seenForGender = seen.get(bucket)
@@ -1105,7 +1188,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // but the queue is now ordered by one rule rather than by two.
   for (const lines of byBucket.values()) lines.sort(compareQueueLines)
 
-  return { byBucket, notReady, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
+  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
 }
 
 /**
@@ -1284,6 +1367,11 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // about lines that can be read, and this is a different fact standing
     // beside them rather than inside them.
     notReady: [...(language.notReady && language.notReady.get(bucketKey(recordist.dialect, recordist.gender)) || new Map()).values()]
+      .sort((a, b) => b.lines - a.lines),
+    // LINES THEY READ THAT SOMEBODY ELSE NOW OWNS. Reported so a deliberate
+    // recast cannot read as work they failed to do — and, like notReady, kept
+    // out of `total` and `remaining`, because it is finished.
+    handedOn: [...(language.handedOn && language.handedOn.get(bucketKey(recordist.dialect, recordist.gender)) || new Map()).values()]
       .sort((a, b) => b.lines - a.lines),
     uncast: language.uncast,
     duplicatesCollapsed: language.duplicatesCollapsed,

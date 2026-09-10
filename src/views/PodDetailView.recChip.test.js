@@ -34,6 +34,13 @@ const SENTENCES = [
   { id: 's-done', global_order: 144, scene_number: 15, speaker: 'Dyn (M)',
     target_text: 'nos da', known_text: 'good night',
     target_audio_id: 'a-1', known_audio_id: null },
+  // RECORDED BY ARAN, SINCE RECAST TO CATRIN. 29 of this pod's real lines are
+  // this shape (Tom, 2026-09-10) and the chip could not say it: it named the
+  // voice on the clip and stopped, so a line he has handed on read exactly like
+  // one he still owns.
+  { id: 's-recast', global_order: 145, scene_number: 15, speaker: 'Learner',
+    target_text: 'diolch yn fawr', known_text: 'thank you very much',
+    target_audio_id: 'a-2', known_audio_id: null },
 ]
 
 const COVERAGE = {
@@ -45,6 +52,7 @@ const COVERAGE = {
       { sentenceId: 's-dyn', kinds: { target: { origin: null, recorded: false, voiceId: null } } },
       { sentenceId: 's-uncast', kinds: { target: { origin: null, recorded: false, voiceId: null } } },
       { sentenceId: 's-done', kinds: { target: { origin: 'human', recorded: true, voiceId: 'human_aran_cym_n' } } },
+      { sentenceId: 's-recast', kinds: { target: { origin: 'human', recorded: true, voiceId: 'human_aran_cym_n' } } },
     ],
   }],
 }
@@ -147,5 +155,21 @@ describe('PodDetailView — the pod is called Pod 1', () => {
     expect(heading).not.toContain('Pod 0')
     // The identifier is untouched and still on the page, verbatim.
     expect(wrapper.text()).toContain('cym_n_for_eng:pod-0')
+  })
+})
+
+describe('a line recorded by one reader and since cast to another', () => {
+  it('says both, so a recast cannot read as work he failed to do', async () => {
+    const w = await mountView()
+    const chip = chipFor(w, 'diolch yn fawr')
+    // The reader who MADE the take, then the reader the line belongs to now.
+    expect(chip.text()).toBe('Aran → Catrin')
+    expect(chip.attributes('title')).toContain('recorded by Aran, now cast to Catrin')
+  })
+
+  it('leaves an ordinary recorded line exactly as it was', async () => {
+    const w = await mountView()
+    // Still Aran's line, still recorded by Aran: nothing new to say.
+    expect(chipFor(w, 'nos da').text()).toBe('Aran')
   })
 })

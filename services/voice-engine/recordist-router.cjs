@@ -309,6 +309,12 @@ module.exports = function createRecordistRouter({
         // Senedd lines were invisible in Aran's booth AND absent from every
         // number on it, and he was told twice that nothing was missing.
         notReady: queue.notReady || [],
+        // LINES THEY READ THAT ARE NOW CAST TO SOMEBODY ELSE. On the wire
+        // because a recast is invisible from inside a queue that only carries
+        // what you are currently cast for — which is how 29 of Aran's takes
+        // dropped out of his own history and made his work look as though it
+        // stopped at scene 14.
+        handedOn: queue.handedOn || [],
         lines: queue.lines,
       })
     } catch (err) {

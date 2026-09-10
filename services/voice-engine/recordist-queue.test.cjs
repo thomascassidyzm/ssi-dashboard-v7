@@ -600,3 +600,50 @@ test('untranslated pod lines are reported per pod, not silently dropped', async 
   // `uncast` has never meant "has no text", and it still does not.
   assert.strictEqual(q.uncast, 1)
 })
+
+/**
+ * A LINE HE READ AND SOMEBODY ELSE NOW OWNS IS STILL A LINE HE READ.
+ *
+ * Tom, 2026-09-10: "we recast Aran's lines for Catrin to disambiguate the roles
+ * better btw, that might explain some of the shenanigans." It explained all of
+ * them. 29 lines of the Welsh pod moved that way; his takes stayed linked and
+ * stayed what the learner hears, but the LINES belong to her bucket now, so
+ * they left his queue and his history simply stopped at the last line he still
+ * owns — which is precisely the gap at scene 14 he reported.
+ *
+ * `handedOn` is reported to whoever RECORDED it, never to whoever is cast, and
+ * it never becomes a queue line: asking a voice artist to re-record what he has
+ * already done is the worst outcome available here.
+ */
+test('a take on a line since recast to somebody else is reported to the reader who made it', async () => {
+  const f = fixture({
+    audio: [{ id: 'clip-recast', voice_id: 'human_aran_cym_n_2', language: 'cym', text_normalized: 'nos da' }],
+  })
+  // s2 is cast to Catrin. Its slot is filled by ARAN, under his SECOND
+  // spelling — the alias split must not hide a recast.
+  f.listening_pod_sentences = f.listening_pod_sentences.map((s) =>
+    (s.id === 's2' ? { ...s, target_audio_id: 'clip-recast' } : s))
+  const db = stubDb(f)
+
+  const aran = await resolveRecordist(db, 'human_aran_cym_n')
+  const his = await buildQueue(db, aran)
+  assert.deepStrictEqual(his.handedOn, [{
+    podId: 'p_n',
+    podSlug: 'pod-0',
+    podTitle: null,
+    courseCode: 'cym_n_for_eng',
+    castTo: 'Catrin',
+    lines: 1,
+  }])
+  // It is FINISHED work, so it stays out of both of his counts and never
+  // appears as something to read.
+  assert.ok(!his.lines.some((l) => l.id === 's2'))
+
+  // And it is not reported to Catrin: she did not record it. Her own queue is
+  // untouched, and the line is still hers to read.
+  const catrin = await resolveRecordist(db, 'human_catrinlliar_cym_n')
+  const hers = await buildQueue(db, catrin)
+  assert.deepStrictEqual(hers.handedOn, [])
+  assert.ok(hers.lines.some((l) => l.id === 's2'))
+})
+

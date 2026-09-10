@@ -90,6 +90,19 @@
            2026-09-10, said under the map it belongs to rather than tucked
            anywhere else. Quiet, and not a warning: this is not his problem to
            fix and there is no button on it. -->
+      <!-- WORK HE HAS ALREADY DONE, WHICH LEFT HIS LIST. Above the not-ready
+           note because it is about him and finished; that one is about the
+           material and unfinished. Neither is a job. -->
+      <div v-if="handedOnNotes.length" class="handed-on">
+        <p v-for="n in handedOnNotes" :key="n.key">
+          <strong>You recorded {{ n.lines }} more {{ n.lines === 1 ? 'line' : 'lines' }} of {{ n.heading }}</strong>
+          that {{ n.lines === 1 ? 'has' : 'have' }} since been given to {{ n.castTo }} to read.
+          Your {{ n.lines === 1 ? 'take is' : 'takes are' }} still there — {{ n.lines === 1 ? 'it is' : 'they are' }}
+          just not on your list any more, because {{ n.lines === 1 ? 'that line is' : 'those lines are' }}
+          {{ n.castTo }}'s now.
+        </p>
+      </div>
+
       <div v-if="notReadyNotes.length" class="not-ready">
         <p v-for="n in notReadyNotes" :key="n.key">
           <strong>{{ n.lines }} more {{ n.lines === 1 ? 'line' : 'lines' }} of {{ n.heading }}</strong>
@@ -866,6 +879,26 @@ const notReadyNotes = computed(() => notReady.value
   .map(n => ({
     key: n.podId || n.podSlug || 'pod',
     heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    lines: Number(n.lines),
+  })))
+
+// WORK HE HAS DONE THAT LEFT HIS LIST, IN WORDS.
+//
+// Tom, 2026-09-10: "we recast Aran's lines for Catrin to disambiguate the roles
+// better." 29 lines of the Welsh pod moved that way, deliberately. His takes of
+// them are still there and still what a learner hears — but the lines belong to
+// her now, so they left his queue and his own history stopped at the last line
+// he still owns. He read that as his recordings running out at scene 14, and he
+// was describing something real: the page had no way to say this.
+//
+// It says RECORDED, and it says WHOSE THE LINE IS NOW, and it never appears
+// among the counts of what is left. Nothing here asks him to do anything.
+const handedOnNotes = computed(() => handedOn.value
+  .filter(n => Number(n.lines) > 0)
+  .map(n => ({
+    key: n.podId || n.podSlug || 'pod',
+    heading: podSectionFor({ podSlug: n.podSlug, podTitle: n.podTitle }).heading,
+    castTo: n.castTo || 'somebody else',
     lines: Number(n.lines),
   })))
 
@@ -1763,6 +1796,10 @@ const quarry = ref(null)
 // LINES OF HIS THAT HAVE NO TARGET TEXT YET, per pod, straight off the wire.
 // See the note where it is read in load(), and the words it becomes below.
 const notReady = ref([])
+// LINES HE READ THAT ARE NOW CAST TO SOMEBODY ELSE, per pod. Same shape, and
+// it is the OPPOSITE fact: notReady is work nobody can do yet, this is work he
+// has already finished. Neither is ever offered to him to read.
+const handedOn = ref([])
 function setVolume(n) {
   if (maxSeed.value === n) return
   maxSeed.value = n
@@ -2003,6 +2040,10 @@ async function load() {
     // every number on his page, which he read as work gone missing and was
     // twice told was not there.
     notReady.value = Array.isArray(data.notReady) ? data.notReady : []
+    // LINES HE READ THAT SOMEBODY ELSE NOW OWNS. Also straight off the wire and
+    // for the same reason: they are precisely the lines that are NOT in
+    // `lines`, because his queue only carries what he is cast for today.
+    handedOn.value = Array.isArray(data.handedOn) ? data.handedOn : []
     lines.value = Array.isArray(data.lines) ? data.lines : []
     // RESUME. Anything left on the device by an earlier session — a tab closed
     // mid-upload, a phone that slept, a chalet with no signal — is picked up
@@ -2222,7 +2263,10 @@ kbd {
 .note { font-size: 0.85rem; margin-top: 0.75rem; }
 /* Quiet, in the room's own muted type. It is information, not an alarm: the
    thing it describes is nobody-in-this-room's problem. */
-.not-ready { margin: 0.6rem 0 0.9rem; }
+.not-ready, .handed-on { margin: 0.6rem 0 0.9rem; }
+.handed-on p { margin: 0.35rem 0; font-size: 0.82rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
+/* Green, because this one is finished work. The other note is neutral. */
+.handed-on strong { color: var(--color-emerald, #06ffa5); font-weight: 600; }
 .not-ready p { margin: 0.35rem 0; font-size: 0.82rem; line-height: 1.5; color: var(--color-paper-dim, #c1c1bb); }
 .not-ready strong { color: var(--color-paper, #efeee9); font-weight: 600; }
 .note.done { color: var(--color-emerald, #06ffa5); }

@@ -859,10 +859,36 @@ function recChip(sent) {
     const voices = [...new Set(humanEntries.map(k => voiceLabel(k.voiceId)).filter(Boolean))]
     const who = voices.length ? voices.join(' + ') : 'human'
     const partial = human < entries.length
+    // RECORDED BY ONE PERSON, CAST TO ANOTHER — a fourth state this pill could
+    // not say, and the one that made a healthy page read as a broken one.
+    //
+    // 29 of this pod's lines were RECAST from Aran to Catrin on purpose, to
+    // separate the two roles (Tom, 2026-09-10). Aran's takes of them are still
+    // there and still linked, so the pill said "Aran" and stopped; nothing on
+    // the page said the line had changed hands. Read down the pod and that
+    // produces exactly what he reported — a solid block of his name to scene 14
+    // and almost none after it — with no way to tell a line he still owns from
+    // one he has handed on.
+    //
+    // Only ever drawn when the two genuinely differ, so an ordinary line is
+    // unchanged. Cast is per KIND, so a line with the explainer on its known
+    // side compares each side against its own reader.
+    const handedOn = [...new Set(Object.entries(kinds)
+      .filter(([, k]) => k.recorded)
+      .map(([kind, k]) => {
+        const cast = readerFor(sent, kind)
+        const read = voiceLabel(k.voiceId)
+        return cast && read && cast !== read ? cast : null
+      })
+      .filter(Boolean))]
     return {
-      text: partial ? `${who} ${human}/${entries.length}` : who,
-      cls: partial ? 'pill-amber' : 'pill-emerald',
-      title,
+      text: handedOn.length
+        ? `${who} → ${handedOn.join(' + ')}`
+        : (partial ? `${who} ${human}/${entries.length}` : who),
+      cls: handedOn.length ? 'pill-amber' : (partial ? 'pill-amber' : 'pill-emerald'),
+      title: handedOn.length
+        ? `${title} · recorded by ${who}, now cast to ${handedOn.join(' + ')}`
+        : title,
     }
   }
   if (tts > 0) return { text: 'tts', cls: 'bg-surface text-faint border border-line', title }

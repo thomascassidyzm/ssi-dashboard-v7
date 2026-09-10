@@ -112,6 +112,28 @@ describe('RecordistRoom — the way back, the switch and the crossing', () => {
     expect(w.find('.stage').exists()).toBe(true)
   })
 
+  it('tells him about takes he made on lines that are now somebody else\'s', async () => {
+    // Tom, 2026-09-10: "we recast Aran's lines for Catrin to disambiguate the
+    // roles better." 29 real lines moved that way. His takes stayed; the LINES
+    // went to her bucket, so they left his queue and his history stopped dead
+    // at the last line he still owns — which is exactly the gap at scene 14 he
+    // reported. It has to say the takes are still there and still his doing.
+    stubQueue({ handedOn: [{ podId: 'cym_n_for_eng:pod-0', podSlug: 'pod-0', podTitle: 'x', courseCode: 'cym_n_for_eng', castTo: 'Catrin', lines: 29 }] })
+    const w = mountBooth()
+    await flushPromises()
+    const said = w.find('.handed-on')
+    expect(said.exists()).toBe(true)
+    const words = said.text().replace(/\s+/g, ' ')
+    expect(words).toContain('You recorded 29 more lines of POD-1')
+    expect(words).toContain('given to Catrin to read')
+    expect(words).toContain('still there')
+    // AND IT IS NOT WORK. Nothing about it may reach a count of what is left or
+    // put a line in front of him: re-recording what he has already done is the
+    // one outcome worth more than all the rest of this put together.
+    expect(w.find('.rc-progress-line').text()).toContain('2 lines')
+    expect(w.findAll('.tick').length).toBe(2)
+  })
+
   it('says so when the run crosses from pod dialogue into course sentences', async () => {
     const w = mountBooth()
     await flushPromises()
