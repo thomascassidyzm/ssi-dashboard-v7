@@ -240,7 +240,7 @@
 
       <!-- Footer stats -->
       <div v-if="currentPods.length > 0" class="mt-8 text-center text-xs text-faint">
-        {{ currentPods.length }} pods · {{ totalSentences }} sentences total<span v-if="parkedPods.length"> · {{ parkedPods.length }} archived</span>
+        {{ currentPods.length }} pod{{ currentPods.length === 1 ? '' : 's' }} · {{ totalSentences }} sentences total<span v-if="parkedPods.length"> · {{ parkedPods.length }} archived</span>
       </div>
     </div>
   </div>
