@@ -19,65 +19,26 @@
         </p>
       </div>
 
-      <!-- THE STATE CARD. First thing on the page and first thing read: which
-           pod this course serves, whether a learner can reach it, how much of it
-           is voiced — and the one control that changes that answer. -->
-      <div class="bg-surface border border-line rounded-lg p-5 mb-6 flex items-center gap-4 flex-wrap">
+      <!-- THE CREATE STEP, and only that. This card used to be a state card
+           restating the serving pod — its title, HELD badge, counts, coverage —
+           directly above the pod's own row, and Tom read it as two pods ("2
+           versions of the same POD? Wait, what are they? both Pod-1? What???",
+           2026-09-10). A pod appears ONCE on this page: its row. What was
+           genuinely unique up here — the release/hold control and its status
+           line — lives on the serving pod's row now. This card is left with the
+           one job no row can carry: a course with no pod at all needs the create
+           button, and there is nothing below to demote it under. -->
+      <div v-if="!loading && !error && !corePod" class="bg-surface border border-line rounded-lg p-5 mb-6 flex items-center gap-4 flex-wrap">
         <div class="flex-1 min-w-0">
-          <!-- No serving core pod yet: this is the create step -->
-          <template v-if="!corePod">
-            <div class="text-sm font-semibold text-ink">Generate Pod 1 from canonical scenarios</div>
-            <div class="text-xs text-muted mt-0.5">
-              Flexes the 10 English scenarios into {{ getCourseName(courseCode) }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
-            </div>
-          </template>
-          <!-- a serving core pod exists: this is the manage/re-flex step -->
-          <template v-else>
-            <div class="text-sm font-semibold text-ink flex items-center gap-2 flex-wrap">
-              <span>{{ corePodLabel }} — already generated</span>
-              <span :class="visClass(corePod)" class="pv-vis">{{ isHeld(corePod) ? 'HELD' : 'LIVE' }}</span>
-            </div>
-            <!-- The hold gate, in plain words. Tom reads this on a phone, so it
-                 says what a learner can and cannot reach, not what a column
-                 says. (Tom, 2026-08-23.) -->
-            <div v-if="isHeld(corePod)" class="pv-vis-note text-xs mt-1.5 rounded px-2 py-1.5">
-              <strong>No learner can reach this pod.</strong> It is held back — the pod and every
-              line in it are invisible in the app until a human releases it.
-            </div>
-            <div v-else class="text-xs text-muted mt-1.5">
-              Live — learners on {{ courseCode }} can reach this pod now.
-            </div>
-            <div class="text-xs text-muted mt-0.5">
-              {{ corePod.sentence_count }} sentences · audio {{ corePod.audio_coverage.target }}/{{ corePod.audio_coverage.total_sentences }} target, {{ corePod.audio_coverage.known }}/{{ corePod.audio_coverage.total_sentences }} known.
-              Edit sentences in the pod below. Re-flexing the English and regenerating live under
-              <span class="text-ink">Setup &amp; regeneration</span>.
-            </div>
-          </template>
+          <div class="text-sm font-semibold text-ink">Generate Pod 1 from canonical scenarios</div>
+          <div class="text-xs text-muted mt-0.5">
+            Flexes the 10 English scenarios into {{ getCourseName(courseCode) }} (target dialogue + translation) via Claude. Generated text has no audio yet — review &amp; edit it, then run audio.
+          </div>
           <div v-if="genStatus" class="text-xs mt-2" :class="genError ? 'text-danger' : 'text-accent-2'">{{ genStatus }}</div>
           <div v-if="genError" class="text-xs text-danger mt-1">{{ genError }}</div>
         </div>
-        <!-- ONE ACTION AT THIS LEVEL, and it is the one the producer came to
-             answer: can learners reach this yet? Everything that SETS the pod up
-             or destroys it moved below the pods themselves (Tom, 2026-09-10:
-             "so many different screens and different ways in, and it's all quite
-             frankly, a mess"). Holding is one tap — erring towards invisible is
-             always safe. Releasing asks first: it cannot be un-seen. -->
         <div class="flex items-center gap-2 flex-shrink-0">
           <button
-            v-if="corePod"
-            :disabled="visBusy"
-            @click="setVisibility(corePod, isHeld(corePod) ? 'live' : 'held')"
-            :class="isHeld(corePod)
-              ? 'pv-release border-emerald-700 text-emerald-300 hover:border-emerald-500'
-              : 'pv-hold border-red-700 text-red-300 hover:border-red-500'"
-            class="text-sm px-4 py-2 rounded border disabled:opacity-50 font-medium"
-          >
-            {{ visBusy ? 'Saving…' : (isHeld(corePod) ? 'Release to learners' : 'Hold back from learners') }}
-          </button>
-          <!-- Create (green) stays up here: with no pod at all, making one IS
-               the next thing to do, and there is nothing below to demote it under. -->
-          <button
-            v-if="!corePod"
             :disabled="generating"
             @click="generatePod(false)"
             class="text-sm px-4 py-2 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white font-medium"
@@ -144,6 +105,16 @@
               <div v-if="isHeld(pod)" class="pv-vis-note mb-3 text-xs rounded px-2 py-1.5">
                 Held back — no learner can reach this pod or any line in it.
               </div>
+              <!-- The hold gate in plain words, on the pod it gates. Tom reads
+                   this on a phone, so it says what a learner can and cannot
+                   reach, not what a column says (Tom, 2026-08-23). -->
+              <div v-else-if="isServingPod(pod)" class="text-xs text-muted mb-3">
+                Live — learners on {{ courseCode }} can reach this pod now.
+              </div>
+              <template v-if="isServingPod(pod)">
+                <div v-if="genStatus" class="text-xs mb-3" :class="genError ? 'text-danger' : 'text-accent-2'">{{ genStatus }}</div>
+                <div v-if="genError" class="text-xs text-danger mb-3">{{ genError }}</div>
+              </template>
               <div v-if="draftCounts[pod.id] > 0" class="pv-draft mb-3 inline-flex items-center gap-2 text-xs rounded px-2 py-1">
                 <span class="pv-draft-badge">DRAFT</span>
                 <span>{{ draftCounts[pod.id] }} line{{ draftCounts[pod.id] === 1 ? '' : 's' }} awaiting proofread — open the pod to read them</span>
@@ -177,9 +148,30 @@
                 </div>
               </div>
             </div>
-            <svg class="w-5 h-5 text-faint flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
+            <div class="flex items-center gap-3 flex-shrink-0 mt-1">
+              <!-- ONE ACTION ON THE SERVING POD, and it is the one the producer
+                   came to answer: can learners reach this yet? Everything that
+                   SETS the pod up or destroys it lives below the pods themselves
+                   (Tom, 2026-09-10: "so many different screens and different
+                   ways in, and it's all quite frankly, a mess"). Holding is one
+                   tap — erring towards invisible is always safe. Releasing asks
+                   first: it cannot be un-seen. The row is a link, so the click
+                   stops here and does not open the pod. -->
+              <button
+                v-if="isServingPod(pod)"
+                :disabled="visBusy"
+                @click.prevent.stop="setVisibility(pod, isHeld(pod) ? 'live' : 'held')"
+                :class="isHeld(pod)
+                  ? 'pv-release border-emerald-700 text-emerald-300 hover:border-emerald-500'
+                  : 'pv-hold border-red-700 text-red-300 hover:border-red-500'"
+                class="text-sm px-4 py-2 rounded border disabled:opacity-50 font-medium"
+              >
+                {{ visBusy ? 'Saving…' : (isHeld(pod) ? 'Release to learners' : 'Hold back from learners') }}
+              </button>
+              <svg class="w-5 h-5 text-faint flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
           </div>
         </router-link>
       </div>
@@ -255,6 +247,7 @@ import { useCourses } from '@/composables/useCourses'
 import PodCastPanel from '@/components/PodCastPanel.vue'
 import { pickServingPod, slugOfPod, partitionPods, podParkedReason } from '@/lib/servingPod.js'
 import { podDisplayTitle, podDisplayLabel } from '@/lib/podDisplayName.js'
+import { voiceNamesFromCoverage, recordistNames } from '@/lib/recordistNames.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -328,14 +321,17 @@ async function generatePod(force = false, slug = 'pod-1') {
 // show the green "Generate Pod 0" button over a pod that already exists — the
 // same Croatian failure the ruling above fixed, with a different cause.
 const corePod = computed(() => pickServingPod(pods.value, { includeHeld: true }))
-// THE SAME NAME THE CARD ABOVE IT USES. This read the pod's raw title, so on
-// Welsh — then keyed `pod-0`, with a title column literally reading "… Pod 0" —
-// the manage card said "Pod 0 — already generated" directly under a pod card
-// that had just said Pod 1. One body of work, two names, on one screen. Welsh
-// itself was re-slugged to `pod-1` on 2026-09-10 so it no longer needs the
-// translation, but the 44 courses the switchover has not reached still do. The
-// fallback is renamed too, for a pod with no title at all.
+// THE SAME NAME THE POD'S ROW USES, for the regenerate confirm. This read the
+// pod's raw title, so on Welsh — then keyed `pod-0`, with a title column
+// literally reading "… Pod 0" — the prompt said "Pod 0" over a row that had
+// just said Pod 1. Welsh itself was re-slugged to `pod-1` on 2026-09-10 so it
+// no longer needs the translation, but the 44 courses the switchover has not
+// reached still do. The fallback is renamed too, for a pod with no title at all.
 const corePodLabel = computed(() => podDisplayLabel(corePod.value))
+// The row that carries the release/hold control and the live/held line: the
+// pod this course serves (or would serve, once released). Compared by id, so
+// the choice pod on cym_n_for_eng never grows a second release button.
+const isServingPod = (pod) => !!pod && !!corePod.value && pod.id === corePod.value.id
 const corePodHasAudio = computed(() => {
   const c = corePod.value?.audio_coverage
   return !!c && (c.target > 0 || c.known > 0)
@@ -466,19 +462,22 @@ async function loadListenSummary() {
     const res = await authedFetch(`/api/production/${courseCode}/pods/coverage`)
     if (!res.ok) return
     const body = await res.json()
-    const names = {}
-    for (const v of body.voices || []) if (v.voiceId && v.name) names[v.voiceId] = v.name
+    // PEOPLE, not voice ids. One recordist can own several ids (Aran's Welsh
+    // takes sit under human_aran_cym_n and human_aran_cym_n_2); the alias map
+    // on the coverage payload folds them to one name. The count is per LINE —
+    // each line links one clip — so two ids never count a take twice.
+    const names = voiceNamesFromCoverage(body.voices)
     const out = {}
     for (const p of body.pods || []) {
       let human = 0, voiced = 0
-      const voices = new Set()
+      const voiceIds = []
       for (const s of p.sentences || []) {
         for (const k of Object.values(s.kinds || {})) {
           if (k.audioId) voiced++
-          if (k.recorded) { human++; if (k.voiceId) voices.add(names[k.voiceId] || k.voiceId) }
+          if (k.recorded) { human++; if (k.voiceId) voiceIds.push(k.voiceId) }
         }
       }
-      if (voiced > 0) out[p.podId] = { human, voiced, voices: [...voices] }
+      if (voiced > 0) out[p.podId] = { human, voiced, voices: recordistNames(voiceIds, names) }
     }
     listen.value = out
   } catch { /* non-fatal */ }

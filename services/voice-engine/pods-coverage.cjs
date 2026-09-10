@@ -42,13 +42,20 @@ function castEntryForLine(podCast, speaker, kind) {
  *
  * @param {object} args
  * @param {object} args.podCast - courses.voice_config.podCast (may be empty/missing)
+ * @param {object} [args.podCastAliases] - courses.voice_config.podCastAliases:
+ *   survivor voiceId → the ids collapsed into it. Each voices[] entry carries
+ *   its own list as `aliases`, so a reader naming the voice ON A CLIP can name
+ *   the person: on cym_n_for_eng Aran's takes sit under human_aran_cym_n AND
+ *   human_aran_cym_n_2, and the pods page read the second as a third colleague
+ *   ("by Aran and Catrin and human_aran_cym_n_2", Tom, 2026-09-10). Display
+ *   only — nothing here merges or renames a clip's voice_id.
  * @param {Array}  args.pods - [{ id, slug, title }]
  * @param {Array}  args.sentences - listening_pod_sentences rows (id, pod_id,
  *   speaker, *_text, *_audio_id)
  * @param {Map|object} args.audioById - course_audio id → { origin, voice_id }
  * @returns coverage report (see bottom shape)
  */
-function summarizePodCoverage({ podCast = {}, pods = [], sentences = [], audioById = new Map() }) {
+function summarizePodCoverage({ podCast = {}, podCastAliases = {}, pods = [], sentences = [], audioById = new Map() }) {
   const lookupAudio = (id) => {
     if (!id) return null
     if (audioById instanceof Map) return audioById.get(id) || null
@@ -63,6 +70,7 @@ function summarizePodCoverage({ podCast = {}, pods = [], sentences = [], audioBy
       voiceBuckets.set(entry.voiceId, {
         voiceId: entry.voiceId,
         name: entry.name || null,
+        aliases: Array.isArray((podCastAliases || {})[entry.voiceId]) ? [...podCastAliases[entry.voiceId]] : [],
         castKeys: new Set(),
         total: 0, recorded: 0, tts: 0, missing: 0,
         perPod: new Map(),
@@ -130,6 +138,7 @@ function summarizePodCoverage({ podCast = {}, pods = [], sentences = [], audioBy
   const voices = [...voiceBuckets.values()].map(b => ({
     voiceId: b.voiceId,
     name: b.name,
+    aliases: b.aliases,
     castKeys: [...b.castKeys].sort(),
     lines: { total: b.total, recorded: b.recorded, remaining: b.total - b.recorded, tts: b.tts, missing: b.missing },
     perPod: [...b.perPod.values()],
@@ -162,6 +171,7 @@ async function computePodsCoverage(deps, courseCode) {
   if (courseErr) throw new Error(`course load failed: ${courseErr.message}`)
   if (!course) throw Object.assign(new Error(`Course not found: ${courseCode}`), { status: 404 })
   const podCast = course.voice_config?.podCast || {}
+  const podCastAliases = course.voice_config?.podCastAliases || {}
 
   const { data: pods, error: podsErr } = await supabase
     .from('listening_pods').select('id, slug, title').eq('course_code', courseCode).order('slug')
@@ -196,7 +206,7 @@ async function computePodsCoverage(deps, courseCode) {
     for (const r of rows || []) audioById.set(r.id, { origin: r.origin, voice_id: r.voice_id })
   }
 
-  const summary = summarizePodCoverage({ podCast, pods: pods || [], sentences, audioById })
+  const summary = summarizePodCoverage({ podCast, podCastAliases, pods: pods || [], sentences, audioById })
   logger.log?.(`[PodsCoverage] ${courseCode}: ${summary.totals.lines} lines, ${summary.totals.recorded} human, ${summary.totals.tts} tts, ${summary.totals.missing} missing`)
   return {
     courseCode,

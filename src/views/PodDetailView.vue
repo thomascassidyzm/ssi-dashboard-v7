@@ -342,6 +342,7 @@ import { useAuth } from '@/composables/useAuth.js'
 import { getLanguageName, useCourses } from '@/composables/useCourses.js'
 import { dirFor } from '@/utils/textDirection.js'
 import { podDisplayTitle } from '@/lib/podDisplayName.js'
+import { voiceNamesFromCoverage } from '@/lib/recordistNames.js'
 
 const route = useRoute()
 const courseCode = route.params.courseCode
@@ -806,9 +807,9 @@ async function loadRecordingStatus() {
     // 2026-09-10 and `pod-0` before it, was cast to five HUMAN_* placeholders
     // while every clip was Aran's own human_aran_cym_n), so a
     // voice that isn't in the cast shows its raw id rather than a cast name.
-    const names = {}
-    for (const v of data.voices || []) if (v.voiceId && v.name) names[v.voiceId] = v.name
-    voiceNames.value = names
+    // An ALIAS of a cast voice is the same person (podCastAliases): Aran's
+    // human_aran_cym_n_2 clips name Aran, not a third colleague.
+    voiceNames.value = voiceNamesFromCoverage(data.voices)
   } catch { /* coverage is additive — never block the page */ }
 }
 
