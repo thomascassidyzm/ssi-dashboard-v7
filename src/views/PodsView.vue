@@ -19,7 +19,9 @@
         </p>
       </div>
 
-      <!-- Generate from canonical -->
+      <!-- THE STATE CARD. First thing on the page and first thing read: which
+           pod this course serves, whether a learner can reach it, how much of it
+           is voiced — and the one control that changes that answer. -->
       <div class="bg-surface border border-line rounded-lg p-5 mb-6 flex items-center gap-4 flex-wrap">
         <div class="flex-1 min-w-0">
           <!-- No serving core pod yet: this is the create step -->
@@ -47,17 +49,20 @@
             </div>
             <div class="text-xs text-muted mt-0.5">
               {{ corePod.sentence_count }} sentences · audio {{ corePod.audio_coverage.target }}/{{ corePod.audio_coverage.total_sentences }} target, {{ corePod.audio_coverage.known }}/{{ corePod.audio_coverage.total_sentences }} known.
-              Edit sentences in the pod below, or re-flex the English in <span class="text-ink">Edit canonical</span>.
-              <span class="pv-warn text-amber-300/90">Regenerate replaces all sentences{{ corePodHasAudio ? ' and clears their audio' : '' }}.</span>
+              Edit sentences in the pod below. Re-flexing the English and regenerating live under
+              <span class="text-ink">Setup &amp; regeneration</span>.
             </div>
           </template>
           <div v-if="genStatus" class="text-xs mt-2" :class="genError ? 'text-danger' : 'text-accent-2'">{{ genStatus }}</div>
           <div v-if="genError" class="text-xs text-danger mt-1">{{ genError }}</div>
         </div>
+        <!-- ONE ACTION AT THIS LEVEL, and it is the one the producer came to
+             answer: can learners reach this yet? Everything that SETS the pod up
+             or destroys it moved below the pods themselves (Tom, 2026-09-10:
+             "so many different screens and different ways in, and it's all quite
+             frankly, a mess"). Holding is one tap — erring towards invisible is
+             always safe. Releasing asks first: it cannot be un-seen. -->
         <div class="flex items-center gap-2 flex-shrink-0">
-          <!-- Hold / release. Holding is one tap: erring towards invisible is
-               always safe. Releasing asks first — it puts content in front of
-               learners and cannot be un-seen. -->
           <button
             v-if="corePod"
             :disabled="visBusy"
@@ -69,8 +74,8 @@
           >
             {{ visBusy ? 'Saving…' : (isHeld(corePod) ? 'Release to learners' : 'Hold back from learners') }}
           </button>
-          <router-link :to="`/production/${courseCode}/canonical/pod-1`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
-          <!-- Create (green) only when there's no serving core pod -->
+          <!-- Create (green) stays up here: with no pod at all, making one IS
+               the next thing to do, and there is nothing below to demote it under. -->
           <button
             v-if="!corePod"
             :disabled="generating"
@@ -79,21 +84,8 @@
           >
             {{ generating ? 'Generating…' : 'Generate Pod 1' }}
           </button>
-          <!-- Regenerate (amber, confirmed) once it exists -->
-          <button
-            v-else
-            :disabled="generating"
-            @click="regenerate"
-            :title="corePodHasAudio ? 'Wipe all sentences + audio and re-flex from canonical' : 'Wipe all sentences and re-flex from canonical'"
-            class="pv-regen text-sm px-4 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50 font-medium"
-          >
-            {{ generating ? 'Regenerating…' : 'Regenerate' }}
-          </button>
         </div>
       </div>
-
-      <!-- Cast: who records each character (human pod recording) -->
-      <PodCastPanel :course-code="courseCode" />
 
       <!-- Loading -->
       <div v-if="loading" class="text-faint text-center py-12">Loading pods…</div>
@@ -104,15 +96,16 @@
       </div>
 
       <!-- Empty -->
-      <div v-else-if="pods.length === 0" class="bg-surface border border-line rounded-lg p-8 text-center">
+      <div v-else-if="currentPods.length === 0" class="bg-surface border border-line rounded-lg p-8 text-center">
         <p class="text-muted mb-2">No pods for this course yet.</p>
         <p class="text-faint text-sm">Author a pod markdown file then run <code class="text-accent-2">node tools/pod-sync.cjs</code> to populate.</p>
       </div>
 
-      <!-- Pod cards -->
+      <!-- Pod cards — the answer to "what is the state of this course's
+           listening content", serving pod first. -->
       <div v-else class="grid gap-4">
         <router-link
-          v-for="pod in pods"
+          v-for="pod in currentPods"
           :key="pod.id"
           :to="`/production/${courseCode}/pods/${pod.slug}`"
           class="block bg-surface border border-line rounded-lg p-4 sm:p-6 hover:border-accent-2 transition-colors"
@@ -191,9 +184,63 @@
         </router-link>
       </div>
 
+      <!-- SETUP AND REGENERATION, below the content and behind a disclosure.
+           Regenerate deletes every sentence in the pod (and its audio), so it
+           has no business sitting at eye level next to a state readout; Edit
+           canonical is a different screen entirely. Neither is what anyone opens
+           this page to do. -->
+      <details v-if="!loading && !error" class="pv-drawer mt-6 rounded-lg border border-line bg-surface">
+        <summary class="pv-summary">Cast — who records each character</summary>
+        <div class="px-1 pb-1">
+          <PodCastPanel :course-code="courseCode" />
+        </div>
+      </details>
+
+      <details v-if="!loading && !error" class="pv-drawer mt-3 rounded-lg border border-line bg-surface">
+        <summary class="pv-summary">Setup &amp; regeneration</summary>
+        <div class="px-4 pb-4 pt-1 flex items-center gap-3 flex-wrap">
+          <router-link :to="`/production/${courseCode}/canonical/pod-1`" class="text-xs px-3 py-2 rounded border border-line text-ink hover:border-accent-2">Edit canonical</router-link>
+          <button
+            v-if="corePod"
+            :disabled="generating"
+            @click="regenerate"
+            :title="corePodHasAudio ? 'Wipe all sentences + audio and re-flex from canonical' : 'Wipe all sentences and re-flex from canonical'"
+            class="pv-regen text-sm px-4 py-2 rounded border border-amber-700 text-amber-300 hover:border-amber-500 disabled:opacity-50 font-medium"
+          >
+            {{ generating ? 'Regenerating…' : 'Regenerate' }}
+          </button>
+          <span v-if="corePod" class="text-xs text-muted">
+            Regenerate replaces all {{ corePod.sentence_count }} sentences{{ corePodHasAudio ? ' and clears their audio' : '' }}.
+          </span>
+        </div>
+      </details>
+
+      <!-- ARCHIVED, COLLAPSED, COUNTED. Tom, 2026-09-10: "why are we even
+           displaying the old archived PODS?" Nothing is deleted and nothing goes
+           dark — the count is on the line, so a pod parked for rollback is still
+           one tap away when somebody needs to roll back. -->
+      <details v-if="parkedPods.length" class="pv-drawer mt-3 rounded-lg border border-line bg-surface">
+        <summary class="pv-summary">Show archived ({{ parkedPods.length }})</summary>
+        <div class="px-4 pb-4 pt-1 grid gap-2">
+          <p class="text-xs text-faint">
+            Retired, gated, staged or empty pods, kept for rollback. Not learner-facing and not being worked on.
+          </p>
+          <router-link
+            v-for="pod in parkedPods"
+            :key="pod.id"
+            :to="`/production/${courseCode}/pods/${pod.slug}`"
+            class="flex items-baseline gap-2 flex-wrap text-xs hover:text-accent-2"
+          >
+            <span class="pv-parked-badge">{{ parkedReason(pod).toUpperCase() }}</span>
+            <code class="text-accent-2">{{ pod.slug }}</code>
+            <span class="text-faint">· {{ pod.sentence_count }} sentences</span>
+          </router-link>
+        </div>
+      </details>
+
       <!-- Footer stats -->
-      <div v-if="pods.length > 0" class="mt-8 text-center text-xs text-faint">
-        {{ pods.length }} pods · {{ totalSentences }} sentences total
+      <div v-if="currentPods.length > 0" class="mt-8 text-center text-xs text-faint">
+        {{ currentPods.length }} pods · {{ totalSentences }} sentences total<span v-if="parkedPods.length"> · {{ parkedPods.length }} archived</span>
       </div>
     </div>
   </div>
@@ -206,7 +253,7 @@ import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { useCourses } from '@/composables/useCourses'
 import PodCastPanel from '@/components/PodCastPanel.vue'
-import { pickServingPod, slugOfPod } from '@/lib/servingPod.js'
+import { pickServingPod, slugOfPod, partitionPods, podParkedReason } from '@/lib/servingPod.js'
 import { podDisplayTitle, podDisplayLabel } from '@/lib/podDisplayName.js'
 
 const route = useRoute()
@@ -352,8 +399,21 @@ async function setVisibility(pod, next) {
   }
 }
 
+// WHAT THIS PAGE SHOWS, AND WHAT IT PUTS AWAY (Tom, 2026-09-10). The rule is
+// podParkedReason in @/lib/servingPod.js, next to the serving-slug allowlist it
+// is the mirror of, with its own test — not a v-if in the template, because the
+// two things it must never do (park a HELD pod, park a serving slug) are exactly
+// the things a template expression cannot be held to.
+const partitioned = computed(() => partitionPods(pods.value))
+const currentPods = computed(() => partitioned.value.current)
+const parkedPods = computed(() => partitioned.value.parked)
+const parkedReason = (pod) => podParkedReason(pod) || 'archived'
+
+// Counted over what is SHOWN. A footer totalling 604 sentences over three pods
+// when one of them is an empty rollback placeholder describes a page nobody is
+// looking at.
 const totalSentences = computed(() =>
-  pods.value.reduce((a, p) => a + (p.sentence_count || 0), 0)
+  currentPods.value.reduce((a, p) => a + (p.sentence_count || 0), 0)
 )
 
 function podTypeClass(type) {
@@ -428,6 +488,32 @@ onMounted(() => { loadPods(); loadDraftCounts(); loadListenSummary() })
 </script>
 
 <style>
+/* DRAWERS — the machinery, demoted but not hidden. A <details> keeps the whole
+   thing one tap away and, crucially, keeps the COUNT on screen while closed, so
+   demoting is never the same as going dark. */
+.pv-summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.75rem 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted, #9ca3af);
+}
+.pv-summary::-webkit-details-marker { display: none; }
+.pv-summary::before { content: '▸ '; }
+details[open] > .pv-summary::before { content: '▾ '; }
+.pv-summary:hover { color: var(--accent-2); }
+.pv-parked-badge {
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  border-radius: 3px;
+  padding: 0.05rem 0.35rem;
+  background: rgba(148, 163, 184, 0.18);
+  color: var(--text-muted, #9ca3af);
+  border: 1px solid rgba(148, 163, 184, 0.35);
+}
+
 /* HELD / LIVE — learner reachability (Tom, 2026-08-23). HELD borrows the DRAFT
    badge's shape but not its colour: DRAFT is amber and means "not ready to
    record", HELD is red and means "nobody can reach it". Two different facts,
