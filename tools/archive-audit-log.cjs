@@ -108,6 +108,13 @@ async function writeRow(f, row) {
 // Fetch one page, retrying transient failures (statement timeouts under DB load —
 // e.g. while a big prune is running — or dropped connections) so a blip doesn't
 // kill a long archive run.
+//
+// ⚠️  KNOWN-BROKEN CURSOR (job #130, https://watson-1.tail4968cb.ts.net/d/dcbd285f):
+// This query plan selects content_audit_log_pkey (id column) and walks ascending
+// from 0, filtering on changed_at afterwards. For recent rows, this scans millions
+// of rows before reaching the target window and times out. The query must be fixed
+// (e.g. via a partial index on changed_at or a different access path) before
+// AUDIT_ARCHIVE_CRON is re-enabled for real S3 tiering.
 async function selectPage(fromIso, toIso, cursor) {
   for (let attempt = 1; ; attempt++) {
     const { data, error } = await sb
@@ -196,6 +203,11 @@ async function archiveDay(day) {
 
   // 3. Prune — only after a verified archive (or a confirmed pre-existing one).
   //    Batched + committed per batch via PostgREST so a stall can't roll it back.
+  //
+  // ⚠️  KNOWN-BROKEN CURSOR (job #130, https://watson-1.tail4968cb.ts.net/d/dcbd285f):
+  // The SELECT query below feeds the DELETE step. It has the same broken cursor
+  // as selectPage() — do not re-enable AUDIT_ARCHIVE_CRON for real tiering until
+  // the cursor is fixed.
   let deleted = 0
   if (PRUNE && EXECUTE) {
     for (;;) {
