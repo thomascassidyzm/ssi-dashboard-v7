@@ -505,3 +505,58 @@ test('a pod line carries its pod on the wire, and a line with no pod carries non
   assert.deepEqual(q.lines.filter((l) => l.kind === 'pod').map((l) => l.podSlug),
     ['pod-0', 'senedd-s4c-steve', 'pod-0'])
 })
+
+// TWO PODS, SAME LINE NUMBERS. Live trace, 2026-09-09: position 10 of Aran's
+// 512 outstanding lines was a POD-1 line stranded inside an otherwise unbroken
+// Senedd run. Every pod numbers its own lines from 1, so sorting the merged
+// queue on the bare number puts POD-1's line 3 next to the Senedd pod's line 3
+// and combs two unrelated recording sessions into each other.
+test('lines of one pod stay contiguous even when another pod reuses its numbers', async () => {
+  const f = fixture()
+  f.listening_pods.push({ id: 'p_n2', course_code: 'cym_n_for_eng', slug: 'senedd-s4c-steve', title: 'Senedd' })
+  // Deliberately numbered 1..3 in BOTH pods, and given ids that interleave
+  // under an id tiebreak: 'a_' sorts before every 'b_'.
+  f.listening_pod_sentences = [
+    { id: 'b_pod1_1', pod_id: 'p_n', global_order: 1, speaker: 'Aran', target_text: 'Pod-0 un.', known_text: 'one' },
+    { id: 'b_pod1_2', pod_id: 'p_n', global_order: 2, speaker: 'Aran', target_text: 'Pod-0 dau.', known_text: 'two' },
+    { id: 'b_pod1_3', pod_id: 'p_n', global_order: 3, speaker: 'Aran', target_text: 'Pod-0 tri.', known_text: 'three' },
+    { id: 'a_sen_1', pod_id: 'p_n2', global_order: 1, speaker: 'Aran', target_text: 'Senedd un.', known_text: 'one' },
+    { id: 'a_sen_2', pod_id: 'p_n2', global_order: 2, speaker: 'Aran', target_text: 'Senedd dau.', known_text: 'two' },
+    { id: 'a_sen_3', pod_id: 'p_n2', global_order: 3, speaker: 'Aran', target_text: 'Senedd tri.', known_text: 'three' },
+  ]
+  const db = stubDb(f)
+  const aran = await resolveRecordist(db, 'human_aran_cym_n')
+  const q = await buildQueue(db, aran, { includeRecorded: true })
+
+  const slugs = q.lines.filter((l) => l.kind === 'pod').map((l) => l.podSlug)
+  // Each pod appears as ONE unbroken run, never as three interleaved pairs.
+  const runs = slugs.filter((s, i) => s !== slugs[i - 1])
+  assert.deepEqual(runs, [...new Set(slugs)], `pods interleaved: ${slugs.join(',')}`)
+  // And within each run, the pod's own line order is intact.
+  assert.deepEqual(q.lines.filter((l) => l.kind === 'pod').map((l) => l.text),
+    ['Pod-0 un.', 'Pod-0 dau.', 'Pod-0 tri.', 'Senedd un.', 'Senedd dau.', 'Senedd tri.'])
+})
+
+test('the three-way union survives the grouped sort: dialogue, then re-records, then seeds', async () => {
+  const f = fixture()
+  f.course_audio = [{
+    id: 'ca1', course_code: 'cym_n_for_eng', role: 'presentation', language: 'cym',
+    text: 'Croeso i’r wers.', rerecord_wanted: { voice_gender: 'm', reason: 'clipped' },
+  }]
+  f.course_seeds = [
+    { id: 'sd1', course_code: 'cym_n_for_eng', seed_number: 1, known_text: 'I want', target_text: 'Dw i eisiau' },
+  ]
+  const db = stubDb(f)
+  const aran = await resolveRecordist(db, 'human_aran_cym_n')
+  const q = await buildQueue(db, aran, { includeRecorded: true })
+  const kinds = q.lines.map((l) => l.kind)
+  assert.ok(kinds.includes('pod') && kinds.includes('rerecord'), `union lost: ${kinds.join(',')}`)
+  // Seeds strictly last, whatever else is in the list.
+  const lastPod = kinds.lastIndexOf('pod')
+  const lastRerecord = kinds.lastIndexOf('rerecord')
+  const firstSeed = kinds.indexOf('seed')
+  if (firstSeed !== -1) {
+    assert.ok(firstSeed > lastPod && firstSeed > lastRerecord, `seeds not last: ${kinds.join(',')}`)
+  }
+  assert.ok(lastRerecord > lastPod, `re-records must follow the dialogue: ${kinds.join(',')}`)
+})
