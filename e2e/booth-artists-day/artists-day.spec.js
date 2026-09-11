@@ -97,6 +97,29 @@ async function currentLine(page) {
   return (await el.count()) ? (await el.first().textContent()).trim() : null
 }
 const bodyText = (page) => page.locator('body').textContent()
+// The big green button on the ready card: its words, and whether it can be tapped.
+async function startButton(page) {
+  const b = page.locator('.btn-begin')
+  if (!(await b.count())) return null
+  return { text: (await b.first().textContent()).trim(), disabled: await b.first().isDisabled() }
+}
+// The Start label shows the first 34 characters of the line (RecordistRoom
+// firstLinePreview), so a line is named on it by its prefix.
+const preview = (line) => line.slice(0, 34)
+const startLabelFor = (line) => `Start recording — ${preview(line)}${line.length > 34 ? '…' : ''}`
+// THE SWITCH TOM'S BOOTH HAD ON. Until 2026-09-12 the ready card offered
+// "Re-read lines I've already recorded", remembered per artist, and with it on
+// the run started at the top of the queue whether or not that line was
+// recorded (his Start button read "A black coffee, please." over a pod block
+// saying "all 24 recorded"). If the booth under test still offers it, tick it:
+// the day below must hold with it ticked, because that is the state his booth
+// was in.
+async function tickRereadIfOffered(page) {
+  const row = page.locator('.toggle-row', { hasText: 'Re-read lines' })
+  if (!(await row.count())) return false
+  await row.locator('input[type=checkbox]').check()
+  return true
+}
 const tickShown = async (page) => /✓ all \d+ recorded/.test(await bodyText(page))
 const inFlight = async (page) => { const t = await bodyText(page); return t.includes('still to upload') || t.includes('still going up') }
 
@@ -262,6 +285,9 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   expect(await counts(page)).toEqual({ recorded: 0, stillToRead: N })
   expect(await banner(page)).toBeNull()
   await assertInvariant(page, { pendingOrRefused: false }, 'step 1 · fresh booth')
+  expect(await startButton(page)).toEqual({ text: startLabelFor(LINES[0]), disabled: false })
+  const rereadOffered = await tickRereadIfOffered(page)
+  note(rereadOffered ? 'the old re-read switch is offered — ticked, as Tom\'s booth had it' : 'no re-read switch on the ready card')
   await shot(page, 'fresh-booth')
 
   // 2. Line 1, read loud — the server confirms it.
@@ -321,10 +347,41 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · after reload')
   expect((await shelf(page)).filter((r) => r.status !== 'stored'), 'nothing pending or refused left on the shelf').toEqual([])
   await shot(page, 'after-reload')
-  // …and the run would start on line 4, not on 1, 2 or 3.
+  // …and Start names line 4 — never 1, 2 or 3 — whatever the booth remembered
+  // about that switch (Tom's ruling, 2026-09-11: a recorded line is never
+  // served again as a thing to read).
+  const startAfterReload = await startButton(page)
+  expect(startAfterReload.disabled, 'Start is live with lines still to read').toBe(false)
+  for (const t of LINES.slice(0, 3)) expect(startAfterReload.text, `Start never names a recorded line${rereadOffered ? ' (re-read switch ticked)' : ''}`).not.toContain(preview(t))
+  expect(startAfterReload.text).toBe(startLabelFor(LINES[3]))
   await begin(page)
-  expect(await currentLine(page)).toBe(LINES[3])
+  expect(await currentLine(page), 'the stage opens on line 4').toBe(LINES[3])
+  expect(LINES.slice(0, 3)).not.toContain(await currentLine(page))
   await shot(page, 'after-reload-starts-on-line-4')
+  // Read the rest of the day: every Next lands on the next still-to-read line,
+  // never back on 1-3, and the last one ends the run by itself.
+  for (let n = 4; n < N; n++) {
+    await readLoudAndNext(page, `line ${n}`)
+    expect(await currentLine(page), `after line ${n}, the stage is on line ${n + 1}`).toBe(LINES[n])
+  }
+  await readLoudAndNext(page, `line ${N}`)
+  await expect(page.locator('.ctl-next'), 'the run ends when nothing is left').toHaveCount(0)
+  await serverSettled(page, 'after the rest of the day')
+  await expect.poll(() => counts(page), { message: 'everything recorded', timeout: 30_000 }).toEqual({ recorded: N, stillToRead: 0 })
+  await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · the whole queue read')
+  await shot(page, 'everything-recorded')
+  // RELOAD with nothing owed: Start is disabled and says so, and names no line.
+  await page.reload()
+  await expect.poll(() => counts(page), { message: 'the ready card after the all-done reload' }).toEqual({ recorded: N, stillToRead: 0 })
+  await page.waitForTimeout(1500)
+  const startDone = await startButton(page)
+  expect(startDone.disabled, 'Start is disabled when every line is recorded').toBe(true)
+  expect(startDone.text).toBe('Nothing left to read')
+  for (const t of LINES) expect(startDone.text).not.toContain(preview(t))
+  expect(await bodyText(page)).toContain('Everything is recorded')
+  expect(await tickShown(page)).toBe(true)
+  await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · all-done reload')
+  await shot(page, 'all-done-start-disabled')
 
   // 5b. Close the browser and reopen the SAME profile.
   await ctx.close()
@@ -332,7 +389,8 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   page = ctx.pages()[0] || await ctx.newPage()
   await openBooth(page)
   await page.waitForTimeout(1500)
-  expect(await counts(page)).toEqual({ recorded: 3, stillToRead: N - 3 })
+  expect(await counts(page)).toEqual({ recorded: N, stillToRead: 0 })
+  expect((await startButton(page)).disabled, 'Start still disabled after reopening the browser').toBe(true)
   expect(await banner(page), 'no stale refusal banner after reopening the browser').toBeNull()
   expect(await bodyText(page)).not.toContain('would not accept')
   expect(await bodyText(page)).not.toContain('did not save')
@@ -340,9 +398,9 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   await shot(page, 'browser-reopened')
   await ctx.close()
 
-  // 8. The database: exactly lines 1, 2 and 3 carry a take by the test voice,
+  // 8. The database: every line carries exactly one take by the test voice,
   //    each with a clip, a pod link and a provenance row naming the test voice.
-  const v = await fixture.verify(require('@supabase/supabase-js').createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY), [1, 2, 3])
+  const v = await fixture.verify(require('@supabase/supabase-js').createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY), LINES.map((_, i) => i + 1))
   note(`db: ${v.rows} course_audio rows, ${v.provenance} provenance rows for ${VOICE_ID}${v.ok ? '' : ' — ' + v.problems.join('; ')}`)
   expect(v.problems).toEqual([])
   rmSync(PROFILE, { recursive: true, force: true })
