@@ -31,6 +31,21 @@
             · {{ sentences.length }} sentences
             <span v-if="pod.source_file"> · from <code>{{ pod.source_file }}</code></span>
           </div>
+          <!-- THE WAY INTO THE BOOTH, AT THE TOP. Aran, 2026-09-11, from this
+               page: "I'm not now seeing a way to open my recording tool… I had to
+               go back to /pods and then open the tab for 'cast' — those links
+               probably could do with being a bit more top of page". One link per
+               human voice cast on this pod, straight under the title where a
+               recordist looks first. Nothing else about the cast moves. -->
+          <div v-if="castVoices.length" class="mt-2 text-sm flex items-center gap-3 flex-wrap record-links">
+            <span class="text-muted">Record your lines:</span>
+            <router-link
+              v-for="v in castVoices"
+              :key="v.voiceId"
+              :to="`/r/${v.voiceId}`"
+              class="link-emerald font-medium record-link"
+            >{{ v.name }} →</router-link>
+          </div>
         </div>
 
         <!-- HOLD / RELEASE (Tom, 2026-08-23: keep a pod back "until … after all

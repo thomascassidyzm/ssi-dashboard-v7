@@ -693,7 +693,9 @@ const progressWords = computed(() => `${recordedCount.value} of ${lines.value.le
 // his lines carry a take he made. So the ready card says both — what he has
 // recorded, and how many of those we are asking him to read again. Record mode
 // keeps `progressWords` untouched; the way lines are served there is Tom's.
-const takeCount = computed(() => rosterRows.value.reduce((n, r) => n + (r.hasTake ? 1 : 0), 0))
+// Same rule as the roster's tally: a take still going up or refused is not yet
+// a recorded line, so the headline cannot say a number the map beneath denies.
+const takeCount = computed(() => rosterRows.value.reduce((n, r) => n + (r.hasTake && !r.pending && !r.failed ? 1 : 0), 0))
 // ONE NUMBER, BECAUSE THERE IS ONE TRUTH NOW. This used to end ", N of those to
 // read again" — our verdict on the reader's work, in the first sentence on their
 // page. Tom, 2026-09-02: a line whose take we have rejected is a line still to

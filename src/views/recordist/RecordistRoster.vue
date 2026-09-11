@@ -387,7 +387,15 @@ const allRows = computed(() => props.sections.flatMap(s => s.rows))
 // the state that made two numbers necessary: a take we have rejected is not a
 // take the reader has, it is a line still to read. So every count on this
 // component is `done`, and the sections always sum to the whole run.
-function takes(rows) { return rows.reduce((n, r) => n + (r.hasTake || r.done ? 1 : 0), 0) }
+// COUNTED BY WHERE THE TAKE IS, NOT BY WHAT WAS SET ON THE ROW. Aran's page,
+// 2026-09-11: "547 recorded · -177 still to read · 177 still going up · 35 did
+// not save" over a green "547/547 done". A line read this session is `done`
+// the moment it is queued AND `pending` until the server confirms it, so it was
+// counted here as recorded and then subtracted again below as going up — that
+// is the minus sign — and counting it as recorded is what lit the tick above
+// a list of failures. So recorded means the mark says done: not queued, not
+// refused. Recorded + still going up + still to read is then the whole section.
+function takes(rows) { return rows.reduce((n, r) => n + (markClass(r) === 'done' ? 1 : 0), 0) }
 /**
  * WHICH OF THE FOUR THINGS A LINE IS, in one place, for the mark, the label,
  * the panel and the row.

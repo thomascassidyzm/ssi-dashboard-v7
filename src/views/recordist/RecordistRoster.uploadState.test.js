@@ -66,3 +66,41 @@ describe('RecordistRoster — where the take is', () => {
       expect(words).not.toContain(leak)
   })
 })
+
+// ARAN'S PAGE, 2026-09-11, 15:30 UTC: "547 recorded · -177 still to read ·
+// 177 still going up · 35 did not save" and, under it, a green "✓ 547/547 done".
+// He read faster than the booth could upload, so 177 lines were both `done`
+// (read this session) and `pending` (still on the shelf), and 35 more were
+// `done` and `failed`. Counting a queued take as recorded AND subtracting it
+// again as going up is where the minus sign came from, and counting it as
+// recorded is what lit the tick over a list of failures. A recordist's terms:
+// recorded, still going up, did not save, still to read — one state each,
+// never negative, never a tick while anything is queued or failed.
+describe('RecordistRoster — Aran\'s shape: many done, some queued, some failed', () => {
+  const rows = []
+  for (let i = 0; i < 20; i++) rows.push({ id: `d${i}`, text: `Llinell ${i}`, done: true, hasTake: true })
+  for (let i = 0; i < 6; i++) rows.push({ id: `p${i}`, text: `Aros ${i}`, done: true, hasTake: true, pending: true })
+  for (let i = 0; i < 3; i++) rows.push({ id: `f${i}`, text: `Methu ${i}`, done: true, hasTake: true, failed: true })
+  rows.push({ id: 't0', text: 'Heb ei ddarllen', done: false, hasTake: false })
+  const SECTION = [{ key: 'pod:senedd', heading: 'SENEDD', blurb: 'The committee session.', rows }]
+  const mountIt = () => mount(RecordistRoster, { props: { sections: SECTION } })
+
+  it('never shows a negative number and the three counts add up to the section', () => {
+    const tally = mountIt().find('.sm-tally').text()
+    expect(tally).not.toMatch(/-\d/)
+    expect(tally).toContain('20 recorded')
+    expect(tally).toContain('6 still going up')
+    expect(tally).toContain('3 did not save')
+    // still to read = the one never read + the three that did not save
+    expect(tally).toContain('4 still to read')
+    // 20 + 6 + 4 = 30 rows: the section is whole, with nothing counted twice.
+    expect(rows).toHaveLength(30)
+    expect(mountIt().find('.strip-words').text()).toBe('20 recorded · 4 still to read')
+  })
+
+  it('wears no done tick while anything is still going up or did not save', () => {
+    const w = mountIt()
+    expect(w.find('.sm-done').exists()).toBe(false)
+    expect(w.find('.section-map-row').classes()).not.toContain('is-complete')
+  })
+})
