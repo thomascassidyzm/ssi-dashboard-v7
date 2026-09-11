@@ -262,7 +262,7 @@
               </div>
               <!-- Sentence row -->
               <div
-                class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[32px_110px_minmax(0,1fr)_auto] gap-3 items-start text-sm row-sep"
+                class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_minmax(0,1fr)] sm:grid-cols-[32px_110px_minmax(0,1fr)_auto] gap-x-3 gap-y-1.5 sm:gap-3 items-start text-sm row-sep"
                 :class="[isDraft(sent) ? 'draft-row' : 'border-line', isRowPlaying(sent) ? 'row-playing' : '']"
               >
                 <div class="text-faint font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
@@ -309,7 +309,10 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex flex-wrap gap-1 items-center pt-0.5 justify-end max-w-[9rem] sm:max-w-none">
+                <!-- On a phone the words take the whole row and the buttons sit
+                     beneath them; beside them, a 390px screen left the phrase a
+                     one-word-wide column. -->
+                <div class="col-span-2 sm:col-span-1 flex flex-wrap gap-1 items-center pt-0.5 pl-[44px] sm:pl-0">
                   <!-- Human-recording status (pods coverage) — additive, hides when coverage unavailable -->
                   <span
                     v-if="recChip(sent)"
