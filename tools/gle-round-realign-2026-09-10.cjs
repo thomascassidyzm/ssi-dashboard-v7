@@ -51,11 +51,12 @@ function databaseUrl() {
   return line.slice('DATABASE_URL='.length).trim();
 }
 
-async function main() {
-  const apply = process.argv.includes('--apply');
-  const client = new Client({ connectionString: databaseUrl() });
-  await client.connect();
-
+/**
+ * The realign itself, against any pg-compatible `client` ({ query(sql, params) }).
+ * Exported so a test can run it twice against an in-process Postgres copy.
+ * Returns { before, after, counts, applied }.
+ */
+async function realign(client, { apply = false, log = console.log } = {}) {
   const before = (await client.query(
     `SELECT id, ${COLUMNS.join(', ')} FROM course_enrollments WHERE course_id = $1 ORDER BY id`,
     [COURSE],
@@ -73,13 +74,12 @@ async function main() {
     expected.set(row.id, want);
   }
 
-  console.log(`${COURSE}: ${before.length} enrollments`);
-  for (const col of COLUMNS) console.log(`  ${col}: ${counts[col]} row(s) shift +1`);
+  log(`${COURSE}: ${before.length} enrollments`);
+  for (const col of COLUMNS) log(`  ${col}: ${counts[col]} row(s) shift +1`);
 
   if (!apply) {
-    console.log('\nDRY RUN — nothing written. Re-run with --apply.');
-    await client.end();
-    return;
+    log('\nDRY RUN — nothing written. Re-run with --apply.');
+    return { before, after: before, counts, applied: false };
   }
 
   await client.query('BEGIN');
@@ -108,16 +108,32 @@ async function main() {
       }
     }
     await client.query('COMMIT');
-    console.log(`\nAPPLIED — ${res.rowCount} enrollment row(s) rewritten, all ${after.length} verified against their before-image.`);
+    log(`\nAPPLIED — ${res.rowCount} enrollment row(s) rewritten, all ${after.length} verified against their before-image.`);
+    return { before, after, counts, applied: true };
   } catch (err) {
     await client.query('ROLLBACK');
+    throw err;
+  }
+}
+
+async function main() {
+  const apply = process.argv.includes('--apply');
+  const client = new Client({ connectionString: databaseUrl() });
+  await client.connect();
+  try {
+    await realign(client, { apply });
+  } catch (err) {
     console.error('ROLLED BACK:', err.message);
     process.exitCode = 1;
   }
   await client.end();
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+if (require.main === module) {
+  main().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
+
+module.exports = { COURSE, INSERTED_ROUND, COLUMNS, realign };
