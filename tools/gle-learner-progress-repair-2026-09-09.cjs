@@ -67,22 +67,22 @@ async function snapshot(client, table, courseCol, ids) {
   return rows;
 }
 
-async function main() {
-  const apply = process.argv.includes('--apply');
+/**
+ * The repair, against any pg-compatible `client` ({ query(sql, params) }).
+ * Exported so a test can run it twice against an in-process Postgres copy.
+ */
+async function repair(client, { apply = false, log = console.log } = {}) {
   const renames = legoIdRenames();
   const oldIds = [...renames.keys()];
   const newIds = [...renames.values()];
   const allIds = [...new Set([...oldIds, ...newIds])];
 
-  const client = new Client({ connectionString: databaseUrl() });
-  await client.connect();
   try {
     await client.query('BEGIN');
 
     const report = {};
     for (const t of TABLES) {
       const before = await snapshot(client, t.name, t.courseCol, allIds);
-      const beforeByLearnerLego = new Map(before.map((r) => [`${r.learner_id}::${r.lego_id}`, r]));
 
       // rename to a tmp suffix first — avoids the unique-key collision when a
       // learner holds rows for both ends of a swap simultaneously
@@ -121,22 +121,32 @@ async function main() {
       report[t.name] = { rows: before.length, learners: new Set(before.map((r) => r.learner_id)).size, matched };
     }
 
-    console.log(JSON.stringify(report, null, 2));
+    log(JSON.stringify(report, null, 2));
 
     if (apply) {
       await client.query('COMMIT');
-      console.log('COMMITTED');
-    } else {
-      await client.query('ROLLBACK');
-      console.log('DRY RUN — rolled back');
+      log('COMMITTED');
+      return { report, applied: true };
     }
+    await client.query('ROLLBACK');
+    log('DRY RUN — rolled back');
+    return { report, applied: false };
   } catch (err) {
     await client.query('ROLLBACK');
     throw err;
+  }
+}
+
+async function main() {
+  const apply = process.argv.includes('--apply');
+  const client = new Client({ connectionString: databaseUrl() });
+  await client.connect();
+  try {
+    await repair(client, { apply });
   } finally {
     await client.end();
   }
 }
 
 if (require.main === module) main().catch((e) => { console.error(e.message); process.exit(1); });
-module.exports = { TABLES };
+module.exports = { TABLES, repair };
