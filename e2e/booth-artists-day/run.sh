@@ -22,7 +22,7 @@ die() { echo "booth-artists-day-browser: $*" >&2; exit 1; }
 [ -x node_modules/.bin/playwright ] || die "no playwright under node_modules"
 
 if [ "${REFRESH_STAGING:-0}" = 1 ]; then
-  [ -d "$STAGING_DIR/.git" ] || die "no staging tree at $STAGING_DIR"
+  [ -e "$STAGING_DIR/.git" ] || die "no staging tree at $STAGING_DIR"   # -e: a worktree's .git is a file
   ( cd "$STAGING_DIR" && git fetch -q origin main && git merge --ff-only origin/main ) || die "could not fast-forward $STAGING_DIR to origin/main"
   want=$(cd "$STAGING_DIR" && git rev-parse --short=8 HEAD)
   have=$(node -e "try{console.log(require('$STAGING_DIR/dist/version.json').version)}catch{console.log('')}")
