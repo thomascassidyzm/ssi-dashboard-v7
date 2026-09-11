@@ -603,7 +603,16 @@ import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 const props = defineProps({ voiceId: { type: String, required: true } })
 
 const recorder = useTapRecorder()
-const queue = useRecordistQueue()
+// The queue asks the ROOM whether a line is recorded on the server, so a
+// refused take left on the shelf by an earlier session is not counted or listed
+// against a line this recordist has since read again (Tom, 2026-09-11: a
+// refused take is a mark over a line, never a reason to ask for it again).
+const queue = useRecordistQueue({
+  isLineRecorded: (lineId) => {
+    const l = lines.value.find(x => x.id === lineId)
+    return !!(l && l.recorded)
+  },
+})
 
 const phase = ref('loading') // loading | unknown | error | ready | recording | done
 const loadError = ref(null)

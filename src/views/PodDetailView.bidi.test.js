@@ -97,8 +97,8 @@ async function mountView() {
 // The target line and the known line under it, by the class pairs unique to
 // each — `.text-ink` alone also catches the ✎ button, and `.text-faint.text-xs`
 // alone also catches the order number.
-const targetLines = (wrapper) => wrapper.findAll('.row-sep .text-ink.truncate')
-const knownLines = (wrapper) => wrapper.findAll('.row-sep .text-faint.text-xs.truncate')
+const targetLines = (wrapper) => wrapper.findAll('.row-sep .phrase-target')
+const knownLines = (wrapper) => wrapper.findAll('.row-sep .phrase-known')
 
 describe('PodDetailView — the sentence list Deborah reads', () => {
   it('renders the real Arabic rows', async () => {

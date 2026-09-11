@@ -262,12 +262,14 @@
               </div>
               <!-- Sentence row -->
               <div
-                class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_110px_1fr_auto] gap-3 items-start text-sm row-sep"
+                class="bg-surface border rounded px-3 py-2 grid grid-cols-[32px_minmax(0,1fr)_auto] sm:grid-cols-[32px_110px_minmax(0,1fr)_auto] gap-3 items-start text-sm row-sep"
                 :class="[isDraft(sent) ? 'draft-row' : 'border-line', isRowPlaying(sent) ? 'row-playing' : '']"
               >
                 <div class="text-faint font-mono text-xs tabular-nums pt-0.5">{{ sent.global_order }}</div>
-                <div class="text-muted text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
+                <div class="hidden sm:block text-muted text-xs truncate pt-0.5" :title="sent.speaker">{{ sent.speaker }}</div>
                 <div class="min-w-0">
+                  <!-- On a phone the speaker column is gone; the name sits over the words instead. -->
+                  <div v-if="sent.speaker" class="sm:hidden text-muted text-[11px] mb-0.5">{{ sent.speaker }}</div>
                   <!-- Display mode -->
                   <template v-if="editingId !== sent.id">
                     <!-- Unproofread machine draft: say so before the words, so
@@ -283,8 +285,12 @@
                          dir="rtl" would otherwise right-align this line while
                          the known line below it stayed left — a layout change
                          nobody asked for. -->
-                    <div class="text-ink truncate text-left bidi-isolate" :dir="dirFor(sent.target_text)" :title="sent.target_text">{{ sent.target_text }}</div>
-                    <div class="text-faint text-xs truncate" :title="sent.known_text">{{ sent.known_text }}</div>
+                    <!-- WRAP, NEVER CLIP. These two lines were `truncate`, and a
+                         long Welsh phrase on the Senedd pod was cut off so Aran
+                         had to open Edit just to read it (2026-09-11). A
+                         proofreader reads the words in place, on a phone. -->
+                    <div class="phrase-target text-ink text-left bidi-isolate whitespace-normal break-words" :dir="dirFor(sent.target_text)">{{ sent.target_text }}</div>
+                    <div class="phrase-known text-faint text-xs whitespace-normal break-words">{{ sent.known_text }}</div>
                   </template>
                   <!-- Edit mode -->
                   <div v-else class="space-y-1.5">
@@ -303,7 +309,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="flex gap-1 items-center pt-0.5">
+                <div class="flex flex-wrap gap-1 items-center pt-0.5 justify-end max-w-[9rem] sm:max-w-none">
                   <!-- Human-recording status (pods coverage) — additive, hides when coverage unavailable -->
                   <span
                     v-if="recChip(sent)"

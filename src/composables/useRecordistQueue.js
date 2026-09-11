@@ -148,9 +148,28 @@ export function useRecordistQueue(options = {}) {
     for (const rec of pending) unsentLines.add(rec.lineId)
     pendingCount.value = pending.length
     carriedOverCount.value = pending.filter(r => r.createdAt < sessionStart).length
-    refusedCount.value = refused.length
+    // A REFUSED TAKE IS A MARK OVER A LINE, NEVER A REASON TO READ IT AGAIN
+    // once the line has been read again (Tom, 2026-09-11). The shelf keeps
+    // every refused take for ever — that is right, it is somebody's audio —
+    // but Aran's booth counted 35 of them at the top of a page that also said
+    // "0 still to read": every one had since been re-read and accepted. So a
+    // refused take on a line that now holds a confirmed take — this session's
+    // (`saved`) or, on reload, the server's own answer via `isLineRecorded` —
+    // is neither counted nor listed, and its mark is taken off the line.
+    const live = refused.filter(rec => !lineNowRecorded(rec.lineId))
+    refusedCount.value = live.length
     staleCount.value = (await s.stale(voiceId)).length
-    for (const rec of refused) if (!failed.has(rec.lineId)) failed.set(rec.lineId, rec.lastError)
+    for (const rec of refused) if (lineNowRecorded(rec.lineId)) failed.delete(rec.lineId)
+    for (const rec of live) if (!failed.has(rec.lineId)) failed.set(rec.lineId, rec.lastError)
+  }
+
+  // ONE question, asked of the booth's own answer first and the server's second.
+  // `options.isLineRecorded` is the room's view of the server's `recorded`
+  // flag, which the server derives from the one resolver
+  // (services/voice-engine/take-selection.cjs isLineRecorded).
+  function lineNowRecorded(lineId) {
+    if (saved.has(lineId)) return true
+    try { return !!(options.isLineRecorded && options.isLineRecorded(lineId)) } catch { return false }
   }
 
   /**
@@ -416,8 +435,11 @@ export function useRecordistQueue(options = {}) {
 
   function isUnsent(lineId) { return unsentLines.has(lineId) }
 
+  /** Re-read the shelf against what is now recorded — call after the server's line list arrives. */
+  function reconcile() { return refreshCounts() }
+
   return {
-    attach, queueTake, markFailed, discardRefused, reset, teardown, drain,
+    attach, queueTake, markFailed, discardRefused, reset, teardown, drain, reconcile,
     isUnsent,
     pendingCount, savedCount, carriedOverCount, refusedCount, staleCount,
     persistent, storageNote, uploadingLine, lastError,

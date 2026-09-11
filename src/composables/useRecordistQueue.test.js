@@ -239,3 +239,45 @@ describe('two tabs', () => {
     expect(fetchMock.mock.calls.length).toBe(1)
   })
 })
+
+// A REFUSED TAKE IS A MARK OVER A LINE, NEVER A REASON TO READ IT AGAIN once
+// the line has been read again. Aran, 2026-09-11: "35 takes the server would
+// not accept … read those lines again" over a page saying "0 still to read".
+describe('a refused take on a line since recorded is neither counted nor listed', () => {
+  it('a refusal followed by an accepted take on the same line — banner count 0, no reason shown', async () => {
+    respond([fail(422), ok('aud-2')])
+    const q = queueOn()
+    await q.attach('v1')
+    await q.queueTake({ voiceId: 'v1', lineId: 'L1', blob: blob() })
+    await settle(q, () => q.failed.has('L1'))
+    expect(q.refusedCount.value).toBe(1)
+    await q.queueTake({ voiceId: 'v1', lineId: 'L1', blob: blob() })
+    await settle(q, () => q.saved.has('L1'))
+    await q.reconcile()
+    expect(q.refusedCount.value).toBe(0)
+    expect(q.failed.has('L1')).toBe(false)
+    // The shelf's own supersede rule has replaced the refused take with the
+    // accepted one; the count would be 0 by that rule alone on THIS device.
+    // The reload test below is the case that rule cannot reach.
+    expect((await shelf.getAll()).filter(r => r.status === 'refused')).toHaveLength(0)
+  })
+
+  it('survives a reload — a refused take on the shelf is not listed when the server says the line is recorded', async () => {
+    respond([fail(422)])
+    const q1 = queueOn()
+    await q1.attach('v1')
+    await q1.queueTake({ voiceId: 'v1', lineId: 'L1', blob: blob() })
+    await settle(q1, () => q1.failed.has('L1'))
+    q1.teardown()
+    // Next session: the server's line list says L1 holds a confirmed take.
+    const q2 = queueOn({ isLineRecorded: id => id === 'L1' })
+    await q2.attach('v1')
+    expect(q2.refusedCount.value).toBe(0)
+    expect(q2.failed.has('L1')).toBe(false)
+    // …and one it does NOT vouch for is still listed, with the server's words.
+    const q3 = queueOn({ isLineRecorded: () => false })
+    await q3.attach('v1')
+    expect(q3.refusedCount.value).toBe(1)
+    expect(q3.failed.get('L1')).toContain('boom 422')
+  })
+})
