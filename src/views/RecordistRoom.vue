@@ -703,7 +703,17 @@ const doneIds = ref(new Set())
 // the moment it stopped being pending it was neither pending nor recorded — and
 // the run offered him the line again. A confirmed upload is a recording
 // (Tom, 2026-09-11), whichever session made it.
-function isRecorded(l) { return !!l.recorded || doneIds.value.has(l.id) || queue.saved.has(l.id) }
+// AND A REFUSED TAKE IS NOT ONE OF THEM. `doneIds` is set optimistically the
+// moment a take is queued; if the server then refuses those bytes, the line is
+// back to still-to-read — the roster already drew it that way (failed outranks
+// done, RecordistRoster.vue markClass), but this function went on saying
+// recorded, so the STAGE disagreed with the map: the run's count was one short,
+// the Next button read "Done" with a refused line behind it, and the run would
+// never offer that line again. Caught by RecordistRoom.artistsDay.test.js.
+function isRecorded(l) {
+  if (queue.failed.has(l.id) && !queue.saved.has(l.id) && !l.recorded) return false
+  return !!l.recorded || doneIds.value.has(l.id) || queue.saved.has(l.id)
+}
 const recordedCount = computed(() => lines.value.reduce((n, l) => n + (isRecorded(l) ? 1 : 0), 0))
 const progressWords = computed(() => `${recordedCount.value} of ${lines.value.length} recorded`)
 // THE TOP LINE, AND IT HAD TO STOP LYING. `progressWords` above counts what we
