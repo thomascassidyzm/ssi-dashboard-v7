@@ -53,6 +53,7 @@ const {
   speakerInventory,
   hasGenerationColouring,
   buildSentenceEditPatch,
+  buildProofreadPatch,
   proposePeopleCast,
   provisionPlanFor,
   collapseTwoVoiceCast,
@@ -647,6 +648,52 @@ module.exports = function createPodsCastRouter({
     } catch (err) {
       logger.error(`[PodsEdit] ${courseCode}/${sentenceId} failed:`, err)
       res.status(500).json({ error: 'Failed to save sentence edit' })
+    }
+  })
+
+  // ── POST /sentence/:sentenceId/proofread — the tick ──────────────────────
+  // "These words are right." Deliberately NOT part of PATCH /sentence, whose
+  // whole contract is "the text changed, so drop the audio": a proofreader who
+  // changes nothing must not lose the line's recording. buildProofreadPatch
+  // never names an audio column, and this handler never writes text.
+  // Body: { undo: true } puts a mis-ticked line back in the drafts queue.
+  router.post('/sentence/:sentenceId/proofread', async (req, res) => {
+    const { courseCode, sentenceId } = req.params
+    const undo = !!(req.body && req.body.undo)
+    try {
+      const db = getDb()
+      // Same course-ownership check as PATCH /sentence: the URL's course is what
+      // the gate authorized, so verify the sentence belongs to it before writing.
+      const { data: sentence, error: fetchError } = await db
+        .from('listening_pod_sentences')
+        .select('id, pod_id')
+        .eq('id', sentenceId)
+        .maybeSingle()
+      if (fetchError) throw new Error(fetchError.message)
+      if (!sentence) return res.status(404).json({ error: `sentence not found: ${sentenceId}` })
+      const { data: pod, error: podError } = await db
+        .from('listening_pods')
+        .select('id, course_code')
+        .eq('id', sentence.pod_id)
+        .maybeSingle()
+      if (podError) throw new Error(podError.message)
+      if (!pod || pod.course_code !== courseCode) {
+        return res.status(403).json({ error: `Sentence does not belong to course ${courseCode}` })
+      }
+
+      const patch = buildProofreadPatch({ email: req.dashboardUser?.email || null, undo })
+      const { data: updated, error: updateError } = await db
+        .from('listening_pod_sentences')
+        .update(patch)
+        .eq('id', sentenceId)
+        .select('id, target_text, target_text_draft, target_text_approved_at, target_text_approved_by, target_audio_id, known_audio_id')
+        .single()
+      if (updateError) throw new Error(updateError.message)
+      logger.info(`[PodsProofread] ${courseCode} ${sentenceId} ${undo ? 'un-marked' : 'marked proofread'} by ${req.dashboardUser?.email || '?'}`)
+      res.json({ ok: true, sentence: updated })
+    } catch (err) {
+      logger.error(`[PodsProofread] ${courseCode}/${sentenceId} failed:`, err)
+      res.status(500).json({ error: 'Failed to record the proofread' })
     }
   })
 

@@ -329,6 +329,45 @@ function buildSentenceEditPatch(body = {}) {
   return Object.keys(patch).length ? patch : null
 }
 
+/**
+ * The PROOFREAD TICK — "these words are right", which is the opposite of an edit.
+ *
+ * Aran proofreads Welsh pod drafts by reading them, not by retyping them. Before
+ * this existed the only way to clear a DRAFT marker was the edit pencil, and
+ * buildSentenceEditPatch nulls target_audio_id whenever target_text is present —
+ * even byte-identical text. So "save it unchanged if it is already right" threw
+ * away the line's audio and pushed a voiced line back into the render queue.
+ *
+ * Hence the single correctness property of this patch, asserted in the tests:
+ * IT NEVER MENTIONS AN AUDIO COLUMN. The words did not change, so the recording
+ * of them is still the recording of them.
+ *
+ * What it does write: target_text_draft = false (the marker the drafts queue and
+ * the render gate in pod-text-approval.cjs actually read), plus the A-109 stamp
+ * of who said so and when — an anonymous flag flip is not a record of a
+ * proofread. target_text_review is left alone: that column is the CLI verifier
+ * agent's verdict on the words, and a human tick neither confirms nor refutes it.
+ *
+ * `undo: true` puts the line back in the queue for a mis-tick, clearing the stamp
+ * with it so no approval outlives the state it approved.
+ *
+ * @param {{ email?: string|null, undo?: boolean }} opts
+ */
+function buildProofreadPatch({ email = null, undo = false } = {}) {
+  if (undo) {
+    return {
+      target_text_draft: true,
+      target_text_approved_at: null,
+      target_text_approved_by: null,
+    }
+  }
+  return {
+    target_text_draft: false,
+    target_text_approved_at: new Date().toISOString(),
+    target_text_approved_by: (email && String(email).trim().toLowerCase()) || null,
+  }
+}
+
 // ---------------------------------------------------------------------------
 // PEOPLE-FIRST CASTING (Tom's design 2026-06-11): the leader declares WHO can
 // record — { name, gender (soft f/m preference), email (optional) } — and the
@@ -800,6 +839,7 @@ module.exports = {
   speakerInventory,
   hasGenerationColouring,
   buildSentenceEditPatch,
+  buildProofreadPatch,
   // people-first casting + auto-provisioning
   normalizePeople,
   nameSlug,

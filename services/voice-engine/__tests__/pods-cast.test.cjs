@@ -212,3 +212,48 @@ describe('buildSentenceEditPatch (community script editing)', () => {
     expect(buildSentenceEditPatch({ speaker: 'Sarah' })).toBe(null)
   })
 })
+
+// The proofread tick (2026-09-11): Aran had drafts to mark correct and no way to
+// mark them, and the only existing path — edit-and-save-unchanged — destroyed the
+// line's audio. These tests are the guard on that.
+describe('buildProofreadPatch (the tick: "these words are right")', () => {
+  const { buildProofreadPatch } = require('../pods-cast.cjs')
+
+  // THE correctness property of this change. A tick is not an edit: the words did
+  // not change, so the recording of them must survive untouched.
+  it('never touches audio', () => {
+    for (const patch of [buildProofreadPatch({ email: 'a@b.c' }), buildProofreadPatch({ undo: true })]) {
+      expect('target_audio_id' in patch).toBe(false)
+      expect('known_audio_id' in patch).toBe(false)
+    }
+  })
+
+  it('clears the DRAFT marker and stamps who checked it, when', () => {
+    const patch = buildProofreadPatch({ email: ' Aran@SaySomethingIn.com ' })
+    expect(patch.target_text_draft).toBe(false)
+    expect(patch.target_text_approved_by).toBe('aran@saysomethingin.com')
+    expect(Number.isFinite(Date.parse(patch.target_text_approved_at))).toBe(true)
+  })
+
+  // The verifier agent's verdict on the words (A-109) is not a human's tick and
+  // the two do not overwrite each other.
+  it('leaves target_text_review alone', () => {
+    expect('target_text_review' in buildProofreadPatch({ email: 'a@b.c' })).toBe(false)
+    expect('target_text_review' in buildProofreadPatch({ undo: true })).toBe(false)
+  })
+
+  it('never writes the text itself', () => {
+    expect('target_text' in buildProofreadPatch({ email: 'a@b.c' })).toBe(false)
+    expect('known_text' in buildProofreadPatch({ email: 'a@b.c' })).toBe(false)
+  })
+
+  it('undo puts the line back in the queue and drops the stamp with it', () => {
+    expect(buildProofreadPatch({ undo: true })).toEqual({
+      target_text_draft: true, target_text_approved_at: null, target_text_approved_by: null,
+    })
+  })
+
+  it('an unknown editor stamps null rather than a lie', () => {
+    expect(buildProofreadPatch({}).target_text_approved_by).toBe(null)
+  })
+})
