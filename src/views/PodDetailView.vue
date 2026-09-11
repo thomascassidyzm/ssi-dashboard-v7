@@ -69,10 +69,10 @@
         </div>
 
         <!-- Drafts awaiting proofread — machine-written target text nobody has
-             read yet (listening_pod_sentences.target_text_draft). Editing a line
-             below IS the proofread: PATCH clears the marker in the same write,
-             so this panel empties itself as the proofreader works. -->
-        <div v-if="draftCount > 0" class="mb-6 draft-panel rounded-lg p-4 text-sm">
+             read yet (listening_pod_sentences.target_text_draft). The ✓ tick on
+             each row IS the proofread, and it never touches the line's audio, so
+             this panel empties itself as the proofreader works down the list. -->
+        <div v-if="podDraftTotal > 0" class="mb-6 draft-panel rounded-lg p-4 text-sm">
           <div class="flex items-center justify-between gap-3 flex-wrap">
             <div class="min-w-0">
               <div class="draft-panel-title font-semibold">
@@ -80,8 +80,10 @@
               </div>
               <div class="text-xs text-muted mt-1">
                 These are machine-written drafts, marked <strong>DRAFT</strong> below and in the
-                recording room. Nobody should record one as it stands. Edit a line — or save it
-                unchanged if it is already right — and the DRAFT marker comes off that line.
+                recording room. Nobody should record one as it stands. Read a line and press
+                <strong>✓</strong> if the words are right — that takes the DRAFT marker off and
+                leaves the recording alone. Press ✓ again to undo. If the words are wrong, edit
+                the line instead.
               </div>
             </div>
             <button
@@ -90,6 +92,9 @@
               :class="draftsOnly ? 'draft-filter-on' : ''"
             >{{ draftsOnly ? 'Showing drafts only — show all lines' : 'Show only the drafts' }}</button>
           </div>
+          <!-- A tick that failed must SAY so: a silently-lost tick is worse than
+               no button, because the proofreader stops knowing what they checked. -->
+          <div v-if="proofreadError" class="text-xs text-danger mt-2">Could not record that tick: {{ proofreadError }}</div>
         </div>
         <div v-else-if="draftsLoaded" class="mb-6 bg-surface border border-line rounded-lg px-4 py-2 text-xs text-muted">
           <!-- "No drafts left" is all this can honestly claim. The marker column dates from
@@ -253,6 +258,9 @@
                     <!-- Unproofread machine draft: say so before the words, so
                          nobody reads them believing they are final. -->
                     <div v-if="isDraft(sent)" class="draft-badge">DRAFT — AWAITING PROOFREAD</div>
+                    <!-- Ticked this session: the row stays exactly where it is, so
+                         the next line does not jump under the proofreader's finger. -->
+                    <div v-else-if="justProofread(sent)" class="proofread-badge">✓ PROOFREAD</div>
                     <!-- Target text carries its OWN direction. Arabic under an
                          LTR paragraph pushes trailing neutrals (! . , quotes)
                          to the visual right; `dir` on the painting element is
@@ -315,6 +323,15 @@
                     :class="['px-2 py-1 text-xs rounded transition-colors bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
                     title="Play target then known"
                   >⇉</button>
+                  <!-- The proofread tick. Same size and shape as ✎/▶, only on
+                       lines that are (or were this session) drafts. -->
+                  <button
+                    v-if="editingId !== sent.id && (isDraft(sent) || justProofread(sent))"
+                    :disabled="proofreadBusyId === sent.id"
+                    @click="toggleProofread(sent)"
+                    :class="['px-2 py-1 text-xs rounded disabled:opacity-50', justProofread(sent) ? 'proofread-btn-on' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
+                    :title="justProofread(sent) ? 'Proofread — press again to put it back in the queue' : 'Mark this line proofread — the words are right'"
+                  >✓</button>
                   <button
                     v-if="editingId !== sent.id"
                     @click="startEdit(sent)"
@@ -404,8 +421,45 @@ const draftIds = ref(new Set())
 const draftsLoaded = ref(false)
 const draftsOnly = ref(route.query.drafts === '1')
 
-const isDraft = (sent) => draftIds.value.has(sent.id)
-const draftCount = computed(() => sentences.value.filter(s => draftIds.value.has(s.id)).length)
+// Ticked THIS SESSION. draftIds deliberately keeps the id, so a ticked row stays
+// in the filtered list where the proofreader left it instead of vanishing from
+// under the next line; on reload the server simply no longer returns it.
+const proofreadIds = ref(new Set())
+const proofreadBusyId = ref(null)
+const proofreadError = ref('')
+
+const justProofread = (sent) => proofreadIds.value.has(sent.id)
+const isDraft = (sent) => draftIds.value.has(sent.id) && !proofreadIds.value.has(sent.id)
+const draftCount = computed(() => sentences.value.filter(s => isDraft(s)).length)
+// Whether this pod HAS a draft queue at all — keeps the panel and its filter
+// button on screen after the last tick, so the filtered list stays readable.
+const podDraftTotal = computed(() => sentences.value.filter(s => draftIds.value.has(s.id)).length)
+
+/**
+ * The tick: "these words are right". A dedicated door, not the edit PATCH —
+ * editing nulls the line's audio, and a proofreader who changed nothing must
+ * not lose the recording.
+ */
+async function toggleProofread(sent) {
+  const undo = proofreadIds.value.has(sent.id)
+  proofreadBusyId.value = sent.id
+  proofreadError.value = ''
+  try {
+    const res = await authedFetch(`/api/production/${courseCode}/pods/sentence/${encodeURIComponent(sent.id)}/proofread`, {
+      method: 'POST',
+      body: JSON.stringify({ undo }),
+    })
+    const body = await res.json()
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    const next = new Set(proofreadIds.value)
+    if (undo) next.delete(sent.id); else next.add(sent.id)
+    proofreadIds.value = next
+  } catch (err) {
+    proofreadError.value = err?.message || String(err)
+  } finally {
+    proofreadBusyId.value = null
+  }
+}
 
 async function loadDrafts() {
   try {
@@ -1007,6 +1061,14 @@ onUnmounted(() => {
   letter-spacing: 0.07em;
 }
 .draft-row { border-color: var(--color-tungsten, #ffa630); }
+/* Ticked this session — calm, and deliberately quieter than the amber DRAFT it
+   replaces: the point of the badge is that this line no longer needs attention. */
+.proofread-badge {
+  display: inline-block; margin-bottom: 2px; padding: 1px 6px; border-radius: 3px;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.04em;
+  background: rgba(16, 185, 129, 0.15); color: #34d399;
+}
+.proofread-btn-on { background: rgba(16, 185, 129, 0.2); color: #34d399; }
 /* The line you are hearing right now. Emerald edge only — during a play-through
    down 231 lines this is the only thing telling you where you are. */
 .row-playing {
@@ -1031,6 +1093,8 @@ onUnmounted(() => {
 [data-theme="light"] .draft-panel-title { color: #92400e; }
 [data-theme="light"] .draft-badge { background: #b45309; color: #fff; }
 [data-theme="light"] .draft-row { border-color: #b45309; }
+[data-theme="light"] .proofread-badge { background: #d1fae5; color: #065f46; }
+[data-theme="light"] .proofread-btn-on { background: #d1fae5; color: #065f46; }
 [data-theme="light"] .draft-filter-btn { border-color: #b45309; color: #92400e; }
 [data-theme="light"] .draft-filter-on { background: #b45309; color: #fff; }
 </style>
