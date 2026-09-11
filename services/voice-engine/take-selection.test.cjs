@@ -8,7 +8,7 @@
 
 const test = require('node:test')
 const assert = require('node:assert')
-const { lineHasTake, countsAsRecorded, pickCurrentTake, resolveCurrentClip } = require('./take-selection.cjs')
+const { isLineRecorded, lineHasTake, pickCurrentTake, resolveCurrentClip } = require('./take-selection.cjs')
 
 /** Stub db: one course_audio table, only the calls the resolver makes. */
 function stubDb(rows) {
@@ -57,11 +57,22 @@ test.describe('lineHasTake', () => {
     assert.strictEqual(lineHasTake(line, { recordedKeys: new Set(), spellings }), false)
   })
 
-  test('still scores a SEED line by every copy of its slot', () => {
-    const filled = { kind: 'seed', text: 'x', seedFilledBy: ['human_aran_cym_n', 'human_aran_cym_n'] }
-    const partial = { kind: 'seed', text: 'x', seedFilledBy: ['human_aran_cym_n', 'human_catrinlliar_cym_n'] }
+  test('a SEED line is recorded when ANY copy\'s slot holds this voice (2026-09-11)', () => {
+    const filled = { kind: 'seed', role: 'target2', text: 'x', seedFilledBy: ['human_aran_cym_n', 'human_aran_cym_n'] }
+    // One copy held by another recordist's clip, which linkSeedTake rightly
+    // refuses to move. Under the old EVERY-copy rule this seed was served for
+    // ever, asking for a take the linker would then decline to place.
+    const partial = { kind: 'seed', role: 'target2', text: 'x', seedFilledBy: ['human_aran_cym_n', 'human_catrinlliar_cym_n'] }
+    const theirs = { kind: 'seed', role: 'target2', text: 'x', seedFilledBy: ['human_catrinlliar_cym_n'] }
     assert.strictEqual(lineHasTake(filled, { recordedKeys: new Set(), spellings }), true)
-    assert.strictEqual(lineHasTake(partial, { recordedKeys: new Set(), spellings }), false)
+    assert.strictEqual(lineHasTake(partial, { recordedKeys: new Set(), spellings }), true)
+    assert.strictEqual(lineHasTake(theirs, { recordedKeys: new Set(), spellings }), false)
+    // And a stored take of the words by this voice is a confirmed upload too.
+    assert.strictEqual(lineHasTake(theirs, { recordedKeys: new Set(['x']), spellings }), true)
+    // A fixture's KNOWN-side line is filed under the known language: the
+    // target-language key set cannot vouch for it, only its slot can.
+    const known = { kind: 'seed', role: 'known', text: 'x', seedFilledBy: [null] }
+    assert.strictEqual(lineHasTake(known, { recordedKeys: new Set(['x']), spellings }), false)
   })
 
   // 2026-09-03. A MINIMAL-SET LEGO is scored by its own slot, exactly as a seed
@@ -85,11 +96,65 @@ test.describe('lineHasTake', () => {
   })
 })
 
-test.describe('countsAsRecorded', () => {
-  test('is take-and-not-wanted-again, in one place', () => {
-    assert.strictEqual(countsAsRecorded({ rerecordWanted: false }, true), true)
-    assert.strictEqual(countsAsRecorded({ rerecordWanted: true }, true), false)
-    assert.strictEqual(countsAsRecorded({ rerecordWanted: false }, false), false)
+// THE ACCEPTANCE (Tom, 2026-09-11): a line with a confirmed upload is recorded,
+// and nothing else about it can say otherwise. Each case below is a state the
+// estate has actually put a recorded line into and then re-served it.
+test.describe('isLineRecorded — a confirmed upload is a recording, full stop', () => {
+  const recorded = { kind: 'pod', text: 'Prynhawn da.', filledBy: ['human_aran_cym_n'] }
+  const ctx = { recordedKeys: new Set(), spellings }
+
+  test('under a rejected / refused verdict (a want written against the take)', () => {
+    assert.strictEqual(isLineRecorded({ ...recorded, rerecordWanted: true, rerecordReason: 'clipped' }, ctx), true)
+  })
+
+  test('when the line was re-assigned to another owner but his take still fills the slot', () => {
+    // The cast now names Catrin; the slot still holds Aran's clip. For ARAN it
+    // is recorded. (For Catrin it is not — she has not read it — and the queue
+    // routes it to her bucket; see recordist-queue.test.cjs.)
+    assert.strictEqual(isLineRecorded({ ...recorded, speaker: 'Catrin' }, ctx), true)
+  })
+
+  test('when the pod moved: the row is the same row, the slot is the same slot', () => {
+    assert.strictEqual(isLineRecorded({ ...recorded, podId: 'somewhere-else' }, ctx), true)
+  })
+
+  test('when the take is stored under an alias spelling of the voice', () => {
+    assert.strictEqual(isLineRecorded({ ...recorded, filledBy: ['human_aran_cym_n_2'] }, ctx), true)
+  })
+
+  test('and a line with NO confirmed upload is still to read, whatever flags it carries', () => {
+    assert.strictEqual(isLineRecorded({ kind: 'pod', text: 'Nos da.', filledBy: [], rerecordWanted: true }, ctx), false)
+    assert.strictEqual(isLineRecorded({ kind: 'pod', text: 'Nos da.', filledBy: ['human_catrinlliar_cym_n'] }, ctx), false)
+  })
+})
+
+// THE OTHER HALF OF THE INVARIANT: the learner's playback and the booth's
+// Listen button resolve the SAME file for a line whose slot holds the
+// recordist's take. Shaped on real Senedd rows (cym_n_for_eng:senedd-s4c-steve).
+test.describe('resolveCurrentClip — learner path and booth path agree', () => {
+  const rows = [
+    { id: 'a1', s3_key: 'mastered/120944C0.mp3', voice_id: 'human_aran_cym_n', language: 'cym', text_normalized: 'diolch yn fawr', created_at: '2026-09-11T10:00:00Z' },
+    { id: 'a0', s3_key: 'mastered/OLD.mp3', voice_id: 'human_aran_cym_n', language: 'cym', text_normalized: 'diolch yn fawr', created_at: '2026-09-10T10:00:00Z' },
+  ]
+  const sentence = { id: 'cym_n_for_eng:senedd-s4c-steve:SC160-S0567', target_text: 'Diolch yn fawr.', target_audio_id: 'a1' }
+
+  test('same line, same file, through both declared modes', async () => {
+    const db = stubDb(rows)
+    const learner = await resolveCurrentClip(db, { sentence, track: 'target' })
+    const booth = await resolveCurrentClip(db, { sentence, track: 'target', language: 'cym', restrictToVoices: spellings, allowIdentityFallback: true })
+    assert.ok(learner && booth)
+    assert.strictEqual(learner.s3Key, booth.s3Key)
+    assert.strictEqual(learner.audioId, 'a1')
+    assert.strictEqual(booth.source, 'slot')
+  })
+
+  test('an unlinked take is still HIS take on the booth path, and the learner hears nothing — a linking gap, reported, never a re-record', async () => {
+    const db = stubDb(rows)
+    const unlinked = { ...sentence, target_audio_id: null }
+    const learner = await resolveCurrentClip(db, { sentence: unlinked, track: 'target' })
+    const booth = await resolveCurrentClip(db, { sentence: unlinked, track: 'target', language: 'cym', restrictToVoices: spellings, allowIdentityFallback: true })
+    assert.strictEqual(learner, null)
+    assert.strictEqual(booth && booth.audioId, 'a1', 'newest stored take by the server clock')
   })
 })
 

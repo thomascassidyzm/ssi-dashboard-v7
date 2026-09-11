@@ -1,48 +1,64 @@
 /**
- * take-selection.cjs — the TWO questions every recording surface asks about a
- * line, answered in ONE place.
+ * take-selection.cjs — THE ONE RESOLVER for "is this line recorded", and for
+ * "which stored take IS this line". Every recording surface asks here and
+ * nowhere else:
  *
- *   1. DOES A TAKE OF THIS LINE BY THIS VOICE EXIST?      → lineHasTake()
- *   2. DOES THAT TAKE COUNT AS A RECORDING?               → countsAsRecorded()
- *   3. WHICH TAKE OF A LINE IS THE CURRENT ONE?           → resolveCurrentClip()
- *                                                           (pickCurrentTake is its tie-break)
+ *   1. IS THIS LINE RECORDED, FOR THIS RECORDIST?          → isLineRecorded()
+ *                                                            (lineHasTake is the same answer, kept by name)
+ *   2. WHICH TAKE OF A LINE IS THE CURRENT ONE?             → resolveCurrentClip()
+ *                                                            (pickCurrentTake is its tie-break)
+ *
+ * THE RULE (Tom, 2026-09-11, binding): a line is RECORDED iff the server holds
+ * a confirmed upload of it by the cast recordist — regardless of any review
+ * flag, rejection, re-cast, ownership change or in-flight state. Anything else
+ * is a MARK over a recorded line, never a reason to serve it again. A line with
+ * NO confirmed upload is STILL TO READ. There is no third state that affects
+ * the queue.
+ *
+ * WHY THE RULE IS THIS BLUNT. Between 5 and 11 September 2026 the estate
+ * patched "is this line recorded" fifteen times, each patch fixing a count in
+ * one of the several places that computed it — the booth queue, the recordist
+ * roster, the studio plan, the coverage bar — and on 11 September Aran was
+ * served ~150 Senedd lines he had already recorded. Tom: "it's unforgivable to
+ * lose recordings or to make a voice artist re-record stuff they've already
+ * recorded. That's a categoric fail." The previous predicate here,
+ * countsAsRecorded = hasTake && !rerecordWanted, was the third state: a want
+ * written by our own quality machinery re-opened a recorded line, and the
+ * artist's wire then masked WHY, so he saw a line he knew he had read, offered
+ * as never read. That predicate is gone. A want is now carried on the wire as a
+ * mark (Tom's coverage page reads it; the artist's wire masks it) and moves
+ * nothing in or out of the outstanding set. The deliberate second pass is the
+ * booth's own "Re-read lines I've already recorded" switch.
  *
  * THE INVARIANT (Tom, 2026-09-02): "we should be able to know for sure that
- * what we record IS what is served to the learner." That cannot be held by
- * three read paths that happen to agree — the recordist's queue, the Listen
- * button and the learner's own playback. It is held by ONE resolver they all
- * ask, whose two callers differ only in DECLARED parameters (may I fall back
- * past the slot? whose voices count as mine?) rather than in code. Anything
- * that resolver cannot make identical is a real divergence, and
- * tools/recording/verify-take-invariant.cjs counts them for a whole course.
- *
- * They are separated because they are DIFFERENT QUESTIONS, and the ruling that
- * was pending here has now landed. Tom, 2026-09-02: "they must NOT see any clips
- * that have already been ruled unusable - they must just see those as lines that
- * still need recording." It did NOT change countsAsRecorded — a wanted line was
- * already outstanding by this predicate, which is why the ruling moved no line
- * in or out of the outstanding set. It is a VISIBILITY rule, and it lives one
- * layer out, in finishQueue's `maskRejectedHistory`: the artist's wire drops the
- * flag, the reason and the clip; Tom's coverage page passes the mask off and
- * still sees all three. Nothing here hides anything, and nothing here is
- * destroyed.
+ * what we record IS what is served to the learner." That is held by ONE
+ * resolver every read path asks — the recordist's queue, the Listen button and
+ * the learner's own playback — whose callers differ only in DECLARED parameters
+ * (may I fall back past the slot? whose voices count as mine?) rather than in
+ * code. tools/recording/verify-take-invariant.cjs counts any divergence for a
+ * whole course.
  *
  * WHY A LINE HAS TWO WAYS OF HAVING A TAKE (2026-09-02 forensic count):
  *
  *   - BY TEXT. A clip is filed under (language, text_normalized, voice), so a
- *     clip of this text by this voice is a take of this line. That was the only
- *     test until now.
- *   - BY SLOT. The line's own FK (listening_pod_sentences.target_audio_id)
- *     points at a clip in this voice. This is what the text test cannot see:
- *     when pod-0 was rebuilt on 2026-08-11 its sentences gained "…" PAUSE CUES
- *     ("A be ydy… cyfrinair y wifi?"), and Aran's June takes of those exact
- *     sentences are filed under the un-cued text. Six of his lines were already
- *     LINKED and already playing to learners while his own screen called them
- *     unrecorded and queued them for him to read again.
+ *     clip of this text by this voice is a take of this line.
+ *   - BY SLOT. The line's own FK (listening_pod_sentences.target_audio_id, a
+ *     seed's target1/target2_audio_id, a LEGO's target1_audio_id) points at a
+ *     clip in this voice. This is what the text test cannot see: when pod-0 was
+ *     rebuilt on 2026-08-11 its sentences gained "…" PAUSE CUES, and Aran's June
+ *     takes of those exact sentences are filed under the un-cued text. Six of
+ *     his lines were already LINKED and already playing to learners while his
+ *     own screen called them unrecorded and queued them for him to read again.
  *
- * The slot test is the same one the seed queue already uses and the same one
- * the listen route tries first — the estate's own statement that this slot is
- * filled by this voice. Reads widen, writes narrow: nothing here writes.
+ * EITHER IS ENOUGH. A slot filled by this voice on ANY copy of a collapsed line,
+ * or a stored take of this text by this voice, is a confirmed upload — and a
+ * confirmed upload is the whole of the rule. The old seed test demanded EVERY
+ * copy's slot be filled by this voice; a copy held by another recordist's clip
+ * (which linkSeedTake correctly refuses to move) therefore kept the seed in the
+ * queue for ever, asking for a take the linker would then decline to place.
+ * An unfilled duplicate is a LINKING gap to be closed by linking, never by
+ * asking the artist to read the words again. Reads widen, writes narrow:
+ * nothing here writes.
  */
 
 'use strict'
@@ -50,53 +66,48 @@
 const { audioKeyCandidates } = require('../shared/text-normalize.cjs')
 
 /**
- * Does a take of this line by this recordist exist — regardless of whether we
- * are asking for it to be read again?
+ * Is this line RECORDED for this recordist — does the server hold a confirmed
+ * upload of it by them? This is the ONLY predicate any queue, count, roster,
+ * plan or coverage bar may use, and it reads exactly two facts: the slots and
+ * the stored takes. It never reads a want, a verdict, an owner change or an
+ * upload the client still holds.
  *
  * @param {object} line a queue line from buildLanguageLines
  * @param {object} ctx
  * @param {Set<string>} ctx.recordedKeys normalised texts this voice has recorded
  * @param {string[]} ctx.spellings every spelling of this voice's id
  */
-function lineHasTake(line, { recordedKeys, spellings }) {
+function isLineRecorded(line, { recordedKeys, spellings }) {
   if (!line) return false
-  // SCORED BY ITS OWN SLOT — one branch, two kinds of line, and the list of
-  // filled voices is the only thing either of them hands over.
-  //
-  // A SEED line, never by "a clip of this text exists": the known-side line is
-  // filed under the course's KNOWN language and a seed's target1 and target2
-  // are two slots holding the same words.
-  //
-  // A MINIMAL-SET LEGO, for the same reason and one more (2026-09-03). A take
-  // of a covering LEGO is linked into course_legos.target1_audio_id, and that
-  // slot is what the splicer will reach for — so the slot is what "recorded"
-  // has to mean, or the booth would say a piece was done while the splicer
-  // still had nothing to cut. A fallback WORD owns no row, hands over `null`
-  // rather than a list, and falls through to clip identity below.
-  const slot = line.slotFilledBy != null ? line.slotFilledBy : (line.kind === 'seed' ? line.seedFilledBy : null)
-  if (slot) {
-    return slot.length > 0 && slot.every((v) => v && spellings.includes(v))
-  }
-  if (audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))) return true
-  // ANY copy of a collapsed line being filled by this voice is enough: the
-  // collapse promise is that one recording fills every course's copy, so a
-  // single filled slot is that one recording.
-  return (line.filledBy || []).some((v) => v && spellings.includes(v))
+  const mine = (v) => !!v && spellings.includes(v)
+  // BY SLOT, on ANY copy this line stands for. A SEED line carries every copy's
+  // FK in seedFilledBy; a POD line carries its own FK and every collapsed
+  // copy's in filledBy.
+  // A MINIMAL-SET LEGO is a GAPPED read of its own row, and that row's slot is
+  // what the splicer will cut from: a natural-pace take of the same words on a
+  // pod line is a different line, not this one. So a LEGO piece is scored by
+  // its slot alone (null on a fallback WORD, which owns no row).
+  if (Array.isArray(line.slotFilledBy)) return line.slotFilledBy.some(mine)
+  const slots = [
+    ...(Array.isArray(line.seedFilledBy) ? line.seedFilledBy : []),
+    ...(Array.isArray(line.filledBy) ? line.filledBy : []),
+  ]
+  if (slots.some(mine)) return true
+  // BY TEXT: a stored take of these words by this voice, in this language. Not
+  // for a fixture's KNOWN-side line — that is filed under the course's known
+  // language and the target-language key set cannot vouch for it.
+  if (line.role === 'known') return false
+  if (recordedKeys && audioKeyCandidates(line.text).some((k) => recordedKeys.has(k))) return true
+  return false
 }
 
 /**
- * Does an existing take COUNT as a recording — i.e. is this line done?
- *
- * A wanted line is outstanding even though a take exists. The take is not
- * touched: it stays linked, it stays what the learner hears, and it stays
- * retrievable by us — it simply stops counting as done.
- *
- * UNCHANGED BY THE 2026-09-02 RULING, and that is the point of it: a rejected
- * take was ALREADY not a recording by this predicate, so hiding it from the
- * artist moved no line in or out of the outstanding set. See the header.
+ * The same answer under the name the older call sites use. There is no longer
+ * a difference between "a take exists" and "the line is recorded" — that gap
+ * was the third state, and it is gone.
  */
-function countsAsRecorded(line, hasTake) {
-  return !!hasTake && !line.rerecordWanted
+function lineHasTake(line, ctx) {
+  return isLineRecorded(line, ctx)
 }
 
 /**
@@ -175,4 +186,4 @@ function pickCurrentTake(rows) {
   }, null)
 }
 
-module.exports = { lineHasTake, countsAsRecorded, pickCurrentTake, resolveCurrentClip }
+module.exports = { isLineRecorded, lineHasTake, pickCurrentTake, resolveCurrentClip }

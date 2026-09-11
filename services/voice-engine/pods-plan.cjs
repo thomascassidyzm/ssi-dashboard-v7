@@ -308,13 +308,16 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
     const row = rowById.get(it.sentenceId) || {}
     const audioId = row[AUDIO_COL[it.kind]] || null
     const a = audioId ? audioById.get(audioId) : null
-    // A WANTED track is outstanding whatever its audio says — that is the whole
-    // point of rerecord_wanted: the old take stays linked and playable while the
-    // line waits for its fresh one.
+    // A WANT IS A MARK, NOT A STATE (Tom, 2026-09-11): a track whose slot holds
+    // a confirmed human take by one of these voices is RECORDED, whatever any
+    // flag says. The want rides along as `rerecordWanted` so the studio can show
+    // it; it moves nothing in or out of the outstanding set. This is the same
+    // rule the booth queue applies through take-selection.cjs — the studio and
+    // the booth cannot disagree about what is still to read.
     const isWanted = isRerecordWanted(
       (it.sentenceIds || [it.sentenceId]).map(id => rowById.get(id)).filter(Boolean),
       it.kind, accept)
-    const isRecorded = !isWanted && !!(a && a.origin === 'human' && accept.has(a.voice_id) && !isEmptyTake(a))
+    const isRecorded = !!(a && a.origin === 'human' && accept.has(a.voice_id) && !isEmptyTake(a))
     if (isRecorded) recorded++
     const isTarget = it.kind === 'target'
     const out = {
@@ -342,6 +345,7 @@ async function finalizeRecordingPlan({ plan, sentences, voiceId, acceptVoiceIds 
       draft: isTarget && it.draft === true,
       estimatedSeconds: it.estimatedSeconds,
       recorded: isRecorded,
+      rerecordWanted: isRecorded && isWanted,
       audioId,
     }
     if (it.sentenceIds && it.sentenceIds.length > 1) out.glueSentenceIds = it.sentenceIds

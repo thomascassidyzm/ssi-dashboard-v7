@@ -203,13 +203,13 @@ test('a re-record sharing a pod line’s text is ONE recording, not two', async 
 
 // ── rule 6: a want makes a recorded line outstanding again ───────────────────
 //
-// Until 2026-08-16 this queue knew only "a clip exists", so the 90 re-record
-// wants written for T-20 were invisible on the surface the recordists actually
-// use: Aran's link showed 71 lines done when every one of them was queued for a
-// re-record. These pin both carriers of a want and the make-before-break
-// property that the old take stays playable while the line is outstanding.
+// A WANT IS A MARK (Tom, 2026-09-11). From 2026-08-16 a want made a recorded
+// line outstanding; on 2026-09-11 that third state — together with the artist's
+// wire masking WHY — served Aran ~150 Senedd lines he had already read. These
+// pin the rule: a confirmed take is a recording under every flag, the mark is
+// still carried for Tom's page, and the artist's wire still shows no verdict.
 
-test('a pod line flagged rerecord_wanted is outstanding even though a take exists', async () => {
+test('a pod line flagged rerecord_wanted is RECORDED: the want is a mark, never a queue entry', async () => {
   const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
   const clean = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
   assert.equal(clean.lines.find((l) => l.text === 'Bore da.').recorded, true, 'baseline: a take alone is done')
@@ -218,38 +218,73 @@ test('a pod line flagged rerecord_wanted is outstanding even though a take exist
   wanted.listening_pod_sentences[0].rerecord_wanted = { target: 'human_aran_cym_n' }
   const q = await buildQueue(stubDb(wanted), await resolveRecordist(stubDb(wanted), 'human_aran_cym_n'), { includeRecorded: true })
   const line = q.lines.find((l) => l.text === 'Bore da.')
-  assert.equal(line.recorded, false, 'the want outranks the take')
-  // TOM, 2026-09-02: "they must NOT see any clips that have already been ruled
-  // unusable - they must just see those as lines that still need recording."
-  // The artist's wire used to carry rerecordWanted:true and a clipUrl to the
-  // rejected take. It now carries neither, and the line is indistinguishable
-  // from one nobody has ever read. MAKE BEFORE BREAK is untouched by this: the
-  // clip is still in course_audio, still linked, still what the learner hears —
-  // it is the ARTIST who is not shown it.
+  assert.equal(line.recorded, true, 'the take outranks the want')
+  assert.equal(q.recorded, clean.recorded, 'the want moved nothing out of the done set')
+  assert.equal(q.remaining, clean.remaining, 'nor into the outstanding set')
+  // The artist's wire still carries no verdict (Tom, 2026-09-02) — but the
+  // line now reads as what it is: recorded.
   assert.equal(line.rerecordWanted, false, 'no verdict on the artist wire')
   assert.equal(line.rerecordReason, null, 'and no reason')
   assert.equal(line.clipUrl, null, 'and no way to play the take we rejected')
-  assert.equal(q.remaining, q.total, 'nothing on this voice counts as done')
 
-  // ...and Tom's own page still sees every bit of it.
+  // THE QUEUE ITSELF: the default (outstanding-only) wire must not carry it.
+  const booth = await buildQueue(stubDb(wanted), await resolveRecordist(stubDb(wanted), 'human_aran_cym_n'), {})
+  assert.equal(booth.lines.some((l) => l.text === 'Bore da.'), false, 'a recorded line is never served again')
+  assert.deepEqual(booth.lines.map((l) => l.text), ['Nos da.'])
+
+  // ...and Tom's own page still sees every bit of the mark.
   const admin = await buildQueue(stubDb(wanted), await resolveRecordist(stubDb(wanted), 'human_aran_cym_n'),
     { includeRecorded: true, maskRejectedHistory: false })
   const adminLine = admin.lines.find((l) => l.text === 'Bore da.')
+  assert.equal(adminLine.recorded, true)
   assert.equal(adminLine.rerecordWanted, true, 'the record is not destroyed, only hidden from the reader')
-  assert.ok(adminLine.clipUrl, 'and the rejected take is still retrievable by us')
-  assert.equal(adminLine.recorded, admin.lines.find((l) => l.text === 'Bore da.').recorded,
-    'masking moves no line in or out of the outstanding set')
-  assert.equal(admin.total, q.total, 'so the two pages cannot disagree about the work')
-  assert.equal(admin.recorded, q.recorded, 'nor about how much of it is done')
+  assert.ok(adminLine.clipUrl, 'and the take is still retrievable by us')
+  assert.equal(admin.recorded, q.recorded, 'masking moves no line in or out of the done set')
 })
 
-test('a want on ANY course’s copy of a collapsed line wants the one recording', async () => {
-  // The collapse is by clip identity, so a want written against cym_s must not
-  // be dropped when cym_n's copy is the representative the recordist sees.
+test('a want on ANY course’s copy of a collapsed line is still only a mark', async () => {
   const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
   f.listening_pod_sentences.find((s) => s.id === 's4').rerecord_wanted = { target: 'human_aran_cym_n' }
   const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
-  assert.equal(q.lines.find((l) => l.text === 'Bore da.').recorded, false)
+  assert.equal(q.lines.find((l) => l.text === 'Bore da.').recorded, true)
+  const admin = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true, maskRejectedHistory: false })
+  assert.equal(admin.lines.find((l) => l.text === 'Bore da.').rerecordWanted, true, 'the mark collapses with the line')
+})
+
+test('a line he read and somebody else now owns is neither served to him nor counted against him', async () => {
+  // Re-cast: the speaker of s1 is now Catrin, but the slot holds Aran's clip.
+  const f = fixture({ audio: [{ id: 'clip-aran', language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  f.listening_pod_sentences[0].speaker = 'Catrin'
+  f.listening_pod_sentences[0].target_audio_id = 'clip-aran'
+  const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), {})
+  assert.equal(aran.lines.some((l) => l.id === 's1'), false, 'not in his queue')
+  assert.equal(aran.handedOn.length, 1, 'reported to him as handed on')
+  // s4 (cym_s copy of the same words, still Aran's) is recorded by his take.
+  assert.equal(aran.lines.some((l) => l.text === 'Bore da!'), false, 'the collapsed copy is recorded by the same take')
+  // For Catrin it is a line SHE has not read: still to read, correctly.
+  const catrin = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_catrinlliar_cym_n'), {})
+  assert.equal(catrin.lines.some((l) => l.id === 's1'), true)
+})
+
+test('a line whose pod moved is still recorded: the slot travels with the row', async () => {
+  const f = fixture({ audio: [{ id: 'clip-aran', language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'nos da' }] })
+  const s5 = f.listening_pod_sentences.find((s) => s.id === 's5')
+  s5.target_audio_id = 'clip-aran'
+  s5.pod_id = 'p_n'   // moved from the cym_s pod to the cym_n pod
+  const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
+  assert.equal(q.lines.find((l) => l.id === 's5').recorded, true)
+  const booth = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), {})
+  assert.equal(booth.lines.some((l) => l.id === 's5'), false)
+})
+
+test('no line is counted twice: recorded + remaining = total, on every wire', async () => {
+  const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
+  f.listening_pod_sentences[0].rerecord_wanted = { target: 'human_aran_cym_n' }
+  for (const opts of [{}, { includeRecorded: true }, { includeRecorded: true, maskRejectedHistory: false }]) {
+    const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), opts)
+    assert.equal(q.recorded + q.remaining, q.total)
+    assert.equal(new Set(q.lines.map((l) => l.id)).size, q.lines.length, 'no id twice')
+  }
 })
 
 test('a want on the KNOWN track never reaches the target queue', async () => {
@@ -261,25 +296,28 @@ test('a want on the KNOWN track never reaches the target queue', async () => {
   assert.equal(q.lines.find((l) => l.text === 'Bore da.').recorded, true)
 })
 
-test('a CLIP flagged rerecord_wanted re-opens the pod line of the same identity', async () => {
-  // This is the path that carries "re-record everything you already recorded":
-  // the flag goes on the clip, and the live pod line of that text re-opens.
+test('a CLIP flagged rerecord_wanted is a MARK on the recorded pod line of the same identity', async () => {
+  // This path used to carry "re-record everything you already recorded": the
+  // flag went on the clip and the live pod line of that text re-opened. Under
+  // Tom's 2026-09-11 ruling the line stays recorded; the mark and its reason
+  // still reach Tom's page, and never the reader's.
   const f = fixture({ audio: [{ language: 'cym', voice_id: 'human_aran_cym_n', text_normalized: 'bore da' }] })
   f.course_audio.push({ id: 'ca9', course_code: 'cym_n_for_eng', role: 'target1', language: 'cym',
     voice_id: 'human_aran_cym_n', text: 'Bore da.', rerecord_wanted: { reason: 'trim-chain damage', voice_gender: 'm' } })
   const q = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
   const line = q.lines.find((l) => l.text === 'Bore da.')
-  assert.equal(line.recorded, false)
-  // The reason used to ride along to the recordist. Tom ruled it off their
-  // screen on 2026-09-02 — "trim-chain damage" is our note to ourselves about
-  // our own pipeline, and it reached the person who read the line.
+  assert.equal(line.recorded, true, 'the take outranks the clip flag')
   assert.equal(line.rerecordReason, null, 'the reason never reaches the reader')
   assert.equal(q.lines.filter((l) => l.kind === 'rerecord').length, 0, 'still ONE line, not two')
+  const booth = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), {})
+  assert.equal(booth.lines.some((l) => l.text === 'Bore da.'), false, 'and it is not served again')
 
   const admin = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'),
     { includeRecorded: true, maskRejectedHistory: false })
-  assert.equal(admin.lines.find((l) => l.text === 'Bore da.').rerecordReason, 'trim-chain damage',
-    'it is still on the wire for us')
+  const adminLine = admin.lines.find((l) => l.text === 'Bore da.')
+  assert.equal(adminLine.recorded, true)
+  assert.equal(adminLine.rerecordWanted, true)
+  assert.equal(adminLine.rerecordReason, 'trim-chain damage', 'it is still on the wire for us')
 })
 
 // ── the queue is one LANGUAGE's work, and the clip flag never overrode that ──

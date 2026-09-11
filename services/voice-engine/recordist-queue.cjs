@@ -51,15 +51,14 @@
  *      across human_aran_cym_n and human_aran_cym_n_2; a lookup that asks for
  *      one spelling would ask him to record 42 clips he has already given us.
  *      Reads widen, writes narrow (services/shared/clip-identity-lookup.cjs).
- *   6. UNLESS THE TAKE IS WANTED AGAIN. "A clip exists" and "the clip is good"
- *      are different facts, and until 2026-08-16 this queue only knew the first
- *      one — so the 90 re-record wants written for T-20 were invisible here and
- *      Aran's link showed 71 of his lines as done when every one of them was
- *      queued for a re-record. A want makes a line outstanding WITHOUT
- *      unlinking anything: the old take stays linked and playable until the new
- *      one lands, which is make-before-break by construction
- *      (docs/architecture/AUDIO_PIPELINE_ARCHITECTURE.md §6b).
- *      Two places carry a want, and both are honoured:
+ *   6. A WANT IS A MARK, NEVER A REASON TO SERVE A RECORDED LINE AGAIN (Tom,
+ *      2026-09-11, after Aran was served ~150 lines he had already read). From
+ *      2026-08-16 to 2026-09-11 a want made a recorded line outstanding; that
+ *      was the third state, and it is gone: `recorded` is decided by
+ *      take-selection.cjs from the slots and the stored takes alone. A want is
+ *      still carried on the wire (unmasked for Tom's coverage page, masked on
+ *      the artist's) so nothing about it is destroyed — it just moves no line.
+ *      Two places carry a want, and both are still read:
  *        - listening_pod_sentences.rerecord_wanted — {kind: voiceId}, the pod
  *          line's own flag, shared with the per-course studio (pods-plan.cjs)
  *          so the two surfaces cannot disagree about what is outstanding;
@@ -108,7 +107,7 @@ const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
 const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
-const { lineHasTake, countsAsRecorded } = require('./take-selection.cjs')
+const { isLineRecorded } = require('./take-selection.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -1247,37 +1246,22 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
   let recorded = 0
   const lines = []
   for (const line of mine) {
-    // A SEED line is scored by its own SLOT, not by "a clip of this text exists".
-    // Two reasons, both load-bearing. The known-side line is filed under the
-    // course's KNOWN language ('eng'), so it can never appear in a zzz or cym
-    // recordist's own recorded-text set and would read as outstanding forever.
-    // And a seed's target1 and target2 are two different slots holding the same
-    // words: a text-keyed check cannot tell the filled one from the empty one.
-    // `seedFilledBy` carries the voice on every copy's FK, so the line is done
-    // only when EVERY copy this take would fill is filled, by THIS voice.
-    // BOTH questions live in take-selection.cjs, and only there: "is there a
-    // take of this line by this voice" and "does that take count as done".
-    // Tom's pending ruling on unaccepted takes is a change to the second one.
-    const hasTake = lineHasTake(line, { recordedKeys, spellings: recordist.spellings })
-    const isRecorded = countsAsRecorded(line, hasTake)
-    // A REJECTED TAKE IS AN UNRECORDED LINE. Tom, 2026-09-02: "they must NOT see
-    // any clips that have already been ruled unusable - they must just see those
-    // as lines that still need recording."
-    //
-    // A `rerecordWanted` line is one our own quality machinery has already ruled
-    // against — clipped at the boundary, no speech in the take, trim-chain
-    // damage. Every want in the estate on the night this landed was one of
-    // those. Masking hides the JUDGEMENT, never the line and never the take: the
-    // clip stays in course_audio with its provenance, the learner's serving path
-    // is untouched, and the line still sits in the outstanding set exactly where
-    // it did. What goes is the badge, the reason, and the button that plays the
-    // artist their own rejected read back at them.
-    //
-    // This is a property of WHO IS LOOKING, so it is a parameter and not a rule:
-    // Tom's own coverage page passes `maskRejectedHistory: false` and still sees
-    // all of it. The two pages cannot disagree about how much work is
-    // outstanding, because masking does not move a single line in or out of that
-    // set — `isRecorded` above is computed before it and is untouched by it.
+    // ONE QUESTION, ONE PLACE. "Is this line recorded for this recordist" is
+    // answered by take-selection.cjs and by nothing else on the estate: the slot
+    // on any copy, or a stored take of the words, by this voice. Tom's ruling of
+    // 2026-09-11 — a confirmed upload IS a recording, regardless of any want,
+    // verdict, re-cast or in-flight state — is enforced there, so nothing in
+    // this loop may re-open a recorded line.
+    const isRecorded = isLineRecorded(line, { recordedKeys, spellings: recordist.spellings })
+    const hasTake = isRecorded
+    // A WANT IS A MARK, NOT A STATE. `rerecordWanted` on a line that has a take
+    // says our quality machinery would like a better read; it moves the line
+    // neither in nor out of the outstanding set. The ARTIST's wire masks the
+    // mark (Tom, 2026-09-02: they must not be shown a take we have ruled
+    // against) and so sees a plain recorded line; Tom's coverage page passes
+    // `maskRejectedHistory: false` and sees the mark, the reason and the clip.
+    // The deliberate second pass is the booth's own re-read switch, never a
+    // queue entry.
     const masked = maskRejectedHistory && !!line.rerecordWanted
     if (isRecorded) recorded += 1
     if (!isRecorded || includeRecorded) {
@@ -1468,20 +1452,18 @@ async function recordedTextKeys(db, recordist) {
  * the numbers in a recordist's page can never disagree.
  */
 /**
- * A line HAS A TAKE when a recording of it exists — whether or not we are asking
- * for it to be read again. `recorded` on the wire means the narrower "not asked
- * for again", and a wire line carrying `rerecordWanted` is by construction one
- * that already has a take (finishQueue sets it as `hasTake && line.rerecordWanted`).
- * So the two are recoverable from the rows without changing finishQueue itself,
- * which the booth shares and which is correct as it stands.
+ * A line HAS A TAKE exactly when it is `recorded` — since 2026-09-11 there is no
+ * narrower sense. `again` counts the recorded lines that also carry a want
+ * MARK on Tom's (unmasked) wire: takes our own machinery would like improved,
+ * still recorded, still served, never re-queued. `fresh` is what is actually
+ * still to read.
  */
 function takeTally(lines) {
   let withTake = 0
   let again = 0
   for (const l of lines) {
-    const hasTake = !!l.recorded || !!l.rerecordWanted
-    if (hasTake) withTake += 1
-    if (hasTake && !l.recorded) again += 1
+    if (l.recorded) withTake += 1
+    if (l.recorded && l.rerecordWanted) again += 1
   }
   return { withTake, again, fresh: lines.length - withTake }
 }

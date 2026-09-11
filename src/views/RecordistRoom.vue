@@ -684,7 +684,17 @@ const lastLine = ref(null)
 
 // ── Progress, in plain words ────────────────────────────────────────────────
 const doneIds = ref(new Set())
-function isRecorded(l) { return l.recorded || doneIds.value.has(l.id) }
+// RECORDED = the server holds a confirmed take of this line by this artist.
+// Three ways of knowing it, all of them the server's word: `recorded` on the
+// wire when the queue was loaded; `doneIds` for a line read in THIS session
+// (queued at capture, so it never re-serves mid-session); and `queue.saved` for
+// a take the device carried over from an EARLIER session and has since got
+// through. That third one is the case that re-served Aran on 2026-09-11: a
+// carried-over take went up after the queue had loaded with recorded:false, so
+// the moment it stopped being pending it was neither pending nor recorded — and
+// the run offered him the line again. A confirmed upload is a recording
+// (Tom, 2026-09-11), whichever session made it.
+function isRecorded(l) { return !!l.recorded || doneIds.value.has(l.id) || queue.saved.has(l.id) }
 const recordedCount = computed(() => lines.value.reduce((n, l) => n + (isRecorded(l) ? 1 : 0), 0))
 const progressWords = computed(() => `${recordedCount.value} of ${lines.value.length} recorded`)
 // THE TOP LINE, AND IT HAD TO STOP LYING. `progressWords` above counts what we
