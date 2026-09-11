@@ -139,6 +139,10 @@ test('an uncast slot reaches nobody, and is counted ONCE — not once per senten
   assert.equal(q.uncast, 3)
 })
 
+// This is the case Aran reported from the booth on 2026-09-11: Catrin's queue
+// showed "dw i'n mynd i ddysgu Cymraeg" under NEW SEEDS although he had already
+// recorded it. He had — into target2. Her target1 slot on the same row was
+// empty, so the line was correctly still hers to read. Not a leak, not a dup.
 test('a filled slot is done; the SAME words in the other slot are still owed', async () => {
   const db = stubDb(fixture({
     courses: [FIXTURE_COURSE],

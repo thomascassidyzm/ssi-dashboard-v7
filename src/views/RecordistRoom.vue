@@ -332,6 +332,47 @@
         You've crossed from <strong>{{ crossingNote.from }}</strong> into <strong>{{ crossingNote.to }}</strong>.
       </p>
 
+      <!-- THE TRANSPORT SITS ABOVE THE LINE, NOT BELOW IT. Aran, 2026-09-11,
+           from the booth with Catrin recording: move the navigation controls
+           so they sit on top of the text box. Same buttons, same bindings, same
+           advance-lock — only their place on the page changed. On a phone the
+           line well is 44vh tall, so a transport below it lived under the fold
+           and a thumb had to scroll away from the words to reach Next. -->
+      <!-- PAUSE THROWS THE ATTEMPT AWAY. Aran, 2026-09-03: "a pause button which
+           automatically discards that attempt and starts from fresh when they
+           hit play would be brilliant" — he needs a word, or the dog barks, and
+           background noise KEEPS THE RECORDING GOING. So this discards the open
+           capture and stops the microphone being a witness to whatever happens
+           next; Play re-opens the SAME line clean. Nothing reaches the server
+           either way.
+
+           It is the booth's existing hold, not a second one: `micHeld` is what
+           playback and editing already use, and `paused` only says WHICH of the
+           three holds it. Full width and above the transport so it is findable
+           mid-flow without looking down, and a tap — no long-press, no gesture. -->
+      <button
+        class="ctl-pause"
+        :class="{ paused }"
+        :disabled="arming || !!editingId || (busy && !paused)"
+        type="button"
+        @click="togglePause"
+      >{{ paused ? 'Play' : 'Pause' }}</button>
+      <!-- The transport is dead while the editor is open, and it has to be: the
+           microphone is held, so Next would close a take of nothing and file it
+           under the line being rewritten, and Back would walk away from an
+           unsaved edit with the mic still held. The editor has its own two
+           buttons and they are the only way out of it. -->
+      <!-- Dead while paused as well as while editing, and for the same reason:
+           the mic is held, so Next would close a take of nothing and file it
+           under the line on screen. Play is the only way back. -->
+      <div class="controls">
+        <!-- BACK IS LIVE WHILE PAUSED (Aran, 2026-09-10: he pressed Pause
+             because he wanted to go back). Again and Next below it are not:
+             those two need the microphone open and file a take. -->
+        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || !!editingId" @click="onBack">Back</button>
+        <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
+        <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
+      </div>
       <!-- THE LINE IS HELD BACK WHILE THE RECORDER FILLS.
            The first take of a session is the one clip with no standby to
            promote (see COLD_START_SETTLE_MS in useTapRecorder). If the line
@@ -450,42 +491,8 @@
       <p v-if="failedNote" class="note error">{{ failedNote }}</p>
       <p v-if="playbackError" class="note error">{{ playbackError }}</p>
 
-      <!-- The transport is dead while the editor is open, and it has to be: the
-           microphone is held, so Next would close a take of nothing and file it
-           under the line being rewritten, and Back would walk away from an
-           unsaved edit with the mic still held. The editor has its own two
-           buttons and they are the only way out of it. -->
-      <!-- PAUSE THROWS THE ATTEMPT AWAY. Aran, 2026-09-03: "a pause button which
-           automatically discards that attempt and starts from fresh when they
-           hit play would be brilliant" — he needs a word, or the dog barks, and
-           background noise KEEPS THE RECORDING GOING. So this discards the open
-           capture and stops the microphone being a witness to whatever happens
-           next; Play re-opens the SAME line clean. Nothing reaches the server
-           either way.
-
-           It is the booth's existing hold, not a second one: `micHeld` is what
-           playback and editing already use, and `paused` only says WHICH of the
-           three holds it. Full width and above the transport so it is findable
-           mid-flow without looking down, and a tap — no long-press, no gesture. -->
-      <button
-        class="ctl-pause"
-        :class="{ paused }"
-        :disabled="arming || !!editingId || (busy && !paused)"
-        type="button"
-        @click="togglePause"
-      >{{ paused ? 'Play' : 'Pause' }}</button>
-      <!-- Dead while paused as well as while editing, and for the same reason:
-           the mic is held, so Next would close a take of nothing and file it
-           under the line on screen. Play is the only way back. -->
-      <div class="controls">
-        <!-- BACK IS LIVE WHILE PAUSED (Aran, 2026-09-10: he pressed Pause
-             because he wanted to go back). Again and Next below it are not:
-             those two need the microphone open and file a take. -->
-        <button v-if="canGoBack" class="ctl-back" :disabled="busy || arming || !!editingId" @click="onBack">Back</button>
-        <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
-        <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
-      </div>
-      <!-- And so is Stop here: it files nothing on the line he is standing on,
+      <!-- Stop here is dead while the editor is open too, like the transport
+           above the line: it files nothing on the line he is standing on,
            so there was never anything for the pause guard to protect. -->
       <button class="btn-finish" :disabled="busy || arming || !!editingId" @click="onFinish">Stop here</button>
       <p class="kbd-hint">
@@ -776,7 +783,13 @@ const SECTION_ORDER = [
   // overruling an earlier taste call that "seed" was internal vocabulary. His
   // longer phrasing was "SEEDS should be 'NEW SEEDS'". The blurb below stays as
   // it is and carries the explanation; the heading carries the name.
-  { key: 'seed', heading: 'NEW SEEDS', blurb: 'Course sentences nobody has recorded yet. Each one will also bring more phrases to record later on.' },
+    //
+  // "nobody has recorded yet" was a lie for half of them. A seed sentence is
+  // read by BOTH voices (target1 and target2 are two slots on one row), so a
+  // line Aran has already given us still sits here for Catrin -- correctly --
+  // and it read to him as a sentence being asked for twice (Aran, 2026-09-11,
+  // "dw i'n mynd i ddysgu Cymraeg"). The blurb now says whose take is missing.
+  { key: 'seed', heading: 'NEW SEEDS', blurb: 'Course sentences that still need your voice. Every one of these is read by both voices, so some already have the other voice’s take. Each one will also bring more phrases to record later on.' },
   // TOM'S OWN SET, 2026-09-02: "ideally I just want the minimal phrase set,
   // that I can record so we can test the dice and splice approach." The
   // smallest set of chunks that recombine into every phrase in the course. Its
