@@ -246,8 +246,8 @@ async function readLoudAndStop(page, what) {
   throw new Error(`${what}: never found the loud segment`)
 }
 /** Every take the shelf held has been answered by the server. */
-async function serverSettled(page, what) {
-  await expect.poll(() => inFlight(page), { message: `${what}: nothing still going up`, timeout: 60_000 }).toBe(false)
+async function serverSettled(page, what, timeout = 60_000) {
+  await expect.poll(() => inFlight(page), { message: `${what}: nothing still going up`, timeout }).toBe(false)
 }
 /** The shelf, straight out of IndexedDB. */
 async function shelf(page) {
@@ -277,6 +277,8 @@ test.afterAll(() => {
 })
 
 test("the artist's day: read, refused, re-read, reload, reopen — in a real browser against staging", async () => {
+  // The whole queue is read now, and every take waits on staging's verifier.
+  test.setTimeout(900_000)
   let ctx = await openBrowser()
   let page = ctx.pages()[0] || await ctx.newPage()
 
@@ -366,7 +368,10 @@ test("the artist's day: read, refused, re-read, reload, reopen — in a real bro
   }
   await readLoudAndNext(page, `line ${N}`)
   await expect(page.locator('.ctl-next'), 'the run ends when nothing is left').toHaveCount(0)
-  await serverSettled(page, 'after the rest of the day')
+  // Five takes go up one after another and staging verifies each against its
+  // script (whisper) before answering — the first run of this step saw line 7
+  // answered after the 60s window with line 8 still queued behind it.
+  await serverSettled(page, 'after the rest of the day', 300_000)
   await expect.poll(() => counts(page), { message: 'everything recorded', timeout: 30_000 }).toEqual({ recorded: N, stillToRead: 0 })
   await assertInvariant(page, { pendingOrRefused: false }, 'step 5a · the whole queue read')
   await shot(page, 'everything-recorded')
