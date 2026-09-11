@@ -71,8 +71,8 @@ const REFUSAL = 'silent/empty take (1ms after trim)'
 // THE SERVER, as the booth sees it: a set of lines it holds a take for, and a
 // set of lines it will refuse the next take of. Every accepted take is a
 // recording from then on, whichever session posted it.
-function fakeServer() {
-  const server = { recorded: new Set(), refuse: new Set(), uploads: [] }
+function fakeServer(queue = LINES) {
+  const server = { recorded: new Set(), refuse: new Set(), uploads: [], queue }
   global.fetch = vi.fn(async (url, init = {}) => {
     const u = String(url)
     if ((init.method || 'GET') === 'POST' && u.endsWith(`/api/recording/voice/${VOICE}/take`)) {
@@ -85,7 +85,7 @@ function fakeServer() {
       return { ok: true, status: 200, json: async () => ({ audioId: `aud-${lineId}-${server.uploads.length}`, clipUrl: `/clip/${lineId}.mp3` }) }
     }
     if (u.includes(`/api/recording/voice/${VOICE}?`)) {
-      const lines = LINES.map((l, i) => ({
+      const lines = queue.map((l, i) => ({
         ...l, order: i + 1, speaker: 'Aran', courseCode: 'cym_n_for_eng', kind: 'pod', podSlug: 'senedd',
         recorded: server.recorded.has(l.id),
         clipUrl: server.recorded.has(l.id) ? `/clip/${l.id}.mp3` : null,
@@ -94,7 +94,7 @@ function fakeServer() {
         ok: true, status: 200,
         json: async () => ({
           displayName: 'Aran', languageName: 'Welsh',
-          total: N, recorded: lines.filter(l => l.recorded).length, remaining: lines.filter(l => !l.recorded).length,
+          total: queue.length, recorded: lines.filter(l => l.recorded).length, remaining: lines.filter(l => !l.recorded).length,
           lines,
         }),
       }
@@ -136,6 +136,23 @@ function refusedListed(w) {
   return w.findAll('.redo-list li').map(li => ({ text: li.find('.redo-text').text(), why: li.find('.redo-why').text() }))
 }
 function currentLine(w) { const el = w.find('.line-target'); return el.exists() ? el.text() : null }
+// The big green button on the ready card: its words, and whether it can be tapped.
+function startButton(w) {
+  const b = w.find('.btn-begin')
+  return b.exists() ? { text: b.text(), disabled: b.attributes('disabled') !== undefined } : null
+}
+// THE SWITCH TOM'S BOOTH HAD ON. Until 2026-09-12 the ready card offered
+// "Re-read lines I've already recorded", remembered per artist, and with it on
+// the run started at the top of the queue whether or not that line was
+// recorded. If the booth under test still offers it, tick it — the scenario
+// below must hold with it ticked, because that is the state his booth was in.
+async function tickRereadIfOffered(w) {
+  const row = w.findAll('.toggle-row').find(r => /Re-read lines/.test(r.text()))
+  if (!row) return false
+  await row.find('input[type=checkbox]').setValue(true)
+  await flushPromises()
+  return true
+}
 function tickShown(w) { return /✓ all \d+ recorded/.test(w.text()) }
 
 // THE INVARIANT, checked at every settled point of the day: the two numbers on
@@ -276,6 +293,98 @@ describe("the artist's day at the booth", () => {
 
     // 7. And the shelf is empty: every take reached the server and nothing was
     //    left behind to be counted tomorrow.
+    expect(await shelf.backend.getAll()).toEqual([])
+    w.unmount()
+  })
+
+  // TOM'S BOOTH, 2026-09-12 00:41 BST. popty.app/r/human_tom_zzz: "1526 lines —
+  // 70 recorded", the POD-1 block "all 24 recorded — nothing left to read", and
+  // the Start button reading "START RECORDING — A BLACK COFFEE, PLEASE." — the
+  // first pod line, recorded weeks earlier. His words: "it doesn't start
+  // recording the lines I'm missing. It starts recording back at the beginning
+  // of my POD lines, which have all been recorded." Ruling (2026-09-11): a line
+  // with a confirmed take is never served to the recordist again as a thing to
+  // read — not on first load, not after a reload, not after a section
+  // completes. Re-reading is an explicit tap on the map, never the default.
+  it('opens on the first line still to read — never a recorded one — on every load, and says so when nothing is left', async () => {
+    const QUEUE = [
+      { id: 'P1', text: 'A black coffee, please.', knownText: 'Coffi du, os gwelwch yn dda.' },
+      { id: 'P2', text: 'Anything else?', knownText: 'Rhywbeth arall?' },
+      { id: 'P3', text: 'No, thank you.', knownText: 'Na, diolch.' },
+      { id: 'S1', text: 'I want to learn.', knownText: 'Dw i eisiau dysgu.' },
+      { id: 'S2', text: 'I want to speak.', knownText: 'Dw i eisiau siarad.' },
+      { id: 'S3', text: 'I want to go.', knownText: 'Dw i eisiau mynd.' },
+    ]
+    const M = QUEUE.length
+    server = fakeServer(QUEUE)
+    const textOf = id => QUEUE.find(l => l.id === id).text
+    const firstThree = QUEUE.slice(0, 3).map(l => l.text)
+
+    // 1. Fresh: Start names line 1.
+    let w = openBooth()
+    await until(() => counts(w) !== null, 'the ready card')
+    expect(counts(w)).toEqual({ recorded: 0, stillToRead: M })
+    expect(startButton(w)).toEqual({ text: `Start recording — ${textOf('P1')}`, disabled: false })
+    // The old switch is ticked here, if the booth still offers it, exactly as
+    // Tom's booth had it: once, in some earlier session, and remembered since.
+    const offered = await tickRereadIfOffered(w)
+
+    // 2. Record lines 1-3 and stop.
+    await start(w)
+    expect(currentLine(w)).toBe(textOf('P1'))
+    await readAndNext(w)
+    expect(currentLine(w)).toBe(textOf('P2'))
+    await readAndNext(w)
+    expect(currentLine(w)).toBe(textOf('P3'))
+    await readAndNext(w)
+    expect(currentLine(w)).toBe(textOf('S1'))
+    await stopHere(w)
+    await serverSettled(w, server, 3)
+    expect([...server.recorded].sort()).toEqual(['P1', 'P2', 'P3'])
+    await until(() => counts(w) && counts(w).recorded === 3, 'three recorded')
+
+    // 3. RELOAD. The server says 1-3 are recorded; whatever the booth
+    //    remembered about that switch, Start and the stage name line 4.
+    w.unmount()
+    w = openBooth()
+    await until(() => counts(w) !== null, 'the ready card after reload')
+    await flushPromises()
+    await wait(50)
+    expect(counts(w)).toEqual({ recorded: 3, stillToRead: M - 3 })
+    const afterReload = startButton(w)
+    expect(afterReload.disabled, `Start is live with ${M - 3} lines still to read`).toBe(false)
+    for (const t of firstThree) expect(afterReload.text, `Start never names a recorded line${offered ? ' (re-read switch was ticked)' : ''}`).not.toContain(t)
+    expect(afterReload.text).toBe(`Start recording — ${textOf('S1')}`)
+    await start(w)
+    expect(currentLine(w), 'the stage opens on line 4').toBe(textOf('S1'))
+    expect(firstThree).not.toContain(currentLine(w))
+
+    // 4. Record the rest — every Next lands on a still-to-read line, never
+    //    back on 1-3 — and stop when the run says there is nothing left.
+    await readAndNext(w)
+    expect(currentLine(w)).toBe(textOf('S2'))
+    await readAndNext(w)
+    expect(currentLine(w)).toBe(textOf('S3'))
+    await readAndNext(w)
+    await until(() => !w.find('.ctl-next').exists(), 'the run ends by itself with nothing left')
+    await serverSettled(w, server, 6)
+    expect([...server.recorded].sort()).toEqual(['P1', 'P2', 'P3', 'S1', 'S2', 'S3'])
+    await until(() => counts(w) && counts(w).recorded === M, 'everything recorded')
+
+    // 5. RELOAD again. Nothing is owed: Start is disabled and says so; no line
+    //    is named on it.
+    w.unmount()
+    w = openBooth()
+    await until(() => counts(w) !== null, 'the ready card after the second reload')
+    await flushPromises()
+    await wait(50)
+    expect(counts(w)).toEqual({ recorded: M, stillToRead: 0 })
+    const done = startButton(w)
+    expect(done.disabled, 'Start is disabled when every line is recorded').toBe(true)
+    expect(done.text).toBe('Nothing left to read')
+    for (const l of QUEUE) expect(done.text).not.toContain(l.text)
+    expect(w.text()).toContain('Everything is recorded')
+    expect(tickShown(w)).toBe(true)
     expect(await shelf.backend.getAll()).toEqual([])
     w.unmount()
   })

@@ -120,7 +120,7 @@
       <button class="btn-begin" :disabled="startIndex === -1" @click="begin">
         {{ startIndex === -1 ? 'Nothing left to read' : `Start recording — ${firstLinePreview}` }}
       </button>
-      <p v-if="startIndex === -1" class="note done">Everything is recorded. Turn on "re-read" below to do another pass.</p>
+      <p v-if="startIndex === -1" class="note done">Everything is recorded. Tap any line on the map above to read it again.</p>
       <p v-if="micError" class="note error">{{ micError }}</p>
 
       <ol class="how-to">
@@ -171,22 +171,17 @@
         takes may record much quieter than normal — turn it off.
       </p>
 
-      <label class="toggle-row">
-        <input type="checkbox" v-model="includeRecorded" />
-        <span><strong>Re-read lines I've already recorded</strong>
-          <small>Off = only read the lines that still need a recording. New takes replace old ones; nothing is deleted.</small></span>
-      </label>
-
-      <!-- ITS OWN SWITCH, BECAUSE IT IS ITS OWN THING. Hearing back what you have
-           already recorded and being served those lines again to READ are two
-           unrelated wants, and until now one checkbox did both: the only way to
-           reach the list below was to tick "Re-read lines I've already recorded",
-           which also re-serves the whole queue from the top. Nobody looking for
-           "let me hear what I've done" would go looking for it behind a label
-           about reading things again — and turning it on to find out changes how
-           the run is served, which is not what they asked for. So the run's
-           switch stays exactly as it is and this list gets a switch that says
-           what it does. -->
+      <!-- THERE IS NO "RE-READ LINES I'VE ALREADY RECORDED" SWITCH ANY MORE.
+           There was one here until 2026-09-12, remembered per artist across
+           sessions, and with it on the run was served from the top of the queue
+           — Tom opened his booth to "70 recorded" and a Start button reading
+           "Start recording — A black coffee, please.", the first pod line, which
+           he had recorded weeks before. His ruling (2026-09-11): a line with a
+           confirmed take is never served to the recordist again as a thing to
+           read. Re-reading a line is an explicit act — tap its square on the
+           map, "Read it again" — never the default the run opens on.
+           Hearing back what you have already recorded is its own switch below,
+           and it does not change which lines are served. -->
       <label class="toggle-row">
         <input type="checkbox" v-model="showRecorded" />
         <span><strong>Show everything I've already recorded</strong>
@@ -620,10 +615,10 @@ const micError = ref(null)
 const voice = ref({ displayName: '', languageName: '', total: 0, recorded: 0, remaining: 0 })
 const lines = ref([])
 
-const includeRecorded = ref(false)
-// WHETHER THE ALREADY-RECORDED LIST IS OPEN. Separate from `includeRecorded` on
-// purpose: that one decides which lines the RUN serves, this one decides whether
-// a panel is on the page, and a single flag doing both meant an artist who
+// WHETHER THE ALREADY-RECORDED LIST IS OPEN. This decides whether a panel is
+// on the page and nothing about which lines the RUN serves — the run serves
+// still-to-read lines only, always (`startIndex`, `nextIndexFrom`). A single
+// flag once did both, and that meant an artist who
 // wanted to hear a take back had to change how his session would be served to
 // get at it. Remembered with the rest of the booth's settings.
 const showRecorded = ref(false)
@@ -680,7 +675,7 @@ function micLabel() {
 }
 const index = ref(0)
 // THE PATH HE ACTUALLY WALKED, not index arithmetic. nextIndexFrom() skips
-// lines that are already recorded, and the re-read toggle can change which those
+// lines that are already recorded, and a take landing can change which those
 // are mid-session, so `index - 1` would hand him lines he has never seen. Back
 // pops this instead: whatever he was last looking at is what he goes back to.
 const visited = ref([])
@@ -1073,11 +1068,16 @@ function plainText(text) { return segmentsFor(text).map(s => s.text).join('') }
 // and it is the one case where offering it again is the whole point.
 function isSettled(l) { return isRecorded(l) || isPending(l.id) }
 
+// WHERE START LANDS: the first line in queue order that is still to read, and
+// never anything else. This used to return 0 — the top of the queue, recorded
+// or not — whenever the re-read switch was on, and that switch was remembered
+// per artist, so one tick of it put Start on an already-recorded line in every
+// session after (Tom's booth, 2026-09-12: "Start recording — A black coffee,
+// please." over a pod block reading "all 24 recorded"). -1 means nothing is
+// owed, and Start is disabled on it. Proved by RecordistRoom.artistsDay.test.js.
 const startIndex = computed(() => {
   if (!lines.value.length) return -1
-  if (includeRecorded.value) return 0
-  const i = lines.value.findIndex(l => !isSettled(l))
-  return i
+  return lines.value.findIndex(l => !isSettled(l))
 })
 
 // WHERE THE RUN GOES NEXT — and it may go BACKWARDS, which is the whole of
@@ -1094,20 +1094,21 @@ const startIndex = computed(() => {
 // on truthfully saying "1 still to read". Two counts, both computed from the
 // same lines, disagreeing on the screen. That is the out-of-whack.
 //
-// So when the run is reading OUTSTANDING lines only, it wraps: forward to the
+// So the run, which only ever reads OUTSTANDING lines, wraps: forward to the
 // end, then round from the top, and it stops only when there is genuinely
 // nothing left anywhere. The line we are standing on is excluded — we have just
 // read it, and a take that failed on it must not put the queue in a loop with
 // itself. Her failure note and the roster's one-tap re-record are the way back
 // to that one.
 //
-// With re-read turned ON the run is a single deliberate pass over everything,
-// so it does not wrap: there would be no end to it.
+// A RECORDED LINE IS NEVER A NEXT STEP. There is no mode in which it is: the
+// re-read switch that once made this scan return every line went with Tom's
+// 2026-09-11 ruling (see the ready card), and a recorded line is reached only by
+// the artist tapping it on the map.
 function nextIndexFrom(i) {
   for (let k = i + 1; k < lines.value.length; k++) {
-    if (includeRecorded.value || !isSettled(lines.value[k])) return k
+    if (!isSettled(lines.value[k])) return k
   }
-  if (includeRecorded.value) return -1
   for (let k = 0; k < i && k < lines.value.length; k++) {
     if (!isSettled(lines.value[k])) return k
   }
@@ -1137,10 +1138,7 @@ const upcoming = computed(() => {
 // both numbers are on the screen at once. Counting forward from the cursor made
 // them disagree the moment anything became outstanding behind it: the roster
 // said one line was owed and the stage said none were.
-const remainingToRead = computed(() => {
-  if (includeRecorded.value) return Math.max(0, lines.value.length - index.value)
-  return lines.value.reduce((n, l) => n + (isSettled(l) ? 0 : 1), 0)
-})
+const remainingToRead = computed(() => lines.value.reduce((n, l) => n + (isSettled(l) ? 0 : 1), 0))
 const firstLinePreview = computed(() => {
   const l = startIndex.value === -1 ? null : lines.value[startIndex.value]
   if (!l) return 'first line'
@@ -2058,9 +2056,9 @@ async function load() {
   loadError.value = null
   try {
     // Always ask for the WHOLE queue, recorded lines included, and filter
-    // locally. The re-read checkbox then toggles instantly instead of costing a
-    // round trip mid-session, and the progress line can say "8 of 87" — which
-    // it cannot do if the server has already dropped the 8.
+    // locally: the map draws every line, a tapped recorded line can be read
+    // again, and the progress line can say "8 of 87" — which it cannot do if
+    // the server has already dropped the 8.
     const seedParam = maxSeed.value ? `&maxSeed=${maxSeed.value}` : ''
     const res = await fetch(
       `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}`,
@@ -2129,7 +2127,9 @@ function applyBoothSettings(saved) {
   if (!saved) return
   if (saved.captureProfile === 'dry' || saved.captureProfile === 'voice') captureProfile.value = saved.captureProfile
   if (typeof saved.autoAdvance === 'boolean') autoAdvance.value = saved.autoAdvance
-  if (typeof saved.includeRecorded === 'boolean') includeRecorded.value = saved.includeRecorded
+  // The old re-read switch (`saved.includeRecorded`) is deliberately NOT read
+  // back: a remembered tick of it is exactly what put Tom's Start button on a
+  // recorded line, and there is no longer anything for it to mean.
   if (typeof saved.showRecorded === 'boolean') showRecorded.value = saved.showRecorded
   if (saved.maxSeed) maxSeed.value = saved.maxSeed
 }
@@ -2142,14 +2142,13 @@ function rememberBoothSettings() {
   saveBoothSettings(props.voiceId, settingsMicKey, {
     captureProfile: captureProfile.value,
     autoAdvance: autoAdvance.value,
-    includeRecorded: includeRecorded.value,
     showRecorded: showRecorded.value,
     maxSeed: maxSeed.value,
   })
 }
 // Saved on every change rather than on leave: the booth is closed by shutting a
 // laptop lid at least as often as by navigating away.
-watch([captureProfile, autoAdvance, includeRecorded, showRecorded, maxSeed], rememberBoothSettings)
+watch([captureProfile, autoAdvance, showRecorded, maxSeed], rememberBoothSettings)
 
 // WHICH MIC, once the browser will say. Labels only exist after permission, so
 // this runs again when the list refreshes rather than only once.
