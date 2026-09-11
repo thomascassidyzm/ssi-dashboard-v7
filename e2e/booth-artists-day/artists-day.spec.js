@@ -137,6 +137,19 @@ async function waitForPeak(page, pred, what, ms = 25_000) {
   }
   throw new Error(`gave up waiting for the mic: ${what}`)
 }
+/** Something is being heard: which segment is it? Judged on the loudest frame
+ * of the next 400ms, because a loud reading opens on a 200ms onset ramp and
+ * its first frame reads like the quiet one. */
+async function whatIsHeard(page, what) {
+  let peak = await waitForPeak(page, (x) => x > HEARD, `${what}: anything heard`)
+  const t0 = Date.now()
+  while (Date.now() - t0 < 400) {
+    const p = await peakDb(page)
+    if (p !== null && p > peak) peak = p
+    await page.waitForTimeout(40)
+  }
+  return peak
+}
 /** Silence that has lasted longer than the 250 ms word gaps in the fixture. */
 async function waitForSustainedSilence(page, what, ms = 25_000) {
   const t0 = Date.now()
@@ -173,7 +186,7 @@ async function readLoudAndNext(page, what) {
 /** Read the line on the stage QUIETLY — heard by the meter, nothing left after the server's trim — then tap Next. */
 async function readQuietAndNext(page, what) {
   for (let attempt = 0; attempt < 4; attempt++) {
-    const p = await waitForPeak(page, (x) => x > HEARD, `${what}: anything heard`)
+    const p = await whatIsHeard(page, what)
     if (p > LOUD) {
       // The loop came round to the loud segment: throw this take away and wait
       // for the quiet one, exactly as an artist taps Again after a false start.
@@ -192,15 +205,17 @@ async function readQuietAndNext(page, what) {
 /** Read the line on the stage LOUD and Stop here, filing it. */
 async function readLoudAndStop(page, what) {
   for (let attempt = 0; attempt < 4; attempt++) {
-    const p = await waitForPeak(page, (x) => x > HEARD, `${what}: anything heard`)
+    const p = await whatIsHeard(page, what)
     if (p <= LOUD) {
       note(`${what}: quiet segment on a line that must be loud (${p} dB) — Again`)
       await waitForSustainedSilence(page, `${what}: silence after the quiet segment`)
       await page.locator('.ctl-again').click()
       continue
     }
-    // A second of the loud reading on the take, then stop.
-    await page.waitForTimeout(1000)
+    // Finish the reading, then stop — as a person does. Stopping mid-word is
+    // REFUSED by the server as truncated at the end (a real gate; a run that
+    // tapped Stop a second into the segment was refused with tailMarginSec 0.043).
+    await waitForSustainedSilence(page, `${what}: the silence after the loud reading`)
     await page.locator('.btn-finish').click()
     await expect(page.locator('.ctl-next')).toHaveCount(0)
     return
