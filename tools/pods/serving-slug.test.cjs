@@ -51,7 +51,7 @@
 import { describe, it, expect } from 'vitest'
 
 const MOD = process.env.SERVING_SLUG_MODULE || './serving-slug.cjs'
-const { SERVING_POD_SLUGS, servesLearners, learnersAtRisk, servingRefusal } = require(MOD)
+const { SERVING_POD_SLUGS, LISTENING_EXTRA_POD_SLUGS, servesLearners, learnersAtRisk, servingRefusal } = require(MOD)
 
 const wording = {
   action: 'This does the thing,',
@@ -80,6 +80,17 @@ describe('servesLearners — the slugs the player resolves', () => {
     expect(servesLearners({ slug: 'pod-0', podType: 'core' })).toBe(true)
     expect(servesLearners({ slug: 'pod-1', podType: 'core' })).toBe(true)
   })
+  // Job #354 (2026-09-12): the Listening Mode third slot. RECORDED RED against the
+  // pre-widening module — LISTENING_EXTRA_POD_SLUGS was undefined and
+  // servesLearners({slug:'method-pod'}) was false.
+  it('knows method-pod is served — as a Listening Mode extra slot, not in main flow', () => {
+    expect(LISTENING_EXTRA_POD_SLUGS).toEqual(['method-pod'])
+    expect(SERVING_POD_SLUGS).not.toContain('method-pod')
+    expect(servesLearners({ slug: 'method-pod', podType: 'core' })).toBe(true)
+    expect(servesLearners({ slug: 'method-pod', podType: 'choice' })).toBe(false)
+    expect(servingRefusal(serving({ podId: 'ita_for_eng:method-pod', slug: 'method-pod' }))).toMatch(/SERVING slug/)
+  })
+
   it('a parked slug is not served', () => {
     expect(servesLearners({ slug: 'pod-0-unrecorded', podType: 'core' })).toBe(false)
   })

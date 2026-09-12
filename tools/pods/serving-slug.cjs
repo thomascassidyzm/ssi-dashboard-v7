@@ -32,15 +32,23 @@
  *
  * The slug list is duplicated rather than imported: the two repos share a database, not
  * a module graph. If servedPod.ts ever widens its list, widen this one in the same change.
+ *
+ * WIDENED 2026-09-12 (learning-app job #354, Tom's ruling the same day): Listening Mode
+ * lists a THIRD SLOT after the served pod — `method-pod`, the Italian method pod alongside
+ * Pod 1 — via servedPod.ts rule 6 (`LISTENING_EXTRA_POD_SLUGS`) and the bundle route. A
+ * core pod on that slug is in front of learners in Listening Mode and in the offline
+ * download, so a write onto it is a serving write. Main flow still resolves ONE pod from
+ * SERVING_POD_SLUGS, so `pickServingPod` / `fetchServingSlug` do NOT read the extra list.
  */
 const SERVING_POD_SLUGS = ['pod-1', 'pod-0']
+const LISTENING_EXTRA_POD_SLUGS = ['method-pod']
 
 /**
- * PURE. Would a core pod on this slug be resolved to a learner? Every door's
- * question, asked once.
+ * PURE. Would a core pod on this slug be resolved to a learner — in main flow OR as a
+ * Listening Mode extra slot? Every door's question, asked once.
  */
 function servesLearners ({ slug, podType }) {
-  if (!SERVING_POD_SLUGS.includes(slug)) return false
+  if (!SERVING_POD_SLUGS.includes(slug) && !LISTENING_EXTRA_POD_SLUGS.includes(slug)) return false
   // The resolver filters pod_type='core'; anything else on a serving slug is not served.
   return podType === 'core'
 }
@@ -84,7 +92,7 @@ function servingRefusal ({
   const existence = podExists
     ? `already exists (visibility '${podVisibility}', which the resolver does not read)`
     : 'does not exist yet, and creating it is what starts the serving'
-  return `${podId} is a SERVING slug — ${slug} is one of ${SERVING_POD_SLUGS.join(', ')}, which is what the ` +
+  return `${podId} is a SERVING slug — ${slug} is one of ${[...SERVING_POD_SLUGS, ...LISTENING_EXTRA_POD_SLUGS].join(', ')}, which is what the ` +
     `player resolves by (packages/player-vue/src/composables/servedPod.ts). ` +
     `The pod row ${existence} and holds ${rows} sentence row(s). ${who}. ` +
     `${action} ${harm} ` +
@@ -173,6 +181,7 @@ async function fetchServingSlug (client, courseCode) {
 
 module.exports = {
   SERVING_POD_SLUGS,
+  LISTENING_EXTRA_POD_SLUGS,
   servesLearners,
   learnersAtRisk,
   servingRefusal,
