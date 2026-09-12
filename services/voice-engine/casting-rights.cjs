@@ -271,9 +271,12 @@ async function boothArrival({ db, recordist, courseCodes, method = 'GET', path =
   let casting = email ? await castingForEmail(db, email) : []
   if (!casting.length) {
     // No email-door twin: the link's own answer stands in, so the arrival is
-    // still counted rather than dropped for want of an address.
-    casting = (courseCodes || []).map((courseCode) => ({
-      courseCode, voiceId: recordist.voiceId, displayName: recordist.displayName, language: recordist.language, via: 'policy',
+    // still counted rather than dropped for want of an address. For a cast-only
+    // (community) voice that answer is its cast courses, never the asked ones.
+    const own = Array.isArray(recordist.castCourses) ? recordist.castCourses : (courseCodes || [])
+    casting = own.map((courseCode) => ({
+      courseCode, voiceId: recordist.voiceId, displayName: recordist.displayName, language: recordist.language,
+      via: Array.isArray(recordist.castCourses) ? 'podCast' : 'policy',
     }))
   }
   const identity = castingIdentity(email, casting) || { email, role: 'recorder', courses: [], voice_id: recordist.voiceId, casting: [], authority: 'casting' }

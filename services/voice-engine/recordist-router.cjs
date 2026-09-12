@@ -129,11 +129,12 @@ module.exports = function createRecordistRouter({
 
   /** Resolve :voiceId or answer 404 — the only gate routes 1-3 have, by design. */
   async function recordistOr404(req, res) {
-    const recordist = await resolveRecordist(db(), req.params.voiceId)
+    const course = typeof req.query.course === 'string' && req.query.course.trim() ? req.query.course.trim() : undefined
+    const recordist = await resolveRecordist(db(), req.params.voiceId, { course })
     if (!recordist) {
       res.status(404).json({
         error: `No recording voice ${req.params.voiceId}. A recording link is only live while ` +
-          `language_recording_policy names that voice for a language.`,
+          `language_recording_policy names that voice for a language, or a course's cast names it.`,
       })
       return null
     }
@@ -965,6 +966,18 @@ module.exports = function createRecordistRouter({
         .from('listening_pods').select('id, course_code').eq('id', sentence.pod_id).maybeSingle()
       if (podErr) throw new Error(`pod lookup failed: ${podErr.message}`)
       if (!pod) return res.status(404).json({ error: `Line ${lineId} has no pod` })
+
+      // A cast-only (community) voice records on its cast courses and nowhere
+      // else: the same verdict the link and the login are given, counted the
+      // same way. A policy voice is language-wide and unchanged here.
+      if (Array.isArray(recordist.castCourses)) {
+        const arrival = await castingRights.boothArrival({
+          db: db(), recordist, courseCodes: [pod.course_code], method: req.method, path: req.originalUrl || req.path, logger,
+        })
+        if (arrival.refused.length) {
+          return res.status(403).json({ error: arrival.refused[0].sentence, courseCode: pod.course_code, reason: 'not_cast_no_grant' })
+        }
+      }
 
       const lineText = (sentence.target_text || '').trim()
       if (text && text.trim() && text.trim() !== lineText) {

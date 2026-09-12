@@ -230,7 +230,7 @@ async function loadPolicies(db, { humanOnlyOnly = false, cache } = {}) {
  *
  * @returns {Promise<null | {voiceId, displayName, email, gender, language, languageName, spellings: string[]}>}
  */
-async function resolveRecordist(db, voiceIdParam, { cache } = {}) {
+async function resolveRecordist(db, voiceIdParam, { cache, course } = {}) {
   const asked = String(voiceIdParam || '').trim()
   if (!asked) return null
 
@@ -288,7 +288,78 @@ async function resolveRecordist(db, voiceIdParam, { cache } = {}) {
       }
     }
   }
-  return null
+  return resolveCastOnlyRecordist(db, asked, canonical, aliasMap, { cache, course })
+}
+
+/**
+ * A COMMUNITY VOICE: cast on a course by its editor (voice_config.podCast) and
+ * named by NO language_recording_policy row - the normal case for a brand-new
+ * community language, which has no policy row at all. Job #311 left this as
+ * an honest gap: such a voice 404'd at the link and was dropped by the email
+ * login alike. It is admitted here, by the ONE resolver both doors call, so
+ * the doors still cannot disagree - and it is admitted to ITS CAST COURSES
+ * ONLY (`castCourses`): a podCast grant is per course, never language-wide,
+ * and buildQueue / the take route / castingForEmail all read that list.
+ *
+ * `course` is the link's ?course= and only picks which cast entry anchors the
+ * answer (language, dialect, gender) when the voice is cast on several
+ * courses; it never widens or narrows `castCourses`.
+ */
+async function resolveCastOnlyRecordist(db, asked, canonical, aliasMap, { cache, course } = {}) {
+  const { data, error } = await memoRead(cache, 'courses:list', () => db
+    .from('courses')
+    .select('course_code, target_lang, known_lang, voice_config, dialect'))
+  if (error) throw new Error(`course list failed: ${error.message}`)
+  const hits = []
+  for (const c of data || []) {
+    for (const entry of Object.values((c.voice_config && c.voice_config.podCast) || {})) {
+      if (!entry || typeof entry !== 'object' || !entry.voiceId) continue
+      const matches = entry.voiceId === canonical || entry.voiceId === asked ||
+        (aliasMap.get(entry.voiceId) || new Set()).has(asked)
+      if (matches) hits.push({ course: c, entry })
+    }
+  }
+  if (!hits.length) return null
+  const anchor = (course && hits.find((h) => h.course.course_code === course)) || hits[0]
+  const langOf = (c) => { try { return canonicalLanguage(c.target_lang) } catch { return null } }
+  const language = langOf(anchor.course)
+  if (!language) return null
+  const voiceId = anchor.entry.voiceId
+  const castCourses = [...new Set(hits
+    .filter((h) => h.entry.voiceId === voiceId && langOf(h.course) === language)
+    .map((h) => h.course.course_code))]
+  const withEmail = hits.find((h) => h.entry.voiceId === voiceId && h.entry.email)
+  return {
+    voiceId,
+    displayName: anchor.entry.name || voiceId,
+    email: withEmail ? withEmail.entry.email : null,
+    // The cast entry's gender is what buckets the lines (buildLanguageLines),
+    // so it is the recordist's gender too. An entry with no gender has no
+    // lines it can be handed - its booth is honestly empty, not 404.
+    gender: String(anchor.entry.gender || '').toLowerCase(),
+    dialect: courseDialect(anchor.course),
+    slot: null,
+    language,
+    languageName: languageName(language),
+    humanOnly: false,
+    spellings: recordedSpellings(voiceId, aliasMap),
+    castCourses,
+  }
+}
+
+/**
+ * Does this queue line belong to a cast-only recordist? Its course must be one
+ * the cast names (the line's own, or any collapsed copy's), and a pod line
+ * must be cast to THIS voice - two artists cast on one community course by the
+ * same editor never see each other's lines, whatever their genders.
+ */
+function isCastOnlyLine(line, recordist) {
+  const courses = recordist.castCourses
+  const onCourse = courses.includes(line.courseCode) ||
+    (line.duplicateOf || []).some((d) => courses.includes(d.courseCode))
+  if (!onCourse) return false
+  if ((line.kind || 'pod') !== 'pod') return true
+  return !!line.castVoiceId && recordist.spellings.includes(line.castVoiceId)
 }
 
 /**
@@ -359,10 +430,10 @@ async function voicesForEmail(db, email) {
   //    booth as the same voice, and the casting is where the editor wrote the
   //    email - so it is read here, not only from the users-page row the cast
   //    save happens to provision. Still resolved through resolveRecordist
-  //    below, so a cast voice the policy does not name is dropped exactly as
-  //    the link (/r/:voiceId) would 404 it: the two doors cannot disagree.
-  //    Tagged with the course, because that is the only course this entry
-  //    speaks for.
+  //    below, which admits a cast voice the policy does not name to ITS CAST
+  //    COURSES ONLY (castCourses), exactly as the link (/r/:voiceId) does:
+  //    the two doors cannot disagree. Tagged with the course, because that
+  //    is the only course this entry speaks for.
   const { data: courses, error: cErr } = await db.from('courses').select('course_code, voice_config')
   if (cErr) throw new Error(`course list failed: ${cErr.message}`)
   for (const c of courses || []) {
@@ -924,6 +995,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       knownText: s.known_text || null,
       speaker: s.speaker,
       courseCode: pod.course_code,
+      // The voice the course's cast assigns this line's speaker to. Read by
+      // isCastOnlyLine; a policy voice's queue is bucketed by gender and
+      // never looks at it.
+      castVoiceId: entry && entry.voiceId ? String(entry.voiceId) : null,
       textNormalized: key,
       duplicateOf: [],
       // The voice(s) already occupying this line's slot, via its own FK and
@@ -1277,7 +1352,9 @@ async function fetchRerecordWanted(db, courseCodes) {
  */
 async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed, maskRejectedHistory = true } = {}) {
   const language = await buildLanguageLines(db, recordist.language, { quarryMaxSeed, cache: new Map() })
-  const mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
+  let mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
+  // A cast-only (community) voice is scoped to the courses its cast names.
+  if (Array.isArray(recordist.castCourses)) mine = mine.filter((l) => isCastOnlyLine(l, recordist))
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
@@ -1400,16 +1477,20 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     // about lines that can be read, and this is a different fact standing
     // beside them rather than inside them.
     notReady: [...(language.notReady && language.notReady.get(bucketKey(recordist.dialect, recordist.gender)) || new Map()).values()]
+      .filter((p) => !Array.isArray(recordist.castCourses) || recordist.castCourses.includes(p.courseCode))
       .sort((a, b) => b.lines - a.lines),
     // LINES THEY READ THAT SOMEBODY ELSE NOW OWNS. Reported so a deliberate
     // recast cannot read as work they failed to do — and, like notReady, kept
     // out of `total` and `remaining`, because it is finished.
     handedOn: [...(language.handedOn && language.handedOn.get(bucketKey(recordist.dialect, recordist.gender)) || new Map()).values()]
+      .filter((p) => !Array.isArray(recordist.castCourses) || recordist.castCourses.includes(p.courseCode))
       .sort((a, b) => b.lines - a.lines),
     uncast: language.uncast,
     duplicatesCollapsed: language.duplicatesCollapsed,
     quarry: language.quarry || null,
-    courses: language.courses,
+    // The courses this queue serves: every course of the language for a
+    // policy voice; only the cast courses for a cast-only (community) voice.
+    courses: Array.isArray(recordist.castCourses) ? recordist.castCourses : language.courses,
   }
 }
 

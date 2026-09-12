@@ -5,6 +5,29 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-12 — a community voice needs no language_recording_policy row; the one resolver admits it to its cast course only
+
+**Decision.** A voice that exists only as a `voice_config.podCast` entry on a course is a live
+recording voice on THAT course. The one resolver both booth doors call (`resolveRecordist`) admits
+it when no policy row names it, tagged `castCourses` = the courses whose cast names it; the queue,
+the take route and the access verdict all honour that list. A policy row stays the only
+language-wide claim. Within its course a cast-only voice sees only the lines cast to its own voice
+id, so two artists an editor casts on one community course never see each other's lines.
+
+**Why.** Job #311·F left this as its honest gap: a brand-new community language has no policy row,
+so the voice an editor minted by casting 404'd at the "Copy link" and was dropped by the email
+login alike. Community courses are the point of the casting work, so the gap was the next defect,
+not a footnote. Scoping is per course because a podCast grant is per course (the 2026-09-12
+leak-fix ruling above), and it is the same resolver so the two doors still cannot disagree.
+
+**Where it lives.** `recordist-queue.cjs resolveCastOnlyRecordist` / `isCastOnlyLine`,
+`recordist-router.cjs` (the `?course=` anchor on resolve, the take-route verdict),
+`casting-rights.cjs boothArrival` (a no-email cast voice's fallback is its cast courses, never the
+asked ones), `booth-community-voice.test.cjs` (Swahili, no policy row, two artists, a sibling
+Swahili course; fails on the pre-fix modules, passes after).
+
+---
+
 ## 2026-09-12 — a course cast admits its own course only; only the language policy is language-wide
 
 **Decision.** Where a casting is WRITTEN decides how far it reaches. A `language_recording_policy`
