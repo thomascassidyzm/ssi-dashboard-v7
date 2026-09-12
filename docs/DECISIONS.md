@@ -30,7 +30,6 @@ swa_for_fra line; closed by fad310254 (`propagateTakeToDuplicates` admits a copy
 own cast resolves to the taking voice) and ea0272b23 (the one key). House re-check #362 re-ran
 the Bea→Zawadi reproduction on HEAD: nothing lands (`booth-cast-confinement-reconcile.test.cjs`).
 
-
 ---
 
 ## 2026-09-12 — a course cast admits its own course only; only the language policy is language-wide
@@ -47,7 +46,13 @@ untagged union of the three sources and `castingForEmail` gave the language-wide
 voice in it, so an editor casting a policy voice into course A under a second email handed that
 email course B. Live check before confining the login source: every `dashboard_users` row with a
 `voice_id` either holds an editor grant covering its courses or is named by a policy email, so no
-artist loses access.
+artist loses access. **Corrected by house re-check #362 (2026-09-12), confirming cold-verify #331:**
+"nobody" was too strong. Old-vs-new `castingForEmail` over the 23 live emails with a voice showed
+two of Tom's own test logins, `+logintest` and `+tom_test3`, losing `zzz_test2_for_eng` — their
+`human_tom_zzz` came from the users-page `voice_id` alone, which is exactly the source this ruling
+stops counting — and Kai's casting-derived `fin_for_eng` entry going, which his admin grant covers.
+No artist lost anything; the two test logins are re-admitted, if wanted, by casting them on the
+fixture course or granting it, never by widening the users-page source.
 
 **Where it lives.** `recordist-queue.cjs voicesForEmail` (the `castVia` tag),
 `casting-rights.cjs castingForEmail` (the confinement), `casting-rights.test.cjs` (two
@@ -782,7 +787,9 @@ and is the separate one-man-one-woman question already pending with Tom.
 for) was recordable by any voice of the language past the course gate — while the queue counted it
 `uncast` and offered it to nobody. Now `!owner ||` refuses it 403 `not_cast_on_line`, the same rule
 the pod-line take holds; queue and take agree. Every live want (1,269 on 2026-09-12) names a gender,
-so an owned narration clip on a one-voice-per-gender course is unaffected.**No recording moved.** The change decides how future takes propagate and how queues collapse. Existing
+so an owned narration clip on a one-voice-per-gender course is unaffected.
+
+**No recording moved.** The change decides how future takes propagate and how queues collapse. Existing
 takes that sit outside the key are reported, not migrated: Sasha's 492 `human_sasha_wanasky_deu_at` takes
 (named by neither policy nor cast), cym_nnew_for_eng's 83 Aran seed takes on a course whose seed slots
 name no voice, and the voiceless `legacy_import` / `catrin_human` imports — see the published table
