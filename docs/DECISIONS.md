@@ -730,3 +730,37 @@ worst case the public page disappears and the bucket URL still works directly.
 23,326,339 bytes, sha256 `4a42e50b09a41843086059bfe02dd8f9d5ee2526102b974c40e1d8f8a70dc130`,
 first two bytes `PK`. `src/router/publicAndroidBuild.test.js` holds the line: public route exempt,
 `/builds` still guarded and unshadowed, exactly one public build, bucket URL, provenance complete.
+
+## 2026-09-12 — A human take propagates by (language, voice id, text), never by gender and never by course
+
+**Tom's ruling, 2026-09-12 12:08Z, his words:** *"human recorded languages are ok to propagate across
+because IF the text is the same then the voice selected will be the same won't it? E.g. Macedonian for
+either target or known, for main course content or for pods, will always be the same line for the male
+voice and the female voice. I guess we probably should be a little more definite about this. List the
+courses and the voice-IDs of the human recorder. Since we may well want to have variations later."*
+
+**The rule.** The unit a take stands for is **(language, voice id, text)**. A take by voice V of text T
+fills every course, side (known/target) and pod line of that language whose text is T and whose cast
+voice is V — and nothing cast to any other voice, however alike in gender. Gender is a property of the
+voice, never a key. The `language_recording_policy` row's one job is to NAME which voice id carries a
+language/gender (and, since 2026-08-19, a dialect: the course's dialect, never the cast's, decides which
+policy voice a line is named to); the row is never itself the propagation key.
+
+**Why this is the definite version.** After #336 there were two rules: a policy voice collapsed and
+propagated by language+gender+dialect+text, a cast-only (community) voice by cast voice id. The first
+stopped being true the day a language got a second voice of one gender — the second female Macedonian
+would have inherited, and been filed onto, the first's lines. One key makes "variations later" a matter
+of minting a voice id: a different id simply does not propagate into another's lines.
+
+**Where it lives.** `services/voice-engine/recordist-queue.cjs`: `lineVoiceId` resolves every pod line,
+wanted re-record and seed slot to its owning voice; `voiceTextKey` collapses the queue on it;
+`linesForVoice` hands a recordist exactly its own lines; `propagateTakeToDuplicates`, `clearRerecordWants`
+and `linkSeedTake` fill and retire by the same key. `booth-propagation-by-voice-id.test.cjs` asserts it:
+two voices of the same gender with identical text do NOT share a take; one voice cast on three courses
+with identical text DOES.
+
+**No recording moved.** The change decides how future takes propagate and how queues collapse. Existing
+takes that sit outside the key are reported, not migrated: Sasha's 492 `human_sasha_wanasky_deu_at` takes
+(named by neither policy nor cast), cym_nnew_for_eng's 83 Aran seed takes on a course whose seed slots
+name no voice, and the voiceless `legacy_import` / `catrin_human` imports — see the published table
+*Human recorders — courses × voice ids, 2026-09-12*.

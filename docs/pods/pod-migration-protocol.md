@@ -125,6 +125,21 @@ node tools/pods/pod-state-migrate.cjs --course=cym_n_for_eng \
      --from=@2026-08-06T10:00:00Z --to=pod-0 --apply
 ```
 
+## How a human take propagates (Tom, 2026-09-12 12:08Z)
+
+A recorded line is keyed **(language, voice id, text)** and by nothing else. Tom: *"human recorded
+languages are ok to propagate across because IF the text is the same then the voice selected will be
+the same won't it? E.g. Macedonian for either target or known, for main course content or for pods,
+will always be the same line for the male voice and the female voice. I guess we probably should be a
+little more definite about this."* So a take by voice V of text T serves every course, side and pod
+line of that language whose text is T and whose cast voice is V. Gender is a property of the voice,
+not a key; the language policy names which voice carries a gender (and dialect) and is never itself
+the key. A second voice of the same gender is a different voice id and inherits nothing. What this
+means for a migration: a pod text change moves progress by slot (above) and re-links audio by this
+key — the same words in the same voice keep their take, anything else needs a new one. Code:
+`lineVoiceId` in `services/voice-engine/recordist-queue.cjs`; test
+`booth-propagation-by-voice-id.test.cjs`; decision log `docs/DECISIONS.md`, 2026-09-12.
+
 ## What this protocol does not cover
 
 - **Non-pod content.** Seeds, LEGOs and practice phrases have their own progress model and are

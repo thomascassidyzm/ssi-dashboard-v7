@@ -348,18 +348,20 @@ async function resolveCastOnlyRecordist(db, asked, canonical, aliasMap, { cache,
 }
 
 /**
- * Does this queue line belong to a cast-only recordist? Its course must be one
- * the cast names (the line's own, or any collapsed copy's), and a pod line
- * must be cast to THIS voice - two artists cast on one community course by the
- * same editor never see each other's lines, whatever their genders.
+ * THE LINES THAT ARE THIS VOICE'S, across every bucket of the language: a line
+ * belongs to the recordist whose voice id owns it (lineVoiceId), and to nobody
+ * else. One rule for a policy voice and a cast-only voice alike -- gender and
+ * dialect decided which voice OWNS the line when it was built, and play no
+ * part in handing it out. A line nobody owns is in no queue.
  */
-function isCastOnlyLine(line, recordist) {
-  const courses = recordist.castCourses
-  const onCourse = courses.includes(line.courseCode) ||
-    (line.duplicateOf || []).some((d) => courses.includes(d.courseCode))
-  if (!onCourse) return false
-  if ((line.kind || 'pod') !== 'pod') return true
-  return !!line.castVoiceId && recordist.spellings.includes(line.castVoiceId)
+function linesForVoice(language, recordist) {
+  const out = []
+  for (const lines of language.byBucket.values()) {
+    for (const line of lines) {
+      if (line.voiceId && recordist.spellings.includes(line.voiceId)) out.push(line)
+    }
+  }
+  return out
 }
 
 /**
@@ -487,17 +489,107 @@ function recordedSpellings(voiceId, aliasMap) {
  * raw key as the safety net.
  */
 /**
- * The identity one queue line stands for. Text alone for a policy voice (or an
- * uncast/unknown voice) -- one take of a text fills every course of the
- * language; text AND cast voice for a voice the language's policy does not
- * name, because such a voice is cast per course and may only ever fill lines
- * cast to itself. `aliasOwner` is the language's policy-voice register, every
- * spelling included (buildLanguageLines).
+ * THE VOICE A LINE BELONGS TO -- the middle term of the one propagation key.
+ *
+ * Tom, 2026-09-12 12:08Z: "human recorded languages are ok to propagate across
+ * because IF the text is the same then the voice selected will be the same
+ * won't it? E.g. Macedonian for either target or known, for main course content
+ * or for pods, will always be the same line for the male voice and the female
+ * voice. I guess we probably should be a little more definite about this."
+ *
+ * So the unit a take stands for is (language, voice id, text). A take by voice
+ * V of text T fills every course, side and pod line of the language whose text
+ * is T and whose cast voice is V -- and nothing cast to any other voice, however
+ * alike in gender. Gender is a property of the voice, never a key: that is what
+ * lets a second voice of the same gender arrive later (a second female
+ * Macedonian) without a redesign, because a different voice id simply does not
+ * propagate into the first one's lines. Before this there were two rules --
+ * policy voices collapsed by language+gender+dialect+text, cast-only voices by
+ * cast voice id -- and one of them stopped being true the day a language got
+ * two voices of one gender.
+ *
+ * Resolution, in order:
+ *  1. the cast entry names a voice id the policy knows: that policy voice --
+ *     unless the COURSE's dialect is not that voice's, in which case the policy
+ *     voice of the course's own dialect and that gender carries it, or nobody.
+ *     That is Tom's 2026-08-19 ruling kept whole: the dialect comes from the
+ *     course, never from who is cast on it (cym_s_for_eng named the Northern
+ *     man in its own cast and its 197 lines were still Southern work);
+ *  2. the cast entry names a voice id the policy does not know: a community
+ *     voice, cast per course, and its own key;
+ *  3. the cast entry names only a gender: the language policy names which
+ *     voice carries that (dialect, gender) -- NAMING is the policy's one job,
+ *     the policy row is never itself the key;
+ *  4. nobody: null. The line is unrouted and appears in no queue.
  */
-function dedupKey(text, castVoiceId, aliasOwner) {
-  const textKey = normalizeForDb(text)
-  if (!castVoiceId || aliasOwner.has(castVoiceId)) return textKey
-  return `${castVoiceId}\u0000${textKey}`
+function lineVoiceId(entry, register, dialect) {
+  const declared = entry && entry.voiceId ? String(entry.voiceId).trim() : ''
+  const courseDialectKey = canonicalDialect(dialect)
+  const owner = declared ? register.aliasOwner.get(declared) : null
+  if (declared && !owner) return declared
+  const gender = owner
+    ? owner.gender
+    : (entry && entry.gender ? String(entry.gender).toLowerCase() : '')
+  if (owner && canonicalDialect(owner.dialect) === courseDialectKey) return owner.voiceId
+  if (!gender) return null
+  const policy = register.policyByBucket.get(bucketKey(courseDialectKey, gender))
+  return policy ? policy.voiceId : null
+}
+
+/**
+ * One queue line per (voice, text): every copy of one text owned by one voice
+ * collapses into one recording. A line nobody owns collapses only with the
+ * unowned copies in its own (dialect, gender) bucket, as it always did.
+ */
+function voiceTextKey(voiceId, bucket, text) {
+  return `${voiceId || `?${bucket}`}\u0000${normalizeForDb(text)}`
+}
+
+/**
+ * The language's voice register, built once per read: its policy voices, the
+ * owner of every spelling any of them answers to (policy aliases AND every
+ * course's podCastAliases -- reads widen, as recordedSpellings does), and
+ * which policy voice carries each (dialect, gender).
+ */
+async function voiceRegister(db, language, { cache } = {}) {
+  const [policies, courseAliases] = await Promise.all([loadPolicies(db, { cache }), loadAliasMap(db, { cache })])
+  const policy = policies.find((row) => {
+    try { return canonicalLanguage(row.language) === language } catch { return false }
+  })
+  const policyVoices = policyVoiceList(policy)
+  const aliasOwner = new Map()
+  const policyByBucket = new Map()
+  const spellings = new Set()
+  for (const v of policyVoices) {
+    aliasOwner.set(v.voiceId, v)
+    for (const a of v.aliases || []) aliasOwner.set(a, v)
+    for (const a of courseAliases.get(v.voiceId) || []) aliasOwner.set(a, v)
+    // First named wins, so a second voice of one gender added to the policy
+    // later never silently takes over the lines the first was carrying.
+    const bucket = bucketKey(v.dialect, v.gender)
+    if (v.gender && !policyByBucket.has(bucket)) policyByBucket.set(bucket, v)
+  }
+  for (const [spelling] of aliasOwner) spellings.add(spelling)
+  return { policy, policyVoices, aliasOwner, policyByBucket, spellings }
+}
+
+/**
+ * Whose voice a wanted re-record needs. A want states a GENDER, not a voice
+ * (rerecord_wanted.voice_gender): the policy names which voice carries it; on a
+ * course with no policy, the course's own cast does, provided it casts exactly
+ * one voice of that gender. Two, and the want is nobody's to guess.
+ */
+function wantVoiceId(course, register, gender) {
+  const policy = register.policyByBucket.get(bucketKey(courseDialect(course), gender))
+  if (policy) return policy.voiceId
+  const podCast = (course.voice_config && course.voice_config.podCast) || {}
+  const ids = new Set()
+  for (const entry of Object.values(podCast)) {
+    if (!entry || !entry.voiceId) continue
+    if (String(entry.gender || '').toLowerCase() !== gender) continue
+    ids.add(lineVoiceId(entry, register, courseDialect(course)))
+  }
+  return ids.size === 1 ? [...ids][0] : null
 }
 
 function castEntryFor(podCast, speaker) {
@@ -844,7 +936,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // The minimal set's own arithmetic, so the screen can say how big the job is
   // in lines and minutes without re-deriving it from the rows it was handed.
   let quarryStats = null
-  const seen = new Map()   // bucket -> Map(normalized text -> representative line)
+  // ONE map for the whole language, keyed (voice, text) -- see voiceTextKey.
+  const seen = new Map()   // voiceTextKey -> representative line
   let uncast = 0
   // POD LINES THAT HAVE NO TARGET TEXT YET, per (dialect, gender) bucket and
   // then per pod: bucket -> Map(podId -> {podId, podSlug, podTitle, courseCode,
@@ -868,15 +961,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // the reason the file already gives about the estate-wide map: a spelling
   // recorded under one register and not the other would otherwise make a take
   // look like a stranger's. Nothing here writes.
-  const aliasOwner = new Map()
-  const courseAliases = await loadAliasMap(db, { cache })
-  for (const v of policyVoiceList((await loadPolicies(db, { cache })).find((row) => {
-    try { return canonicalLanguage(row.language) === language } catch { return false }
-  }))) {
-    aliasOwner.set(v.voiceId, v)
-    for (const a of v.aliases || []) aliasOwner.set(a, v)
-    for (const a of courseAliases.get(v.voiceId) || []) aliasOwner.set(a, v)
-  }
+  const register = await voiceRegister(db, language, { cache })
+  const { aliasOwner } = register
   // Wants belonging to a clip in a DIFFERENT language than this queue's. Counted
   // rather than silently dropped, by the same rule as `uncast`.
   let crossLanguage = 0
@@ -972,22 +1058,21 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       }
     }
 
-    if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
+    if (!byBucket.has(bucket)) byBucket.set(bucket, [])
     const castVoiceId = entry && entry.voiceId ? String(entry.voiceId) : null
-    // WHAT ONE RECORDING MAY STAND FOR. A POLICY voice is cast language-wide,
-    // so its copies of one text across the language's courses collapse into
-    // one line (the cym_n/cym_s promise). A CAST-ONLY (community) voice is cast
-    // per course and admitted to its cast courses only (isCastOnlyLine), so
-    // its copies collapse only with copies cast to the SAME voice: keyed on
-    // text alone, Bea's copy on swa_for_eng became the representative of
-    // Zawadi's identical line on swa_for_fra, Zawadi's queue lost her only
-    // line, and Bea's take was then filed onto it (job #336, 2026-09-12).
-    const key = dedupKey(text, castVoiceId, aliasOwner)
-    const seenForGender = seen.get(bucket)
-    if (seenForGender.has(key)) {
+    // WHAT ONE RECORDING MAY STAND FOR: every copy of this text owned by the
+    // SAME voice, across the language (lineVoiceId). Keyed on text alone,
+    // Bea's copy on swa_for_eng became the representative of Zawadi's
+    // identical line on swa_for_fra, Zawadi's queue lost her only line, and
+    // Bea's take was then filed onto it (job #336, 2026-09-12); keyed on the
+    // voice, two voices of one gender never share a line and one voice cast
+    // on two courses reads its line once.
+    const voiceId = lineVoiceId(entry, register, courseDialect(course))
+    const key = voiceTextKey(voiceId, bucket, text)
+    if (seen.has(key)) {
       // One recording, not three. The duplicate is remembered against the
       // representative so a finished take can fill every course's pod.
-      const rep = seenForGender.get(key)
+      const rep = seen.get(key)
       rep.duplicateOf.push({ sentenceId: s.id, podId: s.pod_id, courseCode: pod.course_code })
       // One recording fills every copy, so a filled slot on ANY copy is that
       // one recording — the collapse promise, read back.
@@ -1018,9 +1103,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       knownText: s.known_text || null,
       speaker: s.speaker,
       courseCode: pod.course_code,
-      // The voice the course's cast assigns this line's speaker to. Read by
-      // isCastOnlyLine; a policy voice's queue is bucketed by gender and
-      // never looks at it.
+      // The voice this line BELONGS to (lineVoiceId) -- the one thing that
+      // decides whose queue it is in and whose take may fill it.
+      voiceId,
+      // What the course's cast literally says, before the policy fills a
+      // gender-only entry in. Kept for the take route's own check.
       castVoiceId,
       textNormalized: normalizeForDb(text),
       duplicateOf: [],
@@ -1029,7 +1116,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       filledBy: slotVoiceById.get(s.target_audio_id) ? [slotVoiceById.get(s.target_audio_id)] : [],
       rerecordWanted: targetRerecordWanted(s),
     }
-    seenForGender.set(key, line)
+    seen.set(key, line)
     byBucket.get(bucket).push(line)
   }
 
@@ -1081,16 +1168,17 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     // untagged voice 'human', so it carries no dialect of its own to trust.
     const course = byCourse.get(w.course_code)
     const bucket = bucketKey(courseDialect(course), gender)
-    if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
-    // A wanted clip names no cast voice: text-only key, as it always was.
-    const key = normalizeForDb(text)
-    const seenForGender = seen.get(bucket)
-    if (seenForGender.has(key)) {
+    if (!byBucket.has(bucket)) byBucket.set(bucket, [])
+    // A wanted clip names a gender, never a voice: the register says which
+    // voice carries that gender here (wantVoiceId).
+    const voiceId = wantVoiceId(course, register, gender)
+    const key = voiceTextKey(voiceId, bucket, text)
+    if (seen.has(key)) {
       // Same clip identity as a pod line already in the queue: the want belongs
       // to that line. This is the path that carries "re-record everything you
       // already recorded" — the text IS a live pod line, a take of it exists, and
       // without propagating the flag here finishQueue would score it recorded.
-      const rep = seenForGender.get(key)
+      const rep = seen.get(key)
       rep.duplicateOf.push({ audioId: w.id, courseCode: w.course_code })
       rep.rerecordWanted = true
       if (!rep.rerecordReason && w.rerecord_wanted.reason) rep.rerecordReason = w.rerecord_wanted.reason
@@ -1105,7 +1193,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       knownText: null,
       speaker: null,
       courseCode: w.course_code,
-      textNormalized: key,
+      voiceId,
+      textNormalized: normalizeForDb(text),
       duplicateOf: [],
       // `kind` tells the surface how to READ this line. Narration text carries
       // <src>/<tgt> markup — it must be rendered, never read aloud as tags.
@@ -1114,7 +1203,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       rerecordWanted: true,
       rerecordReason: w.rerecord_wanted.reason || null,
     }
-    seenForGender.set(key, line)
+    seen.set(key, line)
     byBucket.get(bucket).push(line)
   }
 
@@ -1130,10 +1219,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // must NOT collapse into a pod line that happens to read the same, because a
   // pod take links a pod sentence FK and would leave the seed's own FK empty --
   // the two look identical on screen and are different rows to fill.
-  const policy = (await loadPolicies(db, { cache })).find((row) => {
-    try { return canonicalLanguage(row.language) === language } catch { return false }
-  })
-  const policyVoices = policyVoiceList(policy)
+  const { policyVoices } = register
   if (policyVoices.length) {
     const seeds = await fetchSeeds(db, [...byCourse.keys()])
     const seedsByCourse = new Map()
@@ -1153,7 +1239,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
     const clipVoice = await audioVoicesById(db, linkedIds)
 
-    const seedSeen = new Map()   // bucket -> Map(namespaced key -> representative)
+    const seedSeen = new Map()   // `${voice} ${role} ${text}` -> representative, language-wide
     for (const [courseCode, course] of byCourse.entries()) {
       const roles = [...SEED_TARGET_ROLES]
       // The one exception, and it is checked here rather than trusted from a
@@ -1171,16 +1257,17 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           continue
         }
         if (!byBucket.has(bucket)) byBucket.set(bucket, [])
-        if (!seedSeen.has(bucket)) seedSeen.set(bucket, new Map())
-        const seenHere = seedSeen.get(bucket)
+        // The seed slot is cast to ONE policy voice by name (seedCastEntry),
+        // so the owner is read straight off the cast, never off the gender.
+        const voiceId = seedCastEntry(course, policyVoices)[role].voiceId
 
         for (const seed of courseSeeds) {
           const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
           if (!text) continue
           const fkVoice = clipVoice.get(seed[`${role}_audio_id`]) || null
-          const key = `${role} ${normalizeForDb(text)}`
-          if (seenHere.has(key)) {
-            const rep = seenHere.get(key)
+          const key = `${voiceId}\u0000${role} ${normalizeForDb(text)}`
+          if (seedSeen.has(key)) {
+            const rep = seedSeen.get(key)
             rep.duplicateOf.push({ seedId: seed.id, courseCode, role })
             // Recorded means EVERY copy's slot is filled by this voice. A rep
             // that is linked while its duplicate is not would otherwise read as
@@ -1204,6 +1291,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
               : (seed.known_text || null),
             speaker: null,
             courseCode,
+            voiceId,
             textNormalized: normalizeForDb(text),
             duplicateOf: [],
             kind: 'seed',
@@ -1213,7 +1301,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             seedFilledBy: [fkVoice],
             rerecordWanted: false,
           }
-          seenHere.set(key, line)
+          seedSeen.set(key, line)
           byBucket.get(bucket).push(line)
         }
       }
@@ -1294,6 +1382,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
           knownText: piece.knownText,
           speaker: null,
           courseCode,
+          voiceId: voice.voiceId,
           textNormalized: normalizeForDb(piece.text),
           duplicateOf: [],
           kind: 'quarry',
@@ -1376,9 +1465,8 @@ async function fetchRerecordWanted(db, courseCodes) {
  */
 async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed, maskRejectedHistory = true } = {}) {
   const language = await buildLanguageLines(db, recordist.language, { quarryMaxSeed, cache: new Map() })
-  let mine = language.byBucket.get(bucketKey(recordist.dialect, recordist.gender)) || []
-  // A cast-only (community) voice is scoped to the courses its cast names.
-  if (Array.isArray(recordist.castCourses)) mine = mine.filter((l) => isCastOnlyLine(l, recordist))
+  // By VOICE ID, for a policy voice and a cast-only voice alike (linesForVoice).
+  const mine = linesForVoice(language, recordist)
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
   // page and the failure that matters is showing them a verdict on their work.
   // A caller that wants the whole truth has to say so.
@@ -1657,15 +1745,14 @@ async function buildCoverage(db) {
     const perVoice = (await Promise.all(Object.keys(voices).map(async (slot) => {
       const recordist = await resolveRecordist(db, voices[slot].voiceId, { cache })
       if (!recordist) return null
-      const bucket = bucketKey(recordist.dialect, recordist.gender)
-      claimed.add(bucket)
+      for (const spelling of recordist.spellings) claimed.add(spelling)
       // TOM'S PAGE SEES EVERYTHING. The artist's wire masks rejected history
       // (finishQueue's `maskRejectedHistory`, default on); this one must not, or
       // the estate loses the only screen that says how much work was rejected
       // and why. `total` and `recorded` are identical either way — masking moves
       // no line in or out of the outstanding set — so the two pages still agree
       // about the work, and this one additionally shows the take/again split.
-      const q = await finishQueue(db, recordist, language.byBucket.get(bucket) || [], language,
+      const q = await finishQueue(db, recordist, linesForVoice(language, recordist), language,
         { includeRecorded: true, maskRejectedHistory: false })
       return {
         voiceId: recordist.voiceId,
@@ -1697,14 +1784,14 @@ async function buildCoverage(db) {
       String(a.dialect).localeCompare(String(b.dialect)) ||
       String(a.gender).localeCompare(String(b.gender)))
 
-    // Lines that ARE cast to a gender, in a dialect this language has no voice
-    // for. Before dialects existed these could not occur; now they are exactly
-    // the Southern Welsh backlog, and counting them is what stops the fix from
+    // Lines NO POLICY VOICE OWNS: cast to a gender in a dialect this language
+    // has no voice for (the Southern Welsh backlog), or owned by a community
+    // voice the policy does not name. Counting them is what stops a fix from
     // hiding what it moved. They are NOT folded into `uncast`, which means
     // something different and narrower — no gender on the speaker at all.
     let unrouted = 0
-    for (const [bucket, lines] of language.byBucket.entries()) {
-      if (!claimed.has(bucket)) unrouted += lines.length
+    for (const lines of language.byBucket.values()) {
+      for (const line of lines) if (!line.voiceId || !claimed.has(line.voiceId)) unrouted += 1
     }
 
     const total = perVoice.reduce((n, v) => n + v.total, 0)
@@ -1758,28 +1845,21 @@ async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Ke
   if (!podById.size) return { linked: [], skipped: 0 }
 
   const sentences = await fetchAllSentences(db, [...podById.keys()])
-  const targets = sentences.filter((s) =>
-    s.id !== sentenceId &&
-    normalizeForDb((s.target_text || '').trim()) === textNormalized &&
-    (() => {
-      const course = byCourse.get(podById.get(s.pod_id).course_code)
-      const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
-      if (!entry || String(entry.gender || '').toLowerCase() !== recordist.gender) return false
-      // A CAST-ONLY voice fills its own lines on its cast courses and nothing
-      // else -- the same rule as isCastOnlyLine, applied to the other half of
-      // the collapse promise. Without it Bea's take on swa_for_eng was filed
-      // onto Zawadi's identical line on swa_for_fra (job #336, 2026-09-12).
-      if (Array.isArray(recordist.castCourses)) {
-        if (!recordist.castCourses.includes(course.course_code)) return false
-        if (!entry.voiceId || !recordist.spellings.includes(String(entry.voiceId))) return false
-      }
-      // The same filter as the queue, for the same reason. The queue only ever
-      // collapsed lines within one dialect, so this is the other half of that
-      // promise: without it a Northern take would be filed straight into the
-      // Southern pods it was deliberately never queued for.
-      return courseDialect(course) === canonicalDialect(recordist.dialect)
-    })()
-  )
+  // THE SAME KEY AS THE QUEUE: (language, voice, text). A copy of these words is
+  // filled by this take if, and only if, the copy's own cast resolves to THIS
+  // voice (lineVoiceId) -- never by gender, never by dialect, never by course.
+  // Without it Bea's take on swa_for_eng was filed onto Zawadi's identical line
+  // on swa_for_fra (job #336, 2026-09-12); with it a second voice of the same
+  // gender in a language is simply a different key.
+  const register = await voiceRegister(db, recordist.language)
+  const targets = sentences.filter((s) => {
+    if (s.id === sentenceId) return false
+    if (normalizeForDb((s.target_text || '').trim()) !== textNormalized) return false
+    const course = byCourse.get(podById.get(s.pod_id).course_code)
+    const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
+    const owner = lineVoiceId(entry, register, courseDialect(course))
+    return !!owner && recordist.spellings.includes(owner)
+  })
 
   const linked = []
   for (const s of targets) {
@@ -1876,16 +1956,18 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   const key = normalizeForDb(text)
 
   const courses = await coursesForLanguage(db, recordist.language)
-  // ONLY THE COURSES WHOSE SEEDS ARE IN THIS RECORDIST'S OWN QUEUE, by the same
-  // rule that put them there (seedBucketFor). Before this, a take was linked
-  // into EVERY course of the language holding the same sentence, so a Northern
-  // Welsh take reached cym_s_for_eng's seed slots -- a course cast to nobody,
-  // in the other dialect. Eight such rows exist and are left alone; this stops
-  // the ninth.
+  // ONLY THE COURSES WHOSE SEED SLOT IS CAST TO THIS VOICE, by the same rule
+  // that put them in the queue (seedCastEntry: the slot names a voice id).
+  // Before this, a take was linked into EVERY course of the language holding
+  // the same sentence, so a Northern Welsh take reached cym_s_for_eng's seed
+  // slots -- a course cast to nobody, in the other dialect. Eight such rows
+  // exist and are left alone; this stops the ninth.
   const { voices: policyVoices, spellings: policySpellings } =
     await policyVoicesForLanguage(db, recordist.language)
-  const myBucket = bucketKey(recordist.dialect, recordist.gender)
-  const mineCourses = courses.filter((c) => seedBucketFor(c, role, policyVoices) === myBucket)
+  const mineCourses = courses.filter((c) => {
+    const cast = seedCastEntry(c, policyVoices)[role]
+    return !!cast && recordist.spellings.includes(cast.voiceId)
+  })
   const siblings = await fetchSeeds(db, mineCourses.map((c) => c.course_code))
   const owners = new Map()
   const candidates = siblings.filter((row) => {
@@ -1953,23 +2035,30 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
     else cleared.clips = clips.length
   }
 
-  // 2. The pod line's own flag, on every copy of this line in the language.
-  //    Only the 'target' key is dropped: a want on the known track belongs to
-  //    the known-language (English) queue cast under __explainer__ and is not
-  //    this recordist's to retire.
-  //    A cast-only voice's take fills its cast courses only
-  //    (propagateTakeToDuplicates), so only those courses' wants are satisfied.
-  const courses = (await coursesForLanguage(db, recordist.language))
-    .filter((c) => !Array.isArray(recordist.castCourses) || recordist.castCourses.includes(c.course_code))
+  // 2. The pod line's own flag, on every copy of this line THIS VOICE fills --
+  //    the same (language, voice, text) key as propagateTakeToDuplicates, so a
+  //    want on a copy cast to another voice of the same gender stays open for
+  //    that voice. Only the 'target' key is dropped: a want on the known track
+  //    belongs to the known-language (English) queue cast under __explainer__
+  //    and is not this recordist's to retire.
+  const courses = await coursesForLanguage(db, recordist.language)
+  const byCourse = new Map(courses.map((c) => [c.course_code, c]))
   const { data: pods } = await db
-    .from('listening_pods').select('id').in('course_code', courses.map((c) => c.course_code))
-  const podIds = (pods || []).map((p) => p.id)
-  if (podIds.length) {
+    .from('listening_pods').select('id, course_code').in('course_code', courses.map((c) => c.course_code))
+  const podById = new Map((pods || []).map((p) => [p.id, p]))
+  if (podById.size) {
     const normalized = new Set(keys)
-    const sentences = await fetchAllSentences(db, podIds)
-    const hits = sentences.filter((s) =>
-      s.rerecord_wanted && s.rerecord_wanted.target &&
-      (s.id === sentenceId || audioKeyCandidates((s.target_text || '').trim()).some((k) => normalized.has(k))))
+    const register = await voiceRegister(db, recordist.language)
+    const sentences = await fetchAllSentences(db, [...podById.keys()])
+    const hits = sentences.filter((s) => {
+      if (!s.rerecord_wanted || !s.rerecord_wanted.target) return false
+      if (s.id !== sentenceId && !audioKeyCandidates((s.target_text || '').trim()).some((k) => normalized.has(k))) return false
+      const course = byCourse.get((podById.get(s.pod_id) || {}).course_code)
+      if (!course) return false
+      const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
+      const owner = lineVoiceId(entry, register, courseDialect(course))
+      return !!owner && recordist.spellings.includes(owner)
+    })
     for (const s of hits) {
       const { target: _retired, ...rest } = s.rerecord_wanted
       const next = Object.keys(rest).length ? rest : null
@@ -2018,4 +2107,9 @@ module.exports = {
   compareQueueLines,
   propagateTakeToDuplicates,
   tryCanonicalVoiceId,
+  // The one propagation key, exported so a test can assert it directly.
+  lineVoiceId,
+  voiceTextKey,
+  voiceRegister,
+  linesForVoice,
 }

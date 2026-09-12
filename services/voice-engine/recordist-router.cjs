@@ -995,7 +995,7 @@ module.exports = function createRecordistRouter({
         // AND ITS OWN LINES ONLY. The course admitting the voice is not the
         // line being cast to it: two artists cast on one community course by
         // the same editor never see each other's lines in the queue
-        // (isCastOnlyLine), and the take must hold the same rule -- the queue
+        // (linesForVoice: a line belongs to the voice lineVoiceId names), and the take must hold the same rule -- the queue
         // never showed Bea Amina's uuid, but the route answered it (job #336,
         // 2026-09-12). A policy voice is language-wide and unchanged here.
         const { data: course, error: courseErr } = await db()
