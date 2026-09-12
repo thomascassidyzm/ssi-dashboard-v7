@@ -83,16 +83,19 @@ describe('RecordistRoom — the way back, the switch and the crossing', () => {
   afterEach(() => { vi.restoreAllMocks() })
 
   it('offers a way back to Popty from the ready card, and never from the stage', async () => {
+    // Since 2026-09-12 the way back is the last word on the booth's nav row
+    // (Booth · Lines · Pods · Course · Popty) rather than a faint link, and
+    // the rule is unchanged: on the ready card, never on the stage.
     const w = mountBooth()
     await flushPromises()
-    const back = w.find('.rc-back')
+    const back = w.find('.rc-nav-home')
     expect(back.exists()).toBe(true)
     expect(back.attributes('href')).toBe('/')
 
     await w.find('.btn-begin').trigger('click')
     await flushPromises()
     expect(w.find('.stage').exists()).toBe(true)
-    expect(w.find('.rc-back').exists()).toBe(false)
+    expect(w.find('.rc-nav').exists()).toBe(false)
   })
 
   it('puts the auto-advance switch on the recording screen, reachable mid-session', async () => {

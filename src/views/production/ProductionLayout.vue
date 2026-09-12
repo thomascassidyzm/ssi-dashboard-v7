@@ -16,6 +16,11 @@
 
     <!-- Content Area - nested routes render here -->
     <main v-else class="production-content">
+      <!-- THE WAY BACK TO THE BOOTH. Drawn only in a tab that came from one:
+           the booth's nav points at these course pages (Overview, Pods, a
+           pod's lines) and a recordist who is here to fix a line needs one
+           tap back to reading. See recordist/booth-pointer.js. -->
+      <router-link v-if="boothVoice" :to="`/r/${boothVoice}`" class="booth-return">← Back to the booth</router-link>
       <router-view :course-code="courseCode" />
     </main>
   </div>
@@ -24,6 +29,7 @@
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
 import { useProductionStore } from '@/stores/production'
+import { rememberedBooth } from '@/views/recordist/booth-pointer.js'
 
 const props = defineProps({
   courseCode: {
@@ -36,6 +42,7 @@ const store = useProductionStore()
 
 const loading = ref(false)
 const error = ref(null)
+const boothVoice = rememberedBooth()
 
 const isCreateMode = computed(() => props.courseCode === 'new')
 
@@ -71,6 +78,17 @@ watch(() => props.courseCode, (newCode, oldCode) => {
 </script>
 
 <style scoped>
+.booth-return {
+  display: inline-block;
+  margin: 0.75rem 1rem 0;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  background: rgba(6, 255, 165, 0.12);
+  color: var(--color-emerald, #06ffa5);
+  font-weight: 600;
+  text-decoration: none;
+}
+.booth-return:hover, .booth-return:focus-visible { background: rgba(6, 255, 165, 0.22); }
 .production-layout {
   min-height: 100vh;
   background: var(--color-shadow, var(--surface));

@@ -1138,9 +1138,19 @@ module.exports = function createRecordistRouter({
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
 
-      const text = typeof req.body?.text === 'string' ? req.body.text.trim() : ''
-      if (!text) return res.status(400).json({ error: 'Give the line some text.', reason: 'empty' })
-      if (text.length > 600) return res.status(400).json({ error: 'That line is too long to read in one take.', reason: 'too_long' })
+      // TWO SIDES, EACH ITS OWN EDIT (Tom, 2026-09-12: "I am also an editor of
+      // the lines … probably to edit BOTH known and target languages, although
+      // editing a known language will of course orphan the audio"). `text` is
+      // the TARGET side, as it always was; `knownText` is the known side. Either
+      // or both may come, and each side's edit touches ONLY that side's take.
+      const hasTarget = typeof req.body?.text === 'string'
+      const hasKnown = typeof req.body?.knownText === 'string'
+      const text = hasTarget ? req.body.text.trim() : ''
+      const knownText = hasKnown ? req.body.knownText.trim() : ''
+      if (!hasTarget && !hasKnown) return res.status(400).json({ error: 'Give the line some text.', reason: 'empty' })
+      if (hasTarget && !text) return res.status(400).json({ error: 'Give the line some text.', reason: 'empty' })
+      if (hasKnown && !knownText) return res.status(400).json({ error: 'Give the known side some text.', reason: 'empty' })
+      if (text.length > 600 || knownText.length > 600) return res.status(400).json({ error: 'That line is too long to read in one take.', reason: 'too_long' })
 
       const lineId = req.params.lineId
       // Seed sentences are course content, not booth content: their text is
@@ -1167,7 +1177,7 @@ module.exports = function createRecordistRouter({
       // the gate is applied to.
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
-        .select('id, pod_id, target_text, known_text, target_audio_id')
+        .select('id, pod_id, target_text, known_text, target_audio_id, known_audio_id')
         .eq('id', lineId)
         .maybeSingle()
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
@@ -1198,14 +1208,49 @@ module.exports = function createRecordistRouter({
         })
       }
 
-      // THE TAKE GOES WITH THE WORDS. See the note above the route.
-      const patch = { target_text: text, target_audio_id: null }
-      // The known side is the recordist's crib. On a fixture whose two sides are
-      // the same string, leaving it behind would put the OLD sentence under the
-      // new one on screen and look like a bug; where the two genuinely differ,
-      // the known side is a real translation and is not ours to rewrite.
-      const knownTracksTarget = (sentence.known_text || '').trim() === (sentence.target_text || '').trim()
-      if (knownTracksTarget) patch.known_text = text
+      // THE TAKE GOES WITH THE WORDS, ON THE SIDE THAT CHANGED AND NO OTHER.
+      // See the note above the route. A target edit unlinks the target take and
+      // leaves the known take exactly where it is; a known edit does the
+      // reverse. A side handed back its own current words is not an edit at
+      // all, and costs nothing — the mark is the unlink, and the unlink only
+      // happens when the words actually moved.
+      //
+      // WHAT "STALE" IS, IN THE DATA. Nothing is written to the clip: a
+      // course_audio row is filed under the words it says, and after this
+      // update those words match no slot and no line. The one resolver
+      // (take-selection.cjs isLineRecorded) reads the slot and the text, so a
+      // take whose text no longer matches is not-a-recording for the queue,
+      // and the learner's read of the slot finds nothing rather than the wrong
+      // words. The row and its bytes stay, findable by their own text, and the
+      // ids go in the log and the response as the record of what went stale.
+      const targetChanged = hasTarget && text !== (sentence.target_text || '').trim()
+      const knownChanged = hasKnown && knownText !== (sentence.known_text || '').trim()
+      const patch = {}
+      if (targetChanged) {
+        patch.target_text = text
+        patch.target_audio_id = null
+        // The known side is the recordist's crib. On a fixture whose two sides
+        // are the same string, leaving it behind would put the OLD sentence
+        // under the new one on screen and look like a bug; where the two
+        // genuinely differ, the known side is a real translation and it only
+        // moves when the editor moves it (knownText).
+        const knownTracksTarget = !hasKnown && (sentence.known_text || '').trim() === (sentence.target_text || '').trim()
+        if (knownTracksTarget) patch.known_text = text
+      }
+      if (knownChanged) {
+        patch.known_text = knownText
+        patch.known_audio_id = null
+      }
+      if (!Object.keys(patch).length) {
+        // Nothing moved, so nothing is unlinked and no learner loses a
+        // sentence they have heard. The line is exactly as recorded as it was.
+        return res.json({
+          ok: true, lineId, text: sentence.target_text, knownText: sentence.known_text,
+          courseCode: pod.course_code, recorded: mine.recorded === true,
+          previousText: sentence.target_text, alsoChanged: 0, unlinkedAudioId: null,
+          unlinkedKnownAudioId: null, staleTakes: [], progressDropped: 0, changed: [],
+        })
+      }
 
       // ONE LINE ON SCREEN IS ONE LINE IN THE COURSE. The queue collapses every
       // sentence row that reads the same, in this voice's bucket, into one line
@@ -1225,28 +1270,38 @@ module.exports = function createRecordistRouter({
       // words in an old slot is a new sentence (protocol rule 6) and a new
       // sentence arrives unseen (rule 4) — absence IS unseen, so the row goes.
       // Nothing is deducted anywhere else: this costs a learner a little
-      // re-listening and nothing more.
+      // re-listening and nothing more. Either side changing is the sentence
+      // changing: the learner hears both.
       const { error: progErr, count: progressDropped } = await db()
         .from('learner_pod_state')
         .delete({ count: 'exact' })
         .in('sentence_id', ids)
       if (progErr) throw new Error(`progress migration failed: ${progErr.message}`)
 
-      logger.info(`[Recordist] ${recordist.voiceId} rewrote ${ids.length} row(s) for ${lineId} (${pod.course_code}): "${sentence.target_text}" -> "${text}"; unlinked take ${sentence.target_audio_id || '(none)'}; dropped ${progressDropped || 0} learner_pod_state row(s)`)
+      const staleTakes = []
+      if (targetChanged && sentence.target_audio_id) staleTakes.push({ side: 'target', audioId: sentence.target_audio_id, text: sentence.target_text })
+      if (knownChanged && sentence.known_audio_id) staleTakes.push({ side: 'known', audioId: sentence.known_audio_id, text: sentence.known_text })
+      const changed = [targetChanged && 'target', knownChanged && 'known'].filter(Boolean)
+      logger.info(`[Recordist] ${recordist.voiceId} rewrote ${ids.length} row(s) for ${lineId} (${pod.course_code}) [${changed.join('+')}]: ${targetChanged ? `"${sentence.target_text}" -> "${text}"` : ''}${knownChanged ? ` known "${sentence.known_text}" -> "${knownText}"` : ''}; stale takes ${staleTakes.map((t) => `${t.side}:${t.audioId}`).join(',') || '(none)'}; dropped ${progressDropped || 0} learner_pod_state row(s)`)
       res.json({
         ok: true,
         lineId,
-        text,
-        knownText: knownTracksTarget ? text : sentence.known_text,
+        text: patch.target_text !== undefined ? patch.target_text : sentence.target_text,
+        knownText: patch.known_text !== undefined ? patch.known_text : sentence.known_text,
         courseCode: pod.course_code,
-        // Said out loud so the screen can say it too: the line is outstanding
-        // again, and the take it used to have is still there, untouched.
-        recorded: false,
+        // Said out loud so the screen can say it too. A TARGET edit puts the
+        // line back to still-to-read for this voice — the take it used to have
+        // is still there, untouched. A KNOWN-only edit does not: this voice's
+        // take says the same words it always did, and stays recorded.
+        recorded: targetChanged ? false : mine.recorded === true,
         previousText: sentence.target_text,
         alsoChanged: ids.length - 1,
-        // The clip that used to fill this slot. Nothing was deleted — it is
-        // still in course_audio under the words it actually says.
-        unlinkedAudioId: sentence.target_audio_id || null,
+        changed,
+        // The clip(s) that used to fill the slot(s) that moved. Nothing was
+        // deleted — each is still in course_audio under the words it says.
+        unlinkedAudioId: targetChanged ? (sentence.target_audio_id || null) : null,
+        unlinkedKnownAudioId: knownChanged ? (sentence.known_audio_id || null) : null,
+        staleTakes,
         progressDropped: progressDropped || 0,
       })
     } catch (err) {

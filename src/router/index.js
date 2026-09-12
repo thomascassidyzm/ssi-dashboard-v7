@@ -879,6 +879,12 @@ const router = createRouter({
 })
 
 // Auth guard + page title
+// THE FOUR WORDS ON THE BOOTH'S NAV — Booth · Lines · Pods · Course — and where
+// the last two go. A recorder-role login is otherwise confined to the booth;
+// these are let through for their own course because the recordist is also
+// the editor of the lines they read.
+export const BOOTH_NAV_ROUTES = new Set(['ProductionDashboard', 'Pods', 'PodDetail'])
+
 router.beforeEach(async (to, from, next) => {
   document.title = to.meta.title
     ? `${to.meta.title} - Popty`
@@ -940,6 +946,16 @@ router.beforeEach(async (to, from, next) => {
 
     // …with one exception: the test-build page is for everyone with a Popty
     // login, and the recordists are exactly the people we hand test APKs to.
+    // …and the pages the booth's own nav points at (Tom, 2026-09-12: a voice
+    // artist "should be able to see the way to get to the course Overview page
+    // and maybe other PODS … because I am also an editor of the lines"). The
+    // course-scope check below still applies: only their own course(s).
+    if (BOOTH_NAV_ROUTES.has(to.name)) {
+      const navCourse = to.params.courseCode
+      if (navCourse && !canAccessCourse(navCourse)) return next(homeRoom)
+      return next()
+    }
+
     if (to.name !== 'RecordRoom' && to.name !== 'AppBuilds') {
       return next(homeRoom)
     }

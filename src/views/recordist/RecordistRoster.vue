@@ -187,7 +187,7 @@
                row does not jump under the thumb that just tapped it. The
                textarea inherits the span's own slot and type size. -->
           <textarea
-            v-if="editingId === r.id"
+            v-if="editingId === r.id && editingSide === 'target'"
             ref="rowBox"
             v-model="draft"
             class="row-text row-edit"
@@ -202,6 +202,26 @@
           <span v-else class="row-text" :class="{ tappable: r.canEdit }"
                 @click="onTextTap(r, $event)">{{ r.text }}</span>
           <span class="row-state" :class="markClass(r)">{{ stateWord(r) }}</span>
+          <!-- THE OTHER SIDE OF THE LINE, and it is his to fix too (Tom,
+               2026-09-12: "I am also an editor of the lines … probably to edit
+               BOTH known and target languages"). Under the words, smaller,
+               tappable the same way: a known-side edit unlinks the KNOWN take
+               and leaves his own take exactly where it is. -->
+          <textarea
+            v-if="editingId === r.id && editingSide === 'known'"
+            ref="rowBox"
+            v-model="draft"
+            class="row-known row-edit row-edit-known"
+            rows="1"
+            :style="{ height: rowBoxHeight }"
+            :disabled="saving"
+            @input="sizeRowBox"
+            @keydown.esc.prevent="abandon"
+            @keydown.enter.prevent="commit(r.id)"
+            @blur="commit(r.id)"
+          ></textarea>
+          <span v-else-if="r.known" class="row-known" :class="{ tappable: r.canEdit }"
+                @click="onKnownTap(r)">{{ r.known }}</span>
           <p v-if="error && editingId === r.id" class="row-error">{{ error }}</p>
           <!-- ON THE ROW, not under the list. It first rendered after the whole
                roster, which on Catrin's 466 lines put it several screens below
@@ -271,6 +291,8 @@ const props = defineProps({
   sections: { type: Array, required: true },
   playingId: { type: String, default: null },
   editingId: { type: String, default: null },
+  // WHICH SIDE of that row is open: 'target' (his words) or 'known' (the crib).
+  editingSide: { type: String, default: 'target' },
   // The one short line, and which row it belongs to. Empty in the common case,
   // which is the ruling: fixing a line nobody has read says nothing.
   savedNote: { type: String, default: '' },
@@ -279,7 +301,7 @@ const props = defineProps({
   error: { type: String, default: null },
   startOpen: { type: Boolean, default: false },
 })
-const emit = defineEmits(['play', 'edit', 'save', 'cancel-edit', 'record'])
+const emit = defineEmits(['play', 'edit', 'edit-known', 'save', 'cancel-edit', 'record'])
 
 const open = ref(props.startOpen)
 // WHICH MARK IS OPEN. Two separate pieces of state on purpose: `peekId` is a
@@ -332,15 +354,20 @@ function onTextTap(row, ev) {
   startEdit(row, caretOffsetFromPoint(ev.currentTarget, ev.clientX, ev.clientY))
 }
 
-function startEdit(row, caretAt = null) {
-  if (props.editingId === row.id) return
+function startEdit(row, caretAt = null, side = 'target') {
+  if (props.editingId === row.id && props.editingSide === side) return
   abandoning = false
-  draft.value = row.text
-  emit('edit', row.id)
+  draft.value = side === 'known' ? (row.known || '') : row.text
+  emit(side === 'known' ? 'edit-known' : 'edit', row.id)
   nextTick(() => {
     sizeRowBox()
     openEditorAt(Array.isArray(rowBox.value) ? rowBox.value[0] : rowBox.value, caretAt)
   })
+}
+
+function onKnownTap(row) {
+  if (!row.canEdit) return
+  startEdit(row, null, 'known')
 }
 
 function sizeRowBox() {
@@ -359,8 +386,13 @@ function abandon() {
 function commit(id) {
   if (abandoning) { abandoning = false; return }
   if (props.editingId !== id || props.saving) return
-  emit('save', { id, text: draft.value })
+  emit('save', { id, text: draft.value, side: props.editingSide })
 }
+
+// THE NAV'S "LINES" WORD LANDS HERE: open the whole list, so the booth can
+// scroll to it. See RecordistRoom's rc-nav.
+function openList() { open.value = true }
+defineExpose({ openList })
 // WHICH SECTIONS ARE OPEN, from the one module the already-recorded list uses
 // too. His taps are remembered for the life of the page: shutting "See every
 // line" and opening it again puts the panel back the way he left it.
@@ -776,6 +808,10 @@ function toggleStrip(key) {
 .row-text { flex: 1 1 auto; font-size: 0.95rem; }
 .row-text.tappable { cursor: text; -webkit-tap-highlight-color: rgba(255, 166, 48, 0.25); }
 .row-text.tappable:active { color: var(--color-tungsten, #ffa630); }
+.row-known { flex: 1 1 100%; font-size: 0.82rem; opacity: 0.7; padding-left: 1.1rem; }
+.row-known.tappable { cursor: text; -webkit-tap-highlight-color: rgba(255, 166, 48, 0.25); }
+.row-known.tappable:active { color: var(--color-tungsten, #ffa630); }
+.row-edit-known { opacity: 1; }
 .row-state { flex: 0 0 auto; font-size: 0.78rem; opacity: 0.7; text-transform: uppercase; letter-spacing: 0.03em; }
 .row-play {
   flex: 0 0 auto;

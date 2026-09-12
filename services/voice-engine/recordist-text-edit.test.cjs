@@ -253,3 +253,49 @@ test('a line too long to read in one take is refused', async () => {
   assert.equal(r.body.reason, 'too_long')
   assert.deepEqual(r.updates, [])
 })
+
+// ── TWO SIDES, EACH ITS OWN TAKE (Tom, 2026-09-12) ───────────────────────────
+// "I am also an editor of the lines … probably to edit BOTH known and target
+// languages, although editing a known language will of course orphan the
+// audio." Each side's edit unlinks THAT side's take and no other; a side handed
+// back its own words is not an edit and unlinks nothing.
+
+async function callBoth({ voiceId, lineId, body }) {
+  const updates = []
+  const { res, out } = mockRes()
+  await handler(updates)({ params: { voiceId, lineId }, body, query: {} }, res)
+  return { ...out, updates }
+}
+
+test('a KNOWN-side edit unlinks the known take and leaves the target take exactly where it is', async () => {
+  const r = await callBoth({ voiceId: 'human_aran_cym_n', lineId: 'LIVE', body: { knownText: 'Good morning to you.' } })
+  assert.equal(r.body.ok, true)
+  const patch = r.updates.find((u) => u.table === 'listening_pod_sentences').patch
+  assert.equal(patch.known_text, 'Good morning to you.')
+  assert.equal(patch.known_audio_id, null, 'the known take goes with the known words')
+  assert.ok(!('target_audio_id' in patch), 'the target take is not touched')
+  assert.ok(!('target_text' in patch), 'the target words are not touched')
+  // The recordist's OWN take says the same words it always did: still recorded,
+  // never served again as a thing to read.
+  assert.equal(r.body.recorded, true)
+  assert.equal(r.body.unlinkedAudioId, null)
+  assert.deepEqual(r.body.changed, ['known'])
+  assert.deepEqual(r.updates.filter((u) => u.table === 'course_audio'), [], 'nothing is deleted')
+})
+
+test('a TARGET-side edit with the known side sent unchanged leaves the known take alone', async () => {
+  const r = await callBoth({ voiceId: 'human_aran_cym_n', lineId: 'LIVE', body: { text: 'Prynhawn da.', knownText: 'Good morning.' } })
+  const patch = r.updates.find((u) => u.table === 'listening_pod_sentences').patch
+  assert.equal(patch.target_audio_id, null)
+  assert.ok(!('known_audio_id' in patch), 'unchanged words unlink nothing')
+  assert.equal(r.body.recorded, false)
+  assert.deepEqual(r.body.changed, ['target'])
+  assert.deepEqual(r.body.staleTakes, [{ side: 'target', audioId: 'clip-1', text: 'Bore da.' }])
+})
+
+test('handing a line back its own words is not an edit: nothing unlinked, no progress dropped', async () => {
+  const r = await callBoth({ voiceId: 'human_aran_cym_n', lineId: 'LIVE', body: { text: 'Bore da.' } })
+  assert.equal(r.body.ok, true)
+  assert.deepEqual(r.updates, [], 'no write at all')
+  assert.equal(r.body.recorded, true)
+})

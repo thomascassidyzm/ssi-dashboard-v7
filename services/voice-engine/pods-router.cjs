@@ -615,7 +615,7 @@ module.exports = function createPodsCastRouter({
       // is what the gate authorized, so verify before writing.
       const { data: sentence, error: fetchError } = await db
         .from('listening_pod_sentences')
-        .select('id, pod_id, target_audio_id, known_audio_id')
+        .select('id, pod_id, target_text, known_text, target_audio_id, known_audio_id')
         .eq('id', sentenceId)
         .maybeSingle()
       if (fetchError) throw new Error(fetchError.message)
@@ -628,6 +628,25 @@ module.exports = function createPodsCastRouter({
       if (podError) throw new Error(podError.message)
       if (!pod || pod.course_code !== courseCode) {
         return res.status(403).json({ error: `Sentence does not belong to course ${courseCode}` })
+      }
+
+      // A SIDE HANDED BACK ITS OWN WORDS IS NOT AN EDIT (Tom, 2026-09-12: a
+      // recordist edits both sides of their own lines, and "editing a known
+      // language will of course orphan the audio" — THAT side's audio, never
+      // the other's). The pod page has always sent both sides on every save,
+      // so a fix to the English used to unlink the Welsh take as well. Only the
+      // side whose words moved loses its slot; the draft marker still comes off
+      // on a target save even when the words are unchanged (that save IS the
+      // proofread — buildSentenceEditPatch).
+      if ('known_text' in patch && patch.known_text === (sentence.known_text || '').trim()) {
+        delete patch.known_text
+        delete patch.known_audio_id
+      }
+      if ('target_text' in patch && patch.target_text === (sentence.target_text || '').trim()) {
+        delete patch.target_audio_id
+      }
+      if (!Object.keys(patch).length) {
+        return res.json({ ok: true, sentence, unlinkedAudio: {}, unchanged: true })
       }
 
       const cleared = {}

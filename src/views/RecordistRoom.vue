@@ -38,7 +38,33 @@
            IT IS ON THIS CARD ONLY, never on the recording stage: a link within
            reach of a thumb while the mic is live is a lost take, and the stage
            already has its own way out in Stop here. -->
-      <router-link to="/" class="rc-back">← Back to Popty</router-link>
+      <!-- THE NAV. Tom, 2026-09-12, testing as a voice artist: "the whole nav
+           is not very clear … I should as a voice artist be able to see the
+           way to get to the course Overview page and maybe other PODS and so
+           on, because I am also an editor of the lines." One row, four plain
+           words, above the fold on a phone: Booth (here) · Lines (the whole
+           list, on this page) · Pods (each pod this voice is cast in — its
+           drafts page, where a line is edited or ticked) · Course (the
+           Overview). It replaces the faint "← Back to Popty" that was the only
+           way out. ON THE READY AND DONE CARDS ONLY, never on the recording
+           stage: a link within reach of a thumb while the mic is live is a
+           lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
+      <nav class="rc-nav" aria-label="Booth navigation">
+        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
+        <span class="rc-nav-dot">·</span>
+        <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
+        <template v-if="navPods.length">
+          <span class="rc-nav-dot">·</span>
+          <span class="rc-nav-word">{{ navPods.length === 1 ? 'Pod' : 'Pods' }}</span>
+          <router-link v-for="p in navPods" :key="p.key" :to="p.to" class="rc-nav-item rc-nav-pod">{{ p.label }}</router-link>
+        </template>
+        <template v-if="navCourses.length">
+          <span class="rc-nav-dot">·</span>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+        </template>
+        <span class="rc-nav-dot">·</span>
+        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
+      </nav>
       <h1 class="rc-hello">Hello {{ voice.displayName }}</h1>
       <p class="rc-progress-line">{{ queueHeadline }}</p>
 
@@ -72,9 +98,11 @@
       </div>
 
       <RecordistRoster
+        ref="rosterRef"
         :sections="rosterSections"
         :playing-id="playingId"
         :editing-id="editingId"
+        :editing-side="editingSide"
         :saving="editSaving"
         :error="editError"
         :saved-note="savedNote"
@@ -82,8 +110,9 @@
         @play="togglePlay"
         @record="recordOne"
         @edit="beginEdit"
+        @edit-known="beginEdit($event, null, 'known')"
         @cancel-edit="cancelEdit"
-        @save="saveEdit($event.id, $event.text)"
+        @save="saveEdit($event.id, $event.text, $event.side)"
       />
 
       <!-- NOTHING HAS GONE MISSING. The one sentence that was owed to Aran on
@@ -497,6 +526,33 @@
 
     <!-- ── Done ───────────────────────────────────────────────────────────── -->
     <section v-else-if="phase === 'done'" class="rc-card">
+      <!-- THE NAV. Tom, 2026-09-12, testing as a voice artist: "the whole nav
+           is not very clear … I should as a voice artist be able to see the
+           way to get to the course Overview page and maybe other PODS and so
+           on, because I am also an editor of the lines." One row, four plain
+           words, above the fold on a phone: Booth (here) · Lines (the whole
+           list, on this page) · Pods (each pod this voice is cast in — its
+           drafts page, where a line is edited or ticked) · Course (the
+           Overview). It replaces the faint "← Back to Popty" that was the only
+           way out. ON THE READY AND DONE CARDS ONLY, never on the recording
+           stage: a link within reach of a thumb while the mic is live is a
+           lost take. Those pages carry "← Back to the booth" (booth-pointer.js). -->
+      <nav class="rc-nav" aria-label="Booth navigation">
+        <router-link :to="`/r/${voiceId}`" class="rc-nav-item is-here" aria-current="page">Booth</router-link>
+        <span class="rc-nav-dot">·</span>
+        <button type="button" class="rc-nav-item rc-nav-btn" @click="goToLines">Lines</button>
+        <template v-if="navPods.length">
+          <span class="rc-nav-dot">·</span>
+          <span class="rc-nav-word">{{ navPods.length === 1 ? 'Pod' : 'Pods' }}</span>
+          <router-link v-for="p in navPods" :key="p.key" :to="p.to" class="rc-nav-item rc-nav-pod">{{ p.label }}</router-link>
+        </template>
+        <template v-if="navCourses.length">
+          <span class="rc-nav-dot">·</span>
+          <router-link v-for="c in navCourses" :key="c.code" :to="c.to" class="rc-nav-item rc-nav-course">{{ navCourses.length === 1 ? 'Course' : `Course ${c.code}` }}</router-link>
+        </template>
+        <span class="rc-nav-dot">·</span>
+        <router-link to="/" class="rc-nav-item rc-nav-home">Popty</router-link>
+      </nav>
       <h2>{{ doneHeadline }}</h2>
       <p class="rc-progress-line">You read {{ readThisSession }} {{ readThisSession === 1 ? 'line' : 'lines' }}.</p>
       <!-- "Keep this page open until everything has saved" was the honest thing
@@ -509,9 +565,11 @@
       <p class="state-pill" :class="activityState.cls">{{ activityState.words }}</p>
 
       <RecordistRoster
+        ref="rosterRef"
         :sections="rosterSections"
         :playing-id="playingId"
         :editing-id="editingId"
+        :editing-side="editingSide"
         :saving="editSaving"
         :error="editError"
         :saved-note="savedNote"
@@ -519,8 +577,9 @@
         @play="togglePlay"
         @record="recordOne"
         @edit="beginEdit"
+        @edit-known="beginEdit($event, null, 'known')"
         @cancel-edit="cancelEdit"
-        @save="saveEdit($event.id, $event.text)"
+        @save="saveEdit($event.id, $event.text, $event.side)"
       />
 
       <div v-if="sessionLines.length" class="listen-back">
@@ -593,6 +652,7 @@ import { useSectionCollapse } from './recordist/section-collapse'
 import { recordistClipUrl, diagnoseRecordistClip } from '@/composables/useStoredClip'
 import { createAdvanceLock } from './recordist/advance-lock'
 import { recordedSections } from './recordist/recorded-sections.js'
+import { rememberBooth } from './recordist/booth-pointer.js'
 import { stripBreakdownMarkers } from '@/utils/breakdownMarkers'
 
 const props = defineProps({ voiceId: { type: String, required: true } })
@@ -741,6 +801,8 @@ const rosterRows = computed(() => lines.value.map(l => ({
   done: isRecorded(l),
   url: storedUrlFor(l.id),
   canEdit: !!l.canEditText,
+  // THE OTHER SIDE, so the list can offer it for editing too.
+  known: l.knownText ? plainText(l.knownText) : null,
   // A pod line's CHARACTER. Straight off the wire, and only pod lines have one.
   speaker: l.speaker || null,
   // How many other copies of the same sentence this one take also fills.
@@ -876,6 +938,39 @@ function podSectionFor(row) {
   // person wrote, and never by its slug.
   return { heading: row.podTitle || 'MORE CONVERSATIONS', blurb }
 }
+// WHERE THE NAV GOES, read off the queue itself: every pod this voice is
+// cast in (first-appearance order, the server's own) and every course those
+// lines belong to. Nothing is fetched for it — a line already says which pod
+// and which course it is from.
+const navPods = computed(() => {
+  const seen = new Map()
+  for (const l of lines.value) {
+    if ((l.kind || 'pod') !== 'pod' || !l.podSlug || !l.courseCode) continue
+    const key = `${l.courseCode}/${l.podSlug}`
+    if (seen.has(key)) continue
+    seen.set(key, { key, label: l.podTitle || l.podSlug, to: `/production/${l.courseCode}/pods/${l.podSlug}` })
+  }
+  return [...seen.values()]
+})
+const navCourses = computed(() => {
+  const seen = new Map()
+  for (const l of lines.value) {
+    if (!l.courseCode || seen.has(l.courseCode)) continue
+    seen.set(l.courseCode, { code: l.courseCode, to: `/production/${l.courseCode}` })
+  }
+  return [...seen.values()]
+})
+const rosterRef = ref(null)
+// "Lines" is on this page: open the whole list and put it under his thumb.
+function goToLines() {
+  const r = Array.isArray(rosterRef.value) ? rosterRef.value[0] : rosterRef.value
+  if (r && r.openList) r.openList()
+  nextTick(() => {
+    const el = r && r.$el && r.$el.querySelector ? r.$el.querySelector('.roster-toggle') : null
+    if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  })
+}
+
 const rosterSections = computed(() => {
   const byKind = new Map(SECTION_ORDER.map(s => [s.key, []]))
   // A kind we did not plan for gets a section of its own rather than vanishing:
@@ -1204,6 +1299,9 @@ const editingId = ref(null)
 const editText = ref('')
 const editSaving = ref(false)
 const editError = ref(null)
+// WHICH SIDE of the line the open editor is on. 'target' is his words; 'known'
+// is the crib, which is his to fix too — and fixing it never touches his take.
+const editingSide = ref('target')
 const editBox = ref(null)
 // The box grows to the words, from the first frame, so opening the editor moves
 // nothing on the page.
@@ -1236,10 +1334,11 @@ function onLineTap(ev) {
   beginEdit(l.id, caretOffsetFromPoint(ev.currentTarget, ev.clientX, ev.clientY))
 }
 
-function beginEdit(lineId, caretAt = null) {
+function beginEdit(lineId, caretAt = null, side = 'target') {
   const l = lines.value.find(x => x.id === lineId)
   if (!l || !l.canEditText) return
-  if (editingId.value === lineId) return
+  if (editingId.value === lineId && editingSide.value === side) return
+  editingSide.value = side
   stopPlayback()
   // Same hold as a playback, for the same reason: a live microphone under an
   // open keyboard is recording the room and calling it his take. The SESSION is
@@ -1252,7 +1351,7 @@ function beginEdit(lineId, caretAt = null) {
   editError.value = null
   savedNote.value = ''
   savedId.value = null
-  editText.value = plainText(l.text)
+  editText.value = side === 'known' ? plainText(l.knownText || '') : plainText(l.text)
   editingId.value = lineId
   nextTick(() => {
     sizeEditBox()
@@ -1272,6 +1371,7 @@ function sizeEditBox() {
 function cancelEdit() {
   abandoning = true
   editingId.value = null
+  editingSide.value = 'target'
   editError.value = null
   releaseMic()
 }
@@ -1284,11 +1384,12 @@ function commitEdit() {
   saveEdit(editingId.value, editText.value)
 }
 
-async function saveEdit(lineId, text) {
+async function saveEdit(lineId, text, side = editingSide.value) {
   const l = lines.value.find(x => x.id === lineId)
   const next = String(text || '').trim()
   if (!l) return
-  if (!next || next === plainText(l.text)) { cancelEdit(); return }
+  const known = side === 'known'
+  if (!next || next === plainText(known ? (l.knownText || '') : l.text)) { cancelEdit(); return }
   const wasRecorded = isRecorded(l)
   editSaving.value = true
   editError.value = null
@@ -1298,11 +1399,25 @@ async function saveEdit(lineId, text) {
       {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
-        body: JSON.stringify({ text: next }),
+        // ONE SIDE PER SAVE. The server unlinks only the take of the side whose
+        // words moved (recordist-router.cjs), so a known-side fix never costs
+        // him his own take, and the screen below follows the same rule.
+        body: JSON.stringify(known ? { knownText: next } : { text: next }),
       }
     )
     const data = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(data.error || 'That did not save. Try again.')
+    if (known) {
+      // THE CRIB CHANGED; HIS TAKE DID NOT. Nothing about recorded-ness moves:
+      // the known take (somebody else's voice, or a machine's) is set aside by
+      // the server, and that is not his to read again.
+      l.knownText = data.knownText !== undefined ? data.knownText : next
+      lines.value = [...lines.value]
+      editingId.value = null
+      editingSide.value = 'target'
+      releaseMic()
+      return
+    }
     // DID THIS EDIT ACTUALLY COST THE ARTIST ANYTHING?
     //
     // The artist's own view of the line, and nothing else. NOT the server's
@@ -2171,6 +2286,8 @@ onMounted(() => {
   window.addEventListener('keydown', onKey)
   window.addEventListener('beforeunload', beforeUnloadGuard)
   recorder.listDevices()
+  // So the course pages the nav points at can draw "← Back to the booth".
+  rememberBooth(props.voiceId)
 })
 onBeforeUnmount(() => {
   stopWave()
@@ -2226,15 +2343,33 @@ watch(() => props.voiceId, load, { immediate: true })
 .safety-banner.refused { background: rgba(232, 160, 42, 0.14); border-color: rgba(232, 160, 42, 0.45); color: #ffe2b0; }
 /* Small, muted, above everything and out of the flow of the work: it is the
    door, not part of the job. */
-.rc-back {
-  display: inline-block;
-  margin-bottom: 0.9rem;
-  font-size: 0.82rem;
-  color: var(--color-paper-dim, #c1c1bb);
-  text-decoration: none;
-  opacity: 0.85;
+.rc-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.5rem;
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
 }
-.rc-back:hover, .rc-back:focus-visible { opacity: 1; text-decoration: underline; }
+.rc-nav-item {
+  display: inline-block;
+  min-height: 40px;
+  line-height: 40px;
+  padding: 0 0.6rem;
+  border-radius: 8px;
+  color: var(--color-emerald, #06ffa5);
+  background: rgba(6, 255, 165, 0.08);
+  text-decoration: none;
+  font: inherit;
+  font-weight: 600;
+  border: 0;
+  cursor: pointer;
+}
+.rc-nav-item:hover, .rc-nav-item:focus-visible { background: rgba(6, 255, 165, 0.2); }
+.rc-nav-item.is-here { color: var(--color-paper, #f5f5f0); background: rgba(255, 255, 255, 0.12); cursor: default; }
+.rc-nav-word { color: var(--color-paper-dim, #c1c1bb); font-weight: 600; }
+.rc-nav-dot { color: var(--color-paper-dim, #c1c1bb); opacity: 0.6; }
+.rc-nav-home { opacity: 0.75; font-weight: 500; }
 .rc-hello { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.35rem; }
 .rc-card h2 { font-family: 'Josefin Sans', sans-serif; font-size: 1.3rem; margin: 0 0 0.6rem; }
 .rc-card h3 { font-size: 0.95rem; margin: 1.25rem 0 0.35rem; }

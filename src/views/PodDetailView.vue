@@ -302,7 +302,7 @@
                       <button :disabled="savingEdit" @click="saveSentence(sent)" class="text-xs px-2.5 py-1 rounded bg-emerald-600 hover:bg-emerald-500 disabled:opacity-50 text-white">{{ savingEdit ? 'Saving…' : 'Save' }}</button>
                       <button :disabled="savingEdit" @click="cancelEdit" class="text-xs px-2.5 py-1 rounded border border-line text-ink">Cancel</button>
                       <span class="text-[11px] text-faint">
-                        editing clears this line's audio<template v-if="isDraft(sent)">
+                        editing a side clears that side's audio<template v-if="isDraft(sent)">
                           · saving takes the DRAFT marker off, even if you change nothing</template>
                       </span>
                       <span v-if="editError" class="text-[11px] text-danger">{{ editError }}</span>
@@ -801,11 +801,13 @@ async function saveSentence(sent) {
     })
     const body = await res.json()
     if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
-    // Editing nulls the audio (text no longer matches the recording) — reflect locally.
+    // Editing a side unlinks THAT side's audio (its words no longer match the
+    // recording) and no other — the server says which, and the row follows it.
     sent.target_text = body.sentence.target_text
     sent.known_text = body.sentence.known_text
-    sent.target_audio_id = null
-    sent.known_audio_id = null
+    const unlinked = body.unlinkedAudio || {}
+    if ('target_audio_id' in unlinked) sent.target_audio_id = null
+    if ('known_audio_id' in unlinked) sent.known_audio_id = null
     // The save WAS the proofread — the server cleared target_text_draft in the
     // same update, so drop the badge here rather than making them reload.
     if (body.sentence.target_text_draft === false && draftIds.value.has(sent.id)) {
