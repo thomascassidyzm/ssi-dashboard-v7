@@ -1,0 +1,355 @@
+total कल-token rows: 354
+ 12|SEED |-1|S0012           |         |   | मैं यह अंदाज़ा नहीं लगाना चाहूँगा कि कल क्या होगा। ==> I wouldn't like to guess what's going to happen tomorrow.
+ 12|LEGO*| 3|S0012L03        |         |   | कल क्या होगा ==> what's going to happen tomorrow
+ 12|BUILD| 3|S0012L03B01     |S0012L03 |nYY| अंदाज़ा लगाना कि कल क्या होगा ==> to guess what's going to happen tomorrow
+ 12|BUILD| 3|S0012L03B02     |S0012L03 |nYY| समझाना कि कल क्या होगा ==> to explain what's going to happen tomorrow
+ 12|BUILD| 3|S0012L03B03     |S0012L03 |nnn| कहना कि कल क्या होगा ==> to say what's going to happen tomorrow
+ 12|USE  | 3|S0012L03U01     |S0012L03 |nYY| मुझे यकीन नहीं है कि कल क्या होगा। ==> I'm not sure what's going to happen tomorrow
+ 12|USE  | 3|S0012L03U02     |S0012L03 |nYY| मैं समझाना चाहूँगा कि कल क्या होगा। ==> I'd like to explain what's going to happen tomorrow
+ 12|USE  | 3|S0012L03U03     |S0012L03 |nYY| मैं अंदाज़ा लगाना नहीं चाहूँगा कि कल क्या होगा। ==> I wouldn't like to guess what's going to happen tomorrow
+ 12|USE  | 3|S0012L03U04     |S0012L03 |nnn| मैं याद करना चाहता हूँ कि कल क्या होगा। ==> I want to remember what's going to happen tomorrow
+ 12|USE  | 3|S0012L03U05     |S0012L03 |nYY| मैं समझाने की कोशिश कर रहा हूँ कि कल क्या होगा। ==> I'm trying to explain what's going to happen tomorrow
+ 15|SEED |-1|S0015           |         |   | और मैं चाहता हूँ कि आप कल मेरे साथ अंग्रेज़ी बोलें। ==> And I want you to speak English with me tomorrow.
+ 23|USE  | 2|S0023L02U04     |         |nnn| आप कल और बोलना शुरू करना चाहते हैं। ==> you want to start talking more tomorrow
+ 24|USE  | 2|S0024L02U01     |         |nnn| मैं कल उसका नाम याद नहीं कर पाऊँगा। ==> I'm not going to be able to remember his name tomorrow
+ 25|BUILD| 1|S0025L01B03     |         |nnn| क्या आप कल मेरी मदद करेंगे ==> are you going to help me tomorrow
+ 26|USE  | 2|S0026L02U04     |         |nnn| मैं कल जाने के लिए लगभग तैयार हूँ। ==> I'm nearly ready to go tomorrow
+ 27|USE  | 1|S0027L01U05     |         |nnn| मुझे कल वापस आना पसंद नहीं है। ==> I don't like to come back tomorrow
+ 27|USE  | 2|S0027L02U02     |         |nnn| मुझे कल बहुत समय लगाना पसंद नहीं है। ==> I don't like taking too much time tomorrow
+ 28|USE  | 3|S0028L03U05     |         |nnn| क्या आप कल बोलना शुरू करना चाहते हैं? ==> do you want to start talking tomorrow?
+ 29|BUILD| 1|S0029L01B03     |         |nnn| मैं कल बोलने के लिए उत्सुक हूँ ==> I'm looking forward to speaking tomorrow
+ 30|SEED |-1|S0030           |         |   | मैं कल आपसे कुछ पूछना चाहता था। ==> I wanted to ask you something yesterday.
+ 30|LEGO*| 3|S0030L03        |         |   | कल ==> yesterday
+ 30|BUILD| 3|S0030L03B01     |S0030L03 |nnn| मैं कल अंग्रेज़ी बोलना चाहता था ==> I wanted to speak English yesterday
+ 30|BUILD| 3|S0030L03B02     |S0030L03 |nnn| मैं कल वापस आना चाहता था ==> I wanted to come back yesterday
+ 30|BUILD| 3|S0030L03B03     |S0030L03 |nnn| मैं कल जवाब जानना चाहता था ==> I wanted to find out the answer yesterday
+ 30|USE  | 3|S0030L03U01     |S0030L03 |nnn| मैं कल आपके साथ बोलना चाहता था। ==> I wanted to speak with you yesterday
+ 30|USE  | 3|S0030L03U02     |S0030L03 |nnn| मैं कल लोगों से मिलना चाहता था। ==> I wanted to meet people yesterday
+ 30|USE  | 3|S0030L03U03     |S0030L03 |nnn| मैं कल उसका नाम याद करना चाहता था। ==> I wanted to remember his name yesterday
+ 30|USE  | 3|S0030L03U04     |S0030L03 |nnn| मैं कल बोलना शुरू करना चाहता था। ==> I wanted to start talking yesterday
+ 30|USE  | 3|S0030L03U05     |S0030L03 |nnn| मैं कल बेहतर बोलना चाहता था। ==> I wanted to speak better yesterday
+ 31|USE  | 2|S0031L02U01     |S0030L03 |nnn| आप कल अंग्रेज़ी बोलना चाहते थे। ==> you wanted to speak English yesterday
+ 31|USE  | 2|S0031L02U03     |S0030L03 |nnn| आप कल वापस आना चाहते थे। ==> you wanted to come back yesterday
+ 32|USE  | 1|S0032L01U05     |S0030L03 |nnn| आप कल मुझे कुछ दिखाना चाहते थे। ==> you wanted to show me something yesterday
+ 32|USE  | 2|S0032L02U01     |S0030L03 |nnn| क्या आप कल अंग्रेज़ी बोलना चाहते थे? ==> did you want to speak English yesterday?
+ 37|USE  | 1|S0037L01U01     |S0030L03 |nnn| मैंने कल अंग्रेज़ी बोलना शुरू किया। ==> I started to speak English yesterday
+ 42|SEED |-1|S0042           |         |   | मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था। ==> I was starting to feel better than last night.
+ 42|USE  | 1|S0042L01U01     |S0030L03 |nnn| मैं कल ज़्यादा अच्छा महसूस करने लगा था। ==> I was starting to feel better yesterday
+ 42|USE  | 2|S0042L02U03     |S0030L03 |nnn| मैं कल के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था। ==> I was starting to feel better than yesterday
+ 42|LEGO*| 3|S0042L03        |         |   | कल रात के मुक़ाबले ==> than last night
+ 42|BUILD| 3|S0042L03B01     |S0042L03 |nnn| लेकिन मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था ==> but I was starting to feel better than last night
+ 42|BUILD| 3|S0042L03B02     |S0042L03 |nnn| मैं कल रात के मुक़ाबले बेहतर बोलता हूँ ==> I speak better than last night
+ 42|BUILD| 3|S0042L03B03     |S0042L03 |nnn| आप कल रात के मुक़ाबले बेहतर बोलते हैं ==> you speak better than last night
+ 42|USE  | 3|S0042L03U01     |S0042L03 |nYY| मैं कल रात के मुक़ाबले ज़्यादा अच्छा महसूस करने लगा था। ==> I was starting to feel better than last night
+ 42|USE  | 3|S0042L03U02     |S0042L03 |nnn| मैं आज कल रात के मुक़ाबले बेहतर बोलता हूँ। ==> I speak better than last night today
+ 42|USE  | 3|S0042L03U03     |S0042L03 |nnn| आप आज सुबह कल रात के मुक़ाबले बेहतर बोलते हैं। ==> you speak better than last night this morning
+ 42|USE  | 3|S0042L03U04     |S0042L03 |nnn| मैं यहाँ कल रात के मुक़ाबले बेहतर बोलता हूँ। ==> I speak better than last night here
+ 42|USE  | 3|S0042L03U05     |S0042L03 |nnn| मैं अभी कल रात के मुक़ाबले बेहतर बोलता हूँ। ==> I speak better than last night at the moment
+ 43|USE  | 1|S0043L01U01     |S0030L03 |nnn| मैं कल इस पर नहीं सोच रहा था। ==> I wasn't thinking about it yesterday
+ 44|BUILD| 1|S0044L01B02     |         |nnn| मैं कल मिलना चाहता हूँ या कि आज रात ==> I want to meet tomorrow or tonight
+ 52|USE  | 1|S0052L01U01     |S0030L03 |nnn| वह कल अंग्रेज़ी बोलना चाहता था। ==> he wanted to speak English yesterday
+ 52|USE  | 2|S0052L02U05     |S0030L03 |nnn| वह कल एक चिट्ठी लिखना चाहता था। ==> he wanted to write a letter yesterday
+ 52|USE  | 4|S0052L04U04     |S0030L03 |nnn| वह कल अपने दोस्त को एक चिट्ठी लिखना चाहता था। ==> he wanted to write a letter to his friend yesterday
+ 53|USE  | 1|S0053L01U01     |S0030L03 |nnn| वह कल एक चिट्ठी लिखना चाहती थी। ==> she wanted to write a letter yesterday
+ 53|USE  | 2|S0053L02U04     |S0030L03 |nnn| वह कल एक चिट्ठी अपने बैग में रखना चाहती थी। ==> she wanted to put a letter in her bag yesterday
+ 53|USE  | 3|S0053L03U05     |S0030L03 |nnn| वह कल उसकी चिट्ठी पढ़ना चाहती थी। ==> she wanted to read his letter yesterday
+ 54|USE  | 1|S0054L01U01     |S0030L03 |nnn| हम कल आपको एक चिट्ठी देना चाहते थे। ==> we wanted to give you a letter yesterday
+ 54|USE  | 2|S0054L02U02     |S0030L03 |nnn| हम कल आपको थोड़ा और समय देना चाहते थे। ==> we wanted to give you a little more time yesterday
+ 55|BUILD| 3|S0055L03B02     |S0030L03 |nnn| मुझे कल नींद नहीं आई ==> I didn't sleep yesterday
+ 69|USE  | 1|S0069L01U01     |S0030L03 |nnn| वह कल लोगों से मिलना नहीं चाहता था। ==> he didn't want to meet people yesterday
+ 70|USE  | 1|S0070L01U01     |S0030L03 |nnn| वह कल एक चिट्ठी लिखना नहीं चाहती थी। ==> she didn't want to write a letter yesterday
+ 71|USE  | 1|S0071L01U02     |S0030L03 |nnn| हम कल नहीं चाहते थे कि कोई कहानी सुने। ==> we didn't want to let anyone hear the story yesterday
+ 78|USE  | 2|S0078L02U05     |S0030L03 |nnn| मुझे कल आपने जो कहा वह याद नहीं आ रहा। ==> I can't remember what you said yesterday
+ 86|BUILD| 1|S0086L01B02     |S0030L03 |nnn| कल यह संभव नहीं था ==> it wasn't possible yesterday
+114|SEED |-1|S0114           |         |   | मुझे लग रहा है कि आज मैं कल से बुरा कर रहा हूँ। ==> I feel as if I'm doing worse today than yesterday.
+114|BUILD| 2|S0114L02B02     |S0030L03 |nnn| मैं कल से बुरा कर रहा हूँ ==> I'm doing worse than yesterday
+114|USE  | 2|S0114L02U05     |S0030L03 |nnn| मैं आज कल से बुरा कर रहा हूँ। ==> I'm doing worse today than yesterday
+117|BUILD| 1|S0117L01B02     |S0030L03 |nnn| मैं निश्चित रूप से कल से बेहतर कर रहा हूँ ==> I'm definitely doing better than yesterday
+118|USE  | 1|S0118L01U05     |S0030L03 |nnn| मुझे कल से बेहतर लग रहा है। ==> I feel better than yesterday
+143|BUILD| 2|S0143L02B03     |S0030L03 |nnn| कल हम बात कर रहे थे ==> we were talking about yesterday
+143|USE  | 2|S0143L02U03     |S0030L03 |nnn| मुझे यकीन नहीं है कि इसी बारे में हम कल बात कर रहे थे। ==> I'm not sure if it's the same thing as we were talking about yesterday
+144|USE  | 2|S0144L02U02     |S0030L03 |nnn| मैं कल जितना चाहता था, उससे पहले ही जाग गया। ==> I woke earlier than I wanted to yesterday
+155|SEED |-1|S0155           |         |   | मुझे कल सुबह कुछ मिनट इंतज़ार करने में कोई आपत्ति नहीं। ==> I don't mind waiting for a few minutes tomorrow morning.
+155|USE  | 1|S0155L01U01     |S0155L04 |nnn| मुझे कल सुबह इंतज़ार करने में कोई आपत्ति नहीं। ==> I don't mind waiting tomorrow morning
+155|USE  | 2|S0155L02U04     |S0155L04 |nnn| मुझे कल सुबह इंतज़ार करने में कोई आपत्ति नहीं। ==> I don't mind waiting tomorrow morning
+155|LEGO*| 4|S0155L04        |         |   | कल सुबह ==> tomorrow morning
+155|BUILD| 4|S0155L04B01     |S0155L04 |nnn| मैं कल सुबह मिलना चाहता हूँ ==> I want to meet tomorrow morning
+155|BUILD| 4|S0155L04B02     |S0155L04 |nnn| मुझे कल सुबह जागना है ==> I need to wake tomorrow morning
+155|BUILD| 4|S0155L04B03     |S0155L04 |nnn| मैं कल सुबह बात करना चाहता हूँ ==> I want to speak tomorrow morning
+155|USE  | 4|S0155L04U01     |S0155L04 |nnn| मैं कल सुबह मिलना चाहूँगा। ==> I'd like to meet tomorrow morning
+155|USE  | 4|S0155L04U02     |S0155L04 |nnn| मुझे कल सुबह इंतज़ार करने में कोई आपत्ति नहीं। ==> I don't mind waiting tomorrow morning
+155|USE  | 4|S0155L04U03     |S0155L04 |nnn| हम कल सुबह जागना चाहते हैं। ==> we want to wake tomorrow morning
+155|USE  | 4|S0155L04U04     |S0155L04 |nnn| क्या आप कल सुबह मिलने के लिए तैयार हैं? ==> are you ready to meet tomorrow morning?
+155|USE  | 4|S0155L04U05     |S0155L04 |nnn| मुझे कल सुबह जाना है। ==> I need to leave tomorrow morning
+155|USE  | 4|S0155L04U06     |S0155L04 |nnn| क्या आप कल सुबह बात करना चाहते हैं? ==> do you want to speak tomorrow morning?
+156|BUILD| 1|S0156L01B03     |S0155L04 |nnn| क्या आप कल सुबह जाना चाहते हैं? ==> do you want to go tomorrow morning?
+156|BUILD| 2|S0156L02B03     |S0155L04 |nnn| क्या आप कल सुबह किसी रेस्टोरेंट में जाना चाहते हैं? ==> do you want to go to a restaurant tomorrow morning?
+157|BUILD| 1|S0157L01B03     |S0155L04 |nnn| मैं कल सुबह वहाँ नहीं हो पाऊँगा ==> I won't be able to be there tomorrow morning
+158|USE  | 1|S0158L01U05     |S0155L04 |nnn| चलिए कल सुबह कहानी पर बात करते हैं। ==> let's talk about the story tomorrow morning
+161|USE  | 1|S0161L01U01     |S0155L04 |nnn| क्या आप मुझे कल सुबह वह किताब दे सकते हैं? ==> can you give me that book tomorrow morning?
+167|SEED |-1|S0167           |         |   | आपको कल दोपहर क्या करना है? ==> What do you need to do tomorrow afternoon?
+167|BUILD| 1|S0167L01B03     |S0155L04 |nnn| आपको कल सुबह क्या करना है? ==> what do you need to do tomorrow morning?
+167|LEGO*| 2|S0167L02        |         |   | कल दोपहर ==> tomorrow afternoon
+167|BUILD| 2|S0167L02B01     |S0167L02 |nnn| मैं कल दोपहर मिलना चाहता हूँ ==> I want to meet tomorrow afternoon
+167|BUILD| 2|S0167L02B02     |S0167L02 |nnn| मैं कल दोपहर आराम करना चाहता हूँ ==> I want to relax tomorrow afternoon
+167|BUILD| 2|S0167L02B03     |S0167L02 |nnn| मुझे कल दोपहर बात करना है ==> I need to speak tomorrow afternoon
+167|USE  | 2|S0167L02U01     |S0167L02 |nnn| मैं कल दोपहर मिलना चाहूँगा। ==> I'd like to meet tomorrow afternoon
+167|USE  | 2|S0167L02U02     |S0167L02 |nnn| क्या आप कल दोपहर जाना चाहते हैं? ==> do you want to go tomorrow afternoon?
+167|USE  | 2|S0167L02U03     |S0167L02 |nnn| हम कल दोपहर आराम करना चाहते हैं। ==> we want to relax tomorrow afternoon
+167|USE  | 2|S0167L02U04     |S0167L02 |nnn| मुझे कल दोपहर जाना है। ==> I need to leave tomorrow afternoon
+167|USE  | 2|S0167L02U05     |S0167L02 |nnn| क्या आप कल दोपहर मिलने के लिए तैयार हैं? ==> are you ready to meet tomorrow afternoon?
+167|USE  | 2|S0167L02U06     |S0167L02 |nnn| मुझे कल दोपहर इंतज़ार करने में कोई आपत्ति नहीं। ==> I don't mind waiting tomorrow afternoon
+168|BUILD| 2|S0168L02B02     |S0155L04 |nnn| मैं कल सुबह आकर मदद कर पाऊँगा ==> I'll be able to come and help tomorrow morning
+169|BUILD| 1|S0169L01B02     |S0167L02 |nnn| आप मुझसे कल दोपहर क्या करवाना चाहते हैं? ==> what do you want me to do tomorrow afternoon?
+169|USE  | 1|S0169L01U04     |S0155L04 |nnn| आप मुझसे कल सुबह क्या करवाना चाहते हैं? ==> what do you want me to do tomorrow morning?
+170|USE  | 1|S0170L01U05     |S0155L04 |nnn| मैं चाहूँगा कि आप मुझे कल सुबह बताएँ। ==> I'd like you to tell me tomorrow morning
+171|BUILD| 1|S0171L01B02     |S0155L04 |nnn| क्या आप चाहते हैं कि मैं कल सुबह आपकी मदद करूँ? ==> do you want me to help you tomorrow morning?
+171|USE  | 1|S0171L01U04     |S0167L02 |nnn| क्या आप चाहते हैं कि मैं कल दोपहर आपकी मदद करूँ? ==> do you want me to help you tomorrow afternoon?
+171|BUILD| 2|S0171L02B02     |S0155L04 |nnn| क्या आप चाहते हैं कि मैं कल सुबह इसे ढूँढ़ने में आपकी मदद करूँ? ==> do you want me to help you look for it tomorrow morning?
+171|USE  | 2|S0171L02U04     |S0167L02 |nnn| क्या आप चाहते हैं कि मैं कल दोपहर इसे ढूँढ़ने में आपकी मदद करूँ? ==> do you want me to help you look for it tomorrow afternoon?
+173|USE  | 2|S0173L02U05     |S0155L04 |nnn| मैं कल सुबह संभाल सकता हूँ। ==> I can manage tomorrow morning
+175|BUILD| 1|S0175L01B02     |S0167L02 |nnn| आप कल दोपहर क्या करना चाहते हैं? ==> what do you want to do tomorrow afternoon?
+175|USE  | 1|S0175L01U03     |S0155L04 |nnn| आप कल सुबह क्या करना चाहते हैं? ==> what do you want to do tomorrow morning?
+179|BUILD| 1|S0179L01B02     |S0167L02 |nnn| आप कल दोपहर क्या करने वाले हैं? ==> what are you going to do tomorrow afternoon?
+179|USE  | 1|S0179L01U03     |S0155L04 |nnn| आप कल सुबह क्या करने वाले हैं? ==> what are you going to do tomorrow morning?
+181|USE  | 1|S0181L01U03     |S0167L02 |nnn| मुझे कल दोपहर वह किताब ले जाना है। ==> I have to take that book tomorrow afternoon
+181|USE  | 2|S0181L02U02     |S0167L02 |nnn| मैं अपनी माँ को कल दोपहर देखना चाहूँगा। ==> I'd like to see my mother tomorrow afternoon
+181|BUILD| 3|S0181L03B03     |S0155L04 |nnn| क्या आप कल सुबह डॉक्टर के पास जाना चाहते हैं? ==> do you want to go to the doctor tomorrow morning?
+181|USE  | 3|S0181L03U03     |S0167L02 |nnn| मैं कल दोपहर डॉक्टर के पास जाना चाहता हूँ। ==> I want to go to the doctor tomorrow afternoon
+184|USE  | 1|S0184L01U03     |S0030L03 |nYY| मैंने उन्हें कल देखा था। ==> I saw them yesterday
+185|USE  | 1|S0185L01U01     |S0030L03 |nYY| मुझे लगता है आप उन्हें कल छोड़ आए हैं। ==> I think you left them yesterday
+186|USE  | 1|S0186L01U04     |S0167L02 |nnn| क्या आप कल दोपहर कहानी पर बात करना चाहते हैं? ==> do you want to talk about the story tomorrow afternoon?
+190|USE  | 1|S0190L01U02     |S0155L04 |nnn| क्या आपको आपत्ति होगी अगर मैं कल सुबह आपसे पूछूँ? ==> do you mind if I ask you tomorrow morning?
+190|BUILD| 2|S0190L02B02     |S0155L04 |nnn| अगर मैं कल सुबह आपसे पूछूँ ==> if I ask you tomorrow morning
+190|USE  | 2|S0190L02U02     |S0167L02 |nnn| क्या आपको आपत्ति होगी अगर मैं आपसे कल दोपहर पूछूँ? ==> do you mind if I ask you tomorrow afternoon?
+190|USE  | 3|S0190L03U01     |S0155L04 |nnn| क्या मैं कल सुबह कुछ सवाल पूछ सकता हूँ? ==> can I ask some questions tomorrow morning?
+192|SEED |-1|S0192           |         |   | मैं कल रात व्यस्त हूँ। ==> I'm busy tomorrow night.
+192|BUILD| 1|S0192L01B02     |S0192L02 |nYY| मैं कल रात व्यस्त हूँ ==> I'm busy tomorrow night
+192|LEGO*| 2|S0192L02        |         |   | कल रात ==> tomorrow night
+192|BUILD| 2|S0192L02B01     |S0192L02 |nnn| मुझे कल रात मिलना है ==> I need to meet tomorrow night
+192|BUILD| 2|S0192L02B02     |S0192L02 |nnn| मैं कल रात आराम करना चाहता हूँ ==> I want to relax tomorrow night
+192|BUILD| 2|S0192L02B03     |S0192L02 |nYY| मैं कल रात व्यस्त हूँ ==> I'm busy tomorrow night
+192|USE  | 2|S0192L02U01     |S0192L02 |nnn| मैं कल रात मिलना चाहूँगा। ==> I'd like to meet tomorrow night
+192|USE  | 2|S0192L02U02     |S0192L02 |nnn| क्या आप कल रात जाना चाहते हैं? ==> do you want to go tomorrow night?
+192|USE  | 2|S0192L02U03     |S0192L02 |nnn| हम कल रात आराम करना चाहते हैं। ==> we want to relax tomorrow night
+192|USE  | 2|S0192L02U04     |S0192L02 |nnn| आपको कल रात क्या करना है? ==> what do you need to do tomorrow night?
+192|USE  | 2|S0192L02U05     |S0192L02 |nnn| मुझे कल रात जाना है। ==> I need to leave tomorrow night
+192|USE  | 2|S0192L02U06     |S0192L02 |nnn| मुझे कल रात इंतज़ार करने में कोई आपत्ति नहीं। ==> I don't mind waiting tomorrow night
+193|USE  | 1|S0193L01U05     |S0192L02 |nnn| माफ़ करना, लेकिन मैं कल रात व्यस्त हूँ। ==> I'm sorry but I'm busy tomorrow night
+193|BUILD| 2|S0193L02B02     |S0192L02 |nnn| कल रात मैं बहुत व्यस्त हूँ ==> I'm too busy tomorrow night
+195|USE  | 3|S0195L03U05     |S0030L03 |nnn| मैंने उन्हें कल मेज़ पर देखा था। ==> I saw them on the table yesterday
+197|USE  | 1|S0197L01U07     |S0192L02 |nnn| वह कल रात मेरे बेटे से मिलना चाहती है। ==> she wants to meet my son tomorrow night
+200|USE  | 2|S0200L02U06     |S0192L02 |nnn| वे कल रात अंग्रेज़ी बोलने का अभ्यास करना चाहते हैं। ==> they want to practise speaking English tomorrow night
+200|USE  | 4|S0200L04U06     |S0167L02 |nnn| वे यह सुनिश्चित करना चाहते हैं कि हम कल दोपहर सब कुछ ख़त्म करें। ==> they want to make sure that we finish everything tomorrow afternoon
+201|USE  | 1|S0201L01U02     |S0030L03 |nnn| हम कल जवाब जानना चाहते थे। ==> we wanted to know the answer yesterday
+201|USE  | 2|S0201L02U03     |S0030L03 |nnn| हम कल जानना चाहते थे कि क्या होने वाला है। ==> we wanted to know what was going to happen yesterday
+203|USE  | 1|S0203L01U06     |S0192L02 |nnn| आप कल रात क्या करेंगे? ==> what would you do tomorrow night?
+203|USE  | 2|S0203L02U06     |S0167L02 |nnn| अगर मैं आपसे कल दोपहर कहूँ तो आप मेरे साथ क्या करेंगे? ==> what would you do with me if I asked you tomorrow afternoon?
+205|USE  | 2|S0205L02U06     |S0192L02 |nnn| क्या आप मुझे कल रात वह शब्द बता सकते हैं? ==> can you tell me the word tomorrow night?
+208|USE  | 1|S0208L01U05     |S0030L03 |nnn| मैं कल आपसे पूछना नहीं चाहता था। ==> I didn't want to ask you yesterday
+210|USE  | 2|S0210L02U06     |S0192L02 |nnn| मुझे लगता है कि हमें कल रात जवाब पर चर्चा करनी है। ==> I think that we need to discuss the answer tomorrow night
+211|USE  | 2|S0211L02U04     |S0030L03 |nnn| वे कल मेरे दोस्त से मिलना नहीं चाहते थे। ==> they didn't want to meet my friend yesterday
+212|USE  | 1|S0212L01U03     |S0030L03 |nnn| वे कल आपसे पूछना चाहते थे। ==> they wanted to ask you yesterday
+215|BUILD| 1|S0215L01B01     |S0030L03 |nnn| मैं कल बाहर गया था। ==> I went out yesterday
+215|USE  | 1|S0215L01U01     |S0030L03 |nnn| मुझे लगता है कि मैं कल बाहर गया था। ==> I think that I went out yesterday
+216|BUILD| 1|S0216L01B03     |S0030L03 |nnn| मैं कल अपने दोस्त से मिला। ==> I saw my friend yesterday
+216|USE  | 1|S0216L01U01     |S0030L03 |nnn| मुझे लगता है कि मैं कल अपने बेटे से मिला। ==> I think that I saw my son yesterday
+216|BUILD| 2|S0216L02B02     |S0030L03 |nnn| मैं कल कुछ दोस्तों से मिला। ==> I saw a few friends yesterday
+216|USE  | 2|S0216L02U01     |S0030L03 |nnn| मुझे लगता है कि मैं कल कुछ दोस्तों से मिला। ==> I think that I saw a few friends yesterday
+217|USE  | 1|S0217L01U06     |S0167L02 |nnn| क्या आप मुझे कल दोपहर एक-दो गिलास दे सकते हैं? ==> can you give me a glass or two tomorrow afternoon?
+217|BUILD| 3|S0217L03B02     |S0030L03 |nnn| मैंने कल एक-दो गिलास पिया। ==> I had a glass or two yesterday
+217|USE  | 3|S0217L03U01     |S0030L03 |nnn| मुझे लगता है कि मैंने कल एक-दो गिलास पानी पिया। ==> I think that I had a glass or two of water yesterday
+218|BUILD| 1|S0218L01B02     |S0030L03 |nnn| मैंने कल कुछ नहीं किया। ==> I didn't do anything yesterday
+218|USE  | 1|S0218L01U01     |S0030L03 |nnn| मुझे लगता है कि मैंने कल कुछ नहीं किया। ==> I think that I didn't do anything yesterday
+218|BUILD| 2|S0218L02B02     |S0030L03 |nnn| मैंने कल ज़्यादा कुछ नहीं किया। ==> I didn't do much yesterday
+218|USE  | 2|S0218L02U01     |S0030L03 |nnn| मुझे लगता है कि मैंने कल ज़्यादा कुछ नहीं किया। ==> I think that I didn't do much yesterday
+219|USE  | 2|S0219L02U06     |S0192L02 |nnn| मैं कल रात थोड़ा आराम करना चाहूँगा। ==> I'd like to relax for a while tomorrow night
+220|BUILD| 1|S0220L01B03     |S0030L03 |nnn| क्या आपने कल कुछ देखा? ==> did you watch something yesterday?
+220|BUILD| 2|S0220L02B03     |S0030L03 |nnn| क्या आपने कल थोड़ा टेलीविज़न देखा? ==> did you watch a bit of television yesterday?
+221|BUILD| 1|S0221L01B03     |S0030L03 |nnn| मैंने कल कुछ नया देखा। ==> I watched something new yesterday
+221|BUILD| 2|S0221L02B03     |S0030L03 |nnn| मैंने कल फ़ुटबॉल देखा। ==> I watched the football yesterday
+221|BUILD| 3|S0221L03B03     |S0030L03 |nnn| मैंने कल एक फ़िल्म देखी। ==> I watched a film yesterday
+223|SEED |-1|S0223           |         |   | वह कल आपसे पूछने वाला है। ==> He's going to ask you tomorrow.
+223|LEGO*| 2|S0223L02        |         |   | वह कल आपसे पूछने वाला है ==> he's going to ask you tomorrow
+223|BUILD| 2|S0223L02B01     |S0223L02 |nnn| मुझे लगता है कि वह कल आपसे पूछने वाला है। ==> I think that he's going to ask you tomorrow
+223|BUILD| 2|S0223L02B02     |S0223L02 |nnn| वे कहते हैं कि वह कल आपसे पूछने वाला है। ==> they say he's going to ask you tomorrow
+223|BUILD| 2|S0223L02B03     |S0223L02 |nnn| मुझे डर है कि वह कल आपसे पूछने वाला है। ==> I'm afraid he's going to ask you tomorrow
+223|USE  | 2|S0223L02U01     |S0223L02 |nnn| मुझे उम्मीद है कि वह कल आपसे पूछने वाला है। ==> I hope he's going to ask you tomorrow
+223|USE  | 2|S0223L02U02     |S0223L02 |nnn| उन्हें लगता है कि वह कल आपसे पूछने वाला है। ==> they think that he's going to ask you tomorrow
+223|USE  | 2|S0223L02U03     |S0223L02 |nnn| उन्होंने हमें बताया कि वह कल आपसे पूछने वाला है। ==> they told us that he's going to ask you tomorrow
+223|USE  | 2|S0223L02U04     |S0223L02 |nnn| मुझे पता है कि वह कल आपसे पूछने वाला है। ==> I know he's going to ask you tomorrow
+223|USE  | 2|S0223L02U05     |S0223L02 |nnn| मुझे अफ़सोस है कि वह कल आपसे पूछने वाला है। ==> I'm sorry that he's going to ask you tomorrow
+226|USE  | 1|S0226L01U02     |S0030L03 |nnn| वे कहते हैं कि मैं कल उस आदमी से मिला। ==> they say I saw the man yesterday
+227|USE  | 1|S0227L01U06     |S0192L02 |nnn| वह आदमी मुझे कल रात कुछ बताने वाला है। ==> that man is going to tell me something tomorrow night
+230|BUILD| 2|S0230L02B02     |S0030L03 |nnn| मैं कल एक जवान आदमी से मिला। ==> I saw a young man yesterday
+230|BUILD| 3|S0230L03B03     |S0030L03 |nnn| मैं कल एक जवान आदमी से मिला जो काम करना चाहता है। ==> I saw a young man yesterday who wants to work
+231|BUILD| 1|S0231L01B02     |S0030L03 |nnn| मैं कल एक बूढ़े आदमी से मिला। ==> I saw an old man yesterday
+231|USE  | 2|S0231L02U02     |S0030L03 |nnn| मैं कल एक जवान आदमी से मिला जो घर जाना चाहता था। ==> I saw a young man yesterday who wanted to go home
+232|BUILD| 1|S0232L01B02     |S0030L03 |nnn| मैं कल एक बूढ़ी औरत से मिला। ==> I saw an old woman yesterday
+232|USE  | 2|S0232L02U03     |S0030L03 |nnn| मैं कल एक बूढ़ी औरत से मिला जो जवाब याद रख सकती है। ==> I saw an old woman yesterday who can remember the answer
+233|BUILD| 1|S0233L01B02     |S0030L03 |nnn| मैं कल एक जवान औरत से मिला। ==> I saw a young woman yesterday
+233|USE  | 2|S0233L02U03     |S0030L03 |nnn| मैं कल एक जवान औरत से मिला जो जवाब जानती है। ==> I saw a young woman yesterday who knows the answer
+233|BUILD| 3|S0233L03B03     |S0030L03 |nnn| मैं कल आपकी बहन से मिला। ==> I saw your sister yesterday
+234|SEED |-1|S0234           |         |   | मैं कल रात एक व्यक्ति से मिला जो आपके भाई के साथ काम करता है। ==> I met someone last night who works with your brother.
+234|BUILD| 1|S0234L01B01     |S0030L03 |nYY| मैं कल एक व्यक्ति से मिला। ==> I met someone yesterday
+234|USE  | 1|S0234L01U01     |S0030L03 |nnn| मुझे लगता है कि मैं कल एक व्यक्ति से मिला। ==> I think that I met someone yesterday
+234|LEGO*| 2|S0234L02        |         |   | मैं कल रात एक व्यक्ति से मिला ==> I met someone last night
+234|BUILD| 2|S0234L02B01     |S0234L02 |nnn| मुझे लगता है कि मैं कल रात एक व्यक्ति से मिला। ==> I think that I met someone last night
+234|BUILD| 2|S0234L02B02     |S0234L02 |nnn| वे कहते हैं कि मैं कल रात एक व्यक्ति से मिला। ==> they say I met someone last night
+234|BUILD| 2|S0234L02B03     |S0234L02 |nnn| उन्हें लगता है कि मैं कल रात एक व्यक्ति से मिला। ==> they think that I met someone last night
+234|USE  | 2|S0234L02U01     |S0234L02 |nnn| उन्होंने हमें बताया कि मैं कल रात एक व्यक्ति से मिला। ==> they told us that I met someone last night
+234|USE  | 2|S0234L02U02     |S0234L02 |nnn| मुझे डर है कि मैं कल रात एक व्यक्ति से मिला। ==> I'm afraid I met someone last night
+234|USE  | 2|S0234L02U03     |S0234L02 |nnn| मैं कल रात एक व्यक्ति से मिला और फिर मैं बाहर गया था। ==> I met someone last night and then I went out
+234|USE  | 2|S0234L02U04     |S0234L02 |nnn| मैं कल रात एक व्यक्ति से मिला और फिर मैंने एक फ़िल्म देखी। ==> I met someone last night and then I watched a film
+234|USE  | 2|S0234L02U05     |S0234L02 |nnn| मुझे अफ़सोस है कि मैं कल रात एक व्यक्ति से मिला। ==> I'm sorry that I met someone last night
+234|USE  | 3|S0234L03U03     |S0234L02 |nnn| मैं कल रात एक व्यक्ति से मिला जो शिक्षक के रूप में काम करता है। ==> I met someone last night who works as a teacher
+234|BUILD| 4|S0234L04B01     |S0234L02 |nYY| मैं कल रात एक व्यक्ति से मिला जो आपके भाई के साथ काम करता है। ==> I met someone last night who works with your brother
+235|USE  | 1|S0235L01U02     |S0234L02 |nnn| मैं कल रात एक व्यक्ति से मिला जिसने कहा कि आप बहुत अच्छा कर रहे हैं। ==> I met someone last night who said that you're doing very well
+238|SEED |-1|S0238           |         |   | वह चाहता था कि आप मुझे कल बता देते। ==> He wanted you to tell me yesterday.
+238|USE  | 1|S0238L01U01     |S0030L03 |nYY| वह चाहता था कि आप मुझे कल बता देते। ==> he wanted you to tell me yesterday
+239|BUILD| 1|S0239L01B02     |S0030L03 |nnn| मैं कल मेरी माँ से मिला। ==> I saw my mother yesterday
+239|USE  | 1|S0239L01U05     |S0030L03 |nnn| मुझे लगता है कि मैं कल मेरी माँ से मिला। ==> I think that I saw my mother yesterday
+240|BUILD| 1|S0240L01B02     |S0030L03 |nnn| मैं कल मेरे पिता से मिला। ==> I saw my father yesterday
+243|USE  | 1|S0243L01U02     |         |nnn| मैं कल जवाब माँगने वाला हूँ। ==> I'm going to ask for the answer tomorrow
+243|USE  | 2|S0243L02U03     |         |nnn| मैं कल खाने के लिए वही चीज़ नहीं चाहता। ==> I don't want the same thing to eat tomorrow
+246|BUILD| 2|S0246L02B03     |S0155L04 |nnn| मैं चाहता था कि वह कल सुबह आपकी मदद करे। ==> I wanted her to help you tomorrow morning
+248|USE  | 5|S0248L05U02     |S0155L04 |nnn| मैं कल सुबह अपने पैसे वापस लेना चाहता हूँ। ==> I want my money back tomorrow morning
+249|BUILD| 1|S0249L01B03     |S0155L04 |nnn| मैं चाहता हूँ कि आप कल सुबह मेरी मदद करें। ==> I want you to help me tomorrow morning
+249|BUILD| 2|S0249L02B03     |S0167L02 |nnn| मैं चाहता हूँ कि आप कल दोपहर मेरी मदद करें। ==> I want you to help me tomorrow afternoon
+249|USE  | 2|S0249L02U04     |S0192L02 |nnn| मैं चाहता हूँ कि आप कल रात मेरी मदद करें। ==> I want you to help me tomorrow night
+251|USE  | 1|S0251L01U04     |S0155L04 |nnn| मैं नहीं चाहता कि कल सुबह मुझे पता लगे। ==> I don't want to find out tomorrow morning
+252|BUILD| 1|S0252L01B02     |         |nnn| आप कल कब तैयार होंगे? ==> when will you be ready tomorrow?
+252|USE  | 1|S0252L01U05     |S0155L04 |nnn| आप कल सुबह कब तैयार होंगे? ==> when will you be ready tomorrow morning?
+252|USE  | 2|S0252L02U02     |S0155L04 |nnn| मैं कल सुबह शुरू करना चाहता हूँ। ==> I want to start tomorrow morning
+253|BUILD| 1|S0253L01B03     |S0155L04 |YYY| मैं कल सुबह तैयार हो जाऊँगा। ==> I'll be ready tomorrow morning
+255|USE  | 1|S0255L01U04     |S0223L02 |nnn| आपके ख़्याल से वह कल कब आपसे पूछने वाला है? ==> when do you think he's going to ask you tomorrow?
+255|USE  | 2|S0255L02U02     |S0155L04 |nnn| आप कल सुबह जाने के लिए तैयार होंगे। ==> you'll be ready to leave tomorrow morning
+262|SEED |-1|S0262           |         |   | वह कौन आदमी था जिससे आप कल बात कर रहे थे? ==> Who was that man you were talking to yesterday?
+262|USE  | 1|S0262L01U03     |S0030L03 |nnn| तो कल वह कौन आदमी था? ==> so who was that man yesterday?
+262|USE  | 1|S0262L01U04     |S0030L03 |nnn| और कल वह कौन आदमी था? ==> and who was that man yesterday?
+262|USE  | 2|S0262L02U02     |S0030L03 |nnn| और वह कौन आदमी था जिससे आप कल बात कर रहे थे? ==> and who was that man you were talking to yesterday?
+262|lego | 3|S0262L03        |         |   | कल ==> yesterday
+263|USE  | 1|S0263L01U04     |S0012L03 |nnn| मुझे नहीं पता कल क्या होगा। ==> I don't know what's going to happen tomorrow
+269|USE  | 1|S0269L01U05     |S0155L04 |nnn| आप कल सुबह जाना क्यों नहीं चाहते? ==> why don't you want to go tomorrow morning?
+269|BUILD| 3|S0269L03B03     |         |nnn| आप अपने पिता का इंतज़ार कल क्यों नहीं करना चाहते? ==> why don't you want to wait for your father tomorrow?
+269|USE  | 3|S0269L03U03     |S0155L04 |nnn| आप अपने पिता की मदद कल सुबह क्यों नहीं करना चाहते? ==> why don't you want to help your father tomorrow morning?
+270|USE  | 3|S0270L03U01     |S0155L04 |nnn| मुझे चिंता है कि मुझे कल सुबह देर हो जाएगी। ==> I'm worried that I'm going to be late tomorrow morning
+271|USE  | 1|S0271L01U05     |S0155L04 |nnn| क्या आप कल सुबह जाना चाहेंगे? ==> would you like to go tomorrow morning?
+271|USE  | 2|S0271L02U02     |S0155L04 |nnn| क्या आप कल सुबह चलना चाहेंगे? ==> would you like to come tomorrow morning?
+271|BUILD| 3|S0271L03B03     |S0155L04 |nnn| क्या आप हमारे साथ कल सुबह चलना चाहेंगे? ==> would you like to come with us tomorrow morning?
+274|BUILD| 1|S0274L01B02     |S0155L04 |nnn| क्या आपको कल सुबह जाना होगा? ==> do you have to leave tomorrow morning?
+277|USE  | 2|S0277L02U05     |S0155L04 |nnn| कल सुबह मेरी एक ज़रूरी मीटिंग है। ==> I've got an important meeting tomorrow morning
+278|SEED |-1|S0278           |         |   | क्या आपको कल रात सब पूरा करना था? ==> Did you have to finish everything last night?
+278|USE  | 1|S0278L01U01     |S0030L03 |nnn| क्या आपको कल पूरा करना था? ==> did you have to finish yesterday?
+278|USE  | 1|S0278L01U04     |S0030L03 |nnn| और क्या आपको कल पूरा करना था? ==> and did you have to finish yesterday?
+278|LEGO*| 2|S0278L02        |         |   | कल रात सब ==> everything last night
+278|BUILD| 2|S0278L02B01     |S0278L02 |nnn| तो क्या आपको कल रात सब पूरा करना था? ==> so did you have to finish everything last night?
+278|BUILD| 2|S0278L02B02     |S0278L02 |nnn| और क्या आपको कल रात सब पूरा करना था? ==> and did you have to finish everything last night?
+278|BUILD| 2|S0278L02B03     |S0278L02 |nnn| क्या आपको काम पर कल रात सब पूरा करना था? ==> did you have to finish everything last night at work?
+278|USE  | 2|S0278L02U01     |S0278L02 |nnn| क्या आपको यहाँ कल रात सब पूरा करना था? ==> did you have to finish everything last night here?
+278|USE  | 2|S0278L02U02     |S0278L02 |nnn| तो क्या आपको काम पर कल रात सब पूरा करना था? ==> so did you have to finish everything last night at work?
+278|USE  | 2|S0278L02U03     |S0278L02 |nnn| और क्या आपको यहाँ कल रात सब पूरा करना था? ==> and did you have to finish everything last night here?
+278|USE  | 2|S0278L02U04     |S0278L02 |nnn| तो क्या आपको यहाँ कल रात सब पूरा करना था? ==> so did you have to finish everything last night here?
+278|USE  | 2|S0278L02U05     |S0278L02 |nnn| और क्या आपको काम पर कल रात सब पूरा करना था? ==> and did you have to finish everything last night at work?
+278|USE  | 2|S0278L02U06     |S0278L02 |nnn| क्या आपको कल रात सब जल्दी पूरा करना था? ==> did you have to finish everything last night quickly?
+280|USE  | 2|S0280L02U02     |S0030L03 |nnn| मुझे बस कल सबसे ज़रूरी काम करना था। ==> I only had to do the most important job yesterday
+289|BUILD| 2|S0289L02B02     |S0155L04 |nnn| पता नहीं वह कल सुबह वहाँ होगी या नहीं। ==> I wonder if she's going to be there tomorrow morning
+292|USE  | 2|S0292L02U05     |S0155L04 |nnn| आप कल सुबह आ पाएँगे। ==> you'll be able to come tomorrow morning
+293|USE  | 1|S0293L01U04     |S0012L03 |nnn| मुझे यह पता लगाना है कि कल क्या होगा। ==> I have to find out what's going to happen tomorrow
+312|SEED |-1|S0312           |         |   | उसने कहा कि वह कल रात दूसरे कमरे का इस्तेमाल कर सकती है। ==> She said that she could use the other room tomorrow night.
+312|BUILD| 1|S0312L01B03     |         |nnn| उसने कहा कि वह कल दूसरे कमरे का इस्तेमाल कर सकती है। ==> she said that she could use the other room tomorrow
+312|USE  | 1|S0312L01U03     |S0155L04 |nnn| उसने कहा कि वह कल सुबह दूसरे कमरे का इस्तेमाल कर सकती है। ==> she said that she could use the other room tomorrow morning
+312|lego | 3|S0312L03        |         |   | कल रात ==> tomorrow night
+313|USE  | 1|S0313L01U03     |S0030L03 |nnn| उसने कहा कि वह कल टेलीविज़न नहीं देख पाया। ==> he said that he couldn't watch television yesterday
+313|BUILD| 2|S0313L02B02     |S0030L03 |nnn| उसने कहा कि वह कल पाँचों मैच नहीं देख पाया। ==> he said that he couldn't watch all five games yesterday
+315|USE  | 2|S0315L02U04     |S0030L03 |nnn| वह कल उस कार को नहीं ख़रीद पाया। ==> he couldn't afford the car yesterday
+316|BUILD| 2|S0316L02B01     |         |nnn| वह कल अपने भाई को ला सकती है। ==> she could bring her brother tomorrow
+333|USE  | 1|S0333L01U02     |         |nnn| उसने कहा कि वह कल ज़्यादा समय नहीं बिता सकती। ==> she said that she can't spend much time tomorrow
+334|BUILD| 1|S0334L01B03     |         |nnn| उसने कहा कि वह आपको कल दे सकता है। ==> he said that he can let you tomorrow
+334|BUILD| 2|S0334L02B03     |         |nnn| उसने कहा कि वह आपको कल बिल्ली के बच्चे को गोद में लेने दे सकता है। ==> he said that he can let you hold the kitten tomorrow
+336|USE  | 1|S0336L01U01     |         |nnn| मुझे नहीं लगता कि वह कल खोल सकती है। ==> I don't think that she can open tomorrow
+341|BUILD| 1|S0341L01B02     |S0030L03 |nYY| मैं कल किसी से मिला था। ==> I met someone yesterday
+342|USE  | 2|S0342L02U02     |S0030L03 |nYY| मैं कल किसी से मिला था जिसने कुछ कहा था। ==> I met someone who said something yesterday
+347|USE  | 1|S0347L01U03     |S0012L03 |nnn| वह जानना चाहता था कि कल क्या होगा। ==> he wanted to know what's going to happen tomorrow
+348|USE  | 1|S0348L01U02     |S0012L03 |nnn| वह नहीं जानना चाहती थी कि कल क्या होगा। ==> she didn't want to know what's going to happen tomorrow
+355|USE  | 2|S0355L02U04     |S0030L03 |YYY| मैं कल किसी से मिला जिसे आप जानते हैं ==> I met someone you know yesterday
+355|BUILD| 3|S0355L03B04     |S0030L03 |YYY| क्या उसे कल उस औरत से बात करनी थी? ==> did she need to talk to that woman yesterday?
+356|BUILD| 2|S0356L02B03     |S0030L03 |nnn| उन्हें कल कुछ ज़रूरी बात करनी थी। ==> they had something important to discuss yesterday
+358|USE  | 2|S0358L02U04     |S0030L03 |nnn| वह कल नहीं पहुँच सकी। ==> she couldn't reach yesterday
+358|USE  | 3|S0358L03U02     |S0030L03 |nnn| वह कल ऊपर तक नहीं पहुँच सकी। ==> she couldn't reach the top yesterday
+359|USE  | 2|S0359L02U05     |S0030L03 |nnn| वह कल मुड़ सकता था। ==> he could turn yesterday
+359|USE  | 3|S0359L03U02     |S0030L03 |nnn| वह कल बाएँ मुड़ सकता था। ==> he could turn left yesterday
+360|USE  | 2|S0360L02U01     |S0030L03 |YYY| क्या आपके दोस्त ने कल कुछ और कहा? ==> did your friend say anything else yesterday?
+361|USE  | 1|S0361L01U01     |S0030L03 |nnn| वह कल चुप था। ==> he was quiet yesterday
+362|USE  | 2|S0362L02U01     |S0030L03 |nnn| वह कल काफ़ी चुप था। ==> he was rather quiet yesterday
+363|USE  | 1|S0363L01U02     |         |YYY| मुझे कल रात बातें करने का मन था ==> I felt like talking last night
+363|USE  | 2|S0363L02U02     |         |YYY| मुझे कल रात बहुत बातें करने का मन था ==> I felt like talking a lot last night
+366|USE  | 1|S0366L01U02     |S0012L03 |nnn| क्या आपने सुना कि कल क्या होगा? ==> did you hear what's going to happen tomorrow?
+367|USE  | 2|S0367L02U01     |S0030L03 |nnn| कल किसी ने मुझे नहीं बताया। ==> nobody told me yesterday
+368|USE  | 3|S0368L03U05     |S0030L03 |nnn| वह कल उगाना चाहता था। ==> he wanted to grow yesterday
+369|USE  | 1|S0369L01U01     |S0030L03 |nnn| मैंने कल कई घोड़े देखे। ==> I saw several horses yesterday
+369|USE  | 2|S0369L02U02     |S0030L03 |nnn| मैंने कल सड़क पर कई घोड़े देखे। ==> I saw several horses on the road yesterday
+370|BUILD| 1|S0370L01B03     |S0030L03 |nnn| मुझे कल अपना कोई जानने वाला नहीं दिखा। ==> I didn't see anyone that I knew yesterday
+371|USE  | 1|S0371L01U02     |S0030L03 |nnn| मैं कल एक फ़िल्म देखने गया। ==> I went to see a film yesterday
+372|USE  | 1|S0372L01U02     |S0012L03 |nnn| क्या आपने देखा कि कल क्या होगा? ==> did you see what's going to happen tomorrow?
+375|USE  | 2|S0375L02U03     |S0012L03 |nnn| मुझे नहीं पता था कि कल क्या होगा। ==> I didn't know what's going to happen tomorrow
+376|BUILD| 1|S0376L01B03     |S0030L03 |nnn| मैं कल कहीं नहीं गया। ==> I didn't go anywhere yesterday
+377|BUILD| 1|S0377L01B02     |S0030L03 |nnn| क्या आप कल कहीं गए थे? ==> did you go anywhere yesterday?
+380|USE  | 1|S0380L01U05     |S0012L03 |nnn| मैंने पूछा कि कल क्या होगा। ==> I asked what's going to happen tomorrow
+385|USE  | 1|S0385L01U03     |         |YYY| क्या आप कल रात उससे सहमत थे? ==> did you agree with her last night?
+386|USE  | 1|S0386L01U02     |         |YYY| मैं कल रात उससे सहमत था ==> I agreed with her last night
+391|USE  | 2|S0391L02U02     |         |nnn| जो कल बस की ओर जा रहा है। ==> the one who is walking towards the bus tomorrow
+395|USE  | 1|S0395L01U05     |         |nnn| हमें कल बाएँ मुड़ना है। ==> we need to turn left tomorrow
+397|BUILD| 1|S0397L01B02     |         |nnn| क्या हमें कल तैयार होना होगा? ==> do we need to get ready tomorrow?
+397|USE  | 2|S0397L02U01     |         |nnn| क्या हमें कल जल्दी तैयार होना होगा? ==> do we need to get ready soon tomorrow?
+397|USE  | 2|S0397L02U04     |         |nnn| और क्या हमें कल जल्दी तैयार होना होगा? ==> and do we need to get ready soon tomorrow?
+402|BUILD| 3|S0402L03B03     |         |nnn| कल कहीं रुकना अच्छा रहेगा। ==> it would be nice to stop somewhere tomorrow
+405|USE  | 1|S0405L01U01     |         |nnn| क्या हम कल पूछें? ==> should we ask tomorrow?
+405|USE  | 2|S0405L02U02     |         |nnn| क्या हम कल पूछें कि हमें बुकिंग तो नहीं करनी? ==> should we ask if we have to book tomorrow?
+407|BUILD| 1|S0407L01B02     |         |nnn| क्या हमें कल कोशिश नहीं करनी चाहिए? ==> shouldn't we try tomorrow?
+407|USE  | 2|S0407L02U02     |         |nnn| क्या हमें कल अच्छा उदाहरण रखने की कोशिश नहीं करनी चाहिए? ==> shouldn't we try to set a good example tomorrow?
+412|USE  | 1|S0412L01U03     |S0030L03 |nnn| हम उन्हें कल नहीं दे सकते थे। ==> we couldn't allow them yesterday
+412|USE  | 2|S0412L02U03     |S0030L03 |nnn| हम उन्हें कल सब कुछ जीतने नहीं दे सकते थे। ==> we couldn't allow them to win everything yesterday
+418|USE  | 1|S0418L01U03     |         |nnn| उन्हें कल सेवा करनी होगी। ==> they need to serve tomorrow
+418|USE  | 2|S0418L02U05     |         |nnn| उन्हें कल समाज की सेवा करनी होगी। ==> they need to serve the community tomorrow
+420|USE  | 1|S0420L01U03     |         |nnn| कल उन्हें यह पूछने की ज़रूरत नहीं है। ==> they don't need to ask tomorrow
+423|BUILD| 1|S0423L01B02     |         |nnn| क्या उन्हें कल पूछने की ज़रूरत है? ==> do they need to ask tomorrow?
+425|USE  | 2|S0425L02U03     |         |nnn| कल उन्हें यह सुनिश्चित करना होगा। ==> they need to make sure tomorrow
+434|BUILD| 1|S0434L01B02     |         |nnn| क्या वे कल उन छात्रों की संख्या कम कर सकते हैं? ==> could they cut the number of students tomorrow?
+434|USE  | 2|S0434L02U02     |         |nnn| क्या वे कल उन छात्रों की संख्या कम कर सकते हैं जिन्हें वे लेते हैं? ==> could they cut the number of students they take tomorrow?
+435|USE  | 2|S0435L02U03     |         |nnn| अगर वे चाहें तो कल ऐसा कर सकते हैं। ==> they could if they wanted to tomorrow
+445|USE  | 1|S0445L01U03     |         |nnn| वे कल ले जा पाएँगे। ==> they will be able to carry tomorrow
+446|USE  | 1|S0446L01U03     |         |nnn| वे कल नहीं तोड़ पाएँगे। ==> they won't be able to break tomorrow
+447|BUILD| 1|S0447L01B02     |         |nnn| क्या वे कल हमें घर छोड़ पाएँगे? ==> will they be able to drive us home tomorrow?
+448|USE  | 2|S0448L02U04     |         |nnn| कल उन्हें मदद करके ख़ुशी होगी। ==> they'll be happy to help tomorrow
+450|USE  | 2|S0450L02U03     |         |nnn| कल उन्हें ख़ुद ट्रेन पकड़नी है। ==> they have to catch the train themselves tomorrow
+453|SEED |-1|S0453           |         |   | क्या उन्होंने बताया कि उन्होंने कल रात किसे देखा था? ==> Did they say who they saw last night?
+453|LEGO*| 2|S0453L02        |         |   | उन्होंने कल रात किसे देखा था ==> who they saw last night
+453|BUILD| 2|S0453L02B01     |S0453L02 |nYY| क्या उन्होंने बताया कि उन्होंने कल रात किसे देखा था? ==> did they say who they saw last night?
+453|BUILD| 2|S0453L02B02     |S0453L02 |nnn| मुझे नहीं पता उन्होंने कल रात किसे देखा था। ==> I don't know who they saw last night
+453|BUILD| 2|S0453L02B03     |S0453L02 |nnn| मुझे यह पता लगाना है कि उन्होंने कल रात किसे देखा था। ==> I have to find out who they saw last night
+453|USE  | 2|S0453L02U01     |S0453L02 |nnn| क्या आप मुझे बता सकते हैं कि उन्होंने कल रात किसे देखा था? ==> can you tell me who they saw last night?
+453|USE  | 2|S0453L02U02     |S0453L02 |nnn| मुझे बिल्कुल भी अंदाज़ा नहीं है कि उन्होंने कल रात किसे देखा था। ==> I don't have the faintest idea who they saw last night
+453|USE  | 2|S0453L02U03     |S0453L02 |nnn| मैंने पूछा कि उन्होंने कल रात किसे देखा था। ==> I asked who they saw last night
+453|USE  | 2|S0453L02U04     |S0453L02 |nnn| क्या आपने सुना कि उन्होंने कल रात किसे देखा था? ==> did you hear who they saw last night?
+453|USE  | 2|S0453L02U05     |S0453L02 |nnn| मुझे नहीं पता था कि उन्होंने कल रात किसे देखा था। ==> I didn't know who they saw last night
+454|USE  | 1|S0454L01U01     |S0030L03 |nnn| हमारे दोस्त कल आए। ==> our friends came round yesterday
+455|USE  | 1|S0455L01U01     |S0030L03 |nnn| हमें कल जाना पड़ा। ==> we had to leave yesterday
+456|USE  | 1|S0456L01U03     |         |nnn| वह कल वहाँ हो सकता है। ==> he might be there tomorrow
+464|USE  | 1|S0464L01U02     |S0030L03 |nnn| मैंने उसे कल जवाब बताया था। ==> I told her the answer yesterday
+466|BUILD| 1|S0466L01B02     |         |nnn| मुझे इसे कल फेंकने दें। ==> let me throw it tomorrow
+466|USE  | 2|S0466L02U03     |         |nnn| मुझे इसे कल दीवार के पार फेंकने दें। ==> let me throw it over the wall tomorrow
+470|USE  | 1|S0470L01U01     |         |nnn| आप कल कितना ऊँचा चढ़ना चाहते हैं? ==> how high do you want to climb tomorrow?
+470|USE  | 1|S0470L01U05     |         |nnn| और आप कल कितना ऊँचा चढ़ना चाहते हैं? ==> and how high do you want to climb tomorrow?
+471|BUILD| 1|S0471L01B02     |         |nnn| क्या आप कल रुकना चाहते हैं? ==> do you want to stop tomorrow?
+473|USE  | 1|S0473L01U02     |         |nnn| कल मुझे यह नहीं चाहिए। ==> I don't want it tomorrow
+474|USE  | 1|S0474L01U01     |         |nnn| कल मुझे यह भी नहीं चाहिए। ==> I don't even want it tomorrow
+474|USE  | 2|S0474L02U05     |         |nnn| कल मुझे यह मुफ़्त ऑफ़र में नहीं चाहिए। ==> I don't want it as a free offer tomorrow
+477|USE  | 3|S0477L03U01     |         |YYY| बच्चे कल रात बीमार थे ==> the children were sick last night
+477|USE  | 4|S0477L04U05     |         |YYY| वह कल रात से वहाँ रहा है ==> he's been there since last night
+570|USE  | 1|S0570L01U05     |S0155L04 |nnn| कल सुबह आप अपने टिकट के लिए कितना देने को तैयार हैं? ==> how much are you willing to pay for your ticket tomorrow morning?
+631|USE  | 1|S0631L01U03     |S0155L04 |nnn| कल सुबह आप क्या लेना चाहेंगे? ==> what would you like tomorrow morning?
+652|USE  | 1|S0652L01U02     |S0155L04 |nnn| कल सुबह आपको किस चीज़ की ज़रूरत है, सर? ==> what do you need sir tomorrow morning?
+664|USE  | 1|S0664L01U03     |S0155L04 |nnn| कल सुबह क्या आप सब तैयार हैं? ==> are you all ready tomorrow morning?
+666|USE  | 1|S0666L01U04     |S0155L04 |nnn| कल सुबह आप सब क्या सोचते हैं? ==> what do you all think tomorrow morning?
+667|USE  | 1|S0667L01U01     |S0155L04 |nnn| कल सुबह आप सबको आपत्ति तो नहीं है? ==> do you all mind tomorrow morning?

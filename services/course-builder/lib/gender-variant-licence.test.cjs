@@ -37,9 +37,8 @@ function makeSupabase({ legos = [], phrases = [], expansions = [] } = {}) {
     const run = () => {
       if (table === 'course_gender_expansions') {
         calls.expansionFilters.push({ ...filters })
-        const codes = filters.in_course_code || [filters.course_code]
         return { data: expansions.filter(r =>
-          codes.includes(r.course_code) &&
+          r.course_code === filters.course_code &&
           (filters.text_side === undefined || r.text_side === filters.text_side)), error: null }
       }
       const src = table === 'course_legos' ? legos : phrases
@@ -184,7 +183,7 @@ describe('the licence set itself', () => {
   })
 
   it('grants nothing when the table cannot be read — ZUT stays strict', async () => {
-    const sb = { from: () => ({ select: () => ({ in: () => ({ eq: () => Promise.resolve({ data: null, error: { message: 'boom' } }) }) }) }) }
+    const sb = { from: () => ({ select: () => ({ eq: () => ({ eq: () => Promise.resolve({ data: null, error: { message: 'boom' } }) }) }) }) }
     expect((await loadGenderVariantLicence(sb, 'eng_for_hin')).size).toBe(0)
   })
 
