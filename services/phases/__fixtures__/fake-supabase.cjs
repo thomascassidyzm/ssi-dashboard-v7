@@ -91,6 +91,12 @@ class Query {
   _run() {
     if (this._op === 'upsert') return this._runUpsert()
     if (this._op === 'update') {
+      // A `beforeUpdate` hook on the db can refuse the write (return an
+      // Error) — stands in for a failed PostgREST update in tests.
+      if (typeof this.db.beforeUpdate === 'function') {
+        const refused = this.db.beforeUpdate(this.table, this._patch)
+        if (refused) return { data: null, error: { message: refused.message || String(refused) } }
+      }
       const hit = this._rows_()
       for (const r of hit) Object.assign(r, this._patch)
       return { data: hit.map(r => ({ ...r })), error: null }
@@ -118,7 +124,8 @@ class Query {
     let inserted = 0, ignored = 0
     // The rows the statement touched, in order — what `.select()` after an
     // upsert returns in PostgREST. A `beforeInsert` hook on the db stands in for
-    // a BEFORE INSERT trigger (course_audio_link_canonical_clip) for tests that
+    // a BEFORE INSERT trigger (e.g. course_audio_link_canonical_clip, which exists
+    // as a function but is NOT wired to course_audio as of 2026-09-12) for tests that
     // need one; it may mutate the row and it runs only on a genuine insert.
     const affected = []
     for (const row of this._rows) {

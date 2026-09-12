@@ -7839,10 +7839,9 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
       s3_key: s3Key,
       duration_ms: durationMs,
       word_boundaries: wordBoundaries && wordBoundaries.length ? wordBoundaries : null,
-      // Per-word timings from the render (Cartesia only; NULL for every other
-      // provider and for a Cartesia render that sent none). Contract in
-      // services/shared/word-timings.cjs — re-validated at the write.
-      word_timings: toWordTimingsColumn(wordTimings),
+      // Inserted with NO timings on purpose — the follow-up update below
+      // writes them only once the row is known to hold OUR bytes.
+      word_timings: null,
       // The gate's verdict travels WITH the clip — see the same call in
       // /generate. Three-state: true/false/NULL-for-not-sampled.
       ...veracity.verdictColumns(gated.verdict, {
@@ -7857,19 +7856,27 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
 
   if (insertError) throw new Error(`course_audio insert failed: ${insertError.message}`)
 
-  // The BEFORE INSERT trigger course_audio_link_canonical_clip can point a
-  // brand-new row at the estate's CANONICAL bytes for this line instead of the
-  // ones just rendered (duplicate_render_deduped). Timings measured on our
-  // render do not describe those bytes, so when the row came back holding a
-  // different key the timings are withdrawn rather than left describing audio
-  // the learner will not hear.
-  if (inserted && inserted.s3_key && inserted.s3_key !== s3Key && toWordTimingsColumn(wordTimings)) {
+  // Word timings are written ONLY after the row is known to hold the bytes
+  // they were measured on. The function course_audio_link_canonical_clip exists
+  // in the DB and, if ever wired as a BEFORE INSERT trigger, would point a
+  // brand-new row at the estate's canonical bytes for this line instead of the
+  // ones just rendered (as of 2026-09-12 NO trigger on course_audio calls it —
+  // verified against pg_trigger — but the insert path must not assume that).
+  // Timings from our render do not describe other bytes. So: insert without
+  // timings, then update them iff the row came back with the key we uploaded.
+  // If that update fails the row simply has NO timings (the app treats NULL as
+  // none) — never WRONG timings. Wrong timings are worse than none (Tom,
+  // 2026-09-12; cold-verify #411).
+  const timingsColumn = toWordTimingsColumn(wordTimings)
+  if (timingsColumn && inserted && inserted.s3_key === s3Key) {
     const { error: wtErr } = await supabase
       .from('course_audio')
-      .update({ word_timings: null })
+      .update({ word_timings: timingsColumn })
       .eq('id', inserted.id)
-    if (wtErr) logger.warn(`[Pods] could not withdraw word_timings on deduped clip ${inserted.id}: ${wtErr.message}`)
-    else logger.info(`[Pods] clip ${inserted.id} deduped onto canonical bytes — word_timings withdrawn`)
+      .eq('s3_key', s3Key)   // the bytes must still be ours at write time
+    if (wtErr) logger.warn(`[Pods] clip ${inserted.id} minted without word_timings (update failed): ${wtErr.message}`)
+  } else if (timingsColumn && inserted) {
+    logger.info(`[Pods] clip ${inserted.id} holds bytes other than this render (${inserted.s3_key}) — word_timings not written`)
   }
   return { id: inserted.id, reused: false, bytes: masteredBuffer.length, chars: text.length }
 }

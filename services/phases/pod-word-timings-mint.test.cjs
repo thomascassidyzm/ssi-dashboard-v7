@@ -53,7 +53,7 @@ const noWhisper = (real) => ({
   verdictColumns () { return {} },
 })
 
-function mint ({ voice, answer, beforeInsert }) {
+function mint ({ voice, answer, beforeInsert, beforeUpdate }) {
   const tables = { course_audio: [], courses: [COURSE] }
   const tts = ttsDouble(answer)
   const { phase8, db } = loadPhase8({
@@ -61,6 +61,7 @@ function mint ({ voice, answer, beforeInsert }) {
     doubles: { '/audio-processor.cjs': noFfmpeg, '/audio-veracity.cjs': noWhisper },
   })
   if (beforeInsert) db.beforeInsert = beforeInsert
+  if (beforeUpdate) db.beforeUpdate = beforeUpdate
   return phase8.generatePodAudio({
     courseCode: COURSE.course_code,
     text: 'A black coffee, please.',
@@ -103,12 +104,32 @@ describe('generatePodAudio stores word_timings', () => {
     expect(row.word_timings).toBeNull()
   })
 
-  it('withdraws the timings when the canonical-clip trigger dedupes the row onto bytes it did not render', async () => {
-    // Stand-in for course_audio_link_canonical_clip's duplicate_render_deduped
-    // branch: the row is pointed at the estate's canonical key for the line.
-    const beforeInsert = (table, row) => { if (table === 'course_audio') row.s3_key = 'mastered/CANONICAL-ELSEWHERE.mp3' }
-    const { row } = await mint({ voice: cartesia, answer: () => ({ wordTimings: TIMINGS }), beforeInsert })
+  it('never writes timings when the inserted row came back holding a different s3_key', async () => {
+    // Stand-in for a canonical-clip dedupe: the row is pointed at the estate's
+    // canonical key for the line, not the bytes we just rendered. Timings are
+    // written only AFTER insert and only if the key is ours, so the row must
+    // never carry them — not even transiently.
+    let everWritten = false
+    const beforeInsert = (table, row) => {
+      if (table === 'course_audio') {
+        if (row.word_timings) everWritten = true
+        row.s3_key = 'mastered/CANONICAL-ELSEWHERE.mp3'
+      }
+    }
+    const beforeUpdate = (table, patch) => { if (table === 'course_audio' && patch.word_timings) everWritten = true }
+    const { result, row } = await mint({ voice: cartesia, answer: () => ({ wordTimings: TIMINGS }), beforeInsert, beforeUpdate })
+    expect(result.reused).toBe(false)
     expect(row.s3_key).toBe('mastered/CANONICAL-ELSEWHERE.mp3')
+    expect(row.word_timings).toBeNull()
+    expect(everWritten).toBe(false)
+  })
+
+  it('when the timings update fails the row exists with NULL timings and the mint still succeeds', async () => {
+    const beforeUpdate = (table, patch) => (table === 'course_audio' && patch.word_timings) ? new Error('PostgREST 503') : null
+    const { result, row } = await mint({ voice: cartesia, answer: () => ({ wordTimings: TIMINGS }), beforeUpdate })
+    expect(result.reused).toBe(false)
+    expect(result.id).toBe(row.id)
+    expect(row.s3_key).toMatch(/^mastered\/.+\.mp3$/)
     expect(row.word_timings).toBeNull()
   })
 })
