@@ -880,9 +880,12 @@ const router = createRouter({
 
 // Auth guard + page title
 // THE FOUR WORDS ON THE BOOTH'S NAV — Booth · Lines · Pods · Course — and where
-// the last two go. A recorder-role login is otherwise confined to the booth;
-// these are let through for their own course because the recordist is also
-// the editor of the lines they read.
+// the last two go. A booth-side login (a voice the casting names, with or
+// without a users-page row — Tom's ruling 2026-09-12: "You edit and record the
+// lines you're cast on. The editor shapes the course.") is otherwise confined
+// to the booth; these are let through for the course(s) the casting names.
+// The server decides the same way (casting first, then grants):
+// services/voice-engine/casting-rights.cjs.
 export const BOOTH_NAV_ROUTES = new Set(['ProductionDashboard', 'Pods', 'PodDetail'])
 
 router.beforeEach(async (to, from, next) => {
@@ -948,8 +951,8 @@ router.beforeEach(async (to, from, next) => {
     // login, and the recordists are exactly the people we hand test APKs to.
     // …and the pages the booth's own nav points at (Tom, 2026-09-12: a voice
     // artist "should be able to see the way to get to the course Overview page
-    // and maybe other PODS … because I am also an editor of the lines"). The
-    // course-scope check below still applies: only their own course(s).
+    // and maybe other PODS … because I am also an editor of the lines"). Only
+    // the course(s) the casting names — canAccessCourse reads casting first.
     if (BOOTH_NAV_ROUTES.has(to.name)) {
       const navCourse = to.params.courseCode
       if (navCourse && !canAccessCourse(navCourse)) return next(homeRoom)

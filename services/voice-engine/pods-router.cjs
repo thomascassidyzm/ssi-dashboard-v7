@@ -81,6 +81,8 @@ module.exports = function createPodsCastRouter({
   userCanAccessCourse,
   getDb,
   logger = console,
+  // ARTIST RIGHTS DERIVE FROM CASTING (Tom, 2026-09-12). Injectable for tests.
+  castingRights = require('./casting-rights.cjs'),
 }) {
   if (typeof requireDashboardUser !== 'function' || typeof userCanAccessCourse !== 'function' || typeof getDb !== 'function') {
     throw new Error('pods-router requires { requireDashboardUser, userCanAccessCourse, getDb }')
@@ -89,20 +91,28 @@ module.exports = function createPodsCastRouter({
   const router = express.Router({ mergeParams: true })
 
   // ── Course-scoped auth gate (same shape as team-router.cjs) ──────────────
-  // Recorders may READ (they need their own recording plan) but never write
-  // the cast — client-side confinement is not auth.
+  // CASTING FIRST, THEN GRANTS (Tom, 2026-09-12: "You edit and record the
+  // lines you're cast on. The editor shapes the course."). A voice cast on
+  // this course reads everything here and may PATCH the text of its OWN lines
+  // (either side — checked per line in the route); it never writes the cast,
+  // adds or removes lines, or marks ready. An editor grant keeps every write
+  // it had. Client-side confinement is not auth; this is.
   router.use(async (req, res, next) => {
     try {
       const user = await requireDashboardUser(req, res)
       if (!user) return // 401/403 already sent
       const courseCode = req.params.courseCode
       if (!userCanAccessCourse(user, courseCode)) {
-        return res.status(403).json({ error: `No access to course ${courseCode}` })
+        const verdict = castingRights.courseAccessVerdict(user, courseCode)
+        return res.status(403).json({ error: verdict.ok ? `No access to course ${courseCode}` : verdict.sentence, courseCode })
       }
-      if (req.method !== 'GET' && user.role === 'recorder') {
-        return res.status(403).json({ error: 'Recorders cannot change the cast' })
+      const write = castingRights.podWriteVerdict(user, courseCode, req.method, req.path)
+      if (!write.ok) {
+        logger.warn(`[PodsCast] REFUSED ${req.method} ${req.path} on ${courseCode} for ${user.email || '?'}: ${write.sentence}`)
+        return res.status(write.status || 403).json({ error: write.sentence, courseCode })
       }
       req.dashboardUser = user
+      req.ownLineOnly = !!write.ownLineOnly
       next()
     } catch (err) {
       logger.error('[PodsCast] Auth gate error:', err)
@@ -630,6 +640,25 @@ module.exports = function createPodsCastRouter({
         return res.status(403).json({ error: `Sentence does not belong to course ${courseCode}` })
       }
 
+      // A CAST VOICE EDITS ITS OWN LINES AND NO OTHER (Tom, 2026-09-12). The
+      // line's speaker must be cast to one of this login's voices on this
+      // course; an editor grant is not held here, so the sentence's cast entry
+      // is the whole test. Refused with the speaker and the voice named.
+      let castVoiceId = null
+      if (req.ownLineOnly) {
+        const { voiceConfig } = await fetchVoiceConfig(db, courseCode)
+        const podCast = (voiceConfig && voiceConfig.podCast) || {}
+        const castEntry = podCast[sentence.speaker] || null
+        if (!castingRights.isOwnPodLine({ user: req.dashboardUser, courseCode, castEntry })) {
+          return res.status(403).json({
+            error: `${req.dashboardUser?.email || 'This voice'} is cast on ${courseCode}, but line ${sentenceId} is ${sentence.speaker || 'an uncast speaker'}'s` +
+              `${castEntry && castEntry.voiceId ? ` (${castEntry.voiceId})` : ''}, not theirs to edit.`,
+            reason: 'not_your_line', courseCode, speaker: sentence.speaker || null,
+          })
+        }
+        castVoiceId = castEntry.voiceId
+      }
+
       // A SIDE HANDED BACK ITS OWN WORDS IS NOT AN EDIT (Tom, 2026-09-12: a
       // recordist edits both sides of their own lines, and "editing a known
       // language will of course orphan the audio" — THAT side's audio, never
@@ -662,6 +691,11 @@ module.exports = function createPodsCastRouter({
       if (updateError) throw new Error(updateError.message)
       if (Object.keys(cleared).length) {
         logger.info(`[PodsEdit] ${courseCode} ${sentenceId} edited by ${req.dashboardUser?.email || '?'} — unlinked ${JSON.stringify(cleared)} (rows kept)`)
+      }
+      // DETECTABLE: every artist edit is logged with the voice id and the side(s).
+      if (castVoiceId) {
+        const sides = ['target_text', 'known_text'].filter((c) => c in patch).map((c) => c.replace('_text', ''))
+        logger.info(`[PodsEdit] ARTIST ${castVoiceId} (${req.dashboardUser?.email || '?'}) edited ${sides.join('+') || 'draft-flag'} of ${courseCode} ${sentenceId} (speaker ${sentence.speaker || '?'})`)
       }
       res.json({ ok: true, sentence: updated, unlinkedAudio: cleared })
     } catch (err) {

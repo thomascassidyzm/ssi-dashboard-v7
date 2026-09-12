@@ -4,6 +4,18 @@
       Sign In to Popty
     </h2>
 
+    <!-- WHERE THIS VOICE IS CAST (Tom, 2026-09-12). A booth-link-only artist
+         with no Popty login used to land here blank. Now the page reads the
+         booth it came from - the /r/:voiceId redirect or the tab's remembered
+         booth - and says which course the casting names and which email to
+         sign in with. Artist rights derive from the casting, not from the
+         users page: services/voice-engine/casting-rights.cjs. -->
+    <p v-if="boothCasting" class="booth-casting text-muted text-sm text-center mb-4">
+      This booth is {{ boothCasting.displayName }}'s, cast on {{ boothCasting.courses.join(', ') || boothCasting.languageName }}.
+      Sign in with the email the casting names<template v-if="boothCasting.emailHint">, {{ boothCasting.emailHint }},</template>
+      to open the course pages and edit your lines.
+    </p>
+
     <!-- Step 1: Email Entry -->
     <div v-if="step === 'email'" class="space-y-4">
       <div>
@@ -191,12 +203,25 @@
 </template>
 
 <script setup>
-import { ref, nextTick } from 'vue'
+import { ref, nextTick, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuth } from '../composables/useAuth'
 import { getApiUrl } from '../services/api'
+import { rememberedBooth } from '../views/recordist/booth-pointer.js'
 
 const router = useRouter()
+
+const boothCasting = ref(null)
+onMounted(async () => {
+  const redirect = String(router.currentRoute.value?.query?.redirect || '')
+  const fromLink = redirect.match(/^\/r\/([^/?#]+)/)
+  const voiceId = (fromLink && decodeURIComponent(fromLink[1])) || rememberedBooth()
+  if (!voiceId) return
+  try {
+    const resp = await fetch(`${getApiUrl()}/api/recording/voice/${encodeURIComponent(voiceId)}/casting`)
+    if (resp.ok) boothCasting.value = await resp.json()
+  } catch { /* no line rather than a broken page */ }
+})
 const { sendOTP, verifyOTP, signInWithPassword, loading, error, hasDashboardAccess, refreshAccess, accessLookupWasAuthoritative } = useAuth()
 
 const step = ref('email')

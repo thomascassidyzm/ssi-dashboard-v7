@@ -71,7 +71,6 @@ describe('RecordistRoom — the already-recorded list has its own switch', () =>
     expect(w.find('.listen-back').exists()).toBe(false)
 
     const mine = switchSaying(w, "Show everything I've already recorded")
-    const reread = switchSaying(w, "Re-read lines I've already recorded")
     expect(mine).toBeTruthy()
     await mine.setValue(true)
     await flushPromises()
@@ -81,19 +80,17 @@ describe('RecordistRoom — the already-recorded list has its own switch', () =>
     expect(w.find('.listen-back h3').text()).toContain('2')
     // And the run is untouched: it still starts on the first line that needs
     // reading, not at the top of everything.
-    expect(reread.element.checked).toBe(false)
     expect(w.find('.btn-begin').text()).toContain('Dw i eisiau siarad')
   })
 
-  it('the re-read switch keeps doing exactly its own job, and only its own', async () => {
+  // THE RE-READ SWITCH IS GONE (Tom, 2026-09-11: a line with a confirmed take
+  // is never served again as a thing to read; re-reading is an explicit act on
+  // the map). Two cases here used to tick it; this is what is left of them.
+  it('there is no re-read switch, and the run is served from the first unread line', async () => {
     const w = mount(RecordistRoom, { props: { voiceId: 'human_aran_cym_n' } })
     await flushPromises()
-    await switchSaying(w, "Re-read lines I've already recorded").setValue(true)
-    await flushPromises()
-    // It re-serves the queue from the top — unchanged behaviour, and the point
-    // of leaving it alone.
-    expect(w.find('.btn-begin').text()).toContain('Bore da, Sarah!')
-    // It no longer decides whether a panel is on the page.
+    expect(switchSaying(w, "Re-read lines I've already recorded")).toBeFalsy()
+    expect(w.find('.btn-begin').text()).toContain('Dw i eisiau siarad')
     expect(w.find('.listen-back').exists()).toBe(false)
   })
 

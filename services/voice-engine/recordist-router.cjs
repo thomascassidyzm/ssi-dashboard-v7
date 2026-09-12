@@ -46,6 +46,7 @@ const {
   seedCastEntry,
   policyVoiceList,
 } = require('./recordist-queue.cjs')
+const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const {
   takeKey,
@@ -271,6 +272,21 @@ module.exports = function createRecordistRouter({
   })
 
   // ── 1. the queue ───────────────────────────────────────────────────────────
+  // WHERE THIS VOICE IS CAST, for the login page (Tom, 2026-09-12: a booth-
+  // link-only artist with no Popty login used to land on a blank login page).
+  // Link-is-identity like its siblings, and light: course codes, the display
+  // name, and a HINT of the email the casting names - never the full address.
+  router.get('/voice/:voiceId/casting', async (req, res) => {
+    try {
+      const casting = await castingRights.castingForVoice(db(), req.params.voiceId)
+      if (!casting) return res.status(404).json({ error: `No recording voice ${req.params.voiceId}.` })
+      res.json(casting)
+    } catch (err) {
+      logger.error(`[Recordist] casting lookup: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
   router.get('/voice/:voiceId', async (req, res) => {
     try {
       const pack = resolvePack(req.params.voiceId)

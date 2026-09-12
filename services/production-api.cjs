@@ -41,6 +41,7 @@ const takeSupersede = require('./take-supersede.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
+const castingRights = require('./voice-engine/casting-rights.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
 
 // =============================================================================
@@ -296,16 +297,37 @@ async function verifySupabaseJWT(token) {
         .catch(() => null),
     ])
 
-    return resolvePoptyIdentity({ email: user.email, dashboardRow, learnerRow })
+    // ARTIST RIGHTS DERIVE FROM CASTING (Tom, 2026-09-12): the live casting
+    // rides every identity, and a login with NO row at all is still somebody
+    // when the casting names their email. services/voice-engine/casting-rights.cjs.
+    return await attachCasting(resolvePoptyIdentity({ email: user.email, dashboardRow, learnerRow }), user.email)
   } catch (err) {
     logger.error('[Auth] Supabase JWT verification error:', err)
     return null
   }
 }
 
+// The casting this email holds, read live (policy row + every course cast) and
+// attached to the identity so the course gate can read casting FIRST, then
+// grants. No row → the casting alone is the identity (role 'recorder' is the
+// existing booth-side confinement, not a new role). A read failure attaches
+// nothing rather than locking anyone out.
+async function attachCasting(user, email) {
+  try {
+    const casting = await castingRights.castingForEmail(supabaseClient.getClient(), email)
+    if (user) return castingRights.withCasting(user, casting)
+    return castingRights.castingIdentity(String(email || '').toLowerCase(), casting)
+  } catch (err) {
+    logger.warn(`[Auth] casting lookup failed for ${email}: ${err.message}`)
+    return user
+  }
+}
+
 // Helper: check if user has access to a specific course
 function userCanAccessCourse(user, courseCode) {
   if (!user || !courseCode) return false
+  // Casting first (Tom, 2026-09-12): a voice cast on the course holds it.
+  if (castingRights.castingOn(user.casting, courseCode).length) return true
   if (user.courses === '*') return true
   if (Array.isArray(user.courses)) return user.courses.includes(courseCode)
   return false
@@ -369,11 +391,11 @@ async function resolveDashboardUser(req) {
   if (supabaseUser) return supabaseUser
 
   const sessionUser = await authValidateSession(token)
-  if (sessionUser) return sessionUser
+  if (sessionUser) return await attachCasting(sessionUser, sessionUser.email)
 
   try {
     const { data: { user } } = await supabaseClient.getClient().auth.getUser(token)
-    if (user?.email) return await authGetUser(user.email)
+    if (user?.email) return await attachCasting(await authGetUser(user.email), user.email)
   } catch (err) { /* invalid token — fall through to null */ }
   return null
 }
@@ -408,13 +430,21 @@ app.param('courseCode', async (req, res, next, courseCode) => {
     if (!user) {
       return res.status(401).json({ error: 'Authentication required' })
     }
-    // admin → all courses (matches useAuth.canAccessCourse); everyone else
-    // needs '*' or list membership. Missing/empty courses on the record = DENY.
-    if (user.role !== 'admin' && !userCanAccessCourse(user, courseCode)) {
-      logger.warn(`[CourseScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path})`)
-      return res.status(403).json({ error: `No access to course ${courseCode}` })
+    // CASTING FIRST, THEN GRANTS (Tom, 2026-09-12: "You edit and record the
+    // lines you're cast on. The editor shapes the course."). A voice cast on
+    // this course is admitted by the casting alone; otherwise admin → all,
+    // everyone else '*' or list membership. Missing/empty courses = DENY, and
+    // the refusal is a sentence naming the course and the voice, never blank.
+    const verdict = castingRights.courseAccessVerdict(user, courseCode)
+    if (!verdict.ok) {
+      logger.warn(`[CourseScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path}): ${verdict.sentence}`)
+      return res.status(403).json({ error: verdict.sentence, courseCode, reason: 'not_cast_no_grant' })
+    }
+    if (verdict.by === 'casting' && req.method !== 'GET') {
+      logger.info(`[CourseScope] CAST ${user.email} as ${verdict.voices.join('+')} → ${courseCode} (${req.method} ${req.path})`)
     }
     req.dashboardUser = user
+    req.castVoices = verdict.by === 'casting' ? verdict.voices : []
     next()
   } catch (err) {
     logger.error('[CourseScope] error:', err)
@@ -469,6 +499,7 @@ app.get('/api/production/:courseCode/pods/coverage', async (req, res) => {
 // via a surgical merge (pods-cast.cjs), so no course-version bump is needed.
 app.use('/api/production/:courseCode/pods',
   require('./voice-engine/pods-router.cjs')({
+    castingRights,
     requireDashboardUser,
     userCanAccessCourse,
     getDb: () => supabaseClient.getClient(),
@@ -555,7 +586,7 @@ app.get('/api/auth/me', async (req, res) => {
   // Path 2: Email query param (used by frontend when direct Supabase is blocked by CORS)
   const email = req.query.email
   if (email) {
-    const user = await authGetUser(email)
+    const user = await attachCasting(await authGetUser(email), email)
     if (user) return res.json(user)
     return res.status(404).json({ error: 'User not found' })
   }

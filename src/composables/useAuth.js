@@ -65,6 +65,21 @@ async function fetchDashboardUser(email) {
   lastLookupAuthoritative = false
 
   try {
+    // ARTIST RIGHTS DERIVE FROM CASTING (Tom, 2026-09-12): the production API
+    // answers /api/auth/me from the session with the live casting attached —
+    // a voice cast on a course is admitted to it with no users-page row at
+    // all, and an editor who is also cast carries both. Asked FIRST, with the
+    // session token, because only the server reads the casting; every older
+    // lookup below is the fallback when the machine cannot be reached.
+    const token = await getAccessToken()
+    if (token) {
+      try {
+        const { getApiUrl } = await import('../services/api.js')
+        const resp = await fetch(`${getApiUrl()}/api/auth/me`, { headers: { Authorization: `Bearer ${token}` } })
+        if (resp.ok) { lastLookupAuthoritative = true; return await resp.json() }
+      } catch { /* machine unreachable — the row lookups below still answer */ }
+    }
+
     // Direct Supabase read — data here is authoritative, but an EMPTY
     // result is not (RLS hides rows from anon/other sessions).
     if (supabase) {
@@ -360,6 +375,9 @@ async function getAccessToken() {
 function canAccessCourse(courseCode) {
   if (!dashboardUser.value) return false
   if (isAdmin.value) return true
+  // Casting first, then grants (Tom, 2026-09-12).
+  const casting = dashboardUser.value.casting
+  if (Array.isArray(casting) && casting.some((c) => c && c.courseCode === courseCode)) return true
   const courses = dashboardUser.value.courses
   if (!courses) return false
   if (courses === '*') return true
