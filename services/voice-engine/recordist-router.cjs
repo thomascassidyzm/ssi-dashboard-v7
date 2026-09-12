@@ -39,6 +39,7 @@ const {
   languageName,
   propagateTakeToDuplicates,
   clearRerecordWants,
+  castEntryFor,
   isTestFixtureCourse,
   parseSeedLineId,
   parseQuarryLineId,
@@ -952,7 +953,7 @@ module.exports = function createRecordistRouter({
       // The line decides the course; the recordist decides the voice.
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
-        .select('id, pod_id, target_text, target_audio_id')
+        .select('id, pod_id, speaker, target_text, target_audio_id')
         .eq('id', lineId)
         .maybeSingle()
       if (sentErr) throw new Error(`line lookup failed: ${sentErr.message}`)
@@ -990,6 +991,26 @@ module.exports = function createRecordistRouter({
         })
         if (arrival.refused.length) {
           return res.status(403).json({ error: arrival.refused[0].sentence, courseCode: pod.course_code, reason: 'not_cast_no_grant' })
+        }
+        // AND ITS OWN LINES ONLY. The course admitting the voice is not the
+        // line being cast to it: two artists cast on one community course by
+        // the same editor never see each other's lines in the queue
+        // (isCastOnlyLine), and the take must hold the same rule -- the queue
+        // never showed Bea Amina's uuid, but the route answered it (job #336,
+        // 2026-09-12). A policy voice is language-wide and unchanged here.
+        const { data: course, error: courseErr } = await db()
+          .from('courses').select('course_code, voice_config').eq('course_code', pod.course_code).maybeSingle()
+        if (courseErr) throw new Error(`course lookup failed: ${courseErr.message}`)
+        const castEntry = castEntryFor(course && course.voice_config && course.voice_config.podCast, sentence.speaker)
+        const castVoiceId = castEntry && castEntry.voiceId ? String(castEntry.voiceId) : null
+        if (!castVoiceId || !recordist.spellings.includes(castVoiceId)) {
+          const sentence403 = `${recordist.displayName} is not cast to read this line of ${pod.course_code}: ` +
+            (castVoiceId ? `it is cast to ${castEntry.name || castVoiceId}.` : 'nobody is cast to its speaker yet.')
+          castingRights.recordAccess({
+            kind: 'refused', email: arrival.email, voices: [recordist.voiceId], courseCode: pod.course_code,
+            method: req.method, path: req.originalUrl || req.path, sentence: sentence403, logger,
+          })
+          return res.status(403).json({ error: sentence403, courseCode: pod.course_code, reason: 'not_cast_on_line' })
         }
       }
 

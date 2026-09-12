@@ -269,6 +269,11 @@ async function castingForVoice(db, voiceId) {
 async function boothArrival({ db, recordist, courseCodes, method = 'GET', path = '', logger = console, now = Date.now() }) {
   const email = normEmail(recordist && recordist.email) || await emailForVoice(db, recordist && recordist.voiceId)
   let casting = email ? await castingForEmail(db, email) : []
+  // THE LINK IS FOR ONE VOICE. A cast-only voice is admitted to its cast
+  // courses only (resolveCastOnlyRecordist), whatever else its email holds:
+  // the same person cast as a second voice on another course arrives there
+  // by THAT voice's link, not by this one (job #336, 2026-09-12).
+  if (Array.isArray(recordist.castCourses)) casting = casting.filter((c) => recordist.castCourses.includes(c.courseCode))
   if (!casting.length) {
     // No email-door twin: the link's own answer stands in, so the arrival is
     // still counted rather than dropped for want of an address. For a cast-only

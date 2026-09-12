@@ -486,6 +486,20 @@ function recordedSpellings(voiceId, aliasMap) {
  * uses (pods-registration.resolvePodCastVoiceId): canonical speaker name first,
  * raw key as the safety net.
  */
+/**
+ * The identity one queue line stands for. Text alone for a policy voice (or an
+ * uncast/unknown voice) -- one take of a text fills every course of the
+ * language; text AND cast voice for a voice the language's policy does not
+ * name, because such a voice is cast per course and may only ever fill lines
+ * cast to itself. `aliasOwner` is the language's policy-voice register, every
+ * spelling included (buildLanguageLines).
+ */
+function dedupKey(text, castVoiceId, aliasOwner) {
+  const textKey = normalizeForDb(text)
+  if (!castVoiceId || aliasOwner.has(castVoiceId)) return textKey
+  return `${castVoiceId}\u0000${textKey}`
+}
+
 function castEntryFor(podCast, speaker) {
   if (!podCast) return null
   return podCast[canonicalSpeakerName(speaker)] || podCast[speaker] || null
@@ -959,7 +973,16 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
 
     if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
-    const key = normalizeForDb(text)
+    const castVoiceId = entry && entry.voiceId ? String(entry.voiceId) : null
+    // WHAT ONE RECORDING MAY STAND FOR. A POLICY voice is cast language-wide,
+    // so its copies of one text across the language's courses collapse into
+    // one line (the cym_n/cym_s promise). A CAST-ONLY (community) voice is cast
+    // per course and admitted to its cast courses only (isCastOnlyLine), so
+    // its copies collapse only with copies cast to the SAME voice: keyed on
+    // text alone, Bea's copy on swa_for_eng became the representative of
+    // Zawadi's identical line on swa_for_fra, Zawadi's queue lost her only
+    // line, and Bea's take was then filed onto it (job #336, 2026-09-12).
+    const key = dedupKey(text, castVoiceId, aliasOwner)
     const seenForGender = seen.get(bucket)
     if (seenForGender.has(key)) {
       // One recording, not three. The duplicate is remembered against the
@@ -998,8 +1021,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // The voice the course's cast assigns this line's speaker to. Read by
       // isCastOnlyLine; a policy voice's queue is bucketed by gender and
       // never looks at it.
-      castVoiceId: entry && entry.voiceId ? String(entry.voiceId) : null,
-      textNormalized: key,
+      castVoiceId,
+      textNormalized: normalizeForDb(text),
       duplicateOf: [],
       // The voice(s) already occupying this line's slot, via its own FK and
       // every collapsed copy's. Empty when nothing is linked.
@@ -1059,6 +1082,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     const course = byCourse.get(w.course_code)
     const bucket = bucketKey(courseDialect(course), gender)
     if (!byBucket.has(bucket)) { byBucket.set(bucket, []); seen.set(bucket, new Map()) }
+    // A wanted clip names no cast voice: text-only key, as it always was.
     const key = normalizeForDb(text)
     const seenForGender = seen.get(bucket)
     if (seenForGender.has(key)) {
@@ -1741,6 +1765,14 @@ async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Ke
       const course = byCourse.get(podById.get(s.pod_id).course_code)
       const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
       if (!entry || String(entry.gender || '').toLowerCase() !== recordist.gender) return false
+      // A CAST-ONLY voice fills its own lines on its cast courses and nothing
+      // else -- the same rule as isCastOnlyLine, applied to the other half of
+      // the collapse promise. Without it Bea's take on swa_for_eng was filed
+      // onto Zawadi's identical line on swa_for_fra (job #336, 2026-09-12).
+      if (Array.isArray(recordist.castCourses)) {
+        if (!recordist.castCourses.includes(course.course_code)) return false
+        if (!entry.voiceId || !recordist.spellings.includes(String(entry.voiceId))) return false
+      }
       // The same filter as the queue, for the same reason. The queue only ever
       // collapsed lines within one dialect, so this is the other half of that
       // promise: without it a Northern take would be filed straight into the
@@ -1925,7 +1957,10 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
   //    Only the 'target' key is dropped: a want on the known track belongs to
   //    the known-language (English) queue cast under __explainer__ and is not
   //    this recordist's to retire.
-  const courses = await coursesForLanguage(db, recordist.language)
+  //    A cast-only voice's take fills its cast courses only
+  //    (propagateTakeToDuplicates), so only those courses' wants are satisfied.
+  const courses = (await coursesForLanguage(db, recordist.language))
+    .filter((c) => !Array.isArray(recordist.castCourses) || recordist.castCourses.includes(c.course_code))
   const { data: pods } = await db
     .from('listening_pods').select('id').in('course_code', courses.map((c) => c.course_code))
   const podIds = (pods || []).map((p) => p.id)
