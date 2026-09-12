@@ -185,3 +185,35 @@ test('a cast that names a voice id but omits gender is that voice\'s queue line,
   const out = await propagateTakeToDuplicates({ db: stubDb(fixture(), writes), recordist: amina, sentenceId: AMINA_LINE, text: 'Asante.', s3Key: 'mastered/a.mp3', logger: quiet })
   assert.deepEqual(out.linked.map((l) => l.sentenceId), [NOGENDER_LINE])
 })
+
+// Fourth finding (cold-verify #355): the `wanted` source still demanded a
+// gender AFTER resolving the clip's owner. A community voice cast with no
+// gender, whose flagged clip is stored under its voice id and whose want names
+// no gender, was counted `uncast` and left out of its own queue, while the
+// take route (correctly) let that voice record it.
+const NOMI = 'human_nomi_swa'
+const NOMI_CLIP = '33333333-3333-4333-8333-333333333333'
+function communityFixture() {
+  const f = fixture()
+  f.language_recording_policy = []
+  f.courses = [{ course_code: 'swa_for_deu', target_lang: 'swa', known_lang: 'deu', voice_config: { podCast: {
+    Nomi: { name: 'Nomi', voiceId: NOMI, email: 'nomi@example.com' },
+    Juma: { name: 'Juma', voiceId: 'human_juma_swa', gender: 'm', email: 'juma@example.com' },
+  } } }]
+  f.listening_pods = [{ id: 'p_deu', course_code: 'swa_for_deu', slug: 'pod-1', title: 'Pod 1' }]
+  f.listening_pod_sentences = [{ id: 's_nomi', pod_id: 'p_deu', global_order: 1, speaker: 'Nomi', target_text: 'Habari.', known_text: 'Hallo.' }]
+  f.course_audio = [{ id: NOMI_CLIP, course_code: 'swa_for_deu', text: 'Karibu.', role: 'target', language: 'swa', voice_id: NOMI, s3_key: 'k3', rerecord_wanted: { reason: 'clipped' } }]
+  return f
+}
+
+test('a flagged clip owned by a community voice with no gender, and a want naming none, is that voice\'s queue line and not uncast', async () => {
+  const db = stubDb(communityFixture())
+  const nomi = await resolveRecordist(db, NOMI, { course: 'swa_for_deu' })
+  assert.ok(nomi, 'Nomi is a live cast-only voice')
+  const q = await buildQueue(db, nomi, { includeRecorded: true })
+  assert.equal(q.lines.some((l) => l.id === NOMI_CLIP && l.kind === 'rerecord'), true, `Nomi's flagged clip is in her queue: ${JSON.stringify(q.lines.map((l) => l.id))}`)
+  assert.equal(q.uncast, 0, 'a clip with an owner is never uncast')
+  const juma = await resolveRecordist(db, 'human_juma_swa', { course: 'swa_for_deu' })
+  const qj = await buildQueue(db, juma, { includeRecorded: true })
+  assert.equal(qj.lines.some((l) => l.id === NOMI_CLIP), false, "Juma never sees Nomi's clip")
+})

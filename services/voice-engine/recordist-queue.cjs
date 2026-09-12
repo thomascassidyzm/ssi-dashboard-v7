@@ -1184,8 +1184,16 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     const owner = clipVoiceId(w, byCourse.get(w.course_code), register)
     const ownerGender = owner && register.aliasOwner.has(owner) ? String(register.aliasOwner.get(owner).gender || '').toLowerCase() : ''
     const gender = String(w.rerecord_wanted.voice_gender || ownerGender || '').toLowerCase()
-    if (gender !== 'm' && gender !== 'f') {
-      // No required voice stated — the one thing that would have to be guessed.
+    // AN OWNED CLIP IS ITS OWNER'S QUEUE LINE, GENDER OR NO GENDER -- the same
+    // rule the pod source applies to a cast entry above (job #348/#351): a
+    // community voice cast with no gender, whose want names none either, was
+    // still counted `uncast` here while the take route let that voice record
+    // it (cold-verify #355). Gender only decides the BUCKET, and an owned line
+    // is found by owner id (linesForVoice), so an empty gender bucket is fine.
+    // The gender rule holds only for the untagged narration bucket, where the
+    // clip names nobody and a gender is the one thing that could be guessed.
+    if (!owner && gender !== 'm' && gender !== 'f') {
+      // No owner and no required voice stated — never guessed, surfaced as uncast.
       uncast += 1
       continue
     }
