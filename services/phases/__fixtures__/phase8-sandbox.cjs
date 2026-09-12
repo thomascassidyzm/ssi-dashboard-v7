@@ -14,7 +14,19 @@ const { makeFakeSupabase } = require('./fake-supabase.cjs')
 
 const PHASE8 = path.resolve(__dirname, '..', 'phase8-audio-v13.cjs')
 
-function loadPhase8({ tables = {}, s3Objects = new Set() } = {}) {
+/**
+ * @param {object} [o]
+ * @param {object} [o.tables]     in-memory rows per table
+ * @param {Set}    [o.s3Objects]  keys HeadObject answers for
+ * @param {object} [o.tts]        a tts-service double; default THROWS on any call
+ * @param {object} [o.doubles]    { '<module path suffix>': realModule => replacement }
+ *                                for any other edge a scenario has to cut —
+ *                                e.g. '/audio-processor.cjs' (ffmpeg) or
+ *                                '/audio-veracity.cjs' (whisper). Receives the
+ *                                real module so a double can wrap rather than
+ *                                re-implement it.
+ */
+function loadPhase8({ tables = {}, s3Objects = new Set(), tts: ttsOverride, doubles = {} } = {}) {
   // Blow away any cached copy so each scenario gets a clean module instance.
   for (const k of Object.keys(require.cache)) {
     if (k.includes('/services/') || k.includes('@supabase')) delete require.cache[k]
@@ -22,7 +34,7 @@ function loadPhase8({ tables = {}, s3Objects = new Set() } = {}) {
 
   const supabase = makeFakeSupabase(tables)
 
-  const tts = {
+  const tts = ttsOverride || {
     calls: [],
     async generateAudio(...args) {
       tts.calls.push(args)
@@ -63,6 +75,9 @@ function loadPhase8({ tables = {}, s3Objects = new Set() } = {}) {
       }
     }
     if (request.endsWith('tts-service.cjs')) return tts
+    for (const suffix of Object.keys(doubles)) {
+      if (request.endsWith(suffix)) return doubles[suffix](origLoad.apply(this, arguments))
+    }
     return origLoad.apply(this, arguments)
   }
 

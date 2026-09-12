@@ -364,3 +364,128 @@ describe('a human-voice course may synthesise its known side only', () => {
     expect(isKnownSideOfHumanVoiceCourse('', 'en')).toBe(false)
   })
 })
+
+// ---------------------------------------------------------------------------
+// WORD TIMINGS (Tom, 2026-09-12): a Cartesia pod render asks for timestamps.
+// ---------------------------------------------------------------------------
+describe('generateCartesia with config.wordTimings — the SSE path', () => {
+  const CLONE = '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+  // 0.5 s of pcm_s16le at 24 kHz — clear of the audible floor.
+  const PCM = Buffer.alloc(24000, 1)
+  const sseBody = (events) => events.map(e => `data: ${JSON.stringify(e)}\n\n`).join('')
+
+  /** Stub the network with an SSE body; hand back the request we sent. */
+  function withSseFetch (body, run) {
+    const nodeFetch = require('node-fetch')
+    const mod = require.cache[require.resolve('node-fetch')]
+    const original = mod.exports
+    const calls = []
+    const stub = async (url, opts) => {
+      calls.push({ url, opts, body: JSON.parse(opts.body) })
+      return {
+        ok: true,
+        status: 200,
+        text: async () => body,
+        arrayBuffer: async () => { throw new Error('SSE path must read text(), not bytes') },
+      }
+    }
+    Object.keys(nodeFetch).forEach(k => { stub[k] = nodeFetch[k] })
+    mod.exports = stub
+    delete require.cache[require.resolve('./tts-service.cjs')]
+    const svc = require('./tts-service.cjs')
+    return Promise.resolve(run(svc, calls)).finally(() => {
+      mod.exports = original
+      delete require.cache[require.resolve('./tts-service.cjs')]
+    })
+  }
+
+  it('requests timestamps on /tts/sse as raw pcm, and returns them in the contract shape', async () => {
+    const body = sseBody([
+      { type: 'chunk', data: PCM.subarray(0, 12000).toString('base64'), done: false },
+      { type: 'timestamps', word_timestamps: { words: ['Ciao', 'a'], start: [0, 0.31], end: [0.28, 0.4] } },
+      { type: 'chunk', data: PCM.subarray(12000).toString('base64'), done: false },
+      { type: 'timestamps', word_timestamps: { words: ['tutti'], start: [0.42], end: [0.71] } },
+      { type: 'done', done: true },
+    ])
+    await withSseFetch(body, async (svc, calls) => {
+      const out = await svc.generate('Ciao a tutti', 'cartesia', {
+        apiKey: 'k', voiceId: CLONE, locale: 'it-IT', wordTimings: true,
+      })
+      expect(calls).toHaveLength(1)
+      expect(calls[0].url).toBe('https://api.cartesia.ai/tts/sse')
+      expect(calls[0].body.add_timestamps).toBe(true)
+      expect(calls[0].body.output_format).toEqual({ container: 'raw', encoding: 'pcm_s16le', sample_rate: 24000 })
+      expect(calls[0].body.locale).toBe('it-IT')
+      // Two timestamps events, concatenated in arrival order, into ONE contract object.
+      expect(out.wordTimings).toEqual({
+        source: 'cartesia', words: ['Ciao', 'a', 'tutti'], starts: [0, 0.31, 0.42], ends: [0.28, 0.4, 0.71],
+      })
+      expect(out.wordBoundaries).toBeNull()
+      // The audio is the reassembled pcm wrapped as WAV: 44-byte header + every chunk.
+      expect(out.audioBuffer.length).toBe(44 + PCM.length)
+      expect(out.audioBuffer.subarray(0, 4).toString()).toBe('RIFF')
+      expect(out.audioBuffer.readUInt32LE(24)).toBe(24000)
+    })
+  })
+
+  it('returns wordTimings null when the provider sends audio but no timestamps event', async () => {
+    const body = sseBody([
+      { type: 'chunk', data: PCM.toString('base64'), done: false },
+      { type: 'done', done: true },
+    ])
+    await withSseFetch(body, async (svc) => {
+      const out = await svc.generate('Ciao a tutti', 'cartesia', {
+        apiKey: 'k', voiceId: CLONE, locale: 'it-IT', wordTimings: true,
+      })
+      expect(out.wordTimings).toBeNull()
+      expect(out.audioBuffer.length).toBe(44 + PCM.length)
+    })
+  })
+
+  it('surfaces a Cartesia SSE error event as a thrown error, not as silent audio', async () => {
+    const body = sseBody([{ type: 'error', title: 'bad_request', message: 'voice not found' }])
+    await withSseFetch(body, async (svc) => {
+      await expect(svc.generate('x', 'cartesia', { apiKey: 'k', voiceId: CLONE, locale: 'en-GB', wordTimings: true }))
+        .rejects.toThrow(/SSE error: bad_request: voice not found/)
+    })
+  })
+
+  it('an untimed call is unchanged: /tts/bytes, mp3, and wordTimings null', async () => {
+    // Re-use the bytes stub shape from the routing tests above.
+    const nodeFetch = require('node-fetch')
+    const mod = require.cache[require.resolve('node-fetch')]
+    const original = mod.exports
+    const calls = []
+    const stub = async (url, opts) => {
+      calls.push({ url, body: JSON.parse(opts.body) })
+      const bytes = Buffer.alloc(8192, 1)
+      return { ok: true, status: 200, arrayBuffer: async () => bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.length) }
+    }
+    Object.keys(nodeFetch).forEach(k => { stub[k] = nodeFetch[k] })
+    mod.exports = stub
+    delete require.cache[require.resolve('./tts-service.cjs')]
+    try {
+      const svc = require('./tts-service.cjs')
+      const out = await svc.generate('a five word English line', 'cartesia', { apiKey: 'k', voiceId: CLONE, locale: 'en-GB' })
+      expect(calls[0].url).toBe('https://api.cartesia.ai/tts/bytes')
+      expect(calls[0].body.add_timestamps).toBeUndefined()
+      expect(calls[0].body.output_format.container).toBe('mp3')
+      expect(out.wordTimings).toBeNull()
+    } finally {
+      mod.exports = original
+      delete require.cache[require.resolve('./tts-service.cjs')]
+    }
+  })
+})
+
+describe('parseCartesiaSse (pure)', () => {
+  const { parseCartesiaSse } = require('./tts-service.cjs')
+
+  it('ignores comments, blank lines and unparseable payloads, and concatenates chunks in order', () => {
+    const body = ': keepalive\n\ndata: not json\n\ndata: {"type":"chunk","data":"AQI="}\n\ndata: {"type":"chunk","data":"AwQ="}\n\ndata: {"type":"done"}\n\n'
+    const r = parseCartesiaSse(body)
+    expect([...r.pcm]).toEqual([1, 2, 3, 4])
+    expect(r.wordTimestamps).toBeNull()
+    expect(r.error).toBeNull()
+  })
+})

@@ -71,6 +71,7 @@ class Query {
   }
 
   delete() { this._op = 'delete'; return this }
+  update(patch) { this._op = 'update'; this._patch = patch; return this }
 
   _rows_() {
     let rows = this.db.tables[this.table] || []
@@ -89,6 +90,11 @@ class Query {
 
   _run() {
     if (this._op === 'upsert') return this._runUpsert()
+    if (this._op === 'update') {
+      const hit = this._rows_()
+      for (const r of hit) Object.assign(r, this._patch)
+      return { data: hit.map(r => ({ ...r })), error: null }
+    }
     if (this._op === 'delete') {
       const doomed = this._rows_()
       this.db.stats.deleted += doomed.length
@@ -110,6 +116,11 @@ class Query {
     const existing = this.db.tables[this.table] || (this.db.tables[this.table] = [])
     const ignoreDup = this._upsertOpts.ignoreDuplicates === true
     let inserted = 0, ignored = 0
+    // The rows the statement touched, in order — what `.select()` after an
+    // upsert returns in PostgREST. A `beforeInsert` hook on the db stands in for
+    // a BEFORE INSERT trigger (course_audio_link_canonical_clip) for tests that
+    // need one; it may mutate the row and it runs only on a genuine insert.
+    const affected = []
     for (const row of this._rows) {
       if (cols) {
         const k = normKey(row, cols)
@@ -118,15 +129,20 @@ class Query {
           if (ignoreDup) { ignored++; continue }
           // ON CONFLICT DO UPDATE
           Object.assign(hit, row)
+          affected.push(hit)
           continue
         }
       }
-      existing.push({ id: `row-${++this.db.seq}`, ...row })
+      const fresh = { id: `row-${++this.db.seq}`, ...row }
+      if (typeof this.db.beforeInsert === 'function') this.db.beforeInsert(this.table, fresh)
+      existing.push(fresh)
+      affected.push(fresh)
       inserted++
     }
     this.db.stats.inserted += inserted
     this.db.stats.dupIgnored += ignored
-    return { data: null, error: null }
+    const data = this._single ? (affected[0] ? { ...affected[0] } : null) : affected.map(r => ({ ...r }))
+    return { data, error: null }
   }
 }
 

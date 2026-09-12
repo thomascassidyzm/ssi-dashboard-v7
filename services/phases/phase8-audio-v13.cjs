@@ -38,6 +38,7 @@ const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
 const createLogger = require('../shared/logger.cjs')
 const { identity: buildIdentity } = require('../shared/build-identity.cjs')
 const ttsService = require('../tts-service.cjs')
+const { toWordTimingsColumn } = require('../shared/word-timings.cjs')
 // The language cast reader. phase8 does not go through loadVoiceConfig — it
 // reads course.voice_config off its own select — so it resolves explicitly.
 const voiceConfigService = require('../voice-config-service.cjs')
@@ -7434,6 +7435,13 @@ function buildPodTTSConfig(voice, language, courseCode) {
     // database. Same precedence as the xAI arm: the cast's own locale wins.
     base.locale = voice.locale || toBcp47(language)
     base.language = base.locale
+    // WORD TIMINGS (Tom, 2026-09-12): pod immersion display keeps pace within
+    // a sentence, so every Cartesia POD render asks for timestamps. This flag
+    // moves the call to Cartesia's SSE endpoint (the only one that emits them)
+    // and lands `word_timings` on the course_audio row — see
+    // services/shared/word-timings.cjs for the contract. Course-phrase renders
+    // go through voice-config-service, not here, and stay on /tts/bytes.
+    base.wordTimings = true
   } else if (voice.provider === 'elevenlabs') {
     base.apiKey = process.env.ELEVENLABS_API_KEY
   } else {
@@ -7725,10 +7733,10 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
     // fallback must not silently pin every retry to Azure.
     provider = voice.provider || 'azure'
     activeVoice = voice
-    let audioBuffer, wordBoundaries
+    let audioBuffer, wordBoundaries, wordTimings = null
     try {
       const ttsConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
-      ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
+      ;({ audioBuffer, wordBoundaries, wordTimings = null } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
     } catch (primaryErr) {
       // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
       // back when the primary was xAI — Azure failing has nowhere better to go,
@@ -7751,12 +7759,18 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
       activeVoice = azureVoice
       const azureConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
       try {
+        // An Azure rescue has no word timings; whatever the failed primary
+        // attempt may have set must not travel with somebody else's bytes.
+        wordTimings = null
         ;({ audioBuffer, wordBoundaries } = await ttsService.generateWithRetry(ttsText, 'azure', azureConfig))
       } catch (e) { e.message = `[STAGE=tts:azure-fallback,xai-also-failed] ${e.message}`; throw e }
     }
     try {
+      // masterAudio only ever cuts the TAIL (trimToEndOfSpeech) and re-levels;
+      // the head is untouched, so timings measured on the raw render still
+      // describe the mastered clip.
       const { buffer, durationMs } = await masterAudio(audioBuffer, ttsText)
-      return { buffer, durationMs, wordBoundaries }
+      return { buffer, durationMs, wordBoundaries, wordTimings }
     } catch (e) {
       // Empty/corrupt TTS buffer (buflen=0) usually means a cross-language voice
       // mismatch (e.g. an English voice handed non-English text) — keep prov/voice
@@ -7786,7 +7800,7 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
   if (!gated.published) {
     throw new Error(`[STAGE=veracity] quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
   }
-  const { buffer: masteredBuffer, durationMs, wordBoundaries } = gated
+  const { buffer: masteredBuffer, durationMs, wordBoundaries, wordTimings } = gated
   voice = activeVoice  // course_audio row records the voice that actually produced the clip
 
   const audioId = uuidv4().toUpperCase()
@@ -7825,6 +7839,10 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
       s3_key: s3Key,
       duration_ms: durationMs,
       word_boundaries: wordBoundaries && wordBoundaries.length ? wordBoundaries : null,
+      // Per-word timings from the render (Cartesia only; NULL for every other
+      // provider and for a Cartesia render that sent none). Contract in
+      // services/shared/word-timings.cjs — re-validated at the write.
+      word_timings: toWordTimingsColumn(wordTimings),
       // The gate's verdict travels WITH the clip — see the same call in
       // /generate. Three-state: true/false/NULL-for-not-sampled.
       ...veracity.verdictColumns(gated.verdict, {
@@ -7834,10 +7852,25 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
     }, {
       onConflict: 'course_code,text_normalized,language,role,voice_id',
     })
-    .select('id')
+    .select('id, s3_key')
     .single()
 
   if (insertError) throw new Error(`course_audio insert failed: ${insertError.message}`)
+
+  // The BEFORE INSERT trigger course_audio_link_canonical_clip can point a
+  // brand-new row at the estate's CANONICAL bytes for this line instead of the
+  // ones just rendered (duplicate_render_deduped). Timings measured on our
+  // render do not describe those bytes, so when the row came back holding a
+  // different key the timings are withdrawn rather than left describing audio
+  // the learner will not hear.
+  if (inserted && inserted.s3_key && inserted.s3_key !== s3Key && toWordTimingsColumn(wordTimings)) {
+    const { error: wtErr } = await supabase
+      .from('course_audio')
+      .update({ word_timings: null })
+      .eq('id', inserted.id)
+    if (wtErr) logger.warn(`[Pods] could not withdraw word_timings on deduped clip ${inserted.id}: ${wtErr.message}`)
+    else logger.info(`[Pods] clip ${inserted.id} deduped onto canonical bytes — word_timings withdrawn`)
+  }
   return { id: inserted.id, reused: false, bytes: masteredBuffer.length, chars: text.length }
 }
 

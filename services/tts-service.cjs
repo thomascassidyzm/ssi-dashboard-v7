@@ -12,6 +12,7 @@
  */
 
 const fetch = require('node-fetch');
+const { wordTimingsFromCartesia } = require('./shared/word-timings.cjs');
 const https = require('https');
 const fs = require('fs');
 const os = require('os');
@@ -662,9 +663,20 @@ const CARTESIA_BIT_RATE = 128000;
  * 2. `generation_config.speed` — see CARTESIA_DEFAULT_SPEED above.
  * 3. `output_format` — see CARTESIA_SAMPLE_RATE / CARTESIA_BIT_RATE above.
  *
- * Word boundaries are null, as with xAI: this endpoint returns bytes, not
- * timings. Anything that needs word boundaries (component splicing) stays on
- * Azure — see docs, only Azure emits them.
+ * Word boundaries (the Azure `{text, offset, duration}` list that component
+ * splicing reads) are always null here, as with xAI.
+ *
+ * WORD TIMINGS (Tom, 2026-09-12: pod immersion display keeps pace within a
+ * sentence, "Cartesia will be great for this") are a separate thing, opted
+ * into per call with `config.wordTimings === true`. Cartesia only emits
+ * timestamps on its streaming endpoints, and /tts/sse only emits RAW PCM, so a
+ * timed render goes to /tts/sse with `add_timestamps: true`, the base64 chunks
+ * are reassembled and wrapped as WAV (the mastering chain sniffs content with
+ * ffmpeg, so the container is fine), and the `timestamps` events are merged
+ * into the `course_audio.word_timings` contract (services/shared/word-timings.cjs).
+ * Untimed calls keep the /tts/bytes mp3 path exactly as before and report
+ * `wordTimings: null`. Timed calls where Cartesia sent no timestamps event
+ * ALSO report null — the audio is still good, the row simply has no timings.
  */
 async function generateCartesia(text, config) {
   const {
@@ -675,7 +687,8 @@ async function generateCartesia(text, config) {
     speed = CARTESIA_DEFAULT_SPEED,
     modelId = CARTESIA_MODEL,
     sampleRate = CARTESIA_SAMPLE_RATE,
-    bitRate = CARTESIA_BIT_RATE
+    bitRate = CARTESIA_BIT_RATE,
+    wordTimings = false
   } = config;
 
   // Cartesia prefers BCP-47; accept `locale` first and fall back to whatever the
@@ -711,15 +724,15 @@ async function generateCartesia(text, config) {
     transcript: text,
     voice: { mode: 'id', id: voiceId },
     generation_config: { speed },
-    output_format: {
-      container: 'mp3',
-      sample_rate: sampleRate,
-      bit_rate: bitRate
-    }
+    output_format: wordTimings
+      ? { container: 'raw', encoding: 'pcm_s16le', sample_rate: sampleRate }
+      : { container: 'mp3', sample_rate: sampleRate, bit_rate: bitRate }
   };
+  if (wordTimings) body.add_timestamps = true;
   if (steer && steer !== 'auto') body.locale = steer;
 
-  const response = await fetch('https://api.cartesia.ai/tts/bytes', {
+  const endpoint = wordTimings ? 'https://api.cartesia.ai/tts/sse' : 'https://api.cartesia.ai/tts/bytes';
+  const response = await fetch(endpoint, {
     method: 'POST',
     agent: ttsKeepAliveAgent,
     signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
@@ -736,12 +749,79 @@ async function generateCartesia(text, config) {
     throw new Error(`Cartesia TTS API error (${response.status}): ${errorText}`);
   }
 
-  const audioBuffer = Buffer.from(await response.arrayBuffer());
-  const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
-  assertAudibleResponse(audioBuffer, {
-    provider: 'cartesia', bytesPerSecond, text, voiceId,
+  if (!wordTimings) {
+    const audioBuffer = Buffer.from(await response.arrayBuffer());
+    const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
+    assertAudibleResponse(audioBuffer, {
+      provider: 'cartesia', bytesPerSecond, text, voiceId,
+    });
+    return { audioBuffer, wordBoundaries: null, wordTimings: null };
+  }
+
+  const sse = parseCartesiaSse(await response.text());
+  if (sse.error) {
+    throw new Error(`Cartesia TTS SSE error: ${sse.error}`);
+  }
+  // pcm_s16le mono: two bytes per sample.
+  assertAudibleResponse(sse.pcm, {
+    provider: 'cartesia', bytesPerSecond: sampleRate * 2, text, voiceId,
   });
-  return { audioBuffer, wordBoundaries: null };
+  const audioBuffer = pcm16ToWav(sse.pcm, sampleRate, 1);
+  return { audioBuffer, wordBoundaries: null, wordTimings: wordTimingsFromCartesia(sse.wordTimestamps) };
+}
+
+/**
+ * Parse a complete Cartesia SSE body. Events are `data: {json}` lines; the
+ * types that matter are `chunk` (base64 audio in `data`), `timestamps`
+ * (`word_timestamps: { words, start, end }`, possibly several per generation —
+ * concatenated here in arrival order), `done` and `error`.
+ *
+ * Pure, exported for tests.
+ */
+function parseCartesiaSse(bodyText) {
+  const chunks = [];
+  const wt = { words: [], start: [], end: [] };
+  let sawTimestamps = false;
+  let error = null;
+  for (const rawLine of String(bodyText).split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line.startsWith('data:')) continue;
+    const payload = line.slice(5).trim();
+    if (!payload || payload === '[DONE]') continue;
+    let ev;
+    try { ev = JSON.parse(payload); } catch { continue; }
+    if (ev.type === 'chunk' && typeof ev.data === 'string') {
+      chunks.push(Buffer.from(ev.data, 'base64'));
+    } else if (ev.type === 'timestamps' && ev.word_timestamps) {
+      const w = ev.word_timestamps;
+      if (Array.isArray(w.words)) { sawTimestamps = true; wt.words.push(...w.words); }
+      if (Array.isArray(w.start)) wt.start.push(...w.start);
+      if (Array.isArray(w.end)) wt.end.push(...w.end);
+    } else if (ev.type === 'error') {
+      error = `${ev.title || 'error'}: ${ev.message || ''}`.trim();
+    }
+  }
+  return { pcm: Buffer.concat(chunks), wordTimestamps: sawTimestamps ? wt : null, error };
+}
+
+/** Wrap raw little-endian 16-bit PCM in a 44-byte RIFF/WAVE header. */
+function pcm16ToWav(pcm, sampleRate, channels) {
+  const header = Buffer.alloc(44);
+  const byteRate = sampleRate * channels * 2;
+  header.write('RIFF', 0);
+  header.writeUInt32LE(36 + pcm.length, 4);
+  header.write('WAVE', 8);
+  header.write('fmt ', 12);
+  header.writeUInt32LE(16, 16);        // PCM fmt chunk size
+  header.writeUInt16LE(1, 20);         // PCM
+  header.writeUInt16LE(channels, 22);
+  header.writeUInt32LE(sampleRate, 24);
+  header.writeUInt32LE(byteRate, 28);
+  header.writeUInt16LE(channels * 2, 32);
+  header.writeUInt16LE(16, 34);
+  header.write('data', 36);
+  header.writeUInt32LE(pcm.length, 40);
+  return Buffer.concat([header, pcm]);
 }
 
 
@@ -1035,6 +1115,8 @@ module.exports = {
   generateAzure,
   generateXai,
   generateCartesia,
+  parseCartesiaSse,
+  pcm16ToWav,
   CARTESIA_DEFAULT_SPEED,
   CARTESIA_VERSION,
   CARTESIA_MODEL,
