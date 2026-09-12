@@ -1,0 +1,38 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+
+scoped to seeds 1-50: 4463 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/4463 (16.2/s, ~4m left)     measured 500/4463 (20.1/s, ~3m left)     measured 750/4463 (21.7/s, ~3m left)     measured 1000/4463 (22.7/s, ~3m left)     measured 1250/4463 (23.4/s, ~2m left)     measured 1500/4463 (23.7/s, ~2m left)     measured 1750/4463 (24.0/s, ~2m left)     measured 2000/4463 (24.2/s, ~2m left)     measured 2250/4463 (24.5/s, ~2m left)   [repair] tail measure failed for 55747e65-7926-4e67-94cc-ec6f83b7c0e5: The specified key does not exist.
+[repair] tail measure failed for 8d629a18-490f-4b61-a673-132502c79957: The specified key does not exist.
+[repair] tail measure failed for ab7de026-5c30-4658-86c6-6b45e7a5ada5: The specified key does not exist.
+  measured 2500/4463 (24.6/s, ~1m left)     measured 2750/4463 (24.5/s, ~1m left)     measured 3000/4463 (24.5/s, ~1m left)     measured 3250/4463 (24.6/s, ~1m left)     measured 3500/4463 (24.6/s, ~1m left)     measured 3750/4463 (24.6/s, ~0m left)     measured 4000/4463 (24.7/s, ~0m left)     measured 4250/4463 (24.7/s, ~0m left)   
+
+audio-repair queue — spa_mx_for_eng
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 4460 clip(s); 3 could not be measured
+
+5 clip(s) worth a human's ears (5 by duration, 0 by tail); showing 5, worst first.
+
+    0.822  presentation    6696ms  "The Spanish for: 'with everyone else', as in — 'I'm g
+           636bed14-ff4d-4d2f-82be-fb5fccc8bef9  rev 1  — 18% shorter than its text implies
+    0.837  presentation    6216ms  "The Spanish for: 'you have been learning', as in — 'y
+           62c58f21-126b-4399-afca-1a1d107ca548  rev 1  — 16% shorter than its text implies
+     0.84  presentation    6840ms  "The Spanish for: 'what's going to happen', as in — 'I
+           b9e1d738-b913-4122-bb2c-2f70e7480469  rev 1  — 16% shorter than its text implies
+     0.84  presentation    6720ms  "The Spanish for: 'it's like this', as in — 'I think t
+           b1a24424-615c-46fb-ad00-4ac4280c6c8e  rev 1  — 16% shorter than its text implies
+    0.843  presentation    6504ms  "The Spanish for: 'other people are here', as in — 'I 
+           f363f35e-ea54-4823-bcc7-57b7a71cd27e  rev 1  — 16% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/spa_mx_for_eng-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

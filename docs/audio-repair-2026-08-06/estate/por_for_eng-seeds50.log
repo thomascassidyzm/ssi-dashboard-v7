@@ -1,0 +1,33 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+
+scoped to seeds 1-50: 3616 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ✅ audit secrets and track compliance: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3616 (18.8/s, ~3m left)     measured 500/3616 (22.5/s, ~2m left)     measured 750/3616 (24.1/s, ~2m left)     measured 1000/3616 (24.9/s, ~2m left)     measured 1250/3616 (25.4/s, ~2m left)     measured 1500/3616 (25.8/s, ~1m left)     measured 1750/3616 (26.0/s, ~1m left)     measured 2000/3616 (26.1/s, ~1m left)     measured 2250/3616 (26.3/s, ~1m left)     measured 2500/3616 (26.6/s, ~1m left)     measured 2750/3616 (26.7/s, ~1m left)     measured 3000/3616 (26.9/s, ~0m left)     measured 3250/3616 (26.8/s, ~0m left)     measured 3500/3616 (26.9/s, ~0m left)   
+
+audio-repair queue — por_for_eng
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3616 clip(s); 0 could not be measured
+
+4 clip(s) worth a human's ears (4 by duration, 0 by tail); showing 4, worst first.
+
+    0.838  presentation    6648ms  "The Portuguese for 'I wouldn't like to', as in 'I wou
+           25efd74b-1aac-4f01-9ba5-c0dd63537777  rev 1  — 16% shorter than its text implies
+    0.844  presentation    7056ms  "The Portuguese for: 'what's going to happen', as in —
+           7a6bc3ce-16a1-4f13-8d84-c779c9170fbe  rev 1  — 16% shorter than its text implies
+    0.846  presentation    6768ms  "The Portuguese for 'it's a good thing to', as in 'Bec
+           bee50ed4-5528-4e37-8ab2-87ffafc17fbe  rev 1  — 15% shorter than its text implies
+    0.849  known           3456ms  "I wouldn't like to guess what's going to happen tomor
+           f491141a-2317-434d-a40b-677bd4fbc648  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/por_for_eng-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

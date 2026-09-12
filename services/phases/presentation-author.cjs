@@ -267,7 +267,8 @@ async function judgeBatch(items, { knownLangName, targetLangName }) {
 
 For each numbered LEGO decide whether its introduction needs the disambiguating context sentence:
 - B (with context): the chunk is a mid-sentence fragment or ambiguous on its own — a learner could not confidently place it without the sentence it came from.
-- A (bare): the chunk is complete and self-sufficient on its own (a clear standalone word, a complete question or clause).
+- B ALSO when the chunk is perfectly clear as a word but its ${knownLangName} form covers MORE THAN ONE meaning that ${targetLangName} tells apart, so a learner could correctly answer it two different ways. A time word that means either a past or a future day, or a verb that covers two ${targetLangName} verbs, is the standard case: being a clean standalone word is exactly why it needs the context, not a reason to go bare.
+- A (bare): the chunk is complete, self-sufficient AND single-sense (a clear standalone word with one ${targetLangName} rendering, a complete question or clause).
 
 Also inspect for content errors: if a chunk or its seed looks wrong (grammar, agreement, chunk not matching its own seed), report it — do not fix it.
 
@@ -321,13 +322,36 @@ async function authorPresentations(supabase, course, items, { template, targetLa
   for (let i = 0; i < items.length; i += batchSize) {
     const batch = items.slice(i, i + batchSize)
     let frames, batchFlags
+    const pinned = (it) => it.forceFrame === 'A' || it.forceFrame === 'B'
     try {
-      ({ frames, flags: batchFlags } = await judgeBatch(batch, { knownLangName, targetLangName }))
+      // Every item pinned means there is nothing left to ask — skip the CLI
+      // call entirely rather than spend on an answer that gets discarded.
+      ;({ frames, flags: batchFlags } = batch.every(pinned)
+        ? { frames: batch.map((it) => it.forceFrame), flags: [] }
+        // via module.exports so the judgment is a seam a test can hold
+        : await module.exports.judgeBatch(batch, { knownLangName, targetLangName }))
     } catch (err) {
       logger.warn(`Judgment batch failed (${err.message}) — deterministic fallback for ${batch.length} items`)
       frames = batch.map((it) => fallbackFrame(it.chunk, it.seed))
       batchFlags = []
     }
+
+    // A DETERMINISTIC PIN, because a prompt is not a guarantee (2026-09-03).
+    // The judge was asked live for eng_for_hin's six कल chunks — Hindi कल is
+    // both "yesterday" and "tomorrow" — and returned Frame A, dropping the
+    // context, for three of them (कल सुबह, कल दोपहर, कल रात): a clean
+    // standalone word reads as self-sufficient, which is precisely backwards
+    // for a two-sense word. The prompt above now names that case, but an LLM
+    // decision cannot be an invariant. `item.forceFrame` lets the caller state
+    // the frame outright for a chunk a human has already ruled on; the judge
+    // is still consulted for the rest of the batch, and its flags still count.
+    // Frame B is only honoured when it is renderable — a context that does not
+    // contain the chunk would quote a sentence that fails to demonstrate it,
+    // which is the same downgrade judgeBatch applies to its own answers.
+    batch.forEach((item, j) => {
+      if (!pinned(item)) return
+      frames[j] = (item.forceFrame === 'B' && fallbackFrame(item.chunk, item.seed) === 'A') ? 'A' : item.forceFrame
+    })
 
     batch.forEach((item, j) => {
       const frame = frames[j]

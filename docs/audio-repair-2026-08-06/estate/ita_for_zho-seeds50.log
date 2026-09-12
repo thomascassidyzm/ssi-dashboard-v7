@@ -1,0 +1,29 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 🔑 add access controls to secrets: https://dotenvx.com/ops
+
+scoped to seeds 1-50: 3724 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3724 (20.6/s, ~3m left)     measured 500/3724 (26.2/s, ~2m left)     measured 750/3724 (28.7/s, ~2m left)     measured 1000/3724 (30.0/s, ~2m left)     measured 1250/3724 (31.1/s, ~1m left)     measured 1500/3724 (31.6/s, ~1m left)     measured 1750/3724 (32.1/s, ~1m left)     measured 2000/3724 (32.4/s, ~1m left)     measured 2250/3724 (32.5/s, ~1m left)     measured 2500/3724 (32.7/s, ~1m left)     measured 2750/3724 (33.0/s, ~0m left)     measured 3000/3724 (33.1/s, ~0m left)     measured 3250/3724 (33.2/s, ~0m left)     measured 3500/3724 (33.3/s, ~0m left)   
+
+audio-repair queue — ita_for_zho
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3724 clip(s); 0 could not be measured
+
+2 clip(s) worth a human's ears (2 by duration, 0 by tail); showing 2, worst first.
+
+    0.805  target1         3048ms  "Mi piacerebbe riuscire a parlare dopo che hai finito.
+           0d709dfe-127f-4460-b793-a195b107fcda  rev 1  — 19% shorter than its text implies
+    0.836  target1         2448ms  "mi piacerebbe parlare dopo che hai finito"
+           5a824b80-e1c0-4e9f-934d-c57eb6d7ef66  rev 1  — 16% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/ita_for_zho-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

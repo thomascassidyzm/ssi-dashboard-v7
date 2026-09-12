@@ -1,0 +1,646 @@
+[
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 27,
+  "known_text": "I don't like taking too much time to answer.",
+  "target_text": "me pias minga mettegh tropp temp a respond",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "M",
+    "known": "I don't like",
+    "target": "me pias minga",
+    "components": [
+     {
+      "known": "I don't like",
+      "target": "me pias minga"
+     }
+    ],
+    "build": [
+     {
+      "known": "I don't like to speak",
+      "target": "me pias minga parlà"
+     },
+     {
+      "known": "I don't like to guess",
+      "target": "me pias minga indovinà"
+     },
+     {
+      "known": "I don't like to come back",
+      "target": "me pias minga tornà indree"
+     }
+    ],
+    "use": [
+     {
+      "known": "I don't like to speak Lombard quickly",
+      "target": "me pias minga parlà lombard a la svelta",
+      "score": 8
+     },
+     {
+      "known": "I don't like to guess what's going to happen",
+      "target": "me pias minga indovinà quell che capitarà",
+      "score": 8
+     },
+     {
+      "known": "I don't like to come back this evening",
+      "target": "me pias minga tornà indree stasira",
+      "score": 8
+     },
+     {
+      "known": "but I don't like to stop talking",
+      "target": "ma me pias minga desmett de parlà",
+      "score": 8
+     },
+     {
+      "known": "I don't like to go at six o'clock",
+      "target": "me pias minga andà via ai ses or",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "M",
+    "known": "taking too much time",
+    "target": "mettegh tropp temp",
+    "components": [
+     {
+      "known": "taking too much time",
+      "target": "mettegh tropp temp"
+     }
+    ],
+    "build": [
+     {
+      "known": "taking too much time today",
+      "target": "mettegh tropp temp incoeu"
+     },
+     {
+      "known": "taking too much time now",
+      "target": "mettegh tropp temp adess"
+     },
+     {
+      "known": "I don't like taking too much time to speak",
+      "target": "me pias minga mettegh tropp temp a parlà"
+     }
+    ],
+    "use": [
+     {
+      "known": "I don't like taking too much time",
+      "target": "me pias minga mettegh tropp temp",
+      "score": 8
+     },
+     {
+      "known": "I don't like taking too much time this evening",
+      "target": "me pias minga mettegh tropp temp stasira",
+      "score": 7
+     },
+     {
+      "known": "but I don't like taking too much time now",
+      "target": "ma me pias minga mettegh tropp temp adess",
+      "score": 7
+     },
+     {
+      "known": "I don't like taking too much time today",
+      "target": "me pias minga mettegh tropp temp incoeu",
+      "score": 7
+     },
+     {
+      "known": "I don't like taking too much time to speak Lombard",
+      "target": "me pias minga mettegh tropp temp a parlà lombard",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 3,
+    "type": "M",
+    "known": "to answer",
+    "target": "a respond",
+    "components": [
+     {
+      "known": "to answer",
+      "target": "a respond"
+     }
+    ],
+    "build": [
+     {
+      "known": "taking too much time to answer",
+      "target": "mettegh tropp temp a respond"
+     },
+     {
+      "known": "I don't like taking too much time to answer",
+      "target": "me pias minga mettegh tropp temp a respond"
+     },
+     {
+      "known": "taking too much time to answer now",
+      "target": "mettegh tropp temp a respond adess"
+     }
+    ],
+    "use": [
+     {
+      "known": "I don't want to be taking too much time to answer",
+      "target": "voeuri minga mettegh tropp temp a respond",
+      "score": 8
+     },
+     {
+      "known": "I'm not going to be taking too much time to answer",
+      "target": "podaroo minga mettegh tropp temp a respond",
+      "score": 7
+     },
+     {
+      "known": "but I don't like taking too much time to answer today",
+      "target": "ma me pias minga mettegh tropp temp a respond incoeu",
+      "score": 7
+     },
+     {
+      "known": "I don't like taking too much time to answer this evening",
+      "target": "me pias minga mettegh tropp temp a respond stasira",
+      "score": 7
+     },
+     {
+      "known": "I don't like taking too much time to answer quickly",
+      "target": "me pias minga mettegh tropp temp a respond a la svelta",
+      "score": 6
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 28,
+  "known_text": "It's useful to start talking as soon as you can.",
+  "target_text": "l'è util comincià a parlà appenna te podet",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "M",
+    "known": "it's useful",
+    "target": "l'è util",
+    "components": [
+     {
+      "known": "it's useful",
+      "target": "l'è util"
+     }
+    ],
+    "build": [
+     {
+      "known": "it's useful to speak",
+      "target": "l'è util parlà"
+     },
+     {
+      "known": "it's useful to learn",
+      "target": "l'è util imparà"
+     },
+     {
+      "known": "it's useful to come back",
+      "target": "l'è util tornà indree"
+     }
+    ],
+    "use": [
+     {
+      "known": "it's useful to speak Lombard",
+      "target": "l'è util parlà lombard",
+      "score": 8
+     },
+     {
+      "known": "it's useful to speak Lombard with you",
+      "target": "l'è util parlà lombard con tì",
+      "score": 8
+     },
+     {
+      "known": "it's useful to get to know people who speak Lombard",
+      "target": "l'è util cognoss gent che parla lombard",
+      "score": 8
+     },
+     {
+      "known": "it's useful to speak Lombard as often as possible",
+      "target": "l'è util parlà lombard pussee spess che se pò",
+      "score": 8
+     },
+     {
+      "known": "it's useful to learn his name quickly",
+      "target": "l'è util imparà el sò nomm a la svelta",
+      "score": 8
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "M",
+    "known": "to start talking",
+    "target": "comincià a parlà",
+    "components": [
+     {
+      "known": "to start talking",
+      "target": "comincià a parlà"
+     }
+    ],
+    "build": [
+     {
+      "known": "it's useful to start talking",
+      "target": "l'è util comincià a parlà"
+     },
+     {
+      "known": "I want to start talking",
+      "target": "voeuri comincià a parlà"
+     },
+     {
+      "known": "to start talking soon",
+      "target": "comincià a parlà prest"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to start talking now",
+      "target": "voeuri comincià a parlà adess",
+      "score": 8
+     },
+     {
+      "known": "it's useful to start talking soon",
+      "target": "l'è util comincià a parlà prest",
+      "score": 8
+     },
+     {
+      "known": "I'd like to start talking with you this evening",
+      "target": "vorarissi comincià a parlà con tì stasira",
+      "score": 8
+     },
+     {
+      "known": "he wants to start talking with everyone else",
+      "target": "el voeur comincià a parlà con tucc i olter",
+      "score": 8
+     },
+     {
+      "known": "I don't want to start talking now",
+      "target": "voeuri minga comincià a parlà adess",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 3,
+    "type": "M",
+    "known": "as soon as you can",
+    "target": "appenna te podet",
+    "components": [
+     {
+      "known": "as soon as you can",
+      "target": "appenna te podet"
+     }
+    ],
+    "build": [
+     {
+      "known": "to start talking as soon as you can",
+      "target": "comincià a parlà appenna te podet"
+     },
+     {
+      "known": "to speak as soon as you can",
+      "target": "parlà appenna te podet"
+     },
+     {
+      "known": "to come back as soon as you can",
+      "target": "tornà indree appenna te podet"
+     }
+    ],
+    "use": [
+     {
+      "known": "it's useful to start talking as soon as you can",
+      "target": "l'è util comincià a parlà appenna te podet",
+      "score": 8
+     },
+     {
+      "known": "I want you to speak Lombard as soon as you can",
+      "target": "voeuri che te parlet lombard appenna te podet",
+      "score": 8
+     },
+     {
+      "known": "it's useful to speak Lombard as soon as you can",
+      "target": "l'è util parlà lombard appenna te podet",
+      "score": 8
+     },
+     {
+      "known": "I want to start talking as soon as you can",
+      "target": "voeuri comincià a parlà appenna te podet",
+      "score": 7
+     },
+     {
+      "known": "are you going to help me as soon as you can",
+      "target": "te me daret ona man appenna te podet",
+      "score": 8
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 29,
+  "known_text": "I'm looking forward to speaking better as soon as I can.",
+  "target_text": "vedi minga l'ora de parlà mej appenna poss",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "M",
+    "known": "I'm looking forward to",
+    "target": "vedi minga l'ora de",
+    "components": [
+     {
+      "known": "I'm looking forward to",
+      "target": "vedi minga l'ora de"
+     }
+    ],
+    "build": [
+     {
+      "known": "I'm looking forward to speaking",
+      "target": "vedi minga l'ora de parlà"
+     },
+     {
+      "known": "I'm looking forward to learning",
+      "target": "vedi minga l'ora de imparà"
+     },
+     {
+      "known": "I'm looking forward to come back",
+      "target": "vedi minga l'ora de tornà indree"
+     }
+    ],
+    "use": [
+     {
+      "known": "I'm looking forward to speaking Lombard",
+      "target": "vedi minga l'ora de parlà lombard",
+      "score": 8
+     },
+     {
+      "known": "I'm looking forward to speaking Lombard with you",
+      "target": "vedi minga l'ora de parlà lombard con tì",
+      "score": 8
+     },
+     {
+      "known": "I'm looking forward to come back this evening",
+      "target": "vedi minga l'ora de tornà indree stasira",
+      "score": 7
+     },
+     {
+      "known": "I'm looking forward to get to know people who speak Lombard",
+      "target": "vedi minga l'ora de cognoss gent che parla lombard",
+      "score": 7
+     },
+     {
+      "known": "I'm looking forward to speaking Lombard tomorrow",
+      "target": "vedi minga l'ora de parlà lombard doman",
+      "score": 8
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "A",
+    "known": "better",
+    "target": "mej",
+    "build": [
+     {
+      "known": "to speak better",
+      "target": "parlà mej"
+     },
+     {
+      "known": "to learn better",
+      "target": "imparà mej"
+     },
+     {
+      "known": "to remember better",
+      "target": "regordà mej"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak Lombard better",
+      "target": "voeuri parlà lombard mej",
+      "score": 8
+     },
+     {
+      "known": "I'm looking forward to speaking better",
+      "target": "vedi minga l'ora de parlà mej",
+      "score": 8
+     },
+     {
+      "known": "you're learning Lombard better today",
+      "target": "te seet dree a imparà lombard mej incoeu",
+      "score": 7
+     },
+     {
+      "known": "it's useful to speak Lombard better",
+      "target": "l'è util parlà lombard mej",
+      "score": 7
+     },
+     {
+      "known": "I'd like to remember his name better",
+      "target": "vorarissi regordà el sò nomm mej",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 3,
+    "type": "M",
+    "known": "as soon as I can",
+    "target": "appenna poss",
+    "components": [
+     {
+      "known": "as soon as I can",
+      "target": "appenna poss"
+     }
+    ],
+    "build": [
+     {
+      "known": "to speak as soon as I can",
+      "target": "parlà appenna poss"
+     },
+     {
+      "known": "to come back as soon as I can",
+      "target": "tornà indree appenna poss"
+     },
+     {
+      "known": "to start talking as soon as I can",
+      "target": "comincià a parlà appenna poss"
+     }
+    ],
+    "use": [
+     {
+      "known": "I'm looking forward to speaking better as soon as I can",
+      "target": "vedi minga l'ora de parlà mej appenna poss",
+      "score": 8
+     },
+     {
+      "known": "I want to speak Lombard as soon as I can",
+      "target": "voeuri parlà lombard appenna poss",
+      "score": 8
+     },
+     {
+      "known": "I'd like to come back as soon as I can",
+      "target": "vorarissi tornà indree appenna poss",
+      "score": 8
+     },
+     {
+      "known": "I'm going to start talking as soon as I can",
+      "target": "cominciaroo a parlà appenna poss",
+      "score": 8
+     },
+     {
+      "known": "it's useful to start talking as soon as I can",
+      "target": "l'è util comincià a parlà appenna poss",
+      "score": 7
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 30,
+  "known_text": "I wanted to ask you something yesterday.",
+  "target_text": "vorevi domandatt quajcoss jer",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "A",
+    "known": "I wanted",
+    "target": "vorevi",
+    "build": [
+     {
+      "known": "I wanted to speak",
+      "target": "vorevi parlà"
+     },
+     {
+      "known": "I wanted to learn",
+      "target": "vorevi imparà"
+     },
+     {
+      "known": "I wanted to come back",
+      "target": "vorevi tornà indree"
+     }
+    ],
+    "use": [
+     {
+      "known": "I wanted to speak Lombard with you",
+      "target": "vorevi parlà lombard con tì",
+      "score": 8
+     },
+     {
+      "known": "I wanted to come back this evening",
+      "target": "vorevi tornà indree stasira",
+      "score": 8
+     },
+     {
+      "known": "I wanted to learn his name",
+      "target": "vorevi imparà el sò nomm",
+      "score": 8
+     },
+     {
+      "known": "I wanted to get to know people who speak Lombard",
+      "target": "vorevi cognoss gent che parla lombard",
+      "score": 8
+     },
+     {
+      "known": "I wanted to start talking as soon as I can",
+      "target": "vorevi comincià a parlà appenna poss",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "A",
+    "known": "to ask you",
+    "target": "domandatt",
+    "build": [
+     {
+      "known": "I wanted to ask you",
+      "target": "vorevi domandatt"
+     },
+     {
+      "known": "I want to ask you",
+      "target": "voeuri domandatt"
+     },
+     {
+      "known": "to ask you now",
+      "target": "domandatt adess"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to ask you something",
+      "target": "voeuri domandatt quajcoss",
+      "score": 8
+     },
+     {
+      "known": "I wanted to ask you something this evening",
+      "target": "vorevi domandatt quajcoss stasira",
+      "score": 8
+     },
+     {
+      "known": "I'd like to ask you something in Lombard",
+      "target": "vorarissi domandatt quajcoss in lombard",
+      "score": 8
+     },
+     {
+      "known": "I'm going to try to ask you something tomorrow",
+      "target": "provaroo a domandatt quajcoss doman",
+      "score": 8
+     },
+     {
+      "known": "but I don't want to ask you something now",
+      "target": "ma voeuri minga domandatt quajcoss adess",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 3,
+    "type": "A",
+    "known": "yesterday",
+    "target": "jer",
+    "build": [
+     {
+      "known": "yesterday I wanted to speak",
+      "target": "jer vorevi parlà"
+     },
+     {
+      "known": "to speak yesterday",
+      "target": "parlà jer"
+     },
+     {
+      "known": "to come back yesterday",
+      "target": "tornà indree jer"
+     }
+    ],
+    "use": [
+     {
+      "known": "I wanted to ask you something yesterday",
+      "target": "vorevi domandatt quajcoss jer",
+      "score": 8
+     },
+     {
+      "known": "I wanted to speak Lombard with you yesterday",
+      "target": "vorevi parlà lombard con tì jer",
+      "score": 8
+     },
+     {
+      "known": "you want to come back yesterday",
+      "target": "te voeuret tornà indree jer",
+      "score": 6
+     },
+     {
+      "known": "I wanted to come back yesterday",
+      "target": "vorevi tornà indree jer",
+      "score": 8
+     },
+     {
+      "known": "I wanted to get to know people who speak Lombard yesterday",
+      "target": "vorevi cognoss gent che parla lombard jer",
+      "score": 7
+     }
+    ]
+   }
+  ]
+ }
+]

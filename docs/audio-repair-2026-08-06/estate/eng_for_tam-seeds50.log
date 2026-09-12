@@ -1,0 +1,1149 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  override existing env vars with { override: true }
+
+scoped to seeds 1-50: 4283 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/4283 (19.9/s, ~3m left)     measured 500/4283 (23.7/s, ~3m left)     measured 750/4283 (25.2/s, ~2m left)     measured 1000/4283 (26.2/s, ~2m left)     measured 1250/4283 (26.7/s, ~2m left)     measured 1500/4283 (27.2/s, ~2m left)     measured 1750/4283 (27.6/s, ~2m left)     measured 2000/4283 (27.8/s, ~1m left)     measured 2250/4283 (27.9/s, ~1m left)     measured 2500/4283 (28.1/s, ~1m left)     measured 2750/4283 (28.2/s, ~1m left)     measured 3000/4283 (28.3/s, ~1m left)     measured 3250/4283 (28.4/s, ~1m left)     measured 3500/4283 (28.4/s, ~0m left)     measured 3750/4283 (28.4/s, ~0m left)     measured 4000/4283 (28.5/s, ~0m left)     measured 4250/4283 (28.5/s, ~0m left)   
+
+audio-repair queue — eng_for_tam
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 4283 clip(s); 0 could not be measured
+
+562 clip(s) worth a human's ears (554 by duration, 11 by tail); showing 562, worst first.
+
+     15ms  target1         1800ms  "you try very hard"
+           f94d61f5-2da8-4d5e-92f9-372418f2ad8e  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2952ms  "எப்போது நீங்கள் ஆங்கிலம் கற்றுவருகிறீர்கள்?"
+           f5b9bc9d-8eaf-4349-8b41-d86a37996d8b  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  target1          792ms  "yesterday"
+           cf9d26f5-e331-409e-9f8a-7f7193ca8eed  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  target2         1848ms  "I like feeling ready today"
+           3d7d10b6-68bd-4b44-9c77-e220fe4cc7bc  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  target1         1488ms  "he wants to find out"
+           c96642ad-78fc-40ba-a885-1858c8c78603  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  target1         1344ms  "as soon as you can start"
+           6f7f2e66-d559-4df1-83da-978dbc174594  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  target1         1104ms  "when I learn"
+           7fc9be57-f3bd-4d1f-8dd0-8c6fff93493f  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  target1         1224ms  "I think it's a good thing"
+           c3a69932-d75f-4d57-9359-19e62d6eb29e  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 22 chars/sec against a 17.1 baseline
+     30ms  target2          576ms  "okay"
+           01ac21f6-8b8c-4a54-939a-5edefad5e7c8  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  target1         1920ms  "when have you been learning English"
+           e9c3e0a8-cbb4-471e-b693-02be96c942e9  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  target1         2208ms  "but I'm a little tired last month"
+           bc30861d-6e76-40cc-9374-de5d3fa71f99  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+    0.603  target1         1464ms  "Did you want to show me something?"
+           c94f4d26-c8da-4e91-916b-80755b2481a8  rev 1  — 40% shorter than its text implies
+    0.616  target1         1056ms  "if you know what I mean?"
+           390114ae-1ef4-4721-a476-2abb16555c5d  rev 1  — 38% shorter than its text implies
+    0.658  target1         2304ms  "She doesn't want to read anything this afternoon."
+           a8eef2eb-967e-4a48-b1c2-4959882bc70e  rev 1  — 34% shorter than its text implies
+    0.666  target2         2664ms  "I wouldn't like to guess what's going to happen tomor
+           20438d01-109e-4f74-a3ee-3fa612f6b769  rev 1  — 33% shorter than its text implies
+    0.672  target1         1344ms  "I'm trying to speak with you"
+           99586b6c-e3d8-4be9-ad05-e408b2a927f1  rev 1  — 33% shorter than its text implies
+    0.672  target1         2112ms  "I'm going to speak a little after you finish"
+           c4838d5d-9fad-4af8-8f35-063333abf7f3  rev 1  — 33% shorter than its text implies
+    0.672  target1         1536ms  "what's going to happen tomorrow?"
+           e2c0a404-6465-4096-b2d6-40dd5a792665  rev 1  — 33% shorter than its text implies
+    0.672  target2         1488ms  "did you want to show something?"
+           f78175f9-5b87-45b7-8718-aa32edf06b68  rev 1  — 33% shorter than its text implies
+    0.672  target2         1344ms  "if you know what I mean now?"
+           e6b5b178-eea8-4265-aaf5-150c9d48907f  rev 1  — 33% shorter than its text implies
+    0.677  target2         3240ms  "I'm not sure if I'm going to be able to remember the 
+           1912f951-686d-4f09-8dd7-a772a85b42c0  rev 1  — 32% shorter than its text implies
+    0.684  target1         1416ms  "if you know what I mean here?"
+           4cedd9b8-bfe2-4aa5-95ba-91af1b0b9791  rev 1  — 32% shorter than its text implies
+    0.685  target2         2544ms  "I'd like to find out what's going to happen tomorrow"
+           7cef0f43-924d-4d42-be0b-8e14df1d437a  rev 1  — 32% shorter than its text implies
+    0.685  target1         1224ms  "because I'm going to meet"
+           1d1b26e8-3104-42ab-8068-79b6bd88c2c0  rev 1  — 31% shorter than its text implies
+    0.691  target2         1728ms  "when have you been learning English"
+           e9ed00c2-83f0-470b-ae25-2469941017bb  rev 1  — 31% shorter than its text implies
+    0.693  target2         1584ms  "what's going to happen tomorrow?"
+           67a468c8-764f-4c2e-bfe6-9d803ce99619  rev 1  — 31% shorter than its text implies
+    0.693  target1         1584ms  "how long have you been learning?"
+           08eff96f-f8cf-412f-8b8d-7fe87fe54ab4  rev 1  — 31% shorter than its text implies
+    0.693  target2         1584ms  "I've been learning at the moment"
+           3b1fa4ab-40a0-4fe1-bc76-9434bfba51be  rev 1  — 31% shorter than its text implies
+    0.694  target1         1488ms  "because I'm trying to remember"
+           a713c327-3db8-45d6-82c6-97554ff62114  rev 1  — 31% shorter than its text implies
+    0.694  target2         1536ms  "have you been learning English?"
+           2ac85457-c0c3-4885-8d0c-c83939f2ea6c  rev 1  — 31% shorter than its text implies
+    0.696  target1         1392ms  "I'm going to guess something"
+           a7048c0d-0401-483b-8808-b70cc22ad8a8  rev 1  — 30% shorter than its text implies
+    0.699  target1         2448ms  "I don't worry about making mistakes at the moment"
+           4cf4ade7-18c9-4a5e-9887-67c2b7d6346c  rev 1  — 30% shorter than its text implies
+      0.7  target2         2400ms  "I'm trying to speak in English with someone else"
+           195349c4-8546-42cb-8eb7-5b391fde692b  rev 1  — 30% shorter than its text implies
+    0.701  target1         2304ms  "I'm not going to be able to remember something"
+           cf5ad204-5958-4b28-88b9-1ce9e5ee4f88  rev 1  — 30% shorter than its text implies
+    0.702  target1         2256ms  "I'm trying to remember what's going to happen"
+           adfef8cc-e31e-4abb-a519-436297d19275  rev 1  — 30% shorter than its text implies
+    0.704  target1         2112ms  "I'd like to explain what's going to happen"
+           4ae9b20a-6109-46ec-878d-8fa16858992e  rev 1  — 30% shorter than its text implies
+    0.704  target2         1608ms  "how long have you been learning?"
+           dd231cee-a04a-4a97-b407-b9990fd5a69c  rev 1  — 30% shorter than its text implies
+    0.705  target1         2064ms  "did you want to show something yesterday?"
+           67ed38dd-a323-4314-ad4f-1cfe6ebce8a3  rev 1  — 30% shorter than its text implies
+    0.705  target1         1560ms  "did you want to show yesterday?"
+           893c8efc-9eb6-485a-9b44-f6cbcad61c5c  rev 1  — 30% shorter than its text implies
+    0.705  target1         1560ms  "we don't want to interrupt here"
+           7141bc91-f478-4693-9587-a9f84e8687c0  rev 1  — 30% shorter than its text implies
+    0.706  target1         2520ms  "I'm not sure if I can remember the whole sentence."
+           ff009dd5-26df-4616-8c1a-4bf5241386cf  rev 1  — 29% shorter than its text implies
+    0.706  target1         1968ms  "she doesn't want to read this afternoon"
+           c2f92d3e-0770-4235-9d32-5f4a03457d0f  rev 1  — 29% shorter than its text implies
+    0.707  target1         1464ms  "how do you feel this morning?"
+           3f9f20d7-2515-408c-a3be-10d8758e0e5c  rev 1  — 29% shorter than its text implies
+    0.708  target2         2376ms  "I wouldn't like to guess what's going to happen"
+           c1601cfb-5aab-4ff4-8c37-56a9b7bf1ea1  rev 1  — 29% shorter than its text implies
+    0.709  target2         2784ms  "because I think that it's a good thing to make mistak
+           486a5e23-a8eb-4f6d-8d5c-0058dda61de5  rev 1  — 29% shorter than its text implies
+    0.709  target1         2280ms  "I'm going to meet at six o'clock this evening"
+           54fd6320-08a0-46f8-abe7-e8c93b228d36  rev 1  — 29% shorter than its text implies
+    0.709  target1         1368ms  "I've been learning with you"
+           c0240c9c-5776-4095-8e69-14a15aac1e9c  rev 1  — 29% shorter than its text implies
+     0.71  target2         2232ms  "I'm not going to be able to remember easily."
+           6232d0dd-e347-4b07-89f6-956d6aa56d31  rev 1  — 29% shorter than its text implies
+    0.711  target1         2640ms  "I'd like to find out what's going to happen tomorrow"
+           e3cd1646-2aeb-48f3-a624-8b6c70fd0e09  rev 1  — 29% shorter than its text implies
+    0.712  target1         3408ms  "I'm not sure if I'm going to be able to remember the 
+           4fc151f6-603b-4151-8eeb-bbc51a60e4b0  rev 1  — 29% shorter than its text implies
+    0.713  target2         1680ms  "I'm trying to remember the answer"
+           05b9741c-f38c-40f5-a714-d1fc6b5a2934  rev 1  — 29% shorter than its text implies
+    0.715  target1         2808ms  "He doesn't want to be quiet when other people are her
+           0e15832e-e290-491d-8d5d-ef2a5bfdbc8c  rev 1  — 29% shorter than its text implies
+    0.716  target2         2352ms  "I'm not going to be able to remember something"
+           66676401-36ff-41fd-8d8b-0955f1f568e7  rev 1  — 28% shorter than its text implies
+    0.717  target1         2304ms  "I'm not sure if I can speak with someone else"
+           6be38cb6-bfaa-4efc-a54e-a4dc0f33f339  rev 1  — 28% shorter than its text implies
+    0.717  target2         2304ms  "I'm trying to remember what's going to happen"
+           4b7ff17c-0bce-43ce-afdd-6a8c1d5a25ff  rev 1  — 28% shorter than its text implies
+    0.717  target1         2304ms  "he doesn't want to be quiet when other people"
+           06ff9e64-c09f-4f7f-a5ec-e2e0c615415f  rev 1  — 28% shorter than its text implies
+    0.717  target2         2304ms  "he doesn't want to be quiet when other people"
+           79bed808-2594-4d9d-b8f2-60dba7070231  rev 1  — 28% shorter than its text implies
+    0.717  target2         1536ms  "we don't want to interrupt now"
+           82c098ab-dc2b-41bf-b6d2-4a71a6cba9f1  rev 1  — 28% shorter than its text implies
+    0.718  target1         1128ms  "have you been learning"
+           2a219e91-e1a0-4fa7-a896-40a0deefa082  rev 1  — 28% shorter than its text implies
+    0.718  target2         1488ms  "how do you feel this morning?"
+           5c2b1bb5-e9c3-40df-82aa-ccea1ed381cf  rev 1  — 28% shorter than its text implies
+    0.719  target2         1848ms  "You wanted to speak with me tonight."
+           fe501d3a-4328-40ca-955d-f1563c869c19  rev 1  — 28% shorter than its text implies
+    0.721  target1         2472ms  "I'm going to practise speaking with someone else"
+           ae4b420d-8dc3-4afc-b3fb-3969923967e6  rev 1  — 28% shorter than its text implies
+    0.721  target1         2112ms  "I'm trying to remember the whole sentence"
+           f9db6d68-5fad-440e-94df-7473b63e49b3  rev 1  — 28% shorter than its text implies
+    0.721  target2         1752ms  "I wouldn't like to guess something"
+           673891da-e07a-473e-91a9-80a52def7265  rev 1  — 28% shorter than its text implies
+    0.721  target1         1752ms  "I wouldn't like to guess something"
+           bcf0ce84-0347-4ba5-887a-6eed15e6f7c8  rev 1  — 28% shorter than its text implies
+    0.721  target2         2472ms  "I don't care about making mistakes at the moment"
+           2063a498-5704-4334-af90-b194759cad30  rev 1  — 28% shorter than its text implies
+    0.722  target2         2064ms  "I wanted to ask you something yesterday."
+           40f8f08d-2db7-40cd-aece-88d01714c9a5  rev 1  — 28% shorter than its text implies
+    0.722  target1         2064ms  "how long have you been learning English?"
+           da708860-c60f-43e8-8460-9c5b2c43de37  rev 1  — 28% shorter than its text implies
+    0.722  target1         2064ms  "I'm trying to learn how to say something"
+           d10ddb16-9ee6-4687-ac89-0cc408fc6275  rev 1  — 28% shorter than its text implies
+    0.722  target1         2424ms  "I'm going to finish the whole sentence tomorrow"
+           47b3a327-80f2-4f09-8a7d-5b6c16c98cf3  rev 1  — 28% shorter than its text implies
+    0.722  target1         2424ms  "I wouldn't like to guess what's going to happen"
+           ff6c79eb-c79a-4d28-b16a-3cae95a237ff  rev 1  — 28% shorter than its text implies
+    0.722  target2         2064ms  "I'm going to speak with you this morning"
+           54c5ed20-ce19-4837-aa43-195641d05c34  rev 1  — 28% shorter than its text implies
+    0.722  target2         1392ms  "I've been learning with you"
+           5bf8d022-0c64-4589-83cb-5c93be218ade  rev 1  — 28% shorter than its text implies
+    0.723  target2         1704ms  "I'm trying to learn something now"
+           20a425d8-102b-419b-94e1-7450d336d386  rev 1  — 28% shorter than its text implies
+    0.724  target2         2328ms  "I'm going to meet at six o'clock this evening"
+           749e2b0e-71cd-4490-aa6b-193ad1f53047  rev 1  — 28% shorter than its text implies
+    0.724  target1         2328ms  "I'm not going to be able to remember her name"
+           c738ddee-b337-4fe2-b18d-06577bc55290  rev 1  — 28% shorter than its text implies
+    0.726  target1         2904ms  "I wouldn't like to guess what's going to happen tomor
+           885df042-1c64-44e6-8c0c-196ffffc0bbb  rev 1  — 27% shorter than its text implies
+    0.726  target1         1296ms  "you want to learn quickly"
+           5ae522d6-32a2-4166-afdc-1fcd6e086e3b  rev 1  — 27% shorter than its text implies
+    0.728  target1         1560ms  "How do you feel at the moment?"
+           0512ae7c-61cd-4ac1-bf66-83151978f9c5  rev 1  — 27% shorter than its text implies
+    0.728  target2         1248ms  "if you know what I mean?"
+           11a9c914-335c-4dd8-bd31-3770dd6e4627  rev 1  — 27% shorter than its text implies
+    0.728  target1         1872ms  "we don't want to interrupt yesterday"
+           306ee70a-652c-474a-a7e7-bd977bd566df  rev 1  — 27% shorter than its text implies
+    0.728  target2         2184ms  "I was starting to feel better this morning"
+           e2449bcc-1b50-495e-8173-8ff7716fd683  rev 1  — 27% shorter than its text implies
+    0.731  target1         1776ms  "we don't want to interrupt tonight"
+           2b65e083-4ea2-40a8-85cf-75d6e0d61842  rev 1  — 27% shorter than its text implies
+    0.731  target1         2088ms  "I'm going to speak with you this morning"
+           c1e0fffa-53e8-4bed-835f-2ac505b5edef  rev 1  — 27% shorter than its text implies
+    0.731  target2         1776ms  "I'm going to practise this morning"
+           e81b3537-667e-46a1-8a73-e960b88c3885  rev 1  — 27% shorter than its text implies
+    0.732  target2         1464ms  "I'm going to come back today"
+           4c2692e8-e52e-42b8-9f90-d7e7aa83599f  rev 1  — 27% shorter than its text implies
+    0.732  target1         2352ms  "I've been learning carefully for about a week"
+           e8873c85-7240-42c6-b156-62d223840b72  rev 1  — 27% shorter than its text implies
+    0.733  target1         2304ms  "I'm not sure if I can say the whole sentence"
+           bbc79254-1305-4d1f-82c1-e65fd592e4f9  rev 1  — 27% shorter than its text implies
+    0.733  target1         2304ms  "I'm trying to learn with everyone else today"
+           937d4046-628d-486b-aaa5-a67a6f7cd7be  rev 1  — 27% shorter than its text implies
+    0.734  target1         1992ms  "did you want to show something better?"
+           e83b1f12-96b1-4a23-9c7a-167d1b3a410f  rev 1  — 27% shorter than its text implies
+    0.735  target1         1680ms  "he doesn't want to be quiet here"
+           4fb21934-d7bf-415f-a017-8a25462d8f8d  rev 1  — 27% shorter than its text implies
+    0.736  target1         2208ms  "I'm trying to speak a little English today"
+           96c5a730-fcc1-4589-ba35-83f77366d42c  rev 1  — 26% shorter than its text implies
+    0.736  target2         1104ms  "you want to come back"
+           9f5c61a6-cacb-47df-b691-93eceb318cd1  rev 1  — 26% shorter than its text implies
+    0.737  target2         1632ms  "I'm going to come back tomorrow"
+           a8ae5a39-72dd-4804-968e-44f70a20fb89  rev 1  — 26% shorter than its text implies
+    0.737  target1         1632ms  "I'm going to come back later on"
+           c4cf894f-0dd6-4e07-963f-21b521a61a31  rev 1  — 26% shorter than its text implies
+    0.737  target1         1632ms  "I've been learning this morning"
+           a68a2b9b-8af8-4609-99bb-8ad9098caa01  rev 1  — 26% shorter than its text implies
+    0.739  target2         2112ms  "I'd like to guess what's going to happen"
+           6072ae82-891b-4262-9bc8-350bb5abc078  rev 1  — 26% shorter than its text implies
+    0.739  target2         1584ms  "before I want to say something"
+           7153726d-0e2f-450a-a744-bcb5fbe5be79  rev 1  — 26% shorter than its text implies
+    0.741  target2         1800ms  "Did you want to show me something?"
+           2c04c24f-4588-468f-a37c-df5c6a6f2aaf  rev 1  — 26% shorter than its text implies
+    0.741  target1         1800ms  "and I'm going to practise tomorrow"
+           f456ed79-f8a6-40a5-8a32-59415ad8d7fd  rev 1  — 26% shorter than its text implies
+    0.741  target2         2064ms  "have you been learning English with me?"
+           36229d7d-a08b-4809-b652-8412503b01da  rev 1  — 26% shorter than its text implies
+    0.742  target1         1536ms  "I'm trying to speak something"
+           770c3796-c3a7-4072-8c44-0383a3935e38  rev 1  — 26% shorter than its text implies
+    0.742  target1         1536ms  "are you going to meet people?"
+           29249d6c-eadb-4485-b3b6-3e4c8e4fda8c  rev 1  — 26% shorter than its text implies
+    0.742  target2         2280ms  "I was starting to feel better at the moment"
+           50d4c4d7-fd8d-4693-be12-3926e52bf0cb  rev 1  — 26% shorter than its text implies
+    0.744  target2         1488ms  "I don't want to stop talking"
+           aa6ffe11-b24f-44b6-bcf5-c78ecc4523af  rev 1  — 26% shorter than its text implies
+    0.744  target1         2232ms  "not going to be able to remember something"
+           775266ef-88ae-41f1-9818-1374397dc92d  rev 1  — 26% shorter than its text implies
+    0.744  target1         1488ms  "I want to show you something"
+           c1c9b1b3-7940-4a7f-a5e4-021e1a6ee835  rev 1  — 26% shorter than its text implies
+    0.744  target1         1488ms  "have you been learning here?"
+           35e6ba4d-dd80-46f2-8c73-23399f78266f  rev 1  — 26% shorter than its text implies
+    0.744  target1         1488ms  "I don't want to say anything"
+           e5702f9d-e602-4d3d-a01f-0584ffa45cca  rev 1  — 26% shorter than its text implies
+    0.745  target2         1704ms  "I don't need to know everything."
+           f281303d-8dc0-499d-9d37-1b9f3a347acd  rev 1  — 25% shorter than its text implies
+    0.745  target1         2448ms  "I'm trying to learn speaking with someone else"
+           cadc3d21-1fda-4fe4-905e-497e82c1ead3  rev 1  — 25% shorter than its text implies
+    0.745  target1         1704ms  "do you practise English with me?"
+           5005153c-f8d8-487d-98b3-2df22048e661  rev 1  — 25% shorter than its text implies
+    0.745  target1         1704ms  "I don't want to stop talking now"
+           b758b3c2-219d-41c5-b4bb-ccf9b6f3a5f5  rev 1  — 25% shorter than its text implies
+    0.747  target1         1440ms  "I'm trying to learn English"
+           2fe68683-3b8a-4877-92e4-c1a9f1f6799e  rev 1  — 25% shorter than its text implies
+    0.747  target2         1920ms  "I'm trying to think about everything"
+           6a56d9d6-a6bd-4d73-b20a-d03d5c7e28d2  rev 1  — 25% shorter than its text implies
+    0.748  target1         2352ms  "We want to meet at six o'clock this evening."
+           69201f95-606d-402a-8315-89d3af1ca920  rev 1  — 25% shorter than its text implies
+    0.748  target1         2136ms  "I'd like to guess what's going to happen"
+           c08a1c1c-5320-4f06-8075-dce54eabe284  rev 1  — 25% shorter than its text implies
+     0.75  target1         1608ms  "because I want to speak better"
+           4cad5dde-8edc-4a5d-9b8d-6f559587c66c  rev 1  — 25% shorter than its text implies
+     0.75  target2         2088ms  "have you been learning English tonight?"
+           8b01eac9-e6ec-45b9-a32e-e83857b95756  rev 1  — 25% shorter than its text implies
+     0.75  target1         2304ms  "I've been learning English for about a week"
+           275ed78b-04e2-40b4-bc15-6a330fb7f2b9  rev 1  — 25% shorter than its text implies
+    0.751  target2         1824ms  "and I'm going to practise tomorrow"
+           3d8f4265-f20f-49fa-bf73-5a5276e2edd2  rev 1  — 25% shorter than its text implies
+    0.753  target2         1560ms  "because I want to meet people"
+           a4fafa7c-26ba-4b3e-8bc3-bf489bef0f01  rev 1  — 25% shorter than its text implies
+    0.753  target2         1560ms  "are you going to meet people?"
+           ff67bae9-08bc-48ab-8828-7806a8487c5c  rev 1  — 25% shorter than its text implies
+    0.753  target1         1776ms  "we don't want to interrupt people"
+           f8c4bcb1-46e0-4507-a1a9-4f00b82e954a  rev 1  — 25% shorter than its text implies
+    0.753  target2         1344ms  "I think it's a good thing"
+           288dfcd8-4d1d-43d8-bfbb-d1be0d75e86a  rev 1  — 25% shorter than its text implies
+    0.754  target2         2424ms  "I'm not sure if I can speak with someone else"
+           72cc8652-6e42-4967-8d88-ca68190bb510  rev 1  — 25% shorter than its text implies
+    0.754  target1         2208ms  "I'm trying to remember what the answer is"
+           ddeaf440-e11d-44d1-8d97-48c4cbcf2e44  rev 1  — 25% shorter than its text implies
+    0.756  target1         1944ms  "You wanted to speak with me tonight."
+           3ef1121d-8dd0-4763-be85-48b3e0cf6569  rev 1  — 24% shorter than its text implies
+    0.756  target2         2376ms  "I'm going to speak a little after you finish"
+           23a9e890-7e6f-452d-8369-4c575b12c582  rev 1  — 24% shorter than its text implies
+    0.756  target2         1080ms  "I'm trying to finish"
+           9659550a-1606-4a7a-bf69-c7a40257bee4  rev 1  — 24% shorter than its text implies
+    0.756  target1         2808ms  "I'm going to explain what's going to happen tomorrow"
+           050e1289-1cd9-463d-a59e-8addd98aed51  rev 1  — 24% shorter than its text implies
+    0.756  target2         1728ms  "do you practise English with me?"
+           e7ee98c1-4737-46de-b6cf-0d8703db299a  rev 1  — 24% shorter than its text implies
+    0.756  target2         2376ms  "I'm trying to learn with everyone else today"
+           803ea1c0-c6b9-4250-a175-4f3eef5f646b  rev 1  — 24% shorter than its text implies
+    0.756  target2         1944ms  "I'm not going to be able to remember"
+           3fbd9cec-c41e-4f70-b3b3-9e2fea998414  rev 1  — 24% shorter than its text implies
+    0.756  target1         2376ms  "I've been learning with you for about a week"
+           53ea20c6-e637-4fb6-8015-91a4d36cac1d  rev 1  — 24% shorter than its text implies
+    0.756  target2         2160ms  "I'm trying to learn everything carefully"
+           130812ac-45d2-4070-9a60-8fee91a3c195  rev 1  — 24% shorter than its text implies
+    0.758  target2         1896ms  "You want to learn his name quickly."
+           38c94f48-62c8-4d3a-b0c6-fafe4c9c79e3  rev 1  — 24% shorter than its text implies
+    0.758  target2         2976ms  "He doesn't want to be quiet when other people are her
+           cfb73c9c-4329-4359-a3d4-fd78b71ec40b  rev 1  — 24% shorter than its text implies
+    0.758  target1         2544ms  "I'm trying to say the whole sentence in English"
+           95a11b81-8ef7-48ba-85bc-77740616be86  rev 1  — 24% shorter than its text implies
+    0.758  target2         2544ms  "I'm going to explain what's going to happen now"
+           c23b44bd-5f4b-4817-879d-7db63a503733  rev 1  — 24% shorter than its text implies
+    0.758  target1         1896ms  "because I want to meet someone else"
+           6b88ef5f-2447-4b53-9b1e-3178e783912b  rev 1  — 24% shorter than its text implies
+    0.758  target2         1896ms  "but I'm a little tired this evening"
+           3be3a566-ff3a-4b1b-9fd6-8ecdc2f9918b  rev 1  — 24% shorter than its text implies
+    0.758  target2         2112ms  "I'm going to speak English this morning"
+           fba04b74-e1e6-4071-8c9c-056fc46de9a9  rev 1  — 24% shorter than its text implies
+    0.759  target2         1464ms  "I'm going to say the answer"
+           ce04740d-af6f-48f4-b0e8-9d737daef35e  rev 1  — 24% shorter than its text implies
+    0.759  target2         1464ms  "you wanted to speak English"
+           95f5c727-75a7-4cd2-b6eb-6e70dae22306  rev 1  — 24% shorter than its text implies
+     0.76  target1         2496ms  "I was starting to feel better than last night."
+           01112c17-72ba-4f25-aa58-5f712d031af1  rev 1  — 24% shorter than its text implies
+     0.76  target2         2280ms  "I'd like to explain what's going to happen"
+           5b5fd154-e068-4cea-8a4e-ad551c75a382  rev 1  — 24% shorter than its text implies
+     0.76  target1         1248ms  "are you going to learn?"
+           d2cef595-e3e5-4a9a-8f3a-1e9a8a7e1927  rev 1  — 24% shorter than its text implies
+     0.76  target2         2064ms  "I'm looking forward to speaking better"
+           b3f3dee8-5242-41b1-9782-b7636435b94e  rev 1  — 24% shorter than its text implies
+    0.761  target1         2664ms  "he wants to come back with everyone else tomorrow"
+           6fad80b6-11ee-4ddf-b718-b35098d1dcf6  rev 1  — 24% shorter than its text implies
+    0.761  target1         1848ms  "I'm going to practise this morning"
+           2776b39b-b281-421f-9575-273087331f26  rev 1  — 24% shorter than its text implies
+    0.762  target2         2448ms  "are you going to help me before I have to go?"
+           5e5c44ea-0d8a-4c5a-b629-ed654189868d  rev 1  — 24% shorter than its text implies
+    0.762  target2         2448ms  "I'm going to practise this morning or tonight"
+           c56701c4-e299-4150-864a-400dc38eeb77  rev 1  — 24% shorter than its text implies
+    0.763  target2         2016ms  "We don't want to interrupt the story."
+           e0987e64-11d5-43c3-9f9a-7c1b53fdc440  rev 1  — 24% shorter than its text implies
+    0.763  target1         2616ms  "I don't care about making mistakes at the moment"
+           26c31ed9-62bb-49d2-acd0-78c89c5b9d80  rev 1  — 24% shorter than its text implies
+    0.764  target1         2184ms  "I wanted to ask you something yesterday."
+           f9e5daad-87e9-4f40-a17e-b1915adb9955  rev 1  — 24% shorter than its text implies
+    0.764  target1         2184ms  "I'm trying to learn everything carefully"
+           fe0d8773-e4eb-41e3-8f93-101285a04238  rev 1  — 24% shorter than its text implies
+    0.765  target1         2568ms  "I'm not trying to finish as quickly as possible"
+           6c7b2293-076f-425b-910d-40464854a3ae  rev 1  — 24% shorter than its text implies
+    0.765  target1         1584ms  "I'm trying to learn something"
+           79abb1e6-dc20-424c-a0bd-49071a2e39a8  rev 1  — 24% shorter than its text implies
+    0.765  target1         1584ms  "did you want to show tonight?"
+           94ea206e-e9ce-4ec3-b156-a91daf0b4f82  rev 1  — 24% shorter than its text implies
+    0.765  target2         1584ms  "did you want to show tonight?"
+           cd60a2ac-c642-43e8-a3de-a06d1e2b3212  rev 1  — 24% shorter than its text implies
+    0.765  target1         1584ms  "I don't want to read anything"
+           490f8d4f-a2c2-4bbb-a229-a260414c5b3a  rev 1  — 24% shorter than its text implies
+    0.765  target2         1584ms  "if you know what I mean here?"
+           4eea5674-8dd9-44aa-a677-c5ce89c73fa8  rev 1  — 24% shorter than its text implies
+    0.766  target1         2352ms  "I was starting to feel better at the moment"
+           da2ee476-d970-4388-b533-1ddec0ff724e  rev 1  — 23% shorter than its text implies
+    0.767  target1         2136ms  "I want to meet people who speak English"
+           cd0fe038-f888-4638-ae94-53005be846e6  rev 1  — 23% shorter than its text implies
+    0.767  target1         2136ms  "have you been learning English tonight?"
+           36558080-f5e6-4887-bab4-6d724220c733  rev 1  — 23% shorter than its text implies
+    0.768  target2         2688ms  "I'm trying to practise speaking with someone else"
+           82e2cc67-898e-4461-a731-6cc460d724ab  rev 1  — 23% shorter than its text implies
+    0.768  target2         2688ms  "I don't worry about making mistakes at the moment"
+           e5c3db45-c839-472d-af94-58e3bbb3a49f  rev 1  — 23% shorter than its text implies
+    0.769  target2         2856ms  "I'm going to explain what's going to happen tomorrow"
+           7af75436-fc26-433b-80e3-878051b4ec80  rev 1  — 23% shorter than its text implies
+     0.77  target1         1704ms  "how to say something in English"
+           9f3dce88-82fe-4141-a17b-a5a3daa8de44  rev 1  — 23% shorter than its text implies
+     0.77  target1         1704ms  "I'm going to remember something"
+           1a2be15a-56b9-4422-a0bf-5fef8e306b41  rev 1  — 23% shorter than its text implies
+     0.77  target1         1704ms  "he wants to speak with me today"
+           65a97792-41e1-4f81-9c60-a34af937979c  rev 1  — 23% shorter than its text implies
+     0.77  target1         1704ms  "I'm going to start talking more"
+           6995c3c6-dffd-4cc2-adde-e2b34df5e105  rev 1  — 23% shorter than its text implies
+     0.77  target1         1704ms  "have you been learning English?"
+           c43adb72-d723-4566-925e-9bdcdab324a9  rev 1  — 23% shorter than its text implies
+     0.77  target2         1704ms  "we don't want to interrupt here"
+           fa6b13bb-8ca3-4a16-8f78-aead6a48b5a7  rev 1  — 23% shorter than its text implies
+     0.77  target2         1704ms  "I've been learning this morning"
+           b193a296-90d4-4c85-aefd-b1538f5ed546  rev 1  — 23% shorter than its text implies
+    0.771  target2         2424ms  "We want to meet at six o'clock this evening."
+           b87142c8-7686-4700-b47f-015e7337ede7  rev 1  — 23% shorter than its text implies
+    0.771  target1          936ms  "I'd like to speak"
+           f8e7c1d3-f5fc-416e-a859-141d97a347d3  rev 1  — 23% shorter than its text implies
+    0.771  target2         2424ms  "I've been learning with you for about a week"
+           add979fd-04e6-455e-9bc3-5d0e9aeebc49  rev 1  — 23% shorter than its text implies
+    0.773  target1         2208ms  "I'm trying to explain the whole sentence"
+           cb3938a5-9b7a-49a5-bdb5-e4fcc77b586e  rev 1  — 23% shorter than its text implies
+    0.773  target1         2208ms  "he wants to come back with everyone else"
+           59167cb4-f307-4a81-af96-00232ff602ce  rev 1  — 23% shorter than its text implies
+    0.773  target2         1656ms  "because I'm trying to remember"
+           8e1d7a9e-bfbd-42e1-92b3-5a1c01ec4a18  rev 1  — 23% shorter than its text implies
+    0.774  target1         1824ms  "I'm trying to speak English today"
+           b519f117-9d57-44d0-8533-a888a7fe616a  rev 1  — 23% shorter than its text implies
+    0.774  target1         1824ms  "I'm trying to remember his answer"
+           48adfdbf-069c-47a9-a440-6184dfcf55a2  rev 1  — 23% shorter than its text implies
+    0.774  target2         1824ms  "you want to learn English quickly"
+           b19a65f4-3a02-41ec-9dde-4ddf63990cc0  rev 1  — 23% shorter than its text implies
+    0.774  target2         1824ms  "we don't want to interrupt people"
+           171c432a-0e98-40ca-9647-4ecb2dc3a77c  rev 1  — 23% shorter than its text implies
+    0.774  target1         1824ms  "I'm not trying to know everything"
+           6ae35017-bbad-46b1-8910-1f7b3b2f9cab  rev 1  — 23% shorter than its text implies
+    0.775  target1         1992ms  "But I'm a little tired this morning."
+           f0742469-acf2-43fa-97f8-eb47e92b7e98  rev 1  — 23% shorter than its text implies
+    0.775  target2         1440ms  "you are learning something"
+           f9655a36-743f-49af-affb-2d6aab0aff14  rev 1  — 22% shorter than its text implies
+    0.776  target2         1608ms  "I'm trying to know everything"
+           f49cb0f5-28c7-4316-8835-019eaf42e482  rev 1  — 22% shorter than its text implies
+    0.777  target2         2664ms  "Because I want to meet people who speak English."
+           e020e509-9a64-4589-8f16-2298cec9fd7a  rev 1  — 22% shorter than its text implies
+    0.778  target2         1944ms  "I've been learning for about a week"
+           e8244099-4ead-4c5b-a0e4-e04e0e3c0735  rev 1  — 22% shorter than its text implies
+    0.778  target2         1944ms  "I'd like to learn a little tomorrow"
+           d453b7d9-7b2c-4c6f-8a39-209c8c78378d  rev 1  — 22% shorter than its text implies
+    0.778  target1         1944ms  "because I'm trying to learn English"
+           36929f55-f27b-49b3-89aa-b3a645609e1a  rev 1  — 22% shorter than its text implies
+    0.778  target1         1944ms  "he doesn't want to be quiet tonight"
+           4b0fbb2e-cc1a-47a2-a1f3-ec9674007f75  rev 1  — 22% shorter than its text implies
+    0.778  target2         2112ms  "did you want to show something better?"
+           c0d020c7-658b-403d-90be-83d40253e00e  rev 1  — 22% shorter than its text implies
+    0.779  target2         1224ms  "I'm going to learn now"
+           4cf63562-5458-449e-9087-4f6d3bc06aa1  rev 1  — 22% shorter than its text implies
+    0.779  target1         2280ms  "she wants to come back with everyone else"
+           9d4cc8c7-3cf5-4c2b-be3e-46d5d29b68ef  rev 1  — 22% shorter than its text implies
+    0.779  target2         2280ms  "did you want to show something yesterday?"
+           ad1c2fae-e40d-4386-aea1-a39eaf692789  rev 1  — 22% shorter than its text implies
+    0.779  target2         2280ms  "I'm going to speak as quickly as possible"
+           590bbbc5-1c7d-4727-962e-232b7ab2ded0  rev 1  — 22% shorter than its text implies
+     0.78  target1         3120ms  "I want to learn how to say something in English with 
+           9ad1a659-a81d-4deb-aa1d-fca56306c832  rev 1  — 22% shorter than its text implies
+     0.78  target2         1728ms  "I'm going to remember something"
+           41b95b48-daff-419d-87e6-464e2a98b836  rev 1  — 22% shorter than its text implies
+     0.78  target1         1728ms  "I'm going to come back tomorrow"
+           ea8f8802-5d9d-47c2-92e0-38390af5be9b  rev 1  — 22% shorter than its text implies
+     0.78  target2         1728ms  "I'm going to start talking more"
+           349fa652-b28e-4ea1-b227-9230afe4e5a4  rev 1  — 22% shorter than its text implies
+     0.78  target1         1392ms  "are you going to help me?"
+           a32ffb61-50c7-4a78-9cfd-5123097a0614  rev 1  — 22% shorter than its text implies
+     0.78  target2         1560ms  "have you been learning here?"
+           eae035c7-d63b-4a0f-b52d-beb45fd58227  rev 1  — 22% shorter than its text implies
+    0.781  target2         2232ms  "how long have you been learning English?"
+           5fe283e9-963e-42b4-99cf-4e45d32c3fab  rev 1  — 22% shorter than its text implies
+    0.781  target2         2232ms  "I'm trying to learn how to say something"
+           3236733d-ae7a-4a96-a016-ad15062e87ac  rev 1  — 22% shorter than its text implies
+    0.781  target1         2232ms  "I'm going to practise very hard tomorrow"
+           5f1a56db-43d2-4708-9e45-cdf2ca02f3b5  rev 1  — 22% shorter than its text implies
+    0.784  target1         2520ms  "are you going to help me before I have to go?"
+           060731bd-1a31-46c3-bda5-9f6b69d522d4  rev 1  — 22% shorter than its text implies
+    0.784  target2         2856ms  "I'm trying to explain what I mean with someone else"
+           0ee315d7-6b32-48fc-ae39-fa88409a8c55  rev 1  — 22% shorter than its text implies
+    0.784  target2         1680ms  "I'd like to remember something"
+           aea2a5ec-3506-4f12-b9ca-af81dfe140be  rev 1  — 22% shorter than its text implies
+    0.784  target2         1512ms  "I'm going to learn tomorrow"
+           b5889577-6ec3-4cfc-bb4f-6346db826ed3  rev 1  — 22% shorter than its text implies
+    0.784  target2         2184ms  "I'm trying to finish the whole sentence"
+           c34b701d-d649-470c-9674-bd1ba312afec  rev 1  — 22% shorter than its text implies
+    0.784  target1         2184ms  "I'm going to meet this evening tomorrow"
+           067d2c09-b71a-41db-990f-6b92fd478789  rev 1  — 22% shorter than its text implies
+    0.784  target2         2520ms  "I'm not going to be able to remember her name"
+           1c41cc01-a3a4-4642-87b8-4545e971e45e  rev 1  — 22% shorter than its text implies
+    0.784  target2         2352ms  "not going to be able to remember something"
+           c56c91a0-c3b2-446c-8397-90e713820d8c  rev 1  — 22% shorter than its text implies
+    0.784  target1         1848ms  "he doesn't want to be quiet today"
+           0035ced0-eb91-4b8f-b621-d32fc42e104a  rev 1  — 22% shorter than its text implies
+    0.784  target1         2184ms  "have you been learning English with me?"
+           c5efa17d-cb13-4aac-9786-a185f2ec8f8a  rev 1  — 22% shorter than its text implies
+    0.784  target1         1680ms  "I don't worry about everything"
+           9662293a-05c7-4df9-a40e-ba914dc3d5a5  rev 1  — 22% shorter than its text implies
+    0.784  target2         1680ms  "I don't worry about everything"
+           fbe850a4-c5a4-4d24-8fec-dbd21ff838ff  rev 1  — 22% shorter than its text implies
+    0.784  target2         3024ms  "speaking English is like this if you know what I mean
+           132b53a3-3c25-4d1d-bb33-94ed91cce6b9  rev 1  — 22% shorter than its text implies
+    0.787  target2         1968ms  "I'm going to speak English tomorrow"
+           e8d827dc-e250-482a-9024-252dbdd8cb86  rev 1  — 21% shorter than its text implies
+    0.787  target1         2304ms  "I'm going to speak as quickly as possible"
+           4bef5678-6540-4d37-a1b3-776b09cbd7b1  rev 1  — 21% shorter than its text implies
+    0.788  target1         1464ms  "we don't want to interrupt"
+           a4513fdf-f50a-4e1c-8d25-5fe425453b1e  rev 1  — 21% shorter than its text implies
+    0.788  target1         1632ms  "I was starting to feel better"
+           79a78e45-c36c-43e6-8e80-b1538f3768ba  rev 1  — 21% shorter than its text implies
+    0.788  target1         1632ms  "I'd like to practise tomorrow"
+           f3c73f1b-3f17-44b7-8675-b35c86af9d77  rev 1  — 21% shorter than its text implies
+    0.788  target2         1632ms  "he wants to come back with me"
+           6bc56923-9e47-47dc-9742-57948d6b8e5b  rev 1  — 21% shorter than its text implies
+    0.788  target1         1632ms  "he wants to come back with me"
+           9d681fc5-7009-4138-906d-62fa39997a6f  rev 1  — 21% shorter than its text implies
+    0.788  target1         1464ms  "but you want to meet today"
+           cef828e0-016f-475d-9399-440acf75d198  rev 1  — 21% shorter than its text implies
+    0.788  target1         1464ms  "I don't worry this morning"
+           4c4403f7-da3f-4b99-b6e5-c8455c558a84  rev 1  — 21% shorter than its text implies
+    0.789  target2         2760ms  "She doesn't want to read anything this afternoon."
+           e5bc1926-08ac-42f7-aa45-669581e98f31  rev 1  — 21% shorter than its text implies
+    0.789  target2         1296ms  "because I want to learn"
+           c6fd19e1-4540-468d-aff3-5523d10b5482  rev 1  — 21% shorter than its text implies
+     0.79  target2         2256ms  "I'm going to try to explain what I mean."
+           33c1e3d4-2ab9-4186-963e-32a1a4935307  rev 1  — 21% shorter than its text implies
+     0.79  target2         2088ms  "I want to speak with someone else now"
+           70fb17bb-2e86-410d-824d-37bd3614416a  rev 1  — 21% shorter than its text implies
+     0.79  target1         2256ms  "I want to say something after you finish"
+           dae18a83-1765-4399-9928-80d729a2a6d3  rev 1  — 21% shorter than its text implies
+     0.79  target1         1128ms  "I don't want to meet"
+           3f5b25e4-d84f-492a-823f-fe188b108497  rev 1  — 21% shorter than its text implies
+     0.79  target1         2088ms  "I want to find out what the answer is"
+           5b414c41-cfc8-42c4-b850-f43be9b9b344  rev 1  — 21% shorter than its text implies
+    0.791  target1         1752ms  "and I'm trying to learn English"
+           8f9a4ebd-5a18-420d-9b46-f02b9be6289c  rev 1  — 21% shorter than its text implies
+    0.791  target2         1920ms  "he wants to come back this evening"
+           085dfc3a-5051-4d6c-9a7c-75a7d699eb3d  rev 1  — 21% shorter than its text implies
+    0.791  target1         2544ms  "I'm looking forward to speaking English today"
+           763c1e8f-f53f-4966-bff4-f02d5458ca18  rev 1  — 21% shorter than its text implies
+    0.791  target1         1752ms  "did you want to show something?"
+           0d4b070f-b0b2-4ff5-a60b-fc002e9dbae9  rev 1  — 21% shorter than its text implies
+    0.792  target2         1584ms  "I'm going to guess something"
+           0c8ebc24-ef4e-4af3-8aa5-9f6af52494a2  rev 1  — 21% shorter than its text implies
+    0.792  target2         1584ms  "are you going to learn soon?"
+           70be4a83-d29d-47d1-8f15-d7a176563df8  rev 1  — 21% shorter than its text implies
+    0.792  target2         1584ms  "I want to show you something"
+           60936aeb-fbe2-41e3-9748-52c615ec7d52  rev 1  — 21% shorter than its text implies
+    0.793  target2         2040ms  "he wants to come back at six o'clock"
+           c4f23301-742b-4c9d-9bf3-083fe557de73  rev 1  — 21% shorter than its text implies
+    0.793  target1         1416ms  "I don't want to interrupt"
+           237127a9-2eed-45f8-82a0-68a86bfefacc  rev 1  — 21% shorter than its text implies
+    0.793  target1         2040ms  "I wasn't thinking about it carefully"
+           38829958-d636-4e78-ba3d-ef8dc94daba2  rev 1  — 21% shorter than its text implies
+    0.794  target2         2664ms  "I'm not trying to finish as quickly as possible"
+           c2a30b69-5b18-4e44-9220-759bc6c0a9e2  rev 1  — 21% shorter than its text implies
+    0.794  target2         1248ms  "what's going to happen"
+           7b4adfda-e350-44e3-838a-dc534ad4b852  rev 1  — 21% shorter than its text implies
+    0.794  target2         1872ms  "I'm trying to speak something now"
+           6d9da233-501a-4707-839f-0e6b4c742ac6  rev 1  — 21% shorter than its text implies
+    0.794  target1         2664ms  "I'm going to explain what's going to happen now"
+           bad57bab-9bd4-43f4-b43c-1faa0b5f96ad  rev 1  — 21% shorter than its text implies
+    0.794  target2         1248ms  "are you going to meet?"
+           85e931f9-e33b-483a-a720-2ce42da126ee  rev 1  — 21% shorter than its text implies
+    0.795  target2         1704ms  "why are you learning her name?"
+           45d2e551-ca6c-47fb-9a26-cb4d3d727a7a  rev 1  — 20% shorter than its text implies
+    0.795  target1         1704ms  "I'd like to remember something"
+           c15dfde8-7c5e-4620-a9e5-53af0f71a0f5  rev 1  — 20% shorter than its text implies
+    0.795  target2         2784ms  "he wants to come back with everyone else tomorrow"
+           02f02e26-2a92-4784-a191-e1188c21709d  rev 1  — 20% shorter than its text implies
+    0.795  target1         2328ms  "he wants to practise as often as possible"
+           c7b9a0a5-51cd-4ace-80ed-7789ad5fb18e  rev 1  — 21% shorter than its text implies
+    0.795  target2         1704ms  "but I'm going to meet tomorrow"
+           8141a3e1-c814-4115-9383-f6bc51579506  rev 1  — 20% shorter than its text implies
+    0.795  target2         1704ms  "I'm going to meet people today"
+           18ef43a1-595d-4f28-b9a6-7540b785cb05  rev 1  — 20% shorter than its text implies
+    0.796  target2         2616ms  "I'd like to be able to speak after you finish."
+           60e54e1a-616c-4389-a17f-abe2847385c0  rev 1  — 20% shorter than its text implies
+    0.796  target2         2160ms  "I'm going to meet at six o'clock today"
+           55d47ded-48d7-4c8c-b68d-a45062242a1d  rev 1  — 20% shorter than its text implies
+    0.796  target1         1536ms  "you wanted to speak tonight"
+           fe6b3b5e-0ed8-4334-ba84-f307080b836b  rev 1  — 20% shorter than its text implies
+    0.797  target2         1992ms  "I want to learn how to say with you"
+           f712d83e-5bf3-40ce-9b2f-ad5e13c9ea02  rev 1  — 20% shorter than its text implies
+    0.797  target2         1992ms  "we meet at six o'clock this evening"
+           62e76069-5a6f-44eb-ab18-9caceaff17f4  rev 1  — 20% shorter than its text implies
+    0.798  target2         1824ms  "I'm going to explain what I mean"
+           4494125a-99cc-4832-a945-410378fe9e65  rev 1  — 20% shorter than its text implies
+    0.798  target1         1824ms  "she wants to speak English today"
+           77d8e798-68d3-48b9-9dd3-8a4a5f67808f  rev 1  — 20% shorter than its text implies
+    0.798  target2         1824ms  "we don't want to interrupt today"
+           331ba8ff-061b-45ab-834d-1be1d3dd9611  rev 1  — 20% shorter than its text implies
+    0.798  target1         1824ms  "I'm a little tired at the moment"
+           af32a996-c61d-4758-8ec6-98b53bc34dfe  rev 1  — 20% shorter than its text implies
+    0.798  target1         1368ms  "I'm not trying to finish"
+           b461f398-55eb-4cfa-abf7-80a95df0c816  rev 1  — 20% shorter than its text implies
+    0.799  target2         2568ms  "I want to speak with you as often as possible"
+           2636ed5b-ab3f-4a0d-9f90-339623a2f1f0  rev 1  — 20% shorter than its text implies
+    0.799  target1         2112ms  "I'm going to explain after you finish"
+           1befe795-ac72-4a1b-90bb-1385966595dd  rev 1  — 20% shorter than its text implies
+    0.799  target1         2112ms  "I'm going to learn the whole sentence"
+           ac642f56-7594-4496-aa6a-5bde8b1095ac  rev 1  — 20% shorter than its text implies
+    0.799  target2         2112ms  "I'm going to learn the whole sentence"
+           e2f7afcf-2c94-4869-86ab-a3c6c91427a4  rev 1  — 20% shorter than its text implies
+    0.799  target1         1656ms  "I'm trying to come back today"
+           12bda7cd-2cf1-4fb9-a155-7271404fa350  rev 1  — 20% shorter than its text implies
+    0.799  target1         1656ms  "doesn't want to be quiet here"
+           03572ae2-e469-44ce-80fe-de6671bbc113  rev 1  — 20% shorter than its text implies
+    0.799  target2         1656ms  "I feel better than last night"
+           1321c616-3d2c-45e3-a134-320bf9ef44d6  rev 1  — 20% shorter than its text implies
+    0.799  target1         1656ms  "I don't need to know about it"
+           a7163178-50ae-44ab-ba35-ffda76381562  rev 1  — 20% shorter than its text implies
+      0.8  target1         3144ms  "I'm looking forward to speaking better as soon as I c
+           a04fc2ca-d1db-43dd-b3ff-81f8d1c4926f  rev 1  — 20% shorter than its text implies
+      0.8  target1         1944ms  "I want to learn something with you"
+           d2f5c757-6f7a-42bf-abcc-037c609c9df8  rev 1  — 20% shorter than its text implies
+      0.8  target1         1944ms  "she wants to speak English with me"
+           f980f1b5-2652-40bd-b2a9-e0e78c88482e  rev 1  — 20% shorter than its text implies
+      0.8  target2         1944ms  "I'm going to stop talking tomorrow"
+           01dd5f41-7547-469b-a130-cc5ad5867418  rev 1  — 20% shorter than its text implies
+      0.8  target1         1200ms  "you want to learn his"
+           2cd143f3-0b66-4ae7-8745-37e0e0570b98  rev 1  — 20% shorter than its text implies
+      0.8  target2         1200ms  "why you want to stop?"
+           67616f2b-754f-466f-b8f8-e7804e5f066a  rev 1  — 20% shorter than its text implies
+      0.8  target2         1200ms  "but I'm going to stop"
+           7f7571db-cac2-4237-82da-967ca2ff42a6  rev 1  — 20% shorter than its text implies
+      0.8  target1         1200ms  "you want to come back"
+           bc5931b4-b4a2-46d5-ba2f-502e65fe4ba0  rev 1  — 20% shorter than its text implies
+    0.801  target2         1488ms  "we don't want to interrupt"
+           49e626b2-5891-40d0-9cb1-2283841ce21f  rev 1  — 20% shorter than its text implies
+    0.801  target2         1488ms  "I'd like to speak with you"
+           99a02fa0-3eaf-42a1-9ea4-a0b3d83ca606  rev 1  — 20% shorter than its text implies
+    0.801  target2         2688ms  "I'm trying to say the whole sentence in English"
+           cc1f1e89-ec1b-47bd-bdfa-52047a8483a8  rev 1  — 20% shorter than its text implies
+    0.801  target1         2232ms  "I'm going to speak English this evening"
+           36eb5e9a-bd18-4b52-8f8c-b9739faa543a  rev 1  — 20% shorter than its text implies
+    0.801  target1         2232ms  "I've been learning carefully for a week"
+           b7f15471-1309-4529-8cc9-42c5d87fa7fa  rev 1  — 20% shorter than its text implies
+    0.801  target2         1488ms  "I've been learning English"
+           c8cd8cb9-2ff3-4f86-af39-892034ebe2fc  rev 1  — 20% shorter than its text implies
+    0.801  target2         1488ms  "I wasn't thinking about it"
+           41ecbd40-f991-4059-9bb5-f2295111aad7  rev 1  — 20% shorter than its text implies
+    0.801  target2         2232ms  "I was starting to feel better yesterday"
+           eb8a1b89-ae17-4555-92f7-438b5a763b12  rev 1  — 20% shorter than its text implies
+    0.802  target2         2520ms  "I don't want to read anything this afternoon"
+           ebdb2075-89f6-4718-91f4-51c7fd667267  rev 1  — 20% shorter than its text implies
+    0.803  target2         2064ms  "But I'm a little tired this morning."
+           2b30a367-88d2-4647-acab-c463051d6476  rev 1  — 20% shorter than its text implies
+    0.803  target2         2064ms  "I'm going to speak with someone else"
+           0fde1c0d-a212-4437-8214-2464775b4da0  rev 1  — 20% shorter than its text implies
+    0.803  target1         2064ms  "I'm going to finish English practise"
+           bb4440b5-57f5-43e2-8efe-0b4fc413e62e  rev 1  — 20% shorter than its text implies
+    0.803  target1         2064ms  "he wants to come back at six o'clock"
+           ab113c9c-7002-4026-8810-9df0c554f6b7  rev 1  — 20% shorter than its text implies
+    0.803  target1         2352ms  "I want to think about how to answer today"
+           35bf9c09-2e86-456e-8183-14dfeae273fd  rev 1  — 20% shorter than its text implies
+    0.804  target2         1608ms  "I'm trying to speak with you"
+           6e70468e-df9b-4074-ab8b-ac125aa68fbc  rev 1  — 20% shorter than its text implies
+    0.804  target2         3216ms  "I want to learn how to say something in English with 
+           77ed1005-eeab-4b12-8d6b-404f7fef81da  rev 1  — 20% shorter than its text implies
+    0.804  target2         1608ms  "you want to learn his answer"
+           e064e535-026e-473f-b791-7a09c3e6c767  rev 1  — 20% shorter than its text implies
+    0.804  target1         1896ms  "I'm trying to learn quickly today"
+           edf5e162-c6fb-4fe2-aa52-4451a245dc9e  rev 1  — 20% shorter than its text implies
+    0.804  target1         1608ms  "I don't worry about mistakes"
+           5607d054-e9b7-4983-9f90-6c33ab6335e4  rev 1  — 20% shorter than its text implies
+    0.805  target1         2760ms  "I'm trying to speak in English with someone else"
+           9ded105e-42a2-4ded-804a-85ac71105d72  rev 1  — 19% shorter than its text implies
+    0.805  target1         2472ms  "I'm going to speak English after you finish"
+           b10d0f1c-62de-4374-b1c0-066e01e240db  rev 1  — 20% shorter than its text implies
+    0.805  target1         2472ms  "I'm not going to be able to remember a word"
+           22971bba-ef34-4a54-b06a-3b60fd6610e9  rev 1  — 20% shorter than its text implies
+    0.805  target1         2184ms  "I want to learn as quickly as possible"
+           725bbf89-01fa-42be-82bb-e6525c6f7024  rev 1  — 20% shorter than its text implies
+    0.806  target1         1728ms  "do you learn with me tomorrow?"
+           8c239b0d-f36c-4920-94f6-4cb5084d2235  rev 1  — 19% shorter than its text implies
+    0.806  target2         2304ms  "he wants to come back with everyone else"
+           e6777c48-5d5a-4c5f-ac9d-57ea7f6efe25  rev 1  — 19% shorter than its text implies
+    0.806  target2         1440ms  "you want to meet tomorrow"
+           b83bef2f-c7e0-46da-b6a2-3290c8a4d876  rev 1  — 19% shorter than its text implies
+    0.806  target2         1728ms  "I don't want to learn anything"
+           76c9be7b-f7ce-473f-addb-d9cb766d9103  rev 1  — 19% shorter than its text implies
+    0.806  target1         2016ms  "I'm going to practise at the moment"
+           2aaf93f6-f089-4e0c-933d-a3f646944ad8  rev 1  — 19% shorter than its text implies
+    0.806  target2         2016ms  "do you feel better than last night?"
+           80144d82-142c-4f34-8f87-f758d57a7ad8  rev 1  — 19% shorter than its text implies
+    0.806  target1         2304ms  "I was starting to feel better last month"
+           933136ac-40d0-4f12-a4b3-a73eadcba4ff  rev 1  — 19% shorter than its text implies
+    0.806  target1         2592ms  "I'm going to practise this morning or tonight"
+           5a5dbb31-9322-4c1a-ba37-faf43ad8e92e  rev 1  — 19% shorter than its text implies
+    0.808  target1         1848ms  "I'm going to practise well today"
+           dc4774b8-4aed-4883-bee6-6f3bae13627f  rev 1  — 19% shorter than its text implies
+    0.808  target1         2136ms  "have you been learning English today?"
+           3938e38f-54a1-4cc9-b949-64eedfcd661b  rev 1  — 19% shorter than its text implies
+    0.808  target1         1848ms  "we don't want to interrupt today"
+           6d4346c0-24d8-4743-a351-7aa289fe6369  rev 1  — 19% shorter than its text implies
+    0.808  target2         2136ms  "I want to learn English at the moment"
+           c2a50ac8-1524-4488-a5fb-80a28392a3e7  rev 1  — 19% shorter than its text implies
+    0.808  target1         1848ms  "I wasn't thinking about mistakes"
+           7627f900-1a45-435b-aad1-65bb0003ae52  rev 1  — 19% shorter than its text implies
+    0.809  target2         2832ms  "And I want you to speak English with me tomorrow."
+           b9bb6c65-0877-4110-ad37-3a8f02bc05e1  rev 1  — 19% shorter than its text implies
+    0.809  target1         1560ms  "did you want to show today?"
+           28005e23-5899-4bf0-943d-291b368514a8  rev 1  — 19% shorter than its text implies
+    0.809  target1         1272ms  "I'm going to interrupt"
+           76de964e-3ab3-43e5-9ec8-97815275d64b  rev 1  — 19% shorter than its text implies
+     0.81  target1         1968ms  "how to speak as often as possible."
+           c3c1e1ae-483b-421f-9221-edfcdd2f8704  rev 1  — 19% shorter than its text implies
+     0.81  target2         1968ms  "I want to speak about it carefully"
+           bbca175d-365a-46bf-90ad-e6377281ce39  rev 1  — 19% shorter than its text implies
+     0.81  target1         1968ms  "I want to think about it carefully"
+           a825de8a-cf99-4e7a-9db3-bcfab1a02fe7  rev 1  — 19% shorter than its text implies
+     0.81  target1         1968ms  "it's a good thing to make mistakes"
+           abda8283-c021-43c6-93bd-24f2087d1988  rev 1  — 19% shorter than its text implies
+    0.811  target2         2664ms  "I'm trying to learn speaking with someone else"
+           0bc5c7eb-fcfd-4478-9648-1c629e2c64ae  rev 1  — 19% shorter than its text implies
+    0.811  target2         1680ms  "I don't want to meet tomorrow"
+           22231f0b-7359-411f-8ab8-dd8cb0612eca  rev 1  — 19% shorter than its text implies
+    0.811  target1         1680ms  "why are you learning English?"
+           546c2d94-77f7-4edc-9a0c-1efad8f28ab9  rev 1  — 19% shorter than its text implies
+    0.811  target1         1680ms  "I'm going to practise tonight"
+           5230a070-d541-4153-8b47-d1697537f7ea  rev 1  — 19% shorter than its text implies
+    0.811  target1         1680ms  "I'm starting to learn English"
+           325bc432-e1e8-4eaf-9c12-2d52e18541c5  rev 1  — 19% shorter than its text implies
+    0.811  target2         1680ms  "I don't need to know about it"
+           867deb01-e814-4081-b707-069306889896  rev 1  — 19% shorter than its text implies
+    0.811  target1         1680ms  "a good thing to make mistakes"
+           74cad12d-2404-463e-bf81-b0f1209336ae  rev 1  — 19% shorter than its text implies
+    0.812  target2         2088ms  "I wouldn't like to explain something"
+           c488a5ff-26b3-49e7-b559-068558e35e22  rev 1  — 19% shorter than its text implies
+    0.812  target1         2088ms  "it's useful to start talking with me"
+           c3e83be7-becd-473e-a9ae-d370f3763cba  rev 1  — 19% shorter than its text implies
+    0.812  target1         2784ms  "I'm looking forward to speaking English tomorrow"
+           a547182b-cf2d-42fb-bdec-2683f0dfb795  rev 1  — 19% shorter than its text implies
+    0.812  target2         2088ms  "I don't care if you know what I mean"
+           8564380e-f48c-41ad-b6f9-b95de7ac6181  rev 1  — 19% shorter than its text implies
+    0.813  target2         2208ms  "I want to speak English this afternoon"
+           36714194-5906-4763-a252-e87977026d88  rev 1  — 19% shorter than its text implies
+    0.814  target2         2616ms  "I want to think carefully about how to answer"
+           45329109-17ee-420f-b4a2-50e235fa9d5d  rev 1  — 19% shorter than its text implies
+    0.815  target1         1920ms  "I'm trying to speak something now"
+           42b868f0-d969-4daa-999c-0a2ab669a376  rev 1  — 19% shorter than its text implies
+    0.815  target1         1920ms  "I wouldn't like to speak tomorrow"
+           9478232f-2c2a-4fbd-9ae1-2ea0147a491f  rev 1  — 19% shorter than its text implies
+    0.815  target2         1920ms  "he doesn't want to be quiet today"
+           ff7bbe2d-187f-40fe-a456-d2ad84aee45d  rev 1  — 19% shorter than its text implies
+    0.816  target1         2856ms  "I'm trying to practise speaking with someone else"
+           9a211516-e2e8-4842-84f3-eebe502d60f6  rev 1  — 18% shorter than its text implies
+    0.817  target2         2160ms  "I want to speak English with you now."
+           100563f8-3f7b-40ee-bcf4-393a1c0e5436  rev 1  — 18% shorter than its text implies
+    0.817  target1         2160ms  "I wasn't thinking about how to answer"
+           67022ad1-c1cd-4b9c-8263-b05713da046c  rev 1  — 18% shorter than its text implies
+    0.817  target1         2568ms  "I'm not going to be able to remember easily."
+           d36e39f7-9ec4-463e-b777-149a4d34dfca  rev 1  — 18% shorter than its text implies
+    0.818  target2         2688ms  "I'm going to say something in English tomorrow"
+           02e598ee-3cad-47bf-9e3e-759a99aa46e2  rev 1  — 18% shorter than its text implies
+    0.818  target1         2688ms  "I'm going to say something in English tomorrow"
+           429355ca-38f0-4b20-9dfd-acdc44f2a93c  rev 1  — 18% shorter than its text implies
+    0.818  target2         3096ms  "I'm going to be able to practise as often as possible
+           d9edb2e6-894a-4bdd-a9dd-2a4d215e6c10  rev 1  — 18% shorter than its text implies
+    0.818  target2         1344ms  "I'm trying to guess now"
+           c7b813ab-0e7f-4309-8693-8b73f037025d  rev 1  — 18% shorter than its text implies
+    0.818  target1         1752ms  "he wants to come back tomorrow"
+           bc3804ac-b726-4996-9b9a-0aab139085f1  rev 1  — 18% shorter than its text implies
+    0.818  target2         1344ms  "because I want to start"
+           0420dc70-1662-4340-83fa-35027f56fa4a  rev 1  — 18% shorter than its text implies
+    0.818  target1         2280ms  "not going to be able to remember easily"
+           edc54fdb-99da-47e1-a3fc-b546d0fa5227  rev 1  — 18% shorter than its text implies
+    0.818  target1         1752ms  "she doesn't want to read today"
+           898b0c1c-0edf-40ed-8a57-daeb6a5e2da9  rev 1  — 18% shorter than its text implies
+    0.818  target1         1752ms  "I want to improve this morning"
+           70cc27e0-8697-4df4-b839-ff7eb5191814  rev 1  — 18% shorter than its text implies
+    0.818  target1         1752ms  "because I think that it's good"
+           1d525537-a4fb-4591-b379-47bd432d7404  rev 1  — 18% shorter than its text implies
+    0.819  target1         1872ms  "I don't need to know everything."
+           44ad3f66-74e3-4498-b243-ce42cf0c6e9a  rev 1  — 18% shorter than its text implies
+    0.819  target1         1872ms  "she wants to meet at six o'clock"
+           42820248-2c21-47ed-ba64-84423b335d3d  rev 1  — 18% shorter than its text implies
+    0.819  target2         1872ms  "I'm a little tired at the moment"
+           f59cea38-75f7-4f43-94d2-a9ecdadab3a8  rev 1  — 18% shorter than its text implies
+    0.819  target1         2808ms  "I wasn't thinking about how to answer last night"
+           0701da64-67bb-4169-acd3-d9730dc3a0eb  rev 1  — 18% shorter than its text implies
+     0.82  target2         1992ms  "I want to learn something with you"
+           6018fd52-2643-4445-aaf6-8227f3979e89  rev 1  — 18% shorter than its text implies
+     0.82  target2         1464ms  "you want to speak English"
+           dff4f97f-0753-4b60-945a-74fe18208a44  rev 1  — 18% shorter than its text implies
+     0.82  target2         1464ms  "you wanted to speak today"
+           9ba15e91-6bd0-42e1-ae2c-36d7d976fdc6  rev 1  — 18% shorter than its text implies
+    0.821  target1         2112ms  "I want to practise with someone else"
+           2b22bfcc-5b7c-4c56-a8ff-6b6cac5fc9f4  rev 1  — 18% shorter than its text implies
+    0.821  target2         2112ms  "I want to learn how to say something"
+           81b61bc1-4064-43a7-ac6a-0c3754272475  rev 1  — 18% shorter than its text implies
+    0.821  target1         2112ms  "I wouldn't like to explain something"
+           15e6354f-a5a4-4fdf-8fb9-623798bb202c  rev 1  — 18% shorter than its text implies
+    0.821  target2         1584ms  "I want to find out tomorrow"
+           82a4ee6c-7e9d-4623-b415-3b64fe9ba77a  rev 1  — 18% shorter than its text implies
+    0.821  target2         1584ms  "did you want to show today?"
+           5793b378-30cd-4373-9811-b51ca6a65475  rev 1  — 18% shorter than its text implies
+    0.821  target1         1584ms  "I don't worry at the moment"
+           2bc7e847-ab4a-4c04-abd4-6a8d86a8fc2e  rev 1  — 18% shorter than its text implies
+    0.822  target1         2232ms  "she wants to meet at six o'clock today"
+           9cd08c9e-7dad-4fdd-8513-f304f7a3d0c5  rev 1  — 18% shorter than its text implies
+    0.823  target2         2352ms  "I'm not sure if I can explain in English"
+           698011bc-99af-4a2b-99c8-83cbc074b02c  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "he wants to practise tomorrow"
+           bc529655-dc7e-4be0-80f6-2669586b4931  rev 1  — 18% shorter than its text implies
+    0.823  target1         1704ms  "I don't want to meet tomorrow"
+           2303b3c2-3d33-46f4-b1a8-d7fc9533ed4e  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "I don't want to come back now"
+           3e2157e5-668d-4fbf-abef-121b3b81a031  rev 1  — 18% shorter than its text implies
+    0.823  target1         2352ms  "I'm going to start speaking English soon"
+           bf0013ed-6b76-4691-b507-75b89df9bffc  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "are you going to help before?"
+           2065e5a7-ee3c-4e3f-90d1-bb1368c8ba95  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "I wanted to ask you something"
+           edf07712-b4ff-4fce-981b-855c4a2fa0fd  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "if I want to learn everything"
+           f6e1871e-c731-4140-bff6-044fadfa2b73  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "I don't care about everything"
+           dc62a6a3-96ef-42c5-bb2b-c5f4eefe0239  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "I'm going to come back later on"
+           f3545a37-d974-4e8a-aaf7-0024746437ae  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "I'm trying to remember his name"
+           52b8a7da-7a2c-425d-a2b4-9eab5a02f961  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "I'm trying to find out his name"
+           57047c59-32f2-48fb-ad67-af402168a2a6  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "I'm trying to remember his name"
+           703826db-647f-41d3-9c78-05f7d65c453e  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "I feel better than this morning"
+           10a81a66-4bef-44a6-918e-9537ba9d25bd  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "I think about how to answer now"
+           68404ec8-b942-447e-ae94-08772f4a55d3  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "I think if you know what I mean"
+           2b4dafbd-2edb-4d21-89dc-d1057d5c6734  rev 1  — 18% shorter than its text implies
+    0.825  target2         2712ms  "I was starting to feel better than last night."
+           6ec3067a-b042-4749-808a-c92e321f94a1  rev 1  — 17% shorter than its text implies
+    0.825  target1         2712ms  "I learn with someone else as often as possible"
+           1cba84c4-61be-4fb0-bbff-46281cbd2c28  rev 1  — 17% shorter than its text implies
+    0.825  target2         1944ms  "she doesn't want to read anything"
+           339df303-6afc-44f5-9d59-def0d938c832  rev 1  — 18% shorter than its text implies
+    0.825  target1         1944ms  "I was starting to feel better now"
+           3d678d62-cf7f-4bd8-b335-af52298cc065  rev 1  — 18% shorter than its text implies
+    0.825  target1         1296ms  "how do you feel today?"
+           45687b9d-7998-4e02-9810-f56bdd9d0531  rev 1  — 18% shorter than its text implies
+    0.826  target1         2184ms  "We don't want to interrupt the story."
+           0d99fa74-45d5-400a-adc0-555b83fe7323  rev 1  — 17% shorter than its text implies
+    0.826  target2         2832ms  "I'm going to practise speaking with someone else"
+           2e9bfd76-e5fe-4bb2-89f6-574d30ba7708  rev 1  — 17% shorter than its text implies
+    0.826  target1         2184ms  "I want to speak with someone else now"
+           3bd3f005-06cf-4dda-981c-b0dd97d70dd7  rev 1  — 17% shorter than its text implies
+    0.826  target1         1416ms  "I'm trying to finish now"
+           b1c21c5b-facc-4979-a269-9cacb94d0cbb  rev 1  — 17% shorter than its text implies
+    0.826  target1         2064ms  "do you speak English with me today?"
+           3b944280-a6b0-4b66-805c-13a13a9b3861  rev 1  — 17% shorter than its text implies
+    0.826  target2         1416ms  "as soon as you can speak"
+           be2bbe2b-c522-4d00-8f56-87e7dadbef20  rev 1  — 17% shorter than its text implies
+    0.826  target2         2064ms  "I wanted to ask something yesterday"
+           cff293ab-7594-4bec-9f1f-556a20f72582  rev 1  — 17% shorter than its text implies
+    0.826  target2         2064ms  "he doesn't want to be quiet tonight"
+           341210b8-2ddc-4747-86d2-f169c8d04629  rev 1  — 17% shorter than its text implies
+    0.826  target1         2064ms  "doesn't want to read this afternoon"
+           31d5bbda-14a8-4de9-b1ce-f5887d18002d  rev 1  — 17% shorter than its text implies
+    0.826  target1         2184ms  "I want to practise English for a week"
+           f080eae1-5115-4b25-a017-4e0d17797246  rev 1  — 17% shorter than its text implies
+    0.827  target1         1536ms  "she wants to meet tomorrow"
+           3a5eeb49-3391-4105-924a-4a64962f18c6  rev 1  — 17% shorter than its text implies
+    0.827  target1         1536ms  "I'm going to practise more"
+           58e83d99-5f11-4d02-aa01-7fbaa055f153  rev 1  — 17% shorter than its text implies
+    0.827  target1         2304ms  "I don't like taking too much time today"
+           2395514c-00a4-4949-8f2d-68ea50892fc0  rev 1  — 17% shorter than its text implies
+    0.827  target1         2304ms  "I'm going to speak English this morning"
+           55116b7b-6385-442f-a7df-60ef71f413fd  rev 1  — 17% shorter than its text implies
+    0.827  target2         2304ms  "I'm starting to feel tired this morning"
+           1a2db91e-dd56-47b6-a567-d35c2760803e  rev 1  — 17% shorter than its text implies
+    0.827  target1         2304ms  "I was starting to feel better yesterday"
+           38f967b1-a210-404a-9c5b-b767043a1469  rev 1  — 17% shorter than its text implies
+    0.827  target1         2304ms  "I'm starting to feel okay at the moment"
+           87a112fe-fe9c-4083-81fc-f9ff387c49d1  rev 1  — 17% shorter than its text implies
+    0.827  target1         2304ms  "I was starting to feel tired last night"
+           bfde77e5-de70-4e2e-adcb-8a8a6c9e761e  rev 1  — 17% shorter than its text implies
+    0.827  target1         2304ms  "how do you feel when you learn English?"
+           d029eefb-acf2-4a89-a76c-9be64b27db9c  rev 1  — 17% shorter than its text implies
+    0.828  target2         2544ms  "I want to remember a word with someone else"
+           c9a8d8f2-c4c6-4a16-a0bd-3a35c25e2724  rev 1  — 17% shorter than its text implies
+    0.828  target2         2544ms  "I've been learning English for about a week"
+           81cfdde7-0676-4fa4-8022-e5149c34e68d  rev 1  — 17% shorter than its text implies
+    0.829  target1         1776ms  "I'm going to find out tomorrow"
+           90abe6aa-68af-40f0-9981-9b4a5e2951a2  rev 1  — 17% shorter than its text implies
+    0.829  target1         1776ms  "but I'm going to meet tomorrow"
+           9d0931df-03a4-486e-a258-74996c7775c7  rev 1  — 17% shorter than its text implies
+    0.829  target1          888ms  "looking forward"
+           5931de00-717f-460e-8942-f48078d43863  rev 1  — 17% shorter than its text implies
+    0.829  target2         2664ms  "I'm looking forward to speaking English today"
+           7204d476-660b-4b83-922f-7e692f61576d  rev 1  — 17% shorter than its text implies
+    0.829  target2         1776ms  "I want to show something today"
+           85e145bc-e9bb-485a-a7c2-fd24477b0d73  rev 1  — 17% shorter than its text implies
+    0.829  target1         1776ms  "we don't want to interrupt now"
+           704b2207-faf8-42b2-bf65-9b230cf568ac  rev 1  — 17% shorter than its text implies
+    0.829  target1         1776ms  "I think that it's a good thing"
+           dd62e0ec-312b-465d-80fd-973e9f972cca  rev 1  — 17% shorter than its text implies
+     0.83  target2         2904ms  "I started to think about it carefully last month."
+           0e488077-a127-466d-9b91-f3e124d407af  rev 1  — 17% shorter than its text implies
+     0.83  target1         2904ms  "I started to think about it carefully last month."
+           e93d36da-72b0-45c7-9238-1e98986e70b3  rev 1  — 17% shorter than its text implies
+     0.83  target2         1896ms  "not going to be able to remember"
+           dd902c08-52be-4780-8c1a-42db3dc34fa3  rev 1  — 17% shorter than its text implies
+     0.83  target2         1896ms  "I'm going to meet at six o'clock"
+           5358717c-837f-408c-a68b-73bae0084b56  rev 1  — 17% shorter than its text implies
+     0.83  target1         1896ms  "I'm going to meet at six o'clock"
+           89daedc6-13d3-42f8-8280-d67edf95f00b  rev 1  — 17% shorter than its text implies
+     0.83  target2         1008ms  "you want to learn"
+           cfeb9a81-1b49-487f-b4e3-e698c8625bbb  rev 1  — 17% shorter than its text implies
+     0.83  target1         1896ms  "because people who speak English"
+           d7af2e85-a2b8-4629-ab9d-e73cc2d4990a  rev 1  — 17% shorter than its text implies
+     0.83  target2         1008ms  "it's a good thing"
+           9a7ec2cd-2f75-4463-9e0c-496fe97145e6  rev 1  — 17% shorter than its text implies
+    0.831  target1         2136ms  "I'm going to speak with someone else"
+           7fd10a84-1c99-4906-bf8a-d12cf25f1c5b  rev 1  — 17% shorter than its text implies
+    0.831  target2         2136ms  "I'm trying to say the whole sentence"
+           171e62e8-c98a-494a-8e30-5e54ee0cb9b7  rev 1  — 17% shorter than its text implies
+    0.831  target1         2256ms  "I'm going to meet at six o'clock today"
+           9a7062a7-2d91-4fe0-8fef-54eca367421c  rev 1  — 17% shorter than its text implies
+    0.831  target1         2136ms  "you learn English as soon as you can"
+           00555029-1432-45ec-8706-53fcf3d664db  rev 1  — 17% shorter than its text implies
+    0.831  target2         2136ms  "I'm going to practise this afternoon"
+           97ae99d6-c87f-4d9e-a626-27fcd23f0e6a  rev 1  — 17% shorter than its text implies
+    0.832  target2         1248ms  "did you want to show?"
+           b7627417-51dd-4b09-8142-132d3817657f  rev 1  — 17% shorter than its text implies
+    0.832  target1         2376ms  "I'm trying to remember a word in English"
+           60c87ec5-45aa-439a-ab54-5de5b4d443d1  rev 1  — 17% shorter than its text implies
+    0.832  target2         2616ms  "I'm not sure if I can say the whole sentence"
+           5313915a-a015-4060-bde7-640b0559bd3b  rev 1  — 17% shorter than its text implies
+    0.832  target2         1248ms  "and you speak with me"
+           e7c13963-c9d7-4484-a522-574820f25df2  rev 1  — 17% shorter than its text implies
+    0.832  target1         2616ms  "I don't want to read anything this afternoon"
+           c1cea254-b247-439d-a9b4-626feff1b30a  rev 1  — 17% shorter than its text implies
+    0.833  target1         1488ms  "I'm going to learn a word"
+           f52cdcd6-0062-400c-9c01-aba8b34ce14c  rev 1  — 17% shorter than its text implies
+    0.833  target1         1368ms  "do you speak very well?"
+           96c395d6-dc3c-47b6-8b49-13714019909a  rev 1  — 17% shorter than its text implies
+    0.833  target1         1488ms  "I don't want to come back"
+           7c5c728c-3067-487e-a0b9-6e10e7cc77f4  rev 1  — 17% shorter than its text implies
+    0.833  target2         1488ms  "are you going to help me?"
+           b104712d-4a96-4ece-a7bf-5583a8b5b930  rev 1  — 17% shorter than its text implies
+    0.834  target1         1728ms  "I want to say something today"
+           fcd95da0-d479-415e-a6bc-f6466812c1fa  rev 1  — 17% shorter than its text implies
+    0.834  target1         1608ms  "people who practise English"
+           0655d3be-8e2c-42f7-81a5-d314f292a31d  rev 1  — 17% shorter than its text implies
+    0.834  target1         1728ms  "doesn't want to read anything"
+           5bdf009a-6193-4eb4-9ffc-f09f00bd8ce2  rev 1  — 17% shorter than its text implies
+    0.835  target2         1968ms  "I'm trying to speak English today"
+           16ea4c05-2032-47f1-a386-b88df2e63fe2  rev 1  — 17% shorter than its text implies
+    0.835  target1         2088ms  "I'd like to learn a little tomorrow"
+           ab7d4840-021a-4f72-a81c-e736ca651652  rev 1  — 16% shorter than its text implies
+    0.835  target1         1848ms  "you want to find out his answer"
+           45645df4-50f1-47a7-96a5-e20d18991694  rev 1  — 17% shorter than its text implies
+    0.835  target2         1848ms  "did you want to show yesterday?"
+           dd6144d5-1497-4529-934a-44bcdf82fb95  rev 1  — 17% shorter than its text implies
+    0.835  target1         2088ms  "I want to think about how to answer"
+           6f0c15f2-a008-479d-b9ed-31baa897b0c1  rev 1  — 16% shorter than its text implies
+    0.835  target1         1848ms  "I need to improve at the moment"
+           50b29690-4d40-475e-bcc9-afa92c10d5b6  rev 1  — 17% shorter than its text implies
+    0.835  target2         1848ms  "I don't worry it's a good thing"
+           f5c029a2-d410-44c0-a98e-60bcb52c0dd3  rev 1  — 17% shorter than its text implies
+    0.836  presentation    2688ms  "ஆங்கிலம்-ல் — 'போல் இருக்கிறேன்' — ' போல் — :"
+           5eb101ed-d239-4912-8c68-0cacbcafae3d  rev 1  — 16% shorter than its text implies
+    0.836  presentation    2808ms  "ஆங்கிலம்-ல் — 'உணர விரும்புகிறேன்' — ' போல் — :"
+           f8150f58-c1e5-4317-8252-9193e60cd057  rev 1  — 16% shorter than its text implies
+    0.836  presentation    2448ms  "ஆங்கிலம்-ல் — 'இப்படித்தான்' — ' போல் — :"
+           a7f368fb-1fbb-44d3-8c47-7a052b73e558  rev 1  — 16% shorter than its text implies
+    0.836  target2         2448ms  "I want to speak English with someone else"
+           9d132a0a-ef02-46c2-a57d-51573c9c9f1e  rev 1  — 16% shorter than its text implies
+    0.836  target2         2568ms  "I want to remember the whole sentence today"
+           dcac9d7f-2424-4d50-9acb-f2bb7cba403a  rev 1  — 16% shorter than its text implies
+    0.836  target1         2808ms  "I'm trying to learn with everyone else tomorrow"
+           883328c0-a3ec-4bb4-9f06-330779128bcb  rev 1  — 16% shorter than its text implies
+    0.836  target2         2448ms  "she wants to come back with everyone else"
+           fada7380-023d-4f1e-8b1d-8801ef62c05b  rev 1  — 16% shorter than its text implies
+    0.836  target2         2328ms  "I'm going to meet this evening tomorrow"
+           19130e45-3fc4-42e6-a1df-07cdeac7885a  rev 1  — 16% shorter than its text implies
+    0.836  target2         2328ms  "I wanted to practise with you yesterday"
+           b47d17bf-6fa0-4876-9894-bb0734db9f25  rev 1  — 16% shorter than its text implies
+    0.836  target2         2328ms  "she doesn't want to read this afternoon"
+           4eea2e65-f683-4fa7-b867-b20a7e8019f3  rev 1  — 16% shorter than its text implies
+    0.836  target1         2328ms  "I've been learning carefully last month"
+           0d387537-78e1-4bc2-9559-3a317d67124e  rev 1  — 16% shorter than its text implies
+    0.836  target2         2688ms  "I've been learning carefully for about a week"
+           8925a84d-90a7-40c4-b6fd-5a786392b3c1  rev 1  — 16% shorter than its text implies
+    0.836  target1         2328ms  "I'm starting to feel tired this morning"
+           8ed3aa75-4d55-43d5-b819-69044e3912e1  rev 1  — 16% shorter than its text implies
+    0.836  target1         2688ms  "I want to think carefully about how to answer"
+           aada064b-de43-4797-929e-732fcbb9c02d  rev 1  — 16% shorter than its text implies
+    0.836  target2         2448ms  "I think that it's useful to make mistakes"
+           5f9c1bd0-806c-403b-a2f5-c86dc2da134e  rev 1  — 16% shorter than its text implies
+    0.837  target1         3168ms  "I'm going to be able to practise as often as possible
+           89d79220-c60d-424d-9c95-0504b91cc381  rev 1  — 16% shorter than its text implies
+     0.84  target2         1920ms  "but I don't want to stop talking"
+           39f642a7-7993-43c0-8ff9-d7cbe457d0d9  rev 1  — 16% shorter than its text implies
+     0.84  target1         2880ms  "It's useful to start talking as soon as you can."
+           93ff0185-c23e-4bfd-a5a4-35e03f498969  rev 1  — 16% shorter than its text implies
+     0.84  presentation    2880ms  "ஆங்கிலம்-ல் — 'நான் விரும்புகிறேன்' — ' போல் — :"
+           cb127dc8-d7a9-4707-9de7-3a4b8a717352  rev 1  — 16% shorter than its text implies
+     0.84  target2         3000ms  "I'm not sure if I can remember the whole sentence."
+           f202bc27-84f3-4a06-9edb-25de66cdb469  rev 1  — 16% shorter than its text implies
+     0.84  target1         1920ms  "but I don't want to stop talking"
+           f7b55462-5dc6-4264-aee8-98544838b767  rev 1  — 16% shorter than its text implies
+     0.84  presentation    3240ms  "ஆங்கிலம்-ல் — 'நீங்கள் விரும்புகிறீர்கள்' — ' போல் — 
+           129ea158-756f-4d42-a5a0-6b64f454319d  rev 1  — 16% shorter than its text implies
+     0.84  presentation    3480ms  "ஆங்கிலம்-ல் — 'நீங்கள் காட்ட விரும்பினீர்களா' — ' போல
+           177ab7e1-6542-4e7c-932d-d082c768a259  rev 1  — 16% shorter than its text implies
+     0.84  presentation    3600ms  "ஆங்கிலம்-ல் — 'நாங்கள் குறுக்கிட விரும்பவில்லை' — ' ப
+           3a473bf2-d7b9-4a4e-b6f7-55e7607d046e  rev 1  — 16% shorter than its text implies
+     0.84  presentation    3120ms  "ஆங்கிலம்-ல் — 'சந்திக்க விரும்புகிறேன்' — ' போல் — :"
+           d86f311b-386c-4859-9b24-e712bb0ad604  rev 1  — 16% shorter than its text implies
+     0.84  target1         1920ms  "I want to speak English with you"
+           f281d29c-dd91-4d14-a86e-1744b78154a5  rev 1  — 16% shorter than its text implies
+     0.84  target1         2160ms  "I want to learn how to say something"
+           578ca397-4978-445e-af5e-74178040e474  rev 1  — 16% shorter than its text implies
+     0.84  target2         2400ms  "I'm trying to learn as often as possible"
+           925c7811-eb70-4cd5-8173-bc146f273582  rev 1  — 16% shorter than its text implies
+     0.84  target1         1440ms  "I want to learn with you"
+           b2af9087-8f8e-4427-b80f-9bb96840d1ed  rev 1  — 16% shorter than its text implies
+     0.84  target1         2160ms  "I'm trying to speak as hard as I can"
+           c3c9e54d-6b37-466b-b06a-d71d76128217  rev 1  — 16% shorter than its text implies
+     0.84  target1         2160ms  "I'm trying to learn as hard as I can"
+           d96ae545-77f3-4aad-a565-a4b2ae402827  rev 1  — 16% shorter than its text implies
+     0.84  target1         2640ms  "I'm trying to explain after you finish today"
+           8cc7b666-eb2b-492c-aebf-f3f74bc1d7b8  rev 1  — 16% shorter than its text implies
+     0.84  target1         1800ms  "I'm not sure if I can remember"
+           e3107858-d92d-4fdd-87a3-6c2b5d01ce63  rev 1  — 16% shorter than its text implies
+     0.84  target1         2640ms  "I'm trying to say what's going to happen now"
+           da1a7ff4-c3f7-4d7d-a989-3b6715997c1e  rev 1  — 16% shorter than its text implies
+     0.84  target1         1680ms  "I want to come back later on"
+           1af5b58b-840a-46e0-a06c-92f4599baea6  rev 1  — 16% shorter than its text implies
+     0.84  target2         1800ms  "I'm going to find out tomorrow"
+           3d6e3f0a-4488-495a-a2d5-b5e2d6d1c035  rev 1  — 16% shorter than its text implies
+     0.84  target2         2040ms  "she wants to find out this evening"
+           e62a2577-e705-4dda-bbd9-66ed6c6f5f76  rev 1  — 16% shorter than its text implies
+     0.84  target1         2040ms  "he wants to come back this evening"
+           ecaecf03-64cf-4672-ade3-ba275df85662  rev 1  — 16% shorter than its text implies
+     0.84  target1         1560ms  "I'm going to stop tomorrow"
+           7aa2040f-7bc1-4b54-9e7d-15043a1fa86d  rev 1  — 16% shorter than its text implies
+     0.84  target2         1680ms  "you want to find out quickly"
+           b6bc1969-ff6b-4f63-8a26-105c7efd3075  rev 1  — 16% shorter than its text implies
+     0.84  target2         1920ms  "you want to learn his name today"
+           e1b9bdb4-8dcb-4625-a484-a0ab5face30a  rev 1  — 16% shorter than its text implies
+     0.84  target2         2400ms  "I'm going to start speaking English soon"
+           4f6f222b-319a-4262-a7ac-365b36de0672  rev 1  — 16% shorter than its text implies
+     0.84  target1         1560ms  "you are learning something"
+           5871681a-b34e-488c-9794-382d68f84540  rev 1  — 16% shorter than its text implies
+     0.84  target1         2160ms  "I'm not going to be able to remember"
+           2435f231-b5ea-467f-9634-834b08ed1be9  rev 1  — 16% shorter than its text implies
+     0.84  target1         2280ms  "I'm looking forward to speaking better"
+           74f434a3-33b6-4dbb-bae8-6f1bdd0af6a2  rev 1  — 16% shorter than its text implies
+     0.84  target2         1800ms  "other people who speak English"
+           2c7e1191-7df3-4e5f-8713-cf866e003656  rev 1  — 16% shorter than its text implies
+     0.84  target1         2160ms  "doesn't want to be quiet when people"
+           b9f62cd4-1115-4e70-aa50-70a03c7d1af1  rev 1  — 16% shorter than its text implies
+     0.84  target2         2160ms  "we don't want to interrupt yesterday"
+           7c827a38-cb56-46cf-bb50-bb3fbbf81560  rev 1  — 16% shorter than its text implies
+     0.84  target2         1920ms  "I don't want to interrupt people"
+           aaeeec0d-bcb2-437d-90c0-d5a13489471a  rev 1  — 16% shorter than its text implies
+     0.84  target2         1800ms  "because I think that it's good"
+           5c8a1aed-dbb3-47d6-8642-d7f7368601c4  rev 1  — 16% shorter than its text implies
+     0.84  target1         1920ms  "I'm not trying to think about it"
+           3d954f2a-9289-4139-b7e1-696d1e0a32fc  rev 1  — 16% shorter than its text implies
+     0.84  target1         1680ms  "if you know what I mean now?"
+           e6d91a63-9c91-4a0f-9e40-fe145a45165d  rev 1  — 16% shorter than its text implies
+    0.843  target1         3072ms  "I'm trying to explain what I mean with someone else"
+           3f891b8e-fc4c-4aa1-9797-cc5e149e9894  rev 1  — 16% shorter than its text implies
+    0.844  presentation    2472ms  "ஆங்கிலம்-ல் — 'போக வேண்டும்' — ' போல் — :"
+           a16ee397-ca5b-4ca6-bc10-36bd16b8e49d  rev 1  — 16% shorter than its text implies
+    0.844  target1         2352ms  "I'm trying to finish the whole sentence"
+           593e39a9-a3b0-40f4-b923-0ddc8f6a22e3  rev 1  — 16% shorter than its text implies
+    0.844  target2         2472ms  "I'm trying to remember the whole sentence"
+           8a32913b-0a1e-4801-9940-8ee3e3cf7604  rev 1  — 16% shorter than its text implies
+    0.844  target2         2352ms  "I'm going to explain what the answer is"
+           3c278aa4-de22-49af-a0b4-239b16313cda  rev 1  — 16% shorter than its text implies
+    0.844  target2         2352ms  "I'm going to speak English this evening"
+           b488839e-04a6-4b9f-933f-4b6ee5033747  rev 1  — 16% shorter than its text implies
+    0.844  target1         2352ms  "I wanted to practise with you yesterday"
+           ce960e32-11b5-460c-9f8a-709406c7fd00  rev 1  — 16% shorter than its text implies
+    0.844  target1         2352ms  "I wanted to practise English last night"
+           a2eb404f-40d9-4972-9c2a-ab11be92d2a9  rev 1  — 16% shorter than its text implies
+    0.844  target1         2352ms  "I wasn't thinking about making mistakes"
+           f8141cb1-5b6e-4f6e-896e-ccb60b3c7ef4  rev 1  — 16% shorter than its text implies
+    0.845  target1         2232ms  "I want to speak English with you now."
+           10b1ed1f-c585-4b91-bbe9-30e42f891988  rev 1  — 16% shorter than its text implies
+    0.845  target1         1992ms  "I'm trying to learn something now"
+           31d0c504-685a-4c07-ba0b-87240253ef2b  rev 1  — 15% shorter than its text implies
+    0.845  target1         1992ms  "I'm trying to remember the answer"
+           9df00b77-d64e-4520-b166-d65420323ccf  rev 1  — 15% shorter than its text implies
+    0.845  target2         1872ms  "but I don't want to learn today"
+           a9b5cde7-78be-4e34-8202-3de750023448  rev 1  — 15% shorter than its text implies
+    0.845  target2         1872ms  "he wants to find out the answer"
+           b31aed93-f36b-4cf2-b230-d15dc903479c  rev 1  — 15% shorter than its text implies
+    0.845  target2         1872ms  "I'm looking forward to speaking"
+           cb23d496-9901-47f7-8ab5-150abd357205  rev 1  — 15% shorter than its text implies
+    0.845  target1         1992ms  "I don't want to interrupt a story"
+           58d9522f-309f-49e6-9909-6a7e378772a4  rev 1  — 15% shorter than its text implies
+    0.845  target1         2112ms  "but I'm a little tired this evening"
+           9cea2fae-a9e9-4970-9e47-69f56eaee3b4  rev 1  — 16% shorter than its text implies
+    0.845  target2         2112ms  "I practise English for about a week"
+           fd295271-0489-4175-aa8c-ad3246539229  rev 1  — 16% shorter than its text implies
+    0.845  target2         2232ms  "I wanted to learn with you last night"
+           c91bd2ff-1dc4-41a8-b12d-745a6d181a8b  rev 1  — 16% shorter than its text implies
+    0.846  target1         1632ms  "I want to practise speaking"
+           03d9ab9e-1adf-4fdd-b149-6345b98f9f2d  rev 1  — 15% shorter than its text implies
+    0.846  target2         1752ms  "I'd like to practise tomorrow"
+           abc56f68-52a3-4b15-9737-ac941f3813b4  rev 1  — 15% shorter than its text implies
+    0.846  target2         1632ms  "I'd like to guess something"
+           d8d45016-d2b8-4b97-b114-f3df26eebf3a  rev 1  — 15% shorter than its text implies
+    0.846  target1         1632ms  "I'm going to guess tomorrow"
+           f13047d3-7401-40dc-a2a9-37996b0396ac  rev 1  — 15% shorter than its text implies
+    0.846  target2         1752ms  "I'm trying to come back today"
+           668689d9-41ad-453e-a0ac-9fdb05d2b44b  rev 1  — 15% shorter than its text implies
+    0.846  target1         1752ms  "I don't like taking something"
+           05485821-4f03-4b72-9cb1-08deeed8dd6a  rev 1  — 15% shorter than its text implies
+    0.846  target2         1752ms  "you wanted to speak yesterday"
+           052335c8-af98-49b2-af98-d20f123daab1  rev 1  — 15% shorter than its text implies
+    0.847  target2         1512ms  "because I'm going to meet"
+           2b43090d-004b-444b-87b3-f6f43e87bc62  rev 1  — 15% shorter than its text implies
+    0.847  target1         1392ms  "because I'm ready to go"
+           66904db8-1fea-495d-95ec-42b8c8529cf0  rev 1  — 15% shorter than its text implies
+    0.847  target2         1392ms  "are you going to learn?"
+           831fcd15-4f42-45d1-b154-44cec8d5e932  rev 1  — 15% shorter than its text implies
+    0.847  target2         2904ms  "I'm looking forward to speaking English tomorrow"
+           46582b3e-5c98-49bf-80d0-fb71cb1f07c7  rev 1  — 15% shorter than its text implies
+    0.847  target2         1512ms  "I don't want to interrupt"
+           0d82fa51-b086-49e3-812f-ccb58f0da2a6  rev 1  — 15% shorter than its text implies
+    0.848  target2         2424ms  "It's like this, if you know what I mean."
+           5e90ec5e-4bc4-41ea-84ac-f2ee736f3f01  rev 1  — 15% shorter than its text implies
+    0.848  target1         2664ms  "I don't like taking too much time to answer."
+           7829c483-1299-4bff-a6dd-ae2a4907e14a  rev 1  — 15% shorter than its text implies
+    0.848  target1         2424ms  "she wants to find out what the answer is"
+           cdd8f737-c387-436d-b5ea-e2ce1a507bde  rev 1  — 15% shorter than its text implies
+    0.848  target2         2424ms  "she wants to find out what the answer is"
+           f1c250f6-a754-4ae6-b429-7eecd0f348f2  rev 1  — 15% shorter than its text implies
+    0.848  presentation    2544ms  "ஆங்கிலம்-ல் — 'விரும்பவில்லை' — ' போல் — :"
+           759da27c-6127-44a9-8b30-e07c4183aad0  rev 1  — 15% shorter than its text implies
+    0.848  target1         2544ms  "I'm trying to learn as hard as I can today"
+           dcceabfa-4b04-4b04-b069-880a479488f9  rev 1  — 15% shorter than its text implies
+    0.848  target1         2544ms  "she wants to practise as often as possible"
+           10be2abe-4ffb-4d5c-a6bf-d12f419774a7  rev 1  — 15% shorter than its text implies
+    0.848  target2         2424ms  "I'm going to explain the answer tomorrow"
+           7fb33363-de37-4df6-bf5e-93cd0f5517e2  rev 1  — 15% shorter than its text implies
+    0.848  target2         1272ms  "I'm going to help you"
+           4c3fdeeb-8312-471c-9e74-34771e4b2087  rev 1  — 15% shorter than its text implies
+    0.848  target2         2424ms  "I want to improve as quickly as possible"
+           31a1b36d-43ba-454e-9d24-4d72144c1f9c  rev 1  — 15% shorter than its text implies
+    0.849  target1         3336ms  "because I think that it's a good thing to make mistak
+           7637b9ab-1880-4975-9385-6b6f54ef5cec  rev 1  — 15% shorter than its text implies
+    0.849  target1         2184ms  "I'm trying to say the whole sentence"
+           147aabb0-b390-4701-99c1-df47c1436700  rev 1  — 15% shorter than its text implies
+    0.849  target2         2184ms  "I'm trying to learn a little English"
+           3c205cd7-3a5a-4e10-9447-f115df7b319c  rev 1  — 15% shorter than its text implies
+    0.849  target2         2304ms  "I wouldn't like to finish tomorrow now"
+           3027bdeb-64ed-48a2-87d8-b387c5b9bb37  rev 1  — 15% shorter than its text implies
+    0.849  target1         2304ms  "I wouldn't like to finish tomorrow now"
+           79d22f00-c0b5-4c6a-a6d2-0b3fddb1a791  rev 1  — 15% shorter than its text implies
+    0.849  target2         2184ms  "I'm looking forward to speaking well"
+           5df7dc47-a40e-480d-b6e3-b0f8c9d43ecd  rev 1  — 15% shorter than its text implies
+    0.849  target1         2184ms  "I'm looking forward to speaking well"
+           6a152eca-19eb-46f5-9339-110e7970ee52  rev 1  — 15% shorter than its text implies
+    0.849  target1         2304ms  "I learn more carefully than last month"
+           13799c7b-78ad-434d-ae15-f7fc2385d7a6  rev 1  — 15% shorter than its text implies
+    0.849  target2         2184ms  "I wasn't thinking about it carefully"
+           6596baeb-2b96-4fdc-bf94-7b670ee47ab7  rev 1  — 15% shorter than its text implies
+    0.849  target1         2304ms  "if I don't worry about making mistakes"
+           7a21aa85-eaf5-4898-ba0f-eb3d40edbd61  rev 1  — 15% shorter than its text implies
+    0.849  target2         2304ms  "I want to learn as quickly as possible"
+           fea5ca4f-375b-4f1e-97d4-8da08a061468  rev 1  — 15% shorter than its text implies
+     0.85  target1         1032ms  "are you learning?"
+           579479cd-419c-4a40-ac10-6143d4ff01b5  rev 1  — 15% shorter than its text implies
+     0.85  target2         1032ms  "are you going to?"
+           246e8955-1974-4ea1-ae03-2000cc9836c4  rev 1  — 15% shorter than its text implies
+     0.85  target2         2064ms  "she wants to speak English with me"
+           f8881d09-20f3-4224-980d-276b2075b4d4  rev 1  — 15% shorter than its text implies
+     0.85  target1         2064ms  "I'm going to stop talking tomorrow"
+           f0da778c-d406-469b-ba66-57d8ea23dc49  rev 1  — 15% shorter than its text implies
+     0.85  target2         2064ms  "we don't want to interrupt a story"
+           63a85af8-8941-4e73-a96b-b3a8992c4e8d  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/eng_for_tam-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

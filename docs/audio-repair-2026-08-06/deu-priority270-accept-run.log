@@ -1,0 +1,593 @@
+
+audio-repair accept — deu_for_eng
+270 clip(s); actor=tom
+
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 🗂️ backup and recover secrets: https://dotenvx.com/ops
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[1/270] 19a357b8-b9d1-4705-8f32-32a65f4c4f43  ACCEPTED rev 1 -> 2, 1560ms -> 1944ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/54B9EF90-93E6-43D0-BED9-E6E87B874A3C.mp3
+[2/270] 41c7c5a7-12e2-43fc-a2a8-ae646845f5e0  ABORTED — clip 41c7c5a7-12e2-43fc-a2a8-ae646845f5e0 changed since it was proposed: s3Key "mastered/201FAF7E-5E61-422D-AD54-BDC371BA41AC.mp3" -> "repair-candidates/E88AFF21-5DF4-4809-9702-9CBB794C2A69.mp3"; revision 1 -> 2; durationMs 5016 -> 5760
+[3/270] c50e625a-b578-497f-864b-bd57991f6469  ABORTED — clip c50e625a-b578-497f-864b-bd57991f6469 changed since it was proposed: s3Key "mastered/1DF6F3E4-71A6-4361-9D0F-E7A6F227E109.mp3" -> "repair-candidates/B0BB22CB-B2DF-474C-A1F1-3E6848F7E6F0.mp3"; revision 1 -> 2; durationMs 5736 -> 6408
+[4/270] a64fa7eb-68a9-4264-94b2-b4510e41cdcb  ACCEPTED rev 1 -> 2, 1056ms -> 1224ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/D97AF3CD-4AD9-46CA-8F17-A975C9DCC0D8.mp3
+[5/270] 14651fc1-b6a9-4a08-b9c1-3012dd7f62a2  ABORTED — clip 14651fc1-b6a9-4a08-b9c1-3012dd7f62a2 changed since it was proposed: s3Key "mastered/1FC5E9DB-6EE5-4C48-A746-042D133C2222.mp3" -> "repair-candidates/8231EF9E-2268-44AD-B2C6-1534DED6E967.mp3"; revision 1 -> 2; durationMs 5016 -> 5184
+[6/270] 60f0a348-75a0-4c1b-b5d0-e7edbe7e23ae  ABORTED — clip 60f0a348-75a0-4c1b-b5d0-e7edbe7e23ae changed since it was proposed: s3Key "mastered/795287B4-BD8D-4B20-9D39-176C41F24D08.mp3" -> "repair-candidates/E1FC54A9-D4D4-42BB-9CF9-28B3A36B1714.mp3"; revision 1 -> 2; durationMs 6168 -> 6408
+[7/270] 0c459935-5b36-487a-bb12-7a6d88196135  ABORTED — clip 0c459935-5b36-487a-bb12-7a6d88196135 changed since it was proposed: s3Key "mastered/0DB7C861-33B0-4C42-B7A9-A25C800DBAC0.mp3" -> "repair-candidates/C8E38DA1-32E4-4A19-8477-C1163C33AA83.mp3"; revision 1 -> 2; durationMs 7800 -> 8040
+[8/270] 972bf50a-a427-4cf2-beb8-221113ea3263  ACCEPTED rev 1 -> 2, 2904ms -> 3048ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/BA3FA60F-3666-41F0-87DD-4604659E9806.mp3
+[9/270] 9eb6247e-89a5-432c-a4fe-a95f661b80b6  ACCEPTED rev 1 -> 2, 1896ms -> 1896ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F07BF62B-497B-4810-9FFC-43A3E3E3956B.mp3
+[10/270] b037722e-60cb-4961-bfbe-6aac67ced699  ACCEPTED rev 1 -> 2, 1008ms -> 1008ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":2,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/BF4405AE-9556-4030-9BAF-E5669D8ACD56.mp3
+[11/270] 9bc8ad6e-c74f-493e-8f18-6c9f6a1a9dbf  ABORTED — clip 9bc8ad6e-c74f-493e-8f18-6c9f6a1a9dbf changed since it was proposed: s3Key "mastered/7EE3B6F9-44EE-4807-9600-B29C20892732.mp3" -> "repair-candidates/5DF9E53B-E6A0-400A-9606-2D0A4D1D352A.mp3"; revision 1 -> 2; durationMs 5664 -> 6024
+[12/270] 09c3d5b9-6aa1-4094-9dc9-f1104fdc1235  ABORTED — clip 09c3d5b9-6aa1-4094-9dc9-f1104fdc1235 changed since it was proposed: s3Key "mastered/DE9C694A-5BAF-4B48-A03D-A59C774B7640.mp3" -> "repair-candidates/575088E6-F3C7-4641-B2D8-DA4799026E2C.mp3"; revision 1 -> 2; durationMs 4368 -> 4512
+[13/270] bd4c2e60-f032-42fd-9d6b-ffe305f6e7eb  ABORTED — clip bd4c2e60-f032-42fd-9d6b-ffe305f6e7eb changed since it was proposed: s3Key "mastered/BD4C2E60-F032-42FD-9D6B-FFE305F6E7EB.mp3" -> "repair-candidates/A6D76402-B156-4CFE-8494-FF6BECCF5FA0.mp3"; revision 1 -> 2; durationMs 600 -> 648
+[14/270] e39dc240-0e44-4483-af92-12753aa22f0c  ABORTED — clip e39dc240-0e44-4483-af92-12753aa22f0c changed since it was proposed: s3Key "mastered/38202BD5-D3BB-4174-9745-E0A0436ED493.mp3" -> "repair-candidates/9DF2E626-0587-49AD-BD01-6C773821F243.mp3"; revision 1 -> 2; durationMs 5712 -> 6144
+[15/270] 412dfe24-32ca-44a1-aa58-6921e74301b5  ACCEPTED rev 1 -> 2, 864ms -> 1080ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/CA0BEB59-7FE8-4D1D-8469-78D13CAE0A42.mp3
+[16/270] 6e01e2fb-bf7e-458d-ba83-1f2e4ba58ad2  ACCEPTED rev 1 -> 2, 2904ms -> 3144ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/FBB85AE8-B882-4A50-900E-9A35BBC228F6.mp3
+[17/270] c6c40eee-b6c3-4d15-94a8-f1e478f6a5c3  ACCEPTED rev 1 -> 2, 2040ms -> 2256ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/D554051C-4FCE-447A-A60C-17F800D3C274.mp3
+[18/270] 8c4ac266-1959-4749-926f-e4e6f1a226af  ABORTED — clip 8c4ac266-1959-4749-926f-e4e6f1a226af changed since it was proposed: s3Key "mastered/48839BFF-F2B7-43BE-866B-D04CA96BF288.mp3" -> "repair-candidates/957E300E-0EA8-44B2-B665-E82A6F261E7F.mp3"; revision 1 -> 2; durationMs 5256 -> 5880
+[19/270] a5147182-27fa-4143-a809-0918ce8126ca  ACCEPTED rev 1 -> 2, 1872ms -> 2088ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/D0276F02-3A12-4412-B5FD-8EF9069EBD64.mp3
+[20/270] d94c1a05-9183-4359-a025-e8573aae25a2  ABORTED — clip d94c1a05-9183-4359-a025-e8573aae25a2 changed since it was proposed: s3Key "mastered/6B9C5306-A814-45CB-8EF0-B4C054FCC1D8.mp3" -> "repair-candidates/B40949D4-C933-4608-9626-75DC1E58ECE9.mp3"; revision 1 -> 2; durationMs 6048 -> 6576
+[21/270] d522f012-cd29-4f84-9584-b4f29ba60341  ACCEPTED rev 1 -> 2, 1848ms -> 1800ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/0B0E845B-58CA-4B74-B6CA-8456B8A0B0A2.mp3
+[22/270] 9b1d52f0-0688-4551-bf8a-6e3cb82b559b  ACCEPTED rev 1 -> 2, 2040ms -> 2232ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/56F1F98B-8AEB-4264-9BA9-2AA096AD32AF.mp3
+[23/270] 952c4968-202e-4874-968e-0e30456ab700  ACCEPTED rev 1 -> 2, 2904ms -> 2880ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/DBA60790-69EC-422E-8693-9B3231E6D94F.mp3
+[24/270] 878630c1-a7da-43be-8aae-e9d4a4aa7bca  ABORTED — clip 878630c1-a7da-43be-8aae-e9d4a4aa7bca changed since it was proposed: s3Key "mastered/944A8C22-0F5E-46F7-8AAC-2774E1CFD33C.mp3" -> "repair-candidates/906553C1-D724-437A-9C9D-FA7A09EE17C0.mp3"; revision 1 -> 2; durationMs 5400 -> 5664
+[25/270] 9bf58ff6-7742-4146-bea9-121a049ea7d0  ACCEPTED rev 1 -> 2, 1344ms -> 1368ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/7E82707A-92B5-445F-B00A-3611FD7AF80B.mp3
+[26/270] f6e5028b-553d-4d19-aa9d-dc6f1248b1ae  ACCEPTED rev 1 -> 2, 1776ms -> 1776ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/4714F1E7-E515-4542-9AB9-13D68315B096.mp3
+[27/270] d68fce1b-3f0b-45bc-b326-00e070bcce1c  ACCEPTED rev 1 -> 2, 1944ms -> 2040ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F3AAD14C-D083-4630-ADC1-98AEE13169BC.mp3
+[28/270] d33d30cc-3356-4924-a6fa-6b0602905814  ACCEPTED rev 1 -> 2, 1752ms -> 1800ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/FC072E88-87D3-4300-A9B7-51EB9E76C85B.mp3
+[29/270] 4ee87cb6-d571-4791-a115-ea37e0fe99a0  ABORTED — clip 4ee87cb6-d571-4791-a115-ea37e0fe99a0 changed since it was proposed: s3Key "mastered/9EB66FB9-A509-418D-A728-FFE49E118D0F.mp3" -> "repair-candidates/BA779B98-0A2D-4655-9561-A6A47A4CD611.mp3"; revision 1 -> 2; durationMs 1704 -> 1920
+[30/270] f64c9311-68d0-4a58-98d5-041e61d30c44  ABORTED — clip f64c9311-68d0-4a58-98d5-041e61d30c44 changed since it was proposed: s3Key "mastered/A0E312E6-061F-4372-8149-52613B5228A3.mp3" -> "repair-candidates/BEFEBCBD-742D-4C06-87C6-26A560394064.mp3"; revision 1 -> 2; durationMs 9264 -> 9816
+[31/270] 16b0f996-3d7b-43aa-91b5-b8c87420ecd4  ACCEPTED rev 1 -> 2, 1464ms -> 1656ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/57BAB8B4-73C3-4871-BCA3-12CBA8A8E1D7.mp3
+[32/270] f24c929c-9887-456d-b219-203a44f35a92  ABORTED — clip f24c929c-9887-456d-b219-203a44f35a92 changed since it was proposed: s3Key "mastered/6098BF34-81F6-4BD7-9062-5F2E0CF45CC9.mp3" -> "repair-candidates/18D584E5-6970-4E20-8EF9-73EB4511C4B8.mp3"; revision 1 -> 2; durationMs 6576 -> 7128
+[33/270] f61a95be-4054-4d86-99f4-d39c35d45a77  ABORTED — clip f61a95be-4054-4d86-99f4-d39c35d45a77 changed since it was proposed: s3Key "mastered/6439876D-1F4C-4ECA-A5A7-F4AD2ADAA5AF.mp3" -> "repair-candidates/1B3B76A0-3ADF-49B6-A9F1-2873EC7C45EF.mp3"; revision 1 -> 2; durationMs 1344 -> 1512
+[34/270] 6eccc108-8607-4731-b93d-416e75a41430  ABORTED — clip 6eccc108-8607-4731-b93d-416e75a41430 changed since it was proposed: s3Key "mastered/F35D8625-5225-4963-9B57-D4287994752C.mp3" -> "repair-candidates/3DF09D59-B286-434B-9885-767ABA95FD91.mp3"; revision 1 -> 2; durationMs 4224 -> 4728
+[35/270] 8755614e-d57f-4091-b18d-d83c053625f4  ACCEPTED rev 1 -> 2, 1632ms -> 1920ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/74245679-1EBB-477C-BB28-897A4A044BB0.mp3
+[36/270] acef83fe-78db-461f-94a1-c6fb18839a73  ACCEPTED rev 1 -> 2, 1728ms -> 1800ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/E0BB7BCF-E93D-4A08-A629-91A92D2F5DC3.mp3
+[37/270] fa053ac3-d661-41f2-81f5-7acfe0b18fe3  ABORTED — clip fa053ac3-d661-41f2-81f5-7acfe0b18fe3 changed since it was proposed: s3Key "mastered/59F8B6AC-2D71-4159-814D-65A044E0C39D.mp3" -> "repair-candidates/46BE9970-B387-48BA-96D6-166F01A330A1.mp3"; revision 1 -> 2; durationMs 5688 -> 6216
+[38/270] 46bf90a0-9a07-4bb5-995f-2bed7bf6608d  ACCEPTED rev 1 -> 2, 1776ms -> 1824ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/22652084-C6FE-436E-9E90-B9C94826E0DB.mp3
+[39/270] 20dfc745-f01a-4e31-bedc-ee2af8f2aacb  ABORTED — clip 20dfc745-f01a-4e31-bedc-ee2af8f2aacb changed since it was proposed: s3Key "mastered/C51A14DE-3375-4476-8418-D1B21BB9F59B.mp3" -> "repair-candidates/DA13B56E-93F8-48EB-9139-B8390FA1638C.mp3"; revision 1 -> 2; durationMs 5328 -> 5880
+[40/270] 98657d76-0e4f-48d9-a5c9-b90e254d26cf  ACCEPTED rev 1 -> 2, 1752ms -> 1872ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/B0254619-39FC-4439-9999-E26D04427134.mp3
+[41/270] 3fbe0a6e-8bdc-4aa6-b08c-92494ca75b9f  ACCEPTED rev 1 -> 2, 3144ms -> 3432ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/A32C1A37-BBDB-4D5B-B505-CDCADFC086C2.mp3
+[42/270] 81a05fc4-760f-4806-87fe-5ac27a248fa4  ACCEPTED rev 1 -> 2, 2304ms -> 2304ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/E068A23B-59F7-4D90-919C-F3B976B9EFE8.mp3
+[43/270] 1ceaba14-458f-41ab-9b25-04f5dbbc1c69  ABORTED — clip 1ceaba14-458f-41ab-9b25-04f5dbbc1c69 changed since it was proposed: s3Key "mastered/6A40C256-7FCA-4BA6-9453-44BB570F0446.mp3" -> "repair-candidates/2485A001-6EFF-41CA-9FC9-FFBDB1363F4F.mp3"; revision 1 -> 2; durationMs 3648 -> 3888
+[44/270] c75fb968-d1df-42e3-b0ac-fe2ab3e44feb  ACCEPTED rev 1 -> 2, 1944ms -> 2064ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/06A87949-D457-4391-B102-E161FB04C993.mp3
+[45/270] 10de604a-3080-4662-8513-61a71dd04d35  ABORTED — clip 10de604a-3080-4662-8513-61a71dd04d35 changed since it was proposed: s3Key "mastered/8152D2F1-BFC8-4E2A-A94D-267DB8A48676.mp3" -> "repair-candidates/CF8254DD-ABA0-4B8D-9223-8A85DB4FDCEF.mp3"; revision 1 -> 2; durationMs 5592 -> 5736
+[46/270] cdc8b64d-66e9-4113-98cb-98388921fe3a  ACCEPTED rev 1 -> 2, 2952ms -> 2976ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/272709E8-F870-40EE-B5B5-8765F321AFF9.mp3
+[47/270] 2f89daa5-4cd9-48f0-b1c3-5d8b242a0451  ACCEPTED rev 1 -> 2, 2928ms -> 3840ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/3C975149-86DB-48A1-A55E-ACCDE13751AC.mp3
+[48/270] 146b6e9c-bbc4-4272-b886-1049ba30ffff  ABORTED — clip 146b6e9c-bbc4-4272-b886-1049ba30ffff changed since it was proposed: s3Key "mastered/3A195BA9-6933-4C5B-AF65-56FE031E4B42.mp3" -> "repair-candidates/79E637D8-763A-4BCE-A920-2C133F592015.mp3"; revision 1 -> 2; durationMs 2736 -> 3264
+[49/270] c20d470f-c443-4295-9c29-af98ca59c36e  ACCEPTED rev 1 -> 2, 1656ms -> 1632ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/82B6DE20-37E4-4573-AC0B-FCB44F5E5F23.mp3
+[50/270] ffcdf270-2db7-40aa-b2fc-83ee457f8adf  ACCEPTED rev 1 -> 2, 2520ms -> 2616ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/CAA88659-CD30-4D76-B642-F85A015DA59B.mp3
+[51/270] 9d5795f8-5077-4773-b870-de2eabd6bf8a  ACCEPTED rev 1 -> 2, 2112ms -> 2208ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/8DF214E6-39BB-4B34-BA7A-76076A5570E2.mp3
+[52/270] 2e96d1ba-d994-4a30-a606-565bcb644668  ACCEPTED rev 1 -> 2, 2424ms -> 2808ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/EB206F71-C35D-4AB6-ACF0-3FFED360FB31.mp3
+[53/270] 7a8f9948-f133-4d12-99cd-60423f724dfa  ABORTED — clip 7a8f9948-f133-4d12-99cd-60423f724dfa changed since it was proposed: s3Key "mastered/016FCD0B-BB47-461B-B9E4-6AF6BADE7E79.mp3" -> "repair-candidates/439DC463-9DA3-4C8C-9FA8-EEC0EC25121D.mp3"; revision 1 -> 2; durationMs 4176 -> 4320
+[54/270] 57e2753b-9b1e-4696-a71a-c2a173138b05  ABORTED — clip 57e2753b-9b1e-4696-a71a-c2a173138b05 changed since it was proposed: s3Key "mastered/B70111AC-F534-41F9-B1DA-F1E2F6EF86A0.mp3" -> "repair-candidates/E546E45E-0EC1-4047-948E-0AD6DE137F38.mp3"; revision 1 -> 2; durationMs 6288 -> 6792
+[55/270] d3678aeb-4eba-4a9b-bba1-75bf8080c337  ACCEPTED rev 1 -> 2, 2616ms -> 2688ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F461973C-FA27-44F9-A1DA-E7C2300872FA.mp3
+[56/270] e3b0cc75-ed1e-4ad7-9fb7-f4a27238d995  ACCEPTED rev 1 -> 2, 3120ms -> 3072ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/FB660D7C-6AED-4194-AB01-9E09DC3A601A.mp3
+[57/270] 89941e7a-daa4-4d5b-8153-a53658d8cf12  ACCEPTED rev 1 -> 2, 1344ms -> 1416ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/063F1023-5032-4A4D-B929-13074E9B9885.mp3
+[58/270] 889470c4-93a5-4096-8ca3-963f6a6d9c9c  ABORTED — clip 889470c4-93a5-4096-8ca3-963f6a6d9c9c changed since it was proposed: s3Key "mastered/8012942F-C323-4CAF-9A63-0507E3FF0803.mp3" -> "repair-candidates/061E1CE3-B0F7-43C6-B07E-7AE1A6012F2E.mp3"; revision 1 -> 2; durationMs 864 -> 912
+[59/270] 87de61c1-b63a-4eaf-8986-a7da1986e1cc  ABORTED — clip 87de61c1-b63a-4eaf-8986-a7da1986e1cc changed since it was proposed: s3Key "mastered/44DC5ADF-B715-47AA-BA4B-224831FF81F5.mp3" -> "repair-candidates/E2624399-44EF-4D0D-9749-145367327DE8.mp3"; revision 1 -> 2
+[60/270] e2453d8a-8cf0-4e32-a288-05050cfdd150  ABORTED — clip e2453d8a-8cf0-4e32-a288-05050cfdd150 changed since it was proposed: s3Key "mastered/1F1ADDC1-6B0D-42C0-A4A7-D76ECD55188A.mp3" -> "repair-candidates/2FC94714-9BC4-48B0-A7E1-2EAFB9128846.mp3"; revision 1 -> 2; durationMs 4752 -> 5352
+[61/270] aa954e4d-da35-459a-80a0-627f8846d80c  ACCEPTED rev 1 -> 2, 1056ms -> 1200ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/4D08EE9B-9D94-48DC-899A-6F68DA82A27F.mp3
+[62/270] 3d1aa765-62e6-45a0-8e04-7353d675d024  ACCEPTED rev 1 -> 2, 2376ms -> 3072ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/1A66453A-334F-4862-832A-1CC8BB7C6B1B.mp3
+[63/270] 925a6ec5-f5da-4a5b-8f5d-705aec870b2b  ACCEPTED rev 1 -> 2, 1416ms -> 1296ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/1846512C-E372-4550-8A63-CED9C5DDE3F7.mp3
+[64/270] 994eb7b7-a9cf-4262-a3a0-905eca0785e6  ACCEPTED rev 1 -> 2, 2040ms -> 2280ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/4EB71589-FE87-47C3-B483-4F51FE90A91E.mp3
+[65/270] 30f3a2c8-8da2-4df7-979e-274afe0c30d9  ABORTED — clip 30f3a2c8-8da2-4df7-979e-274afe0c30d9 changed since it was proposed: s3Key "mastered/32A1CFE0-313A-425F-B78A-F556FEC6D7C6.mp3" -> "repair-candidates/3FB2E2AA-8273-446B-8214-DD8216D497C3.mp3"; revision 1 -> 2; durationMs 4488 -> 5064
+[66/270] 2e3fb5a5-0e43-43b1-ae46-1db9a3382993  ACCEPTED rev 1 -> 2, 1128ms -> 1728ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/09C1CE62-97A3-44BD-8E43-4B2DCC0E3D59.mp3
+[67/270] 81b131fa-84de-4a95-b525-af444a05b964  ABORTED — clip 81b131fa-84de-4a95-b525-af444a05b964 changed since it was proposed: s3Key "mastered/2CD774A1-AC79-4365-BB1A-21543A429EBA.mp3" -> "repair-candidates/FCC5EB1A-B609-4D0F-AE06-F546AA8B3A75.mp3"; revision 1 -> 2; durationMs 2616 -> 3072
+[68/270] a3bb9b2f-43b2-4af9-808d-67bf5a73e3d3  ABORTED — clip a3bb9b2f-43b2-4af9-808d-67bf5a73e3d3 changed since it was proposed: s3Key "mastered/53276165-0DD5-4C4E-A6DF-982F1147FEE2.mp3" -> "repair-candidates/8FE08530-A504-462B-989E-A4AA679AAEBD.mp3"; revision 1 -> 2; durationMs 4248 -> 4872
+[69/270] a2aaa30a-2720-48cb-bb06-2d9c9e42173f  ABORTED — clip a2aaa30a-2720-48cb-bb06-2d9c9e42173f changed since it was proposed: s3Key "mastered/12E84C0A-C7B0-4AE5-9BAF-4CE3561CCA30.mp3" -> "repair-candidates/F84568DC-8E7D-44CC-8931-0945CF6777A8.mp3"; revision 1 -> 2; durationMs 6192 -> 6384
+[70/270] 57f30ae5-967d-4648-8539-c23344f3be8a  ACCEPTED rev 1 -> 2, 672ms -> 1080ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/02F8C572-BBA7-4A21-9CA2-DEC164E5B257.mp3
+[71/270] 75e13d05-892c-42e4-8667-ced65d2cf2af  ACCEPTED rev 1 -> 2, 1944ms -> 1944ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/CE951730-0E0E-47E1-AE7D-DC509E6E084A.mp3
+[72/270] 687e21f8-69ed-4aa2-8fe6-1e2bcc05c295  ACCEPTED rev 1 -> 2, 1608ms -> 1680ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/70403AC3-5C6B-4531-A5AD-3F06F7F229C5.mp3
+[73/270] d84f4d32-40b8-4704-8ddc-7571504d387c  ABORTED — clip d84f4d32-40b8-4704-8ddc-7571504d387c changed since it was proposed: s3Key "mastered/E87AE3AF-853D-402C-948F-B5832000CB88.mp3" -> "repair-candidates/5BDDC71D-67A9-4C37-86FA-3C2F0C835A59.mp3"; revision 1 -> 2; durationMs 4944 -> 5856
+[74/270] 8c9a8f61-0507-42d0-b142-9f18c46f8c5a  ACCEPTED rev 1 -> 2, 1536ms -> 1800ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/C0306B84-FD94-4478-B496-C0C0048E7A36.mp3
+[75/270] ec8b8bc4-e6aa-49e1-b067-1993cca8b7d1  ABORTED — clip ec8b8bc4-e6aa-49e1-b067-1993cca8b7d1 changed since it was proposed: s3Key "mastered/75744FA7-A068-44DA-9872-462667B1868A.mp3" -> "repair-candidates/B3F359AE-2128-429C-9430-C1E63163F248.mp3"; revision 1 -> 2; durationMs 1824 -> 2280
+[76/270] b06d2966-9159-4df5-a4e2-f58156adc2c7  ACCEPTED rev 1 -> 2, 768ms -> 960ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/38980705-F0F8-4D70-8244-757FDA1FC477.mp3
+[77/270] 9a843bf4-7d57-462a-944e-d6a43f9d7591  ACCEPTED rev 1 -> 2, 2640ms -> 2808ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/78AFA20F-8F9D-4DAC-BA50-6869802CDC83.mp3
+[78/270] bf67d773-a9bd-40a8-9b81-537a6d359d1b  ACCEPTED rev 1 -> 2, 1536ms -> 2160ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/2DEA3493-D8B5-43B4-903E-9760141321AF.mp3
+[79/270] 9b53af75-5217-4047-a80f-fc3ced050769  ACCEPTED rev 1 -> 2, 1368ms -> 1440ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/97004F49-E610-4B60-8F67-DAAD9CEB7F4F.mp3
+[80/270] 63129269-d59a-496c-bc30-7be031f11547  ABORTED — clip 63129269-d59a-496c-bc30-7be031f11547 changed since it was proposed: s3Key "mastered/63129269-D59A-496C-BC30-7BE031F11547.mp3" -> "repair-candidates/A6017830-5100-4690-890D-FBC1D3A5537D.mp3"; revision 1 -> 2; durationMs 1640 -> 1920
+[81/270] 10ab0e98-7120-41ef-97e7-97153892f54b  ACCEPTED rev 1 -> 2, 1416ms -> 1584ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/060226B7-42C2-46AF-873D-80BB82A3C21A.mp3
+[82/270] 89735acd-6949-475e-8c7c-8cd4f0a3abc2  ACCEPTED rev 1 -> 2, 2520ms -> 2424ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/06E3D1E5-53D1-4F8C-8E19-D41027B50AA4.mp3
+[83/270] 4f3b67fc-f1f2-42b8-8ceb-2c23144d3b59  ABORTED — clip 4f3b67fc-f1f2-42b8-8ceb-2c23144d3b59 changed since it was proposed: s3Key "mastered/C14F29E1-9238-49D6-8BE2-925DDA36C65F.mp3" -> "repair-candidates/61B7CB6E-2A14-4E4E-A7BA-7E72EA981689.mp3"; revision 1 -> 2; durationMs 5424 -> 6336
+[84/270] bcc30638-7658-4317-90a0-7dc96f6ebcb4  ACCEPTED rev 1 -> 2, 1224ms -> 1992ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/FD9F59D1-C107-4119-A87F-DC254816CDED.mp3
+[85/270] 7ec98526-b109-456c-a01b-34cf8a368fb1  ACCEPTED rev 1 -> 2, 1536ms -> 1896ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/2251DA5E-92EF-43BA-8EC4-01880B742A92.mp3
+[86/270] 434a8712-3bce-4741-97c9-e8f00f524f63  ACCEPTED rev 1 -> 2, 2640ms -> 2784ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/190B0C50-3B0B-4BEF-BC92-7867BA0A396A.mp3
+[87/270] 769296be-dbcb-4fe2-af6b-c2fbd6e5f2ce  ACCEPTED rev 1 -> 2, 1560ms -> 1704ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/8995DC47-3587-4E2D-A433-50B25E23ACB6.mp3
+[88/270] a89b3665-f0b8-430d-a774-6081b213a914  ACCEPTED rev 1 -> 2, 2520ms -> 2544ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/8017F676-A885-4D97-92DF-95B25EC24849.mp3
+[89/270] 44ecbf32-6d53-4a23-8b84-da789bea6474  ABORTED — clip 44ecbf32-6d53-4a23-8b84-da789bea6474 changed since it was proposed: s3Key "mastered/228AAAE7-8430-47D7-91CA-B3D33D29B645.mp3" -> "repair-candidates/B4E88DA1-879F-492C-95E0-95543C116F26.mp3"; revision 1 -> 2; durationMs 5184 -> 5640
+[90/270] 1e91c179-72b6-43b5-868c-1c2021f4c65f  ABORTED — clip 1e91c179-72b6-43b5-868c-1c2021f4c65f changed since it was proposed: s3Key "mastered/88659CF8-8947-4BEB-8EB9-C45AE5144DA3.mp3" -> "repair-candidates/013B255E-2A41-4077-B514-4EB21084A0BD.mp3"; revision 1 -> 2; durationMs 9432 -> 10152
+[91/270] 30883d3e-dc60-438b-908f-79f124fcc540  ACCEPTED rev 1 -> 2, 1872ms -> 2400ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/23FE13B1-AADB-47FC-9674-318E7A9BB9BD.mp3
+[92/270] 1bddf2cf-1754-4981-9325-84f4b27819d7  ACCEPTED rev 1 -> 2, 1248ms -> 2064ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/9EF2CF12-4F45-4AD6-BD7C-DBAAD847418C.mp3
+[93/270] 441a3623-1375-4bc4-a2dc-4903f3b02cb4  ABORTED — clip 441a3623-1375-4bc4-a2dc-4903f3b02cb4 changed since it was proposed: s3Key "mastered/0CA56525-2A54-4F3E-B18C-BF59BAEEC9C1.mp3" -> "repair-candidates/891F80F5-EA5B-45E3-89C9-7F38B8D2BD3E.mp3"; revision 1 -> 2; durationMs 4776 -> 5328
+[94/270] f650cba8-414a-4d97-a218-9efc8a5e1821  ACCEPTED rev 1 -> 2, 1464ms -> 1704ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/0595E337-0AC5-4BC5-ADB9-C40786BD7A55.mp3
+[95/270] 9a2f1597-4344-43e1-b905-5de5f81a6cc1  ABORTED — clip 9a2f1597-4344-43e1-b905-5de5f81a6cc1 changed since it was proposed: s3Key "mastered/D8E8454F-3F01-4255-AA72-32EB0BA79877.mp3" -> "repair-candidates/91FAE2E4-C275-4FEA-BB1B-7CA81B84A41A.mp3"; revision 1 -> 2; durationMs 3912 -> 4464
+[96/270] 9464824b-290d-4b3a-aa8e-f0c0d93563ad  ABORTED — clip 9464824b-290d-4b3a-aa8e-f0c0d93563ad changed since it was proposed: s3Key "mastered/2898C1BF-E675-4ACB-A66D-BE813E9C04FC.mp3" -> "repair-candidates/234D4639-35C7-49B8-A115-587607454919.mp3"; revision 1 -> 2; durationMs 5784 -> 5832
+[97/270] 90bb29c4-f629-46c2-bda9-ab544b7aacce  ACCEPTED rev 1 -> 2, 960ms -> 1248ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/900276F6-C711-4E79-8218-9FDC5E4347D6.mp3
+[98/270] 5c43dda3-d5a1-4d0e-a3d8-378382b3f32d  ABORTED — clip 5c43dda3-d5a1-4d0e-a3d8-378382b3f32d changed since it was proposed: s3Key "mastered/09EFC4AD-51F4-46A7-9302-601988B61097.mp3" -> "repair-candidates/FFE617BC-4248-4FBF-B81A-7D32874C2ACE.mp3"; revision 1 -> 2; durationMs 5304 -> 5448
+[99/270] c265e1d0-f161-4291-b5e5-b2c434b82bf4  ACCEPTED rev 1 -> 2, 2904ms -> 3360ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/494B9823-CFD0-418E-A1CD-2362799BCE48.mp3
+[100/270] f509bc3f-20eb-4588-bce3-ff7338ea5d7b  ABORTED — clip f509bc3f-20eb-4588-bce3-ff7338ea5d7b changed since it was proposed: s3Key "mastered/C52D0C8C-CF3C-400A-A4C1-ECBE85EC389A.mp3" -> "repair-candidates/3A941FB2-F002-4DE1-AEBC-C9EF3489078B.mp3"; revision 1 -> 2; durationMs 5160 -> 5448
+[101/270] de6db03e-e96e-4c46-8c51-3e26f5834130  ABORTED — clip de6db03e-e96e-4c46-8c51-3e26f5834130 changed since it was proposed: s3Key "mastered/9507BE50-7A44-4DCA-935A-6008BD0AF5C7.mp3" -> "repair-candidates/FE2E729D-E8BC-459D-9894-60002B21C2CB.mp3"; revision 1 -> 2; durationMs 3336 -> 3456
+[102/270] 47a05db9-6d89-4ff9-8a9d-53aacae94c5e  ACCEPTED rev 1 -> 2, 1632ms -> 2328ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/AC0F953D-A078-4DF1-9C13-902B07C7D487.mp3
+[103/270] f2cb41a9-d036-4cb6-8158-8986591a3133  ACCEPTED rev 1 -> 2, 1536ms -> 1632ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/5D63FF28-28A4-492B-85D4-068068281F20.mp3
+[104/270] 5c42d1f8-edca-48e0-ac3b-2f86af2a12a4  ACCEPTED rev 1 -> 2, 2904ms -> 3288ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/8A5A5C7D-71BF-4EEA-AC04-3A53E0B10579.mp3
+[105/270] 2b06dfb5-7de7-45f6-8b3e-9c7d69b9f0b7  ACCEPTED rev 1 -> 2, 1320ms -> 1824ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/C6A6DFC5-E901-466B-A1DB-C74572D1764E.mp3
+[106/270] bdca73d1-d232-45dd-b9bf-7fed99597eb6  ACCEPTED rev 1 -> 2, 2088ms -> 2448ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/8A0BDC1A-3238-467A-BCE8-24B692D7B9C7.mp3
+[107/270] a853e0ac-6a53-4fee-8fb5-368594f9dfab  ACCEPTED rev 1 -> 2, 1512ms -> 2088ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/3EA29529-91F8-4E85-9EF0-A8F1B2E85872.mp3
+[108/270] 80b24ffe-5010-48f7-8d5b-fcc84c8b8a51  ABORTED — clip 80b24ffe-5010-48f7-8d5b-fcc84c8b8a51 changed since it was proposed: s3Key "mastered/B0C9D243-C933-42FB-A431-094873DC8BD5.mp3" -> "repair-candidates/459C8418-4D28-4A5D-9AAC-2AF7E04ACE2F.mp3"; revision 1 -> 2; durationMs 5280 -> 5496
+[109/270] 238b131f-8bf1-4a83-8d69-dd664fb618e8  ACCEPTED rev 1 -> 2, 2304ms -> 2736ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/B514812E-EF1F-4E2F-8868-CD47AD2EB727.mp3
+[110/270] 5bc6e32d-c496-4e63-a669-e4477db054f7  ACCEPTED rev 1 -> 2, 864ms -> 1008ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/626C1CD9-FDF8-4266-979F-32933975B3C0.mp3
+[111/270] 8de67ddf-57f0-4809-bccf-2a04b66e122d  ABORTED — clip 8de67ddf-57f0-4809-bccf-2a04b66e122d changed since it was proposed: s3Key "mastered/94DAEB84-2F91-45FC-89EC-C48DD993662B.mp3" -> "repair-candidates/6A994C10-0275-47DF-A707-9439F07594C4.mp3"; revision 1 -> 2; durationMs 2640 -> 3384
+[112/270] f9e78dd1-3472-42bd-854a-9f1842759940  ACCEPTED rev 1 -> 2, 2496ms -> 2808ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/470F6DB3-B52F-478F-8FC0-DE42C5AFC390.mp3
+[113/270] 211ca240-ba9f-41d7-b4a3-417b643461ca  ABORTED — clip 211ca240-ba9f-41d7-b4a3-417b643461ca changed since it was proposed: s3Key "mastered/84DD5FBA-ACAC-4F99-B8B7-7F53D274A922.mp3" -> "repair-candidates/1A421C3B-E94E-45E2-AF77-52FC3DDBC55E.mp3"; revision 1 -> 2; durationMs 2616 -> 3144
+[114/270] 1a15256d-9b0b-4d63-885c-49c083c8f49d  ABORTED — clip 1a15256d-9b0b-4d63-885c-49c083c8f49d changed since it was proposed: s3Key "mastered/8A406016-035D-4F71-842B-39705FAE0957.mp3" -> "repair-candidates/60F42C87-5DBE-45C9-9CEA-B06FF60CD762.mp3"; revision 1 -> 2; durationMs 5544 -> 8112
+[115/270] 8f80fff7-cf06-40bc-be1b-32483b07a01d  ACCEPTED rev 1 -> 2, 1080ms -> 1584ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/09F4840A-BE1E-4679-ACC2-D18CFC0DB5A1.mp3
+[116/270] 4736b280-83d5-421b-b71c-5b9c945bfcea  ABORTED — clip 4736b280-83d5-421b-b71c-5b9c945bfcea changed since it was proposed: s3Key "mastered/46DEEEEB-E3D3-427B-A7DD-1786791FAEE6.mp3" -> "repair-candidates/EAD44F1B-3951-40CD-853A-26B02ECC71DF.mp3"; revision 1 -> 2; durationMs 5280 -> 5544
+[117/270] 10779b7e-b907-4ce0-848d-9762e24d2e95  ACCEPTED rev 1 -> 2, 1440ms -> 1488ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/1CD99472-2B24-44B3-950F-E9B982B6D467.mp3
+[118/270] 519721fd-118a-4e09-a755-a2d31c80172a  ABORTED — clip 519721fd-118a-4e09-a755-a2d31c80172a changed since it was proposed: s3Key "mastered/B4E56D17-4973-49CA-B40F-50F7B2E4DD74.mp3" -> "repair-candidates/99D96D68-7963-4DFE-84E6-F322A1A28A57.mp3"; revision 1 -> 2; durationMs 5256 -> 5928
+[119/270] 6cde1e39-951b-48b7-a799-bf13e267d222  ABORTED — clip 6cde1e39-951b-48b7-a799-bf13e267d222 changed since it was proposed: s3Key "mastered/393370CF-3945-4595-A6AD-6547673AA0A3.mp3" -> "repair-candidates/91F85649-9C6C-433A-A9CC-E393C182CE1F.mp3"; revision 1 -> 2; durationMs 5304 -> 6144
+[120/270] 7891caa3-5501-4721-8eb0-1db45ec73f27  ACCEPTED rev 1 -> 2, 1488ms -> 2136ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/3442AF9A-0B5F-4115-AE1C-4C353A8DC1B3.mp3
+[121/270] c6d6d484-0cdd-4e0c-a2d1-a967fe9d4e02  ACCEPTED rev 1 -> 2, 2544ms -> 3072ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/89A22A65-3AA3-417E-821B-BF84A94AF098.mp3
+[122/270] 2022178c-c901-4042-a4c5-cb48e109a869  ABORTED — clip 2022178c-c901-4042-a4c5-cb48e109a869 changed since it was proposed: s3Key "mastered/BD859A23-8DDA-471F-9BD6-81FDA250C562.mp3" -> "repair-candidates/E4AF9EA5-FCC2-4A66-86E4-B121A71E31DC.mp3"; revision 1 -> 2; durationMs 4080 -> 4296
+[123/270] 5603a060-413a-4409-8c4e-6f10fb4c97f6  ACCEPTED rev 1 -> 2, 1200ms -> 1560ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/064B1F7C-DA34-4EE7-9C43-9919EF7A9B36.mp3
+[124/270] 459b64eb-e36c-4324-b3d8-3d34f21c9928  ACCEPTED rev 1 -> 2, 1848ms -> 2328ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/5986E5C9-B51A-4E4F-A297-A8DBDDCAC827.mp3
+[125/270] 08fa936c-d2de-4ff7-b482-a79eaa80e359  ACCEPTED rev 1 -> 2, 1392ms -> 1512ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/62E96631-2B9F-47F6-8377-00F5C9BA7DF1.mp3
+[126/270] 93675704-459b-460c-9ac8-198d7017d6a2  ABORTED — clip 93675704-459b-460c-9ac8-198d7017d6a2 changed since it was proposed: s3Key "mastered/D533CFEA-B4A3-4FEF-9BEB-4E7372CD9981.mp3" -> "repair-candidates/03B69EC6-CD67-4112-B352-16D5E6CB6D34.mp3"; revision 1 -> 2; durationMs 5448 -> 4992
+[127/270] 84b74568-2dcd-4830-99ee-47df05a94825  ACCEPTED rev 1 -> 2, 1392ms -> 2064ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/0DDB4D4F-FFEE-4AD9-8986-66FF149094BC.mp3
+[128/270] e5391e3a-ae7b-4846-9b39-bb74352297fe  ABORTED — clip e5391e3a-ae7b-4846-9b39-bb74352297fe changed since it was proposed: s3Key "mastered/AB7260DF-5F61-44D0-BE2E-BE51E7BB00D5.mp3" -> "repair-candidates/9DA9977E-27D3-4FC7-B33D-0E0FAAB664F9.mp3"; revision 1 -> 2; durationMs 4704 -> 5016
+[129/270] 9dd5ab16-c4e7-4ea4-985e-7f681b73f56e  ACCEPTED rev 1 -> 2, 1368ms -> 1896ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":2,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/B285306F-1D5E-4B34-A810-2F33BFD39A92.mp3
+[130/270] 7452a3a0-848e-4b9e-a3af-e3b06e25689f  ABORTED — clip 7452a3a0-848e-4b9e-a3af-e3b06e25689f changed since it was proposed: s3Key "mastered/51D7063D-366C-448B-B009-31556FDA62F7.mp3" -> "repair-candidates/DC9363BA-85BC-4627-AB38-0CF8905A9425.mp3"; revision 1 -> 2; durationMs 4464 -> 4920
+[131/270] beb41eeb-bd78-4e9f-811c-203966900ec5  ACCEPTED rev 1 -> 2, 2616ms -> 3120ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/5B2B794F-6B0D-4EE8-8871-865E9118FE54.mp3
+[132/270] 1bf25cd7-5ebf-4b29-bdf6-498aa31dfcf9  ACCEPTED rev 1 -> 2, 1464ms -> 1536ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/6D651326-BA50-43CE-B19C-190A16BA644B.mp3
+[133/270] 87884178-4450-48c8-9c44-bf7085477534  ACCEPTED rev 1 -> 2, 1608ms -> 1656ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/828C5197-2CCD-4577-8A88-5AA7C511D544.mp3
+[134/270] c63bb99e-42c9-4858-930b-64395c441058  ABORTED — clip c63bb99e-42c9-4858-930b-64395c441058 changed since it was proposed: s3Key "mastered/B11F4761-433B-4DB7-8B3D-87284253D709.mp3" -> "repair-candidates/6120D71D-F0C2-4BCA-BEB1-2113B8E1205B.mp3"; revision 1 -> 2; durationMs 5784 -> 6024
+[135/270] 971d630f-503a-4a66-bef6-10621f383354  ABORTED — clip 971d630f-503a-4a66-bef6-10621f383354 changed since it was proposed: s3Key "mastered/4DA0E24D-075C-4C0B-876A-85BBDC8EDD84.mp3" -> "repair-candidates/832CEA17-DB8D-4D1C-86B0-1BA9316409CF.mp3"; revision 1 -> 2; durationMs 5064 -> 5808
+[136/270] c8717dcc-e647-4a62-810a-5a5c908b61e4  ABORTED — clip c8717dcc-e647-4a62-810a-5a5c908b61e4 changed since it was proposed: s3Key "mastered/DE4DF002-24AC-4E8E-8A8F-1141A6E2CBD4.mp3" -> "repair-candidates/D281D334-8D88-4F92-82A9-9F46DEE58EEF.mp3"; revision 1 -> 2; durationMs 1080 -> 1296
+[137/270] c8179845-2aaf-447f-8650-e6f033ab7258  ABORTED — clip c8179845-2aaf-447f-8650-e6f033ab7258 changed since it was proposed: s3Key "mastered/DECDFB0A-617A-4962-9567-BB5EDDD0FE45.mp3" -> "repair-candidates/722687CC-993D-4B08-9189-622F59D8636C.mp3"; revision 1 -> 2; durationMs 6624 -> 5640
+[138/270] 4a3d94fc-2f71-41a3-a322-42d59f15eb58  ACCEPTED rev 1 -> 2, 1176ms -> 1272ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/2776C493-17CE-4E7E-AEE1-66247EE66A89.mp3
+[139/270] 05765f39-e771-4a09-a06b-7d1cd188938f  ABORTED — clip 05765f39-e771-4a09-a06b-7d1cd188938f changed since it was proposed: s3Key "mastered/C1D9A3CE-FDAF-4CD7-89BF-2CE2B9C8AA38.mp3" -> "repair-candidates/7A0FD565-F685-4744-8A32-2E85493297B1.mp3"; revision 1 -> 2; durationMs 7392 -> 7872
+[140/270] e1826019-e294-4ed9-ac6f-7ebd8e1f4190  ACCEPTED rev 1 -> 2, 2160ms -> 2544ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/2A85A3A5-2D3C-4C2F-B20B-8D91037755E0.mp3
+[141/270] 5537704e-b6fb-4fc1-a2cd-ab0a47186390  ABORTED — clip 5537704e-b6fb-4fc1-a2cd-ab0a47186390 changed since it was proposed: s3Key "mastered/BC70B071-3767-47A3-8BE4-288CE4102B5E.mp3" -> "repair-candidates/8BC9273C-5CED-4B15-A667-48BE95047B77.mp3"; revision 1 -> 2; durationMs 2520 -> 3144
+[142/270] 165d82b4-76b4-438b-a6ea-2b2123a30f1a  ACCEPTED rev 1 -> 2, 1920ms -> 2160ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/C7A6D822-AAE1-4BE9-933A-72F5894B85E0.mp3
+[143/270] d3a3aac0-5f1a-4085-9fed-606b91841a04  ACCEPTED rev 1 -> 2, 2880ms -> 3456ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F86CF4E1-9180-40DB-B8AA-93C962FB9E41.mp3
+[144/270] 6986adbc-92d7-417e-9b79-2bd85ce860b2  ACCEPTED rev 1 -> 2, 2712ms -> 3024ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/4A385573-7E9C-478E-82E9-6E93B6E4673E.mp3
+[145/270] 9c5f356a-b3df-426b-ad5f-b96718e07a1d  ABORTED — clip 9c5f356a-b3df-426b-ad5f-b96718e07a1d changed since it was proposed: s3Key "mastered/A86BCDC9-985B-48D9-92B1-F93508C6213D.mp3" -> "repair-candidates/4FEFA72E-37CA-4F8E-A1C4-A2A04D8B1CB1.mp3"; revision 1 -> 2; durationMs 2424 -> 2688
+[146/270] cc218431-bbec-42be-8c3b-8630ad765a10  ACCEPTED rev 1 -> 2, 3504ms -> 3984ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/309108AD-105F-4F3A-9D5A-C63769479073.mp3
+[147/270] f2573ca0-6353-4bbe-b840-51d2990a2af1  ABORTED — clip f2573ca0-6353-4bbe-b840-51d2990a2af1 changed since it was proposed: s3Key "mastered/F1A4234A-19D2-48DF-BD53-F2FF46792099.mp3" -> "repair-candidates/7189683E-3106-4D19-AEDA-59FD09E101D8.mp3"; revision 1 -> 2; durationMs 5232 -> 5880
+[148/270] d55f50ca-f1ba-4035-9d22-ecd34980ab6c  ABORTED — clip d55f50ca-f1ba-4035-9d22-ecd34980ab6c changed since it was proposed: s3Key "mastered/704900F3-7DD4-4FA8-8609-884C634412A2.mp3" -> "repair-candidates/377A1140-56D9-4F4B-AAB5-26A54E585952.mp3"; revision 1 -> 2; durationMs 7152 -> 7176
+[149/270] 26886f5b-2dbc-4fec-b08d-f5017c85d5d8  ABORTED — clip 26886f5b-2dbc-4fec-b08d-f5017c85d5d8 changed since it was proposed: s3Key "mastered/9FAA875B-53A4-43A3-89D3-725525814AC5.mp3" -> "repair-candidates/13E88EFF-2DEA-4FB7-AB60-5F825A712A3F.mp3"; revision 1 -> 2; durationMs 696 -> 792
+[150/270] f3b8a1ec-9e92-4d33-bc9b-55c76ffd0c5b  ABORTED — clip f3b8a1ec-9e92-4d33-bc9b-55c76ffd0c5b changed since it was proposed: s3Key "mastered/C6D41345-BEB0-46C6-894F-B708DDEF2422.mp3" -> "repair-candidates/74017687-100A-48FD-A822-A6C34BCE1504.mp3"; revision 1 -> 2; durationMs 3936 -> 4560
+[151/270] c995e9c1-e008-427a-9b9c-7316930e164c  ABORTED — clip c995e9c1-e008-427a-9b9c-7316930e164c changed since it was proposed: s3Key "mastered/48C3B7F0-0843-4779-8F90-11FC2A116829.mp3" -> "repair-candidates/AC434454-7CB8-42A0-8DB1-8171FA54AB11.mp3"; revision 1 -> 2; durationMs 4440 -> 4968
+[152/270] f26a868d-1f51-41b9-9894-761607023fb5  ABORTED — clip f26a868d-1f51-41b9-9894-761607023fb5 changed since it was proposed: s3Key "mastered/9151C01C-8E80-4588-A69F-5EEDA9FA432A.mp3" -> "repair-candidates/38829337-BCAC-43A2-B978-B99DF8665C7A.mp3"; revision 1 -> 2; durationMs 5040 -> 5664
+[153/270] ca6cbffd-5a5d-4417-9bfe-943799cf6c66  ABORTED — clip ca6cbffd-5a5d-4417-9bfe-943799cf6c66 changed since it was proposed: s3Key "mastered/4B95E5EC-35D0-4638-936C-ABDEEAC48BD3.mp3" -> "repair-candidates/1631DBA2-20A9-49B2-9025-3502D45A125D.mp3"; revision 1 -> 2; durationMs 5472 -> 5760
+[154/270] be4cd5aa-69ad-4454-a334-77302e46a382  ACCEPTED rev 1 -> 2, 1152ms -> 1104ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/C44847F8-6CE0-44B9-AA89-6F2399B6CD8D.mp3
+[155/270] 9a2ecc5a-e3cb-4e21-b98e-a12235dcad84  ABORTED — clip 9a2ecc5a-e3cb-4e21-b98e-a12235dcad84 changed since it was proposed: s3Key "mastered/D2F19866-7E96-44A0-BBF8-487B149063E5.mp3" -> "repair-candidates/685440F5-3991-4426-96BC-91CD29D42FE8.mp3"; revision 1 -> 2; durationMs 4104 -> 4416
+[156/270] 4aae1d1d-a0c8-451d-a40f-047120e67c94  ACCEPTED rev 1 -> 2, 1176ms -> 1272ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/5477C88B-507A-4339-9871-71A05362A04D.mp3
+[157/270] d3d12aa8-c4ad-49d7-9fad-c234972c24c4  ACCEPTED rev 1 -> 2, 1176ms -> 1056ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/1C7CC706-AAE5-4A66-9F8D-7E7AB4BE09F8.mp3
+[158/270] 79f74312-f924-4e5b-826f-2858c5b00449  ACCEPTED rev 1 -> 2, 960ms -> 1320ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/D795C76B-4595-4DCA-91A0-626D2C3B2E50.mp3
+[159/270] c4ae166d-1e74-4561-9068-4d0e657042df  ACCEPTED rev 1 -> 2, 2448ms -> 2904ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/03B8AD46-2BF1-4866-AD1F-95E07FC5C6C6.mp3
+[160/270] b349c79a-e199-46bc-b090-a84fca144f2f  ACCEPTED rev 1 -> 2, 1848ms -> 2016ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F3034A11-4D8E-41E0-A98D-D2194A4E5904.mp3
+[161/270] 35dc58f7-1c07-42a2-a88c-c0ccf646dca0  ACCEPTED rev 1 -> 2, 1800ms -> 1824ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":2,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/D7EBD538-7AEC-4540-93E7-5328C7267B29.mp3
+[162/270] dffeb9d0-7c4f-430b-bdd5-e5b7c106250d  ABORTED — clip dffeb9d0-7c4f-430b-bdd5-e5b7c106250d changed since it was proposed: s3Key "mastered/3E87A862-838B-47B2-9CD3-5544A18541CC.mp3" -> "repair-candidates/02846758-8066-4912-9B09-95645FED24E8.mp3"; revision 1 -> 2; durationMs 4080 -> 4440
+[163/270] e750d480-4b4c-4d61-90d7-427cc1f9858f  ACCEPTED rev 1 -> 2, 2976ms -> 3408ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/B09279AD-90B5-4F45-B162-6609F733F604.mp3
+[164/270] 64f5e524-222a-4534-a372-fda14533ce0b  ACCEPTED rev 1 -> 2, 1656ms -> 2112ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/1F3897C2-14BB-4A66-AFFF-B7CE811F50CE.mp3
+[165/270] 05023b94-6efd-48ca-9a39-e75a574dbd63  ACCEPTED rev 1 -> 2, 2160ms -> 2664ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/7BB2F9BC-1539-4787-B22F-E2F050353A9A.mp3
+[166/270] 1b50a2a5-6c80-4a21-b1b6-6cd41f71f6aa  ABORTED — clip 1b50a2a5-6c80-4a21-b1b6-6cd41f71f6aa changed since it was proposed: s3Key "mastered/BC7DD656-7585-4F44-A450-C4AA8B6AEE1D.mp3" -> "repair-candidates/6146D10E-3D82-4B92-8B8A-9C381AFE74CC.mp3"; revision 1 -> 2; durationMs 4632 -> 5592
+[167/270] d8edd0e0-1c5f-4c76-9ecf-abc83dcc075a  ABORTED — clip d8edd0e0-1c5f-4c76-9ecf-abc83dcc075a changed since it was proposed: s3Key "mastered/F31480FC-FAA2-4659-88FB-06DC2AFD2C34.mp3" -> "repair-candidates/366925F7-F08B-46C2-B63F-1F2200C2CAFA.mp3"; revision 1 -> 2; durationMs 4608 -> 5040
+[168/270] 4282a892-18c9-469a-8275-4a6ba8ae3249  ACCEPTED rev 1 -> 2, 1716ms -> 2184ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/4282A892-18C9-469A-8275-4A6BA8AE3249.mp3
+[169/270] f9d4776c-3a2b-450d-9df2-fd47597b9251  ACCEPTED rev 1 -> 2, 1128ms -> 1344ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/9F095DC7-E1CD-4236-A030-1EF4C7E96CC6.mp3
+[170/270] 423f3707-0cfb-4ca8-a7fe-514c6008247f  ACCEPTED rev 1 -> 2, 1952ms -> 2616ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/423F3707-0CFB-4CA8-A7FE-514C6008247F.mp3
+[171/270] 3f49bba2-fa27-446b-af0a-0af4f00fea93  ACCEPTED rev 1 -> 2, 1872ms -> 1872ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/BFFE49EF-AB53-46ED-9D6E-06023E6FFD96.mp3
+[172/270] 2a929003-52f3-4c3c-b57a-a0af20a19308  ABORTED — clip 2a929003-52f3-4c3c-b57a-a0af20a19308 changed since it was proposed: s3Key "mastered/A9FE7675-AB94-427A-AD9C-5CF3DD2A0578.mp3" -> "repair-candidates/4019147A-CA60-45C0-8494-7B1F9AA7D303.mp3"; revision 1 -> 2; durationMs 5016 -> 5520
+[173/270] f0404e5d-4a38-4707-9ed4-5665b378b6f8  ACCEPTED rev 2 -> 3, 1512ms -> 1512ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: repair-candidates/9609C888-22FD-4C71-8C88-D3EB02666DCD.mp3
+[174/270] 33834c92-0613-4bf2-b129-df5397337cd3  ACCEPTED rev 1 -> 2, 1344ms -> 1824ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":2,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/3CEF93AA-1071-4A3A-BE91-105A94DC879C.mp3
+[175/270] aef07194-11ca-4b4d-aac8-1f7585d44b4d  ABORTED — clip aef07194-11ca-4b4d-aac8-1f7585d44b4d changed since it was proposed: s3Key "mastered/75439B4C-71B1-42B6-8E9D-97346042540E.mp3" -> "repair-candidates/02CA2500-D62E-492F-99F0-C8F053867A5E.mp3"; revision 1 -> 2; durationMs 4656 -> 5184
+[176/270] 7590ae16-4de4-42ef-9011-0cd768522613  ABORTED — clip 7590ae16-4de4-42ef-9011-0cd768522613 changed since it was proposed: s3Key "mastered/501153C2-5977-491C-B038-48AD33DE21B0.mp3" -> "repair-candidates/BBB7C9AE-B2C8-40DE-88EA-44C750894BF4.mp3"; revision 1 -> 2; durationMs 6216 -> 7512
+[177/270] 466c67c1-50f9-41f1-a28c-bd3f8479cf8c  ABORTED — clip 466c67c1-50f9-41f1-a28c-bd3f8479cf8c changed since it was proposed: s3Key "mastered/641A88C9-6038-4985-A683-9BD9BF4972D0.mp3" -> "repair-candidates/EB89FB82-979D-4C79-85CA-BD7B1D27FB24.mp3"; revision 1 -> 2; durationMs 744 -> 936
+[178/270] 24d72d1c-c2f0-4daf-b28d-3b98e804434f  ACCEPTED rev 1 -> 2, 2472ms -> 2928ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/418B9089-96C7-4F52-94EB-5A73E41D0C99.mp3
+[179/270] f08581c4-909a-4256-9e64-b154d1b630e7  ACCEPTED rev 1 -> 2, 2328ms -> 2424ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/50AEBAE5-3565-4F04-B2B9-A6FBB3915F68.mp3
+[180/270] 44391413-6a91-4ce0-933f-61dd49e50b58  ACCEPTED rev 1 -> 2, 1056ms -> 1368ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/4A253915-DEC2-40A0-AF80-349704E32125.mp3
+[181/270] 2c360742-b40a-4476-8c58-9649f2743de7  ACCEPTED rev 1 -> 2, 1512ms -> 2160ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/AFA77066-8436-4B94-8113-2D371FD9F399.mp3
+[182/270] 72d2e3bf-93d0-4015-84b6-71d4c4b23233  ABORTED — clip 72d2e3bf-93d0-4015-84b6-71d4c4b23233 changed since it was proposed: s3Key "mastered/0CBE686D-B677-4467-8C1D-CF819A6FFF4F.mp3" -> "repair-candidates/0D170116-3EB2-4A8A-ACA3-CBCBCB6C2D1D.mp3"; revision 1 -> 2; durationMs 2040 -> 2328
+[183/270] cc76a3a9-394f-42e6-af4a-21e450ece2cc  ABORTED — clip cc76a3a9-394f-42e6-af4a-21e450ece2cc changed since it was proposed: s3Key "mastered/0B90BE8A-C52B-4189-973F-EEA9C89064C8.mp3" -> "repair-candidates/8CD4B939-9C07-4749-818E-D24F2C19F0DA.mp3"; revision 1 -> 2; durationMs 3768 -> 4272
+[184/270] f7b4d346-c95c-44fd-93e8-033a747d2cd5  ACCEPTED rev 1 -> 2, 2904ms -> 3072ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/96819A02-51D9-4E13-BA67-0D6177F5E027.mp3
+[185/270] 4e98ca03-f7ad-4a47-8296-59eb6ae6e9b0  ABORTED — clip 4e98ca03-f7ad-4a47-8296-59eb6ae6e9b0 changed since it was proposed: s3Key "mastered/D3C9459B-4D83-482D-9664-D90526C9D331.mp3" -> "repair-candidates/A02A9506-36F0-429D-9E5A-6CF5E45EF5B5.mp3"; revision 1 -> 2; durationMs 5160 -> 5856
+[186/270] cafbbeb4-4190-4fd0-9525-502c7d88216b  ABORTED — clip cafbbeb4-4190-4fd0-9525-502c7d88216b changed since it was proposed: s3Key "mastered/42B6562E-5997-4FA8-B58E-16510211C52C.mp3" -> "repair-candidates/658EDBBF-532E-4677-9184-3E20BE64703B.mp3"; revision 1 -> 2; durationMs 5304 -> 5520
+[187/270] 06e27f01-c8b7-4f18-810a-e875330f5036  ABORTED — clip 06e27f01-c8b7-4f18-810a-e875330f5036 changed since it was proposed: s3Key "mastered/41ED2BCC-41DD-43F9-92BD-72CAF159BA63.mp3" -> "repair-candidates/65873B2D-3245-4221-8D5A-8009468D21D0.mp3"; revision 1 -> 2; durationMs 5808 -> 6072
+[188/270] a59b8ee6-57d5-473d-8361-d0af410b800f  ACCEPTED rev 1 -> 2, 1176ms -> 1704ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/44F9A15E-36E5-4FDC-AC6F-3BBFC2B0F8E5.mp3
+[189/270] a1984975-934a-4aa8-adc4-fe8bd4ebcc63  ABORTED — clip a1984975-934a-4aa8-adc4-fe8bd4ebcc63 changed since it was proposed: s3Key "mastered/AD3BFBD7-5F55-43DE-8F67-66C29D262F55.mp3" -> "repair-candidates/8E332B9C-004D-45A4-A3D7-3535A7DFF191.mp3"; revision 1 -> 2; durationMs 7008 -> 7344
+[190/270] e7aa2847-716d-48c1-ae33-d26bc58d8a86  ABORTED — clip e7aa2847-716d-48c1-ae33-d26bc58d8a86 changed since it was proposed: s3Key "mastered/DF01617B-4002-4A12-9383-0D62066E4634.mp3" -> "repair-candidates/C9CD9AC0-8B7D-43AF-B28A-568F53ACD8E7.mp3"; revision 1 -> 2; durationMs 5040 -> 5544
+[191/270] af451dc1-f5f0-4935-84fa-861935b27a38  ACCEPTED rev 1 -> 2, 1632ms -> 1656ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/A5B90823-B411-4771-93EB-78803FDCC5D8.mp3
+[192/270] 068e5e48-d477-4fba-80b5-be9719ec10a2  ACCEPTED rev 1 -> 2, 1416ms -> 1512ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/E97764B4-8B5F-4EAC-A946-AAE50FD15476.mp3
+[193/270] 2ed85dc6-6a7e-4775-9ed2-33a0fed3aaa9  ACCEPTED rev 1 -> 2, 2616ms -> 3120ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/456A77E3-8A1F-4D3F-8662-B16169ADF6CB.mp3
+[194/270] 68f9e00a-6ed0-47a0-abbb-298ff9b6794e  ACCEPTED rev 1 -> 2, 3288ms -> 3240ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/DE554F48-50C8-4769-B910-6C67EC30AB42.mp3
+[195/270] 94f13320-9245-4cf0-a419-a39d859c254c  ACCEPTED rev 1 -> 2, 984ms -> 1560ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/50D7A4F7-D2F5-4A46-857E-5062027E8F47.mp3
+[196/270] 2dc7e825-d161-4076-93bd-dc39ed41c9aa  ABORTED — clip 2dc7e825-d161-4076-93bd-dc39ed41c9aa changed since it was proposed: s3Key "mastered/93EB976F-3A57-4EB5-B0CC-477B7BC7FBD3.mp3" -> "repair-candidates/EB2ABFD4-334F-44BA-A059-045A7DDDDF0C.mp3"; revision 1 -> 2; durationMs 1392 -> 1728
+[197/270] c51cd9bb-c7b1-4eab-8ad4-d7007df47e60  ACCEPTED rev 1 -> 2, 1440ms -> 1488ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F668C97B-D1C1-415C-9081-175951445247.mp3
+[198/270] 73a2c9fc-aca9-432d-9afc-9cce547b607c  ACCEPTED rev 1 -> 2, 1608ms -> 1824ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/64C95A69-3444-485D-B371-36FB9F43E670.mp3
+[199/270] d461475a-ea68-42bd-91fe-a6c3c9889875  ACCEPTED rev 1 -> 2, 2856ms -> 2976ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/1687C25E-A091-4780-9644-BF32FC81F565.mp3
+[200/270] 81d60915-de44-4853-b64b-9da6ad49e0d4  ABORTED — clip 81d60915-de44-4853-b64b-9da6ad49e0d4 changed since it was proposed: s3Key "mastered/C68004A3-B6AB-4030-9F05-151F53C1B1F1.mp3" -> "repair-candidates/90828412-0638-4A1D-AD6D-7C7858F9B6F3.mp3"; revision 1 -> 2; durationMs 4968 -> 4992
+[201/270] aeffa4d1-012f-4da6-aed3-dc9f4f80539b  ABORTED — clip aeffa4d1-012f-4da6-aed3-dc9f4f80539b changed since it was proposed: s3Key "mastered/C45D0B61-B27F-4C26-90EF-DB4AE81D7D61.mp3" -> "repair-candidates/80AAC808-B1E3-4929-8E31-00022EE01030.mp3"; revision 1 -> 2; durationMs 3192 -> 3960
+[202/270] 9730999b-37e2-4b60-b834-e3a1342e2c5a  ABORTED — clip 9730999b-37e2-4b60-b834-e3a1342e2c5a changed since it was proposed: s3Key "mastered/19C6CFFC-39EC-4E11-9CF2-E7202EE93BAC.mp3" -> "repair-candidates/68D31DC2-9732-4C3F-AA74-4DB8C7E1E6EE.mp3"; revision 1 -> 2; durationMs 3120 -> 3960
+[203/270] 0915b498-9914-4b10-9520-21d4338fa432  ACCEPTED rev 1 -> 2, 2328ms -> 2784ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/EFA44B29-11AD-43FE-B90B-FB28100B36A7.mp3
+[204/270] 5cca912a-b079-4dec-a4e1-832122e273b6  ACCEPTED rev 1 -> 2, 2304ms -> 2640ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F85C6946-BF8D-45E8-AB59-7BE8626C63CB.mp3
+[205/270] b5e4a6dd-1b32-45a0-ab27-9e491bafc1e6  ABORTED — clip b5e4a6dd-1b32-45a0-ab27-9e491bafc1e6 changed since it was proposed: s3Key "mastered/290E9F9A-8FBA-45F8-B81A-EF66C8FA8DF3.mp3" -> "repair-candidates/81A71FD7-3AE3-4F57-A9DC-FA54E273F924.mp3"; revision 1 -> 2; durationMs 2448 -> 3000
+[206/270] 18961e2b-6e8c-4aba-b83f-0cdaa06e3cea  ACCEPTED rev 2 -> 3, 624ms -> 600ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: repair-candidates/56ADB54A-EA18-45C8-8D7E-9EE252D936B3.mp3
+[207/270] 16c512a4-c783-4bfb-beaa-f882f3eef473  ACCEPTED rev 1 -> 2, 1248ms -> 1320ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/E46B8D60-4168-4BA6-A7C9-AA0BE2D99358.mp3
+[208/270] 2c967e27-416e-4f81-9978-bb8ea7b71888  ACCEPTED rev 1 -> 2, 1704ms -> 2160ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/450BAAD6-19C4-45FB-B8B1-44654112A573.mp3
+[209/270] 94b72689-5f49-49bd-887d-54a13e90ae31  ABORTED — clip 94b72689-5f49-49bd-887d-54a13e90ae31 changed since it was proposed: s3Key "mastered/94B72689-5F49-49BD-887D-54A13E90AE31.mp3" -> "repair-candidates/CDFE412E-CA40-4C0A-9436-59A835D65071.mp3"; revision 1 -> 2; durationMs 678 -> 696
+[210/270] 8c549b36-f0c6-4ff9-91ad-ad54b66399a8  ACCEPTED rev 1 -> 2, 2976ms -> 3336ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F6B7AA82-8104-4B68-95C4-A2F956858087.mp3
+[211/270] 179df701-d314-4e2d-a98f-03c725f55174  ACCEPTED rev 1 -> 2, 2112ms -> 2280ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/129C0C70-6C4F-4A6D-AC3B-B1A13D353C0A.mp3
+[212/270] 70eeea1e-3f63-4bb8-b459-e41a8fca7db4  ACCEPTED rev 1 -> 2, 1128ms -> 1272ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/0EAFF704-AC85-4E1A-A209-E411446BAE44.mp3
+[213/270] 56c58682-8037-4cda-9a04-5869bda4b94d  ACCEPTED rev 1 -> 2, 1680ms -> 2376ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/FA57EC85-98DC-4390-A318-F7B6D431D191.mp3
+[214/270] 90862b13-5cea-4e78-b822-adbc52d859d8  ABORTED — clip 90862b13-5cea-4e78-b822-adbc52d859d8 changed since it was proposed: s3Key "mastered/B86AADCA-17FB-40B7-B730-53941EFFA57B.mp3" -> "repair-candidates/9D80DA6E-745F-450B-ABC8-883E32870A14.mp3"; revision 1 -> 2; durationMs 2040 -> 2400
+[215/270] 388d294e-f0b5-44ff-b913-fa07779f41b6  ACCEPTED rev 1 -> 2, 600ms -> 672ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/A8834F75-E891-40A1-A1E8-609A0061EFB0.mp3
+[216/270] d8e923fd-095a-47a4-a9d8-9a1220c2ed3f  ACCEPTED rev 1 -> 2, 1656ms -> 2112ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/78569EA9-556C-42AA-8BFD-1FB20C5A6FF7.mp3
+[217/270] 0f59e2da-526f-4879-b92a-9378ac7dca13  ACCEPTED rev 1 -> 2, 1752ms -> 1896ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/5E076682-AF01-412A-91BC-30E5098151C0.mp3
+[218/270] baec9ca8-96b3-457e-93f9-e299a275ec7a  ABORTED — clip baec9ca8-96b3-457e-93f9-e299a275ec7a changed since it was proposed: s3Key "mastered/BAEC9CA8-96B3-457E-93F9-E299A275EC7A.mp3" -> "repair-candidates/630F7324-E85D-43AD-A227-AC24B4D37B03.mp3"; revision 1 -> 2; durationMs 530 -> 648
+[219/270] 0318468f-0cb3-4768-a320-cf0a32fa0525  ACCEPTED rev 1 -> 2, 984ms -> 960ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":2,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/12AA750A-2B1E-43CB-B5E2-9EC9269C2CAE.mp3
+[220/270] ee5733dd-2851-4346-9c63-6a015e94a334  ACCEPTED rev 1 -> 2, 1752ms -> 1872ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F83311D8-4015-47C5-8965-AC6DCC46508F.mp3
+[221/270] 440cdcc5-9a5e-4d64-9344-5433c351a34e  ABORTED — clip 440cdcc5-9a5e-4d64-9344-5433c351a34e changed since it was proposed: s3Key "mastered/E279814B-1215-463E-B5CD-A4585D8701A9.mp3" -> "repair-candidates/E6D31436-D628-49F2-94F1-F5A0B06E2F86.mp3"; revision 1 -> 2; durationMs 5376 -> 5472
+[222/270] 2becd9a7-0268-41df-b7c2-65dd4efb0c9a  ACCEPTED rev 1 -> 2, 2592ms -> 2808ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/14038FED-2B3D-4E14-8B0C-39ECBF7F6DFF.mp3
+[223/270] c4586c1c-0f90-4b90-b19d-45f2a328caec  ACCEPTED rev 1 -> 2, 2928ms -> 3000ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/76748038-478E-4497-BFDD-D309AFF3AD9C.mp3
+[224/270] d9c03888-a0a5-4109-afa8-4a8372d735e0  ABORTED — clip d9c03888-a0a5-4109-afa8-4a8372d735e0 changed since it was proposed: s3Key "mastered/FE602FD0-EADB-4A2A-9D73-FBBA91DC3A3A.mp3" -> "repair-candidates/D36DF320-CC80-4F16-BED9-95959EADB425.mp3"; revision 1 -> 2; durationMs 816 -> 720
+[225/270] d5e8b36f-da57-4e74-b911-1c9f53910e55  ACCEPTED rev 1 -> 2, 1488ms -> 1800ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/80E11C78-C7B2-4F9A-9332-5F09A9A46BB2.mp3
+[226/270] 4d3067c6-4c27-4ee4-a6c3-61275be791c8  ABORTED — clip 4d3067c6-4c27-4ee4-a6c3-61275be791c8 changed since it was proposed: s3Key "mastered/D1DE317D-7F61-465D-BE4E-57139FA5F227.mp3" -> "repair-candidates/7E50FDFB-CC87-4A29-8BE4-CE95A49CC592.mp3"; revision 1 -> 2; durationMs 4368 -> 4992
+[227/270] 8bed617d-f834-4862-901c-c5dfea315d0e  ACCEPTED rev 1 -> 2, 720ms -> 648ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/98859628-4908-4A59-893A-B976488CB151.mp3
+[228/270] 508c515d-03d6-4382-96eb-ed8dd16a6bcb  ABORTED — clip 508c515d-03d6-4382-96eb-ed8dd16a6bcb changed since it was proposed: s3Key "mastered/B9F19726-068F-4FE8-B6BA-897CC40C55D6.mp3" -> "repair-candidates/F948841C-F42C-4208-8E52-E6DDC1C255DA.mp3"; revision 1 -> 2; durationMs 5424 -> 5568
+[229/270] d0588170-df48-4ce3-a049-f09882bdc295  ABORTED — clip d0588170-df48-4ce3-a049-f09882bdc295 changed since it was proposed: s3Key "mastered/BF9F0D61-EDD4-43D3-95A2-CA51DA4CE92F.mp3" -> "repair-candidates/820BDAC9-9138-4E5E-9268-A0871E82F493.mp3"; revision 1 -> 2; durationMs 1944 -> 2064
+[230/270] 032a8292-7cac-4e44-a45d-e190e920ade1  ACCEPTED rev 1 -> 2, 2448ms -> 2616ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/6CA4D779-9676-4FD4-98EB-366691A90C6E.mp3
+[231/270] 42b05fd3-b9ff-49a7-96a1-a05ef1999d7f  ACCEPTED rev 1 -> 2, 1728ms -> 1800ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/E8964D00-0DA5-437A-8DD9-CDE7A5DA4B42.mp3
+[232/270] ef6cd188-8dd8-49a1-a56b-a7f78c30f23f  ABORTED — clip ef6cd188-8dd8-49a1-a56b-a7f78c30f23f changed since it was proposed: s3Key "mastered/5A7C6C0C-54C5-40EF-9781-148D989EEC65.mp3" -> "repair-candidates/53ED6DB9-CC04-4CF9-A0CF-56DE84778B58.mp3"; revision 1 -> 2; durationMs 1992 -> 2088
+[233/270] ac0fdd70-8877-432c-b6e9-493d4dea991f  ABORTED — clip ac0fdd70-8877-432c-b6e9-493d4dea991f changed since it was proposed: s3Key "mastered/CD99B040-BF0D-4EF2-99B9-39B7D5E3A6B6.mp3" -> "repair-candidates/7D0EFA40-1E0F-43DE-9D8C-C48D26FED2B2.mp3"; revision 1 -> 2; durationMs 672 -> 576
+[234/270] d83b5a6b-4043-46d4-80be-2670ea843dfe  ACCEPTED rev 1 -> 2, 1776ms -> 1632ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/9BC3DEE1-8A15-4443-BD6D-1467E1296DCB.mp3
+[235/270] 25dd4d5f-d5fd-44d8-bc40-bcf00050a96d  ABORTED — clip 25dd4d5f-d5fd-44d8-bc40-bcf00050a96d changed since it was proposed: s3Key "mastered/162A1CB5-ACDF-49A8-B0E5-C3F4D18BD343.mp3" -> "repair-candidates/71A21822-48F2-41EA-8C17-BB57BA0ED0E7.mp3"; revision 1 -> 2; durationMs 552 -> 744
+[236/270] b51a78d1-3a6c-4ada-8eed-a2938955f73c  ABORTED — clip b51a78d1-3a6c-4ada-8eed-a2938955f73c changed since it was proposed: s3Key "mastered/6772FB1C-B275-4406-82F5-073EF0312574.mp3" -> "repair-candidates/C8F3BE79-D7EC-4848-B64F-C83C78B9E156.mp3"; revision 1 -> 2; durationMs 4056 -> 4560
+[237/270] 4cdcb830-ee2c-46a1-9933-b6772d3198a1  ACCEPTED rev 1 -> 2, 1344ms -> 1464ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/77328A7D-1FA7-4542-9B22-F6D1FA3B4B55.mp3
+[238/270] a8170aab-9d5b-4cc2-8710-32eb7f6164be  ABORTED — clip a8170aab-9d5b-4cc2-8710-32eb7f6164be changed since it was proposed: s3Key "mastered/7CA13813-8DA6-4ECD-BB2A-6826E9123714.mp3" -> "repair-candidates/16064CCD-9F47-49BC-B15A-C4F3BEB29448.mp3"; revision 1 -> 2; durationMs 7128 -> 5064
+[239/270] 416a500e-0177-4b3e-8130-1bceb0b9e3d2  ABORTED — clip 416a500e-0177-4b3e-8130-1bceb0b9e3d2 changed since it was proposed: s3Key "mastered/65B8A730-F879-4B1F-92C9-9F8449A73975.mp3" -> "repair-candidates/2680AA3A-0208-49BA-A6A8-9CFB9DE5A2DA.mp3"; revision 1 -> 2; durationMs 1872 -> 1680
+[240/270] cbb48f97-34cb-4a77-a98f-a2402aad7671  ABORTED — clip cbb48f97-34cb-4a77-a98f-a2402aad7671 changed since it was proposed: s3Key "mastered/9490C770-9654-42B5-B370-7CD49CE4AA5E.mp3" -> "repair-candidates/E092CEE1-3476-4EF0-9914-0B8F0227E361.mp3"; revision 1 -> 2; durationMs 1008 -> 1296
+[241/270] a72fc282-e251-4a82-88dc-21d537b887d6  ACCEPTED rev 1 -> 2, 1584ms -> 1800ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/579E757D-4061-4D72-93E3-C96E254AC9DB.mp3
+[242/270] 74257a7b-8597-4fa0-a99e-1dd92d28698a  ACCEPTED rev 1 -> 2, 2256ms -> 2256ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/497ACF1F-86CE-406C-9822-3AC9CBBDE600.mp3
+[243/270] 6ba568c6-a591-4813-a84e-e7f8ff8f99c3  ABORTED — clip 6ba568c6-a591-4813-a84e-e7f8ff8f99c3 changed since it was proposed: s3Key "mastered/DDF00023-3065-4416-9D17-49F1FDC86BF9.mp3" -> "repair-candidates/1BABB13E-8EFB-4EB6-8809-586558824D78.mp3"; revision 1 -> 2; durationMs 6048 -> 5880
+[244/270] 98f86052-48e3-4621-8fb5-04bb89384626  ABORTED — clip 98f86052-48e3-4621-8fb5-04bb89384626 changed since it was proposed: s3Key "mastered/39AF34A9-E5D2-453E-B20C-152F97A60EE6.mp3" -> "repair-candidates/B79D9623-4A1B-4BE8-9B67-5160BF4645D6.mp3"; revision 1 -> 2; durationMs 1128 -> 1104
+[245/270] 6579e522-9b46-4662-bec3-af0a30415662  ACCEPTED rev 1 -> 2, 1896ms -> 1896ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/089EDC4E-AB6B-4E70-AFF6-70AF329079F1.mp3
+[246/270] 636e1aa3-7bbf-4f47-9ed5-15b5c501b709  ABORTED — clip 636e1aa3-7bbf-4f47-9ed5-15b5c501b709 changed since it was proposed: s3Key "mastered/52DEA35F-2D13-4C96-9CF3-38F682AD4C9C.mp3" -> "repair-candidates/9E5FADEE-768C-41AC-8FFB-D3681447F5FB.mp3"; revision 1 -> 2; durationMs 6336 -> 6480
+[247/270] 9bdcebdc-ff54-493d-bb08-690dfbf63d65  ACCEPTED rev 1 -> 2, 3216ms -> 3384ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/49875A75-A91C-4C48-982F-895C4945E7B4.mp3
+[248/270] fda963f2-178d-4c36-9741-c4fd37eef6b7  ABORTED — clip fda963f2-178d-4c36-9741-c4fd37eef6b7 changed since it was proposed: s3Key "mastered/5BC353E9-25E8-4DFE-895F-44F6C25E00E9.mp3" -> "repair-candidates/CE88C004-2BCB-47CB-9222-493BCC1E8C37.mp3"; revision 1 -> 2; durationMs 1800 -> 2304
+[249/270] 10ee9425-df42-4f39-aaaf-1763cdfe2196  ABORTED — clip 10ee9425-df42-4f39-aaaf-1763cdfe2196 changed since it was proposed: s3Key "mastered/D72DFC3E-D095-4E27-81AE-CFAC4F01B010.mp3" -> "repair-candidates/ED8F19E4-B449-4803-986E-0BF1E58BCC89.mp3"; revision 1 -> 2; durationMs 936 -> 1368
+[250/270] 7d5ebb29-623f-4118-9585-6f1dc8c72176  ABORTED — clip 7d5ebb29-623f-4118-9585-6f1dc8c72176 changed since it was proposed: s3Key "mastered/B0EB1C7F-7313-4BDA-A0FC-60BB2E229751.mp3" -> "repair-candidates/8CB2E3DD-EB18-4A25-B720-F0E54A8F91B4.mp3"; revision 1 -> 2; durationMs 960 -> 1224
+[251/270] 09d02aef-8ca0-4587-85ca-e2d077433c53  ACCEPTED rev 1 -> 2, 1368ms -> 1440ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/853A948E-77E3-465A-A16E-C0FACAE39BB3.mp3
+[252/270] ed709c89-7533-4bbb-8417-3850cf440e11  ACCEPTED rev 1 -> 2, 1368ms -> 1416ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/0B9C4E67-2F9F-459C-A3C9-CBB66E4064DF.mp3
+[253/270] 4739df4c-7b7a-48de-a2df-f08e6a177c84  ACCEPTED rev 1 -> 2, 960ms -> 1152ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/7AC86FDB-40A7-4ABA-831F-CADB737E2F93.mp3
+[254/270] f6c2b3e5-9943-47ad-8b98-0c17fe0fdb56  ABORTED — clip f6c2b3e5-9943-47ad-8b98-0c17fe0fdb56 changed since it was proposed: s3Key "mastered/082239A8-C237-4319-95FF-B672AF36C66A.mp3" -> "repair-candidates/18FB8F6D-CDAA-4B0A-93A4-40797AD40C64.mp3"; revision 1 -> 2; durationMs 7008 -> 7632
+[255/270] 6776a70c-ce3b-4038-85b8-5bf7479955fc  ACCEPTED rev 1 -> 2, 2784ms -> 3000ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/5D7C869D-0C95-446D-9AB2-6EFCD7439F10.mp3
+[256/270] 788fb20b-88fa-494c-956a-3e7b22bb556e  ABORTED — clip 788fb20b-88fa-494c-956a-3e7b22bb556e changed since it was proposed: s3Key "mastered/E2850CDF-B7B3-4C56-A35D-D1B3D77BCA7D.mp3" -> "repair-candidates/623B78F8-3331-416A-9FC8-3DA304EF8E3A.mp3"; revision 1 -> 2; durationMs 9384 -> 6240
+[257/270] 34b66300-d1a9-4087-9a85-1459b2c63dc5  ACCEPTED rev 1 -> 2, 1056ms -> 1200ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/DAD789EF-439E-481E-A66F-F41D8E18BDFC.mp3
+[258/270] fdb0a577-9d1a-4357-b932-6f51b96e598a  ACCEPTED rev 1 -> 2, 1536ms -> 1920ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/0C0F753F-A873-461C-B8E1-5B00FD7441C4.mp3
+[259/270] be012ca6-5a71-41fc-9ad8-2519b22d6c67  ACCEPTED rev 1 -> 2, 2208ms -> 2256ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":1,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/2252655C-1509-45C5-85FB-6AC603EECBC4.mp3
+[260/270] ae18ecc2-84e2-4209-9624-b037ecdadfba  ACCEPTED rev 1 -> 2, 1416ms -> 1608ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/95EF5903-193C-4AE5-94D8-7130E515BAC5.mp3
+[261/270] 7dfa05e7-1bb3-480a-af40-154be5f1ef9b  ACCEPTED rev 1 -> 2, 2544ms -> 2520ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/750FAD38-E88F-46DC-B8A6-61DF82F0D7F6.mp3
+[262/270] 6e1f1552-84d2-4684-a9d8-e74af8c89cf7  ABORTED — clip 6e1f1552-84d2-4684-a9d8-e74af8c89cf7 changed since it was proposed: s3Key "mastered/5F59BCD6-67D1-4CD5-8ABC-BF740477F0B5.mp3" -> "repair-candidates/51DBF8D8-3319-49C5-B752-0DDAF52ADDB9.mp3"; revision 1 -> 2; durationMs 2208 -> 2808
+[263/270] 01608106-ec18-47ea-bcfc-00a0a23e71f8  ABORTED — clip 01608106-ec18-47ea-bcfc-00a0a23e71f8 changed since it was proposed: s3Key "mastered/AEC759F6-3091-4C32-BD63-839765F140DC.mp3" -> "repair-candidates/29B5A8A7-BB94-4625-83BA-2974F3D37B05.mp3"; revision 1 -> 2; durationMs 4776 -> 5160
+[264/270] 0df92d35-2a32-4ede-9768-ea3fe07d80f7  ACCEPTED rev 2 -> 3, 1320ms -> 1248ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":2,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: repair-candidates/30696D61-9829-4CE5-A840-511FA09B03F9.mp3
+[265/270] e61cbcb6-5dfa-47f6-b438-b71a0bdce974  ACCEPTED rev 1 -> 2, 2832ms -> 2760ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/77E818A5-31DC-43DF-979F-FADFD66DE80B.mp3
+[266/270] 19fdaafe-5dc0-489a-96ab-f92dc434a9dc  ABORTED — clip 19fdaafe-5dc0-489a-96ab-f92dc434a9dc changed since it was proposed: s3Key "mastered/062FC2BC-D14B-49CA-AED2-AAC657E59CAF.mp3" -> "repair-candidates/AB9633B0-8DC4-4D4A-A3E3-3B0800F0ADEF.mp3"; revision 1 -> 2; durationMs 5424 -> 5952
+[267/270] 12da91a0-f547-4a5a-9d39-78c6c8075241  ABORTED — clip 12da91a0-f547-4a5a-9d39-78c6c8075241 changed since it was proposed: s3Key "mastered/C605B3D9-E9C4-4540-BC4D-7C3E0E267AB1.mp3" -> "repair-candidates/1A1709C6-82FF-4463-8CEC-CE89DBC36792.mp3"; revision 1 -> 2; durationMs 2064 -> 2472
+[268/270] 4c43b798-4cba-404c-b414-e0d130d327d7  ABORTED — clip 4c43b798-4cba-404c-b414-e0d130d327d7 changed since it was proposed: s3Key "mastered/6309CBD4-408A-4698-954A-DDA4F89F8D31.mp3" -> "repair-candidates/B45879F6-1001-4685-AF05-88C72C9262AC.mp3"; revision 1 -> 2; durationMs 768 -> 1080
+[269/270] 98e729e3-9937-4986-b72f-5aad911bd073  ACCEPTED rev 1 -> 2, 2304ms -> 2208ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":1,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/34EFEC6D-01E2-4E90-AFC4-DFC5BA8930D6.mp3
+[270/270] 2a956da6-fd40-4c0f-9eae-9b26a9d8e009  ACCEPTED rev 1 -> 2, 1680ms -> 1632ms
+         links after swap: {"lego_introductions":0,"course_legos_presentation":0,"holders":{"course_legos.target1_audio_id":0,"course_legos.target2_audio_id":0,"course_practice_phrases.target1_audio_id":0,"course_practice_phrases.target2_audio_id":0,"lego_introductions.presentation_audio_id":0}}
+         superseded object retained: mastered/F5C1AF9C-F38A-4215-BB13-A2EABFFADB53.mp3
+
+log -> /tmp/audio-repair-deu_for_eng-accept-270-applied-log.json
+
+154 accepted, 116 aborted on drift, 0 failed.
+
+[Azure TTS] Closing connection pool (0 total connections)...

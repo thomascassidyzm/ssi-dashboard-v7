@@ -1,0 +1,29 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+
+scoped to seeds 1-50: 4623 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/4623 (16.4/s, ~4m left)     measured 500/4623 (20.9/s, ~3m left)     measured 750/4623 (23.2/s, ~3m left)     measured 1000/4623 (24.7/s, ~2m left)     measured 1250/4623 (25.5/s, ~2m left)     measured 1500/4623 (26.0/s, ~2m left)     measured 1750/4623 (26.4/s, ~2m left)     measured 2000/4623 (26.6/s, ~2m left)     measured 2250/4623 (26.7/s, ~1m left)     measured 2500/4623 (26.8/s, ~1m left)     measured 2750/4623 (26.8/s, ~1m left)     measured 3000/4623 (26.7/s, ~1m left)     measured 3250/4623 (26.8/s, ~1m left)     measured 3500/4623 (26.7/s, ~1m left)     measured 3750/4623 (26.8/s, ~1m left)     measured 4000/4623 (27.0/s, ~0m left)     measured 4250/4623 (27.1/s, ~0m left)     measured 4500/4623 (27.1/s, ~0m left)   
+
+audio-repair queue — por_br_for_eng
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 4623 clip(s); 0 could not be measured
+
+2 clip(s) worth a human's ears (2 by duration, 0 by tail); showing 2, worst first.
+
+    0.742  known           1536ms  "dont you want to show me now?"
+           d00babb0-6723-4dc5-abb6-d6e17914832b  rev 1  — 26% shorter than its text implies
+    0.845  known           4104ms  "I think that it's a good thing to make mistakes when 
+           0fb6175d-8c16-4cba-8a97-59acf10160d0  rev 1  — 16% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/por_br_for_eng-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

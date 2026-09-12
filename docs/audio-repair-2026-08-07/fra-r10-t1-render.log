@@ -1,0 +1,164 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+
+regen-seed-clips-from-scratch — fra_for_eng targets docs/audio-repair-2026-08-07/fra-rounds1-10-target1-targets.json, roles known,target1,target2,presentation
+[audio-veracity] ON — unprimed whisper round-trip, model ggml-small.bin, CER threshold 0.3. Validated on silence + truncation only; mispronunciation is NOT covered.
+58 clip id(s) in the target file
+58 clip(s) to regenerate
+
+running 4 workers (xAI held at 4 concurrent by the TTS governor)
+
+[2/58] practice_phrases#fra_for_eng:S0501L01C02 target1: "je" (rev1, mastered/9EB89AFE-231B-4577-8A85-B177527AD571.mp3)
+[4/58] practice_phrases#fra_for_eng:S0333L04C01 target1: "avec" (rev1, mastered/EAC937D6-6DBC-485E-9E0C-EA31EA42980D.mp3)
+[3/58] practice_phrases#fra_for_eng:S0002L02C01 target1: "essaie" (rev1, mastered/899CF314-FE96-4076-8823-ADF92E821003.mp3)
+[1/58] legos#526d3908-b374-4bf5-af04-ec581515a290 target1: "comment" (rev1, mastered/7847F14F-B2F6-4E28-88DB-624C8DC714B1.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -5.3dB at 0.4s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 8bfc5453-540e-4f12-88ff-3aee2a4c49a7 → mastered/8BFC5453-540E-4F12-88FF-3AEE2A4C49A7.mp3 (7776B, 600ms, was 864ms) rev2, 7 link(s)
+[5/58] legos#4c7fb4cf-24f7-4c0e-a092-6314b1b027e9 target1: "je veux" (rev1, mastered/B3BADF1C-53AC-4795-9F9F-E6557243D74B.mp3)
+[TTS] Attempt 1/3 failed (retriable): phonology gate: whisper detected 'en' instead of 'fr' for "essaie"
+      NEW 54355041-0114-4d7e-86ed-4c5fd471b1c0 → mastered/54355041-0114-4D7E-86ED-4C5FD471B1C0.mp3 (7488B, 576ms, was 528ms) rev2, 45 link(s)
+[6/58] practice_phrases#fra_for_eng:S0003L01B02 target1: "comment parler français" (rev1, mastered/DF128B53-AAF6-4FCE-B2A2-5D568D5E5DF4.mp3)
+      NEW 1cf216da-d966-490d-b3e7-c25230b6e7d7 → mastered/1CF216DA-D966-490D-B3E7-C25230B6E7D7.mp3 (8928B, 696ms, was 792ms) rev2, 10 link(s)
+[7/58] legos#34a5db4b-7a79-4cd5-a490-0beea649331c target1: "parler" (rev1, mastered/3A867140-DEB5-4A89-A4A1-3341FF6D8B6E.mp3)
+[TTS] Attempt 2/3 failed (retriable): phonology gate: whisper detected 'en' instead of 'fr' for "essaie"
+      NEW 2430014c-9896-41de-b4c4-2e9cd096aea9 → mastered/2430014C-9896-41DE-B4C4-2E9CD096AEA9.mp3 (9216B, 720ms, was 648ms) rev2, 3 link(s)
+[8/58] legos#e8aac06f-1c76-4d20-9e15-ffbaafceb358 target1: "français" (rev1, mastered/F6001AEE-8548-4B92-BC89-D4E759F6B733.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (rise -17.3dB at 1.156s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+[TTS] Attempt 1/3 failed (retriable): phonology gate: whisper detected 'en' instead of 'fr' for "parler"
+      NEW 6da156d7-b20e-400c-a3dd-d42bf62ff261 → mastered/6DA156D7-B20E-400C-A3DD-D42BF62FF261.mp3 (14976B, 1200ms, was 1248ms) rev2, 1 link(s)
+[9/58] practice_phrases#fra_for_eng:S0001L03B01 target1: "parler français" (rev1, mastered/3B3D8B7B-8E6E-4975-A603-5072F754CBBF.mp3)
+[TTS] Attempt 3/3 failed (retriable): phonology gate: whisper detected 'en' instead of 'fr' for "essaie"
+      FAILED at render: TTS generation failed after 3 attempts: phonology gate: whisper detected 'en' instead of 'fr' for "essaie"
+      unwound cleanly — old clip still serving
+[10/58] legos#e67e493b-884a-4a0b-91c5-f669ff622a1f target1: "avec toi" (rev1, mastered/4ECD1B76-4B56-4455-ACC1-37AB80AB7A6D.mp3)
+      NEW e3fc37e2-8f8a-4b02-b858-362a9be2bb1a → mastered/E3FC37E2-8F8A-4B02-B858-362A9BE2BB1A.mp3 (9504B, 744ms, was 744ms) rev2, 4 link(s)
+[11/58] practice_phrases#fra_for_eng:S0001L04B02 target1: "parler avec toi" (rev1, mastered/BE5069B4-BD2C-447A-BD39-430DA3A12CFC.mp3)
+      NEW ee7b10ae-db59-44b4-9eb8-165ec8d56aba → mastered/EE7B10AE-DB59-44B4-9EB8-165EC8D56ABA.mp3 (7488B, 576ms, was 624ms) rev2, 5 link(s)
+[12/58] legos#f1ade13f-e898-43e0-9df9-98c7387ac48c target1: "maintenant" (rev1, mastered/E53DABA2-B6F9-4035-BB8F-A8126A47DCA5.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (burst -1.5dB at 0.87s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.1dB at 0.352s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW da96c76d-913a-4636-883d-16f1677219e9 → mastered/DA96C76D-913A-4636-883D-16F1677219E9.mp3 (12096B, 960ms, was 1128ms) rev2, 1 link(s)
+[13/58] practice_phrases#fra_for_eng:S0001L04B03 target1: "parler français avec toi" (rev1, mastered/2463FC3A-8ADD-4114-B717-ED3AA3F5B17A.mp3)
+      NEW 02cb6246-aef6-4880-ac88-039f5b579522 → mastered/02CB6246-AEF6-4880-AC88-039F5B579522.mp3 (9216B, 720ms, was 768ms) rev2, 2 link(s)
+[14/58] practice_phrases#fra_for_eng:S0001L05B03 target1: "parler avec toi maintenant" (rev1, mastered/7EFBE223-58F4-4A93-85F7-011BCF30B8BA.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.3dB at 0.31s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 78d2965f-b0db-4e52-a405-dffe111d6de8 → mastered/78D2965F-B0DB-4E52-A405-DFFE111D6DE8.mp3 (12096B, 960ms, was 1008ms) rev2, 1 link(s)
+[15/58] practice_phrases#fra_for_eng:S0003L01B03 target1: "comment apprendre" (rev1, mastered/2286AF30-F168-41C1-8A7F-E4D728C1295F.mp3)
+      NEW 2c24ca71-942b-4767-8f24-d382f1f9ccfe → mastered/2C24CA71-942B-4767-8F24-D382F1F9CCFE.mp3 (8928B, 696ms, was 672ms) rev2, 2 link(s)
+[16/58] legos#501f9faf-3228-4300-9fb0-a1a4a3fa6487 target1: "j'essaie d'apprendre" (rev1, mastered/EBAB7C4D-494A-4AC4-926A-B7A03DC83DA1.mp3)
+      NEW cde55cf9-9b8b-4818-bb52-e651c0ab6a55 → mastered/CDE55CF9-9B8B-4818-BB52-E651C0AB6A55.mp3 (17280B, 1392ms, was 1368ms) rev2, 1 link(s)
+[17/58] practice_phrases#fra_for_eng:S0003L01B01 target1: "comment parler" (rev1, mastered/9DCA1D31-AF3E-4AD6-8AB3-3623715F5072.mp3)
+      NEW 8a724dfd-dddc-4d0f-aba9-b61530fc7431 → mastered/8A724DFD-DDDC-4D0F-ABA9-B61530FC7431.mp3 (17568B, 1416ms, was 1344ms) rev2, 1 link(s)
+[18/58] legos#a3cd22d0-8fa7-4068-b9d8-1c4b05cd1edf target1: "apprendre" (rev1, mastered/695028A8-851D-45AE-A41C-CDEAD5C9995D.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (rise -14.7dB at 0.906s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 3774fa49-04f3-48e3-8c92-7e5dbd19bc40 → mastered/3774FA49-04F3-48E3-8C92-7E5DBD19BC40.mp3 (14400B, 1152ms, was 1104ms) rev2, 1 link(s)
+[19/58] practice_phrases#fra_for_eng:S0002L01B02 target1: "apprendre maintenant" (rev1, mastered/41720626-E9C0-46B1-9A82-38E0C554C83C.mp3)
+      NEW 1c7fef32-3ec5-4855-b660-cd3b7499a820 → mastered/1C7FEF32-3EC5-4855-B660-CD3B7499A820.mp3 (14976B, 1200ms, was 1320ms) rev2, 2 link(s)
+[20/58] practice_phrases#fra_for_eng:S0001L01C02 target1: "veux" (rev1, mastered/54053124-46E6-4CAA-B76F-BACE5505032B.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (rise -8.7dB at 0.504s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 4f6d23f6-a998-47f0-ac49-44924dd3aa49 → mastered/4F6D23F6-A998-47F0-AC49-44924DD3AA49.mp3 (9216B, 720ms, was 768ms) rev2, 1 link(s)
+[21/58] legos#b9032758-2293-4376-99db-b1af961ae2bc target1: "souvent" (rev1, mastered/C295A3F7-2E58-48C5-AE48-91B10DB5B2B0.mp3)
+      NEW 4fa904f9-7e4f-4189-beba-c8dea86b4c11 → mastered/4FA904F9-7E4F-4189-BEBA-C8DEA86B4C11.mp3 (10944B, 864ms, was 888ms) rev2, 1 link(s)
+[22/58] practice_phrases#fra_for_eng:S0002L02B02 target1: "j'essaie de parler" (rev1, mastered/3FB4594D-CD72-42B6-A897-FA9676302647.mp3)
+      NEW 1ee9da19-8e36-4965-b3a1-6dc9d8edc8c5 → mastered/1EE9DA19-8E36-4965-B3A1-6DC9D8EDC8C5.mp3 (6624B, 504ms, was 528ms) rev2, 4 link(s)
+[23/58] practice_phrases#fra_for_eng:S0002L01U01 target1: "je veux apprendre" (rev1, mastered/C88AD7B0-F793-43D8-8024-C1BA1C72F42A.mp3)
+      NEW bd1203de-4587-4518-bfc1-887c60b44721 → mastered/BD1203DE-4587-4518-BFC1-887C60B44721.mp3 (14400B, 1152ms, was 1224ms) rev2, 1 link(s)
+[24/58] practice_phrases#fra_for_eng:S0002L02U01 target1: "j'essaie de parler français" (rev1, mastered/7DB89ACF-8361-42B2-8669-B37E7BE870F5.mp3)
+      NEW 06b4edbb-6a97-4eec-b354-89306cbdaa2a → mastered/06B4EDBB-6A97-4EEC-B354-89306CBDAA2A.mp3 (8640B, 672ms, was 864ms) rev2, 2 link(s)
+[25/58] practice_phrases#fra_for_eng:S0002L03U01 target1: "j'essaie d'apprendre maintenant" (rev1, mastered/10FF711A-FF5C-4D45-B403-78FE7DC3D39C.mp3)
+      NEW 1331e3d5-6f30-48bc-a61e-025e982e877a → mastered/1331E3D5-6F30-48BC-A61E-025E982E877A.mp3 (12960B, 1032ms, was 1152ms) rev2, 1 link(s)
+[26/58] practice_phrases#fra_for_eng:S0002L03U02 target1: "j'essaie d'apprendre avec toi" (rev1, mastered/D87A3FCA-15EE-4F2B-A8AB-1ABC387D4C33.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (rise -13.8dB at 0.914s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW f30baeb4-7c3e-47b9-adfd-d3afd8ffb1f2 → mastered/F30BAEB4-7C3E-47B9-ADFD-D3AFD8FFB1F2.mp3 (13824B, 1104ms, was 1200ms) rev2, 1 link(s)
+[27/58] practice_phrases#fra_for_eng:S0001L05B01 target1: "parler maintenant" (rev1, mastered/D7AEC07D-5623-4608-97E8-37FE81A9318E.mp3)
+      NEW 7c2b4249-2c98-4ef3-b196-2465bff59648 → mastered/7C2B4249-2C98-4EF3-B196-2465BFF59648.mp3 (18144B, 1464ms, was 1632ms) rev2, 1 link(s)
+[28/58] practice_phrases#fra_for_eng:S0001L05B02 target1: "parler français maintenant" (rev1, mastered/4B66E9CC-07D1-4989-A5C6-7F8964C446A8.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -0.3dB at 1.088s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.7dB at 1.22s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 4f4b73e9-b1d2-4e74-a938-00ce23b1a61a → mastered/4F4B73E9-B1D2-4E74-A938-00CE23B1A61A.mp3 (18432B, 1488ms, was 1560ms) rev2, 1 link(s)
+[29/58] practice_phrases#fra_for_eng:S0003L03B01 target1: "parler souvent" (rev1, mastered/26E71B63-C8CF-4A87-9B42-C081C345B2B3.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -3.6dB at 0.906s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -17.8dB at 0.792s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 1cc8592f-bd72-40a4-b7ec-cf0872f1b410 → mastered/1CC8592F-BD72-40A4-B7EC-CF0872F1B410.mp3 (19584B, 1584ms, was 1632ms) rev2, 1 link(s)
+[30/58] practice_phrases#fra_for_eng:S0002L02B04 target1: "j'essaie de parler avec toi" (rev1, mastered/2EE5EF9A-1CC6-4E08-BEFB-636C4F224602.mp3)
+      NEW 582b89dd-b51d-404c-986d-ca0606174f5d → mastered/582B89DD-B51D-404C-986D-CA0606174F5D.mp3 (11232B, 888ms, was 1056ms) rev2, 1 link(s)
+[31/58] legos#75bfcb20-f294-4683-bb22-7425852d9e8c target1: "j'essaie de" (rev1, mastered/B7286DCF-B310-444B-B182-5F89D52F2C34.mp3)
+      NEW 2ae8d674-8498-4977-845b-ebce11ad7cdc → mastered/2AE8D674-8498-4977-845B-EBCE11AD7CDC.mp3 (15552B, 1248ms, was 1200ms) rev2, 1 link(s)
+[32/58] practice_phrases#fra_for_eng:S0001L05B04 target1: "parler français avec toi maintenant" (rev1, mastered/536E4B42-C918-4C17-AF60-CC2F13886BC1.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (rise -10.7dB at 1.416s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 47ee475a-2cf9-474b-ad76-bda9a3a36bc7 → mastered/47EE475A-2CF9-474B-AD76-BDA9A3A36BC7.mp3 (11520B, 912ms, was 1032ms) rev2, 1 link(s)
+[33/58] practice_phrases#fra_for_eng:S0002L01B03 target1: "apprendre avec toi" (rev1, mastered/E03C338B-6EC1-45FA-9353-751B9858E19F.mp3)
+      NEW 2de237e9-2a7b-47ac-8b11-d75cf99ebe1b → mastered/2DE237E9-2A7B-47AC-8B11-D75CF99EBE1B.mp3 (19872B, 1608ms, was 1584ms) rev2, 1 link(s)
+[34/58] practice_phrases#fra_for_eng:S0003L03B02 target1: "parler français souvent" (rev1, mastered/C9DB3C4C-B3F8-498D-A5CC-676EF5820AA5.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.8dB at 1.368s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW aac7cd58-09bb-4c31-a7cd-ed6ff6956784 → mastered/AAC7CD58-09BB-4C31-A7CD-ED6FF6956784.mp3 (10656B, 840ms, was 1056ms) rev2, 6 link(s)
+[35/58] practice_phrases#fra_for_eng:S0003L03B03 target1: "apprendre souvent" (rev1, mastered/19B538ED-7EEE-48FA-9FAA-FAD54CA0F5B7.mp3)
+      NEW 1b907aa5-e98c-4580-9bae-678b2c8cf948 → mastered/1B907AA5-E98C-4580-9BAE-678B2C8CF948.mp3 (21024B, 1704ms, was 1800ms) rev2, 1 link(s)
+[36/58] practice_phrases#fra_for_eng:S0002L03U03 target1: "j'essaie d'apprendre avec toi maintenant" (rev1, mastered/6BED0C3B-D425-4E6A-9E69-31C706DACD66.mp3)
+      NEW de6fdd24-2305-4b88-ba30-6c429518678b → mastered/DE6FDD24-2305-4B88-BA30-6C429518678B.mp3 (13536B, 1080ms, was 1200ms) rev2, 1 link(s)
+[37/58] practice_phrases#fra_for_eng:S0001L05U03 target1: "Je veux parler avec toi maintenant" (rev1, mastered/4800BFA9-D1A9-4F98-ABF7-47C0FA7A6DBE.mp3)
+      NEW 1e22ecdf-0ce9-4787-9f64-be8f9bb962ad → mastered/1E22ECDF-0CE9-4787-9F64-BE8F9BB962AD.mp3 (16416B, 1320ms, was 1272ms) rev2, 1 link(s)
+[38/58] practice_phrases#fra_for_eng:S0001L05U01 target1: "Je veux parler maintenant" (rev1, mastered/6CF2B5AE-EECB-4AD2-AE37-59F08A41A4CC.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -1.7dB at 1.658s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW abe5af3d-79e3-4b2e-b949-68378e1b4937 → mastered/ABE5AF3D-79E3-4B2E-B949-68378E1B4937.mp3 (14112B, 1128ms, was 1128ms) rev2, 1 link(s)
+[39/58] practice_phrases#fra_for_eng:S0001L05U02 target1: "Je veux parler français maintenant" (rev1, mastered/6BE157EB-B6FD-4C78-B97C-8B9D0CAF0B25.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -4.7dB at 0.888s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 36d06114-cb1a-4151-aad9-fea8f14f3775 → mastered/36D06114-CB1A-4151-AAD9-FEA8F14F3775.mp3 (25056B, 2040ms, was 1872ms) rev2, 1 link(s)
+[40/58] practice_phrases#fra_for_eng:S0001L04U02 target1: "Je veux parler français avec toi" (rev1, mastered/141711C6-047B-41D9-87FB-582876C73762.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.6dB at 1.29s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW cfb35579-29fe-41cf-bf92-40991f04780c → mastered/CFB35579-29FE-41CF-BF92-40991F04780C.mp3 (21888B, 1776ms, was 1632ms) rev2, 1 link(s)
+[41/58] practice_phrases#fra_for_eng:S0001L05U04 target1: "Je veux parler français avec toi maintenant" (rev1, mastered/633E3F18-E11F-45F0-A162-4C5169EBF17F.mp3)
+      NEW 922eee97-84e3-4ed8-81b9-4116eaa58ad6 → mastered/922EEE97-84E3-4ED8-81B9-4116EAA58AD6.mp3 (15264B, 1224ms, was 1296ms) rev2, 1 link(s)
+[42/58] practice_phrases#fra_for_eng:S0001L03U01 target1: "Je veux parler français" (rev1, mastered/498D9426-A3C8-4876-9E0B-37C7BE2A5E5C.mp3)
+      NEW d502125e-816b-4e18-829e-65a38f91d679 → mastered/D502125E-816B-4E18-829E-65A38F91D679.mp3 (19872B, 1608ms, was 1800ms) rev2, 1 link(s)
+[43/58] practice_phrases#fra_for_eng:S0001L04U01 target1: "Je veux parler avec toi" (rev1, mastered/0FE75A12-AA14-4FA3-8F62-CBBE4CA32A8B.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -4.8dB at 1.818s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 39937d6f-2e1b-4a2c-b262-811f0369b0ce → mastered/39937D6F-2E1B-4A2C-B262-811F0369B0CE.mp3 (22464B, 1824ms, was 1728ms) rev2, 1 link(s)
+[44/58] practice_phrases#fra_for_eng:S0002L01U03 target1: "Je veux apprendre avec toi" (rev1, mastered/72AA94D2-B12B-4B59-847F-B0A162CFB0A0.mp3)
+      NEW 82499233-fc40-45bb-89fd-259c05fb9711 → mastered/82499233-FC40-45BB-89FD-259C05FB9711.mp3 (25632B, 2088ms, was 2040ms) rev2, 1 link(s)
+[45/58] practice_phrases#fra_for_eng:S0002L02U03 target1: "j'essaie de parler maintenant" (rev1, mastered/B73AEEB6-4753-4B5F-992E-018E47D2537D.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (rise -8.2dB at 1.194s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW ab121dc6-7550-48bd-b30c-a50c95be419f → mastered/AB121DC6-7550-48BD-B30C-A50C95BE419F.mp3 (16128B, 1296ms, was 1440ms) rev2, 1 link(s)
+[46/58] practice_phrases#fra_for_eng:S0002L01U02 target1: "Je veux apprendre maintenant" (rev1, mastered/ABC72044-BABF-439C-96C1-D070D5ACBE0B.mp3)
+      NEW fe3f632f-0b5b-49ab-8c1b-188fe3a5ae0e → mastered/FE3F632F-0B5B-49AB-8C1B-188FE3A5AE0E.mp3 (16416B, 1320ms, was 1344ms) rev2, 1 link(s)
+[47/58] practice_phrases#fra_for_eng:S0002L02U04 target1: "j'essaie de parler français maintenant" (rev1, mastered/84236F2D-9E93-42E2-A680-D9F4AE43C239.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.6dB at 1.056s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 5d5024a2-b726-4b96-b11e-2867aeb6fa71 → mastered/5D5024A2-B726-4B96-B11E-2867AEB6FA71.mp3 (17280B, 1392ms, was 1464ms) rev2, 1 link(s)
+[48/58] practice_phrases#fra_for_eng:S0002L02U02 target1: "j'essaie de parler français avec toi" (rev1, mastered/6A4C9456-C28B-4425-905E-BF57615537B1.mp3)
+      NEW d7fddf26-71bb-47e9-9d4f-1b744c9ca4d7 → mastered/D7FDDF26-71BB-47E9-9D4F-1B744C9CA4D7.mp3 (17568B, 1416ms, was 1392ms) rev2, 1 link(s)
+[49/58] practice_phrases#fra_for_eng:S0002L01U04 target1: "Je veux apprendre avec toi maintenant" (rev1, mastered/49CC66F2-9334-44CC-A54A-C18EA36EEA4A.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -5.4dB at 1.626s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW de091f19-b32c-4bf9-b864-8076bc06600f → mastered/DE091F19-B32C-4BF9-B864-8076BC06600F.mp3 (19296B, 1560ms, was 1464ms) rev2, 1 link(s)
+[50/58] practice_phrases#fra_for_eng:S0003L03U02 target1: "j'essaie d'apprendre souvent" (rev1, mastered/A09204DF-8EB5-4A92-B325-D7F878310EE4.mp3)
+      NEW 7dfd2642-1bc6-474f-83ee-f8c9a3a1a4e8 → mastered/7DFD2642-1BC6-474F-83EE-F8C9A3A1A4E8.mp3 (23328B, 1896ms, was 1944ms) rev2, 1 link(s)
+[51/58] practice_phrases#fra_for_eng:S0002L02U05 target1: "j'essaie de parler avec toi maintenant" (rev1, mastered/35E93564-0201-4F3F-AB03-96FF62B5B58C.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -3.8dB at 1.594s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 1f587e6b-ab7c-4313-a6db-3befaeb385c5 → mastered/1F587E6B-AB7C-4313-A6DB-3BEFAEB385C5.mp3 (24480B, 1992ms, was 2064ms) rev2, 1 link(s)
+[52/58] practice_phrases#fra_for_eng:S0003L01U01 target1: "Je veux apprendre comment parler" (rev1, mastered/FF783CE6-DCA8-4C66-9CBE-A5DC776D99B5.mp3)
+      NEW 15fb71a1-df23-4d9f-b586-2e47b4224a65 → mastered/15FB71A1-DF23-4D9F-B586-2E47B4224A65.mp3 (23328B, 1896ms, was 1920ms) rev2, 1 link(s)
+[53/58] practice_phrases#fra_for_eng:S0003L01U03 target1: "j'essaie d'apprendre comment parler français" (rev1, mastered/535C7B63-5EF1-49A1-9972-0567023D57E2.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (resurgence -2.7dB at 1.568s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 4ce6b131-2be5-4a9e-842d-a108d6d42ee7 → mastered/4CE6B131-2BE5-4A9E-842D-A108D6D42EE7.mp3 (17568B, 1416ms, was 1464ms) rev2, 1 link(s)
+[54/58] practice_phrases#fra_for_eng:S0002L02U06 target1: "j'essaie de parler français avec toi maintenant" (rev1, mastered/50F4C4EF-79B1-4833-9069-D19E9CE489E4.mp3)
+      NEW 2f2570f5-1bee-4dde-a9cb-264a880fa283 → mastered/2F2570F5-1BEE-4DDE-A9CB-264A880FA283.mp3 (23904B, 1944ms, was 1920ms) rev2, 1 link(s)
+[55/58] practice_phrases#fra_for_eng:S0003L03U01 target1: "Je veux parler français souvent" (rev1, mastered/1AA8CF18-F126-4DAA-98F1-2AC6AD491337.mp3)
+[Phase8-Audio-v13] masterAudio: tail flag (rise -15.3dB at 1.664s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+[Phase8-Audio-v13] masterAudio: tail flag (rise -13.7dB at 2.042s) — SUSPECT ONLY, 9% by ear (7/76, 2026-08-04) — suspects for human review only, never grounds to alter a clip. Clip shipped exactly as rendered.
+      NEW 60a1f307-26ed-4434-a7d9-bc6b83a712b4 → mastered/60A1F307-26ED-4434-A7D9-BC6B83A712B4.mp3 (22176B, 1800ms, was 1776ms) rev2, 1 link(s)
+[56/58] practice_phrases#fra_for_eng:S0003L01U02 target1: "Je veux apprendre comment parler français" (rev1, mastered/096682DB-7278-40C3-873B-77CBF01D8E53.mp3)
+      NEW 28026d9c-b802-48f8-8e17-d1732d96e537 → mastered/28026D9C-B802-48F8-8E17-D1732D96E537.mp3 (26208B, 2136ms, was 2208ms) rev2, 1 link(s)
+[57/58] practice_phrases#fra_for_eng:S0001L02B01 target1: "je veux parler" (rev1, mastered/7826B487-107E-4E69-A079-B5C47D9CA934.mp3)
+      NEW bfe35197-36d4-4b75-b668-4788a68fa825 → mastered/BFE35197-36D4-4B75-B668-4788A68FA825.mp3 (29664B, 2424ms, was 2400ms) rev2, 1 link(s)
+[58/58] practice_phrases#fra_for_eng:S0001L04C02 target1: "toi" (rev1, mastered/BC06DF79-9294-4DCF-9B5F-76605D4E20EA.mp3)
+      NEW fba136d7-2374-4a90-831b-ecaa4266bfee → mastered/FBA136D7-2374-4A90-831B-ECAA4266BFEE.mp3 (19008B, 1536ms, was 1704ms) rev2, 1 link(s)
+      NEW 3d1db0c0-1af9-46d3-9347-775b8e26d313 → mastered/3D1DB0C0-1AF9-46D3-9347-775B8E26D313.mp3 (11520B, 912ms, was 888ms) rev2, 1 link(s)
+[TTS] Attempt 1/3 failed (retriable): phonology gate: whisper detected 'en' instead of 'fr' for "toi"
+      NEW 086dcd5e-509b-4df4-be68-50cd816530f5 → mastered/086DCD5E-509B-4DF4-BE68-50CD816530F5.mp3 (27072B, 2208ms, was 2088ms) rev2, 1 link(s)
+      NEW a0e89b9e-67f8-4ecc-9d56-41f4ea53446c → mastered/A0E89B9E-67F8-4ECC-9D56-41F4EA53446C.mp3 (7488B, 576ms, was 504ms) rev2, 1 link(s)
+
+57 replaced, 1 failed, ~1282 TTS chars
+log → docs/audio-repair-2026-08-07/fra-r10-t1-applied.json
+[Azure TTS] Closing connection pool (0 total connections)...

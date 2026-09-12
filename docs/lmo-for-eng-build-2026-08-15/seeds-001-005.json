@@ -1,0 +1,599 @@
+[
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 1,
+  "SKIP_VALIDATION": true,
+  "known_text": "I want to speak Lombard with you now.",
+  "target_text": "voeuri parlà lombard con tì adess",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "A",
+    "known": "I want",
+    "target": "voeuri",
+    "build": [],
+    "use": []
+   },
+   {
+    "idx": 2,
+    "type": "A",
+    "known": "to speak",
+    "target": "parlà",
+    "build": [
+     {
+      "known": "I want to speak",
+      "target": "voeuri parlà"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak",
+      "target": "voeuri parlà",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 3,
+    "type": "A",
+    "known": "Lombard",
+    "target": "lombard",
+    "build": [
+     {
+      "known": "to speak Lombard",
+      "target": "parlà lombard"
+     },
+     {
+      "known": "I want to speak Lombard",
+      "target": "voeuri parlà lombard"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak Lombard",
+      "target": "voeuri parlà lombard",
+      "score": 8
+     }
+    ]
+   },
+   {
+    "idx": 4,
+    "type": "M",
+    "known": "with you",
+    "target": "con tì",
+    "components": [
+     {
+      "known": "with you",
+      "target": "con tì"
+     }
+    ],
+    "build": [
+     {
+      "known": "to speak with you",
+      "target": "parlà con tì"
+     },
+     {
+      "known": "I want to speak with you",
+      "target": "voeuri parlà con tì"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak Lombard with you",
+      "target": "voeuri parlà lombard con tì",
+      "score": 8
+     }
+    ]
+   },
+   {
+    "idx": 5,
+    "type": "A",
+    "known": "now",
+    "target": "adess",
+    "build": [
+     {
+      "known": "to speak now",
+      "target": "parlà adess"
+     },
+     {
+      "known": "with you now",
+      "target": "con tì adess"
+     },
+     {
+      "known": "to speak Lombard now",
+      "target": "parlà lombard adess"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak now",
+      "target": "voeuri parlà adess",
+      "score": 7
+     },
+     {
+      "known": "I want to speak Lombard now",
+      "target": "voeuri parlà lombard adess",
+      "score": 8
+     },
+     {
+      "known": "I want to speak with you now",
+      "target": "voeuri parlà con tì adess",
+      "score": 8
+     },
+     {
+      "known": "I want to speak Lombard with you now",
+      "target": "voeuri parlà lombard con tì adess",
+      "score": 8
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 2,
+  "SKIP_VALIDATION": true,
+  "known_text": "I'm trying to learn.",
+  "target_text": "son dree a provà a imparà",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "M",
+    "known": "I'm trying to",
+    "target": "son dree a provà a",
+    "components": [
+     {
+      "known": "I'm trying to",
+      "target": "son dree a provà a"
+     }
+    ],
+    "build": [
+     {
+      "known": "I'm trying to speak",
+      "target": "son dree a provà a parlà"
+     },
+     {
+      "known": "I'm trying to speak Lombard",
+      "target": "son dree a provà a parlà lombard"
+     }
+    ],
+    "use": [
+     {
+      "known": "I'm trying to speak Lombard",
+      "target": "son dree a provà a parlà lombard",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to speak Lombard with you now",
+      "target": "son dree a provà a parlà lombard con tì adess",
+      "score": 8
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "A",
+    "known": "to learn",
+    "target": "imparà",
+    "build": [
+     {
+      "known": "I want to learn",
+      "target": "voeuri imparà"
+     },
+     {
+      "known": "I'm trying to learn",
+      "target": "son dree a provà a imparà"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to learn Lombard",
+      "target": "voeuri imparà lombard",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to learn Lombard with you",
+      "target": "son dree a provà a imparà lombard con tì",
+      "score": 8
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 3,
+  "SKIP_VALIDATION": true,
+  "known_text": "how to speak as often as possible.",
+  "target_text": "come parlà pussee spess che se pò",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "A",
+    "known": "how",
+    "target": "come",
+    "build": [
+     {
+      "known": "how to speak",
+      "target": "come parlà"
+     },
+     {
+      "known": "how to learn",
+      "target": "come imparà"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to learn how to speak Lombard",
+      "target": "voeuri imparà come parlà lombard",
+      "score": 7
+     },
+     {
+      "known": "I'm trying to learn how to speak",
+      "target": "son dree a provà a imparà come parlà",
+      "score": 8
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "A",
+    "known": "more",
+    "target": "pussee",
+    "build": [
+     {
+      "known": "to speak more",
+      "target": "parlà pussee"
+     },
+     {
+      "known": "to learn more",
+      "target": "imparà pussee"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak more",
+      "target": "voeuri parlà pussee",
+      "score": 8
+     },
+     {
+      "known": "I want to learn more Lombard",
+      "target": "voeuri imparà pussee lombard",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 3,
+    "type": "A",
+    "known": "often",
+    "target": "spess",
+    "build": [
+     {
+      "known": "to speak often",
+      "target": "parlà spess"
+     },
+     {
+      "known": "to speak Lombard often",
+      "target": "parlà lombard spess"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak Lombard often",
+      "target": "voeuri parlà lombard spess",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to speak with you often",
+      "target": "son dree a provà a parlà con tì spess",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 4,
+    "type": "M",
+    "known": "as often as possible",
+    "target": "pussee spess che se pò",
+    "components": [
+     {
+      "known": "as often as possible",
+      "target": "pussee spess che se pò"
+     }
+    ],
+    "build": [
+     {
+      "known": "to speak as often as possible",
+      "target": "parlà pussee spess che se pò"
+     },
+     {
+      "known": "to learn as often as possible",
+      "target": "imparà pussee spess che se pò"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak Lombard as often as possible",
+      "target": "voeuri parlà lombard pussee spess che se pò",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to speak with you as often as possible",
+      "target": "son dree a provà a parlà con tì pussee spess che se pò",
+      "score": 7
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 4,
+  "known_text": "how to say something in Lombard",
+  "target_text": "come dì quajcoss in lombard",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "A",
+    "known": "to say",
+    "target": "dì",
+    "build": [
+     {
+      "known": "how to say",
+      "target": "come dì"
+     },
+     {
+      "known": "I want to say",
+      "target": "voeuri dì"
+     },
+     {
+      "known": "I'm trying to say",
+      "target": "son dree a provà a dì"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to say more",
+      "target": "voeuri dì pussee",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to say more",
+      "target": "son dree a provà a dì pussee",
+      "score": 7
+     },
+     {
+      "known": "I want to say more with you now",
+      "target": "voeuri dì pussee con tì adess",
+      "score": 7
+     },
+     {
+      "known": "I'm trying to learn how to say more",
+      "target": "son dree a provà a imparà come dì pussee",
+      "score": 8
+     },
+     {
+      "known": "I want to say more often",
+      "target": "voeuri dì pussee spess",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "A",
+    "known": "something",
+    "target": "quajcoss",
+    "build": [
+     {
+      "known": "to say something",
+      "target": "dì quajcoss"
+     },
+     {
+      "known": "how to say something",
+      "target": "come dì quajcoss"
+     },
+     {
+      "known": "to say something now",
+      "target": "dì quajcoss adess"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to say something",
+      "target": "voeuri dì quajcoss",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to say something",
+      "target": "son dree a provà a dì quajcoss",
+      "score": 8
+     },
+     {
+      "known": "I want to say something with you now",
+      "target": "voeuri dì quajcoss con tì adess",
+      "score": 7
+     },
+     {
+      "known": "I want to learn how to say something",
+      "target": "voeuri imparà come dì quajcoss",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to say something more often",
+      "target": "son dree a provà a dì quajcoss pussee spess",
+      "score": 7
+     }
+    ]
+   },
+   {
+    "idx": 3,
+    "type": "M",
+    "known": "in Lombard",
+    "target": "in lombard",
+    "components": [
+     {
+      "known": "in Lombard",
+      "target": "in lombard"
+     }
+    ],
+    "build": [
+     {
+      "known": "to speak in Lombard",
+      "target": "parlà in lombard"
+     },
+     {
+      "known": "to say something in Lombard",
+      "target": "dì quajcoss in lombard"
+     },
+     {
+      "known": "how to say something in Lombard",
+      "target": "come dì quajcoss in lombard"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to say something in Lombard",
+      "target": "voeuri dì quajcoss in lombard",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to say something in Lombard",
+      "target": "son dree a provà a dì quajcoss in lombard",
+      "score": 8
+     },
+     {
+      "known": "I want to learn how to say something in Lombard",
+      "target": "voeuri imparà come dì quajcoss in lombard",
+      "score": 8
+     },
+     {
+      "known": "I want to say something in Lombard with you now",
+      "target": "voeuri dì quajcoss in lombard con tì adess",
+      "score": 7
+     },
+     {
+      "known": "I'm trying to say something in Lombard as often as possible",
+      "target": "son dree a provà a dì quajcoss in lombard pussee spess che se pò",
+      "score": 7
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "course_code": "lmo_for_eng",
+  "seed_number": 5,
+  "known_text": "I'm going to practise speaking with someone else.",
+  "target_text": "faroo pratega de parlà cont on olter",
+  "legos": [
+   {
+    "idx": 1,
+    "type": "M",
+    "known": "I'm going to practise speaking",
+    "target": "faroo pratega de parlà",
+    "components": [
+     {
+      "known": "I'm going to practise speaking",
+      "target": "faroo pratega de parlà"
+     }
+    ],
+    "build": [
+     {
+      "known": "I'm going to practise speaking Lombard",
+      "target": "faroo pratega de parlà lombard"
+     },
+     {
+      "known": "I'm going to practise speaking with you",
+      "target": "faroo pratega de parlà con tì"
+     },
+     {
+      "known": "I'm going to practise speaking often",
+      "target": "faroo pratega de parlà spess"
+     }
+    ],
+    "use": [
+     {
+      "known": "I'm going to practise speaking Lombard now",
+      "target": "faroo pratega de parlà lombard adess",
+      "score": 8
+     },
+     {
+      "known": "I'm going to practise speaking with you now",
+      "target": "faroo pratega de parlà con tì adess",
+      "score": 8
+     },
+     {
+      "known": "I'm going to practise speaking Lombard with you",
+      "target": "faroo pratega de parlà lombard con tì",
+      "score": 8
+     },
+     {
+      "known": "I'm going to practise speaking Lombard more often",
+      "target": "faroo pratega de parlà lombard pussee spess",
+      "score": 8
+     },
+     {
+      "known": "I'm going to practise speaking Lombard as often as possible",
+      "target": "faroo pratega de parlà lombard pussee spess che se pò",
+      "score": 8
+     }
+    ]
+   },
+   {
+    "idx": 2,
+    "type": "M",
+    "known": "with someone else",
+    "target": "cont on olter",
+    "components": [
+     {
+      "known": "with someone else",
+      "target": "cont on olter"
+     }
+    ],
+    "build": [
+     {
+      "known": "to speak with someone else",
+      "target": "parlà cont on olter"
+     },
+     {
+      "known": "to learn with someone else",
+      "target": "imparà cont on olter"
+     },
+     {
+      "known": "I want to speak with someone else",
+      "target": "voeuri parlà cont on olter"
+     }
+    ],
+    "use": [
+     {
+      "known": "I want to speak Lombard with someone else",
+      "target": "voeuri parlà lombard cont on olter",
+      "score": 8
+     },
+     {
+      "known": "I'm going to practise speaking with someone else",
+      "target": "faroo pratega de parlà cont on olter",
+      "score": 8
+     },
+     {
+      "known": "I want to speak Lombard with someone else now",
+      "target": "voeuri parlà lombard cont on olter adess",
+      "score": 8
+     },
+     {
+      "known": "I'm trying to learn how to speak with someone else",
+      "target": "son dree a provà a imparà come parlà cont on olter",
+      "score": 7
+     },
+     {
+      "known": "I'm trying to speak with someone else",
+      "target": "son dree a provà a parlà cont on olter",
+      "score": 8
+     }
+    ]
+   }
+  ]
+ }
+]

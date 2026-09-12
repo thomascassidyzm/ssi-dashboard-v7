@@ -1,0 +1,121 @@
+{
+  "ok": true,
+  "podId": "kor_for_eng:pod-1",
+  "updates": [
+    {
+      "audit_ref": 160,
+      "id": "kor_for_eng:pod-1:SC16-S009",
+      "scene_number": 16,
+      "sentence_number": 9,
+      "global_order": 160,
+      "known_text": "No, we only take cash.",
+      "speaker_before": "Learner",
+      "speaker_after": "Staff"
+    },
+    {
+      "audit_ref": 164,
+      "id": "kor_for_eng:pod-1:SC17-S002",
+      "scene_number": 17,
+      "sentence_number": 2,
+      "global_order": 164,
+      "known_text": "Do you want to pay by cash or card or put it on the room?",
+      "speaker_before": "Learner",
+      "speaker_after": "Staff"
+    },
+    {
+      "audit_ref": 166,
+      "id": "kor_for_eng:pod-1:SC17-S004",
+      "scene_number": 17,
+      "sentence_number": 4,
+      "global_order": 166,
+      "known_text": "Would you like to pay by cash or card or on the room?",
+      "speaker_before": "Learner",
+      "speaker_after": "Staff"
+    },
+    {
+      "audit_ref": 167,
+      "id": "kor_for_eng:pod-1:SC17-S005",
+      "scene_number": 17,
+      "sentence_number": 5,
+      "global_order": 167,
+      "known_text": "Did you want to pay by cash or card?",
+      "speaker_before": "Learner",
+      "speaker_after": "Staff"
+    },
+    {
+      "audit_ref": 171,
+      "id": "kor_for_eng:pod-1:SC17-S009",
+      "scene_number": 17,
+      "sentence_number": 9,
+      "global_order": 171,
+      "known_text": "No, it's a little cold today.",
+      "speaker_before": "Learner",
+      "speaker_after": "Interlocutor"
+    },
+    {
+      "audit_ref": 211,
+      "id": "kor_for_eng:pod-1:SC21-S005",
+      "scene_number": 21,
+      "sentence_number": 5,
+      "global_order": 211,
+      "known_text": "It's down there on the left.",
+      "speaker_before": "Learner",
+      "speaker_after": "Interlocutor"
+    },
+    {
+      "audit_ref": 212,
+      "id": "kor_for_eng:pod-1:SC21-S006",
+      "scene_number": 21,
+      "sentence_number": 6,
+      "global_order": 212,
+      "known_text": "It's down there on the right.",
+      "speaker_before": "Learner",
+      "speaker_after": "Interlocutor"
+    },
+    {
+      "audit_ref": 214,
+      "id": "kor_for_eng:pod-1:SC21-S008",
+      "scene_number": 21,
+      "sentence_number": 8,
+      "global_order": 214,
+      "known_text": "Yes, I said it's over there.",
+      "speaker_before": "Learner",
+      "speaker_after": "Interlocutor"
+    },
+    {
+      "audit_ref": 217,
+      "id": "kor_for_eng:pod-1:SC21-S011",
+      "scene_number": 21,
+      "sentence_number": 11,
+      "global_order": 217,
+      "known_text": "Would you like to order some drinks?",
+      "speaker_before": "Learner",
+      "speaker_after": "Interlocutor"
+    },
+    {
+      "audit_ref": 218,
+      "id": "kor_for_eng:pod-1:SC21-S012",
+      "scene_number": 21,
+      "sentence_number": 12,
+      "global_order": 218,
+      "known_text": "Do you want to order some drinks first?",
+      "speaker_before": "Learner",
+      "speaker_after": "Interlocutor"
+    },
+    {
+      "audit_ref": 219,
+      "id": "kor_for_eng:pod-1:SC21-S013",
+      "scene_number": 21,
+      "sentence_number": 13,
+      "global_order": 219,
+      "known_text": "Did you want something to drink first?",
+      "speaker_before": "Learner",
+      "speaker_after": "Interlocutor"
+    }
+  ],
+  "refusals": [],
+  "matched": 11,
+  "expected": 11,
+  "learnerInScenes15to21": 73,
+  "applied": false
+}

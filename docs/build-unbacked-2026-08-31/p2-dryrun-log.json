@@ -1,0 +1,2934 @@
+[
+ {
+  "id": "por_br_for_eng:S0263L01B04",
+  "course": "por_br_for_eng",
+  "verdict": "DEFECT",
+  "was": "já quem você quer dizer?",
+  "now": "quem você quer dizer?",
+  "action": "would-apply",
+  "why": null,
+  "known": "who do you mean right now?",
+  "zut": "clean"
+ },
+ {
+  "id": "por_br_for_eng:S0289L01B03",
+  "course": "por_br_for_eng",
+  "verdict": "DEFECT",
+  "was": "já pergunto",
+  "now": "pergunto",
+  "action": "would-apply",
+  "why": null,
+  "known": "I ask myself",
+  "zut": "clean"
+ },
+ {
+  "id": "por_for_eng:S0505L02B02",
+  "course": "por_for_eng",
+  "verdict": "DEFECT",
+  "was": "para não ficar para trás agora",
+  "now": "para não ficar para trás",
+  "action": "would-apply",
+  "why": null,
+  "known": "so I don't get left behind",
+  "zut": "clean"
+ },
+ {
+  "id": "por_for_eng:S0563L02B04",
+  "course": "por_for_eng",
+  "verdict": "DEFECT",
+  "was": "eu não teria conseguido continuar mais tempo agora",
+  "now": "eu não teria conseguido continuar mais tempo",
+  "action": "would-apply",
+  "why": null,
+  "known": "I wouldn't have been able to keep going much longer",
+  "zut": "clean"
+ },
+ {
+  "id": "cat_for_eng:S0162L01B02",
+  "course": "cat_for_eng",
+  "verdict": "DEFECT",
+  "was": "en penses d'això avui",
+  "now": "en penses d'això",
+  "action": "would-apply",
+  "why": null,
+  "known": "what do you think about that",
+  "zut": "clean"
+ },
+ {
+  "id": "cat_for_eng:S0175L01B03",
+  "course": "cat_for_eng",
+  "verdict": "DEFECT",
+  "was": "vols fer avui",
+  "now": "vols fer",
+  "action": "would-apply",
+  "why": null,
+  "known": "what do you want to do",
+  "zut": "resolves a pre-existing ZUT fork on \"what do you want to do\"",
+  "duplicate_created": [
+   "cat_for_eng:S0175L01B01"
+  ]
+ },
+ {
+  "id": "cat_for_eng:S0177L01B02",
+  "course": "cat_for_eng",
+  "verdict": "DEFECT",
+  "was": "on vol anar avui",
+  "now": "on vol anar",
+  "action": "would-apply",
+  "why": null,
+  "known": "she wants to go somewhere",
+  "zut": "clean"
+ },
+ {
+  "id": "cat_for_eng:S0179L01B03",
+  "course": "cat_for_eng",
+  "verdict": "DEFECT",
+  "was": "vas a fer avui",
+  "now": "vas a fer",
+  "action": "would-apply",
+  "why": null,
+  "known": "what are you going to do",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0200L03B04",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "بدون يتأكدوا إننا نخلص كل شي بالوقت بكرا",
+  "now": "بدون يتأكدوا إننا نخلص كل شي بالوقت",
+  "action": "would-apply",
+  "why": null,
+  "known": "want to make sure that we finish everything in time",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0202L02B02",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "كيف يجاوب على السؤال بكرا",
+  "now": "كيف يجاوب على السؤال",
+  "action": "would-apply",
+  "why": null,
+  "known": "how to answer the question",
+  "zut": "resolves a pre-existing ZUT fork on \"how to answer the question\"",
+  "duplicate_created": [
+   "ara_lb_for_eng:S0202L02B01"
+  ]
+ },
+ {
+  "id": "ara_lb_for_eng:S0204L01B02",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "كنت بدي منها تكون هون بكرا",
+  "now": "كنت بدي منها تكون هون",
+  "action": "would-apply",
+  "why": null,
+  "known": "I wanted her to come here",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0205L03B04",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "نسيت الكلمة اللي كنت عم أحاول أحكيها بكرا",
+  "now": "نسيت الكلمة اللي كنت عم أحاول أحكيها",
+  "action": "would-apply",
+  "why": null,
+  "known": "I forgot the word I was trying to say",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0207L02B03",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "عملت شو كان لازم تعملو بكرا",
+  "now": "عملت شو كان لازم تعملو",
+  "action": "would-apply",
+  "why": null,
+  "known": "you did what you needed to do",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0208L02B03",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "ما كنت بدي أسألك كيف تقولها بكرا",
+  "now": "ما كنت بدي أسألك كيف تقولها",
+  "action": "would-apply",
+  "why": null,
+  "known": "I didn't want to ask you how to say it",
+  "zut": "resolves a pre-existing ZUT fork on \"I didn't want to ask you how to say it\"",
+  "duplicate_created": [
+   "ara_lb_for_eng:S0208L02U01"
+  ]
+ },
+ {
+  "id": "ara_lb_for_eng:S0210L03B02",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "إننا لازم نناقش المشكلة بكرا",
+  "now": "إننا لازم نناقش المشكلة",
+  "action": "would-apply",
+  "why": null,
+  "known": "that we need to discuss the problem",
+  "zut": "resolves a pre-existing ZUT fork on \"that we need to discuss the problem\"",
+  "duplicate_created": [
+   "ara_lb_for_eng:S0210L03B01"
+  ]
+ },
+ {
+  "id": "ara_lb_for_eng:S0210L03B04",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "بعرف إننا لازم نناقش المشكلة بكرا",
+  "now": "بعرف إننا لازم نناقش المشكلة",
+  "action": "would-apply",
+  "why": null,
+  "known": "I know we need to discuss the problem",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0211L02B03",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "قالولنا إنون ما بدون يشرحوا بكرا",
+  "now": "قالولنا إنون ما بدون يشرحوا",
+  "action": "would-apply",
+  "why": null,
+  "known": "they told us they didn't want to explain",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0212L02B03",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "كانوا بدون يطلبوا مساعدة بكرا",
+  "now": "كانوا بدون يطلبوا مساعدة",
+  "action": "would-apply",
+  "why": null,
+  "known": "they wanted to ask for help",
+  "zut": "resolves a pre-existing ZUT fork on \"they wanted to ask for help\"",
+  "duplicate_created": [
+   "ara_lb_for_eng:S0212L02U01"
+  ]
+ },
+ {
+  "id": "ara_lb_for_eng:S0213L02B03",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "قالولنا شو عم يحاولوا يحققوا بكرا",
+  "now": "قالولنا شو عم يحاولوا يحققوا",
+  "action": "would-apply",
+  "why": null,
+  "known": "we told them what they're trying to achieve",
+  "zut": "clean"
+ },
+ {
+  "id": "ara_lb_for_eng:S0216L02B04",
+  "course": "ara_lb_for_eng",
+  "verdict": "DEFECT",
+  "was": "منيح إنو شفت شوية أصحاب بكرا",
+  "now": "منيح إنو شفت شوية أصحاب",
+  "action": "would-apply",
+  "why": null,
+  "known": "I'm glad I saw a few friends",
+  "zut": "clean"
+ },
+ {
+  "id": "rus_for_eng:S0270L01B03",
+  "course": "rus_for_eng",
+  "verdict": "DEFECT",
+  "was": "я опоздаю сейчас",
+  "now": "я опоздаю",
+  "action": "would-apply",
+  "why": null,
+  "known": "going to be late",
+  "zut": "clean"
+ },
+ {
+  "id": "rus_for_eng:S0286L02B03",
+  "course": "rus_for_eng",
+  "verdict": "DEFECT",
+  "was": "люди там",
+  "now": "люди",
+  "action": "would-apply",
+  "why": null,
+  "known": "old people",
+  "zut": "clean"
+ },
+ {
+  "id": "srp_for_eng:S0128L02B02",
+  "course": "srp_for_eng",
+  "verdict": "DEFECT",
+  "was": "neko koga sam ranije znao sada",
+  "now": "neko koga sam ranije znao",
+  "action": "would-apply",
+  "why": null,
+  "known": "I know someone like this",
+  "zut": "clean"
+ },
+ {
+  "id": "srp_for_eng:S0131L02B03",
+  "course": "srp_for_eng",
+  "verdict": "DEFECT",
+  "was": "vrte po glavi sada",
+  "now": "vrte po glavi",
+  "action": "would-apply",
+  "why": null,
+  "known": "going around and around",
+  "zut": "clean"
+ },
+ {
+  "id": "srp_for_eng:S0141L01B02",
+  "course": "srp_for_eng",
+  "verdict": "DEFECT",
+  "was": "nema problema sada",
+  "now": "nema problema",
+  "action": "would-apply",
+  "why": null,
+  "known": "no problem at all",
+  "zut": "clean"
+ },
+ {
+  "id": "srp_for_eng:S0147L03B03",
+  "course": "srp_for_eng",
+  "verdict": "DEFECT",
+  "was": "me je videla jutros sada",
+  "now": "me je videla jutros",
+  "action": "would-apply",
+  "why": null,
+  "known": "she saw me this morning",
+  "zut": "resolves a pre-existing ZUT fork on \"she saw me this morning\"",
+  "duplicate_created": [
+   "srp_for_eng:S0147L03U03"
+  ]
+ },
+ {
+  "id": "srp_for_eng:S0154L01B02",
+  "course": "srp_for_eng",
+  "verdict": "DEFECT",
+  "was": "u subotu sada",
+  "now": "u subotu",
+  "action": "would-apply",
+  "why": null,
+  "known": "saturday today",
+  "zut": "clean"
+ },
+ {
+  "id": "srp_for_eng:S0174L01B03",
+  "course": "srp_for_eng",
+  "verdict": "DEFECT",
+  "was": "razumeš šta govorim sada",
+  "now": "razumeš šta govorim",
+  "action": "would-apply",
+  "why": null,
+  "known": "you understand what I say",
+  "zut": "clean"
+ },
+ {
+  "id": "srp_for_eng:S0181L03B04",
+  "course": "srp_for_eng",
+  "verdict": "DEFECT",
+  "was": "idem kod doktora sada",
+  "now": "idem kod doktora",
+  "action": "would-apply",
+  "why": null,
+  "known": "i'll go to the doctor's",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0083L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I agree with you today",
+  "now": "I agree with you",
+  "action": "would-apply",
+  "why": null,
+  "known": "동의해요 당신",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0083L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I agree with what you said about your friend today",
+  "now": "I agree with what you said about your friend",
+  "action": "would-apply",
+  "why": null,
+  "known": "당신이 말한 것에 동의해요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0084L01B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I don't agree about it today",
+  "now": "I don't agree about it",
+  "action": "would-apply",
+  "why": null,
+  "known": "그것에 대해 동의하지 않아요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0087L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "they are people I don't know today",
+  "now": "they are people I don't know",
+  "action": "would-apply",
+  "why": null,
+  "known": "제가 모르는 사람들이에요",
+  "zut": "resolves a pre-existing ZUT fork on \"제가 모르는 사람들이에요\"",
+  "duplicate_created": [
+   "eng_for_kor:S0087L01B01"
+  ]
+ },
+ {
+  "id": "eng_for_kor:S0091L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "it's difficult to think quickly enough today",
+  "now": "it's difficult to think quickly enough",
+  "action": "would-apply",
+  "why": null,
+  "known": "충분히 빠르게 생각하는 것은 어려워요",
+  "zut": "resolves a pre-existing ZUT fork on \"충분히 빠르게 생각하는 것은 어려워요\"",
+  "duplicate_created": [
+   "eng_for_kor:S0091L02U01"
+  ]
+ },
+ {
+  "id": "eng_for_kor:S0094L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "this is the only way it will work today",
+  "now": "this is the only way it will work",
+  "action": "would-apply",
+  "why": null,
+  "known": "작동하는 유일한 방법이에요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0098L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I should consider something different today",
+  "now": "I should consider something different",
+  "action": "would-apply",
+  "why": null,
+  "known": "다른 것을 고려해야 해요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0098L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I should consider playing something else today",
+  "now": "I should consider playing something else",
+  "action": "would-apply",
+  "why": null,
+  "known": "다른 것을 하는 것을 고려해야",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0101L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I'm enjoying finding out more today",
+  "now": "I'm enjoying finding out more",
+  "action": "would-apply",
+  "why": null,
+  "known": "더 알아가는 것을 즐기고 있어요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0102L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "we're trying to say that it's not like that today",
+  "now": "we're trying to say that it's not like that",
+  "action": "would-apply",
+  "why": null,
+  "known": "그렇지 않다고 말하려고 해요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0103L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "we're not trying to hear many more words today",
+  "now": "we're not trying to hear many more words",
+  "action": "would-apply",
+  "why": null,
+  "known": "더 많은 단어를 들으려는 것이 아니에요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0105L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "that is why he didn't know the answer today",
+  "now": "that is why he didn't know the answer",
+  "action": "would-apply",
+  "why": null,
+  "known": "그가 답을 몰랐던 이유예요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0106L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "feel happy today",
+  "now": "feel happy",
+  "action": "would-apply",
+  "why": null,
+  "known": "행복하다고 느껴요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0107L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "we hoped to see what you were doing today",
+  "now": "we hoped to see what you were doing",
+  "action": "would-apply",
+  "why": null,
+  "known": "당신이 무엇을 하고 있는지 보기를 바랐어요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0108L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "we didn't hope to wake in the middle of the night today",
+  "now": "we didn't hope to wake in the middle of the night",
+  "action": "would-apply",
+  "why": null,
+  "known": "밤 중간에 깨기를 바라지 않았어요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0113L01B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I can't remember what you said today",
+  "now": "I can't remember what you said",
+  "action": "would-apply",
+  "why": null,
+  "known": "당신이 말한 것을 기억할 수 없어요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0115L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I don't feel as if I'm ready to have a conversation today",
+  "now": "I don't feel as if I'm ready to have a conversation",
+  "action": "would-apply",
+  "why": null,
+  "known": "대화할 준비가 된 것 같지 않아요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0116L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "isn't the best choice today",
+  "now": "isn't the best choice",
+  "action": "would-apply",
+  "why": null,
+  "known": "좋은 선택이 아니에요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0152L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "if I had known I would have done it differently today",
+  "now": "if I had known I would have done it differently",
+  "action": "would-apply",
+  "why": null,
+  "known": "알았다면 다르게",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0153L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I wouldn't have said it in exactly the same way today",
+  "now": "I wouldn't have said it in exactly the same way",
+  "action": "would-apply",
+  "why": null,
+  "known": "말하지 않았을 거예요, 똑같은 방식으로요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0012L03B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "what's going to happen now?",
+  "now": "what's going to happen?",
+  "action": "would-apply",
+  "why": null,
+  "known": "무슨 일이 일어날지 알고 싶지 않아요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0045L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "everything now",
+  "now": "everything",
+  "action": "would-apply",
+  "why": null,
+  "known": "모든 것을",
+  "zut": "resolves a pre-existing ZUT fork on \"모든 것을\"",
+  "duplicate_created": [
+   "eng_for_kor:S0045L01B01"
+  ]
+ },
+ {
+  "id": "eng_for_kor:S0082L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I'm not going to wait for you now",
+  "now": "I'm not going to wait for you",
+  "action": "would-apply",
+  "why": null,
+  "known": "저는 기다리지 않을 거예요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0098L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "it's difficult playing something else now",
+  "now": "it's difficult playing something else",
+  "action": "would-apply",
+  "why": null,
+  "known": "다른 것을 하는 것은 어려워요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0099L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "you should ask yourself why it's not working now",
+  "now": "you should ask yourself why it's not working",
+  "action": "would-apply",
+  "why": null,
+  "known": "자신에게 왜 작동하지 않는지 물어봐야 해요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0100L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "you shouldn't worry about something similar now",
+  "now": "you shouldn't worry about something similar",
+  "action": "would-apply",
+  "why": null,
+  "known": "비슷한 것에 대해 걱정하지 않아도 돼요",
+  "zut": "resolves a pre-existing ZUT fork on \"비슷한 것에 대해 걱정하지 않아도 돼요\"",
+  "duplicate_created": [
+   "eng_for_kor:S0100L02U05"
+  ]
+ },
+ {
+  "id": "eng_for_kor:S0102L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I think that it's not like that now",
+  "now": "I think that it's not like that",
+  "action": "would-apply",
+  "why": null,
+  "known": "그렇지 않다고 생각해요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0114L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I feel as if I'm doing worse today now",
+  "now": "I feel as if I'm doing worse today",
+  "action": "would-apply",
+  "why": null,
+  "known": "오늘 더 못하고 있는 것 같아요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0114L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I feel as if I'm doing worse than yesterday now",
+  "now": "I feel as if I'm doing worse than yesterday",
+  "action": "would-apply",
+  "why": null,
+  "known": "어제보다 더 못하고 있는 것 같아요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0115L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I don't feel as if I'm ready now",
+  "now": "I don't feel as if I'm ready",
+  "action": "would-apply",
+  "why": null,
+  "known": "준비가 된 것 같지 않아요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0118L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I feel better than I felt yesterday now",
+  "now": "I feel better than I felt yesterday",
+  "action": "would-apply",
+  "why": null,
+  "known": "어제 느꼈던 것보다 더 나아졌어요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0186L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "talk about something different now",
+  "now": "talk about something different",
+  "action": "would-apply",
+  "why": null,
+  "known": "다른 것에 대해 이야기하고 싶어요, 그렇죠?",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0189L01B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "that's a good idea now",
+  "now": "that's a good idea",
+  "action": "would-apply",
+  "why": null,
+  "known": "좋은 생각이에요, 그렇죠?",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0190L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "questions now",
+  "now": "questions",
+  "action": "would-apply",
+  "why": null,
+  "known": "질문이요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0197L01B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "my son now",
+  "now": "my son",
+  "action": "would-apply",
+  "why": null,
+  "known": "제 아들이요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0198L01B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "my daughter now",
+  "now": "my daughter",
+  "action": "would-apply",
+  "why": null,
+  "known": "제 딸이요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0202L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "nobody now",
+  "now": "nobody",
+  "action": "would-apply",
+  "why": null,
+  "known": "아무도요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0202L02B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "the question now",
+  "now": "the question",
+  "action": "would-apply",
+  "why": null,
+  "known": "그 질문이요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0204L01B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "arrangements now",
+  "now": "arrangements",
+  "action": "would-apply",
+  "why": null,
+  "known": "준비요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0205L01B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "I've forgotten now",
+  "now": "I've forgotten",
+  "action": "would-apply",
+  "why": null,
+  "known": "저는 잊어버렸어요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0209L01B03",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "group now",
+  "now": "group",
+  "action": "would-apply",
+  "why": null,
+  "known": "그룹이요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0209L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "meeting as a group now",
+  "now": "meeting as a group",
+  "action": "would-apply",
+  "why": null,
+  "known": "그룹으로 만나는 데 좋아요",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_kor:S0210L02B02",
+  "course": "eng_for_kor",
+  "verdict": "DEFECT",
+  "was": "they think that now",
+  "now": "they think that",
+  "action": "would-apply",
+  "why": null,
+  "known": "그들은 생각해요",
+  "zut": "resolves a pre-existing ZUT fork on \"그들은 생각해요\"",
+  "duplicate_created": [
+   "eng_for_kor:S0210L02B01"
+  ]
+ },
+ {
+  "id": "lav_for_eng:S0128L01B02",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "šodien agrāk",
+  "now": "agrāk",
+  "action": "would-apply",
+  "why": null,
+  "known": "earlier",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0141L02B03",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "viss ir labi šodien",
+  "now": "viss ir labi",
+  "action": "would-apply",
+  "why": null,
+  "known": "everything is good",
+  "zut": "resolves a pre-existing ZUT fork on \"everything is good\"",
+  "duplicate_created": [
+   "lav_for_eng:S0141L02U01"
+  ]
+ },
+ {
+  "id": "lav_for_eng:S0165L01B02",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "vai tas ir patiess šodien",
+  "now": "vai tas ir patiess",
+  "action": "would-apply",
+  "why": null,
+  "known": "is it really true",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0205L02B01",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "mēģināju šodien",
+  "now": "mēģināju",
+  "action": "would-apply",
+  "why": null,
+  "known": "I was trying",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0207L02B03",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "kas tev bija jādara šodien",
+  "now": "kas tev bija jādara",
+  "action": "would-apply",
+  "why": null,
+  "known": "what you needed to",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0209L02B02",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "tiekoties šodien",
+  "now": "tiekoties",
+  "action": "would-apply",
+  "why": null,
+  "known": "by meeting",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0214L02B02",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "nedēļas nogali šodien",
+  "now": "nedēļas nogali",
+  "action": "would-apply",
+  "why": null,
+  "known": "at the weekend",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0217L02B01",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "vienu šodien",
+  "now": "vienu",
+  "action": "would-apply",
+  "why": null,
+  "known": "one glass",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0217L03B01",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "divas šodien",
+  "now": "divas",
+  "action": "would-apply",
+  "why": null,
+  "known": "two glasses",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0218L01B02",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "svētdienā šodien",
+  "now": "svētdienā",
+  "action": "would-apply",
+  "why": null,
+  "known": "last Sunday",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0222L01B03",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "mēģina man pateikt šodien",
+  "now": "mēģina man pateikt",
+  "action": "would-apply",
+  "why": null,
+  "known": "trying to tell me",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0222L02B03",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "ko viņš grib šodien",
+  "now": "ko viņš grib",
+  "action": "would-apply",
+  "why": null,
+  "known": "what he wants now",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0226L01B02",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "vīrietis šodien",
+  "now": "vīrietis",
+  "action": "would-apply",
+  "why": null,
+  "known": "this man",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0228L01B03",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "tikko sācis vingrināties šodien",
+  "now": "tikko sācis vingrināties",
+  "action": "would-apply",
+  "why": null,
+  "known": "just started practising",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0239L01B03",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "manai mammai šodien",
+  "now": "manai mammai",
+  "action": "would-apply",
+  "why": null,
+  "known": "to my mother",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0240L01B03",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "manam tēvam šodien",
+  "now": "manam tēvam",
+  "action": "would-apply",
+  "why": null,
+  "known": "to my father",
+  "zut": "clean"
+ },
+ {
+  "id": "lav_for_eng:S0243L02B02",
+  "course": "lav_for_eng",
+  "verdict": "DEFECT",
+  "was": "to pašu šodien",
+  "now": "to pašu",
+  "action": "would-apply",
+  "why": null,
+  "known": "the same one",
+  "zut": "clean"
+ },
+ {
+  "id": "fra_for_eng:S0376L03B03",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "was": "nulle part là du tout",
+  "now": "nulle part du tout",
+  "action": "would-apply",
+  "why": null,
+  "known": "nowhere near that",
+  "zut": "clean"
+ },
+ {
+  "id": "fra_for_eng:S0402L02B03",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "was": "s'arrêter là",
+  "now": "s'arrêter",
+  "action": "would-apply",
+  "why": null,
+  "known": "we can stop",
+  "zut": "clean"
+ },
+ {
+  "id": "fra_for_eng:S0542L02B02",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "was": "chaque fois que tu te sens là",
+  "now": "chaque fois que tu te sens",
+  "action": "would-apply",
+  "why": null,
+  "known": "whenever you feel it",
+  "zut": "clean"
+ },
+ {
+  "id": "fra_for_eng:S0396L08B03",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "was": "il soit prêt maintenant",
+  "now": "il soit prêt",
+  "action": "would-apply",
+  "why": null,
+  "known": "she must be ready",
+  "zut": "clean"
+ },
+ {
+  "id": "fra_for_eng:S0450L04B03",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "was": "eux-mêmes maintenant",
+  "now": "eux-mêmes",
+  "action": "would-apply",
+  "why": null,
+  "known": "all by themselves",
+  "zut": "clean"
+ },
+ {
+  "id": "fra_for_eng:S0549L02B02",
+  "course": "fra_for_eng",
+  "verdict": "DEFECT",
+  "was": "parce que je dois être là maintenant",
+  "now": "parce que je dois être là",
+  "action": "would-apply",
+  "why": null,
+  "known": "because I have got to be right",
+  "zut": "clean"
+ },
+ {
+  "id": "fas_for_eng:S0043L04B03",
+  "course": "fas_for_eng",
+  "verdict": "DEFECT",
+  "was": "داشتم به جواب دادن فکر نمی‌کردم ولی",
+  "now": "داشتم به جواب دادن فکر نمی‌کردم",
+  "action": "would-apply",
+  "why": null,
+  "known": "I was not thinking about answering at all",
+  "zut": "clean"
+ },
+ {
+  "id": "fas_for_eng:S0045L02B02",
+  "course": "fas_for_eng",
+  "verdict": "DEFECT",
+  "was": "همه چیز ولی",
+  "now": "همه چیز",
+  "action": "would-apply",
+  "why": null,
+  "known": "not all things (fragment)",
+  "zut": "clean"
+ },
+ {
+  "id": "fas_for_eng:S0045L03B03",
+  "course": "fas_for_eng",
+  "verdict": "DEFECT",
+  "was": "می‌خوام همه چیز رو بدونم ولی",
+  "now": "می‌خوام همه چیز رو بدونم",
+  "action": "would-apply",
+  "why": null,
+  "known": "want to know everything (fragment)",
+  "zut": "clean"
+ },
+ {
+  "id": "fas_for_eng:S0048L02B02",
+  "course": "fas_for_eng",
+  "verdict": "DEFECT",
+  "was": "برام مهم نیست ولی",
+  "now": "برام مهم نیست",
+  "action": "would-apply",
+  "why": null,
+  "known": "for me not important (fragment)",
+  "zut": "clean"
+ },
+ {
+  "id": "fas_for_eng:S0048L03B04",
+  "course": "fas_for_eng",
+  "verdict": "DEFECT",
+  "was": "فکر می‌کنم برام مهم نیست که اشتباه کنم ولی",
+  "now": "فکر می‌کنم برام مهم نیست که اشتباه کنم",
+  "action": "would-apply",
+  "why": null,
+  "known": "thinking doesn't matter that I make mistakes",
+  "zut": "clean"
+ },
+ {
+  "id": "fas_for_eng:S0048L03B03",
+  "course": "fas_for_eng",
+  "verdict": "DEFECT",
+  "was": "چون برام مهم نیست که اشتباه کنم ولی",
+  "now": "چون برام مهم نیست که اشتباه کنم",
+  "action": "would-apply",
+  "why": null,
+  "known": "because doesn't matter that I make mistakes",
+  "zut": "clean"
+ },
+ {
+  "id": "fas_for_eng:S0048L03B02",
+  "course": "fas_for_eng",
+  "verdict": "DEFECT",
+  "was": "برام مهم نیست که اشتباه کنم ولی",
+  "now": "برام مهم نیست که اشتباه کنم",
+  "action": "would-apply",
+  "why": null,
+  "known": "doesn't matter that mistakes (fragment)",
+  "zut": "clean"
+ },
+ {
+  "id": "eus_for_eng:S0222L03B02",
+  "course": "eus_for_eng",
+  "verdict": "DEFECT",
+  "was": "zerbait esaten ari da niri gero",
+  "now": "zerbait esaten ari da niri",
+  "action": "would-apply",
+  "why": null,
+  "known": "he's been telling me something",
+  "zut": "clean"
+ },
+ {
+  "id": "eus_for_eng:S0283L03B03",
+  "course": "eus_for_eng",
+  "verdict": "DEFECT",
+  "was": "zure lagunen artetik nork hitz egiten du euskaraz gero?",
+  "now": "zure lagunen artetik nork hitz egiten du euskaraz?",
+  "action": "would-apply",
+  "why": null,
+  "known": "who among your friends speaks Basque?",
+  "zut": "clean"
+ },
+ {
+  "id": "mlt_for_eng:S0037L02B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "bdejt naħseb dwaru miegħek",
+  "now": "bdejt naħseb dwaru",
+  "action": "would-apply",
+  "why": null,
+  "known": "I started to think about it",
+  "zut": "resolves a pre-existing ZUT fork on \"I started to think about it\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0037L02U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0038L03B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "ilhom madwar ġimgħa nitgħallem miegħek",
+  "now": "ilhom madwar ġimgħa nitgħallem",
+  "action": "would-apply",
+  "why": null,
+  "known": "for about a week learning",
+  "zut": "clean"
+ },
+ {
+  "id": "mlt_for_eng:S0040L02B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "kif tħossok bħalissa miegħek",
+  "now": "kif tħossok bħalissa",
+  "action": "would-apply",
+  "why": null,
+  "known": "how do you feel at the moment",
+  "zut": "clean"
+ },
+ {
+  "id": "mlt_for_eng:S0041L01B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "inħossni ftit għajjien/għajjiena miegħek",
+  "now": "inħossni ftit għajjien/għajjiena",
+  "action": "would-apply",
+  "why": null,
+  "known": "I feel a little tired",
+  "zut": "resolves a pre-existing ZUT fork on \"I feel a little tired\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0041L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0042L01B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "kont nibda nitkellem il-Malti miegħek",
+  "now": "kont nibda nitkellem il-Malti",
+  "action": "would-apply",
+  "why": null,
+  "known": "I was starting to speak Maltese",
+  "zut": "resolves a pre-existing ZUT fork on \"I was starting to speak Maltese\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0042L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0043L01B02",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "ma kontx nitkellem il-Malti miegħek",
+  "now": "ma kontx nitkellem il-Malti",
+  "action": "would-apply",
+  "why": null,
+  "known": "I wasn't speaking Maltese",
+  "zut": "resolves a pre-existing ZUT fork on \"I wasn't speaking Maltese\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0043L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0045L01B04",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "m'għandix bżonn nispjega x'qiegħed ngħid miegħek",
+  "now": "m'għandix bżonn nispjega x'qiegħed ngħid",
+  "action": "would-apply",
+  "why": null,
+  "known": "I don't need to explain what I mean",
+  "zut": "resolves a pre-existing ZUT fork on \"I don't need to explain what I mean\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0045L01U03"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0049L01B02",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "hija hekk meta jkunu hawn nies oħra miegħek",
+  "now": "hija hekk meta jkunu hawn nies oħra",
+  "action": "would-apply",
+  "why": null,
+  "known": "it's like this when other people are here",
+  "zut": "resolves a pre-existing ZUT fork on \"it's like this when other people are here\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0049L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0051L02B03",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "inħobb nagħmel affarijiet interessanti mal-ħbieb tiegħi miegħek",
+  "now": "inħobb nagħmel affarijiet interessanti mal-ħbieb tiegħi",
+  "action": "would-apply",
+  "why": null,
+  "known": "I enjoy doing things with my friends",
+  "zut": "clean"
+ },
+ {
+  "id": "mlt_for_eng:S0053L01B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "riedet taqra l-istorja miegħek",
+  "now": "riedet taqra l-istorja",
+  "action": "would-apply",
+  "why": null,
+  "known": "she wanted to read the story",
+  "zut": "resolves a pre-existing ZUT fork on \"she wanted to read the story\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0053L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0053L03B02",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "riedet tqiegħed l-ittra miegħek",
+  "now": "riedet tqiegħed l-ittra",
+  "action": "would-apply",
+  "why": null,
+  "known": "she wanted to put the letter",
+  "zut": "resolves a pre-existing ZUT fork on \"she wanted to put the letter\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0053L03U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0055L02B02",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "ma raqadtx tajjeb mill-bieraħ filgħaxija miegħek",
+  "now": "ma raqadtx tajjeb mill-bieraħ filgħaxija",
+  "action": "would-apply",
+  "why": null,
+  "known": "I didn't sleep well last night",
+  "zut": "resolves a pre-existing ZUT fork on \"I didn't sleep well last night\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0055L02U02"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0056L01B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "sabiex nitkellem il-Malti miegħek",
+  "now": "sabiex nitkellem il-Malti",
+  "action": "would-apply",
+  "why": null,
+  "known": "so that I can speak Maltese",
+  "zut": "resolves a pre-existing ZUT fork on \"so that I can speak Maltese\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0056L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0061L02B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "tista' tgħid dak mill-ġdid miegħek",
+  "now": "tista' tgħid dak mill-ġdid",
+  "action": "would-apply",
+  "why": null,
+  "known": "can you say it again",
+  "zut": "clean"
+ },
+ {
+  "id": "mlt_for_eng:S0063L01B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "inti ċert miegħek",
+  "now": "inti ċert",
+  "action": "would-apply",
+  "why": null,
+  "known": "are you sure",
+  "zut": "resolves a pre-existing ZUT fork on \"are you sure\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0165L02B02"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0063L02B02",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "jimpurtakx tgħinni miegħek",
+  "now": "jimpurtakx tgħinni",
+  "action": "would-apply",
+  "why": null,
+  "known": "you don't mind helping me",
+  "zut": "resolves a pre-existing ZUT fork on \"you don't mind helping me\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0063L02U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0064L01B02",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "titgħallem il-Malti mhux faċli miegħek",
+  "now": "titgħallem il-Malti mhux faċli",
+  "action": "would-apply",
+  "why": null,
+  "known": "learning Maltese is not easy",
+  "zut": "resolves a pre-existing ZUT fork on \"learning Maltese is not easy\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0064L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0066L01B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "mhux diffiċli li nitkellem il-Malti miegħek",
+  "now": "mhux diffiċli li nitkellem il-Malti",
+  "action": "would-apply",
+  "why": null,
+  "known": "it's not difficult to speak Maltese",
+  "zut": "resolves a pre-existing ZUT fork on \"it's not difficult to speak Maltese\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0066L01U01"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0070L01B02",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "ma rieditx taqra l-istorja miegħek",
+  "now": "ma rieditx taqra l-istorja",
+  "action": "would-apply",
+  "why": null,
+  "known": "she didn't want to read the story",
+  "zut": "resolves a pre-existing ZUT fork on \"she didn't want to read the story\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0070L01U02"
+  ]
+ },
+ {
+  "id": "mlt_for_eng:S0070L02B01",
+  "course": "mlt_for_eng",
+  "verdict": "DEFECT",
+  "was": "ma rieditx tgħidli miegħek",
+  "now": "ma rieditx tgħidli",
+  "action": "would-apply",
+  "why": null,
+  "known": "she didn't want to tell me",
+  "zut": "resolves a pre-existing ZUT fork on \"she didn't want to tell me\"",
+  "duplicate_created": [
+   "mlt_for_eng:S0070L02U01"
+  ]
+ },
+ {
+  "id": "eng_for_pan:S0035L01B01",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "was": "this afternoon",
+  "now": "afternoon",
+  "action": "would-apply",
+  "why": null,
+  "known": "ਦੁਪਹਿਰ ਨੂੰ",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_pan:S0039L05B02",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "was": "but I'm a little tired here",
+  "now": "but I'm a little tired",
+  "action": "would-apply",
+  "why": null,
+  "known": "ਪਰ ਮੈਂ ਥੋੜਾ ਥੱਕਿਆ ਹਾਂ ਇਸ ਸਵੇਰੇ",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_pan:S0040L02B02",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "was": "how do you feel here?",
+  "now": "how do you feel?",
+  "action": "would-apply",
+  "why": null,
+  "known": "ਕਿਵੇਂ ਮਹਿਸੂਸ ਕਰਦੇ ਹੋ ਇਸ ਵੇਲੇ?",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_pan:S0041L03B03",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "was": "I'm starting to feel tired here",
+  "now": "I'm starting to feel tired",
+  "action": "would-apply",
+  "why": null,
+  "known": "ਥੱਕਣਾ ਸ਼ੁਰੂ ਹੋ ਰਿਹਾ ਹਾਂ ਇਸ ਵੇਲੇ",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_pan:S0196L02B02",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "was": "the latest idea here",
+  "now": "the latest idea",
+  "action": "would-apply",
+  "why": null,
+  "known": "ਸਭ ਤੋਂ ਨਵਾਂ ਵਿਚਾਰ ਸੁਣਿਆ",
+  "zut": "clean"
+ },
+ {
+  "id": "eng_for_pan:S0220L01B02",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "was": "television here",
+  "now": "television",
+  "action": "would-apply",
+  "why": null,
+  "known": "ਟੀਵੀ ਦੇਖਣਾ",
+  "zut": "pre-existing ZUT fork on \"ਟੀਵੀ ਦੇਖਣਾ\" untouched by this edit"
+ },
+ {
+  "id": "eng_for_pan:S0242L01B02",
+  "course": "eng_for_pan",
+  "verdict": "DEFECT",
+  "was": "give her more time here",
+  "now": "give her more time",
+  "action": "would-apply",
+  "why": null,
+  "known": "ਉਸਨੂੰ ਹੋਰ ਸਮਾਂ ਦੇਣਾ ਚਾਹੀਦਾ",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0068L01B02",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "dè tha thu a' lorg an-diugh",
+  "now": "dè tha thu a' lorg",
+  "action": "would-apply",
+  "why": null,
+  "known": "what are you looking for",
+  "zut": "resolves a pre-existing ZUT fork on \"what are you looking for\"",
+  "duplicate_created": [
+   "gla_for_eng:S0068L01B01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0069L02B02",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cùram a ghabhail an-diugh",
+  "now": "cùram a ghabhail",
+  "action": "would-apply",
+  "why": null,
+  "known": "to look after",
+  "zut": "resolves a pre-existing ZUT fork on \"to look after\"",
+  "duplicate_created": [
+   "gla_for_eng:S0069L02B01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0106L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil feum oirnn sgur an-diugh",
+  "now": "chan eil feum oirnn sgur",
+  "action": "would-apply",
+  "why": null,
+  "known": "we don't need to stop",
+  "zut": "resolves a pre-existing ZUT fork on \"we don't need to stop\"",
+  "duplicate_created": [
+   "gla_for_eng:S0106L01U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0165L03B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil mi cinnteach a bheil e fìor an-diugh",
+  "now": "chan eil mi cinnteach a bheil e fìor",
+  "action": "would-apply",
+  "why": null,
+  "known": "I'm not sure if it's true but it's interesting",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0175L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "madainn na Sàbaid an-diugh",
+  "now": "madainn na Sàbaid",
+  "action": "would-apply",
+  "why": null,
+  "known": "on Sunday morning",
+  "zut": "pre-existing ZUT fork on \"on Sunday morning\" untouched by this edit"
+ },
+ {
+  "id": "gla_for_eng:S0176L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "a bheil e comasach dha cuideachadh an-diugh",
+  "now": "a bheil e comasach dha cuideachadh",
+  "action": "would-apply",
+  "why": null,
+  "known": "if he's able to help",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0179L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "feasgar na Sàbaid an-diugh",
+  "now": "feasgar na Sàbaid",
+  "action": "would-apply",
+  "why": null,
+  "known": "on Sunday afternoon",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0184L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chunnaic mi iad san oifis an-diugh",
+  "now": "chunnaic mi iad san oifis",
+  "action": "would-apply",
+  "why": null,
+  "known": "I saw them in the office",
+  "zut": "resolves a pre-existing ZUT fork on \"I saw them in the office\"",
+  "duplicate_created": [
+   "gla_for_eng:S0184L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0196L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "an cuala tu am beachd as ùire an-diugh",
+  "now": "an cuala tu am beachd as ùire",
+  "action": "would-apply",
+  "why": null,
+  "known": "heard the latest idea",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0201L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "bha sinn ag iarraidh fios fhaighinn an-diugh",
+  "now": "bha sinn ag iarraidh fios fhaighinn",
+  "action": "would-apply",
+  "why": null,
+  "known": "we wanted to get knowledge",
+  "zut": "resolves a pre-existing ZUT fork on \"we wanted to get knowledge\"",
+  "duplicate_created": [
+   "gla_for_eng:S0201L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0216L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chunnaic mi beagan charaidean an-diugh",
+  "now": "chunnaic mi beagan charaidean",
+  "action": "would-apply",
+  "why": null,
+  "known": "I saw a few friends",
+  "zut": "resolves a pre-existing ZUT fork on \"I saw a few friends\"",
+  "duplicate_created": [
+   "gla_for_eng:S0216L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0217L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "ghabh mi glainne no dhà an-diugh",
+  "now": "ghabh mi glainne no dhà",
+  "action": "would-apply",
+  "why": null,
+  "known": "I had a glass or two",
+  "zut": "resolves a pre-existing ZUT fork on \"I had a glass or two\"",
+  "duplicate_created": [
+   "gla_for_eng:S0217L02U05"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0218L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cha do rinn mi mòran an-diugh",
+  "now": "cha do rinn mi mòran",
+  "action": "would-apply",
+  "why": null,
+  "known": "I didn't do much",
+  "zut": "resolves a pre-existing ZUT fork on \"I didn't do much\"",
+  "duplicate_created": [
+   "gla_for_eng:S0218L01U04"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0221L02B02",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "film an-diugh",
+  "now": "film",
+  "action": "would-apply",
+  "why": null,
+  "known": "a film",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0234L03B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha aithne agam air do bhràthair an-diugh",
+  "now": "tha aithne agam air do bhràthair",
+  "action": "would-apply",
+  "why": null,
+  "known": "I know your brother",
+  "zut": "resolves a pre-existing ZUT fork on \"I know your brother\"",
+  "duplicate_created": [
+   "gla_for_eng:S0234L03U03"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0239L01B02",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "is toil leam leughadh an-diugh",
+  "now": "is toil leam leughadh",
+  "action": "would-apply",
+  "why": null,
+  "known": "I like reading",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0239L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "is toil le mo mhàthair leughadh an-diugh",
+  "now": "is toil le mo mhàthair leughadh",
+  "action": "would-apply",
+  "why": null,
+  "known": "my mother likes to read",
+  "zut": "resolves a pre-existing ZUT fork on \"my mother likes to read\"",
+  "duplicate_created": [
+   "gla_for_eng:S0239L02U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0241L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil mi ag iarraidh a thoirt dha an-diugh",
+  "now": "chan eil mi ag iarraidh a thoirt dha",
+  "action": "would-apply",
+  "why": null,
+  "known": "I don't want to give it to him",
+  "zut": "resolves a pre-existing ZUT fork on \"I don't want to give it to him\"",
+  "duplicate_created": [
+   "gla_for_eng:S0241L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0248L03B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi ag iarraidh m' airgead air ais an-diugh",
+  "now": "tha mi ag iarraidh m' airgead air ais",
+  "action": "would-apply",
+  "why": null,
+  "known": "I want my money back",
+  "zut": "resolves a pre-existing ZUT fork on \"I want my money back\"",
+  "duplicate_created": [
+   "gla_for_eng:S0248L03U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0250L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "an inns thu dhomh rudeigin mus freagair mi an-diugh",
+  "now": "an inns thu dhomh rudeigin mus freagair mi",
+  "action": "would-apply",
+  "why": null,
+  "known": "can you tell me something before I answer?",
+  "zut": "resolves a pre-existing ZUT fork on \"can you tell me something before I answer?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0250L01U05"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0252L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cuin a bhitheas tu deiseil an-diugh",
+  "now": "cuin a bhitheas tu deiseil",
+  "action": "would-apply",
+  "why": null,
+  "known": "when will you be ready?",
+  "zut": "resolves a pre-existing ZUT fork on \"when will you be ready?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0252L01U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0255L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cuin a bhitheas tu deiseil airson falbh an-diugh",
+  "now": "cuin a bhitheas tu deiseil airson falbh",
+  "action": "would-apply",
+  "why": null,
+  "known": "when you'll be ready to leave",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0260L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil an corra bheachd agam an-diugh",
+  "now": "chan eil an corra bheachd agam",
+  "action": "would-apply",
+  "why": null,
+  "known": "don't have the faintest idea",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0267L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "an cuala tu bho do charaid an-diugh",
+  "now": "an cuala tu bho do charaid",
+  "action": "would-apply",
+  "why": null,
+  "known": "heard from your friend?",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0268L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chuir i dhomh rudeigin math an-diugh",
+  "now": "chuir i dhomh rudeigin math",
+  "action": "would-apply",
+  "why": null,
+  "known": "she sent me something good",
+  "zut": "resolves a pre-existing ZUT fork on \"she sent me something good\"",
+  "duplicate_created": [
+   "gla_for_eng:S0268L02U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0268L03B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chuir i dhomh dà phost-d an-diugh",
+  "now": "chuir i dhomh dà phost-d",
+  "action": "would-apply",
+  "why": null,
+  "known": "she sent two emails",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0270L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi fo iomagain an-diugh",
+  "now": "tha mi fo iomagain",
+  "action": "would-apply",
+  "why": null,
+  "known": "I'm worried",
+  "zut": "resolves a pre-existing ZUT fork on \"I'm worried\"",
+  "duplicate_created": [
+   "gla_for_eng:S0270L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0271L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "am bu toil leat tighinn an-diugh",
+  "now": "am bu toil leat tighinn",
+  "action": "would-apply",
+  "why": null,
+  "known": "would you like to come?",
+  "zut": "resolves a pre-existing ZUT fork on \"would you like to come?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0271L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0273L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha cus obrach agam an-diugh",
+  "now": "tha cus obrach agam",
+  "action": "would-apply",
+  "why": null,
+  "known": "I've got too much work",
+  "zut": "resolves a pre-existing ZUT fork on \"I've got too much work\"",
+  "duplicate_created": [
+   "gla_for_eng:S0273L01U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0274L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "a bheil agad ri falbh an-diugh",
+  "now": "a bheil agad ri falbh",
+  "action": "would-apply",
+  "why": null,
+  "known": "do you have to leave?",
+  "zut": "resolves a pre-existing ZUT fork on \"do you have to leave?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0274L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0281L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "a bheil dragh ort ma chrìochnaicheas mi an-diugh",
+  "now": "a bheil dragh ort ma chrìochnaicheas mi",
+  "action": "would-apply",
+  "why": null,
+  "known": "do you mind if I finish?",
+  "zut": "resolves a pre-existing ZUT fork on \"do you mind if I finish?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0281L02U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0282L01B02",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "an e duilgheadas a th' ann? an-diugh",
+  "now": "an e duilgheadas a th' ann?",
+  "action": "would-apply",
+  "why": null,
+  "known": "is there a problem?",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0283L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cò aca a tha a' bruidhinn Gàidhlig an-diugh",
+  "now": "cò aca a tha a' bruidhinn Gàidhlig",
+  "action": "would-apply",
+  "why": null,
+  "known": "which of them speaks Gaelic?",
+  "zut": "resolves a pre-existing ZUT fork on \"which of them speaks Gaelic?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0283L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0285L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha ise a' bruidhinn Gàidhlig an-diugh",
+  "now": "tha ise a' bruidhinn Gàidhlig",
+  "action": "would-apply",
+  "why": null,
+  "known": "she's speaking Gaelic",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0300L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil ise ag iarraidh coimhead neo-chairdeil an-diugh",
+  "now": "chan eil ise ag iarraidh coimhead neo-chairdeil",
+  "action": "would-apply",
+  "why": null,
+  "known": "she doesn't want to seem unfriendly",
+  "zut": "resolves a pre-existing ZUT fork on \"she doesn't want to seem unfriendly\"",
+  "duplicate_created": [
+   "gla_for_eng:S0300L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0212L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "bha iad ag iarraidh cobhair iarraidh roimhe",
+  "now": "bha iad ag iarraidh cobhair iarraidh",
+  "action": "would-apply",
+  "why": null,
+  "known": "they were asking for help",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0234L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chaidh mi a-mach a-raoir roimhe",
+  "now": "chaidh mi a-mach a-raoir",
+  "action": "would-apply",
+  "why": null,
+  "known": "I went out last night",
+  "zut": "resolves a pre-existing ZUT fork on \"I went out last night\"",
+  "duplicate_created": [
+   "gla_for_eng:S0234L02U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0239L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "is toil leam leughadh roimhe",
+  "now": "is toil leam leughadh",
+  "action": "would-apply",
+  "why": null,
+  "known": "I enjoy reading",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0240L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil toil le m' athair falbh roimhe",
+  "now": "chan eil toil le m' athair falbh",
+  "action": "would-apply",
+  "why": null,
+  "known": "my father doesn't like to leave",
+  "zut": "resolves a pre-existing ZUT fork on \"my father doesn't like to leave\"",
+  "duplicate_created": [
+   "gla_for_eng:S0240L01U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0245L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil mi cinnteach mu na tha mi air a dhèanamh roimhe",
+  "now": "chan eil mi cinnteach mu na tha mi air a dhèanamh",
+  "action": "would-apply",
+  "why": null,
+  "known": "I'm not sure about what I've done",
+  "zut": "resolves a pre-existing ZUT fork on \"I'm not sure about what I've done\"",
+  "duplicate_created": [
+   "gla_for_eng:S0245L01U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0251L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil mi ag iarraidh fios fhaighinn gus às dèidh dhuinn crìoch a chur air roimhe",
+  "now": "chan eil mi ag iarraidh fios fhaighinn gus às dèidh dhuinn crìoch a chur air",
+  "action": "would-apply",
+  "why": null,
+  "known": "don't want to know until after we finish",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0252L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cuin a bhitheas tu deiseil airson tòiseachadh roimhe",
+  "now": "cuin a bhitheas tu deiseil airson tòiseachadh",
+  "action": "would-apply",
+  "why": null,
+  "known": "when will you be ready to start?",
+  "zut": "resolves a pre-existing ZUT fork on \"when will you be ready to start?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0252L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0253L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "bu chòir dhomh a bhith deiseil ann am beagan mhionaidean roimhe",
+  "now": "bu chòir dhomh a bhith deiseil ann am beagan mhionaidean",
+  "action": "would-apply",
+  "why": null,
+  "known": "should be ready in a few minutes",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0255L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cuin a tha thu a' smaoineachadh a bhitheas tu deiseil airson falbh roimhe",
+  "now": "cuin a tha thu a' smaoineachadh a bhitheas tu deiseil airson falbh",
+  "action": "would-apply",
+  "why": null,
+  "known": "when do you think you'll be ready to leave?",
+  "zut": "resolves a pre-existing ZUT fork on \"when do you think you'll be ready to leave?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0255L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0258L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "dè an rud gorm sin thall an sin roimhe",
+  "now": "dè an rud gorm sin thall an sin",
+  "action": "would-apply",
+  "why": null,
+  "known": "what's that blue thing over there?",
+  "zut": "resolves a pre-existing ZUT fork on \"what's that blue thing over there?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0258L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0261L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi a' smaoineachadh gum faodadh e a bhith na rud cudromach roimhe",
+  "now": "tha mi a' smaoineachadh gum faodadh e a bhith na rud cudromach",
+  "action": "would-apply",
+  "why": null,
+  "known": "I think that it might be something important",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0267L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "an cuala tu bho do charaid roimhe",
+  "now": "an cuala tu bho do charaid",
+  "action": "would-apply",
+  "why": null,
+  "known": "have you heard from your friend?",
+  "zut": "resolves a pre-existing ZUT fork on \"have you heard from your friend?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0267L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0268L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chuir i dhomh rudeigin an t-seachdain a chaidh roimhe",
+  "now": "chuir i dhomh rudeigin an t-seachdain a chaidh",
+  "action": "would-apply",
+  "why": null,
+  "known": "she sent me something last week",
+  "zut": "resolves a pre-existing ZUT fork on \"she sent me something last week\"",
+  "duplicate_created": [
+   "gla_for_eng:S0268L02U06"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0268L03B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chuir i dhomh dà phost-d an t-seachdain a chaidh roimhe",
+  "now": "chuir i dhomh dà phost-d an t-seachdain a chaidh",
+  "action": "would-apply",
+  "why": null,
+  "known": "she sent me two emails last week",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0271L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "am bu toil leat tighinn còmhla rinn roimhe",
+  "now": "am bu toil leat tighinn còmhla rinn",
+  "action": "would-apply",
+  "why": null,
+  "known": "would you like to come with us?",
+  "zut": "pre-existing ZUT fork on \"would you like to come with us?\" untouched by this edit"
+ },
+ {
+  "id": "gla_for_eng:S0271L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "am bu toil leat tighinn còmhla rinn roimhe",
+  "now": "am bu toil leat tighinn còmhla rinn",
+  "action": "would-apply",
+  "why": null,
+  "known": "would you like to come with us?",
+  "zut": "pre-existing ZUT fork on \"would you like to come with us?\" untouched by this edit"
+ },
+ {
+  "id": "gla_for_eng:S0272L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha sin a' coimhead mar dheagh bheachd roimhe",
+  "now": "tha sin a' coimhead mar dheagh bheachd",
+  "action": "would-apply",
+  "why": null,
+  "known": "that looks like a great idea",
+  "zut": "resolves a pre-existing ZUT fork on \"that looks like a great idea\"",
+  "duplicate_created": [
+   "gla_for_eng:S0272L01U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0274L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "a bheil agad ri falbh ann am beagan làithean roimhe",
+  "now": "a bheil agad ri falbh ann am beagan làithean",
+  "action": "would-apply",
+  "why": null,
+  "known": "do you have to leave in a few days?",
+  "zut": "resolves a pre-existing ZUT fork on \"do you have to leave in a few days?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0274L02U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0276L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil, is urrainn dhomh fuireach an seo beagan nas fhaide roimhe",
+  "now": "chan eil, is urrainn dhomh fuireach an seo beagan nas fhaide",
+  "action": "would-apply",
+  "why": null,
+  "known": "no I can stay here a bit longer",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0281L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "a bheil dragh ort ma chrìochnaicheas mi mo chofaidh roimhe",
+  "now": "a bheil dragh ort ma chrìochnaicheas mi mo chofaidh",
+  "action": "would-apply",
+  "why": null,
+  "known": "do you mind if I finish my coffee?",
+  "zut": "resolves a pre-existing ZUT fork on \"do you mind if I finish my coffee?\"",
+  "duplicate_created": [
+   "gla_for_eng:S0281L02U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0283L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cò aca de do charaidean a tha a' bruidhinn Gàidhlig roimhe",
+  "now": "cò aca de do charaidean a tha a' bruidhinn Gàidhlig",
+  "action": "skip",
+  "why": "ZUT: edit would fork \"which of your friends speaks Gaelic?\" into 2 targets",
+  "known": "which of your friends speaks Gaelic?"
+ },
+ {
+  "id": "gla_for_eng:S0283L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cò aca de do charaidean a tha a' bruidhinn Gàidhlig roimhe",
+  "now": "cò aca de do charaidean a tha a' bruidhinn Gàidhlig",
+  "action": "skip",
+  "why": "ZUT: edit would fork \"which of your friends speaks Gaelic?\" into 2 targets",
+  "known": "which of your friends speaks Gaelic?"
+ },
+ {
+  "id": "gla_for_eng:S0285L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha fios agam gu bheil ise a' bruidhinn Gàidhlig roimhe",
+  "now": "tha fios agam gu bheil ise a' bruidhinn Gàidhlig",
+  "action": "would-apply",
+  "why": null,
+  "known": "I know she speaks Gaelic",
+  "zut": "resolves a pre-existing ZUT fork on \"I know she speaks Gaelic\"",
+  "duplicate_created": [
+   "gla_for_eng:S0285L01U03"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0286L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "a bheil aithne agad air daoine aig a bheil toil ri Gàidhlig roimhe",
+  "now": "a bheil aithne agad air daoine aig a bheil toil ri Gàidhlig",
+  "action": "would-apply",
+  "why": null,
+  "known": "do you know people who like Gaelic",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0288L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "is toil le a' mhòr-chuid de na daoine Gàidhlig roimhe",
+  "now": "is toil le a' mhòr-chuid de na daoine Gàidhlig",
+  "action": "would-apply",
+  "why": null,
+  "known": "most of the people like Gaelic",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0288L04B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "a' mhòr-chuid de na daoine air a bheil aithne agam, is toil leotha telebhisean a choimhead roimhe",
+  "now": "a' mhòr-chuid de na daoine air a bheil aithne agam, is toil leotha telebhisean a choimhead",
+  "action": "would-apply",
+  "why": null,
+  "known": "most people who I know they like television",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0289L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi a' faighneachd dhomh fhèin a bheil i a' dol a bhith ann feasgar an-diugh roimhe",
+  "now": "tha mi a' faighneachd dhomh fhèin a bheil i a' dol a bhith ann feasgar an-diugh",
+  "action": "would-apply",
+  "why": null,
+  "known": "I wonder if she's going to be there this afternoon",
+  "zut": "resolves a pre-existing ZUT fork on \"I wonder if she's going to be there this afternoon\"",
+  "duplicate_created": [
+   "gla_for_eng:S0289L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0290L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi a' faighneachd dhomh fhèin a bheil fios aige air an fhreagairt roimhe",
+  "now": "tha mi a' faighneachd dhomh fhèin a bheil fios aige air an fhreagairt",
+  "action": "would-apply",
+  "why": null,
+  "known": "I wonder if he knows the answer",
+  "zut": "resolves a pre-existing ZUT fork on \"I wonder if he knows the answer\"",
+  "duplicate_created": [
+   "gla_for_eng:S0290L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0291L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi an dòchas gun bi mi comasach bruidhinn nas fheàrr a dh'aithghearr roimhe",
+  "now": "tha mi an dòchas gun bi mi comasach bruidhinn nas fheàrr a dh'aithghearr",
+  "action": "would-apply",
+  "why": null,
+  "known": "I hope I'll be able to speak better soon",
+  "zut": "resolves a pre-existing ZUT fork on \"I hope I'll be able to speak better soon\"",
+  "duplicate_created": [
+   "gla_for_eng:S0291L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0292L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi an dòchas gun bi thu comasach tighinn chun a' phàrtaidh roimhe",
+  "now": "tha mi an dòchas gun bi thu comasach tighinn chun a' phàrtaidh",
+  "action": "would-apply",
+  "why": null,
+  "known": "I hope you'll be able to come to the party",
+  "zut": "resolves a pre-existing ZUT fork on \"I hope you'll be able to come to the party\"",
+  "duplicate_created": [
+   "gla_for_eng:S0292L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0293L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "feumaidh mi lorg a-mach càite a bheil e a' dol a choinneachadh rium roimhe",
+  "now": "feumaidh mi lorg a-mach càite a bheil e a' dol a choinneachadh rium",
+  "action": "would-apply",
+  "why": null,
+  "known": "I have to find out where he's going to meet me",
+  "zut": "resolves a pre-existing ZUT fork on \"I have to find out where he's going to meet me\"",
+  "duplicate_created": [
+   "gla_for_eng:S0293L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0294L01B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha mi ag iarraidh fòn a chur roimhe",
+  "now": "tha mi ag iarraidh fòn a chur",
+  "action": "would-apply",
+  "why": null,
+  "known": "I want to phone",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0294L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil gu leòr ùine agam airson fòn a chur thugad roimhe",
+  "now": "chan eil gu leòr ùine agam airson fòn a chur thugad",
+  "action": "would-apply",
+  "why": null,
+  "known": "I don't have enough time to call you",
+  "zut": "resolves a pre-existing ZUT fork on \"I don't have enough time to call you\"",
+  "duplicate_created": [
+   "gla_for_eng:S0294L02U04"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0295L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cha tuirt mi gun robh mi ag iarraidh crìoch a chur air ann an latha roimhe",
+  "now": "cha tuirt mi gun robh mi ag iarraidh crìoch a chur air ann an latha",
+  "action": "would-apply",
+  "why": null,
+  "known": "I didn't say that I wanted to finish in a day",
+  "zut": "resolves a pre-existing ZUT fork on \"I didn't say that I wanted to finish in a day\"",
+  "duplicate_created": [
+   "gla_for_eng:S0295L01U01",
+   "gla_for_eng:S0295L02U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0295L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "cha tuirt mi gun robh mi ag iarraidh crìoch a chur air ann an latha roimhe",
+  "now": "cha tuirt mi gun robh mi ag iarraidh crìoch a chur air ann an latha",
+  "action": "would-apply",
+  "why": null,
+  "known": "I didn't say I wanted to finish in a day",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0296L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "thuirt mi gun robh feum agam air beagan a bharrachd ùine roimhe",
+  "now": "thuirt mi gun robh feum agam air beagan a bharrachd ùine",
+  "action": "would-apply",
+  "why": null,
+  "known": "I said that I needed a little more time",
+  "zut": "resolves a pre-existing ZUT fork on \"I said that I needed a little more time\"",
+  "duplicate_created": [
+   "gla_for_eng:S0296L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0297L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil mòran daoine a tha aithne agam orra a' bruidhinn Gàidhlig roimhe",
+  "now": "chan eil mòran daoine a tha aithne agam orra a' bruidhinn Gàidhlig",
+  "action": "would-apply",
+  "why": null,
+  "known": "I don't know many people who speak Gaelic",
+  "zut": "clean"
+ },
+ {
+  "id": "gla_for_eng:S0298L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil càil air fhàgail agam ri ràdh roimhe",
+  "now": "chan eil càil air fhàgail agam ri ràdh",
+  "action": "would-apply",
+  "why": null,
+  "known": "I've got nothing left to say",
+  "zut": "resolves a pre-existing ZUT fork on \"I've got nothing left to say\"",
+  "duplicate_created": [
+   "gla_for_eng:S0298L01U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0299L02B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "tha esan ag iarraidh leth a phàigheadh roimhe",
+  "now": "tha esan ag iarraidh leth a phàigheadh",
+  "action": "would-apply",
+  "why": null,
+  "known": "he wants to pay half",
+  "zut": "resolves a pre-existing ZUT fork on \"he wants to pay half\"",
+  "duplicate_created": [
+   "gla_for_eng:S0299L02U01"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0300L01B04",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "chan eil mi ag iarraidh coimhead neo-chairdeil roimhe",
+  "now": "chan eil mi ag iarraidh coimhead neo-chairdeil",
+  "action": "would-apply",
+  "why": null,
+  "known": "I don't want to seem unfriendly",
+  "zut": "resolves a pre-existing ZUT fork on \"I don't want to seem unfriendly\"",
+  "duplicate_created": [
+   "gla_for_eng:S0300L01U02"
+  ]
+ },
+ {
+  "id": "gla_for_eng:S0105L02B03",
+  "course": "gla_for_eng",
+  "verdict": "DEFECT",
+  "was": "is e sin as coireach nach robh fios aige a-màireach",
+  "now": "is e sin as coireach nach robh fios aige",
+  "action": "would-apply",
+  "why": null,
+  "known": "that's why he didn't know",
+  "zut": "resolves a pre-existing ZUT fork on \"that's why he didn't know\"",
+  "duplicate_created": [
+   "gla_for_eng:S0105L02U01"
+  ]
+ },
+ {
+  "id": "kor_for_eng:S0567L02B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 아이들이 밖에서",
+  "now": "아이들이 밖에서",
+  "action": "would-apply",
+  "why": null,
+  "known": "the children stay outdoors",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0570L04B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 표를 살 의향이 있어요?",
+  "now": "표를 살 의향이 있어요?",
+  "action": "would-apply",
+  "why": null,
+  "known": "willing to buy a ticket?",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0587L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 그녀는",
+  "now": "그녀는",
+  "action": "would-apply",
+  "why": null,
+  "known": "she used to",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0591L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 가게까지",
+  "now": "가게까지",
+  "action": "would-apply",
+  "why": null,
+  "known": "all the way to the shops",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0593L03B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 아직도",
+  "now": "아직도",
+  "action": "would-apply",
+  "why": null,
+  "known": "even so she was there",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0597L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 그가",
+  "now": "그가",
+  "action": "would-apply",
+  "why": null,
+  "known": "he came along",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0599L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 말해 줬으면",
+  "now": "말해 줬으면",
+  "action": "would-apply",
+  "why": null,
+  "known": "if they'd told me",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0600L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 얼마나 피곤한지",
+  "now": "얼마나 피곤한지",
+  "action": "would-apply",
+  "why": null,
+  "known": "how very tired",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0605L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 도움이",
+  "now": "도움이",
+  "action": "would-apply",
+  "why": null,
+  "known": "she needed help",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0609L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 물어보는",
+  "now": "물어보는",
+  "action": "would-apply",
+  "why": null,
+  "known": "asking around",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0611L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 다른 곳을",
+  "now": "다른 곳을",
+  "action": "would-apply",
+  "why": null,
+  "known": "she went to another place",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0615L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 그렇게",
+  "now": "그렇게",
+  "action": "would-apply",
+  "why": null,
+  "known": "to say it like that",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0618L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 오랜 시간처럼",
+  "now": "오랜 시간처럼",
+  "action": "would-apply",
+  "why": null,
+  "known": "like a long time ago",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0620L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 마지막으로",
+  "now": "마지막으로",
+  "action": "would-apply",
+  "why": null,
+  "known": "last meeting",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0634L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 저것",
+  "now": "저것",
+  "action": "would-apply",
+  "why": null,
+  "known": "those items",
+  "zut": "clean"
+ },
+ {
+  "id": "kor_for_eng:S0636L01B03",
+  "course": "kor_for_eng",
+  "verdict": "DEFECT",
+  "was": "작은 교회가 저건",
+  "now": "저건",
+  "action": "would-apply",
+  "why": null,
+  "known": "she thinks that over there",
+  "zut": "clean"
+ },
+ {
+  "id": "ita_for_eng:S0341L01B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "ho incontrato qualcuno qualche giorno fa adesso",
+  "now": "ho incontrato qualcuno qualche giorno fa",
+  "action": "would-apply",
+  "why": null,
+  "known": "I met someone a few days ago",
+  "zut": "resolves a pre-existing ZUT fork on \"I met someone a few days ago\"",
+  "duplicate_created": [
+   "ita_for_eng:S0341L01U01"
+  ]
+ },
+ {
+  "id": "ita_for_eng:S0347L01B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "voleva sapere che cosa stava succedendo adesso",
+  "now": "voleva sapere che cosa stava succedendo",
+  "action": "would-apply",
+  "why": null,
+  "known": "he wanted to know what was happening",
+  "zut": "resolves a pre-existing ZUT fork on \"he wanted to know what was happening\"",
+  "duplicate_created": [
+   "ita_for_eng:S0347L01U01"
+  ]
+ },
+ {
+  "id": "ita_for_eng:S0347L02B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "voleva sapere che cosa stava succedendo una settimana fa adesso",
+  "now": "voleva sapere che cosa stava succedendo una settimana fa",
+  "action": "would-apply",
+  "why": null,
+  "known": "he wanted to know a week ago",
+  "zut": "clean"
+ },
+ {
+  "id": "ita_for_eng:S0348L01B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "non voleva sapere che cosa sarebbe successo adesso",
+  "now": "non voleva sapere che cosa sarebbe successo",
+  "action": "would-apply",
+  "why": null,
+  "known": "she didn't want to know what would have happened",
+  "zut": "resolves a pre-existing ZUT fork on \"she didn't want to know what would have happened\"",
+  "duplicate_created": [
+   "ita_for_eng:S0348L01U01"
+  ]
+ },
+ {
+  "id": "ita_for_eng:S0351L02B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "non voleva lasciarmi da solo adesso",
+  "now": "non voleva lasciarmi da solo",
+  "action": "would-apply",
+  "why": null,
+  "known": "he didn't want to leave me on his own",
+  "zut": "clean"
+ },
+ {
+  "id": "ita_for_eng:S0355L01B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "doveva parlare con quella donna che conosci adesso",
+  "now": "doveva parlare con quella donna che conosci",
+  "action": "would-apply",
+  "why": null,
+  "known": "she needed to talk to that woman you know",
+  "zut": "resolves a pre-existing ZUT fork on \"she needed to talk to that woman you know\"",
+  "duplicate_created": [
+   "ita_for_eng:S0355L01U01"
+  ]
+ },
+ {
+  "id": "ita_for_eng:S0357L02B02",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "voleva solo mandarle un messaggio adesso",
+  "now": "voleva solo mandarle un messaggio",
+  "action": "would-apply",
+  "why": null,
+  "known": "she just wanted to send her a message",
+  "zut": "resolves a pre-existing ZUT fork on \"she just wanted to send her a message\"",
+  "duplicate_created": [
+   "ita_for_eng:S0357L02U01"
+  ]
+ },
+ {
+  "id": "ita_for_eng:S0362L03B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "era piuttosto silenzioso dopo che sei andato via adesso",
+  "now": "era piuttosto silenzioso dopo che sei andato via",
+  "action": "would-apply",
+  "why": null,
+  "known": "he was rather silent after you left",
+  "zut": "clean"
+ },
+ {
+  "id": "ita_for_eng:S0367L01B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "nessuno me l'ha detto adesso",
+  "now": "nessuno me l'ha detto",
+  "action": "would-apply",
+  "why": null,
+  "known": "no nobody told me",
+  "zut": "clean"
+ },
+ {
+  "id": "ita_for_eng:S0369L03B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "ho visto diversi cavalli sulla strada adesso",
+  "now": "ho visto diversi cavalli sulla strada",
+  "action": "would-apply",
+  "why": null,
+  "known": "I saw several horses on the road",
+  "zut": "resolves a pre-existing ZUT fork on \"I saw several horses on the road\"",
+  "duplicate_created": [
+   "ita_for_eng:S0369L03U01"
+  ]
+ },
+ {
+  "id": "ita_for_eng:S0372L02B02",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "stava provando a uscire adesso",
+  "now": "stava provando a uscire",
+  "action": "would-apply",
+  "why": null,
+  "known": "she was trying to go out",
+  "zut": "resolves a pre-existing ZUT fork on \"she was trying to go out\"",
+  "duplicate_created": [
+   "ita_for_eng:S0372L02U01"
+  ]
+ },
+ {
+  "id": "ita_for_eng:S0378L01B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "non avevo abbastanza soldi per le vacanze adesso",
+  "now": "non avevo abbastanza soldi per le vacanze",
+  "action": "would-apply",
+  "why": null,
+  "known": "I didn't have enough money for holidays",
+  "zut": "clean"
+ },
+ {
+  "id": "ita_for_eng:S0410L03B03",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "continuano a litigare tra loro adesso",
+  "now": "continuano a litigare tra loro",
+  "action": "would-apply",
+  "why": null,
+  "known": "they continue to fight with each other",
+  "zut": "clean"
+ },
+ {
+  "id": "ita_for_eng:S0436L01B02",
+  "course": "ita_for_eng",
+  "verdict": "DEFECT",
+  "was": "c'è un numero minimo adesso",
+  "now": "c'è un numero minimo",
+  "action": "would-apply",
+  "why": null,
+  "known": "there is a minimum number here",
+  "zut": "clean"
+ },
+ {
+  "id": "swa_for_eng:S0051L03B02",
+  "course": "swa_for_eng",
+  "verdict": "DEFECT",
+  "was": "mambo ya leo sasa",
+  "now": "mambo ya leo",
+  "action": "would-apply",
+  "why": null,
+  "known": "things of today",
+  "zut": "resolves a pre-existing ZUT fork on \"things of today\"",
+  "duplicate_created": [
+   "swa_for_eng:S0051L03B03"
+  ]
+ },
+ {
+  "id": "swa_for_eng:S0055L03B04",
+  "course": "swa_for_eng",
+  "verdict": "DEFECT",
+  "was": "sijalala sasa",
+  "now": "sijalala",
+  "action": "would-apply",
+  "why": null,
+  "known": "I haven't slept at all",
+  "zut": "clean"
+ },
+ {
+  "id": "swa_for_eng:S0086L02B02",
+  "course": "swa_for_eng",
+  "verdict": "DEFECT",
+  "was": "kwa bahati mbaya sasa",
+  "now": "kwa bahati mbaya",
+  "action": "would-apply",
+  "why": null,
+  "known": "unfortunately here",
+  "zut": "clean"
+ },
+ {
+  "id": "swa_for_eng:S0097L01B03",
+  "course": "swa_for_eng",
+  "verdict": "DEFECT",
+  "was": "niko tayari sasa",
+  "now": "niko tayari",
+  "action": "would-apply",
+  "why": null,
+  "known": "I'm here and ready",
+  "zut": "clean"
+ },
+ {
+  "id": "swa_for_eng:S0127L03B03",
+  "course": "swa_for_eng",
+  "verdict": "DEFECT",
+  "was": "kukuona sasa",
+  "now": "kukuona",
+  "action": "would-apply",
+  "why": null,
+  "known": "to see you soon",
+  "zut": "clean"
+ },
+ {
+  "id": "swa_for_eng:S0223L01B04",
+  "course": "swa_for_eng",
+  "verdict": "DEFECT",
+  "was": "atakuuliza kuhusu hilo sasa",
+  "now": "atakuuliza kuhusu hilo",
+  "action": "would-apply",
+  "why": null,
+  "known": "he will ask you about that",
+  "zut": "clean"
+ },
+ {
+  "id": "swa_for_eng:S0278L02B02",
+  "course": "swa_for_eng",
+  "verdict": "DEFECT",
+  "was": "ilibidi umaliza sasa",
+  "now": "ilibidi umaliza",
+  "action": "would-apply",
+  "why": null,
+  "known": "it was necessary that you finish",
+  "zut": "resolves a pre-existing ZUT fork on \"it was necessary that you finish\"",
+  "duplicate_created": [
+   "swa_for_eng:S0278L02U01"
+  ]
+ }
+]

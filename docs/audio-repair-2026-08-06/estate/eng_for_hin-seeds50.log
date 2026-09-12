@@ -1,0 +1,1925 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+
+scoped to seeds 1-50: 3768 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3768 (30.0/s, ~2m left)     measured 500/3768 (38.0/s, ~1m left)     measured 750/3768 (41.7/s, ~1m left)     measured 1000/3768 (43.6/s, ~1m left)     measured 1250/3768 (45.3/s, ~1m left)     measured 1500/3768 (46.1/s, ~1m left)     measured 1750/3768 (46.7/s, ~1m left)     measured 2000/3768 (46.9/s, ~1m left)     measured 2250/3768 (47.3/s, ~1m left)     measured 2500/3768 (47.6/s, ~0m left)     measured 2750/3768 (48.0/s, ~0m left)     measured 3000/3768 (48.2/s, ~0m left)     measured 3250/3768 (48.3/s, ~0m left)     measured 3500/3768 (48.5/s, ~0m left)     measured 3750/3768 (48.6/s, ~0m left)   
+
+audio-repair queue — eng_for_hin
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3768 clip(s); 0 could not be measured
+
+950 clip(s) worth a human's ears (660 by duration, 381 by tail); showing 950, worst first.
+
+     10ms  known           2328ms  "मैं कुछ भी अंग्रेज़ी में कहना चाहता हूँ।"
+           55a0d319-2590-4d9d-a47f-a1ac7f55a77e  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms); and speaks 18 chars/sec against a 14.6 baseline
+     15ms  known           2472ms  "मैं अभी आपके साथ अंग्रेज़ी बोलना चाहता हूँ।"
+           d1194f2c-e1bc-4b14-b2da-f08643f69fee  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.3 chars/sec against a 14.6 baseline
+     15ms  presentation    5112ms  "अंग्रेज़ी में — 'जवाब क्या है' — जैसे — 'मैं जवाब क्य
+           27d41dc5-6372-4671-9606-795f699e0472  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 19 chars/sec against a 15.7 baseline
+     10ms  known           2184ms  "मैं आपके साथ बोलना चाहता हूँ।"
+           513e7739-f34c-4789-8bdc-ebc002eb1773  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2616ms  "बोलने का अभ्यास करना किसी और के साथ"
+           49f863a8-ef57-428b-aa57-84adfe693d95  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known            576ms  "कहना कुछ भी"
+           5570255d-9126-4252-8fb1-53450acc60bc  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 23.9 chars/sec against a 14.6 baseline
+     10ms  known           3552ms  "बोलने का अभ्यास करना किसी और के साथ करने वाला हूँ"
+           6df6f3a9-cb31-46af-a32f-86348a8b46ce  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2952ms  "मैं किसी और के साथ अंग्रेज़ी बोलना चाहता हूँ।"
+           772cff74-07cf-4bf0-ba77-708b2de43125  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2592ms  "याद कर सकता हूँ एक शब्द अंग्रेज़ी में"
+           7bb886c6-8ae9-4bb0-9577-e5c9106ee878  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2160ms  "मैं जितनी हो सके उतनी बोलना चाहता हूँ।"
+           929451e4-8535-45a0-864e-90b899ad2671  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.6 chars/sec against a 14.6 baseline
+     10ms  known           1968ms  "समझाना कल आगे क्या होगा"
+           2f24826d-bc17-4775-8f43-79b15ceea349  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1416ms  "वह मिलना सबके साथ चाहती है।"
+           27d151f0-8988-4a53-b1ef-593f338b6067  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.9 chars/sec against a 14.6 baseline
+     10ms  known           1968ms  "मैं जवाब जानना आज चाहूँगा।"
+           60480481-b8d8-4f83-8845-0682ebda2f05  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2472ms  "वह चाहती है बोलना अंग्रेज़ी में बहुत अच्छी।"
+           6b95a837-9383-4783-9524-fe23ffa68997  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.3 chars/sec against a 14.6 baseline
+     15ms  known           2256ms  "क्योंकि मैं मिलना लोगों से चाहता हूँ।"
+           411d299d-7cb1-44ce-83a0-ac119ddea019  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.8 chars/sec against a 14.6 baseline
+     15ms  known           2304ms  "आप चाहते हैं शुरू करना बोलना बहुत अच्छी।"
+           8bb7975a-3fce-4c24-b00b-a67c1b4a443d  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.3 chars/sec against a 14.6 baseline
+     10ms  known           1800ms  "मैं कुछ भी पूछना चाहूँगा।"
+           1facf267-e852-4826-b8cc-aa8ce58ad9b1  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           1824ms  "बोलना जितनी जल्दी हो सके"
+           9817397e-a86c-4523-a2ae-15a73f525d23  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2688ms  "लेकिन मैं इंतज़ार कर रहा हूँ बेहतर बोलने।"
+           ac7a6c0e-db5d-4021-8748-c908be6a07e6  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known            768ms  "दोपहर"
+           17143b9e-b759-4ca8-8dca-42a2ee245036  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2664ms  "हम चाहते हैं पढ़ना कहानी आसानी से।"
+           811c3bcd-57c5-44cd-8821-c7c20c44cea6  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1872ms  "मैं बोलना इसके बारे में चाहूँगा।"
+           a808dffb-5c77-4c1d-909c-7382ec26ec1e  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.1 chars/sec against a 14.6 baseline
+     15ms  known           1536ms  "आप चाहते हैं पढ़ना कुछ भी?"
+           d00dc156-2009-4289-a9b8-81e9b517f371  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.3 chars/sec against a 14.6 baseline
+     10ms  known           2160ms  "बोलना पिछले महीने इसके बारे में"
+           277d0b04-5d90-422c-9e41-db29e29bcf49  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2112ms  "मैं सोचना इसके बारे में चाहूँगा।"
+           4479f001-9af5-4af5-ad6f-abb8e475180f  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2400ms  "मैं महसूस करना आसानी से चाहूँगा।"
+           c20115aa-2558-484d-a1aa-134772b368ac  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           1536ms  "मैं थोड़ी थका हुआ हूँ।"
+           eb394fa8-0d3a-4708-9ca2-dc38388509df  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2160ms  "मैं सुधार करना जल्द ही चाहूँगा।"
+           30d57e0f-44f0-4bb1-9cf0-9311c8302399  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2304ms  "मैं अंग्रेज़ी में सुधार करना चाहूँगा।"
+           357ecd49-3268-46fd-b1b3-d1e625b1c2f8  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     10ms  known           2544ms  "मैं बोलना सब कुछ अंग्रेज़ी में चाहूँगा।"
+           4b67d8c9-fa08-4387-9b91-d484bd097b61  rev 1  — ends abruptly — 10ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2664ms  "लेकिन मैं नहीं चाहता चिंता करना इसके बारे में।"
+           55b0739d-61a8-4f61-80c8-d6de7258d615  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms); and speaks 18 chars/sec against a 14.6 baseline
+     15ms  known           2328ms  "वह बाद में सबके साथ वापस आना चाहता है।"
+           25e1e844-2153-4141-97aa-7ca851be2b22  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2496ms  "या अगर मुझे सुधार करने की ज़रूरत है।"
+           6fbb7def-23a6-4d28-9e9a-7eb630867f7f  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3648ms  "मैं जितनी जल्दी हो सके खत्म करने की कोशिश नहीं कर रहा
+           826addc5-8e8f-4da6-b7ea-2b5e41a79448  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            984ms  "जितनी हो सके उतनी"
+           13ab8833-8363-49ca-979e-b704323a07c6  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.9 chars/sec against a 14.6 baseline
+     20ms  known            528ms  "बहुत अच्छी"
+           3038cebc-cfa1-431c-8bf6-64404d3b6072  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 25 chars/sec against a 14.6 baseline
+     15ms  presentation    6408ms  "अंग्रेज़ी में — 'एक शब्द' — जैसे — 'मैं एक शब्द अंग्र
+           4a274ec0-05ea-4e31-b2d9-332d5587132e  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1296ms  "याद कर सकता हूँ"
+           52b3016d-4998-43c2-91ab-052b3a6e4593  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1320ms  "मेरा मतलब क्या है"
+           bfcfcb2b-9711-4206-b85f-6ed83da9cd38  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            600ms  "पढ़ना कुछ भी"
+           24ead653-f8bc-4672-8278-7ac46507da35  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 25 chars/sec against a 14.6 baseline
+     15ms  presentation    7560ms  "अंग्रेज़ी में — 'लगाना बहुत ज़्यादा समय' — जैसे — '' 
+           51b00bea-07f0-499a-8f5c-1155a86e67da  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known            408ms  "कल को"
+           91029f00-5c9b-43af-b3e3-69ff453e6f0e  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1680ms  "लगाना बहुत ज़्यादा समय"
+           964a6406-7e13-4991-8722-f3617c6c534a  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  presentation    6960ms  "अंग्रेज़ी में — 'ठीक' — जैसे — 'मैं ठीक महसूस कर रहा 
+           bf004019-438c-43fc-881f-87203b28f5ce  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  presentation    4440ms  "अंग्रेज़ी में — 'आज रात' — जैसे — 'आप चाहते हैं बोलना
+           e5c1c677-bfb6-4b39-9105-5d79482fdee9  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1296ms  "मुझे परवाह नहीं है"
+           1df223d7-6e31-403f-8b2a-b6f1037928c6  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1656ms  "मैं अभी बोलना चाहता हूँ।"
+           450f06ee-f0c4-4eda-8348-e1e5b34dde60  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known            888ms  "जितनी बार"
+           5eddfa4d-65ba-498b-8657-7e9dc6d7085f  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1512ms  "मैं सीखना चाहता हूँ।"
+           62810cab-8a10-440a-8036-36d7f5e62608  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            768ms  "अच्छी बात है"
+           6aa1155e-75d7-4c4a-81fc-1873a9c4f6ba  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.6 chars/sec against a 14.6 baseline
+     20ms  known           1680ms  "मैं अभी अंग्रेज़ी बोलना चाहता हूँ।"
+           7082092a-0f94-4c70-b29f-eff5c7c9c1d7  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 21.9 chars/sec against a 14.6 baseline
+     15ms  known            840ms  "कर रहा हूँ"
+           9374582e-2828-434e-84e2-90ae1d365594  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  presentation    4800ms  "अंग्रेज़ी में — 'मुझे ज़रूरत नहीं है' — जैसे — '' — म
+           b114cf92-b398-43fe-9c76-a21c8df80a03  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  presentation    6624ms  "अंग्रेज़ी में — 'अच्छी बात है' — जैसे — 'क्योंकि मुझे
+           f856dd08-b33f-4339-979f-49cd6970b1da  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2832ms  "मैं बोलने का अभ्यास करना कोशिश कर रहा हूँ।"
+           0f6506a2-bdee-403e-a664-283b0ac5375e  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           3072ms  "मैं जितनी बार हो सके बोलने का अभ्यास करना चाहता हूँ।"
+           422f9753-ee65-4755-bfd1-234c133149ae  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.7 chars/sec against a 14.6 baseline
+     20ms  known           1104ms  "मैं याद करना चाहता हूँ।"
+           670b99e7-3e86-4977-9da7-da7b9221cf7a  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 23.2 chars/sec against a 14.6 baseline
+     15ms  known           2424ms  "बोलने का अभ्यास करना अंग्रेज़ी में"
+           6d4f3516-495d-4663-bf23-af54559551b1  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1728ms  "मैं कुछ भी बोलना चाहता हूँ।"
+           8951ba42-ef6b-44f6-8264-966a88c4319f  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           4152ms  "मैं बोलने का अभ्यास करना जितनी बार हो सके करने वाला ह
+           a57ba492-4622-46f3-9f38-eed70be67100  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           3072ms  "मैं किसी और के साथ जितनी बार हो सके बोलना चाहता हूँ।"
+           a7412487-291f-4381-bf75-8d2b2dcd5da9  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.7 chars/sec against a 14.6 baseline
+     15ms  known           1728ms  "मैं आज कोशिश कर रहा हूँ।"
+           b436e96b-af26-4a7f-9c11-0db226be8476  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2664ms  "मैं बोलने का अभ्यास करना अंग्रेज़ी में चाहता हूँ।"
+           ff1b47ad-59ee-4a75-b533-5078379edf02  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.2 chars/sec against a 14.6 baseline
+     15ms  known           2448ms  "मैं याद कर सकता हूँ एक शब्द अभी।"
+           3fb5fb22-03f9-456e-9feb-1b474b3c607c  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known            960ms  "जितनी हो सके"
+           8a66666a-c63e-4a4c-920e-6f1ab363b431  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1704ms  "मैं अंग्रेज़ी में समझाना चाहता हूँ।"
+           99db7864-0886-41b6-a41e-9ada721f2b59  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 22.2 chars/sec against a 14.6 baseline
+     15ms  known           1896ms  "कोशिश करना जितनी हो सके उतनी"
+           a233d277-51b8-47cf-98b2-975e2d52fd20  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1248ms  "मैं समझाना चाहता हूँ।"
+           c5c24894-c067-4e83-940d-0e6f5b05dfd0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.8 chars/sec against a 14.6 baseline
+     15ms  known           1800ms  "मैं समझाना करने वाला हूँ।"
+           d38de160-9c55-4bcc-808f-0ffa918925f7  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2376ms  "मैं अंदाज़ा लगाना कोशिश कर रहा हूँ।"
+           0c65a202-8d6a-4683-b8f3-e1d069890552  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3888ms  "मैं अंदाज़ा लगाना आपके खत्म करने के बाद करने वाला हूँ
+           2df275b2-b66a-49d9-b510-7773802ec18f  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1296ms  "मैं बोलना चाहूँगा।"
+           5afc0a4d-e3ab-4066-8cda-bf4074707e1f  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1440ms  "मैं अंदाज़ा लगाना चाहता हूँ।"
+           7795f89e-c294-4223-a5ed-3e76009b8943  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 21.4 chars/sec against a 14.6 baseline
+     15ms  known            504ms  "बहुत"
+           ba813f52-0ebe-41d2-b603-5bd5c32551b4  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1824ms  "मैं अंदाज़ा लगाना चाहूँगा।"
+           bfb862b9-c7d5-4f33-9b19-a05624fe0cd7  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1920ms  "अंदाज़ा लगाना करने वाला हूँ"
+           c9b5e277-5579-42ff-b076-479adefef9da  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1008ms  "बोलना बहुत अच्छी"
+           e6f607c5-cc01-47eb-a0d8-938e339c23dc  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.1 chars/sec against a 14.6 baseline
+     15ms  known           1848ms  "मैं अंग्रेज़ी बोलना चाहूँगा।"
+           f589978d-1970-4a27-b4d0-cef59cfdb928  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2472ms  "क्या आप बोलते हैं बहुत अच्छी मेरे साथ?"
+           1ddbce9e-d6d0-4a3e-8609-6c95421dff8d  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3024ms  "और मैं चाहता हूँ आप बोलना अंग्रेज़ी मेरे साथ कल।"
+           202fa8bf-5fdb-499c-9ca0-97e1e6a9f9b7  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2208ms  "मैं वापस आना अंग्रेज़ी में बोलना चाहूँगा।"
+           37c0b09a-38f4-47e2-8c15-0d69987016e8  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.7 chars/sec against a 14.6 baseline
+     15ms  known            650ms  "क्या आप"
+           4a0fbbd0-7112-46dd-a690-8f9c33670b2d  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2232ms  "क्या आप बोलते हैं अंग्रेज़ी मेरे साथ?"
+           a394edf4-9ac9-4512-ab20-410f1d990d22  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2880ms  "मुझे यकीन नहीं है कि आप बोलते हैं बहुत अच्छी।"
+           ae1be2a5-34ed-4708-a872-073e15ce2434  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1800ms  "अंग्रेज़ी बोलना पूरे दिन"
+           f7615eba-c608-43a9-bd94-aa4e18340ba9  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1392ms  "वह मिलना छह बजे चाहता है।"
+           0874de5c-730e-4d30-aa35-a6fce208894c  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.9 chars/sec against a 14.6 baseline
+     15ms  known           1752ms  "मैं जवाब जानना चाहूँगा।"
+           1f4e406e-c265-47ec-940f-ecbc62d58a7a  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2496ms  "मैं जवाब क्या है जानना आज चाहूँगा।"
+           21be6fbb-4a9a-4a43-9cfc-ccf96a7c3df7  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2448ms  "वह चाहता है बोलना अंग्रेज़ी में बहुत अच्छी।"
+           48844145-a517-4327-b063-930ffc26584a  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.5 chars/sec against a 14.6 baseline
+     20ms  known           1680ms  "वह चाहता है बोलना बहुत अच्छी"
+           77633b97-c88e-4b9a-904f-cd566f24804a  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.1 chars/sec against a 14.6 baseline
+     15ms  known           1296ms  "मिलना आपके साथ"
+           95c2be96-d7cd-4649-9be9-8bb1984a5422  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1608ms  "मैं जानना आज चाहूँगा।"
+           b3b45670-c8ef-412e-a297-84ee4c1af2f7  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1896ms  "मैं उसका नाम जानना चाहूँगा।"
+           03b30982-0575-484a-9ce3-a340fe8aeb72  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1728ms  "आप चाहते हैं बोलना बहुत अच्छी।"
+           3b002d43-44b4-4edd-b452-bdf8756c1e63  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.6 chars/sec against a 14.6 baseline
+     20ms  known           2328ms  "लेकिन मैं नहीं चाहता बंद करना बात करना।"
+           5dc34a25-427c-4dde-86dc-f23945055afa  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.8 chars/sec against a 14.6 baseline
+     20ms  known           2544ms  "हम चाहते हैं बोलना अंग्रेज़ी में बहुत अच्छी।"
+           680de814-2fda-49f8-9af2-9a9e0d81f583  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.2 chars/sec against a 14.6 baseline
+     15ms  known           4128ms  "मैं आपके साथ बात करना का अभ्यास करने की कोशिश कर रहा 
+           803510a8-411b-40d0-b762-2b50e9ad6056  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1248ms  "बंद करना बोलना"
+           875e214c-b212-4ec9-aae0-5e99cb0652bf  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1704ms  "मैं जल्दी सीखना चाहूँगा।"
+           8f41af7b-281e-4f5e-bc73-57b128e2b472  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2280ms  "मैं बंद करना अंग्रेज़ी में नहीं चाहूँगा।"
+           901b07d9-1810-4d89-adfb-6391e2c3f817  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.4 chars/sec against a 14.6 baseline
+     15ms  known           1320ms  "क्यों आप सीख रहे हैं?"
+           ed4ab938-fe44-43f0-abc0-5bfbfb6f382b  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1560ms  "बातें करना जल्द ही"
+           232a2d73-6978-459f-93c0-c4fadd4d724e  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2016ms  "आप चाहते हैं बोलना आसानी से।"
+           4f309fdb-1665-4b46-bc01-ad01b5206aac  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2832ms  "मैं बोलना अंग्रेज़ी में जल्द ही करने वाला हूँ।"
+           6696f7a6-4f6b-421a-9c19-272ae068eb6a  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3072ms  "मैं मिलना लोगों से जो अंग्रेज़ी बोलते हैं चाहूँगा।"
+           c02f55c0-6ac2-4324-8058-2ea3f5897a1e  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3000ms  "मैं जल्द ही बातें करना की कोशिश करने वाला हूँ।"
+           fa047b00-575f-4722-9c63-46c4b09acb4a  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1296ms  "जाने के लिए तैयार"
+           1752da3f-7c11-40dc-be60-2fb149267e28  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1848ms  "लगभग जाने के लिए तैयार क्योंकि"
+           900fa938-824f-4e8c-868a-3d5487d34501  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2232ms  "वह आज मेरी मदद करना चाहता है।"
+           a76ed9c4-3cc1-440c-8954-af19acdc3bd3  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2952ms  "मैं लगाना बहुत ज़्यादा समय बंद करना चाहूँगा।"
+           ba3994fd-979c-49da-80a7-b07e976fd8c9  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1776ms  "मुझे पसंद है बोलना बहुत अच्छी।"
+           ec67d7a8-0fc2-4e5f-9257-d07794fe1f13  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.1 chars/sec against a 14.6 baseline
+     20ms  known           1392ms  "मैं कल को बोलना चाहता था।"
+           09d796d6-5fdb-49f5-8826-a8574547f10d  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.6 chars/sec against a 14.6 baseline
+     15ms  known           2424ms  "मैं इंतज़ार कर रहा हूँ बोलना बहुत अच्छी।"
+           24c3ca16-ff16-492b-be60-8832d7802dc8  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1680ms  "मैं कल को कुछ भी पूछना चाहता था।"
+           4da1d7a7-ad2d-4101-8a3b-b66428b75667  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.6 chars/sec against a 14.6 baseline
+     20ms  known           1416ms  "मैं आपसे पूछना चाहता था।"
+           79099b2c-740b-49a1-97ff-c096a8dd8811  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.5 chars/sec against a 14.6 baseline
+     15ms  known           2112ms  "उपयोगी है सीखना आसानी से।"
+           838438ad-7da7-4b55-8e74-dabbae6ccd43  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1320ms  "बोलना आज रात"
+           ab4c8048-6d89-46a2-b150-cbf12a9e1172  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known            792ms  "चुप रहना आज"
+           31fa1233-564b-403f-9245-c014a13d353b  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1488ms  "आप चाहते हैं दिखाना कुछ भी?"
+           3cd01151-1946-4c94-8e2e-f704f9212067  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.8 chars/sec against a 14.6 baseline
+     20ms  known            984ms  "क्या आप चाहते थे?"
+           47965e24-8465-4ca6-9490-d9fc044b843b  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.8 chars/sec against a 14.6 baseline
+     15ms  known            528ms  "रात"
+           6d1f9cf0-c72a-476f-b212-99837e2a5c41  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1296ms  "मैं चुप रहना नहीं चाहता।"
+           866e6b13-bd0d-4dcb-8b58-594b06df1570  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.3 chars/sec against a 14.6 baseline
+     15ms  known           1944ms  "मुझे पसंद है बोलना आज रात।"
+           a1d12ab3-ebf5-4cef-914f-e97afe0057f1  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2064ms  "लेकिन आप चाहते थे बोलना बहुत अच्छी।"
+           ac952518-f63c-4059-ac2d-865df435bcdd  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18 chars/sec against a 14.6 baseline
+     15ms  known           3144ms  "लेकिन कितने समय से सीख रहे हैं अंग्रेज़ी बहुत अच्छी?"
+           d60aa5a3-386b-4e6a-aab3-14b6d067e864  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1968ms  "क्योंकि आप चाहते हैं दिखाना कुछ भी।"
+           f5eb30b9-ab57-49df-a600-599b5de721e9  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19 chars/sec against a 14.6 baseline
+     20ms  known           1560ms  "वह नहीं चाहती पढ़ना कुछ भी"
+           0298358a-b279-46ef-9df7-5443e2d0586a  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.1 chars/sec against a 14.6 baseline
+     20ms  known           2112ms  "क्योंकि वह नहीं चाहती बोलना बहुत अच्छी।"
+           1ec28f8f-b890-4c4f-8a51-f13ffaa0d128  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.5 chars/sec against a 14.6 baseline
+     20ms  known           1176ms  "चाहती है पढ़ना कुछ भी।"
+           669bd2ed-82aa-44a6-adce-e0d15da188fb  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.7 chars/sec against a 14.6 baseline
+     15ms  known           1224ms  "मैं पढ़ना चाहूँगा।"
+           721416a2-e87a-4074-a919-5c5ad1d1b08c  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            552ms  "नहीं चाहते"
+           ddbfda56-4235-43b5-80bc-a143ac2194d0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 23.3 chars/sec against a 14.6 baseline
+     15ms  known           2496ms  "मैं सीख रहा हूँ इसके बारे में ध्यान से।"
+           03181cd7-066c-4c47-b4be-7403ccc4f5a0  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3240ms  "मैं सीख रहा हूँ ध्यान से लगभग एक हफ्ते से।"
+           1d30dc21-c253-4fe2-b7ed-80e537546598  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1944ms  "मैं सीख रहा हूँ आसानी से"
+           64944030-2f62-4f9f-9cc8-3c9a2378f280  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2928ms  "मैंने शुरू किया सीखना अंग्रेज़ी पिछले महीने।"
+           dfbd4a02-86bd-41d8-900c-680aaaf53765  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1632ms  "चाहती है महसूस करना आज सुबह।"
+           e2465c01-a5d1-4e72-bd0c-a17f191852a7  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.4 chars/sec against a 14.6 baseline
+     15ms  known           1368ms  "करने लगा था बोलना"
+           078e1762-0b0b-4da7-83e9-3df76e2f39e2  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1656ms  "बोलना कल रात से बेहतर"
+           31589665-31cc-4792-9f74-f36bf6f6866d  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3096ms  "मैं महसूस करना करने लगा था कल रात से बेहतर।"
+           3aebb131-c003-4706-a30d-2687f02bbfae  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1632ms  "थकान महसूस होने लगी आज सुबह"
+           863b7a7f-ee98-4d83-b8d7-a5c125ba7633  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.9 chars/sec against a 14.6 baseline
+     15ms  known           1968ms  "आप चाहते हैं महसूस करना ठीक?"
+           a8e572db-77e7-4e29-9a91-111ed86ce155  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2184ms  "मैं महसूस करना थोड़ी करने लगा था।"
+           e2b31fad-4619-4ae2-987e-e95dc40fb36b  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known            840ms  "से बेहतर"
+           f930ab61-798a-4714-92fc-9a34d804cfed  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2760ms  "या अगर मुझे ज़रूरत है सीखना आसानी से।"
+           0bf3cdce-fc66-484f-bd36-eba2dc356e71  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2016ms  "मुझे पसंद है गलतियाँ करना आज।"
+           17450999-18ec-404a-a371-5d8583340638  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1824ms  "गलतियाँ करना अंग्रेज़ी में"
+           5294b001-9773-40d5-8e41-5cfaa3cbfadd  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1800ms  "मैं जानने सब कुछ चाहूँगा।"
+           cc3f8c00-29fb-46df-b101-5e3dbc5285cb  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           2880ms  "मुझे लगता है उपयोगी है बोलना आसानी से।"
+           1644777e-1ef2-4fa4-af8b-22229183432c  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           3408ms  "मैं जितनी जल्दी हो सके खत्म करना कोशिश कर रहा हूँ"
+           2c364e28-52a9-4d2f-81f8-b8f90e900ceb  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1656ms  "मैं नहीं चाहता करना गलतियाँ।"
+           3a6b388f-88ce-498c-980b-9e84fe58e7bb  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.1 chars/sec against a 14.6 baseline
+     15ms  known           1848ms  "आप समझते हैं अंग्रेज़ी में"
+           6c49743a-3930-4f94-9a40-2b35bc29752d  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known            792ms  "अच्छी बात"
+           8540804d-acf3-49d6-9a6e-16fb49b3280d  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     15ms  known           1752ms  "यह ऐसा है आसानी से"
+           b84134ab-052c-42c1-9219-78c2a0d07af9  rev 1  — ends abruptly — 15ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2112ms  "हम आज शाम छह बजे मिलना चाहते हैं।"
+           16497bbc-d09f-48e9-b7c1-6b42fd642555  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1200ms  "जितनी बार हो सके"
+           1fd2b87b-7851-4021-b085-d57c1455caa0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2280ms  "वह आज दोपहर कुछ भी पढ़ना नहीं चाहती।"
+           390e4867-50f8-4573-9258-6034ae8e1733  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2448ms  "वह जानना चाहती है कि जवाब क्या है।"
+           3db1c9e2-bb67-4989-bd44-9214accb6804  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2928ms  "मैं एक शब्द याद करने की कोशिश कर रहा हूँ।"
+           40d71b49-c9cb-484e-8692-7d68883f58cb  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2616ms  "मैं कल रात से बेहतर महसूस करने लगा था।"
+           86334753-d2ff-48d8-aa8e-12ff38048b32  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2088ms  "हम कहानी में बाधा नहीं डालना चाहते।"
+           9fb25792-3bf9-4fd0-9988-b4752604a062  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.9 chars/sec against a 14.6 baseline
+     25ms  known           1632ms  "क्या आप मुझे कुछ दिखाना चाहते थे?"
+           b5f2e3a1-2a11-41ab-8d87-898c15a2c28e  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 21.8 chars/sec against a 14.6 baseline
+     20ms  known           2280ms  "आप आज रात मेरे साथ बात करना चाहते थे।"
+           b96f2e52-d333-43d4-a3fa-954c4959ff30  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1008ms  "जवाब क्या है"
+           8b2c5959-333f-473f-8cef-66ffd325881a  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            936ms  "सबके साथ"
+           b1fabbaa-8eef-4f17-a4ec-88f1cd1e351e  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            744ms  "मैं नहीं चाहता"
+           c49b8ea9-612a-44d9-9882-46b49582433a  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 22.4 chars/sec against a 14.6 baseline
+     20ms  known           1344ms  "जितनी जल्दी हो सके"
+           29a541e1-6f29-4f27-9b7f-04ffb164b967  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  presentation    3312ms  "अंग्रेज़ी में — 'उपयोगी है' — जैसे — '' — में :"
+           35e9d2bd-2382-466a-b21c-6be1e42b3a63  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            432ms  "ठीक"
+           c5e65431-6073-4b80-9a65-9c4b20799abe  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            816ms  "आसानी से"
+           d60d2927-aa2a-4c02-9fd4-3f2e04ec98d9  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            816ms  "आज रात"
+           ddf8667e-bf85-4773-9c93-f75336ae9082  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            720ms  "वह नहीं चाहती"
+           ec41f8af-874d-4481-a6fd-052d831b6859  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 22 chars/sec against a 14.6 baseline
+     20ms  known           1416ms  "अंग्रेज़ी आपके साथ"
+           5f4e44dd-a56d-468f-bc27-793dfeb0f6c3  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1056ms  "सोच नहीं रहा था"
+           6db3be30-7a04-473f-b5ae-db2f78e2f3a0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            792ms  "वाला हूँ"
+           1d77fb65-1166-49e3-a34d-403876de90c7  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1800ms  "मैं बोलने का अभ्यास करना चाहता हूँ।"
+           74cc37a6-4657-4152-bb77-99f61a7f9da7  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.8 chars/sec against a 14.6 baseline
+     20ms  known            624ms  "के साथ"
+           7ea1f62b-84c2-40cc-8cf8-d95a1178238b  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           3144ms  "मैं किसी और के साथ अंग्रेज़ी सीखना चाहता हूँ।"
+           c793c7e6-9f1e-4c9e-a1d1-cc7a9dd5b4d7  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2928ms  "मैं अंग्रेज़ी में कुछ भी कहना कोशिश कर रहा हूँ।"
+           c8981c95-e38a-4e3e-90e7-11938eb987f0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2136ms  "मैं याद करना कोशिश कर रहा हूँ।"
+           d33bb5f8-e8bc-4d22-bb20-23b46cb5e965  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2352ms  "मैं कुछ भी कहना कोशिश कर रहा हूँ।"
+           fff76c97-a00e-4ee1-88d6-e2428b8d8775  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1872ms  "मैं समझाना कोशिश कर रहा हूँ।"
+           69c9c04d-35b6-4538-9a7d-9f4b741655a5  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1200ms  "मैं कोशिश करना चाहता हूँ।"
+           81c38e42-ca9d-48e5-b004-1f3b15d13a1a  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 23.1 chars/sec against a 14.6 baseline
+     20ms  known           1512ms  "मैं आज थोड़ी बोलता हूँ।"
+           bfbee170-c860-40db-95f3-661544989469  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1584ms  "बोलना जितनी हो सके उतनी"
+           cb388c57-6a77-4356-9682-44a6ea05e67f  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           3168ms  "मैं बहुत अच्छी अंग्रेज़ी में बोलना कोशिश कर रहा हूँ।"
+           2ad0ae60-890c-434c-b444-f6fceb325c32  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1392ms  "अंग्रेज़ी बोलना बहुत अच्छी"
+           82ee79ac-f5ba-40c3-91e3-ccac75899d5f  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.6 chars/sec against a 14.6 baseline
+     25ms  known           1992ms  "मुझे यकीन नहीं है कि बोलना चाहता हूँ।"
+           9017b50b-bb6a-4270-88b5-cb1e1bec9323  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.8 chars/sec against a 14.6 baseline
+     25ms  known           2544ms  "मैं चाहता हूँ बोलना अंग्रेज़ी मेरे साथ अभी।"
+           35aed716-c0d7-465e-b82f-76613ed6a301  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.9 chars/sec against a 14.6 baseline
+     25ms  known           2016ms  "और मैं चाहता हूँ बोलते हैं बहुत अच्छी।"
+           4faae955-4840-4231-b4ad-d178d419b046  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.3 chars/sec against a 14.6 baseline
+     25ms  known           1968ms  "क्या आप बोलते हैं अंग्रेज़ी बहुत अच्छी?"
+           515b1be1-da7b-40ae-9d06-1dea18706777  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 21.3 chars/sec against a 14.6 baseline
+     20ms  known           2784ms  "मैं वापस आना बाद में आपके साथ चाहूँगा।"
+           5bbd07dc-dbef-4f33-a8e4-9116c7ad2dc3  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1800ms  "और मैं चाहता हूँ सीखना"
+           79508f57-2122-44b8-ba7d-6a6b11d5378b  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1872ms  "बोलते हैं अंग्रेज़ी में बहुत अच्छी"
+           a281f334-ba08-4120-99ad-60fa03905406  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.5 chars/sec against a 14.6 baseline
+     20ms  known           2616ms  "मैं मिलना छह बजे आपके साथ चाहूँगा।"
+           1206e871-20b8-4b9b-a808-b417c38ebccb  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1464ms  "मैं जानना चाहता हूँ।"
+           1beca746-8235-4584-859a-ac945dfb9fef  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2136ms  "वह मिलना आज शाम छह बजे चाहता है।"
+           2fcff183-0e5b-4fd2-98de-91de451f7aee  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2352ms  "मैं मिलना आपके साथ आज चाहूँगा।"
+           6cd9e313-58c3-4833-b4a5-0e971bdaab4a  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2088ms  "चाहती है वापस आना आपके साथ"
+           8158b436-18e8-429a-8d37-b9ac17f7cacf  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2016ms  "हम चाहते हैं बोलना आपके साथ आज।"
+           9a78a33c-b0ce-4373-a0c7-53362f06a64c  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1680ms  "वह जानना जवाब क्या है चाहता है।"
+           b9ddfc64-e0eb-4620-a051-1416f9de76a2  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.9 chars/sec against a 14.6 baseline
+     20ms  known           1848ms  "मैं मिलना आज शाम चाहूँगा।"
+           bd59fe91-2571-4c11-bac8-5368d15ec7a0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            768ms  "वह मिलना चाहता है।"
+           d94d8052-44ca-4037-beba-9c5ca1100cf0  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 27.9 chars/sec against a 14.6 baseline
+     25ms  known           2352ms  "मैं बोलना आज शाम अंग्रेज़ी में चाहूँगा।"
+           db712d12-13c6-4406-913a-e878b6a49104  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.6 chars/sec against a 14.6 baseline
+     20ms  known            672ms  "शाम"
+           f2ed357c-0cf4-49c5-afd8-36a7d14a34fc  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2040ms  "मैं जानना जवाब क्या है चाहूँगा।"
+           f91e5d84-9710-4bbc-9789-8848182a5596  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            456ms  "आप"
+           123f19d0-143e-4b4c-a16b-a492687cbcbf  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            504ms  "बात"
+           b7690a3c-d20b-4204-9b1f-d3861d3cf5ff  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1752ms  "वह बंद करना बात करना चाहती है।"
+           ee391b9d-a880-4779-8872-7cf58ad96967  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.3 chars/sec against a 14.6 baseline
+     25ms  known           2160ms  "क्योंकि हम चाहते हैं बोलना बहुत अच्छी।"
+           8f4df15a-030d-4b87-b5d1-bdbfb22f1fd3  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.7 chars/sec against a 14.6 baseline
+     20ms  known           2520ms  "मैं लगभग जाने के लिए तैयार जल्द ही।"
+           37e5eb82-7494-419f-a78c-9ce4263e8e0d  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1992ms  "चाहती है जवाब देना बहुत अच्छी।"
+           55a67d57-5f1f-40da-848a-79d887a15da0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2208ms  "मुझे पसंद है बोलना अंग्रेज़ी में।"
+           7c505845-c693-431d-ba94-86ec32df3ac1  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known            576ms  "पसंद"
+           b43cf6f0-8948-499f-a50a-f195eb7813b7  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1272ms  "लेकिन मैं सीखना चाहता था।"
+           2a846dcc-fc16-4963-b0a8-9aa2fcae0217  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 21.7 chars/sec against a 14.6 baseline
+     20ms  known           3720ms  "लेकिन मुझे पसंद नहीं लगाना बहुत ज़्यादा समय जवाब देना
+           3765d443-1f97-4b50-a4e3-d861dcc9a878  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1800ms  "मैं बोलना बहुत अच्छी चाहता था।"
+           55e2bf68-31b2-4f03-9b7d-22f64d1592ee  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.9 chars/sec against a 14.6 baseline
+     25ms  known           2448ms  "मैं जल्दी बेहतर बोलने की कोशिश करना चाहता हूँ।"
+           5dc5ef02-7c4a-4e01-8158-483503e962ae  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.7 chars/sec against a 14.6 baseline
+     20ms  known           2064ms  "बेहतर बोलने जितनी जल्दी हो सके"
+           907e2b8e-d821-4111-b6c9-7e7ddb021d46  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1368ms  "मैं पूछना चाहूँगा।"
+           a7d52f21-0e93-48a1-897b-2e6504adfb89  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2856ms  "उपयोगी है शुरू करना जितनी जल्दी हो सके"
+           bdca948c-56ef-4a53-999b-a835febe0c0b  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1176ms  "पूछना कुछ भी"
+           ecd4479c-4674-4e91-a5fa-09538f8b7df8  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2496ms  "चाहता है बोलना जब दूसरे लोग यहाँ हों।"
+           1b2f3211-6467-477d-9215-447538028cfa  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2904ms  "क्या आप चाहते थे मेरी मदद करना आज रात?"
+           628df6fc-3bb7-4c2d-afac-fbf9f87d0b90  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  target1         1296ms  "do you want to show something?"
+           7755025a-75a5-4780-87ca-72a26be20c72  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 24.9 chars/sec against a 17.2 baseline
+     20ms  known           1872ms  "वह नहीं चाहता बोलना बहुत अच्छी"
+           a640cf23-2a02-4166-a5bf-d3adc5909f97  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2832ms  "लेकिन मुझे पसंद है पढ़ना आज दोपहर।"
+           370dcd8d-31f0-44c0-851f-e013bfaef74f  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1320ms  "सीखना ध्यान से"
+           a49f91a9-6d75-43f9-928f-a0c74dc4f16b  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1800ms  "वह नहीं चाहती बोलना बहुत अच्छी"
+           bfd9fbe9-84f0-4f51-abcf-148152a0e496  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 18 chars/sec against a 14.6 baseline
+     20ms  known           2160ms  "मैं सीख रहा हूँ लगभग एक हफ्ते से।"
+           03984ef2-67dd-4d3b-87f4-5fe5df823b02  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1656ms  "मैं महसूस करना चाहूँगा।"
+           90c15507-55a3-4266-8255-d21c891dc452  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           1584ms  "थका हुआ हूँ आज रात"
+           ba60d087-af6e-4efb-9a02-feddc8fac0cd  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2160ms  "मैं बोलना अंग्रेज़ी में करने लगा था।"
+           47ae516b-e3d4-451b-bde1-62e0dffa7c15  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.7 chars/sec against a 14.6 baseline
+     25ms  known           2760ms  "मैं अंग्रेज़ी में बोलना कल रात से बेहतर मैं चाहता हूँ
+           4f205e54-a0a5-42b8-9267-afa1a94f939a  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.5 chars/sec against a 14.6 baseline
+     20ms  known           1152ms  "महसूस करना ठीक"
+           6df047f0-373c-4135-80e4-02d84d75dac0  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           3096ms  "लेकिन मैं थकान महसूस होने लगी आसानी से।"
+           9359c3c1-ecc1-49e6-8c03-008f1b16c787  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2424ms  "मैं बोलना कल रात से बेहतर मैं चाहता हूँ।"
+           9da68a54-1f02-4bee-9206-bb3f45e6f205  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2616ms  "लेकिन मैं बोलना कल रात से बेहतर मैं चाहता हूँ।"
+           9fce8542-f3a5-448f-b367-87b8317e596b  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.4 chars/sec against a 14.6 baseline
+     20ms  known           1584ms  "मैं महसूस करना ठीक।"
+           be3fdfdc-1322-4f3f-9163-cf9503e181c7  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2280ms  "क्योंकि मैं थकान महसूस होने लगी आज सुबह।"
+           c977e85e-53a5-48e0-9e1d-d3953274f34c  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.6 chars/sec against a 14.6 baseline
+     20ms  known           2976ms  "मैं जितनी जल्दी हो सके खत्म करना चाहता हूँ"
+           1fabbd07-b129-4581-a2bd-9ac2f1d3728c  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2520ms  "मैं अंग्रेज़ी सीखना कोशिश नहीं कर रहा"
+           85f2f654-c7ea-45d5-9458-11641f39d687  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2736ms  "मैं जितनी जल्दी हो सके खत्म करना चाहूँगा"
+           936474e6-d39d-42fc-af8a-d0c0af7f7d77  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     20ms  known           2016ms  "क्योंकि आप समझते हैं अभी।"
+           ee3c16a8-a4d0-4d48-b03d-a5b4ae52d4a5  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  presentation    5880ms  "अंग्रेज़ी में — 'कोशिश कर रहा हूँ' — जैसे — 'मैं अंग्
+           33df503c-79d8-4831-8249-215f87a7a6bb  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  presentation    6480ms  "अंग्रेज़ी में — 'जितनी बार हो सके' — जैसे — 'मैं जितन
+           5174ebc2-8401-42b9-97d6-3ffbdc84f594  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1800ms  "जितनी बार हो सके बोलना।"
+           54d446c3-dd73-42cb-b603-101c69cf28bf  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1968ms  "लेकिन मैं बात करना बंद नहीं करना चाहता।"
+           8b2bd270-af1f-43c7-b653-9d4fd3eb6e73  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 21.4 chars/sec against a 14.6 baseline
+     30ms  known           1680ms  "मैं कल आपसे कुछ पूछना चाहता था।"
+           ec6fd07a-25f8-45ff-b217-d24edcfb97ff  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.1 chars/sec against a 14.6 baseline
+     25ms  known            936ms  "मेरे साथ"
+           74a8bbd4-dafc-4d8b-9b48-cf0144fe277a  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            648ms  "जवाब"
+           7e85400f-254e-4b4c-9fd9-cbca402d3270  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  presentation    5256ms  "अंग्रेज़ी में — 'कहानी' — जैसे — 'क्योंकि मुझे पसंद ह
+           044baf10-e6a9-4b3a-a45d-b637d97614d7  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  presentation    4584ms  "अंग्रेज़ी में — 'दिखाना' — जैसे — 'आप चाहते हैं दिखान
+           a3583e44-f169-487b-a87d-93bdec8808fc  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            528ms  "साथ"
+           0b1d30a5-6aed-4633-a8a3-21418910b252  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1176ms  "अभी आपके साथ"
+           6fcf8db6-e4b0-47e3-abd4-67504660724a  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2088ms  "कैसे बोलना जितनी बार हो सके"
+           8272e84f-cd6d-4b3a-90f7-6bd74fd622ce  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  presentation    5736ms  "अंग्रेज़ी में — 'मुझे ज़रूरत है' — जैसे — 'मुझे ज़रूर
+           8586dfa9-9315-48dc-a362-cf22388883b9  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  presentation    5904ms  "अंग्रेज़ी में — 'सोच नहीं रहा था' — जैसे — 'मैं सोच न
+           89432098-2f8b-424a-85f0-807ce9fae960  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  target1          576ms  "you"
+           9cfca364-9b89-48a5-a191-d357ef378885  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            576ms  "हो सके"
+           cd54a65c-e3d4-45e2-b5ae-4ef0e67198d9  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            864ms  "चाहता हूँ"
+           fe975fb2-2af2-4ba7-b3eb-d41bb5ff28b7  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2376ms  "मैं एक शब्द अंग्रेज़ी में याद करना चाहता हूँ।"
+           5d5d9ac7-d98b-4713-9807-f001d1a07cbc  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 20.1 chars/sec against a 14.6 baseline
+     25ms  known           1920ms  "मैं कहना कोशिश कर रहा हूँ।"
+           770ea6e7-4da5-470e-831a-8c1653308b63  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3264ms  "मैं किसी और के साथ अंग्रेज़ी बोलना करने वाला हूँ।"
+           ae491930-9f91-41ee-baed-d015953e8f41  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2112ms  "मैं याद कर सकता हूँ आपके साथ।"
+           ba49dd34-6212-4491-a6ac-757a7d68a3be  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2520ms  "वह चाहता है वापस आना सबके साथ"
+           0b0a08a5-f4be-4ad3-8730-a723d7a0d511  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1608ms  "क्या आप बोलते हैं बहुत अच्छी?"
+           0ef2b120-8e72-42c7-b41d-41a1fa9fa05e  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 19.7 chars/sec against a 14.6 baseline
+     25ms  known           1824ms  "क्या आप बोलते हैं मेरे साथ?"
+           51b7a306-8cce-4982-a62b-2ef3cd1821f8  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1248ms  "बोलना मेरे साथ"
+           6789073c-b81c-47cd-874c-78593b08c156  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1440ms  "वापस आना मेरे साथ"
+           98016428-e63b-4954-9fcd-20642a857aba  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2688ms  "मैं जवाब क्या है अंग्रेज़ी में जानना चाहूँगा।"
+           3aebc91e-f447-4e69-a0f3-36dc55aab732  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.6 chars/sec against a 14.6 baseline
+     25ms  known           1824ms  "हम चाहते हैं मिलना छह बजे"
+           9c5f4ec6-f3fc-45bc-95e9-ef2e3ca3fa39  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2640ms  "और मैं चाहता हूँ मिलना आज शाम छह बजे।"
+           b592fc50-63a3-403e-99fc-94a8fbbf0f0f  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1800ms  "क्यों क्या आप बोलते हैं बहुत अच्छी?"
+           2b1a1ed9-857c-4e64-a3b0-761d2e8c0125  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 21 chars/sec against a 14.6 baseline
+     25ms  known           2472ms  "हम चाहते हैं जल्दी बोलना अंग्रेज़ी में।"
+           8b82945a-c260-4557-b322-2e3e70002547  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1608ms  "बात करना अंग्रेज़ी में"
+           fa7d0a5f-6468-4184-9ae4-a18af57a5eac  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1152ms  "बोलना जल्द ही"
+           24f8b6e2-e4a0-4fca-ace2-94bfcf082434  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2184ms  "क्योंकि मैं बोलना आसानी से चाहूँगा।"
+           4e9b5fa0-b526-4007-ba22-f97dbbb6429f  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2496ms  "क्योंकि मैं बोलना अंग्रेज़ी में चाहता हूँ।"
+           83dde00f-21d3-440c-8bb2-2fcffdabb83c  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.9 chars/sec against a 14.6 baseline
+     25ms  known           2352ms  "चाहती है बोलना बहुत अच्छी जल्द ही।"
+           a2cd7801-02a5-4870-9542-c40691796897  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1944ms  "क्योंकि मैं बोलना जाने से पहले चाहता हूँ।"
+           7f7168fa-1538-4e63-b71b-561049c400f5  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 22.7 chars/sec against a 14.6 baseline
+     25ms  target2         1272ms  "to speak easily"
+           9f3c8b3e-7075-45b2-bac7-fd9ab8b90ca4  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2928ms  "क्या आप करने वाले हैं शुरू करना बोलना जल्द ही?"
+           c59efd9c-e646-4b65-b212-29f74d8d13f0  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2592ms  "मुझे पसंद है शुरू करना बोलना जल्द ही।"
+           dc6b099f-a51f-4c63-ba0f-27a49291c65d  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3312ms  "मैं इंतज़ार कर रहा हूँ बोलना अंग्रेज़ी में जल्द ही।"
+           16e81dc1-ebe7-41e3-a732-7f75ffb25e4e  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3816ms  "मैं इंतज़ार कर रहा हूँ बेहतर बोलने जितनी जल्दी हो सके
+           2f6dcfb7-c896-4ac9-bd92-a8e84d2ab9dd  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3336ms  "हम चाहते हैं शुरू करना बोलना जितनी जल्दी हो सके।"
+           30c64866-4398-4a37-a72b-69de62e3f929  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2064ms  "मुझे पसंद है बेहतर बोलने।"
+           382493b8-c3fa-425b-925d-585f3fddf619  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2040ms  "शुरू करना जितनी जल्दी हो सके"
+           5e5e3b53-2653-405b-887c-8f1a33167129  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3288ms  "क्योंकि आप चाहते हैं सीखना जितनी जल्दी हो सके।"
+           7981c92e-e18b-41f6-8378-079edde9597a  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1752ms  "उपयोगी है बोलना बहुत अच्छी।"
+           7bf55d66-96b0-40b8-b089-70c14b4acc60  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2664ms  "आप चाहते हैं बोलना जितनी जल्दी हो सके।"
+           812deeaf-7e72-4f8b-a059-711877d32df0  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1368ms  "उपयोगी है बोलना"
+           83409955-a98b-4adf-83c1-651f58385df7  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1944ms  "मैं कल को आपसे पूछना चाहता था।"
+           8b33d40b-1dbc-406d-9c3a-aa764932d9f1  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3600ms  "उपयोगी है शुरू करना बात करना जितनी जल्दी हो सके।"
+           8d7ccdea-2dc4-4aa4-baf7-bd278ced27d1  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2544ms  "मुझे पसंद है बोलना जितनी जल्दी हो सके।"
+           9a8cd890-ce36-41e6-bdcd-62c3c860a79d  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1920ms  "आप चाहते हैं बोलना आज रात?"
+           c59d50db-8dea-4909-947d-6cb6deeb62db  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            864ms  "मैं बोलना चाहता था।"
+           c9e8e0c5-764d-410e-a085-072e26f4e096  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 25.9 chars/sec against a 14.6 baseline
+     25ms  known           1944ms  "आप चाहते थे बोलना अंग्रेज़ी आज।"
+           e140b382-cd96-431d-9849-e80991cb4f29  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2544ms  "क्योंकि आप चाहते हैं बोलना आज रात।"
+           ee0e4552-9f40-4639-a44e-ab42e726c97e  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2016ms  "मुझे पसंद है पढ़ना आज दोपहर।"
+           336be80c-acb3-4ade-81c6-78bf28baf65a  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            576ms  "नहीं चाहता"
+           ca45b729-4a53-4499-b70c-4f6b8c810840  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 23 chars/sec against a 14.6 baseline
+     25ms  known           1512ms  "बाधा डालना कहानी"
+           d443c013-786a-4e8e-85ec-b81f468594ec  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3024ms  "मुझे पसंद है समझाना इसके बारे में ध्यान से।"
+           19766a40-ed6e-4d98-98fe-cb2c7ee1a451  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1704ms  "मैं थका हुआ हूँ आज रात।"
+           23147bcf-b486-4593-87f6-1ba5888d9e58  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1800ms  "क्योंकि मुझे पसंद है बोलना आज सुबह।"
+           8e6d43b9-6411-4e8c-86ff-4d8d73326ce4  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 21 chars/sec against a 14.6 baseline
+     25ms  known           4128ms  "हम चाहते हैं सीखना अंग्रेज़ी में लगभग एक हफ्ते से।"
+           db32a57d-01e6-4e66-8320-8fd63db72300  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  target1          864ms  "starting to"
+           36457588-6cf2-4536-9761-ed00f2e48c29  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3048ms  "मुझे यकीन नहीं है कि मुझे ज़रूरत है सुधार करना।"
+           522007a1-3127-4a3a-95bc-3a18fd7ab1f3  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1968ms  "मैं थकान महसूस होने लगी थोड़ी।"
+           6b12c599-0121-4e3d-8010-51a9c2ba2ee6  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1848ms  "मैं महसूस करना करने लगा था।"
+           b56f4f97-5f34-42d6-a985-01aea6362f96  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2136ms  "लेकिन मैं बोलना अभी करने लगा था।"
+           bd31a278-1378-43a6-82ef-11404620ac55  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1992ms  "मुझे ज़रूरत नहीं है बोलना सब कुछ।"
+           0f7027d1-f279-461a-a1ab-19dd816edb4c  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 17.7 chars/sec against a 14.6 baseline
+     25ms  known            912ms  "बोलना सब कुछ"
+           269fd593-423f-4a19-bafb-90afff95cba2  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2400ms  "क्योंकि मुझे ज़रूरत नहीं है सीखना सब कुछ।"
+           5ddda6c9-27b7-4fda-8af6-626db0ea3a7a  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.1 chars/sec against a 14.6 baseline
+     25ms  known           1032ms  "चिंता करना अभी"
+           7f41266a-7b3d-460a-9dd8-e96cd1d18875  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1704ms  "मुझे ज़रूरत नहीं है गलतियाँ।"
+           8877a778-a196-43e6-8073-25787e208b13  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 18 chars/sec against a 14.6 baseline
+     25ms  known           1896ms  "मुझे ज़रूरत है बोलना सब कुछ।"
+           a3575e82-a919-4fa3-9711-8d50d0894cf8  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2040ms  "मुझे ज़रूरत नहीं है सीखना सब कुछ।"
+           a5d4e823-c8d9-43bd-87d1-34fc3b0a1cf9  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2952ms  "मुझे लगता है आप समझते हैं मेरा मतलब क्या है।"
+           1bb62a1b-a9a5-43f4-b1b4-9000c29a42ca  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1896ms  "लेकिन मुझे परवाह नहीं है गलतियाँ करना।"
+           2effd4e3-2314-41ae-9ffc-7cbb37b7aaf7  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 21.5 chars/sec against a 14.6 baseline
+     30ms  known           1560ms  "अच्छी बात है करना गलतियाँ।"
+           6e2e3067-78c2-48fb-aa38-792e2878e8ea  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 18.2 chars/sec against a 14.6 baseline
+     25ms  known           1344ms  "लेकिन यह ऐसा है।"
+           85bc8de3-5622-47e2-a897-dc7daa027ad4  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2784ms  "यह ऐसा है, अगर आप समझते हैं मेरा मतलब।"
+           08686df6-48fb-4078-9309-890241a168ed  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3648ms  "जितनी जल्दी हो सके बात करना शुरू करना उपयोगी है।"
+           31ff3913-4801-459d-bf34-38d12c7fd2e5  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            984ms  "आपके साथ"
+           4b9cd979-5d31-4485-99a6-af1a11303f5b  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    5424ms  "अंग्रेज़ी में — 'सीखना' — जैसे — 'मैं आपके साथ अंग्रे
+           62ff8067-cf32-44fa-9a82-856caee57be8  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    4848ms  "अंग्रेज़ी में — 'बाद में' — जैसे — 'मैं वापस आना बाद 
+           031e6b89-8f7b-49c8-af39-36ce8f4a0533  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            912ms  "उसका नाम"
+           613e8e5e-dd07-4f94-bed6-3451a319b025  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    4560ms  "अंग्रेज़ी में — 'क्यों' — जैसे — 'क्यों आप चाहते हैं 
+           8eec12af-1a7b-45a3-80cd-5e5231ee9e69  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            600ms  "थोड़ी"
+           c21ec8b6-5d60-4309-aafa-bd2d8c2bfd72  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    4392ms  "अंग्रेज़ी में — 'कैसा महसूस कर रहे हैं' — जैसे — '' —
+           6e5a69be-21f2-4942-86b2-0337e1af5684  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            720ms  "कहानी"
+           6e906072-89ab-467d-9a03-3b230f8b3c50  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    3168ms  "अंग्रेज़ी में — 'ऐसा लगना जैसे' — जैसे — '' — में :"
+           9995f62d-f199-4bfd-8f70-42b4d62cd673  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    5976ms  "अंग्रेज़ी में — 'सुधार करना' — जैसे — 'मैं सुधार करना
+           5286440e-f157-42f0-b3bc-4e856e0e05f1  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3408ms  "मैं जितनी बार हो सके आपके साथ अंग्रेज़ी बोलना चाहता ह
+           567a16e7-00a3-443f-96b6-dcdcfdfd6806  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2400ms  "मैं आपके साथ अंग्रेज़ी सीखना चाहता हूँ।"
+           74de6c13-9ad9-45f1-87c8-f60d850e0b48  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2688ms  "मैं जितनी बार हो सके बोलना चाहता हूँ।"
+           9f00e963-12a6-4703-9f7d-da2beeefb155  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    6120ms  "अंग्रेज़ी में — 'मुझे परवाह नहीं है' — जैसे — 'मुझे प
+           a9558765-f8fd-4d1b-85d6-28c60bdf467d  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2448ms  "मैं एक शब्द याद करना चाहता हूँ।"
+           330c825e-85b6-460d-bae9-451d28346868  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3432ms  "मैं आपके साथ बोलने का अभ्यास करना करने वाला हूँ।"
+           58adc669-d902-4e82-973c-e7564477dad3  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            696ms  "शब्द"
+           766ab03d-57a4-44bd-9b00-b120444e20c2  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            840ms  "कुछ भी सीखना"
+           b39553fd-ab6f-478f-8015-c48d6a41606e  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1488ms  "बोलना करने वाला हूँ"
+           e30ead97-0932-4caa-9398-6af4d113738a  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1800ms  "याद कर सकता हूँ पूरा वाक्य"
+           22c266a5-b284-4419-b265-1cbff778c943  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3552ms  "मैं कोशिश करना जितनी हो सके उतनी आज चाहता हूँ।"
+           4cb8d4fc-c513-4bfb-8af2-53bd2f421327  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1512ms  "बोल पाना आपके साथ"
+           1284e300-a9e2-48ad-b18c-2bacd328d076  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3624ms  "मैं आपके खत्म करने के बाद आज बोलना करने वाला हूँ।"
+           3fce0ca5-d1f0-4928-8232-5f96dcc9567e  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3480ms  "मुझे यकीन नहीं है कि याद कर सकता हूँ पूरा वाक्य।"
+           b94f451a-99aa-423a-b3eb-c7af909fe714  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2616ms  "मुझे यकीन नहीं है कि याद कर सकता हूँ आज"
+           d7e7488b-c803-44b7-9d8d-95a90a385b75  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            624ms  "के बाद"
+           e4459dc0-79fa-4115-b2a5-1eeac2923815  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            480ms  "और"
+           13aa0a49-22c9-4aa4-890f-b1e18f176d4e  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1224ms  "बोलना पूरे दिन"
+           70772bf7-957a-4826-975c-1694237696c4  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2400ms  "वह चाहती है जानना जवाब क्या है आज।"
+           3cf893ef-3ad5-40bc-82df-47e0ff28adf3  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1752ms  "क्यों आप चाहते हैं मिलना आज?"
+           560e1839-04bb-4b65-895c-a3b19ffbc422  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2400ms  "आप चाहते हैं उसका नाम जल्दी सीखना।"
+           630bc4aa-1c5e-416d-9bdb-8b120eafa9b4  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1032ms  "बोलना जल्दी"
+           7bfa153b-a332-42c2-9851-aa3340ba1b58  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2280ms  "आप चाहते हैं बोलना अंग्रेज़ी में"
+           fcec7ac1-da52-44f0-a8db-785d3c67574f  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2928ms  "मुझे पसंद है लगाना बहुत ज़्यादा समय आज।"
+           1d45a2bb-011d-4e34-a29b-447828697a09  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2016ms  "मैं लगभग जाने के लिए तैयार आज।"
+           6534535f-79b4-408f-900c-be1d69aaffc9  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2328ms  "मुझे पसंद है सीखना आसानी से।"
+           7375ae78-b05b-4edd-9822-4911aaf8ddbb  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1728ms  "लगाना बहुत ज़्यादा समय आज"
+           8ea58ab9-d1f7-4522-8dd6-edaec4572cbd  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2256ms  "क्योंकि मैं लगभग जाने के लिए तैयार।"
+           97f63913-b6ef-4066-b92e-47dbecb86bef  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2352ms  "मुझे पसंद है ऐसा लगना जैसे"
+           9e0e3e5e-1b21-4662-a0ff-8580085f1987  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3048ms  "मुझे पसंद है ऐसा लगना जैसे मैं बोलना बहुत अच्छी।"
+           b16edbe6-36a4-4a67-b411-bd8a7c59823b  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  target1         1152ms  "I like to answer"
+           c86d388d-ad41-4cd0-beb1-962b509f0aa5  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            528ms  "लगभग"
+           fd400401-5fc7-4e47-9a51-76a9fecdcc4f  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2640ms  "मैं कल को बोलना बहुत अच्छी चाहता था।"
+           05a1508c-7f59-4493-9171-28a942e50cd3  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            672ms  "बेहतर"
+           a064a69b-ed8d-4533-af4a-bef1fcd89262  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2712ms  "चाहती है जवाब देना जितनी जल्दी हो सके।"
+           ff3b62d2-05f5-4bfe-81ca-6dce191dbdd3  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           3096ms  "कितने समय से अंग्रेज़ी बोलना कोशिश कर रहे हैं?"
+           293019ea-d003-4172-b69a-aa91c39b4560  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2040ms  "कितने समय से सुधार कर रहे हैं?"
+           e1ba24db-7207-44c7-9081-b4b71a425335  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1992ms  "वह नहीं चाहता बोलना आज दोपहर।"
+           231793e0-cde0-4418-9962-0c731d47473e  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1656ms  "पढ़ना कुछ भी आज दोपहर"
+           3df520f5-a7f3-47d4-8904-e5832e6c5e3c  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2712ms  "लेकिन हम नहीं चाहते सीखना आसानी से।"
+           b8f78867-13c2-4a6e-a71d-3b9af2c196c6  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2448ms  "लेकिन वह नहीं चाहती पढ़ना आज दोपहर।"
+           fd07914e-e2b0-4814-b5f5-6302713ec4cd  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1176ms  "लगभग एक"
+           dc831909-a0da-445c-85a5-e807f1b1d478  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1680ms  "चाहती है महसूस करना ठीक।"
+           4c5ea158-cc8b-4e00-b9f9-1449338583c4  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2160ms  "सोच नहीं रहा था इसके बारे में अभी।"
+           69f4308f-1b69-40a6-8d3f-854e1eb476bc  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2256ms  "मुझे ज़रूरत नहीं है सुधार करना।"
+           0470c0ad-120e-478f-98c8-f188a290e44c  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1440ms  "चिंता नहीं करता अभी"
+           e37fec9f-c094-4bbb-86b1-5bd46901f9f4  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2448ms  "लेकिन मुझे ज़रूरत नहीं है जानने सब कुछ।"
+           e7c365a2-c42a-4b8c-8a0c-4aea11f15c60  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+    0.583  target1         1416ms  "do you want to speak this morning?"
+           638759f3-a516-4b13-969d-9e1501031da1  rev 1  — 42% shorter than its text implies
+    0.641  target1         1008ms  "are you going to speak"
+           f5946ad6-1392-47a8-9948-5b0b51eb0900  rev 1  — 36% shorter than its text implies
+    0.656  target2          984ms  "you know what I mean?"
+           e51afbb9-b3b9-4dc8-9eb2-410272761373  rev 1  — 34% shorter than its text implies
+    0.658  target1         2208ms  "how long have you been trying to speak English?"
+           3a303a14-304b-4b33-84ea-8d8fd694815b  rev 1  — 34% shorter than its text implies
+    0.661  target2         1464ms  "what's going to happen tomorrow"
+           7b377237-05a2-42de-93d9-5ca0ca335bd5  rev 1  — 34% shorter than its text implies
+    0.666  target2         2616ms  "He doesn't want to be quiet when other people are her
+           2a2fe17e-76ba-4da4-b109-8f6f7fbc9378  rev 1  — 33% shorter than its text implies
+    0.672  target2         1440ms  "did you want to speak with me?"
+           eda3f9c3-c0ff-42f9-8887-fe30c8d1be02  rev 1  — 33% shorter than its text implies
+    0.678  target1         2712ms  "I wouldn't like to guess what's going to happen tomor
+           9a52f753-d07c-4416-a6af-5e1491dd43f9  rev 1  — 32% shorter than its text implies
+     0.68  target2         1944ms  "how long have you been learning English?"
+           4a49ab2c-3ea7-4e2d-92ae-0506598d0ef2  rev 1  — 32% shorter than its text implies
+    0.681  known           1848ms  "क्या आप बोलते हैं सबके साथ बहुत अच्छी?"
+           2ad7151a-1614-4d92-b791-e21eb1f23a9e  rev 1  — 32% shorter than its text implies
+    0.682  target2         1560ms  "how long have you been learning?"
+           b0ed4ee6-020e-4c41-b060-e91b263c18e5  rev 1  — 32% shorter than its text implies
+    0.685  target2         1224ms  "are you going to help me?"
+           e71cc84d-4b17-4bcb-b651-06427b817977  rev 1  — 31% shorter than its text implies
+    0.686  target2         2304ms  "how long have you been trying to speak English?"
+           d87c5c77-e46b-46b3-b525-7821fbc44e70  rev 1  — 31% shorter than its text implies
+    0.686  target2         1176ms  "but you know what I mean"
+           69078068-6a60-4040-864b-c6f5c035813b  rev 1  — 31% shorter than its text implies
+    0.687  target1         2208ms  "do you want to finish as quickly as possible?"
+           b853b5c4-8dfe-4554-ac5a-fb9c1995d53b  rev 1  — 31% shorter than its text implies
+    0.691  target2         1776ms  "she doesn't want to speak in English"
+           1d60f2b7-bbe9-4874-bcfc-c32dfa5531a5  rev 1  — 31% shorter than its text implies
+    0.691  target1         2568ms  "I don't want to interrupt when other people are here"
+           ab821b4c-bbce-4fa9-a776-12b396a9e33f  rev 1  — 31% shorter than its text implies
+    0.692  target1         1680ms  "because you want to show something"
+           688b2171-6cec-4033-8ee6-12fb61c2e002  rev 1  — 31% shorter than its text implies
+    0.692  target1         2520ms  "I don't want to be quiet when other people are here"
+           7b66eedc-c883-4ee1-930f-8f91f553ac04  rev 1  — 31% shorter than its text implies
+    0.692  target1         1632ms  "because I don't like to interrupt"
+           35cf5547-956f-49bc-bf40-fa7629e1e454  rev 1  — 31% shorter than its text implies
+    0.693  target2         1584ms  "did you want to help me tonight?"
+           ace7925f-0814-4f2c-9445-b62cae2cbb7b  rev 1  — 31% shorter than its text implies
+    0.694  target2         1536ms  "why do you want to meet people?"
+           1c20aa6e-bd10-4d85-a8bb-3fbfa571babe  rev 1  — 31% shorter than its text implies
+    0.695  target1         2184ms  "I'm not going to be able to remember easily."
+           a7010034-6046-4198-9c14-9e87252fbfc5  rev 1  — 31% shorter than its text implies
+    0.696  target1         2736ms  "He doesn't want to be quiet when other people are her
+           00d33fb4-45e8-4373-a606-92412ddcd3b8  rev 1  — 30% shorter than its text implies
+    0.697  target1         1992ms  "to guess what's going to happen tomorrow"
+           7ad654f5-5642-41d2-b90a-efffcaeea9bf  rev 1  — 30% shorter than its text implies
+    0.701  target1         2304ms  "I'm going to be able to speak after you finish"
+           5fb287c6-5ba4-482f-a336-b42d97efa59b  rev 1  — 30% shorter than its text implies
+    0.702  target2         1704ms  "Did you want to show me something?"
+           012d8c88-7b76-4eb5-873e-f7c5fee398b2  rev 1  — 30% shorter than its text implies
+    0.702  target1         1704ms  "Did you want to show me something?"
+           90e6212a-6c93-43d4-9dc8-05ac0dfebaed  rev 1  — 30% shorter than its text implies
+    0.705  target1         2064ms  "I'm trying to remember the whole sentence"
+           2ebf3ce8-e8ff-418b-9988-ca77df7cae5c  rev 1  — 30% shorter than its text implies
+    0.706  target1         1512ms  "did you want to speak with me?"
+           11af1c97-bdab-4aec-9c44-ee1916814524  rev 1  — 29% shorter than its text implies
+    0.706  target1         1968ms  "how long have you been learning English"
+           acead72a-7437-4e88-abc1-98f0dfefcc2d  rev 1  — 29% shorter than its text implies
+    0.707  target2         1920ms  "he doesn't want to interrupt the story"
+           1f31131f-2f04-448b-af4f-73a69abeb3ce  rev 1  — 29% shorter than its text implies
+    0.707  target1         1464ms  "do you want to read anything?"
+           abca3606-721b-4b6c-8805-12b79da374f1  rev 1  — 29% shorter than its text implies
+    0.709  target1         1824ms  "because I like to speak this morning"
+           5369faba-1eb8-4968-8d3a-de5b211f0fe8  rev 1  — 29% shorter than its text implies
+     0.71  target1         2688ms  "I'm trying to explain what's going to happen tomorrow
+           a3256e19-7cb5-4c90-81c0-13cf6223835e  rev 1  — 29% shorter than its text implies
+    0.711  target2         2184ms  "but she doesn't want to read this afternoon"
+           efbb0ec3-62cb-491e-a0f6-0b9f93d5c892  rev 1  — 29% shorter than its text implies
+    0.711  target1         2184ms  "how do you feel at the moment this morning?"
+           d00765ee-704b-4140-8c41-7cfa51a6a592  rev 1  — 29% shorter than its text implies
+    0.712  target1         1728ms  "are you going to speak in English?"
+           448a1909-7811-427a-bdc8-c310c336c25a  rev 1  — 29% shorter than its text implies
+    0.713  target2         1680ms  "so how do you feel at the moment?"
+           88f2d1a7-60f6-4269-bc37-7b04b1c124df  rev 1  — 29% shorter than its text implies
+    0.714  target1         1632ms  "because he doesn't want to speak"
+           ccd643ee-1f15-493a-82ee-5155da04ba46  rev 1  — 29% shorter than its text implies
+    0.715  target1         1992ms  "I'm not sure if I can remember a little"
+           fc99098b-8088-48c9-b5ab-ad3386e0c27d  rev 1  — 28% shorter than its text implies
+    0.715  target2         1584ms  "she wants to come back with you"
+           05959ba6-fb87-45ed-b8b9-829321a4f2d2  rev 1  — 28% shorter than its text implies
+    0.715  target1         1584ms  "she wants to come back with you"
+           e6156ff8-9c1c-46d3-9ba9-e3cd27cb0596  rev 1  — 28% shorter than its text implies
+    0.715  target2         1992ms  "how long have you been learning English"
+           ecd1fc1a-23f2-4266-8c56-4e241cfd7371  rev 1  — 28% shorter than its text implies
+    0.716  target1         2760ms  "but how long have you been learning English very well
+           d21e0890-57e6-4309-9dfa-0cec75a96b9e  rev 1  — 28% shorter than its text implies
+    0.717  target2         2664ms  "because he wants to speak when other people are here"
+           f92478c2-a6ef-4b30-bfd4-177606e1499e  rev 1  — 28% shorter than its text implies
+    0.718  target1         1128ms  "are you going to learn"
+           8c3a457b-5d4b-4221-b68d-970cb113b000  rev 1  — 28% shorter than its text implies
+    0.718  target1         1488ms  "do you want to speak tonight?"
+           12d9c529-ba79-4af7-b97d-84ab857172ab  rev 1  — 28% shorter than its text implies
+    0.719  target1         2208ms  "do you want to help me before I have to go?"
+           385b111d-789e-4953-8a58-43ebf764e13e  rev 1  — 28% shorter than its text implies
+    0.719  target2         2208ms  "because she doesn't want to speak very well"
+           72ffc257-712b-4c4d-8bfc-7e5723291223  rev 1  — 28% shorter than its text implies
+     0.72  target1         2160ms  "because I don't care about making mistakes"
+           22d63ba0-b256-4f55-8ddf-122742ab6ade  rev 1  — 28% shorter than its text implies
+    0.721  target1         1752ms  "how long have you been doing this?"
+           5202874e-6aec-4e57-a5b0-d2bd561ff46c  rev 1  — 28% shorter than its text implies
+    0.721  target1         2472ms  "but do you want to read anything this afternoon?"
+           9a0cb59c-b41e-4bdd-9457-028a80f3a0f7  rev 1  — 28% shorter than its text implies
+    0.721  target2         2472ms  "but do you want to read anything this afternoon?"
+           f529b02e-181c-4b91-be66-2dd3d2dc26dd  rev 1  — 28% shorter than its text implies
+    0.721  target2         1752ms  "do you want to speak this morning?"
+           448dd79e-5d64-47a0-a17c-9c159b8d8788  rev 1  — 28% shorter than its text implies
+    0.722  target2         2064ms  "I'd like to meet at six o'clock with you"
+           c39e2b14-9ae4-4e3a-8373-c39c9b09150a  rev 1  — 28% shorter than its text implies
+    0.722  target2         2424ms  "because I'm starting to feel tired this morning"
+           5c0e2e94-7778-4f79-9fad-ffed5a58203c  rev 1  — 28% shorter than its text implies
+    0.722  target1         2064ms  "because I don't need to learn everything"
+           4e69445d-5ff6-4cab-b823-4306a04c1ed2  rev 1  — 28% shorter than its text implies
+    0.724  target2         2016ms  "how do you feel at the moment about it?"
+           b8e00b52-7d23-4f81-9ca1-dea5bdc4e2d9  rev 1  — 28% shorter than its text implies
+    0.725  target2         1656ms  "I want to say something with you"
+           db1edb7d-fe6d-4402-9cb1-1869bb9b889c  rev 1  — 28% shorter than its text implies
+    0.726  target1         2904ms  "Because I think that it's a good thing to make mistak
+           a2b67efa-725c-45d4-b1fe-1f9bc389a7ca  rev 1  — 27% shorter than its text implies
+    0.726  target2         1920ms  "we don't want to interrupt in English"
+           6871c6d0-c866-40fb-b9ce-5554ae01488b  rev 1  — 27% shorter than its text implies
+    0.728  target1         2496ms  "I'm not trying to finish as quickly as possible."
+           a70e0e45-dcf0-44b4-b7b1-081803d4b301  rev 1  — 27% shorter than its text implies
+     0.73  target1         2400ms  "I was starting to feel better than last night."
+           831f7677-ae44-4dd5-bf74-25c7c1cd341d  rev 1  — 27% shorter than its text implies
+     0.73  target2         1824ms  "to speak when other people are here"
+           959d8465-83f1-44e1-8a82-eb02f5cfb8ed  rev 1  — 27% shorter than its text implies
+    0.731  target2         2664ms  "I don't want to be quiet when other people are here"
+           ab62f18c-ccd0-43fd-aa16-68e9523c4a0f  rev 1  — 27% shorter than its text implies
+    0.732  target1         1464ms  "I'm trying to learn with you"
+           7e8eca87-a068-45cc-bac8-bcf8cef53a6a  rev 1  — 27% shorter than its text implies
+    0.733  target1         2304ms  "I'm not sure what's going to happen tomorrow"
+           18998700-4de3-45a8-9715-fee7076f43ee  rev 1  — 27% shorter than its text implies
+    0.733  target1         1728ms  "why do you want to learn quickly?"
+           926301c5-8a16-4262-841f-d62519930172  rev 1  — 27% shorter than its text implies
+    0.733  target1         2304ms  "she doesn't want to read anything in English"
+           0703afe3-35d3-4a12-89e8-ffbd14655c60  rev 1  — 27% shorter than its text implies
+    0.735  target2         2784ms  "I'm going to remember what's going to happen tomorrow
+           345c10a0-749c-4349-9eb6-68ecabcf4082  rev 1  — 26% shorter than its text implies
+    0.735  target2         1680ms  "because he doesn't want to speak"
+           69ab9ee2-01bf-44eb-b6e5-3c6690df7c68  rev 1  — 27% shorter than its text implies
+    0.735  target1         1680ms  "how long have you been learning?"
+           e5da8bc1-5ad8-4147-91b2-d93e2a20f075  rev 1  — 27% shorter than its text implies
+    0.737  known           1896ms  "मैं थोड़ी अंग्रेज़ी बोलना चाहता हूँ।"
+           6a6d399f-175c-4f3d-9dac-71518e112821  rev 1  — 26% shorter than its text implies
+    0.739  target1         1584ms  "I'd like to come back with you"
+           50c5763d-3e73-42db-b28b-13e840140764  rev 1  — 26% shorter than its text implies
+    0.739  target2         2112ms  "I'd like to come back with everyone else"
+           6293a815-deb0-41ca-beff-13c0b69cb04b  rev 1  — 26% shorter than its text implies
+    0.739  target2         1584ms  "I'd like to come back with you"
+           ecdd2875-1ff5-43cc-aaf2-df95193fd9da  rev 1  — 26% shorter than its text implies
+    0.739  target2         1320ms  "I'd like to meet with you"
+           b8f66438-3c97-4b63-9fea-72e947af0e2b  rev 1  — 26% shorter than its text implies
+    0.739  target1         1584ms  "but we don't want to interrupt"
+           ae08955e-1f14-41c6-8b30-2730dbe6441a  rev 1  — 26% shorter than its text implies
+    0.739  target1         1584ms  "do you want to read the story?"
+           f75574a6-1c8d-464e-a211-38ed55ad6110  rev 1  — 26% shorter than its text implies
+    0.739  target1         1584ms  "because I don't worry about it"
+           ecc241c1-6118-4aac-985f-afbb5edffdc1  rev 1  — 26% shorter than its text implies
+    0.739  target1         1584ms  "I'm not trying to say anything"
+           59a233ef-cc37-43cb-bb4e-5a2c0d8bb464  rev 1  — 26% shorter than its text implies
+    0.741  target1         2064ms  "I'd like to come back later on with you"
+           bb37befa-4291-4fbd-9305-c0fa4dabff1a  rev 1  — 26% shorter than its text implies
+    0.741  target1         1800ms  "he doesn't want to speak very well"
+           13b32e9a-882a-491b-91b4-5c7d2f025d21  rev 1  — 26% shorter than its text implies
+    0.741  target1         2328ms  "because we don't want to interrupt the story"
+           d3140c9c-e4fc-4194-a0c0-5fc1bae000f1  rev 1  — 26% shorter than its text implies
+    0.741  target2         2064ms  "because I don't need to know everything"
+           8e40e3b1-646b-41e5-9815-908983d430ec  rev 1  — 26% shorter than its text implies
+    0.741  target1         2064ms  "because I don't need to know everything"
+           a0c58dd0-78b4-434a-a5cc-f27fda8872f3  rev 1  — 26% shorter than its text implies
+    0.742  target1         1536ms  "because I want to meet people"
+           817f6c07-34bb-4825-bb69-b7831012777f  rev 1  — 26% shorter than its text implies
+    0.742  target2         2280ms  "do you want to help me before I have to go?"
+           fd41870e-4630-4c2c-91c4-119ee2ac912b  rev 1  — 26% shorter than its text implies
+    0.743  target1         2016ms  "to practise speaking with someone else"
+           c2d67c63-c851-45ba-98ad-94b55fdd1bc0  rev 1  — 26% shorter than its text implies
+    0.743  target2         2016ms  "I'd like to meet this evening with you"
+           c2c66078-8b29-45f8-9720-40806e67f6f9  rev 1  — 26% shorter than its text implies
+    0.744  target1         2232ms  "but I'm looking forward to speaking better"
+           fd1af2eb-f484-484f-ab2a-8900e0cdf655  rev 1  — 26% shorter than its text implies
+    0.744  target2         1488ms  "I'd like to learn everything"
+           7a104c7e-8573-4305-8a32-ff1a5a52cfff  rev 1  — 26% shorter than its text implies
+    0.744  target1         1488ms  "I think you know what I mean"
+           8932815b-b687-402c-b9de-ca8b6631124a  rev 1  — 26% shorter than its text implies
+    0.745  target2         1704ms  "because I like to think about it"
+           2cd72305-e090-4626-8778-c01356e36586  rev 1  — 25% shorter than its text implies
+    0.746  target2         2184ms  "I'd like to speak in English this evening"
+           826fe8eb-ef88-4bc0-aae8-520cde6ede9e  rev 1  — 25% shorter than its text implies
+    0.747  target2         2400ms  "I want to practise speaking with someone else"
+           251df47d-6437-41a2-a409-57ef05a9bcbb  rev 1  — 25% shorter than its text implies
+    0.747  target1         1440ms  "I'm trying to say something"
+           468f9f6e-267b-40b8-b101-8d030c557cc3  rev 1  — 25% shorter than its text implies
+    0.747  target1         2616ms  "I'd like to come back with everyone else later on"
+           e2f2a65d-bbd7-4aa3-b879-87bd3061100f  rev 1  — 25% shorter than its text implies
+    0.747  target1         2400ms  "but you want to meet people who speak English"
+           e01721b6-4f31-4b96-bcd9-b36a8d681528  rev 1  — 25% shorter than its text implies
+    0.748  target1         2136ms  "how long have you been learning English?"
+           0773a0be-feb4-49da-9f28-f860b4d2e3fb  rev 1  — 25% shorter than its text implies
+    0.748  target1         1176ms  "how long have you been"
+           8df3b812-a2f7-4517-b2d7-7985fd69bb58  rev 1  — 25% shorter than its text implies
+     0.75  target1         1608ms  "you want to come back later on"
+           075c9cac-e1a0-4756-ab80-ea445c53d0a9  rev 1  — 25% shorter than its text implies
+     0.75  target2         2304ms  "because I want to speak before I have to go"
+           34b50214-7ccc-4dee-b843-26e4cb4b5d21  rev 1  — 25% shorter than its text implies
+     0.75  target1         1608ms  "did you want to ask something?"
+           81278696-9ddd-433d-b1a2-23ff0a48cbca  rev 1  — 25% shorter than its text implies
+     0.75  target2         1608ms  "do you want to read the story?"
+           82b6a654-f3a5-4b41-b32a-5d1b290ce452  rev 1  — 25% shorter than its text implies
+     0.75  target2         2088ms  "I think it's useful to speak in English"
+           25333421-0b3d-420f-98bf-6ccd97fcc64e  rev 1  — 25% shorter than its text implies
+     0.75  target1         2088ms  "I don't worry about making mistakes now"
+           778e7ce9-c10e-4d72-bb8a-02e7dec6d3d4  rev 1  — 25% shorter than its text implies
+     0.75  target2         2304ms  "to finish in English as quickly as possible"
+           311eb202-4cfc-4dc8-a78d-b9f1fee5a86f  rev 1  — 25% shorter than its text implies
+     0.75  target1         2304ms  "I'm trying to finish as quickly as possible"
+           75f7722b-3945-40e9-b8de-3717bd6a8274  rev 1  — 25% shorter than its text implies
+     0.75  target2         2304ms  "not trying to finish as quickly as possible"
+           9dc03e6a-f0a6-439a-96bf-5f3b3adb97d3  rev 1  — 25% shorter than its text implies
+    0.751  target2         1824ms  "I want to speak something with you"
+           0d00ffd7-6b5a-4ae5-a1a3-38cbd6c43b72  rev 1  — 25% shorter than its text implies
+    0.751  target1         1824ms  "I want to speak something with you"
+           acc5f505-56a3-4e70-92cd-e946c31f8146  rev 1  — 25% shorter than its text implies
+    0.751  target2         1824ms  "are you going to speak in English?"
+           d267ae62-ed5e-4955-838c-255d9ce0be2c  rev 1  — 25% shorter than its text implies
+    0.751  target2         1824ms  "and how do you feel at the moment?"
+           774c406b-6f33-477c-b521-6d350fff2fe0  rev 1  — 25% shorter than its text implies
+    0.751  target1         1824ms  "I was starting to speak in English"
+           b776385a-d81a-4874-a2e2-d96bc1763a80  rev 1  — 25% shorter than its text implies
+    0.751  target1         1824ms  "because it's a good thing to learn"
+           b98f67df-ea10-41eb-a18c-0f7543891b8d  rev 1  — 25% shorter than its text implies
+    0.752  target1         2040ms  "you want to start talking more quickly"
+           b4b2d01c-0d56-4d1e-b523-738b36866144  rev 1  — 25% shorter than its text implies
+    0.753  target2         1560ms  "I'd like to meet this evening"
+           b1277917-20bf-45b0-a1e8-7e4d60e3ca7a  rev 1  — 25% shorter than its text implies
+    0.753  target1         1776ms  "how long have you been improving?"
+           9d1286ab-08a0-47ef-9b4b-156aacaff21e  rev 1  — 25% shorter than its text implies
+    0.753  target2         1776ms  "because you want to speak tonight"
+           f4e22c63-7e84-4196-b010-ef9293be8cff  rev 1  — 25% shorter than its text implies
+    0.754  target1         2424ms  "are you going to help me before I have to go?"
+           d1364333-f338-4462-a432-9aa6630cb8fd  rev 1  — 25% shorter than its text implies
+    0.754  target2         2856ms  "I think it's a good thing to make mistakes in English
+           ab9a363a-a6ac-46d5-8093-37d8ab33419d  rev 1  — 25% shorter than its text implies
+    0.756  target2         3024ms  "I wouldn't like to guess what's going to happen tomor
+           c252cc92-55c6-44ef-ab1c-75a319acc840  rev 1  — 24% shorter than its text implies
+    0.756  target1         1512ms  "to be able to speak with you"
+           483203c0-0c57-438a-ac0a-a6d687bc9609  rev 1  — 24% shorter than its text implies
+    0.756  target2         2160ms  "to guess what's going to happen tomorrow"
+           d988a200-5c7b-434b-8c6c-ea7a5c3ac09b  rev 1  — 24% shorter than its text implies
+    0.756  target1         2376ms  "because you want to learn as soon as you can"
+           0c713d52-adb0-4876-9364-c4394c1f7f99  rev 1  — 24% shorter than its text implies
+    0.756  target2         1944ms  "because I like to speak this morning"
+           0933d38c-776b-4281-b805-e7194ea4841c  rev 1  — 24% shorter than its text implies
+    0.758  target1         2544ms  "because I want to meet people who speak English"
+           cecc4fd6-2295-49d2-a6cb-626306a78d64  rev 1  — 24% shorter than its text implies
+    0.758  target1         1896ms  "I've been learning for about a week"
+           ede47952-7d46-4357-8622-0ef80410094e  rev 1  — 24% shorter than its text implies
+    0.758  target1         2328ms  "because she doesn't want to speak very well"
+           2ee7ca26-620a-4cc5-9528-6f4e35d1123c  rev 1  — 24% shorter than its text implies
+    0.759  target1         1680ms  "I'm trying to practise speaking"
+           e09a4a51-768c-4016-a161-9da937bd2d1d  rev 1  — 24% shorter than its text implies
+    0.759  target2         1464ms  "because you want to help me"
+           f13b8e9d-a740-4632-86c4-b540343da964  rev 1  — 24% shorter than its text implies
+    0.759  target1         1464ms  "she wants to read something"
+           b5ef04f3-06c5-4faa-9944-18baf1d99e59  rev 1  — 24% shorter than its text implies
+    0.759  known           1680ms  "क्योंकि मैं नहीं चाहता गलतियाँ।"
+           00fe42d9-f744-4f9f-b93c-f8a12ff24350  rev 1  — 24% shorter than its text implies
+    0.759  target2         1464ms  "because I think it's useful"
+           f20a5609-2b81-4d41-a50c-df0df751f2a7  rev 1  — 24% shorter than its text implies
+     0.76  target1         2280ms  "and I want to come back with everyone else"
+           e4e89bc3-bc1a-44bd-9a16-dd046c8a60b4  rev 1  — 24% shorter than its text implies
+     0.76  target2         1248ms  "do you want to help me?"
+           230197df-6629-48d4-b089-240d846e7b7b  rev 1  — 24% shorter than its text implies
+     0.76  target2         2064ms  "how do you feel at the moment tonight?"
+           53d77e48-dee2-462f-ac2a-b82bc3f9a2f6  rev 1  — 24% shorter than its text implies
+    0.761  target2         2664ms  "She doesn't want to read anything this afternoon."
+           0460d3d2-ec60-483b-9dd7-9c9bf9a6c343  rev 1  — 24% shorter than its text implies
+    0.761  target2         2664ms  "why do you want to meet people who speak English?"
+           be07d545-ad36-47c7-9a5d-1cafddb18461  rev 1  — 24% shorter than its text implies
+    0.761  target1         1848ms  "I wasn't thinking about the answer"
+           41727ee1-8223-4ad8-a5ed-a8a75820fd79  rev 1  — 24% shorter than its text implies
+    0.761  target2         1848ms  "because it's a good thing to learn"
+           2cb6091d-992e-4cd2-8c15-895d35458723  rev 1  — 24% shorter than its text implies
+    0.762  target2         2448ms  "are you going to help me before I have to go?"
+           02377348-609a-476a-b3b7-9e9750211057  rev 1  — 24% shorter than its text implies
+    0.762  target2         3048ms  "Because I think that it's a good thing to make mistak
+           0c4f3c56-fc18-43c3-a97f-4ed8cc583c4b  rev 1  — 24% shorter than its text implies
+    0.762  target2         1632ms  "how do you feel at the moment?"
+           1236708e-6ab6-4e41-939c-381497058c85  rev 1  — 24% shorter than its text implies
+    0.762  target2         2232ms  "do you want to speak before I have to go?"
+           8c3ec33d-db12-45d4-9513-47f583b12438  rev 1  — 24% shorter than its text implies
+    0.764  target2         2184ms  "I wanted to ask you something yesterday."
+           4d8d9a34-6376-4a02-8d52-2a300faece7e  rev 1  — 24% shorter than its text implies
+    0.764  target2         2184ms  "It's like this, if you know what I mean."
+           76590989-5acd-4c70-92b3-977d6b86b304  rev 1  — 24% shorter than its text implies
+    0.764  target2         2784ms  "I'm going to practise speaking as often as possible"
+           f7444643-9506-45ea-922e-1e43f2e07d08  rev 1  — 24% shorter than its text implies
+    0.764  target1         2400ms  "I'm going to try in English after you finish"
+           6d883a79-40de-43a6-8582-0ddea3509ec0  rev 1  — 24% shorter than its text implies
+    0.764  target1         2784ms  "I'd like to explain what's going to happen tomorrow"
+           e8def7f9-e435-466c-a52b-04f1bf414818  rev 1  — 24% shorter than its text implies
+    0.765  target1         1968ms  "are you learning quickly in English?"
+           afca9c94-1bd7-4290-bd66-78a3f45cb705  rev 1  — 23% shorter than its text implies
+    0.765  target2         1584ms  "you want to meet this evening"
+           c03a257c-cdb3-4305-915c-5b7b221368df  rev 1  — 24% shorter than its text implies
+    0.765  target1         1584ms  "you want to meet this evening"
+           e99a7ee8-8275-477d-bf04-1c5d4d200bef  rev 1  — 24% shorter than its text implies
+    0.765  target2         1968ms  "do you want to speak this afternoon?"
+           0be4b314-9538-4a5b-a3c5-b82ce1baa8b9  rev 1  — 23% shorter than its text implies
+    0.766  target1         2736ms  "I'm not sure if I can remember the whole sentence."
+           f538bfb9-98f0-488f-ad16-4882f522bc16  rev 1  — 23% shorter than its text implies
+    0.766  target2         1368ms  "he wants to talk with you"
+           05c0d63d-3a5c-43c1-b369-9bfee7d01af4  rev 1  — 23% shorter than its text implies
+    0.766  target2         1368ms  "do you want to interrupt?"
+           a6d57121-689e-49b8-b163-4c42f21cfe31  rev 1  — 23% shorter than its text implies
+    0.767  target1         2136ms  "I'm going to practise speaking with you"
+           1ca7129d-03f4-4881-aaf0-95569b7f60be  rev 1  — 23% shorter than its text implies
+    0.767  target2         2520ms  "I'm going to remember the whole sentence today"
+           17e5a794-c482-42d5-95fd-7aa963a76f5b  rev 1  — 23% shorter than its text implies
+    0.767  target2         2904ms  "I'm trying to explain what's going to happen tomorrow
+           d2c0fa89-41c7-42d5-a69a-694efc64a25a  rev 1  — 23% shorter than its text implies
+    0.767  target2         2136ms  "and I want you to speak English with me"
+           4784502b-ebae-4aad-88c9-0f0929edf7a0  rev 1  — 23% shorter than its text implies
+    0.767  target2         2136ms  "I'm trying to practise talking with you"
+           d7a5d0dd-f386-4215-bb5b-26b2633fb3c8  rev 1  — 23% shorter than its text implies
+    0.767  target1         2904ms  "I think it's a good thing to make mistakes in English
+           e878ee88-5dfc-4e8a-b745-654ae89dfaa4  rev 1  — 23% shorter than its text implies
+    0.768  target2         1536ms  "you want to speak in English"
+           3f9a7b07-f149-4604-b09b-e6b01c7eaa7d  rev 1  — 23% shorter than its text implies
+    0.768  target1         1920ms  "are you learning English very well?"
+           3fb3bf8b-8744-400c-808f-ad7fe0ce894f  rev 1  — 23% shorter than its text implies
+    0.769  target2         2088ms  "because I'd like to start talking more"
+           31da4860-8627-407b-b8fa-de3f6345958c  rev 1  — 23% shorter than its text implies
+     0.77  target2         1704ms  "she wants to learn this morning"
+           376ccf8b-7ebd-4824-a934-6fe0a13224b8  rev 1  — 23% shorter than its text implies
+    0.771  target2         2424ms  "We want to meet at six o'clock this evening."
+           77fcedc0-ca44-4574-bac3-752ece46b8e0  rev 1  — 23% shorter than its text implies
+    0.771  known           1872ms  "मैं अंग्रेज़ी में थोड़ी बोलता हूँ।"
+           854e6cd4-9fc5-436e-b230-d8acd089854b  rev 1  — 23% shorter than its text implies
+    0.771  target1         2424ms  "I can remember the whole sentence in English"
+           6756003b-1627-46f8-aca0-7657322df300  rev 1  — 23% shorter than its text implies
+    0.771  target2         1872ms  "but I don't want to worry about it"
+           6598a4ca-e6ed-4d0a-acfa-c28069877d8c  rev 1  — 23% shorter than its text implies
+    0.772  target2         2592ms  "I want to speak in English as often as possible"
+           e202d865-68f9-4e9e-b573-c5fa38ca8a31  rev 1  — 23% shorter than its text implies
+    0.772  target2         3144ms  "I'm looking forward to speaking better as soon as you
+           b7fd2511-3034-4039-aa9c-34ffc1a48656  rev 1  — 23% shorter than its text implies
+    0.772  target2         1488ms  "you wanted to speak with me"
+           140ddaa7-8e4c-42db-b9c5-c1c1e93df3cc  rev 1  — 23% shorter than its text implies
+    0.772  target1         1488ms  "how long have you been here"
+           2ef8a957-539f-4099-94d6-29f34f988937  rev 1  — 23% shorter than its text implies
+    0.772  target2         1488ms  "I started to think about it"
+           31be6791-e267-4915-a39b-b8f690d683f9  rev 1  — 23% shorter than its text implies
+    0.773  target2         1656ms  "because you want to meet today"
+           090297ad-d991-439b-98fb-0ea40e59f6c0  rev 1  — 23% shorter than its text implies
+    0.773  target2         1656ms  "do you want to show something?"
+           1cb5f1d2-9725-4680-b8fa-a29195b085d8  rev 1  — 23% shorter than its text implies
+    0.773  target2         2208ms  "did you want to speak in English easily?"
+           cd53cf77-310c-460d-b7ae-17f90bad71de  rev 1  — 23% shorter than its text implies
+    0.773  target2         1656ms  "because I don't worry about it"
+           57521cd1-89f7-4a95-96ee-4d729ba0887c  rev 1  — 23% shorter than its text implies
+    0.774  target1         3096ms  "I'm looking forward to speaking better as soon as I c
+           1f92cab5-8590-49e4-9f14-fbde51c2629e  rev 1  — 23% shorter than its text implies
+    0.774  target1         1824ms  "I'm trying to explain what I mean"
+           55bb9b85-3149-461f-a0b2-b96223c53522  rev 1  — 23% shorter than its text implies
+    0.774  target2         2544ms  "and I want to meet this evening at six o'clock"
+           ccd96e40-cd4f-4030-9b1c-7071b5df1213  rev 1  — 23% shorter than its text implies
+    0.774  target2         1824ms  "why do you want to learn quickly?"
+           194a02dd-c2c8-4609-a306-36f6cfcbab5b  rev 1  — 23% shorter than its text implies
+    0.774  target1         1272ms  "do you want to help me?"
+           dccc4ce1-e11b-4426-a9cf-59b79b3004c8  rev 1  — 23% shorter than its text implies
+    0.775  target1         2712ms  "She doesn't want to read anything this afternoon."
+           3f5e4504-7bee-4e91-9c91-94d257554d68  rev 1  — 23% shorter than its text implies
+    0.775  target2         2160ms  "I'd like to find out what the answer is"
+           4fbe71ea-6678-4202-aaf5-dc43605fa3a8  rev 1  — 22% shorter than its text implies
+    0.775  target1         1992ms  "she doesn't want to speak in English"
+           03d1c349-ee1a-47d0-88c9-13daba6ba03e  rev 1  — 23% shorter than its text implies
+    0.775  target2         2712ms  "I want to speak in English better than last night"
+           df5b3662-e4d3-4ddf-8137-74dac8f5eee3  rev 1  — 23% shorter than its text implies
+    0.776  target2         1608ms  "do you speak English with me?"
+           3c1b05da-33fd-480b-bd53-a1fa81528f75  rev 1  — 22% shorter than its text implies
+    0.776  target2         2328ms  "but I'm looking forward to speaking better"
+           e52e4329-3cc8-47f7-b83c-9483853e338f  rev 1  — 22% shorter than its text implies
+    0.776  target1         1608ms  "was starting to feel a little"
+           f45918ba-cdd5-465f-8aee-3f2b66bc9061  rev 1  — 22% shorter than its text implies
+    0.777  presentation    2832ms  "अंग्रेज़ी में — 'मैं चाहता हूँ' — जैसे — '' — में :"
+           a986fe6c-fb4f-4b49-98b9-89b52307a954  rev 1  — 22% shorter than its text implies
+    0.778  target1         1944ms  "I want to speak English with me now"
+           349c0d57-763f-4155-972d-1478da7c9126  rev 1  — 22% shorter than its text implies
+    0.778  target1         1944ms  "but I don't need to know everything"
+           e95a3c45-c4f8-472e-94a6-da95fbc63c3b  rev 1  — 22% shorter than its text implies
+    0.779  target1         2448ms  "I'm going to speak English with someone else"
+           b1f4d958-5e89-43bf-a836-c85090cc796c  rev 1  — 22% shorter than its text implies
+    0.779  target2         1224ms  "are you going to speak"
+           774cecfc-e78c-448a-b58a-be6573f02dc9  rev 1  — 22% shorter than its text implies
+    0.779  target1         2448ms  "we want to start speaking as soon as you can"
+           0da636c5-c85b-44a7-8b94-b5681b347b51  rev 1  — 22% shorter than its text implies
+    0.779  target2         2448ms  "she doesn't want to read anything in English"
+           9eab3c62-79b6-4225-8f83-643bedc29aa9  rev 1  — 22% shorter than its text implies
+     0.78  target2         1728ms  "I'd like to meet with you today"
+           f8a4d0b6-db8b-4b9d-aea2-1a7bfe5dcafc  rev 1  — 22% shorter than its text implies
+     0.78  target2         1728ms  "I'm looking forward to learning"
+           3e80f056-0aa4-4388-a2c5-6185590fef63  rev 1  — 22% shorter than its text implies
+     0.78  target1         1728ms  "I'm looking forward to learning"
+           e514553f-c51c-4125-9850-d9780fa88f5c  rev 1  — 22% shorter than its text implies
+     0.78  target2         2784ms  "because I think it's a good thing to make mistakes"
+           c17b9f18-59be-40af-aac0-f807bf3c9cdf  rev 1  — 22% shorter than its text implies
+    0.781  target2         2064ms  "I'm trying to say a little in English"
+           31f3a9e7-04bb-482c-9ff2-a1db25f634e5  rev 1  — 22% shorter than its text implies
+    0.781  target1         2232ms  "I'd like to come back with everyone else"
+           bafd7d84-6ccb-4887-a74d-159e09968602  rev 1  — 22% shorter than its text implies
+    0.781  target2         2400ms  "we want to meet this evening at six o'clock"
+           5182cb8c-51bb-4d6c-86a8-69a1950d17ba  rev 1  — 22% shorter than its text implies
+    0.781  target1         1896ms  "because we want to speak very well"
+           876d5b3a-49cb-4a36-a97e-76bae58ba3eb  rev 1  — 22% shorter than its text implies
+    0.781  target1         2400ms  "because I want to speak before I have to go"
+           9a517f29-6571-422c-b359-2352d704c0b8  rev 1  — 22% shorter than its text implies
+    0.781  target1         2064ms  "she wants to practise speaking better"
+           e7fa8269-bba3-441f-a2fb-5d345bb5d663  rev 1  — 22% shorter than its text implies
+    0.781  target2         1896ms  "because you want to show something"
+           948d8f3c-4b6c-4cf0-b2e3-e41464aeabc7  rev 1  — 22% shorter than its text implies
+    0.781  target1         1896ms  "but how do you feel at the moment?"
+           3615264d-a7e6-4e55-8977-b94f52bcffa4  rev 1  — 22% shorter than its text implies
+    0.781  target1         1896ms  "I think it's a good thing to speak"
+           b181491c-6077-41a7-b62d-4b923ca7324a  rev 1  — 22% shorter than its text implies
+    0.782  target1         2736ms  "he wants to come back with everyone else later on"
+           73a9c7f6-a29b-4483-9a2b-b466dae973e2  rev 1  — 22% shorter than its text implies
+    0.784  target2         2688ms  "I'm going to practise speaking with someone else"
+           e90ef5f1-ee0d-4df7-8dd8-6a7f0e341e7a  rev 1  — 22% shorter than its text implies
+    0.784  known           2184ms  "मैं आपके साथ अंग्रेज़ी बोलना चाहता हूँ।"
+           23178c67-3af4-4653-8a4c-c82b03a7e40c  rev 1  — 22% shorter than its text implies
+    0.784  known           2016ms  "मैं कुछ भी आपके साथ बोलना चाहता हूँ।"
+           e9e71e70-150b-4cae-92df-286604727074  rev 1  — 22% shorter than its text implies
+    0.784  target2         2184ms  "I'm not sure if I can remember a little"
+           a441575f-17a0-46a0-a117-950b58841fa1  rev 1  — 22% shorter than its text implies
+    0.784  target2         2856ms  "I'd like to explain what's going to happen tomorrow"
+           daffb3ef-ce1a-4b6d-a659-9755c7066dc0  rev 1  — 22% shorter than its text implies
+    0.784  target2         1680ms  "I'd like to come back tomorrow"
+           930d17e4-f4ee-4801-8523-1d4740beff08  rev 1  — 22% shorter than its text implies
+    0.784  target2         1344ms  "do you speak in English?"
+           ed05e5b0-e2cf-4816-96f0-7d41fe7148d8  rev 1  — 22% shorter than its text implies
+    0.784  target1         1680ms  "he wants to come back later on"
+           2d39ccea-0553-468a-ba26-bb8c9ecf19d3  rev 1  — 22% shorter than its text implies
+    0.784  target2         1848ms  "and I want to meet at six o'clock"
+           c5656015-aa4a-49c7-a4ac-fc1304aae274  rev 1  — 22% shorter than its text implies
+    0.784  target1         2016ms  "do you want to speak this afternoon?"
+           3390ab5c-1ec9-4165-addf-ca6dfdbea63e  rev 1  — 22% shorter than its text implies
+    0.784  target2         1848ms  "we don't want to speak in English"
+           c50d22e3-8105-4565-990d-decc744a794a  rev 1  — 22% shorter than its text implies
+    0.784  target1         1848ms  "she doesn't want to read anything"
+           e6535932-9268-4856-9165-0e2149c2a737  rev 1  — 22% shorter than its text implies
+    0.784  target1         2688ms  "do you want to learn carefully for about a week?"
+           0573b8b4-ecf4-4551-a696-5cfab22839ae  rev 1  — 22% shorter than its text implies
+    0.787  target1         1800ms  "I want to learn English with you"
+           33c4dd0d-6d7c-4c7b-b1fa-d6955c27c37b  rev 1  — 21% shorter than its text implies
+    0.787  target1         1968ms  "I want to be able to speak with you"
+           3ccad57f-137d-4caf-b662-b14d84b38ec8  rev 1  — 21% shorter than its text implies
+    0.787  target1         2304ms  "I'm trying to be able to speak in English"
+           e1224a85-90a0-4c96-9f6d-e105ddd36989  rev 1  — 21% shorter than its text implies
+    0.787  target1         2304ms  "I'd like to speak in English this evening"
+           11906e1f-2129-4396-badc-849f43752617  rev 1  — 21% shorter than its text implies
+    0.787  target1         1800ms  "because I like to think about it"
+           6849168b-0a20-4668-9c70-f35819d5e5b2  rev 1  — 21% shorter than its text implies
+    0.787  target1         2136ms  "I started to think about it last month"
+           e0e7319b-987d-4c47-9d56-5c2cbfb75f8d  rev 1  — 21% shorter than its text implies
+    0.788  target1         1464ms  "when other people are here"
+           55948145-76a3-4f9e-92e3-35ec8065be93  rev 1  — 21% shorter than its text implies
+    0.788  target2         1464ms  "she wants to help me today"
+           23c89d06-11cf-4738-a27f-c3f45ba8c55e  rev 1  — 21% shorter than its text implies
+    0.788  target1         1464ms  "I'd like to think about it"
+           74939973-eb6b-4f0f-bea0-d3f90c66d11e  rev 1  — 21% shorter than its text implies
+    0.788  target1         1464ms  "but I don't worry about it"
+           97ad5cc7-a15e-422a-8a6e-6454be4da122  rev 1  — 21% shorter than its text implies
+    0.788  target2         1632ms  "because I don't want mistakes"
+           aa61151e-19a7-4414-acab-d4d6d03c5b45  rev 1  — 21% shorter than its text implies
+    0.789  target1         2424ms  "I want to learn the whole sentence with you"
+           bfdd0b6c-29e4-4bd6-82b0-538be5c6c40b  rev 1  — 21% shorter than its text implies
+    0.789  target2         2424ms  "how do you feel at the moment this morning?"
+           7a11ddd0-eb15-4864-bc3a-ecf72c52ab30  rev 1  — 21% shorter than its text implies
+     0.79  presentation    5472ms  "अंग्रेज़ी में — 'किसी और के साथ' — जैसे — 'मैं किसी औ
+           aa1a7562-34d4-4768-8213-7da2e1972462  rev 1  — 21% shorter than its text implies
+     0.79  target2         2256ms  "how long have you been speaking English?"
+           386b566b-2bf1-473e-ada8-25dc58f23a8a  rev 1  — 21% shorter than its text implies
+     0.79  target1         2256ms  "how long have you been speaking English?"
+           c9631b43-c79b-4079-8915-95b0b307dd30  rev 1  — 21% shorter than its text implies
+     0.79  target1         2088ms  "it's a good thing to speak in English"
+           725db82f-a9ab-46e9-a9ae-320e1a58f472  rev 1  — 21% shorter than its text implies
+    0.791  presentation    2544ms  "अंग्रेज़ी में — 'जल्द ही' — जैसे — '' — में :"
+           ef6c45a1-e8a4-4685-98be-6ff5fd20bd5d  rev 1  — 21% shorter than its text implies
+    0.791  target1         2880ms  "I'm going to practise speaking as often as possible"
+           a8955abf-fb54-4a1c-840b-5e61d9953547  rev 1  — 21% shorter than its text implies
+    0.791  target2         1920ms  "I want to be able to speak English"
+           ffe4d71b-5bf3-438c-aaf4-82440e29a9e8  rev 1  — 21% shorter than its text implies
+    0.791  target2         1752ms  "I'd like to find out the answer"
+           32184126-c712-4383-8803-9c4e3a8eedb7  rev 1  — 21% shorter than its text implies
+    0.791  target2         2544ms  "but you want to meet people who speak English"
+           0ebe76b3-cc44-411a-b3af-56d2335434a6  rev 1  — 21% shorter than its text implies
+    0.791  target1         1920ms  "because I want to speak in English"
+           9cc161bb-f973-4d88-abc9-e9e49a201d28  rev 1  — 21% shorter than its text implies
+    0.791  target1         1920ms  "and how do you feel at the moment?"
+           ea25af17-7463-4846-87ee-052db71980cb  rev 1  — 21% shorter than its text implies
+    0.791  target2         2544ms  "do you want to finish as quickly as possible?"
+           e0629f3b-ba63-458b-b9b2-a3096f53c383  rev 1  — 21% shorter than its text implies
+    0.792  target2         3000ms  "I want to speak English with you as often as possible
+           f82d9120-2cb4-475a-b5aa-abb70ad97da1  rev 1  — 21% shorter than its text implies
+    0.792  target2         1584ms  "to be able to speak with you"
+           195ce8ff-a720-481d-ada0-f5e0eb93f726  rev 1  — 21% shorter than its text implies
+    0.792  target2         2376ms  "I'd like to come back and speak in English"
+           6e6c9f96-a88c-4eff-b05c-76d7144e61d4  rev 1  — 21% shorter than its text implies
+    0.793  presentation    2832ms  "अंग्रेज़ी में — 'जाने से पहले' — जैसे — '' — में :"
+           388d5020-4b8b-48d6-a38c-2a27b41f2828  rev 1  — 21% shorter than its text implies
+    0.793  target2         2208ms  "I'd like to come back later on with you"
+           106a55f5-c112-4fd2-ae84-05e98d32bd06  rev 1  — 21% shorter than its text implies
+    0.793  target1         2208ms  "he wants to find out what the answer is"
+           829096b4-7bd8-4479-9cc3-58039fdee66d  rev 1  — 21% shorter than its text implies
+    0.793  target1         1416ms  "but I'd like to come back"
+           78220738-ada5-4377-8218-3e200d81f61f  rev 1  — 21% shorter than its text implies
+    0.793  target2         2040ms  "why do you want to speak in English?"
+           7a964998-17a5-423a-84ee-dd5630440d9d  rev 1  — 21% shorter than its text implies
+    0.793  target1         1416ms  "are you going to help me?"
+           f1579e58-e46a-49bd-8bfc-0e6fed4708e7  rev 1  — 21% shorter than its text implies
+    0.793  target2         1416ms  "she doesn't want to worry"
+           07403e17-5108-42e1-bdba-102bd9b1328d  rev 1  — 21% shorter than its text implies
+    0.795  target1         1704ms  "how do you feel at the moment?"
+           3906b011-c150-4fbe-9605-dff608927704  rev 1  — 20% shorter than its text implies
+    0.795  target1         1704ms  "I'd like to come back tomorrow"
+           61fac091-4e3a-4c28-badf-10c4144e96f0  rev 1  — 20% shorter than its text implies
+    0.795  target1         2328ms  "and I want to find out what the answer is"
+           a8814a46-3d2b-45b7-a8e6-21ffa22d9d04  rev 1  — 21% shorter than its text implies
+    0.795  target1         1704ms  "why do you want to meet today?"
+           51e12c4b-97ed-4e1a-87c7-a50fe6dd004d  rev 1  — 20% shorter than its text implies
+    0.795  target1         1704ms  "are you going to learn easily?"
+           56177743-8a8b-4385-a424-9277f1da0bbe  rev 1  — 20% shorter than its text implies
+    0.795  target1         1704ms  "because I'm tired this morning"
+           917cf159-d9b8-49c8-8b08-4ba9d5933276  rev 1  — 20% shorter than its text implies
+    0.795  target2         1704ms  "I'm not trying to say anything"
+           04ab1987-aeef-485c-8412-f2dec2a13165  rev 1  — 20% shorter than its text implies
+    0.796  target2         1536ms  "I'm trying to say something"
+           21561b8d-0a07-48c6-90e5-0602d4b2bc94  rev 1  — 20% shorter than its text implies
+    0.796  target1         1080ms  "I'm trying to guess"
+           9ae7e2c2-88ff-457f-b691-20a420a4a8da  rev 1  — 20% shorter than its text implies
+    0.796  target2         3072ms  "but how long have you been learning English very well
+           c85eb29c-08b0-49d0-8ef8-6fa011beafd3  rev 1  — 20% shorter than its text implies
+    0.796  target1         2160ms  "how do you feel at the moment tonight?"
+           cc38d261-d2ae-4ce4-88c4-17617df28285  rev 1  — 20% shorter than its text implies
+    0.796  known           2160ms  "चिंता नहीं करता इसके बारे में जल्द ही।"
+           0b5b6a01-8915-4628-81ed-02666c940469  rev 1  — 20% shorter than its text implies
+    0.797  target2         2448ms  "I want to learn the whole sentence with you"
+           e1fe6021-2427-4221-b449-6107992a0feb  rev 1  — 20% shorter than its text implies
+    0.797  target1         1992ms  "he doesn't want to speak in English"
+           44416d5e-09da-42c2-81cc-55bc03675efc  rev 1  — 20% shorter than its text implies
+    0.798  target2         2736ms  "and I want you to speak English with me tomorrow"
+           8360e732-a3a4-4977-924c-d5d7e7dd01d5  rev 1  — 20% shorter than its text implies
+    0.798  target2         1824ms  "I don't need to know everything."
+           d6e71a0c-64d6-4143-ae2f-7344ddd1f8db  rev 1  — 20% shorter than its text implies
+    0.798  target2         1368ms  "I wouldn't like to guess"
+           4ad4090e-bef5-4178-919d-078a652dd949  rev 1  — 20% shorter than its text implies
+    0.798  target1         1824ms  "why are you learning in English?"
+           eee1648a-e5f5-47f7-a0d0-67e4de2781d6  rev 1  — 20% shorter than its text implies
+    0.798  target1         1824ms  "we want to speak with me tonight"
+           168ddb17-8379-45ee-8221-d8efa7211e17  rev 1  — 20% shorter than its text implies
+    0.798  target2         1368ms  "she doesn't want to read"
+           adb75466-081c-434f-a976-4fcf1af8f017  rev 1  — 20% shorter than its text implies
+    0.799  target1         2112ms  "I'm not sure if I'll be able to speak"
+           e958e3ae-4eb7-4918-a63f-cf6aabf51f3e  rev 1  — 20% shorter than its text implies
+    0.799  target1         2112ms  "I'd like to find out the answer today"
+           1758a4df-6977-4a55-9d20-f85fdbb8e33f  rev 1  — 20% shorter than its text implies
+    0.799  target1         1656ms  "why are you learning English?"
+           013bd493-35e7-4c89-b985-dcc9ebc62c52  rev 1  — 20% shorter than its text implies
+    0.799  target1         2112ms  "I've been learning about it carefully"
+           6e90a98a-e41e-4761-8349-62a638b3b13d  rev 1  — 20% shorter than its text implies
+    0.799  target2         2112ms  "want to finish as quickly as possible"
+           7751da57-c1f9-4c2a-8957-9be64fabd37c  rev 1  — 20% shorter than its text implies
+      0.8  target2         2400ms  "to explain what's going to happen tomorrow"
+           25bad2c7-6bc2-4d30-8739-c2c28fa7e9d0  rev 1  — 20% shorter than its text implies
+      0.8  target1         2400ms  "I'm going to try talking with someone else"
+           33007dd2-e36e-4502-a3a2-d7fa74278ea2  rev 1  — 20% shorter than its text implies
+      0.8  target2         1944ms  "because I want to speak in English"
+           aee74b2b-c8a3-4825-b2c9-1524bf3bdc33  rev 1  — 20% shorter than its text implies
+      0.8  target2         1944ms  "she wants to practise talking more"
+           e02017e2-bb4d-4930-9420-cdcbdc6cff73  rev 1  — 20% shorter than its text implies
+      0.8  target2         2856ms  "but I've been learning in English for about a week"
+           04360d7f-9501-4cd0-87b6-27a4f2c37a97  rev 1  — 20% shorter than its text implies
+      0.8  target1         1944ms  "it's a good thing to make mistakes"
+           f0adaab5-86c4-4107-8886-747ded68309b  rev 1  — 20% shorter than its text implies
+    0.801  known            744ms  "हम नहीं चाहते"
+           86a487b2-f7f6-4e87-a9bc-3c52584737d0  rev 1  — 20% shorter than its text implies
+    0.801  target1         1488ms  "to speak with someone else"
+           0d56cc06-d750-4dfb-bd18-e03a0afd89c2  rev 1  — 20% shorter than its text implies
+    0.801  target1         2688ms  "but I don't like taking too much time to answer"
+           ee568df5-e43c-4a8b-907c-7b3c80add91d  rev 1  — 20% shorter than its text implies
+    0.801  target2         2232ms  "he doesn't want to speak this afternoon"
+           f1aa84f2-94fa-44fb-80f8-47e0df2d5ecd  rev 1  — 20% shorter than its text implies
+    0.801  target1         1488ms  "it's a good thing to speak"
+           5b8f0931-f03b-4015-a601-a8a5457657a5  rev 1  — 20% shorter than its text implies
+    0.802  target2         2520ms  "I'm not going to be able to remember easily."
+           68e25934-16ab-4dab-a9a0-0dbf6c6be3da  rev 1  — 20% shorter than its text implies
+    0.802  presentation    2808ms  "अंग्रेज़ी में — 'बेहतर बोलने' — जैसे — '' — में :"
+           44969050-7c3d-4f22-b4b4-85bbd5380783  rev 1  — 20% shorter than its text implies
+    0.802  target1         2808ms  "why do you want to meet people who speak English?"
+           1454409e-f405-4369-ab4d-cf57fbe1c485  rev 1  — 20% shorter than its text implies
+    0.802  target2         2520ms  "he wants to speak when other people are here"
+           c561c49f-615e-4623-8b98-e16be4b91b74  rev 1  — 20% shorter than its text implies
+    0.803  target2         2064ms  "You wanted to speak with me tonight."
+           b0e6151e-161f-4415-92ed-3f815d4261a8  rev 1  — 20% shorter than its text implies
+    0.803  target2         2352ms  "I'm trying to remember the whole sentence"
+           23786e70-6805-4bfe-af8e-0f677fe34b3c  rev 1  — 20% shorter than its text implies
+    0.803  target1         2064ms  "I'd like to be able to speak English"
+           8842db10-eb97-42d4-a51b-bdb913a5503f  rev 1  — 20% shorter than its text implies
+    0.804  target2         1896ms  "I want to speak with someone else"
+           aaae961b-a04b-4d14-b6c8-3ae5496eef7e  rev 1  — 20% shorter than its text implies
+    0.804  target1         1896ms  "it's a good thing to learn easily"
+           9440755e-6447-4afd-94ca-03f2e81640d2  rev 1  — 20% shorter than its text implies
+    0.804  target2         1896ms  "it's a good thing to learn easily"
+           cfb8cb97-a524-46d5-91ae-fa5b4322e202  rev 1  — 20% shorter than its text implies
+    0.805  target1         2184ms  "I'm trying to say something in English"
+           3f9cf4a1-52b7-41ba-ab16-e50f19049539  rev 1  — 20% shorter than its text implies
+    0.805  target2         2184ms  "I'm trying to say something in English"
+           c53abed7-e761-4b76-a838-7a4942848292  rev 1  — 20% shorter than its text implies
+    0.805  known           2184ms  "क्यों क्या आप बोलते हैं अंग्रेज़ी में?"
+           774c5309-4b5a-4a80-95e9-06874d045a9f  rev 1  — 20% shorter than its text implies
+    0.805  target1         2184ms  "I want to speak better than last night"
+           b514bc75-0d5a-49e8-b375-5c5dcd9e9c91  rev 1  — 20% shorter than its text implies
+    0.805  target2         2184ms  "I want to speak better than last night"
+           bfd7ba3a-deba-4b50-a131-3439526eefa2  rev 1  — 20% shorter than its text implies
+    0.805  target2         2472ms  "I'm trying to finish as quickly as possible"
+           4ee81f4e-500c-44dc-ad5d-40060aff6797  rev 1  — 20% shorter than its text implies
+    0.805  target2         2472ms  "I want to finish as quickly as possible now"
+           cc061111-05a4-4a4f-b7bf-4cb64b57bed8  rev 1  — 20% shorter than its text implies
+    0.806  target1         2304ms  "I wanted to ask you something yesterday."
+           53c215ec-8905-41e0-af9f-d8b4d8839452  rev 1  — 19% shorter than its text implies
+    0.806  target1         1440ms  "I want to speak something"
+           00ed9c53-c605-42da-ab7a-f69d5f46f115  rev 1  — 19% shorter than its text implies
+    0.806  target2         2304ms  "she doesn't want to read something today"
+           ed6230d4-0bbe-421d-9ea9-fefba3ee4591  rev 1  — 19% shorter than its text implies
+    0.806  target2         2592ms  "I've been learning carefully for about a week"
+           9c3f1486-5e46-4928-b273-41d567fa9965  rev 1  — 19% shorter than its text implies
+    0.806  target1         2016ms  "she wants to speak for about a week"
+           9edeaf9f-c171-4165-8f68-7dca88b32805  rev 1  — 19% shorter than its text implies
+    0.806  target2         2304ms  "we want to speak in English this morning"
+           a025e595-4d2e-43e5-b4b5-bccb40f864d4  rev 1  — 19% shorter than its text implies
+    0.808  target1         1848ms  "I want to speak English with you"
+           058d9703-ca80-462a-a301-83919f35679a  rev 1  — 19% shorter than its text implies
+    0.808  target2         1848ms  "I want to learn English with you"
+           f8abe837-ceeb-463c-a640-028dd8418d50  rev 1  — 19% shorter than its text implies
+    0.808  target1         1848ms  "I want to say something with you"
+           2cd104ce-0cd3-4e4a-9908-775ad7fda1ed  rev 1  — 19% shorter than its text implies
+    0.808  target1         2424ms  "to explain what's going to happen tomorrow"
+           0207280c-1a55-489e-a7c7-91e9dcd3aa41  rev 1  — 19% shorter than its text implies
+    0.808  known           2712ms  "मैं पूरे दिन अंग्रेज़ी में बोलना करने वाला हूँ।"
+           af9da812-6bc0-49a4-85fc-9d66aa0c2332  rev 1  — 19% shorter than its text implies
+    0.808  target1         2136ms  "I want to practise talking in English"
+           54269f85-7682-49ac-b804-ccd62ded3520  rev 1  — 19% shorter than its text implies
+    0.808  target1         1848ms  "she doesn't want to learn easily"
+           a909ca2d-c830-4e49-a34e-dbd81680f388  rev 1  — 19% shorter than its text implies
+    0.808  target2         1848ms  "I was trying to learn last month"
+           b0f4f5c6-d307-406f-8366-74cb722a5a1f  rev 1  — 19% shorter than its text implies
+    0.808  target2         2424ms  "but I want to speak better than last night"
+           3eab0a6f-d5dd-4902-9214-b24635e003e8  rev 1  — 19% shorter than its text implies
+    0.808  target1         2712ms  "because I'm starting to feel tired this morning"
+           803ad43c-a235-4b79-ab68-43c93df13bd4  rev 1  — 19% shorter than its text implies
+    0.809  target1         2544ms  "I don't like taking too much time to answer."
+           aa552908-28a3-47f0-9d27-640df194abe1  rev 1  — 19% shorter than its text implies
+    0.809  target1         1560ms  "I speak a little in English"
+           619c669e-9d66-49f3-97d7-3a7e3f3089be  rev 1  — 19% shorter than its text implies
+    0.809  target2         2544ms  "I can remember the whole sentence in English"
+           46489ce4-88be-4664-a3ee-3b318e382c23  rev 1  — 19% shorter than its text implies
+    0.809  target2         2544ms  "he wants to meet this evening at six o'clock"
+           cdef8da2-3c54-4fe8-ae4a-17a907d42cee  rev 1  — 19% shorter than its text implies
+    0.809  target1         2544ms  "he wants to meet this evening at six o'clock"
+           f933f10c-81a8-4c4a-b18a-b997ea28dd10  rev 1  — 19% shorter than its text implies
+     0.81  target2          984ms  "it's a good thing"
+           911f8478-0757-46a8-988a-54405c8c24bb  rev 1  — 19% shorter than its text implies
+     0.81  target1         2256ms  "I don't want to stop talking in English"
+           10da4b29-1313-45d0-a59c-94ca970205a0  rev 1  — 19% shorter than its text implies
+     0.81  known           2256ms  "क्यों आप चाहते हैं बोलना अंग्रेज़ी में?"
+           bc30fb57-77ab-4523-8e28-a17fbff7bb55  rev 1  — 19% shorter than its text implies
+     0.81  target2         1968ms  "I'm going to speak in English soon"
+           31bd2658-ec5e-41ed-aa63-1b2e4d7eccc3  rev 1  — 19% shorter than its text implies
+     0.81  target2         1968ms  "how long have you been doing this?"
+           72d1f9f8-f509-42f9-84fc-44be8896fabe  rev 1  — 19% shorter than its text implies
+     0.81  target1         1968ms  "because I like to explain about it"
+           b7ec3a85-9c5c-42cd-9a9c-8e7bf16603ed  rev 1  — 19% shorter than its text implies
+     0.81  target1         2256ms  "how do you feel at the moment about it?"
+           5e82c38d-59fe-4955-81dc-49173c8983ad  rev 1  — 19% shorter than its text implies
+     0.81  target2         1968ms  "I wasn't thinking about the answer"
+           8190f6de-3ab3-4f39-bcf3-eb89a1728ffc  rev 1  — 19% shorter than its text implies
+    0.811  target1         2376ms  "I'm going to speak as hard as I can today"
+           91b4ff22-bf99-4d4f-9cb2-b316ca45be72  rev 1  — 19% shorter than its text implies
+    0.811  target1         2664ms  "she wants to find out what the answer is today"
+           6f964152-05c6-4547-9b96-45a632440421  rev 1  — 19% shorter than its text implies
+    0.811  target1         1680ms  "you want to answer in English"
+           a72d81eb-094e-4b01-a2f0-2970afdc07ec  rev 1  — 19% shorter than its text implies
+    0.811  target2         2376ms  "how do you feel at the moment in English?"
+           201100ee-09c9-4228-a224-6ce643574af2  rev 1  — 19% shorter than its text implies
+    0.811  target1         1680ms  "because I don't want mistakes"
+           8d6b8e76-351b-4780-a53d-8abf8506db41  rev 1  — 19% shorter than its text implies
+    0.811  target1         2376ms  "I'd like to finish as quickly as possible"
+           7bce7358-1fbd-4828-8261-e2dce16f5ea9  rev 1  — 19% shorter than its text implies
+    0.812  target2         2784ms  "I'm not trying to finish as quickly as possible."
+           70c11713-534a-45d7-b265-b2f472b11687  rev 1  — 19% shorter than its text implies
+    0.812  presentation    2784ms  "अंग्रेज़ी में — 'बातें करना' — जैसे — '' — में :"
+           53f7c39a-1aeb-41f5-849c-c1c8312cefc2  rev 1  — 19% shorter than its text implies
+    0.812  target1         2088ms  "she wants to meet with everyone else"
+           954a57e4-24a7-4d6e-a33f-95a954917520  rev 1  — 19% shorter than its text implies
+    0.812  known           1392ms  "वह जल्दी बोलना चाहता है।"
+           1e857f95-85df-44e1-928f-645dbc792802  rev 1  — 19% shorter than its text implies
+    0.812  target2         2784ms  "do you want to speak when other people are here?"
+           100ddd51-2faa-4215-9638-092976f47f28  rev 1  — 19% shorter than its text implies
+    0.812  target1         1392ms  "she doesn't want to read"
+           2c21ef03-9b69-43c7-ab8f-7a1fb0cc88c5  rev 1  — 19% shorter than its text implies
+    0.812  target1         2088ms  "I wasn't thinking about it carefully"
+           d2800668-71bb-4a96-b5f8-1a6d9131d818  rev 1  — 19% shorter than its text implies
+    0.813  presentation    3192ms  "अंग्रेज़ी में — 'मेरा मतलब क्या है' — जैसे — '' — में
+           9faa28f1-7d36-44a0-a257-d620d6b13480  rev 1  — 19% shorter than its text implies
+    0.813  target2         2208ms  "you want to start talking more quickly"
+           106a0f5f-6f64-47ec-984f-99b57b8f7fa2  rev 1  — 19% shorter than its text implies
+    0.813  target1         3312ms  "I'm looking forward to speaking better as soon as you
+           637e57de-6a30-4d0e-821c-d203cf5291fd  rev 1  — 19% shorter than its text implies
+    0.813  target1         1800ms  "but he doesn't want to be quiet"
+           291fb650-8605-45d4-a03e-ad63ad32e4ee  rev 1  — 19% shorter than its text implies
+    0.815  target2         2328ms  "I'm going to try to explain what I mean."
+           254feb6b-a033-47eb-a974-02b40d979bf9  rev 1  — 19% shorter than its text implies
+    0.815  target1         2328ms  "I'm trying to learn as often as possible"
+           258abcc6-5b64-404e-a4f7-5b53eddd91a2  rev 1  — 19% shorter than its text implies
+    0.815  target1         3144ms  "I want to speak with someone else as often as possibl
+           99094a4d-11ff-49fa-b10a-a37a3a3dbd5f  rev 1  — 18% shorter than its text implies
+    0.815  target2         1920ms  "I don't worry about it in English"
+           9fa8f44d-b6d7-4ac2-95b8-cf202f94681d  rev 1  — 19% shorter than its text implies
+    0.816  known           2448ms  "लेकिन मैं गलतियाँ करने की चिंता नहीं करता।"
+           a998c3f1-12ca-45d0-be17-5b4705eed67e  rev 1  — 18% shorter than its text implies
+    0.816  target1         1632ms  "you want to speak in English"
+           0f55d78b-0409-4d79-9142-0b41104d43df  rev 1  — 18% shorter than its text implies
+    0.816  target1         2040ms  "we want to speak in English quickly"
+           ad1ceb30-3989-44e7-a13b-36ea9140e9ed  rev 1  — 18% shorter than its text implies
+    0.816  target2         2040ms  "she doesn't want to speak very well"
+           4545cda8-19c3-4bee-b9f4-346b5bb53581  rev 1  — 18% shorter than its text implies
+    0.816  target1         2040ms  "we want to think about it carefully"
+           bceca071-9d11-4d3c-9ea5-eeb9226cf1c5  rev 1  — 18% shorter than its text implies
+    0.817  target2         2160ms  "are you going to start speaking soon?"
+           e70345f3-5d1e-4e5b-8506-f7a01c4ce673  rev 1  — 18% shorter than its text implies
+    0.817  target2         2568ms  "because we don't want to interrupt the story"
+           e0c073fe-3ad6-4877-9911-a1ffb8541ef5  rev 1  — 18% shorter than its text implies
+    0.817  target2         2160ms  "it's a good thing to speak in English"
+           e461158f-83a9-4ad1-a1a7-5765cfa95af7  rev 1  — 18% shorter than its text implies
+    0.818  target2         2688ms  "I was starting to feel better than last night."
+           e31a95f3-3b70-407c-9dd3-c7acdbbb8c5b  rev 1  — 18% shorter than its text implies
+    0.818  target2         2280ms  "I'm going to practise speaking with you"
+           0e1e54b9-691e-4665-99dc-32c4eb84e920  rev 1  — 18% shorter than its text implies
+    0.818  target1         2280ms  "you want to find out what the answer is"
+           04cf056b-a0aa-4150-87af-e4e650c20aae  rev 1  — 18% shorter than its text implies
+    0.818  target2         1752ms  "I'm looking forward to talking"
+           69cfff77-4606-4966-9b49-843bb5c7e49a  rev 1  — 18% shorter than its text implies
+    0.818  target2         1752ms  "because I'm tired this morning"
+           c5a287ae-ae52-4aad-b467-b97b2391e0a1  rev 1  — 18% shorter than its text implies
+    0.818  target2         1752ms  "but I wasn't thinking about it"
+           11951015-2783-4652-be80-d20b93ffb668  rev 1  — 18% shorter than its text implies
+    0.818  target2         2688ms  "because it's like this if you know what I mean"
+           7fbdb2a8-a9eb-4e76-a8f4-56d74ada105a  rev 1  — 18% shorter than its text implies
+    0.819  target1         2808ms  "because she wants to find out what the answer is"
+           a59f2a7c-95fd-4117-bd22-01dd1b2928d1  rev 1  — 18% shorter than its text implies
+    0.819  target1         1872ms  "did you want to help me tonight?"
+           301022b9-ba96-4e2d-9836-8dd72ba98b21  rev 1  — 18% shorter than its text implies
+    0.819  target2         1872ms  "I don't need to learn everything"
+           97ec23c4-8f1e-4c68-9b25-a2a583367e1b  rev 1  — 18% shorter than its text implies
+    0.819  target1         1872ms  "I don't need to speak everything"
+           ed9a8121-4bf8-4d57-bfc6-ce6eab24e04c  rev 1  — 18% shorter than its text implies
+     0.82  target1         2400ms  "She wants to find out what the answer is."
+           65e85300-915a-4698-b9aa-bf583d880af6  rev 1  — 18% shorter than its text implies
+     0.82  target2         1992ms  "I want to say something in English"
+           229d6da2-b9a4-474e-8ab2-c946e2a9d954  rev 1  — 18% shorter than its text implies
+     0.82  target1         2928ms  "I'd like to find out what the answer is in English"
+           cc305f77-e826-4a60-9295-9f4c00516133  rev 1  — 18% shorter than its text implies
+     0.82  target2         1992ms  "you want to learn her name quickly"
+           4c0f17e6-d25d-4849-b44f-65c94ba41d54  rev 1  — 18% shorter than its text implies
+     0.82  target1         1992ms  "she wants to practise talking more"
+           f53c4c34-6b7d-40ce-acd8-1f8c956d764a  rev 1  — 18% shorter than its text implies
+     0.82  target1         1464ms  "she wants to show with me"
+           d9b2aa8e-0e13-430f-8e0d-41edf2b2d659  rev 1  — 18% shorter than its text implies
+     0.82  target1         1464ms  "do you want to interrupt?"
+           04074f54-cc41-4574-9ea5-191874b9d77e  rev 1  — 18% shorter than its text implies
+     0.82  target2         1464ms  "do you want to feel okay?"
+           bd0ceeaa-7cb4-4d66-bda5-ce0778bcae84  rev 1  — 18% shorter than its text implies
+     0.82  target1         1464ms  "but it's a good thing now"
+           3da6a8a8-6430-4ae1-ae84-bbdf879f3012  rev 1  — 18% shorter than its text implies
+    0.821  target1         1584ms  "I'm trying to learn English"
+           c736a661-9500-4d41-9912-d46f2f2ad881  rev 1  — 18% shorter than its text implies
+    0.821  known           1584ms  "मैं कुछ भी सीखना चाहता हूँ।"
+           7fd85f10-bdba-4832-872a-1cc1c042c16d  rev 1  — 18% shorter than its text implies
+    0.821  target1         1584ms  "we want to speak in English"
+           a3dc1772-33b9-4e81-82c9-cd38c5cc0e28  rev 1  — 18% shorter than its text implies
+    0.821  target1         1584ms  "because you want to help me"
+           3fcf7d4c-7c57-4c35-8bbf-fdc4eaec5ce3  rev 1  — 18% shorter than its text implies
+    0.821  target2         1584ms  "how long have you been here"
+           dea12891-4d8b-402e-aa2e-ad84a02bfb18  rev 1  — 18% shorter than its text implies
+    0.821  target1         2112ms  "to start to think about it carefully"
+           488d8cfa-42e2-47b7-93c8-862dbf1e7c69  rev 1  — 18% shorter than its text implies
+    0.822  target2         3288ms  "I'm looking forward to speaking better as soon as I c
+           971de35c-fdc2-4c1f-9992-ceff10aca324  rev 1  — 18% shorter than its text implies
+    0.822  target1         2232ms  "I'd like to meet this evening with you"
+           ac0bfaf8-1472-44bb-a172-7de138ebf69b  rev 1  — 18% shorter than its text implies
+    0.822  target2         2232ms  "I want to practise before I have to go"
+           f61b8945-81bc-4f2b-b819-aa60da0dacf9  rev 1  — 18% shorter than its text implies
+    0.822  known           2760ms  "क्योंकि मुझे लगता है अच्छी बात है करना गलतियाँ।"
+           fbc5fa0e-3a4f-4621-aef8-0a619ad7264b  rev 1  — 18% shorter than its text implies
+    0.823  target1         1704ms  "I speak a little English now."
+           393fa298-ed7c-42b9-9824-89ff978da6b6  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "I want to speak English today"
+           8916d576-5572-47de-9be9-484aead8ee83  rev 1  — 18% shorter than its text implies
+    0.823  target1         1704ms  "do you speak English with me?"
+           aafb0c02-6cf0-4210-acea-8050be6ac326  rev 1  — 18% shorter than its text implies
+    0.823  target2         1176ms  "why are you learning"
+           fc8af5ed-da5c-4a2c-ad62-1820cbb3793c  rev 1  — 18% shorter than its text implies
+    0.823  target2         1176ms  "to speak with people"
+           2f52fdf1-b543-4448-af8a-59aca36c6bee  rev 1  — 18% shorter than its text implies
+    0.823  target2         1704ms  "do you want to read anything?"
+           ee257ed3-2b33-44b9-8407-d50b5060f8aa  rev 1  — 18% shorter than its text implies
+    0.823  target2         2352ms  "because I like to speak for about a week"
+           46be7e2b-e8e2-418a-a10e-b4c19305409a  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "how to say something in English"
+           8ab27f16-b484-4ddf-bc21-0f03c9b6f12e  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "what's going to happen tomorrow"
+           b30b491a-bed1-4880-ab25-f668e015894f  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "she wants to come back later on"
+           544d70be-c8d4-48ed-b114-11d446209afe  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "but I want to speak English now"
+           0cfa1f98-05d0-4356-8d9c-872c3bc9bd32  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "I'm going to start talking more"
+           137650b6-8d75-4e1e-8471-1763d330d6cf  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "because I want to learn quickly"
+           15b63118-9cf9-4c2d-9af2-cf56dcf6c5cc  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "because I want to learn quickly"
+           d79543c0-7183-485a-9e9e-25cf90539d58  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "why do you want to meet people?"
+           df9da7fe-0173-4d72-b618-a25b688afc4b  rev 1  — 18% shorter than its text implies
+    0.824  target1         2472ms  "I'm nearly ready to go before I have to go"
+           089cc2ee-2ac2-4c97-99c6-15f2e636ede1  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "did you want to show something?"
+           9a74b309-44fb-43f2-90f5-8b4f186e9c3c  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "did you want to show something?"
+           bf7d787f-f092-44b1-8ce6-0ad614428566  rev 1  — 18% shorter than its text implies
+    0.824  target2         1824ms  "I was starting to feel a little"
+           26766bfb-5fbb-4bd6-ad0d-6306e4435257  rev 1  — 18% shorter than its text implies
+    0.824  target1         1824ms  "I'm not trying to learn English"
+           ae83912e-2618-4613-a9c5-83fcb5f1b303  rev 1  — 18% shorter than its text implies
+    0.825  target2         2592ms  "I'm not sure what's going to happen tomorrow"
+           a8b690df-f425-40ee-8254-81e4f07d62fd  rev 1  — 18% shorter than its text implies
+    0.825  target1         1944ms  "so how do you feel at the moment?"
+           b1a13ec3-12e0-4e47-bac3-a5caa741cc03  rev 1  — 18% shorter than its text implies
+    0.826  target1         2184ms  "I'm going to start talking more soon."
+           044a9472-7ce9-46c2-a296-eea3a5fbfcb6  rev 1  — 17% shorter than its text implies
+    0.826  target2         2064ms  "I've been learning for about a week"
+           70a8c214-bd50-4df9-93e2-8d12e7a0aac8  rev 1  — 17% shorter than its text implies
+    0.826  presentation    4896ms  "अंग्रेज़ी में — 'पूरे दिन' — जैसे — 'क्या आप पूरे दिन
+           980e1f5a-68ce-4174-8138-2b01bddbc9e2  rev 1  — 17% shorter than its text implies
+    0.826  target1         2832ms  "I want to remember the whole sentence in English"
+           c058d72f-8959-409b-af8c-98121823cd8b  rev 1  — 17% shorter than its text implies
+    0.826  target2         2184ms  "she wants to practise speaking better"
+           b734d6f0-c7c0-4c51-a9c7-203f26ec3387  rev 1  — 17% shorter than its text implies
+    0.826  target1         2064ms  "to speak when other people are here"
+           08b0d863-6331-4b4e-975a-1bd3cf5b4599  rev 1  — 17% shorter than its text implies
+    0.826  target1         2064ms  "she doesn't want to speak very well"
+           2473542c-df43-4647-823d-930db3cae32f  rev 1  — 17% shorter than its text implies
+    0.826  target2         2064ms  "we want to speak about it carefully"
+           bf376303-d281-451d-b42b-1c56c086617e  rev 1  — 17% shorter than its text implies
+    0.826  target1         2064ms  "I'm not trying to speak English now"
+           802c0c8e-2693-4f95-b3ed-969403e4229d  rev 1  — 17% shorter than its text implies
+    0.827  known           2952ms  "मैं बोलने का अभ्यास करना किसी और के साथ चाहता हूँ।"
+           9eecbebd-c3a7-4108-9ec0-1c504a9657a7  rev 1  — 17% shorter than its text implies
+    0.827  target2         2304ms  "you want to find out what the answer is"
+           0f7d6acd-55f8-425b-9e61-768a057f8028  rev 1  — 17% shorter than its text implies
+    0.827  target1         1536ms  "I don't want to meet today"
+           2cd7e2ae-d0b9-4d46-9ddc-2304b3f5479f  rev 1  — 17% shorter than its text implies
+    0.827  target2         1536ms  "we don't want to interrupt"
+           4d40bbfb-2ea0-4233-9f67-1c0e9344fe8b  rev 1  — 17% shorter than its text implies
+    0.828  presentation    4848ms  "अंग्रेज़ी में — 'जल्दी' — जैसे — 'हम चाहते हैं जल्दी 
+           30abeb1f-467b-4b9a-b064-2d7531309266  rev 1  — 17% shorter than its text implies
+    0.828  target1         2424ms  "I'm going to practise speaking in English"
+           0a45070b-1830-407d-bc3c-c1d19f329f0b  rev 1  — 17% shorter than its text implies
+    0.828  target1         2424ms  "I want to speak English with someone else"
+           b5606aa8-f74c-48d6-a002-ccf29887962e  rev 1  — 17% shorter than its text implies
+    0.828  target1         2424ms  "I'm looking forward to speaking very well"
+           1638ba42-3a57-4352-b9be-d93621c85762  rev 1  — 17% shorter than its text implies
+    0.828  known           2544ms  "क्योंकि मुझे पसंद है सीख रहे हैं अंग्रेज़ी।"
+           b198d4f6-72ce-49d2-bf3e-108156f787ad  rev 1  — 17% shorter than its text implies
+    0.828  target1         2424ms  "did you want to speak English last month?"
+           736cd044-7383-49dd-b121-56742e6e24fe  rev 1  — 17% shorter than its text implies
+    0.828  target2         2424ms  "did you want to speak English last month?"
+           eae21172-29b9-4d49-893d-ad2921050cff  rev 1  — 17% shorter than its text implies
+    0.829  known           1776ms  "मैं अंग्रेज़ी बोलना चाहता हूँ।"
+           f9bb28e6-60e3-47d9-8e0c-adb4f69cb243  rev 1  — 17% shorter than its text implies
+    0.829  target2         1776ms  "you want to come back later on"
+           9ca4b2e5-9e2e-40ae-9358-11c47bfa6eb9  rev 1  — 17% shorter than its text implies
+    0.829  known           3552ms  "क्योंकि मैं मिलना लोगों से जो अंग्रेज़ी बोलते हैं चाह
+           5a9310ac-ec68-4716-8680-0b8811bf17c1  rev 1  — 17% shorter than its text implies
+    0.829  target1         2784ms  "I'm looking forward to speaking in English soon"
+           aaa21612-b2f7-4a40-9b0d-cade324ff7da  rev 1  — 17% shorter than its text implies
+    0.829  target2         2784ms  "but I don't like taking too much time to answer"
+           ff1eb1a1-7c80-43e7-bcf3-5405a74179fa  rev 1  — 17% shorter than its text implies
+    0.829  target1         2664ms  "do you want to explain what I mean carefully?"
+           59f64f18-4eb6-47f8-97c9-addd799381d7  rev 1  — 17% shorter than its text implies
+    0.829  target2         2784ms  "I wasn't thinking about how to speak in English"
+           56442817-9c10-4d36-b5c5-0d78e45923f6  rev 1  — 17% shorter than its text implies
+    0.829  target1         2784ms  "I wasn't thinking about how to speak in English"
+           edb94b40-2bc4-4d3d-91ba-00d86309b9a6  rev 1  — 17% shorter than its text implies
+     0.83  presentation    3024ms  "अंग्रेज़ी में — 'मेरी मदद करना' — जैसे — '' — में :"
+           bdd12968-1fbd-43de-8c57-4fba0e40bdd6  rev 1  — 17% shorter than its text implies
+     0.83  target1         1896ms  "to finish as quickly as possible"
+           9589b691-0afb-4321-afed-1b3f05218868  rev 1  — 17% shorter than its text implies
+     0.83  target2         1896ms  "to finish as quickly as possible"
+           f41413ed-49af-4a0e-909f-1fe50f53deee  rev 1  — 17% shorter than its text implies
+     0.83  target2         1896ms  "we don't want to speak very well"
+           6c499d37-19ea-445a-83c2-9eb2d353a17e  rev 1  — 17% shorter than its text implies
+     0.83  target1         2904ms  "I want to speak in English better than last night"
+           79aa056f-58d1-4686-a8ab-8982561660e5  rev 1  — 17% shorter than its text implies
+    0.831  target1         2256ms  "she wants to speak with you in English"
+           562f427f-f095-4195-913c-08a9e337b950  rev 1  — 17% shorter than its text implies
+    0.831  target2         2256ms  "we want to find out what the answer is"
+           d49ac901-1f8b-490a-b185-54d43c6e6fa2  rev 1  — 17% shorter than its text implies
+    0.831  target1         2136ms  "you want to speak as soon as you can"
+           a391327d-b81c-46c4-ab68-e0ff1d66643e  rev 1  — 17% shorter than its text implies
+    0.831  target2         2256ms  "to be quiet when other people are here"
+           6acbc744-7c9e-4945-9bae-de4cd78d3167  rev 1  — 17% shorter than its text implies
+    0.832  target2         2616ms  "I'm going to try in English after you finish"
+           f0e9eaa9-508a-478f-8823-20a18470d46d  rev 1  — 17% shorter than its text implies
+    0.832  known           2376ms  "क्या आप बोलते हैं अंग्रेज़ी में बाद में?"
+           1d27eca9-54ba-4507-a63c-7ed55a8e6208  rev 1  — 17% shorter than its text implies
+    0.832  target1         1248ms  "do you speak with me?"
+           911315c5-db84-4ed7-809b-e818330aa24c  rev 1  — 17% shorter than its text implies
+    0.832  target1         2496ms  "do you speak very well with everyone else?"
+           a9dff709-c411-4a65-bee6-6e4ce3491d74  rev 1  — 17% shorter than its text implies
+    0.832  target2         1248ms  "do you speak with me?"
+           f732dd1c-4cd3-49f4-a5c1-19d88c7b6036  rev 1  — 17% shorter than its text implies
+    0.832  target1         1248ms  "you want to meet soon"
+           cee8c4ee-eb7c-438a-ae5b-eaf35be83b1c  rev 1  — 17% shorter than its text implies
+    0.832  target1         1248ms  "you know what I mean?"
+           9333d13b-7128-49a5-8b3f-6988838e214b  rev 1  — 17% shorter than its text implies
+    0.833  target2         2736ms  "I'd like to be able to speak after you finish."
+           b01b249e-8202-4408-a7e0-da8fed191a3c  rev 1  — 17% shorter than its text implies
+    0.833  target1         1368ms  "I can remember a little"
+           499cf066-4995-4ec3-89af-7117509523d4  rev 1  — 17% shorter than its text implies
+    0.833  target2         1368ms  "I can remember with you"
+           29d65cbb-cc81-4963-bf3d-06ea4a973978  rev 1  — 17% shorter than its text implies
+    0.833  target2         2736ms  "she wants to find out what the answer is today"
+           cc1c8a5f-18f5-4248-986e-b0ded2fe40e9  rev 1  — 17% shorter than its text implies
+    0.834  presentation    5064ms  "अंग्रेज़ी में — 'अंग्रेज़ी में' — जैसे — 'मैं अंग्रेज
+           9cd0f96d-2cc0-4328-bce6-773142d6f2bf  rev 1  — 17% shorter than its text implies
+    0.834  presentation    6552ms  "अंग्रेज़ी में — 'मुझे यकीन नहीं है कि' — जैसे — 'मुझे
+           d5020d3c-9331-45df-9a0c-b00539ad7195  rev 1  — 17% shorter than its text implies
+    0.834  target2         1728ms  "I want to speak something now"
+           b0273a2b-b4ad-4aaa-9dcf-ca9e0796f402  rev 1  — 17% shorter than its text implies
+    0.834  target1         3096ms  "because he wants to speak when other people are here"
+           06aabc12-7b3e-407f-a066-6caf372fb4ab  rev 1  — 17% shorter than its text implies
+    0.834  target2         1608ms  "she wants to read something"
+           6acd40eb-9d1d-4c7c-9ded-8aa45de37b5d  rev 1  — 17% shorter than its text implies
+    0.834  target2         1728ms  "was starting to feel a little"
+           2ffa8e4d-e1d7-47bd-b533-160c28c9f670  rev 1  — 17% shorter than its text implies
+    0.834  target1         1608ms  "but I think it's useful now"
+           62f25803-042d-43af-91ba-28a1130b0935  rev 1  — 17% shorter than its text implies
+    0.835  target1         2088ms  "I'm not sure if you speak very well"
+           7a4dc54a-596c-4bf4-bc00-99e9907be1aa  rev 1  — 16% shorter than its text implies
+    0.835  target1         2088ms  "she wants to practise talking today"
+           135b3e52-fc5c-45c3-8d76-f7d9bb3a6091  rev 1  — 16% shorter than its text implies
+    0.835  target1         1848ms  "but I want to speak English now"
+           22f14564-89de-4f61-9c3f-23a2e0daab9d  rev 1  — 17% shorter than its text implies
+    0.835  target1         2088ms  "I wanted to ask something yesterday"
+           645a9dd6-eb8f-4dbf-bef1-237ade4b10e7  rev 1  — 16% shorter than its text implies
+    0.835  target1         1848ms  "but I started to think about it"
+           203426ce-a09f-4d32-bec5-a1e3fa20a7af  rev 1  — 17% shorter than its text implies
+    0.835  target2         1968ms  "because I don't want to worry now"
+           b279cb31-82f8-4393-af90-7a511411ae6c  rev 1  — 17% shorter than its text implies
+    0.835  target1         2208ms  "want to finish as quickly as possible"
+           1593c14d-5551-4f6f-bf5d-6d07a13980a2  rev 1  — 16% shorter than its text implies
+    0.836  target1         2448ms  "I'm going to speak today after you finish"
+           2944aa8d-1bc5-4fb8-95bf-cf905e03ae9d  rev 1  — 16% shorter than its text implies
+    0.836  target2         2448ms  "I'm trying to be able to speak in English"
+           68f124cf-27d2-4758-a825-765bced84495  rev 1  — 16% shorter than its text implies
+    0.836  target1         2328ms  "I'm trying to practise talking with you"
+           5c5e9c8a-be76-49e3-9739-92c4fc67ee22  rev 1  — 16% shorter than its text implies
+    0.836  target1         2448ms  "do you want to speak before I have to go?"
+           f2c8671c-1405-4aa3-97a9-104322d58c85  rev 1  — 16% shorter than its text implies
+    0.836  target2         2328ms  "I want to finish as quickly as possible"
+           7846c794-7003-45c6-b6fe-8bc58afe6929  rev 1  — 16% shorter than its text implies
+    0.837  target2         3408ms  "I want to learn how to speak English as often as poss
+           156adbfd-5964-4e8f-9d06-ea81585fe24a  rev 1  — 16% shorter than its text implies
+    0.837  target2         2928ms  "I'd like to come back with everyone else later on"
+           fea2a660-ed1d-487c-b99c-37428d4153a2  rev 1  — 16% shorter than its text implies
+    0.838  presentation    4608ms  "अंग्रेज़ी में — 'अंग्रेज़ी' — जैसे — 'मैं अंग्रेज़ी ब
+           3d33e86c-b094-4636-aebb-25d1cae59082  rev 1  — 16% shorter than its text implies
+     0.84  target1         2880ms  "and I want you to speak English with me tomorrow"
+           d4329e3a-f736-4b57-a6b4-022389baee2a  rev 1  — 16% shorter than its text implies
+     0.84  target1         1440ms  "I wouldn't like to guess"
+           4efe2d34-9a97-42ce-9e7b-7e19d51c2c05  rev 1  — 16% shorter than its text implies
+     0.84  target2         2760ms  "I'm going to be able to speak after you finish"
+           71d83b88-4809-4c75-84f3-4e20eae8f2f5  rev 1  — 16% shorter than its text implies
+     0.84  target1         1320ms  "to find out the answer"
+           01301fa7-46ea-497c-8cf0-a7824e55ef53  rev 1  — 16% shorter than its text implies
+     0.84  target2         1560ms  "I don't want to meet today"
+           39921494-6ec6-427b-b637-56cca93ceb45  rev 1  — 16% shorter than its text implies
+     0.84  target1         2040ms  "I wouldn't like to stop in English"
+           b525a3c9-bcf4-41c5-a42a-6c670fd172c1  rev 1  — 16% shorter than its text implies
+     0.84  target2         2040ms  "I don't want to come back later on"
+           d0b970e2-7ccd-4e0e-b8fc-dab65c1b2719  rev 1  — 16% shorter than its text implies
+     0.84  target1         2040ms  "you want to learn her name quickly"
+           308736aa-4d19-4fa4-80ca-b055a454783c  rev 1  — 16% shorter than its text implies
+     0.84  target2         2040ms  "we want to start talking more soon"
+           4821a4e1-3aaa-40ad-b125-4011ee7c6c2a  rev 1  — 16% shorter than its text implies
+     0.84  target2         1800ms  "are you going to learn easily?"
+           256b1b9b-08f9-445d-b0b5-d7eb368a5c58  rev 1  — 16% shorter than its text implies
+     0.84  target1         2400ms  "it's useful to answer as soon as you can"
+           7b524490-b72a-4213-9eea-3416611f17e8  rev 1  — 16% shorter than its text implies
+     0.84  target2         2640ms  "I'd like to speak when other people are here"
+           276c3b49-6c79-4e5b-aba3-34cc019e4333  rev 1  — 16% shorter than its text implies
+     0.84  target2         1800ms  "did you want to ask something?"
+           be150dab-a4c5-4d09-a594-b727b6113d94  rev 1  — 16% shorter than its text implies
+     0.84  target1         1440ms  "I don't want to be quiet"
+           c4cd9933-eb03-42c3-9c5a-a301ce9d60b1  rev 1  — 16% shorter than its text implies
+     0.84  target1         2400ms  "she doesn't want to read something today"
+           0262f408-3ac9-485c-afaa-0054290d24fe  rev 1  — 16% shorter than its text implies
+     0.84  target2         3120ms  "I don't want to interrupt when other people are here"
+           1461ff33-bf9c-4bf5-b126-fa518dcb7a85  rev 1  — 16% shorter than its text implies
+     0.84  target2         1560ms  "I'd like to think about it"
+           4670b91c-0552-4a8e-9262-0e6abf43953a  rev 1  — 16% shorter than its text implies
+     0.84  target1         1680ms  "I've been learning carefully"
+           8e368a24-d7f4-48e4-ace2-987f2aab3610  rev 1  — 16% shorter than its text implies
+     0.84  target2         1920ms  "I don't like mistakes in English"
+           99bf6eb3-7401-43df-aecf-d0f9622ae6ea  rev 1  — 16% shorter than its text implies
+     0.84  target2         1560ms  "it's a good thing to learn"
+           307ec305-6f88-44d0-851d-a1bc5f0dbd2c  rev 1  — 16% shorter than its text implies
+     0.84  target2         2040ms  "I think it's a good thing to speak"
+           a0f35c59-33ac-40ff-9111-808fc28edb40  rev 1  — 16% shorter than its text implies
+    0.842  presentation    6312ms  "अंग्रेज़ी में — 'और मैं चाहता हूँ' — जैसे — 'और मैं च
+           df8bb7fb-8e1f-4ff6-bce2-e33f6556a6a6  rev 1  — 16% shorter than its text implies
+    0.844  presentation    5184ms  "अंग्रेज़ी में — 'चिंता करना' — जैसे — 'क्योंकि मैं नह
+           342acea6-d154-434e-b8fd-cca2ef60a827  rev 1  — 16% shorter than its text implies
+    0.844  target1         2712ms  "I want to practise speaking with someone else"
+           fcc59d1b-dc89-4a64-b762-d38df4f6bad5  rev 1  — 16% shorter than its text implies
+    0.844  target2         2352ms  "I don't want to stop talking in English"
+           e794294c-758b-4c29-bb76-7c2ed4d80319  rev 1  — 16% shorter than its text implies
+    0.844  target2         2472ms  "I'd like to meet people who speak English"
+           7098b053-ff4a-4c57-829c-1d3dd5eb611d  rev 1  — 16% shorter than its text implies
+    0.844  target2         2472ms  "I'm looking forward to speaking very well"
+           66a4e7ed-a36b-4f9b-8ab0-4265eb6efda8  rev 1  — 16% shorter than its text implies
+    0.844  target1         2352ms  "he doesn't want to speak this afternoon"
+           45b814b4-9a14-457b-8aa4-d8eb1a863d73  rev 1  — 16% shorter than its text implies
+    0.844  target2         2352ms  "I don't worry about making mistakes now"
+           76899906-db52-41b6-9636-d8c418d85be2  rev 1  — 16% shorter than its text implies
+    0.844  target2         2472ms  "I'd like to finish as quickly as possible"
+           725f3b24-0785-4207-b22e-b41edc5d4f02  rev 1  — 16% shorter than its text implies
+    0.844  target1         2352ms  "I want to finish as quickly as possible"
+           94241223-e87f-4bf2-885d-682392175fcd  rev 1  — 16% shorter than its text implies
+    0.844  target1         2592ms  "not trying to finish as quickly as possible"
+           f280bf7d-4d70-4118-96ab-604455b5ec25  rev 1  — 16% shorter than its text implies
+    0.845  target2         2232ms  "I want to speak English with you now."
+           09086441-e176-405f-a682-ba5b2181dab9  rev 1  — 16% shorter than its text implies
+    0.845  target1         1872ms  "I'm not sure if I want to speak"
+           c699aee0-fdcf-484c-8bba-9b669c135648  rev 1  — 15% shorter than its text implies
+    0.845  target1         1872ms  "I'd like to meet with you today"
+           c55e55b9-c13b-46ad-a932-738c91dc3a71  rev 1  — 15% shorter than its text implies
+    0.845  target2         1872ms  "I'm going to start talking more"
+           56313243-aa2b-4a35-9f10-3d0ce0f1ded8  rev 1  — 15% shorter than its text implies
+    0.845  target1         2112ms  "but it's useful to speak in English"
+           39704257-4aea-419e-8557-08ca81cd7d4f  rev 1  — 16% shorter than its text implies
+    0.845  target1         1992ms  "but you wanted to speak very well"
+           040aa7a3-1037-47df-8cf5-b0c0166c542f  rev 1  — 15% shorter than its text implies
+    0.845  target2         2112ms  "starting to feel tired this morning"
+           3068d675-72b9-4bf0-9eb1-3ba5ab8e7fe2  rev 1  — 16% shorter than its text implies
+    0.845  target1         1872ms  "but I was starting to speak now"
+           c491ad97-9dfc-417e-a5ea-2b5cae39bd41  rev 1  — 15% shorter than its text implies
+    0.846  target1         1752ms  "we want to come back later on"
+           ad989a73-a9d4-4ce8-a572-2d1cd51d1692  rev 1  — 15% shorter than its text implies
+    0.846  target2         1632ms  "I don't want to speak today"
+           3b1fd422-c895-450a-90f6-33d62217fe34  rev 1  — 15% shorter than its text implies
+    0.846  target2         1752ms  "you want to answer in English"
+           dbbf5997-91f8-436d-9046-6076bb7562c5  rev 1  — 15% shorter than its text implies
+    0.847  presentation    4536ms  "अंग्रेज़ी में — 'बोलता हूँ' — जैसे — 'मैं अभी अंग्रेज
+           0cc4aba8-3e2e-45d2-b4c1-4a4eceb8d9ce  rev 1  — 15% shorter than its text implies
+    0.847  target1         1512ms  "I want to learn something"
+           41194759-7562-48cc-a8ea-4ceb9ff253c7  rev 1  — 15% shorter than its text implies
+    0.847  target2         2904ms  "I want to practise speaking as often as possible"
+           f064b16e-8436-40bd-8df0-825545f9b4af  rev 1  — 15% shorter than its text implies
+    0.847  target1         2784ms  "I'm going to remember the whole sentence today"
+           428d9615-c3f7-40dc-b7ea-6853bd07234e  rev 1  — 15% shorter than its text implies
+    0.847  target2         2904ms  "do you want to learn carefully for about a week?"
+           550e1b32-5f3c-4100-a40f-acfd013be5e7  rev 1  — 15% shorter than its text implies
+    0.847  target2         1512ms  "but it's a good thing now"
+           ec2b46fd-f6f4-4042-87bc-299f597cf7d5  rev 1  — 15% shorter than its text implies
+    0.847  target1         3024ms  "because I think it's a good thing to make mistakes"
+           f9bd8cf0-4d55-470e-a21e-19ed6fb6dcb2  rev 1  — 15% shorter than its text implies
+    0.848  target1         2544ms  "I'd like to come back and speak in English"
+           09b4fa5c-22e0-4338-be60-b528e1fd11ea  rev 1  — 15% shorter than its text implies
+    0.848  target1         2424ms  "he wants to come back with everyone else"
+           6ab337f0-c9f7-4f91-8ae8-736b669a3612  rev 1  — 15% shorter than its text implies
+    0.848  target2         2544ms  "do you speak very well with everyone else?"
+           d432eae6-3c95-42f0-80b9-f1bac75e2835  rev 1  — 15% shorter than its text implies
+    0.848  target2         2544ms  "I'm going to try talking with someone else"
+           e99a6338-b4bc-46e5-b299-33c9a5748015  rev 1  — 15% shorter than its text implies
+    0.848  target2         2664ms  "because you want to learn as soon as you can"
+           6fc22a9d-3a80-4846-93fc-405dee2336ad  rev 1  — 15% shorter than its text implies
+    0.848  target1         2664ms  "we want to learn in English for about a week"
+           92b21f87-ed38-4f49-95b7-f2a8a7e53ce2  rev 1  — 15% shorter than its text implies
+    0.848  target1         2424ms  "you know it's useful to speak in English"
+           55749429-5160-4493-ab50-b724e008cacc  rev 1  — 15% shorter than its text implies
+    0.849  target1         2304ms  "I wasn't thinking about how to answer."
+           2bd76db9-bde5-4752-b866-af9a0e717834  rev 1  — 15% shorter than its text implies
+    0.849  target2         2184ms  "I'm trying to learn how to speak now"
+           f549a581-7c34-4cb8-9c1c-f4674c581002  rev 1  — 15% shorter than its text implies
+    0.849  target1         2304ms  "because I'd like to start talking more"
+           8daf6304-af22-47ad-bc82-519bb254af2c  rev 1  — 15% shorter than its text implies
+    0.849  target1         2304ms  "I want to practise before I have to go"
+           3eef4626-d3e2-4ded-910a-46fb24daaccf  rev 1  — 15% shorter than its text implies
+    0.849  target1         2184ms  "I've been learning in English easily"
+           30393dc4-778d-471c-8d33-c5045f104370  rev 1  — 15% shorter than its text implies
+    0.849  target1         2304ms  "but I don't care about making mistakes"
+           6e555d37-0ca9-4d9d-982b-c0e0a0b03013  rev 1  — 15% shorter than its text implies
+     0.85  target2         2064ms  "you want to learn his name quickly"
+           a7ec9ec0-4087-42c7-9f0c-c9ab147b0bd7  rev 1  — 15% shorter than its text implies
+     0.85  target1         2064ms  "you want to learn his name quickly"
+           b5c52488-9303-420c-8ab8-5fcc42afddab  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "मैं अभी थोड़ी अंग्रेज़ी बोलता हूँ।"
+           e8d4fab5-fa55-43fe-a388-d4443cfdff9e  rev 1  — 15% shorter than its text implies
+     0.85  target2         2064ms  "to speak English with someone else"
+           4451b6b9-9efc-4ae5-9d3f-700f8e9be0bf  rev 1  — 15% shorter than its text implies
+     0.85  target1         2064ms  "I want to be able to speak English"
+           9a431c0a-1653-4ecd-a014-a48d927a357f  rev 1  — 15% shorter than its text implies
+     0.85  target2         1032ms  "he wants to speak"
+           879bde05-346f-4f3c-be10-6c8696521d03  rev 1  — 15% shorter than its text implies
+     0.85  target1         2064ms  "I don't want to come back later on"
+           3d0d32eb-27b9-43ef-a6ee-69ff57cd8e68  rev 1  — 15% shorter than its text implies
+     0.85  target1         2064ms  "I like to speak as soon as you can"
+           bb0f9a42-0742-409e-a600-70c9e9ca7928  rev 1  — 15% shorter than its text implies
+     0.85  target1         2064ms  "but I don't want to worry about it"
+           3509b2b9-ad6d-42de-b194-6cb2da6adf2f  rev 1  — 15% shorter than its text implies
+     0.85  target2         2064ms  "it's a good thing to make mistakes"
+           e6027538-1be5-41c4-baf9-bd3e7bfd9db9  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/eng_for_hin-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

@@ -1,0 +1,5802 @@
+{
+  "counts": {
+    "bidirectional": {
+      "gateExact": 9,
+      "caseInsensitive": 9,
+      "strict": 9
+    },
+    "targetMembershipFailures": 230,
+    "targetSideCollision": {
+      "gateExact": 119,
+      "caseInsensitive": 119,
+      "strict": 119
+    }
+  },
+  "bidirectionalStrict": [
+    {
+      "known_norm": "साफ कपड़े",
+      "distinct_targets": [
+        {
+          "target_norm": "thecleanclothes",
+          "example": {
+            "known": "साफ कपड़े",
+            "target": "the clean clothes",
+            "seed": 545,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "cleanclothes",
+          "example": {
+            "known": "साफ कपड़े",
+            "target": "clean clothes",
+            "seed": 545,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "बहुत व्यस्त",
+      "distinct_targets": [
+        {
+          "target_norm": "toobusy",
+          "example": {
+            "known": "बहुत व्यस्त",
+            "target": "too busy",
+            "seed": 246,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "verybusy",
+          "example": {
+            "known": "बहुत व्यस्त",
+            "target": "very busy",
+            "seed": 192,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "जब वे अभी भी जवान हैं",
+      "distinct_targets": [
+        {
+          "target_norm": "theyrestillyoung",
+          "example": {
+            "known": "जब वे अभी भी जवान हैं",
+            "target": "they're still young",
+            "seed": 440,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "whiletheyrestillyoung",
+          "example": {
+            "known": "जब वे अभी भी जवान हैं",
+            "target": "while they're still young",
+            "seed": 440,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आना चाहेंगे",
+      "distinct_targets": [
+        {
+          "target_norm": "wouldliketocome",
+          "example": {
+            "known": "आना चाहेंगे",
+            "target": "would like to come",
+            "seed": 271,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "wouldyouliketocome",
+          "example": {
+            "known": "आना चाहेंगे",
+            "target": "would you like to come",
+            "seed": 271,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "जिसने कहा कि वह",
+      "distinct_targets": [
+        {
+          "target_norm": "whosaidthatshe",
+          "example": {
+            "known": "जिसने कहा कि वह",
+            "target": "who said that she",
+            "seed": 236,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "whosaidthathe",
+          "example": {
+            "known": "जिसने कहा कि वह",
+            "target": "who said that he",
+            "seed": 235,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "जाने के लिए तैयार होंगे",
+      "distinct_targets": [
+        {
+          "target_norm": "youllbereadytoleave",
+          "example": {
+            "known": "जाने के लिए तैयार होंगे",
+            "target": "you'll be ready to leave",
+            "seed": 255,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "willyoubereadytogo",
+          "example": {
+            "known": "जाने के लिए तैयार होंगे?",
+            "target": "will you be ready to go?",
+            "seed": 252,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "ज़्यादा समय",
+      "distinct_targets": [
+        {
+          "target_norm": "moretime",
+          "example": {
+            "known": "ज़्यादा समय",
+            "target": "more time",
+            "seed": 333,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "longertime",
+          "example": {
+            "known": "ज़्यादा समय",
+            "target": "longer time",
+            "seed": 275,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "मैं आश्वस्त नहीं हूँ कि यह एक अच्छा विचार है।",
+      "distinct_targets": [
+        {
+          "target_norm": "imnotconvincedthatsagoodidea",
+          "example": {
+            "known": "मैं आश्वस्त नहीं हूँ कि यह एक अच्छा विचार है।",
+            "target": "I'm not convinced that's a good idea",
+            "seed": 571,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "imnotconvinceditsagoodidea",
+          "example": {
+            "known": "मैं आश्वस्त नहीं हूँ कि यह एक अच्छा विचार है।",
+            "target": "I'm not convinced it's a good idea",
+            "seed": 571,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "उसे एक किताब पढ़नी है",
+      "distinct_targets": [
+        {
+          "target_norm": "sheneedstoreadabook",
+          "example": {
+            "known": "उसे एक किताब पढ़नी है",
+            "target": "she needs to read a book",
+            "seed": 322,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "needstoreadabook",
+          "example": {
+            "known": "उसे एक किताब पढ़नी है",
+            "target": "needs to read a book",
+            "seed": 322,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "membershipFailures": [
+    {
+      "known": "के लिए",
+      "target": "for",
+      "seed": 345,
+      "seed_target": "Who said that he's not ready to leave yet.",
+      "id": "eng_for_hin:S0345L02C01"
+    },
+    {
+      "known": "पूछा",
+      "target": "asked",
+      "seed": 381,
+      "seed_target": "I didn't ask if he wanted to follow us.",
+      "id": "eng_for_hin:S0381L01C03"
+    },
+    {
+      "known": "लगता है",
+      "target": "think is",
+      "seed": 47,
+      "seed_target": "Because I think that it's a good thing to make mistakes.",
+      "id": "eng_for_hin:S0047L01C01"
+    },
+    {
+      "known": "जाना",
+      "target": "to go",
+      "seed": 274,
+      "seed_target": "Do you have to leave in a few days?",
+      "id": "eng_for_hin:S0274L02C01"
+    },
+    {
+      "known": "खुश हूँ",
+      "target": "I'm happy",
+      "seed": 76,
+      "seed_target": "I'm very happy with how much I've learnt already.",
+      "id": "eng_for_hin:S0076L01C01"
+    },
+    {
+      "known": "जवाब देने",
+      "target": "answering",
+      "seed": 250,
+      "seed_target": "Can you tell me something else before I answer?",
+      "id": "eng_for_hin:S0250L01C01"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 208,
+      "seed_target": "I didn't want to ask you how to say it.",
+      "id": "eng_for_hin:S0208L02C02"
+    },
+    {
+      "known": "क्या कह रहा हूँ",
+      "target": "what saying",
+      "seed": 174,
+      "seed_target": "Can you understand what I'm saying?",
+      "id": "eng_for_hin:S0174L02C02"
+    },
+    {
+      "known": "उसे",
+      "target": "to him",
+      "seed": 290,
+      "seed_target": "I wonder if he knows the answer.",
+      "id": "eng_for_hin:S0290L01C01"
+    },
+    {
+      "known": "हो जाऊँगा",
+      "target": "I'll be",
+      "seed": 253,
+      "seed_target": "I should be ready in a few minutes.",
+      "id": "eng_for_hin:S0253L02C02"
+    },
+    {
+      "known": "मुझे है",
+      "target": "I ... is",
+      "seed": 44,
+      "seed_target": "Or if I need to improve.",
+      "id": "eng_for_hin:S0044L02C02"
+    },
+    {
+      "known": "डालना",
+      "target": "to put",
+      "seed": 36,
+      "seed_target": "We don't want to interrupt the story.",
+      "id": "eng_for_hin:S0036L02C02"
+    },
+    {
+      "known": "जितनी हो सके",
+      "target": "as much as",
+      "seed": 7,
+      "seed_target": "I want to try as hard as I can today.",
+      "id": "eng_for_hin:S0007L02C01"
+    },
+    {
+      "known": "शुरू किया है",
+      "target": "has started",
+      "seed": 224,
+      "seed_target": "He's just started to learn.",
+      "id": "eng_for_hin:S0224L01C02"
+    },
+    {
+      "known": "बाधा",
+      "target": "interruption",
+      "seed": 36,
+      "seed_target": "We don't want to interrupt the story.",
+      "id": "eng_for_hin:S0036L02C01"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 27,
+      "seed_target": "I don't like taking too much time to answer.",
+      "id": "eng_for_hin:S0027L03C02"
+    },
+    {
+      "known": "मैं चाहता",
+      "target": "I want",
+      "seed": 19,
+      "seed_target": "But I don't want to stop talking.",
+      "id": "eng_for_hin:S0019L04C02"
+    },
+    {
+      "known": "जब",
+      "target": "when",
+      "seed": 396,
+      "seed_target": "We don't need to stand until everybody else is ready.",
+      "id": "eng_for_hin:S0396L02C01"
+    },
+    {
+      "known": "रात को",
+      "target": "at night",
+      "seed": 55,
+      "seed_target": "I don't enjoy waking up when I didn't sleep very well.",
+      "id": "eng_for_hin:S0055L01C01"
+    },
+    {
+      "known": "जाने",
+      "target": "to go",
+      "seed": 323,
+      "seed_target": "He said that he doesn't need to walk to school.",
+      "id": "eng_for_hin:S0323L01C02"
+    },
+    {
+      "known": "हैं",
+      "target": "are",
+      "seed": 324,
+      "seed_target": "That student has both of her hands up.",
+      "id": "eng_for_hin:S0324L01C04"
+    },
+    {
+      "known": "है",
+      "target": "is",
+      "seed": 329,
+      "seed_target": "It's important.",
+      "id": "eng_for_hin:S0329L01C03"
+    },
+    {
+      "known": "है",
+      "target": "is",
+      "seed": 330,
+      "seed_target": "No I don't think it's very important.",
+      "id": "eng_for_hin:S0330L01C04"
+    },
+    {
+      "known": "से",
+      "target": "from",
+      "seed": 342,
+      "seed_target": "I met someone who said something.",
+      "id": "eng_for_hin:S0342L01C01"
+    },
+    {
+      "known": "सुना",
+      "target": "heard",
+      "seed": 366,
+      "seed_target": "Did you hear what he wanted to grow?",
+      "id": "eng_for_hin:S0366L01C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 370,
+      "seed_target": "I didn't see anyone that I knew.",
+      "id": "eng_for_hin:S0370L01C03"
+    },
+    {
+      "known": "जिसे",
+      "target": "whom",
+      "seed": 370,
+      "seed_target": "I didn't see anyone that I knew.",
+      "id": "eng_for_hin:S0370L02C01"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 372,
+      "seed_target": "Did you see what she was trying to create?",
+      "id": "eng_for_hin:S0372L01C02"
+    },
+    {
+      "known": "थे",
+      "target": "were",
+      "seed": 378,
+      "seed_target": "No I didn't have enough money for holidays.",
+      "id": "eng_for_hin:S0378L02C04"
+    },
+    {
+      "known": "पूछा",
+      "target": "asked",
+      "seed": 382,
+      "seed_target": "Did you ask where he wanted to put it?",
+      "id": "eng_for_hin:S0382L01C02"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 380,
+      "seed_target": "I asked what she wanted to include.",
+      "id": "eng_for_hin:S0380L01C03"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 381,
+      "seed_target": "I didn't ask if he wanted to follow us.",
+      "id": "eng_for_hin:S0381L01C02"
+    },
+    {
+      "known": "है",
+      "target": "is",
+      "seed": 395,
+      "seed_target": "We need to turn left at the next corner.",
+      "id": "eng_for_hin:S0395L02C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 399,
+      "seed_target": "We don't want to lose hope.",
+      "id": "eng_for_hin:S0399L01C01"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 230,
+      "seed_target": "I know a young man who wants to work with you.",
+      "id": "eng_for_hin:S0230L02C02"
+    },
+    {
+      "known": "कर रही थी",
+      "target": "was doing",
+      "seed": 372,
+      "seed_target": "Did you see what she was trying to create?",
+      "id": "eng_for_hin:S0372L02C03"
+    },
+    {
+      "known": "गया",
+      "target": "have",
+      "seed": 205,
+      "seed_target": "I've forgotten the word I was trying to say.",
+      "id": "eng_for_hin:S0205L02C02"
+    },
+    {
+      "known": "ज़्यादा कुछ नहीं",
+      "target": "not much",
+      "seed": 218,
+      "seed_target": "I didn't do much on Sunday.",
+      "id": "eng_for_hin:S0218L02C01"
+    },
+    {
+      "known": "कोई समस्या",
+      "target": "any problem",
+      "seed": 282,
+      "seed_target": "No that's not a problem.",
+      "id": "eng_for_hin:S0282L01C02"
+    },
+    {
+      "known": "सीखना है",
+      "target": "I've got to learn",
+      "seed": 73,
+      "seed_target": "Thank you very much, but I've got more to learn.",
+      "id": "eng_for_hin:S0073L02C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 12,
+      "seed_target": "I wouldn't like to guess what's going to happen tomorrow.",
+      "id": "eng_for_hin:S0012L02C01"
+    },
+    {
+      "known": "था",
+      "target": "was",
+      "seed": 30,
+      "seed_target": "I wanted to ask you something yesterday.",
+      "id": "eng_for_hin:S0030L02C02"
+    },
+    {
+      "known": "मुझे खुशी है",
+      "target": "I'm happy",
+      "seed": 129,
+      "seed_target": "I'm so happy that you're doing so well.",
+      "id": "eng_for_hin:S0129L01C02"
+    },
+    {
+      "known": "मेरे पास",
+      "target": "I have",
+      "seed": 178,
+      "seed_target": "I didn't have time, although I wanted to see you.",
+      "id": "eng_for_hin:S0178L01C01"
+    },
+    {
+      "known": "देखी हैं",
+      "target": "have seen",
+      "seed": 182,
+      "seed_target": "Have you seen my keys anywhere?",
+      "id": "eng_for_hin:S0182L01C02"
+    },
+    {
+      "known": "कि वह",
+      "target": "that she",
+      "seed": 204,
+      "seed_target": "I wanted her to help you to deal with the arrangements.",
+      "id": "eng_for_hin:S0204L03C03"
+    },
+    {
+      "known": "आपकी मदद",
+      "target": "your help",
+      "seed": 204,
+      "seed_target": "I wanted her to help you to deal with the arrangements.",
+      "id": "eng_for_hin:S0204L02C01"
+    },
+    {
+      "known": "जो मैं",
+      "target": "what I",
+      "seed": 205,
+      "seed_target": "I've forgotten the word I was trying to say.",
+      "id": "eng_for_hin:S0205L03C01"
+    },
+    {
+      "known": "कि",
+      "target": "if",
+      "seed": 177,
+      "seed_target": "I'll ask her where she wants to go.",
+      "id": "eng_for_hin:S0177L03C04"
+    },
+    {
+      "known": "करेंगे",
+      "target": "would do",
+      "seed": 203,
+      "seed_target": "What would you do if I asked you to help me?",
+      "id": "eng_for_hin:S0203L03C03"
+    },
+    {
+      "known": "हासिल करने की कोशिश कर रहे हैं",
+      "target": "are trying to achieve",
+      "seed": 213,
+      "seed_target": "We don't know what they're trying to achieve.",
+      "id": "eng_for_hin:S0213L02C02"
+    },
+    {
+      "known": "बताया कि",
+      "target": "told that",
+      "seed": 211,
+      "seed_target": "They told us that they didn't want to explain.",
+      "id": "eng_for_hin:S0211L01C03"
+    },
+    {
+      "known": "चाहते थे",
+      "target": "wanted to",
+      "seed": 211,
+      "seed_target": "They told us that they didn't want to explain.",
+      "id": "eng_for_hin:S0211L02C03"
+    },
+    {
+      "known": "मुलाकात",
+      "target": "meeting",
+      "seed": 216,
+      "seed_target": "I saw a few friends.",
+      "id": "eng_for_hin:S0216L02C01"
+    },
+    {
+      "known": "चाहता था कि",
+      "target": "wanted that",
+      "seed": 237,
+      "seed_target": "He wanted me to tell you before the weekend.",
+      "id": "eng_for_hin:S0237L02C01"
+    },
+    {
+      "known": "अंदाज़ा नहीं",
+      "target": "no idea",
+      "seed": 260,
+      "seed_target": "I don't have the faintest idea.",
+      "id": "eng_for_hin:S0260L01C02"
+    },
+    {
+      "known": "बहुत",
+      "target": "a lot of",
+      "seed": 273,
+      "seed_target": "No unfortunately I've got too much work.",
+      "id": "eng_for_hin:S0273L01C01"
+    },
+    {
+      "known": "चाहेंगे",
+      "target": "would like",
+      "seed": 271,
+      "seed_target": "Would you like to come with us next month?",
+      "id": "eng_for_hin:S0271L02C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 278,
+      "seed_target": "Did you have to finish everything last night?",
+      "id": "eng_for_hin:S0278L01C01"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 289,
+      "seed_target": "I wonder if she's going to be there this afternoon.",
+      "id": "eng_for_hin:S0289L01C02"
+    },
+    {
+      "known": "मिलने वाला है",
+      "target": "is going to meet",
+      "seed": 293,
+      "seed_target": "I have to find out where he's going to meet me.",
+      "id": "eng_for_hin:S0293L01C02"
+    },
+    {
+      "known": "हो",
+      "target": "be",
+      "seed": 346,
+      "seed_target": "I wanted her to know that I liked her book.",
+      "id": "eng_for_hin:S0346L03C01"
+    },
+    {
+      "known": "थे",
+      "target": "were",
+      "seed": 31,
+      "seed_target": "You wanted to speak with me tonight.",
+      "id": "eng_for_hin:S0031L02C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 216,
+      "seed_target": "I saw a few friends.",
+      "id": "eng_for_hin:S0216L02C02"
+    },
+    {
+      "known": "बिल्कुल भी",
+      "target": "at all",
+      "seed": 260,
+      "seed_target": "I don't have the faintest idea.",
+      "id": "eng_for_hin:S0260L01C01"
+    },
+    {
+      "known": "मुझे है",
+      "target": "I ... is",
+      "seed": 48,
+      "seed_target": "I don't care about making mistakes.",
+      "id": "eng_for_hin:S0048L01C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 46,
+      "seed_target": "But I don't worry about making mistakes.",
+      "id": "eng_for_hin:S0046L02C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 44,
+      "seed_target": "Or if I need to improve.",
+      "id": "eng_for_hin:S0044L01C02"
+    },
+    {
+      "known": "सब",
+      "target": "all",
+      "seed": 45,
+      "seed_target": "I don't need to know everything.",
+      "id": "eng_for_hin:S0045L01C01"
+    },
+    {
+      "known": "क्या कहा",
+      "target": "what said",
+      "seed": 78,
+      "seed_target": "I don't understand what you said.",
+      "id": "eng_for_hin:S0078L02C02"
+    },
+    {
+      "known": "इसी",
+      "target": "this",
+      "seed": 105,
+      "seed_target": "That is why he didn't know the answer.",
+      "id": "eng_for_hin:S0105L01C01"
+    },
+    {
+      "known": "इसके",
+      "target": "of it",
+      "seed": 37,
+      "seed_target": "I started to think about it carefully last month.",
+      "id": "eng_for_hin:S0037L02C01"
+    },
+    {
+      "known": "कोई",
+      "target": "any",
+      "seed": 63,
+      "seed_target": "Are you sure you don't mind helping me?",
+      "id": "eng_for_hin:S0063L02C01"
+    },
+    {
+      "known": "कर रहा",
+      "target": "doing",
+      "seed": 50,
+      "seed_target": "I'm not trying to finish as quickly as possible.",
+      "id": "eng_for_hin:S0050L02C01"
+    },
+    {
+      "known": "क्या है",
+      "target": "what is",
+      "seed": 150,
+      "seed_target": "Can you tell me what your name is?",
+      "id": "eng_for_hin:S0150L02C02"
+    },
+    {
+      "known": "हूँ",
+      "target": "am",
+      "seed": 122,
+      "seed_target": "It's starting to feel easier and I'm excited about how it's going.",
+      "id": "eng_for_hin:S0122L02C02"
+    },
+    {
+      "known": "चाहता था कि",
+      "target": "wanted that",
+      "seed": 238,
+      "seed_target": "He wanted you to tell me yesterday.",
+      "id": "eng_for_hin:S0238L01C01"
+    },
+    {
+      "known": "पता",
+      "target": "knowledge of",
+      "seed": 251,
+      "seed_target": "I don't want to find out until after we finish.",
+      "id": "eng_for_hin:S0251L01C01"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 19,
+      "seed_target": "But I don't want to stop talking.",
+      "id": "eng_for_hin:S0019L02C02"
+    },
+    {
+      "known": "क्या आपने देखा",
+      "target": "did you watch",
+      "seed": 372,
+      "seed_target": "Did you see what she was trying to create?",
+      "id": "eng_for_hin:S0372L01C01"
+    },
+    {
+      "known": "देना",
+      "target": "to give",
+      "seed": 27,
+      "seed_target": "I don't like taking too much time to answer.",
+      "id": "eng_for_hin:S0027L01C02"
+    },
+    {
+      "known": "चीज़",
+      "target": "the thing",
+      "seed": 143,
+      "seed_target": "It's the same thing as we were talking about earlier.",
+      "id": "eng_for_hin:S0143L01C02"
+    },
+    {
+      "known": "और",
+      "target": "more",
+      "seed": 92,
+      "seed_target": "I'd like to keep on doing this for a while.",
+      "id": "eng_for_hin:S0092L01C02"
+    },
+    {
+      "known": "तक",
+      "target": "up to",
+      "seed": 60,
+      "seed_target": "I don't know how to say enough different words yet.",
+      "id": "eng_for_hin:S0060L02C01"
+    },
+    {
+      "known": "मुझे मदद",
+      "target": "help me",
+      "seed": 63,
+      "seed_target": "Are you sure you don't mind helping me?",
+      "id": "eng_for_hin:S0063L01C01"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 183,
+      "seed_target": "No I'm afraid I haven't seen them.",
+      "id": "eng_for_hin:S0183L01C03"
+    },
+    {
+      "known": "अच्छा",
+      "target": "nice",
+      "seed": 51,
+      "seed_target": "I enjoy doing interesting things with my friends.",
+      "id": "eng_for_hin:S0051L03C01"
+    },
+    {
+      "known": "एक विचार",
+      "target": "an idea",
+      "seed": 123,
+      "seed_target": "I think that's a good idea.",
+      "id": "eng_for_hin:S0123L02C02"
+    },
+    {
+      "known": "चाहूँगा",
+      "target": "I'd like",
+      "seed": 12,
+      "seed_target": "I wouldn't like to guess what's going to happen tomorrow.",
+      "id": "eng_for_hin:S0012L02C02"
+    },
+    {
+      "known": "से",
+      "target": "from",
+      "seed": 22,
+      "seed_target": "Because I want to meet people who speak English.",
+      "id": "eng_for_hin:S0022L02C01"
+    },
+    {
+      "known": "आज",
+      "target": "today",
+      "seed": 31,
+      "seed_target": "You wanted to speak with me tonight.",
+      "id": "eng_for_hin:S0031L01C01"
+    },
+    {
+      "known": "जो करना",
+      "target": "what to do",
+      "seed": 59,
+      "seed_target": "I know how to do what I need to do next week.",
+      "id": "eng_for_hin:S0059L03C01"
+    },
+    {
+      "known": "साथ",
+      "target": "together",
+      "seed": 62,
+      "seed_target": "I'm not sure if I can help you at the same time.",
+      "id": "eng_for_hin:S0062L01C02"
+    },
+    {
+      "known": "लिए",
+      "target": "for",
+      "seed": 105,
+      "seed_target": "That is why he didn't know the answer.",
+      "id": "eng_for_hin:S0105L01C02"
+    },
+    {
+      "known": "तब तक",
+      "target": "until then",
+      "seed": 396,
+      "seed_target": "We don't need to stand until everybody else is ready.",
+      "id": "eng_for_hin:S0396L01C01"
+    },
+    {
+      "known": "देखना",
+      "target": "to watch",
+      "seed": 220,
+      "seed_target": "Did you watch a bit of television?",
+      "id": "eng_for_hin:S0220L01C02"
+    },
+    {
+      "known": "लगाना",
+      "target": "to track down",
+      "seed": 251,
+      "seed_target": "I don't want to find out until after we finish.",
+      "id": "eng_for_hin:S0251L01C02"
+    },
+    {
+      "known": "बात कर रही है",
+      "target": "is talking",
+      "seed": 306,
+      "seed_target": "I know that young woman who's talking to your friend.",
+      "id": "eng_for_hin:S0306L03C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 378,
+      "seed_target": "No I didn't have enough money for holidays.",
+      "id": "eng_for_hin:S0378L02C03"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 376,
+      "seed_target": "I didn't go anywhere last month.",
+      "id": "eng_for_hin:S0376L01C02"
+    },
+    {
+      "known": "जाने",
+      "target": "to go",
+      "seed": 379,
+      "seed_target": "Yes I was lucky enough to travel to Africa.",
+      "id": "eng_for_hin:S0379L03C01"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 382,
+      "seed_target": "Did you ask where he wanted to put it?",
+      "id": "eng_for_hin:S0382L01C03"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 383,
+      "seed_target": "Yes he said he wanted to put it in the garden.",
+      "id": "eng_for_hin:S0383L02C01"
+    },
+    {
+      "known": "थे",
+      "target": "were",
+      "seed": 385,
+      "seed_target": "Did you agree with her?",
+      "id": "eng_for_hin:S0385L01C03"
+    },
+    {
+      "known": "हैं",
+      "target": "are",
+      "seed": 58,
+      "seed_target": "It's interesting when you understand enough words.",
+      "id": "eng_for_hin:S0058L02C02"
+    },
+    {
+      "known": "मुझे ज़रूरत",
+      "target": "I need",
+      "seed": 45,
+      "seed_target": "I don't need to know everything.",
+      "id": "eng_for_hin:S0045L02C01"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 375,
+      "seed_target": "No I didn't know what she was doing.",
+      "id": "eng_for_hin:S0375L01C04"
+    },
+    {
+      "known": "से",
+      "target": "from",
+      "seed": 86,
+      "seed_target": "It wasn't possible, unfortunately.",
+      "id": "eng_for_hin:S0086L01C01"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 7,
+      "seed_target": "I want to try as hard as I can today.",
+      "id": "eng_for_hin:S0007L03C02"
+    },
+    {
+      "known": "आपत्ति नहीं",
+      "target": "no objection",
+      "seed": 63,
+      "seed_target": "Are you sure you don't mind helping me?",
+      "id": "eng_for_hin:S0063L02C02"
+    },
+    {
+      "known": "देखा",
+      "target": "saw",
+      "seed": 370,
+      "seed_target": "I didn't see anyone that I knew.",
+      "id": "eng_for_hin:S0370L01C04"
+    },
+    {
+      "known": "चाहते थे",
+      "target": "wanted",
+      "seed": 32,
+      "seed_target": "Did you want to show me something?",
+      "id": "eng_for_hin:S0032L02C02"
+    },
+    {
+      "known": "मेरा मतलब",
+      "target": "my meaning",
+      "seed": 8,
+      "seed_target": "I'm going to try to explain what I mean.",
+      "id": "eng_for_hin:S0008L02C01"
+    },
+    {
+      "known": "मुझे है",
+      "target": "I ... is",
+      "seed": 26,
+      "seed_target": "I like feeling as if I'm nearly ready to go.",
+      "id": "eng_for_hin:S0026L01C02"
+    },
+    {
+      "known": "क्या है",
+      "target": "what is",
+      "seed": 17,
+      "seed_target": "She wants to find out what the answer is.",
+      "id": "eng_for_hin:S0017L03C02"
+    },
+    {
+      "known": "से",
+      "target": "for",
+      "seed": 33,
+      "seed_target": "How long have you been learning English?",
+      "id": "eng_for_hin:S0033L01C02"
+    },
+    {
+      "known": "हफ्ते से",
+      "target": "week for",
+      "seed": 38,
+      "seed_target": "I've been learning for about a week.",
+      "id": "eng_for_hin:S0038L01C02"
+    },
+    {
+      "known": "करना",
+      "target": "doing",
+      "seed": 19,
+      "seed_target": "But I don't want to stop talking.",
+      "id": "eng_for_hin:S0019L01C02"
+    },
+    {
+      "known": "से",
+      "target": "with",
+      "seed": 37,
+      "seed_target": "I started to think about it carefully last month.",
+      "id": "eng_for_hin:S0037L01C02"
+    },
+    {
+      "known": "बस से",
+      "target": "on the bus",
+      "seed": 95,
+      "seed_target": "Are you ready to go home on the next bus?",
+      "id": "eng_for_hin:S0095L02C02"
+    },
+    {
+      "known": "लग रहा है",
+      "target": "is feeling",
+      "seed": 101,
+      "seed_target": "I'm enjoying finding out more about this language.",
+      "id": "eng_for_hin:S0101L01C02"
+    },
+    {
+      "known": "अच्छा",
+      "target": "good",
+      "seed": 101,
+      "seed_target": "I'm enjoying finding out more about this language.",
+      "id": "eng_for_hin:S0101L01C01"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 113,
+      "seed_target": "Why can't I remember what you said?",
+      "id": "eng_for_hin:S0113L01C02"
+    },
+    {
+      "known": "इसीलिए",
+      "target": "that why",
+      "seed": 127,
+      "seed_target": "That isn't why I wanted to see you.",
+      "id": "eng_for_hin:S0127L01C01"
+    },
+    {
+      "known": "सवाल का जवाब",
+      "target": "the answer to the question",
+      "seed": 202,
+      "seed_target": "Nobody was sure how to answer the question.",
+      "id": "eng_for_hin:S0202L02C01"
+    },
+    {
+      "known": "यकीन नहीं था",
+      "target": "wasn't sure",
+      "seed": 202,
+      "seed_target": "Nobody was sure how to answer the question.",
+      "id": "eng_for_hin:S0202L01C02"
+    },
+    {
+      "known": "समझाना नहीं",
+      "target": "not explain",
+      "seed": 211,
+      "seed_target": "They told us that they didn't want to explain.",
+      "id": "eng_for_hin:S0211L02C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 219,
+      "seed_target": "It was nice to relax for a while.",
+      "id": "eng_for_hin:S0219L01C02"
+    },
+    {
+      "known": "किसी को",
+      "target": "to anyone",
+      "seed": 202,
+      "seed_target": "Nobody was sure how to answer the question.",
+      "id": "eng_for_hin:S0202L01C01"
+    },
+    {
+      "known": "कैसे दें",
+      "target": "how to give",
+      "seed": 202,
+      "seed_target": "Nobody was sure how to answer the question.",
+      "id": "eng_for_hin:S0202L02C02"
+    },
+    {
+      "known": "चाहता था",
+      "target": "wanted to",
+      "seed": 208,
+      "seed_target": "I didn't want to ask you how to say it.",
+      "id": "eng_for_hin:S0208L02C03"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 204,
+      "seed_target": "I wanted her to help you to deal with the arrangements.",
+      "id": "eng_for_hin:S0204L02C02"
+    },
+    {
+      "known": "बहुत कम",
+      "target": "not many",
+      "seed": 297,
+      "seed_target": "I don't know many people who speak English.",
+      "id": "eng_for_hin:S0297L01C01"
+    },
+    {
+      "known": "जाना",
+      "target": "to go",
+      "seed": 215,
+      "seed_target": "I went out on Saturday night.",
+      "id": "eng_for_hin:S0215L01C02"
+    },
+    {
+      "known": "ने",
+      "target": "one",
+      "seed": 367,
+      "seed_target": "No nobody told me.",
+      "id": "eng_for_hin:S0367L01C02"
+    },
+    {
+      "known": "आना",
+      "target": "come",
+      "seed": 381,
+      "seed_target": "I didn't ask if he wanted to follow us.",
+      "id": "eng_for_hin:S0381L02C02"
+    },
+    {
+      "known": "देखना",
+      "target": "to watch",
+      "seed": 221,
+      "seed_target": "I watched the football and then I watched a film.",
+      "id": "eng_for_hin:S0221L01C02"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 291,
+      "seed_target": "I hope I'll be able to speak better soon.",
+      "id": "eng_for_hin:S0291L01C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 364,
+      "seed_target": "I heard that he didn't like that place.",
+      "id": "eng_for_hin:S0364L03C02"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 245,
+      "seed_target": "I'm happy with how much I've done in a short time",
+      "id": "eng_for_hin:S0245L02C02"
+    },
+    {
+      "known": "जिसे",
+      "target": "whom",
+      "seed": 355,
+      "seed_target": "Did she need to talk to that woman you know?",
+      "id": "eng_for_hin:S0355L02C01"
+    },
+    {
+      "known": "है",
+      "target": "is",
+      "seed": 308,
+      "seed_target": "Yes she's a friend of my mother.",
+      "id": "eng_for_hin:S0308L01C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 365,
+      "seed_target": "I didn't hear what she said to him.",
+      "id": "eng_for_hin:S0365L01C01"
+    },
+    {
+      "known": "था",
+      "target": "was",
+      "seed": 386,
+      "seed_target": "Yes I agreed with her.",
+      "id": "eng_for_hin:S0386L01C03"
+    },
+    {
+      "known": "के लिए",
+      "target": "for",
+      "seed": 379,
+      "seed_target": "Yes I was lucky enough to travel to Africa.",
+      "id": "eng_for_hin:S0379L03C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 387,
+      "seed_target": "No I didn't think she was right.",
+      "id": "eng_for_hin:S0387L01C02"
+    },
+    {
+      "known": "मैं जानता हूँ",
+      "target": "I know",
+      "seed": 370,
+      "seed_target": "I didn't see anyone that I knew.",
+      "id": "eng_for_hin:S0370L02C02"
+    },
+    {
+      "known": "नहीं करता",
+      "target": "don't do",
+      "seed": 46,
+      "seed_target": "But I don't worry about making mistakes.",
+      "id": "eng_for_hin:S0046L03C02"
+    },
+    {
+      "known": "थी",
+      "target": "was",
+      "seed": 364,
+      "seed_target": "I heard that he didn't like that place.",
+      "id": "eng_for_hin:S0364L03C03"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 366,
+      "seed_target": "Did you hear what he wanted to grow?",
+      "id": "eng_for_hin:S0366L01C03"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 367,
+      "seed_target": "No nobody told me.",
+      "id": "eng_for_hin:S0367L02C02"
+    },
+    {
+      "known": "क्या कहा",
+      "target": "what said",
+      "seed": 365,
+      "seed_target": "I didn't hear what she said to him.",
+      "id": "eng_for_hin:S0365L02C03"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 23,
+      "seed_target": "I'm going to start talking more soon.",
+      "id": "eng_for_hin:S0023L03C02"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 365,
+      "seed_target": "I didn't hear what she said to him.",
+      "id": "eng_for_hin:S0365L01C03"
+    },
+    {
+      "known": "लगा",
+      "target": "thought",
+      "seed": 387,
+      "seed_target": "No I didn't think she was right.",
+      "id": "eng_for_hin:S0387L01C03"
+    },
+    {
+      "known": "में",
+      "target": "in",
+      "seed": 354,
+      "seed_target": "He didn't need to appear angry.",
+      "id": "eng_for_hin:S0354L02C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 375,
+      "seed_target": "No I didn't know what she was doing.",
+      "id": "eng_for_hin:S0375L01C02"
+    },
+    {
+      "known": "कर रहा हूँ",
+      "target": "I'm doing",
+      "seed": 2,
+      "seed_target": "I'm trying to learn.",
+      "id": "eng_for_hin:S0002L02C02"
+    },
+    {
+      "known": "है",
+      "target": "is",
+      "seed": 59,
+      "seed_target": "I know how to do what I need to do next week.",
+      "id": "eng_for_hin:S0059L03C02"
+    },
+    {
+      "known": "और सीखना है",
+      "target": "I've got more to learn",
+      "seed": 75,
+      "seed_target": "Have you got more to learn?",
+      "id": "eng_for_hin:S0075L01C01"
+    },
+    {
+      "known": "उतनी",
+      "target": "that much",
+      "seed": 7,
+      "seed_target": "I want to try as hard as I can today.",
+      "id": "eng_for_hin:S0007L02C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 23,
+      "seed_target": "I'm going to start talking more soon.",
+      "id": "eng_for_hin:S0023L02C02"
+    },
+    {
+      "known": "क्या होगा",
+      "target": "what will happen",
+      "seed": 12,
+      "seed_target": "I wouldn't like to guess what's going to happen tomorrow.",
+      "id": "eng_for_hin:S0012L03C02"
+    },
+    {
+      "known": "कहने की कोशिश नहीं कर रहा",
+      "target": "not trying to say",
+      "seed": 159,
+      "seed_target": "That isn't what I'm trying to say.",
+      "id": "eng_for_hin:S0159L01C02"
+    },
+    {
+      "known": "रहे हैं",
+      "target": "are",
+      "seed": 72,
+      "seed_target": "I think that you're doing very well.",
+      "id": "eng_for_hin:S0072L02C02"
+    },
+    {
+      "known": "लगाना",
+      "target": "to put",
+      "seed": 12,
+      "seed_target": "I wouldn't like to guess what's going to happen tomorrow.",
+      "id": "eng_for_hin:S0012L01C02"
+    },
+    {
+      "known": "ही",
+      "target": "just",
+      "seed": 23,
+      "seed_target": "I'm going to start talking more soon.",
+      "id": "eng_for_hin:S0023L01C01"
+    },
+    {
+      "known": "क्या है",
+      "target": "what is",
+      "seed": 8,
+      "seed_target": "I'm going to try to explain what I mean.",
+      "id": "eng_for_hin:S0008L02C02"
+    },
+    {
+      "known": "कोशिश",
+      "target": "effort",
+      "seed": 7,
+      "seed_target": "I want to try as hard as I can today.",
+      "id": "eng_for_hin:S0007L03C01"
+    },
+    {
+      "known": "याद करना",
+      "target": "to remember",
+      "seed": 10,
+      "seed_target": "I'm not sure if I can remember the whole sentence.",
+      "id": "eng_for_hin:S0010L02C01"
+    },
+    {
+      "known": "से",
+      "target": "with",
+      "seed": 24,
+      "seed_target": "I'm not going to be able to remember easily.",
+      "id": "eng_for_hin:S0024L01C01"
+    },
+    {
+      "known": "कल से बुरा",
+      "target": "worse than yesterday",
+      "seed": 114,
+      "seed_target": "I feel as if I'm doing worse today than yesterday.",
+      "id": "eng_for_hin:S0114L02C02"
+    },
+    {
+      "known": "नहीं",
+      "target": "not",
+      "seed": 57,
+      "seed_target": "I can't remember how to say what I wanted to say.",
+      "id": "eng_for_hin:S0057L01C02"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 59,
+      "seed_target": "I know how to do what I need to do next week.",
+      "id": "eng_for_hin:S0059L02C02"
+    },
+    {
+      "known": "मुझे पसंद",
+      "target": "I like",
+      "seed": 27,
+      "seed_target": "I don't like taking too much time to answer.",
+      "id": "eng_for_hin:S0027L03C01"
+    },
+    {
+      "known": "एक",
+      "target": "one",
+      "seed": 62,
+      "seed_target": "I'm not sure if I can help you at the same time.",
+      "id": "eng_for_hin:S0062L01C01"
+    },
+    {
+      "known": "कर रहा हूँ",
+      "target": "I'm doing",
+      "seed": 29,
+      "seed_target": "I'm looking forward to speaking better as soon as I can.",
+      "id": "eng_for_hin:S0029L02C02"
+    },
+    {
+      "known": "तैयार होंगे",
+      "target": "will be ready",
+      "seed": 255,
+      "seed_target": "When do you think you'll be ready to leave?",
+      "id": "eng_for_hin:S0255L01C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do",
+      "seed": 40,
+      "seed_target": "How do you feel at the moment?",
+      "id": "eng_for_hin:S0040L01C02"
+    },
+    {
+      "known": "कि क्या",
+      "target": "whether",
+      "seed": 381,
+      "seed_target": "I didn't ask if he wanted to follow us.",
+      "id": "eng_for_hin:S0381L01C04"
+    },
+    {
+      "known": "क्या चाहेंगे",
+      "target": "would like to",
+      "seed": 428,
+      "seed_target": "Would they like to visit us on Tuesday?",
+      "id": "eng_for_hin:S0428L01C01"
+    },
+    {
+      "known": "ऐसा है",
+      "target": "like this is",
+      "seed": 49,
+      "seed_target": "It's like this, if you know what I mean.",
+      "id": "eng_for_hin:S0049L02C02"
+    },
+    {
+      "known": "शुरू किया है",
+      "target": "has started",
+      "seed": 228,
+      "seed_target": "That man has just started to practise speaking.",
+      "id": "eng_for_hin:S0228L02C02"
+    },
+    {
+      "known": "चाहता हूँ कि",
+      "target": "I want that",
+      "seed": 249,
+      "seed_target": "I want you to help me before you go.",
+      "id": "eng_for_hin:S0249L01C01"
+    },
+    {
+      "known": "बहुत",
+      "target": "much",
+      "seed": 244,
+      "seed_target": "I've learnt a lot already",
+      "id": "eng_for_hin:S0244L03C01"
+    },
+    {
+      "known": "होंगे",
+      "target": "will be",
+      "seed": 252,
+      "seed_target": "When will you be ready to start?",
+      "id": "eng_for_hin:S0252L01C02"
+    },
+    {
+      "known": "किससे है",
+      "target": "whom is",
+      "seed": 263,
+      "seed_target": "I don't know who you mean.",
+      "id": "eng_for_hin:S0263L01C02"
+    },
+    {
+      "known": "होगा",
+      "target": "will have to",
+      "seed": 274,
+      "seed_target": "Do you have to leave in a few days?",
+      "id": "eng_for_hin:S0274L02C02"
+    },
+    {
+      "known": "अपने पिता का",
+      "target": "your father's",
+      "seed": 269,
+      "seed_target": "Why don't you want to wait for your father?",
+      "id": "eng_for_hin:S0269L01C01"
+    },
+    {
+      "known": "दोस्त से",
+      "target": "from friend",
+      "seed": 267,
+      "seed_target": "Have you heard from your friend?",
+      "id": "eng_for_hin:S0267L01C01"
+    },
+    {
+      "known": "खबर मिली",
+      "target": "got news",
+      "seed": 267,
+      "seed_target": "Have you heard from your friend?",
+      "id": "eng_for_hin:S0267L01C02"
+    },
+    {
+      "known": "समय नहीं बचा था",
+      "target": "time wasn't left",
+      "seed": 279,
+      "seed_target": "Yes because there wasn't much time left.",
+      "id": "eng_for_hin:S0279L01C02"
+    },
+    {
+      "known": "आपत्ति है",
+      "target": "is there objection",
+      "seed": 281,
+      "seed_target": "Do you mind if I finish my coffee before you start?",
+      "id": "eng_for_hin:S0281L02C01"
+    },
+    {
+      "known": "पैदल",
+      "target": "on foot",
+      "seed": 323,
+      "seed_target": "He said that he doesn't need to walk to school.",
+      "id": "eng_for_hin:S0323L01C01"
+    },
+    {
+      "known": "खत्म करना",
+      "target": "to finish",
+      "seed": 149,
+      "seed_target": "This isn't very difficult, so I hope you'll finish soon.",
+      "id": "eng_for_hin:S0149L03C02"
+    },
+    {
+      "known": "क्या चाहते हैं?",
+      "target": "what want?",
+      "seed": 152,
+      "seed_target": "I would have done it differently if I had known what you wanted.",
+      "id": "eng_for_hin:S0152L03C02"
+    },
+    {
+      "known": "कि होगा",
+      "target": "that would happen",
+      "seed": 151,
+      "seed_target": "That wasn't what I was hoping would happen.",
+      "id": "eng_for_hin:S0151L02C02"
+    },
+    {
+      "known": "करना",
+      "target": "to do it",
+      "seed": 152,
+      "seed_target": "I would have done it differently if I had known what you wanted.",
+      "id": "eng_for_hin:S0152L01C02"
+    },
+    {
+      "known": "उसी तरह",
+      "target": "in the same way",
+      "seed": 153,
+      "seed_target": "I wouldn't have said it in exactly the same way.",
+      "id": "eng_for_hin:S0153L02C02"
+    },
+    {
+      "known": "की रात",
+      "target": "on night",
+      "seed": 154,
+      "seed_target": "Where do you want to meet on Saturday night?",
+      "id": "eng_for_hin:S0154L02C02"
+    },
+    {
+      "known": "यही",
+      "target": "exactly this",
+      "seed": 159,
+      "seed_target": "That isn't what I'm trying to say.",
+      "id": "eng_for_hin:S0159L02C01"
+    },
+    {
+      "known": "हो पाऊँगा",
+      "target": "I be able to be",
+      "seed": 157,
+      "seed_target": "I won't be able to be there next month.",
+      "id": "eng_for_hin:S0157L01C02"
+    },
+    {
+      "known": "मदद कर पाऊँगा",
+      "target": "be able to help",
+      "seed": 168,
+      "seed_target": "And then I'll be able to come and help later on.",
+      "id": "eng_for_hin:S0168L02C02"
+    },
+    {
+      "known": "क्या चाहिए",
+      "target": "what need",
+      "seed": 170,
+      "seed_target": "I'd like you to tell me what you need.",
+      "id": "eng_for_hin:S0170L02C02"
+    },
+    {
+      "known": "सुबह",
+      "target": "on morning",
+      "seed": 161,
+      "seed_target": "Can you give me that book on Sunday morning?",
+      "id": "eng_for_hin:S0161L03C02"
+    },
+    {
+      "known": "क्या सोचते हैं",
+      "target": "what do think",
+      "seed": 162,
+      "seed_target": "What do you think about that?",
+      "id": "eng_for_hin:S0162L01C02"
+    },
+    {
+      "known": "मदद कर पाएगा",
+      "target": "will be able to help",
+      "seed": 176,
+      "seed_target": "I'll ask him if he'll be able to help next year.",
+      "id": "eng_for_hin:S0176L02C02"
+    },
+    {
+      "known": "पूछूँगा कि",
+      "target": "I'll ask if",
+      "seed": 176,
+      "seed_target": "I'll ask him if he'll be able to help next year.",
+      "id": "eng_for_hin:S0176L03C03"
+    },
+    {
+      "known": "कि",
+      "target": "that",
+      "seed": 340,
+      "seed_target": "Yes I'm sure he's going to be okay.",
+      "id": "eng_for_hin:S0340L01C02"
+    },
+    {
+      "known": "है",
+      "target": "has",
+      "seed": 339,
+      "seed_target": "No I think he's hurt himself quite badly.",
+      "id": "eng_for_hin:S0339L02C01"
+    },
+    {
+      "known": "होना होगा",
+      "target": "will have to",
+      "seed": 397,
+      "seed_target": "Do we need to get ready soon?",
+      "id": "eng_for_hin:S0397L01C02"
+    },
+    {
+      "known": "उस",
+      "target": "that",
+      "seed": 603,
+      "seed_target": "We didn't have anywhere to live at the time.",
+      "id": "eng_for_hin:S0603L01C01"
+    },
+    {
+      "known": "हमारे पीछे",
+      "target": "behind us",
+      "seed": 381,
+      "seed_target": "I didn't ask if he wanted to follow us.",
+      "id": "eng_for_hin:S0381L02C01"
+    },
+    {
+      "known": "की",
+      "target": "of",
+      "seed": 372,
+      "seed_target": "Did you see what she was trying to create?",
+      "id": "eng_for_hin:S0372L02C01"
+    },
+    {
+      "known": "से",
+      "target": "from",
+      "seed": 341,
+      "seed_target": "I met someone a few days ago.",
+      "id": "eng_for_hin:S0341L01C01"
+    },
+    {
+      "known": "पता था",
+      "target": "knew",
+      "seed": 375,
+      "seed_target": "No I didn't know what she was doing.",
+      "id": "eng_for_hin:S0375L01C03"
+    },
+    {
+      "known": "बैठा है",
+      "target": "is sitting",
+      "seed": 307,
+      "seed_target": "I know that young man who's sitting over there.",
+      "id": "eng_for_hin:S0307L02C02"
+    },
+    {
+      "known": "ऐसा",
+      "target": "such",
+      "seed": 370,
+      "seed_target": "I didn't see anyone that I knew.",
+      "id": "eng_for_hin:S0370L01C02"
+    },
+    {
+      "known": "तो भी",
+      "target": "even so",
+      "seed": 352,
+      "seed_target": "Even if he wanted to he wouldn't be able to.",
+      "id": "eng_for_hin:S0352L02C03"
+    },
+    {
+      "known": "कुछ",
+      "target": "of things",
+      "seed": 244,
+      "seed_target": "I've learnt a lot already",
+      "id": "eng_for_hin:S0244L03C02"
+    },
+    {
+      "known": "गुस्से",
+      "target": "anger",
+      "seed": 354,
+      "seed_target": "He didn't need to appear angry.",
+      "id": "eng_for_hin:S0354L02C01"
+    },
+    {
+      "known": "किसी",
+      "target": "anybody",
+      "seed": 367,
+      "seed_target": "No nobody told me.",
+      "id": "eng_for_hin:S0367L01C01"
+    },
+    {
+      "known": "जिसके साथ",
+      "target": "with whom",
+      "seed": 388,
+      "seed_target": "That person you work with.",
+      "id": "eng_for_hin:S0388L02C01"
+    },
+    {
+      "known": "क्या करना चाहिए",
+      "target": "what should do",
+      "seed": 438,
+      "seed_target": "They didn't want to decide what he should do.",
+      "id": "eng_for_hin:S0438L02C02"
+    },
+    {
+      "known": "क्या चाहते थे",
+      "target": "did want to",
+      "seed": 442,
+      "seed_target": "Did they want to develop a new approach?",
+      "id": "eng_for_hin:S0442L01C01"
+    },
+    {
+      "known": "ऊपर",
+      "target": "up",
+      "seed": 358,
+      "seed_target": "Your friend said that she couldn't reach the top.",
+      "id": "eng_for_hin:S0358L02C01"
+    },
+    {
+      "known": "तरफ",
+      "target": "side",
+      "seed": 359,
+      "seed_target": "Your friend said that he could turn left.",
+      "id": "eng_for_hin:S0359L02C01"
+    },
+    {
+      "known": "न हो जाएँ",
+      "target": "becomes",
+      "seed": 396,
+      "seed_target": "We don't need to stand until everybody else is ready.",
+      "id": "eng_for_hin:S0396L03C03"
+    },
+    {
+      "known": "लगता है",
+      "target": "feels",
+      "seed": 51,
+      "seed_target": "I enjoy doing interesting things with my friends.",
+      "id": "eng_for_hin:S0051L03C02"
+    },
+    {
+      "known": "मिल सकती है",
+      "target": "could have",
+      "seed": 414,
+      "seed_target": "Could we have a bottle of red wine please?",
+      "id": "eng_for_hin:S0414L01C02"
+    }
+  ],
+  "targetSideCollisionStrict": [
+    {
+      "known_norm": "उन्हें",
+      "distinct_targets": [
+        {
+          "target_norm": "them",
+          "example": {
+            "known": "उन्हें",
+            "target": "them",
+            "seed": 185,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "they",
+          "example": {
+            "known": "उन्हें",
+            "target": "they",
+            "seed": 210,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "इंतज़ार",
+      "distinct_targets": [
+        {
+          "target_norm": "lookingforward",
+          "example": {
+            "known": "इंतज़ार",
+            "target": "looking forward",
+            "seed": 29,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "wait",
+          "example": {
+            "known": "इंतज़ार",
+            "target": "wait",
+            "seed": 82,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "बस",
+      "distinct_targets": [
+        {
+          "target_norm": "just",
+          "example": {
+            "known": "बस",
+            "target": "just",
+            "seed": 106,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "thebus",
+          "example": {
+            "known": "बस",
+            "target": "the bus",
+            "seed": 391,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "तैयार",
+      "distinct_targets": [
+        {
+          "target_norm": "readyto",
+          "example": {
+            "known": "तैयार",
+            "target": "ready to",
+            "seed": 115,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ready",
+          "example": {
+            "known": "तैयार",
+            "target": "ready",
+            "seed": 252,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 7
+        }
+      ]
+    },
+    {
+      "known_norm": "क्या आप",
+      "distinct_targets": [
+        {
+          "target_norm": "canyou",
+          "example": {
+            "known": "क्या आप",
+            "target": "can you",
+            "seed": 150,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "didyou",
+          "example": {
+            "known": "क्या आप",
+            "target": "did you",
+            "seed": 32,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "doyou",
+          "example": {
+            "known": "क्या आप",
+            "target": "do you",
+            "seed": 14,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "areyou",
+          "example": {
+            "known": "क्या आप",
+            "target": "are you",
+            "seed": 25,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "मुझे",
+      "distinct_targets": [
+        {
+          "target_norm": "i",
+          "example": {
+            "known": "मुझे",
+            "target": "I",
+            "seed": 188,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 16
+        },
+        {
+          "target_norm": "im",
+          "example": {
+            "known": "मुझे",
+            "target": "I'm",
+            "seed": 139,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "me",
+          "example": {
+            "known": "मुझे",
+            "target": "me",
+            "seed": 222,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "कुछ",
+      "distinct_targets": [
+        {
+          "target_norm": "something",
+          "example": {
+            "known": "कुछ",
+            "target": "something",
+            "seed": 227,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 6
+        },
+        {
+          "target_norm": "some",
+          "example": {
+            "known": "कुछ",
+            "target": "some",
+            "seed": 335,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "afew",
+          "example": {
+            "known": "कुछ",
+            "target": "a few",
+            "seed": 216,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "thing",
+          "example": {
+            "known": "कुछ",
+            "target": "thing",
+            "seed": 45,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "a",
+          "example": {
+            "known": "कुछ",
+            "target": "a",
+            "seed": 219,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ofthings",
+          "example": {
+            "known": "कुछ",
+            "target": "of things",
+            "seed": 244,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "पर",
+      "distinct_targets": [
+        {
+          "target_norm": "on",
+          "example": {
+            "known": "पर",
+            "target": "on",
+            "seed": 195,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "at",
+          "example": {
+            "known": "पर",
+            "target": "at",
+            "seed": 395,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "जिसे",
+      "distinct_targets": [
+        {
+          "target_norm": "someone",
+          "example": {
+            "known": "जिसे",
+            "target": "someone",
+            "seed": 128,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "whom",
+          "example": {
+            "known": "जिसे",
+            "target": "whom",
+            "seed": 370,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "मुझसे",
+      "distinct_targets": [
+        {
+          "target_norm": "metodo",
+          "example": {
+            "known": "मुझसे",
+            "target": "me to do",
+            "seed": 169,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "me",
+          "example": {
+            "known": "मुझसे",
+            "target": "me",
+            "seed": 415,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "चाहता",
+      "distinct_targets": [
+        {
+          "target_norm": "wanted",
+          "example": {
+            "known": "चाहता",
+            "target": "wanted",
+            "seed": 30,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "wants",
+          "example": {
+            "known": "चाहता",
+            "target": "wants",
+            "seed": 16,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "एक",
+      "distinct_targets": [
+        {
+          "target_norm": "a",
+          "example": {
+            "known": "एक",
+            "target": "a",
+            "seed": 217,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 12
+        },
+        {
+          "target_norm": "an",
+          "example": {
+            "known": "एक",
+            "target": "an",
+            "seed": 232,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "one",
+          "example": {
+            "known": "एक",
+            "target": "one",
+            "seed": 634,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "जाना है",
+      "distinct_targets": [
+        {
+          "target_norm": "needtoleave",
+          "example": {
+            "known": "जाना है",
+            "target": "need to leave",
+            "seed": 139,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "needstomove",
+          "example": {
+            "known": "जाना है",
+            "target": "needs to move",
+            "seed": 319,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "देखा",
+      "distinct_targets": [
+        {
+          "target_norm": "watch",
+          "example": {
+            "known": "देखा",
+            "target": "watch",
+            "seed": 220,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "saw",
+          "example": {
+            "known": "देखा",
+            "target": "saw",
+            "seed": 619,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "seen",
+          "example": {
+            "known": "देखा",
+            "target": "seen",
+            "seed": 309,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "अब",
+      "distinct_targets": [
+        {
+          "target_norm": "anymore",
+          "example": {
+            "known": "अब",
+            "target": "any more",
+            "seed": 145,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "now",
+          "example": {
+            "known": "अब",
+            "target": "now",
+            "seed": 606,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "चाहते हैं",
+      "distinct_targets": [
+        {
+          "target_norm": "want",
+          "example": {
+            "known": "चाहते हैं",
+            "target": "want",
+            "seed": 18,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "wantto",
+          "example": {
+            "known": "चाहते हैं",
+            "target": "want to",
+            "seed": 200,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "मैं",
+      "distinct_targets": [
+        {
+          "target_norm": "i",
+          "example": {
+            "known": "मैं",
+            "target": "I",
+            "seed": 153,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 13
+        },
+        {
+          "target_norm": "ill",
+          "example": {
+            "known": "मैं",
+            "target": "I'll",
+            "seed": 168,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ive",
+          "example": {
+            "known": "मैं",
+            "target": "I've",
+            "seed": 38,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "me",
+          "example": {
+            "known": "मैं",
+            "target": "me",
+            "seed": 237,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "im",
+          "example": {
+            "known": "मैं",
+            "target": "I'm",
+            "seed": 159,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "सुधार",
+      "distinct_targets": [
+        {
+          "target_norm": "improve",
+          "example": {
+            "known": "सुधार",
+            "target": "improve",
+            "seed": 44,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "improvement",
+          "example": {
+            "known": "सुधार",
+            "target": "improvement",
+            "seed": 568,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "पहले",
+      "distinct_targets": [
+        {
+          "target_norm": "before",
+          "example": {
+            "known": "पहले",
+            "target": "before",
+            "seed": 119,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "earlier",
+          "example": {
+            "known": "पहले",
+            "target": "earlier",
+            "seed": 143,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ago",
+          "example": {
+            "known": "पहले",
+            "target": "ago",
+            "seed": 184,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "first",
+          "example": {
+            "known": "पहले",
+            "target": "first",
+            "seed": 514,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "वह",
+      "distinct_targets": [
+        {
+          "target_norm": "he",
+          "example": {
+            "known": "वह",
+            "target": "he",
+            "seed": 176,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 16
+        },
+        {
+          "target_norm": "she",
+          "example": {
+            "known": "वह",
+            "target": "she",
+            "seed": 302,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 12
+        },
+        {
+          "target_norm": "that",
+          "example": {
+            "known": "वह",
+            "target": "that",
+            "seed": 364,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 8
+        },
+        {
+          "target_norm": "hes",
+          "example": {
+            "known": "वह",
+            "target": "he's",
+            "seed": 222,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "thatwas",
+          "example": {
+            "known": "वह",
+            "target": "that was",
+            "seed": 124,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "shewas",
+          "example": {
+            "known": "वह",
+            "target": "she was",
+            "seed": 147,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "अपने दोस्त",
+      "distinct_targets": [
+        {
+          "target_norm": "hisfriend",
+          "example": {
+            "known": "अपने दोस्त",
+            "target": "his friend",
+            "seed": 52,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "yourfriend",
+          "example": {
+            "known": "अपने दोस्त",
+            "target": "your friend",
+            "seed": 83,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "गया",
+      "distinct_targets": [
+        {
+          "target_norm": "went",
+          "example": {
+            "known": "गया",
+            "target": "went",
+            "seed": 215,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "go",
+          "example": {
+            "known": "गया",
+            "target": "go",
+            "seed": 376,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "have",
+          "example": {
+            "known": "गया",
+            "target": "have",
+            "seed": 205,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "सब",
+      "distinct_targets": [
+        {
+          "target_norm": "everything",
+          "example": {
+            "known": "सब",
+            "target": "everything",
+            "seed": 141,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "all",
+          "example": {
+            "known": "सब",
+            "target": "all",
+            "seed": 45,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "में",
+      "distinct_targets": [
+        {
+          "target_norm": "in",
+          "example": {
+            "known": "में",
+            "target": "in",
+            "seed": 89,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 9
+        },
+        {
+          "target_norm": "to",
+          "example": {
+            "known": "में",
+            "target": "to",
+            "seed": 319,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "on",
+          "example": {
+            "known": "में",
+            "target": "on",
+            "seed": 16,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "at",
+          "example": {
+            "known": "में",
+            "target": "at",
+            "seed": 214,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "about",
+          "example": {
+            "known": "में",
+            "target": "about",
+            "seed": 508,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "मेरी",
+      "distinct_targets": [
+        {
+          "target_norm": "my",
+          "example": {
+            "known": "मेरी",
+            "target": "my",
+            "seed": 181,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "me",
+          "example": {
+            "known": "मेरी",
+            "target": "me",
+            "seed": 25,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "होगा",
+      "distinct_targets": [
+        {
+          "target_norm": "thatwouldbe",
+          "example": {
+            "known": "होगा",
+            "target": "that would be",
+            "seed": 90,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "wouldbe",
+          "example": {
+            "known": "होगा",
+            "target": "would be",
+            "seed": 624,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "needto",
+          "example": {
+            "known": "होगा",
+            "target": "need to",
+            "seed": 104,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "needsto",
+          "example": {
+            "known": "होगा",
+            "target": "needs to",
+            "seed": 327,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "willhaveto",
+          "example": {
+            "known": "होगा",
+            "target": "will have to",
+            "seed": 274,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आपने",
+      "distinct_targets": [
+        {
+          "target_norm": "you",
+          "example": {
+            "known": "आपने",
+            "target": "you",
+            "seed": 182,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "youve",
+          "example": {
+            "known": "आपने",
+            "target": "you've",
+            "seed": 207,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "कि",
+      "distinct_targets": [
+        {
+          "target_norm": "meto",
+          "example": {
+            "known": "कि",
+            "target": "me to",
+            "seed": 171,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "that",
+          "example": {
+            "known": "कि",
+            "target": "that",
+            "seed": 302,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 26
+        },
+        {
+          "target_norm": "youto",
+          "example": {
+            "known": "कि",
+            "target": "you to",
+            "seed": 170,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "if",
+          "example": {
+            "known": "कि",
+            "target": "if",
+            "seed": 177,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "रहना",
+      "distinct_targets": [
+        {
+          "target_norm": "tolive",
+          "example": {
+            "known": "रहना",
+            "target": "to live",
+            "seed": 302,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tobe",
+          "example": {
+            "known": "रहना",
+            "target": "to be",
+            "seed": 34,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tokeepon",
+          "example": {
+            "known": "रहना",
+            "target": "to keep on",
+            "seed": 92,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "remain",
+          "example": {
+            "known": "रहना",
+            "target": "remain",
+            "seed": 403,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "चाहती",
+      "distinct_targets": [
+        {
+          "target_norm": "want",
+          "example": {
+            "known": "चाहती",
+            "target": "want",
+            "seed": 302,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "wants",
+          "example": {
+            "known": "चाहती",
+            "target": "wants",
+            "seed": 17,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "जो",
+      "distinct_targets": [
+        {
+          "target_norm": "who",
+          "example": {
+            "known": "जो",
+            "target": "who",
+            "seed": 307,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "that",
+          "example": {
+            "known": "जो",
+            "target": "that",
+            "seed": 315,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "what",
+          "example": {
+            "known": "जो",
+            "target": "what",
+            "seed": 384,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        }
+      ]
+    },
+    {
+      "known_norm": "सकती है",
+      "distinct_targets": [
+        {
+          "target_norm": "could",
+          "example": {
+            "known": "सकती है",
+            "target": "could",
+            "seed": 310,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "she",
+          "example": {
+            "known": "सकती है",
+            "target": "she",
+            "seed": 317,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "can",
+          "example": {
+            "known": "सकती है",
+            "target": "can",
+            "seed": 336,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "करते",
+      "distinct_targets": [
+        {
+          "target_norm": "do",
+          "example": {
+            "known": "करते",
+            "target": "do",
+            "seed": 121,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "doing",
+          "example": {
+            "known": "करते",
+            "target": "doing",
+            "seed": 443,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "क्या",
+      "distinct_targets": [
+        {
+          "target_norm": "do",
+          "example": {
+            "known": "क्या",
+            "target": "do",
+            "seed": 316,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "what",
+          "example": {
+            "known": "क्या",
+            "target": "what",
+            "seed": 347,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 6
+        },
+        {
+          "target_norm": "did",
+          "example": {
+            "known": "क्या",
+            "target": "did",
+            "seed": 360,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "ला",
+      "distinct_targets": [
+        {
+          "target_norm": "could",
+          "example": {
+            "known": "ला",
+            "target": "could",
+            "seed": 318,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "bring",
+          "example": {
+            "known": "ला",
+            "target": "bring",
+            "seed": 316,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आप",
+      "distinct_targets": [
+        {
+          "target_norm": "youre",
+          "example": {
+            "known": "आप",
+            "target": "you're",
+            "seed": 128,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "you",
+          "example": {
+            "known": "आप",
+            "target": "you",
+            "seed": 415,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 19
+        }
+      ]
+    },
+    {
+      "known_norm": "इंतज़ार करना",
+      "distinct_targets": [
+        {
+          "target_norm": "towait",
+          "example": {
+            "known": "इंतज़ार करना",
+            "target": "to wait",
+            "seed": 269,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "waiting",
+          "example": {
+            "known": "इंतज़ार करना",
+            "target": "waiting",
+            "seed": 155,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "है",
+      "distinct_targets": [
+        {
+          "target_norm": "needs",
+          "example": {
+            "known": "है",
+            "target": "needs",
+            "seed": 322,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "is",
+          "example": {
+            "known": "है",
+            "target": "is",
+            "seed": 329,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 10
+        },
+        {
+          "target_norm": "its",
+          "example": {
+            "known": "है",
+            "target": "it's",
+            "seed": 93,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "itis",
+          "example": {
+            "known": "है",
+            "target": "it is",
+            "seed": 64,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "haveto",
+          "example": {
+            "known": "है",
+            "target": "have to",
+            "seed": 181,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "she",
+          "example": {
+            "known": "है",
+            "target": "she",
+            "seed": 17,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "he",
+          "example": {
+            "known": "है",
+            "target": "he",
+            "seed": 16,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "im",
+          "example": {
+            "known": "है",
+            "target": "I'm",
+            "seed": 77,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "has",
+          "example": {
+            "known": "है",
+            "target": "has",
+            "seed": 339,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "theres",
+          "example": {
+            "known": "है",
+            "target": "there's",
+            "seed": 436,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "हैं",
+      "distinct_targets": [
+        {
+          "target_norm": "are",
+          "example": {
+            "known": "हैं",
+            "target": "are",
+            "seed": 324,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "you",
+          "example": {
+            "known": "हैं",
+            "target": "you",
+            "seed": 13,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "सकता है",
+      "distinct_targets": [
+        {
+          "target_norm": "can",
+          "example": {
+            "known": "सकता है",
+            "target": "can",
+            "seed": 332,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "could",
+          "example": {
+            "known": "सकता है",
+            "target": "could",
+            "seed": 444,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "कहा",
+      "distinct_targets": [
+        {
+          "target_norm": "say",
+          "example": {
+            "known": "कहा",
+            "target": "say",
+            "seed": 360,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "said",
+          "example": {
+            "known": "कहा",
+            "target": "said",
+            "seed": 384,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "चाहती थी",
+      "distinct_targets": [
+        {
+          "target_norm": "wantedto",
+          "example": {
+            "known": "चाहती थी",
+            "target": "wanted to",
+            "seed": 357,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "shewanted",
+          "example": {
+            "known": "चाहती थी",
+            "target": "she wanted",
+            "seed": 53,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "था",
+      "distinct_targets": [
+        {
+          "target_norm": "was",
+          "example": {
+            "known": "था",
+            "target": "was",
+            "seed": 361,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "itwas",
+          "example": {
+            "known": "था",
+            "target": "it was",
+            "seed": 70,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "didyou",
+          "example": {
+            "known": "था",
+            "target": "did you",
+            "seed": 278,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "thatwas",
+          "example": {
+            "known": "था",
+            "target": "that was",
+            "seed": 130,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "thiswas",
+          "example": {
+            "known": "था",
+            "target": "this was",
+            "seed": 138,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "पसंद",
+      "distinct_targets": [
+        {
+          "target_norm": "like",
+          "example": {
+            "known": "पसंद",
+            "target": "like",
+            "seed": 364,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "choice",
+          "example": {
+            "known": "पसंद",
+            "target": "choice",
+            "seed": 566,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "सुना",
+      "distinct_targets": [
+        {
+          "target_norm": "heard",
+          "example": {
+            "known": "सुना",
+            "target": "heard",
+            "seed": 364,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "hear",
+          "example": {
+            "known": "सुना",
+            "target": "hear",
+            "seed": 365,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "उसने",
+      "distinct_targets": [
+        {
+          "target_norm": "she",
+          "example": {
+            "known": "उसने",
+            "target": "she",
+            "seed": 365,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "he",
+          "example": {
+            "known": "उसने",
+            "target": "he",
+            "seed": 384,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "मैंने",
+      "distinct_targets": [
+        {
+          "target_norm": "i",
+          "example": {
+            "known": "मैंने",
+            "target": "I",
+            "seed": 381,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 7
+        },
+        {
+          "target_norm": "ive",
+          "example": {
+            "known": "मैंने",
+            "target": "I've",
+            "seed": 309,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "idhave",
+          "example": {
+            "known": "मैंने",
+            "target": "I'd have",
+            "seed": 606,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "उससे",
+      "distinct_targets": [
+        {
+          "target_norm": "her",
+          "example": {
+            "known": "उससे",
+            "target": "her",
+            "seed": 385,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "with",
+          "example": {
+            "known": "उससे",
+            "target": "with",
+            "seed": 384,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "than",
+          "example": {
+            "known": "उससे",
+            "target": "than",
+            "seed": 117,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "him",
+          "example": {
+            "known": "उससे",
+            "target": "him",
+            "seed": 176,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "सहमत",
+      "distinct_targets": [
+        {
+          "target_norm": "agree",
+          "example": {
+            "known": "सहमत",
+            "target": "agree",
+            "seed": 385,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "agreed",
+          "example": {
+            "known": "सहमत",
+            "target": "agreed",
+            "seed": 386,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "वाला",
+      "distinct_targets": [
+        {
+          "target_norm": "with",
+          "example": {
+            "known": "वाला",
+            "target": "with",
+            "seed": 392,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "one",
+          "example": {
+            "known": "वाला",
+            "target": "one",
+            "seed": 640,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "चाहते",
+      "distinct_targets": [
+        {
+          "target_norm": "want",
+          "example": {
+            "known": "चाहते",
+            "target": "want",
+            "seed": 399,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "wanted",
+          "example": {
+            "known": "चाहते",
+            "target": "wanted",
+            "seed": 31,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "चाहिए",
+      "distinct_targets": [
+        {
+          "target_norm": "should",
+          "example": {
+            "known": "चाहिए",
+            "target": "should",
+            "seed": 403,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "supposedto",
+          "example": {
+            "known": "चाहिए",
+            "target": "supposed to",
+            "seed": 528,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "हम",
+      "distinct_targets": [
+        {
+          "target_norm": "we",
+          "example": {
+            "known": "हम",
+            "target": "we",
+            "seed": 413,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 8
+        },
+        {
+          "target_norm": "were",
+          "example": {
+            "known": "हम",
+            "target": "we're",
+            "seed": 110,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "हमें",
+      "distinct_targets": [
+        {
+          "target_norm": "we",
+          "example": {
+            "known": "हमें",
+            "target": "we",
+            "seed": 405,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 10
+        },
+        {
+          "target_norm": "us",
+          "example": {
+            "known": "हमें",
+            "target": "us",
+            "seed": 211,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "यह",
+      "distinct_targets": [
+        {
+          "target_norm": "that",
+          "example": {
+            "known": "यह",
+            "target": "that",
+            "seed": 415,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "thatis",
+          "example": {
+            "known": "यह",
+            "target": "that is",
+            "seed": 636,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "its",
+          "example": {
+            "known": "यह",
+            "target": "it's",
+            "seed": 120,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 6
+        },
+        {
+          "target_norm": "thatits",
+          "example": {
+            "known": "यह",
+            "target": "that it's",
+            "seed": 135,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "it",
+          "example": {
+            "known": "यह",
+            "target": "it",
+            "seed": 621,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "this",
+          "example": {
+            "known": "यह",
+            "target": "this",
+            "seed": 116,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "साथ",
+      "distinct_targets": [
+        {
+          "target_norm": "with",
+          "example": {
+            "known": "साथ",
+            "target": "with",
+            "seed": 15,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "together",
+          "example": {
+            "known": "साथ",
+            "target": "together",
+            "seed": 62,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "चाहेंगे",
+      "distinct_targets": [
+        {
+          "target_norm": "like",
+          "example": {
+            "known": "चाहेंगे",
+            "target": "like",
+            "seed": 427,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "wouldlike",
+          "example": {
+            "known": "चाहेंगे",
+            "target": "would like",
+            "seed": 271,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "वे",
+      "distinct_targets": [
+        {
+          "target_norm": "theyre",
+          "example": {
+            "known": "वे",
+            "target": "they're",
+            "seed": 427,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "they",
+          "example": {
+            "known": "वे",
+            "target": "they",
+            "seed": 445,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 11
+        },
+        {
+          "target_norm": "theyll",
+          "example": {
+            "known": "वे",
+            "target": "they'll",
+            "seed": 431,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "रहेगा",
+      "distinct_targets": [
+        {
+          "target_norm": "wouldbe",
+          "example": {
+            "known": "रहेगा",
+            "target": "would be",
+            "seed": 429,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "itwillbe",
+          "example": {
+            "known": "रहेगा",
+            "target": "it will be",
+            "seed": 406,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "और",
+      "distinct_targets": [
+        {
+          "target_norm": "more",
+          "example": {
+            "known": "और",
+            "target": "more",
+            "seed": 444,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 6
+        },
+        {
+          "target_norm": "else",
+          "example": {
+            "known": "और",
+            "target": "else",
+            "seed": 611,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "and",
+          "example": {
+            "known": "और",
+            "target": "and",
+            "seed": 15,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "महसूस",
+      "distinct_targets": [
+        {
+          "target_norm": "feeling",
+          "example": {
+            "known": "महसूस",
+            "target": "feeling",
+            "seed": 548,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "feel",
+          "example": {
+            "known": "महसूस",
+            "target": "feel",
+            "seed": 40,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आपकी मदद",
+      "distinct_targets": [
+        {
+          "target_norm": "yourhelp",
+          "example": {
+            "known": "आपकी मदद",
+            "target": "your help",
+            "seed": 564,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "helpyou",
+          "example": {
+            "known": "आपकी मदद",
+            "target": "help you",
+            "seed": 62,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "अच्छा",
+      "distinct_targets": [
+        {
+          "target_norm": "lovely",
+          "example": {
+            "known": "अच्छा",
+            "target": "lovely",
+            "seed": 567,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "nice",
+          "example": {
+            "known": "अच्छा",
+            "target": "nice",
+            "seed": 219,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "good",
+          "example": {
+            "known": "अच्छा",
+            "target": "good",
+            "seed": 101,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "fine",
+          "example": {
+            "known": "अच्छा",
+            "target": "fine",
+            "seed": 633,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "well",
+          "example": {
+            "known": "अच्छा",
+            "target": "well",
+            "seed": 72,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "काम",
+      "distinct_targets": [
+        {
+          "target_norm": "work",
+          "example": {
+            "known": "काम",
+            "target": "work",
+            "seed": 610,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "things",
+          "example": {
+            "known": "काम",
+            "target": "things",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "job",
+          "example": {
+            "known": "काम",
+            "target": "job",
+            "seed": 280,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "सोचने",
+      "distinct_targets": [
+        {
+          "target_norm": "think",
+          "example": {
+            "known": "सोचने",
+            "target": "think",
+            "seed": 638,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "worrying",
+          "example": {
+            "known": "सोचने",
+            "target": "worrying",
+            "seed": 508,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "बस से",
+      "distinct_targets": [
+        {
+          "target_norm": "bybus",
+          "example": {
+            "known": "बस से",
+            "target": "by bus",
+            "seed": 120,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "onthebus",
+          "example": {
+            "known": "बस से",
+            "target": "on the bus",
+            "seed": 95,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "कोई समस्या",
+      "distinct_targets": [
+        {
+          "target_norm": "anyproblem",
+          "example": {
+            "known": "कोई समस्या",
+            "target": "any problem",
+            "seed": 282,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "aproblem",
+          "example": {
+            "known": "कोई समस्या",
+            "target": "a problem",
+            "seed": 134,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आना",
+      "distinct_targets": [
+        {
+          "target_norm": "tocome",
+          "example": {
+            "known": "आना",
+            "target": "to come",
+            "seed": 168,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "come",
+          "example": {
+            "known": "आना",
+            "target": "come",
+            "seed": 271,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "मदद करना",
+      "distinct_targets": [
+        {
+          "target_norm": "helpyou",
+          "example": {
+            "known": "मदद करना",
+            "target": "help you",
+            "seed": 171,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tohelp",
+          "example": {
+            "known": "मदद करना",
+            "target": "to help",
+            "seed": 25,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "helpingme",
+          "example": {
+            "known": "मदद करना",
+            "target": "helping me",
+            "seed": 74,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "पसंद करते हैं",
+      "distinct_targets": [
+        {
+          "target_norm": "liketo",
+          "example": {
+            "known": "पसंद करते हैं",
+            "target": "like to",
+            "seed": 120,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "like",
+          "example": {
+            "known": "पसंद करते हैं",
+            "target": "like",
+            "seed": 286,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "शब्द",
+      "distinct_targets": [
+        {
+          "target_norm": "words",
+          "example": {
+            "known": "शब्द",
+            "target": "words",
+            "seed": 103,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "word",
+          "example": {
+            "known": "शब्द",
+            "target": "word",
+            "seed": 6,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "नहीं लगता",
+      "distinct_targets": [
+        {
+          "target_norm": "idontfeel",
+          "example": {
+            "known": "नहीं लगता",
+            "target": "I don't feel",
+            "seed": 115,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "dontthink",
+          "example": {
+            "known": "नहीं लगता",
+            "target": "don't think",
+            "seed": 318,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "पसंद नहीं",
+      "distinct_targets": [
+        {
+          "target_norm": "dontlike",
+          "example": {
+            "known": "पसंद नहीं",
+            "target": "don't like",
+            "seed": 121,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "idontenjoy",
+          "example": {
+            "known": "पसंद नहीं",
+            "target": "I don't enjoy",
+            "seed": 55,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "दिमाग",
+      "distinct_targets": [
+        {
+          "target_norm": "ofmybrain",
+          "example": {
+            "known": "दिमाग",
+            "target": "of my brain",
+            "seed": 126,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "brain",
+          "example": {
+            "known": "दिमाग",
+            "target": "brain",
+            "seed": 111,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "ढूँढने",
+      "distinct_targets": [
+        {
+          "target_norm": "find",
+          "example": {
+            "known": "ढूँढने",
+            "target": "find",
+            "seed": 195,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tolook",
+          "example": {
+            "known": "ढूँढने",
+            "target": "to look",
+            "seed": 611,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "सवाल",
+      "distinct_targets": [
+        {
+          "target_norm": "questions",
+          "example": {
+            "known": "सवाल",
+            "target": "questions",
+            "seed": 190,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "question",
+          "example": {
+            "known": "सवाल",
+            "target": "question",
+            "seed": 422,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "आपत्ति नहीं",
+      "distinct_targets": [
+        {
+          "target_norm": "dontmind",
+          "example": {
+            "known": "आपत्ति नहीं",
+            "target": "don't mind",
+            "seed": 191,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "noobjection",
+          "example": {
+            "known": "आपत्ति नहीं",
+            "target": "no objection",
+            "seed": 63,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "खत्म करना",
+      "distinct_targets": [
+        {
+          "target_norm": "finish",
+          "example": {
+            "known": "खत्म करना",
+            "target": "finish",
+            "seed": 200,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tofinish",
+          "example": {
+            "known": "खत्म करना",
+            "target": "to finish",
+            "seed": 50,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "किया",
+      "distinct_targets": [
+        {
+          "target_norm": "done",
+          "example": {
+            "known": "किया",
+            "target": "done",
+            "seed": 207,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "did",
+          "example": {
+            "known": "किया",
+            "target": "did",
+            "seed": 218,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "लगा",
+      "distinct_targets": [
+        {
+          "target_norm": "itwas",
+          "example": {
+            "known": "लगा",
+            "target": "it was",
+            "seed": 219,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "thought",
+          "example": {
+            "known": "लगा",
+            "target": "thought",
+            "seed": 124,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "क्या है",
+      "distinct_targets": [
+        {
+          "target_norm": "whats",
+          "example": {
+            "known": "क्या है",
+            "target": "what's",
+            "seed": 258,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "whatis",
+          "example": {
+            "known": "क्या है",
+            "target": "what is",
+            "seed": 150,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "फिर",
+      "distinct_targets": [
+        {
+          "target_norm": "then",
+          "example": {
+            "known": "फिर",
+            "target": "then",
+            "seed": 168,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "again",
+          "example": {
+            "known": "फिर",
+            "target": "again",
+            "seed": 490,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "नहीं है",
+      "distinct_targets": [
+        {
+          "target_norm": "itsnot",
+          "example": {
+            "known": "नहीं है",
+            "target": "it's not",
+            "seed": 102,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "isnt",
+          "example": {
+            "known": "नहीं है",
+            "target": "isn't",
+            "seed": 64,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "dont",
+          "example": {
+            "known": "नहीं है",
+            "target": "don't",
+            "seed": 45,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "नहीं था",
+      "distinct_targets": [
+        {
+          "target_norm": "wasnt",
+          "example": {
+            "known": "नहीं था",
+            "target": "wasn't",
+            "seed": 151,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "itwasnt",
+          "example": {
+            "known": "नहीं था",
+            "target": "it wasn't",
+            "seed": 86,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "didntneedto",
+          "example": {
+            "known": "नहीं था",
+            "target": "didn't need to",
+            "seed": 354,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "हूँ",
+      "distinct_targets": [
+        {
+          "target_norm": "i",
+          "example": {
+            "known": "हूँ",
+            "target": "I",
+            "seed": 83,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "am",
+          "example": {
+            "known": "हूँ",
+            "target": "am",
+            "seed": 122,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ivebeen",
+          "example": {
+            "known": "हूँ",
+            "target": "I've been",
+            "seed": 254,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "im",
+          "example": {
+            "known": "हूँ",
+            "target": "I'm",
+            "seed": 88,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "पानी",
+      "distinct_targets": [
+        {
+          "target_norm": "ofwater",
+          "example": {
+            "known": "पानी",
+            "target": "of water",
+            "seed": 217,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "water",
+          "example": {
+            "known": "पानी",
+            "target": "water",
+            "seed": 632,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "के पास",
+      "distinct_targets": [
+        {
+          "target_norm": "tothe",
+          "example": {
+            "known": "के पास",
+            "target": "to the",
+            "seed": 181,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "near",
+          "example": {
+            "known": "के पास",
+            "target": "near",
+            "seed": 390,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "मेरे",
+      "distinct_targets": [
+        {
+          "target_norm": "my",
+          "example": {
+            "known": "मेरे",
+            "target": "my",
+            "seed": 84,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "me",
+          "example": {
+            "known": "मेरे",
+            "target": "me",
+            "seed": 15,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "उसका",
+      "distinct_targets": [
+        {
+          "target_norm": "his",
+          "example": {
+            "known": "उसका",
+            "target": "his",
+            "seed": 20,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "her",
+          "example": {
+            "known": "उसका",
+            "target": "her",
+            "seed": 637,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "थोड़ा और",
+      "distinct_targets": [
+        {
+          "target_norm": "alittlemore",
+          "example": {
+            "known": "थोड़ा और",
+            "target": "a little more",
+            "seed": 61,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "alittlelonger",
+          "example": {
+            "known": "थोड़ा और",
+            "target": "a little longer",
+            "seed": 276,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "कोशिश",
+      "distinct_targets": [
+        {
+          "target_norm": "trying",
+          "example": {
+            "known": "कोशिश",
+            "target": "trying",
+            "seed": 2,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "effort",
+          "example": {
+            "known": "कोशिश",
+            "target": "effort",
+            "seed": 7,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "को",
+      "distinct_targets": [
+        {
+          "target_norm": "to",
+          "example": {
+            "known": "को",
+            "target": "to",
+            "seed": 52,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "on",
+          "example": {
+            "known": "को",
+            "target": "on",
+            "seed": 316,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "दिलचस्प है",
+      "distinct_targets": [
+        {
+          "target_norm": "itsinteresting",
+          "example": {
+            "known": "दिलचस्प है",
+            "target": "it's interesting",
+            "seed": 58,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "interesting",
+          "example": {
+            "known": "दिलचस्प है",
+            "target": "interesting",
+            "seed": 120,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "लगाना",
+      "distinct_targets": [
+        {
+          "target_norm": "totrackdown",
+          "example": {
+            "known": "लगाना",
+            "target": "to track down",
+            "seed": 251,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "taking",
+          "example": {
+            "known": "लगाना",
+            "target": "taking",
+            "seed": 27,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "toput",
+          "example": {
+            "known": "लगाना",
+            "target": "to put",
+            "seed": 12,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "घर",
+      "distinct_targets": [
+        {
+          "target_norm": "home",
+          "example": {
+            "known": "घर",
+            "target": "home",
+            "seed": 304,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "house",
+          "example": {
+            "known": "घर",
+            "target": "house",
+            "seed": 514,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "हो सके",
+      "distinct_targets": [
+        {
+          "target_norm": "possible",
+          "example": {
+            "known": "हो सके",
+            "target": "possible",
+            "seed": 437,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "youcan",
+          "example": {
+            "known": "हो सके",
+            "target": "you can",
+            "seed": 28,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "aspossible",
+          "example": {
+            "known": "हो सके",
+            "target": "as possible",
+            "seed": 3,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "रखना",
+      "distinct_targets": [
+        {
+          "target_norm": "keep",
+          "example": {
+            "known": "रखना",
+            "target": "keep",
+            "seed": 528,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "toput",
+          "example": {
+            "known": "रखना",
+            "target": "to put",
+            "seed": 53,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "देर",
+      "distinct_targets": [
+        {
+          "target_norm": "late",
+          "example": {
+            "known": "देर",
+            "target": "late",
+            "seed": 539,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "while",
+          "example": {
+            "known": "देर",
+            "target": "while",
+            "seed": 219,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आपकी",
+      "distinct_targets": [
+        {
+          "target_norm": "your",
+          "example": {
+            "known": "आपकी",
+            "target": "your",
+            "seed": 627,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "you",
+          "example": {
+            "known": "आपकी",
+            "target": "you",
+            "seed": 344,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "पेश करना",
+      "distinct_targets": [
+        {
+          "target_norm": "toset",
+          "example": {
+            "known": "पेश करना",
+            "target": "to set",
+            "seed": 407,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "offer",
+          "example": {
+            "known": "पेश करना",
+            "target": "offer",
+            "seed": 327,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "सुबह",
+      "distinct_targets": [
+        {
+          "target_norm": "morning",
+          "example": {
+            "known": "सुबह",
+            "target": "morning",
+            "seed": 39,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "onmorning",
+          "example": {
+            "known": "सुबह",
+            "target": "on morning",
+            "seed": 161,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "ऐसा",
+      "distinct_targets": [
+        {
+          "target_norm": "likethat",
+          "example": {
+            "known": "ऐसा",
+            "target": "like that",
+            "seed": 102,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "such",
+          "example": {
+            "known": "ऐसा",
+            "target": "such",
+            "seed": 370,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आसान",
+      "distinct_targets": [
+        {
+          "target_norm": "easier",
+          "example": {
+            "known": "आसान",
+            "target": "easier",
+            "seed": 122,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "easy",
+          "example": {
+            "known": "आसान",
+            "target": "easy",
+            "seed": 64,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "मेरा",
+      "distinct_targets": [
+        {
+          "target_norm": "i",
+          "example": {
+            "known": "मेरा",
+            "target": "I",
+            "seed": 125,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "my",
+          "example": {
+            "known": "मेरा",
+            "target": "my",
+            "seed": 197,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "mine",
+          "example": {
+            "known": "मेरा",
+            "target": "mine",
+            "seed": 503,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "कहते हैं",
+      "distinct_targets": [
+        {
+          "target_norm": "say",
+          "example": {
+            "known": "कहते हैं",
+            "target": "say",
+            "seed": 200,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "doyousay",
+          "example": {
+            "known": "कहते हैं",
+            "target": "do you say?",
+            "seed": 160,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "कोशिश कर रहा है",
+      "distinct_targets": [
+        {
+          "target_norm": "trying",
+          "example": {
+            "known": "कोशिश कर रहा है",
+            "target": "trying",
+            "seed": 222,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "istrying",
+          "example": {
+            "known": "कोशिश कर रहा है",
+            "target": "is trying",
+            "seed": 226,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "ने",
+      "distinct_targets": [
+        {
+          "target_norm": "one",
+          "example": {
+            "known": "ने",
+            "target": "one",
+            "seed": 367,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "has",
+          "example": {
+            "known": "ने",
+            "target": "has",
+            "seed": 228,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "बात",
+      "distinct_targets": [
+        {
+          "target_norm": "thing",
+          "example": {
+            "known": "बात",
+            "target": "thing",
+            "seed": 608,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "talk",
+          "example": {
+            "known": "बात",
+            "target": "talk",
+            "seed": 19,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "वहाँ",
+      "distinct_targets": [
+        {
+          "target_norm": "overthere",
+          "example": {
+            "known": "वहाँ",
+            "target": "over there",
+            "seed": 389,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "there",
+          "example": {
+            "known": "वहाँ",
+            "target": "there",
+            "seed": 613,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "पूछें",
+      "distinct_targets": [
+        {
+          "target_norm": "toask",
+          "example": {
+            "known": "पूछें",
+            "target": "to ask",
+            "seed": 432,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ask",
+          "example": {
+            "known": "पूछें",
+            "target": "ask",
+            "seed": 415,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "आगे",
+      "distinct_targets": [
+        {
+          "target_norm": "next",
+          "example": {
+            "known": "आगे",
+            "target": "next",
+            "seed": 493,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lead",
+          "example": {
+            "known": "आगे",
+            "target": "lead",
+            "seed": 416,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "थी",
+      "distinct_targets": [
+        {
+          "target_norm": "was",
+          "example": {
+            "known": "थी",
+            "target": "was",
+            "seed": 364,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "needto",
+          "example": {
+            "known": "थी",
+            "target": "need to",
+            "seed": 355,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "होती",
+      "distinct_targets": [
+        {
+          "target_norm": "hadbeen",
+          "example": {
+            "known": "होती",
+            "target": "had been",
+            "seed": 566,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "wouldhavebeen",
+          "example": {
+            "known": "होती",
+            "target": "would have been",
+            "seed": 609,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "ढूँढना",
+      "distinct_targets": [
+        {
+          "target_norm": "tofind",
+          "example": {
+            "known": "ढूँढना",
+            "target": "to find",
+            "seed": 66,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lookforit",
+          "example": {
+            "known": "ढूँढना",
+            "target": "look for it",
+            "seed": 171,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tolookfor",
+          "example": {
+            "known": "ढूँढना",
+            "target": "to look for",
+            "seed": 610,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "वह आदमी",
+      "distinct_targets": [
+        {
+          "target_norm": "theman",
+          "example": {
+            "known": "वह आदमी",
+            "target": "the man",
+            "seed": 226,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "thatman",
+          "example": {
+            "known": "वह आदमी",
+            "target": "that man",
+            "seed": 227,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "की सहेली",
+      "distinct_targets": [
+        {
+          "target_norm": "sfriend",
+          "example": {
+            "known": "की सहेली",
+            "target": "'s friend",
+            "seed": 284,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "friendof",
+          "example": {
+            "known": "की सहेली",
+            "target": "friend of",
+            "seed": 308,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "दे",
+      "distinct_targets": [
+        {
+          "target_norm": "let",
+          "example": {
+            "known": "दे",
+            "target": "let",
+            "seed": 334,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "provide",
+          "example": {
+            "known": "दे",
+            "target": "provide",
+            "seed": 331,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "पाएँगे",
+      "distinct_targets": [
+        {
+          "target_norm": "beableto",
+          "example": {
+            "known": "पाएँगे",
+            "target": "be able to",
+            "seed": 447,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "willbeableto",
+          "example": {
+            "known": "पाएँगे",
+            "target": "will be able to",
+            "seed": 445,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "बच्चा",
+      "distinct_targets": [
+        {
+          "target_norm": "child",
+          "example": {
+            "known": "बच्चा",
+            "target": "child",
+            "seed": 392,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "baby",
+          "example": {
+            "known": "बच्चा",
+            "target": "baby",
+            "seed": 519,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

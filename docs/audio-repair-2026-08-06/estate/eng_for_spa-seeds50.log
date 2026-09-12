@@ -1,0 +1,31 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+
+scoped to seeds 1-50: 3959 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3959 (20.1/s, ~3m left)     measured 500/3959 (23.6/s, ~2m left)     measured 750/3959 (25.6/s, ~2m left)     measured 1000/3959 (26.4/s, ~2m left)     measured 1250/3959 (26.9/s, ~2m left)     measured 1500/3959 (27.2/s, ~2m left)     measured 1750/3959 (27.5/s, ~1m left)     measured 2000/3959 (27.6/s, ~1m left)     measured 2250/3959 (27.7/s, ~1m left)     measured 2500/3959 (27.8/s, ~1m left)     measured 2750/3959 (27.8/s, ~1m left)     measured 3000/3959 (27.8/s, ~1m left)     measured 3250/3959 (27.9/s, ~0m left)     measured 3500/3959 (27.9/s, ~0m left)     measured 3750/3959 (28.0/s, ~0m left)   
+
+audio-repair queue — eng_for_spa
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3959 clip(s); 0 could not be measured
+
+3 clip(s) worth a human's ears (3 by duration, 0 by tail); showing 3, worst first.
+
+    0.775  target1         2160ms  "I'd like to find out what the answer is"
+           63e8cc68-c16b-4f42-8f88-b206521fa3cb  rev 1  — 22% shorter than its text implies
+    0.775  target2         2160ms  "I'd like to find out what the answer is"
+           ab60d501-7677-48eb-afa9-2095ce2476e2  rev 1  — 22% shorter than its text implies
+     0.84  target2         3240ms  "have you been learning with someone else this evening
+           b96487f1-7a4a-4604-bbeb-17d5be706ecf  rev 1  — 16% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/eng_for_spa-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

@@ -1,0 +1,157 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+scoped to seeds 1-50: 3825 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🛠️  run anywhere with `dotenvx run -- yourcommand`
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3825 (30.1/s, ~2m left)     measured 500/3825 (37.7/s, ~1m left)     measured 750/3825 (41.4/s, ~1m left)     measured 1000/3825 (42.9/s, ~1m left)     measured 1250/3825 (44.1/s, ~1m left)     measured 1500/3825 (45.0/s, ~1m left)     measured 1750/3825 (45.3/s, ~1m left)     measured 2000/3825 (45.9/s, ~1m left)     measured 2250/3825 (46.4/s, ~1m left)     measured 2500/3825 (46.6/s, ~0m left)     measured 2750/3825 (47.0/s, ~0m left)     measured 3000/3825 (47.1/s, ~0m left)     measured 3250/3825 (47.1/s, ~0m left)     measured 3500/3825 (47.2/s, ~0m left)     measured 3750/3825 (47.3/s, ~0m left)   
+
+audio-repair queue — eng_for_fra
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3825 clip(s); 0 could not be measured
+
+66 clip(s) worth a human's ears (66 by duration, 0 by tail); showing 66, worst first.
+
+    0.705  presentation    6144ms  "En anglais — 'aujourd'hui' — comme dans — 'j'essaie d
+           67453aad-dad2-49af-88ea-cae5cb714aaa  rev 1  — 29% shorter than its text implies
+    0.709  presentation    6936ms  "En anglais — 'je vais m'entraîner à parler' — comme d
+           46638b54-1dcb-4d16-8d0b-45c2a548c14a  rev 1  — 29% shorter than its text implies
+    0.709  presentation    5112ms  "En anglais — 'à six heures' — comme dans — 'tout le m
+           deb1196d-fe0d-4673-aee1-174848cbedf6  rev 1  — 29% shorter than its text implies
+    0.712  presentation    5136ms  "En anglais — 'je ne veux pas' — comme dans — 'je ne v
+           9604b33a-de75-40fa-995b-4a47e0af1e01  rev 1  — 29% shorter than its text implies
+    0.719  presentation    6216ms  "En anglais — 'interrompre' — comme dans — 'nous ne vo
+           4f97b451-50f1-4acc-86be-aeeae9e2dbab  rev 1  — 28% shorter than its text implies
+     0.72  presentation    6432ms  "En anglais — 'avec quelqu'un d'autre' — comme dans — 
+           d312be7e-0f95-43be-b26f-6b382ddddd6e  rev 1  — 28% shorter than its text implies
+    0.721  presentation    5616ms  "En anglais — 'quelle est la réponse' — comme dans — '
+           cf71bfec-95de-4a3e-96de-e5ed9fe1d070  rev 1  — 28% shorter than its text implies
+    0.726  presentation    4824ms  "En anglais — 'elle veut' — comme dans — 'elle veut pa
+           a7aaea57-e460-4c92-8ed0-5b9d10e910de  rev 1  — 27% shorter than its text implies
+    0.726  presentation    6432ms  "En anglais — 'environ une semaine' — comme dans — 'j'
+           3330a027-a237-4801-a80f-06be07af062d  rev 1  — 27% shorter than its text implies
+    0.731  presentation    5640ms  "En anglais — 'arrêter de parler' — comme dans — 'mais
+           4704568f-4011-401b-8f4f-93adc78912d1  rev 1  — 27% shorter than its text implies
+    0.734  presentation    5928ms  "En anglais — 'ce que je veux dire' — comme dans — 'j'
+           95813805-5b88-4752-a81f-0b518cf45abb  rev 1  — 27% shorter than its text implies
+    0.746  presentation    5064ms  "En anglais — 'mais' — comme dans — 'mais il veut nous
+           952f6d52-e1f7-4e5c-9e55-da491be8c288  rev 1  — 25% shorter than its text implies
+    0.748  presentation    4968ms  "En anglais — 'un peu' — comme dans — 'je veux parler 
+           01a6d5aa-0ef9-4bad-9691-ee34573b0479  rev 1  — 25% shorter than its text implies
+    0.749  presentation    5352ms  "En anglais — 'je n'essaie pas de' — comme dans — 'je 
+           5ed5637a-d29b-461c-a7b9-bc3052252e66  rev 1  — 25% shorter than its text implies
+     0.75  presentation    6480ms  "En anglais — 'je vais essayer' — comme dans — 'je vai
+           1d844d4c-0cfe-4989-9156-a4df0701974d  rev 1  — 25% shorter than its text implies
+    0.751  presentation    4560ms  "En anglais — 'nous voulons' — comme dans — 'nous voul
+           33a6322f-a055-4e3d-a577-54ca09d74174  rev 1  — 25% shorter than its text implies
+    0.751  presentation    5040ms  "En anglais — 'd'un mot' — comme dans — 'j'essaie de m
+           7968bcee-cbd8-43e7-bfa3-2f2f85d22163  rev 1  — 25% shorter than its text implies
+    0.753  presentation    4680ms  "En anglais — 'il veut' — comme dans — 'il veut expliq
+           eca4bfd7-fc48-4d39-ab67-2c937f055d10  rev 1  — 25% shorter than its text implies
+    0.754  presentation    5544ms  "En anglais — 'savoir' — comme dans — 'elle veut savoi
+           267d30f5-4e06-41c6-94f9-8cc2776c8e36  rev 1  — 25% shorter than its text implies
+    0.756  presentation    5400ms  "En anglais — 'tout le monde' — comme dans — 'j'aimera
+           32943788-a3dd-49df-9038-160de7a4b6ff  rev 1  — 24% shorter than its text implies
+    0.757  presentation    6216ms  "En anglais — 'me souvenir' — comme dans — 'j'essaie d
+           f6f3f3fd-726e-4e1c-8ead-7069a769ceb1  rev 1  — 24% shorter than its text implies
+    0.759  presentation    5256ms  "En anglais — 'son prénom à elle' — comme dans — 'nous
+           97b2e64b-625d-4f46-b5d1-a5fa19f39b89  rev 1  — 24% shorter than its text implies
+    0.762  presentation    5064ms  "En anglais — 'en anglais' — comme dans — 'j'essaie d'
+           b14a04e4-b75f-4811-8e8c-2fe2821bab38  rev 1  — 24% shorter than its text implies
+    0.766  presentation    4704ms  "En anglais — 'maintenant' — comme dans — 'je veux par
+           f045c4aa-c86e-40ec-9502-337baae5f2cb  rev 1  — 23% shorter than its text implies
+    0.767  presentation    5040ms  "En anglais — 'je voulais' — comme dans — 'je voulais 
+           3eae23ae-d6ea-4f2a-93d1-fa38667c2dcd  rev 1  — 23% shorter than its text implies
+    0.768  presentation    4992ms  "En anglais — 'rapidement' — comme dans — 'nous voulon
+           49d3ddbc-d287-408d-b0cf-f1a7e5e920c9  rev 1  — 23% shorter than its text implies
+    0.768  presentation    4992ms  "En anglais — 'je suis' — comme dans — 'je suis presqu
+           e7bf3765-1c5f-4c40-a996-6955ff8ad991  rev 1  — 23% shorter than its text implies
+    0.769  presentation    5328ms  "En anglais — 'quelque chose' — comme dans — 'j'essaie
+           e527c210-2819-47c6-985a-2ea6b4107e51  rev 1  — 23% shorter than its text implies
+    0.769  known           5328ms  "j'apprends l'anglais depuis environ une semaine mais 
+           efd00b76-1999-49db-857c-278caee23634  rev 1  — 23% shorter than its text implies
+    0.771  presentation    5400ms  "En anglais — 'te demander' — comme dans — 'je voulais
+           40fab41d-639a-4346-8925-448795a304d3  rev 1  — 23% shorter than its text implies
+    0.773  presentation    4968ms  "En anglais — 'apprendre' — comme dans — 'je veux appr
+           2006ae08-3f9e-417e-b620-c725c111879a  rev 1  — 23% shorter than its text implies
+    0.777  presentation    5328ms  "En anglais — 'plus tard' — comme dans — 'il veut reve
+           bdac0557-16ee-44b8-a0bb-3264a2c7aea7  rev 1  — 22% shorter than its text implies
+    0.778  presentation    5112ms  "En anglais — 'hier' — comme dans — 'je voulais parler
+           403bdb16-ddc2-4168-adde-b946002cdf6b  rev 1  — 22% shorter than its text implies
+     0.78  presentation    4680ms  "En anglais — 'parce que' — comme dans — 'parce que je
+           3ad2033e-699b-4e18-9968-8807f2e01551  rev 1  — 22% shorter than its text implies
+     0.78  presentation    6408ms  "En anglais — 'aussi vite que possible' — comme dans —
+           a2e96ade-4970-426d-8140-fad64fdce0c6  rev 1  — 22% shorter than its text implies
+    0.784  presentation    4704ms  "En anglais — 'tu voulais' — comme dans — 'tu voulais 
+           b597bb5c-c7b9-421b-8792-f6d2c8395908  rev 1  — 22% shorter than its text implies
+    0.785  presentation    4992ms  "En anglais — 'nous retrouver' — comme dans — 'j'aimer
+           db41f8a4-c122-4aa0-8993-c48d7b2d3751  rev 1  — 21% shorter than its text implies
+    0.785  presentation    4824ms  "En anglais — 'attentivement' — comme dans — 'je veux 
+           e2d1a6e4-67a8-4e41-abad-c824a13387f6  rev 1  — 21% shorter than its text implies
+    0.786  presentation    5616ms  "En anglais — 'rencontrer des gens' — comme dans — 'j'
+           4eaec03e-7056-43a3-8b06-90644270b6ea  rev 1  — 21% shorter than its text implies
+    0.791  presentation    5256ms  "En anglais — 'le mois dernier' — comme dans — 'je vou
+           761b56a2-51d8-4d3b-9bee-fef20d6be08f  rev 1  — 21% shorter than its text implies
+    0.791  presentation    5424ms  "En anglais — 'ce matin' — comme dans — 'je suis fatig
+           fe2f3d1f-61a5-44b4-987b-46ed7c2719ab  rev 1  — 21% shorter than its text implies
+    0.796  presentation    6768ms  "En anglais — 'qui parlent anglais' — comme dans — 'po
+           6f630ef3-b668-4588-8794-ae4dff0341ed  rev 1  — 20% shorter than its text implies
+    0.796  presentation    5688ms  "En anglais — 'essayer' — comme dans — 'je veux essaye
+           7346c12b-972c-4c2b-8559-6f8ce20c9cfe  rev 1  — 20% shorter than its text implies
+    0.797  presentation    5352ms  "En anglais — 'expliquer' — comme dans — 'je veux expl
+           562f3383-ea7d-4a97-8f03-1a428607ac6a  rev 1  — 20% shorter than its text implies
+    0.798  presentation    4560ms  "En anglais — 'j'essaie de' — comme dans — 'j'essaie d
+           e756a66f-ae5b-45b4-8f4e-c8cc2e50f238  rev 1  — 20% shorter than its text implies
+    0.799  presentation    6048ms  "En anglais — 'est-ce que' — comme dans — 'est-ce que 
+           2531ffbf-0a4d-4664-8d09-079287ed2aaa  rev 1  — 20% shorter than its text implies
+    0.804  presentation    5400ms  "En anglais — 'ce soir' — comme dans — 'il veut savoir
+           001080a2-bd0a-4dbb-b0b7-799c5fc63f3b  rev 1  — 20% shorter than its text implies
+    0.805  presentation    7416ms  "En anglais — 'de faire des erreurs' — comme dans — 'P
+           194253ce-dd4d-4cd8-bfdc-3ccccf4ee292  rev 1  — 20% shorter than its text implies
+    0.815  presentation    6576ms  "En anglais — 'je ne m'inquiète pas de' — comme dans —
+           767fb8bd-a95d-419f-be35-fafecf25e81d  rev 1  — 19% shorter than its text implies
+    0.816  presentation    5712ms  "En anglais — 'cet après-midi' — comme dans — 'j'aimer
+           9a8acdae-3018-48d4-82b7-89bb10c2fb82  rev 1  — 18% shorter than its text implies
+    0.817  presentation    4200ms  "En anglais — 'anglais' — comme dans — 'je veux parler
+           dc0dd11a-3294-48fd-97c2-aca7c5eebe5f  rev 1  — 18% shorter than its text implies
+    0.818  presentation    4848ms  "En anglais — 'son prénom' — comme dans — 'nous voulon
+           99b8d10f-a81f-4825-9aef-96eacce1a373  rev 1  — 18% shorter than its text implies
+    0.821  presentation    4632ms  "En anglais — 'je parle' — comme dans — 'je parle angl
+           5b6c305f-13b3-43b7-8aba-df540fdf0c65  rev 1  — 18% shorter than its text implies
+    0.821  presentation    7272ms  "En anglais — 'tu voulais me montrer' — comme dans — '
+           c8501340-27b1-4ea2-a026-b8e0c8e8ce12  rev 1  — 18% shorter than its text implies
+    0.821  presentation    7272ms  "En anglais — 'une bonne chose' — comme dans — 'Parce 
+           dde57bc3-e738-4e7c-853f-834301849da8  rev 1  — 18% shorter than its text implies
+    0.822  presentation    4344ms  "En anglais — 'dire' — comme dans — 'j'essaie d'appren
+           0d2f8a67-63df-4c5f-9fed-368070dc914e  rev 1  — 18% shorter than its text implies
+    0.825  presentation    4776ms  "En anglais — 'comment' — comme dans — 'comment parler
+           e5b4d40b-0923-4979-a004-209434a51773  rev 1  — 17% shorter than its text implies
+    0.829  presentation    5328ms  "En anglais — 'ce soir-là' — comme dans — 'je voulais 
+           f61faf44-ceeb-4645-863a-8b906c270b2c  rev 1  — 17% shorter than its text implies
+    0.833  presentation    6720ms  "En anglais — 'je n'aimerais pas' — comme dans — 'Je n
+           d19b03a6-c7d9-4058-81c4-358f1b4c354a  rev 1  — 17% shorter than its text implies
+    0.833  presentation    7200ms  "En anglais — 'je pense que' — comme dans — 'Parce que
+           6b6b05df-f69a-4c6b-b34f-d8ba9c99214e  rev 1  — 17% shorter than its text implies
+    0.839  presentation    7128ms  "En anglais — 'toute la phrase' — comme dans — 'Je ne 
+           6bb0fce2-2a37-451b-80d9-e98e0f7da796  rev 1  — 16% shorter than its text implies
+    0.842  presentation    6432ms  "En anglais — 'faire des erreurs' — comme dans — 'Mais
+           442a82e8-9f0e-419b-b990-5dd0743a815a  rev 1  — 16% shorter than its text implies
+    0.849  presentation    5760ms  "En anglais — 'toute la journée' — comme dans — 'Tu pa
+           4e43beef-aa2a-45dc-a24e-fb4ae8a19474  rev 1  — 15% shorter than its text implies
+    0.849  presentation    6912ms  "En anglais — 'après que tu aies fini' — comme dans — 
+           57aefcbf-e1dd-4412-8b7b-32faf90337d5  rev 1  — 15% shorter than its text implies
+    0.849  presentation    4488ms  "En anglais — 'revenir' — comme dans — 'il veut reveni
+           8858dddf-fa70-4e08-9e73-fe3a21f94ef1  rev 1  — 15% shorter than its text implies
+    0.849  presentation    4608ms  "En anglais — 'finir' — comme dans — 'j'essaie de fini
+           bb688780-8437-4cf9-abdd-a24e12a24a6e  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/eng_for_fra-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

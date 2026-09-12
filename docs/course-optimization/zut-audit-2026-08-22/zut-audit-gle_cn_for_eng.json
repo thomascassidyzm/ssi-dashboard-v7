@@ -1,0 +1,245 @@
+{
+  "counts": {
+    "bidirectional": {
+      "gateExact": 6,
+      "caseInsensitive": 4,
+      "strict": 4
+    },
+    "targetMembershipFailures": 5,
+    "targetSideCollision": {
+      "gateExact": 3,
+      "caseInsensitive": 3,
+      "strict": 3
+    }
+  },
+  "bidirectionalStrict": [
+    {
+      "known_norm": "i don't know",
+      "distinct_targets": [
+        {
+          "target_norm": "nílafhiosagam",
+          "example": {
+            "known": "I don't know",
+            "target": "níl a fhios agam",
+            "seed": 60,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "nílaithneagamar",
+          "example": {
+            "known": "I don't know",
+            "target": "níl aithne agam ar",
+            "seed": 85,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "doing",
+      "distinct_targets": [
+        {
+          "target_norm": "agdéanamh",
+          "example": {
+            "known": "doing",
+            "target": "ag déanamh",
+            "seed": 72,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "adhéanamh",
+          "example": {
+            "known": "doing",
+            "target": "a dhéanamh",
+            "seed": 100,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to read",
+      "distinct_targets": [
+        {
+          "target_norm": "léamh",
+          "example": {
+            "known": "to read",
+            "target": "léamh",
+            "seed": 239,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "aléamh",
+          "example": {
+            "known": "to read",
+            "target": "a léamh",
+            "seed": 180,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "can you help me",
+      "distinct_targets": [
+        {
+          "target_norm": "anbhfuiltúinanncúnamhdhom",
+          "example": {
+            "known": "can you help me",
+            "target": "an bhfuil tú in ann cúnamh dhom",
+            "seed": 161,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "anbhfuiltúinanncabhrúliom",
+          "example": {
+            "known": "can you help me?",
+            "target": "an bhfuil tú in ann cabhrú liom?",
+            "seed": 150,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "membershipFailures": [
+    {
+      "known": "anyone",
+      "target": "duine ar bith",
+      "seed": 71,
+      "seed_target": "Ní raibh muid ag iarraidh ligean do dhuine ar bith an fhírinne a chloisteáil.",
+      "id": "gle_cn_for_eng:S0071L02C01"
+    },
+    {
+      "known": "I have Irish",
+      "target": "Tá Gaeilge agam",
+      "seed": 9,
+      "seed_target": "Tá beagán Gaeilge agam anois",
+      "id": "gle_cn_for_eng:S0009L03C01"
+    },
+    {
+      "known": "you have Irish",
+      "target": "Tá Gaeilge agat",
+      "seed": 13,
+      "seed_target": "Tá Gaeilge mhaith agat",
+      "id": "gle_cn_for_eng:S0013L02C01"
+    },
+    {
+      "known": "would help you",
+      "target": "chabhródh leat",
+      "seed": 229,
+      "seed_target": "Chabhródh an bhean sin leat dá mbeadh sí in ann",
+      "id": "gle_cn_for_eng:S0229L01C01"
+    },
+    {
+      "known": "that thing",
+      "target": "an rud sin",
+      "seed": 257,
+      "seed_target": "Is maith liom an rud gorm sin",
+      "id": "gle_cn_for_eng:S0257L01C02"
+    }
+  ],
+  "targetSideCollisionStrict": [
+    {
+      "known_norm": "i",
+      "distinct_targets": [
+        {
+          "target_norm": "támé",
+          "example": {
+            "known": "I",
+            "target": "tá mé",
+            "seed": 1,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "bhímé",
+          "example": {
+            "known": "I",
+            "target": "Bhí mé",
+            "seed": 30,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "are you",
+      "distinct_targets": [
+        {
+          "target_norm": "anbhfuiltú",
+          "example": {
+            "known": "are you",
+            "target": "an bhfuil tú",
+            "seed": 25,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "abhfuiltú",
+          "example": {
+            "known": "are you",
+            "target": "a bhfuil tú",
+            "seed": 21,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "you",
+      "distinct_targets": [
+        {
+          "target_norm": "tátú",
+          "example": {
+            "known": "you",
+            "target": "tá tú",
+            "seed": 20,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "bhítú",
+          "example": {
+            "known": "you",
+            "target": "Bhí tú",
+            "seed": 31,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

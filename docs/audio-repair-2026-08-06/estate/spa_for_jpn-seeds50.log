@@ -1,0 +1,25 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+
+scoped to seeds 1-50: 5351 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/5351 (16.8/s, ~5m left)     measured 500/5351 (21.7/s, ~4m left)     measured 750/5351 (24.0/s, ~3m left)     measured 1000/5351 (25.5/s, ~3m left)     measured 1250/5351 (26.1/s, ~3m left)     measured 1500/5351 (26.3/s, ~2m left)     measured 1750/5351 (26.7/s, ~2m left)     measured 2000/5351 (26.9/s, ~2m left)     measured 2250/5351 (27.0/s, ~2m left)     measured 2500/5351 (27.2/s, ~2m left)     measured 2750/5351 (27.2/s, ~2m left)     measured 3000/5351 (27.2/s, ~1m left)     measured 3250/5351 (27.3/s, ~1m left)     measured 3500/5351 (27.2/s, ~1m left)     measured 3750/5351 (27.2/s, ~1m left)     measured 4000/5351 (27.1/s, ~1m left)     measured 4250/5351 (27.1/s, ~1m left)     measured 4500/5351 (27.0/s, ~1m left)     measured 4750/5351 (27.0/s, ~0m left)     measured 5000/5351 (27.1/s, ~0m left)     measured 5250/5351 (27.0/s, ~0m left)   
+
+audio-repair queue — spa_for_jpn
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 5351 clip(s); 0 could not be measured
+
+0 clip(s) worth a human's ears (0 by duration, 0 by tail); showing 0, worst first.
+
+
+queue -> docs/audio-repair-2026-08-06/estate/spa_for_jpn-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

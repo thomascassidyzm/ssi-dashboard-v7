@@ -1,0 +1,746 @@
+{
+ "pod": "ita_for_eng:pod-1",
+ "apply": true,
+ "at": "2026-08-25T02:24:21.127Z",
+ "candidates": 12,
+ "written": 35,
+ "residue": 6,
+ "rows": [
+  {
+   "id": "ita_for_eng:pod-1:SC04-S003",
+   "at": "4.3",
+   "n_target": 3,
+   "sentences": [
+    "No, I'm sorry, I'm busy tomorrow.",
+    "But let's talk on Saturday.",
+    "See you then."
+   ],
+   "picks": [
+    {
+     "sentence": "No, I'm sorry, I'm busy tomorrow.",
+     "pick": "2effd400-9092-4ad5-a91a-3f0d1af0da73",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 2064,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "But let's talk on Saturday.",
+     "pick": "7ab3ae43-56b7-4597-a904-4bda69e0d7df",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 1680,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "See you then.",
+     "pick": "20127474-760c-4371-b68a-d6130aefab1c",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 984,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "2effd400-9092-4ad5-a91a-3f0d1af0da73",
+    "7ab3ae43-56b7-4597-a904-4bda69e0d7df",
+    "20127474-760c-4371-b68a-d6130aefab1c"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC05-S001",
+   "at": "5.1",
+   "n_target": 2,
+   "sentences": [
+    "Good evening, Sarah.",
+    "Did you have a long day?"
+   ],
+   "picks": [
+    {
+     "sentence": "Good evening, Sarah.",
+     "pick": "0e5b21b3-ffee-4faf-b3db-20e388cce8e1",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1176,
+     "nrefs": 0,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Did you have a long day?",
+     "pick": "1351460b-746f-499e-bb1b-912e2ea8d12f",
+     "from_course": "est_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1464,
+     "nrefs": 0,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "0e5b21b3-ffee-4faf-b3db-20e388cce8e1",
+    "1351460b-746f-499e-bb1b-912e2ea8d12f"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC06-S011",
+   "at": "6.11",
+   "n_target": 4,
+   "sentences": [
+    "I teach English, but not in a school.",
+    "I work with adults.",
+    "I'm on holiday here with my wife and children.",
+    "We're having a lovely time."
+   ],
+   "picks": [
+    {
+     "sentence": "I teach English, but not in a school.",
+     "pick": "71b92b66-19df-4b92-af76-856f5c891cf8",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 2472,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "I work with adults.",
+     "pick": "152d1256-1883-4d19-b992-bf0b811310d5",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1560,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "I'm on holiday here with my wife and children.",
+     "pick": "57aca118-dbc3-49e7-98fa-cd5b8ec25dd0",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 2592,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "We're having a lovely time.",
+     "pick": "029143d7-5e46-47f5-9948-09b74948eb9d",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1824,
+     "nrefs": 0,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "71b92b66-19df-4b92-af76-856f5c891cf8",
+    "152d1256-1883-4d19-b992-bf0b811310d5",
+    "57aca118-dbc3-49e7-98fa-cd5b8ec25dd0",
+    "029143d7-5e46-47f5-9948-09b74948eb9d"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC08-S016",
+   "at": "8.16",
+   "n_target": 5,
+   "sentences": [
+    "4.",
+    "6.",
+    "8.",
+    "Blue.",
+    "Yellow."
+   ],
+   "picks": [
+    {
+     "sentence": "4.",
+     "pick": "f82fa229-d4d0-4a99-9f8e-dbcd285f6327",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 624,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "6.",
+     "pick": "3e4e5d0c-f15a-419a-b610-65eaef980755",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 768,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "8.",
+     "pick": "1bea72c9-a29a-4b40-8fcb-4d398690797c",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 624,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Blue.",
+     "pick": "02cb6bed-4777-41f2-88ce-03bb231cf166",
+     "from_course": "cat_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 672,
+     "nrefs": 0,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Yellow.",
+     "pick": "7209f15b-e256-427d-bad9-b6433f4c7342",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 720,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "f82fa229-d4d0-4a99-9f8e-dbcd285f6327",
+    "3e4e5d0c-f15a-419a-b610-65eaef980755",
+    "1bea72c9-a29a-4b40-8fcb-4d398690797c",
+    "02cb6bed-4777-41f2-88ce-03bb231cf166",
+    "7209f15b-e256-427d-bad9-b6433f4c7342"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC09-S018",
+   "at": "9.18",
+   "n_target": 5,
+   "sentences": [
+    "7.",
+    "9.",
+    "11.",
+    "Orange.",
+    "Purple."
+   ],
+   "picks": [
+    {
+     "sentence": "7.",
+     "pick": "3ef9e9a0-370c-4723-8484-3f605346e59a",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 624,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "9.",
+     "pick": "a2ef8733-c2a4-488d-b124-d1ed65e7593f",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 744,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "11.",
+     "pick": "b5ee4f0b-e2a7-4365-8417-79aa585e969a",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 744,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Orange.",
+     "pick": "49f1a8a7-0c38-492a-834f-2f8e678338c1",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 792,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Purple.",
+     "pick": "9287752d-6d79-4f4e-a941-26899cc49380",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 672,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "3ef9e9a0-370c-4723-8484-3f605346e59a",
+    "a2ef8733-c2a4-488d-b124-d1ed65e7593f",
+    "b5ee4f0b-e2a7-4365-8417-79aa585e969a",
+    "49f1a8a7-0c38-492a-834f-2f8e678338c1",
+    "9287752d-6d79-4f4e-a941-26899cc49380"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S001",
+   "at": "11.1",
+   "n_target": 2,
+   "sentences": [
+    "Good afternoon.",
+    "I have a booking under the name Jones."
+   ],
+   "picks": [
+    {
+     "sentence": "Good afternoon.",
+     "pick": "7b211778-1489-44ab-9ea0-6520af8683f3",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1248,
+     "nrefs": 1,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "I have a booking under the name Jones.",
+     "pick": "01514855-985c-4cf3-9787-3c7c3d46ba4b",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 2352,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "7b211778-1489-44ab-9ea0-6520af8683f3",
+    "01514855-985c-4cf3-9787-3c7c3d46ba4b"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S009",
+   "at": "11.9",
+   "n_target": 2,
+   "sentences": [
+    "Wonderful.",
+    "Is it possible for us to have a late check-out?"
+   ],
+   "picks": [
+    {
+     "sentence": "Wonderful.",
+     "pick": "6b5ff6ea-f16b-44af-bdca-3026cb942682",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 792,
+     "nrefs": 4,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Is it possible for us to have a late check-out?",
+     "pick": "7e7eaabd-d4cd-4f63-bc6a-2e24f8486a7f",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 2736,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "6b5ff6ea-f16b-44af-bdca-3026cb942682",
+    "7e7eaabd-d4cd-4f63-bc6a-2e24f8486a7f"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC11-S013",
+   "at": "11.13",
+   "n_target": 5,
+   "sentences": [
+    "16.",
+    "17.",
+    "18.",
+    "Monday.",
+    "Tuesday."
+   ],
+   "picks": [
+    {
+     "sentence": "16.",
+     "pick": "77bfe287-f629-4d94-bb20-b8e2d7ee4893",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 936,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "17.",
+     "pick": "0ce27e07-770d-476c-b632-22a8543b2872",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1032,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "18.",
+     "pick": "29441633-d414-49c0-a29a-d2ec57b8bb43",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 768,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Monday.",
+     "pick": "748fd7c6-61d7-40aa-9dce-4da3f8dd2f1a",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 792,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Tuesday.",
+     "pick": "791ee8e7-62cc-4bd9-a254-8b6037dcef27",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 816,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "77bfe287-f629-4d94-bb20-b8e2d7ee4893",
+    "0ce27e07-770d-476c-b632-22a8543b2872",
+    "29441633-d414-49c0-a29a-d2ec57b8bb43",
+    "748fd7c6-61d7-40aa-9dce-4da3f8dd2f1a",
+    "791ee8e7-62cc-4bd9-a254-8b6037dcef27"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S002",
+   "at": "13.2",
+   "n_target": 2,
+   "sentences": [
+    "Yes, it's about a ten minute walk.",
+    "Go straight along this road."
+   ],
+   "picks": [
+    {
+     "sentence": "Yes, it's about a ten minute walk.",
+     "pick": "1cb15532-aec4-4070-85d9-c00347d4a9ca",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 2304,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Go straight along this road.",
+     "pick": "23eb55f2-e486-41c2-aa77-d2799de88863",
+     "from_course": "jpn_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 1728,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "1cb15532-aec4-4070-85d9-c00347d4a9ca",
+    "23eb55f2-e486-41c2-aa77-d2799de88863"
+   ]
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC13-S011",
+   "at": "13.11",
+   "n_target": 5,
+   "sentences": [
+    "30.",
+    "40.",
+    "50.",
+    "Friday.",
+    "Saturday."
+   ],
+   "picks": [
+    {
+     "sentence": "30.",
+     "pick": "4b3df41a-5c4d-49c4-aae4-55331693d772",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 696,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "40.",
+     "pick": "11ee5f0b-5d23-4d4b-ab92-51d73c34ae66",
+     "from_course": "jpn_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 720,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "50.",
+     "pick": "32c75684-b950-4e4d-b7dc-76411d3be3e7",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 744,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Friday.",
+     "pick": "17feeb93-568c-470b-8927-662316cc1607",
+     "from_course": "kor_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 768,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Saturday.",
+     "pick": "f75863f2-9dbf-43f2-80dd-2daf4f33e9f5",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 816,
+     "nrefs": 2,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "WRITTEN",
+   "wrote": [
+    "4b3df41a-5c4d-49c4-aae4-55331693d772",
+    "11ee5f0b-5d23-4d4b-ab92-51d73c34ae66",
+    "32c75684-b950-4e4d-b7dc-76411d3be3e7",
+    "17feeb93-568c-470b-8927-662316cc1607",
+    "f75863f2-9dbf-43f2-80dd-2daf4f33e9f5"
+   ]
+  }
+ ],
+ "residue_rows": [
+  {
+   "id": "ita_for_eng:pod-1:SC06-S009",
+   "at": "6.9",
+   "n_target": 3,
+   "sentences": [
+    "I'm sorry, I didn't understand you.",
+    "I'm learning Italian.",
+    "Could you say that again more slowly?"
+   ],
+   "picks": [
+    {
+     "sentence": "I'm sorry, I didn't understand you.",
+     "pick": "3e842466-61d6-443a-9efb-8c4a7a3fa8a0",
+     "from_course": "spa_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 1896,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "I'm learning Italian.",
+     "pick": null,
+     "reason": "no pooled clip in this voice"
+    },
+    {
+     "sentence": "Could you say that again more slowly?",
+     "pick": "9fb511b6-c479-460c-b639-8f1aed29fdb2",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 2136,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    }
+   ],
+   "outcome": "RESIDUE — left NULL (a short known array is no win at all)"
+  },
+  {
+   "id": "ita_for_eng:pod-1:SC10-S008",
+   "at": "10.8",
+   "n_target": 3,
+   "sentences": [
+    "You're welcome.",
+    "Are you here on holiday?",
+    "You speak very good Italian."
+   ],
+   "picks": [
+    {
+     "sentence": "You're welcome.",
+     "pick": "48a3f078-f05f-421e-8ac5-c916fb30875c",
+     "from_course": "kor_for_eng",
+     "voice": "gfzdpspr5fdp",
+     "duration_ms": 864,
+     "nrefs": 3,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "Are you here on holiday?",
+     "pick": "02a6c8c6-c6b8-468e-8e5e-2e5d4aa951a2",
+     "from_course": "ita_for_eng",
+     "voice": "xai_gfzdpspr5fdp",
+     "duration_ms": 1584,
+     "nrefs": 0,
+     "health": {
+      "ok": true,
+      "status": 206,
+      "bytes": 1024
+     }
+    },
+    {
+     "sentence": "You speak very good Italian.",
+     "pick": null,
+     "reason": "no pooled clip in this voice"
+    }
+   ],
+   "outcome": "RESIDUE — left NULL (a short known array is no win at all)"
+  }
+ ],
+ "errors": []
+}

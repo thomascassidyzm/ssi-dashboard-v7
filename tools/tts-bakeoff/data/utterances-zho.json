@@ -1,0 +1,1747 @@
+{
+  "schema_version": 1,
+  "language": "zho",
+  "dialect": "standard",
+  "generated_at": "2026-08-26",
+  "source": "live Supabase course DB",
+  "source_courses": [
+    "zho_for_eng"
+  ],
+  "generator": "tools/tts-bakeoff/build-utterance-set.cjs",
+  "categories": {
+    "isolated_word": {
+      "label": "Isolated word",
+      "purpose": "Single words rendered with no sentence around them — the hardest case for prosody. Exposes flat citation-form delivery, wrong lexical stress and a missing final release."
+    },
+    "very_short_lego": {
+      "label": "Very short LEGO (2-3 words)",
+      "purpose": "The learning unit at its shortest. Too short for a model to settle into a rhythm, so clipped onsets, swallowed first syllables and truncated tails all surface here."
+    },
+    "medium_chunk": {
+      "label": "Medium chunk (BUILD-phrase sized)",
+      "purpose": "A phrase fragment, not a sentence. Tests whether the model can deliver an incomplete thought without either falling off a cliff at the end or inventing a full-stop cadence."
+    },
+    "full_sentence": {
+      "label": "Full sentence (USE phrase)",
+      "purpose": "A complete natural sentence — what most of the course actually is. The baseline for naturalness, phrasing and breath placement."
+    },
+    "question": {
+      "label": "Question",
+      "purpose": "Interrogative intonation. Many models flatten questions to statements, or apply a generic rise regardless of question type."
+    },
+    "numbers": {
+      "label": "Numbers, dates and times",
+      "purpose": "Where text normalisation fails. Listen for wrong number forms, a counted noun in the wrong gender/mutation, and dates or clock times read as bare digits or as the wrong quantity."
+    },
+    "hard_pronunciation": {
+      "label": "Hard pronunciation",
+      "purpose": "Strings selected because they carry a phoneme, cluster or grapheme this language is known to break on. Mined from real course rows, never written by hand. Each carries a difficulty_note saying what to listen for."
+    },
+    "proper_noun": {
+      "label": "Proper noun",
+      "purpose": "Names, places, languages, days and months — the class most often anglicised. A model that reads \"Cymraeg\" as an English word is instantly disqualified for course work."
+    },
+    "minimal_pair": {
+      "label": "Minimal pair",
+      "purpose": "Two real corpus words differing in one contrast. If the model renders both members identically it has collapsed a distinction the learner is being taught, and the course teaches a mistake."
+    },
+    "repeat_probe": {
+      "label": "Repeat probe",
+      "purpose": "Exactly one utterance per language, synthesised many times over. Measures intra-voice consistency and repeatability (Tom axes D and E) — does the same input give the same output today, and again next month?"
+    }
+  },
+  "gaps": [
+    "DATA DEFECT, not a benchmark gap: 2 TARGET-role row(s) in a zho course contain no zho script at all and were excluded as wrong-language rows — zho_for_eng course_audio 9b2ca25c-d8df-4dee-9618-5c4935c0be7c \"to be quiet\"; zho_for_eng course_audio dd908796-55ed-4ad5-bc47-8553c4b78438 \"to be quiet\". These are target slots holding known-language text, and any audio against them is a zho voice speaking the wrong language.",
+    "Scope note, NOT a defect: 51 pod-explainer row(s) filed under language=zho are in the KNOWN language by design (e.g. \"means, lamb\"). They are excluded from a TARGET-voice benchmark for that reason, not because anything is wrong with them."
+  ],
+  "utterances": [
+    {
+      "id": "zho-0001",
+      "category": "hard_pronunciation",
+      "text": "现在不太有用",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0028L01U03",
+        "seed_number": 28,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[bu-sandhi] 不 (bù) before a FOURTH-tone syllable becomes second tone: 不是 is bú shì, not bù shì. It is a mandatory sandhi that no orthography records, so a model must know the rule rather than read the character. Getting it wrong is audible to any Mandarin speaker in the first second.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0002",
+      "category": "hard_pronunciation",
+      "text": "他希望和别人一起回来。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "856f8e85-7abd-4307-b5df-25548e21deac",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[yi-sandhi] 一 (yī) is first tone alone, second tone (yí) before a fourth-tone syllable — 一个 is yí ge — and fourth tone (yì) before first, second or third. Three readings of one character, decided entirely by what follows. Listen especially to 一个 and 一点.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0003",
+      "category": "hard_pronunciation",
+      "text": "我不确定是不是真的。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "66577db1-34f2-4874-8f63-73dcc1c48b63",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[v-bu-v] the A-不-A question frame (是不是, 能不能, 好不好). Here 不 loses its tone entirely and goes neutral, and the whole frame is delivered as one prosodic unit. Models routinely give the 不 a full fourth tone and a pause on each side, which turns a question into three stressed words.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0004",
+      "category": "hard_pronunciation",
+      "text": "给我讲了那个有趣的故事",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "7938d4b3-5848-413d-a6ce-0826f99482d1",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[t3-sandhi] two third tones in a row: the FIRST becomes second tone. 你好 is ní hǎo, 我想 is wó xiǎng. Another rule invisible in the text. A model that renders both syllables with the full dipping third tone sounds laboured and foreign, and this pattern is everywhere in the course.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0005",
+      "category": "hard_pronunciation",
+      "text": "我们需要过桥",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "8eb6943d-5d87-4f90-a4f4-72478d177d4c",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[neutral-tone] lexical NEUTRAL tone on the second syllable (shén me, péng you, xiè xie). Neutral syllables are short, unstressed and pitch-determined by what precedes them. A model that gives every character its dictionary tone produces the classic robotic character-by-character Mandarin.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0006",
+      "category": "hard_pronunciation",
+      "text": "去了哪儿",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0376L01B03",
+        "seed_number": 376,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[erhua] erhua — the 儿 suffix is not a syllable, it retroflexes the vowel of the syllable before it (一点儿 is yìdiǎnr, two syllables not three). A model that reads 儿 as a separate \"ér\" has added a syllable that is not there.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0007",
+      "category": "hard_pronunciation",
+      "text": "他这周做不到",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "9fa5078b-d30d-4b9a-a9e5-74880667a6f8",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[retroflex-vs-alveolar] this string contains BOTH a retroflex sibilant (zh/ch/sh/r) and an alveolar one (z/c/s) — 四 sì versus 十 shí being the textbook case. The pair is merged in much of southern China and routinely merged by TTS. A voice that cannot hold the contrast within one sentence is unusable for a course that teaches it.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0008",
+      "category": "hard_pronunciation",
+      "text": "你觉得你没什么好说的了吗？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "cdf9adcf-8308-43e3-ada2-81d8d8083d9e",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[final-particle] ends in a sentence-final particle (吗/呢/吧/啊). These are toneless and carry the sentence's pragmatic force through pitch on the particle itself. Getting the contour wrong turns a question into a statement or a suggestion into a demand.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0009",
+      "category": "hard_pronunciation",
+      "text": "不知道她在做什么",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "556144a0-6cd0-4160-b520-7f22855e7f42",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[tone4-run] two or more fourth tones in a row — a sharp falling contour repeated. Models tend to flatten the second one, or add a spurious pause between them to \"reset\". Listen for whether both falls are actually there.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0010",
+      "category": "hard_pronunciation",
+      "text": "不要担心这个",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0100L01U04",
+        "seed_number": 100,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[bu-sandhi] 不 (bù) before a FOURTH-tone syllable becomes second tone: 不是 is bú shì, not bù shì. It is a mandatory sandhi that no orthography records, so a model must know the rule rather than read the character. Getting it wrong is audible to any Mandarin speaker in the first second.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0011",
+      "category": "hard_pronunciation",
+      "text": "我懂一点。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "e4cdb31f-f164-4c41-9f8f-ff9374fcc171",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[yi-sandhi] 一 (yī) is first tone alone, second tone (yí) before a fourth-tone syllable — 一个 is yí ge — and fourth tone (yì) before first, second or third. Three readings of one character, decided entirely by what follows. Listen especially to 一个 and 一点.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0012",
+      "category": "hard_pronunciation",
+      "text": "他知不知道答案",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "575cc33a-10a8-45b3-aeb8-16c4bda4c905",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[v-bu-v] the A-不-A question frame (是不是, 能不能, 好不好). Here 不 loses its tone entirely and goes neutral, and the whole frame is delivered as one prosodic unit. Models routinely give the 不 a full fourth tone and a pause on each side, which turns a question into three stressed words.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0013",
+      "category": "hard_pronunciation",
+      "text": "因为我想认识她",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0022L02U07",
+        "seed_number": 22,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[t3-sandhi] two third tones in a row: the FIRST becomes second tone. 你好 is ní hǎo, 我想 is wó xiǎng. Another rule invisible in the text. A model that renders both syllables with the full dipping third tone sounds laboured and foreign, and this pattern is everywhere in the course.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0014",
+      "category": "hard_pronunciation",
+      "text": "没有人知道哪种方法最好",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "f182bae6-f192-470f-8dd3-5abf0def025e",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[neutral-tone] lexical NEUTRAL tone on the second syllable (shén me, péng you, xiè xie). Neutral syllables are short, unstressed and pitch-determined by what precedes them. A model that gives every character its dictionary tone produces the classic robotic character-by-character Mandarin.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0015",
+      "category": "minimal_pair",
+      "text": "不行",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "d9ecea37-3f24-493a-856c-0796d6edfaa6",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "heteronym": "行",
+        "reading": "xíng",
+        "pair_partner_text": "经过银行吗?",
+        "pair_partner_reading": "háng"
+      },
+      "difficulty_note": "HETERONYM pair on 「行」: read xíng (to be OK / to go) here, but háng (a row / a line of business) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0016",
+      "category": "minimal_pair",
+      "text": "经过银行吗?",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "d1e50159-9bad-448a-9ec6-539e8955e889",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "heteronym": "行",
+        "reading": "háng",
+        "pair_partner_text": "不行",
+        "pair_partner_reading": "xíng"
+      },
+      "difficulty_note": "HETERONYM pair on 「行」: read háng (a row / a line of business) here, but xíng (to be OK / to go) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0017",
+      "category": "minimal_pair",
+      "text": "长时间",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "193a751f-7c94-4926-b441-e57a8c1a86ca",
+        "seed_number": 403,
+        "dialect": "standard",
+        "lego_id": "S0403L02",
+        "lego_type": "M",
+        "heteronym": "长",
+        "reading": "cháng",
+        "pair_partner_text": "长大",
+        "pair_partner_reading": "zhǎng"
+      },
+      "difficulty_note": "HETERONYM pair on 「长」: read cháng (long) here, but zhǎng (to grow / senior) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0018",
+      "category": "minimal_pair",
+      "text": "长大",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "69ec9591-6418-46fa-97ae-5ff3e6b623f0",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "heteronym": "长",
+        "reading": "zhǎng",
+        "pair_partner_text": "长时间",
+        "pair_partner_reading": "cháng"
+      },
+      "difficulty_note": "HETERONYM pair on 「长」: read zhǎng (to grow / senior) here, but cháng (long) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0019",
+      "category": "minimal_pair",
+      "text": "好了",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0627L01B01",
+        "seed_number": 627,
+        "dialect": "standard",
+        "phrase_role": "build",
+        "heteronym": "了",
+        "reading": "le",
+        "pair_partner_text": "了解",
+        "pair_partner_reading": "liǎo"
+      },
+      "difficulty_note": "HETERONYM pair on 「了」: read le (completed-action particle, neutral tone) here, but liǎo (to understand / to be able to finish) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0020",
+      "category": "minimal_pair",
+      "text": "了解",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "9180269a-ef19-4440-816d-1e1e816c570b",
+        "seed_number": 101,
+        "dialect": "standard",
+        "lego_id": "S0101L02",
+        "lego_type": "M",
+        "heteronym": "了",
+        "reading": "liǎo",
+        "pair_partner_text": "好了",
+        "pair_partner_reading": "le"
+      },
+      "difficulty_note": "HETERONYM pair on 「了」: read liǎo (to understand / to be able to finish) here, but le (completed-action particle, neutral tone) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0021",
+      "category": "minimal_pair",
+      "text": "说得",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0091L01C01",
+        "seed_number": 91,
+        "dialect": "standard",
+        "phrase_role": "component",
+        "heteronym": "得",
+        "reading": "de",
+        "pair_partner_text": "得去",
+        "pair_partner_reading": "děi"
+      },
+      "difficulty_note": "HETERONYM pair on 「得」: read de (complement marker, neutral tone) here, but děi (must / have to) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0022",
+      "category": "minimal_pair",
+      "text": "得去",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "3406f62a-790e-4294-b6e1-6d6af24ece17",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "heteronym": "得",
+        "reading": "děi",
+        "pair_partner_text": "说得",
+        "pair_partner_reading": "de"
+      },
+      "difficulty_note": "HETERONYM pair on 「得」: read děi (must / have to) here, but de (complement marker, neutral tone) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0023",
+      "category": "minimal_pair",
+      "text": "新年快乐",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "67b5f80b-ebe0-4aa4-878b-770558e43132",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false,
+        "heteronym": "乐",
+        "reading": "lè",
+        "pair_partner_text": "音乐",
+        "pair_partner_reading": "yuè"
+      },
+      "difficulty_note": "HETERONYM pair on 「乐」: read lè (happy) here, but yuè (music) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0024",
+      "category": "minimal_pair",
+      "text": "音乐",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "2d6b8b2c-0bcd-4c24-a13f-5f588e71004c",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "heteronym": "乐",
+        "reading": "yuè",
+        "pair_partner_text": "新年快乐",
+        "pair_partner_reading": "lè"
+      },
+      "difficulty_note": "HETERONYM pair on 「乐」: read yuè (music) here, but lè (happy) in the partner utterance. Same character, two readings, and NOTHING in the writing says which — only the meaning does. A model that picks the wrong reading produces a word the learner has never heard; it is the single most audible Chinese TTS failure. Play the two members back to back: they must differ.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0025",
+      "category": "proper_noun",
+      "text": "我是成都人,来北京两年了。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "f329f020-f8de-41f7-abcc-3de22847d497",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (北京). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0026",
+      "category": "proper_noun",
+      "text": "我教英语，主要是教成年人。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "229c67b8-80cb-4db4-9dbb-4d8a12882ef3",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (英语). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0027",
+      "category": "proper_noun",
+      "text": "三十。四十。五十。星期五。星期六。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "c134b9dd-465f-4fbd-abab-6248f4742c0c",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (星期五, 星期六). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0028",
+      "category": "proper_noun",
+      "text": "我是法国人。我来这里两年了。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "086bb538-02a3-4578-bbdf-4d5cccb41211",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (法国). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0029",
+      "category": "proper_noun",
+      "text": "四点。八点。三月。四月。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "378a92f1-e6a6-4dbb-a3c6-8284bd257cd1",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (三月). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0030",
+      "category": "proper_noun",
+      "text": "十六。十七。十八。星期一。星期二。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "35f2810c-3658-48fa-839a-02b857925df8",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (星期一, 星期二). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0031",
+      "category": "proper_noun",
+      "text": "一百。二百。一千。星期天。十二点。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "8e96d058-8b3a-40f8-a3a6-be00bc819bff",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (星期天). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0032",
+      "category": "proper_noun",
+      "text": "十月。十一月。十二月。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "4df06eb4-2027-40b7-8992-654a40110576",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (十二月, 一月). Listen for the wrong reading of a name character, tones dropped on the name, or the name given a foreign phonology — place and month names are where a Mandarin voice most often reverts to a per-character reading.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0033",
+      "category": "numbers",
+      "text": "一百万。80。90。两点。十点。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "0c85cab5-92a5-4099-b4f9-3420ac5b333a",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0034",
+      "category": "numbers",
+      "text": "19。20。21。星期三。星期四。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "c399756d-2b6e-4c83-891e-b42d8df171a0",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0035",
+      "category": "numbers",
+      "text": "谢谢您。房间在三楼,308号。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "46aa045f-3e13-4229-92e4-7a6fe4c36b4c",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0036",
+      "category": "numbers",
+      "text": "房间在三楼，709号房。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "90bd59ba-2b3c-40e4-b026-d0133dc2452e",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0037",
+      "category": "numbers",
+      "text": "好的。房间在三楼，709号房。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "3f50927f-c977-4596-a0f9-63035a3f1034",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0038",
+      "category": "numbers",
+      "text": "90。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "8a534317-e747-4f4e-aaa5-41ca612ed47f",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0039",
+      "category": "numbers",
+      "text": "21。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "2e8e82fc-0afa-497f-bb70-6fab2d3b932a",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0040",
+      "category": "numbers",
+      "text": "80。",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "beb90db3-f5a7-405a-b85f-04b6890eac62",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains DIGITS — the text-normalisation path. Listen for the digit read as the wrong quantity, in the wrong language, or spelled out letter-by-letter.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0041",
+      "category": "question",
+      "text": "周末你做了什么？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "7cad2dc9-8d9c-4bef-88e7-0165987b297c",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0042",
+      "category": "question",
+      "text": "是怎么弄坏的？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "e83e3cdc-fcc3-498a-b19c-a8165e37a1fa",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0043",
+      "category": "question",
+      "text": "我们什么时候开始？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "5d344093-5276-4747-beec-6a8ecf983a81",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0044",
+      "category": "question",
+      "text": "早上好，需要点什么？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "1ad8b64d-dc23-4035-be2c-e6cfeb0cb75b",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0045",
+      "category": "question",
+      "text": "周六晚上你想在哪里见面？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "da12386f-82a9-49bb-9160-a2c3df919904",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0046",
+      "category": "question",
+      "text": "你能做另一种吗？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_audio",
+        "row_id": "8649b596-008f-4655-b140-3de982ed85da",
+        "seed_number": null,
+        "dialect": "standard",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0047",
+      "category": "question",
+      "text": "你觉得那是个好主意吗？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0123L01U03",
+        "seed_number": 123,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0048",
+      "category": "question",
+      "text": "你昨天在跟哪个男人说话？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_seeds",
+        "row_id": "d42760a6-adbe-4874-884b-93c56d4c503d",
+        "seed_number": 262,
+        "dialect": "standard",
+        "seed_id": "S0262"
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0049",
+      "category": "question",
+      "text": "他在办公室吗？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0511L03U02",
+        "seed_number": 511,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0050",
+      "category": "question",
+      "text": "你很乐意去吗？",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0599L01U05",
+        "seed_number": 599,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Mandarin marks most questions LEXICALLY (吗, 呢, an A-not-A frame, a question word), so a question does NOT need a rising contour — over-applying an English rise is as wrong as flattening it. Listen for the particle staying neutral and short, and for the sentence tones surviving underneath whatever contour is applied.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0051",
+      "category": "isolated_word",
+      "text": "这个",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "fecc57f3-815c-41a6-8275-415bae56d4ed",
+        "seed_number": 36,
+        "dialect": "standard",
+        "lego_id": "S0036L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0052",
+      "category": "isolated_word",
+      "text": "醒来",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "e5e21c7c-9e90-4cb9-b40f-03b318eacf69",
+        "seed_number": 55,
+        "dialect": "standard",
+        "lego_id": "S0055L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0053",
+      "category": "isolated_word",
+      "text": "走路",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "ce4dbeff-618a-4190-a897-40ebe3200de1",
+        "seed_number": 323,
+        "dialect": "standard",
+        "lego_id": "S0323L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0054",
+      "category": "isolated_word",
+      "text": "卖掉",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "43accdda-1e6c-4f1d-9e8c-421efe101a4a",
+        "seed_number": 326,
+        "dialect": "standard",
+        "lego_id": "S0326L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0055",
+      "category": "isolated_word",
+      "text": "这样",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "c43eb90b-ea20-485e-b08c-ea662954da0f",
+        "seed_number": 328,
+        "dialect": "standard",
+        "lego_id": "S0328L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0056",
+      "category": "isolated_word",
+      "text": "同意",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "e2caa81d-9a4a-4932-a16c-ad82036af4ba",
+        "seed_number": 522,
+        "dialect": "standard",
+        "lego_id": "S0522L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0057",
+      "category": "isolated_word",
+      "text": "故事",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "059dca58-7b7c-4487-873d-fe6a8bb05a27",
+        "seed_number": 527,
+        "dialect": "standard",
+        "lego_id": "S0527L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0058",
+      "category": "isolated_word",
+      "text": "通向",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "1c8db882-8557-4d89-983d-66087febf043",
+        "seed_number": 560,
+        "dialect": "standard",
+        "lego_id": "S0560L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0059",
+      "category": "isolated_word",
+      "text": "愿意",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "47da8167-d7ba-4e6b-9eb2-49c33aa674a9",
+        "seed_number": 569,
+        "dialect": "standard",
+        "lego_id": "S0569L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0060",
+      "category": "isolated_word",
+      "text": "上次",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "2be21c29-6dcf-4ee3-9a4e-0748af68a614",
+        "seed_number": 572,
+        "dialect": "standard",
+        "lego_id": "S0572L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0061",
+      "category": "isolated_word",
+      "text": "不管",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "4550df16-72ed-4f0b-b8e1-7ab5d9dc38d3",
+        "seed_number": 593,
+        "dialect": "standard",
+        "lego_id": "S0593L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0062",
+      "category": "isolated_word",
+      "text": "确定",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "8e11f00e-0d47-4650-b422-59bc2435964b",
+        "seed_number": 654,
+        "dialect": "standard",
+        "lego_id": "S0654L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Single word spoken alone, with no sentence to lean on. Mandarin has no lexical stress, so what to listen for instead is TONE: each syllable must carry its full citation contour, and a two-syllable word must not be flattened into one shape. Listen too for a neutral-toned second syllable being given a full tone it should not have.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0063",
+      "category": "very_short_lego",
+      "text": "弄清楚",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "ef28a203-c1f4-4962-a684-30c914026bc4",
+        "seed_number": 17,
+        "dialect": "standard",
+        "lego_id": "S0017L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0064",
+      "category": "very_short_lego",
+      "text": "说得更快",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "7aa9389f-839d-486e-be19-123906f93531",
+        "seed_number": 91,
+        "dialect": "standard",
+        "lego_id": "S0091L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0065",
+      "category": "very_short_lego",
+      "text": "还没准备好",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "0bddb1dd-b83a-41bc-9b25-f8fe6944ec19",
+        "seed_number": 96,
+        "dialect": "standard",
+        "lego_id": "S0096L04",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0066",
+      "category": "very_short_lego",
+      "text": "进行对话",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "7c3a41e9-10f8-4c14-a150-e78851c47b10",
+        "seed_number": 115,
+        "dialect": "standard",
+        "lego_id": "S0115L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0067",
+      "category": "very_short_lego",
+      "text": "我自己能行",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "97374e2e-0c8f-42e1-ac76-5f6e2a8d4377",
+        "seed_number": 173,
+        "dialect": "standard",
+        "lego_id": "S0173L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0068",
+      "category": "very_short_lego",
+      "text": "办公室",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "f4657c08-b8b3-472a-8937-5edfa6a99913",
+        "seed_number": 199,
+        "dialect": "standard",
+        "lego_id": "S0199L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0069",
+      "category": "very_short_lego",
+      "text": "给更多时间",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "a7727221-3931-4c71-8832-ee28f7e4cfc2",
+        "seed_number": 242,
+        "dialect": "standard",
+        "lego_id": "S0242L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0070",
+      "category": "very_short_lego",
+      "text": "没有人",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "689b6937-3138-4a0f-bad7-5bf314032359",
+        "seed_number": 367,
+        "dialect": "standard",
+        "lego_id": "S0367L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0071",
+      "category": "very_short_lego",
+      "text": "所有人",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "c96aeac7-78eb-4714-95b7-d56e62260122",
+        "seed_number": 396,
+        "dialect": "standard",
+        "lego_id": "S0396L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0072",
+      "category": "very_short_lego",
+      "text": "试着树立",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "848f5fb6-cfd9-49b9-8897-fcf1a71bf80d",
+        "seed_number": 407,
+        "dialect": "standard",
+        "lego_id": "S0407L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0073",
+      "category": "very_short_lego",
+      "text": "想做什么",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "c0c5e2ba-df1f-4ee3-b0f0-f0c3bde4295f",
+        "seed_number": 452,
+        "dialect": "standard",
+        "lego_id": "S0452L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0074",
+      "category": "very_short_lego",
+      "text": "我觉得",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_legos",
+        "row_id": "e3cbe420-c272-4000-8fcb-ad341c953195",
+        "seed_number": 636,
+        "dialect": "standard",
+        "lego_id": "S0636L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Three-to-five-character LEGO. Too short for the model to settle into a rhythm, so clipped onsets, a swallowed first syllable and a truncated final tone all surface here. Check that the last syllable actually completes its tone contour rather than being cut off.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0075",
+      "category": "medium_chunk",
+      "text": "我希望说中文",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0011L01B02",
+        "seed_number": 11,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0076",
+      "category": "medium_chunk",
+      "text": "你也说中文吗",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0014L03B05",
+        "seed_number": 14,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0077",
+      "category": "medium_chunk",
+      "text": "我放进包里",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0053L03B02",
+        "seed_number": 53,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0078",
+      "category": "medium_chunk",
+      "text": "读一本有意思的书",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0164L01B04",
+        "seed_number": 164,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0079",
+      "category": "medium_chunk",
+      "text": "一本有意思的书",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0164L01B01",
+        "seed_number": 164,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0080",
+      "category": "medium_chunk",
+      "text": "我想弄清楚",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0293L01B04",
+        "seed_number": 293,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0081",
+      "category": "medium_chunk",
+      "text": "绿色的东西",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0393L02B02",
+        "seed_number": 393,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0082",
+      "category": "medium_chunk",
+      "text": "问多大年纪",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0420L01B02",
+        "seed_number": 420,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0083",
+      "category": "medium_chunk",
+      "text": "身体很重要",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0421L01B03",
+        "seed_number": 421,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0084",
+      "category": "medium_chunk",
+      "text": "线的另一边",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0488L04B03",
+        "seed_number": 488,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0085",
+      "category": "medium_chunk",
+      "text": "完美的房子",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0514L03B02",
+        "seed_number": 514,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0086",
+      "category": "medium_chunk",
+      "text": "干净的衣服",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0545L04B02",
+        "seed_number": 545,
+        "dialect": "standard",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence (a dropped, statement-final pitch on a phrase that has not ended), and for whether the sandhi across the internal word boundaries is applied at all.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0087",
+      "category": "full_sentence",
+      "text": "但是我现在不想认识他",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0022L02U04",
+        "seed_number": 22,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0088",
+      "category": "full_sentence",
+      "text": "花时间练习很有用",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0028L01U04",
+        "seed_number": 28,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0089",
+      "category": "full_sentence",
+      "text": "练习的时候，不要花太多时间",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0034L01U08",
+        "seed_number": 34,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0090",
+      "category": "full_sentence",
+      "text": "我需要仔细读这个",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0044L02U07",
+        "seed_number": 44,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0091",
+      "category": "full_sentence",
+      "text": "你不需要现在回答",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0044L02U06",
+        "seed_number": 44,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0092",
+      "category": "full_sentence",
+      "text": "我觉得你不应该担心",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0100L01U03",
+        "seed_number": 100,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0093",
+      "category": "full_sentence",
+      "text": "我们是朋友，我想和你放松",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0110L01U08",
+        "seed_number": 110,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0094",
+      "category": "full_sentence",
+      "text": "这项练习正在改变我的大脑",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0126L01U05",
+        "seed_number": 126,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0095",
+      "category": "full_sentence",
+      "text": "一起工作前了解一个人很重要",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0133L01U03",
+        "seed_number": 133,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0096",
+      "category": "full_sentence",
+      "text": "要是她知道就好了",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0501L03U04",
+        "seed_number": 501,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0097",
+      "category": "full_sentence",
+      "text": "如果你想不开车离开，我也不介意",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0540L02U01",
+        "seed_number": 540,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0098",
+      "category": "full_sentence",
+      "text": "我不在乎车有多快",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0561L01U06",
+        "seed_number": 561,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing and breath placement, and above all for whether tone survives the sentence: many models render tones correctly on isolated words and then flatten them into an English-like intonation contour once a sentence gets long.",
+      "repeat_count": 1
+    },
+    {
+      "id": "zho-0099",
+      "category": "repeat_probe",
+      "text": "我觉得这是个好主意",
+      "language": "zho",
+      "provenance": {
+        "course_code": "zho_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "zho_for_eng:S0123L01U02",
+        "seed_number": 123,
+        "dialect": "standard",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "THE repeat probe. Synthesise this one utterance repeat_count times in a single run, and again on a later date. Measures intra-voice consistency (axis D) and repeatability over time (axis E): duration spread, pitch drift, and whether any single render is audibly a different take.",
+      "repeat_count": 20
+    }
+  ]
+}

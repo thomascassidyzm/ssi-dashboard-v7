@@ -1,0 +1,1732 @@
+{
+  "schema_version": 1,
+  "language": "cym",
+  "dialect": "mixed",
+  "generated_at": "2026-08-26",
+  "source": "live Supabase course DB",
+  "source_courses": [
+    "cym_n_for_eng",
+    "cym_s_for_eng"
+  ],
+  "generator": "tools/tts-bakeoff/build-utterance-set.cjs",
+  "categories": {
+    "isolated_word": {
+      "label": "Isolated word",
+      "purpose": "Single words rendered with no sentence around them — the hardest case for prosody. Exposes flat citation-form delivery, wrong lexical stress and a missing final release."
+    },
+    "very_short_lego": {
+      "label": "Very short LEGO (2-3 words)",
+      "purpose": "The learning unit at its shortest. Too short for a model to settle into a rhythm, so clipped onsets, swallowed first syllables and truncated tails all surface here."
+    },
+    "medium_chunk": {
+      "label": "Medium chunk (BUILD-phrase sized)",
+      "purpose": "A phrase fragment, not a sentence. Tests whether the model can deliver an incomplete thought without either falling off a cliff at the end or inventing a full-stop cadence."
+    },
+    "full_sentence": {
+      "label": "Full sentence (USE phrase)",
+      "purpose": "A complete natural sentence — what most of the course actually is. The baseline for naturalness, phrasing and breath placement."
+    },
+    "question": {
+      "label": "Question",
+      "purpose": "Interrogative intonation. Many models flatten questions to statements, or apply a generic rise regardless of question type."
+    },
+    "numbers": {
+      "label": "Numbers, dates and times",
+      "purpose": "Where text normalisation fails. Listen for wrong number forms, a counted noun in the wrong gender/mutation, and dates or clock times read as bare digits or as the wrong quantity."
+    },
+    "hard_pronunciation": {
+      "label": "Hard pronunciation",
+      "purpose": "Strings selected because they carry a phoneme, cluster or grapheme this language is known to break on. Mined from real course rows, never written by hand. Each carries a difficulty_note saying what to listen for."
+    },
+    "proper_noun": {
+      "label": "Proper noun",
+      "purpose": "Names, places, languages, days and months — the class most often anglicised. A model that reads \"Cymraeg\" as an English word is instantly disqualified for course work."
+    },
+    "minimal_pair": {
+      "label": "Minimal pair",
+      "purpose": "Two real corpus words differing in one contrast. If the model renders both members identically it has collapsed a distinction the learner is being taught, and the course teaches a mistake."
+    },
+    "repeat_probe": {
+      "label": "Repeat probe",
+      "purpose": "Exactly one utterance per language, synthesised many times over. Measures intra-voice consistency and repeatability (Tom axes D and E) — does the same input give the same output today, and again next month?"
+    }
+  },
+  "gaps": [
+    "DATA DEFECT, not a benchmark gap: 6 row(s) in this corpus contain Cyrillic/Greek homoglyphs inside otherwise-Latin text and were excluded — e.g. cym_n_for_eng course_legos 22109064-486a-489f-b109-b1a999901f23 \"problеm\"; cym_n_for_eng course_legos cf6449c6-e081-4681-a377-cc4fd0703b8e \"hеr\"; cym_n_for_eng course_audio 196b2b24-2f4d-4058-a453-6571c4b11571 \"problеm\". Worth a separate fix pass.",
+    "numbers: the cym course corpus contains NO digit strings at all (checked course_seeds, course_legos, course_practice_phrases and course_audio for cym_n_for_eng, cym_s_for_eng). Digit/date/ordinal normalisation therefore cannot be tested from real course content — the category is filled with number WORDS instead, and digit normalisation is an explicit uncovered gap."
+  ],
+  "utterances": [
+    {
+      "id": "cym-0001",
+      "category": "hard_pronunciation",
+      "text": "i fod o dan y llygaid blin yma",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "083abe44-d64f-49a3-9202-bfbbf5b13220",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "DEFECT PROVENANCE — this exact string is flagged in course_audio.rerecord_wanted: \"Welsh \"eyes\" defect: the text says angry eyes (llygaid blin) but the legacy recording says pretty eyes (del). Kai ruling 2026-08-19: re-record the northern set outright. NORTH ONLY — do not touch cym_s.\"",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0002",
+      "category": "hard_pronunciation",
+      "text": "Tri o'r gloch. Naw o'r gloch. Ionawr. Chwefror.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "717de150-0621-4cd7-93b1-fc44dc31284b",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "DEFECT PROVENANCE — this exact string is flagged in course_audio.rerecord_wanted: \"T-20 ALL: full re-record commissioned 2026-08-16 (trim-chain damage, whole set)\"",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0003",
+      "category": "hard_pronunciation",
+      "text": "dianc rhag y llygaid blin yma",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "e55aa8db-123a-46d9-b026-7eb5d02d723c",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target2",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "DEFECT PROVENANCE — this exact string is flagged in course_audio.rerecord_wanted: \"Welsh \"eyes\" defect: the text says angry eyes (llygaid blin) but the legacy recording says pretty eyes (del). Kai ruling 2026-08-19: re-record the northern set outright. NORTH ONLY — do not touch cym_s.\"",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0004",
+      "category": "hard_pronunciation",
+      "text": "awn ni gytre i roi’r llyfr ’na iddi hi?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "c9d37fac-f430-49f8-b319-802bd0cd2aff",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[ll] word-initial \"ll\" — the voiceless alveolar lateral fricative /ɬ/. English-trained models render it as /l/ or /kl/; it is the single most common Welsh giveaway.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0005",
+      "category": "hard_pronunciation",
+      "text": "mae dal rhaid i mi ymarfer siarad",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0135L01U05",
+        "seed_number": 135,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[rh] word-initial \"rh\" — voiceless trilled /r̥/. Usually collapsed to a plain English /r/ or read as an /r/+/h/ sequence.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0006",
+      "category": "hard_pronunciation",
+      "text": "mae o newydd ddechrau cofio sut i ddeud o",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "a32d82dc-7838-4a02-adcb-8290723d2f80",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[ch] \"ch\" — voiceless velar fricative /χ/. Frequently anglicised to /tʃ/ (as in \"church\") or dropped to /k/.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0007",
+      "category": "hard_pronunciation",
+      "text": "fyddwn i ddim yn gwneud unrhywbeth arall",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "d2409572-b9f8-4090-91ae-c5c129594c77",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[w-vowel] \"w\" used as a VOWEL /u/ (cwm, bwrdd, dwr). A model treating w as a glide produces an English /w/ consonant and destroys the syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0008",
+      "category": "hard_pronunciation",
+      "text": "wnes i wylio’r pêl-droed nos Sadwrn",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "105f15f4-bc6a-4d3d-9043-ded5cd451aa9",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[circumflex] circumflex (to bach) marks a LONG vowel. Ignoring it shortens the vowel and changes the word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0009",
+      "category": "hard_pronunciation",
+      "text": "gadewch i ni eu cyfrif nhw",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0303L04B01",
+        "seed_number": 303,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[nasal-mut] voiceless-nasal onset — nasal mutation (ngh/mh/nh) or the pronoun \"nhw\". These onsets do not exist in English; models insert an epenthetic vowel, drop the nasal, or voice it.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0010",
+      "category": "hard_pronunciation",
+      "text": "wnes i gwrdd â rhywun sy’n hoffi’r llyfr ’na",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "f8e80d9b-978d-47de-bcf1-fa7f45e77f1d",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[ff-ph] \"ff\"/\"ph\" are /f/ while single \"f\" is /v/ — the inverse of the English convention, so single-f words get devoiced.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0011",
+      "category": "hard_pronunciation",
+      "text": "dod â rhywbeth efo chdi ddydd Llun",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0227L01B04",
+        "seed_number": 227,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[ll] word-initial \"ll\" — the voiceless alveolar lateral fricative /ɬ/. English-trained models render it as /l/ or /kl/; it is the single most common Welsh giveaway.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0012",
+      "category": "hard_pronunciation",
+      "text": "dw i newydd ddechrau siarad Cymraeg",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0019L02U03",
+        "seed_number": 19,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "[ch] \"ch\" — voiceless velar fricative /χ/. Frequently anglicised to /tʃ/ (as in \"church\") or dropped to /k/.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0013",
+      "category": "hard_pronunciation",
+      "text": "sut i ddysgu Cymraeg",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0006L03B04",
+        "seed_number": 6,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "[dd-th] \"dd\" is voiced /ð/ and \"th\" voiceless /θ/ — models that read Welsh through English orthography swap or merge the pair.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0014",
+      "category": "hard_pronunciation",
+      "text": "wnes i gwrdd â menyw ifanc ddiddorol neithiwr",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "73ed03f6-e65e-47d9-8fdc-777a4c082ad0",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "[w-vowel] \"w\" used as a VOWEL /u/ (cwm, bwrdd, dwr). A model treating w as a glide produces an English /w/ consonant and destroys the syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0015",
+      "category": "minimal_pair",
+      "text": "codi",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_seeds",
+        "row_id": "de49be2a-5335-41fc-ae24-bd556c34cc6c",
+        "seed_number": 210,
+        "dialect": "north",
+        "seed_id": "S0210",
+        "pair_partner": "godi",
+        "contrast": "soft mutation",
+        "attested_in": "codi yn gynnar yn y bore"
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"codi\" vs \"godi\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0016",
+      "category": "minimal_pair",
+      "text": "godi",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0221L01U09",
+        "seed_number": 221,
+        "dialect": "south",
+        "phrase_role": "use",
+        "pair_partner": "codi",
+        "contrast": "soft mutation",
+        "attested_in": "hoffet ti godi nawr?"
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"codi\" vs \"godi\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0017",
+      "category": "minimal_pair",
+      "text": "past",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "43008959-4e2f-4703-be00-d7402ed4839e",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "bast",
+        "contrast": "soft mutation",
+        "attested_in": "Mae'r eli haul… i lawr fanna… ar eich dde,… ac mi gewch chi hyd i'r… past dannedd rownd y gornel."
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"past\" vs \"bast\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0018",
+      "category": "minimal_pair",
+      "text": "bast",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "3653ef68-9267-47e0-8ba1-1bbff5d30b9b",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true,
+        "pair_partner": "past",
+        "contrast": "soft mutation",
+        "attested_in": "Dw i angen cael… rhyw eli haul… a rhyw bast dannedd hefyd."
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"past\" vs \"bast\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0019",
+      "category": "minimal_pair",
+      "text": "bwrdd",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "6c796c7f-9e7c-4f8b-95cc-e80c012acba0",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "fwrdd",
+        "contrast": "soft mutation",
+        "attested_in": "Gawn ni ychydig o fara? A phowlen o… sglodion i'r bwrdd."
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"bwrdd\" vs \"fwrdd\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0020",
+      "category": "minimal_pair",
+      "text": "fwrdd",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "54f70217-4a6a-459d-9eb7-911ec928160f",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "bwrdd",
+        "contrast": "soft mutation",
+        "attested_in": "Noswaith dda. Mae gynnon ni fwrdd i ddau,… o dan yr enw Davies."
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"bwrdd\" vs \"fwrdd\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0021",
+      "category": "minimal_pair",
+      "text": "teulu",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "28b11f73-bc19-4b83-94f4-08bf6a492965",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "deulu",
+        "contrast": "soft mutation",
+        "attested_in": "teulu cyfan"
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"teulu\" vs \"deulu\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0022",
+      "category": "minimal_pair",
+      "text": "deulu",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0315L02B06",
+        "seed_number": 315,
+        "dialect": "south",
+        "phrase_role": "build",
+        "pair_partner": "teulu",
+        "contrast": "soft mutation",
+        "attested_in": "gadewon nhw deulu cyfan ar eu pennau eu hunain"
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"teulu\" vs \"deulu\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0023",
+      "category": "minimal_pair",
+      "text": "maint",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "1432f46a-e05b-40e3-ac64-200b05a229bc",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "faint",
+        "contrast": "soft mutation",
+        "attested_in": "Dach chi isio maint arferol… neu fawr?"
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"maint\" vs \"faint\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0024",
+      "category": "minimal_pair",
+      "text": "faint",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "59d80676-b243-470d-9221-b66a55f850cf",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false,
+        "pair_partner": "maint",
+        "contrast": "soft mutation",
+        "attested_in": "faint"
+      },
+      "difficulty_note": "Minimal pair (soft mutation): \"maint\" vs \"faint\". Both forms occur in the live corpus. Listen for whether the initial consonant genuinely changes; a model that renders both members identically has erased a mutation the learner is being taught.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0025",
+      "category": "proper_noun",
+      "text": "Pump o'r gloch. Saith o'r gloch. Mai. Mehefin.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "2f03f8fd-4dc4-4023-8b27-550cccfdfc7f",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (mehefin). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0026",
+      "category": "proper_noun",
+      "text": "Hydref. Tachwedd. Rhagfyr.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "5efa066e-6883-475a-966e-6da864a3f2db",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (hydref, tachwedd, rhagfyr). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0027",
+      "category": "proper_noun",
+      "text": "Chwech o'r gloch. Gorffennaf. Awst. Medi.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "5d772e9f-f17f-4770-9dc9-3c8a145d3971",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (gorffennaf, awst, medi). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0028",
+      "category": "proper_noun",
+      "text": "ti’n cerdded ddydd Gwener",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "2183d80f-0631-4a5c-9206-17205f49d07c",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (gwener). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0029",
+      "category": "proper_noun",
+      "text": "dw i’n fodlon dod â rhywbeth ddydd Mercher",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "844dca53-05a2-4fa2-a752-8371532400e4",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (mercher). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0030",
+      "category": "proper_noun",
+      "text": "nos Iau",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "3c9a6007-7eb3-4347-9c38-ac65b057cdca",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (iau). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0031",
+      "category": "proper_noun",
+      "text": "dw i’n dod o Loegr",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0081L02U09",
+        "seed_number": 81,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (loegr). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0032",
+      "category": "proper_noun",
+      "text": "be’ wnei di bnawn dydd Sul?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_seeds",
+        "row_id": "f3378ad1-9a0c-4bb5-83f8-86599fe9062a",
+        "seed_number": 112,
+        "dialect": "north",
+        "seed_id": "S0112"
+      },
+      "difficulty_note": "Contains a proper noun / name-class word (sul). Listen for anglicisation, wrong stress, or the name being read with the wrong language's phonology.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0033",
+      "category": "numbers",
+      "text": "Un deg naw. Dau ddeg. Dau ddeg un. Dydd Mercher. Dydd Iau.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "ba2df779-7e75-4efb-8c72-fa5864a03f85",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0034",
+      "category": "numbers",
+      "text": "Miliwn. Wyth deg. Naw deg. Dau o'r gloch. Deg o'r gloch.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "b0f67e78-3480-4538-9dea-9b098ff44101",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0035",
+      "category": "numbers",
+      "text": "Deuddeg. Un deg tri. Un deg pedwar. Pinc. Llwyd.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "3c090ca7-4ca3-4b38-86a6-0d7dc4d79f1f",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": true
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0036",
+      "category": "numbers",
+      "text": "Saith. Naw. Un deg un. Oren. Porffor.",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "11911e74-5664-4d7e-8376-e89508bba69c",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0037",
+      "category": "numbers",
+      "text": "ail ddiwrnod yr ail hanner",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "b67bfa8a-cb8e-4452-a49a-743840a7869c",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0038",
+      "category": "numbers",
+      "text": "oes, ma ’da ni un ferch ac un bachgen",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0151L01U04",
+        "seed_number": 151,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0039",
+      "category": "numbers",
+      "text": "mae gyda ni un bachgen a dwy ferch",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0156L01B06",
+        "seed_number": 156,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0040",
+      "category": "numbers",
+      "text": "ers aros ar gyfer diwedd yr ail hanner",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0284L02B06",
+        "seed_number": 284,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "Number, date or clock-time words. Listen for the wrong numeral form, a counted noun taking the wrong shape, and clock times mangled into a plain count.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0041",
+      "category": "question",
+      "text": "ga i ofyn i ti be’ ti ’di gwneud heddiw?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "5629862c-6041-4436-8b57-70d71f1d943c",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0042",
+      "category": "question",
+      "text": "wyt ti ’di cael digon i yfed rŵan?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "e6893e26-6baf-46bb-a878-0b9d2cc037b5",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0043",
+      "category": "question",
+      "text": "fyddech chi’n fodlon helpu fi efo’r trefniadau?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "ff37ec8c-040c-4ca1-8270-2a8511e551cf",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0044",
+      "category": "question",
+      "text": "fyddech chi’n licio mynd allan rhywben wythnos nesa’?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_audio",
+        "row_id": "3025a063-3a5d-40ed-93f0-f03ec570ed99",
+        "seed_number": null,
+        "dialect": "north",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0045",
+      "category": "question",
+      "text": "wnest ti joio rhedeg ffor’ hyn?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "7ccf6efe-d45a-41a0-8396-c6aa623a23b0",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0046",
+      "category": "question",
+      "text": "wyt ti’n moyn ymarfer siarad?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "fd5b4473-08e5-433e-aa54-50b7a202437f",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target2",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0047",
+      "category": "question",
+      "text": "wnest ti ddarllen y llyfr ’na am y ddwy ferch?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_audio",
+        "row_id": "452fd738-ad6f-4ed9-8290-d7b8e3a16d09",
+        "seed_number": null,
+        "dialect": "south",
+        "role": "target1",
+        "rerecord_wanted": false
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0048",
+      "category": "question",
+      "text": "oes ’da chi ormod i fwyta eich hunain?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0151L01U03",
+        "seed_number": 151,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0049",
+      "category": "question",
+      "text": "fedri di ddeud wrtha i sut i ffeindio allan yn fuan?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0257L02U25",
+        "seed_number": 257,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0050",
+      "category": "question",
+      "text": "beth fydd yn dod nesa?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0294L02B01",
+        "seed_number": 294,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "Interrogative. Listen for a genuine question contour rather than a statement read with a full stop, and for the rise landing on the right word.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0051",
+      "category": "isolated_word",
+      "text": "ymarfer",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "d0c04e85-a2d1-4059-a900-c86abfba8f80",
+        "seed_number": 4,
+        "dialect": "south",
+        "lego_id": "S0004L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0052",
+      "category": "isolated_word",
+      "text": "rhywbeth",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "fd623cea-749c-42ec-83aa-e423488c9809",
+        "seed_number": 9,
+        "dialect": "north",
+        "lego_id": "S0009L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0053",
+      "category": "isolated_word",
+      "text": "ddigon",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "aa838018-72b6-4b70-bf23-416ab496d3eb",
+        "seed_number": 119,
+        "dialect": "north",
+        "lego_id": "S0119L01",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0054",
+      "category": "isolated_word",
+      "text": "cyflawni",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "4189c932-6de1-4bb6-bbbb-05ebed9c9bc3",
+        "seed_number": 176,
+        "dialect": "north",
+        "lego_id": "S0176L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0055",
+      "category": "isolated_word",
+      "text": "ffeithiau",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "b1c4bfe1-f2a6-43e7-8962-0c8f9d788a48",
+        "seed_number": 264,
+        "dialect": "north",
+        "lego_id": "S0264L04",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0056",
+      "category": "isolated_word",
+      "text": "ddiwedd",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "96c9aeb6-4966-4d52-b514-b6c77cf5fa4e",
+        "seed_number": 266,
+        "dialect": "north",
+        "lego_id": "S0266L05",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0057",
+      "category": "isolated_word",
+      "text": "ystyried",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "3c536dca-f7ca-45a1-abe1-cc8bcc9bdf3f",
+        "seed_number": 283,
+        "dialect": "south",
+        "lego_id": "S0283L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0058",
+      "category": "isolated_word",
+      "text": "chwarae",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "a36f89d2-03ca-4e84-aae1-54d1804214d3",
+        "seed_number": 283,
+        "dialect": "north",
+        "lego_id": "S0283L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0059",
+      "category": "isolated_word",
+      "text": "eistedd",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "225068b9-7076-4adb-97b8-a57707b5be23",
+        "seed_number": 300,
+        "dialect": "south",
+        "lego_id": "S0300L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0060",
+      "category": "isolated_word",
+      "text": "swyddfa",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "0520ab47-4d71-48cc-a72f-50a75c32c8ba",
+        "seed_number": 308,
+        "dialect": "south",
+        "lego_id": "S0308L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0061",
+      "category": "isolated_word",
+      "text": "stafell",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "fc737240-da61-4e75-b540-80719769456b",
+        "seed_number": 320,
+        "dialect": "south",
+        "lego_id": "S0320L03",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0062",
+      "category": "isolated_word",
+      "text": "ymddangos",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "e0c63d3d-2b58-4e49-87a7-f8cbc0bca0ed",
+        "seed_number": 326,
+        "dialect": "south",
+        "lego_id": "S0326L02",
+        "lego_type": "A"
+      },
+      "difficulty_note": "Single word spoken alone. Listen for a dead flat citation tone, a missing final consonant release, and lexical stress on the wrong syllable.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0063",
+      "category": "very_short_lego",
+      "text": "dweud wrtha i",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "3a7aef78-b326-4fa7-b881-5b06b85f1d31",
+        "seed_number": 74,
+        "dialect": "south",
+        "lego_id": "S0074L02",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0064",
+      "category": "very_short_lego",
+      "text": "y llyfr ’ma",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "da88171d-6a14-4b47-868c-c5ffb0d90293",
+        "seed_number": 85,
+        "dialect": "south",
+        "lego_id": "S0085L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0065",
+      "category": "very_short_lego",
+      "text": "mae’n bosib",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "c4c21830-3a01-413d-8367-66ebbe848009",
+        "seed_number": 131,
+        "dialect": "north",
+        "lego_id": "S0131L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0066",
+      "category": "very_short_lego",
+      "text": "oeddan ni isio",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "6c43fa73-2b2f-413c-936f-363619e30da5",
+        "seed_number": 182,
+        "dialect": "north",
+        "lego_id": "S0182L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0067",
+      "category": "very_short_lego",
+      "text": "llefrith efo’ch coffi",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "a55e7785-b6ee-42be-9f2d-37874deb969e",
+        "seed_number": 207,
+        "dialect": "north",
+        "lego_id": "S0207L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0068",
+      "category": "very_short_lego",
+      "text": "o’n i’n meddwl",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "96706c38-23c8-4802-9ee4-38ce3733833c",
+        "seed_number": 209,
+        "dialect": "north",
+        "lego_id": "S0209L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0069",
+      "category": "very_short_lego",
+      "text": "dylen i",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "bf907050-76dd-496f-8e41-cae6cacec189",
+        "seed_number": 211,
+        "dialect": "south",
+        "lego_id": "S0211L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0070",
+      "category": "very_short_lego",
+      "text": "sothach llwyr",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "45c06835-5547-4448-92c7-8b7c92979e2d",
+        "seed_number": 239,
+        "dialect": "north",
+        "lego_id": "S0239L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0071",
+      "category": "very_short_lego",
+      "text": "ydy’r un mwyaf",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_legos",
+        "row_id": "4170b36e-eaeb-4a65-b1cd-8f1625991966",
+        "seed_number": 275,
+        "dialect": "north",
+        "lego_id": "S0275L03",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0072",
+      "category": "very_short_lego",
+      "text": "yr unig",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "e98ab393-1f3f-43bd-9e47-78eeed646e88",
+        "seed_number": 287,
+        "dialect": "south",
+        "lego_id": "S0287L01",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0073",
+      "category": "very_short_lego",
+      "text": "yn lle",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "d2ef8376-0894-47f5-9bd3-d39d6328d54b",
+        "seed_number": 302,
+        "dialect": "south",
+        "lego_id": "S0302L05",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0074",
+      "category": "very_short_lego",
+      "text": "ffor’ hyn",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_legos",
+        "row_id": "fe43a8e6-4148-4090-8adc-d6320fe93df8",
+        "seed_number": 305,
+        "dialect": "south",
+        "lego_id": "S0305L03",
+        "lego_type": "M"
+      },
+      "difficulty_note": "Two-to-three-word LEGO. Too short to settle into a rhythm — this is where clipped onsets and truncated tails show up.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0075",
+      "category": "medium_chunk",
+      "text": "alla i ddim ymarfer",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0006L01B05",
+        "seed_number": 6,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0076",
+      "category": "medium_chunk",
+      "text": "ond ti’n siarad hi rŵan",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0033L01B04",
+        "seed_number": 33,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0077",
+      "category": "medium_chunk",
+      "text": "ti ’di bod yn dysgu Cymraeg eto",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0040L01B03",
+        "seed_number": 40,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0078",
+      "category": "medium_chunk",
+      "text": "ti’n moyn stopo siarad",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0045L01B05",
+        "seed_number": 45,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0079",
+      "category": "medium_chunk",
+      "text": "wylies i hi neithiwr",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0105L01B03",
+        "seed_number": 105,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0080",
+      "category": "medium_chunk",
+      "text": "does neb yn moyn gofyn i ti",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0116L01B06",
+        "seed_number": 116,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0081",
+      "category": "medium_chunk",
+      "text": "mae’r hynaf yn ddeg nawr",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0143L01B04",
+        "seed_number": 143,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0082",
+      "category": "medium_chunk",
+      "text": "ddudes i rif fy ystafell wrthi unwaith",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0259L02B03",
+        "seed_number": 259,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0083",
+      "category": "medium_chunk",
+      "text": "aros ar gyfer diwedd y ffilm ’na",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0283L05B04",
+        "seed_number": 283,
+        "dialect": "south",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0084",
+      "category": "medium_chunk",
+      "text": "dach chi isio agor y ffenest efo’ch gilydd",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0284L06B01",
+        "seed_number": 284,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0085",
+      "category": "medium_chunk",
+      "text": "i gyrraedd yn ôl i’r ddinas",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0290L04B05",
+        "seed_number": 290,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0086",
+      "category": "medium_chunk",
+      "text": "dewis y swydd anghywir",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0305L05B05",
+        "seed_number": 305,
+        "dialect": "north",
+        "phrase_role": "build"
+      },
+      "difficulty_note": "BUILD-phrase fragment — deliberately incomplete. Listen for a false final cadence, or for the model trailing off as if the text were broken.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0087",
+      "category": "full_sentence",
+      "text": "dw i newydd ddechrau deud bo’ fi wedi anghofio rhywbeth",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0019L02U01",
+        "seed_number": 19,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0088",
+      "category": "full_sentence",
+      "text": "y ffilm ’na ar y teledu",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0107L01U03",
+        "seed_number": 107,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0089",
+      "category": "full_sentence",
+      "text": "ond dw i ddim yn siŵr os medra i gofio unrhywbeth arall",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0135L01U07",
+        "seed_number": 135,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0090",
+      "category": "full_sentence",
+      "text": "so chi’n dishgwl yn hapus iawn",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0160L01U05",
+        "seed_number": 160,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0091",
+      "category": "full_sentence",
+      "text": "wnes i gwrdd â menyw ifanc ddoe sy’n gweithio gyda fy mrawd i",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0195L01U01",
+        "seed_number": 195,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0092",
+      "category": "full_sentence",
+      "text": "oedd y llyfr yn sothach llwyr, medden nhw",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0242L01U04",
+        "seed_number": 242,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0093",
+      "category": "full_sentence",
+      "text": "o’n i’n meddwl bod y llyfr ’na yn sothach llwyr, i fod yn onest",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0242L01U07",
+        "seed_number": 242,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0094",
+      "category": "full_sentence",
+      "text": "ŷn ni’n mynd i wneud rhywbeth gwahanol",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0250L01U05",
+        "seed_number": 250,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0095",
+      "category": "full_sentence",
+      "text": "oeddan ni i gyd yn meddwl y dylet ti deimlo’n falch ohonot ti dy hun",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0257L02U31",
+        "seed_number": 257,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0096",
+      "category": "full_sentence",
+      "text": "ti’n gwybod bo’ fi wastad yn hapus i gerdded i’r ysgol efo chdi os lici di",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0257L02U37",
+        "seed_number": 257,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0097",
+      "category": "full_sentence",
+      "text": "well ’da fi beidio mynd mas ar ôl i ni gwpla hwn",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0263L01U03",
+        "seed_number": 263,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0098",
+      "category": "full_sentence",
+      "text": "dw i’n teimlo fel helpu ar hyn o bryd",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_s_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_s_for_eng:S0271L01U09",
+        "seed_number": 271,
+        "dialect": "south",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "Complete USE sentence — the baseline for naturalness. Listen for phrasing, breath placement and whether it sounds like a person saying something they mean.",
+      "repeat_count": 1
+    },
+    {
+      "id": "cym-0099",
+      "category": "repeat_probe",
+      "text": "fyddech chi’n fodlon rhoi fo iddo fo?",
+      "language": "cym",
+      "provenance": {
+        "course_code": "cym_n_for_eng",
+        "table": "course_practice_phrases",
+        "row_id": "cym_n_for_eng:S0257L02U26",
+        "seed_number": 257,
+        "dialect": "north",
+        "phrase_role": "use"
+      },
+      "difficulty_note": "THE repeat probe. Synthesise this one utterance repeat_count times in a single run, and again on a later date. Measures intra-voice consistency (axis D) and repeatability over time (axis E): duration spread, pitch drift, and whether any single render is audibly a different take.",
+      "repeat_count": 20
+    }
+  ]
+}

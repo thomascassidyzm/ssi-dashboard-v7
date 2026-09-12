@@ -1,0 +1,95 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  specify custom .env file path with { path: '/custom/path/.env' }
+
+scoped to seeds 1-50: 3968 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3968 (17.0/s, ~4m left)     measured 500/3968 (21.6/s, ~3m left)     measured 750/3968 (23.6/s, ~2m left)     measured 1000/3968 (24.7/s, ~2m left)     measured 1250/3968 (25.2/s, ~2m left)     measured 1500/3968 (26.5/s, ~2m left)     measured 1750/3968 (27.4/s, ~1m left)     measured 2000/3968 (28.1/s, ~1m left)     measured 2250/3968 (28.7/s, ~1m left)     measured 2500/3968 (29.1/s, ~1m left)     measured 2750/3968 (29.5/s, ~1m left)     measured 3000/3968 (29.9/s, ~1m left)     measured 3250/3968 (30.2/s, ~0m left)     measured 3500/3968 (30.5/s, ~0m left)     measured 3750/3968 (30.7/s, ~0m left)   
+
+audio-repair queue — ita_for_jpn
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3968 clip(s); 0 could not be measured
+
+35 clip(s) worth a human's ears (35 by duration, 0 by tail); showing 35, worst first.
+
+      0.8  target1         3888ms  "mi piacerebbe riuscire a parlare italiano con te dopo
+           d57f6e3e-a775-4025-8d03-1b6de9182efc  rev 1  — 20% shorter than its text implies
+    0.805  target1         3048ms  "Mi piacerebbe riuscire a parlare dopo che hai finito.
+           66990072-a7f8-4f62-b553-c076d1b3c3f0  rev 1  — 19% shorter than its text implies
+    0.811  target1         2664ms  "vai a parlare con me prima che io debba andare"
+           9f1fbcb1-55e8-452c-916c-9010de769edd  rev 1  — 19% shorter than its text implies
+    0.814  target1         3024ms  "Non vedo l'ora di parlare meglio il prima possibile."
+           f804d49d-9737-4861-96c0-6317af064ccf  rev 1  — 19% shorter than its text implies
+    0.818  target1         2688ms  "vuoi parlare con me prima che io debba andare?"
+           1dd4e44a-ebba-41b2-a8ec-44b0f60dbe08  rev 1  — 18% shorter than its text implies
+    0.818  target1         2688ms  "non voglio leggere la storia questo pomeriggio"
+           0330baa7-552a-454d-a5e0-6b3af00e79ac  rev 1  — 18% shorter than its text implies
+    0.819  target1         2808ms  "penso che abbia bisogno di migliorare l'italiano"
+           3ba83479-ed28-4da1-b09a-9416709b0964  rev 1  — 18% shorter than its text implies
+    0.822  target1         2760ms  "Lei non vuole leggere niente questo pomeriggio."
+           a060a725-3459-4e21-9b35-ff9f26a681a4  rev 1  — 18% shorter than its text implies
+    0.823  target1         3528ms  "non vedo l'ora di incontrare altre persone questo pom
+           f7f08dbf-c8cf-4cae-9919-3a9d2559049e  rev 1  — 18% shorter than its text implies
+    0.824  target1         3768ms  "non mi piace impiegare troppo tempo a provare a parla
+           264b11a5-d22d-4845-beb4-2455b96c04b9  rev 1  — 18% shorter than its text implies
+    0.832  target1         3624ms  "Lui non vuole stare in silenzio quando ci sono altre 
+           27df34e2-e125-44a7-8c3f-d0a7bb3e351a  rev 1  — 17% shorter than its text implies
+    0.832  target1         3744ms  "da quanto tempo volevi incontrare persone che parlano
+           843c5482-42c3-4566-803e-09cbac88350f  rev 1  — 17% shorter than its text implies
+    0.833  target1         4104ms  "non vedo l'ora di parlare quando ci sono persone che 
+           414da2cc-b46a-4df4-9725-1cf9e5e8857f  rev 1  — 17% shorter than its text implies
+    0.836  target1         2448ms  "mi piacerebbe parlare dopo che hai finito"
+           bb541937-165c-44fc-8d5e-8235de6d5ccc  rev 1  — 16% shorter than its text implies
+    0.836  target1         2688ms  "voglio chiederti come parlare italiano meglio"
+           cb85d6dd-b452-4a0f-8702-57982cfac073  rev 1  — 16% shorter than its text implies
+    0.836  target1         2448ms  "non vedo l'ora di parlare italiano meglio"
+           2e229e75-fc2c-4835-ab1d-4f4d7f5b93dd  rev 1  — 16% shorter than its text implies
+    0.837  target1         3168ms  "parlo un po' di italiano ma voglio parlare molto bene
+           059f766b-aee8-44f2-adc5-16e74712c010  rev 1  — 16% shorter than its text implies
+     0.84  target1         2400ms  "voglio parlare prima che io debba andare"
+           4d67de23-02df-4bc8-8168-508ff670a858  rev 1  — 16% shorter than its text implies
+     0.84  target1         2760ms  "voglio provare a rispondere meglio in italiano"
+           057e4da7-8289-4c3c-b709-34ebfb5618a6  rev 1  — 16% shorter than its text implies
+     0.84  target1         2400ms  "ho iniziato a leggere in italiano un po'"
+           49865ab6-094f-4323-88fd-ca1260a0b04b  rev 1  — 16% shorter than its text implies
+     0.84  target1         2400ms  "non voglio fare niente questo pomeriggio"
+           176ebcdb-d1f9-43ab-b98e-6a926fbede4a  rev 1  — 16% shorter than its text implies
+    0.843  target1         3912ms  "mi piace provare a rispondere in italiano il più spes
+           42ebdc84-1585-4a57-a901-558ed137c56f  rev 1  — 16% shorter than its text implies
+    0.844  target1         2472ms  "voglio imparare un po' di italiano domani"
+           572f6674-9e6c-4cc1-988f-6bc8c87692b7  rev 1  — 16% shorter than its text implies
+    0.846  target1         3624ms  "vado a provare a parlare italiano molto bene tutto il
+           ff3489a2-bd01-41aa-b032-fcbbcb50e3ae  rev 1  — 15% shorter than its text implies
+    0.846  target1         3624ms  "non mi piacerebbe smettere di esercitarmi a parlare i
+           8b2fc82e-2a88-456c-94e4-491b215c981b  rev 1  — 15% shorter than its text implies
+    0.846  target1         3624ms  "non mi piace impiegare troppo tempo a rispondere in i
+           e52d3ba9-ad2a-4e34-845c-dba634d39693  rev 1  — 15% shorter than its text implies
+    0.847  target1         2904ms  "mi piace sentirmi molto bene dopo che hai finito"
+           35dd6ad2-4574-4b69-bd16-4e4190fdc3bc  rev 1  — 15% shorter than its text implies
+    0.847  target1         2904ms  "voglio parlare italiano con te questo pomeriggio"
+           c786d5ec-0f36-4a14-8da5-eb4e5e03e006  rev 1  — 15% shorter than its text implies
+    0.847  target1         2904ms  "sono un po' stanco ma voglio imparare l'italiano"
+           6a21048d-5128-406f-838a-5dad2038e4d9  rev 1  — 15% shorter than its text implies
+    0.847  target1         2904ms  "non mi preoccupo di migliorare in questo momento"
+           124bae8a-dfeb-4810-af8b-f883472fea94  rev 1  — 15% shorter than its text implies
+    0.848  target1         2544ms  "Vai ad aiutarmi prima che io debba andare?"
+           7c1f68e5-efc9-411d-866c-fc2002e5c2c6  rev 1  — 15% shorter than its text implies
+    0.848  target1         3696ms  "mi piacerebbe imparare come indovinare una parola in 
+           d60adaa4-78d4-4170-84b5-5257dbba27e6  rev 1  — 15% shorter than its text implies
+    0.849  target1         3456ms  "mi piacerebbe riuscire a parlare italiano tutto il gi
+           5b1a0ea5-eada-4a66-bea2-aa8b7870d864  rev 1  — 15% shorter than its text implies
+    0.849  target1         2184ms  "perché non vuoi smettere di parlare?"
+           14787397-57c5-4b29-a56d-ab5126be9b93  rev 1  — 15% shorter than its text implies
+    0.849  target1         3336ms  "sto imparando da quando ho iniziato a leggere la stor
+           007856ed-3c52-4df1-90f8-08d91a7a173b  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/ita_for_jpn-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

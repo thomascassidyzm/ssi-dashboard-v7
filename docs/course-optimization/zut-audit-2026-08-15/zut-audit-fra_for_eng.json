@@ -1,0 +1,5549 @@
+{
+  "counts": {
+    "bidirectional": {
+      "gateExact": 114,
+      "caseInsensitive": 101,
+      "strict": 101
+    },
+    "targetMembershipFailures": 23,
+    "targetSideCollision": {
+      "gateExact": 77,
+      "caseInsensitive": 77,
+      "strict": 77
+    }
+  },
+  "bidirectionalStrict": [
+    {
+      "known_norm": "ready",
+      "distinct_targets": [
+        {
+          "target_norm": "prêt",
+          "example": {
+            "known": "ready",
+            "target": "prêt",
+            "seed": 345,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "prêts",
+          "example": {
+            "known": "ready",
+            "target": "prêts",
+            "seed": 431,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to reach",
+      "distinct_targets": [
+        {
+          "target_norm": "atteindre",
+          "example": {
+            "known": "to reach",
+            "target": "atteindre",
+            "seed": 358,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "àatteindre",
+          "example": {
+            "known": "to reach",
+            "target": "à atteindre",
+            "seed": 511,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "that",
+      "distinct_targets": [
+        {
+          "target_norm": "cette",
+          "example": {
+            "known": "that",
+            "target": "cette",
+            "seed": 388,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "que",
+          "example": {
+            "known": "that",
+            "target": "que",
+            "seed": 121,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "cela",
+          "example": {
+            "known": "that",
+            "target": "cela",
+            "seed": 644,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ce",
+          "example": {
+            "known": "that",
+            "target": "ce",
+            "seed": 393,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "beautiful",
+      "distinct_targets": [
+        {
+          "target_norm": "beau",
+          "example": {
+            "known": "beautiful",
+            "target": "beau",
+            "seed": 373,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "beaux",
+          "example": {
+            "known": "beautiful",
+            "target": "beaux",
+            "seed": 486,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to ask",
+      "distinct_targets": [
+        {
+          "target_norm": "demander",
+          "example": {
+            "known": "to ask",
+            "target": "demander",
+            "seed": 405,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "poser",
+          "example": {
+            "known": "to ask",
+            "target": "poser",
+            "seed": 423,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i like it",
+      "distinct_targets": [
+        {
+          "target_norm": "laime",
+          "example": {
+            "known": "I like it",
+            "target": "l'aime",
+            "seed": 629,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jelaime",
+          "example": {
+            "known": "I like it",
+            "target": "je l'aime",
+            "seed": 629,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i've got more to learn",
+      "distinct_targets": [
+        {
+          "target_norm": "jaiencorebeaucoupàapprendre",
+          "example": {
+            "known": "I've got more to learn",
+            "target": "j'ai encore beaucoup à apprendre",
+            "seed": 73,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "jaiencoredeschosesàapprendre",
+          "example": {
+            "known": "I've got more to learn",
+            "target": "j'ai encore des choses à apprendre",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to leave",
+      "distinct_targets": [
+        {
+          "target_norm": "partir",
+          "example": {
+            "known": "to leave",
+            "target": "partir",
+            "seed": 345,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "quitter",
+          "example": {
+            "known": "to leave",
+            "target": "quitter",
+            "seed": 588,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i'm not ready yet",
+      "distinct_targets": [
+        {
+          "target_norm": "jenesuispasencoreprêt",
+          "example": {
+            "known": "I'm not ready yet",
+            "target": "je ne suis pas encore prêt",
+            "seed": 96,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "jenesuispasprêtencore",
+          "example": {
+            "known": "I'm not ready yet",
+            "target": "je ne suis pas prêt encore",
+            "seed": 60,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "holidays",
+      "distinct_targets": [
+        {
+          "target_norm": "vacances",
+          "example": {
+            "known": "holidays",
+            "target": "vacances",
+            "seed": 477,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "lesvacances",
+          "example": {
+            "known": "holidays",
+            "target": "les vacances",
+            "seed": 573,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "how much",
+      "distinct_targets": [
+        {
+          "target_norm": "combien",
+          "example": {
+            "known": "how much",
+            "target": "combien",
+            "seed": 569,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "àquelpoint",
+          "example": {
+            "known": "how much",
+            "target": "à quel point",
+            "seed": 600,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to think",
+      "distinct_targets": [
+        {
+          "target_norm": "réfléchir",
+          "example": {
+            "known": "to think",
+            "target": "réfléchir",
+            "seed": 638,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "penser",
+          "example": {
+            "known": "to think",
+            "target": "penser",
+            "seed": 91,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "a long time",
+      "distinct_targets": [
+        {
+          "target_norm": "longtemps",
+          "example": {
+            "known": "a long time",
+            "target": "longtemps",
+            "seed": 619,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "unlongmoment",
+          "example": {
+            "known": "a long time",
+            "target": "un long moment",
+            "seed": 618,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "happy",
+      "distinct_targets": [
+        {
+          "target_norm": "content",
+          "example": {
+            "known": "happy",
+            "target": "content",
+            "seed": 344,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "contents",
+          "example": {
+            "known": "happy",
+            "target": "contents",
+            "seed": 448,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "heureuse",
+          "example": {
+            "known": "happy",
+            "target": "heureuse",
+            "seed": 408,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "he knows",
+      "distinct_targets": [
+        {
+          "target_norm": "ilsait",
+          "example": {
+            "known": "he knows",
+            "target": "il sait",
+            "seed": 290,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "ilconnaît",
+          "example": {
+            "known": "he knows",
+            "target": "il connaît",
+            "seed": 233,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "please",
+      "distinct_targets": [
+        {
+          "target_norm": "silteplaît",
+          "example": {
+            "known": "please",
+            "target": "s'il te plaît",
+            "seed": 630,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "silvousplaît",
+          "example": {
+            "known": "please",
+            "target": "s'il vous plaît",
+            "seed": 414,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "half",
+      "distinct_targets": [
+        {
+          "target_norm": "moitié",
+          "example": {
+            "known": "half",
+            "target": "moitié",
+            "seed": 299,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lamoitié",
+          "example": {
+            "known": "half",
+            "target": "la moitié",
+            "seed": 299,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it's useful",
+      "distinct_targets": [
+        {
+          "target_norm": "ilestutile",
+          "example": {
+            "known": "it's useful",
+            "target": "il est utile",
+            "seed": 28,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "cestutile",
+          "example": {
+            "known": "it's useful",
+            "target": "c'est utile",
+            "seed": 49,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "a cup",
+      "distinct_targets": [
+        {
+          "target_norm": "tasse",
+          "example": {
+            "known": "a cup",
+            "target": "tasse",
+            "seed": 623,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "unetasse",
+          "example": {
+            "known": "a cup",
+            "target": "une tasse",
+            "seed": 623,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "when they visited us",
+      "distinct_targets": [
+        {
+          "target_norm": "quilsnousontrenduvisite",
+          "example": {
+            "known": "when they visited us",
+            "target": "qu'ils nous ont rendu visite",
+            "seed": 572,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "quandilsnousontrenduvisite",
+          "example": {
+            "known": "when they visited us",
+            "target": "quand ils nous ont rendu visite",
+            "seed": 572,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "anywhere",
+      "distinct_targets": [
+        {
+          "target_norm": "nullepart",
+          "example": {
+            "known": "anywhere",
+            "target": "nulle part",
+            "seed": 603,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "quelquepart",
+          "example": {
+            "known": "anywhere",
+            "target": "quelque part",
+            "seed": 182,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        }
+      ]
+    },
+    {
+      "known_norm": "so good",
+      "distinct_targets": [
+        {
+          "target_norm": "sibien",
+          "example": {
+            "known": "so good",
+            "target": "si bien",
+            "seed": 135,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "tellementbien",
+          "example": {
+            "known": "so good",
+            "target": "tellement bien",
+            "seed": 129,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "we don't know",
+      "distinct_targets": [
+        {
+          "target_norm": "nousnesavonspas",
+          "example": {
+            "known": "we don't know",
+            "target": "nous ne savons pas",
+            "seed": 213,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "onneconnaîtpas",
+          "example": {
+            "known": "we don't know",
+            "target": "on ne connaît pas",
+            "seed": 472,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i heard that",
+      "distinct_targets": [
+        {
+          "target_norm": "jaientendudireque",
+          "example": {
+            "known": "I heard that",
+            "target": "j'ai entendu dire que",
+            "seed": 509,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "jaientendudire",
+          "example": {
+            "known": "I heard that",
+            "target": "j'ai entendu dire",
+            "seed": 364,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "to take",
+      "distinct_targets": [
+        {
+          "target_norm": "emmener",
+          "example": {
+            "known": "to take",
+            "target": "emmener",
+            "seed": 580,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "prendre",
+          "example": {
+            "known": "to take",
+            "target": "prendre",
+            "seed": 450,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "possible",
+      "distinct_targets": [
+        {
+          "target_norm": "possible",
+          "example": {
+            "known": "possible",
+            "target": "possible",
+            "seed": 430,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "possibles",
+          "example": {
+            "known": "possible",
+            "target": "possibles",
+            "seed": 325,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "there",
+      "distinct_targets": [
+        {
+          "target_norm": "là",
+          "example": {
+            "known": "there",
+            "target": "là",
+            "seed": 157,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "là-bas",
+          "example": {
+            "known": "there",
+            "target": "là-bas",
+            "seed": 562,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to move",
+      "distinct_targets": [
+        {
+          "target_norm": "déménager",
+          "example": {
+            "known": "to move",
+            "target": "déménager",
+            "seed": 319,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "bouger",
+          "example": {
+            "known": "to move",
+            "target": "bouger",
+            "seed": 513,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to wake",
+      "distinct_targets": [
+        {
+          "target_norm": "réveiller",
+          "example": {
+            "known": "to wake",
+            "target": "réveiller",
+            "seed": 108,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "meréveiller",
+          "example": {
+            "known": "to wake",
+            "target": "me réveiller",
+            "seed": 108,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "guess",
+      "distinct_targets": [
+        {
+          "target_norm": "deviner",
+          "example": {
+            "known": "guess",
+            "target": "deviner",
+            "seed": 12,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "devine",
+          "example": {
+            "known": "guess",
+            "target": "devine",
+            "seed": 527,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "stay",
+      "distinct_targets": [
+        {
+          "target_norm": "rester",
+          "example": {
+            "known": "stay",
+            "target": "rester",
+            "seed": 276,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "resterlà",
+          "example": {
+            "known": "stay",
+            "target": "rester là",
+            "seed": 396,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "wanted",
+      "distinct_targets": [
+        {
+          "target_norm": "voulait",
+          "example": {
+            "known": "wanted",
+            "target": "voulait",
+            "seed": 52,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "voulu",
+          "example": {
+            "known": "wanted",
+            "target": "voulu",
+            "seed": 580,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "young",
+      "distinct_targets": [
+        {
+          "target_norm": "jeune",
+          "example": {
+            "known": "young",
+            "target": "jeune",
+            "seed": 69,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "jeunes",
+          "example": {
+            "known": "young",
+            "target": "jeunes",
+            "seed": 440,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "the keys",
+      "distinct_targets": [
+        {
+          "target_norm": "lesclés",
+          "example": {
+            "known": "the keys",
+            "target": "les clés",
+            "seed": 512,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "desclés",
+          "example": {
+            "known": "the keys",
+            "target": "des clés",
+            "seed": 182,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "he would like",
+      "distinct_targets": [
+        {
+          "target_norm": "aimerait",
+          "example": {
+            "known": "he would like",
+            "target": "aimerait",
+            "seed": 581,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ilaimerait",
+          "example": {
+            "known": "he would like",
+            "target": "il aimerait",
+            "seed": 581,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to go home",
+      "distinct_targets": [
+        {
+          "target_norm": "rentrer",
+          "example": {
+            "known": "to go home",
+            "target": "rentrer",
+            "seed": 401,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "rentreràlamaison",
+          "example": {
+            "known": "to go home",
+            "target": "rentrer à la maison",
+            "seed": 95,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "go home",
+      "distinct_targets": [
+        {
+          "target_norm": "rentreràlamaison",
+          "example": {
+            "known": "go home",
+            "target": "rentrer à la maison",
+            "seed": 95,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "rentrerlà",
+          "example": {
+            "known": "go home",
+            "target": "rentrer là",
+            "seed": 401,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i didn't have",
+      "distinct_targets": [
+        {
+          "target_norm": "jenavaispas",
+          "example": {
+            "known": "I didn't have",
+            "target": "je n'avais pas",
+            "seed": 378,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "jenaipaseu",
+          "example": {
+            "known": "I didn't have",
+            "target": "je n'ai pas eu",
+            "seed": 178,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i thought",
+      "distinct_targets": [
+        {
+          "target_norm": "jaitrouvéque",
+          "example": {
+            "known": "I thought",
+            "target": "j'ai trouvé que",
+            "seed": 615,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jepensais",
+          "example": {
+            "known": "I thought",
+            "target": "je pensais",
+            "seed": 616,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jaitrouvé",
+          "example": {
+            "known": "I thought",
+            "target": "j'ai trouvé",
+            "seed": 615,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "books",
+      "distinct_targets": [
+        {
+          "target_norm": "livres",
+          "example": {
+            "known": "books",
+            "target": "livres",
+            "seed": 324,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "deslivres",
+          "example": {
+            "known": "books",
+            "target": "des livres",
+            "seed": 324,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "charity",
+      "distinct_targets": [
+        {
+          "target_norm": "charité",
+          "example": {
+            "known": "charity",
+            "target": "charité",
+            "seed": 437,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lacharité",
+          "example": {
+            "known": "charity",
+            "target": "la charité",
+            "seed": 437,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i suspect",
+      "distinct_targets": [
+        {
+          "target_norm": "soupçonne",
+          "example": {
+            "known": "I suspect",
+            "target": "soupçonne",
+            "seed": 597,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jesoupçonne",
+          "example": {
+            "known": "I suspect",
+            "target": "je soupçonne",
+            "seed": 597,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to practise speaking",
+      "distinct_targets": [
+        {
+          "target_norm": "mentraîneràparler",
+          "example": {
+            "known": "to practise speaking",
+            "target": "m'entraîner à parler",
+            "seed": 5,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "sexerceràparler",
+          "example": {
+            "known": "to practise speaking",
+            "target": "s'exercer à parler",
+            "seed": 228,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "work",
+      "distinct_targets": [
+        {
+          "target_norm": "travail",
+          "example": {
+            "known": "work",
+            "target": "travail",
+            "seed": 610,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "fonctionne",
+          "example": {
+            "known": "work",
+            "target": "fonctionne",
+            "seed": 94,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to stop",
+      "distinct_targets": [
+        {
+          "target_norm": "sarrêter",
+          "example": {
+            "known": "to stop",
+            "target": "s'arrêter",
+            "seed": 402,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tarrêter",
+          "example": {
+            "known": "to stop",
+            "target": "t'arrêter",
+            "seed": 67,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i thought that",
+      "distinct_targets": [
+        {
+          "target_norm": "jaitrouvéque",
+          "example": {
+            "known": "I thought that",
+            "target": "j'ai trouvé que",
+            "seed": 374,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "jepensaisque",
+          "example": {
+            "known": "I thought that",
+            "target": "je pensais que",
+            "seed": 616,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jepensaisqueça",
+          "example": {
+            "known": "I thought that",
+            "target": "je pensais que ça",
+            "seed": 124,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "not ready yet",
+      "distinct_targets": [
+        {
+          "target_norm": "pasencoreprêt",
+          "example": {
+            "known": "not ready yet",
+            "target": "pas encore prêt",
+            "seed": 345,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "pasprêtencore",
+          "example": {
+            "known": "not ready yet",
+            "target": "pas prêt encore",
+            "seed": 60,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "pasencoreprêts",
+          "example": {
+            "known": "not ready yet",
+            "target": "pas encore prêts",
+            "seed": 431,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "with them",
+      "distinct_targets": [
+        {
+          "target_norm": "aveceux",
+          "example": {
+            "known": "with them",
+            "target": "avec eux",
+            "seed": 134,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "avecles",
+          "example": {
+            "known": "with them",
+            "target": "avec les",
+            "seed": 183,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you think",
+      "distinct_targets": [
+        {
+          "target_norm": "penses-tu",
+          "example": {
+            "known": "do you think",
+            "target": "penses-tu",
+            "seed": 316,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "tupenses",
+          "example": {
+            "known": "do you think",
+            "target": "tu penses",
+            "seed": 162,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "different words",
+      "distinct_targets": [
+        {
+          "target_norm": "motsdifférents",
+          "example": {
+            "known": "different words",
+            "target": "mots différents",
+            "seed": 60,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "desmotsdifférents",
+          "example": {
+            "known": "different words",
+            "target": "des mots différents",
+            "seed": 60,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "interesting things",
+      "distinct_targets": [
+        {
+          "target_norm": "chosesintéressantes",
+          "example": {
+            "known": "interesting things",
+            "target": "choses intéressantes",
+            "seed": 51,
+            "table": "course_legos",
+            "phrase_role": null
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "deschosesintéressantes",
+          "example": {
+            "known": "interesting things",
+            "target": "des choses intéressantes",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "that one",
+      "distinct_targets": [
+        {
+          "target_norm": "celle",
+          "example": {
+            "known": "that one",
+            "target": "celle",
+            "seed": 390,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "celle-là",
+          "example": {
+            "known": "that one",
+            "target": "celle-là",
+            "seed": 390,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "next",
+      "distinct_targets": [
+        {
+          "target_norm": "ensuite",
+          "example": {
+            "known": "next",
+            "target": "ensuite",
+            "seed": 493,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "prochain",
+          "example": {
+            "known": "next",
+            "target": "prochain",
+            "seed": 395,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i know that i've got more to learn",
+      "distinct_targets": [
+        {
+          "target_norm": "jesaisquejaiencoredeschosesàapprendre",
+          "example": {
+            "known": "I know that I've got more to learn",
+            "target": "je sais que j'ai encore des choses à apprendre",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jesaisquejaiencorebeaucoupàapprendre",
+          "example": {
+            "known": "I know that I've got more to learn",
+            "target": "je sais que j'ai encore beaucoup à apprendre",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i'm going to think about it",
+      "distinct_targets": [
+        {
+          "target_norm": "jevaispenseràça",
+          "example": {
+            "known": "I'm going to think about it",
+            "target": "je vais penser à ça",
+            "seed": 91,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jevaisyréfléchir",
+          "example": {
+            "known": "I'm going to think about it",
+            "target": "je vais y réfléchir",
+            "seed": 37,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you want some time",
+      "distinct_targets": [
+        {
+          "target_norm": "tuveuxdutemps",
+          "example": {
+            "known": "do you want some time?",
+            "target": "tu veux du temps ?",
+            "seed": 65,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "veux-tudutemps",
+          "example": {
+            "known": "do you want some time?",
+            "target": "veux-tu du temps ?",
+            "seed": 67,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "they fight",
+      "distinct_targets": [
+        {
+          "target_norm": "ilssebattent",
+          "example": {
+            "known": "they fight",
+            "target": "ils se battent",
+            "seed": 410,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "sebattent",
+          "example": {
+            "known": "they fight",
+            "target": "se battent",
+            "seed": 410,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "very kind",
+      "distinct_targets": [
+        {
+          "target_norm": "trèsgentil",
+          "example": {
+            "known": "very kind",
+            "target": "très gentil",
+            "seed": 478,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "trèsgentille",
+          "example": {
+            "known": "very kind",
+            "target": "très gentille",
+            "seed": 147,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "can i have a glass of water",
+      "distinct_targets": [
+        {
+          "target_norm": "est-cequejepeuxavoirunverredeau",
+          "example": {
+            "known": "can I have a glass of water?",
+            "target": "est-ce que je peux avoir un verre d'eau ?",
+            "seed": 632,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jepeuxavoirunverredeau",
+          "example": {
+            "known": "can I have a glass of water?",
+            "target": "je peux avoir un verre d'eau?",
+            "seed": 217,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "kind",
+      "distinct_targets": [
+        {
+          "target_norm": "gentil",
+          "example": {
+            "known": "kind",
+            "target": "gentil",
+            "seed": 478,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "gentille",
+          "example": {
+            "known": "kind",
+            "target": "gentille",
+            "seed": 147,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "not happy",
+      "distinct_targets": [
+        {
+          "target_norm": "pasheureux",
+          "example": {
+            "known": "not happy",
+            "target": "pas heureux",
+            "seed": 485,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "pascontents",
+          "example": {
+            "known": "not happy",
+            "target": "pas contents",
+            "seed": 448,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to think about it",
+      "distinct_targets": [
+        {
+          "target_norm": "jeveuxréfléchiràça",
+          "example": {
+            "known": "I want to think about it",
+            "target": "je veux réfléchir à ça",
+            "seed": 638,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jeveuxyréfléchir",
+          "example": {
+            "known": "I want to think about it",
+            "target": "je veux y réfléchir",
+            "seed": 37,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "i know that",
+      "distinct_targets": [
+        {
+          "target_norm": "jesaisque",
+          "example": {
+            "known": "I know that",
+            "target": "je sais que",
+            "seed": 121,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jesaiscela",
+          "example": {
+            "known": "I know that",
+            "target": "je sais cela",
+            "seed": 644,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you want something to drink",
+      "distinct_targets": [
+        {
+          "target_norm": "tuveuxquelquechoseàboire",
+          "example": {
+            "known": "do you want something to drink?",
+            "target": "tu veux quelque chose à boire ?",
+            "seed": 630,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "veux-tuquelquechoseàboire",
+          "example": {
+            "known": "do you want something to drink?",
+            "target": "veux-tu quelque chose à boire ?",
+            "seed": 625,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "very happy",
+      "distinct_targets": [
+        {
+          "target_norm": "trèsheureuse",
+          "example": {
+            "known": "very happy",
+            "target": "très heureuse",
+            "seed": 408,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "trèscontents",
+          "example": {
+            "known": "very happy",
+            "target": "très contents",
+            "seed": 448,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "should we go",
+      "distinct_targets": [
+        {
+          "target_norm": "devrions-nouspartir",
+          "example": {
+            "known": "should we go?",
+            "target": "devrions-nous partir ?",
+            "seed": 405,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "devrions-nousaller",
+          "example": {
+            "known": "should we go",
+            "target": "devrions-nous aller",
+            "seed": 405,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "speak a little more slowly",
+      "distinct_targets": [
+        {
+          "target_norm": "parleunpeupluslentement",
+          "example": {
+            "known": "speak a little more slowly",
+            "target": "parle un peu plus lentement",
+            "seed": 61,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "parlerunpeupluslentement",
+          "example": {
+            "known": "speak a little more slowly",
+            "target": "parler un peu plus lentement",
+            "seed": 90,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i can see that i've got more to learn",
+      "distinct_targets": [
+        {
+          "target_norm": "jevoisquejaiencorebeaucoupàapprendre",
+          "example": {
+            "known": "I can see that I've got more to learn",
+            "target": "je vois que j'ai encore beaucoup à apprendre",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jevoisquejaiencoredeschosesàapprendre",
+          "example": {
+            "known": "I can see that I've got more to learn",
+            "target": "je vois que j'ai encore des choses à apprendre",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i think that i've got more to learn",
+      "distinct_targets": [
+        {
+          "target_norm": "jepensequejaiencorebeaucoupàapprendre",
+          "example": {
+            "known": "I think that I've got more to learn",
+            "target": "je pense que j'ai encore beaucoup à apprendre",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jepensequejaiencoredeschosesàapprendre",
+          "example": {
+            "known": "I think that I've got more to learn",
+            "target": "je pense que j'ai encore des choses à apprendre",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i've got more to learn with you",
+      "distinct_targets": [
+        {
+          "target_norm": "jaiencorebeaucoupàapprendreavectoi",
+          "example": {
+            "known": "I've got more to learn with you",
+            "target": "j'ai encore beaucoup à apprendre avec toi",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jaiencoredeschosesàapprendreavectoi",
+          "example": {
+            "known": "I've got more to learn with you",
+            "target": "j'ai encore des choses à apprendre avec toi",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i've got more to learn today",
+      "distinct_targets": [
+        {
+          "target_norm": "jaiencoredeschosesàapprendreaujourdhui",
+          "example": {
+            "known": "I've got more to learn today",
+            "target": "j'ai encore des choses à apprendre aujourd'hui",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jaiencorebeaucoupàapprendreaujourdhui",
+          "example": {
+            "known": "I've got more to learn today",
+            "target": "j'ai encore beaucoup à apprendre aujourd'hui",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i wanted to say that i've got more to learn",
+      "distinct_targets": [
+        {
+          "target_norm": "jevoulaisdirequejaiencorebeaucoupàapprendre",
+          "example": {
+            "known": "I wanted to say that I've got more to learn",
+            "target": "je voulais dire que j'ai encore beaucoup à apprendre",
+            "seed": 73,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jevoulaisdirequejaiencoredeschosesàapprendre",
+          "example": {
+            "known": "I wanted to say that I've got more to learn",
+            "target": "je voulais dire que j'ai encore des choses à apprendre",
+            "seed": 75,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you think it's a good idea",
+      "distinct_targets": [
+        {
+          "target_norm": "tupensesquecestunebonneidée",
+          "example": {
+            "known": "do you think it's a good idea?",
+            "target": "tu penses que c'est une bonne idée ?",
+            "seed": 123,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "penses-tuquecestunebonneidée",
+          "example": {
+            "known": "do you think it's a good idea?",
+            "target": "penses-tu que c'est une bonne idée ?",
+            "seed": 316,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "that person",
+      "distinct_targets": [
+        {
+          "target_norm": "cettepersonne",
+          "example": {
+            "known": "that person",
+            "target": "cette personne",
+            "seed": 388,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "cettepersonnelà",
+          "example": {
+            "known": "that person",
+            "target": "cette personne là",
+            "seed": 388,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "can you tell me your name",
+      "distinct_targets": [
+        {
+          "target_norm": "peux-tumedirecommenttutappelles",
+          "example": {
+            "known": "Can you tell me your name?",
+            "target": "peux-tu me dire comment tu t'appelles?",
+            "seed": 150,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "peux-tumediretonnom",
+          "example": {
+            "known": "Can you tell me your name?",
+            "target": "peux-tu me dire ton nom?",
+            "seed": 150,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "since the second day it's been difficult",
+      "distinct_targets": [
+        {
+          "target_norm": "depuisledeuxièmejourcétaitdifficile",
+          "example": {
+            "known": "since the second day it's been difficult",
+            "target": "depuis le deuxième jour c'était difficile",
+            "seed": 477,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "depuisledeuxièmejourcestdifficile",
+          "example": {
+            "known": "since the second day it's been difficult",
+            "target": "depuis le deuxième jour c'est difficile",
+            "seed": 477,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "very beautiful eyes",
+      "distinct_targets": [
+        {
+          "target_norm": "trèsbeauxyeux",
+          "example": {
+            "known": "very beautiful eyes",
+            "target": "très beaux yeux",
+            "seed": 486,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "detrèsbeauxyeux",
+          "example": {
+            "known": "very beautiful eyes",
+            "target": "de très beaux yeux",
+            "seed": 486,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i'd have been happy if you told me",
+      "distinct_targets": [
+        {
+          "target_norm": "jauraisétécontentsitumavaisditça",
+          "example": {
+            "known": "I'd have been happy if you told me",
+            "target": "j'aurais été content si tu m'avais dit ça",
+            "seed": 600,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jauraisétécontentsitumavaisdit",
+          "example": {
+            "known": "I'd have been happy if you told me",
+            "target": "j'aurais été content si tu m'avais dit",
+            "seed": 600,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to stay",
+      "distinct_targets": [
+        {
+          "target_norm": "jeveuxrester",
+          "example": {
+            "known": "I want to stay",
+            "target": "je veux rester",
+            "seed": 396,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "jeveuxresterlà",
+          "example": {
+            "known": "I want to stay",
+            "target": "je veux rester là",
+            "seed": 396,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you think it's useful",
+      "distinct_targets": [
+        {
+          "target_norm": "penses-tuquecesoitutile",
+          "example": {
+            "known": "do you think it's useful?",
+            "target": "penses-tu que ce soit utile ?",
+            "seed": 330,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "penses-tuquecestutile",
+          "example": {
+            "known": "do you think it's useful?",
+            "target": "penses-tu que c'est utile ?",
+            "seed": 316,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "the best i could do",
+      "distinct_targets": [
+        {
+          "target_norm": "cestlemieuxquejepuissefaire",
+          "example": {
+            "known": "the best I could do",
+            "target": "c'est le mieux que je puisse faire",
+            "seed": 479,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lemieuxquejepuissefaire",
+          "example": {
+            "known": "the best I could do",
+            "target": "le mieux que je puisse faire",
+            "seed": 479,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "very interesting",
+      "distinct_targets": [
+        {
+          "target_norm": "trèsintéressantes",
+          "example": {
+            "known": "very interesting",
+            "target": "très intéressantes",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "trèsintéressant",
+          "example": {
+            "known": "very interesting",
+            "target": "très intéressant",
+            "seed": 492,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "can you tell me something else",
+      "distinct_targets": [
+        {
+          "target_norm": "est-cequetupeuxmedireautrechose",
+          "example": {
+            "known": "Can you tell me something else?",
+            "target": "est-ce que tu peux me dire autre chose?",
+            "seed": 250,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tupeuxmedireautrechose",
+          "example": {
+            "known": "can you tell me something else",
+            "target": "tu peux me dire autre chose",
+            "seed": 250,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i thought it was good",
+      "distinct_targets": [
+        {
+          "target_norm": "jaitrouvéquecétaitbien",
+          "example": {
+            "known": "I thought it was good",
+            "target": "j'ai trouvé que c'était bien",
+            "seed": 615,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "jepensaisquecétaitbien",
+          "example": {
+            "known": "I thought it was good",
+            "target": "je pensais que c'était bien",
+            "seed": 124,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i don't think it's true",
+      "distinct_targets": [
+        {
+          "target_norm": "jenepensepasquecestvrai",
+          "example": {
+            "known": "I don't think it's true",
+            "target": "je ne pense pas que c'est vrai",
+            "seed": 318,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jenepensepasquecesoitvrai",
+          "example": {
+            "known": "I don't think it's true",
+            "target": "je ne pense pas que ce soit vrai",
+            "seed": 330,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you know people who like speaking french",
+      "distinct_targets": [
+        {
+          "target_norm": "est-cequetuconnaisdesgensquiaimentparlerfrançais",
+          "example": {
+            "known": "do you know people who like speaking French?",
+            "target": "est-ce que tu connais des gens qui aiment parler français?",
+            "seed": 286,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tuconnaisdesgensquiaimentparlerfrançais",
+          "example": {
+            "known": "do you know people who like speaking French?",
+            "target": "tu connais des gens qui aiment parler français?",
+            "seed": 286,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "very beautiful",
+      "distinct_targets": [
+        {
+          "target_norm": "trèsbeau",
+          "example": {
+            "known": "very beautiful",
+            "target": "très beau",
+            "seed": 373,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "trèsbeaux",
+          "example": {
+            "known": "very beautiful",
+            "target": "très beaux",
+            "seed": 486,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you like coffee",
+      "distinct_targets": [
+        {
+          "target_norm": "aimes-tulecafé",
+          "example": {
+            "known": "do you like coffee?",
+            "target": "aimes-tu le café ?",
+            "seed": 628,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "est-cequetuaimeslecafé",
+          "example": {
+            "known": "do you like coffee?",
+            "target": "est-ce que tu aimes le café ?",
+            "seed": 281,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i don't want to think about it",
+      "distinct_targets": [
+        {
+          "target_norm": "jeneveuxpasyréfléchir",
+          "example": {
+            "known": "I don't want to think about it",
+            "target": "je ne veux pas y réfléchir",
+            "seed": 37,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jeneveuxpaspenseràça",
+          "example": {
+            "known": "I don't want to think about it",
+            "target": "je ne veux pas penser à ça",
+            "seed": 91,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do we want to go",
+      "distinct_targets": [
+        {
+          "target_norm": "voulons-nousaller",
+          "example": {
+            "known": "do we want to go",
+            "target": "voulons-nous aller",
+            "seed": 400,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "voulons-nouspartir",
+          "example": {
+            "known": "do we want to go?",
+            "target": "voulons-nous partir ?",
+            "seed": 400,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "what's next",
+      "distinct_targets": [
+        {
+          "target_norm": "ensuitequoi",
+          "example": {
+            "known": "what's next",
+            "target": "ensuite quoi",
+            "seed": 493,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "cestquoiensuite",
+          "example": {
+            "known": "what's next?",
+            "target": "c'est quoi ensuite ?",
+            "seed": 493,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it would be better to go home",
+      "distinct_targets": [
+        {
+          "target_norm": "ceseraitmieuxderentrer",
+          "example": {
+            "known": "it would be better to go home",
+            "target": "ce serait mieux de rentrer",
+            "seed": 401,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ceseraitmieuxderentreràlamaison",
+          "example": {
+            "known": "it would be better to go home",
+            "target": "ce serait mieux de rentrer à la maison",
+            "seed": 401,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i want to go home",
+      "distinct_targets": [
+        {
+          "target_norm": "jeveuxrentreràlamaison",
+          "example": {
+            "known": "I want to go home",
+            "target": "je veux rentrer à la maison",
+            "seed": 95,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jeveuxalleràlamaison",
+          "example": {
+            "known": "I want to go home",
+            "target": "je veux aller à la maison",
+            "seed": 401,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jeveuxrentrer",
+          "example": {
+            "known": "I want to go home",
+            "target": "je veux rentrer",
+            "seed": 401,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "do you think it's true",
+      "distinct_targets": [
+        {
+          "target_norm": "penses-tuquecesoitvrai",
+          "example": {
+            "known": "do you think it's true?",
+            "target": "penses-tu que ce soit vrai ?",
+            "seed": 330,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "penses-tuquecestvrai",
+          "example": {
+            "known": "do you think it's true?",
+            "target": "penses-tu que c'est vrai ?",
+            "seed": 329,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "shouldn't we try",
+      "distinct_targets": [
+        {
+          "target_norm": "nedevrions-nouspasessayerlà",
+          "example": {
+            "known": "shouldn't we try",
+            "target": "ne devrions-nous pas essayer là",
+            "seed": 407,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "nedevrions-nouspasessayer",
+          "example": {
+            "known": "shouldn't we try",
+            "target": "ne devrions-nous pas essayer",
+            "seed": 407,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "that thing",
+      "distinct_targets": [
+        {
+          "target_norm": "cetruc",
+          "example": {
+            "known": "that thing",
+            "target": "ce truc",
+            "seed": 257,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "cettechose",
+          "example": {
+            "known": "that thing",
+            "target": "cette chose",
+            "seed": 388,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i need to go straight home",
+      "distinct_targets": [
+        {
+          "target_norm": "jedoisrentrerdirectementàlamaison",
+          "example": {
+            "known": "I need to go straight home",
+            "target": "je dois rentrer directement à la maison",
+            "seed": 401,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jedoisrentrerdirectement",
+          "example": {
+            "known": "I need to go straight home",
+            "target": "je dois rentrer directement",
+            "seed": 401,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "i'm trying to think",
+      "distinct_targets": [
+        {
+          "target_norm": "jessaiederéfléchir",
+          "example": {
+            "known": "I'm trying to think",
+            "target": "j'essaie de réfléchir",
+            "seed": 638,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jessaiedepenser",
+          "example": {
+            "known": "I'm trying to think",
+            "target": "j'essaie de penser",
+            "seed": 91,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "only here",
+      "distinct_targets": [
+        {
+          "target_norm": "seulementici",
+          "example": {
+            "known": "only here",
+            "target": "seulement ici",
+            "seed": 280,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "seullà",
+          "example": {
+            "known": "only here",
+            "target": "seul là",
+            "seed": 481,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "the children are here",
+      "distinct_targets": [
+        {
+          "target_norm": "lesenfantssontlà",
+          "example": {
+            "known": "the children are here",
+            "target": "les enfants sont là",
+            "seed": 622,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lesenfantssontici",
+          "example": {
+            "known": "the children are here",
+            "target": "les enfants sont ici",
+            "seed": 567,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "they are not well",
+      "distinct_targets": [
+        {
+          "target_norm": "ilsnesontpasbien",
+          "example": {
+            "known": "they are not well",
+            "target": "ils ne sont pas bien",
+            "seed": 431,
+            "table": "course_practice_phrases",
+            "phrase_role": "build"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ilsnesontpasvraimentbien",
+          "example": {
+            "known": "they are not well",
+            "target": "ils ne sont pas vraiment bien",
+            "seed": 431,
+            "table": "course_practice_phrases",
+            "phrase_role": "use"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "membershipFailures": [
+    {
+      "known": "because",
+      "target": "parce que",
+      "seed": 421,
+      "seed_target": "parce qu'ils savent déjà qu'il devient faible",
+      "id": "fra_for_eng:S0421L01C01"
+    },
+    {
+      "known": "different",
+      "target": "différent",
+      "seed": 319,
+      "seed_target": "elle a besoin de déménager dans un autre pays",
+      "id": "fra_for_eng:S0319L03C02"
+    },
+    {
+      "known": "because",
+      "target": "parce que",
+      "seed": 547,
+      "seed_target": "parce qu'il a joué dans la boue",
+      "id": "fra_for_eng:S0547L03C01"
+    },
+    {
+      "known": "they came",
+      "target": "ils sont venus",
+      "seed": 516,
+      "seed_target": "ils sont tous les deux venus seuls",
+      "id": "fra_for_eng:S0516L01C01"
+    },
+    {
+      "known": "I'm trying to",
+      "target": "j'essaie de",
+      "seed": 2,
+      "seed_target": "j'essaie d'apprendre",
+      "id": "fra_for_eng:S0002L03C01"
+    },
+    {
+      "known": "what you said",
+      "target": "ce que vous avez dit",
+      "seed": 663,
+      "seed_target": "ce que vous avez tous dit",
+      "id": "fra_for_eng:S0663L01C01"
+    },
+    {
+      "known": "to help",
+      "target": "d'aider",
+      "seed": 344,
+      "seed_target": "qui a dit qu'il est content de t'aider",
+      "id": "fra_for_eng:S0344L02C01"
+    },
+    {
+      "known": "I'll call back",
+      "target": "je rappellerai",
+      "seed": 524,
+      "seed_target": "Je te rappellerai dans trois ou quatre minutes",
+      "id": "fra_for_eng:S0524L02C01"
+    },
+    {
+      "known": "do you want to go",
+      "target": "voulez-vous partir",
+      "seed": 665,
+      "seed_target": "voulez-vous tous partir ?",
+      "id": "fra_for_eng:S0665L01C01"
+    },
+    {
+      "known": "it hurts",
+      "target": "ça fait mal",
+      "seed": 513,
+      "seed_target": "Ça fait le plus mal quand je bouge ma tête de haut en bas",
+      "id": "fra_for_eng:S0513L03C01"
+    },
+    {
+      "known": "that",
+      "target": "que",
+      "seed": 425,
+      "seed_target": "oui ils ont besoin de s'assurer qu'ils comprennent",
+      "id": "fra_for_eng:S0425L02C01"
+    },
+    {
+      "known": "what",
+      "target": "ce que",
+      "seed": 438,
+      "seed_target": "ils ne voulaient pas décider ce qu'il devrait faire",
+      "id": "fra_for_eng:S0438L03C01"
+    },
+    {
+      "known": "expect",
+      "target": "s'attendre",
+      "seed": 404,
+      "seed_target": "nous ne devrions pas nous attendre à finir avant jeudi",
+      "id": "fra_for_eng:S0404L06C01"
+    },
+    {
+      "known": "are you ready",
+      "target": "êtes-vous prêt",
+      "seed": 664,
+      "seed_target": "Êtes-vous tous prêts ?",
+      "id": "fra_for_eng:S0664L01C01"
+    },
+    {
+      "known": "a glass of water",
+      "target": "un verre d'eau",
+      "seed": 633,
+      "seed_target": "un grand verre d'eau ce serait bien",
+      "id": "fra_for_eng:S0633L02C02"
+    },
+    {
+      "known": "of",
+      "target": "de",
+      "seed": 467,
+      "seed_target": "C'est à côté du parking",
+      "id": "fra_for_eng:S0467L01C03"
+    },
+    {
+      "known": "didn't sleep",
+      "target": "n'ai pas dormi",
+      "seed": 55,
+      "seed_target": "Je n'aime pas me réveiller quand je n'ai pas très bien dormi",
+      "id": "fra_for_eng:S0055L02C02"
+    },
+    {
+      "known": "I can't",
+      "target": "je ne peux pas",
+      "seed": 140,
+      "seed_target": "Je suis désolé de ne pas pouvoir voir ce que tu essaies de me montrer",
+      "id": "fra_for_eng:S0140L01C01"
+    },
+    {
+      "known": "don't make",
+      "target": "ne fais pas",
+      "seed": 489,
+      "seed_target": "si tu ne me fais pas une tasse de café fort tout de suite",
+      "id": "fra_for_eng:S0489L04C02"
+    },
+    {
+      "known": "a country",
+      "target": "un pays",
+      "seed": 319,
+      "seed_target": "elle a besoin de déménager dans un autre pays",
+      "id": "fra_for_eng:S0319L03C01"
+    },
+    {
+      "known": "what she said",
+      "target": "ce qu'elle a dit",
+      "seed": 365,
+      "seed_target": "Je n'ai pas entendu ce qu'elle lui a dit",
+      "id": "fra_for_eng:S0365L01C01"
+    },
+    {
+      "known": "what",
+      "target": "ce que",
+      "seed": 451,
+      "seed_target": "ils ont dit ce qu'ils voulaient faire",
+      "id": "fra_for_eng:S0451L02C01"
+    },
+    {
+      "known": "who told",
+      "target": "qui a raconté",
+      "seed": 527,
+      "seed_target": "devine qui m'a raconté cette histoire drôle",
+      "id": "fra_for_eng:S0527L03C01"
+    }
+  ],
+  "targetSideCollisionStrict": [
+    {
+      "known_norm": "i",
+      "distinct_targets": [
+        {
+          "target_norm": "je",
+          "example": {
+            "known": "I",
+            "target": "je",
+            "seed": 501,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 45
+        },
+        {
+          "target_norm": "jai",
+          "example": {
+            "known": "I",
+            "target": "j'ai",
+            "seed": 37,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "j",
+          "example": {
+            "known": "I",
+            "target": "j'",
+            "seed": 638,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "jaieu",
+          "example": {
+            "known": "I",
+            "target": "j'ai eu",
+            "seed": 379,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jétais",
+          "example": {
+            "known": "I",
+            "target": "j'étais",
+            "seed": 386,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "we",
+      "distinct_targets": [
+        {
+          "target_norm": "nous",
+          "example": {
+            "known": "we",
+            "target": "nous",
+            "seed": 455,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 11
+        },
+        {
+          "target_norm": "on",
+          "example": {
+            "known": "we",
+            "target": "on",
+            "seed": 507,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "you",
+      "distinct_targets": [
+        {
+          "target_norm": "vous",
+          "example": {
+            "known": "you",
+            "target": "vous",
+            "seed": 647,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 6
+        },
+        {
+          "target_norm": "tu",
+          "example": {
+            "known": "you",
+            "target": "tu",
+            "seed": 121,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 19
+        },
+        {
+          "target_norm": "te",
+          "example": {
+            "known": "you",
+            "target": "te",
+            "seed": 301,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "toi",
+          "example": {
+            "known": "you",
+            "target": "toi",
+            "seed": 1,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "donttu",
+          "example": {
+            "known": "you",
+            "target": "dont tu",
+            "seed": 491,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "quetu",
+          "example": {
+            "known": "you",
+            "target": "que tu",
+            "seed": 249,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "have",
+      "distinct_targets": [
+        {
+          "target_norm": "ont",
+          "example": {
+            "known": "have",
+            "target": "ont",
+            "seed": 453,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 6
+        },
+        {
+          "target_norm": "ai",
+          "example": {
+            "known": "have",
+            "target": "ai",
+            "seed": 464,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "eu",
+          "example": {
+            "known": "have",
+            "target": "eu",
+            "seed": 178,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "avez",
+          "example": {
+            "known": "have",
+            "target": "avez",
+            "seed": 170,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "avons",
+          "example": {
+            "known": "have",
+            "target": "avons",
+            "seed": 397,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "not",
+      "distinct_targets": [
+        {
+          "target_norm": "ne",
+          "example": {
+            "known": "not",
+            "target": "ne",
+            "seed": 469,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 7
+        },
+        {
+          "target_norm": "pas",
+          "example": {
+            "known": "not",
+            "target": "pas",
+            "seed": 345,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 9
+        },
+        {
+          "target_norm": "n",
+          "example": {
+            "known": "not",
+            "target": "n'",
+            "seed": 473,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "naipas",
+          "example": {
+            "known": "not",
+            "target": "n'ai pas",
+            "seed": 496,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "nontpas",
+          "example": {
+            "known": "not",
+            "target": "n'ont pas",
+            "seed": 420,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "this",
+      "distinct_targets": [
+        {
+          "target_norm": "cette",
+          "example": {
+            "known": "this",
+            "target": "cette",
+            "seed": 554,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "ça",
+          "example": {
+            "known": "this",
+            "target": "ça",
+            "seed": 49,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ce",
+          "example": {
+            "known": "this",
+            "target": "ce",
+            "seed": 39,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "cet",
+          "example": {
+            "known": "this",
+            "target": "cet",
+            "seed": 35,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "much",
+      "distinct_targets": [
+        {
+          "target_norm": "grand-chose",
+          "example": {
+            "known": "much",
+            "target": "grand-chose",
+            "seed": 218,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "beaucoup",
+          "example": {
+            "known": "much",
+            "target": "beaucoup",
+            "seed": 333,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "to",
+      "distinct_targets": [
+        {
+          "target_norm": "jusquà",
+          "example": {
+            "known": "to",
+            "target": "jusqu'à",
+            "seed": 323,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "d",
+          "example": {
+            "known": "to",
+            "target": "d'",
+            "seed": 103,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "à",
+          "example": {
+            "known": "to",
+            "target": "à",
+            "seed": 447,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "pas",
+          "example": {
+            "known": "to",
+            "target": "pas",
+            "seed": 211,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "de",
+          "example": {
+            "known": "to",
+            "target": "de",
+            "seed": 545,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "pour",
+          "example": {
+            "known": "to",
+            "target": "pour",
+            "seed": 555,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "should",
+      "distinct_targets": [
+        {
+          "target_norm": "devrions",
+          "example": {
+            "known": "should",
+            "target": "devrions",
+            "seed": 405,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "devrais",
+          "example": {
+            "known": "should",
+            "target": "devrais",
+            "seed": 99,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "devrait",
+          "example": {
+            "known": "should",
+            "target": "devrait",
+            "seed": 438,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "are doing",
+      "distinct_targets": [
+        {
+          "target_norm": "vousensortez",
+          "example": {
+            "known": "are doing",
+            "target": "vous en sortez",
+            "seed": 655,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "faites",
+          "example": {
+            "known": "are doing",
+            "target": "faites",
+            "seed": 646,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "she",
+      "distinct_targets": [
+        {
+          "target_norm": "elle",
+          "example": {
+            "known": "she",
+            "target": "elle",
+            "seed": 310,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 10
+        },
+        {
+          "target_norm": "quelle",
+          "example": {
+            "known": "she",
+            "target": "qu'elle",
+            "seed": 326,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "wanted to",
+      "distinct_targets": [
+        {
+          "target_norm": "voulait",
+          "example": {
+            "known": "wanted to",
+            "target": "voulait",
+            "seed": 381,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "voulais",
+          "example": {
+            "known": "wanted to",
+            "target": "voulais",
+            "seed": 144,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "feel",
+      "distinct_targets": [
+        {
+          "target_norm": "mesens",
+          "example": {
+            "known": "feel",
+            "target": "me sens",
+            "seed": 41,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "noussentir",
+          "example": {
+            "known": "feel",
+            "target": "nous sentir",
+            "seed": 106,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "sentir",
+          "example": {
+            "known": "feel",
+            "target": "sentir",
+            "seed": 41,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "sembler",
+          "example": {
+            "known": "feel",
+            "target": "sembler",
+            "seed": 122,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "sens-tu",
+          "example": {
+            "known": "feel",
+            "target": "sens-tu",
+            "seed": 40,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "of",
+      "distinct_targets": [
+        {
+          "target_norm": "de",
+          "example": {
+            "known": "of",
+            "target": "de",
+            "seed": 355,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 10
+        },
+        {
+          "target_norm": "d",
+          "example": {
+            "known": "of",
+            "target": "d'",
+            "seed": 475,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "a new",
+      "distinct_targets": [
+        {
+          "target_norm": "une",
+          "example": {
+            "known": "a new",
+            "target": "une",
+            "seed": 555,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "unenouvelle",
+          "example": {
+            "known": "a new",
+            "target": "une nouvelle",
+            "seed": 332,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "like",
+      "distinct_targets": [
+        {
+          "target_norm": "comme",
+          "example": {
+            "known": "like",
+            "target": "comme",
+            "seed": 49,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "aiment",
+          "example": {
+            "known": "like",
+            "target": "aiment",
+            "seed": 419,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "aimes",
+          "example": {
+            "known": "like",
+            "target": "aimes",
+            "seed": 120,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ressemblesà",
+          "example": {
+            "known": "like",
+            "target": "ressembles à",
+            "seed": 128,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lair",
+          "example": {
+            "known": "like",
+            "target": "l'air",
+            "seed": 272,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "pas",
+          "example": {
+            "known": "like",
+            "target": "pas",
+            "seed": 240,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "didn't know",
+      "distinct_targets": [
+        {
+          "target_norm": "neconnaissaitpas",
+          "example": {
+            "known": "didn't know",
+            "target": "ne connaissait pas",
+            "seed": 105,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "nesavaispas",
+          "example": {
+            "known": "didn't know",
+            "target": "ne savais pas",
+            "seed": 375,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "warmer",
+      "distinct_targets": [
+        {
+          "target_norm": "pluschaud",
+          "example": {
+            "known": "warmer",
+            "target": "plus chaud",
+            "seed": 580,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "depluschaud",
+          "example": {
+            "known": "warmer",
+            "target": "de plus chaud",
+            "seed": 578,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "he wanted to",
+      "distinct_targets": [
+        {
+          "target_norm": "ilvoulait",
+          "example": {
+            "known": "he wanted to",
+            "target": "il voulait",
+            "seed": 352,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "quilvoulait",
+          "example": {
+            "known": "he wanted to",
+            "target": "qu'il voulait",
+            "seed": 383,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "day",
+      "distinct_targets": [
+        {
+          "target_norm": "jour",
+          "example": {
+            "known": "day",
+            "target": "jour",
+            "seed": 477,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "journée",
+          "example": {
+            "known": "day",
+            "target": "journée",
+            "seed": 14,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "around",
+      "distinct_targets": [
+        {
+          "target_norm": "par",
+          "example": {
+            "known": "around",
+            "target": "par",
+            "seed": 506,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "autour",
+          "example": {
+            "known": "around",
+            "target": "autour",
+            "seed": 353,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tournent",
+          "example": {
+            "known": "around",
+            "target": "tournent",
+            "seed": 131,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "ago",
+      "distinct_targets": [
+        {
+          "target_norm": "ilya",
+          "example": {
+            "known": "ago",
+            "target": "il y a",
+            "seed": 347,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "moment",
+          "example": {
+            "known": "ago",
+            "target": "moment",
+            "seed": 184,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "making",
+      "distinct_targets": [
+        {
+          "target_norm": "faire",
+          "example": {
+            "known": "making",
+            "target": "faire",
+            "seed": 46,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "créer",
+          "example": {
+            "known": "making",
+            "target": "créer",
+            "seed": 503,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "as",
+      "distinct_targets": [
+        {
+          "target_norm": "aussi",
+          "example": {
+            "known": "as",
+            "target": "aussi",
+            "seed": 403,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "que",
+          "example": {
+            "known": "as",
+            "target": "que",
+            "seed": 437,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "help you",
+      "distinct_targets": [
+        {
+          "target_norm": "taide",
+          "example": {
+            "known": "help you",
+            "target": "t'aide",
+            "seed": 246,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "vousaider",
+          "example": {
+            "known": "help you",
+            "target": "vous aider",
+            "seed": 645,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "happen",
+      "distinct_targets": [
+        {
+          "target_norm": "passer",
+          "example": {
+            "known": "happen",
+            "target": "passer",
+            "seed": 151,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "sepasser",
+          "example": {
+            "known": "happen",
+            "target": "se passer",
+            "seed": 201,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "a",
+      "distinct_targets": [
+        {
+          "target_norm": "un",
+          "example": {
+            "known": "a",
+            "target": "un",
+            "seed": 265,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "une",
+          "example": {
+            "known": "a",
+            "target": "une",
+            "seed": 38,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "your",
+      "distinct_targets": [
+        {
+          "target_norm": "ton",
+          "example": {
+            "known": "your",
+            "target": "ton",
+            "seed": 83,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "ta",
+          "example": {
+            "known": "your",
+            "target": "ta",
+            "seed": 121,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tes",
+          "example": {
+            "known": "your",
+            "target": "tes",
+            "seed": 486,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "after",
+      "distinct_targets": [
+        {
+          "target_norm": "après",
+          "example": {
+            "known": "after",
+            "target": "après",
+            "seed": 362,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "aprèsavoir",
+          "example": {
+            "known": "after",
+            "target": "après avoir",
+            "seed": 110,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "aprèsque",
+          "example": {
+            "known": "after",
+            "target": "après que",
+            "seed": 11,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "qu",
+          "example": {
+            "known": "after",
+            "target": "qu'",
+            "seed": 251,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "trying",
+      "distinct_targets": [
+        {
+          "target_norm": "essaie",
+          "example": {
+            "known": "trying",
+            "target": "essaie",
+            "seed": 2,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "essaient",
+          "example": {
+            "known": "trying",
+            "target": "essaient",
+            "seed": 213,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "doing",
+      "distinct_targets": [
+        {
+          "target_norm": "faire",
+          "example": {
+            "known": "doing",
+            "target": "faire",
+            "seed": 98,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "clairement",
+          "example": {
+            "known": "doing",
+            "target": "clairement",
+            "seed": 117,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tensors",
+          "example": {
+            "known": "doing",
+            "target": "t'en sors",
+            "seed": 72,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "make",
+      "distinct_targets": [
+        {
+          "target_norm": "faire",
+          "example": {
+            "known": "make",
+            "target": "faire",
+            "seed": 116,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "font",
+          "example": {
+            "known": "make",
+            "target": "font",
+            "seed": 424,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "is",
+      "distinct_targets": [
+        {
+          "target_norm": "est",
+          "example": {
+            "known": "is",
+            "target": "est",
+            "seed": 307,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "soit",
+          "example": {
+            "known": "is",
+            "target": "soit",
+            "seed": 330,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "va",
+          "example": {
+            "known": "is",
+            "target": "va",
+            "seed": 141,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "different",
+      "distinct_targets": [
+        {
+          "target_norm": "différent",
+          "example": {
+            "known": "different",
+            "target": "différent",
+            "seed": 319,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "dedifférent",
+          "example": {
+            "known": "different",
+            "target": "de différent",
+            "seed": 186,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "to be",
+      "distinct_targets": [
+        {
+          "target_norm": "être",
+          "example": {
+            "known": "to be",
+            "target": "être",
+            "seed": 384,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "dêtre",
+          "example": {
+            "known": "to be",
+            "target": "d'être",
+            "seed": 26,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "to talk",
+      "distinct_targets": [
+        {
+          "target_norm": "parler",
+          "example": {
+            "known": "to talk",
+            "target": "parler",
+            "seed": 355,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "deparler",
+          "example": {
+            "known": "to talk",
+            "target": "de parler",
+            "seed": 137,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "me",
+      "distinct_targets": [
+        {
+          "target_norm": "me",
+          "example": {
+            "known": "me",
+            "target": "me",
+            "seed": 367,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 5
+        },
+        {
+          "target_norm": "moi",
+          "example": {
+            "known": "me",
+            "target": "moi",
+            "seed": 15,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "m",
+          "example": {
+            "known": "me",
+            "target": "m'",
+            "seed": 527,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "since",
+      "distinct_targets": [
+        {
+          "target_norm": "depuis",
+          "example": {
+            "known": "since",
+            "target": "depuis",
+            "seed": 477,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "depuisque",
+          "example": {
+            "known": "since",
+            "target": "depuis que",
+            "seed": 146,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "life",
+      "distinct_targets": [
+        {
+          "target_norm": "vie",
+          "example": {
+            "known": "life",
+            "target": "vie",
+            "seed": 332,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lavie",
+          "example": {
+            "known": "life",
+            "target": "la vie",
+            "seed": 483,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "want",
+      "distinct_targets": [
+        {
+          "target_norm": "veux",
+          "example": {
+            "known": "want",
+            "target": "veux",
+            "seed": 1,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "veulent",
+          "example": {
+            "known": "want",
+            "target": "veulent",
+            "seed": 416,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "voulons",
+          "example": {
+            "known": "want",
+            "target": "voulons",
+            "seed": 400,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "it",
+      "distinct_targets": [
+        {
+          "target_norm": "le",
+          "example": {
+            "known": "it",
+            "target": "le",
+            "seed": 466,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "ça",
+          "example": {
+            "known": "it",
+            "target": "ça",
+            "seed": 444,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "ce",
+          "example": {
+            "known": "it",
+            "target": "ce",
+            "seed": 402,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        }
+      ]
+    },
+    {
+      "known_norm": "some",
+      "distinct_targets": [
+        {
+          "target_norm": "du",
+          "example": {
+            "known": "some",
+            "target": "du",
+            "seed": 65,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "quelques",
+          "example": {
+            "known": "some",
+            "target": "quelques",
+            "seed": 190,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "don't like",
+      "distinct_targets": [
+        {
+          "target_norm": "naimepas",
+          "example": {
+            "known": "don't like",
+            "target": "n'aime pas",
+            "seed": 27,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "naimespas",
+          "example": {
+            "known": "don't like",
+            "target": "n'aimes pas",
+            "seed": 121,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "my",
+      "distinct_targets": [
+        {
+          "target_norm": "mon",
+          "example": {
+            "known": "my",
+            "target": "mon",
+            "seed": 84,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "mes",
+          "example": {
+            "known": "my",
+            "target": "mes",
+            "seed": 51,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "ma",
+          "example": {
+            "known": "my",
+            "target": "ma",
+            "seed": 239,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "going",
+      "distinct_targets": [
+        {
+          "target_norm": "qui",
+          "example": {
+            "known": "going",
+            "target": "qui",
+            "seed": 131,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "va",
+          "example": {
+            "known": "going",
+            "target": "va",
+            "seed": 493,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "avance",
+          "example": {
+            "known": "going",
+            "target": "avance",
+            "seed": 122,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "we were",
+      "distinct_targets": [
+        {
+          "target_norm": "nousétions",
+          "example": {
+            "known": "we were",
+            "target": "nous étions",
+            "seed": 118,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "cedontnous",
+          "example": {
+            "known": "we were",
+            "target": "ce dont nous",
+            "seed": 143,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "one",
+      "distinct_targets": [
+        {
+          "target_norm": "on",
+          "example": {
+            "known": "one",
+            "target": "on",
+            "seed": 472,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "nouvelle",
+          "example": {
+            "known": "one",
+            "target": "nouvelle",
+            "seed": 555,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "go",
+      "distinct_targets": [
+        {
+          "target_norm": "allé",
+          "example": {
+            "known": "go",
+            "target": "allé",
+            "seed": 377,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "allons",
+          "example": {
+            "known": "go",
+            "target": "allons",
+            "seed": 413,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "aller",
+          "example": {
+            "known": "go",
+            "target": "aller",
+            "seed": 93,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "from",
+      "distinct_targets": [
+        {
+          "target_norm": "desnouvellesde",
+          "example": {
+            "known": "from",
+            "target": "des nouvelles de",
+            "seed": 267,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "depuis",
+          "example": {
+            "known": "from",
+            "target": "depuis",
+            "seed": 304,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "see",
+      "distinct_targets": [
+        {
+          "target_norm": "voir",
+          "example": {
+            "known": "see",
+            "target": "voir",
+            "seed": 568,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "vois",
+          "example": {
+            "known": "see",
+            "target": "vois",
+            "seed": 49,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "another",
+      "distinct_targets": [
+        {
+          "target_norm": "uneautre",
+          "example": {
+            "known": "another",
+            "target": "une autre",
+            "seed": 528,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "unautre",
+          "example": {
+            "known": "another",
+            "target": "un autre",
+            "seed": 327,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "said",
+      "distinct_targets": [
+        {
+          "target_norm": "dit",
+          "example": {
+            "known": "said",
+            "target": "dit",
+            "seed": 453,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "adit",
+          "example": {
+            "known": "said",
+            "target": "a dit",
+            "seed": 84,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "quiadit",
+          "example": {
+            "known": "said",
+            "target": "qui a dit",
+            "seed": 544,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "asdit",
+          "example": {
+            "known": "said",
+            "target": "as dit",
+            "seed": 113,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "last",
+      "distinct_targets": [
+        {
+          "target_norm": "dernier",
+          "example": {
+            "known": "last",
+            "target": "dernier",
+            "seed": 37,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "dernière",
+          "example": {
+            "known": "last",
+            "target": "dernière",
+            "seed": 42,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "ladernière",
+          "example": {
+            "known": "last",
+            "target": "la dernière",
+            "seed": 117,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "right",
+      "distinct_targets": [
+        {
+          "target_norm": "droite",
+          "example": {
+            "known": "right",
+            "target": "droite",
+            "seed": 502,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "raison",
+          "example": {
+            "known": "right",
+            "target": "raison",
+            "seed": 543,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "tout",
+          "example": {
+            "known": "right",
+            "target": "tout",
+            "seed": 489,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "would like",
+      "distinct_targets": [
+        {
+          "target_norm": "aimerais",
+          "example": {
+            "known": "would like",
+            "target": "aimerais",
+            "seed": 634,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "aimeraient",
+          "example": {
+            "known": "would like",
+            "target": "aimeraient",
+            "seed": 428,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "couldn't",
+      "distinct_targets": [
+        {
+          "target_norm": "nepouvaitpas",
+          "example": {
+            "known": "couldn't",
+            "target": "ne pouvait pas",
+            "seed": 311,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "naipaspu",
+          "example": {
+            "known": "couldn't",
+            "target": "n'ai pas pu",
+            "seed": 148,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "did you",
+      "distinct_targets": [
+        {
+          "target_norm": "as-tu",
+          "example": {
+            "known": "did you",
+            "target": "as-tu",
+            "seed": 366,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "es-tu",
+          "example": {
+            "known": "did you",
+            "target": "es-tu",
+            "seed": 377,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "people",
+      "distinct_targets": [
+        {
+          "target_norm": "gens",
+          "example": {
+            "known": "people",
+            "target": "gens",
+            "seed": 419,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "desgens",
+          "example": {
+            "known": "people",
+            "target": "des gens",
+            "seed": 87,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "us",
+      "distinct_targets": [
+        {
+          "target_norm": "nous",
+          "example": {
+            "known": "us",
+            "target": "nous",
+            "seed": 428,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "retrouver",
+          "example": {
+            "known": "us",
+            "target": "retrouver",
+            "seed": 138,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "which",
+      "distinct_targets": [
+        {
+          "target_norm": "quelle",
+          "example": {
+            "known": "which",
+            "target": "quelle",
+            "seed": 470,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "lequel",
+          "example": {
+            "known": "which",
+            "target": "lequel",
+            "seed": 492,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "going to",
+      "distinct_targets": [
+        {
+          "target_norm": "vais",
+          "example": {
+            "known": "going to",
+            "target": "vais",
+            "seed": 5,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "vas",
+          "example": {
+            "known": "going to",
+            "target": "vas",
+            "seed": 25,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "need to",
+      "distinct_targets": [
+        {
+          "target_norm": "besoinde",
+          "example": {
+            "known": "need to",
+            "target": "besoin de",
+            "seed": 44,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "devons",
+          "example": {
+            "known": "need to",
+            "target": "devons",
+            "seed": 104,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "else",
+      "distinct_targets": [
+        {
+          "target_norm": "chose",
+          "example": {
+            "known": "else",
+            "target": "chose",
+            "seed": 360,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "dautre",
+          "example": {
+            "known": "else",
+            "target": "d'autre",
+            "seed": 5,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "be able to",
+      "distinct_targets": [
+        {
+          "target_norm": "pouvoir",
+          "example": {
+            "known": "be able to",
+            "target": "pouvoir",
+            "seed": 24,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "pourrai",
+          "example": {
+            "known": "be able to",
+            "target": "pourrai",
+            "seed": 291,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "start",
+      "distinct_targets": [
+        {
+          "target_norm": "commencé",
+          "example": {
+            "known": "start",
+            "target": "commencé",
+            "seed": 79,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "commences",
+          "example": {
+            "known": "start",
+            "target": "commences",
+            "seed": 281,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "are",
+      "distinct_targets": [
+        {
+          "target_norm": "sont",
+          "example": {
+            "known": "are",
+            "target": "sont",
+            "seed": 426,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 4
+        },
+        {
+          "target_norm": "ya",
+          "example": {
+            "known": "are",
+            "target": "y a",
+            "seed": 131,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "es",
+          "example": {
+            "known": "are",
+            "target": "es",
+            "seed": 63,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "our",
+      "distinct_targets": [
+        {
+          "target_norm": "notre",
+          "example": {
+            "known": "our",
+            "target": "notre",
+            "seed": 111,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "nos",
+          "example": {
+            "known": "our",
+            "target": "nos",
+            "seed": 398,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "seen",
+      "distinct_targets": [
+        {
+          "target_norm": "vus",
+          "example": {
+            "known": "seen",
+            "target": "vus",
+            "seed": 183,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "vu",
+          "example": {
+            "known": "seen",
+            "target": "vu",
+            "seed": 182,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        }
+      ]
+    },
+    {
+      "known_norm": "to buy",
+      "distinct_targets": [
+        {
+          "target_norm": "acheter",
+          "example": {
+            "known": "to buy",
+            "target": "acheter",
+            "seed": 461,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "dacheter",
+          "example": {
+            "known": "to buy",
+            "target": "d'acheter",
+            "seed": 320,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "think that",
+      "distinct_targets": [
+        {
+          "target_norm": "penseque",
+          "example": {
+            "known": "think that",
+            "target": "pense que",
+            "seed": 47,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "pensesque",
+          "example": {
+            "known": "think that",
+            "target": "penses que",
+            "seed": 135,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "the whole",
+      "distinct_targets": [
+        {
+          "target_norm": "toutela",
+          "example": {
+            "known": "the whole",
+            "target": "toute la",
+            "seed": 10,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "toute",
+          "example": {
+            "known": "the whole",
+            "target": "toute",
+            "seed": 520,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "tell me",
+      "distinct_targets": [
+        {
+          "target_norm": "medire",
+          "example": {
+            "known": "tell me",
+            "target": "me dire",
+            "seed": 150,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "medisiez",
+          "example": {
+            "known": "tell me",
+            "target": "me disiez",
+            "seed": 170,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "how to",
+      "distinct_targets": [
+        {
+          "target_norm": "façonde",
+          "example": {
+            "known": "how to",
+            "target": "façon de",
+            "seed": 43,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "comment",
+          "example": {
+            "known": "how to",
+            "target": "comment",
+            "seed": 208,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "name",
+      "distinct_targets": [
+        {
+          "target_norm": "nom",
+          "example": {
+            "known": "name",
+            "target": "nom",
+            "seed": 20,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "appelles",
+          "example": {
+            "known": "name",
+            "target": "appelles",
+            "seed": 150,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "down to",
+      "distinct_targets": [
+        {
+          "target_norm": "jusquà",
+          "example": {
+            "known": "down to",
+            "target": "jusqu'à",
+            "seed": 560,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        },
+        {
+          "target_norm": "jusquaux",
+          "example": {
+            "known": "down to",
+            "target": "jusqu'aux",
+            "seed": 591,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "who",
+      "distinct_targets": [
+        {
+          "target_norm": "qui",
+          "example": {
+            "known": "who",
+            "target": "qui",
+            "seed": 453,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 3
+        },
+        {
+          "target_norm": "dequi",
+          "example": {
+            "known": "who",
+            "target": "de qui",
+            "seed": 263,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    },
+    {
+      "known_norm": "year",
+      "distinct_targets": [
+        {
+          "target_norm": "année",
+          "example": {
+            "known": "year",
+            "target": "année",
+            "seed": 515,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 2
+        },
+        {
+          "target_norm": "prochaine",
+          "example": {
+            "known": "year",
+            "target": "prochaine",
+            "seed": 176,
+            "table": "course_practice_phrases",
+            "phrase_role": "component"
+          },
+          "count": 1
+        }
+      ]
+    }
+  ]
+}

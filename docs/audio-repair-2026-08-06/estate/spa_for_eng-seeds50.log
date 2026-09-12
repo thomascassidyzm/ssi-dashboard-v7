@@ -1,0 +1,1739 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  suppress all logs with { quiet: true }
+
+scoped to seeds 1-50: 4683 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/4683 (15.8/s, ~5m left)     measured 500/4683 (20.4/s, ~3m left)     measured 750/4683 (22.4/s, ~3m left)     measured 1000/4683 (23.8/s, ~3m left)     measured 1250/4683 (24.4/s, ~2m left)     measured 1500/4683 (24.7/s, ~2m left)     measured 1750/4683 (25.0/s, ~2m left)     measured 2000/4683 (25.4/s, ~2m left)     measured 2250/4683 (25.7/s, ~2m left)     measured 2500/4683 (25.8/s, ~1m left)     measured 2750/4683 (25.7/s, ~1m left)     measured 3000/4683 (25.8/s, ~1m left)     measured 3250/4683 (25.9/s, ~1m left)     measured 3500/4683 (26.0/s, ~1m left)     measured 3750/4683 (26.1/s, ~1m left)     measured 4000/4683 (26.2/s, ~0m left)     measured 4250/4683 (26.3/s, ~0m left)     measured 4500/4683 (26.3/s, ~0m left)   
+
+audio-repair queue — spa_for_eng
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 4683 clip(s); 0 could not be measured
+
+857 clip(s) worth a human's ears (846 by duration, 28 by tail); showing 857, worst first.
+
+      5ms  known            384ms  "now"
+           2218cb5e-27a6-498a-954b-b501d50f658c  rev 1  — ends abruptly — 5ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1920ms  "i've been learning with you for a week"
+           bc85691a-240c-4210-b9d9-f9e7a3eda8a6  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 23.3 chars/sec against a 18.7 baseline
+     25ms  known           2856ms  "how do you feel when you've been learning for about a
+           0960933e-74c7-4271-80d6-c799b5dca6c0  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 22.6 chars/sec against a 18.7 baseline
+     20ms  known           1392ms  "but I'm a little tired"
+           9d76b911-5a1e-491e-9d3a-90e760504728  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1776ms  "I've been learning for about a week"
+           37816b76-b055-4fc7-abb5-75ed699b6be5  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 24.5 chars/sec against a 18.7 baseline
+     25ms  known           1176ms  "to think about it"
+           002071d8-09d5-4440-a133-02cc87856437  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2160ms  "I want to learn a little Spanish with you"
+           e91423ba-0469-44b0-b814-695a85f57c27  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 23.1 chars/sec against a 18.7 baseline
+     25ms  known           1824ms  "I'm going to try to interrupt"
+           bf3cbdfe-01e3-4f49-a146-97b0fe4f9313  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2040ms  "I've been learning Spanish for a week"
+           84ab9e93-379c-445b-b2b6-fc0dda7fda00  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2640ms  "I've been learning Spanish for more or less a week"
+           aee54182-5a90-4b16-907a-a49bbdcfc8f5  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2256ms  "I was starting to explain it last night"
+           0d70421b-978c-4be0-9d26-2d21a0631dce  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           3144ms  "I don't care, I think that it's good to make mistakes
+           1a895cd6-7583-4d10-ac5e-5d3d3141d750  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            936ms  "mistakes"
+           9079172d-6935-4fa9-9ecc-52a5ae6e4f55  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1872ms  "I'm trying to learn how to speak"
+           0c1184c0-fe38-41c8-abb4-73a682a33780  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1320ms  "I'm trying to speak"
+           22119a08-e180-4e7c-b94e-d8e32a500b4d  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1080ms  "we want to meet"
+           23b20e86-2370-4278-888c-273a3162958d  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1320ms  "she wants to speak"
+           aef49a0c-d7c3-4c13-bf2e-295961383731  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2880ms  "are you going to try to remember the whole sentence"
+           0c32737e-c3dc-4728-af53-9761bc1d6b6d  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2544ms  "she wants to help me remember the whole sentence"
+           4e4c03d8-fba5-45cf-bbc0-bd09f3954e38  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2856ms  "are you going to practise speaking before I have to g
+           d2c9cb67-8154-4c9a-82ca-7c9bf01bd551  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1536ms  "how long have you been learning"
+           8b6cd73f-d7f6-4656-a5b5-5bd4bcfcf85b  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            888ms  "I started"
+           13c14755-ccf3-4d9a-89af-94a165b385ac  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2880ms  "I started to speak with another person last month"
+           1a2fe592-c56c-48c8-81a1-b18a65a3bfcb  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known            840ms  "the month"
+           f38e1a6c-4c5d-4d78-9504-dcd5d60166bc  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2232ms  "I'm trying to learn Spanish at the moment"
+           c650e525-1708-4c21-8909-7d3720093dc0  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2664ms  "I was starting to remember a word last night"
+           98a2b965-ed56-4419-89e7-6e7bf27baa4f  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2544ms  "I was starting to practise speaking last night"
+           ae6ba522-86f6-4158-9e29-42ede54bf5cf  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2160ms  "I don't worry about making mistakes"
+           45ce6e23-a339-4055-b590-cecc27dd5ea2  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+    0.647  known           1848ms  "How long have you been learning Spanish?"
+           9796f58c-32b8-4be3-92ae-bddd76bf2609  rev 1  — 35% shorter than its text implies
+    0.655  known            936ms  "you know what I mean"
+           d662253c-498e-4c01-837a-368e21cd3b32  rev 1  — 34% shorter than its text implies
+    0.659  known           2400ms  "I would like to learn something before I have to go"
+           f072541c-44a6-4441-80c0-3b751aff0e31  rev 1  — 34% shorter than its text implies
+    0.665  known           2328ms  "she doesn't want to think about it this afternoon"
+           cb140e5c-62f1-4095-90e4-6c13024c00ae  rev 1  — 33% shorter than its text implies
+    0.677  known           3144ms  "I wouldn't like to practise speaking with another per
+           43d40be7-bf48-42bc-8eac-6e42f190d528  rev 1  — 32% shorter than its text implies
+    0.678  known           2616ms  "she doesn't want to learn anything with another perso
+           e8ef5aaf-0fb0-47ad-b2be-b5a732921879  rev 1  — 32% shorter than its text implies
+    0.679  known           2424ms  "he doesn't want to read when other people are here"
+           b774e2cb-27a5-4acb-a855-3b6482a8d0c7  rev 1  — 32% shorter than its text implies
+    0.681  known           1848ms  "but I don't want to come back later on"
+           00fdeb06-00a8-47ef-80d1-81d1c160a3a4  rev 1  — 32% shorter than its text implies
+    0.684  known           2784ms  "I wouldn't like to guess what's going to happen tomor
+           73e81f9a-3fb6-4f9b-86f2-67e6c9caa3cf  rev 1  — 32% shorter than its text implies
+    0.685  known           2496ms  "she doesn't want to read when other people are here"
+           1d1d15df-6800-4dbb-ad2e-54f2e0c10527  rev 1  — 31% shorter than its text implies
+    0.686  known           2352ms  "She doesn't want to read anything this afternoon"
+           358dbe3c-72cd-4acf-8321-9c7c28fd4b7e  rev 1  — 31% shorter than its text implies
+    0.687  known           2208ms  "How long have you been learning how to speak?"
+           30411d05-5036-4f12-a670-8e3c8e02d441  rev 1  — 31% shorter than its text implies
+    0.689  known           2856ms  "he doesn't want to say anything when other people are
+           f23b9a69-901d-460b-8c18-fe369164a254  rev 1  — 31% shorter than its text implies
+     0.69  known           2712ms  "I'd like to practise speaking a little Spanish tomorr
+           967f739b-a70f-40da-8a50-7e15f697ac1c  rev 1  — 31% shorter than its text implies
+    0.691  known           2616ms  "How long have you been learning how to speak Spanish?
+           78c153b1-6b43-4352-b31e-e6f2b70349a8  rev 1  — 31% shorter than its text implies
+    0.691  known           2568ms  "I've been learning with you for more or less all day"
+           3505324c-11ef-4a93-a6c2-6c9ad65390db  rev 1  — 31% shorter than its text implies
+    0.692  known           2520ms  "he doesn't want to learn when other people are here"
+           e3c73a26-8f21-48bc-a7ba-ca7ac0683839  rev 1  — 31% shorter than its text implies
+    0.693  known           2424ms  "I would like to start talking with another person"
+           7796aac7-8c8a-42c8-a8af-3351d3ad6523  rev 1  — 31% shorter than its text implies
+    0.693  known           2328ms  "she doesn't want to read with me this afternoon"
+           7d407d3d-5a35-414f-bcee-e94103c519f1  rev 1  — 31% shorter than its text implies
+    0.694  known           2976ms  "are you going to practise speaking with another perso
+           f46286cd-0a05-4a95-8335-c24e578e4616  rev 1  — 31% shorter than its text implies
+    0.694  known           2976ms  "he doesn't want to think about it when other people a
+           92a35e11-d5b9-40a0-a1b3-83bc05d995da  rev 1  — 31% shorter than its text implies
+    0.695  known           2880ms  "but I don't want to practise speaking as often as pos
+           ed919f20-9841-4c8d-9da6-1be70fe78dae  rev 1  — 30% shorter than its text implies
+    0.695  known           2184ms  "you wanted to read something with me tonight"
+           6b5b0121-56bc-41a7-80c4-477ce37e4c1a  rev 1  — 31% shorter than its text implies
+    0.696  known           2784ms  "I would like to read something in spanish this aftern
+           cfe87e2c-8b47-43e0-b451-700d906ed5fc  rev 1  — 30% shorter than its text implies
+    0.697  known           2040ms  "he doesn't want to speak with you tonight"
+           7e89556a-7c0d-42f3-a137-a3b5caa70ef6  rev 1  — 30% shorter than its text implies
+    0.698  known           2544ms  "but I don't want to stop talking with everyone else"
+           1ce3c7ef-ed80-4988-a401-de6e807901ed  rev 1  — 30% shorter than its text implies
+    0.698  known           1944ms  "you wanted to show me something tonight"
+           8b49586c-f37f-4c97-b3f7-53e0689aa7e8  rev 1  — 30% shorter than its text implies
+    0.698  known           2592ms  "she doesn't want to speak when other people are here"
+           87c8b63a-34b7-4295-89c0-e49f92aca214  rev 1  — 30% shorter than its text implies
+    0.699  known           1896ms  "I would like to speak with you tonight"
+           2a260867-813e-4487-9c1f-26cf8b58fc1f  rev 1  — 30% shorter than its text implies
+      0.7  known           3000ms  "she doesn't want to read anything when other people a
+           7d5db561-4b85-4067-b904-40b91bae5e88  rev 1  — 30% shorter than its text implies
+    0.701  known           2904ms  "I'd like to be able to explain what I want to say wit
+           97927614-b73a-4511-858d-b0002c4f32da  rev 1  — 30% shorter than its text implies
+    0.701  known           2904ms  "I want to be able to guess what's going to happen tom
+           29bfa3d8-fc02-405a-8dc3-037b25a51fcc  rev 1  — 30% shorter than its text implies
+    0.701  known           2352ms  "He wants to practise when other people are here"
+           494b147e-408f-42c1-9ffd-89f30413b4d8  rev 1  — 30% shorter than its text implies
+    0.701  known           2352ms  "I was starting to feel better than this morning"
+           8dc02b43-4683-4a33-9fb7-abbd01a7fe59  rev 1  — 30% shorter than its text implies
+    0.702  known           2256ms  "I was starting to feel better than last night"
+           6067aba1-5ab5-4ea3-b04e-86d8c0167b07  rev 1  — 30% shorter than its text implies
+    0.704  known           3216ms  "I'm looking forward to speaking better as soon as pos
+           a7e1053b-09fe-4114-9889-91c219d41d04  rev 1  — 30% shorter than its text implies
+    0.704  known           2616ms  "she doesn't want to read with another person tonight"
+           da64bf08-d6c3-4e99-8be7-a11e422d6f2a  rev 1  — 30% shorter than its text implies
+    0.705  known           2568ms  "I'd like to explain what's going to happen tomorrow"
+           340ea43a-781c-4a1e-99c3-24d90d411bf8  rev 1  — 30% shorter than its text implies
+    0.707  known           1920ms  "she doesn't want to come back tomorrow"
+           601ad85d-a26a-45e8-ae6e-8a5d24c4620a  rev 1  — 29% shorter than its text implies
+    0.708  known           2376ms  "I'm trying to say something in Spanish with you"
+           e547ae32-eb81-484b-bdfd-12172c77537b  rev 1  — 29% shorter than its text implies
+    0.708  known           2376ms  "and I'd like to be able to speak with you today"
+           2646cac8-93f6-453f-b648-969551fab08a  rev 1  — 29% shorter than its text implies
+    0.712  known           2592ms  "she doesn't want to read something in spanish today"
+           4a3c7247-c27b-4b3a-900c-4283cfe43ec8  rev 1  — 29% shorter than its text implies
+    0.712  known           2592ms  "he doesn't want to speak when other people are here"
+           edce851c-01ac-46ca-a431-403b20be9a78  rev 1  — 29% shorter than its text implies
+    0.712  known           1728ms  "I don't want to think about it now"
+           eb680c6f-4fe7-4369-98e8-62b7e0420fbe  rev 1  — 29% shorter than its text implies
+    0.712  known           2544ms  "I started to think about it carefully this morning"
+           d2bf7695-ea11-4017-8374-8ccc1e6f4d55  rev 1  — 29% shorter than its text implies
+    0.713  known           2496ms  "I want to learn how to speak Spanish with you now"
+           580fc681-fb21-4b7c-ae13-5f37c7a643aa  rev 1  — 29% shorter than its text implies
+    0.713  known           3720ms  "I'd like to be able to explain what's going to happen
+           abb7d3c1-0994-40cb-b4d0-a7bb95019707  rev 1  — 29% shorter than its text implies
+    0.714  known           2448ms  "are you learning to say something in spanish now"
+           1a9d815b-0dba-4459-ae48-7d5ddab8e9bc  rev 1  — 29% shorter than its text implies
+    0.715  known           2400ms  "are you going to speak spanish with me tomorrow"
+           bc5ec93f-02a6-4e5f-8693-8668d4d3c0e4  rev 1  — 29% shorter than its text implies
+    0.716  known           3480ms  "I'm going to try to guess what's going to happen in S
+           525aa11d-64d9-42d7-9cd4-4f8e0f7f1e31  rev 1  — 28% shorter than its text implies
+    0.716  known           1944ms  "I want to guess what's going to happen"
+           a6bfea97-e6a8-42ed-83f0-5cdd7442d999  rev 1  — 28% shorter than its text implies
+    0.716  known           1944ms  "I'm looking forward to speaking better"
+           e569a1c6-ec25-4184-886b-0b3bbd06789f  rev 1  — 28% shorter than its text implies
+    0.716  known           2712ms  "How long are you going to practise with someone else?
+           ae0f3b8a-51c0-437c-b9a6-4176f381b7de  rev 1  — 28% shorter than its text implies
+    0.716  known           2352ms  "How long do you want to speak Spanish with me?"
+           c567f9e1-7f19-4ed5-9275-d9ce5d6843c9  rev 1  — 28% shorter than its text implies
+    0.716  known           1944ms  "we don't want to learn something today"
+           dbee8ebb-954d-4c57-8806-440a11ce4e65  rev 1  — 28% shorter than its text implies
+    0.717  known           2304ms  "I want to learn something in Spanish with you"
+           ded877f1-51a7-43b3-af0e-99c8a90811ce  rev 1  — 28% shorter than its text implies
+    0.717  known           2304ms  "are you going to explain what you want to say"
+           7f9ed6fe-4013-4624-b3c7-42ccb30b6658  rev 1  — 28% shorter than its text implies
+    0.717  known           2664ms  "I'm looking forward to answering as soon as possible"
+           39dc0447-97f0-4284-b0d2-ba2ab1b3de96  rev 1  — 28% shorter than its text implies
+    0.718  known           3024ms  "are you going to speak a little spanish before I have
+           ad576bfe-da81-43b3-8350-b544f1960187  rev 1  — 28% shorter than its text implies
+    0.718  known           2616ms  "I don't want to be quiet when other people are here"
+           380377d8-fc59-45cb-aab7-35411d6e7fd5  rev 1  — 28% shorter than its text implies
+    0.719  known           3336ms  "I want to be able to guess what I want to say with an
+           5c8c17b6-6ebf-476d-83a3-554c9aa3d862  rev 1  — 28% shorter than its text implies
+    0.719  known           2208ms  "I'm looking forward to asking you something"
+           40a97d57-db0e-4bbe-818a-119a30d900db  rev 1  — 28% shorter than its text implies
+     0.72  known           1800ms  "I've been learning with you all day"
+           f08d79d3-81b3-48cf-bf2a-a9ef4a9e9306  rev 1  — 28% shorter than its text implies
+    0.721  known           1752ms  "Did you want to show me something?"
+           054d491c-f31a-421d-8a86-96be119e3c77  rev 1  — 28% shorter than its text implies
+    0.721  known           2472ms  "I'm not trying to finish as quickly as possible."
+           f9dbe1a4-82a7-456a-98bf-0691e47a0d7c  rev 1  — 28% shorter than its text implies
+    0.721  known           2832ms  "I'd like to guess how to say something in Spanish tod
+           c85234a6-ba1b-4492-9fb6-debcab12f912  rev 1  — 28% shorter than its text implies
+    0.721  known           2472ms  "I don't want to interrupt the story this morning"
+           b91c260d-f2b1-4f86-a3a0-a13c4781b57a  rev 1  — 28% shorter than its text implies
+    0.722  known           3096ms  "I wouldn't like to try to remember the whole phrase t
+           cb8bcab9-ae2a-49ec-ab55-5026117dba48  rev 1  — 28% shorter than its text implies
+    0.722  known           2424ms  "he wants to practise speaking with someone else"
+           ba9e3cfe-6822-49d5-bd13-8add43e1ff1c  rev 1  — 28% shorter than its text implies
+    0.722  known           2424ms  "you want to practise speaking with someone else"
+           f68c57ff-1e2b-47db-b33c-2ecffb06a4d3  rev 1  — 28% shorter than its text implies
+    0.722  known           2424ms  "are you going to ask something in spanish today"
+           b27cee47-d347-4d91-b90a-2acf9d800b4e  rev 1  — 28% shorter than its text implies
+    0.722  known           2064ms  "I'm going to try to think about it later"
+           6b5d15b0-aeaa-4cad-a52e-677e8b90e119  rev 1  — 28% shorter than its text implies
+    0.723  known           1704ms  "he wants to show me something now"
+           11a2a4a0-825b-4f40-9e1d-29380f2f0a19  rev 1  — 28% shorter than its text implies
+    0.723  known           3720ms  "I don't worry about making mistakes when I'm trying t
+           05958259-e4a9-45be-9149-b7bceb4d0f58  rev 1  — 28% shorter than its text implies
+    0.724  known           2016ms  "I'm going to speak Spanish with you now"
+           db9062d3-3004-462f-a984-24d51358e5e3  rev 1  — 28% shorter than its text implies
+    0.724  known           2688ms  "I'd like to try to say something in Spanish with you"
+           7dcb131a-04f7-4c39-b449-47c89b3ef849  rev 1  — 28% shorter than its text implies
+    0.724  known           2688ms  "I'm looking forward to explaining what I want to say"
+           15186935-ed16-4c24-817a-e3edb3d3eb79  rev 1  — 28% shorter than its text implies
+    0.724  known           2328ms  "we don't want to practise with another person"
+           87ff5c50-44ca-451a-8ca1-f540f5126984  rev 1  — 28% shorter than its text implies
+    0.727  known           2856ms  "I'm going to try to guess something in Spanish tomorr
+           7bcc869b-5e5d-4ecf-b2d6-738a1be45dd5  rev 1  — 27% shorter than its text implies
+    0.728  known           2496ms  "I'm going to practise speaking with someone else"
+           800f9495-051c-4924-81c1-302f7464555c  rev 1  — 27% shorter than its text implies
+    0.728  known           2184ms  "I'm going to practise Spanish with you now"
+           d1f9e228-0311-4cb5-8888-578aba2280d8  rev 1  — 27% shorter than its text implies
+    0.728  known           1872ms  "I'm going to speak with someone else"
+           d84cb954-842f-47de-8d8e-5d287203d306  rev 1  — 27% shorter than its text implies
+    0.728  known           2184ms  "she wants to come back at six this evening"
+           1ac76083-bf5e-4d94-b9cc-73e7e61e4fdb  rev 1  — 27% shorter than its text implies
+    0.728  known           2496ms  "because she wants to discover what the answer is"
+           13d557c1-6df1-4674-8f57-d96f36839148  rev 1  — 27% shorter than its text implies
+    0.728  known           2496ms  "are you learning how to say something in spanish"
+           c37e593d-737b-4e04-85d8-d79166062138  rev 1  — 27% shorter than its text implies
+    0.728  known           2184ms  "I would like to answer as soon as possible"
+           e5537f3f-69b2-4c61-9e90-cacd96a39155  rev 1  — 27% shorter than its text implies
+    0.728  known           3120ms  "I've been learning with someone else for more or less
+           b3585895-1a4b-4c37-acd7-4f35b6de141b  rev 1  — 27% shorter than its text implies
+    0.729  known           2760ms  "I'm going to try to remember the whole sentence today
+           0a9ec24c-e968-4ec1-8e4b-1f3f8c979be1  rev 1  — 27% shorter than its text implies
+    0.729  known           2136ms  "how long are you going to practise today?"
+           42ea4859-ca39-4d3a-a446-a65e94d0bfe3  rev 1  — 27% shorter than its text implies
+     0.73  known           3024ms  "I'd like to try to guess how to explain what I want t
+           4a73fb3f-78dd-49df-89da-10a1234a8dba  rev 1  — 27% shorter than its text implies
+     0.73  known           3024ms  "I'm looking forward to speaking better as soon as pos
+           a6fc964a-dd88-4225-877f-e402de485260  rev 1  — 27% shorter than its text implies
+    0.731  known           2664ms  "are you going to help me explain what I want to say"
+           dd63f9df-9592-4e43-b001-169bce57bf72  rev 1  — 27% shorter than its text implies
+    0.731  known           2664ms  "are you going to come back later with everyone else"
+           eb1604e8-ecf6-4e6f-a35d-ffdfa7fbaa85  rev 1  — 27% shorter than its text implies
+    0.731  known           2664ms  "she doesn't want to explain anything this afternoon"
+           aff46ce2-7c87-4f76-9443-a65cbef9128a  rev 1  — 27% shorter than its text implies
+    0.731  known           2976ms  "I don't care about remembering the whole phrase right
+           51b81f32-ae20-492e-bdbf-25a99e3ddce4  rev 1  — 27% shorter than its text implies
+    0.731  known           2664ms  "I don't care about finishing as quickly as possible"
+           e8636de1-ea9d-44af-9af0-7e40f96c2aa5  rev 1  — 27% shorter than its text implies
+    0.732  known           2616ms  "I wouldn't like to speak with another person today"
+           ba9830de-9ae8-4c15-a8f7-94cb042ada8a  rev 1  — 27% shorter than its text implies
+    0.732  known           2040ms  "you want to find out what the answer is"
+           a94a6dc0-a2be-48c4-b29f-bc15a5689d15  rev 1  — 27% shorter than its text implies
+    0.732  known           1464ms  "how do you feel this morning"
+           0961d4dc-fe3e-4107-83f8-faddff1dc8db  rev 1  — 27% shorter than its text implies
+    0.733  known           3456ms  "I'd like to be able to practise speaking with you aft
+           e28a6fdc-d774-464f-a47d-d757b7cfeeed  rev 1  — 27% shorter than its text implies
+    0.733  known           3192ms  "I'm going to try to say something in Spanish all day 
+           5022d018-0b06-463c-a7e0-db00dabb83bd  rev 1  — 27% shorter than its text implies
+    0.733  known           2880ms  "are you learning how to speak as frequently as possib
+           4d5e8977-fcea-4ab4-ae80-91931697de97  rev 1  — 27% shorter than its text implies
+    0.733  known           2304ms  "I would like to start talking with you today"
+           c0726dbf-4e35-48db-a6ac-285c38e3bcdb  rev 1  — 27% shorter than its text implies
+    0.733  known           3192ms  "because I would like to practise speaking with anothe
+           d66e9c2b-d4ff-415e-b04c-308306932d74  rev 1  — 27% shorter than its text implies
+    0.733  known           2304ms  "are you going to help me as soon as possible"
+           23aacf07-9cfa-4f93-a5f3-76caeb607982  rev 1  — 27% shorter than its text implies
+    0.734  known           2832ms  "I would like to learn how to say something more easil
+           dd7f0d7d-2ed9-4c74-8e00-c83445004fad  rev 1  — 27% shorter than its text implies
+    0.734  known           2832ms  "she doesn't want to learn as quickly as possible toda
+           e6d8d64d-44e8-4f49-972f-bab1f42dd2aa  rev 1  — 27% shorter than its text implies
+    0.735  known           2256ms  "I'm going to practise with someone else now"
+           2147dada-487d-4784-a32f-742a58358698  rev 1  — 27% shorter than its text implies
+    0.735  known           2256ms  "I wasn't thinking about how to answer today"
+           3b4256f0-3168-4460-837d-498ccb199b05  rev 1  — 27% shorter than its text implies
+    0.736  known           3312ms  "I'm looking forward to getting to know people who spe
+           f88561ba-5b26-44a7-97f3-7e3684c680e2  rev 1  — 26% shorter than its text implies
+    0.736  known           2472ms  "He doesn't want to practise speaking frequently"
+           8ceb3358-ec1f-41bd-9f8a-86be94c1c23a  rev 1  — 26% shorter than its text implies
+    0.736  known           2472ms  "we don't want to say something in spanish today"
+           f81eb293-61a2-4c74-9fff-2971b1b64c0b  rev 1  — 26% shorter than its text implies
+    0.737  known           1368ms  "I'd like to speak with you"
+           0bc3ff01-85c8-405b-95f0-ff5dd0c308ad  rev 1  — 26% shorter than its text implies
+    0.737  known           3000ms  "I'm not sure if I can remember the whole phrase very 
+           6317d4a9-45bf-4783-8b99-9790a204bdbd  rev 1  — 26% shorter than its text implies
+    0.738  known           2424ms  "I don't want to stop talking with someone else"
+           24f0fc37-f12f-41c1-862c-e112062f6075  rev 1  — 26% shorter than its text implies
+    0.738  known           2424ms  "because I want to speak spanish with you today"
+           a0861840-48b1-4d28-a4ea-87188154e383  rev 1  — 26% shorter than its text implies
+    0.738  known           2952ms  "I like nearly everything about learning spanish with 
+           5b8109db-b3ca-47a3-8987-0410ce296f2a  rev 1  — 26% shorter than its text implies
+    0.738  known           2688ms  "he wants to show me how to say something in spanish"
+           14a7c22b-ca70-4f94-9ea2-2d96816dd1d0  rev 1  — 26% shorter than its text implies
+    0.738  known           2424ms  "I'm trying to remember the story at the moment"
+           d0bb3c4d-91a3-4d45-811e-4587f83dc889  rev 1  — 26% shorter than its text implies
+    0.739  known           2904ms  "because I think that it's a good thing to make mistak
+           52011e09-a869-4543-92a7-9ab542bff39b  rev 1  — 26% shorter than its text implies
+    0.739  known           2376ms  "Are you going to help me before I have to go?"
+           949462ea-cbd5-4fd8-b18d-c4396ebfb8b6  rev 1  — 26% shorter than its text implies
+    0.739  known           2640ms  "I want you to speak a little Spanish with me today"
+           0fb6b068-13b8-4cee-a125-2049c61f0276  rev 1  — 26% shorter than its text implies
+    0.739  known           3168ms  "she doesn't want to speak with another person this af
+           2b654731-8f20-4a35-a826-332c9c9c4456  rev 1  — 26% shorter than its text implies
+    0.741  known           2592ms  "I'm trying to learn how to speak Spanish with you"
+           c39dd6a9-2101-4fcc-be40-2a65d220c612  rev 1  — 26% shorter than its text implies
+    0.741  known           2592ms  "she wants to help me remember before I have to go"
+           36b8c397-4c86-4f3f-9f8d-66e67eeb85f1  rev 1  — 26% shorter than its text implies
+    0.741  known           2592ms  "I would like to start talking before I have to go"
+           b4d9f2cc-7a0e-4167-871a-792ea4417e05  rev 1  — 26% shorter than its text implies
+    0.741  known           2064ms  "did you want to show me something today"
+           9d64a1da-f491-48e2-8df4-dbafa83dbb95  rev 1  — 26% shorter than its text implies
+    0.741  known           2328ms  "I want to ask you something in spanish today"
+           d942f84a-ecc3-4a0a-a9b2-c8009a4ac5da  rev 1  — 26% shorter than its text implies
+    0.741  known           2064ms  "I don't want to interrupt at the moment"
+           45ce53dd-9867-4284-a100-b3d722926055  rev 1  — 26% shorter than its text implies
+    0.741  known           3336ms  "I think that it's good to practise speaking with anot
+           0a0f96b7-19c3-4779-b407-273e13055f94  rev 1  — 26% shorter than its text implies
+    0.742  known           3072ms  "she wants to find out what the answer is with someone
+           88debce0-be09-48bc-bf50-7155f778d35d  rev 1  — 26% shorter than its text implies
+    0.742  known           2808ms  "are you learning to speak spanish with another person
+           2f673b59-99c1-44f2-aeac-e50a810a7fe9  rev 1  — 26% shorter than its text implies
+    0.742  known           2280ms  "I've been learning for more or less all day"
+           4db966bb-e18f-41c9-896e-8e4b5d54ad3b  rev 1  — 26% shorter than its text implies
+    0.743  known           1752ms  "I'm trying to learn something now"
+           ca7cb468-107f-40dc-bb91-527e1f37cb47  rev 1  — 26% shorter than its text implies
+    0.743  known           1752ms  "I'm going to speak with you today"
+           95573706-5226-4993-8414-266b131ac950  rev 1  — 26% shorter than its text implies
+    0.743  known           2760ms  "it's useful to ask you something as soon as possible"
+           501a725f-124f-4e83-80fd-18f14842ae85  rev 1  — 26% shorter than its text implies
+    0.743  known           2760ms  "he doesn't want to go back with all the others later"
+           1c0f007f-e8ce-4dc6-80a3-2d8cb5f32a69  rev 1  — 26% shorter than its text implies
+    0.744  known           3456ms  "I wouldn't like to try to guess what's going to happe
+           eda315b5-776e-4faf-a89f-0532d9e68b0f  rev 1  — 26% shorter than its text implies
+    0.744  known           2976ms  "I wouldn't like to try to explain what's going to hap
+           f395feb3-154a-469a-9d3e-ee0ea5dc9351  rev 1  — 26% shorter than its text implies
+    0.744  known           2712ms  "are you going to learn how to speak more frequently"
+           1a5a6b23-d29b-47bb-b081-dd8291d1217d  rev 1  — 26% shorter than its text implies
+    0.744  known           3456ms  "I'm looking forward to speaking spanish as frequently
+           1889a394-277e-4da6-8af4-46ea85f39524  rev 1  — 26% shorter than its text implies
+    0.745  known           1968ms  "are you learning a little spanish now"
+           3e9d41e6-4f8c-4891-aa95-6df73bd1e2a2  rev 1  — 26% shorter than its text implies
+    0.745  known           1704ms  "but I'm a little tired right now"
+           3a5fec73-4084-4f63-b15e-ba7f299c0dce  rev 1  — 25% shorter than its text implies
+    0.746  known           3144ms  "I'm going to practise speaking with another person to
+           40ed576a-1800-41e5-be98-b606c65130ab  rev 1  — 25% shorter than its text implies
+    0.746  known           2664ms  "he wants to practise speaking as often as possible"
+           0c9dc200-88f5-41d1-9e5f-a348a08e872d  rev 1  — 25% shorter than its text implies
+    0.746  known           2184ms  "we want to practise speaking with someone"
+           c878c42b-3d9c-4eef-a129-773a9082df57  rev 1  — 25% shorter than its text implies
+    0.746  known           2184ms  "we don't want to interrupt another person"
+           af092f77-e464-4dd9-8d9b-eaaf6b91fb25  rev 1  — 25% shorter than its text implies
+    0.746  known           2184ms  "I don't want to stop talking this morning"
+           e7a24025-1049-4213-a36b-0f8c56d236dd  rev 1  — 25% shorter than its text implies
+    0.747  known           2880ms  "he wants to practise speaking with everyone else toda
+           01b1821f-7397-4d47-9097-832d15f25e09  rev 1  — 25% shorter than its text implies
+    0.747  known           2616ms  "I wanted to answer something in spanish yesterday"
+           09588e22-9651-4949-a483-29a7c1944b0a  rev 1  — 25% shorter than its text implies
+    0.747  known           1920ms  "he wants to try to speak with me now"
+           884dbbaf-67f3-41a8-9bf8-05a04289688d  rev 1  — 25% shorter than its text implies
+    0.747  known           1920ms  "I can finish speaking with you today"
+           2279e094-e8e2-4de3-97ec-ff63676af2ed  rev 1  — 25% shorter than its text implies
+    0.748  known           2136ms  "I'm trying to learn Spanish with you now"
+           b7b5d702-389a-429a-a460-ba038142b1d0  rev 1  — 25% shorter than its text implies
+    0.748  known           2352ms  "I want to learn something with everyone else"
+           d6d8ee52-a0fd-4f47-ab55-4b0777228cc7  rev 1  — 25% shorter than its text implies
+    0.748  known           2352ms  "She wants to practise speaking with me today"
+           0ee9fec9-14e1-487c-b618-398747ef05a3  rev 1  — 25% shorter than its text implies
+    0.748  known           1656ms  "you wanted to show me something"
+           dbc55911-1409-4dd0-8ac7-6acd9dd4232d  rev 1  — 25% shorter than its text implies
+    0.748  known           2352ms  "he wants to think about it carefully tonight"
+           3564da00-d57b-4c32-a61f-97af733b73b3  rev 1  — 25% shorter than its text implies
+    0.748  known           2136ms  "I want to practise speaking this morning"
+           ad9689d6-5e28-444c-a139-c8ef9a10b1e8  rev 1  — 25% shorter than its text implies
+    0.749  known           1872ms  "but I'm a little tired this morning"
+           852bba79-f1a4-48d9-b3fd-7817d4301cb5  rev 1  — 25% shorter than its text implies
+    0.749  known           3264ms  "I'd like to speak with you tomorrow as frequently as 
+           2c71cdc2-db2c-482a-82df-d82fb30f1384  rev 1  — 25% shorter than its text implies
+    0.749  known           3264ms  "she wants to come back at six this evening with every
+           0f1ef545-d604-4468-a1e6-875485bf8b26  rev 1  — 25% shorter than its text implies
+    0.749  known           2568ms  "I'm going to finish as quickly as possible today"
+           e0c1f166-3206-4047-9b6b-32eb90a685e6  rev 1  — 25% shorter than its text implies
+     0.75  known           2304ms  "she wants to practise speaking with someone"
+           15c15377-a95c-4709-8031-a324ddc08918  rev 1  — 25% shorter than its text implies
+     0.75  known           1608ms  "are you going to help me today"
+           d8c6ee86-724b-487e-9d86-85ce20dcbd5d  rev 1  — 25% shorter than its text implies
+     0.75  known           2304ms  "I've been learning Spanish with you all day"
+           cc61a12a-545e-4500-aa45-55a77e55c503  rev 1  — 25% shorter than its text implies
+     0.75  known           1608ms  "how do you feel this afternoon"
+           112fdba6-200c-454e-88ce-6ad7a1c52809  rev 1  — 25% shorter than its text implies
+    0.751  known           2952ms  "I'm looking forward to speaking better as soon as I c
+           bc7e90b1-691b-4799-aa71-585f72326c95  rev 1  — 25% shorter than its text implies
+    0.751  known           1824ms  "he wants to come back with someone"
+           9deacbc7-8932-4177-bbf4-ff43aac19f4a  rev 1  — 25% shorter than its text implies
+    0.752  known           2040ms  "I can practise speaking with you today"
+           842ceeba-e1b1-4faa-99da-c38640ab882e  rev 1  — 25% shorter than its text implies
+    0.752  known           2472ms  "but she wants to come back at six this evening"
+           add5fdb9-63f5-400d-a761-fee0dfad7ba9  rev 1  — 25% shorter than its text implies
+    0.752  known           3384ms  "I'm looking forward to asking you something as soon a
+           35ba6479-a59e-4662-b1a1-4034f52a38d0  rev 1  — 25% shorter than its text implies
+    0.753  known           2688ms  "I'm going to learn how to say something in Spanish"
+           2e5726c7-dc93-4620-b5f8-1d63da366c71  rev 1  — 25% shorter than its text implies
+    0.753  known           1344ms  "how do you feel right now"
+           6270fb58-536a-4b32-9791-0689c431471c  rev 1  — 25% shorter than its text implies
+    0.754  known           2856ms  "I'm going to try to say something in Spanish tomorrow
+           5c4b98c9-ebc1-4c5d-a892-5baac75bf995  rev 1  — 25% shorter than its text implies
+    0.754  known           2424ms  "I'd like to be able to speak Spanish tomorrow"
+           7ed2743a-57e4-4500-ae46-7e343fd74730  rev 1  — 25% shorter than its text implies
+    0.754  known           2856ms  "I am going to start talking with another person today
+           c978a88e-ddb9-495e-aed2-1aa40bd39ca6  rev 1  — 25% shorter than its text implies
+    0.754  known           2640ms  "he doesn't want to be quiet when speaking with me"
+           b4626403-1192-465d-bd61-c4788ca4c770  rev 1  — 25% shorter than its text implies
+    0.755  known           3288ms  "he doesn't want to be quiet when speaking with anothe
+           b7619816-1c5b-487e-9274-618423eb0a5f  rev 1  — 25% shorter than its text implies
+    0.755  known           3072ms  "I don't worry about saying something, I'm trying to l
+           2d8fd15a-9528-4176-bab5-c67fe213d81e  rev 1  — 25% shorter than its text implies
+    0.756  known           2808ms  "I am trying to start talking with another person now"
+           ab620bc6-d2f1-4914-ae69-0185b8cc8348  rev 1  — 24% shorter than its text implies
+    0.756  known           3024ms  "he wants to help me get to know people who speak span
+           6837e8f8-0a76-4da5-a9c1-1d269dc100cb  rev 1  — 24% shorter than its text implies
+    0.756  known           2808ms  "she doesn't want to speak with everyone else tonight"
+           7ba22d04-6af4-4011-94a1-43bfeb3f906c  rev 1  — 24% shorter than its text implies
+    0.756  known           2808ms  "I wasn't thinking about speaking with another person"
+           600c29b9-e6f2-4ce2-b7a4-8096a376d38d  rev 1  — 24% shorter than its text implies
+    0.756  known           2592ms  "I don't worry about remembering the whole phrase"
+           078cc59b-0cc9-4360-88b6-80faeb973674  rev 1  — 24% shorter than its text implies
+    0.756  known           2376ms  "She doesn't want to know all of this tonight"
+           6e98b391-a4bc-4840-b81a-18d8246735cc  rev 1  — 24% shorter than its text implies
+    0.758  known           2112ms  "I wanted to ask you something yesterday"
+           8706cdd2-018b-4c09-a0e0-1db913be88e7  rev 1  — 24% shorter than its text implies
+    0.758  known           1896ms  "I'm going to speak Spanish with you"
+           c318b0f2-9bc0-4efb-8552-48b26cbe21c1  rev 1  — 24% shorter than its text implies
+    0.758  known           2976ms  "I'm going to try to remember a word in Spanish tomorr
+           f6cd1559-148f-425f-9e97-aa9ecaa5bf43  rev 1  — 24% shorter than its text implies
+    0.758  known           2112ms  "we want to meet with someone else today"
+           c1c0a60d-67af-4852-99b1-ca8f80f535c1  rev 1  — 24% shorter than its text implies
+    0.758  known           2112ms  "I don't want to practise speaking today"
+           b419f160-4426-47ca-87c0-d54e60b3e421  rev 1  — 24% shorter than its text implies
+    0.758  known           2112ms  "I don't want to interrupt the story now"
+           5507266a-a973-4791-a043-b9bfc3974900  rev 1  — 24% shorter than its text implies
+    0.758  known           2760ms  "I'm trying to explain the story with another person"
+           915fe341-de4a-4e91-9b1a-f87602210265  rev 1  — 24% shorter than its text implies
+    0.758  known           2544ms  "I don't care about speaking with another person"
+           d63c4b9f-8459-4fb3-bc33-cdbf55a562ab  rev 1  — 24% shorter than its text implies
+    0.759  known           2712ms  "I'm not sure if I can remember the whole sentence."
+           92fdd7dc-3a8e-40b4-bf58-241d7e6133ad  rev 1  — 24% shorter than its text implies
+    0.759  known           4176ms  "I'm going to try to say what's going to happen in Spa
+           770e93e0-8cce-44c4-a861-27a2a0e6be78  rev 1  — 24% shorter than its text implies
+    0.759  known           3360ms  "I'd like to try to say what's going to happen in Span
+           7dbd9c45-63df-471f-9c5f-66f2cea8cf3a  rev 1  — 24% shorter than its text implies
+    0.759  known           2928ms  "because he wants to come back later with everyone els
+           1febf3b7-e0de-4ba4-93d9-ebfbaf50d8a6  rev 1  — 24% shorter than its text implies
+    0.759  known           3144ms  "are you going to help me practise speaking more frequ
+           0685d171-2026-4e60-abc4-488e8cdd160d  rev 1  — 24% shorter than its text implies
+    0.759  known           3144ms  "he wants to practise speaking with you before I have 
+           c42d978e-69a9-4a15-8fc2-8a6a84489cfc  rev 1  — 24% shorter than its text implies
+    0.759  known           3144ms  "I wanted to get to know people who speak spanish yest
+           f29c5dbe-e8e1-49dd-ad40-e8d86de0f92a  rev 1  — 24% shorter than its text implies
+     0.76  known           2064ms  "I'd like to guess how to say something"
+           2fa390c5-1e78-4da6-afc2-960e25573f95  rev 1  — 24% shorter than its text implies
+     0.76  known           2280ms  "you wanted to show me something frequently"
+           5dbe60d2-c16e-4da0-9752-28cb5b48a844  rev 1  — 24% shorter than its text implies
+     0.76  known           2064ms  "You wanted to practise with me tonight"
+           f582aaad-9250-492f-85f2-464a63e2da58  rev 1  — 24% shorter than its text implies
+     0.76  known           2280ms  "but I'm learning with another person today"
+           09e9aff0-106c-44ff-8c42-4481889c4195  rev 1  — 24% shorter than its text implies
+     0.76  known           2496ms  "I don't care about going back to practise more"
+           b60ed7b7-588c-403e-96ba-a54ca3a59538  rev 1  — 24% shorter than its text implies
+     0.76  known           3744ms  "Do you know how to speak Spanish with someone else if
+           a2c333c8-e4b2-4106-b369-e8894d4f91cc  rev 1  — 24% shorter than its text implies
+    0.761  known           2664ms  "I want to practise speaking with someone else now"
+           9d401eb2-3285-4262-bcd1-20f91ed435eb  rev 1  — 24% shorter than its text implies
+    0.761  known           2880ms  "you want to learn his name quickly with everyone else
+           95c57492-a399-4901-9d28-14d76f3b0fe3  rev 1  — 24% shorter than its text implies
+    0.761  known           2880ms  "I can nearly remember how to say something in spanish
+           4b1e0c89-2fac-4ecf-a570-cf8b7f0cd5ab  rev 1  — 24% shorter than its text implies
+    0.761  known           2664ms  "I like being able to ask you something in spanish"
+           b532acfa-396d-4ecf-81bf-e677d7c7169d  rev 1  — 24% shorter than its text implies
+    0.761  known           2664ms  "I don't worry about speaking Spanish with you now"
+           da10a077-635e-4c36-830e-64f17bb48ba9  rev 1  — 24% shorter than its text implies
+    0.761  known           2664ms  "you know how to speak Spanish with another person"
+           359d6d73-1476-42ec-844d-33899f0118dc  rev 1  — 24% shorter than its text implies
+    0.762  known           1416ms  "when other people are here"
+           746bb88b-37f9-4b19-b939-3d9ca1f69214  rev 1  — 24% shorter than its text implies
+    0.762  known           3264ms  "I'd like to be able to guess how to say something in 
+           71858843-3598-4109-98c9-397476618d0f  rev 1  — 24% shorter than its text implies
+    0.762  known           3048ms  "he wants to explain something when other people are h
+           46898f28-4894-4b12-a2ae-ffbd4517daa0  rev 1  — 24% shorter than its text implies
+    0.762  known           1416ms  "I'm learning at the moment"
+           7eda53d1-6727-4fc7-a682-e302238dcffc  rev 1  — 24% shorter than its text implies
+    0.762  known           2232ms  "I was starting to speak better last night"
+           e7c169d2-909d-46af-ae75-c584d726d7a2  rev 1  — 24% shorter than its text implies
+    0.763  presentation    6216ms  "The Spanish for: 'what's going to happen', as in — 'I
+           b0984343-61a0-4847-8825-3c5e9cfa3e45  rev 1  — 24% shorter than its text implies
+    0.763  known           2016ms  "I like practising with another person"
+           1aefd238-3176-4360-bbb7-e88ef4d18f9f  rev 1  — 24% shorter than its text implies
+    0.763  known           2616ms  "I wasn't thinking about speaking more frequently"
+           ea1b6d76-1621-453e-8690-6e702dd88eb9  rev 1  — 24% shorter than its text implies
+    0.764  known           2400ms  "I've been learning to speak with you all day"
+           0c4b26a8-6729-4a57-b0a0-65da5bb709a8  rev 1  — 24% shorter than its text implies
+    0.764  known           1800ms  "I'm going to think about it today"
+           a8cfd171-9dad-4916-acc9-0e2b36f5f247  rev 1  — 24% shorter than its text implies
+    0.765  known           2568ms  "I want to learn how to say something in Spanish"
+           71da5015-4cac-4f54-95f0-8a847fdd019c  rev 1  — 24% shorter than its text implies
+    0.765  known           2952ms  "I'd like to practise speaking with you very well toda
+           8d17e90d-b180-4775-8a6e-040e04349096  rev 1  — 23% shorter than its text implies
+    0.765  known           1968ms  "are you going to speak spanish today"
+           5a4e6fd4-fa71-47e9-8894-ef45be904453  rev 1  — 23% shorter than its text implies
+    0.765  known           1968ms  "You wanted to practise with me today"
+           23105dd6-851d-4a38-b013-5b80019bf4ec  rev 1  — 23% shorter than its text implies
+    0.765  known           3168ms  "I'm a little tired but I've been learning for about a
+           69276cd4-5840-4379-9d90-330515bb35b9  rev 1  — 24% shorter than its text implies
+    0.765  known           2952ms  "I don't worry about speaking with another person late
+           3ddc73aa-6962-4983-bf84-6567aa93401d  rev 1  — 23% shorter than its text implies
+    0.765  known           4752ms  "I'm going to practise speaking with another person, I
+           1a29d815-f8f7-4d19-82f5-5c465713eb9e  rev 1  — 24% shorter than its text implies
+    0.766  presentation    5856ms  "The Spanish for: 'I wouldn't like', as in — 'I wouldn
+           7eb76279-6465-49d6-b39a-7334f7be979e  rev 1  — 23% shorter than its text implies
+    0.766  known           2352ms  "I'm trying to remember how to say something"
+           7d198d36-1552-49af-9c3e-9066ba0e6313  rev 1  — 23% shorter than its text implies
+    0.766  known           3504ms  "I want to be able to practise speaking with another p
+           eafee68f-09fc-4e88-b68b-b7bbfcf0f769  rev 1  — 23% shorter than its text implies
+    0.766  known           1752ms  "she wants to learn something now"
+           ef14e059-51f0-4bd7-9b62-7099cb5c465a  rev 1  — 23% shorter than its text implies
+    0.766  known           2736ms  "I want to speak with another person this afternoon"
+           91534a5e-9807-495b-8be3-806b09706af5  rev 1  — 23% shorter than its text implies
+    0.766  known           1752ms  "I wasn't thinking about learning"
+           258d9e58-eac9-47a7-b200-570c726e70f3  rev 1  — 23% shorter than its text implies
+    0.767  known           2520ms  "he wants to come back with everyone else today"
+           050790b7-d2bf-41ba-9f50-96acd114a2d6  rev 1  — 23% shorter than its text implies
+    0.767  known           2904ms  "but you want to come back with everyone else later on
+           8e682007-507c-4e3a-b03e-5c5f9769b7fc  rev 1  — 23% shorter than its text implies
+    0.767  known           2520ms  "she wants to start talking as soon as possible"
+           66ee2bf2-4229-4396-b400-2b528c0a50d3  rev 1  — 23% shorter than its text implies
+    0.767  known           2136ms  "you wanted to speak with another person"
+           0587762b-2726-4953-b069-4622f455c046  rev 1  — 23% shorter than its text implies
+    0.768  known           2688ms  "I'd like to practise speaking with another person"
+           ffe7d217-fa4f-48fb-b27e-290c1eed0087  rev 1  — 23% shorter than its text implies
+    0.768  known           2304ms  "are you learning with another person today"
+           32a58c71-4b07-494c-946e-19f034a3eba3  rev 1  — 23% shorter than its text implies
+    0.768  known           1920ms  "but I'm trying to learn Spanish now"
+           745f5cc2-e919-439d-bad2-e7f747768525  rev 1  — 23% shorter than its text implies
+    0.769  known           2088ms  "I'm going to try to speak with you now"
+           09841d5c-2d15-4992-a64a-5ebf6bd68134  rev 1  — 23% shorter than its text implies
+    0.769  known           2088ms  "you speak a little Spanish with me now"
+           4e03e6bd-c1b6-49f5-9723-a68aefabca43  rev 1  — 23% shorter than its text implies
+    0.769  known           2856ms  "I want to practise speaking more before I have to go"
+           1b2ba9bb-2f34-44ed-bd6d-475b473513aa  rev 1  — 23% shorter than its text implies
+    0.769  known           2856ms  "I don't like practising too much with another person"
+           ff25b86d-96ca-438f-9923-2d8650797174  rev 1  — 23% shorter than its text implies
+    0.769  known           2088ms  "She wants to practise speaking tonight"
+           aabe0c29-15de-425b-a988-b9e98c78b645  rev 1  — 23% shorter than its text implies
+    0.769  known           2856ms  "she doesn't want to read anything with me in spanish"
+           fb745965-d45e-446c-be2f-a09eae041162  rev 1  — 23% shorter than its text implies
+    0.769  known           2472ms  "I want to practise speaking better than today"
+           8cfa36c0-693c-4588-a273-af0b1582cefd  rev 1  — 23% shorter than its text implies
+    0.769  known           4008ms  "I don't worry about making mistakes, I want to speak 
+           3879b3af-02ad-499a-b29f-56857a6f8777  rev 1  — 23% shorter than its text implies
+    0.769  known           3240ms  "I think that it's good to try to explain what I want 
+           88ecf27f-ba9b-448b-aabe-56afb147dd26  rev 1  — 23% shorter than its text implies
+    0.769  known           2856ms  "I don't worry about finishing as quickly as possible"
+           54af8f02-f603-457e-ba55-372e1e2fd44e  rev 1  — 23% shorter than its text implies
+     0.77  known           3960ms  "I'd like to practise speaking as frequently as possib
+           8f4090d4-e187-4d92-bd3a-f516ced43ef7  rev 1  — 23% shorter than its text implies
+     0.77  known           3024ms  "I'd like to practise speaking as frequently as possib
+           fe035ceb-15f1-4bf5-9134-b40dff623eef  rev 1  — 23% shorter than its text implies
+     0.77  known           2256ms  "she wants to come back with everyone else"
+           faf22b0e-3bd1-45b5-8b48-bce0e784097c  rev 1  — 23% shorter than its text implies
+     0.77  known           1704ms  "you want to speak Spanish today"
+           0242554d-3e9c-4275-8f7b-2d9e197b05ee  rev 1  — 23% shorter than its text implies
+     0.77  known           1704ms  "I don't want to come back today"
+           651fcf79-4ef1-437b-bad2-9f66df64af42  rev 1  — 23% shorter than its text implies
+     0.77  known           2640ms  "because I can try to remember the whole sentence"
+           78e9b8f2-d30c-4044-ad98-4a255e0e96ad  rev 1  — 23% shorter than its text implies
+     0.77  known           2640ms  "are you going to help me start talking more soon"
+           3c69eded-ab3f-48b9-9a83-32eac2f38707  rev 1  — 23% shorter than its text implies
+     0.77  known           3192ms  "are you going to help me start talking before I have 
+           4f35cb21-2463-40c8-9502-d801c9204f56  rev 1  — 23% shorter than its text implies
+     0.77  known           1704ms  "I want to practise this morning"
+           41a5e7c0-2b63-4d29-b82a-7328666e47ea  rev 1  — 23% shorter than its text implies
+     0.77  known           3024ms  "I was starting to practise speaking with another pers
+           90daf05e-34cc-4fb5-a937-797de7eeda2f  rev 1  — 23% shorter than its text implies
+     0.77  known           2256ms  "I don't worry about learning Spanish here"
+           c10f4835-d6e3-4906-87ec-d5b6ca2ec04b  rev 1  — 23% shorter than its text implies
+     0.77  known           2256ms  "I don't need to know everything right now"
+           ecb5076d-d29f-4976-857b-1721a8b4ac14  rev 1  — 23% shorter than its text implies
+     0.77  known           2640ms  "I don't care about practising with you right now"
+           6251214a-2640-49e0-922f-26ded36d5886  rev 1  — 23% shorter than its text implies
+    0.771  known           1872ms  "I'm going to try to guess tomorrow"
+           f773e2f9-cbd7-4a68-ad45-eb49252eeb37  rev 1  — 23% shorter than its text implies
+    0.771  known           2808ms  "but I don't want to find out what the answer is now"
+           490e09d7-4502-4637-8a33-4a0fef4f4226  rev 1  — 23% shorter than its text implies
+    0.771  known           2424ms  "I can meet people who speak Spanish with you"
+           d3f4d32b-717d-4399-8f29-6a4178e4d130  rev 1  — 23% shorter than its text implies
+    0.771  known           3744ms  "I don't like taking too much time speaking with anoth
+           668708d6-3904-40af-961e-04ad87f4aeb4  rev 1  — 23% shorter than its text implies
+    0.772  known           2976ms  "he doesn't want to be quiet when other people are her
+           000beef3-2396-4606-adc5-e70b0c06955f  rev 1  — 23% shorter than its text implies
+    0.772  known           2592ms  "she wants to start talking a little spanish now"
+           9e976c93-a744-475f-825c-e0250defc0c1  rev 1  — 23% shorter than its text implies
+    0.772  known           2976ms  "I'm looking forward to speaking a little spanish toda
+           9e43d880-eee8-4a42-b254-b9f7be05540c  rev 1  — 23% shorter than its text implies
+    0.772  known           2976ms  "I want to practise speaking when other people are her
+           7dedd055-aa9e-4359-911e-67238529ef16  rev 1  — 23% shorter than its text implies
+    0.772  known           3144ms  "but I'm trying to speak Spanish as frequently as poss
+           b025e5af-2b0b-4a3e-acc4-b7c1da9943be  rev 1  — 23% shorter than its text implies
+    0.773  known           2928ms  "I wouldn't like to guess how to say a word in Spanish
+           dbd4c70a-b06e-481b-ae85-88c5b41a6deb  rev 1  — 23% shorter than its text implies
+    0.773  known           3864ms  "I am not going to be able to get to know people who s
+           b8d74e07-661c-419a-b3ac-e6d844b6b99a  rev 1  — 23% shorter than its text implies
+    0.773  known           3312ms  "I like feeling as if I were nearly speaking spanish w
+           a1c29f2d-a974-41c1-b98d-37454d96e19f  rev 1  — 23% shorter than its text implies
+    0.773  known           1656ms  "she wants to show me something"
+           12cb94c2-e952-4196-a87e-f180af5434cf  rev 1  — 23% shorter than its text implies
+    0.774  known           2544ms  "I want to be able to speak with another person"
+           7e8510cc-597e-4279-ac73-55a37be0c9ee  rev 1  — 23% shorter than its text implies
+    0.774  known           3648ms  "I'd like to be able to explain what I want to say aft
+           8f8ac50a-2048-4e01-b42f-4bfce9e40191  rev 1  — 23% shorter than its text implies
+    0.774  known           3648ms  "I'd like to be able to practise speaking as frequentl
+           c3176f52-57e1-4546-a44a-6efe9d4897a8  rev 1  — 23% shorter than its text implies
+    0.774  known           2544ms  "I'm going to try to say what's going to happen"
+           5bee5d25-eacd-461b-a119-2007fbf2d8bd  rev 1  — 23% shorter than its text implies
+    0.774  known           1272ms  "how do you feel tonight"
+           9cd7a202-42ab-47b2-bacb-55aaf1782947  rev 1  — 23% shorter than its text implies
+    0.774  known           3096ms  "I wasn't thinking about meeting people who speak Span
+           3113e873-6f22-4e3c-9927-bd57095ee3d1  rev 1  — 23% shorter than its text implies
+    0.774  known           2376ms  "She wants to know how to speak Spanish well"
+           e597fa70-5639-40f5-a6a2-c2804d53cf66  rev 1  — 23% shorter than its text implies
+    0.774  known           3096ms  "I don't worry about making mistakes, I'm trying to le
+           ef03b400-ff0e-47f1-9dd8-e5f04ec41518  rev 1  — 23% shorter than its text implies
+    0.775  known           1992ms  "I want to learn Spanish with you now"
+           2e00f17a-ed84-48e3-89d7-4d1cdfe08a1b  rev 1  — 23% shorter than its text implies
+    0.775  known           3264ms  "because I am going to practise speaking with another 
+           a3e368f4-3a9a-4062-8f4e-12d52040c522  rev 1  — 23% shorter than its text implies
+    0.775  known           3264ms  "I'm looking forward to asking something as soon as po
+           0ceeb032-e828-48ec-90aa-c35a15583a8d  rev 1  — 23% shorter than its text implies
+    0.775  known           3264ms  "I wanted to practise speaking with another person yes
+           d555b40c-b73e-4477-9c5f-fbdb94f3235a  rev 1  — 23% shorter than its text implies
+    0.775  known           2160ms  "we don't want to try to remember a word"
+           c84c2dc6-f6eb-49a4-8432-f9fa3e9c3b51  rev 1  — 22% shorter than its text implies
+    0.776  known           3216ms  "I want to speak with another person after you finish 
+           4c372b60-fa29-4524-a8db-60d4579beb96  rev 1  — 22% shorter than its text implies
+    0.776  known           2328ms  "he wants to learn something later on today"
+           b89cadb8-fc2e-4c8e-8584-f497daaac4e7  rev 1  — 22% shorter than its text implies
+    0.776  known           3048ms  "are you going to take too much time before I have to 
+           77e7ea9c-0452-4728-963f-ba798629e6b7  rev 1  — 22% shorter than its text implies
+    0.776  known           3216ms  "I am going to practise speaking better as soon as pos
+           e65feca9-4ae5-4539-b814-a47a096f8456  rev 1  — 22% shorter than its text implies
+    0.776  known           1608ms  "I wanted to practise with you"
+           f339c802-f7a9-4b66-94c0-8ecc57ef1853  rev 1  — 22% shorter than its text implies
+    0.776  known           2328ms  "he doesn't want to explain something today"
+           da0bef29-6780-40bc-8e92-bf064c882ed3  rev 1  — 22% shorter than its text implies
+    0.776  known           2328ms  "we don't want to interrupt the story today"
+           5c2aa75d-0af3-462a-a4c9-eaa0b3c2699a  rev 1  — 22% shorter than its text implies
+    0.776  known           2328ms  "I've been learning for more or less a week"
+           c40dea2a-c825-45f5-8c0b-9ccf983e1a0d  rev 1  — 22% shorter than its text implies
+    0.776  known           2328ms  "but I'm learning as frequently as possible"
+           abb1e0d5-7cd8-4b71-ad8a-f01ad0bcc42d  rev 1  — 22% shorter than its text implies
+    0.776  known           2328ms  "I'm going to finish as quickly as possible"
+           40ccaa1d-95d4-458a-97e5-a1309d41eea7  rev 1  — 22% shorter than its text implies
+    0.777  known           2496ms  "I'm trying to remember the whole sentence now"
+           e8d5ea2f-b87f-4594-b533-1c75825c5c42  rev 1  — 22% shorter than its text implies
+    0.777  known           2832ms  "I want to be able to say something in Spanish today"
+           f87dd230-1fd6-4a26-9025-1a5f327058d4  rev 1  — 22% shorter than its text implies
+    0.777  known           2832ms  "I've been learning Spanish for more or less all day"
+           9c0314b9-c6c2-4828-83b2-aea56da8a9f5  rev 1  — 22% shorter than its text implies
+    0.777  known           1776ms  "I don't want to answer right now"
+           d772e176-15c8-45b7-a961-f935ed6d820d  rev 1  — 22% shorter than its text implies
+    0.778  known           1944ms  "I want to practise Spanish with you"
+           b441eea8-52e0-45b1-8522-566cbdd73656  rev 1  — 22% shorter than its text implies
+    0.778  known           1944ms  "why are you learning her name today"
+           ffb4238b-4908-4de0-bcf6-233c88d6fcf6  rev 1  — 22% shorter than its text implies
+    0.778  known           3168ms  "You wanted to practise speaking as frequently as poss
+           d21736c3-954e-4468-874b-890e9cdfcd73  rev 1  — 22% shorter than its text implies
+    0.778  known           1944ms  "to speak when other people are here"
+           38843f66-4767-4051-b75d-a91d337a0390  rev 1  — 22% shorter than its text implies
+    0.778  known           3168ms  "you know, I'm not trying to finish as quickly as poss
+           ff3768c0-5d67-4897-bceb-f94133a2b76c  rev 1  — 22% shorter than its text implies
+    0.779  known           2616ms  "I want to try to say something in Spanish today"
+           104ca803-3d00-4aa7-988d-af3f47e03e1b  rev 1  — 22% shorter than its text implies
+    0.779  known           2280ms  "I'm not sure if I can explain what I mean"
+           2900c0a0-d778-4442-bdca-6c280c674b72  rev 1  — 22% shorter than its text implies
+    0.779  known           2448ms  "I want you to speak Spanish with me tomorrow"
+           db609fb7-e54a-4ae1-928d-953bab194b02  rev 1  — 22% shorter than its text implies
+    0.779  known           2448ms  "but he wants to come back with everyone else"
+           5005c54e-9b1e-4e08-a855-2c370c50cdc3  rev 1  — 22% shorter than its text implies
+    0.779  known           4008ms  "I am not going to be able to practise speaking with a
+           9e8e5f23-57cd-4408-8609-236bcaaee1c3  rev 1  — 22% shorter than its text implies
+    0.779  known           2280ms  "he wants to come back as soon as possible"
+           c2d8651b-fdc1-4fab-9e3b-e9909cda66a8  rev 1  — 22% shorter than its text implies
+    0.779  known           2448ms  "I want to read something with another person"
+           8102f820-11eb-41f2-8366-789c3c81e5b3  rev 1  — 22% shorter than its text implies
+    0.779  known           2448ms  "I'm going to try to think about it carefully"
+           b4e4a641-c8f8-49a4-a914-163f1a3fa070  rev 1  — 22% shorter than its text implies
+    0.779  known           2448ms  "but I'm trying to learn Spanish this morning"
+           f1a1efc6-6f2b-46c1-a551-f8810f361f92  rev 1  — 22% shorter than its text implies
+    0.779  known           3672ms  "I don't worry about speaking today, I want to try eve
+           80a0536a-fda8-47df-a838-62d41ada2bba  rev 1  — 22% shorter than its text implies
+     0.78  known           3120ms  "I want to try to explain what's going to happen tomor
+           5aa7580b-af60-4dba-8b60-626f7ad4becc  rev 1  — 22% shorter than its text implies
+     0.78  known           2784ms  "are you going to help me remember more easily soon"
+           49d0b63b-615a-4995-95e6-52b3c23ec7c9  rev 1  — 22% shorter than its text implies
+     0.78  known           2952ms  "I like feeling as if I were learning spanish with you
+           7af2b625-efba-4d93-a21b-5129133cd468  rev 1  — 22% shorter than its text implies
+     0.78  known           2952ms  "I'm looking forward to practising with another person
+           b358897d-8f8e-4386-949b-c6181c90f075  rev 1  — 22% shorter than its text implies
+     0.78  known           2784ms  "I wanted to ask you something in spanish yesterday"
+           c9e6fc4b-490a-4c03-bbc4-e7b243e29f72  rev 1  — 22% shorter than its text implies
+     0.78  known           2952ms  "I wasn't thinking about learning Spanish more quickly
+           20db4457-742b-4999-a9ce-8ff9dbf2164e  rev 1  — 22% shorter than its text implies
+     0.78  known           1560ms  "I don't worry about learning"
+           d5d9afde-77b4-4da9-807d-33dd374ad020  rev 1  — 22% shorter than its text implies
+     0.78  known           3288ms  "I think that it's good not to finish as quickly as po
+           0ecf4e06-7d2b-4000-b286-bbb963454168  rev 1  — 22% shorter than its text implies
+    0.781  known           2232ms  "I'm going to try to explain what I mean."
+           0feec918-b7d0-4430-91cf-4a4e4074301c  rev 1  — 22% shorter than its text implies
+    0.781  known           2232ms  "She wants to find out what the answer is"
+           df9e0085-4181-41c0-81f5-518fb6fa4061  rev 1  — 22% shorter than its text implies
+    0.781  known           2232ms  "I'm trying to learn how to say something"
+           0a825787-6ab5-4c58-9f8f-d57bebafc171  rev 1  — 22% shorter than its text implies
+    0.781  known           2400ms  "he wants to come back later on with someone"
+           1ad681d7-53a5-4ac3-bbd7-1e714d4328cf  rev 1  — 22% shorter than its text implies
+    0.781  known           3960ms  "I like feeling as if I were nearly speaking spanish w
+           e17e8916-27c8-4901-b308-e0aa59ca0679  rev 1  — 22% shorter than its text implies
+    0.781  known           1896ms  "are you going to speak better soon"
+           38d79947-946a-4f41-953a-6758c0d2dffa  rev 1  — 22% shorter than its text implies
+    0.781  known           2400ms  "I've been learning to speak Spanish all day"
+           e29407a1-f89c-442b-b9d1-dd0146cb4a35  rev 1  — 22% shorter than its text implies
+    0.781  known           1896ms  "I want to think about it carefully"
+           ec203c9c-4109-4f0b-a40e-d51b3965432f  rev 1  — 22% shorter than its text implies
+    0.782  known           3240ms  "I want to speak Spanish with you as frequently as pos
+           d68b583c-b231-4784-ab4c-a4f2196812c4  rev 1  — 22% shorter than its text implies
+    0.782  known           3744ms  "I am not going to be able to explain everything befor
+           0d21d734-7ffc-4bf9-87c9-d9b712d2a0b8  rev 1  — 22% shorter than its text implies
+    0.782  known           3912ms  "because I am going to start talking with people who s
+           46f2f427-316b-4664-8fb7-9e19c9948b3d  rev 1  — 22% shorter than its text implies
+    0.782  known           2568ms  "are you going to try to learn her name quickly"
+           578c8828-b073-4e6a-a6ef-7c4b581356b2  rev 1  — 22% shorter than its text implies
+    0.782  known           2736ms  "are you going to be able to remember a word today"
+           8e1b1e20-0e2a-4f43-b70c-875974b6cecc  rev 1  — 22% shorter than its text implies
+    0.782  known           2736ms  "I wanted to practise speaking with another person"
+           03ed2987-0e87-42c6-b57a-022c148db92a  rev 1  — 22% shorter than its text implies
+    0.782  known           2904ms  "I started to practise with another person last month"
+           0583b1f2-1d98-4b0b-8269-385ee3bb7197  rev 1  — 22% shorter than its text implies
+    0.782  known           2904ms  "I don't need to know everything or improve right now"
+           08d4dcfc-9ff5-447f-b7f6-eaa349a1b851  rev 1  — 22% shorter than its text implies
+    0.784  known           2016ms  "I want to practise speaking with you"
+           fd6cebd9-31d3-4ac3-9774-8a53d9638d10  rev 1  — 22% shorter than its text implies
+    0.784  known           2352ms  "I'm going to try to speak a little Spanish"
+           f15a1818-44e2-4dcc-9c3e-5cb602c3b370  rev 1  — 22% shorter than its text implies
+    0.784  known           2184ms  "we want to come back with everyone else"
+           1f91d293-cabd-45cf-9cbc-8d582d1145a3  rev 1  — 22% shorter than its text implies
+    0.784  known           1176ms  "you want to come back"
+           fe8cc74a-230e-4a65-9fc6-539237eb29f9  rev 1  — 22% shorter than its text implies
+    0.784  known           3192ms  "because I want you to speak with people who speak Spa
+           896f60fd-f1db-4d59-bb16-ee12d492f89a  rev 1  — 22% shorter than its text implies
+    0.784  known           2184ms  "I would like to be able to say her name"
+           93b4851f-3d9a-4ccf-b2f2-ec94232ac9bd  rev 1  — 22% shorter than its text implies
+    0.784  known           3528ms  "I don't like taking too much time to answer with anot
+           46f9dccf-eaee-4025-b859-d05924202336  rev 1  — 22% shorter than its text implies
+    0.784  known           3192ms  "I like feeling as if I were speaking a little spanish
+           afd92dd6-5051-4e5a-a1fb-b036343d224f  rev 1  — 22% shorter than its text implies
+    0.784  known           2856ms  "are you going to take too much time to answer today"
+           4e4bfc6c-4ae0-4232-badf-c2becb0e224a  rev 1  — 22% shorter than its text implies
+    0.784  known           1680ms  "we don't want to say something"
+           29272bd7-2dad-4dfa-8f22-30cbe08f7c88  rev 1  — 22% shorter than its text implies
+    0.784  known           2352ms  "I was starting to speak Spanish last night"
+           e153c42a-6360-4359-8450-23ae291a65bc  rev 1  — 22% shorter than its text implies
+    0.784  known           2856ms  "you know, I don't care about explaining what I mean"
+           0fbe72d2-f536-498d-ad54-21d74625a66a  rev 1  — 22% shorter than its text implies
+    0.784  known           3192ms  "I think that I want to go back and practise speaking 
+           893a0b44-db38-4ccd-b99f-ad6a1c012377  rev 1  — 22% shorter than its text implies
+    0.784  known           1680ms  "I'm not trying to finish today"
+           5fd27ed9-eb6f-4526-ac9d-da7fc5d384db  rev 1  — 22% shorter than its text implies
+    0.786  presentation    5616ms  "The Spanish for: 'tomorrow', as in — 'I wouldn't like
+           bb573b21-2805-46ff-87dc-3a20e49343bc  rev 1  — 21% shorter than its text implies
+    0.786  presentation    5616ms  "The Spanish for: 'she doesn't want', as in — 'She doe
+           5da95d74-0aa1-4bd1-96ae-0b8d2f59374f  rev 1  — 21% shorter than its text implies
+    0.786  known           2808ms  "I want to speak with you as frequently as possible"
+           669313fb-1853-4600-baaf-3a49c954b3f5  rev 1  — 21% shorter than its text implies
+    0.786  known           2808ms  "I want to remember how to say something in Spanish"
+           113d4833-91b3-4034-b74a-acc49439bb97  rev 1  — 21% shorter than its text implies
+    0.786  known           2808ms  "and I want you to speak very well with me tomorrow"
+           b147102f-872c-4c48-8442-b4fa5a192b08  rev 1  — 21% shorter than its text implies
+    0.786  known           2976ms  "I'm starting to practise speaking with another person
+           0279468f-f4d9-472d-9f39-8482df1c8114  rev 1  — 21% shorter than its text implies
+    0.786  known           3144ms  "I don't worry about trying to explain what I want to 
+           0f7a1ce3-621c-4a25-9a1a-933ed6515289  rev 1  — 21% shorter than its text implies
+    0.786  known           3144ms  "I don't worry about practising with another person to
+           7ec7b67e-afe0-4249-98c6-edc9d0ab3015  rev 1  — 21% shorter than its text implies
+    0.787  known           1800ms  "but I don't want to stop talking"
+           edb105eb-a707-4b1b-875c-bb540f763cad  rev 1  — 21% shorter than its text implies
+    0.787  known           2136ms  "I'm trying to say something in Spanish"
+           f269e55a-6960-4458-8bb0-e1ce0b928ef1  rev 1  — 21% shorter than its text implies
+    0.787  known           2304ms  "I'm going to explain something in Spanish"
+           3d7b4dfd-112e-493b-8e4d-6b5253728d77  rev 1  — 21% shorter than its text implies
+    0.787  known           1800ms  "I'd like to speak with you today"
+           e1019977-8f20-4c67-81be-618874fa07b9  rev 1  — 21% shorter than its text implies
+    0.787  known           2472ms  "I don't want to come back with everyone else"
+           2dfa5027-0325-4227-8e28-a230fc6ae69d  rev 1  — 21% shorter than its text implies
+    0.787  known           2304ms  "he wants to come back at six this evening"
+           816afbbd-40e9-4906-b006-52139b362502  rev 1  — 21% shorter than its text implies
+    0.787  known           2136ms  "how long do you want to speak Spanish?"
+           baf5741f-1981-4fe3-94cd-1dc49c1b1bee  rev 1  — 21% shorter than its text implies
+    0.787  known           2136ms  "How long do you want to learn Spanish?"
+           ffeb228c-92a2-4f32-83df-80d6cdfa9079  rev 1  — 21% shorter than its text implies
+    0.787  known           2136ms  "we don't want to explain something now"
+           6ac980dc-180f-4284-9582-816c5eb29634  rev 1  — 21% shorter than its text implies
+    0.787  known           2472ms  "I've been learning all day with someone else"
+           5daf10eb-9f85-4e3d-9eb6-4b4d3f8715c7  rev 1  — 21% shorter than its text implies
+    0.787  known           2136ms  "I want to speak better than last night"
+           dd5abda3-06a7-4ade-829a-739f7d09a887  rev 1  — 21% shorter than its text implies
+    0.787  known           2472ms  "She doesn't want to know or answer right now"
+           a6916821-0a87-4e8c-93fa-72904f5c50aa  rev 1  — 21% shorter than its text implies
+    0.788  known           2928ms  "he doesn't want to speak with another person tonight"
+           3e4f1644-e523-4894-8d44-d2f9ad96450d  rev 1  — 21% shorter than its text implies
+    0.788  known           1632ms  "I don't want to interrupt now"
+           1588739f-6a03-42fe-9df9-f34283ee66b6  rev 1  — 21% shorter than its text implies
+    0.788  known           1464ms  "we don't want to interrupt"
+           f9bbfd2a-f9a7-4de5-abb8-a65b450b1609  rev 1  — 21% shorter than its text implies
+    0.788  known           1632ms  "i've been learning for a week"
+           0d2e7746-3fdd-437a-8e82-a684efb990ca  rev 1  — 21% shorter than its text implies
+    0.788  known           3432ms  "I don't worry about making mistakes here, I'm trying 
+           c00ef440-283a-4151-8b5c-8034350b2cae  rev 1  — 21% shorter than its text implies
+    0.789  known           3720ms  "you speak Spanish very well — I want to practise spea
+           3ee24f99-ec81-45d7-a06e-b91b8cc4fe83  rev 1  — 21% shorter than its text implies
+    0.789  known           2424ms  "I would like to practise speaking more soon"
+           42e85b0d-def6-429c-8099-528684de4e3e  rev 1  — 21% shorter than its text implies
+    0.789  known           3552ms  "it's useful to explain what you want to say as soon a
+           36862654-ca53-4011-9b03-9a6c7c410ff5  rev 1  — 21% shorter than its text implies
+    0.789  known           2760ms  "he doesn't want to be quiet when speaking spanish"
+           ffcbe8c8-3849-4434-a094-84eb8f672380  rev 1  — 21% shorter than its text implies
+    0.789  known           2424ms  "she doesn't want to say anything in spanish"
+           f2edd417-2c8f-41f6-bd09-9b9d0fbc2a41  rev 1  — 21% shorter than its text implies
+    0.789  known           2592ms  "I've been learning to practise Spanish all day"
+           94f66284-f54c-4093-af63-8cbd71e6decf  rev 1  — 21% shorter than its text implies
+     0.79  known           2088ms  "I wasn't thinking about how to answer"
+           50e8b01c-8df9-4d2c-92c6-66f1abb9ce00  rev 1  — 21% shorter than its text implies
+     0.79  presentation    5640ms  "The Spanish for: 'to guess', as in — 'I wouldn't like
+           595becf3-a846-4fb6-840c-73538146bcbe  rev 1  — 21% shorter than its text implies
+     0.79  known           1128ms  "you've been learning"
+           feadb0fa-3e54-459d-bc4c-64b6456c900f  rev 1  — 21% shorter than its text implies
+     0.79  known           2088ms  "I want to learn how to speak with you"
+           c4a11c90-4455-4a26-89db-5bdc160f7b92  rev 1  — 21% shorter than its text implies
+     0.79  known           2256ms  "I'd like to speak a little Spanish today"
+           769e3301-0c6c-416b-8d6b-ad184b7f2e9b  rev 1  — 21% shorter than its text implies
+     0.79  known           4344ms  "I wouldn't like to speak with you today if I can't ex
+           f30d184f-3da6-4d14-8b54-fbec2d6daa14  rev 1  — 21% shorter than its text implies
+     0.79  known           2256ms  "he wants to speak a little Spanish today"
+           6e13107f-1f49-449a-8026-9ba1c7a878de  rev 1  — 21% shorter than its text implies
+     0.79  known           3048ms  "she wants to get to know people who speak spanish soo
+           fc4aaf1b-2fda-4546-bf05-94ebca7925ab  rev 1  — 21% shorter than its text implies
+     0.79  known           3384ms  "I like feeling as if I were nearly learning the whole
+           78c894aa-da7d-4fb8-8b34-56ad850c8861  rev 1  — 21% shorter than its text implies
+     0.79  known           2256ms  "she wants to explain the story carefully"
+           2edd2072-96f1-4486-bb0f-c4278cc7883f  rev 1  — 21% shorter than its text implies
+     0.79  known           3384ms  "I'm a little tired but I started to think about it ca
+           bd670c09-948b-44df-a67f-e97ae2b78894  rev 1  — 21% shorter than its text implies
+    0.791  known           1920ms  "I'm going to practise speaking now"
+           ba7ea6a8-8e52-4886-832c-21333cce2cf5  rev 1  — 21% shorter than its text implies
+    0.791  known           2544ms  "I want to practise speaking with someone else"
+           7c682213-648c-4b53-aa91-624a39559025  rev 1  — 21% shorter than its text implies
+    0.791  known           3504ms  "and I'd like to learn — I'm going to practise speakin
+           b7e1dc6d-2268-4664-9bc5-4d01ca8cf1e3  rev 1  — 21% shorter than its text implies
+    0.791  known           2712ms  "I'd like to be able to practise speaking all day"
+           be8e0926-e3ca-4ee2-befb-9147e03e7176  rev 1  — 21% shorter than its text implies
+    0.791  known           1752ms  "she wants to start talking more"
+           d5d68765-f183-47fd-b2b8-ece3fe2f02af  rev 1  — 21% shorter than its text implies
+    0.791  known           2544ms  "he wants to help me speak spanish more easily"
+           6f142eef-6ffe-48a3-bcaf-39cf65f16681  rev 1  — 21% shorter than its text implies
+    0.791  known           2712ms  "it's useful to start talking as soon as possible"
+           4d249f45-cabd-4bf6-a3ab-76a17f3045c5  rev 1  — 21% shorter than its text implies
+    0.791  known           2712ms  "He doesn't want to practise speaking spanish now"
+           eff11ba2-6512-4fc2-85c2-c9d4b6ab7101  rev 1  — 21% shorter than its text implies
+    0.791  known           1920ms  "I want to learn how to answer well"
+           550ef589-fee3-47a7-8d6d-73355943e157  rev 1  — 21% shorter than its text implies
+    0.791  known           1920ms  "I don't worry about practising now"
+           a4cfb95a-9489-40d3-86ed-dffd37dab117  rev 1  — 21% shorter than its text implies
+    0.792  presentation    4752ms  "The Spanish for: 'how long', as in — 'how long have y
+           87d4801c-a724-49ed-ad21-4a8544008d23  rev 1  — 21% shorter than its text implies
+    0.792  known           2376ms  "I want to speak better as soon as possible"
+           277ab86c-0bbd-4572-bbca-c3327c211669  rev 1  — 21% shorter than its text implies
+    0.792  known           2376ms  "I want to practise speaking this afternoon"
+           c9e505c5-d977-4890-89e5-0a0d3b0ca16e  rev 1  — 21% shorter than its text implies
+    0.793  known           2040ms  "I want to speak Spanish with you now"
+           ccaef46c-9789-43ab-9483-f0dfce361fed  rev 1  — 21% shorter than its text implies
+    0.793  known           2208ms  "I want to speak in Spanish with you now"
+           c610846f-e839-48e6-b98e-5ce0a45c157c  rev 1  — 21% shorter than its text implies
+    0.793  known           2040ms  "I want to practise speaking tomorrow"
+           13caa5f3-9c94-4506-a2cf-9ca603e654ef  rev 1  — 21% shorter than its text implies
+    0.793  known           2832ms  "I'd like to explain what's going to happen all day"
+           4a7218d9-c329-4dab-bdaa-224bb33d29d7  rev 1  — 21% shorter than its text implies
+    0.793  known           2832ms  "I wasn't thinking about speaking or learning today"
+           2aeabf90-5854-4798-9df8-0b08a3243a27  rev 1  — 21% shorter than its text implies
+    0.793  known           2040ms  "I don't worry about saying something"
+           5d715d8f-e55d-4032-813e-aa92963dfd78  rev 1  — 21% shorter than its text implies
+    0.794  known           2496ms  "I want to practise speaking Spanish with you"
+           19a164c5-93f6-4003-9a45-bb2f2f3b04d9  rev 1  — 21% shorter than its text implies
+    0.794  known           2664ms  "I'm going to practise as frequently as possible"
+           9573d5ec-67ad-45cb-8cb5-594174b1f36c  rev 1  — 21% shorter than its text implies
+    0.794  known           3744ms  "I want to be able to speak a little Spanish after you
+           0405c436-3103-4e96-af44-d76774e226a7  rev 1  — 21% shorter than its text implies
+    0.794  known           2664ms  "I'm going to practise speaking all day tomorrow"
+           6849c743-654b-4a52-a1e1-fd2a9d1f47e5  rev 1  — 21% shorter than its text implies
+    0.794  known           2664ms  "but he wants to stop talking with everyone else"
+           597e959f-a42c-4a96-adb2-f1c2a9176630  rev 1  — 21% shorter than its text implies
+    0.794  known           3744ms  "I like feeling as if I were ready to go and speak spa
+           f404442d-af08-4a1f-a0c0-02cae8086b76  rev 1  — 21% shorter than its text implies
+    0.794  known           1872ms  "she doesn't want to read anything"
+           74f45700-bfac-4393-919c-3bb7c9b17fc1  rev 1  — 21% shorter than its text implies
+    0.795  known           1704ms  "How do you feel at the moment?"
+           4a57815e-592b-4f48-be23-465eef0e6d18  rev 1  — 20% shorter than its text implies
+    0.795  known           2784ms  "because I am trying to learn a little spanish now"
+           4b7acf8a-b554-4bc6-9102-fea5c900662a  rev 1  — 20% shorter than its text implies
+    0.795  known           2328ms  "because I would like to practise speaking"
+           f47ad1c0-5d6c-48e3-9618-4d1ff9e37ef1  rev 1  — 21% shorter than its text implies
+    0.795  known           1704ms  "I don't like speaking too much"
+           3c141379-d8bf-46f3-932e-af7e12afa8a1  rev 1  — 20% shorter than its text implies
+    0.795  known           3576ms  "She doesn't want to practise speaking as frequently a
+           b92f5ae1-d3e3-4152-aa4a-9298c5acfc83  rev 1  — 21% shorter than its text implies
+    0.795  known           3408ms  "I feel well, I want to practise speaking with another
+           441ca90d-66c1-46f2-9023-1492477d4942  rev 1  — 20% shorter than its text implies
+    0.795  known           3408ms  "I can make mistakes, I don't worry about practising s
+           a5b6cd33-2973-47ea-a601-83663ef765eb  rev 1  — 20% shorter than its text implies
+    0.796  known           2160ms  "I'm going to explain what I mean today"
+           38a72c0c-af0f-4d30-bb96-df01a5661bd9  rev 1  — 20% shorter than its text implies
+    0.796  known           2616ms  "are you learning how to say what I want to say"
+           40a2035c-9f18-4ae6-99cf-cc30a7ec5951  rev 1  — 20% shorter than its text implies
+    0.796  known           2616ms  "she wants to learn a little spanish easily now"
+           141528cd-b161-40ad-ab2c-1d804c80e95f  rev 1  — 20% shorter than its text implies
+    0.796  known           2616ms  "I don't care about learning Spanish frequently"
+           92b79226-7701-4556-a8f8-91332a4308fa  rev 1  — 20% shorter than its text implies
+    0.796  known           3072ms  "I don't care about explaining what I want to say toda
+           9d4e1589-26b6-4893-a423-6c02e462adc2  rev 1  — 20% shorter than its text implies
+    0.797  known           1992ms  "you wanted to speak with me tonight"
+           6327f05f-ee36-4363-a7dc-372299ab9f7f  rev 1  — 20% shorter than its text implies
+    0.797  known           1992ms  "I don't care about making mistakes."
+           7b457a77-ec56-40f2-a372-64425d197490  rev 1  — 20% shorter than its text implies
+    0.797  known           2904ms  "I'm trying to be able to speak a little Spanish now"
+           cc9fe7f1-52be-470d-9010-e8244fff3f5e  rev 1  — 20% shorter than its text implies
+    0.797  known           2448ms  "he wants to try to say something in Spanish"
+           2748d05c-6984-4666-8e77-3eb88dfa64bd  rev 1  — 20% shorter than its text implies
+    0.797  known           2904ms  "I am not going to be able to explain too much today"
+           59766e28-136e-4619-85c9-c98fcff8530b  rev 1  — 20% shorter than its text implies
+    0.797  known           3528ms  "I don't like taking too much time to answer what I wa
+           ee748f74-18c1-44e3-92f6-9fbeb486055b  rev 1  — 20% shorter than its text implies
+    0.797  known           1992ms  "he doesn't want to be quiet with me"
+           2af3e400-0800-4bfe-845e-434e7f41a3a6  rev 1  — 20% shorter than its text implies
+    0.797  known           2448ms  "I'm a little tired but I want to learn more"
+           738214bc-85a7-4c6d-b29a-96a052075795  rev 1  — 20% shorter than its text implies
+    0.797  known           2904ms  "I can improve by speaking as frequently as possible"
+           e3fc71bd-b00a-4f8e-9d2e-20e2849bbf1e  rev 1  — 20% shorter than its text implies
+    0.797  known           4440ms  "I don't worry about making mistakes, I want to try to
+           f8ebd0ac-cc27-4227-b678-37965310c3bc  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "I want to speak Spanish with you"
+           57aef89b-2c91-467f-ac35-e3e192424c1e  rev 1  — 20% shorter than its text implies
+    0.798  known           1368ms  "I want to speak with you"
+           7dd49e84-481d-4994-a7fe-0fab758ed682  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "I'm trying to speak with you now"
+           ae64b74c-0581-42af-b6d7-8c9bfc8f80cf  rev 1  — 20% shorter than its text implies
+    0.798  known           2280ms  "I'm trying to learn something in Spanish"
+           c6e0f386-5e68-4f67-ab84-fc715ccc1486  rev 1  — 20% shorter than its text implies
+    0.798  known           3192ms  "I'm not sure about explaining something in Spanish to
+           ae1d7608-9301-4c35-867c-1b6891fffbc2  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "but I want to come back later on"
+           45b314c7-e6a4-47cd-bdf6-0067a5959865  rev 1  — 20% shorter than its text implies
+    0.798  known           3192ms  "I am not going to be able to remember the whole sente
+           278387cf-5e5e-435e-b499-606223d3d507  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "I like speaking spanish with you"
+           5fa45817-f561-4d57-9443-90cab1607822  rev 1  — 20% shorter than its text implies
+    0.798  known           2736ms  "I wanted to get to know people who speak spanish"
+           d6710838-26b1-438e-8b60-8659b8f28e95  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "we don't want to interrupt today"
+           3eeac9a2-8a7a-42bd-9fb5-5de53cd15ebf  rev 1  — 20% shorter than its text implies
+    0.798  known           2280ms  "I want to think about it carefully today"
+           cd70e03e-fb6a-49e4-957a-746036b7bbec  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "I'm a little tired at the moment"
+           08a830f0-1b26-45ed-9696-b4da33ed793d  rev 1  — 20% shorter than its text implies
+    0.798  known           2280ms  "I was starting to speak a little Spanish"
+           cafae743-381d-47e1-b71d-d6bfca6ffa8a  rev 1  — 20% shorter than its text implies
+    0.799  known           2568ms  "I'd like to be able to speak after you finish"
+           2bbff02b-6328-47d9-bf4a-080f1d0a1033  rev 1  — 20% shorter than its text implies
+    0.799  presentation    6624ms  "The Spanish for: 'when other people are here', as in 
+           0912e1cf-518a-43da-8e1c-d3e7869da778  rev 1  — 20% shorter than its text implies
+    0.799  presentation    5424ms  "The Spanish for: 'good', as in — 'because I think tha
+           b05dfd48-259b-4f21-8221-17802dbc543c  rev 1  — 20% shorter than its text implies
+    0.799  known           2112ms  "she wants to try to explain something"
+           5776f159-ce4e-4c48-966a-3b2873de92e3  rev 1  — 20% shorter than its text implies
+    0.799  known           2568ms  "I like feeling as if I were ready to go today"
+           9d934a29-2bf1-4f8b-8f7e-5391b4106c22  rev 1  — 20% shorter than its text implies
+      0.8  known           1944ms  "you want to learn his name quickly"
+           e6c3d3b5-63c3-4e9f-bf5c-c13002c291fc  rev 1  — 20% shorter than its text implies
+      0.8  known           1944ms  "I'm trying to remember what I mean"
+           457a636c-4e2a-4f68-b0c1-ee3e827acfac  rev 1  — 20% shorter than its text implies
+      0.8  known           3888ms  "he wants to practise Spanish with everyone else as of
+           8e50f37b-1fd2-4cb7-abdd-b8796d15b31a  rev 1  — 20% shorter than its text implies
+      0.8  known           2856ms  "she wants to come back with everyone else later on"
+           44b6f3ee-ca06-4a53-8738-6e9b4cf8d947  rev 1  — 20% shorter than its text implies
+      0.8  known           2400ms  "she wants to find out how to say something"
+           b4d6b30c-694d-4880-ab83-381cc45fb211  rev 1  — 20% shorter than its text implies
+      0.8  known           2400ms  "I like trying to remember the whole phrase"
+           a098e922-2af6-4291-baa9-1cee5571a2c4  rev 1  — 20% shorter than its text implies
+      0.8  known           2400ms  "he doesn't want to be quiet this afternoon"
+           05072b57-1d01-4963-b816-9ae9bd1561a7  rev 1  — 20% shorter than its text implies
+      0.8  known           2400ms  "She doesn't want to learn or speak tonight"
+           58101789-bc08-460f-9abb-b54020c5e8f0  rev 1  — 20% shorter than its text implies
+      0.8  known           3600ms  "it's like this, I don't care about remembering the wh
+           97037567-334b-45a4-8956-b0b9a64d7bc1  rev 1  — 20% shorter than its text implies
+    0.801  known           3432ms  "I wouldn't like to try to explain something in Spanis
+           b38678d6-3843-4a5c-8981-e95e000c0ac1  rev 1  — 20% shorter than its text implies
+    0.801  known           1488ms  "you speak with me tomorrow"
+           885b371c-a259-4030-89d2-acab266d1b3e  rev 1  — 20% shorter than its text implies
+    0.801  known           2976ms  "I am not going to be able to practise speaking today"
+           04755b37-d7d3-4744-9a94-0269ff8723cd  rev 1  — 20% shorter than its text implies
+    0.801  known           2688ms  "she wants to help me explain what I want to say"
+           10fc3b3c-d0ae-47d2-b2ec-ecf9cc37a604  rev 1  — 20% shorter than its text implies
+    0.801  known           2232ms  "I would like to start talking more soon"
+           1141f461-c542-4b8b-a5f9-a553fce1b28e  rev 1  — 20% shorter than its text implies
+    0.801  known           3432ms  "I like feeling as if I were nearly speaking the whole
+           d7799566-222f-4720-9f65-837f118440a9  rev 1  — 20% shorter than its text implies
+    0.801  known           2232ms  "I'm looking forward to speaking spanish"
+           6d48b748-bb8e-40c0-9ac2-d30cb0958f6c  rev 1  — 20% shorter than its text implies
+    0.801  known           1488ms  "she wants to speak with me"
+           e1339380-8f70-4bae-a4b1-47bfab383332  rev 1  — 20% shorter than its text implies
+    0.801  known           2688ms  "I was starting to meet people who speak Spanish"
+           ca5772ee-e49a-4eb0-8eb3-dcec3dfe7372  rev 1  — 20% shorter than its text implies
+    0.801  known           2688ms  "I was starting to speak Spanish more frequently"
+           f3f05d89-10c9-4e23-8497-e4961cf1ba91  rev 1  — 20% shorter than its text implies
+    0.802  known           1776ms  "she wants to come back later on"
+           074585aa-bd6e-4de9-8137-46db834b8eb6  rev 1  — 20% shorter than its text implies
+    0.802  known           2520ms  "you want to come back with everyone else now"
+           1b37fd61-637b-436b-b1ce-9f4b4ff195d5  rev 1  — 20% shorter than its text implies
+    0.802  known           3264ms  "she wants to speak with people who speak spanish tomo
+           87348a6d-092c-48e9-8c5e-564f9e0a2a9c  rev 1  — 20% shorter than its text implies
+    0.803  known           2064ms  "I'm trying to speak Spanish with you"
+           b5d609c8-c666-49e7-8337-101d634d66d9  rev 1  — 20% shorter than its text implies
+    0.803  known           3384ms  "she wants to find out what the answer is with everyon
+           af2801c2-0cbe-458b-b1a7-5cfd267e14de  rev 1  — 20% shorter than its text implies
+    0.803  known           2064ms  "he wants to find out something today"
+           de7fda89-d2de-4739-ab4d-be611ba67ccb  rev 1  — 20% shorter than its text implies
+    0.803  known           1320ms  "I'd like to meet people"
+           4a363559-455e-4247-9b4c-e32d24a687e1  rev 1  — 20% shorter than its text implies
+    0.803  known           2352ms  "he wants to start talking more frequently"
+           fb1ea9d9-d570-468b-a15f-7f787dcf86ba  rev 1  — 20% shorter than its text implies
+    0.803  known           2352ms  "are you going to take too much time today"
+           ec0a7fb1-e648-4bc3-81e8-aec4e0e698b8  rev 1  — 20% shorter than its text implies
+    0.803  known           3384ms  "she wants to show me how to speak as frequently as po
+           67f158ff-65d7-4772-8bdf-aaca33aa94c6  rev 1  — 20% shorter than its text implies
+    0.803  known           2064ms  "I'm trying to remember the story now"
+           c612fe96-0a29-4b1a-9df3-32474bca8dab  rev 1  — 20% shorter than its text implies
+    0.803  known           2064ms  "but I'm trying to remember the story"
+           85d2eb3b-f639-4e94-acce-586b50a1444e  rev 1  — 20% shorter than its text implies
+    0.803  known           2640ms  "I don't care, I think that I can learn Spanish"
+           9670743d-6723-488f-9cbe-7d9c206a3e4e  rev 1  — 20% shorter than its text implies
+    0.804  known           2928ms  "it's useful to get to know people who speak spanish"
+           a6e344e0-e867-43c7-9181-46fa49e56928  rev 1  — 20% shorter than its text implies
+    0.804  known           1896ms  "I started to think about it today"
+           07f4406e-63dc-4976-8d08-7e2421a9e18b  rev 1  — 20% shorter than its text implies
+    0.804  known           1896ms  "I'm a little tired this afternoon"
+           d2a9f32e-e335-41a0-a082-23b3804531ec  rev 1  — 20% shorter than its text implies
+    0.805  known           2184ms  "I'd like to be able to speak very well"
+           1144b482-6668-4670-a429-0c4c8637a828  rev 1  — 20% shorter than its text implies
+    0.805  known           3624ms  "he wants to practise speaking with everyone else late
+           27764fd0-17c4-4aca-aa85-d1916d165783  rev 1  — 19% shorter than its text implies
+    0.805  known           2184ms  "we want to find out what the answer is"
+           7acce705-6dea-4744-a08a-218028d41518  rev 1  — 20% shorter than its text implies
+    0.805  known           2760ms  "why try to learn how to say something in spanish"
+           a98a3a6d-77ed-412e-9cd2-1a4cf718c1d7  rev 1  — 19% shorter than its text implies
+    0.805  known           2472ms  "I like feeling as if I were ready to go now"
+           5646158c-ed54-413d-aa1d-90e44815d274  rev 1  — 20% shorter than its text implies
+    0.805  known           4368ms  "I like feeling as if I were nearly ready to go and sp
+           b384ed16-74a1-419a-820a-5a780e508327  rev 1  — 20% shorter than its text implies
+    0.805  known           2184ms  "I like speaking spanish with you today"
+           f47541b1-45a2-4f3f-9d4a-09202d8ea2a0  rev 1  — 20% shorter than its text implies
+    0.805  known           2472ms  "she doesn't want to read with me in spanish"
+           8904b8da-0292-4c68-a51d-1ab63a68d48e  rev 1  — 20% shorter than its text implies
+    0.805  known           2760ms  "I would like to speak when other people are here"
+           c2a55f2a-b0b6-4718-9672-bde5ef229287  rev 1  — 19% shorter than its text implies
+    0.805  known           2472ms  "I was starting to remember the whole phrase"
+           2cbd120b-296b-43de-9b1e-39ebf2f75a31  rev 1  — 20% shorter than its text implies
+    0.805  known           2184ms  "I think that it's good to finish today"
+           883a1447-9c24-45c2-b5d7-3bb760f33f29  rev 1  — 20% shorter than its text implies
+    0.806  known           2592ms  "I'm going to try to remember as hard as I can"
+           2554bcfc-dfe3-4b8f-a3f5-c1bb90df736a  rev 1  — 19% shorter than its text implies
+    0.806  known           1728ms  "we want to learn something now"
+           5bec8da8-48a9-4b07-9864-dead4df13477  rev 1  — 19% shorter than its text implies
+    0.806  known           2592ms  "he wants to speak with everyone else later on"
+           cde2c448-3106-418b-a46c-4f8389c50161  rev 1  — 19% shorter than its text implies
+    0.806  known           1728ms  "you want to come back later on"
+           0424b78c-feea-4aa0-a1a0-d1fb04236a92  rev 1  — 19% shorter than its text implies
+    0.806  known           2304ms  "you want to learn his name quickly today"
+           9065dabe-4347-4866-bb3a-1685644ecb14  rev 1  — 19% shorter than its text implies
+    0.806  known           2304ms  "are you going to start talking more soon"
+           09da96ac-a37b-46e9-bd50-8015bae3ec37  rev 1  — 19% shorter than its text implies
+    0.806  known           2304ms  "we don't want to practise speaking today"
+           26cbd6c9-7451-44b0-8c54-89dcd68c8879  rev 1  — 19% shorter than its text implies
+    0.808  known           2712ms  "It's useful to start talking as soon as you can"
+           9de99d9f-b7d6-4518-9fcb-fa30eacaef05  rev 1  — 19% shorter than its text implies
+    0.808  known           2136ms  "I'd like to practise after you finish"
+           56929e7c-598d-46d2-9273-59eeed7e39fa  rev 1  — 19% shorter than its text implies
+    0.808  known           2136ms  "I want to come back with someone else"
+           a8238359-69ee-439e-be0d-2886b57a881a  rev 1  — 19% shorter than its text implies
+    0.808  known           1848ms  "you want to learn his name today"
+           6ea798ef-dd1e-4d10-b1cd-829de7951c5b  rev 1  — 19% shorter than its text implies
+    0.808  known           2424ms  "she wants to meet people who speak Spanish"
+           f7da2166-49e8-4f62-8eb0-8b23dfa6a729  rev 1  — 19% shorter than its text implies
+    0.808  known           3000ms  "I'm looking forward to trying everything I can today"
+           e3ae6458-a5de-4b5a-a335-b3ebad90d703  rev 1  — 19% shorter than its text implies
+    0.808  known           1848ms  "I'm trying to remember the story"
+           fcd5abc9-4f9a-46b3-839e-dca07e9bdf14  rev 1  — 19% shorter than its text implies
+    0.808  known           1848ms  "I want to practise at the moment"
+           87f3d7f4-add9-4a32-b6dd-a3cf81a2174f  rev 1  — 19% shorter than its text implies
+    0.808  known           1848ms  "I don't care about finishing now"
+           9adad8b0-3ac5-4c30-a5c6-b079aaedd985  rev 1  — 19% shorter than its text implies
+    0.809  presentation    5952ms  "The Spanish for: 'I think that', as in — 'because I t
+           5b79df5c-7d93-4388-abc6-d15b22f65348  rev 1  — 19% shorter than its text implies
+    0.809  known           2832ms  "I'm going to try to meet people who speak Spanish"
+           9e1be92f-8044-42a7-9975-3d4c7555befd  rev 1  — 19% shorter than its text implies
+    0.809  known           2544ms  "I can nearly say the whole phrase in spanish"
+           06d4fc8c-4622-498b-be2d-5502b25b287e  rev 1  — 19% shorter than its text implies
+    0.809  known           2544ms  "it's useful to remember what you want to say"
+           8491d606-0942-488b-8d6f-ac679ab345ea  rev 1  — 19% shorter than its text implies
+    0.809  known           1560ms  "you wanted to speak with me"
+           1c97ac99-10f7-4580-83c1-093bd20fa6d3  rev 1  — 19% shorter than its text implies
+    0.809  known           2544ms  "I was starting to explain what I want to say"
+           e46ea087-aa28-462f-8b57-3e3c98725e97  rev 1  — 19% shorter than its text implies
+    0.809  known           2832ms  "I think that I want to speak Spanish with you now"
+           93234588-d649-4ee9-85a2-2453c9bf342b  rev 1  — 19% shorter than its text implies
+    0.809  known           2832ms  "I don't worry about finishing, I want to practise"
+           dda53e24-b196-4828-b3dc-3107ac07b24a  rev 1  — 19% shorter than its text implies
+     0.81  known           1968ms  "to speak as frequently as possible"
+           d6ab1e30-aa5e-44ac-a8c3-0f5a9d20729a  rev 1  — 19% shorter than its text implies
+     0.81  known           1968ms  "why are you learning spanish today"
+           91bb2891-66e9-4872-84cd-b31d255dcd16  rev 1  — 19% shorter than its text implies
+     0.81  known           2256ms  "I want to read something in spanish now"
+           924a5253-6680-4378-881a-3094050447bc  rev 1  — 19% shorter than its text implies
+     0.81  known           2256ms  "I started to learn Spanish this morning"
+           a8574c22-2b3f-44b3-81ef-e06eb9d8fa38  rev 1  — 19% shorter than its text implies
+    0.811  known           3360ms  "I want to try to say something in Spanish after you f
+           b9da9037-3e5e-4f39-a4e4-066fa0a0f5b2  rev 1  — 19% shorter than its text implies
+    0.811  known           4056ms  "I'd like to be able to guess how to say something ver
+           d130eecc-3412-4b0d-9b00-73eff8d20c4b  rev 1  — 19% shorter than its text implies
+    0.811  known           3072ms  "we want to find out how to speak as often as possible
+           04426531-966e-4382-9e26-d0b1de8dc4cd  rev 1  — 19% shorter than its text implies
+    0.811  known           2664ms  "she wants to find out what the answer is today"
+           826735b7-0625-4677-8b17-1be5d1873cbf  rev 1  — 19% shorter than its text implies
+    0.811  known           3072ms  "you wanted to speak with me as frequently as possible
+           a6789faa-8109-4bc4-806a-8b54d780a7a3  rev 1  — 19% shorter than its text implies
+    0.811  known           2376ms  "he doesn't want to explain anything today"
+           2e7c2ff4-9d7c-4276-adf8-65a96700cb99  rev 1  — 19% shorter than its text implies
+    0.811  known           3648ms  "I wasn't thinking about practicing speaking as much a
+           f59029e5-6a64-4810-ac07-58ff698fc823  rev 1  — 19% shorter than its text implies
+    0.812  known           2088ms  "we don't want to interrupt the story"
+           24647576-3849-44f4-b35c-67b64af8c15b  rev 1  — 19% shorter than its text implies
+    0.812  known           2784ms  "and I want you to speak Spanish with me tomorrow"
+           eb2e3923-2803-40c2-966d-b93c8ee43f01  rev 1  — 19% shorter than its text implies
+    0.812  known           2088ms  "I want to learn something in Spanish"
+           2df75420-a613-44e4-a4ae-fadf61278869  rev 1  — 19% shorter than its text implies
+    0.812  known           1392ms  "I'm going to speak today"
+           9d717a0c-dd23-4db9-b5ac-543da6c8dc49  rev 1  — 19% shorter than its text implies
+    0.812  known           2088ms  "I would like to learn her name today"
+           1a8a1ab8-d24d-4a37-aaee-efa2a723717a  rev 1  — 19% shorter than its text implies
+    0.812  known           2784ms  "I like feeling as if I were ready to go tomorrow"
+           a34aa630-2096-4126-ad19-27a988887916  rev 1  — 19% shorter than its text implies
+    0.812  known           2088ms  "You've been learning Spanish all day"
+           b0963325-594f-4e4c-bb1d-0bf916f0fcc8  rev 1  — 19% shorter than its text implies
+    0.813  presentation    6096ms  "The Spanish for: 'he doesn't want', as in — 'he doesn
+           604789d1-2589-4657-ac7d-086422cec808  rev 1  — 19% shorter than its text implies
+    0.813  known           3312ms  "I'm trying to practise speaking as frequently as poss
+           6542d2ab-f109-4cad-b44b-c106074609b1  rev 1  — 19% shorter than its text implies
+    0.813  known           2904ms  "she wants to practise Spanish as often as possible"
+           d73afb7d-a64c-4352-9baf-172181c1f9b3  rev 1  — 19% shorter than its text implies
+    0.813  known           2208ms  "I am going to try to remember her name"
+           80fa6e3c-a99a-4c0a-8fd7-6bce32912a92  rev 1  — 19% shorter than its text implies
+    0.813  known           2496ms  "he doesn't want to speak with me in spanish"
+           48210f08-2e63-40ed-80e7-49fb20b90bcb  rev 1  — 19% shorter than its text implies
+    0.813  known           1800ms  "I'm a little tired this morning"
+           c9495e3a-0566-4382-8964-5235edf02e3d  rev 1  — 19% shorter than its text implies
+    0.813  known           2496ms  "I wasn't thinking about practicing speaking"
+           2360d498-2b99-4eee-b8a7-fc3313555804  rev 1  — 19% shorter than its text implies
+    0.813  known           2904ms  "I think that it's good to speak Spanish frequently"
+           ef40f933-8fd1-4f35-a4c4-a63460821451  rev 1  — 19% shorter than its text implies
+    0.814  known           3024ms  "I want to try to guess what I want to say in Spanish"
+           d5b2009b-c2c2-40ee-87d0-616ff57ec285  rev 1  — 19% shorter than its text implies
+    0.814  known           3024ms  "I want you to speak with me today, I'd like to learn"
+           2e1c3178-79e1-412b-8934-819c83f03ae8  rev 1  — 19% shorter than its text implies
+    0.814  known           3024ms  "are you learning how to explain something in spanish"
+           2fc6925d-5ac3-49d0-a308-b2a888957aec  rev 1  — 19% shorter than its text implies
+    0.814  known           3432ms  "I'm a little tired this morning but I want to speak S
+           22f9e8a0-7695-454c-a4dc-f07ebbb5ef5e  rev 1  — 19% shorter than its text implies
+    0.814  known           3024ms  "I think that it's good to try to learn Spanish today"
+           7e49e0d0-7f46-4d40-8e71-151539f54989  rev 1  — 19% shorter than its text implies
+    0.815  presentation    5880ms  "The Spanish for: 'to be quiet', as in — 'he doesn't w
+           0bf6279d-ee23-4487-9ff4-409f22c45714  rev 1  — 18% shorter than its text implies
+    0.815  known           1920ms  "I want to speak with someone else"
+           fa1dd614-901c-4c53-b4c5-38db73ba07a8  rev 1  — 19% shorter than its text implies
+    0.815  known           2328ms  "he wants to come back with everyone else"
+           85006d88-74de-4f1e-abfb-e821ea54a3e4  rev 1  — 19% shorter than its text implies
+    0.815  known           3552ms  "I want you to speak Spanish with people who speak Spa
+           b9312273-7afe-4805-8fba-de792f3fc27c  rev 1  — 18% shorter than its text implies
+    0.815  known           3144ms  "I am going to try to speak spanish as soon as possibl
+           e797ae05-5ad7-45ce-8182-586cf96fbb0d  rev 1  — 18% shorter than its text implies
+    0.815  known           2736ms  "I think that I can speak Spanish with you today"
+           50f91fd1-3113-415b-a30c-9bab7a9eeddc  rev 1  — 19% shorter than its text implies
+    0.816  known           2448ms  "I'm going to remember how to speak Spanish"
+           008a2e73-5dc6-4f9a-b8dd-67e84f846fe3  rev 1  — 18% shorter than its text implies
+    0.816  known           2448ms  "I'd like to be able to speak Spanish today"
+           c21dace3-a74c-4e15-908a-b9f4cc07324b  rev 1  — 18% shorter than its text implies
+    0.816  known           3672ms  "I am not going to be able to come back with everyone 
+           44b58d9b-b77e-4849-8d6a-bbc7840af6fb  rev 1  — 18% shorter than its text implies
+    0.816  known           2856ms  "it's useful to practise with another person today"
+           8aeca04f-969a-480d-a24d-bf90ad969fea  rev 1  — 18% shorter than its text implies
+    0.816  known           2448ms  "I'm going to finish and then go back later"
+           2f791ce4-637b-495d-a84e-ea55ea2b0ed6  rev 1  — 18% shorter than its text implies
+    0.817  known           2160ms  "but I want to practise speaking today"
+           b0fd954c-e5b8-4736-bf65-1e5dfe25fa34  rev 1  — 18% shorter than its text implies
+    0.817  known           3792ms  "I don't feel well but I want to try to explain what I
+           e9bb7b7f-76d4-466c-bb23-fd370e142793  rev 1  — 18% shorter than its text implies
+    0.818  known           1752ms  "Why are you learning her name?"
+           567d12ee-d73a-4f6b-81b6-27e4d861e362  rev 1  — 18% shorter than its text implies
+    0.818  presentation    4848ms  "The Spanish for: 'this morning', as in — 'but I'm a l
+           bbca4931-ea1d-47ae-88b5-cc258b0eb58b  rev 1  — 18% shorter than its text implies
+    0.818  known           2280ms  "I'm going to try to speak Spanish today"
+           acd7e712-5f31-41fa-a378-fabb7f7636ca  rev 1  — 18% shorter than its text implies
+    0.818  known           1752ms  "you want to stop talking today"
+           80b1a8ef-a966-4dec-b116-3dbc8d3c2b57  rev 1  — 18% shorter than its text implies
+    0.819  known           1872ms  "I want to learn Spanish with you"
+           3444455c-c9f6-4c68-87fe-a70fa34555b5  rev 1  — 18% shorter than its text implies
+    0.819  known           3336ms  "you speak Spanish very well with me — I'm trying to l
+           167d1f6f-f154-459e-91af-8d0bcea05c5e  rev 1  — 18% shorter than its text implies
+    0.819  known           3336ms  "I want you to speak with me today — I'm going to prac
+           b4920958-9a70-4236-b5e6-dbceff7612e8  rev 1  — 18% shorter than its text implies
+    0.819  known           2808ms  "why try to practise speaking with another person"
+           ffb134e0-cd9c-496b-a40e-6da39b7149eb  rev 1  — 18% shorter than its text implies
+     0.82  known           1464ms  "to speak Spanish with you"
+           99fcc480-61c2-4182-a6c6-c86a27c7655d  rev 1  — 18% shorter than its text implies
+     0.82  known           2520ms  "I want to be able to speak after you finish"
+           c2493419-70f0-4e2d-998a-d5edc4ee90c9  rev 1  — 18% shorter than its text implies
+     0.82  known           2520ms  "we want to meet with everyone else tomorrow"
+           263646d9-3510-4e09-8b1d-f1b57c88affc  rev 1  — 18% shorter than its text implies
+     0.82  known           1992ms  "he wants to come back at six today"
+           2719bf03-c175-4b72-b29e-06b4c598690b  rev 1  — 18% shorter than its text implies
+     0.82  known           2520ms  "we want to stop talking at six this evening"
+           67ed20aa-cc39-4cf8-8c23-ecc45c931ac1  rev 1  — 18% shorter than its text implies
+     0.82  known           2520ms  "I like trying to explain what I want to say"
+           517679ba-e1e7-450d-bef2-cf4df13369cb  rev 1  — 18% shorter than its text implies
+     0.82  known           3456ms  "I like feeling as if I were speaking spanish with you
+           53a9d591-1462-4aac-ab85-d885173c5900  rev 1  — 18% shorter than its text implies
+     0.82  known           2520ms  "I want to ask something as soon as possible"
+           3d36e8f9-ec1d-4e56-8cf9-af04235691ed  rev 1  — 18% shorter than its text implies
+     0.82  known           2520ms  "I want to speak with another person tonight"
+           1f207a89-f11e-49db-9220-4cb448f4b792  rev 1  — 18% shorter than its text implies
+     0.82  known           2520ms  "I want to practise speaking spanish tonight"
+           bb6c71e5-e64d-4312-9efc-b8f9838a7645  rev 1  — 18% shorter than its text implies
+     0.82  known           1464ms  "she doesn't want to speak"
+           5dbaf061-71f6-4f53-a6c0-69d2bee5e18e  rev 1  — 18% shorter than its text implies
+     0.82  known           2400ms  "I'm starting to remember the whole phrase"
+           1602ba8d-c44f-432e-807e-e9b15cef0e80  rev 1  — 18% shorter than its text implies
+    0.821  known           2112ms  "but I don't want to stop talking now"
+           a70c5e0b-8d6e-442f-9c68-e779928f70fa  rev 1  — 18% shorter than its text implies
+    0.821  known           3048ms  "I like feeling as if I were nearly ready to go today"
+           b9286e66-2afb-4e83-a9d3-3ff3a068e43a  rev 1  — 18% shorter than its text implies
+    0.821  known           1584ms  "I'm going to think about it"
+           1973a344-c6f7-47eb-bd04-4f31436695e8  rev 1  — 18% shorter than its text implies
+    0.822  known           2760ms  "you speak Spanish very well with another person"
+           154b1c19-0339-4d2f-a919-210d7f552a24  rev 1  — 18% shorter than its text implies
+    0.822  known           2760ms  "and I want you to speak Spanish with me all day"
+           481984ea-1f8c-4384-b6bb-fd301fa5e737  rev 1  — 18% shorter than its text implies
+    0.822  known           2760ms  "I am not going to be able to start talking soon"
+           463d8856-6220-40dc-986f-f2ce607c3138  rev 1  — 18% shorter than its text implies
+    0.822  known           2232ms  "you wanted to speak with me in spanish"
+           ea5cf859-053a-4f05-b877-55fc8309fb40  rev 1  — 18% shorter than its text implies
+    0.823  known           2880ms  "I started to think about it carefully last month."
+           8d5c3b30-c0ec-420d-b8d9-026079ac6d75  rev 1  — 18% shorter than its text implies
+    0.823  presentation    5352ms  "The Spanish for: 'this evening', as in — 'we want to 
+           7fdc8afa-ff1b-45a6-aaf5-f12292fe6fc3  rev 1  — 18% shorter than its text implies
+    0.823  presentation    4584ms  "The Spanish for: 'tonight', as in — 'you wanted to sp
+           d2cfd047-38cd-4814-a4fe-88addbf7e2e1  rev 1  — 18% shorter than its text implies
+    0.823  known           2352ms  "but I don't want to stop talking quickly"
+           5c0d2d1e-b93c-4aaf-a959-ec9b40e4a633  rev 1  — 18% shorter than its text implies
+    0.823  known           2880ms  "I want you to speak with people who speak Spanish"
+           17b73bff-364d-421f-85fc-c1f26ff79f30  rev 1  — 18% shorter than its text implies
+    0.823  known           2352ms  "I can nearly remember what I want to say"
+           3a772805-3063-4256-8799-62e9378d4f29  rev 1  — 18% shorter than its text implies
+    0.823  known           3408ms  "I was starting to meet people who speak Spanish last 
+           1b84e557-3c3a-4fdd-9b6c-03112e81cc2f  rev 1  — 18% shorter than its text implies
+    0.823  known           2880ms  "it's good to speak with another person in Spanish"
+           ee2f22c3-c1d1-42ea-8f90-995cc0e38b5b  rev 1  — 18% shorter than its text implies
+    0.824  known           1824ms  "how to say something in Spanish"
+           37285d93-9c76-4cc1-8233-20dbd28b42ae  rev 1  — 18% shorter than its text implies
+    0.824  known           2472ms  "I'm not sure about remembering what I mean"
+           68994c21-ac8c-4700-a9af-b74feeb96106  rev 1  — 18% shorter than its text implies
+    0.824  known           3000ms  "I want to practise Spanish with everyone else today"
+           5737c2ac-aab9-4489-bfc0-aef2a8ca2d15  rev 1  — 18% shorter than its text implies
+    0.824  known           1824ms  "she wants to stop talking today"
+           cfd4a18d-19c7-494d-a61b-edaee6c4fe06  rev 1  — 18% shorter than its text implies
+    0.824  known           1824ms  "you wanted to explain something"
+           7b50e59c-f8ff-49ae-a79d-0a4e32427801  rev 1  — 18% shorter than its text implies
+    0.824  known           1824ms  "I need to speak more frequently"
+           2baa590a-d21c-4f81-82c5-e543db174761  rev 1  — 18% shorter than its text implies
+    0.825  known           1296ms  "what's going to happen"
+           b7d71fab-72d6-4e9f-904c-e610ce3f6729  rev 1  — 18% shorter than its text implies
+    0.825  known           1944ms  "I'm trying to explain what I mean"
+           20e22df6-c131-4da4-8bdb-1fbad262ab4d  rev 1  — 18% shorter than its text implies
+    0.825  known           2592ms  "I want to try to find out what the answer is"
+           187d362f-19d2-412d-92b7-6e55897babd6  rev 1  — 18% shorter than its text implies
+    0.825  known           1944ms  "people who speak Spanish with you"
+           3af3aa21-2c11-4888-b8fe-4ac76560d97f  rev 1  — 18% shorter than its text implies
+    0.825  known           2712ms  "she wants to help me learn spanish more easily"
+           93f4e1a7-1b07-4296-a215-e3fccb7d7bf5  rev 1  — 17% shorter than its text implies
+    0.825  known           2712ms  "because I am going to start talking more today"
+           d90c6097-3d9e-4401-94ef-da3a62bb343b  rev 1  — 17% shorter than its text implies
+    0.825  known           1944ms  "you wanted to learn spanish today"
+           60a325a0-a84c-4d26-a322-72688478df97  rev 1  — 18% shorter than its text implies
+    0.826  known           2832ms  "I'm trying to practise as frequently as possible"
+           cfb1bede-a542-40cb-87bb-cc92975b0ba0  rev 1  — 17% shorter than its text implies
+    0.826  known           3600ms  "I want you to speak Spanish with me as frequently as 
+           bdd13637-831d-4831-a73e-6dc8ccc8787b  rev 1  — 17% shorter than its text implies
+    0.826  known           2184ms  "I want to start talking with you soon"
+           a5dec061-20cf-415f-93cc-46adab3fe823  rev 1  — 17% shorter than its text implies
+    0.826  known           1416ms  "she doesn't want to read"
+           a2bba048-0f88-49dd-bf36-434bfeef75b7  rev 1  — 17% shorter than its text implies
+    0.826  known           1416ms  "he doesn't want to speak"
+           ac6d15f4-9ac8-460a-adf7-42882e35e59d  rev 1  — 17% shorter than its text implies
+    0.826  known           2184ms  "I'm going to try to explain the story"
+           475515ee-0b0b-47a4-89f9-1549d0801e1b  rev 1  — 17% shorter than its text implies
+    0.826  known           1416ms  "he doesn't want anything"
+           7ac4c9a6-7d29-4e8f-9086-d3318e863f0a  rev 1  — 17% shorter than its text implies
+    0.826  known           2832ms  "we don't want to speak as frequently as possible"
+           f1ef0218-aeb1-4e71-8bf9-46bafd13e155  rev 1  — 17% shorter than its text implies
+    0.826  known           2184ms  "but I'm trying to remember a word now"
+           3efab308-adf6-479f-a04c-996f24f67c03  rev 1  — 17% shorter than its text implies
+    0.826  known           2064ms  "I need to remember the whole phrase"
+           28953c1a-20f2-4afb-912f-6701df789584  rev 1  — 17% shorter than its text implies
+    0.827  presentation    4608ms  "The Spanish for: 'his name', as in — 'you want to lea
+           dc60d88e-8d10-42d8-ab11-7663a4d6e4a3  rev 1  — 17% shorter than its text implies
+    0.827  known           2304ms  "I can say the whole sentence in Spanish"
+           7fb8f7d0-018f-43d3-8945-24aba24527e5  rev 1  — 17% shorter than its text implies
+    0.827  known           3072ms  "you speak with me all day — I'd like to practise too"
+           1e6736d4-0d85-46eb-9122-bc8b44433316  rev 1  — 17% shorter than its text implies
+    0.827  known           2304ms  "he wants to remember the whole sentence"
+           76c398c3-c10e-476b-b7a9-b7004923705e  rev 1  — 17% shorter than its text implies
+    0.827  known           2304ms  "he wants to find out what the answer is"
+           d06b6d67-4f01-497d-b828-27c3ccf1952e  rev 1  — 17% shorter than its text implies
+    0.827  known           2304ms  "I'm going to try not to interrupt today"
+           edd0b57f-ae50-445d-9184-ed89507475e6  rev 1  — 17% shorter than its text implies
+    0.828  presentation    4080ms  "The Spanish for: 'in', as in — 'how to say something 
+           566d8658-45fe-413e-85f1-168f17258dbe  rev 1  — 17% shorter than its text implies
+    0.828  known           1656ms  "I'm going to try to remember"
+           31a9685c-38dd-4e07-80a1-b7a6db3aae3c  rev 1  — 17% shorter than its text implies
+    0.828  known           3192ms  "I want to practise Spanish with everyone else later o
+           f4a58d8d-547c-42a8-8403-10e33707b834  rev 1  — 17% shorter than its text implies
+    0.828  known           3432ms  "he wants to practise speaking quickly as often as pos
+           f27db438-d9ae-4366-a55f-e131d490d5ce  rev 1  — 17% shorter than its text implies
+    0.828  known           2544ms  "I'm trying to meet people who speak Spanish"
+           4a2ef197-b4eb-411c-bad3-8385c73a00b3  rev 1  — 17% shorter than its text implies
+    0.828  known           3192ms  "I am trying to remember the whole sentence more easil
+           3bc35e30-ede5-4292-ad70-7b7dd3776249  rev 1  — 17% shorter than its text implies
+    0.828  known           2544ms  "I like practising with another person today"
+           96ea5770-d2f2-40a5-8f93-cac630942883  rev 1  — 17% shorter than its text implies
+    0.828  known           2544ms  "it's useful to explain what you want to say"
+           82ea22b4-3f6c-4e84-b809-d336e14a8f09  rev 1  — 17% shorter than its text implies
+    0.828  known           2544ms  "I want to learn spanish as soon as possible"
+           b97a48db-6d91-4129-a49a-56b16ab1acd5  rev 1  — 17% shorter than its text implies
+    0.828  known           1656ms  "He wants to practise with me"
+           80bf19aa-c664-4ef9-9641-6aa5fa4780a5  rev 1  — 17% shorter than its text implies
+    0.828  known           1656ms  "She doesn't want to practise"
+           3ac2b8e8-9743-49d9-9f21-a3982ba3c535  rev 1  — 17% shorter than its text implies
+    0.828  known           2424ms  "we don't want to say something in spanish"
+           0eb5a0eb-352e-4e14-a910-c6326bd78ae3  rev 1  — 17% shorter than its text implies
+    0.828  known           2424ms  "I started to practise with another person"
+           956da1ac-d33b-4d2c-9501-a4dfa380a8ab  rev 1  — 17% shorter than its text implies
+    0.829  presentation    5568ms  "The Spanish for: 'what the answer is', as in — 'She w
+           b2e8a7ba-c12a-4921-9768-7baabbb23c81  rev 1  — 17% shorter than its text implies
+    0.829  presentation    5448ms  "The Spanish for: 'to finish', as in — 'I'm not trying
+           ee48713a-8b63-4ccb-9ef6-9716fb3e2278  rev 1  — 17% shorter than its text implies
+    0.829  known           2664ms  "I'm not sure about speaking with someone else"
+           14ff46d8-edfa-433f-b67b-6d5a50f63b9c  rev 1  — 17% shorter than its text implies
+    0.829  known           1776ms  "I'm not sure about remembering"
+           67a2d7c6-1dbf-4b07-8ae7-3ba0a8918ba2  rev 1  — 17% shorter than its text implies
+    0.829  known           3552ms  "I am going to try to remember everything before I hav
+           a5bea992-bb75-4d40-bd51-3210b08790c4  rev 1  — 17% shorter than its text implies
+    0.829  known           2784ms  "I wanted to remember the whole phrase yesterday"
+           aa870bdc-9e64-4113-ad5c-87079809e0c7  rev 1  — 17% shorter than its text implies
+    0.829  known           2664ms  "I'm starting to speak Spanish more frequently"
+           0218cb3b-6290-4b05-b0f5-e805ad4a9d4a  rev 1  — 17% shorter than its text implies
+    0.829  known           3552ms  "I think that I want to practise speaking with another
+           a8232bad-4b0e-4a25-9e25-68132f2b9e2f  rev 1  — 17% shorter than its text implies
+     0.83  presentation    4800ms  "The Spanish for: 'the story', as in — 'we don't want 
+           f14a5236-f451-49a0-950e-9f904faf9612  rev 1  — 17% shorter than its text implies
+     0.83  known           3144ms  "I'm trying to learn Spanish as frequently as possible
+           e83931d8-7ea9-4f73-8c0d-5e1decf4137c  rev 1  — 17% shorter than its text implies
+     0.83  known           2904ms  "I'd like to speak today as frequently as possible"
+           440dcdc3-3aa3-4dd4-867f-48ca99d38db1  rev 1  — 17% shorter than its text implies
+     0.83  known           3024ms  "I'm trying to be able to explain what I want to say"
+           fa1491d7-e200-4d45-bd09-de1d275283f4  rev 1  — 17% shorter than its text implies
+     0.83  known           2904ms  "I can start talking with people who speak spanish"
+           8bc82c38-2c37-472d-88f8-6cdac552e83e  rev 1  — 17% shorter than its text implies
+     0.83  known           2904ms  "I can nearly remember the whole phrase in spanish"
+           c72e71df-4f48-484d-9439-a759c32bcb55  rev 1  — 17% shorter than its text implies
+     0.83  known           2904ms  "it's useful to practise as frequently as possible"
+           16e8ee4f-b6bc-49ea-af55-5fde21238b46  rev 1  — 17% shorter than its text implies
+     0.83  known           2904ms  "it's useful to practise as soon as possible today"
+           67405f6b-9efc-4423-ab03-ea4daf0b1afe  rev 1  — 17% shorter than its text implies
+     0.83  known           3024ms  "I started to explain the story carefully last month"
+           dd1be983-8dd3-4954-8ad7-fc4fd3a96d6c  rev 1  — 17% shorter than its text implies
+     0.83  known           3024ms  "I'm a little tired but I don't want to stop talking"
+           f36d3ff3-11ec-4a1f-85cb-3c5619681c0b  rev 1  — 17% shorter than its text implies
+     0.83  known           2904ms  "you know, I think that it's good to make mistakes"
+           e43bcf4a-1783-4f79-9f60-78fb8c250727  rev 1  — 17% shorter than its text implies
+     0.83  known           2016ms  "it's like this with another person"
+           f9c193d7-e8f1-4133-ba03-e125dc5c84e7  rev 1  — 17% shorter than its text implies
+    0.831  known           2256ms  "how to speak as frequently as possible"
+           f863add3-dec7-4b9f-9dfc-c6f7d4307bcc  rev 1  — 17% shorter than its text implies
+    0.831  presentation    5760ms  "The Spanish for: 'to meet people', as in — 'because I
+           8497be1c-2c63-4d0b-bb7e-bce5f552717d  rev 1  — 17% shorter than its text implies
+    0.831  known           2256ms  "I want to speak a little Spanish today"
+           00d6286d-8010-4145-bcd5-95a2aefcfb1c  rev 1  — 17% shorter than its text implies
+    0.831  known           2136ms  "he wants to speak with everyone else"
+           0733edd6-4523-4d88-b5b5-cbe95813cd36  rev 1  — 17% shorter than its text implies
+    0.831  known           2256ms  "I want to come back with everyone else"
+           6f59ee67-2441-4c95-9ad9-872fe79eeec8  rev 1  — 17% shorter than its text implies
+    0.831  known           3264ms  "I am not going to be able to remember everything easi
+           006af99c-53df-4a41-a1d5-fbf8a12572a2  rev 1  — 17% shorter than its text implies
+    0.831  known           3384ms  "I am not going to be able to speak spanish with you t
+           08fa9543-89d4-4f31-a362-7023f6d83ca5  rev 1  — 17% shorter than its text implies
+    0.831  known           3264ms  "I am not going to be able to explain what I want to s
+           fe5e69d1-bb07-4c61-8013-f3a5f41c5951  rev 1  — 17% shorter than its text implies
+    0.831  known           4392ms  "I don't like taking too much time to answer in spanis
+           da4c5371-1ae0-4e5f-810b-c60ddd76f7df  rev 1  — 17% shorter than its text implies
+    0.831  known           2256ms  "I want to ask you something in spanish"
+           385bdfd4-68d4-42c9-a6b6-13c87c285529  rev 1  — 17% shorter than its text implies
+    0.831  known           2256ms  "I started to read carefully last month"
+           7c49a254-25a8-4c6f-a474-c5c541365410  rev 1  — 17% shorter than its text implies
+    0.832  presentation    4992ms  "The Spanish for: 'frequently', as in — 'how to speak 
+           f8d81301-87a1-401f-81c3-7a9fd2ac6912  rev 1  — 17% shorter than its text implies
+    0.832  presentation    6000ms  "The Spanish for: 'with someone else', as in — 'I'm go
+           455a3cff-d150-4ca2-b48b-3b3563e0f163  rev 1  — 17% shorter than its text implies
+    0.832  presentation    4752ms  "The Spanish for: 'to show me', as in — 'did you want 
+           a529b249-ce84-4ddf-b8e9-1de37518039e  rev 1  — 17% shorter than its text implies
+    0.832  known           3744ms  "I'm going to try to guess how to say a word in Spanis
+           47205392-9dff-47d7-b226-e4d1c77e09a9  rev 1  — 17% shorter than its text implies
+    0.832  known           1248ms  "you wanted to show me"
+           ed742022-b1e7-467c-a1c1-b18ee0ae01fe  rev 1  — 17% shorter than its text implies
+    0.832  known           2496ms  "I started to practise carefully last month"
+           6b9460c4-b663-44de-8fbe-75f1996cd2e0  rev 1  — 17% shorter than its text implies
+    0.832  known           2496ms  "I'm starting to explain what I want to say"
+           b224a64d-6d79-4f97-a0c7-32e13f711018  rev 1  — 17% shorter than its text implies
+    0.833  presentation    4584ms  "The Spanish for: 'how', as in — 'how to speak as freq
+           93bc1c7a-4630-45ef-afa5-439b2c144cea  rev 1  — 17% shorter than its text implies
+    0.833  presentation    4584ms  "The Spanish for: 'quickly', as in — 'you want to lear
+           23b60f58-c2fc-4b99-9561-87ad06abfd6d  rev 1  — 17% shorter than its text implies
+    0.833  known           1488ms  "I'm trying to meet people"
+           cb9af26c-14ab-4796-be6c-84f74ccba9c2  rev 1  — 17% shorter than its text implies
+    0.834  known           3576ms  "I'm going to try to explain what's going to happen ve
+           38957cba-1386-41ab-9eda-e278e3766067  rev 1  — 17% shorter than its text implies
+    0.834  known           1608ms  "I want you to speak with me"
+           c77a2ed0-43e5-45c1-9b78-cef8eba19100  rev 1  — 17% shorter than its text implies
+    0.834  known           1728ms  "he wants to learn Spanish now"
+           cefb5ab5-d64e-4e95-8550-dc1f380c2689  rev 1  — 17% shorter than its text implies
+    0.834  known           3096ms  "I want to find out what the answer is later on today"
+           928edd0e-cd45-4def-9bb3-9d3e30408c4f  rev 1  — 17% shorter than its text implies
+    0.834  known           1608ms  "you wanted to learn with me"
+           33fcb32c-a031-4536-bf59-33abe30d6b07  rev 1  — 17% shorter than its text implies
+    0.834  known           1608ms  "he doesn't want to be quiet"
+           f55a4251-d8c2-4284-a270-a03f3ade5de4  rev 1  — 17% shorter than its text implies
+    0.835  known           1848ms  "I don't need to know everything"
+           0144bd2a-1479-43f5-909a-4b3b24750de7  rev 1  — 17% shorter than its text implies
+    0.835  presentation    5784ms  "The Spanish for: 'to come back', as in — 'he wants to
+           ac355c0c-b75b-4b23-913b-4d309a87f72b  rev 1  — 17% shorter than its text implies
+    0.835  presentation    5784ms  "The Spanish for: 'after you finish', as in — 'I'd lik
+           e1d72988-beea-4e20-95ee-d68f8b3e77f4  rev 1  — 17% shorter than its text implies
+    0.835  known           2088ms  "I want to speak with you frequently"
+           e4621290-9fde-4ef2-855b-9118ff65cc52  rev 1  — 16% shorter than its text implies
+    0.835  known           2208ms  "I'm trying to speak with someone else"
+           443d979b-e7d4-4f9d-a7e4-90162b48195f  rev 1  — 16% shorter than its text implies
+    0.835  known           1968ms  "I don't want to read anything now"
+           9429f7da-41bd-4633-9de8-f83665502968  rev 1  — 17% shorter than its text implies
+    0.835  known           1848ms  "I started to learn this morning"
+           07189682-00dc-48c3-ae94-dce7f17f4cf9  rev 1  — 17% shorter than its text implies
+    0.835  known           1968ms  "I want to explain better than now"
+           e1b9b7b3-1878-4bf4-b907-937a9c4e6789  rev 1  — 17% shorter than its text implies
+    0.835  known           1848ms  "to learn as quickly as possible"
+           688d3cd7-d13e-4db2-8009-dac0f61cbb7d  rev 1  — 17% shorter than its text implies
+    0.836  known           2808ms  "because I want to meet people who speak Spanish"
+           15f42048-8431-459f-8c41-0c4ce2772540  rev 1  — 16% shorter than its text implies
+    0.836  presentation    4776ms  "The Spanish for: 'I don't want', as in — 'but I don't
+           0c49d966-6d44-47c0-9ab3-53353adc802c  rev 1  — 16% shorter than its text implies
+    0.836  known           2328ms  "I want to try to say the whole sentence"
+           28418358-c2ce-4fa4-a1ab-1884d4d8aa0a  rev 1  — 16% shorter than its text implies
+    0.836  known           2688ms  "I'd like to try to explain what I want to say"
+           96e4b381-21b3-4a27-ade2-30c4dd1c4ee5  rev 1  — 16% shorter than its text implies
+    0.836  known           2808ms  "he wants to find out what the answer is quickly"
+           e6587f41-468d-4dd5-92c4-6ed30bb961ee  rev 1  — 16% shorter than its text implies
+    0.836  known           2448ms  "I'd like to meet people who speak Spanish"
+           0e407a3d-6a16-4ac6-8ba1-8e9071a3fb15  rev 1  — 16% shorter than its text implies
+    0.836  known           2568ms  "I want more time to answer in spanish today"
+           27e68ad0-c6bb-40e4-8d86-ce50e2f2d632  rev 1  — 16% shorter than its text implies
+    0.836  known           2448ms  "I nearly want to start speaking more soon"
+           924eb153-aeb0-4751-90a7-35e622f68775  rev 1  — 16% shorter than its text implies
+    0.836  known           2328ms  "I want to explain what I mean carefully"
+           6d597b46-13f3-434d-a0c4-46de6ba4b2f7  rev 1  — 16% shorter than its text implies
+    0.837  known           3528ms  "you speak very well — I'm going to try to practise to
+           5024f476-0b2b-4f84-a3eb-318c6de3d96f  rev 1  — 16% shorter than its text implies
+    0.837  known           3288ms  "because I am going to try to explain what I want to s
+           b18630be-7bc3-43b1-8945-63fc85e3fa5b  rev 1  — 16% shorter than its text implies
+    0.837  known           2928ms  "I like speaking spanish as frequently as possible"
+           9a3f078e-a2d3-4980-85ac-891cb5cde4ff  rev 1  — 16% shorter than its text implies
+    0.837  known           3048ms  "I wasn't thinking about speaking Spanish well today"
+           c9b9f34a-f288-4b10-a0be-decc82fafa0d  rev 1  — 16% shorter than its text implies
+    0.838  presentation    5928ms  "The Spanish for: 'people who speak', as in — 'because
+           449239c0-ebca-4cba-8cbd-61da3a5e850c  rev 1  — 16% shorter than its text implies
+     0.84  known           1800ms  "I'm trying to remember a word."
+           dc8cc748-19c1-4fc8-bfb0-56f3fe2ceb4e  rev 1  — 16% shorter than its text implies
+     0.84  presentation    5520ms  "The Spanish for: 'speaking', as in — 'I'm going to pr
+           2c8170ff-8121-4d75-bbe2-103a5bfec086  rev 1  — 16% shorter than its text implies
+     0.84  known            960ms  "are you learning"
+           a2761ea4-73cf-4ab8-b45e-6292087031b7  rev 1  — 16% shorter than its text implies
+     0.84  known           1560ms  "I've been learning all day"
+           323334a1-68d8-4556-b7db-b26c3a498f17  rev 1  — 16% shorter than its text implies
+     0.84  known           2280ms  "I'm going to practise speaking Spanish"
+           66ee26cd-23b2-4b8e-b0b9-0a81cf61d487  rev 1  — 16% shorter than its text implies
+     0.84  known           2520ms  "I'm trying to explain how to say something"
+           0c524136-d831-401a-b374-afc4ad3d9d77  rev 1  — 16% shorter than its text implies
+     0.84  known           1920ms  "I want to practise Spanish today"
+           7c2ebb09-f902-4f57-ab45-d2f142d8997f  rev 1  — 16% shorter than its text implies
+     0.84  known           1560ms  "to speak with someone else"
+           90245c11-a8e9-4d9d-a8af-4e91422dcbb7  rev 1  — 16% shorter than its text implies
+     0.84  known           2040ms  "I'd like to speak after you finish"
+           3c5a40cb-8b00-4d2c-b418-9140c297d59c  rev 1  — 16% shorter than its text implies
+     0.84  known           1680ms  "I'd like to be able to speak"
+           8306837d-48d0-4c79-920a-f3c420432ef9  rev 1  — 16% shorter than its text implies
+     0.84  known           3720ms  "you speak Spanish very well today — I'd like to speak
+           468eea62-9f66-40a6-9717-78c16a179de2  rev 1  — 16% shorter than its text implies
+     0.84  known           2520ms  "I want to come back with everyone else now"
+           05d74c75-142b-44cd-b280-bfd2c62db7c0  rev 1  — 16% shorter than its text implies
+     0.84  known           1440ms  "and I'd like to practise"
+           85805283-e56d-4be5-9068-a4db529baac9  rev 1  — 16% shorter than its text implies
+     0.84  known           2880ms  "we want to come back with everyone else later on"
+           55c0259c-83b6-4e30-a482-9a393214a839  rev 1  — 16% shorter than its text implies
+     0.84  known           1800ms  "she wants to find out later on"
+           9e6e344f-d8cf-47f0-87fa-b30442ba3ba2  rev 1  — 16% shorter than its text implies
+     0.84  known           3480ms  "we want to find out what the answer is at six this ev
+           245ea0bf-3aa5-47c8-9e7a-3b11ff314645  rev 1  — 16% shorter than its text implies
+     0.84  known           2640ms  "but she wants to find out what the answer is"
+           e127ce27-43b5-4816-b3ea-01736428db01  rev 1  — 16% shorter than its text implies
+     0.84  known           1440ms  "I want to learn her name"
+           8fd8d7a8-1e4b-4734-9d11-1424eb817d44  rev 1  — 16% shorter than its text implies
+     0.84  known           3480ms  "are you going to get to know people who speak spanish
+           7600e8f9-b549-410a-a8c3-682196e5719c  rev 1  — 16% shorter than its text implies
+     0.84  known           2160ms  "I like speaking a little spanish now"
+           0c95d8f2-11de-470e-9900-be0c8df27938  rev 1  — 16% shorter than its text implies
+     0.84  known           3240ms  "I don't like taking too much time to answer in spanis
+           243e4c74-79bf-4400-8198-648c1c775d9e  rev 1  — 16% shorter than its text implies
+     0.84  known           3000ms  "I like feeling as if I were learning spanish today"
+           b1bc8764-ca1c-4018-8b84-85955fcd5fe1  rev 1  — 16% shorter than its text implies
+     0.84  known           2280ms  "I wanted to answer as soon as possible"
+           55c26d76-52d3-478b-9e2f-550244a9ef59  rev 1  — 16% shorter than its text implies
+     0.84  known           2280ms  "I want to practise as soon as possible"
+           ed811859-26b4-4477-8aa0-1c090fa2b14b  rev 1  — 16% shorter than its text implies
+     0.84  known           2040ms  "I wanted to speak better yesterday"
+           8a61dc07-d9b5-4b0b-a7ad-c32ce452fc2c  rev 1  — 16% shorter than its text implies
+     0.84  known           2760ms  "I wanted to ask something in spanish yesterday"
+           eeacc5e0-1add-479a-9c93-7c1c0a40a42a  rev 1  — 16% shorter than its text implies
+     0.84  known           1680ms  "I don't want to be quiet now"
+           b4105ac3-6c53-4cbd-a047-2e6f96676a32  rev 1  — 16% shorter than its text implies
+     0.84  known           1320ms  "we don't want to learn"
+           bcfbe1c7-e1fe-4d43-9f07-99c7ae217136  rev 1  — 16% shorter than its text implies
+     0.84  known           1440ms  "I want to think about it"
+           f3ed2c87-574b-4f1e-9c1f-f259a286e747  rev 1  — 16% shorter than its text implies
+     0.84  known           2520ms  "I'm starting to speak a little Spanish now"
+           5115d5a1-caec-4d57-b0fd-34a9ba373ccd  rev 1  — 16% shorter than its text implies
+     0.84  known           2040ms  "I was starting to learn last night"
+           d3e5770e-d409-484a-a5cb-7b01638a6d86  rev 1  — 16% shorter than its text implies
+     0.84  known           1920ms  "I want to remember how to answer"
+           83dfb40f-e0a7-4fe5-92f9-4033704999ff  rev 1  — 16% shorter than its text implies
+     0.84  known           2160ms  "I need to explain what I want to say"
+           b8e5723d-dd09-4e08-ba15-f882c61bb111  rev 1  — 16% shorter than its text implies
+     0.84  known           2280ms  "it's like this with another person now"
+           2982b2e4-fff0-4f53-b5cf-48c1a84ee692  rev 1  — 16% shorter than its text implies
+     0.84  known           2400ms  "you know what I mean, it's like this now"
+           ce635a0d-0aaf-483a-9dfb-6dd3ce4b6382  rev 1  — 16% shorter than its text implies
+     0.84  known           2760ms  "I want to learn Spanish as quickly as possible"
+           91c3e0b0-6b34-4245-837a-cc64c820675e  rev 1  — 16% shorter than its text implies
+    0.842  presentation    5112ms  "The Spanish for: 'she wants', as in — 'She wants to f
+           1eb938e6-f88b-464b-b16c-1e457016325b  rev 1  — 16% shorter than its text implies
+    0.842  known           4392ms  "I want to try speaking Spanish today, I don't worry a
+           1a252acd-2859-408a-8e7e-c9fb345391cd  rev 1  — 16% shorter than its text implies
+    0.843  known           2952ms  "I want to speak Spanish as frequently as possible"
+           c4a63bc7-f247-43d1-aaa3-e11a770c5d18  rev 1  — 16% shorter than its text implies
+    0.843  known           3432ms  "I want to be able to practise speaking very well tomo
+           7d9c0c2e-3e9e-4b6f-b799-3c3787018450  rev 1  — 16% shorter than its text implies
+    0.843  known           2952ms  "I don't like taking too much time to answer today"
+           a5384a03-abc7-4951-aee1-3b4419102f14  rev 1  — 16% shorter than its text implies
+    0.843  known           3072ms  "It's like this, I don't want to interrupt the story"
+           f42e2c12-fb97-49b9-adbf-3321cea51343  rev 1  — 16% shorter than its text implies
+    0.844  known           2352ms  "It's like this, if you know what I mean"
+           d408be98-6013-42d7-835f-f483085c2199  rev 1  — 16% shorter than its text implies
+    0.844  known           2592ms  "we want to meet at six o'clock this evening"
+           fd2ebdd4-ff67-44a8-b3fe-aaf5ab540be7  rev 1  — 16% shorter than its text implies
+    0.844  known           2472ms  "I want to try to say something in Spanish"
+           7fe6ef23-43a4-460b-8e0d-cfac9d0e093c  rev 1  — 16% shorter than its text implies
+    0.844  known           2472ms  "I want to practise as hard as I can today"
+           9fad244e-5d2d-40d4-b663-1d07115f4a7c  rev 1  — 16% shorter than its text implies
+    0.844  known           2352ms  "I'm trying to remember a little Spanish"
+           fe7dfd21-4e8a-4b17-bc19-0d112af339c9  rev 1  — 16% shorter than its text implies
+    0.844  known           2592ms  "I want to try to explain something later on"
+           3d9c0dd0-6ccf-46bb-9336-84626589668f  rev 1  — 16% shorter than its text implies
+    0.844  known           2592ms  "to speak spanish better as soon as possible"
+           1d50593b-ec56-4a37-b98f-865e77223ee9  rev 1  — 16% shorter than its text implies
+    0.844  known           2352ms  "You wanted to practise speaking spanish"
+           7b9853e7-23a3-44a2-a177-e06badc462c8  rev 1  — 16% shorter than its text implies
+    0.844  known           2472ms  "I started to practise speaking last month"
+           f932f2bf-2e60-4e19-8cc7-567b382dfbe3  rev 1  — 16% shorter than its text implies
+    0.844  known           2832ms  "I'm a little tired today but I want to practise"
+           37129b8c-d88b-47c3-9864-98444324f461  rev 1  — 16% shorter than its text implies
+    0.844  known           2352ms  "I want to speak Spanish better than now"
+           9b0516aa-a207-4940-8c84-9dd797a92c5d  rev 1  — 16% shorter than its text implies
+    0.845  presentation    6216ms  "The Spanish for: 'I want you to speak', as in — 'and 
+           38c231a3-4546-4fa7-a534-e6fa1b6ca417  rev 1  — 16% shorter than its text implies
+    0.845  known           1992ms  "I can remember the whole sentence"
+           1075fb09-52a4-4cc3-90df-32e8f863e7b9  rev 1  — 15% shorter than its text implies
+    0.845  known           2232ms  "I want to practise with everyone else"
+           5853dcbd-de71-4b52-ae4c-80cd8a5538a2  rev 1  — 16% shorter than its text implies
+    0.845  known           2112ms  "you want to remember his name today"
+           eb49b411-d3e4-4336-9719-eea77e63a0e4  rev 1  — 16% shorter than its text implies
+    0.845  known           2112ms  "you wanted to learn spanish tonight"
+           d521a261-0edb-4fad-949a-2561d73f7bab  rev 1  — 16% shorter than its text implies
+    0.845  known           2232ms  "but I'm trying to explain what I mean"
+           6587f46c-9fd3-456b-8ee2-b891bf89fa1e  rev 1  — 16% shorter than its text implies
+    0.845  known           1872ms  "I want to speak better than now"
+           5a40ba44-45e5-430a-8ce1-42c1c5ce724b  rev 1  — 15% shorter than its text implies
+    0.845  known           2232ms  "I need to learn to speak Spanish well"
+           a40d80e1-26ba-4d01-8279-7e3d45890937  rev 1  — 16% shorter than its text implies
+    0.845  known           2232ms  "you know, I'm trying to learn Spanish"
+           333008fa-835e-4bd6-b678-ec8cd3cfe784  rev 1  — 16% shorter than its text implies
+    0.846  known           1752ms  "to practise with someone else"
+           2f651ca8-7ba9-4590-ac3d-9be7d86502af  rev 1  — 15% shorter than its text implies
+    0.846  known           3384ms  "I want to be able to explain what I want to say tomor
+           54a6b94b-7f3c-4507-a1c1-bde497ee15c2  rev 1  — 15% shorter than its text implies
+    0.846  known           3144ms  "I want you to speak Spanish all day tomorrow with me"
+           02301beb-e5eb-4400-aa40-7a026c4254a1  rev 1  — 15% shorter than its text implies
+    0.846  known           1752ms  "she wants to come back at six"
+           d15914e7-c110-4ec7-88e5-604d569e839b  rev 1  — 15% shorter than its text implies
+    0.846  known           3384ms  "we want to meet at six this evening as often as possi
+           cd0a05ac-fd08-47a1-a36d-d2eb48860c50  rev 1  — 15% shorter than its text implies
+    0.846  known           3264ms  "it's useful to speak spanish as frequently as possibl
+           bbe66fe0-2a6b-4e93-b690-1f70ce342a29  rev 1  — 15% shorter than its text implies
+    0.846  known           1632ms  "He doesn't want to practise"
+           da9714d8-f6b6-45f2-80b6-525639c88530  rev 1  — 15% shorter than its text implies
+    0.846  known           1632ms  "to think about it carefully"
+           27c9ed9e-0c04-433c-b13d-e848e6f0d818  rev 1  — 15% shorter than its text implies
+    0.846  known           3264ms  "I want to explain what I want to say and how to answe
+           fe6ea474-e534-4500-aab7-a3f283fcec04  rev 1  — 15% shorter than its text implies
+    0.847  presentation    5448ms  "The Spanish for: 'making mistakes', as in — 'but I do
+           c3ab4dc3-8048-4116-8b68-f71819157664  rev 1  — 15% shorter than its text implies
+    0.847  known           1512ms  "I want to learn something"
+           5bf8d49b-9e31-4e09-8d84-2caf735400eb  rev 1  — 15% shorter than its text implies
+    0.847  known           2784ms  "I'd like to be able to speak Spanish very well"
+           ff07f782-b8cf-4b3d-b178-31035ea96e0f  rev 1  — 15% shorter than its text implies
+    0.847  known           2904ms  "he wants to find out what the answer is later on"
+           383f98e1-4e53-45dc-8292-e50db930ffaf  rev 1  — 15% shorter than its text implies
+    0.847  known           1512ms  "I don't want to come back"
+           846fd2a2-e7bb-4184-b41b-eeda0d3061ce  rev 1  — 15% shorter than its text implies
+    0.847  known           2904ms  "I don't like trying too much before I have to go"
+           f4043490-2e63-42d6-9d06-e29559fcc01e  rev 1  — 15% shorter than its text implies
+    0.847  known           1392ms  "but I'm trying to learn"
+           49623a9a-c6cd-4a1a-bce8-e62a51c677bb  rev 1  — 15% shorter than its text implies
+    0.847  known           2784ms  "I don't feel well today but I want to practise"
+           140b01fd-c580-47dd-b8f1-aa7d8c2fb0e9  rev 1  — 15% shorter than its text implies
+    0.847  known           2784ms  "I feel tired but I don't want to stop speaking"
+           453e6fce-a5f7-4edf-a026-b651046d6d4c  rev 1  — 15% shorter than its text implies
+    0.847  known           3024ms  "it's like this, I don't care about making mistakes"
+           7c903358-26da-4271-827e-1be8cbd41e98  rev 1  — 15% shorter than its text implies
+    0.848  presentation    6120ms  "The Spanish for: 'to think about it', as in — 'I star
+           334aa462-44cf-4185-8990-02226008fd59  rev 1  — 15% shorter than its text implies
+    0.848  presentation    2664ms  "The Spanish for: 'you've been learning', is:"
+           9c41f4d5-3962-4cc8-9c14-fe11c855bf50  rev 1  — 15% shorter than its text implies
+    0.848  known           2424ms  "I want to try to explain something today"
+           2cd5a35b-5b9b-424d-b3af-b2b5162ee22f  rev 1  — 15% shorter than its text implies
+    0.848  known           3696ms  "I like feeling as if I were nearly ready to go and le
+           4ae6b454-9498-4257-a295-4bb309c29eca  rev 1  — 15% shorter than its text implies
+    0.848  known           2544ms  "you wanted to show me how to speak spanish"
+           34bc201b-99eb-4c22-8188-b236d49fa406  rev 1  — 15% shorter than its text implies
+    0.848  known           2424ms  "I wanted to start talking more yesterday"
+           831fecd6-467e-476d-9933-77724ff8f0ef  rev 1  — 15% shorter than its text implies
+    0.848  known           2544ms  "You wanted to practise speaking frequently"
+           b97dfd5a-0481-4e56-9a07-b751aa3e33b3  rev 1  — 15% shorter than its text implies
+    0.848  known           2424ms  "I started to practise speaking carefully"
+           ed71b251-d236-4bb3-bb9c-dce35c3fec45  rev 1  — 15% shorter than its text implies
+    0.848  known           1272ms  "how do you feel today"
+           fec485e6-d1b1-4415-96c2-d92ffd861cbf  rev 1  — 15% shorter than its text implies
+    0.849  presentation    5640ms  "The Spanish for: 'carefully', as in — 'I started to t
+           c89a4be6-8d80-4c40-8993-06e318349722  rev 1  — 15% shorter than its text implies
+    0.849  known           2304ms  "I want to say something in Spanish now"
+           58e563d5-65e9-466c-a339-045ade0777e3  rev 1  — 15% shorter than its text implies
+    0.849  known           2184ms  "I'm not sure if I can practise today"
+           b719af10-8d16-4b8a-a8fd-6623bda14ca7  rev 1  — 15% shorter than its text implies
+    0.849  known           3456ms  "but we want to find out how to speak as often as poss
+           720101eb-d527-4857-83ff-a93fe2136c03  rev 1  — 15% shorter than its text implies
+    0.849  known           3336ms  "I'm starting to feel well, I can speak a little Spani
+           0251b128-f178-4b84-a360-d61e5a910eb7  rev 1  — 15% shorter than its text implies
+    0.849  known           2304ms  "I wasn't thinking about how to improve"
+           2f425e1c-977a-4cec-8fbe-0ac93e2a6ee5  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "I want to try to practise speaking"
+           58414ffb-2c4d-425e-8011-e5db24276849  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "I'm going to say a word in Spanish"
+           7f80f451-89f0-41f4-8deb-27ad33fdb46f  rev 1  — 15% shorter than its text implies
+     0.85  known           1032ms  "you want to learn"
+           6d6a2ae1-1985-4960-81d6-c52031c0464c  rev 1  — 15% shorter than its text implies
+     0.85  known           3216ms  "I am going to start talking as frequently as possible
+           f7db49b6-03b9-426a-9ff1-0f9f7b7175fc  rev 1  — 15% shorter than its text implies
+     0.85  known           3216ms  "I don't like taking too much time with another person
+           c90ecb9e-0985-44fc-a84f-0031a81499ef  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "I've been learning Spanish all day"
+           b1f96896-55c8-4c02-8552-608aced5ca7f  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/spa_for_eng-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

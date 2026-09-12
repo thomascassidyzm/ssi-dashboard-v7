@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>recordist my-lines staging probe — 2026-09-02</title>
+<style>body{font-family:sans-serif;max-width:900px;margin:2rem auto;background:#111;color:#eee}
+img{width:390px;border:1px solid #444;display:block;margin:0.5rem 0 1.5rem}
+h2{margin-top:2rem}</style></head>
+<body>
+<h1>recordist my-lines staging verification — 2026-09-02</h1>
+<p>Probe user: e2e-mylines-probe@ssi-test.invalid (role=recorder, voice_id=human_tom_zzz). Real login form, password step. Viewport 390x844.</p>
+
+<h2>1. Login form</h2>
+<img src="01-login-form.png">
+
+<h2>2. Post-login landing (redirects to /my-recording)</h2>
+<img src="02-post-login.png">
+
+<h2>3. /my-recording — 8 outstanding lines</h2>
+<img src="03-my-recording-list.png">
+
+<h2>4. Tapped row 1 — headless has no mic device, "No microphone found"</h2>
+<img src="04-my-recording-row-tapped.png">
+
+<h2>5. /r/human_tom_zzz — link-is-identity surface, no login</h2>
+<img src="05-r-human-tom-zzz.png">
+
+<h2>Raw report.json</h2>
+<pre id="report">loading...</pre>
+<script>fetch('report.json').then(r=>r.text()).then(t=>document.getElementById('report').textContent=t)</script>
+</body>
+</html>

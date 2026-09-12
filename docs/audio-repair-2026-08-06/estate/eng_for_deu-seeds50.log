@@ -1,0 +1,87 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  enable debug logging with { debug: true }
+
+scoped to seeds 1-50: 4105 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  override existing env vars with { override: true }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/4105 (26.9/s, ~2m left)     measured 500/4105 (35.5/s, ~2m left)     measured 750/4105 (39.1/s, ~1m left)     measured 1000/4105 (41.3/s, ~1m left)     measured 1250/4105 (42.0/s, ~1m left)     measured 1500/4105 (42.9/s, ~1m left)     measured 1750/4105 (43.3/s, ~1m left)     measured 2000/4105 (43.7/s, ~1m left)     measured 2250/4105 (44.0/s, ~1m left)     measured 2500/4105 (44.1/s, ~1m left)     measured 2750/4105 (44.5/s, ~1m left)     measured 3000/4105 (44.7/s, ~0m left)     measured 3250/4105 (44.8/s, ~0m left)     measured 3500/4105 (44.9/s, ~0m left)     measured 3750/4105 (45.0/s, ~0m left)     measured 4000/4105 (45.0/s, ~0m left)   
+
+audio-repair queue — eng_for_deu
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 4105 clip(s); 0 could not be measured
+
+31 clip(s) worth a human's ears (31 by duration, 0 by tail); showing 31, worst first.
+
+    0.798  presentation    5184ms  "Auf Englisch ist — 'auf Englisch' — wie in — 'ich möc
+           f681b763-1873-485c-b8be-c90b71bb15d0  rev 1  — 20% shorter than its text implies
+    0.806  presentation    5640ms  "Auf Englisch ist — 'ich möchte nicht' — wie in — 'ich
+           bb1705f9-29c8-4a4d-97ba-16a798362f6f  rev 1  — 19% shorter than its text implies
+    0.809  presentation    4968ms  "Auf Englisch ist — 'sprichst du' — wie in — 'Sprichst
+           6cf245e3-0cb9-4157-8d2d-f19931e5aeeb  rev 1  — 19% shorter than its text implies
+    0.811  presentation    5328ms  "Auf Englisch ist — 'ich möchte' — wie in — 'Ich möcht
+           4a54f194-e6dd-4554-b158-51fe37be4b7f  rev 1  — 19% shorter than its text implies
+    0.816  presentation    7056ms  "Auf Englisch ist — 'den ganzen Satz' — wie in — 'Ich 
+           3c00ec44-19c2-4303-be34-e4f606f7c2d0  rev 1  — 18% shorter than its text implies
+    0.816  presentation    7056ms  "Auf Englisch ist — 'den ganzen Satz' — wie in — 'Ich 
+           01b02bd4-0abc-47a6-8517-4dfc11424bab  rev 1  — 18% shorter than its text implies
+     0.82  presentation    5040ms  "Auf Englisch ist — 'du wolltest' — wie in — 'du wollt
+           f7d7e377-da22-410d-8e7d-c2fde3e0deff  rev 1  — 18% shorter than its text implies
+    0.823  presentation    5640ms  "Auf Englisch ist — 'er möchte nicht' — wie in — 'er m
+           23890449-6053-4ba6-8c45-f370651a1316  rev 1  — 18% shorter than its text implies
+    0.826  presentation    7080ms  "Auf Englisch ist — 'wie ich antworten soll' — wie in 
+           ef2da146-efb0-4a6a-a6bc-5a3febc777a1  rev 1  — 17% shorter than its text implies
+     0.83  presentation    4920ms  "Auf Englisch ist — 'heute Abend' — wie in — 'sprichst
+           383beccd-9b89-4957-95a8-9e130b4da4da  rev 1  — 17% shorter than its text implies
+     0.83  presentation    5040ms  "Auf Englisch ist — 'du möchtest' — wie in — 'du möcht
+           dfe2a67b-bd19-45e1-9b7e-2bc5a2c3ac8d  rev 1  — 17% shorter than its text implies
+    0.831  presentation    5280ms  "Auf Englisch ist — 'den ganzen Tag' — wie in — 'Spric
+           b0473f15-265b-49ac-93bb-33e16c8d3934  rev 1  — 17% shorter than its text implies
+    0.832  presentation    4752ms  "Auf Englisch ist — 'du sprichst' — wie in — 'Du spric
+           06917ea7-b77f-45a2-b10a-2a7563f85be8  rev 1  — 17% shorter than its text implies
+    0.835  presentation    6144ms  "Auf Englisch ist — 'mit mir' — wie in — 'Und ich möch
+           fd39c117-a16c-4584-8c6e-7af354910350  rev 1  — 16% shorter than its text implies
+    0.836  presentation    7224ms  "Auf Englisch ist — 'ich mache mir keine Sorgen' — wie
+           3e27e295-c16a-4c5f-a7ed-637cff4ecadf  rev 1  — 16% shorter than its text implies
+    0.836  presentation    6984ms  "Auf Englisch ist — 'ich lerne seit' — wie in — 'ich l
+           b5903f77-ad1b-4b86-b1e4-9259e763ecd3  rev 1  — 16% shorter than its text implies
+    0.838  presentation    4128ms  "Auf Englisch ist — 'nichts' — wie in — 'ich wollte ni
+           2fd5a760-902f-430f-b0d1-3190bc6918b7  rev 1  — 16% shorter than its text implies
+    0.838  presentation    4488ms  "Auf Englisch ist — 'lernst du' — wie in — 'lernst du 
+           c7e83069-90ae-41de-a2be-d4fbe322c325  rev 1  — 16% shorter than its text implies
+    0.838  presentation    6048ms  "Auf Englisch ist — 'ich versuche nicht' — wie in — 'i
+           9e391b70-b1f4-436d-ba1c-097182174cb1  rev 1  — 16% shorter than its text implies
+    0.844  presentation    6936ms  "Auf Englisch ist — 'ich würde nicht gerne' — wie in —
+           5eabcf9b-d171-4f75-a992-425a9a5e4a2c  rev 1  — 16% shorter than its text implies
+    0.844  presentation    7056ms  "Auf Englisch ist — 'nachdem du fertig bist' — wie in 
+           7ef7175a-21f6-4eb0-9d8a-24c6c129b1a3  rev 1  — 16% shorter than its text implies
+    0.845  presentation    5976ms  "Auf Englisch ist — 'und' — wie in — 'Und ich möchte, 
+           d4691f06-aab4-4b56-85e0-0944aa656b2b  rev 1  — 15% shorter than its text implies
+    0.846  presentation    6648ms  "Auf Englisch ist — 'sprechen können' — wie in — 'Ich 
+           f092673b-3cef-47d1-a18d-76336d88b8d5  rev 1  — 15% shorter than its text implies
+    0.847  presentation    4536ms  "Auf Englisch ist — 'englisch' — wie in — 'ich möchte 
+           56719681-5a21-4e9e-9ead-5b6bce20c2fa  rev 1  — 15% shorter than its text implies
+    0.847  presentation    4416ms  "Auf Englisch ist — 'wolltest du' — wie in — 'wolltest
+           46dfd794-a18c-4539-b638-b14ca1766e9a  rev 1  — 15% shorter than its text implies
+    0.848  presentation    6000ms  "Auf Englisch ist — 'jemand' — wie in — 'ich versuche 
+           4ccb4d58-0167-43a3-b371-ae9de5047af3  rev 1  — 15% shorter than its text implies
+    0.849  presentation    5640ms  "Auf Englisch ist — 'sie möchte' — wie in — 'sie möcht
+           e49d0e9e-978a-41cc-82c9-069a72b63a0e  rev 1  — 15% shorter than its text implies
+    0.849  presentation    6552ms  "Auf Englisch ist — 'die Englisch sprechen' — wie in —
+           1434fa14-e214-4758-99fd-92f5087decbc  rev 1  — 15% shorter than its text implies
+    0.849  presentation    6552ms  "Auf Englisch ist — 'wenn du weißt' — wie in — 'ich mö
+           2149e8af-55aa-41b8-941e-5b307696fd8d  rev 1  — 15% shorter than its text implies
+    0.849  presentation    4608ms  "Auf Englisch ist — 'oder' — wie in — 'Oder ob ich mic
+           95c223dd-6adc-48d9-911e-ff88a124c5f3  rev 1  — 15% shorter than its text implies
+    0.849  target2         3456ms  "I don't like to speak with people who don't understan
+           2a277c3c-add9-4bfd-8f36-2d3b381120db  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/eng_for_deu-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

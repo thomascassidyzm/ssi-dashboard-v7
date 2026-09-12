@@ -1,0 +1,61 @@
+[
+ {
+  "label": "S219L2p3 \"durante algum\" (ungrammatical fragment) -> \"durante algum tempo\" (matches LEGO S92L2)",
+  "before": [
+   {
+    "seed_number": 219,
+    "lego_index": 2,
+    "position": 3,
+    "known_text": "for a while",
+    "target_text": "durante algum"
+   }
+  ]
+ },
+ {
+  "label": "S112L2p1 \"à espera\" (European PT) -> \"esperando\" (matches its own LEGO)",
+  "before": [
+   {
+    "seed_number": 112,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "expecting",
+    "target_text": "à espera"
+   }
+  ]
+ },
+ {
+  "label": "S277L2p1 known \"early\" -> \"beginning\" (its LEGO is beginning->início; \"early\"->\"cedo\" at S139)",
+  "before": [
+   {
+    "seed_number": 277,
+    "lego_index": 2,
+    "position": 1,
+    "known_text": "early",
+    "target_text": "início"
+   }
+  ]
+ },
+ {
+  "label": "S248L1p3 \"foi lixo\" -> \"era lixo\" (seed says era; same era/foi family as S86)",
+  "before": [
+   {
+    "seed_number": 248,
+    "lego_index": 1,
+    "position": 3,
+    "known_text": "it was rubbish",
+    "target_text": "foi lixo"
+   }
+  ]
+ },
+ {
+  "label": "S289L1 LEGO \"pergunto\" -> \"me pergunto\" (seed \"me pergunto se...\" did not tile from its own LEGO)",
+  "before": [
+   {
+    "seed_number": 289,
+    "lego_index": 1,
+    "known_text": "I wonder",
+    "target_text": "pergunto"
+   }
+  ]
+ }
+]

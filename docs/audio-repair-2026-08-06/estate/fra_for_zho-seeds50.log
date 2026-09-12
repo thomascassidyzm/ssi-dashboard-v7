@@ -1,0 +1,33 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+
+scoped to seeds 1-50: 3660 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  write to custom object with { processEnv: myObject }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3660 (20.9/s, ~3m left)     measured 500/3660 (24.4/s, ~2m left)     measured 750/3660 (25.7/s, ~2m left)     measured 1000/3660 (26.6/s, ~2m left)     measured 1250/3660 (27.2/s, ~1m left)     measured 1500/3660 (27.4/s, ~1m left)     measured 1750/3660 (27.5/s, ~1m left)     measured 2000/3660 (27.5/s, ~1m left)     measured 2250/3660 (27.7/s, ~1m left)     measured 2500/3660 (27.8/s, ~1m left)     measured 2750/3660 (27.9/s, ~1m left)     measured 3000/3660 (27.9/s, ~0m left)     measured 3250/3660 (27.9/s, ~0m left)     measured 3500/3660 (27.8/s, ~0m left)   
+
+audio-repair queue — fra_for_zho
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3660 clip(s); 0 could not be measured
+
+4 clip(s) worth a human's ears (4 by duration, 0 by tail); showing 4, worst first.
+
+    0.815  target2         5184ms  "depuis combien de temps est-ce que tu veux apprendre 
+           01cf3a12-ffba-45a9-a9c4-3b003dfce62e  rev 1  — 18% shorter than its text implies
+    0.845  target2         4464ms  "depuis combien de temps est-ce que tu veux parler ave
+           2ae1023f-5b6c-4f51-8f4e-9299fea56872  rev 1  — 16% shorter than its text implies
+    0.847  target2         4536ms  "pourquoi est-ce que tu parles français toute la journ
+           2a9da94b-0186-48d3-9a25-afb84a82ab06  rev 1  — 15% shorter than its text implies
+    0.847  target2         4176ms  "pourquoi est-ce que tu veux rencontrer des gens qui p
+           0b028a30-a0c0-400f-9180-06aaa422509a  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/fra_for_zho-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

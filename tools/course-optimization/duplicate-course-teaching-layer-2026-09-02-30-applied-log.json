@@ -1,0 +1,67 @@
+{
+  "ranAt": "2026-09-02T21:30:37.348Z",
+  "mode": "applied",
+  "source": "eng_for_spa",
+  "destination": "zzz_test2_for_eng",
+  "maxSeed": 30,
+  "counts": {
+    "seedsUpdated": 30,
+    "legos": 89,
+    "phrases": 799
+  },
+  "sample": {
+    "seed": {
+      "seed_number": 1,
+      "known_text": "I want to speak English with you now",
+      "target_text": "quiero hablar inglés contigo ahora"
+    },
+    "lego": {
+      "course_code": "zzz_test2_for_eng",
+      "seed_number": 1,
+      "lego_index": 4,
+      "type": "M",
+      "is_new": true,
+      "known_text": "with you",
+      "target_text": "contigo",
+      "components": [
+        {
+          "known": "with",
+          "target": "con"
+        },
+        {
+          "known": "you",
+          "target": "ti"
+        }
+      ],
+      "status": "draft"
+    },
+    "phrase": {
+      "id": "zzz_test2_for_eng:S0001L01B01",
+      "course_code": "zzz_test2_for_eng",
+      "seed_number": 1,
+      "lego_index": 1,
+      "position": 1,
+      "known_text": "I want",
+      "target_text": "quiero",
+      "word_count": 6,
+      "lego_count": 1,
+      "metadata": {
+        "format": "build_use"
+      },
+      "status": "draft",
+      "phrase_role": "build",
+      "connected_lego_ids": [],
+      "lego_id": null,
+      "introduce": true,
+      "decomposition": [
+        {
+          "known": "I want",
+          "legoId": "S0001L01",
+          "target": "quiero",
+          "isGhost": false,
+          "isSalient": true
+        }
+      ]
+    }
+  }
+}

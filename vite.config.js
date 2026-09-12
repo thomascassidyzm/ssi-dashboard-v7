@@ -86,5 +86,44 @@ export default defineConfig({
       }]
     }
   },
-  publicDir: 'public'
+  publicDir: 'public',
+  test: {
+    // Real vitest specs only — exclude playwright's e2e/*.spec.js (run via
+    // `npx playwright test` against their own per-folder playwright.config.js,
+    // not vitest) and stray gitignored worktree/scratch checkouts that
+    // duplicate the whole services/ tree and would otherwise be double-collected.
+    include: ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    exclude: [
+      '**/node_modules/**',
+      '**/dist/**',
+      'e2e/**',
+      'scripts/**',
+      '.worktrees/**',
+      '.claude/worktrees/**',
+      // Standalone scripts named *.test.cjs that use node:test/bare assert +
+      // process.exit(), not vitest's describe/it — run directly with `node
+      // <file>`, not through vitest. Collecting them here just logs
+      // "No test suite found" (or a bogus process.exit failure). There is no
+      // naming convention that separates these from real *.test.cjs vitest
+      // specs living in the same directories (e.g. tools/pod-sync-*.test.cjs
+      // IS vitest), so this has to be an explicit file list — regenerate it
+      // with:
+      //   for f in $(git ls-files '*.test.cjs' '*.test.js' '*.test.mjs'); do
+      //     grep -q "from 'vitest'" "$f" || echo "$f"
+      //   done
+      'ops/watchdog/holmes-availability-sentinel.test.cjs',
+      'services/voice-engine/clone-source.test.cjs',
+      'services/voice-engine/recordist-clip-variant.test.cjs',
+      'services/voice-engine/recordist-queue.test.cjs',
+      'tools/audio-regen-probe/*.test.cjs',
+      'tools/distinctions/*.test.cjs',
+      'tools/frame-layer/derive-and-baskets.test.cjs',
+      'tools/frame-layer/extract-patterns.test.cjs',
+      'tools/phrase-lab/score.test.cjs',
+      'tools/pod-recast-target-pair.test.cjs',
+      'tools/pod-voice-pool-reorder.test.cjs',
+      'tools/pods/parse-pod-markdown.test.cjs',
+      'tools/pods/splice-sentence-clips.test.cjs'
+    ]
+  }
 })

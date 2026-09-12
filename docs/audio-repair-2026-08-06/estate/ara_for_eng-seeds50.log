@@ -1,0 +1,31 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 🔐 prevent committing .env to code: https://dotenvx.com/precommit
+
+scoped to seeds 1-50: 3468 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 👥 sync secrets across teammates & machines: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3468 (25.9/s, ~2m left)     measured 500/3468 (34.9/s, ~1m left)     measured 750/3468 (39.3/s, ~1m left)     measured 1000/3468 (41.4/s, ~1m left)     measured 1250/3468 (43.0/s, ~1m left)     measured 1500/3468 (44.1/s, ~1m left)     measured 1750/3468 (44.9/s, ~1m left)     measured 2000/3468 (45.3/s, ~1m left)     measured 2250/3468 (45.6/s, ~0m left)     measured 2500/3468 (45.8/s, ~0m left)     measured 2750/3468 (46.0/s, ~0m left)     measured 3000/3468 (46.4/s, ~0m left)     measured 3250/3468 (46.4/s, ~0m left)   
+
+audio-repair queue — ara_for_eng
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3468 clip(s); 0 could not be measured
+
+3 clip(s) worth a human's ears (3 by duration, 0 by tail); showing 3, worst first.
+
+    0.723  known           1704ms  "I'm trying to learn something now"
+           27201272-e2e5-412d-ac05-12268edd4690  rev 1  — 28% shorter than its text implies
+    0.832  known           3624ms  "I wouldn't like to guess what's going to happen with 
+           ac0046a2-eda1-4bf3-b1ad-3539c64d216f  rev 1  — 17% shorter than its text implies
+     0.85  target2         6192ms  "كُنْتُ أَبْدَأُ أَشْعُرُ بِأَنَّني أَفْضَلُ مِنَ اللَ
+           076fd5c6-bd4f-4ab0-8431-61b95eab6004  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/ara_for_eng-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

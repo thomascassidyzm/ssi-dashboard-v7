@@ -1,0 +1,723 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+
+scoped to seeds 1-50: 2878 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 🔐 prevent building .env in docker: https://dotenvx.com/prebuild
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/2878 (22.1/s, ~2m left)     measured 500/2878 (27.9/s, ~1m left)     measured 750/2878 (30.3/s, ~1m left)     measured 1000/2878 (31.5/s, ~1m left)     measured 1250/2878 (31.8/s, ~1m left)     measured 1500/2878 (31.2/s, ~1m left)     measured 1750/2878 (30.9/s, ~1m left)     measured 2000/2878 (30.5/s, ~0m left)     measured 2250/2878 (30.2/s, ~0m left)     measured 2500/2878 (29.9/s, ~0m left)     measured 2750/2878 (29.9/s, ~0m left)   
+
+audio-repair queue — jpn_for_eng
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 2878 clip(s); 0 could not be measured
+
+349 clip(s) worth a human's ears (339 by duration, 19 by tail); showing 349, worst first.
+
+     20ms  known           1848ms  "I've been learning for about a week"
+           851f8f56-10b6-4bc5-ba52-603bc4960e96  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms); and speaks 23 chars/sec against a 18.1 baseline
+     20ms  known            912ms  "are doing"
+           1f10dfc0-0b20-4146-be07-d6e6e6e949e2  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1464ms  "Why don't you want to stop?"
+           376c0e97-6291-454d-9980-26c0aff2e0fd  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms); and speaks 22.6 chars/sec against a 18.1 baseline
+     20ms  known           1440ms  "I don't want to be quiet."
+           cac4884b-88f7-4a6b-b9e5-49b284b0504c  rev 1  — ends abruptly — 20ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2352ms  "I was starting to feel better than last night"
+           e757196b-957b-4400-b3b9-2279ef254c88  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1080ms  "will you help"
+           0fdfd5ee-0655-42e9-89fe-ce9a9c245249  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known            984ms  "last month"
+           e31775d6-5d93-4b25-bb50-4abbed4af84f  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1176ms  "than last night"
+           f37ad798-a4a9-4720-a0e9-2e6fc4f5cdbe  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           2016ms  "I'll try saying the whole sentence."
+           47074316-d222-4295-8581-072d14d4de09  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2256ms  "I don't know if I can remember the sentence."
+           e5d19204-4ac2-40cb-af30-7bcf07b5f80b  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 22.9 chars/sec against a 18.1 baseline
+     30ms  known           2640ms  "I don't know if I can remember the whole sentence."
+           f1aa340e-d220-4978-a9ac-49db0163e3d4  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms); and speaks 22 chars/sec against a 18.1 baseline
+     25ms  known           1152ms  "met last month"
+           29faf63b-b3f8-42b0-bb5f-291f45bd88f8  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1128ms  "He's tired."
+           450c2ae2-f508-4f39-93f5-b1e690c3b4e8  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     25ms  known           1464ms  "He doesn't worry about it."
+           9a938323-34a6-4eb2-8eb1-69bddeaf7f0b  rev 1  — ends abruptly — 25ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1968ms  "I'm trying to remember a word"
+           97c3b047-7e8d-4832-8765-f75500c9ec4c  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  presentation    3408ms  "The Japanese for: 'it would be good if I could speak'
+           00e0f013-22b0-4906-9279-95dec0a25b8a  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1848ms  "whether I can remember a word"
+           7e8ca120-c7c0-4057-b7b9-965e6223261c  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           2424ms  "I think I can't remember the word"
+           c362e8a5-f5e7-4a25-ab79-1191df6bed81  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+     30ms  known           1704ms  "been doing for about a week"
+           71d65f83-bffa-45e1-8242-f8313439d994  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+    0.654  known           2616ms  "I wouldn't like to guess what's going to happen tomor
+           0a79e1b0-aebd-48fc-b263-656df49cc431  rev 1  — 35% shorter than its text implies
+    0.672  known           1680ms  "Is there something you want to ask?"
+           b97c7438-4880-4453-a9ce-955b6ded245f  rev 1  — 33% shorter than its text implies
+    0.672  known           1536ms  "How long have you been doing it?"
+           9fd78b26-ed2d-47ca-857f-b8f94404be15  rev 1  — 33% shorter than its text implies
+     0.68  known           2040ms  "I don't really want to think about it now."
+           eb12e1ba-073c-4d71-97e9-55465bd77710  rev 1  — 32% shorter than its text implies
+    0.682  known           1656ms  "Did you want to show me something?"
+           b560de40-581f-4a6c-8975-779ac0ba6eba  rev 1  — 32% shorter than its text implies
+    0.688  known           2016ms  "I don't know if I can remember all of it."
+           edcd9418-bcd6-49a9-88b2-8018dbd4c6e3  rev 1  — 31% shorter than its text implies
+    0.689  known           1968ms  "She doesn't want to read this afternoon."
+           746cd54f-32d5-4072-8b80-6afef215ce9a  rev 1  — 31% shorter than its text implies
+     0.69  known           1824ms  "He doesn't want to read the sentence."
+           0a2c97a7-58e9-44c7-9e5f-627db3697560  rev 1  — 31% shorter than its text implies
+    0.693  known           2328ms  "I don't want to think about what I want to say."
+           0e581f0d-d50a-487c-9348-b4693e62c649  rev 1  — 31% shorter than its text implies
+    0.695  known           1440ms  "How do you feel this morning?"
+           084ef848-d72e-454d-9178-2385dbdb83a5  rev 1  — 30% shorter than its text implies
+    0.697  known           2040ms  "How long have you been learning Japanese?"
+           ed46131a-a1e4-4a11-8768-060da12809d4  rev 1  — 30% shorter than its text implies
+    0.697  known           1992ms  "I don't know if I can remember the name."
+           5451c669-654b-4a29-8f58-abb90716b029  rev 1  — 30% shorter than its text implies
+      0.7  known           1800ms  "I've been doing it for about a week."
+           9669734c-26b4-44e4-9911-7b255fcfc949  rev 1  — 30% shorter than its text implies
+    0.701  known           1752ms  "She doesn't know whether to answer."
+           6c839f42-61be-4e24-b7a5-33ef8921109d  rev 1  — 30% shorter than its text implies
+    0.707  known           1920ms  "I don't want to think about all of it."
+           b7bdcf8b-db21-4d15-932c-b433a4da79b4  rev 1  — 29% shorter than its text implies
+    0.707  known           1920ms  "I don't really want to think about it."
+           bbf2a9b2-41b6-4a1b-a541-20ee6fb282c1  rev 1  — 29% shorter than its text implies
+    0.708  known           1872ms  "I don't want to think about anything."
+           0127ec09-0be3-4c6c-bce3-06072e35086c  rev 1  — 29% shorter than its text implies
+    0.708  known           1872ms  "I'm thinking about whether to answer."
+           d4116f8e-0151-40ac-9893-b3e2de03e50c  rev 1  — 29% shorter than its text implies
+    0.709  known           2280ms  "Are you going to help me before I have to go?"
+           79639257-dcc5-43cc-aa27-2a567e7aa6cb  rev 1  — 29% shorter than its text implies
+    0.709  known           1824ms  "I'll try speaking with other people."
+           1f5e5472-7c34-401d-a187-9626e8fae0f0  rev 1  — 29% shorter than its text implies
+    0.712  known           2136ms  "it would be good if I could speak together"
+           1a6f346a-d3b7-461a-92ee-37fc3e62651b  rev 1  — 29% shorter than its text implies
+    0.712  known           2136ms  "I don't know if I can remember the answer."
+           4d3373b5-12b4-4e71-80c0-6289bd9283d2  rev 1  — 29% shorter than its text implies
+    0.713  known           1680ms  "I want to say something together."
+           e5f244d7-76be-4549-ba5c-b6f4a7719d71  rev 1  — 29% shorter than its text implies
+    0.714  known           2448ms  "I'm going to practise speaking with someone else"
+           7f4b196d-5b8e-40c4-8709-ab5eb5a834fa  rev 1  — 29% shorter than its text implies
+    0.714  known           2040ms  "It would be good if I could speak later."
+           613f2e7e-e557-40e0-9a5f-0f85d1287390  rev 1  — 29% shorter than its text implies
+    0.714  known           2448ms  "I'm thinking about whether I need to speak more."
+           52d344b7-80e7-4a01-80c9-ff9eadb6e2d2  rev 1  — 29% shorter than its text implies
+    0.715  known           1584ms  "Did you want to show something?"
+           0093e7e6-52ea-4ee2-acc3-af2d5d536477  rev 1  — 28% shorter than its text implies
+    0.715  known           1584ms  "I'm looking forward to meeting."
+           4cb2f398-7da9-4209-905f-87c2bcb65025  rev 1  — 28% shorter than its text implies
+    0.719  known           1848ms  "I'm a little better than last night."
+           c0638325-8f92-4192-869d-33a12c3b06b8  rev 1  — 28% shorter than its text implies
+     0.72  known           1800ms  "I'm getting better than last night."
+           3b4ac29e-352f-4396-8533-3826356d4ab5  rev 1  — 28% shorter than its text implies
+    0.721  known           1752ms  "don't want to think about tomorrow"
+           a5e6d232-86ee-46ce-a3b5-526e99f2f37d  rev 1  — 28% shorter than its text implies
+    0.721  known           2112ms  "I don't want to think about the sentence."
+           e1f0f021-7e6b-490f-8791-5ec52fbd7c55  rev 1  — 28% shorter than its text implies
+    0.722  known           2064ms  "she wants to find out what the answer is"
+           6bdbef6c-d155-43f3-b484-7446ed5ee771  rev 1  — 28% shorter than its text implies
+    0.722  known           2064ms  "I'm looking forward to meeting everyone."
+           a4c10b1d-118b-4a03-9d37-20b41c295f29  rev 1  — 28% shorter than its text implies
+    0.724  known           1344ms  "You're good at explaining."
+           02296c31-4f8a-4168-84ef-861a71aa09ba  rev 1  — 28% shorter than its text implies
+    0.726  known           1608ms  "I'll try doing it this evening."
+           8b604bab-d371-45b8-9940-27ac0c379e56  rev 1  — 27% shorter than its text implies
+    0.726  known           1608ms  "Are you remembering the answer?"
+           9c6f32b6-39e1-4a99-8f84-0094ecb49129  rev 1  — 27% shorter than its text implies
+    0.728  known           1560ms  "I don't really worry about it."
+           06fb048d-09e2-4b8a-b529-ddacca970c49  rev 1  — 27% shorter than its text implies
+    0.728  known           2184ms  "I wasn't thinking about whether to answer."
+           26f26f60-b889-42e4-b4c0-2a3c62ff1533  rev 1  — 27% shorter than its text implies
+    0.728  known           2184ms  "I wasn't thinking about whether I need to."
+           e0287a9f-d5a4-4344-8e35-d7cf1279da87  rev 1  — 27% shorter than its text implies
+     0.73  known           1824ms  "I'll do something with other people"
+           0d26b21e-b99a-4609-b0d7-d08caf331679  rev 1  — 27% shorter than its text implies
+     0.73  known           1824ms  "I don't want to think about it now."
+           a74158cb-29d2-4144-b78e-22e185ada509  rev 1  — 27% shorter than its text implies
+     0.73  known           1512ms  "He doesn't want to interrupt."
+           184735fb-a6e3-46d7-9e04-4467c5713f74  rev 1  — 27% shorter than its text implies
+     0.73  known           1824ms  "I wasn't thinking about the answer."
+           0cd15d78-4dd7-48f9-8b50-01efe15b48df  rev 1  — 27% shorter than its text implies
+    0.731  known           1776ms  "I want to talk about something now"
+           5358a2bd-d52c-48e6-9b53-f458bf487010  rev 1  — 27% shorter than its text implies
+    0.732  known           2352ms  "I don't really want to think about all of it."
+           e0c07940-64b0-4ad3-84a4-4765bfc06bf1  rev 1  — 27% shorter than its text implies
+    0.732  known           2928ms  "When other people are here, he doesn't want to be qui
+           4178ea46-f313-4498-8703-1afa65a6ef9f  rev 1  — 27% shorter than its text implies
+    0.732  known           1464ms  "I don't want to do anything."
+           b3773031-825d-4758-86b4-76c5865cb4ed  rev 1  — 27% shorter than its text implies
+    0.732  known           1464ms  "She wants to make it better."
+           b999c991-6aa9-42b6-bbcc-2a133296065f  rev 1  — 27% shorter than its text implies
+    0.733  known           2880ms  "because I think that it's a good thing to make mistak
+           306a2eac-b6cf-4be7-a47d-ae50f0c0429a  rev 1  — 27% shorter than its text implies
+    0.733  known           2304ms  "I don't really want to think about tomorrow."
+           b01b99ba-a1a1-4fb0-863f-285b1d5b6424  rev 1  — 27% shorter than its text implies
+    0.733  known           1728ms  "I don't really want to interrupt."
+           3e042542-e7ec-46b1-bdb7-d5267fe037c1  rev 1  — 27% shorter than its text implies
+    0.735  known           2784ms  "When other people are here, I don't want to be quiet.
+           9bc2f174-ff70-4681-9062-524d3ac941d5  rev 1  — 26% shorter than its text implies
+    0.735  known           1680ms  "I don't really want to be quiet."
+           b48d7546-f391-423e-a637-b0285656abb3  rev 1  — 27% shorter than its text implies
+    0.736  known           1104ms  "She's getting better."
+           6230c44d-0d7a-4c6b-8024-a8e9b055e550  rev 1  — 26% shorter than its text implies
+    0.739  known           1848ms  "but I'm a little tired this morning"
+           08e0d52e-a998-4d63-8224-d43440502b84  rev 1  — 26% shorter than its text implies
+    0.739  known           2904ms  "I'm looking forward to speaking better as soon as I c
+           cd964ec0-02ec-4887-bc5c-f7dcd2f64e35  rev 1  — 26% shorter than its text implies
+    0.739  known           1848ms  "don't want to think about all of it"
+           7c63536d-d21e-4697-b739-02f9b872f76e  rev 1  — 26% shorter than its text implies
+    0.739  known           1584ms  "Are you remembering all of it?"
+           cc82a82d-0e7c-4be1-ad9e-ac02059ecb90  rev 1  — 26% shorter than its text implies
+    0.739  known           1848ms  "there's something I want to ask now"
+           083c32d6-faf5-4ae1-9eba-8f4574988411  rev 1  — 26% shorter than its text implies
+    0.739  known           1056ms  "He's getting better."
+           8aa22544-ae47-40ba-abed-a964a2fbcbc6  rev 1  — 26% shorter than its text implies
+    0.741  known           2592ms  "I'm not sure if I can remember the whole sentence"
+           1e2d05e7-4ca0-4d5b-96b0-3c9414267ae5  rev 1  — 26% shorter than its text implies
+    0.741  known           1800ms  "But I don't want to stop speaking."
+           db46f55e-fc72-4160-99ec-cab22a4a2afa  rev 1  — 26% shorter than its text implies
+    0.741  known           2064ms  "I don't know whether I need to improve."
+           23cc2c90-0f85-40d8-a1db-f7b6ca5dfe5d  rev 1  — 26% shorter than its text implies
+    0.742  known           2544ms  "I don't know if I can remember tomorrow's thing."
+           28b9bf09-7247-4ab6-8b53-73c5c3a077d0  rev 1  — 26% shorter than its text implies
+    0.742  known           2544ms  "It's that kind of vibe, if you know what I mean."
+           c4a2c478-dff3-41d5-b053-08521fdca620  rev 1  — 26% shorter than its text implies
+    0.743  known           2016ms  "don't want to think about the sentence"
+           eafe3624-23fd-406b-8990-ea02c391f568  rev 1  — 26% shorter than its text implies
+    0.743  known           2760ms  "It would be good if I could speak Japanese together."
+           f862f144-736b-4506-b55c-1762da11e00f  rev 1  — 26% shorter than its text implies
+    0.743  known           1752ms  "I wasn't thinking about tomorrow."
+           4f3e5ac5-604d-435a-b4ca-f68f7ceee2f8  rev 1  — 26% shorter than its text implies
+    0.744  known           2232ms  "it would be good if I could speak a little"
+           3f8ab47e-8f8d-4363-879a-d799a075f74d  rev 1  — 26% shorter than its text implies
+    0.746  known           2664ms  "I want to try speaking Japanese with other people."
+           efb69a34-d252-420e-ab32-0499d3609040  rev 1  — 25% shorter than its text implies
+    0.747  known           1920ms  "we don't want to interrupt the story"
+           3339d667-9fcb-4b38-9eaf-01dd05cb52da  rev 1  — 25% shorter than its text implies
+    0.747  known           1920ms  "I don't want to interrupt the story."
+           35313aa1-94da-43a9-8a8f-1bfcfb1c3874  rev 1  — 25% shorter than its text implies
+    0.747  known           1440ms  "I don't know how to say it."
+           1466825a-9496-4004-ac04-11c431161a09  rev 1  — 25% shorter than its text implies
+    0.748  known           2352ms  "I don't want to think about making mistakes."
+           f787bb7a-1159-4164-8358-cef7ab2e1775  rev 1  — 25% shorter than its text implies
+     0.75  known           1608ms  "Why are you learning her name?"
+           40c72553-0c42-45df-8096-acc3c59dbec0  rev 1  — 25% shorter than its text implies
+     0.75  known           1392ms  "Because she wants to know."
+           e4e5c84f-6313-4f50-9e8b-077bb60e108c  rev 1  — 25% shorter than its text implies
+    0.753  known           2904ms  "he doesn't want to be quiet when other people are her
+           4dcfb0c6-ec0f-4f11-ba3b-61bfae436026  rev 1  — 25% shorter than its text implies
+    0.753  known           1776ms  "what kind of feeling this morning"
+           20e35ec8-efb9-42cb-89ca-a12471ef5542  rev 1  — 25% shorter than its text implies
+    0.754  known           2424ms  "there was something I wanted to ask yesterday"
+           86c19057-f052-4609-9ebf-1f969708f867  rev 1  — 25% shorter than its text implies
+    0.754  known           2424ms  "I'm thinking about whether I need to do more."
+           69ee90ea-9be1-4693-afcb-6438a127a4dc  rev 1  — 25% shorter than its text implies
+    0.756  known           1296ms  "We're speaking together."
+           68cf56b6-560c-4f73-8714-cfe89e190373  rev 1  — 24% shorter than its text implies
+    0.756  known           1728ms  "How long have you been speaking?"
+           4c9cfd75-8a90-4174-895a-8b4b49b4a93f  rev 1  — 24% shorter than its text implies
+    0.756  known           1296ms  "I don't know about that."
+           40ceba14-a059-472f-bb2f-e1d32753f66f  rev 1  — 24% shorter than its text implies
+    0.756  known           1944ms  "I've been speaking for about a week."
+           a858324c-99ef-495d-a253-402d72d0876c  rev 1  — 24% shorter than its text implies
+    0.758  known           2328ms  "I'm not going to be able to remember easily"
+           caab3731-d843-4c81-919c-ad10b4f66c01  rev 1  — 24% shorter than its text implies
+    0.758  known           1896ms  "I don't need to remember all of it."
+           b8406e06-ef75-463e-bb70-10d8a385e9eb  rev 1  — 24% shorter than its text implies
+    0.759  known           1680ms  "I don't know if I can remember."
+           247ee430-22b3-4e0f-8f5f-f2e6f132790a  rev 1  — 24% shorter than its text implies
+    0.759  known           1464ms  "He wants to know something."
+           3e465440-cb97-44ea-b007-94f641067ff6  rev 1  — 24% shorter than its text implies
+    0.759  known           1464ms  "don't really worry about it"
+           4e499070-f0d7-4ddc-8f75-725b46f762f1  rev 1  — 24% shorter than its text implies
+    0.759  known           1464ms  "She doesn't worry about it."
+           c32abb87-78ff-415d-8373-c7acc7a59168  rev 1  — 24% shorter than its text implies
+     0.76  known           2064ms  "try saying something with other people"
+           3f089a66-01b7-40b8-a049-1d8b431930c4  rev 1  — 24% shorter than its text implies
+     0.76  known           1248ms  "I don't know something."
+           54dfb751-6753-4c57-9395-52ff00219855  rev 1  — 24% shorter than its text implies
+     0.76  known           1248ms  "I don't know right now."
+           eed4330e-3083-4f9b-b77f-b2f1ca145d22  rev 1  — 24% shorter than its text implies
+     0.76  known           2064ms  "I'm looking forward to this afternoon."
+           99aa36c9-db10-48a3-8c23-17ae5e724106  rev 1  — 24% shorter than its text implies
+     0.76  known           2064ms  "She started thinking about the answer."
+           9f8c6285-f464-4209-8bbf-b158b3160883  rev 1  — 24% shorter than its text implies
+     0.76  known           1248ms  "getting a little better"
+           72da790b-3257-417a-9b93-1f765ecbe655  rev 1  — 24% shorter than its text implies
+    0.762  known           1632ms  "How do you feel at the moment?"
+           c2348454-2b06-4e1d-af0d-ca0400dc46b1  rev 1  — 24% shorter than its text implies
+    0.763  known           2016ms  "I want to try saying something today."
+           b4011870-add0-4770-8431-695371aa7fe8  rev 1  — 24% shorter than its text implies
+    0.764  known           1800ms  "I'm trying to remember something."
+           c6edc203-7de7-4667-a25b-445c0ac01a97  rev 1  — 24% shorter than its text implies
+    0.764  known           1800ms  "don't want to interrupt the story"
+           14f4e40d-5159-483a-93d0-0817b9913f80  rev 1  — 24% shorter than its text implies
+    0.764  known           1800ms  "started thinking about the answer"
+           6a899ffe-9fcf-4cf4-90b9-62827dbfe10c  rev 1  — 24% shorter than its text implies
+    0.764  known           1200ms  "How do you feel today?"
+           e9267998-2740-41fa-b365-4b9d30fad5ff  rev 1  — 24% shorter than its text implies
+    0.765  known           1584ms  "want to speak about something"
+           b0a3a6ec-718e-4881-aa03-1efec2a2d4c6  rev 1  — 24% shorter than its text implies
+    0.765  known           1584ms  "Are you remembering the word?"
+           c1cb83bd-2ee3-4404-aa48-2b75d391a89a  rev 1  — 24% shorter than its text implies
+    0.765  known           1584ms  "I'll start speaking together."
+           c48e5441-b673-47a9-ad69-a89f2eb5ab11  rev 1  — 24% shorter than its text implies
+    0.765  known           1584ms  "It's getting a little better."
+           f02ca350-4e5a-4268-be3c-2347a723bb08  rev 1  — 24% shorter than its text implies
+    0.765  known           1584ms  "don't need to know everything"
+           6b9cfb45-b25f-4322-853f-b6d9c3b52c40  rev 1  — 24% shorter than its text implies
+    0.766  known           1752ms  "I want to go back with everyone."
+           bdc1434d-2504-41f4-af1b-6c5af96790f8  rev 1  — 23% shorter than its text implies
+    0.766  known           1752ms  "I'm looking forward to speaking."
+           9b79882d-8ff2-461c-b179-354e8c6dd80e  rev 1  — 23% shorter than its text implies
+    0.766  known           1752ms  "wasn't thinking about the answer"
+           fef5ed06-2bd6-47ba-804a-d7e2663fad56  rev 1  — 23% shorter than its text implies
+    0.768  known           1920ms  "you wanted to speak with me tonight"
+           adc43319-cfca-4ecb-9f69-432cee7c5f91  rev 1  — 23% shorter than its text implies
+    0.768  known           2304ms  "I'll try speaking with other people later."
+           da8d0c10-6bdb-42f8-a66e-cfdcc40e5c98  rev 1  — 23% shorter than its text implies
+    0.768  known           2688ms  "It would be good if I could speak a little later."
+           7f096f3c-e5ed-4e34-9958-3e61536b3016  rev 1  — 23% shorter than its text implies
+    0.769  known           2088ms  "How long have you been doing Japanese?"
+           656c48a5-d83c-4c6f-8dcf-3a8922836413  rev 1  — 23% shorter than its text implies
+     0.77  known           2640ms  "I started to think about it carefully last month"
+           9d0d70ac-0cbc-4566-b698-141d7bce4495  rev 1  — 23% shorter than its text implies
+     0.77  known           2640ms  "I'm not trying to finish as quickly as possible."
+           ad711379-b918-4933-b9a1-8abedfbf153f  rev 1  — 23% shorter than its text implies
+     0.77  known           1704ms  "I want to do it this afternoon."
+           01a71e74-788a-494c-9460-d5d87ec309a4  rev 1  — 23% shorter than its text implies
+    0.771  known           1872ms  "I'm trying to remember the answer."
+           5d623abd-f3a3-44e8-9fd1-d29788afdde3  rev 1  — 23% shorter than its text implies
+    0.771  known           1872ms  "I'll meet everyone this afternoon."
+           c869f47c-4765-41ed-b5af-f0ffdc174f66  rev 1  — 23% shorter than its text implies
+    0.772  known           1488ms  "I'm speaking with everyone."
+           737f1d62-d484-45ea-8f1b-73d80cbacb8c  rev 1  — 23% shorter than its text implies
+    0.774  known           1824ms  "it would be good if I could speak"
+           9658fada-6cf8-4411-bd32-1599fb7ae3b6  rev 1  — 23% shorter than its text implies
+    0.774  known           1824ms  "He wants to go back this evening."
+           db9d0744-111a-4369-9e65-44e42a4fc899  rev 1  — 23% shorter than its text implies
+    0.775  known           1440ms  "don't really want to think"
+           7d7f4551-317e-47bc-91d1-00ccc01d9427  rev 1  — 22% shorter than its text implies
+    0.776  known           1608ms  "She wants to know the answer."
+           45a3176a-5b0a-47e7-8280-6c13b36bc2cf  rev 1  — 22% shorter than its text implies
+    0.777  known           2664ms  "she doesn't want to read anything this afternoon"
+           9f28af2f-3547-4082-9dcd-f2534c1dd6d9  rev 1  — 22% shorter than its text implies
+    0.777  known           1776ms  "I'm a little tired this morning."
+           a937fcf5-14be-4389-9453-9c7ed74fe877  rev 1  — 22% shorter than its text implies
+    0.778  known           1944ms  "there was something I wanted to ask"
+           e4ab67e9-3823-4b7b-b094-c1fd50a9b47b  rev 1  — 22% shorter than its text implies
+    0.778  known           1944ms  "whether I can remember the sentence"
+           df1ee45a-3ee1-4475-8a39-744df98006bd  rev 1  — 22% shorter than its text implies
+    0.779  known           2448ms  "There's something I want to ask before I go."
+           07d8bcfb-c130-4510-9093-a4c779ea2b1f  rev 1  — 22% shorter than its text implies
+    0.779  known           1224ms  "don't worry about that"
+           f6460219-afe3-4b5a-9fd9-fd7ce27c9ef2  rev 1  — 22% shorter than its text implies
+     0.78  known           1392ms  "don't know about tomorrow"
+           de8c93be-6b4b-4ad9-a43c-4bad4679d3ee  rev 1  — 22% shorter than its text implies
+     0.78  known           1560ms  "Why does he want to go back?"
+           60bf97c5-b8de-47dd-a17f-89dbd2c1c275  rev 1  — 22% shorter than its text implies
+     0.78  known           1392ms  "She wants to meet people."
+           f62b2ffa-f30a-4f83-8847-ba820758fbcf  rev 1  — 22% shorter than its text implies
+     0.78  known           1392ms  "She doesn't want to read."
+           2050cc34-baaa-41a5-bd5f-d9ff53dac3c1  rev 1  — 22% shorter than its text implies
+     0.78  known           1560ms  "I don't really want to read."
+           e70f6592-6d33-4c3f-930a-719a6f4861f8  rev 1  — 22% shorter than its text implies
+     0.78  known           1392ms  "I want to make it better."
+           2f6d6912-48bf-422f-af83-1a3c82dcb470  rev 1  — 22% shorter than its text implies
+     0.78  known           1728ms  "I don't know whether I need to."
+           e9910ac4-0da5-495d-835d-050a5342e5bd  rev 1  — 22% shorter than its text implies
+     0.78  known           1728ms  "I'm not trying to finish today."
+           551e43f6-8dcf-4664-aa68-724e32902741  rev 1  — 22% shorter than its text implies
+    0.781  known           2064ms  "I don't want to think about it today."
+           368d2987-26b4-401a-8d95-cec7ffef0111  rev 1  — 22% shorter than its text implies
+    0.781  known           2232ms  "I'm speaking Japanese with other people."
+           547e8280-ccef-4d43-bb60-e31961f5d6c1  rev 1  — 22% shorter than its text implies
+    0.781  known           1896ms  "I feel like I can go this evening."
+           d8f4c6a9-e6c3-41dc-8fe9-5567c3c3db06  rev 1  — 22% shorter than its text implies
+    0.781  known           2400ms  "It's getting better — that kind of feeling."
+           02ef3674-0935-418c-885f-0a0dceeb4936  rev 1  — 22% shorter than its text implies
+    0.782  known           2736ms  "and I want you to speak Japanese with me tomorrow"
+           ef7d7e85-ab3b-4dae-a1df-08393e23b442  rev 1  — 22% shorter than its text implies
+    0.784  known           2184ms  "I'll try explaining what I want to say."
+           5e7fb1c6-1011-4802-94df-0001e7ea83c0  rev 1  — 22% shorter than its text implies
+    0.784  known           1512ms  "I want to go back together."
+           62eff983-51c4-4f00-909e-efaded0fd31a  rev 1  — 22% shorter than its text implies
+    0.784  known           1512ms  "She wants to know the name."
+           a720a276-a2aa-4825-8597-e01a0919c1f1  rev 1  — 22% shorter than its text implies
+    0.784  known           1848ms  "Are you remembering the sentence?"
+           c608fb43-6349-44ab-bffa-e0a7fbd09e70  rev 1  — 22% shorter than its text implies
+    0.784  known           1512ms  "don't want to interrupt him"
+           22b686ae-757c-4004-9238-f212435c43ff  rev 1  — 22% shorter than its text implies
+    0.784  known           1680ms  "I started thinking about that."
+           a389f624-4519-46ee-ac24-c31009af23ab  rev 1  — 22% shorter than its text implies
+    0.784  known           1848ms  "I'm trying to remember the story."
+           bbf74059-49a1-4bcc-be13-68db9117c806  rev 1  — 22% shorter than its text implies
+    0.784  known           1344ms  "don't worry about it now"
+           7b4160d6-ff57-4e68-9478-d0d8fdc007e9  rev 1  — 22% shorter than its text implies
+    0.788  known           1632ms  "want to go back with everyone"
+           b81abd9e-65ee-4cf4-9bbc-4a1f27265a0c  rev 1  — 21% shorter than its text implies
+    0.788  known           1464ms  "She wants to know quickly."
+           f86c3d1b-8126-4675-a5a5-63373311042a  rev 1  — 21% shorter than its text implies
+    0.788  known           1632ms  "She wants to know about that."
+           23f195ce-2b82-4bbe-b9eb-28181e6f263c  rev 1  — 21% shorter than its text implies
+    0.789  known           1296ms  "don't want to think now"
+           a4b059c5-4fe8-466d-aa19-6512aaceb9d0  rev 1  — 21% shorter than its text implies
+    0.789  known           1296ms  "whether I need to think"
+           39def7cc-f50d-4bc2-8acc-bb4877580c56  rev 1  — 21% shorter than its text implies
+     0.79  known           2088ms  "I don't want to think about tomorrow."
+           1647b53f-cec0-4ae8-89e6-699995b3c296  rev 1  — 21% shorter than its text implies
+     0.79  known           1128ms  "I don't really know."
+           33e844f5-be47-4ce0-993a-6551f732714c  rev 1  — 21% shorter than its text implies
+     0.79  known           2256ms  "I don't know if I can remember the word."
+           87c3c106-3217-49f2-aa61-d6a0fbd88216  rev 1  — 21% shorter than its text implies
+    0.791  known           2880ms  "I'll try explaining what I want to say in Japanese."
+           bc124510-1d54-4a95-a140-5571e6ef416e  rev 1  — 21% shorter than its text implies
+    0.791  known           1752ms  "I'll try explaining about that."
+           facad6fb-8e2f-4852-ba4a-412168a0a5fe  rev 1  — 21% shorter than its text implies
+    0.792  known           1584ms  "I don't know about tomorrow."
+           80bddb74-744c-481f-a8aa-1694cf481c41  rev 1  — 21% shorter than its text implies
+    0.793  known           1416ms  "I don't want to read now."
+           e3548c21-6b49-4b3e-b40d-b658e94e9f25  rev 1  — 21% shorter than its text implies
+    0.793  known           2208ms  "I started thinking about it last month."
+           53af9d94-a170-4220-a84a-ff87c8f072b2  rev 1  — 21% shorter than its text implies
+    0.795  known           2328ms  "I want to try saying as much as possible."
+           1fe4c73d-9945-4be4-8f06-36ab1caae254  rev 1  — 21% shorter than its text implies
+    0.795  known           1704ms  "wasn't thinking about tomorrow"
+           2e312c8c-77fa-4d42-aed0-8d0d22fbe2d8  rev 1  — 20% shorter than its text implies
+    0.796  known           1536ms  "I'll try speaking together."
+           9b92b7cc-008d-4ede-bc82-e5ba743cfd56  rev 1  — 20% shorter than its text implies
+    0.796  known           2160ms  "I want to do it with other people too."
+           a7778a56-0036-4037-b5a4-4758b08be938  rev 1  — 20% shorter than its text implies
+    0.796  known           1536ms  "Will you help this evening?"
+           4fef5c09-f4e3-4860-86ca-83e4f94a99fe  rev 1  — 20% shorter than its text implies
+    0.796  known           1536ms  "looking forward to speaking"
+           1d130448-ec38-4aca-abd3-14b2a5149eee  rev 1  — 20% shorter than its text implies
+    0.797  known           1992ms  "I'll try doing as much as possible."
+           f9369075-4762-4216-b18e-ba880e70757d  rev 1  — 20% shorter than its text implies
+    0.797  known           1992ms  "I don't really know about speaking."
+           528fadac-a244-4a9e-9cac-1c039b77ef74  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "whether I can remember all of it"
+           ac3f2572-ad30-4838-9b38-ad6bc7b83f52  rev 1  — 20% shorter than its text implies
+    0.798  known           1368ms  "He doesn't want to stop."
+           3c02dcd8-e543-4619-a02e-388ca356d32f  rev 1  — 20% shorter than its text implies
+    0.798  known           1824ms  "He wants to meet people quickly."
+           7aa8aea6-405f-4e79-b636-4ce4eb7cbf6c  rev 1  — 20% shorter than its text implies
+    0.799  known           2112ms  "I want to try saying something later."
+           6f256262-3b9d-4394-9820-2b993e6bed77  rev 1  — 20% shorter than its text implies
+      0.8  known           1944ms  "She doesn't want to read anything."
+           7c013767-e0a0-4911-a8a7-12337a64a407  rev 1  — 20% shorter than its text implies
+    0.801  known           2232ms  "I wanted to ask you something yesterday"
+           f1e82720-ee4a-4a93-8708-5a5837a5bc27  rev 1  — 20% shorter than its text implies
+    0.801  known           1488ms  "I don't want to interrupt."
+           defa5f13-024d-4108-aa73-921ba22ed16a  rev 1  — 20% shorter than its text implies
+    0.802  presentation    5040ms  "The Japanese for: 'as for tomorrow', as in — 'as for 
+           b4817ad0-a9b4-4d06-9003-d15e73940b78  rev 1  — 20% shorter than its text implies
+    0.802  known           1776ms  "I'll try explaining the answer."
+           28762fb6-06fc-46a0-be77-734530e486cb  rev 1  — 20% shorter than its text implies
+    0.802  known           2808ms  "When other people are here, I want to speak more."
+           57f102c9-9d14-49f1-b487-89d87b3c3138  rev 1  — 20% shorter than its text implies
+    0.803  known           1320ms  "wants to know something"
+           e9a8b539-2094-4413-aab9-c688b087775e  rev 1  — 20% shorter than its text implies
+    0.803  known           2064ms  "I want to remember the name quickly."
+           b74865a4-f625-4f6a-ae3c-1039be57e897  rev 1  — 20% shorter than its text implies
+    0.803  known           2640ms  "looking forward to becoming able to speak well"
+           a48ab9b7-43ee-429d-9fc1-93b8009f44c1  rev 1  — 20% shorter than its text implies
+    0.803  known           2064ms  "I don't worry about making mistakes."
+           013329da-989e-43dd-9fd2-bc8ccf3719ac  rev 1  — 20% shorter than its text implies
+    0.804  known           1608ms  "I don't really want to stop."
+           7c137f4d-b7ce-448c-836a-bc49d7ed844b  rev 1  — 20% shorter than its text implies
+    0.804  known           1896ms  "Why are you remembering her name?"
+           e107a1ff-d66f-4444-a8d4-b8f1444ffc44  rev 1  — 20% shorter than its text implies
+    0.804  known           1608ms  "I don't know how to explain."
+           ab8c40c2-4c0a-449a-84d9-b6fb39317aa4  rev 1  — 20% shorter than its text implies
+    0.805  known           2184ms  "I wasn't thinking about how to answer."
+           2d644343-b5ef-46d7-bb7c-b00b66c27bb9  rev 1  — 20% shorter than its text implies
+    0.805  known           2184ms  "I want to speak Japanese together now."
+           eeca3845-9df9-483b-9c5b-3a4b4db601da  rev 1  — 20% shorter than its text implies
+    0.806  known           1440ms  "I think it's a good thing"
+           1a1412ee-a764-4629-af67-f7b77df741b8  rev 1  — 19% shorter than its text implies
+    0.806  presentation    5184ms  "The Japanese for: 'about a week', as in — 'I've been 
+           2d02ba3b-9eb5-465d-bcd6-3d0f43b37749  rev 1  — 19% shorter than its text implies
+    0.806  known           1728ms  "I'll try explaining something."
+           8000f03b-f42e-4504-b90e-4d1c99164142  rev 1  — 19% shorter than its text implies
+    0.806  known           1440ms  "I'll try doing something."
+           9e91de8d-05ce-4b29-aed3-890b8cfcb1ff  rev 1  — 19% shorter than its text implies
+    0.806  known           1728ms  "I'll try doing a little today."
+           d49d0003-5e83-4413-b0c7-c599daef50c6  rev 1  — 19% shorter than its text implies
+    0.806  known           1440ms  "She really wants to know."
+           2dd730c7-7ca6-450b-aa9d-13a8a36c55aa  rev 1  — 19% shorter than its text implies
+    0.806  known           2304ms  "He wants to go back with everyone later."
+           9260a1ea-5a87-428d-b7e9-3f71b47f486d  rev 1  — 19% shorter than its text implies
+    0.806  known           1728ms  "I want to remember the answer."
+           ac9eeb75-041b-4b30-a71c-9c911cd12eac  rev 1  — 19% shorter than its text implies
+    0.806  known           1152ms  "It's getting better."
+           028ad3b4-0952-4562-b861-949aa308c1ad  rev 1  — 19% shorter than its text implies
+    0.806  known           1440ms  "I need to make it better."
+           1b82d855-6a0b-49bf-b5c1-0746d1c81c7a  rev 1  — 19% shorter than its text implies
+    0.808  known           1848ms  "but I don't want to stop talking"
+           db010bff-64f1-48ef-b9ba-f16361f4d3ef  rev 1  — 19% shorter than its text implies
+    0.808  known           2424ms  "I'm trying to remember what I want to say."
+           d93e8e11-4bd4-413a-980b-620a1bdb2064  rev 1  — 19% shorter than its text implies
+    0.808  known           1848ms  "But I want to meet this evening."
+           945f0ef5-0cfb-4883-b4d4-4686d6b37705  rev 1  — 19% shorter than its text implies
+    0.808  known           1848ms  "I want to remember the sentence."
+           a59a9805-675b-423d-a010-ea689194fe7f  rev 1  — 19% shorter than its text implies
+    0.809  known           2832ms  "Because I want to meet people who speak Japanese."
+           73b12736-f1de-4160-b9e2-64935437ba9f  rev 1  — 19% shorter than its text implies
+    0.809  known           1560ms  "I'm trying to remember now."
+           3fa6cf1b-0127-4f63-9c55-40bdc73a4d66  rev 1  — 19% shorter than its text implies
+    0.809  known           1272ms  "I'm speaking a little."
+           f2b68a60-3db3-4331-a069-5a6e8f58b901  rev 1  — 19% shorter than its text implies
+    0.809  known           1272ms  "will you help a little"
+           e23993b7-a154-413f-a44c-070a580f3bbf  rev 1  — 19% shorter than its text implies
+    0.809  known           1560ms  "don't want to read anything"
+           1f624b4f-d201-40ac-bf4f-3b03a69f8be9  rev 1  — 19% shorter than its text implies
+     0.81  known           2256ms  "I'm going to try to explain what I mean"
+           21cf3af5-9290-45ed-bf86-0c9cf3a3a7b3  rev 1  — 19% shorter than its text implies
+     0.81  known           1968ms  "you want to learn his name quickly"
+           48e17b75-6ca6-404b-9073-8163b73e34fc  rev 1  — 19% shorter than its text implies
+     0.81  known           1968ms  "I want to speak Japanese together."
+           1bef30ce-1394-421b-b981-7a1fde663952  rev 1  — 19% shorter than its text implies
+     0.81  known           1968ms  "I can speak a little Japanese now."
+           7daac631-623d-487f-95cc-0d994e1eee7e  rev 1  — 19% shorter than its text implies
+    0.811  known           1680ms  "will try explaining something"
+           d371f999-a6df-462b-8854-a4f4112dba1b  rev 1  — 19% shorter than its text implies
+    0.811  known           1680ms  "I don't know the whole story."
+           c2de7c43-cb8a-4bd5-8da1-63705c75c1a0  rev 1  — 19% shorter than its text implies
+    0.812  known           2088ms  "I want to try saying a word together"
+           948d552b-699e-443b-b673-3b01e83ec31a  rev 1  — 19% shorter than its text implies
+    0.812  known           2088ms  "I thought that book was fairly good."
+           7d01200e-1273-4245-a1be-834eda5cff74  rev 1  — 19% shorter than its text implies
+    0.812  known           1392ms  "You're good at speaking."
+           eb726169-3fb1-44c5-abb1-02b212ceaad0  rev 1  — 19% shorter than its text implies
+    0.813  known           2496ms  "we want to meet at six o'clock this evening"
+           01b58723-aaaf-4284-87d5-7e8c44b092a1  rev 1  — 19% shorter than its text implies
+    0.813  known           1800ms  "I'm trying as much as possible."
+           4d255d3d-5831-437e-b180-8cb43cbc1b6c  rev 1  — 19% shorter than its text implies
+    0.813  known           1800ms  "I want to try saying something."
+           bb3e1e8c-fc57-47f5-9237-103709dc1e14  rev 1  — 19% shorter than its text implies
+    0.813  known           1800ms  "am trying to remember something"
+           7b7ea94b-7466-4aae-b2fc-10845a811ce6  rev 1  — 19% shorter than its text implies
+    0.813  known           1800ms  "there's something I want to ask"
+           d2cb1868-d6d6-4342-bca3-71c2e93c1e5d  rev 1  — 19% shorter than its text implies
+    0.813  known           1800ms  "I don't know whether to answer."
+           50fba92a-c04c-47e0-84fc-693e804282c7  rev 1  — 19% shorter than its text implies
+    0.814  known           1512ms  "when other people are here"
+           a4d346d6-135c-41cd-acba-327dbdfc16ad  rev 1  — 19% shorter than its text implies
+    0.814  known           1512ms  "I'll do Japanese together."
+           0dd10d12-3558-4ffc-b9a1-81e5b827899a  rev 1  — 19% shorter than its text implies
+    0.814  known           1512ms  "really don't want to think"
+           0679b0fa-8dbe-4650-ba1f-d5366505878d  rev 1  — 19% shorter than its text implies
+    0.815  known           2736ms  "it's useful to start talking as soon as you can"
+           4110de97-3b53-471b-bbab-8d91e16a4590  rev 1  — 19% shorter than its text implies
+    0.815  known           1920ms  "I'm not trying to finish quickly."
+           081c6a9d-bf68-41c8-883d-70459aa9a8d1  rev 1  — 19% shorter than its text implies
+    0.816  known           1632ms  "She wants to know all of it."
+           e0ba3171-5f20-47bd-bb74-056d12d96f20  rev 1  — 18% shorter than its text implies
+    0.816  known           1632ms  "I want to meet this evening."
+           15d51510-f7bd-46ec-9085-5271fef52dd2  rev 1  — 18% shorter than its text implies
+    0.816  known           1632ms  "I want to remember the name."
+           33b9a019-5515-414f-9682-be900fc8ecff  rev 1  — 18% shorter than its text implies
+    0.817  known           2160ms  "I want to speak Japanese with you now"
+           4262552b-8e9a-4338-ad47-2da7bb72e281  rev 1  — 18% shorter than its text implies
+    0.817  known           2160ms  "As for tomorrow, I don't really know."
+           a3f5dba0-826d-4021-9fb9-2e75cf025a84  rev 1  — 18% shorter than its text implies
+    0.817  known           2976ms  "Starting to speak as soon as possible is important."
+           f0075cbb-6c8e-40aa-bb00-964d422e893a  rev 1  — 18% shorter than its text implies
+    0.818  known           1752ms  "I'll try explaining to people."
+           94d188ae-44fa-47f2-bbda-b7843370a4a7  rev 1  — 18% shorter than its text implies
+    0.818  known           1752ms  "I want to try saying her name."
+           f1219271-e981-490e-8177-82b31d3ab331  rev 1  — 18% shorter than its text implies
+    0.818  known           1752ms  "I wanted to show it yesterday."
+           679e086e-8057-4564-a915-e58e51043a84  rev 1  — 18% shorter than its text implies
+    0.818  known           1752ms  "I don't want to interrupt now."
+           167515be-9228-4cb5-a2ee-d7869baf5dec  rev 1  — 18% shorter than its text implies
+    0.818  known           1752ms  "been speaking for about a week"
+           69b8133c-7524-476e-a033-445285533919  rev 1  — 18% shorter than its text implies
+    0.818  known           1344ms  "I don't worry about it."
+           15b07f60-de45-490f-87da-32762c1914b7  rev 1  — 18% shorter than its text implies
+    0.819  known           1872ms  "I don't need to know everything."
+           02a2f47c-063d-4e91-a0e3-12fb3ab4d908  rev 1  — 18% shorter than its text implies
+    0.819  known           1872ms  "I want to try saying it together"
+           752e8cf4-229a-40a4-861e-6719040bde60  rev 1  — 18% shorter than its text implies
+    0.819  known           1872ms  "I'll try speaking with everyone."
+           6a676f3e-d5cc-466c-8e68-39e6cd3b25f4  rev 1  — 18% shorter than its text implies
+    0.819  known           1872ms  "I think I can't remember easily."
+           0180cead-6692-4593-9aa8-364cfa1946fc  rev 1  — 18% shorter than its text implies
+     0.82  known           1464ms  "want to meet this evening"
+           4cb438b2-9a2b-48e7-81cb-d6d60c186e6d  rev 1  — 18% shorter than its text implies
+     0.82  known           1464ms  "don't want to do anything"
+           845c6a7b-5737-4eff-9401-5c23ff61b694  rev 1  — 18% shorter than its text implies
+    0.821  known           2112ms  "I'm going to start talking more soon"
+           d7a26c29-ced8-4fc8-b690-723286e8d28d  rev 1  — 18% shorter than its text implies
+    0.821  known           1584ms  "remember what I want to say"
+           84689421-e29e-4bf2-a4c8-7779e87760bb  rev 1  — 18% shorter than its text implies
+    0.821  known           1584ms  "I want to meet more people."
+           429bd2ea-a075-42c0-a476-a1786a8f3e2b  rev 1  — 18% shorter than its text implies
+    0.821  known           1584ms  "I wasn't thinking about it."
+           d7adeaab-d1ea-4b72-82a1-0175577cc0ed  rev 1  — 18% shorter than its text implies
+    0.823  presentation    5112ms  "The Japanese for: 'want to speak', as in — 'I want to
+           e74debc9-5fb3-45de-b036-1207de41ccd3  rev 1  — 18% shorter than its text implies
+    0.823  known           1704ms  "I want to speak together now."
+           50ca180d-203d-4e41-af69-51e187e9ac03  rev 1  — 18% shorter than its text implies
+    0.823  known           1176ms  "because I don't know"
+           fed415c4-0586-459f-91cc-3eb0bd6be734  rev 1  — 18% shorter than its text implies
+    0.825  known           1944ms  "I'll try speaking this afternoon."
+           c8e869bc-174b-4a17-a6e9-8e9a49e75a33  rev 1  — 18% shorter than its text implies
+    0.826  known           2064ms  "I'm starting to get a little tired."
+           0371088e-044f-4efd-b754-5207f29ce6e8  rev 1  — 17% shorter than its text implies
+    0.826  known           1416ms  "I don't need to explain."
+           8f0f8501-e4c1-4da6-abab-1c07ea5f164c  rev 1  — 17% shorter than its text implies
+    0.826  known           1416ms  "wasn't thinking about it"
+           9e8b541a-2fc0-4a08-a972-54fc8035dc3a  rev 1  — 17% shorter than its text implies
+    0.827  known           2304ms  "it's like this, if you know what I mean"
+           d796cbe4-ebfb-4547-aeee-9219c4dc19c6  rev 1  — 17% shorter than its text implies
+    0.827  known           1536ms  "I'll try explaining later."
+           a586eff4-0e2b-4fe7-838b-4742da5cfc23  rev 1  — 17% shorter than its text implies
+    0.827  known           1536ms  "He wants to meet everyone."
+           7c396c9e-ea41-4667-815a-ddc015c5504a  rev 1  — 17% shorter than its text implies
+    0.828  known           2544ms  "I want to try saying something in Japanese."
+           15545441-102d-41c9-a878-b998d16bb8fa  rev 1  — 17% shorter than its text implies
+    0.829  known           2664ms  "I'd like to be able to speak after you finish"
+           81860a6c-5ec4-4d4b-b002-476e548e556d  rev 1  — 17% shorter than its text implies
+    0.829  known           2784ms  "I want to speak Japanese together tomorrow too."
+           9613b317-7d28-4664-be47-e4b8f20f4a2b  rev 1  — 17% shorter than its text implies
+    0.829  known           1776ms  "I don't want to stop speaking."
+           423b426f-b608-4cda-bbe2-4580628d6d8b  rev 1  — 17% shorter than its text implies
+    0.829  known           1776ms  "It's not that kind of feeling."
+           edaa04d6-3c52-42e9-97ce-8d5438a886c4  rev 1  — 17% shorter than its text implies
+    0.831  known           1128ms  "Why don't you know?"
+           65598583-5e03-4408-90e7-fb7fc6e7557c  rev 1  — 17% shorter than its text implies
+    0.831  known           2256ms  "I don't know whether I need to answer."
+           b371a53a-e9d4-4eef-8eb4-ac40e48618c8  rev 1  — 17% shorter than its text implies
+    0.832  known           2376ms  "I want to try saying what I want to say."
+           55f6f089-bf7b-4965-8bfe-d1ad27b35d39  rev 1  — 17% shorter than its text implies
+    0.832  known           1248ms  "I can speak a little."
+           e4fbc696-5e75-4de6-bba6-ceab4b5f287c  rev 1  — 17% shorter than its text implies
+    0.832  known           1248ms  "want to know the name"
+           f04b1b85-565c-4a3a-9bb0-e01e94349adf  rev 1  — 17% shorter than its text implies
+    0.832  known           2496ms  "I've been doing Japanese for about a week."
+           b475aa2b-6a4e-4348-9890-b5739011a633  rev 1  — 17% shorter than its text implies
+    0.833  known           1488ms  "I can speak a little now."
+           0cf5843d-c433-4c47-a2a3-1b818b52a56d  rev 1  — 17% shorter than its text implies
+    0.834  presentation    4824ms  "The Japanese for: 'don't need to', as in — 'I don't n
+           cce4914c-f16a-4361-be4a-bfd9acccf00a  rev 1  — 17% shorter than its text implies
+    0.834  known           1728ms  "He started thinking about it."
+           cbe53711-cb74-46c8-b9b7-2f497bd6c5f9  rev 1  — 17% shorter than its text implies
+    0.834  known           1728ms  "I started thinking yesterday."
+           efb01184-e586-4316-af37-942545c9f981  rev 1  — 17% shorter than its text implies
+    0.834  known           1728ms  "I'm not trying to finish now."
+           dd7a00c3-7ffa-4598-8705-5c6abfcc8278  rev 1  — 17% shorter than its text implies
+    0.835  presentation    6144ms  "The Japanese for: 'with other people', as in — 'I wan
+           3fb47f5f-3819-4219-ba40-d48a9d9316dc  rev 1  — 16% shorter than its text implies
+    0.835  presentation    5784ms  "The Japanese for: 'than last night', as in — 'I was s
+           9562fe92-d496-42af-be3d-72388d7e36f7  rev 1  — 17% shorter than its text implies
+    0.835  known           1968ms  "I'll try speaking a little later."
+           35d49e6d-de2a-4574-8829-fa4d55b02b9a  rev 1  — 17% shorter than its text implies
+    0.835  known           1968ms  "I'll try speaking Japanese today."
+           a24ab556-e2b9-42a8-a183-f717163ccb6b  rev 1  — 17% shorter than its text implies
+    0.835  known           1968ms  "I want to start speaking quickly."
+           c7cbc1c2-136d-4886-a10c-a1e87291a9ad  rev 1  — 17% shorter than its text implies
+    0.835  known           2088ms  "I think I can't remember all of it."
+           f5bfa36d-db87-4c35-8c62-0c08baecff47  rev 1  — 16% shorter than its text implies
+    0.835  known           1968ms  "doesn't want to read the sentence"
+           09dd97eb-4a5c-4d97-acbd-b554218d6d6b  rev 1  — 17% shorter than its text implies
+    0.836  known           2688ms  "I'm speaking in Japanese as much as possible."
+           7a5d9d10-204a-4254-b654-bb19a6995471  rev 1  — 16% shorter than its text implies
+    0.836  known           2568ms  "I really want to try saying it in Japanese."
+           c184a467-ea80-4cdc-8bc9-3e6e6a12cf09  rev 1  — 16% shorter than its text implies
+    0.836  known           2448ms  "I want to meet people who speak Japanese."
+           34e8c144-3d3c-408c-893f-a32acf2cc07e  rev 1  — 16% shorter than its text implies
+    0.836  known           2448ms  "she said she does not know how to explain"
+           3a56aaec-e16c-43e5-aba6-2b4d2fb6f0a7  rev 1  — 16% shorter than its text implies
+     0.84  known           2040ms  "I can speak with other people too."
+           f4502d8f-cb01-454c-ade2-a69746bc6006  rev 1  — 16% shorter than its text implies
+     0.84  known           1320ms  "I'll try doing it now."
+           f6fc9be2-0d9c-4550-98cc-2909f7a0e2e1  rev 1  — 16% shorter than its text implies
+     0.84  known           2040ms  "I'm trying to remember a sentence."
+           3970f7a2-528b-4d74-bc7a-10edc6b2fdfc  rev 1  — 16% shorter than its text implies
+     0.84  known           1440ms  "want to go back together"
+           33f054ad-5b0a-417d-8da7-cf85b8ce358c  rev 1  — 16% shorter than its text implies
+     0.84  known           1320ms  "but don't want to stop"
+           c1ac7df0-75da-4eb0-b9a1-a3c455c4ddb4  rev 1  — 16% shorter than its text implies
+     0.84  known           2520ms  "I'm looking forward to speaking well soon."
+           8196c56c-b461-4f55-b6ab-f7ff667b41d1  rev 1  — 16% shorter than its text implies
+     0.84  known           1680ms  "she doesn't want to be quiet"
+           6b2324c2-c863-4ad1-9915-6f44f3241cd3  rev 1  — 16% shorter than its text implies
+     0.84  known           1680ms  "doesn't want to be quiet now"
+           77c3c06a-de19-44ed-9085-7d6a2b07d4a0  rev 1  — 16% shorter than its text implies
+     0.84  known           1560ms  "I want to start the story."
+           aeeb7245-0745-4350-a284-805633f3b284  rev 1  — 16% shorter than its text implies
+     0.84  known           1800ms  "I'll try explaining the story."
+           bc05fd86-efc7-4dc6-a8b1-6c5a5f521f8b  rev 1  — 16% shorter than its text implies
+     0.84  known           2400ms  "I started thinking about it before I go."
+           fd8c1465-6de3-4cfd-b9e4-e61daa1251ae  rev 1  — 16% shorter than its text implies
+     0.84  known           1800ms  "starting to get tired a little"
+           21bb7a65-fb39-48be-8722-483e5c2bda85  rev 1  — 16% shorter than its text implies
+     0.84  known           1800ms  "been thinking for about a week"
+           4f79edeb-1e12-4273-9af9-ba2b8e860ed1  rev 1  — 16% shorter than its text implies
+     0.84  known           2400ms  "I think making mistakes is a good thing."
+           1cf6fdf8-b306-495b-a82c-efa6fbf0fcc8  rev 1  — 16% shorter than its text implies
+     0.84  known           1560ms  "It's that kind of feeling."
+           12dec7ab-5a6a-4137-8f8e-0dec956d870d  rev 1  — 16% shorter than its text implies
+    0.842  presentation    5712ms  "The Japanese for: 'in Japanese', as in — 'I want to s
+           bb279ded-ddae-4e01-a4bb-63a38499337e  rev 1  — 16% shorter than its text implies
+    0.842  presentation    4392ms  "The Japanese for: 'feeling', as in — 'it's not that k
+           55537306-4a2d-48f3-a87f-3926fea0906b  rev 1  — 16% shorter than its text implies
+    0.844  known           2592ms  "I like feeling as if I'm nearly ready to go"
+           8123b06f-66b9-43be-bfa9-125cf018658b  rev 1  — 16% shorter than its text implies
+    0.844  known           2352ms  "I think meeting people is a good thing."
+           99917780-d2ad-46ae-a1b4-462bbea88f8c  rev 1  — 16% shorter than its text implies
+    0.845  known           1992ms  "I'll try explaining the sentence."
+           22b83ca3-6d2d-42f8-8287-75820c7e8d61  rev 1  — 15% shorter than its text implies
+    0.845  known           1872ms  "I wanted to speak this evening."
+           6014c54b-01e9-4916-8aaf-6d6dfc8e3951  rev 1  — 15% shorter than its text implies
+    0.846  known           1752ms  "Are you remembering her name?"
+           c2c6f5a9-62c7-4512-9acb-ea8159b40ade  rev 1  — 15% shorter than its text implies
+    0.846  known           1752ms  "She wants to know his answer."
+           dc071777-8333-48d3-a179-d080e618a318  rev 1  — 15% shorter than its text implies
+    0.846  known           1752ms  "I'll start speaking Japanese."
+           f00d49d5-6e91-4371-a73c-1089fff453aa  rev 1  — 15% shorter than its text implies
+    0.846  known           1632ms  "I want to meet before I go."
+           682b7db9-d3d3-4d9d-a47d-2c45e06360e6  rev 1  — 15% shorter than its text implies
+    0.847  known           1392ms  "I don't like answering."
+           34f65221-2ed3-4ecc-a12c-ea4734f84f7d  rev 1  — 15% shorter than its text implies
+    0.847  known           1392ms  "She wants to know more."
+           63e2a3c4-e722-408d-9401-7d46f4912c09  rev 1  — 15% shorter than its text implies
+    0.847  known           1392ms  "I don't need to answer."
+           8b8aca34-5cd4-4200-b59f-8cc63edc79ea  rev 1  — 15% shorter than its text implies
+    0.848  known           1272ms  "want to meet together"
+           f029a5b9-c66a-462b-ad01-150c33246bba  rev 1  — 15% shorter than its text implies
+    0.849  presentation    4728ms  "The Japanese for: 'he', as in — 'he wants to go back 
+           8bd47660-bb18-4745-9b40-06a28d72cb86  rev 1  — 15% shorter than its text implies
+    0.849  presentation    5640ms  "The Japanese for: 'don't worry about', as in — 'but I
+           49f30f02-9bab-4ea9-99b2-20733885ea49  rev 1  — 15% shorter than its text implies
+    0.849  known           2304ms  "I want to speak Japanese tomorrow too."
+           6b0f36e5-dcc9-445b-b3b4-0ca371653b6c  rev 1  — 15% shorter than its text implies
+    0.849  known           2184ms  "I want to remember his name quickly."
+           502a26e5-c728-48cf-8b83-04eb810d29ba  rev 1  — 15% shorter than its text implies
+    0.849  known           2184ms  "I want to try saying it before I go."
+           3581f75d-d23e-485a-aa21-d34801413ee2  rev 1  — 15% shorter than its text implies
+    0.849  known           2304ms  "I was not thinking about how to say it"
+           55f92552-5191-419d-ac54-a06ed7d41360  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "I'm trying to remember a word now."
+           a21fa285-01b4-4026-8065-ee2d0328c791  rev 1  — 15% shorter than its text implies
+     0.85  known           1032ms  "don't really know"
+           b1d587a2-983b-48bf-af80-4e5a7604bc48  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "I want to remember it before I go."
+           2e73dc06-0820-4012-ac08-7b12dbbdbbc9  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "I do not know how to feel about it"
+           1321bb3d-1b1e-4fa7-a35a-d6f7792b37ba  rev 1  — 15% shorter than its text implies
+     0.85  known           2064ms  "People who understand don't worry."
+           9802e337-e6c0-461f-82f0-065deb9ed27b  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/jpn_for_eng-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

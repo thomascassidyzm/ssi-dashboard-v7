@@ -1,0 +1,33 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: 🔐 encrypt with Dotenvx: https://dotenvx.com
+
+scoped to seeds 1-50: 3966 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: 📡 add observability to secrets: https://dotenvx.com/ops
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3966 (27.4/s, ~2m left)     measured 500/3966 (35.8/s, ~2m left)     measured 750/3966 (40.1/s, ~1m left)     measured 1000/3966 (42.2/s, ~1m left)     measured 1250/3966 (43.8/s, ~1m left)     measured 1500/3966 (44.6/s, ~1m left)     measured 1750/3966 (45.6/s, ~1m left)     measured 2000/3966 (45.9/s, ~1m left)     measured 2250/3966 (46.2/s, ~1m left)     measured 2500/3966 (46.1/s, ~1m left)     measured 2750/3966 (46.3/s, ~0m left)     measured 3000/3966 (45.0/s, ~0m left)     measured 3250/3966 (44.2/s, ~0m left)     measured 3500/3966 (43.4/s, ~0m left)     measured 3750/3966 (42.7/s, ~0m left)   
+
+audio-repair queue — eng_for_por
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3966 clip(s); 0 could not be measured
+
+4 clip(s) worth a human's ears (4 by duration, 0 by tail); showing 4, worst first.
+
+    0.827  presentation    6792ms  "Em inglês — 'quando há outras pessoas aqui' — como em
+           2187a18d-7faa-41be-97c7-37da77b23300  rev 1  — 17% shorter than its text implies
+    0.833  known           4464ms  "há quanto tempo é que estás a aprender inglês com pes
+           63362582-14c2-45dd-9d0b-50872034bd32  rev 1  — 17% shorter than its text implies
+    0.838  known           4248ms  "há quanto tempo é que estás a aprender a falar inglês
+           23c1689d-7331-4417-a8c3-ab85d21ca2c8  rev 1  — 16% shorter than its text implies
+    0.846  target1         3384ms  "I think that it's a good thing to start speaking Engl
+           acd34531-c574-4ac0-8716-39bbbeb689ce  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/eng_for_por-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...

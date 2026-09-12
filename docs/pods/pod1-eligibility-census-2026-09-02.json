@@ -1,0 +1,3343 @@
+{
+  "generated_at": "2026-09-02T17:15:13.465Z",
+  "definition": "POD 1 content exists for language L on side S iff >=1 listening_pods row with slug=pod-1 whose course code maps L to side S has >=1 listening_pod_sentences row with non-empty <S>_text. Course code parsed as <target>_for_<known>. Dialects are distinct languages.",
+  "pod_slug_counts": {
+    "pod-0-unrecorded": 17,
+    "pod-0-retired-2026-08-22": 16,
+    "music": 1,
+    "pod-1-retired-2026-08-24": 16,
+    "pod-1": 22,
+    "pod-0": 46,
+    "pod-0-retired-2026-08-24": 6,
+    "pod-1-staged-2026-08-23": 1,
+    "travel-situations": 1,
+    "pod-0-gated-2026-08-06": 2,
+    "pod-1-retired-2026-08-22": 1
+  },
+  "pod1_inventory": [
+    {
+      "lang": "ara",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "ara_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "ara_eg",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "ara_eg_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "deu",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "deu_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "deu_at",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "deu_at_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "eng",
+      "targetRows": 0,
+      "targetCourses": [],
+      "knownRows": 5082,
+      "knownCourses": [
+        {
+          "course": "swe_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "deu_at_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "fra_ca_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "gle_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "hin_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "nld_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "isl_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "jpn_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "ron_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "spa_mx_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "zho_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "ara_eg_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "ara_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "eus_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "deu_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "fra_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "hrv_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "ita_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "kor_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "por_br_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "por_for_eng",
+          "rows": 231
+        },
+        {
+          "course": "spa_for_eng",
+          "rows": 231
+        }
+      ]
+    },
+    {
+      "lang": "eus",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "eus_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "fra",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "fra_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "fra_ca",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "fra_ca_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "gle",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "gle_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "hin",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "hin_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "hrv",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "hrv_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "isl",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "isl_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "ita",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "ita_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "jpn",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "jpn_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "kor",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "kor_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "nld",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "nld_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "por",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "por_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "por_br",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "por_br_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "ron",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "ron_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "spa",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "spa_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "spa_mx",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "spa_mx_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "swe",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "swe_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    },
+    {
+      "lang": "zho",
+      "targetRows": 231,
+      "targetCourses": [
+        {
+          "course": "zho_for_eng",
+          "rows": 231
+        }
+      ],
+      "knownRows": 0,
+      "knownCourses": []
+    }
+  ],
+  "fleet_pod0": [
+    {
+      "course": "ara_sy_for_eng",
+      "targetLang": "ara_sy",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "ara_sy"
+      ]
+    },
+    {
+      "course": "bul_for_eng",
+      "targetLang": "bul",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "bul"
+      ]
+    },
+    {
+      "course": "cat_for_eng",
+      "targetLang": "cat",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "cat"
+      ]
+    },
+    {
+      "course": "cat_for_spa",
+      "targetLang": "cat",
+      "knownLang": "spa",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "cat",
+        "spa"
+      ]
+    },
+    {
+      "course": "cym_n_for_eng",
+      "targetLang": "cym_n",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "cym_n"
+      ]
+    },
+    {
+      "course": "cym_s_for_eng",
+      "targetLang": "cym_s",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "cym_s"
+      ]
+    },
+    {
+      "course": "dan_for_eng",
+      "targetLang": "dan",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "dan"
+      ]
+    },
+    {
+      "course": "deu_for_jpn",
+      "targetLang": "deu",
+      "knownLang": "jpn",
+      "targetSide": 231,
+      "knownSide": 0,
+      "targetSideSource": [
+        "deu_for_eng"
+      ],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "known",
+      "missingLangs": [
+        "jpn"
+      ]
+    },
+    {
+      "course": "ell_for_eng",
+      "targetLang": "ell",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "ell"
+      ]
+    },
+    {
+      "course": "eng_for_ara",
+      "targetLang": "eng",
+      "knownLang": "ara",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "ara"
+      ]
+    },
+    {
+      "course": "eng_for_ben",
+      "targetLang": "eng",
+      "knownLang": "ben",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "ben"
+      ]
+    },
+    {
+      "course": "eng_for_deu",
+      "targetLang": "eng",
+      "knownLang": "deu",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "deu"
+      ]
+    },
+    {
+      "course": "eng_for_fra",
+      "targetLang": "eng",
+      "knownLang": "fra",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "fra"
+      ]
+    },
+    {
+      "course": "eng_for_guj",
+      "targetLang": "eng",
+      "knownLang": "guj",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "guj"
+      ]
+    },
+    {
+      "course": "eng_for_hin",
+      "targetLang": "eng",
+      "knownLang": "hin",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "hin"
+      ]
+    },
+    {
+      "course": "eng_for_ita",
+      "targetLang": "eng",
+      "knownLang": "ita",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "ita"
+      ]
+    },
+    {
+      "course": "eng_for_jpn",
+      "targetLang": "eng",
+      "knownLang": "jpn",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "jpn"
+      ]
+    },
+    {
+      "course": "eng_for_kor",
+      "targetLang": "eng",
+      "knownLang": "kor",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "kor"
+      ]
+    },
+    {
+      "course": "eng_for_pan",
+      "targetLang": "eng",
+      "knownLang": "pan",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "pan"
+      ]
+    },
+    {
+      "course": "eng_for_por",
+      "targetLang": "eng",
+      "knownLang": "por",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "por"
+      ]
+    },
+    {
+      "course": "eng_for_sin",
+      "targetLang": "eng",
+      "knownLang": "sin",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "sin"
+      ]
+    },
+    {
+      "course": "eng_for_spa",
+      "targetLang": "eng",
+      "knownLang": "spa",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "spa"
+      ]
+    },
+    {
+      "course": "eng_for_tam",
+      "targetLang": "eng",
+      "knownLang": "tam",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "tam"
+      ]
+    },
+    {
+      "course": "eng_for_urd",
+      "targetLang": "eng",
+      "knownLang": "urd",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "urd"
+      ]
+    },
+    {
+      "course": "eng_for_zho",
+      "targetLang": "eng",
+      "knownLang": "zho",
+      "targetSide": 0,
+      "knownSide": 0,
+      "targetSideSource": [],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "both",
+      "missingLangs": [
+        "eng",
+        "zho"
+      ]
+    },
+    {
+      "course": "est_for_eng",
+      "targetLang": "est",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "est"
+      ]
+    },
+    {
+      "course": "eus_for_spa",
+      "targetLang": "eus",
+      "knownLang": "spa",
+      "targetSide": 231,
+      "knownSide": 0,
+      "targetSideSource": [
+        "eus_for_eng"
+      ],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "known",
+      "missingLangs": [
+        "spa"
+      ]
+    },
+    {
+      "course": "fas_for_eng",
+      "targetLang": "fas",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "fas"
+      ]
+    },
+    {
+      "course": "fin_for_eng",
+      "targetLang": "fin",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "fin"
+      ]
+    },
+    {
+      "course": "fra_for_jpn",
+      "targetLang": "fra",
+      "knownLang": "jpn",
+      "targetSide": 231,
+      "knownSide": 0,
+      "targetSideSource": [
+        "fra_for_eng"
+      ],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "known",
+      "missingLangs": [
+        "jpn"
+      ]
+    },
+    {
+      "course": "heb_for_eng",
+      "targetLang": "heb",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "heb"
+      ]
+    },
+    {
+      "course": "hye_for_eng",
+      "targetLang": "hye",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "hye"
+      ]
+    },
+    {
+      "course": "ita_for_jpn",
+      "targetLang": "ita",
+      "knownLang": "jpn",
+      "targetSide": 231,
+      "knownSide": 0,
+      "targetSideSource": [
+        "ita_for_eng"
+      ],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "known",
+      "missingLangs": [
+        "jpn"
+      ]
+    },
+    {
+      "course": "lav_for_eng",
+      "targetLang": "lav",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "lav"
+      ]
+    },
+    {
+      "course": "lit_for_eng",
+      "targetLang": "lit",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "lit"
+      ]
+    },
+    {
+      "course": "nep_for_eng",
+      "targetLang": "nep",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "nep"
+      ]
+    },
+    {
+      "course": "nor_for_eng",
+      "targetLang": "nor",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "nor"
+      ]
+    },
+    {
+      "course": "pol_for_eng",
+      "targetLang": "pol",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "pol"
+      ]
+    },
+    {
+      "course": "spa_for_jpn",
+      "targetLang": "spa",
+      "knownLang": "jpn",
+      "targetSide": 231,
+      "knownSide": 0,
+      "targetSideSource": [
+        "spa_for_eng"
+      ],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "known",
+      "missingLangs": [
+        "jpn"
+      ]
+    },
+    {
+      "course": "swa_for_eng",
+      "targetLang": "swa",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "swa"
+      ]
+    },
+    {
+      "course": "tha_for_eng",
+      "targetLang": "tha",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "tha"
+      ]
+    },
+    {
+      "course": "tur_for_eng",
+      "targetLang": "tur",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "tur"
+      ]
+    },
+    {
+      "course": "ukr_for_eng",
+      "targetLang": "ukr",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "ukr"
+      ]
+    },
+    {
+      "course": "zho_for_jpn",
+      "targetLang": "zho",
+      "knownLang": "jpn",
+      "targetSide": 231,
+      "knownSide": 0,
+      "targetSideSource": [
+        "zho_for_eng"
+      ],
+      "knownSideSource": [],
+      "eligible": false,
+      "blockedOn": "known",
+      "missingLangs": [
+        "jpn"
+      ]
+    },
+    {
+      "course": "zzz_test2_for_eng",
+      "targetLang": "zzz_test2",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "zzz_test2"
+      ]
+    },
+    {
+      "course": "zzz_test_for_eng",
+      "targetLang": "zzz_test",
+      "knownLang": "eng",
+      "targetSide": 0,
+      "knownSide": 5082,
+      "targetSideSource": [],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": false,
+      "blockedOn": "target",
+      "missingLangs": [
+        "zzz_test"
+      ]
+    }
+  ],
+  "controls_pod1": [
+    {
+      "course": "ara_eg_for_eng",
+      "targetLang": "ara_eg",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "ara_eg_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "ara_for_eng",
+      "targetLang": "ara",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "ara_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "deu_at_for_eng",
+      "targetLang": "deu_at",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "deu_at_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "deu_for_eng",
+      "targetLang": "deu",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "deu_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "eus_for_eng",
+      "targetLang": "eus",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "eus_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "fra_ca_for_eng",
+      "targetLang": "fra_ca",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "fra_ca_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "fra_for_eng",
+      "targetLang": "fra",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "fra_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "gle_for_eng",
+      "targetLang": "gle",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "gle_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "hin_for_eng",
+      "targetLang": "hin",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "hin_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "hrv_for_eng",
+      "targetLang": "hrv",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "hrv_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "isl_for_eng",
+      "targetLang": "isl",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "isl_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "ita_for_eng",
+      "targetLang": "ita",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "ita_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "jpn_for_eng",
+      "targetLang": "jpn",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "jpn_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "kor_for_eng",
+      "targetLang": "kor",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "kor_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "nld_for_eng",
+      "targetLang": "nld",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "nld_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "por_br_for_eng",
+      "targetLang": "por_br",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "por_br_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "por_for_eng",
+      "targetLang": "por",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "por_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "ron_for_eng",
+      "targetLang": "ron",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "ron_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "spa_for_eng",
+      "targetLang": "spa",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "spa_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "spa_mx_for_eng",
+      "targetLang": "spa_mx",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "spa_mx_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "swe_for_eng",
+      "targetLang": "swe",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "swe_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    },
+    {
+      "course": "zho_for_eng",
+      "targetLang": "zho",
+      "knownLang": "eng",
+      "targetSide": 231,
+      "knownSide": 5082,
+      "targetSideSource": [
+        "zho_for_eng"
+      ],
+      "knownSideSource": [
+        "swe_for_eng",
+        "deu_at_for_eng",
+        "fra_ca_for_eng",
+        "gle_for_eng",
+        "hin_for_eng",
+        "nld_for_eng",
+        "isl_for_eng",
+        "jpn_for_eng",
+        "ron_for_eng",
+        "spa_mx_for_eng",
+        "zho_for_eng",
+        "ara_eg_for_eng",
+        "ara_for_eng",
+        "eus_for_eng",
+        "deu_for_eng",
+        "fra_for_eng",
+        "hrv_for_eng",
+        "ita_for_eng",
+        "kor_for_eng",
+        "por_br_for_eng",
+        "por_for_eng",
+        "spa_for_eng"
+      ],
+      "eligible": true,
+      "blockedOn": null,
+      "missingLangs": [],
+      "ownPod1Rows": 231,
+      "ownKnownRows": 231,
+      "ownTargetRows": 231
+    }
+  ],
+  "blocked_by_language_ranked": [
+    {
+      "lang": "eng",
+      "side": "target",
+      "courses": [
+        "eng_for_ara",
+        "eng_for_ben",
+        "eng_for_deu",
+        "eng_for_fra",
+        "eng_for_guj",
+        "eng_for_hin",
+        "eng_for_ita",
+        "eng_for_jpn",
+        "eng_for_kor",
+        "eng_for_pan",
+        "eng_for_por",
+        "eng_for_sin",
+        "eng_for_spa",
+        "eng_for_tam",
+        "eng_for_urd",
+        "eng_for_zho"
+      ]
+    },
+    {
+      "lang": "jpn",
+      "side": "known",
+      "courses": [
+        "deu_for_jpn",
+        "eng_for_jpn",
+        "fra_for_jpn",
+        "ita_for_jpn",
+        "spa_for_jpn",
+        "zho_for_jpn"
+      ]
+    },
+    {
+      "lang": "spa",
+      "side": "known",
+      "courses": [
+        "cat_for_spa",
+        "eng_for_spa",
+        "eus_for_spa"
+      ]
+    },
+    {
+      "lang": "cat",
+      "side": "target",
+      "courses": [
+        "cat_for_eng",
+        "cat_for_spa"
+      ]
+    },
+    {
+      "lang": "ara_sy",
+      "side": "target",
+      "courses": [
+        "ara_sy_for_eng"
+      ]
+    },
+    {
+      "lang": "bul",
+      "side": "target",
+      "courses": [
+        "bul_for_eng"
+      ]
+    },
+    {
+      "lang": "cym_n",
+      "side": "target",
+      "courses": [
+        "cym_n_for_eng"
+      ]
+    },
+    {
+      "lang": "cym_s",
+      "side": "target",
+      "courses": [
+        "cym_s_for_eng"
+      ]
+    },
+    {
+      "lang": "dan",
+      "side": "target",
+      "courses": [
+        "dan_for_eng"
+      ]
+    },
+    {
+      "lang": "ell",
+      "side": "target",
+      "courses": [
+        "ell_for_eng"
+      ]
+    },
+    {
+      "lang": "ara",
+      "side": "known",
+      "courses": [
+        "eng_for_ara"
+      ]
+    },
+    {
+      "lang": "ben",
+      "side": "known",
+      "courses": [
+        "eng_for_ben"
+      ]
+    },
+    {
+      "lang": "deu",
+      "side": "known",
+      "courses": [
+        "eng_for_deu"
+      ]
+    },
+    {
+      "lang": "fra",
+      "side": "known",
+      "courses": [
+        "eng_for_fra"
+      ]
+    },
+    {
+      "lang": "guj",
+      "side": "known",
+      "courses": [
+        "eng_for_guj"
+      ]
+    },
+    {
+      "lang": "hin",
+      "side": "known",
+      "courses": [
+        "eng_for_hin"
+      ]
+    },
+    {
+      "lang": "ita",
+      "side": "known",
+      "courses": [
+        "eng_for_ita"
+      ]
+    },
+    {
+      "lang": "kor",
+      "side": "known",
+      "courses": [
+        "eng_for_kor"
+      ]
+    },
+    {
+      "lang": "pan",
+      "side": "known",
+      "courses": [
+        "eng_for_pan"
+      ]
+    },
+    {
+      "lang": "por",
+      "side": "known",
+      "courses": [
+        "eng_for_por"
+      ]
+    },
+    {
+      "lang": "sin",
+      "side": "known",
+      "courses": [
+        "eng_for_sin"
+      ]
+    },
+    {
+      "lang": "tam",
+      "side": "known",
+      "courses": [
+        "eng_for_tam"
+      ]
+    },
+    {
+      "lang": "urd",
+      "side": "known",
+      "courses": [
+        "eng_for_urd"
+      ]
+    },
+    {
+      "lang": "zho",
+      "side": "known",
+      "courses": [
+        "eng_for_zho"
+      ]
+    },
+    {
+      "lang": "est",
+      "side": "target",
+      "courses": [
+        "est_for_eng"
+      ]
+    },
+    {
+      "lang": "fas",
+      "side": "target",
+      "courses": [
+        "fas_for_eng"
+      ]
+    },
+    {
+      "lang": "fin",
+      "side": "target",
+      "courses": [
+        "fin_for_eng"
+      ]
+    },
+    {
+      "lang": "heb",
+      "side": "target",
+      "courses": [
+        "heb_for_eng"
+      ]
+    },
+    {
+      "lang": "hye",
+      "side": "target",
+      "courses": [
+        "hye_for_eng"
+      ]
+    },
+    {
+      "lang": "lav",
+      "side": "target",
+      "courses": [
+        "lav_for_eng"
+      ]
+    },
+    {
+      "lang": "lit",
+      "side": "target",
+      "courses": [
+        "lit_for_eng"
+      ]
+    },
+    {
+      "lang": "nep",
+      "side": "target",
+      "courses": [
+        "nep_for_eng"
+      ]
+    },
+    {
+      "lang": "nor",
+      "side": "target",
+      "courses": [
+        "nor_for_eng"
+      ]
+    },
+    {
+      "lang": "pol",
+      "side": "target",
+      "courses": [
+        "pol_for_eng"
+      ]
+    },
+    {
+      "lang": "swa",
+      "side": "target",
+      "courses": [
+        "swa_for_eng"
+      ]
+    },
+    {
+      "lang": "tha",
+      "side": "target",
+      "courses": [
+        "tha_for_eng"
+      ]
+    },
+    {
+      "lang": "tur",
+      "side": "target",
+      "courses": [
+        "tur_for_eng"
+      ]
+    },
+    {
+      "lang": "ukr",
+      "side": "target",
+      "courses": [
+        "ukr_for_eng"
+      ]
+    },
+    {
+      "lang": "zzz_test2",
+      "side": "target",
+      "courses": [
+        "zzz_test2_for_eng"
+      ]
+    },
+    {
+      "lang": "zzz_test",
+      "side": "target",
+      "courses": [
+        "zzz_test_for_eng"
+      ]
+    }
+  ],
+  "definition_b": "MIRROR: language L has POD 1 text if L appears on EITHER side of any pod-1 pod (English qualifies via known_text).",
+  "fleet_pod0_definition_b": [
+    {
+      "course": "ara_sy_for_eng",
+      "targetLang": "ara_sy",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "ara_sy"
+      ]
+    },
+    {
+      "course": "bul_for_eng",
+      "targetLang": "bul",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "bul"
+      ]
+    },
+    {
+      "course": "cat_for_eng",
+      "targetLang": "cat",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "cat"
+      ]
+    },
+    {
+      "course": "cat_for_spa",
+      "targetLang": "cat",
+      "knownLang": "spa",
+      "eligible": false,
+      "missingLangs": [
+        "cat"
+      ]
+    },
+    {
+      "course": "cym_n_for_eng",
+      "targetLang": "cym_n",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "cym_n"
+      ]
+    },
+    {
+      "course": "cym_s_for_eng",
+      "targetLang": "cym_s",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "cym_s"
+      ]
+    },
+    {
+      "course": "dan_for_eng",
+      "targetLang": "dan",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "dan"
+      ]
+    },
+    {
+      "course": "deu_for_jpn",
+      "targetLang": "deu",
+      "knownLang": "jpn",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "ell_for_eng",
+      "targetLang": "ell",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "ell"
+      ]
+    },
+    {
+      "course": "eng_for_ara",
+      "targetLang": "eng",
+      "knownLang": "ara",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_ben",
+      "targetLang": "eng",
+      "knownLang": "ben",
+      "eligible": false,
+      "missingLangs": [
+        "ben"
+      ]
+    },
+    {
+      "course": "eng_for_deu",
+      "targetLang": "eng",
+      "knownLang": "deu",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_fra",
+      "targetLang": "eng",
+      "knownLang": "fra",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_guj",
+      "targetLang": "eng",
+      "knownLang": "guj",
+      "eligible": false,
+      "missingLangs": [
+        "guj"
+      ]
+    },
+    {
+      "course": "eng_for_hin",
+      "targetLang": "eng",
+      "knownLang": "hin",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_ita",
+      "targetLang": "eng",
+      "knownLang": "ita",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_jpn",
+      "targetLang": "eng",
+      "knownLang": "jpn",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_kor",
+      "targetLang": "eng",
+      "knownLang": "kor",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_pan",
+      "targetLang": "eng",
+      "knownLang": "pan",
+      "eligible": false,
+      "missingLangs": [
+        "pan"
+      ]
+    },
+    {
+      "course": "eng_for_por",
+      "targetLang": "eng",
+      "knownLang": "por",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_sin",
+      "targetLang": "eng",
+      "knownLang": "sin",
+      "eligible": false,
+      "missingLangs": [
+        "sin"
+      ]
+    },
+    {
+      "course": "eng_for_spa",
+      "targetLang": "eng",
+      "knownLang": "spa",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "eng_for_tam",
+      "targetLang": "eng",
+      "knownLang": "tam",
+      "eligible": false,
+      "missingLangs": [
+        "tam"
+      ]
+    },
+    {
+      "course": "eng_for_urd",
+      "targetLang": "eng",
+      "knownLang": "urd",
+      "eligible": false,
+      "missingLangs": [
+        "urd"
+      ]
+    },
+    {
+      "course": "eng_for_zho",
+      "targetLang": "eng",
+      "knownLang": "zho",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "est_for_eng",
+      "targetLang": "est",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "est"
+      ]
+    },
+    {
+      "course": "eus_for_spa",
+      "targetLang": "eus",
+      "knownLang": "spa",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "fas_for_eng",
+      "targetLang": "fas",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "fas"
+      ]
+    },
+    {
+      "course": "fin_for_eng",
+      "targetLang": "fin",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "fin"
+      ]
+    },
+    {
+      "course": "fra_for_jpn",
+      "targetLang": "fra",
+      "knownLang": "jpn",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "heb_for_eng",
+      "targetLang": "heb",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "heb"
+      ]
+    },
+    {
+      "course": "hye_for_eng",
+      "targetLang": "hye",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "hye"
+      ]
+    },
+    {
+      "course": "ita_for_jpn",
+      "targetLang": "ita",
+      "knownLang": "jpn",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "lav_for_eng",
+      "targetLang": "lav",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "lav"
+      ]
+    },
+    {
+      "course": "lit_for_eng",
+      "targetLang": "lit",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "lit"
+      ]
+    },
+    {
+      "course": "nep_for_eng",
+      "targetLang": "nep",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "nep"
+      ]
+    },
+    {
+      "course": "nor_for_eng",
+      "targetLang": "nor",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "nor"
+      ]
+    },
+    {
+      "course": "pol_for_eng",
+      "targetLang": "pol",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "pol"
+      ]
+    },
+    {
+      "course": "spa_for_jpn",
+      "targetLang": "spa",
+      "knownLang": "jpn",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "swa_for_eng",
+      "targetLang": "swa",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "swa"
+      ]
+    },
+    {
+      "course": "tha_for_eng",
+      "targetLang": "tha",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "tha"
+      ]
+    },
+    {
+      "course": "tur_for_eng",
+      "targetLang": "tur",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "tur"
+      ]
+    },
+    {
+      "course": "ukr_for_eng",
+      "targetLang": "ukr",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "ukr"
+      ]
+    },
+    {
+      "course": "zho_for_jpn",
+      "targetLang": "zho",
+      "knownLang": "jpn",
+      "eligible": true,
+      "missingLangs": []
+    },
+    {
+      "course": "zzz_test2_for_eng",
+      "targetLang": "zzz_test2",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "zzz_test2"
+      ]
+    },
+    {
+      "course": "zzz_test_for_eng",
+      "targetLang": "zzz_test",
+      "knownLang": "eng",
+      "eligible": false,
+      "missingLangs": [
+        "zzz_test"
+      ]
+    }
+  ],
+  "blocked_by_language_ranked_definition_b": [
+    {
+      "lang": "cat",
+      "courses": [
+        "cat_for_eng",
+        "cat_for_spa"
+      ]
+    },
+    {
+      "lang": "ara_sy",
+      "courses": [
+        "ara_sy_for_eng"
+      ]
+    },
+    {
+      "lang": "bul",
+      "courses": [
+        "bul_for_eng"
+      ]
+    },
+    {
+      "lang": "cym_n",
+      "courses": [
+        "cym_n_for_eng"
+      ]
+    },
+    {
+      "lang": "cym_s",
+      "courses": [
+        "cym_s_for_eng"
+      ]
+    },
+    {
+      "lang": "dan",
+      "courses": [
+        "dan_for_eng"
+      ]
+    },
+    {
+      "lang": "ell",
+      "courses": [
+        "ell_for_eng"
+      ]
+    },
+    {
+      "lang": "ben",
+      "courses": [
+        "eng_for_ben"
+      ]
+    },
+    {
+      "lang": "guj",
+      "courses": [
+        "eng_for_guj"
+      ]
+    },
+    {
+      "lang": "pan",
+      "courses": [
+        "eng_for_pan"
+      ]
+    },
+    {
+      "lang": "sin",
+      "courses": [
+        "eng_for_sin"
+      ]
+    },
+    {
+      "lang": "tam",
+      "courses": [
+        "eng_for_tam"
+      ]
+    },
+    {
+      "lang": "urd",
+      "courses": [
+        "eng_for_urd"
+      ]
+    },
+    {
+      "lang": "est",
+      "courses": [
+        "est_for_eng"
+      ]
+    },
+    {
+      "lang": "fas",
+      "courses": [
+        "fas_for_eng"
+      ]
+    },
+    {
+      "lang": "fin",
+      "courses": [
+        "fin_for_eng"
+      ]
+    },
+    {
+      "lang": "heb",
+      "courses": [
+        "heb_for_eng"
+      ]
+    },
+    {
+      "lang": "hye",
+      "courses": [
+        "hye_for_eng"
+      ]
+    },
+    {
+      "lang": "lav",
+      "courses": [
+        "lav_for_eng"
+      ]
+    },
+    {
+      "lang": "lit",
+      "courses": [
+        "lit_for_eng"
+      ]
+    },
+    {
+      "lang": "nep",
+      "courses": [
+        "nep_for_eng"
+      ]
+    },
+    {
+      "lang": "nor",
+      "courses": [
+        "nor_for_eng"
+      ]
+    },
+    {
+      "lang": "pol",
+      "courses": [
+        "pol_for_eng"
+      ]
+    },
+    {
+      "lang": "swa",
+      "courses": [
+        "swa_for_eng"
+      ]
+    },
+    {
+      "lang": "tha",
+      "courses": [
+        "tha_for_eng"
+      ]
+    },
+    {
+      "lang": "tur",
+      "courses": [
+        "tur_for_eng"
+      ]
+    },
+    {
+      "lang": "ukr",
+      "courses": [
+        "ukr_for_eng"
+      ]
+    },
+    {
+      "lang": "zzz_test2",
+      "courses": [
+        "zzz_test2_for_eng"
+      ]
+    },
+    {
+      "lang": "zzz_test",
+      "courses": [
+        "zzz_test_for_eng"
+      ]
+    }
+  ],
+  "summary": {
+    "pod0_total": 46,
+    "pod0_eligible": 0,
+    "pod0_blocked": 46,
+    "pod0_real_total": 44,
+    "pod0_real_eligible": 0,
+    "controls_total": 22,
+    "controls_eligible": 22,
+    "pod0_eligible_definition_b": 16,
+    "pod0_real_eligible_definition_b": 16
+  }
+}

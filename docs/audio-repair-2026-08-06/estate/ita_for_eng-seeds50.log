@@ -1,0 +1,137 @@
+[dotenv@17.2.3] injecting env (22) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+
+scoped to seeds 1-50: 3537 clip(s) referenced
+tail check ON — one S3 fetch and one decode per clip, 8 at a time; this is not instant.
+[dotenv@17.2.3] injecting env (0) from .env -- tip: ⚙️  load multiple .env files with { path: ['.env.local', '.env'] }
+[language-code-service] Loaded 488 language codes from CSV
+[language-code-service] TTS configured: 104 Azure, 75 ElevenLabs, 79 Google
+[language-code-service] Legacy mappings: 93 total (95 from CSV)
+  measured 250/3537 (17.6/s, ~3m left)     measured 500/3537 (22.4/s, ~2m left)     measured 750/3537 (24.9/s, ~2m left)     measured 1000/3537 (26.0/s, ~2m left)     measured 1250/3537 (26.9/s, ~1m left)     measured 1500/3537 (27.3/s, ~1m left)     measured 1750/3537 (27.8/s, ~1m left)     measured 2000/3537 (28.2/s, ~1m left)     measured 2250/3537 (28.5/s, ~1m left)     measured 2500/3537 (28.6/s, ~1m left)     measured 2750/3537 (28.8/s, ~0m left)     measured 3000/3537 (29.0/s, ~0m left)     measured 3250/3537 (29.1/s, ~0m left)     measured 3500/3537 (29.3/s, ~0m left)   
+
+audio-repair queue — ita_for_eng
+detector: duration-vs-expected
+  Unmeasured against human-labelled ground truth. Orders the queue only — it never passes audio. The tail-defect detector it replaces measured ~9% precision by ear (2026-08-05).
+detector: tail-integrity
+  Recall 3/3 against the only human-labelled ground truth that exists (Tom, deu_for_eng, 2026-08-05) — three clips is far too few for a precision figure, and none is claimed. Like-for-like control: fresh renders of the same 93 texts through the same voices moved the median release 20ms -> 115ms, and 92 of 93 stopped tripping this check, so the flags are not an artefact of which phoneme a word ends on. That says the shipped clips are anomalous; it does NOT say a human hears all 93 as damaged. Orders the queue only; it never passes audio.
+  measured 3537 clip(s); 0 could not be measured
+
+56 clip(s) worth a human's ears (56 by duration, 1 by tail); showing 56, worst first.
+
+     30ms  known           2472ms  "I want to speak Italian with you for a week"
+           676b8413-6599-48af-9d6a-f13a22b2e01c  rev 1  — ends abruptly — 30ms from full speech level to silence (natural endings measure ~80ms)
+    0.685  known           2496ms  "I won't be able to speak with someone else tomorrow"
+           b4344d35-7c5e-4c5a-885c-49d41144d67a  rev 1  — 31% shorter than its text implies
+    0.719  known           1848ms  "I don't want to think about it today"
+           77875945-597d-4b7b-89a6-ab9f4b511dc7  rev 1  — 28% shorter than its text implies
+    0.722  known           2064ms  "I haven't been learning for about a week"
+           bb001ef6-762b-4d71-9cb0-46a6c44c45e4  rev 1  — 28% shorter than its text implies
+    0.726  known           2592ms  "I'm going to learn how to say something in Italian"
+           87efc904-c4f4-4ddc-94fc-814e1d70bca2  rev 1  — 27% shorter than its text implies
+    0.728  known           1560ms  "I don't want to think about it"
+           f4fc7a29-86f3-43b2-8ace-5975965a74e3  rev 1  — 27% shorter than its text implies
+    0.742  known           2544ms  "have you been learning Italian for about a week?"
+           ffc096fc-abb0-47c7-adaa-5556752d7eba  rev 1  — 26% shorter than its text implies
+    0.747  known           1920ms  "I'd like to meet people this evening"
+           8dc395ca-c02f-4cd6-b1ea-736fc5af5b30  rev 1  — 25% shorter than its text implies
+    0.749  known           1872ms  "I'm going to try something with you"
+           b68c3015-6c85-421b-aa97-c87967846078  rev 1  — 25% shorter than its text implies
+    0.749  known           1872ms  "I'm going to try to learn something"
+           23149d08-eb11-45ce-b9b6-8fab29e08b0e  rev 1  — 25% shorter than its text implies
+     0.75  known           2784ms  "I don't want to take too much time with someone else"
+           0d36b113-b96d-45b7-b8ea-ad5d205bb9a7  rev 1  — 25% shorter than its text implies
+     0.76  known           2064ms  "I want to learn what's going to happen"
+           23feb813-0e20-4e29-9b08-e9e75a481e62  rev 1  — 24% shorter than its text implies
+    0.763  known           2016ms  "I don't need to practise speaking now"
+           2998393a-e233-459b-bff9-c78ef0671ccc  rev 1  — 24% shorter than its text implies
+    0.764  known           2784ms  "I want to learn Italian and speak with someone else"
+           bf726311-27c0-4adc-a3aa-3453e1469c02  rev 1  — 24% shorter than its text implies
+    0.765  known           1584ms  "I'm learning Italian with you"
+           41896444-2874-47f9-a005-4abf04db6ea5  rev 1  — 24% shorter than its text implies
+    0.768  target2         2304ms  "sto provando a scoprire quello che intendo"
+           f3df681d-6a50-433d-a712-ca63bf3bede7  rev 1  — 23% shorter than its text implies
+    0.776  known           2328ms  "have you been learning Italian for a week?"
+           b7fd9bff-8f58-4f8b-b042-619b8f8bd675  rev 1  — 22% shorter than its text implies
+    0.781  known           2064ms  "I've been speaking Italian for a week"
+           9bd66b35-ca22-4930-91a5-dcf9ac63b49e  rev 1  — 22% shorter than its text implies
+    0.784  known           1848ms  "I'm ready to go with someone else"
+           0706f3d2-1d8d-44b8-8339-e79eb716d0b8  rev 1  — 22% shorter than its text implies
+    0.789  known           2424ms  "I wanted to speak Italian with someone else"
+           9da5f9cf-f578-48ab-9956-bf6b6c4a4141  rev 1  — 21% shorter than its text implies
+    0.792  target1         1584ms  "voglio parlare un po' di più"
+           24d149fa-f4d9-4134-9e81-b047bcd6b985  rev 1  — 21% shorter than its text implies
+    0.793  target2         2832ms  "non voglio prendere troppo tempo con qualcun altro"
+           423f3523-43e2-4f90-ad80-cd46d86d30b6  rev 1  — 21% shorter than its text implies
+    0.794  known           1872ms  "I want to speak with people today"
+           0d89caab-4f2f-48a1-aba8-0ffad8868172  rev 1  — 21% shorter than its text implies
+      0.8  known           1944ms  "I want to try something in Italian"
+           c6dbdce8-e964-4b6b-b09b-8c952beb9265  rev 1  — 20% shorter than its text implies
+      0.8  known           2400ms  "I wouldn't like to learn with someone else"
+           eb7f68c5-bea8-455d-bfb6-fa535e22469b  rev 1  — 20% shorter than its text implies
+    0.805  known           2184ms  "he wants to learn something in Italian"
+           791c954e-8977-4ac5-931d-e654fca51371  rev 1  — 20% shorter than its text implies
+    0.808  target1         2424ms  "sto provando a scoprire quello che intendo"
+           4bd807e1-1b03-4d77-9d9e-59422b4e0f08  rev 1  — 19% shorter than its text implies
+    0.808  known           2424ms  "I haven't been learning Italian for a week"
+           f120abe6-33a3-4a04-b2a2-f33626d2201a  rev 1  — 19% shorter than its text implies
+    0.813  known           2208ms  "he wants to meet someone else later on"
+           31931b5b-902c-4942-9646-0c85c76403d7  rev 1  — 19% shorter than its text implies
+    0.815  known           1920ms  "I want to meet someone else today"
+           d3df6381-ee29-4c33-9a64-3894fda16430  rev 1  — 19% shorter than its text implies
+    0.816  known           1632ms  "I'd like to meet up tomorrow"
+           26b2dd0f-b629-4ff2-8281-d6a9275d0419  rev 1  — 18% shorter than its text implies
+    0.816  known           2040ms  "I won't be able to learn more today"
+           9082c930-04ca-4a10-b01f-748ebebcea68  rev 1  — 18% shorter than its text implies
+    0.817  target1         2568ms  "non mi piacerebbe imparare con qualcun altro"
+           577d2554-a209-4673-bad2-d490cb87581e  rev 1  — 18% shorter than its text implies
+     0.82  known           1992ms  "I want to learn something with you"
+           adf42d91-4434-4f7a-8155-2bf68db146c3  rev 1  — 18% shorter than its text implies
+     0.82  known           2400ms  "I like to speak Italian with someone else"
+           7860667b-4783-4e60-9762-b74efe976e44  rev 1  — 18% shorter than its text implies
+    0.821  known           2112ms  "I want to learn how to say something"
+           1406e948-b318-479c-ad19-77efb91d5844  rev 1  — 18% shorter than its text implies
+    0.823  known           1176ms  "to speak with people"
+           89df53dc-bd84-4b65-918b-3d638527c007  rev 1  — 18% shorter than its text implies
+    0.825  known           1944ms  "I'm not sure how to speak Italian"
+           b372eb82-e62a-40a4-8f39-360ed4b7494b  rev 1  — 18% shorter than its text implies
+    0.826  known           2064ms  "we don't want to come back later on"
+           f7557cab-dcb8-49a0-82ae-c69ae101035e  rev 1  — 17% shorter than its text implies
+    0.828  known           2544ms  "he wants to speak Italian with someone else"
+           928b0544-589c-47b8-9d23-a6b24127f291  rev 1  — 17% shorter than its text implies
+    0.832  target2         2616ms  "non mi piacerebbe imparare con qualcun altro"
+           da7ddcc2-17b1-4db9-b838-28ce617551bd  rev 1  — 17% shorter than its text implies
+    0.834  target1         3096ms  "voglio imparare italiano e parlare con qualcun altro"
+           beca6721-299f-47bd-8447-eefe45023ac1  rev 1  — 17% shorter than its text implies
+    0.835  target1         2088ms  "stavo cominciando a sentirmi meglio"
+           bebdfdb8-d410-4b05-adc2-eb489f3aedb7  rev 1  — 16% shorter than its text implies
+     0.84  known           2040ms  "I don't want to come back later on"
+           44a00378-77ae-4860-9058-4c66403d5433  rev 1  — 16% shorter than its text implies
+    0.844  known           2352ms  "I want to find out how to speak Italian"
+           9ecf2eb1-f4f0-4044-a196-ba33694fc87c  rev 1  — 16% shorter than its text implies
+    0.844  target1         2352ms  "sono pronto ad andare con qualcun altro"
+           5d8a8666-3722-4c9f-b0bf-e1ec2b95198f  rev 1  — 16% shorter than its text implies
+    0.844  target1         2592ms  "non sto imparando italiano da una settimana"
+           6d885f13-726b-4d7d-8690-09e9daeee62d  rev 1  — 16% shorter than its text implies
+    0.846  known           1752ms  "I'm trying to learn something"
+           3568d811-d0fa-48d2-b071-c44735f68c4f  rev 1  — 15% shorter than its text implies
+    0.847  target2         2784ms  "non ho bisogno di fare pratica parlando adesso"
+           2eaef7f9-502a-4de6-85c6-8f4153d2e8c1  rev 1  — 15% shorter than its text implies
+    0.848  target1         2424ms  "vuole parlare italiano con qualcun altro"
+           b62161d3-b0aa-47ab-a3e4-13a0cee9afa3  rev 1  — 15% shorter than its text implies
+    0.848  known           2424ms  "I don't want to take too much time today"
+           09596531-021c-4ce2-8245-fa6e8a0f640f  rev 1  — 15% shorter than its text implies
+    0.848  target1         2424ms  "non sto imparando da circa una settimana"
+           034dfc24-8012-435c-ba16-5b3431bb0e6d  rev 1  — 15% shorter than its text implies
+    0.849  known           2304ms  "I want to practise speaking in Italian"
+           30e6aa94-e618-44ba-8d70-f9866c0c3c6f  rev 1  — 15% shorter than its text implies
+    0.849  target2         3336ms  "mi piacerebbe scoprire come dire una parola in italia
+           fbaea77d-dd21-4007-ab0f-14df8d450ab4  rev 1  — 15% shorter than its text implies
+    0.849  target2         2184ms  "ho cominciato a imparare velocemente"
+           7d0adbd6-7d13-4149-b5af-0fa56c29a392  rev 1  — 15% shorter than its text implies
+     0.85  target1         2064ms  "voglio imparare come dire qualcosa"
+           550aea73-e67b-403e-8eec-60142b6aabca  rev 1  — 15% shorter than its text implies
+
+queue -> docs/audio-repair-2026-08-06/estate/ita_for_eng-seeds50-tails.json  (feed it straight to `propose --targets`)
+
+This is an ORDERING, not a verdict. Nothing here has been judged broken.
+
+[Azure TTS] Closing connection pool (0 total connections)...
