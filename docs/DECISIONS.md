@@ -5,6 +5,39 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-12 — the community course "Copy link" is the pre-signed form of the email login, not a second identity
+
+**Decision.** The link the course editor copies from the casting row (`PodCastPanel`) is
+`/r/<voiceId>?course=<code>`: the existing booth, scoped to that course, Start on the first
+unread line. No third identity and no parallel access table. The email door (OTP login →
+`castingForEmail` → `/my-recording` → `/r/<voiceId>`) and the link door both end in
+`resolveRecordist`, and now both are *keyed* the same way: `casting-rights.boothArrival`
+builds the link arrival as `castingIdentity(castingForEmail(email))` and asks the same
+`courseAccessVerdict` the `:courseCode` gate asks, so `casting-access.jsonl` counts a link
+arrival as a `reach` on the same email/course keys as a login, and a wrong-course link is a
+`refused` event plus a 403 carrying the sentence. `voicesForEmail` reads
+`voice_config.podCast` entries by email as a third candidate source — rights derive from
+casting, not from the users-page row the cast save happens to provision.
+
+**What was deliberately NOT changed.** `resolveRecordist` still answers from
+`language_recording_policy` alone — "a recording link is only live while the policy names
+that voice" is a stated rule in the code. A voice cast on a course by `podCast` and absent
+from the policy still 404s at the link and is dropped by the email door: the doors agree,
+by refusing together. Every cast voice live on 2026-09-12 is in its policy; widening the
+resolver to `podCast` is a policy call and is left as the open gap. `AdminRecording`'s
+language-wide link (no `?course=`) is untouched.
+
+**Editor-only.** `useAuth.isEditorOf` mirrors `podWriteVerdict`'s grant rule (a grant that
+is not the recorder role); only that viewer sees Copy link / Open, and `PodDetailView`'s
+top-of-page booth links show an artist their own link and nobody else's.
+
+**Proof.** `services/voice-engine/booth-two-doors.test.cjs` and
+`src/components/PodCastPanel.copyLink.test.js`, each seen failing on the pre-fix code and
+passing after. **Rollback.** Revert the one commit; the old per-voice "Copy record link"
+comes back unscoped and visible to any viewer, which is the state before it.
+
+---
+
 ## 2026-09-05 — the phrase-door frame work is on `main`, and claim honesty reports rather than gates
 
 **Decision.** The frame-layer chain (jobs #503, #570, #572, #597) was merged to `main` as a
