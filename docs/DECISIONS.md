@@ -28,6 +28,33 @@ The same merge landed the own-line 403 fix from job #324·F (`pods-router.cjs` s
 now reads `speaker`; `pods-router-own-line.test.cjs`).
 
 ---
+## 2026-09-12 — a booth text correction keeps learner progress; the pod-migration rules 4/6 do not apply to it
+
+**Decision.** The recordist text-edit route (`services/voice-engine/recordist-router.cjs`,
+`/voice/:voiceId/line/:lineId/text`) no longer deletes `learner_pod_state` rows for the edited
+sentence group. It used to, on every edit of either side, for every id in the collapsed
+duplicate group, with no learner filter — reasoning from the content-change migration protocol
+(A-111) rules 6 ("a sentence that changed at all counts as new") and 4 ("a new sentence
+arrives unseen"). Confirmed by the foreign-eyes pass of 2026-09-12 (doc /d/707d04e3).
+
+**Tom's ruling, 2026-09-12 11:28Z, his words:** *"Wipe learner progress. Sounds bad to me.
+Because it's presumably only a small edit. The sense of the line will be the same. So I think
+we keep learner progress."* An artist's correction is the same line, so the learner keeps their
+place. The ruling is categorical: there is deliberately no "big edit" heuristic, and no side
+(target, known, both) reaches `learner_pod_state`. Standing rule behind it: never touch learner
+progress unless asked.
+
+**What did not change.** The edited side's take is still unlinked from the slot (never served
+again under words it does not say), `course_audio` is never deleted, and the duplicate group
+still moves as one line. A SEED sentence and a QUARRY piece are still refused. Pod swaps and
+re-syncs still run rules 4/6 — the whole slate moves there; this ruling is about one line
+corrected in the booth. `pod-migration-protocol.md` carries the exemption under rule 7.
+
+**Proof.** `recordist-text-edit.test.cjs`: the test that asserted the drop on a target-side edit
+now asserts no `learner_pod_state` write of any kind, and the known-only path (which never
+checked progress before) asserts the same. Both were run against the pre-fix router and went
+red; on the fixed router the suite is 17/17. The response field `progressDropped` is gone — no
+caller read it.
 
 ## 2026-09-12 — the community course "Copy link" is the pre-signed form of the email login, not a second identity
 

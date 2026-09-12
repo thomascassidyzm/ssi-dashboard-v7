@@ -179,15 +179,21 @@ test('an edit deletes no audio -- the clip keeps its bytes and its provenance', 
     'unlinking is not deleting: the take is still findable under the words it actually says')
 })
 
-test("an edit drops the learner's progress on that slot, and only that slot", async () => {
+// Tom, 2026-09-12 11:28Z: "Wipe learner progress. Sounds bad to me. Because
+// it's presumably only a small edit. The sense of the line will be the same. So
+// I think we keep learner progress." Until that ruling this route deleted the
+// slot's learner_pod_state rows on every edit (protocol rules 4/6); the test
+// below asserted the drop and now asserts its absence. No side, no group size
+// and no size of edit reaches learner_pod_state — the ruling is categorical.
+function learnerProgressTouched(r) {
+  return r.updates.filter((u) => u.table === 'learner_pod_state')
+}
+
+test("a TARGET-side edit keeps the learner's progress: learner_pod_state is not touched", async () => {
   const r = await call({ voiceId: 'human_aran_cym_n', lineId: 'LIVE', text: 'Prynhawn da.' })
-  const drops = r.updates.filter((u) => u.table === 'learner_pod_state' && u.op === 'delete')
-  assert.equal(drops.length, 1, 'exactly one progress migration, in the same call as the content change')
-  // New words in an old slot is a NEW sentence (protocol rule 6) and a new
-  // sentence arrives UNSEEN (rule 4). Leaving the row alone IS the mis-credit.
-  assert.deepEqual(drops[0].ids.sort(), ['LIVE', 'LIVE-DUP'])
-  assert.equal(r.body.progressDropped, 2)
-  assert.ok(!drops[0].ids.includes('OTHER'), "another sentence's progress is untouched")
+  assert.equal(r.body.ok, true)
+  assert.deepEqual(learnerProgressTouched(r), [], 'no read, update or delete of learner_pod_state, for any id in the group')
+  assert.ok(!('progressDropped' in r.body), 'the response no longer reports a drop it does not do')
 })
 
 test('a refused edit migrates no progress and writes nothing', async () => {
@@ -281,6 +287,7 @@ test('a KNOWN-side edit unlinks the known take and leaves the target take exactl
   assert.equal(r.body.unlinkedAudioId, null)
   assert.deepEqual(r.body.changed, ['known'])
   assert.deepEqual(r.updates.filter((u) => u.table === 'course_audio'), [], 'nothing is deleted')
+  assert.deepEqual(learnerProgressTouched(r), [], "a KNOWN-side edit keeps the learner's progress too (Tom, 2026-09-12)")
 })
 
 test('a TARGET-side edit with the known side sent unchanged leaves the known take alone', async () => {

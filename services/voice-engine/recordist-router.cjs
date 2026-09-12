@@ -1140,15 +1140,19 @@ module.exports = function createRecordistRouter({
   // use." The two people best placed to catch a wrong Welsh line are the two
   // Welsh speakers reading it aloud, so a POD LINE IS EDITABLE ON A LIVE COURSE.
   //
-  // WHAT THAT COSTS, AND WHO PAYS IT. Learner progress is filed under a
-  // sentence's SLOT, not its text (docs/pods/pod-migration-protocol.md, standing
-  // doctrine A-111), so an in-place edit would otherwise credit a learner with a
-  // sentence they have never heard. The protocol's own answer applies: rule 6, a
-  // sentence that changed at all counts as NEW, and rule 4, a new sentence
-  // arrives UNSEEN — absence IS unseen. So the edit drops this sentence's
-  // learner_pod_state rows in the same call. Progress cannot go backwards from
-  // that: `exposures` is a per-sentence maturity counter floored on the derived
-  // main-flow value, and course progress rides an independent ratchet.
+  // WHAT IT DOES NOT COST: THE LEARNER'S PLACE. Learner progress is filed under
+  // a sentence's SLOT, not its text (docs/pods/pod-migration-protocol.md,
+  // standing doctrine A-111), and until 2026-09-12 this route read rules 4/6 of
+  // that protocol ("a sentence that changed at all counts as new; a new sentence
+  // arrives unseen") as an order to delete the slot's learner_pod_state rows.
+  // Tom overruled that for booth edits, 2026-09-12 11:28Z, his words: "Wipe
+  // learner progress. Sounds bad to me. Because it's presumably only a small
+  // edit. The sense of the line will be the same. So I think we keep learner
+  // progress." An artist's correction is the SAME line, so the learner keeps
+  // their place: this route never touches learner_pod_state, for any side, and
+  // there is deliberately no "big edit" heuristic — the ruling is categorical.
+  // Standing rule behind it: never touch learner progress unless asked.
+  // recordist-text-edit.test.cjs holds the line on both edit paths.
   //
   // A SEED sentence and a QUARRY piece are still refused, and that is a floor
   // rather than caution — see canEditText in recordist-queue.cjs.
@@ -1285,7 +1289,7 @@ module.exports = function createRecordistRouter({
           ok: true, lineId, text: sentence.target_text, knownText: sentence.known_text,
           courseCode: pod.course_code, recorded: mine.recorded === true,
           previousText: sentence.target_text, alsoChanged: 0, unlinkedAudioId: null,
-          unlinkedKnownAudioId: null, staleTakes: [], progressDropped: 0, changed: [],
+          unlinkedKnownAudioId: null, staleTakes: [], changed: [],
         })
       }
 
@@ -1303,23 +1307,14 @@ module.exports = function createRecordistRouter({
         .in('id', ids)
       if (updErr) throw new Error(`line update failed: ${updErr.message}`)
 
-      // THE PROGRESS MIGRATION, in the same call as the content change. New
-      // words in an old slot is a new sentence (protocol rule 6) and a new
-      // sentence arrives unseen (rule 4) — absence IS unseen, so the row goes.
-      // Nothing is deducted anywhere else: this costs a learner a little
-      // re-listening and nothing more. Either side changing is the sentence
-      // changing: the learner hears both.
-      const { error: progErr, count: progressDropped } = await db()
-        .from('learner_pod_state')
-        .delete({ count: 'exact' })
-        .in('sentence_id', ids)
-      if (progErr) throw new Error(`progress migration failed: ${progErr.message}`)
+      // NO PROGRESS MIGRATION HERE. learner_pod_state is left exactly as it is
+      // for every id in the group — see the ruling at the top of this route.
 
       const staleTakes = []
       if (targetChanged && sentence.target_audio_id) staleTakes.push({ side: 'target', audioId: sentence.target_audio_id, text: sentence.target_text })
       if (knownChanged && sentence.known_audio_id) staleTakes.push({ side: 'known', audioId: sentence.known_audio_id, text: sentence.known_text })
       const changed = [targetChanged && 'target', knownChanged && 'known'].filter(Boolean)
-      logger.info(`[Recordist] ${recordist.voiceId} rewrote ${ids.length} row(s) for ${lineId} (${pod.course_code}) [${changed.join('+')}]: ${targetChanged ? `"${sentence.target_text}" -> "${text}"` : ''}${knownChanged ? ` known "${sentence.known_text}" -> "${knownText}"` : ''}; stale takes ${staleTakes.map((t) => `${t.side}:${t.audioId}`).join(',') || '(none)'}; dropped ${progressDropped || 0} learner_pod_state row(s)`)
+      logger.info(`[Recordist] ${recordist.voiceId} rewrote ${ids.length} row(s) for ${lineId} (${pod.course_code}) [${changed.join('+')}]: ${targetChanged ? `"${sentence.target_text}" -> "${text}"` : ''}${knownChanged ? ` known "${sentence.known_text}" -> "${knownText}"` : ''}; stale takes ${staleTakes.map((t) => `${t.side}:${t.audioId}`).join(',') || '(none)'}; learner progress kept`)
       res.json({
         ok: true,
         lineId,
@@ -1339,7 +1334,6 @@ module.exports = function createRecordistRouter({
         unlinkedAudioId: targetChanged ? (sentence.target_audio_id || null) : null,
         unlinkedKnownAudioId: knownChanged ? (sentence.known_audio_id || null) : null,
         staleTakes,
-        progressDropped: progressDropped || 0,
       })
     } catch (err) {
       logger.error(`[Recordist] text edit: ${err.message}`)

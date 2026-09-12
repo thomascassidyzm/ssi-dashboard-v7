@@ -32,6 +32,15 @@ worth a standing rule rather than a decision each time.
    becoming "5. 10. 15." is the same sentence to us and a different thing to hear. Crediting
    someone for the unheard is the harm being avoided, so doubt resolves to unheard.
 7. **Progress cannot go backwards.** Guaranteed by construction, not by care — see below.
+
+   > **Booth text corrections are exempt from rules 4 and 6 (Tom, 2026-09-12 11:28Z).** An
+   > artist correcting a line's words in the booth (`/voice/:voiceId/line/:lineId/text`, either
+   > side) does NOT make the slot a new sentence and does NOT drop `learner_pod_state`. Tom's
+   > words: *"Wipe learner progress. Sounds bad to me. Because it's presumably only a small edit.
+   > The sense of the line will be the same. So I think we keep learner progress."* The ruling is
+   > categorical — no "big edit" threshold — and sits on the standing rule that learner progress
+   > is never touched unless asked. Rules 4 and 6 still govern pod swaps and re-syncs, where the
+   > whole slate moves. `services/voice-engine/recordist-text-edit.test.cjs` holds the line.
 8. **The migration commits in the same transaction as the content change.** Progress is never
    observable against a canon it was not mapped to, and a rollback migrates back by the same
    rules.
