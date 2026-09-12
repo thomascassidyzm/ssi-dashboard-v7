@@ -4458,12 +4458,15 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
 
     const { data: sentences, error: sErr } = await supabase
       .from('listening_pod_sentences')
-      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id')
+      .select('id, scene_number, sentence_number, global_order, beat_label, speaker, target_text, known_text, target_audio_id, known_audio_id, jump_in')
       .eq('pod_id', podId)
       .order('global_order')
     if (sErr) throw sErr
 
-    res.json({ pod, sentences: sentences || [] })
+    // Every line carries `jumpIn` (Tom, 2026-09-12: a jump-in plays with no gap,
+    // a genuine turn keeps today's gap) — services/shared/pod-jump-in-rule.cjs.
+    const { withJumpIn } = require('./shared/pod-jump-in-rule.cjs')
+    res.json({ pod, sentences: (sentences || []).map(withJumpIn) })
   } catch (err) {
     logger.error(`[Pod detail] ${err.message}`)
     res.status(500).json({ error: err.message })

@@ -21,6 +21,7 @@ const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const { claudeChat, HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 const { renderPrompt } = require('./pod-generation-prompt.cjs')
+const { normaliseJumpIn } = require('./shared/pod-jump-in-rule.cjs')
 const { getCultureNotes, languageName } = require('./pod-culture-notes.cjs')
 const { assignVoices, canonicalSpeakerName, extractGenderMarker, inferGenderFromName } = require('../tools/pod-sync.cjs')
 
@@ -139,7 +140,7 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
     if (errors.length === 0) {
       // map by global_order to be safe about ordering
       const byGo = new Map(out.map(o => [Number(o.global_order), o]))
-      const lines = scene.lines.map(inp => {
+      const lines = scene.lines.map((inp, k) => {
         const o = byGo.get(Number(inp.global_order)) || {}
         return {
           global_order: inp.global_order,
@@ -147,6 +148,10 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
           speaker: localiseSpeakerLabel(inp.speaker, scene.number, nameMap),
           target_text: String(o.target_text || '').trim(),
           known_text: String(o.known_text || '').trim(),
+          // Delivery marker (Tom, 2026-09-12): true = this line cuts in on the
+          // previous speaker. The first line of a scene is never a jump-in — it
+          // has nobody to jump in on — whatever the model said.
+          jump_in: k === 0 ? false : normaliseJumpIn(o.jump_in),
         }
       })
       return { lines, warnings }
@@ -484,6 +489,7 @@ async function writeSceneSentences({ podId, scene, lines }) {
     speaker: l.speaker,
     target_text: l.target_text,
     known_text: l.known_text,
+    jump_in: normaliseJumpIn(l.jump_in),
     target_audio_id: null,
     known_audio_id: null,
     explainer_text: null,

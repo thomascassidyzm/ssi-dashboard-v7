@@ -25,6 +25,7 @@
 'use strict'
 
 const { canonicalSpeakerName, extractGenderMarker, proposeHumanCast } = require('../../tools/pod-voice-colour-n.cjs')
+const { normaliseJumpIn } = require('../shared/pod-jump-in-rule.cjs')
 const { emailLocalPart, targetLangFromCourseCode } = require('./voice-slots.cjs')
 
 /** Reserved cast key for the explainer voice (keystone §1). */
@@ -322,6 +323,12 @@ function buildSentenceEditPatch(body = {}) {
   if (typeof body.known_text === 'string') {
     patch.known_text = body.known_text.trim()
     patch.known_audio_id = null
+  }
+  // The jump-in marker (Tom, 2026-09-12) is DELIVERY, not words: toggling it
+  // never unlinks audio, never touches the draft flag. true / false / null only
+  // — services/shared/pod-jump-in-rule.cjs.
+  if ('jump_in' in body) {
+    patch.jump_in = normaliseJumpIn(body.jump_in)
   }
   return Object.keys(patch).length ? patch : null
 }

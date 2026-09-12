@@ -254,6 +254,7 @@
           </h2>
 
           <!-- Sentences -->
+          <div v-if="jumpInError" class="text-[11px] text-danger mb-1">jump-in marker not saved: {{ jumpInError }}</div>
           <div class="space-y-1">
             <template v-for="sent in scene.sentences" :key="sent.id">
               <!-- Beat label separator -->
@@ -356,6 +357,18 @@
                     :class="['px-2 py-1 text-xs rounded disabled:opacity-50', justProofread(sent) ? 'proofread-btn-on' : 'bg-surface-2 hover:bg-emerald-700 text-ink hover:text-emerald-100']"
                     :title="justProofread(sent) ? 'Proofread — press again to put it back in the queue' : 'Mark this line proofread — the words are right'"
                   >✓</button>
+                  <!-- JUMP-IN (Tom, 2026-09-12): one tap says whether this line cuts
+                       in on the previous speaker (no gap, overlap if the player
+                       can) or takes a genuine turn (today's gap). The button IS
+                       the state: lit = jump-in. Scheduling only — it never
+                       touches the words or the audio. -->
+                  <button
+                    v-if="editingId !== sent.id"
+                    :disabled="jumpInBusyId === sent.id"
+                    @click="toggleJumpIn(sent)"
+                    :class="['px-2 py-1 text-xs rounded disabled:opacity-50 jump-in-btn', sent.jump_in === true ? 'jump-in-on' : 'bg-surface-2 hover:bg-amber-700 text-faint hover:text-amber-100']"
+                    :title="sent.jump_in === true ? 'Jumps in on the previous speaker — no gap. Tap to make it a genuine turn.' : 'A genuine turn — keeps the gap. Tap to make it jump in on the previous speaker.'"
+                  >⤵</button>
                   <button
                     v-if="editingId !== sent.id"
                     @click="startEdit(sent)"
@@ -785,6 +798,33 @@ async function authedFetch(path, init = {}) {
   return fetch(`${getApiUrl()}${path}`, { ...init, headers })
 }
 
+// --- Jump-in marker (Tom, 2026-09-12) --------------------------------------
+// One tap flips listening_pod_sentences.jump_in through the same course-scoped
+// door as a text edit. The server sends the row's new value back and the row
+// follows it; nothing else on the line changes.
+const jumpInBusyId = ref(null)
+const jumpInError = ref('')
+
+async function toggleJumpIn(sent) {
+  if (jumpInBusyId.value) return
+  jumpInBusyId.value = sent.id
+  jumpInError.value = ''
+  try {
+    const res = await authedFetch(`/api/production/${courseCode}/pods/sentence/${encodeURIComponent(sent.id)}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ jump_in: sent.jump_in !== true }),
+    })
+    const body = await res.json()
+    if (!res.ok) throw new Error(body?.error || `HTTP ${res.status}`)
+    sent.jump_in = body.sentence?.jump_in === true
+    sent.jumpIn = sent.jump_in
+  } catch (err) {
+    jumpInError.value = err?.message || String(err)
+  } finally {
+    jumpInBusyId.value = null
+  }
+}
+
 // --- Inline sentence editing ---
 const editingId = ref(null)
 const editBuf = ref({ target: '', known: '' })
@@ -1105,6 +1145,7 @@ onUnmounted(() => {
   background: rgba(16, 185, 129, 0.15); color: #34d399;
 }
 .proofread-btn-on { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.jump-in-on { background: rgba(245, 158, 11, 0.25); color: #fbbf24; }
 /* The line you are hearing right now. Emerald edge only — during a play-through
    down 231 lines this is the only thing telling you where you are. */
 .row-playing {
@@ -1131,6 +1172,7 @@ onUnmounted(() => {
 [data-theme="light"] .draft-row { border-color: #b45309; }
 [data-theme="light"] .proofread-badge { background: #d1fae5; color: #065f46; }
 [data-theme="light"] .proofread-btn-on { background: #d1fae5; color: #065f46; }
+[data-theme="light"] .jump-in-on { background: #fef3c7; color: #92400e; }
 [data-theme="light"] .draft-filter-btn { border-color: #b45309; color: #92400e; }
 [data-theme="light"] .draft-filter-on { background: #b45309; color: #fff; }
 </style>

@@ -45,6 +45,7 @@ NON-NEGOTIABLE RULES
 4. CORRECT SCRIPT & ORTHOGRAPHY in target_text, per the culture notes. No romanisation unless the language is normally written in Latin script.
 5. NO SOURCE LEAKAGE in target_text except real loanwords locals genuinely say.
 6. CONTROLLED LANGUAGE. When two correct renderings exist, choose the more regular, more transparent, more learnable one — the construction a careful adult learner could reuse.
+7. {{JUMP_IN_RULE}}
 
 KNOWN_TEXT (the gloss) — FAITHFUL TO WHAT YOU ACTUALLY WROTE.
 Translate your target_text into natural {{KNOWN_LANGUAGE}}. Because you rendered faithfully, this will usually land very close to the canonical line — that is correct and desired. It must reflect what the target line ACTUALLY says: the same items and the SAME numbers/amounts (if the target says the equivalent of "eight euros forty", the known says "eight euros forty"). No grammar labels, no brackets, no transliteration.
@@ -53,5 +54,5 @@ FINAL CHECK before returning — read each target line in your head. Is it corre
 
 OUTPUT FORMAT
 Return ONLY a single JSON object — no preamble, no commentary, no markdown, no code fences, before or after:
-{"lines":[{"global_order":<n>,"target_text":"...","known_text":"..."}],"deviations":[]}
-One object per input line, in the same order, with the same global_order values as the input. "deviations" lists STEP-4 breaks only (empty array when none — the normal case). Valid JSON: double-quoted keys and strings, properly escaped. Output nothing except this JSON object.
+{"lines":[{"global_order":<n>,"target_text":"...","known_text":"...","jump_in":false}],"deviations":[]}
+One object per input line, in the same order, with the same global_order values as the input, each carrying "jump_in" (rule 7: true only when the line cuts in on the previous speaker). "deviations" lists STEP-4 breaks only (empty array when none — the normal case). Valid JSON: double-quoted keys and strings, properly escaped. Output nothing except this JSON object.

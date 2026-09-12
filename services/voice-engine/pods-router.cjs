@@ -568,7 +568,7 @@ module.exports = function createPodsCastRouter({
   router.patch('/sentence/:sentenceId', async (req, res) => {
     const { courseCode, sentenceId } = req.params
     const patch = buildSentenceEditPatch(req.body || {})
-    if (!patch) return res.status(400).json({ error: 'target_text or known_text required' })
+    if (!patch) return res.status(400).json({ error: 'target_text, known_text or jump_in required' })
     try {
       const db = getDb()
       // The sentence must belong to a pod of THIS course — the URL's course
@@ -635,7 +635,7 @@ module.exports = function createPodsCastRouter({
         .from('listening_pod_sentences')
         .update(patch)
         .eq('id', sentenceId)
-        .select('id, target_text, target_text_draft, known_text, target_audio_id, known_audio_id')
+        .select('id, target_text, target_text_draft, known_text, target_audio_id, known_audio_id, jump_in')
         .single()
       if (updateError) throw new Error(updateError.message)
       if (Object.keys(cleared).length) {

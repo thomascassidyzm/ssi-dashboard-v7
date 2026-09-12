@@ -12,6 +12,8 @@
 const fs = require('fs')
 const path = require('path')
 
+const { JUMP_IN_RULE } = require('./shared/pod-jump-in-rule.cjs')
+
 const PROMPT = fs.readFileSync(path.join(__dirname, 'pod-generation-prompt.txt'), 'utf8')
 
 /**
@@ -41,6 +43,9 @@ function renderPrompt({ targetLanguage, knownLanguage, cultureNotes, sceneTitle,
     .replace(/\{\{LINES\}\}/g, linesBlock)
     .replace(/\{\{LEDGER\}\}/g, ledger || '(none for this pod)')
     .replace(/\{\{SYLLABLE_CEILING\}\}/g, String(syllableCeiling))
+    // The jump-in marker rule is stated once, in services/shared/pod-jump-in-rule.cjs,
+    // so the generator and the back-catalogue annotator can never drift apart.
+    .replace(/\{\{JUMP_IN_RULE\}\}/g, JUMP_IN_RULE)
 }
 
 module.exports = { PROMPT, renderPrompt }
