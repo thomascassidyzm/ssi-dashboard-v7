@@ -75,6 +75,5 @@
       "source": "/((?!vfs|assets/).*)",
       "destination": "/index.html"
     }
-  ],
-  "ignoreCommand": "bash -c 'case \"$VERCEL_GIT_COMMIT_REF\" in main|dev|staging) exit 1;; *) exit 0;; esac'"
+  ]
 }

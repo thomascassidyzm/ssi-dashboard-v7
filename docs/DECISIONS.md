@@ -5,6 +5,16 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-12 — Preview builds are governed by the Vercel dashboard rule alone; the in-repo `ignoreCommand` is gone (job #460, Watson's decision)
+
+**Why.** The Aug 12–Sep 11 Vercel bill was $467, $366 of it Build CPU Minutes from ~8,962 preview deployments, one per push of every worker branch. RBF set an opt-in Ignored Build Step in the Vercel dashboard on every project: main, dev, staging and `preview/*` always build, a commit whose message carries `[preview]` builds, everything else is skipped. But a 2026-09-09 job had written an `ignoreCommand` into `vercel.json` (main|dev|staging build, everything else skipped; `bd0519a9d`) and Vercel gives the in-repo key precedence over the dashboard, so the dashboard rule only governed branches that lacked the file, and there was no route to a preview on this repo at all, and no worker branch could build.
+
+**Decision.** One rule, in one place: the dashboard's `commandForIgnoringBuildStep`. The `ignoreCommand` key is deleted and nothing else in `vercel.json` changes. A worker that wants a preview URL pushes a `preview/*` branch or puts `[preview]` in its commit message; it never edits `vercel.json`. Worker branches cut before this landed still carry the old key and are not re-swept: they merge main when they want a preview. Better: previews exist again, opt-in. Simpler: one rule, not two that shadow each other. Cheaper: the build bill falls by the preview share, and nobody maintains a case list in a JSON string.
+
+**Landing.** This is the promotion train's deploy config, not player code, so on Watson's call the identical commit lands on main, the only branch Vercel serves for Popty; `deploy/staging` is a git marker served from watson-1 and is left untouched, on RBF's check.
+
+**Proof.** The Vercel deployment records after landing, read from the API: main builds READY; the preview probe on ssi-learning-app proves the shared dashboard rule.
+
 ## 2026-09-12 — a community voice needs no language_recording_policy row; the one resolver admits it to its cast course only
 
 **Decision.** A voice that exists only as a `voice_config.podCast` entry on a course is a live
