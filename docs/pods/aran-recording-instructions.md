@@ -14,10 +14,11 @@ new, etc.).** This is what's ready and waiting:
 - **Northern Welsh (`cym_n_for_eng`)** — still needs lines recorded.
 - **Southern Welsh (`cym_s_for_eng`)** — still needs lines recorded.
 
-**The rule for every pod, from now on: exactly two voices — one male, one female.** However
-many characters a scene has, the two of you cover all of them between you — when a scene has
-two characters of the same gender, one of you just plays both. That's Aran (male) and Catrin
-(female) for both dialects. Whoever's free, log in and the app shows you your own lines only
+**A pod is cast with one or more named voices — for these two courses, that's the two of you.**
+However many characters a scene has, you cover all of them between you — when a scene has
+two characters of the same gender, one of you just plays both. That's Aran and Catrin for
+both dialects (the old "exactly two, one male one female" rule was retired on 12 September
+2026; nothing about your recordings changes). Whoever's free, log in and the app shows you your own lines only
 — you never need to work out who's playing who, that's already decided.
 
 One of you should also be the **bilingual guide** — reads the English lines that explain

@@ -26,13 +26,13 @@ test.describe.serial('pod recording — mode chooser, two-voice cast, dialogue r
     await page.goto(`/production/${TEST_COURSE}/recording`)
     await page.locator('.mode-card', { hasText: 'Mode 3: Listening Pods' }).click()
     await page.waitForURL(`**/production/${TEST_COURSE}/pods`)
-    await expect(page.getByText('Cast — two voices')).toBeVisible()
+    await expect(page.getByText('Cast — voices')).toBeVisible()
   })
 
-  test('cast exactly two voices (1 male, 1 female) and save', async ({ page }) => {
+  test('cast two voices (any number is allowed since 2026-09-12) and save', async ({ page }) => {
     await loginAsTestUser(page)
     await page.goto(`/production/${TEST_COURSE}/pods`)
-    await expect(page.getByText('Cast — two voices')).toBeVisible()
+    await expect(page.getByText('Cast — voices')).toBeVisible()
     // .cast-row is reused by BOTH the editable people rows and the read-only
     // allocation cards further down (a saved cast from a prior run renders
     // both) — scope to rows that actually have the Name input.
@@ -59,7 +59,7 @@ test.describe.serial('pod recording — mode chooser, two-voice cast, dialogue r
     }
 
     for (const person of CAST) {
-      await page.getByText(/\+ Add the (first|second) voice/).click()
+      await page.getByText(/\+ Add (the first|another) voice/).click()
       const row = personRows.last()
       await row.getByPlaceholder('Name').fill(person.name)
       await row.locator('select').selectOption(person.gender)

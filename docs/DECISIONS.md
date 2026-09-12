@@ -852,3 +852,47 @@ is target1-only, ≤30 seeds).
 because every estate record of the casting (e.g. the 2026-08-10 note to Kai, "the studio records
 as her") refers to Sasha as she. Not a DB fact — recorded in the row's notes. It routes nothing
 today: no German course casts by gender alone and no German clip carries a re-record want.
+
+## 2026-09-12 — the one-man-one-woman pod casting rule is retired: a cast is any number of named voices
+
+**Decision (Tom's, verbatim).** Asked "Retire the one-man-one-woman casting rule so a cast is any
+number of named voices? Yes or no", Tom answered **"Yes. Retire"** (job #454). There is no longer a
+fixed male-plus-female pair requirement anywhere in Popty pod casting. A pod cast is one or more
+named voices, of any gender mix. No replacement constraint on gender balance, minimum or maximum
+was added.
+
+**What was retired.** (1) The `voicesInUse.length !== 2` refusal in `tools/pods/pod-cast-gate.cjs`
+— the "EXACTLY TWO voices" half of the 2026-08-23 ruling ("there's always male talking to female,
+so that two voices can actually do the whole thing"). (2) The load-time collapse in
+`services/voice-engine/pods-router.cjs` GET /cast, which since 2026-07-17 rewrote
+`courses.voice_config.podCast` to one voice per gender whenever a cast held more distinct voices
+than `podCastVoices`; `collapseTwoVoiceCast` survives exported and tested, nothing calls it on
+load, and `podCastVoices` is written as the distinct count, never a ceiling. (3) The min-two /
+both-genders gate in `validateCastPeople` (POST /cast/propose): one to five voices, any gender
+mix; `defaultCastPeople` prefills one row per roster human. (4) The `cast-size` FAIL in
+`tools/pods/pod-script-view.cjs`; `same-gender-exchange` is now a warn-level note for the ear,
+not a failure. (5) The recordist cast panel's two fixed slots, PodLab's two-dropdown picker
+("Cast — two voices" → "Cast — voices"; the picker is a list of voices with gender as a per-row
+label), the booth copy in ModeSelector, Aran's recording instructions, and the e2e strings.
+Manual TTS casting (`api/pod-cast-voices.js` → `tools/pod-sync.cjs` overrides) accepts a LIST of
+voices per gender and round-robins that gender's characters across it, so three or five voices
+save as three or five.
+
+**What stands, unchanged.** Casting is per speaker (Tom, 2026-08-08: "of course cast by
+speaker"). Zero same-voice exchange pairs on the target track — the audible half of the old rule.
+Every speaking character must have a voice (`uncast`). The five-column clip check. The known
+track is not cast-gated. Every content write carries an editor identity. Two voices remains the
+DEFAULT a course opens with (Tom, 2026-08-06) and the default TTS pool depth
+(`POD_VOICES_PER_GENDER`); a default, not a rule.
+
+**Proof.** Read-only gate run over all 68 served pods before and after: verdicts identical
+(10 ok / 58 fail, the fails being pre-existing same-voice pairs and off-cast clips); the only
+textual difference is the "not 2" line dropping from the three pods with no cast at all, which
+still fail on `uncast`. No `voice_config` row was written. Red-then-green: the flipped gate tests
+(three-voice cast passes, one-voice monologue passes, one-voice two-hander still fails on the
+pair) failed on the old gate and pass on the new.
+
+**Known edge, not fixed here.** `recordist-queue.cjs#lineVoiceId` routes a pod line by the cast
+entry's declared voice id, so N voices of one gender each get their own queue. A cast entry that
+names only a gender still resolves to the language policy's one voice for that (dialect, gender)
+bucket — the policy's slot model, untouched.

@@ -38,8 +38,10 @@
  * docs/pods/pod-migration-protocol.md.
  *
  * IT WILL NOT PROMOTE AN UNCAST POD. Since Part B of Tom's Pod 1 rulings (2026-08-23)
- * the staged pod must be cast PER CONVERSATION before it can go live: zero same-voice
- * exchange pairs, exactly two voices. movePod() carries `speakers` across verbatim, so
+ * the staged pod must be cast before it can go live: every character voiced, zero
+ * same-voice exchange pairs. (The "exactly two voices" half of that ruling was retired by
+ * Tom on 2026-09-12 — "Yes. Retire" — a cast is any number of named voices.)
+ * movePod() carries `speakers` across verbatim, so
  * without this gate a flip promotes whatever cast the staged pod happens to hold — which
  * is why casting has been a separate recast sweep after every flip. The measurement lives
  * in `pod-cast-gate.cjs` and is shared with the solver (`pod1-percall-recast.cjs`).

@@ -168,7 +168,7 @@
             </div>
           </div>
           <div v-else class="text-xs text-faint">
-            No cast yet — set the two voices on the course's pods page, and the record links go live.
+            No cast yet — set the voices on the course's pods page, and the record links go live.
           </div>
 
           <details class="mt-3">
@@ -679,8 +679,8 @@ async function setVisibility(next) {
 
 // --- The recording cast (who actually reads these lines) ---
 // courses.voice_config.podCast maps CHARACTER → human voice. Two voices is the
-// default (Tom 2026-08-06), so this resolves 22 characters down to the two
-// people who record them. Generation-side colouring in pod.speakers is a
+// default (Tom 2026-08-06) — a default, not a rule, since 2026-09-12 — so this
+// typically resolves 22 characters down to the two people who record them. Generation-side colouring in pod.speakers is a
 // generation-time default and never drives the human recording path — the
 // recording plan reads podCast alone (pods-plan.cjs#buildRecordingPlan).
 const podCast = ref({})

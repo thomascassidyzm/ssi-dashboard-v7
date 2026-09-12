@@ -140,12 +140,12 @@
       </span>
       <h2 class="mode-title">Record listening pods</h2>
       <p class="mode-description">
-        Record the dialogue listening exercises with real voices. Every pod is
-        cast with exactly two voices — one male, one female — who between them
-        read every character in the scenario.
+        Record the dialogue listening exercises with real voices. A pod is
+        cast with one or more named voices who between them read every
+        character in the scenario.
       </p>
       <ul class="mode-features">
-        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Two voices: one male, one female, every pod</li>
+        <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>One or more named voices, reading every character between them</li>
         <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>One link per voice — read all your lines in one sitting</li>
         <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Cue lines show what was just said</li>
         <li><svg class="feature-mark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 18 6-6-6-6" /></svg>Works on a phone</li>

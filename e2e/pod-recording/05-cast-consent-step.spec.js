@@ -52,7 +52,7 @@ test.afterAll(async () => {
 test('a new pod speaker: refused for want of consent, consented on the spot, then cast', async ({ page }) => {
   await loginAsTestUser(page)
   await page.goto(`/production/${TEST_COURSE}/pods`)
-  await expect(page.getByText('Cast — two voices')).toBeVisible()
+  await expect(page.getByText('Cast — voices')).toBeVisible()
 
   const editCast = page.getByRole('button', { name: 'Edit cast' })
   await editCast.first().waitFor({ timeout: 20_000 }).catch(() => {})
