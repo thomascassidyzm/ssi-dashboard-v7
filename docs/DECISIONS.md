@@ -5,6 +5,30 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-12 — a course cast admits its own course only; only the language policy is language-wide
+
+**Decision.** Where a casting is WRITTEN decides how far it reaches. A `language_recording_policy`
+slot naming an email is the language's own record and admits every course of that language and
+dialect. A `voice_config.podCast` entry naming an email admits the one course it is written on.
+The users-page `voice_id` admits nothing by casting: the cast save provisions it from the same
+podCast entry, so it carries no more authority than that entry. Voice-id matches against other
+courses' casts count only for policy voices.
+
+**Why.** Foreign-eyes verification (2026-09-12) confirmed a leak: `voicesForEmail` returned an
+untagged union of the three sources and `castingForEmail` gave the language-wide grant to every
+voice in it, so an editor casting a policy voice into course A under a second email handed that
+email course B. Live check before confining the login source: every `dashboard_users` row with a
+`voice_id` either holds an editor grant covering its courses or is named by a policy email, so no
+artist loses access.
+
+**Where it lives.** `recordist-queue.cjs voicesForEmail` (the `castVia` tag),
+`casting-rights.cjs castingForEmail` (the confinement), `casting-rights.test.cjs` (two
+same-dialect courses; the second email reaches one and is refused loudly on the other).
+The same merge landed the own-line 403 fix from job #324·F (`pods-router.cjs` sentence SELECT
+now reads `speaker`; `pods-router-own-line.test.cjs`).
+
+---
+
 ## 2026-09-12 — the community course "Copy link" is the pre-signed form of the email login, not a second identity
 
 **Decision.** The link the course editor copies from the casting row (`PodCastPanel`) is
