@@ -108,7 +108,7 @@ module.exports = function createPodsCastRouter({
       }
       const write = castingRights.podWriteVerdict(user, courseCode, req.method, req.path)
       if (!write.ok) {
-        logger.warn(`[PodsCast] REFUSED ${req.method} ${req.path} on ${courseCode} for ${user.email || '?'}: ${write.sentence}`)
+        castingRights.recordAccess({ kind: 'refused', email: user.email, voices: castingRights.castingOn(user.casting, courseCode).map((c) => c.voiceId), courseCode, method: req.method, path: req.path, sentence: write.sentence, logger })
         return res.status(write.status || 403).json({ error: write.sentence, courseCode })
       }
       req.dashboardUser = user
@@ -650,11 +650,10 @@ module.exports = function createPodsCastRouter({
         const podCast = (voiceConfig && voiceConfig.podCast) || {}
         const castEntry = podCast[sentence.speaker] || null
         if (!castingRights.isOwnPodLine({ user: req.dashboardUser, courseCode, castEntry })) {
-          return res.status(403).json({
-            error: `${req.dashboardUser?.email || 'This voice'} is cast on ${courseCode}, but line ${sentenceId} is ${sentence.speaker || 'an uncast speaker'}'s` +
-              `${castEntry && castEntry.voiceId ? ` (${castEntry.voiceId})` : ''}, not theirs to edit.`,
-            reason: 'not_your_line', courseCode, speaker: sentence.speaker || null,
-          })
+          const error = `${req.dashboardUser?.email || 'This voice'} is cast on ${courseCode}, but line ${sentenceId} is ${sentence.speaker || 'an uncast speaker'}'s` +
+            `${castEntry && castEntry.voiceId ? `, ${castEntry.voiceId}'s` : ''}, not theirs to edit.`
+          castingRights.recordAccess({ kind: 'refused', email: req.dashboardUser?.email, voices: castingRights.castingOn(req.dashboardUser?.casting, courseCode).map((c) => c.voiceId), courseCode, method: req.method, path: req.path, sentence: error, logger })
+          return res.status(403).json({ error, reason: 'not_your_line', courseCode, speaker: sentence.speaker || null })
         }
         castVoiceId = castEntry.voiceId
       }

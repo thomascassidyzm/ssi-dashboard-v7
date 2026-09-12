@@ -28,8 +28,45 @@
  * kept and still honoured; a cast artist who also holds an editor grant is
  * simply an editor who is also cast.
  */
+const fs = require('fs')
 const { voicesForEmail, resolveRecordist, coursesForLanguage } = require('./recordist-queue.cjs')
 const { courseDialect, canonicalDialect } = require('../shared/dialect.cjs')
+const { evidencePath } = require('../../tools/lib/evidence-path.cjs')
+
+// THE USAGE SIGNAL, NOT ONLY THE BREAK SIGNAL (Tom, 2026-09-12). Every cast
+// artist who reaches a course page by the casting rule is written here once
+// per day per course, and every refusal of a cast artist is written every time
+// and logged loudly. The nightly check tools/casting-access-report.cjs reads
+// this file beside booth-artists-day: a day with zero reaches or any refusal
+// is red, never silent. JSONL, one event per line, out of the repo tree.
+const ACCESS_LEDGER_REL = 'ops/casting-access.jsonl'
+let accessLedgerPath = null
+function accessLedger() {
+  if (!accessLedgerPath) accessLedgerPath = process.env.CASTING_ACCESS_LEDGER || evidencePath(ACCESS_LEDGER_REL)
+  return accessLedgerPath
+}
+const reachedToday = new Set()
+function dayOf(ts) { return new Date(ts).toISOString().slice(0, 10) }
+
+/**
+ * Record a cast artist reaching a course page (`reach`, deduped per day per
+ * email per course) or being refused (`refused`, every time, logged loudly).
+ * Never throws: a ledger that cannot be written must not break a request.
+ */
+function recordAccess({ kind, email, voices = [], courseCode, method, path, sentence, logger = console, now = Date.now() }) {
+  const event = { ts: new Date(now).toISOString(), kind, email: String(email || '').toLowerCase(), voices, courseCode, method, path, sentence }
+  if (kind === 'reach') {
+    const key = `${dayOf(now)} ${event.email} ${courseCode}`
+    if (reachedToday.has(key)) return null
+    reachedToday.add(key)
+    if (reachedToday.size > 5000) reachedToday.clear()
+    logger.info(`[CastingAccess] REACH ${event.email} as ${voices.join('+') || '?'} → ${courseCode} (${method} ${path})`)
+  } else {
+    logger.warn(`[CastingAccess] REFUSED cast artist ${event.email} (${voices.join('+') || 'voice unknown'}) on ${courseCode} (${method} ${path}): ${sentence}`)
+  }
+  try { fs.appendFileSync(accessLedger(), JSON.stringify(event) + '\n') } catch (err) { logger.warn(`[CastingAccess] ledger write failed: ${err.message}`) }
+  return event
+}
 
 function normEmail(email) { return String(email || '').trim().toLowerCase() }
 
@@ -203,6 +240,9 @@ function hintEmail(email) {
 }
 
 module.exports = {
+  recordAccess,
+  accessLedger,
+  ACCESS_LEDGER_REL,
   castingForEmail,
   castingOn,
   castingIdentity,

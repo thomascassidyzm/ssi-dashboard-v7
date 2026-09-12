@@ -438,10 +438,13 @@ app.param('courseCode', async (req, res, next, courseCode) => {
     const verdict = castingRights.courseAccessVerdict(user, courseCode)
     if (!verdict.ok) {
       logger.warn(`[CourseScope] DENY ${user.email || 'unknown'} → ${courseCode} (${req.method} ${req.path}): ${verdict.sentence}`)
+      if (Array.isArray(user.casting) && user.casting.length) {
+        castingRights.recordAccess({ kind: 'refused', email: user.email, voices: user.casting.map((c) => c.voiceId), courseCode, method: req.method, path: req.path, sentence: verdict.sentence, logger })
+      }
       return res.status(403).json({ error: verdict.sentence, courseCode, reason: 'not_cast_no_grant' })
     }
-    if (verdict.by === 'casting' && req.method !== 'GET') {
-      logger.info(`[CourseScope] CAST ${user.email} as ${verdict.voices.join('+')} → ${courseCode} (${req.method} ${req.path})`)
+    if (verdict.by === 'casting') {
+      castingRights.recordAccess({ kind: 'reach', email: user.email, voices: verdict.voices, courseCode, method: req.method, path: req.path, logger })
     }
     req.dashboardUser = user
     req.castVoices = verdict.by === 'casting' ? verdict.voices : []

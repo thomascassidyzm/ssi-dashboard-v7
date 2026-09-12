@@ -92,3 +92,31 @@ test('a booth link answers where its voice is cast and hints the email to sign i
   assert.strictEqual(await castingForVoice(db, 'human_nobody'), null)
   assert.strictEqual(hintEmail('a@b.c'), 'a...@b.c')
 })
+
+// THE USAGE SIGNAL (Tom, 2026-09-12): reaches counted per day, refusals loud,
+// and the nightly verdict red on zero-or-refusal.
+test('reaches are written once per day per course, refusals every time, and the nightly reads them', async () => {
+  const os = require('os'); const path = require('path'); const fs = require('fs')
+  const ledger = path.join(fs.mkdtempSync(path.join(os.tmpdir(), 'casting-')), 'access.jsonl')
+  process.env.CASTING_ACCESS_LEDGER = ledger
+  const { recordAccess } = require('./casting-rights.cjs')
+  const { readEvents, summarise, verdict } = require('../../tools/casting-access-report.cjs')
+  const quiet = { info() {}, warn() {} }
+  const now = Date.parse('2026-09-12T10:00:00Z')
+  recordAccess({ kind: 'reach', email: TOM, voices: ['human_tom_zzz'], courseCode: 'zzz_test2_for_eng', method: 'GET', path: '/x', logger: quiet, now })
+  assert.strictEqual(recordAccess({ kind: 'reach', email: TOM, voices: ['human_tom_zzz'], courseCode: 'zzz_test2_for_eng', method: 'GET', path: '/y', logger: quiet, now: now + 1000 }), null)
+  const events = readEvents(ledger)
+  assert.strictEqual(events.length, 1)
+  let s = summarise(events, { now: now + 3600000 })
+  assert.deepStrictEqual(s.days.map((d) => [d.day, d.artists, d.reaches, d.refusals.length]), [['2026-09-12', 1, 1, 0]])
+  assert.deepStrictEqual(verdict(s), { ok: true, reasons: [] })
+  // a refusal turns the nightly red and names voice + course
+  recordAccess({ kind: 'refused', email: TOM, voices: ['human_tom_zzz'], courseCode: 'cym_n_for_eng', method: 'GET', path: '/z', sentence: 'not cast here', logger: quiet, now: now + 2000 })
+  s = summarise(readEvents(ledger), { now: now + 3600000 })
+  const v = verdict(s)
+  assert.strictEqual(v.ok, false)
+  assert.ok(v.reasons[0].includes('human_tom_zzz') && v.reasons[0].includes('cym_n_for_eng'), v.reasons[0])
+  // a day with nothing at all is red too, never silent
+  assert.strictEqual(verdict(summarise(readEvents(ledger), { now: now + 3 * 86400000 })).last24h, undefined)
+  assert.strictEqual(verdict(summarise(readEvents(ledger), { now: now + 3 * 86400000 })).ok, false)
+})
