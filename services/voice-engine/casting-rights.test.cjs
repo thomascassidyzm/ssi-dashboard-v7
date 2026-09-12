@@ -120,3 +120,50 @@ test('reaches are written once per day per course, refusals every time, and the 
   assert.strictEqual(verdict(summarise(readEvents(ledger), { now: now + 3 * 86400000 })).last24h, undefined)
   assert.strictEqual(verdict(summarise(readEvents(ledger), { now: now + 3 * 86400000 })).ok, false)
 })
+
+// THE CROSS-COURSE CASTING LEAK (foreign-eyes finding, 2026-09-12). Two courses
+// of one language and dialect; the policy names Catrin's voice under HER email;
+// the editor of course A casts that same voice under a SECOND email. Before
+// the fix the second email's voice list was an untagged union, and the
+// language-wide policy grant handed the second email course B as well.
+test('a podCast casting admits only its own course; the same voice under a second email never reaches the sibling course', async () => {
+  const fs = require('fs')
+  const { boothArrival, accessLedger } = require('./casting-rights.cjs')
+  const CATRIN = 'catrin@example.com'
+  const SECOND = 'second@example.com'
+  const VOICE = 'human_catrin_cym_n'
+  const leakDb = stubDb({
+    language_recording_policy: [{
+      language: 'cym', human_only: true,
+      voices: { f: { voiceId: VOICE, name: 'Catrin', email: CATRIN, gender: 'f', dialect: 'north' } },
+    }],
+    courses: [
+      { course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: { podCast: { Anna: { voiceId: VOICE, email: SECOND, gender: 'f' } } } },
+      { course_code: 'cym_n_for_spa', target_lang: 'cym', known_lang: 'spa', dialect: 'north', voice_config: { podCast: { Sarah: { voiceId: VOICE, gender: 'f' } } } },
+    ],
+    // the cast save provisions the second email a users-page row carrying the voice
+    dashboard_users: [{ email: SECOND, role: 'recorder', courses: ['cym_n_for_eng'], voice_id: VOICE }],
+  })
+  // Catrin, named by the policy, is cast on both courses of her dialect.
+  const catrin = await castingForEmail(leakDb, CATRIN)
+  assert.deepStrictEqual([...new Set(catrin.map((c) => c.courseCode))].sort(), ['cym_n_for_eng', 'cym_n_for_spa'])
+  // The second email reaches exactly the course whose cast named it.
+  const second = await castingForEmail(leakDb, SECOND)
+  assert.deepStrictEqual([...new Set(second.map((c) => c.courseCode))], ['cym_n_for_eng'])
+  assert.ok(second.every((c) => c.via === 'podCast'), JSON.stringify(second))
+  const me = castingIdentity(SECOND, second)
+  assert.strictEqual(courseAccessVerdict(me, 'cym_n_for_eng').ok, true)
+  const refused = courseAccessVerdict(me, 'cym_n_for_spa')
+  assert.strictEqual(refused.ok, false)
+  assert.ok(refused.sentence.includes('not cast on cym_n_for_spa'), refused.sentence)
+  // and the refusal is loud in the ledger when the second email arrives on the sibling course
+  const quiet = { info() {}, warn() {} }
+  const arrival = await boothArrival({
+    db: leakDb, recordist: { voiceId: VOICE, email: SECOND, displayName: 'Catrin', language: 'cym' },
+    courseCodes: ['cym_n_for_eng', 'cym_n_for_spa'], logger: quiet,
+  })
+  assert.deepStrictEqual(arrival.reached, ['cym_n_for_eng'])
+  assert.deepStrictEqual(arrival.refused.map((r) => r.courseCode), ['cym_n_for_spa'])
+  const events = fs.readFileSync(accessLedger(), 'utf8').trim().split('\n').map((l) => JSON.parse(l)).filter((e) => e.email === SECOND)
+  assert.deepStrictEqual(events.map((e) => [e.kind, e.courseCode]), [['reach', 'cym_n_for_eng'], ['refused', 'cym_n_for_spa']])
+})

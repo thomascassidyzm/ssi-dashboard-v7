@@ -296,31 +296,51 @@ async function resolveRecordist(db, voiceIdParam, { cache } = {}) {
  *
  * The link-is-identity surface (/r/:voiceId) needs no login, but a recordist who
  * signs in should not have to hold a link to find their own work. The mapping
- * from a person to a voice is already modelled, in two places, and both are
- * real: `dashboard_users.voice_id` is the login's own voice (Catrin), and
+ * from a person to a voice is already modelled, in three places, and all are
+ * real: `dashboard_users.voice_id` is the login's own voice (Catrin),
  * `language_recording_policy.voices[slot].email` is the language's record of who
- * reads it (Aran, whose dashboard row is an admin with no voice_id). Neither
- * alone covers both people, so this reads both and unions them.
+ * reads it (Aran, whose dashboard row is an admin with no voice_id), and a
+ * course's `voice_config.podCast[speaker].email` is where a community editor
+ * wrote the address. None alone covers everybody, so this reads all three.
+ *
+ * WHO SAID SO IS PART OF THE ANSWER (foreign-eyes finding, 2026-09-12). The
+ * three sources carry very different authority: the policy row is the
+ * language's own record, written by an admin; a podCast entry is written by
+ * the editor of ONE course, and the users-page row the cast save provisions
+ * (pods-router provisionCastMembers) copies that entry's voiceId into
+ * `dashboard_users.voice_id`. Handing back an untagged union let an editor who
+ * cast a policy voice under a second email hand that email every course of the
+ * language (casting-rights castingForEmail's language-wide grant). So each
+ * voice comes back with `castVia`, naming which source(s) produced it:
+ *   - castVia.policy   : a policy slot names THIS email for the voice
+ *   - castVia.login    : dashboard_users.voice_id on THIS email's row
+ *   - castVia.podCast  : the course codes whose podCast names THIS email
+ * Only `policy` is a language-wide claim; casting-rights confines the others.
  *
  * Every candidate is then resolved through resolveRecordist, which is the ONE
  * gate on whether a voice is live: a stale dashboard_users.voice_id naming a
  * voice no policy mentions resolves to null and is dropped, so this can never
  * conjure a queue the recordist surface itself would 404.
  *
- * @returns {Promise<Array>} resolveRecordist shapes, deduped by voiceId
+ * @returns {Promise<Array>} resolveRecordist shapes plus `castVia`, deduped by voiceId
  */
 async function voicesForEmail(db, email) {
   const norm = String(email || '').trim().toLowerCase()
   if (!norm) return []
 
-  const candidates = new Set()
+  /** voiceId (as written) → { login, policy, podCast: Set<courseCode> } */
+  const candidates = new Map()
+  const tag = (voiceId) => {
+    if (!candidates.has(voiceId)) candidates.set(voiceId, { login: false, policy: false, podCast: new Set() })
+    return candidates.get(voiceId)
+  }
 
   // 1. the login's own voice. `ilike` because dashboard_users.email is stored
   //    as typed (Eoghan's row is mixed-case) while a JWT email arrives lowercased.
   const { data: rows, error } = await db
     .from('dashboard_users').select('voice_id').ilike('email', norm)
   if (error) throw new Error(`dashboard_users read failed: ${error.message}`)
-  for (const row of rows || []) if (row.voice_id) candidates.add(row.voice_id)
+  for (const row of rows || []) if (row.voice_id) tag(row.voice_id).login = true
 
   // 2. every policy voice that names this person.
   for (const policy of await loadPolicies(db)) {
@@ -328,7 +348,7 @@ async function voicesForEmail(db, email) {
     for (const slot of Object.keys(voices)) {
       const entry = voices[slot] || {}
       if (!entry.voiceId) continue
-      if (String(entry.email || '').trim().toLowerCase() === norm) candidates.add(entry.voiceId)
+      if (String(entry.email || '').trim().toLowerCase() === norm) tag(entry.voiceId).policy = true
     }
   }
 
@@ -341,23 +361,33 @@ async function voicesForEmail(db, email) {
   //    save happens to provision. Still resolved through resolveRecordist
   //    below, so a cast voice the policy does not name is dropped exactly as
   //    the link (/r/:voiceId) would 404 it: the two doors cannot disagree.
+  //    Tagged with the course, because that is the only course this entry
+  //    speaks for.
   const { data: courses, error: cErr } = await db.from('courses').select('course_code, voice_config')
   if (cErr) throw new Error(`course list failed: ${cErr.message}`)
   for (const c of courses || []) {
     const podCast = c.voice_config && c.voice_config.podCast
     for (const entry of Object.values(podCast || {})) {
       if (!entry || typeof entry !== 'object' || !entry.voiceId) continue
-      if (String(entry.email || '').trim().toLowerCase() === norm) candidates.add(entry.voiceId)
+      if (String(entry.email || '').trim().toLowerCase() === norm) tag(entry.voiceId).podCast.add(c.course_code)
     }
   }
 
   const out = []
-  const seen = new Set()
-  for (const voiceId of candidates) {
+  const byVoice = new Map()
+  for (const [voiceId, via] of candidates) {
     const recordist = await resolveRecordist(db, voiceId)
-    if (!recordist || seen.has(recordist.voiceId)) continue
-    seen.add(recordist.voiceId)
-    out.push(recordist)
+    if (!recordist) continue
+    // An alias spelling and its canonical voice are ONE voice: merge the tags.
+    let held = byVoice.get(recordist.voiceId)
+    if (!held) {
+      held = { ...recordist, castVia: { login: false, policy: false, podCast: [] } }
+      byVoice.set(recordist.voiceId, held)
+      out.push(held)
+    }
+    held.castVia.login = held.castVia.login || via.login
+    held.castVia.policy = held.castVia.policy || via.policy
+    held.castVia.podCast = [...new Set([...held.castVia.podCast, ...via.podCast])]
   }
   return out
 }

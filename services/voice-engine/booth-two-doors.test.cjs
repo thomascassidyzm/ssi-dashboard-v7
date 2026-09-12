@@ -69,7 +69,11 @@ test('the link and the email login resolve to the same voice and the same booth,
   // The email door: sign in as ana@example.com, with no dashboard_users row at all
   const viaEmail = await voicesForEmail(db, ANA)
   assert.strictEqual(viaEmail.length, 1, 'the cast email finds exactly her voice')
-  assert.deepStrictEqual(viaEmail[0], viaLink, 'same person, same voice, same dialect and gender')
+  // The email door also says WHERE the voice came from (castVia, the 2026-09-12
+  // leak fix); the voice itself is the link door's voice, field for field.
+  const { castVia, ...sameVoice } = viaEmail[0]
+  assert.deepStrictEqual(sameVoice, viaLink, 'same person, same voice, same dialect and gender')
+  assert.deepStrictEqual(castVia, { login: false, policy: true, podCast: ['spa_for_eng'] })
 
   const qLink = await buildQueue(db, viaLink, { includeRecorded: true })
   const qEmail = await buildQueue(db, viaEmail[0], { includeRecorded: true })
@@ -126,7 +130,10 @@ test('a voice the editor cast BY EMAIL, with no email on the policy row and no u
   const viaLink = await resolveRecordist(db, VOICE)
   assert.strictEqual(viaLink.email, null, 'the policy row carries no address')
   const viaEmail = await voicesForEmail(db, ANA)
-  assert.deepStrictEqual(viaEmail, [viaLink], 'the email door finds her voice from the cast alone')
+  assert.strictEqual(viaEmail.length, 1, 'the email door finds her voice from the cast alone')
+  const { castVia, ...sameVoice } = viaEmail[0]
+  assert.deepStrictEqual(sameVoice, viaLink, 'the email door finds her voice from the cast alone')
+  assert.deepStrictEqual(castVia, { login: false, policy: false, podCast: ['spa_for_eng'] }, 'and knows it came from the cast, not the policy')
 
   const now = Date.parse('2031-01-01T10:00:00Z')
   fs.writeFileSync(accessLedger(), '')

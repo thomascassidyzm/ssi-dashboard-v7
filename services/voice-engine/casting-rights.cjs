@@ -19,10 +19,12 @@
  *      courses whose lines the booth (/r/:voiceId) serves, by the queue's own
  *      rule (recordist-queue buildLanguageLines: bucket = course dialect).
  *   2. courses.voice_config.podCast[speaker] - {voiceId, email}: a per-course
- *      pod cast. An entry naming this email, or a voice that resolves to this
- *      email, is a casting on THAT course.
+ *      pod cast. An entry naming this email, or one of this person's POLICY
+ *      voices, is a casting on THAT course - and on that course only. An
+ *      editor's cast entry never reaches past its own course (see
+ *      castingForEmail: the cross-course leak of 2026-09-12).
  *   3. courses.voice_config.voices[role] - a voice id per role; if it is one of
- *      this person's voices, that is a casting on that course too.
+ *      this person's policy voices, that is a casting on that course too.
  *
  * ORDER OF THE CHECK: casting first, then grants. Every existing grant row is
  * kept and still honoured; a cast artist who also holds an editor grant is
@@ -86,30 +88,43 @@ async function castingForEmail(db, email) {
     out.push({ courseCode, voiceId, displayName: displayName || voiceId, language: language || null, via })
   }
 
-  // 1. the language policy: each of this person's voices, on every course of
-  //    that language in the voice's dialect - the booth's own course list.
+  // WHO SAID SO DECIDES HOW FAR IT REACHES (foreign-eyes finding, 2026-09-12:
+  // a policy voice cast into course A's podCast under a second email handed
+  // that email every course of the language). voicesForEmail tags each voice
+  // with its source (castVia); only a language_recording_policy slot naming
+  // THIS email is the language's own record and so a language-wide claim.
+  // A podCast entry speaks for the one course it is written on, and the
+  // users-page voice_id is what the cast save provisions from that entry, so
+  // neither may widen the reach: they admit nothing beyond the course whose
+  // cast names the email.
   const voices = await voicesForEmail(db, norm)
-  const voiceIds = new Set(voices.map((v) => v.voiceId))
-  for (const v of voices) {
+  const policyVoices = voices.filter((v) => v.castVia && v.castVia.policy)
+  const policyVoiceIds = new Set(policyVoices.map((v) => v.voiceId))
+
+  // 1. the language policy: each voice the POLICY names for this email, on
+  //    every course of that language in the voice's dialect - the booth's own
+  //    course list.
+  for (const v of policyVoices) {
     for (const c of await coursesForLanguage(db, v.language)) {
       if (courseDialect(c) === canonicalDialect(v.dialect)) add(c.course_code, v.voiceId, v.displayName, v.language, 'policy')
     }
   }
 
-  // 2 + 3. per-course casts: podCast entries by email or by one of this
-  //    person's voices, and voice_config.voices roles naming one of them.
+  // 2 + 3. per-course casts: a podCast entry naming this EMAIL is a casting on
+  //    that course and no other; a podCast entry or voice_config.voices role
+  //    naming one of this person's POLICY voices is a casting on that course.
   const { data: courses, error } = await db.from('courses').select('course_code, target_lang, voice_config')
   if (error) throw new Error(`course list failed: ${error.message}`)
   for (const c of courses || []) {
     const vc = c.voice_config || {}
     for (const entry of Object.values(vc.podCast || {})) {
       if (!entry || typeof entry !== 'object') continue
-      if (normEmail(entry.email) === norm || (entry.voiceId && voiceIds.has(entry.voiceId))) {
+      if (normEmail(entry.email) === norm || (entry.voiceId && policyVoiceIds.has(entry.voiceId))) {
         add(c.course_code, entry.voiceId || null, entry.name, c.target_lang, 'podCast')
       }
     }
     for (const voiceId of Object.values(vc.voices || {})) {
-      if (typeof voiceId === 'string' && voiceIds.has(voiceId)) {
+      if (typeof voiceId === 'string' && policyVoiceIds.has(voiceId)) {
         const v = voices.find((x) => x.voiceId === voiceId)
         add(c.course_code, voiceId, v && v.displayName, c.target_lang, 'voices')
       }
