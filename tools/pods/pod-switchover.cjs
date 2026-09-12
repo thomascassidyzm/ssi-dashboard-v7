@@ -397,10 +397,10 @@ async function main () {
   }
 
   // ---- the cast gate ---------------------------------------------------------
-  // The pod being promoted must already be cast per conversation: ZERO same-voice
-  // exchange pairs and EXACTLY TWO voices (Tom, 2026-08-23 — "there's always male
-  // talking to female, so that two voices can actually do the whole thing, rather
-  // than per character, which was the problem previously").
+  // The pod being promoted must already be cast: every speaking character has a
+  // voice and ZERO same-voice exchange pairs. The voice COUNT is not gated — the
+  // "exactly two, one male one female" rule of 2026-08-23 was retired by Tom on
+  // 2026-09-12 ("Yes. Retire"); a cast is any number of named voices, one or more.
   //
   // Measured here rather than SOLVED here on purpose. Re-solving inside the flip
   // would mean rewriting speaker labels and courses.voice_config.podCast in the

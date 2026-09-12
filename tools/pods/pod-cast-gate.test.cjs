@@ -6,10 +6,15 @@
  * the casting was bolted on afterwards by a separate recast sweep — per flip,
  * forever. The gate refuses to promote a pod that is not cast per conversation.
  *
- * The acceptance criterion under test is Tom's, and it is two numbers: ZERO
- * same-voice exchange pairs, and EXACTLY TWO voices in the cast. In his words —
- * "there's always male talking to female, so that two voices can actually do the
- * whole thing, rather than per character, which was the problem previously."
+ * The acceptance criterion under test is Tom's. Until 2026-09-12 it was two
+ * numbers: ZERO same-voice exchange pairs, and EXACTLY TWO voices in the cast
+ * ("there's always male talking to female, so that two voices can actually do
+ * the whole thing, rather than per character, which was the problem
+ * previously", 2026-08-23). On 2026-09-12 Tom retired the count — asked
+ * "Retire the one-man-one-woman casting rule so a cast is any number of named
+ * voices? Yes or no", he answered "Yes. Retire". What stands: casting is per
+ * speaker, every speaking character has a voice, and ZERO same-voice exchange
+ * pairs. A cast is any number of named voices, one or more.
  */
 
 import { describe, it, expect } from 'vitest'
@@ -52,9 +57,9 @@ describe('checkPodCast', () => {
     expect(r.failures.join(' ')).toMatch(/same-voice exchange pair/)
   })
 
-  it('FAILS a per-character cast — the exact shape Tom ruled against', () => {
-    // Three characters, three voices, no same-voice collision anywhere. Under the
-    // old per-character rule this was "correct"; it is the thing being replaced.
+  it('PASSES a three-voice cast with zero same-voice pairs (count retired 2026-09-12)', () => {
+    // Three characters, three voices, no same-voice collision anywhere. Until
+    // 2026-09-12 this failed on "not 2"; the count is retired, the pairs rule stands.
     const rows = [...twoHander,
       { scene_number: 1, sentence_number: 5, global_order: 5, speaker: 'Waiter', known_text: 'ready?' },
     ]
@@ -62,10 +67,37 @@ describe('checkPodCast', () => {
       rows,
       speakers: castOf(F, M, { Waiter: { gender: 'm', target: THIRD, known: { voice_id: 'eng-narrator' } } }),
     })
-    expect(r.ok).toBe(false)
+    expect(r.ok).toBe(true)
+    expect(r.failures).toEqual([])
     expect(r.voicesInUse).toHaveLength(3)
     expect(r.sameVoicePairs).toEqual([])
-    expect(r.failures.join(' ')).toMatch(/not 2/)
+  })
+
+  it('PASSES a one-voice monologue — one speaking character, one voice', () => {
+    const rows = [
+      { scene_number: 1, sentence_number: 1, global_order: 1, speaker: 'Anna', known_text: 'a' },
+      { scene_number: 1, sentence_number: 2, global_order: 2, speaker: 'Anna', known_text: 'b' },
+    ]
+    const r = checkPodCast({ rows, speakers: { Anna: { gender: 'f', target: F, known: { voice_id: 'eng-narrator' } } } })
+    expect(r.ok).toBe(true)
+    expect(r.voicesInUse).toHaveLength(1)
+    expect(r.exchangePairs).toBe(0)
+  })
+
+  it('still FAILS a one-voice cast where two characters exchange — on the pair, never on a count', () => {
+    const r = checkPodCast({ rows: twoHander, speakers: castOf(F, F) })
+    expect(r.ok).toBe(false)
+    expect(r.voicesInUse).toHaveLength(1)
+    expect(r.failures).toHaveLength(1)
+    expect(r.failures[0]).toMatch(/same-voice exchange pair/)
+    expect(r.failures.join(' ')).not.toMatch(/not 2/)
+  })
+
+  it('never mentions a voice count in any failure', () => {
+    for (const cast of [castOf(F, F), castOf(F, M), { _default: { target: F } }]) {
+      const r = checkPodCast({ rows: twoHander, speakers: cast })
+      expect(r.failures.join(' ')).not.toMatch(/not 2|voice\(s\)/)
+    }
   })
 
   it('FAILS an uncast character rather than passing it silently', () => {
@@ -92,8 +124,8 @@ describe('checkPodCast', () => {
     const r = checkPodCast({ rows, speakers: castOf(F, F) })
     expect(r.exchangePairs).toBe(0)
     expect(r.sameVoicePairs).toEqual([])
-    // Still fails, but on the voice COUNT — one voice, not two — never on a collision.
-    expect(r.failures.join(' ')).toMatch(/not 2/)
+    // One voice across a scene boundary is a legitimate cast: no collision, no count.
+    expect(r.ok).toBe(true)
   })
 
   it('normalises the voice-id prefix — `eve` and `xai_eve` are ONE voice', () => {
@@ -115,7 +147,7 @@ describe('checkPodCast', () => {
     expect(r.ok).toBe(true)
   })
 
-  it('honours _default — and a _default-only cast is a ONE-voice pod, so it fails', () => {
+  it('honours _default — a _default-only cast of a two-hander fails on the same-voice pair', () => {
     const r = checkPodCast({ rows: twoHander, speakers: { _default: { target: F } } })
     expect(r.uncast).toEqual([])            // nobody is uncast...
     expect(r.sameVoicePairs).toHaveLength(1) // ...they are all the same person
@@ -124,10 +156,13 @@ describe('checkPodCast', () => {
 
   it('gates the TARGET track, never the known track', () => {
     // The eng_for_* shape is one narrator reading every character's known line.
-    // That is a single voice by design and must not be judged by a two-voice rule.
+    // That is a single voice by design; the callers pass target because the
+    // CONVERSATION is on the target track, and on the known track one narrator
+    // on both sides of an exchange is the design, not a defect worth gating.
     const r = checkPodCast({ rows: twoHander, speakers: castOf(F, M), track: 'known' })
     expect(r.voicesInUse).toEqual(['eng-narrator'])
-    expect(r.ok).toBe(false) // it WOULD fail — which is why the callers pass target
+    expect(r.ok).toBe(false) // one narrator answering themselves IS a same-voice pair
+    expect(r.failures.join(' ')).toMatch(/same-voice exchange pair/)
     expect(checkPodCast({ rows: twoHander, speakers: castOf(F, M) }).track).toBe('target')
   })
 })

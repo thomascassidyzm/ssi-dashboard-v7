@@ -1,16 +1,26 @@
 /**
  * pod-cast-gate.cjs — is this pod CAST CORRECTLY? (2026-08-23, extended 2026-08-24)
  *
- * Tom's ruling of 2026-08-23, verbatim: "there's always male talking to female,
- * so that two voices can actually do the whole thing, rather than per character,
- * which was the problem previously." Casting is PER CONVERSATION, and the estate's
- * acceptance criterion is two numbers:
+ * ACCEPTANCE CRITERION (as of 2026-09-12):
  *
- *     ZERO same-voice exchange pairs, and EXACTLY TWO voices in the cast.
+ *     every speaking character has a voice, ZERO same-voice exchange pairs,
+ *     and the cast is ANY NUMBER of named voices — one or more.
  *
- * All 21 staged Group 2 pods measure zero today. This module is the ONE place
- * that measures it, so the flip path and the recast path cannot drift apart on
- * what "cast" means.
+ * History. Tom's ruling of 2026-08-23, verbatim: "there's always male talking
+ * to female, so that two voices can actually do the whole thing, rather than
+ * per character, which was the problem previously." That installed a second
+ * number beside the pairs rule — EXACTLY TWO voices in the cast, one male, one
+ * female. On 2026-09-12 Tom retired that number: asked "Retire the
+ * one-man-one-woman casting rule so a cast is any number of named voices? Yes
+ * or no", he answered "Yes. Retire". The audible half of the old rule stands —
+ * two characters talking to each other never share a voice — and the count is
+ * gone. `voicesInUse` is still reported, as information, never as a verdict.
+ * A monologue pod cast to one voice passes; a five-voice pod with no
+ * same-voice exchange passes. Casting is still per SPEAKER (Tom, 2026-08-08:
+ * "of course cast by speaker"): a character keeps one voice across all lines.
+ *
+ * This module is the ONE place that measures it, so the flip path and the
+ * recast path cannot drift apart on what "cast" means.
  *
  * IT IS A MEASUREMENT, NOT A SOLVER. The solver is
  * tools/pods/pod1-percall-recast.cjs; this file re-uses its exchange-edge
@@ -19,10 +29,10 @@
  * each other) so a pod judged cast-correct here is cast-correct by exactly the
  * rule the recast solved to.
  *
- * The known track is deliberately NOT gated FOR THE TWO-VOICE RULE: the eng_for_*
- * shape is one narrator reading every character's known line, which is a single
- * voice by design and would fail a two-voice rule that has no business being
- * applied to it. The learner hears the CONVERSATION on the target track.
+ * The known track is deliberately NOT gated for the cast: the eng_for_* shape
+ * is one narrator reading every character's known line, which is a single
+ * voice on both sides of every exchange by design. The learner hears the
+ * CONVERSATION on the target track, so callers gate `track: 'target'`.
  * Known-side CLIPS are gated — see below.
  *
  * ---------------------------------------------------------------------------
@@ -293,7 +303,7 @@ function sameVoiceAddress (p) {
  *        Needs speaker/scene_number/sentence_number always; for the clip checks
  *        also target_text/known_text and the five audio columns.
  * @param {object|null} o.speakers  listening_pods.speakers — the stored cast.
- * @param {'target'|'known'} [o.track] which track the two-voice rule judges.
+ * @param {'target'|'known'} [o.track] which track the same-voice-pair rule judges.
  * @param {Object<string,{text:string,voice_id:string}>|null} [o.clips]
  *        every course_audio row referenced by any of the five slots. Omit it and
  *        the clip checks are SKIPPED (old behaviour, reported as such).
@@ -351,10 +361,9 @@ function checkPodCast ({ rows, speakers, track = 'target', clips = null, course 
   if (uncast.length) {
     failures.push(`${uncast.length} speaking character(s) have no ${track} voice in the pod cast: ${uncast.join(', ')}`)
   }
-  if (voicesInUse.length !== 2) {
-    failures.push(`cast uses ${voicesInUse.length} ${track} voice(s), not 2: [${voicesInUse.join(', ')}] ` +
-      '— casting is per conversation (one male, one female), not per character')
-  }
+  // No voice-count failure: the "exactly two voices, one male one female" rule
+  // was retired by Tom on 2026-09-12 ("Yes. Retire"). A cast is any number of
+  // named voices; `voicesInUse` below is reporting only.
   if (sameVoicePairs.length) {
     // ADDRESSED, per the 2026-08-24 rule: course, scene, speaker-pair, voice.
     failures.push(`${sameVoicePairs.length} same-voice exchange pair(s) — a character answering themselves: ` +
