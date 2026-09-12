@@ -906,3 +906,39 @@ pair) failed on the old gate and pass on the new.
 entry's declared voice id, so N voices of one gender each get their own queue. A cast entry that
 names only a gender still resolves to the language policy's one voice for that (dialect, gender)
 bucket — the policy's slot model, untouched.
+
+## 2026-09-12 — a pod line that jumps in on the previous speaker is marked, once, on the row: `listening_pod_sentences.jump_in`
+
+**Tom, 2026-09-12, listening to the Italian method pod on staging:** "The changeovers between
+speakers need to be different depending on whether the speakers are jumping in — in which there
+should be no gap, in fact it should be overlap if possible … Whereas genuine turn taking — asking
+or answering questions etc. — should be as they are now, with whatever gap they currently have.
+So it's more like a proper conversation."
+
+**Decision.** One nullable boolean on the line row, no other schema change. NULL = never
+annotated and plays as a turn exactly as before; false = judged a turn; true = jumps in. The
+learner app reads the row straight from Supabase and maps it to `jumpIn` on the clip it
+schedules (job #470); Popty serves `jumpIn` on `GET /api/pods/:course/:slug` and accepts
+`jump_in` on the course-scoped sentence PATCH without unlinking audio or touching the draft
+flag, because the marker is DELIVERY, never words. The pod page shows it as a lit ⤵ on the
+line row and one tap flips it.
+
+**The rule lives in one file** — `services/shared/pod-jump-in-rule.cjs` — one paragraph with
+three examples each way, pasted verbatim into the generator prompt (rule 7, and the output
+format now asks for `jump_in` per line) and into the back-catalogue annotator
+(`tools/pods/annotate-jump-in.cjs`). Two prompts stating the rule separately would drift.
+The first line of a scene is forced false in code, whatever a model says. A model answer that
+is not a strict boolean collapses to NULL in the generator and is a retry-then-fail in the
+annotator: a stray "yes" can never become a jump-in.
+
+**Why better × simpler × cheaper.** A column on the row rather than metadata on the pod or a
+side table: the app already fetches the row, the page already patches it, and offline snapshots
+carry it for free. The rule as a shared constant rather than a second prompt: one place to
+redline when Tom's ear disagrees. Annotation by scene, not by line: the judgement is about the
+previous line's trailing "—"/"…", so the scene is the unit.
+
+**Applied.** `ita_for_eng:method-pod`, 309 lines, 79 marked jump-in (26%), sonnet, 126 s,
+before-state asserted per row, evidence at
+`~/ssi-evidence/ssi-dashboard-v7/tools/pods/annotate-jump-in/`. The rest of the fleet
+(11,028 further lines on 65 serving pods; 24,481 including held and retired) is not annotated
+by this job — the count and price are in the #471 report, and running it is a separate call.
