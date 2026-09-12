@@ -757,12 +757,24 @@ stopped being true the day a language got a second voice of one gender — the s
 would have inherited, and been filed onto, the first's lines. One key makes "variations later" a matter
 of minting a voice id: a different id simply does not propagate into another's lines.
 
-**Where it lives.** `services/voice-engine/recordist-queue.cjs`: `lineVoiceId` resolves every pod line,
-wanted re-record and seed slot to its owning voice; `voiceTextKey` collapses the queue on it;
-`linesForVoice` hands a recordist exactly its own lines; `propagateTakeToDuplicates`, `clearRerecordWants`
-and `linkSeedTake` fill and retire by the same key. `booth-propagation-by-voice-id.test.cjs` asserts it:
-two voices of the same gender with identical text do NOT share a take; one voice cast on three courses
-with identical text DOES.
+**Where it lives.** `services/voice-engine/recordist-queue.cjs`: `lineVoiceId` resolves every pod line
+and wanted re-record to its owning voice; `voiceTextKey` collapses the queue on it; `linesForVoice`
+hands a recordist exactly its own lines; `propagateTakeToDuplicates` and `clearRerecordWants` fill and
+retire by the same key. `booth-propagation-by-voice-id.test.cjs` asserts it: two voices of the same
+gender with identical text do NOT share a take; one voice cast on three courses with identical text DOES.
+
+**What the one key covers, precisely (house re-check #362, 2026-09-12, confirming cold-verify #348).**
+The key fills POD LINES and WANTED RE-RECORDS. A SEED SLOT is owned by the same thing — the voice id
+the course's `voice_config.voices[role]` names, resolved through the policy (`seedCastEntry`) — but it
+is a second fill, not the same one: a seed take propagates to the seed slots cast to that voice across
+the language (`linkSeedTake`, keyed voice+role+text) and never to a pod line, and a pod take never fills
+a seed slot; the same words under the same voice as both a seed slot and a pod line are read twice
+(`recordist-seed-queue.test.cjs`: "a seed line does NOT collapse into a pod line that reads the same").
+Tom's words above ("for main course content or for pods … the same line") plainly cover seeds, so
+whether one take should fill both is his call, logged as a decision candidate rather than built here.
+The two-voice cast collapse (`collapseTwoVoiceCast`, founder ruling 2026-07-17), which #349 read as a
+gender-based identity collapse, is a cast-editing migration on the casting screen, not a take route,
+and is the separate one-man-one-woman question already pending with Tom.
 
 **No recording moved.** The change decides how future takes propagate and how queues collapse. Existing
 takes that sit outside the key are reported, not migrated: Sasha's 492 `human_sasha_wanasky_deu_at` takes
