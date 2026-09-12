@@ -776,7 +776,13 @@ The two-voice cast collapse (`collapseTwoVoiceCast`, founder ruling 2026-07-17),
 gender-based identity collapse, is a cast-editing migration on the casting screen, not a take route,
 and is the separate one-man-one-woman question already pending with Tom.
 
-**No recording moved.** The change decides how future takes propagate and how queues collapse. Existing
+**The re-record take refuses a clip nobody is named for (house re-check #362, confirming cold-verify
+#355).** `recordRerecordClip` read `owner && …`, so a flagged clip whose owner could not be named
+(untagged narration with a want naming no gender, or a gender the course casts nobody or two voices
+for) was recordable by any voice of the language past the course gate — while the queue counted it
+`uncast` and offered it to nobody. Now `!owner ||` refuses it 403 `not_cast_on_line`, the same rule
+the pod-line take holds; queue and take agree. Every live want (1,269 on 2026-09-12) names a gender,
+so an owned narration clip on a one-voice-per-gender course is unaffected.**No recording moved.** The change decides how future takes propagate and how queues collapse. Existing
 takes that sit outside the key are reported, not migrated: Sasha's 492 `human_sasha_wanasky_deu_at` takes
 (named by neither policy nor cast), cym_nnew_for_eng's 83 Aran seed takes on a course whose seed slots
 name no voice, and the voiceless `legacy_import` / `catrin_human` imports — see the published table

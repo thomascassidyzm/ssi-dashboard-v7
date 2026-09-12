@@ -412,15 +412,24 @@ module.exports = function createRecordistRouter({
     // language re-recorded any flagged clip by uuid -- Bea re-recorded Amina's
     // clip and retired Amina's want (job #349, 2026-09-12). The queue never
     // showed her that uuid; the take holds the same rule (job #351).
+    //
+    // A CLIP NOBODY CAN BE NAMED FOR IS NOBODY'S TO RECORD. clipVoiceId is null
+    // when the clip is untagged AND its want names no gender, or names a gender
+    // the course casts nobody (or two voices) for. The queue counts such a clip
+    // `uncast` and offers it to no one (linesForVoice hands out owned lines
+    // only); until this the take let ANY voice of the language past this check
+    // on a null owner and retire the want (cold-verify #355, house re-check
+    // #362). Queue and take agree: no owner, no take.
     {
       const { data: clipCourse, error: courseErr } = await db()
         .from('courses').select('course_code, voice_config, dialect').eq('course_code', clip.course_code).maybeSingle()
       if (courseErr) throw new Error(`course lookup failed: ${courseErr.message}`)
       const register = await voiceRegister(db(), recordist.language)
       const owner = clipVoiceId(clip, clipCourse, register)
-      if (owner && !recordist.spellings.includes(owner)) {
-        const ownerName = (register.aliasOwner.get(owner) || {}).name || owner
-        const sentence403 = `${recordist.displayName} is not cast to read this clip of ${clip.course_code}: it belongs to ${ownerName}.`
+      if (!owner || !recordist.spellings.includes(owner)) {
+        const ownerName = owner ? ((register.aliasOwner.get(owner) || {}).name || owner) : null
+        const sentence403 = `${recordist.displayName} is not cast to read this clip of ${clip.course_code}: ` +
+          (owner ? `it belongs to ${ownerName}.` : 'nobody is named to carry it yet.')
         castingRights.recordAccess({
           kind: 'refused', email: recordist.email, voices: [recordist.voiceId], courseCode: clip.course_code,
           method: req.method, path: req.originalUrl || req.path, sentence: sentence403, logger,

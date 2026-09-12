@@ -29,11 +29,14 @@ const BEA = 'human_bea_swa', AMINA = 'human_amina_swa', BEA_OLD = 'human_bea_swa
 const BEA_LINE = 's_bea', AMINA_LINE = 's_amina', NOGENDER_LINE = 's_amina_nogender'
 const AMINA_CLIP = '11111111-1111-4111-8111-111111111111'
 const BEA_ALIAS_CLIP = '22222222-2222-4222-8222-222222222222'
+// Untagged narration ('human' bucket) whose want names no gender: nobody can
+// be named to carry it, so it is in no queue.
+const NOBODY_CLIP = '33333333-3333-4333-8333-333333333333'
 
 // Swahili WITH a policy row naming two female voices, Bea and Amina. Neither
 // is cast-only: no castCourses, so the course gate never fires and the only
 // thing between Bea and Amina's line is ownership by voice id.
-function fixture() {
+function fixture({ nobodyClip = false } = {}) {
   return {
     language_recording_policy: [{ language: 'swa', human_only: true, voices: {
       f: { name: 'Bea', voiceId: BEA, gender: 'f', aliases: [BEA_OLD], email: 'bea@example.com' },
@@ -62,6 +65,7 @@ function fixture() {
     course_audio: [
       { id: AMINA_CLIP, course_code: 'swa_for_eng', text: 'Karibu.', role: 'target', language: 'swa', voice_id: AMINA, s3_key: 'k1', rerecord_wanted: { reason: 'clipped', voice_gender: 'f' } },
       { id: BEA_ALIAS_CLIP, course_code: 'swa_for_eng', text: 'Kwaheri.', role: 'target', language: 'swa', voice_id: BEA_OLD, s3_key: 'k2', rerecord_wanted: { reason: 'clipped', voice_gender: 'f' } },
+      ...(nobodyClip ? [{ id: NOBODY_CLIP, course_code: 'swa_for_eng', text: 'Tutaonana.', role: 'narration', language: 'swa', voice_id: 'human', s3_key: 'k3', rerecord_wanted: { reason: 'clipped' } }] : []),
     ],
   }
 }
@@ -96,11 +100,11 @@ function stubDb(tables, writes = []) {
 
 const quiet = { log() {}, info() {}, warn() {}, error() {} }
 
-async function take(voiceId, lineId) {
+async function take(voiceId, lineId, tables = fixture()) {
   const writes = []
   const uploads = []
   const router = createRecordistRouter({
-    getDb: () => stubDb(fixture(), writes),
+    getDb: () => stubDb(tables, writes),
     logger: quiet,
     s3: {},
     // The upload seam is the money: a refusal must happen BEFORE it is reached.
@@ -142,6 +146,24 @@ test('a policy voice cannot re-record a rerecord_wanted clip owned by another vo
   assert.equal(r.body.reason, 'not_cast_on_line')
   assert.deepEqual(r.uploads, [], 'the upload seam is never reached')
   assert.deepEqual(r.writes, [], "Amina's want is untouched")
+})
+
+// Cold-verify #355 (2026-09-12): a flagged clip whose owner cannot be named
+// (untagged narration, want naming no gender) was refused by nobody -- the
+// ownership check read `owner && ...`, so a null owner fell through to the
+// language and course gates and any policy voice of the language could
+// re-record it and retire its want. The queue never offers such a clip to
+// anyone (it is counted uncast); the take holds the same rule.
+test('a flagged clip nobody is named to carry is refused at the take, as the queue never offered it', async () => {
+  const tables = fixture({ nobodyClip: true })
+  const q = await buildQueue(stubDb(tables), await resolveRecordist(stubDb(tables), BEA), { includeRecorded: true })
+  assert.equal(q.lines.some((l) => l.id === NOBODY_CLIP), false, 'the queue never offers it')
+  assert.equal(q.uncast, 1, 'it is counted uncast instead')
+  const r = await take(BEA, NOBODY_CLIP, fixture({ nobodyClip: true }))
+  assert.equal(r.status, 403, `expected a refusal, got ${r.status} ${JSON.stringify(r.body)}`)
+  assert.equal(r.body.reason, 'not_cast_on_line')
+  assert.deepEqual(r.uploads, [], 'the upload seam is never reached')
+  assert.deepEqual(r.writes, [], 'the want is untouched')
 })
 
 test('the same voice still records its own pod line', async () => {
