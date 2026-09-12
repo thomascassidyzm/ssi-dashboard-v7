@@ -794,3 +794,29 @@ takes that sit outside the key are reported, not migrated: Sasha's 492 `human_sa
 (named by neither policy nor cast), cym_nnew_for_eng's 83 Aran seed takes on a course whose seed slots
 name no voice, and the voiceless `legacy_import` / `catrin_human` imports — see the published table
 *Human recorders — courses × voice ids, 2026-09-12*.
+
+## 2026-09-12 — Cartesia word timings travel with the pod clip, on course_audio.word_timings
+
+**Why.** Tom, 2026-09-12 (RBF room): pod IMMERSION display should keep pace within a sentence like a
+podcast transcript. Pods are never cut below the sentence, so the timings have to sit on the
+whole-sentence clip; Cartesia emits them and xAI never did. One nullable jsonb column, contract
+`{source:'cartesia', words[], starts[], ends[]}` in seconds, equal length, playback order — the
+writer's contract is `services/shared/word-timings.cjs`, the learning app maps it to `wordTimings`.
+
+**Better × simpler × cheaper, and the two calls that were not in the brief.**
+- Cartesia only emits timestamps on its streaming endpoints, and `/tts/sse` only returns RAW PCM.
+  So a timed render is opt-in (`config.wordTimings`), goes to SSE, and the reassembled PCM is wrapped
+  as WAV for the mastering chain (ffmpeg sniffs content, so the container is fine). Every other
+  Cartesia call stays on `/tts/bytes` exactly as before — no blast radius on course-phrase renders.
+  Two calls (bytes for audio, SSE for timings) would double the spend and time a different
+  generation; rejected.
+- The canonical-clip trigger can point a fresh row at bytes it did not render
+  (`duplicate_render_deduped`). Timings measured on our render would then describe audio the
+  learner never hears, so the writer withdraws `word_timings` when the row comes back holding a
+  different key. Kept in the writer rather than the trigger: no second schema object, and the test
+  can drive it.
+- Mastering only cuts the TAIL (`trimToEndOfSpeech`) and re-levels; the head is untouched, so raw
+  render timings still describe the mastered clip (proof: last word ends 1.32 s, clip 1.44 s).
+
+**No backfill.** Pod-1, xAI and human clips carry NULL until a later alignment pass, by the brief.
+Proof sample: *Pod word timings — first Cartesia sample, 2026-09-12*.
