@@ -625,7 +625,7 @@ module.exports = function createPodsCastRouter({
       // is what the gate authorized, so verify before writing.
       const { data: sentence, error: fetchError } = await db
         .from('listening_pod_sentences')
-        .select('id, pod_id, target_text, known_text, target_audio_id, known_audio_id')
+        .select('id, pod_id, speaker, target_text, known_text, target_audio_id, known_audio_id')
         .eq('id', sentenceId)
         .maybeSingle()
       if (fetchError) throw new Error(fetchError.message)
