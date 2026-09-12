@@ -69,17 +69,26 @@ const PAGE = 1000
 const MIN_SLICE_MS = 30_000
 const DELETE_BATCH = 500
 
-const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, {
-  auth: { persistSession: false, autoRefreshToken: false },
-})
-const s3 = new S3Client({
-  region: process.env.AWS_REGION,
-  maxAttempts: 6, // ride out transient resets/timeouts on a flaky uplink
-  credentials: {
-    accessKeyId: (process.env.AWS_ACCESS_KEY_ID || '').trim(),
-    secretAccessKey: (process.env.AWS_SECRET_ACCESS_KEY || '').trim(),
-  },
-})
+// Clients are built on first use so the pure paging helpers below can be
+// required by a test without Supabase / S3 credentials in the environment.
+let _sb = null, _s3 = null
+function sbClient() {
+  if (!_sb) _sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  })
+  return _sb
+}
+function s3Client() {
+  if (!_s3) _s3 = new S3Client({
+    region: process.env.AWS_REGION,
+    maxAttempts: 6, // ride out transient resets/timeouts on a flaky uplink
+    credentials: {
+      accessKeyId: (process.env.AWS_ACCESS_KEY_ID || '').trim(),
+      secretAccessKey: (process.env.AWS_SECRET_ACCESS_KEY || '').trim(),
+    },
+  })
+  return _s3
+}
 
 const log = (...a) => console.log(`[${new Date().toISOString().slice(11, 19)}]`, ...a)
 const dayStr = (d) => d.toISOString().slice(0, 10)
@@ -105,32 +114,57 @@ async function writeRow(f, row) {
   f.count++
 }
 
+// ---- Paging a day -----------------------------------------------------------
+//
+// The cursor is (changed_at, id), ordered ascending, NOT a bare id. An id cursor
+// (`id > N ORDER BY id`) made the planner walk content_audit_log_pkey from 0 and
+// filter on changed_at afterwards: on a 478k-row day it discarded 3.4M rows before
+// page one (22.4s; PostgREST's 8s timeout killed it). Ordering by changed_at first
+// lets idx_content_audit_log_changed_at serve every page, and re-seeding the lower
+// bound from the cursor's own timestamp keeps each page to its own instant onward.
+// The id tie-break makes the cursor exact inside same-instant bursts (one day held
+// 43,426 rows sharing a single changed_at) — measured 22–29ms a page, no new index.
+// The changed_at string is passed back exactly as PostgREST returned it (microsecond
+// precision); never round-trip it through Date, which truncates to milliseconds.
+
+/** The next cursor after a page, or null when the page was empty. */
+function nextCursor(rows) {
+  if (!rows || rows.length === 0) return null
+  const last = rows[rows.length - 1]
+  return { changed_at: last.changed_at, id: last.id }
+}
+
+/**
+ * Build one page query against a supabase-js style query builder. Pure: the
+ * builder is passed in, so a test can assert the shape without a database.
+ * Row set is unchanged from the old cursor: every row with fromIso <= changed_at < toIso.
+ */
+function buildPageQuery(q, fromIso, toIso, cursor) {
+  const lower = cursor ? cursor.changed_at : fromIso
+  q = q.gte('changed_at', lower).lt('changed_at', toIso)
+  if (cursor) {
+    // strictly after the cursor row in (changed_at, id) order
+    q = q.or(`changed_at.gt.${cursor.changed_at},and(changed_at.eq.${cursor.changed_at},id.gt.${cursor.id})`)
+  }
+  return q.order('changed_at', { ascending: true }).order('id', { ascending: true }).limit(PAGE)
+}
+
 // Fetch one page, retrying transient failures (statement timeouts under DB load —
 // e.g. while a big prune is running — or dropped connections) so a blip doesn't
 // kill a long archive run.
-//
-// ⚠️  KNOWN-BROKEN CURSOR (job #130, https://watson-1.tail4968cb.ts.net/d/dcbd285f):
-// This query plan selects content_audit_log_pkey (id column) and walks ascending
-// from 0, filtering on changed_at afterwards. For recent rows, this scans millions
-// of rows before reaching the target window and times out. The query must be fixed
-// (e.g. via a partial index on changed_at or a different access path) before
-// AUDIT_ARCHIVE_CRON is re-enabled for real S3 tiering.
 async function selectPage(fromIso, toIso, cursor) {
   for (let attempt = 1; ; attempt++) {
-    const { data, error } = await sb
-      .from('content_audit_log').select(COLS)
-      .gte('changed_at', fromIso).lt('changed_at', toIso)
-      .gt('id', cursor).order('id', { ascending: true }).limit(PAGE)
+    const { data, error } = await buildPageQuery(sbClient().from('content_audit_log').select(COLS), fromIso, toIso, cursor)
     if (!error) return data
     const transient = error.code === '57014' || /timeout|fetch failed|epipe|econnreset|socket/i.test(error.message || '')
     if (!transient || attempt >= 6) throw error
-    log(`    ⚠ page retry ${attempt} @cursor ${cursor}: ${error.message}`)
+    log(`    ⚠ page retry ${attempt} @cursor ${cursor ? `${cursor.changed_at}/${cursor.id}` : 'start'}: ${error.message}`)
     await new Promise(r => setTimeout(r, 800 * attempt))
   }
 }
 
 async function s3Head(key) {
-  try { return await s3.send(new HeadObjectCommand({ Bucket: BUCKET, Key: key })) }
+  try { return await s3Client().send(new HeadObjectCommand({ Bucket: BUCKET, Key: key })) }
   catch (e) { if (e.name === 'NotFound' || e.$metadata?.httpStatusCode === 404) return null; throw e }
 }
 
@@ -151,11 +185,11 @@ async function archiveDay(day) {
   const tmpdir = writing ? fs.mkdtempSync(path.join(os.tmpdir(), 'auditarch-')) : null
   const counts = {}
   const files = new Map()
-  let cursor = 0, total = 0
+  let cursor = null, total = 0
   try {
-    // 1. Stream the whole day by ID cursor (robust to any volume / same-instant
-    //    bursts — the old time-window bisect silently capped at 1000 rows/slice)
-    //    into per-table gzip temp files on disk.
+    // 1. Stream the whole day by (changed_at, id) cursor — see buildPageQuery —
+    //    into per-table gzip temp files on disk. Robust to any volume and to
+    //    same-instant bursts (the old time-window bisect capped at 1000 rows/slice).
     for (;;) {
       const data = await selectPage(fromIso, toIso, cursor)
       if (!data || data.length === 0) break
@@ -168,7 +202,7 @@ async function archiveDay(day) {
           await writeRow(f, row)
         }
       }
-      cursor = data[data.length - 1].id
+      cursor = nextCursor(data)
       if (data.length < PAGE) break
     }
 
@@ -181,7 +215,7 @@ async function archiveDay(day) {
         f.gz.end(); await f.written
         const key = `${PREFIX}/dt=${day}/${table}.ndjson.gz`
         await new Upload({
-          client: s3,
+          client: s3Client(),
           params: { Bucket: BUCKET, Key: key, Body: fs.createReadStream(f.gzPath), ContentType: 'application/x-ndjson', ContentEncoding: 'gzip' },
           queueSize: 4, partSize: 8 * 1024 * 1024,
         }).done()
@@ -189,7 +223,7 @@ async function archiveDay(day) {
         if (!head || head.ContentLength === 0) throw new Error(`verify failed for ${key}`)
         log(`    ${table.padEnd(28)} ${String(f.count).padStart(8)} rows → ${key} (${head.ContentLength}b)`)
       }
-      await s3.send(new PutObjectCommand({
+      await s3Client().send(new PutObjectCommand({
         Bucket: BUCKET, Key: `${PREFIX}/dt=${day}/_manifest.json`,
         Body: Buffer.from(JSON.stringify({ day, archived_at: new Date().toISOString(), tables: counts }, null, 2)),
         ContentType: 'application/json',
@@ -203,19 +237,17 @@ async function archiveDay(day) {
 
   // 3. Prune — only after a verified archive (or a confirmed pre-existing one).
   //    Batched + committed per batch via PostgREST so a stall can't roll it back.
-  //
-  // ⚠️  KNOWN-BROKEN CURSOR (job #130, https://watson-1.tail4968cb.ts.net/d/dcbd285f):
-  // The SELECT query below feeds the DELETE step. It has the same broken cursor
-  // as selectPage() — do not re-enable AUDIT_ARCHIVE_CRON for real tiering until
-  // the cursor is fixed.
+  //    The id-pick SELECT has no ORDER BY, so the planner serves it straight off
+  //    idx_content_audit_log_changed_at (EXPLAIN 2026-09-12: 13ms for 500 ids on a
+  //    478k-row day). Do not add `order('id')` here — that is what broke selectPage.
   let deleted = 0
   if (PRUNE && EXECUTE) {
     for (;;) {
-      const { data, error } = await sb.from('content_audit_log').select('id')
+      const { data, error } = await sbClient().from('content_audit_log').select('id')
         .gte('changed_at', fromIso).lt('changed_at', toIso).limit(DELETE_BATCH)
       if (error) throw error
       if (!data || !data.length) break
-      const { error: derr } = await sb.from('content_audit_log').delete().in('id', data.map(r => r.id))
+      const { error: derr } = await sbClient().from('content_audit_log').delete().in('id', data.map(r => r.id))
       if (derr) { log(`    ⚠ delete batch failed: ${derr.message}`); break }
       deleted += data.length
       if (data.length < DELETE_BATCH) break
@@ -259,4 +291,6 @@ async function main() {
   if (!EXECUTE) log('(dry run — re-run with --execute to write S3' + (PRUNE ? ' and prune' : '') + ')')
 }
 
-main().catch(e => { console.error(e); process.exit(1) })
+if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
+
+module.exports = { buildPageQuery, nextCursor, PAGE }

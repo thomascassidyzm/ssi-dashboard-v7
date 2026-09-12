@@ -5,6 +5,18 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-12 — content_audit_log archive pages on (changed_at, id), not on id; no new index (job #473, sweep item 5, Tom: "Yes to all this. Get cracking")
+
+**Why.** `tools/archive-audit-log.cjs` (the hot/cold S3 tiering job, run by `AUDIT_ARCHIVE_CRON` and the Maintenance "Archive to S3" buttons) paged a day with `changed_at` in window AND `id > cursor ORDER BY id LIMIT 1000`. The planner satisfied the ORDER BY from `content_audit_log_pkey` and filtered on `changed_at` afterwards: EXPLAIN ANALYZE on 2026-08-18 (477,895 rows) read 3,408,400 rows off the pkey before page one and took 22.4s, past PostgREST's 8s statement timeout, so the dry run died on page one (job #130). It only ever worked on light days, where the estimate was small enough to prefer the changed_at index.
+
+**Decision.** Keyset paging ordered by `changed_at` then `id`, with the lower bound of the range re-seeded from the cursor's own `changed_at` and an `or()` tie-break (`changed_at > c OR (changed_at = c AND id > i)`) for same-instant rows. The predicate a day yields is unchanged (`fromIso <= changed_at < toIso`, all tables), the cursor is still resume-safe, and same-instant bursts are handled exactly — 2026-08-18 holds 43,426 rows sharing one `changed_at`. Measured on the identical day and query: page one 28ms, mid-day page 22ms, page inside the burst 29ms, all served by the existing `idx_content_audit_log_changed_at`. Still PostgREST through supabase-js; no `pg` path. Better: pages in milliseconds on any day. Simpler: one index the table already has, the query builder is a pure exported function with a DB-free test. Cheaper: no composite `(changed_at, id)` index to maintain on a table that takes up to 611k rows a day.
+
+**Rejected.** (a) Seeding an id range from `min(id)/max(id)` in the window: Postgres's min/max optimisation uses the pkey with the same filter and took 49.4s on the same day. (b) A composite `(changed_at, id)` index: it would work, but EXPLAIN proved the rewrite alone does, so it fails "cheaper". (c) Moving the cursor queries to `pg`: unnecessary once the shape was expressible in PostgREST.
+
+**Also found.** The prune SELECT (`select('id')` in window `limit(500)`, no ORDER BY) was marked KNOWN-BROKEN alongside the page cursor but never was: EXPLAIN shows it served by the changed_at index in 13ms. Its marker is replaced by a comment saying not to add `order('id')` to it.
+
+**Still off.** `AUDIT_ARCHIVE_CRON` stays unset. This change makes real tiering possible; enabling it is a separate decision. Proof: `tools/archive-audit-log-test.cjs` (red on the old shape, green on the fix) and the two live dry runs for 2026-08-18 and 2026-07-03, no `--execute`, nothing written or deleted.
+
 ## 2026-09-12 — Preview builds are governed by the Vercel dashboard rule alone; the in-repo `ignoreCommand` is gone (job #460, Watson's decision)
 
 **Why.** The Aug 12–Sep 11 Vercel bill was $467, $366 of it Build CPU Minutes from ~8,962 preview deployments, one per push of every worker branch. RBF set an opt-in Ignored Build Step in the Vercel dashboard on every project: main, dev, staging and `preview/*` always build, a commit whose message carries `[preview]` builds, everything else is skipped. But a 2026-09-09 job had written an `ignoreCommand` into `vercel.json` (main|dev|staging build, everything else skipped; `bd0519a9d`) and Vercel gives the in-repo key precedence over the dashboard, so the dashboard rule only governed branches that lacked the file, and there was no route to a preview on this repo at all, and no worker branch could build.
