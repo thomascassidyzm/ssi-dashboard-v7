@@ -25,6 +25,11 @@ leak-fix ruling above), and it is the same resolver so the two doors still canno
 `casting-rights.cjs boothArrival` (a no-email cast voice's fallback is its cast courses, never the
 asked ones), `booth-community-voice.test.cjs` (Swahili, no policy row, two artists, a sibling
 Swahili course; fails on the pre-fix modules, passes after).
+Cold-verify #333 then showed propagation still filed Bea's take onto Zawadi's identical
+swa_for_fra line; closed by fad310254 (`propagateTakeToDuplicates` admits a copy only when its
+own cast resolves to the taking voice) and ea0272b23 (the one key). House re-check #362 re-ran
+the Bea→Zawadi reproduction on HEAD: nothing lands (`booth-cast-confinement-reconcile.test.cjs`).
+
 
 ---
 
