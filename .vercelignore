@@ -47,6 +47,25 @@ tests/
 # /docs/pods stays IN the upload: src/content/pod-thinking-docs.js imports from it at build time
 /docs/*
 !/docs/pods/
+# ...but only the .md/.txt src/content/pod-thinking-docs.js actually globs — the
+# JSON/PSV/CSV sweep logs that accumulate there (116MB, 2026-08-31) are not
+# read at build time and blew the Vercel deploy past its 10MB request-body limit.
+/docs/pods/*.json
+/docs/pods/*.psv
+/docs/pods/*.csv
 
 # Archive
 archive/
+
+# Agent scratch/worktree directories — gitignored, but Vercel CLI ignores
+# .gitignore once a .vercelignore exists, so these (2+ GB combined) were
+# riding along in the deploy upload and tripping its 10MB request-body limit
+# (2026-08-31). Mirrors the dot-dir patterns already in .gitignore.
+.worktrees/
+.claude/
+.a-munster/
+.a108-*/
+.a134-*/
+.a74-*/
+.kai-chat-archive/
+.scan-gender/

@@ -6,16 +6,22 @@
     "voiceB_second": "rex",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on rex (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on rex (1 turn)"
+    ],
     "afterVoicesInUse": [
       "eve",
       "rex"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -1160,6 +1166,71 @@
         "knownSplit": 2
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -1169,16 +1240,22 @@
     "voiceB_second": "ar-EG-ShakirNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ar-EG-ShakirNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ar-EG-ShakirNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "ar-EG-SalmaNeural",
       "ar-EG-ShakirNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -2299,1129 +2376,71 @@
         "knownSplit": 7
       }
     },
-    "written": false
-  },
-  {
-    "pod": "deu_at_for_eng:pod-1",
-    "course": "deu_at_for_eng",
-    "voiceA_learner": "44c91d64",
-    "voiceB_second": "e1fc5a89",
-    "voiceA_learner_known": "bedd6226",
-    "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
-    "afterVoicesInUse": [
-      "44c91d64",
-      "e1fc5a89"
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ar-EG-ShakirNeural",
+        "must_stay_on": "ar-EG-SalmaNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ar-EG-ShakirNeural",
+        "must_stay_on": "ar-EG-SalmaNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ar-EG-ShakirNeural",
+        "must_stay_on": "ar-EG-SalmaNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ar-EG-ShakirNeural",
+        "must_stay_on": "ar-EG-SalmaNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ar-EG-ShakirNeural",
+        "must_stay_on": "ar-EG-SalmaNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ar-EG-ShakirNeural",
+        "must_stay_on": "ar-EG-SalmaNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ar-EG-ShakirNeural",
+        "must_stay_on": "ar-EG-SalmaNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
-    "changes": [],
-    "castBefore": {
-      "Anna": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Anna"
-        ]
-      },
-      "Guest": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Guest"
-        ]
-      },
-      "James": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "James"
-        ]
-      },
-      "Local": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Local"
-        ]
-      },
-      "Sarah": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Sarah"
-        ]
-      },
-      "Staff": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        }
-      },
-      "Driver": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Driver"
-        ]
-      },
-      "Friend": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Friend (7 pm)",
-          "Friend"
-        ]
-      },
-      "Waiter": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Waiter"
-        ]
-      },
-      "Barista": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Barista (3 pm)",
-          "Barista"
-        ]
-      },
-      "Diner 1": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Diner 1"
-        ]
-      },
-      "Diner 2": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Diner 2"
-        ]
-      },
-      "Learner": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Learner"
-        ]
-      },
-      "Tourist": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Tourist"
-        ]
-      },
-      "Customer": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Customer"
-        ]
-      },
-      "Narrator": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Narrator"
-        ]
-      },
-      "Assistant": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Assistant"
-        ]
-      },
-      "Bartender": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Bartender"
-        ]
-      },
-      "Neighbour": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Neighbour (8 am)",
-          "Neighbour",
-          "Neighbour (10:30 pm)"
-        ]
-      },
-      "Passenger": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Passenger"
-        ]
-      },
-      "Pharmacist": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Pharmacist"
-        ]
-      },
-      "Cafe Barista": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Cafe Barista"
-        ]
-      },
-      "Interlocutor": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        }
-      },
-      "Receptionist": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Receptionist"
-        ]
-      },
-      "Bar Customer 1": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Bar Customer 1"
-        ]
-      },
-      "Bar Customer 2": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Bar Customer 2"
-        ]
-      },
-      "Bar Customer 3": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Bar Customer 3"
-        ]
-      },
-      "Cafe Customer 1": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Cafe Customer 1"
-        ]
-      },
-      "Cafe Customer 2": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Cafe Customer 2"
-        ]
-      },
-      "Cafe Customer 3": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Cafe Customer 3"
-        ]
-      }
-    },
-    "castAfter": {
-      "Anna": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Anna"
-        ]
-      },
-      "Guest": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Guest"
-        ]
-      },
-      "James": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "James"
-        ]
-      },
-      "Local": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Local"
-        ]
-      },
-      "Sarah": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Sarah"
-        ]
-      },
-      "Staff": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        }
-      },
-      "Driver": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Driver"
-        ]
-      },
-      "Friend": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Friend (7 pm)",
-          "Friend"
-        ]
-      },
-      "Waiter": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Waiter"
-        ]
-      },
-      "Barista": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Barista (3 pm)",
-          "Barista"
-        ]
-      },
-      "Diner 1": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Diner 1"
-        ]
-      },
-      "Diner 2": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Diner 2"
-        ]
-      },
-      "Learner": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Learner"
-        ]
-      },
-      "Tourist": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Tourist"
-        ]
-      },
-      "Customer": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Customer"
-        ]
-      },
-      "Narrator": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Narrator"
-        ]
-      },
-      "Assistant": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Assistant"
-        ]
-      },
-      "Bartender": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Bartender"
-        ]
-      },
-      "Neighbour": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Neighbour (8 am)",
-          "Neighbour",
-          "Neighbour (10:30 pm)"
-        ]
-      },
-      "Passenger": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Passenger"
-        ]
-      },
-      "Pharmacist": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Pharmacist"
-        ]
-      },
-      "Cafe Barista": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Cafe Barista"
-        ]
-      },
-      "Interlocutor": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        }
-      },
-      "Receptionist": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Receptionist"
-        ]
-      },
-      "Bar Customer 1": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Bar Customer 1"
-        ]
-      },
-      "Bar Customer 2": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Bar Customer 2"
-        ]
-      },
-      "Bar Customer 3": {
-        "known": {
-          "name": "Olivia",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "bedd6226"
-        },
-        "gender": "f",
-        "target": {
-          "name": "Sonja",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "44c91d64"
-        },
-        "variants": [
-          "Bar Customer 3"
-        ]
-      },
-      "Cafe Customer 1": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Cafe Customer 1"
-        ]
-      },
-      "Cafe Customer 2": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Cafe Customer 2"
-        ]
-      },
-      "Cafe Customer 3": {
-        "known": {
-          "name": "Tom",
-          "locale": "en",
-          "provider": "xai",
-          "voice_id": "gfzdpspr5fdp"
-        },
-        "gender": "m",
-        "target": {
-          "name": "Felix",
-          "locale": "de",
-          "provider": "xai",
-          "voice_id": "e1fc5a89"
-        },
-        "variants": [
-          "Cafe Customer 3"
-        ]
-      }
-    },
-    "reRenderScope": {
-      "byRole": [
-        {
-          "speaker": "Interlocutor",
-          "turns": 7,
-          "targetWhole": 7,
-          "knownWhole": 7,
-          "targetSplit": 0,
-          "knownSplit": 0
-        },
-        {
-          "speaker": "Staff",
-          "turns": 4,
-          "targetWhole": 4,
-          "knownWhole": 4,
-          "targetSplit": 0,
-          "knownSplit": 0
-        }
-      ],
-      "total": {
-        "turns": 11,
-        "targetWhole": 11,
-        "knownWhole": 11,
-        "targetSplit": 0,
-        "knownSplit": 0
-      }
-    },
     "written": false
   },
   {
@@ -3431,16 +2450,22 @@
     "voiceB_second": "41321eb41295",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 41321eb41295 (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 41321eb41295 (1 turn)"
+    ],
     "afterVoicesInUse": [
       "3a7889066fa2",
       "41321eb41295"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -4545,6 +3570,71 @@
         "knownSplit": 0
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "41321eb41295",
+        "must_stay_on": "3a7889066fa2",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "41321eb41295",
+        "must_stay_on": "3a7889066fa2",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "41321eb41295",
+        "must_stay_on": "3a7889066fa2",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "41321eb41295",
+        "must_stay_on": "3a7889066fa2",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "41321eb41295",
+        "must_stay_on": "3a7889066fa2",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "41321eb41295",
+        "must_stay_on": "3a7889066fa2",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "41321eb41295",
+        "must_stay_on": "3a7889066fa2",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -4554,16 +3644,22 @@
     "voiceB_second": "eu-ES-AnderNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on eu-ES-AnderNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on eu-ES-AnderNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "eu-ES-AinhoaNeural",
       "eu-ES-AnderNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -5716,6 +4812,71 @@
         "knownSplit": 16
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "eu-ES-AnderNeural",
+        "must_stay_on": "eu-ES-AinhoaNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "eu-ES-AnderNeural",
+        "must_stay_on": "eu-ES-AinhoaNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "eu-ES-AnderNeural",
+        "must_stay_on": "eu-ES-AinhoaNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "eu-ES-AnderNeural",
+        "must_stay_on": "eu-ES-AinhoaNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "eu-ES-AnderNeural",
+        "must_stay_on": "eu-ES-AinhoaNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "eu-ES-AnderNeural",
+        "must_stay_on": "eu-ES-AinhoaNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "eu-ES-AnderNeural",
+        "must_stay_on": "eu-ES-AinhoaNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -5725,16 +4886,22 @@
     "voiceB_second": "fr-CA-JeanNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on fr-CA-JeanNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on fr-CA-JeanNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "fr-CA-JeanNeural",
       "fr-CA-SylvieNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -6895,6 +6062,71 @@
         "knownSplit": 12
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "fr-CA-JeanNeural",
+        "must_stay_on": "fr-CA-SylvieNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "fr-CA-JeanNeural",
+        "must_stay_on": "fr-CA-SylvieNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "fr-CA-JeanNeural",
+        "must_stay_on": "fr-CA-SylvieNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "fr-CA-JeanNeural",
+        "must_stay_on": "fr-CA-SylvieNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "fr-CA-JeanNeural",
+        "must_stay_on": "fr-CA-SylvieNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "fr-CA-JeanNeural",
+        "must_stay_on": "fr-CA-SylvieNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "fr-CA-JeanNeural",
+        "must_stay_on": "fr-CA-SylvieNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -6904,16 +6136,22 @@
     "voiceB_second": "0p0rt7o1",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 0p0rt7o1 (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 0p0rt7o1 (1 turn)"
+    ],
     "afterVoicesInUse": [
       "0p0rt7o1",
       "69smp8rm"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -8018,6 +7256,71 @@
         "knownSplit": 0
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "0p0rt7o1",
+        "must_stay_on": "69smp8rm",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "0p0rt7o1",
+        "must_stay_on": "69smp8rm",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "0p0rt7o1",
+        "must_stay_on": "69smp8rm",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "0p0rt7o1",
+        "must_stay_on": "69smp8rm",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "0p0rt7o1",
+        "must_stay_on": "69smp8rm",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "0p0rt7o1",
+        "must_stay_on": "69smp8rm",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "0p0rt7o1",
+        "must_stay_on": "69smp8rm",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -8027,16 +7330,22 @@
     "voiceB_second": "ga-IE-ColmNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ga-IE-ColmNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ga-IE-ColmNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "ga-IE-ColmNeural",
       "ga-IE-OrlaNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -9181,6 +8490,71 @@
         "knownSplit": 2
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ga-IE-ColmNeural",
+        "must_stay_on": "ga-IE-OrlaNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ga-IE-ColmNeural",
+        "must_stay_on": "ga-IE-OrlaNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ga-IE-ColmNeural",
+        "must_stay_on": "ga-IE-OrlaNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ga-IE-ColmNeural",
+        "must_stay_on": "ga-IE-OrlaNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ga-IE-ColmNeural",
+        "must_stay_on": "ga-IE-OrlaNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ga-IE-ColmNeural",
+        "must_stay_on": "ga-IE-OrlaNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ga-IE-ColmNeural",
+        "must_stay_on": "ga-IE-OrlaNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -9190,16 +8564,22 @@
     "voiceB_second": "89q2pnko",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 89q2pnko (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 89q2pnko (1 turn)"
+    ],
     "afterVoicesInUse": [
       "89q2pnko",
       "ara"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -10336,6 +9716,71 @@
         "knownSplit": 12
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "89q2pnko",
+        "must_stay_on": "ara",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "89q2pnko",
+        "must_stay_on": "ara",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "89q2pnko",
+        "must_stay_on": "ara",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "89q2pnko",
+        "must_stay_on": "ara",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "89q2pnko",
+        "must_stay_on": "ara",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "89q2pnko",
+        "must_stay_on": "ara",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "89q2pnko",
+        "must_stay_on": "ara",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -10345,16 +9790,22 @@
     "voiceB_second": "hr-HR-GabrijelaNeural",
     "voiceA_learner_known": "gfzdpspr5fdp",
     "voiceB_second_known": "bedd6226",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on hr-HR-GabrijelaNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on hr-HR-GabrijelaNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "hr-HR-GabrijelaNeural",
       "hr-HR-SreckoNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on bedd6226 (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -11563,6 +11014,71 @@
         "knownSplit": 53
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "hr-HR-GabrijelaNeural",
+        "must_stay_on": "hr-HR-SreckoNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "hr-HR-GabrijelaNeural",
+        "must_stay_on": "hr-HR-SreckoNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "hr-HR-GabrijelaNeural",
+        "must_stay_on": "hr-HR-SreckoNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "hr-HR-GabrijelaNeural",
+        "must_stay_on": "hr-HR-SreckoNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "hr-HR-GabrijelaNeural",
+        "must_stay_on": "hr-HR-SreckoNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "hr-HR-GabrijelaNeural",
+        "must_stay_on": "hr-HR-SreckoNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "hr-HR-GabrijelaNeural",
+        "must_stay_on": "hr-HR-SreckoNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -11572,16 +11088,22 @@
     "voiceB_second": "is-IS-GunnarNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on is-IS-GunnarNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on is-IS-GunnarNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "is-IS-GudrunNeural",
       "is-IS-GunnarNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -12726,6 +12248,71 @@
         "knownSplit": 10
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "is-IS-GunnarNeural",
+        "must_stay_on": "is-IS-GudrunNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "is-IS-GunnarNeural",
+        "must_stay_on": "is-IS-GudrunNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "is-IS-GunnarNeural",
+        "must_stay_on": "is-IS-GudrunNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "is-IS-GunnarNeural",
+        "must_stay_on": "is-IS-GudrunNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "is-IS-GunnarNeural",
+        "must_stay_on": "is-IS-GudrunNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "is-IS-GunnarNeural",
+        "must_stay_on": "is-IS-GudrunNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "is-IS-GunnarNeural",
+        "must_stay_on": "is-IS-GudrunNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -12735,16 +12322,22 @@
     "voiceB_second": "x7avnu1k",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on x7avnu1k (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on x7avnu1k (1 turn)"
+    ],
     "afterVoicesInUse": [
       "ara",
       "x7avnu1k"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -13834,17 +13427,9 @@
         },
         {
           "speaker": "Interlocutor",
-          "turns": 7,
-          "targetWhole": 7,
-          "knownWhole": 7,
-          "targetSplit": 0,
-          "knownSplit": 0
-        },
-        {
-          "speaker": "Staff",
-          "turns": 4,
-          "targetWhole": 4,
-          "knownWhole": 4,
+          "turns": 5,
+          "targetWhole": 5,
+          "knownWhole": 5,
           "targetSplit": 0,
           "knownSplit": 0
         },
@@ -13865,6 +13450,14 @@
           "knownSplit": 0
         },
         {
+          "speaker": "Staff",
+          "turns": 2,
+          "targetWhole": 2,
+          "knownWhole": 2,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
           "speaker": "Bar Customer 2",
           "turns": 1,
           "targetWhole": 0,
@@ -13874,13 +13467,78 @@
         }
       ],
       "total": {
-        "turns": 23,
-        "targetWhole": 11,
-        "knownWhole": 11,
+        "turns": 19,
+        "targetWhole": 7,
+        "knownWhole": 7,
         "targetSplit": 45,
         "knownSplit": 5
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "x7avnu1k",
+        "must_stay_on": "ara",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "x7avnu1k",
+        "must_stay_on": "ara",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "x7avnu1k",
+        "must_stay_on": "ara",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "x7avnu1k",
+        "must_stay_on": "ara",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "x7avnu1k",
+        "must_stay_on": "ara",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "x7avnu1k",
+        "must_stay_on": "ara",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "x7avnu1k",
+        "must_stay_on": "ara",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -13890,16 +13548,22 @@
     "voiceB_second": "ja-JP-NaokiNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ja-JP-NaokiNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ja-JP-NaokiNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "ja-JP-MayuNeural",
       "ja-JP-NaokiNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -15092,6 +14756,71 @@
         "knownSplit": 58
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ja-JP-NaokiNeural",
+        "must_stay_on": "ja-JP-MayuNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ja-JP-NaokiNeural",
+        "must_stay_on": "ja-JP-MayuNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ja-JP-NaokiNeural",
+        "must_stay_on": "ja-JP-MayuNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ja-JP-NaokiNeural",
+        "must_stay_on": "ja-JP-MayuNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ja-JP-NaokiNeural",
+        "must_stay_on": "ja-JP-MayuNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ja-JP-NaokiNeural",
+        "must_stay_on": "ja-JP-MayuNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ja-JP-NaokiNeural",
+        "must_stay_on": "ja-JP-MayuNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -15101,16 +14830,22 @@
     "voiceB_second": "bf9fe5b5f981",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on bf9fe5b5f981 (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on bf9fe5b5f981 (1 turn)"
+    ],
     "afterVoicesInUse": [
       "bf9fe5b5f981",
       "ko-KR-YuJinNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -16311,6 +16046,71 @@
         "knownSplit": 55
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "bf9fe5b5f981",
+        "must_stay_on": "ko-KR-YuJinNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "bf9fe5b5f981",
+        "must_stay_on": "ko-KR-YuJinNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "bf9fe5b5f981",
+        "must_stay_on": "ko-KR-YuJinNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "bf9fe5b5f981",
+        "must_stay_on": "ko-KR-YuJinNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "bf9fe5b5f981",
+        "must_stay_on": "ko-KR-YuJinNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "bf9fe5b5f981",
+        "must_stay_on": "ko-KR-YuJinNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "bf9fe5b5f981",
+        "must_stay_on": "ko-KR-YuJinNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -16320,16 +16120,22 @@
     "voiceB_second": "a13662ba951c",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on a13662ba951c (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on a13662ba951c (1 turn)"
+    ],
     "afterVoicesInUse": [
       "58d27475085e",
       "a13662ba951c"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -17450,6 +17256,71 @@
         "knownSplit": 0
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "a13662ba951c",
+        "must_stay_on": "58d27475085e",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "a13662ba951c",
+        "must_stay_on": "58d27475085e",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "a13662ba951c",
+        "must_stay_on": "58d27475085e",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "a13662ba951c",
+        "must_stay_on": "58d27475085e",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "a13662ba951c",
+        "must_stay_on": "58d27475085e",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "a13662ba951c",
+        "must_stay_on": "58d27475085e",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "a13662ba951c",
+        "must_stay_on": "58d27475085e",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -17459,16 +17330,22 @@
     "voiceB_second": "pt-BR-JulioNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on pt-BR-JulioNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on pt-BR-JulioNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "ara",
       "pt-BR-JulioNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -18597,6 +18474,71 @@
         "knownSplit": 2
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "pt-BR-JulioNeural",
+        "must_stay_on": "ara",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "pt-BR-JulioNeural",
+        "must_stay_on": "ara",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "pt-BR-JulioNeural",
+        "must_stay_on": "ara",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "pt-BR-JulioNeural",
+        "must_stay_on": "ara",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "pt-BR-JulioNeural",
+        "must_stay_on": "ara",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "pt-BR-JulioNeural",
+        "must_stay_on": "ara",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "pt-BR-JulioNeural",
+        "must_stay_on": "ara",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -18606,16 +18548,22 @@
     "voiceB_second": "rex",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on rex (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on rex (1 turn)"
+    ],
     "afterVoicesInUse": [
       "eve",
       "rex"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -19760,6 +19708,71 @@
         "knownSplit": 0
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "rex",
+        "must_stay_on": "eve",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -19769,16 +19782,22 @@
     "voiceB_second": "ro-RO-EmilNeural",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ro-RO-EmilNeural (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on ro-RO-EmilNeural (1 turn)"
+    ],
     "afterVoicesInUse": [
       "ro-RO-AlinaNeural",
       "ro-RO-EmilNeural"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -20931,6 +20950,71 @@
         "knownSplit": 12
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ro-RO-EmilNeural",
+        "must_stay_on": "ro-RO-AlinaNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "ro-RO-EmilNeural",
+        "must_stay_on": "ro-RO-AlinaNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ro-RO-EmilNeural",
+        "must_stay_on": "ro-RO-AlinaNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "ro-RO-EmilNeural",
+        "must_stay_on": "ro-RO-AlinaNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ro-RO-EmilNeural",
+        "must_stay_on": "ro-RO-AlinaNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ro-RO-EmilNeural",
+        "must_stay_on": "ro-RO-AlinaNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "ro-RO-EmilNeural",
+        "must_stay_on": "ro-RO-AlinaNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -20942,10 +21026,14 @@
     "voiceB_second_known": "gfzdpspr5fdp",
     "beforeOk": false,
     "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on yis75yfp (1 turn)",
+      "91 clip(s) voiced off the pod cast: s1/1 Neighbour known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s1/3 Neighbour known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s2/2 Passenger known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s2/5 Passenger known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s3/1 Barista known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; …and 86 more",
       "6 clip(s) whose text does not belong to their own row: s16/2 Learner target_audio_id — clip says \"Has hablado un poco demasiado rápido, así que no estoy seguro de si te he entend\" but the row says \"Has hablado un poco demasiado rápido, así que no estoy segura de si te he entend\"; s19/2 Learner target_audio_id — clip says \"Eso me hace sentir un poco preocupado.\" but the row says \"Eso me hace sentir un poco preocupada.\"; s22/1 Learner target_audio_id — clip says \"¿Te importaría que intentara practicar el español hablando contigo? … No llevo m\" but the row says \"¿Te importaría que intentara practicar el español hablando contigo? No llevo muc\"; s22/5 Learner target_audio_id — clip says \"Sí, gracias. … Es más fácil hablar con una sola persona. … Es un poco difícil pe\" but the row says \"Sí, gracias. Es más fácil hablar con una sola persona. Es un poco difícil pensar\"; s22/9 Learner target_audio_id — clip says \"Esto es exactamente el tipo de práctica que necesito. … ¡Creo que puedo sentir c\" but the row says \"Esto es exactamente el tipo de práctica que necesito. ¡Creo que puedo sentir cóm\"; …and 1 more"
     ],
     "afterOk": false,
     "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on yis75yfp (1 turn)",
+      "91 clip(s) voiced off the pod cast: s1/1 Neighbour known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s1/3 Neighbour known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s2/2 Passenger known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s2/5 Passenger known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s3/1 Barista known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; …and 86 more",
       "6 clip(s) whose text does not belong to their own row: s16/2 Learner target_audio_id — clip says \"Has hablado un poco demasiado rápido, así que no estoy seguro de si te he entend\" but the row says \"Has hablado un poco demasiado rápido, así que no estoy segura de si te he entend\"; s19/2 Learner target_audio_id — clip says \"Eso me hace sentir un poco preocupado.\" but the row says \"Eso me hace sentir un poco preocupada.\"; s22/1 Learner target_audio_id — clip says \"¿Te importaría que intentara practicar el español hablando contigo? … No llevo m\" but the row says \"¿Te importaría que intentara practicar el español hablando contigo? No llevo muc\"; s22/5 Learner target_audio_id — clip says \"Sí, gracias. … Es más fácil hablar con una sola persona. … Es un poco difícil pe\" but the row says \"Sí, gracias. Es más fácil hablar con una sola persona. Es un poco difícil pensar\"; s22/9 Learner target_audio_id — clip says \"Esto es exactamente el tipo de práctica que necesito. … ¡Creo que puedo sentir c\" but the row says \"Esto es exactamente el tipo de práctica que necesito. ¡Creo que puedo sentir cóm\"; …and 1 more"
     ],
     "afterVoicesInUse": [
@@ -20954,6 +21042,8 @@
     ],
     "afterKnownOk": false,
     "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)",
+      "91 clip(s) voiced off the pod cast: s1/1 Neighbour known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s1/3 Neighbour known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s2/2 Passenger known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s2/5 Passenger known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; s3/1 Barista known_audio_id — voice cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2 is not in the pod's known cast [bedd6226, gfzdpspr5fdp]; …and 86 more",
       "6 clip(s) whose text does not belong to their own row: s16/2 Learner target_audio_id — clip says \"Has hablado un poco demasiado rápido, así que no estoy seguro de si te he entend\" but the row says \"Has hablado un poco demasiado rápido, así que no estoy segura de si te he entend\"; s19/2 Learner target_audio_id — clip says \"Eso me hace sentir un poco preocupado.\" but the row says \"Eso me hace sentir un poco preocupada.\"; s22/1 Learner target_audio_id — clip says \"¿Te importaría que intentara practicar el español hablando contigo? … No llevo m\" but the row says \"¿Te importaría que intentara practicar el español hablando contigo? No llevo muc\"; s22/5 Learner target_audio_id — clip says \"Sí, gracias. … Es más fácil hablar con una sola persona. … Es un poco difícil pe\" but the row says \"Sí, gracias. Es más fácil hablar con una sola persona. Es un poco difícil pensar\"; s22/9 Learner target_audio_id — clip says \"Esto es exactamente el tipo de práctica que necesito. … ¡Creo que puedo sentir c\" but the row says \"Esto es exactamente el tipo de práctica que necesito. ¡Creo que puedo sentir cóm\"; …and 1 more"
     ],
     "changes": [],
@@ -22036,10 +22126,50 @@
     "reRenderScope": {
       "byRole": [
         {
+          "speaker": "Narrator",
+          "turns": 16,
+          "targetWhole": 0,
+          "knownWhole": 16,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Friend",
+          "turns": 7,
+          "targetWhole": 0,
+          "knownWhole": 7,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Waiter",
+          "turns": 7,
+          "targetWhole": 0,
+          "knownWhole": 7,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
           "speaker": "Interlocutor",
           "turns": 7,
           "targetWhole": 7,
           "knownWhole": 7,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Passenger",
+          "turns": 6,
+          "targetWhole": 0,
+          "knownWhole": 6,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "James",
+          "turns": 6,
+          "targetWhole": 0,
+          "knownWhole": 6,
           "targetSplit": 0,
           "knownSplit": 0
         },
@@ -22052,10 +22182,82 @@
           "knownSplit": 15
         },
         {
+          "speaker": "Guest",
+          "turns": 6,
+          "targetWhole": 0,
+          "knownWhole": 6,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Bartender",
+          "turns": 5,
+          "targetWhole": 0,
+          "knownWhole": 5,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Local",
+          "turns": 5,
+          "targetWhole": 0,
+          "knownWhole": 5,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Barista",
+          "turns": 4,
+          "targetWhole": 0,
+          "knownWhole": 4,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Assistant",
+          "turns": 4,
+          "targetWhole": 0,
+          "knownWhole": 4,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Pharmacist",
+          "turns": 4,
+          "targetWhole": 0,
+          "knownWhole": 4,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
           "speaker": "Staff",
           "turns": 4,
           "targetWhole": 4,
           "knownWhole": 4,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Neighbour",
+          "turns": 3,
+          "targetWhole": 0,
+          "knownWhole": 3,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Cafe Customer 1",
+          "turns": 3,
+          "targetWhole": 0,
+          "knownWhole": 3,
+          "targetSplit": 0,
+          "knownSplit": 0
+        },
+        {
+          "speaker": "Cafe Customer 2",
+          "turns": 3,
+          "targetWhole": 0,
+          "knownWhole": 3,
           "targetSplit": 0,
           "knownSplit": 0
         },
@@ -22082,6 +22284,14 @@
           "knownWhole": 0,
           "targetSplit": 0,
           "knownSplit": 2
+        },
+        {
+          "speaker": "Cafe Customer 3",
+          "turns": 1,
+          "targetWhole": 0,
+          "knownWhole": 1,
+          "targetSplit": 0,
+          "knownSplit": 0
         },
         {
           "speaker": "Bar Customer 1",
@@ -22117,13 +22327,78 @@
         }
       ],
       "total": {
-        "turns": 26,
+        "turns": 106,
         "targetWhole": 11,
-        "knownWhole": 11,
+        "knownWhole": 91,
         "targetSplit": 6,
         "knownSplit": 34
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "yis75yfp",
+        "must_stay_on": "es-ES-ElviraNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "yis75yfp",
+        "must_stay_on": "es-ES-ElviraNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "yis75yfp",
+        "must_stay_on": "es-ES-ElviraNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "yis75yfp",
+        "must_stay_on": "es-ES-ElviraNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "yis75yfp",
+        "must_stay_on": "es-ES-ElviraNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "yis75yfp",
+        "must_stay_on": "es-ES-ElviraNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "yis75yfp",
+        "must_stay_on": "es-ES-ElviraNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -22135,10 +22410,12 @@
     "voiceB_second_known": "gfzdpspr5fdp",
     "beforeOk": false,
     "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on es-MX-LucianoNeural (1 turn)",
       "4 clip(s) whose text does not belong to their own row: s22/1 Learner target_audio_id — clip says \"¿Le molestaría si intentara practicar hablando español mexicano con usted? … No \" but the row says \"¿Le molestaría si intentara practicar hablando español mexicano con usted? No ll\"; s22/5 Learner target_audio_id — clip says \"Sí, gracias. … Es más fácil hablar con una sola persona. … Es un poco difícil pe\" but the row says \"Sí, gracias. Es más fácil hablar con una sola persona. Es un poco difícil pensar\"; s22/9 Learner target_audio_id — clip says \"Esto es exactamente el tipo de práctica que necesito. … ¡Creo que puedo sentir c\" but the row says \"Esto es exactamente el tipo de práctica que necesito. ¡Creo que puedo sentir cóm\"; s22/11 Learner target_audio_id — clip says \"Sí, la verdad que sí. … Estoy muy contento de poder tener esta cantidad de conve\" but the row says \"Sí, la verdad que sí. Estoy muy contenta de poder tener esta cantidad de convers\""
     ],
     "afterOk": false,
     "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on es-MX-LucianoNeural (1 turn)",
       "4 clip(s) whose text does not belong to their own row: s22/1 Learner target_audio_id — clip says \"¿Le molestaría si intentara practicar hablando español mexicano con usted? … No \" but the row says \"¿Le molestaría si intentara practicar hablando español mexicano con usted? No ll\"; s22/5 Learner target_audio_id — clip says \"Sí, gracias. … Es más fácil hablar con una sola persona. … Es un poco difícil pe\" but the row says \"Sí, gracias. Es más fácil hablar con una sola persona. Es un poco difícil pensar\"; s22/9 Learner target_audio_id — clip says \"Esto es exactamente el tipo de práctica que necesito. … ¡Creo que puedo sentir c\" but the row says \"Esto es exactamente el tipo de práctica que necesito. ¡Creo que puedo sentir cóm\"; s22/11 Learner target_audio_id — clip says \"Sí, la verdad que sí. … Estoy muy contento de poder tener esta cantidad de conve\" but the row says \"Sí, la verdad que sí. Estoy muy contenta de poder tener esta cantidad de convers\""
     ],
     "afterVoicesInUse": [
@@ -22147,6 +22424,7 @@
     ],
     "afterKnownOk": false,
     "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)",
       "4 clip(s) whose text does not belong to their own row: s22/1 Learner target_audio_id — clip says \"¿Le molestaría si intentara practicar hablando español mexicano con usted? … No \" but the row says \"¿Le molestaría si intentara practicar hablando español mexicano con usted? No ll\"; s22/5 Learner target_audio_id — clip says \"Sí, gracias. … Es más fácil hablar con una sola persona. … Es un poco difícil pe\" but the row says \"Sí, gracias. Es más fácil hablar con una sola persona. Es un poco difícil pensar\"; s22/9 Learner target_audio_id — clip says \"Esto es exactamente el tipo de práctica que necesito. … ¡Creo que puedo sentir c\" but the row says \"Esto es exactamente el tipo de práctica que necesito. ¡Creo que puedo sentir cóm\"; s22/11 Learner target_audio_id — clip says \"Sí, la verdad que sí. … Estoy muy contento de poder tener esta cantidad de conve\" but the row says \"Sí, la verdad que sí. Estoy muy contenta de poder tener esta cantidad de convers\""
     ],
     "changes": [],
@@ -23277,6 +23555,71 @@
         "knownSplit": 15
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "es-MX-LucianoNeural",
+        "must_stay_on": "es-MX-CarlotaNeural",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "es-MX-LucianoNeural",
+        "must_stay_on": "es-MX-CarlotaNeural",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "es-MX-LucianoNeural",
+        "must_stay_on": "es-MX-CarlotaNeural",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "es-MX-LucianoNeural",
+        "must_stay_on": "es-MX-CarlotaNeural",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "es-MX-LucianoNeural",
+        "must_stay_on": "es-MX-CarlotaNeural",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "es-MX-LucianoNeural",
+        "must_stay_on": "es-MX-CarlotaNeural",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "es-MX-LucianoNeural",
+        "must_stay_on": "es-MX-CarlotaNeural",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -23286,16 +23629,22 @@
     "voiceB_second": "4c7f16ff",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 4c7f16ff (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on 4c7f16ff (1 turn)"
+    ],
     "afterVoicesInUse": [
       "3b312632",
       "4c7f16ff"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -24408,6 +24757,71 @@
         "knownSplit": 2
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "4c7f16ff",
+        "must_stay_on": "3b312632",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "4c7f16ff",
+        "must_stay_on": "3b312632",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "4c7f16ff",
+        "must_stay_on": "3b312632",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "4c7f16ff",
+        "must_stay_on": "3b312632",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "4c7f16ff",
+        "must_stay_on": "3b312632",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "4c7f16ff",
+        "must_stay_on": "3b312632",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "4c7f16ff",
+        "must_stay_on": "3b312632",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   },
   {
@@ -24417,16 +24831,22 @@
     "voiceB_second": "jpi39icg",
     "voiceA_learner_known": "bedd6226",
     "voiceB_second_known": "gfzdpspr5fdp",
-    "beforeOk": true,
-    "beforeFailures": [],
-    "afterOk": true,
-    "afterFailures": [],
+    "beforeOk": false,
+    "beforeFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on jpi39icg (1 turn)"
+    ],
+    "afterOk": false,
+    "afterFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on jpi39icg (1 turn)"
+    ],
     "afterVoicesInUse": [
       "33g9t0jl",
       "jpi39icg"
     ],
-    "afterKnownOk": true,
-    "afterKnownFailures": [],
+    "afterKnownOk": false,
+    "afterKnownFailures": [
+      "1 same-voice exchange pair(s) — a character answering themselves: Interlocutor↔Narrator on gfzdpspr5fdp (1 turn)"
+    ],
     "changes": [],
     "castBefore": {
       "Anna": {
@@ -25563,6 +25983,71 @@
         "knownSplit": 37
       }
     },
+    "variantRunConflicts": [
+      {
+        "line": "17.4",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "jpi39icg",
+        "must_stay_on": "33g9t0jl",
+        "known_text": "Would you like to pay by cash or card or on the room?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "17.5",
+        "speaker": "Staff",
+        "run": "s17/4-5",
+        "cast_would_use": "jpi39icg",
+        "must_stay_on": "33g9t0jl",
+        "known_text": "Did you want to pay by cash or card?",
+        "reason": "2 consecutive Staff lines at 17.4, 17.5 rephrase the same beat with nobody answering between them — \"Would you like to pay by cash or card or on the room?\" then \"Did you want to pay by cash or card?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.5",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "jpi39icg",
+        "must_stay_on": "33g9t0jl",
+        "known_text": "It's down there on the left.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.6",
+        "speaker": "Interlocutor",
+        "run": "s21/5-6",
+        "cast_would_use": "jpi39icg",
+        "must_stay_on": "33g9t0jl",
+        "known_text": "It's down there on the right.",
+        "reason": "2 consecutive Interlocutor lines at 21.5, 21.6 rephrase the same beat with nobody answering between them — \"It's down there on the left.\" then \"It's down there on the right.\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.11",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "jpi39icg",
+        "must_stay_on": "33g9t0jl",
+        "known_text": "Would you like to order some drinks?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.12",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "jpi39icg",
+        "must_stay_on": "33g9t0jl",
+        "known_text": "Do you want to order some drinks first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      },
+      {
+        "line": "21.13",
+        "speaker": "Interlocutor",
+        "run": "s21/11-13",
+        "cast_would_use": "jpi39icg",
+        "must_stay_on": "33g9t0jl",
+        "known_text": "Did you want something to drink first?",
+        "reason": "3 consecutive Interlocutor lines at 21.11, 21.12, 21.13 rephrase the same beat with nobody answering between them — \"Would you like to order some drinks?\" then \"Do you want to order some drinks first?\" then \"Did you want something to drink first?\". A second voice here makes the speaker contradict themselves, so this run stays on ONE voice (Tom's variant-drill ruling, 2026-08-24)."
+      }
+    ],
     "written": false
   }
 ]

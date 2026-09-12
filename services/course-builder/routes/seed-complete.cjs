@@ -19,7 +19,7 @@ const {
 const {
   METHODOLOGY_HINTS, checkTiling, checkPhraseComplexity,
   checkVocabViolations, calculateLegoBalanceScores, checkPhraseBalance,
-  checkLegoConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
+  checkLegoConflict, isDedupConflict, checkPhraseZUT, checkBasketFrameCoverage, checkMetadataGloss,
   loadPairContract, checkKnownSide, isKnownVocabBreach, compileKnownContract, stemKnownGloss, tokenizeKnown,
   checkBuildRecombination, checkBuildBasketTeachesWord,
 } = require('../lib/validation.cjs');
@@ -472,7 +472,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           });
         }
 
-        if (conflictResult.conflict === 'duplicate') {
+        if (isDedupConflict(conflictResult)) {
           isNew = false;
           skipBaskets = true;
           console.log(`  ${legoId}: Duplicate of ${conflictResult.legoId} - marking is_new=false, skipping baskets`);
@@ -775,7 +775,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             continue;
           }
 
-          if (conflictResult.conflict === 'duplicate') {
+          if (isDedupConflict(conflictResult)) {
             isNew = false;
             skipBaskets = true;
             duplicates++;
@@ -1156,7 +1156,7 @@ module.exports = function seedCompleteRoutes(ctx) {
               existing: conflictResult.existing,
               suggestions: conflictResult.suggestions,
             });
-          } else if (conflictResult.conflict === 'duplicate') {
+          } else if (isDedupConflict(conflictResult)) {
             duplicateLegos.push({
               lego_id: legoId,
               known: lego.known,

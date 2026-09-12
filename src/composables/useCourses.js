@@ -42,9 +42,20 @@ export function getLanguageName(code, fallback = '') {
 const courses = ref([])
 const loading = ref(false)
 let loaded = false
+// One in-flight load, shared. AppNavbar and the CourseSwitcherDropdown it
+// renders both call loadCourses() on mount, so the `loaded` flag alone never
+// caught the second caller — it fires before the first fetch resolves, and
+// every page paid for `courses?select=*` (~827 KB) twice.
+let inflight = null
 
-async function loadCourses(force = false) {
-  if (loaded && !force) return
+function loadCourses(force = false) {
+  if (loaded && !force) return Promise.resolve()
+  if (inflight && !force) return inflight
+  inflight = runLoad().finally(() => { inflight = null })
+  return inflight
+}
+
+async function runLoad() {
   loading.value = true
   try {
     // Ensure language names are loaded before mapping course names
