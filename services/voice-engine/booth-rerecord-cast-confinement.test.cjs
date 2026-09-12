@@ -24,7 +24,9 @@ const SIBLING_CLIP = '22222222-2222-4222-8222-222222222222'
 
 // Swahili: NO policy row. Bea is cast on swa_for_eng only; swa_for_fra is a
 // sibling course of the SAME language with its own flagged narration clip.
-function fixture() {
+// Wants name a gender, as every live want does (untagged narration is owned
+// through the want's gender and the course's cast: clipVoiceId).
+function fixture({ zawadiEmail = 'zawadi@example.com' } = {}) {
   return {
     language_recording_policy: [],
     dashboard_users: [],
@@ -33,14 +35,14 @@ function fixture() {
         Bea: { name: 'Bea', gender: 'f', voiceId: BEA_VOICE, email: BEA },
       } } },
       { course_code: 'swa_for_fra', target_lang: 'swa', known_lang: 'fra', voice_config: { podCast: {
-        Zawadi: { name: 'Zawadi', gender: 'f', voiceId: 'human_zawadi_swa', email: 'zawadi@example.com' },
+        Zawadi: { name: 'Zawadi', gender: 'f', voiceId: 'human_zawadi_swa', email: zawadiEmail },
       } } },
     ],
     listening_pods: [],
     listening_pod_sentences: [],
     course_audio: [
-      { id: OWN_CLIP, course_code: 'swa_for_eng', text: 'Habari.', role: 'narration', language: 'swa', voice_id: 'human', s3_key: 'k1', rerecord_wanted: 'clipped' },
-      { id: SIBLING_CLIP, course_code: 'swa_for_fra', text: 'Karibu.', role: 'narration', language: 'swa', voice_id: 'human', s3_key: 'k2', rerecord_wanted: 'clipped' },
+      { id: OWN_CLIP, course_code: 'swa_for_eng', text: 'Habari.', role: 'narration', language: 'swa', voice_id: 'human', s3_key: 'k1', rerecord_wanted: { reason: 'clipped', voice_gender: 'f' } },
+      { id: SIBLING_CLIP, course_code: 'swa_for_fra', text: 'Karibu.', role: 'narration', language: 'swa', voice_id: 'human', s3_key: 'k2', rerecord_wanted: { reason: 'clipped', voice_gender: 'f' } },
     ],
   }
 }
@@ -71,11 +73,11 @@ function stubDb(tables, updates) {
   }
 }
 
-async function take(lineId) {
+async function take(lineId, tables = fixture()) {
   const updates = []
   const uploads = []
   const router = createRecordistRouter({
-    getDb: () => stubDb(fixture(), updates),
+    getDb: () => stubDb(tables, updates),
     logger: { log() {}, info() {}, warn() {}, error() {} },
     s3: {},
     // The upload seam is the money: a refusal must happen BEFORE it is reached.
@@ -120,4 +122,23 @@ test('the same voice still re-records a flagged clip on its own cast course, and
   assert.deepEqual(r.uploads, [{ courseCode: 'swa_for_eng', uuid: OWN_CLIP }])
   assert.equal(r.body.wantsRetired, 1)
   assert.deepEqual(r.updates, [{ table: 'course_audio', op: 'update', patch: { rerecord_wanted: null }, ids: [OWN_CLIP] }])
+})
+
+// Cold-verify #337 (2026-09-12) changed ONLY Zawadi's email to Bea's and the
+// then-fixed code (4ec389f7c) accepted Bea's VOICE on the sibling clip: the
+// gate keyed on what the email held, not on what this voice is cast to. The
+// same person cast as two voices on two courses re-records each course's clips
+// by THAT course's voice. Closed by fad310254 (boothArrival filters the email's
+// casting down to the voice's own castCourses); house re-check #362 pinned it.
+test('the same email cast as another voice on the sibling course does not admit THIS voice there', async () => {
+  const r = await take(SIBLING_CLIP, fixture({ zawadiEmail: BEA }))
+  assert.equal(r.status, 403, `expected a refusal, got ${r.status} ${JSON.stringify(r.body)}`)
+  assert.equal(r.body.reason, 'not_cast_no_grant')
+  assert.equal(r.body.courseCode, 'swa_for_fra')
+  assert.deepEqual(r.uploads, [], 'the upload seam is never reached')
+  assert.deepEqual(r.updates, [], "the want on Zawadi's clip is untouched")
+  // And the same person's own course is still theirs under this voice.
+  const own = await take(OWN_CLIP, fixture({ zawadiEmail: BEA }))
+  assert.equal(own.status, undefined, `expected 200, got ${own.status} ${JSON.stringify(own.body)}`)
+  assert.deepEqual(own.uploads, [{ courseCode: 'swa_for_eng', uuid: OWN_CLIP }])
 })
