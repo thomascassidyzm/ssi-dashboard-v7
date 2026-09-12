@@ -385,6 +385,20 @@ module.exports = function createRecordistRouter({
     if (clip.language !== recordist.language) {
       return res.status(403).json({ error: `Clip ${lineId} is ${clip.language}, not ${recordist.language}` })
     }
+    // A cast-only (community) voice re-records on its cast courses and nowhere
+    // else -- the same verdict the queue, the link and the pod-line take give.
+    // The language check above is not enough: a sibling course of the same
+    // language is the exact thing a per-course cast must not reach, and a clip
+    // uuid the queue never showed is still a uuid. A policy voice is
+    // language-wide and unchanged here (job #334 cold-verify of #329).
+    if (Array.isArray(recordist.castCourses)) {
+      const arrival = await castingRights.boothArrival({
+        db: db(), recordist, courseCodes: [clip.course_code], method: req.method, path: req.originalUrl || req.path, logger,
+      })
+      if (arrival.refused.length) {
+        return res.status(403).json({ error: arrival.refused[0].sentence, courseCode: clip.course_code, reason: 'not_cast_no_grant' })
+      }
+    }
 
     const clipText = (clip.text || '').trim()
     if (text && text.trim() && text.trim() !== clipText) {
