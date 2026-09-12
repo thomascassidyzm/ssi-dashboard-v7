@@ -74,10 +74,13 @@ function defaultCastPeople({ rosterVoices = [] } = {}) {
   // above is only what an EMPTY roster falls back to (2026-09-12).
   const roster = (rosterVoices || []).filter(Boolean).slice(0, MAX_POD_VOICES)
   if (!roster.length) return rows
+  // Gender comes from the roster entry when it says; the first two rows keep
+  // the default f/m suggestion, any row past them is left for the leader to
+  // label ('' — the panel's "Choose voice…" state) rather than guessed.
   return roster.map((v, i) => ({
     name: v.name || '',
     email: v.email || '',
-    gender: (v.gender === 'm' || v.gender === 'f') ? v.gender : (rows[i] ? rows[i].gender : 'f'),
+    gender: (v.gender === 'm' || v.gender === 'f') ? v.gender : (rows[i] ? rows[i].gender : ''),
     guide: false,
   }))
 }
