@@ -31,7 +31,7 @@ test('the generator prompt carries the one rule paragraph and asks for jump_in o
   assert.ok(!p.includes('{{JUMP_IN_RULE}}'), 'placeholder filled')
   assert.ok(p.includes('"jump_in":false'), 'output format names the field')
   // three examples each way, as briefed
-  assert.ok(/sì sì/.test(JUMP_IN_RULE) && /davvero\?/.test(JUMP_IN_RULE) && /finishing, completing or capping/.test(JUMP_IN_RULE))
+  assert.ok(/sì sì/.test(JUMP_IN_RULE) && /davvero\?/.test(JUMP_IN_RULE) && /Oggi abbiamo—/.test(JUMP_IN_RULE) && /go and use it/.test(JUMP_IN_RULE))
   assert.ok(/Where are you from\?/.test(JUMP_IN_RULE) && /let me get my coat/.test(JUMP_IN_RULE) && /what are you doing tomorrow\?/.test(JUMP_IN_RULE))
 })
 
@@ -43,4 +43,17 @@ test('editing the marker is delivery, not words: the patch touches jump_in and n
   assert.strictEqual(both.jump_in, true)
   assert.strictEqual(both.known_audio_id, null, 'a text edit still unlinks its side')
   assert.ok(!('target_audio_id' in buildSentenceEditPatch({ jump_in: true })))
+})
+
+test('the text decides first: a cut-off previous line makes this one a jump-in; a leading ellipsis is a pause', () => {
+  const { deterministicJumpIn, endsInterrupted } = require('./pod-jump-in-rule.cjs')
+  assert.strictEqual(endsInterrupted('Oggi abbiamo—'), true)
+  assert.strictEqual(endsInterrupted('Dovrebbero proprio trovare un…'), true)
+  assert.strictEqual(endsInterrupted('«quando tu davvero—»'), true)
+  assert.strictEqual(endsInterrupted('Pysgod. …La curva, però.'), false, 'a mid-line ellipsis is a breathing mark, not a cut-off')
+  assert.strictEqual(deterministicJumpIn('Oggi abbiamo—', 'Il futuro dell\'istruzione?'), true)
+  assert.strictEqual(deterministicJumpIn('Fare cose fighe.', '—molto, molto in fretta.'), true, 'resuming own cut-off sentence')
+  assert.strictEqual(deterministicJumpIn('Giovedì non ci sono.', '…Domani.'), null, 'leading ellipsis is a beat, the model decides')
+  assert.strictEqual(deterministicJumpIn('Non lo so.', 'Non lo sai?'), null)
+  assert.strictEqual(deterministicJumpIn(null, 'Bene.'), false, 'scene opener')
 })

@@ -19,8 +19,31 @@
  * a line says.
  */
 
-/** One paragraph, pasted verbatim into every prompt that decides the marker. */
-const JUMP_IN_RULE = `JUMP-IN MARKER ("jump_in", true or false, on every line). A line JUMPS IN when the speaker cuts into the previous speaker's flow rather than waiting for their turn: the two lines should play with no gap (overlapping if the player can). Mark jump_in TRUE when the line reacts mid-flow or overlaps — a backchannel or agreement fired while the other is still talking ("sì sì", "mm, right, right"); a surprised or emphatic interjection cutting in ("davvero?", "no!", "exactly!"); or the speaker finishing, completing or capping the other's unfinished sentence (the previous line trails off with "…" or "—" and this line supplies the rest). Mark jump_in FALSE for genuine turn-taking — the previous speaker has finished and this speaker takes the floor: an answer to a question ("Where are you from?" → "I'm from Manchester."); a reply to a completed statement ("I think we should leave now." → "Okay, let me get my coat."); or a new question or topic after the other has come to a full stop ("That was lovely, thank you." → "So, what are you doing tomorrow?"). The first line of a scene is always FALSE. Judge from the WORDS and their punctuation only — trailing "…" or "—" on the previous line, a leading "…" or "—" on this one, a bare reaction word — never from a hunch; when a line could be either, it is FALSE. The marker changes only how the audio is scheduled, never the text: do not alter, shorten or rephrase any line to fit it.`
+/** THE TEXT DECIDES FIRST (Tom, 2026-09-12 21:59Z: "the dialogue text ALREADY encodes
+ *  interruptions — the interrupted line is written to stop abruptly"). A line whose
+ *  previous line ends cut off — trailing em-dash or ellipsis, closing quote marks
+ *  allowed after it — IS a jump-in, deterministically, before any model is asked.
+ *  A line that itself opens with an em-dash is the speaker resuming a sentence they
+ *  were cut off from, which is the same no-gap changeover. A LEADING ellipsis is the
+ *  opposite: a beat before speaking, a hesitation, never a cue. */
+const TRAILING_CUT = /[—…]\s*[»"”'’)]*\s*$/u
+const LEADING_RESUME = /^\s*[«"“'‘(]*\s*—/u
+
+function endsInterrupted(text) { return TRAILING_CUT.test(String(text || '')) }
+function startsResumed(text) { return LEADING_RESUME.test(String(text || '')) }
+
+/** Deterministic first pass: true when the text marks the changeover; null when the
+ *  text is silent and a judgement is needed. Never false — silence is not a verdict. */
+function deterministicJumpIn(prevText, text) {
+  if (prevText == null) return false
+  if (endsInterrupted(prevText) || startsResumed(text)) return true
+  return null
+}
+
+/** One paragraph, pasted verbatim into every prompt that decides the marker. The
+ *  model only ever ADDS jump-ins the text does not mark (backchannels); the text rule
+ *  above is applied in code before and after it. */
+const JUMP_IN_RULE = `JUMP-IN MARKER ("jump_in", true or false, on every line). A line JUMPS IN when the speaker cuts into the previous speaker's flow rather than waiting for their turn: the two lines should play with no gap (overlapping if the player can). The TEXT decides first: if the previous line ends cut off — a trailing "—" or "…" — this line is jump_in TRUE, always (it completes, caps or reacts to an unfinished sentence: "Oggi abbiamo—" → "Il futuro dell'istruzione?"; "the third thing is that when you actually—" → "—go and use it"; "Dovrebbero proprio trovare un…" → "Dovrebbero proprio."). A line that itself opens with "—" is the speaker resuming their own cut-off sentence and is also TRUE. Beyond that, mark TRUE only for a genuine backchannel the text does not mark: a short agreement or reaction of a few words fired while the other is plainly still mid-flow ("sì sì", "mm, right, right"; "davvero?" cutting into a story; "esatto!" over the end of an explanation). Mark FALSE for genuine turn-taking — the previous speaker has come to a full stop and this speaker takes the floor: an answer to a question ("Where are you from?" → "I'm from Manchester."); a reply to a completed statement ("I think we should leave now." → "Okay, let me get my coat."); a new question or topic after a full stop ("That was lovely, thank you." → "So, what are you doing tomorrow?"). An echo-question that then gets answered ("Non lo so." → "Non lo sai?") is a turn, not a jump-in. A LEADING "…" on this line is a pause before speaking, not a cue — it is FALSE unless the previous line was cut off. The first line of a scene is always FALSE. When a line could be either, it is FALSE. The marker changes only how the audio is scheduled, never the text: do not alter, shorten or rephrase any line to fit it.`
 
 /** The DB column's three states: true, false, or NULL (never annotated). Anything
  *  a model or a request body sends that is not literally true/false collapses to
@@ -44,4 +67,4 @@ function withJumpIn(row) {
   return { ...row, jumpIn: jumpInForPayload(row) }
 }
 
-module.exports = { JUMP_IN_RULE, normaliseJumpIn, jumpInForPayload, withJumpIn }
+module.exports = { JUMP_IN_RULE, normaliseJumpIn, jumpInForPayload, withJumpIn, endsInterrupted, startsResumed, deterministicJumpIn }

@@ -26,7 +26,7 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), 
 const fs = require('fs')
 const { Client } = require('pg')
 const { claudeChat } = require('../../services/shared/claude-cli.cjs')
-const { JUMP_IN_RULE, normaliseJumpIn } = require('../../services/shared/pod-jump-in-rule.cjs')
+const { JUMP_IN_RULE, normaliseJumpIn, deterministicJumpIn, endsInterrupted } = require('../../services/shared/pod-jump-in-rule.cjs')
 const { evidencePath } = require('../lib/evidence-path.cjs')
 
 const argv = process.argv.slice(2)
@@ -65,7 +65,14 @@ function parseVerdicts(raw, lines) {
     if (Number(o.global_order) !== Number(l.global_order)) throw new Error(`global_order ${o.global_order} ≠ ${l.global_order} at index ${k}`)
     const v = normaliseJumpIn(o.jump_in)
     if (v === null) throw new Error(`line ${l.global_order}: jump_in is not true/false`)
-    return { ...l, verdict: k === 0 ? false : v, reason: String(o.reason || '').trim().slice(0, 120) }
+    // The text decides first (Tom, 2026-09-12 21:59Z): a previous line written to
+    // stop abruptly makes this one a jump-in whatever the model said. The model
+    // only adds the backchannels the text does not mark.
+    const byText = k === 0 ? false : deterministicJumpIn(lines[k - 1].target_text, l.target_text)
+    if (byText !== null) {
+      return { ...l, verdict: byText, source: 'text', reason: k === 0 ? 'scene opener' : (endsInterrupted(lines[k - 1].target_text) ? 'previous line ends cut off' : 'resumes own cut-off sentence') }
+    }
+    return { ...l, verdict: v, source: 'model', reason: String(o.reason || '').trim().slice(0, 120) }
   })
 }
 
@@ -98,7 +105,7 @@ function markdownDoc(podId, rows, meta) {
       out.push('| # | speaker | jumpIn | line | reason |')
       out.push('|---|---|---|---|---|')
     }
-    const mark = r.verdict ? '**⤵ YES**' : 'no'
+    const mark = r.verdict ? (r.source === 'text' ? '**⤵ YES** (text)' : '**⤵ YES** (judged)') : 'no'
     const text = String(r.target_text).replace(/\|/g, '\\|')
     const known = String(r.known_text).replace(/\|/g, '\\|')
     out.push(`| ${r.global_order} | ${r.speaker} | ${mark} | ${text}<br>_${known}_ | ${r.reason.replace(/\|/g, '\\|')} |`)
@@ -136,7 +143,8 @@ async function main() {
     }
     const stamp = new Date().toISOString().replace(/[:.]/g, '-')
     const jumpIns = judged.filter((r) => r.verdict).length
-    const meta = { podId: POD_ID, model: MODEL, applied: false, stamp, lines: judged.length, jumpIns, elapsedS: Math.round((Date.now() - t0) / 1000) }
+    const byText = judged.filter((r) => r.verdict && r.source === 'text').length
+    const meta = { podId: POD_ID, model: MODEL, applied: false, stamp, lines: judged.length, jumpIns, byText, byModel: jumpIns - byText, interruptedEndings: judged.filter((r) => endsInterrupted(r.target_text)).length, elapsedS: Math.round((Date.now() - t0) / 1000) }
 
     let written = 0
     if (APPLY) {
@@ -157,9 +165,9 @@ async function main() {
 
     const logPath = evidencePath(`tools/pods/annotate-jump-in/${POD_ID.replace(/[^a-z0-9_-]/gi, '_')}-${APPLY ? 'applied' : 'dryrun'}-${stamp}.json`)
     fs.mkdirSync(path.dirname(logPath), { recursive: true })
-    fs.writeFileSync(logPath, JSON.stringify({ meta, rows: judged.map((r) => ({ id: r.id, scene: r.scene_number, global_order: r.global_order, speaker: r.speaker, before: r.jump_in, jump_in: r.verdict, reason: r.reason })) }, null, 2))
+    fs.writeFileSync(logPath, JSON.stringify({ meta, rows: judged.map((r) => ({ id: r.id, scene: r.scene_number, global_order: r.global_order, speaker: r.speaker, before: r.jump_in, jump_in: r.verdict, source: r.source, reason: r.reason })) }, null, 2))
     if (DOC) { fs.mkdirSync(path.dirname(DOC), { recursive: true }); fs.writeFileSync(DOC, markdownDoc(POD_ID, judged, meta)) }
-    console.log(`${APPLY ? 'APPLIED' : 'DRY RUN'}: ${judged.length} lines, ${jumpIns} jump-ins (${(100 * jumpIns / judged.length).toFixed(0)}%), ${written} rows written, ${meta.elapsedS}s → ${logPath}${DOC ? `, doc ${DOC}` : ''}`)
+    console.log(`${APPLY ? 'APPLIED' : 'DRY RUN'}: ${judged.length} lines, ${jumpIns} jump-ins (${(100 * jumpIns / judged.length).toFixed(0)}%; ${byText} from text, ${jumpIns - byText} judged; ${meta.interruptedEndings} lines end cut off), ${written} rows written, ${meta.elapsedS}s → ${logPath}${DOC ? `, doc ${DOC}` : ''}`)
   } finally { await db.end() }
 }
 

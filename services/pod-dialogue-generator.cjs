@@ -21,7 +21,7 @@ const crypto = require('crypto')
 const { createClient } = require('@supabase/supabase-js')
 const { claudeChat, HAIKU_MODEL } = require('./shared/claude-cli.cjs')
 const { renderPrompt } = require('./pod-generation-prompt.cjs')
-const { normaliseJumpIn } = require('./shared/pod-jump-in-rule.cjs')
+const { normaliseJumpIn, deterministicJumpIn } = require('./shared/pod-jump-in-rule.cjs')
 const { getCultureNotes, languageName } = require('./pod-culture-notes.cjs')
 const { assignVoices, canonicalSpeakerName, extractGenderMarker, inferGenderFromName } = require('../tools/pod-sync.cjs')
 
@@ -142,16 +142,21 @@ async function generateScene({ scene, targetLanguage, knownLanguage, cultureNote
       const byGo = new Map(out.map(o => [Number(o.global_order), o]))
       const lines = scene.lines.map((inp, k) => {
         const o = byGo.get(Number(inp.global_order)) || {}
+        const prev = k === 0 ? null : (byGo.get(Number(scene.lines[k - 1].global_order)) || {})
+        const target_text = String(o.target_text || '').trim()
+        // Delivery marker (Tom, 2026-09-12): true = this line cuts in on the
+        // previous speaker. The TEXT decides first — a previous line written to
+        // stop abruptly ("—", "…") makes this one a jump-in whatever the model
+        // said; the model's verdict only fills in where the text is silent. The
+        // first line of a scene is never a jump-in — it has nobody to jump in on.
+        const byText = k === 0 ? false : deterministicJumpIn(String((prev && prev.target_text) || '').trim(), target_text)
         return {
           global_order: inp.global_order,
           sentence_number: inp.sentence_number,
           speaker: localiseSpeakerLabel(inp.speaker, scene.number, nameMap),
-          target_text: String(o.target_text || '').trim(),
+          target_text,
           known_text: String(o.known_text || '').trim(),
-          // Delivery marker (Tom, 2026-09-12): true = this line cuts in on the
-          // previous speaker. The first line of a scene is never a jump-in — it
-          // has nobody to jump in on — whatever the model said.
-          jump_in: k === 0 ? false : normaliseJumpIn(o.jump_in),
+          jump_in: byText !== null ? byText : normaliseJumpIn(o.jump_in),
         }
       })
       return { lines, warnings }
