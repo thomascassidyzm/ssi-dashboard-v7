@@ -817,3 +817,38 @@ writer's contract is `services/shared/word-timings.cjs`, the learning app maps i
 
 **No backfill.** Pod-1, xAI and human clips carry NULL until a later alignment pass, by the brief.
 Proof sample: *Pod word timings — first Cartesia sample, 2026-09-12*.
+
+## 2026-09-12 — the two voices #344 found unnamed are named: Sasha in the German policy, Aran on cym_nnew's seed slot
+
+**Decision.** Two data writes, both through the repo's own admin routes, no take moved, re-keyed or
+deleted (job #427). (1) `language_recording_policy` gains a `deu` row, `human_only=false` on the
+`fin` precedent, whose one slot `f` names `human_sasha_wanasky_deu_at` (Sasha Wanasky,
+sasha.wanasky@gmail.com). The one propagation key (language, voice id, text) now has a policy owner
+for her 492 `deu_at_for_eng` target2 takes, and the booth link `/r/human_sasha_wanasky_deu_at`
+resolves (it 404'd before). German audio production is untouched: phase8 reads `human_only=true`
+only. (2) `cym_nnew_for_eng.voice_config.voices.target2` names Aran (`human_aran_cym_n`, provider
+human, assignedEmail aran@hey.com — the same shape as `cym_n_for_eng`), matching the 83 seed slots
+that already carry his propagated takes.
+
+**Proof.** Welsh coverage before and after is identical (total 1388, recorded 1084; Aran 994/993,
+Catrin 394/91); `uncast` fell 239→238 because the uncast unit is the slot, and cym_nnew target2 is
+now cast. Aran's queue is byte-for-byte the same size (994 lines, 993 recorded) — every cym_nnew
+seed text also exists in cym_n, so the new slots collapse into lines he already has: 267 of his
+305 seed lines now report `alsoFills: 1` (0 before), i.e. his next seed take fills the cym_nnew
+slot too. DB counts unchanged: 492 Sasha clips, 17 linked deu_at target2 slots, 83 Aran cym_nnew
+target2 links, 19 legacy_import.
+
+**The half the policy row cannot do, and whose call it is.** Sasha's booth opens but lists 0 lines.
+A seed slot is owned by the voice the course's `voice_config.voices[role]` names (`seedCastEntry`),
+and deu_at_for_eng's target2 names Hermann (Cartesia) by Kai's 2026-09-10 cast ruling — "target2
+for the seeds Sasha has NOT recorded" — with Sasha parked in a `humanVoice` sub-object that no code
+reads. So her 17 seed takes are not in her queue and her future takes propagate to no slot until
+the slot names her, and naming her there displaces Hermann for TTS on the seeds she has not read.
+That is a cast fork (human slot vs TTS fallback on one role), Kai's or Tom's, not a data fix. Her
+other 475 takes are practice phrases and LEGOs, which the booth does not queue at all (the quarry
+is target1-only, ≤30 seeds).
+
+**Gender.** The live DB records none for Sasha (the course slot said "Neutral"); the slot is `f`
+because every estate record of the casting (e.g. the 2026-08-10 note to Kai, "the studio records
+as her") refers to Sasha as she. Not a DB fact — recorded in the row's notes. It routes nothing
+today: no German course casts by gender alone and no German clip carries a re-record want.
