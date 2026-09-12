@@ -28,8 +28,16 @@ const CAST = {
 vi.mock('vue-router', () => ({
   useRoute: () => ({ params: { courseCode: 'cym_n_for_eng', slug: 'pod-1' }, query: {} }),
 }))
+// Who is looking decides whose links show (Tom, 2026-09-12: an artist never
+// sees another artist's link). `viewer` is flipped per test.
+const viewer = vi.hoisted(() => ({ editor: true, casting: [] }))
 vi.mock('@/composables/useAuth.js', () => ({
-  useAuth: () => ({ isAdmin: { value: true }, getAccessToken: async () => 'token' }),
+  useAuth: () => ({
+    isAdmin: { value: viewer.editor },
+    isEditorOf: () => viewer.editor,
+    dashboardUser: { value: { casting: viewer.casting } },
+    getAccessToken: async () => 'token',
+  }),
 }))
 vi.mock('@/composables/useCourses.js', () => ({
   useCourses: () => ({ getCourseName: (c) => c }),
@@ -64,10 +72,22 @@ async function mountView() {
 }
 
 describe('PodDetailView — the booth is one tap from the top of the pod page', () => {
-  it('links each cast voice to its own booth', async () => {
+  it('links each cast voice to its own booth, scoped to this course, for the editor', async () => {
+    viewer.editor = true
     const links = (await mountView()).findAll('.record-link')
-    expect(links.map(l => l.attributes('href')).sort()).toEqual(['/r/human_aran_cym_n', '/r/human_catrinlliar_cym_n'])
+    expect(links.map(l => l.attributes('href')).sort()).toEqual([
+      '/r/human_aran_cym_n?course=cym_n_for_eng', '/r/human_catrinlliar_cym_n?course=cym_n_for_eng',
+    ])
     expect(links.map(l => l.text()).join(' ')).toContain('Aran')
+  })
+
+  it('a cast artist sees their own link and nobody else’s', async () => {
+    viewer.editor = false
+    viewer.casting = [{ courseCode: 'cym_n_for_eng', voiceId: 'human_aran_cym_n' }]
+    const links = (await mountView()).findAll('.record-link')
+    expect(links.map(l => l.attributes('href'))).toEqual(['/r/human_aran_cym_n?course=cym_n_for_eng'])
+    viewer.editor = true
+    viewer.casting = []
   })
 
   it('puts the links above the hold panel, not at the foot of the page', async () => {

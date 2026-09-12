@@ -43,18 +43,22 @@
                 bilingual guide
               </span>
             </div>
-            <div class="flex items-center gap-1.5 flex-shrink-0">
+            <!-- EDITOR-ONLY (Tom, 2026-09-12): the link IS the artist's
+                 identity, so only the course's editor - who cast them - sees
+                 it. A cast artist opening this page never sees another
+                 artist's link. -->
+            <div v-if="canSendLinks" class="flex items-center gap-1.5 flex-shrink-0">
               <button
                 @click="copyRecordLink(a.voiceId)"
-                class="text-[11px] px-2 py-1 rounded border border-line text-ink hover:border-emerald-500"
+                class="copy-link text-[11px] px-2 py-1 rounded border border-line text-ink hover:border-emerald-500"
                 :title="recordLink(a.voiceId)"
               >
-                {{ copiedVoiceId === a.voiceId ? 'Copied ✓' : 'Copy record link' }}
+                {{ copiedVoiceId === a.voiceId ? 'Copied' : 'Copy link' }}
               </button>
               <a
                 :href="recordLink(a.voiceId)"
                 target="_blank"
-                class="cast-outline-btn text-[11px] px-2 py-1 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500"
+                class="cast-outline-btn open-link text-[11px] px-2 py-1 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500"
               >Open ↗</a>
             </div>
           </div>
@@ -65,8 +69,8 @@
             {{ a.lineCount }} line{{ a.lineCount === 1 ? '' : 's' }}
             <span v-if="a.estimatedMinutes != null"> · about {{ a.estimatedMinutes }} min of recording</span>
           </div>
-          <div v-if="a.email" class="text-[11px] text-faint mt-1.5 truncate">
-            Send the link to <span class="text-muted">{{ a.email }}</span>.
+          <div v-if="a.email && canSendLinks" class="text-[11px] text-faint mt-1.5 truncate">
+            Send the link to <span class="text-muted">{{ a.email }}</span> — or they sign in with it.
           </div>
         </div>
       </div>
@@ -283,7 +287,9 @@ const props = defineProps({
 // (English) pod lines. The key is historical; the workload is known lines only.
 const EXPLAINER = '__explainer__'
 
-const { getAccessToken } = useAuth()
+const { getAccessToken, isEditorOf } = useAuth()
+// Only the course's editor sends links (see the cast row).
+const canSendLinks = computed(() => typeof isEditorOf === 'function' && isEditorOf(props.courseCode))
 const loading = ref(true)
 const proposing = ref(false)
 const saving = ref(false)
@@ -651,22 +657,28 @@ const allocation = computed(() => {
 
 // ── Record links ─────────────────────────────────────────────────────────────
 
-// The record link IS the recordist's identity, and the queue behind it is by
-// LANGUAGE, not by course — so the link carries the voice and nothing else.
-// Links already sent in the old /record/:course?podVoice= shape keep working:
-// the router redirects them here (src/router/index.js, RecordRoom beforeEnter).
+// The link IS the artist's identity - the pre-signed form of signing in with
+// the email the cast names (ONE identity, two doors: casting-rights.cjs
+// boothArrival). It is scoped to THIS course: the booth behind /r/:voiceId is
+// by language, and ?course= lands the artist on this course's lines, Start on
+// their first unread one. The language-wide link (AdminRecording) has no
+// ?course= and is untouched. Links already sent in the old
+// /record/:course?podVoice= shape keep working: the router redirects them.
 function recordLink(voiceId) {
-  return `${window.location.origin}/r/${encodeURIComponent(voiceId)}`
+  return `${window.location.origin}/r/${encodeURIComponent(voiceId)}?course=${encodeURIComponent(props.courseCode)}`
 }
 
 async function copyRecordLink(voiceId) {
+  const link = recordLink(voiceId)
   try {
-    await navigator.clipboard.writeText(recordLink(voiceId))
-    copiedVoiceId.value = voiceId
-    setTimeout(() => { if (copiedVoiceId.value === voiceId) copiedVoiceId.value = null }, 2000)
+    await navigator.clipboard.writeText(link)
   } catch {
-    note('Could not copy — your browser blocked clipboard access.', true)
+    // Clipboard is blocked without a secure context or a user gesture on some
+    // browsers; a prompt still lets the link be copied by hand (AdminRecording).
+    window.prompt('Copy this link:', link)
   }
+  copiedVoiceId.value = voiceId
+  setTimeout(() => { if (copiedVoiceId.value === voiceId) copiedVoiceId.value = null }, 2000)
 }
 
 onMounted(loadCast)

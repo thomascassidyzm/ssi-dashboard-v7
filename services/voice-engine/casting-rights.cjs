@@ -230,6 +230,71 @@ async function castingForVoice(db, voiceId) {
   }
 }
 
+/**
+ * THE LINK DOOR, RESOLVED AS THE EMAIL DOOR IS. ONE IDENTITY, TWO DOORS
+ * (Tom, 2026-09-12): /r/:voiceId is the pre-signed form of the email login.
+ * The booth already knows WHO holds the link (resolveRecordist: the policy's
+ * voice, with the email the policy names); this turns that into the SAME
+ * identity the email login produces - castingIdentity over castingForEmail -
+ * and asks the SAME verdict function the :courseCode gate asks, so a link
+ * arrival is a `reach` with the same email/course keys the nightly report
+ * counts for a login, and a refusal is logged loudly the same way. The report
+ * cannot tell the doors apart, which is the point.
+ *
+ * A policy voice with NO email on record has no email-door twin; its identity
+ * is the queue's own answer (the courses its lines serve), keyed on ''.
+ *
+ * @param {object} opts
+ * @param {object} opts.db
+ * @param {{voiceId, email, displayName, language}} opts.recordist resolveRecordist's answer
+ * @param {string[]} opts.courseCodes the course(s) this arrival is for: the
+ *        scoped course of a course link, or every course the queue serves
+ * @returns {Promise<{email: string, identity: object, reached: string[], refused: Array<{courseCode, sentence}>}>}
+ */
+async function boothArrival({ db, recordist, courseCodes, method = 'GET', path = '', logger = console, now = Date.now() }) {
+  const email = normEmail(recordist && recordist.email) || await emailForVoice(db, recordist && recordist.voiceId)
+  let casting = email ? await castingForEmail(db, email) : []
+  if (!casting.length) {
+    // No email-door twin: the link's own answer stands in, so the arrival is
+    // still counted rather than dropped for want of an address.
+    casting = (courseCodes || []).map((courseCode) => ({
+      courseCode, voiceId: recordist.voiceId, displayName: recordist.displayName, language: recordist.language, via: 'policy',
+    }))
+  }
+  const identity = castingIdentity(email, casting) || { email, role: 'recorder', courses: [], voice_id: recordist.voiceId, casting: [], authority: 'casting' }
+  const reached = []
+  const refused = []
+  for (const courseCode of courseCodes || []) {
+    const verdict = courseAccessVerdict(identity, courseCode)
+    if (verdict.ok) {
+      recordAccess({ kind: 'reach', email, voices: verdict.voices.length ? verdict.voices : [recordist.voiceId], courseCode, method, path, logger, now })
+      reached.push(courseCode)
+    } else {
+      recordAccess({ kind: 'refused', email, voices: [recordist.voiceId], courseCode, method, path, sentence: verdict.sentence, logger, now })
+      refused.push({ courseCode, sentence: verdict.sentence })
+    }
+  }
+  return { email, identity, reached, refused }
+}
+
+/**
+ * The email a voice is cast under when the policy row carries none: the
+ * first course cast (voice_config.podCast) naming this voice with an email.
+ * This is what keeps the two doors on ONE key - the editor wrote the email on
+ * the cast, and that is the email the artist signs in with.
+ */
+async function emailForVoice(db, voiceId) {
+  if (!voiceId) return ''
+  const { data: courses, error } = await db.from('courses').select('course_code, voice_config')
+  if (error) throw new Error(`course list failed: ${error.message}`)
+  for (const c of courses || []) {
+    for (const entry of Object.values((c.voice_config && c.voice_config.podCast) || {})) {
+      if (entry && entry.voiceId === voiceId && normEmail(entry.email)) return normEmail(entry.email)
+    }
+  }
+  return ''
+}
+
 function hintEmail(email) {
   const e = normEmail(email)
   if (!e) return null
@@ -252,5 +317,7 @@ module.exports = {
   podWriteVerdict,
   isOwnPodLine,
   castingForVoice,
+  boothArrival,
+  emailForVoice,
   hintEmail,
 }

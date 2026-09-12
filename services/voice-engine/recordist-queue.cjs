@@ -332,6 +332,25 @@ async function voicesForEmail(db, email) {
     }
   }
 
+  // 3. every course cast (voice_config.podCast) that names this person by
+  //    email. ONE IDENTITY, TWO DOORS (Tom, 2026-09-12): the editor of a
+  //    community course casts a person into a role and sends them a link; the
+  //    same person may instead sign in by email. Both must land in the same
+  //    booth as the same voice, and the casting is where the editor wrote the
+  //    email - so it is read here, not only from the users-page row the cast
+  //    save happens to provision. Still resolved through resolveRecordist
+  //    below, so a cast voice the policy does not name is dropped exactly as
+  //    the link (/r/:voiceId) would 404 it: the two doors cannot disagree.
+  const { data: courses, error: cErr } = await db.from('courses').select('course_code, voice_config')
+  if (cErr) throw new Error(`course list failed: ${cErr.message}`)
+  for (const c of courses || []) {
+    const podCast = c.voice_config && c.voice_config.podCast
+    for (const entry of Object.values(podCast || {})) {
+      if (!entry || typeof entry !== 'object' || !entry.voiceId) continue
+      if (String(entry.email || '').trim().toLowerCase() === norm) candidates.add(entry.voiceId)
+    }
+  }
+
   const out = []
   const seen = new Set()
   for (const voiceId of candidates) {

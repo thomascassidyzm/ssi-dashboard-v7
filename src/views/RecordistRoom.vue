@@ -2175,11 +2175,24 @@ async function load() {
     // again, and the progress line can say "8 of 87" — which it cannot do if
     // the server has already dropped the 8.
     const seedParam = maxSeed.value ? `&maxSeed=${maxSeed.value}` : ''
+    // A COURSE LINK (the community course editor's "Copy link",
+    // PodCastPanel): /r/:voiceId?course=<code> is this same booth scoped to
+    // that course's lines, and Start lands on its first unread line as it does
+    // for the whole queue. Read off the address rather than the router so the
+    // booth keeps no router dependency; the language-wide link has no ?course=.
+    const courseScope = new URLSearchParams(window.location.search).get('course')
+    const courseParam = courseScope ? `&course=${encodeURIComponent(courseScope)}` : ''
     const res = await fetch(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}`,
+      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}`,
       { headers: { 'ngrok-skip-browser-warning': 'true' } }
     )
     if (res.status === 404) { phase.value = 'unknown'; return }
+    if (res.status === 403) {
+      // The link names a course this voice is not cast on: the server's
+      // sentence says so (casting-rights.boothArrival), in words, not a code.
+      const body = await res.json().catch(() => ({}))
+      throw new Error(body.error || `This link is for a course you are not cast on (${courseScope}).`)
+    }
     if (!res.ok) throw new Error(`Could not load your lines (${res.status})`)
     const data = await res.json()
     voice.value = data

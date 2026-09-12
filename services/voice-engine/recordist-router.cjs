@@ -301,7 +301,28 @@ module.exports = function createRecordistRouter({
       const askedSeed = parseInt(req.query.maxSeed, 10)
       const quarryMaxSeed = Number.isFinite(askedSeed) ? Math.min(Math.max(askedSeed, 1), 1000) : undefined
       const queue = await buildQueue(db(), recordist, { includeRecorded, quarryMaxSeed })
+      // A COURSE LINK. The community course editor's "Copy link" is
+      // /r/:voiceId?course=<code> (PodCastPanel): the same booth, the same
+      // voice, scoped to the lines of THAT course. The language-wide link
+      // (AdminRecording, no ?course=) is untouched and serves every course.
+      const scoped = typeof req.query.course === 'string' && req.query.course.trim() ? req.query.course.trim() : null
+      // ONE IDENTITY, TWO DOORS: the arrival is resolved as the email login
+      // would be and counted the same way (casting-rights.boothArrival).
+      // Refused = this voice is not cast on the course the link names.
+      const arrival = await castingRights.boothArrival({
+        db: db(), recordist, courseCodes: scoped ? [scoped] : queue.courses, method: req.method, path: req.originalUrl || req.path, logger,
+      })
+      if (scoped && arrival.refused.length) {
+        return res.status(403).json({ error: arrival.refused[0].sentence, courseCode: scoped, reason: 'not_cast_no_grant' })
+      }
+      const forCourse = (rows) => scoped ? (rows || []).filter((r) => r.courseCode === scoped) : (rows || [])
+      const lines = forCourse(queue.lines)
+      // Scoped counts are counted over the lines on the wire (the booth always
+      // asks includeRecorded=1, so they are the course's whole tally there).
+      const recordedInScope = scoped ? lines.filter((l) => l.recorded).length : queue.recorded
+      const totalInScope = scoped ? lines.length : queue.total
       res.json({
+        course: scoped,
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
         language: recordist.language,
@@ -316,22 +337,22 @@ module.exports = function createRecordistRouter({
         // How big the minimal set is, in the two units a recordist standing at
         // a microphone actually cares about. Null when the course has no set.
         quarry: queue.quarry,
-        total: queue.total,
-        recorded: queue.recorded,
-        remaining: queue.remaining,
+        total: totalInScope,
+        recorded: recordedInScope,
+        remaining: totalInScope - recordedInScope,
         // WORK THAT IS THEIRS AND HAS NO WORDS YET. On the wire because it was
         // the one thing this response could not say: a pod line with no target
         // text was dropped before it was ever counted, so 168 untranslated
         // Senedd lines were invisible in Aran's booth AND absent from every
         // number on it, and he was told twice that nothing was missing.
-        notReady: queue.notReady || [],
+        notReady: forCourse(queue.notReady),
         // LINES THEY READ THAT ARE NOW CAST TO SOMEBODY ELSE. On the wire
         // because a recast is invisible from inside a queue that only carries
         // what you are currently cast for — which is how 29 of Aran's takes
         // dropped out of his own history and made his work look as though it
         // stopped at scene 14.
-        handedOn: queue.handedOn || [],
-        lines: queue.lines,
+        handedOn: forCourse(queue.handedOn),
+        lines,
       })
     } catch (err) {
       logger.error(`[Recordist] queue: ${err.message}`)

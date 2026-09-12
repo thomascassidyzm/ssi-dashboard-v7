@@ -37,12 +37,12 @@
                probably could do with being a bit more top of page". One link per
                human voice cast on this pod, straight under the title where a
                recordist looks first. Nothing else about the cast moves. -->
-          <div v-if="castVoices.length" class="mt-2 text-sm flex items-center gap-3 flex-wrap record-links">
+          <div v-if="boothLinks.length" class="mt-2 text-sm flex items-center gap-3 flex-wrap record-links">
             <span class="text-muted">Record your lines:</span>
             <router-link
-              v-for="v in castVoices"
+              v-for="v in boothLinks"
               :key="v.voiceId"
-              :to="`/r/${v.voiceId}`"
+              :to="`/r/${v.voiceId}?course=${courseCode}`"
               class="link-emerald font-medium record-link"
             >{{ v.name }} →</router-link>
           </div>
@@ -717,6 +717,16 @@ const castVoices = computed(() => {
   return [...byVoice.values()].sort((a, b) => b.characters.length - a.characters.length)
 })
 
+// WHOSE LINKS ARE SHOWN (Tom, 2026-09-12: the link is the artist's identity;
+// an artist never sees another artist's link). The course's editor sees every
+// cast voice's link; a cast artist sees their own and nobody else's.
+const boothLinks = computed(() => {
+  if (typeof isEditorOf === 'function' && isEditorOf(courseCode)) return castVoices.value
+  const mine = new Set((dashboardUser?.value?.casting || [])
+    .filter((c) => c && c.courseCode === courseCode).map((c) => c.voiceId))
+  return castVoices.value.filter((v) => mine.has(v.voiceId))
+})
+
 /**
  * "Susjed (08:00) (M)" -> "Susjed". A local mirror of canonicalSpeakerName in
  * tools/pod-voice-colour-n.cjs — the rule the cast itself is keyed by, and two
@@ -763,7 +773,7 @@ function readerFor(sent, kind) {
 
 // Auth-gated fetch helper for the pod editing/generation doors. Mirrors the
 // pattern in RemoteControl / Maintenance — fresh access token, attach Bearer.
-const { getAccessToken } = useAuth()
+const { getAccessToken, isEditorOf, dashboardUser } = useAuth()
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
   const headers = {

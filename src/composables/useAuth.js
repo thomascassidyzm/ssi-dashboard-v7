@@ -386,6 +386,22 @@ function canAccessCourse(courseCode) {
 }
 
 /**
+ * Does this login SHAPE the course - add/remove lines, change the cast, send
+ * the artists their links? The editor grant, exactly as the server reads it
+ * (casting-rights.podWriteVerdict: a grant that is not the recorder role).
+ * A cast artist opens the course by the casting alone and is never an editor
+ * of it by that fact - so they never see another artist's link.
+ */
+function isEditorOf(courseCode) {
+  if (!dashboardUser.value || !courseCode) return false
+  if (isAdmin.value) return true
+  if (isRecorder.value) return false
+  const courses = dashboardUser.value.courses
+  if (courses === '*') return true
+  return Array.isArray(courses) && courses.includes(courseCode)
+}
+
+/**
  * Get list of accessible course codes (null = all courses)
  */
 const accessibleCourses = computed(() => {
@@ -424,6 +440,7 @@ export function useAuth() {
     logout,
     getAccessToken,
     canAccessCourse,
+    isEditorOf,
     // True only when the last access lookup got a definite answer (row or
     // confirmed no-row). LoginForm must check this before invite-walling:
     // a network miss means "machine unreachable", not "no access".
