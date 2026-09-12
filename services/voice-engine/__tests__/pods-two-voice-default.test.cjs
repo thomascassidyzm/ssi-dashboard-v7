@@ -17,6 +17,11 @@
  * DEFAULT, not a maximum. Recording must never get harder — a community course
  * with two recorders is the case that has to stay effortless.
  *
+ * 2026-09-12: the other half of the wall went too. Asked "Retire the
+ * one-man-one-woman casting rule so a cast is any number of named voices? Yes
+ * or no", Tom answered "Yes. Retire". So a single voice is a cast, two women
+ * are a cast, and nothing on the load path collapses a cast to two.
+ *
  * Run: npx vitest run services/voice-engine
  */
 
@@ -139,7 +144,7 @@ describe('three or four voices is an opt-in upgrade, never a requirement', () =>
     const six = [...five, { name: 'F', gender: 'm' }]
     const result = validateCastPeople(six)
     expect(result.ok).toBe(false)
-    expect(result.error).toMatch(/default/i)
+    expect(result.error).toMatch(/as many as a pod cast holds/i)
   })
 
   it('the opt-in is never mandatory — a 22-character script casts fine at two voices', () => {
@@ -161,18 +166,19 @@ describe('three or four voices is an opt-in upgrade, never a requirement', () =>
     for (const a of proposal.assignments) expect(a.lineCount).toBeGreaterThan(0)
   })
 
-  it('still needs one male and one female voice at any size', () => {
-    // Not ceremony: with only these voices covering every character, a cast
-    // missing a gender leaves characters with nobody to read them.
-    const bothFemale = validateCastPeople([CATRIN, { name: 'Bethan', gender: 'f' }])
-    expect(bothFemale.ok).toBe(false)
-    expect(bothFemale.error).toMatch(/male voice and a female voice/i)
+  it('accepts two voices of one gender — no gender-mix requirement (rule retired 2026-09-12)', () => {
+    expect(validateCastPeople([CATRIN, { name: 'Bethan', gender: 'f' }])).toEqual({ ok: true })
   })
 
-  it('rejects a single voice, in leader language', () => {
-    const one = validateCastPeople([ARAN])
-    expect(one.ok).toBe(false)
-    expect(one.error).toMatch(/one male, one female/i)
+  it('accepts a single voice — a one-voice cast is a cast (rule retired 2026-09-12)', () => {
+    expect(validateCastPeople([ARAN])).toEqual({ ok: true })
+    expect(validateCastPeople([]).ok).toBe(false)
+  })
+
+  it('prefills one row per roster human — a roster of one or of five is accepted', () => {
+    expect(defaultCastPeople({ rosterVoices: [{ name: 'Aran', gender: 'm' }] })).toHaveLength(1)
+    const five = ['A', 'B', 'C', 'D', 'E'].map((n) => ({ name: n }))
+    expect(defaultCastPeople({ rosterVoices: five })).toHaveLength(5)
   })
 })
 

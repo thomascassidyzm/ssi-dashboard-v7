@@ -3,11 +3,11 @@
     <!-- Header -->
     <div class="flex items-center justify-between gap-4 flex-wrap mb-1">
       <div>
-        <h2 class="text-sm font-semibold text-ink">Cast — two voices</h2>
+        <h2 class="text-sm font-semibold text-ink">Cast — voices</h2>
         <p class="text-xs text-muted mt-0.5">
-          A pod is recorded with two voices — one male, one female. Between them they play every
-          character in every scenario; when a scene has two characters of the same gender, that
-          voice just plays both.
+          A pod is recorded with one or more named voices. Between them they play every
+          character in every scenario; two voices is plenty for a whole course, and a voice
+          simply plays more than one character where the scene needs it.
         </p>
       </div>
       <button
@@ -101,7 +101,7 @@
             <select
               v-model="person.gender"
               class="bg-canvas border border-line rounded px-2 py-1.5 text-xs text-ink"
-              title="Every pod needs exactly one male voice and one female voice"
+              title="Whether this voice reads male or female characters — a label for the parts, not a slot"
             >
               <option value="" disabled>Choose voice…</option>
               <option value="f">Female voice</option>
@@ -129,40 +129,30 @@
         </div>
         <div class="flex items-center gap-3 mt-2">
           <button
-            v-if="people.length < 2"
+            v-if="people.length < maxVoices"
             @click="addPerson"
             class="text-[11px] px-2.5 py-1 rounded border border-line text-ink hover:border-emerald-500"
-          >+ Add the {{ people.length === 0 ? 'first' : 'second' }} voice</button>
+          >+ Add {{ people.length === 0 ? 'the first' : 'another' }} voice</button>
           <span class="text-[11px] text-faint">
             The bilingual guide reads the English lines — it's one of the same people. If
             nobody's marked, we'll suggest whoever has the lightest load.
           </span>
         </div>
-        <!-- The opt-in upgrade (Tom 2026-08-06). Deliberately quiet and off the
-             default path: two voices records a whole course, so a leader who
-             does nothing never meets an N-voice concept. It only appears once
-             both default voices are in, and only when there's room left. -->
-        <div v-if="people.length >= 2 && people.length < maxVoices" class="mt-2">
-          <button
-            @click="addPerson"
-            class="text-[11px] text-faint hover:text-ink underline decoration-dotted underline-offset-2"
-          >Add another voice</button>
-          <span class="text-[11px] text-faint ml-2">
-            — only if you've got another recorder. Two voices records a whole course.
-          </span>
-        </div>
+        <!-- One list, any number of voices (Tom, 2026-09-12: the one-man-one-woman
+             rule is retired). The panel still OPENS on two rows because two
+             voices records a whole course (Tom 2026-08-06) — a default, not a
+             rule: remove down to one or add up to maxVoices. -->
       </div>
 
       <!-- Generation-side colouring: demoted to a default suggestion -->
       <div v-if="generationColouring" class="text-[11px] text-faint mt-3">
-        This course came with a ready-made voice plan from generation — a handy default. Your two
-        voices above always win.
+        This course came with a ready-made voice plan from generation — a handy default. The
+        voices you name above always win.
       </div>
 
-      <!-- Warnings from the solve. 'need-more-people' is suppressed here: every
-           pod is two voices by design (founder ruling 2026-07-17), so a
-           character sharing a voice with someone it talks to is the expected
-           outcome, not a shortfall to grow the cast out of. -->
+      <!-- Warnings from the solve. 'need-more-people' is suppressed here: a
+           small cast is the design, so a voice playing more than one character
+           is the expected outcome, not a shortfall to grow the cast out of. -->
       <div v-if="visibleWarnings.length" class="mt-4 grid gap-1.5">
         <div
           v-for="(w, i) in visibleWarnings"
@@ -240,7 +230,7 @@
         No dialogue characters yet — generate or sync a pod first.
       </div>
       <div v-else class="text-[11px] text-faint mt-4">
-        Name your two voices — one male, one female — and the parts work themselves out here.
+        Name your voices and the parts work themselves out here.
       </div>
     </template>
   </div>
@@ -262,11 +252,16 @@
  * TWO VOICES IS THE DEFAULT (Tom, voice note 2026-08-06): "probably do it for
  * two voices as the default. And then if you want to try it with three or four
  * voices because you do have additional human voice recorders, then fantastic,
- * we can do that." So the panel opens on two rows — one female, one male —
- * and the third/fourth voice is a quiet opt-in that never appears on the
- * default path. The principle behind it, same note: "If we are making it a lot
- * more complicated to even get the recordings done, it's going to be harder for
+ * we can do that." So the panel opens on two rows — one female, one male.
+ * The principle behind it, same note: "If we are making it a lot more
+ * complicated to even get the recordings done, it's going to be harder for
  * people to do community courses, isn't it?"
+ *
+ * A DEFAULT, NOT A RULE (Tom, 2026-09-12: asked to retire the one-man-one-woman
+ * casting rule so a cast is any number of named voices — "Yes. Retire"). The
+ * list holds one to maxVoices people; gender is a label on each voice for the
+ * solver, not a slot. What still holds: casting is per speaker, and two
+ * characters who talk to each other never share a voice.
  *
  * PUT /pods/cast saves and auto-provisions access for entries carrying an
  * email. The server still collapses LEGACY multi-identity casts
@@ -303,12 +298,12 @@ const proposal = ref(null)        // POST /cast/propose response
 const speakers = ref([])          // [{ speaker, gender, lineCount, estimatedSeconds }]
 const explainerInfo = ref(null)   // { speaker, knownLines, estimatedSeconds } — guide workload
 const rosterVoices = ref([])      // [{ voiceId, name, email }]
-const savedCast = ref({})         // server's podCast (already two-voice collapsed)
+const savedCast = ref({})         // server's podCast, as saved — any number of voices
 const generationColouring = ref(false)
 const provisioningNotes = ref([])
-// Server-declared cast shape: two voices by default, `max` the opt-in ceiling
-// (GET /cast castDefaults). Falls back to the same numbers if an older server
-// doesn't send it.
+// Server-declared cast shape: two voices by default, `max` the panel's
+// headroom (GET /cast castDefaults). Falls back to the same numbers if an
+// older server doesn't send it.
 const castDefaults = ref(null)
 const maxVoices = computed(() => castDefaults.value?.max || 5)
 
@@ -387,14 +382,11 @@ function blankPerson() {
   return { name: '', gender: '', email: '', guide: false }
 }
 
-// Two voices is the DEFAULT, three or four an opt-in upgrade for courses that
-// genuinely have extra recorders (Tom 2026-08-06). The cap stops the panel
-// drifting back into the N-voice cast that made recording look like a
-// production, but it is a ceiling, not a wall the leader has to reach.
+// Any number of voices up to maxVoices (Tom 2026-09-12). The first two rows
+// still suggest one female and one male because that is the default shape the
+// panel opens with; later rows carry no gender preference.
 function addPerson() {
   if (people.value.length >= maxVoices.value) return
-  // Rows past the default carry no gender preference — the default two are
-  // one female and one male, and extras are just extra hands.
   const gender = people.value.length === 0 ? 'f' : people.value.length === 1 ? 'm' : ''
   people.value = [...people.value, { ...blankPerson(), gender }]
 }
@@ -420,18 +412,17 @@ function cancelEditing() {
   note('')
 }
 
-// Two named/emailed people by default, up to maxVoices when the leader has
-// opted in — always covering both a male and a female voice, so every
-// character has someone to read it.
+// One to maxVoices named/emailed people, each with a gender label so the
+// solver knows which characters they read. No gender-mix requirement — the
+// one-man-one-woman rule is retired (Tom, 2026-09-12).
 const canSolve = computed(() => {
   const n = people.value.length
-  if (n < 2 || n > maxVoices.value) return false
+  if (n < 1 || n > maxVoices.value) return false
   const named = people.value.every(p => (p.name && p.name.trim()) || (p.email && p.email.trim()))
-  const genders = people.value.map(p => p.gender)
-  return named && genders.includes('f') && genders.includes('m')
+  return named && people.value.every(p => p.gender === 'f' || p.gender === 'm')
 })
 
-// 'need-more-people' is expected under the two-voice rule, not a real warning
+// 'need-more-people' is expected with a small cast, not a real warning
 // — see the template note above it.
 const visibleWarnings = computed(() =>
   (proposal.value?.warnings || []).filter(w => w.type !== 'need-more-people'))
@@ -620,7 +611,7 @@ const allocation = computed(() => {
       guideSuggested: a.guideSuggested,
     }))
   }
-  // Derived from the saved cast (server-collapsed: at most two voices).
+  // Derived from the saved cast, however many voices it holds.
   const bySpeaker = new Map(speakers.value.map(s => [s.speaker, s]))
   const byVoice = new Map()
   for (const [speaker, entry] of Object.entries(savedCast.value || {})) {

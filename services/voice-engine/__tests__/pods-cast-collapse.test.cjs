@@ -3,6 +3,11 @@
  * 2026-07-17) + alias merging. Fixture mirrors the live Welsh pod-0 cast that
  * motivated the rule: the SAME two humans split across five version-suffixed
  * identities.
+ *
+ * RETIRED FROM THE LOAD PATH 2026-09-12 (Tom: "Yes. Retire" — a cast is any
+ * number of named voices). collapseTwoVoiceCast survives as a pure, exported
+ * solver and these tests pin its behaviour; the assertion that GET /cast no
+ * longer calls it lives in pods-router-no-collapse.test.cjs.
  * Run: npx vitest run services/voice-engine
  */
 

@@ -112,14 +112,14 @@ describe('a clean two-hander stays clean', () => {
   })
 })
 
-describe('the male-female rule', () => {
-  it('fails an exchange between two female voices', () => {
+describe('same-gender exchanges — a note for the ear, not a failure (rule retired 2026-09-12)', () => {
+  it('notes an exchange between two female voices as a warning', () => {
     const rows = [line(3, 1, 'Anna'), line(3, 2, 'Sarah'), line(3, 3, 'Anna')]
     const twoWomen = cast({ Anna: [ARA, 'f'], Sarah: [EVE, 'f'] })
     const v = buildPodScript({ pod: { ...pod, speakers: twoWomen }, rows })
     const f = v.violations.find(x => x.type === 'same-gender-exchange')
     expect(f).toBeTruthy()
-    expect(f.severity).toBe('fail')
+    expect(f.severity).toBe('warn')
     expect(f.message).toMatch(/not male-female/)
     expect(f.message).toMatch(/^ita_for_eng scene 3: /)
   })
@@ -153,14 +153,13 @@ describe('the male-female rule', () => {
   })
 })
 
-describe('cast size', () => {
-  it('fails a three-voice cast', () => {
+describe('cast size — no longer a finding (Tom, 2026-09-12: "Yes. Retire")', () => {
+  it('passes a three-voice cast with no same-voice exchange', () => {
     const rows = [line(6, 1, 'Anna'), line(6, 2, 'Guest'), line(6, 3, 'Sarah'), line(6, 4, 'Guest')]
     const three = cast({ Anna: [ARA, 'f'], Guest: [LEO, 'm'], Sarah: [EVE, 'f'] })
     const v = buildPodScript({ pod: { ...pod, speakers: three }, rows })
-    const c = v.violations.find(x => x.type === 'cast-size')
-    expect(c).toBeTruthy()
-    expect(c.message).toMatch(/3 target voice\(s\), not 2/)
+    expect(v.violations.find(x => x.type === 'cast-size')).toBeUndefined()
+    expect(v.violations.filter(x => x.severity === 'fail')).toEqual([])
   })
 })
 

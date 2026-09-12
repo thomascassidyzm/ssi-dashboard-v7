@@ -437,9 +437,8 @@ const visibleScenes = computed(() => {
 
 const LABELS = {
   'same-voice-exchange': 'One voice talking to itself',
-  'same-gender-exchange': 'Not male–female',
+  'same-gender-exchange': 'Same-gender exchange',
   'gender-uncheckable': 'Cannot check gender',
-  'cast-size': 'Cast is not two voices',
   'uncast-character': 'Character with no voice',
   'same-voice-run': 'Same voice, run of lines',
   'single-voice-scene': 'Whole scene, one voice',
@@ -455,7 +454,9 @@ const RUN_TOGGLES = [
   { key: 'known', label: 'English', title: 'Add the English clip after each line' },
 ]
 
-const FAILS = new Set(['same-voice-exchange', 'same-gender-exchange', 'cast-size', 'uncast-character'])
+// 'same-gender-exchange' and 'cast-size' left this set on 2026-09-12: the
+// one-man-one-woman casting rule is retired, a cast is any number of voices.
+const FAILS = new Set(['same-voice-exchange', 'uncast-character'])
 const label = (t) => LABELS[t] || t
 const severityOf = (t) => (FAILS.has(t) ? 'fail' : 'warn')
 

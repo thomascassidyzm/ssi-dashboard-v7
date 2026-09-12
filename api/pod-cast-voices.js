@@ -1,5 +1,5 @@
 /**
- * Pod cast voices — the MANUAL voice choice behind PodLab's two dropdowns.
+ * Pod cast voices — the MANUAL voice choice behind PodLab's voice picker.
  *
  * Tom, 2026-08-11, after rejecting the Spanish pod-0 cast ("Spanish needs
  * Iberian Spanish, not Mexican pronounciation, that's a different course"):
@@ -16,7 +16,8 @@
  *          already calls for VoiceLab.
  *   POST /api/pod-cast-voices                        auth required
  *        body { course_code, pod_id?, target: {m,f}, known?: {m,f},
- *               cast_fingerprint? }
+ *               cast_fingerprint? } — each of m/f is one voice or a LIST of
+ *        voices (any number of voices per cast, Tom 2026-09-12: "Yes. Retire")
  *        → re-runs the ONE casting implementation (assignVoices in
  *          tools/pod-sync.cjs) with those overrides and writes the result to
  *          listening_pods.speakers.
@@ -163,8 +164,9 @@ function readOverrides(body) {
     if (!t || typeof t !== 'object') continue
     const slot = {}
     for (const g of ['m', 'f']) {
-      const v = readVoice(t[g], `${track}.${g}`)
-      if (v) slot[g] = v
+      const list = Array.isArray(t[g]) ? t[g] : [t[g]]
+      const voices = list.map((v, i) => readVoice(v, list.length > 1 ? `${track}.${g}[${i}]` : `${track}.${g}`)).filter(Boolean)
+      if (voices.length) slot[g] = voices.length === 1 && !Array.isArray(t[g]) ? voices[0] : voices
     }
     if (Object.keys(slot).length) out[track] = slot
   }
@@ -194,7 +196,7 @@ async function postApply(req, res, supabase, user) {
   // which is exactly why the check costs nothing and is worth having: the day
   // a clone enters a pool, nobody has to remember this route exists.
   for (const [track, slot] of Object.entries(overrides)) {
-    for (const [gender, entry] of Object.entries(slot || {})) {
+    for (const [gender, entry] of Object.entries(slot || {}).flatMap(([g, e]) => (Array.isArray(e) ? e : [e]).map((x) => [g, x]))) {
       const vid = entry && entry.voice_id
       if (!vid) continue
       try {

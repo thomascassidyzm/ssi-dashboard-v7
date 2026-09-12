@@ -31,7 +31,8 @@ const { emailLocalPart, targetLangFromCourseCode } = require('./voice-slots.cjs'
 const EXPLAINER_SPEAKER = '__explainer__'
 
 /**
- * How many human voices a pod cast holds (Tom, voice note 2026-08-06):
+ * How many human voices a pod cast STARTS with when nobody has configured
+ * anything (Tom, voice note 2026-08-06):
  *
  *   "the whole point of doing this in this way was that we could get by with
  *    just two different voices, a male voice and a female voice […] probably
@@ -40,10 +41,13 @@ const EXPLAINER_SPEAKER = '__explainer__'
  *    recorders, then fantastic, we can do that."
  *
  * So two is the DEFAULT — what a course gets without anyone configuring
- * anything — and three or four is an OPT-IN UPGRADE for courses that genuinely
- * have extra recorders. It is never a requirement and never a prerequisite for
- * recording. Ceiling is five: the solver already handles it and the extra room
- * costs nothing, but nothing here enforces ceremony to reach it.
+ * anything — and it is ONLY a default. On 2026-09-12 Tom retired the
+ * one-man-one-woman rule outright ("Yes. Retire"): a pod cast is any number
+ * of named voices, one or more, of any gender mix. One voice reading a
+ * monologue pod is a cast; five voices is a cast. What still holds is that
+ * casting is per speaker and two characters who exchange never share a voice
+ * (tools/pods/pod-cast-gate.cjs). MAX_POD_VOICES is the panel's practical
+ * headroom, not a rule.
  *
  * The governing principle behind the numbers, same voice note: "If we are
  * making it a lot more complicated to even get the recordings done, it's going
@@ -66,19 +70,23 @@ function defaultCastPeople({ rosterVoices = [] } = {}) {
     { name: '', email: '', gender: 'f', guide: false },
     { name: '', email: '', gender: 'm', guide: false },
   ]
-  ;(rosterVoices || []).slice(0, DEFAULT_POD_VOICES).forEach((v, i) => {
-    if (!v) return
-    rows[i].name = v.name || ''
-    rows[i].email = v.email || ''
-  })
-  return rows
+  // A roster of one or of five prefills one or five rows: the two-row shape
+  // above is only what an EMPTY roster falls back to (2026-09-12).
+  const roster = (rosterVoices || []).filter(Boolean).slice(0, MAX_POD_VOICES)
+  if (!roster.length) return rows
+  return roster.map((v, i) => ({
+    name: v.name || '',
+    email: v.email || '',
+    gender: (v.gender === 'm' || v.gender === 'f') ? v.gender : (rows[i] ? rows[i].gender : 'f'),
+    guide: false,
+  }))
 }
 
 /**
- * Is this a castable set of people? Two is the default; three to five is the
- * opt-in upgrade. Every size needs at least one female and one male voice —
- * with only those voices covering every character, a cast missing a gender
- * leaves characters with nobody to read them.
+ * Is this a castable set of people? One or more, up to MAX_POD_VOICES. No
+ * gender-mix requirement: the "one male, one female" rule was retired by Tom
+ * on 2026-09-12 ("Yes. Retire"). Gender stays a per-voice LABEL the solver
+ * and the recordist queue use; it is not a slot.
  *
  * Returns leader-facing language, not engineer language: community leaders
  * read these messages.
@@ -88,26 +96,12 @@ function defaultCastPeople({ rosterVoices = [] } = {}) {
  */
 function validateCastPeople(people) {
   if (!Array.isArray(people) || people.length === 0) {
-    return { ok: false, error: 'Send at least two people — one male voice and one female voice.' }
-  }
-  if (people.length < DEFAULT_POD_VOICES) {
-    return {
-      ok: false,
-      error: 'Pods are cast with two voices — one male, one female. Send both.',
-    }
+    return { ok: false, error: 'Send at least one person to read the pod.' }
   }
   if (people.length > MAX_POD_VOICES) {
     return {
       ok: false,
-      error: `Two voices is the default and ${MAX_POD_VOICES} is as many as a pod cast holds — ` +
-        `you sent ${people.length}.`,
-    }
-  }
-  const genders = people.map(p => String((p && p.gender) || '').trim().toLowerCase())
-  if (!genders.includes('f') || !genders.includes('m')) {
-    return {
-      ok: false,
-      error: 'Every cast needs a male voice and a female voice, so every character has someone to read it.',
+      error: `${MAX_POD_VOICES} is as many as a pod cast holds — you sent ${people.length}.`,
     }
   }
   return { ok: true }
@@ -675,6 +669,11 @@ function nameVersionStem(name) {
  * @returns {{ changed:boolean, podCast:object, aliases:Object<string,string[]>,
  *             dropped:string[], unresolved:string[] }}
  */
+// RETIRED FROM THE LOAD PATH (Tom, 2026-09-12: "Yes. Retire"). Nothing calls
+// this on GET /cast any more — a cast is any number of named voices and no
+// read rewrites voice_config on the strength of a count. Kept, pure and
+// exported, for its tests and for a deliberate one-off consolidation of
+// version-suffixed identities (Aranv2/Aranv3 → Aran) should anyone want one.
 function collapseTwoVoiceCast({ podCast, speakers = [], takesByVoiceId = {} }) {
   const cast = podCast && typeof podCast === 'object' ? podCast : {}
   const bySpeaker = new Map(speakers.map(s => [s.speaker, s]))

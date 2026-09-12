@@ -219,19 +219,20 @@ function colourTrack(speakers, adj, pool, genderOf, weights) {
 /**
  * Trim a voice pool to the first N voices per gender, preserving pool order.
  *
- * THE POD-0 CASTING RULE (Tom, 2026-08-08: "of course cast by speaker").
- * Pod 0 runs on exactly TWO voices — one male, one female — and casting is BY
- * SPEAKER, never by line position: each character is assigned a voice and keeps
- * it for every line they speak, including consecutive ones. A third or later
- * character in a scene recycles a voice that is already in play. Strict
- * line-by-line alternation is explicitly rejected, because it splits a single
- * speaker across two voices the moment they have two lines in a row.
+ * THE POD-0 CASTING RULE (Tom, 2026-08-08: "of course cast by speaker") is
+ * that casting is BY SPEAKER, never by line position: each character is
+ * assigned a voice and keeps it for every line they speak, including
+ * consecutive ones. A later character in a scene recycles a voice that is
+ * already in play. Strict line-by-line alternation is explicitly rejected,
+ * because it splits a single speaker across two voices the moment they have
+ * two lines in a row.
  *
- * `voicesPerGender = 1` IS that rule (1 F + 1 M = the two-voice cast). Pool
- * depth is parked, not deleted: raise N for pod 1/2, where more voices are
- * wanted. Mirrors POD_VOICES_PER_GENDER in tools/pod-sync.cjs and
- * DEFAULT_POD_VOICES in services/voice-engine/pods-cast.cjs — same rule, three
- * entry points, one meaning.
+ * `voicesPerGender = 1` (1 F + 1 M) is the DEFAULT pool depth for automatic
+ * casting, not a rule: Tom retired the "exactly two voices, one male one
+ * female" rule on 2026-09-12 ("Yes. Retire") — a cast is any number of named
+ * voices. Raise N for more voices. Mirrors POD_VOICES_PER_GENDER in
+ * tools/pod-sync.cjs and DEFAULT_POD_VOICES in
+ * services/voice-engine/pods-cast.cjs — same default, three entry points.
  *
  * The voice PAIR is a parameter, never hardcoded: whatever the caller's pool
  * resolves to for its language is what the two voices are. Nothing here is

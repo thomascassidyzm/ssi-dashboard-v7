@@ -56,8 +56,6 @@ const {
   buildProofreadPatch,
   proposePeopleCast,
   provisionPlanFor,
-  collapseTwoVoiceCast,
-  mergeCastAliases,
 } = require('./pods-cast.cjs')
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
@@ -179,29 +177,6 @@ module.exports = function createPodsCastRouter({
       }))
   }
 
-  /** Recorded HUMAN takes per voice_id across these sentences' audio pointers. */
-  async function countHumanTakes(db, sentences) {
-    const ids = new Set()
-    for (const s of sentences) {
-      for (const col of ['target_audio_id', 'known_audio_id']) {
-        if (s[col]) ids.add(s[col])
-      }
-    }
-    const counts = {}
-    const all = [...ids]
-    for (let i = 0; i < all.length; i += 200) {
-      const { data, error } = await db.from('course_audio')
-        .select('id, origin, voice_id').in('id', all.slice(i, i + 200))
-      if (error) throw new Error(error.message)
-      for (const row of data || []) {
-        if (row.origin === 'human' && row.voice_id) {
-          counts[row.voice_id] = (counts[row.voice_id] || 0) + 1
-        }
-      }
-    }
-    return counts
-  }
-
   // ── GET /cast ──────────────────────────────────────────────────────────────
   router.get('/cast', async (req, res) => {
     const { courseCode } = req.params
@@ -217,40 +192,16 @@ module.exports = function createPodsCastRouter({
       const inventory = speakerInventory({ pods, sentences })
       let podCast = (voiceConfig && voiceConfig.podCast) || {}
 
-      // Two-voice rule migration (founder ruling 2026-07-17): a legacy cast
-      // holding 3+ identities collapses to one voice per gender on load, and
-      // the collapsed shape is written back so the DB stops accumulating
-      // v2/v3 identities. Dropped ids persist as podCastAliases — old record
-      // links resolve to their survivor and old takes still count.
-      const distinctVoices = new Set(Object.values(podCast).map(e => e && e.voiceId).filter(Boolean))
-      // How many voices this course DECLARED (written by PUT /cast). Absent =
-      // legacy cast that predates the opt-in, so it defaults to two and
-      // collapses exactly as it always did. A leader who deliberately opted in
-      // to three or four voices (Tom 2026-08-06) is left alone — collapsing
-      // their cast back to two on every load would silently undo the upgrade.
-      const declaredVoices = Number(voiceConfig && voiceConfig.podCastVoices) || DEFAULT_POD_VOICES
-      if (distinctVoices.size > DEFAULT_POD_VOICES && declaredVoices <= DEFAULT_POD_VOICES) {
-        const takesByVoiceId = await countHumanTakes(db, sentences)
-        const collapse = collapseTwoVoiceCast({ podCast, speakers: inventory.speakers, takesByVoiceId })
-        if (collapse.changed) {
-          podCast = collapse.podCast
-          const migrated = {
-            ...(voiceConfig || {}),
-            podCast,
-            podCastAliases: mergeCastAliases(voiceConfig && voiceConfig.podCastAliases, collapse.aliases),
-          }
-          try {
-            const { error } = await db.from('courses')
-              .update({ voice_config: migrated }).eq('course_code', courseCode)
-            if (error) throw new Error(error.message)
-            logger.info(`[PodsCast] ${courseCode}: collapsed legacy cast ${[...distinctVoices].join(', ')} → ` +
-              `${Object.keys(collapse.aliases).join(', ')} (aliases kept${collapse.unresolved.length ? `; unresolved: ${collapse.unresolved.join(', ')}` : ''})`)
-          } catch (err) {
-            // Serve the collapsed view regardless — the next load retries.
-            logger.warn(`[PodsCast] ${courseCode}: cast collapse write-back failed: ${err.message}`)
-          }
-        }
-      }
+      // The load-time collapse is RETIRED (Tom, 2026-09-12: "Yes. Retire").
+      // From 2026-07-17 to 2026-09-12 a cast holding more distinct voices than
+      // voice_config.podCastVoices (absent = 2) was collapsed to one voice per
+      // gender here and WRITTEN BACK. A pod cast is now any number of named
+      // voices, so nothing on this read path counts voices or rewrites
+      // voice_config. The pure solver survives as pods-cast.cjs
+      // collapseTwoVoiceCast for its tests and for any deliberate, one-off
+      // consolidation of version-suffixed identities; no load path calls it.
+      // podCastVoices is still written by PUT /cast as information, never a
+      // ceiling.
 
       const body = {
         course_code: courseCode,
@@ -312,13 +263,12 @@ module.exports = function createPodsCastRouter({
     if (!Array.isArray(people) || people.length === 0) {
       return res.status(400).json({ error: 'Body must be { people: [{ name, gender?, email?, guide? }] } with at least one person' })
     }
-    // Two voices — one male, one female — is the DEFAULT (Tom, voice note
-    // 2026-08-06: "probably do it for two voices as the default. And then if
-    // you want to try it with three or four voices because you do have
-    // additional human voice recorders, then fantastic, we can do that").
-    // Three to five is an opt-in upgrade, never a requirement: forced
-    // same-voice reuse across characters is the intended outcome at two, not a
-    // shortfall to grow the cast out of.
+    // Two voices — one male, one female — is the DEFAULT the panel opens with
+    // (Tom, voice note 2026-08-06: "probably do it for two voices as the
+    // default"). It is a default, not a rule: since 2026-09-12 ("Yes. Retire")
+    // a cast is any number of named voices, one or more, of any gender mix.
+    // Forced same-voice reuse across characters is the intended outcome of a
+    // small cast, not a shortfall to grow the cast out of.
     const castCheck = validateCastPeople(people)
     if (!castCheck.ok) return res.status(400).json({ error: castCheck.error })
     try {
@@ -472,12 +422,12 @@ module.exports = function createPodsCastRouter({
         return res.status(400).json({ error: err.message })
       }
 
-      // Record how many voices this cast declares, so a deliberate three- or
-      // four-voice opt-in survives the legacy two-voice collapse on the next
-      // GET /cast. Additive key; TTS serving never reads it.
+      // Record how many distinct voices this cast holds — N saves as N.
+      // Information only: since 2026-09-12 nothing treats it as a ceiling (the
+      // load-time collapse it used to protect against is retired). Additive
+      // key; TTS serving never reads it.
       merged.podCastVoices =
-        new Set(Object.values(merged.podCast || {}).map(e => e && e.voiceId).filter(Boolean)).size ||
-        DEFAULT_POD_VOICES
+        new Set(Object.values(merged.podCast || {}).map(e => e && e.voiceId).filter(Boolean)).size
 
       const { error } = await db
         .from('courses')

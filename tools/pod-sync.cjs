@@ -387,26 +387,26 @@ function poolKeysForCourse(pools, course) {
   return { target, known };
 }
 
-// Aran's rule (2026-08-07): a pod is a TWO-HANDER — one male voice and one
-// female voice for the whole cast, however many speaker labels the markdown
-// carries. Canonical pod-0 has 26 labels; without this they fan out across the
-// pool and a course ends up a 6-voice patchwork.
-//
-// Pool depth is not deleted, it is parked: POD_VOICES_PER_GENDER stays as
-// opt-in headroom for pod 1/2 ("additional voices may come later"). Raise it
-// via the env var and the old round-robin behaviour returns unchanged.
-// Mirrors the human-recording side, which already has this rule as
-// DEFAULT_POD_VOICES = 2 in services/voice-engine/pods-cast.cjs.
+// Pool depth for AUTOMATIC casting: one voice per gender by default, so a pod
+// with 26 speaker labels lands on two voices rather than fanning out across the
+// pool into a 6-voice patchwork (Aran, 2026-08-07). This is a DEFAULT, not a
+// rule — Tom retired the one-man-one-woman casting rule on 2026-09-12 ("Yes.
+// Retire"); a pod cast is any number of named voices. Raise
+// POD_VOICES_PER_GENDER for round-robin across more of the pool, or hand the
+// cast a list of voices per gender as overrides (PodLab's picker does).
+// Mirrors DEFAULT_POD_VOICES = 2 in services/voice-engine/pods-cast.cjs.
 const POD_VOICES_PER_GENDER = Math.max(1, parseInt(process.env.POD_VOICES_PER_GENDER || '1', 10) || 1);
 
 // A MANUAL voice choice, as picked in PodLab's casting panel.
 //
 // Shape: { target: { m: <voice>, f: <voice> }, known: { m, f } }, every key
-// optional; <voice> is { provider, voice_id, name?, locale? }. An override
-// replaces the pool pick for that (track, gender) and NOTHING else — gender
-// resolution, variant collapsing, known-rank locking and the two-voice rule all
-// run exactly as they do without it. A voice with no voice_id is ignored, so a
-// half-filled dropdown can never blank a track.
+// optional; <voice> is { provider, voice_id, name?, locale? } or, since
+// 2026-09-12, a LIST of them — N voices for a gender round-robin across that
+// gender's characters, exactly as a deeper pool would. An override replaces the
+// pool pick for that (track, gender) and NOTHING else — gender resolution,
+// variant collapsing and known-rank locking all run exactly as they do without
+// it. A voice with no voice_id is ignored, so a half-filled dropdown can never
+// blank a track. Internally each (track, gender) is always an array.
 //
 // ⚠️ This choice lives ONLY in listening_pods.speakers. Re-running
 // tools/pod-sync.cjs on the pod's markdown re-casts from the pool and will
@@ -419,14 +419,18 @@ function normaliseOverrides(overrides) {
     const t = overrides[track];
     if (!t || typeof t !== 'object') continue;
     for (const g of ['m', 'f']) {
-      const v = t[g];
-      if (!v || typeof v !== 'object' || !v.voice_id) continue;
-      const picked = { provider: v.provider || 'xai', voice_id: v.voice_id, name: v.name || v.voice_id };
-      // locale is carried only when the picker supplied one. Pool entries may
-      // now carry one too (see poolVoice below), and an override still wins
-      // outright: it replaces the pool pick whole, locale included.
-      if (v.locale) picked.locale = v.locale;
-      out[track][g] = picked;
+      const list = Array.isArray(t[g]) ? t[g] : [t[g]];
+      const picks = [];
+      for (const v of list) {
+        if (!v || typeof v !== 'object' || !v.voice_id) continue;
+        const picked = { provider: v.provider || 'xai', voice_id: v.voice_id, name: v.name || v.voice_id };
+        // locale is carried only when the picker supplied one. Pool entries may
+        // now carry one too (see poolVoice below), and an override still wins
+        // outright: it replaces the pool pick whole, locale included.
+        if (v.locale) picked.locale = v.locale;
+        picks.push(picked);
+      }
+      if (picks.length) out[track][g] = picks;
     }
   }
   return out;
@@ -530,34 +534,39 @@ function resolveCast(rawSpeakers, targetLang, knownLang, pools, overrides = null
     // voice (same Croatian Gabrijela in hrv, where there's only 1 F target
     // voice) must share the same known voice. Otherwise listeners hear the
     // same "person" in Croatian but different people in English.
-    // Two-voice rule: every speaker of a gender lands on the same voice, so
+    // Default pool depth: every speaker of a gender lands on the same voice, so
     // `idx` is confined to the first POD_VOICES_PER_GENDER entries of the pool
-    // (1 by default → always index 0). Set POD_VOICES_PER_GENDER > 1 to get the
-    // old round-robin across the full pool back.
+    // (1 by default → always index 0). Set POD_VOICES_PER_GENDER > 1 for
+    // round-robin across more of the pool. A manual override LIST round-robins
+    // across its own voices the same way.
     const tIdx = tPool.length ? (idx % Math.min(POD_VOICES_PER_GENDER, tPool.length)) : 0;
     const kIdx = kPool.length ? (tIdx % kPool.length) : 0;
     const t = tPool[tIdx];
     const k = kPool[kIdx];
+    const ovT = ov.target[pickGender] ? ov.target[pickGender][idx % ov.target[pickGender].length] : null;
+    const ovK = ov.known[pickGender] ? ov.known[pickGender][idx % ov.known[pickGender].length] : null;
     assignments[canon] = {
       gender,
       variants,
       // Cloned, never aliased: every speaker gets its own voice object, so the
       // stored cast can be edited per speaker later without one edit moving all.
-      target: ov.target[pickGender] ? { ...ov.target[pickGender] } : poolVoice(t, `pod_voice_pools["${tk}"]["${pickGender}"]`),
-      known:  ov.known[pickGender]  ? { ...ov.known[pickGender] }  : poolVoice(k, `pod_voice_pools["${kk}"]["${pickGender}"]`),
+      target: ovT ? { ...ovT } : poolVoice(t, `pod_voice_pools["${tk}"]["${pickGender}"]`),
+      known:  ovK ? { ...ovK } : poolVoice(k, `pod_voice_pools["${kk}"]["${pickGender}"]`),
     };
   }
 
   // _default for re-run safety (markdown adds a speaker between re-syncs).
   // It is the MALE slot, so a male override governs it too — otherwise a new
   // speaker would arrive on the pool voice the manual choice replaced.
-  const defT = ov.target.m || (targetPool.m || [])[0];
-  const defK = ov.known.m  || (knownPool.m  || [])[0];
+  const ovDefT = ov.target.m ? ov.target.m[0] : null;
+  const ovDefK = ov.known.m ? ov.known.m[0] : null;
+  const defT = ovDefT || (targetPool.m || [])[0];
+  const defK = ovDefK || (knownPool.m  || [])[0];
   if (defT && defK) {
     assignments._default = {
       gender: 'n',
-      target: defT === ov.target.m ? { ...defT } : poolVoice(defT, `pod_voice_pools["${tk}"]["m"][0]`),
-      known:  defK === ov.known.m  ? { ...defK } : poolVoice(defK, `pod_voice_pools["${kk}"]["m"][0]`),
+      target: ovDefT ? { ...defT } : poolVoice(defT, `pod_voice_pools["${tk}"]["m"][0]`),
+      known:  ovDefK ? { ...defK } : poolVoice(defK, `pod_voice_pools["${kk}"]["m"][0]`),
     };
   }
 

@@ -150,16 +150,10 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
     for (const i of indices) flag(i, addressed)
   }
 
-  // (c) the cast is not exactly two target voices — the gate's own number.
-  if (gate.voicesInUse.length !== 2) {
-    add({
-      type: 'cast-size',
-      severity: 'fail',
-      scene: null,
-      message: `Cast uses ${gate.voicesInUse.length} ${track} voice(s), not 2` +
-        (gate.voicesInUse.length ? `: ${gate.voicesInUse.join(', ')}` : ''),
-    })
-  }
+  // (c) — RETIRED 2026-09-12. There used to be a 'cast-size' failure here when
+  // the cast was not exactly two target voices; Tom retired the
+  // one-man-one-woman rule ("Yes. Retire") and a cast is any number of named
+  // voices. The count is still in summary.cast for the eye, never a finding.
   for (const name of gate.uncast) {
     add({ type: 'uncast-character', severity: 'fail', scene: null, message: `${name} has no ${track} voice in the cast` })
   }
@@ -198,9 +192,12 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
       continue
     }
     if (va.gender === vb.gender) {
+      // A note for the ear, not a failure: with any gender mix allowed (Tom,
+      // 2026-09-12) two same-gender voices in exchange are legitimate; they are
+      // just harder to tell apart, so the reviewer is told where to listen.
       add({
         type: 'same-gender-exchange',
-        severity: 'fail',
+        severity: 'warn',
         scene: e.scene,
         speakers: [e.a, e.b],
         voice: [va.voice_id, vb.voice_id],

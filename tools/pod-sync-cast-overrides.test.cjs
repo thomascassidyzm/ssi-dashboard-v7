@@ -103,6 +103,18 @@ describe('resolveCast — with a manual override', () => {
     expect(cast._default.target.voice_id).toBe('xai_diego')
   })
 
+  it('round-robins a gender\'s characters across a LIST of override voices — a three-voice cast', async () => {
+    const three = { target: { f: [
+      { provider: 'xai', voice_id: 'xai_carmen', name: 'Carmen' },
+      { provider: 'xai', voice_id: 'xai_lucia', name: 'Lucía' },
+    ], m: { provider: 'xai', voice_id: 'xai_diego', name: 'Diego' } } }
+    const cast = resolveCast(SPEAKERS, 'spa_mx', 'eng', POOLS, three)
+    const femaleVoices = new Set([cast.Ana.target.voice_id, cast.Camarera.target.voice_id])
+    expect(femaleVoices).toEqual(new Set(['xai_carmen', 'xai_lucia']))
+    expect(cast.Pablo.target.voice_id).toBe('xai_diego')
+    expect(cast._default.target.voice_id).toBe('xai_diego')
+  })
+
   it('changes the target track and NOTHING else', async () => {
     const before = resolveCast(SPEAKERS, 'spa_mx', 'eng', POOLS)
     const after = resolveCast(SPEAKERS, 'spa_mx', 'eng', POOLS, IBERIAN)
@@ -159,7 +171,11 @@ describe('resolveCast — with a manual override', () => {
 describe('normaliseOverrides', () => {
   it('defaults provider to xai and name to the voice id', () => {
     const ov = normaliseOverrides({ target: { f: { voice_id: 'v1' } } })
-    expect(ov.target.f).toEqual({ provider: 'xai', voice_id: 'v1', name: 'v1' })
+    expect(ov.target.f).toEqual([{ provider: 'xai', voice_id: 'v1', name: 'v1' }])
+  })
+  it('accepts a LIST of voices per gender (any number of voices, 2026-09-12)', () => {
+    const ov = normaliseOverrides({ target: { f: [{ voice_id: 'v1' }, { voice_id: 'v2', provider: 'azure' }] } })
+    expect(ov.target.f.map(v => v.voice_id)).toEqual(['v1', 'v2'])
   })
   it('drops anything without a voice_id, and unknown tracks', () => {
     const ov = normaliseOverrides({ target: { f: {}, m: 'nope' }, bogus: { f: { voice_id: 'x' } } })
