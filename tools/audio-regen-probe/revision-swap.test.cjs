@@ -390,6 +390,58 @@ test('V6c. a text that would RE-KEY the row is refused before anything is writte
 })
 
 // ===========================================================================
+// V8. WORD TIMINGS TRAVEL WITH THE BYTES. `word_timings` is measured on the
+// render under s3_key (word-timings.cjs), so a swap that moves s3_key must
+// clear it unless the replacement brings its own — otherwise a human re-record
+// keeps the old Cartesia timings describing audio nobody hears (#415).
+const OLD_TIMINGS = { source: 'cartesia', words: ['quiero', 'hablar'], starts: [0, 0.4], ends: [0.35, 0.9] }
+const NEW_TIMINGS = { source: 'cartesia', words: ['quiero', 'hablar'], starts: [0, 0.5], ends: [0.45, 1.1] }
+const timingsOf = async (db, id) =>
+  (await db.query('SELECT word_timings FROM course_audio WHERE id=$1', [id])).rows[0].word_timings
+
+async function timedClip (db) {
+  const id = await oneClip(db)
+  await db.query('UPDATE course_audio SET word_timings=$1 WHERE id=$2', [JSON.stringify(OLD_TIMINGS), id])
+  assert.deepStrictEqual(await timingsOf(db, id), OLD_TIMINGS, 'fixture: the row starts with timings')
+  return id
+}
+
+test('V8a. a swap with NO timings in the patch CLEARS word_timings — a human take does not inherit Cartesia timings', async () => {
+  const db = await r.createRouteFixture()
+  const id = await timedClip(db)
+  await swapClipInPlace({
+    supabase: supabaseOver(db), audioId: id, newS3Key: NEW_GOOD, durationMs: 1800,
+    patch: { origin: 'human' }, source: 'recordist-retake', acceptedBy: 'test', reason: 'V8a',
+  })
+  const after = await clip(db, id)
+  assert.strictEqual(after.s3_key, NEW_GOOD)
+  assert.strictEqual(after.origin, 'human')
+  assert.strictEqual(await timingsOf(db, id), null, 'THE FIX: old timings must not survive a byte replacement')
+})
+
+test('V8b. a swap that BRINGS valid timings writes them as given', async () => {
+  const db = await r.createRouteFixture()
+  const id = await timedClip(db)
+  await swapClipInPlace({
+    supabase: supabaseOver(db), audioId: id, newS3Key: NEW_GOOD, durationMs: 1800,
+    patch: { origin: 'tts', word_timings: NEW_TIMINGS }, source: 'phase8-regenerate-single', acceptedBy: 'test', reason: 'V8b',
+  })
+  assert.deepStrictEqual(await timingsOf(db, id), NEW_TIMINGS, 'the replacement\'s own timings land')
+})
+
+test('V8c. a swap with MALFORMED timings stores NULL — a half-shape never reaches the display', async () => {
+  const db = await r.createRouteFixture()
+  const id = await timedClip(db)
+  await swapClipInPlace({
+    supabase: supabaseOver(db), audioId: id, newS3Key: NEW_GOOD, durationMs: 1800,
+    // ends shorter than words: fails the contract in word-timings.cjs
+    patch: { origin: 'tts', word_timings: { source: 'cartesia', words: ['a', 'b'], starts: [0, 1], ends: [0.5] } },
+    source: 'phase8-regenerate-single', acceptedBy: 'test', reason: 'V8c',
+  })
+  assert.strictEqual(await timingsOf(db, id), null, 'bad shape becomes NULL, not a stored lie')
+})
+
+// ===========================================================================
 test('V7. a missing revision bump is caught, not shrugged off', async () => {
   const db = await r.createRouteFixture()
   const id = await oneClip(db)

@@ -29,6 +29,7 @@
  */
 
 const { audioKeyCandidates } = require('./text-normalize.cjs')
+const { toWordTimingsColumn } = require('./word-timings.cjs')
 
 /**
  * Swap the bytes an existing course_audio row points at, versioned.
@@ -133,6 +134,14 @@ async function swapClipInPlace ({
   if (histErr) throw new Error(`writing revision history for ${row.id}: ${histErr.message}`)
 
   const update = { ...patch, s3_key: newS3Key, audio_revision: revision }
+  // WORD TIMINGS DESCRIBE BYTES, NOT THE ROW. `word_timings` was measured on
+  // the render that lives under s3_key, so the moment s3_key moves the old
+  // timings describe audio nobody hears any more — a human re-record replacing
+  // a Cartesia clip is the plain case (cold-verify #415, 2026-09-12). The swap
+  // is the one seam that moves s3_key, so it is where the column is cleared:
+  // NULL unless the replacement brings its own timings in `patch`, and those
+  // are re-validated through the contract so a half-shape stores NULL too.
+  update.word_timings = toWordTimingsColumn(patch.word_timings)
   if (durationMs !== null && durationMs !== undefined) update.duration_ms = durationMs
   if (fileSizeBytes !== null && fileSizeBytes !== undefined) update.file_size_bytes = fileSizeBytes
   // TWO COLUMNS, TWO DIFFERENT REASONS — and only one of them is ours to hold.

@@ -810,11 +810,8 @@ writer's contract is `services/shared/word-timings.cjs`, the learning app maps i
   Cartesia call stays on `/tts/bytes` exactly as before — no blast radius on course-phrase renders.
   Two calls (bytes for audio, SSE for timings) would double the spend and time a different
   generation; rejected.
-- The canonical-clip trigger can point a fresh row at bytes it did not render
-  (`duplicate_render_deduped`). Timings measured on our render would then describe audio the
-  learner never hears, so the writer withdraws `word_timings` when the row comes back holding a
-  different key. Kept in the writer rather than the trigger: no second schema object, and the test
-  can drive it.
+- Timings describe bytes, not rows: the writer lands `word_timings` only after the row is confirmed
+  to hold the rendered bytes, and the revision swap clears them on any replacement that brings none.
 - Mastering only cuts the TAIL (`trimToEndOfSpeech`) and re-levels; the head is untouched, so raw
   render timings still describe the mastered clip (proof: last word ends 1.32 s, clip 1.44 s).
 

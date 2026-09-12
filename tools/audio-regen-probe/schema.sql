@@ -48,7 +48,8 @@ CREATE TABLE course_audio (
   sequence         integer,
   audio_revision   integer NOT NULL DEFAULT 1,
   clip_id          uuid,
-  rerecord_wanted  jsonb
+  rerecord_wanted  jsonb,
+  word_timings     jsonb
 );
 
 CREATE TABLE course_legos (
