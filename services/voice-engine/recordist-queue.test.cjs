@@ -49,7 +49,12 @@ const CAST = {
   podCast: {
     Aran: { name: 'Aran', gender: 'm', voiceId: 'human_aran_cym_n' },
     Catrin: { name: 'Catrin', gender: 'f', voiceId: 'human_catrinlliar_cym_n' },
-    Ghost: { name: 'Uncast', voiceId: 'human_ghost' },   // no gender on purpose
+    // No voice id and no gender on purpose: NOBODY owns Ghost's lines. (Until
+    // job #351 this entry named a voice id and only omitted gender, and was
+    // still counted uncast -- but a cast that names a voice id is owned by
+    // that voice, gender or no gender, so it is now that voice's queue line.
+    // See booth-take-routes-own-line-by-voice-id.test.cjs.)
+    Ghost: { name: 'Uncast' },
   },
 }
 

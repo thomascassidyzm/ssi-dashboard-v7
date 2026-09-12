@@ -46,7 +46,11 @@ const {
   linkSeedTake,
   seedCastEntry,
   policyVoiceList,
+  lineVoiceId,
+  clipVoiceId,
+  voiceRegister,
 } = require('./recordist-queue.cjs')
+const { courseDialect } = require('../shared/dialect.cjs')
 const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const {
@@ -398,6 +402,30 @@ module.exports = function createRecordistRouter({
       })
       if (arrival.refused.length) {
         return res.status(403).json({ error: arrival.refused[0].sentence, courseCode: clip.course_code, reason: 'not_cast_no_grant' })
+      }
+    }
+
+    // AND ITS OWN CLIPS ONLY, for a policy voice and a cast-only voice alike.
+    // A flagged clip has a voice (clipVoiceId: its own voice_id through the
+    // register's aliases, or the want's gender through the policy for the
+    // untagged narration bucket). Before this a policy voice of the same
+    // language re-recorded any flagged clip by uuid -- Bea re-recorded Amina's
+    // clip and retired Amina's want (job #349, 2026-09-12). The queue never
+    // showed her that uuid; the take holds the same rule (job #351).
+    {
+      const { data: clipCourse, error: courseErr } = await db()
+        .from('courses').select('course_code, voice_config, dialect').eq('course_code', clip.course_code).maybeSingle()
+      if (courseErr) throw new Error(`course lookup failed: ${courseErr.message}`)
+      const register = await voiceRegister(db(), recordist.language)
+      const owner = clipVoiceId(clip, clipCourse, register)
+      if (owner && !recordist.spellings.includes(owner)) {
+        const ownerName = (register.aliasOwner.get(owner) || {}).name || owner
+        const sentence403 = `${recordist.displayName} is not cast to read this clip of ${clip.course_code}: it belongs to ${ownerName}.`
+        castingRights.recordAccess({
+          kind: 'refused', email: recordist.email, voices: [recordist.voiceId], courseCode: clip.course_code,
+          method: req.method, path: req.originalUrl || req.path, sentence: sentence403, logger,
+        })
+        return res.status(403).json({ error: sentence403, courseCode: clip.course_code, reason: 'not_cast_on_line' })
       }
     }
 
@@ -992,22 +1020,31 @@ module.exports = function createRecordistRouter({
         if (arrival.refused.length) {
           return res.status(403).json({ error: arrival.refused[0].sentence, courseCode: pod.course_code, reason: 'not_cast_no_grant' })
         }
-        // AND ITS OWN LINES ONLY. The course admitting the voice is not the
-        // line being cast to it: two artists cast on one community course by
-        // the same editor never see each other's lines in the queue
-        // (linesForVoice: a line belongs to the voice lineVoiceId names), and the take must hold the same rule -- the queue
-        // never showed Bea Amina's uuid, but the route answered it (job #336,
-        // 2026-09-12). A policy voice is language-wide and unchanged here.
+      }
+
+      // AND ITS OWN LINES ONLY -- for a policy voice and a cast-only voice
+      // alike. A line belongs to the voice lineVoiceId names (the queue's own
+      // rule, linesForVoice), and the take holds the same rule: the course
+      // admitting a voice is not the line being cast to it. This check once
+      // ran only for a cast-only voice, so a POLICY voice could record any
+      // line of its language by uuid -- Bea's take on Amina's line (job #349,
+      // 2026-09-12), or a take by Aran on one of the 29 Welsh lines recast to
+      // Catrin. Gender is a property of the voice, never a key (Tom,
+      // 2026-09-12 12:08Z): two policy voices of one gender are told apart by
+      // voice id here exactly as in the queue (job #351).
+      {
         const { data: course, error: courseErr } = await db()
-          .from('courses').select('course_code, voice_config').eq('course_code', pod.course_code).maybeSingle()
+          .from('courses').select('course_code, voice_config, dialect').eq('course_code', pod.course_code).maybeSingle()
         if (courseErr) throw new Error(`course lookup failed: ${courseErr.message}`)
         const castEntry = castEntryFor(course && course.voice_config && course.voice_config.podCast, sentence.speaker)
-        const castVoiceId = castEntry && castEntry.voiceId ? String(castEntry.voiceId) : null
-        if (!castVoiceId || !recordist.spellings.includes(castVoiceId)) {
+        const register = await voiceRegister(db(), recordist.language)
+        const owner = castEntry ? lineVoiceId(castEntry, register, courseDialect(course)) : null
+        if (!owner || !recordist.spellings.includes(owner)) {
+          const ownerName = owner ? ((register.aliasOwner.get(owner) || {}).name || (castEntry && castEntry.name) || owner) : null
           const sentence403 = `${recordist.displayName} is not cast to read this line of ${pod.course_code}: ` +
-            (castVoiceId ? `it is cast to ${castEntry.name || castVoiceId}.` : 'nobody is cast to its speaker yet.')
+            (owner ? `it is cast to ${ownerName}.` : 'nobody is cast to its speaker yet.')
           castingRights.recordAccess({
-            kind: 'refused', email: arrival.email, voices: [recordist.voiceId], courseCode: pod.course_code,
+            kind: 'refused', email: recordist.email, voices: [recordist.voiceId], courseCode: pod.course_code,
             method: req.method, path: req.originalUrl || req.path, sentence: sentence403, logger,
           })
           return res.status(403).json({ error: sentence403, courseCode: pod.course_code, reason: 'not_cast_on_line' })

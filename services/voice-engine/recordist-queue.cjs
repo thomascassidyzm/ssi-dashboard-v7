@@ -592,6 +592,29 @@ function wantVoiceId(course, register, gender) {
   return ids.size === 1 ? [...ids][0] : null
 }
 
+/**
+ * THE VOICE A FLAGGED CLIP BELONGS TO -- the re-record route's half of the one
+ * key (job #351). A course_audio row carries its own voice_id: any spelling the
+ * register knows resolves to that policy voice; a spelling it does not know is
+ * a community voice and its own key. Narration and encouragement are stored
+ * under the shared untagged 'human' bucket (a placeholder, not a voice), and
+ * for those the WANT names a gender and the register names who carries it
+ * (wantVoiceId) -- the same rule the queue's second source routes them by.
+ * Null means nobody can be named: the queue never offered the clip and the
+ * route falls back to its language and course gates alone.
+ */
+function clipVoiceId(clip, course, register) {
+  const stored = String(clip && clip.voice_id ? clip.voice_id : '').trim()
+  if (tryCanonicalVoiceId(stored)) {
+    const owner = register.aliasOwner.get(stored)
+    return owner ? owner.voiceId : stored
+  }
+  const want = clip && clip.rerecord_wanted && typeof clip.rerecord_wanted === 'object' ? clip.rerecord_wanted : null
+  const gender = String(want && want.voice_gender ? want.voice_gender : '').toLowerCase()
+  if (gender !== 'm' && gender !== 'f' || !course) return null
+  return wantVoiceId(course, register, gender)
+}
+
 function castEntryFor(podCast, speaker) {
   if (!podCast) return null
   return podCast[canonicalSpeakerName(speaker)] || podCast[speaker] || null
@@ -1009,13 +1032,23 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       }
       continue
     }
-    if (!gender) {
+    // THE OWNER FIRST. A cast entry that names a voice id and omits gender is
+    // still owned -- lineVoiceId resolves it, propagation files takes onto it
+    // -- so it must be that voice's queue line too, or the queue and the take
+    // disagree about one line (job #348 found exactly that: dropped here as
+    // `uncast`, filled by propagation). Gender is a property of the voice:
+    // read off the register's owner when the cast omits it. Only a line NOBODY
+    // owns is uncast, and that one neither queues nor propagates.
+    const voiceId = lineVoiceId(entry, register, courseDialect(course))
+    const ownerGender = voiceId && aliasOwner.has(voiceId) ? String(aliasOwner.get(voiceId).gender || '').toLowerCase() : ''
+    const lineGender = gender || ownerGender
+    if (!voiceId && !lineGender) {
       // Never guessed, never silently dropped — surfaced as `uncast`.
       uncast += 1
       continue
     }
     // From the COURSE, never from the cast — the whole ruling in one line.
-    const bucket = bucketKey(courseDialect(course), gender)
+    const bucket = bucketKey(courseDialect(course), lineGender)
 
     // A LINE THIS ARTIST READ AND SOMEBODY ELSE NOW OWNS.
     //
@@ -1067,7 +1100,6 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     // Bea's take was then filed onto it (job #336, 2026-09-12); keyed on the
     // voice, two voices of one gender never share a line and one voice cast
     // on two courses reads its line once.
-    const voiceId = lineVoiceId(entry, register, courseDialect(course))
     const key = voiceTextKey(voiceId, bucket, text)
     if (seen.has(key)) {
       // One recording, not three. The duplicate is remembered against the
@@ -1144,7 +1176,14 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   for (const w of wanted) {
     const text = (w.text || '').trim()
     if (!text) continue
-    const gender = String(w.rerecord_wanted.voice_gender || '').toLowerCase()
+    // WHOSE CLIP IT IS, first (clipVoiceId): a clip stored under a real voice
+    // id belongs to that voice whatever gender the want names -- Amina's
+    // flagged clip was queued to Bea because both are female and the want
+    // said only 'f' (job #351). The want's gender is the rule for the untagged
+    // narration bucket, where the clip itself names nobody.
+    const owner = clipVoiceId(w, byCourse.get(w.course_code), register)
+    const ownerGender = owner && register.aliasOwner.has(owner) ? String(register.aliasOwner.get(owner).gender || '').toLowerCase() : ''
+    const gender = String(w.rerecord_wanted.voice_gender || ownerGender || '').toLowerCase()
     if (gender !== 'm' && gender !== 'f') {
       // No required voice stated — the one thing that would have to be guessed.
       uncast += 1
@@ -1169,9 +1208,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     const course = byCourse.get(w.course_code)
     const bucket = bucketKey(courseDialect(course), gender)
     if (!byBucket.has(bucket)) byBucket.set(bucket, [])
-    // A wanted clip names a gender, never a voice: the register says which
-    // voice carries that gender here (wantVoiceId).
-    const voiceId = wantVoiceId(course, register, gender)
+    const voiceId = owner
     const key = voiceTextKey(voiceId, bucket, text)
     if (seen.has(key)) {
       // Same clip identity as a pod line already in the queue: the want belongs
@@ -2109,6 +2146,8 @@ module.exports = {
   tryCanonicalVoiceId,
   // The one propagation key, exported so a test can assert it directly.
   lineVoiceId,
+  clipVoiceId,
+  wantVoiceId,
   voiceTextKey,
   voiceRegister,
   linesForVoice,
