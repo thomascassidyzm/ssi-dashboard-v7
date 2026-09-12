@@ -1471,17 +1471,9 @@ const castFlags = computed(() => {
         + `(${unvoiced[0].labels.slice(0, 4).join(', ')}${unvoiced[0].labels.length > 4 ? '…' : ''}) — those lines cannot render.`,
     })
   }
-  if (voiced.length !== 2) {
-    flags.push({
-      level: 'bad',
-      text: `${voiced.length} distinct target voice${voiced.length === 1 ? '' : 's'} — Aran's rule is a two-hander, one male and one female.`,
-    })
-  } else {
-    const genders = voiced.map((r) => r.voice.gender)
-    if (!(genders.includes('f') && genders.includes('m'))) {
-      flags.push({ level: 'bad', text: `Two target voices, but genders are ${genders.join(' + ')} — not one male, one female.` })
-    }
-  }
+  // No voice-count or gender-pair flag: the "exactly two voices, one male one
+  // female" rule was retired by Tom on 2026-09-12 ("Yes. Retire"). A cast is
+  // any number of named voices; the cast table above states how many.
   const bad = voiced.filter((r) => localeMatchesTarget(r.voice.locale, iso3) === false)
   if (bad.length) {
     flags.push({
@@ -1512,24 +1504,13 @@ const castFlags = computed(() => {
         + 'the learner would hear the translations in the wrong language.',
     })
   }
-  // Line share: two voices at 85/15 is technically a two-hander and audibly not one.
-  const byGender = { f: 0, m: 0, n: 0 }
-  for (const r of voiced) byGender[r.voice.gender === 'f' ? 'f' : r.voice.gender === 'm' ? 'm' : 'n'] += r.lines
-  const tot = byGender.f + byGender.m + byGender.n
-  if (tot) {
-    const pct = (n) => Math.round((n / tot) * 100)
-    const skewed = voiced.length === 2 && Math.max(pct(byGender.f), pct(byGender.m)) >= 70
-    flags.push({
-      level: skewed ? 'bad' : 'ok',
-      text: `Line share — female ${pct(byGender.f)}%, male ${pct(byGender.m)}%`
-        + (byGender.n ? `, ungendered ${pct(byGender.n)}%` : '')
-        + ` of ${tot} lines${skewed ? ' — lopsided; one voice carries the pod.' : '.'}`,
-    })
-  }
+  // The female/male line-share flag went with the rule (2026-09-12): a gender
+  // balance is not a property a cast of N voices has to have. Per-voice line
+  // share is on the cast table's own rows.
   return flags
 })
 
-// ── MANUAL VOICE CHOICE — two dropdowns, one male slot, one female slot ─────
+// ── MANUAL VOICE CHOICE — a list of voices, one dropdown per voice ─────────
 // Tom, 2026-08-11, having rejected the Spanish pod-0 cast ("Spanish needs
 // Iberian Spanish, not Mexican pronounciation, that's a different course"):
 //
@@ -1538,9 +1519,13 @@ const castFlags = computed(() => {
 //    be overkill but it's worth choosing the voices manually if there's only 2
 //    of them"
 //
-// So: a LIGHTWEIGHT picker. Two selects, a ▶ per slot, an Apply. VoiceLab's
-// inventory and preview endpoints are reused wholesale; none of its controls
-// (per-role lanes, provider switching, prosody knobs) come with them.
+// So: a LIGHTWEIGHT picker. One select per voice, a ▶ per row, an Apply.
+// Any number of rows (Tom, 2026-09-12: the one-man-one-woman rule is retired
+// — "Yes. Retire"); each row carries a gender LABEL that says which characters
+// the voice reads, and rows of one gender share that gender's characters
+// round-robin. VoiceLab's inventory and preview endpoints are reused
+// wholesale; none of its controls (per-role lanes, provider switching, prosody
+// knobs) come with them.
 //
 // It governs the TARGET track only — that is where the miscast was, and where
 // the ear judges. The known track is English for nearly the whole estate and
@@ -1550,7 +1535,7 @@ const castFlags = computed(() => {
 const POOL_KEY_MARK = 'pool'
 const voicePools = ref(null) // GET /api/pod-cast-voices
 const discovered = ref([]) // GET /api/voices/discover/:lang?provider=xai
-const pick = ref({ m: '', f: '' }) // voiceKey() of the chosen voice per slot
+const pick = ref([]) // [{ g: 'm'|'f', key: voiceKey() of the chosen voice }] — one row per voice
 const pickerBusy = ref('')
 const pickerMsg = ref('')
 const pickerError = ref('')
@@ -1567,18 +1552,13 @@ const targetBcp47 = computed(() => {
   return region ? `${iso1}-${region.toUpperCase()}` : iso1
 })
 
-// The voice each gender slot is cast on TODAY — the default both dropdowns
-// open at, so opening the panel and changing nothing changes nothing.
-const currentPair = computed(() => {
-  const out = { m: null, f: null }
-  for (const r of targetCast.value) {
-    if (!r.voice) continue
-    const g = r.voice.gender === 'f' ? 'f' : 'm'
-    // Most lines wins, so an odd speaker can't misreport the slot.
-    if (!out[g] || r.lines > out[g].lines) out[g] = { ...r.voice, lines: r.lines }
-  }
-  return out
-})
+// The distinct voices the pod is cast on TODAY, most lines first, each with
+// the gender label it reads — the rows the picker opens on, so opening the
+// panel and changing nothing changes nothing.
+const currentVoices = computed(() =>
+  targetCast.value
+    .filter((r) => r.voice)
+    .map((r) => ({ ...r.voice, g: r.voice.gender === 'f' ? 'f' : 'm', lines: r.lines })))
 
 // Options for one gender: the curated pool for this course's language FIRST and
 // marked as such, then the wider discovered xAI inventory. Anything already
@@ -1593,8 +1573,9 @@ function voiceOptions(gender) {
     seen.add(key)
     out.push({ ...v, key, source })
   }
-  const cur = currentPair.value[gender]
-  if (cur) push({ provider: cur.provider, voice_id: cur.voice_id, name: cur.name, locale: cur.locale }, 'cast')
+  for (const cur of currentVoices.value) {
+    if (cur.g === gender) push({ provider: cur.provider, voice_id: cur.voice_id, name: cur.name, locale: cur.locale }, 'cast')
+  }
   const pool = voicePools.value?.target?.pool?.[gender] || []
   for (const v of pool) {
     push({ provider: v.provider, voice_id: v.voice_id, name: v.name, locale: azureLocaleOf(v.voice_id) || targetBcp47.value }, POOL_KEY_MARK)
@@ -1632,16 +1613,24 @@ function voiceLabel(v) {
 function voiceSelectOptions(gender) {
   return (gender === 'm' ? optionsM.value : optionsF.value).map((o) => ({ value: o.key, label: voiceLabel(o) }))
 }
-function chosen(gender) {
-  return (gender === 'm' ? optionsM.value : optionsF.value).find((o) => o.key === pick.value[gender]) || null
+// The voice a picker row has chosen, as an option object carrying its gender label.
+function chosen(row) {
+  const o = (row.g === 'm' ? optionsM.value : optionsF.value).find((o) => o.key === row.key)
+  return o ? { ...o, g: row.g } : null
 }
-// Has the human actually moved either dropdown off what is cast today?
+// Every row that has a voice chosen — the cast the picker currently describes.
+const pickedVoices = computed(() => pick.value.map(chosen).filter(Boolean))
+const castKeyOf = (voices) => voices.map((v) => `${v.g}:${voiceKey(v)}`).sort().join('+') || '-'
+// Has the human actually moved the picker off what is cast today?
 const pickChanged = computed(() =>
-  ['m', 'f'].some((g) => {
-    const cur = currentPair.value[g]
-    return pick.value[g] && pick.value[g] !== (cur ? voiceKey(cur) : '')
-  }),
+  pickedVoices.value.length > 0 && castKeyOf(pickedVoices.value) !== castKeyOf(currentVoices.value),
 )
+function addPickRow(g = 'm') {
+  pick.value = [...pick.value, { g, key: '' }]
+}
+function removePickRow(i) {
+  pick.value = pick.value.filter((_, idx) => idx !== i)
+}
 
 async function loadVoicePicker(courseCode) {
   voicePools.value = null
@@ -1675,14 +1664,12 @@ async function loadVoicePicker(courseCode) {
   // already called a working picker.
 }
 
-// Both selects default to what is cast today. Re-runs whenever the cast moves
-// under the page (a load, an apply), never while the human is mid-choice on an
-// unchanged cast.
-watch(currentPair, (pair) => {
-  for (const g of ['m', 'f']) {
-    const key = pair[g] ? voiceKey(pair[g]) : ''
-    if (key && pick.value[g] !== key) pick.value[g] = key
-  }
+// The picker opens on what is cast today, one row per voice. Re-runs whenever
+// the cast moves under the page (a load, an apply), never while the human is
+// mid-choice on an unchanged cast.
+watch(currentVoices, (voices) => {
+  const rows = voices.map((v) => ({ g: v.g, key: voiceKey(v) }))
+  if (castKeyOf(voices) !== castKeyOf(pickedVoices.value) || !pick.value.length) pick.value = rows
 }, { immediate: true, deep: true })
 
 // A short line to hear the voice on. A REAL sentence from this pod where one
@@ -1702,11 +1689,15 @@ function previewText(gender) {
 }
 
 // The one place this feature spends money: a few seconds of TTS, per click.
-async function previewVoice(gender) {
-  const v = chosen(gender)
+async function previewVoice(i) {
+  const row = pick.value[i]
+  return previewVoiceObj(row && chosen(row), `preview:${i}`)
+}
+async function previewVoiceObj(v, busyKey = 'preview') {
   if (!v || pickerBusy.value) return
+  const gender = v.g === 'f' ? 'f' : 'm'
   stop() // supersede any sample or earlier preview — never two at once
-  pickerBusy.value = `preview:${gender}`
+  pickerBusy.value = busyKey
   pickerMsg.value = ''
   try {
     const token = await getAccessToken()
@@ -1733,7 +1724,7 @@ async function previewVoice(gender) {
     // earlier than the one the picker already handles.
     const refusal = consentRefusal(e)
     if (refusal) {
-      consentNeeded.value = { ...refusal, retry: () => previewVoice(gender) }
+      consentNeeded.value = { ...refusal, retry: () => previewVoiceObj(v, busyKey) }
       pickerMsg.value = ''
     } else {
       pickerMsg.value = `Preview failed: ${e.message}`
@@ -1765,16 +1756,28 @@ function playDataUri(uri) {
 // The single cast-write call. Returns the route's own body; throws unless the
 // route confirmed a write, because an unrouted /api/* on Vercel falls through
 // to the SPA and answers 200 with HTML, which parses to {}.
-async function writeCast(m, f) {
+// One line per voice for a confirm box.
+function describeVoices(voices) {
+  return voices.map((v) => `${v.g === 'f' ? 'female' : 'male'}: ${v.name} (${v.provider}, ${v.locale || 'no locale'})`).join('\n')
+}
+
+// Writes a cast of ANY number of voices: the route takes a list per gender and
+// round-robins that gender's characters across it (api/pod-cast-voices.js).
+async function writeCast(voices) {
   const token = await getAccessToken()
-  const voice = (v) => (v ? { provider: v.provider, voice_id: v.voice_id, name: v.name, locale: v.locale || undefined } : undefined)
+  const voice = (v) => ({ provider: v.provider, voice_id: v.voice_id, name: v.name, locale: v.locale || undefined })
+  const target = {}
+  for (const g of ['m', 'f']) {
+    const list = voices.filter((v) => v.g === g).map(voice)
+    if (list.length) target[g] = list
+  }
   const res = await fetch('/api/pod-cast-voices', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: `Bearer ${token}` } : {}) },
     body: JSON.stringify({
       course_code: casting.value?.course_code,
       pod_id: currentPod.value?.id,
-      target: { m: voice(m), f: voice(f) },
+      target,
       cast_fingerprint: casting.value?.cast_fingerprint || null,
     }),
   })
@@ -1825,13 +1828,11 @@ async function onConsentRecorded() {
 async function applyVoices() {
   const course = casting.value?.course_code
   const podId = currentPod.value?.id
-  const m = chosen('m')
-  const f = chosen('f')
-  if (!course || !podId || (!m && !f) || pickerBusy.value) return
+  const voices = pickedVoices.value
+  if (!course || !podId || !voices.length || pickerBusy.value) return
   if (!window.confirm(
-    `Re-cast ${podId} on these two voices?\n\n`
-    + `male:   ${m ? `${m.name} (${m.provider}, ${m.locale || 'no locale'})` : 'unchanged'}\n`
-    + `female: ${f ? `${f.name} (${f.provider}, ${f.locale || 'no locale'})` : 'unchanged'}\n\n`
+    `Re-cast ${podId} on ${voices.length === 1 ? 'this voice' : `these ${voices.length} voices`}?\n\n`
+    + describeVoices(voices) + '\n\n'
     + 'Casting only — no audio is generated and no existing clip is deleted. '
     + 'The current approval goes stale, so generation re-locks until you approve the new cast.',
   )) return
@@ -1839,7 +1840,7 @@ async function applyVoices() {
   pickerBusy.value = 'apply'
   pickerMsg.value = ''
   try {
-    const body = await writeCast(m, f)
+    const body = await writeCast(voices)
     const podLabel = (body.pods || []).map((p) => `${p.pod_id} (${p.speakers} speakers)`).join(', ')
     pickerMsg.value = `Applied to ${podLabel || podId}. New casting ${body.cast_fingerprint} — `
       + (body.gate?.ok ? 'still approved.' : 'the previous approval no longer applies, so generation is locked until you approve this cast.')
@@ -1869,7 +1870,7 @@ async function applyVoices() {
 // each side (PodLab.casting.test.js here, pod-voice-approvals.test.cjs there).
 //
 // Two things the sample has to answer, in this order:
-//   1. DO THE TWO VOICES WORK TOGETHER? Lead with a real EXCHANGE — consecutive
+//   1. DO THE VOICES WORK TOGETHER? Lead with a real EXCHANGE — consecutive
 //      lines of this pod on one track where the cast puts two different voices
 //      against each other. Tom's T-14 rejection, 2026-08-11: "Pods are dialogue
 //      - they need distinct speakers", and ten clips off ten scenes never let
@@ -1882,7 +1883,7 @@ const EXCHANGE_MAX = 6
 // Clips are partitioned by the voice that ACTUALLY rendered them, never by the
 // voice the cast would like to claim. That is what lets the same routine build
 // a sample for a CANDIDATE cast the pod isn't on: a candidate's evidence is
-// simply the clips whose real voice is one of its two.
+// simply the clips whose real voice is one of its own.
 const clipVoiceKey = (item) => `${item.kind}|${bareVoiceId(item.actualVoiceId) || 'unknown'}`
 
 // Every clip on the pod, each carrying BOTH the voice the cast says should
@@ -2121,7 +2122,9 @@ async function playSampleAll() {
 const candidates = ref([])
 let candSeq = 0
 
-const pairKeyOf = (m, f) => `${m ? voiceKey(m) : '-'}+${f ? voiceKey(f) : '-'}`
+// A candidate is a LIST of voices, each labelled with the gender it reads —
+// any number of them (Tom, 2026-09-12). `pairKey` is the identity of the list.
+const pairKeyOf = (voices) => castKeyOf(voices)
 
 // The pod's cast today — always the first column, always the one the gate's
 // fingerprint is about.
@@ -2129,27 +2132,25 @@ const castCandidate = computed(() => ({
   id: 'cast',
   origin: 'cast',
   title: 'Cast now',
-  m: currentPair.value.m,
-  f: currentPair.value.f,
-  pairKey: pairKeyOf(currentPair.value.m, currentPair.value.f),
+  voices: currentVoices.value,
+  pairKey: pairKeyOf(currentVoices.value),
 }))
 
-// A pair inferred from the audio rather than declared: when everything on this
-// pod that ISN'T on the cast was rendered by exactly two voices, those two were
-// a cast once, and they are what Tom hears today. Named by voice id only —
-// nothing on a clip row says which provider or which name.
+// A cast inferred from the audio rather than declared: the voices that rendered
+// everything on this pod that ISN'T on the cast were a cast once, and they are
+// what Tom hears today. Named by voice id only — nothing on a clip row says
+// which provider or which name.
 const heardCandidate = computed(() => {
   const ids = [...new Set(
     offCastClips.value.filter((c) => c.kind === 'target' && c.actualVoiceId).map((c) => bareVoiceId(c.actualVoiceId)),
   )]
-  if (ids.length !== 2) return null
+  if (!ids.length) return null
   return {
     id: 'heard',
     origin: 'heard',
     title: 'Heard on this pod today',
     voiceIds: ids,
-    m: null,
-    f: null,
+    voices: [],
     pairKey: `heard:${ids.join('+')}`,
   }
 })
@@ -2168,9 +2169,9 @@ const comparison = computed(() => {
 })
 
 const candVoiceIds = (cand) =>
-  cand.voiceIds || [cand.m, cand.f].filter(Boolean).map((v) => bareVoiceId(v.voice_id)).filter(Boolean)
+  cand.voiceIds || (cand.voices || []).map((v) => bareVoiceId(v.voice_id)).filter(Boolean)
 
-// A candidate's clips: rendered on one of ITS two voices, target track (the
+// A candidate's clips: rendered on one of ITS voices, target track (the
 // picker governs the target track only). The cast column keeps the existing
 // both-tracks queue so the sample still auditions the known voice too.
 function candidateClips(cand) {
@@ -2200,14 +2201,12 @@ const claimedByCandidate = computed(() => {
 })
 const strayClips = computed(() => offCastClips.value.filter((c) => !claimedByCandidate.value.has(`${c.kind}:${c.id}`)))
 
-// The two things an ear can't catch on a pair it hasn't heard yet.
+// The thing an ear can't catch on a cast it hasn't heard yet. (No voice-count
+// flag: a cast is any number of voices, Tom 2026-09-12.)
 function candFlags(cand) {
   const flags = []
   const iso3 = casting.value?.course?.target_lang || ''
-  const voices = [cand.m, cand.f].filter(Boolean)
-  if (cand.origin !== 'heard' && voices.length !== 2) {
-    flags.push({ level: 'bad', text: `Only ${voices.length} voice — Aran's rule is a two-hander, one male and one female.` })
-  }
+  const voices = cand.voices || []
   const bad = voices.filter((v) => localeMatchesTarget(v.locale, iso3) === false)
   if (bad.length) {
     flags.push({
@@ -2224,30 +2223,28 @@ function candVoiceRows(cand) {
       slot: '', name: id, meta: 'rendered these clips · provider not recorded on the clip', voice: null,
     }))
   }
-  return [{ slot: 'Female', v: cand.f }, { slot: 'Male', v: cand.m }].map(({ slot, v }) => ({
-    slot,
-    name: v ? (v.name || v.voice_id) : 'no voice',
-    meta: v ? `${v.provider} · ${v.voice_id} · ${v.locale || 'no locale'}` : '—',
-    voice: v || null,
+  return (cand.voices || []).map((v) => ({
+    slot: v.g === 'f' ? 'Female' : 'Male',
+    name: v.name || v.voice_id,
+    meta: `${v.provider} · ${v.voice_id} · ${v.locale || 'no locale'}`,
+    voice: v,
   }))
 }
 
-// ADD — defines a candidate from the two dropdowns. Writes nothing.
+// ADD — defines a candidate from the picker rows. Writes nothing.
 function addCandidate() {
-  const m = chosen('m')
-  const f = chosen('f')
-  if (!m && !f) return
-  const key = pairKeyOf(m, f)
+  const voices = pickedVoices.value.map((v) => ({ ...v }))
+  if (!voices.length) return
+  const key = pairKeyOf(voices)
   if (comparison.value.some((c) => c.pairKey === key)) {
-    pickerMsg.value = 'That pair is already in the comparison below.'
+    pickerMsg.value = 'That cast is already in the comparison below.'
     return
   }
   candidates.value.push({
     id: `cand-${++candSeq}`,
     origin: 'defined',
-    title: [f && (f.name || f.voice_id), m && (m.name || m.voice_id)].filter(Boolean).join(' & '),
-    m: m ? { ...m } : null,
-    f: f ? { ...f } : null,
+    title: voices.map((v) => v.name || v.voice_id).join(' & '),
+    voices,
     pairKey: key,
   })
   pickerMsg.value = 'Added to the comparison — listen to it below, or generate it a sample.'
@@ -2258,16 +2255,8 @@ function dropCandidate(cand) {
 
 // Hear a voice of a candidate directly — a few seconds of TTS, per click.
 async function previewCandidateVoice(cand, row) {
-  if (!row.voice || pickerBusy.value) return
-  const g = row.slot === 'Male' ? 'm' : 'f'
-  const prev = pick.value[g]
-  pick.value[g] = voiceKey(row.voice)
-  try {
-    if (!chosen(g)) { pick.value[g] = prev; pickerMsg.value = 'That voice is not in the dropdown list — pick it there to preview.'; return }
-    await previewVoice(g)
-  } finally {
-    pick.value[g] = prev
-  }
+  if (!row.voice) return
+  await previewVoiceObj(row.voice, `preview:${cand.id}:${voiceKey(row.voice)}`)
 }
 
 async function playCandidateAll(cand) {
@@ -2298,16 +2287,15 @@ async function generateCandidateSample(cand) {
   if (cand.origin === 'cast') return generateSample()
   if (genBusy.value || pickerBusy.value) return
   if (!window.confirm(
-    `Cast ${currentPod.value?.id} on this pair and render up to ${SAMPLE_GEN_LIMIT} sample clips?\n\n`
-    + `female: ${cand.f ? `${cand.f.name} (${cand.f.provider}, ${cand.f.locale || 'no locale'})` : 'unchanged'}\n`
-    + `male:   ${cand.m ? `${cand.m.name} (${cand.m.provider}, ${cand.m.locale || 'no locale'})` : 'unchanged'}\n\n`
+    `Cast ${currentPod.value?.id} on this cast and render up to ${SAMPLE_GEN_LIMIT} sample clips?\n\n`
+    + describeVoices(cand.voices) + '\n\n'
     + 'Sample mode only — the server truncates to 10 clips and fills only lines with no audio. '
     + 'Nothing is deleted. The current approval goes stale, so generation re-locks until you approve a cast.',
   )) return
   genBusy.value = true
-  genMsg.value = 'Casting this pair…'
+  genMsg.value = 'Casting this cast…'
   try {
-    const body = await writeCast(cand.m, cand.f)
+    const body = await writeCast(cand.voices)
     await loadCasting(casting.value?.course_code)
     genMsg.value = `Cast ${body.cast_fingerprint} — generating…`
   } catch (e) {
@@ -2325,20 +2313,19 @@ async function approveCandidate(cand) {
   if (cand.origin === 'cast') return decideCasting('approve')
   if (cand.origin === 'heard' || castingSaving.value || !casting.value) return
   if (!window.confirm(
-    `Approve this pair as the cast for ${currentPod.value?.id}?\n\n`
-    + `female: ${cand.f ? `${cand.f.name} (${cand.f.provider}, ${cand.f.locale || 'no locale'})` : 'unchanged'}\n`
-    + `male:   ${cand.m ? `${cand.m.name} (${cand.m.provider}, ${cand.m.locale || 'no locale'})` : 'unchanged'}\n\n`
+    `Approve this cast for ${currentPod.value?.id}?\n\n`
+    + describeVoices(cand.voices) + '\n\n'
     + 'It becomes the cast and the approval is recorded against it, unlocking generation. '
     + 'No audio is generated and no clip is deleted.',
   )) return
   castingSaving.value = 'approve'
   castingMsg.value = ''
   try {
-    const applied = await writeCast(cand.m, cand.f)
+    const applied = await writeCast(cand.voices)
     await loadCasting(casting.value?.course_code)
     await postDecision('approve', applied.cast_fingerprint)
     dropCandidate(cand) // it is the cast now; the cast column is where it lives
-    castingMsg.value = `Approved ✓ — this pair is now the cast, and generation is unlocked for casting ${applied.cast_fingerprint}`
+    castingMsg.value = `Approved ✓ — this cast is now the pod's cast, and generation is unlocked for casting ${applied.cast_fingerprint}`
   } catch (e) {
     castingMsg.value = `Failed: ${e.message}`
   } finally {
@@ -2631,13 +2618,14 @@ loadLiveConfig()
               <li v-for="(f, i) in castFlags" :key="i" :class="f.level">{{ f.text }}</li>
             </ul>
 
-            <!-- MANUAL VOICE CHOICE. Two slots, because Aran's rule makes a pod
-                 a two-hander: one male voice, one female voice, whole pod.
-                 Both open on what is cast today, so changing nothing changes
-                 nothing. Casting only — neither button renders audio. -->
+            <!-- MANUAL VOICE CHOICE. One row per voice, any number of rows
+                 (Tom, 2026-09-12: the one-man-one-woman rule is retired). The
+                 gender on a row is a label — which characters that voice reads
+                 — not a slot. Rows open on what is cast today, so changing
+                 nothing changes nothing. Casting only — no button renders audio. -->
             <div class="vpick">
               <div class="lbl small">
-                Try a pair — pick the two target voices by hand
+                Try a cast — pick the target voices by hand
                 <span v-if="voicePools?.target" class="muted">
                   · pool <code>{{ voicePools.target.pool_key }}</code>
                   <!-- Say out loud whether this key is a stored ruling or a
@@ -2655,21 +2643,28 @@ loadLiveConfig()
                 </span>
               </div>
               <div v-if="pickerError" class="chip err">{{ pickerError }}</div>
-              <div v-for="slot in [{ g: 'm', t: 'Male' }, { g: 'f', t: 'Female' }]" :key="slot.g" class="vpick-row">
-                <span class="vp-slot">{{ slot.t }}</span>
+              <div v-for="(row, i) in pick" :key="i" class="vpick-row">
+                <select v-model="row.g" class="vp-slot vp-gender" title="Which characters this voice reads — a label, not a slot">
+                  <option value="m">Male</option>
+                  <option value="f">Female</option>
+                </select>
                 <FilterSelect
-                  v-model="pick[slot.g]"
-                  :options="voiceSelectOptions(slot.g)"
+                  v-model="row.key"
+                  :options="voiceSelectOptions(row.g)"
                   placeholder="— no voice cast —"
                   filter-placeholder="Type a voice, provider or locale…"
                   button-class="vp-select"
                 />
                 <button
                   class="vp-play"
-                  :disabled="!!pickerBusy || !pick[slot.g]"
+                  :disabled="!!pickerBusy || !row.key"
                   :title="`Hear this voice on a line of this pod (a few seconds of TTS)`"
-                  @click="previewVoice(slot.g)"
-                >{{ pickerBusy === `preview:${slot.g}` ? '…' : '▶' }}</button>
+                  @click="previewVoice(i)"
+                >{{ pickerBusy === `preview:${i}` ? '…' : '▶' }}</button>
+                <button class="vp-drop" title="Remove this voice from the cast being tried" @click="removePickRow(i)">✕</button>
+              </div>
+              <div class="vpick-add">
+                <button class="vp-add-row" :disabled="!!pickerBusy" @click="addPickRow(pick.length % 2 ? 'f' : 'm')">+ Add a voice</button>
               </div>
               <div class="vpick-foot">
                 <button class="vp-add" :disabled="!!pickerBusy || !pickChanged" @click="addCandidate">
@@ -2679,7 +2674,7 @@ loadLiveConfig()
                   {{ pickerBusy === 'apply' ? 'Applying…' : 'Apply to this pod' }}
                 </button>
                 <span class="muted small">
-                  Adding puts the pair beside the current cast below, to listen to and approve.
+                  Adding puts the cast beside the current cast below, to listen to and approve.
                   Neither button generates audio or deletes a clip; applying re-locks generation
                   until you approve the new cast.
                 </span>
@@ -2704,7 +2699,7 @@ loadLiveConfig()
                  whole decision is listen-then-press on one screen. A column's
                  clips are the ones this pod actually has that were RENDERED on
                  that pair (course_audio), never the ones the stored cast claims —
-                 which is why a pair with nothing rendered on it says so instead
+                 which is why a cast with nothing rendered on it says so instead
                  of borrowing someone else's audio. -->
             <div class="candidates">
               <section v-for="cand in comparison" :key="cand.id" class="candidate" :class="cand.origin">
@@ -2736,8 +2731,8 @@ loadLiveConfig()
                 </ul>
 
                 <p v-if="cand.origin === 'heard'" class="muted small">
-                  These two voices rendered the audio this pod has now, but they are not its cast.
-                  To cast them, pick them in the dropdowns above — the clip row records only the id.
+                  These voices rendered the audio this pod has now, but they are not its cast.
+                  To cast them, pick them in the rows above — the clip row records only the id.
                 </p>
 
                 <!-- CAST COLUMN — the existing sample, coverage prose and gate. -->
@@ -2755,7 +2750,7 @@ loadLiveConfig()
                     <template v-if="sampleShape.exchangeLines">
                       Leads with a <strong>{{ sampleShape.exchangeLines }}-line exchange</strong> on the
                       {{ sampleShape.exchangeTrack }} track — {{ sampleShape.exchangeVoices.join(' answering ') }} —
-                      so you hear the two voices against each other, then one clip of every voice the
+                      so you hear the voices against each other, then one clip of every voice the
                       exchange didn't reach.
                     </template>
                     <template v-else>
@@ -2831,8 +2826,8 @@ loadLiveConfig()
                   </div>
 
                   <p v-if="!candClips(cand).length" class="note cand-empty">
-                    <strong>Nothing on this pod has been rendered on this pair yet</strong> — there is
-                    nothing to listen to until you generate one. The button casts the pod on this pair
+                    <strong>Nothing on this pod has been rendered on this cast yet</strong> — there is
+                    nothing to listen to until you generate one. The button casts the pod on this cast
                     and renders up to {{ SAMPLE_GEN_LIMIT }} clips; nothing is deleted.
                   </p>
 
@@ -2852,7 +2847,7 @@ loadLiveConfig()
 
                   <div v-if="cand.origin === 'defined'" class="cast-decide">
                     <button class="approve cand-approve" :disabled="!!castingSaving" @click="approveCandidate(cand)">
-                      {{ castingSaving === 'approve' ? 'Saving…' : 'Approve — cast the pod on this pair' }}
+                      {{ castingSaving === 'approve' ? 'Saving…' : 'Approve — cast the pod on this cast' }}
                     </button>
                     <button class="reject" :disabled="!!castingSaving" @click="dropCandidate(cand)">
                       Reject
@@ -3981,6 +3976,13 @@ code {
   font-weight: 600;
   color: var(--muted);
 }
+.vp-gender {
+  width: 84px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 4px;
+}
 /* The cast picker is the shared FilterSelect now: its root is what the row
    flexes, and `.vp-select` rides on the button inside it. */
 .vpick-row :deep(.fs-root) { flex: 1 1 auto; min-width: 0; }
@@ -3995,7 +3997,7 @@ code {
   padding: 7px 9px;
   font-size: 13px;
 }
-.vp-play {
+.vp-play, .vp-drop {
   flex: none;
   width: 34px;
   border-radius: 6px;
@@ -4010,6 +4012,15 @@ code {
   align-items: center;
   gap: 10px;
   flex-wrap: wrap;
+}
+.vp-add-row {
+  border-radius: 6px;
+  border: 1px dashed var(--border);
+  background: transparent;
+  color: var(--muted);
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
 }
 .vp-apply {
   border-radius: 6px;

@@ -12,11 +12,31 @@ import { mount, flushPromises } from '@vue/test-utils'
 import fixture from './__fixtures__/eng_for_guj-cast.json'
 import FilterSelect from '@/components/ui/FilterSelect.vue'
 
-// The two cast dropdowns are the shared FilterSelect now (Tom's filter-at-the-
+// The cast dropdowns are the shared FilterSelect now (Tom's filter-at-the-
 // top ruling, 2026-09-03), so the test drives them as components: its subject
-// is the casting, never the element the casting is chosen with.
+// is the casting, never the element the casting is chosen with. Since
+// 2026-09-12 the picker is ONE ROW PER VOICE, any number of rows (Tom retired
+// the one-man-one-woman rule: "Yes. Retire"); a row's gender is a label.
 const castPickers = (w) => w.findAll('.vpick-row').map((r) => r.findComponent(FilterSelect))
-const castLabels = (w) => castPickers(w)[0].props('options').map((o) => o.label)
+const castGenders = (w) => w.findAll('.vpick-row .vp-gender').map((r) => r.element.value)
+const castLabels = (w, i = 0) => castPickers(w)[i].props('options').map((o) => o.label)
+/** Replace the picker's rows with exactly these voices — the cast being tried. */
+async function setCast(w, voices) {
+  while (w.findAll('.vp-drop').length) {
+    await w.findAll('.vp-drop')[0].trigger('click')
+    await flushPromises()
+  }
+  for (const v of voices) {
+    await w.find('.vp-add-row').trigger('click')
+    await flushPromises()
+    const rows = w.findAll('.vpick-row')
+    await rows[rows.length - 1].find('.vp-gender').setValue(v.g)
+    await setPick(castPickers(w)[rows.length - 1], v.key)
+  }
+}
+const TOM_M = { g: 'm', key: 'xai|gfzdpspr5fdp|en' }
+const OLIVIA_F = { g: 'f', key: 'xai|bedd6226|en' }
+const SONIA_F = { g: 'f', key: 'azure|en-GB-SoniaNeural|en-GB' }
 const pickedLabel = (picker) => {
   const chosen = picker.props('options').find((o) => o.value === picker.props('modelValue'))
   return chosen ? chosen.label : ''
@@ -176,9 +196,10 @@ describe('PodLab casting mode', () => {
     const flags = w.findAll('.cast-flags li').map((n) => n.text())
     expect(flags.join(' | ')).toMatch(/target voices? steered at a locale that is not the course's target language/)
     expect(flags.join(' | ')).toMatch(/zh/)
-    expect(flags.join(' | ')).toMatch(/distinct target voices? — Aran's rule is a two-hander/)
+    // No voice-count, gender-pair or line-share flag: a cast is any number of
+    // named voices (Tom, 2026-09-12). The five-voice cast is stated, not judged.
+    expect(flags.join(' | ')).not.toMatch(/Aran's rule|not 2|Line share|one male, one female/)
     expect(flags.join(' | ')).toMatch(/KNOWN voices? at a locale that is not the course's known language/)
-    expect(flags.join(' | ')).toMatch(/Line share — female \d+%, male \d+%/)
     // the fingerprint the gate will compare against is shown verbatim
     expect(w.text()).toContain('abc1234567890def')
     expect(w.text()).toContain('awaiting approval')
@@ -244,13 +265,16 @@ describe('PodLab casting mode', () => {
       i % 2 === 0 ? { ...r, voice_id: 'yis75yfp', created_at: '2026-06-10T00:00:00Z' } : r)
     const w = await mountLab()
     const sampled = w.findAll('.samples.primary .sample-row')
-    const off = w.findAll('.offcast .sample-row')
+    // The re-voiced clips are held apart as the cast HEARD on the pod today —
+    // a one-voice cast is a cast (2026-09-12), so they get a column, not a
+    // footnote — and never enter the cast column's sample.
+    const off = w.findAll('.candidate.heard .sample-row')
 
     expect(off.length).toBeGreaterThan(0)
     expect(sampled.length).toBeGreaterThan(0)
     // No sampled clip is one of the re-voiced ones.
     expect(sampled.some((r) => r.find('.s-voice').text().includes('yis75yfp'))).toBe(false)
-    // The off-cast list shows the voice that ACTUALLY rendered the clip, not
+    // The heard column shows the voice that ACTUALLY rendered the clip, not
     // the one the cast would like to claim.
     expect(off.some((r) => r.find('.s-voice').text().includes('yis75yfp'))).toBe(true)
     // And the count is stated in words rather than left to be noticed.
@@ -282,27 +306,33 @@ describe('PodLab casting mode', () => {
   // MANUAL VOICE CHOICE (Tom, 2026-08-11, after rejecting the Spanish cast:
   // "it's worth choosing the voices manually if there's only 2 of them").
   // The load-bearing property is that opening the panel and changing nothing
-  // changes nothing — so both dropdowns must open on what is cast TODAY.
-  describe('the two voice dropdowns', () => {
-    it('offers exactly two slots, male and female', async () => {
+  // changes nothing — so the rows must open on what is cast TODAY.
+  describe('the voice picker — one row per voice, any number of rows', () => {
+    it('opens with one row per voice cast today, gender as a label, and rows can be added or removed', async () => {
       const w = await mountLab()
-      const rows = w.findAll('.vpick-row')
-      expect(rows).toHaveLength(2)
-      expect(rows.map((r) => r.find('.vp-slot').text())).toEqual(['Male', 'Female'])
-      expect(castPickers(w).filter((p) => p.exists())).toHaveLength(2)
-      expect(w.findAll('.vpick-row .vp-play')).toHaveLength(2)
+      // The fixture is a five-voice cast: five rows, most lines first, each
+      // labelled with the gender it reads (Eve is ungendered → reads male).
+      expect(w.findAll('.vpick-row')).toHaveLength(5)
+      expect(castGenders(w)).toEqual(['f', 'm', 'f', 'm', 'm'])
+      expect(w.findAll('.vpick-row .vp-play')).toHaveLength(5)
+      await w.find('.vp-add-row').trigger('click')
+      await flushPromises()
+      expect(w.findAll('.vpick-row')).toHaveLength(6)
+      await w.findAll('.vp-drop')[5].trigger('click')
+      await flushPromises()
+      expect(w.findAll('.vpick-row')).toHaveLength(5)
     })
 
-    it('initialises to the voices the current cast uses for each gender', async () => {
+    it('initialises each row to a voice the current cast uses', async () => {
       const w = await mountLab()
-      const [male, female] = castPickers(w)
-      // The fixture is a BROKEN five-voice cast — the case the picker exists
-      // for — so each slot opens on the voice carrying the most lines of that
-      // gender: Jian across the male labels, Xia across the female ones.
-      expect(male.props('modelValue')).toBe('xai|jpi39icg|zh')
-      expect(female.props('modelValue')).toBe('xai|33g9t0jl|zh')
+      const [first, second] = castPickers(w)
+      // Most lines first: Ara across the female labels, then Jian across the
+      // male ones.
+      expect(first.props('modelValue')).toBe('xai|ara|zh')
+      expect(second.props('modelValue')).toBe('xai|jpi39icg|zh')
       // …and the row they are sitting on names itself as the current cast.
-      expect(pickedLabel(male)).toContain('cast now')
+      expect(pickedLabel(first)).toContain('cast now')
+      expect(pickedLabel(second)).toContain('cast now')
     })
 
     it('nothing to apply until the human actually moves a dropdown', async () => {
@@ -312,7 +342,7 @@ describe('PodLab casting mode', () => {
 
     it('marks a voice steered at the wrong language, and names the pool', async () => {
       const w = await mountLab()
-      const opts = castLabels(w)
+      const opts = castLabels(w, 1) // the male row
       // The cast's own zh voice on an English course — flagged in the row.
       expect(opts.some((t) => t.includes('jpi39icg') && t.includes('WRONG LANGUAGE'))).toBe(true)
       // The curated pool is offered, marked as the pool, and is not flagged.
@@ -331,16 +361,14 @@ describe('PodLab casting mode', () => {
       const call = global.fetch.mock.calls.find((c) => String(c[0]).includes('/api/voices/preview'))
       expect(call).toBeTruthy()
       const body = JSON.parse(call[1].body)
-      expect(body.voiceId).toBe('jpi39icg')
+      expect(body.voiceId).toBe('ara') // the first row: Ara, most lines
       expect(body.provider).toBe('xai')
       expect(body.text.length).toBeGreaterThan(0)
     })
 
-    it('applies the chosen pair to the CURRENT pod, casting only', async () => {
+    it('applies the chosen cast to the CURRENT pod, casting only', async () => {
       const w = await mountLab()
-      const [male, female] = castPickers(w)
-      await setPick(male, 'xai|gfzdpspr5fdp|en')
-      await setPick(female, 'xai|bedd6226|en')
+      await setCast(w, [TOM_M, OLIVIA_F])
       expect(w.find('.vp-apply').attributes('disabled')).toBeUndefined()
 
       await w.find('.vp-apply').trigger('click')
@@ -357,13 +385,41 @@ describe('PodLab casting mode', () => {
         pod_id: 'eng_for_guj:pod-0',
         cast_fingerprint: 'abc1234567890def',
       })
-      expect(body.target.m).toMatchObject({ provider: 'xai', voice_id: 'gfzdpspr5fdp' })
-      expect(body.target.f).toMatchObject({ provider: 'xai', voice_id: 'bedd6226' })
+      // One LIST per gender label — the route round-robins that gender's
+      // characters across it.
+      expect(body.target.m).toEqual([expect.objectContaining({ provider: 'xai', voice_id: 'gfzdpspr5fdp' })])
+      expect(body.target.f).toEqual([expect.objectContaining({ provider: 'xai', voice_id: 'bedd6226' })])
       // Casting only: the apply never reaches the audio-generation endpoint.
       expect(global.fetch.mock.calls.some((c) => String(c[0]).includes('generate-audio'))).toBe(false)
       // The new fingerprint and the re-locked gate are stated, not implied.
       expect(w.text()).toContain('newfingerprint00')
       expect(w.text()).toMatch(/generation is locked until you approve this cast/)
+    })
+
+    it('writes a THREE-voice cast as three voices — nothing collapses it to two', async () => {
+      const w = await mountLab()
+      await setCast(w, [TOM_M, OLIVIA_F, SONIA_F])
+      expect(w.findAll('.vpick-row')).toHaveLength(3)
+      await w.find('.vp-apply').trigger('click')
+      await flushPromises()
+      const post = global.fetch.mock.calls.find(
+        (c) => String(c[0]) === '/api/pod-cast-voices' && c[1] && c[1].method === 'POST',
+      )
+      const body = JSON.parse(post[1].body)
+      expect(body.target.m.map((v) => v.voice_id)).toEqual(['gfzdpspr5fdp'])
+      expect(body.target.f.map((v) => v.voice_id)).toEqual(['bedd6226', 'en-GB-SoniaNeural'])
+    })
+
+    it('writes a ONE-voice cast — a single voice is a cast', async () => {
+      const w = await mountLab()
+      await setCast(w, [OLIVIA_F])
+      await w.find('.vp-apply').trigger('click')
+      await flushPromises()
+      const post = global.fetch.mock.calls.find(
+        (c) => String(c[0]) === '/api/pod-cast-voices' && c[1] && c[1].method === 'POST',
+      )
+      const body = JSON.parse(post[1].body)
+      expect(body.target).toEqual({ f: [expect.objectContaining({ voice_id: 'bedd6226' })] })
     })
 
     it('does not report success when the route is not deployed', async () => {
@@ -390,9 +446,8 @@ describe('PodLab casting mode', () => {
   // cannot claim the candidate's.
   describe('candidate casts, side by side', () => {
     async function addCandidatePair(w) {
-      const [male, female] = castPickers(w)
-      await setPick(male, 'xai|gfzdpspr5fdp|en')
-      await setPick(female, 'xai|bedd6226|en')
+      await setCast(w, [TOM_M, OLIVIA_F])
+      console.log('DEBUG cand', w.findAll('.vpick-row').length, JSON.stringify(castGenders(w)), JSON.stringify(castPickers(w).map((p) => p.props('modelValue'))), w.find('.vp-add').attributes('disabled'), w.find('.chip')?.text())
       await w.find('.vp-add').trigger('click')
       await flushPromises()
       return w
@@ -418,7 +473,7 @@ describe('PodLab casting mode', () => {
       await addCandidatePair(w)
       const cand = w.findAll('.candidate')[1]
       expect(cand.findAll('.sample-row')).toHaveLength(0)
-      expect(cand.text()).toContain('Nothing on this pod has been rendered on this pair yet')
+      expect(cand.text()).toContain('Nothing on this pod has been rendered on this cast yet')
       expect(cand.find('.gen-sample').text()).toMatch(/generate a sample/i)
       // …while the cast column still has its own.
       expect(w.findAll('.candidate.cast .samples.primary .sample-row').length).toBeGreaterThan(0)
@@ -459,7 +514,7 @@ describe('PodLab casting mode', () => {
         (c) => String(c[0]) === '/api/pod-cast-voices' && c[1] && c[1].method === 'POST',
       )
       expect(cast, 'the pair is written as the cast').toBeTruthy()
-      expect(JSON.parse(cast[1].body).target.m).toMatchObject({ voice_id: 'gfzdpspr5fdp' })
+      expect(JSON.parse(cast[1].body).target.m[0]).toMatchObject({ voice_id: 'gfzdpspr5fdp' })
 
       const approval = global.fetch.mock.calls.find(
         (c) => String(c[0]) === '/api/pod-voice-approval' && c[1] && c[1].method === 'POST',
@@ -484,7 +539,7 @@ describe('PodLab casting mode', () => {
       expect(global.fetch.mock.calls.some((c) => c[1] && c[1].method === 'POST')).toBe(false)
     })
 
-    it('surfaces the pair actually heard on the pod when the audio names exactly two voices', async () => {
+    it('surfaces the cast actually heard on the pod from the voices the audio names', async () => {
       // Alternating per SENTENCE, not per row: the rows are target/known pairs,
       // so `i % 2` would put every target clip on one voice and every known
       // clip on the other — one target voice, and no pair to infer.
