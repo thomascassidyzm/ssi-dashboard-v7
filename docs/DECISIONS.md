@@ -11,6 +11,12 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-13 — A live listening pod is never held back; the red "Hold back from learners" button is gone (job #579, Tom's ruling)
+
+Tom, verbatim, on seeing the red button on live Welsh Pod 1: "it shouldn't be there any more should it? you can't unpublished a course, once it's gone live it can only ever be fixed line by line". This replaces Watson's earlier proposal to restyle the button as a quiet secondary control.
+
+**Decision.** `listening_pods.visibility` may go held → live (still a human act, still needs the confirm token naming the pod, Tom's 2026-08-23 ruling stands in full) and never live → held. `checkVisibilityTransition` in `services/pod-visibility.cjs` refuses live → held with 409 and the one write route applies it after reading the pod; both Vue pages render no visibility button on a live pod and keep 'Release to learners' on a held one. No schema, RLS or migration change; a pod that went live by accident is live under this rule too. Proof: `services/pod-visibility.test.cjs`, red on the pre-fix module, green after.
+
 ## 2026-09-12 — content_audit_log archive pages on (changed_at, id), not on id; no new index (job #473, sweep item 5, Tom: "Yes to all this. Get cracking")
 
 **Why.** `tools/archive-audit-log.cjs` (the hot/cold S3 tiering job, run by `AUDIT_ARCHIVE_CRON` and the Maintenance "Archive to S3" buttons) paged a day with `changed_at` in window AND `id > cursor ORDER BY id LIMIT 1000`. The planner satisfied the ORDER BY from `content_audit_log_pkey` and filtered on `changed_at` afterwards: EXPLAIN ANALYZE on 2026-08-18 (477,895 rows) read 3,408,400 rows off the pkey before page one and took 22.4s, past PostgREST's 8s statement timeout, so the dry run died on page one (job #130). It only ever worked on light days, where the estimate was small enough to prefer the changed_at index.
