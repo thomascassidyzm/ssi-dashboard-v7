@@ -998,3 +998,33 @@ refuse the cast on cym_n), matching the narrowing tts-service's chokepoint made 
 **Why better × simpler × cheaper.** One read instead of a ceremony: no canon table, no alignment
 proof, no slug list. Zero renders for anything the estate already speaks. The lab is the one place a
 voice is chosen, so a cast made there reaches pods without a config edit per course.
+
+## 2026-09-13 — the Senedd/S4C pod is live to named accounts only: a role row per person, one command to add the next
+
+Tom, 16:17Z: release cym_n_for_eng:senedd-s4c-steve (567 lines) "so it shows ONLY to special
+accounts: Steve Dimmich (email to follow), plus SSi admin accounts: Tom, Aran, Kai, Deborah (and any
+other account already marked SSi admin/staff in prod)."
+
+**Decision.** The pod stays `required_role='previewer_001'` and is flipped `visibility='live'`
+through the one write path, `POST /api/admin/pods/:course/:slug/visibility`, under Tom's admin
+session. Who sees it is decided entirely by RLS (`current_user_has_role` over `learner_roles`), so
+the release is the role rows: one per person, matched by exact email in `auth.users`, never
+guessed. Granted 2026-09-13: every learner with `platform_role='ssi_admin'` (13, including the two
+perf accounts and the two harness admins, because "already marked SSi admin" is the rule as stated)
+plus the named people's other sign-ins (tomcassidy@mac.com, aran@saysomethingin.com,
+aran@sgwarnog.com, kai.saraceno@saysomethingin.com). Steve is added when his address arrives with
+`node tools/pods/grant-pod-role.cjs --email=<his> --apply` — the tool refuses an address with no
+auth user and one that has never signed in, and writes nothing without `--apply`. No UI grants
+roles anywhere in the estate; this stays a command.
+
+**What the release exposed, not fixed here (learner app, not Popty).** `servedPod.pickServedSlug`
+rule 5 makes a role-addressed pod REPLACE the served pod: on production, a role-holder's Welsh
+(Northern) Listening Mode lists the Senedd pod INSTEAD of pod-1, and because the title lookup is
+filtered `pod_type=eq.core` and this pod is `choice`, the card is labelled with the fallback
+"Pod 1" (160 scenes) rather than its own title. A plain learner still sees the real pod-1
+(22 scenes). The offline bundle excludes role-restricted pods for everyone, role-holders included.
+Those are Tom's calls: alongside-not-instead, and a title lookup that follows the addressed slug.
+
+**Why better × simpler × cheaper.** Zero schema, zero deploy: the gate already existed and had no
+rows. One INSERT per person, one command for the next, and revocation is `removed_at`, so a
+mistaken grant costs one line and no history.
