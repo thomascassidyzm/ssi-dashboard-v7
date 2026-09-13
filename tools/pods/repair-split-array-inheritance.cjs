@@ -10,9 +10,9 @@
  * arrays now point at a different conversation's clips.
  *
  * ita_for_eng scene 15 is the case Tom heard on 2026-08-24: every row's
- * sentence_audio_ids is byte-identical to the retired pod-0's same slot, and
- * the conversation that was pod-0 scene 15 is now pod-1 scene 22. The learner
- * hears the wrong conversation, in pod-0's cast female (Eve) against pod-1's
+ * sentence_audio_ids is byte-identical to the retired pod's same slot, and
+ * the conversation that was the retired pod's scene 15 is now pod-1 scene 22. The learner
+ * hears the wrong conversation, in the retired pod's cast female (Eve) against pod-1's
  * (Ara) — and, because podSentenceSplit takes the on-screen text from the
  * clip's own course_audio.text, READS the wrong conversation too.
  *

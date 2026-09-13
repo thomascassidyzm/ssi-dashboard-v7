@@ -36,6 +36,7 @@ const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const force = process.argv.includes('--force')
 if (!COURSE) { console.error('usage: slice-take-g.cjs <course> [orders] [--dry|--force]'); process.exit(1) }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const NOISE = process.env.SLICE_NOISE || '-30dB'
@@ -150,9 +151,10 @@ function ffSilences(file, noise = NOISE, minSil = MIN_SIL_S) {
 }
 
 ;(async () => {
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, target_text, atom_map_fine, takeg_audio_ids')
-    .eq('pod_id', `${COURSE}:pod-0`).not('takeg_audio_ids', 'is', null).order('global_order')
+    .eq('pod_id', POD_ID).not('takeg_audio_ids', 'is', null).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents, error } = await q
   if (error) { console.error(error.message); process.exit(1) }

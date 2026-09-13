@@ -5,11 +5,11 @@
  *
  * WHY THIS EXISTS. `clone-pod.cjs` takes a live pod off to a working slug so a
  * destructive rewrite can happen away from learners. Nothing ever put it back.
- * The gap got filled by hand: on 2026-08-06 someone gated Welsh pod-0 with a raw
- * `update ... set pod_id = '<course>:pod-0-unrecorded'`, which left the live pod
+ * The gap got filled by hand: on 2026-08-06 someone gated the Welsh core pod with a
+ * raw `update ... set pod_id = '<course>:unrecorded'`, which left the live pod
  * at ZERO sentence rows on two RELEASED courses. Learners opened the Pods tab and
- * got nothing for five days — the app reads the literal id `<course>:pod-0`
- * (player-vue `useListeningPods.ts`, `usePodLapScheduler.ts`) with no fallback.
+ * got nothing for five days — the app reads the served pod id `<course>:pod-1`
+ * with no fallback.
  * The missing tool IS the outage. This is it, so the next promotion is boring.
  *
  * WHAT IT DOES, in one transaction:
@@ -52,7 +52,7 @@
  * DRY RUN BY DEFAULT. Pass --apply to write.
  *
  *   node tools/pods/promote-pod.cjs --course=cym_n_for_eng \
- *     --from=pod-0-unrecorded --to=pod-0 --archive-as=pod-0-gated-2026-08-06
+ *     --from=unrecorded --to=pod-1 --archive-as=gated-2026-08-06
  *   ... --apply
  *
  * PROMOTION IS NOT RELEASE (2026-08-23). This tool does not decide visibility: the
@@ -65,7 +65,7 @@
  * It said "listening_pods.visibility decides whether learners can reach a pod at all".
  * IT DOES NOT AND IT NEVER DID. No learner consumer reads the column:
  * packages/player-vue/src/composables/servedPod.ts resolves a course's pod on
- * `pod_type='core'` and `slug in ('pod-1','pod-0')` alone, and
+ * `pod_type='core'` and `slug = 'pod-1'` alone, and
  * api/courses/[code]/bundle.ts duplicates that literal and says so in its own comment
  * ("Retiring a pod by setting visibility='held' did not reach this consumer, because
  * nothing here reads visibility"). A HELD POD ON A SERVING SLUG IS SERVED. Tom's
@@ -112,7 +112,7 @@ function parseArgs () {
   const APPLY = process.argv.includes('--apply')
   const COURSE = arg('course')
   const FROM = arg('from')
-  const TO = arg('to') || 'pod-0'
+  const TO = arg('to') || 'pod-1'
   const ARCHIVE_AS = arg('archive-as')
   const TITLE = arg('title')
   // Promotion moves content onto the live slug. It does NOT decide reachability:

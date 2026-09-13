@@ -13,7 +13,7 @@
  *   3. What pods actually exist right now, row by row?
  *
  * Built for the 2026-09-04 frame-generator commission, where it found the canon
- * had moved under the artefact: pod-0 and pod-0.5 no longer exist as slugs,
+ * had moved under the artefact: the slugs it was built on no longer exist,
  * five sector pods were ingested as canon rows (so the health markdown source
  * must NOT be added on top — 437/438 of its texts are already canon), and the
  * live learner-facing corpus is 2,068 dialogue rows against the artefact's 916.

@@ -3,7 +3,7 @@
  * clone-pod.cjs — copy a course's pod row and every one of its sentence rows to a
  * second slug, so a destructive-looking rewrite can happen off the live pod.
  *
- * WHY THIS EXISTS. align-pod0-to-canonical.cjs rewrites a pod's English to Aran's
+ * WHY THIS EXISTS. align-pod-to-canonical.cjs rewrites a pod's English to Aran's
  * 2026-08-06 canonical, which on a typical course leaves ~128 slots with EMPTY
  * target text and no audio until translation and generation catch up. On a course
  * that is `draft` that is free. On a LIVE course it is hours of real learners
@@ -12,9 +12,9 @@
  * instead of clips.
  *
  * The Welsh precedent (2026-08-06) is the answer: learner-facing reads query the
- * EXACT pod id `<course>:pod-0` (player-vue `useListeningPods.ts`, `const podId =
- * `${course}:pod-0``), so a pod on any other slug is invisible to them. Clone
- * pod-0 to `pod-0-unrecorded`, align and translate THAT, and swap only when it is
+ * served pod id `<course>:pod-1` (the resolver in the player, mirrored by
+ * tools/pods/serving-slug.cjs), so a pod on any other slug is invisible to them. Clone
+ * pod-1 to `unrecorded`, align and translate THAT, and swap only when it is
  * complete and approved. `cym_n_for_eng` — a `released` course — has carried both
  * since 2026-08-06.
  *
@@ -30,15 +30,15 @@
  * one way this could destroy work.
  *
  * IT ALSO REFUSES A DESTINATION SLUG THE PLAYER SERVES (2026-09-02). `pod-1` and
- * `pod-0` are what the resolver reads; a clone landing on either is in front of
+ * `pod-1` is what the resolver reads; a clone landing on it is in front of
  * learners the moment its header row exists, and the align that follows this tool
  * would then empty a served pod underneath them. The refusal names how many learners
  * are at risk. `--serve-now` is the deliberate escape, and it waives ONLY that check —
  * a destination that already holds sentence rows is refused regardless. See
  * serviceRefusal() below and tools/pods/clone-pod-serving-destination.test.cjs.
  *
- *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-0-unrecorded
- *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-0-unrecorded --apply
+ *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=unrecorded
+ *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=unrecorded --apply
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-1 --serve-now --apply
  */
 'use strict'
@@ -68,7 +68,7 @@ const { SERVING_POD_SLUGS, servingRefusal } = require('./serving-slug.cjs')
  * that a destructive align can run off the live pod. It knew how to refuse a destination
  * that already held rows, and nothing else. It did not know which slugs are SERVED.
  *
- * The resolver serves by slug: `pod_type = 'core'` and `slug in ('pod-1','pod-0')`, first
+ * The resolver serves by slug: `pod_type = 'core'` and `slug = 'pod-1'`, first
  * match wins, no row count, no text, and — checked against the code on 2026-09-02 — no
  * reading of `visibility` in either consumer. So a `held` destination is no defence, and
  * neither is an absent one: creating the header row IS the moment the pod starts being
@@ -92,7 +92,7 @@ function serviceRefusal ({
     action: 'Cloning here puts a working copy in front of them,',
     harm: 'and the align that follows this tool would empty it underneath them.',
     escape: '--serve-now',
-    remedy: 'Clone to a parked slug instead (pod-0-unrecorded is the convention)',
+    remedy: 'Clone to a parked slug instead (unrecorded is the convention)',
   })
 }
 
@@ -111,7 +111,7 @@ function parseArgs () {
   const APPLY = process.argv.includes('--apply')
   const SERVE_NOW = process.argv.includes('--serve-now')
   const COURSE = arg('course')
-  const FROM = arg('from') || 'pod-0'
+  const FROM = arg('from') || 'pod-1'
   const TO = arg('to')
   const TITLE_SUFFIX = arg('title-suffix') || ' — UNRECORDED working copy, not learner-facing'
   // listening_pods.visibility DEFAULTS TO 'live', so an insert that omits the column
@@ -272,7 +272,7 @@ async function main () {
         // makes this tool transform text on the way through, the split arrays
         // drop to NULL instead of following the slot into a new conversation, and
         // the player falls back to the whole-turn clip. That transform, done
-        // downstream by align-pod0-to-canonical.cjs on a clone exactly like this
+        // downstream by align-pod-to-canonical.cjs on a clone exactly like this
         // one, is what produced the ita pod-1 scene-15 defect.
         const row = { ...s, ...carrySplitAudio(s, s) }
         const vals = [reId(s.id), dstPodId, ...copyCols.map(c => enc(sentenceJson, c, row[c]))]

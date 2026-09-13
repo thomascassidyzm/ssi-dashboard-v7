@@ -1,8 +1,8 @@
 /**
- * persist-stage0-pod0.cjs — persist the Stage-0 course-preview backend assets
- * for spa_for_eng / pod-0 (Atom-Fusion Introduction).
+ * persist-stage0-pod.cjs — persist the Stage-0 course-preview backend assets
+ * for spa_for_eng / pod-1 (Atom-Fusion Introduction).
  *
- * Reads the generated content on disk (~/Desktop/stage0-spa-pod0/):
+ * Reads the generated content on disk (~/Desktop/stage0-spa-pod/):
  *   - decomposition.json : per-sentence intentions[].atoms[] with explained /
  *                          first_encounter flags + per-sentence skipped/names.
  *                          This is the COMPLETE atom list (incl. passthrough).
@@ -28,8 +28,8 @@
  * pod_legos upsert on (course_code,lego_key). atom_map is overwritten per run.
  *
  * Usage:
- *   node tools/persist-stage0-pod0.cjs --dry-run   # logs what it WOULD write
- *   node tools/persist-stage0-pod0.cjs             # real run
+ *   node tools/persist-stage0-pod.cjs --dry-run   # logs what it WOULD write
+ *   node tools/persist-stage0-pod.cjs             # real run
  */
 
 const path = require('path')
@@ -44,17 +44,17 @@ const { canonicalLanguage, canonicalVoiceId } = require('../services/shared/clip
 const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 
 // Course-parameterized (default spa so the original spa path is intact):
-//   COURSE=hrv_for_eng node tools/persist-stage0-pod0.cjs
+//   COURSE=hrv_for_eng node tools/persist-stage0-pod.cjs
 const COURSE_CODE = (process.env.COURSE || 'spa_for_eng').trim()
 // `language` is canonicalised below, so the ISO-639-1 spellings here and the
 // ISO-3 the fallback derives from the course code no longer produce two shapes
 // from the same tool.
 const COURSE_META = {
-  spa_for_eng: { language: 'es', srcDir: 'stage0-spa-pod0' },
-  hrv_for_eng: { language: 'hr', srcDir: 'stage0-hrv-pod0' },
+  spa_for_eng: { language: 'es', srcDir: 'stage0-spa-pod' },
+  hrv_for_eng: { language: 'hr', srcDir: 'stage0-hrv-pod' },
 }
-const META = COURSE_META[COURSE_CODE] || { language: COURSE_CODE.split('_')[0], srcDir: `stage0-${COURSE_CODE.split('_')[0]}-pod0` }
-const POD_SLUG = 'pod-0'
+const META = COURSE_META[COURSE_CODE] || { language: COURSE_CODE.split('_')[0], srcDir: `stage0-${COURSE_CODE.split('_')[0]}-pod` }
+const POD_SLUG = 'pod-1'  // every course's core listening pod (Tom, 2026-09-13)
 const POD_ID = `${COURSE_CODE}:${POD_SLUG}`
 const ROLE = 'pod_explainer'
 // Canonical identity (services/shared/clip-identity.cjs), computed not spelt.
@@ -196,7 +196,7 @@ async function resolveSharedMeans(meansText) {
 }
 
 async function main() {
-  log(`persist-stage0-pod0 ${DRY_RUN ? '(DRY RUN)' : '(REAL RUN)'} — ${COURSE_CODE}/${POD_SLUG}`)
+  log(`persist-stage0-pod ${DRY_RUN ? '(DRY RUN)' : '(REAL RUN)'} — ${COURSE_CODE}/${POD_SLUG}`)
   log(`  source: ${SRC_DIR}`)
   log(`  S3: s3://${S3_BUCKET} (${AWS_REGION})  voice=${VOICE_ID}\n`)
 

@@ -8,7 +8,7 @@
  * audio exists but is in the WRONG VOICE — so a pod can read 0/0/0/0/0 "ready" while
  * a third of it plays in voices nobody cast and nobody approved.
  *
- * That is not hypothetical. spa_for_eng:pod-0-unrecorded passed readiness with 231/231
+ * That is not hypothetical. spa_for_eng:unrecorded passed readiness with 231/231
  * clips alive and ffprobe-clean while 80 of them were on Eve, Ara and four other voices
  * outside Tom's approved Manuel + Elvira pair. Croatian, the finished article, is
  * 231/231 ON-CAST — that is the real standard, and this tool is how the others reach it.
@@ -35,8 +35,8 @@
  *
  * DRY RUN BY DEFAULT. Pass --apply to write.
  *
- *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=spa_for_eng:pod-0-unrecorded
- *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=spa_for_eng:pod-0-unrecorded --apply
+ *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=spa_for_eng:unrecorded
+ *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=spa_for_eng:unrecorded --apply
  *   node tools/pods/unlink-off-cast-pod-clips.cjs --pod=fra_for_eng:pod-1-staged-2026-08-23 --track=known --apply
  */
 'use strict'
@@ -58,12 +58,12 @@ const arg = (n) => {
  * `pod-1-staged-2026-08-23`, not `*-unrecorded`, so the original `-unrecorded$`
  * guard refused exactly the 19 pods the pod-1 rollout needs. The allowlist is
  * deliberately literal: a new staging convention has to be added here on purpose,
- * and everything else — above all a live `pod-0` — stays out of reach.
+ * and everything else — above all the served `pod-1` — stays out of reach.
  */
 const STAGING_SLUGS = ['pod-1-staged-2026-08-23']
 function podSlugAllowed(podId) {
   const slug = String(podId || '').split(':').slice(1).join(':')
-  return /-unrecorded$/.test(slug) || STAGING_SLUGS.includes(slug)
+  return /(^|-)unrecorded$/.test(slug) || STAGING_SLUGS.includes(slug)
 }
 
 const TRACKS = {

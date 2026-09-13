@@ -19,7 +19,7 @@
  * exists only where a careful speaker would genuinely pause AND both
  * resulting S-LEGOs are independently meaningful.
  * Canonical statement + rationale: `docs/pods/pod-ladder-proposal.md` §9/§9b.
- * Syllable ceiling (pod-0: C=8) is enforced separately, via '…' inserted
+ * Syllable ceiling (pod-1: C=8) is enforced separately, via '…' inserted
  * into `target_text` itself — see §9a and `tools/insert-ellipsis-seams.cjs`.
  * These seams are where the future Take G (slow gapped take) will breathe.
  * S-LEGOs tile each sentence; punctuation seams are mandatory. The mechanical
@@ -27,7 +27,7 @@
  * intended to run right after this script on every course it touches.
  *
  *   node tools/breakdown-fine.cjs <course> [orders] [--dry] [--pod=pod-N]
- *   node tools/breakdown-fine.cjs zho_for_eng              # whole pod-0 (default)
+ *   node tools/breakdown-fine.cjs zho_for_eng              # the whole core pod, pod-1 (default)
  *   node tools/breakdown-fine.cjs zho_for_eng 25,1,3 --dry # preview only
  *   node tools/breakdown-fine.cjs zho_for_eng --pod=pod-1
  *
@@ -125,12 +125,12 @@ function tileAndSnap(units, targetText) {
   // though it isn't rejected outright (a genuinely long independent clause is
   // still valid — this is a flag, not a gate).
   // FOUNDER CEILING (docs/pods/pod-ladder-proposal.md §9a, 2026-07-16): a unit
-  // over its pod level's syllable ceiling (pod-0: C=8, pod-1+: C=12) is where
+  // over its pod's syllable ceiling (pod-1, the core pod: C=8; topic pods: C=12) is where
   // the '…' ellipsis-authoring pass (tools/insert-ellipsis-seams.cjs) forces a
   // breathing mark in target_text — this word-count flag is a cheap proxy,
   // not the ceiling gate itself (no general-purpose cross-language syllable
   // counter exists here).
-  const CEILING_WORDS = POD === 'pod-0' ? 6 : 9 // C=8 syllables → ~6 words for pod-0, C=12 → ~9 words for pod-1+ (rough proxy)
+  const CEILING_WORDS = POD === 'pod-1' ? 6 : 9 // C=8 syllables → ~6 words for the core pod-1, C=12 → ~9 words for topic pods (rough proxy)
   const CJK_RE = /[぀-ヿ㐀-䶿一-鿿가-힯]/
   const isOverlong = (t) => CJK_RE.test(t) ? [...t].filter(c => /\p{L}/u.test(c)).length > CEILING_WORDS * 1.6 : t.trim().split(/\s+/).filter(Boolean).length > CEILING_WORDS
 

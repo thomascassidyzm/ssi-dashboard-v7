@@ -23,7 +23,7 @@
  * with whatever produced the draft. Judged blind.
  *
  *   PROVENANCE GAP, stated plainly: we do NOT record which model wrote these
- *   drafts. write-pod0-drafts.cjs applies a JSON file authored elsewhere with no
+ *   drafts. write-pod-drafts.cjs applies a JSON file authored elsewhere with no
  *   model stamped per row. So independence is guaranteed by SESSION and by
  *   CONSTRUCTION, and only PROBABLY by model. Closing that gap means stamping
  *   the drafting model at draft time; recommended, not done here.
@@ -34,14 +34,14 @@
  * for a nested CLI call, not optional.
  *
  * DRY RUN BY DEFAULT. Pass --apply to write. The write shape is the one from
- * write-pod0-drafts.cjs and is the point of the file: per-row
+ * write-pod-drafts.cjs and is the point of the file: per-row
  * `UPDATE … WHERE id=$1 AND target_text=$2 AND target_text_draft`, so a row
  * whose words changed under us matches zero rows and takes its batch back.
  *
  * Idempotent and resumable: only ever selects drafts that are not yet approved,
  * and commits per batch, so a crash keeps the verdicts already earned.
  *
- *   node tools/pods/verify-pod-text.cjs --pod=spa_for_eng:pod-0-unrecorded
+ *   node tools/pods/verify-pod-text.cjs --pod=spa_for_eng:unrecorded
  *   … --apply
  */
 'use strict'
@@ -65,7 +65,7 @@ const arg = (n) => {
 // that should be able to run estate-wide by accident.
 const POD = arg('pod')
 if (!POD) {
-  console.error('FAILED: --pod=<course:slug> is required (e.g. --pod=spa_for_eng:pod-0-unrecorded)')
+  console.error('FAILED: --pod=<course:slug> is required (e.g. --pod=spa_for_eng:unrecorded)')
   process.exit(1)
 }
 const MODEL = arg('model') || 'opus'

@@ -6,8 +6,8 @@
  * (`.from('listening_pod_sentences').delete().eq('pod_id', podId)`) and re-inserts what
  * the markdown says. It had no serving-slug check, no learner-progress migration, and
  * the re-inserted rows carry NO AUDIO — its own header says the links "must be
- * re-established by the Phase 8 pod-audio step". And `--slug=pod-0` was the worked
- * example in its own usage block, twice. Run it on a live course's pod-0 with a markdown
+ * re-established by the Phase 8 pod-audio step". And the served slug was the worked
+ * example in its own usage block, twice. Run it on a live course's pod-1 with a markdown
  * that is one line different and you empty and refill a served pod under learners,
  * orphaning their progress rows against sentence ids that no longer exist, and the pod
  * plays silent until it is re-recorded.
@@ -15,9 +15,7 @@
  * RECORDED RED, against the pre-fix behaviour. There was no gate at all, so the honest
  * reconstruction is a function that refuses nothing (tools/.pod-sync-prefix.scaffold.cjs,
  * deleted after the run):
- *   FAIL  REFUSES a resync onto pod-0, the slug its own usage examples used to hand you
- *     AssertionError: expected null to be truthy
- *   FAIL  REFUSES a resync onto pod-1 as well
+ *   FAIL  REFUSES a resync onto pod-1, the slug its own usage examples used to hand you
  *     AssertionError: expected null to be truthy
  *   FAIL  REFUSES a held pod — the resolver never reads visibility
  *     AssertionError: expected null to be truthy
@@ -46,8 +44,8 @@ const MOD = process.env.POD_SYNC_MODULE || './pod-sync.cjs'
 const { syncRefusal } = require(MOD)
 
 const serving = (over = {}) => ({
-  podId: 'cym_for_eng:pod-0',
-  slug: 'pod-0',
+  podId: 'cym_for_eng:pod-1',
+  slug: 'pod-1',
   podType: 'core',
   podExists: true,
   podVisibility: 'live',
@@ -59,15 +57,11 @@ const serving = (over = {}) => ({
 })
 
 describe('syncRefusal — a destination slug the player serves', () => {
-  it('REFUSES a resync onto pod-0, the slug its own usage examples used to hand you', () => {
+  it('REFUSES a resync onto pod-1, the slug its own usage examples used to hand you', () => {
     const r = syncRefusal(serving())
     expect(r).toBeTruthy()
-    expect(r).toMatch(/pod-0/)
+    expect(r).toMatch(/pod-1/)
     expect(r).toMatch(/serv/i)
-  })
-
-  it('REFUSES a resync onto pod-1 as well', () => {
-    expect(syncRefusal(serving({ slug: 'pod-1', podId: 'hrv_for_eng:pod-1' }))).toBeTruthy()
   })
 
   it('REFUSES a held pod — the resolver never reads visibility', () => {
@@ -105,7 +99,7 @@ describe('syncRefusal — a destination slug the player serves', () => {
 
 describe('syncRefusal — what is NOT a door', () => {
   it('allows a parked working slug', () => {
-    expect(syncRefusal(serving({ slug: 'pod-0-unrecorded', podId: 'cym_for_eng:pod-0-unrecorded' }))).toBeNull()
+    expect(syncRefusal(serving({ slug: 'unrecorded', podId: 'cym_for_eng:unrecorded' }))).toBeNull()
   })
 
   it('allows a choice pod even on a serving slug — the resolver filters pod_type', () => {

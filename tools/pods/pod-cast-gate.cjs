@@ -51,9 +51,9 @@
  *
  * Until 2026-08-24 this module measured the STORED CAST MAP plus the two
  * whole-turn columns — two of the five. ita_for_eng pod-1 was staged with its
- * split arrays copied POSITIONALLY from the retired pod-0, whose scene order
+ * split arrays copied POSITIONALLY from the retired pod, whose scene order
  * was different: the whole-turn clips were recast to Ara, the split clips
- * were still pod-0's Eve, and they spoke — and, because podSentenceSplit
+ * were still the retired pod's Eve, and they spoke — and, because podSentenceSplit
  * reads targetText from the split clip's own course_audio.text, PRINTED — a
  * different conversation. The gate counted two voices and went green. Tom:
  * "the gate was looking at the wrong columns." 113 ita rows shipped like
@@ -272,9 +272,9 @@ const whereIssue = (i) => `s${i.scene}/${i.sentence}${i.speaker ? ` ${canonicalS
  * reads as a property of the script alone, so it travels to a course with a
  * different cast and fires on scenes that are perfectly alternated.
  *
- * That is not hypothetical. `docs/pods/cym-n-pod0-aran-self-dialogue-audit-2026-08-23.md`
+ * That is not hypothetical. The 2026-08-23 cym_n Aran self-dialogue audit
  * published its findings as a list of scene numbers. Scenes 13 and 14 were on
- * that list, truthfully, because Welsh pod-0 was read by ONE human who voiced
+ * that list, truthfully, because Welsh pod-1 was read by ONE human who voiced
  * both Tourist and Local. Carried to Italian — where Tourist is Ara and Local is
  * Enzo — the same "finding" pointed at two scenes that alternate perfectly.
  * Tom's verdict on those scenes: "this is completely fine - not a problem", and

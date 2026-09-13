@@ -62,7 +62,7 @@ function parse(md) {
       if (!inTable) continue
       // Numbered data row, or a menu-line scenario-variant row (`3a`/`3b`/…):
       // rows sharing the digit part form one turn-group (founder ruling
-      // 2026-07-16, docs/pods/pod05-placement-analysis-2026-07-16.md §Menu-lines).
+      // 2026-07-16, the 2026-07-16 pod-ladder placement analysis, §Menu-lines).
       const numMatch = cells[0].match(/^(\d+)([a-z])?$/)
       if (!numMatch) continue
       const speaker = cells[1] || null

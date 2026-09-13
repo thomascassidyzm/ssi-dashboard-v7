@@ -32,6 +32,7 @@ if (isHumanVoiceCourse(COURSE)) {
   console.log(`${COURSE} is human-voiced only — no TTS ever (Tom 2026-07-25). Nothing to do.`)
   process.exit(0)
 }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const ROLE = 'pod_take_g'
@@ -86,13 +87,14 @@ function cuedGroupText(turnText, group, cue) {
 }
 
 ;(async () => {
-  const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', `${COURSE}:pod-0`).single()
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
+  const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', POD_ID).single()
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
   const targetLang = (((course || {}).voice_config || {}).voices || {}).target1?.language || COURSE.split('_')[0]
 
   const { data: sents, error } = await supabase.from('listening_pod_sentences')
     .select('id, global_order, speaker, target_text, atom_map_fine, takeg_audio_ids')
-    .eq('pod_id', `${COURSE}:pod-0`).not('takeg_audio_ids', 'is', null).order('global_order')
+    .eq('pod_id', POD_ID).not('takeg_audio_ids', 'is', null).order('global_order')
   if (error) { console.error(error.message); process.exit(1) }
 
   let azure = 0, eleven = 0, xai = 0, skipped = 0, failed = 0

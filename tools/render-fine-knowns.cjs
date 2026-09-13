@@ -32,6 +32,7 @@ const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
 const COURSE = process.argv[2]
 const dry = process.argv.includes('--dry')
 if (!COURSE) { console.error('usage: render-fine-knowns.cjs <course> [--dry]'); process.exit(1) }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const { XAI_OFFICIAL } = require('../services/shared/xai-catalogue.cjs')
@@ -77,6 +78,7 @@ function gluedKnownTexts(targetText, atoms, knownText) {
 }
 
 ;(async () => {
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
   const kn = ((course && course.voice_config && course.voice_config.voices) || {}).known
   if (!kn || !kn.voiceId) { console.error(`ERR: ${COURSE} voice_config missing known`); process.exit(1) }
@@ -88,7 +90,7 @@ function gluedKnownTexts(targetText, atoms, knownText) {
 
   const { data: sents, error } = await supabase.from('listening_pod_sentences')
     .select('global_order, target_text, known_text, atom_map_fine, window_known_map')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', POD_ID).order('global_order')
   if (error) { console.error(error.message); process.exit(1) }
 
   // Distinct texts, first-come order; norm-key mirrors findExistingAudio.

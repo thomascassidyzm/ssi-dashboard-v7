@@ -32,10 +32,9 @@ try {
   /* dotenv optional; rely on process env */
 }
 
-// NO LITERAL SLUG. This report used to filter on a hard-coded `pod-0` suffix,
-// which since Tom's 1-based ruling of 2026-08-22 reports ZERO sentences for the
-// 22 courses that moved to `pod-1`. The rule lives once, in
-// tools/pods/serving-slug.cjs.
+// NO LITERAL SLUG. This report used to filter on a hard-coded slug suffix and
+// reported ZERO sentences for every course whose served pod was named otherwise.
+// The rule lives once, in tools/pods/serving-slug.cjs.
 const { fetchServingSlug } = require('./pods/serving-slug.cjs')
 
 function getSupabase() {
@@ -108,7 +107,7 @@ async function main() {
   const supabase = getSupabase()
   if (courses.length === 0) courses = await listCourses(supabase)
 
-  const scope = allPods ? 'ALL pods' : 'pod-0 only'
+  const scope = allPods ? 'ALL pods' : 'served pod only'
   console.log(`\nPod state report (${scope})\n`)
   const head = [
     'course'.padEnd(16),

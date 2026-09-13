@@ -13,6 +13,7 @@ require('dotenv').config({ path: require('path').join(__dirname, '..', '.env') }
 const { createClient } = require('@supabase/supabase-js')
 const COURSE = process.argv[2]
 if (!COURSE) { console.error('usage: verify-breakdown.cjs <course>'); process.exit(1) }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const BOUNDARY = /(?<=[.!?…])\s+/
@@ -49,6 +50,7 @@ function partitionAtomMap(atomMap, sentenceTexts) {
 }
 
 ;(async () => {
+  const POD_ID = await servingPodId(sb, COURSE)  // the pod this course SERVES, resolved — never a literal slug
   const [{ data: legos }, { data: atomClips }] = await Promise.all([
     sb.from('pod_legos').select('lego_key, explainer_audio_id').eq('course_code', COURSE),
     sb.from('course_audio').select('id, text').eq('course_code', COURSE).eq('role', 'pod_explainer').like('text', '[atom] %'),
@@ -59,7 +61,7 @@ function partitionAtomMap(atomMap, sentenceTexts) {
 
   const { data: turns } = await sb.from('listening_pod_sentences')
     .select('global_order, target_text, target_audio_id, known_audio_id, atom_map, sentence_audio_ids, sentence_known_audio_ids')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', POD_ID).order('global_order')
 
   let nIntentions = 0, partitionFail = 0, missWhole = 0, missKnown = 0, nAtoms = 0, missSlice = 0, missMeans = 0
   const holes = []
@@ -80,7 +82,7 @@ function partitionAtomMap(atomMap, sentenceTexts) {
     })
   }
   const pct = (n, d) => d ? (100 * (d - n) / d).toFixed(1) + '%' : 'n/a'
-  console.log(`\n${COURSE} pod-0 — per-intention 4-movement resolution`)
+  console.log(`\n${POD_ID} — per-intention 4-movement resolution`)
   console.log(`  turns: ${(turns || []).length}  intentions: ${nIntentions}  atoms(drillable): ${nAtoms}`)
   console.log(`  partition holds: ${(turns || []).length - partitionFail}/${(turns || []).length}  (${partitionFail} fail)`)
   console.log(`  whole-take: ${pct(missWhole, nIntentions)}  known: ${pct(missKnown, nIntentions)}  [atom] slice: ${pct(missSlice, nAtoms)}  means: ${pct(missMeans, nAtoms)}`)

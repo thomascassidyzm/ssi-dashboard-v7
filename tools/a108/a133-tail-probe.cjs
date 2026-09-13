@@ -230,7 +230,7 @@ async function measure(file, label) {
 const NL = 'Ik wil graag een glas bitter, alstublieft.'
 const VOICES = [
   { key: 'nld-noor', provider: 'xai', voiceId: '247783ebdd51', lang: 'nl', text: NL,
-    note: 'xai_247783ebdd51 — the nld_for_eng pod-0 cast voice, the known clicker' },
+    note: 'xai_247783ebdd51 — the nld_for_eng pod-1 cast voice, the known clicker' },
   { key: 'nld-femke', provider: 'xai', voiceId: '58d27475085e', lang: 'nl', text: NL,
     note: 'xAI Dutch, other female seat — comparator' },
   { key: 'nld-thijs', provider: 'xai', voiceId: 'a13662ba951c', lang: 'nl', text: NL,

@@ -11,11 +11,11 @@ const OLD = { name: 'Leo', locale: 'en', provider: 'xai', voice_id: 'leo' }
 const ES = { name: 'Elvira', locale: 'es-ES', provider: 'azure', voice_id: 'es-ES-ElviraNeural' }
 
 const forEng = (speakers) => ({
-  id: 'spa_for_eng:pod-0', course_code: 'spa_for_eng',
+  id: 'spa_for_eng:pod-1', course_code: 'spa_for_eng',
   known_lang: 'eng', target_lang: 'spa', speakers,
 })
 const engFor = (speakers) => ({
-  id: 'eng_for_spa:pod-0', course_code: 'eng_for_spa',
+  id: 'eng_for_spa:pod-1', course_code: 'eng_for_spa',
   known_lang: 'spa', target_lang: 'eng', speakers,
 })
 const itemFor = (plan, ch) => plan.items.find((i) => i.character === ch)
@@ -78,7 +78,7 @@ describe('human recordings are never overwritten', () => {
   const human = { name: 'Catrin', provider: 'human', voice_id: 'human_catrinlliar_cym_n' }
 
   it('skips the character and says so', () => {
-    const pod = { id: 'cym_n_for_eng:pod-0', course_code: 'cym_n_for_eng',
+    const pod = { id: 'cym_n_for_eng:pod-1', course_code: 'cym_n_for_eng',
       known_lang: 'eng', target_lang: 'cym', speakers: { Anna: { gender: 'f', known: human } } }
     const plan = planPod(pod)
     expect(itemFor(plan, 'Anna').verdict).toBe('human-exempt')

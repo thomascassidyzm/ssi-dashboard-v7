@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * READ ONLY. The relink step for non-English course content, counted separately from the
- * render step (same shape as the 2026-08-13 English pod-0 report).
+ * render step (same shape as the 2026-08-13 English core-pod report).
  *
  * Content slots carry explicit FKs - target1_audio_id / target2_audio_id on course_seeds,
  * course_legos and course_practice_phrases - so "how many slots across how many courses

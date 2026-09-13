@@ -5,7 +5,7 @@
  * namespaces so provenance is readable in one character:
  *   P*  seed corpus (patterns.cjs)   D*  pod, sentence grain   X*  pod, exchange grain
  *
- * WHY A SECOND FILE AT ALL. The 31 seed matchers fire on 169 of pod-0's 231
+ * WHY A SECOND FILE AT ALL. The 31 seed matchers fire on 169 of pod-1's 231
  * rows. The 62-row residue is not noise — it is precisely the conversational
  * register the seed corpus cannot attest, because every seed is a statement and
  * no seed has a turn before it: greetings, bare polar responses, ellipted
@@ -185,7 +185,7 @@ const EXCHANGE_FRAMES = [
       shape_nodes: ['N5'],
       testPair: (prev, cur) => isQ(prev) && D_BY.D6.test(cur),
       testTriple: (prev, cur, next) => isQ(prev) && D_BY.D6.test(cur) && !!next && !isQ(next),
-      notes: 'the design\'s worked case, quoted live from pod-0 SC06' }),
+      notes: 'the design\'s worked case, quoted live from pod-1 SC06' }),
 
   X('X2', 'polar-response-to-question',
     "[POLAR Q] -> yes|no , [CLAUSE]",

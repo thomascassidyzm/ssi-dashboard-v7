@@ -17,8 +17,8 @@ const {
 
 describe('podSlugAllowed', () => {
   it('allows the *-unrecorded staging pods', () => {
-    expect(podSlugAllowed('spa_for_eng:pod-0-unrecorded')).toBe(true)
-    expect(podSlugAllowed('tha_for_eng:pod-0-unrecorded')).toBe(true)
+    expect(podSlugAllowed('spa_for_eng:unrecorded')).toBe(true)
+    expect(podSlugAllowed('tha_for_eng:unrecorded')).toBe(true)
   })
 
   it('allows the literal 2026-08-23 staged clone slug', () => {
@@ -27,21 +27,20 @@ describe('podSlugAllowed', () => {
   })
 
   it('refuses live pods', () => {
-    expect(podSlugAllowed('spa_for_eng:pod-0')).toBe(false)
+    expect(podSlugAllowed('spa_for_eng:pod-1')).toBe(false)
     expect(podSlugAllowed('fra_for_eng:pod-1')).toBe(false)
     expect(podSlugAllowed('fra_for_eng:pod-2')).toBe(false)
   })
 
   it('refuses a slug that merely looks staged', () => {
     expect(podSlugAllowed('fra_for_eng:pod-1-staged-2026-08-24')).toBe(false)
-    expect(podSlugAllowed('fra_for_eng:pod-0-unrecorded-live')).toBe(false)
-    expect(podSlugAllowed('fra_for_eng:unrecorded')).toBe(false)
+    expect(podSlugAllowed('fra_for_eng:unrecorded-live')).toBe(false)
   })
 
   it('refuses empty and malformed ids', () => {
     expect(podSlugAllowed('')).toBe(false)
     expect(podSlugAllowed(null)).toBe(false)
-    expect(podSlugAllowed('pod-0-unrecorded')).toBe(false) // no course prefix
+    expect(podSlugAllowed('unrecorded')).toBe(false) // no course prefix
   })
 })
 

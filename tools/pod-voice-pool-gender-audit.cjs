@@ -4,7 +4,7 @@
  * provider's OWN catalogue, and move any voice sitting in the wrong gender
  * list into the right one.
  *
- * Why this exists (2026-08-11, Tom's ruling): the pod-0 rollout found `tur.f[0]`
+ * Why this exists (2026-08-11, Tom's ruling): the core-pod rollout found `tur.f[0]`
  * — the voice pod-sync casts every Turkish female character to — was
  * `tr-TR-AhmetNeural`, which Azure's catalogue calls Male, while
  * `tr-TR-EmelNeural` (Female) sat in the MALE list. A clean transposition that

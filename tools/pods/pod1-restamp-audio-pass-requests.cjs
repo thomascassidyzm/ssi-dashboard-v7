@@ -46,7 +46,7 @@ const QUEUE_REL = SCOPE === 'live'
   ? `docs/pods/pod1-recast-regen-queue-by-language-${STAMP}.json`
   : `docs/pods/pod1-recast-regen-queue-by-language-staged-${STAMP}.json`
 // The staged pods do share course_audio rows with the pods that are live right
-// now (clone-pod copies audio ids, and the pod-0-unrecorded drafts were built
+// now (clone-pod copies audio ids, and the unrecorded drafts were built
 // the same way), and an earlier pass stamped that as a gate forbidding in-place
 // re-render. Tom overruled it, 2026-08-23 21:58Z: "Pod 1 is the staging name.
 // There are no pod 1 live. There is also no risk of affecting live courses. It

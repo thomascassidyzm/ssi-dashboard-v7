@@ -62,7 +62,7 @@ const POOL_PLAN = [
   },
   {
     key: 'deu_at',
-    why: "Tom 2026-08-17: Austrian German approved as sampled on Felix + Sonja. Locale 'de' is what they were sampled at (deu_at_for_eng:pod-0 stores locale 'de'); de-AT steering is available but would change a sound he has already passed.",
+    why: "Tom 2026-08-17: Austrian German approved as sampled on Felix + Sonja. Locale 'de' is what they were sampled at (deu_at_for_eng:pod-1 stores locale 'de'); de-AT steering is available but would change a sound he has already passed.",
     expect: null,            // must not exist yet
     value: {
       m: [{ provider: 'xai', voice_id: 'e1fc5a89', name: 'Felix', locale: 'de' }],
@@ -71,7 +71,7 @@ const POOL_PLAN = [
   },
   {
     key: 'ara_eg',
-    why: "Tom 2026-08-17: Egyptian Arabic approved on Rex + Eve, the production side of the fork. Locale ar-EG copied from the stored ara_eg_for_eng:pod-0 cast.",
+    why: "Tom 2026-08-17: Egyptian Arabic approved on Rex + Eve, the production side of the fork. Locale ar-EG copied from the stored ara_eg_for_eng:pod-1 cast.",
     expect: null,
     value: {
       m: [{ provider: 'xai', voice_id: 'rex', name: 'Rex', locale: 'ar-EG' }],

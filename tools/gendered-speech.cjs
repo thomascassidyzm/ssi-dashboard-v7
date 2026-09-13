@@ -140,7 +140,7 @@ const GENDERED_FORMS = {
   // The pods use the polite です/ます register, which is GENDER-NEUTRAL — men and
   // women speak identically. Gendered pronouns (僕/俺/あたし) and sentence-final
   // particles (わ/ぞ/かしら/わよ) only surface in CASUAL speech. Verified on
-  // jpn_for_eng:pod-0: 142 lines, 115 polite, ZERO real gender markers (the ぞ
+  // jpn_for_eng:pod-1: 142 lines, 115 polite, ZERO real gender markers (the ぞ
   // hits were どうぞ, the のよ hit was どのような). No speaker-gender is encoded in
   // the text → no audible voice/text mismatch is possible → no line check needed.
   jpn: { name: 'Japanese', female: null, male: null, note: 'gender-neutral in polite です/ます register — no line-level gender to detect (verified jpn_for_eng 2026-07-17)' },

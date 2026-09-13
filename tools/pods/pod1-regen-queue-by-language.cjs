@@ -24,8 +24,8 @@
  * courses. All we're doing is fixing the staged courses"). The burden a human
  * is about to pay for is the burden of the pods that will actually be RENDERED,
  * and those are now the held staging pods, not the serving ones:
- *   --scope=live    (default) the serving pods: visibility live, slug pod-0/pod-1
- *   --scope=staged  the held staging pods this wave fixes: pod-0-unrecorded and
+ *   --scope=live    (default) the serving pods: visibility live, slug pod-1
+ *   --scope=staged  the held staging pods this wave fixes: unrecorded and
  *                   pod-1-staged-2026-08-23
  * Each scope writes its own file, so re-pointing the queue never overwrites the
  * other scope's measurement.
@@ -47,8 +47,8 @@ const norm = (v) => String(v || '').replace(/^(xai_|azure_)/, '')
 const SCOPE = ((process.argv.find(a => a.startsWith('--scope=')) || '--scope=live').split('=')[1])
 if (!['live', 'staged'].includes(SCOPE)) { console.error(`FAILED: --scope=${SCOPE} is not live|staged`); process.exit(1) }
 const SCOPE_SQL = SCOPE === 'live'
-  ? `p.visibility = 'live' and p.slug in ('pod-0','pod-1')`
-  : `p.visibility = 'held' and p.slug in ('pod-0-unrecorded','pod-1-staged-2026-08-23')`
+  ? `p.visibility = 'live' and p.slug = 'pod-1'`
+  : `p.visibility = 'held' and p.slug in ('unrecorded','pod-1-staged-2026-08-23')`
 
 async function main() {
   require('dotenv').config({ path: path.join(__dirname, '../../.env.psql') })

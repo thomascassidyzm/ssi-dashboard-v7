@@ -23,7 +23,7 @@
  * When pod-1 was staged for the 22-course fleet, the whole-turn columns were
  * re-derived at each slot but the split arrays were left standing — so a slot
  * whose conversation had been replaced kept the RETIRED pod's clips. The scene
- * running order had changed (pod-0 scene 15 became pod-1 scene 22), so 91 of 141
+ * running order had changed (the retired pod's scene 15 became pod-1 scene 22), so 91 of 141
  * ita rows played, and — because `podSentenceSplit` takes the on-screen text from
  * the clip's own `course_audio.text` — DISPLAYED a different conversation, in the
  * retired pod's cast. Full account:

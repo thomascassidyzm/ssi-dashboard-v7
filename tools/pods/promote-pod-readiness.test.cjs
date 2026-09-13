@@ -28,7 +28,7 @@ import { describe, it, expect } from 'vitest'
 const { promotionBlockers } = require('./promote-pod.cjs')
 
 const COURSE = 'cym_n_for_eng'
-const FROM = 'pod-0-unrecorded'
+const FROM = 'unrecorded'
 const srcId = `${COURSE}:${FROM}`
 
 /** A source pod row with nothing wrong with it: both sides have text and a clip. */
@@ -90,7 +90,7 @@ describe('promotionBlockers — the checks promote-pod already had, still bindin
 
   it('refuses mis-slugged row ids and names the reslug tool', () => {
     const rows = fit()
-    rows[0].id = `${COURSE}:pod-0:SC01-S001`
+    rows[0].id = `${COURSE}:pod-1:SC01-S001`
     expect(blockersFor(rows).join(' ')).toMatch(/reslug-pod-rows\.cjs/)
   })
 
@@ -116,7 +116,7 @@ describe('promotionBlockers — the checks promote-pod already had, still bindin
   })
 
   it('refuses id clashes on other pods', () => {
-    const clashes = [{ id: `${COURSE}:pod-0:SC01-S001`, pod_id: `${COURSE}:pod-0-retired` }]
+    const clashes = [{ id: `${COURSE}:pod-1:SC01-S001`, pod_id: `${COURSE}:retired-2026-08-06` }]
     expect(blockersFor(fit(), { clashes }).join(' ')).toMatch(/already exist on other pods/)
   })
 })

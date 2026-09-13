@@ -54,7 +54,7 @@ const { createClient } = require('@supabase/supabase-js');
 // (packages/player-vue/src/providers/generateLearningScript.ts).
 const DEFAULT_POD_ACTIVATION_ROUND = 6;
 const DEFAULT_POD_ROUND_INTERVAL = 5;
-const SERVING_POD_SLUGS = ['pod-1', 'pod-0'];
+const { SERVING_POD_SLUGS } = require('../pods/serving-slug.cjs');
 
 function sb() {
   return createClient(process.env.SUPABASE_URL,

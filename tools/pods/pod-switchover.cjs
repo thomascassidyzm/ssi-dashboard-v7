@@ -1,18 +1,16 @@
 #!/usr/bin/env node
 /**
- * pod-switchover.cjs — promote a course's staged pod canon onto the live slug, and
- * put the old one beyond reach of a learner but not beyond reach of a rollback.
+ * pod-switchover.cjs — promote a course's staged pod onto the served slug, and put the
+ * one it replaces beyond reach of a learner but not beyond reach of a rollback.
  *
- * THE POINTER IS THE SLUG THE PLAYER SERVES. It used to be `pod-0` everywhere: all five
- * player read paths — useListeningPods.ts, listeningMetaCache.ts, usePodLapScheduler.ts,
- * generateLearningScript.ts, usePodStage0.ts — hardcoded `${courseCode}:pod-0`. Since Tom's
- * ruling of 2026-08-22 ("We want to not have a Pod 0 from now on. We want this first one to
- * be called Pod 1.") those five sites share ONE resolver that prefers `pod-1` and falls back
- * to `pod-0`, so the served slug is now a per-course fact. Croatian is the first course
- * across; the other ~68 stay on `pod-0` and this tool's default keeps them byte-identical.
- * Pass --promote-to= to land the staged pod on a different slug from the one being retired.
- * The flip is still: move the finished content into the slug the player reads, and move the
- * old content out. `tools/pods/clone-pod.cjs` built the staging half of this on 2026-08-06.
+ * THE POINTER IS THE SLUG THE PLAYER SERVES. Every course's core listening pod is `pod-1`
+ * (Tom, 2026-09-13: "There is only pod-1 now. And then pods by topic"), and the player
+ * resolves it through ONE resolver (tools/pods/serving-slug.cjs mirrors the list). A
+ * switchover is between the served `pod-1` and a staged slug — `unrecorded`, or a
+ * `pod-1-staged-<date>` clone: the finished content moves onto `pod-1`, and what was
+ * there moves to `pod-1-retired-<stamp>`. Pass --promote-to= only when the staged pod is
+ * to land on a slug other than the one being retired. `tools/pods/clone-pod.cjs` built
+ * the staging half of this on 2026-08-06.
  *
  * IT WILL NOT PROMOTE ONTO AN OCCUPIED SLUG. If --promote-to names a pod that already
  * exists, it refuses: archive the occupant first with `tools/pods/archive-pod.cjs`.
@@ -24,7 +22,7 @@
  * pod header rows whose sentences have already been moved.
  *
  * IT MIGRATES LEARNER PROGRESS, IN THE SAME TRANSACTION. `learner_pod_state.sentence_id`
- * is a SLOT key (`<course>:pod-0:SC03-S003`), and the staged canon inserts sentences
+ * is a SLOT key (`<course>:pod-1:SC03-S003`), and the staged canon inserts sentences
  * mid-scene, so a naive swap leaves the slot alive with a different sentence in it — the
  * learner is credited with something they never heard. Measured estate-wide on
  * 2026-08-14: 528 rows / 4,827 exposures across the 27 courses still to flip, plus the
@@ -51,7 +49,7 @@
  * snapshot of `learner_pod_state` taken before the transaction opens, so a learner who
  * is mid-session while the flip runs can write rows the plan has never seen. On
  * 2026-08-24 that happened to nld_for_eng: learner 33344e24 wrote 14 rows against the
- * pod-0 canon around the 08:34:44Z switchover, and they were left keyed to a slug that
+ * retiring canon around the 08:34:44Z switchover, and they were left keyed to a slug that
  * no longer existed — repaired by hand afterwards (job #227,
  * docs/pods/nld-inflight-session-repair-2026-08-24-applied-log.json).
  * So: immediately before the plan is applied — after the pods have moved, inside the
@@ -84,22 +82,16 @@ const arg = (n) => {
   return a ? a.split('=').slice(1).join('=') : null
 }
 const COURSE = arg('course')
-const LIVE = arg('live') || 'pod-0'
-const STAGED = arg('staged') || 'pod-0-unrecorded'
+const LIVE = arg('live') || 'pod-1'
+const STAGED = arg('staged') || 'unrecorded'
 const STAMP = arg('stamp') || '2026-08-14'
 const RETIRED = `${LIVE}-retired-${STAMP}`
-/** THE SLUG THE STAGED POD LANDS ON. Defaults to LIVE, so every course that does not pass
- *  this flag behaves byte-identically to how this tool behaved before the flag existed.
- *
- *  It exists because of Tom's ruling of 2026-08-22 — "We want to not have a Pod 0 from now
- *  on. We want this first one to be called Pod 1." — which makes the convention 1-based.
- *  Croatian is the first course across: it archives `pod-0` and promotes onto `pod-1`. The
- *  other ~68 courses stay on `pod-0` until somebody decides to move them, so this is a
- *  per-course fact, not a fleet rename, and the default keeps it that way. */
+/** THE SLUG THE STAGED POD LANDS ON. Defaults to LIVE (`pod-1`), so a plain switchover
+ *  replaces the served pod in place. Pass it only to land the staged pod on a different
+ *  slug from the one being retired. */
 const PROMOTE_TO = arg('promote-to') || LIVE
 /** Override the promoted pod's title. Without it the staged title is reused with the
- *  "— UNRECORDED working copy" suffix stripped, which under the new convention would leave
- *  a pod-1 titled "Pod 0". */
+ *  "— UNRECORDED working copy" suffix stripped. */
 const NEW_TITLE = arg('title')
 /** Escape hatch for a course we have consciously decided to swap without migrating
  *  (a draft course with throwaway state). Never use it on a released course.
@@ -438,8 +430,8 @@ async function main () {
   // A row has SIX audio slots. The cast gate above reads the two whole-turn ones,
   // which is why the 22-course pod-1 fleet flipped green on 2026-08-22 carrying
   // split arrays inherited positionally from the pod being retired. Where the
-  // scene running order changed between the two canons — pod-0 scene 15 became
-  // pod-1 scene 22 on ita_for_eng — those clips play AND display a different
+  // scene running order changed between the two canons — the retiring pod's scene 15
+  // became scene 22 on ita_for_eng — those clips play AND display a different
   // conversation, in the retired pod's cast.
   //
   // The test is exact, not a heuristic: a staged row's split slot byte-identical

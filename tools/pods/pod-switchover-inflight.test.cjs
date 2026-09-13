@@ -19,9 +19,11 @@ import { describe, it, expect } from 'vitest'
 const { planInflightFold } = require('./pod-switchover.cjs')
 
 const COURSE = 'nld_for_eng'
-const LIVE = 'pod-0'
-const RETIRED = 'pod-0-retired-2026-08-24'
-const PROMOTED = 'pod-1'
+const LIVE = 'pod-1'
+const RETIRED = 'pod-1-retired-2026-08-24'
+// The --promote-to branch: the staged pod lands on a slug OTHER than the one retired, so
+// the two prefixes differ. The default (promoteTo === liveSlug) is the last test below.
+const PROMOTED = 'pod-1-promoted-2026-08-24'
 
 /** The old canon, as it stands on the retired slug once the flip has moved it. */
 const retiredCanon = [

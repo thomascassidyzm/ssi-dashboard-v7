@@ -24,7 +24,7 @@ const { createClient } = require('@supabase/supabase-js')
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const COURSE = 'zzz_test2_for_eng'
-const POD = `${COURSE}:pod-0`
+const POD = `${COURSE}:pod-1`
 const SPEAKER = 'Customer'
 const TAG = 'nav-test-2026-09-02'
 

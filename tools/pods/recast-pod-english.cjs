@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * recast-pod-english.cjs — put every pod-0 English track on the two shared xAI
+ * recast-pod-english.cjs — put every core-pod English track on the two shared xAI
  * clone voices, Olivia (female) and Tom (male).
  *
- * WHY THIS EXISTS. Tom's ruling, 2026-08-11 (decision B of the pod-0 survey,
+ * WHY THIS EXISTS. Tom's ruling, 2026-08-11 (decision B of the listening-pod survey,
  * https://watson-1.tail4968cb.ts.net/d/99a7f100 §2): pod English is standardised
  * on the two clones already in wide use, rather than each course keeping its own
- * English cast. Today the estate's pod-0 English is a patchwork — Leo, Sonia,
+ * English cast. Before it ran the estate's pod English was a patchwork — Leo, Sonia,
  * Libby, Ryan, Hollie, Thomas, Alfie, a voice called "Nova" sharing Olivia's id,
  * and 23 character-slots with no English voice at all.
  *
@@ -45,7 +45,7 @@
  *    and every one is written to the log individually.
  *
  * THE ONE GENDER IT DOES CHANGE: Learner, and only where it is 'n'.
- * tools/pod-sync.cjs POD0_SPEAKER_GENDER pins the Learner to 'f' — a committed
+ * tools/pod-sync.cjs CANON_SPEAKER_GENDER pins the Learner to 'f' — a committed
  * ruling, dated after the gender sweep, with a worked rationale. Measured here
  * against the live estate it is also the difference between a pod being
  * approvable and not: the Learner speaks 79 of the new canon's 231 lines, so on
@@ -87,7 +87,7 @@
  *
  *   node tools/pods/recast-pod-english.cjs                     # dry run, all pods
  *   node tools/pods/recast-pod-english.cjs --apply
- *   node tools/pods/recast-pod-english.cjs --pod=spa_for_eng:pod-0
+ *   node tools/pods/recast-pod-english.cjs --pod=spa_for_eng:pod-1
  *   node tools/pods/recast-pod-english.cjs --restore-from-archive --apply
  */
 'use strict'
@@ -112,7 +112,7 @@ const ARCHIVE = path.join(DOCS, 'pod-english-shared-cast-archive.json')
 const LOG = (kind) => path.join(DOCS, `pod-english-shared-cast-${kind}-log.json`)
 
 // The two shared clones. Shape copied byte-for-byte from the precedent Tom
-// pointed at, spa_for_eng:pod-0-unrecorded — key order included, because these
+// pointed at, spa_for_eng:unrecorded — key order included, because these
 // objects are compared for equality against what is already in the column.
 const OLIVIA = { name: 'Olivia', locale: 'en', provider: 'xai', voice_id: 'bedd6226' }
 const TOM = { name: 'Tom', locale: 'en', provider: 'xai', voice_id: 'gfzdpspr5fdp' }
@@ -129,9 +129,9 @@ const EXCLUDE_COURSES = new Set([...NO_ENGLISH_SIDE, 'zzz_test_for_eng'])
  * Gender used ONLY to fill a character that has none — never to overwrite one.
  *
  * Not invented: each entry is the value carried by a large majority of the 60
- * pod-0 pods (58-59 of 60 for the named roles), which is the generation-side
+ * core pods (58-59 of 60 for the named roles), which is the generation-side
  * colouring every pod was built from. Learner is the one entry with a stronger
- * source than the majority — tools/pod-sync.cjs POD0_SPEAKER_GENDER pins it to
+ * source than the majority — tools/pod-sync.cjs CANON_SPEAKER_GENDER pins it to
  * 'f' with a worked rationale (79 of 231 lines; balances the two-hander; matches
  * Catrin voicing the Learner in the Welsh human recording).
  */
@@ -243,7 +243,7 @@ async function loadPods(client) {
            (SELECT count(*) FROM listening_pod_sentences s WHERE s.pod_id = p.id)::int AS sentence_count
       FROM listening_pods p
       JOIN courses c ON c.course_code = p.course_code
-     WHERE p.slug LIKE 'pod-0%'
+     WHERE p.slug IN ('pod-1', 'unrecorded')
      ORDER BY p.id`)
   return rows.filter((p) => {
     if (EXCLUDE_COURSES.has(p.course_code)) return false
@@ -262,10 +262,10 @@ async function loadPods(client) {
  *
  * Scoped to the course, not the pod, for two reasons. The Learner is one
  * character with one gender, so a course cannot coherently answer this question
- * twice. And the `pod-0-unrecorded` clones are mid-alignment right now, with
+ * twice. And the `unrecorded` clones are mid-alignment right now, with
  * much of their target text still blank — read alone, a clone looks like it has
  * no male evidence purely because the evidence has not been translated yet, and
- * it would flip while its own pod-0 held back.
+ * it would flip while its own served pod held back.
  */
 const _evidenceCache = new Map()
 async function learnerMaleEvidence(client, pod) {
@@ -275,7 +275,7 @@ async function learnerMaleEvidence(client, pod) {
     `SELECT s.target_text
        FROM listening_pod_sentences s
        JOIN listening_pods p ON p.id = s.pod_id
-      WHERE p.course_code = $1 AND p.slug LIKE 'pod-0%' AND s.speaker ILIKE 'Learner%'`,
+      WHERE p.course_code = $1 AND p.slug IN ('pod-1', 'unrecorded') AND s.speaker ILIKE 'Learner%'`,
     [pod.course_code])
   const hit = rows.some((r) => textGender(r.target_text, pod.target_lang) === 'm')
   _evidenceCache.set(pod.course_code, hit)
@@ -343,7 +343,7 @@ async function main() {
     if (RESTORE) return await restore(client)
 
     const pods = await loadPods(client)
-    console.log(`pod-0 pods in scope: ${pods.length}${ONLY_POD ? ` (filtered to ${ONLY_POD})` : ''}\n`)
+    console.log(`core pods in scope: ${pods.length}${ONLY_POD ? ` (filtered to ${ONLY_POD})` : ''}\n`)
 
     const plans = []
     const totals = {
@@ -405,7 +405,7 @@ async function main() {
     // ones) before a single write — that file is the way back.
     //
     // ADD-ONLY. This tool is re-run as the concurrent alignment work creates more
-    // pod-0 clones, and a plain overwrite on the second run would archive the
+    // unrecorded clones, and a plain overwrite on the second run would archive the
     // ALREADY-RECAST cast as if it were the original — silently turning the way
     // back into a no-op. A pod's first archived entry is its only one.
     const prior = fs.existsSync(ARCHIVE) ? JSON.parse(fs.readFileSync(ARCHIVE, 'utf8')) : null

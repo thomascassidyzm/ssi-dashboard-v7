@@ -20,6 +20,7 @@ const p8 = require('../services/phases/phase8-audio-v13.cjs')
 const COURSE = process.argv[2]
 const dry = process.argv.includes('--dry')
 if (!COURSE) { console.error('usage: render-residue-atoms.cjs <course> [--dry]'); process.exit(1) }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const { XAI_OFFICIAL } = require('../services/shared/xai-catalogue.cjs')
@@ -54,6 +55,7 @@ function glueGroups(rawGroups) {
 }
 
 ;(async () => {
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
   const t1 = (((course || {}).voice_config || {}).voices || {}).target1
   if (!t1 || !t1.voiceId) { console.error(`ERR: ${COURSE} voice_config missing target1`); process.exit(1) }
@@ -65,7 +67,7 @@ function glueGroups(rawGroups) {
 
   const { data: sents } = await supabase.from('listening_pod_sentences')
     .select('global_order, target_text, atom_map_fine')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', POD_ID).order('global_order')
 
   const surfaces = new Map() // lower surface → surface
   for (const s of sents || []) {

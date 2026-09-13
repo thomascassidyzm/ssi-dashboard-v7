@@ -6,7 +6,7 @@
  *    them"
  *
  * The thing this file has to hold is that the override is a SURGICAL swap of
- * the voice and of nothing else. The Spanish pod-0 rejection that started this
+ * the voice and of nothing else. The Spanish core-pod rejection that started this
  * ("Spanish needs Iberian Spanish, not Mexican pronounciation") is fixed by
  * changing WHICH voice a slot lands on — never by changing how speakers collapse
  * to slots, which gender they resolve to, or how the known track locks to the
