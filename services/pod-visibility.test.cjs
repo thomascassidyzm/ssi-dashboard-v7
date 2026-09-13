@@ -137,7 +137,7 @@ describe('describeActor — the trail names a human', () => {
 // must not write at all (held → held re-stamped held_at on cym_s pod-1 at
 // 20:07:45Z the same day).
 // ---------------------------------------------------------------------------
-const { applyVisibilityChange } = require('./pod-visibility.cjs')
+const { applyVisibilityChange, applyPodAccessChange } = require('./pod-visibility.cjs')
 
 /** An in-memory listening_pods with an honest WHERE visibility = <expected>. */
 function fakeStore(initial) {
@@ -154,12 +154,15 @@ function fakeStore(initial) {
       if (gates.afterRead) { const g = gates.afterRead; gates.afterRead = null; await g }
       return data
     },
-    updateWhereVisibility: async (id, expected, patch) => {
+    // ONE UPDATE, WHERE visibility = ? AND required_role IS/= ? — the shape the
+    // route's Supabase call has since job #611.
+    updateWhereState: async (id, expected, patch) => {
       if (gates.beforeWrite) { const g = gates.beforeWrite; gates.beforeWrite = null; await g }
       const row = rows.get(id)
       if (!row) return null
-      const matches = expected === null || expected === undefined ? row.visibility == null : row.visibility === expected
-      if (!matches) { writes.push({ id, expected, hit: false }); return null }
+      const visMatches = expected.visibility === null ? row.visibility == null : row.visibility === expected.visibility
+      const roleMatches = expected.required_role === null ? row.required_role == null : row.required_role === expected.required_role
+      if (!visMatches || !roleMatches) { writes.push({ id, expected, hit: false }); return null }
       Object.assign(row, patch)
       writes.push({ id, expected, hit: true, patch })
       return { ...row }
@@ -311,11 +314,12 @@ function fakeRoleStore(initial) {
       if (gates.afterRead) { const g = gates.afterRead; gates.afterRead = null; await g }
       return data
     },
-    updateWhereRequiredRole: async (id, expected, patch) => {
+    updateWhereState: async (id, expected, patch) => {
       const row = rows.get(id)
       if (!row) return null
-      const matches = expected === null ? row.required_role == null : row.required_role === expected
-      if (!matches) { writes.push({ id, expected, hit: false }); return null }
+      const visMatches = expected.visibility === null ? row.visibility == null : row.visibility === expected.visibility
+      const roleMatches = expected.required_role === null ? row.required_role == null : row.required_role === expected.required_role
+      if (!visMatches || !roleMatches) { writes.push({ id, expected, hit: false }); return null }
       Object.assign(row, patch)
       writes.push({ id, expected, hit: true, patch })
       return { ...row }
@@ -374,5 +378,89 @@ describe('applyRequiredRoleChange — the Senedd opening as a request, not a han
     const existing = { scene_hashes: { s1: 'x' } }
     nextRequiredRoleMetadata(existing, { requiredRole: null, was: 'previewer_001', actor: ACTOR, nowIso: T })
     expect(existing).toEqual({ scene_hashes: { s1: 'x' } })
+  })
+})
+
+// ---------------------------------------------------------------------------
+// applyPodAccessChange — the race GPT-6 Astra found second (#608, 2026-09-13):
+// the role's compare-and-swap guarded only the role, so a narrow that read
+// 'held' and then lost the CPU to a release still matched WHERE required_role
+// IS NULL and landed a role on a LIVE pod with a 200. And a body carrying both
+// fields ran as two writes, so the role could clear before the hold was
+// refused. Both are one write now, WHERE both columns still say what was read.
+// Red before job #611's change, green after (seen both ways).
+// ---------------------------------------------------------------------------
+describe('applyPodAccessChange — visibility and role are ONE atomic transition (Astra #608)', () => {
+  it('a narrow that races a release NEVER lands a role on a now-live pod', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', required_role: null, metadata: { scene_hashes: { s1: 'x' } } } })
+    let unblock
+    store.gates.afterRead = new Promise(r => { unblock = r })
+    // The narrow reads (held, NULL) — its check passes on that read — and stalls…
+    const narrow = applyPodAccessChange({ podId: POD, requiredRole: 'previewer_002', actor: ACTOR, nowIso: T, store })
+    await new Promise(r => setTimeout(r, 0))
+    // …a release runs start to finish in the gap…
+    const release = await applyPodAccessChange({ podId: POD, visibility: 'live', actor: ACTOR, nowIso: T, store })
+    expect(release.status).toBe(200)
+    expect(store.rows.get(POD).visibility).toBe('live')
+    // …and the narrow resumes. Its UPDATE misses on visibility, it re-judges
+    // on the live row, and it is refused with the rule text.
+    unblock()
+    const r = await narrow
+    expect(r.status).toBe(409)
+    expect(r.body.error).toMatch(/live pod is never pulled back/)
+    expect(store.rows.get(POD).required_role).toBeNull()
+    expect(store.writes.filter(w => w.hit).length).toBe(1)
+    expect(store.writes.at(-1)).toMatchObject({ expected: { visibility: 'held', required_role: null }, hit: false })
+  })
+
+  it('a combined {required_role: null, visibility: held} on a live pod writes NOTHING — no half-success', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'live', required_role: 'previewer_001', metadata: { released_at: T } } })
+    const r = await applyPodAccessChange({ podId: POD, visibility: 'held', requiredRole: null, actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(409)
+    expect(store.writes).toEqual([])
+    expect(store.rows.get(POD)).toMatchObject({ visibility: 'live', required_role: 'previewer_001' })
+  })
+
+  it('a combined release-and-narrow on a held pod is refused: it would be a live pod with a role', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', required_role: null, metadata: {} } })
+    const r = await applyPodAccessChange({ podId: POD, visibility: 'live', requiredRole: 'previewer_002', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(409)
+    expect(store.writes).toEqual([])
+  })
+
+  it('a combined open-and-release on a held, addressed pod lands in ONE write with both trails', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', required_role: 'previewer_001', metadata: { scene_hashes: { s1: 'x' } } } })
+    const r = await applyPodAccessChange({ podId: POD, visibility: 'live', requiredRole: null, actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(200)
+    expect(r.body).toMatchObject({ was: 'held', wasRole: 'previewer_001', roleNoop: false })
+    expect(store.writes.length).toBe(1)
+    expect(store.writes[0]).toMatchObject({ expected: { visibility: 'held', required_role: 'previewer_001' }, hit: true })
+    const row = store.rows.get(POD)
+    expect(row).toMatchObject({ visibility: 'live', required_role: null })
+    expect(row.metadata).toMatchObject({ scene_hashes: { s1: 'x' }, released_at: T, required_role_was: 'previewer_001', required_role_now: null })
+  })
+
+  it('releasing a held, addressed pod while re-stating its own role is fine: the role part is a no-op', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', required_role: 'previewer_001', metadata: {} } })
+    const r = await applyPodAccessChange({ podId: POD, visibility: 'live', requiredRole: 'previewer_001', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(200)
+    expect(r.body.roleNoop).toBe(true)
+    expect(store.writes[0].patch).not.toHaveProperty('required_role')
+    expect(store.rows.get(POD)).toMatchObject({ visibility: 'live', required_role: 'previewer_001' })
+  })
+
+  it('the WHERE asserts the ROLE too: a role that changed under a release is a 409, not a blind overwrite', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', required_role: null, metadata: {} } })
+    let unblock
+    store.gates.afterRead = new Promise(r => { unblock = r })
+    const release = applyPodAccessChange({ podId: POD, visibility: 'live', actor: ACTOR, nowIso: T, store })
+    await new Promise(r => setTimeout(r, 0))
+    const narrow = await applyPodAccessChange({ podId: POD, requiredRole: 'previewer_002', actor: ACTOR, nowIso: T, store })
+    expect(narrow.status).toBe(200)
+    unblock()
+    const r = await release
+    expect(r.status).toBe(409)
+    expect(r.body.error).toMatch(/changed while the request was in flight/)
+    expect(store.rows.get(POD)).toMatchObject({ visibility: 'held', required_role: 'previewer_002' })
   })
 })

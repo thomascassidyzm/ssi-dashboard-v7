@@ -43,7 +43,13 @@
 // changing a role on it would pull it back from learners — the 2026-09-13
 // ruling again), so a role is set while the pod is held; and the write is a
 // compare-and-swap on the role that was read. See parseRequiredRoleRequest,
-// checkRequiredRoleTransition, applyRequiredRoleChange.
+// checkRequiredRoleTransition.
+//
+// ONE WRITE FOR BOTH (job #611, 2026-09-13, after GPT-6 Astra #608): the two
+// levers used to be two UPDATEs, each guarding only its own column, so a
+// narrow could land on a pod that went live between read and write, and a
+// combined body could half-succeed. applyPodAccessChange is now the only
+// write: one read, one judgement, one UPDATE whose WHERE asserts both columns.
 //
 // Pure. No DB, no clock, no identity lookup — the caller passes those in, which
 // is what makes all three decisions unit-testable.
@@ -151,19 +157,27 @@ function describeActor(actor) {
 const LIVE_POD_NEVER_HELD = checkVisibilityTransition('live', 'held').error
 
 /**
- * The whole hold/release act, from read to write, against an injected store.
+ * THE ONE WRITE: visibility and/or required_role, as a SINGLE atomic transition.
  *
  * WHY THIS IS NOT JUST "check, then update". The check reads the pod's
  * visibility and the update used to be unconditional, so a hold that raced a
  * release could read 'held', pass checkVisibilityTransition, and then stamp
  * 'held' over a pod that had gone live in between (GPT-6 Astra cold-check
- * #582, 2026-09-13, reproduced against the real handler). The write is
- * therefore a COMPARE-AND-SWAP: `updateWhereVisibility(podId, stateRead, patch)`
- * must only touch the row if visibility still equals what was read, and must
- * report a miss as null. A miss is re-read and re-judged: a live pod refuses
- * the hold with the same 409 rule text as the check itself; a row that now
- * already carries the requested value is a 200 no-op; anything else is a 409
- * "changed under you".
+ * #582, 2026-09-13, reproduced against the real handler). Job #605 then gave
+ * the role its own compare-and-swap — on the ROLE only — and Astra #608 showed
+ * the gap: a narrow that read 'held', lost the CPU to a release, and then
+ * matched WHERE required_role IS NULL landed a role on a LIVE pod with a 200.
+ * And a body carrying both fields ran as two writes, so the role could clear
+ * and the hold then fail with 409 — a partial success.
+ *
+ * So (job #611): ONE read, ONE judgement over both fields, ONE UPDATE whose
+ * WHERE asserts BOTH the visibility AND the role that were read —
+ * `updateWhereState(podId, {visibility, required_role}, patch)` touches the
+ * row only if both still match and reports a miss as null. A miss is re-read
+ * and re-judged on what the row is NOW: a refused transition gets the same 409
+ * rule text as the up-front check; a row that already carries every requested
+ * value is a 200 no-op; anything else is a 409 "changed under you". There is
+ * no partial write because there is only one write.
  *
  * NO-OPS WRITE NOTHING. held → held on cym_s_for_eng:pod-1 re-stamped held_at
  * at 2026-09-13T20:07:45Z (content_audit_log). A request that changes nothing
@@ -171,43 +185,86 @@ const LIVE_POD_NEVER_HELD = checkVisibilityTransition('live', 'held').error
  *
  * @param {object} args
  * @param {string} args.podId
- * @param {string} args.requested already validated by parseVisibilityRequest
+ * @param {string} [args.visibility] validated by parseVisibilityRequest; undefined = leave alone
+ * @param {string|null} [args.requiredRole] validated by parseRequiredRoleRequest; undefined = leave alone
  * @param {{name?:string,email?:string}|null} args.actor
  * @param {string} args.nowIso
  * @param {{
- *   readPod: (podId:string) => Promise<{id:string, visibility:string|null, metadata:object|null}|null>,
- *   updateWhereVisibility: (podId:string, expectedVisibility:string|null, patch:{visibility:string, metadata:object}) => Promise<object|null>,
+ *   readPod: (podId:string) => Promise<{id:string, visibility:string|null, required_role?:string|null, metadata:object|null}|null>,
+ *   updateWhereState: (podId:string, expected:{visibility:string|null, required_role:string|null}, patch:object) => Promise<object|null>,
  * }} args.store
  * @returns {Promise<{status:number, body:object}>}
  */
-async function applyVisibilityChange({ podId, requested, actor, nowIso, store }) {
+async function applyPodAccessChange({ podId, visibility, requiredRole, actor, nowIso, store }) {
+  const wantsVisibility = visibility !== undefined
+  const wantsRole = requiredRole !== undefined
+  if (!wantsVisibility && !wantsRole) return { status: 400, body: { error: 'nothing requested' } }
+
+  const judge = (pod) => {
+    // Judge the ROLE against the visibility the row will have after this
+    // request, not only the one it has now: a held pod released and narrowed
+    // in one body would be a live pod with a role, which is a narrowing.
+    if (wantsVisibility) {
+      const t = checkVisibilityTransition(pod.visibility, visibility)
+      if (!t.ok) return t
+    }
+    if (wantsRole) {
+      const after = wantsVisibility ? visibility : pod.visibility
+      const t = checkRequiredRoleTransition({ visibility: after, required_role: pod.required_role }, requiredRole)
+      if (!t.ok) return t
+    }
+    return { ok: true }
+  }
+  const isNoop = (pod) =>
+    (!wantsVisibility || pod.visibility === visibility)
+    && (!wantsRole || (pod.required_role ?? null) === requiredRole)
+  const summary = (pod, updated, noop) => {
+    const body = { ok: true, pod: updated || pod, was: pod.visibility, wasRole: pod.required_role ?? null }
+    if (noop) body.noop = true
+    if (wantsRole) body.roleNoop = (pod.required_role ?? null) === requiredRole
+    return body
+  }
+
   const pod = await store.readPod(podId)
   if (!pod) return { status: 404, body: { error: `Pod not found: ${podId}` } }
+  const first = judge(pod)
+  if (!first.ok) return { status: first.status, body: { error: first.error } }
+  if (isNoop(pod)) return { status: 200, body: summary(pod, null, true) }
 
-  const transition = checkVisibilityTransition(pod.visibility, requested)
-  if (!transition.ok) return { status: transition.status, body: { error: transition.error } }
-
-  if (pod.visibility === requested) {
-    return { status: 200, body: { ok: true, pod, was: pod.visibility, noop: true } }
+  let metadata = pod.metadata
+  const patch = {}
+  if (wantsRole && (pod.required_role ?? null) !== requiredRole) {
+    metadata = nextRequiredRoleMetadata(metadata, { requiredRole, was: pod.required_role ?? null, actor, nowIso })
+    patch.required_role = requiredRole
   }
-
-  const metadata = nextVisibilityMetadata(pod.metadata, { visibility: requested, actor, nowIso })
-  const updated = await store.updateWhereVisibility(podId, pod.visibility, { visibility: requested, metadata })
-  if (updated) return { status: 200, body: { ok: true, pod: updated, was: pod.visibility } }
+  if (wantsVisibility && pod.visibility !== visibility) {
+    metadata = nextVisibilityMetadata(metadata, { visibility, actor, nowIso })
+    patch.visibility = visibility
+  }
+  patch.metadata = metadata
+  const expected = { visibility: pod.visibility ?? null, required_role: pod.required_role ?? null }
+  const updated = await store.updateWhereState(podId, expected, patch)
+  if (updated) return { status: 200, body: summary(pod, updated, false) }
 
   // Zero rows: the pod moved between our read and our write. Judge it again
-  // on what it is NOW, never on what we read.
+  // on what it is NOW, never on what we read. Nothing has been written.
   const now = await store.readPod(podId)
   if (!now) return { status: 404, body: { error: `Pod not found: ${podId}` } }
-  const again = checkVisibilityTransition(now.visibility, requested)
+  const again = judge(now)
   if (!again.ok) return { status: again.status, body: { error: again.error } }
-  if (now.visibility === requested) {
-    return { status: 200, body: { ok: true, pod: now, was: now.visibility, noop: true } }
-  }
+  if (isNoop(now)) return { status: 200, body: summary(now, null, true) }
+  const roleNow = now.required_role === null || now.required_role === undefined ? 'NULL' : `'${now.required_role}'`
   return {
     status: 409,
-    body: { error: `This pod changed while the request was in flight (now '${now.visibility}'); nothing was written. Re-read it and try again.` },
+    body: { error: `This pod changed while the request was in flight (now '${now.visibility}', required_role ${roleNow}); nothing was written. Re-read it and try again.` },
   }
+}
+
+/** Visibility only — a thin name over applyPodAccessChange, kept for callers and tests. */
+async function applyVisibilityChange({ podId, requested, actor, nowIso, store }) {
+  const r = await applyPodAccessChange({ podId, visibility: requested, actor, nowIso, store })
+  if (r.status === 200) { delete r.body.wasRole; delete r.body.roleNoop }
+  return r
 }
 
 /**
@@ -276,54 +333,15 @@ function nextRequiredRoleMetadata(existing, { requiredRole, was, actor, nowIso }
   return meta
 }
 
-/**
- * The whole role change, read to write, against an injected store — the same
- * shape and the same discipline as applyVisibilityChange: judge on what was
- * read, write only if the row still says that, re-judge on a miss, no-ops
- * write nothing.
- *
- * @param {object} args
- * @param {string} args.podId
- * @param {string|null} args.requested already validated by parseRequiredRoleRequest
- * @param {{name?:string,email?:string}|null} args.actor
- * @param {string} args.nowIso
- * @param {{
- *   readPod: (podId:string) => Promise<{id:string, visibility:string|null, required_role?:string|null, metadata:object|null}|null>,
- *   updateWhereRequiredRole: (podId:string, expectedRole:string|null, patch:{required_role:string|null, metadata:object}) => Promise<object|null>,
- * }} args.store
- * @returns {Promise<{status:number, body:object}>}
- */
+/** Role only — a thin name over applyPodAccessChange, kept for callers and tests. */
 async function applyRequiredRoleChange({ podId, requested, actor, nowIso, store }) {
-  const pod = await store.readPod(podId)
-  if (!pod) return { status: 404, body: { error: `Pod not found: ${podId}` } }
-  const was = pod.required_role ?? null
-
-  const transition = checkRequiredRoleTransition(pod, requested)
-  if (!transition.ok) return { status: transition.status, body: { error: transition.error } }
-
-  if (was === requested) {
-    return { status: 200, body: { ok: true, pod, wasRole: was, noop: true } }
-  }
-
-  const metadata = nextRequiredRoleMetadata(pod.metadata, { requiredRole: requested, was, actor, nowIso })
-  const updated = await store.updateWhereRequiredRole(podId, was, { required_role: requested, metadata })
-  if (updated) return { status: 200, body: { ok: true, pod: updated, wasRole: was } }
-
-  const now = await store.readPod(podId)
-  if (!now) return { status: 404, body: { error: `Pod not found: ${podId}` } }
-  const again = checkRequiredRoleTransition(now, requested)
-  if (!again.ok) return { status: again.status, body: { error: again.error } }
-  if ((now.required_role ?? null) === requested) {
-    return { status: 200, body: { ok: true, pod: now, wasRole: now.required_role ?? null, noop: true } }
-  }
-  return {
-    status: 409,
-    body: { error: `This pod changed while the request was in flight (required_role now ${now.required_role === null || now.required_role === undefined ? 'NULL' : `'${now.required_role}'`}); nothing was written. Re-read it and try again.` },
-  }
+  const r = await applyPodAccessChange({ podId, requiredRole: requested, actor, nowIso, store })
+  if (r.status === 200) { delete r.body.was; delete r.body.roleNoop }
+  return r
 }
 
 module.exports = {
   VISIBILITIES, LIVE_POD_NEVER_HELD, parseVisibilityRequest, checkVisibilityTransition, nextVisibilityMetadata, describeActor,
-  applyVisibilityChange,
+  applyPodAccessChange, applyVisibilityChange,
   parseRequiredRoleRequest, checkRequiredRoleTransition, nextRequiredRoleMetadata, applyRequiredRoleChange,
 }

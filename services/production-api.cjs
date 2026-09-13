@@ -4494,10 +4494,12 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
   try {
     const sb = supabaseClient.getClient()
     // The decision AND the write discipline live in pod-visibility.cjs
-    // (applyVisibilityChange): the update is a compare-and-swap on the
-    // visibility that was read, so a hold racing a release can never stamp
-    // 'held' over a pod that went live in between (Astra cold-check #582), and
-    // a no-op writes nothing. This route only supplies the two store calls.
+    // (applyPodAccessChange): one read, one judgement over both fields, one
+    // UPDATE that is a compare-and-swap on the visibility AND the role that
+    // were read — so a hold can never stamp 'held' over a pod that went live
+    // in between (Astra #582), a narrow can never land on one either (Astra
+    // #608), a combined body never half-succeeds, and a no-op writes nothing.
+    // This route only supplies the two store calls.
     const store = {
       readPod: async (id) => {
         const { data, error } = await sb
@@ -4505,49 +4507,35 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
         if (error) throw error
         return data
       },
-      // Same compare-and-swap for the role: match the exact role that was read.
-      updateWhereRequiredRole: async (id, expected, patch) => {
+      // ONE UPDATE for both levers (job #611): the WHERE asserts BOTH the
+      // visibility and the role that were read. Guarding only the role let a
+      // narrow land on a pod that went live in between (Astra #608); guarding
+      // each column in its own UPDATE let a combined body half-succeed.
+      updateWhereState: async (id, expected, patch) => {
         let q = sb.from('listening_pods')
           .update({ ...patch, updated_at: new Date().toISOString() })
           .eq('id', id)
-        q = expected === null ? q.is('required_role', null) : q.eq('required_role', expected)
-        const { data, error } = await q.select('id, visibility, required_role, metadata').maybeSingle()
-        if (error) throw error
-        return data
-      },
-      updateWhereVisibility: async (id, expected, patch) => {
-        let q = sb.from('listening_pods')
-          .update({ ...patch, updated_at: new Date().toISOString() })
-          .eq('id', id)
-        // The WHERE is the whole fix: match the exact state we judged.
-        q = expected === null || expected === undefined ? q.is('visibility', null) : q.eq('visibility', expected)
+        q = expected.visibility === null ? q.is('visibility', null) : q.eq('visibility', expected.visibility)
+        q = expected.required_role === null ? q.is('required_role', null) : q.eq('required_role', expected.required_role)
         const { data, error } = await q.select('id, visibility, required_role, metadata').maybeSingle()
         if (error) throw error
         return data
       },
     }
-    // Role first, then visibility: "address it, then release it" is the order
-    // a restricted pod is built in, and a refused role change stops the
-    // request before anything is released.
-    let roleResult = null
-    if (hasRole) {
-      roleResult = await podVisibility.applyRequiredRoleChange({
-        podId, requested: parsedRole.requiredRole, actor: admin, nowIso: new Date().toISOString(), store,
-      })
-      if (roleResult.status !== 200) return res.status(roleResult.status).json(roleResult.body)
-      if (!roleResult.body.noop) {
-        logger.info(`[PodVisibility] ${podId}: required_role ${roleResult.body.wasRole ?? 'NULL'} -> ${parsedRole.requiredRole ?? 'NULL'} by ${podVisibility.describeActor(admin)}`)
-      }
-      if (!hasVisibility) return res.status(200).json(roleResult.body)
-    }
-    const result = await podVisibility.applyVisibilityChange({
-      podId, requested: parsed.visibility, actor: admin, nowIso: new Date().toISOString(), store,
+    const result = await podVisibility.applyPodAccessChange({
+      podId,
+      visibility: hasVisibility ? parsed.visibility : undefined,
+      requiredRole: hasRole ? parsedRole.requiredRole : undefined,
+      actor: admin, nowIso: new Date().toISOString(), store,
     })
     if (result.status === 200 && !result.body.noop) {
-      logger.info(`[PodVisibility] ${podId}: ${result.body.was} -> ${parsed.visibility} by ${podVisibility.describeActor(admin)}`)
-    }
-    if (roleResult && result.status === 200) {
-      return res.status(200).json({ ...result.body, wasRole: roleResult.body.wasRole, roleNoop: !!roleResult.body.noop })
+      const who = podVisibility.describeActor(admin)
+      if (hasRole && !result.body.roleNoop) {
+        logger.info(`[PodVisibility] ${podId}: required_role ${result.body.wasRole ?? 'NULL'} -> ${parsedRole.requiredRole ?? 'NULL'} by ${who}`)
+      }
+      if (hasVisibility && result.body.was !== parsed.visibility) {
+        logger.info(`[PodVisibility] ${podId}: ${result.body.was} -> ${parsed.visibility} by ${who}`)
+      }
     }
     res.status(result.status).json(result.body)
   } catch (e) {
