@@ -9,7 +9,7 @@ const { parseNotes, resolveIdentity, run } = require('./propagate-take-quality-w
 
 function badMark(over = {}) {
   return {
-    course_code: 'cym_n_for_eng', mode: 'pod', sentence_id: 'cym_n_for_eng:pod-0:SC01-S004',
+    course_code: 'cym_n_for_eng', mode: 'pod', sentence_id: 'cym_n_for_eng:pod-1:SC01-S004',
     kind: 'target', voice_id: 'human_catrinlliar_cym_n',
     take_quality: { verdict: 'bad', status: 'superseded-pending-rerecord', reason: 'no speech in the take' },
     ...over,
@@ -20,21 +20,21 @@ describe('resolveIdentity — reading a bad mark out of either observed provenan
   it('reads the top-level (mode:pod) shape', () => {
     const id = resolveIdentity(badMark())
     expect(id).toEqual({
-      sentenceId: 'cym_n_for_eng:pod-0:SC01-S004', voiceId: 'human_catrinlliar_cym_n',
+      sentenceId: 'cym_n_for_eng:pod-1:SC01-S004', voiceId: 'human_catrinlliar_cym_n',
       kind: 'target', reason: 'no speech in the take',
     })
   })
 
   it('reads the older mark-aran-clipped-takes shape (identity nested under take_quality.evidence)', () => {
     const ctx = {
-      sentence_id: 'cym_n_for_eng:pod-0:SC04-S003', text: '...',
+      sentence_id: 'cym_n_for_eng:pod-1:SC04-S003', text: '...',
       take_quality: {
         verdict: 'bad', status: 'superseded-pending-rerecord', reason: 'clipped at the boundary',
-        evidence: { pod_sentence_id: 'cym_n_for_eng:pod-0:SC04-S003', pod_side: 'target', voice_id: 'human_aran_cym_n_2' },
+        evidence: { pod_sentence_id: 'cym_n_for_eng:pod-1:SC04-S003', pod_side: 'target', voice_id: 'human_aran_cym_n_2' },
       },
     }
     expect(resolveIdentity(ctx)).toEqual({
-      sentenceId: 'cym_n_for_eng:pod-0:SC04-S003', voiceId: 'human_aran_cym_n_2',
+      sentenceId: 'cym_n_for_eng:pod-1:SC04-S003', voiceId: 'human_aran_cym_n_2',
       kind: 'target', reason: 'clipped at the boundary',
     })
   })
@@ -49,7 +49,7 @@ describe('resolveIdentity — reading a bad mark out of either observed provenan
 
   it('still resolves on status alone, without a verdict field', () => {
     const id = resolveIdentity(badMark({ take_quality: { status: 'superseded-pending-rerecord', reason: 'x' } }))
-    expect(id.sentenceId).toBe('cym_n_for_eng:pod-0:SC01-S004')
+    expect(id.sentenceId).toBe('cym_n_for_eng:pod-1:SC01-S004')
   })
 })
 
@@ -106,19 +106,19 @@ describe('run — end to end against a stubbed db', () => {
   it('a bad-marked line with no prior want gets rerecord_wanted.target set, is NOT counted recorded, and keeps its old take linked', async () => {
     const db = stubDb({
       provenanceRows: [{ audio_uuid: 'BAD-1', quality_notes: JSON.stringify(badMark()) }],
-      sentenceRows: [{ id: 'cym_n_for_eng:pod-0:SC01-S004', rerecord_wanted: null }],
+      sentenceRows: [{ id: 'cym_n_for_eng:pod-1:SC01-S004', rerecord_wanted: null }],
     })
     process.env.DRY_RUN = '0'
     await run({ db })
     expect(db.writes.length).toBe(1)
-    expect(db.writes[0].id).toBe('cym_n_for_eng:pod-0:SC01-S004')
+    expect(db.writes[0].id).toBe('cym_n_for_eng:pod-1:SC01-S004')
     expect(db.writes[0].patch.rerecord_wanted.target).toBe('human_catrinlliar_cym_n')
   })
 
   it('a line whose target want is already set is left untouched (idempotent)', async () => {
     const db = stubDb({
       provenanceRows: [{ audio_uuid: 'BAD-1', quality_notes: JSON.stringify(badMark()) }],
-      sentenceRows: [{ id: 'cym_n_for_eng:pod-0:SC01-S004', rerecord_wanted: { target: 'human_catrinlliar_cym_n' } }],
+      sentenceRows: [{ id: 'cym_n_for_eng:pod-1:SC01-S004', rerecord_wanted: { target: 'human_catrinlliar_cym_n' } }],
     })
     process.env.DRY_RUN = '0'
     await run({ db })
@@ -128,7 +128,7 @@ describe('run — end to end against a stubbed db', () => {
   it('a known-track bad mark is left out of scope, never written', async () => {
     const db = stubDb({
       provenanceRows: [{ audio_uuid: 'BAD-KNOWN', quality_notes: JSON.stringify(badMark({ kind: 'known' })) }],
-      sentenceRows: [{ id: 'cym_n_for_eng:pod-0:SC01-S004', rerecord_wanted: { known: 'someone-else' } }],
+      sentenceRows: [{ id: 'cym_n_for_eng:pod-1:SC01-S004', rerecord_wanted: { known: 'someone-else' } }],
     })
     process.env.DRY_RUN = '0'
     await run({ db })

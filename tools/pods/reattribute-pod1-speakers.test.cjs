@@ -3,7 +3,7 @@
  *
  * The thing these tests exist to hold still is the NUMBERING TRAP. The audit
  * numbers these lines as scenes 16/17/21; other documents in the repo number
- * the same conversation differently; and the pod was renumbered pod-0 → pod-1
+ * the same conversation differently; and the pod was renumbered to pod-1
  * on 2026-08-23. So the tool matches on known-side TEXT and nothing else, and
  * the first test below moves every row to a wrong scene number and asserts the
  * plan is unchanged.

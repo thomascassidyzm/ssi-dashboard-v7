@@ -193,7 +193,7 @@ function planPod ({ rows, ancestorRowSets, clips, speakers }) {
   const { badRows, failures: wholeTurnFailures } = verifyWholeTurn(rows, clips, speakers)
 
   // Union the findings across every retired pod of this course: inheritance may
-  // have come through more than one hop (pod-0-retired → pod-1-retired → pod-1).
+  // have come through more than one hop (retired-<date> → pod-1-retired-<date> → pod-1).
   const findings = new Map()
   for (const old of ancestorRowSets || []) {
     for (const f of findInheritedSplitAudio(old, rows)) {

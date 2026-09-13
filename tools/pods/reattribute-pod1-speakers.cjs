@@ -8,7 +8,7 @@
  * scenes 15-21 — including 11 lines that only a shop, a hotel or a waiter could
  * say. It recorded the reversal in its own commit message (`9cc3fbc33`):
  * "11 lines in scenes 16/17/21 that I had inferred as an alternating 'Friend'
- * are now 'Learner'." Two days later `docs/pods/pod0-speaker-inference-audit-
+ * are now 'Learner'." Two days later `docs/pods/speaker-inference-audit-
  * 2026-08-08.md` found the same 11 lines independently and proposed the fix,
  * line by line. It was never applied. The wrong attribution is live in 22
  * languages.
@@ -21,7 +21,7 @@
  *
  * MATCH BY TEXT, NEVER BY NUMBER. Scene numbers mean different things in
  * different documents (the audit says 16/17/21; other repo docs number the
- * friend conversation differently), and the pod was renumbered pod-0 → pod-1 on
+ * friend conversation differently), and the pod was renumbered to pod-1 on
  * 2026-08-23. The known-side text is the only stable identity. If a course does
  * not yield exactly 11 matches, that course is REFUSED and the others carry on;
  * the tool never fuzzy-matches its way to eleven.
@@ -73,7 +73,7 @@ const path = require('path')
 const REPO = path.resolve(__dirname, '../..')
 
 /**
- * The work order, transcribed from docs/pods/pod0-speaker-inference-audit-2026-08-08.md
+ * The work order, transcribed from the 2026-08-08 speaker-inference audit
  * §"Every INFERRED-UNCERTAIN line". `audit_ref` is the audit's own global number,
  * carried for traceability ONLY — matching is on `known_text`.
  *

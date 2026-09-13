@@ -7,11 +7,11 @@
  * baked into the primary key. `clone-pod.cjs` rewrites that segment when it
  * copies; a hand-rolled "move" (an `update ... set pod_id = ...` in a console)
  * does not. The 2026-08-06 Welsh gating was the hand-rolled kind: 464 rows sat
- * on `<course>:pod-0-unrecorded` still carrying `<course>:pod-0:` ids. That is a
+ * on `<course>:unrecorded` still carrying `<course>:pod-1:` ids. That is a
  * landmine, not cosmetics — id-keyed writers (align/generate/upsert paths that
  * match on `id`) look at the id, decide the row belongs to the live pod, and
  * drag it back. It happened for real on 2026-08-10
- * (docs/pods/cym-n-pod0-19-sentence-move-2026-08-10.md, 19 rows).
+ * (the 2026-08-10 cym_n 19-sentence move, 19 rows).
  *
  * This tool only rewrites the slug segment of the id. Nothing else on the row is
  * touched: not pod_id, not text, not audio pointers, not scene/sentence
@@ -24,8 +24,8 @@
  * collide with an existing row anywhere in the table, and asserts the row count
  * is unchanged before it commits.
  *
- *   node tools/pods/reslug-pod-rows.cjs --course=cym_n_for_eng --pod=pod-0-unrecorded
- *   node tools/pods/reslug-pod-rows.cjs --course=cym_n_for_eng --pod=pod-0-unrecorded --apply
+ *   node tools/pods/reslug-pod-rows.cjs --course=cym_n_for_eng --pod=unrecorded
+ *   node tools/pods/reslug-pod-rows.cjs --course=cym_n_for_eng --pod=unrecorded --apply
  */
 'use strict'
 

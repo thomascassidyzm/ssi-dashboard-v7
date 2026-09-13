@@ -1,8 +1,8 @@
 /**
  * persist-stage0-pod.cjs — persist the Stage-0 course-preview backend assets
- * for spa_for_eng / pod-0 (Atom-Fusion Introduction).
+ * for spa_for_eng / pod-1 (Atom-Fusion Introduction).
  *
- * Reads the generated content on disk (~/Desktop/stage0-spa-pod0/):
+ * Reads the generated content on disk (~/Desktop/stage0-spa-pod/):
  *   - decomposition.json : per-sentence intentions[].atoms[] with explained /
  *                          first_encounter flags + per-sentence skipped/names.
  *                          This is the COMPLETE atom list (incl. passthrough).
@@ -50,11 +50,11 @@ const COURSE_CODE = (process.env.COURSE || 'spa_for_eng').trim()
 // ISO-3 the fallback derives from the course code no longer produce two shapes
 // from the same tool.
 const COURSE_META = {
-  spa_for_eng: { language: 'es', srcDir: 'stage0-spa-pod0' },
-  hrv_for_eng: { language: 'hr', srcDir: 'stage0-hrv-pod0' },
+  spa_for_eng: { language: 'es', srcDir: 'stage0-spa-pod' },
+  hrv_for_eng: { language: 'hr', srcDir: 'stage0-hrv-pod' },
 }
-const META = COURSE_META[COURSE_CODE] || { language: COURSE_CODE.split('_')[0], srcDir: `stage0-${COURSE_CODE.split('_')[0]}-pod0` }
-const POD_SLUG = 'pod-0'
+const META = COURSE_META[COURSE_CODE] || { language: COURSE_CODE.split('_')[0], srcDir: `stage0-${COURSE_CODE.split('_')[0]}-pod` }
+const POD_SLUG = 'pod-1'  // every course's core listening pod (Tom, 2026-09-13)
 const POD_ID = `${COURSE_CODE}:${POD_SLUG}`
 const ROLE = 'pod_explainer'
 // Canonical identity (services/shared/clip-identity.cjs), computed not spelt.

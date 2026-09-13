@@ -53,7 +53,7 @@ const ROW = {
   // prescribes for anything a pair does not own by its anchor.
   core_anchor_lego_id: process.env.ANCHOR || 'S0001L01',
   // No health overlay pod exists for spa_for_eng (live listening_pods holds
-  // pod-0/pod-1 core and music/travel-situations choice pods, nothing health).
+  // pod-1 core and music/travel-situations choice pods, nothing health).
   // A slug naming a pod that does not exist would be a lie the lap scheduler
   // would later act on, so this stays null until one is authored.
   sector_pod_slug: null,

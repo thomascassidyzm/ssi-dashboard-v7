@@ -5,11 +5,11 @@
  *
  * WHY THIS EXISTS. `clone-pod.cjs` takes a live pod off to a working slug so a
  * destructive rewrite can happen away from learners. Nothing ever put it back.
- * The gap got filled by hand: on 2026-08-06 someone gated Welsh pod-0 with a raw
- * `update ... set pod_id = '<course>:pod-0-unrecorded'`, which left the live pod
+ * The gap got filled by hand: on 2026-08-06 someone gated the Welsh core pod with a
+ * raw `update ... set pod_id = '<course>:unrecorded'`, which left the live pod
  * at ZERO sentence rows on two RELEASED courses. Learners opened the Pods tab and
- * got nothing for five days — the app reads the literal id `<course>:pod-0`
- * (player-vue `useListeningPods.ts`, `usePodLapScheduler.ts`) with no fallback.
+ * got nothing for five days — the app reads the served pod id `<course>:pod-1`
+ * with no fallback.
  * The missing tool IS the outage. This is it, so the next promotion is boring.
  *
  * WHAT IT DOES, in one transaction:

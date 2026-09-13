@@ -21,7 +21,7 @@
 //
 // SAMPLE SELECTION. Diversity is the point, not coverage:
 //   - three providers: xAI, Azure, ElevenLabs (all three phase8 can call);
-//   - the known clicker voice (xai_247783ebdd51, nld_for_eng pod-0 cast);
+//   - the known clicker voice (xai_247783ebdd51, nld_for_eng pod-1 cast);
 //   - DELIBERATELY HARD TAILS. The one thing the detector could get wrong is
 //     documented in audio-processor.cjs: a word-final plosive burst can be
 //     shorter than the 40ms sustained-speech rule and so read as an impulse.
@@ -60,7 +60,7 @@ const OUT = process.argv[2] || '/tmp/a133-batch'
 const SAMPLES = [
   // ── xAI, including the one voice with a proven defect ──────────────────────
   { key: '01-nld-clicker-reference', provider: 'xai', voiceId: '247783ebdd51', lang: 'nl',
-    voiceLabel: 'Noor — xai_247783ebdd51, nld_for_eng pod-0 cast',
+    voiceLabel: 'Noor — xai_247783ebdd51, nld_for_eng pod-1 cast',
     tail: 'THE KNOWN CLICKER — two impulses 260ms and 380ms past last phonation',
     text: 'Ik wil graag een glas bitter, alstublieft.' },
   { key: '02-nld-clicker-plosive', provider: 'xai', voiceId: '247783ebdd51', lang: 'nl',

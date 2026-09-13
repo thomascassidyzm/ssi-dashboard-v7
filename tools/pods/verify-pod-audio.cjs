@@ -8,8 +8,8 @@
  * Never mutates anything. Never renders. Reports HEAD count vs ffprobe count
  * explicitly so a sampled check is never reported as a full check.
  *
- *   node tools/pods/verify-pod-audio.cjs --pod=hrv_for_eng:pod-0-unrecorded --probe-sample=40
- *   node tools/pods/verify-pod-audio.cjs --pod=hrv_for_eng:pod-0-unrecorded --probe-all
+ *   node tools/pods/verify-pod-audio.cjs --pod=hrv_for_eng:unrecorded --probe-sample=40
+ *   node tools/pods/verify-pod-audio.cjs --pod=hrv_for_eng:unrecorded --probe-all
  */
 'use strict'
 
@@ -153,7 +153,7 @@ async function main() {
     console.log(`ffprobe ok=${ok} bad=${bad}`)
   }
 
-  const outPath = path.join(REPO, 'docs', 'pods', `hrv-pod0-audio-verify-${POD_ID.replace(/[:]/g, '_')}.json`)
+  const outPath = path.join(REPO, 'docs', 'pods', `pod-audio-verify-${POD_ID.replace(/[:]/g, '_')}.json`)
   fs.writeFileSync(outPath, JSON.stringify({ podId: POD_ID, probeMode: PROBE_ALL ? 'full' : 'sample', probeSample: PROBE_SAMPLE, results }, null, 2))
   console.log(`\nWrote full detail to ${outPath}`)
 

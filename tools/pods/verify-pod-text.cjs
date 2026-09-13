@@ -41,7 +41,7 @@
  * Idempotent and resumable: only ever selects drafts that are not yet approved,
  * and commits per batch, so a crash keeps the verdicts already earned.
  *
- *   node tools/pods/verify-pod-text.cjs --pod=spa_for_eng:pod-0-unrecorded
+ *   node tools/pods/verify-pod-text.cjs --pod=spa_for_eng:unrecorded
  *   … --apply
  */
 'use strict'
@@ -65,7 +65,7 @@ const arg = (n) => {
 // that should be able to run estate-wide by accident.
 const POD = arg('pod')
 if (!POD) {
-  console.error('FAILED: --pod=<course:slug> is required (e.g. --pod=spa_for_eng:pod-0-unrecorded)')
+  console.error('FAILED: --pod=<course:slug> is required (e.g. --pod=spa_for_eng:unrecorded)')
   process.exit(1)
 }
 const MODEL = arg('model') || 'opus'

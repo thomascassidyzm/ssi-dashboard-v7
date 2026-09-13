@@ -13,8 +13,8 @@
  * cannot reach any other pod. Per-row before-state assertion aborts the whole run on
  * drift. DRY RUN BY DEFAULT. Pass --apply to write.
  *
- *   node tools/pods/waive-proofread-draft-flag.cjs --pod=hrv_for_eng:pod-0-unrecorded
- *   node tools/pods/waive-proofread-draft-flag.cjs --pod=hrv_for_eng:pod-0-unrecorded --apply
+ *   node tools/pods/waive-proofread-draft-flag.cjs --pod=hrv_for_eng:unrecorded
+ *   node tools/pods/waive-proofread-draft-flag.cjs --pod=hrv_for_eng:unrecorded --apply
  */
 'use strict'
 
@@ -53,7 +53,7 @@ async function main() {
       for (const row of before.rows) {
         log.push({ ...row, action: 'would-clear-draft-flag' })
       }
-      const outPath = path.join(REPO, 'docs', 'pods', 'hrv-pod0-proofread-waiver-dryrun-log.json')
+      const outPath = path.join(REPO, 'docs', 'pods', 'pod-proofread-waiver-dryrun-log.json')
       fs.writeFileSync(outPath, JSON.stringify(log, null, 2))
       console.log(`DRY RUN. Wrote ${log.length} rows to ${outPath}`)
       await c.end()
@@ -78,7 +78,7 @@ async function main() {
     }
     await c.query('COMMIT')
 
-    const outPath = path.join(REPO, 'docs', 'pods', 'hrv-pod0-proofread-waiver-applied-log.json')
+    const outPath = path.join(REPO, 'docs', 'pods', 'pod-proofread-waiver-applied-log.json')
     fs.writeFileSync(outPath, JSON.stringify(log, null, 2))
     console.log(`APPLIED. Cleared ${log.length} rows. Wrote ${outPath}`)
   } catch (e) {

@@ -272,9 +272,9 @@ describe("Tom's flagging correction (ita scenes 13/14 vs 17)", () => {
 // be reported as (course, scene, speaker-pair, voice), never as a bare scene
 // number."
 //
-// The cause is concrete. docs/pods/cym-n-pod0-aran-self-dialogue-audit-2026-08-23.md
+// The cause is concrete. The 2026-08-23 cym_n Aran self-dialogue audit
 // published "Scene 13 (directions), Tourist ↔ Local — 8 consecutive instances"
-// as a scene-number list. It was TRUE of Welsh pod-0, where one human read every
+// as a scene-number list. It was TRUE of Welsh pod-1, where one human read every
 // part. Carried to Italian, where Tourist is Ara and Local is Enzo, it pointed
 // at a scene that alternates perfectly. Tom: "this is completely fine - not a
 // problem"; on the tool, "the model that flagged these is clearly not very

@@ -27,7 +27,7 @@
  * intended to run right after this script on every course it touches.
  *
  *   node tools/breakdown-fine.cjs <course> [orders] [--dry] [--pod=pod-N]
- *   node tools/breakdown-fine.cjs zho_for_eng              # whole pod-0 (default)
+ *   node tools/breakdown-fine.cjs zho_for_eng              # the whole core pod, pod-1 (default)
  *   node tools/breakdown-fine.cjs zho_for_eng 25,1,3 --dry # preview only
  *   node tools/breakdown-fine.cjs zho_for_eng --pod=pod-1
  *

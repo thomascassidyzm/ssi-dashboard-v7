@@ -71,9 +71,9 @@ const ONLY = (() => { const i = process.argv.indexOf('--only'); return i > -1 ? 
  * the listening check cannot confirm it, so they need a native ear.
  */
 const PARKED = [
-  { clip_id: 'c3b0f183-eb2c-431c-a19e-f827846394ef', course: 'isl_for_eng', where: 'pod-0 SC04-S003',
+  { clip_id: 'c3b0f183-eb2c-431c-a19e-f827846394ef', course: 'isl_for_eng', where: 'pod-1 SC04-S003',
     text: 'ég er upptekin -> upptekinn', why: 'Icelandic -n/-nn below whisper resolution (control clip 9.17 proves it); native ear needed' },
-  { clip_id: 'c0521de0-fc02-43e0-b366-188760598ad8', course: 'isl_for_eng', where: 'pod-0 SC15-S006 + pod-0-unrecorded SC22-S006',
+  { clip_id: 'c0521de0-fc02-43e0-b366-188760598ad8', course: 'isl_for_eng', where: 'pod-1 SC15-S006 + unrecorded SC22-S006',
     text: 'þú sért tilbúinn -> tilbúin', why: 'same -n/-nn contrast, same proof' },
 ]
 const PARKED_IDS = new Set(PARKED.map(p => p.clip_id))

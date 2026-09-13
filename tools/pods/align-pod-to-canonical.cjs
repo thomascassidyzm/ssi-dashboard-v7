@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * align-pod-to-canonical.cjs — make a course's pod-0 queue serve Aran's 2026-08-06
+ * align-pod-to-canonical.cjs — make a course's listening pod serve Aran's 2026-08-06
  * canonical English, or serve nothing, but never the old text (Tom's brief
  * 2026-08-06: "make sure the human recording is not doing the older stuff").
  *
@@ -35,15 +35,15 @@
  * assertion; any drift aborts the whole run before a single write.
  *
  * CLONE-FIRST IS AUTOMATIC ON A LIVE COURSE (2026-08-11). The tool reads
- * `courses.status` and refuses to rewrite the learner-facing `pod-0` of any course
- * that is `released` or `beta`; with --apply it clones to `pod-0-unrecorded` and
+ * `courses.status` and refuses to rewrite the learner-facing `pod-1` of any course
+ * that is `released` or `beta`; with --apply it clones to `unrecorded` and
  * aligns the clone instead. Overrides, in decreasing order of danger:
- *   --force            rewrite the live pod-0 anyway (prints a warning; this is the
+ *   --force            rewrite the served pod-1 anyway (prints a warning; this is the
  *                      path that took Welsh listening pods down for five days)
  *   --no-auto-clone    refuse instead of cloning, so a caller can read the verdict
- *   --pod-slug=<slug>  name the destination explicitly; any slug other than `pod-0`
+ *   --pod-slug=<slug>  name the destination explicitly; any slug other than `pod-1`
  *                      is off the learner path and the guard steps aside
- *   --clone-slug=<s>   where auto-clone puts the copy (default `pod-0-unrecorded`)
+ *   --clone-slug=<s>   where auto-clone puts the copy (default `unrecorded`)
  *
  *   node tools/pods/align-pod-to-canonical.cjs --course=deu_at_for_eng
  *   node tools/pods/align-pod-to-canonical.cjs --course=deu_at_for_eng --apply
@@ -51,7 +51,7 @@
  * Restoring the pre-alignment state needs the archive the run wrote, so point
  * --archive-dir at it. The 2026-08-06 Welsh run's archive lives at its own path:
  *   node tools/pods/align-pod-to-canonical.cjs --course=cym_n_for_eng \
- *     --archive-dir=docs/pods/pod0-welsh-prealign-archive-2026-08-06 --restore-from-archive
+ *     --archive-dir=docs/pods/welsh-prealign-archive-2026-08-06 --restore-from-archive
  */
 'use strict'
 
@@ -74,15 +74,15 @@ const arg = (name) => {
   const a = process.argv.find(x => x.startsWith(`--${name}=`))
   return a ? a.split('=').slice(1).join('=') : null
 }
-// Which pod slug this run rewrites. Defaults to the learner-facing `pod-0`, which
+// Which pod slug this run rewrites. Defaults to the learner-facing `pod-1`, which
 // is right for a course that is not live. On a LIVE course, aligning in place would
 // hand real learners ~128 rows with no target text and no audio for as long as
 // translation and generation take — so the Welsh precedent (2026-08-06) is to clone
-// pod-0 to a parallel slug and align THAT. Learner-facing reads query the exact id
-// `<course>:pod-0` (player-vue useListeningPods.ts), so a different slug is invisible
+// pod-1 to a parallel slug and align THAT. Learner-facing reads resolve the served
+// slug (tools/pods/serving-slug.cjs mirrors the rule), so a parked slug is invisible
 // to them. tools/pods/clone-pod.cjs makes the clone; this flag points the align at it.
 //
-// The default is NOT taken on trust any more. `pod-0` is the one slug the player
+// The default is NOT taken on trust any more. `pod-1` is the one slug the player
 // reads, so an in-place align on a live course is the Welsh outage by construction
 // (measured 2026-08-11: 16-30% of target-audio pointers and 20-41% of English-audio
 // pointers dropped per course). resolveSlug() below turns that default into a
@@ -97,7 +97,7 @@ if (!COURSES.length) {
 }
 const ARCHIVE_DIR = path.isAbsolute(arg('archive-dir') || '')
   ? arg('archive-dir')
-  : path.join(REPO, arg('archive-dir') || path.join('docs', 'pods', 'pod0-prealign-archive'))
+  : path.join(REPO, arg('archive-dir') || path.join('docs', 'pods', 'pod-prealign-archive'))
 
 // Aran's canonical writes the literal token "[target language]" on several lines,
 // exactly as the previous canonical did. Substitution is the established pipeline
@@ -156,15 +156,15 @@ const slotId = (course, slug, scene, sentence) =>
 // made the deu_at_for_eng in-place align legitimate.
 const LIVE_STATUSES = new Set(['released', 'beta'])
 // The one slug the player asks for, hardcoded: player-vue useListeningPods.ts builds
-// `${course}:pod-0`. Any other slug is invisible to learners, which is what makes the
+// `${course}:pod-1`. Any other slug is invisible to learners, which is what makes the
 // clone path safe.
-const LEARNER_FACING_SLUG = 'pod-0'
+const LEARNER_FACING_SLUG = 'pod-1'
 
-// The live canonical slate — a `canonical_pod_scenarios` slug, renamed from
-// 'pod-0' to 'pod-1' on 2026-09-01. Deliberately NOT the same thing as the
-// learner-facing slug above, which is per-course and still 'pod-0' on most.
+// The live canonical slate — a `canonical_pod_scenarios` slug. Deliberately NOT the
+// same thing as the learner-facing slug above: one is the shared source Aran wrote,
+// the other is the per-course pod being rewritten; they happen to share a name.
 const CANONICAL_SLUG = 'pod-1'
-const CLONE_SLUG = arg('clone-slug') || 'pod-0-unrecorded'
+const CLONE_SLUG = arg('clone-slug') || 'unrecorded'
 const FORCE_IN_PLACE = process.argv.includes('--force')
 // Refuse rather than clone. For a caller that wants the guard's verdict without the
 // side effect of creating a pod.
@@ -193,7 +193,7 @@ async function resolveSlug(course) {
   }
   if (FORCE_IN_PLACE) {
     console.error(`WARNING ${course}: status=${status} and --force was passed — aligning the ` +
-      'LEARNER-FACING pod-0 in place. Learners will see blank lines until translation and ' +
+      'LEARNER-FACING pod-1 in place. Learners will see blank lines until translation and ' +
       'generation catch up. This is the Welsh outage path.')
     return { slug: LEARNER_FACING_SLUG, status, cloned: false, reason: '--force overrode the live-course guard' }
   }
@@ -335,7 +335,7 @@ async function planCourse(course, canonRaw, slug) {
   // This is deliberate and stays deliberate: the retired rows accumulate (one per
   // line a shrinking scene loses, per pod) and are cleared by a separate approved
   // pass, never by this tool. Worked example — the four blank SC15-S012 cards cut
-  // on 2026-08-11: docs/pods/pod0-blank-sc15-s012-deletion-2026-08-11.md.
+  // on 2026-08-11 (the blank SC15-S012 deletion note of that date).
   // The count is reported per run as `retired_not_deleted`.
   const surplus = served.filter(r => !claimed.has(r.id)).map(r => ({
     op: 'retire', id: r.id,
@@ -409,7 +409,7 @@ async function planCourse(course, canonRaw, slug) {
       generated_from: 'canonical_pod_scenarios',
       canonical_aligned_at: CANONICAL_STAMP,
       canonical_alignment_note:
-        'English, speakers and ordering aligned to Aran\'s 2026-08-06 pod-0 canonical by ' +
+        'English, speakers and ordering aligned to Aran\'s 2026-08-06 canonical by ' +
         'tools/pods/align-pod-to-canonical.cjs. Target text was carried forward ' +
         'only where the English is unchanged; every other slot is deliberately NULL and is ' +
         'not recordable until the target text is written.',
@@ -499,11 +499,9 @@ async function applyCourse(p) {
 }
 
 // One archive set per pod, not per course: a course now gets aligned on its clone as
-// well as (later) on pod-0, and one name for both would have the second run overwrite
-// the first run's only way back. The learner-facing slug keeps the historic filename
-// so the 2026-08-06 Welsh archives stay restorable by the documented command.
-const archiveName = (course, slug, kind) =>
-  slug === LEARNER_FACING_SLUG ? `${course}-pod0-${kind}.json` : `${course}-${slug}-${kind}.json`
+// well as (later) on pod-1, and one name for both would have the second run overwrite
+// the first run's only way back.
+const archiveName = (course, slug, kind) => `${course}-${slug}-${kind}.json`
 
 /**
  * Put a pod back exactly as the pre-alignment archive recorded it. The chunked
@@ -556,7 +554,6 @@ async function main() {
   const { data: canon, error } = await db.from('canonical_pod_scenarios')
     // Always CANONICAL_SLUG: this is the CANONICAL source Aran wrote, not the
     // destination pod being rewritten. --pod-slug moves where we WRITE, never
-    // what we READ. (That source was named 'pod-0' until 2026-09-01.)
     .select('*').eq('pod_slug', CANONICAL_SLUG).order('global_order')
   if (error) throw error
   if (!canon.length) throw new Error(`canonical_pod_scenarios has no ${CANONICAL_SLUG} rows — refusing to align`)

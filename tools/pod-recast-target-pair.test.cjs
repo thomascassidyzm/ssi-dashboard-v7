@@ -93,7 +93,7 @@ test('distinctVoices separates two voices that differ only by locale handle', ()
 
 test('a character on a tied voice inherits the slot the same character has elsewhere', () => {
   const pods = [
-    { speakers: {                                    // pod-0: the prior decision
+    { speakers: {                                    // the prior decision
       Anna: { gender: 'f', target: { voice_id: 'eve' } },
       'Customer 3': { gender: 'n', target: { voice_id: 'diego' } },
       Guest: { gender: 'm', target: { voice_id: 'diego' } },

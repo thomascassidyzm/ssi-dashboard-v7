@@ -131,7 +131,7 @@ async function main () {
     registeredBy: 'popty-agent (Italian clone vs Lorenzo A/B job, 2026-09-04)',
     person: 'Tom Cassidy',
     consentNote: 'Tom cloning his own voice, at his own request, from three Italian lines he recorded in his own booth on 2026-09-04, for a side-by-side audition against Lorenzo. Audition only — not cast to any course, pod or speaker.',
-    source: 'zzz_test2_for_eng:pod-0 booth takes, 2026-09-04 00:37-00:38 UTC (mastered)',
+    source: 'zzz_test2_for_eng:pod-1 booth takes, 2026-09-04 00:37-00:38 UTC (mastered)',
   })
   const cloneId = result.cartesia.id
   console.log(`CLONE: ${cloneId} (${result.voice.voice_id}, ${result.voice.display_name}) — ${result.voice.consent_status || 'awaiting_authorisation'}`)

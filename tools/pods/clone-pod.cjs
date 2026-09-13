@@ -12,9 +12,9 @@
  * instead of clips.
  *
  * The Welsh precedent (2026-08-06) is the answer: learner-facing reads query the
- * EXACT pod id `<course>:pod-0` (player-vue `useListeningPods.ts`, `const podId =
- * `${course}:pod-0``), so a pod on any other slug is invisible to them. Clone
- * pod-0 to `pod-0-unrecorded`, align and translate THAT, and swap only when it is
+ * served pod id `<course>:pod-1` (the resolver in the player, mirrored by
+ * tools/pods/serving-slug.cjs), so a pod on any other slug is invisible to them. Clone
+ * pod-1 to `unrecorded`, align and translate THAT, and swap only when it is
  * complete and approved. `cym_n_for_eng` — a `released` course — has carried both
  * since 2026-08-06.
  *
@@ -30,15 +30,15 @@
  * one way this could destroy work.
  *
  * IT ALSO REFUSES A DESTINATION SLUG THE PLAYER SERVES (2026-09-02). `pod-1` and
- * `pod-0` are what the resolver reads; a clone landing on either is in front of
+ * `pod-1` is what the resolver reads; a clone landing on it is in front of
  * learners the moment its header row exists, and the align that follows this tool
  * would then empty a served pod underneath them. The refusal names how many learners
  * are at risk. `--serve-now` is the deliberate escape, and it waives ONLY that check —
  * a destination that already holds sentence rows is refused regardless. See
  * serviceRefusal() below and tools/pods/clone-pod-serving-destination.test.cjs.
  *
- *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-0-unrecorded
- *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-0-unrecorded --apply
+ *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=unrecorded
+ *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=unrecorded --apply
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-1 --serve-now --apply
  */
 'use strict'

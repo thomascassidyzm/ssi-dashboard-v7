@@ -190,7 +190,7 @@ const { checkPodClips, dense } = require('./pod-cast-gate.cjs')
 
 const ARA = 'xai_ara'      // pod-1's recast female
 const ENZO = 'xai_enzo'    // pod-1's male
-const EVE = 'xai_eve'      // pod-0's retired female — NOT in the pod-1 cast
+const EVE = 'xai_eve'      // the retired pod's female — NOT in the pod-1 cast
 const OLIVIA = 'bedd6226'  // known-side narrator (f)
 const TOM = 'gfzdpspr5fdp' // known-side narrator (m)
 
@@ -232,15 +232,15 @@ const itaClips = {
   'ok-k': { text: 'How much is it?', voice_id: OLIVIA },
   'ok-t2': { text: 'Sono dieci euro.', voice_id: ENZO },
   'ok-k2': { text: "It's ten euros.", voice_id: TOM },
-  // The two clips inherited positionally from the retired pod-0: another
-  // conversation entirely, in pod-0's female voice.
-  'pod0-a': { text: "Le dispiacerebbe se provassi a praticare l'italiano con lei?", voice_id: EVE },
-  'pod0-b': { text: 'Non sto imparando da molto tempo, e mi sento ancora un po\' nervoso di parlare con altre persone.', voice_id: EVE },
+  // The two clips inherited positionally from the retired pod: another
+  // conversation entirely, in the retired pod's female voice.
+  'retired-a': { text: "Le dispiacerebbe se provassi a praticare l'italiano con lei?", voice_id: EVE },
+  'retired-b': { text: 'Non sto imparando da molto tempo, e mi sento ancora un po\' nervoso di parlare con altre persone.', voice_id: EVE },
 }
 
 describe('checkPodCast — all five audio slots', () => {
-  it('REPRODUCES ita scene 15: whole turns correctly cast, split array inherited from pod-0 — and FAILS it', () => {
-    const rows = [itaRow({ sentence_audio_ids: ['pod0-a', 'pod0-b'] }), itaReply()]
+  it('REPRODUCES ita scene 15: whole turns correctly cast, split array inherited from the retired pod — and FAILS it', () => {
+    const rows = [itaRow({ sentence_audio_ids: ['retired-a', 'retired-b'] }), itaReply()]
     const r = checkPodCast({ rows, speakers: itaCast, clips: itaClips })
 
     // The old gate's two numbers are both still green — which is exactly how
@@ -267,7 +267,7 @@ describe('checkPodCast — all five audio slots', () => {
   })
 
   it('is BACKWARD COMPATIBLE — no clips supplied means the old check, said out loud', () => {
-    const rows = [itaRow({ sentence_audio_ids: ['pod0-a', 'pod0-b'] }), itaReply()]
+    const rows = [itaRow({ sentence_audio_ids: ['retired-a', 'retired-b'] }), itaReply()]
     const r = checkPodCast({ rows, speakers: itaCast })
     expect(r.clipCheck).toBe('skipped')
     expect(r.ok).toBe(true) // the old verdict — the reason this incident happened

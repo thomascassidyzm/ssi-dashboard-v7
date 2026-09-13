@@ -8,7 +8,7 @@
  * queue is already per-artist, so the whole job is three pod rows cast to the
  * speaker his link reads.
  *
- * WHERE THEY GO. `zzz_test2_for_eng:pod-0` — the estate's TEST FIXTURE course
+ * WHERE THEY GO. `zzz_test2_for_eng:pod-1` — the estate's TEST FIXTURE course
  * (scratch prefix `zzz_`, visibility hidden, target_lang 'zzz', never a real
  * course and never learner-facing). Its podCast casts the speaker "Customer" to
  * human_tom_zzz and nobody else, which is exactly the link he holds. Aran and
@@ -31,7 +31,7 @@ require('dotenv').config({ quiet: true })
 const { createClient } = require('@supabase/supabase-js')
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
-const POD = 'zzz_test2_for_eng:pod-0'
+const POD = 'zzz_test2_for_eng:pod-1'
 const SPEAKER = 'Customer'   // the cast entry that routes to human_tom_zzz
 const CRIB = 'ITALIAN — private clone sample. Read it as you would say it.'
 

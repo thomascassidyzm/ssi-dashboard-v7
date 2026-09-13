@@ -50,7 +50,7 @@ const clip = (text, voice_id) => ({ text, voice_id })
  * repaired, whatever it points at.
  */
 const OLD = {
-  id: 'x:pod-0:SC02-S002',
+  id: 'x:pod-1-retired-2026-08-24:SC02-S002',
   scene_number: 2,
   sentence_number: 2,
   speaker: 'Passenger',
@@ -153,7 +153,7 @@ describe('planPod', () => {
     // The same conversation lived at scene 9 on the retired pod, correctly split.
     const elsewhere = {
       ...OLD,
-      id: 'x:pod-0:SC09-S001',
+      id: 'x:pod-1-retired-2026-08-24:SC09-S001',
       scene_number: 9,
       sentence_number: 1,
       target_text: NEW.target_text,
@@ -180,7 +180,7 @@ describe('planPod', () => {
     // ara_eg s2/2: the clips are the pod's female voice; the row's speaker is male.
     const elsewhere = {
       ...OLD,
-      id: 'x:pod-0:SC09-S001',
+      id: 'x:pod-1-retired-2026-08-24:SC09-S001',
       scene_number: 9,
       target_text: NEW.target_text,
       sentence_audio_ids: ['b1', 'b2'],
@@ -198,7 +198,7 @@ describe('planPod', () => {
 
   it('refuses a candidate with a dead clip — make-before-break', () => {
     const elsewhere = {
-      ...OLD, id: 'x:pod-0:SC09-S001', scene_number: 9,
+      ...OLD, id: 'x:pod-1-retired-2026-08-24:SC09-S001', scene_number: 9,
       target_text: NEW.target_text, sentence_audio_ids: ['b1', 'gone'],
     }
     const clips = { ...CLIPS, b1: clip('Questa è una città bellissima.', 'rex') }

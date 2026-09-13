@@ -4,7 +4,7 @@
  * Why this exists: on 2026-08-22 the 22-course pod-1 fleet was staged and flipped
  * with `target_audio_id` / `known_audio_id` correctly re-derived at every slot and
  * the OTHER split-array slots left standing. The scene running order had changed —
- * ita_for_eng's pod-0 scene 15 became pod-1 scene 22 — so those slots' clips played
+ * ita_for_eng's retired pod's scene 15 became pod-1 scene 22 — so those slots' clips played
  * and, because `podSentenceSplit` reads the on-screen text from the clip's own
  * `course_audio.text`, DISPLAYED a different conversation in the retired pod's cast.
  * 91 of 141 ita rows inherited; 113 were repaired.
@@ -33,9 +33,9 @@ const {
   SPLIT_AUDIO_FIELDS,
 } = require('./split-audio-inheritance.cjs')
 
-/** A pod-0 row: the "practising Italian with a friend" turn, at scene 15. */
-const POD0_S15 = {
-  id: 'ita_for_eng:pod-0:SC15-S001',
+/** A row of the pod being retired: the "practising Italian with a friend" turn, at scene 15. */
+const RETIRED_S15 = {
+  id: 'ita_for_eng:pod-1:SC15-S001',
   scene_number: 15,
   sentence_number: 1,
   target_text: "Le dispiacerebbe se provassi a praticare l'italiano con lei?",
@@ -55,7 +55,7 @@ const POD1_S15_TEXT = {
 
 describe('carrySplitAudio', () => {
   it('carries every slot when both texts are byte-identical (the clone case)', () => {
-    const kept = carrySplitAudio(POD0_S15, POD0_S15)
+    const kept = carrySplitAudio(RETIRED_S15, RETIRED_S15)
     expect(kept).toEqual({
       sentence_audio_ids: ['eve-1', 'eve-2'],
       sentence_known_audio_ids: ['sonia-1', 'sonia-2'],
@@ -64,13 +64,13 @@ describe('carrySplitAudio', () => {
   })
 
   it('NULLS every slot when the slot holds a different conversation', () => {
-    const kept = carrySplitAudio(POD0_S15, POD1_S15_TEXT)
+    const kept = carrySplitAudio(RETIRED_S15, POD1_S15_TEXT)
     for (const f of SPLIT_AUDIO_FIELDS) expect(kept[f]).toBeNull()
   })
 
   it('carries each side independently — a retranslation drops the target side only', () => {
-    const kept = carrySplitAudio(POD0_S15, {
-      ...POD0_S15,
+    const kept = carrySplitAudio(RETIRED_S15, {
+      ...RETIRED_S15,
       target_text: "Le dispiacerebbe se provassi a parlare l'italiano con lei?",
     })
     expect(kept.sentence_audio_ids).toBeNull()
@@ -88,7 +88,7 @@ describe('carrySplitAudio', () => {
     // The aligner knows from its own diff that a side is not carried. Two blank
     // texts compare equal, so a text comparison alone would carry the array onto
     // a slot with no target text — the caller's decision has to win.
-    const blank = { ...POD0_S15, target_text: '' }
+    const blank = { ...RETIRED_S15, target_text: '' }
     expect(carrySplitAudio(blank, { target_text: '', known_text: blank.known_text })
       .sentence_audio_ids).toEqual(['eve-1', 'eve-2'])
     expect(carrySplitAudio(blank, null, { target: false, known: true })
@@ -99,11 +99,11 @@ describe('carrySplitAudio', () => {
 })
 
 describe('findInheritedSplitAudio — the promotion gate', () => {
-  /** pod-0: the friend conversation at 15, the shop conversation at 22. */
+  /** the pod being retired: the friend conversation at 15, the shop conversation at 22. */
   const OLD = [
-    POD0_S15,
+    RETIRED_S15,
     {
-      id: 'ita_for_eng:pod-0:SC22-S001',
+      id: 'ita_for_eng:pod-1:SC22-S001',
       scene_number: 22, sentence_number: 1,
       target_text: 'Buonasera.', known_text: 'Good evening.',
       sentence_audio_ids: ['eve-9'], sentence_known_audio_ids: null,
@@ -114,7 +114,7 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
   it('catches split audio left behind when the scene order changed', () => {
     // The staged pod put "Quanto costa?" in slot 15 and kept slot 15's old arrays.
     const staged = [{
-      id: 'ita_for_eng:pod-0-unrecorded:SC15-S001',
+      id: 'ita_for_eng:unrecorded:SC15-S001',
       scene_number: 15, sentence_number: 1,
       ...POD1_S15_TEXT,
       sentence_audio_ids: ['eve-1', 'eve-2'],
@@ -129,22 +129,22 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
 
   it('passes a staged pod that was aligned with the fix in place', () => {
     const staged = [{
-      id: 'ita_for_eng:pod-0-unrecorded:SC15-S001',
+      id: 'ita_for_eng:unrecorded:SC15-S001',
       scene_number: 15, sentence_number: 1,
       ...POD1_S15_TEXT,
-      ...carrySplitAudio(POD0_S15, POD1_S15_TEXT),
+      ...carrySplitAudio(RETIRED_S15, POD1_S15_TEXT),
     }]
     expect(findInheritedSplitAudio(OLD, staged)).toEqual([])
   })
 
   it('does not flag a slot whose text did not change', () => {
-    const staged = [{ ...POD0_S15, id: 'ita_for_eng:pod-0-unrecorded:SC15-S001' }]
+    const staged = [{ ...RETIRED_S15, id: 'ita_for_eng:unrecorded:SC15-S001' }]
     expect(findInheritedSplitAudio(OLD, staged)).toEqual([])
   })
 
   it('does not flag split audio that was genuinely re-derived', () => {
     const staged = [{
-      id: 'ita_for_eng:pod-0-unrecorded:SC15-S001',
+      id: 'ita_for_eng:unrecorded:SC15-S001',
       scene_number: 15, sentence_number: 1,
       ...POD1_S15_TEXT,
       sentence_audio_ids: ['ara-1'], sentence_known_audio_ids: ['olivia-1'],
@@ -155,7 +155,7 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
 
   it('does not flag a slot the retired pod never had — scenes past the old canon', () => {
     const staged = [{
-      id: 'ita_for_eng:pod-0-unrecorded:SC30-S001',
+      id: 'ita_for_eng:unrecorded:SC30-S001',
       scene_number: 30, sentence_number: 1,
       target_text: 'Nuovo.', known_text: 'New.',
       sentence_audio_ids: ['eve-1', 'eve-2'],
@@ -168,12 +168,12 @@ describe('findInheritedSplitAudio — the promotion gate', () => {
     // The first blast-radius pass read a false 0% for jpn/zho because it stripped
     // non-Latin script. Identity works on any script.
     const old = [{
-      id: 'jpn:pod-0:SC01-S001', scene_number: 1, sentence_number: 1,
+      id: 'jpn:pod-1:SC01-S001', scene_number: 1, sentence_number: 1,
       target_text: 'いくらですか。', known_text: 'How much is it?',
       sentence_audio_ids: ['jp-1', 'jp-2'],
     }]
     const staged = [{
-      id: 'jpn:pod-0-unrecorded:SC01-S001', scene_number: 1, sentence_number: 1,
+      id: 'jpn:unrecorded:SC01-S001', scene_number: 1, sentence_number: 1,
       target_text: 'お元気ですか。', known_text: 'How are you?',
       sentence_audio_ids: ['jp-1', 'jp-2'],
     }]

@@ -63,7 +63,7 @@ describe("phase8's own comparison, standing", () => {
   });
 
   it('says nothing when they agree', () => {
-    const r = run({ pods: [{ pod_id: 2, course_code: 'cym_s_for_eng', slug: 'pod-0', pod_sentences: 120, canon_rows: 120 }] });
+    const r = run({ pods: [{ pod_id: 2, course_code: 'cym_s_for_eng', slug: 'pod-1', pod_sentences: 120, canon_rows: 120 }] });
     expect(r.pod_mismatch).toHaveLength(0);
   });
 });

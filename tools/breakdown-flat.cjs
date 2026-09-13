@@ -17,7 +17,7 @@
  * The composer (preview + runtime) splits per sentence + partitions per intention.
  *
  *   node tools/breakdown-flat.cjs <course> [orders] [--dry] [--pod=pod-N]
- *   node tools/breakdown-flat.cjs hrv_for_eng            # whole pod-0 (default)
+ *   node tools/breakdown-flat.cjs hrv_for_eng            # the whole core pod, pod-1 (default)
  *   node tools/breakdown-flat.cjs ita_for_eng 1,8,12 --dry
  *   node tools/breakdown-flat.cjs ita_for_eng --pod=pod-1
  *

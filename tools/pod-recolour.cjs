@@ -10,7 +10,7 @@
  *
  * Usage:
  *   node tools/pod-recolour.cjs --course=fra_for_eng                 # dry-run all pods
- *   node tools/pod-recolour.cjs --course=fra_for_eng --pod=fra_for_eng:pod-0 --verbose
+ *   node tools/pod-recolour.cjs --course=fra_for_eng --pod=fra_for_eng:pod-1 --verbose
  *   node tools/pod-recolour.cjs --course=fra_for_eng --apply         # write speakers + null changed audio
  *
  * Dry-run prints a before/after collision report. Never generates TTS.
@@ -45,7 +45,7 @@ function genderForCanon(variants) {
  * at a time. Used by --pool-from=pod: re-deal the same voices across the
  * speakers rather than resolving fresh ones from the coverage map.
  *
- * Why this exists: the pod-0 casting rule is about WHICH SPEAKER gets WHICH of
+ * Why this exists: the core-pod casting rule is about WHICH SPEAKER gets WHICH of
  * the two voices, not about picking new voices. When a pod already resolves to
  * a sensible male/female pair, re-resolving from the coverage map can hand back
  * a worse pair (the eng known pool currently answers Tom for BOTH genders) and
@@ -57,7 +57,7 @@ function genderForCanon(variants) {
  * casts from, and the only place a VOICE's own gender is recorded. Only if the
  * voice is not in the table does this fall back to the gender of the speakers
  * it plays, weighted by line count (the rule collapseTwoVoiceCast uses).
- * That fallback is genuinely unreliable here: on the Spanish pod-0 the Learner
+ * That fallback is genuinely unreliable here: on the Spanish pod-1 the Learner
  * alone is 79 of 232 lines, so one mis-read speaker gender flips the whole
  * voice. Voices that resolve neither way are dropped, never guessed.
  *
@@ -292,7 +292,7 @@ async function main() {
 
   const knownLang = courseCode.split('_for_')[1] || 'eng'
 
-  // The pod-0 casting rule (Tom, 2026-08-08) — two voices, cast by speaker.
+  // The core-pod casting rule (Tom, 2026-08-08) — two voices, cast by speaker.
   // --voices-per-gender=1 (the default) trims each pool to one F + one M, so
   // the colouring runs over a two-voice cast and every character keeps one
   // voice for every line they speak. Raise it for pod 1/2, where more voices
@@ -309,7 +309,7 @@ async function main() {
 
   console.log(`\n🎨 Pod recolour: ${courseCode}  (${apply ? 'APPLY' : 'DRY-RUN'})`)
   console.log(`   Casting BY SPEAKER on ${voicesPerGender} voice(s) per gender` +
-    `${voicesPerGender === 1 ? ' — the two-voice pod-0 rule' : ''}`)
+    `${voicesPerGender === 1 ? ' — the two-voice core-pod rule' : ''}`)
   console.log(`   Target pool: tier ${targetPool.tier} · ${targetPool.note} · gender from ${targetPool.genderSource}`)
   console.log(`     F: ${targetPool.f.map(v => v.name).join(', ') || '(none)'}`)
   console.log(`     M: ${targetPool.m.map(v => v.name).join(', ') || '(none)'}`)

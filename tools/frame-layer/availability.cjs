@@ -121,7 +121,7 @@ function expensiveClassFor(course, mappingDoc) {
  * learner to produce target material the curriculum has never minted.
  *
  * The worked case, and the acceptance test: X1/D6 "and you?" is attested four
- * times in pod-0. `spa_for_eng` has cut no "and you", no target containing
+ * times in pod-1. `spa_for_eng` has cut no "and you", no target containing
  * "y tú", and no lego whose target is the bare word "tú". So this function must
  * refuse D6 for spa at EVERY position — and must admit it the day a cut mints
  * the material, with no config change anywhere.

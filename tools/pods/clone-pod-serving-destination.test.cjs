@@ -2,11 +2,11 @@
  * Unit tests for the clone-pod DESTINATION gate (2026-09-02).
  *
  * The failure they exist to prevent. `clone-pod.cjs` exists SO THAT a destructive
- * align can run off the live pod: clone pod-0 to a parked slug, rewrite that, swap
+ * align can run off the live pod: clone pod-1 to a parked slug, rewrite that, swap
  * only when it is complete. Nothing in it ever asked whether the destination slug is
  * one the player SERVES. The resolver — packages/player-vue/src/composables/servedPod.ts
  * and its literal twin in api/courses/[code]/bundle.ts — serves a course's pod by SLUG:
- * `pod_type = 'core'` and `slug in ('pod-1','pod-0')`, first match wins. It counts no
+ * `pod_type = 'core'` and `slug = 'pod-1'`, first match wins. It counts no
  * rows and reads no text, and it does not read `visibility` either. So the moment a core
  * pod-1 header row exists for a course, learners are served it — and `clone-pod --to=pod-1`
  * would create exactly that row, then let the align tool empty it underneath them, with
@@ -16,7 +16,6 @@
  * already held sentence rows — it returned null for every serving-slug case):
  *   FAIL  REFUSES a clone onto pod-1, which the player serves
  *     AssertionError: expected null to be truthy
- *   FAIL  REFUSES a clone onto pod-0, the fallback slug every course serves
  *     AssertionError: expected null to be truthy
  *   FAIL  REFUSES even when the destination pod row does not exist yet — creating it IS the harm
  *     AssertionError: expected null to be truthy

@@ -12,8 +12,8 @@
 'use strict'
 
 // The slugs a remapped id may land on: the ones the player serves, read from the one
-// implementation. A dangling id on a retired slug (`<course>:retired-<date>:<tail>`, or
-// the pod-0 name that stopped existing on 2026-09-13) remaps onto the served pod-1 slot.
+// implementation. A dangling id on a retired slug (`<course>:retired-<date>:<tail>`)
+// remaps onto the served pod-1 slot.
 const { SERVING_POD_SLUGS: SERVING_SLUGS_FOR_REMAP } = require('./serving-slug.cjs')
 
 /** `<course>:<slug>:<tail>` → parts, or null when the value is not a slot key at

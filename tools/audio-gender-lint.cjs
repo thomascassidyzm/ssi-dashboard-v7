@@ -63,7 +63,7 @@ const VOICE_GENDER_RULES = [
   // Azure Croatian
   { match: /GabrijelaNeural/i, gender: 'F' },
   { match: /SreckoNeural/i, gender: 'M' },
-  // ElevenLabs voices seen in hrv pod-0 (exact ids): Sarah/Laura = F, George = M
+  // ElevenLabs voices seen in hrv pod-1 (exact ids): Sarah/Laura = F, George = M
   { match: /^(EXAVITQu4vr4xnSDxMaL|FGY2WhTYpPnrIDTdsKH5)$/, gender: 'F' },
   { match: /^JBFqnCBsd6RMkjVDRZzb$/, gender: 'M' },
   // Azure Arabic (common eg/sy/msa voices)

@@ -26,7 +26,7 @@
  * pipeline (windows → Take G → knowns → slice).
  *
  *   node tools/audit-fine-seams.cjs <course> [orders] [--dry] [--pod=pod-N]
- *   node tools/audit-fine-seams.cjs zho_for_eng             # whole pod-0 (default)
+ *   node tools/audit-fine-seams.cjs zho_for_eng             # the whole core pod, pod-1 (default)
  *   node tools/audit-fine-seams.cjs zho_for_eng --pod=pod-1
  *
  * claude CLI only, no TTS, no cost gate.

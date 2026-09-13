@@ -10,7 +10,7 @@
  *
  * Two things were wrong under that, and this tool fixes both at once:
  *
- *   1. THE LOCALE HANDLE. `spa_for_eng:pod-0-unrecorded` — the one pod PodLab
+ *   1. THE LOCALE HANDLE. `spa_for_eng:unrecorded` — the one pod PodLab
  *      samples — carried `target.locale = "es"` on every character. The other
  *      three Spanish pods carry `es-ES`. phase-8's buildPodTTSConfig hands that
  *      handle straight to xAI as the language, and the codebase already learned
@@ -40,7 +40,7 @@
  *   - if that voice reads as many female characters as male ones, its gender is
  *     genuinely unknown, so the last appeal is the SAME character on another pod
  *     of the course — again a decision someone already made. spa_for_eng needs
- *     this: "Customer 3" is neutral and sits on a tied voice, and `pod-0` casts
+ *     this: "Customer 3" is neutral and sits on a tied voice, and the core pod casts
  *     that character to a male voice.
  * Nothing else is inferred: a character none of the three rules reaches makes
  * the whole course refuse rather than land somewhere by default.

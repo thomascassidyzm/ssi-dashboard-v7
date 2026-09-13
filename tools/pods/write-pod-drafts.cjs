@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
- * write-pod-drafts.cjs — write machine-drafted target text into the empty pod-0
+ * write-pod-drafts.cjs — write machine-drafted target text into the empty pod
  * slots that align-pod-to-canonical.cjs deliberately left blank.
  *
- * Generalised 2026-08-08 from write-pod0-welsh-drafts.cjs, which applied a hardcoded
+ * Generalised 2026-08-08 from the Welsh drafts writer (now archived), which applied a hardcoded
  * literal drafts module. The write shape is unchanged and is the point of the file:
  * per-row `UPDATE … WHERE id=$1 AND known_text=$2 AND btrim(target_text)=''`, all in
  * one transaction, so a row that is no longer blank, or no longer carries the English
@@ -39,8 +39,8 @@ const arg = (n) => {
   return a ? a.split('=').slice(1).join('=') : null
 }
 // Matches align-pod-to-canonical.cjs's --pod-slug: on a live course the aligned
-// queue lives on a parallel slug so learners keep reading an intact pod-0.
-const POD_SLUG = arg('pod-slug') || 'pod-0'
+// queue lives on a parallel slug so learners keep reading an intact pod-1.
+const POD_SLUG = arg('pod-slug') || 'pod-1'
 const COURSE = arg('course')
 const DRAFTS = arg('drafts')
 const SCRIPT = (arg('script') || 'latin').toLowerCase()
@@ -130,7 +130,7 @@ function qc(draft, englishText) {
     skipped_slot_not_blank: skipped.length,
     blank_slots_remaining_after: blanks.length - ops.length,
   }
-  const log = abs(`docs/pods/${COURSE}-pod0-drafts-${APPLY ? 'applied' : 'dryrun'}-log.json`)
+  const log = abs(`docs/pods/${COURSE}-${POD_SLUG}-drafts-${APPLY ? 'applied' : 'dryrun'}-log.json`)
   fs.writeFileSync(log, JSON.stringify({ mode: APPLY ? 'APPLIED' : 'DRY RUN', summary, ops, rejected, skipped }, null, 1))
 
   if (rejected.length) {

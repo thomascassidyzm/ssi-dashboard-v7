@@ -219,7 +219,7 @@ function colourTrack(speakers, adj, pool, genderOf, weights) {
 /**
  * Trim a voice pool to the first N voices per gender, preserving pool order.
  *
- * THE POD-0 CASTING RULE (Tom, 2026-08-08: "of course cast by speaker") is
+ * THE CORE-POD CASTING RULE (Tom, 2026-08-08: "of course cast by speaker") is
  * that casting is BY SPEAKER, never by line position: each character is
  * assigned a voice and keeps it for every line they speak, including
  * consecutive ones. A later character in a scene recycles a voice that is

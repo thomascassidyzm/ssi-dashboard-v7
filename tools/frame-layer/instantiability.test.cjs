@@ -123,7 +123,7 @@ for (const f of FRAMES) {
 {
   const { frameSig, score, MERGED } = require('./pattern-diversity.cjs');
   const PATTERNS = require('./patterns.cjs');
-  // real corpus text, quoted from pod-0:SC01-S04
+  // real corpus text, quoted from pod-1:SC01-S04
   const line = "Yes, I've got a busy day today";
   ok(frameSig(line, PATTERNS) === frameSig(line).split('+').filter(x => !/^D/.test(x)).join('+'),
      'the P* part of a merged signature must be byte-identical to the old signature');

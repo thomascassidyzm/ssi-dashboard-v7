@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * The end-to-end validation of services/recording-speech-gate.cjs against the
- * four takes it was built from: Catrin's cym_n_for_eng:pod-0 session of
+ * four takes it was built from: Catrin's cym_n_for_eng:pod-1 session of
  * 2026-08-23 14:44-14:48 UTC. One genuine read and three recordings of an
  * empty room, all four of which passed every level-based gate on the upload
  * path at the time.
