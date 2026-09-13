@@ -52,7 +52,10 @@
              until they exist!!!"). Held = RLS hides this pod and every line in
              it from the learner app. Popty reads with the service role, so this
              page keeps working on a held pod — that is the point. Releasing is a
-             human act and asks first; holding is one tap. -->
+             human act and asks first. A LIVE pod has no button at all: Tom,
+             2026-09-13, "it shouldn't be there any more should it? you can't
+             unpublished a course, once it's gone live it can only ever be fixed
+             line by line". The route refuses live→held too. -->
         <div class="mb-6 rounded-lg p-4 text-sm" :class="isHeld ? 'vis-panel-held' : 'bg-surface border border-line'">
           <div class="flex items-center justify-between gap-3 flex-wrap">
             <div class="min-w-0">
@@ -65,20 +68,20 @@
                   finished and you have listened to it — nothing releases itself.
                 </template>
                 <template v-else>
-                  Hold it back to take it off learners while it is being recorded or fixed. Nothing
-                  is deleted and no progress moves.
+                  A live pod is never taken back from learners. Fix any line in place and it
+                  swaps the moment it is saved.
                 </template>
               </div>
               <div v-if="visTrail" class="text-xs mt-1 opacity-80">{{ visTrail }}</div>
               <div v-if="visError" class="text-xs mt-1 text-danger">{{ visError }}</div>
             </div>
             <button
+              v-if="isHeld"
               :disabled="visBusy"
-              @click="setVisibility(isHeld ? 'live' : 'held')"
-              class="px-4 py-2 text-sm rounded border font-medium whitespace-nowrap disabled:opacity-50"
-              :class="isHeld ? 'vis-btn-release' : 'vis-btn-hold'"
+              @click="setVisibility('live')"
+              class="vis-btn-release px-4 py-2 text-sm rounded border font-medium whitespace-nowrap disabled:opacity-50"
             >
-              {{ visBusy ? 'Saving…' : (isHeld ? 'Release to learners' : 'Hold back from learners') }}
+              {{ visBusy ? 'Saving…' : 'Release to learners' }}
             </button>
           </div>
         </div>
@@ -1068,13 +1071,10 @@ onUnmounted(() => {
 .vis-held { background: #dc2626; color: #fff; }
 .vis-live { background: rgba(6, 78, 59, 0.4); color: #6ee7b7; border: 1px solid #047857; }
 .vis-panel-held { background: rgba(127, 29, 29, 0.35); border: 1px solid #b91c1c; color: #fecaca; }
-.vis-btn-hold { border-color: #b91c1c; color: #fca5a5; }
-.vis-btn-hold:hover { border-color: #dc2626; }
 .vis-btn-release { border-color: #047857; color: #6ee7b7; }
 .vis-btn-release:hover { border-color: var(--accent-2); }
 [data-theme="light"] .vis-live { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
 [data-theme="light"] .vis-panel-held { background: #fef2f2; border-color: #dc2626; color: #991b1b; }
-[data-theme="light"] .vis-btn-hold { color: #991b1b; border-color: #dc2626; }
 [data-theme="light"] .vis-btn-release { color: #065f46; border-color: #047857; }
 
 /* Big error banner + inline error rows. Dark = red-900/red-700/red-200/300. */

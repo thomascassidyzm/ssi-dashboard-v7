@@ -149,24 +149,24 @@
               </div>
             </div>
             <div class="flex items-center gap-3 flex-shrink-0 mt-1">
-              <!-- ONE ACTION ON THE SERVING POD, and it is the one the producer
-                   came to answer: can learners reach this yet? Everything that
-                   SETS the pod up or destroys it lives below the pods themselves
-                   (Tom, 2026-09-10: "so many different screens and different
-                   ways in, and it's all quite frankly, a mess"). Holding is one
-                   tap — erring towards invisible is always safe. Releasing asks
-                   first: it cannot be un-seen. The row is a link, so the click
+              <!-- ONE ACTION ON THE SERVING POD, and only while it is HELD:
+                   "Release to learners", which asks first because it cannot be
+                   un-seen. Everything that SETS the pod up or destroys it lives
+                   below the pods themselves (Tom, 2026-09-10: "so many different
+                   screens and different ways in, and it's all quite frankly, a
+                   mess"). A LIVE pod has NO button here — there is no "Hold back
+                   from learners" any more. Tom, 2026-09-13: "it shouldn't be
+                   there any more should it? you can't unpublished a course, once
+                   it's gone live it can only ever be fixed line by line". The
+                   route refuses live→held too. The row is a link, so the click
                    stops here and does not open the pod. -->
               <button
-                v-if="isServingPod(pod)"
+                v-if="isServingPod(pod) && isHeld(pod)"
                 :disabled="visBusy"
-                @click.prevent.stop="setVisibility(pod, isHeld(pod) ? 'live' : 'held')"
-                :class="isHeld(pod)
-                  ? 'pv-release border-emerald-700 text-emerald-300 hover:border-emerald-500'
-                  : 'pv-hold border-red-700 text-red-300 hover:border-red-500'"
-                class="text-sm px-4 py-2 rounded border disabled:opacity-50 font-medium"
+                @click.prevent.stop="setVisibility(pod, 'live')"
+                class="pv-release border-emerald-700 text-emerald-300 hover:border-emerald-500 text-sm px-4 py-2 rounded border disabled:opacity-50 font-medium"
               >
-                {{ visBusy ? 'Saving…' : (isHeld(pod) ? 'Release to learners' : 'Hold back from learners') }}
+                {{ visBusy ? 'Saving…' : 'Release to learners' }}
               </button>
               <svg class="w-5 h-5 text-faint flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -526,7 +526,6 @@ details[open] > .pv-summary::before { content: '▾ '; }
 }
 :root[data-theme="light"] .pv-vis-live { background: #d1fae5; color: #065f46; border-color: #6ee7b7; }
 :root[data-theme="light"] .pv-vis-note { background: #fef2f2; border-color: #dc2626; color: #991b1b; }
-:root[data-theme="light"] .pv-hold { color: #991b1b; border-color: #dc2626; }
 :root[data-theme="light"] .pv-release { color: #065f46; border-color: #047857; }
 
 /* LISTEN — this pod has playable audio. Emerald and quiet: it is an invitation,
