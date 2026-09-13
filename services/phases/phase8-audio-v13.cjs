@@ -7959,8 +7959,10 @@ async function getCourseContext(courseCode) {
   // chose.
   const resolvedId = knownVoiceRaw.voiceId || knownVoiceRaw.voice_id || null
   const gender = knownVoiceRaw.gender || (knownCast.f ? 'f' : 'm')
+  // Bare id for the provider, as pod casts spell theirs: a lab-cast voice
+  // arrives here as 'cartesia_<uuid>' and Cartesia refuses that spelling.
   const knownVoice = resolvedId && knownVoiceRaw.provider !== 'human'
-    ? { voice_id: resolvedId, provider: knownVoiceRaw.provider || 'azure', gender }
+    ? { voice_id: String(resolvedId).replace(POD_PROVIDER_PREFIX, ''), provider: knownVoiceRaw.provider || 'azure', gender }
     : (knownCast[gender] || knownCast.m || knownCast.f || null)
   return {
     knownLang: course.known_lang,
@@ -7978,6 +7980,7 @@ async function getCourseContext(courseCode) {
  * primary is unusable — pickCastVoice's own rule) through the same cached load
  * voice-config-service uses, keyed on the course's known DIALECT entity.
  */
+const POD_PROVIDER_PREFIX = /^(cartesia|xai|azure|elevenlabs|google)_/
 async function knownCastByGender(course) {
   const out = { m: null, f: null }
   let cast
@@ -7989,9 +7992,15 @@ async function knownCastByGender(course) {
   for (const gender of ['m', 'f']) {
     const pick = pickCastVoice(cast.roles, voiceById, language, gender, 'phrase')
     if (!pick) continue
+    const provider = providerOfVoice(pick.voice) || null
     out[gender] = {
-      voice_id: pick.voice.voice_id,
-      provider: providerOfVoice(pick.voice) || null,
+      // BARE provider id, as every pod cast entry spells it and as the provider
+      // wants it — the lab row holds the estate spelling ('cartesia_<uuid>'),
+      // and Cartesia refuses that as "voice ID must be a valid UUID" (seen
+      // 2026-09-13). The canonical spelling is put back at the DB boundary by
+      // canonicalClipVoiceId, exactly as for a pod speaker's own entry.
+      voice_id: String(pick.voice.voice_id).replace(POD_PROVIDER_PREFIX, ''),
+      provider,
       gender,
       name: pick.voice.display_name || pick.voice.human_name || pick.voice.voice_id,
       castFrom: { slot: 'phrase', language, gender, rank: pick.rank },

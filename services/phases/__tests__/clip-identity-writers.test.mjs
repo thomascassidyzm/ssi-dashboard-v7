@@ -370,8 +370,11 @@ describe('getCourseContext / podKnownRenderVoice — the lab casts the English s
     expect(ctx.knownVoice).not.toBeNull()
     expect(ctx.knownVoice.voice_id).not.toMatch(/Sonia/)
     expect(ctx.knownVoice.provider).toBe('cartesia')
-    expect(ctx.knownCast.m).toMatchObject({ voice_id: TOM, provider: 'cartesia' })
-    expect(ctx.knownCast.f).toMatchObject({ voice_id: GEMMA, provider: 'cartesia' })
+    // Bare ids, as pod casts and the Cartesia API spell them — the lab row's
+    // 'cartesia_' prefix is the estate spelling, and Cartesia refuses it.
+    expect(ctx.knownCast.m).toMatchObject({ voice_id: TOM.replace('cartesia_', ''), provider: 'cartesia' })
+    expect(ctx.knownCast.f).toMatchObject({ voice_id: GEMMA.replace('cartesia_', ''), provider: 'cartesia' })
+    expect(ctx.knownVoice.voice_id).not.toMatch(/^cartesia_/)
   })
 
   it('with nothing cast in the lab and nothing stored there is NO voice — never a silent Azure default', async () => {
@@ -388,8 +391,8 @@ describe('getCourseContext / podKnownRenderVoice — the lab casts the English s
       Customer: { gender: 'f', known: { provider: 'human', voice_id: 'human_catrinlliar_cym_n' } },
       Robot: { gender: 'm', known: { provider: 'azure', voice_id: 'en-GB-RyanNeural' } },
     } }
-    expect(phase8.podKnownRenderVoice(pod, { speaker: 'James' }, ctx)).toMatchObject({ voice_id: TOM })
-    expect(phase8.podKnownRenderVoice(pod, { speaker: 'Customer' }, ctx)).toMatchObject({ voice_id: GEMMA })
+    expect(phase8.podKnownRenderVoice(pod, { speaker: 'James' }, ctx)).toMatchObject({ voice_id: TOM.replace('cartesia_', '') })
+    expect(phase8.podKnownRenderVoice(pod, { speaker: 'Customer' }, ctx)).toMatchObject({ voice_id: GEMMA.replace('cartesia_', '') })
     // A synthetic cast entry is its own answer, untouched.
     expect(phase8.podKnownRenderVoice(pod, { speaker: 'Robot' }, ctx)).toMatchObject({ voice_id: 'en-GB-RyanNeural' })
   })
