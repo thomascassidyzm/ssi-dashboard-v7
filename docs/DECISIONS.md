@@ -1070,3 +1070,11 @@ rows the first pass was told to leave: 43/52 (Tom's account, 15 June) and split 
 take (link-only), s11 l1 its Aran 3 Sep whole turn. Split 70 ("Prynhawn da.") is stripped from pod-1
 but NOT deleted: it serves two lines of the released Senedd pod, which needs its own
 make-before-break take first.
+
+**#569 speaker-id probe, same evening.** Confirms the shape: no serving pod-1 clip is Tom's voice;
+rows 13 and 3 carry Aran in their current bytes (so the phone cache WAS the whole story); the 11 Sep
+Catrin-slot uploads are 57/57 Catrin, so the account-as-speaker prior was wrong for that slot but
+the voice was right, and nothing there needs an ear. Two 10 Sep Aran-account rows (s12 l8
+a70756ca, s7 l4 cb6d8ee4) are a fourth voice — the booth-test TTS voice — with ~0 similarity to
+Aran. Not deleted here: s12 l8 has no other take and s7 l4 only a Catrin one, so cutting them
+silences two live lines until Aran records; that trade is Tom's, staged with playable links.
