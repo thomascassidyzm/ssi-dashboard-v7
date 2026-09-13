@@ -401,9 +401,9 @@ The health corpus does not withhold the recovery. Seven proposed edges, `S101`�
 
 | id | B is attemptable only if you survive… | Recovery attested | Note |
 |---|---|---|---|
-| **S102** | an answer that cannot be given precisely | **3×** | **This is the recovery pod-0's `S2` records as attested NEVER** — "no turn in the corpus takes up a hedge". Health takes it up three different ways: anchor it ("was it there at Christmas?" 2.2 f3), re-frame the question ("let me ask another way" 1.4 f2), route to an artefact ("do you have the repeat list?" 2.3 f3). |
+| **S102** | an answer that cannot be given precisely | **3×** | **This is the recovery pod-1's `S2` records as attested NEVER** — "no turn in the corpus takes up a hedge". Health takes it up three different ways: anchor it ("was it there at Christmas?" 2.2 f3), re-frame the question ("let me ask another way" 1.4 f2), route to an artefact ("do you have the repeat list?" 2.3 f3). |
 | S101 | being halted mid-act by the person you are acting on | 3× | Complete cycles: halt, ratify, re-verify, withhold. |
-| S106 | "I didn't follow that" | 3× | pod-0 attests N6 **once in 231 rows**; health attests it three times in 73 flows and licenses it in advance at `N101`. |
+| S106 | "I didn't follow that" | 3× | pod-1 attests N6 **once in 231 rows**; health attests it three times in 73 flows and licenses it in advance at `N101`. |
 | S107 | the recipient declaring a disposition that will defeat your instruction | 2× | Both run: normalise (F102), hold (F16), extract a commitment (N109). |
 | S104 | your number being challenged for its meaning | 2× | Recovery is to supply the thresholds either side, not to repeat the figure. |
 | S103 | the recipient surfacing a gap your instruction did not cover | 1× | **The first edge in either corpus that rests on the speaker's own knowledge failing.** |
@@ -419,7 +419,7 @@ POD-1 currently scores **0 of 9** on the Script Lab. Directly useful, with citat
 | **O3** The native does not understand you | **strong** | It is the corpus's *premise*: 1.0 and 2.0 exist to pre-arrange the recovery, and 2.5 f2 / 2.2 f2 / 1.4 f2 attest it in flight. The store classes O3 as **"minted — attested nowhere"**. Health attests it. |
 | **O7** The native discloses worry or difficulty | **strong, 8×** | 1.2 f3, 1.6 f2, 1.8 f3, 1.10 f3, 2.1 f2, 2.5 f3, 2.8 f3, 2.9 f3. **But note:** in health the discloser is the *other* party and the learner is the professional — so the recovery the store names ("acknowledge without fixing, then continue") is attested *and also frequently violated*, because the professional fixes. Both are useful data. |
 | **O6** Trouble that is your own fault | **thin, 1× — but dialogic** | 2.7 f3: "I'll admit, I just stopped them last time" / "A lot of people do... But the full course, every time. Deal?" The store records O6 as attested **only as monologue with no partner turn**. This is its first two-sided attestation. |
-| **O8** You are disagreed with | thin, 3× | 2.10 f1 ("I'll believe it when I see the taxi"), 2.8 f3, 2.9 f3. pod-0 attests disagreement only about a person's account of themselves; these are about the world. |
+| **O8** You are disagreed with | thin, 3× | 2.10 f1 ("I'll believe it when I see the taxi"), 2.8 f3, 2.9 f3. pod-1 attests disagreement only about a person's account of themselves; these are about the world. |
 | **O5** The premise of your ask is wrong | thin, 2× | 1.11 f2 ("do I take two the next time?" / "Never double up"); 2.9 f3 (the family-history premise re-weighted). |
 | **O2** Nobody knows | **variant only** | 1.10 f2 and 2.3 f3 attest the *recovery* (re-route the ask to a third party, to a document) but never the bald "nobody knows" — the professional always knows who knows. Recorded as `N105`. |
 | **O4** Your read-back was wrong | **absent** | Read-backs are everywhere (1.5 f2, 1.8 f1, 1.10 f1, 1.11 f1, 2.6 f3, 2.7 f1, 2.8 f2) and **every single one is correct**. Health attests the *solicited* read-back (`F104`, 2.8 f2), which is O4's precondition, and never the correction. Honest gap. |
@@ -485,7 +485,7 @@ existing nodes (§6). The fifth, ⚠, does not.
 **Right, and specifically right.** `N106` stop-and-verify occurs only under ⚠. `N108` is 3-for-3 ⚠.
 `F101` ratify-the-telling answers half the ⚠ lines. `N107`'s threshold and urgency positions are ⚠
 material. The reason given — "safety-critical recovery is precisely the shape POD-1 has no reason to
-contain" — is confirmed by the store's own null result: no pod-0 survivability edge rests on anything
+contain" — is confirmed by the store's own null result: no pod-1 survivability edge rests on anything
 failing, and five of the seven health edges do.
 
 **The blind spot — an entire second mint family the prediction did not see.**
@@ -550,7 +550,7 @@ read — nothing loads it, nothing executes it, and applying it is a separate re
    unmerged on `docs/aran-health-sector-conversations` @ `eb7222dfc`. Merging it is your call and I
    have not touched it. Until it is merged, every citation in this document points off `main`.
 2. **The patch needs one schema line.** `schemas/metagraph-v1-schema.json` has
-   `provenance: enum ["pod-0", "method-pod"]`. A health provenance needs that enum widened. It is a
+   `provenance: enum ["pod-1", "method-pod"]`. A health provenance needs that enum widened. It is a
    one-line change, it is not made here, and it is not needed unless and until the additions are
    applied.
 

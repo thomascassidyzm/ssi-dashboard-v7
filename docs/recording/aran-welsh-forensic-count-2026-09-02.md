@@ -24,8 +24,8 @@ object and the old object stays where it is. **No audio has been lost.**
 | — Welsh clips | 123 | |
 | Welsh clips that reach a line in his queue | 72 | landing on **71** distinct lines (two clips share one line) |
 | Welsh clips that reach **no** line | **51** | broken down below |
-| — read against a **retired pod script** | 23 | June sessions, against sentences pod-0 no longer contains (pod-0 was rebuilt 2026-08-11). Mostly half-sentences of lines that are now single lines. |
-| — same sentence, but the text drifted | 17 | pod-0's rebuild inserted "…" pause cues: his clip says "A be ydy cyfrinair y wifi?", the line now says "A be ydy… cyfrinair y wifi?" |
+| — read against a **retired pod script** | 23 | June sessions, against sentences pod-1 no longer contains (pod-1 was rebuilt 2026-08-11). Mostly half-sentences of lines that are now single lines. |
+| — same sentence, but the text drifted | 17 | pod-1's rebuild inserted "…" pause cues: his clip says "A be ydy cyfrinair y wifi?", the line now says "A be ydy… cyfrinair y wifi?" |
 | — lines cast to **Catrin** | 11 | he read lines whose speaker is a female character (Bar Customer 2/3, Diner 2, Customer). Real takes, sitting in her half of the pod. |
 | **Lines his screen gives a clip for** | **71 → 76** | the fix below adds 5 |
 | — of those, queued to be read again | 45 | the T-20 full re-record commissioned 2026-08-16 |
@@ -48,7 +48,7 @@ not "which take" — it was "does a take exist at all".
 ## The defect found, and the fix landed
 
 Six pod lines were linked to Aran's clips, playing to Welsh learners, **and reported to Aran as never
-recorded** — because the queue asked "is there a clip filed under this exact text?" and pod-0's
+recorded** — because the queue asked "is there a clip filed under this exact text?" and pod-1's
 rebuild had moved the text by a pause cue.
 
 The fix puts both questions in one place, `services/voice-engine/take-selection.cjs`:
@@ -76,7 +76,7 @@ read again". His done count stays 26, honestly: those five *are* queued for a re
    again. Keep, retire, or repurpose?
 3. **11 clips of Catrin's lines.** He read 11 lines whose speaker is cast female. His takes exist and
    Catrin has not read them. Recast those speakers to him, or leave them for her?
-4. **23 clips of a retired script.** Real Welsh in his voice, read against sentences pod-0 no longer
+4. **23 clips of a retired script.** Real Welsh in his voice, read against sentences pod-1 no longer
    has. Nothing points at them.
 5. **17 pause-cue drifts, of which 5 are now recovered and 1 line (SC14-S008) is not** — its clip
    matches the line's words but the line is not linked to it. Left alone deliberately: promoting a

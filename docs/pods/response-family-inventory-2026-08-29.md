@@ -1,9 +1,9 @@
 # The response-family inventory — mined from the canon pod
 
-**Corpus:** `canonical_pod_scenarios` where `pod_slug = 'pod-0'` — the live learning-app POD 1
+**Corpus:** `canonical_pod_scenarios` where `pod_slug = 'pod-1'` — the live learning-app POD 1
 (Sarah's day / transactional / Aran's rewrite of the Croatian experiment), 231 rows, 22 scenes.
-Verified against the two sacked slates at read time: `pod-0.5` (27 rows, 7 scenes) and `pod-1`
-(236 rows, 16 scenes) were **not** read as attestation. No row from either is cited below.
+Verified against the two sacked slates at read time (27 rows / 7 scenes and 236 rows / 16 scenes,
+since deleted): neither was read as attestation. No row from either is cited below.
 
 **Date:** 2026-08-29. Read-only. Every count in this document is re-derivable from the row
 identifiers cited; the per-row classification is in Appendix A so a second reader can disagree
@@ -147,7 +147,7 @@ own deficit read against live POD-1 was: backchannel, recounting, news, disagree
 equals, teasing, topic shift, story ticket, resisted goodbye, sympathy, persuasion. Confirmed,
 corrected and extended:
 
-| Deficit item | Verdict against `pod-0` | Evidence |
+| Deficit item | Verdict against `pod-1` | Evidence |
 |---|---|---|
 | Backchannel | **Corrected — thinly attested.** One minimal continuer exists. True overlapping backchannel absent. | `g125` "And then?" — the only one in 142 dialogue rows |
 | Disagreement between equals | **Corrected — thinly attested, one kind only.** Disagreement with the other's *account of themselves* is attested twice. Disagreement about the world, a fact, or a proposal is absent. | `g226`, `g228`; nothing else |
@@ -217,7 +217,7 @@ would be padding. They are named because they are load-bearing for the POD-2 sha
 flagged because a single scene is not attestation.
 
 **4. Confirmation-by-repetition is attested in canon, not only in Aran's health work.** The
-sitting recorded the read-back as a find from Aran's v3 patients. It is in `pod-0` at
+sitting recorded the read-back as a find from Aran's v3 patients. It is in `pod-1` at
 `g122`/`g123` — "Past that church?" / "Yes, past the church and the post office" — and in a
 second form at `g98`, where the receptionist reads the booking back before proceeding. That
 matters because it means the receptive-to-productive bridge does not have to be imported from
@@ -227,7 +227,7 @@ extending it.** That correction-inside-a-confirm is the whole survivability edge
 
 **5. The corpus never lets anyone fail.** No responder says "I don't know"; no refusal arrives
 without an account and an alternative; nothing is ever complained about; no goodbye is resisted;
-no native speaker ever fails to understand the learner. Every exchange in `pod-0` succeeds. A
+no native speaker ever fails to understand the learner. Every exchange in `pod-1` succeeds. A
 learner leaving this pod has heard the happy path in twenty-two variations and has never once
 heard the interaction wobble in a way they must handle. Set against the brief's own frame —
 survivability edges are what make the graph a graph — **the canon attests the shapes but almost
@@ -237,7 +237,7 @@ has to mint.
 
 **6. Data observations — reported, not fixed** (all read-only; nothing was written):
 - **Scenes 15–21 (73 rows, `g141`–`g219` less codas) carry `speaker = 'Learner'` on every row**, including rows that are plainly the other party: `g160` "No, we only take cash.", `g211` "It's down there on the left.", `g214` "Yes, I said it's over there.", `g217` "Would you like to order some drinks?". Speaker attribution in those scenes is unusable, and any downstream tool that partitions the corpus by speaker will mis-partition it.
-- `variant_key` is **null on all 231 rows**, yet the corpus plainly contains authored variants — `g7`/`g8` (bare vs. softened question), `g12`/`g13`/`g14` (three phrasings of one ticket), and most consequentially `g15`/`g16`, which are **mutually exclusive alternative responses to the same ticket** stored as consecutive sentences. Anything reading `pod-0` linearly will read `g15` and `g16` as a self-contradicting speaker.
+- `variant_key` is **null on all 231 rows**, yet the corpus plainly contains authored variants — `g7`/`g8` (bare vs. softened question), `g12`/`g13`/`g14` (three phrasings of one ticket), and most consequentially `g15`/`g16`, which are **mutually exclusive alternative responses to the same ticket** stored as consecutive sentences. Anything reading `pod-1` linearly will read `g15` and `g16` as a self-contradicting speaker.
 - `author_notes` is populated on exactly 16 rows, all the identical narrator coda string. **The column carries no per-line authorial intent** — the brief's hope that it would be corroborating evidence for family assignment did not survive contact with the data, and no family above rests on it.
 - `scene_label` is inconsistent: scenes 1–5 are all "Pod 0", scene 6 is "Pod 0b", scenes 7–22 are "1"–"16". `difficulty` is null on 14 of 22 scenes.
 - Content inconsistency at `g100`: "The room is on the third floor, room 709."
@@ -248,7 +248,7 @@ has to mint.
 
 A **response-position turn** is a dialogue turn that takes up the business of the immediately
 preceding turn. Rows that open new business, narrator codas, and the 73 single-speaker drill
-lines are excluded. A second reader applying that rule to `pod-0` should recover this list.
+lines are excluded. A second reader applying that rule to `pod-1` should recover this list.
 
 | g | scene.sent | speaker | families |
 |---|---|---|---|
