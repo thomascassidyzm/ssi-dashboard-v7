@@ -123,16 +123,40 @@ function mockSupabase(state) {
       // set membership as well as equality.
       in(col, vals) { q.inFilters[col] = vals; return api },
       limit() { return resolveRows().then(rows => ({ data: rows, error: null })) },
+      // The versioned writer awaits the holder lookup bare (no limit/single).
+      then(resolve, reject) { return resolveRows().then(rows => ({ data: rows, error: null })).then(resolve, reject) },
       maybeSingle() { return resolveRows().then(rows => ({ data: rows[0] || null, error: null })) },
       single() { return resolveRows().then(rows => ({ data: rows[0] || null, error: rows[0] ? null : { message: 'no row' } })) },
       upsert(row, opts) {
         q.op = 'upsert'; q.payload = { row, opts }
+        // The swap's ledger write (course_audio_revisions) is awaited bare.
+        if (table === 'course_audio_revisions') {
+          state.revisions.push(row)
+          return Promise.resolve({ data: null, error: null })
+        }
+        return api
+      },
+      // The versioned writer (services/shared/audio-revision-swap.cjs) INSERTs
+      // when the clip identity is free and SWAPs (update + revision bump) when
+      // it is held — it never bare-upserts course_audio. `upserted` keeps its
+      // name: it is the list of clip rows the commit WROTE, whichever branch.
+      insert(row) {
+        q.op = 'insert'; q.payload = { row }
         return api
       },
       update(patch) {
         q.op = 'update'; q.payload = patch
         return {
           eq: (col, val) => {
+            if (table === 'course_audio') {
+              // Mutate, so the swap's post-write read sees the revision it
+              // asserts on; a fake that ignored its own update would pass a
+              // swap that silently no-opped.
+              const hit = (state.audioRows || []).find(r => r[col] === val)
+              if (hit) { Object.assign(hit, patch); state.upserted.push({ ...hit }) }
+              state.audioUpdates.push({ patch, where: { [col]: val } })
+              return Promise.resolve({ data: null, error: null })
+            }
             state.updates.push({ table, patch, where: { [col]: val } })
             return Promise.resolve({ data: null, error: null })
           },
@@ -140,6 +164,12 @@ function mockSupabase(state) {
       },
     }
     async function resolveRows() {
+      if (q.op === 'insert') {
+        const saved = { id: 'NEW-AUDIO-UUID', audio_revision: 1, ...q.payload.row }
+        state.audioRows.push(saved)
+        state.upserted.push(saved)
+        return [saved]
+      }
       if (q.op === 'upsert') {
         const { row } = q.payload
         // emulate the 5-column unique key: reuse the prior row's id on conflict
@@ -163,9 +193,11 @@ function mockSupabase(state) {
         return row ? [row] : []
       }
       if (table === 'course_audio') {
+        // Copies, as postgrest returns: a row read before the swap must not
+        // change under the caller when the swap lands.
         return (state.audioRows || []).filter(r =>
           Object.entries(q.filters).every(([k, v]) => r[k] === v) &&
-          Object.entries(q.inFilters).every(([k, vals]) => vals.includes(r[k])))
+          Object.entries(q.inFilters).every(([k, vals]) => vals.includes(r[k]))).map(r => ({ ...r }))
       }
       return []
     }
@@ -207,6 +239,8 @@ function fixtureState() {
     audioRows: [],
     upserted: [],
     updates: [],
+    audioUpdates: [],
+    revisions: [],
   }
 }
 
@@ -344,6 +378,15 @@ describe('commitPodRegistration', () => {
     // Old object stays at its key — recorded for reversibility, FK unchanged in effect
     expect(result.replacedS3Key).toBe('mastered/FIRST-TAKE.mp3')
     expect(result.replacedAudioId).toBeNull()
+    // VERSIONED (Astra #592, 2026-09-13): the learner's address is
+    // <uuid>.v<audio_revision>, so a same-row repoint MUST bump the revision or
+    // every phone that played the first take keeps it. Ledger row too.
+    expect(result.revision).toBe(2)
+    expect(state.audioRows[0]).toMatchObject({ id: 'HUMAN-ROW-1', s3_key: 'mastered/SECOND-TAKE.mp3', audio_revision: 2, rerecord_wanted: null })
+    expect(state.revisions).toEqual([expect.objectContaining({
+      audio_id: 'HUMAN-ROW-1', previous_revision: 1, revision: 2,
+      previous_s3_key: 'mastered/FIRST-TAKE.mp3', new_s3_key: 'mastered/SECOND-TAKE.mp3', source: 'pod-booth-take',
+    })])
   })
 
   // ── canonical identity ────────────────────────────────────────────────────
