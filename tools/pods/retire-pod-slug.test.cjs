@@ -25,6 +25,15 @@ describe('reslugId — only the slug segment moves', () => {
       .toBe('cym_n_for_eng:pod-1:SC01-S001:s2')
   })
 
+  it('accepts the e2e booth fixture shape, <course>:<slug>-sN, hyphen not colon', () => {
+    // RED on the pre-fix tool (returned null and the 2026-09-13 estate rename
+    // stopped at zzz_e2ebooth_for_eng after 42 courses); GREEN after.
+    expect(reslugId('zzz_e2ebooth_for_eng:unrecorded-s1', 'zzz_e2ebooth_for_eng', 'unrecorded', 'pod-1'))
+      .toBe('zzz_e2ebooth_for_eng:pod-1-s1')
+    expect(reslugId('zzz_e2ebooth_for_eng:unrecorded-draft-s1', 'zzz_e2ebooth_for_eng', 'unrecorded', 'pod-1'))
+      .toBe('zzz_e2ebooth_for_eng:pod-1-draft-s1') // same pod_id by construction; only the slug segment moves
+  })
+
   it('refuses rather than guesses when the shape is not what it expects', () => {
     expect(reslugId('cym_n_for_eng:pod-1-staged-x:SC01-S001', 'cym_n_for_eng', 'pod-1-staged', 'pod-1')).toBeNull()
     expect(reslugId('cym_s_for_eng:pod-1-staged:SC01-S001', 'cym_n_for_eng', 'pod-1-staged', 'pod-1')).toBeNull()

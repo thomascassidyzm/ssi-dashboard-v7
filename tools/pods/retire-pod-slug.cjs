@@ -90,6 +90,14 @@ const toId = `${COURSE}:${TO}`
  */
 function reslugId(id, course, fromSlug, toSlug) {
   const parts = String(id).split(':')
+  if (parts.length === 2 && parts[0] === course && parts[1].startsWith(`${fromSlug}-`)) {
+    // The e2e booth fixtures (zzz_e2ebooth_for_eng, zzz_test2_for_eng) were
+    // seeded with `<course>:<slug>-s1` ids, a hyphen where every real course has
+    // a colon. The caller only hands this function rows whose pod_id IS the pod
+    // being renamed, so the slug segment is still unambiguous; the tail keeps its
+    // own separator.
+    return `${course}:${toSlug}-${parts[1].slice(fromSlug.length + 1)}`
+  }
   if (parts.length < 3) return null
   if (parts[0] !== course || parts[1] !== fromSlug) return null
   return [course, toSlug, ...parts.slice(2)].join(':')
