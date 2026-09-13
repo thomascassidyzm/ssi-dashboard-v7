@@ -442,7 +442,7 @@ async function stageTtsInproc(course) {
   const concurrency = Number(process.env.TTS_CONCURRENCY) > 0
     ? Math.floor(Number(process.env.TTS_CONCURRENCY))
     : 5
-  let generated = 0, reused = 0, failed = 0
+  let generated = 0, reused = 0, failed = 0, driftSkipped = 0
   const errors = []
   async function worker(items) {
     for (const item of items) {
@@ -452,9 +452,12 @@ async function stageTtsInproc(course) {
           voice: item.voice, ctx, track: item.kind, sentenceId: item.sentence_id,
           preferIds: sibling[item.kind] ? sibling[item.kind].ids : null,
         })
-        const { error: linkErr } = await supabase
-          .from('listening_pod_sentences').update({ [item.link_column]: result.id }).eq('id', item.sentence_id)
-        if (linkErr) throw new Error(`link: ${linkErr.message}`)
+        const { written } = await linkPodClipIfStillNull(supabase, item, result.id)
+        if (!written) {
+          driftSkipped++
+          stageLog(course, 'tts', `! ${item.sentence_id} ${item.kind}: ${item.link_column} no longer null at write time — left alone`)
+          continue
+        }
         if (result.reused) reused++; else generated++
       } catch (err) {
         failed++
@@ -475,10 +478,30 @@ async function stageTtsInproc(course) {
     await Promise.all(buckets.map(b => worker(b)))
     queue = errors.map(e => workQueue.find(w => w.sentence_id === e.sentence_id && w.kind === e.kind)).filter(Boolean)
   }
-  stageLog(course, 'tts', `done: ${generated} generated, ${reused} reused, ${queue.length} failed`)
+  stageLog(course, 'tts', `done: ${generated} generated, ${reused} reused, ${driftSkipped} skipped on drift, ${queue.length} failed`)
   if (queue.length > 0) throw new Error(`${queue.length} clip(s) failed to render after retries`)
-  return { generated, reused, failed: queue.length }
+  return { generated, reused, failed: queue.length, driftSkipped }
 }
+
+/**
+ * Write a pod line's clip pointer ONLY where the column is still null at write
+ * time — the same guard /generate-pods link_only applies (#522). The queue was
+ * built from a read moments earlier; a pointer another writer (a parallel
+ * /generate-pods, a splice pass, a human relink) has set since must not be
+ * overwritten. `written: false` means the row was left alone — callers count
+ * and report it, never treat it as a failure.
+ */
+async function linkPodClipIfStillNull(db, item, clipId) {
+  const { data: written, error: linkErr } = await db
+    .from('listening_pod_sentences')
+    .update({ [item.link_column]: clipId })
+    .eq('id', item.sentence_id)
+    .is(item.link_column, null)
+    .select('id')
+  if (linkErr) throw new Error(`link: ${linkErr.message}`)
+  return { written: !!(written && written.length) }
+}
+module.exports = { linkPodClipIfStillNull }
 
 function httpPostPhase8(course, body) {
   const http = require('http')

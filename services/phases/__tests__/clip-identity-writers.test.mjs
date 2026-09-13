@@ -197,10 +197,13 @@ describe('findExistingAudio — one clip, however it was spelt', () => {
     state.audioRows = [{
       id: 'CLIP-1',
       course_code: 'fra_for_eng',
+      text: 'Bonjour',
       text_normalized: 'bonjour',
       language: 'fr',
       role: 'known',
       voice_id: 'leo',
+      // #522: an own-course hit must carry the same words and real audio too.
+      s3_key: 'mastered/CLIP-1.mp3',
     }]
     const found = await phase8.findExistingAudio(
       'fra_for_eng', 'Bonjour', 'fra', 'known', 'xai_leo')
@@ -324,6 +327,60 @@ describe('findAudioRowForClip — pod known audio is per language', () => {
     const found = await phase8.findAudioRowForClip('cym_n_for_eng', paused, 'eng', 'known', 'cartesia_x',
       { ...POD, altTexts: [original] })
     expect(found).toMatchObject({ id: 'SIB-FRA' })
+  })
+})
+
+// ─── #522: the three lookup defects the cold verifier (#520) found in #511 ────
+
+describe('findAudioRowForClip — own-course rows are validated like everyone else (#522)', () => {
+  const LINE = "let's have a coffee"
+  const POD = { scope: 'language', shareVoices: true }
+  const ownRow = (over = {}) => ({
+    id: 'OWN', course_code: 'cym_n_for_eng', text: LINE, text_normalized: LINE,
+    language: 'eng', role: 'known', voice_id: 'cartesia_x', s3_key: 'mastered/OWN.mp3', ...over,
+  })
+
+  it('never returns an own-course PENDING placeholder — that is a silent clip, not a recording', async () => {
+    state.audioRows = [ownRow({ s3_key: 'pending/OWN.mp3' })]
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x', POD)).toBeNull()
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x')).toBeNull()
+  })
+
+  it('never returns an own-course row whose stored words differ from the requested ones', async () => {
+    state.audioRows = [ownRow({ text: "let's have a coffee!" })]
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x', POD)).toBeNull()
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x')).toBeNull()
+  })
+
+  it('a pending own-course row does not shadow a real sibling clip of the same words', async () => {
+    state.audioRows = [ownRow({ s3_key: 'pending/OWN.mp3' }), ownRow({ id: 'SIB', course_code: 'fra_for_eng', voice_id: 'xai_b' })]
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x', POD)).toMatchObject({ id: 'SIB' })
+  })
+
+  it('still returns a real own-course row of the same words (own first, unchanged)', async () => {
+    state.audioRows = [ownRow(), ownRow({ id: 'SIB', course_code: 'fra_for_eng' })]
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x', POD)).toMatchObject({ id: 'OWN' })
+  })
+})
+
+describe('findAudioRowForClip — altTexts reach the course_audio query (#522)', () => {
+  it('fetches a clip stored under the UN-PAUSED original when only the paused text keys differ', async () => {
+    // Before #522 the .in('text_normalized') key set was built from the paused
+    // text alone, so a row keyed on the un-paused original was never fetched
+    // and the altTexts filter had nothing to accept — a paid render followed.
+    const original = 'hello. how are you'
+    const paused = 'hello … how are you'
+    state.audioRows = [{
+      id: 'UNPAUSED', course_code: 'fra_for_eng', text: original, text_normalized: original,
+      language: 'eng', role: 'known', voice_id: 'xai_b', s3_key: 'mastered/U.mp3',
+    }]
+    const found = await phase8.findAudioRowForClip('cym_n_for_eng', paused, 'eng', 'known', 'cartesia_x',
+      { scope: 'language', shareVoices: true, altTexts: [original] })
+    expect(found).toMatchObject({ id: 'UNPAUSED' })
+    // Same for the own course.
+    state.audioRows[0].course_code = 'cym_n_for_eng'; state.audioRows[0].voice_id = 'cartesia_x'
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', paused, 'eng', 'known', 'cartesia_x',
+      { scope: 'language', shareVoices: true, altTexts: [original] })).toMatchObject({ id: 'UNPAUSED' })
   })
 })
 
@@ -481,10 +538,13 @@ describe("generatePodAudio — the clip's language and the TTS cue are two thing
     state.audioRows = [{
       id: 'EXPLAINER-1',
       course_code: 'fra_for_eng',
+      text: 'bien means well',
       text_normalized: 'bien means well',
       language: 'fra',
       role: 'pod_explainer',
       voice_id: 'xai_gfzdpspr5fdp',
+      // #522: an own-course hit must carry the same words and real audio too.
+      s3_key: 'mastered/EXPLAINER-1.mp3',
     }]
     const result = await phase8.generatePodAudio({
       courseCode: 'fra_for_eng',
