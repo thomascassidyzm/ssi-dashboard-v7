@@ -7504,7 +7504,13 @@ async function findAudioRowForClip(courseCode, text, language, role, voiceId, op
   // normalizeForDb must not, so pre-normalising made the DB-convention candidate
   // unreachable for any text carrying a double space. Same fix as
   // findSiblingCourseClip.
-  const keys = audioKeyCandidates(text)
+  // #522: the key set carries every acceptable spelling — the text we would
+  // synthesise AND each altText (the pod path's un-paused original). Keying on
+  // the paused text alone meant a clip stored under the original was never
+  // FETCHED, so the altTexts filter below had nothing to accept and a paid
+  // render followed for words the estate already spoke.
+  const acceptableTexts = new Set([text, ...(opts.altTexts || [])].filter(Boolean))
+  const keys = [...new Set([...acceptableTexts].flatMap(audioKeyCandidates))]
   // A-137: the CROSS-COURSE read is role-agnostic — one voice pool per language
   // regardless of role — so a pod's known track can be answered by the identical
   // line already rendered as a main-course known/target clip in the same voice.
@@ -7534,14 +7540,19 @@ async function findAudioRowForClip(courseCode, text, language, role, voiceId, op
   const identityMatches = (row) =>
     sameLanguage(language, row.language) && sameVoice(voiceId, row.voice_id)
 
-  const own = (await readCandidates(true)).find(identityMatches)
+  // The words and the audio are checked in EVERY scope, own course included
+  // (#522, verifier #520): an own-course row is only a hit when its stored text
+  // is byte-identical to an acceptable spelling and its audio is real. A
+  // 'pending/' placeholder is a silent clip — returning it linked the line to
+  // silence and skipped the render; a drifted text is the wrong words.
+  const sameWords = (row) => acceptableTexts.has(row.text)
+  const isReal = (row) => row.s3_key && !String(row.s3_key).startsWith('pending/')
+
+  const own = (await readCandidates(true)).find(row => identityMatches(row) && sameWords(row) && isReal(row))
   if (own) return own
 
   if (opts.scope !== 'language') return null
 
-  const acceptableTexts = new Set([text, ...(opts.altTexts || [])].filter(Boolean))
-  const sameWords = (row) => acceptableTexts.has(row.text)
-  const isReal = (row) => row.s3_key && !String(row.s3_key).startsWith('pending/')
   // Known clips share across voices (Tom's per-language rule); target clips
   // share across courses only in the same voice (per-speaker cast).
   const shareAcrossVoices = opts.shareVoices === true
@@ -7550,6 +7561,10 @@ async function findAudioRowForClip(courseCode, text, language, role, voiceId, op
     (shareAcrossVoices || sameVoice(voiceId, row.voice_id)))
   if (!shareable.length) return null
 
+  // preferIds = clips a LIVE sibling pod of the same slug already serves, any
+  // course. On the 2026-09-13 cym_n pod-1 relink (verifier #520): of the 215
+  // reused clips, 94 were served by the French or Spanish pod-1 and all 215 by
+  // SOME live pod-1 sibling — the #511 report's "all 215 by fra/spa" overstated.
   const preferIds = opts.preferIds instanceof Set ? opts.preferIds : null
   const servedBySibling = preferIds ? shareable.filter(row => preferIds.has(row.id)) : []
   const ranked = [...servedBySibling, ...shareable.filter(row => !servedBySibling.includes(row))]
@@ -7959,8 +7974,10 @@ async function getCourseContext(courseCode) {
   // chose.
   const resolvedId = knownVoiceRaw.voiceId || knownVoiceRaw.voice_id || null
   const gender = knownVoiceRaw.gender || (knownCast.f ? 'f' : 'm')
+  // Bare id for the provider, as pod casts spell theirs: a lab-cast voice
+  // arrives here as 'cartesia_<uuid>' and Cartesia refuses that spelling.
   const knownVoice = resolvedId && knownVoiceRaw.provider !== 'human'
-    ? { voice_id: resolvedId, provider: knownVoiceRaw.provider || 'azure', gender }
+    ? { voice_id: String(resolvedId).replace(POD_PROVIDER_PREFIX, ''), provider: knownVoiceRaw.provider || 'azure', gender }
     : (knownCast[gender] || knownCast.m || knownCast.f || null)
   return {
     knownLang: course.known_lang,
@@ -7978,6 +7995,7 @@ async function getCourseContext(courseCode) {
  * primary is unusable — pickCastVoice's own rule) through the same cached load
  * voice-config-service uses, keyed on the course's known DIALECT entity.
  */
+const POD_PROVIDER_PREFIX = /^(cartesia|xai|azure|elevenlabs|google)_/
 async function knownCastByGender(course) {
   const out = { m: null, f: null }
   let cast
@@ -7989,9 +8007,15 @@ async function knownCastByGender(course) {
   for (const gender of ['m', 'f']) {
     const pick = pickCastVoice(cast.roles, voiceById, language, gender, 'phrase')
     if (!pick) continue
+    const provider = providerOfVoice(pick.voice) || null
     out[gender] = {
-      voice_id: pick.voice.voice_id,
-      provider: providerOfVoice(pick.voice) || null,
+      // BARE provider id, as every pod cast entry spells it and as the provider
+      // wants it — the lab row holds the estate spelling ('cartesia_<uuid>'),
+      // and Cartesia refuses that as "voice ID must be a valid UUID" (seen
+      // 2026-09-13). The canonical spelling is put back at the DB boundary by
+      // canonicalClipVoiceId, exactly as for a pod speaker's own entry.
+      voice_id: String(pick.voice.voice_id).replace(POD_PROVIDER_PREFIX, ''),
+      provider,
       gender,
       name: pick.voice.display_name || pick.voice.human_name || pick.voice.voice_id,
       castFrom: { slot: 'phrase', language, gender, rank: pick.rank },
