@@ -5,4 +5,5 @@ Everything under this directory is **a HISTORICAL ARTIFACT**. Each file was true
 Two retirement rounds so far:
 
 - **`docs-retired-2026-08-24/`** — the first sweep, on Tom's ruling of 2026-08-24.
+- **`tools-retired-2026-09-13/`** — the third sweep, on Tom's ruling of 2026-09-13 ("Pod-0 does not exist anymore … There is only pod-1 now"): one-off tools and scripts whose only purpose was the retired pod-0 slug, moved here at their original `tools/` paths. Their evidence logs stay where they were written.
 - **`docs-retired-2026-09-03/`** — the second sweep, on Tom's standing ruling of 2026-09-03: *"agents must read live code… docs are out of date the second they are crystallised."* Its own README names the specimen that provoked it: a document asserting a code change and 59 green tests that were never written.
