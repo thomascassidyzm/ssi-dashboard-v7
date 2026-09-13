@@ -56,7 +56,7 @@ const URL_TTL = 3600
  * library by api/pod-content.identity.test.js instead.
  *
  * TEMPORARY — the pre-canonical members ('comp:leo', 'en'). The writers
- * (tools/build-shared-known-store.cjs, tools/persist-stage0-pod0.cjs) now emit
+ * (tools/build-shared-known-store.cjs, tools/persist-stage0-pod.cjs) now emit
  * the canonical spelling, but every row written before them still carries the
  * old one. Dropping the old members before the approved back-fill has rewritten
  * those rows silences every pod explainer. Remove them — and turn these `.in()`s

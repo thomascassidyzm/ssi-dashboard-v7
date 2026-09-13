@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * pod0-recording-diff.cjs — three-way diff between the text a human recorder is
+ * pod-recording-diff.cjs — three-way diff between the text a human recorder is
  * served TODAY for a pod (listening_pod_sentences) and the canonical English
  * (canonical_pod_scenarios).
  *

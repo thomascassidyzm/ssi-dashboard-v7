@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * write-pod0-drafts.cjs — write machine-drafted target text into the empty pod-0
- * slots that align-pod0-to-canonical.cjs deliberately left blank.
+ * write-pod-drafts.cjs — write machine-drafted target text into the empty pod-0
+ * slots that align-pod-to-canonical.cjs deliberately left blank.
  *
  * Generalised 2026-08-08 from write-pod0-welsh-drafts.cjs, which applied a hardcoded
  * literal drafts module. The write shape is unchanged and is the point of the file:
@@ -21,7 +21,7 @@
  *
  * DRY RUN BY DEFAULT. Pass --apply to write.
  *
- *   node tools/pods/write-pod0-drafts.cjs --course=deu_at_for_eng \
+ *   node tools/pods/write-pod-drafts.cjs --course=deu_at_for_eng \
  *     --drafts=scripts/pod-audit/deu_at_for_eng-drafts.json --script=latin
  *   … --apply
  */
@@ -38,7 +38,7 @@ const arg = (n) => {
   const a = process.argv.find(x => x.startsWith(`--${n}=`))
   return a ? a.split('=').slice(1).join('=') : null
 }
-// Matches align-pod0-to-canonical.cjs's --pod-slug: on a live course the aligned
+// Matches align-pod-to-canonical.cjs's --pod-slug: on a live course the aligned
 // queue lives on a parallel slug so learners keep reading an intact pod-0.
 const POD_SLUG = arg('pod-slug') || 'pod-0'
 const COURSE = arg('course')

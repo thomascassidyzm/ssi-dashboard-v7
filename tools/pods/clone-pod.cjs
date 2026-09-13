@@ -3,7 +3,7 @@
  * clone-pod.cjs — copy a course's pod row and every one of its sentence rows to a
  * second slug, so a destructive-looking rewrite can happen off the live pod.
  *
- * WHY THIS EXISTS. align-pod0-to-canonical.cjs rewrites a pod's English to Aran's
+ * WHY THIS EXISTS. align-pod-to-canonical.cjs rewrites a pod's English to Aran's
  * 2026-08-06 canonical, which on a typical course leaves ~128 slots with EMPTY
  * target text and no audio until translation and generation catch up. On a course
  * that is `draft` that is free. On a LIVE course it is hours of real learners
@@ -272,7 +272,7 @@ async function main () {
         // makes this tool transform text on the way through, the split arrays
         // drop to NULL instead of following the slot into a new conversation, and
         // the player falls back to the whole-turn clip. That transform, done
-        // downstream by align-pod0-to-canonical.cjs on a clone exactly like this
+        // downstream by align-pod-to-canonical.cjs on a clone exactly like this
         // one, is what produced the ita pod-1 scene-15 defect.
         const row = { ...s, ...carrySplitAudio(s, s) }
         const vals = [reId(s.id), dstPodId, ...copyCols.map(c => enc(sentenceJson, c, row[c]))]

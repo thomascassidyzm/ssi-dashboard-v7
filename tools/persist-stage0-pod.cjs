@@ -1,5 +1,5 @@
 /**
- * persist-stage0-pod0.cjs — persist the Stage-0 course-preview backend assets
+ * persist-stage0-pod.cjs — persist the Stage-0 course-preview backend assets
  * for spa_for_eng / pod-0 (Atom-Fusion Introduction).
  *
  * Reads the generated content on disk (~/Desktop/stage0-spa-pod0/):
@@ -28,8 +28,8 @@
  * pod_legos upsert on (course_code,lego_key). atom_map is overwritten per run.
  *
  * Usage:
- *   node tools/persist-stage0-pod0.cjs --dry-run   # logs what it WOULD write
- *   node tools/persist-stage0-pod0.cjs             # real run
+ *   node tools/persist-stage0-pod.cjs --dry-run   # logs what it WOULD write
+ *   node tools/persist-stage0-pod.cjs             # real run
  */
 
 const path = require('path')
@@ -44,7 +44,7 @@ const { canonicalLanguage, canonicalVoiceId } = require('../services/shared/clip
 const { AUDIO_CACHE_CONTROL } = require('../services/shared/audio-cache-control.cjs')
 
 // Course-parameterized (default spa so the original spa path is intact):
-//   COURSE=hrv_for_eng node tools/persist-stage0-pod0.cjs
+//   COURSE=hrv_for_eng node tools/persist-stage0-pod.cjs
 const COURSE_CODE = (process.env.COURSE || 'spa_for_eng').trim()
 // `language` is canonicalised below, so the ISO-639-1 spellings here and the
 // ISO-3 the fallback derives from the course code no longer produce two shapes
@@ -196,7 +196,7 @@ async function resolveSharedMeans(meansText) {
 }
 
 async function main() {
-  log(`persist-stage0-pod0 ${DRY_RUN ? '(DRY RUN)' : '(REAL RUN)'} — ${COURSE_CODE}/${POD_SLUG}`)
+  log(`persist-stage0-pod ${DRY_RUN ? '(DRY RUN)' : '(REAL RUN)'} — ${COURSE_CODE}/${POD_SLUG}`)
   log(`  source: ${SRC_DIR}`)
   log(`  S3: s3://${S3_BUCKET} (${AWS_REGION})  voice=${VOICE_ID}\n`)
 

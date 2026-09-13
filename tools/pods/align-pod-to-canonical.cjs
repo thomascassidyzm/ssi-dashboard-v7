@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * align-pod0-to-canonical.cjs — make a course's pod-0 queue serve Aran's 2026-08-06
+ * align-pod-to-canonical.cjs — make a course's pod-0 queue serve Aran's 2026-08-06
  * canonical English, or serve nothing, but never the old text (Tom's brief
  * 2026-08-06: "make sure the human recording is not doing the older stuff").
  *
@@ -45,12 +45,12 @@
  *                      is off the learner path and the guard steps aside
  *   --clone-slug=<s>   where auto-clone puts the copy (default `pod-0-unrecorded`)
  *
- *   node tools/pods/align-pod0-to-canonical.cjs --course=deu_at_for_eng
- *   node tools/pods/align-pod0-to-canonical.cjs --course=deu_at_for_eng --apply
+ *   node tools/pods/align-pod-to-canonical.cjs --course=deu_at_for_eng
+ *   node tools/pods/align-pod-to-canonical.cjs --course=deu_at_for_eng --apply
  *
  * Restoring the pre-alignment state needs the archive the run wrote, so point
  * --archive-dir at it. The 2026-08-06 Welsh run's archive lives at its own path:
- *   node tools/pods/align-pod0-to-canonical.cjs --course=cym_n_for_eng \
+ *   node tools/pods/align-pod-to-canonical.cjs --course=cym_n_for_eng \
  *     --archive-dir=docs/pods/pod0-welsh-prealign-archive-2026-08-06 --restore-from-archive
  */
 'use strict'
@@ -61,7 +61,7 @@ const path = require('path')
 const crypto = require('crypto')
 const { execFileSync } = require('child_process')
 const { createClient } = require('@supabase/supabase-js')
-const { diffPod, norm } = require('./pod0-recording-diff.cjs')
+const { diffPod, norm } = require('./pod-recording-diff.cjs')
 const { carrySplitAudio, SPLIT_AUDIO_FIELDS } = require('./split-audio-inheritance.cjs')
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -410,7 +410,7 @@ async function planCourse(course, canonRaw, slug) {
       canonical_aligned_at: CANONICAL_STAMP,
       canonical_alignment_note:
         'English, speakers and ordering aligned to Aran\'s 2026-08-06 pod-0 canonical by ' +
-        'tools/pods/align-pod0-to-canonical.cjs. Target text was carried forward ' +
+        'tools/pods/align-pod-to-canonical.cjs. Target text was carried forward ' +
         'only where the English is unchanged; every other slot is deliberately NULL and is ' +
         'not recordable until the target text is written.',
     },

@@ -8,7 +8,7 @@
  * runs in node, where the CSV is present.
  *
  * It also pins the temporary pre-canonical members. The writers
- * (tools/build-shared-known-store.cjs, tools/persist-stage0-pod0.cjs) now emit
+ * (tools/build-shared-known-store.cjs, tools/persist-stage0-pod.cjs) now emit
  * the canonical spelling, but every row written before them carries the old
  * one. Dropping the old members before the approved back-fill has run silences
  * every pod explainer.
@@ -61,8 +61,8 @@ describe('the writers this read is coupled to', () => {
     expect(writer).toMatch(/const VOICE_ID = canonicalVoiceId\('comp:leo'\)/)
   })
 
-  it('persist-stage0-pod0 writes the same composite voice', () => {
-    const writer = readFileSync(new URL('../tools/persist-stage0-pod0.cjs', import.meta.url), 'utf8')
+  it('persist-stage0-pod writes the same composite voice', () => {
+    const writer = readFileSync(new URL('../tools/persist-stage0-pod.cjs', import.meta.url), 'utf8')
     expect(writer).toMatch(/const VOICE_ID = canonicalVoiceId\('comp:leo'\)/)
     expect(writer).toMatch(/const LANGUAGE = canonicalLanguage\(META\.language\)/)
   })
