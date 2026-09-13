@@ -103,6 +103,7 @@
 'use strict'
 
 const { canonicalLanguage, canonicalVoiceId, tryCanonicalVoiceId } = require('../shared/clip-identity.cjs')
+const { writeOrSwapClip } = require('../shared/audio-revision-swap.cjs')
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
@@ -1919,49 +1920,79 @@ async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Ke
     return !!owner && recordist.spellings.includes(owner)
   })
 
+  // EVERY DUPLICATE IS ACCOUNTED FOR. A copy that could not be filled is
+  // returned in `failed`, by id, so the caller can keep that line's re-record
+  // mark instead of retiring it on the strength of a take it never received
+  // (Astra cold-check #592: the two Senedd "Prynhawn da." rows — one take, one
+  // failed link, both marks gone, the second still serving its old clip).
   const linked = []
+  const failed = []
   for (const s of targets) {
     const courseCode = podById.get(s.pod_id).course_code
-    const row = {
+    const identity = {
+      course_code: courseCode,
+      text_normalized: textNormalized,
+      language: recordist.language,
+      role,
+      voice_id: canonicalVoiceId(recordist.voiceId),
+      text,
+    }
+    const insertRow = {
       course_code: courseCode,
       text: text,
       text_normalized: textNormalized,
       language: recordist.language,
       role,
-      voice_id: canonicalVoiceId(recordist.voiceId),
+      voice_id: identity.voice_id,
       origin: 'human',
       s3_key: s3Key,
-      // Explicit: this upsert lands on the SAME clip identity as the take it
+      // Explicit: this write lands on the SAME clip identity as the take it
       // replaces, so an omitted column would leave the old row's want in place
       // and re-queue a line the recordist has just finished.
       rerecord_wanted: null,
     }
-    if (durationMs) row.duration_ms = durationMs
-    if (fileSizeBytes) row.file_size_bytes = fileSizeBytes
-    const { data: audioRow, error: upsertErr } = await db
-      .from('course_audio')
-      .upsert(row, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
-      .select()
-      .single()
-    if (upsertErr) {
-      logger.error(`[Recordist] propagation upsert failed for ${courseCode}/${s.id}: ${upsertErr.message}`)
+    if (durationMs) insertRow.duration_ms = durationMs
+    if (fileSizeBytes) insertRow.file_size_bytes = fileSizeBytes
+    // VERSIONED, NEVER A BARE UPSERT: the duplicate's clip row keeps its uuid
+    // and gets audio_revision +1, because <uuid>.v<audio_revision> is what the
+    // learner's phone caches (services/shared/audio-revision-swap.cjs). An
+    // in-place s3_key repoint left cached listeners on the old take forever.
+    let audioId
+    try {
+      const written = await writeOrSwapClip({
+        supabase: db, identity, insertRow,
+        swapPatch: { origin: 'human', text, rerecord_wanted: null },
+        newS3Key: s3Key, durationMs: durationMs || null, fileSizeBytes: fileSizeBytes || null,
+        source: 'pod-booth-take-propagation',
+        acceptedBy: `recordist ${recordist.voiceId}`,
+        reason: `duplicate of pod line ${sentenceId}`,
+        logger,
+      })
+      audioId = written.audioId
+    } catch (err) {
+      logger.error(`[Recordist] propagation clip write failed for ${courseCode}/${s.id}: ${err.message}`)
+      failed.push({ sentenceId: s.id, courseCode, stage: 'clip', error: err.message })
       continue
     }
     const previous = s.target_audio_id || null
     const { error: linkErr } = await db
       .from('listening_pod_sentences')
-      .update({ target_audio_id: audioRow.id })
+      .update({ target_audio_id: audioId })
       .eq('id', s.id)
     if (linkErr) {
       logger.error(`[Recordist] propagation link failed for ${s.id}: ${linkErr.message}`)
+      failed.push({ sentenceId: s.id, courseCode, stage: 'link', error: linkErr.message })
       continue
     }
-    linked.push({ sentenceId: s.id, courseCode, audioId: audioRow.id, replacedAudioId: previous })
+    linked.push({ sentenceId: s.id, courseCode, audioId, replacedAudioId: previous })
   }
   if (linked.length) {
     logger.log(`[Recordist] one take filled ${linked.length} duplicate line(s) in ${new Set(linked.map((l) => l.courseCode)).size} course(s)`)
   }
-  return { linked, skipped: targets.length - linked.length }
+  if (failed.length) {
+    logger.error(`[Recordist] ${failed.length} duplicate line(s) NOT filled — their re-record marks stay: ${failed.map((f) => f.sentenceId).join(', ')}`)
+  }
+  return { linked, failed, skipped: targets.length - linked.length }
 }
 
 /**
@@ -2068,16 +2099,31 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
   return out
 }
 
-async function clearRerecordWants({ db, recordist, text, sentenceId = null, logger = console }) {
+/**
+ * `keep` is the propagation's failure list, and it is what makes retirement
+ * CONDITIONAL: a want is retired only on a line the take actually reached.
+ *   keep.sentenceIds   — pod lines whose target want must stay (un-propagated
+ *                        duplicates); their marks are the only record that the
+ *                        take never landed there.
+ *   keep.courseCodes   — courses whose clip-level wants must stay, for the same
+ *                        reason: the clip row in that course was never swapped.
+ *   keep.allDuplicates — propagation as a whole blew up before it could say
+ *                        which copies it reached, so ONLY the source line (and
+ *                        its own course's clip row, via sourceCourseCode) is retired.
+ */
+async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep = null, sourceCourseCode = null, logger = console }) {
+  const keepSentenceIds = new Set((keep && keep.sentenceIds) || [])
+  const keepCourseCodes = new Set((keep && keep.courseCodes) || [])
+  const keepAllDuplicates = !!(keep && keep.allDuplicates)
   const keys = audioKeyCandidates(String(text || '').trim())
-  const cleared = { clips: 0, sentences: 0 }
+  const cleared = { clips: 0, sentences: 0, keptClips: 0 }
   if (!keys.length) return cleared
 
   // 1. The clip flag, for every course of this language and every spelling of
   //    this voice — the widened read, narrow write rule.
   const { data: clips, error: clipErr } = await db
     .from('course_audio')
-    .select('id')
+    .select('id, course_code')
     .eq('language', recordist.language)
     .in('voice_id', recordist.spellings)
     .in('text_normalized', keys)
@@ -2085,12 +2131,20 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
   if (clipErr) {
     logger.error(`[Recordist] want lookup failed: ${clipErr.message}`)
   } else if (clips && clips.length) {
-    const { error } = await db
-      .from('course_audio')
-      .update({ rerecord_wanted: null })
-      .in('id', clips.map((c) => c.id))
-    if (error) logger.error(`[Recordist] clip want clear failed: ${error.message}`)
-    else cleared.clips = clips.length
+    const retire = clips.filter((c) => {
+      if (keepCourseCodes.has(c.course_code)) return false
+      if (keepAllDuplicates && sourceCourseCode && c.course_code !== sourceCourseCode) return false
+      return true
+    })
+    if (retire.length) {
+      const { error } = await db
+        .from('course_audio')
+        .update({ rerecord_wanted: null })
+        .in('id', retire.map((c) => c.id))
+      if (error) logger.error(`[Recordist] clip want clear failed: ${error.message}`)
+      else cleared.clips = retire.length
+    }
+    cleared.keptClips = clips.length - retire.length
   }
 
   // 2. The pod line's own flag, on every copy of this line THIS VOICE fills --
@@ -2110,7 +2164,10 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, logg
     const sentences = await fetchAllSentences(db, [...podById.keys()])
     const hits = sentences.filter((s) => {
       if (!s.rerecord_wanted || !s.rerecord_wanted.target) return false
-      if (s.id !== sentenceId && !audioKeyCandidates((s.target_text || '').trim()).some((k) => normalized.has(k))) return false
+      if (s.id !== sentenceId) {
+        if (keepSentenceIds.has(s.id) || keepAllDuplicates) return false
+        if (!audioKeyCandidates((s.target_text || '').trim()).some((k) => normalized.has(k))) return false
+      }
       const course = byCourse.get((podById.get(s.pod_id) || {}).course_code)
       if (!course) return false
       const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)

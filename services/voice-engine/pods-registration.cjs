@@ -14,7 +14,7 @@
  *       (client metadata.voiceId is advisory — same trust model as the
  *        voice_config.voices[role] slots)
  *   commit (AFTER the mastered take is at its fresh S3 key)
- *     → upsert course_audio  origin='human', role per kind (recon §1:
+ *     → write course_audio (insert, or revision-bumped swap)  origin='human', role per kind (recon §1:
  *       target→'target1', known→'known' — never invented), conflict on the
  *       live 5-column unique key
  *     → set listening_pod_sentences.{target|known}_audio_id
@@ -25,9 +25,9 @@
  * the sentence FK re-points; the previously linked audio id is recorded in
  * provenance (replaced_audio_id) so old takes stay recoverable. When the
  * re-record collides on the 5-column key (same text/voice/role/language),
- * the upsert repoints THAT row's s3_key — the old object stays at its old
- * key and is recorded as replaced_s3_key (same reversibility contract as
- * regeneration mode).
+ * the versioned swap repoints THAT row's s3_key and bumps audio_revision (the
+ * learner's cache key) — the old object stays at its old key and is recorded as
+ * replaced_s3_key (same reversibility contract as regeneration mode).
  *
  * Explainer narration was deprecated on 2026-08-24: kind 'explainer' is no
  * longer a registerable pod track, so no new 'pod_explainer' rows are written
@@ -38,12 +38,13 @@
  * may opportunistically claim a NULL-audio lego/phrase with identical
  * normalized text.
  *
- * No DDL. No TTS. Writes: course_audio upsert + one sentence FK update.
+ * No DDL. No TTS. Writes: course_audio insert-or-swap (+ one course_audio_revisions ledger row) + one sentence FK update.
  */
 
 const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const { canonicalLanguage, canonicalVoiceId } = require('../shared/clip-identity.cjs')
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
+const { writeOrSwapClip } = require('../shared/audio-revision-swap.cjs')
 
 // recon §1: the EXACT role strings phase8's pod generator writes. Do not invent.
 const POD_KIND_ROLES = Object.freeze({
@@ -240,18 +241,20 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
 
 /**
  * COMMIT (writes — run AFTER the mastered take is uploaded to its fresh key).
- * Upserts the human course_audio row and re-points the sentence FK.
+ * Writes the human course_audio row — a fresh row when the clip identity is
+ * new, a revision-bumped swap onto the existing row when it is not — and
+ * re-points the sentence FK.
  *
- * @returns {Promise<{ audioRow: object, replacedAudioId: string|null, replacedS3Key: string|null, repointedExistingRow: boolean }>}
+ * @returns {Promise<{ audioRow: {id, s3_key, audio_revision, created}, replacedAudioId: string|null, replacedS3Key: string|null, repointedExistingRow: boolean, revision: number|null }>}
  */
-async function commitPodRegistration({ supabase, courseCode, context, s3Key, durationMs = null, fileSizeBytes = null, logger = console }) {
+async function commitPodRegistration({ supabase, courseCode, context, s3Key, durationMs = null, fileSizeBytes = null, acceptedBy = null, logger = console }) {
   const textNormalized = normalizeForAudio(context.text)
   const language = canonicalLanguage(context.language)
   const voiceId = canonicalVoiceId(context.voiceId, { provider: context.provider })
 
   // Reversibility: if a row already occupies this exact 5-column key, the
-  // upsert below repoints it — capture its current s3_key first so provenance
-  // can record where the previous take lives.
+  // versioned swap below repoints it — capture its current s3_key first so
+  // provenance can record where the previous take lives.
   //
   // The lookup is deliberately WIDER than the write. The write now stores the
   // canonical voice spelling, but a take recorded before this change is sitting
@@ -271,7 +274,21 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
   if (priorErr) throw new Error(`pod registration prior-row lookup failed: ${priorErr.message}`)
   const priorRow = priorRows && priorRows[0] ? priorRows[0] : null
 
-  const row = {
+  // VERSIONED, NEVER A BARE UPSERT. A re-record of a line whose clip identity
+  // already exists lands on the SAME course_audio row, and the learner's address
+  // for that row is <uuid>.v<audio_revision> — served immutable and keyed in the
+  // player's IndexedDB by that string (services/shared/audio-revision-swap.cjs).
+  // An upsert that repointed s3_key in place changed the bytes behind an
+  // address no phone would ever ask for again, so Aran's re-take played for a
+  // first-time listener and the OLD take for everyone else (Astra cold-check
+  // #592, 2026-09-13; the same hole job #568 had to route around by re-filing
+  // four slots under fresh ids). No course_audio trigger supplies the bump, so
+  // it happens here: insert when the key is free, revision-bumped swap when it
+  // is held. The row id never moves, so no FK is ever left dangling.
+  //
+  // rerecord_wanted goes to null on the clip in the same write: this take IS
+  // the fulfilment of that want, and the swap lands on the row that carried it.
+  const insertRow = {
     course_code: courseCode,
     text: context.text,
     text_normalized: textNormalized,
@@ -280,16 +297,30 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     voice_id: voiceId,
     origin: 'human',
     s3_key: s3Key,
+    rerecord_wanted: null,
   }
-  if (durationMs) row.duration_ms = durationMs
-  if (fileSizeBytes) row.file_size_bytes = fileSizeBytes
+  if (durationMs) insertRow.duration_ms = durationMs
+  if (fileSizeBytes) insertRow.file_size_bytes = fileSizeBytes
 
-  const { data: audioRow, error: upsertErr } = await supabase
-    .from('course_audio')
-    .upsert(row, { onConflict: 'course_code,text_normalized,language,role,voice_id' })
-    .select()
-    .single()
-  if (upsertErr) throw new Error(`pod course_audio upsert failed: ${upsertErr.message}`)
+  let written
+  try {
+    written = await writeOrSwapClip({
+      supabase,
+      identity: { course_code: courseCode, text_normalized: textNormalized, language, role: context.role, voice_id: voiceId, text: context.text },
+      insertRow,
+      swapPatch: { origin: 'human', text: context.text, rerecord_wanted: null },
+      newS3Key: s3Key,
+      durationMs: durationMs || null,
+      fileSizeBytes: fileSizeBytes || null,
+      source: 'pod-booth-take',
+      acceptedBy: acceptedBy || 'production-api /upload (pod)',
+      reason: `human take on pod line ${context.sentenceId} (${context.kind})`,
+      logger,
+    })
+  } catch (err) {
+    throw new Error(`pod course_audio write failed: ${err.message}`)
+  }
+  const audioRow = { id: written.audioId, s3_key: s3Key, audio_revision: written.revision, created: written.created }
 
   // FULFILMENT. This take IS the re-record that was wanted for this track, so
   // the want is cleared in the same write that re-points the FK — one statement,
@@ -320,7 +351,7 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
   const repointedExistingRow = !!(priorRow && priorRow.id === audioRow.id)
 
   // A prior take found under the OTHER voice spelling cannot be repointed by
-  // the upsert — its conflict key differs, so the new take lands as a fresh
+  // the swap — its identity key differs, so the new take lands as a fresh
   // row. That is the make-before-break-safe outcome (the old take still exists
   // at its own s3_key, nothing was overwritten) but the sentence FK has moved
   // off it, so say so rather than let it become a silent orphan.
@@ -335,7 +366,7 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
   logger.log(
     `[PodRecording] ${context.sentenceId} ${context.kind} → course_audio ${audioRow.id} ` +
     `(role=${context.role}, voice=${voiceId}, origin=human` +
-    `${repointedExistingRow ? `, repointed ${priorRow.s3_key} -> ${s3Key}` : ''}` +
+    `${repointedExistingRow ? `, repointed ${priorRow.s3_key} -> ${s3Key}, revision -> ${written.revision}` : ''}` +
     `${context.replacedAudioId && context.replacedAudioId !== audioRow.id ? `, replaces ${context.replacedAudioId}` : ''})`
   )
 
@@ -346,6 +377,7 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     replacedAudioId: context.replacedAudioId === audioRow.id ? null : context.replacedAudioId,
     replacedS3Key: repointedExistingRow && priorRow.s3_key !== s3Key ? priorRow.s3_key : null,
     repointedExistingRow,
+    revision: written.revision,
   }
 }
 

@@ -1107,8 +1107,13 @@ module.exports = function createRecordistRouter({
       const audioId = captured.body.uuid
       // One recording fills every duplicate of this line across the language —
       // the other half of the queue's dedupe promise. Runs AFTER the take is
-      // stored (make-before-break); a failure here never fails the take.
-      let propagation = { linked: [] }
+      // stored (make-before-break); a failure here never fails the take — but
+      // it is never SWALLOWED either. Every copy the take did not reach keeps
+      // its re-record mark, and the response says which (Astra cold-check
+      // #592, 2026-09-13: both Senedd "Prynhawn da." marks were retired on one
+      // take while the second row went on serving its old clip).
+      let propagation = { linked: [], failed: [] }
+      let propagationError = null
       try {
         propagation = await propagateTakeToDuplicates({
           db: db(),
@@ -1120,26 +1125,46 @@ module.exports = function createRecordistRouter({
           logger,
         })
       } catch (propErr) {
-        logger.error(`[Recordist] propagation failed (take is stored and linked): ${propErr.message}`)
+        propagationError = propErr.message
+        logger.error(`[Recordist] propagation failed (take is stored and linked; every duplicate keeps its mark): ${propErr.message}`)
       }
+      const notFilled = propagation.failed || []
 
       // The line was queued BECAUSE a re-record was wanted; that want is now
-      // satisfied. Retired last, after the take is stored, linked and
-      // propagated — and never allowed to fail the take.
-      let retired = { clips: 0, sentences: 0 }
+      // satisfied — ON THE LINES THE TAKE REACHED. Retired last, after the take
+      // is stored, linked and propagated, and never allowed to fail the take.
+      // A duplicate that was not filled keeps its mark: the mark is the only
+      // record that it still needs the take.
+      let retired = { clips: 0, sentences: 0, keptClips: 0 }
+      let retirementError = null
       try {
-        retired = await clearRerecordWants({ db: db(), recordist, text: lineText, sentenceId: sentence.id, logger })
+        retired = await clearRerecordWants({
+          db: db(), recordist, text: lineText, sentenceId: sentence.id, logger,
+          sourceCourseCode: pod.course_code,
+          keep: propagationError
+            ? { allDuplicates: true }
+            : { sentenceIds: notFilled.map((f) => f.sentenceId), courseCodes: notFilled.map((f) => f.courseCode) },
+        })
       } catch (wantErr) {
+        retirementError = wantErr.message
         logger.error(`[Recordist] want retirement failed (take is stored and linked): ${wantErr.message}`)
       }
+
+      const warnings = []
+      if (propagationError) warnings.push(`duplicates of this line were not filled (${propagationError}); their re-record marks stay`)
+      for (const f of notFilled) warnings.push(`duplicate ${f.sentenceId} in ${f.courseCode} not filled at ${f.stage}: ${f.error}; its re-record mark stays`)
+      if (retirementError) warnings.push(`re-record marks were not retired: ${retirementError}`)
 
       res.json({
         ok: true,
         audioId,
         clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${sentence.id}/clip`,
         alsoFilled: propagation.linked.length,
+        notFilled,
         rawKey: captured.body.rawKey || null,
         wantsRetired: retired.clips + retired.sentences,
+        wantsKept: (retired.keptClips || 0) + notFilled.length,
+        ...(warnings.length ? { warnings } : {}),
       })
     } catch (err) {
       logger.error(`[Recordist] take: ${err.message}`)

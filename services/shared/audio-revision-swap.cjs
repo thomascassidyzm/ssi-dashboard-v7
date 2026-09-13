@@ -238,6 +238,7 @@ async function swapClipInPlace ({
  *                              label under the new audio.
  * @param {string} o.newS3Key
  * @param {number} [o.durationMs]
+ * @param {number} [o.fileSizeBytes]
  * @param {string} o.source
  * @param {string} o.acceptedBy
  * @param {string} [o.reason]
@@ -245,7 +246,7 @@ async function swapClipInPlace ({
  * @returns {Promise<{audioId: string, created: boolean, revision: number|null}>}
  */
 async function writeOrSwapClip ({
-  supabase, identity, insertRow, swapPatch, newS3Key, durationMs = null,
+  supabase, identity, insertRow, swapPatch, newS3Key, durationMs = null, fileSizeBytes = null,
   source, acceptedBy, reason = null, logger = null,
 }) {
   // THE KEY COLUMN DOES NOT HOLD ONE CONVENTION, SO IT CANNOT BE MATCHED WITH .eq().
@@ -290,7 +291,7 @@ async function writeOrSwapClip ({
 
   const swapOnto = async (audioId, why) => {
     const out = await swapClipInPlace({
-      supabase, audioId, newS3Key, durationMs,
+      supabase, audioId, newS3Key, durationMs, fileSizeBytes,
       patch: swapPatch, source, acceptedBy, reason: why, logger,
     })
     return { audioId, created: false, revision: out.revision }

@@ -88,6 +88,9 @@ function stubDb(tables, writes = []) {
         single() { return Promise.resolve({ data: op === 'upsert' ? { id: `new-${writes.length}`, ...patch } : rows[0] || null, error: null }) },
         update(p) { op = 'update'; patch = p; return q },
         upsert(p) { op = 'upsert'; patch = p; writes.push({ table, op, row: p }); return q },
+        // The versioned writer INSERTs a fresh row when the clip identity is free
+        // (services/shared/audio-revision-swap.cjs); the stub files it like an upsert.
+        insert(p) { op = 'upsert'; patch = p; writes.push({ table, op: 'insert', row: p }); return q },
         then(resolve, reject) {
           if (op === 'update') writes.push({ table, op, patch, ids: rows.map((r) => r.id) })
           return Promise.resolve({ data: rows, error: null }).then(resolve, reject)
