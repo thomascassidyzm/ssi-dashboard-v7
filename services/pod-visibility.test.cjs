@@ -354,6 +354,13 @@ describe('applyRequiredRoleChange — the Senedd opening as a request, not a han
     expect(r.status).toBe(409)
     expect(store.writes).toEqual([])
   })
+  it('refuses to re-scope a live pod from role A to role B before any write (Astra #612; DB trigger mirrors this, not modelled by the fake store)', async () => {
+    const store = fakeRoleStore({ [SENEDD]: { visibility: 'live', required_role: 'previewer_001', metadata: {} } })
+    const r = await applyRequiredRoleChange({ podId: SENEDD, requested: 'previewer_002', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(409)
+    expect(r.body.error).toMatch(/never pulled back/)
+    expect(store.writes).toEqual([])
+  })
   it('two openings racing: the loser is a 200 no-op, never a second stamp', async () => {
     const store = fakeRoleStore({ [SENEDD]: { visibility: 'live', required_role: 'previewer_001', metadata: {} } })
     let release
