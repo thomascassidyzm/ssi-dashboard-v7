@@ -35,10 +35,25 @@ const AUSTRIAN_CONFIG = {
 }
 
 describe('humanRolesForCourse — the three signals', () => {
-  it('protects EVERY role of a human-voiced course, with no database at all', () => {
+  it('protects every TARGET-SIDE role of a human-voiced course, with no database at all', () => {
     const human = humanRolesForCourse({ course: WELSH, roles: CAST_ROLES })
-    expect([...human.keys()].sort()).toEqual([...CAST_ROLES].sort())
     expect(human.get('target1').source).toBe('policy-course')
+    expect(human.get('target2').source).toBe('policy-course')
+  })
+
+  it('leaves the KNOWN side of a human-voiced course to the data signals — English is per language (Tom, 2026-09-13)', () => {
+    // The policy is about Welsh. With no stored human slot and no recorded
+    // clips, cym_n's English known role is castable like any other course's…
+    const bare = humanRolesForCourse({ course: WELSH, roles: CAST_ROLES })
+    expect(bare.has('known')).toBe(false)
+    expect(bare.has('instruction')).toBe(false)
+    // …and with Aran's thousands of English recordings in the view it is still
+    // refused — by the recording, which is the honest reason.
+    const recorded = humanRolesForCourse({
+      course: WELSH, roles: CAST_ROLES,
+      humanRows: [{ course_code: 'cym_n_for_eng', role: 'known', clips: 6337, a_voice_id: 'human_aran_cym_n' }],
+    })
+    expect(recorded.get('known').source).toBe('recorded-clips')
   })
 
   it('protects the target roles of a human-voiced LANGUAGE on a course not named in the list', () => {
@@ -130,15 +145,25 @@ describe('applyLanguageCast — the guard on the render path', () => {
     expect(decisions.some((d) => d.source === 'language-cast')).toBe(false)
   })
 
-  it("refuses the Welsh courses' KNOWN role too — English, which is not a human language", () => {
-    // The trap: cym_n_for_eng's English prompts are Aran's recordings, and a
-    // cast on `eng` is not a cast on a human-voiced language at all.
-    const { config, decisions } = applyLanguageCast({
+  it("refuses the Welsh courses' KNOWN role where Aran's English recordings exist, and casts it where none do", () => {
+    // cym_n_for_eng's English prompts ARE Aran's recordings — the view says so,
+    // and that is what refuses the cast. The course code alone no longer does:
+    // English is per language (Tom, 2026-09-13), so a Welsh course with no
+    // English recordings takes the English cast like every other course.
+    const humanRows = [{ course_code: 'cym_n_for_eng', role: 'known', clips: 6337, a_voice_id: 'human_aran_cym_n' }]
+    const recorded = applyLanguageCast({
+      voiceConfig: { voices: { known: { voiceId: 'azure_en_gb_libby', provider: 'azure' } } },
+      course: WELSH, roles: [castRow('eng')], voices: [CARTESIA], humanRows,
+    })
+    expect(recorded.decisions.find((d) => d.role === 'known').source).toBe('human-recorded')
+    expect(recorded.config.voices.known.voiceId).toBe('azure_en_gb_libby')
+
+    const unrecorded = applyLanguageCast({
       voiceConfig: { voices: { known: { voiceId: 'azure_en_gb_libby', provider: 'azure' } } },
       course: WELSH, roles: [castRow('eng')], voices: [CARTESIA],
     })
-    expect(decisions.find((d) => d.role === 'known').source).toBe('human-recorded')
-    expect(config.voices.known.voiceId).toBe('azure_en_gb_libby')
+    expect(unrecorded.decisions.find((d) => d.role === 'known').source).toBe('language-cast')
+    expect(unrecorded.config.voices.known.voiceId).toBe('cartesia_abc')
   })
 
   it('casts the synthetic role and refuses the human one on the SAME course', () => {
@@ -175,11 +200,19 @@ describe('humanRecordedForLanguage — what the screen says before the tap', () 
     expect(out.roles).toContain('target1')
   })
 
-  it('names the Welsh courses on a cast against ENGLISH, and leaves Spanish out of it', () => {
-    const out = humanRecordedForLanguage({ language: 'eng', slot: 'phrase', courses: COURSES })
+  it('names the Welsh courses on a cast against ENGLISH only where their English is recorded, and leaves Spanish out of it', () => {
+    const humanRows = [
+      { course_code: 'cym_n_for_eng', role: 'known', clips: 6337, a_voice_id: 'human_aran_cym_n' },
+      { course_code: 'cym_s_for_eng', role: 'known', clips: 6601, a_voice_id: 'legacy_import' },
+    ]
+    const out = humanRecordedForLanguage({ language: 'eng', slot: 'phrase', courses: COURSES, humanRows })
     expect(out.courses.map((c) => c.course).sort()).toEqual(['cym_n_for_eng', 'cym_s_for_eng'])
     expect(out.courses.every((c) => c.roles.includes('known'))).toBe(true)
     expect(out.courses.map((c) => c.course)).not.toContain('spa_for_eng')
+    // Without the recordings the course code alone names nobody: English is
+    // not a human-voiced language (Tom, 2026-09-13).
+    const bare = humanRecordedForLanguage({ language: 'eng', slot: 'phrase', courses: COURSES })
+    expect(bare.courses.map((c) => c.course)).not.toContain('cym_n_for_eng')
   })
 
   it('names deu_at_for_eng on a German cast, from the stored config alone', () => {

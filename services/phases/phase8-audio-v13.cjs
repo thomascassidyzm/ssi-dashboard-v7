@@ -146,6 +146,8 @@ const {
 // ruling and now a constant. Still imported from the planner so the per-clip
 // lookup below and the batch planner can never drift apart on it.
 const { isSpeedTrustedVoice } = require('../audio-reuse-planner.cjs')
+const { pickCastVoice, providerOfVoice } = require('../shared/language-voice-cast.cjs')
+const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
 // BASE tag for every regional course ('deu' for deu_at_for_eng), so computing
 // the steer from it asked Cartesia for plain German on an Austrian course.
@@ -7454,31 +7456,48 @@ function buildPodTTSConfig(voice, language, courseCode) {
 }
 
 /**
- * Look up existing course_audio by (course_code, text_normalized, language, role, voice_id).
- * Returns the matching row, or null. `findExistingAudio` is the id-returning
- * wrapper every existing caller uses; this core exists so the pod path can also
- * see WHICH course owns the clip it matched.
+ * Look up existing course_audio for one clip. Returns the matching row, or
+ * null. `findExistingAudio` is the id-returning wrapper the tools use; this core
+ * exists so the pod path can also see WHICH course owns the clip it matched.
  *
- * CROSS-COURSE CANON REUSE (Tom's ruling, 2026-08-11 — decision 8 of the pod-0
- * survey). The `.eq('course_code', …)` below meant the generator could never see
- * an identical clip owned by a sibling course, even with text, language, role
- * and voice all the same — so the shared-cast ruling would have cost ~5,837
- * renders across the estate instead of ~374. Cross-course FK references are
- * already normal in this schema (16 eng_for_* pods share 119/142 target_audio_id
- * rows owned by zho_for_eng); they were simply undiscoverable from here.
+ * TWO SCOPES, chosen by `opts.scope`:
  *
- * The relaxation is deliberately narrow, because a false positive links a
- * learner-facing slot to the WRONG words:
- *   (a) `opts.canonTexts` must contain `opts.canonProbe` — i.e. the CALLER has
- *       proved this exact line is byte-identical canonical pod-0 English;
- *   (b) the caller only supplies that set for a pod whose whole English sequence
- *       is already aligned to canon (podCanonReuseTexts below), so a drifted or
- *       pre-canon pod never borrows anything;
- *   (c) the stored row's own `text` must be byte-identical to the text we would
- *       otherwise synthesise — not merely normalisation-equal — and it must
- *       point at real, non-pending audio;
- *   (d) language and voice match canonically, exactly as before.
- * Without `opts.canonTexts` the behaviour is bit-for-bit what it always was.
+ *   'course'   (default, the tools' contract) — this course's own rows, at this
+ *              role, in this voice. Bit-for-bit the read it always was.
+ *
+ *   'language' (the pod path, always) — POD KNOWN-SIDE AUDIO IS PER LANGUAGE.
+ *              Tom's ruling, 2026-09-13, verbatim: "English audio is the same
+ *              for all languages that use English. So we have the English.
+ *              Recordings are per language. Courses re-use languages as
+ *              appropriate." And, on a proposal to render 220 English pod lines
+ *              whose clips already existed under fra/spa pod-1: "This is utter
+ *              crap. We have all recordings already. We just create IDs per
+ *              course so that the per course IDs point to the same recordings."
+ *
+ *              So after the own-course read, the lookup goes ESTATE-WIDE by
+ *              canonical language + normalised text, regardless of course_code
+ *              — and for a KNOWN clip regardless of voice_id too (English
+ *              recordings are shared across every course that uses English,
+ *              whatever voice made them). A TARGET clip still requires the same
+ *              voice: pod speakers are cast per character, and a Welsh line in
+ *              the other speaker's voice IS a wrong clip. The old condition —
+ *              only pods with slug pod-0, only lines proved byte-identical to
+ *              canonical_pod_scenarios, only the identical voice — was the
+ *              accounting bug made executable, not a constraint; it is gone,
+ *              and nothing replaces it as a gate.
+ *
+ * What still protects the learner from hearing the WRONG WORDS, in every scope:
+ *   - the stored row's `text` must be byte-identical to the text we would
+ *     otherwise synthesise (`text`), or to one of `opts.altTexts` — the pod
+ *     path passes the un-paused original so a clip rendered before the " … "
+ *     pause cue existed still matches; both spellings are the same words;
+ *   - the row must point at real, non-pending audio (`s3_key`);
+ *   - language matches canonically.
+ *
+ * Preference among several estate-wide matches (taste-safe default, flagged in
+ * the 2026-09-13 report): a clip a LIVE sibling pod of the same slug already
+ * serves (`opts.preferIds`) first, then a same-role clip, then a cross-role clip
+ * that clears the Azure baked-speed guard — unchanged from before.
  */
 async function findAudioRowForClip(courseCode, text, language, role, voiceId, opts = {}) {
   // Normalise ONCE — normalizeForAudio collapses internal whitespace and
@@ -7511,95 +7530,83 @@ async function findAudioRowForClip(courseCode, text, language, role, voiceId, op
 
   // Language and voice are matched canonically, in JS: an .eq() on one spelling
   // could not see the same clip stored under the other, and "clip does not
-  // exist" here means a second paid render. Strict — a false positive would
-  // relink a pod line to the wrong audio.
+  // exist" here means a second paid render.
   const identityMatches = (row) =>
     sameLanguage(language, row.language) && sameVoice(voiceId, row.voice_id)
 
   const own = (await readCandidates(true)).find(identityMatches)
   if (own) return own
 
-  const { canonTexts, canonProbe } = opts
-  if (!canonTexts || !canonTexts.has(canonProbe === undefined ? text : canonProbe)) return null
+  if (opts.scope !== 'language') return null
 
+  const acceptableTexts = new Set([text, ...(opts.altTexts || [])].filter(Boolean))
+  const sameWords = (row) => acceptableTexts.has(row.text)
+  const isReal = (row) => row.s3_key && !String(row.s3_key).startsWith('pending/')
+  // Known clips share across voices (Tom's per-language rule); target clips
+  // share across courses only in the same voice (per-speaker cast).
+  const shareAcrossVoices = opts.shareVoices === true
   const shareable = (await readCandidates(false)).filter(row =>
-    row.text === text &&
-    row.s3_key && !String(row.s3_key).startsWith('pending/') &&
-    identityMatches(row))
+    sameWords(row) && isReal(row) && sameLanguage(language, row.language) &&
+    (shareAcrossVoices || sameVoice(voiceId, row.voice_id)))
+  if (!shareable.length) return null
+
+  const preferIds = opts.preferIds instanceof Set ? opts.preferIds : null
+  const servedBySibling = preferIds ? shareable.filter(row => preferIds.has(row.id)) : []
+  const ranked = [...servedBySibling, ...shareable.filter(row => !servedBySibling.includes(row))]
   // Same role first, so widening the key can only ADD a hit, never redirect an
   // existing one. A cross-role borrow must clear the Azure baked-speed guard:
   // Azure bakes `speed` into the MP3 and course_audio persists no per-row speed,
   // so its pace is unverifiable after the fact; xAI and ElevenLabs are always 1x.
-  return shareable.find(row => row.role === role) ||
-    shareable.find(row => row.role !== role && isSpeedTrustedVoice(row.voice_id)) ||
+  return ranked.find(row => row.role === role) ||
+    ranked.find(row => row.role !== role && isSpeedTrustedVoice(row.voice_id)) ||
     null
 }
 
 /**
  * Look up existing course_audio by (course_code, text_normalized, language, role, voice_id).
  * Returns the audio row's id if a match exists, else null.
- * See findAudioRowForClip for `opts` (cross-course canon reuse; off by default).
+ * See findAudioRowForClip for `opts` (`scope: 'language'` for the pod path).
  */
 async function findExistingAudio(courseCode, text, language, role, voiceId, opts) {
   const row = await findAudioRowForClip(courseCode, text, language, role, voiceId, opts)
   return row?.id || null
 }
 
-// ── Canonical English: the proof a line may be shared ────────────────────────
-// Canon lives in `canonical_pod_scenarios` (pod_slug='pod-1' — renamed from
-// 'pod-0' on 2026-09-01, same 231 rows), seeded from
-// docs/pods/pod0-english-canonical.md. A line carrying the [target language]
-// placeholder is substituted per course by tools/pods/align-pod0-to-canonical.cjs
-// ("I'm learning Welsh" / "…German"), so it is NEVER shareable — it is excluded
-// from the reuse set while still counting as aligned.
-const CANON_SLUG = 'pod-1'
-const POD0_CANON_SLUGS = new Set(['pod-0', 'pod-0-unrecorded'])
-const CANON_PLACEHOLDER_RE = /\[target language\]/i
-
-async function loadPod0Canon() {
-  const { data, error } = await supabase
-    .from('canonical_pod_scenarios')
-    .select('global_order, english_text')
-    .eq('pod_slug', CANON_SLUG)
-    .order('global_order')
-  if (error) throw new Error(`canonical lookup failed: ${error.message}`)
-  return data || []
-}
-
 /**
- * The set of canon lines this pod may reuse another course's audio for — or null
- * when the pod is not (fully) aligned, in which case no line of it borrows
- * anything. All-or-nothing on purpose: a partially aligned pod is exactly the
- * state where a line's English silently disagrees with canon, and that is the
- * case the survey's "match on EXACT canon text only" rule exists to refuse.
+ * The clip ids that LIVE sibling pods of the same slug (other courses) already
+ * serve on the given track. Handed to findAudioRowForClip as `preferIds`, so
+ * when several estate-wide clips carry the same words the one learners of
+ * French and Spanish already hear is the one linked — the taste-safe choice,
+ * and the one that keeps sibling pods pointing at one recording per line.
  *
- * @param {Array} canon         canonical_pod_scenarios rows (global_order, english_text)
- * @param {Array} sentences     the pod's listening_pod_sentences rows
- * @param {string|null} englishCol  which column of the pod holds English
+ * Also returns, per served known clip id, the sibling row's
+ * `sentence_known_audio_ids` (when it carries real ones), so a relinked line can
+ * take its split-play ids along with its clip.
+ *
+ * Read-only; an unreadable sibling set costs preference, never correctness.
  */
-function podCanonReuseTexts(canon, sentences, englishCol) {
-  if (!englishCol || !canon.length || !sentences.length) return null
-  if (sentences.length !== canon.length) return null
-  const byOrder = new Map(sentences.map(s => [s.global_order, s]))
-  if (byOrder.size !== canon.length) return null
-  const texts = new Set()
-  for (const c of canon) {
-    const row = byOrder.get(c.global_order)
-    if (!row) return null
-    if (CANON_PLACEHOLDER_RE.test(c.english_text)) continue
-    if (String(row[englishCol]) !== c.english_text) return null
-    texts.add(c.english_text)
+async function siblingPodClipIds(courseCode, slug, track) {
+  const column = track === 'known' ? 'known_audio_id' : 'target_audio_id'
+  const out = { ids: new Set(), sentenceIdsByClip: new Map() }
+  if (!slug) return out
+  const { data: pods, error: pErr } = await supabase
+    .from('listening_pods').select('id, course_code')
+    .eq('slug', slug).eq('visibility', 'live').neq('course_code', courseCode)
+  if (pErr || !pods || !pods.length) return out
+  const { data: rows, error: sErr } = await supabase
+    .from('listening_pod_sentences')
+    .select(`${column}, sentence_known_audio_ids`)
+    .in('pod_id', pods.map(p => p.id)).not(column, 'is', null)
+  if (sErr) return out
+  for (const r of rows || []) {
+    out.ids.add(r[column])
+    if (track === 'known' && Array.isArray(r.sentence_known_audio_ids) && r.sentence_known_audio_ids.length
+        && !out.sentenceIdsByClip.has(r[column])) {
+      out.sentenceIdsByClip.set(r[column], r.sentence_known_audio_ids)
+    }
   }
-  return texts.size ? texts : null
+  return out
 }
-
-/** Which side of this course is English, if either — canon is English-only. */
-function englishColumnFor(ctx) {
-  if (tryCanonicalLanguage(ctx.knownLang) === 'eng') return 'known_text'
-  if (tryCanonicalLanguage(ctx.targetLang) === 'eng') return 'target_text'
-  return null
-}
-
 /**
  * Split a pod TURN into its sentences, for the pause-cue insertion below.
  *
@@ -7627,6 +7634,12 @@ function englishColumnFor(ctx) {
  * @param {string} text
  * @returns {string[]} trimmed, non-empty sentences
  */
+/** The text a pod TURN is synthesised (and stored) as: sentences joined by the pause cue. */
+function podTtsText (text) {
+  const sents = splitPodTurnSentences(text)
+  return sents.length > 1 ? sents.join(' … ') : String(text)
+}
+
 function splitPodTurnSentences (text) {
   return String(text || '')
     .split(/(?<=[。！？])\s*(?=\S)|(?<=[.!?…؟])\s+(?=\S)/)
@@ -7673,7 +7686,7 @@ function splitPodTurnSentences (text) {
 // reports it, exactly as /generate does with its own results.veracity.
 let podVeracityStats = veracity.newStats()
 
-async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, role, voice, ctx, track, sentenceId, force, canonTexts }) {
+async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, role, voice, ctx, track, sentenceId, force, preferIds, linkOnly }) {
   const identityLanguage = canonicalLanguage(language)
   const cue = (ttsLanguageCue === undefined || ttsLanguageCue === null) ? language : ttsLanguageCue
   // Pod TURN whole-takes: insert a pause cue (" … ") between sentences so the
@@ -7685,30 +7698,36 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
   // is the canonical text for the clip (dedup + storage below), so a paused take
   // never collides with an old un-paused one; pod display text comes from
   // listening_pod_sentences, not course_audio, so it stays clean.
-  let ttsText = text
-  if (track === 'target' || track === 'known') {
-    const sents = splitPodTurnSentences(text)
-    if (sents.length > 1) ttsText = sents.join(' … ')
-  }
+  const ttsText = (track === 'target' || track === 'known') ? podTtsText(text) : text
 
-  // Reuse by text+voice hash — keyed on the ACTUAL synthesised text.
+  // Reuse FIRST, estate-wide — keyed on the ACTUAL synthesised text, and on the
+  // un-paused original too (a clip rendered before the pause cue existed is the
+  // same words). Pod audio is per LANGUAGE (Tom, 2026-09-13; see
+  // findAudioRowForClip): a known clip is borrowed from any course in any voice,
+  // a target clip from any course in the same voice. A render is only ever the
+  // answer for a line no clip in the estate already speaks.
   // force: re-synthesise even when the row exists — the upsert below hits the
   // same conflict key, so the row (and every link to its id) is kept and just
   // gets fresh audio + word_boundaries. Used by the Take G rescue pass.
-  //
-  // canonTexts: the caller's proof that this pod is aligned to canonical pod-0
-  // English, which unlocks reuse of a SIBLING COURSE's identical clip. The canon
-  // probe is the ORIGINAL text, not ttsText — the " … " pause cue is a
-  // deterministic function of the line, so both courses derive the same ttsText,
-  // and the stored side is still required to be byte-identical to it.
   const existingRow = await findAudioRowForClip(
-    courseCode, ttsText, identityLanguage, role, voice.voice_id, { canonTexts, canonProbe: text })
+    courseCode, ttsText, identityLanguage, role, voice && voice.voice_id, {
+      scope: 'language',
+      altTexts: [text],
+      shareVoices: track === 'known',
+      preferIds,
+    })
   if (existingRow && !force) {
     const crossCourse = existingRow.course_code !== courseCode
     if (crossCourse) {
-      logger.info(`[Pods] canon reuse: ${sentenceId || '?'} ${track || role} → clip ${existingRow.id} owned by ${existingRow.course_code} (no render)`)
+      logger.info(`[Pods] language reuse: ${sentenceId || '?'} ${track || role} → clip ${existingRow.id} owned by ${existingRow.course_code} (no render)`)
     }
     return { id: existingRow.id, reused: true, crossCourse }
+  }
+  // link_only: the caller asked for pointers, never for synthesis. A line with
+  // no clip anywhere in the estate is reported back by id and text, not rendered.
+  if (linkOnly) return { id: null, reused: false, unmatched: true }
+  if (!voice || !voice.voice_id) {
+    throw new Error(`[STAGE=voice] no ${track || role} voice to render ${sentenceId || '?'} on — cast one in the Voice Lab`)
   }
 
   // Deliberately NOT routed through decideProvider, unlike the course paths.
@@ -7918,21 +7937,89 @@ async function getCourseContext(courseCode) {
     voiceConfig: course.voice_config, course: { ...course, course_code: courseCode }, courseCode,
   }) || {}
   const knownVoiceRaw = vc.voices?.known || {}
+  // THE LAB CASTS THE KNOWN SIDE (Tom, 2026-09-13 14:43Z): "If we do not have
+  // any recordings we use the Cartesia clones to fill in any gaps. It is my
+  // voice from now on for Cartesia clones. And there is a female voice already
+  // chosen if we need any female voice clips. The voices for English have been
+  // cast in the voice lab." So the known-language cast is read here, by gender,
+  // straight from voice_language_roles — never hardcoded — and it is what a pod
+  // line renders on when its own cast is a human with no recording of that line.
+  const knownCast = await knownCastByGender({ ...course, course_code: courseCode })
   // voice_id stays RAW here: this object is handed to the TTS providers, which
-  // want their own spelling ('en-GB-SoniaNeural' in Azure's SSML, 'leo' at
-  // xAI). The canonical spelling is composed at the DB boundary in
-  // generatePodAudio, so the bare default below no longer reaches a column.
-  const knownVoice = {
-    voice_id: knownVoiceRaw.voiceId || knownVoiceRaw.voice_id || 'en-GB-SoniaNeural',
-    provider: knownVoiceRaw.provider || 'azure',
-    gender: knownVoiceRaw.gender || 'f',
-  }
+  // want their own spelling. The canonical spelling is composed at the DB
+  // boundary in generatePodAudio.
+  //
+  // NO AZURE DEFAULT. This used to fall to 'en-GB-SoniaNeural' whenever the
+  // resolved known voice was empty — which is exactly the state of every
+  // human-recorded Welsh course, whose known role the cast rightly declines to
+  // speak over — so an English known side landed on Azure silently while a lab
+  // cast existed. Now: the resolved voice if there is one, else the lab's cast
+  // for the known language at the role's gender, else nothing — and a render
+  // with nothing fails loudly at generatePodAudio rather than on a voice nobody
+  // chose.
+  const resolvedId = knownVoiceRaw.voiceId || knownVoiceRaw.voice_id || null
+  const gender = knownVoiceRaw.gender || (knownCast.f ? 'f' : 'm')
+  const knownVoice = resolvedId && knownVoiceRaw.provider !== 'human'
+    ? { voice_id: resolvedId, provider: knownVoiceRaw.provider || 'azure', gender }
+    : (knownCast[gender] || knownCast.m || knownCast.f || null)
   return {
     knownLang: course.known_lang,
     targetLang: course.target_lang,
     knownVoice,
+    knownCast,
     voiceConfig: vc,  // raw voice_config — pickAzureFallbackVoice reads role voices for the Azure safety net
   }
+}
+
+/**
+ * The Voice Lab's cast for a course's KNOWN language, one voice per gender:
+ * `{ m: {voice_id, provider, gender, name} | null, f: … }`. Read from
+ * voice_language_roles (phrase slot, rank 0 winning, backup only when the
+ * primary is unusable — pickCastVoice's own rule) through the same cached load
+ * voice-config-service uses, keyed on the course's known DIALECT entity.
+ */
+async function knownCastByGender(course) {
+  const out = { m: null, f: null }
+  let cast
+  try { cast = await voiceConfigService.loadCast() } catch (e) { return out }
+  if (!cast || !cast.roles || !cast.roles.length) return out
+  const language = castKeyForCourse(course, 'known')
+  if (!language) return out
+  const voiceById = new Map((cast.voices || []).map(v => [v.voice_id, v]))
+  for (const gender of ['m', 'f']) {
+    const pick = pickCastVoice(cast.roles, voiceById, language, gender, 'phrase')
+    if (!pick) continue
+    out[gender] = {
+      voice_id: pick.voice.voice_id,
+      provider: providerOfVoice(pick.voice) || null,
+      gender,
+      name: pick.voice.display_name || pick.voice.human_name || pick.voice.voice_id,
+      castFrom: { slot: 'phrase', language, gender, rank: pick.rank },
+    }
+  }
+  return out
+}
+
+/**
+ * The voice a pod line's KNOWN track renders on, if it has to render at all.
+ *
+ * The pod's own cast first (per speaker). A speaker cast to a HUMAN on the
+ * known track — every Welsh pod casts Aran and Catrin on both tracks — has no
+ * synthesiser behind it: where a recording exists the reuse read finds it
+ * before this voice is ever consulted, and where none exists the line renders
+ * on the lab's cast for the known language at the SPEAKER's gender (Tom,
+ * 2026-09-13: Cartesia clones fill the gaps; male on his clone, female on the
+ * chosen female voice). A pod with no cast entry falls to the course context,
+ * which is the same lab cast at the role's gender.
+ */
+function podKnownRenderVoice(pod, sentence, ctx) {
+  const own = resolvePodSpeakerVoice(pod.speakers, sentence.speaker, 'known')
+  if (own && own.provider !== 'human') return own
+  const gender = own && (own.gender === 'm' || own.gender === 'f') ? own.gender : null
+  const cast = ctx.knownCast || {}
+  if (gender && cast[gender]) return cast[gender]
+  if (!gender && ctx.knownVoice) return ctx.knownVoice
+  return cast.m || cast.f || ctx.knownVoice || null
 }
 
 // =============================================================================
@@ -7943,6 +8030,7 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
     const podIds = req.query.pods ? req.query.pods.split(',') : null
+    const roles = req.query.roles ? req.query.roles.split(',') : ['target', 'known']
 
     const ctx = await getCourseContext(courseCode)
     const pods = await loadPodsForPlan(courseCode, podIds)
@@ -7955,6 +8043,8 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
     const podPlans = []
     let totalChars = 0
     let totalMissing = 0
+    let totalLink = 0
+    let totalRender = 0
 
     let totalBlockedTarget = 0
 
@@ -7962,7 +8052,7 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
       const missing = { target: [], known: [] }
       let blockedTarget = 0
       for (const s of pod.sentences) {
-        if (!s.target_audio_id) {
+        if (roles.includes('target') && !s.target_audio_id) {
           // TEXT APPROVAL GATE (A-109). Gate the estimate exactly as the render
           // gates it — an estimate that promises clips /generate-pods then
           // refuses is a confusing lie about what a run will cost.
@@ -7970,17 +8060,37 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
             blockedTarget++
           } else {
             const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target')
-            missing.target.push({ id: s.id, speaker: s.speaker, voice_id: voice?.voice_id, chars: (s.target_text || '').length })
+            missing.target.push({ id: s.id, speaker: s.speaker, voice_id: voice?.voice_id, chars: (s.target_text || '').length, text: s.target_text })
           }
         }
-        if (!s.known_audio_id) {
-          // Per-speaker known voice from app_config.pod_voice_pools (via pod-sync).
-          // Legacy pods without a known assignment fall through to ctx.knownVoice.
-          const voice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known') || ctx.knownVoice
-          missing.known.push({ id: s.id, speaker: s.speaker, voice_id: voice.voice_id, chars: (s.known_text || '').length })
+        if (roles.includes('known') && !s.known_audio_id) {
+          const voice = podKnownRenderVoice(pod, s, ctx)
+          missing.known.push({ id: s.id, speaker: s.speaker, voice_id: voice?.voice_id, provider: voice?.provider, chars: (s.known_text || '').length, text: s.known_text })
         }
       }
-      const podChars = missing.target.reduce((a, b) => a + b.chars, 0) + missing.known.reduce((a, b) => a + b.chars, 0)
+
+      // LINK before RENDER (Tom, 2026-09-13). A "missing" id is not a render:
+      // it is a pointer nobody has written yet. The plan runs the same estate-
+      // wide read the run will, and reports the two halves apart, with cost on
+      // the render half only. Read-only — nothing is linked here.
+      const links = { target: [], known: [] }
+      const renders = { target: [], known: [] }
+      for (const track of ['target', 'known']) {
+        const sibling = await siblingPodClipIds(courseCode, pod.slug, track)
+        const language = track === 'target' ? ctx.targetLang : ctx.knownLang
+        const role = track === 'target' ? 'target1' : 'known'
+        for (const m of missing[track]) {
+          const found = await findAudioRowForClip(courseCode, podTtsText(m.text), canonicalLanguage(language), role, m.voice_id, {
+            scope: 'language', altTexts: [m.text], shareVoices: track === 'known', preferIds: sibling.ids,
+          })
+          if (found) {
+            links[track].push({ id: m.id, speaker: m.speaker, text: m.text, clip_id: found.id, clip_owner: found.course_code, clip_voice: found.voice_id, clip_role: found.role, clip_text: found.text, served_by_sibling: sibling.ids.has(found.id) })
+          } else {
+            renders[track].push(m)
+          }
+        }
+      }
+      const renderChars = renders.target.reduce((a, b) => a + b.chars, 0) + renders.known.reduce((a, b) => a + b.chars, 0)
       podPlans.push({
         pod_id: pod.id,
         title: pod.title,
@@ -7988,20 +8098,29 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
         total_sentences: pod.sentences.length,
         sentences_needing_target: missing.target.length,
         sentences_needing_known: missing.known.length,
+        link: { target: links.target.length, known: links.known.length, lines: [...links.target.map(l => ({ track: 'target', ...l })), ...links.known.map(l => ({ track: 'known', ...l }))] },
+        render: { target: renders.target.length, known: renders.known.length, lines: [...renders.target.map(r => ({ track: 'target', ...r })), ...renders.known.map(r => ({ track: 'known', ...r }))] },
         blocked_unapproved_target: blockedTarget,
-        chars: podChars,
-        estimated_cost_usd: +(podChars * POD_CHARS_TO_COST).toFixed(4),
+        chars: renderChars,
+        estimated_cost_usd: +(renderChars * POD_CHARS_TO_COST).toFixed(4),
         distinct_speakers: [...new Set(pod.sentences.map(s => s.speaker))],
       })
-      totalChars += podChars
+      totalChars += renderChars
       totalMissing += missing.target.length + missing.known.length
+      totalLink += links.target.length + links.known.length
+      totalRender += renders.target.length + renders.known.length
       totalBlockedTarget += blockedTarget
     }
 
     res.json({
       course_code: courseCode,
-      course_context: { known_lang: ctx.knownLang, target_lang: ctx.targetLang, known_voice: ctx.knownVoice },
-      total_clips_to_generate: totalMissing,
+      course_context: { known_lang: ctx.knownLang, target_lang: ctx.targetLang, known_voice: ctx.knownVoice, known_cast: ctx.knownCast },
+      roles,
+      total_missing: totalMissing,
+      // Missing ids the run will LINK to a clip the estate already holds (no
+      // render, no cost) versus the ones only a render can answer.
+      total_clips_to_link: totalLink,
+      total_clips_to_generate: totalRender,
       total_chars: totalChars,
       estimated_cost_usd: +(totalChars * POD_CHARS_TO_COST).toFixed(4),
       // Target clips this plan does NOT promise, because their words are still
@@ -8060,13 +8179,21 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     const body = req.body || {}
     const podIds = body.pod_ids || null
     const roles = body.roles || ['target', 'known']
+    // LINK-ONLY (Tom, 2026-09-13): write pointers to clips the estate already
+    // holds and REFUSE to render the remainder, which comes back by id and text.
+    // Renders nothing, so the voice-approval gate (which approves a CAST) has
+    // nothing to approve and is not consulted; the human-voice and text gates
+    // are about synthesis and never reached.
+    const linkOnly = body.link_only === true
 
     // --- Mode resolution ----------------------------------------------------
     const modeDecision = podApprovals.parseSampleLimit(body.sample_limit, POD_SAMPLE_LIMIT_MAX)
     if (modeDecision.mode === 'error') return res.status(400).json({ error: modeDecision.message })
     const sampleLimit = modeDecision.mode === 'sample' ? modeDecision.limit : null
 
-    if (sampleLimit === null) {
+    if (linkOnly) {
+      logger.info(`[Pods] LINK-ONLY mode ${courseCode}: pointers to existing clips only, no render, approval check not needed`)
+    } else if (sampleLimit === null) {
       const gate = await podApprovals.checkApproval(supabase, courseCode)
       if (!gate.ok) {
         logger.warn(`[Pods] BULK REFUSED ${courseCode}: ${gate.reason} (live cast ${gate.live_fingerprint})`)
@@ -8130,60 +8257,51 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
       })
     }
 
-    // CROSS-COURSE CANON REUSE (Tom, 2026-08-11). Read canon once per run and
-    // work out, per pod, which of its lines are byte-identical canonical pod-0
-    // English. Only those lines may match a sibling course's clip, and only from
-    // a pod that is aligned end to end (podCanonReuseTexts). A canon read that
-    // fails costs reuse, never correctness — the run proceeds course-scoped.
-    const englishCol = englishColumnFor(ctx)
-    let canonByPod = new Map()
-    try {
-      const podsInScope = pods.filter(p => POD0_CANON_SLUGS.has(p.slug))
-      if (englishCol && podsInScope.length) {
-        const canon = await loadPod0Canon()
-        for (const pod of podsInScope) {
-          const texts = podCanonReuseTexts(canon, pod.sentences, englishCol)
-          if (texts) canonByPod.set(pod.id, texts)
-          logger.info(`[Pods] canon reuse ${pod.id}: ${texts ? `${texts.size} shareable canon line(s)` : 'pod not aligned to canon — course-scoped matching only'}`)
-        }
+    // LANGUAGE-LEVEL REUSE FOR EVERY POD (Tom, 2026-09-13). No canon ceremony,
+    // no slug gate: every line's reuse read is estate-wide by language (see
+    // findAudioRowForClip). What the run carries per pod and track is the set of
+    // clips LIVE sibling pods of the same slug already serve, as a preference
+    // among equal matches — and their split-play ids, so a relinked known line
+    // can take those along.
+    const siblingByPodTrack = new Map()
+    for (const pod of pods) {
+      for (const track of ['target', 'known']) {
+        if (!roles.includes(track)) continue
+        siblingByPodTrack.set(`${pod.id}|${track}`, await siblingPodClipIds(courseCode, pod.slug, track))
       }
-    } catch (e) {
-      logger.warn(`[Pods] canon reuse unavailable (${e.message}) — course-scoped matching only`)
-      canonByPod = new Map()
     }
 
-    // Build a flat work queue: each item is one audio clip to generate.
+    // Build a flat work queue: each item is one audio clip to link or generate.
     const workQueue = []
     for (const pod of pods) {
-      const canonTexts = canonByPod.get(pod.id) || null
       for (const s of pod.sentences) {
         if (roles.includes('target') && !s.target_audio_id) {
           workQueue.push({
             kind: 'target',
             sentence_id: s.id,
+            speaker: s.speaker,
             pod_id: pod.id,
             text: s.target_text,
             language: ctx.targetLang,
             role: 'target1',
             voice: resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target'),
             link_column: 'target_audio_id',
-            canonTexts,
+            sibling: siblingByPodTrack.get(`${pod.id}|target`),
           })
         }
         if (roles.includes('known') && !s.known_audio_id) {
-          // Per-speaker known voice from pod.speakers (new shape), or course-wide
-          // ctx.knownVoice for legacy pods that haven't been re-synced.
-          const knownVoice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known') || ctx.knownVoice
           workQueue.push({
             kind: 'known',
             sentence_id: s.id,
+            speaker: s.speaker,
             pod_id: pod.id,
             text: s.known_text,
             language: ctx.knownLang,
             role: 'known',
-            voice: knownVoice,
+            voice: podKnownRenderVoice(pod, s, ctx),
             link_column: 'known_audio_id',
-            canonTexts,
+            has_sentence_ids: Array.isArray(s.sentence_known_audio_ids) && s.sentence_known_audio_ids.length > 0,
+            sibling: siblingByPodTrack.get(`${pod.id}|known`),
           })
         }
       }
@@ -8207,18 +8325,21 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     // covered — a 5-clip sample that happened to be five lines from one
     // character would approve nothing about the rest of the cast.
     const queuedBeforeSample = workQueue.length
-    if (sampleLimit !== null) {
+    if (sampleLimit !== null && !linkOnly) {
       const sample = podApprovals.selectSample(workQueue, sampleLimit)
       workQueue.length = 0
       workQueue.push(...sample)
       logger.info(`[Pods] SAMPLE ${courseCode}: truncated ${queuedBeforeSample} → ${workQueue.length} clip(s)`)
     }
 
-    logger.info(`[Pods] ${sampleLimit === null ? 'BULK' : 'SAMPLE'} ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
+    const modeName = linkOnly ? 'LINK-ONLY' : sampleLimit === null ? 'BULK' : 'SAMPLE'
+    logger.info(`[Pods] ${modeName} ${courseCode}: ${workQueue.length} clips queued across ${pods.length} pod(s) at concurrency ${concurrency}`)
 
     const startMs = Date.now()
-    let generated = 0, reused = 0, failed = 0, reusedCrossCourse = 0
+    let generated = 0, reused = 0, failed = 0, reusedCrossCourse = 0, unmatchedCount = 0, sentenceIdsCopied = 0, driftSkipped = 0
     const errors = []
+    const unmatched = []
+    const linked = []
 
     // Simple parallel batch processor — process `concurrency` items at a time
     async function worker(items) {
@@ -8233,15 +8354,45 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
             ctx,                  // enables Azure fallback when xAI fails
             track: item.kind,     // 'target' | 'known'
             sentenceId: item.sentence_id,
-            canonTexts: item.canonTexts,  // unlocks sibling-course reuse for canon lines only
+            preferIds: item.sibling ? item.sibling.ids : null,
+            linkOnly,
           })
+          if (result.unmatched) {
+            unmatchedCount++
+            unmatched.push({ sentence_id: item.sentence_id, kind: item.kind, speaker: item.speaker, text: item.text })
+            continue
+          }
 
-          // Link the audio onto the pod sentence
-          const { error: linkErr } = await supabase
+          // Link the audio onto the pod sentence — with a BEFORE-STATE
+          // assertion: the column must still be null at write time. The queue
+          // was built from a read seconds ago; a row another process filled in
+          // between is skipped and counted, never overwritten.
+          const patch = { [item.link_column]: result.id }
+          // Split-play ids ride along with a KNOWN clip a live sibling pod
+          // already serves (their clips are checked real below), and only onto
+          // a row that has none of its own.
+          const siblingSentenceIds = item.kind === 'known' && !item.has_sentence_ids && item.sibling
+            ? item.sibling.sentenceIdsByClip.get(result.id) : null
+          if (siblingSentenceIds) {
+            const { data: real, error: realErr } = await supabase
+              .from('course_audio').select('id, s3_key').in('id', siblingSentenceIds)
+            const realIds = new Set((real || []).filter(r => r.s3_key && !String(r.s3_key).startsWith('pending/')).map(r => r.id))
+            if (!realErr && siblingSentenceIds.every(id => realIds.has(id))) patch.sentence_known_audio_ids = siblingSentenceIds
+          }
+          const { data: written, error: linkErr } = await supabase
             .from('listening_pod_sentences')
-            .update({ [item.link_column]: result.id })
+            .update(patch)
             .eq('id', item.sentence_id)
+            .is(item.link_column, null)
+            .select('id')
           if (linkErr) throw new Error(`link: ${linkErr.message}`)
+          if (!written || !written.length) {
+            driftSkipped++
+            logger.warn(`[Pods] ${item.sentence_id} ${item.kind}: ${item.link_column} no longer null at write time — left alone`)
+            continue
+          }
+          if (patch.sentence_known_audio_ids) sentenceIdsCopied++
+          linked.push({ sentence_id: item.sentence_id, kind: item.kind, clip_id: result.id, reused: !!result.reused, cross_course: !!result.crossCourse, sentence_ids_copied: !!patch.sentence_known_audio_ids })
 
           if (result.reused) { reused++; if (result.crossCourse) reusedCrossCourse++ } else generated++
         } catch (err) {
@@ -8258,7 +8409,7 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
     await Promise.all(buckets.map(b => worker(b)))
 
     const elapsedMs = Date.now() - startMs
-    logger.info(`[Pods] ${courseCode}: ${generated} generated, ${reused} reused (${reusedCrossCourse} from sibling courses on canon text), ${failed} failed in ${(elapsedMs / 1000).toFixed(1)}s`)
+    logger.info(`[Pods] ${courseCode}: ${generated} generated, ${reused} reused (${reusedCrossCourse} from sibling courses, language-level), ${unmatchedCount} unmatched${linkOnly ? ' (link-only: not rendered)' : ''}, ${driftSkipped} skipped on drift, ${failed} failed in ${(elapsedMs / 1000).toFixed(1)}s`)
 
     const podVLine = veracity.formatStats(podVeracityStats)
     if (podVeracityStats.quarantined > 0 || podVeracityStats.unchecked > 0) logger.error(`[audio-veracity] ${courseCode}: ${podVLine}`)
@@ -8266,12 +8417,20 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
 
     res.json({
       course_code: courseCode,
-      mode: sampleLimit === null ? 'bulk' : 'sample',
+      mode: linkOnly ? 'link_only' : sampleLimit === null ? 'bulk' : 'sample',
       sample_limit: sampleLimit,
       queued_before_sample: queuedBeforeSample,
       generated,
       reused,
       reused_cross_course: reusedCrossCourse,
+      // Lines no clip in the estate speaks. In link_only mode these were NOT
+      // rendered and are returned in full so the caller can decide; in a render
+      // mode this is always 0 (the line was rendered or it is in `errors`).
+      unmatched: unmatchedCount,
+      unmatched_lines: unmatched,
+      sentence_known_audio_ids_copied: sentenceIdsCopied,
+      skipped_on_drift: driftSkipped,
+      linked,
       failed,
       // Target clips withheld because their words are not settled. Reported as
       // its own number, never as silence: a run that quietly skips 112 lines is
@@ -8805,9 +8964,11 @@ module.exports = app
 module.exports.masterAudio = masterAudio
 module.exports.findExistingAudio = findExistingAudio
 module.exports.findAudioRowForClip = findAudioRowForClip
-module.exports.podCanonReuseTexts = podCanonReuseTexts
-module.exports.englishColumnFor = englishColumnFor
-module.exports.loadPod0Canon = loadPod0Canon
+module.exports.siblingPodClipIds = siblingPodClipIds
+module.exports.getCourseContext = getCourseContext
+module.exports.knownCastByGender = knownCastByGender
+module.exports.podKnownRenderVoice = podKnownRenderVoice
+module.exports.podTtsText = podTtsText
 module.exports.generatePodAudio = generatePodAudio
 // Pure helper behind generatePodAudio's pause cue — exported for unit tests.
 module.exports.splitPodTurnSentences = splitPodTurnSentences

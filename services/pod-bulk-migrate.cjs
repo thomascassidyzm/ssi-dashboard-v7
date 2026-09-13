@@ -358,17 +358,12 @@ function resolvePodSpeakerVoice(podSpeakers, speaker, track) {
   return null
 }
 async function getCourseContext(course) {
-  const { data, error } = await supabase
-    .from('courses').select('known_lang, target_lang, voice_config').eq('course_code', course).single()
-  if (error) throw new Error(`course not found: ${error.message}`)
-  const vc = data.voice_config || {}
-  const knownVoiceRaw = (vc.voices && vc.voices.known) || {}
-  const knownVoice = {
-    voice_id: knownVoiceRaw.voiceId || knownVoiceRaw.voice_id || 'en-GB-SoniaNeural',
-    provider: knownVoiceRaw.provider || 'azure',
-    gender: knownVoiceRaw.gender || 'f',
-  }
-  return { knownLang: data.known_lang, targetLang: data.target_lang, knownVoice, voiceConfig: vc }
+  // ONE resolver, not a copy of one. Phase 8's getCourseContext reads the
+  // course, resolves the cast, and picks the known-language voice by gender
+  // from the Voice Lab (no Azure default — Tom, 2026-09-13). Calling it keeps
+  // this file's contract — identical to the /generate-pods path — true by
+  // construction rather than by hand-mirroring.
+  return getPhase8().getCourseContext(course)
 }
 
 async function loadPod0WithSentences(course) {
@@ -402,24 +397,15 @@ async function stageTtsInproc(course) {
   const pod = await loadPod0WithSentences(course)
   const roles = ['target', 'known']
 
-  // CROSS-COURSE CANON REUSE (Tom, 2026-08-11). Same proof the /generate-pods
-  // endpoint builds: the set of this pod's lines that are byte-identical
-  // canonical pod-0 English, and only when the pod is aligned end to end. A line
-  // in that set may point at a sibling course's identical clip instead of paying
-  // to render it again. Unavailable canon costs reuse, never correctness.
-  let canonTexts = null
-  try {
-    const englishCol = phase8.englishColumnFor(ctx)
-    if (englishCol) {
-      canonTexts = phase8.podCanonReuseTexts(await phase8.loadPod0Canon(), pod.sentences, englishCol)
-    }
-    stageLog(course, 'tts', canonTexts
-      ? `canon reuse: ${canonTexts.size} shareable canon line(s) — sibling-course clips are eligible`
-      : 'canon reuse: pod not aligned to canon — course-scoped matching only')
-  } catch (e) {
-    stageLog(course, 'tts', `canon reuse unavailable (${e.message}) — course-scoped matching only`)
-    canonTexts = null
+  // LANGUAGE-LEVEL REUSE (Tom, 2026-09-13). Same read the /generate-pods
+  // endpoint makes: every line's reuse is estate-wide by language inside
+  // generatePodAudio; what this driver supplies is the preference — the clips
+  // LIVE sibling pods of the same slug already serve.
+  const sibling = {
+    target: await phase8.siblingPodClipIds(course, pod.slug, 'target'),
+    known: await phase8.siblingPodClipIds(course, pod.slug, 'known'),
   }
+  stageLog(course, 'tts', `language-level reuse: ${sibling.known.ids.size} known / ${sibling.target.ids.size} target clip(s) served by live sibling pods are preferred`)
 
   // TEXT APPROVAL GATE (Tom's A-109 ruling, 2026-08-16). Same reasoning as the
   // voice gate above: the http mode inherits this from /generate-pods, but
@@ -440,7 +426,7 @@ async function stageTtsInproc(course) {
       workQueue.push({ kind: 'target', sentence_id: s.id, text: s.target_text, language: ctx.targetLang, role: 'target1', voice: resolvePodSpeakerVoice(pod.speakers, s.speaker, 'target'), link_column: 'target_audio_id' })
     }
     if (!s.known_audio_id && s.known_text) {
-      const knownVoice = resolvePodSpeakerVoice(pod.speakers, s.speaker, 'known') || ctx.knownVoice
+      const knownVoice = phase8.podKnownRenderVoice(pod, s, ctx)
       workQueue.push({ kind: 'known', sentence_id: s.id, text: s.known_text, language: ctx.knownLang, role: 'known', voice: knownVoice, link_column: 'known_audio_id' })
     }
   }
@@ -463,7 +449,8 @@ async function stageTtsInproc(course) {
       try {
         const result = await generatePodAudio({
           courseCode: course, text: item.text, language: item.language, role: item.role,
-          voice: item.voice, ctx, track: item.kind, sentenceId: item.sentence_id, canonTexts,
+          voice: item.voice, ctx, track: item.kind, sentenceId: item.sentence_id,
+          preferIds: sibling[item.kind] ? sibling[item.kind].ids : null,
         })
         const { error: linkErr } = await supabase
           .from('listening_pod_sentences').update({ [item.link_column]: result.id }).eq('id', item.sentence_id)

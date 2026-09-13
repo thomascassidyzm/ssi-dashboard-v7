@@ -1040,6 +1040,10 @@ function convertConfigFromLegacyManifest(legacyConfig) {
 
 module.exports = {
   assertConsentOnNewAssignments,
+  // The cached cast read (roles, voices, humanRows, dialects) — exported so the
+  // pod path can pick a KNOWN-language voice by gender from the same rows the
+  // resolver reads, rather than a second query that could disagree with it.
+  loadCast,
   loadVoiceConfig,
   loadStoredVoiceConfig,
   resolveVoiceConfig,
