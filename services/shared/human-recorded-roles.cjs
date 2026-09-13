@@ -120,14 +120,28 @@ function humanRolesForCourse({ course, voiceConfig = null, humanRows = [], roles
 
   // 1. POLICY — a human-voiced COURSE is human in every role it has.
   if (isHumanVoiceCourse(code)) {
+    // THE POLICY PROTECTS THE HUMAN-VOICED LANGUAGE, NOT THE COURSE CODE.
+    // Every reason the Welsh rulings give is about Welsh — "a synthesised
+    // Welsh clip reaching a learner is a defect", "Aran's and Catrin's
+    // recordings are never overwritten". The KNOWN side of a Welsh course is
+    // English, and English is per language (Tom, 2026-09-13: "English audio is
+    // the same for all languages that use English"; 2026-09-03: "the English
+    // lines will be TTS, because it is fast and cheap") — the same narrowing
+    // tts-service's chokepoint made on 2026-09-03. So the policy signal covers
+    // the target-side roles here; a known-side role is protected by the two
+    // DATA signals below (a stored human slot, real recorded clips), exactly
+    // like any other course — and cym_n/cym_s, with thousands of Aran's
+    // English clips, are still refused by those.
     for (const role of consider) {
+      if (KNOWN_SIDE_ROLES.includes(role)) continue;
       note(role, {
         source: 'policy-course',
-        reason: `${code} is human-recorded only (services/shared/human-voice-courses.cjs — Tom's standing ruling). No synthetic voice may be cast over any of its roles.`,
+        reason: `${code} is human-recorded only (services/shared/human-voice-courses.cjs — Tom's standing ruling). No synthetic voice may be cast over its target-side roles.`,
         clips: null, voiceId: null,
       });
     }
-  } else {
+  }
+  {
     // A human-voiced LANGUAGE protects every role that SPEAKS it — which is
     // not the same set as "the target roles". See languageSpokenBy above.
     for (const role of consider) {

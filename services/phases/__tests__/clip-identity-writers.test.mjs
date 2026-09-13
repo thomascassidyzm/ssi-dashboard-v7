@@ -25,6 +25,9 @@ const requireCjs = createRequire(import.meta.url)
 const state = {
   audioRows: [],
   ttsCalls: [],
+  // Any other table the code under test reads (courses, voice_language_roles,
+  // voices): rows returned for a select, filtered like course_audio.
+  tables: {},
 }
 
 function makeMockSupabaseClient() {
@@ -37,6 +40,7 @@ function makeMockSupabaseClient() {
         eq(col, val) { filters[col] = { kind: 'eq', val }; return api },
         in(col, vals) { filters[col] = { kind: 'in', val: vals }; return api },
         neq(col, val) { filters[col] = { kind: 'neq', val }; return api },
+        is(col, val) { filters[col] = { kind: 'is', val }; return api },
         not() { return api },
         order() { return api },
         limit() { return api },
@@ -47,12 +51,14 @@ function makeMockSupabaseClient() {
         update() { return api },
       }
       function resolve() {
-        if (table === 'course_audio' && op === 'select') {
-          const rows = state.audioRows.filter(r =>
+        if (op === 'select' && (table === 'course_audio' || state.tables[table])) {
+          const source = table === 'course_audio' ? state.audioRows : state.tables[table]
+          const rows = source.filter(r =>
             Object.entries(filters).every(([k, f]) =>
               f.kind === 'in' ? f.val.includes(r[k])
                 : f.kind === 'neq' ? r[k] !== f.val
-                  : r[k] === f.val))
+                  : f.kind === 'is' ? r[k] == f.val
+                    : r[k] === f.val))
           return Promise.resolve({ data: rows, error: null })
         }
         if (op === 'upsert') return Promise.resolve({ data: [{ id: 'UPSERTED-ID' }], error: null })
@@ -99,6 +105,7 @@ beforeAll(async () => {
 beforeEach(() => {
   state.audioRows = []
   state.ttsCalls = []
+  state.tables = {}
 })
 
 const humanRow = (over = {}) => ({
@@ -229,140 +236,162 @@ describe('findExistingAudio — one clip, however it was spelt', () => {
   })
 })
 
-// ─── cross-course canon reuse: exact text, or nothing ────────────────────────
+// ─── language-level reuse: the words, the language, real audio — nothing else ──
 //
-// Tom's ruling 2026-08-11 (decision 8 of the pod-0 survey): a pod line whose
-// English is byte-identical canonical pod-0 text may point at a sibling course's
-// identical clip instead of paying to render it again — but ONLY on exact canon
-// text, and only from a pod already aligned to canon. The second test is the one
-// that matters: near-miss text must NOT borrow, or a learner hears wrong words.
+// Tom's ruling, 2026-09-13: "English audio is the same for all languages that
+// use English. So we have the English. Recordings are per language. Courses
+// re-use languages as appropriate." And on a proposal to render 220 English pod
+// lines whose clips already existed under fra/spa pod-1: "This is utter crap.
+// We have all recordings already. We just create IDs per course so that the
+// per course IDs point to the same recordings."
+//
+// So the pod path's read (`scope: 'language'`) borrows a KNOWN clip from any
+// course in any voice, and a TARGET clip from any course in the same voice.
+// The old gate — pod-0 slug, canon-aligned pod, identical voice — is gone. The
+// drift tests are the ones that matter: near-miss words must NOT borrow.
 
-describe('findAudioRowForClip — cross-course reuse on exact canon text', () => {
-  const CANON = "let's have a coffee"
-  const canonTexts = new Set([CANON])
+describe('findAudioRowForClip — pod known audio is per language', () => {
+  const LINE = "let's have a coffee"
+  const POD = { scope: 'language', shareVoices: true }
 
   const siblingRow = (over = {}) => ({
-    id: 'SIB-CANON',
-    course_code: 'deu_at_for_eng',
-    text: CANON,
-    text_normalized: "let's have a coffee",
+    id: 'SIB-FRA',
+    course_code: 'fra_for_eng',
+    text: LINE,
+    text_normalized: LINE,
     language: 'eng',
     role: 'known',
-    voice_id: 'azure_en-GB-SoniaNeural',
-    s3_key: 'mastered/CANON.mp3',
+    voice_id: 'xai_bedd6226',
+    s3_key: 'mastered/FRA.mp3',
     ...over,
   })
 
-  it('reuses a sibling course clip when the canon text matches byte for byte', async () => {
+  it('links a sibling course clip of the same English in a DIFFERENT voice, with no canon proof at all', async () => {
+    // The 2026-09-13 case: cym_n pod-1 asks for a line French pod-1 already
+    // serves, rendered on the xAI clone; cym_n would have rendered on Cartesia.
     state.audioRows = [siblingRow()]
     const found = await phase8.findAudioRowForClip(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
-    expect(found).toMatchObject({ id: 'SIB-CANON', course_code: 'deu_at_for_eng' })
+      'cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', POD)
+    expect(found).toMatchObject({ id: 'SIB-FRA', course_code: 'fra_for_eng' })
   })
 
-  it('does NOT reuse when the stored text has drifted, even where normalisation agrees', async () => {
+  it('does NOT borrow when the stored words have drifted, even where normalisation agrees', async () => {
     // "…coffee!" and "…coffee" share one text_normalized (the DB trigger rtrims
-    // '!'), so the course-scoped query finds it — the raw-text check is the only
-    // thing standing between the learner and a clip of different words.
+    // '!') — the raw-text check is the only thing between the learner and a
+    // clip of different words.
     state.audioRows = [siblingRow({ text: "let's have a coffee!" })]
-    const found = await phase8.findAudioRowForClip(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
-    expect(found).toBeNull()
+    expect(await phase8.findAudioRowForClip(
+      'cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x', POD)).toBeNull()
   })
 
-  it('does NOT reuse when the REQUESTING line has drifted off canon', async () => {
-    state.audioRows = [siblingRow({ text: "let's have a coffee please", text_normalized: "let's have a coffee please" })]
-    const found = await phase8.findAudioRowForClip(
-      'cym_n_for_eng', "let's have a coffee please", 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
-    expect(found).toBeNull()
-  })
-
-  it('stays course-scoped when no canon proof is supplied — the old behaviour, unchanged', async () => {
-    state.audioRows = [siblingRow()]
-    const found = await phase8.findAudioRowForClip(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural')
-    expect(found).toBeNull()
-    expect(await phase8.findExistingAudio(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural')).toBeNull()
-  })
-
-  it('never borrows a pending placeholder, and never a different voice or language', async () => {
+  it('never borrows a pending placeholder, and never a different language', async () => {
     state.audioRows = [siblingRow({ s3_key: 'pending/whatever.mp3' })]
-    expect(await phase8.findAudioRowForClip(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })).toBeNull()
-
-    state.audioRows = [siblingRow({ voice_id: 'xai_leo' })]
-    expect(await phase8.findAudioRowForClip(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })).toBeNull()
-
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x', POD)).toBeNull()
     state.audioRows = [siblingRow({ language: 'deu' })]
-    expect(await phase8.findAudioRowForClip(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })).toBeNull()
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x', POD)).toBeNull()
   })
 
-  it('prefers the course own clip over a sibling', async () => {
-    state.audioRows = [siblingRow(), siblingRow({ id: 'OWN', course_code: 'cym_n_for_eng' })]
-    const found = await phase8.findAudioRowForClip(
-      'cym_n_for_eng', CANON, 'eng', 'known', 'azure_en-GB-SoniaNeural', { canonTexts })
-    expect(found).toMatchObject({ id: 'OWN' })
+  it('a TARGET clip crosses courses only in the SAME voice — pod speakers are cast per character', async () => {
+    const target = { scope: 'language', shareVoices: false }
+    state.audioRows = [siblingRow({ language: 'cym', role: 'target1', voice_id: 'human_aran_cym_n', text: 'bore da', text_normalized: 'bore da' })]
+    expect(await phase8.findAudioRowForClip('cym_s_for_eng', 'bore da', 'cym', 'target1', 'human_catrinlliar_cym_n', target)).toBeNull()
+    expect(await phase8.findAudioRowForClip('cym_s_for_eng', 'bore da', 'cym', 'target1', 'human_aran_cym_n', target))
+      .toMatchObject({ id: 'SIB-FRA' })
   })
 
-  it('matches on the canon probe while requiring the stored text to be what we would render', async () => {
-    // Multi-sentence pod turns are rendered with a " … " pause cue, derived
-    // deterministically from the canon line — so both courses hold the same
-    // stored text and the probe is still the un-paused canon line.
+  it('stays course-scoped for the tools (default scope) — the old contract, unchanged', async () => {
+    state.audioRows = [siblingRow()]
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'xai_bedd6226')).toBeNull()
+    expect(await phase8.findExistingAudio('cym_n_for_eng', LINE, 'eng', 'known', 'xai_bedd6226')).toBeNull()
+  })
+
+  it('prefers the course own clip, then the clip a live sibling pod already serves', async () => {
+    state.audioRows = [siblingRow(), siblingRow({ id: 'OWN', course_code: 'cym_n_for_eng', voice_id: 'human_aran_cym_n' })]
+    expect(await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'human_aran_cym_n', POD)).toMatchObject({ id: 'OWN' })
+
+    state.audioRows = [siblingRow({ id: 'STRAY', course_code: 'deu_for_eng' }), siblingRow({ id: 'SERVED', course_code: 'spa_for_eng' })]
+    const found = await phase8.findAudioRowForClip('cym_n_for_eng', LINE, 'eng', 'known', 'cartesia_x',
+      { ...POD, preferIds: new Set(['SERVED']) })
+    expect(found).toMatchObject({ id: 'SERVED' })
+  })
+
+  it('accepts a clip stored under the un-paused original of a multi-sentence turn', async () => {
+    // Pod turns synthesise with a " … " pause cue; a clip rendered before the cue
+    // existed holds the same words without it. Both spell the same sentence.
+    const original = 'hello. how are you'
     const paused = 'hello … how are you'
-    state.audioRows = [siblingRow({ text: paused, text_normalized: paused })]
-    const found = await phase8.findAudioRowForClip(
-      'cym_n_for_eng', paused, 'eng', 'known', 'azure_en-GB-SoniaNeural',
-      { canonTexts: new Set(['hello. how are you']), canonProbe: 'hello. how are you' })
-    expect(found).toMatchObject({ id: 'SIB-CANON' })
+    state.audioRows = [siblingRow({ text: original, text_normalized: paused })]
+    const found = await phase8.findAudioRowForClip('cym_n_for_eng', paused, 'eng', 'known', 'cartesia_x',
+      { ...POD, altTexts: [original] })
+    expect(found).toMatchObject({ id: 'SIB-FRA' })
   })
 })
 
-describe('podCanonReuseTexts — only a pod aligned end to end may borrow', () => {
-  const canon = [
-    { global_order: 1, english_text: 'hello' },
-    { global_order: 2, english_text: "I'm learning [target language]." },
-    { global_order: 3, english_text: "let's have a coffee" },
-  ]
-  const aligned = [
-    { global_order: 1, known_text: 'hello' },
-    { global_order: 2, known_text: "I'm learning Welsh." },
-    { global_order: 3, known_text: "let's have a coffee" },
-  ]
+describe('podTtsText', () => {
+  it('joins a multi-sentence turn with the pause cue and leaves a single sentence alone', () => {
+    expect(phase8.podTtsText('Hello. How are you?')).toBe('Hello. … How are you?')
+    expect(phase8.podTtsText('Hello there')).toBe('Hello there')
+  })
+})
 
-  it('returns the shareable lines and excludes the per-course placeholder line', () => {
-    const texts = phase8.podCanonReuseTexts(canon, aligned, 'known_text')
-    expect([...texts].sort()).toEqual(['hello', "let's have a coffee"])
-    // The substituted line names a language — sharing it would put "Welsh" in
-    // the German course.
-    expect(texts.has("I'm learning Welsh.")).toBe(false)
+// ─── the known-side render voice comes from the Voice Lab, never from an Azure default ──
+//
+// Tom, 2026-09-13 14:43Z: "If we do not have any recordings we use the Cartesia
+// clones to fill in any gaps. It is my voice from now on for Cartesia clones.
+// And there is a female voice already chosen if we need any female voice clips.
+// The voices for English have been cast in the voice lab."
+
+describe('getCourseContext / podKnownRenderVoice — the lab casts the English side', () => {
+  const TOM = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+  const GEMMA = 'cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca'
+  const labCast = () => {
+    state.tables.voice_language_roles = [
+      { language: 'eng', slot: 'phrase', gender: 'm', rank: 0, voice_id: TOM },
+      { language: 'eng', slot: 'phrase', gender: 'f', rank: 0, voice_id: GEMMA },
+    ]
+    state.tables.voices = [
+      { voice_id: TOM, gender: 'm', tts_engine: 'cartesia', is_active: true, display_name: 'tom_001' },
+      { voice_id: GEMMA, gender: 'f', tts_engine: 'cartesia', is_active: true, display_name: 'Gemma' },
+    ]
+  }
+  const welsh = () => {
+    state.tables.courses = [{
+      course_code: 'cym_n_for_eng', known_lang: 'eng', target_lang: 'cym',
+      voice_config: { voices: { known: { voiceId: '', provider: 'azure', name: '' } } },
+    }]
+  }
+  // Required lazily: at collection time the env and the supabase stub are not
+  // seeded yet, and a module loaded then would hold a null client for good.
+  beforeEach(() => { requireCjs('../../voice-config-service.cjs')._clearCastCache() })
+
+  it('a human-recorded Welsh course with an EMPTY known voice resolves to the lab cast, not to Azure Sonia', async () => {
+    labCast(); welsh()
+    const ctx = await phase8.getCourseContext('cym_n_for_eng')
+    expect(ctx.knownVoice).not.toBeNull()
+    expect(ctx.knownVoice.voice_id).not.toMatch(/Sonia/)
+    expect(ctx.knownVoice.provider).toBe('cartesia')
+    expect(ctx.knownCast.m).toMatchObject({ voice_id: TOM, provider: 'cartesia' })
+    expect(ctx.knownCast.f).toMatchObject({ voice_id: GEMMA, provider: 'cartesia' })
   })
 
-  it('returns null for a pod whose English has drifted anywhere at all', () => {
-    const drifted = aligned.map((r, i) => i === 2 ? { ...r, known_text: "let's have a coffee!" } : r)
-    expect(phase8.podCanonReuseTexts(canon, drifted, 'known_text')).toBeNull()
+  it('with nothing cast in the lab and nothing stored there is NO voice — never a silent Azure default', async () => {
+    welsh()
+    const ctx = await phase8.getCourseContext('cym_n_for_eng')
+    expect(ctx.knownVoice).toBeNull()
   })
 
-  it('returns null for a pod that is short of canon, or ordered differently', () => {
-    expect(phase8.podCanonReuseTexts(canon, aligned.slice(0, 2), 'known_text')).toBeNull()
-    const reordered = [{ ...aligned[0], global_order: 3 }, aligned[1], { ...aligned[2], global_order: 1 }]
-    expect(phase8.podCanonReuseTexts(canon, reordered, 'known_text')).toBeNull()
-  })
-
-  it('reads the English side of an eng_for_* course from target_text', () => {
-    const engTarget = aligned.map(r => ({ global_order: r.global_order, target_text: r.known_text, known_text: 'ぜんぜん' }))
-    expect([...phase8.podCanonReuseTexts(canon, engTarget, 'target_text')].sort())
-      .toEqual(['hello', "let's have a coffee"])
-    expect(phase8.podCanonReuseTexts(canon, engTarget, 'known_text')).toBeNull()
-  })
-
-  it('says nothing is shareable when neither side of the course is English', () => {
-    expect(phase8.englishColumnFor({ knownLang: 'eng', targetLang: 'cym' })).toBe('known_text')
-    expect(phase8.englishColumnFor({ knownLang: 'jpn', targetLang: 'eng' })).toBe('target_text')
-    expect(phase8.englishColumnFor({ knownLang: 'spa', targetLang: 'cym' })).toBeNull()
-    expect(phase8.podCanonReuseTexts(canon, aligned, null)).toBeNull()
+  it('a speaker cast to a HUMAN on the known track renders a gap line on the lab voice of the speaker gender', async () => {
+    labCast(); welsh()
+    const ctx = await phase8.getCourseContext('cym_n_for_eng')
+    const pod = { speakers: {
+      James: { gender: 'm', known: { provider: 'human', voice_id: 'human_aran_cym_n' } },
+      Customer: { gender: 'f', known: { provider: 'human', voice_id: 'human_catrinlliar_cym_n' } },
+      Robot: { gender: 'm', known: { provider: 'azure', voice_id: 'en-GB-RyanNeural' } },
+    } }
+    expect(phase8.podKnownRenderVoice(pod, { speaker: 'James' }, ctx)).toMatchObject({ voice_id: TOM })
+    expect(phase8.podKnownRenderVoice(pod, { speaker: 'Customer' }, ctx)).toMatchObject({ voice_id: GEMMA })
+    // A synthetic cast entry is its own answer, untouched.
+    expect(phase8.podKnownRenderVoice(pod, { speaker: 'Robot' }, ctx)).toMatchObject({ voice_id: 'en-GB-RyanNeural' })
   })
 })
 

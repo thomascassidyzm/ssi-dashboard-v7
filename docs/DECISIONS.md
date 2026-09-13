@@ -954,3 +954,41 @@ before-state asserted per row, evidence at
 `~/ssi-evidence/ssi-dashboard-v7/tools/pods/annotate-jump-in/`. The rest of the fleet
 (11,028 further lines on 65 serving pods; 24,481 including held and retired) is not annotated
 by this job — the count and price are in the #471 report, and running it is a separate call.
+
+## 2026-09-13 — pod known-side audio is per LANGUAGE: link the clip that exists, render only a true gap, and the lab casts the English side
+
+**Tom, 2026-09-13, via RBF:** "English audio is the same for all languages that use English. So we
+have the English. Recordings are per language. Courses re-use languages as appropriate." At 14:40Z,
+on job #503's proposal to render 220 Azure Sonia clips for `cym_n_for_eng:pod-1` whose English
+already had clips under French and Spanish pod-1: "This is utter crap. We have all recordings
+already. We just create IDs per course so that the per course IDs point to the same recordings."
+At 14:43Z: "If we do not have any recordings we use the Cartesia clones to fill in any gaps. It is
+my voice from now on for Cartesia clones. And there is a female voice already chosen if we need any
+female voice clips. The voices for English have been cast in the voice lab."
+
+**Decision.** A pod row's `known_audio_id` is a pointer. Before any render is planned, every pod
+line's reuse read goes estate-wide by canonical language and normalised text, regardless of course
+and — for a KNOWN clip — regardless of voice; a TARGET clip crosses courses only in the same voice,
+because pod speakers are cast per character. The pod-0-only slug gate, the all-or-nothing canon
+alignment and the exact-voice rule were the accounting bug made executable and are removed, not
+demoted. What still stands between the learner and the wrong words: the stored text must be
+byte-identical to what would be synthesised (or to the un-paused original of a multi-sentence turn,
+the same words), the row must point at real non-pending audio, and the language must match. Among
+equal matches the clip a live sibling pod of the same slug already serves wins, then same role, then
+a cross-role clip that clears the baked-speed guard. `/plan-pods` now reports the link half and the
+render half apart, costing only the render half; `/generate-pods` takes `link_only: true`, which
+writes pointers with a null-at-write-time assertion per row and refuses to render the remainder,
+returning it by id and text. `pod-bulk-migrate` calls the same context and the same voice picker.
+
+**The English side is cast by the Voice Lab, never defaulted to Azure.** `getCourseContext`
+used to fall to `en-GB-SoniaNeural` whenever the resolved known voice was empty — the exact state
+of every human-recorded Welsh course. It now reads the known language's phrase cast by gender from
+`voice_language_roles`, and a pod speaker cast to a human on the known track with no recording of
+a line renders on that cast at the speaker's gender. No cast and nothing stored means no voice and
+a loud failure. The human-voice policy signal now protects a Welsh course's target-side roles; its
+English known role is protected by the recordings themselves (Aran's 6,337 English clips still
+refuse the cast on cym_n), matching the narrowing tts-service's chokepoint made on 2026-09-03.
+
+**Why better × simpler × cheaper.** One read instead of a ceremony: no canon table, no alignment
+proof, no slug list. Zero renders for anything the estate already speaks. The lab is the one place a
+voice is chosen, so a cast made there reaches pods without a config edit per course.
