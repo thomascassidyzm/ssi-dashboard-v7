@@ -1,7 +1,7 @@
 /**
  * The pure halves of the re-slug, pinned.
  *
- * Tom, 2026-09-10: "THERE IS NO POD-0 anymore by name, so giving it that slug
+ * Tom, 2026-09-10: "THERE IS NO [old core slug] anymore by name, so giving it that slug
  * name is legacy naming debt, we will trip up over it again at a later date with
  * new agents." Renaming a slug is cheap; renaming it HALFWAY is what costs a
  * learner their progress and a recordist their bad-take marks. These assertions
@@ -13,7 +13,7 @@ const { reslugId, retitle, rewritePointers, snapshotName } = createRequire(impor
 
 describe('reslugId — only the slug segment moves', () => {
   it('renames the slug and leaves the tail alone', () => {
-    expect(reslugId('cym_n_for_eng:pod-0:SC07-S006', 'cym_n_for_eng', 'pod-0', 'pod-1'))
+    expect(reslugId('cym_n_for_eng:pod-1-staged:SC07-S006', 'cym_n_for_eng', 'pod-1-staged', 'pod-1'))
       .toBe('cym_n_for_eng:pod-1:SC07-S006')
   })
 
@@ -21,35 +21,35 @@ describe('reslugId — only the slug segment moves', () => {
   // taking [2] would drop the `:s2` and silently re-point a learner's progress at
   // the whole sentence.
   it('keeps a tail that contains its own colons', () => {
-    expect(reslugId('cym_n_for_eng:pod-0:SC01-S001:s2', 'cym_n_for_eng', 'pod-0', 'pod-1'))
+    expect(reslugId('cym_n_for_eng:pod-1-staged:SC01-S001:s2', 'cym_n_for_eng', 'pod-1-staged', 'pod-1'))
       .toBe('cym_n_for_eng:pod-1:SC01-S001:s2')
   })
 
   it('refuses rather than guesses when the shape is not what it expects', () => {
-    expect(reslugId('cym_n_for_eng:pod-0-unrecorded:SC01-S001', 'cym_n_for_eng', 'pod-0', 'pod-1')).toBeNull()
-    expect(reslugId('cym_s_for_eng:pod-0:SC01-S001', 'cym_n_for_eng', 'pod-0', 'pod-1')).toBeNull()
-    expect(reslugId('cym_n_for_eng:pod-0', 'cym_n_for_eng', 'pod-0', 'pod-1')).toBeNull()
+    expect(reslugId('cym_n_for_eng:pod-1-staged-x:SC01-S001', 'cym_n_for_eng', 'pod-1-staged', 'pod-1')).toBeNull()
+    expect(reslugId('cym_s_for_eng:pod-1-staged:SC01-S001', 'cym_n_for_eng', 'pod-1-staged', 'pod-1')).toBeNull()
+    expect(reslugId('cym_n_for_eng:pod-1-staged', 'cym_n_for_eng', 'pod-1-staged', 'pod-1')).toBeNull()
   })
 })
 
 describe('retitle — the digit in a human title', () => {
   it('renames the pod in a title a person wrote', () => {
-    expect(retitle('Northern Welsh (colloquial Gogledd Cymru Welsh) Listening Pods — Pod 0', 'pod-0', 'pod-1'))
-      .toBe('Northern Welsh (colloquial Gogledd Cymru Welsh) Listening Pods — Pod 1')
+    expect(retitle('Northern Welsh (colloquial Gogledd Cymru Welsh) Listening Pods — Pod 1', 'pod-1', 'pod-2'))
+      .toBe('Northern Welsh (colloquial Gogledd Cymru Welsh) Listening Pods — Pod 2')
   })
 
   it('keeps the separator and the case the title chose', () => {
-    expect(retitle('POD-0 conversations', 'pod-0', 'pod-1')).toBe('POD-1 conversations')
-    expect(retitle('Pod0', 'pod-0', 'pod-1')).toBe('Pod1')
+    expect(retitle('POD-1 conversations', 'pod-1', 'pod-2')).toBe('POD-2 conversations')
+    expect(retitle('Pod1', 'pod-1', 'pod-2')).toBe('Pod2')
   })
 
   it('leaves a title that never mentions the pod number', () => {
-    expect(retitle('Everyday conversations', 'pod-0', 'pod-1')).toBe('Everyday conversations')
+    expect(retitle('Everyday conversations', 'pod-1', 'pod-2')).toBe('Everyday conversations')
   })
 })
 
 describe('rewritePointers — every pointer, wherever it sits', () => {
-  const FROM = 'cym_n_for_eng:pod-0'
+  const FROM = 'cym_n_for_eng:unrecorded'
   const TO = 'cym_n_for_eng:pod-1'
 
   // THE BUG THIS EXISTS FOR. The first apply on 2026-09-10 rewrote only the note's
@@ -71,24 +71,25 @@ describe('rewritePointers — every pointer, wherever it sits', () => {
   // parsed note changes its whitespace and escaping — so a diff of the serialised
   // strings would flag a row with nothing to move and write it back reformatted.
   it('reports zero hits for a note it has nothing to do to', () => {
-    const note = { pod_id: 'cym_n_for_eng:pod-0-unrecorded', sentence_id: 'cym_n_for_eng:pod-0-unrecorded:SC01-S001' }
+    const note = { pod_id: 'cym_n_for_eng:unrecorded-draft', sentence_id: 'cym_n_for_eng:unrecorded-draft:SC01-S001' }
     expect(rewritePointers(note, FROM, TO).hits).toBe(0)
   })
 
-  // pod-0-unrecorded is a DIFFERENT pod with 61 provenance rows of its own. A
-  // prefix match would re-point all of them at a pod they were never part of.
+  // A sibling whose slug merely starts the same way is a DIFFERENT pod (north
+  // Welsh's parked working copy carried 61 provenance rows of its own). A prefix
+  // match would re-point all of them at a pod they were never part of.
   it('never catches a longer slug that merely starts the same way', () => {
     const { rewritten, hits } = rewritePointers(
-      { a: 'cym_n_for_eng:pod-0-unrecorded:SC01-S001', b: 'cym_n_for_eng:pod-0-gated-2026-08-06' }, FROM, TO)
+      { a: 'cym_n_for_eng:unrecorded-draft:SC01-S001', b: 'cym_n_for_eng:unrecorded-gated-2026-08-06' }, FROM, TO)
     expect(hits).toBe(0)
-    expect(rewritten.a).toBe('cym_n_for_eng:pod-0-unrecorded:SC01-S001')
+    expect(rewritten.a).toBe('cym_n_for_eng:unrecorded-draft:SC01-S001')
   })
 
   it('leaves another course alone, and anything that is not a string', () => {
     const { rewritten, hits } = rewritePointers(
-      { other: 'cym_s_for_eng:pod-0:SC01-S001', n: 3, nul: null, arr: [`${FROM}:SC02-S001`] }, FROM, TO)
+      { other: 'cym_s_for_eng:unrecorded:SC01-S001', n: 3, nul: null, arr: [`${FROM}:SC02-S001`] }, FROM, TO)
     expect(hits).toBe(1)
-    expect(rewritten.other).toBe('cym_s_for_eng:pod-0:SC01-S001')
+    expect(rewritten.other).toBe('cym_s_for_eng:unrecorded:SC01-S001')
     expect(rewritten.n).toBe(3)
     expect(rewritten.nul).toBeNull()
     expect(rewritten.arr).toEqual([`${TO}:SC02-S001`])
@@ -105,15 +106,15 @@ describe('snapshotName — a backup a later step can clobber is not a backup', (
   // pods and 0 sentences, the pod having already moved — overwrote the pre-change
   // snapshot of all 231 sentence rows with an empty one.
   it('gives two runs of the same rename two different files', () => {
-    const a = snapshotName('cym_n_for_eng', 'pod-0', 'pod-1', true, new Date('2026-09-10T16:49:40.123Z'))
-    const b = snapshotName('cym_n_for_eng', 'pod-0', 'pod-1', true, new Date('2026-09-10T17:02:40.331Z'))
+    const a = snapshotName('cym_n_for_eng', 'unrecorded', 'pod-1', true, new Date('2026-09-10T16:49:40.123Z'))
+    const b = snapshotName('cym_n_for_eng', 'unrecorded', 'pod-1', true, new Date('2026-09-10T17:02:40.331Z'))
     expect(a).not.toBe(b)
     expect(a).toContain('20260910T164940Z')
     expect(b).toContain('20260910T170240Z')
   })
 
   it('still says what it is: the course, the rename, and whether it was written', () => {
-    expect(snapshotName('cym_n_for_eng', 'pod-0', 'pod-1', false, new Date('2026-09-10T17:03:22.602Z')))
-      .toBe('docs/pods/retire-pod-slug-cym_n_for_eng-pod-0-to-pod-1-dryrun-20260910T170322Z-snapshot.json')
+    expect(snapshotName('cym_n_for_eng', 'unrecorded', 'pod-1', false, new Date('2026-09-10T17:03:22.602Z')))
+      .toBe('docs/pods/retire-pod-slug-cym_n_for_eng-unrecorded-to-pod-1-dryrun-20260910T170322Z-snapshot.json')
   })
 })

@@ -5,25 +5,30 @@
  * WHY THIS EXISTS. Tom's ruling of 2026-09-10: "THERE IS NO POD-0 anymore by
  * name, so giving it that slug name is legacy naming debt, we will trip up over
  * it again at a later date with new agents." On 2026-09-10 it had already cost
- * real hours: two workers and Watson each read `cym_n_for_eng:pod-0`, found it
- * live and populated with 231 current lines, and reasoned confidently from a
- * name that no longer means anything — producing two contradictory wrong answers
- * to a voice artist who was sitting at a microphone waiting. A name that is
- * wrong but still resolves is worse than one that is missing, because nothing
- * ever fails loudly enough to be noticed.
+ * real hours: two workers and Watson each read the north Welsh core pod under
+ * its stale name, found it live and populated with 231 current lines, and
+ * reasoned confidently from a name that no longer meant anything — producing
+ * two contradictory wrong answers to a voice artist who was sitting at a
+ * microphone waiting. A name that is wrong but still resolves is worse than one
+ * that is missing, because nothing ever fails loudly enough to be noticed.
+ *
+ * Tom's ruling of 2026-09-13 14:44Z finished the job estate-wide: "Pod-0 does
+ * not exist anymore. There should be zero references to it in code or docs or
+ * briefs. There is only pod-1 now. And then pods by topic like Method Pod,
+ * Senedd Pod, Health Pod." Job #512 ran this tool over every course that day:
+ * 44 live core pods and the held south Welsh one onto `pod-1`, and the parked
+ * held slates onto `unrecorded`, `gated-<date>` and `retired-<date>`. The
+ * earlier reading that a course's old slate must keep its old name ended with
+ * that ruling; this tool renames whatever pod it is pointed at, one canon under
+ * a new name, and the gates below are about SAFETY (collisions, shape, drift),
+ * not about which slates may be renamed.
  *
  * THIS IS A RE-SLUG, NOT A SWITCHOVER, and the distinction is the whole safety
  * case. `pod-switchover.cjs` moves learner progress between two DIFFERENT canons
- * and has to match content to do it. Here there is one canon: the same 231 rows,
+ * and has to match content to do it. Here there is one canon: the same rows,
  * the same slots, the same linked clips, under a new name. Every id maps 1:1 by
  * its own tail, so progress follows by rewriting one segment of a string — no
  * content matching, nothing to guess.
- *
- * It is NOT a general-purpose renamer. Across the estate `pod-0` and `pod-1` are
- * a content switchover 22 of 68 courses in: on 44 courses `pod-0` still holds
- * the OLD 142-line slate, and renaming those would drop the new slate's name
- * onto old material. This tool therefore refuses unless the pod it is pointed at
- * is genuinely a stale NAME on current data — see the gates in `check()`.
  *
  * WHAT MOVES, in one transaction:
  *   listening_pods          id, slug, and the digit in the title
@@ -50,13 +55,13 @@
  * writes a full row-level snapshot of everything it is about to change to the
  * evidence store, and prints the undo — which is this same tool, run backwards.
  *
- *   node tools/pods/retire-pod-slug.cjs --course=cym_n_for_eng --from=pod-0 --to=pod-1
- *   node tools/pods/retire-pod-slug.cjs --course=cym_n_for_eng --from=pod-0 --to=pod-1 --apply
+ *   node tools/pods/retire-pod-slug.cjs --course=<code> --from=<old-slug> --to=<new-slug>
+ *   node tools/pods/retire-pod-slug.cjs --course=<code> --from=<old-slug> --to=<new-slug> --apply
  *
- * THE UNDO is the same command with --from and --to swapped:
- *   node tools/pods/retire-pod-slug.cjs --course=cym_n_for_eng --from=pod-1 --to=pod-0 --apply --allow-backwards
- * (--allow-backwards waives the "the target name must be the higher number"
- * sanity gate, which exists so a rename cannot silently run the wrong way.)
+ * THE UNDO is the same command with --from and --to swapped, plus
+ * --allow-backwards, which waives the "the target name must be the higher
+ * number" sanity gate (it exists so a numbered rename cannot silently run the
+ * wrong way; slugs without a trailing number are not subject to it).
  */
 'use strict'
 
@@ -115,9 +120,10 @@ function retitle(title, fromSlug, toSlug) {
  * untouched and writes it back reformatted for nothing. Only a row whose `hits` is
  * non-zero has anything to say.
  *
- * EXACT BOUNDARY, NEVER A PREFIX. `cym_n_for_eng:pod-0-unrecorded` is a DIFFERENT
- * pod with 61 provenance rows of its own. A value qualifies only when it IS the pod
- * id or continues with a colon.
+ * EXACT BOUNDARY, NEVER A PREFIX. A sibling pod whose slug merely starts the same
+ * way (north Welsh's parked `unrecorded` slate carried 61 provenance rows of its
+ * own beside the core pod) is a DIFFERENT pod. A value qualifies only when it IS
+ * the pod id or continues with a colon.
  */
 function rewritePointers(value, fromId, toId) {
   let hits = 0
@@ -184,7 +190,10 @@ async function main () {
 
     const sentences = (await db.query(
       'select id, global_order from listening_pod_sentences where pod_id=$1 order by global_order', [fromId])).rows
-    if (!sentences.length && !RESUME) throw new Error(`${fromId}: no sentence rows — nothing to rename`)
+    // A parked slate can legitimately hold zero sentences (the Welsh `gated-2026-08-06`
+    // working copies were created empty). The pod ROW is still a reference to the old
+    // name, so an empty pod is renamed, not refused; the post-check compares 0 to 0.
+    if (!sentences.length && !RESUME) log(`  note: ${fromId} holds no sentence rows — renaming the pod row alone`)
     const newIds = sentences.map(r => {
       const next = reslugId(r.id, COURSE, FROM, TO)
       if (!next) throw new Error(`row id "${r.id}" is not ${COURSE}:${FROM}:<tail>; refusing to guess a new id`)
@@ -209,10 +218,10 @@ async function main () {
     // fallback. So walk the parsed object instead of guessing field names, and
     // rewrite any STRING whose value IS the pod id or sits under it.
     //
-    // EXACT-BOUNDARY MATCH, never a prefix. `cym_n_for_eng:pod-0-unrecorded` is a
-    // DIFFERENT pod with 61 provenance rows of its own, and
-    // `like '%cym_n_for_eng:pod-0%'` eats them — which is why the value must either
-    // equal the pod id or continue with a colon.
+    // EXACT-BOUNDARY MATCH, never a prefix. A sibling pod whose slug starts the same
+    // way is a DIFFERENT pod with provenance rows of its own, and a bare
+    // `like '%<pod id>%'` eats them — which is why the value must either equal the
+    // pod id or continue with a colon.
     const prov = (await db.query(
       `select audio_uuid, quality_notes from recording_provenance where quality_notes like $1`,
       [`%${fromId}%`])).rows

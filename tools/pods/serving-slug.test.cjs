@@ -3,7 +3,7 @@
  *
  * What they exist to hold. Ten write paths create, rename, empty or move a pod on a slug
  * the player serves (docs/pods/pod-doors-2026-09-02.md), and this job found an eleventh:
- * tools/pods/align-welsh-pod0-to-canonical.cjs, whose POD_SLUG is the literal 'pod-0' and
+ * the Welsh alignment tool, whose POD_SLUG was a literal serving slug and
  * which blanks known and target text on it with no serving check at all. Every one of
  * those doors now asks the same question through this module, so the answer cannot drift
  * between them. That is the whole point: an invariant guarded at one door is not guarded,
@@ -21,8 +21,13 @@
  * one tool only, and four of the five doors had no serving check whatsoever, so the
  * faithful reconstruction refuses nothing and knows no serving slugs
  * (tools/pods/.serving-slug.prefix.scaffold.cjs, deleted after the run):
- *   FAIL  knows pod-0 and pod-1 are served
- *     AssertionError: expected [] to include 'pod-0'
+ *   FAIL  knows which core slug is served
+ *     AssertionError: expected [] to include the serving slug
+ *
+ * RECORDED RED AGAIN on 2026-09-13 (Tom's ruling that day: "there is only pod-1"):
+ * the pre-fix module listed two serving core slugs, so "knows pod-1 is the one served
+ * core slug" failed because the list held a second, retired name beside pod-1,
+ * and passed once the list was one name.
  *   FAIL  names both numbers when it can
  *     AssertionError: expected '' to match /9 of this course's 12 learners/
  *   FAIL  says "0 learners currently" rather than staying silent
@@ -60,8 +65,8 @@ const wording = {
   remedy: 'Do it somewhere parked instead',
 }
 const serving = (over = {}) => ({
-  podId: 'cym_for_eng:pod-0',
-  slug: 'pod-0',
+  podId: 'cym_for_eng:pod-1',
+  slug: 'pod-1',
   podType: 'core',
   podExists: true,
   podVisibility: 'live',
@@ -74,10 +79,10 @@ const serving = (over = {}) => ({
 })
 
 describe('servesLearners — the slugs the player resolves', () => {
-  it('knows pod-0 and pod-1 are served', () => {
-    expect(SERVING_POD_SLUGS).toContain('pod-0')
+  it('knows pod-1 is the one served core slug (Tom, 2026-09-13: there is only pod-1)', () => {
+    expect([...SERVING_POD_SLUGS]).toEqual(['pod-1'])
     expect(SERVING_POD_SLUGS).toContain('pod-1')
-    expect(servesLearners({ slug: 'pod-0', podType: 'core' })).toBe(true)
+    expect(servesLearners({ slug: 'pod-1', podType: 'core' })).toBe(true)
     expect(servesLearners({ slug: 'pod-1', podType: 'core' })).toBe(true)
   })
   // Job #354 (2026-09-12): the Listening Mode third slot. RECORDED RED against the
@@ -92,10 +97,10 @@ describe('servesLearners — the slugs the player resolves', () => {
   })
 
   it('a parked slug is not served', () => {
-    expect(servesLearners({ slug: 'pod-0-unrecorded', podType: 'core' })).toBe(false)
+    expect(servesLearners({ slug: 'unrecorded', podType: 'core' })).toBe(false)
   })
   it('a non-core pod on a serving slug is not served — the resolver filters pod_type', () => {
-    expect(servesLearners({ slug: 'pod-0', podType: 'choice' })).toBe(false)
+    expect(servesLearners({ slug: 'pod-1', podType: 'choice' })).toBe(false)
   })
 })
 
@@ -115,7 +120,7 @@ describe('servingRefusal — one rule, five doors', () => {
   it('REFUSES a write onto a serving slug', () => {
     const r = servingRefusal(serving())
     expect(r).toBeTruthy()
-    expect(r).toMatch(/pod-0/)
+    expect(r).toMatch(/pod-1/)
     expect(r).toMatch(/9 of this course's 12 learners/)
     expect(r).toMatch(/--serve-now/)
   })
@@ -140,34 +145,34 @@ describe('servingRefusal — one rule, five doors', () => {
     expect(servingRefusal(serving({ serveNow: true }))).toBeNull()
   })
   it('allows a parked slug', () => {
-    expect(servingRefusal(serving({ slug: 'pod-0-unrecorded' }))).toBeNull()
+    expect(servingRefusal(serving({ slug: 'unrecorded' }))).toBeNull()
   })
 })
 
 // ---------------------------------------------------------------------------
 // pickServingPod — the READER's half of the rule (2026-09-03).
-// The literals it replaces: /api/pod-scripts defaulted to 'pod-1' and showed 45
-// of 67 courses as EMPTY; the LEGO extractor and pod-state-report defaulted to
-// 'pod-0' and reported nothing for the 22 courses that moved.
+// The literals it replaces: /api/pod-scripts, the LEGO extractor and
+// pod-state-report each defaulted to a different slug and each was wrong for
+// part of the estate. Since 2026-09-13 every course's core pod is pod-1.
 // ---------------------------------------------------------------------------
 describe('pickServingPod', () => {
   const { pickServingPod } = require(MOD)
   const p = (slug, extra = {}) => ({ id: `c:${slug}`, slug, pod_type: 'core', ...extra })
 
-  it('prefers pod-1 when both exist', () => {
-    expect(pickServingPod([p('pod-0'), p('pod-1')]).slug).toBe('pod-1')
+  it('picks pod-1 beside a parked working copy', () => {
+    expect(pickServingPod([p('unrecorded'), p('pod-1')]).slug).toBe('pod-1')
   })
-  it('falls back to pod-0 — the two thirds of the estate that never moved', () => {
-    expect(pickServingPod([p('pod-0')]).slug).toBe('pod-0')
+  it('a course whose only core pod is parked is a NAMED gap, never a guess', () => {
+    expect(pickServingPod([p('unrecorded')])).toBe(null)
   })
   it('resolves a course whose only core pod is pod-1', () => {
     expect(pickServingPod([p('pod-1')]).slug).toBe('pod-1')
   })
   it('never picks a retired or gated pod, which keep pod_type=core through a rename', () => {
-    expect(pickServingPod([p('pod-0-retired-2026-08-22'), p('pod-0-gated-2026-08-06')])).toBe(null)
+    expect(pickServingPod([p('retired-2026-08-22'), p('gated-2026-08-06')])).toBe(null)
   })
-  it('the Welsh shape: pod-0 alongside an archived gated sibling', () => {
-    expect(pickServingPod([p('pod-0'), p('pod-0-gated-2026-08-06')]).slug).toBe('pod-0')
+  it('the Welsh shape: pod-1 alongside an archived gated sibling', () => {
+    expect(pickServingPod([p('pod-1'), p('gated-2026-08-06')]).slug).toBe('pod-1')
   })
   it('ignores non-core pods', () => {
     expect(pickServingPod([p('pod-1', { pod_type: 'themed' })])).toBe(null)
@@ -176,12 +181,12 @@ describe('pickServingPod', () => {
     expect(pickServingPod([{ id: 'c:pod-1', slug: 'pod-1' }]).slug).toBe('pod-1')
   })
   it('derives the slug from the id when the row has no slug column', () => {
-    expect(pickServingPod([{ id: 'cym_n_for_eng:pod-0' }]).id).toBe('cym_n_for_eng:pod-0')
+    expect(pickServingPod([{ id: 'cym_n_for_eng:pod-1' }]).id).toBe('cym_n_for_eng:pod-1')
   })
-  it('a course with no serving pod is null, never a guessed pod-0', () => {
+  it('a course with no serving pod is null, never a guessed slug', () => {
     expect(pickServingPod([])).toBe(null)
   })
   it('does NOT consult visibility — a held pod on a serving slug is still the served pod', () => {
-    expect(pickServingPod([p('pod-0', { visibility: 'held' })]).slug).toBe('pod-0')
+    expect(pickServingPod([p('pod-1', { visibility: 'held' })]).slug).toBe('pod-1')
   })
 })

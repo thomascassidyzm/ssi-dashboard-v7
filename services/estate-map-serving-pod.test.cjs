@@ -1,7 +1,7 @@
 // THE POD SLUG IS DERIVED, IN SQL TOO.
 //
-// estate_map() decided "does this course have a pod at all?" with the literal
-// `WHERE p.slug = 'pod-0'`. After Tom's 1-based ruling of 2026-08-22 that made
+// estate_map() decided "does this course have a pod at all?" with a literal
+// slug in its WHERE clause. After Tom's 1-based ruling of 2026-08-22 that made
 // the estate map — the estate's own declared source of truth — report the 22
 // courses on `pod-1` as having NO POD, and count their live pods as staging
 // ones. A hardcoded slug standing in for a derivation is the recurring bug
@@ -22,7 +22,7 @@ const DATABASE_URL = process.env.DATABASE_URL || (fs.existsSync(ENV_PSQL)
   : null)
 
 /** Same list, same order, as src/lib/servingPod.js and player-vue's servedPod.ts. */
-const SERVING_SLUGS = ['pod-1', 'pod-0']
+const SERVING_SLUGS = ['pod-1']
 
 const suite = DATABASE_URL ? describe : describe.skip
 
@@ -51,7 +51,7 @@ suite('estate_map() derives the serving pod, never assumes a slug', () => {
       select p.course_code, p.slug as raw, sp.slug as served
       from public.listening_pods p
       left join public.serving_pod sp on sp.course_code = p.course_code
-      where p.slug in ('pod-1','pod-0') and (p.pod_type is null or p.pod_type = 'core')`)
+      where p.slug = 'pod-1' and (p.pod_type is null or p.pod_type = 'core')`)
     expect(rows.length).toBeGreaterThan(0)
     for (const r of rows) {
       expect(r.served).not.toBeNull()
@@ -74,8 +74,8 @@ suite('estate_map() derives the serving pod, never assumes a slug', () => {
       if (!truth) continue
       if (!c.serving_pod?.exists) { missing.push(c.course_code); continue }
       if (c.serving_pod.pod_id !== truth.pod_id) wrong.push(c.course_code)
-      // `pod_0` is the original key kept live: same object, never a second answer.
-      expect(c.pod_0.pod_id).toBe(c.serving_pod.pod_id)
+      // The retired alias key is gone (Tom, 2026-09-13): one answer, one name.
+      expect(c).not.toHaveProperty('pod_0')
     }
     expect(missing).toEqual([])
     expect(wrong).toEqual([])

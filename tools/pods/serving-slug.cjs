@@ -10,9 +10,10 @@
  * door composes its own wording around it.
  *
  * WHAT "SERVING" MEANS, checked against the code and not against a doc. The learning
- * app resolves a course's pod by SLUG: `pod_type = 'core'` and `slug in ('pod-1','pod-0')`,
- * first match wins (packages/player-vue/src/composables/servedPod.ts, duplicated as a
- * literal in api/courses/[code]/bundle.ts). It counts no rows, reads no text, and —
+ * app resolves a course's pod by SLUG: `pod_type = 'core'` and `slug = 'pod-1'`
+ * (packages/player-vue/src/composables/servedPod.ts, duplicated as a literal in
+ * api/courses/[code]/bundle.ts). Tom's ruling, 2026-09-13: "There is only pod-1 now.
+ * And then pods by topic" — every course's core pod was renamed onto `pod-1` that day. It counts no rows, reads no text, and —
  * verified 2026-09-02 — reads no `visibility`. Two consequences that every door inherits:
  *
  *   1. `visibility` IS NOT A GUARD, anywhere. Tom's ruling, 2026-09-02, verbatim: "do not
@@ -22,7 +23,7 @@
  *      moment serving begins, so creating one is the harm, not the prelude to it.
  *
  * WHAT THIS RULE IS *NOT* FOR. It refuses an UNDELIBERATE write onto a serving slug —
- * an admin button whose slug defaults to pod-0, a markdown resync with no serving check.
+ * an admin button whose slug defaults to the serving one, a markdown resync with no serving check.
  * It is NOT a wall in front of legitimate pod swaps. Tom, 2026-09-02: "are you saying
  * learner progress blocks a POD being swapped? because we do NOT want that — we built a
  * progress migration protocol already." Migration is the goal; refusal is correct only
@@ -40,7 +41,7 @@
  * download, so a write onto it is a serving write. Main flow still resolves ONE pod from
  * SERVING_POD_SLUGS, so `pickServingPod` / `fetchServingSlug` do NOT read the extra list.
  */
-const SERVING_POD_SLUGS = ['pod-1', 'pod-0']
+const SERVING_POD_SLUGS = ['pod-1']
 const LISTENING_EXTRA_POD_SLUGS = ['method-pod']
 
 /**
@@ -102,7 +103,7 @@ function servingRefusal ({
 /**
  * The facts `servingRefusal()` needs, read through a supabase-js client. THREE tools now
  * ask this question in that dialect (pod-sync, pod-dialogue-generator,
- * align-welsh-pod0-to-canonical), so the query is written once here rather than three
+ * the Welsh alignment tool), so the query is written once here rather than three
  * times; clone-pod and promote-pod ask it in SQL through `pg` because that is the client
  * they hold. The RULE above is shared by all of them either way.
  *
@@ -135,11 +136,11 @@ async function readServingFactsSupabase (client, courseCode, podId, { warn = () 
  * reader and a writer can never disagree about which pod is the live one.
  *
  * WHY IT EXISTS (2026-09-03). Readers across the back office defaulted to a LITERAL
- * slug instead of resolving one — `/api/pod-scripts` to `pod-1`, the LEGO extractor
- * and the TTS bulk-migrator to `pod-0`. Tom's 1-based ruling of 2026-08-22 moved 22
- * courses onto `pod-1` and left the rest on `pod-0`, so every one of those literals
- * is now wrong for most of the estate: the pod-script review page showed 45 of 67
- * courses as EMPTY, both Welsh courses among them. A default is not a resolution.
+ * slug instead of resolving one, and when the estate's courses sat on two different
+ * core slugs every one of those literals was wrong for most of the estate: the
+ * pod-script review page showed 45 of 67 courses as EMPTY, both Welsh courses among
+ * them. The estate serves one slug again since 2026-09-13, but a default is still not
+ * a resolution — a course with no core pod must read as a NAMED gap, not as a guess.
  *
  * `visibility` is NOT consulted, for the same reason `servesLearners` ignores it —
  * Tom, 2026-09-02: "do not let visibility stand in for a guard anywhere." A held pod

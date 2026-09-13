@@ -1109,8 +1109,8 @@ const ESTATE_MAP_SEMANTICS = {
     'EVERY applicable blocker for the course, not just the top one. `blocked_reason` is the first and the one to '
     + 'act on; this list is the whole truth. They sum to more than the blocked course count.',
   blocked_reason:
-    'Machine-readable blocker, most-blocking first: no_audio | pod0_awaiting_voice_approval | '
-    + 'pod0_stale_voice_approval | pod0_known_track_incomplete | pod0_target_track_incomplete | null. '
+    'Machine-readable blocker, most-blocking first: no_audio | pod_awaiting_voice_approval | '
+    + 'pod_stale_voice_approval | pod_known_track_incomplete | pod_target_track_incomplete | null. '
     + 'Every value is about AUDIO PRODUCTION, never about release state.',
   veracity_checked:
     'Clips that have been through the veracity QA process. NOT a quality signal, and NOT a coverage target: '
@@ -1154,7 +1154,7 @@ const ESTATE_MAP_SEMANTICS = {
     + 'origin=\'human\' clips.',
   known_dead_stubs:
     'Slots linked to a clip whose file is under 2KB — linked in the database, silent to the learner. The 23 on the '
-    + 'Welsh pod-0 English track are 834-byte files from a bad write on 2026-06-15. A linked slot is not a filled slot.',
+    + 'Welsh core pod English track are 834-byte files from a bad write on 2026-06-15. A linked slot is not a filled slot.',
   draft_lines:
     'Pod lines whose target text is machine-translated and no human has read yet. The text EXISTS; it is '
     + 'unconfirmed, not missing.',
@@ -1163,28 +1163,22 @@ const ESTATE_MAP_SEMANTICS = {
     + 'estate. Do not assume a course\'s English audio was rendered for that course.',
   pods_by_language:
     'STANDING FACT, Tom 2026-08-13: PODS ARE PER LANGUAGE, NOT PER COURSE. Each language\'s pod content renders '
-    + 'ONCE and is shared across every course in that language — the English pod-0 dedupe generalised to the '
+    + 'ONCE and is shared across every course in that language — the English core-pod dedupe generalised to the '
     + 'whole estate. The player handles pod delivery speed; per-course pod duplication is not the answer to '
     + 'anything. This block is the ruling made countable: `slots_per_course_counting` is the OLD unit, '
     + '`distinct_lines` is the real render cost, and `collapse_factor` is the ratio between them.',
   collapse_factor:
-    'slots_per_course_counting / distinct_lines for a language\'s SERVING pod content (pod-1 where a course has '
-    + 'one, else pod-0). It is how much a per-course '
+    'slots_per_course_counting / distinct_lines for a language\'s SERVING pod content (`pod-1`). '
+    + 'It is how much a per-course '
     + 'count over-states the render. CONSEQUENCE Tom flagged: the ~210k-clip premium-first non-English rebuild '
     + 'queue was counted per-course and should collapse significantly under per-language dedupe. That number '
     + 'wants recounting and publishing BEFORE anyone proposes spend against it.',
   serving_pod:
-    'Per-COURSE state of THE POD THIS COURSE ACTUALLY SERVES — resolved, never assumed: `pod-1` if the course '
-    + 'has one, else `pod-0`, and the `slug` field says which. It is still the right unit for "can a learner '
+    'Per-COURSE state of THE POD THIS COURSE ACTUALLY SERVES — resolved, never assumed: the core pod on `pod-1` '
+    + '(Tom, 2026-09-13: "there is only pod-1 now, and then pods by topic"); the `slug` field says which. It is still the right unit for "can a learner '
     + 'play this course\'s pod", and the WRONG unit for costing a render. To cost a render, read '
     + '`pods_by_language`. Both are in this response on purpose, because conflating them is what produced a '
     + 'per-course render queue.',
-  pod_0:
-    'THE ORIGINAL NAME FOR `serving_pod`, kept live so every existing reader keeps working — identical object, '
-    + 'same values. It stopped being a truthful name on Tom\'s 1-based ruling of 2026-08-22, and until '
-    + '2026-09-06 it was worse than untruthful: the SQL behind it hardcoded `slug = \'pod-0\'`, so all 22 '
-    + 'courses moved onto `pod-1` reported {exists:false} — no pod at all — while their live pod was counted '
-    + 'as a staging one. Prefer `serving_pod` in anything new.',
   lego_types:
     'An A-LEGO is one word on at least one side, and is therefore unmappable. An M-LEGO is two or more words on '
     + 'BOTH sides, is mappable, and mapping is offered on Intros only. Tom: "It\'s just classification that feeds the mapping."',
@@ -1208,34 +1202,32 @@ const ESTATE_MAP_SEMANTICS = {
  * English track is separately silent. `blocked_reason` is the one to act on;
  * `blocked_reasons` is the truth.
  *
- * READS `serving_pod`, NOT A SLUG. `pod_0` is its alias and is read only as a
- * fallback, for a payload produced before 2026-09-06. The `pod0_*` reason STRINGS
- * are deliberately unchanged: they are an API contract that other readers key on,
- * and renaming them would break those readers to fix a word.
+ * READS `serving_pod`, NOT A SLUG. The reason strings are an API contract other
+ * readers key on; `pod_*` names the served pod, whatever its slug.
  */
 function estateMapBlockers(course, approval) {
-  const pod0 = course.serving_pod || course.pod_0 || { exists: false }
+  const servedPod = course.serving_pod || { exists: false }
   const out = []
   if ((course.audio?.clips || 0) === 0) {
     out.push({ reason: 'no_audio', detail: 'No audio rows exist for this course at all.' })
   }
-  if (pod0.exists && approval && !approval.ok) {
+  if (servedPod.exists && approval && !approval.ok) {
     out.push({
-      reason: approval.reason === 'stale_approval' ? 'pod0_stale_voice_approval' : 'pod0_awaiting_voice_approval',
+      reason: approval.reason === 'stale_approval' ? 'pod_stale_voice_approval' : 'pod_awaiting_voice_approval',
       detail: approval.message,
     })
   }
-  if (pod0.exists && (pod0.known_empty > 0 || pod0.known_dead_stubs > 0)) {
+  if (servedPod.exists && (servedPod.known_empty > 0 || servedPod.known_dead_stubs > 0)) {
     out.push({
-      reason: 'pod0_known_track_incomplete',
-      detail: `The ${pod0.slug || 'serving'} known-language track has ${pod0.known_empty} empty slots and `
-        + `${pod0.known_dead_stubs} linked-but-dead clips out of ${pod0.slots}.`,
+      reason: 'pod_known_track_incomplete',
+      detail: `The ${servedPod.slug || 'serving'} known-language track has ${servedPod.known_empty} empty slots and `
+        + `${servedPod.known_dead_stubs} linked-but-dead clips out of ${servedPod.slots}.`,
     })
   }
-  if (pod0.exists && pod0.target_empty > 0) {
+  if (servedPod.exists && servedPod.target_empty > 0) {
     out.push({
-      reason: 'pod0_target_track_incomplete',
-      detail: `The ${pod0.slug || 'serving'} target-language track has ${pod0.target_empty} empty slots out of ${pod0.slots}.`,
+      reason: 'pod_target_track_incomplete',
+      detail: `The ${servedPod.slug || 'serving'} target-language track has ${servedPod.target_empty} empty slots out of ${servedPod.slots}.`,
     })
   }
   return out
@@ -1355,10 +1347,8 @@ app.get('/api/estate-map', async (req, res) => {
           unknown: courses.filter(c => c.audio.voice_mode === 'unknown').length,
         },
         with_serving_pod: courses.filter(c => c.serving_pod.exists).length,
-        // Kept live under its original name; see the `pod_0` semantics entry.
-        with_pod_0: courses.filter(c => c.serving_pod.exists).length,
         // Which slugs the estate is actually serving, counted — the fact a
-        // hardcoded `pod-0` made unaskable. 45 pod-0 + 22 pod-1 on 2026-09-06.
+        // hardcoded slug made unaskable. One slug, `pod-1`, since 2026-09-13.
         serving_pod_slugs: Object.entries(courses.reduce((acc, c) => {
           if (c.serving_pod.exists) acc[c.serving_pod.slug] = (acc[c.serving_pod.slug] || 0) + 1
           return acc
@@ -4599,11 +4589,12 @@ async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false
 // one.
 //
 // IT NO LONGER ASSUMES A SLUG. Until 2026-09-03 this route defaulted to the
-// literal `pod-1` and the index was "every course that HAS a pod-1". Tom's
-// 1-based ruling of 2026-08-22 moved 22 courses across; the rest — including
-// both Welsh courses — still serve `pod-0`, so 45 of 67 courses read as EMPTY
-// on this page. Nothing was broken; the default was simply wrong for two thirds
-// of the estate. The serving slug is a PER-COURSE fact and is resolved the same
+// literal `pod-1` while two thirds of the estate served an older core slug, so
+// 45 of 67 courses read as EMPTY on this page. Nothing was broken; the default
+// was simply wrong for two thirds of the estate. (Since Tom's ruling of
+// 2026-09-13 every core pod IS `pod-1`; the resolution stays, because a course
+// with no core pod must read as a named gap, not a guessed slug.) The serving
+// slug is a PER-COURSE fact and is resolved the same
 // way the player resolves it (pickServingSlug below), never defaulted to a
 // literal. An explicit `?slug=` is still honoured verbatim, which is how a
 // retired pod is read by name.
@@ -4662,7 +4653,7 @@ app.get('/api/pod-scripts', async (req, res) => {
 // known text, and its casting violations already marked.
 //
 //   ?slug=   omitted → the slug this course actually serves, resolved per
-//            course (pod-1, else pod-0); pass a retired slug to read it by name
+//            course (`pod-1`); pass a retired slug to read it by name
 //   ?track=  target (default) | known
 //   ?clips=0 skip the clip load. ON by default since 2026-08-24: Tom — "this is
 //            pointless unless I can actually hear it … I need the clips right
@@ -4754,7 +4745,7 @@ app.get('/api/pod-scripts/:courseCode', async (req, res) => {
 // Refuses to overwrite a pod that already has audio unless { force: true }.
 //
 // THE SLUG HAS NO DEFAULT (2026-09-02). It used to read
-// `String(req.body?.slug || 'pod-0').trim()` — a caller could omit the single most
+// `String(req.body?.slug || '<the serving slug>').trim()` — a caller could omit the single most
 // dangerous parameter and land on a slug the player serves for ~68 courses, with
 // force:true and mode:'full' in the same body wiping every sentence row first. Absent
 // or blank slug is now a 400, and a serving destination is refused by the generator
