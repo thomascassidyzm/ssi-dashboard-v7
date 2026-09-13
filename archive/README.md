@@ -6,3 +6,4 @@ Two retirement rounds so far:
 
 - **`docs-retired-2026-08-24/`** — the first sweep, on Tom's ruling of 2026-08-24.
 - **`docs-retired-2026-09-03/`** — the second sweep, on Tom's standing ruling of 2026-09-03: *"agents must read live code… docs are out of date the second they are crystallised."* Its own README names the specimen that provoked it: a document asserting a code change and 59 green tests that were never written.
+- **`tools-retired-2026-09-13/`** — code, not prose: tools whose only purpose was the retired core-pod numbering, moved here byte-identical on Tom's ruling of 2026-09-13 (*"Pod-0 does not exist anymore … There is only pod-1 now"*). Nothing calls them; nothing here runs.

@@ -27,22 +27,15 @@
  * The GENERATED core walk — the layer where audio actually exists. Reported
  * beside the canonical layer, never mixed with it.
  *
- * THE NAMING TRAP THIS DEFUSES: mid-cutover, `pod-1` means two different things
- * in two tables. In `canonical_pod_scenarios` it is the live CORE canon, 231
- * rows, renamed from `pod-0` by the 2026-09-01 migration. In `listening_pods`
- * it is the NEW generated slate, while `pod-0` is still the OLD one. Same slug,
- * different object, different numbers — and a person seeing both without being
- * told would reasonably conclude the page was broken.
- *
- * The learner-side cutover is a separate migration with purpose-built tooling.
- * The page states its position in one sentence and renders none of the other
- * seven generated slates: that is the cutover's business, not the registry's.
+ * `pod-1` names the same thing in both tables: in `canonical_pod_scenarios` it
+ * is the live CORE canon (231 rows), and in `listening_pods` it is every
+ * course's generated core pod (Tom, 2026-09-13: "There is only pod-1 now").
+ * The numbers below were measured on 2026-09-01 against the courses generated
+ * from the canon at that date; the per-course cutover onto the canon runs on its
+ * own tooling and is nothing this page touches.
  */
 export const GENERATED_CORE = {
   newSlate: { slug: 'pod-1', courses: 22, sentences: 5082, targetClips: 5082, knownClips: 5082 },
-  oldSlate: { slug: 'pod-0', courses: 46, sentences: 6632, targetClips: 5983, knownClips: 6155 },
-  coursesDone: 22,
-  coursesTotal: 68,
 }
 
 /**

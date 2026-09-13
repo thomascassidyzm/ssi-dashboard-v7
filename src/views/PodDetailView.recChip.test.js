@@ -148,18 +148,13 @@ describe('PodDetailView — an outstanding line says whose it is', () => {
 })
 
 describe('PodDetailView — the pod is called Pod 1', () => {
-  // It is now called that all the way down. The display shim that read a `pod-0`
-  // row as "Pod 1" is still live for the 44 courses the 2026-08-22 switchover has
-  // not reached, but this pod no longer needs it: the slug itself says pod-1 since
-  // the re-slug of 2026-09-10, so the heading and the identifier agree without a
-  // translation layer between them.
+  // It is called that all the way down: the slug itself says pod-1, so the
+  // heading and the identifier agree without a translation layer between them.
   it('shows the product name in the heading and the identifier agrees with it', async () => {
     const wrapper = await mountView()
     const heading = wrapper.find('h1').text()
     expect(heading).toContain('Pod 1')
-    expect(heading).not.toContain('Pod 0')
     expect(wrapper.text()).toContain('cym_n_for_eng:pod-1')
-    expect(wrapper.text()).not.toContain('cym_n_for_eng:pod-0')
   })
 })
 

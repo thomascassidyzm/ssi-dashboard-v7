@@ -117,7 +117,7 @@ test.describe.serial('pod recording — mode chooser, two-voice cast, dialogue r
   test('recorded pod audio: DB rows + storage + UI playback', async ({ page }) => {
     // DB: listening_pod_sentences for our pod should now carry target_audio_id,
     // and matching course_audio rows should exist with origin='human'.
-    const podRow = await dbScalar('listening_pods', 'id', { course_code: TEST_COURSE, slug: 'pod-0' })
+    const podRow = await dbScalar('listening_pods', 'id', { course_code: TEST_COURSE, slug: 'pod-1' })
     expect(podRow).toBeTruthy()
 
     const withAudio = await dbCount('listening_pod_sentences', {
@@ -137,7 +137,7 @@ test.describe.serial('pod recording — mode chooser, two-voice cast, dialogue r
 
     // UI playback: open the pod detail page and play the first line with audio.
     await loginAsTestUser(page)
-    await page.goto(`/production/${TEST_COURSE}/pods/pod-0`)
+    await page.goto(`/production/${TEST_COURSE}/pods/pod-1`)
     const playBtn = page.locator('button[title^="Play target"]').first()
     await expect(playBtn).toBeVisible({ timeout: 15_000 })
 

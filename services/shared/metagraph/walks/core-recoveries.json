@@ -9,9 +9,9 @@
     "job": "Author the five withheld recoveries, attached to their existing CORE scenes (2026-08-31). The attachment points were sited by the CORE compulsory-set audit and are machine-readable as A1001-A1006 in proposed/core-recovery-attachments-2026-08-31.json; this file is the commissioned authoring of the five that attach. A1004 (M3, the mid-story challenge) is deliberately absent — it cannot attach without giving CORE a story turn it does not have, and it lives on the every-optional-walk floor instead.",
     "attachments_realised": ["A1001 (S2)", "A1002 (M1)", "A1006 (M5)", "A1003 (M2)", "A1005 (M4)"],
     "document": "docs/pods/core-recoveries-2026-08-31.md",
-    "statement": "AUTHORED, NOT TRANSCRIBED. Every continuation line in this file was written for its scene against the sited attachment point. There is no corpus behind the continuations: no `row` appears anywhere and no continuation line is attested speech. Where a walk restages the canonical turn it attaches to, that turn is a QUOTATION of walks/pod-0.json's transcription — marked `restaged: true`, carrying no row field — and contributes nothing to any corpus accounting. The transcription itself lives only in walks/pod-0.json."
+    "statement": "AUTHORED, NOT TRANSCRIBED. Every continuation line in this file was written for its scene against the sited attachment point. There is no corpus behind the continuations: no `row` appears anywhere and no continuation line is attested speech. Where a walk restages the canonical turn it attaches to, that turn is a QUOTATION of walks/pod-1.json's transcription — marked `restaged: true`, carrying no row field — and contributes nothing to any corpus accounting. The transcription itself lives only in walks/pod-1.json."
   },
-  "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Copied from walks/pod-0.json so coverage stays computable without parsing prose.",
+  "format": "A walk is a sequence of NODE REFERENCES. Each step names a node and a position; the surface sentence is a property of the step, never the step itself. Copied from walks/pod-1.json so coverage stays computable without parsing prose.",
   "walk_kind": "listening",
   "register": {
     "sector_free": true,
@@ -20,7 +20,7 @@
     "casts": "Inherited, none invented: Sarah and the Passenger (pod-1 W3), Sarah and the Barista (pod-1 W1), Sarah and the Friend (pod-1 W4), the Learner and the Friend (pod-1 W16)."
   },
   "attachment": {
-    "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-0.json is not modified and nothing is reordered. Each walk here names the pod-1 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
+    "policy": "A RECOVERY ATTACHES, IT DOES NOT APPEND (Tom's ruling, 2026-08-31): a pod is a branch point with its continuations attached, so each recovery is the other half of a move CORE already teaches, and hangs off the scene that exists. CORE's existing order is untouched — walks/pod-1.json is not modified and nothing is reordered. Each walk here names the pod-1 walk and step it attaches to, restages that turn as a quotation, and continues it inside the same encounter. A recovery three scenes later would be worth nothing; every one of these arrives while the learner is in the trouble the branch just made."
   },
   "accounting": {
     "authored_walks": 5,
@@ -28,7 +28,7 @@
     "restaged_turns": 8,
     "authored_turns": 20,
     "corpus_rows": 0,
-    "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-1 rows and are counted only in walks/pod-0.json.",
+    "corpus_rows_note": "Zero, and that is the point: nothing here is a transcription. The restaged turns are quotations of pod-1 rows and are counted only in walks/pod-1.json.",
     "walks": {
       "W1301": "S2 (A1001) — the hedge acted on and turned out wrong, scene 2, attached at pod-1 W3 step 4",
       "W1302": "M1 (A1002) — 'I don't know', held with status, the third arm on the canon's one stored branch, scene 3, attached at pod-1 W1 step 4",

@@ -247,7 +247,7 @@ describe('findExistingAudio — one clip, however it was spelt', () => {
 //
 // So the pod path's read (`scope: 'language'`) borrows a KNOWN clip from any
 // course in any voice, and a TARGET clip from any course in the same voice.
-// The old gate — pod-0 slug, canon-aligned pod, identical voice — is gone. The
+// The old gate — pod-1 slug, canon-aligned pod, identical voice — is gone. The
 // drift tests are the ones that matter: near-miss words must NOT borrow.
 
 describe('findAudioRowForClip — pod known audio is per language', () => {

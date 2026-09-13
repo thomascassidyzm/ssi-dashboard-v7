@@ -39,8 +39,8 @@ function seed(versions = []) {
   return createFakeSupabase(
     {
       [LINES]: [
-        { id: 'pod-0.5-s01-01', pod_slug: 'pod-0.5', scene_number: 1, sentence_number: 1, speaker: 'Aran', english_text: ORIGINAL, author_notes: null },
-        { id: 'pod-1-s01-01', pod_slug: 'pod-1', scene_number: 1, sentence_number: 1, speaker: 'Cat', english_text: 'a line in another pod', author_notes: null },
+        { id: 'pod-1-s01-01', pod_slug: 'pod-1', scene_number: 1, sentence_number: 1, speaker: 'Aran', english_text: ORIGINAL, author_notes: null },
+        { id: 'method-pod-s01-01', pod_slug: 'method-pod', scene_number: 1, sentence_number: 1, speaker: 'Cat', english_text: 'a line in another pod', author_notes: null },
       ],
       [VERSIONS]: versions,
     },
@@ -65,14 +65,14 @@ async function call(overrides) {
   return res
 }
 
-const versionsOf = (id = 'pod-0.5-s01-01') => state.db.tables[VERSIONS].filter(r => r.scenario_id === id)
-const liveText = (id = 'pod-0.5-s01-01') => state.db.tables[LINES].find(r => r.id === id).english_text
+const versionsOf = (id = 'pod-1-s01-01') => state.db.tables[VERSIONS].filter(r => r.scenario_id === id)
+const liveText = (id = 'pod-1-s01-01') => state.db.tables[LINES].find(r => r.id === id).english_text
 
 beforeEach(() => { state.db = seed(); state.user = { email: 'aran@ssi.app' } })
 
 describe('saving a canonical line', () => {
   it('freezes the pre-edit text as the original, once and once only', async () => {
-    const first = await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
+    const first = await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
     expect(first.statusCode).toBe(200)
     expect(first.body.ok).toBe(true)
 
@@ -81,7 +81,7 @@ describe('saving a canonical line', () => {
     expect(rows[0].english_text).toBe(ORIGINAL)
     expect(rows[1].english_text).toBe(EDITED)
 
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: AGAIN } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: AGAIN } })
 
     rows = versionsOf()
     expect(rows.filter(r => r.kind === 'original')).toHaveLength(1)
@@ -90,22 +90,22 @@ describe('saving a canonical line', () => {
   })
 
   it('moves the live line and attributes the edit to the signed-in email', async () => {
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
     expect(liveText()).toBe(EDITED)
     expect(versionsOf().at(-1).saved_by).toBe('aran@ssi.app')
-    expect(versionsOf().at(-1).pod_slug).toBe('pod-0.5')
+    expect(versionsOf().at(-1).pod_slug).toBe('pod-1')
   })
 
   it('writes nothing when the text has not changed', async () => {
-    const res = await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: ORIGINAL } })
+    const res = await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: ORIGINAL } })
     expect(res.body).toMatchObject({ ok: true, unchanged: true })
     expect(versionsOf()).toHaveLength(0)
   })
 
   it('refuses to empty a line, and refuses a body with nothing editable in it', async () => {
-    const empty = await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: '  ' } })
+    const empty = await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: '  ' } })
     expect(empty.statusCode).toBe(400)
-    const nothing = await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { colour: 'blue' } })
+    const nothing = await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { colour: 'blue' } })
     expect(nothing.statusCode).toBe(400)
     expect(versionsOf()).toHaveLength(0)
     expect(liveText()).toBe(ORIGINAL)
@@ -119,7 +119,7 @@ describe('saving a canonical line', () => {
 
   it('needs a Popty session', async () => {
     state.user = null
-    const res = await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
+    const res = await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
     expect(res.statusCode).toBe(403)
     expect(versionsOf()).toHaveLength(0)
   })
@@ -127,14 +127,14 @@ describe('saving a canonical line', () => {
 
 describe('restoring an older version', () => {
   it('appends a new save rather than deleting anything, and rolls the live text back', async () => {
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: AGAIN } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: AGAIN } })
     const before = versionsOf().length
     const original = versionsOf().find(r => r.kind === 'original')
 
     const res = await call({
       method: 'POST',
-      query: { line: 'pod-0.5-s01-01', restore: '1' },
+      query: { line: 'pod-1-s01-01', restore: '1' },
       body: { versionId: original.id },
     })
 
@@ -151,13 +151,13 @@ describe('restoring an older version', () => {
   })
 
   it('refuses a version belonging to another line', async () => {
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
-    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: 'edited elsewhere' } })
-    const foreign = state.db.tables[VERSIONS].find(r => r.scenario_id === 'pod-1-s01-01')
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
+    await call({ method: 'POST', query: { line: 'method-pod-s01-01' }, body: { english_text: 'edited elsewhere' } })
+    const foreign = state.db.tables[VERSIONS].find(r => r.scenario_id === 'method-pod-s01-01')
 
     const res = await call({
       method: 'POST',
-      query: { line: 'pod-0.5-s01-01', restore: '1' },
+      query: { line: 'pod-1-s01-01', restore: '1' },
       body: { versionId: foreign.id },
     })
     expect(res.statusCode).toBe(404)
@@ -165,11 +165,11 @@ describe('restoring an older version', () => {
   })
 
   it('is a no-op when the version already says what the line says', async () => {
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
     const newest = versionsOf().at(-1)
     const res = await call({
       method: 'POST',
-      query: { line: 'pod-0.5-s01-01', restore: '1' },
+      query: { line: 'pod-1-s01-01', restore: '1' },
       body: { versionId: newest.id },
     })
     expect(res.body).toMatchObject({ ok: true, unchanged: true })
@@ -179,10 +179,10 @@ describe('restoring an older version', () => {
 
 describe('reading the history', () => {
   it('lists a line newest-first with the frozen original at the bottom', async () => {
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: AGAIN } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: AGAIN } })
 
-    const res = await call({ method: 'GET', query: { line: 'pod-0.5-s01-01' } })
+    const res = await call({ method: 'GET', query: { line: 'pod-1-s01-01' } })
     expect(res.statusCode).toBe(200)
     expect(res.body.line.englishText).toBe(AGAIN)
     expect(res.body.edits).toBe(2)
@@ -192,14 +192,14 @@ describe('reading the history', () => {
   })
 
   it('reports every edited line in a script, and only that script', async () => {
-    await call({ method: 'POST', query: { line: 'pod-0.5-s01-01' }, body: { english_text: EDITED } })
-    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: 'edited elsewhere' } })
+    await call({ method: 'POST', query: { line: 'pod-1-s01-01' }, body: { english_text: EDITED } })
+    await call({ method: 'POST', query: { line: 'method-pod-s01-01' }, body: { english_text: 'edited elsewhere' } })
 
-    const res = await call({ method: 'GET', query: { slug: 'pod-0.5', history: '1' } })
+    const res = await call({ method: 'GET', query: { slug: 'pod-1', history: '1' } })
     expect(res.statusCode).toBe(200)
     expect(res.body.editedLines).toBe(1)
     expect(res.body.lines).toEqual([
-      { scenarioId: 'pod-0.5-s01-01', edits: 1, lastSavedAt: expect.any(String), lastSavedBy: 'aran@ssi.app' },
+      { scenarioId: 'pod-1-s01-01', edits: 1, lastSavedAt: expect.any(String), lastSavedBy: 'aran@ssi.app' },
     ])
   })
 })

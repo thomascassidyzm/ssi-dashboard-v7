@@ -24,14 +24,14 @@ import { describe, it, expect } from 'vitest'
 
 const {
   castFingerprint, canonicalSpeaker, trackKey, evaluateApproval,
-  parseSampleLimit, selectSample, selectExchange, EXCHANGE_MAX, SAMPLE_LIMIT_MAX, resolveCurrentPod0,
+  parseSampleLimit, selectSample, selectExchange, EXCHANGE_MAX, SAMPLE_LIMIT_MAX, resolveCurrentPod,
   findUncastSpeakers, describeUncastSpeakers,
 } = require('./pod-voice-approvals.cjs')
 
 const pod = (id, speakers) => ({ id, speakers })
 
 const CAST = [
-  pod('deu_at_for_eng:pod-0', {
+  pod('deu_at_for_eng:pod-1', {
     Anna: {
       gender: 'f',
       target: { name: 'Sonja', provider: 'xai', voice_id: '44c91d64' },
@@ -132,7 +132,7 @@ describe('castFingerprint — self-invalidation (the point of the design)', () =
   })
 
   it('distinguishes the same casting under a different pod id', () => {
-    expect(castFingerprint(mutate(CAST, c => { c[0].id = 'other:pod-0' }))).not.toBe(base)
+    expect(castFingerprint(mutate(CAST, c => { c[0].id = 'other:pod-1' }))).not.toBe(base)
   })
 
   it('END-TO-END: an approval taken on the broken zh casting does not survive the recast', () => {
@@ -168,7 +168,7 @@ describe('trackKey — agrees with phase8 resolvePodSpeakerVoice()', () => {
   })
 
   it('a deferred cast is still fingerprintable, and differs from a real one', () => {
-    const deferred = [pod('fin_for_eng:pod-0', { Anna: { deferred: true } })]
+    const deferred = [pod('fin_for_eng:pod-1', { Anna: { deferred: true } })]
     expect(castFingerprint(deferred)).not.toBe(castFingerprint(CAST))
   })
 })
@@ -333,48 +333,48 @@ describe('selectSample — leads with an EXCHANGE so the two voices are heard to
 
 // Tom's T-14 rejection, 2026-08-11, reason 1: the samples came off a ~140-line
 // snapshot while the current pod holds 232. The cause is a hard-coded
-// `<course>:pod-0` against a `pod-0-unrecorded` working copy.
-describe('resolveCurrentPod0 — which pod actually holds the current content', () => {
+// `<course>:pod-1` against an `unrecorded` working copy.
+describe('resolveCurrentPod — which pod actually holds the current content', () => {
   const p = (slug, sentence_count) => ({ id: `c:${slug}`, slug, sentence_count })
 
-  it('prefers the working copy over a stale pod-0 (the spa_for_eng shape: 142 vs 232)', () => {
-    expect(resolveCurrentPod0([p('pod-0', 142), p('pod-0-unrecorded', 232)]).slug).toBe('pod-0-unrecorded')
+  it('prefers the working copy over a stale pod-1 (the spa_for_eng shape: 142 vs 232)', () => {
+    expect(resolveCurrentPod([p('pod-1', 142), p('unrecorded', 232)]).slug).toBe('unrecorded')
   })
 
-  it('prefers the working copy over an EMPTIED, gated pod-0 (the cym shape: 0 vs 232)', () => {
-    expect(resolveCurrentPod0([p('pod-0', 0), p('pod-0-unrecorded', 232)]).slug).toBe('pod-0-unrecorded')
+  it('prefers the working copy over an EMPTIED, gated pod-1 (the cym shape: 0 vs 232)', () => {
+    expect(resolveCurrentPod([p('pod-1', 0), p('unrecorded', 232)]).slug).toBe('unrecorded')
   })
 
-  it('uses pod-0 when that is all the course has', () => {
-    expect(resolveCurrentPod0([p('pod-0', 231)]).slug).toBe('pod-0')
+  it('uses pod-1 when that is all the course has', () => {
+    expect(resolveCurrentPod([p('pod-1', 231)]).slug).toBe('pod-1')
   })
 
-  it('ignores pods outside the pod-0 family', () => {
-    const got = resolveCurrentPod0([p('music', 749), p('travel-situations', 72), p('pod-0', 142)])
-    expect(got.slug).toBe('pod-0')
+  it('ignores pods outside the pod-1 family', () => {
+    const got = resolveCurrentPod([p('music', 749), p('travel-situations', 72), p('pod-1', 142)])
+    expect(got.slug).toBe('pod-1')
   })
 
-  it('does not pick an empty working copy over a populated pod-0', () => {
-    expect(resolveCurrentPod0([p('pod-0', 142), p('pod-0-unrecorded', 0)]).slug).toBe('pod-0')
+  it('does not pick an empty working copy over a populated pod-1', () => {
+    expect(resolveCurrentPod([p('pod-1', 142), p('unrecorded', 0)]).slug).toBe('pod-1')
   })
 
-  it('is null-safe for a course with no pod-0 at all', () => {
-    expect(resolveCurrentPod0([p('music', 749)])).toBeNull()
-    expect(resolveCurrentPod0([])).toBeNull()
-    expect(resolveCurrentPod0(null)).toBeNull()
+  it('is null-safe for a course with no pod-1 at all', () => {
+    expect(resolveCurrentPod([p('music', 749)])).toBeNull()
+    expect(resolveCurrentPod([])).toBeNull()
+    expect(resolveCurrentPod(null)).toBeNull()
   })
 
   it('derives the slug from the id when the caller has none', () => {
-    expect(resolveCurrentPod0([{ id: 'cym_n_for_eng:pod-0-unrecorded', sentence_count: 232 }]).id)
-      .toBe('cym_n_for_eng:pod-0-unrecorded')
+    expect(resolveCurrentPod([{ id: 'cym_n_for_eng:unrecorded', sentence_count: 232 }]).id)
+      .toBe('cym_n_for_eng:unrecorded')
   })
 
-  // Tom's ruling 2026-08-22: pods are 1-based from now on, hrv_for_eng first
-  // across. After its cutover the course has NO pod-0 and NO pod-0-unrecorded.
-  it('resolves a course whose only core pod is pod-1 (the hrv_for_eng shape)', () => {
-    const got = resolveCurrentPod0([
+  // The hrv_for_eng shape after its switchover: one pod-1, two parked pods
+  // that keep pod_type='core', no working copy.
+  it('resolves a course whose only current core pod is pod-1 (the hrv_for_eng shape)', () => {
+    const got = resolveCurrentPod([
       p('pod-1', 231),
-      p('pod-0-retired-2026-08-22', 142),
+      p('retired-2026-08-22', 142),
       p('pod-1-retired-2026-08-22', 180),
     ])
     expect(got.slug).toBe('pod-1')
@@ -384,18 +384,22 @@ describe('resolveCurrentPod0 — which pod actually holds the current content', 
   it('never serves an archived pod, however many lines it holds', () => {
     // Archive keeps pod_type='core' through the rename, so only the slug
     // allowlist stops a 300-line retired pod outranking the live one.
-    expect(resolveCurrentPod0([p('pod-0-retired-2026-08-22', 300), p('pod-1', 231)]).slug).toBe('pod-1')
-    expect(resolveCurrentPod0([p('pod-0-retired-2026-08-22', 300)])).toBeNull()
+    expect(resolveCurrentPod([p('retired-2026-08-22', 300), p('pod-1', 231)]).slug).toBe('pod-1')
+    expect(resolveCurrentPod([p('retired-2026-08-22', 300)])).toBeNull()
   })
 
-  it('prefers pod-1 over a legacy pod-0 left in place', () => {
-    expect(resolveCurrentPod0([p('pod-0', 142), p('pod-1', 231)]).slug).toBe('pod-1')
+  // Tom, 2026-09-13: "There is only pod-1 now." The working copy is `unrecorded`,
+  // with no number in front of it — a resolver still keyed on the retired
+  // spelling would fall through to the stale served pod (RED on the pre-rename
+  // resolver, GREEN now).
+  it('knows the working copy by its current name, not a retired one', () => {
+    expect(resolveCurrentPod([p('unrecorded', 232), p('pod-1', 142)]).slug).toBe('unrecorded')
   })
 
   it('ignores a non-core pod that happens to sit on a serving slug', () => {
     const pods = [{ id: 'c:pod-1', slug: 'pod-1', sentence_count: 180, pod_type: 'themed' },
-      { id: 'c:pod-0', slug: 'pod-0', sentence_count: 142, pod_type: 'core' }]
-    expect(resolveCurrentPod0(pods).slug).toBe('pod-0')
+      { id: 'c:pod-1', slug: 'pod-1', sentence_count: 142, pod_type: 'core' }]
+    expect(resolveCurrentPod(pods).slug).toBe('pod-1')
   })
 })
 
@@ -403,7 +407,7 @@ describe('resolveCurrentPod0 — which pod actually holds the current content', 
 // findUncastSpeakers — the uncast-speaker gate (Tom's ruling, 2026-08-14)
 // ---------------------------------------------------------------------------
 //
-// The real case this was built from: tha_for_eng:pod-0-unrecorded uses generic
+// The real case this was built from: tha_for_eng:unrecorded uses generic
 // labels ('Customer 1', 'Passenger') where the cast holds the recorded pod's
 // scene-specific ones ('Cafe customer 1', 'Bus passenger'). 43 lines had no cast
 // entry and would have rendered on speakers._default — one male voice, over 18
@@ -415,24 +419,24 @@ const spoken = (...names) => names.map((speaker, i) => ({ id: `s${i}`, speaker }
 describe('findUncastSpeakers — an unnamed speaker is an error, not a shrug', () => {
   it('finds nothing when every sentence speaker is cast', () => {
     expect(findUncastSpeakers([
-      { id: 'p:pod-0', speakers: { Anna: voice, Guest: voice }, sentences: spoken('Anna', 'Guest', 'Anna') },
+      { id: 'p:pod-1', speakers: { Anna: voice, Guest: voice }, sentences: spoken('Anna', 'Guest', 'Anna') },
     ])).toEqual([])
   })
 
   it('flags a label present in the sentences but absent from the cast', () => {
     const got = findUncastSpeakers([
-      { id: 'tha_for_eng:pod-0-unrecorded', speakers: { 'Cafe customer 1': voice },
+      { id: 'tha_for_eng:unrecorded', speakers: { 'Cafe customer 1': voice },
         sentences: spoken('Cafe customer 1', 'Customer 1', 'Customer 1', 'Passenger') },
     ])
     expect(got).toEqual([
-      { pod_id: 'tha_for_eng:pod-0-unrecorded', speaker: 'Customer 1', lines: 2, labels: ['Customer 1'] },
-      { pod_id: 'tha_for_eng:pod-0-unrecorded', speaker: 'Passenger', lines: 1, labels: ['Passenger'] },
+      { pod_id: 'tha_for_eng:unrecorded', speaker: 'Customer 1', lines: 2, labels: ['Customer 1'] },
+      { pod_id: 'tha_for_eng:unrecorded', speaker: 'Passenger', lines: 1, labels: ['Passenger'] },
     ])
   })
 
   it('does NOT let _default rescue an uncast label — that is the failure mode', () => {
     const got = findUncastSpeakers([
-      { id: 'p:pod-0', speakers: { _default: voice }, sentences: spoken('Customer') },
+      { id: 'p:pod-1', speakers: { _default: voice }, sentences: spoken('Customer') },
     ])
     expect(got).toHaveLength(1)
     expect(got[0].speaker).toBe('Customer')
@@ -442,41 +446,41 @@ describe('findUncastSpeakers — an unnamed speaker is an error, not a shrug', (
     // 'Barista (3 pm)' is what phase8 canonicalises to 'Barista' before lookup,
     // so it is cast and must NOT be flagged.
     expect(findUncastSpeakers([
-      { id: 'p:pod-0', speakers: { Barista: voice }, sentences: spoken('Barista (3 pm)', 'Barista') },
+      { id: 'p:pod-1', speakers: { Barista: voice }, sentences: spoken('Barista (3 pm)', 'Barista') },
     ])).toEqual([])
   })
 
   it('accepts a legacy raw key that does not survive canonicalisation', () => {
     expect(findUncastSpeakers([
-      { id: 'p:pod-0', speakers: { 'Susjed (M)': voice }, sentences: spoken('Susjed (M)') },
+      { id: 'p:pod-1', speakers: { 'Susjed (M)': voice }, sentences: spoken('Susjed (M)') },
     ])).toEqual([])
   })
 
   it('collapses variant labels of one role into a single row and counts every line', () => {
     const got = findUncastSpeakers([
-      { id: 'p:pod-0', speakers: {}, sentences: spoken('Neighbour (8 am)', 'Neighbour (10:30 pm)', 'Neighbour') },
+      { id: 'p:pod-1', speakers: {}, sentences: spoken('Neighbour (8 am)', 'Neighbour (10:30 pm)', 'Neighbour') },
     ])
     expect(got).toEqual([
-      { pod_id: 'p:pod-0', speaker: 'Neighbour', lines: 3,
+      { pod_id: 'p:pod-1', speaker: 'Neighbour', lines: 3,
         labels: ['Neighbour', 'Neighbour (10:30 pm)', 'Neighbour (8 am)'] },
     ])
   })
 
   it('orders by line count so the worst gap is named first', () => {
     const got = findUncastSpeakers([
-      { id: 'p:pod-0', speakers: {}, sentences: spoken('B', 'A', 'A', 'A', 'B') },
+      { id: 'p:pod-1', speakers: {}, sentences: spoken('B', 'A', 'A', 'A', 'B') },
     ])
     expect(got.map(u => [u.speaker, u.lines])).toEqual([['A', 3], ['B', 2]])
   })
 
   it('flags a blank speaker rather than skipping it — it also falls to _default', () => {
-    const got = findUncastSpeakers([{ id: 'p:pod-0', speakers: { Anna: voice }, sentences: spoken('', '  ') }])
-    expect(got).toEqual([{ pod_id: 'p:pod-0', speaker: '(blank speaker)', lines: 2, labels: ['', '  '] }])
+    const got = findUncastSpeakers([{ id: 'p:pod-1', speakers: { Anna: voice }, sentences: spoken('', '  ') }])
+    expect(got).toEqual([{ pod_id: 'p:pod-1', speaker: '(blank speaker)', lines: 2, labels: ['', '  '] }])
   })
 
   it('reports each pod separately', () => {
     const got = findUncastSpeakers([
-      { id: 'p:pod-0', speakers: { Anna: voice }, sentences: spoken('Anna') },
+      { id: 'p:pod-1', speakers: { Anna: voice }, sentences: spoken('Anna') },
       { id: 'p:pod-1', speakers: { Anna: voice }, sentences: spoken('Ghost') },
     ])
     expect(got).toEqual([{ pod_id: 'p:pod-1', speaker: 'Ghost', lines: 1, labels: ['Ghost'] }])
@@ -485,15 +489,15 @@ describe('findUncastSpeakers — an unnamed speaker is an error, not a shrug', (
   it('is null-safe and empty-safe', () => {
     expect(findUncastSpeakers(null)).toEqual([])
     expect(findUncastSpeakers([])).toEqual([])
-    expect(findUncastSpeakers([{ id: 'p:pod-0' }])).toEqual([])
+    expect(findUncastSpeakers([{ id: 'p:pod-1' }])).toEqual([])
   })
 
   it('describes the refusal by naming the roles and the line count', () => {
     const msg = describeUncastSpeakers(findUncastSpeakers([
-      { id: 'tha_for_eng:pod-0-unrecorded', speakers: {}, sentences: spoken('Customer 1', 'Customer 1', 'Passenger') },
+      { id: 'tha_for_eng:unrecorded', speakers: {}, sentences: spoken('Customer 1', 'Customer 1', 'Passenger') },
     ]))
-    expect(msg).toContain('Customer 1 (2 lines, tha_for_eng:pod-0-unrecorded)')
-    expect(msg).toContain('Passenger (1 line, tha_for_eng:pod-0-unrecorded)')
+    expect(msg).toContain('Customer 1 (2 lines, tha_for_eng:unrecorded)')
+    expect(msg).toContain('Passenger (1 line, tha_for_eng:unrecorded)')
     expect(msg).toContain('3 line(s)')
   })
 })

@@ -2,7 +2,7 @@
  * recording-speech-gate.cjs — "is there a READ on this take, or just the room?"
  *
  * THE CASE THIS EXISTS FOR. Tom, 2026-08-23, having listened to the four takes
- * Catrin made that afternoon for cym_n_for_eng:pod-0:
+ * Catrin made that afternoon for cym_n_for_eng:pod-1:
  *
  *   "the first voice recording you gave me is perfect, but the other three are
  *    just not even voice recordings. They're long bits of background noise...

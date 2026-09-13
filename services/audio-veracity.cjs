@@ -603,7 +603,7 @@ function isNonSpeechDecode (decode) {
 // ---------------------------------------------------------------------------
 
 /**
- * WHY THIS EXISTS (the 2026-08-13 pod-0 English render).
+ * WHY THIS EXISTS (the 2026-08-13 core-pod English render).
  *
  * Whisper writes what the orthography prefers, and English orthography prefers
  * digits: a clip whose script reads "That's forty-eight pounds altogether" comes
@@ -793,7 +793,7 @@ const FR = {
   },
   /**
    * Clock time, French spoken form — this is Rule 4c's payload (below), the
-   * fix for the 2026-08-22 fra_for_eng pod-0 render (SC11-S008, A-111 follow-up).
+   * fix for the 2026-08-22 fra_for_eng core-pod render (SC11-S008, A-111 follow-up).
    * "7h30" is one spoken unit, "sept heures et demie", not the two independent
    * cardinals 7 and 30 — whisper writes it as digit-and-h shorthand regardless
    * of how it was actually said, the same phenomenon as £48/forty-eight pounds,

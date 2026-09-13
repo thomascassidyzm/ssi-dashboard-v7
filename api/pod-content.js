@@ -56,7 +56,7 @@ const URL_TTL = 3600
  * library by api/pod-content.identity.test.js instead.
  *
  * TEMPORARY — the pre-canonical members ('comp:leo', 'en'). The writers
- * (tools/build-shared-known-store.cjs, tools/persist-stage0-pod0.cjs) now emit
+ * (tools/build-shared-known-store.cjs and the stage-0 pod persist tool) now emit
  * the canonical spelling, but every row written before them still carries the
  * old one. Dropping the old members before the approved back-fill has rewritten
  * those rows silences every pod explainer. Remove them — and turn these `.in()`s
@@ -73,17 +73,17 @@ const s3 = new S3Client({
   },
 })
 
-// Serving slugs, most-preferred first. An explicit allowlist, never a prefix
-// match: an archived `pod-0-retired-…` keeps pod_type='core' through the
-// rename and must never be served.
-const SERVING_SLUGS = ['pod-1', 'pod-0']
+// Serving slugs. An explicit allowlist, never a prefix match: a parked
+// `retired-…` / `pod-1-retired-…` keeps pod_type='core' through the rename and
+// must never be served. Every course's core pod is `pod-1` (Tom, 2026-09-13).
+const SERVING_SLUGS = ['pod-1']
 
 async function servingSlug(supabase, courseCode) {
   const { data } = await supabase
     .from('listening_pods').select('slug, pod_type')
     .eq('course_code', courseCode).in('slug', SERVING_SLUGS)
   const core = (data || []).filter((p) => p.pod_type == null || p.pod_type === 'core')
-  return SERVING_SLUGS.find((s) => core.some((p) => p.slug === s)) || 'pod-0'
+  return SERVING_SLUGS.find((s) => core.some((p) => p.slug === s)) || 'pod-1'
 }
 
 export default async function handler(req, res) {
@@ -102,9 +102,8 @@ export default async function handler(req, res) {
   const supabase = getSupabase()
   if (!supabase) return res.status(500).json({ error: 'Supabase not configured' })
 
-  // An omitted slug means "the pod this course serves", which stopped being
-  // `pod-0` for everyone on Tom's 1-based ruling of 2026-08-22: hrv_for_eng
-  // serves `pod-1` and the rest still serve `pod-0`. Same preference order as
+  // An omitted slug means "the pod this course serves" — `pod-1`, resolved
+  // against the course's rows rather than assumed, with the same allowlist as
   // src/lib/servingPod.js. An explicit ?slug= is honoured untouched.
   const slug = req.query.slug || await servingSlug(supabase, courseCode)
 

@@ -914,14 +914,9 @@ const SECTION_ORDER = [
 // which is a human sentence a person wrote, and only then to a generic name.
 const POD_SECTIONS = {
   // POD-1 IS ITS NAME -- Tom's ruling of 2026-09-02, unchanged and not ours to
-  // revisit. TWO KEYS, and they are not an alias for each other. `pod-1` is what
-  // the Welsh pod is actually called since the 2026-09-10 re-slug, and it is the
-  // key this booth hits today. `pod-0` is still the real slug on the 44 courses
-  // the 2026-08-22 switchover has not reached, whose first pod is equally called
-  // POD-1 on screen -- so that entry is for THEM, and it goes the day the last of
-  // them comes across, not before.
+  // revisit. `pod-1` is every course's core pod (Tom, 2026-09-13), so it is the
+  // one core key this booth hits.
   'pod-1': { heading: 'POD-1', blurb: 'Your half of the POD-1 conversations — the other characters are read by someone else.' },
-  'pod-0': { heading: 'POD-1', blurb: 'Your half of the POD-1 conversations — the other characters are read by someone else.' },
   // TASTE CALL, defaulted 2026-09-04 because Tom has not named this section. It
   // is one line, so overruling it is one line.
   'senedd-s4c-steve': { heading: 'SENEDD', blurb: 'The S4C committee session at the Senedd, 11 January 2024 — read in session order.' },

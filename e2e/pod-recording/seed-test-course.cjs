@@ -9,7 +9,7 @@ const { createClient } = require('@supabase/supabase-js')
 const COURSE_CODE = process.env.E2E_TEST_COURSE || 'zzz_test_for_eng'
 // Canonical pod id shape used server-side (services/production-api.cjs pod
 // detail route): `${courseCode}:${slug}` — colon, not hyphen.
-const POD_ID = `${COURSE_CODE}:pod-0`
+const POD_ID = `${COURSE_CODE}:pod-1`
 
 async function main() {
   const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -55,7 +55,7 @@ async function main() {
     id: POD_ID,
     course_code: COURSE_CODE,
     pod_type: 'core',
-    slug: 'pod-0',
+    slug: 'pod-1',
     pod_order: 0,
     title: 'E2E Test Pod — Coffee Shop',
     scene: 'A quick coffee order',

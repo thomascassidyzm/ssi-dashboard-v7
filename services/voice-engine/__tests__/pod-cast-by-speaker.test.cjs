@@ -1,5 +1,5 @@
 /**
- * Unit tests: THE POD-0 CASTING RULE — cast BY SPEAKER. (Exercised on the
+ * Unit tests: THE POD-1 CASTING RULE — cast BY SPEAKER. (Exercised on the
  * two-voice default pool depth; two voices is a default, not a rule, since Tom
  * retired the one-man-one-woman rule on 2026-09-12.)
  *

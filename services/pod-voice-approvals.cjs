@@ -212,39 +212,29 @@ function selectSample(workQueue, limit) {
 // WHICH POD HOLDS THE CURRENT CONTENT
 // ---------------------------------------------------------------------------
 // Tom's T-14 rejection, 2026-08-11: "The samples were generated from an older
-// snapshot of pod-0 (~140 sentences). Aran has since done substantial
-// proofreading/authoring work and pod-0 now holds MORE THAN 200 sentences."
+// snapshot of the pod (~140 sentences). Aran has since done substantial
+// proofreading/authoring work and the pod now holds MORE THAN 200 sentences."
 //
-// That is not a stale cache — it is the wrong pod. Three courses carry a
-// `pod-0-unrecorded` working copy alongside `pod-0`, and the current content
-// lives in the working copy:
-//   spa_for_eng   pod-0 = 142 sentences   pod-0-unrecorded = 232   (the ~140)
-//   cym_n_for_eng pod-0 =   0             pod-0-unrecorded = 232
-//   cym_s_for_eng pod-0 =   0             pod-0-unrecorded = 232
-// The Welsh `pod-0` rows are [GATED 2026-08-06] placeholders, deliberately
-// emptied so no learner sees an unrecorded pod. Anything that hard-codes
-// `<course>:pod-0` therefore reads either a stale snapshot or nothing at all.
+// That is not a stale cache — it is the wrong pod. Some courses carry an
+// `unrecorded` working copy alongside their `pod-1`, and the current content
+// lives in the working copy while the served pod is a stale snapshot or a
+// deliberately emptied placeholder (so no learner hears an unrecorded pod).
+// Anything that hard-codes `<course>:pod-1` therefore reads either a stale
+// snapshot or nothing at all.
 //
-// SECOND, Tom's ruling of 2026-08-22: "We want to not have a Pod 0 from now on.
-// We want this first one to be called Pod 1." hrv_for_eng is the first course
-// across — after its cutover it has NO `pod-0` and NO `pod-0-unrecorded`; the
-// live pod is `hrv_for_eng:pod-1` (231 lines) and the old content is parked on
-// `pod-0-retired-2026-08-22` / `pod-1-retired-2026-08-22`. The other ~68
-// courses stay on `pod-0`. So the serving slug is a PER-COURSE fact, and this
-// resolver had two bugs against it: a course with only `pod-1` resolved to
-// null, and the `startsWith('pod-0')` family match happily picked an ARCHIVED
-// `pod-0-retired-…` pod (they keep pod_type='core' through the rename).
-//
-// Hence: an explicit allowlist of serving slugs in preference order, rather
-// than a prefix match plus a sentence-count sort. Retired/experimental slugs
-// can never win by being big.
+// The vocabulary (Tom, 2026-09-13): every course's core listening pod is
+// `pod-1`; there is no other numbered core slug. Parked content lives on
+// `retired-<date>`, `gated-<date>`, `pod-1-retired-<date>` and the like — those
+// keep pod_type='core' through the rename, so this resolver uses an explicit
+// allowlist of serving slugs in preference order, never a prefix match plus a
+// sentence-count sort. A parked pod can never win by being big.
 //
 // HELD PODS (Tom, 2026-08-23). `listening_pods.visibility` gates learner
 // reachability: 'held' pods are invisible to the learner app through RLS. The
 // browser-side twin (src/lib/servingPod.js) EXCLUDES held pods by default,
 // because its callers sit on pages that describe what a learner gets.
 //
-// This one does the opposite, on purpose. Every caller of resolveCurrentPod0 is
+// This one does the opposite, on purpose. Every caller of resolveCurrentPod is
 // voice approval or PodLab casting — api/pod-voice-approval.js and
 // api/pod-cast-voices.js — and both exist to review content BEFORE it is
 // released. That is precisely what a held pod is. Excluding held pods here
@@ -263,10 +253,9 @@ function selectSample(workQueue, limit) {
 // Pure. `pods` is [{ id, slug?, sentence_count, pod_type?, visibility? }].
 
 // Preference order, most-preferred first:
-//   pod-0-unrecorded — the working copy three courses review before release
-//   pod-1            — the 1-based serving slug (Tom, 2026-08-22)
-//   pod-0            — the fleet's legacy serving slug
-const SERVING_SLUGS = ['pod-0-unrecorded', 'pod-1', 'pod-0']
+//   unrecorded — the working copy a course reviews before release
+//   pod-1      — the core pod every course serves
+const SERVING_SLUGS = ['unrecorded', 'pod-1']
 
 function slugOf(pod) {
   if (pod.slug) return pod.slug
@@ -282,7 +271,7 @@ function isCore(pod) {
 
 /**
  * The pod whose sentences are the course's CURRENT core-pod content.
- * Working copy first when it actually holds lines, then pod-1, then pod-0.
+ * Working copy first when it actually holds lines, then pod-1.
  * Returns null when the course has no serving core pod at all.
  *
  * @param {Array} pods
@@ -291,7 +280,7 @@ function isCore(pod) {
  *   and select `visibility` when you do: the exclusion fails closed, so a row
  *   without the column does not count as live.
  */
-function resolveCurrentPod0(pods, opts = {}) {
+function resolveCurrentPod(pods, opts = {}) {
   const includeHeld = opts.includeHeld !== false
   const family = (pods || [])
     .filter((p) => isCore(p) && SERVING_SLUGS.includes(slugOf(p)))
@@ -380,7 +369,7 @@ function evaluateApproval(approval, live) {
 // in listening_pods.speakers. A label that appears only in the pod's sentence
 // rows is invisible to it — and phase8's resolvePodSpeakerVoice() quietly drops
 // such a line onto speakers._default. That is not a shrug, it is the wrong voice
-// on a learner-facing line: tha_for_eng:pod-0-unrecorded carries 43 lines under
+// on a learner-facing line: tha_for_eng:unrecorded carries 43 lines under
 // 'Customer 1/2/3', 'Customer' and 'Passenger' with no cast entry, 18 of them
 // written female, all of which would have rendered on the single male default.
 //
@@ -457,7 +446,7 @@ module.exports = {
   trackKey,
   castFingerprint,
   castLines,
-  resolveCurrentPod0,
+  resolveCurrentPod,
   loadCastPods,
   liveFingerprint,
   loadApprovals,

@@ -8,7 +8,7 @@ const require = createRequire(import.meta.url)
 const { buildRecordingPlan, finalizeRecordingPlan } = require('../pods-plan.cjs')
 const { normalizeRecordingPlan } = require('../../../src/utils/podRecordingPlan.js')
 
-const POD = { id: 'cym_n_for_eng:pod-0', slug: 'pod-0', title: 'Pod 0', metadata: { sections: [{ number: 1, title: 'Yn y caffi' }] } }
+const POD = { id: 'cym_n_for_eng:pod-1', slug: 'pod-1', title: 'Pod 1', metadata: { sections: [{ number: 1, title: 'Yn y caffi' }] } }
 const ROWS = [
   { id: 's1', pod_id: POD.id, scene_number: 1, global_order: 1, speaker: 'Elin', target_text: 'Bore da!', known_text: 'Good morning!', explainer_text: null, glue_to_next: false, target_audio_id: 'AUD-OLD', known_audio_id: null, explainer_audio_id: null },
   { id: 's2', pod_id: POD.id, scene_number: 1, global_order: 2, speaker: 'Catrin', target_text: 'Bore da, sut wyt ti?', known_text: 'Good morning, how are you?', explainer_text: null, glue_to_next: false, target_audio_id: 'AUD-HUMAN', known_audio_id: null, explainer_audio_id: null },

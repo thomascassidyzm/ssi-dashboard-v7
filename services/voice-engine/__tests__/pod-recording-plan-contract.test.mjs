@@ -27,9 +27,9 @@ const canonicalPlan = {
   totals: { items: 4, recorded: 1, remaining: 3 },
   items: [
     {
-      podId: 'cym_n_for_eng:pod-0',
-      podTitle: 'Pod 0 — Cyrraedd',
-      sentenceId: 'cym_n_for_eng:pod-0:SC01-S002',
+      podId: 'cym_n_for_eng:pod-1',
+      podTitle: 'Pod 1 — Cyrraedd',
+      sentenceId: 'cym_n_for_eng:pod-1:SC01-S002',
       kind: 'target',
       speaker: 'Catrin',
       sceneNumber: 1,
@@ -42,9 +42,9 @@ const canonicalPlan = {
       audioId: '11111111-1111-4111-8111-111111111111'
     },
     {
-      podId: 'cym_n_for_eng:pod-0',
-      podTitle: 'Pod 0 — Cyrraedd',
-      sentenceId: 'cym_n_for_eng:pod-0:SC01-S004',
+      podId: 'cym_n_for_eng:pod-1',
+      podTitle: 'Pod 1 — Cyrraedd',
+      sentenceId: 'cym_n_for_eng:pod-1:SC01-S004',
       kind: 'target',
       speaker: 'Catrin',
       sceneNumber: 1,
@@ -54,14 +54,14 @@ const canonicalPlan = {
         { speaker: 'Elin', targetText: 'Da iawn, diolch.', knownText: 'Very well, thanks.' }
       ],
       line: { targetText: 'Dw i eisiau coffi.', knownText: 'I want a coffee.' },
-      glueSentenceIds: ['cym_n_for_eng:pod-0:SC01-S004', 'cym_n_for_eng:pod-0:SC01-S005'],
+      glueSentenceIds: ['cym_n_for_eng:pod-1:SC01-S004', 'cym_n_for_eng:pod-1:SC01-S005'],
       recorded: false,
       audioId: null
     },
     {
-      podId: 'cym_n_for_eng:pod-1',
+      podId: 'cym_n_for_eng:senedd-s4c-steve',
       podTitle: 'Pod 1 — Y dref',
-      sentenceId: 'cym_n_for_eng:pod-1:SC01-S001',
+      sentenceId: 'cym_n_for_eng:senedd-s4c-steve:SC01-S001',
       kind: 'target',
       speaker: 'Catrin',
       sceneNumber: 1,
@@ -72,9 +72,9 @@ const canonicalPlan = {
       audioId: null
     },
     {
-      podId: 'cym_n_for_eng:pod-1',
+      podId: 'cym_n_for_eng:senedd-s4c-steve',
       podTitle: 'Pod 1 — Y dref',
-      sentenceId: 'cym_n_for_eng:pod-1:SC02-S003',
+      sentenceId: 'cym_n_for_eng:senedd-s4c-steve:SC02-S003',
       kind: 'known',
       speaker: '__explainer__',
       sceneNumber: 2,
@@ -109,16 +109,16 @@ describe('normalizeRecordingPlan — canonical keystone shape', () => {
 
   it('preserves server order exactly (pod → scene → global_order is server-owned)', () => {
     expect(plan.items.map(i => i.sentenceId)).toEqual([
-      'cym_n_for_eng:pod-0:SC01-S002',
-      'cym_n_for_eng:pod-0:SC01-S004',
-      'cym_n_for_eng:pod-1:SC01-S001',
-      'cym_n_for_eng:pod-1:SC02-S003'
+      'cym_n_for_eng:pod-1:SC01-S002',
+      'cym_n_for_eng:pod-1:SC01-S004',
+      'cym_n_for_eng:senedd-s4c-steve:SC01-S001',
+      'cym_n_for_eng:senedd-s4c-steve:SC02-S003'
     ])
   })
 
   it('carries identity, cues, line text + gloss', () => {
     const it1 = plan.items[1]
-    expect(it1.podId).toBe('cym_n_for_eng:pod-0')
+    expect(it1.podId).toBe('cym_n_for_eng:pod-1')
     expect(it1.kind).toBe('target')
     expect(it1.role).toBe('target1')
     expect(it1.cues).toHaveLength(2)
@@ -129,8 +129,8 @@ describe('normalizeRecordingPlan — canonical keystone shape', () => {
 
   it('keeps glued rows as ONE item carrying their sentence ids', () => {
     expect(plan.items[1].glueSentenceIds).toEqual([
-      'cym_n_for_eng:pod-0:SC01-S004',
-      'cym_n_for_eng:pod-0:SC01-S005'
+      'cym_n_for_eng:pod-1:SC01-S004',
+      'cym_n_for_eng:pod-1:SC01-S005'
     ])
     expect(plan.items[0].glueSentenceIds).toBeNull()
   })
@@ -162,8 +162,8 @@ describe('normalizeRecordingPlan — tolerated variants (parallel-build drift)',
       course_code: 'cym_n_for_eng',
       voice_id: 'human_catrin_cym',
       items: [{
-        pod_id: 'cym_n_for_eng:pod-0',
-        sentence_id: 'cym_n_for_eng:pod-0:SC01-S002',
+        pod_id: 'cym_n_for_eng:pod-1',
+        sentence_id: 'cym_n_for_eng:pod-1:SC01-S002',
         kind: 'target',
         speaker: 'Catrin',
         scene_number: 1,
@@ -177,7 +177,7 @@ describe('normalizeRecordingPlan — tolerated variants (parallel-build drift)',
     })
     const it0 = plan.items[0]
     expect(plan.voiceId).toBe('human_catrin_cym')
-    expect(it0.sentenceId).toBe('cym_n_for_eng:pod-0:SC01-S002')
+    expect(it0.sentenceId).toBe('cym_n_for_eng:pod-1:SC01-S002')
     expect(it0.sceneTitle).toBe('Yn y caffi')
     expect(it0.lineText).toBe('Bore da, sut wyt ti?')
     expect(it0.lineGloss).toBe('Good morning, how are you?')
@@ -191,22 +191,22 @@ describe('normalizeRecordingPlan — tolerated variants (parallel-build drift)',
       voiceId: 'human_catrin_cym',
       pods: [
         {
-          podId: 'cym_n_for_eng:pod-0', title: 'Pod 0',
+          podId: 'cym_n_for_eng:pod-1', title: 'Pod 1',
           items: [
             { sentenceId: 'a', kind: 'target', line: { targetText: 'x' } },
             { sentenceId: 'b', kind: 'target', line: { targetText: 'y' }, recorded: true }
           ]
         },
         {
-          podId: 'cym_n_for_eng:pod-1', title: 'Pod 1',
+          podId: 'cym_n_for_eng:senedd-s4c-steve', title: 'Pod 1',
           items: [{ sentenceId: 'c', kind: 'known', line: { text: 'z' } }]
         }
       ]
     })
     expect(plan.items.map(i => i.podId)).toEqual([
-      'cym_n_for_eng:pod-0', 'cym_n_for_eng:pod-0', 'cym_n_for_eng:pod-1'
+      'cym_n_for_eng:pod-1', 'cym_n_for_eng:pod-1', 'cym_n_for_eng:senedd-s4c-steve'
     ])
-    expect(plan.items[0].podTitle).toBe('Pod 0')
+    expect(plan.items[0].podTitle).toBe('Pod 1')
     expect(plan.items[2].role).toBe('known')
     expect(plan.totals).toEqual({ total: 3, recorded: 1, remaining: 2 })
   })
@@ -229,16 +229,16 @@ describe('progress + resume helpers', () => {
 
   it('podProgress groups per pod in plan order, merging session captures', () => {
     expect(podProgress(items)).toEqual([
-      { podId: 'cym_n_for_eng:pod-0', podTitle: 'Pod 0 — Cyrraedd', total: 2, recorded: 1 },
-      { podId: 'cym_n_for_eng:pod-1', podTitle: 'Pod 1 — Y dref', total: 2, recorded: 0 }
+      { podId: 'cym_n_for_eng:pod-1', podTitle: 'Pod 1 — Cyrraedd', total: 2, recorded: 1 },
+      { podId: 'cym_n_for_eng:senedd-s4c-steve', podTitle: 'Pod 1 — Y dref', total: 2, recorded: 0 }
     ])
-    const session = new Set(['cym_n_for_eng:pod-1:SC01-S001'])
+    const session = new Set(['cym_n_for_eng:senedd-s4c-steve:SC01-S001'])
     expect(podProgress(items, session)[1].recorded).toBe(1)
   })
 
   it('firstUnrecordedIndex resumes past plan-recorded AND session-recorded items', () => {
     expect(firstUnrecordedIndex(items)).toBe(1)
-    const session = new Set(['cym_n_for_eng:pod-0:SC01-S004'])
+    const session = new Set(['cym_n_for_eng:pod-1:SC01-S004'])
     expect(firstUnrecordedIndex(items, session)).toBe(2)
     const all = new Set(items.map(i => i.sentenceId))
     expect(firstUnrecordedIndex(items, all)).toBe(-1)
@@ -260,15 +260,15 @@ describe('buildPodUploadMetadata — the registration seam contract (keystone §
     const meta = buildPodUploadMetadata(items[1], { voiceId: 'human_catrin_cym', sessionId: 'sess_1' })
     expect(meta).toEqual({
       mode: 'pod',
-      podId: 'cym_n_for_eng:pod-0',
-      sentenceId: 'cym_n_for_eng:pod-0:SC01-S004',
+      podId: 'cym_n_for_eng:pod-1',
+      sentenceId: 'cym_n_for_eng:pod-1:SC01-S004',
       kind: 'target',
       role: 'target1',
       voiceId: 'human_catrin_cym',
       speaker: 'Catrin',
       text: 'Dw i eisiau coffi.',
       cadence: 'natural',
-      glueSentenceIds: ['cym_n_for_eng:pod-0:SC01-S004', 'cym_n_for_eng:pod-0:SC01-S005'],
+      glueSentenceIds: ['cym_n_for_eng:pod-1:SC01-S004', 'cym_n_for_eng:pod-1:SC01-S005'],
       replacesAudioId: null,
       scriptSessionId: 'sess_1'
     })

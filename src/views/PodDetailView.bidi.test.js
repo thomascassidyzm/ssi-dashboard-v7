@@ -58,7 +58,7 @@ const SENTENCES = [
 ]
 
 vi.mock('vue-router', () => ({
-  useRoute: () => ({ params: { courseCode: 'ara_lb_for_eng', slug: 'pod-0' }, query: {} }),
+  useRoute: () => ({ params: { courseCode: 'ara_lb_for_eng', slug: 'pod-1' }, query: {} }),
 }))
 vi.mock('@/composables/useAuth.js', () => ({
   useAuth: () => ({ isAdmin: { value: true }, getAccessToken: async () => 'token' }),
@@ -75,10 +75,10 @@ import PodDetailView from './PodDetailView.vue'
 // page also fires are caught by the component and left as empty state.
 beforeEach(() => {
   global.fetch = vi.fn(async (url) => {
-    if (String(url).includes('/api/pods/ara_lb_for_eng/pod-0')) {
+    if (String(url).includes('/api/pods/ara_lb_for_eng/pod-1')) {
       return {
         ok: true,
-        json: async () => ({ pod: { id: 'pod-0', title: 'Pod 0', slug: 'pod-0' }, sentences: SENTENCES }),
+        json: async () => ({ pod: { id: 'pod-1', title: 'Pod 1', slug: 'pod-1' }, sentences: SENTENCES }),
       }
     }
     return { ok: false, status: 404, json: async () => ({}) }

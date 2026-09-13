@@ -20,7 +20,7 @@ const PODS = [
     sentence_count: 231, audio_coverage: cov(143, 11, 231), speakers: {} },
   { id: 'cym_n_for_eng:senedd-s4c-steve', slug: 'senedd-s4c-steve', title: 'Senedd S4C — Steve',
     pod_type: 'choice', visibility: 'held', sentence_count: 567, audio_coverage: cov(567, 0, 567), speakers: {} },
-  { id: 'cym_n_for_eng:pod-0-gated-2026-08-06', slug: 'pod-0-gated-2026-08-06',
+  { id: 'cym_n_for_eng:gated-2026-08-06', slug: 'gated-2026-08-06',
     title: '[ARCHIVED 2026-08-11] [GATED 2026-08-06] placeholder — kept for rollback',
     pod_type: 'core', visibility: 'held', sentence_count: 0, audio_coverage: cov(0, 0, 0), speakers: {} },
 ]

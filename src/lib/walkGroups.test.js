@@ -2,8 +2,8 @@ import { describe, it, expect } from 'vitest'
 import { buildGroups, decorateWalk, isIngestable } from './walkGroups.js'
 import CORPORA from '../../tools/pods/pod-corpora.json'
 
-// The canonical store as it actually stood on 2026-09-01, AFTER the pod-0 →
-// pod-1 rename: four slugs, Italian on the two Method cuts and nowhere else.
+// The canonical store as it actually stood on 2026-09-01, AFTER the core canon
+// was renamed onto `pod-1`: four slugs, Italian on the two Method cuts and nowhere else.
 const DB_AFTER = [
   { slug: 'learning-flagship', lines: 367, scenes: 11 },
   { slug: 'method-pod-43-scene', lines: 276, scenes: 43 },
@@ -17,8 +17,8 @@ const DB_BEFORE = [
   { slug: 'learning-flagship', lines: 367, scenes: 11 },
   { slug: 'method-pod-43-scene', lines: 276, scenes: 43 },
   { slug: 'method-pod-chapters', lines: 309, scenes: 12 },
-  { slug: 'pod-0', lines: 231, scenes: 22 },
-  { slug: 'pod-0.5', lines: 27, scenes: 7 },
+  { slug: 'core-slate', lines: 231, scenes: 22 },
+  { slug: 'half-slate', lines: 27, scenes: 7 },
   { slug: 'pod-1', lines: 236, scenes: 16 },
 ]
 
@@ -103,8 +103,8 @@ describe('the walk registry, joined to the canonical store', () => {
   it('shows the sacked slates as UNREGISTERED with real counts, before the rename', () => {
     const groups = buildGroups(CORPORA, { dbPods: DB_BEFORE })
     const unreg = groups.find(g => g.id === 'unregistered')
-    expect(unreg.walks.map(w => w.slug).sort()).toEqual(['pod-0', 'pod-0.5'])
-    expect(unreg.walks.find(w => w.slug === 'pod-0.5').lines).toBe(27)
+    expect(unreg.walks.map(w => w.slug).sort()).toEqual(['core-slate', 'half-slate'])
+    expect(unreg.walks.find(w => w.slug === 'half-slate').lines).toBe(27)
     // And the registry's pod-1 joins whatever the DB called pod-1 that day.
     expect(find(groups, 'pod-1').lines).toBe(236)
   })

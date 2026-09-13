@@ -203,7 +203,7 @@ test('a rep whose duplicate is still empty is NOT done', async () => {
 test('a seed line does NOT collapse into a pod line that reads the same', async () => {
   const db = stubDb(fixture({
     courses: [FIXTURE_COURSE],
-    pods: [{ id: 'p1', course_code: 'zzz_test2_for_eng', slug: 'pod-0' }],
+    pods: [{ id: 'p1', course_code: 'zzz_test2_for_eng', slug: 'pod-1' }],
     sentences: [{ id: 'sp1', pod_id: 'p1', global_order: 1, speaker: 'Customer', target_text: 'Zzz un', known_text: 'One in English' }],
     seeds: [seed('u1', 1, 'Zzz un', 'One in English')],
   }))
@@ -217,7 +217,7 @@ test('a seed line does NOT collapse into a pod line that reads the same', async 
 test('seed lines come after pod lines, in seed order, stably', async () => {
   const db = stubDb(fixture({
     courses: [FIXTURE_COURSE],
-    pods: [{ id: 'p1', course_code: 'zzz_test2_for_eng', slug: 'pod-0' }],
+    pods: [{ id: 'p1', course_code: 'zzz_test2_for_eng', slug: 'pod-1' }],
     sentences: [{ id: 'sp1', pod_id: 'p1', global_order: 1, speaker: 'Customer', target_text: 'Pod line', known_text: 'Pod line' }],
     seeds: [seed('u3', 3, 'Zzz tri', 'Three'), seed('u1', 1, 'Zzz un', 'One'), seed('u2', 2, 'Zzz dau', 'Two')],
   }))

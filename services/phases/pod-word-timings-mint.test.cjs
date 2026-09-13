@@ -69,7 +69,7 @@ function mint ({ voice, answer, beforeInsert, beforeUpdate }) {
     role: 'target1',
     voice,
     track: 'target',
-    sentenceId: 'zzz_for_qqq:pod-0-s1',
+    sentenceId: 'zzz_for_qqq:pod-1-s1',
   }).then(result => ({ result, row: db.tables.course_audio[0], tts }))
 }
 

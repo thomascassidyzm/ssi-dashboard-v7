@@ -22,7 +22,7 @@ import RecordistRoster from './RecordistRoster.vue'
 // Aran's shape, minimised: one finished body of work, one still going.
 const SECTIONS = [
   {
-    key: 'pod:pod-0', heading: 'POD-1', blurb: 'Your half of the POD-1 conversations.',
+    key: 'pod:pod-1', heading: 'POD-1', blurb: 'Your half of the POD-1 conversations.',
     rows: [
       { id: 'p1', text: 'Bore da, Sarah!', done: true, hasTake: true },
       { id: 'p2', text: 'Sut wyt ti?', done: true, hasTake: true },

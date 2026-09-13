@@ -44,7 +44,7 @@
  *     clip of this text by this voice is a take of this line.
  *   - BY SLOT. The line's own FK (listening_pod_sentences.target_audio_id, a
  *     seed's target1/target2_audio_id, a LEGO's target1_audio_id) points at a
- *     clip in this voice. This is what the text test cannot see: when pod-0 was
+ *     clip in this voice. This is what the text test cannot see: when the core pod was
  *     rebuilt on 2026-08-11 its sentences gained "…" PAUSE CUES, and Aran's June
  *     takes of those exact sentences are filed under the un-cued text. Six of
  *     his lines were already LINKED and already playing to learners while his

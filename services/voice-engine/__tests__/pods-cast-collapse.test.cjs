@@ -1,6 +1,6 @@
 /**
  * Unit tests: legacy-cast collapse to the two-voice shape (founder ruling
- * 2026-07-17) + alias merging. Fixture mirrors the live Welsh pod-0 cast that
+ * 2026-07-17) + alias merging. Fixture mirrors the live Welsh pod-1 cast that
  * motivated the rule: the SAME two humans split across five version-suffixed
  * identities.
  *
@@ -19,7 +19,7 @@ const {
   mergeCastAliases,
 } = require('../pods-cast.cjs')
 
-// The Welsh pod-0 shape: Aran (guide era), Aranv2/Aranv3, Catrin/Catrinv2 —
+// The Welsh pod-1 shape: Aran (guide era), Aranv2/Aranv3, Catrin/Catrinv2 —
 // two humans, five identities.
 function welshLegacyCast() {
   return {

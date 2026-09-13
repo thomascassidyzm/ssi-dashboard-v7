@@ -13,7 +13,7 @@ const podCast = {
 }
 
 const pods = [
-  { id: 'c:pod-0', slug: 'pod-0', title: 'Pod 0' },
+  { id: 'c:pod-1', slug: 'pod-1', title: 'Pod 1' },
   { id: 'c:pod-1', slug: 'pod-1', title: 'Pod 1' },
 ]
 
@@ -38,9 +38,9 @@ describe('summarizePodCoverage', () => {
   it('counts recorded (human) vs tts vs missing per cast voice with per-pod breakdown', () => {
     const sentences = [
       // Anna target: human-recorded by the cast voice
-      sentence('s1', 'c:pod-0', 'Anna', { target_audio_id: 'A1' }),
+      sentence('s1', 'c:pod-1', 'Anna', { target_audio_id: 'A1' }),
       // Anna target: TTS clip still in place
-      sentence('s2', 'c:pod-0', 'Anna (8 am)', { target_audio_id: 'A2' }),
+      sentence('s2', 'c:pod-1', 'Anna (8 am)', { target_audio_id: 'A2' }),
       // Neighbour target in pod-1: nothing yet
       sentence('s3', 'c:pod-1', 'Neighbour'),
       // Barista shares Aran's voice — merges into the same bucket
@@ -80,7 +80,7 @@ describe('summarizePodCoverage', () => {
 
   it('reports human-vs-tts per sentence kind, incl. voiceMatch', () => {
     const sentences = [
-      sentence('s1', 'c:pod-0', 'Anna', {
+      sentence('s1', 'c:pod-1', 'Anna', {
         target_audio_id: 'H', known_audio_id: 'T',
         explainer_text: 'Bore da means good morning', explainer_audio_id: null,
       }),   // explainer_* deliberately populated: coverage must ignore it
@@ -90,7 +90,7 @@ describe('summarizePodCoverage', () => {
       ['T', { origin: 'tts', voice_id: 'en-GB-SoniaNeural' }],
     ])
     const r = summarizePodCoverage({ podCast, pods, sentences, audioById })
-    const sent = r.pods.find(p => p.podId === 'c:pod-0').sentences[0]
+    const sent = r.pods.find(p => p.podId === 'c:pod-1').sentences[0]
     expect(sent.kinds.target).toMatchObject({
       origin: 'human', recorded: true, castVoiceId: 'human_catrin_cym', voiceMatch: false,
     })
@@ -108,7 +108,7 @@ describe('summarizePodCoverage', () => {
     for (const explainer_text of ['', 'Bore da means good morning']) {
       const r = summarizePodCoverage({
         podCast, pods,
-        sentences: [sentence('s1', 'c:pod-0', 'Anna', { explainer_text })],
+        sentences: [sentence('s1', 'c:pod-1', 'Anna', { explainer_text })],
         audioById: new Map(),
       })
       expect(r.pods[0].sentences[0].kinds.explainer).toBeUndefined()
@@ -119,7 +119,7 @@ describe('summarizePodCoverage', () => {
   it('uncast lines count as unassigned (empty podCast = casting not done yet)', () => {
     const r = summarizePodCoverage({
       podCast: {}, pods,
-      sentences: [sentence('s1', 'c:pod-0', 'Stranger (M)')],
+      sentences: [sentence('s1', 'c:pod-1', 'Stranger (M)')],
       audioById: new Map(),
     })
     expect(r.voices).toEqual([])

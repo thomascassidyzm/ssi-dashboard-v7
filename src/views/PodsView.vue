@@ -273,16 +273,13 @@ async function authedFetch(path, init = {}) {
 // Resumable poll loop — the endpoint generates a few scenes per call and
 // returns more_remaining.
 // `slug` is the LISTENING pod being written, and only that. It used to double as
-// the canonical slate to flex from, which is why creating a course's first core
-// pod wrote `pod-0`: that was the only slug canonical rows existed under. Since
-// 2026-09-01 the canonical slate is named separately by the API (canonicalSlug),
-// so this value means one thing — and since 2026-09-03 a course's FIRST core pod
-// is created on `pod-1`, per Tom's ruling of 2026-08-22: "We want to not have a
-// Pod 0 from now on. We want this first one to be called Pod 1." The default is
-// only ever used by the green Create button, which renders solely when the course
-// has no serving core pod at all. Regenerating passes the pod the course ACTUALLY
-// serves, so a 1-based course can never have its pod-1 content wiped into a fresh
-// pod-0 behind its back.
+// the canonical slate to flex from; since 2026-09-01 the canonical slate is
+// named separately by the API (canonicalSlug), so this value means one thing —
+// and a course's core pod is `pod-1`, per Tom's ruling of 2026-08-22: "We want
+// this first one to be called Pod 1." The default is only ever used by the
+// green Create button, which renders solely when the course has no serving core
+// pod at all. Regenerating passes the pod the course ACTUALLY serves, so its
+// content can never be wiped into a fresh pod behind its back.
 async function generatePod(force = false, slug = 'pod-1') {
   if (generating.value) return
   generating.value = true
@@ -312,21 +309,17 @@ async function generatePod(force = false, slug = 'pod-1') {
   }
 }
 
-// WHICH POD THIS CARD MANAGES. Not `pod-0` by assumption: Tom's 1-based ruling
-// of 2026-08-22 put hrv_for_eng onto `pod-1` — 23 courses including cym_n_for_eng
-// are now there, while the other 44 stay on `pod-0`. Hard-coding pod-0 showed Croatian the green "Generate Pod 0"
-// button on a course that already has a full, recorded pod.
+// WHICH POD THIS CARD MANAGES. Resolved from the course's rows, never assumed
+// from the course code: hard-coding the id once showed Croatian a green
+// "Generate" button on a course that already had a full, recorded pod.
 // includeHeld: this card MANAGES the pod, it does not serve it. A held pod is
 // exactly the one being worked on (Tom, 2026-08-23), so hiding it here would
-// show the green "Generate Pod 0" button over a pod that already exists — the
+// show the green "Generate" button over a pod that already exists — the
 // same Croatian failure the ruling above fixed, with a different cause.
 const corePod = computed(() => pickServingPod(pods.value, { includeHeld: true }))
-// THE SAME NAME THE POD'S ROW USES, for the regenerate confirm. This read the
-// pod's raw title, so on Welsh — then keyed `pod-0`, with a title column
-// literally reading "… Pod 0" — the prompt said "Pod 0" over a row that had
-// just said Pod 1. Welsh itself was re-slugged to `pod-1` on 2026-09-10 so it
-// no longer needs the translation, but the 44 courses the switchover has not
-// reached still do. The fallback is renamed too, for a pod with no title at all.
+// THE SAME NAME THE POD'S ROW USES, for the regenerate confirm — one naming
+// rule (src/lib/podDisplayName.js) for the card, the prompt and a pod with no
+// title at all, so one body of work never carries two names on one screen.
 const corePodLabel = computed(() => podDisplayLabel(corePod.value))
 // The row that carries the release/hold control and the live/held line: the
 // pod this course serves (or would serve, once released). Compared by id, so

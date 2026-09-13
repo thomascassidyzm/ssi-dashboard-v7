@@ -40,13 +40,13 @@ function row(podId, scene, speaker, extra = {}) {
 function twoPodSentences() {
   ORDER = 0
   return [
-    row('c:pod-0', 1, 'Anna (F)'),
-    row('c:pod-0', 1, 'Waiter (M)'),
-    row('c:pod-0', 1, 'Anna (F)'),
-    row('c:pod-0', 1, 'Waiter (M)'),
-    row('c:pod-0', 2, 'Neighbour (8 am)'),
-    row('c:pod-0', 2, 'Anna (F)'),
-    row('c:pod-0', 2, 'Neighbour (10:30 pm)'),
+    row('c:pod-1', 1, 'Anna (F)'),
+    row('c:pod-1', 1, 'Waiter (M)'),
+    row('c:pod-1', 1, 'Anna (F)'),
+    row('c:pod-1', 1, 'Waiter (M)'),
+    row('c:pod-1', 2, 'Neighbour (8 am)'),
+    row('c:pod-1', 2, 'Anna (F)'),
+    row('c:pod-1', 2, 'Neighbour (10:30 pm)'),
     row('c:pod-1', 1, 'Anna (F)'),
     row('c:pod-1', 1, 'Friend (F)'),
     row('c:pod-1', 1, 'Waiter (M)'),

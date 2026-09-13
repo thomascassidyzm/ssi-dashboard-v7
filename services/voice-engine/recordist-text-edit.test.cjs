@@ -67,16 +67,16 @@ function stubDb(updates) {
         voice_config: { podCast: { Customer: { gender: 'm', voiceId: 'human_tom_zzz', name: 'Tom', email: 'tom@saysomethingin.com' } } } },
     ],
     listening_pods: [
-      { id: 'cym_n_for_eng:pod-0', course_code: 'cym_n_for_eng' },
-      { id: 'zzz_test2_for_eng:pod-0', course_code: 'zzz_test2_for_eng' },
+      { id: 'cym_n_for_eng:pod-1', course_code: 'cym_n_for_eng' },
+      { id: 'zzz_test2_for_eng:pod-1', course_code: 'zzz_test2_for_eng' },
     ],
     listening_pod_sentences: [
-      { id: 'LIVE', pod_id: 'cym_n_for_eng:pod-0', global_order: 1, speaker: 'Aled', target_text: 'Bore da.', known_text: 'Good morning.', target_audio_id: 'clip-1', rerecord_wanted: null },
+      { id: 'LIVE', pod_id: 'cym_n_for_eng:pod-1', global_order: 1, speaker: 'Aled', target_text: 'Bore da.', known_text: 'Good morning.', target_audio_id: 'clip-1', rerecord_wanted: null },
       // The SAME words, further down the pod. The queue collapses these into one
       // line to read, and the roster says so out loud, so an edit has to move
       // both or the artist gets handed back a line they thought they had fixed.
-      { id: 'LIVE-DUP', pod_id: 'cym_n_for_eng:pod-0', global_order: 9, speaker: 'Aled', target_text: 'Bore da.', known_text: 'Good morning.', target_audio_id: 'clip-1', rerecord_wanted: null },
-      { id: 'TEST', pod_id: 'zzz_test2_for_eng:pod-0', global_order: 1, speaker: 'Customer', target_text: 'A coffee, please.', known_text: 'A coffee, please.', target_audio_id: null, rerecord_wanted: null },
+      { id: 'LIVE-DUP', pod_id: 'cym_n_for_eng:pod-1', global_order: 9, speaker: 'Aled', target_text: 'Bore da.', known_text: 'Good morning.', target_audio_id: 'clip-1', rerecord_wanted: null },
+      { id: 'TEST', pod_id: 'zzz_test2_for_eng:pod-1', global_order: 1, speaker: 'Customer', target_text: 'A coffee, please.', known_text: 'A coffee, please.', target_audio_id: null, rerecord_wanted: null },
     ],
     course_audio: [
       { id: 'clip-1', voice_id: 'human_aran_cym_n', s3_key: 'k1', text_normalized: 'bore da.', language: 'cym' },

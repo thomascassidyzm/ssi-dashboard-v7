@@ -3,7 +3,7 @@
  *
  * Tom's ruling, 2026-09-01: a pedagogical difficulty tier is a property of the
  * pod and must be DECLARED. The code this file replaces read the tier off the
- * pod's name — `podSlug === 'pod-0' ? 8 : 12` — so renaming the pod would have
+ * pod's name — `podSlug === <the first rung's slug> ? 8 : 12` — so renaming the pod would have
  * silently changed how hard its content is. Carrying that string forward under a
  * new name would have carried the bug forward, which is why the rename did not
  * just swap the literal.
@@ -23,7 +23,7 @@
 // Founder ruling (2026-07-16, docs/pods/pod-ladder-proposal.md §9a): the first
 // rung's breathing ceiling is 8 syllables; every level after it is 12.
 const POD_TIERS = {
-  // Renamed from 'pod-0' on 2026-09-01. Same content, same rung, correct name.
+  // Named on 2026-09-01. The first rung, declared as such.
   'pod-1': { rung: 1, syllableCeiling: 8 },
 }
 
