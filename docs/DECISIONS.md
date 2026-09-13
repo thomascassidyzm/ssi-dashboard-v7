@@ -1002,7 +1002,7 @@ voice is chosen, so a cast made there reaches pods without a config edit per cou
 ## 2026-09-13 — the Senedd/S4C pod is live to named accounts only: a role row per person, one command to add the next
 
 Tom, 16:17Z: release cym_n_for_eng:senedd-s4c-steve (567 lines) "so it shows ONLY to special
-accounts: Steve Dimmich (email to follow), plus SSi admin accounts: Tom, Aran, Kai, Deborah (and any
+accounts: Steve Dimmick (email to follow), plus SSi admin accounts: Tom, Aran, Kai, Deborah (and any
 other account already marked SSi admin/staff in prod)."
 
 **Decision.** The pod stays `required_role='previewer_001'` and is flipped `visibility='live'`
@@ -1012,7 +1012,7 @@ the release is the role rows: one per person, matched by exact email in `auth.us
 guessed. Granted 2026-09-13: every learner with `platform_role='ssi_admin'` (13, including the two
 perf accounts and the two harness admins, because "already marked SSi admin" is the rule as stated)
 plus the named people's other sign-ins (tomcassidy@mac.com, aran@saysomethingin.com,
-aran@sgwarnog.com, kai.saraceno@saysomethingin.com). Steve is added when his address arrives with
+aran@sgwarnog.com, kai.saraceno@saysomethingin.com). Steve (steve@dimmicks.co.uk) was added the same way, with
 `node tools/pods/grant-pod-role.cjs --email=<his> --apply` — the tool refuses an address with no
 auth user and one that has never signed in, and writes nothing without `--apply`. No UI grants
 roles anywhere in the estate; this stays a command.
