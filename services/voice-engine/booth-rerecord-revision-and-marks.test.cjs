@@ -279,3 +279,39 @@ test('take route: propagation blowing up wholesale keeps every duplicate mark an
   assert.deepEqual(tables.listening_pod_sentences.find((x) => x.id === 's9l47').rerecord_wanted, MARK, 'nobody knows which duplicates were reached, so every duplicate keeps its mark')
   assert.equal(tables.listening_pod_sentences.find((x) => x.id === 's1l1').rerecord_wanted, null, 'the source line, which the take did reach, is retired')
 })
+
+// ── 3. THE TWO RESIDUALS FROM ASTRA COLD-CHECK #595 ─────────────────────────
+
+test('take route: a failed pod-list read is "every duplicate unfilled" — the mark stays and the response warns, never ok-and-silent', async () => {
+  const tables = fixture()
+  // Before: propagation dropped the pods read error, returned an empty fill
+  // list, retirement read that as "nothing to keep" and erased s9l47's mark;
+  // the response was ok:true, notFilled:[], no warning.
+  let filed = false, podReadsAfterFiling = 0
+  const r = await takeViaRouter(tables, {
+    onFiled: () => { filed = true },
+    failOn: ({ table, op }) => (filed && table === 'listening_pods' && op === 'read' && ++podReadsAfterFiling === 1) ? 'pod list on fire' : null,
+  })
+  assert.equal(r.status, undefined, JSON.stringify(r.body))
+  assert.equal(r.body.ok, true, 'the take is stored and linked whatever the pod-list read did')
+  assert.equal(r.body.alsoFilled, 0)
+  assert.ok(Array.isArray(r.body.warnings) && r.body.warnings.some((w) => /pod list on fire/.test(w) && /marks stay/.test(w)), JSON.stringify(r.body.warnings))
+  assert.deepEqual(tables.listening_pod_sentences.find((x) => x.id === 's9l47').rerecord_wanted, MARK, 'the duplicate the take could not even enumerate keeps its mark')
+  assert.equal(tables.listening_pod_sentences.find((x) => x.id === 's1l1').rerecord_wanted, null)
+  assert.equal(r.body.wantsKept, 1)
+})
+
+test('take route: wantsKept counts the sentence marks retirement actually held — 1 on a wholesale failure, not 0', async () => {
+  const tables = fixture()
+  // Before: wantsKept = keptClips + notFilled.length; on wholesale failure the
+  // failure list is empty and the one clip lives in the source course, so the
+  // route reported wantsKept:0 while s9l47's mark was in fact preserved.
+  let filed = false, coursesReadsAfterFiling = 0
+  const r = await takeViaRouter(tables, {
+    onFiled: () => { filed = true },
+    failOn: ({ table, op }) => (filed && table === 'courses' && op === 'read' && ++coursesReadsAfterFiling === 1) ? 'course list on fire' : null,
+  })
+  assert.equal(r.status, undefined, JSON.stringify(r.body))
+  assert.deepEqual(tables.listening_pod_sentences.find((x) => x.id === 's9l47').rerecord_wanted, MARK)
+  assert.equal(r.body.wantsKept, 1, 'one retained sentence mark, counted from retirement, not from the (empty) failure list')
+})

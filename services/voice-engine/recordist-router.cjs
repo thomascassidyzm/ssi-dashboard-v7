@@ -1135,7 +1135,7 @@ module.exports = function createRecordistRouter({
       // is stored, linked and propagated, and never allowed to fail the take.
       // A duplicate that was not filled keeps its mark: the mark is the only
       // record that it still needs the take.
-      let retired = { clips: 0, sentences: 0, keptClips: 0 }
+      let retired = { clips: 0, sentences: 0, keptClips: 0, keptSentences: 0 }
       let retirementError = null
       try {
         retired = await clearRerecordWants({
@@ -1163,7 +1163,10 @@ module.exports = function createRecordistRouter({
         notFilled,
         rawKey: captured.body.rawKey || null,
         wantsRetired: retired.clips + retired.sentences,
-        wantsKept: (retired.keptClips || 0) + notFilled.length,
+        // Counted from what retirement actually HELD, never inferred from the
+        // propagation failure list: on a wholesale failure that list is empty
+        // while every duplicate mark stays (Astra #595).
+        wantsKept: (retired.keptClips || 0) + (retired.keptSentences || 0),
         ...(warnings.length ? { warnings } : {}),
       })
     } catch (err) {

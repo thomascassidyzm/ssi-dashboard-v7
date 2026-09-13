@@ -1897,11 +1897,18 @@ async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Ke
   const textNormalized = normalizeForDb(text)
   const courses = await coursesForLanguage(db, recordist.language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  if (!byCourse.size) return { linked: [], skipped: 0 }
+  if (!byCourse.size) return { linked: [], failed: [], skipped: 0 }
 
-  const { data: pods } = await db.from('listening_pods').select('id, course_code').in('course_code', [...byCourse.keys()])
+  const { data: pods, error: podErr } = await db.from('listening_pods').select('id, course_code').in('course_code', [...byCourse.keys()])
+  // A FAILED POD-LIST READ IS "EVERY DUPLICATE UNFILLED", never "no duplicates".
+  // Swallowed, it returned an empty fill list; retirement then read that as
+  // "nothing to keep" and erased the marks on copies this take never reached,
+  // and the route said ok with no warning (Astra cold-check #595). Throwing
+  // hands the caller its keep.allDuplicates path: every mark stays, the error
+  // reaches the response, and the take itself is unaffected.
+  if (podErr) throw new Error(`pod list read failed, no duplicate can be filled: ${podErr.message}`)
   const podById = new Map((pods || []).map((p) => [p.id, p]))
-  if (!podById.size) return { linked: [], skipped: 0 }
+  if (!podById.size) return { linked: [], failed: [], skipped: 0 }
 
   const sentences = await fetchAllSentences(db, [...podById.keys()])
   // THE SAME KEY AS THE QUEUE: (language, voice, text). A copy of these words is
@@ -2116,7 +2123,11 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
   const keepCourseCodes = new Set((keep && keep.courseCodes) || [])
   const keepAllDuplicates = !!(keep && keep.allDuplicates)
   const keys = audioKeyCandidates(String(text || '').trim())
-  const cleared = { clips: 0, sentences: 0, keptClips: 0 }
+  // keptSentences is COUNTED FROM WHAT WAS ACTUALLY HELD: a marked copy of
+  // this line, cast to this voice, that `keep` told us not to retire. The
+  // route reports it as wantsKept; deriving that from the propagation failure
+  // list instead reported 0 on a wholesale failure that kept every mark (#595).
+  const cleared = { clips: 0, sentences: 0, keptClips: 0, keptSentences: 0 }
   if (!keys.length) return cleared
 
   // 1. The clip flag, for every course of this language and every spelling of
@@ -2162,18 +2173,18 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
     const normalized = new Set(keys)
     const register = await voiceRegister(db, recordist.language)
     const sentences = await fetchAllSentences(db, [...podById.keys()])
-    const hits = sentences.filter((s) => {
+    const mine = sentences.filter((s) => {
       if (!s.rerecord_wanted || !s.rerecord_wanted.target) return false
-      if (s.id !== sentenceId) {
-        if (keepSentenceIds.has(s.id) || keepAllDuplicates) return false
-        if (!audioKeyCandidates((s.target_text || '').trim()).some((k) => normalized.has(k))) return false
-      }
+      if (s.id !== sentenceId && !audioKeyCandidates((s.target_text || '').trim()).some((k) => normalized.has(k))) return false
       const course = byCourse.get((podById.get(s.pod_id) || {}).course_code)
       if (!course) return false
       const entry = castEntryFor(course.voice_config && course.voice_config.podCast, s.speaker)
       const owner = lineVoiceId(entry, register, courseDialect(course))
       return !!owner && recordist.spellings.includes(owner)
     })
+    const held = (s) => s.id !== sentenceId && (keepSentenceIds.has(s.id) || keepAllDuplicates)
+    const hits = mine.filter((s) => !held(s))
+    cleared.keptSentences = mine.length - hits.length
     for (const s of hits) {
       const { target: _retired, ...rest } = s.rerecord_wanted
       const next = Object.keys(rest).length ? rest : null
