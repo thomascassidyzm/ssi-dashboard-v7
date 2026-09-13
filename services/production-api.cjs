@@ -4464,7 +4464,8 @@ app.get('/api/pods/:courseCode/:slug', async (req, res) => {
 // Tom's ruling of 2026-08-23: a pod a human is still recording must be
 // unreachable until it is finished AND a human has decided to release it.
 // GOING LIVE IS A HUMAN ACT — nothing may flip a pod live because it looks
-// complete. This endpoint is THE ONLY WRITE PATH to listening_pods.visibility
+// complete. And the reverse (Tom, 2026-09-13): once live, a pod is never held
+// back again — it is fixed line by line. This endpoint is THE ONLY WRITE PATH to listening_pods.visibility
 // in the codebase; the decision logic and the confirm-token rationale live in
 // services/pod-visibility.cjs.
 //
@@ -4487,6 +4488,13 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
       .from('listening_pods').select('id, metadata, visibility').eq('id', podId).maybeSingle()
     if (readErr) throw readErr
     if (!pod) return res.status(404).json({ error: `Pod not found: ${podId}` })
+
+    // A LIVE pod is never pulled back. Tom, 2026-09-13: "it shouldn't be there
+    // any more should it? you can't unpublished a course, once it's gone live
+    // it can only ever be fixed line by line". The decision is pure and
+    // tested in pod-visibility.cjs; this is the only place it is applied.
+    const transition = podVisibility.checkVisibilityTransition(pod.visibility, parsed.visibility)
+    if (!transition.ok) return res.status(transition.status).json({ error: transition.error })
 
     // Read-modify-write of the jsonb — every other metadata key survives.
     const metadata = podVisibility.nextVisibilityMetadata(pod.metadata, {

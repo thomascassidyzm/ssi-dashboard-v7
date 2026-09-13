@@ -24,8 +24,16 @@
 // pod it did not deliberately name. Holding needs no token: erring towards
 // invisible is the safe direction.
 //
+// TOM'S RULING (2026-09-13), which closes the other direction for good: "it
+// shouldn't be there any more should it? you can't unpublished a course, once
+// it's gone live it can only ever be fixed line by line". A LIVE pod is never
+// pulled back from learners — not by this route, not by anything. Hold/release
+// stays exactly as it is for a pod that is still 'held' (going live remains a
+// human act); the only change is that live → held is refused. See
+// checkVisibilityTransition.
+//
 // Pure. No DB, no clock, no identity lookup — the caller passes those in, which
-// is what makes both decisions unit-testable.
+// is what makes all three decisions unit-testable.
 
 const VISIBILITIES = ['live', 'held']
 
@@ -53,6 +61,35 @@ function parseVisibilityRequest(body, podId) {
     }
   }
   return { ok: true, visibility }
+}
+
+/**
+ * The second gate, run AFTER the route has read the pod's current visibility.
+ *
+ * live → held is refused with 409. Tom, 2026-09-13, verbatim: "it shouldn't be
+ * there any more should it? you can't unpublished a course, once it's gone live
+ * it can only ever be fixed line by line". Once learners can reach a pod, the
+ * only fix is a line-by-line one; taking the pod away from them is not a fix
+ * this system offers.
+ *
+ * held → live (already confirmed by parseVisibilityRequest) proceeds. A no-op
+ * (held → held, live → live) proceeds and the route writes the same value —
+ * harmless, and it keeps a re-fired request from turning into an error.
+ *
+ * @param {string|null|undefined} currentVisibility what listening_pods.visibility says now
+ * @param {string} requested the already-validated visibility from parseVisibilityRequest
+ * @returns {{ok:true} | {ok:false, status:number, error:string}}
+ */
+function checkVisibilityTransition(currentVisibility, requested) {
+  if (currentVisibility === 'live' && requested === 'held') {
+    return {
+      ok: false,
+      status: 409,
+      error: 'This pod is live. A live pod is never pulled back from learners; '
+        + 'it is fixed line by line (Tom, 2026-09-13).',
+    }
+  }
+  return { ok: true }
 }
 
 /**
@@ -96,4 +133,6 @@ function describeActor(actor) {
   return email || name || 'unknown'
 }
 
-module.exports = { VISIBILITIES, parseVisibilityRequest, nextVisibilityMetadata, describeActor }
+module.exports = {
+  VISIBILITIES, parseVisibilityRequest, checkVisibilityTransition, nextVisibilityMetadata, describeActor,
+}

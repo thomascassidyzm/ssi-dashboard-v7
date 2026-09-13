@@ -12,7 +12,7 @@
 import { describe, it, expect } from 'vitest'
 
 const {
-  parseVisibilityRequest, nextVisibilityMetadata, describeActor, VISIBILITIES,
+  parseVisibilityRequest, checkVisibilityTransition, nextVisibilityMetadata, describeActor, VISIBILITIES,
 } = require('./pod-visibility.cjs')
 
 const POD = 'cym_n_for_eng:pod-1'
@@ -49,6 +49,33 @@ describe('parseVisibilityRequest — release is a deliberate act', () => {
   it('survives a missing body', () => {
     expect(parseVisibilityRequest(undefined, POD).ok).toBe(false)
     expect(parseVisibilityRequest(null, POD).ok).toBe(false)
+  })
+})
+
+describe('checkVisibilityTransition — a live pod is never pulled back (Tom, 2026-09-13)', () => {
+  it('REFUSES live → held with 409, in Tom\'s words', () => {
+    // "you can't unpublished a course, once it's gone live it can only ever be
+    // fixed line by line" — the red Hold-back button on a live pod is gone, and
+    // this is the lever behind it closing too.
+    const r = checkVisibilityTransition('live', 'held')
+    expect(r.ok).toBe(false)
+    expect(r.status).toBe(409)
+    expect(r.error).toMatch(/live pod is never pulled back/i)
+    expect(r.error).toMatch(/line by line/i)
+  })
+
+  it('still lets a held pod be released — going live stays a human act (2026-08-23)', () => {
+    expect(checkVisibilityTransition('held', 'live')).toEqual({ ok: true })
+  })
+
+  it('still lets a held pod be held (no-op), and a live pod stay live (no-op)', () => {
+    expect(checkVisibilityTransition('held', 'held')).toEqual({ ok: true })
+    expect(checkVisibilityTransition('live', 'live')).toEqual({ ok: true })
+  })
+
+  it('only an explicit live refuses a hold: an odd column value reads as held everywhere else', () => {
+    expect(checkVisibilityTransition(null, 'held')).toEqual({ ok: true })
+    expect(checkVisibilityTransition(undefined, 'held')).toEqual({ ok: true })
   })
 })
 
