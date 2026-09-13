@@ -1058,3 +1058,15 @@ pause where the text has "…", and the splicer refuses rather than guesses.
 **Why better × simpler × cheaper.** No render, no new tables: one delete, four inserts on objects
 that already exist, and the two existing resolution paths do the rest. Recoverable from
 content_audit_log by id.
+
+**Steer, same day (Tom).** Two rules for the re-resolution: no take in Tom's voice may be served in
+any pod-1 slot or array entry (the primary acceptance test), and the newest recording of Aran's
+voice wins per text; the uploading account is the speaker prior, with the 11 Sep uploads into the
+Catrin-cast slots the one exception zone (some are Aran — his ear or the #569 probe decides, not
+audio analysis here). Rule 2 was already true: the recordist upsert keeps the newest file on the
+row, so no Aran-cast entry had a newer Aran-account take under another row. Rule 1 reclassified the
+rows the first pass was told to leave: 43/52 (Tom's account, 15 June) and split 71 are deleted by
+`tools/pods/cym-n-pod1-retire-tom-account-rows-2026-09-13.cjs`; s12 l8 now serves Aran's 10 Sep
+take (link-only), s11 l1 its Aran 3 Sep whole turn. Split 70 ("Prynhawn da.") is stripped from pod-1
+but NOT deleted: it serves two lines of the released Senedd pod, which needs its own
+make-before-break take first.
