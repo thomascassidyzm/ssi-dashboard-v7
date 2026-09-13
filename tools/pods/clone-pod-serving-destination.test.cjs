@@ -66,11 +66,6 @@ describe('serviceRefusal — a destination slug the player serves', () => {
     expect(refusal).toMatch(/serv/i)
   })
 
-  it('REFUSES a clone onto pod-0, the fallback slug every course serves', () => {
-    const refusal = serviceRefusal(serving({ toSlug: 'pod-0', dstPodId: 'spa_for_eng:pod-0' }))
-    expect(refusal).toBeTruthy()
-  })
-
   it('REFUSES even when the destination pod row does not exist yet — creating it IS the harm', () => {
     // The resolver asks only whether a core row on a serving slug EXISTS. Cloning
     // creates it, so "not there yet" is not safety, it is the moment of the harm.
@@ -112,7 +107,7 @@ describe('serviceRefusal — a destination slug the player serves', () => {
 
 describe('serviceRefusal — what is NOT a door', () => {
   it('allows a parked working slug, which is the whole point of this tool', () => {
-    expect(serviceRefusal(serving({ toSlug: 'pod-0-unrecorded', dstPodId: 'spa_for_eng:pod-0-unrecorded', destExists: false }))).toBeNull()
+    expect(serviceRefusal(serving({ toSlug: 'unrecorded', dstPodId: 'spa_for_eng:unrecorded', destExists: false }))).toBeNull()
   })
 
   it('allows a non-core pod even on a serving slug — the resolver filters pod_type', () => {
@@ -122,12 +117,12 @@ describe('serviceRefusal — what is NOT a door', () => {
 
 describe('serviceRefusal — the refusal clone-pod already had', () => {
   it('still refuses a destination that holds sentence rows', () => {
-    const refusal = serviceRefusal(serving({ toSlug: 'pod-0-unrecorded', dstPodId: 'spa_for_eng:pod-0-unrecorded', destRows: 128 }))
+    const refusal = serviceRefusal(serving({ toSlug: 'unrecorded', dstPodId: 'spa_for_eng:unrecorded', destRows: 128 }))
     expect(refusal).toMatch(/128 sentence row/)
   })
 
   it('and --serve-now does NOT waive that one — it is about destroying work, not about learners', () => {
-    const refusal = serviceRefusal(serving({ toSlug: 'pod-0-unrecorded', dstPodId: 'spa_for_eng:pod-0-unrecorded', destRows: 128, serveNow: true }))
+    const refusal = serviceRefusal(serving({ toSlug: 'unrecorded', dstPodId: 'spa_for_eng:unrecorded', destRows: 128, serveNow: true }))
     expect(refusal).toMatch(/128 sentence row/)
   })
 })

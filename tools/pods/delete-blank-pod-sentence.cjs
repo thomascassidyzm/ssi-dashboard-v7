@@ -4,7 +4,7 @@
  * on either side.
  *
  * Why this exists (2026-08-22, the ita/spa/fra/zho pod rollout): three of the four
- * courses carry 232 rows on `<course>:pod-0-unrecorded` where Croatian and Spanish
+ * courses carry 232 rows on `<course>:unrecorded` where Croatian and Spanish
  * carry 231. The extra row is `SC15-S012` — empty `target_text` AND empty
  * `known_text`, no audio on either track. It is also the whole of each course's
  * "1 missing known audio". A row with no text on either side cannot be rendered
@@ -24,7 +24,7 @@
  *
  * DRY RUN BY DEFAULT. Pass --apply to write.
  *
- *   node tools/pods/delete-blank-pod-sentence.cjs --id=ita_for_eng:pod-0-unrecorded:SC15-S012
+ *   node tools/pods/delete-blank-pod-sentence.cjs --id=ita_for_eng:unrecorded:SC15-S012
  *   node tools/pods/delete-blank-pod-sentence.cjs --id=... --apply
  */
 'use strict'
@@ -45,13 +45,13 @@ const arg = (n) => {
  * when the same textless row turned up on two Group 1 STAGED clones whose slug is
  * `pod-1-staged-2026-08-23`. The allowlist is deliberately literal: a new staging
  * convention has to be added here on purpose, and everything else — above all a
- * live `pod-0` — stays out of reach. The slug is no longer the only lock: the run
+ * served `pod-1` — stays out of reach. The slug is no longer the only lock: the run
  * also reads the pod's visibility and refuses anything that is not `held`.
  */
 const STAGING_SLUGS = ['pod-1-staged-2026-08-23']
 function podSlugAllowed(podId) {
   const slug = String(podId || '').split(':').slice(1).join(':')
-  return /-unrecorded$/.test(slug) || STAGING_SLUGS.includes(slug)
+  return /(^|-)unrecorded$/.test(slug) || STAGING_SLUGS.includes(slug)
 }
 
 const SENTENCE_ID = arg('id')

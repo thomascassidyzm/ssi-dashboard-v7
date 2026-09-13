@@ -2,7 +2,7 @@
 /**
  * ESTATE-WIDE POD-1 PER-CONVERSATION RECAST (2026-08-23).
  *
- * Generalisation of tools/pods/cym-n-pod0-percall-recast.cjs from one Welsh pod
+ * Generalisation of the 2026-08-23 cym_n per-conversation recast (now archived) from one Welsh pod
  * to every course's serving pod. Tom's ruling, verbatim:
  *
  *   "I think the talking to yourself might have happened because of the desire
@@ -772,7 +772,7 @@ async function main() {
     // today (both its pods are 'held' as of 2026-08-23).
     podIds = (await db.query(
       `select id from listening_pods
-        where visibility = 'live' and slug in ('pod-0','pod-1')
+        where visibility = 'live' and slug = 'pod-1'
           and course_code not like 'zzz%'
           and course_code <> 'cym_n_for_eng'
         order by id`)).rows.map(r => r.id)

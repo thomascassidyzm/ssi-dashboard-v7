@@ -49,7 +49,7 @@ const DRY = process.argv.includes('--dry-run')
 
 // Group 1: the staged clones. Group 2: the held unrecorded drafts.
 const GROUP1_SLUG = 'pod-1-staged-2026-08-23'
-const GROUP2_SLUG = 'pod-0-unrecorded'
+const GROUP2_SLUG = 'unrecorded'
 const GROUP1 = ['fra_for_eng', 'spa_for_eng', 'ita_for_eng', 'deu_for_eng', 'por_for_eng',
   'por_br_for_eng', 'ron_for_eng', 'swe_for_eng', 'hrv_for_eng', 'eus_for_eng',
   'ara_for_eng', 'ara_eg_for_eng', 'ara_sy_for_eng', 'deu_at_for_eng', 'fra_ca_for_eng',

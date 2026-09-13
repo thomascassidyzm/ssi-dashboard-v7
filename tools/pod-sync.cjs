@@ -9,14 +9,14 @@
  *      host profiles + design notes → listening_pods.metadata
  *
  * Usage:
- *   node tools/pod-sync.cjs ~/Desktop/spanish-pods.md --course=spa_for_eng --type=core --slug=pod-0-unrecorded
+ *   node tools/pod-sync.cjs ~/Desktop/spanish-pods.md --course=spa_for_eng --type=core --slug=unrecorded
  *   node tools/pod-sync.cjs ~/Desktop/spanish-podcast-music.md --course=spa_for_eng --type=choice --slug=music
  *   node tools/pod-sync.cjs <file> --dry-run   # parse + print summary, don't write
  *
- * THE EXAMPLES DELIBERATELY DO NOT SAY --slug=pod-0 (2026-09-02). They used to, twice,
- * which handed every operator a live serving slug as the worked example of a destructive
- * resync. `pod-0` and `pod-1` are what the player resolves a course's pod by, and this
- * tool now REFUSES them unless --serve-now is passed. Sync to a parked slug and switch
+ * THE EXAMPLES DELIBERATELY DO NOT SAY --slug=pod-1 (2026-09-02). They used to name the
+ * served slug twice, which handed every operator a live serving slug as the worked example
+ * of a destructive resync. `pod-1` is what the player resolves a course's pod by, and this
+ * tool REFUSES it unless --serve-now is passed. Sync to a parked slug and switch
  * over with tools/pods/pod-switchover.cjs, which carries learner progress across.
  *
  * Upsert semantics:
@@ -258,14 +258,14 @@ function extractGenderMarker(speakerRaw) {
   return m ? m[1].toLowerCase() : null;
 }
 
-// Canonical pod-0 roles the name heuristic cannot read, because they are job
+// Canonical core-pod roles the name heuristic cannot read, because they are job
 // titles and abstractions rather than names. They used to fall through to 'n',
 // which the voice picker treats as male.
 //
 // That was survivable while every speaker got its own pool slot. Under the
 // two-voice rule it is not: 'n' → male means EVERY ungendered character in
 // EVERY course lands on the one male voice. Measured on the canonical 231-line
-// pod-0 (cym_n_for_eng:pod-0-unrecorded), 143 of 232 lines belong to ungendered
+// canon (cym_n_for_eng:unrecorded), 143 of 232 lines belong to ungendered
 // speakers, so the split came out 196 male / 36 female — a monologue with
 // occasional guests, not the two-hander the rule is for.
 //
@@ -274,7 +274,7 @@ function extractGenderMarker(speakerRaw) {
 // human side, where Catrin voices the Learner in the Welsh recording.
 //
 // An explicit (F)/(M) marker in the markdown still wins over this map.
-const POD0_SPEAKER_GENDER = new Map([
+const CANON_SPEAKER_GENDER = new Map([
   ['learner', 'f'],
 ]);
 
@@ -284,8 +284,8 @@ function inferGenderFromName(speaker) {
   // resolve via the role's gender.
   const clean = normaliseName(speaker);
   const stripped = clean.replace(/\s+\d+$/, '').trim();
-  if (POD0_SPEAKER_GENDER.has(clean))    return POD0_SPEAKER_GENDER.get(clean);
-  if (POD0_SPEAKER_GENDER.has(stripped)) return POD0_SPEAKER_GENDER.get(stripped);
+  if (CANON_SPEAKER_GENDER.has(clean))    return CANON_SPEAKER_GENDER.get(clean);
+  if (CANON_SPEAKER_GENDER.has(stripped)) return CANON_SPEAKER_GENDER.get(stripped);
   if (FEMALE_NAMES.has(clean) || FEMALE_NAMES.has(stripped)) return 'f';
   if (MALE_NAMES.has(clean)   || MALE_NAMES.has(stripped))   return 'm';
   return null;
@@ -894,10 +894,10 @@ function parseMarkdown(markdown) {
  * WHY THIS EXISTS. This tool's write is WHOLESALE REPLACE: DELETE every sentence row of
  * the pod, then INSERT the markdown's. It knew nothing about which slugs the player
  * SERVES, it carries no progress migration, and the rows it re-inserts have no audio
- * ids at all. Point it at a live course's pod-0 with a markdown one line different and
+ * ids at all. Point it at a live course's pod-1 with a markdown one line different and
  * you empty a served pod under live learners, orphan their progress against deleted
  * sentence ids, and leave the pod silent until Phase 8 re-records it. Its own usage
- * examples handed you `--slug=pod-0` as the way to do that.
+ * examples handed you the served slug as the way to do that.
  *
  * The rule is NOT written here — it lives once in tools/pods/serving-slug.cjs, shared
  * with clone-pod and the pod generator. This function is only pod-sync's wording.
@@ -912,7 +912,7 @@ function syncRefusal ({ podId, slug, podType, podExists, podVisibility, rows = 0
     action: 'This sync DELETES every sentence row of that pod and re-inserts the markdown,',
     harm: 'so their progress rows point at sentence ids that no longer exist, and the re-inserted rows carry no audio at all until the Phase 8 pod-audio step re-links them — the pod plays silent in the meantime.',
     escape: '--serve-now',
-    remedy: 'Sync to a parked slug (pod-0-unrecorded is the convention) and switch over with tools/pods/pod-switchover.cjs, which carries learner progress across',
+    remedy: 'Sync to a parked slug (unrecorded is the convention) and switch over with tools/pods/pod-switchover.cjs, which carries learner progress across',
   })
 }
 
@@ -1078,16 +1078,16 @@ Usage:
 Options:
   --course=<code>     Course code (required) e.g. spa_for_eng
   --type=<type>       'core' or 'choice' (required)
-  --slug=<slug>       Pod slug (required) e.g. pod-0, music, travel-situations
+  --slug=<slug>       Pod slug (required) e.g. unrecorded, music, travel-situations
   --dry-run           Parse + print summary, do not write to DB
   --verbose           Show per-section and per-speaker breakdown
-  --serve-now         YES, DELIBERATELY sync onto a slug learners are served (pod-0,
-                      pod-1). Without it this tool refuses those slugs, because the
+  --serve-now         YES, DELIBERATELY sync onto the slug learners are served (pod-1).
+                      Without it this tool refuses that slug, because the
                       sync empties the pod and the re-inserted rows have no audio.
 
 Examples:
   node tools/pod-sync.cjs ~/Desktop/spanish-pods.md \\
-    --course=spa_for_eng --type=core --slug=pod-0-unrecorded
+    --course=spa_for_eng --type=core --slug=unrecorded
 
   node tools/pod-sync.cjs ~/Desktop/spanish-podcast-music.md \\
     --course=spa_for_eng --type=choice --slug=music --verbose

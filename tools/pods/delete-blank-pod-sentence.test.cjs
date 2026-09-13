@@ -6,7 +6,7 @@
  * then turned up on two Group 1 STAGED clones (`pod-1-staged-2026-08-23`), so the
  * guard had to widen. Widening a safety guard is exactly the kind of change that
  * quietly grows a hole, so the allowed set is pinned here: the two staging shapes
- * pass and everything else — above all a live `pod-0` — is refused.
+ * pass and everything else — above all the served `pod-1` — is refused.
  */
 
 import { describe, it, expect } from 'vitest'
@@ -15,8 +15,8 @@ const { podSlugAllowed, STAGING_SLUGS } = require('./delete-blank-pod-sentence.c
 
 describe('podSlugAllowed', () => {
   it('allows the Group 2 staging slug', () => {
-    expect(podSlugAllowed('bul_for_eng:pod-0-unrecorded')).toBe(true)
-    expect(podSlugAllowed('tha_for_eng:pod-0-unrecorded')).toBe(true)
+    expect(podSlugAllowed('bul_for_eng:unrecorded')).toBe(true)
+    expect(podSlugAllowed('tha_for_eng:unrecorded')).toBe(true)
   })
 
   it('allows the dated Group 1 staged-clone slug', () => {
@@ -25,16 +25,15 @@ describe('podSlugAllowed', () => {
   })
 
   it('REFUSES the live pod slugs', () => {
-    expect(podSlugAllowed('ara_sy_for_eng:pod-0')).toBe(false)
-    expect(podSlugAllowed('fin_for_eng:pod-0')).toBe(false)
+    expect(podSlugAllowed('ara_sy_for_eng:pod-1')).toBe(false)
+    expect(podSlugAllowed('fin_for_eng:pod-1')).toBe(false)
     expect(podSlugAllowed('hrv_for_eng:pod-1')).toBe(false)
   })
 
   it('REFUSES a slug that merely looks staged', () => {
     // A future dated clone is not covered until someone adds it on purpose.
     expect(podSlugAllowed('spa_for_eng:pod-1-staged-2026-09-01')).toBe(false)
-    expect(podSlugAllowed('spa_for_eng:pod-0-unrecorded-live')).toBe(false)
-    expect(podSlugAllowed('spa_for_eng:unrecorded')).toBe(false)
+    expect(podSlugAllowed('spa_for_eng:unrecorded-live')).toBe(false)
   })
 
   it('REFUSES junk rather than defaulting open', () => {

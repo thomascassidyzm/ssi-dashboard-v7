@@ -18,6 +18,7 @@
 'use strict'
 require('dotenv').config({ path: require('path').join(__dirname, '..', '..', '.env') })
 const fs = require('fs')
+const { pickServingPod } = require('./serving-slug.cjs')
 const { createClient } = require('@supabase/supabase-js')
 const { readinessBlockers } = require('./pod-switchover.cjs')
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -66,16 +67,16 @@ const empty = (s) => !(typeof s === 'string' && s.trim().length > 0)
     byCourse.set(p.course_code, e)
   }
 
-  // The slug the player actually serves: pod-1 preferred, pod-0 fallback (SERVING_POD_SLUGS).
-  const serving = (e) => e.pods.find(p => p.slug === 'pod-1') || e.pods.find(p => p.slug === 'pod-0') || null
+  // The pod the player actually serves, resolved by the one rule (tools/pods/serving-slug.cjs).
+  const serving = (e) => pickServingPod(e.pods)
   const rows = [...byCourse.values()].map(e => {
     const s = serving(e)
     return { course: e.course, live_slug: s ? s.slug : null, counts: s ? s.counts : null,
-             blockers: s ? s.blockers : ['no pod-1 or pod-0 pod at all'], all_pods: e.pods }
+             blockers: s ? s.blockers : ['no serving pod at all'], all_pods: e.pods }
   }).sort((a, b) => a.course.localeCompare(b.course))
 
   const on1 = rows.filter(r => r.live_slug === 'pod-1')
-  const on0 = rows.filter(r => r.live_slug === 'pod-0')
+  const none = rows.filter(r => !r.live_slug)
   const knownSide = (b) => b.some(x => /no known (text|audio)/.test(x))
 
   const show = (label, list) => {
@@ -87,16 +88,15 @@ const empty = (s) => !(typeof s === 'string' && s.trim().length > 0)
     }
   }
   show('live on pod-1', on1)
-  show('live on pod-0', on0)
+  show('no serving pod', none)
 
   console.log(`\n--- headline ---`)
   console.log(`courses with a listening pod: ${rows.length}`)
-  console.log(`already on pod-1: ${on1.length}; of those the fixed gate would REFUSE: ${on1.filter(r => r.blockers.length).length}` +
+  console.log(`on pod-1: ${on1.length}; of those the gate would REFUSE: ${on1.filter(r => r.blockers.length).length}` +
               `, on KNOWN-SIDE blockers: ${on1.filter(r => knownSide(r.blockers)).length}`)
-  console.log(`still on pod-0: ${on0.length}; the fixed gate would REFUSE: ${on0.filter(r => r.blockers.length).length}` +
-              `, on KNOWN-SIDE blockers: ${on0.filter(r => knownSide(r.blockers)).length}`)
+  console.log(`with no serving pod: ${none.length}`)
 
-  // Every non-serving pod too — a staged POD 1 waiting on a pod-0 course is exactly
+  // Every non-serving pod too — a staged pod waiting to be promoted is exactly
   // what the gate would be run against on the day someone promotes it.
   const staged = rows.flatMap(r => r.all_pods.filter(p => p.slug !== r.live_slug).map(p => ({ course: r.course, ...p })))
   console.log(`\n=== non-serving (staged/archived) pods (${staged.length}) ===`)

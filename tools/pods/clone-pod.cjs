@@ -68,7 +68,7 @@ const { SERVING_POD_SLUGS, servingRefusal } = require('./serving-slug.cjs')
  * that a destructive align can run off the live pod. It knew how to refuse a destination
  * that already held rows, and nothing else. It did not know which slugs are SERVED.
  *
- * The resolver serves by slug: `pod_type = 'core'` and `slug in ('pod-1','pod-0')`, first
+ * The resolver serves by slug: `pod_type = 'core'` and `slug = 'pod-1'`, first
  * match wins, no row count, no text, and — checked against the code on 2026-09-02 — no
  * reading of `visibility` in either consumer. So a `held` destination is no defence, and
  * neither is an absent one: creating the header row IS the moment the pod starts being
@@ -92,7 +92,7 @@ function serviceRefusal ({
     action: 'Cloning here puts a working copy in front of them,',
     harm: 'and the align that follows this tool would empty it underneath them.',
     escape: '--serve-now',
-    remedy: 'Clone to a parked slug instead (pod-0-unrecorded is the convention)',
+    remedy: 'Clone to a parked slug instead (unrecorded is the convention)',
   })
 }
 
@@ -111,7 +111,7 @@ function parseArgs () {
   const APPLY = process.argv.includes('--apply')
   const SERVE_NOW = process.argv.includes('--serve-now')
   const COURSE = arg('course')
-  const FROM = arg('from') || 'pod-0'
+  const FROM = arg('from') || 'pod-1'
   const TO = arg('to')
   const TITLE_SUFFIX = arg('title-suffix') || ' — UNRECORDED working copy, not learner-facing'
   // listening_pods.visibility DEFAULTS TO 'live', so an insert that omits the column

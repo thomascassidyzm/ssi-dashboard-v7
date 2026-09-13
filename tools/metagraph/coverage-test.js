@@ -19,7 +19,7 @@ const graph = graphFromStore({
   edges: j('edges.json'),
   moves: j('moves.json'),
   outcomeShapes: j('outcome-shapes.json'),
-  walkSets: { 'pod-0': j('walks/pod-0.json') }
+  walkSets: { 'pod-1': j('walks/pod-1.json') }
 })
 
 let pass = 0
@@ -29,10 +29,10 @@ function check (name, fn) {
 }
 
 console.log('\nthe store reads into the shape the read-out uses, with the derivation\'s own numbers')
-check('29 nodes — 12 pod-0, 10 method-pod, 6 talk-bollocks, N501 — plus the six bound pairs', () => {
+check('29 nodes — 12 pod-1, 10 method-pod, 6 talk-bollocks, N501 — plus the six bound pairs', () => {
   const nodes = graph.nodes.filter(n => n.kind === 'node')
   assert.equal(nodes.length, 29)
-  assert.equal(nodes.filter(n => n.origin === 'pod-0').length, 12)
+  assert.equal(nodes.filter(n => n.origin === 'pod-1').length, 12)
   assert.equal(nodes.filter(n => n.origin === 'method-pod').length, 10)
   assert.equal(nodes.filter(n => n.origin === 'talk-bollocks').length, 6)
   assert.equal(nodes.filter(n => n.origin === 'trades').length, 1)
@@ -40,7 +40,7 @@ check('29 nodes — 12 pod-0, 10 method-pod, 6 talk-bollocks, N501 — plus the 
 })
 check('21 composition edges', () => assert.equal(graph.compositionEdges.length, 21))
 check('10 survivability edges from the corpus, 5 Method Pod, 5 ratified Talk Bollocks recoveries', () => {
-  assert.equal(graph.survivability.filter(s => s.origin === 'pod-0').length, 10)
+  assert.equal(graph.survivability.filter(s => s.origin === 'pod-1').length, 10)
   assert.equal(graph.survivability.filter(s => s.origin === 'method-pod').length, 5)
   assert.equal(graph.survivability.filter(s => s.origin === 'talk-bollocks').length, 5)
 })
@@ -169,8 +169,8 @@ check('a scene whose declaration resolves to nothing is honestly unmapped, never
   assert.equal(cov.totals.unmapped, 1, 'the undeclared scene\'s line is counted, not hidden')
   assert.equal(walk.unresolved.length, 1, 'and its declaration stays on the unresolved list')
 })
-check('a stored pod\'s global_order never masquerades as a pod-0 g-number', () => {
-  // Rows 1 and 2 here collide numerically with pod-0's g1/g2; before the guard
+check('a stored pod\'s global_order never masquerades as a pod-1 g-number', () => {
+  // Rows 1 and 2 here collide numerically with pod-1's g1/g2; before the guard
   // this "exercised" S-edges and sited outcomes the pod never touched, and all
   // four pods reported an identical 10/15.
   const walk = walkFromStoredPod(storedRows, storedSteps, graph, { id: 'p', slug: 'p' })

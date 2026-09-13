@@ -21,7 +21,7 @@ const REPO = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..')
 const j = f => JSON.parse(fs.readFileSync(path.join(REPO, 'services/shared/metagraph', f), 'utf8'))
 const graph = graphFromStore({
   nodes: j('nodes.json'), edges: j('edges.json'), moves: j('moves.json'),
-  outcomeShapes: j('outcome-shapes.json'), walkSets: { 'pod-0': j('walks/pod-0.json') }
+  outcomeShapes: j('outcome-shapes.json'), walkSets: { 'pod-1': j('walks/pod-1.json') }
 })
 
 const API = process.env.API || 'http://localhost:3491'

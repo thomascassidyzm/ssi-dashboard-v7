@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
  * pod-overlap-report.cjs — READ ONLY. Answers, per language, the question the pod
- * switchover turns on: if we replace the live `pod-0` with the staged
- * `pod-0-unrecorded` canon, what happens to the learners who are already on it?
+ * switchover turns on: if we replace the served `pod-1` with the staged
+ * `unrecorded` canon, what happens to the learners who are already on it?
  *
  * WHY THIS EXISTS. `learner_pod_state.sentence_id` is not a random id and not the
- * sentence text — it is a SLOT key, `<course>:pod-0:SC<scene>-S<sentence>`, with an
+ * sentence text — it is a SLOT key, `<course>:pod-1:SC<scene>-S<sentence>`, with an
  * optional `:s<n>` suffix for a June-split unit. The staged canon INSERTS sentences
  * mid-scene, so the same slot key survives the swap while the sentence sitting in it
  * changes. Nothing orphans; the learner is instead silently credited with a sentence
@@ -33,8 +33,8 @@ const arg = (n) => {
 }
 const ONLY_COURSE = arg('course')
 const JSON_OUT = arg('json')
-const LIVE_SLUG = arg('live') || 'pod-0'
-const STAGED_SLUG = arg('staged') || 'pod-0-unrecorded'
+const LIVE_SLUG = arg('live') || 'pod-1'
+const STAGED_SLUG = arg('staged') || 'unrecorded'
 
 /**
  * The normalisation "verbatim" means, stated so it can be argued with.

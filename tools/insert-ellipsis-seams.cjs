@@ -6,12 +6,12 @@
  * listening_pod_sentences.target_text at intention/finite-clause boundaries,
  * so no resulting S-LEGO (the standalone cognitive-audio unit of meaning;
  * see §9b for the full definition) exceeds the pod level's syllable ceiling C
- * (pod-0: C=8, pod-1 and onward: C=12). Amends §9's independent-meaning seam
+ * (pod-1, the core pod: C=8; topic pods: C=12). Amends §9's independent-meaning seam
  * model — it does not replace it: '…' marks BREATHING within one
  * independent-meaning phrase, never a substitute for a genuine phrase split.
  *
  * TEXT-ONLY. Never touches known_text. Never renders/synthesizes audio — a
- * re-render for touched pod-0 rows goes through the normal audio-pass queue
+ * re-render for touched rows goes through the normal audio-pass queue
  * (queue-audio-pass.cjs), never run from here.
  *
  * Syllable counting is per-TARGET-language, via the registry in
@@ -20,10 +20,10 @@
  * for a course whose target language has no registered counter — add one
  * there before running this tool against a new language.
  *
- *   node tools/insert-ellipsis-seams.cjs <course> <pod-level> <ceiling C> [orders] [--dry]
- *   node tools/insert-ellipsis-seams.cjs hrv_for_eng 0 8 --dry
- *   node tools/insert-ellipsis-seams.cjs hrv_for_eng 1 12
- *   node tools/insert-ellipsis-seams.cjs spa_for_eng 0 8 --dry
+ *   node tools/insert-ellipsis-seams.cjs <course> <pod-slug> <ceiling C> [orders] [--dry]
+ *   node tools/insert-ellipsis-seams.cjs hrv_for_eng pod-1 8 --dry
+ *   node tools/insert-ellipsis-seams.cjs hrv_for_eng method-pod 12
+ *   node tools/insert-ellipsis-seams.cjs spa_for_eng pod-1 8 --dry
  *
  * Same skeleton as tools/breakdown-fine.cjs (dotenv, supabase client, claude
  * CLI via execFile with CLAUDECODE unset, --dry flag, concurrency worker pool).
@@ -36,18 +36,18 @@ const { execFile } = require('child_process')
 const { countSyllables, REGISTRY: SYLLABLE_COUNTERS } = require('./lib/syllable-counters.cjs')
 
 const COURSE = process.argv[2]
-const POD_LEVEL = process.argv[3]
+const POD_SLUG = process.argv[3]
 const CEILING = Number(process.argv[4])
 const ORDERS = (process.argv[5] && !process.argv[5].startsWith('--') ? process.argv[5] : '')
   .split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MODEL = process.env.ELLIPSIS_MODEL || 'opus'
 
-if (!COURSE || POD_LEVEL === undefined || !CEILING) {
-  console.error('usage: insert-ellipsis-seams.cjs <course> <pod-level 0|1|2|3> <ceiling C> [orders] [--dry]')
+if (!COURSE || !POD_SLUG || !CEILING) {
+  console.error('usage: insert-ellipsis-seams.cjs <course> <pod-slug e.g. pod-1> <ceiling C> [orders] [--dry]')
   process.exit(1)
 }
-const POD_ID = `${COURSE}:pod-${POD_LEVEL}`
+const POD_ID = `${COURSE}:${POD_SLUG}`
 // Target-language code from the course code (X_for_KNOWN, X may carry a
 // locale suffix like "cym_n" or "deu_at" — the base ISO code is the part
 // before that).
@@ -247,7 +247,7 @@ async function processTurn(row, ceiling) {
   if (!dry) {
     const outDir = path.join(__dirname, 'course-optimization')
     if (!fs.existsSync(outDir)) fs.mkdirSync(outDir, { recursive: true })
-    const outPath = path.join(outDir, `ellipsis-pass-${COURSE}-pod${POD_LEVEL}-log.json`)
+    const outPath = path.join(outDir, `ellipsis-pass-${COURSE}-${POD_SLUG}-log.json`)
     fs.writeFileSync(outPath, JSON.stringify(log, null, 2))
     console.log(`Log written: ${outPath}`)
   }

@@ -50,7 +50,7 @@ import { describe, it, expect } from 'vitest'
 const MOD = process.env.POD_STATE_MIGRATE_MODULE || './pod-state-migrate.cjs'
 const { planMigration, norm } = require(MOD)
 
-const row = (scene, sentence, order, text, slug = 'pod-0') => ({
+const row = (scene, sentence, order, text, slug = 'pod-1') => ({
   id: `cym_for_eng:${slug}:SC${String(scene).padStart(2, '0')}-S${String(sentence).padStart(3, '0')}`,
   scene_number: scene, sentence_number: sentence, global_order: order, known_text: text,
 })
@@ -69,15 +69,15 @@ const OLD = [
   row(2, 3, 6, 'thank you very much'),
 ]
 const NEW = [
-  row(1, 1, 1, 'hello', 'pod-0-new'),
-  row(1, 2, 2, 'good morning', 'pod-0-new'),
-  row(1, 3, 3, 'how are you?', 'pod-0-new'),
+  row(1, 1, 1, 'hello', 'unrecorded'),
+  row(1, 2, 2, 'good morning', 'unrecorded'),
+  row(1, 3, 3, 'how are you?', 'unrecorded'),
   // A NEW line takes the slot the station question used to hold.
-  row(2, 1, 4, 'i would like to pay by card', 'pod-0-new'),
-  row(2, 2, 5, 'it is over there', 'pod-0-new'),
-  row(2, 3, 6, 'thank you very much', 'pod-0-new'),
+  row(2, 1, 4, 'i would like to pay by card', 'unrecorded'),
+  row(2, 2, 5, 'it is over there', 'unrecorded'),
+  row(2, 3, 6, 'thank you very much', 'unrecorded'),
   // …and the station question now lives in a much later scene, in a different dialogue.
-  row(7, 1, 20, 'where is the station?', 'pod-0-new'),
+  row(7, 1, 20, 'where is the station?', 'unrecorded'),
 ]
 const state = (id, exposures = 5) => ({ learner_id: 'L1', course_code: 'cym_for_eng', sentence_id: id, exposures })
 
@@ -85,14 +85,14 @@ const byId = (canon) => new Map(canon.map(r => [r.id, r]))
 
 describe('the two conditions — text AND position, never one alone', () => {
   it('REFUSES to carry a sentence relocated to a different scene, though the text is identical', () => {
-    const { actions } = planMigration(OLD, NEW, [state('cym_for_eng:pod-0:SC02-S001')])
+    const { actions } = planMigration(OLD, NEW, [state('cym_for_eng:pod-1:SC02-S001')])
     expect(actions[0].action).toBe('drop')
     expect(actions[0].reason).toMatch(/relocated|scene/)
   })
 
   it('REFUSES to credit the learner with the new sentence sitting in their old slot', () => {
     // This is the mis-credit itself: the slot survives, the sentence in it does not.
-    const { actions } = planMigration(OLD, NEW, [state('cym_for_eng:pod-0:SC02-S001')])
+    const { actions } = planMigration(OLD, NEW, [state('cym_for_eng:pod-1:SC02-S001')])
     const to = actions[0].to
     if (to) {
       const landed = byId(NEW).get(String(to).replace(/:s\d+$/, ''))
@@ -107,7 +107,7 @@ describe('the two conditions — text AND position, never one alone', () => {
     // unheard content — leaving them holding maturity on something they have never met.
     // The rule drops the row instead, which puts that sentence back to unseen: backwards.
     const heardAt = 4
-    const { actions } = planMigration(OLD, NEW, [state('cym_for_eng:pod-0:SC02-S001')])
+    const { actions } = planMigration(OLD, NEW, [state('cym_for_eng:pod-1:SC02-S001')])
     const a = actions[0]
     const landedOrder = a.to
       ? byId(NEW).get(String(a.to).replace(/:s\d+$/, '')).global_order
@@ -120,9 +120,9 @@ describe('the two conditions — text AND position, never one alone', () => {
 
   it('carries every surviving sentence it SHOULD, so the rule is not just "refuse everything"', () => {
     const rows = [
-      state('cym_for_eng:pod-0:SC01-S001'),
-      state('cym_for_eng:pod-0:SC02-S002'),
-      state('cym_for_eng:pod-0:SC02-S003'),
+      state('cym_for_eng:pod-1:SC01-S001'),
+      state('cym_for_eng:pod-1:SC02-S002'),
+      state('cym_for_eng:pod-1:SC02-S003'),
     ]
     const { actions } = planMigration(OLD, NEW, rows)
     expect(actions.every(a => a.action === 'carry' || a.action === 'keep')).toBe(true)
@@ -150,7 +150,7 @@ describe('position alone is not a match either', () => {
   ]
 
   it('REFUSES a slot whose sentence was reworded — a changed line is a new line, never a survivor', () => {
-    const { actions } = planMigration(OLD2, NEW2, [state('cym_for_eng:pod-0:SC01-S002')])
+    const { actions } = planMigration(OLD2, NEW2, [state('cym_for_eng:pod-1:SC01-S002')])
     expect(actions[0].action).toBe('drop')
     expect(actions[0].reason).toMatch(/text_absent/)
   })
@@ -186,7 +186,7 @@ describe('the one place the rule rounds UP, documented so a refactor cannot chan
   const NEW4 = [row(1, 1, 1, 'hello', 'z'), row(1, 2, 2, 'ten', 'z')]
 
   it('keeps the HIGHER exposures when two old rows collapse onto one new sentence', () => {
-    const rows = [state('cym_for_eng:pod-0:SC01-S002', 5), state('cym_for_eng:pod-0:SC01-S003', 1)]
+    const rows = [state('cym_for_eng:pod-1:SC01-S002', 5), state('cym_for_eng:pod-1:SC01-S003', 1)]
     const { actions } = planMigration(OLD4, NEW4, rows)
     const kept = actions.find(a => a.action === 'carry' || a.action === 'keep')
     const merged = actions.find(a => a.action === 'merge')

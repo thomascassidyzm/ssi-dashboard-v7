@@ -6,7 +6,7 @@
  * WHY THIS EXISTS. `pod_legos.first_seen_sentence` is a `<course>:<slug>:<tail>`
  * SLOT key, and `pod-switchover.cjs` never carried it. So every course that
  * crossed to `pod-1` under Tom's ruling of 2026-08-22 left its pod_legos rows
- * naming `<course>:pod-0:<tail>` ids that no longer exist. Job #157's residue
+ * naming ids on the slug it retired that no longer exist. Job #157's residue
  * census, 2026-09-03: 7,802 rows across 19 of the 22 flipped courses.
  *
  * IT IS PROVENANCE, NOT PLUMBING. Nothing joins on this column — verified against
@@ -17,7 +17,7 @@
  *
  * THE REMAP IS PROVABLE, NOT INFERRED. A switchover only rewrites the SLUG segment
  * of a sentence id; the tail is carried verbatim. So the repair is
- * `<course>:pod-0:<tail>` → `<course>:<serving-slug>:<tail>`, and the tool REFUSES
+ * `<course>:<retired-slug>:<tail>` → `<course>:<serving-slug>:<tail>`, and the tool REFUSES
  * to write any row whose rewritten id does not already exist in
  * `listening_pod_sentences`. Measured before this landed: 7,802 dangling, 7,802
  * remap cleanly, zero guesses required.
@@ -102,7 +102,7 @@ const COURSE = arg('course')
     }
     const stillDangling = (await db.query(
       `select count(*)::int n from pod_legos pl
-        where pl.first_seen_sentence like '%:pod-0:%'
+        where pl.first_seen_sentence like '%:%:%'
           and not exists (select 1 from listening_pod_sentences s where s.id = pl.first_seen_sentence)`)).rows[0].n
     if (stillDangling) throw new Error(`post-check: ${stillDangling} slot-key rows still dangling — rolling back`)
     await db.query('commit')

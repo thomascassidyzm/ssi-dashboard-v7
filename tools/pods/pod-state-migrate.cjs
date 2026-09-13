@@ -50,8 +50,8 @@
  * derived main-flow value (packages/core/src/persistence/PodStateStore.ts). Course
  * progress rides `course_enrollments.completed_pod_rounds`, which this tool never touches.
  *
- *   node tools/pods/pod-state-migrate.cjs --course=fra_for_eng --from=pod-0 --to=pod-0-unrecorded
- *   node tools/pods/pod-state-migrate.cjs --course=cym_n_for_eng --from=@2026-08-06T10:00:00Z --to=pod-0 --apply
+ *   node tools/pods/pod-state-migrate.cjs --course=fra_for_eng --from=pod-1 --to=unrecorded
+ *   node tools/pods/pod-state-migrate.cjs --course=cym_n_for_eng --from=@2026-08-06T10:00:00Z --to=pod-1 --apply
  *
  * `--from=@<iso>` reconstructs the pod's content as it stood at that instant by replaying
  * content_audit_log.old_row backwards from live — for repairing a swap that already ran.
@@ -143,7 +143,7 @@ async function canonAt (db, podId, atIso) {
 }
 
 async function canonOf (db, course, spec) {
-  if (spec.startsWith('@')) return canonAt(db, `${course}:pod-0`, spec.slice(1))
+  if (spec.startsWith('@')) return canonAt(db, `${course}:pod-1`, spec.slice(1))
   const { rows } = await db.query(
     `select id, scene_number, sentence_number, global_order, known_text
        from listening_pod_sentences where pod_id = $1 order by global_order`, [`${course}:${spec}`])
@@ -170,7 +170,7 @@ function correspondScenes (pairs) {
 function planMigration (oldCanon, newCanon, stateRows) {
   const oldById = new Map(oldCanon.map(r => [r.id, r]))
   // Keyed by SLOT, not by id: the slot is what survives a swap, and the two canons sit
-  // on different slugs (pod-0 vs pod-0-unrecorded) so their ids never compare equal.
+  // on different slugs (pod-1 vs unrecorded) so their ids never compare equal.
   // Keying on the id here is what made the mis-credit count read a false 0.
   const slotOf = (r) => `${r.scene_number}|${r.sentence_number}`
   const newBySlot = new Map(newCanon.map(r => [slotOf(r), r]))
@@ -244,11 +244,11 @@ function planMigration (oldCanon, newCanon, stateRows) {
 
 async function main () {
   const course = arg('course')
-  const from = arg('from') || 'pod-0'
-  const to = arg('to') || 'pod-0-unrecorded'
+  const from = arg('from') || 'pod-1'
+  const to = arg('to') || 'unrecorded'
   const APPLY = has('apply')
   const OUT = arg('log')
-  if (!course) { console.error('usage: --course=<code> [--from=pod-0|@ISO] [--to=pod-0-unrecorded] [--apply] [--log=path]'); process.exit(2) }
+  if (!course) { console.error('usage: --course=<code> [--from=pod-1|@ISO] [--to=unrecorded] [--apply] [--log=path]'); process.exit(2) }
 
   const db = new Client({ connectionString: process.env.DATABASE_URL })
   await db.connect()
