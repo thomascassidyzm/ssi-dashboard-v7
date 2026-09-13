@@ -1,3 +1,37 @@
+## 2026-09-13 — the Senedd/S4C pod is opened to every Welsh (Northern) learner; required_role joins the visibility lever (job #605)
+
+**Ruling (Tom, 2026-09-13 20:31Z).** Release `cym_n_for_eng:senedd-s4c-steve` to all Welsh North
+learners. It had been live to named accounts only since 16:17Z through `required_role='previewer_001'`.
+
+**What job #604 found and this job confirmed.** The hold/release lever (`services/pod-visibility.cjs`
+and `POST /api/admin/pods/:course/:slug/visibility`) never read or wrote `required_role`; the
+2026-09-03 migration named a hand UPDATE as the path. And on the learner side, `resolveListeningPods`
+listed a topic pod only through the role arm or the closed allow-list of named CORE slugs — with the
+role cleared, a `choice` pod on its own slug would have matched neither and VANISHED for everyone,
+Steve included. The flip therefore waited for the learner app (ssi-learning-app ddddb8e85 on main:
+the Senedd slug is a named extra slot of type choice, listed after pod-1, never in its place).
+
+**Decision A — the one statement, gated.** `tools/pods/open-senedd-pod-2026-09-13.cjs` asserts the
+exact before-state (live, previewer_001), runs the brief's UPDATE with that state repeated in its
+WHERE inside a transaction, and rolls back on anything but one row. Dry-run by default, `--apply` to
+write, evidence log under `~/ssi-evidence`. Steve's `learner_roles` row is left alone: a grant is a
+fact about a person, and a lingering grant on an open pod changes nothing.
+
+**Decision B — never a hand statement again.** The same route now accepts `required_role` (string or
+null) alongside or instead of `visibility`. Clearing a role opens the pod to every learner, so it
+needs the same named-pod `confirm` as a release. A LIVE pod is never narrowed: setting or changing
+its role is refused with 409 under the 2026-09-13 "never pulled back" ruling — a role is set while
+the pod is held. The write is a compare-and-swap on the role that was read, a repeat is a 200 that
+writes nothing, and the metadata trail records was/now/by/at without clobbering scene_hashes. Role
+first, then visibility, so "address it, then release it" is one request and a refused role change
+releases nothing. 38/38 in `pod-visibility.test.cjs`.
+
+**Why better × simpler × cheaper.** No schema, no new route, no UI: one module gains one parallel
+flow with the discipline the visibility flow already proved (Astra #582). The learner-side allow-list
+stays closed and per-slug; `spa_for_eng:music` and `travel-situations` are still unlisted because
+nobody has ruled on them. The offline bundle is untouched — 567 lines of audio in every Welsh
+learner's download is a size call Tom has not made, so the pod listens online as it did for its holders.
+
 ## 2026-09-13 — Pod-0 does not exist: every course's core listening pod is pod-1, and pods by topic carry their own names (job #512, Tom's ruling 14:44Z)
 
 Tom, verbatim, relayed by RBF: "Pod-0 does not exist anymore. There should be zero references to it in code or docs or briefs. There is only pod-1 now. And then pods by topic like Method Pod, Senedd Pod, Health Pod."

@@ -12,7 +12,8 @@
 // figure, a sync, a render or a recording upload.
 //
 // The column and its RLS policies are database/changes/20260823_listening_pod_visibility.sql.
-// The ONE write path to `listening_pods.visibility` in this codebase is
+// The ONE write path to `listening_pods.visibility` (and, since job #605,
+// `required_role`) in this codebase is
 // POST /api/admin/pods/:courseCode/:slug/visibility in production-api.cjs,
 // which is this module plus an admin gate. Keep it that way: a second writer
 // is how "it went live on its own" happens.
@@ -31,6 +32,18 @@
 // stays exactly as it is for a pod that is still 'held' (going live remains a
 // human act); the only change is that live → held is refused. See
 // checkVisibilityTransition.
+//
+// REQUIRED_ROLE RIDES THE SAME ROUTE (job #605, 2026-09-13). The Senedd/S4C pod
+// was addressed to one person through `listening_pods.required_role`
+// (database/changes/20260903_restricted_content_by_role.sql), and opening it
+// to every learner (Tom, 2026-09-13 20:31Z) had to be a hand UPDATE because
+// this lever never touched that column. It does now, under the same rules:
+// CLEARING the role puts content in front of everyone, so it needs the same
+// named-pod `confirm` as a release; a LIVE pod is never narrowed (setting or
+// changing a role on it would pull it back from learners — the 2026-09-13
+// ruling again), so a role is set while the pod is held; and the write is a
+// compare-and-swap on the role that was read. See parseRequiredRoleRequest,
+// checkRequiredRoleTransition, applyRequiredRoleChange.
 //
 // Pure. No DB, no clock, no identity lookup — the caller passes those in, which
 // is what makes all three decisions unit-testable.
@@ -197,7 +210,120 @@ async function applyVisibilityChange({ podId, requested, actor, nowIso, store })
   }
 }
 
+/**
+ * Validate a required_role request body against the pod it claims to be for.
+ * Only called when the body carries the key at all (`'required_role' in body`).
+ *
+ * null      = open to everyone. A release-grade act: needs `confirm: podId`.
+ * 'string'  = address the pod to holders of that role. No confirm — erring
+ *             towards fewer readers is the safe direction, as with a hold.
+ *
+ * @param {{required_role?:string|null, confirm?:string}} body
+ * @param {string} podId
+ * @returns {{ok:true, requiredRole:string|null} | {ok:false, status:number, error:string}}
+ */
+function parseRequiredRoleRequest(body, podId) {
+  const raw = body ? body.required_role : undefined
+  if (raw === null) {
+    const confirm = String((body && body.confirm) || '').trim()
+    if (confirm !== podId) {
+      return {
+        ok: false,
+        status: 400,
+        error: `Opening a pod to every learner is a deliberate act: send {"confirm": "${podId}"} `
+          + 'alongside {"required_role": null} to clear its role. Setting a role needs no confirmation.',
+      }
+    }
+    return { ok: true, requiredRole: null }
+  }
+  const role = typeof raw === 'string' ? raw.trim() : ''
+  if (!role) {
+    return { ok: false, status: 400, error: 'required_role must be null (everyone) or a non-empty role name such as previewer_002' }
+  }
+  return { ok: true, requiredRole: role }
+}
+
+/**
+ * The second gate for a role change, run AFTER the pod's current state is read.
+ * A LIVE pod may only be opened (role → null): setting or changing its role
+ * would take it away from learners who can reach it now, which is the pull-back
+ * Tom closed on 2026-09-13. Narrow it while it is held.
+ *
+ * @param {{visibility:string|null|undefined, required_role:string|null|undefined}} current
+ * @param {string|null} requested
+ * @returns {{ok:true} | {ok:false, status:number, error:string}}
+ */
+function checkRequiredRoleTransition(current, requested) {
+  if (current.visibility === 'live' && requested !== null && requested !== (current.required_role ?? null)) {
+    return {
+      ok: false,
+      status: 409,
+      error: 'This pod is live. A live pod is never pulled back from learners, and setting or changing '
+        + 'its role would do exactly that (Tom, 2026-09-13). Hold-and-narrow is not offered either; '
+        + 'a role is set while a pod is still held.',
+    }
+  }
+  return { ok: true }
+}
+
+/** The metadata trail for a role change — read-modify-write, every key kept (see nextVisibilityMetadata). */
+function nextRequiredRoleMetadata(existing, { requiredRole, was, actor, nowIso }) {
+  const meta = (existing && typeof existing === 'object' && !Array.isArray(existing)) ? { ...existing } : {}
+  meta.required_role_set_at = nowIso
+  meta.required_role_set_by = describeActor(actor)
+  meta.required_role_was = was ?? null
+  meta.required_role_now = requiredRole
+  return meta
+}
+
+/**
+ * The whole role change, read to write, against an injected store — the same
+ * shape and the same discipline as applyVisibilityChange: judge on what was
+ * read, write only if the row still says that, re-judge on a miss, no-ops
+ * write nothing.
+ *
+ * @param {object} args
+ * @param {string} args.podId
+ * @param {string|null} args.requested already validated by parseRequiredRoleRequest
+ * @param {{name?:string,email?:string}|null} args.actor
+ * @param {string} args.nowIso
+ * @param {{
+ *   readPod: (podId:string) => Promise<{id:string, visibility:string|null, required_role?:string|null, metadata:object|null}|null>,
+ *   updateWhereRequiredRole: (podId:string, expectedRole:string|null, patch:{required_role:string|null, metadata:object}) => Promise<object|null>,
+ * }} args.store
+ * @returns {Promise<{status:number, body:object}>}
+ */
+async function applyRequiredRoleChange({ podId, requested, actor, nowIso, store }) {
+  const pod = await store.readPod(podId)
+  if (!pod) return { status: 404, body: { error: `Pod not found: ${podId}` } }
+  const was = pod.required_role ?? null
+
+  const transition = checkRequiredRoleTransition(pod, requested)
+  if (!transition.ok) return { status: transition.status, body: { error: transition.error } }
+
+  if (was === requested) {
+    return { status: 200, body: { ok: true, pod, wasRole: was, noop: true } }
+  }
+
+  const metadata = nextRequiredRoleMetadata(pod.metadata, { requiredRole: requested, was, actor, nowIso })
+  const updated = await store.updateWhereRequiredRole(podId, was, { required_role: requested, metadata })
+  if (updated) return { status: 200, body: { ok: true, pod: updated, wasRole: was } }
+
+  const now = await store.readPod(podId)
+  if (!now) return { status: 404, body: { error: `Pod not found: ${podId}` } }
+  const again = checkRequiredRoleTransition(now, requested)
+  if (!again.ok) return { status: again.status, body: { error: again.error } }
+  if ((now.required_role ?? null) === requested) {
+    return { status: 200, body: { ok: true, pod: now, wasRole: now.required_role ?? null, noop: true } }
+  }
+  return {
+    status: 409,
+    body: { error: `This pod changed while the request was in flight (required_role now ${now.required_role === null || now.required_role === undefined ? 'NULL' : `'${now.required_role}'`}); nothing was written. Re-read it and try again.` },
+  }
+}
+
 module.exports = {
   VISIBILITIES, LIVE_POD_NEVER_HELD, parseVisibilityRequest, checkVisibilityTransition, nextVisibilityMetadata, describeActor,
   applyVisibilityChange,
+  parseRequiredRoleRequest, checkRequiredRoleTransition, nextRequiredRoleMetadata, applyRequiredRoleChange,
 }

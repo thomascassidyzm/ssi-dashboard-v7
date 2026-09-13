@@ -249,3 +249,130 @@ describe('applyVisibilityChange — the write is conditional on the state it was
     expect(r.status).toBe(404)
   })
 })
+
+// ---------------------------------------------------------------------------
+// required_role on the same lever (job #605, 2026-09-13). Before this the only
+// way to open the Senedd pod to every learner was a hand UPDATE.
+// ---------------------------------------------------------------------------
+const {
+  parseRequiredRoleRequest, checkRequiredRoleTransition, applyRequiredRoleChange, nextRequiredRoleMetadata,
+} = require('./pod-visibility.cjs')
+
+const SENEDD = 'cym_n_for_eng:senedd-s4c-steve'
+
+describe('parseRequiredRoleRequest — opening to everyone is as deliberate as a release', () => {
+  it('REFUSES a bare {required_role: null}', () => {
+    const r = parseRequiredRoleRequest({ required_role: null }, SENEDD)
+    expect(r.ok).toBe(false)
+    expect(r.status).toBe(400)
+    expect(r.error).toContain(SENEDD)
+  })
+  it('clears the role when the caller names the pod it means', () => {
+    expect(parseRequiredRoleRequest({ required_role: null, confirm: SENEDD }, SENEDD)).toEqual({ ok: true, requiredRole: null })
+    expect(parseRequiredRoleRequest({ required_role: null, confirm: 'cym_n_for_eng:pod-1' }, SENEDD).ok).toBe(false)
+  })
+  it('sets a role with no ceremony, trimmed', () => {
+    expect(parseRequiredRoleRequest({ required_role: ' previewer_002 ' }, SENEDD)).toEqual({ ok: true, requiredRole: 'previewer_002' })
+  })
+  it('rejects an empty or non-string role', () => {
+    for (const bad of ['', '   ', 7, true, {}]) {
+      expect(parseRequiredRoleRequest({ required_role: bad }, SENEDD).ok).toBe(false)
+    }
+  })
+})
+
+describe('checkRequiredRoleTransition — a live pod is only ever widened', () => {
+  it('opens a live pod to everyone', () => {
+    expect(checkRequiredRoleTransition({ visibility: 'live', required_role: 'previewer_001' }, null).ok).toBe(true)
+  })
+  it('REFUSES setting or changing the role of a live pod with 409', () => {
+    expect(checkRequiredRoleTransition({ visibility: 'live', required_role: null }, 'previewer_001').status).toBe(409)
+    expect(checkRequiredRoleTransition({ visibility: 'live', required_role: 'previewer_001' }, 'previewer_002').status).toBe(409)
+  })
+  it('a held pod may be addressed, re-addressed or opened freely', () => {
+    expect(checkRequiredRoleTransition({ visibility: 'held', required_role: null }, 'previewer_001').ok).toBe(true)
+    expect(checkRequiredRoleTransition({ visibility: 'held', required_role: 'previewer_001' }, 'previewer_002').ok).toBe(true)
+    expect(checkRequiredRoleTransition({ visibility: 'held', required_role: 'previewer_001' }, null).ok).toBe(true)
+  })
+  it('the same value on a live pod is not a change', () => {
+    expect(checkRequiredRoleTransition({ visibility: 'live', required_role: 'previewer_001' }, 'previewer_001').ok).toBe(true)
+  })
+})
+
+/** In-memory listening_pods with an honest WHERE required_role IS <expected>. */
+function fakeRoleStore(initial) {
+  const rows = new Map(Object.entries(initial).map(([id, r]) => [id, { id, ...r }]))
+  const writes = []
+  const gates = { afterRead: null }
+  return {
+    rows, writes, gates,
+    readPod: async (id) => {
+      const data = rows.has(id) ? { ...rows.get(id) } : null
+      if (gates.afterRead) { const g = gates.afterRead; gates.afterRead = null; await g }
+      return data
+    },
+    updateWhereRequiredRole: async (id, expected, patch) => {
+      const row = rows.get(id)
+      if (!row) return null
+      const matches = expected === null ? row.required_role == null : row.required_role === expected
+      if (!matches) { writes.push({ id, expected, hit: false }); return null }
+      Object.assign(row, patch)
+      writes.push({ id, expected, hit: true, patch })
+      return { ...row }
+    },
+  }
+}
+
+describe('applyRequiredRoleChange — the Senedd opening as a request, not a hand statement', () => {
+  it('opens the pod: previewer_001 → NULL, trail carried through, scene_hashes intact', async () => {
+    const store = fakeRoleStore({ [SENEDD]: { visibility: 'live', required_role: 'previewer_001', metadata: { scene_hashes: { s1: 'x' }, released_at: '2026-09-13T16:20:59.833Z' } } })
+    const r = await applyRequiredRoleChange({ podId: SENEDD, requested: null, actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(200)
+    expect(r.body.wasRole).toBe('previewer_001')
+    expect(store.rows.get(SENEDD).required_role).toBe(null)
+    const meta = store.rows.get(SENEDD).metadata
+    expect(meta.scene_hashes).toEqual({ s1: 'x' })
+    expect(meta.released_at).toBe('2026-09-13T16:20:59.833Z')
+    expect(meta.required_role_was).toBe('previewer_001')
+    expect(meta.required_role_now).toBe(null)
+    expect(meta.required_role_set_by).toBe('Tom <tom@example.com>')
+  })
+  it('a repeat is a 200 that writes NOTHING', async () => {
+    const store = fakeRoleStore({ [SENEDD]: { visibility: 'live', required_role: null, metadata: {} } })
+    const r = await applyRequiredRoleChange({ podId: SENEDD, requested: null, actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(200)
+    expect(r.body.noop).toBe(true)
+    expect(store.writes).toEqual([])
+  })
+  it('refuses to narrow a live pod before any write', async () => {
+    const store = fakeRoleStore({ [SENEDD]: { visibility: 'live', required_role: null, metadata: {} } })
+    const r = await applyRequiredRoleChange({ podId: SENEDD, requested: 'previewer_001', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(409)
+    expect(store.writes).toEqual([])
+  })
+  it('two openings racing: the loser is a 200 no-op, never a second stamp', async () => {
+    const store = fakeRoleStore({ [SENEDD]: { visibility: 'live', required_role: 'previewer_001', metadata: {} } })
+    let release
+    store.gates.afterRead = new Promise((res) => { release = res })
+    const first = applyRequiredRoleChange({ podId: SENEDD, requested: null, actor: ACTOR, nowIso: T, store })
+    await new Promise((r) => setTimeout(r, 0))
+    const second = await applyRequiredRoleChange({ podId: SENEDD, requested: null, actor: ACTOR, nowIso: '2026-09-13T21:00:01.000Z', store })
+    expect(second.status).toBe(200)
+    expect(second.body.noop).toBeUndefined()
+    release()
+    const r = await first
+    expect(r.status).toBe(200)
+    expect(r.body.noop).toBe(true)
+    expect(store.writes.filter((w) => w.hit)).toHaveLength(1)
+    expect(store.rows.get(SENEDD).metadata.required_role_set_at).toBe('2026-09-13T21:00:01.000Z')
+  })
+  it('404 when the pod does not exist', async () => {
+    const r = await applyRequiredRoleChange({ podId: 'nope:pod', requested: null, actor: ACTOR, nowIso: T, store: fakeRoleStore({}) })
+    expect(r.status).toBe(404)
+  })
+  it('the trail never mutates the row it was handed', () => {
+    const existing = { scene_hashes: { s1: 'x' } }
+    nextRequiredRoleMetadata(existing, { requiredRole: null, was: 'previewer_001', actor: ACTOR, nowIso: T })
+    expect(existing).toEqual({ scene_hashes: { s1: 'x' } })
+  })
+})

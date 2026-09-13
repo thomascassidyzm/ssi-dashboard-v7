@@ -4479,8 +4479,17 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
   const { courseCode, slug } = req.params
   const podId = `${courseCode}:${slug}`
 
-  const parsed = podVisibility.parseVisibilityRequest(req.body, podId)
+  // Two fields, one lever (job #605, 2026-09-13): `visibility` and/or
+  // `required_role`. A body carrying only `required_role` skips the visibility
+  // parse; a body carrying neither is refused by it. Clearing a role opens the
+  // pod to every learner and needs the same named-pod `confirm` as a release.
+  const body = req.body || {}
+  const hasRole = Object.prototype.hasOwnProperty.call(body, 'required_role')
+  const hasVisibility = Object.prototype.hasOwnProperty.call(body, 'visibility') || !hasRole
+  const parsed = hasVisibility ? podVisibility.parseVisibilityRequest(body, podId) : { ok: true, visibility: null }
   if (!parsed.ok) return res.status(parsed.status).json({ error: parsed.error })
+  const parsedRole = hasRole ? podVisibility.parseRequiredRoleRequest(body, podId) : { ok: true }
+  if (!parsedRole.ok) return res.status(parsedRole.status).json({ error: parsedRole.error })
 
   try {
     const sb = supabaseClient.getClient()
@@ -4492,7 +4501,17 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
     const store = {
       readPod: async (id) => {
         const { data, error } = await sb
-          .from('listening_pods').select('id, metadata, visibility').eq('id', id).maybeSingle()
+          .from('listening_pods').select('id, metadata, visibility, required_role').eq('id', id).maybeSingle()
+        if (error) throw error
+        return data
+      },
+      // Same compare-and-swap for the role: match the exact role that was read.
+      updateWhereRequiredRole: async (id, expected, patch) => {
+        let q = sb.from('listening_pods')
+          .update({ ...patch, updated_at: new Date().toISOString() })
+          .eq('id', id)
+        q = expected === null ? q.is('required_role', null) : q.eq('required_role', expected)
+        const { data, error } = await q.select('id, visibility, required_role, metadata').maybeSingle()
         if (error) throw error
         return data
       },
@@ -4502,16 +4521,33 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
           .eq('id', id)
         // The WHERE is the whole fix: match the exact state we judged.
         q = expected === null || expected === undefined ? q.is('visibility', null) : q.eq('visibility', expected)
-        const { data, error } = await q.select('id, visibility, metadata').maybeSingle()
+        const { data, error } = await q.select('id, visibility, required_role, metadata').maybeSingle()
         if (error) throw error
         return data
       },
+    }
+    // Role first, then visibility: "address it, then release it" is the order
+    // a restricted pod is built in, and a refused role change stops the
+    // request before anything is released.
+    let roleResult = null
+    if (hasRole) {
+      roleResult = await podVisibility.applyRequiredRoleChange({
+        podId, requested: parsedRole.requiredRole, actor: admin, nowIso: new Date().toISOString(), store,
+      })
+      if (roleResult.status !== 200) return res.status(roleResult.status).json(roleResult.body)
+      if (!roleResult.body.noop) {
+        logger.info(`[PodVisibility] ${podId}: required_role ${roleResult.body.wasRole ?? 'NULL'} -> ${parsedRole.requiredRole ?? 'NULL'} by ${podVisibility.describeActor(admin)}`)
+      }
+      if (!hasVisibility) return res.status(200).json(roleResult.body)
     }
     const result = await podVisibility.applyVisibilityChange({
       podId, requested: parsed.visibility, actor: admin, nowIso: new Date().toISOString(), store,
     })
     if (result.status === 200 && !result.body.noop) {
       logger.info(`[PodVisibility] ${podId}: ${result.body.was} -> ${parsed.visibility} by ${podVisibility.describeActor(admin)}`)
+    }
+    if (roleResult && result.status === 200) {
+      return res.status(200).json({ ...result.body, wasRole: roleResult.body.wasRole, roleNoop: !!roleResult.body.noop })
     }
     res.status(result.status).json(result.body)
   } catch (e) {
