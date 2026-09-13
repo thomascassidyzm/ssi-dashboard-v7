@@ -1090,3 +1090,38 @@ the voice was right, and nothing there needs an ear. Two 10 Sep Aran-account row
 a70756ca, s7 l4 cb6d8ee4) are a fourth voice — the booth-test TTS voice — with ~0 similarity to
 Aran. Not deleted here: s12 l8 has no other take and s7 l4 only a Catrin one, so cutting them
 silences two live lines until Aran records; that trade is Tom's, staged with playable links.
+
+## 2026-09-13 — a booth re-record bumps `audio_revision` on the same row, and a duplicate the take never reached keeps its mark (Astra #592; job #593)
+
+**The two holes.** GPT-6 Astra's cold-check of job #590 — the nine Welsh lines marked for Aran to
+re-record — found that the booth path would silently undo his session twice over. (1) The pod
+registration seam upserted the human take onto the existing `course_audio` row and repointed
+`s3_key` with no `audio_revision` bump, and no live trigger supplies one; the learner's address is
+`<uuid>.v<audio_revision>` (learning-app `audioAccess.ts`, `buildAudioRef`), served immutable and
+keyed in IndexedDB by that string, so every phone that had played the line kept the old take. This
+is the exact hole #568 routed around the same day by re-filing four slots under fresh ids. (2) After
+a take landed, propagation to duplicate lines (the two Senedd "Prynhawn da." rows, s1 l1 and
+s9 l47) swallowed per-copy failures, and `clearRerecordWants` then retired every mark on the text
+regardless — one failed link and the second row served its old clip with nothing left to say so.
+
+**The convention, and why same-uuid-plus-bump rather than fresh id.** The estate already has one
+way to replace bytes: `services/shared/audio-revision-swap.cjs` (`swapClipInPlace` /
+`writeOrSwapClip`), which the regeneration retake, the repair panel and the reuse-first render all
+use. It keeps the uuid (so no FK can dangle at any instant), bumps the revision (so the address
+changes and every cache misses correctly) and writes a `course_audio_revisions` ledger row (so it
+is reversible). The learner app resolves refs from `audio_revision`, verified in its read path. A
+fresh id per re-take is what #568 did under pressure, and it works, but it orphans the old row and
+moves every pointer; it is the escape hatch, not the convention. So both the registration seam and
+the duplicate propagation now go through `writeOrSwapClip`: insert when the identity is free,
+versioned swap when it is held.
+
+**Conditional retirement.** `propagateTakeToDuplicates` returns `failed` by sentence id; the take
+route passes those ids and courses to `clearRerecordWants` as `keep`, and when propagation throws
+wholesale only the source line and its own course's clip are retired. The route response carries
+`notFilled`, `wantsKept` and `warnings`, so the booth can say what still needs a take.
+
+**Why better × simpler × cheaper.** One existing module instead of a third copy of the swap; no
+schema, no trigger, no learner-app change; the duplicate's mark stays the single source of truth
+for "still needed". Nine red-before/green-after cases in
+`services/voice-engine/booth-rerecord-revision-and-marks.test.cjs`; nothing in any pod's
+visibility or clip bytes was touched.
