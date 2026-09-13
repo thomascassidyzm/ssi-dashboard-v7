@@ -265,3 +265,10 @@ async function main () {
 }
 
 main().catch((e) => { console.error('ERR:', e); process.exit(1) })
+
+it('--orders scopes the pass to named global_orders; empty means the whole pod', () => {
+  const work = [{ row: { global_order: 3 } }, { row: { global_order: 23 } }, { row: { global_order: 48 } }]
+  assert.deepStrictEqual(T.filterByOrders(work, new Set([3, 48])).map((w) => w.row.global_order), [3, 48])
+  assert.strictEqual(T.filterByOrders(work, new Set()).length, 3)
+  assert.strictEqual(T.filterByOrders(work, null).length, 3)
+})

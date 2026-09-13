@@ -134,6 +134,14 @@ const POD_SLUG = arg('pod', 'pod-1')
 const CONC = Number(arg('conc', 4))
 const LIMIT = Number(arg('limit', 0))
 const MARGIN_FLOOR = Number(arg('margin', 1.5))
+// --orders=1,3,23 — restrict the pass to these global_orders. A scoped repair
+// (one pod's retired split rows) must not wander into every other unsplit turn
+// of the pod; without this the only scope control was --limit, which is
+// positional, not nominal. Empty/absent = the whole pod, exactly as before.
+const ONLY_ORDERS = new Set(String(arg('orders', '')).split(',').map((s) => s.trim()).filter(Boolean).map(Number))
+
+/** Pure: keep only the work items whose row.global_order is in `orders` (all when empty). */
+const filterByOrders = (work, orders) => orders && orders.size ? work.filter((w) => orders.has(Number(w.row.global_order))) : work
 
 // NB: the missing-course check lives with the run guard further down, not here.
 // Required as a module (by the tests) there is no argv[2], and exiting on that
@@ -209,7 +217,7 @@ const splitOn = (t, re) => String(t || '').split(re).map((s) => s.trim()).filter
  * authored text, not about the character. Adding a course here says "we have
  * read this pod's text and its ellipses are hesitations."
  */
-const ELLIPSIS_IS_HESITATION = new Set(['hrv_for_eng'])
+const ELLIPSIS_IS_HESITATION = new Set(['hrv_for_eng', 'cym_n_for_eng'])
 
 /** Where generatePodAudio put its " … " TTS pause cue — i.e. where the take
  *  ACTUALLY pauses. Latin-only and whitespace-required, exactly as the renderer
@@ -422,7 +430,7 @@ async function publishPiece (file, { text, language, role, voiceId }) {
 module.exports = {
   SENTENCE_SPLIT, KNOWN_SPLIT, SENTENCE_SPLIT_NO_ELLIPSIS, CUE_SPLIT,
   ELLIPSIS_IS_HESITATION, cueMap,
-  splitOn, peakDb, ffprobeDur, spliceAndGate,
+  splitOn, peakDb, ffprobeDur, spliceAndGate, filterByOrders,
 }
 
 // Only run the fleet job when invoked as a command, never on require().
@@ -471,7 +479,8 @@ if (!COURSE) {
   if (cueMapFailures.length) {
     console.log(`cue-map self-check refused ${cueMapFailures.length} row(s) — left whole-turn`)
   }
-  const todo = LIMIT ? work.slice(0, LIMIT) : work
+  const scoped = filterByOrders(work, ONLY_ORDERS)
+  const todo = LIMIT ? scoped.slice(0, LIMIT) : scoped
 
   const scratch = fs.mkdtempSync(path.join(process.env.CS_SCRATCH || os.tmpdir(), 'splice-'))
   const stats = { linked: 0, reused_clips: 0, spliced_clips: 0, refused: 0, errors: 0, known_count_mismatch: 0 }

@@ -1028,3 +1028,33 @@ Those are Tom's calls: alongside-not-instead, and a title lookup that follows th
 **Why better × simpler × cheaper.** Zero schema, zero deploy: the gate already existed and had no
 rows. One INSERT per person, one command for the next, and revocation is `removed_at`, so a
 mistaken grant costs one line and no history.
+
+## 2026-09-13 — cym_n_for_eng pod-1: the June 2026 takes under Aran's voice ids are retired (job #568)
+
+**Ruling (Tom, 2026-09-13 19:18Z).** The 15/16 June rows in `human_aran_cym_n` / `human_aran_cym_n_2`
+whose text lies in the old pod-0 ∩ pod-1 intersection are his voice or worse than Aran's later
+recordings; replace them with Aran's later takes. Rows 43 and 52 (and their splits 70/71) are not in
+the intersection and are untouched — no ruling on them yet.
+
+**Decision.** Delete, never repoint. Aran's booth counts a line "recorded" from any course_audio row
+under his voice id for that text, and phase8 link-only fills only EMPTY slots — so a hand-edited
+pointer is exactly what the planner can undo, and a deleted row is exactly what it cannot. 46 rows
+(not 45: the #563 table double-counted one split) went through
+`tools/pods/cym-n-pod1-retire-june-takes-2026-09-13.cjs` — gated, before-state asserted in the
+transaction, attributed in content_edit_events, audit trigger keeping every row, S3 untouched.
+
+**The finding that changed the shape.** Four June row IDS (Bore da Sarah / Dw i'n dda iawn / Noswaith
+dda Sarah / Un Dau Tri) already held Aran's 3 Sep bytes: the recordist upsert lands on the
+(course,text,language,role,voice) key and moves the SAME row's s3_key, and `audio_revision` was not
+bumped on 3 Sep. The server served Aran; Tom's phone played June, because `/api/audio/<id>` is
+cached immutable for a year and IndexedDB keys by id. So those four were re-registered as fresh rows
+on the same S3 object — same bytes, new URL — and refilled through `POST /generate-pods
+{link_only:true}` (4 reused, 0 rendered). Split arrays (no FK) had the retired ids stripped to NULL
+and were re-cut from the current whole-turn take by `splice-sentence-clips.cjs`, now with `--orders`
+so a repair cannot wander, and with `cym_n_for_eng` in `ELLIPSIS_IS_HESITATION` (the pod text's "…"
+is a hesitation, and the English confirms it). Five lines stay whole-turn: Aran's takes carry no
+pause where the text has "…", and the splicer refuses rather than guesses.
+
+**Why better × simpler × cheaper.** No render, no new tables: one delete, four inserts on objects
+that already exist, and the two existing resolution paths do the rest. Recoverable from
+content_audit_log by id.
