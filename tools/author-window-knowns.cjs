@@ -17,7 +17,7 @@
  * the LLM rewrites only where fusion goes unnatural near sentence size.
  *
  *   node tools/author-window-knowns.cjs <course> [orders] [--dry]
- *   node tools/author-window-knowns.cjs hrv_for_eng            # whole pod-0
+ *   node tools/author-window-knowns.cjs hrv_for_eng            # the whole served pod
  *   node tools/author-window-knowns.cjs hrv_for_eng 131 --dry  # preview one
  *
  * Same skeleton as breakdown-fine.cjs (claude CLI, verification, worker pool).
@@ -34,6 +34,7 @@ const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const MODEL = process.env.BD_MODEL || 'opus'
 if (!COURSE) { console.error('usage: author-window-knowns.cjs <course> [orders] [--dry]'); process.exit(1) }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 function claude(prompt) {
@@ -99,9 +100,10 @@ A window is a FRAGMENT of a sentence and may stay a fragment in ${KNOWN} — nev
 Return ONLY JSON: {"windows":[{"s":<sentence#>,"start":<n>,"end":<n>,"known":"..."}]} — one entry for EVERY window listed, same s/start/end, in any order.`
 
 ;(async () => {
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, target_text, known_text, atom_map_fine')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', POD_ID).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents, error } = await q
   if (error) { console.error(error.message); process.exit(1) }

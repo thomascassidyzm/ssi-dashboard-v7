@@ -57,6 +57,7 @@ if (isHumanVoiceCourse(COURSE)) {
   process.exit(0)
 }
 
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(
   (process.env.SUPABASE_URL || '').trim(),
   (process.env.SUPABASE_SERVICE_KEY || '').trim(),
@@ -132,12 +133,13 @@ function sentenceTexts(row) {
 }
 
 ;(async () => {
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
   const flaggedIds = new Set(JSON.parse(fs.readFileSync(FLAGS_PATH, 'utf8')))
   console.log(`${flaggedIds.size} flagged clip ids loaded`)
 
   const { data: pod, error: podErr } = await supabase
-    .from('listening_pods').select('speakers').eq('id', `${COURSE}:pod-0`).single()
-  if (podErr || !pod?.speakers) { console.error(`ERR: no speakers cast on ${COURSE}:pod-0`); process.exit(1) }
+    .from('listening_pods').select('speakers').eq('id', POD_ID).single()
+  if (podErr || !pod?.speakers) { console.error(`ERR: no speakers cast on ${POD_ID}`); process.exit(1) }
 
   const targetLang = COURSE.split('_')[0]
   const knownBase = (COURSE.split('_for_')[1] || 'eng').slice(0, 2)
@@ -151,7 +153,7 @@ function sentenceTexts(row) {
   const { data: rows, error } = await supabase
     .from('listening_pod_sentences')
     .select('id, global_order, speaker, target_text, atom_map_fine, target_audio_id, sentence_audio_ids')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', POD_ID).order('global_order')
   if (error) { console.error(error.message); process.exit(1) }
 
   // Map flagged id → every (row, slot) that links it.

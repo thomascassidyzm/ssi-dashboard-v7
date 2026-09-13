@@ -79,6 +79,7 @@ const dry = process.argv.includes('--dry')
 // word_boundaries, which the slicer prefers over silence detection.
 const forceAzure = process.argv.includes('--force-azure')
 if (!COURSE) { console.error('usage: render-take-g.cjs <course> [orders] [--dry|--force-azure]'); process.exit(1) }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const ROLE = 'pod_take_g'
@@ -257,8 +258,9 @@ function detectClipLang(mp3) {
 const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - need) * 10 + m.mid)
 
 ;(async () => {
-  const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', `${COURSE}:pod-0`).single()
-  if (!pod || !pod.speakers) { console.error(`ERR: no speakers cast on ${COURSE}:pod-0`); process.exit(1) }
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
+  const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', POD_ID).single()
+  if (!pod || !pod.speakers) { console.error(`ERR: no speakers cast on ${POD_ID}`); process.exit(1) }
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
   const targetLang = (((course || {}).voice_config || {}).voices || {}).target1?.language || COURSE.split('_')[0]
 
@@ -273,7 +275,7 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
 
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, speaker, target_text, atom_map_fine, takeg_audio_ids')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', POD_ID).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents, error } = await q
   if (error) { console.error(error.message); process.exit(1) }

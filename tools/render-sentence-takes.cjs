@@ -36,6 +36,7 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 if (!COURSE) { console.error('usage: render-sentence-takes.cjs <course> [orders] [--dry]'); process.exit(1) }
+const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const SENTENCE_PUNCT = /[.!?…。！？؟]/
@@ -85,8 +86,9 @@ function sentenceTextsFromGroups(turnText, groups) {
 }
 
 ;(async () => {
-  const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', `${COURSE}:pod-0`).single()
-  if (!pod || !pod.speakers) { console.error(`ERR: no speakers cast on ${COURSE}:pod-0`); process.exit(1) }
+  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
+  const { data: pod } = await supabase.from('listening_pods').select('speakers').eq('id', POD_ID).single()
+  if (!pod || !pod.speakers) { console.error(`ERR: no speakers cast on ${POD_ID}`); process.exit(1) }
   const { data: course } = await supabase.from('courses').select('voice_config').eq('course_code', COURSE).single()
   const vc = ((course || {}).voice_config || {}).voices || {}
   const targetLang = vc.target1?.language || COURSE.split('_')[0]
@@ -94,7 +96,7 @@ function sentenceTextsFromGroups(turnText, groups) {
 
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, speaker, target_text, known_text, atom_map_fine, sentence_audio_ids, sentence_known_audio_ids')
-    .eq('pod_id', `${COURSE}:pod-0`).order('global_order')
+    .eq('pod_id', POD_ID).order('global_order')
   if (ORDERS.length) q = q.in('global_order', ORDERS)
   const { data: sents, error } = await q
   if (error) { console.error(error.message); process.exit(1) }
