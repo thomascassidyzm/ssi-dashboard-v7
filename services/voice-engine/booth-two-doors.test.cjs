@@ -142,3 +142,49 @@ test('a voice the editor cast BY EMAIL, with no email on the policy row and no u
   const events = fs.readFileSync(accessLedger(), 'utf8').trim().split('\n').map((l) => JSON.parse(l))
   assert.deepStrictEqual(events.map((e) => [e.kind, e.email, e.courseCode]), [['reach', ANA, 'spa_for_eng']])
 })
+
+test('the language-wide link of a policy voice arrives on the courses of ITS DIALECT only — never refused on a sibling dialect it does not read', async () => {
+  // The 2026-09-13 nightly red: Aran (north policy voice) opened his language-wide
+  // link and the arrival was checked against EVERY Welsh course, so the south and
+  // standard-dialect courses his queue never serves were logged as refusals of a
+  // cast artist. The queue hands a policy voice lines in its own dialect only
+  // (lineVoiceId), so the courses the queue serves — and the arrival is counted
+  // on — are the courses of that dialect, and no other.
+  const ARAN = 'aran@example.com'
+  const db = stubDb({
+    language_recording_policy: [{
+      language: 'cym', human_only: true,
+      voices: { m: { name: 'Aran', email: ARAN, voiceId: 'human_aran_cym_n', gender: 'm', dialect: 'north' } },
+    }],
+    courses: [
+      { course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: {} },
+      { course_code: 'cym_s_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'south', voice_config: {} },
+      { course_code: 'cym_for_yor', target_lang: 'cym', known_lang: 'yor', dialect: 'standard', voice_config: {} },
+    ],
+    listening_pods: [
+      { id: 'pn', course_code: 'cym_n_for_eng', slug: 'pod-1', title: 'North' },
+      { id: 'ps', course_code: 'cym_s_for_eng', slug: 'pod-1', title: 'South' },
+    ],
+    listening_pod_sentences: [
+      { id: 'n1', pod_id: 'pn', global_order: 1, speaker: 'Aran', target_text: 'Bore da.', known_text: 'Good morning.' },
+      { id: 's1', pod_id: 'ps', global_order: 1, speaker: 'Aran', target_text: 'Bore da.', known_text: 'Good morning.' },
+    ],
+    course_audio: [],
+    dashboard_users: [],
+  })
+  const aran = await resolveRecordist(db, 'human_aran_cym_n')
+  assert.strictEqual(aran.dialect, 'north')
+  const queue = await buildQueue(db, aran, { includeRecorded: true })
+  assert.deepStrictEqual(queue.courses, ['cym_n_for_eng'], 'the queue serves the courses of his dialect and no other')
+
+  const now = Date.parse('2032-01-01T10:00:00Z')
+  fs.writeFileSync(accessLedger(), '')
+  const warned = []
+  // Exactly what the language-wide link door does: recordist-router GET /voice/:voiceId, no ?course=
+  const arrival = await boothArrival({ db, recordist: aran, courseCodes: queue.courses, path: '/api/recording/voice/human_aran_cym_n?includeRecorded=1', logger: { info() {}, warn: (m) => warned.push(m) }, now })
+  assert.deepStrictEqual(arrival.refused, [], 'a cast artist opening his own link is never refused')
+  assert.deepStrictEqual(arrival.reached, ['cym_n_for_eng'])
+  assert.deepStrictEqual(warned, [])
+  const events = fs.readFileSync(accessLedger(), 'utf8').trim().split('\n').map((l) => JSON.parse(l))
+  assert.deepStrictEqual(events.map((e) => [e.kind, e.courseCode]), [['reach', 'cym_n_for_eng']])
+})

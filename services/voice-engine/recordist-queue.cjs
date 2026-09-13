@@ -921,7 +921,11 @@ function canonicalOwnerBucket(clipVoiceId, aliasOwner, dialect) {
 async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SEED, cache } = {}) {
   const courses = await coursesForLanguage(db, language, { cache })
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()] }
+  // The dialect of each course rides along so the queue can say which courses
+  // it serves a given voice (finishQueue `courses`): a policy voice reads its
+  // own dialect only.
+  const courseDialects = new Map(courses.map((c) => [c.course_code, courseDialect(c)]))
+  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()], courseDialects }
   if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
@@ -1469,7 +1473,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // but the queue is now ordered by one rule rather than by two.
   for (const lines of byBucket.values()) lines.sort(compareQueueLines)
 
-  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()] }
+  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()], courseDialects }
 }
 
 /**
@@ -1645,9 +1649,18 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
     uncast: language.uncast,
     duplicatesCollapsed: language.duplicatesCollapsed,
     quarry: language.quarry || null,
-    // The courses this queue serves: every course of the language for a
-    // policy voice; only the cast courses for a cast-only (community) voice.
-    courses: Array.isArray(recordist.castCourses) ? recordist.castCourses : language.courses,
+    // The courses this queue serves: only the cast courses for a cast-only
+    // (community) voice; for a policy voice, the courses of the language IN
+    // ITS DIALECT - the only courses whose lines it can own (lineVoiceId), and
+    // exactly the courses castingForEmail admits it to. It used to be every
+    // course of the language, so the language-wide link's arrival
+    // (recordist-router /voice/:voiceId, no ?course=) was checked against
+    // sibling dialects the voice never reads and logged each as a REFUSED cast
+    // artist - Aran (north) refused on cym_s_for_eng / cym_for_yor /
+    // cym_anthem_for_jpn, the nightly red of 2026-09-13.
+    courses: Array.isArray(recordist.castCourses)
+      ? recordist.castCourses
+      : language.courses.filter((code) => !language.courseDialects || language.courseDialects.get(code) === canonicalDialect(recordist.dialect)),
   }
 }
 
