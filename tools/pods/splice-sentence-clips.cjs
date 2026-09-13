@@ -115,8 +115,9 @@ const REPO = path.resolve(__dirname, '../..')
  * running the test suite from a fresh checkout off main rather than from the
  * working tree that happened to have it.
  *
- * The copy is byte-identical to the one #343 measured (md5
- * e2f61cf3bdcd344cc187d3a7e7af94e1). That matters: its thresholds — -35 dB /
+ * The copy was byte-identical to the one #343 measured (md5
+ * e2f61cf3bdcd344cc187d3a7e7af94e1) until job #599 (2026-09-13) taught it to
+ * heal sub-5 ms blips inside a pause (see BLIP_MERGE_S there). Its thresholds — -35 dB /
  * 100 ms detection, N-1 longest interior gaps, cut at the midpoint, 50 ms of
  * pause kept either side, 15 ms fade — are the ones the splice-vs-render
  * evidence was gathered with, and re-typing them would quietly decouple the

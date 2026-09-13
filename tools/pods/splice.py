@@ -38,8 +38,29 @@ import subprocess
 import sys
 
 NOISE_DB = -35          # silencedetect floor
-MIN_SIL = 0.10          # a gap must be this long to count at all
+MIN_SIL = 0.10          # a MERGED silence run must be this long to count at all
 MERGE_MS = 0.07         # gaps closer than this are one gap split by a blip
+# BLIP HEALING (Tom's ruling, 2026-09-13 21:40Z; job #599). silencedetect only
+# reports a run that is continuously below the floor for its `d` argument, so a
+# 143 ms pause broken by a single 0.136 ms click (Aran, cym_n pod-1 scene 2,
+# "Nac ydy, mae hi'n rhydd. Croeso i chi eistedd.") came back as NOTHING: the
+# 60.7 ms and 81.8 ms halves were each under 100 ms and were never emitted, so
+# the 70 ms merge above never saw them. The gate then refused a pause that is
+# plainly audible. The rule stays refuse-not-guess and the 100 ms / -35 dB floor
+# stays exactly where it was; what changes is WHAT the floor is measured on.
+# Runs are now detected at DETECT_MIN_S resolution, runs separated by less than
+# BLIP_MERGE_S of sound are healed into one, and MIN_SIL is applied to the
+# healed run. Nothing that passed before can fail now (a run that was already
+# >= MIN_SIL is a superset of itself after healing).
+#
+# Why 5 ms: the blip measured 0.136 ms — a handful of samples, an encoder or
+# breath click, not speech. The shortest thing a voice produces that a listener
+# would call a sound is a tap/flap (~20-30 ms) or a plosive burst (~5-10 ms), so
+# 5 ms sits below anything articulated and ~35x above the blip. A real word
+# between two pauses is never healed across. DETECT_MIN_S is the raw resolution:
+# a run under 10 ms is a zero crossing, not a pause, and is not a candidate.
+BLIP_MERGE_S = 0.005    # heal silence runs separated by less sound than this
+DETECT_MIN_S = 0.010    # silencedetect resolution; raw runs shorter are ignored
 EDGE = 0.15             # ignore leading/trailing silence
 FADE = 0.015            # 15ms fade in/out on every piece, so no click
 PAD = 0.05              # keep 50ms of the gap either side of the cut
@@ -51,14 +72,32 @@ def probe_dur(path):
          '-of', 'csv=p=0', path], capture_output=True, text=True).stdout.strip())
 
 
-def silences(path):
+def heal_blips(raw, merge_s=BLIP_MERGE_S, min_sil=MIN_SIL):
+    """Pure. Merge silence runs separated by under `merge_s` of sound, then
+    keep only merged runs of at least `min_sil`. `raw` is [(start, end)] in
+    time order at any resolution. This is the whole of the blip fix; the
+    floor itself is unchanged and is applied here, on the healed run."""
+    healed = []
+    for a, b in sorted(raw):
+        if healed and a - healed[-1][1] < merge_s:
+            healed[-1] = (healed[-1][0], max(healed[-1][1], b))
+        else:
+            healed.append((a, b))
+    return [(a, b) for a, b in healed if b - a >= min_sil]
+
+
+def raw_silences(path, detect_min_s=DETECT_MIN_S):
     out = subprocess.run(
         ['ffmpeg', '-hide_banner', '-i', path, '-af',
-         f'silencedetect=noise={NOISE_DB}dB:d={MIN_SIL}', '-f', 'null', '-'],
+         f'silencedetect=noise={NOISE_DB}dB:d={detect_min_s}', '-f', 'null', '-'],
         capture_output=True, text=True).stderr
     starts = [float(x) for x in re.findall(r'silence_start: ([0-9.]+)', out)]
     ends = [float(x) for x in re.findall(r'silence_end: ([0-9.]+)', out)]
     return list(zip(starts, ends))
+
+
+def silences(path):
+    return heal_blips(raw_silences(path))
 
 
 def splice(src, n, outbase, cues=None, at=None):
@@ -149,7 +188,15 @@ def splice(src, n, outbase, cues=None, at=None):
 
 if __name__ == '__main__':
     argv = [a for a in sys.argv[1:] if not a.startswith('--')]
-    flags = dict(a[2:].split('=', 1) for a in sys.argv[1:] if a.startswith('--'))
+    flags = dict((a[2:].split('=', 1) + ['1'])[:2] for a in sys.argv[1:] if a.startswith('--'))
+    if 'silences' in flags:
+        # Measurement only: the healed silence runs the gates would see.
+        print(json.dumps({
+            'raw': [[round(a, 4), round(b, 4)] for a, b in raw_silences(argv[0])],
+            'healed': [[round(a, 4), round(b, 4)] for a, b in silences(argv[0])],
+            'blip_merge_s': BLIP_MERGE_S, 'detect_min_s': DETECT_MIN_S,
+            'min_sil': MIN_SIL}))
+        sys.exit(0)
     _at = ([int(x) for x in flags['at'].split(',') if x != '']
            if 'at' in flags else None)
     _cues = int(flags['cues']) if 'cues' in flags else None

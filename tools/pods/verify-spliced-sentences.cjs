@@ -215,7 +215,7 @@ function appUnits (row, textById) {
   // whisper wants an ISO-639-1-ish code; take the first two letters of the
   // course's own target language and let whisper reject what it can't do.
   const whisperLang = { deu: 'de', fra: 'fr', spa: 'es', por: 'pt', ron: 'ro', swe: 'sv',
-    nld: 'nl', isl: 'is', hrv: 'hr', eus: 'eu', gle: 'ga', ara: 'ar', hin: 'hi',
+    nld: 'nl', isl: 'is', hrv: 'hr', eus: 'eu', gle: 'ga', ara: 'ar', hin: 'hi', cym: 'cy',
     jpn: 'ja', kor: 'ko', zho: 'zh', ita: 'it' }[String(lang).slice(0, 3)] || 'auto'
 
   const { rows } = await db.query(

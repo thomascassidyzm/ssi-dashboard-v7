@@ -260,6 +260,77 @@ async function main () {
     assert.strictEqual(r.reason, 'too_few_gaps')
   })
 
+  console.log('blip healing (Tom 2026-09-13: ignore sub-ms blips inside an otherwise clean pause)')
+
+  /**
+   * 1s tone, then a pause built from `parts` — alternating [silenceMs, soundMs,
+   * silenceMs, ...] — then 1s tone. Written as WAV so the waveform is exactly
+   * what was asked for: an mp3 encoder would smear a 1 ms blip into something
+   * the test could not reason about. The photographed cym_n turn was 60.7 ms
+   * silence, a 0.136 ms blip, 81.8 ms silence; the blip here is 1 ms, seven
+   * times longer, so the test is harder on the healer than the real clip.
+   */
+  function makeBlippedPause (file, parts) {
+    const inputs = ['-f', 'lavfi', '-i', 'sine=frequency=440:duration=1']
+    parts.forEach((ms, i) => {
+      inputs.push('-f', 'lavfi', '-i', i % 2 === 0
+        ? `anullsrc=r=44100:cl=mono:d=${ms / 1000}`
+        : `sine=frequency=440:duration=${ms / 1000}`)
+    })
+    inputs.push('-f', 'lavfi', '-i', 'sine=frequency=440:duration=1')
+    const n = parts.length + 2
+    const chain = Array.from({ length: n }, (_, i) => `[${i}:a]`).join('') + `concat=n=${n}:v=0:a=1[out]`
+    execFileSync('ffmpeg', ['-y', '-v', 'error', ...inputs, '-filter_complex', chain,
+      '-map', '[out]', '-ar', '44100', '-ac', '1', '-c:a', 'pcm_s16le', file])
+  }
+  const healed = (file) => JSON.parse(execFileSync('python3',
+    [path.join(__dirname, 'splice.py'), file, '--silences']).toString()).healed
+  const interior = (runs) => runs.filter(([a]) => a > 0.5).filter(([, b]) => b < 1.9)
+  const ms = (run) => Math.round((run[1] - run[0]) * 1000)
+
+  await itAsync('a clean 150 ms pause is one run and the take splices', async () => {
+    const f = path.join(tmp, 'clean-pause.wav')
+    makeBlippedPause(f, [150])
+    const runs = interior(healed(f))
+    assert.strictEqual(runs.length, 1, JSON.stringify(runs))
+    assert.ok(Math.abs(ms(runs[0]) - 150) <= 3, `run ${ms(runs[0])} ms`)
+    const r = await T.spliceAndGate(f, 2, path.join(tmp, 'clean-pause'))
+    assert.ok(r.ok, `expected pass, refused with ${r.reason}`)
+    assert.strictEqual(r.measure.piece_durs.length, 2)
+  })
+
+  await itAsync('a 60 + 80 ms pause broken by a 1 ms blip is healed into one ~140 ms run and the take splices', async () => {
+    const f = path.join(tmp, 'blipped-pause.wav')
+    makeBlippedPause(f, [60, 1, 80])
+    const runs = interior(healed(f))
+    assert.strictEqual(runs.length, 1, `expected the blip healed, got ${JSON.stringify(runs)}`)
+    assert.ok(ms(runs[0]) >= 138 && ms(runs[0]) <= 144, `healed run ${ms(runs[0])} ms`)
+    const r = await T.spliceAndGate(f, 2, path.join(tmp, 'blipped-pause'))
+    assert.ok(r.ok, `expected pass, refused with ${r.reason}`)
+    assert.deepStrictEqual(r.measure.interior_gaps_ms.length, 1)
+    for (const s of r.measure.seams_db) assert.ok(s.db < -35, `seam ${s.edge} at ${s.db} dB`)
+  })
+
+  await itAsync('a genuinely short 60 ms pause is still under the floor and the take is refused', async () => {
+    const f = path.join(tmp, 'short-pause.wav')
+    makeBlippedPause(f, [60])
+    assert.strictEqual(interior(healed(f)).length, 0)
+    const r = await T.spliceAndGate(f, 2, path.join(tmp, 'short-pause'))
+    assert.strictEqual(r.ok, false)
+    assert.strictEqual(r.reason, 'too_few_gaps')
+  })
+
+  await itAsync('two short pauses either side of a 30 ms sound (a tap, not a blip) are NOT healed across', async () => {
+    // The window is 5 ms. A 30 ms sound is the shortest thing a voice
+    // articulates; healing across it would be guessing, so the take is refused.
+    const f = path.join(tmp, 'word-between.wav')
+    makeBlippedPause(f, [60, 30, 80])
+    assert.strictEqual(interior(healed(f)).length, 0, JSON.stringify(interior(healed(f))))
+    const r = await T.spliceAndGate(f, 2, path.join(tmp, 'word-between'))
+    assert.strictEqual(r.ok, false)
+    assert.strictEqual(r.reason, 'too_few_gaps')
+  })
+
   fs.rmSync(tmp, { recursive: true, force: true })
   console.log(`\n${pass} passed${process.exitCode ? ', SOME FAILED' : ''}`)
 }
