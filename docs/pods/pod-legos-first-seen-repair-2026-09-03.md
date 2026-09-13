@@ -7,7 +7,7 @@
 `pod_legos.first_seen_sentence` is a slot key — `<course>:<slug>:<tail>` — and
 `tools/pods/pod-switchover.cjs` never carried it. So every course that crossed to
 `pod-1` under Tom's ruling of 2026-08-22 left its pod_legos rows naming
-`<course>:pod-0:<tail>` ids that no longer existed.
+`<course>:pod-1:<tail>` ids that no longer existed.
 
 Measured before the repair:
 
@@ -15,7 +15,7 @@ Measured before the repair:
 |---|---|
 | pod_legos rows with a `first_seen_sentence` | 17,831 |
 | naming a live sentence | 5,420 |
-| **dangling `:pod-0:` slot keys, 19 courses** | **7,802** |
+| **dangling `:pod-1:` slot keys, 19 courses** | **7,802** |
 | dangling but not a slot key at all (a bare integer) | 4,609 |
 | dangling with no live target | 0 |
 
@@ -30,7 +30,7 @@ time forever.
 
 The remap is **proved, never inferred**. A switchover rewrites only the SLUG segment
 of a sentence id — the tail is carried verbatim — so the repair is
-`<course>:pod-0:<tail>` → `<course>:pod-1:<tail>`, and the rule refuses to write any
+`<course>:pod-1:<tail>` → `<course>:pod-1:<tail>`, and the rule refuses to write any
 row whose rewritten id does not already exist in `listening_pod_sentences`. All
 7,802 remapped cleanly; zero guesses were required.
 

@@ -96,7 +96,7 @@ prove it complete, then flip.
 
 ```bash
 # 1. See what the change would do to progress. Writes nothing.
-node tools/pods/pod-state-migrate.cjs --course=<code> --from=pod-0 --to=pod-0-unrecorded \
+node tools/pods/pod-state-migrate.cjs --course=<code> --from=pod-1 --to=unrecorded \
      --log=docs/pods/a107-prospective/<code>.json
 
 # 2. Flip. Archives the old pod, promotes the new one, migrates progress — one transaction.
@@ -122,7 +122,7 @@ silently produced a 232-row "old" Welsh canon holding both the original scene 15
 
 ```bash
 node tools/pods/pod-state-migrate.cjs --course=cym_n_for_eng \
-     --from=@2026-08-06T10:00:00Z --to=pod-0 --apply
+     --from=@2026-08-06T10:00:00Z --to=pod-1 --apply
 ```
 
 ## How a human take propagates (Tom, 2026-09-12 12:08Z)

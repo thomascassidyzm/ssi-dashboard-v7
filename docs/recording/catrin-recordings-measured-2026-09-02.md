@@ -10,7 +10,7 @@
 
 ## What the database actually holds
 
-Tom said 38 existing recordings. The database holds **61 `recording_provenance` rows** for `human_catrinlliar_cym_n`, all from one session on 2026-08-23, all in `cym_n_for_eng:pod-0`. Of those:
+Tom said 38 existing recordings. The database holds **61 `recording_provenance` rows** for `human_catrinlliar_cym_n`, all from one session on 2026-08-23, all in `cym_n_for_eng:pod-1`. Of those:
 - **56 are live** (current, not superseded) — 56 distinct sentences, no duplicates.
 - **5 are superseded-and-marked-bad** — genuine empty-room takes (the recorder captured silence between lines while AGC pumped the room up to voice level), caught by Tom "by ear" that same night, already redone by Catrin in the same session. They are history, not a pending problem.
 

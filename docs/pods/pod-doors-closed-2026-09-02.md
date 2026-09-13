@@ -19,7 +19,7 @@ half-do it.**
 
 ### Door A — `POST /api/admin/pods/generate` (the urgent one)
 
-It read `const slug = String(req.body?.slug || 'pod-0').trim()`. **The slug now has no
+It defaulted the slug to the serving slug when the body carried none. **The slug now has no
 default**: absent or blank is a 400, exactly as absent `courseCode` already was. A caller
 could otherwise omit the single most dangerous parameter, land on a slug the player serves
 for ~68 courses, and carry `force: true` + `mode: 'full'` in the same body — the path that
@@ -47,16 +47,16 @@ decision nobody has made.
 
 Wholesale replace: DELETE every sentence row of the named pod, INSERT the markdown's, with
 no serving check, no progress migration, and re-inserted rows carrying **no audio at all**
-until Phase 8 re-links them. Its own usage block handed the operator `--slug=pod-0` twice
-as the worked example. It now refuses `pod-0`/`pod-1` without `--serve-now`, **in dry run
-too**, and the examples say `pod-0-unrecorded` and point at `pod-switchover.cjs`.
+until Phase 8 re-links them. Its own usage block handed the operator `--slug=pod-1` twice
+as the worked example. It now refuses `pod-1` without `--serve-now`, **in dry run
+too**, and the examples say `unrecorded` and point at `pod-switchover.cjs`.
 
-### The eleventh door — `tools/pods/align-welsh-pod0-to-canonical.cjs`
+### The eleventh door — `tools/pods/align-welsh-pod-to-canonical.cjs`
 
-Not in #93's ten. `POD_SLUG` is the literal `'pod-0'`. It blanks `known_text` and
+Not in #93's ten. `POD_SLUG` is the literal `'pod-1'`. It blanks `known_text` and
 `target_text` on every slot whose English changed, and `--restore-from-archive` deletes
 every sentence row of that pod before re-inserting. Its sibling
-`align-pod0-to-canonical.cjs` refuses to rewrite a released or beta course's live pod-0;
+`align-pod-to-canonical.cjs` refuses to rewrite a released or beta course's live pod-1;
 **this one had no serving check of any kind, only `--apply`** — and it is the Welsh path,
 which is the audience this whole thread is about. Now refuses without `--serve-now`, dry
 run included, naming the learners. The flag will be passed on nearly every real run: that
@@ -132,7 +132,7 @@ looser match gave 67; the difference is match strictness, not disagreement).
 
 **Eleven are doors** by #93's definition — creates, renames, empties or moves a pod on a
 slug the player serves. The seven it listed as guarded, the three it listed as open (now
-shut), and `align-welsh-pod0-to-canonical.cjs`.
+shut), and `align-welsh-pod-to-canonical.cjs`.
 
 **What is deliberately not counted, and why**, because this is where a twelfth would hide:
 
@@ -143,12 +143,12 @@ shut), and `align-welsh-pod0-to-canonical.cjs`.
   **`PATCH /api/admin/pod-sentences/:id`**, which edits one sentence's text on a live pod
   and **nulls its audio as a side effect** — one row silent until Phase 8 runs. Not a door
   by the definition, but the largest thing on the not-a-door side of the line.
-- **Dated one-off repair scripts** — `revert-cym-n-pod0-move-2026-08-10.cjs`,
+- **Dated one-off repair scripts** — `revert-cym-n-pod-move-2026-08-10.cjs`,
   `revert-ita-pod1-partial-2026-08-24.cjs`. They do move rows on live slugs, but each is a
   single-purpose script whose authority is a named diagnosis doc, hard-coded to one course
   and one incident. A class, not standing doors.
 - **Multipliers** — `services/pod-bulk-migrate.cjs` drives the generator across every
-  pod-0 course, and `PATCH /api/admin/canonical-pods/:id` edits the upstream canonical a
+  pod-1 course, and `PATCH /api/admin/canonical-pods/:id` edits the upstream canonical a
   sync flexes. Both inherit the guards below them.
 - **Fixtures** — `e2e/pod-recording/seed-test-course.cjs`, the `zzz_` ops SQL.
 
@@ -166,7 +166,7 @@ writer is the durable version, and nobody has asked for it.
 
 ## What you will feel, and what needs you
 
-1. **The green "Generate Pod 0" button now refuses on any course whose pod-0 is served** —
+1. **The green "Generate Pod" button now refuses on any course whose pod-1 is served** —
    including a brand-new course with no pod row at all, because creating the core header
    row *is* the moment serving begins. That is deliberate and consistent with `clone-pod`,
    which you already approved behaving this way. The refusal tells the operator to generate
@@ -174,7 +174,7 @@ writer is the durable version, and nobody has asked for it.
    on a virgin course, the smallest safe change is a confirm dialog in `PodsView.vue` that
    appears only when the pod row does not exist, and passes `serveNow`. I did not add it —
    a click-through is cheap, and I would rather you chose it than found it.
-2. **`services/pod-bulk-migrate.cjs` will now refuse**, on every pod-0 course, at its regen
+2. **`services/pod-bulk-migrate.cjs` will now refuse**, on every pod-1 course, at its regen
    stage: it shells `pod-dialogue-generator.cjs <course> --force` with no `--serve-now`.
    That is the door #93 called a multiplier, working as intended — but it means the bulk
    migration is paused until someone decides whether it should pass `--serve-now` or be
@@ -194,15 +194,15 @@ failure recorded verbatim in each test file's header. Reds, in the order they we
 
 ```
 services/pod-generate-guard.test.cjs   (doors A + C, against the route's own pre-fix logic)
-  FAIL  REFUSES a request with no slug at all, instead of defaulting to pod-0
+  FAIL  REFUSES a request with no slug at all, instead of defaulting to a serving slug
     AssertionError: expected undefined to be truthy
-  FAIL  REFUSES a generation onto pod-0, the slug the route used to default to
+  FAIL  REFUSES a generation onto pod-1, the slug the route used to default to
     AssertionError: expected null to be truthy
   Test Files  1 failed (1)
        Tests  11 failed | 7 passed (18)
 
 tools/pod-sync-serving-slug.test.cjs   (door B, against "there was no gate at all")
-  FAIL  REFUSES a resync onto pod-0, the slug its own usage examples used to hand you
+  FAIL  REFUSES a resync onto pod-1, the slug its own usage examples used to hand you
     AssertionError: expected null to be truthy
   FAIL  names the --serve-now escape, and says the re-inserted rows carry no audio
     TypeError: .toMatch() expects to receive a string, but got object
@@ -210,8 +210,8 @@ tools/pod-sync-serving-slug.test.cjs   (door B, against "there was no gate at al
        Tests  8 failed | 3 passed (11)
 
 tools/pods/serving-slug.test.cjs       (the shared rule, incl. the eleventh door)
-  FAIL  knows pod-0 and pod-1 are served
-    AssertionError: expected [] to include 'pod-0'
+  FAIL  knows pod-1 is served
+    AssertionError: expected [] to include 'pod-1'
   FAIL  REFUSES a held pod — visibility is never a guard
     AssertionError: expected null to be truthy
   Test Files  1 failed (1)

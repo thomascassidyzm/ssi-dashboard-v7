@@ -842,7 +842,7 @@ Everything else I would say aloud as written.
 ## 8. Explicit gaps — nothing papered over
 
 - **No database query was run in this job.** The control arm's zero-admission checks (the 551-token canon word list, English side) are inherited through the stretches that carry those scenes' lines verbatim; the *bridging turns I added inside one stretch* — Chapter 3 turns 6–10 (*which*, *any*) — were not checked against the live canon and are flagged, not claimed.
-- **The Italian is my rendering, not the pod's.** As in the control arm, the Italian side of the live pod was not queried, so a learner's *heard* Italian in the zero-admission stretches is this document's Italian, not `pod-0`'s.
+- **The Italian is my rendering, not the pod's.** As in the control arm, the Italian side of the live pod was not queried, so a learner's *heard* Italian in the zero-admission stretches is this document's Italian, not `pod-1`'s.
 - **Part 3 is lost.** Every attestation is from three sessions of four. Nothing claims otherwise.
 - **Four overlay outcomes rest on mints** — O1, O3, O6, O7 — because no corpus attests them; and the standing clash and the whole recovery are minted, as before. That is a fact about the corpora and is labelled per chapter rather than averaged into a total.
 - **Two chapters are near-even on speaker balance** (Ch. 3, Ch. 9); the rule is not met there and §4c says why rather than converting a turn to fix a ratio.

@@ -36,7 +36,7 @@ N13/M1 (health *does* attest one not-knowing). Everything else carries.
    deliberately.
 4. **Survivability: 9 of 15 branches attested — and every attested branch arrives WITH its
    complete recovery, uncommissioned.** Aran was never asked for recoveries. He wrote all nine,
-   including the S2 recovery the entire pod-0 corpus withholds. That is the calibration finding
+   including the S2 recovery the entire pod-1 corpus withholds. That is the calibration finding
    the commission asked for by name.
 5. **Candidates: the ten 2026-08-30 mints all survive the ratified lens** (ten supported, none
    withdrawn, none superseded), and this read adds **one new survivability edge, S1101 — the
@@ -57,7 +57,7 @@ restated above. A shape absent from health is a finding about health, not a defe
 | N3 Availability enquiry | **INSTANTIATED, both branches** | Yes-branch: "What time's visiting?" / "Visiting's two till eight" (1.2 f2). No+substitute branch: ⚠ "What's in the soup? I can't have dairy." / "the soup has cream in it, so we'll steer clear. The chicken's safe." (1.7 f2) — the corpus's stored-branch shape, walked with a dietary mask. |
 | N4 Instruction-giving | **INSTANTIATED, strong** | 1.11 f1: "One in the morning, one at night, with food." / "Hang on, let me write this down. One in the morning, one at night, with food. Got it." / "Perfect." — instruct, read-back, confirm. The *request* position is usually absent (instructions arrive unrequested — the pressure that minted N107). |
 | N5 Acquaintance | **INSTANTIATED, partial on the return** | 1.0 E-f2: "Where are you from, if you don't mind me asking?" / "I'm from the Philippines - from Manila." / "Three years, is it? And how are you finding it?" — Q, A, chain. The A+**return** half never fires: no question is ever handed back identically (the F11 block, same asymmetry fact). |
-| N6 Repair | **INSTANTIATED, strong** | 2.5 f2: "Sorry, could you explain that again? What does that mean, exactly?" / "There's an infection in the tubes of your lungs - a bug, basically." / "A bug in the tubes. Right. Now I understand you." — all four positions, resume included. Health attests repair 3–4× against pod-0's once in 231 rows, and licenses it in advance (N101). |
+| N6 Repair | **INSTANTIATED, strong** | 2.5 f2: "Sorry, could you explain that again? What does that mean, exactly?" / "There's an infection in the tubes of your lungs - a bug, basically." / "A bug in the tubes. Right. Now I understand you." — all four positions, resume included. Health attests repair 3–4× against pod-1's once in 231 rows, and licenses it in advance (N101). |
 | N7 Arrangement | **INSTANTIATED** | 2.6 f3: "I'd like the nurse to take some blood today" / "I can't do today - I'm picking the grandchildren up at three. Can I come back tomorrow?" / "Tomorrow's fine." — proposal, decline+account+counter, accept. Always one round; the counter is accepted first time, every time (see O9). |
 | N8 Recommendation | **INSTANTIATED** | 2.9 f1: "Cut the sugary drinks first, that's the biggest single win, and we'll re-test in three months." / "Three months. That's a fair challenge. I'll take it." — recommend with grounds, uptake. |
 | N9 Feasibility request | **INSTANTIATED** | 1.2 f3: "I might need something to help me sleep… Can I ask for that?" / "You can, of course. I'll ask the doctor to write something up, just in case you need it." — grant+pre-empt. Grant+limit: "Book at the desk to be safe." (2.6 f3). |
@@ -158,7 +158,7 @@ dialogue, uncommissioned. Nine of nine.**
 | Edge | Recovery delivered | The recovery lines |
 |---|---|---|
 | S1 | YES | "The chicken's safe. And I'll flag the dairy with the kitchen so it's on all your meals from now on." → "Chicken it is" (1.7 f2); "Tomorrow's fine - book at the desk on your way out." (2.6 f3). |
-| S2 | **YES, 3×, three different ways** | pod-0 records this recovery as attested **never** ("no turn in the corpus takes up a hedge"). Health takes up the hedge three distinct ways: **anchor it** — "Roughly is fine. Was it there at Christmas, say?" (2.2 f3); **re-frame the instrument** — "No problem, let me ask another way. Is it stopping you moving, or sleeping?" (1.4 f2); **route to an artefact** — "do you have the repeat list with you?" / "That list is gold - let me copy it in." (2.3 f3). |
+| S2 | **YES, 3×, three different ways** | pod-1 records this recovery as attested **never** ("no turn in the corpus takes up a hedge"). Health takes up the hedge three distinct ways: **anchor it** — "Roughly is fine. Was it there at Christmas, say?" (2.2 f3); **re-frame the instrument** — "No problem, let me ask another way. Is it stopping you moving, or sleeping?" (1.4 f2); **route to an artefact** — "do you have the repeat list with you?" / "That list is gold - let me copy it in." (2.3 f3). |
 | S3 | YES, every time | "There's an infection in the tubes of your lungs - a bug, basically." → "Now I understand you." → the landing check: "Does the rest make sense?" (2.5 f2). |
 | S7 | YES | "A good name to remember, then. Before we start, is there anything you need…" (1.1 f2) — absorbed AND converted into the next business; "I'll take the compliment. That's you done." (1.6 f1). |
 | S8 | YES | "That's a weight off already, just saying it out loud." (2.1 f3) — the contradicted party accepts the absolution and the business proceeds. |
@@ -168,7 +168,7 @@ dialogue, uncommissioned. Nine of nine.**
 | M2 | YES | "That's the new one the doctor started yesterday - for your blood pressure." + the ratification: "you keep asking every time - you're the best safety check we've got." (1.5 f2) — ground supplied AND the audit received as a gift, which is M2's note in the store, attested for the first time outside the Method Pod. |
 
 And beyond the store's fifteen: the seven proposed S10x edges (2026-08-30) carry **five
-recoveries in `answer_slot_class: "failure"`** — the class the pod-0 null result said was
+recoveries in `answer_slot_class: "failure"`** — the class the pod-1 null result said was
 withheld everywhere — including the three complete stop-and-verify cycles (⚠ 1.5 f3, 1.8 f2,
 2.10 f3: halt, ratify, re-run the identity check, withhold until certain).
 

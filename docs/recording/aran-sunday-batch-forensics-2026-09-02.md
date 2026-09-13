@@ -15,7 +15,7 @@ It did select wholesale — by recordist, not by measurement. Its own header say
 > audit was run and none should be read into these marks … the ruling was
 > course-wide for this recordist and the marking is wholesale."
 
-Its scope is *every Aran clip attached to `cym_n_for_eng:pod-0` at the moment it
+Its scope is *every Aran clip attached to `cym_n_for_eng:pod-1` at the moment it
 ran*. There is no date filter at all — so the hypothesis was live, and the only
 way to settle it was to timestamp the hundred.
 
@@ -31,7 +31,7 @@ that way, Aran's Sunday looks like 12 takes. Read from
 `recording_provenance.recorded_at`, which is when the microphone was actually
 open, it is **36**.
 
-Sunday 23 August, `cym_n_for_eng:pod-0`, by real recording time:
+Sunday 23 August, `cym_n_for_eng:pod-1`, by real recording time:
 
 | Time (UTC) | Voice | Takes | Attached | Marked bad |
 |---|---|---|---|---|

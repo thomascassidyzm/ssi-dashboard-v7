@@ -1,13 +1,5 @@
 # The Method Pod in Italian — the full script
 
-> **SUPERSEDED IN ONE RESPECT — the slug was renamed on 2026-09-01.** Where this
-> document says `pod-0` is the live canonical slate, read **`pod-1`**: the live slate
-> was renamed `pod-0` → `pod-1` that day, and the sacked slates that then held the
-> names `pod-1` (236 rows) and `pod-0.5` (27 rows) were archived and deleted. The
-> content, counts and findings below are unchanged and still stand — 231 rows, 22
-> scenes — only the name moved. See
-> [the migration note](./canonical-pod-slug-migration-2026-09-01.md).
-
 > **PRIVATE. Unlisted, Italian only, audience of two — Tom and Aran.** Nothing here is listed, scaled, rendered or written to production. No row is written, no pod is edited, no audio is queued or rendered, no course is touched. This is one document holding the whole canonical Italian Method Pod script, end to end, so it can be read by ear from start to finish and, next, loaded by the configs/script tool as its first script. The three earlier documents — `method-pod-first-specimens-2026-08-29.md` (scenes 1–4), `method-pod-round-two-2026-08-29.md` (scenes 5–16), `method-pod-re-cut-2026-08-30.md` (the container of all sixteen) — stay in place as the working record; nothing in them is rewritten here.
 
 **What this document is.** Forty-three scenes. The sixteen ratified scenes, copied in their re-cut form with their per-scene detail restated so the file is self-contained; and **twenty-seven new scenes, 17–43**, selected by coverage of the shape graph (`shape-graph-2026-08-30.md`) and by the round-two deficit list, written on the re-cut grammar. Every scene carries the same six things: **Owns**, **Newly admits** (one response position), **Shape witnessed** (the general node, written so a pod about cooking or grief could walk it), **Surface forms admitted** (availability only — heard is not owned, never a prompt target), the near-neighbour selection points (Italian against its Spanish shadow), and one sentence tying the container to a measured number. English column, Italian beside it. Scenes are walks; delivery order stays derived and is not authored here.
@@ -107,7 +99,7 @@ Re-reading the three parts for this job — once, per the brief — turned up ei
 | 42 | Efficienza e velocità | O8 standing | — | **MINT**, sibling to 16 |
 | 43 | Quattromila parole | N1 close, resisted goodbye | — | half-attested (1:413–416 → 2:8) |
 
-**Zero-admission: 8 of 43 (19%); 5 of the 27 new (19%)** against 3 of 16 (19%) inherited. Each new zero-admission scene was checked word by word against the live canon — one read-only query, `canonical_pod_scenarios` where `pod_slug = 'pod-0'`, 231 rows, English text — and the check is stated inside the scene.
+**Zero-admission: 8 of 43 (19%); 5 of the 27 new (19%)** against 3 of 16 (19%) inherited. Each new zero-admission scene was checked word by word against the live canon — one read-only query, `canonical_pod_scenarios` where `pod_slug = 'pod-1'`, 231 rows, English text — and the check is stated inside the scene.
 
 **After this set, still unreached:** N2–N5, N9–N12 (transactional and acquaintance nodes — not this pod's ground, by premise); N10 compliment as a node; and the four overlay outcomes remain *minted*, not attested, which is a fact about the corpora and is recorded rather than smoothed.
 
@@ -1226,7 +1218,7 @@ The live canon never lets anyone fail, not-know, or be wrong. Six of these eight
 | New 17–43 | 27 | 181 | 3,105 | 8 | 1.20 | 80 (10.0×) | 31 / 69 |
 | **Whole pod** | **43** | **276** | **4,364** | **8** | **1.15** | **80** | **34 / 66** |
 | Corpus, for scale | — | 591 | 25,345 | 14 | 1.57 (1.13 in six-turn windows) | 473 (34×) | 27 / 73 |
-| Live canon `pod-0` | 22 | 231 rows | — | — | — | — | — |
+| Live canon `pod-1` | 22 | 231 rows | — | — | — | — | — |
 
 **Size against the commission:** 43 scenes and 276 lines against a default of 40–48 scenes and 230–260 lines. Slightly over on lines, on the count: no scene was padded and none was manufactured to hit a rule; the two scenes that overshoot the turn range (24 and 41, ten turns each) are named in their own "why" lines.
 
@@ -1317,7 +1309,7 @@ Everything in §7a is already labelled in place, so a "cut" on any of them is a 
 ## 8. Explicit gaps — nothing papered over
 
 - **Part 3 is lost.** Every attestation is from three sessions of four. Nothing claims otherwise.
-- **The live canon was read once, English text only.** `canonical_pod_scenarios` where `pod_slug = 'pod-0'`, 231 rows — the slug that *is* live POD 1; `pod-1` (236) and `pod-0.5` (27) were not read. Zero-admission was verified on **English content words**, as round one did; the Italian side of the live pod was not queried, so a learner's *heard* Italian in the eight zero-admission scenes is my rendering, not the pod's. One further read-only query would close that; it is not in this job.
+- **The live canon was read once, English text only.** `canonical_pod_scenarios` where `pod_slug = 'pod-1'`, 231 rows; the two sacked slates (236 and 27 rows, since deleted) were not read. Zero-admission was verified on **English content words**, as round one did; the Italian side of the live pod was not queried, so a learner's *heard* Italian in the eight zero-admission scenes is my rendering, not the pod's. One further read-only query would close that; it is not in this job.
 - **The zero-admission checker is a word list**, 551 distinct canon tokens, with a 40-word function-word stoplist. Inflections were held strictly (a line was rewritten rather than rely on "-ed" being free); interjections were cut rather than argued for. The list and the checker are in scratch and are reproducible from the query.
 - **Four overlay outcomes rest on mints** — O1, O3, O6, O7 — because no corpus attests them. That is a fact about the corpora and is labelled per scene rather than averaged into a total.
 - **Scene 11's surface is unchanged.** Round two swapped its origin-story surface for the sixteen-month experiment under the now-retired stage guard; the ratified scene is closed, so it stays as it is, and the Cambridge drive carries Scene 18 instead. If Tom wants the drive back in 11, the re-cut already said the container does not move.

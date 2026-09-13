@@ -66,10 +66,10 @@ pod and all 129 pods.
 
 | | courses | refused by the fixed gate | on **known-side** blockers |
 |---|---|---|---|
-| live on `pod-1` | 22 | **0** | **0** |
-| live on `pod-0` | 46 | 6 | 6 |
+| live on the 231-line canon | 22 | **0** | **0** |
+| live on the older 142-line canon | 46 | 6 | 6 |
 
-The 6 on `pod-0` that their own live pod would not pass:
+The 6 on the 142-line canon that their own live pod would not pass:
 
 | course | n | blockers |
 |---|---|---|
@@ -120,7 +120,7 @@ It is not the only door.
    `known_text` or `known_audio_id`. It also has no `learner_pod_state` guard at all. Fixing only
    `pod-switchover.cjs` leaves this door open.
 2. **`tools/pods/clone-pod.cjs` can create a serving pod outright, gated by nothing.** The player
-   resolver (`packages/player-vue/src/composables/servedPod.ts`) prefers `pod-1` over `pod-0` by asking
+   resolver (`packages/player-vue/src/composables/servedPod.ts`) serves `pod-1` by asking
    whether a `listening_pods` row exists with that slug and `pod_type='core'`. **It counts no rows and
    reads no text.** `clone-pod.cjs --to=pod-1` inserts exactly such a row, copying `pod_type` from the
    source, with no guard against the destination being a serving slug. Since clone-pod exists precisely

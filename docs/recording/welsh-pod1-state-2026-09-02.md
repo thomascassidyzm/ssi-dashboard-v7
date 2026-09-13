@@ -8,7 +8,7 @@ Twenty clips below, playable here. A spread across the pod, both voices, and eve
 
 ## The state, in one table
 
-Pod 1 is `cym_n_for_eng:pod-0` — the only Welsh pod that has ever been recorded. **231 Welsh lines.**
+Pod 1 is `cym_n_for_eng:pod-1` — the only Welsh pod that has ever been recorded. **231 Welsh lines.**
 
 | | lines |
 |---|---|

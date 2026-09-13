@@ -176,9 +176,9 @@ without a seam.
 
 ## The rulings, honoured
 
-- **Attached, not appended.** Every walk names the pod-0 walk and step it hangs off
+- **Attached, not appended.** Every walk names the pod-1 walk and step it hangs off
   (`attaches_to`), restages that turn as a quotation, and recovers inside the same encounter.
-  `walks/pod-0.json` is untouched; CORE's order is unchanged.
+  `walks/pod-1.json` is untouched; CORE's order is unchanged.
 - **Not specified edge-by-edge.** Each walk was written as a scene, and the recovery moves
   arrived as dialogue: the re-route, the formula, the concede-and-hold, the bilateral park are
   turns people would say, not realised specifications.

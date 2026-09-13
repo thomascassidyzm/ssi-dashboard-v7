@@ -8,7 +8,7 @@ out in full in case some time has passed.
 
 ## 1. What to record today
 
-**Pod-0 — the everyday conversations (coffee shop, taxi, pharmacy, hotel, meeting someone
+**Pod 1 — the everyday conversations (coffee shop, taxi, pharmacy, hotel, meeting someone
 new, etc.).** This is what's ready and waiting:
 
 - **Northern Welsh (`cym_n_for_eng`)** — still needs lines recorded.
@@ -73,7 +73,7 @@ time — same voice, same natural pace, throughout.
 
 ## 4. One thing to know about `'…'` if you see it
 
-You probably won't see this yet in the current pod-0 script, but it may start appearing in
+You probably won't see this yet in the current pod-1 script, but it may start appearing in
 future updates, so it's worth knowing: if a line has **`…`** in the middle of it (a proper
 ellipsis, not just a comma), that's a marked **breathing point** — it tells you where a
 natural pause sits inside a longer sentence, not a place to trail off or change tone. Just

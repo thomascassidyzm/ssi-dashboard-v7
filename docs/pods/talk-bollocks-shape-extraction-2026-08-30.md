@@ -87,7 +87,7 @@ Five edges, S301–S305, extending M1–M5 without collision. Full detail in the
 | S304 | deploying a shared line (F303) | the **provenance being contested** | 4:242–246 — Tom claims a line Aran has just said ("I've been saying this for a little while"); held jointly, play absorbed |
 | S305 | digressing (N302) | **losing the thread entirely** | 1:59–60 ("I have no idea what the original question was there") — the partner restores it |
 
-**The null-result finding.** The store records for pod-0: *"Not one [edge] rests on anything failing. The corpus attests the branch and withholds the recovery."* This corpus **inverts that**: four of the five edges above rest on something genuinely failing — a wrong reformulation, a wrong completion, a failed recall, a lost thread — and every recovery is attested, complete, and cheap. Health (rung 4) also attests its recoveries. So the withholding is **not a property of the rung**: it is a property of the pod-0 drill corpus. What rung 0 uniquely shows is the *price*: at zero asymmetry every one of these failures costs nothing and several are converted into material. That is measurable text, not rhetoric: the specimen's failed recall is absorbed *into the claim being demonstrated*, because the claim was about forgetting.
+**The null-result finding.** The store records for pod-1: *"Not one [edge] rests on anything failing. The corpus attests the branch and withholds the recovery."* This corpus **inverts that**: four of the five edges above rest on something genuinely failing — a wrong reformulation, a wrong completion, a failed recall, a lost thread — and every recovery is attested, complete, and cheap. Health (rung 4) also attests its recoveries. So the withholding is **not a property of the rung**: it is a property of the pod-1 drill corpus. What rung 0 uniquely shows is the *price*: at zero asymmetry every one of these failures costs nothing and several are converted into material. That is measurable text, not rhetoric: the specimen's failed recall is absorbed *into the claim being demonstrated*, because the claim was about forgetting.
 
 ---
 
@@ -121,11 +121,11 @@ Ruler: #283's, unchanged. Kinds K1 (information) / K2 (authority to refuse) / K3
 
 | Shape | What breaks, and the remnant |
 |---|---|
-| N301 joint construction | The completion position stops being a contribution and becomes **an answer to be graded**; ratification becomes marking. Evidence by absence: zero completions in pod-0's 231 rows, zero in health's 438 turns — nobody finishes the barista's or the doctor's clause. Remnant: P3/F9 read-back — you may *restate*, never *complete*. |
+| N301 joint construction | The completion position stops being a contribution and becomes **an answer to be graded**; ratification becomes marking. Evidence by absence: zero completions in pod-1's 231 rows, zero in health's 438 turns — nobody finishes the barista's or the doctor's clause. Remnant: P3/F9 read-back — you may *restate*, never *complete*. |
 | N304 the reported claim | The park-it-unresolved position vanishes: against an information-holder someone owes a verdict ("is that true, doctor?"). Remnant: N8 recommendation-with-grounds, or N104's norm-referencing. |
 | N305 the proxy pitch | The owner's *adopt-the-improvement* position vanishes; pitching the holder's own material back becomes a read-back to be corrected. Remnant: F9, hardening to F104 by rung 4. |
 | F301 (gift form) | The adoption position dies — the K1-holder's claim is not yours to upgrade. The family survives as verification: F9 at rung 1, F104 solicited at rung 4. **The reformulation is the axis's clearest specimen: one act, four shapes, one per rung.** |
-| F306 pre-emption | "Exactly where I'm about to go" presupposes equal access to the terrain; across an information gradient the ratification position cannot be honestly occupied. No remnant — it simply has no higher-rung form, which is why nothing like it exists in pod-0 or health. |
+| F306 pre-emption | "Exactly where I'm about to go" presupposes equal access to the terrain; across an information gradient the ratification position cannot be honestly occupied. No remnant — it simply has no higher-rung form, which is why nothing like it exists in pod-1 or health. |
 
 **Dies or changes at K2 — three.** N302 (the licence to digress becomes a grant from whoever controls the encounter; health's N110 signposting is what replaces it), N306 (you may not script the voice of a party who can refuse the real scene; remnant N4 instruction), F304's joke position (the medium belongs to the encounter-controller; the remnant is health's N101 medium *contract* — the same content, hardened from play into licence, the cleanest graded-transformation pair in the two corpora). N303 the specimen changes here too: a consent position materialises.
 
@@ -160,5 +160,5 @@ Which yields the sharpest thing this extraction found, offered to Tom as a frame
 - **N305 and F306 are thin** — one attestation each, flagged inside their entries, minted because the position is unmistakable on the page and the store holds nothing for it. Tom can strike either with one word.
 - **The health corpus itself was not re-read** — it lives on a branch not on `main`; every health claim above cites the health *proposal file* and mapping document, which are on `main`. Explicit gap, per the honesty rule; nothing above depends on an unverified health line.
 - **O8 standing clash: still zero instances**, now checked across all 591 turns a second time. The parked form (2:386–401) remains the corpus's only disagreement shape. The prior null holds.
-- No transcription, no tidying, no store edits, no pod-0 changes, no schema change.
+- No transcription, no tidying, no store edits, no pod-1 changes, no schema change.
 

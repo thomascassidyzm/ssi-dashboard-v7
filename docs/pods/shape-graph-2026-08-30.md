@@ -1,24 +1,15 @@
 # The shape graph — derived from POD-1, with survivability as the second edge kind
 
-> **SUPERSEDED IN ONE RESPECT — the slug was renamed on 2026-09-01.** Where this
-> document says `pod-0` is the live canonical slate, read **`pod-1`**: the live slate
-> was renamed `pod-0` → `pod-1` that day, and the sacked slates that then held the
-> names `pod-1` (236 rows) and `pod-0.5` (27 rows) were archived and deleted. The
-> content, counts and findings below are unchanged and still stand — 231 rows, 22
-> scenes — only the name moved. See
-> [the migration note](./canonical-pod-slug-migration-2026-09-01.md).
-
 **Date:** 2026-08-30. Read-only against Supabase. No writes of any kind were issued. Nothing here
 executes: the document is the artefact.
 
-**Corpus read:** `canonical_pod_scenarios` where **`pod_slug = 'pod-0'`** — 231 rows, 22 scenes.
-The slug is `pod-0` and it **is** the live POD 1, Aran's rewrite of the Croatian experiment. That
-off-by-one is stated here because it bites every worker on this line.
+**Corpus read:** `canonical_pod_scenarios` where **`pod_slug = 'pod-1'`** — 231 rows, 22 scenes.
+The slug is `pod-1`: Aran's rewrite of the Croatian experiment.
 
-**Sacked slates, positively excluded.** `pod_slug = 'pod-1'` (236 rows) and `pod_slug = 'pod-0.5'`
-(27 rows) were counted at read time to confirm which slug is which, and **not one row from either
+**Sacked slates, positively excluded.** Two pre-metagraph slates (236 rows and 27 rows, since
+archived and deleted) were counted at read time to confirm which slug is which, and **not one row from either
 was read as content or cited anywhere below**. `docs/pods/pod-1-english-canonical.md` was not
-opened. Every `g<n>` in this document is a `global_order` in `pod-0`.
+opened. Every `g<n>` in this document is a `global_order` in `pod-1`.
 
 **Row identifier:** `g<global_order>`, matching the response-family inventory (`/d/1bf2b483`) so the
 two documents read side by side. Method Pod citations are `M:part:line` and are kept in visibly
@@ -34,7 +25,7 @@ Pod documents.
 
 The shape graph is **17 nodes** (exchange shapes), **20 moves** (positions filled inside them),
 **19 composition edges** and **10 survivability edges** from the transactional corpus, plus **5
-survivability edges that rest on the Method Pod only**. Twelve of the nodes come out of `pod-0`;
+survivability edges that rest on the Method Pod only**. Twelve of the nodes come out of `pod-1`;
 five exist only because the summit corpus attests them.
 
 **It reproduces the live 231 completely.** 16 rows are scene-exit vocabulary drips, 73 are
@@ -46,7 +37,7 @@ cannot express it is the branch-point ruling already latent in the data.
 **The headline of the derivation is a null result.** Ten survivability edges are attested in the
 142 dialogue rows. Every one of them rests on a **non-delivery, a chaining move or a relational
 move**. **Not one rests on anything failing.** The machine test — enumerate the response positions
-attested at a shape's answer slot — finds that the answer slot in `pod-0` is never occupied by a
+attested at a shape's answer slot — finds that the answer slot in `pod-1` is never occupied by a
 failure. The corpus does not merely under-attest recovery; it attests the *branch* and never the
 *recovery*, which is a sharper deficit than "the pod is too easy".
 
@@ -54,7 +45,7 @@ failure. The corpus does not merely under-attest recovery; it attests the *branc
 them requires a shape the learner does not already own. Each is sited on the ask where the wrong
 turn is widest, and sequenced by redemption latency. Four of the nine are attested **nowhere**, in
 either corpus, and must be minted; three are attested in the Method Pod only; two are attested
-thinly in `pod-0`.
+thinly in `pod-1`.
 
 **"And you?" does not force a third edge kind.** It is a self-composition edge plus a walk-level
 pivot annotation, and the test that this is right rather than a patch is that the same treatment
@@ -103,7 +94,7 @@ The full 42-class table is in Appendix A. The part that matters is what it did *
 
 ## 2. The nodes
 
-### From `pod-0` — twelve
+### From `pod-1` — twelve
 
 | Node | Bound sequence of positions | Attestations |
 |---|---|---|
@@ -244,7 +235,7 @@ storage format having no way to say *branch*. `variant_key` is null on all 231 r
 1. The graph reproduces the 231 as a walk, with exactly one row that a path cannot hold and a
    branch can. A graph that could not distinguish `g15` from `g16` would be the wrong graph.
 2. **The corpus already contains one genuine branch point** — one, in 231 sentences — and it is
-   invisible to anything reading `pod-0` linearly. The product ruling that a pod is a branch point
+   invisible to anything reading `pod-1` linearly. The product ruling that a pod is a branch point
    with its continuations attached is not a new requirement laid over the canon; it is the canon's
    own latent structure, unexpressible in its current storage.
 3. The distinction the brief insists on holds up under counting: **surface variance is present and
@@ -256,7 +247,7 @@ storage format having no way to say *branch*. `variant_key` is null on all 231 r
 
 - **Speaker attribution is unusable in scenes 15–21.** All 73 drill rows carry `speaker = 'Learner'`,
   including `g160` "No, we only take cash", `g211`, `g214`, `g217`. Positions in those scenes were
-  assigned by reading the content, never by the speaker column. Any tool partitioning `pod-0` by
+  assigned by reading the content, never by the speaker column. Any tool partitioning `pod-1` by
   speaker will mis-partition it.
 - `g100` — "The room is on the third floor, room 709."
 - `scene_label` is inconsistent across scenes 1–5, 6, and 7–22; `difficulty` is null on 14 of 22.
@@ -280,14 +271,14 @@ the recovery is to re-route the ask. **Separate slot.**
 
 | # | Outcome shape | Recovery the learner must own | Attested? | Sited on | Why there |
 |---|---|---|---|---|---|
-| **O3** | **The native does not understand you** | Reformulate your own turn — shorter, slower — and check it landed | **Nowhere.** Absent from `pod-0`; explicitly unattestable in the Method corpus | **The café order** — `g38→g43` | The shortest, most drilled ticket the learner owns. Failure on the one sentence they are surest of is unmistakable, and the recovery is one turn |
+| **O3** | **The native does not understand you** | Reformulate your own turn — shorter, slower — and check it landed | **Nowhere.** Absent from `pod-1`; explicitly unattestable in the Method corpus | **The café order** — `g38→g43` | The shortest, most drilled ticket the learner owns. Failure on the one sentence they are surest of is unmistakable, and the recovery is one turn |
 | **O1** | **Non-delivery with a reason** | Absorb the no; re-select, or ask what is possible | Drill only — `g158`–`g161`; every dialogic refusal (`g15`, `g59`, `g84`, `g108`, `g136`, `g21`, `g22`) arrives with an account *and* a substitute | **Payment** — the reckoning at `g47`/`g137` | No-cash-only is unmistakable; the wrong turn is widest where the learner has already received the goods. The seed specimen is already written for this ask |
 | **O4** | **Your read-back was wrong** | Take the correction and read back again | Thinly — `g121→g122→g123`, once, and the correction is silent | **Hotel booking details** — `g97→g98` | The receptionist already reads back. Numbers, nights and dates make a mis-hearing concrete and checkable in one turn |
-| **O2** | **Nobody knows** | Re-route the ask — another person, another means | Method Pod only — `M:1:54`, `M:4:70`, `M:4:77` | **Directions** — `g120→g126` | The corpus's longest chain, and the place being stranded mid-instruction is most obvious. `g90` "you'll have to look to make sure" is the nearest thing `pod-0` has and it delegates rather than fails |
+| **O2** | **Nobody knows** | Re-route the ask — another person, another means | Method Pod only — `M:1:54`, `M:4:70`, `M:4:77` | **Directions** — `g120→g126` | The corpus's longest chain, and the place being stranded mid-instruction is most obvious. `g90` "you'll have to look to make sure" is the nearest thing `pod-1` has and it delegates rather than fails |
 | **O5** | **The premise of your ask is wrong** | Drop the premise; ask the prior question | Method Pod only — `M:1:336–338` | **Transport** — the bus/boat drill frame, `g177`–`g179` | A wrong premise is visible in one sentence: there is no bus today, the boat does not run in winter. The learner already owns the ask |
 | **O6** | **Trouble that is your own fault** | Admit it, supply what you can, accept the consequence | **Nowhere as an exchange.** `g182`, `g183` supply the material as monologue with no partner turn | **The ticket** — `g147`/`g148`/`g182`/`g183` | The material is already written and already learner-side. All that is missing is the other party |
 | **O7** | **The native discloses worry or difficulty** | Acknowledge without fixing, then continue | **Nowhere.** `g186`, `g187` are the learner disclosing, in drill. `g110→g111` is the corpus answering trouble with an elicit — the starkest absence of sympathy in the canon | **The chemist's** — `g110→g117` | The register shift is largest against a transactional frame, and the scene is already about a body |
-| **O8** | **You are disagreed with** | Hold or yield, explicitly | Method Pod, in the **parked** form only — `M:2:386→2:401`, `M:4:148→4:152`. `pod-0` attests disagreement only with a person's account of themselves (`g226`, `g228`), never about the world | **The recommendation** — `g75→g76→g77` | Order the thing the waiter advised against. A one-turn wrong turn with a visible fork, and the shape is already built |
+| **O8** | **You are disagreed with** | Hold or yield, explicitly | Method Pod, in the **parked** form only — `M:2:386→2:401`, `M:4:148→4:152`. `pod-1` attests disagreement only with a person's account of themselves (`g226`, `g228`), never about the world | **The recommendation** — `g75→g76→g77` | Order the thing the waiter advised against. A one-turn wrong turn with a visible fork, and the shape is already built |
 | **O9** | **A second no** | Produce a third position, or yield | Once, one scene — `g20→g21→g22` | **The arrangement** — `g20→g22` | The corpus's only two-sided negotiation. Extending its own scene by one refusal is the smallest possible mint |
 
 **Nine scenes.** Four of them — O3, O1, O6, O7 — rest on nothing attested in either corpus and
@@ -372,9 +363,9 @@ answer, most consequential first. **None of these is guessed below.**
 
 | # | The question | What hangs on it |
 |---|---|---|
-| **U1** | **Does asking for anything presuppose surviving a plain no — a refusal with no substitute offered?** | The order of all nine scenes. Every refusal in `pod-0` dialogue arrives with an account *and* an alternative; the bare no exists only at `g160`, in drill. If yes, O1 moves to position 1 ahead of O3 and becomes the floor of the whole overlay |
+| **U1** | **Does asking for anything presuppose surviving a plain no — a refusal with no substitute offered?** | The order of all nine scenes. Every refusal in `pod-1` dialogue arrives with an account *and* an alternative; the bare no exists only at `g160`, in drill. If yes, O1 moves to position 1 ahead of O3 and becomes the floor of the whole overlay |
 | **U2** | **Do the 73 drill lines ADMIT their shapes, or only their vocabulary?** | The size of O1, and of everything else. The seed specimen `g158`–`g161` is a drill line. If drill admits shape, refusal is already half-taught and O1 shrinks to the native turn; if it admits only vocabulary — the standing rule, heard is not owned — O1 is untouched and so are O5 and O6, whose material is also drill-only |
-| **U3** | **Is "the native does not understand you" a prerequisite for the learner asking anything at all?** | Whether O3 is scene 1 of the overlay or a later rung. `pod-0` trains the learner to ask — roughly seven native turns in seventy-odd drill sentences — and never once attests the native failing to understand |
+| **U3** | **Is "the native does not understand you" a prerequisite for the learner asking anything at all?** | Whether O3 is scene 1 of the overlay or a later rung. `pod-1` trains the learner to ask — roughly seven native turns in seventy-odd drill sentences — and never once attests the native failing to understand |
 | **U4** | **Does surviving a hedge count as surviving non-delivery, or is a hedge happy path?** | Whether O2 needs its own scene. Five hedges are attested (`g9`, `g41`, `g90`, `g121`, `g134`) and **not one is taken up by the next turn**. The corpus cannot tell us whether a learner needs teaching to act on an uncommitted answer |
 | **U5** | **Is worry-disclosure survivable on owned material?** | Whether O7 exists. The learner owns *"that makes me feel a little worried"* as production at `g186`, and has never heard it aimed at them |
 | **U6** | **Does the relational cluster presuppose anything, or is it free once assessment is owned?** | Whether O8 exists. All seven attestations of concede-and-hold, counter-assessment and normalise-and-tag are in scene 22, and the Method Pod attests disagreement only in the parked form |
@@ -391,7 +382,7 @@ The general layer was minted once from Aran's health v3 and is sector-invariant;
 re-weights the selector and adds vocabulary. The corpus families F1–F21 are a different naming of
 an overlapping space. **The gap is the overlay.**
 
-| General family | Corpus family | Attested in `pod-0`? | Method Pod? | Verdict |
+| General family | Corpus family | Attested in `pod-1`? | Method Pod? | Verdict |
 |---|---|---|---|---|
 | **Question back** | F3 | **Yes, densely** — 8, learner takes up every one | — | **Owned. Free** |
 | **Comply-with-read-back** | F9 + F1 | Thinly — `g98`, `g122`, `g123` | — | Move free; the **correction inside the confirm** earns O4 |
@@ -491,10 +482,10 @@ What each band makes available. Availability, never a prompt target.
 
 ## Gaps — explicit, nothing papered over
 
-1. **The graph rests on one corpus and one auxiliary.** `pod-0` is 142 dialogue rows. Ten
+1. **The graph rests on one corpus and one auxiliary.** `pod-1` is 142 dialogue rows. Ten
    survivability edges from 142 rows is thin, and seven of the ten have a single attested recovery.
 2. **Four of the nine overlay scenes are minted from nothing** — O3, O1, O6, O7 are unattested in
-   `pod-0` and explicitly unattestable in the Method corpus. They are the deliverable's weakest
+   `pod-1` and explicitly unattestable in the Method corpus. They are the deliverable's weakest
    ground and are marked as such in §6 rather than averaged into a total.
 3. **The five Method Pod nodes are cited by `part:line` into corpus files I did not open.** I took
    the quotes and locations from the two published Method Pod documents rather than re-reading the

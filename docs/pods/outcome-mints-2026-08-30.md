@@ -161,7 +161,7 @@ and it is what "the learner does not already own".
 - **F202 "Fair enough — then…"** — *The responder accepts a refusal without contest or apology and, in
   the same turn, produces the next move: a re-selection, or a question about what is possible.*
   Distinct from F16 (concede and **hold**) — F202 lets go and moves. Distinct from F1 re-selection
-  after a substitute (`g60`) — F202 has to generate the option. Attested nowhere in pod-0 as a turn:
+  after a substitute (`g60`) — F202 has to generate the option. Attested nowhere in pod-1 as a turn:
   `g161` absorbs and stops; `g163` asks and stands alone; the two have never been one turn. Health:
   the patient side of 2.7 f2 "A week off the wine" and 2.10 f2 "Tomorrow, all being well. I'll settle
   for that" — the absorb; the move is not attested there either.
@@ -192,7 +192,7 @@ learner turn.
 **The wrong arms:** contest ("But I paid by card last time"); apologise and stop (`g161` alone — the
 corpus's own line, which is what the bus scene shows the cost of); wait for the driver to solve it.
 **Survivability:** **S201** — *any ask (N2, N3, N9, P2) is attemptable only if a refusal with no
-substitute is survivable (N201)*. Recovery attested once in pod-0, in drill, as monologue (`g161`);
+substitute is survivable (N201)*. Recovery attested once in pod-1, in drill, as monologue (`g161`);
 in health as the learner absorbing from above (1.3 f3). Class: non-delivery.
 **Attestation:** minted from nothing at this rung. Method Pod Scene 24 is the sibling mint — the
 *bare* no, held across two turns between friends.
@@ -237,7 +237,7 @@ production. The scene deliberately shows the split form and its price.
 upper rung's specific failure is silence, because silence is what the other party is licensed to
 answer with.
 **Survivability:** **S202** — *asking anyone who can end the encounter is attemptable only if
-absorb-and-move fits in one turn (F202)*. Recovery attested never in pod-0; in health only on the
+absorb-and-move fits in one turn (F202)*. Recovery attested never in pod-1; in health only on the
 patient side (2.7 f2, 2.10 f2). Class: non-delivery.
 **Attestation:** rows attested in drill; partner turns minted; shape attested in health with the
 learner in the other seat (2.7 f2, 2.10 f2 refusing from above; 1.3 f3, 2.6 f3, 2.3 f3 absorbing
@@ -272,7 +272,7 @@ pain or the dizziness?") — which is why the rung-3 arm is minted for the form 
 **One new move. F205 "Wrong, and doesn't know it"** — *The responder grants what they believe was
 asked. The mishearing is visible only in the grant; no repair is requested and no doubt is shown.*
 Distinct from F1 (the right grant) and F4 (a hedged grant — the responder knows they are unsure).
-Attested nowhere in either corpus: every grant in pod-0 is correct, every read-back in health is correct
+Attested nowhere in either corpus: every grant in pod-1 is correct, every read-back in health is correct
 (the mapping's O4 finding). Universal at any counter with a queue.
 
 **The three forms of not being understood, and which two are here.** A flat "Sorry?" (F7 — the
@@ -321,7 +321,7 @@ the learner is the one being asked); switch to English.
 on demand is owned (N6 reversed: F8 spoken by the learner)*. Attested in health with the learner
 reformulating (2.5 f2 — "an infection in the tubes of your lungs — a bug, basically" / "Now I
 understand you" / "Does the rest make sense?", the complete recovery including the check); never in
-pod-0. Class: chaining.
+pod-1. Class: chaining.
 **Attestation:** minted from nothing at this rung; the recovery sequence rests on health 2.5 f2.
 Method Pod Scene 17 is the sibling mint (the recut, between friends).
 **Smoke test:** passes — the tag-check is the least translatable surface here and the position holds
@@ -354,7 +354,7 @@ and the one with the most inside a turn.
 explain at length; switch to English.
 **Survivability:** **S204** — *surviving a wrong uptake (N202) is attemptable only if the read-back
 pair is owned (P3, F9)* — a wrong grant can only be caught by a learner who can hear a read-back as a
-read-back. Recovery attested never, in either corpus. Class: failure — the class pod-0's ten edges
+read-back. Recovery attested never, in either corpus. Class: failure — the class pod-1's ten edges
 never use and health's five do; used here on the same terms.
 **Attestation:** minted for the form; recovery rests on health 2.5 f2 / 2.2 f2 / 1.4 f2 for the
 reformulate-and-check sequence.
@@ -387,7 +387,7 @@ be the consequence-holder's move on the world, and both arms below put it there.
 **One new move. F203 "My fault — here's what I've got"** — *The responder attributes the trouble to
 themselves or their party, without excuse, and in the same turn supplies whatever partial remedy they
 hold: a fact, an object, an offer.* Distinct from F13 (thank-and-downgrade) and P101 (self-blame for
-imposing, expecting absolution). Attested in pod-0 as monologue (`g182` "I'm sorry, my son lost his
+imposing, expecting absolution). Attested in pod-1 as monologue (`g182` "I'm sorry, my son lost his
 ticket", `g183` "We have paid, but my daughter has lost her ticket" — admission and supply in one line,
 no partner); in health 2.7 f3 "I'll admit, I just stopped them last time" (admission, no supply).
 
@@ -426,7 +426,7 @@ Seven turns, three minted learner turns. The excuse is named as a fact, not argu
 wait to be absolved; skip the supply.
 **Survivability:** **S205** — *admitting own fault (N203) is attemptable only if a held consequence
 can be absorbed (N201 position 3)* — accepting "I nearly went home" is absorbing a no. This is the
-edge that sequences O6 after O1. Recovery attested never in pod-0; health 2.7 f3 (patient side);
+edge that sequences O6 after O1. Recovery attested never in pod-1; health 2.7 f3 (patient side);
 Method Pod Scene 39 (mint). Class: relational.
 **Attestation:** minted from nothing at this rung. Method Pod Scene 39 is the sibling mint.
 **Smoke test:** passes, with the change to position 4 recorded above.
@@ -495,7 +495,7 @@ F17 (contradicts), F18 (normalise and seek agreement), F12 (assesses). **The smo
 move.** The test was first written as "does not match with a disclosure of one's own"; in many columns
 the matched line *is* the acknowledgement, so the exclusion was wrong and is gone. What survives every
 column is the exclusion of fixing and of withdrawing. Method Pod Scene 36 is the sibling mint (repeat
-it back, take the bare no, name the doubt as allowed); pod-0 attests nothing.
+it back, take the bare no, name the doubt as allowed); pod-1 attests nothing.
 
 **The asymmetry explains `g110`→`g111`.** At a counter, the customer's trouble gets *processed* —
 that is what a counter is for — so the customer's disclosure becomes an elicit and the corpus is
@@ -533,7 +533,7 @@ change the subject (`g31` again); over-match from your own life until it is abou
 resuming the business after a frame shift is owned (P6 / F21 / the next ticket)*. The acknowledging
 turn presupposes nothing — it is a token; what a learner cannot do without owning the resume is *get
 back*, and the corpus attests the pivot only as chaining (F11, F21). Recovery attested never in
-pod-0 (`g110`→`g111` goes the other way); Method Pod Scene 36 (mint). Class: relational.
+pod-1 (`g110`→`g111` goes the other way); Method Pod Scene 36 (mint). Class: relational.
 **Attestation:** minted from nothing.
 **Smoke test:** passes, with the change to F204 recorded above.
 
@@ -589,9 +589,9 @@ All from **201 up**. Full definitions, tests, citations and every "why not an ex
 Moves **F201** *No, and that's why* · **F202** *Fair enough — then…* · **F203** *My fault — here's
 what I've got* · **F204** *That sounds hard* · **F205** *Wrong, and doesn't know it*. Composition
 edges **C201–C208**. Survivability edges **S201–S206**, each stated A/B on the failure branch. Walks
-**W201–W208**, in `walks/pod-0.json`'s own `{step, node, position}` format with `surface` as an
+**W201–W208**, in `walks/pod-1.json`'s own `{step, node, position}` format with `surface` as an
 annotation, the fork as a `branches` array on the stem step, one arm the corpus's own continuation
-and the other the arm the walk follows. **Twenty-five pod-0 rows are reused unaltered; none is
+and the other the arm the walk follows. **Twenty-five pod-1 rows are reused unaltered; none is
 altered.** Twelve minted learner turns, twenty-two minted partner turns, across eight scenes of five
 to ten turns — inside the Method Pod's range.
 
@@ -730,7 +730,7 @@ Applied to every mint, held loosely. It changed two things and confirmed the res
 
 **Named gaps.**
 1. **`g38`→`g43` has no surface text on disk.** The store sites O3 on those rows (scene 7's café
-   order); `walks/pod-0.json` does not encode them and no document quotes them, and the database was
+   order); `walks/pod-1.json` does not encode them and no document quotes them, and the database was
    out of scope. W203 sits on scene 3's café order (W1, `g11`) — same mask, same position N2.2. If
    Tom wants the arm on scene 7's rows it is a re-siting, not a rewrite.
 2. **Health's attestation is in the mirror seat for every upper-rung arm** — the HW is the L2

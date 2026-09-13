@@ -137,7 +137,7 @@ be heard side by side before anyone rules.
 
 ### 4c. Ceiling vs meaning
 
-The §9a syllable ceiling forces a '…' into any piece over C (8 pod-0, 12 pod-1+) —
+The §9a syllable ceiling forces a '…' into any piece over C (8 for pod-1, 12 for every later pod) —
 and when a long clause has **no natural seam** under the ceiling, the current rule
 takes one forced mid-clause cut at the best prosodic point, flagged for human ear.
 The open question is whether that is the right way round: **when the ceiling and the

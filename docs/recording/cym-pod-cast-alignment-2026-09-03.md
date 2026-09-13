@@ -13,11 +13,11 @@ inert.** Details below. Nothing was written; nothing was deployed.
 
 ## 1. The disagreement is real and is exactly 39 lines
 
-Confirmed on `cym_n_for_eng:pod-0` (231 lines): **39 lines** where
+Confirmed on `cym_n_for_eng:pod-1` (231 lines): **39 lines** where
 `listening_pods.speakers` and `voice_config.podCast` give different genders.
 That part of the brief is exactly right.
 
-The other pod row, `cym_n_for_eng:pod-0-gated-2026-08-06`, holds a `speakers` map
+The other pod row, `cym_n_for_eng:gated-2026-08-06`, holds a `speakers` map
 but **no sentences at all**, so it casts nothing.
 
 ## 2. But nothing an artist sees reads `listening_pods.speakers`
@@ -102,7 +102,7 @@ all **231** southern pod lines are `uncast` and enter no queue. This is what
 accounts for the 239 uncast lines showing in *both* northern queues, since the
 queue is built per language across both courses.
 
-Its `listening_pods.speakers` is populated (28 speakers on `pod-0`) and, notably,
+Its `listening_pods.speakers` is populated (28 speakers on `pod-1`) and, notably,
 already carries the **newer** cast shape — `Diner 1/2`, `Cafe Barista`,
 `Bar Customer 1-3`, `Cafe Customer 1-3` — the same roles as cym_n's `podCast`,
 whereas cym_n's own `speakers` still holds the older `Customer 1/2/3` shape.
