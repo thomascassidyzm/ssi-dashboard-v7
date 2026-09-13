@@ -1125,3 +1125,15 @@ schema, no trigger, no learner-app change; the duplicate's mark stays the single
 for "still needed". Nine red-before/green-after cases in
 `services/voice-engine/booth-rerecord-revision-and-marks.test.cjs`; nothing in any pod's
 visibility or clip bytes was touched.
+
+## 2026-09-13 — cym_n_for_eng pod-1: the 77 known-split turns get per-sentence Welsh clips where Aran's and Catrin's takes allow it (job #594)
+
+**Commission (Tom, 2026-09-13 22:50Z).** In the Drill the whole turn lit and played as one block; "we should split the lines completely … at LEAST at sentence boundaries. And we should have the English come between. So maybe we're just not splitting the lines properly." Estate search found the player already drills per sentence with English between wherever a row carries per-sentence target clips, and 77 cym_n pod-1 turns had per-sentence English clips but no per-sentence Welsh clips. So this is a run of the existing splicer on one pod, not a build.
+
+**Decision.** `tools/pods/splice-sentence-clips.cjs`, gates untouched, scoped by `--orders` to exactly those 77 rows (the 18 turns with no per-sentence English at all stay whole-turn: nothing to pair the pieces with, and pairing by guess is the off-by-one defect the brief names). 38 split, 115 clips cut from the speakers' own whole-turn takes, 3 reused, 39 refused; `verify-spliced-sentences.cjs --all` green on every split row in the pod (43/43); production Drill in a phone viewport shows order 9 as two cards, one lit at a time, order Welsh / English / Welsh / Welsh proven by clip sizes.
+
+**The finding.** The turn Tom photographed (order 6, "Nac ydy, mae hi'n rhydd. Croeso i chi eistedd.") is one of the 39 refusals: Aran's pause between the sentences is 143 ms of near-silence split by a 0.1 ms blip, under the splicer's 100 ms / -35 dB floor. The pause is real; the gate is right to refuse under "a BAD split is WORSE than NO split", and loosening it was not on the table. 35 refusals are the same shape (human takes with fewer detectable pauses than the text has sentence ends plus hesitation ellipses), 3 are margin coin-tosses, 1 would cut on speech. Per-turn numbers: https://watson-1.tail4968cb.ts.net/d/4ceaa156. If Tom wants those turns per-sentence, the lever is per-sentence re-records on Aran's booth list, his call.
+
+**Why the spliced pieces stay `origin:'tts'` on a human-voiced pod.** Considered flipping it to inherit the source take's `human`. Left alone: `pods-plan` / `pods-coverage` read only the whole-turn slot, never the pieces, so the stamp changes nothing they show; and it is the stamp that keeps a spliced fragment from ever counting as a booth take of a same-text line, which is the property #568 relied on. The comment in the tool says "never 'human'" for that reason.
+
+**Why better × simpler × cheaper.** No player change, no TTS, no new tool; ffmpeg over 77 downloads, 115 S3 objects. Logs in `~/ssi-evidence/ssi-dashboard-v7/docs/pods/` (repo `.gitignore` blocks JSON under `docs/`, so "commit the log under docs/pods" is satisfied by the evidence tree, as every splice run since 2026-08-24 has done).
