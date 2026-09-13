@@ -1368,11 +1368,6 @@ app.get('/api/estate-map', async (req, res) => {
           per_course_counting: podsByLanguage.reduce((n, l) => n + l.slots_per_course_counting, 0),
           distinct_per_language: podsByLanguage.reduce((n, l) => n + l.distinct_lines, 0),
         },
-        // Original key, kept live.
-        pod_0_lines: {
-          per_course_counting: podsByLanguage.reduce((n, l) => n + l.slots_per_course_counting, 0),
-          distinct_per_language: podsByLanguage.reduce((n, l) => n + l.distinct_lines, 0),
-        },
       },
       // Tom, 2026-08-13: pods are per LANGUAGE. This is the unit to cost a render in.
       pods_by_language: podsByLanguage,

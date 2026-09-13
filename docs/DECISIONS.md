@@ -1,3 +1,9 @@
+## 2026-09-13 — Pod-0 does not exist: every course's core listening pod is pod-1, and pods by topic carry their own names (job #512, Tom's ruling 14:44Z)
+
+Tom, verbatim, relayed by RBF: "Pod-0 does not exist anymore. There should be zero references to it in code or docs or briefs. There is only pod-1 now. And then pods by topic like Method Pod, Senedd Pod, Health Pod."
+
+This entry and the header of the learner app's `servedPod.ts` are the single migration note. What happened: `tools/pods/retire-pod-slug.cjs` ran once per course on production the same day — 44 live core pods and the held south Welsh pod onto `pod-1` (13,638 sentence ids, 270 learner progress rows and 231 provenance pointers moved with them, one transaction each, snapshots in the evidence store, undo printed), and the 41 parked held slates onto `unrecorded`, `gated-<date>` and `retired-<date>` (the `pod-1-retired-*` and `pod-1-staged-*` rows were not touched). The `serving_pod` view and `estate_map()` name one slug (`database/changes/20260913_retire_pod_0.sql`); the estate map's `pod_0` alias keys are gone. Documents whose only subject was the old name are under `archive/docs-retired-2026-09-13/`, tools under `archive/tools-retired-2026-09-13/`; `archive/`, `database/migrations/`, `content_audit_log` and applied-log evidence files keep the ids they recorded, because rewriting the record of what happened is the same falsification the tool refuses on the audit log. Older entries in this journal say `pod-0` where they described the world at the time; they are the journal.
+
 # Decisions journal
 
 One entry per decision that a later reader would otherwise have to reverse-engineer
