@@ -129,3 +129,123 @@ describe('describeActor — the trail names a human', () => {
     expect(describeActor({})).toBe('unknown')
   })
 })
+
+// ---------------------------------------------------------------------------
+// applyVisibilityChange — the race Astra found (cold-check #582, 2026-09-13):
+// a hold that read 'held', then lost the CPU to a release, then wrote. The
+// write must be a compare-and-swap on the state that was judged, and a no-op
+// must not write at all (held → held re-stamped held_at on cym_s pod-1 at
+// 20:07:45Z the same day).
+// ---------------------------------------------------------------------------
+const { applyVisibilityChange } = require('./pod-visibility.cjs')
+
+/** An in-memory listening_pods with an honest WHERE visibility = <expected>. */
+function fakeStore(initial) {
+  const rows = new Map(Object.entries(initial).map(([id, r]) => [id, { id, ...r }]))
+  const writes = []
+  // Test hooks: stall a caller after its SELECT or before its UPDATE, so a
+  // second caller can run start-to-finish in the gap — the interleaving Astra
+  // described, made deterministic.
+  const gates = { afterRead: null, beforeWrite: null }
+  return {
+    rows, writes, gates,
+    readPod: async (id) => {
+      const data = rows.has(id) ? { ...rows.get(id) } : null
+      if (gates.afterRead) { const g = gates.afterRead; gates.afterRead = null; await g }
+      return data
+    },
+    updateWhereVisibility: async (id, expected, patch) => {
+      if (gates.beforeWrite) { const g = gates.beforeWrite; gates.beforeWrite = null; await g }
+      const row = rows.get(id)
+      if (!row) return null
+      const matches = expected === null || expected === undefined ? row.visibility == null : row.visibility === expected
+      if (!matches) { writes.push({ id, expected, hit: false }); return null }
+      Object.assign(row, patch)
+      writes.push({ id, expected, hit: true, patch })
+      return { ...row }
+    },
+  }
+}
+const ACTOR = { name: 'Tom', email: 'tom@example.com' }
+const T = '2026-09-13T21:00:00.000Z'
+
+describe('applyVisibilityChange — the write is conditional on the state it was judged against', () => {
+  it('a hold that races a release NEVER writes held over a now-live pod (Astra #582)', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', metadata: { scene_hashes: { s1: 'x' } } } })
+    // The hold has read 'held' and stalls (its check would pass on that read)…
+    let releaseDone
+    store.gates.afterRead = new Promise((r) => { releaseDone = r })
+    const hold = applyVisibilityChange({ podId: POD, requested: 'held', actor: ACTOR, nowIso: T, store })
+    await new Promise((r) => setImmediate(r))
+    // …while a release runs start to finish.
+    const release = await applyVisibilityChange({ podId: POD, requested: 'live', actor: ACTOR, nowIso: T, store })
+    expect(release.status).toBe(200)
+    expect(store.rows.get(POD).visibility).toBe('live')
+    releaseDone()
+    const r = await hold
+    // The stale hold must not have written 'held' over the live pod. It is a
+    // no-op on what it read (held → held), so it answers 200 without a write;
+    // had it reached the UPDATE, the WHERE visibility = 'held' would miss and
+    // the re-read would refuse it with the 409 rule text. Either way: no write.
+    expect([200, 409]).toContain(r.status)
+    if (r.status === 200) expect(r.body.noop).toBe(true)
+    else expect(r.body.error).toMatch(/live pod is never pulled back/i)
+    expect(store.rows.get(POD).visibility).toBe('live')
+    expect(store.rows.get(POD).metadata.held_at).toBeUndefined()
+    expect(store.rows.get(POD).metadata.scene_hashes).toEqual({ s1: 'x' })
+    expect(store.writes.filter((w) => w.hit).map((w) => w.patch.visibility)).toEqual(['live'])
+  })
+
+  it('held → held is a 200 that writes NOTHING (no re-stamped held_at)', async () => {
+    const meta = { held_at: '2026-09-13T20:00:00.000Z', held_by: 'Kai' }
+    const store = fakeStore({ [POD]: { visibility: 'held', metadata: meta } })
+    const r = await applyVisibilityChange({ podId: POD, requested: 'held', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(200)
+    expect(r.body.noop).toBe(true)
+    expect(store.writes).toEqual([])
+    expect(store.rows.get(POD).metadata).toEqual(meta)
+  })
+
+  it('live → live is likewise a silent 200', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'live', metadata: { released_at: T } } })
+    const r = await applyVisibilityChange({ podId: POD, requested: 'live', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(200)
+    expect(store.writes).toEqual([])
+  })
+
+  it('a plain held → live still lands, with the trail carried through', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', metadata: { held_at: 'a', scene_hashes: {} } } })
+    const r = await applyVisibilityChange({ podId: POD, requested: 'live', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(200)
+    expect(r.body.was).toBe('held')
+    expect(store.rows.get(POD).visibility).toBe('live')
+    expect(store.rows.get(POD).metadata).toMatchObject({ held_at: 'a', released_at: T, scene_hashes: {} })
+  })
+
+  it('live → held is refused up front, before any write', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'live', metadata: {} } })
+    const r = await applyVisibilityChange({ podId: POD, requested: 'held', actor: ACTOR, nowIso: T, store })
+    expect(r.status).toBe(409)
+    expect(store.writes).toEqual([])
+  })
+
+  it('two releases racing: the loser is a 200 no-op, not an error', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', metadata: {} } })
+    let go
+    store.gates.beforeWrite = new Promise((r) => { go = r })
+    const first = applyVisibilityChange({ podId: POD, requested: 'live', actor: ACTOR, nowIso: T, store })
+    await new Promise((r) => setImmediate(r))
+    const second = await applyVisibilityChange({ podId: POD, requested: 'live', actor: ACTOR, nowIso: T, store })
+    go()
+    const r = await first
+    expect(second.status).toBe(200)
+    expect(r.status).toBe(200)
+    expect(r.body.noop).toBe(true)
+    expect(store.writes.filter((w) => w.hit)).toHaveLength(1)
+  })
+
+  it('404 when the pod does not exist', async () => {
+    const r = await applyVisibilityChange({ podId: POD, requested: 'held', actor: ACTOR, nowIso: T, store: fakeStore({}) })
+    expect(r.status).toBe(404)
+  })
+})

@@ -4484,35 +4484,36 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
 
   try {
     const sb = supabaseClient.getClient()
-    const { data: pod, error: readErr } = await sb
-      .from('listening_pods').select('id, metadata, visibility').eq('id', podId).maybeSingle()
-    if (readErr) throw readErr
-    if (!pod) return res.status(404).json({ error: `Pod not found: ${podId}` })
-
-    // A LIVE pod is never pulled back. Tom, 2026-09-13: "it shouldn't be there
-    // any more should it? you can't unpublished a course, once it's gone live
-    // it can only ever be fixed line by line". The decision is pure and
-    // tested in pod-visibility.cjs; this is the only place it is applied.
-    const transition = podVisibility.checkVisibilityTransition(pod.visibility, parsed.visibility)
-    if (!transition.ok) return res.status(transition.status).json({ error: transition.error })
-
-    // Read-modify-write of the jsonb — every other metadata key survives.
-    const metadata = podVisibility.nextVisibilityMetadata(pod.metadata, {
-      visibility: parsed.visibility,
-      actor: admin,
-      nowIso: new Date().toISOString(),
+    // The decision AND the write discipline live in pod-visibility.cjs
+    // (applyVisibilityChange): the update is a compare-and-swap on the
+    // visibility that was read, so a hold racing a release can never stamp
+    // 'held' over a pod that went live in between (Astra cold-check #582), and
+    // a no-op writes nothing. This route only supplies the two store calls.
+    const store = {
+      readPod: async (id) => {
+        const { data, error } = await sb
+          .from('listening_pods').select('id, metadata, visibility').eq('id', id).maybeSingle()
+        if (error) throw error
+        return data
+      },
+      updateWhereVisibility: async (id, expected, patch) => {
+        let q = sb.from('listening_pods')
+          .update({ ...patch, updated_at: new Date().toISOString() })
+          .eq('id', id)
+        // The WHERE is the whole fix: match the exact state we judged.
+        q = expected === null || expected === undefined ? q.is('visibility', null) : q.eq('visibility', expected)
+        const { data, error } = await q.select('id, visibility, metadata').maybeSingle()
+        if (error) throw error
+        return data
+      },
+    }
+    const result = await podVisibility.applyVisibilityChange({
+      podId, requested: parsed.visibility, actor: admin, nowIso: new Date().toISOString(), store,
     })
-
-    const { data: updated, error: writeErr } = await sb
-      .from('listening_pods')
-      .update({ visibility: parsed.visibility, metadata, updated_at: new Date().toISOString() })
-      .eq('id', podId)
-      .select('id, visibility, metadata')
-      .maybeSingle()
-    if (writeErr) throw writeErr
-
-    logger.info(`[PodVisibility] ${podId}: ${pod.visibility} -> ${parsed.visibility} by ${podVisibility.describeActor(admin)}`)
-    res.json({ ok: true, pod: updated, was: pod.visibility })
+    if (result.status === 200 && !result.body.noop) {
+      logger.info(`[PodVisibility] ${podId}: ${result.body.was} -> ${parsed.visibility} by ${podVisibility.describeActor(admin)}`)
+    }
+    res.status(result.status).json(result.body)
   } catch (e) {
     logger.error('[PodVisibility] error:', e?.message || e)
     res.status(500).json({ error: e?.message || 'unknown error' })

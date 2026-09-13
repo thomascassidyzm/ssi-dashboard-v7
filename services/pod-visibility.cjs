@@ -73,8 +73,9 @@ function parseVisibilityRequest(body, podId) {
  * this system offers.
  *
  * held → live (already confirmed by parseVisibilityRequest) proceeds. A no-op
- * (held → held, live → live) proceeds and the route writes the same value —
- * harmless, and it keeps a re-fired request from turning into an error.
+ * (held → held, live → live) proceeds but WRITES NOTHING — see
+ * applyVisibilityChange; a re-fired request must neither error nor re-stamp
+ * held_at/released_at.
  *
  * @param {string|null|undefined} currentVisibility what listening_pods.visibility says now
  * @param {string} requested the already-validated visibility from parseVisibilityRequest
@@ -133,6 +134,70 @@ function describeActor(actor) {
   return email || name || 'unknown'
 }
 
+
+const LIVE_POD_NEVER_HELD = checkVisibilityTransition('live', 'held').error
+
+/**
+ * The whole hold/release act, from read to write, against an injected store.
+ *
+ * WHY THIS IS NOT JUST "check, then update". The check reads the pod's
+ * visibility and the update used to be unconditional, so a hold that raced a
+ * release could read 'held', pass checkVisibilityTransition, and then stamp
+ * 'held' over a pod that had gone live in between (GPT-6 Astra cold-check
+ * #582, 2026-09-13, reproduced against the real handler). The write is
+ * therefore a COMPARE-AND-SWAP: `updateWhereVisibility(podId, stateRead, patch)`
+ * must only touch the row if visibility still equals what was read, and must
+ * report a miss as null. A miss is re-read and re-judged: a live pod refuses
+ * the hold with the same 409 rule text as the check itself; a row that now
+ * already carries the requested value is a 200 no-op; anything else is a 409
+ * "changed under you".
+ *
+ * NO-OPS WRITE NOTHING. held → held on cym_s_for_eng:pod-1 re-stamped held_at
+ * at 2026-09-13T20:07:45Z (content_audit_log). A request that changes nothing
+ * returns 200 with the row as it is and leaves the trail alone.
+ *
+ * @param {object} args
+ * @param {string} args.podId
+ * @param {string} args.requested already validated by parseVisibilityRequest
+ * @param {{name?:string,email?:string}|null} args.actor
+ * @param {string} args.nowIso
+ * @param {{
+ *   readPod: (podId:string) => Promise<{id:string, visibility:string|null, metadata:object|null}|null>,
+ *   updateWhereVisibility: (podId:string, expectedVisibility:string|null, patch:{visibility:string, metadata:object}) => Promise<object|null>,
+ * }} args.store
+ * @returns {Promise<{status:number, body:object}>}
+ */
+async function applyVisibilityChange({ podId, requested, actor, nowIso, store }) {
+  const pod = await store.readPod(podId)
+  if (!pod) return { status: 404, body: { error: `Pod not found: ${podId}` } }
+
+  const transition = checkVisibilityTransition(pod.visibility, requested)
+  if (!transition.ok) return { status: transition.status, body: { error: transition.error } }
+
+  if (pod.visibility === requested) {
+    return { status: 200, body: { ok: true, pod, was: pod.visibility, noop: true } }
+  }
+
+  const metadata = nextVisibilityMetadata(pod.metadata, { visibility: requested, actor, nowIso })
+  const updated = await store.updateWhereVisibility(podId, pod.visibility, { visibility: requested, metadata })
+  if (updated) return { status: 200, body: { ok: true, pod: updated, was: pod.visibility } }
+
+  // Zero rows: the pod moved between our read and our write. Judge it again
+  // on what it is NOW, never on what we read.
+  const now = await store.readPod(podId)
+  if (!now) return { status: 404, body: { error: `Pod not found: ${podId}` } }
+  const again = checkVisibilityTransition(now.visibility, requested)
+  if (!again.ok) return { status: again.status, body: { error: again.error } }
+  if (now.visibility === requested) {
+    return { status: 200, body: { ok: true, pod: now, was: now.visibility, noop: true } }
+  }
+  return {
+    status: 409,
+    body: { error: `This pod changed while the request was in flight (now '${now.visibility}'); nothing was written. Re-read it and try again.` },
+  }
+}
+
 module.exports = {
-  VISIBILITIES, parseVisibilityRequest, checkVisibilityTransition, nextVisibilityMetadata, describeActor,
+  VISIBILITIES, LIVE_POD_NEVER_HELD, parseVisibilityRequest, checkVisibilityTransition, nextVisibilityMetadata, describeActor,
+  applyVisibilityChange,
 }

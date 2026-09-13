@@ -11,6 +11,12 @@ from the code. Newest first.
 
 ---
 
+## 2026-09-13 — The one-way door on pod visibility is closed at the write and in the database, and a no-op writes nothing (job #583, follow-up to #579; finding by GPT-6 Astra cold-check #582)
+
+**Why.** #579 refused live → held by reading the pod, checking, then writing unconditionally. Astra reproduced the gap against the real handler: a hold that read 'held', lost the CPU to a release, then wrote, stamped 'held' over a now-live pod; and nothing in production's triggers or constraints refused the transition from any other caller. Astra also showed held → held re-stamping `held_at` on cym_s_for_eng:pod-1 at 20:07:45Z.
+
+**Decision.** (1) `applyVisibilityChange` in `services/pod-visibility.cjs` now owns read-to-write: the UPDATE carries `WHERE visibility = <state read>` (compare-and-swap); a miss is re-read and re-judged, so a stale hold gets the same 409 rule text, and a lost race between two releases is a 200 no-op. (2) held → held and live → live return 200 and write nothing, so the trail is never re-stamped. (3) `database/changes/20260913_live_pod_never_held_trigger.sql` adds a BEFORE UPDATE OF visibility trigger that raises on live → held for every caller — psql, tools, any service — applied to production the same day and proved with a rolled-back UPDATE. held → live and non-visibility updates pass untouched. Rollback file alongside. Proof: `services/pod-visibility.test.cjs`, the interleaved hold/release test red (4 failing) on the pre-fix behaviour, green (24) after.
+
 ## 2026-09-13 — A live listening pod is never held back; the red "Hold back from learners" button is gone (job #579, Tom's ruling)
 
 Tom, verbatim, on seeing the red button on live Welsh Pod 1: "it shouldn't be there any more should it? you can't unpublished a course, once it's gone live it can only ever be fixed line by line". This replaces Watson's earlier proposal to restyle the button as a quiet secondary control.
