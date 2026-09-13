@@ -55,24 +55,24 @@ WHERE course_code = 'zzz_test_for_eng';
 INSERT INTO listening_pod_sentences
   (id, pod_id, scene_number, sentence_number, global_order, speaker, target_text, known_text)
 VALUES
-  ('zzz_test_for_eng:pod-0-s7',  'zzz_test_for_eng:pod-0', 1,  7,  7,  'Barista',  'Thank you very much.',                  'Thank you very much.'),
-  ('zzz_test_for_eng:pod-0-s8',  'zzz_test_for_eng:pod-0', 1,  8,  8,  'Customer', 'Is there somewhere I can sit?',         'Is there somewhere I can sit?'),
-  ('zzz_test_for_eng:pod-0-s9',  'zzz_test_for_eng:pod-0', 1,  9,  9,  'Barista',  'There is a table by the window.',       'There is a table by the window.'),
-  ('zzz_test_for_eng:pod-0-s10', 'zzz_test_for_eng:pod-0', 1, 10, 10,  'Customer', 'That looks perfect.',                    'That looks perfect.'),
-  ('zzz_test_for_eng:pod-0-s11', 'zzz_test_for_eng:pod-0', 1, 11, 11,  'Barista',  'I will bring it over to you.',           'I will bring it over to you.'),
-  ('zzz_test_for_eng:pod-0-s12', 'zzz_test_for_eng:pod-0', 1, 12, 12,  'Customer', 'That is very kind of you.',              'That is very kind of you.'),
-  ('zzz_test_for_eng:pod-0-s13', 'zzz_test_for_eng:pod-0', 2, 1,  13,  'Barista',  'How is the coffee?',                     'How is the coffee?'),
-  ('zzz_test_for_eng:pod-0-s14', 'zzz_test_for_eng:pod-0', 2, 2,  14,  'Customer', 'It is really good, thank you.',          'It is really good, thank you.'),
-  ('zzz_test_for_eng:pod-0-s15', 'zzz_test_for_eng:pod-0', 2, 3,  15,  'Barista',  'We roast it here every morning.',        'We roast it here every morning.'),
-  ('zzz_test_for_eng:pod-0-s16', 'zzz_test_for_eng:pod-0', 2, 4,  16,  'Customer', 'I did not know that.',                   'I did not know that.'),
-  ('zzz_test_for_eng:pod-0-s17', 'zzz_test_for_eng:pod-0', 2, 5,  17,  'Barista',  'Would you like to try something new?',   'Would you like to try something new?'),
-  ('zzz_test_for_eng:pod-0-s18', 'zzz_test_for_eng:pod-0', 2, 6,  18,  'Customer', 'Maybe tomorrow, I think.',               'Maybe tomorrow, I think.'),
-  ('zzz_test_for_eng:pod-0-s19', 'zzz_test_for_eng:pod-0', 2, 7,  19,  'Barista',  'We are open until six.',                 'We are open until six.'),
-  ('zzz_test_for_eng:pod-0-s20', 'zzz_test_for_eng:pod-0', 2, 8,  20,  'Customer', 'I will come back before then.',           'I will come back before then.'),
-  ('zzz_test_for_eng:pod-0-s21', 'zzz_test_for_eng:pod-0', 2, 9,  21,  'Barista',  'See you tomorrow morning.',              'See you tomorrow morning.'),
-  ('zzz_test_for_eng:pod-0-s22', 'zzz_test_for_eng:pod-0', 2, 10, 22,  'Customer', 'Have a good afternoon.',                  'Have a good afternoon.'),
-  ('zzz_test_for_eng:pod-0-s23', 'zzz_test_for_eng:pod-0', 2, 11, 23,  'Barista',  'You too, take care.',                    'You too, take care.'),
-  ('zzz_test_for_eng:pod-0-s24', 'zzz_test_for_eng:pod-0', 2, 12, 24,  'Customer', 'Goodbye for now.',                        'Goodbye for now.')
+  ('zzz_test_for_eng:pod-1-s7',  'zzz_test_for_eng:pod-1', 1,  7,  7,  'Barista',  'Thank you very much.',                  'Thank you very much.'),
+  ('zzz_test_for_eng:pod-1-s8',  'zzz_test_for_eng:pod-1', 1,  8,  8,  'Customer', 'Is there somewhere I can sit?',         'Is there somewhere I can sit?'),
+  ('zzz_test_for_eng:pod-1-s9',  'zzz_test_for_eng:pod-1', 1,  9,  9,  'Barista',  'There is a table by the window.',       'There is a table by the window.'),
+  ('zzz_test_for_eng:pod-1-s10', 'zzz_test_for_eng:pod-1', 1, 10, 10,  'Customer', 'That looks perfect.',                    'That looks perfect.'),
+  ('zzz_test_for_eng:pod-1-s11', 'zzz_test_for_eng:pod-1', 1, 11, 11,  'Barista',  'I will bring it over to you.',           'I will bring it over to you.'),
+  ('zzz_test_for_eng:pod-1-s12', 'zzz_test_for_eng:pod-1', 1, 12, 12,  'Customer', 'That is very kind of you.',              'That is very kind of you.'),
+  ('zzz_test_for_eng:pod-1-s13', 'zzz_test_for_eng:pod-1', 2, 1,  13,  'Barista',  'How is the coffee?',                     'How is the coffee?'),
+  ('zzz_test_for_eng:pod-1-s14', 'zzz_test_for_eng:pod-1', 2, 2,  14,  'Customer', 'It is really good, thank you.',          'It is really good, thank you.'),
+  ('zzz_test_for_eng:pod-1-s15', 'zzz_test_for_eng:pod-1', 2, 3,  15,  'Barista',  'We roast it here every morning.',        'We roast it here every morning.'),
+  ('zzz_test_for_eng:pod-1-s16', 'zzz_test_for_eng:pod-1', 2, 4,  16,  'Customer', 'I did not know that.',                   'I did not know that.'),
+  ('zzz_test_for_eng:pod-1-s17', 'zzz_test_for_eng:pod-1', 2, 5,  17,  'Barista',  'Would you like to try something new?',   'Would you like to try something new?'),
+  ('zzz_test_for_eng:pod-1-s18', 'zzz_test_for_eng:pod-1', 2, 6,  18,  'Customer', 'Maybe tomorrow, I think.',               'Maybe tomorrow, I think.'),
+  ('zzz_test_for_eng:pod-1-s19', 'zzz_test_for_eng:pod-1', 2, 7,  19,  'Barista',  'We are open until six.',                 'We are open until six.'),
+  ('zzz_test_for_eng:pod-1-s20', 'zzz_test_for_eng:pod-1', 2, 8,  20,  'Customer', 'I will come back before then.',           'I will come back before then.'),
+  ('zzz_test_for_eng:pod-1-s21', 'zzz_test_for_eng:pod-1', 2, 9,  21,  'Barista',  'See you tomorrow morning.',              'See you tomorrow morning.'),
+  ('zzz_test_for_eng:pod-1-s22', 'zzz_test_for_eng:pod-1', 2, 10, 22,  'Customer', 'Have a good afternoon.',                  'Have a good afternoon.'),
+  ('zzz_test_for_eng:pod-1-s23', 'zzz_test_for_eng:pod-1', 2, 11, 23,  'Barista',  'You too, take care.',                    'You too, take care.'),
+  ('zzz_test_for_eng:pod-1-s24', 'zzz_test_for_eng:pod-1', 2, 12, 24,  'Customer', 'Goodbye for now.',                        'Goodbye for now.')
 ON CONFLICT (id) DO UPDATE
   SET target_text = EXCLUDED.target_text,
       known_text  = EXCLUDED.known_text,
@@ -81,6 +81,6 @@ ON CONFLICT (id) DO UPDATE
 UPDATE listening_pods
    SET title = 'Test Pod — Coffee Shop',
        metadata = COALESCE(metadata, '{}'::jsonb) || '{"test_only": true}'::jsonb
- WHERE id = 'zzz_test_for_eng:pod-0';
+ WHERE id = 'zzz_test_for_eng:pod-1';
 
 COMMIT;

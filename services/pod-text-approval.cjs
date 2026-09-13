@@ -10,7 +10,7 @@
  * Why this exists: services/pod-voice-approvals.cjs already refuses a bulk render
  * whose VOICES are unverified. Nothing refused a bulk render whose WORDS are
  * unverified. 4,852 machine-written draft lines sit across 42 pods today; 128 of
- * them are in spa_for_eng:pod-0-unrecorded, the one course whose voices ARE
+ * them are in spa_for_eng:unrecorded, the one course whose voices ARE
  * approved — so hand-scoping every run was the only thing standing between those
  * drafts and audio a learner would hear. This module is that condition, in one
  * place, so it cannot happen again by accident in any course.

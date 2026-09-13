@@ -19,32 +19,31 @@ const pod = (slug, visibility, extra = {}) => ({
 
 describe('pickServingPod — held pods and the learner-facing default', () => {
   it('serves a live pod', () => {
-    expect(pickServingPod([pod('pod-0', 'live')]).slug).toBe('pod-0')
+    expect(pickServingPod([pod('pod-1', 'live')]).slug).toBe('pod-1')
   })
 
   it('never serves a held pod by default', () => {
-    expect(pickServingPod([pod('pod-0', 'held')])).toBeNull()
+    expect(pickServingPod([pod('pod-1', 'held')])).toBeNull()
   })
 
-  it('falls through a held pod-1 to a live pod-0 rather than serving the held one', () => {
-    // The preference order still applies — it just applies to the live pods.
-    expect(pickServingPod([pod('pod-1', 'held'), pod('pod-0', 'live')]).slug).toBe('pod-0')
+  it('does not fall through a held pod-1 to anything else', () => {
+    // The only serving slug is pod-1: a held one leaves the course with no served pod.
+    expect(pickServingPod([pod('pod-1', 'held'), pod('unrecorded', 'live')])).toBeNull()
   })
 
   it('FAILS CLOSED: a row with no visibility column is not servable', () => {
     // A thin projection must not become a hole in the gate.
-    expect(pickServingPod([{ id: 'x:pod-0', slug: 'pod-0', pod_type: 'core' }])).toBeNull()
+    expect(pickServingPod([{ id: 'x:pod-1', slug: 'pod-1', pod_type: 'core' }])).toBeNull()
   })
 
   it('includeHeld gives admin listings the held pod back, unchanged', () => {
-    expect(pickServingPod([pod('pod-0', 'held')], { includeHeld: true }).slug).toBe('pod-0')
-    expect(pickServingPod([pod('pod-1', 'held'), pod('pod-0', 'live')], { includeHeld: true }).slug).toBe('pod-1')
+    expect(pickServingPod([pod('pod-1', 'held')], { includeHeld: true }).slug).toBe('pod-1')
   })
 
   it('includeHeld does not resurrect a retired or non-core pod', () => {
     // The hold gate is additive to the existing rules, never a bypass of them.
-    expect(pickServingPod([pod('pod-0-retired-2026-08-22', 'live')], { includeHeld: true })).toBeNull()
-    expect(pickServingPod([pod('pod-0', 'live', { pod_type: 'aux' })], { includeHeld: true })).toBeNull()
+    expect(pickServingPod([pod('retired-2026-08-22', 'live')], { includeHeld: true })).toBeNull()
+    expect(pickServingPod([pod('pod-1', 'live', { pod_type: 'aux' })], { includeHeld: true })).toBeNull()
   })
 
   it('isLivePod is the single expression of "live", and it is exact', () => {
@@ -54,7 +53,7 @@ describe('pickServingPod — held pods and the learner-facing default', () => {
     expect(isLivePod(null)).toBe(false)
   })
 
-  it('leaves the serving slug allowlist alone', () => {
-    expect(SERVING_SLUGS).toEqual(['pod-1', 'pod-0'])
+  it('serves pod-1 and nothing else (Tom, 2026-09-13: "There is only pod-1 now")', () => {
+    expect(SERVING_SLUGS).toEqual(['pod-1'])
   })
 })

@@ -74,7 +74,7 @@
  * admin/labs? we have 7 labs now."
  *
  * The evidence that the complaint is real is in the data: canonical_script_versions
- * held exactly six rows, all on the sacked slate pod-0.5, all saved between
+ * held exactly six rows, all on one sacked slate, all saved between
  * 10:54:25 and 10:55:28 on 2026-08-31 — four rewrites of one line and then a
  * revert. He reached the lab through the one door that existed, edited the
  * first script it offered, discovered it was a sacked slate, and put it back

@@ -9,7 +9,7 @@
  * matter what the stored clip suffered. That is precisely how the head-clipping
  * bug went unheard for months (docs/audio-forensics-2026-08-14/).
  *
- * PodLongTakeStudio is the studio the T-20 pod-0 re-records actually use, and
+ * PodLongTakeStudio is the studio the T-20 pod-1 re-records actually use, and
  * before this it had no playback at all. These tests hold the line:
  *   - after upload, the played URL is the stored-clip route, never a blob: url
  *   - before upload, the control is disabled and labelled, never silently raw
@@ -48,8 +48,8 @@ vi.mock('@/services/api', () => ({ getApiUrl: () => 'http://api.test' }))
 const PLAN = {
   speakers: ['Cai'],
   items: [
-    { podId: 'cym_n:pod-0', podTitle: 'Pod 0', sentenceId: 's1', kind: 'target', speaker: 'Cai', line: { targetText: 'bore da', knownText: 'good morning' }, recorded: false },
-    { podId: 'cym_n:pod-0', podTitle: 'Pod 0', sentenceId: 's2', kind: 'target', speaker: 'Cai', line: { targetText: 'sut wyt ti', knownText: 'how are you' }, recorded: false },
+    { podId: 'cym_n:pod-1', podTitle: 'Pod 1', sentenceId: 's1', kind: 'target', speaker: 'Cai', line: { targetText: 'bore da', knownText: 'good morning' }, recorded: false },
+    { podId: 'cym_n:pod-1', podTitle: 'Pod 1', sentenceId: 's2', kind: 'target', speaker: 'Cai', line: { targetText: 'sut wyt ti', knownText: 'how are you' }, recorded: false },
   ]
 }
 

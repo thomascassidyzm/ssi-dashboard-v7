@@ -953,7 +953,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // WHICH VOICE ALREADY FILLS EACH LINE'S SLOT.
   //
   // A pod line's own FK is the estate's statement that this slot is filled, and
-  // by whom. It sees what a text lookup cannot: pod-0's rebuild on 2026-08-11
+  // by whom. It sees what a text lookup cannot: the core pod's rebuild on 2026-08-11
   // added "…" pause cues to the sentences, so six of Aran's June takes are
   // filed under the un-cued spelling of the very line they are linked to and
   // already playing on. Read-only, voice-agnostic, computed once per language.

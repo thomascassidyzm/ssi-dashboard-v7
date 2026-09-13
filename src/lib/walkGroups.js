@@ -6,9 +6,9 @@
  * properties that matter are properties of the JOIN, not of the page:
  *
  *   1. NO SLUG IS HARDCODED. The canonical pod slugs were renamed on
- *      2026-09-01 (`pod-0` → `pod-1`, two slates sacked). A page that keyed on
- *      slugs would have needed editing that day. This one does not, and will
- *      not the next time.
+ *      2026-09-01 (the core canon became `pod-1`, two slates sacked). A page
+ *      that keyed on slugs would have needed editing that day. This one does
+ *      not, and will not the next time.
  *   2. A DB SLUG WITH NO REGISTRY ENTRY IS SHOWN, NOT HIDDEN — as UNREGISTERED,
  *      with its real counts. That is how a slate awaiting deletion, or a
  *      registry that has fallen behind the database, stays visible instead of

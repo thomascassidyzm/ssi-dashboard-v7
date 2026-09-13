@@ -54,9 +54,9 @@ describe('pod mode detection + kind routing (pure)', () => {
   })
 
   it('validates pod upload metadata', () => {
-    expect(validatePodUploadMetadata({ mode: 'pod', podId: 'c:pod-0', sentenceId: 'c:pod-0:SC01-S001', kind: 'target' }).ok).toBe(true)
-    expect(validatePodUploadMetadata({ mode: 'pod', podId: 'c:pod-0', kind: 'target' }).ok).toBe(false)
-    expect(validatePodUploadMetadata({ mode: 'pod', podId: 'c:pod-0', sentenceId: 's', kind: 'presentation' }).ok).toBe(false)
+    expect(validatePodUploadMetadata({ mode: 'pod', podId: 'c:pod-1', sentenceId: 'c:pod-1:SC01-S001', kind: 'target' }).ok).toBe(true)
+    expect(validatePodUploadMetadata({ mode: 'pod', podId: 'c:pod-1', kind: 'target' }).ok).toBe(false)
+    expect(validatePodUploadMetadata({ mode: 'pod', podId: 'c:pod-1', sentenceId: 's', kind: 'presentation' }).ok).toBe(false)
     expect(validatePodUploadMetadata({ mode: 'script' }).ok).toBe(false)
   })
 })
@@ -179,9 +179,9 @@ const quiet = { log() {}, warn() {}, error() {} }
 function fixtureState() {
   return {
     sentences: {
-      'cym_n_for_eng:pod-0:SC01-S001': {
-        id: 'cym_n_for_eng:pod-0:SC01-S001',
-        pod_id: 'cym_n_for_eng:pod-0',
+      'cym_n_for_eng:pod-1:SC01-S001': {
+        id: 'cym_n_for_eng:pod-1:SC01-S001',
+        pod_id: 'cym_n_for_eng:pod-1',
         speaker: 'Anna (8 am)',
         target_text: 'Bore da',
         known_text: 'Good morning',
@@ -191,7 +191,7 @@ function fixtureState() {
         explainer_audio_id: null,
       },
     },
-    pods: { 'cym_n_for_eng:pod-0': { id: 'cym_n_for_eng:pod-0', course_code: 'cym_n_for_eng' } },
+    pods: { 'cym_n_for_eng:pod-1': { id: 'cym_n_for_eng:pod-1', course_code: 'cym_n_for_eng' } },
     courses: {
       cym_n_for_eng: {
         course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng',
@@ -211,7 +211,7 @@ function fixtureState() {
 }
 
 describe('preparePodRegistration', () => {
-  const metadata = { mode: 'pod', podId: 'cym_n_for_eng:pod-0', sentenceId: 'cym_n_for_eng:pod-0:SC01-S001', kind: 'target' }
+  const metadata = { mode: 'pod', podId: 'cym_n_for_eng:pod-1', sentenceId: 'cym_n_for_eng:pod-1:SC01-S001', kind: 'target' }
 
   it('resolves role/column/text/voice/replaced id for a target line', async () => {
     const r = await preparePodRegistration({ supabase: mockSupabase(fixtureState()), courseCode: 'cym_n_for_eng', metadata, logger: quiet })
@@ -248,12 +248,12 @@ describe('preparePodRegistration', () => {
   it('rejects a sentence that belongs to a different pod, and a pod from a different course', async () => {
     const wrongPod = await preparePodRegistration({
       supabase: mockSupabase(fixtureState()), courseCode: 'cym_n_for_eng',
-      metadata: { ...metadata, podId: 'cym_n_for_eng:pod-1' }, logger: quiet,
+      metadata: { ...metadata, podId: 'cym_n_for_eng:senedd-s4c-steve' }, logger: quiet,
     })
     expect(wrongPod.status).toBe(400)
 
     const state = fixtureState()
-    state.pods['cym_n_for_eng:pod-0'].course_code = 'fra_for_eng'
+    state.pods['cym_n_for_eng:pod-1'].course_code = 'fra_for_eng'
     const wrongCourse = await preparePodRegistration({ supabase: mockSupabase(state), courseCode: 'cym_n_for_eng', metadata, logger: quiet })
     expect(wrongCourse.status).toBe(400)
     expect(wrongCourse.error).toMatch(/belongs to fra_for_eng/)
@@ -262,14 +262,14 @@ describe('preparePodRegistration', () => {
   it('404s an unknown sentence', async () => {
     const r = await preparePodRegistration({
       supabase: mockSupabase(fixtureState()), courseCode: 'cym_n_for_eng',
-      metadata: { ...metadata, sentenceId: 'cym_n_for_eng:pod-0:SC99-S999', podId: 'cym_n_for_eng:pod-0' }, logger: quiet,
+      metadata: { ...metadata, sentenceId: 'cym_n_for_eng:pod-1:SC99-S999', podId: 'cym_n_for_eng:pod-1' }, logger: quiet,
     })
     expect(r.status).toBe(404)
   })
 })
 
 describe('commitPodRegistration', () => {
-  const metadata = { mode: 'pod', podId: 'cym_n_for_eng:pod-0', sentenceId: 'cym_n_for_eng:pod-0:SC01-S001', kind: 'target' }
+  const metadata = { mode: 'pod', podId: 'cym_n_for_eng:pod-1', sentenceId: 'cym_n_for_eng:pod-1:SC01-S001', kind: 'target' }
 
   async function prepareAndCommit(state, s3Key = 'mastered/FRESH-1.mp3') {
     const supabase = mockSupabase(state)
@@ -290,7 +290,7 @@ describe('commitPodRegistration', () => {
     expect(state.updates).toEqual([{
       table: 'listening_pod_sentences',
       patch: { target_audio_id: 'NEW-AUDIO-UUID' },
-      where: { id: 'cym_n_for_eng:pod-0:SC01-S001' },
+      where: { id: 'cym_n_for_eng:pod-1:SC01-S001' },
     }])
     // The previously linked TTS row is recorded as replaced — never deleted.
     expect(result.replacedAudioId).toBe('OLD-TTS-UUID')
@@ -304,18 +304,18 @@ describe('commitPodRegistration', () => {
 
   it('clears this track\'s rerecord_wanted key in the same write as the FK repoint', async () => {
     const state = fixtureState()
-    state.sentences['cym_n_for_eng:pod-0:SC01-S001'].rerecord_wanted = { target: 'human_catrin_cym' }
+    state.sentences['cym_n_for_eng:pod-1:SC01-S001'].rerecord_wanted = { target: 'human_catrin_cym' }
     await prepareAndCommit(state)
     expect(state.updates).toEqual([{
       table: 'listening_pod_sentences',
       patch: { target_audio_id: 'NEW-AUDIO-UUID', rerecord_wanted: null },
-      where: { id: 'cym_n_for_eng:pod-0:SC01-S001' },
+      where: { id: 'cym_n_for_eng:pod-1:SC01-S001' },
     }])
   })
 
   it('leaves a want for the OTHER track alone — that is a different job', async () => {
     const state = fixtureState()
-    state.sentences['cym_n_for_eng:pod-0:SC01-S001'].rerecord_wanted =
+    state.sentences['cym_n_for_eng:pod-1:SC01-S001'].rerecord_wanted =
       { target: 'human_catrin_cym', known: 'human_catrin_cym' }
     await prepareAndCommit(state)
     expect(state.updates[0].patch).toEqual({
@@ -337,7 +337,7 @@ describe('commitPodRegistration', () => {
       language: 'cym', role: 'target1', voice_id: 'human_catrin_cym',
       origin: 'human', s3_key: 'mastered/FIRST-TAKE.mp3',
     }]
-    state.sentences['cym_n_for_eng:pod-0:SC01-S001'].target_audio_id = 'HUMAN-ROW-1'
+    state.sentences['cym_n_for_eng:pod-1:SC01-S001'].target_audio_id = 'HUMAN-ROW-1'
     const { result } = await prepareAndCommit(state, 'mastered/SECOND-TAKE.mp3')
     expect(result.audioRow.id).toBe('HUMAN-ROW-1')
     expect(result.repointedExistingRow).toBe(true)

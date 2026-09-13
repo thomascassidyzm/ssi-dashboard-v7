@@ -569,7 +569,7 @@ async function flagTailDefect(inputPath, { text, mode } = {}) {
 //     justify, and no error path that ends in a cut.
 //
 // WHAT IT IS FOR (A-133, 2026-08-17, Tom's ruling after the ear check). The xAI
-// clone cast on nld_for_eng pod-0 emits two isolated impulses in the RAW
+// clone cast on nld_for_eng:pod-1 emits two isolated impulses in the RAW
 // provider bytes, 260ms and 380ms after the last phonation, 42dB above the room
 // floor they interrupt — the click Tom placed by ear as "after the voice ends".
 // The 8ms ANTI_CLICK_FADE never touched them because the fade is at EOF and the

@@ -2,8 +2,8 @@
 //
 // "what the hell is this abomination of a page??? why are we even displaying
 // the old archived PODS?" — said over the Welsh row
-// `pod-0-gated-2026-08-06`, an empty placeholder titled "[ARCHIVED …] [GATED …]
-// … superseded by pod-0-unrecorded, kept for rollback".
+// `gated-2026-08-06`, an empty placeholder titled "[ARCHIVED …] [GATED …]
+// … superseded by unrecorded, kept for rollback".
 //
 // Every fixture below is a real row copied out of `listening_pods` on
 // 2026-09-10, because the rule is only worth anything against the estate it has
@@ -22,16 +22,16 @@ const row = (slug, title, sentence_count = 231, extra = {}) => ({
 describe('podParkedReason — production bookkeeping, off the working page', () => {
   it('parks the abomination row Tom was reading', () => {
     expect(podParkedReason(row(
-      'pod-0-gated-2026-08-06',
+      'gated-2026-08-06',
       '[ARCHIVED 2026-08-11] [GATED 2026-08-06] placeholder — sentences moved to '
-        + 'cym_n_for_eng:pod-0-unrecorded until Aran/Catrin record them — superseded '
-        + 'by pod-0-unrecorded, kept for rollback',
+        + 'cym_n_for_eng:unrecorded until Aran/Catrin record them — superseded '
+        + 'by unrecorded, kept for rollback',
       0,
     ))).toBe('gated')
   })
 
   it('parks both switchover generations by slug suffix', () => {
-    expect(podParkedReason(row('pod-0-retired-2026-08-22', 'German … Pod 0', 142))).toBe('retired')
+    expect(podParkedReason(row('retired-2026-08-22', 'German … Pod 1', 142))).toBe('retired')
     expect(podParkedReason(row('pod-1-retired-2026-08-24', 'German … Pod 1'))).toBe('retired')
     expect(podParkedReason(row('pod-1-staged-2026-08-23', 'Syrian Arabic … working copy'))).toBe('staged')
   })
@@ -53,8 +53,8 @@ describe('podParkedReason — production bookkeeping, off the working page', () 
   })
 
   it('does NOT park a serving slug, even an empty one', () => {
-    // An empty pod-0 is a fact the producer must SEE, not a row to hide.
-    expect(podParkedReason(row('pod-0', 'Welsh Listening Pods — Pod 0', 0))).toBeNull()
+    // An empty pod-1 is a fact the producer must SEE, not a row to hide.
+    expect(podParkedReason(row('pod-1', 'Welsh Listening Pods — Pod 1', 0))).toBeNull()
   })
 
   it('does NOT park choice pods or the unrecorded working copy', () => {
@@ -62,7 +62,7 @@ describe('podParkedReason — production bookkeeping, off the working page', () 
     expect(isParkedPod(row('music', 'Spanish Choice Pod — Music (*Música*)', 749, { pod_type: 'choice' }))).toBe(false)
     expect(isParkedPod(row('travel-situations', 'Spanish Situational Pod — Travel Situations', 72, { pod_type: 'choice' }))).toBe(false)
     expect(isParkedPod(row('method-pod', 'Italian Method Pod — Tom and Aran Talk Bollocks', 309))).toBe(false)
-    expect(isParkedPod(row('pod-0-unrecorded', 'Bulgarian … Pod 0 — UNRECORDED working copy, not learner-facing'))).toBe(false)
+    expect(isParkedPod(row('unrecorded', 'Bulgarian … Pod 1 — UNRECORDED working copy, not learner-facing'))).toBe(false)
   })
 })
 
@@ -70,17 +70,17 @@ describe('partitionPods — what the page shows, and in what order', () => {
   it('shows Welsh its real pod and its choice pod, and parks the placeholder', () => {
     const { current, parked } = partitionPods([
       row('senedd-s4c-steve', 'Senedd: allegations of bullying at S4C', 567, { pod_type: 'choice' }),
-      row('pod-0-gated-2026-08-06', '[ARCHIVED 2026-08-11] [GATED 2026-08-06] placeholder', 0),
+      row('gated-2026-08-06', '[ARCHIVED 2026-08-11] [GATED 2026-08-06] placeholder', 0),
       row('pod-1', 'Northern Welsh Listening Pods — Pod 1'),
     ])
     // The serving pod reads first — "what is the state of this course's content".
     expect(current.map((p) => p.slug)).toEqual(['pod-1', 'senedd-s4c-steve'])
-    expect(parked.map((p) => p.slug)).toEqual(['pod-0-gated-2026-08-06'])
+    expect(parked.map((p) => p.slug)).toEqual(['gated-2026-08-06'])
   })
 
   it('never empties a course: every course in the estate keeps its serving pod', () => {
     const { current } = partitionPods([
-      row('pod-0-retired-2026-08-22', '[RETIRED 2026-08-22] German … Pod 0', 142),
+      row('retired-2026-08-22', '[RETIRED 2026-08-22] German … Pod 1', 142),
       row('pod-1-retired-2026-08-24', '[RETIRED 2026-08-24] German … Pod 1'),
       row('pod-1', 'German Listening Pods — Pod 1', 231, { visibility: 'live' }),
     ])

@@ -52,17 +52,6 @@
           {{ core.newSlate.targetClips.toLocaleString() }} target clips and
           {{ core.newSlate.knownClips.toLocaleString() }} known clips — 100% on both sides.
         </p>
-        <!-- The trap: mid-cutover, `pod-1` names two different objects in two
-             tables with two different sets of numbers. Seeing that without being
-             told would reasonably read as the page being broken. -->
-        <p class="text-muted">
-          <strong class="text-ink">One slug, two meanings, while the cutover runs.</strong>
-          In the canonical store <code>pod-1</code> is the core canon above, renamed from <code>pod-0</code> —
-          that rename has landed. On the generated side <code>pod-1</code> is the new slate and <code>pod-0</code>
-          is still the old one ({{ core.oldSlate.courses }} courses, {{ core.oldSlate.sentences.toLocaleString() }} sentences).
-          The learner-side cutover is {{ core.coursesDone }} of {{ core.coursesTotal }} courses in, runs on its own
-          tooling, and is nothing this page touches.
-        </p>
       </div>
 
       <p v-if="stale" class="text-muted text-xs mb-4 border border-line rounded px-3 py-2 bg-surface max-w-4xl">
@@ -124,10 +113,10 @@
  * endpoint to keep in step with a file the page can simply import. The join
  * itself lives in lib/walkGroups.js so it is testable without a browser.
  *
- * The old hardcoded NOTES map is gone. It named `pod-0`, `pod-1` and `pod-0.5`,
- * and the 2026-09-01 slug rename made two of those three wrong on the same
- * morning. Nothing on this page keys on a slug now, so the page was correct
- * before that migration and is correct after it, with no edit.
+ * The old hardcoded NOTES map is gone. It named three slates by slug, and the
+ * 2026-09-01 slug rename made two of those three wrong on the same morning.
+ * Nothing on this page keys on a slug now, so the page was correct before that
+ * migration and is correct after it, with no edit.
  *
  * BLAST RADIUS: deferred — LIVE AT NEXT GENERATION. The reasoning, and the
  * write it was checked against, are in components/admin/blastRadius.js beside

@@ -28,7 +28,7 @@ const LANGUAGE = 'zzz'
 const DIALECT = 'e2e'
 const SLOT = 'm:e2e'
 const COURSE_CODE = 'zzz_e2ebooth_for_eng'
-const POD_ID = `${COURSE_CODE}:pod-0`
+const POD_ID = `${COURSE_CODE}:pod-1`
 const SPEAKER = 'Reader'
 const LINES = [
   'e2e booth line one, read once and kept.',
@@ -71,7 +71,7 @@ async function seed(sb) {
 
   // 3. The pod and its eight lines.
   must(await sb.from('listening_pods').upsert({
-    id: POD_ID, course_code: COURSE_CODE, pod_type: 'core', slug: 'pod-0', pod_order: 0,
+    id: POD_ID, course_code: COURSE_CODE, pod_type: 'core', slug: 'pod-1', pod_order: 0,
     title: 'E2E Booth — the artist\'s day', scene: 'Eight lines nobody is', difficulty: 'beginner', speakers: {},
   }, { onConflict: 'id' }))
   for (let i = 0; i < LINES.length; i++) {

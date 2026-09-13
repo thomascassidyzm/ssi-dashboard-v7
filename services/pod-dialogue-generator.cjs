@@ -107,11 +107,11 @@ function validateScene(inputLines, outLines) {
 // siblings got at 8.
 const { syllableCeilingFor } = require('./shared/pod-tiers.cjs')
 
-// The one canonical English slate every course flexes from. Renamed from 'pod-0'
-// on 2026-09-01; the slates that previously held the names 'pod-1' and 'pod-0.5'
-// were sacked, archived and deleted the same day. This is the slug of a row in
-// `canonical_pod_scenarios` — it is NOT a course's listening-pod slug, which is
-// per-course, still 'pod-0' on most courses, and migrating separately.
+// The one canonical English slate every course flexes from, named 'pod-1' on
+// 2026-09-01 when the two sacked pre-metagraph slates were archived and deleted.
+// This is the slug of a row in `canonical_pod_scenarios` — it is NOT a course's
+// listening-pod slug, which happens to carry the same value ('pod-1' on every
+// course, Tom 2026-09-13) but is a different object in a different table.
 const CANONICAL_LIVE_SLUG = 'pod-1'
 
 /** Generate one scene → [{global_order, target_text, known_text}] (+ warnings). Retries once on hard failure. */
@@ -323,10 +323,10 @@ async function podHasAudio(podId) {
  * That is not hypothetical. Gating a pod by repointing `pod_id` (rather than cloning
  * with `tools/pods/clone-pod.cjs`, which re-slugs the ids) leaves the working copy's
  * rows still carrying the LIVE pod's id prefix. On 2026-08-10 a Generate on the
- * defaulted `pod-0` slug pulled 19 such rows out of `cym_n_for_eng:pod-0-unrecorded`
+ * form's defaulted core slug pulled 19 such rows out of `cym_n_for_eng:unrecorded`
  * back into the live pod and overwrote a day of the Welsh editor's proofreading with
  * fresh machine translation. The gate was a naming convention, and a defaulted form
- * field walked straight through it — see docs/pods/cym-n-pod0-19-sentence-move-2026-08-10.md.
+ * field walked straight through it.
  *
  * This only ever fires on a genuine CROSS-POD id collision. A generate into an empty
  * pod, or into its own rows, never trips it — which is why it is safe estate-wide.
@@ -385,7 +385,7 @@ async function assertNotGated(podId, { force = false, log = () => {} } = {}) {
  * VOID and has been all along: no learner consumer reads `listening_pods.visibility` —
  * api/courses/[code]/bundle.ts says so in its own comment, and the resolver
  * (packages/player-vue/src/composables/servedPod.ts) selects on `pod_type='core'` and
- * `slug in ('pod-1','pod-0')` alone. So a core header row on a serving slug is SERVED
+ * `slug = 'pod-1'` alone. So a core header row on a serving slug is SERVED
  * the moment it exists, held or not, and creating one is the harm rather than the
  * prelude to it. Tom's ruling, 2026-09-02: "do not let visibility stand in for a guard
  * anywhere." The `visibility='held'` write stays — removing it is a separate decision
@@ -461,7 +461,7 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
   // learner-reachable merely by being CREATED". THAT IS NOT TRUE and was not true
   // when it was written. NO LEARNER CONSUMER READS `listening_pods.visibility`:
   // packages/player-vue/src/composables/servedPod.ts resolves on `pod_type='core'`
-  // and `slug in ('pod-1','pod-0')` alone, and api/courses/[code]/bundle.ts
+  // and `slug = 'pod-1'` alone, and api/courses/[code]/bundle.ts
   // duplicates that literal and says so in its own comment ("Retiring a pod by
   // setting visibility='held' did not reach this consumer, because nothing here
   // reads visibility"). A held core pod on a serving slug is SERVED. So this write
@@ -592,7 +592,7 @@ async function updatePodSceneHashes(podId, hashes) {
  * @returns {Promise<{podId, courseCode, totalScenes, alreadyDone, generatedNow,
  *   remaining, more_remaining, cultureSource, warnings, scenesDone:number[]}>}
  */
-async function generatePodBatch({ courseCode, podSlug = 'pod-0', canonicalSlug = CANONICAL_LIVE_SLUG, force = false, mode, serveNow = false, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
+async function generatePodBatch({ courseCode, podSlug = 'pod-1', canonicalSlug = CANONICAL_LIVE_SLUG, force = false, mode, serveNow = false, deadlineMs = Infinity, maxScenes = Infinity, log = () => {} }) {
   const start = Date.now()
   const podId = `${courseCode}:${podSlug}`
   const course = await loadCourse(courseCode)
@@ -776,7 +776,7 @@ async function syncPodToCanonical({ podId, courseCode, podSlug, canonicalSlug = 
 /** One-off repair for pods generated before speaker labels followed the ledger
  *  name map: relabel existing sentence rows from the STORED ledger (no re-flex,
  *  no audio touched) and rebuild the header so voice-map keys match. */
-async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', canonicalSlug = CANONICAL_LIVE_SLUG, log = () => {} }) {
+async function relabelPodSpeakers({ courseCode, podSlug = 'pod-1', canonicalSlug = CANONICAL_LIVE_SLUG, log = () => {} }) {
   const podId = `${courseCode}:${podSlug}`
   const course = await loadCourse(courseCode)
   const { data: pod } = await supabase.from('listening_pods').select('metadata, source_file').eq('id', podId).maybeSingle()
@@ -812,8 +812,8 @@ async function relabelPodSpeakers({ courseCode, podSlug = 'pod-0', canonicalSlug
 module.exports = { generatePodBatch, generateScene, validateScene, parseLines, loadCanonicalScenes, loadCourse, buildPodGlossary, parseNameMap, localiseSpeakerLabel, relabelPodSpeakers }
 
 // CLI: node services/pod-dialogue-generator.cjs <courseCode> [--slug=<slug>] [--force|--sync|--relabel] [--max=N] [--serve-now]
-//   --slug=<s>   the pod to write. Defaults to pod-0 for compatibility, but pod-0 is a
-//                slug the player SERVES, so that default now refuses unless --serve-now.
+//   --slug=<s>   the pod to write. Defaults to pod-1, which is the slug the player
+//                SERVES, so the default refuses unless --serve-now.
 //   --force      full rebuild (wipe + re-flex all)
 //   --sync       incremental: re-flex only canonical scenes that changed
 //   --relabel    repair-only: apply the stored ledger's name map to existing

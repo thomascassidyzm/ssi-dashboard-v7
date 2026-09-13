@@ -19,13 +19,13 @@ const {
 
 const PODS = [
   {
-    id: 'c:pod-0', slug: 'pod-0', title: 'First steps', pod_order: 0,
+    id: 'c:pod-1', slug: 'pod-1', title: 'First steps', pod_order: 0,
     metadata: { sections: [
       { number: 1, title: 'At the café', label: 'SC01' },
       { number: 2, title: 'The neighbour', label: 'SC02' },
     ] },
   },
-  { id: 'c:pod-1', slug: 'pod-1', title: 'Out and about', pod_order: 1, metadata: {} },
+  { id: 'c:travel', slug: 'travel', title: 'Out and about', pod_order: 1, metadata: {} },
 ]
 
 function s(id, podId, scene, order, speaker, target, known, extra = {}) {
@@ -37,18 +37,18 @@ function s(id, podId, scene, order, speaker, target, known, extra = {}) {
 }
 
 const SENTENCES = [
-  // pod-0 scene 1: Anna / Waiter / Anna / Waiter
-  s('p0-1', 'c:pod-0', 1, 1, 'Anna', 'Bore da', 'Good morning', { explainer_text: 'Bore da is your all-day opener…' }),
-  s('p0-2', 'c:pod-0', 1, 2, 'Waiter (M)', 'Croeso', 'Welcome'),
-  s('p0-3', 'c:pod-0', 1, 3, 'Anna', 'Coffi, os gwelwch yn dda', 'Coffee, please'),
-  s('p0-4', 'c:pod-0', 1, 4, 'Waiter (M)', 'Wrth gwrs', 'Of course', { explainer_text: '' }),
-  // pod-0 scene 2: Neighbour glue chain (two rows = ONE utterance) then Anna
-  s('p0-5', 'c:pod-0', 2, 5, 'Neighbour (8 am)', 'Helo —', 'Hello —', { glue_to_next: true }),
-  s('p0-6', 'c:pod-0', 2, 6, 'Neighbour (8 am)', 'sut mae?', 'how are you?'),
-  s('p0-7', 'c:pod-0', 2, 7, 'Anna', 'Da iawn, diolch', 'Very well, thanks'),
-  // pod-1 scene 1
-  s('p1-1', 'c:pod-1', 1, 1, 'Anna', 'Ble mae’r orsaf?', 'Where is the station?'),
-  s('p1-2', 'c:pod-1', 1, 2, 'Waiter (M)', 'Dilynwch fi', 'Follow me'),
+  // pod-1 scene 1: Anna / Waiter / Anna / Waiter
+  s('p0-1', 'c:pod-1', 1, 1, 'Anna', 'Bore da', 'Good morning', { explainer_text: 'Bore da is your all-day opener…' }),
+  s('p0-2', 'c:pod-1', 1, 2, 'Waiter (M)', 'Croeso', 'Welcome'),
+  s('p0-3', 'c:pod-1', 1, 3, 'Anna', 'Coffi, os gwelwch yn dda', 'Coffee, please'),
+  s('p0-4', 'c:pod-1', 1, 4, 'Waiter (M)', 'Wrth gwrs', 'Of course', { explainer_text: '' }),
+  // pod-1 scene 2: Neighbour glue chain (two rows = ONE utterance) then Anna
+  s('p0-5', 'c:pod-1', 2, 5, 'Neighbour (8 am)', 'Helo —', 'Hello —', { glue_to_next: true }),
+  s('p0-6', 'c:pod-1', 2, 6, 'Neighbour (8 am)', 'sut mae?', 'how are you?'),
+  s('p0-7', 'c:pod-1', 2, 7, 'Anna', 'Da iawn, diolch', 'Very well, thanks'),
+  // travel scene 1
+  s('p1-1', 'c:travel', 1, 1, 'Anna', 'Ble mae’r orsaf?', 'Where is the station?'),
+  s('p1-2', 'c:travel', 1, 2, 'Waiter (M)', 'Dilynwch fi', 'Follow me'),
 ]
 
 const POD_CAST = {
@@ -106,7 +106,7 @@ describe('buildRecordingPlan — cues', () => {
     const neighbour = p.items.find(i => i.sentenceId === 'p0-5')
     expect(neighbour.cues).toEqual([])   // scene 2 opens with the Neighbour
     const pod1 = p.items.find(i => i.sentenceId === 'p1-2')
-    expect(pod1.cues.length).toBe(1)     // only pod-1 scene 1's opening line
+    expect(pod1.cues.length).toBe(1)     // only travel scene 1's opening line
     expect(pod1.cues[0].speaker).toBe('Anna')
   })
 
@@ -127,7 +127,7 @@ describe('buildRecordingPlan — scene boundaries', () => {
       [true, 'At the café'],
       [false, 'At the café'],
       [true, 'The neighbour'],
-      [true, 'Scene 1'],          // pod-1 has no sections → fallback title
+      [true, 'Scene 1'],          // travel has no sections → fallback title
     ])
   })
 

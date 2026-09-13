@@ -2,7 +2,7 @@
  * Tests for the human-recording speech-content gate.
  *
  * These pin the OPERATING POINT measured on 2026-08-23 against Catrin's four
- * real cym_n_for_eng:pod-0 takes — one genuine read and three recordings of an
+ * real cym_n_for_eng:pod-1 takes — one genuine read and three recordings of an
  * empty room. If one of these fails after a threshold change, that is the
  * point: the gate no longer separates the four clips it was built from, and
  * the header's table must be re-measured in the same commit.

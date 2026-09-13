@@ -1542,7 +1542,7 @@ async function masterAudio(audioBuffer, ttsText, opts = {}) {
     // COMPRESSOR-FREE since 2026-08-17 (Tom's ruling, A-131/A-132). The old
     // normalizeAudio() chain opened with PRE_COMPRESS (8:1 below -24dB) plus a
     // make-up gain, which lifts anything sitting in a clip's tail by roughly
-    // 12dB. A blind listening test that day proved the nld pod-0 xAI voice
+    // 12dB. A blind listening test that day proved the nld core-pod xAI voice
     // (xai_247783ebdd51) renders a click in the RAW provider bytes, with none of
     // our processing on it — so the compressor was not the source of the click,
     // it was the amplifier that made it audible. Same defect Tom heard from the
@@ -7481,7 +7481,7 @@ function buildPodTTSConfig(voice, language, courseCode) {
  *              whatever voice made them). A TARGET clip still requires the same
  *              voice: pod speakers are cast per character, and a Welsh line in
  *              the other speaker's voice IS a wrong clip. The old condition —
- *              only pods with slug pod-0, only lines proved byte-identical to
+ *              only pods on the core slug, only lines proved byte-identical to
  *              canonical_pod_scenarios, only the identical voice — was the
  *              accounting bug made executable, not a constraint; it is gone,
  *              and nothing replaces it as a gate.

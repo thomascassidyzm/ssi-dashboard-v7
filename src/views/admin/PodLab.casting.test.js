@@ -94,7 +94,7 @@ vi.mock('../../lib/podEngine', () => ({
 const CASTING = {
   course_code: 'eng_for_guj',
   course: { course_code: 'eng_for_guj', target_lang: 'eng', known_lang: 'guj' },
-  pods: [{ id: 'eng_for_guj:pod-0', speakers: SPEAKERS }],
+  pods: [{ id: 'eng_for_guj:pod-1', speakers: SPEAKERS }],
   cast_fingerprint: 'abc1234567890def',
   record: null,
   gate: { ok: false, reason: 'no_approval' },
@@ -125,7 +125,7 @@ const POOLS = {
 const APPLIED = {
   ok: true,
   course_code: 'eng_for_guj',
-  pods: [{ pod_id: 'eng_for_guj:pod-0', speakers: 22 }],
+  pods: [{ pod_id: 'eng_for_guj:pod-1', speakers: 22 }],
   cast_fingerprint: 'newfingerprint00',
   gate: { ok: false, reason: 'fingerprint_mismatch' },
   audio_touched: false,
@@ -248,13 +248,13 @@ describe('PodLab casting mode', () => {
 
   it('names the pod it is sampling, so a stale snapshot cannot pass unnoticed', async () => {
     const w = await mountLab()
-    expect(w.find('.pod-source').text()).toContain('eng_for_guj:pod-0')
+    expect(w.find('.pod-source').text()).toContain('eng_for_guj:pod-1')
     expect(w.find('.pod-source').text()).toMatch(/\d+ live lines/)
   })
 
   // THE DEFECT THAT MADE THE T-14 SAMPLE MEANINGLESS, 2026-08-11.
   // A pod's audio accumulates over months while its casting moves underneath.
-  // Measured on the live spa_for_eng:pod-0-unrecorded: only 16 of 119 target
+  // Measured on the live spa_for_eng:unrecorded: only 16 of 119 target
   // clips were rendered on the current two-voice cast; the other 103 are five
   // older voices from June. The page used to label each clip with whatever the
   // CAST said, so a June clip on `yis75yfp` was presented as "Pablo" and
@@ -382,7 +382,7 @@ describe('PodLab casting mode', () => {
       const body = JSON.parse(post[1].body)
       expect(body).toMatchObject({
         course_code: 'eng_for_guj',
-        pod_id: 'eng_for_guj:pod-0',
+        pod_id: 'eng_for_guj:pod-1',
         cast_fingerprint: 'abc1234567890def',
       })
       // One LIST per gender label — the route round-robins that gender's

@@ -39,20 +39,20 @@ function voices(n, genders = []) {
   }))
 }
 
-// Two-pod course: Anna+Waiter+Neighbour converse in pod-0; Anna+Waiter+Friend
+// Two-pod course: Anna+Waiter+Neighbour converse in pod-1; Anna+Waiter+Friend
 // in pod-1 (Anna spans both pods — the consistency case).
 function twoPodSentences() {
   ORDER = 0
   return [
-    // pod-0 scene 1: Anna ↔ Waiter back-and-forth
-    row('c:pod-0', 1, 'Anna (F)'),
-    row('c:pod-0', 1, 'Waiter (M)'),
-    row('c:pod-0', 1, 'Anna (F)'),
-    row('c:pod-0', 1, 'Waiter (M)'),
-    // pod-0 scene 2: Anna ↔ Neighbour (variants collapse to one character)
-    row('c:pod-0', 2, 'Neighbour (8 am)'),
-    row('c:pod-0', 2, 'Anna (F)'),
-    row('c:pod-0', 2, 'Neighbour (10:30 pm)'),
+    // pod-1 scene 1: Anna ↔ Waiter back-and-forth
+    row('c:pod-1', 1, 'Anna (F)'),
+    row('c:pod-1', 1, 'Waiter (M)'),
+    row('c:pod-1', 1, 'Anna (F)'),
+    row('c:pod-1', 1, 'Waiter (M)'),
+    // pod-1 scene 2: Anna ↔ Neighbour (variants collapse to one character)
+    row('c:pod-1', 2, 'Neighbour (8 am)'),
+    row('c:pod-1', 2, 'Anna (F)'),
+    row('c:pod-1', 2, 'Neighbour (10:30 pm)'),
     // pod-1 scene 1: Anna ↔ Waiter ↔ Friend three-hander
     row('c:pod-1', 1, 'Anna (F)'),
     row('c:pod-1', 1, 'Friend (F)'),
@@ -99,8 +99,8 @@ describe('proposeHumanCast — alternation', () => {
   it('reports forced reuse (never silent) when N is below a scene headcount', () => {
     ORDER = 0
     const sentences = [
-      row('c:pod-0', 1, 'A'), row('c:pod-0', 1, 'B'),
-      row('c:pod-0', 1, 'C'), row('c:pod-0', 1, 'D'),
+      row('c:pod-1', 1, 'A'), row('c:pod-1', 1, 'B'),
+      row('c:pod-1', 1, 'C'), row('c:pod-1', 1, 'D'),
     ]
     const { report } = proposeHumanCast({ sentences, voices: voices(2) })
     expect(report.forced.length).toBeGreaterThan(0)

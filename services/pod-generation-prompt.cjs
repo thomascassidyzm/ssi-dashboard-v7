@@ -24,7 +24,7 @@ const PROMPT = fs.readFileSync(path.join(__dirname, 'pod-generation-prompt.txt')
  * @param {string} a.sceneTitle      e.g. "Coffee Shop"
  * @param {Array<{global_order:number, speaker:string, english_text:string}>} a.lines
  * @param {number} [a.syllableCeiling] per-pod-level breathing ceiling C (founder ruling,
- *   docs/pods/pod-ladder-proposal.md §9a: pod-0 = 8, pod-1 and onward = 12)
+ *   docs/pods/pod-ladder-proposal.md §9a: the first rung = 8, every rung after it = 12)
  * @returns {string} the filled prompt to send to claude --print
  */
 function renderPrompt({ targetLanguage, knownLanguage, cultureNotes, sceneTitle, lines, ledger, syllableCeiling = 12 }) {

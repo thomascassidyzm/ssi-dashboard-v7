@@ -4,10 +4,10 @@
 -- fills both pods.
 --
 -- Test language 'zzz' only — hidden, never learner-facing, no TTS, no cost.
--- Its pod deliberately repeats zzz_test_for_eng:pod-0-s2's line verbatim.
+-- Its pod deliberately repeats zzz_test_for_eng:pod-1-s2's line verbatim.
 --
 -- Reverse with:
---   delete from listening_pod_sentences where pod_id = 'zzz_test2_for_eng:pod-0';
+--   delete from listening_pod_sentences where pod_id = 'zzz_test2_for_eng:pod-1';
 --   delete from listening_pods  where course_code = 'zzz_test2_for_eng';
 --   delete from course_audio    where course_code = 'zzz_test2_for_eng';
 --   delete from courses         where course_code = 'zzz_test2_for_eng';
@@ -25,13 +25,13 @@ values (
 on conflict (course_code) do nothing;
 
 insert into listening_pods (id, course_code, pod_type, slug, speakers)
-values ('zzz_test2_for_eng:pod-0', 'zzz_test2_for_eng', 'core', 'pod-0',
+values ('zzz_test2_for_eng:pod-1', 'zzz_test2_for_eng', 'core', 'pod-1',
         '["Customer","Barista"]'::jsonb)
 on conflict (id) do nothing;
 
 insert into listening_pod_sentences
   (id, pod_id, scene_number, sentence_number, global_order, speaker, target_text, known_text)
 values
-  ('zzz_test2_for_eng:pod-0-s1', 'zzz_test2_for_eng:pod-0', 1, 1, 1, 'Customer', 'A coffee, please.', 'A coffee, please.'),
-  ('zzz_test2_for_eng:pod-0-s2', 'zzz_test2_for_eng:pod-0', 1, 2, 2, 'Barista',  'Of course.',        'Of course.')
+  ('zzz_test2_for_eng:pod-1-s1', 'zzz_test2_for_eng:pod-1', 1, 1, 1, 'Customer', 'A coffee, please.', 'A coffee, please.'),
+  ('zzz_test2_for_eng:pod-1-s2', 'zzz_test2_for_eng:pod-1', 1, 2, 2, 'Barista',  'Of course.',        'Of course.')
 on conflict (id) do nothing;

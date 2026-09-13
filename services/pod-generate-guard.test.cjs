@@ -4,8 +4,8 @@
  *
  * The failure they exist to prevent. `POST /api/admin/pods/generate` is a button in
  * the Popty pods page behind `requireAdmin`, and its slug parameter READ
- * `String(req.body?.slug || 'pod-0').trim()` — it DEFAULTED to a slug the player
- * serves for ~68 courses, while the same body may carry `force: true` and
+ * `String(req.body?.slug || <the core slug>).trim()` — it DEFAULTED to the slug the
+ * player serves on every course, while the same body may carry `force: true` and
  * `mode: 'full'`, which is the wipe-and-re-flex path (deleteAllSentences, then
  * re-generate). That is the shortest route in the estate from a human hand to an
  * emptied live pod, and the pods behind it are the ones ~32,000 former Welsh
@@ -17,15 +17,13 @@
  * RECORDED RED, against the pre-fix logic lifted verbatim out of the route
  * (`services/.pod-generate-guard.prefix.scaffold.cjs`, deleted after the run):
  *
- *   FAIL  REFUSES a request with no slug at all, instead of defaulting to pod-0
+ *   FAIL  REFUSES a request with no slug at all, instead of defaulting to pod-1
  *     AssertionError: expected undefined to be truthy
  *   FAIL  REFUSES an empty or whitespace slug for the same reason
  *     TypeError: .toMatch() expects to receive a string, but got undefined
  *   FAIL  reads serveNow from the body, mirroring the CLI --serve-now flag
  *     AssertionError: expected undefined to be true // Object.is equality
- *   FAIL  REFUSES a generation onto pod-0, the slug the route used to default to
- *     AssertionError: expected null to be truthy
- *   FAIL  REFUSES a generation onto pod-1 as well
+ *   FAIL  REFUSES a generation onto pod-1, the slug the route used to default to
  *     AssertionError: expected null to be truthy
  *   FAIL  REFUSES a held pod — the resolver never reads visibility, so held is not a guard
  *     AssertionError: expected null to be truthy
@@ -54,7 +52,7 @@ const MOD = process.env.POD_GENERATE_GUARD_MODULE || './pod-generate-guard.cjs'
 const { parsePodGenerateRequest, generationRefusal } = require(MOD)
 
 describe('parsePodGenerateRequest — the slug must be asked for, never assumed', () => {
-  it('REFUSES a request with no slug at all, instead of defaulting to pod-0', () => {
+  it('REFUSES a request with no slug at all, instead of defaulting to pod-1', () => {
     const r = parsePodGenerateRequest({ courseCode: 'cym_for_eng' })
     expect(r.error).toBeTruthy()
     expect(r.error).toMatch(/slug/)
@@ -67,20 +65,20 @@ describe('parsePodGenerateRequest — the slug must be asked for, never assumed'
   })
 
   it('carries an explicit slug through', () => {
-    const r = parsePodGenerateRequest({ courseCode: 'cym_for_eng', slug: 'pod-0-unrecorded' })
+    const r = parsePodGenerateRequest({ courseCode: 'cym_for_eng', slug: 'unrecorded' })
     expect(r.error).toBeUndefined()
-    expect(r.slug).toBe('pod-0-unrecorded')
+    expect(r.slug).toBe('unrecorded')
   })
 
   it('reads serveNow from the body, mirroring the CLI --serve-now flag', () => {
-    expect(parsePodGenerateRequest({ courseCode: 'c_for_e', slug: 'pod-0', serveNow: true }).serveNow).toBe(true)
-    expect(parsePodGenerateRequest({ courseCode: 'c_for_e', slug: 'pod-0' }).serveNow).toBe(false)
+    expect(parsePodGenerateRequest({ courseCode: 'c_for_e', slug: 'pod-1', serveNow: true }).serveNow).toBe(true)
+    expect(parsePodGenerateRequest({ courseCode: 'c_for_e', slug: 'pod-1' }).serveNow).toBe(false)
   })
 
   // These four passed pre-fix; they are here to prove the extraction was faithful
   // rather than a rewrite.
   it('still requires courseCode', () => {
-    expect(parsePodGenerateRequest({ slug: 'pod-0' }).error).toMatch(/courseCode/)
+    expect(parsePodGenerateRequest({ slug: 'pod-1' }).error).toMatch(/courseCode/)
   })
   it('still carries force through only as a literal true', () => {
     expect(parsePodGenerateRequest({ courseCode: 'c_for_e', slug: 'x', force: true }).force).toBe(true)
@@ -96,8 +94,8 @@ describe('parsePodGenerateRequest — the slug must be asked for, never assumed'
 })
 
 const serving = (over = {}) => ({
-  podId: 'cym_for_eng:pod-0',
-  slug: 'pod-0',
+  podId: 'cym_for_eng:pod-1',
+  slug: 'pod-1',
   podExists: true,
   podVisibility: 'held',
   rows: 240,
@@ -108,15 +106,11 @@ const serving = (over = {}) => ({
 })
 
 describe('generationRefusal — generating onto a slug the player serves', () => {
-  it('REFUSES a generation onto pod-0, the slug the route used to default to', () => {
+  it('REFUSES a generation onto pod-1, the slug the route used to default to', () => {
     const r = generationRefusal(serving())
     expect(r).toBeTruthy()
-    expect(r).toMatch(/pod-0/)
+    expect(r).toMatch(/pod-1/)
     expect(r).toMatch(/serv/i)
-  })
-
-  it('REFUSES a generation onto pod-1 as well', () => {
-    expect(generationRefusal(serving({ slug: 'pod-1', podId: 'cym_for_eng:pod-1' }))).toBeTruthy()
   })
 
   it('REFUSES a held pod — the resolver never reads visibility, so held is not a guard', () => {
@@ -154,6 +148,6 @@ describe('generationRefusal — generating onto a slug the player serves', () =>
   })
 
   it('allows a parked slug, which is where a draft generation belongs', () => {
-    expect(generationRefusal(serving({ slug: 'pod-0-unrecorded', podId: 'cym_for_eng:pod-0-unrecorded' }))).toBeNull()
+    expect(generationRefusal(serving({ slug: 'unrecorded', podId: 'cym_for_eng:unrecorded' }))).toBeNull()
   })
 })

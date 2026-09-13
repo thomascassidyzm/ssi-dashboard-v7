@@ -933,8 +933,8 @@ async function loadRecordingStatus() {
     recBySentence.value = map
     // Pretty names for voice IDS THE CLIPS ACTUALLY CARRY. The cast is only a
     // lookup table here: it is the plan for the NEXT render and disagrees with
-    // the audio already on the pod (the Welsh pod, `pod-1` since the re-slug of
-    // 2026-09-10 and `pod-0` before it, was cast to five HUMAN_* placeholders
+    // the audio already on the pod (the Welsh pod, `cym_n_for_eng:pod-1`,
+    // was cast to five HUMAN_* placeholders
     // while every clip was Aran's own human_aran_cym_n), so a
     // voice that isn't in the cast shows its raw id rather than a cast name.
     // An ALIAS of a cast voice is the same person (podCastAliases): Aran's

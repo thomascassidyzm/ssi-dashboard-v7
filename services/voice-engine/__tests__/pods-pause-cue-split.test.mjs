@@ -82,7 +82,7 @@ describe('splitPodTurnSentences — Korean was never broken', () => {
   // inserted. 0 of 604 live kor_for_eng pod rows contain 。！？ (census
   // 2026-08-24). These assertions pin that: they pass before AND after the fix.
 
-  // kor_for_eng:pod-0-retired-2026-08-22:SC03-S002
+  // kor_for_eng:retired-2026-08-22:SC03-S002
   it('splits a 4-sentence Korean turn on Latin marks', () => {
     const t = '안녕하세요. 커피 한 잔 주세요. 우유는 넣어 주시고 설탕은 빼 주세요. 테이크아웃으로요.'
     expect(splitPodTurnSentences(t)).toEqual([
@@ -90,7 +90,7 @@ describe('splitPodTurnSentences — Korean was never broken', () => {
     ])
   })
 
-  // kor_for_eng:pod-0-retired-2026-08-22:SC01-S003
+  // kor_for_eng:retired-2026-08-22:SC01-S003
   it('cuts a Korean turn at ? and not at the internal ,', () => {
     expect(splitPodTurnSentences('저는 아주 잘 지내요, 감사합니다. 일하러 가세요?'))
       .toEqual(['저는 아주 잘 지내요, 감사합니다.', '일하러 가세요?'])
@@ -139,7 +139,7 @@ describe('splitPodTurnSentences — Arabic', () => {
 })
 
 describe('splitPodTurnSentences — Devanagari danda is knowingly NOT handled', () => {
-  // hin_for_eng:pod-0-retired-2026-08-24:SC04-S002. The splicer does not handle
+  // hin_for_eng:retired-2026-08-24:SC04-S002. The splicer does not handle
   // ।/॥ either; generator and splicer stay identical by decision. This test
   // PINS the current behaviour so the follow-up that adds ।/॥ has to change
   // both files, and this assertion, together.

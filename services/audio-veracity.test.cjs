@@ -252,7 +252,7 @@ describe('Rule 3 — the last word of the script must have been SPOKEN', () => {
 })
 
 describe('Rule 4 — numerals: how a number is SPELT is not whether it was SAID', () => {
-  // The 2026-08-13 pod-0 English render quarantined 35 clips and every one of
+  // The 2026-08-13 pod-1 English render quarantined 35 clips and every one of
   // them was this: whisper writes "£48" where the script writes "forty-eight
   // pounds". The transcripts below are the real ones from that run
   // (tools/eng-distinct-render/quarantined.json).

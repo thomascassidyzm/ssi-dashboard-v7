@@ -2,8 +2,8 @@
  * The gate on POD GENERATION — the HTTP route and the generator underneath it.
  *
  * WHY. `POST /api/admin/pods/generate` is a button in the Popty pods page. Its slug
- * parameter read `String(req.body?.slug || 'pod-0').trim()`: it DEFAULTED to a slug the
- * player serves for ~68 courses, while the same body may carry `force: true` and
+ * parameter read `String(req.body?.slug || <the core slug>).trim()`: it DEFAULTED to the
+ * slug the player serves on every course, while the same body may carry `force: true` and
  * `mode: 'full'` — the wipe-and-re-flex path that calls `deleteAllSentences()` first.
  * That made it the shortest route in the estate from a human hand to an emptied live
  * pod, and the pods behind it are the ones ~32,000 former Welsh learners are waiting on.
@@ -40,7 +40,7 @@ function parsePodGenerateRequest (body) {
   const mode = ['full', 'sync', 'resume'].includes(body?.mode) ? body.mode : undefined
   const serveNow = body?.serveNow === true
   if (!courseCode) return { error: 'courseCode required' }
-  if (!slug) return { error: 'slug required — it has no default, because the default was pod-0, which the player serves' }
+  if (!slug) return { error: 'slug required — it has no default, because the default was the core slug pod-1, which the player serves' }
   return { courseCode, slug, canonicalSlug, force, mode, serveNow }
 }
 

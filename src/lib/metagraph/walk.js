@@ -32,15 +32,15 @@ export const STEP_KINDS = {
 /**
  * The graph's `g<n>` references are the live canonical slate's `global_order`
  * and nobody else's. That slate is `pod-1` — the first rung of the compulsory
- * default chain, renamed from `pod-0` on 2026-09-01 when the two sacked slates
- * that held the names `pod-1` and `pod-0.5` were archived and deleted. Any other
+ * default chain, named so on 2026-09-01 when the two sacked pre-metagraph slates
+ * were archived and deleted. Any other
  * slate (`method-pod-chapters`, `learning-flagship`, and anything ingested later)
  * numbers its rows independently, so mapping it through this graph would invent
  * coverage out of an off-by-one. Any slug but this one walks in its own reference
  * space and every line comes back UNMAPPED, which is the true answer.
  *
  * This constant is a DATABASE SLUG and had to move with the rename: left at
- * 'pod-0' it made the Script Lab report the core pod as 0/36 shapes traversed
+ * the retired name it made the Script Lab report the core pod as 0/36 shapes traversed
  * and 231 lines unmapped — a lie about the one walk the whole graph is derived
  * from. This constant is the one place the live slate is named. Nothing infers it.
  */

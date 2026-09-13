@@ -15,7 +15,7 @@ const {
   parseVisibilityRequest, nextVisibilityMetadata, describeActor, VISIBILITIES,
 } = require('./pod-visibility.cjs')
 
-const POD = 'cym_n_for_eng:pod-0'
+const POD = 'cym_n_for_eng:pod-1'
 
 describe('parseVisibilityRequest — release is a deliberate act', () => {
   it('holds on a bare request: erring towards invisible needs no ceremony', () => {

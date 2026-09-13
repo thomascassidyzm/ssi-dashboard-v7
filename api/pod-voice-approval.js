@@ -28,7 +28,7 @@ import { verifySupabaseJWT } from './lib/auth.js'
 import approvals from '../services/pod-voice-approvals.cjs'
 
 const {
-  castFingerprint, loadCastPods, loadApprovals, updateApprovals, evaluateApproval, resolveCurrentPod0,
+  castFingerprint, loadCastPods, loadApprovals, updateApprovals, evaluateApproval, resolveCurrentPod,
 } = approvals
 
 export default async function handler(req, res) {
@@ -61,16 +61,16 @@ async function getState(req, res, supabase) {
   if (!courseCode) return res.status(400).json({ error: 'course is required' })
 
   // The cast the gate fingerprints spans EVERY pod of the course, not just
-  // pod-0 — four courses (spa_for_eng, hrv_for_eng, cym_n/s_for_eng) have more.
+  // pod-1 — several courses (spa_for_eng, hrv_for_eng, cym_n/s_for_eng) have more.
   const pods = await loadCastPods(supabase, courseCode)
   const live = castFingerprint(pods)
   const all = await loadApprovals(supabase)
   const record = all[courseCode] || null
 
   // Slugs + line counts, so the page can tell which pod holds the CURRENT
-  // content instead of hard-coding `<course>:pod-0`. Three courses keep a
-  // `pod-0-unrecorded` working copy and their `pod-0` is stale or emptied —
-  // see resolveCurrentPod0() for the counts and Tom's T-14 rejection.
+  // content instead of hard-coding `<course>:pod-1`. Some courses keep an
+  // `unrecorded` working copy and their `pod-1` is stale or emptied —
+  // see resolveCurrentPod() for Tom's T-14 rejection.
   const podIds = pods.map((p) => p.id)
   const { data: meta } = podIds.length
     ? await supabase.from('listening_pods').select('id, slug, title, pod_type').in('id', podIds)
@@ -94,7 +94,7 @@ async function getState(req, res, supabase) {
     sentence_count: counts.get(p.id) || 0,
     speakers: p.speakers || {},
   }))
-  const current = resolveCurrentPod0(podsOut)
+  const current = resolveCurrentPod(podsOut)
 
   const { data: course } = await supabase
     .from('courses')
@@ -107,7 +107,8 @@ async function getState(req, res, supabase) {
     course: course || null,
     pods: podsOut,
     // The pod whose lines the casting page must show and sample. Never assume
-    // `<course>:pod-0` — for spa/cym that is the stale or emptied copy.
+    // `<course>:pod-1` — on a course with a working copy that is the stale or
+    // emptied copy.
     current_pod_id: current ? current.id : null,
     cast_fingerprint: live,
     record,

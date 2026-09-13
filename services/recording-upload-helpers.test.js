@@ -164,15 +164,15 @@ describe('buildProvenanceContext', () => {
       replacedS3Key: null,
       voiceId: 'human_catrin_cym',
       pod: {
-        podId: 'cym_n_for_eng:pod-0',
-        sentenceId: 'cym_n_for_eng:pod-0:SC01-S001',
+        podId: 'cym_n_for_eng:pod-1',
+        sentenceId: 'cym_n_for_eng:pod-1:SC01-S001',
         kind: 'target',
         replacedAudioId: 'OLD-TTS-UUID'
       }
     })
     expect(ctx.mode).toBe('pod')
-    expect(ctx.pod_id).toBe('cym_n_for_eng:pod-0')
-    expect(ctx.sentence_id).toBe('cym_n_for_eng:pod-0:SC01-S001')
+    expect(ctx.pod_id).toBe('cym_n_for_eng:pod-1')
+    expect(ctx.sentence_id).toBe('cym_n_for_eng:pod-1:SC01-S001')
     expect(ctx.kind).toBe('target')
     expect(ctx.replaced_audio_id).toBe('OLD-TTS-UUID')
     // existing fields keep their exact names/values (additive extension)

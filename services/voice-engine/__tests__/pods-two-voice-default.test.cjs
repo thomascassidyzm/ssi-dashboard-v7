@@ -56,7 +56,7 @@ function row(podId, scene, speaker) {
 
 /**
  * A WELSH-SHAPED script: many characters, few scenes — the exact shape that
- * made Tom see "56 different cast members". cym_n_for_eng/pod-0 really does
+ * made Tom see "56 different cast members". cym_n_for_eng/pod-1 really does
  * carry 22 canonical characters against 2 human voices (live DB, 2026-08-06).
  */
 function welshShapedSentences() {
@@ -72,7 +72,7 @@ function welshShapedSentences() {
   for (let i = 0; i < pairs; i++) {
     const f = female[i % female.length]
     const m = male[i % male.length]
-    out.push(row('pod-0', i + 1, f), row('pod-0', i + 1, m), row('pod-0', i + 1, f))
+    out.push(row('pod-1', i + 1, f), row('pod-1', i + 1, m), row('pod-1', i + 1, f))
   }
   return out
 }

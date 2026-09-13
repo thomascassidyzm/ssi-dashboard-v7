@@ -1,7 +1,7 @@
 /**
  * Pod cast voices — the MANUAL voice choice behind PodLab's voice picker.
  *
- * Tom, 2026-08-11, after rejecting the Spanish pod-0 cast ("Spanish needs
+ * Tom, 2026-08-11, after rejecting the Spanish core-pod cast ("Spanish needs
  * Iberian Spanish, not Mexican pronounciation, that's a different course"):
  *
  *   "should the casting process, in the PODLAB allow voice choice? I think it
@@ -52,7 +52,7 @@ import approvals from '../services/pod-voice-approvals.cjs'
 import podSync from '../tools/pod-sync.cjs'
 import consentGate from '../services/shared/voice-consent-gate.cjs'
 
-const { castFingerprint, loadCastPods, loadApprovals, evaluateApproval, resolveCurrentPod0 } = approvals
+const { castFingerprint, loadCastPods, loadApprovals, evaluateApproval, resolveCurrentPod } = approvals
 const { assignVoices, loadVoicePools, poolKeysForCourse, canonicalSpeakerName } = podSync
 
 const PROVIDERS = new Set(['xai', 'azure', 'elevenlabs'])
@@ -211,8 +211,9 @@ async function postApply(req, res, supabase, user) {
   const poolKeys = poolKeysForCourse(await loadVoicePools(), course)
 
   // Which pod. Default is the CURRENT pod — the one PodLab shows and samples,
-  // resolved by the gate's own resolveCurrentPod0 and never assumed to be
-  // `<course>:pod-0`, because for spa/cym that is the stale or emptied copy.
+  // resolved by the gate's own resolveCurrentPod and never assumed to be
+  // `<course>:pod-1`, because on a course with an `unrecorded` working copy
+  // that is the stale or emptied copy.
   // Course-wide is deliberately NOT the default: the other pods are not on
   // screen, not sampled, and a cast you cannot hear is a cast you cannot judge.
   const pods = await loadCastPods(supabase, courseCode)
@@ -245,8 +246,8 @@ async function postApply(req, res, supabase, user) {
     if (!one) return res.status(404).json({ error: `pod ${requested} is not in ${courseCode}` })
     targets = [one]
   } else {
-    const current = resolveCurrentPod0(withMeta)
-    if (!current) return res.status(404).json({ error: `no pod-0 found for ${courseCode}` })
+    const current = resolveCurrentPod(withMeta)
+    if (!current) return res.status(404).json({ error: `no core pod found for ${courseCode}` })
     targets = [current]
   }
 

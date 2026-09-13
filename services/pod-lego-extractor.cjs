@@ -329,9 +329,9 @@ function getSupabase() {
   })
 }
 
-// NO LITERAL SLUG. This read used to keep `pod-0` as a constant, which since Tom's
-// 1-based ruling of 2026-08-22 silently extracts NOTHING for the 22 courses that
-// moved to `pod-1`. The serving slug is a per-course fact; the rule lives once, in
+// NO LITERAL SLUG. This read used to keep a retired slug as a constant, which
+// silently extracted NOTHING for every course that had moved to `pod-1`. Whether
+// a course has a serving pod is a per-course fact; the rule lives once, in
 // tools/pods/serving-slug.cjs.
 const { fetchServingSlug } = require('../tools/pods/serving-slug.cjs')
 

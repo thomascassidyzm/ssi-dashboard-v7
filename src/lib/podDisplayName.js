@@ -1,63 +1,32 @@
 /**
- * What a pod is CALLED on screen, as against what its row is keyed by.
+ * What a pod is CALLED on screen.
  *
- * Tom's ruling of 2026-08-22 — "We want to not have a Pod 0 from now on. We
- * want this first one to be called Pod 1" — renamed the product, and the rename
- * landed on 22 courses' slugs. It did not land on the rest, so on those courses
- * the slug is still `pod-0` and the title column still literally reads "…
- * Listening Pods — Pod 0" over a pod everybody calls Pod 1.
+ * Every course's core listening pod is `pod-1`, keyed and titled as such
+ * (Tom, 2026-09-13: "There is only pod-1 now"). The display name is therefore
+ * the row's own title, and only when a row has no title does the slug stand in.
  *
- * The recordist's booth has said POD-1 over such a pod since 2026-09-02
- * (RecordistRoom.vue, POD_SECTIONS) and the production pages had not caught up,
- * so one body of work carried two names across two pages. Aran, who records the
- * Welsh one, had stopped reporting the double name as a fault and started writing
- * "Pod0/1" as one word — carrying our inconsistency for us.
- *
- * WELSH IS NO LONGER ONE OF ITS CUSTOMERS. `cym_n_for_eng` was re-slugged to
- * `pod-1` on 2026-09-10 (Tom: "THERE IS NO POD-0 anymore by name … we will trip
- * up over it again at a later date with new agents"), title and all, so nothing
- * here applies to it any more. This module stays because the 44 courses the
- * switchover has not reached genuinely still hold the slug `pod-0`, and their
- * first pod is equally called Pod 1 on screen. It goes when the last of them
- * comes across — not before, or 44 courses read "Pod 0" again.
- *
- * This is a DISPLAY rule and nothing else. It does not rename a slug: a slug
- * rename is a migration with a learner-progress protocol attached, and the one
- * that happened for Welsh is tools/pods/retire-pod-slug.cjs.
- *
- * Only the exact slug `pod-0` is renamed. `pod-0-retired-2026-08-22` is a
- * parked pod that keeps its own name, and `pod-1` already says Pod 1.
+ * This module used to translate a numbering the product had already retired;
+ * that translation is gone with the slugs that needed it. It stays as the ONE
+ * place the pod cards, the detail header and the manage card get a pod's name,
+ * so the next naming decision is one edit and is pinned by a test of the thing
+ * that ships rather than by a copy of the expression in a test file.
  */
 
 import { slugOfPod } from './servingPod.js'
 
-/** The one slug whose display name is out of step with the product's. */
-const RENAMED_SLUG = 'pod-0'
-
 /**
  * The pod's title as a person should read it.
  * @param {{title?:string, slug?:string, id?:string}} pod
- * @returns {string} the title, with "Pod 0" read as "Pod 1" where that is the pod meant
+ * @returns {string} the title, unchanged
  */
 export function podDisplayTitle(pod) {
-  const title = (pod && pod.title) || ''
-  if (!title || slugOfPod(pod) !== RENAMED_SLUG) return title
-  // The separator and the case are the title's own; only the digit is ours.
-  return title.replace(/\bPod([\s-]?)0\b/gi, (m, sep) => `${m.slice(0, 3)}${sep}1`)
+  return (pod && pod.title) || ''
 }
 
 /**
- * The name to put on a pod when there may be no title to work from.
- *
- * The pod CARDS and the detail header call podDisplayTitle directly, because a
- * pod row always has a title there. The manage card cannot assume that, and
- * before 2026-09-10 its fallback built a label straight off the slug — so on
- * Welsh, whose 231-line pod is still keyed `pod-0`, it read "Pod 0 — already
- * generated" directly under a card that had just said Pod 1. One body of work,
- * two names, on one screen, which is exactly what the rename exists to stop.
- *
- * Exported rather than inlined so the rule is pinned by a test of the thing
- * that ships, not by a copy of the expression in a test file.
+ * The name to put on a pod when there may be no title to work from: the manage
+ * card cannot assume a title exists, so it falls back to a label built off the
+ * slug — `pod-1` reads "Pod 1", a topic slug reads as itself.
  *
  * @param {{title?:string, slug?:string, id?:string}} pod
  */
@@ -66,5 +35,5 @@ export function podDisplayLabel(pod) {
   if (titled) return titled
   const slug = slugOfPod(pod)
   if (!slug) return ''
-  return `Pod ${slug === RENAMED_SLUG ? '1' : slug.replace(/^pod-/, '')}`
+  return `Pod ${slug.replace(/^pod-/, '')}`
 }

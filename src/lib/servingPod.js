@@ -1,16 +1,15 @@
 /**
  * Which pod does a course actually serve?
  *
- * It used to be `<course>:pod-0` everywhere, so admin pages hard-coded that id.
- * Tom's ruling of 2026-08-22 — "We want to not have a Pod 0 from now on. We
- * want this first one to be called Pod 1" — makes the serving slug a PER-COURSE
- * fact: hrv_for_eng is the first course across and serves `hrv_for_eng:pod-1`
- * (231 lines), with its old content parked on `pod-0-retired-2026-08-22` and
- * `pod-1-retired-2026-08-22`. The other ~68 courses still serve `pod-0` and
- * must not change behaviour, which is why this is a lookup and not a rename.
+ * Every course's core listening pod is `pod-1` (Tom, 2026-09-13: "There is only
+ * pod-1 now"), with old content parked on dated slugs such as
+ * `retired-2026-08-22` and `pod-1-retired-2026-08-22`. Admin pages still LOOK
+ * the pod up rather than assuming the id: a course may have no core pod at all,
+ * and a parked pod keeps pod_type='core', so "the serving pod" is a resolution
+ * against the course's rows, never a string built from the course code.
  *
- * Server-side twin: `resolveCurrentPod0()` in services/pod-voice-approvals.cjs.
- * That one carries an extra first preference for the `pod-0-unrecorded` working
+ * Server-side twin: `resolveCurrentPod()` in services/pod-voice-approvals.cjs.
+ * That one carries an extra first preference for the `unrecorded` working
  * copy, because voice approval reviews unrecorded content before release; these
  * pages want what is LIVE, so the working copy is deliberately not preferred
  * here.
@@ -44,10 +43,10 @@
  * path, POST /api/admin/pods/:courseCode/:slug/visibility.
  */
 
-// Serving slugs, most-preferred first. An explicit allowlist, not a prefix
-// match: archived pods keep pod_type='core' through the rename, so a
-// `pod-0-retired-…` holding 300 lines must never be mistaken for the live pod.
-export const SERVING_SLUGS = ['pod-1', 'pod-0']
+// Serving slugs. An explicit allowlist, not a prefix match: archived pods keep
+// pod_type='core' through the rename, so a `retired-…` holding 300 lines must
+// never be mistaken for the live pod.
+export const SERVING_SLUGS = ['pod-1']
 
 export function slugOfPod(pod) {
   if (!pod) return ''
@@ -106,7 +105,7 @@ export async function fetchServingPodId(sb, courseCode, opts = {}) {
  *
  * Tom, 2026-09-10, looking at the production pods page: "what the hell is this
  * abomination of a page??? why are we even displaying the old archived PODS?"
- * The row he was reading was `cym_n_for_eng:pod-0-gated-2026-08-06`, titled
+ * The row he was reading was `cym_n_for_eng:gated-2026-08-06`, titled
  * "[ARCHIVED 2026-08-11] [GATED 2026-08-06] placeholder — sentences moved to …
  * until Aran/Catrin record them — supersed…", holding ZERO sentences. Production
  * bookkeeping on a working page.
@@ -124,21 +123,22 @@ export async function fetchServingPodId(sb, courseCode, opts = {}) {
  *    the 231-line Welsh pod Aran is recording right now. Hiding held pods would
  *    hide exactly the pod this page exists to follow. The column is not read
  *    here at all, deliberately.
- * 2. A SERVING SLUG IS NEVER PARKED. `pod-0`/`pod-1` are the pods the course
- *    actually serves; if one is somehow empty that is a fact the producer needs
+ * 2. A SERVING SLUG IS NEVER PARKED. `pod-1` is the pod the course actually
+ *    serves; if it is somehow empty that is a fact the producer needs
  *    to SEE, not a row to hide. So the allowlist above short-circuits the
  *    empty rule, and no filter built on this can ever hide the live pod.
  *
  * Choice pods (`senedd-s4c-steve`, `music`, `travel-situations`, `method-pod`)
  * are real content with real names and match none of these rules, so they keep
- * showing. So does the `pod-0-unrecorded` working copy, which is unrecorded, not
+ * showing. So does the `unrecorded` working copy, which is unrecorded, not
  * retired.
  */
 
-// The switchover tools stamp the date onto the slug: `pod-0-retired-2026-08-22`,
-// `pod-1-staged-2026-08-23`, `pod-0-gated-2026-08-06`. The date is optional here
-// so a hand-made `pod-0-retired` parks too.
-const PARKED_SLUG_SUFFIX = /-(retired|gated|staged)(-\d{4}-\d{2}-\d{2})?$/i
+// The switchover tools stamp the date onto the slug: `retired-2026-08-22`,
+// `pod-1-staged-2026-08-23`, `gated-2026-08-06`. The marker may be the whole
+// slug or its last segment, and the date is optional, so a hand-made `retired`
+// or `pod-1-retired` parks too.
+const PARKED_SLUG_SUFFIX = /(?:^|-)(retired|gated|staged)(-\d{4}-\d{2}-\d{2})?$/i
 // The marker a sweep writes into the title when it parks a pod's content.
 const PARKED_TITLE_MARKER = /\[\s*(archived|retired|gated)\b|\bsupersed(ed|es|ing)\b/i
 

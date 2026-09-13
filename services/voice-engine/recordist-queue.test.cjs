@@ -74,9 +74,9 @@ function fixture({ audio = [] } = {}) {
       { course_code: 'fra_for_eng', target_lang: 'fra', known_lang: 'eng', voice_config: CAST },
     ],
     listening_pods: [
-      { id: 'p_n', course_code: 'cym_n_for_eng', slug: 'pod-0' },
-      { id: 'p_s', course_code: 'cym_s_for_eng', slug: 'pod-0' },
-      { id: 'p_f', course_code: 'fra_for_eng', slug: 'pod-0' },
+      { id: 'p_n', course_code: 'cym_n_for_eng', slug: 'pod-1' },
+      { id: 'p_s', course_code: 'cym_s_for_eng', slug: 'pod-1' },
+      { id: 'p_f', course_code: 'fra_for_eng', slug: 'pod-1' },
     ],
     listening_pod_sentences: [
       { id: 's1', pod_id: 'p_n', global_order: 1, speaker: 'Aran', target_text: 'Bore da.', known_text: 'Good morning.' },
@@ -446,7 +446,7 @@ test('a same-dialect line in two courses still collapses to one recording', asyn
   // sharing a line are still one read.
   const f = dialectFixture()
   f.courses.push({ course_code: 'cym_n2_for_eng', target_lang: 'cym', known_lang: 'eng', dialect: 'north', voice_config: CAST })
-  f.listening_pods.push({ id: 'p_n2', course_code: 'cym_n2_for_eng', slug: 'pod-0' })
+  f.listening_pods.push({ id: 'p_n2', course_code: 'cym_n2_for_eng', slug: 'pod-1' })
   f.listening_pod_sentences.push({ id: 's7', pod_id: 'p_n2', global_order: 1, speaker: 'Aran', target_text: 'Bore da.', known_text: 'Good morning.' })
   const aran = await buildQueue(stubDb(f), await resolveRecordist(stubDb(f), 'human_aran_cym_n'), { includeRecorded: true })
   assert.equal(aran.lines.length, 1)
@@ -533,20 +533,20 @@ test('a pod line carries its pod on the wire, and a line with no pod carries non
   const aran = await resolveRecordist(db, 'human_aran_cym_n')
   const q = await buildQueue(db, aran, { includeRecorded: true })
 
-  const pod0 = q.lines.find((l) => l.text === 'Bore da.')
-  assert.equal(pod0.podId, 'p_n')
-  assert.equal(pod0.podSlug, 'pod-0')
+  const pod1 = q.lines.find((l) => l.text === 'Bore da.')
+  assert.equal(pod1.podId, 'p_n')
+  assert.equal(pod1.podSlug, 'pod-1')
   const senedd = q.lines.find((l) => l.text === 'Diolch, Gadeirydd.')
   assert.equal(senedd.podSlug, 'senedd-s4c-steve')
   assert.equal(senedd.podTitle, 'Senedd: allegations of bullying at S4C')
 
   // AND THE ORDER IS THE ONE THE SERVER ALREADY SORTED BY — course, then pod
-  // slug, then position — untouched. 'Nos da.' is cym_s's pod-0, which is why
-  // the slugs read n:pod-0, n:senedd, s:pod-0 rather than all the pod-0s
+  // slug, then position — untouched. 'Nos da.' is cym_s's pod-1, which is why
+  // the slugs read n:pod-1, n:senedd, s:pod-1 rather than all the pod-1s
   // together: the surface groups on the slug and never re-sorts, so a
   // recordist's queue cannot reshuffle between two loads of the same page.
   assert.deepEqual(q.lines.filter((l) => l.kind === 'pod').map((l) => l.podSlug),
-    ['pod-0', 'senedd-s4c-steve', 'pod-0'])
+    ['pod-1', 'senedd-s4c-steve', 'pod-1'])
 })
 
 // TWO PODS, SAME LINE NUMBERS. Live trace, 2026-09-09: position 10 of Aran's
@@ -560,9 +560,9 @@ test('lines of one pod stay contiguous even when another pod reuses its numbers'
   // Deliberately numbered 1..3 in BOTH pods, and given ids that interleave
   // under an id tiebreak: 'a_' sorts before every 'b_'.
   f.listening_pod_sentences = [
-    { id: 'b_pod1_1', pod_id: 'p_n', global_order: 1, speaker: 'Aran', target_text: 'Pod-0 un.', known_text: 'one' },
-    { id: 'b_pod1_2', pod_id: 'p_n', global_order: 2, speaker: 'Aran', target_text: 'Pod-0 dau.', known_text: 'two' },
-    { id: 'b_pod1_3', pod_id: 'p_n', global_order: 3, speaker: 'Aran', target_text: 'Pod-0 tri.', known_text: 'three' },
+    { id: 'b_pod1_1', pod_id: 'p_n', global_order: 1, speaker: 'Aran', target_text: 'Pod-1 un.', known_text: 'one' },
+    { id: 'b_pod1_2', pod_id: 'p_n', global_order: 2, speaker: 'Aran', target_text: 'Pod-1 dau.', known_text: 'two' },
+    { id: 'b_pod1_3', pod_id: 'p_n', global_order: 3, speaker: 'Aran', target_text: 'Pod-1 tri.', known_text: 'three' },
     { id: 'a_sen_1', pod_id: 'p_n2', global_order: 1, speaker: 'Aran', target_text: 'Senedd un.', known_text: 'one' },
     { id: 'a_sen_2', pod_id: 'p_n2', global_order: 2, speaker: 'Aran', target_text: 'Senedd dau.', known_text: 'two' },
     { id: 'a_sen_3', pod_id: 'p_n2', global_order: 3, speaker: 'Aran', target_text: 'Senedd tri.', known_text: 'three' },
@@ -577,7 +577,7 @@ test('lines of one pod stay contiguous even when another pod reuses its numbers'
   assert.deepEqual(runs, [...new Set(slugs)], `pods interleaved: ${slugs.join(',')}`)
   // And within each run, the pod's own line order is intact.
   assert.deepEqual(q.lines.filter((l) => l.kind === 'pod').map((l) => l.text),
-    ['Pod-0 un.', 'Pod-0 dau.', 'Pod-0 tri.', 'Senedd un.', 'Senedd dau.', 'Senedd tri.'])
+    ['Pod-1 un.', 'Pod-1 dau.', 'Pod-1 tri.', 'Senedd un.', 'Senedd dau.', 'Senedd tri.'])
 })
 
 test('the three-way union survives the grouped sort: dialogue, then re-records, then seeds', async () => {
@@ -632,7 +632,7 @@ test('untranslated pod lines are reported per pod, not silently dropped', async 
 
   assert.deepStrictEqual(q.notReady, [{
     podId: 'p_n',
-    podSlug: 'pod-0',
+    podSlug: 'pod-1',
     podTitle: 'The committee session',
     courseCode: 'cym_n_for_eng',
     lines: 2,
@@ -672,7 +672,7 @@ test('a take on a line since recast to somebody else is reported to the reader w
   const his = await buildQueue(db, aran)
   assert.deepStrictEqual(his.handedOn, [{
     podId: 'p_n',
-    podSlug: 'pod-0',
+    podSlug: 'pod-1',
     podTitle: null,
     courseCode: 'cym_n_for_eng',
     castTo: 'Catrin',

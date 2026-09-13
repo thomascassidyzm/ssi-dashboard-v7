@@ -123,12 +123,12 @@ describe('castVoiceFor', () => {
 
 describe('speakerInventory', () => {
   const pods = [
-    { id: 'c:pod-0', speakers: { 'Anna': { gender: 'f', target: { voice_id: 'ara' } }, _default: { gender: 'n' } } },
+    { id: 'c:pod-1', speakers: { 'Anna': { gender: 'f', target: { voice_id: 'ara' } }, _default: { gender: 'n' } } },
   ]
   const sentences = [
-    { id: 's1', pod_id: 'c:pod-0', scene_number: 1, global_order: 1, speaker: 'Anna', target_text: 'a', known_text: 'k1', explainer_text: 'because…', glue_to_next: false },
-    { id: 's2', pod_id: 'c:pod-0', scene_number: 1, global_order: 2, speaker: 'Waiter (M)', target_text: 'b', known_text: 'k2', explainer_text: '', glue_to_next: false },
-    { id: 's3', pod_id: 'c:pod-0', scene_number: 1, global_order: 3, speaker: 'Anna', target_text: 'c', known_text: 'k3', explainer_text: null, glue_to_next: false },
+    { id: 's1', pod_id: 'c:pod-1', scene_number: 1, global_order: 1, speaker: 'Anna', target_text: 'a', known_text: 'k1', explainer_text: 'because…', glue_to_next: false },
+    { id: 's2', pod_id: 'c:pod-1', scene_number: 1, global_order: 2, speaker: 'Waiter (M)', target_text: 'b', known_text: 'k2', explainer_text: '', glue_to_next: false },
+    { id: 's3', pod_id: 'c:pod-1', scene_number: 1, global_order: 3, speaker: 'Anna', target_text: 'c', known_text: 'k3', explainer_text: null, glue_to_next: false },
   ]
 
   it('counts lines per canonical character + the __explainer__ known workload', () => {

@@ -265,16 +265,14 @@ const LABELS = {
 const ORDER = ['pod-1', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
 
 // THIS SET IS DELIBERATELY EMPTY, and that is the fix, not an oversight.
-// It used to hold ['pod-1', 'pod-0.5'] — two SACKED SLATES whose row numbers
-// collided with this graph's by accident, so they read as 0 of 35 shapes and
-// every tile red: true of the numbers and a lie about the pods.
+// It used to hold two SACKED SLATES whose row numbers collided with this
+// graph's by accident, so they read as 0 of 35 shapes and every tile red: true
+// of the numbers and a lie about the pods.
 //
-// The 2026-09-01 slug migration DELETED both of those slates and RENAMED the
-// live CORE pod from `pod-0` to `pod-1`. So the old guard inverted: the string
-// `pod-1` stopped naming a sacked slate and started naming the very pod the
-// guard existed to protect, and this view hid it. Swapping the string for
-// `pod-0` would have been the other half of the same mistake — it would guard
-// against a slate that no longer exists.
+// The 2026-09-01 slug migration DELETED both of those slates and named the live
+// CORE pod `pod-1` — the name one of the sacked slates had held. So the old
+// guard inverted: the string `pod-1` stopped naming a sacked slate and started
+// naming the very pod the guard existed to protect, and this view hid it.
 //
 // There is nothing left to hide, so nothing is hidden. The mechanism stays
 // because the next sacked slate is a one-entry change.
@@ -283,14 +281,11 @@ const HIDDEN = new Set([])
 // The store names each shape's provenance in its own slugs; the page says them
 // the way a person says them. Same shape, one name, everywhere on screen.
 //
-// `pod-0` HERE IS NOT A STALE SLUG — DO NOT "FIX" IT. These keys are the
-// METAGRAPH STORE's own provenance namespace (`provenance` in
-// services/shared/metagraph/nodes.json, reaching this file as `origin` via
-// src/lib/metagraph/fromStore.js:84), and the store was not touched by the
-// database slug migration. Twelve nodes still declare `provenance: "pod-0"`,
-// and the schema's provenance enum is still ["pod-0", "method-pod"].
-// LABELS and ORDER above key on `canonical_pod_scenarios.pod_slug`, which IS
-// renamed. Two namespaces, the same pod, and both correctly render "POD 1".
+// These keys are the METAGRAPH STORE's own provenance namespace (`provenance`
+// in services/shared/metagraph/nodes.json, reaching this file as `origin` via
+// src/lib/metagraph/fromStore.js), which names the core canon `pod-1` exactly
+// as `canonical_pod_scenarios.pod_slug` does. LABELS and ORDER above key on the
+// latter. Two namespaces, the same pod, and both render "POD 1".
 const ORIGINS = {
   'pod-1': 'POD 1',
   'method-pod': 'the Method Pod',

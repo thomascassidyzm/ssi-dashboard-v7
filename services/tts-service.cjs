@@ -279,7 +279,7 @@ function assertNotHumanVoiceCourse(config) {
  * learner is a defect", "Aran's and Catrin's recordings are never overwritten
  * by synthesis", "Welsh gaps are a RECORDING worklist". None of them is about
  * English. Every other pod in the estate synthesises its English known track
- * already; the Welsh pods did not only because pod-0 happened to cast both
+ * already; the Welsh pods did not only because their core pod happened to cast both
  * tracks to humans.
  *
  * So the guard now asks which LANGUAGE this clip is, and permits exactly one

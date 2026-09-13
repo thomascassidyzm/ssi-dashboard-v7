@@ -251,19 +251,19 @@ async function loadCourse(courseCode) {
     if (!sb) throw new Error('Supabase not configured')
 
     // Casting FIRST, because it is what tells us which pod holds the course's
-    // current pod-0 content. Hard-coding `<course>:pod-0` is what put a
-    // 142-line snapshot under Tom's ear while the live pod held 232, and it
-    // shows nothing at all for Welsh, whose pod-0 was emptied when the pod was
-    // gated (services/pod-voice-approvals.cjs#resolveCurrentPod0).
+    // current core-pod content. Hard-coding `<course>:pod-1` is what put a
+    // 142-line snapshot under Tom's ear while the working copy held 232, and it
+    // shows nothing at all for a course whose served pod was emptied when the
+    // pod was gated (services/pod-voice-approvals.cjs#resolveCurrentPod).
     //
     // It is awaited, not fired-and-forgotten: the sentence query depends on it.
     await loadCasting(courseCode)
     // The server resolves this (services/pod-voice-approvals.cjs
-    // #resolveCurrentPod0, which prefers a working copy, then pod-1, then
-    // pod-0). The local fallback only fires if that call failed outright.
+    // #resolveCurrentPod, which prefers a working copy, then pod-1). The local
+    // fallback only fires if that call failed outright.
     const podId = casting.value?.current_pod_id
       || (casting.value?.pods || []).map((p) => p.id).find(Boolean)
-      || `${courseCode}:pod-0`
+      || `${courseCode}:pod-1`
     currentPodId.value = podId
 
     // The voice picker's inventory. Not awaited: the dropdowns fill in when it
@@ -283,7 +283,7 @@ async function loadCourse(courseCode) {
     // WHICH VOICE ACTUALLY RENDERED EACH CLIP. Not the cast's answer — the
     // clip's own row. A pod's audio accumulates over months while the casting
     // moves under it, so the two disagree constantly: on
-    // spa_for_eng:pod-0-unrecorded only 16 of 119 target clips were rendered on
+    // spa_for_eng:unrecorded only 16 of 119 target clips were rendered on
     // the current two-voice cast; the other 103 are five older voices from
     // June. Labelling a June clip with the current cast's voice name, and then
     // asking Tom to approve that casting on the strength of it, is a lie in
@@ -622,7 +622,7 @@ function atomGroups(atoms, bounds) {
 
 // The S-LEGO spans (local atom-index ranges) inside one post-glue sentence
 // group, split ONLY at 'sLego' boundaries. A group with none of its own —
-// about 40 of 77 pod-0.5 sentences are single S-LEGOs — comes back as a
+// about 40 of 77 sentences on one sacked slate were single S-LEGOs — comes back as a
 // single span covering the whole group, so it never gets a fusion rung of
 // its own (rule 4: per-sentence rung depth follows seam count).
 function sLegoSpansFromBounds(bounds, gStart, gEnd) {
@@ -1377,13 +1377,13 @@ function resolveSpeakerVoice(podSpeakers, speaker, track) {
 const voiceKey = (v) => (v ? `${v.provider}|${v.voice_id}|${v.locale || ''}` : 'none')
 
 // The pod whose lines are loaded on this page — resolved server-side by
-// resolveCurrentPod0(), never assumed to be `<course>:pod-0`.
+// resolveCurrentPod(), never assumed to be `<course>:pod-1`.
 const currentPod = computed(() => {
   const pods = casting.value?.pods || []
   return pods.find((p) => p.id === currentPodId.value) || pods[0] || null
 })
-// The slug of the pod on screen, stated rather than assumed: pod-0 on most
-// courses, pod-1 on the 1-based ones (Tom, 2026-08-22).
+// The slug of the pod on screen, stated rather than assumed: pod-1, or the
+// `unrecorded` working copy where one holds the current content.
 const currentPodSlug = computed(() => String(currentPodId.value || '').split(':')[1] || '—')
 const castSpeakers = computed(() => currentPod.value?.speakers || {})
 // Pods beyond the current one are in the fingerprint but their lines are not
@@ -1392,8 +1392,8 @@ const otherPodIds = computed(() =>
   (casting.value?.pods || []).map((p) => p.id).filter((id) => id !== currentPod.value?.id),
 )
 // Named out loud, because "which pod am I listening to?" is exactly what went
-// wrong: a stale `pod-0` sampled while the current content sat in the working
-// copy. The page states its source rather than leaving it to be inferred.
+// wrong: a stale served pod sampled while the current content sat in the
+// working copy. The page states its source rather than leaving it to be inferred.
 const podSource = computed(() => {
   const p = currentPod.value
   if (!p) return null
@@ -1511,7 +1511,7 @@ const castFlags = computed(() => {
 })
 
 // ── MANUAL VOICE CHOICE — a list of voices, one dropdown per voice ─────────
-// Tom, 2026-08-11, having rejected the Spanish pod-0 cast ("Spanish needs
+// Tom, 2026-08-11, having rejected the Spanish core-pod cast ("Spanish needs
 // Iberian Spanish, not Mexican pronounciation, that's a different course"):
 //
 //   "should the casting process, in the PODLAB allow voice choice? I think it
@@ -2605,8 +2605,8 @@ loadLiveConfig()
             </div>
 
             <!-- WHICH POD IS UNDER THE EAR. Stated, never inferred: sampling a
-                 stale `pod-0` while the current content sat in the working copy
-                 is what T-14 was rejected for. -->
+                 stale served pod while the current content sat in the working
+                 copy is what T-14 was rejected for. -->
             <p v-if="podSource" class="pod-source">
               Sampling <code>{{ podSource.id }}</code> — <strong>{{ podSource.lines }}</strong> live lines.
               <span v-if="podSource.siblings.length" class="muted">

@@ -398,9 +398,9 @@ async function loadCoursePreview(courseCode) {
     // Pod sentences (for L2 audition). One serving pod per course; load
     // whatever exists. Courses without pods still preview L1 fine.
     //
-    // The serving slug is per-course since Tom's 1-based ruling of 2026-08-22 —
-    // hrv_for_eng serves `pod-1`, the rest still serve `pod-0` — so resolve it
-    // rather than hard-coding `<course>:pod-0`, which reads EMPTY for Croatian.
+    // Resolve the serving pod from the course's rows rather than hard-coding
+    // `<course>:pod-1`: a course may have no core pod, and a parked pod keeps
+    // pod_type='core', so the id is a lookup, never a string.
     coursePodSentences.value = []
     try {
       // includeHeld: this is an ADMIN audition, and auditioning a pod before
