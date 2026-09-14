@@ -1,3 +1,31 @@
+## 2026-09-14 — the Senedd/S4C pod is the ONE exception to "a live pod is never narrowed": North restricted back to SSi admins and Steve (job #648)
+
+**Ruling (Tom, 2026-09-14 11:05Z).** "Senedd POD is not a typical POD - it is a special case that must be
+restricted to JUST ssi admin and Steve Dimmicks." Both courses. This overrides the 20:31Z 2026-09-13
+release (job #605) that opened `cym_n_for_eng:senedd-s4c-steve` to every North learner.
+
+**Decision.** The trigger `listening_pods_live_never_held` (#583/#611/#614) is right in general and is
+not weakened for any pod. `tools/pods/restrict-senedd-pod-2026-09-14.cjs` did the override the honest
+way: one transaction that disables that single trigger on the table (exclusive lock for the few ms it
+lives, so nothing else slips past the gate meanwhile), runs the one UPDATE whose WHERE repeats the
+asserted before-state (live, role NULL), refuses unless exactly one row moved, re-enables the trigger,
+writes the trail, commits — then proves the guard is back by attempting the same narrowing on the South
+row in a rolled-back transaction (it raised). North is now `live / previewer_001`, matching South.
+
+**The trail, written by hand because the audit trigger would have written nothing.** `audit_content_change`
+audits overwrites of non-NULL values only, so NULL → `previewer_001` is invisible to it. The script inserted
+content_audit_log 23140988 (true old_row, the open state) and two content_edit_events carrying Tom's words
+verbatim: e13e4cfc… (North, update, 11:05Z ruling, names the bypassed trigger and the #605 write it undoes)
+and 52d6574e… (South, insert, 11:01Z ruling — clone-pod writes no attribution row, so the South creation is
+recorded here).
+
+**Who played it while open (22:25Z → 11:16Z).** player_events carries clip ids, not pod ids. Joining on the
+pod's 1,131 clip ids: two role-holders (69 plays) and ONE ordinary North learner, one play, the opening
+"Prynhawn da." at 10:41Z. No learner_pod_state rows exist for the pod. Progress untouched.
+
+**Verified on production (RLS per uid).** Aran and Steve: both pods, 567 rows each. That ordinary learner,
+the harness learner account and anon: no pod, 0 rows, on either course.
+
 ## 2026-09-14 — the Senedd/S4C pod on Welsh (South): pointer rows to the North clips, visible to SSi admins and Steve Dimmick only (job #648)
 
 **Ruling (Tom, 2026-09-14 11:01Z).** "Yes, make it available in South Welsh. It's only for ssi admin and
