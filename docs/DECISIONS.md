@@ -1267,3 +1267,15 @@ Before (160 scenes): 4 1 1 2 2 19 15 2 2 2 16 2 2 7 2 1 4 3 2 2 5 2 3 10 1 8 1 4
 After (57 scenes): 10 10 12 12 12 12 11 10 9 13 10 9 9 8 10 11 10 9 10 8 10 9 10 8 9 8 10 10 11 9 10 9 10 8 12 11 9 9 9 9 10 11 9 12 12 11 10 12 10 11 9 8 9 11 11 7 9.
 
 **Verified on production, headless, as the ssi_admin harness account** (a previewer_001 holder): Listening → Dialogues lists the pod as "57 scenes", the scene list shows those exact counts, and scene 1 — the merged 4+1+1+2+2 opening — plays all ten sentences across five speakers to 100% and segues into scene 2 at "Diolch, Alun."; zero console errors. Logs: `~/ssi-evidence/ssi-dashboard-v7/docs/pods/rescene-pod-2026-09-14-{dry-run,apply}-log.json`.
+
+## 2026-09-14 — L-117 closed: the big unlanded Popty branch is archived under two tags, not merged; the "as in" context pin lands on main from its own branch (job #672·G)
+
+**Decision.** Ledger row L-117 closes as *merged residue plus evidence* per job #667·G's read of the 745-file diff (doc https://watson-1.tail4968cb.ts.net/d/35cef3fb). Neither big branch merges: merging would revert booth fixes, consent gates, the family ZUT check, the editor identity gate and the ignore rules, and re-land the disabled GitHub Actions workflows. Tag, not delete — branch deletion is a separate decision nobody has made.
+
+**Tags on origin** (annotated; the repo had no tag convention, so `archive/<branch-with-slashes-dashed>` is a taste default):
+- `archive/docs-senedd-s4c-floor-audio-2026-09-03` → `f46336f73` (tip of `docs/senedd-s4c-floor-audio-2026-09-03`).
+- `archive/cs-dashboard-tree-rescue-2026-09-12` → `7eaa63378` (tip of `cs/dashboard-tree-rescue-2026-09-12`, one rescue commit over the senedd branch).
+
+**The one real code residue landed.** The "as in" context pin from job #243·G (`cs/243-rescue-the-as-in-context-pin`, `26afaeff5`) merged to main as `abdbe7bc3`: `services/phases/phase8-audio-v13.cjs` and `services/phases/presentation-author.cjs` pin an "as in" context through re-authoring so a two-sense word cannot come back bare, with its own test `services/phases/__tests__/as-in-context-pin.test.mjs`. That test and the three sibling files in `services/phases/__tests__/` ran green on the merged tree (4 files, 70 tests). Phase8 machines pick it up on their next Deploy pull; nothing was deployed by this job.
+
+**Left unmerged, pending Kai.** The two-voice cast, variant-drill and off-role re-render tools stay reachable under the senedd archive tag. #667·G's question, carried on the done card: "One question for Kai, default no: keep the two-voice cast, variant-drill and off-role re-render tools."
