@@ -1,0 +1,384 @@
+{
+  "course": "eng_for_hin",
+  "ranAt": "2026-09-03T19:46:10.357Z",
+  "mode": "apply",
+  "problems": [],
+  "rows": [
+    {
+      "id": "eng_for_hin:S0197L01U07",
+      "course_code": "eng_for_hin",
+      "seed_number": 197,
+      "lego_index": 1,
+      "position": 10,
+      "known_text": "वह कल रात मेरे बेटे से मिलना चाहती है।",
+      "target_text": "she wants to meet my son tomorrow night",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 39,
+      "lego_count": 9,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0192L02",
+        "sense": "future",
+        "pin": "चाहती है — a present want points forward; Hindi present cannot host कल = yesterday",
+        "slot_precedent": "S0197L01U02 वह आज शाम मेरे बेटे से मिलना चाहती है।"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0200L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 200,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "वे कल रात अंग्रेज़ी बोलने का अभ्यास करना चाहते हैं।",
+      "target_text": "they want to practise speaking English tomorrow night",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "start",
+      "word_count": 53,
+      "lego_count": 10,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0192L02",
+        "sense": "future",
+        "pin": "चाहते हैं — present want",
+        "slot_precedent": "S0200L02U03 वे आज शाम अंग्रेज़ी बोलने का अभ्यास करना चाहते हैं।"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0203L01U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 203,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "आप कल रात क्या करेंगे?",
+      "target_text": "what would you do tomorrow night?",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "start",
+      "word_count": 33,
+      "lego_count": 5,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0192L02",
+        "sense": "future",
+        "pin": "करेंगे — future",
+        "slot_precedent": "S0203L01B03 आप आज शाम क्या करेंगे?"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0205L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 205,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "क्या आप मुझे कल रात वह शब्द बता सकते हैं?",
+      "target_text": "can you tell me the word tomorrow night?",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 40,
+      "lego_count": 10,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0192L02",
+        "sense": "future",
+        "pin": "सकते हैं — present ability about a night still to come",
+        "slot_precedent": "S0205L02U05 क्या आप मुझे आज शाम वह शब्द बता सकते हैं?"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0210L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 210,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "मुझे लगता है कि हमें कल रात जवाब पर चर्चा करनी है।",
+      "target_text": "I think that we need to discuss the answer tomorrow night",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 57,
+      "lego_count": 12,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0192L02",
+        "sense": "future",
+        "pin": "करनी है — present obligation, so the discussion has not happened",
+        "slot_precedent": "S0210L02U03 मुझे लगता है कि हमें आज शाम जवाब पर चर्चा करनी है।"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0219L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 219,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "मैं कल रात थोड़ा आराम करना चाहूँगा।",
+      "target_text": "I'd like to relax for a while tomorrow night",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 44,
+      "lego_count": 7,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0192L02",
+        "sense": "future",
+        "pin": "चाहूँगा — future desiderative",
+        "slot_precedent": "S0219L02U02 मैं आज शाम थोड़ा आराम करना चाहूँगा।"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0227L01U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 227,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "वह आदमी मुझे कल रात कुछ बताने वाला है।",
+      "target_text": "that man is going to tell me something tomorrow night",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "start",
+      "word_count": 53,
+      "lego_count": 9,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0192L02",
+        "sense": "future",
+        "pin": "बताने वाला है — going to, explicitly prospective",
+        "slot_precedent": "S0227L01U03 वह आदमी मुझे आज शाम कुछ बताने वाला है।"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0200L04U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 200,
+      "lego_index": 4,
+      "position": 9,
+      "known_text": "वे यह सुनिश्चित करना चाहते हैं कि हम कल दोपहर सब कुछ ख़त्म करें।",
+      "target_text": "they want to make sure that we finish everything tomorrow afternoon",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 67,
+      "lego_count": 14,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0167L02",
+        "sense": "future",
+        "pin": "चाहते हैं + subjunctive करें — the finishing is still ahead",
+        "slot_precedent": "S0200L04U04 वे यह सुनिश्चित करना चाहते हैं कि हम आज शाम सब कुछ ख़त्म करें।"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0203L02U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 203,
+      "lego_index": 2,
+      "position": 9,
+      "known_text": "अगर मैं आपसे कल दोपहर कहूँ तो आप मेरे साथ क्या करेंगे?",
+      "target_text": "what would you do with me if I asked you tomorrow afternoon?",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 60,
+      "lego_count": 12,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0167L02",
+        "sense": "future",
+        "pin": "कहूँ … करेंगे — subjunctive protasis, future apodosis",
+        "slot_precedent": "S0203L02U05 अगर मैं आपसे आज शाम कहूँ तो आप मेरे साथ क्या करेंगे?"
+      }
+    },
+    {
+      "id": "eng_for_hin:S0217L01U06",
+      "course_code": "eng_for_hin",
+      "seed_number": 217,
+      "lego_index": 1,
+      "position": 9,
+      "known_text": "क्या आप मुझे कल दोपहर एक-दो गिलास दे सकते हैं?",
+      "target_text": "can you give me a glass or two tomorrow afternoon?",
+      "phrase_role": "use",
+      "status": "draft",
+      "introduce": true,
+      "connected_lego_ids": [],
+      "lego_position": "middle",
+      "word_count": 50,
+      "lego_count": 10,
+      "metadata": {
+        "format": "build_use",
+        "pipeline": "v2",
+        "source": "कल \"as in\" teaching, spread pass (Kai 2026-09-03)",
+        "chunk_drilled": "S0167L02",
+        "sense": "future",
+        "pin": "सकते हैं — a present request about an afternoon still to come",
+        "slot_precedent": "S0217L01U02 क्या आप मुझे आज शाम एक-दो गिलास दे सकते हैं?"
+      }
+    }
+  ],
+  "inserted": [
+    {
+      "id": "eng_for_hin:S0197L01U07",
+      "seed_number": 197,
+      "target_text": "she wants to meet my son tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0200L02U06",
+      "seed_number": 200,
+      "target_text": "they want to practise speaking English tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0203L01U06",
+      "seed_number": 203,
+      "target_text": "what would you do tomorrow night?"
+    },
+    {
+      "id": "eng_for_hin:S0205L02U06",
+      "seed_number": 205,
+      "target_text": "can you tell me the word tomorrow night?"
+    },
+    {
+      "id": "eng_for_hin:S0210L02U06",
+      "seed_number": 210,
+      "target_text": "I think that we need to discuss the answer tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0219L02U06",
+      "seed_number": 219,
+      "target_text": "I'd like to relax for a while tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0227L01U06",
+      "seed_number": 227,
+      "target_text": "that man is going to tell me something tomorrow night"
+    },
+    {
+      "id": "eng_for_hin:S0200L04U06",
+      "seed_number": 200,
+      "target_text": "they want to make sure that we finish everything tomorrow afternoon"
+    },
+    {
+      "id": "eng_for_hin:S0203L02U06",
+      "seed_number": 203,
+      "target_text": "what would you do with me if I asked you tomorrow afternoon?"
+    },
+    {
+      "id": "eng_for_hin:S0217L01U06",
+      "seed_number": 217,
+      "target_text": "can you give me a glass or two tomorrow afternoon?"
+    }
+  ],
+  "decoration": {
+    "decorated": 10,
+    "skipped": 0
+  },
+  "verifiedAfter": [
+    {
+      "id": "eng_for_hin:S0197L01U07",
+      "concatMatches": true,
+      "ghostBlocks": [],
+      "kalTiledBy": "S0192L02"
+    },
+    {
+      "id": "eng_for_hin:S0200L02U06",
+      "concatMatches": true,
+      "ghostBlocks": [],
+      "kalTiledBy": "S0192L02"
+    },
+    {
+      "id": "eng_for_hin:S0200L04U06",
+      "concatMatches": true,
+      "ghostBlocks": [],
+      "kalTiledBy": "S0167L02"
+    },
+    {
+      "id": "eng_for_hin:S0203L01U06",
+      "concatMatches": true,
+      "ghostBlocks": [
+        "?"
+      ],
+      "kalTiledBy": "S0192L02"
+    },
+    {
+      "id": "eng_for_hin:S0203L02U06",
+      "concatMatches": true,
+      "ghostBlocks": [
+        "?"
+      ],
+      "kalTiledBy": "S0167L02"
+    },
+    {
+      "id": "eng_for_hin:S0205L02U06",
+      "concatMatches": true,
+      "ghostBlocks": [
+        "?"
+      ],
+      "kalTiledBy": "S0192L02"
+    },
+    {
+      "id": "eng_for_hin:S0210L02U06",
+      "concatMatches": true,
+      "ghostBlocks": [],
+      "kalTiledBy": "S0192L02"
+    },
+    {
+      "id": "eng_for_hin:S0217L01U06",
+      "concatMatches": true,
+      "ghostBlocks": [
+        "?"
+      ],
+      "kalTiledBy": "S0167L02"
+    },
+    {
+      "id": "eng_for_hin:S0219L02U06",
+      "concatMatches": true,
+      "ghostBlocks": [],
+      "kalTiledBy": "S0192L02"
+    },
+    {
+      "id": "eng_for_hin:S0227L01U06",
+      "concatMatches": true,
+      "ghostBlocks": [],
+      "kalTiledBy": "S0192L02"
+    }
+  ]
+}
