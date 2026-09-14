@@ -1,3 +1,30 @@
+## 2026-09-14 — the Senedd/S4C pod on Welsh (South): pointer rows to the North clips, visible to SSi admins and Steve Dimmick only (job #648)
+
+**Ruling (Tom, 2026-09-14 11:01Z).** "Yes, make it available in South Welsh. It's only for ssi admin and
+Steve Dimmicks at the moment." Aran (aran@hey.com, ssi_admin) is on Welsh (South) and could not see the
+pod, which existed only as `cym_n_for_eng:senedd-s4c-steve`.
+
+**Decision.** One new pod row, `cym_s_for_eng:senedd-s4c-steve` (pod_type choice, same title), and 567
+sentence rows that are POINTERS to the exact clip ids the North pod uses — 567 known, 564 target, the
+same three target gaps as North (two English-only turns, one line with target text and no clip).
+Nothing rendered, nothing re-recorded: recordings are per language, never per course. Written through
+`tools/pods/clone-pod.cjs`, which now takes `--to-course` (same slug on the second course, because the
+learner app's Listening Mode allow-list is per slug) and `--required-role`, so the row is BORN
+`visibility=live, required_role=previewer_001` in one INSERT and never crosses the live-pod triggers
+(which judge UPDATEs only). Hold-back is the mechanism the North pod itself used before #605 opened
+it: `previewer_001` is held by all 13 ssi_admin accounts, four staff alternates (tomcassidy@mac.com,
+aran@saysomethingin.com, aran@sgwarnog.com, kai.saraceno@saysomethingin.com) and Steve — 18 accounts,
+no new grants. North was not touched (row updated_at still 2026-09-13 22:25:15Z).
+
+**Verified on production.** RLS simulated per uid: Aran and Steve see the pod and 567 rows; two ordinary
+learners and anon see no pod and 0 rows. Headless Listening Mode > Dialogues on saysomethingin.app as
+the harness ssi_admin account on Welsh (South): one card, "Senedd: allegations of bullying at S4C (11
+January 2024), 160 scenes"; as an ordinary learner the Dialogues tab is absent (South pod-1 is held).
+
+**Found on the way.** `clone-pod.cjs` had thrown `destRows is not defined` on every run since the
+2026-09-02 destination gate (`1864cc1ac`): the gate call named `destRows` while the variable is
+`dstRows`. Fixed here. `tools/pods/clone-pod-across-courses.test.cjs` covers the new pure pieces.
+
 ## 2026-09-13 — the Senedd/S4C pod is opened to every Welsh (Northern) learner; required_role joins the visibility lever (job #605)
 
 **Ruling (Tom, 2026-09-13 20:31Z).** Release `cym_n_for_eng:senedd-s4c-steve` to all Welsh North

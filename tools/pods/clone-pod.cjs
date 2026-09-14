@@ -40,6 +40,12 @@
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=unrecorded
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=unrecorded --apply
  *   node tools/pods/clone-pod.cjs --course=spa_for_eng --to=pod-1 --serve-now --apply
+ *
+ * ACROSS COURSES (2026-09-14): the same pod on a second course of the same language is
+ * POINTER rows to the same clips — recordings are per language, never per course.
+ *   node tools/pods/clone-pod.cjs --course=cym_n_for_eng --from=senedd-s4c-steve \
+ *     --to-course=cym_s_for_eng --to=senedd-s4c-steve --title-suffix= \
+ *     --visibility=live --required-role=previewer_001 --apply
  */
 'use strict'
 
@@ -113,7 +119,23 @@ function parseArgs () {
   const COURSE = arg('course')
   const FROM = arg('from') || 'pod-1'
   const TO = arg('to')
-  const TITLE_SUFFIX = arg('title-suffix') || ' — UNRECORDED working copy, not learner-facing'
+  // `--title-suffix=` (empty) means "keep the source title": a pointer copy on a
+  // second course IS the same pod and must carry the same name. Only an ABSENT
+  // flag gets the working-copy default.
+  const TITLE_SUFFIX = arg('title-suffix') ?? ' — UNRECORDED working copy, not learner-facing'
+  // `--to-course=<code>`: land the copy on ANOTHER course (2026-09-14, job #648).
+  // Recordings are per LANGUAGE, never per course — a course row only POINTS at
+  // a clip — so the same pod on a second course of the same language is these
+  // same sentence rows, same clip ids, under the second course's id prefix.
+  // Nothing is re-rendered and nothing is re-recorded; that is the whole point.
+  const TO_COURSE = arg('to-course')
+  // `--required-role=<role>`: write the hold-back on the NEW row in the same
+  // INSERT, never as a later UPDATE. The listening_pods triggers judge UPDATEs
+  // of a live pod (a live pod is never held, narrowed or re-scoped); a row born
+  // with its role never crosses them, and there is no window in which it is
+  // live to everyone. Same mechanism as the Senedd/S4C pod's own release to
+  // named accounts: required_role + learner_roles, decided by RLS.
+  const REQUIRED_ROLE = arg('required-role')
   // listening_pods.visibility DEFAULTS TO 'live', so an insert that omits the column
   // creates a learner-visible pod. This tool's whole purpose is a copy that is NOT
   // learner-facing, so it writes the column explicitly and defaults it to 'held'.
@@ -128,17 +150,38 @@ function parseArgs () {
     console.error(`FAILED: --visibility=${VISIBILITY_FLAG} is not one of held|live|draft`)
     process.exit(1)
   }
-  if (TO === FROM) {
-    console.error('FAILED: --to must differ from --from')
+  const dest = destinationOf({ course: COURSE, toCourse: TO_COURSE, from: FROM, to: TO })
+  if (dest.refusal) {
+    console.error(`FAILED: ${dest.refusal}`)
     process.exit(1)
   }
-  return { APPLY, SERVE_NOW, COURSE, FROM, TO, TITLE_SUFFIX, VISIBILITY_FLAG }
+  if (REQUIRED_ROLE !== null && !REQUIRED_ROLE.trim()) {
+    console.error('FAILED: --required-role must not be empty (omit it for a pod everyone may read)')
+    process.exit(1)
+  }
+  return { APPLY, SERVE_NOW, COURSE, FROM, TO, TITLE_SUFFIX, VISIBILITY_FLAG, TO_COURSE: dest.dstCourse, REQUIRED_ROLE }
+}
+
+/**
+ * Where does the copy land? PURE. Same course by default; `toCourse` moves it.
+ * The only refusal is a destination that IS the source: on one course that is
+ * the same slug, across courses the same slug is exactly what is wanted
+ * (`cym_n_for_eng:senedd-s4c-steve` -> `cym_s_for_eng:senedd-s4c-steve`, so the
+ * learner app's closed per-slug allow-list matches it without a change).
+ */
+function destinationOf ({ course, toCourse, from, to }) {
+  const dstCourse = (toCourse && toCourse.trim()) || course
+  const srcPodId = `${course}:${from}`
+  const dstPodId = `${dstCourse}:${to}`
+  if (dstPodId === srcPodId) {
+    return { srcPodId, dstPodId, dstCourse, refusal: `--to must differ from --from on the same course (${srcPodId})` }
+  }
+  return { srcPodId, dstPodId, dstCourse, refusal: null }
 }
 
 async function main () {
-  const { APPLY, SERVE_NOW, COURSE, FROM, TO, TITLE_SUFFIX, VISIBILITY_FLAG } = parseArgs()
-  const srcPodId = `${COURSE}:${FROM}`
-  const dstPodId = `${COURSE}:${TO}`
+  const { APPLY, SERVE_NOW, COURSE, FROM, TO, TITLE_SUFFIX, VISIBILITY_FLAG, TO_COURSE, REQUIRED_ROLE } = parseArgs()
+  const { srcPodId, dstPodId } = destinationOf({ course: COURSE, toCourse: TO_COURSE, from: FROM, to: TO })
 
   const db = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   await db.connect()
@@ -150,7 +193,7 @@ async function main () {
     const VISIBILITY = VISIBILITY_FLAG || (src && src.visibility) || 'held'
     if (!src) throw new Error(`${srcPodId}: no such pod`)
 
-    const dstExisting = (await db.query(`select id, visibility, pod_type from listening_pods where id=$1`, [dstPodId])).rows[0]
+    const dstExisting = (await db.query(`select id, visibility, pod_type, required_role from listening_pods where id=$1`, [dstPodId])).rows[0]
     const dstRows = Number((await db.query(
       `select count(*) n from listening_pod_sentences where pod_id=$1`, [dstPodId])).rows[0].n)
 
@@ -165,7 +208,7 @@ async function main () {
       const { rows: [l] } = await db.query(
         `select count(distinct learner_id) on_course,
                 count(distinct learner_id) filter (where sentence_id like $2) on_pod
-           from learner_pod_state where course_code = $1`, [COURSE, `${dstPodId}:%`])
+           from learner_pod_state where course_code = $1`, [TO_COURSE, `${dstPodId}:%`])
       learnersOnCourse = Number(l.on_course)
       learnersOnDestPod = Number(l.on_pod)
     } catch (e) {
@@ -180,7 +223,7 @@ async function main () {
       // insert below copies.
       dstPodId, toSlug: TO, podType: dstExisting ? dstExisting.pod_type : src.pod_type,
       destExists: !!dstExisting, destVisibility: dstExisting && dstExisting.visibility,
-      destRows, learnersOnCourse, learnersOnDestPod, serveNow: SERVE_NOW,
+      destRows: dstRows, learnersOnCourse, learnersOnDestPod, serveNow: SERVE_NOW,
     })
     if (refusal) throw new Error(refusal)
 
@@ -210,7 +253,8 @@ async function main () {
     const enc = (set, col, v) => (set.has(col) && v !== null && v !== undefined ? JSON.stringify(v) : v)
 
     const summary = {
-      course: COURSE, from: srcPodId, to: dstPodId,
+      course: COURSE, to_course: TO_COURSE, from: srcPodId, to: dstPodId,
+      required_role: dstExisting ? `${dstExisting.required_role ?? 'NULL'} (existing row, NOT changed)` : (REQUIRED_ROLE ?? 'NULL (everyone)'),
       destination_pod_row: dstExisting ? 'already exists, will be left as-is' : 'will be created',
       destination_visibility: dstExisting ? `${dstExisting.visibility} (existing row, NOT changed)` : VISIBILITY,
       sentences_to_insert: sentences.length,
@@ -255,12 +299,8 @@ async function main () {
           // omits the column would make a clone of a HELD pod live — an automatic-live
           // path. A clone of a live pod stays live, which is what a clone means; an
           // explicit --visibility still wins, and with neither the answer is 'held'.
-          `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility)
-           values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12)`,
-          [dstPodId, src.course_code, src.pod_type, TO, src.pod_order,
-            `${src.title}${TITLE_SUFFIX}`, src.scene, src.difficulty,
-            enc(podJson, 'speakers', src.speakers), src.source_file, enc(podJson, 'metadata', src.metadata),
-            VISIBILITY])
+          podInsert().sql,
+          podInsert().values({ dstPodId, dstCourse: TO_COURSE, slug: TO, src, title: `${src.title}${TITLE_SUFFIX}`, visibility: VISIBILITY, requiredRole: REQUIRED_ROLE, enc: (col, v) => enc(podJson, col, v) }))
       }
       const cols = ['id', 'pod_id', ...copyCols]
       const placeholders = cols.map((_, i) => `$${i + 1}`).join(',')
@@ -290,15 +330,37 @@ async function main () {
     if (after !== sentences.length) throw new Error(`post-check: ${dstPodId} holds ${after} rows, expected ${sentences.length}`)
     // Read the visibility back rather than trusting the insert: a clone that is
     // reachable by a learner is the one way this tool can do harm.
-    const vis = (await db.query(`select visibility from listening_pods where id=$1`, [dstPodId])).rows[0].visibility
+    const back = (await db.query(`select visibility, required_role, course_code from listening_pods where id=$1`, [dstPodId])).rows[0]
+    const vis = back.visibility
     if (!dstExisting && vis !== VISIBILITY) throw new Error(`post-check: ${dstPodId} is '${vis}', expected '${VISIBILITY}'`)
-    console.log(JSON.stringify({ mode: 'APPLIED', summary, verified_rows: after, verified_visibility: vis }, null, 2))
+    if (!dstExisting && (back.required_role ?? null) !== (REQUIRED_ROLE ?? null)) throw new Error(`post-check: ${dstPodId} required_role is ${back.required_role ?? 'NULL'}, expected ${REQUIRED_ROLE ?? 'NULL'}`)
+    if (!dstExisting && back.course_code !== TO_COURSE) throw new Error(`post-check: ${dstPodId} course_code is '${back.course_code}', expected '${TO_COURSE}'`)
+    console.log(JSON.stringify({ mode: 'APPLIED', summary, verified_rows: after, verified_visibility: vis, verified_required_role: back.required_role ?? null, verified_course_code: back.course_code }, null, 2))
   } finally {
     await db.end()
   }
 }
 
-module.exports = { serviceRefusal }
+/**
+ * The one INSERT that creates a pod header row. PURE so a test can read what it
+ * writes: `course_code` is the DESTINATION course (a cross-course copy is not
+ * filed under its source), and `required_role` rides in the same statement —
+ * the row is born held-back or born open, never flipped afterwards.
+ */
+function podInsert () {
+  return {
+    sql: `insert into listening_pods (id, course_code, pod_type, slug, pod_order, title, scene, difficulty, speakers, source_file, metadata, visibility, required_role)
+           values ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13)`,
+    values: ({ dstPodId, dstCourse, slug, src, title, visibility, requiredRole, enc = (_c, v) => v }) => [
+      dstPodId, dstCourse, src.pod_type, slug, src.pod_order,
+      title, src.scene, src.difficulty,
+      enc('speakers', src.speakers), src.source_file, enc('metadata', src.metadata),
+      visibility, requiredRole ?? null,
+    ],
+  }
+}
+
+module.exports = { serviceRefusal, destinationOf, podInsert }
 
 if (require.main === module) {
   main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
