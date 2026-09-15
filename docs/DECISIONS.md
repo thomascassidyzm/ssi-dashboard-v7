@@ -1,3 +1,36 @@
+## 2026-09-15 — booth-artists-access: a quiet day is not a broken booth; the zero leg is red at 7 days, the nightly's fixture is not an artist (job #773·G)
+
+**The red.** The nightly went red on `main` at `c1235854` on `booth-artists-access` with "ZERO cast
+artists reached a course page in the last 24h". No commit caused it: the booth was up (prod API
+restarted 14:50Z on 2026-09-14, the voice endpoint answering 200, the real-browser artist's day green
+the same night), there were zero refusals, and the prod log shows no cast artist arriving on Monday
+2026-09-14 at all. The last human reach was Aran at 22:00Z on 2026-09-13. The 24h zero cannot tell
+"no one came" from "no one could get in", and every red dispatches a 3am fix worker.
+
+**Tom's ruling this bends, verbatim (2026-09-12).** "add a usage signal, not only a break signal.
+Count, per day, cast artists who reach a course page via the booth nav or the casting rule, and log
+each refusal of a cast artist LOUDLY … so a zero-or-refusal is red, not silent." The per-day count
+stays, refusals stay red at 24h (that leg caught a real bug on 2026-09-13), and a zero is still never
+silent: a quiet 24h is printed as a NOTE line in the check's output. What changed is the window on the
+zero leg: red only when no HUMAN cast artist has reached a course page in `QUIET_DAYS_RED` = 7 days.
+This is a worker's principled exception to a three-day-old ruling, not Tom's word; one line reverts
+it (`QUIET_DAYS_RED = 1` in `tools/casting-access-report.cjs`).
+
+**Second finding, fixed alongside.** The staging booth under the browser e2e writes the same ledger
+as prod, so the nightly's own fixture (`e2e-booth@ssi-test.invalid`) was counted as a cast artist and
+could prop the verdict up by a few seconds' luck (its reach fell 90s outside tonight's window). Every
+e2e voice in the estate logs in from a `.invalid` address — RFC 2606 reserved, no OTP can ever reach
+it — so `isSynthetic` derives "not a person" from the TLD rather than from a list. A synthetic reach
+is shown in the table but never counts; a synthetic REFUSAL still goes red.
+
+**Proof.** `services/voice-engine/casting-rights.test.cjs`: the quiet-3-days-green / 8-days-red /
+fixture-excluded assertions were seen red on the old tool and green on the new one.
+
+**Not done.** The comment above the check in `command-surface/ops/ci/ci-checks.sh` still says "RED
+when the last 24h had zero reaches"; that is a shared checkout and was not edited from this job.
+During diagnosis a probe `curl` to the prod voice endpoint wrote two false `reach` lines for Aran at
+02:35:01Z into the live ledger; both were removed, the pre-cleanup copy is in the job's scratch.
+
 ## 2026-09-14 — the Senedd/S4C pod is the ONE exception to "a live pod is never narrowed": North restricted back to SSi admins and Steve (job #648)
 
 **Ruling (Tom, 2026-09-14 11:05Z).** "Senedd POD is not a typical POD - it is a special case that must be

@@ -109,16 +109,32 @@ test('reaches are written once per day per course, refusals every time, and the 
   assert.strictEqual(events.length, 1)
   let s = summarise(events, { now: now + 3600000 })
   assert.deepStrictEqual(s.days.map((d) => [d.day, d.artists, d.reaches, d.refusals.length]), [['2026-09-12', 1, 1, 0]])
-  assert.deepStrictEqual(verdict(s), { ok: true, reasons: [] })
+  assert.deepStrictEqual(verdict(s), { ok: true, reasons: [], notes: [] })
   // a refusal turns the nightly red and names voice + course
   recordAccess({ kind: 'refused', email: TOM, voices: ['human_tom_zzz'], courseCode: 'cym_n_for_eng', method: 'GET', path: '/z', sentence: 'not cast here', logger: quiet, now: now + 2000 })
   s = summarise(readEvents(ledger), { now: now + 3600000 })
   const v = verdict(s)
   assert.strictEqual(v.ok, false)
   assert.ok(v.reasons[0].includes('human_tom_zzz') && v.reasons[0].includes('cym_n_for_eng'), v.reasons[0])
-  // a day with nothing at all is red too, never silent
-  assert.strictEqual(verdict(summarise(readEvents(ledger), { now: now + 3 * 86400000 })).last24h, undefined)
-  assert.strictEqual(verdict(summarise(readEvents(ledger), { now: now + 3 * 86400000 })).ok, false)
+  // A QUIET DAY IS NOT A BROKEN BOOTH (job #773·G, 2026-09-15): the studio does not
+  // record daily, so a 24h zero says nothing and must not go red; it is printed, not
+  // silent. A whole QUIET_DAYS_RED window with no human reach IS red.
+  const quiet3 = verdict(summarise(readEvents(ledger), { now: now + 3 * 86400000 }))
+  assert.strictEqual(quiet3.ok, true, JSON.stringify(quiet3))
+  assert.ok(quiet3.notes.some((n) => /quiet/i.test(n)), JSON.stringify(quiet3))
+  const quiet8 = verdict(summarise(readEvents(ledger), { now: now + 8 * 86400000 }))
+  assert.strictEqual(quiet8.ok, false)
+  assert.ok(quiet8.reasons[0].includes('7 days'), quiet8.reasons[0])
+  // THE NIGHTLY'S OWN FIXTURE IS NOT AN ARTIST: a reach from a reserved-TLD (.invalid)
+  // address is shown in the table but never counts as a cast artist, so the browser
+  // e2e can never prop the usage signal up — yet its REFUSAL still goes red (09-13 was real).
+  recordAccess({ kind: 'reach', email: 'e2e-booth@ssi-test.invalid', voices: ['human_e2e_booth_zzz'], courseCode: 'zzz_e2ebooth_for_eng', method: 'GET', path: '/e', logger: quiet, now: now + 8 * 86400000 })
+  const propped = verdict(summarise(readEvents(ledger), { now: now + 8 * 86400000 + 1000 }))
+  assert.strictEqual(propped.ok, false, JSON.stringify(propped))
+  assert.strictEqual(summarise(readEvents(ledger), { now: now + 8 * 86400000 + 1000 }).days.at(-1).artists, 0)
+  recordAccess({ kind: 'refused', email: 'e2e-booth@ssi-test.invalid', voices: ['human_e2e_booth_zzz'], courseCode: 'zzz_e2ebooth_for_eng', method: 'GET', path: '/e', sentence: 'not cast here', logger: quiet, now: now + 8 * 86400000 + 2000 })
+  const fixtureRefused = verdict(summarise(readEvents(ledger), { now: now + 8 * 86400000 + 3000 }))
+  assert.ok(fixtureRefused.reasons.some((r) => r.includes('REFUSED e2e-booth@ssi-test.invalid')), JSON.stringify(fixtureRefused))
 })
 
 // THE CROSS-COURSE CASTING LEAK (foreign-eyes finding, 2026-09-12). Two courses
