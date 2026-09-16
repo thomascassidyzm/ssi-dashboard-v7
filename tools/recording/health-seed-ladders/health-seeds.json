@@ -1,0 +1,1474 @@
+[
+  {
+    "code": "HG20",
+    "english": "Can you tell me your date of birth, so I know I've got the right person?",
+    "welsh": "Fedrwch chi ddeud eich dyddiad geni wrtha i — i mi fod yn siŵr mai chi ydy'r person iawn?",
+    "chunkCount": 2,
+    "chunks": [
+      {
+        "known": "can you tell me your date of birth",
+        "target": "fedrwch chi ddeud eich dyddiad geni wrtha i"
+      },
+      {
+        "known": "so I know I've got the right person",
+        "target": "i mi fod yn siŵr mai chi ydy'r person iawn"
+      }
+    ],
+    "batch": 1,
+    "pilotReason": "n=2, exact partition — the smallest real ladder, one joint at a clause boundary a reader pauses at anyway. If this one does not align, nothing will.",
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG03",
+    "english": "If we get stuck, I can call someone who speaks it more confidently than me.",
+    "welsh": "Os awn ni'n sownd, mi fedra i alw ar rywun sy'n siarad Cymraeg yn fwy hyderus na fi.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "if we get stuck",
+        "target": "os awn ni'n sownd"
+      },
+      {
+        "known": "I can call someone",
+        "target": "mi fedra i alw ar rywun"
+      },
+      {
+        "known": "who speaks it more confidently than me",
+        "target": "sy'n siarad Cymraeg yn fwy hyderus na fi"
+      }
+    ],
+    "batch": 1,
+    "pilotReason": "n=3, exact partition — joint 2→3 is a relative clause (rywun | sy'n siarad) with no natural pause at all, and it carries the mi- particle.",
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG32",
+    "english": "Left arm's fine. The cuff will squeeze for a few seconds now, then it lets go.",
+    "welsh": "Mae'r fraich chwith yn iawn. Mi fydd y cwff yn gwasgu am chydig eiliadau rŵan — wedyn mae o'n gollwng.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "left arm's fine",
+        "target": "mae'r fraich chwith yn iawn"
+      },
+      {
+        "known": "the cuff will squeeze",
+        "target": "mi fydd y cwff yn gwasgu"
+      },
+      {
+        "known": "for a few seconds now",
+        "target": "am chydig eiliadau rŵan"
+      },
+      {
+        "known": "then it lets go",
+        "target": "wedyn mae o'n gollwng"
+      }
+    ],
+    "batch": 1,
+    "pilotReason": "n=4, exact partition — two of three joints are mid-clause with NO punctuation; the case where the reader must be TOLD where to pause.",
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG01",
+    "english": "If I say anything that isn't clear, please stop me and I'll say it again.",
+    "welsh": "Os dw i'n deud rhywbeth sydd ddim yn glir, stopiwch fi, plîs — ac mi ddeuda i o eto.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "if I say",
+        "target": "os dw i'n deud"
+      },
+      {
+        "known": "anything that isn't clear",
+        "target": "rhywbeth sydd ddim yn glir"
+      },
+      {
+        "known": "please stop me",
+        "target": "stopiwch fi, plîs"
+      },
+      {
+        "known": "I'll say it again",
+        "target": "mi ddeuda i o eto"
+      }
+    ],
+    "batch": 1,
+    "pilotReason": "n=4, connectives — the commonest defect class (23 of 57): the sentence carries ac at the last joint and the split drops it. Proves the dropped word rides into the adjacent piece without breaking the 1:1 count.",
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"ac\""
+  },
+  {
+    "code": "HG47",
+    "english": "Nice and slow now — sit on the edge of the bed first, and we'll let your head catch up with you.",
+    "welsh": "Yn ara deg rŵan — steddwch ar ochr y gwely gynta, ac mi adawn ni i'ch pen chi ddal i fyny efo chi.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "nice and slow",
+        "target": "yn ara deg"
+      },
+      {
+        "known": "sit on the edge of the bed (+ first)",
+        "target": "steddwch ar ochr y gwely gynta"
+      },
+      {
+        "known": "we'll let your head catch up with you",
+        "target": "mi adawn ni i'ch pen chi ddal i fyny efo chi"
+      }
+    ],
+    "batch": 1,
+    "pilotReason": "n=3, connectives, two drops (rŵan, ac) at small n — the heaviest connective load per joint in the set.",
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 2 piece(s) the split drops at a joint: \"rŵan\", \"ac\""
+  },
+  {
+    "code": "HG02",
+    "english": "This isn't my first language, so if you have any trouble understanding me, just let me know and I'll explain myself more clearly — it's really important that you understand everything.",
+    "welsh": "Dim Cymraeg ydy fy iaith gynta i, felly os dach chi'n cael unrhyw drafferth fy nallt i, rhowch wybod i mi — ac mi esbonia i'n gliriach. Mae'n bwysig iawn eich bod chi'n dallt bob dim.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "this isn't my first language so",
+        "target": "dim Cymraeg ydy fy iaith gynta i felly"
+      },
+      {
+        "known": "if you have any trouble understanding me",
+        "target": "os dach chi'n cael unrhyw drafferth fy nallt i"
+      },
+      {
+        "known": "just let me know I'll explain myself more clearly",
+        "target": "rhowch wybod i mi mi esbonia i'n gliriach"
+      },
+      {
+        "known": "it's really important that you understand everything",
+        "target": "mae'n bwysig iawn eich bod chi'n dallt bob dim"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"ac\""
+  },
+  {
+    "code": "HG04",
+    "english": "If I use a word you don't know, just say — I won't be offended.",
+    "welsh": "Os dw i'n defnyddio gair diarth i chi, dim ond deud sydd isio — wna i ddim digio.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "if I use a word you don't know",
+        "target": "os dw i'n defnyddio gair diarth i chi"
+      },
+      {
+        "known": "just say",
+        "target": "dim ond deud sydd isio"
+      },
+      {
+        "known": "I won't be offended",
+        "target": "wna i ddim digio"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG06",
+    "english": "That's completely sensible, and exactly the right instinct — clarity matters most here.",
+    "welsh": "Mae hynna'n hollol gall — dach chi'n iawn i feddwl fel'na. Bod yn glir sy'n bwysica yma.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "that's completely sensible",
+        "target": "mae hynna'n hollol gall"
+      },
+      {
+        "known": "exactly the right instinct",
+        "target": "dach chi'n iawn i feddwl fel'na"
+      },
+      {
+        "known": "clarity matters most here",
+        "target": "bod yn glir sy'n bwysica yma"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG07",
+    "english": "None taken at all — you've done me a favour.",
+    "welsh": "Dw i ddim wedi digio o gwbl — dach chi 'di gneud ffafr â fi.",
+    "chunkCount": 2,
+    "chunks": [
+      {
+        "known": "none taken at all",
+        "target": "dw i ddim wedi digio o gwbl"
+      },
+      {
+        "known": "you've done me a favour",
+        "target": "dach chi 'di gneud ffafr â fi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG08",
+    "english": "Through work, mostly — a little bit every day. I've been at it about a year now.",
+    "welsh": "Drwy'r gwaith, gan fwya — rhyw chydig bob dydd. Dw i wrthi ers rhyw flwyddyn rŵan.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "through work, mostly",
+        "target": "drwy'r gwaith, gan fwya"
+      },
+      {
+        "known": "a little bit every day",
+        "target": "rhyw chydig bob dydd"
+      },
+      {
+        "known": "I've been at it",
+        "target": "dw i wrthi"
+      },
+      {
+        "known": "about a year now",
+        "target": "ers rhyw flwyddyn rŵan"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG09",
+    "english": "I'm from the Philippines — I've been here three years now.",
+    "welsh": "Dw i'n dod o'r Philippines — dw i yma ers tair blynedd rŵan.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "I'm from the Philippines",
+        "target": "dw i'n dod o'r Philippines"
+      },
+      {
+        "known": "I've been here",
+        "target": "dw i yma"
+      },
+      {
+        "known": "three years now",
+        "target": "ers tair blynedd rŵan"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG10",
+    "english": "The weather takes some getting used to — but the people are kind. Now then, let's have a look at you.",
+    "welsh": "Mae isio arfer efo'r tywydd! Ond mae'r bobl yn glên. Rŵan 'ta — dewch i ni gael golwg arnoch chi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "the weather takes some getting used to",
+        "target": "mae isio arfer efo'r tywydd"
+      },
+      {
+        "known": "but the people are kind",
+        "target": "ond mae'r bobl yn glên"
+      },
+      {
+        "known": "now then",
+        "target": "rŵan 'ta"
+      },
+      {
+        "known": "let's have a look at you",
+        "target": "dewch i ni gael golwg arnoch chi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG11",
+    "english": "Right, shall we make a start? Just stop me if I lose you.",
+    "welsh": "Reit — wnawn ni ddechra? Stopiwch fi os dw i'n eich colli chi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "right",
+        "target": "reit"
+      },
+      {
+        "known": "shall we make a start",
+        "target": "wnawn ni ddechra"
+      },
+      {
+        "known": "just stop me",
+        "target": "stopiwch fi"
+      },
+      {
+        "known": "if I lose you",
+        "target": "os dw i'n eich colli chi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG12",
+    "english": "Right — what can I do for you today?",
+    "welsh": "Reit — be fedra i neud i chi heddiw?",
+    "chunkCount": 1,
+    "chunks": [
+      {
+        "known": "what can I do for you today",
+        "target": "be fedra i neud i chi heddiw"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"reit\""
+  },
+  {
+    "code": "HG13",
+    "english": "So — what's brought you in today?",
+    "welsh": "Felly — be sy wedi dod â chi i mewn heddiw?",
+    "chunkCount": 1,
+    "chunks": [
+      {
+        "known": "what's brought you in today",
+        "target": "be sy wedi dod â chi i mewn heddiw"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"felly\""
+  },
+  {
+    "code": "HG14",
+    "english": "Of course — she's very welcome. Two pairs of ears are better than one.",
+    "welsh": "Wrth gwrs — mae croeso mawr iddi hi. Mae dau bâr o glustiau'n well nag un.",
+    "chunkCount": 2,
+    "chunks": [
+      {
+        "known": "she's very welcome",
+        "target": "mae croeso mawr iddi hi"
+      },
+      {
+        "known": "two pairs of ears are better than one",
+        "target": "mae dau bâr o glustiau'n well nag un"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"wrth gwrs\""
+  },
+  {
+    "code": "HG15",
+    "english": "That's what family's for. Right — with you both here, let's make a start.",
+    "welsh": "Dyna i be mae teulu. Reit — efo chi'ch dwy yma, dewch i ni ddechra.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "that's what family's for",
+        "target": "dyna i be mae teulu"
+      },
+      {
+        "known": "with you both here",
+        "target": "efo chi'ch dwy yma"
+      },
+      {
+        "known": "let's make a start",
+        "target": "dewch i ni ddechra"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"reit\""
+  },
+  {
+    "code": "HG17",
+    "english": "Hello, my name's Siân — I'm looking after you today. What would you like me to call you?",
+    "welsh": "Helô — Siân dw i, a fi sy'n edrych ar eich ôl chi heddiw. Be liciech chi i mi'ch galw chi?",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "hello",
+        "target": "helô"
+      },
+      {
+        "known": "my name's Siân",
+        "target": "Siân dw i"
+      },
+      {
+        "known": "I'm looking after you today",
+        "target": "fi sy'n edrych ar eich ôl chi heddiw"
+      },
+      {
+        "known": "what would you like me to call you",
+        "target": "be liciech chi i mi'ch galw chi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"a\""
+  },
+  {
+    "code": "HG18",
+    "english": "Lovely to meet you, Peggy. I've got a few little jobs to do with you this morning, if that's alright.",
+    "welsh": "Braf eich cyfarfod chi, Peggy. Mae gen i chydig o jobsys bach i'w gneud efo chi bore 'ma, os ydy hynny'n iawn.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "lovely to meet you (+ name)",
+        "target": "braf eich cyfarfod chi"
+      },
+      {
+        "known": "I've got a few little jobs to do with you",
+        "target": "mae gen i chydig o jobsys bach i'w gneud efo chi"
+      },
+      {
+        "known": "this morning",
+        "target": "bore 'ma"
+      },
+      {
+        "known": "if that's alright",
+        "target": "os ydy hynny'n iawn"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"peggy\""
+  },
+  {
+    "code": "HG21",
+    "english": "It's on my badge, look. Don't worry — there's a lot of us to remember.",
+    "welsh": "Mae o ar fy mathodyn i, ylwch. Peidiwch â phoeni — mae 'na lot ohonan ni i'w cofio.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "it's on my badge (+ look)",
+        "target": "mae o ar fy mathodyn i, ylwch"
+      },
+      {
+        "known": "don't worry",
+        "target": "peidiwch â phoeni"
+      },
+      {
+        "known": "there's a lot of us to remember",
+        "target": "mae 'na lot ohonan ni i'w cofio"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG22",
+    "english": "Before we start, is there anything you need — water, another pillow?",
+    "welsh": "Cyn i ni ddechra — oes 'na rywbeth dach chi angen? Dŵr, clustog arall?",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "before we start",
+        "target": "cyn i ni ddechra"
+      },
+      {
+        "known": "is there anything you need",
+        "target": "oes 'na rywbeth dach chi angen"
+      },
+      {
+        "known": "water",
+        "target": "dŵr"
+      },
+      {
+        "known": "another pillow",
+        "target": "clustog arall"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG23",
+    "english": "I'm here till eight tonight, so you're stuck with me. And if I'm not about, any of the team can help you.",
+    "welsh": "Dw i yma tan wyth heno, felly dach chi'n sownd efo fi. Ac os dydw i ddim o gwmpas, mi fedar unrhyw un o'r tîm eich helpu chi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "I'm here + till eight tonight",
+        "target": "dw i yma tan wyth heno"
+      },
+      {
+        "known": "you're stuck with me",
+        "target": "dach chi'n sownd efo fi"
+      },
+      {
+        "known": "if I'm not about",
+        "target": "os dydw i ddim o gwmpas"
+      },
+      {
+        "known": "any of the team can help you",
+        "target": "mi fedar unrhyw un o'r tîm eich helpu chi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 2 piece(s) the split drops at a joint: \"felly\", \"ac\""
+  },
+  {
+    "code": "HG24",
+    "english": "Let's get you comfortable. This is your call bell — press it any time you need us, day or night. The bathroom's just through there.",
+    "welsh": "Dewch i ni'ch gneud chi'n gyfforddus. Dyma'ch cloch alw chi — pwyswch hi unrhyw bryd dach chi angen ni, ddydd neu nos. Mae'r stafell molchi jyst drwy fan'na.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "let's get you comfortable",
+        "target": "dewch i ni'ch gneud chi'n gyfforddus"
+      },
+      {
+        "known": "this is your call bell",
+        "target": "dyma'ch cloch alw chi"
+      },
+      {
+        "known": "press it any time you need us",
+        "target": "pwyswch hi unrhyw bryd dach chi angen ni"
+      },
+      {
+        "known": "day or night the bathroom's just through there",
+        "target": "ddydd neu nos mae'r stafell molchi jyst drwy fan'na"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG25",
+    "english": "Anything you're not sure about, that's what the bell's for — don't sit there worrying quietly.",
+    "welsh": "Unrhyw beth dach chi ddim yn siŵr amdano fo — dyna i be mae'r gloch. Peidiwch ag ista'n fan'na'n poeni'n ddistaw.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "anything you're not sure about",
+        "target": "unrhyw beth dach chi ddim yn siŵr amdano fo"
+      },
+      {
+        "known": "that's what the bell's for",
+        "target": "dyna i be mae'r gloch"
+      },
+      {
+        "known": "don't sit there worrying quietly",
+        "target": "peidiwch ag ista'n fan'na'n poeni'n ddistaw"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG26",
+    "english": "Your things go in the cupboard there — and valuables are best going home with the family, if that's possible.",
+    "welsh": "Mae'ch petha chi'n mynd i'r cwpwrdd fan'na — ac mae'n well i betha gwerthfawr fynd adra efo'r teulu, os ydy hynny'n bosib.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "your things go in the cupboard there",
+        "target": "mae'ch petha chi'n mynd i'r cwpwrdd fan'na"
+      },
+      {
+        "known": "valuables are best going home with the family",
+        "target": "mae'n well i betha gwerthfawr fynd adra efo'r teulu"
+      },
+      {
+        "known": "if that's possible",
+        "target": "os ydy hynny'n bosib"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"ac\""
+  },
+  {
+    "code": "HG27",
+    "english": "Visiting's two till eight, so plenty of time. Two visitors at a time, that's the only rule.",
+    "welsh": "Mae'r oriau ymweld o ddau tan wyth, felly digon o amser. Dau ymwelydd ar y tro — dyna'r unig reol.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "visiting's two till eight",
+        "target": "mae'r oriau ymweld o ddau tan wyth"
+      },
+      {
+        "known": "so plenty of time",
+        "target": "felly digon o amser"
+      },
+      {
+        "known": "two visitors at a time",
+        "target": "dau ymwelydd ar y tro"
+      },
+      {
+        "known": "that's the only rule",
+        "target": "dyna'r unig reol"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG28",
+    "english": "It can get a bit busy some nights, I won't lie to you. But we keep the lights down, and you tell us if you can't sleep.",
+    "welsh": "Mi fedar hi fynd braidd yn brysur ambell noson — ddeuda i ddim celwydd wrthach chi. Ond dan ni'n cadw'r gola'n isel, a deudwch chi wrthan ni os fedrwch chi ddim cysgu.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "it can get a bit busy some nights",
+        "target": "mi fedar hi fynd braidd yn brysur ambell noson"
+      },
+      {
+        "known": "I won't lie to you",
+        "target": "ddeuda i ddim celwydd wrthach chi"
+      },
+      {
+        "known": "we keep the lights down",
+        "target": "dan ni'n cadw'r gola'n isel"
+      },
+      {
+        "known": "you tell us if you can't sleep",
+        "target": "deudwch chi wrthan ni os fedrwch chi ddim cysgu"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 2 piece(s) the split drops at a joint: \"ond\", \"a\""
+  },
+  {
+    "code": "HG29",
+    "english": "Let's start with a few quick checks. Can you roll up your sleeve for me?",
+    "welsh": "Dewch i ni ddechra efo chydig o tsiecs sydyn. Fedrwch chi dorchi'ch llawes i mi?",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "let's start with",
+        "target": "dewch i ni ddechra efo"
+      },
+      {
+        "known": "a few quick checks",
+        "target": "chydig o tsiecs sydyn"
+      },
+      {
+        "known": "can you roll up your sleeve for me",
+        "target": "fedrwch chi dorchi'ch llawes i mi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG30",
+    "english": "I'm just going to take your blood pressure and temperature. Can you roll up your sleeve for me?",
+    "welsh": "Dw i jyst yn mynd i gymryd eich pwysau gwaed chi a'ch tymheredd chi. Fedrwch chi dorchi'ch llawes i mi?",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "I'm just going to take your blood pressure",
+        "target": "dw i jyst yn mynd i gymryd eich pwysau gwaed chi"
+      },
+      {
+        "known": "and temperature",
+        "target": "a'ch tymheredd chi"
+      },
+      {
+        "known": "can you roll up your sleeve for me",
+        "target": "fedrwch chi dorchi'ch llawes i mi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG31",
+    "english": "Right then, first things first — I need to take your blood pressure.",
+    "welsh": "Reit 'ta — y peth cynta'n gynta: dw i angen cymryd eich pwysau gwaed chi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "right then",
+        "target": "reit 'ta"
+      },
+      {
+        "known": "first things first",
+        "target": "y peth cynta'n gynta"
+      },
+      {
+        "known": "I need to",
+        "target": "dw i angen"
+      },
+      {
+        "known": "take your blood pressure",
+        "target": "cymryd eich pwysau gwaed chi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG33",
+    "english": "It's 135 over 80 today — much better. The doctor will be pleased with that.",
+    "welsh": "Mae o'n 135 dros 80 heddiw — llawer gwell. Mi fydd y doctor yn hapus efo hynna.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "it's 135 over 80 today",
+        "target": "mae o'n 135 dros 80 heddiw"
+      },
+      {
+        "known": "much better",
+        "target": "llawer gwell"
+      },
+      {
+        "known": "the doctor will be pleased with that",
+        "target": "mi fydd y doctor yn hapus efo hynna"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG34",
+    "english": "It's come down nicely — 135 over 80. All done. I'll pop back after lunch to do it again.",
+    "welsh": "Mae o wedi dod i lawr yn ddel — 135 dros 80. Wedi gorffen. Mi bicia i'n ôl ar ôl cinio i'w neud o eto.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "it's come down nicely",
+        "target": "mae o wedi dod i lawr yn ddel"
+      },
+      {
+        "known": "all done I'll pop back",
+        "target": "wedi gorffen mi bicia i'n ôl"
+      },
+      {
+        "known": "after lunch",
+        "target": "ar ôl cinio"
+      },
+      {
+        "known": "to do it again",
+        "target": "i'w neud o eto"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"135 dros 80\""
+  },
+  {
+    "code": "HG35",
+    "english": "One high reading on its own is nothing to worry about — that's exactly why we keep checking.",
+    "welsh": "Dydy un darlleniad uchel ar ei ben ei hun ddim byd i boeni amdano fo — dyna'n union pam dan ni'n dal i tsiecio.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "one high reading on its own",
+        "target": "un darlleniad uchel ar ei ben ei hun"
+      },
+      {
+        "known": "is nothing to worry about",
+        "target": "ddim byd i boeni amdano fo"
+      },
+      {
+        "known": "that's exactly why we keep checking",
+        "target": "dyna'n union pam dan ni'n dal i tsiecio"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"dydy\""
+  },
+  {
+    "code": "HG36",
+    "english": "Not to worry, we'll use the other arm. Let me just move this table out of your way.",
+    "welsh": "Dim ots — mi wnawn ni ddefnyddio'r fraich arall. Gadwch i mi jyst symud y bwrdd 'ma o'ch ffordd chi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "not to worry",
+        "target": "dim ots"
+      },
+      {
+        "known": "we'll use the other arm",
+        "target": "mi wnawn ni ddefnyddio'r fraich arall"
+      },
+      {
+        "known": "let me just + move this table",
+        "target": "gadwch i mi jyst symud y bwrdd 'ma"
+      },
+      {
+        "known": "out of your way",
+        "target": "o'ch ffordd chi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG37",
+    "english": "It won't be in forever, I promise. There we are — all done for now.",
+    "welsh": "Fydd o ddim i mewn am byth, dw i'n gaddo. Dyna ni — wedi gorffen am rŵan.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "it won't be in forever",
+        "target": "fydd o ddim i mewn am byth"
+      },
+      {
+        "known": "I promise",
+        "target": "dw i'n gaddo"
+      },
+      {
+        "known": "there we are",
+        "target": "dyna ni"
+      },
+      {
+        "known": "all done for now",
+        "target": "wedi gorffen am rŵan"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG38",
+    "english": "How's your pain at the moment? On a scale of nought to ten, with ten the worst you can imagine? Would you like something for it?",
+    "welsh": "Sut mae'ch poen chi ar y funud? Ar raddfa o ddim i ddeg — a deg ydy'r gwaetha fedrwch chi ddychmygu? Fasach chi'n licio rhywbeth at y boen?",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "how's your pain",
+        "target": "sut mae'ch poen chi ar y funud"
+      },
+      {
+        "known": "on a scale of nought to ten",
+        "target": "ar raddfa o ddim i ddeg"
+      },
+      {
+        "known": "with ten the worst you can imagine",
+        "target": "a deg ydy'r gwaetha fedrwch chi ddychmygu"
+      },
+      {
+        "known": "would you like something for it",
+        "target": "fasach chi'n licio rhywbeth at y boen"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG39",
+    "english": "No problem, let me ask another way. Is it stopping you moving, or sleeping? Is it worse than this morning?",
+    "welsh": "Dim problem — gadwch i mi ofyn mewn ffordd arall. Ydy hi'n eich stopio chi rhag symud, neu gysgu? Ydy hi'n waeth na bore 'ma?",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "no problem",
+        "target": "dim problem"
+      },
+      {
+        "known": "let me ask another way",
+        "target": "gadwch i mi ofyn mewn ffordd arall"
+      },
+      {
+        "known": "is it stopping you moving, or sleeping",
+        "target": "ydy hi'n eich stopio chi rhag symud, neu gysgu"
+      },
+      {
+        "known": "is it worse than this morning",
+        "target": "ydy hi'n waeth na bore 'ma"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG40",
+    "english": "It's no fuss at all — this is exactly what we're here for. I'll be back shortly.",
+    "welsh": "Dydy o'n ddim ffys o gwbl — dyma'n union be dan ni yma i'w neud. Mi fydda i'n ôl toc.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "it's no fuss at all",
+        "target": "dydy o'n ddim ffys o gwbl"
+      },
+      {
+        "known": "this is exactly what we're here for",
+        "target": "dyma'n union be dan ni yma i'w neud"
+      },
+      {
+        "known": "I'll be back shortly",
+        "target": "mi fydda i'n ôl toc"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG41",
+    "english": "What would you like for lunch, the chicken or the soup? And try to drink a bit more water for me if you can.",
+    "welsh": "Be fasach chi'n licio i ginio — y cyw iâr 'ta'r cawl? A triwch yfed chydig mwy o ddŵr i mi, os fedrwch chi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "what would you like for lunch",
+        "target": "be fasach chi'n licio i ginio"
+      },
+      {
+        "known": "the chicken or the soup",
+        "target": "y cyw iâr 'ta'r cawl"
+      },
+      {
+        "known": "try to drink a bit more water for me",
+        "target": "triwch yfed chydig mwy o ddŵr i mi"
+      },
+      {
+        "known": "if you can",
+        "target": "os fedrwch chi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"a\""
+  },
+  {
+    "code": "HG42",
+    "english": "Chicken it is. And shall I put you down for the sponge and custard? You look like a pudding man to me.",
+    "welsh": "Cyw iâr amdani. A wna i roi'ch enw chi i lawr am y sbwnj a'r cwstard? Dach chi'n edrych fel dyn pwdin i mi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "chicken it is",
+        "target": "cyw iâr amdani"
+      },
+      {
+        "known": "shall I put you down for",
+        "target": "wna i roi'ch enw chi i lawr am"
+      },
+      {
+        "known": "the sponge and custard",
+        "target": "y sbwnj a'r cwstard"
+      },
+      {
+        "known": "you look like a pudding man to me",
+        "target": "dach chi'n edrych fel dyn pwdin i mi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"a\""
+  },
+  {
+    "code": "HG43",
+    "english": "I'll leave this jug of water here — see if you can finish it before I'm back.",
+    "welsh": "Mi adawa i'r jwg dŵr 'ma yn fan'ma — gawn ni weld fedrwch chi ei orffen o cyn i mi ddod yn ôl.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "I'll leave this jug of water here",
+        "target": "mi adawa i'r jwg dŵr 'ma yn fan'ma"
+      },
+      {
+        "known": "see if you can finish it",
+        "target": "gawn ni weld fedrwch chi ei orffen o"
+      },
+      {
+        "known": "before I'm back",
+        "target": "cyn i mi ddod yn ôl"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG44",
+    "english": "Let me check the card… the soup has cream in it, so we'll steer clear. The chicken's safe. And I'll flag the dairy with the kitchen so it's on all your meals from now on.",
+    "welsh": "Gadwch i mi tsiecio'r cerdyn… Mae 'na hufen yn y cawl, felly mi gadwn ni draw. Mae'r cyw iâr yn saff. Ac mi ddeuda i wrth y gegin am y llaeth, fel ei fod o ar eich prydau chi i gyd o hyn ymlaen.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "let me check the card the soup has cream in it",
+        "target": "gadwch i mi tsiecio'r cerdyn mae 'na hufen yn y cawl"
+      },
+      {
+        "known": "we'll steer clear the chicken's safe",
+        "target": "mi gadwn ni draw mae'r cyw iâr yn saff"
+      },
+      {
+        "known": "I'll flag the dairy with the kitchen",
+        "target": "mi ddeuda i wrth y gegin am y llaeth"
+      },
+      {
+        "known": "so it's on all your meals from now on",
+        "target": "fel ei fod o ar eich prydau chi i gyd o hyn ymlaen"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 2 piece(s) the split drops at a joint: \"felly\", \"ac\""
+  },
+  {
+    "code": "HG45",
+    "english": "Not on my watch. Chicken it is, and I'll make sure it's noted properly.",
+    "welsh": "Ddim tra bydda i yma. Cyw iâr amdani — ac mi wna i'n siŵr ei fod o wedi'i nodi'n iawn.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "not on my watch",
+        "target": "ddim tra bydda i yma"
+      },
+      {
+        "known": "chicken it is",
+        "target": "cyw iâr amdani"
+      },
+      {
+        "known": "I'll make sure it's noted properly",
+        "target": "mi wna i'n siŵr ei fod o wedi'i nodi'n iawn"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"ac\""
+  },
+  {
+    "code": "HG48",
+    "english": "Take all the time you need. There's no prize for rushing. Ready? Off we go.",
+    "welsh": "Cymrwch yr holl amser dach chi ei angen. Does 'na ddim gwobr am ruthro. Barod? Ffwrdd â ni.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "take all the time you need",
+        "target": "cymrwch yr holl amser dach chi ei angen"
+      },
+      {
+        "known": "there's no prize for rushing",
+        "target": "does 'na ddim gwobr am ruthro"
+      },
+      {
+        "known": "ready",
+        "target": "barod"
+      },
+      {
+        "known": "off we go",
+        "target": "ffwrdd â ni"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG49",
+    "english": "I've got you, I promise — I won't let go of you. We'll take it extra slow — to the door and back today, nothing heroic.",
+    "welsh": "Dw i'n eich dal chi, dw i'n gaddo — wna i ddim eich gollwng chi. Mi gymrwn ni hi'n ara deg iawn — at y drws ac yn ôl heddiw, dim gorwneud hi.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "I've got you",
+        "target": "dw i'n eich dal chi"
+      },
+      {
+        "known": "I won't let go of you",
+        "target": "wna i ddim eich gollwng chi"
+      },
+      {
+        "known": "we'll take it extra slow",
+        "target": "mi gymrwn ni hi'n ara deg iawn"
+      },
+      {
+        "known": "to the door and back (+ today) nothing heroic",
+        "target": "at y drws ac yn ôl heddiw dim gorwneud hi"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"dw i'n gaddo\""
+  },
+  {
+    "code": "HG50",
+    "english": "Well done, you — that's further than yesterday. We'll do it again after tea.",
+    "welsh": "Da iawn chi — mae hynna'n bellach na ddoe. Mi wnawn ni o eto ar ôl te.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "well done, you",
+        "target": "da iawn chi"
+      },
+      {
+        "known": "that's further than yesterday",
+        "target": "mae hynna'n bellach na ddoe"
+      },
+      {
+        "known": "we'll do it again after tea",
+        "target": "mi wnawn ni o eto ar ôl te"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG51",
+    "english": "Just checking in on you. Are you comfortable? Do you need the toilet? Can I get you anything before I go?",
+    "welsh": "Jyst picio i mewn i'ch gweld chi. Dach chi'n gyfforddus? Dach chi angen y tŷ bach? Ga i nôl rhywbeth i chi cyn i mi fynd?",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "just checking in on you",
+        "target": "jyst picio i mewn i'ch gweld chi"
+      },
+      {
+        "known": "are you comfortable",
+        "target": "dach chi'n gyfforddus"
+      },
+      {
+        "known": "do you need the toilet",
+        "target": "dach chi angen y tŷ bach"
+      },
+      {
+        "known": "can I get you anything before I go",
+        "target": "ga i nôl rhywbeth i chi cyn i mi fynd"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG52",
+    "english": "Of course. Water first, and let's sort this pillow out properly while I'm here. Lean forward for me a second.",
+    "welsh": "Wrth gwrs. Dŵr gynta — a dewch i ni sortio'r clustog 'ma'n iawn tra dw i yma. Pwyswch ymlaen i mi am eiliad.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "water first",
+        "target": "dŵr gynta"
+      },
+      {
+        "known": "let's sort this pillow out properly",
+        "target": "dewch i ni sortio'r clustog 'ma'n iawn"
+      },
+      {
+        "known": "while I'm here",
+        "target": "tra dw i yma"
+      },
+      {
+        "known": "lean forward for me a second",
+        "target": "pwyswch ymlaen i mi am eiliad"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 2 piece(s) the split drops at a joint: \"wrth gwrs\", \"a\""
+  },
+  {
+    "code": "HG53",
+    "english": "Right, you're all set. I'll be past again in an hour or so anyway.",
+    "welsh": "Reit — dach chi wedi'ch sortio. Mi ddo i heibio eto mewn rhyw awr, beth bynnag.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "you're all set",
+        "target": "dach chi wedi'ch sortio"
+      },
+      {
+        "known": "I'll be past again",
+        "target": "mi ddo i heibio eto"
+      },
+      {
+        "known": "in an hour or so",
+        "target": "mewn rhyw awr"
+      },
+      {
+        "known": "anyway",
+        "target": "beth bynnag"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"reit\""
+  },
+  {
+    "code": "HG54",
+    "english": "It's half past two, so you've not missed anything — visiting runs till eight. Expecting someone nice?",
+    "welsh": "Mae hi'n hanner awr wedi dau, felly dach chi ddim wedi colli dim byd — mae'r oriau ymweld ymlaen tan wyth. Disgwyl rhywun neis?",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "it's half past two",
+        "target": "mae hi'n hanner awr wedi dau"
+      },
+      {
+        "known": "you've not missed anything",
+        "target": "dach chi ddim wedi colli dim byd"
+      },
+      {
+        "known": "visiting runs till eight",
+        "target": "mae'r oriau ymweld ymlaen tan wyth"
+      },
+      {
+        "known": "expecting someone nice",
+        "target": "disgwyl rhywun neis"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"felly\""
+  },
+  {
+    "code": "HG55",
+    "english": "Something to look forward to. Ring the bell if you want a hand tidying up before they come.",
+    "welsh": "Rhywbeth i edrych ymlaen ato. Canwch y gloch os dach chi isio help llaw i dacluso cyn iddyn nhw ddod.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "something to look forward to",
+        "target": "rhywbeth i edrych ymlaen ato"
+      },
+      {
+        "known": "ring the bell",
+        "target": "canwch y gloch"
+      },
+      {
+        "known": "if you want a hand",
+        "target": "os dach chi isio help llaw"
+      },
+      {
+        "known": "tidying up before they come",
+        "target": "i dacluso cyn iddyn nhw ddod"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG56",
+    "english": "Of course — no need to apologise. Let's take it steady, hold onto my arm.",
+    "welsh": "Wrth gwrs — dim angen ymddiheuro. Dewch i ni fynd gan bwyll — gafaelwch yn fy mraich i.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "no need to apologise",
+        "target": "dim angen ymddiheuro"
+      },
+      {
+        "known": "let's take it steady",
+        "target": "dewch i ni fynd gan bwyll"
+      },
+      {
+        "known": "hold onto my arm",
+        "target": "gafaelwch yn fy mraich i"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "connectives",
+    "partitionNote": "the sentence carries 1 piece(s) the split drops at a joint: \"wrth gwrs\""
+  },
+  {
+    "code": "HG57",
+    "english": "Ring away — that's what it's for. I'd rather ten small things than one big thing we missed.",
+    "welsh": "Canwch chi faint fynnoch chi — dyna i be mae hi. Mae'n well gen i ddeg peth bach nag un peth mawr wnaethon ni ei fethu.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "ring away",
+        "target": "canwch chi faint fynnoch chi"
+      },
+      {
+        "known": "that's what it's for",
+        "target": "dyna i be mae hi"
+      },
+      {
+        "known": "I'd rather ten small things",
+        "target": "mae'n well gen i ddeg peth bach"
+      },
+      {
+        "known": "than one big thing we missed",
+        "target": "nag un peth mawr wnaethon ni ei fethu"
+      }
+    ],
+    "batch": 2,
+    "pilotReason": null,
+    "partition": "exact",
+    "partitionNote": null
+  },
+  {
+    "code": "HG05",
+    "english": "If there's ever a word that doesn't make sense, just ask — it's never a silly question.",
+    "welsh": "Os bydd 'na air sydd ddim yn gneud synnwyr, gofynnwch — dydy o byth yn gwestiwn gwirion.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "if there's ever",
+        "target": "os bydd 'na"
+      },
+      {
+        "known": "a word that doesn't make sense",
+        "target": "gair sydd ddim yn gneud synnwyr"
+      },
+      {
+        "known": "just ask",
+        "target": "gofynnwch"
+      },
+      {
+        "known": "it's never a silly question",
+        "target": "dydy o byth yn gwestiwn gwirion"
+      }
+    ],
+    "batch": 0,
+    "pilotReason": null,
+    "partition": "blocked",
+    "partitionNote": "chunk 2 \"gair sydd ddim yn gneud synnwyr\" — the word \"gair\" does not appear in the sentence at or after this point; the chunk is reordered, or it mutates when it sits inside"
+  },
+  {
+    "code": "HG16",
+    "english": "Then we'll go through it slowly, all three of us.",
+    "welsh": "Mi awn ni drwyddo fo'n ara bach 'ta — ni'n tair.",
+    "chunkCount": 3,
+    "chunks": [
+      {
+        "known": "then",
+        "target": "'ta (tag position)"
+      },
+      {
+        "known": "we'll go through it slowly",
+        "target": "mi awn ni drwyddo fo'n ara bach"
+      },
+      {
+        "known": "all three of us",
+        "target": "ni'n tair"
+      }
+    ],
+    "batch": 0,
+    "pilotReason": null,
+    "partition": "blocked",
+    "partitionNote": "scaffold: chunk \"'ta (tag position)\" carries a parenthetical note, not Welsh"
+  },
+  {
+    "code": "HG19",
+    "english": "First I just need to check your details. Can you tell me your date of birth?",
+    "welsh": "Gynta, dw i jyst angen tsiecio'ch manylion chi. Fedrwch chi ddeud eich dyddiad geni wrtha i?",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "first",
+        "target": "gynta"
+      },
+      {
+        "known": "I just need to check your details",
+        "target": "dw i jyst angen tsiecio'ch manylion chi"
+      },
+      {
+        "known": "can you tell me",
+        "target": "fedrwch chi ddeud … wrtha i"
+      },
+      {
+        "known": "your date of birth",
+        "target": "eich dyddiad geni chi"
+      }
+    ],
+    "batch": 0,
+    "pilotReason": null,
+    "partition": "blocked",
+    "partitionNote": "discontinuous: chunk \"fedrwch chi ddeud … wrtha i\" is two spans with another chunk between them"
+  },
+  {
+    "code": "HG46",
+    "english": "Shall we get you up for a little walk? Take your time, no rush. Hold onto my arm.",
+    "welsh": "Wnawn ni'ch codi chi am dro bach? Cymrwch eich amser — dim brys. Gafaelwch yn fy mraich i.",
+    "chunkCount": 4,
+    "chunks": [
+      {
+        "known": "shall we get you up",
+        "target": "wnawn ni'ch codi chi"
+      },
+      {
+        "known": "for a little walk",
+        "target": "am dro bach"
+      },
+      {
+        "known": "take your time / no rush",
+        "target": "cymrwch eich amser / dim brys"
+      },
+      {
+        "known": "hold onto my arm",
+        "target": "gafaelwch yn fy mraich i"
+      }
+    ],
+    "batch": 0,
+    "pilotReason": null,
+    "partition": "blocked",
+    "partitionNote": "alternation: chunk \"cymrwch eich amser / dim brys\" offers two phrasings behind a slash"
+  }
+]
