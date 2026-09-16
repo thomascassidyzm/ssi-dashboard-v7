@@ -109,6 +109,7 @@ const { normalizeForDb, audioKeyCandidates } = require('../shared/text-normalize
 const { canonicalSpeakerName } = require('./pods-registration.cjs')
 const { canonicalDialect, courseDialect, bucketKey } = require('../shared/dialect.cjs')
 const { isLineRecorded } = require('./take-selection.cjs')
+const { soloReaders, isSoloReaderPod } = require('../shared/pod-solo-readers.cjs')
 const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const langService = require('../language-code-service.cjs')
 
@@ -1108,7 +1109,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
 
   const { data: pods, error: podErr } = await db
     .from('listening_pods')
-    .select('id, course_code, slug, title')
+    .select('id, course_code, slug, title, metadata')
     .in('course_code', [...byCourse.keys()])
   if (podErr) throw new Error(`pod list failed: ${podErr.message}`)
   const podById = new Map((pods || []).map((p) => [p.id, p]))
@@ -1205,8 +1206,17 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       if (reason === 'map_is_not_this_sentence') takeGUnalignable += 1
       return
     }
-    const takegVoices = (Array.isArray(s.takeg_audio_ids) ? s.takeg_audio_ids : [])
-      .map((id) => slotVoiceById.get(id) || null)
+    // ON A SOLO-READER POD, THE POINTER IS PER READER. `takeg_audio_ids[i]` is
+    // reader i's own Take G (see shared/pod-solo-readers.cjs), so scoring this
+    // line by the whole array would let Catrin's gapped take mark Aran's line
+    // recorded — and asking an artist to re-read is the one outcome this estate
+    // treats as a categoric fail, so the reverse (his pointer vanishing under
+    // hers) is the hazard being closed here.
+    const readers = soloReaders(pod)
+    const stored = Array.isArray(s.takeg_audio_ids) ? s.takeg_audio_ids : []
+    const takegVoices = readers.length
+      ? [slotVoiceById.get(stored[readers.indexOf(voiceId)]) || null]
+      : stored.map((id) => slotVoiceById.get(id) || null)
     byBucket.get(bucket).push({
       id: takeGLineId(s.id),
       podId: s.pod_id,
@@ -1280,6 +1290,65 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       }
       continue
     }
+    // A SOLO-READER POD IS CAST BY ITS READERS, NOT BY ITS CHARACTERS.
+    //
+    // Tom's ruling for the health seeds, 2026-09-16: one line per seed, no
+    // character, read solo by each named voice. So ONE sentence becomes one
+    // queue line PER READER here — two recordists on one line — where a pod
+    // line is otherwise one line owned by the character's cast voice. The
+    // sentence's `speaker` is not read at all, and nothing below this block
+    // runs for such a pod: it has no character to hand a line on from, and
+    // `uncast` cannot describe a line whose readers are named on the pod.
+    //
+    // Scored the ordinary way: a reader's own take of these words marks their
+    // own line recorded, so whichever reader's clip ends up in the sentence's
+    // single `target_audio_id` slot, neither is ever asked to read it twice.
+    if (isSoloReaderPod(pod)) {
+      for (const readerVoiceId of soloReaders(pod)) {
+        const owner = aliasOwner.get(readerVoiceId)
+        // A reader the language's register does not know has no gender and so
+        // no bucket. Counted as uncast rather than guessed at, exactly as a
+        // character with no cast entry is.
+        if (!owner || !owner.gender) { uncast += 1; continue }
+        const bucket = bucketKey(courseDialect(course), String(owner.gender).toLowerCase())
+        if (!byBucket.has(bucket)) byBucket.set(bucket, [])
+        const key = voiceTextKey(readerVoiceId, bucket, text)
+        if (seen.has(key)) {
+          const rep = seen.get(key)
+          rep.duplicateOf.push({ sentenceId: s.id, podId: s.pod_id, courseCode: pod.course_code })
+          const dupVoice = slotVoiceById.get(s.target_audio_id)
+          if (dupVoice && !rep.filledBy.includes(dupVoice)) rep.filledBy.push(dupVoice)
+          if (targetRerecordWanted(s)) rep.rerecordWanted = true
+          duplicatesCollapsed += 1
+          pushTakeG(s, pod, bucket, readerVoiceId, readerVoiceId)
+          continue
+        }
+        const soloLine = {
+          id: s.id,
+          podId: s.pod_id,
+          podSlug: pod.slug || null,
+          podTitle: pod.title || null,
+          order: s.global_order,
+          text,
+          knownText: s.known_text || null,
+          // NO CHARACTER. The doubling Aran reported was a character per voice;
+          // saying null here is the content model, not a missing value.
+          speaker: null,
+          courseCode: pod.course_code,
+          voiceId: readerVoiceId,
+          castVoiceId: readerVoiceId,
+          textNormalized: normalizeForDb(text),
+          duplicateOf: [],
+          filledBy: slotVoiceById.get(s.target_audio_id) ? [slotVoiceById.get(s.target_audio_id)] : [],
+          rerecordWanted: targetRerecordWanted(s),
+        }
+        seen.set(key, soloLine)
+        byBucket.get(bucket).push(soloLine)
+        pushTakeG(s, pod, bucket, readerVoiceId, readerVoiceId)
+      }
+      continue
+    }
+
     // THE OWNER FIRST. A cast entry that names a voice id and omits gender is
     // still owned -- lineVoiceId resolves it, propagation files takes onto it
     // -- so it must be that voice's queue line too, or the queue and the take

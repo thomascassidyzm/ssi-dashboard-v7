@@ -56,6 +56,7 @@ const {
 } = require('./recordist-queue.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
+const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = require('../shared/pod-solo-readers.cjs')
 const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const {
@@ -697,7 +698,7 @@ module.exports = function createRecordistRouter({
     }
 
     const { data: pod, error: pErr } = await db()
-      .from('listening_pods').select('id, course_code').eq('id', sentence.pod_id).maybeSingle()
+      .from('listening_pods').select('id, course_code, metadata').eq('id', sentence.pod_id).maybeSingle()
     if (pErr) throw new Error(`pod lookup failed: ${pErr.message}`)
     if (!pod) { res.status(404).json({ error: `No pod for line ${parsed.raw}` }); return null }
 
@@ -705,6 +706,22 @@ module.exports = function createRecordistRouter({
       .from('courses').select('course_code, voice_config, target_lang, known_lang').eq('course_code', pod.course_code).maybeSingle()
     if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
     if (!course) { res.status(404).json({ error: `No course ${pod.course_code}` }); return null }
+
+    // A SOLO-READER POD IS CAST BY ITS READERS. The line has no character to be
+    // cast by — that is the whole point of the shape (shared/pod-solo-readers.cjs)
+    // — so the pod's own list decides, and both readers are entitled to the same
+    // sentence.
+    if (isSoloReaderPod(pod)) {
+      if (soloReaderIndex(pod, recordist.spellings) < 0) {
+        res.status(403).json({
+          error: `This set is read by ${soloReaders(pod).join(' and ')}, not you.`,
+          reason: 'not_your_slot',
+          courseCode: course.course_code,
+        })
+        return null
+      }
+      return { sentence, pod, course, chunks, text: chunks.map((c) => c.target).join(TAKEG_SEAM) }
+    }
 
     // CAST BY SPEAKER, exactly as the sentence's own line is. A Take G is the
     // same person reading the same line a second way; it is never cast apart
@@ -807,7 +824,12 @@ module.exports = function createRecordistRouter({
       // A re-record REPLACES the pointer and nothing else: the new clip is
       // filed before this write and the old one is left in course_audio,
       // unlinked, never deleted. Make-before-break.
-      const next = nextTakeGIds(resolved.sentence.takeg_audio_ids, audioId)
+      // PER READER ON A SOLO-READER POD, positional-per-group everywhere else.
+      // Two recordists read this one line, so one shared slot would mean the
+      // second take silently unlinked the first and re-offered it.
+      const next = isSoloReaderPod(resolved.pod)
+        ? soloReaderTakeGIds(resolved.pod, resolved.sentence.takeg_audio_ids, recordist.spellings, audioId)
+        : nextTakeGIds(resolved.sentence.takeg_audio_ids, audioId)
       const { error: upErr } = await db()
         .from('listening_pod_sentences').update({ takeg_audio_ids: next }).eq('id', resolved.sentence.id)
       if (upErr) logger.error(`[Recordist] take G link failed (take is stored and filed): ${upErr.message}`)
@@ -1236,7 +1258,7 @@ module.exports = function createRecordistRouter({
       }
 
       const { data: pod, error: podErr } = await db()
-        .from('listening_pods').select('id, course_code').eq('id', sentence.pod_id).maybeSingle()
+        .from('listening_pods').select('id, course_code, metadata').eq('id', sentence.pod_id).maybeSingle()
       if (podErr) throw new Error(`pod lookup failed: ${podErr.message}`)
       if (!pod) return res.status(404).json({ error: `Line ${lineId} has no pod` })
 
@@ -1262,7 +1284,18 @@ module.exports = function createRecordistRouter({
       // Catrin. Gender is a property of the voice, never a key (Tom,
       // 2026-09-12 12:08Z): two policy voices of one gender are told apart by
       // voice id here exactly as in the queue (job #351).
-      {
+      if (isSoloReaderPod(pod) && soloReaderIndex(pod, recordist.spellings) < 0) {
+        // Named readers, no characters (shared/pod-solo-readers.cjs). A reader on
+        // the list may record it; anybody else is refused in the same words a
+        // miscast character is.
+        const sentence403 = `This set is read by ${soloReaders(pod).join(' and ')}, not you.`
+        castingRights.recordAccess({
+          kind: 'refused', email: recordist.email, voices: [recordist.voiceId], courseCode: pod.course_code,
+          method: req.method, path: req.originalUrl || req.path, sentence: sentence403, logger,
+        })
+        return res.status(403).json({ error: sentence403, courseCode: pod.course_code, reason: 'not_cast_on_line' })
+      }
+      if (!isSoloReaderPod(pod)) {
         const { data: course, error: courseErr } = await db()
           .from('courses').select('course_code, voice_config, dialect').eq('course_code', pod.course_code).maybeSingle()
         if (courseErr) throw new Error(`course lookup failed: ${courseErr.message}`)

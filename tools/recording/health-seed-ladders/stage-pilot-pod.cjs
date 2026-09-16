@@ -53,6 +53,7 @@ require('dotenv').config()
 const { createClient } = require('@supabase/supabase-js')
 const SEEDS = require('./health-seeds.json')
 const { classifySplit } = require('./partition.cjs')
+const { assertNoCharacters, soloReaders } = require('../../../services/shared/pod-solo-readers.cjs')
 
 const APPLY = process.argv.includes('--apply')
 const BATCH = Number((process.argv.find((a) => a.startsWith('--batch=')) || '').split('=')[1] ||
@@ -62,13 +63,20 @@ const COURSE = 'cym_n_for_eng'
 const SLUG = 'health-ladder-pilot'
 const POD_ID = `${COURSE}:${SLUG}`
 
-// SPEAKERS ALREADY CAST ON THIS COURSE, and chosen for that reason alone: a
-// speaker with no podCast entry is `uncast` and lands in nobody's queue. Both
-// voices read every pilot seed, solo, which is what Tom ruled for these seeds.
-const READERS = [
-  { speaker: 'Nurse Siân', who: 'Catrin', voiceId: 'human_catrinlliar_cym_n' },
-  { speaker: 'Wil Hughes', who: 'Aran', voiceId: 'human_aran_cym_n' },
-]
+// READ SOLO BY BOTH VOICES, AND BY NO CHARACTER (Tom's ruling, 2026-09-16).
+//
+// This set was first staged with a character per voice — Nurse Siân and Wil
+// Hughes — because a pod line is cast by its speaker and each character could
+// then own an audio slot. That wrote every seed TWICE, and Aran opened the pod
+// page and found it: "two versions of each translation, one for Nurse Sian and
+// one for Wil Hughes."
+//
+// These are SEEDS. One line per seed, no character at all, read solo by each
+// voice — Aran and Catrin reading the same sentence, the way target1 and target2
+// of a seed are read. The pod says so by naming its readers, and
+// services/shared/pod-solo-readers.cjs is what the queue, the take route and the
+// Take G route all read that declaration from.
+const SOLO_READERS = ['human_aran_cym_n', 'human_catrinlliar_cym_n']
 
 function atomMap(seed) {
   return seed.chunks.map((c, i) => ({
@@ -85,26 +93,20 @@ function atomMap(seed) {
 }
 
 function sentencesFor(seeds) {
-  const rows = []
-  let order = 0
-  seeds.forEach((seed, si) => {
-    READERS.forEach((r) => {
-      order += 1
-      rows.push({
-        id: `${POD_ID}:${seed.code.toLowerCase()}:${r.who.toLowerCase()}`,
-        pod_id: POD_ID,
-        scene_number: 1,
-        sentence_number: order,
-        global_order: order,
-        speaker: r.speaker,
-        target_text: seed.welsh,
-        known_text: seed.english,
-        atom_map_fine: atomMap(seed),
-        target_text_draft: true,
-      })
-    })
-  })
-  return rows
+  return seeds.map((seed, i) => ({
+    id: `${POD_ID}:${seed.code.toLowerCase()}`,
+    pod_id: POD_ID,
+    scene_number: 1,
+    sentence_number: i + 1,
+    global_order: i + 1,
+    // NO CHARACTER. The column is NOT NULL, so the empty string is how a line
+    // with no character says so; assertNoCharacters refuses anything else.
+    speaker: '',
+    target_text: seed.welsh,
+    known_text: seed.english,
+    atom_map_fine: atomMap(seed),
+    target_text_draft: true,
+  }))
 }
 
 async function main() {
@@ -118,20 +120,39 @@ async function main() {
     }
   }
   const sentences = sentencesFor(seeds)
+  const podRow = {
+    id: POD_ID,
+    course_code: COURSE,
+    pod_type: 'choice',
+    slug: SLUG,
+    pod_order: 900,
+    title: 'Health ladder pilot — seed-and-splice (job #993)',
+    scene: 'Health — ward and surgery',
+    // EMPTY, DELIBERATELY. A seed set has no cast of characters; its readers are
+    // named in metadata.solo_readers and nowhere else.
+    speakers: {},
+    visibility: 'held',
+    metadata: { pilot: 'seed-and-splice', job: '993', batch: BATCH, solo_readers: SOLO_READERS },
+  }
+  // THE GUARD, before anything is printed or written: a seed-set staging can
+  // never attach pod characters, and can never write one seed twice.
+  assertNoCharacters(podRow, sentences)
 
   console.log(`${APPLY ? 'APPLY' : 'DRY RUN'} — batch ${BATCH}, ${seeds.length} seed(s)`)
   console.log(`pod ${POD_ID}  pod_type=choice  slug=${SLUG}  visibility=held`)
   console.log(`  served by nothing: the learner resolves core/pod-1, and this is neither.`)
   console.log(`  reachable in the booth: the recordist queue reads no visibility at all.`)
-  console.log(`${sentences.length} sentence(s): ${seeds.length} seed(s) × ${READERS.length} voice(s)`)
+  console.log(`${sentences.length} sentence(s): one per seed, no character`)
+  console.log(`read solo by ${soloReaders(podRow).join(' and ')} — two takes on one line`)
   console.log(`each declares its chunks, so each yields TWO queue lines — natural + Take G.`)
   for (const row of sentences) {
     console.log(`  ${row.id}`)
-    console.log(`    ${row.speaker}: ${row.target_text}`)
+    console.log(`    ${row.target_text}`)
     console.log(`    seams: ${row.atom_map_fine.map((a) => a.target_surface).join(' … ')}`)
   }
   console.log('')
-  console.log(`queue lines added: ${sentences.length * 2} total, ${sentences.length} per voice`)
+  console.log(`queue lines: ${sentences.length} natural + ${sentences.length} gapped PER READER` +
+    ` = ${sentences.length * 2} each, ${sentences.length * 2 * SOLO_READERS.length} in all`)
 
   if (!APPLY) {
     console.log('\nDRY RUN — nothing written. Re-run with --apply.')
@@ -140,24 +161,39 @@ async function main() {
 
   const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
-  const { error: podErr } = await db.from('listening_pods').upsert({
-    id: POD_ID,
-    course_code: COURSE,
-    pod_type: 'choice',
-    slug: SLUG,
-    pod_order: 900,
-    title: 'Health ladder pilot — seed-and-splice (job #993)',
-    scene: 'Health — ward and surgery',
-    speakers: Object.fromEntries(READERS.map((r) => [r.speaker, { name: r.who, voiceId: r.voiceId }])),
-    visibility: 'held',
-    metadata: { pilot: 'seed-and-splice', job: '993', batch: BATCH },
-  }, { onConflict: 'id' })
+  const { error: podErr } = await db.from('listening_pods').upsert(podRow, { onConflict: 'id' })
   if (podErr) throw new Error(`pod upsert failed: ${podErr.message}`)
   console.log(`pod ${POD_ID} upserted (held).`)
+
+  // THE DEDUPE RUNS FIRST — (pod_id, global_order) is unique, and the character
+  // rows hold the very orders the solo rows are about to take.
+  // IT NEVER TOUCHES AUDIO. Anything left in this pod that the
+  // solo shape does not name is a character row from the first staging (…:hg20:aran).
+  // A row holding a take is REFUSED, never deleted: the clip stays, the pointer
+  // stays, and a human decides where it belongs. Make-before-break, on a row.
+  const keep = new Set(sentences.map((r) => r.id))
+  const { data: existing, error: exErr } = await db
+    .from('listening_pod_sentences')
+    .select('id, target_audio_id, takeg_audio_ids')
+    .eq('pod_id', POD_ID)
+  if (exErr) throw new Error(`existing sentence read failed: ${exErr.message}`)
+  const stale = (existing || []).filter((r) => !keep.has(r.id))
+  const withTakes = stale.filter((r) => r.target_audio_id || (Array.isArray(r.takeg_audio_ids) && r.takeg_audio_ids.filter(Boolean).length))
+  if (withTakes.length) {
+    throw new Error(`REFUSING to dedupe: ${withTakes.length} character row(s) already hold takes — ` +
+      `${withTakes.map((r) => r.id).join(', ')}. Move the pointer onto the solo line by hand first; nothing here deletes audio.`)
+  }
+  if (stale.length) {
+    const { error: delErr } = await db.from('listening_pod_sentences').delete().in('id', stale.map((r) => r.id))
+    if (delErr) throw new Error(`dedupe failed: ${delErr.message}`)
+    console.log(`${stale.length} character row(s) removed — no audio was linked to any of them:`)
+    for (const r of stale) console.log(`  - ${r.id}`)
+  }
 
   const { error: sErr } = await db.from('listening_pod_sentences').upsert(sentences, { onConflict: 'id' })
   if (sErr) throw new Error(`sentence upsert failed: ${sErr.message}`)
   console.log(`${sentences.length} sentence(s) upserted.`)
+
   console.log('\nNothing was recorded and no audio was generated. The lines are now in the booth.')
 }
 
