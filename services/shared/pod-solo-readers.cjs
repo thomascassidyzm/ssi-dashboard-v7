@@ -108,7 +108,11 @@ function soloReaderTakeGIds(pod, existing, spellings, audioId) {
  * @param {Array<{id?: string, speaker?: string}>} sentences the rows about to be written
  */
 function assertNoCharacters(pod, sentences) {
-  if (!isSoloReaderPod(pod)) return
+  if (!isSoloReaderPod(pod)) {
+    throw new Error(
+      `A seed-set staging must declare metadata.solo_readers — ${(pod && pod.id) || 'this pod'} declares none. ` +
+      `Without it there is no reader to cast the lines to at all.`)
+  }
   const speakers = Object.keys((pod && pod.speakers) || {}).filter((k) => k !== '_default')
   if (speakers.length) {
     throw new Error(
@@ -121,16 +125,16 @@ function assertNoCharacters(pod, sentences) {
       `A solo-reader pod's lines may not name a character — ${withSpeaker.length} do, ` +
       `starting with ${withSpeaker[0].id || withSpeaker[0].speaker}.`)
   }
-  const byText = new Map()
+  const byId = new Map()
   for (const s of sentences || []) {
-    const key = String(s.target_text || '').trim().toLowerCase()
+    const key = String((s && s.id) || '').trim()
     if (!key) continue
-    if (byText.has(key)) {
+    if (byId.has(key)) {
       throw new Error(
-        `A solo-reader pod holds ONE line per seed — ${s.id} repeats ${byText.get(key)}. ` +
+        `A solo-reader pod holds ONE line per seed — ${key} is staged twice. ` +
         `Two readers of one line are two takes, never two rows.`)
     }
-    byText.set(key, s.id)
+    byId.set(key, s)
   }
 }
 

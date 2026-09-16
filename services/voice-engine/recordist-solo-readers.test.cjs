@@ -172,11 +172,11 @@ test('the guard refuses a seed-set staging that attaches characters or doubles a
     seedLine('s1:catrin', 1, { speaker: 'Nurse Siân' }),
   ]), /may not name a character/)
   assert.throws(() => assertNoCharacters(POD, [
-    seedLine('s1:catrin', 1), seedLine('s1:aran', 2),
+    seedLine('s1', 1), seedLine('s1', 2, { target_text: 'a different translation entirely' }),
   ]), /ONE line per seed/)
-  // An ordinary pod is none of this function's business.
-  assert.doesNotThrow(() => assertNoCharacters(
-    { id: 'p', speakers: { Customer: {} }, metadata: {} },
-    [{ id: 'x', speaker: 'Customer', target_text: 'a' }, { id: 'y', speaker: 'Customer', target_text: 'a' }],
-  ))
+  // A pod with no declared solo_readers is not a valid seed-set staging at all.
+  assert.throws(() => assertNoCharacters(
+    { id: 'p', speakers: {}, metadata: {} },
+    [seedLine('s1', 1)],
+  ), /must declare metadata\.solo_readers/)
 })
