@@ -18,6 +18,9 @@
       <p class="text-accent text-xs mb-6">
         Shared across all courses — edits here change the source, not any generated pod (regenerate a pod to pull changes).
       </p>
+      <!-- A recordist reaches this page by the casting alone, and used to find
+           no way on into the booth from it (Aran, 2026-09-16). -->
+      <RecordDoor :course-code="courseCode" class="mb-6" />
 
       <div v-if="loading" class="text-faint py-12 text-center">Loading…</div>
       <div v-else-if="error" class="error-box border rounded-lg p-4">{{ error }}</div>
@@ -96,6 +99,7 @@ import { ref, reactive, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import RecordDoor from '@/components/RecordDoor.vue'
 
 const route = useRoute()
 const courseCode = route.params.courseCode

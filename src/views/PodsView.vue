@@ -17,6 +17,10 @@
         <p class="text-muted text-sm">
           Layer 2 podcast content · {{ getCourseName(courseCode) }}
         </p>
+        <!-- The way into the booth, at the top, on every page a recordist can
+             land on (Aran, 2026-09-16). Course-scoped here: the pods are listed
+             below and each carries its own door. -->
+        <RecordDoor :course-code="courseCode" />
       </div>
 
       <!-- THE CREATE STEP, and only that. This card used to be a state card
@@ -245,6 +249,7 @@ import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
 import { useCourses } from '@/composables/useCourses'
 import PodCastPanel from '@/components/PodCastPanel.vue'
+import RecordDoor from '@/components/RecordDoor.vue'
 import { pickServingPod, slugOfPod, partitionPods, podParkedReason } from '@/lib/servingPod.js'
 import { podDisplayTitle, podDisplayLabel } from '@/lib/podDisplayName.js'
 import { voiceNamesFromCoverage, recordistNames } from '@/lib/recordistNames.js'

@@ -1184,8 +1184,22 @@ function isSettled(l) { return isRecorded(l) || isPending(l.id) }
 // session after (Tom's booth, 2026-09-12: "Start recording — A black coffee,
 // please." over a pod block reading "all 24 recorded"). -1 means nothing is
 // owed, and Start is disabled on it. Proved by RecordistRoom.artistsDay.test.js.
+// THE POD A LINK NAMED. /r/:voiceId?course=<code>&pod=<slug> is this same booth
+// with Start on that pod's first unread line — the door the pod pages draw
+// (RecordDoor.vue), so a recordist who taps "Record your lines" on a pod page
+// lands in that pod's work rather than at the top of everything he owes. Read
+// off the address, like ?course=, so the booth keeps no router dependency.
+// Nothing else changes: the queue, the map and the counts are the whole queue.
+const podScope = new URLSearchParams(window.location.search).get('pod') || ''
+
 const startIndex = computed(() => {
   if (!lines.value.length) return -1
+  // A pod with nothing owed in it falls through to the queue's own first unread
+  // line — never to "Nothing left to read" while work is owed elsewhere.
+  if (podScope) {
+    const inPod = lines.value.findIndex(l => !isSettled(l) && (l.podSlug || '') === podScope)
+    if (inPod !== -1) return inPod
+  }
   return lines.value.findIndex(l => !isSettled(l))
 })
 
