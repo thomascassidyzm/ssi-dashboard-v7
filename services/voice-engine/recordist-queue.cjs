@@ -1145,6 +1145,12 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     byPod.get(s.pod_id).push(s)
   }
   for (const arr of byPod.values()) arr.sort((a, b) => (a.global_order - b.global_order) || String(a.id).localeCompare(String(b.id)))
+  // WHERE EACH SENTENCE SITS IN ITS OWN POD, so finding a line's neighbours is a
+  // lookup rather than a scan. A scan is O(lines²) per language and this route
+  // is already the slowest read the booth makes — see the per-call cache note
+  // at memoRead: nothing here may add to a cold call.
+  const posInPod = new Map(sentences.map((x) => [x.id, null]))
+  for (const arr of byPod.values()) arr.forEach((x, i) => posInPod.set(x.id, i))
   const CUE_EACH_SIDE = 2
 
   /**
@@ -1164,8 +1170,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   function exchangeContext(s, pod) {
     if (isSoloReaderPod(pod)) return null
     const all = byPod.get(s.pod_id) || []
-    const i = all.findIndex((x) => x.id === s.id)
-    if (i < 0) return null
+    const i = posInPod.get(s.id)
+    if (i == null) return null
     const sameScene = (x) => s.scene_number == null || x.scene_number == null || x.scene_number === s.scene_number
     const cue = (x) => ({ speaker: x.speaker || null, text: (x.target_text || '').trim(), knownText: x.known_text || null })
     const before = []
