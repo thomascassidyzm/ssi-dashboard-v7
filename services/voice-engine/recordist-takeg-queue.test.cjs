@@ -26,6 +26,7 @@ const test = require('node:test')
 const assert = require('node:assert')
 const {
   buildQueue, resolveRecordist, parseTakeGLineId, takeGLineId, takeGChunks,
+  takeGChunksDetail, takeGBare,
 } = require('./recordist-queue.cjs')
 
 function stubDb(tables) {
@@ -184,10 +185,92 @@ test('a COLLAPSED DUPLICATE still gets its own Take G', async () => {
 
 test('a Take G sorts immediately after its own natural line', async () => {
   const lines = await linesOf(fixture([
-    sentence('s1', 1, 'llinell un', { atom_map_fine: MAP }),
-    sentence('s2', 2, 'llinell dau', { atom_map_fine: MAP }),
+    sentence('s1', 1, 'zzz un a dau', { atom_map_fine: MAP }),
+    sentence('s2', 2, 'zzz un a dau eto', { atom_map_fine: MAP }),
   ]))
   assert.deepEqual(lines.map((l) => `${l.kind}:${l.id}`), [
     'pod:s1', 'takeg:takeg:s1', 'pod:s2', 'takeg:takeg:s2',
   ], 'read each sentence twice while it is in the mouth, never 57 and then 57 again')
+})
+
+/**
+ * THE PILOT SENTENCES, WORD FOR WORD.
+ *
+ * The five cym_n health-ladder pilot lines as they stand in the database on
+ * 2026-09-16 — their real target_text and their real atom_map_fine. Two of them
+ * carry words that belong to no declared chunk ("ac" in hg01; "rŵan" and "ac" in
+ * hg47), which is precisely the defect: joining the chunk surfaces asked the
+ * reader for a DIFFERENT SENTENCE, and the full-sentence rung sliced from that
+ * take would have been missing a word for ever.
+ */
+const PILOT = [
+  {
+    id: 'hg20',
+    text: "Fedrwch chi ddeud eich dyddiad geni wrtha i — i mi fod yn siŵr mai chi ydy'r person iawn?",
+    surfaces: ['fedrwch chi ddeud eich dyddiad geni wrtha i', "i mi fod yn siŵr mai chi ydy'r person iawn"],
+  },
+  {
+    id: 'hg03',
+    text: "Os awn ni'n sownd, mi fedra i alw ar rywun sy'n siarad Cymraeg yn fwy hyderus na fi.",
+    surfaces: ["os awn ni'n sownd", 'mi fedra i alw ar rywun', "sy'n siarad Cymraeg yn fwy hyderus na fi"],
+  },
+  {
+    id: 'hg32',
+    text: "Mae'r fraich chwith yn iawn. Mi fydd y cwff yn gwasgu am chydig eiliadau rŵan — wedyn mae o'n gollwng.",
+    surfaces: ["mae'r fraich chwith yn iawn", 'mi fydd y cwff yn gwasgu', 'am chydig eiliadau rŵan', "wedyn mae o'n gollwng"],
+  },
+  {
+    id: 'hg01',
+    text: "Os dw i'n deud rhywbeth sydd ddim yn glir, stopiwch fi, plîs — ac mi ddeuda i o eto.",
+    surfaces: ["os dw i'n deud", 'rhywbeth sydd ddim yn glir', 'stopiwch fi, plîs', 'mi ddeuda i o eto'],
+  },
+  {
+    id: 'hg47',
+    text: "Yn ara deg rŵan — steddwch ar ochr y gwely gynta, ac mi adawn ni i'ch pen chi ddal i fyny efo chi.",
+    surfaces: ['yn ara deg', 'steddwch ar ochr y gwely gynta', "mi adawn ni i'ch pen chi ddal i fyny efo chi"],
+  },
+]
+const mapOf = (surfaces) => surfaces.map((t, i) => ({ kind: 'atom', gloss: `g${i}`, target_surface: t }))
+
+test('every pilot gapped read IS its own sentence — every word, in order', () => {
+  for (const p of PILOT) {
+    const chunks = takeGChunks({ target_text: p.text, atom_map_fine: mapOf(p.surfaces) })
+    assert.ok(chunks, `${p.id}: the map must align to its own sentence`)
+    assert.equal(
+      takeGBare(chunks.map((c) => c.target).join(' ')), takeGBare(p.text),
+      `${p.id}: the gapped read drops words — a Take G of it could never yield the whole-sentence rung`,
+    )
+  }
+})
+
+test('a leftover rides with the neighbour the sentence breathes towards', () => {
+  const chunksOf = (p) => takeGChunks({ target_text: p.text, atom_map_fine: mapOf(p.surfaces) }).map((c) => c.target)
+  // "…, stopiwch fi, plîs — ac mi ddeuda i o eto." The seam is the dash, so "ac"
+  // opens the clause behind it.
+  assert.deepEqual(chunksOf(PILOT[3]).slice(2), ['stopiwch fi, plîs', 'ac mi ddeuda i o eto'])
+  // "Yn ara deg rŵan — steddwch…, ac mi adawn ni…": the same rule, read both
+  // ways round — "rŵan" is in front of its dash and stays with "yn ara deg".
+  assert.deepEqual(chunksOf(PILOT[4]), [
+    'yn ara deg rŵan',
+    'steddwch ar ochr y gwely gynta',
+    "ac mi adawn ni i'ch pen chi ddal i fyny efo chi",
+  ])
+})
+
+test('a map that belongs to some other wording is refused, and says which it is', () => {
+  const detail = takeGChunksDetail({
+    target_text: 'Experimente paracetamol para a dor.',
+    atom_map_fine: mapOf(['Tome paracetamol', 'para a dor']),
+  })
+  assert.equal(detail.chunks, null, 'no honest gapped read exists for a map of different words')
+  assert.equal(detail.reason, 'map_is_not_this_sentence')
+  assert.equal(takeGChunksDetail({ atom_map_fine: null }).reason, 'no_map')
+  assert.equal(takeGChunksDetail({ target_text: 'x', atom_map_fine: mapOf(['x']) }).reason, 'no_seams')
+})
+
+test('a sentence whose map is not its own gets no Take G line, and is counted', async () => {
+  const db = fixture([sentence('s1', 1, 'geiriau hollol wahanol', { atom_map_fine: MAP })])
+  const queue = await buildQueue(db, await resolveRecordist(db, 'human_tom_zzz'), { includeRecorded: true })
+  assert.equal(queue.lines.filter((l) => l.kind === 'takeg').length, 0)
+  assert.equal(queue.takeGUnalignable, 1, 'never dropped in silence')
 })

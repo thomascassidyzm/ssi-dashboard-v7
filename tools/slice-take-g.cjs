@@ -17,7 +17,15 @@
  * chosen gap is ≥ MIN_GAP_MS — the agent-discernment contract is "the seams
  * are where the render actually breathed", never a guessed cut.
  *
- *   node tools/slice-take-g.cjs <course> [orders] [--dry]
+ *   node tools/slice-take-g.cjs <course> [orders] [--dry] [--pod=<slug>]
+ *
+ * POD: the course's SERVING pod by default. `--pod=<slug>` names another one —
+ * how a pod that is deliberately NOT served gets sliced. The cym_n health
+ * ladder pilot is exactly that: a pilot pod is kept off the serving slug on
+ * purpose (tools/pods/serving-slug.cjs, Tom's ruling of 2026-09-02 that the
+ * guard IS the slug), so before this flag existed the one tool that turns its
+ * take into rungs could not see it. This reads and writes that pod's own rows
+ * and changes nothing about which pod serves.
  *
  * Idempotent; re-run after any re-render. No TTS, no cost.
  */
@@ -35,7 +43,8 @@ const COURSE = process.argv[2]
 const ORDERS = (process.argv[3] || '').split(',').map(Number).filter(Boolean)
 const dry = process.argv.includes('--dry')
 const force = process.argv.includes('--force')
-if (!COURSE) { console.error('usage: slice-take-g.cjs <course> [orders] [--dry|--force]'); process.exit(1) }
+const POD_SLUG = (process.argv.find((a) => a.startsWith('--pod=')) || '').slice('--pod='.length) || null
+if (!COURSE) { console.error('usage: slice-take-g.cjs <course> [orders] [--dry|--force] [--pod=<slug>]'); process.exit(1) }
 const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
@@ -54,35 +63,7 @@ const TIERS = process.env.SLICE_NOISE
       { noise: '-25dB', minSil: 0.10, minGap: 110 },
       { noise: '-22dB', minSil: 0.07, minGap: 85 },
     ]
-const SENTENCE_PUNCT = /[.!?…。！？؟]/
-
-function atomGroups(targetText, atoms) {
-  const text = targetText || ''
-  const lower = text.toLowerCase()
-  const groups = [[]]
-  let cursor = 0
-  for (let i = 0; i < atoms.length; i++) {
-    const idx = lower.indexOf(atoms[i].target_surface.toLowerCase(), cursor)
-    if (i > 0 && idx !== -1 && SENTENCE_PUNCT.test(text.slice(cursor, idx))) groups.push([])
-    groups[groups.length - 1].push(atoms[i])
-    if (idx !== -1) cursor = idx + atoms[i].target_surface.length
-  }
-  return groups.filter((g) => g.length)
-}
-function glueGroups(rawGroups) {
-  const groups = []
-  let carry = []
-  rawGroups.forEach((g, i) => {
-    // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
-    // forward; a mid-turn one-unit group is a real sentence ("Impresioniran
-    // sam.") and must stand alone — gluing it swallowed its known take.
-    if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
-    groups.push([...carry, ...g])
-    carry = []
-  })
-  if (carry.length) groups.push(carry)
-  return groups
-}
+const { groupsForTakes } = require('../services/shared/takeg-clip-contract.cjs')
 
 async function download(s3Key, dest) {
   const res = await p8.s3.send(new GetObjectCommand({ Bucket: p8.S3_BUCKET, Key: s3Key }))
@@ -151,7 +132,11 @@ function ffSilences(file, noise = NOISE, minSil = MIN_SIL_S) {
 }
 
 ;(async () => {
-  const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
+  // The pod this course SERVES, resolved — never a literal slug — unless the
+  // operator named one, which is the only way to reach a deliberately unserved
+  // pilot pod. Naming it here does not make it serve.
+  const POD_ID = POD_SLUG ? `${COURSE}:${POD_SLUG}` : await servingPodId(supabase, COURSE)
+  if (POD_SLUG) console.log(`pod: ${POD_ID} (named explicitly — not resolved from what serves)`)
   let q = supabase.from('listening_pod_sentences')
     .select('id, global_order, target_text, atom_map_fine, takeg_audio_ids')
     .eq('pod_id', POD_ID).not('takeg_audio_ids', 'is', null).order('global_order')
@@ -168,7 +153,7 @@ function ffSilences(file, noise = NOISE, minSil = MIN_SIL_S) {
   async function processTurn(s) {
     const atoms = (s.atom_map_fine || []).filter((a) => a.kind !== 'note')
     if (!atoms.length) return
-    const groups = glueGroups(atomGroups(s.target_text, atoms))
+    const groups = groupsForTakes(s.target_text, atoms, s.takeg_audio_ids)
     // flat offsets so group-local unit indices land on the right map entries
     const offsets = []
     let off = 0

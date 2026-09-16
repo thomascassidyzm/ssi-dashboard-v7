@@ -759,26 +759,131 @@ function parseTakeGLineId(lineId) {
   return sentenceId ? { sentenceId } : null
 }
 
+/** Punctuation, symbols and space — everything that is not a letter of the read. */
+const TAKEG_NOT_LETTER = /[\p{P}\p{S}\s]/u
+const TAKEG_NOT_LETTER_G = /[\p{P}\p{S}\s]+/gu
+
+/**
+ * The bare letters of a read, case-folded — no punctuation, no spaces. The one
+ * comparison that works in every script this estate records: Welsh, Devanagari,
+ * Arabic and Japanese all answer it, and word-splitting on whitespace answers it
+ * for none of them.
+ */
+function takeGBare(text) {
+  return String(text || '').toLowerCase().replace(TAKEG_NOT_LETTER_G, '')
+}
+
+/**
+ * EVERY WORD OF THE SENTENCE IS IN THE GAPPED READ, IN ORDER.
+ *
+ * atom_map_fine declares the units a Take G is SLICED into; it does not promise
+ * to cover the sentence. Welsh hg01 declares four units and the sentence's "ac"
+ * belongs to none of them, so joining the four surfaces produced a gapped line
+ * that was a DIFFERENT SENTENCE from the natural one — the reader was asked to
+ * say "…stopiwch fi, plîs … mi ddeuda i o eto", and the full-sentence rung
+ * sliced out of that take would have been missing a word for ever. Found by a
+ * cross-family verifier on the cym_n pilot, 2026-09-16, before anybody recorded.
+ *
+ * So the declared surfaces are ALIGNED to the sentence and whatever falls
+ * between them RIDES WITH A NEIGHBOUR. Which neighbour is decided by the
+ * sentence's own punctuation, because that is where the reader will breathe: the
+ * seam goes at the FIRST punctuation mark inside the leftover, so material before
+ * that mark joins the chunk in front of it and material after it joins the chunk
+ * behind. That is what keeps Welsh "yn ara deg rŵan — steddwch…" holding "rŵan"
+ * with "yn ara deg", while "…, ac mi adawn ni…" hands "ac" to the clause it
+ * opens. Leftover with no punctuation in it at all rides FORWARD, with the chunk
+ * it introduces: the leftovers that exist are connectives and particles, and a
+ * connective opens its clause. Anything before the first chunk or after the last
+ * has only one neighbour and joins it.
+ *
+ * Matching is on BARE LETTERS (takeGBare), not on words: a whitespace split
+ * cannot align a Japanese or Chinese sentence at all, and the map's surfaces
+ * carry their own punctuation. Only punctuation is dropped from the read — the
+ * seam cue replaces it — so takeGBare(joined read) === takeGBare(sentence), which
+ * is what the pilot test asserts.
+ *
+ * Returns null when a declared surface is not in the sentence, in order. That map
+ * is a declaration about some OTHER sentence — the estate holds plenty ("Tome
+ * paracetamol" against a sentence reading "Experimente paracetamol") — and no
+ * honest gapped read can be built from it. The caller says so rather than guess.
+ */
+function alignChunksToSentence(chunks, targetText) {
+  const text = String(targetText || '')
+  if (!text.trim()) return chunks
+  // Bare projection of the sentence, plus the way back to real offsets.
+  const lower = text.toLowerCase()
+  const offsets = []
+  let bare = ''
+  for (let i = 0; i < lower.length; i++) {
+    if (TAKEG_NOT_LETTER.test(lower[i])) continue
+    bare += lower[i]
+    offsets.push(i)
+  }
+  const spans = []
+  let cursor = 0
+  for (const chunk of chunks) {
+    const want = takeGBare(chunk.target)
+    if (!want) return null
+    const at = bare.indexOf(want, cursor)
+    if (at === -1) return null
+    spans.push({ bareFrom: at, bareTo: at + want.length, from: offsets[at], to: offsets[at + want.length - 1] + 1 })
+    cursor = at + want.length
+  }
+  const edges = /^[\p{P}\p{S}\s]+|[\p{P}\p{S}\s]+$/gu
+  const clean = (t) => String(t).replace(edges, '').trim()
+  const before = chunks.map(() => '')
+  const after = chunks.map(() => '')
+  for (let i = 1; i < spans.length; i++) {
+    if (spans[i].bareFrom <= spans[i - 1].bareTo) continue // nothing between them
+    const raw = text.slice(spans[i - 1].to, spans[i].from)
+    const punct = raw.search(/[\p{P}\p{S}]/u)
+    // No punctuation to breathe at: the leftover rides forward, with the clause
+    // it opens.
+    const left = punct === -1 ? '' : clean(raw.slice(0, punct))
+    const right = punct === -1 ? clean(raw) : clean(raw.slice(punct + 1))
+    if (left) after[i - 1] = after[i - 1] ? `${after[i - 1]} ${left}` : left
+    if (right) before[i] = right
+  }
+  const prefix = clean(text.slice(0, spans[0].from))
+  const suffix = clean(text.slice(spans[spans.length - 1].to))
+  if (prefix) before[0] = before[0] ? `${prefix} ${before[0]}` : prefix
+  if (suffix) {
+    const last = chunks.length - 1
+    after[last] = after[last] ? `${after[last]} ${suffix}` : suffix
+  }
+  return chunks.map((c, i) => ({
+    ...c,
+    target: [before[i], c.target, after[i]].filter(Boolean).join(' ').replace(/\s+/g, ' ').trim(),
+  }))
+}
+
 /**
  * The units a Take G of this sentence would be sliced into — the `kind: 'atom'`
- * entries of `atom_map_fine`, in order. `kind: 'note'` entries are skipped, the
- * same way slice-take-g.cjs skips them.
+ * entries of `atom_map_fine`, in order, each carrying whatever words of the
+ * sentence sit beside it (see alignChunksToSentence: the read IS the sentence).
+ * `kind: 'note'` entries are skipped, the same way slice-take-g.cjs skips them.
  *
  * Returns null when the sentence declares no seams: no map, a map of one unit,
- * or a unit with no target surface to read.
+ * a unit with no target surface to read — or a map whose surfaces do not appear
+ * in the sentence in order, which is a declaration that disagrees with its own
+ * sentence.
  */
-function takeGChunks(sentence) {
+function takeGChunksDetail(sentence) {
   const map = sentence && Array.isArray(sentence.atom_map_fine) ? sentence.atom_map_fine : null
-  if (!map) return null
+  if (!map) return { chunks: null, reason: 'no_map' }
   const atoms = map.filter((a) => a && a.kind !== 'note')
-  if (atoms.length < 2) return null
+  if (atoms.length < 2) return { chunks: null, reason: 'no_seams' }
   const chunks = atoms.map((a) => ({
     target: String(a.target_surface || '').trim(),
     known: String(a.gloss || '').trim(),
   }))
-  if (chunks.some((c) => !c.target)) return null
-  return chunks
+  if (chunks.some((c) => !c.target)) return { chunks: null, reason: 'no_seams' }
+  const aligned = alignChunksToSentence(chunks, sentence.target_text)
+  if (!aligned) return { chunks: null, reason: 'map_is_not_this_sentence' }
+  return { chunks: aligned, reason: null }
 }
+
+function takeGChunks(sentence) { return takeGChunksDetail(sentence).chunks }
 
 /**
  * Which POLICY voice, if any, this course casts to a given target/known slot.
@@ -998,7 +1103,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // it serves a given voice (finishQueue `courses`): a policy voice reads its
   // own dialect only.
   const courseDialects = new Map(courses.map((c) => [c.course_code, courseDialect(c)]))
-  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, quarry: null, courses: [...byCourse.keys()], courseDialects }
+  const empty = { byBucket: new Map(), notReady: new Map(), handedOn: new Map(), untranslatedUncast: 0, uncast: 0, crossLanguage: 0, duplicatesCollapsed: 0, takeGUnalignable: 0, quarry: null, courses: [...byCourse.keys()], courseDialects }
   if (!courses.length) return empty
 
   const { data: pods, error: podErr } = await db
@@ -1074,6 +1179,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // rather than silently dropped, by the same rule as `uncast`.
   let crossLanguage = 0
   let duplicatesCollapsed = 0
+  // Sentences that declare seams belonging to some OTHER sentence: no gapped read
+  // of them can be honest, so no Take G line is offered. Counted rather than
+  // dropped in silence, by the same rule as `uncast` above.
+  let takeGUnalignable = 0
 
   /**
    * THE TAKE G COMPANION — a second line for a sentence that declares its seams.
@@ -1091,8 +1200,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
    * See takeGChunks above for why declaring the map is the gate.
    */
   function pushTakeG(s, pod, bucket, voiceId, castVoiceId) {
-    const chunks = takeGChunks(s)
-    if (!chunks) return
+    const { chunks, reason } = takeGChunksDetail(s)
+    if (!chunks) {
+      if (reason === 'map_is_not_this_sentence') takeGUnalignable += 1
+      return
+    }
     const takegVoices = (Array.isArray(s.takeg_audio_ids) ? s.takeg_audio_ids : [])
       .map((id) => slotVoiceById.get(id) || null)
     byBucket.get(bucket).push({
@@ -1608,7 +1720,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // but the queue is now ordered by one rule rather than by two.
   for (const lines of byBucket.values()) lines.sort(compareQueueLines)
 
-  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, quarry: quarryStats, courses: [...byCourse.keys()], courseDialects }
+  return { byBucket, notReady, handedOn, untranslatedUncast, uncast, crossLanguage, duplicatesCollapsed, takeGUnalignable, quarry: quarryStats, courses: [...byCourse.keys()], courseDialects }
 }
 
 /**
@@ -1789,6 +1901,7 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
       .sort((a, b) => b.lines - a.lines),
     uncast: language.uncast,
     duplicatesCollapsed: language.duplicatesCollapsed,
+    takeGUnalignable: language.takeGUnalignable || 0,
     quarry: language.quarry || null,
     // The courses this queue serves: only the cast courses for a cast-only
     // (community) voice; for a policy voice, the courses of the language IN
@@ -2347,7 +2460,11 @@ module.exports = {
   takeGLineId,
   parseTakeGLineId,
   takeGChunks,
+  takeGChunksDetail,
+  alignChunksToSentence,
+  takeGBare,
   TAKEG_SEAM,
+
   quarryLineId,
   parseQuarryLineId,
   targetRerecordWanted,

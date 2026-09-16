@@ -45,6 +45,7 @@ const {
   parseQuarryLineId,
   parseTakeGLineId,
   takeGChunks,
+  takeGChunksDetail,
   TAKEG_SEAM,
   linkSeedTake,
   seedCastEntry,
@@ -54,6 +55,7 @@ const {
   voiceRegister,
 } = require('./recordist-queue.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
+const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
 const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
 const {
@@ -678,9 +680,16 @@ module.exports = function createRecordistRouter({
     if (error) throw new Error(`take G line lookup failed: ${error.message}`)
     if (!sentence) { res.status(404).json({ error: `No line ${parsed.raw}` }); return null }
 
-    const chunks = takeGChunks(sentence)
+    const { chunks, reason } = takeGChunksDetail(sentence)
     if (!chunks) {
-      res.status(409).json({
+      // TWO DIFFERENT FACTS, SAID APART. "No seams" is a sentence nobody has
+      // decomposed yet; "the map is not this sentence" is a decomposition that
+      // belongs to some other wording, and telling the booth the first when it
+      // is the second sends the reader looking for work that is not the problem.
+      res.status(409).json(reason === 'map_is_not_this_sentence' ? {
+        error: 'The seams recorded for this sentence do not appear in it — its decomposition belongs to different words, so a gapped read of it could not be sliced.',
+        reason,
+      } : {
         error: 'That sentence declares no seams, so there is nothing for a gapped read to be sliced into.',
         reason: 'no_chunks',
       })
@@ -782,13 +791,23 @@ module.exports = function createRecordistRouter({
     const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
     let linked = false
     if (audioId) {
-      // APPEND, never replace. A sentence may hold more than one Take G — a
-      // second voice's, or a better read — and slice-take-g.cjs takes the ids
-      // it is given. Read-modify-write rather than an array append in SQL
-      // because PostgREST has no array_append verb; the row is this artist's
-      // own line and two writers to it is not a case that exists.
-      const existing = Array.isArray(resolved.sentence.takeg_audio_ids) ? resolved.sentence.takeg_audio_ids : []
-      const next = existing.includes(audioId) ? existing : [...existing, audioId]
+      // THE ARRAY IS POSITIONAL, AND A HUMAN TAKE G IS THE WHOLE TURN.
+      //
+      // `takeg_audio_ids[i]` is the clip for GROUP i of the turn's units —
+      // tools/render-take-g.cjs writes one entry per glued group and
+      // tools/slice-take-g.cjs reads `takeg_audio_ids[gi]` by that same index.
+      // Appending a second take therefore did not mean "a better read": it meant
+      // "here is group 1's clip", and the slicer would have carved this whole
+      // sentence's second half out of a take of the whole thing while group 0
+      // kept the older one. The booth records ONE gapped read of the ENTIRE
+      // turn, seams at every unit, so the honest write is a one-entry array
+      // saying exactly that — the slicer's single-clip rule spreads it over
+      // every group.
+      //
+      // A re-record REPLACES the pointer and nothing else: the new clip is
+      // filed before this write and the old one is left in course_audio,
+      // unlinked, never deleted. Make-before-break.
+      const next = nextTakeGIds(resolved.sentence.takeg_audio_ids, audioId)
       const { error: upErr } = await db()
         .from('listening_pod_sentences').update({ takeg_audio_ids: next }).eq('id', resolved.sentence.id)
       if (upErr) logger.error(`[Recordist] take G link failed (take is stored and filed): ${upErr.message}`)

@@ -83,7 +83,6 @@ const { servingPodId } = require('./lib/serving-pod-id.cjs')
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
 
 const ROLE = 'pod_take_g'
-const SENTENCE_PUNCT = /[.!?…。！？؟]/
 // A seam whose left side already ends in ANY pause-forcing punctuation
 // (comma-class or sentence-terminal — a glued interjection ends in ! or .)
 // needs no comma added; xAI seams gain the [pause] marker either way.
@@ -126,34 +125,9 @@ function ledgerReport(patch) {
   fs.writeFileSync(LEDGER, JSON.stringify(ledger, null, 2))
 }
 
-// ---- same grouping as the Lab / author-window-knowns ----
-function atomGroups(targetText, atoms) {
-  const text = targetText || ''
-  const lower = text.toLowerCase()
-  const groups = [[]]
-  let cursor = 0
-  for (let i = 0; i < atoms.length; i++) {
-    const idx = lower.indexOf(atoms[i].target_surface.toLowerCase(), cursor)
-    if (i > 0 && idx !== -1 && SENTENCE_PUNCT.test(text.slice(cursor, idx))) groups.push([])
-    groups[groups.length - 1].push(atoms[i])
-    if (idx !== -1) cursor = idx + atoms[i].target_surface.length
-  }
-  return groups.filter((g) => g.length)
-}
-function glueGroups(rawGroups) {
-  const groups = []
-  let carry = []
-  rawGroups.forEach((g, i) => {
-    // Only TURN-INITIAL one-unit groups (leading "Ciao!" interjections) glue
-    // forward; a mid-turn one-unit group is a real sentence ("Impresioniran
-    // sam.") and must stand alone — gluing it swallowed its known take.
-    if (groups.length === 0 && g.length === 1 && i < rawGroups.length - 1) { carry.push(...g); return }
-    groups.push([...carry, ...g])
-    carry = []
-  })
-  if (carry.length) groups.push(carry)
-  return groups
-}
+// ---- same grouping as the Lab / author-window-knowns; one copy, shared with
+// tools/slice-take-g.cjs, which reads back the array this writes ----
+const { atomGroups, glueGroups } = require('../services/shared/takeg-clip-contract.cjs')
 
 /**
  * Rebuild the group's text with a pause forced at every chunk seam, walking
