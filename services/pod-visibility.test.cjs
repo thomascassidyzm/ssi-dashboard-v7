@@ -162,7 +162,13 @@ function fakeStore(initial) {
       if (!row) return null
       const visMatches = expected.visibility === null ? row.visibility == null : row.visibility === expected.visibility
       const roleMatches = expected.required_role === null ? row.required_role == null : row.required_role === expected.required_role
-      if (!visMatches || !roleMatches) { writes.push({ id, expected, hit: false }); return null }
+      // The honest jsonb WHERE covers metadata too, same as the real route's
+      // updateWhereState — a concurrent writer of scene_hashes etc. must make
+      // this miss, never get silently overwritten by a stale merge.
+      const metaMatches = 'metadata' in expected
+        ? JSON.stringify(row.metadata ?? null) === JSON.stringify(expected.metadata ?? null)
+        : true
+      if (!visMatches || !roleMatches || !metaMatches) { writes.push({ id, expected, hit: false }); return null }
       Object.assign(row, patch)
       writes.push({ id, expected, hit: true, patch })
       return { ...row }
@@ -250,6 +256,29 @@ describe('applyVisibilityChange — the write is conditional on the state it was
   it('404 when the pod does not exist', async () => {
     const r = await applyVisibilityChange({ podId: POD, requested: 'held', actor: ACTOR, nowIso: T, store: fakeStore({}) })
     expect(r.status).toBe(404)
+  })
+
+  it('a concurrent metadata write (pod-sync) between read and write is never clobbered by a release', async () => {
+    const store = fakeStore({ [POD]: { visibility: 'held', metadata: { scene_hashes: { s1: 'x' } } } })
+    // The release reads metadata {scene_hashes:{s1:'x'}} and stalls before its
+    // own UPDATE runs...
+    let syncDone
+    store.gates.beforeWrite = new Promise((r) => { syncDone = r })
+    const release = applyVisibilityChange({ podId: POD, requested: 'live', actor: ACTOR, nowIso: T, store })
+    await new Promise((r) => setImmediate(r))
+    // ...while pod-sync writes a NEW scene_hashes value directly (its own
+    // read-modify-write, unrelated to this route).
+    store.rows.get(POD).metadata = { scene_hashes: { s1: 'y' } }
+    syncDone()
+    const r = await release
+    // Before metadata joined the compare-and-swap: this WHERE only checked
+    // visibility, so it would have hit and stamped the release's stale
+    // {scene_hashes:{s1:'x'}, released_at:...} straight over pod-sync's 'y'.
+    // Now it misses instead — refused as "changed under you", exactly like a
+    // visibility race — and pod-sync's write is untouched, not clobbered.
+    expect(r.status).toBe(409)
+    expect(store.rows.get(POD).visibility).toBe('held')
+    expect(store.rows.get(POD).metadata).toEqual({ scene_hashes: { s1: 'y' } })
   })
 })
 

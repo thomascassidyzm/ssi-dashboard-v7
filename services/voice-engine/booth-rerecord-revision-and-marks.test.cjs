@@ -144,6 +144,41 @@ test('a booth re-record of an existing clip identity keeps the uuid and bumps au
   assert.equal(line.rerecord_wanted, null, 'the source line want is retired in the same commit as before')
 })
 
+test('a re-upload of an OLDER recording is refused: the row already holds a newer take, kept untouched', async () => {
+  const tables = fixture()
+  tables.course_audio[0].recorded_at = '2026-09-16T12:00:00.000Z'
+  const db = memDb(tables)
+  const out = await commitPodRegistration({
+    supabase: db, courseCode: 'cym_n_for_eng',
+    context: { text: TEXT, language: 'cym', role: 'target1', voiceId: ARAN, kind: 'target', linkColumn: 'target_audio_id', sentenceId: 's1l1', replacedAudioId: 'CLIP-OLD' },
+    s3Key: 'mastered/STALE.mp3', recordedAt: '2026-09-16T09:00:00.000Z', logger: quiet,
+  })
+  const clip = tables.course_audio.find((r) => r.id === 'CLIP-OLD')
+  assert.equal(out.skippedStale, true)
+  assert.equal(out.audioRow.id, 'CLIP-OLD', 'the existing row is reported back, unchanged')
+  assert.equal(clip.s3_key, 'mastered/OLD.mp3', 'the last-uploaded-but-older file never touched the row')
+  assert.equal(clip.audio_revision, 3, 'no swap, no revision bump')
+  assert.deepEqual(clip.rerecord_wanted, { reason: 'Tom by ear', markedBy: 'job #590' }, 'the want is not fulfilled by a take that was refused')
+  assert.equal(tables.listening_pod_sentences.find((r) => r.id === 's1l1').target_audio_id, 'CLIP-OLD', 'the sentence FK is not re-pointed')
+  assert.equal(tables.listening_pod_sentences.find((r) => r.id === 's1l1').rerecord_wanted, MARK, 'the source line want stays open — this line still needs its newer take registered')
+})
+
+test('a genuinely newer recording still swaps in and stores its own recorded_at', async () => {
+  const tables = fixture()
+  tables.course_audio[0].recorded_at = '2026-09-16T09:00:00.000Z'
+  const db = memDb(tables)
+  const out = await commitPodRegistration({
+    supabase: db, courseCode: 'cym_n_for_eng',
+    context: { text: TEXT, language: 'cym', role: 'target1', voiceId: ARAN, kind: 'target', linkColumn: 'target_audio_id', sentenceId: 's1l1', replacedAudioId: 'CLIP-OLD' },
+    s3Key: 'mastered/NEW.mp3', recordedAt: '2026-09-16T12:00:00.000Z', logger: quiet,
+  })
+  const clip = tables.course_audio.find((r) => r.id === 'CLIP-OLD')
+  assert.equal(out.skippedStale, undefined)
+  assert.equal(clip.s3_key, 'mastered/NEW.mp3')
+  assert.equal(clip.recorded_at, '2026-09-16T12:00:00.000Z')
+  assert.equal(clip.audio_revision, 4)
+})
+
 test('a first take of a line (no existing identity) inserts a fresh row at revision 1 — a swap needs something to swap off', async () => {
   const tables = fixture()
   tables.course_audio = []
@@ -314,4 +349,31 @@ test('take route: wantsKept counts the sentence marks retirement actually held �
   assert.equal(r.status, undefined, JSON.stringify(r.body))
   assert.deepEqual(tables.listening_pod_sentences.find((x) => x.id === 's9l47').rerecord_wanted, MARK)
   assert.equal(r.body.wantsKept, 1, 'one retained sentence mark, counted from retirement, not from the (empty) failure list')
+})
+
+test('clearRerecordWants: a failed pods read reports keptSentences as null (unknown), never a fabricated 0', async () => {
+  const tables = fixture()
+  const db = memDb(tables, { failOn: ({ table, op }) => (table === 'listening_pods' && op === 'read') ? 'pod list on fire' : null })
+  const aran = await resolveRecordist(db, ARAN)
+  const cleared = await clearRerecordWants({ db, recordist: aran, text: TEXT, sentenceId: 's1l1', keep: { sentenceIds: ['s9l47'], courseCodes: [] }, logger: quiet })
+  assert.equal(cleared.keptSentences, null, 'unknown, not 0 — the read that would have counted it never returned')
+  assert.deepEqual(tables.listening_pod_sentences.find((r) => r.id === 's9l47').rerecord_wanted, MARK, 'the mark itself is untouched by the failed read')
+})
+
+test('take route: wantsKept is "unknown", not 0, when BOTH pod-list reads (propagation and retirement) fail', async () => {
+  const tables = fixture()
+  // Every listening_pods read AFTER the take is filed fails: propagation's own
+  // (which makes it fall back to keep.allDuplicates) AND retirement's (which
+  // is what this finding is about — before this fix that second failure was
+  // swallowed and silently counted as keptSentences:0). The route's own
+  // pre-upload pod lookup (for lineId → podId/sentenceId) must still succeed.
+  let filed = false
+  const r = await takeViaRouter(tables, {
+    onFiled: () => { filed = true },
+    failOn: ({ table, op }) => (filed && table === 'listening_pods' && op === 'read') ? 'pod list on fire' : null,
+  })
+  assert.equal(r.status, undefined, JSON.stringify(r.body))
+  assert.equal(r.body.ok, true, 'the take itself is stored and linked whatever the pod-list reads did')
+  assert.deepEqual(tables.listening_pod_sentences.find((x) => x.id === 's9l47').rerecord_wanted, MARK, 'nobody could enumerate duplicates, so the mark stays')
+  assert.equal(r.body.wantsKept, 'unknown', 'we do not know how many marks were held — say so, do not claim 0')
 })

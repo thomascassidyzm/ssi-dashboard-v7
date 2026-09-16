@@ -4517,6 +4517,12 @@ app.post('/api/admin/pods/:courseCode/:slug/visibility', async (req, res) => {
           .eq('id', id)
         q = expected.visibility === null ? q.is('visibility', null) : q.eq('visibility', expected.visibility)
         q = expected.required_role === null ? q.is('required_role', null) : q.eq('required_role', expected.required_role)
+        // Guard metadata too, not only visibility/required_role: pod-sync writes
+        // scene_hashes/sections into this same jsonb column, and patch.metadata
+        // here is a snapshot merged onto whatever this request read — without
+        // this the WHERE would still hit and silently overwrite a concurrent
+        // metadata write with that stale snapshot.
+        q = expected.metadata === null ? q.is('metadata', null) : q.eq('metadata', expected.metadata)
         const { data, error } = await q.select('id, visibility, required_role, metadata').maybeSingle()
         if (error) throw error
         return data
@@ -5557,6 +5563,10 @@ async function handleRecordingUpload(req, res) {
         s3Key,
         durationMs: (audioMeta.processed && audioMeta.durationMs) ? audioMeta.durationMs : null,
         fileSizeBytes: processedBuffer.length,
+        // Client-supplied capture time, read straight off the raw body (before
+        // normalizeProvenance() below) so the stale-take guard can run before
+        // an older recording clobbers a newer one already on this line.
+        recordedAt: (provenance && (provenance.recorded_at || provenance.recordedAt)) || null,
         logger
       })
     }

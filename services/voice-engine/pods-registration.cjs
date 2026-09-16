@@ -245,9 +245,13 @@ async function preparePodRegistration({ supabase, courseCode, metadata = {}, log
  * new, a revision-bumped swap onto the existing row when it is not — and
  * re-points the sentence FK.
  *
- * @returns {Promise<{ audioRow: {id, s3_key, audio_revision, created}, replacedAudioId: string|null, replacedS3Key: string|null, repointedExistingRow: boolean, revision: number|null }>}
+ * @param {string} [recordedAt] ISO capture time from the client's recording
+ *   provenance (provenance.recordedAt/recorded_at) — when both it and the
+ *   existing row's own `recorded_at` are present and the incoming one is
+ *   OLDER, the write is skipped (stale-take guard, below).
+ * @returns {Promise<{ audioRow: {id, s3_key, audio_revision, created}, replacedAudioId: string|null, replacedS3Key: string|null, repointedExistingRow: boolean, revision: number|null, skippedStale?: true }>}
  */
-async function commitPodRegistration({ supabase, courseCode, context, s3Key, durationMs = null, fileSizeBytes = null, acceptedBy = null, logger = console }) {
+async function commitPodRegistration({ supabase, courseCode, context, s3Key, durationMs = null, fileSizeBytes = null, acceptedBy = null, recordedAt = null, logger = console }) {
   const textNormalized = normalizeForAudio(context.text)
   const language = canonicalLanguage(context.language)
   const voiceId = canonicalVoiceId(context.voiceId, { provider: context.provider })
@@ -264,7 +268,7 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
   // reaches both spellings and the write still narrows to one.
   const { data: priorRows, error: priorErr } = await supabase
     .from('course_audio')
-    .select('id, s3_key, origin')
+    .select('id, s3_key, origin, recorded_at')
     .eq('course_code', courseCode)
     .eq('text_normalized', textNormalized)
     .eq('language', language)
@@ -273,6 +277,34 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     .limit(1)
   if (priorErr) throw new Error(`pod registration prior-row lookup failed: ${priorErr.message}`)
   const priorRow = priorRows && priorRows[0] ? priorRows[0] : null
+
+  // STALE-TAKE GUARD. The client's own `recorded_at` (when captured is when a
+  // take was actually spoken, not when it happened to reach this server) is
+  // the only honest ordering signal — the LAST UPLOAD to arrive is not always
+  // the NEWEST recording (an offline device syncing late, a recordist
+  // re-uploading a cached old file by mistake). Comparable only when BOTH
+  // sides carry a timestamp; a take or a row with none is "unknown, allow" —
+  // exactly today's behaviour, so this never blocks an upload that has
+  // nothing to compare against.
+  if (recordedAt && priorRow && priorRow.recorded_at) {
+    const incoming = new Date(recordedAt).getTime()
+    const existing = new Date(priorRow.recorded_at).getTime()
+    if (Number.isFinite(incoming) && Number.isFinite(existing) && incoming < existing) {
+      logger.warn(
+        `[PodRecording] STALE take refused for ${context.sentenceId} ${context.kind}: incoming recording ` +
+        `${recordedAt} is older than the take already on row ${priorRow.id} (${priorRow.recorded_at}). ` +
+        `Row and sentence link left untouched; the new bytes are kept at ${s3Key} (nothing deleted).`
+      )
+      return {
+        audioRow: { id: priorRow.id, s3_key: priorRow.s3_key, audio_revision: null, created: false },
+        replacedAudioId: null,
+        replacedS3Key: null,
+        repointedExistingRow: false,
+        revision: null,
+        skippedStale: true,
+      }
+    }
+  }
 
   // VERSIONED, NEVER A BARE UPSERT. A re-record of a line whose clip identity
   // already exists lands on the SAME course_audio row, and the learner's address
@@ -301,6 +333,7 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
   }
   if (durationMs) insertRow.duration_ms = durationMs
   if (fileSizeBytes) insertRow.file_size_bytes = fileSizeBytes
+  if (recordedAt) insertRow.recorded_at = recordedAt
 
   let written
   try {
@@ -308,7 +341,7 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
       supabase,
       identity: { course_code: courseCode, text_normalized: textNormalized, language, role: context.role, voice_id: voiceId, text: context.text },
       insertRow,
-      swapPatch: { origin: 'human', text: context.text, rerecord_wanted: null },
+      swapPatch: { origin: 'human', text: context.text, rerecord_wanted: null, ...(recordedAt ? { recorded_at: recordedAt } : {}) },
       newS3Key: s3Key,
       durationMs: durationMs || null,
       fileSizeBytes: fileSizeBytes || null,

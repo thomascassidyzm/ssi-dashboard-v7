@@ -1386,8 +1386,12 @@ module.exports = function createRecordistRouter({
         wantsRetired: retired.clips + retired.sentences,
         // Counted from what retirement actually HELD, never inferred from the
         // propagation failure list: on a wholesale failure that list is empty
-        // while every duplicate mark stays (Astra #595).
-        wantsKept: (retired.keptClips || 0) + (retired.keptSentences || 0),
+        // while every duplicate mark stays (Astra #595). If either count's own
+        // read failed, `null` means "we don't know", not "kept nothing" — say
+        // so rather than fabricating a 0 (Astra cold-check, 2026-09-16).
+        wantsKept: (retired.keptClips === null || retired.keptSentences === null)
+          ? 'unknown'
+          : (retired.keptClips || 0) + (retired.keptSentences || 0),
         ...(warnings.length ? { warnings } : {}),
       })
     } catch (err) {

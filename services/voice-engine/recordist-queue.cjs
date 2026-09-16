@@ -2393,7 +2393,10 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
     .in('text_normalized', keys)
     .not('rerecord_wanted', 'is', null)
   if (clipErr) {
-    logger.error(`[Recordist] want lookup failed: ${clipErr.message}`)
+    // Same "unknown, never a fabricated 0" rule as the pods read below: this
+    // read failing tells us nothing about how many clip marks were held.
+    logger.error(`[Recordist] want lookup failed, clip marks kept but keptClips is unknown: ${clipErr.message}`)
+    cleared.keptClips = null
   } else if (clips && clips.length) {
     const retire = clips.filter((c) => {
       if (keepCourseCodes.has(c.course_code)) return false
@@ -2419,8 +2422,19 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
   //    and is not this recordist's to retire.
   const courses = await coursesForLanguage(db, recordist.language)
   const byCourse = new Map(courses.map((c) => [c.course_code, c]))
-  const { data: pods } = await db
+  const { data: pods, error: podsErr } = await db
     .from('listening_pods').select('id, course_code').in('course_code', courses.map((c) => c.course_code))
+  if (podsErr) {
+    // A failed read here is not "no pods" -- it is "we cannot tell which
+    // sentence marks were held". Left silent, it read as podById.size===0,
+    // which is indistinguishable from a course with no pods at all, so
+    // keptSentences reported 0 on a wholesale read failure exactly as the
+    // clip-side keptClips could (Astra cold-check finding, 2026-09-16).
+    // UNKNOWN, never a fabricated 0: the marks themselves are untouched
+    // either way (nothing below runs when podById is empty).
+    logger.error(`[Recordist] pod list read failed, sentence marks kept but keptSentences is unknown: ${podsErr.message}`)
+    cleared.keptSentences = null
+  }
   const podById = new Map((pods || []).map((p) => [p.id, p]))
   if (podById.size) {
     const normalized = new Set(keys)

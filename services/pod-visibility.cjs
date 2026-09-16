@@ -191,7 +191,7 @@ const LIVE_POD_NEVER_HELD = checkVisibilityTransition('live', 'held').error
  * @param {string} args.nowIso
  * @param {{
  *   readPod: (podId:string) => Promise<{id:string, visibility:string|null, required_role?:string|null, metadata:object|null}|null>,
- *   updateWhereState: (podId:string, expected:{visibility:string|null, required_role:string|null}, patch:object) => Promise<object|null>,
+ *   updateWhereState: (podId:string, expected:{visibility:string|null, required_role:string|null, metadata:object|null}, patch:object) => Promise<object|null>,
  * }} args.store
  * @returns {Promise<{status:number, body:object}>}
  */
@@ -242,7 +242,15 @@ async function applyPodAccessChange({ podId, visibility, requiredRole, actor, no
     patch.visibility = visibility
   }
   patch.metadata = metadata
-  const expected = { visibility: pod.visibility ?? null, required_role: pod.required_role ?? null }
+  // metadata rides the SAME compare-and-swap as visibility/required_role: this
+  // request's merged object is built from the metadata it read (`pod.metadata`),
+  // so if pod-sync (or anything else sharing this jsonb column) wrote scene_hashes
+  // or another key in between, a WHERE guarded only on visibility/required_role
+  // would still land — silently overwriting that concurrent write with this
+  // stale, pre-merge snapshot. Asserting metadata too means that race MISSES
+  // here instead, and falls into the same re-read-and-rejudge path below, which
+  // re-merges onto the metadata as it actually is now.
+  const expected = { visibility: pod.visibility ?? null, required_role: pod.required_role ?? null, metadata: pod.metadata ?? null }
   const updated = await store.updateWhereState(podId, expected, patch)
   if (updated) return { status: 200, body: summary(pod, updated, false) }
 
