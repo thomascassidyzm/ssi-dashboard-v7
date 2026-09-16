@@ -460,7 +460,22 @@ const hasMetadata = computed(() =>
 // door (GET .../pods/drafts). The open /api/pods detail endpoint doesn't carry
 // the column, and the marker is only ever cleared through the gated PATCH, so
 // this is the same door both ways.
-const draftIds = ref(new Set())
+//
+// draftIds starts empty on every fresh mount, and the drafts fetch that fills
+// it needs an access token + round trip, so a plain `ref(new Set())` renders
+// every row with no DRAFT badge until that fetch lands. main.js reloads this
+// page on every tab return (version check), so that empty window happens on
+// every return, not just first load — sessionStorage carries the last-known
+// set across the reload so the badges never visibly vanish; loadDrafts() still
+// confirms/corrects them once its fetch resolves.
+const DRAFT_CACHE_KEY = `podDraftIds:${courseCode}:${slug}`
+function cachedDraftIds() {
+  try {
+    const raw = sessionStorage.getItem(DRAFT_CACHE_KEY)
+    return raw ? new Set(JSON.parse(raw)) : new Set()
+  } catch { return new Set() }
+}
+const draftIds = ref(cachedDraftIds())
 const draftsLoaded = ref(false)
 const draftsOnly = ref(route.query.drafts === '1')
 
@@ -511,6 +526,7 @@ async function loadDrafts() {
     const body = await res.json()
     draftIds.value = new Set((body.items || []).filter(i => i.podId === pod.value?.id).map(i => i.id))
     draftsLoaded.value = true
+    try { sessionStorage.setItem(DRAFT_CACHE_KEY, JSON.stringify([...draftIds.value])) } catch { /* non-fatal */ }
   } catch { /* non-fatal */ }
 }
 
