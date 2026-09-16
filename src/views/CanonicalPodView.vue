@@ -20,7 +20,9 @@
       </p>
       <!-- A recordist reaches this page by the casting alone, and used to find
            no way on into the booth from it (Aran, 2026-09-16). -->
-      <RecordDoor :course-code="courseCode" class="mb-6" />
+      <!-- The slug too, so the booth starts on THIS pod's first unread line
+           rather than at the top of the whole queue (Astra cold-check, 2026-09-16). -->
+      <RecordDoor :course-code="courseCode" :pod-slug="slug" class="mb-6" />
 
       <div v-if="loading" class="text-faint py-12 text-center">Loading…</div>
       <div v-else-if="error" class="error-box border rounded-lg p-4">{{ error }}</div>
