@@ -59,6 +59,7 @@ const {
 } = require('./pods-cast.cjs')
 const { buildRecordingPlan, finalizeRecordingPlan, DEFAULT_CUE_COUNT } = require('./pods-plan.cjs')
 const consentGate = require('../shared/voice-consent-gate.cjs')
+const { invalidateLanguageQueueCache } = require('./recordist-queue-cache.cjs')
 
 // Explainer narration is deprecated (2026-08-24): explainer_text /
 // explainer_audio_id are deliberately NOT selected — the columns and their rows
@@ -434,6 +435,9 @@ module.exports = function createPodsCastRouter({
         .update({ voice_config: merged })
         .eq('course_code', courseCode)
       if (error) throw error
+      // Casting changes who owns a line — clears every language's cached queue,
+      // same reasoning as the sentence PATCH above.
+      invalidateLanguageQueueCache()
       // No bumpCourseVersion: podCast is an additive key TTS serving never
       // reads (keystone §1) — learner-facing output is byte-identical.
 
@@ -638,6 +642,10 @@ module.exports = function createPodsCastRouter({
         .select('id, target_text, target_text_draft, known_text, target_audio_id, known_audio_id, jump_in')
         .single()
       if (updateError) throw new Error(updateError.message)
+      // Course-not-language keyed here (no target_lang in hand without another
+      // query, and this is an editor action, not the hot booth read) — clears
+      // every language's cached queue rather than resolving the one that changed.
+      invalidateLanguageQueueCache()
       if (Object.keys(cleared).length) {
         logger.info(`[PodsEdit] ${courseCode} ${sentenceId} edited by ${req.dashboardUser?.email || '?'} — unlinked ${JSON.stringify(cleared)} (rows kept)`)
       }

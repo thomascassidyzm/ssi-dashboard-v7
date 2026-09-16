@@ -53,6 +53,7 @@ const {
   lineVoiceId,
   clipVoiceId,
   voiceRegister,
+  invalidateLanguageQueueCache,
 } = require('./recordist-queue.cjs')
 const { courseDialect } = require('../shared/dialect.cjs')
 const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
@@ -484,7 +485,7 @@ module.exports = function createRecordistRouter({
     try {
       const { error } = await db().from('course_audio').update({ rerecord_wanted: null }).eq('id', clip.id)
       if (error) logger.error(`[Recordist] want clear failed for ${clip.id}: ${error.message}`)
-      else retired = 1
+      else { retired = 1; invalidateLanguageQueueCache(recordist.language) }
     } catch (wantErr) {
       logger.error(`[Recordist] want clear threw (take is stored): ${wantErr.message}`)
     }
@@ -833,7 +834,7 @@ module.exports = function createRecordistRouter({
       const { error: upErr } = await db()
         .from('listening_pod_sentences').update({ takeg_audio_ids: next }).eq('id', resolved.sentence.id)
       if (upErr) logger.error(`[Recordist] take G link failed (take is stored and filed): ${upErr.message}`)
-      else linked = true
+      else { linked = true; invalidateLanguageQueueCache(recordist.language) }
     } else {
       logger.error(`[Recordist] take G for ${resolved.sentence.id} was NOT filed as a clip: ${filing && filing.reason}`)
     }
@@ -1698,6 +1699,7 @@ module.exports = function createRecordistRouter({
         .update(patch)
         .in('id', ids)
       if (updErr) throw new Error(`line update failed: ${updErr.message}`)
+      invalidateLanguageQueueCache(recordist.language)
 
       // NO PROGRESS MIGRATION HERE. learner_pod_state is left exactly as it is
       // for every id in the group — see the ruling at the top of this route.

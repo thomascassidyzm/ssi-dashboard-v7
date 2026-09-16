@@ -45,6 +45,7 @@ const { normalizeForAudio } = require('../shared/text-normalize.cjs')
 const { canonicalLanguage, canonicalVoiceId } = require('../shared/clip-identity.cjs')
 const { voiceSpellings } = require('../shared/clip-identity-lookup.cjs')
 const { writeOrSwapClip } = require('../shared/audio-revision-swap.cjs')
+const { invalidateLanguageQueueCache } = require('./recordist-queue-cache.cjs')
 
 // recon §1: the EXACT role strings phase8's pod generator writes. Do not invent.
 const POD_KIND_ROLES = Object.freeze({
@@ -380,6 +381,7 @@ async function commitPodRegistration({ supabase, courseCode, context, s3Key, dur
     .update(patch)
     .eq('id', context.sentenceId)
   if (linkErr) throw new Error(`pod sentence link failed: ${linkErr.message}`)
+  invalidateLanguageQueueCache(language)
 
   const repointedExistingRow = !!(priorRow && priorRow.id === audioRow.id)
 

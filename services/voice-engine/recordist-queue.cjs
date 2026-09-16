@@ -114,6 +114,34 @@ const { buildLegoQuarry, DEFAULT_MAX_SEED } = require('./lego-quarry.cjs')
 const langService = require('../language-code-service.cjs')
 
 /**
+ * THE QUEUE'S OWN CACHE — one in-process read of `buildLanguageLines` per
+ * language, held for a short safety window (recordist-queue-cache.cjs) rather
+ * than re-earned on every request.
+ *
+ * `buildLanguageLines` re-reads every pod sentence, seed and clip pointer of a
+ * language on EVERY call — deliberate, because "never serve a row older than
+ * the last write" was the whole point. But that made every queue load a cold
+ * 2-10s full-language read, and a recordist opening the booth during that
+ * window got a 502. So: cache the RESULT, keyed by (language, quarryMaxSeed),
+ * and invalidate it EXPLICITLY at every write path that can change what this
+ * read returns — a pod sentence edit, a take landing, a re-record want
+ * clearing, a cast change. A write this process makes is never stale for more
+ * than the time it takes to invalidate; a write some OTHER process makes
+ * (a tool script, Camberley) is caught by the 60s safety TTL. The guarantee
+ * that must hold: no in-process write is ever served stale.
+ *
+ * Split into its own module (rather than living here) because pods-
+ * registration.cjs — a writer this file itself requires for
+ * canonicalSpeakerName — needs to invalidate it too, and requiring back into
+ * this file would be a cycle.
+ */
+const { invalidateLanguageQueueCache, cachedLanguageLines: cachedRead } = require('./recordist-queue-cache.cjs')
+
+function cachedLanguageLines(db, language, { quarryMaxSeed, cache } = {}) {
+  return cachedRead(db, language, quarryMaxSeed, () => buildLanguageLines(db, language, { quarryMaxSeed, cache }))
+}
+
+/**
  * Is this course a TEST FIXTURE rather than something a learner is being served?
  *
  * Tom's standing ruling on the zzz courses: "it is a TEST course so it can have
@@ -1892,7 +1920,7 @@ async function fetchRerecordWanted(db, courseCodes) {
  * @returns {Promise<{lines: Array, total, recorded, remaining, uncast, duplicatesCollapsed}>}
  */
 async function buildQueue(db, recordist, { includeRecorded = false, quarryMaxSeed, maskRejectedHistory = true } = {}) {
-  const language = await buildLanguageLines(db, recordist.language, { quarryMaxSeed, cache: new Map() })
+  const language = await cachedLanguageLines(db, recordist.language, { quarryMaxSeed, cache: new Map() })
   // By VOICE ID, for a policy voice and a cast-only voice alike (linesForVoice).
   const mine = linesForVoice(language, recordist)
   // MASKED BY DEFAULT, because the only caller in production is the artist's own
@@ -2189,7 +2217,7 @@ async function buildCoverage(db) {
     // ONE pass over the language's pods, whatever the cast size — and it runs
     // even when the language has no cast at all, which is the only way pdc's
     // and bre's uncast lines are visible rather than reported as a flat zero.
-    const language = await buildLanguageLines(db, policy.language, { cache })
+    const language = await cachedLanguageLines(db, policy.language, { cache })
 
     const claimed = new Set()
     const perVoice = (await Promise.all(Object.keys(voices).map(async (slot) => {
@@ -2385,6 +2413,7 @@ async function propagateTakeToDuplicates({ db, recordist, sentenceId, text, s3Ke
     linked.push({ sentenceId: s.id, courseCode, audioId, replacedAudioId: previous })
   }
   if (linked.length) {
+    invalidateLanguageQueueCache(recordist.language)
     logger.log(`[Recordist] one take filled ${linked.length} duplicate line(s) in ${new Set(linked.map((l) => l.courseCode)).size} course(s)`)
   }
   if (failed.length) {
@@ -2494,6 +2523,7 @@ async function linkSeedTake({ db, recordist, seedId, role, audioId, logger = con
     if (error) { logger.error(`[Recordist] seed link failed for ${row.id}: ${error.message}`); continue }
     out.linked.push({ seedId: row.id, courseCode: row.course_code, from: current || null })
   }
+  if (out.linked.length) invalidateLanguageQueueCache(recordist.language)
   return out
 }
 
@@ -2601,6 +2631,7 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
   }
 
   if (cleared.clips || cleared.sentences) {
+    invalidateLanguageQueueCache(recordist.language)
     logger.log(`[Recordist] retired re-record wants: ${cleared.clips} clip(s), ${cleared.sentences} line(s)`)
   }
   return cleared
@@ -2630,6 +2661,7 @@ module.exports = {
   recordedSpellings,
   castEntryFor,
   buildLanguageLines,
+  invalidateLanguageQueueCache,
   linkSeedTake,
   seedCastEntry,
   policyVoiceList,
