@@ -43,6 +43,9 @@ const {
   isTestFixtureCourse,
   parseSeedLineId,
   parseQuarryLineId,
+  parseTakeGLineId,
+  takeGChunks,
+  TAKEG_SEAM,
   linkSeedTake,
   seedCastEntry,
   policyVoiceList,
@@ -659,6 +662,155 @@ module.exports = function createRecordistRouter({
   }
 
   /**
+   * Resolve a TAKE G line: the sentence, its declared seams, and whether this
+   * recordist is the one cast to read it.
+   *
+   * Everything is read from the row. `takeg:<sentenceId>` is a claim, not a
+   * credential — the booth has no login — so the speaker's cast entry decides,
+   * exactly as it does for the sentence's natural line.
+   */
+  async function resolveTakeGLine(res, recordist, parsed) {
+    const { data: sentence, error } = await db()
+      .from('listening_pod_sentences')
+      .select('id, pod_id, speaker, target_text, known_text, atom_map_fine, takeg_audio_ids')
+      .eq('id', parsed.sentenceId)
+      .maybeSingle()
+    if (error) throw new Error(`take G line lookup failed: ${error.message}`)
+    if (!sentence) { res.status(404).json({ error: `No line ${parsed.raw}` }); return null }
+
+    const chunks = takeGChunks(sentence)
+    if (!chunks) {
+      res.status(409).json({
+        error: 'That sentence declares no seams, so there is nothing for a gapped read to be sliced into.',
+        reason: 'no_chunks',
+      })
+      return null
+    }
+
+    const { data: pod, error: pErr } = await db()
+      .from('listening_pods').select('id, course_code').eq('id', sentence.pod_id).maybeSingle()
+    if (pErr) throw new Error(`pod lookup failed: ${pErr.message}`)
+    if (!pod) { res.status(404).json({ error: `No pod for line ${parsed.raw}` }); return null }
+
+    const { data: course, error: cErr } = await db()
+      .from('courses').select('course_code, voice_config, target_lang, known_lang').eq('course_code', pod.course_code).maybeSingle()
+    if (cErr) throw new Error(`course lookup failed: ${cErr.message}`)
+    if (!course) { res.status(404).json({ error: `No course ${pod.course_code}` }); return null }
+
+    // CAST BY SPEAKER, exactly as the sentence's own line is. A Take G is the
+    // same person reading the same line a second way; it is never cast apart
+    // from it.
+    const podCast = (course.voice_config && course.voice_config.podCast) || null
+    const entry = castEntryFor(podCast, sentence.speaker)
+    const castVoiceId = entry && entry.voiceId ? String(entry.voiceId) : null
+    if (!castVoiceId || !recordist.spellings.includes(castVoiceId)) {
+      res.status(403).json({
+        error: castVoiceId
+          ? `${sentence.speaker} is read by ${castVoiceId}, not you.`
+          : `${sentence.speaker} has nobody cast to read them, so there is nothing here for you to record.`,
+        reason: castVoiceId ? 'not_your_slot' : 'uncast_slot',
+        courseCode: course.course_code,
+      })
+      return null
+    }
+    return { sentence, pod, course, chunks, text: chunks.map((c) => c.target).join(TAKEG_SEAM) }
+  }
+
+  /**
+   * A take for a TAKE G line — the gapped whole-sentence read.
+   *
+   * Filed as `role: 'pod_take_g'`, which is the role the estate's own TTS Take G
+   * renders under (tools/render-take-g.cjs). That is what keeps it off the
+   * natural take's toes: course_audio's unique key is (course_code,
+   * text_normalized, language, role, voice_id), it has no cadence column, and
+   * filing a gapped read under `target` would overwrite the natural one and put
+   * a deliberately-halting read in front of a learner. script-take-filing.cjs
+   * says so in as many words, about the same hazard.
+   *
+   * `cadence: 'gapped'` — not 'slow'. A slow take is deliberately never filed at
+   * all (it is a measurement for the aligner and nothing else), and an unfiled
+   * take leaves no row, so the queue could never tell this line was done and
+   * would offer it again forever. A Take G must EXIST as a clip: it is the
+   * material every ladder rung is sliced from.
+   *
+   * Then the clip id is appended to the sentence's `takeg_audio_ids`, which is
+   * both what tools/slice-take-g.cjs reads and what scores this line recorded.
+   * Nothing is deleted and nothing is unlinked: the clip exists before the
+   * pointer moves.
+   */
+  async function recordTakeGTake({ req, res, recordist, parsed, text, audioBase64, mimeType, device }) {
+    const resolved = await resolveTakeGLine(res, recordist, parsed)
+    if (!resolved) return
+
+    if (text && text.trim() && text.trim() !== resolved.text) {
+      return res.status(409).json({
+        error: 'The seams on this line have changed since the queue was loaded -- reload before recording it.',
+        expected: resolved.text,
+        received: text.trim(),
+      })
+    }
+
+    const { res: innerRes, captured } = captureResponse()
+    await handleRecordingUpload({
+      params: { courseCode: resolved.course.course_code },
+      headers: { authorization: req.headers.authorization },
+      socket: req.socket,
+      recordistVoiceId: recordist.voiceId,
+      body: {
+        audioData: audioBase64,
+        mimeType,
+        metadata: {
+          mode: 'script',
+          cadence: 'gapped',
+          role: 'pod_take_g',
+          kind: 'pod_take_g',
+          text: resolved.text,
+          voiceId: recordist.voiceId,
+        },
+        provenance: {
+          recorded_by: recordist.email || recordist.displayName,
+          mode: 'recordist',
+          recording_device: device || null,
+        },
+      },
+    }, innerRes)
+    if (captured.status >= 400 || !captured.body || !captured.body.success) {
+      return res.status(captured.status >= 400 ? captured.status : 500).json(captured.body || { error: 'upload failed' })
+    }
+
+    const filing = captured.body.filing || null
+    const audioId = filing && filing.courseAudioId ? filing.courseAudioId : null
+    let linked = false
+    if (audioId) {
+      // APPEND, never replace. A sentence may hold more than one Take G — a
+      // second voice's, or a better read — and slice-take-g.cjs takes the ids
+      // it is given. Read-modify-write rather than an array append in SQL
+      // because PostgREST has no array_append verb; the row is this artist's
+      // own line and two writers to it is not a case that exists.
+      const existing = Array.isArray(resolved.sentence.takeg_audio_ids) ? resolved.sentence.takeg_audio_ids : []
+      const next = existing.includes(audioId) ? existing : [...existing, audioId]
+      const { error: upErr } = await db()
+        .from('listening_pod_sentences').update({ takeg_audio_ids: next }).eq('id', resolved.sentence.id)
+      if (upErr) logger.error(`[Recordist] take G link failed (take is stored and filed): ${upErr.message}`)
+      else linked = true
+    } else {
+      logger.error(`[Recordist] take G for ${resolved.sentence.id} was NOT filed as a clip: ${filing && filing.reason}`)
+    }
+
+    return res.json({
+      ok: true,
+      audioId,
+      kind: 'takeg',
+      role: 'pod_take_g',
+      linked,
+      chunks: resolved.chunks.length,
+      clipUrl: `/api/recording/voice/${encodeURIComponent(recordist.voiceId)}/line/${encodeURIComponent(parsed.raw)}/clip`,
+      rawKey: captured.body.rawKey || null,
+      filing,
+    })
+  }
+
+  /**
    * Resolve a MINIMAL-SET piece: which course it belongs to, what its words
    * are, and whether this recordist is the one who reads them.
    *
@@ -897,6 +1049,48 @@ module.exports = function createRecordistRouter({
     return res.redirect(302, url)
   }
 
+  /**
+   * Play back a Take G — by the sentence's OWN `takeg_audio_ids`, never by text.
+   *
+   * The natural take of the same sentence has the same words; a text lookup
+   * would happily hand it back and the artist would hear an ungapped read of
+   * the line he is trying to gap. The slot is the only honest answer, which is
+   * the same rule that scores the line recorded in the first place.
+   */
+  async function takeGClipResponse(req, res, recordist, parsed) {
+    const resolved = await resolveTakeGLine(res, recordist, parsed)
+    if (!resolved) return
+    const ids = Array.isArray(resolved.sentence.takeg_audio_ids) ? resolved.sentence.takeg_audio_ids : []
+    if (!ids.length) return res.status(404).json({ error: 'No gapped take for this line yet', reason: 'no_take' })
+    const { data, error } = await db()
+      .from('course_audio')
+      .select('id, s3_key, voice_id, created_at')
+      .in('id', ids)
+      .in('voice_id', recordist.spellings)
+      .order('created_at', { ascending: false })
+      .limit(1)
+    if (error) throw new Error(`take G clip lookup failed: ${error.message}`)
+    const row = data && data[0] ? data[0] : null
+    if (!row) return res.status(404).json({ error: 'No gapped take of your own for this line yet', reason: 'no_take' })
+    if (req.query.variant === 'raw') {
+      const { url, rawKey, notFound } = await s3.getRawSignedUrl(row.s3_key, 3600)
+      if (!rawKey) {
+        return res.status(404).json({
+          error: notFound
+            ? 'The processed clip for this take is missing from storage, so its original cannot be found.'
+            : 'No original was kept for this take.',
+          reason: notFound ? 'mastered_missing' : 'no_raw_retained',
+          audioId: row.id, variant: 'raw',
+        })
+      }
+      if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: rawKey, url, variant: 'raw' })
+      return res.redirect(302, url)
+    }
+    const url = await s3.getAudioSignedUrl(row.id, 3600, { s3Key: row.s3_key })
+    if (req.query.json === '1') return res.json({ audioId: row.id, s3Key: row.s3_key, url, variant: 'processed' })
+    return res.redirect(302, url)
+  }
+
   /** Play back the clip a seed's own slot points at. */
   async function seedClipResponse(req, res, recordist, parsed) {
     const resolved = await resolveSeedLine(res, recordist, parsed)
@@ -985,6 +1179,14 @@ module.exports = function createRecordistRouter({
       const quarryLine = parseQuarryLineId(lineId)
       if (quarryLine) {
         return await recordQuarryTake({ req, res, recordist, parsed: { ...quarryLine, raw: lineId }, text, audioBase64, mimeType, device })
+      }
+
+      // A TAKE G. `takeg:<sentenceId>` — same reasoning as the two branches
+      // above: it is not a uuid, so the pod lookup below would answer 22P02
+      // rather than find the sentence it names.
+      const takeGLine = parseTakeGLineId(lineId)
+      if (takeGLine) {
+        return await recordTakeGTake({ req, res, recordist, parsed: { ...takeGLine, raw: lineId }, text, audioBase64, mimeType, device })
       }
 
       // The line decides the course; the recordist decides the voice.
@@ -1203,6 +1405,9 @@ module.exports = function createRecordistRouter({
       const quarryLine = parseQuarryLineId(req.params.lineId)
       if (quarryLine) return await quarryClipResponse(req, res, recordist, quarryLine)
 
+      const takeGLine = parseTakeGLineId(req.params.lineId)
+      if (takeGLine) return await takeGClipResponse(req, res, recordist, { ...takeGLine, raw: req.params.lineId })
+
       const { data: sentence, error: sentErr } = await db()
         .from('listening_pod_sentences')
         .select('id, target_text, target_audio_id')
@@ -1333,6 +1538,15 @@ module.exports = function createRecordistRouter({
         return res.status(403).json({
           error: 'That is a piece of a sentence, not a line of its own -- its words come from the course and are changed there.',
           reason: 'quarry_line',
+        })
+      }
+      // A TAKE G is the same sentence read a second way. Its text is the
+      // sentence's own words with the declared seams marked, so there is no
+      // text of its own to rewrite -- editing the sentence changes both lines.
+      if (parseTakeGLineId(lineId)) {
+        return res.status(403).json({
+          error: 'That is the gapped read of a sentence, not a line of its own -- edit the sentence and both reads follow.',
+          reason: 'takeg_line',
         })
       }
       // The course code is the first half of a pod sentence id, but it is not

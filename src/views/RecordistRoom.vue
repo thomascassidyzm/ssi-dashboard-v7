@@ -822,6 +822,8 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // HOW IT IS READ. The roster draws it so the two speeds of the minimal set
   // are told apart at a glance, and onNext acts on it below.
   readStyle: l.readStyle || 'natural',
+  // The seams a Take G must carry, so the line can say how many pauses it wants.
+  takeGChunks: l.takeGChunks || null,
   // WHERE THE TAKE IS, WHICH IS NOT A VERDICT ON IT.
   //
   // Aran, 2026-09-10: "if I mouseover some of the phrases that are white/yet to
@@ -888,6 +890,13 @@ const SECTION_ORDER = [
   // reading, but it is the thing he came here to do. The set's SECOND speed --
   // the whole natural sentences -- is the 'seed' section directly below it, and
   // the blurb says so rather than duplicating those lines into two places.
+  // THE SAME SENTENCE, READ A SECOND WAY, and it sits with the pod rather than
+  // in a section of its own — the queue orders it immediately after its own
+  // natural line, so it is read while the line is still in the mouth. This entry
+  // exists only so a Take G that HAS been separated out (an old server, a jump
+  // from the map) is still named in words rather than landing in "Everything
+  // else".
+  { key: 'takeg', heading: 'The same line, with gaps', blurb: 'The line you just read, read again with a clear pause at every mark. One gapped read is all it takes: every shorter practice phrase is cut out of it, so nothing here has to be recorded chunk by chunk.' },
   { key: 'quarry', heading: 'The minimal set', blurb: 'The smallest set of chunks that can be recombined into every phrase in the course. Read these slowly, with a clear gap between the words, so each one can be cut out cleanly. The full sentences below are read at your natural pace.' },
   // THIS SECTION USED TO BE CALLED "Re-recording in this course", and every row
   // in it carried the reason we had rejected the take. Tom, 2026-09-02: "they
@@ -1090,6 +1099,16 @@ const lineKindWords = computed(() => {
     return l.quarrySource === 'word'
       ? 'One word - read it slowly, on its own, then tap Next'
       : 'A chunk - read it slowly, with a gap between the words, then tap Next'
+  }
+  // A TAKE G is the sentence he has just read, read again with a pause at every
+  // mark. The instruction has to name the marks, because "read it slowly" is not
+  // something two people do the same way and the aligner needs the gaps in
+  // specific places — it maps the voiced stretches onto the marks one for one
+  // and refuses the take if the counts disagree.
+  if (l.kind === 'takeg') {
+    const n = Array.isArray(l.takeGChunks) ? l.takeGChunks.length : 0
+    const marks = n > 1 ? `${n - 1} pause${n > 2 ? 's' : ''}` : 'a pause'
+    return `The same line again - pause clearly at each ${'…'} (${marks}), then tap Next`
   }
   if (l.kind !== 'seed') return null
   const which = l.role === 'known' ? 'English side' : (l.role === 'target2' ? 'second voice' : null)

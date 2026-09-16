@@ -1,47 +1,32 @@
 #!/usr/bin/env node
 /**
- * stage-takes.cjs — THE BOOTH LOAD, AND WHERE THESE LINES HAVE TO LIVE BEFORE
- * A BOOTH CAN SEE THEM.
+ * stage-takes.cjs — THE BOOTH LOAD for the 57 health seeds, read as a minimal
+ * recording set rather than as a 339-line ladder.
  *
  *   node tools/recording/health-seed-ladders/stage-takes.cjs            # pilot
  *   node tools/recording/health-seed-ladders/stage-takes.cjs --all
- *   node tools/recording/health-seed-ladders/stage-takes.cjs --apply    # refuses
+ *   node tools/recording/health-seed-ladders/stage-takes.cjs --json
  *
- * Read-only. It writes nothing, sends nothing and records nothing, and --apply
- * refuses with the reason rather than doing half of it.
+ * Read-only: it computes and prints, and writes nothing. Putting the lines in
+ * front of Aran and Catrin is stage-pilot-pod.cjs, which is gated on --apply.
  *
- * THE REASON --apply REFUSES, which is the finding this tool exists to carry:
+ * THE RECORDING UNIT is two takes per seed per voice — a natural whole read and
+ * a gapped read with a pause at every chunk joint. Both ride seams this estate
+ * already owns: the natural read is the pod sentence's own line, and the gapped
+ * read is TAKE G, which tools/render-take-g.cjs has rendered for TTS courses
+ * since 2026-07-09 and tools/slice-take-g.cjs already slices into per-unit ms
+ * spans. What was missing was only that a human could not record one, because
+ * render-take-g needs TTS and Welsh has none. A sentence that declares its seams
+ * in `atom_map_fine` now gets a second, gapped queue line
+ * (recordist-queue.cjs#pushTakeG).
  *
- * THE RECORDIST QUEUE HAS NO STAGED STATE. services/voice-engine/recordist-queue.cjs
- * DERIVES the queue on every read from three live sources — pod sentences,
- * course_audio.rerecord_wanted, and course_seeds (the source-3 seam). There is
- * no staging table, no release flag, and nothing between "a row exists" and
- * "Aran sees it at the microphone". `notReady` is untranslated text, not a gate.
- * So in this estate, STAGING AND RELEASING ARE THE SAME ACT, and a pilot of five
- * is staged by putting FIVE seeds where the queue can see them and holding the
- * other forty-eight out until the pilot is judged.
- *
- * AND THESE 57 ARE NOT IN A CONTENT TABLE AT ALL. They are
- * `canonical_pod_scenarios` rows (pod_slug = 'health-general-welsh'), a canon
- * table with no audio FK of any kind — no queue source reads it. Job #991
- * declined to write them anywhere and was right to.
- *
- * THE RECOMMENDATION, which is Tom's or Kai's to take: mint them as a NEW course
- * `cym_n_health_for_eng` rather than as seeds 669+ of the live 668-seed
- * cym_n_for_eng. A new course does not move the live course's seed numbering,
- * round index or helix; it carries its own voice_config; and the seed seam picks
- * it up for free, because the queue derives by canonical TARGET LANGUAGE across
- * every course, not by a course list. `course_sectors` already holds the
- * precedent (spa_health_for_eng). Batch 1 creates it with the five pilot seeds;
- * batch 2 adds the other forty-eight when the pilot is judged. That is the
- * staging mechanism the estate already has, and it needs no new code.
- *
- * THE CAST NEEDS NO WRITE. cym_n_for_eng's voice_config.voices now names
- * target1 = Catrin (human_catrinlliar_cym_n) and target2 = Aran
- * (human_aran_cym_n) — verified live 2026-09-16. The 2026-09-02 seed-and-splice
- * document says both slots are empty; that statement is stale. Both voices,
- * solo, which is what Tom ruled for these seeds. A new course copies that block
- * verbatim; nothing about the cast is this job's to decide or to change.
+ * THE CAST NEEDS NO WRITE. cym_n_for_eng casts target1 = Catrin
+ * (human_catrinlliar_cym_n) and target2 = Aran (human_aran_cym_n), and the
+ * health pod's speakers are cast to both — verified live 2026-09-16. The
+ * 2026-09-02 seed-and-splice document says both slots are empty; that statement
+ * is stale. Note the slots are the other way round from job #993's brief
+ * (Aran → target1, Catrin → target2); the live cast is the one that exists and
+ * nothing here changes it.
  */
 const { planLadder, takesFor, boothLoad, TAKE_GAPPED, TAKE_NATURAL } = require('./ladder.cjs')
 const { classifySplit, CLASS_BLOCKED } = require('./partition.cjs')
@@ -56,25 +41,14 @@ const args = process.argv.slice(2)
 const wantAll = args.includes('--all')
 const wantJson = args.includes('--json')
 
-if (args.includes('--apply')) {
+if (process.argv.includes('--apply')) {
   console.error([
-    '--apply refuses, and the refusal is the deliverable.',
+    '--apply belongs to stage-pilot-pod.cjs, not here. This tool only counts.',
     '',
-    'There is nowhere to stage these lines that the recordist queue can see.',
-    'They are canonical_pod_scenarios rows — a canon table with no audio FK —',
-    'and the queue derives only from pod sentences, course_audio.rerecord_wanted',
-    'and course_seeds. Writing them into a content table does not stage them,',
-    'it RELEASES them: the queue has no staged state and Aran and Catrin would',
-    'see them at the next load of their booth link.',
-    '',
-    'The decision that unblocks this, Tom or Kai to take:',
-    '  mint the five pilot seeds as a NEW course cym_n_health_for_eng,',
-    '  copying cym_n_for_eng voice_config verbatim, and add the other 48',
-    '  once the pilot takes are judged.',
-    '',
-    'Run without --apply for the booth load and the staged manifest.',
+    '  node tools/recording/health-seed-ladders/stage-pilot-pod.cjs           # dry run',
+    '  node tools/recording/health-seed-ladders/stage-pilot-pod.cjs --apply   # writes the held pod',
   ].join('\n'))
-  process.exit(3)
+  process.exit(2)
 }
 
 const blocked = SEEDS.filter((s) => s.batch === 0)
@@ -140,5 +114,7 @@ line('')
 line('BOOTH LINKS (nothing has been sent to either):')
 for (const v of VOICES) line(`  ${v.name.padEnd(13)} ${v.booth}`)
 line('')
-line('Assembly plan:  node tools/recording/health-seed-ladders/assemble-ladder.cjs --pilot')
-line('Once takes land: … --pilot --takes <dir>    (exits non-zero on a chunk-count mismatch)')
+line('Stage the pilot:  node tools/recording/health-seed-ladders/stage-pilot-pod.cjs --apply')
+line('Assembly plan:    node tools/recording/health-seed-ladders/assemble-ladder.cjs --pilot')
+line('Once takes land:  node tools/slice-take-g.cjs cym_n_for_eng --dry   (measures the seams)')
+line('Then:             … assemble-ladder.cjs --pilot --from-store        (rung spans, or a loud failure)')

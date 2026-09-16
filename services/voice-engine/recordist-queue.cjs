@@ -713,6 +713,74 @@ function parseQuarryLineId(lineId) {
 }
 
 /**
+ * TAKE G — THE GAPPED WHOLE-SENTENCE READ, AS A HUMAN CAN GIVE IT.
+ *
+ * Take G is not a new idea on this estate; it is the estate's own. `tools/
+ * render-take-g.cjs` has rendered it for TTS courses since 2026-07-09 — "the
+ * sentence spoken by its turn's cast voice with a pause forced at every chunk
+ * seam" — and `tools/slice-take-g.cjs` detects those gaps and writes each unit's
+ * span into `listening_pod_sentences.atom_map_fine`. Its header states the model
+ * this queue line exists to extend to human voices:
+ *
+ *     "Any fusion window is then a contiguous slice of this ONE take, internal
+ *      gaps and all — chunks at every rung come from ms spans, not thousands of
+ *      per-chunk files."
+ *
+ * A HUMAN-ONLY LANGUAGE COULD NOT HAVE ONE. Welsh has no TTS, so render-take-g
+ * can never run for it, and every Welsh pod sentence carries a NULL
+ * `takeg_audio_ids` and a NULL `atom_map_fine`. The booth offered one line per
+ * sentence — the natural read — so the only way to get a chunk of a Welsh
+ * sentence was to record that chunk on its own, which is the 339-line ladder
+ * this job was sent to avoid.
+ *
+ * SO: a sentence that DECLARES ITS CHUNKS gets a second line. That is the whole
+ * rule, and it is deliberately the declaration rather than a flag — `atom_map_fine`
+ * is the list of units a Take G would be sliced into, so a sentence carrying it
+ * is a sentence that has said what its seams are. A sentence with no map, or a
+ * map of fewer than two units, has no seams to pause at and gets nothing extra:
+ * every one of the estate's other pod lines is untouched by this.
+ *
+ * It is scored BY ITS OWN SLOT (`slotFilledBy`, from `takeg_audio_ids`) and never
+ * by text, for the same reason a minimal-set LEGO is: a natural-pace take of the
+ * same words is a DIFFERENT LINE, and letting it mark this one recorded would
+ * hand the slicer a take with no gaps in it.
+ */
+const TAKEG_LINE_PREFIX = 'takeg:'
+
+/** The seam cue between chunks. The estate's own pause marker in pod clip text. */
+const TAKEG_SEAM = ' … '
+
+function takeGLineId(sentenceId) { return `${TAKEG_LINE_PREFIX}${sentenceId}` }
+
+function parseTakeGLineId(lineId) {
+  const raw = String(lineId || '')
+  if (!raw.startsWith(TAKEG_LINE_PREFIX)) return null
+  const sentenceId = raw.slice(TAKEG_LINE_PREFIX.length)
+  return sentenceId ? { sentenceId } : null
+}
+
+/**
+ * The units a Take G of this sentence would be sliced into — the `kind: 'atom'`
+ * entries of `atom_map_fine`, in order. `kind: 'note'` entries are skipped, the
+ * same way slice-take-g.cjs skips them.
+ *
+ * Returns null when the sentence declares no seams: no map, a map of one unit,
+ * or a unit with no target surface to read.
+ */
+function takeGChunks(sentence) {
+  const map = sentence && Array.isArray(sentence.atom_map_fine) ? sentence.atom_map_fine : null
+  if (!map) return null
+  const atoms = map.filter((a) => a && a.kind !== 'note')
+  if (atoms.length < 2) return null
+  const chunks = atoms.map((a) => ({
+    target: String(a.target_surface || '').trim(),
+    known: String(a.gloss || '').trim(),
+  }))
+  if (chunks.some((c) => !c.target)) return null
+  return chunks
+}
+
+/**
  * Which POLICY voice, if any, this course casts to a given target/known slot.
  *
  * Read off voice_config.voices[role].voiceId and matched against the language's
@@ -875,7 +943,10 @@ async function audioVoicesById(db, ids) {
  *   2. STABLE. The same queue on every load — the last tiebreak is the line's
  *      own id, so nothing is left to chance.
  */
-const QUEUE_SORT_TIER = { pod: 0, quarry: 1, rerecord: 2, seed: 3 }
+// A TAKE G SITS WITH ITS OWN POD LINE, not in a section of its own: it is the
+// same sentence read a second way, and separating them would have the recordist
+// read 57 sentences and then read the same 57 again an hour later.
+const QUEUE_SORT_TIER = { pod: 0, takeg: 0, quarry: 1, rerecord: 2, seed: 3 }
 
 function queueSortTier(line) {
   const tier = QUEUE_SORT_TIER[line.kind || 'pod']
@@ -884,7 +955,8 @@ function queueSortTier(line) {
 
 /** The body of work a line belongs to: its pod, or failing that its course. */
 function queueSortGroup(line) {
-  if ((line.kind || 'pod') === 'pod') {
+  const kind = line.kind || 'pod'
+  if (kind === 'pod' || kind === 'takeg') {
     return `${line.courseCode || ''}\u0000${line.podSlug || line.podId || ''}`
   }
   return String(line.courseCode || '')
@@ -958,7 +1030,14 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // added "…" pause cues to the sentences, so six of Aran's June takes are
   // filed under the un-cued spelling of the very line they are linked to and
   // already playing on. Read-only, voice-agnostic, computed once per language.
-  const slotVoiceById = await fetchClipVoices(db, sentences.map((s) => s.target_audio_id))
+  //
+  // TAKE G CLIPS ARE READ HERE TOO, in the same one call. A Take G line is
+  // scored by its own slot alone and a second round trip for them would be
+  // pure latency on a page that has already been tuned twice for it.
+  const slotVoiceById = await fetchClipVoices(db, [
+    ...sentences.map((s) => s.target_audio_id),
+    ...sentences.flatMap((s) => (Array.isArray(s.takeg_audio_ids) ? s.takeg_audio_ids : [])),
+  ])
 
   const byBucket = new Map()
   // The minimal set's own arithmetic, so the screen can say how big the job is
@@ -995,6 +1074,58 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
   // rather than silently dropped, by the same rule as `uncast`.
   let crossLanguage = 0
   let duplicatesCollapsed = 0
+
+  /**
+   * THE TAKE G COMPANION — a second line for a sentence that declares its seams.
+   *
+   * EMITTED FOR EVERY SENTENCE THAT DECLARES THEM, INCLUDING A COLLAPSED
+   * DUPLICATE, and that is the whole reason it is a function rather than a block
+   * after the collapse check. Two sentences that read the same share ONE natural
+   * take — one recording fills both slots — but they do NOT share a Take G: a
+   * Take G is sliced against its OWN sentence's atom_map_fine, and the duplicate
+   * is precisely the sentence whose seams nobody else has declared. Emitted after
+   * the `continue`, Catrin's fifth pilot line vanished — its words already
+   * existed on a health-pod line of hers, so the natural line collapsed and took
+   * the gapped one with it, leaving 4 Take G lines where 5 were staged.
+   *
+   * See takeGChunks above for why declaring the map is the gate.
+   */
+  function pushTakeG(s, pod, bucket, voiceId, castVoiceId) {
+    const chunks = takeGChunks(s)
+    if (!chunks) return
+    const takegVoices = (Array.isArray(s.takeg_audio_ids) ? s.takeg_audio_ids : [])
+      .map((id) => slotVoiceById.get(id) || null)
+    byBucket.get(bucket).push({
+      id: takeGLineId(s.id),
+      podId: s.pod_id,
+      podSlug: pod.slug || null,
+      podTitle: pod.title || null,
+      order: s.global_order,
+      // Immediately after its own natural line: every other kind leaves
+      // seedOrder at 0, so 1 puts the gapped read second and nothing else moves.
+      seedOrder: 1,
+      // THE SEAMS, ON THE PAGE. The reader is shown where to pause, because
+      // "read this slowly" is not an instruction anybody can follow the same way
+      // twice, and the aligner needs the gaps in specific places.
+      text: chunks.map((c) => c.target).join(TAKEG_SEAM),
+      knownText: chunks.map((c) => c.known).filter(Boolean).join(TAKEG_SEAM) || s.known_text || null,
+      speaker: s.speaker,
+      courseCode: pod.course_code,
+      voiceId,
+      castVoiceId,
+      textNormalized: normalizeForDb(chunks.map((c) => c.target).join(' ')),
+      duplicateOf: [],
+      kind: 'takeg',
+      role: 'target',
+      readStyle: 'gapped',
+      // BY ITS OWN SLOT AND NOTHING ELSE. `slotFilledBy` is take-selection's
+      // "score by slot alone" path: the natural take of these same words must
+      // never mark this line recorded, or the slicer gets a take with no gaps.
+      slotFilledBy: takegVoices,
+      takeGChunks: chunks,
+      rerecordWanted: false,
+    })
+  }
 
   for (const s of sentences) {
     const text = (s.target_text || '').trim()
@@ -1120,6 +1251,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // it or a want on cym_s's copy would be silently dropped.
       if (targetRerecordWanted(s)) rep.rerecordWanted = true
       duplicatesCollapsed += 1
+      // The natural read collapses; the gapped read never does. See pushTakeG.
+      pushTakeG(s, pod, bucket, voiceId, castVoiceId)
       continue
     }
     const line = {
@@ -1155,6 +1288,7 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
     }
     seen.set(key, line)
     byBucket.get(bucket).push(line)
+    pushTakeG(s, pod, bucket, voiceId, castVoiceId)
   }
 
   // ── SECOND SOURCE: anything else that needs re-recording ──────────────────
@@ -1598,6 +1732,12 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which kind of quarry piece: a LEGO of the course, or a single word no
         // LEGO covers. Null on every other kind of line.
         quarrySource: line.quarrySource || null,
+        // THE SEAMS THIS TAKE G MUST CARRY, in order — {target, known} per unit,
+        // straight off the sentence's own atom_map_fine. On the wire because the
+        // booth draws them as the pause marks, and because the aligner gates on
+        // their COUNT: a take yielding a different number of voiced regions is a
+        // re-record, never a chunk map to guess at. Null on every other kind.
+        takeGChunks: line.takeGChunks || null,
         // May the recordist rewrite this line's text from the booth?
         //
         // A POD LINE: YES, live courses included (Tom, 2026-09-03 — Aran could
@@ -1693,7 +1833,7 @@ async function fetchAllSentences(db, podIds) {
   try {
     return await pagedRead((from, to) => db
       .from('listening_pod_sentences')
-      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted')
+      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted, atom_map_fine, takeg_audio_ids')
       .in('pod_id', podIds)
       .order('id')
       .range(from, to))
@@ -2204,6 +2344,10 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
 module.exports = {
   clearRerecordWants,
   isTestFixtureCourse,
+  takeGLineId,
+  parseTakeGLineId,
+  takeGChunks,
+  TAKEG_SEAM,
   quarryLineId,
   parseQuarryLineId,
   targetRerecordWanted,
