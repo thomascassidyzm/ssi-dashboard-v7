@@ -16,12 +16,24 @@
  * into per-unit ms spans. Minting seeds inside the live 668-seed cym_n_for_eng
  * would move its numbering for nothing.
  *
- * WHY `visibility: 'held'` IS THE STAGING GATE. The recordist queue does not
- * read `listening_pods.visibility` at all — a held pod reaches the booth exactly
- * like a live one — while the learner path does. 61 of the estate's 128 pods are
- * already held. So held is precisely "recordable, not served", which is what
- * staging a pilot means, and it needed no new column and no new flag.
- * `pod_type: 'choice'` on top of it, because a choice pod is served by nothing.
+ * WHY THIS POD IS NOT IN FRONT OF LEARNERS — AND IT IS NOT THE VISIBILITY.
+ *
+ * Tom's ruling, 2026-09-02, verbatim: "do not let visibility stand in for a
+ * guard anywhere." A 'held' pod on a serving slug IS served;
+ * tools/pods/serving-slug.cjs says so in as many words and reads visibility only
+ * to report it in a refusal. The guard is the SLUG: the learning app resolves a
+ * course's pod by `pod_type = 'core'` AND `slug = 'pod-1'` (plus 'method-pod' in
+ * Listening Mode). This pod is `pod_type: 'choice'` on the slug
+ * 'health-ladder-pilot', which is neither, so nothing serves it — and it would
+ * still be unserved if it were marked live.
+ *
+ * `visibility: 'held'` is set anyway, as a second, honest statement of intent and
+ * because 61 of the estate's 128 pods already carry it. It is never the reason.
+ *
+ * THE BOOTH, SEPARATELY, SEES IT. The recordist queue reads no visibility at all,
+ * so a held pod reaches Aran and Catrin exactly like a live one. That asymmetry —
+ * recordable here, served nowhere — is what staging a pilot needs, and it needed
+ * no new column and no new flag.
  *
  * WHAT EACH SENTENCE CARRIES. The stored Welsh as `target_text` (the natural
  * read), and the #991 split as `atom_map_fine` — one `kind: 'atom'` entry per
@@ -108,7 +120,9 @@ async function main() {
   const sentences = sentencesFor(seeds)
 
   console.log(`${APPLY ? 'APPLY' : 'DRY RUN'} — batch ${BATCH}, ${seeds.length} seed(s)`)
-  console.log(`pod ${POD_ID}  visibility=held  pod_type=choice   (recordable, served to nobody)`)
+  console.log(`pod ${POD_ID}  pod_type=choice  slug=${SLUG}  visibility=held`)
+  console.log(`  served by nothing: the learner resolves core/pod-1, and this is neither.`)
+  console.log(`  reachable in the booth: the recordist queue reads no visibility at all.`)
   console.log(`${sentences.length} sentence(s): ${seeds.length} seed(s) × ${READERS.length} voice(s)`)
   console.log(`each declares its chunks, so each yields TWO queue lines — natural + Take G.`)
   for (const row of sentences) {
