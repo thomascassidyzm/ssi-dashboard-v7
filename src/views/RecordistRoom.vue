@@ -397,6 +397,15 @@
         <button class="ctl-again" :disabled="busy || arming || paused || !!editingId" @click="onAgain">Again</button>
         <button class="ctl-next" :disabled="busy || arming || paused || !!editingId" @click="onNext()">{{ hasNext ? 'Next' : 'Done' }}</button>
       </div>
+      <!-- THE LINE BEFORE THIS ONE, whoever says it. Greyed, small, and outside
+           the well: it is context, not a line to read, and the well's own
+           contents never move when the editor opens inside it. -->
+      <ul v-if="!arming && cueBefore.length" class="cue cue-before" data-surface="cue-lines">
+        <li v-for="(c, i) in cueBefore" :key="'b' + i" class="cue-line">
+          <span v-if="c.speaker" class="cue-speaker">{{ c.speaker }}</span>
+          <span class="cue-text">{{ plainText(c.text) }}</span>
+        </li>
+      </ul>
       <!-- THE LINE IS HELD BACK WHILE THE RECORDER FILLS.
            The first take of a session is the one clip with no standby to
            promote (see COLD_START_SETTLE_MS in useTapRecorder). If the line
@@ -461,6 +470,16 @@
              deleted rather than merely unset so a future wire field cannot
              quietly light it up again. -->
       </div>
+
+      <!-- AND THE LINE AFTER IT. Same rules: dimmed, non-interactive, one short
+           line, so the reply he is setting up is visible without leaving the
+           booth for the pod page. -->
+      <ul v-if="!arming && cueAfter.length" class="cue cue-after" data-surface="cue-lines">
+        <li v-for="(c, i) in cueAfter" :key="'a' + i" class="cue-line">
+          <span v-if="c.speaker" class="cue-speaker">{{ c.speaker }}</span>
+          <span class="cue-text">{{ plainText(c.text) }}</span>
+        </li>
+      </ul>
 
       <!-- IT SAYS WHAT HAPPENED, IN ONE LINE, AND MOVES ON. One ref, replaced
            each time, so this can never stack. -->
@@ -1057,6 +1076,22 @@ function sectionHeadingOf(line) {
 }
 
 const current = computed(() => lines.value[index.value] || null)
+
+// ── WHAT IS SAID EITHER SIDE OF THIS LINE ────────────────────────────────────
+//
+// Aran, 2026-09-16, agreed by Tom: he was proofreading all 438 lines of the
+// health pod on the pod page before recording, because to judge a line he needs
+// to see it IN CONTEXT — both speakers — and in the booth he only ever sees his
+// own lines. So the exchange comes down on the wire (`context`, see
+// exchangeContext in recordist-queue.cjs) and is drawn around the well.
+//
+// ONE SHORT CUE EACH SIDE. The server sends two, the phone draws the nearest
+// one: the line being read is 44vh and must stay the biggest thing on the
+// screen, and a column of dimmed text either side of it is a second thing to
+// read at a microphone. Nothing here is tappable — the mic is live and the
+// thumb is near the transport.
+const cueBefore = computed(() => (current.value?.context?.before || []).slice(-1))
+const cueAfter = computed(() => (current.value?.context?.after || []).slice(0, 1))
 
 // THE CROSSING, ANNOUNCED. Aran, 2026-09-10, on finding course content in the
 // middle of the flow: the interleaving itself was fixed earlier today, but the
@@ -2653,6 +2688,33 @@ kbd {
 .hear-label { font-size: 0.7rem; color: var(--color-paper-dim, #c1c1bb); min-width: 0; }
 .hear-text { display: block; color: var(--color-paper, #f7f7f2); font-size: 0.85rem; }
 .hear-actions { display: flex; align-items: center; gap: 0.4rem; flex-shrink: 0; }
+
+/* THE EXCHANGE AROUND THE LINE. Dimmed, small, and nothing to touch — the line
+   being read stays the biggest thing on the screen, and no affordance sits near
+   the thumb while the mic is live. Two text lines at most, then it clips. */
+.cue {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 0.2rem;
+  pointer-events: none;
+}
+.cue-before { margin-bottom: 0.4rem; }
+.cue-after { margin-top: 0.4rem; }
+.cue-line {
+  display: flex; align-items: baseline; gap: 0.4rem; min-width: 0;
+  font-size: 0.85rem; line-height: 1.35;
+  color: var(--color-paper-dim, #c1c1bb); opacity: 0.55;
+}
+.cue-speaker {
+  flex-shrink: 0;
+  font-size: 0.66rem; letter-spacing: 0.05em; text-transform: uppercase;
+  padding: 0.05rem 0.4rem; border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+.cue-text {
+  min-width: 0;
+  display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+  overflow: hidden;
+}
 
 /* Coming up: legible, but never competing with the line being read. */
 .upnext { margin-top: 0.15rem; }
