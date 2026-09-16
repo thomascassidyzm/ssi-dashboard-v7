@@ -18,20 +18,35 @@ SHOTS=${E2E_SHOTS:-$HOME/ssi-evidence/ssi-dashboard-v7/e2e/booth-artists-day/$(d
 export E2E_API_BASE="$API" E2E_BASE_URL="$SPA" E2E_SHOTS="$SHOTS"
 
 die() { echo "booth-artists-day-browser: $*" >&2; exit 1; }
+
+# The staging pair are TRANSIENT systemd units (systemd-run), so a reboot takes them with it and
+# `systemctl restart` then fails on a unit that no longer exists — which is how a box that rebooted
+# at 20:25 made the 02:04 booth check red. Restart it if it is there, start it if it is not; either
+# way the run only proceeds against a staging pair that is actually answering.
+start_unit() {
+  unit=$1; cmd=$2
+  if systemctl --user cat "$unit" >/dev/null 2>&1; then
+    systemctl --user restart "$unit" || die "could not restart $unit"
+  else
+    systemctl --user reset-failed "$unit" >/dev/null 2>&1 || true
+    systemd-run --user --unit="$unit" --working-directory="$STAGING_DIR" \
+      bash -lc "$cmd" >/dev/null || die "could not start $unit in $STAGING_DIR"
+    echo "booth-artists-day-browser: started $unit (it was not running — a reboot takes transient units with it)"
+  fi
+}
 [ -f .env ] || die "no .env in $(pwd) — the fixture needs SUPABASE_URL/SUPABASE_SERVICE_KEY"
 [ -x node_modules/.bin/playwright ] || die "no playwright under node_modules"
 
 if [ "${REFRESH_STAGING:-0}" = 1 ]; then
-  [ -e "$STAGING_DIR/.git" ] || die "no staging tree at $STAGING_DIR"   # -e: a worktree's .git is a file
-  ( cd "$STAGING_DIR" && git fetch -q origin main && git merge --ff-only origin/main ) || die "could not fast-forward $STAGING_DIR to origin/main"
+  sh e2e/booth-artists-day/ensure-staging.sh "$STAGING_DIR" "$(pwd)" || exit 1
   want=$(cd "$STAGING_DIR" && git rev-parse --short=8 HEAD)
   have=$(node -e "try{console.log(require('$STAGING_DIR/dist/version.json').version)}catch{console.log('')}")
   if [ "$want" != "$have" ]; then
     echo "staging SPA is at '$have', main is $want — building"
     ( cd "$STAGING_DIR" && NODE_OPTIONS=--max-old-space-size=8192 node_modules/.bin/vite build > "$STAGING_DIR/staging-build.log" 2>&1 ) || die "vite build failed in $STAGING_DIR (see staging-build.log)"
   fi
-  systemctl --user restart cs-long-staging-api.service || die "could not restart cs-long-staging-api"
-  systemctl --user restart cs-long-staging-spa.service || die "could not restart cs-long-staging-spa"
+  start_unit cs-long-staging-api.service "PRODUCTION_API_PORT=3490 AUDIT_ARCHIVE_CRON=off TAIL_REPAIR_MODE=flag node services/production-api.cjs > $STAGING_DIR/staging-api.log 2>&1"
+  start_unit cs-long-staging-spa.service "STAGING_SPA_PORT=3491 STAGING_API=http://127.0.0.1:3490 node e2e/booth-artists-day/staging-spa-server.cjs > $STAGING_DIR/staging-spa.log 2>&1"
   i=0; while [ $i -lt 30 ]; do
     curl -sf -o /dev/null "$API/api/recording/voice/$VOICE" && break
     i=$((i + 1)); sleep 2
