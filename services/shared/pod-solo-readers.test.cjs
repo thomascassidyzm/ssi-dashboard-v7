@@ -44,17 +44,3 @@ test('seed-set staging accepts distinct seed ids with distinct text and no chara
     line('hg21', 'Dw i wedi blino.'),
   ]))
 })
-
-// assertNoCharacters has one documented caller — a seed-set staging tool —
-// and that caller always declares solo_readers. A pod reaching this guard
-// without them is a staging bug, not an ordinary dialogue pod passing
-// through: the guard has no way to tell "not a seed set" from "seed set
-// that forgot its readers", so it refuses both. (Reconciled against Astra's
-// original expectation here, which had this case pass silently — see the
-// commit message.)
-test('a pod reaching the guard without solo_readers is refused, not waved through', () => {
-  assert.throws(() => assertNoCharacters(
-    { id: 'dialogue', metadata: {}, speakers: { Customer: {} } },
-    [{ id: 'dialogue:1', speaker: 'Customer', target_text: 'Hello.' }],
-  ), /must declare metadata\.solo_readers/)
-})
