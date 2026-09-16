@@ -31,20 +31,6 @@
             · {{ sentences.length }} sentences
             <span v-if="pod.source_file"> · from <code>{{ pod.source_file }}</code></span>
           </div>
-          <!-- THE WAY INTO THE BOOTH, AT THE TOP. Aran, 2026-09-11, from this
-               page: "I'm not now seeing a way to open my recording tool… I had to
-               go back to /pods and then open the tab for 'cast'". And again on
-               2026-09-16, on a pod with no characters cast at all: "no way I can
-               see to start a recording session". So the door no longer depends on
-               this pod's character list — RecordDoor keys off who is looking and
-               what they are cast to on the COURSE. -->
-          <RecordDoor
-            :course-code="courseCode"
-            :pod-slug="slug"
-            :solo-readers="soloReaders"
-            :cast-voices="castVoices"
-            :roster-voices="rosterVoices"
-          />
         </div>
 
         <!-- HOLD / RELEASE (Tom, 2026-08-23: keep a pod back "until … after all
@@ -156,6 +142,23 @@
              the character list is one click away. -->
         <div class="mb-6 bg-surface border border-line rounded-lg p-4 text-sm card-sep">
           <div class="text-ink font-semibold mb-2">Who records this</div>
+          <!-- THE DOOR, WITH THE NAMES IT BELONGS TO. Aran, 2026-09-16 15:30:
+               "the block at the top of the pod page that says WHO RECORDS THIS
+               should have a link to record". It used to sit under the pod title,
+               a card away from this one, and he read this block — the one naming
+               the recordists — as the place a recordist starts. So there is ONE
+               door and it is here, above the names, in reach of a thumb.
+               RecordDoor still decides WHOSE link is drawn: solo readers, then
+               this pod's character cast, then the viewer's own casting on the
+               course — so a pod with no characters at all still has a door. -->
+          <RecordDoor
+            :course-code="courseCode"
+            :pod-slug="slug"
+            :solo-readers="soloReaders"
+            :cast-voices="castVoices"
+            :roster-voices="rosterVoices"
+            class="mb-3"
+          />
           <div v-if="castVoices.length" class="grid gap-2 sm:grid-cols-2">
             <div v-for="v in castVoices" :key="v.voiceId" class="px-3 py-2 bg-surface-2 border border-line rounded">
               <div class="text-ink font-medium">

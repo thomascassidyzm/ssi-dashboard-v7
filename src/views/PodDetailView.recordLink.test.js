@@ -4,7 +4,8 @@
 // seeing a way to open my recording tool" — he went back up to the pods page
 // and found the cast tab. The rule under test: every human voice cast on the
 // pod gets a link to its own booth (/r/<voiceId>), and it sits under the title,
-// above the hold panel, not at the bottom of the page.
+// above the hold panel, not at the bottom of the page. Superseded 2026-09-16: it
+// lives INSIDE the Who records this block — see the placement test below.
 //
 // Aran again, 2026-09-16, on https://popty.app/production/cym_n_for_eng/pods/
 // health-ladder-pilot — a pod with NO characters cast, read solo: "feels
@@ -97,10 +98,21 @@ describe('PodDetailView — the booth is one tap from the top of the pod page', 
     viewer.casting = []
   })
 
-  it('puts the links above the hold panel, not at the foot of the page', async () => {
+  // WHERE THE DOOR LIVES (Aran, 2026-09-16 15:30): "the block at the top of the
+  // pod page that says WHO RECORDS THIS should have a link to record". It was
+  // under the title, a card away from the names it belongs with, and he read the
+  // Who-records block as the place a recordist starts. So the door is INSIDE
+  // that block now — one place, next to the names, not two.
+  it('puts the door inside the Who records this block, next to the names', async () => {
     const html = (await mountView()).html()
-    expect(html.indexOf('record-links')).toBeGreaterThan(-1)
-    expect(html.indexOf('record-links')).toBeLessThan(html.indexOf('Held back'))
+    const door = html.indexOf('record-links')
+    const whoHeading = html.indexOf('Who records this')
+    expect(door).toBeGreaterThan(-1)
+    expect(whoHeading).toBeGreaterThan(-1)
+    expect(door).toBeGreaterThan(whoHeading)
+    // and inside that card rather than after it: it comes before the character
+    // list the same card carries.
+    expect(door).toBeLessThan(html.indexOf('characters in this script'))
   })
 })
 
