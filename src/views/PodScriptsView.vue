@@ -22,6 +22,9 @@
           target and English — with casting-rule violations marked. Read-only: nothing here edits,
           renders or generates anything.
         </p>
+        <!-- Read-only page, but a recordist can land on it, and every page one
+             can land on carries the door (Aran, 2026-09-16). -->
+        <RecordDoor v-if="courseCode" :course-code="courseCode" :pod-slug="slug || ''" />
       </div>
 
       <!-- ================= COURSE PICKER ================= -->
@@ -375,6 +378,7 @@ import { ref, computed, onMounted, onBeforeUnmount, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import RecordDoor from '@/components/RecordDoor.vue'
 import { buildPlayQueue, nextPlayable, indexOfLine, isPlayable } from '@/lib/podPlayQueue.js'
 import FilterSelect from '@/components/ui/FilterSelect.vue'
 

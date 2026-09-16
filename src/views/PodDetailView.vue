@@ -33,19 +33,18 @@
           </div>
           <!-- THE WAY INTO THE BOOTH, AT THE TOP. Aran, 2026-09-11, from this
                page: "I'm not now seeing a way to open my recording tool… I had to
-               go back to /pods and then open the tab for 'cast' — those links
-               probably could do with being a bit more top of page". One link per
-               human voice cast on this pod, straight under the title where a
-               recordist looks first. Nothing else about the cast moves. -->
-          <div v-if="boothLinks.length" class="mt-2 text-sm flex items-center gap-3 flex-wrap record-links">
-            <span class="text-muted">Record your lines:</span>
-            <router-link
-              v-for="v in boothLinks"
-              :key="v.voiceId"
-              :to="`/r/${v.voiceId}?course=${courseCode}`"
-              class="link-emerald font-medium record-link"
-            >{{ v.name }} →</router-link>
-          </div>
+               go back to /pods and then open the tab for 'cast'". And again on
+               2026-09-16, on a pod with no characters cast at all: "no way I can
+               see to start a recording session". So the door no longer depends on
+               this pod's character list — RecordDoor keys off who is looking and
+               what they are cast to on the COURSE. -->
+          <RecordDoor
+            :course-code="courseCode"
+            :pod-slug="slug"
+            :solo-readers="soloReaders"
+            :cast-voices="castVoices"
+            :roster-voices="rosterVoices"
+          />
         </div>
 
         <!-- HOLD / RELEASE (Tom, 2026-08-23: keep a pod back "until … after all
@@ -396,6 +395,7 @@ import { ref, computed, onMounted, onUnmounted } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
+import RecordDoor from '@/components/RecordDoor.vue'
 import { getLanguageName, useCourses } from '@/composables/useCourses.js'
 import { dirFor } from '@/utils/textDirection.js'
 import { podDisplayTitle } from '@/lib/podDisplayName.js'
@@ -700,6 +700,9 @@ async function setVisibility(next) {
 // generation-time default and never drives the human recording path — the
 // recording plan reads podCast alone (pods-plan.cjs#buildRecordingPlan).
 const podCast = ref({})
+// The course roster ({ voiceId, name, … }) — how a solo reader's voice id gets
+// a human name on this page rather than being printed raw.
+const rosterVoices = ref([])
 
 async function loadCast() {
   try {
@@ -707,6 +710,7 @@ async function loadCast() {
     if (!res.ok) return // read-only nicety; the page works without it
     const body = await res.json()
     podCast.value = body.podCast || {}
+    rosterVoices.value = Array.isArray(body.rosterVoices) ? body.rosterVoices : []
   } catch { /* cast is decoration here — never block the pod view on it */ }
 }
 
@@ -733,14 +737,14 @@ const castVoices = computed(() => {
   return [...byVoice.values()].sort((a, b) => b.characters.length - a.characters.length)
 })
 
-// WHOSE LINKS ARE SHOWN (Tom, 2026-09-12: the link is the artist's identity;
-// an artist never sees another artist's link). The course's editor sees every
-// cast voice's link; a cast artist sees their own and nobody else's.
-const boothLinks = computed(() => {
-  if (typeof isEditorOf === 'function' && isEditorOf(courseCode)) return castVoices.value
-  const mine = new Set((dashboardUser?.value?.casting || [])
-    .filter((c) => c && c.courseCode === courseCode).map((c) => c.voiceId))
-  return castVoices.value.filter((v) => mine.has(v.voiceId))
+// THE POD'S DECLARED SOLO READERS (the health-ladder ruling, 2026-09-16): one
+// line per seed, read solo by each human target voice cast on the course, named
+// on the pod row itself. A solo pod has no characters, so the character cast is
+// empty by design and the door must not depend on it — RecordDoor resolves
+// solo_readers first, then the character cast, then the viewer's own casting.
+const soloReaders = computed(() => {
+  const raw = pod.value?.metadata?.solo_readers
+  return Array.isArray(raw) ? raw.filter((v) => typeof v === 'string' && v) : []
 })
 
 /**
@@ -789,7 +793,7 @@ function readerFor(sent, kind) {
 
 // Auth-gated fetch helper for the pod editing/generation doors. Mirrors the
 // pattern in RemoteControl / Maintenance — fresh access token, attach Bearer.
-const { getAccessToken, isEditorOf, dashboardUser } = useAuth()
+const { getAccessToken } = useAuth()
 async function authedFetch(path, init = {}) {
   const token = await getAccessToken()
   const headers = {
