@@ -1129,6 +1129,61 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       String(a.id).localeCompare(String(b.id))
   })
 
+  // ── THE EXCHANGE AROUND THE LINE ──────────────────────────────────────────
+  //
+  // Aran, 2026-09-16, agreed by Tom: he proofreads all 438 lines of the health
+  // pod on the POD PAGE before recording, because judging a line means seeing it
+  // in context — both speakers — and IN THE BOOTH HE ONLY SEES HIS OWN LINES.
+  // So the surrounding exchange rides the queue: the lines immediately before
+  // and after this one in the SAME pod and the SAME scene, whoever says them.
+  //
+  // IT COSTS NO READ. Every sentence of every pod of this language is already in
+  // `sentences` above; this only indexes what is in hand.
+  const byPod = new Map()
+  for (const s of sentences) {
+    if (!byPod.has(s.pod_id)) byPod.set(s.pod_id, [])
+    byPod.get(s.pod_id).push(s)
+  }
+  for (const arr of byPod.values()) arr.sort((a, b) => (a.global_order - b.global_order) || String(a.id).localeCompare(String(b.id)))
+  const CUE_EACH_SIDE = 2
+
+  /**
+   * The neighbouring lines of the exchange, {before, after}, nearest last in
+   * `before` and nearest first in `after`. Null — never an empty shape — where
+   * there is no exchange to show:
+   *
+   *   - A SOLO-READER POD (pod-solo-readers.cjs) has no other speaker and its
+   *     neighbours are UNRELATED SEEDS. Drawing them as context would assert a
+   *     conversation that does not exist, which is the same untruth the
+   *     solo-reader ruling removed from the proofreading list.
+   *   - A line with nothing either side of it inside its own scene.
+   *
+   * Scene-bounded, because a scene boundary is a change of situation: the last
+   * line of scene 3 is not context for the first line of scene 4.
+   */
+  function exchangeContext(s, pod) {
+    if (isSoloReaderPod(pod)) return null
+    const all = byPod.get(s.pod_id) || []
+    const i = all.findIndex((x) => x.id === s.id)
+    if (i < 0) return null
+    const sameScene = (x) => s.scene_number == null || x.scene_number == null || x.scene_number === s.scene_number
+    const cue = (x) => ({ speaker: x.speaker || null, text: (x.target_text || '').trim(), knownText: x.known_text || null })
+    const before = []
+    for (let k = i - 1; k >= 0 && before.length < CUE_EACH_SIDE; k -= 1) {
+      if (!sameScene(all[k]) ) break
+      if (!(all[k].target_text || '').trim()) continue
+      before.unshift(cue(all[k]))
+    }
+    const after = []
+    for (let k = i + 1; k < all.length && after.length < CUE_EACH_SIDE; k += 1) {
+      if (!sameScene(all[k])) break
+      if (!(all[k].target_text || '').trim()) continue
+      after.push(cue(all[k]))
+    }
+    if (!before.length && !after.length) return null
+    return { before, after }
+  }
+
   // WHICH VOICE ALREADY FILLS EACH LINE'S SLOT.
   //
   // A pod line's own FK is the estate's statement that this slot is filled, and
@@ -1466,6 +1521,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
       // every collapsed copy's. Empty when nothing is linked.
       filledBy: slotVoiceById.get(s.target_audio_id) ? [slotVoiceById.get(s.target_audio_id)] : [],
       rerecordWanted: targetRerecordWanted(s),
+      // WHO SAYS WHAT EITHER SIDE OF THIS LINE. See exchangeContext above.
+      context: exchangeContext(s, pod),
     }
     seen.set(key, line)
     byBucket.get(bucket).push(line)
@@ -1939,6 +1996,12 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // A RERECORD want is a course_audio clip, not a sentence: there is no
         // text row to rewrite.
         canEditText: (line.kind || 'pod') === 'pod',
+        // THE EXCHANGE AROUND THIS LINE — {before:[{speaker,text,knownText}], after:[…]}
+        // — so the booth can draw what is said either side of it. Null on every
+        // kind that has no exchange: a seed, a quarry piece, a re-record want, a
+        // Take G companion, and a solo-reader pod's line, whose neighbours are
+        // unrelated seeds rather than a conversation. See exchangeContext.
+        context: line.context || null,
         // The other sentence rows this ONE line stands for, collapsed by clip
         // identity. The artist sees one line and means one line, so an edit has
         // to move all of them together or the collapse quietly splits in two.
@@ -2015,7 +2078,7 @@ async function fetchAllSentences(db, podIds) {
   try {
     return await pagedRead((from, to) => db
       .from('listening_pod_sentences')
-      .select('id, pod_id, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted, atom_map_fine, takeg_audio_ids')
+      .select('id, pod_id, scene_number, global_order, speaker, target_text, known_text, target_audio_id, rerecord_wanted, atom_map_fine, takeg_audio_ids')
       .in('pod_id', podIds)
       .order('id')
       .range(from, to))
