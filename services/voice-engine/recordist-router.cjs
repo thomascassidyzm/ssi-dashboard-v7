@@ -328,14 +328,37 @@ module.exports = function createRecordistRouter({
       if (scoped && arrival.refused.length) {
         return res.status(403).json({ error: arrival.refused[0].sentence, courseCode: scoped, reason: 'not_cast_no_grant' })
       }
-      const forCourse = (rows) => scoped ? (rows || []).filter((r) => r.courseCode === scoped) : (rows || [])
-      const lines = forCourse(queue.lines)
+      // A POD LINK. /production/:course/pods/:slug's "open Aran" door hands the
+      // booth ?course=<code>&pod=<slug>, and until 2026-09-17 the pod half of
+      // that was decoration: the server answered with the WHOLE course and the
+      // booth drew all of it. For Aran that is 1221 Welsh lines and 1.7MB to
+      // reach the 438-line health pod he was standing in front of — 4-10s of
+      // read and transfer, through a Vercel edge rewrite that answers 502
+      // rather than slowly. The scope he asked for is the scope he gets.
+      //
+      // MATCHED ON THE SLUG OR THE FULL POD ID, because the door has been
+      // written both ways and a link a human already has in a text message
+      // must not stop working.
+      //
+      // THE CUE CONTEXT IS UNAFFECTED: the exchange around each line is built
+      // over the whole language before any of this (recordist-queue.cjs,
+      // exchangeContext), so filtering here cannot take a neighbour away.
+      const podScope = typeof req.query.pod === 'string' && req.query.pod.trim() ? req.query.pod.trim() : null
+      const inPod = (r) => !podScope || r.podSlug === podScope || r.podId === podScope
+      const inScope = (rows) => (rows || [])
+        .filter((r) => (!scoped || r.courseCode === scoped) && inPod(r))
+      const forCourse = inScope
+      const lines = inScope(queue.lines)
       // Scoped counts are counted over the lines on the wire (the booth always
-      // asks includeRecorded=1, so they are the course's whole tally there).
-      const recordedInScope = scoped ? lines.filter((l) => l.recorded).length : queue.recorded
-      const totalInScope = scoped ? lines.length : queue.total
+      // asks includeRecorded=1, so they are the scope's whole tally there).
+      const narrowed = Boolean(scoped || podScope)
+      const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
+      const totalInScope = narrowed ? lines.length : queue.total
       res.json({
         course: scoped,
+        // Echoed back for the same reason maxSeed is: a screen that reports the
+        // scope it ASKED for rather than the one it got is a quiet lie.
+        pod: podScope,
         voiceId: recordist.voiceId,
         displayName: recordist.displayName,
         language: recordist.language,

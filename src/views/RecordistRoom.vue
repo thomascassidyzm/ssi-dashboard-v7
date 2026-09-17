@@ -2245,8 +2245,15 @@ async function load() {
     // booth keeps no router dependency; the language-wide link has no ?course=.
     const courseScope = new URLSearchParams(window.location.search).get('course')
     const courseParam = courseScope ? `&course=${encodeURIComponent(courseScope)}` : ''
+    // A POD LINK — /production/:course/pods/:slug's "open Aran" door. The pod
+    // half used to be read by nobody: the server answered with the whole
+    // course and this page drew all of it, which for Aran was 1221 lines and
+    // 1.7MB to reach the 438-line pod he was standing in front of. Sent, so the
+    // server can narrow the read as well as the draw.
+    const podScope = new URLSearchParams(window.location.search).get('pod')
+    const podParam = podScope ? `&pod=${encodeURIComponent(podScope)}` : ''
     const res = await fetch(
-      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}`,
+      `${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}?includeRecorded=1${seedParam}${courseParam}${podParam}`,
       { headers: { 'ngrok-skip-browser-warning': 'true' } }
     )
     if (res.status === 404) { phase.value = 'unknown'; return }
