@@ -89,11 +89,20 @@
                 the line instead.
               </div>
             </div>
-            <button
-              @click="draftsOnly = !draftsOnly"
-              class="px-3 py-1.5 text-xs rounded whitespace-nowrap draft-filter-btn"
-              :class="draftsOnly ? 'draft-filter-on' : ''"
-            >{{ draftsOnly ? 'Showing drafts only — show all lines' : 'Show only the drafts' }}</button>
+            <div class="flex gap-1 flex-wrap" role="group" aria-label="Which lines to show">
+              <button
+                v-for="opt in [
+                  { key: 'todo', label: 'To do', n: filterCounts.todo },
+                  { key: 'done', label: 'Done', n: filterCounts.done },
+                  { key: 'all', label: 'All', n: filterCounts.all },
+                ]"
+                :key="opt.key"
+                @click="viewFilter = opt.key"
+                class="px-3 py-1.5 text-xs rounded whitespace-nowrap draft-filter-btn"
+                :class="viewFilter === opt.key ? 'draft-filter-on' : ''"
+                :aria-pressed="viewFilter === opt.key"
+              >{{ opt.label }} {{ opt.n }}</button>
+            </div>
           </div>
           <!-- A tick that failed must SAY so: a silently-lost tick is worse than
                no button, because the proofreader stops knowing what they checked. -->
@@ -250,6 +259,19 @@
           </div>
         </div>
 
+        <!-- A filtered script must never pass for the whole script. This banner
+             is outside the draft panel on purpose: it shows whenever a filter
+             is on, including when the draft queue has emptied and the panel
+             above it has gone. -->
+        <div v-if="viewFilter !== 'all'" class="mb-4 draft-panel rounded-lg px-4 py-2 text-xs flex items-center justify-between gap-3 flex-wrap">
+          <span>
+            <strong>Filtered view.</strong>
+            Showing {{ viewFilter === 'done' ? 'lines you have proofread or edited this session' : 'lines awaiting proofread' }}
+            — {{ shownCount }} of {{ sentences.length }} lines in this pod.
+          </span>
+          <button @click="viewFilter = 'all'" class="px-3 py-1 rounded draft-filter-btn whitespace-nowrap">Show the full script ({{ sentences.length }})</button>
+        </div>
+
         <!-- Scenes and sentences -->
         <div v-for="scene in groupedScenes" :key="scene.number" class="mb-8">
           <h2 class="text-sm uppercase tracking-wide text-faint mb-2 flex items-center gap-3">
@@ -284,6 +306,9 @@
                     <!-- Ticked this session: the row stays exactly where it is, so
                          the next line does not jump under the proofreader's finger. -->
                     <div v-else-if="justProofread(sent)" class="proofread-badge">✓ PROOFREAD</div>
+                    <!-- Edited this session: same standing as a tick, and it
+                         stays on screen carrying its own badge. -->
+                    <div v-else-if="justEdited(sent)" class="proofread-badge">✓ EDITED</div>
                     <!-- Target text carries its OWN direction. Arabic under an
                          LTR paragraph pushes trailing neutrals (! . , quotes)
                          to the visual right; `dir` on the painting element is
@@ -477,21 +502,37 @@ function cachedDraftIds() {
 }
 const draftIds = ref(cachedDraftIds())
 const draftsLoaded = ref(false)
-const draftsOnly = ref(route.query.drafts === '1')
+// Which rows the script list shows. The list IS filtered when a proofreader
+// arrives on a ?drafts=1 link, and a filtered list must SAY so: Aran read a
+// 40-line to-do list as the whole pod (2026-09-17) — "I'm only seeing the
+// proofread ones — I thought I had from about scene 17 onwards". Three named
+// modes, their counts always on screen while a filter is on.
+const viewFilter = ref(route.query.drafts === '1' ? 'todo' : 'all')
 
-// Ticked THIS SESSION. draftIds deliberately keeps the id, so a ticked row stays
-// in the filtered list where the proofreader left it instead of vanishing from
-// under the next line; on reload the server simply no longer returns it.
+// Settled THIS SESSION — ticked (✓) or edited. draftIds deliberately KEEPS the
+// id either way, so a settled row stays in the to-do list where the proofreader
+// left it instead of vanishing from under the next line; on reload the server
+// simply no longer returns it. Until 2026-09-17 a save DELETED the id from
+// draftIds, so an edited line vanished from the filtered view while a ticked
+// one stayed — exactly the asymmetry Aran reported.
 const proofreadIds = ref(new Set())
+const editedIds = ref(new Set())
 const proofreadBusyId = ref(null)
 const proofreadError = ref('')
 
 const justProofread = (sent) => proofreadIds.value.has(sent.id)
-const isDraft = (sent) => draftIds.value.has(sent.id) && !proofreadIds.value.has(sent.id)
+const justEdited = (sent) => editedIds.value.has(sent.id)
+const isSettled = (sent) => justProofread(sent) || justEdited(sent)
+const isDraft = (sent) => draftIds.value.has(sent.id) && !isSettled(sent)
 const draftCount = computed(() => sentences.value.filter(s => isDraft(s)).length)
 // Whether this pod HAS a draft queue at all — keeps the panel and its filter
 // button on screen after the last tick, so the filtered list stays readable.
 const podDraftTotal = computed(() => sentences.value.filter(s => draftIds.value.has(s.id)).length)
+// Done = a line that was in this pod's draft queue and has been ticked or
+// edited. Honest about its scope: it counts THIS session's verdicts, because a
+// line settled earlier is no longer in the queue the server hands back.
+const doneCount = computed(() => podDraftTotal.value - draftCount.value)
+const filterCounts = computed(() => ({ todo: draftCount.value, done: doneCount.value, all: sentences.value.length }))
 
 /**
  * The tick: "these words are right". A dedicated door, not the edit PATCH —
@@ -533,7 +574,13 @@ async function loadDrafts() {
 // Group sentences by scene + annotate beat-label separators
 const groupedScenes = computed(() => {
   const byScene = new Map()
-  const rows = draftsOnly.value ? sentences.value.filter(s => draftIds.value.has(s.id)) : sentences.value
+  // 'todo' keeps a just-settled row in place (that is the point of isSettled),
+  // so the next line never jumps under the proofreader's finger.
+  const rows = viewFilter.value === 'all'
+    ? sentences.value
+    : viewFilter.value === 'done'
+      ? sentences.value.filter(s => draftIds.value.has(s.id) && isSettled(s))
+      : sentences.value.filter(s => draftIds.value.has(s.id))
   for (const s of rows) {
     if (!byScene.has(s.scene_number)) {
       byScene.set(s.scene_number, {
@@ -601,6 +648,7 @@ function playPair(targetId, knownId) {
 // Display order, not row order: what you hear must match what you are reading,
 // including when the DRAFT filter is on.
 const orderedSentences = computed(() => groupedScenes.value.flatMap(s => s.sentences))
+const shownCount = computed(() => orderedSentences.value.length)
 const playableTargets = computed(() =>
   orderedSentences.value.map(s => s.target_audio_id).filter(Boolean)
 )
@@ -885,11 +933,20 @@ async function saveSentence(sent) {
     if ('target_audio_id' in unlinked) sent.target_audio_id = null
     if ('known_audio_id' in unlinked) sent.known_audio_id = null
     // The save WAS the proofread — the server cleared target_text_draft in the
-    // same update, so drop the badge here rather than making them reload.
+    // same update, so drop the DRAFT badge here rather than making them reload.
+    // The id STAYS in draftIds: dropping it filtered the row out of the to-do
+    // view mid-edit, which is why edited lines vanished while ticked ones
+    // stayed. editedIds is what takes the badge off and marks the row done.
     if (body.sentence.target_text_draft === false && draftIds.value.has(sent.id)) {
-      const next = new Set(draftIds.value)
-      next.delete(sent.id)
-      draftIds.value = next
+      const next = new Set(editedIds.value)
+      next.add(sent.id)
+      editedIds.value = next
+      // The cross-remount cache must not resurrect the DRAFT badge on a line
+      // this session already settled.
+      try {
+        const cached = [...cachedDraftIds()].filter(id => id !== sent.id)
+        sessionStorage.setItem(DRAFT_CACHE_KEY, JSON.stringify(cached))
+      } catch { /* non-fatal */ }
     }
     editingId.value = null
   } catch (err) {
