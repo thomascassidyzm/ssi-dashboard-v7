@@ -37,6 +37,16 @@ start_unit() {
 [ -f .env ] || die "no .env in $(pwd) — the fixture needs SUPABASE_URL/SUPABASE_SERVICE_KEY"
 [ -x node_modules/.bin/playwright ] || die "no playwright under node_modules"
 
+# RESET FIRST, BEFORE ANY QUEUE READ. fixture.cjs writes straight to the database from its
+# own process; the API caches the recordist queue in ITS process for 60s (recordist-queue-
+# cache.cjs). Health-curling the queue and THEN resetting warms the cache with the state the
+# reset is about to destroy, which is exactly how 2026-09-17's nightly went red ("the test
+# voice's queue is not fresh: total=8 recorded=8"). Resetting first also means the nightly's
+# restart of cs-long-staging-api below starts a process whose cache cannot be pre-reset.
+node e2e/booth-artists-day/fixture.cjs reset || die "could not reset the e2e_booth fixture"
+LINE_COUNT=$(node -e 'process.stdout.write(String(require("./e2e/booth-artists-day/fixture.cjs").LINES.length))') \
+  || die "could not read the fixture's line count"
+
 if [ "${REFRESH_STAGING:-0}" = 1 ]; then
   sh e2e/booth-artists-day/ensure-staging.sh "$STAGING_DIR" "$(pwd)" || exit 1
   want=$(cd "$STAGING_DIR" && git rev-parse --short=8 HEAD)
@@ -56,7 +66,9 @@ fi
 curl -sf -o /dev/null "$API/api/recording/voice/$VOICE" || die "staging API at $API is not answering for $VOICE (is cs-long-staging-api up? has the fixture been seeded?)"
 curl -sf -o /dev/null "$SPA/r/$VOICE" || die "staging SPA at $SPA is not answering (is cs-long-staging-spa up?)"
 
-node e2e/booth-artists-day/fixture.cjs reset || die "could not reset the e2e_booth fixture"
+# The reset is already done (above, BEFORE anything read the queue). All that is left is to
+# be sure the LIVE API agrees with it rather than serving a cached read from before it.
+sh e2e/booth-artists-day/wait-queue-fresh.sh "$API" "$VOICE" "$LINE_COUNT" || exit 1
 mkdir -p "$SHOTS"
 node_modules/.bin/playwright test --config=e2e/booth-artists-day/playwright.config.js
 rc=$?
