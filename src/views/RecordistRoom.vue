@@ -2420,10 +2420,23 @@ watch(() => props.voiceId, load, { immediate: true })
   border: 1px solid transparent;
 }
 .safety-banner strong { font-size: 0.92rem; font-weight: 600; }
-.safety-banner span { color: inherit; opacity: 0.85; }
-.safety-banner.waiting { background: rgba(56, 132, 255, 0.13); border-color: rgba(56, 132, 255, 0.4); color: #cfe0ff; }
-.safety-banner.risk { background: rgba(220, 78, 65, 0.15); border-color: rgba(220, 78, 65, 0.5); color: #ffd3ce; }
-.safety-banner.refused { background: rgba(232, 160, 42, 0.14); border-color: rgba(232, 160, 42, 0.45); color: #ffe2b0; }
+/* No opacity on the detail line. "Nothing is lost if you close this page" is
+   the sentence that decides whether an artist closes the tab on a session's
+   work, so it is not decoration to be dimmed — `strong` already carries the
+   hierarchy. */
+.safety-banner span { color: inherit; }
+/* OPAQUE BACKGROUNDS, ONE PAIR PER THEME. These were translucent tints that
+   relied on the dark canvas showing through: in light mode `.recordist` is
+   white (see the light block at the bottom of this file), so the "113 takes
+   still to upload" banner resolved to #cfe0ff text on a #e5eeff wash — 1.15:1,
+   which is what Aran saw on 2026-09-18 and described as lilac on lilac, only
+   readable by selecting it. An opaque background cannot be undone by whatever
+   the banner happens to be sitting on, so the contrast below is the contrast
+   that ships. Every pair here clears WCAG AA (all are above 8:1); the test
+   RecordistRoom.bannerContrast.test.js recomputes them and fails if one drops. */
+.safety-banner.waiting { background: #15243f; border-color: #3b6fb5; color: #dbe9ff; }
+.safety-banner.risk { background: #3a1512; border-color: #d0574c; color: #ffdad5; }
+.safety-banner.refused { background: #3a2a0d; border-color: #e8a02a; color: #ffe9c2; }
 /* Small, muted, above everything and out of the flow of the work: it is the
    door, not part of the job. */
 .rc-nav {
@@ -2887,4 +2900,9 @@ kbd {
 :root[data-theme="light"] .ctl-back,
 :root[data-theme="light"] .ctl-again,
 :root[data-theme="light"] .ctl-pause:not(.paused) { border-color: var(--line); }
+/* The safety banner again, for white. Same three-way distinction, same hues,
+   inverted weight: deep ink on a pale wash instead of pale ink on a deep one. */
+:root[data-theme="light"] .safety-banner.waiting { background: #dbe9fb; border-color: #2563eb; color: #14306e; }
+:root[data-theme="light"] .safety-banner.risk { background: #fbe2df; border-color: #b91c1c; color: #7a1512; }
+:root[data-theme="light"] .safety-banner.refused { background: #fbeed6; border-color: #b45309; color: #6b3c06; }
 </style>
