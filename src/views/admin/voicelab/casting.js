@@ -38,11 +38,49 @@ export function slotKey (role) {
 }
 
 /**
- * ENGLISH IS FIXED, SHOWN AS SET AND NOT AS A CHOICE. Tom's clone is the male
- * voice, Gemma the female, Aran's clone the second male if needed. The screen
- * renders the English row as settled fact — no picker. What is ACTUALLY cast is
- * still read from the registry and shown; if it disagrees with this it is a
- * discrepancy to report, never a cast to rewrite silently.
+ * THE POD VOICE, PICKABLE IN ITS OWN RIGHT (Tom, 2026-09-19: every row, every
+ * role, editable). A MALE or FEMALE cast still writes the pod pick as well —
+ * that coupling is his model of one voice per language per role and is NOT
+ * decoupled here — but a pod voice that should DIFFER from the phrase voice
+ * now has its own target, so he never has to miscast a course to fix a pod.
+ *
+ * A pod role carries no `slot`: it writes a pick and nothing else.
+ */
+export const POD_ROLES = Object.freeze([
+  { key: 'podFemale', label: 'Pod female', slot: null, gender: 'f', rank: null, pod: 'f' },
+  { key: 'podMale', label: 'Pod male', slot: null, gender: 'm', rank: null, pod: 'm' },
+])
+
+/** A role that writes only the pod pick — no voice_language_roles slot behind it. */
+export function isPodOnly (role) {
+  return Boolean(role) && !role.slot
+}
+
+/** The staged entry for a role, wherever it lives: a slot, or a pod pick. */
+export function stagedEntry (staged, role) {
+  if (!role) return null
+  if (isPodOnly(role)) return (staged?.picks || {})[role.pod] || null
+  return (staged?.slots || {})[slotKey(role)] || null
+}
+
+/** Is THIS candidate the one staged into this role? */
+export function isStagedOn (staged, role, candidate) {
+  const e = stagedEntry(staged, role)
+  if (!e || e.action !== 'cast' && e.action !== 'pick') return false
+  if (isPodOnly(role)) return Boolean(e.voice) && labVoiceId(e.voice) === candidate.voiceId
+  return e.voiceId === candidate.voiceId
+}
+
+/**
+ * THE HOUSE ENGLISH CAST — A DEFAULT HE CAN RESTORE IN ONE TAP, NOT A LOCK.
+ *
+ * Tom's clone is the male voice, Gemma the female, Aran's clone the second male.
+ * Until 2026-09-19 this froze the English row: no picker, no clear link, the
+ * real cast hidden behind these names. He looked at that screen and said "we
+ * need to be able to make changes in it - I can't edit any of the voice
+ * assignments here", so ENGLISH IS NOW CAST LIKE EVERY OTHER LANGUAGE and this
+ * record is what stageHouseEnglish() puts back when he wants the house cast
+ * again. Nothing here gates a picker; if it ever does again, that is the bug.
  */
 export const FIXED_ENGLISH = Object.freeze({
   code: 'eng',
@@ -51,6 +89,7 @@ export const FIXED_ENGLISH = Object.freeze({
   male2: { name: 'aran_english_003', voiceId: 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe', who: "Aran's clone" },
 })
 
+/** English, the language the house cast belongs to — a label for the reset button, never a gate. */
 export function isFixedEnglish (code) {
   return String(code || '') === FIXED_ENGLISH.code
 }
@@ -133,14 +172,19 @@ export function filterShelf (voices, { gender = '', accent = null, query = '' } 
  * wrong gender is not offered the slot; a voice of unknown gender is offered
  * both, because the vendor's blank is not evidence.
  */
-export function rolesFor (candidate, lang) {
+export function rolesFor (candidate, lang, podRow = null) {
   if (!candidate || !lang) return []
   const g = candidate.gender || null
-  return ROLES.filter((r) => {
+  const fits = (r) => !(g && r.gender && r.gender !== g)
+  const slots = ROLES.filter((r) => {
     if (r.slot === 'guide') return (lang.knownCourses || 0) > 0
-    if (g && r.gender !== g) return false
-    return true
+    return fits(r)
   })
+  // The pod's own targets appear only where there IS a pod, and never on a
+  // language whose pod is a human recording.
+  if (!podRow || podRow.human) return slots
+  const genders = new Set((podRow.slots || []).map((s) => s.gender))
+  return [...slots, ...POD_ROLES.filter((r) => genders.has(r.pod) && fits(r))]
 }
 
 /**
@@ -154,13 +198,14 @@ export function rolesFor (candidate, lang) {
  */
 export function stageRole (staged, role, candidate, { podRow = null, langName = '' } = {}) {
   const next = { slots: { ...(staged?.slots || {}) }, picks: { ...(staged?.picks || {}) } }
-  const key = slotKey(role)
-  next.slots[key] = {
-    action: 'cast',
-    slot: { slot: role.slot, gender: role.gender || undefined, rank: role.rank },
-    voiceId: candidate.voiceId,
-    voiceName: candidate.name,
-    label: `${langName ? langName + ' · ' : ''}${role.label.toLowerCase()}`,
+  if (!isPodOnly(role)) {
+    next.slots[slotKey(role)] = {
+      action: 'cast',
+      slot: { slot: role.slot, gender: role.gender || undefined, rank: role.rank },
+      voiceId: candidate.voiceId,
+      voiceName: candidate.name,
+      label: `${langName ? langName + ' · ' : ''}${role.label.toLowerCase()}`,
+    }
   }
   if (role.pod && podRow && !podRow.human) {
     const current = (podRow.slots || []).find((s) => s.gender === role.pod)
@@ -176,10 +221,12 @@ export function stageRole (staged, role, candidate, { podRow = null, langName = 
 
 export function stageClear (staged, role, { podRow = null, langName = '' } = {}) {
   const next = { slots: { ...(staged?.slots || {}) }, picks: { ...(staged?.picks || {}) } }
-  next.slots[slotKey(role)] = {
-    action: 'clear',
-    slot: { slot: role.slot, gender: role.gender || undefined, rank: role.rank },
-    label: `${langName ? langName + ' · ' : ''}${role.label.toLowerCase()}`,
+  if (!isPodOnly(role)) {
+    next.slots[slotKey(role)] = {
+      action: 'clear',
+      slot: { slot: role.slot, gender: role.gender || undefined, rank: role.rank },
+      label: `${langName ? langName + ' · ' : ''}${role.label.toLowerCase()}`,
+    }
   }
   if (role.pod && podRow && !podRow.human) {
     const current = (podRow.slots || []).find((s) => s.gender === role.pod)
@@ -192,8 +239,32 @@ export function stageClear (staged, role, { podRow = null, langName = '' } = {})
 
 export function unstageRole (staged, role) {
   const next = { slots: { ...(staged?.slots || {}) }, picks: { ...(staged?.picks || {}) } }
-  delete next.slots[slotKey(role)]
+  if (!isPodOnly(role)) delete next.slots[slotKey(role)]
   if (role.pod) delete next.picks[role.pod]
+  return next
+}
+
+/**
+ * RESET ENGLISH TO THE HOUSE CAST, IN ONE TAP — Tom's clone, Gemma, Aran's
+ * clone, staged like any other change so he still presses save himself. Roles
+ * already holding the house voice are left alone, so the button never stages a
+ * write that changes nothing; when everything already matches it stages nothing
+ * and the save button stays dark.
+ */
+export function stageHouseEnglish (staged, { podRow = null, langName = 'English', facts = null } = {}) {
+  let next = { slots: { ...(staged?.slots || {}) }, picks: { ...(staged?.picks || {}) } }
+  for (const key of ['male', 'female', 'male2']) {
+    const role = ROLES.find((r) => r.key === key)
+    const want = FIXED_ENGLISH[key]
+    const candidate = { voiceId: want.voiceId, name: want.name, engine: 'cartesia', kind: 'cartesia' }
+    const slotOk = Boolean(facts && facts[key] && facts[key].voiceId === want.voiceId)
+    const podSlot = role.pod && podRow && !podRow.human ? (podRow.slots || []).find((x) => x.gender === role.pod) : null
+    const podOk = !role.pod || !podSlot || Boolean(podSlot.pick && labVoiceId(podSlot.pick) === want.voiceId)
+    if (slotOk && podOk) continue
+    next = stageRole(next, role, candidate, { podRow, langName })
+    if (slotOk) delete next.slots[slotKey(role)]
+    if (podOk && role.pod) delete next.picks[role.pod]
+  }
   return next
 }
 
@@ -279,7 +350,6 @@ export function podFacts (podRow) {
 /** One sentence for the row: what a cold reader needs to know about this language's casting. */
 export function rowSummary (lang, podRow) {
   if (!lang) return ''
-  if (isFixedEnglish(lang.code)) return "Fixed: Tom's clone (male), Gemma (female), Aran's clone (second male)."
   if (lang.human) return 'Human recordings only — no synthetic voice is ever cast here.'
   if (lang.status === 'knownonly') return 'Nobody is taught this language; only its guide voice is cast.'
   const f = castFacts(lang)
