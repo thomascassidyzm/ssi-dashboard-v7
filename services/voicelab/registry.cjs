@@ -469,6 +469,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
         consent: voice ? consent.describe(voice) : null,
         notes: role ? role.notes : null,
         assignedBy: role ? role.assigned_by : null,
+        ...(role ? catalogueFactsById(role.voice_id, catalogue) : {}),
       })
     }
   }
@@ -614,7 +615,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       // `pace` rides along on the candidate too, so the numbers are visible on
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
-      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v), consent: consent.describe(v) }))
+      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v), consent: consent.describe(v), ...catalogueFactsById(v.voice_id, catalogue) }))
       .concat(cartesiaCandidates(base, catalogue, roles)))
       .slice(0, 80),
   }
@@ -773,8 +774,49 @@ function cartesiaCandidates (code, catalogue, roles) {
       gender: v.gender || null,
       registered: false,
       owned: Boolean(v.owner),
+      ...catalogueFacts(v),
     }))
     .filter((c) => !roles.some((r) => r.voice_id === c.voiceId))
+}
+
+/**
+ * WHAT THE PICKER FILTERS ON (Tom, 2026-09-19: "I really need to be able to
+ * select from Cartesia by Language + gender + accent").
+ *
+ * params.cjs already lifts these off Cartesia's /voices — the native accent,
+ * its locale, the country, the vendor's own description and tagline, and the
+ * non-native accents the voice can be steered into. Until now the registry
+ * dropped all of it on the way to the screen, which is why forty rows of
+ * "Skylar, Daniel, Gemma" could not be chosen between. Carried through as
+ * facts, never interpreted here: a null stays a null and the screen says
+ * "accent not listed" rather than guessing.
+ */
+function catalogueFacts (v) {
+  if (!v) return {}
+  return {
+    accent: v.accent || null,
+    accentLocale: v.accentLocale || null,
+    country: v.country || null,
+    description: v.description || null,
+    tagline: v.tagline || null,
+    otherAccents: Array.isArray(v.otherAccents) ? v.otherAccents : [],
+  }
+}
+
+/**
+ * The same facts for a REGISTERED Cartesia voice (a `voices` row), looked up
+ * by id across the catalogue. A voice already cast into a slot is a `voices`
+ * row, not a catalogue entry, so without this the cast voice is the one row
+ * on the screen with no accent beside it.
+ */
+function catalogueFactsById (voiceId, catalogue) {
+  const bare = String(voiceId || '').replace(/^cartesia_/, '')
+  if (!bare || !catalogue) return {}
+  for (const list of Object.values(catalogue)) {
+    const hit = (list || []).find((v) => v.id === bare)
+    if (hit) return catalogueFacts(hit)
+  }
+  return {}
 }
 
 /**
@@ -1002,4 +1044,4 @@ async function cachedBuild (db, opts = {}) {
 /** The casting slots this registry knows about. 'phrase' is the default in the DB. */
 const SLOTS = Object.freeze(['phrase', 'guide'])
 
-module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
+module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, catalogueFacts, catalogueFactsById, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }

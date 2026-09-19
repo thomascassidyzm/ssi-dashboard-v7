@@ -79,3 +79,28 @@ describe('the English voice list — the per-language registry', () => {
     expect(guide.every((c) => !/^cartesia_stock-/.test(c.voiceId))).toBe(true)
   })
 })
+
+describe('the picker facts — language + gender + accent (Tom, 2026-09-19)', () => {
+  const catalogue = {
+    en: [
+      { id: 'brit-1', name: 'Gemma', gender: 'f', owner: false, accent: 'british', accentLocale: 'en-GB', country: 'GB', description: 'Warm and clear.', tagline: 'Narrator', otherAccents: ['australian'] },
+      { id: 'bare-1', name: 'Bare', gender: null, owner: true },
+    ],
+  }
+
+  it('carries accent, locale, country, description, tagline and other accents onto a catalogue candidate', () => {
+    const c = registry.cartesiaCandidates('eng', catalogue, []).find((x) => x.voiceId === 'cartesia_brit-1')
+    expect(c).toMatchObject({ accent: 'british', accentLocale: 'en-GB', country: 'GB', description: 'Warm and clear.', tagline: 'Narrator', otherAccents: ['australian'] })
+  })
+
+  it('leaves a null where the vendor said nothing, rather than inventing an accent', () => {
+    const c = registry.cartesiaCandidates('eng', catalogue, []).find((x) => x.voiceId === 'cartesia_bare-1')
+    expect(c.accent).toBeNull()
+    expect(c.otherAccents).toEqual([])
+  })
+
+  it('finds the same facts for a registered voice by its cartesia_ id', () => {
+    expect(registry.catalogueFactsById('cartesia_brit-1', catalogue).accent).toBe('british')
+    expect(registry.catalogueFactsById('cartesia_nobody', catalogue)).toEqual({})
+  })
+})
