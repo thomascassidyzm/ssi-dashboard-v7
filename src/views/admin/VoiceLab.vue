@@ -176,7 +176,8 @@ const showB = ref(false)
       </div>
     </div>
 
-    <div v-else-if="loading" class="muted">Loading the lab…</div>
+    <!-- The casting screen does not wait on /params; only the render-path views do. -->
+    <div v-else-if="loading && mode !== 'casting'" class="muted">Loading the lab…</div>
 
     <!-- CASTING — the front door. Needs no /params: what is cast is worth
          knowing on a backend whose render path is unavailable; the spend

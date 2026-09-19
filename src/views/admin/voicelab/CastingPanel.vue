@@ -319,7 +319,8 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
     <p v-if="error" class="vl-err">{{ error }}</p>
     <p v-else-if="loading" class="vl-muted">Reading every language's cast…</p>
 
-    <table v-else class="cast-table">
+    <div v-else class="cast-scroll">
+    <table class="cast-table">
       <thead>
         <tr><th>Language</th><th>Male</th><th>Female</th><th>Second male</th><th>Guide</th><th>Pod voice</th></tr>
       </thead>
@@ -501,6 +502,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
         </template>
       </tbody>
     </table>
+    </div>
   </section>
 </template>
 
@@ -515,6 +517,8 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
 .cast-search.small { min-width: 12rem; font-size: 0.78rem; padding: 0.3rem 0.55rem; }
 .cast-gaps { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8125rem; color: var(--muted); }
 
+/* On a narrow screen the table scrolls sideways inside its own box; the page never does. */
+.cast-scroll { overflow-x: auto; }
 .cast-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
 .cast-table th {
   text-align: left; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.08em;
