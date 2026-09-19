@@ -132,15 +132,21 @@
         />
 
         <div class="field-block">
-          <label>Stage playlists <span class="hint">highest-numbered stage is the eternal hold · per-stage rounds box overrides the default duration · ⓘ = explainer (plays INSTEAD of the translation; sentences without one fall back to EN in that slot)</span></label>
+          <label>Stage playlists <span class="hint">one visit per stage, the top stage takes whatever is left, then the sentence retires out of the lap · per-stage rounds box overrides the default duration · ⓘ = explainer (plays INSTEAD of the translation; sentences without one fall back to EN in that slot)</span></label>
+          <p v-if="podLadder" class="ladder-summary" :class="{ 'ladder-summary--bad': podLadder.overrun }">
+            <strong>{{ podLadder.total }} visits</strong> per sentence:
+            <span v-for="(r, i) in podLadder.rows" :key="r.stage">{{ i ? ' · ' : '' }}stage {{ r.stage }} ×{{ r.visits }}</span>
+            — then it completes and leaves the lap for good. It stays playable in the Pods tab.
+            <em v-if="podLadder.overrun">The stages below the top already use more visits than the retirement number — lower their rounds, or raise it.</em>
+          </p>
           <div class="stage-grid">
             <template v-for="(stage, idx) in podsStageKeys" :key="stage">
               <div class="stage-row">
                 <span class="stage-label">
                   stage {{ stage }}
-                  <span v-if="idx === podsStageKeys.length - 1" class="stage-eternal">eternal</span>
+                  <span v-if="idx === podsStageKeys.length - 1" class="stage-eternal">last rung</span>
                 </span>
-                <span v-if="idx < podsStageKeys.length - 1" class="stage-rounds" title="Pod-rounds in this stage before promoting. Empty = the default stage duration below.">
+                <span v-if="idx < podsStageKeys.length - 1" class="stage-rounds" title="Visits this stage gets before promoting. Empty = the default stage duration below.">
                   <input
                     type="number" min="1"
                     :placeholder="String(drafts.pods.stageDuration ?? 5)"
@@ -148,7 +154,7 @@
                     @input="setStageRounds(stage, $event.target.value)"
                   /><span class="stage-rounds-suffix">r</span>
                 </span>
-                <span v-else class="stage-rounds eternal-spacer">∞</span>
+                <span v-else class="stage-rounds eternal-spacer" :title="'The last rung takes whatever the retirement number leaves, then the sentence retires.'">{{ podLadder ? '×' + podLadder.rows[podLadder.rows.length - 1].visits : '—' }}</span>
                 <PlaylistEditor :modelValue="getStageList(stage)" @update:modelValue="setStageList(stage, $event)" :compact="true" />
                 <button
                   class="stage-audition-btn"
@@ -176,7 +182,9 @@
           <NumField v-model="drafts.pods.roundInterval" label="Pod fires every" suffix="rounds"
             help="1 = every round (default). 2 = every other round, 3 = every third, etc. Stretches every pod stage proportionally — pod-rounds only tick on actual fires." />
           <NumField v-model="drafts.pods.stageDuration" label="Default stage duration" suffix="pod-rounds"
-            help="Fallback pod-rounds for stages without their own rounds value (set per-stage in the rows above — e.g. Phase 0 = 2, Phase 1 = 3). The highest stage is eternal." />
+            help="Fallback visits for stages without their own rounds value (set per-stage in the rows above). The highest stage ignores this — it takes whatever the retirement number leaves." />
+          <NumField v-model="drafts.pods.retireAfterVisits" label="Sentence retires after" suffix="visits"
+            help="Tom, 2026-09-19: stages 1-8 once each, the last rung twice, ten visits in all, then the sentence leaves the lap for good so the listening stops growing. Counts laps the sentence actually appears in — a skipped session burns no visit. 0 hands the length back to the per-stage rounds." />
           <NumField v-model="drafts.pods.gapSuperTightMs" label="Gap: super tight" suffix="ms"
             help="known→target, target→target inside one chunk." />
           <NumField v-model="drafts.pods.gapTightMs" label="Gap: tight" suffix="ms"
@@ -403,6 +411,7 @@ async function loadCourseList() {
 function onResetRow(key, d) {
   if (key === 'pods' && d.pods) {
     if (d.pods.roundInterval == null) d.pods.roundInterval = 1
+    if (d.pods.retireAfterVisits == null) d.pods.retireAfterVisits = 10
     if (d.pods.podActivationRound == null) {
       d.pods.podActivationRound = d.listening?.podActivationRound ?? 6
     }
@@ -417,6 +426,40 @@ const podsStageKeys = computed(() => {
   if (!sp) return []
   return Object.keys(sp).map(Number).filter(n => !Number.isNaN(n)).sort((a, b) => a - b)
 })
+/**
+ * THE VISIT LADDER, exactly as the runtime resolves it (Tom, 2026-09-19:
+ * "each stage should repeat once - for simplicity apart from Stage 9 / Which
+ * should retire after maybe 2 repeats … each 'sentence' goes through a total
+ * of 10 'visits'").
+ *
+ * Mirrors podStageFor / podLadderTotalRounds / podCohortHasCompleted in the
+ * player's usePodLapScheduler: every stage below the top one serves its own
+ * rounds value (or the uniform default), the TOP rung absorbs whatever is left
+ * up to `retireAfterVisits`, and the sentence then leaves the sequence for
+ * good. Drift between this page and the player is the failure this exists to
+ * prevent, so change the two together.
+ */
+const podLadder = computed(() => {
+  const keys = podsStageKeys.value
+  if (!keys.length) return null
+  const uniform = Number(drafts.pods?.stageDuration) || 5
+  const sd = drafts.pods?.stageDurations || {}
+  const retire = Number(drafts.pods?.retireAfterVisits)
+  const rows = []
+  let used = 0
+  for (let i = 0; i < keys.length - 1; i++) {
+    const stage = keys[i]
+    const v = Number(sd[String(stage)] ?? sd[stage] ?? uniform) || uniform
+    rows.push({ stage, visits: v })
+    used += v
+  }
+  const top = keys[keys.length - 1]
+  const capped = Number.isFinite(retire) && retire >= 1
+  const topVisits = capped ? Math.floor(retire) - used : (Number(sd[String(top)] ?? sd[top] ?? uniform) || uniform)
+  rows.push({ stage: top, visits: topVisits, top: true })
+  return { rows, total: used + topVisits, capped, overrun: topVisits < 1 }
+})
+
 function getStageList(stage) {
   if (!drafts.pods) return []
   const sp = drafts.pods.stagePlaylist || {}
@@ -572,6 +615,10 @@ async function playArc() {
 function backfillDefaults(d) {
   if (d.pods) {
     if (d.pods.roundInterval == null) d.pods.roundInterval = 1
+    // TEN VISITS (Tom, 2026-09-19). A row saved before this knob existed is
+    // bound to the shipped 10, which is also what the runtime falls back to —
+    // the page and the player say the same number.
+    if (d.pods.retireAfterVisits == null) d.pods.retireAfterVisits = 10
     if (d.pods.podActivationRound == null) {
       // Field used to live on drafts.listening — migrate the value across
       // so existing courses keep their tuned activation round when the
@@ -757,6 +804,15 @@ const L1PlaylistEditor = defineComponent({
 </script>
 
 <style scoped>
+.ladder-summary {
+  margin: 0 0 8px;
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.85;
+}
+.ladder-summary--bad { color: #b3261e; opacity: 1; }
+.ladder-summary em { display: block; font-style: normal; font-weight: 600; }
+
 .listening-admin {
   padding: 1.5rem;
   max-width: none;
