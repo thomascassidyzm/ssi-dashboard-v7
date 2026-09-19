@@ -46,6 +46,7 @@ import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import LabCrumbs from '@/components/LabCrumbs.vue'
 import { probe, labBase, useCloudBackend } from './voicelab/labApi'
 import LanguagesPanel from './voicelab/LanguagesPanel.vue'
+import PodVoicesPanel from './voicelab/PodVoicesPanel.vue'
 import PlayPanel from './voicelab/PlayPanel.vue'
 import ParametersPanel from './voicelab/ParametersPanel.vue'
 import RunPanel from './voicelab/RunPanel.vue'
@@ -60,7 +61,7 @@ const TABS = [
 ]
 
 /**
- * 'languages' | 'play' | 'engineering'.
+ * 'languages' | 'pods' | 'play' | 'engineering'.
  *
  * LANGUAGES is the landing layer as of 2026-08-28. Tom asked for the lab to be
  * "a single place to check configured voices per language", and the first thing
@@ -130,6 +131,10 @@ const showB = ref(false)
         <h1 class="page-title">Voice Lab</h1>
         <div class="mode-switch">
           <button :class="{ on: mode === 'languages' }" @click="mode = 'languages'">Languages</button>
+          <!-- POD VOICES is a SIBLING of Languages, not a fold of it (Tom,
+               2026-09-19): a pod voice is chosen per LANGUAGE, by him, and is
+               a different decision from the course-material cast next door. -->
+          <button :class="{ on: mode === 'pods' }" @click="mode = 'pods'">Pod voices</button>
           <button :class="{ on: mode === 'play' }" @click="mode = 'play'">Play</button>
           <button :class="{ on: mode === 'engineering' }" @click="mode = 'engineering'">Engineering</button>
         </div>
@@ -178,6 +183,12 @@ const showB = ref(false)
            for that and still shows what is cast. It needs only the consent
            wording from it — see LanguagesPanel's prop comment. -->
       <LanguagesPanel :params="params" />
+    </section>
+
+    <!-- Like Languages, this needs no /params: knowing which pod voices are
+         picked is useful on a backend whose render path is unavailable. -->
+    <section v-if="mode === 'pods'">
+      <PodVoicesPanel />
     </section>
 
     <section v-if="params && mode === 'play'">

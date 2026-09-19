@@ -208,6 +208,30 @@ export const api = {
     return final || {}
   },
 
+  // ── POD VOICES — the lane Tom picks each LANGUAGE's pod voice in ─────────
+  //
+  // `podVoices` SPENDS NOTHING: one row per language with the pod cast as it
+  // stands and, where the pod has already been rendered, a free clip of each
+  // cast voice straight from the estate's bucket. A held pod has no audio and
+  // says so — nothing here renders one to fill the gap.
+  //
+  // `podSamples` spends nothing either; `preparePodSamples` is the one call on
+  // this path that spends, on the SAME pod sentence for every candidate in a
+  // language, capped at 12 per press and refused on top of that by the lab's
+  // daily character ceiling. It writes lab sample clips, never pod audio.
+  //
+  // `pickPodVoice` writes ONE app_config row. It renders nothing — and it is
+  // what phase8 refuses to generate pod audio without.
+  podVoices: ({ force = false } = {}) => call(`/api/voicelab/pod-voices${force ? '?refresh=1' : ''}`),
+  podSamples: (language, voiceIds = []) =>
+    call(`/api/voicelab/pod-voices/${encodeURIComponent(language)}/samples?voices=${encodeURIComponent(voiceIds.join(','))}`),
+  preparePodSamples: (language, voiceIds, { force = false } = {}) =>
+    call(`/api/voicelab/pod-voices/${encodeURIComponent(language)}/samples/prepare`, { method: 'POST', body: { voiceIds, force } }),
+  pickPodVoice: (language, { gender, voice, expect }) =>
+    call(`/api/voicelab/pod-voices/${encodeURIComponent(language)}/pick`, { method: 'PUT', body: { gender, voice, expect } }),
+  clearPodVoice: (language, { gender }) =>
+    call(`/api/voicelab/pod-voices/${encodeURIComponent(language)}/pick?gender=${encodeURIComponent(gender)}`, { method: 'DELETE' }),
+
   // PER-VOICE NATURAL PACE. `pace` is the reading surface — measured from clips
   // that already exist, so it spends nothing. `nudgePace` writes ONE column:
   // the human's correction. The measurement itself is deliberately not
