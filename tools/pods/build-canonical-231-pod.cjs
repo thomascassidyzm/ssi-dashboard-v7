@@ -82,6 +82,13 @@ const TITLE = arg('title')
  */
 const TARGET_LANG_EN = arg('target-lang-en')
 const DRAFT_SIDE = (arg('draft') || 'none').toLowerCase()       // none | known  (see PROVISIONAL below)
+/**
+ * Carry the target source's own draft/approval state rather than stamping every copied
+ * row the same. A line lifted from a settled sibling is settled; a line lifted from a
+ * sibling that is itself still an unverified machine draft is still an unverified
+ * machine draft, and saying otherwise is how a draft gets mistaken for finished text.
+ */
+const CARRY_TARGET_DRAFT = process.argv.includes('--carry-target-draft')
 
 if (!COURSE || !TARGET_SOURCE || (!KNOWN_SOURCE && !KNOWN_DRAFTS)) {
   console.error('FAILED: --course, --target-source and one of --known-source/--known-drafts are required')
@@ -113,11 +120,16 @@ async function loadSide(db, spec) {
   const podId = bits.join(':')
   if (!['known', 'target'].includes(side)) throw new Error(`source "${spec}" must end in :known or :target`)
   const { rows } = await db.query(
-    `SELECT global_order, known_text, target_text FROM listening_pod_sentences WHERE pod_id = $1 ORDER BY global_order`, [podId])
+    `SELECT global_order, known_text, target_text, target_text_draft, target_text_approved_at, target_text_approved_by
+       FROM listening_pod_sentences WHERE pod_id = $1 ORDER BY global_order`, [podId])
   if (!rows.length) throw new Error(`source pod has no rows: ${podId}`)
   const out = new Map()
-  for (const r of rows) out.set(r.global_order, side === 'known' ? r.known_text : r.target_text)
-  return { podId, side, text: out }
+  const draft = new Map()
+  for (const r of rows) {
+    out.set(r.global_order, side === 'known' ? r.known_text : r.target_text)
+    draft.set(r.global_order, { draft: r.target_text_draft, approved_at: r.target_text_approved_at, approved_by: r.target_text_approved_by })
+  }
+  return { podId, side, text: out, draft }
 }
 
 ;(async () => {
@@ -209,8 +221,10 @@ async function loadSide(db, spec) {
       // rendered until a verifier has read it — so it carries the flag, and
       // target_text_review records which side the draft is actually on. Flagged in the
       // report as a deliberate stretch of the column's name, not an accident.
-      target_text_draft: DRAFT_SIDE === 'known',
-      draft_side: DRAFT_SIDE === 'known' ? 'known' : null,
+      target_text_draft: DRAFT_SIDE === 'known'
+        || (CARRY_TARGET_DRAFT && target.side === 'target' && !!(target.draft && target.draft.get(g) && target.draft.get(g).draft)),
+      draft_side: DRAFT_SIDE === 'known' ? 'known'
+        : (CARRY_TARGET_DRAFT && target.side === 'target' && target.draft && target.draft.get(g) && target.draft.get(g).draft ? 'target' : null),
     })
   }
 
@@ -222,7 +236,8 @@ async function loadSide(db, spec) {
     known_lang: course.known_lang, target_lang: course.target_lang, course_status: course.status,
     reference: REFERENCE, known_source: `${known.podId}:${known.side}`, target_source: `${target.podId}:${target.side}`,
     substitute: SUBSTITUTE, name_lines: LANGUAGE_NAME_LINES, target_lang_en: TARGET_LANG_EN || null,
-    rows: plan.length, drafts: plan.filter(p => p.target_text_draft).length, problems: problems.length,
+    rows: plan.length, drafts: plan.filter(p => p.target_text_draft).length,
+    carry_target_draft: CARRY_TARGET_DRAFT, problems: problems.length,
   }
 
   if (problems.length) {
@@ -259,7 +274,11 @@ async function loadSide(db, spec) {
          VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12::jsonb)`,
         [p.id, p.pod_id, p.scene_number, p.sentence_number, p.global_order, p.speaker, p.beat_label, p.glue_to_next,
           p.known_text, p.target_text, p.target_text_draft,
-          p.draft_side ? JSON.stringify({ draft_side: p.draft_side, note: 'machine draft is on the KNOWN side; target_text_draft carries the flag because there is no known_text_draft column' }) : null])
+          p.draft_side === 'known'
+          ? JSON.stringify({ draft_side: 'known', note: 'machine draft is on the KNOWN side; target_text_draft carries the flag because there is no known_text_draft column' })
+          : p.draft_side === 'target'
+            ? JSON.stringify({ draft_side: 'target', note: `unverified draft carried forward from ${target.podId}` })
+            : null])
       if (res.rowCount !== 1) throw new Error(`${p.id}: insert affected ${res.rowCount} rows; rolled back`)
     }
 

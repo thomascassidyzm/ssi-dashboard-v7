@@ -1,0 +1,36 @@
+{
+  "note": "Which sibling course each of the 40 courses' two sides is taken from, for the 2026-09-19 canonical-231 build. A side is TRANSLATED only where the estate has never rendered that language for this story; everywhere else it is COPIED, because the canonical 231 already exists in a sibling course and retranslating it would be spending tokens to produce a second opinion nobody asked for. The five sentences that name the language being learnt are re-rendered per course either way.",
+  "reference": "deu_for_eng:pod-1",
+  "already_built": {
+    "note": "These 17 already carry a complete 231-sentence held pod on slug `unrecorded` from the stalled August 2026 migration. Nothing to build; the outstanding work is the independent verifier over their remaining machine drafts.",
+    "slug": "unrecorded",
+    "courses": ["bul_for_eng","cat_for_eng","dan_for_eng","ell_for_eng","est_for_eng","fas_for_eng","heb_for_eng","hye_for_eng","lav_for_eng","lit_for_eng","nep_for_eng","nor_for_eng","pol_for_eng","swa_for_eng","tha_for_eng","tur_for_eng","ukr_for_eng"]
+  },
+  "build": [
+    {"course":"eng_for_ara","knownSource":"ara_for_eng:pod-1:target","knownLang":"Arabic","script":"arabic","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_deu","knownSource":"deu_for_eng:pod-1:target","knownLang":"German","script":"latin","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_fra","knownSource":"fra_for_eng:pod-1:target","knownLang":"French","script":"latin","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_hin","knownSource":"hin_for_eng:pod-1:target","knownLang":"Hindi","script":"devanagari","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_ita","knownSource":"ita_for_eng:pod-1:target","knownLang":"Italian","script":"latin","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_jpn","knownSource":"jpn_for_eng:pod-1:target","knownLang":"Japanese","script":"japanese","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_kor","knownSource":"kor_for_eng:pod-1:target","knownLang":"Korean","script":"hangul","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_por","knownSource":"por_for_eng:pod-1:target","knownLang":"Portuguese","script":"latin","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+    {"course":"eng_for_zho","knownSource":"zho_for_eng:pod-1:target","knownLang":"Chinese","script":"han","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"both"},
+
+    {"course":"deu_for_jpn","knownSource":"jpn_for_eng:pod-1:target","knownLang":"Japanese","script":"japanese","targetSource":"deu_for_eng:pod-1:target","targetLangEn":"German","substitute":"known"},
+    {"course":"fra_for_jpn","knownSource":"jpn_for_eng:pod-1:target","knownLang":"Japanese","script":"japanese","targetSource":"fra_for_eng:pod-1:target","targetLangEn":"French","substitute":"known"},
+    {"course":"ita_for_jpn","knownSource":"jpn_for_eng:pod-1:target","knownLang":"Japanese","script":"japanese","targetSource":"ita_for_eng:pod-1:target","targetLangEn":"Italian","substitute":"known"},
+    {"course":"spa_for_jpn","knownSource":"jpn_for_eng:pod-1:target","knownLang":"Japanese","script":"japanese","targetSource":"spa_for_eng:pod-1:target","targetLangEn":"Spanish","substitute":"known"},
+    {"course":"zho_for_jpn","knownSource":"jpn_for_eng:pod-1:target","knownLang":"Japanese","script":"japanese","targetSource":"zho_for_eng:pod-1:target","targetLangEn":"Chinese","substitute":"known"},
+
+    {"course":"cat_for_spa","knownSource":"spa_for_eng:pod-1:target","knownLang":"Spanish","script":"latin","targetSource":"cat_for_eng:unrecorded:target","targetLangEn":"Catalan","substitute":"known","carryTargetDraft":true},
+    {"course":"eus_for_spa","knownSource":"spa_for_eng:pod-1:target","knownLang":"Spanish","script":"latin","targetSource":"eus_for_eng:pod-1:target","targetLangEn":"Basque","substitute":"known"},
+
+    {"course":"eng_for_ben","translateKnown":true,"knownLang":"Bengali","script":"bengali","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"target"},
+    {"course":"eng_for_guj","translateKnown":true,"knownLang":"Gujarati","script":"gujarati","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"target"},
+    {"course":"eng_for_pan","translateKnown":true,"knownLang":"Punjabi","script":"gurmukhi","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"target"},
+    {"course":"eng_for_sin","translateKnown":true,"knownLang":"Sinhala","script":"sinhala","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"target"},
+    {"course":"eng_for_tam","translateKnown":true,"knownLang":"Tamil","script":"tamil","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"target"},
+    {"course":"eng_for_urd","translateKnown":true,"knownLang":"Urdu","script":"arabic","targetSource":"deu_for_eng:pod-1:known","targetLangEn":"English","substitute":"target"}
+  ]
+}

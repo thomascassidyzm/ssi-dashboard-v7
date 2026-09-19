@@ -28,6 +28,7 @@ const SCRIPTS = {
   sinhala: /^[\p{Script=Sinhala}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   tamil: /^[\p{Script=Tamil}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   devanagari: /^[\p{Script=Devanagari}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
+  hangul: /^[\p{Script=Hangul}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   thai: /^[\p{Script=Thai}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
   any: /^[\s\S]*$/u,
 }
