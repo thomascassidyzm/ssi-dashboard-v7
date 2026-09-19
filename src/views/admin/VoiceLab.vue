@@ -42,9 +42,11 @@
  * being the entrance, which is a different thing from stopping existing.
  */
 import { ref, computed } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import BlastRadiusBanner from '@/components/admin/BlastRadiusBanner.vue'
 import LabCrumbs from '@/components/LabCrumbs.vue'
 import { probe, labBase, useCloudBackend } from './voicelab/labApi'
+import CastingPanel from './voicelab/CastingPanel.vue'
 import LanguagesPanel from './voicelab/LanguagesPanel.vue'
 import PodVoicesPanel from './voicelab/PodVoicesPanel.vue'
 import PlayPanel from './voicelab/PlayPanel.vue'
@@ -61,16 +63,25 @@ const TABS = [
 ]
 
 /**
- * 'languages' | 'pods' | 'play' | 'engineering'.
+ * CASTING IS THE FRONT DOOR, AND THE ONLY DOOR TOM SEES (2026-09-19).
  *
- * LANGUAGES is the landing layer as of 2026-08-28. Tom asked for the lab to be
- * "a single place to check configured voices per language", and the first thing
- * that should meet you is therefore the state of the estate's casting, not a
- * render form. Play remains exactly as it was — the 2026-08-07 ruling that put
- * Play in front of Engineering is untouched; Languages goes in front of both,
- * and nothing was removed to make room for it.
+ * Tom: "I think we need a Fable re-design based on an amalgamation of the
+ * first 2 tabs: languages and play … and retiring engineering". So the tab
+ * strip is gone. The screen is CastingPanel — one row per language, the
+ * picker and the audition in the same place, one press to save.
+ *
+ * NOTHING WAS DELETED. Engineering (Parameters, Tests, Experiments, Estate),
+ * the previous Languages lane (which still owns cloning and consent) and Play
+ * keep working behind `?view=engineering|legacy|play|pods` for whoever needs
+ * them — a query param, not a tab, so they never compete for his attention.
  */
-const mode = ref('languages')
+const route = useRoute()
+const router = useRouter()
+const VIEWS = ['casting', 'engineering', 'legacy', 'play', 'pods']
+const mode = computed(() => (VIEWS.includes(String(route.query.view)) ? String(route.query.view) : 'casting'))
+function setView (v) {
+  router.replace({ query: { ...route.query, view: v === 'casting' ? undefined : v } })
+}
 
 const tab = ref('parameters')
 const params = ref(null)
@@ -129,15 +140,7 @@ const showB = ref(false)
       <LabCrumbs :trail="[{ label: 'Labs', to: '/admin/labs' }, { label: 'Voice Lab' }]" />
       <div class="title-row">
         <h1 class="page-title">Voice Lab</h1>
-        <div class="mode-switch">
-          <button :class="{ on: mode === 'languages' }" @click="mode = 'languages'">Languages</button>
-          <!-- POD VOICES is a SIBLING of Languages, not a fold of it (Tom,
-               2026-09-19): a pod voice is chosen per LANGUAGE, by him, and is
-               a different decision from the course-material cast next door. -->
-          <button :class="{ on: mode === 'pods' }" @click="mode = 'pods'">Pod voices</button>
-          <button :class="{ on: mode === 'play' }" @click="mode = 'play'">Play</button>
-          <button :class="{ on: mode === 'engineering' }" @click="mode = 'engineering'">Engineering</button>
-        </div>
+        <span class="hdr-chip">one row per language · pick by ear · one press to save</span>
 
         <!-- The spend, as a meter rather than a sentence: the bar is the fact
              that there is a ceiling, and the numbers are where you stand. -->
@@ -175,22 +178,20 @@ const showB = ref(false)
 
     <div v-else-if="loading" class="muted">Loading the lab…</div>
 
-    <!-- PLAY — the front door. -->
-    <!-- Languages does not need /params, so it renders even on a backend whose
-         render path is unavailable: knowing what is cast is useful regardless. -->
-    <section v-if="mode === 'languages'">
-      <!-- `params` may be null on a backend without the lab; the panel is built
-           for that and still shows what is cast. It needs only the consent
-           wording from it — see LanguagesPanel's prop comment. -->
-      <LanguagesPanel :params="params" />
+    <!-- CASTING — the front door. Needs no /params: what is cast is worth
+         knowing on a backend whose render path is unavailable; the spend
+         meter above simply stays empty there. -->
+    <section v-if="mode === 'casting'">
+      <CastingPanel :params="params" />
     </section>
 
-    <!-- Like Languages, this needs no /params: knowing which pod voices are
-         picked is useful on a backend whose render path is unavailable. -->
+    <!-- The previous lanes, reachable by query param only. -->
+    <section v-if="mode === 'legacy'">
+      <LanguagesPanel :params="params" />
+    </section>
     <section v-if="mode === 'pods'">
       <PodVoicesPanel />
     </section>
-
     <section v-if="params && mode === 'play'">
       <PlayPanel :params="params" />
     </section>
@@ -228,9 +229,18 @@ const showB = ref(false)
       </section>
     </template>
 
-    <section v-show="(mode === 'engineering' && tab === 'estate') || (!params && !loading)">
+    <section v-show="mode === 'engineering' && tab === 'estate'">
       <EstatePanels />
     </section>
+
+    <!-- The back doors, in one quiet line at the foot of the page. -->
+    <p class="back-doors">
+      <button v-if="mode !== 'casting'" @click="setView('casting')">← casting</button>
+      <span v-else>advanced:</span>
+      <button v-if="mode !== 'engineering'" @click="setView('engineering')">engineering bench</button>
+      <button v-if="mode !== 'legacy'" @click="setView('legacy')">clone a voice · consent · the old languages view</button>
+      <button v-if="mode !== 'play'" @click="setView('play')">play</button>
+    </p>
   </div>
 </template>
 
@@ -243,12 +253,8 @@ const showB = ref(false)
 .lab { padding: 1.5rem 2rem 4rem; max-width: none; margin: 0 auto; }
 .page-title { font-size: 1.75rem; margin: 0 0 0.25rem; letter-spacing: 0.04em; }
 .title-row { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
-.mode-switch { display: flex; border: 1px solid var(--surface-3); border-radius: 999px; overflow: hidden; }
-.mode-switch button {
-  background: none; border: none; color: var(--muted); font-family: inherit;
-  font-size: 0.8125rem; padding: 0.4rem 1.1rem; cursor: pointer;
-}
-.mode-switch button.on { background: #ec4899; color: #fff; }
+.back-doors { margin: 2rem 0 0; font-size: 0.72rem; color: var(--muted); display: flex; gap: 0.9rem; align-items: center; flex-wrap: wrap; }
+.back-doors button { background: none; border: none; color: var(--muted); text-decoration: underline; cursor: pointer; font: inherit; font-size: 0.72rem; padding: 0; }
 .spend { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--muted); font-size: 0.75rem; }
 .spend-bar { width: 5rem; height: 4px; border-radius: 999px; background: var(--surface-3); overflow: hidden; }
 .spend-bar i { display: block; height: 100%; background: #ec4899; }
