@@ -50,20 +50,9 @@ if (!COURSE || !DRAFTS) {
 }
 const abs = (p) => (path.isAbsolute(p) ? p : path.join(REPO, p))
 
-// Expected-script gate. Ranges are deliberately permissive about shared punctuation
-// and digits, and strict about the letters — the failure this catches is a model
-// answering in the wrong language entirely, not a stray character.
-const SCRIPTS = {
-  latin: /^[\p{Script=Latin}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  cyrillic: /^[\p{Script=Cyrillic}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  greek: /^[\p{Script=Greek}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  arabic: /^[\p{Script=Arabic}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  hebrew: /^[\p{Script=Hebrew}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  // Japanese and Chinese mix scripts by design, so these are unions, not single blocks.
-  japanese: /^[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧ー]*$/u,
-  han: /^[\p{Script=Han}\p{M}\p{N}\p{P}\p{Zs}\p{Sc}‐-‧]*$/u,
-  any: /^[\s\S]*$/u,
-}
+// Expected-script gate. The table lives in ./expected-script.cjs so this drafter and
+// the canonical-231 pod builder cannot drift apart on what a script name means.
+const { SCRIPTS } = require('./expected-script.cjs')
 if (!SCRIPTS[SCRIPT]) {
   console.error(`FAILED: --script=${SCRIPT} unknown; one of ${Object.keys(SCRIPTS).join(', ')}`)
   process.exit(1)
