@@ -85,10 +85,11 @@ vi.mock('../../services/supabase', () => {
   }
 })
 vi.mock('../../lib/podEngine', () => ({
-  composeSentenceArc: () => [],
-  loadStage0ClipMaps: async () => ({ glossMap: new Map(), targetClipMap: new Map() }),
+  buildMainStage: () => [],
+}))
+vi.mock('../../lib/podAtoms', () => ({
+  loadPodAtomClipMaps: async () => ({ glossMap: new Map(), targetClipMap: new Map() }),
   resolveAtoms: () => [],
-  DEFAULT_STAGE0: { tiers: [] },
 }))
 
 const CASTING = {

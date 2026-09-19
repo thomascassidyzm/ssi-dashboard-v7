@@ -112,7 +112,7 @@ const LABS = [
     key: 'listening',
     title: 'Listening Lab',
     to: '/admin/labs/listening',
-    description: 'Layer 1 seed listening, Layer 2 pods, the Stage-0 breakdown ladder, and the full 0→9 arc preview.',
+    description: 'Layer 1 seed listening, Layer 2 pods, and the full Stage 1-N arc preview.',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/><path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/></svg>',
   },
   {
@@ -133,7 +133,7 @@ const LABS = [
     key: 'pods',
     title: 'Pod Lab',
     to: '/admin/labs/pods',
-    description: 'Audition one pod line\'s whole acquisition arc — the Stage-0 breakdown then every whole-sentence stage — assembled by the real @ssi/core engine. Tune the ladder, hear it, cast it.',
+    description: 'Audition one pod line\'s whole acquisition arc — every whole-sentence stage, 1 onwards — assembled by the real @ssi/core engine. Tune the ladder, hear it, cast it.',
     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/><line x1="8" y1="9" x2="16" y2="9"/><line x1="8" y1="13" x2="13" y2="13"/></svg>',
   },
   {

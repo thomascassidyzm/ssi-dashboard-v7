@@ -6,8 +6,8 @@
         <div class="admin-head-titles">
           <h1>Listening config</h1>
           <p class="sub">
-            One home for all listening behaviour — Layer 1 (seeds), Stage 0 (pod
-            breakdown), Stages 1-9 (pod escalation). Global: every course, every
+            One home for all listening behaviour — Layer 1 (seeds) and Stages
+            1-N (pod escalation). Global: every course, every
             learner. Changes propagate to new sessions within ~5 min (cache TTL).
           </p>
         </div>
@@ -80,61 +80,11 @@
         </div>
       </section>
 
-      <!-- ==================== STAGE 0 (pod breakdown ladder) ==================== -->
-      <section v-if="drafts.stage0" class="config-row">
-        <RowHeader
-          title="Layer 2 · Stage 0 — breakdown ladder"
-          desc="The whole-part-whole tiers a pod sentence climbs BEFORE Stages 1-9: whole take → per-atom 'X means Y' → fused pairs → whole intention. Plays only where a sentence resolves to atoms."
-          :row="rowMap.stage0"
-          :dirty="isDirty('stage0')"
-          :saving="savingKey === 'stage0'"
-          :error="rowErrors.stage0"
-          @save="save('stage0')"
-          @reset="reset('stage0')"
-        />
-
-        <div class="field-block">
-          <label>Tiers <span class="hint">in play order · granularity = how the sentence is chunked · visits = times this tier repeats · T-reps = target reps after the known (1 = symmetric T·M·T) · fuse = pair fusion gap (ms, 'pairs' only) · reorder with ↑↓</span></label>
-          <div class="tier-grid">
-            <div v-for="(tier, idx) in stage0Tiers" :key="idx" class="tier-row">
-              <span class="tier-idx">0:{{ idx + 1 }}</span>
-              <input class="tier-key" v-model="tier.key" placeholder="key" title="Tier key — cosmetic label for the badge" />
-              <select class="tier-gran" v-model="tier.granularity" title="Chunking granularity">
-                <option v-for="g in GRANULARITIES" :key="g" :value="g">{{ g }}</option>
-              </select>
-              <label class="tier-num" title="Times this tier repeats">visits
-                <input type="number" min="1" v-model.number="tier.visits" />
-              </label>
-              <label class="tier-num" title="Target reps AFTER the known (1 = symmetric T·M·T)">T-reps
-                <input type="number" min="0" v-model.number="tier.targetRepeats" />
-              </label>
-              <label class="tier-num" title="Pair fusion gap (ms) — only meaningful for 'pairs' granularity. Blank = use the gaps matrix.">fuse
-                <input type="number" min="0" :value="tier.fusionGap ?? ''" @input="setTierFusion(idx, $event.target.value)" placeholder="—" />
-              </label>
-              <button class="tier-move" :disabled="idx === 0" @click="moveStage0Tier(idx, -1)" title="Move up">↑</button>
-              <button class="tier-move" :disabled="idx === stage0Tiers.length - 1" @click="moveStage0Tier(idx, 1)" title="Move down">↓</button>
-              <button class="tier-remove" :disabled="stage0Tiers.length <= 1" @click="removeStage0Tier(idx)" title="Remove tier">×</button>
-            </div>
-            <button class="stage-insert-btn" @click="addStage0Tier()">+ add tier</button>
-          </div>
-        </div>
-
-        <div class="field-grid">
-          <NumField v-model="drafts.stage0.gaps.afterCue" label="Gap: after cue" suffix="ms" help="After the 'breaking it down' cue, before the first breakdown." />
-          <NumField v-model="drafts.stage0.gaps.beforeMeans" label="Gap: before means" suffix="ms" help="Live cast→known voice change before the merged 'means …' clip. 0 = tight." />
-          <NumField v-model="drafts.stage0.gaps.targetMeaning" label="Gap: target→meaning" suffix="ms" help="Between an atom's target slice and its meaning." />
-          <NumField v-model="drafts.stage0.gaps.betweenRepeats" label="Gap: between repeats" suffix="ms" help="Between repeated target reps within a tier." />
-          <NumField v-model="drafts.stage0.gaps.betweenChunks" label="Gap: between chunks" suffix="ms" help="Between atoms/chunks in the breakdown." />
-          <NumField v-model="drafts.stage0.gaps.fusionPairs" label="Gap: fusion pairs" suffix="ms" help="Default gap inside a fused pair (per-tier 'fuse' overrides this)." />
-          <NumField v-model="drafts.stage0.gaps.betweenIntentions" label="Gap: between intentions" suffix="ms" help="Between whole-intention takes." />
-        </div>
-      </section>
-
       <!-- ==================== FULL-ARC PREVIEW ==================== -->
       <section v-if="selectedCourseCode && coursePodSentences.length" class="config-row">
         <RowHeader
           title="Full escalation preview"
-          desc="Hear one real sentence climb the WHOLE arc — Stage-0 tiers → Stages 1-N — composed with the shared learner composer, so the preview can't drift from delivery. Uses the live UNSAVED config (edit above, hear it here)."
+          desc="Hear one real sentence climb the whole arc — Stages 1-N — composed with the shared learner composer, so the preview can't drift from delivery. Uses the live UNSAVED config (edit above, hear it here)."
         />
         <div class="arc-controls">
           <label class="arc-pick">Sentence
@@ -146,10 +96,9 @@
               button-class="arc-pick-select"
             />
           </label>
-          <button class="arc-play" :disabled="!arcIndexed.length || arcPlayingIdx >= 0" @click="playArc">▶ Play {{ showFullArc ? 'full arc' : 'breakdown' }} · {{ arcIndexed.length }} plays</button>
+          <button class="arc-play" :disabled="!arcIndexed.length || arcPlayingIdx >= 0" @click="playArc">▶ Play full arc · {{ arcIndexed.length }} plays</button>
           <button class="arc-stop" :disabled="arcPlayingIdx < 0" @click="stopArc">■ Stop</button>
-          <label class="arc-fulltoggle"><input type="checkbox" v-model="showFullArc" /> show Stages 1-N</label>
-          <span v-if="!arcPlays.length" class="arc-empty">No playable arc — this sentence has no resolvable atoms/clips.</span>
+          <span v-if="!arcPlays.length" class="arc-empty">No playable arc — this sentence has no target audio, or no stage playlist is configured.</span>
         </div>
         <div class="arc-rows">
           <div v-for="(row, r) in arcRows" :key="r" class="arc-row">
@@ -158,7 +107,7 @@
               <span
                 v-for="{ p, i } in row.plays" :key="i"
                 class="arc-chip"
-                :class="[String(p.stageLabel).includes('0·') ? 'arc-chip--s0' : 'arc-chip--sn', { playing: arcPlayingIdx === i }]"
+                :class="['arc-chip--sn', { playing: arcPlayingIdx === i }]"
                 :title="`${p.stageLabel} · ${p.role} · ${p.speed}×`"
               >
                 <span class="arc-chip-label">{{ p.label }}</span>
@@ -247,7 +196,7 @@
 import { ref, computed, onMounted, defineComponent, h } from 'vue'
 import LabCrumbs from '@/components/LabCrumbs.vue'
 import { useAuth } from '../composables/useAuth'
-import { composeArc, normSurface } from '../lib/podArcCompose'
+import { composeArc } from '../lib/podArcCompose'
 import { fetchServingPodId } from '../lib/servingPod'
 import CoursePicker from '../components/CoursePicker.vue'
 import { useAlgorithmConfig, NumField, NumListField, RowHeader } from './admin/algorithmConfigShared'
@@ -269,8 +218,7 @@ const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
 
 // Shared algorithm_config plumbing — drafts, dirty-tracking, keyed save.
 // onLoaded / onReset backfill the listening-specific defaults (pods, L1 cup
-// knobs, stage0 gaps) that may be absent on rows saved before those fields
-// existed.
+// knobs) that may be absent on rows saved before those fields existed.
 const {
   rows, loading, loadError, savingKey, rowErrors,
   drafts, rowMap, isDirty, reset, save, loadAll,
@@ -284,9 +232,6 @@ const selectedCourseCode = ref('')
 const courseLoading = ref(false)
 const courseLegos = ref([])           // is_new only, ordered by seed,lego_index
 const coursePodSentences = ref([])    // listening_pod_sentences rows, ordered by global_order
-// Stage-0 clip maps for the full-arc preview (loaded per course in loadCoursePreview).
-const stage0GlossMap = ref(new Map())       // lego_key → merged "means" clip id
-const stage0TargetClipMap = ref(new Map())  // target surface → "[atom]" slice clip id
 // Full-arc preview state.
 const arcSentenceIdx = ref(0)               // index into coursePodSentences
 const arcPlayingIdx = ref(-1)               // currently-sounding play, -1 = idle
@@ -421,22 +366,6 @@ async function loadCoursePreview(courseCode) {
       console.warn('[preview] pod load failed:', podErr)
     }
 
-    // Stage-0 clip maps for the full-arc preview — the SAME course-wide lookups
-    // the learner's composer uses (lego_key→merged "means" clip, target surface→
-    // "[atom]" slice clip), so the preview resolves atoms identically.
-    stage0GlossMap.value = new Map()
-    stage0TargetClipMap.value = new Map()
-    const [legoRes, atomRes] = await Promise.all([
-      sb.from('pod_legos').select('lego_key, explainer_audio_id').eq('course_code', courseCode),
-      sb.from('course_audio').select('id, text').eq('course_code', courseCode).eq('role', 'pod_explainer').like('text', '[atom] %'),
-    ])
-    for (const l of (legoRes.data || [])) if (l.explainer_audio_id) stage0GlossMap.value.set(l.lego_key, l.explainer_audio_id)
-    for (const a of (atomRes.data || [])) {
-      // Normalised key (case-insensitive, accent-preserving) so the composer's
-      // normSurface lookup resolves capitalised atoms to lowercase slices.
-      const surface = normSurface(a.text.slice('[atom] '.length))
-      if (!stage0TargetClipMap.value.has(surface)) stage0TargetClipMap.value.set(surface, a.id)
-    }
   } catch (e) {
     console.warn('[preview] load failed:', e)
   } finally {
@@ -567,39 +496,9 @@ function removeStage(stage) {
 }
 
 // ============================================================================
-// Stage 0 — structural tier editor (mirrors the stage0 algorithm_config shape
-// consumed by the learner: tiers[] in play order, each with a granularity +
-// visit/repeat counts. The runtime reads the key COUNT, not a fixed 5.)
-// ============================================================================
-const GRANULARITIES = ['atoms', 'pairs', 'intention']
-const stage0Tiers = computed(() => drafts.stage0?.tiers || [])
-function addStage0Tier() {
-  if (!drafts.stage0) return
-  if (!Array.isArray(drafts.stage0.tiers)) drafts.stage0.tiers = []
-  drafts.stage0.tiers.push({ key: 'tier' + (drafts.stage0.tiers.length + 1), granularity: 'atoms', visits: 1, targetRepeats: 1, fusionGap: null })
-}
-function removeStage0Tier(idx) {
-  if (drafts.stage0?.tiers) drafts.stage0.tiers.splice(idx, 1)
-}
-function moveStage0Tier(idx, dir) {
-  const t = drafts.stage0?.tiers
-  if (!t) return
-  const j = idx + dir
-  if (j < 0 || j >= t.length) return
-  const [m] = t.splice(idx, 1)
-  t.splice(j, 0, m)
-}
-function setTierFusion(idx, raw) {
-  const t = drafts.stage0?.tiers?.[idx]
-  if (!t) return
-  const v = String(raw).trim()
-  t.fusionGap = v === '' ? null : Number(v)
-}
-
-// ============================================================================
-// Full 0→9 arc preview — compose the WHOLE escalation (Stage-0 tiers → Stages
-// 1-N) for one real sentence with the SHARED composer, then play it through.
-// Uses the live DRAFT config, so structural edits show immediately.
+// Full arc preview — compose the whole escalation (Stages 1-N) for one real
+// sentence with the SHARED composer, then play it through. Uses the live DRAFT
+// config, so structural edits show immediately.
 // ============================================================================
 // One row per pod sentence — the value stays the numeric index, and the label
 // is byte-for-byte what the <option> rendered. A row holds text, not elements,
@@ -615,19 +514,14 @@ const arcPlays = computed(() => {
   const s = arcSentence.value
   if (!s) return []
   try {
-    return composeArc(s, stage0GlossMap.value, stage0TargetClipMap.value, drafts.stage0, drafts.pods?.stagePlaylist || {})
+    return composeArc(s, drafts.pods?.stagePlaylist || {})
   } catch (e) {
     console.warn('[arc] compose failed:', e)
     return []
   }
 })
-// In configs we care about the Stage-0 BREAKDOWN tiers (per intention). Stages
-// 1-N are just the whole phrase repeated — hidden by default (toggle to show).
-const showFullArc = ref(false)
 const arcIndexed = computed(() =>
-  arcPlays.value
-    .map((p, i) => ({ p, i }))                                  // keep global index for the highlight
-    .filter(x => showFullArc.value || String(x.p.stageLabel).includes('0·'))
+  arcPlays.value.map((p, i) => ({ p, i }))                      // keep global index for the highlight
 )
 // Group displayed plays into rows by stage/tier (one row per tier line).
 const arcRows = computed(() => {
@@ -702,14 +596,6 @@ function backfillDefaults(d) {
   // DEFAULT_SEED_PLAYLIST in useLayer1Scheduler.ts (V1 → known → V2 → V1·2×).
   if (!Array.isArray(d.listening.seedPlaylist) || !d.listening.seedPlaylist.length) {
     d.listening.seedPlaylist = [...DEFAULT_SEED_PLAYLIST]
-  }
-  // Stage 0: ensure the gaps matrix + tiers array exist so the editor binds
-  // to defined values (a row saved before a gap key existed backfills here).
-  if (d.stage0) {
-    if (!d.stage0.gaps || typeof d.stage0.gaps !== 'object') d.stage0.gaps = {}
-    const gd = { afterCue: 500, beforeMeans: 0, fusionPairs: 200, betweenChunks: 1000, targetMeaning: 500, betweenRepeats: 600, betweenIntentions: 500 }
-    for (const k in gd) if (d.stage0.gaps[k] == null) d.stage0.gaps[k] = gd[k]
-    if (!Array.isArray(d.stage0.tiers)) d.stage0.tiers = []
   }
 }
 
@@ -1149,36 +1035,6 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   background: rgba(0, 0, 0, 0.15);
   border-radius: 6px;
 }
-/* Stage 0 tier editor */
-.tier-grid { display: flex; flex-direction: column; gap: 0.4rem; }
-.tier-row {
-  display: flex; gap: 0.6rem; align-items: center; flex-wrap: wrap;
-  padding: 0.4rem 0.5rem; background: rgba(0, 0, 0, 0.15); border-radius: 6px;
-}
-.tier-idx {
-  font-family: var(--font-mono, ui-monospace, Menlo, monospace);
-  font-size: 0.72rem; color: var(--accent); min-width: 30px;
-}
-.tier-key { width: 130px; }
-.tier-gran { min-width: 92px; }
-.tier-num {
-  display: inline-flex; align-items: center; gap: 0.3rem;
-  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.04em;
-  color: var(--color-paper-dim, var(--muted));
-}
-.tier-num input { width: 48px; }
-.tier-move, .tier-remove {
-  width: 26px; height: 26px; border-radius: 6px;
-  border: 1px solid var(--surface-3); background: transparent;
-  color: var(--muted); cursor: pointer; font-size: 0.8rem;
-}
-.tier-move:hover:not(:disabled) { border-color: var(--accent-2); color: var(--accent-2); }
-.tier-remove:hover:not(:disabled) { border-color: #c0564a; color: #c0564a; }
-.tier-move:disabled, .tier-remove:disabled { opacity: 0.3; cursor: not-allowed; }
-.tier-row input, .tier-row select {
-  background: rgba(0,0,0,0.25); border: 1px solid var(--surface-3);
-  border-radius: 5px; color: var(--ink); padding: 0.25rem 0.4rem; font-size: 0.8rem;
-}
 /* Full-arc preview */
 .arc-controls { display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap; margin-bottom: 0.6rem; }
 .arc-pick { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; color: var(--muted); }
@@ -1190,7 +1046,6 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .arc-play:hover:not(:disabled) { border-color: var(--accent-2); color: var(--accent-2); }
 .arc-play:disabled, .arc-stop:disabled { opacity: 0.35; cursor: not-allowed; }
 .arc-empty { font-size: 0.78rem; color: var(--muted); }
-.arc-fulltoggle { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.78rem; color: var(--muted); cursor: pointer; }
 .arc-rows { display: flex; flex-direction: column; gap: 0.35rem; }
 .arc-row { display: grid; grid-template-columns: 88px 1fr; align-items: start; gap: 0.5rem; }
 .arc-row-label {
@@ -1204,21 +1059,11 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
   padding: 0.2rem 0.45rem; border-radius: 5px; font-size: 0.74rem;
   border: 1px solid transparent; max-width: 260px;
 }
-.arc-chip--s0 { background: rgba(120, 90, 160, 0.18); }
 .arc-chip--sn { background: rgba(70, 120, 90, 0.16); }
 .arc-chip.playing { border-color: var(--accent-2); box-shadow: 0 0 0 2px rgba(0,0,0,0.2); }
 .arc-chip-stage { font-family: var(--font-mono, ui-monospace, Menlo, monospace); color: var(--accent); font-size: 0.68rem; }
 .arc-chip-label { color: var(--ink); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .arc-chip-speed { color: var(--muted); font-size: 0.66rem; }
-.stage0-link {
-  margin-left: auto; align-self: center; white-space: nowrap;
-  font-family: ui-monospace, "IBM Plex Mono", Menlo, monospace;
-  font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.06em;
-  color: var(--accent); text-decoration: none;
-  border: 1px solid var(--surface-3); border-radius: 999px; padding: 0.4rem 0.85rem;
-  transition: border-color 0.15s, color 0.15s;
-}
-.stage0-link:hover { border-color: var(--accent); color: var(--ink); }
 
 .stage-audition-btn {
   width: 28px; height: 28px;

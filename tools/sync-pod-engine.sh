@@ -36,7 +36,7 @@ read -r -d '' BANNER <<'BANNER_EOF' || true
 BANNER_EOF
 
 mkdir -p "$DST"
-for f in stage0Sequence.ts podStageComposition.ts; do
+for f in atomMap.ts podStageComposition.ts; do
   { printf '%s\n\n' "$BANNER"; cat "$SRC/$f"; } > "$DST/$f"
   echo "synced $f"
 done

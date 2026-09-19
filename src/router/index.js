@@ -662,9 +662,9 @@ const routes = [
   // path someone saved costs their afternoon. Table + rationale:
   // ./legacyLabRedirects.js, which a test asserts against the live lab list.
   ...LEGACY_LAB_REDIRECTS,
-  // (Stage 0 Tuner retired 2026-06-24 — absorbed into the Listening config,
-  // which now sets Stage 0 structurally AND previews the full arc. The
-  // standalone public/stage0-tuner.html iframe tool is gone.)
+  // (Stage 0 Tuner retired 2026-06-24 — absorbed into the Listening config;
+  // Stage 0 itself is retired, 2026-09-19, and the Listening config now
+  // previews the Stage 1-N arc.)
   // Production Suite v2.1 Routes (Default)
   // ===========================================
   {

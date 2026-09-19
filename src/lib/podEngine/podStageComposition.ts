@@ -6,38 +6,35 @@
 // engine the learner runs — not a re-implementation. Re-sync after any change
 // to the canonical source with:  bash tools/sync-pod-engine.sh
 // ─────────────────────────────────────────────────────────────────────────────
+
 /**
  * podStageComposition.ts — the SINGLE source of truth for how one pod sentence
- * is turned into ordered plays, per stage.
+ * is turned into ordered plays, per whole-sentence stage.
  *
- * Both the live main-flow scheduler (usePodLapScheduler) and the admin
- * "Progression" audit walk (ListeningOverlay) compose pod audio from this
- * module, so the preview can NEVER drift from what the learner actually hears:
- *
- *   • usePodLapScheduler picks WHICH stage a sentence is in this lap (round /
- *     ratchet logic) and calls buildStage0Tier / buildMainStage for that one
- *     stage.
- *   • The Progression walk calls composeSentenceArc, which concatenates EVERY
- *     stage (Stage-0 ladder + Stages 1..N) for one line — the same per-stage
- *     builders, just flattened so the whole acquisition arc is heard in one
- *     pass instead of spread across rounds.
+ * The live main-flow scheduler (usePodLapScheduler) picks WHICH stage a
+ * sentence is in this lap (round / ratchet logic) and calls buildMainStage
+ * for that one stage — the same builder ListeningOverlay's "Progression"
+ * audit walk uses, so the preview can never drift from what the learner
+ * actually hears.
  *
  * Extracted from usePodLapScheduler (2026-06-24) — was an inline closure there,
  * with a worse parallel reimplementation living in ListeningOverlay. The
  * extraction is behaviour-preserving for main-flow (guarded by
  * usePodLapScheduler.test.ts asserting nextLap output is unchanged).
+ *
+ * Stage-0 retirement, finished (Tom, 2026-09-19: "we retired Stage 0 on the
+ * pods / We should just have Stages from 1 onwards"). The first half went on
+ * 2026-07-14 (Tom + Aran): this module's buildStage0Tier / composeSentenceArc
+ * / loadStage0ClipMaps, the functions that wove the Stage-0 AUDIO breakdown
+ * ladder into a sentence's plays, had zero runtime callers once
+ * usePodLapScheduler's Stage-0 prepend was removed, and were deleted. The
+ * second half is this one: stage0Sequence.ts's lower-level sequencing
+ * (tierSequence/buildLadder/DEFAULT_STAGE0), the admin-only Pod stage
+ * auditioner that was its last caller, and the `stage0` algorithm_config
+ * block are gone as well. A sentence enters the ladder at Stage 1.
  */
 
-import type { SupabaseClient } from '@supabase/supabase-js'
-import {
-  tierSequence,
-  resolveAtoms,
-  clipsFromRow,
-  foldEventsToPlays,
-  normSurface,
-  type Stage0Config,
-  type AtomMapEntry,
-} from './stage0Sequence'
+import type { AtomMapEntry } from './atomMap'
 
 /**
  * Audio role for one slot inside a pod-lap playlist.
@@ -67,6 +64,11 @@ export const isTargetRole = (role: PodPlayRole): boolean =>
   role !== 'trans' && role !== 'explainer'
 
 export interface PodSentenceRow {
+  /** Stable per-sentence id — the source row's id, or `${id}:s${index}` for a
+   *  June-split unit. Joins this sentence to `learner_pod_state.sentence_id`
+   *  (the shared two-doors exposure counter). Optional: legacy callers that
+   *  don't set it simply get no cross-door credit. */
+  sentence_id?: string | null
   global_order: number
   target_text: string
   known_text: string
@@ -78,20 +80,28 @@ export interface PodSentenceRow {
   explainer_audio_id: string | null
   /** True iff this row's natural utterance continues into the next row. */
   glue_to_next: boolean
-  /** Ordered atom breakdown (Stage-0). Null/absent → the sentence has no
-   *  Stage-0 views and behaves exactly as before. */
+  /** Ordered atom breakdown, in target-sentence order. Drives the
+   *  always-visible LEGO-tile display (player-vue's PodTurnDisplay.vue) —
+   *  never played as audio. Null/absent → the sentence renders as one plain
+   *  tile (no per-atom breakdown). */
   atom_map?: AtomMapEntry[] | null
   /** Speaker label (used to compute speaker-aware gaps). Optional. */
   speaker?: string | null
+  /** Scene the sentence belongs to — cohort intake never straddles a scene
+   *  boundary (podCohorts.ts). Optional: rows cached before 2026-07-23 lack
+   *  it, which just means no scene guard for that snapshot. */
+  scene_number?: number | null
 }
 
 export interface PodPlay {
   /** 1-based sentence index (matches global_order) */
   sentenceIdx: number
-  /** Stage 0 (the per-atom breakdown ladder) or 1–N (whole-sentence stages). */
+  /** The whole-sentence stage, 1–N. Stage 0 is retired (2026-09-19) — the
+   *  only `stage: 0` left in the tree is a MARKER on fusion-drill and
+   *  Layer-1-cup plays, which are not stages of this ladder at all. */
   stage: number
-  /** Stage-0 only: the tier key (explainer / pairs200 / …) — cosmetic, for the
-   *  Progression badge. Undefined for Stages 1..N. */
+  /** Fusion rungs only: the tier key ("fusion-r0", "fusion-r1"…) — cosmetic,
+   *  for the Progression badge. Undefined for the main stages 1..N. */
   tier?: string
   /** What's playing in this slot of the lap */
   playRole: PodPlayRole
@@ -106,52 +116,37 @@ export interface PodPlay {
   /** True iff this play's source sentence has glue_to_next set AND this is the
    *  LAST play in the source sentence's playlist. */
   glueToNextChunk: boolean
-  /** Stage-0 only: explicit gap (ms) to wait AFTER this play, taken from the
-   *  stage0 config rather than the role gap-matrix. */
-  gapAfterMs?: number
+  /** Fusion rungs only: play just this ms span of the clip (a chunk sliced
+   *  out of the sentence's Take G render). Absent → play the whole clip. */
+  startMs?: number
+  endMs?: number
+  /** True iff this play was sourced from the Layer-1 listening-cup wheel
+   *  (useLayer1Scheduler's seed sandwiches) rather than a genuine Layer-2
+   *  pod sentence, and is being played through the shared pod-lap pipeline
+   *  (LearningPlayer's playPodLap). Layer-1 plays index into the seed
+   *  catalogue, not podScheduler's sentence list, so PodTurnDisplay must
+   *  never resolve a turn for them (product rule 2026-07-22: Layer-1 seed
+   *  plays are audio-only, no display text; Layer-2 pods always show text). */
+  isLayer1?: boolean
+  /**
+   * True iff `playbackSpeed` is FINAL — already the whole answer, with the
+   * course globalSpeed folded in and the 1.0 listening ceiling applied. Set by
+   * the 2026-08-07 exposure ramp (see buildMainStage's `uniformSpeed`).
+   *
+   * The runtime (LearningPlayer.playPodLap) applies the 2026-08-06 BELT ramp as
+   * a multiplier over pod plays' role rates; a play carrying this flag must be
+   * skipped there, exactly as Layer-1 plays already are. Without it the
+   * exposure speed would be belt-ramped a second time AND only on the target
+   * slots, silently breaking the rule that a phrase's four clips share one
+   * speed.
+   */
+  speedIsFinal?: boolean
 }
 
 /** Warn-once-per-stage guard for the trailing-known defensive close, so a
  *  misconfigured stage logs once instead of every lap. Module scope = shared
  *  across instances (a session only needs to be told once). */
 const _warnedTrailingKnownStages = new Set<number>()
-
-/**
- * Stage-0: build the PodPlays for ONE tier of one sentence. Resolves the
- * sentence's atoms, runs the pure sequencer, and folds the inter-clip gaps
- * into each play's gapAfterMs. The tier's LAST play omits gapAfterMs, so the
- * normal between-phrases gap carries through to the next sentence.
- */
-export function buildStage0Tier(
-  sentence: PodSentenceRow,
-  tierKey: string,
-  sentenceIdx: number,
-  cfg: Stage0Config,
-  glossMap: Map<string, string>,
-  targetClipMap: Map<string, string>,
-): PodPlay[] {
-  const tier = cfg.tiers.find((t) => t.key === tierKey)
-  if (!tier) return []
-  const atoms = resolveAtoms(sentence.atom_map, glossMap, targetClipMap)
-  const events = tierSequence(tier, atoms, clipsFromRow(sentence), cfg)
-  return foldEventsToPlays(events).map((tp): PodPlay => {
-    const meaningRole = tp.role === 'translation' || tp.role === 'meaning' || tp.role === 'meansGloss'
-    return {
-      sentenceIdx,
-      stage: 0,
-      tier: tierKey,
-      // playRole is cosmetic for Stage-0 (real speed + gap come from the
-      // fields below); kept to a known PodPlayRole so downstream role
-      // switches never hit an unexpected value.
-      playRole: meaningRole ? 'trans' : 'ps',
-      audioId: tp.audioId,
-      text: tp.label,
-      playbackSpeed: tp.speed || 1,
-      glueToNextChunk: false,
-      ...(tp.gapAfterMs != null ? { gapAfterMs: tp.gapAfterMs } : {}),
-    }
-  })
-}
 
 /**
  * Stages 1..N: build the PodPlays for ONE whole-sentence stage. Carries the
@@ -161,15 +156,26 @@ export function buildStage0Tier(
  * per-stage logic the main-flow scheduler ran inline before extraction.
  *
  * Callers guarantee sentence.target_audio_id is non-null (a sentence with no
- * target audio contributes nothing — see composeSentenceArc / the scheduler's
- * per-sentence guard).
+ * target audio contributes nothing — see the scheduler's per-sentence guard).
  */
 export function buildMainStage(
   sentence: PodSentenceRow,
   stage: number,
   sentenceIdx: number,
   playlist: PodPlayRole[],
+  /**
+   * UNIFORM SPEED for every slot of this sentence, overriding ROLE_SPEED
+   * (Tom, 2026-08-07: a listening phrase's four clips are "all at... The same
+   * speed"). Supplied by the exposure ramp — see
+   * player-vue/src/playback/listeningExposureRamp.ts. Omitted ⇒ the historic
+   * per-role rates, which is what the admin Pod-stage auditioner and the
+   * escape-hatch stage playlist still want.
+   */
+  uniformSpeed?: number,
 ): PodPlay[] {
+  const useUniform = typeof uniformSpeed === 'number' && Number.isFinite(uniformSpeed) && uniformSpeed > 0
+  const speedFor = (role: PodPlayRole): number =>
+    useUniform ? uniformSpeed! : (ROLE_SPEED[role] ?? 1.0)
   const sentencePlays: PodPlay[] = []
   for (let j = 0; j < playlist.length; j++) {
     let playRole = playlist[j]
@@ -198,7 +204,8 @@ export function buildMainStage(
       playRole,
       audioId,
       text: isTrans ? sentence.known_text : sentence.target_text,
-      playbackSpeed: ROLE_SPEED[playRole] ?? 1.0,
+      playbackSpeed: speedFor(playRole),
+      speedIsFinal: useUniform,
       glueToNextChunk: false, // set on the ACTUAL last play below
     })
   }
@@ -219,7 +226,8 @@ export function buildMainStage(
       playRole: closeRole,
       audioId: sentence.target_audio_id!,
       text: sentence.target_text,
-      playbackSpeed: ROLE_SPEED[closeRole] ?? 1.0,
+      playbackSpeed: speedFor(closeRole),
+      speedIsFinal: useUniform,
       glueToNextChunk: false,
     })
     if (!_warnedTrailingKnownStages.has(stage)) {
@@ -236,78 +244,3 @@ export function buildMainStage(
   return sentencePlays
 }
 
-/**
- * Compose ONE sentence's WHOLE acquisition arc — every Stage-0 tier (when the
- * sentence has resolvable atoms) followed by every Stage 1..N — in order. This
- * is what the admin "Progression" walk plays: the full vertical for a single
- * line, flattening the round-spreading the main-flow scheduler applies.
- *
- * By construction it matches main-flow delivery: the Stage-0 gate (atoms with a
- * target clip) and the per-stage builders are the SAME ones the scheduler uses
- * per lap. A sentence with no target audio contributes nothing.
- */
-export function composeSentenceArc(
-  sentence: PodSentenceRow,
-  sentenceIdx: number,
-  opts: {
-    stage0?: Stage0Config | null
-    glossMap: Map<string, string>
-    targetClipMap: Map<string, string>
-    stagePlaylist: Record<string | number, PodPlayRole[]>
-  },
-): PodPlay[] {
-  const plays: PodPlay[] = []
-  if (!sentence.target_audio_id) return plays
-
-  // STAGE 0 — the per-atom breakdown ladder, when the sentence resolves to at
-  // least one atom with a target clip (the same gate the scheduler applies).
-  const s0 = opts.stage0
-  if (s0?.tiers?.length) {
-    const atoms = resolveAtoms(sentence.atom_map, opts.glossMap, opts.targetClipMap)
-    if (atoms.some((a) => a.targetClipId)) {
-      for (const tier of s0.tiers) {
-        plays.push(...buildStage0Tier(sentence, tier.key, sentenceIdx, s0, opts.glossMap, opts.targetClipMap))
-      }
-    }
-  }
-
-  // STAGES 1..N — the whole-sentence behaviours, in ascending stage order.
-  const stages = Object.keys(opts.stagePlaylist)
-    .map(Number)
-    .filter((n) => !Number.isNaN(n))
-    .sort((a, b) => a - b)
-  for (const stage of stages) {
-    const playlist = opts.stagePlaylist[stage] ?? opts.stagePlaylist[String(stage)]
-    if (playlist) plays.push(...buildMainStage(sentence, stage, sentenceIdx, playlist))
-  }
-  return plays
-}
-
-/**
- * Load the two course-wide Stage-0 lookup maps:
- *   - glossMap: lego_key → pod_legos.explainer_audio_id ("means <gloss>")
- *   - targetClipMap: target_surface → course_audio "[atom] <target>" id
- * Shared by the scheduler (init) and the Progression walk so both resolve atoms
- * identically.
- */
-export async function loadStage0ClipMaps(
-  supabase: SupabaseClient,
-  courseCode: string,
-): Promise<{ glossMap: Map<string, string>; targetClipMap: Map<string, string> }> {
-  const glossMap = new Map<string, string>()
-  const targetClipMap = new Map<string, string>()
-  const [legoRes, atomRes] = await Promise.all([
-    supabase.from('pod_legos').select('lego_key, explainer_audio_id').eq('course_code', courseCode),
-    supabase.from('course_audio').select('id, text').eq('course_code', courseCode).eq('role', 'pod_explainer').like('text', '[atom] %'),
-  ])
-  for (const l of (legoRes.data || []) as Array<{ lego_key: string; explainer_audio_id: string | null }>) {
-    if (l.explainer_audio_id) glossMap.set(l.lego_key, l.explainer_audio_id)
-  }
-  for (const a of (atomRes.data || []) as Array<{ id: string; text: string }>) {
-    // Key by NORMALISED surface (case-insensitive, accent-preserving) so a
-    // capitalised atom resolves a lowercase-rendered slice and vice-versa.
-    const surface = normSurface(a.text.slice('[atom] '.length))
-    if (!targetClipMap.has(surface)) targetClipMap.set(surface, a.id)
-  }
-  return { glossMap, targetClipMap }
-}

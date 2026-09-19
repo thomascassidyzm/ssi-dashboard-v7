@@ -8,10 +8,11 @@
  * units to the whole turn, then the speed cascade to pure 2× — and STAGE ARC,
  * today's live engine output, for comparison.
  *
- * No drift by construction: the arc is composed by `composeSentenceArc` imported
- * straight from `@ssi/core/pods` — the exact function the learner's main flow
- * runs. This is the surface that lets us retire the hand-ported copy in
- * src/lib/podArcCompose.js.
+ * No drift by construction: every stage of the arc is composed by
+ * `buildMainStage`, vendored verbatim from `@ssi/core/pods` — the exact
+ * function the learner's main flow runs. Stage 0 is retired (Tom, 2026-09-19:
+ * "we retired Stage 0 on the pods / We should just have Stages from 1
+ * onwards"), so the arc starts at Stage 1.
  *
  * CONFIG: preview/export only. `algorithm_config` writes are immediately global
  * to every learner (~5-min cache TTL, no draft/env split), so this Lab never
@@ -37,7 +38,10 @@ import ConsentStep from './voicelab/ConsentStep.vue'
 // Vendored VERBATIM from @ssi/core/pods (the engine the learner's main flow
 // runs) — see src/lib/podEngine + tools/sync-pod-engine.sh. Vendored, not
 // cross-repo-imported, because Popty's Vercel build is single-repo.
-import { composeSentenceArc, loadStage0ClipMaps, DEFAULT_STAGE0, resolveAtoms } from '../../lib/podEngine'
+import { buildMainStage } from '../../lib/podEngine'
+// Popty's own atom lookups (not vendored) — the fusion-shapes explorer's, not
+// the retired Stage-0 ladder's.
+import { loadPodAtomClipMaps, resolveAtoms } from '../../lib/podAtoms'
 // Sample generation goes to Popty's backend (phase-8 proxy), not the Vercel
 // /api routes the rest of this page uses — same helper pair as PodDetailView.
 import { getApiUrl } from '@/services/api.js'
@@ -73,7 +77,7 @@ const GAP_FIELDS = [
 ]
 
 // ── config fallbacks ────────────────────────────────────────────────────────
-// Used only when the course has no saved `pods`/`stage0` config row.
+// Used only when the course has no saved `pods` config row.
 const FALLBACK_STAGE_PLAYLIST = {
   1: ['ps', 'explainer', 'ps'],
   2: ['ps', 'trans', 'ps'],
@@ -86,9 +90,9 @@ const FALLBACK_STAGE_PLAYLIST = {
   9: ['ps2x'],
 }
 
-// The ladder specified with Tom on 2026-07-01: Stage-0 breakdown run twice, the
-// separate whole-sentence explainer stage removed (the explainer lives ONLY in
-// Stage 0), and a t·k·t·t opener before 2× enters.
+// The ladder specified with Tom on 2026-07-01: the separate whole-sentence
+// explainer stage removed, and a t·k·t·t opener before 2× enters. (It also
+// ran the Stage-0 breakdown twice; Stage 0 is retired, 2026-09-19.)
 const PROPOSED_STAGE_PLAYLIST = {
   1: ['ps', 'trans', 'ps', 'ps'], //     t · k · t · t
   2: ['ps', 'trans', 'ps', 'ps2x'], //   t · k · t · t@2×
@@ -127,9 +131,7 @@ const normForAudio = (t) =>
   (t || '').toLowerCase().trim().replace(/\s+/g, ' ').replace(/[.!。！]+$/, '')
 
 // tunable config (starts from live, editable in-session, never written back)
-const labStage0 = ref(clone(DEFAULT_STAGE0))
 const labStagePlaylist = ref(clone(FALLBACK_STAGE_PLAYLIST))
-const liveStage0 = ref(clone(DEFAULT_STAGE0))
 const liveStagePlaylist = ref(clone(FALLBACK_STAGE_PLAYLIST))
 const labGaps = ref(clone(FALLBACK_GAPS))
 const liveGaps = ref(clone(FALLBACK_GAPS))
@@ -137,8 +139,7 @@ const activePreset = ref('live')
 
 // JSON editors (mirrors of the reactive config, parsed on edit)
 const stagePlaylistJson = ref('')
-const stage0Json = ref('')
-const jsonError = reactive({ playlist: '', stage0: '' })
+const jsonError = reactive({ playlist: '' })
 
 // playback
 const currentAudio = ref(null)
@@ -163,12 +164,16 @@ const arc = computed(() => {
   if (!s) return []
   let plays = []
   try {
-    plays = composeSentenceArc(s, s.global_order, {
-      stage0: labStage0.value,
-      glossMap: glossMap.value,
-      targetClipMap: targetClipMap.value,
-      stagePlaylist: labStagePlaylist.value,
-    })
+    // Stages 1..N, ascending — the whole-sentence ladder and nothing before it.
+    const playlist = labStagePlaylist.value
+    const stages = Object.keys(playlist)
+      .map(Number)
+      .filter((n) => !Number.isNaN(n))
+      .sort((a, b) => a - b)
+    for (const stage of stages) {
+      const slots = playlist[stage] ?? playlist[String(stage)]
+      if (slots) plays.push(...buildMainStage(s, stage, s.global_order, slots))
+    }
   } catch (e) {
     console.warn('[pod-lab] compose failed:', e)
     return []
@@ -179,17 +184,16 @@ const arc = computed(() => {
   return plays
 })
 
-// Group the flat arc into stages (Stage 0 sub-grouped by tier) for display.
+// Group the flat arc into stages for display.
 const groups = computed(() => {
   const out = []
   let cur = null
   for (const p of arc.value) {
-    const key = p.stage === 0 ? `0:${p.tier}` : `s${p.stage}`
+    const key = `s${p.stage}`
     if (!cur || cur.key !== key) {
       cur = {
         key,
-        label: p.stage === 0 ? `Stage 0 · ${p.tier || 'breakdown'}` : `Stage ${p.stage}`,
-        isStage0: p.stage === 0,
+        label: `Stage ${p.stage}`,
         plays: [],
       }
       out.push(cur)
@@ -211,9 +215,6 @@ async function loadLiveConfig() {
     if (res.ok) {
       const { rows } = await res.json()
       const byKey = Object.fromEntries((rows || []).map((r) => [r.key, r.config]))
-      if (byKey.stage0 && Array.isArray(byKey.stage0.tiers)) {
-        liveStage0.value = clone(byKey.stage0)
-      }
       if (byKey.pods && byKey.pods.stagePlaylist) {
         liveStagePlaylist.value = clone(byKey.pods.stagePlaylist)
       }
@@ -290,9 +291,9 @@ async function loadCourse(courseCode) {
     // exactly the place a judgement is being made.
     await loadClipVoices(sb, sentences.value)
 
-    // Course-wide Stage-0 lookup maps — the SAME ones the learner's composer
+    // Course-wide atom lookup maps — the same ones the fusion-shapes explorer
     // uses, resolved by the SAME core function.
-    const maps = await loadStage0ClipMaps(sb, courseCode)
+    const maps = await loadPodAtomClipMaps(sb, courseCode)
     glossMap.value = maps.glossMap
     targetClipMap.value = maps.targetClipMap
 
@@ -338,16 +339,9 @@ const bareVoiceId = (v) => String(v || '').toLowerCase().replace(/^(xai_|azure_|
 function applyPreset(which) {
   activePreset.value = which
   if (which === 'live') {
-    labStage0.value = clone(liveStage0.value)
     labStagePlaylist.value = clone(liveStagePlaylist.value)
     labGaps.value = clone(liveGaps.value)
   } else if (which === 'proposed') {
-    const s0 = clone(liveStage0.value)
-    // Stage 0 run twice (the breakdown lives here; explainer removed from Stages 1–8).
-    ;(s0.tiers || []).forEach((t) => {
-      t.visits = 2
-    })
-    labStage0.value = s0
     labStagePlaylist.value = clone(PROPOSED_STAGE_PLAYLIST)
   }
   syncJsonFromConfig()
@@ -355,9 +349,7 @@ function applyPreset(which) {
 
 function syncJsonFromConfig() {
   stagePlaylistJson.value = JSON.stringify(labStagePlaylist.value, null, 2)
-  stage0Json.value = JSON.stringify(labStage0.value, null, 2)
   jsonError.playlist = ''
-  jsonError.stage0 = ''
 }
 
 function onPlaylistJsonInput() {
@@ -370,17 +362,6 @@ function onPlaylistJsonInput() {
     jsonError.playlist = e.message
   }
 }
-function onStage0JsonInput() {
-  try {
-    const parsed = JSON.parse(stage0Json.value)
-    labStage0.value = parsed
-    jsonError.stage0 = ''
-    activePreset.value = 'custom'
-  } catch (e) {
-    jsonError.stage0 = e.message
-  }
-}
-
 /** The 2026-08-24 launch pacing: no pause anywhere. The starting point for
  *  tuning by ear — every other value is reached from here. */
 function applyHardCut() {
@@ -399,8 +380,6 @@ function applyHardCut() {
  */
 function gapAfter(curr, next) {
   if (!next) return 0
-  // Stage-0 plays carry their own config-driven gap; honour it verbatim.
-  if (curr.gapAfterMs != null) return curr.gapAfterMs
   const g = labGaps.value
   if (curr.stage !== next.stage) return g.gapBetweenMs
   const cIsTarget = curr.playRole !== 'trans' && curr.playRole !== 'explainer'
@@ -411,7 +390,6 @@ function gapAfter(curr, next) {
 
 function exportJson() {
   const payload = {
-    stage0: labStage0.value,
     pods: { stagePlaylist: labStagePlaylist.value, ...labGaps.value },
   }
   navigator.clipboard.writeText(JSON.stringify(payload, null, 2)).then(() => {
@@ -2518,23 +2496,6 @@ loadLiveConfig()
             </label>
           </div>
 
-          <details class="adv">
-            <summary>Stage 0 config (advanced)</summary>
-            <p class="note">
-              <code>visits</code> / stage <code>durations</code> govern main-flow pacing (how long a
-              line rests at each stage across laps); the arc below plays each stage <em>once</em> —
-              the whole vertical. Editing <code>gaps</code> changes the audible breakdown pacing.
-            </p>
-            <textarea
-              v-model="stage0Json"
-              class="json"
-              rows="10"
-              spellcheck="false"
-              @input="onStage0JsonInput"
-            ></textarea>
-            <span v-if="jsonError.stage0" class="chip err">{{ jsonError.stage0 }}</span>
-          </details>
-
           <button class="export" @click="exportJson">
             {{ copied ? 'Copied ✓' : 'Copy tuned config JSON' }}
           </button>
@@ -2550,7 +2511,7 @@ loadLiveConfig()
           <button class="stop right" :disabled="!isPlaying" @click="stop">■ Stop</button>
         </div>
 
-        <!-- STAGE ARC — the established Stage-0 tiers + Stages 1..N ladder -->
+        <!-- STAGE ARC — the established Stages 1..N ladder -->
         <template v-if="mode === 'arc'">
           <div class="transport">
             <button class="play-all" :disabled="!arc.length" @click="playWholeArc">▶ Play whole arc</button>
@@ -2565,7 +2526,7 @@ loadLiveConfig()
             No arc — the line has no target audio, or the config produced no plays.
           </div>
 
-          <div v-for="g in groups" :key="g.key" class="stage-row" :class="{ s0: g.isStage0 }">
+          <div v-for="g in groups" :key="g.key" class="stage-row">
             <div class="stage-head">
               <button class="mini" @click="playGroup(g)">▶</button>
               <span class="stage-label">{{ g.label }}</span>
@@ -3349,13 +3310,6 @@ code {
 .stage-row {
   border-top: 1px solid var(--line);
   padding: 10px 0;
-}
-.stage-row.s0 {
-  background: rgba(139, 92, 246, 0.08);
-  border-radius: 8px;
-  padding: 10px 8px;
-  border-top: none;
-  margin-bottom: 2px;
 }
 .stage-head {
   display: flex;
