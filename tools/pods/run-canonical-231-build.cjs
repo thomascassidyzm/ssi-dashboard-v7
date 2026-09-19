@@ -25,7 +25,16 @@ const APPLY = process.argv.includes('--apply')
 const arg = (n) => { const a = process.argv.find(x => x.startsWith(`--${n}=`)); return a ? a.split('=').slice(1).join('=') : null }
 const ONLY = (arg('only') || '').split(',').map(s => s.trim()).filter(Boolean)
 const POD_SLUG = arg('pod-slug') || 'pod-1-231'
-const SCRATCH = process.env.CS_SCRATCH || path.join(process.env.HOME, '.cs-scratch')
+/**
+ * Where the drafted known sides are parked between drafting and writing.
+ * NOT $CS_SCRATCH: a long run launched as a systemd unit outlives the session that
+ * started it, and $CS_SCRATCH is SWEPT the moment that session's job is marked done.
+ * The 2026-09-19 run lost five of its six translations to exactly that — the unit stayed
+ * up, exited 0, and every remaining course failed on a directory that had been deleted
+ * underneath it. The evidence store is where machine-generated intermediates belong and
+ * it survives.
+ */
+const SCRATCH = arg('drafts-dir') || evidencePath('docs/pods/build-231/drafts/.keep').replace(/\/\.keep$/, '')
 const NAME_LINES = '33,94,95,221,226'
 
 const plan = JSON.parse(fs.readFileSync(path.join(__dirname, 'canonical-231-build-plan.json'), 'utf8'))
