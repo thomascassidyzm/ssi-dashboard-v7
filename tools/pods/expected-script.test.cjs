@@ -16,6 +16,16 @@ describe('expected-script', () => {
     assert.equal(inScript('gurmukhi', 'ગુજરાતી'), false)
   })
 
+  it('passes an Indic conjunct written with an explicit joiner', () => {
+    // ZWJ is category Cf, so \p{M} misses it, and Sinhala writes its conjuncts with one.
+    // Without joiners in the table this failed 30 of 231 correct Sinhala lines as "not
+    // sinhala script" — the gate rejecting the language it was asked to check for.
+    assert.equal(inScript('sinhala', 'හලෝ, සුබ සන්ධ්\u200dයාවක්!'), true)
+    assert.equal(inScript('devanagari', 'क्\u200dष'), true)
+    // and it still catches the thing it exists for
+    assert.equal(inScript('sinhala', 'Good morning, Sarah!'), false)
+  })
+
   it('refuses an unknown script name rather than passing everything', () => {
     assert.throws(() => inScript('klingon', 'x'), /unknown script/)
   })
