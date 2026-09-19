@@ -1,3 +1,36 @@
+## 2026-09-19 — listening-lab: the ten-visit ladder, and the end of the "eternal" top rung (job #286·A)
+
+**Tom's ruling, verbatim.** "ok listening lab is better but each stage should repeat once - for
+simplicity apart from Stage 9 / Which should retire after maybe 2 repeats, else we're just building
+up the listening until it's too long / this will mean each 'sentence' goes through a total of 10
+'visits' / which seems about right, with most of the early visits having multiple repeats of the
+target language".
+
+**What the Lab said before.** "highest-numbered stage is the eternal hold", and an ∞ in the top
+rung's rounds box. That had been untrue since Tom's 2026-09-06 ruling that the ladder COMPLETES —
+the player's `podCohortHasCompleted` has dropped a finished cohort from the lap since then. The page
+was telling Tom a ladder the runtime no longer played, which is exactly the drift this screen exists
+to close.
+
+**What it says now.** A summary line above the stage grid, computed the way the runtime resolves it:
+every stage below the top serves its own rounds value, the TOP rung absorbs whatever
+`retireAfterVisits` leaves, and the sentence then leaves the lap for good — with the total stated in
+visits. A new "Sentence retires after N visits" field edits that number, defaulting to 10 and
+backfilled onto rows saved before the field existed, so page and player agree without a save. The
+top rung's box now shows the visits it actually gets rather than ∞, and it turns red when the lower
+stages have already spent more visits than the retirement number allows.
+
+**Why the number is the knob rather than the durations.** The ladder's length used to be derived —
+sum of every stage's dwell — so it moved whenever a rung was added or a duration nudged, and on the
+live 8-rung row it summed to 39 visits. Making the TOTAL the authored value and letting the top rung
+take the remainder means the answer to "how long does a sentence stay in the listening" is one
+number Tom can move from this page, and it holds whatever shape the ladder is.
+
+**The player half** is `packages/player-vue/src/composables/usePodLapScheduler.ts` in
+ssi-learning-app (`PodsConfig.retireAfterVisits`, `podLadderTotalRounds`). Change the two together.
+
+**#277's Stage-0 retirement wiring is untouched** — the arc preview still reads "Stages 1-N".
+
 ## 2026-09-15 — booth-artists-access: a quiet day is not a broken booth; the zero leg is red at 7 days, the nightly's fixture is not an artist (job #773·G)
 
 **The red.** The nightly went red on `main` at `c1235854` on `booth-artists-access` with "ZERO cast
