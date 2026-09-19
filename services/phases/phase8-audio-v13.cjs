@@ -8356,7 +8356,9 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
           course_code: courseCode,
           languages: { target: keys.target, known: keys.known },
           missing_picks: verdict.missing.map(({ track, language, gender }) => ({ track, language, gender })),
-          drifted_picks: verdict.drifted.map(({ track, language, gender, picked, live }) => ({ track, language, gender, picked, live })),
+          // speaker/pod named: drift is per SPEAKER, so "which one" is the
+          // first thing the operator needs.
+          drifted_picks: verdict.drifted.map(({ track, language, gender, speaker, pod, picked, live }) => ({ track, language, gender, speaker, pod, picked, live })),
           pick_here: 'the POD VOICES lane of the Voice Lab (/admin/labs/voice)',
           sample_first: { how: `POST /generate-pods/${courseCode} with {"sample_limit": 5}`, max: POD_SAMPLE_LIMIT_MAX },
         })

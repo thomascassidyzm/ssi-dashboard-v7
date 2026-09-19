@@ -23,7 +23,10 @@
  *     no sentence row is created, deleted or edited.
  *   - Casting comes from ONE source: assignVoices() in tools/pod-sync.cjs, which
  *     reads live app_config.pod_voice_pools and (since 403718a3) applies Aran's
- *     two-voice rule — one male + one female for the whole cast. This tool does
+ *     two-voice rule — one male + one female for the whole cast. Tom's
+ *     per-language pod voice PICKS (app_config.pod_voice_picks) are handed to it
+ *     as manual overrides, so a recast lands on the picked voice — which is what
+ *     makes this tool the remedy phase8's pick_drift refusal names. This tool does
  *     not reimplement casting, and deliberately does NOT use
  *     tools/pod-voice-coverage.cjs / tools/pod-recolour.cjs: that static
  *     coverage map has diverged from the live pools.
@@ -44,6 +47,7 @@ const consentGate = require('../services/shared/voice-consent-gate.cjs')
 const path = require('path')
 const { createClient } = require('@supabase/supabase-js')
 const { assignVoices, canonicalSpeakerName, loadVoicePools, poolKeysForCourse } = require('./pod-sync.cjs')
+const picksStore = require('../services/pod-voice-picks.cjs')
 const { toBcp47 } = require('../services/voice-discovery-service.cjs')
 
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY)
@@ -183,7 +187,7 @@ function distinct(assignments, track) {
   return [...s]
 }
 
-async function recastPod(pod, targetLang, knownLang, pools) {
+async function recastPod(pod, targetLang, knownLang, pools, overrides = null) {
   // Canonical speaker labels come from the DB, both sources unioned:
   //   - keys of listening_pods.speakers (minus the _default sentinel)
   //   - DISTINCT speaker on listening_pod_sentences (the raw variants, which is
@@ -215,7 +219,12 @@ async function recastPod(pod, targetLang, knownLang, pools) {
   // already-exact assignment by rank could move a voice that is already right,
   // which is the opposite of what this tool is for. The function stays exported
   // for the tests that pin its behaviour.
-  const after = await assignVoices(raw, targetLang, knownLang)
+  // TOM'S PICK IS THE CAST (his ruling, 2026-09-19), exactly as in
+  // tools/pod-sync.cjs: a per-language pick rides the existing manual-override
+  // path, so a recast lands ON the picked voice rather than back on the pool's
+  // head. phase8's pick_drift refusal tells the operator to run this tool, so
+  // this tool has to be able to resolve the drift.
+  const after = await assignVoices(raw, targetLang, knownLang, overrides)
   const remapped = []
   const localeWarnings = stampLocales(after, pools, targetLang, knownLang)
 
@@ -315,10 +324,19 @@ async function recastCourse(courseCode, pools, opts) {
   if (error) throw new Error(`load pods ${courseCode}: ${error.message}`)
   if (!pods.length) { out.blocked = 'no pods'; return out }
 
+  // One read per course: the picks for this course's two pool keys, in
+  // assignVoices' override shape.
+  const overrides = picksStore.overridesFor(
+    await picksStore.loadPicks(supabase), { target: targetLang, known: knownLang })
+  out.picked = {
+    target: Object.keys(overrides.target || {}).sort(),
+    known: Object.keys(overrides.known || {}).sort(),
+  }
+
   for (const pod of pods) {
     let r
     try {
-      r = await recastPod(pod, targetLang, knownLang, pools)
+      r = await recastPod(pod, targetLang, knownLang, pools, overrides)
     } catch (e) {
       out.pods.push({ pod_id: pod.id, error: e.message })
       continue

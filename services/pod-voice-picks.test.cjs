@@ -82,6 +82,42 @@ describe('the pod-voice pick gate', () => {
     expect(verdict.message).toMatch(/giulia/)
   })
 
+  it('REFUSES when a SECOND same-gender speaker has drifted off the pick', () => {
+    // The hole this test closes (found by a cross-family verifier, 2026-09-19):
+    // requiredPicks kept only the FIRST speaker per language/gender, so a pod
+    // whose second female speaker sat on a different voice passed the gate
+    // while the screen said the language was picked — which is precisely the
+    // case the gate exists to stop.
+    const twoFemales = {
+      id: 'ita_for_eng:pod-1',
+      speakers: {
+        Anna: ITALIAN_POD.speakers.Anna,
+        Chiara: {
+          gender: 'f',
+          target: { provider: 'xai', voice_id: 'nova', name: 'Nova', locale: 'it' },
+          known: { provider: 'xai', voice_id: 'ara', name: 'Ara', locale: 'en' },
+        },
+      },
+    }
+    const need = picks.requiredPicks([twoFemales], {
+      targetLanguage: 'ita', knownLanguage: 'eng', roles: ['target'],
+    })
+    // Still ONE required pick per language/gender — the Voice Lab's unit is
+    // unchanged; it is the comparison that widened.
+    expect(need).toHaveLength(1)
+    const stored = {
+      ita: { f: { provider: 'xai', voice_id: 'eve', name: 'Eve', picked_by: 'tom', picked_at: '2026-09-19T10:00:00Z' } },
+    }
+    const verdict = picks.evaluatePicks(stored, need)
+    expect(verdict.ok).toBe(false)
+    expect(verdict.reason).toBe('pick_drift')
+    expect(verdict.drifted).toHaveLength(1)
+    expect(verdict.drifted[0].speaker).toBe('Chiara')
+    expect(verdict.drifted[0].live.voice_id).toBe('nova')
+    expect(verdict.message).toMatch(/Chiara/)
+    expect(verdict.message).toMatch(/nova/)
+  })
+
   it('asks only for the genders the cast actually speaks', () => {
     const maleOnly = { id: 'x:pod-1', speakers: { Bob: ITALIAN_POD.speakers.James } }
     const need = picks.requiredPicks([maleOnly], { targetLanguage: 'ita', knownLanguage: 'eng', roles: ['target'] })

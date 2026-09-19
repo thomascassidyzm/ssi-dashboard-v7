@@ -120,13 +120,22 @@ function overridesFor (picks, { target, known } = {}) {
  * male never asks for a female pick it would not use. `_default` counts: it is
  * the voice an unexpected speaker lands on, so it renders like any other.
  *
+ * ONE required pick per (track, language, gender) — that is the unit Tom
+ * decides in — but EVERY speaker's live voice is carried on `speakers`, because
+ * the drift check has to compare all of them. A pod with two female speakers,
+ * one on the picked voice and one on something else, is exactly the case the
+ * gate exists to stop: comparing only the first speaker let the second reach a
+ * learner while the screen said the language was picked (found by a
+ * cross-family verifier, 2026-09-19; `live` kept as the first speaker's voice
+ * so the Voice Lab's per-language row reads unchanged).
+ *
  * Pure. `pods` is [{ id, speakers }] exactly as listening_pods carries them.
  */
 function requiredPicks (pods, { targetLanguage, knownLanguage, roles = ['target', 'known'] } = {}) {
   const need = new Map()
   const langOf = { target: targetLanguage, known: knownLanguage }
   for (const pod of pods || []) {
-    for (const entry of Object.values(pod.speakers || {})) {
+    for (const [speaker, entry] of Object.entries(pod.speakers || {})) {
       if (!entry || typeof entry !== 'object' || entry.deferred) continue
       const gender = pickGenderOf(entry)
       for (const track of ['target', 'known']) {
@@ -141,7 +150,10 @@ function requiredPicks (pods, { targetLanguage, knownLanguage, roles = ['target'
           ? entry[track]
           : (track === 'target' && entry.voice_id ? entry : null)
         const key = `${track}|${language}|${gender}`
-        if (!need.has(key)) need.set(key, { track, language, gender, live: live || null })
+        if (!need.has(key)) need.set(key, { track, language, gender, live: live || null, speakers: [] })
+        const row = need.get(key)
+        if (live) row.speakers.push({ speaker, pod: pod.id || null, live })
+        if (!row.live && live) row.live = live
       }
     }
   }
@@ -167,9 +179,22 @@ function evaluatePicks (picks, required) {
   for (const r of required || []) {
     const pick = pickFor(picks, r.language, r.gender)
     if (!pick) { missing.push(r); continue }
-    const live = voiceKey(r.live)
-    if (live && live !== voiceKey(pick)) {
-      drifted.push({ ...r, picked: pick })
+    const want = voiceKey(pick)
+    // EVERY speaker of this (track, language, gender), not just the first: one
+    // drifted speaker in a cast of four is still an unpicked voice in a
+    // learner's ear. `speakers` is absent only when a caller built `required`
+    // by hand, so fall back to the single `live` voice there.
+    const cast = (r.speakers && r.speakers.length)
+      ? r.speakers
+      : (r.live ? [{ speaker: null, live: r.live }] : [])
+    const seen = new Set()
+    for (const c of cast) {
+      const live = voiceKey(c.live)
+      if (!live || live === want) continue
+      const dedupe = `${live}|${c.speaker || ''}`
+      if (seen.has(dedupe)) continue
+      seen.add(dedupe)
+      drifted.push({ track: r.track, language: r.language, gender: r.gender, speaker: c.speaker || null, pod: c.pod || null, live: c.live, picked: pick })
     }
   }
   if (missing.length) {
@@ -194,11 +219,13 @@ function describeMissing (missing) {
 
 function describeDrift (drifted) {
   const list = drifted
-    .map((d) => `${d.language} ${d.gender === 'f' ? 'female' : 'male'}: picked ${d.picked.provider}/${d.picked.voice_id}`
+    .map((d) => `${d.language} ${d.gender === 'f' ? 'female' : 'male'}`
+      + `${d.speaker ? ` (speaker ${d.speaker}${d.pod ? ` in ${d.pod}` : ''})` : ''}`
+      + `: picked ${d.picked.provider}/${d.picked.voice_id}`
       + `, cast ${(d.live && d.live.provider) || '?'}/${(d.live && d.live.voice_id) || '?'}`)
     .join('; ')
   return `The pod is cast on a voice that is NOT the picked one, so rendering would put an unpicked voice in front of a learner: ${list}. `
-    + `Re-cast the pod onto the pick (node tools/pod-recast.cjs, or re-run tools/pod-sync.cjs, both of which read the picks) and run again.`
+    + `Re-cast the pod onto the pick (node tools/pod-recast.cjs --course=<code> --apply, or re-run tools/pod-sync.cjs, both of which read the picks and apply them as the cast) and run again.`
 }
 
 // ---------------------------------------------------------------------------
@@ -212,7 +239,12 @@ async function loadPicks (supabase) {
   return (data && data.value) || {}
 }
 
-/** Read-modify-write, so one language's pick can never drop another's. */
+/**
+ * Read-modify-write, so one language's pick can never drop another's. Not
+ * guarded: this lane has exactly one user (Tom picks every pod voice himself),
+ * so two concurrent saves would need him in two tabs at once — and savePick's
+ * `expect` already refuses the stale-tab case that would actually happen.
+ */
 async function updatePicks (supabase, mutate) {
   const current = await loadPicks(supabase)
   const next = mutate({ ...current })
