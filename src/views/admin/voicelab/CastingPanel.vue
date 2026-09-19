@@ -30,10 +30,10 @@ import { languageName } from '@/utils/languageNames'
 import { planCast, commitCast } from './stagedCast'
 import { planPicks, commitPicks } from './stagedPicks'
 import {
-  ROLES, SLOT_ORDER, slotKey, isFixedEnglish, FIXED_ENGLISH,
+  ROLES, SLOT_ORDER, isFixedEnglish, FIXED_ENGLISH,
   shelfFor, accentsOf, filterShelf, rolesFor,
-  stageRole, stageClear, unstageRole, stagedCount,
-  castFacts, podFacts, rowSummary, sortRows, labVoiceId, providerLabel,
+  stageRole, stageClear, unstageRole, stagedCount, stagedEntry, isStagedOn as candidateIsStagedOn,
+  stageHouseEnglish, castFacts, podFacts, rowSummary, sortRows, labVoiceId, providerLabel,
 } from './casting'
 
 defineProps({ params: { type: Object, default: null } })
@@ -88,7 +88,7 @@ const rows = computed(() => {
     .filter((l) => !q || l.code.includes(q) || String(nameOf(l)).toLowerCase().includes(q))
     .filter((l) => {
       if (!onlyGaps.value) return true
-      if (l.human || isFixedEnglish(l.code)) return false
+      if (l.human) return false
       const f = castFacts(l)
       const pod = podFacts(podOf(l))
       return f.male.state !== 'cast' || f.female.state !== 'cast' || pod.genders.some((g) => !g.pick)
@@ -100,7 +100,7 @@ const lang = computed(() => langs.value.find((l) => l.code === open.value) || nu
 const pod = computed(() => (lang.value ? podOf(lang.value) : null))
 const facts = computed(() => (lang.value ? castFacts(lang.value) : {}))
 const podView = computed(() => podFacts(pod.value))
-const shelf = computed(() => (lang.value && !isFixedEnglish(lang.value.code) && !lang.value.human ? shelfFor(lang.value) : { provider: null, fallback: false, voices: [] }))
+const shelf = computed(() => (lang.value && !lang.value.human ? shelfFor(lang.value) : { provider: null, fallback: false, voices: [] }))
 const accents = computed(() => accentsOf(shelf.value.voices))
 const shown = computed(() => filterShelf(shelf.value.voices, { gender: gender.value, accent: accent.value, query: query.value }))
 const nStaged = computed(() => stagedCount(staged.value))
@@ -109,8 +109,9 @@ const nStaged = computed(() => stagedCount(staged.value))
 function rolesOffered (c) {
   const l = lang.value
   if (!l) return []
-  const list = rolesFor(c, l)
-  return l.status === 'knownonly' ? list.filter((r) => r.slot === 'guide') : list
+  const list = rolesFor(c, l, pod.value)
+  // Nobody is taught this language, so it has no phrase cast — but it can still have a pod.
+  return l.status === 'knownonly' ? list.filter((r) => r.slot === 'guide' || !r.slot) : list
 }
 
 /** Which role cards to draw for this language. */
@@ -121,8 +122,8 @@ const roleCards = computed(() => {
   return ROLES.filter((r) => r.slot !== 'guide' || (l.knownCourses || 0) > 0)
 })
 
-function stagedFor (role) { return staged.value.slots[slotKey(role)] || null }
-function isStagedOn (c, role) { const s = stagedFor(role); return Boolean(s && s.action === 'cast' && s.voiceId === c.voiceId) }
+function stagedFor (role) { return stagedEntry(staged.value, role) }
+function isStagedOn (c, role) { return candidateIsStagedOn(staged.value, role, c) }
 
 async function openRow (l) {
   if (audio) { audio.pause(); audio = null; playing.value = '' }
@@ -247,15 +248,26 @@ function consentBlock (c) {
 }
 
 /**
- * ENGLISH IS SET. The only write the English row offers is recording the fixed
- * cast as the pod pick — not a choice, a confirmation of the settled fact, and
- * what lets phase8 render the English pod at all.
+ * THE HOUSE ENGLISH CAST IS A BUTTON, NOT A LOCK (Tom, 2026-09-19: "I can't
+ * edit any of the voice assignments here"). English now carries the same
+ * picker, the same clear links and the same save press as every other
+ * language; these two helpers only offer the house cast back in one tap.
  */
 const englishPodMissing = computed(() => {
   const l = lang.value
   if (!l || !isFixedEnglish(l.code) || !pod.value || pod.value.human) return false
   return (podView.value.genders || []).some((g) => !g.pick)
 })
+const houseEnglishStaged = computed(() => {
+  const l = lang.value
+  if (!l || !isFixedEnglish(l.code)) return 0
+  return stagedCount(stageHouseEnglish({ slots: {}, picks: {} }, { podRow: pod.value, langName: nameOf(l), facts: facts.value }))
+})
+function resetToHouseEnglish () {
+  const l = lang.value
+  if (!l) return
+  staged.value = stageHouseEnglish(staged.value, { podRow: pod.value, langName: nameOf(l), facts: facts.value })
+}
 function stageFixedEnglishPod () {
   const l = lang.value
   const fixed = { m: FIXED_ENGLISH.male, f: FIXED_ENGLISH.female }
@@ -266,7 +278,7 @@ function stageFixedEnglishPod () {
     const c = { voiceId: fixed[g.gender].voiceId, name: fixed[g.gender].name, engine: 'cartesia', kind: 'cartesia' }
     next = stageRole(next, role, c, { podRow: pod.value, langName: nameOf(l) })
     // The phrase slot is already that voice; only the pod pick is missing.
-    delete next.slots[slotKey(role)]
+    delete next.slots[`${role.slot}:${role.gender || '-'}:${role.rank}`]
   }
   staged.value = next
 }
@@ -338,11 +350,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
 
             <template v-else>
               <td v-for="r in ROLES" :key="r.key" class="cast-cell" :class="castFacts(l)[r.key].state">
-                <template v-if="isFixedEnglish(l.code) && r.key !== 'guide'">
-                  <span class="cast-fixed">{{ FIXED_ENGLISH[r.key].who }}</span>
-                  <span class="cast-sub">{{ castFacts(l)[r.key].state === 'cast' ? castFacts(l)[r.key].text : 'nothing cast' }}</span>
-                </template>
-                <template v-else-if="castFacts(l)[r.key].state === 'na'"><span class="cast-na">—</span></template>
+                <template v-if="castFacts(l)[r.key].state === 'na'"><span class="cast-na">—</span></template>
                 <template v-else>
                   <span>{{ castFacts(l)[r.key].text }}</span>
                   <span v-if="castFacts(l)[r.key].accent" class="cast-sub">{{ castFacts(l)[r.key].accent.replace(/-/g, ' ') }}</span>
@@ -382,7 +390,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
                     → {{ stagedFor(r).action === 'clear' ? 'cleared' : stagedFor(r).voiceName.split(' — ')[0] }} <em>unsaved</em>
                     <button class="cast-link" @click="tapClear(r)">undo</button>
                   </span>
-                  <button v-else-if="facts[r.key].state === 'cast' && !isFixedEnglish(lang.code)" class="cast-link" @click="tapClear(r)">clear</button>
+                  <button v-else-if="facts[r.key].state === 'cast'" class="cast-link" @click="tapClear(r)">clear</button>
                 </div>
 
                 <!-- THE POD — what it speaks today, and what is picked; two facts, never merged. -->
@@ -410,13 +418,15 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
 
               <p v-if="lang.human" class="cast-summary">{{ nameOf(lang) }} is voiced by its recordists; its gaps are a recording worklist, not a casting one.</p>
 
-              <!-- ENGLISH IS SET: no shelf. -->
-              <p v-else-if="isFixedEnglish(lang.code)" class="cast-note">
-                No picker for English: Tom's clone is the male voice, Gemma the female, Aran's clone the second male if needed.
-                <span v-if="facts.male2.state === 'cast' && facts.male2.voiceId !== FIXED_ENGLISH.male2.voiceId" class="cast-warn">The second male slot currently holds {{ facts.male2.name }}, not Aran's clone.</span>
-              </p>
-
               <template v-else>
+                <!-- THE HOUSE ENGLISH CAST — one tap puts it back; it is a default, not a lock. -->
+                <p v-if="isFixedEnglish(lang.code)" class="cast-note">
+                  <button class="vl-btn" :disabled="!houseEnglishStaged || saving" @click="resetToHouseEnglish">
+                    {{ houseEnglishStaged ? "Reset English to the house cast — Tom's clone, Gemma, Aran's clone" : 'English already holds the house cast' }}
+                  </button>
+                  <span v-if="facts.male2.state === 'cast' && facts.male2.voiceId !== FIXED_ENGLISH.male2.voiceId" class="cast-warn">The second male slot currently holds {{ facts.male2.name }}, not Aran's clone.</span>
+                </p>
+
                 <!-- THE AUDITION LINE — the same real course sentence for every voice. -->
                 <div class="cast-line">
                   <template v-if="line">

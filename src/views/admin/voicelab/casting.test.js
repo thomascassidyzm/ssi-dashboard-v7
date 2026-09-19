@@ -6,6 +6,7 @@ import { describe, it, expect } from 'vitest'
 import {
   ROLES, isAmericanEnglish, shelfFor, accentsOf, filterShelf, rolesFor,
   stageRole, stageClear, unstageRole, stagedCount, castFacts, podFacts, rowSummary, isFixedEnglish, podVoiceOf,
+  POD_ROLES, stageHouseEnglish, stagedEntry, isStagedOn, FIXED_ENGLISH,
 } from './casting'
 
 const cart = (id, extra = {}) => ({ voiceId: `cartesia_${id}`, name: `${id} — Cartesia`, kind: 'cartesia', engine: 'cartesia', gender: 'f', accent: 'british', accentLocale: 'en-GB', ...extra })
@@ -65,13 +66,66 @@ describe('"select from Cartesia by Language + gender + accent"', () => {
   })
 })
 
-describe('"English voices are set"', () => {
-  it('English is fixed; nothing else is', () => {
+describe('"I can\'t edit any of the voice assignments here" — English is cast like every other language', () => {
+  const eng = {
+    code: 'eng', knownCourses: 2,
+    slots: { m: [{ rank: 0, filled: true, filledBy: null, voiceId: FIXED_ENGLISH.male.voiceId, voiceName: 'tom_001', engine: 'cartesia', active: true }, { rank: 1, filled: true, voiceId: 'cartesia_daniel', voiceName: 'Daniel', engine: 'cartesia', active: true }], f: [{ rank: 0, filled: true, voiceId: FIXED_ENGLISH.female.voiceId, voiceName: 'Gemma', engine: 'cartesia', active: true }] },
+    guide: { slots: [] },
+  }
+  const podRow = { language: 'eng', human: false, slots: [{ gender: 'f', pick: null }, { gender: 'm', pick: null }] }
+
+  it('still knows which language the house cast belongs to', () => {
     expect(isFixedEnglish('eng')).toBe(true)
     expect(isFixedEnglish('spa_mx')).toBe(false)
   })
-  it('the English row reads as settled fact', () => {
-    expect(rowSummary({ code: 'eng' }, null)).toMatch(/Fixed: Tom's clone/)
+  it('no longer reads as a settled, unchangeable fact — it states its real cast like any row', () => {
+    expect(rowSummary(eng, podRow)).not.toMatch(/Fixed:/)
+    expect(rowSummary(eng, podRow)).toMatch(/Male and female cast/)
+  })
+  it('offers English the same role targets as anywhere else, second male included', () => {
+    expect(rolesFor(cart('aran', { gender: 'm' }), eng).map((r) => r.key)).toEqual(['male', 'male2', 'guide'])
+  })
+  it('the house cast is a one-tap reset that stages the three voices, and stages nothing it does not change', () => {
+    const facts = castFacts(eng)
+    const staged = stageHouseEnglish({ slots: {}, picks: {} }, { podRow, langName: 'English', facts })
+    // male and female already hold the house voice: only the second male moves.
+    expect(Object.keys(staged.slots)).toEqual(['phrase:m:1'])
+    expect(staged.slots['phrase:m:1']).toMatchObject({ action: 'cast', voiceId: FIXED_ENGLISH.male2.voiceId })
+    // the pod has no pick yet, so the house male and female are staged there too.
+    expect(staged.picks.m.voice.voice_id).toBe(FIXED_ENGLISH.male.voiceId.replace('cartesia_', ''))
+    expect(staged.picks.f.voice.voice_id).toBe(FIXED_ENGLISH.female.voiceId.replace('cartesia_', ''))
+  })
+  it('stages nothing at all once everything already holds the house cast', () => {
+    const full = { ...eng, slots: { ...eng.slots, m: [eng.slots.m[0], { rank: 1, filled: true, voiceId: FIXED_ENGLISH.male2.voiceId, voiceName: 'aran_english_003', engine: 'cartesia', active: true }] } }
+    const pods = { language: 'eng', human: false, slots: [{ gender: 'f', pick: { provider: 'cartesia', voice_id: FIXED_ENGLISH.female.voiceId.replace('cartesia_', '') } }, { gender: 'm', pick: { provider: 'cartesia', voice_id: FIXED_ENGLISH.male.voiceId.replace('cartesia_', '') } }] }
+    expect(stagedCount(stageHouseEnglish({ slots: {}, picks: {} }, { podRow: pods, facts: castFacts(full) }))).toBe(0)
+  })
+})
+
+describe('the pod voice is pickable in its own right, without miscasting a course', () => {
+  const lang = { code: 'ita', knownCourses: 1 }
+  const podRow = { language: 'ita', human: false, slots: [{ gender: 'f', pick: { provider: 'xai', voice_id: 'Ara' } }, { gender: 'm', pick: null }] }
+  const podFemale = () => (POD_ROLES || []).find((r) => r.key === 'podFemale')
+
+  it('offers pod targets only where there is a pod, and only of the voice\'s own gender', () => {
+    expect(rolesFor(cart('bella', { gender: 'f' }), lang, podRow).map((r) => r.key)).toEqual(['female', 'guide', 'podFemale'])
+    expect(rolesFor(cart('bella', { gender: 'f' }), lang).map((r) => r.key)).toEqual(['female', 'guide'])
+    expect(rolesFor(cart('bella', { gender: 'f' }), lang, { ...podRow, human: true }).map((r) => r.key)).toEqual(['female', 'guide'])
+  })
+  it('writes the pick and NOT the phrase slot, so the course cast is untouched', () => {
+    const staged = stageRole(null, podFemale(), cart('bella', { name: 'Bella — Cartesia' }), { podRow, langName: 'Italian' })
+    expect(staged.slots).toEqual({})
+    expect(staged.picks.f).toMatchObject({ action: 'pick', voice: { provider: 'cartesia', voice_id: 'bella' }, expect: { voice_id: 'Ara' } })
+    expect(stagedCount(staged)).toBe(1)
+    expect(isStagedOn(staged, podFemale(), cart('bella'))).toBe(true)
+    expect(isStagedOn(staged, podFemale(), cart('other'))).toBe(false)
+    expect(stagedEntry(unstageRole(staged, podFemale()), podFemale())).toBe(null)
+  })
+  it('a MALE or FEMALE cast still writes the pod pick too — the coupling is not decoupled', () => {
+    const female = ROLES.find((r) => r.key === 'female')
+    const staged = stageRole(null, female, cart('bella'), { podRow })
+    expect(Object.keys(staged.slots)).toEqual(['phrase:f:0'])
+    expect(staged.picks.f.action).toBe('pick')
   })
 })
 
