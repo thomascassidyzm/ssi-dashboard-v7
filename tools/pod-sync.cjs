@@ -35,6 +35,7 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 const approvals = require('../services/pod-voice-approvals.cjs');
+const picks = require('../services/pod-voice-picks.cjs');
 const { servingRefusal, readServingFactsSupabase } = require('./pods/serving-slug.cjs');
 
 // LAZY on purpose. This module is the one implementation of pod casting
@@ -945,7 +946,14 @@ async function syncPod(markdownPath, options) {
     : { target: poolKeyFor(pools, targetPart), known: poolKeyFor(pools, knownPart) };
   const targetLang = keys.target;
   const knownLang = keys.known;
-  const speakers = resolveCast(parsed.uniqueSpeakers, targetLang, knownLang, pools);
+  // TOM'S PICK IS THE CAST (his ruling, 2026-09-19: "I am going to choose all
+  // the voices carefully myself"). A per-language pick is exactly a manual
+  // voice choice, so it rides the override path that already exists rather than
+  // becoming a second casting mechanism — and a sync therefore lands on the
+  // picked voice instead of stomping it back to the pool's head, which is the
+  // hazard the override comment below has warned about since it was written.
+  const speakers = resolveCast(parsed.uniqueSpeakers, targetLang, knownLang, pools,
+    picks.overridesFor(await picks.loadPicks(db()), { target: targetLang, known: knownLang }));
 
   // Cast pinning guard — runs before any write, dry-run included, so a
   // conflict surfaces on a --dry-run too. See checkCastPin() above.

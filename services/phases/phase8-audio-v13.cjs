@@ -8218,6 +8218,7 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
 
 const POD_SAMPLE_LIMIT_MAX = 10
 const podApprovals = require('../pod-voice-approvals.cjs')
+const podPicks = require('../pod-voice-picks.cjs')
 
 // TEXT approval gate (Tom's A-109 ruling, 2026-08-16). The voice gate above says
 // the voices sound right; it says nothing about whether the WORDS are finished.
@@ -8309,6 +8310,58 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
         message: podApprovals.describeUncastSpeakers(uncast),
         uncast_speakers: uncast,
       })
+    }
+
+    // ── THE PER-LANGUAGE PICK GATE (Tom's ruling, 2026-09-19) ──────────────
+    //
+    //   "But I want to choose proper voices for them. I listened to the Italian
+    //    one on the plane yesterday and the female Italian voice was a shocker.
+    //    So I am going to choose all the voices carefully myself. We CAN do all
+    //    the translations and leave the pod TTS as pending."
+    //
+    // Pods are per LANGUAGE, not per course, so the pick is too: no bulk pod
+    // audio renders in a language whose pod voice Tom has not chosen, and none
+    // renders when the pod has since been cast off that choice. SAMPLE mode is
+    // deliberately exempt — the sample is how the pick gets made by ear, and a
+    // gate you cannot open is a wall.
+    //
+    // LINK-ONLY renders nothing, so it has no voice decision to hold up.
+    //
+    // The pick is made in the POD VOICES lane of the Voice Lab and stored in
+    // app_config.pod_voice_picks (services/pod-voice-picks.cjs). pod-sync casts
+    // through the same record, so a picked language reaching this gate refused
+    // means the pod really is cast on something else.
+    //
+    // Required lazily: tools/pod-sync.cjs runs dotenv at import and builds its
+    // own Supabase client on first use, and phase8 must not pay either at boot.
+    if (!linkOnly && sampleLimit === null) {
+      const { loadVoicePools, poolKeysForCourse } = require('../../tools/pod-sync.cjs')
+      const { data: courseRow } = await supabase
+        .from('courses').select('course_code, target_lang, known_lang, voice_pool_key')
+        .eq('course_code', courseCode).maybeSingle()
+      if (!courseRow) throw new Error(`no courses row for ${courseCode}`)
+      const [pools, picks] = await Promise.all([loadVoicePools(), podPicks.loadPicks(supabase)])
+      const keys = poolKeysForCourse(pools, courseRow)
+      const required = podPicks.requiredPicks(pods, {
+        targetLanguage: keys.target, knownLanguage: keys.known, roles,
+      })
+      const verdict = podPicks.evaluatePicks(picks, required)
+      if (!verdict.ok) {
+        logger.warn(`[Pods] PICK REFUSED ${courseCode}: ${verdict.reason} `
+          + `(${[...verdict.missing, ...verdict.drifted].map((m) => `${m.language}/${m.gender}`).join(', ')})`)
+        return res.status(409).json({
+          error: 'pod_voices_not_picked',
+          reason: verdict.reason,
+          message: verdict.message,
+          course_code: courseCode,
+          languages: { target: keys.target, known: keys.known },
+          missing_picks: verdict.missing.map(({ track, language, gender }) => ({ track, language, gender })),
+          drifted_picks: verdict.drifted.map(({ track, language, gender, picked, live }) => ({ track, language, gender, picked, live })),
+          pick_here: 'the POD VOICES lane of the Voice Lab (/admin/labs/voice)',
+          sample_first: { how: `POST /generate-pods/${courseCode} with {"sample_limit": 5}`, max: POD_SAMPLE_LIMIT_MAX },
+        })
+      }
+      logger.info(`[Pods] PICK ok ${courseCode}: ${required.map((r) => `${r.language}/${r.gender}`).join(', ')}`)
     }
 
     // LANGUAGE-LEVEL REUSE FOR EVERY POD (Tom, 2026-09-13). No canon ceremony,

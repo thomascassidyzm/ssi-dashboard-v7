@@ -39,6 +39,8 @@ const content = require('./content.cjs')
 const registry = require('./registry.cjs')
 const cartesia = require('./cartesia.cjs')
 const samples = require('./samples.cjs')
+const podVoices = require('./pod-voices.cjs')
+const picksStore = require('../pod-voice-picks.cjs')
 const humanRecorded = require('../shared/human-recorded-roles.cjs')
 const speakers = require('./speakers.cjs')
 const consent = require('./consent.cjs')
@@ -327,6 +329,113 @@ function mount (app, deps) {
       if (res.headersSent) { write({ done: true, error: err.message }); res.end() }
       else fail(res, err, `prepare-samples-stream ${language}`)
     }
+  })
+
+  // ── POD VOICES — one row per LANGUAGE, and Tom's pick ────────────────────
+  //
+  // Tom, 2026-09-19: "I listened to the Italian one on the plane yesterday and
+  // the female Italian voice was a shocker. So I am going to choose all the
+  // voices carefully myself. We CAN do all the translations and leave the pod
+  // TTS as pending."
+  //
+  // A sibling lane to the per-language registry above, asked about the
+  // listening pod instead of the course material. The read spends nothing; the
+  // audition spends through the SAME governed path a course-line audition does
+  // (lab.refuse, the daily ceiling, the ledger, the on-disk cache); the pick
+  // writes one app_config row and renders nothing at all.
+  //
+  // NOTHING ON THIS PATH RENDERS POD AUDIO. An audition clip lives in the lab's
+  // own sample store, never in course_audio and never on a pod sentence.
+
+  app.get('/api/voicelab/pod-voices', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const refresh = req.query.refresh === '1' || req.query.refresh === 'true'
+      res.json(await podVoices.cachedBuild(supabase(), { refresh }))
+    } catch (err) { fail(res, err, 'pod-voices') }
+  })
+
+  /**
+   * Candidate samples for one language, ON ITS OWN POD LINE. SPENDS NOTHING —
+   * what is already cached here or already owned by the estate, plus the plain
+   * list of voices that have neither.
+   */
+  app.get('/api/voicelab/pod-voices/:language/samples', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      const language = String(req.params.language || '').trim()
+      if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
+      const line = await podVoices.lineFor(supabase(), language)
+      if (!line) throw Object.assign(new Error(`${language} has no listening pod to audition on`), { status: 404 })
+      const voiceIds = String(req.query.voices || '').split(',').map((s) => s.trim()).filter(Boolean).slice(0, 200)
+      res.json(await samplesModule.read({ language, voiceIds, line }))
+    } catch (err) { fail(res, err, `pod-samples ${req.params.language}`) }
+  })
+
+  /**
+   * Render the missing candidate clips for one language, on the SAME pod line
+   * every other candidate for that language was judged on — "must be the same
+   * phrases for a fair test" (Tom, 2026-08-31), which is why the line is read
+   * from the row rather than taken from the caller.
+   *
+   * SPENDS MONEY, through lab.refuse() and the ledger exactly as a course-line
+   * audition does. Capped harder than the course lane: picking a pod voice is
+   * a shortlist of a handful, not a sweep of eighty.
+   */
+  const POD_SAMPLE_PREPARE_MAX = 12
+  app.post('/api/voicelab/pod-voices/:language/samples/prepare', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const language = String(req.params.language || '').trim()
+      const line = await podVoices.lineFor(supabase(), language)
+      if (!line) throw Object.assign(new Error(`${language} has no listening pod to audition on`), { status: 404 })
+      const voiceIds = ((req.body || {}).voiceIds || []).map((s) => String(s).trim()).filter(Boolean)
+      if (!voiceIds.length) throw Object.assign(new Error('voiceIds is required'), { status: 400 })
+      const max = Math.min(Number((req.body || {}).max) || POD_SAMPLE_PREPARE_MAX, POD_SAMPLE_PREPARE_MAX)
+      const out = await samplesModule.prepare({
+        language, voiceIds, line, maxVoices: max, force: Boolean((req.body || {}).force),
+        renderOne: (a) => runner().renderOne(a),
+      })
+      logger.log?.(`[voicelab] pod audition: ${out.rendered.length} clip(s) for ${language} (${out.chars} chars) for ${who(user)}`)
+      res.json({ ok: true, maxPerPress: POD_SAMPLE_PREPARE_MAX, ...out })
+    } catch (err) { fail(res, err, `pod-prepare ${req.params.language}`) }
+  })
+
+  /**
+   * PICK — this voice is what this LANGUAGE's pod speaks in.
+   *
+   * Writes one app_config row (pod_voice_picks) and nothing else: no render, no
+   * queue, no course_audio, no listening_pods write. The pick is what
+   * tools/pod-sync.cjs casts through and what phase8 refuses to render without.
+   *
+   * `expect` is the stale-tab guard: pass the pick the screen was showing and a
+   * pick that has moved underneath is refused rather than overwritten.
+   */
+  app.put('/api/voicelab/pod-voices/:language/pick', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const language = String(req.params.language || '').trim()
+      const { gender, voice, expect } = req.body || {}
+      await picksStore.savePick(supabase(), { language, gender, voice, by: who(user), expect })
+      podVoices.invalidate()
+      logger.log?.(`[voicelab] pod voice picked: ${language} ${gender} -> ${voice && voice.voice_id} by ${who(user)}`)
+      res.json({ ok: true, language, gender, pick: picksStore.pickFor(await picksStore.loadPicks(supabase()), language, gender) })
+    } catch (err) { fail(res, err, `pod-pick ${req.params.language}`) }
+  })
+
+  app.delete('/api/voicelab/pod-voices/:language/pick', async (req, res) => {
+    const user = await requireAdmin(req, res)
+    if (!user) return
+    try {
+      const language = String(req.params.language || '').trim()
+      const gender = String(req.query.gender || '')
+      await picksStore.clearPick(supabase(), { language, gender })
+      podVoices.invalidate()
+      logger.log?.(`[voicelab] pod voice pick cleared: ${language} ${gender} by ${who(user)}`)
+      res.json({ ok: true, language, gender })
+    } catch (err) { fail(res, err, `pod-pick-clear ${req.params.language}`) }
   })
 
   /**

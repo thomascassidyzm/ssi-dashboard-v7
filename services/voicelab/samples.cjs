@@ -466,8 +466,12 @@ async function read ({ language, voiceIds = [], line = null }) {
  * @param {number} [maxVoices] a hard bound on one press, so a language with 400
  *                             candidates cannot become a 400-clip render by accident.
  */
-async function prepare ({ language, voiceIds = [], maxVoices = 80, renderOne, force = false, onClip = null }) {
-  const state = await read({ language, voiceIds })
+async function prepare ({ language, voiceIds = [], maxVoices = 80, renderOne, force = false, onClip = null, line = null }) {
+  // `line` is supplied by a caller that already knows WHICH words the
+  // comparison is being made on — the POD VOICES lane auditions candidates on a
+  // real pod sentence rather than a course seed. Omit it and the picker chooses
+  // exactly as it always has, so every existing caller is unchanged.
+  const state = await read({ language, voiceIds, line })
   if (!state.line) throw Object.assign(new Error(`no course line found for ${language}`), { status: 404 })
 
   // FORCE is the deliberate second action (Tom, 2026-08-31: "make re-generating a
