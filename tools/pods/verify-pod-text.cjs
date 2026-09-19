@@ -43,6 +43,20 @@
  *
  *   node tools/pods/verify-pod-text.cjs --pod=spa_for_eng:unrecorded
  *   … --apply
+ *
+ * WHICH SIDE IS THE DRAFT (2026-09-19). On a `*_for_eng` course the English is the
+ * KNOWN side and the machine draft is the TARGET, which is what this tool assumed from
+ * the day it was written. On an `eng_for_*` course the direction reverses: the English
+ * is the settled TARGET and the learner's own language — the machine draft — is the
+ * KNOWN side. Read the wrong way round, the verifier is handed a Bengali line as "the
+ * English" and an English line as "the draft", and it judges nothing. So the sides are
+ * arguments:
+ *
+ *   --draft-side=known   … --reference-lang=English --draft-lang=Bengali
+ *
+ * The approval columns do not reverse: there is no `known_text_approved_at`, so
+ * `target_text_draft` / `_approved_at` / `_review` remain the row's single verdict,
+ * and the review records which side it was actually about.
  */
 'use strict'
 
@@ -73,25 +87,36 @@ const MODEL_ID = arg('model-id') || 'claude-opus-5'
 const BATCH_SIZE = Number(arg('batch') || 16)
 const LIMIT = Number(arg('limit') || 0)   // 0 = no limit; for a small smoke run
 const APPROVED_BY = `verifier:${MODEL_ID}`
+// Which column holds the machine draft. `target` is the *_for_eng shape this tool was
+// born with; `known` is the eng_for_* shape, where English is the settled side.
+const DRAFT_SIDE = (arg('draft-side') || 'target').toLowerCase()
+if (!['known', 'target'].includes(DRAFT_SIDE)) {
+  console.error(`FAILED: --draft-side=${DRAFT_SIDE} unknown; known or target`)
+  process.exit(1)
+}
+const { sidesFor, langsFor } = require('./pod-draft-sides.cjs')
+const { draftCol: DRAFT_COL, referenceCol: REFERENCE_COL } = sidesFor(DRAFT_SIDE)
+const DRAFT_LANG_ARG = arg('draft-lang')
+const REFERENCE_LANG_ARG = arg('reference-lang')
 
-const LOG_DIR = path.join(REPO, 'docs', 'pods')
+const { evidencePath } = require('../lib/evidence-path.cjs')
 const slugSafe = POD.replace(/[^a-z0-9]+/gi, '-')
 
 // ---------------------------------------------------------------------------
 // The brief. Says what reasonable means, and — just as loudly — what it is not.
 // A verifier not told this flags half a competent corpus on taste.
 // ---------------------------------------------------------------------------
-function buildBrief(lines, targetLang) {
+function buildBrief(lines, targetLang, referenceLang) {
   return `You are a translation VERIFIER. You did not write these translations and you are seeing them for the first time. Judge them blind.
 
-Each item below is one line of a listening pod: an English line a learner hears, and a machine-drafted ${targetLang} rendering of it. Your one question for each:
+Each item below is one line of a listening pod: a settled ${referenceLang} line, and a machine-drafted ${targetLang} rendering of it. Your one question for each:
 
-  Is this a REASONABLE ${targetLang} rendering of this English line — reasonable enough that we are content to spend money turning it into audio a learner will hear?
+  Is this a REASONABLE ${targetLang} rendering of this ${referenceLang} line — reasonable enough that we are content to spend money turning it into audio a learner will hear?
 
 FLAG a line only when it is WRONG. Wrong means:
   - a mistranslation, or a meaning added or dropped
   - a register so wrong it would embarrass a learner who said it
-  - the wrong language entirely, or an English passthrough
+  - the wrong language entirely, or a ${referenceLang} passthrough
   - corrupted, mojibake or missing characters
   - leftover annotation, editorial notes, or PARENTHESES (this estate bans parentheses in learner-facing text outright)
   - obviously broken grammar
@@ -104,7 +129,7 @@ Return STRICT JSON and nothing else — no prose before or after, no markdown fe
 
 Lines to judge:
 
-${lines.map(l => JSON.stringify({ id: l.id, english: l.known_text, draft: l.target_text })).join('\n')}
+${lines.map(l => JSON.stringify({ id: l.id, source: l.reference_text, draft: l.draft_text })).join('\n')}
 `
 }
 
@@ -159,16 +184,17 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
   await db.connect()
 
   const { rows: podRows } = await db.query(
-    `SELECT p.id, p.course_code, c.target_lang
+    `SELECT p.id, p.course_code, c.target_lang, c.known_lang
        FROM listening_pods p JOIN courses c ON c.course_code = p.course_code
       WHERE p.id = $1`, [POD])
   if (!podRows.length) { console.error(`FAILED: pod not found: ${POD}`); process.exit(1) }
-  const targetLang = podRows[0].target_lang || 'the target language'
+  const { draftLang: targetLang, referenceLang } = langsFor(DRAFT_SIDE, podRows[0],
+    { draftLang: DRAFT_LANG_ARG, referenceLang: REFERENCE_LANG_ARG })
 
   // Only unapproved drafts. This is what makes a re-run cheap and idempotent:
   // an approved line is never re-verified.
   const { rows: lines } = await db.query(
-    `SELECT id, known_text, target_text
+    `SELECT id, known_text, target_text, ${REFERENCE_COL} AS reference_text, ${DRAFT_COL} AS draft_text
        FROM listening_pod_sentences
       WHERE pod_id = $1 AND target_text_draft AND target_text_approved_at IS NULL
       ORDER BY global_order` + (LIMIT ? ` LIMIT ${LIMIT}` : ''), [POD])
@@ -189,7 +215,7 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
     const checkedAt = new Date().toISOString()
     let verdicts
     try {
-      verdicts = parseVerdicts(await runClaude(buildBrief(batch, targetLang), `batch-${i + 1}`))
+      verdicts = parseVerdicts(await runClaude(buildBrief(batch, targetLang, referenceLang), `batch-${i + 1}`))
     } catch (e) {
       console.error(`[verify-pod-text] batch ${i + 1}/${batches.length} FAILED: ${e.message} — its lines stay unapproved`)
       for (const l of batch) { unjudged++; log.push({ id: l.id, verdict: 'unjudged', reason: e.message }) }
@@ -210,9 +236,10 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
         checked_at: checkedAt,
         known_text_at_check: line.known_text,
         target_text_at_check: line.target_text,
+        draft_side: DRAFT_SIDE,
       }
       if (isOk) ok++; else flagged++
-      log.push({ id: line.id, english: line.known_text, draft: line.target_text, verdict: review.verdict, reason: review.reason })
+      log.push({ id: line.id, source: line.reference_text, draft: line.draft_text, verdict: review.verdict, reason: review.reason })
       writes.push({ line, review, approve: isOk })
     }
     for (const l of batch) {
@@ -232,8 +259,8 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
                   target_text_approved_by = CASE WHEN $3 THEN $4::text ELSE NULL END,
                   target_text_review      = $5::jsonb,
                   updated_at              = now()
-            WHERE id = $1 AND target_text = $2 AND target_text_draft`,
-          [w.line.id, w.line.target_text, w.approve, APPROVED_BY, JSON.stringify(w.review)])
+            WHERE id = $1 AND ${DRAFT_COL} = $2 AND target_text_draft`,
+          [w.line.id, w.line.draft_text, w.approve, APPROVED_BY, JSON.stringify(w.review)])
         if (r.rowCount !== 1) {
           throw new Error(`DRIFT ${w.line.id}: expected one draft row carrying the words verified, matched ${r.rowCount}; batch rolled back`)
         }
@@ -250,9 +277,8 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
 
   await db.end()
 
-  const summary = { pod: POD, model: MODEL_ID, total: lines.length, ok, flagged, unjudged, rows_written: APPLY ? written : 0 }
-  const outFile = path.join(LOG_DIR, `verify-pod-text-${slugSafe}-${APPLY ? 'applied' : 'dryrun'}-log.json`)
-  fs.mkdirSync(LOG_DIR, { recursive: true })
+  const summary = { pod: POD, model: MODEL_ID, draft_side: DRAFT_SIDE, draft_lang: targetLang, reference_lang: referenceLang, total: lines.length, ok, flagged, unjudged, rows_written: APPLY ? written : 0 }
+  const outFile = evidencePath(`docs/pods/verify-pod-text-${slugSafe}-${APPLY ? 'applied' : 'dryrun'}-log.json`)
   fs.writeFileSync(outFile, JSON.stringify({ mode: APPLY ? 'APPLIED' : 'DRY_RUN', summary, log }, null, 2))
   console.log(JSON.stringify({ mode: APPLY ? 'APPLIED' : 'DRY_RUN', summary, log_file: outFile }, null, 2))
 })().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
