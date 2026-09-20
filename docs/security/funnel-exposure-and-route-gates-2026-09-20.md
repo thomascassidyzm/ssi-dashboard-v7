@@ -176,6 +176,69 @@ after. Also ran the four suites that touch `production-api.cjs`
    `/api/builds`, `/api/checkpoint`, and three under `/api/production/:courseCode/*`). The table
    below is all 221. The gap is counting method, not a missing set.
 
+## The Astra correction (#414·H), checked
+
+**Astra is right about `app.param`, and the "148 ungated" heuristic figure is not a vulnerability
+count.** `app.param('courseCode', …)` at `services/production-api.cjs:427` is registered on the app
+itself, so Express runs it before the handler of *every* directly declared route whose path
+contains `:courseCode` — not only the four mounted sub-routers. It resolves a dashboard user
+(`resolveDashboardUserCached`), then admits by casting first and grants second
+(`castingRights.courseAccessVerdict`), 401 with no identity and 403 without access. That is 123 of
+221 routes gated in one place, confirmed behaviourally: an anonymous funnelled
+`GET /api/production/fra_for_eng/info` returns 401. The real exposure was never the course routes;
+it was the control plane, which has no `:courseCode` to be gated by.
+
+Astra's three follow-ups, answered:
+
+**1. Course access is not operation permission — confirmed, and it bites the TTS spend.**
+`contentEditGate` **attributes, it does not authorise**: it resolves an editor identity, refuses
+with 401 when it cannot find one, records a `content_edit_events` row, and never consults role
+(`services/shared/content-edit-gate.cjs`). It also runs in `observe` mode by default
+(`CONTENT_EDIT_IDENTITY_MODE`), where an undeclared same-host caller is recorded as
+`undeclared-loopback` rather than refused. So for course content the *only* authority check is the
+course gate — and the course gate admits a cast voice (a recorder/artist) by casting alone.
+
+The deletion routes *are* listed in `services/shared/content-write-surfaces.cjs`
+(`DELETE …/phrases/:phraseId`, `POST …/phrases/batch-delete`, `PATCH …/phrase/:phraseId`), so they
+carry identity — but nothing stops a non-editor with course access from calling them.
+`POST …/audio-flags/bulk-delete` is **not** in that manifest at all: it deletes `audio_flags` rows,
+not course content, so the gate never sees it.
+
+The sharpest instance is the money family. The file states the posture itself at line 6517 —
+*"Admin-only — it costs TTS"* — and applies it to exactly two of six:
+
+| Route | Extra authority beyond course access |
+|---|---|
+| `POST /api/audio/regenerate-phrase/:courseCode/:phraseId` | `requireAdmin` |
+| `POST /api/audio/regenerate-lego/:courseCode/:legoId` | `requireAdmin` |
+| `POST /api/audio/regenerate-role/:courseCode` | **none** — and this one re-renders a whole role |
+| `POST /api/audio/regenerate-presentations/:courseCode` | **none** |
+| `POST /api/audio/regenerate-presentation/:courseCode/:legoId` | **none** |
+| `POST /api/audio/regenerate-single/:courseCode/:audioUuid` | **none** |
+
+Not internet-reachable — the course gate holds — so this is an insider/over-broad-grant question,
+which makes it Tom's, not mine. **I declined to gate them**: editors and recordists use audio regen
+from the UI, and a `requireAdmin` here would 403 the people whose job it is. Recommendation:
+make the four match their two siblings, or drop the admin requirement from all six and say the
+posture is course access. What is indefensible is the current split, which reads as an accident.
+
+**2. Object-to-course binding — checked, and it is sound.** Every one of the four binds the object
+to the authorised course in the query itself, so a phrase id from another course deletes nothing:
+
+- `DELETE …/phrases/:phraseId` — `.eq('course_code', courseCode).eq('id', phraseId)` (L3673)
+- `POST …/phrases/batch-delete` — `.eq('course_code', courseCode).in('id', phraseIds)` (L3714)
+- `POST …/audio-flags/bulk-delete` — `.eq('course_code', courseCode).in('audio_uuid', batch)` (L3547)
+- `PATCH …/phrase/:phraseId` — both the pre-read and the update carry `.eq('course_code', courseCode)`
+
+Astra is right that the query is the only boundary (service key, RLS bypassed); the queries hold.
+
+**3. `dashboard_users.courses` defaults to a wildcard.** Confirmed against the schema snapshot
+(`ssi-learning-app/supabase/schema.sql:9414`): `courses jsonb DEFAULT '"*"'::jsonb NOT NULL`, with
+`role text DEFAULT 'recorder'`. A row inserted without an explicit course list is granted **every
+course**, and is then indistinguishable from a deliberate wildcard grant. `userCanAccessCourse`
+treats `'*'` as all-courses, so the DB default is fail-open even though the gate's own comment
+says a missing list should deny. Worth an audit of existing rows and a `DEFAULT '[]'::jsonb`.
+
 ## The 221 routes
 
 Verdicts: **GATED** (a gate runs before the handler acts) · **GATED (FIXED)** (was open, gated on
