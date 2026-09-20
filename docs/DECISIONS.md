@@ -1,3 +1,28 @@
+## 2026-09-20 — content_audit_log tiering is live: cron on watson-1, not the in-process opt-in (survey A5, job #376)
+
+**What.** content_audit_log was 4.31M rows / 24 GB (77% of the database), never trimmed since 3 July.
+The archiver `tools/archive-audit-log.cjs` existed but was on no schedule, and its header still
+warned of a known-broken cursor. The cursor had in fact been replaced on 2026-09-12 (d6ef59478);
+measured today against the live plan on the busiest day (2026-07-31, 611,580 rows): first page
+10,398 ms on the old id cursor, 5.0 ms on (changed_at, id), prune id-pick 38 ms. No index added.
+
+**Proof before schedule.** One old day (2026-07-03, 19,158 rows, 5 tables) archived to
+`s3://ssi-audio-stage/audit-archive/dt=2026-07-03/`, every object downloaded and counted
+line-for-line against its manifest, then pruned to 0 rows. Make-before-break held.
+
+**The choice: cron, not `AUDIT_ARCHIVE_CRON=on`.** Better: the in-process scheduler caps a run at 30
+minutes, and the first catch-up is 63 days / ~4.1M rows / ~23 GB, which it would cut mid-day night
+after night. Simpler: one crontab line on the box, the pattern every other scheduled job here uses,
+logged under ~/.local/log with trim-log. Cheaper: no production API restart (another job was
+deploying it at the time). Guard: both the nightly (03:10 UTC) and the one-off catch-up unit
+`cs-long-audit-archive-catchup` take `flock -n ~/.local/state/ssi-audit-archive.lock`, because two
+runs on one day would race the manifest — the shorter second upload overwrites the first under the
+same key after the first has pruned. Settings: `--hot-days=14 --max-days=120 --execute --prune`;
+fourteen days keeps same-week recovery hot, which is what the store is for.
+
+**Not done, deliberately.** The other half of A5 — stopping the `courses` table's ~1,500 full-row
+snapshots per course per month — is a trigger change and out of this job's scope.
+
 ## 2026-09-20 — pods: one text per target language, and the key that makes it structural
 
 **Tom's ruling, verbatim, 16:34Z.** "No, this is all wrong. This is complete garbage. There's no way
