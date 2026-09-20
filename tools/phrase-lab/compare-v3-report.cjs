@@ -98,7 +98,7 @@ async function main() {
   L.push(`Every basket below was generated twice over: once by whoever built ${course} (that is what learners hear today, the LIVE arm) and once now by the v3 prompt with its real gates and scorer (the CANDIDATE arm). Both arms are judged by the same instrument, \`tools/frame-layer/qa-report.cjs\`, against a declaration derived from the live course. Seeds 1-10 are excluded from every headline figure: they are hand-tweaked and the generator has almost no inventory there, so they flatter nobody honestly.`);
 
   L.push(`\n## My read\n`);
-  L.push(`On this evidence v3 wins the mechanical comparison outright and there is no counter-list to weigh against it: PAIRED_LINE. What it does NOT yet prove is taste — every figure here is structural, and the sample is 51 baskets. So: worth regenerating the phrase layer of ${course} from seed 11 onward, but not on this document alone. The next step that earns the decision is your ear on the shortlist below, and a larger late-band run to see whether the late margin holds.`);
+  L.push(`On this evidence v3 wins the mechanical comparison outright and there is no counter-list to weigh against it: PAIRED_LINE. What it does NOT yet prove is taste — every figure here is structural, and the sample is PAIRED_N baskets out of the course's 1,457. So: worth regenerating the phrase layer of ${course} from seed 11 onward, but not on this document alone. The next step that earns the decision is your ear on the shortlist below, and a larger late-band run to see whether the late margin holds.`);
 
   L.push(`\n## The run\n`);
   L.push(`- **${ok.length} baskets generated**, of which **${blocked.length} came back BLOCKED** by the gate (a set that could not be made to pass in two retries).`);
@@ -123,7 +123,7 @@ async function main() {
     for (const p of pairs.filter(x => x.d >= -0.01).slice(0, 5)) {
       L.push(`- \`${p.k}\` **${p.lego}** — live ${f3(p.live.composite)} vs candidate ${f3(p.candidate.composite)} (+${p.d.toFixed(3)}), a tie in all but name`);
     }
-    L.push(`\nThat is a finding about a SMALL SAMPLE, not a licence: 51 paired baskets out of 1,457, and the instrument cannot hear taste. The shortlist further down is where that limit bites.`);
+    L.push(`\nThat is a finding about a SMALL SAMPLE, not a licence: PAIRED_N paired baskets out of 1,457, and the instrument cannot hear taste. The shortlist further down is where that limit bites.`);
   }
   for (const p of worse) L.push(`- \`${p.k}\` **${p.lego}** — live ${f3(p.live.composite)} vs candidate ${f3(p.candidate.composite)} (${p.d.toFixed(3)})${p.candidate.floor_failures?.length ? `, candidate misses ${p.candidate.floor_failures.join('/')}` : ''}`);
 
@@ -181,7 +181,7 @@ async function main() {
   L.push(`- Claim honesty (the generator's own frame tags) is reported by the QA tool and deliberately changes no score here.`);
   L.push(`- Nothing in this run touched \`course_practice_phrases\`. Every candidate is on disk at \`${path.join(ev, 'candidates')}\`, every score at \`${path.join(ev, 'scores')}\`.`);
 
-  const md = L.join('\n').replace('PAIRED_LINE',
+  const md = L.join('\n').split('PAIRED_N').join(String(pairs.length)).replace('PAIRED_LINE',
     `across ${pairs.length} paired baskets outside seeds 1-10 the candidate sets score ${f3(mean(pairs.map(r => r.candidate.composite || 0)))} against live's ${f3(mean(pairs.map(r => r.live.composite || 0)))}, pass the content floors ${pairs.filter(r => r.candidate.pass).length}/${pairs.length} against ${pairs.filter(r => r.live.pass).length}/${pairs.length}, and reach for roughly three times as much of the course's own vocabulary`);
   if (out) { fs.writeFileSync(out, md); console.log(`wrote ${out} (${md.length} chars, ${pairs.length} paired baskets)`); }
   else console.log(md);
