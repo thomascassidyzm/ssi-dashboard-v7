@@ -483,7 +483,7 @@ function stop() {
 //   Stage 1..    successive fusions — within sentence first, then sentences
 //                conjoin — every chunk t·k·t·t, still 1×
 //   Stage k      the chunk IS the whole turn: t·k·t·t at 1× ≡ engine Stage 1
-//   Stage k+1..  the locked speed cascade (engine Stages 2–8) on the turn,
+//   Stage k+1..  the locked speed cascade (engine Stages 2–N) on the turn,
 //                topping out at pure t@2× — no known left: immersion emerges,
 //                mature turns segue turn → turn.
 // The TURN never stops being the traversal unit (sentences don't travel
@@ -667,7 +667,10 @@ function sentenceRungDepth(s) {
     const groupSpans = groups.map((_, gi) => ({ start: gi, end: gi }))
     stageN += spanLadder(groupSpans, 'pairwise').length - 1
   }
-  return stageN + 7 // the locked speed cascade, engine Stages 2–8
+  // + the locked speed cascade: one rung per engine stage from 2 to the last
+  // (engine Stage 1 IS the whole-turn fusion rung already counted in stageN).
+  // Derived from the playlist, so the nine-rung ladder needs no edit here.
+  return stageN + (Object.keys(PROPOSED_STAGE_PLAYLIST).length - 1)
 }
 
 // The whole unified climb for the selected turn, one entry per rung (= one
@@ -959,7 +962,7 @@ const ladderRungs = computed(() => {
     }
   }
 
-  // the speed ramp: the locked engine cascade (Stages 2–8) on the whole turn
+  // the speed ramp: the locked engine cascade (Stages 2–N) on the whole turn
   const GLYPH = { ps: 't', trans: 'k', ps2x: 't@2×' }
   const lastEngineStage = Object.keys(PROPOSED_STAGE_PLAYLIST).length
   for (let es = 2; es <= lastEngineStage; es++) {
@@ -968,7 +971,7 @@ const ladderRungs = computed(() => {
       label: `Stage ${stageN} · turn — engine Stage ${es}`,
       note:
         pat.map((role) => GLYPH[role] || role).join(' · ') +
-        (es === 8 ? ' — no known left: immersion emerges, turn segues into turn' : ''),
+        (es === lastEngineStage ? ' — no known left: immersion emerges, turn segues into turn' : ''),
       steps: pat.map((role) => (role === 'trans' ? wholeTurnKnown() : wholeTurnChunk(role === 'ps2x' ? 2 : 1))),
     })
     stageN++
