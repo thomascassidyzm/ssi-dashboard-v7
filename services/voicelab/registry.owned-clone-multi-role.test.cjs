@@ -13,7 +13,7 @@
  */
 const test = require('node:test')
 const assert = require('node:assert/strict')
-const { cartesiaCandidates } = require('./registry.cjs')
+const { cartesiaCandidates, describeLanguage, guideCandidates } = require('./registry.cjs')
 
 const catalogue = {
   en: [
@@ -34,4 +34,41 @@ test('an owned clone stays listed even when already cast — findable for the gu
   const aran = out.find((c) => c.voiceId === 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe')
   assert.ok(aran, 'Aran\'s clone must still be offered after it is cast as Second Male')
   assert.equal(aran.owned, true)
+})
+
+test('describeLanguage keeps a cast owned clone on the registered path, without a catalogue duplicate', () => {
+  const voices = catalogue.en.map((v) => ({
+    voice_id: `cartesia_${v.id}`, display_name: v.name, tts_engine: 'cartesia',
+    type: 'tts', gender: v.gender, languages: ['eng'], is_active: true,
+  }))
+  const roles = voices.map((v) => ({ voice_id: v.voice_id, slot: 'phrase', gender: v.gender, rank: 0 }))
+  const voiceById = new Map(voices.map((v) => [v.voice_id, v]))
+  const out = describeLanguage({ code: 'eng', langCourses: [], roles, voices, voiceById, catalogue })
+  const clone = voices[0]
+  assert.equal(out.slots.m[0].voiceId, clone.voice_id)
+  assert.equal(out.slots.m[0].filled, true)
+  const matches = out.candidates.filter((c) => c.voiceId === clone.voice_id)
+  assert.equal(matches.length, 1, 'the clone appears exactly once')
+  assert.equal(matches[0].registered, true, 'a catalogue fallback must not mask loss of the registered candidate')
+  assert.equal(matches[0].owned, true)
+  assert.equal(matches[0].name, clone.display_name)
+  assert.ok(!out.candidates.some((c) => c.voiceId === voices[1].voice_id), 'a cast stock voice still drops out')
+})
+
+test('guideCandidates merges a catalogue-only owned clone ahead of unregistered in-use and registered voices', () => {
+  const stock = { voice_id: 'cartesia_stock-id', display_name: 'Skylar', tts_engine: 'cartesia', type: 'tts', languages: ['eng'], is_active: true }
+  const cloneId = `cartesia_${catalogue.en[0].id}`
+  const voiceById = new Map([[stock.voice_id, stock]])
+  assert.equal(voiceById.has(cloneId), false)
+  const out = guideCandidates({
+    code: 'eng', voices: [stock], voiceById, guideRoles: [], catalogue,
+    inUse: [{ voice_id: 'cartesia_existing-guide', clips: 10 }],
+  })
+  assert.deepEqual(out.map((c) => c.voiceId), [cloneId, 'cartesia_existing-guide', stock.voice_id])
+  assert.equal(out[0].owned, true)
+  assert.equal(out[0].registered, false)
+  assert.equal(out[0].inUse, false, 'the clone comes from the catalogue, not existing clips')
+  assert.equal(out[1].inUse, true)
+  assert.equal(out[1].registered, false)
+  assert.equal(out[2].registered, true)
 })
