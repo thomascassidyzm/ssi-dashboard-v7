@@ -58,7 +58,7 @@
           <label>Per-seed sandwich <span class="hint">what each seed plays in the poured cup · tap a pill to cycle its role · ↔ reorder · default: V1 → known → V1 → V2</span></label>
           <L1PlaylistEditor :modelValue="seedPlaylist" @update:modelValue="setSeedPlaylist" />
           <p class="row-desc l1-roles-key">
-            <strong>V1</strong> target voice 1 · <strong>V2</strong> target voice 2 · <strong>known</strong> the meaning (known-language clip) · <strong>·2×</strong> double-speed stretch rep. A seed with no second voice plays V1 for V2; no known audio drops the known slot.
+            <strong>V1</strong> target voice 1 · <strong>V2</strong> target voice 2 · <strong>known</strong> the meaning (known-language clip). A seed with no second voice plays V1 for V2; no known audio drops the known slot.
           </p>
         </div>
 
@@ -742,21 +742,25 @@ const PlaylistEditor = defineComponent({
 
 // ============================================================================
 // L1PlaylistEditor — the per-seed sandwich. Roles map to Layer1SlotRole in
-// useLayer1Scheduler.ts (t1/t2 = target voices, known = the meaning clip).
-// NOTE: t1x2/t2x2 stay in the role cycle only so an already-saved row still
-// renders its pills — the app cut the @2× stretch rep on 2026-07-14 and
-// buildSeedPlays now DROPS those slots, so saving one plays nothing. Reuses the pod pill colours (target = ps, known = trans,
-// 2× = ps2x) so it reads consistently. Tap a pill to cycle role, ← → reorder,
-// × remove, + add.
+// useLayer1Scheduler.ts, which is exactly t1 | t2 | known (t1/t2 = target
+// voices, known = the meaning clip). The @2× stretch roles t1x2/t2x2 were
+// offered here until 2026-09-20 and were a LIE: the app cut the stretch rep on
+// 2026-07-14, Layer1SlotRole no longer has them, and buildSeedPlays' switch
+// silently drops any slot it doesn't know — so a saved t1x2 pill played
+// nothing at all. No stored algorithm_config row contains one (checked
+// 2026-09-20), and the label/colour lookups below still fall back to the raw
+// role name, so an unexpected value would render rather than vanish. Reuses
+// the pod pill colours (target = ps, known = trans) so it reads consistently.
+// Tap a pill to cycle role, ← → reorder, × remove, + add.
 // ============================================================================
 const L1PlaylistEditor = defineComponent({
   name: 'L1PlaylistEditor',
   props: { modelValue: { type: Array, required: true } },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    const ROLES = ['t1', 'known', 't2', 't1x2', 't2x2']
-    const ROLE_LABEL = { t1: 'V1', t2: 'V2', known: 'known', t1x2: 'V1·2×', t2x2: 'V2·2×' }
-    const ROLE_COLOR = { t1: 'ps', t2: 'ps', known: 'trans', t1x2: 'ps2x', t2x2: 'ps2x' }
+    const ROLES = ['t1', 'known', 't2']
+    const ROLE_LABEL = { t1: 'V1', t2: 'V2', known: 'known' }
+    const ROLE_COLOR = { t1: 'ps', t2: 'ps', known: 'trans' }
 
     function update(next) { emit('update:modelValue', next) }
     function cycle(idx) {
