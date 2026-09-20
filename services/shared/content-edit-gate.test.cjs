@@ -353,3 +353,88 @@ describe('the log itself will not take a blank actor', () => {
     })
   })
 })
+
+// ── The round map refreshes even when the client hangs up ──────────────────
+//
+// The gate asks for a course_round_index refresh for every `legos: true`
+// surface. It used to ask on res 'finish', which only fires when a response is
+// fully written to the socket. A cross-family probe of a client disconnect —
+// socket 'close' with no 'finish' — saw ZERO refreshes although the lego write
+// had already committed: a silently short course reached by the disconnect path.
+// These two cases pin the fix from both sides: the dropped response still asks,
+// and the ordinary one still asks exactly once rather than twice.
+describe('the round map is requested once per response, dropped or not', () => {
+  const net = require('net')
+  const roundIndex = require('./round-index-refresh.cjs')
+  const realRequest = roundIndex.requestRoundIndexRefresh
+
+  let calls
+  beforeEach(() => {
+    calls = []
+    roundIndex.requestRoundIndexRefresh = (course, opts) => {
+      calls.push({ course, ...opts })
+      return Promise.resolve({ ok: true, refreshed: false, ms: 0 })
+    }
+  })
+  afterEach(() => { roundIndex.requestRoundIndexRefresh = realRequest })
+
+  // POST /api/lego is a legos:true surface in the manifest. `hold` lets a test
+  // keep the response open long enough for the client to walk away first.
+  function legoApp({ hold = 0 } = {}) {
+    const app = express()
+    app.use(express.json())
+    app.use(contentEditGate({ supabase: supabaseWithHuman(), service: 'course-builder', logger: { warn() {}, error() {}, log() {} } }))
+    app.post('/api/lego', async (req, res) => {
+      if (hold) await new Promise(r => setTimeout(r, hold))
+      res.json({ ok: true })
+    })
+    return app
+  }
+
+  it('a client that hangs up mid-response still gets the map refreshed', async () => {
+    await listen(legoApp({ hold: 120 }))
+
+    const closed = new Promise(r => server.once('request', (_req, res) => res.once('close', r)))
+    let finished = false
+    server.once('request', (_req, res) => res.once('finish', () => { finished = true }))
+
+    // A raw socket, because fetch()'s abort still lets the response finish
+    // locally — the thing being reproduced is the peer going away.
+    const body = JSON.stringify({ course_code: 'eng_for_hin', lego: 'x' })
+    const sock = net.connect(server.address().port, '127.0.0.1')
+    await new Promise(r => sock.once('connect', r))
+    sock.write(`POST /api/lego HTTP/1.1\r\nHost: 127.0.0.1\r\nContent-Type: application/json\r\n`
+      + `x-agent-id: pid-8812\r\nx-agent-role: checker\r\nContent-Length: ${Buffer.byteLength(body)}\r\n\r\n${body}`)
+    await new Promise(r => setTimeout(r, 40))   // handler is running, response not sent
+    sock.destroy()                               // the client walks away
+    await closed
+
+    expect(finished, "the probe must reproduce a close WITHOUT a finish, or it proves nothing").toBe(false)
+    expect(calls.length, 'a committed lego write must refresh the map even if nobody is listening').toBe(1)
+    expect(calls[0].course).toBe('eng_for_hin')
+    expect(calls[0].reason).toBe('course-builder:POST /api/lego')
+  })
+
+  it('an ordinary response asks exactly once, not once per event', async () => {
+    await listen(legoApp())
+    const res = await fetch(`${base}/api/lego`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json', 'x-agent-id': 'pid-8812', 'x-agent-role': 'checker' },
+      body: JSON.stringify({ course_code: 'eng_for_hin', lego: 'x' }),
+    })
+    expect(res.status).toBe(200)
+    await res.text()
+    await new Promise(r => setTimeout(r, 60))    // both 'finish' and 'close' have fired by now
+    expect(calls.length, "'close' follows 'finish' — the once-guard is what keeps that one refresh").toBe(1)
+  })
+
+  it('a non-lego surface asks for no refresh at all', async () => {
+    await listen(makeApp(supabaseWithHuman()))
+    await fetch(`${base}/api/seed/eng_for_hin/42`, {
+      method: 'PATCH', headers: { 'content-type': 'application/json', 'x-agent-id': 'pid-8812', 'x-agent-role': 'checker' },
+      body: '{}',
+    })
+    await new Promise(r => setTimeout(r, 60))
+    expect(calls.length).toBe(0)
+  })
+})
