@@ -1,6 +1,6 @@
 [Unit]
 Description=Nightly round-map rebuild at 02:40 Europe/London
-Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/refresh-round-index.cjs
+Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/refresh-round-index.cjs
 
 [Timer]
 # 02:40 London, stated in London so the twice-yearly DST shift needs no edit.

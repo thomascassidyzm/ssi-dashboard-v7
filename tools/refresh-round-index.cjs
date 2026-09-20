@@ -129,9 +129,20 @@ function describe(d) {
   return L.join('\n');
 }
 
+/**
+ * The secret lives in .env.psql, which is gitignored and provisioned per
+ * machine — so a checkout that has never been provisioned (the prod checkout,
+ * a fresh worktree) has the code but not the URL. ROUND_INDEX_ENV_PSQL names
+ * the file to read instead, which is how the nightly unit runs out of a
+ * deployment checkout while reading the secret from the one place it exists.
+ */
 function databaseUrl() {
-  const envFile = path.join(__dirname, '..', '.env.psql');
-  const url = (fsm.readFileSync(envFile, 'utf8').match(/postgresql:\/\/[^\s"']+/) || [])[0];
+  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
+  const envFile = process.env.ROUND_INDEX_ENV_PSQL || path.join(__dirname, '..', '.env.psql');
+  let raw;
+  try { raw = fsm.readFileSync(envFile, 'utf8'); }
+  catch (e) { throw new Error(`cannot read ${envFile} (${e.code}) — set ROUND_INDEX_ENV_PSQL or DATABASE_URL`); }
+  const url = (raw.match(/postgresql:\/\/[^\s"']+/) || [])[0];
   if (!url) throw new Error(`no DATABASE_URL in ${envFile}`);
   return url;
 }
