@@ -140,6 +140,19 @@ export const api = {
       { method: 'DELETE' }
     ),
 
+  // DELETING A CLONE (Tom, 2026-09-20: "can I delete clones - I have 3 of my
+  // voice and I only want to keep one"). Two calls, and the first one is the
+  // point: `removalFacts` SPENDS NOTHING and WRITES NOTHING — it answers how
+  // many rendered clips already speak with this voice and which of the two
+  // deletions it therefore qualifies for, so the screen can say that before
+  // the button rather than after it.
+  //
+  // NO CLIP IS EVER TOUCHED BY EITHER MODE. 'remove' is only offered for a
+  // voice nothing has been rendered with; 'retire' deactivates the row and
+  // leaves every existing clip exactly as it is, unre-rendered and unmoved.
+  removalFacts: (voiceId) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}/removal`),
+
   // SAMPLES — hearing a candidate voice say a real course line.
   //
   // `samples` SPENDS NOTHING: it returns what is already cached here or already
@@ -300,9 +313,12 @@ export const api = {
       method: 'POST', body: { lineIndex },
     }),
 
-  // Un-create. Refused outright while the voice is cast into any slot.
-  removeVoice: (voiceId) =>
-    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}`, { method: 'DELETE' }),
+  // Un-create. Refused outright while the voice is cast into any slot, and
+  // RETIRED rather than deleted the moment a rendered clip speaks with it —
+  // pass the `mode` that `removalFacts` above recommended, or none and let the
+  // server choose the safe one. No clip is deleted or re-rendered either way.
+  removeVoice: (voiceId, mode = null) =>
+    call(`/api/voicelab/voices/${encodeURIComponent(voiceId)}${mode ? `?mode=${mode}` : ''}`, { method: 'DELETE' }),
 }
 
 /** multipart POST. Same session gate as `call`; the browser sets the boundary. */

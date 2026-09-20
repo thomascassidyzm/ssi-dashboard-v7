@@ -27,7 +27,7 @@ import { describe, it, expect } from 'vitest'
 const fs = require('fs');
 const path = require('path');
 
-const { SURFACES } = require('./content-write-surfaces.cjs');
+const { SURFACES, LEGO_WRITING_SURFACES } = require('./content-write-surfaces.cjs');
 
 const REPO = path.resolve(__dirname, '../..');
 const CONTENT_TABLES = ['course_seeds', 'course_legos', 'course_practice_phrases'];
@@ -94,7 +94,10 @@ function derivedSurfaces() {
         continue;
       }
       const full = (owner.rawPath.startsWith('/api') ? '' : prefix) + owner.rawPath;
-      found.set(`${owner.method} ${full}`, { file, line: i + 1, table });
+      const key = `${owner.method} ${full}`;
+      const prev = found.get(key);
+      if (prev) { prev.tables.add(table); }
+      else { found.set(key, { file, line: i + 1, table, tables: new Set([table]) }); }
     }
   }
   return { found, helpers };
@@ -148,6 +151,62 @@ describe('content-write surface manifest', () => {
       + 'course_practice_phrases, so add it to content-write-surfaces.cjs and drop the '
       + 'exemption in NOT_AN_EDITING_SURFACE. Note it reads its course from ?course=, '
       + 'which courseCodeFrom() does not look at.').toBe(false);
+  });
+
+  // ─── the round map, by construction (Tom's ruling, 2026-09-20) ───────────
+  //
+  // A route that moves legos and is not flagged `legos: true` writes content
+  // that course_round_index never learns about: the learner walks to the end of
+  // the old map and the course silently ends. afr_for_eng lived there for weeks.
+  // So the flag is not a convention anyone has to remember — it is derived from
+  // the sources and asserted here, in both directions, exactly like the manifest
+  // itself. The gate does the refreshing:
+  // services/shared/round-index-refresh.cjs.
+
+  // Routes whose course_legos write happens inside a lib/ helper, which the
+  // route scanner above cannot see. Each needs a reason.
+  const LEGO_WRITERS_VIA_HELPERS = new Map([
+    ['POST /api/build/redo-undo/:courseCode',
+      'restores the snapshotted legos through lib/redo-snapshot.cjs restoreSnapshot(), '
+      + 'so course_legos is never named in the route source'],
+  ]);
+
+  it('flags every route that writes course_legos, and only those', () => {
+    const flagged = new Set(LEGO_WRITING_SURFACES.map(s => `${s.method} ${s.path}`));
+
+    const unflagged = [];
+    for (const [key, where] of derived) {
+      if (!where.tables.has('course_legos')) continue;
+      const bare = key.slice(key.indexOf(' ') + 1);
+      if (NOT_AN_EDITING_SURFACE.has(bare)) continue;
+      if (flagged.has(key)) continue;
+      unflagged.push(`${key}  (${where.file} writes course_legos)`);
+    }
+    expect(unflagged, 'These routes move legos but are not flagged `legos: true` in '
+      + 'content-write-surfaces.cjs, so course_round_index will not be refreshed after them '
+      + 'and the rounds they add stay invisible to the learner app. Add the flag:\n'
+      + unflagged.join('\n')).toEqual([]);
+
+    // The helper list is an EXCUSE, not a flag. Without this check it only
+    // silenced the over-flag half, so deleting `legos: true` from
+    // POST /api/build/redo-undo/:courseCode passed silently — the route scanner
+    // cannot see restoreSnapshot()'s write, so the under-flag half above never
+    // looks at it either, and the one route the list exists to protect was the
+    // one route nothing protected. A key here must therefore be FLAGGED.
+    const helperUnflagged = [...LEGO_WRITERS_VIA_HELPERS.keys()].filter(key => !flagged.has(key));
+    expect(helperUnflagged, 'These routes write course_legos through a lib/ helper — that is '
+      + 'why they are listed in LEGO_WRITERS_VIA_HELPERS — but they are NOT flagged `legos: true` '
+      + 'in content-write-surfaces.cjs, so course_round_index is never refreshed after them and '
+      + 'the rounds they restore stay invisible to the learner app. Add the flag (or, if the route '
+      + 'genuinely no longer writes legos, drop it from LEGO_WRITERS_VIA_HELPERS too):\n'
+      + helperUnflagged.join('\n')).toEqual([]);
+
+    const overflagged = [...flagged].filter(key =>
+      !derived.get(key)?.tables.has('course_legos') && !LEGO_WRITERS_VIA_HELPERS.has(key));
+    expect(overflagged, 'These surfaces are flagged `legos: true` but no longer write '
+      + 'course_legos — drop the flag (or give the helper a reason in '
+      + 'LEGO_WRITERS_VIA_HELPERS) so the list keeps meaning what it says:\n'
+      + overflagged.join('\n')).toEqual([]);
   });
 
   it('every listed course-builder route still exists in the sources', () => {

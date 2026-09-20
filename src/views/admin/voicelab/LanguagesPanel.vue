@@ -97,10 +97,11 @@
  *   slot: the same voices, the same line, heard once. The list is now drawn
  *   once, under the cast.
  *
- *   ASSIGNMENT IS AN ACT ON A VOICE. Each row carries the six targets — M·pri,
- *   M·bak, F·pri, F·bak, G·pri, G·bak — so a voice goes somewhere without
- *   navigating anywhere, and a target a voice cannot take (wrong gender, not a
- *   guide candidate, human-recorded refusal) is not drawn at all.
+ *   ASSIGNMENT IS AN ACT ON A VOICE. Each row carries every target the language
+ *   has — M·pri, M·bak, M·bak2, F·pri, F·bak, F·bak2, G·pri, G·bak — so a voice
+ *   goes somewhere without navigating anywhere, and a target a voice cannot
+ *   take (wrong gender, not a guide candidate, human-recorded refusal) is not
+ *   drawn at all.
  *
  *   IT SAVES ONCE. Assignments and clears are STAGED in local state, drawn as
  *   staged, and committed by one press — the rules and the ordering live in
@@ -109,10 +110,19 @@
  *   named in the report and LEFT STAGED, so a refusal can never hide behind the
  *   word "saved".
  *
- * ALL SIX SLOTS ARE IN ONE GRID, and the guide's two are still their own kind
+ * EVERY SLOT IS IN ONE GRID, and the guide's two are still their own kind
  * of slot: their own label, their own note underneath, and still never counted
  * toward complete/partial/uncast. One grid is what "satisfy that whole language
  * in one go" means; the rule above it is untouched.
+ *
+ * THREE PER GENDER SINCE 2026-09-20 (Tom: "I think we should probably have a
+ * space for up to 3 male/female voices - for the future of when PODS have more
+ * voices - we may as well have those as optional"). CAPACITY, NOT A WORKLIST:
+ * completeness still counts the two primaries and nothing else, so a language
+ * with four more empty slots reads exactly as complete as it did yesterday, and
+ * the extra slots sit quiet rather than raising an alarm. The rank arithmetic
+ * is the server's (registry.cjs REQUIRED_RANKS / GUIDE_RANKS); this file draws
+ * whatever slots arrive.
  *
  * NOTHING WAS DELETED TO GET TIDY. The human-recorded warning, the skipped
  * courses, the consent badges, the pace readouts, the preview-clip generator
@@ -1244,23 +1254,12 @@ async function playClip (key, url) {
   audio.play().catch((e) => { playing.value = ''; error.value = e.message })
 }
 
-// ── UN-CREATING A VOICE ────────────────────────────────────────────────────
-// The control the page has never had. A clone made by accident during a live
-// demo, with somebody watching, is the case this is for. The backend refuses
-// outright while the voice is cast into any slot, so this asks once and then
-// reports whatever the backend says.
-const removeBusy = ref('')
-async function removeVoice (voiceId) {
-  if (!window.confirm(`Remove ${voiceId} from the estate, and delete it at Cartesia? Existing clips already rendered with it keep playing.`)) return
-  removeBusy.value = voiceId
-  error.value = ''
-  try {
-    await api.removeVoice(voiceId)
-    clones.value = clones.value.filter((c) => c.voice?.voice_id !== voiceId)
-    await load()
-  } catch (e) { error.value = e.message }
-  removeBusy.value = ''
-}
+// UN-CREATING A VOICE is one flow now, not two. This used to be a second,
+// unreachable `removeVoice` with a window.confirm in it — no clip count, no
+// retire, and nothing on the page called it. The live path is askRemove /
+// confirmRemove below, which reads the preflight first; `discard` on a
+// just-made clone still calls api.removeVoice directly, which is the same
+// route and is always the zero-clip case.
 
 // Auditioning is no longer a separate step with its own state: every clone is
 // heard as part of the tap that makes it (see cloneOne / submitClone), and
@@ -1561,7 +1560,11 @@ function slotLabel (slot) {
 /** The four-character version, for a button on a voice row. */
 function slotShort (slot) {
   const who = slot.slot === 'guide' ? 'G' : (slot.gender === 'm' ? 'M' : 'F')
-  return `${who}·${String(slot.rankName || '').slice(0, 3)}`
+  // THREE RANKS PER GENDER SINCE 2026-09-20, so the old first-three-letters
+  // rule made 'backup' and 'backup 2' both read "F·bac" — two buttons with the
+  // same label on the same row, which is a coin toss rather than a choice.
+  if (slot.rank === 0) return `${who}·pri`
+  return `${who}·bak${slot.rank > 1 ? slot.rank : ''}`
 }
 
 function stagedAt (lang, slot) { return staged.value[slotKey(lang, slot)] || null }
@@ -1781,6 +1784,58 @@ function langByCode (code) {
   return (data.value?.languages || []).find((l) => l.code === code) || null
 }
 
+
+// ── DELETING A CLONE (Tom, 2026-09-20) ────────────────────────────────────
+//
+//   "can I delete clones - I have 3 of my voice and I only want to keep one"
+//
+// Two taps, and the FIRST ONE ONLY READS. `removing` holds the preflight the
+// server computed — how many rendered clips already speak with this voice, and
+// therefore which of the two deletions it qualifies for — so the sentence Tom
+// reads before he confirms is the same fact the route will enforce.
+//
+// NO AUDIO IS EVER TOUCHED. A voice with clips is RETIRED: its row goes
+// inactive, it leaves every picker, and its clips play tomorrow exactly as they
+// play today — nothing is deleted, re-pointed or re-rendered (Tom's hard rule
+// the same evening: "we also must NOT re-render any old audio"). A voice
+// nothing has ever been rendered with is deleted outright, here and at
+// Cartesia. A voice still cast into a slot is refused and says which slot.
+const removing = ref(null)     // the preflight facts, or { voiceId, error }
+const removeBusy = ref(false)
+
+async function askRemove (voiceId) {
+  removing.value = { voiceId, loading: true }
+  try {
+    removing.value = await api.removalFacts(voiceId)
+  } catch (e) {
+    removing.value = { voiceId, error: e.message || String(e) }
+  }
+}
+
+function cancelRemove () { removing.value = null }
+
+async function confirmRemove (lang) {
+  const facts = removing.value
+  if (!facts || !facts.mode || facts.mode === 'blocked') return
+  removeBusy.value = true
+  try {
+    const out = await api.removeVoice(facts.voiceId, facts.mode)
+    removing.value = null
+    // The registry is rebuilt server-side on any non-GET, so the reload below
+    // is what makes the voice actually disappear from the picker in front of
+    // him rather than on the next visit.
+    await load({ force: true })
+    saveReport.value = {
+      landed: [], failed: [], skipped: [],
+      sentence: out.mode === 'retire'
+        ? `${facts.name} retired — out of every picker. Its ${facts.clips.toLocaleString('en-GB')} existing clips are untouched and nothing was re-rendered.`
+        : `${facts.name} deleted${out.atCartesia ? ', here and at Cartesia' : ''}. Nothing had been rendered with it.`,
+    }
+  } catch (e) {
+    removing.value = { ...facts, error: e.message || String(e) }
+  }
+  removeBusy.value = false
+}
 
 /**
  * THE ONE LIST. Every voice on offer for this language, phrase and guide alike,
@@ -2573,6 +2628,7 @@ function auditionList (lang) {
                   @open="toggleVoice(lang, $event, lang.code + ':audition')"
                   @hear="hearVoice(lang, $event)"
                   @consent="openConsent($event, lang.code + ':audition')"
+                  @remove="askRemove($event)"
                 >
                   <template #consent="{ voiceId }">
                     <ConsentStep
@@ -2591,6 +2647,31 @@ function auditionList (lang) {
                     />
                   </template>
                 </CandidateVoices>
+
+                <!-- WHAT DELETING WOULD DO, BEFORE IT IS DONE. The clip count
+                     is the whole decision: a voice that already speaks in the
+                     estate is retired, never deleted, and the sentence says so
+                     in the words the server computed rather than in a second
+                     opinion written here. -->
+                <div v-if="removing" class="vl-remove">
+                  <p v-if="removing.loading" class="vl-muted">reading what this voice holds…</p>
+                  <template v-else>
+                    <p class="vl-remove-line">
+                      <strong>{{ removing.name || removing.voiceId }}</strong>
+                      — {{ removing.sentence || removing.error }}
+                    </p>
+                    <p v-if="removing.error && removing.sentence" class="vl-note">{{ removing.error }}</p>
+                    <span class="vl-remove-acts">
+                      <button
+                        v-if="removing.mode && removing.mode !== 'blocked'"
+                        class="ui-sort-btn"
+                        :disabled="removeBusy"
+                        @click="confirmRemove(lang)"
+                      >{{ removeBusy ? 'Working…' : (removing.mode === 'retire' ? 'Retire it — keep every clip' : 'Delete it') }}</button>
+                      <button class="ui-sort-btn" :disabled="removeBusy" @click="cancelRemove()">Cancel</button>
+                    </span>
+                  </template>
+                </div>
 
                 <!-- ── WHAT A CAST HERE WILL NOT SPEAK OVER ─────────────────
                      Tom's ruling, 2026-08-31: name the human-recorded courses
@@ -2730,6 +2811,11 @@ function auditionList (lang) {
 
 .vl-detail td { background: var(--surface-2); }
 .vl-note { margin: .25rem 0 .75rem; }
+/* The delete preflight. Drawn, not coloured (ui-tokens.css doctrine): it is a
+   question being asked, not an alarm. */
+.vl-remove { border: 1px dashed var(--border, rgba(127,127,127,.5)); border-radius: 6px; padding: .5rem .6rem; margin: .5rem 0; }
+.vl-remove-line { margin: 0 0 .4rem; }
+.vl-remove-acts { display: flex; gap: .4rem; }
 /* The human-recording notice reads as information, never as an error: a real
    recording is the best outcome a slot can have, not a fault. */
 .vl-note-human {

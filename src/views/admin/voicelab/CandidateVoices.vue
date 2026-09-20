@@ -81,7 +81,7 @@ defineProps({
   rendering: { type: String, default: '' },
 })
 
-defineEmits(['play', 'assign', 'open', 'hear', 'consent'])
+defineEmits(['play', 'assign', 'open', 'hear', 'consent', 'remove'])
 
 /**
  * NO CONSENT, NO CAST BUTTON (Tom's ruling, 2026-08-31).
@@ -150,6 +150,12 @@ function blockedFor (c) {
       >▷</button>
 
       <button class="vl-cand-name" :title="paceTitle(c)" @click="$emit('open', c.voiceId)">{{ c.name }}</button>
+      <!-- OUR OWN CLONE, SAID ON THE ROW (Tom, 2026-09-20: "our own clones
+           should be always findable - prioritised above any other filter").
+           The registry sorts these to the top of every list; the badge is what
+           makes that visible rather than merely true, because "aran_english_003"
+           among four hundred vendor names does not read as ours. -->
+      <span v-if="c.owned" class="ui-pill vl-cand-owned" title="Cloned by this estate — always offered, for every slot, ahead of every vendor voice">our clone</span>
       <span class="vl-cand-kind ui-pill ui-hue-quiet">{{ c.kind }}</span>
       <!-- CONSENT, ON THE VOICE, WHEREVER THE VOICE APPEARS (Tom, 2026-08-31).
            A clone nobody has authorised must not look like an authorised one at
@@ -186,6 +192,19 @@ function blockedFor (c) {
         >{{ t.assigned ? '✓ ' : '' }}{{ t.short }}</button>
       </span>
       <span v-else class="vl-cand-notarget">{{ noTargetText }}</span>
+
+      <!-- DELETE A CLONE WE MADE. Offered on OUR OWN voices only: a vendor's
+           catalogue voice is not ours to delete, and a human recordist's row is
+           the record of a person. The tap opens the preflight in the panel —
+           how many clips already speak with this voice, and therefore whether
+           it is deleted outright or retired — and NOTHING is decided here. -->
+      <button
+        v-if="c.owned && c.registered"
+        class="ui-sort-btn vl-cand-del"
+        title="Delete this clone — the screen first says how many existing clips speak with it. No audio is ever deleted or re-rendered."
+        :disabled="busy"
+        @click="$emit('remove', c.voiceId)"
+      >delete…</button>
     </div>
 
     <!-- THE JUDGING SET. Several lines, of deliberately different lengths, from
@@ -237,6 +256,9 @@ function blockedFor (c) {
    underneath the next card. Clipped controls are unpressable and look like a
    decision has been taken away. The row wraps onto a second line instead. */
 .vl-cand-name { flex: 1 1 8rem; }
+.vl-cand-owned { border-style: solid; font-weight: 600; }
+.vl-cand-del { opacity: .7; }
+.vl-cand-del:hover { opacity: 1; }
 .vl-cand:hover { background: var(--surface-2, rgba(127, 127, 127, .08)); }
 .vl-cand-play, .vl-cand-cast {
   border: 1px solid var(--line); background: transparent; color: inherit;

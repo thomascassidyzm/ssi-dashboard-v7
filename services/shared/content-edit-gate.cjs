@@ -17,6 +17,17 @@
 //   3. If a handler returns 2xx without having called .record(), the gate
 //      records a default event on response finish. Coverage is not left to a
 //      handler remembering.
+//   4. If the surface is flagged `legos: true`, it asks — on ANY response, 2xx
+//      or not, because those handlers commit legos before they can still fail —
+//      for a course_round_index refresh — the round map the learner app
+//      walks — so a course cannot ship with a map shorter than its own content
+//      (Tom's ruling, 2026-09-20). It fires on res 'close' as well as 'finish',
+//      once, so a client that hangs up mid-response still refreshes the map
+//      its write already changed. This lives HERE, in the one middleware every
+//      content write already passes through, precisely so it cannot be
+//      forgotten by the next route somebody adds; the alternative, a call at
+//      the bottom of each handler, is the shape that let afr_for_eng sit nine
+//      rounds short for weeks. See services/shared/round-index-refresh.cjs.
 //
 // TRANSITION MODE (CONTENT_EDIT_IDENTITY_MODE)
 //   'enforce' — no identity, no write. Full stop.
@@ -36,6 +47,12 @@
 const { resolveEditorIdentity, isTrustedLoopback } = require('./editor-identity.cjs');
 const { recordContentEdit } = require('./content-edit-log.cjs');
 const { findSurface, courseCodeFrom } = require('./content-write-surfaces.cjs');
+// Required as a MODULE OBJECT, not a destructured binding: the call below is
+// dispatched through roundIndex.requestRoundIndexRefresh at fire time, which is
+// the seam content-edit-gate.test.cjs swaps to count refresh requests. A
+// destructured copy cannot be swapped, and the once-guard could then only be
+// asserted by proxy.
+const roundIndex = require('./round-index-refresh.cjs');
 
 const UNDECLARED = Object.freeze({
   kind: 'service',
@@ -134,7 +151,52 @@ function contentEditGate({ supabase, service, logger = console }) {
       get eventId() { return eventId; },
     };
 
+    // THE ROUND MAP FIRES ON 'close', NOT ON 'finish' (2026-09-20).
+    // 'finish' means "the response was fully written to the socket". A client
+    // that hangs up mid-response — a dashboard tab closed during a long seed
+    // submission, a curl interrupted, a proxy timing out — never emits it, and
+    // a cross-family probe of exactly that case saw ZERO refreshes while the
+    // lego write had already COMMITTED: the silent stale map again, reached by
+    // the disconnect path instead of the error path.
+    // 'close' always emits, for every response, and always AFTER 'finish' when
+    // there was one. Registering on both with a once-guard keeps the fast,
+    // ordinary path unchanged and covers the dropped one, exactly once either
+    // way — a second refresh is only coalesced, not free.
+    let refreshRequested = false;
+    function requestRefreshOnce() {
+      if (refreshRequested) return;
+      refreshRequested = true;
+      // Fire-and-log: the response has already gone, so the ~0.8s refresh costs
+      // the caller nothing, and the helper coalesces a burst of seed
+      // submissions into one run. It never rejects, so this cannot turn a
+      // successful write into a failure.
+      //
+      // ON ANY RESPONSE, NOT ONLY A 2xx. The lego-writing handlers commit the
+      // lego row and THEN write its phrases (seed-complete.cjs /api/lego,
+      // /api/batch, /api/seed/complete all have that shape), so a phrase
+      // failure answers 500 — or a ZUT check answers 400 — with legos already
+      // in the table. Gating the refresh on 2xx skipped exactly those cases and
+      // left the map short of content that had landed: the afr_for_eng failure
+      // again, reached by the error path. The alternative, a
+      // req.contentEdit.legosWritten signal set after each successful lego
+      // upsert, means threading a flag through seven route files and every
+      // lib/ helper that writes legos (redo-snapshot's restoreSnapshot has no
+      // req at all) — and it drifts the moment somebody adds the eighth. A
+      // wasted refresh on a failed write costs one coalesced ~0.8s statement
+      // off the caller's path; a missed one costs a silently short course.
+      roundIndex.requestRoundIndexRefresh(
+        courseCodeFrom(params, req.path || req.url, req.body) || courseCode,
+        { reason: surfaceLabel },
+      ).catch(() => {});
+    }
+    if (surface.legos) {
+      res.on('finish', requestRefreshOnce);
+      res.on('close', requestRefreshOnce);
+    }
+
     // Safety net: a 2xx from a handler that never recorded still gets an event.
+    // This one stays on 'finish' alone: it asks about res.statusCode, which
+    // only means anything once a response was actually sent.
     res.on('finish', () => {
       if (eventId || recording) return;
       // A record-only GET logs only when its handler actually initialised

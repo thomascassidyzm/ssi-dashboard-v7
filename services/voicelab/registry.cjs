@@ -74,8 +74,24 @@ const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identi
 /**
  * How many ranks are TRACKED (and shown) per (language, gender) slot — primary
  * plus however many backups the estate wants visible.
+ *
+ * THREE PER GENDER SINCE 2026-09-20 (Tom: "I think we should probably have a
+ * space for up to 3 male/female voices - for the future of when PODS have more
+ * voices - we may as well have those as optional"). Three is CAPACITY, not a
+ * worklist: the two extra ranks are optional and quiet, and COMPLETE_RANKS
+ * below is untouched, so a language with four empty extra slots reads exactly
+ * as complete as it did with two. The `voice_language_roles` rank check allows
+ * 0..5, so this needs no migration.
  */
-const REQUIRED_RANKS = Number(process.env.VOICELAB_REQUIRED_RANKS || 2)
+const REQUIRED_RANKS = Number(process.env.VOICELAB_REQUIRED_RANKS || 3)
+
+/**
+ * The GUIDE slot keeps TWO ranks, deliberately, and does not follow the phrase
+ * slots to three. A guide is one voice speaking instructions to a learner; the
+ * pod cast is what wanted room for three, and multiplying guide backups would
+ * add four empty rows per language for a decision nobody is making.
+ */
+const GUIDE_RANKS = Number(process.env.VOICELAB_GUIDE_RANKS || 2)
 
 /**
  * How many of those ranks make a language COMPLETE.
@@ -91,6 +107,71 @@ const COMPLETE_RANKS = 1
 
 /** The genders every language is expected to carry. Matches voices.gender. */
 const GENDERS = Object.freeze(['m', 'f'])
+
+/**
+ * ── OUR OWN CLONES ARE ALWAYS FINDABLE (Tom's standing rule, 2026-09-20) ────
+ *
+ *   "our own clones should be always findable - prioritised above any other
+ *    filter … at the moment I can't select Aran's voice as the guide"
+ *
+ * A voice this estate CLONED — Tom's, Aran's, any voice made with our own
+ * Cartesia key — appears in every picker this screen draws, for every slot
+ * including the guide, ahead of everything else, and is never removed by a
+ * language filter, the 80-item cap, the registered/unregistered split or the
+ * `voiceById` dedupe.
+ *
+ * WHY IT BROKE THE SECOND TIME. The 2026-08-29 fix put owned CATALOGUE voices
+ * ahead of the cap, and that half still works. What it could not do was say
+ * anything about a clone that ALSO has a `voices` row — and by 2026-09-20 all
+ * four English clones did. Those rows came down the registered path, which
+ * never carried the `owner` flag, so `owned` was undefined on every candidate
+ * in the estate: nothing sorted them up, nothing badged them, and Aran's clone
+ * sat at position 18 of 28 in the guide list under the plain name
+ * `aran_english_003`. Ownership is therefore read from the catalogue ONCE and
+ * stamped on every candidate, whichever path built it.
+ *
+ * THE ONE FILTER OWNERSHIP DOES NOT BEAT is `is_active`. Retiring a voice
+ * (see the retire mode on DELETE /api/voicelab/voices/:voiceId) is how Tom
+ * deletes a clone he no longer wants while its rendered clips keep playing —
+ * so a retired clone must stay out of the pickers, or "delete" would not
+ * delete anything he can see.
+ */
+function ownedCloneIds (catalogue) {
+  const ids = new Set()
+  for (const list of Object.values(catalogue || {})) {
+    for (const v of list || []) if (v && v.owner) ids.add(`cartesia_${v.id}`)
+  }
+  return ids
+}
+
+/**
+ * RETIRED VOICES STAY GONE, even the owned ones.
+ *
+ * Retiring a clone (DELETE /api/voicelab/voices/:voiceId?mode=retire) sets
+ * `voices.is_active = false` and touches no audio — it is how Tom removes a
+ * clone he no longer wants while its rendered clips keep playing exactly as
+ * they are. The registered candidate list already drops an inactive row, but
+ * an owned CLONE also exists in Cartesia's own catalogue, so without this it
+ * would walk straight back into the picker as "this estate's Cartesia clone"
+ * — and now at the TOP of the list, because owned sorts first. Retiring has to
+ * beat ownership or it deletes nothing anybody can see.
+ */
+function dropRetired (candidates, voices) {
+  const retired = new Set((voices || []).filter((v) => v.is_active === false).map((v) => v.voice_id))
+  if (!retired.size) return candidates
+  return candidates.filter((c) => !retired.has(c.voiceId))
+}
+
+/**
+ * Stable: owned first, everything else in the order it was already in. Never
+ * re-orders the rest, because the existing order is deliberate elsewhere
+ * (in-use guide voices before stock, registered before catalogue).
+ */
+function ownedFirst (candidates) {
+  const owned = candidates.filter((c) => c.owned)
+  if (!owned.length) return candidates
+  return [...owned, ...candidates.filter((c) => !c.owned)]
+}
 
 /** Human-readable rank names, so the UI never has to invent them. */
 function rankName (rank) {
@@ -263,6 +344,10 @@ async function build (db, opts = {}) {
   }
 
   const reference = paceReference()
+  // Read ONCE from the catalogue and carried onto every candidate, registered
+  // or not — see ownedCloneIds above.
+  const ownedIds = ownedCloneIds(catalogue)
+
   const languages = [...byLang.entries()]
     .map(([code, langCourses]) => describeLanguage({
       code,
@@ -280,6 +365,7 @@ async function build (db, opts = {}) {
       voiceById,
       voices,
       catalogue,
+      ownedIds,
       knownCourses: knownCounts.get(code) || 0,
       guideInUse: inUseByLang.get(baseLanguageOfCastKey(code)) || [],
       courses,
@@ -424,11 +510,14 @@ function dialectLabel (langCourses) {
 }
 
 /** One language's row. */
-function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySource = null, langCourses, roles, voiceById, voices, catalogue = {}, knownCourses = 0, guideInUse = [], paceReference = null, courses = [], humanRows = [] }) {
+function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySource = null, langCourses, roles, voiceById, voices, catalogue = {}, ownedIds = null, knownCourses = 0, guideInUse = [], paceReference = null, courses = [], humanRows = [] }) {
   // `code` is the CAST key — what a slot is written against. `base` is the
   // language a provider knows about. For a non-dialect row they are the same
   // string, so every question below is unchanged for the 60-odd plain rows.
   const base = baseCode || code
+  // A caller that did not compute the owned set gets it derived here, so no
+  // path through this module can silently lose ownership.
+  const owned = ownedIds || ownedCloneIds(catalogue)
   const human = isHumanVoiceLang(base)
   const cartesiaCovers = policy.cartesiaCoversLanguage(base)
   // Asked once, here, so the row's provider, cause and reason cannot disagree.
@@ -491,7 +580,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
   // a guide row records the voice's own gender and is passed through untouched
   // so the writer can round-trip it; nothing reads it to make a decision.
   const guideSlots = []
-  for (let rank = 0; rank < REQUIRED_RANKS; rank += 1) {
+  for (let rank = 0; rank < GUIDE_RANKS; rank += 1) {
     const role = guideRoles.find((r) => r.rank === rank)
     const voice = role ? voiceById.get(role.voice_id) : null
     guideSlots.push({
@@ -594,7 +683,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       // Any active castable voice that declares this language. NOT filtered by
       // gender — a guide is one voice, and the male/female split is a property
       // of the phrase slots only.
-      candidates: guideCandidates({ code: base, voices, guideRoles, voiceById, inUse: guideInUse, catalogue }),
+      candidates: guideCandidates({ code: base, voices, guideRoles, voiceById, inUse: guideInUse, catalogue, ownedIds: owned }),
     },
     // Voices that CAN speak this language and are not yet cast — the candidate
     // list, so casting is a click rather than a search.
@@ -607,7 +696,10 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
     // copy that says it is not registered. Measured live 2026-08-30 on a clone
     // created through the deployed route. `guideCandidates` already took this
     // posture; the phrase-slot list did not.
-    candidates: dedupeByVoiceId(voices
+    // OWNED FIRST, THEN THE CAP. The sort happens BEFORE the slice, which is
+    // what makes "always findable" true rather than merely intended: an owned
+    // clone cannot be the 81st row of an English list of 431.
+    candidates: ownedFirst(dedupeByVoiceId(voices
       .filter((v) => v.is_active !== false)
       .filter((v) => castable(v))
       .filter((v) => (v.languages || []).some((l) => sameLang(l, base)))
@@ -615,8 +707,8 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       // `pace` rides along on the candidate too, so the numbers are visible on
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
-      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, pace: paceOf(v), consent: consent.describe(v), ...catalogueFactsById(v.voice_id, catalogue) }))
-      .concat(cartesiaCandidates(base, catalogue, roles)))
+      .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, owned: owned.has(v.voice_id), pace: paceOf(v), consent: consent.describe(v), ...catalogueFactsById(v.voice_id, catalogue) }))
+      .concat(dropRetired(cartesiaCandidates(base, catalogue, roles), voices))))
       .slice(0, 80),
   }
 }
@@ -684,7 +776,8 @@ function providerOfVoiceId (id) {
  * anything can render with, and casting it would fill a slot with something
  * that cannot speak.
  */
-function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogue = {} }) {
+function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogue = {}, ownedIds = null }) {
+  const owned = ownedIds || ownedCloneIds(catalogue)
   const taken = new Set((guideRoles || []).map((r) => r.voice_id))
   const registered = voices
     .filter((v) => v.is_active !== false)
@@ -698,6 +791,7 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogu
       engine: v.tts_engine || null,
       gender: v.gender || null,
       registered: true,
+      owned: owned.has(v.voice_id),
       inUse: false,
       consent: consent.describe(v),
     }))
@@ -720,11 +814,13 @@ function guideCandidates ({ code, voices, guideRoles, voiceById, inUse, catalogu
   // estate cloned is exactly the kind of voice a guide slot is cast from, and
   // it had no way onto this list at all (Tom, 2026-08-29: he could not see his
   // own clone among English's voices). Offered, never auto-assigned.
-  const ownedClones = cartesiaCandidates(code, catalogue, guideRoles || [])
+  const ownedClones = dropRetired(cartesiaCandidates(code, catalogue, guideRoles || []), voices)
     .filter((c) => c.owned)
     .filter((c) => !taken.has(c.voiceId) && !seen.has(c.voiceId) && !voiceById.has(c.voiceId))
     .map((c) => ({ ...c, inUse: false }))
-  return [...unregistered, ...ownedClones, ...registered].slice(0, 80)
+  // Owned first — a clone that has a `voices` row arrives through `registered`
+  // and would otherwise sit wherever the database happened to return it.
+  return ownedFirst([...unregistered, ...ownedClones, ...registered]).slice(0, 80)
 }
 
 /**
@@ -1044,4 +1140,4 @@ async function cachedBuild (db, opts = {}) {
 /** The casting slots this registry knows about. 'phrase' is the default in the DB. */
 const SLOTS = Object.freeze(['phrase', 'guide'])
 
-module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, catalogueFacts, catalogueFactsById, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, guideVoicesInUse, REQUIRED_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
+module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, catalogueFacts, catalogueFactsById, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, ownedCloneIds, ownedFirst, dropRetired, guideVoicesInUse, REQUIRED_RANKS, GUIDE_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }

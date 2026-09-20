@@ -11,6 +11,15 @@
 //
 // `operation` is what goes in content_edit_events.operation. `service` names the
 // process, so the log distinguishes the same-looking path on 3470 from 3471.
+//
+// `legos: true` marks a surface that INSERTS, UPDATES or DELETES course_legos.
+// The gate refreshes course_round_index after those and only those, so a course
+// cannot ship with a round map shorter than its own content (Tom's ruling,
+// 2026-09-20 — see services/shared/round-index-refresh.cjs). A phrase-only or
+// seed-only write moves no round, so it pays nothing. Forgetting the flag on a
+// new lego-writing route is a test failure, not a silent stale course:
+// content-write-surfaces.test.cjs re-derives the course_legos writers from the
+// route sources and fails on a mismatch in either direction.
 
 /** Course-code shape, e.g. spa_for_eng / eng_for_jpn. */
 const COURSE_CODE_RE = /^[a-z]{2,4}_for_[a-z]{2,4}$/;
@@ -18,25 +27,29 @@ const COURSE_CODE_RE = /^[a-z]{2,4}_for_[a-z]{2,4}$/;
 // ─── course-builder-api (port 3471) ───────────────────────────────────────
 const COURSE_BUILDER = [
   // The seed editor — the surface the ruling came from.
-  { method: 'POST',   path: '/api/course/:courseCode/edit-cascade',        operation: 'seed-retranslate' },
+  { method: 'POST',   path: '/api/course/:courseCode/edit-cascade',        operation: 'seed-retranslate', legos: true },
   { method: 'POST',   path: '/api/course/:courseCode/approve-seeds',       operation: 'approve' },
   { method: 'POST',   path: '/api/course/:courseCode/translate',           operation: 'translate' },
   { method: 'POST',   path: '/api/course/:courseCode/reset-translations',  operation: 'reset-translations' },
   { method: 'PATCH',  path: '/api/seed/:courseCode/:seedNumber',           operation: 'seed-update' },
 
   // Decomposition submit — the agent build path.
-  { method: 'POST',   path: '/api/seed/complete',                          operation: 'decomposition-submit' },
-  { method: 'POST',   path: '/api/lego',                                   operation: 'lego-submit' },
-  { method: 'POST',   path: '/api/batch',                                  operation: 'batch-submit' },
-  { method: 'POST',   path: '/api/v2/decompose/finalize/:courseCode',      operation: 'decomposition-finalize' },
+  { method: 'POST',   path: '/api/seed/complete',                          operation: 'decomposition-submit', legos: true },
+  { method: 'POST',   path: '/api/lego',                                   operation: 'lego-submit', legos: true },
+  { method: 'POST',   path: '/api/batch',                                  operation: 'batch-submit', legos: true },
+  { method: 'POST',   path: '/api/v2/decompose/finalize/:courseCode',      operation: 'decomposition-finalize', legos: true },
   { method: 'POST',   path: '/api/v2/phrases/:courseCode',                 operation: 'phrases-write' },
-  { method: 'POST',   path: '/api/course/:code/finalize',                  operation: 'draft-finalize' },
-  { method: 'POST',   path: '/api/course/:courseCode/components/backfill', operation: 'component-backfill' },
+  { method: 'POST',   path: '/api/course/:code/finalize',                  operation: 'draft-finalize', legos: true },
+  { method: 'POST',   path: '/api/course/:courseCode/components/backfill', operation: 'component-backfill', legos: true },
 
   // Build-lane mutations that destroy or re-approve content.
-  { method: 'POST',   path: '/api/build/rebuild/:courseCode',              operation: 'rebuild-wipe' },
-  { method: 'POST',   path: '/api/build/redo/:courseCode',                 operation: 'redo-wipe' },
-  { method: 'POST',   path: '/api/build/redo-undo/:courseCode',            operation: 'redo-undo' },
+  { method: 'POST',   path: '/api/build/rebuild/:courseCode',              operation: 'rebuild-wipe', legos: true },
+  { method: 'POST',   path: '/api/build/redo/:courseCode',                 operation: 'redo-wipe', legos: true },
+    // redo-undo re-inserts the snapshotted legos through lib/redo-snapshot.cjs
+  // restoreSnapshot(), so the route source itself never names course_legos and
+  // the scanner cannot derive this one. Flagged by hand; LEGO_WRITERS_VIA_HELPERS
+  // in the drift test carries the same reason.
+  { method: 'POST',   path: '/api/build/redo-undo/:courseCode',            operation: 'redo-undo', legos: true },
   { method: 'POST',   path: '/api/build/mass-approve/:courseCode',         operation: 'approve' },
   { method: 'POST',   path: '/api/build/set-flags/:courseCode',            operation: 'flag' },
   { method: 'POST',   path: '/api/build/clear-flags/:courseCode',          operation: 'unflag' },
@@ -132,4 +145,7 @@ function courseCodeFrom(params, pathname, body) {
   return null;
 }
 
-module.exports = { SURFACES, COURSE_BUILDER, RECORD_ONLY, PRODUCTION_API, findSurface, courseCodeFrom, COURSE_CODE_RE };
+/** Every surface that mutates course_legos — the ones the round map depends on. */
+const LEGO_WRITING_SURFACES = SURFACES.filter(s => s.legos);
+
+module.exports = { SURFACES, COURSE_BUILDER, RECORD_ONLY, PRODUCTION_API, LEGO_WRITING_SURFACES, findSurface, courseCodeFrom, COURSE_CODE_RE };

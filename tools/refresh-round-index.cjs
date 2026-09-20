@@ -129,23 +129,12 @@ function describe(d) {
   return L.join('\n');
 }
 
-/**
- * The secret lives in .env.psql, which is gitignored and provisioned per
- * machine — so a checkout that has never been provisioned (the prod checkout,
- * a fresh worktree) has the code but not the URL. ROUND_INDEX_ENV_PSQL names
- * the file to read instead, which is how the nightly unit runs out of a
- * deployment checkout while reading the secret from the one place it exists.
- */
-function databaseUrl() {
-  if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
-  const envFile = process.env.ROUND_INDEX_ENV_PSQL || path.join(__dirname, '..', '.env.psql');
-  let raw;
-  try { raw = fsm.readFileSync(envFile, 'utf8'); }
-  catch (e) { throw new Error(`cannot read ${envFile} (${e.code}) — set ROUND_INDEX_ENV_PSQL or DATABASE_URL`); }
-  const url = (raw.match(/postgresql:\/\/[^\s"']+/) || [])[0];
-  if (!url) throw new Error(`no DATABASE_URL in ${envFile}`);
-  return url;
-}
+// ONE MECHANISM, NOT TWO (Tom's ruling, 2026-09-20). The write paths refresh
+// this view as their last act through services/shared/round-index-refresh.cjs;
+// this tool is the BACKSTOP that catches a write path nobody wired. It runs the
+// same statement, resolved the same way, from that one module — so the nightly
+// and the write paths can never disagree about what a refresh is.
+const { REFRESH_SQL, databaseUrl } = require('../services/shared/round-index-refresh.cjs');
 
 async function run({ check = false, force = false, json = false } = {}) {
   const { Client } = require('pg');
@@ -162,7 +151,7 @@ async function run({ check = false, force = false, json = false } = {}) {
     }
 
     if (!json) console.log('refreshing course_round_index (CONCURRENTLY)...');
-    await client.query('REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index');
+    await client.query(REFRESH_SQL);
 
     const after = drift((await client.query(DRIFT_QUERY)).rows);
     if (!json) { console.log('AFTER:'); console.log(describe(after)); }
@@ -172,7 +161,7 @@ async function run({ check = false, force = false, json = false } = {}) {
   }
 }
 
-module.exports = { drift, describe, DRIFT_QUERY, run };
+module.exports = { drift, describe, DRIFT_QUERY, databaseUrl, run };
 
 if (require.main === module) {
   const json = process.argv.includes('--json');
