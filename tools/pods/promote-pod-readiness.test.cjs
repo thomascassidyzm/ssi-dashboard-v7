@@ -120,3 +120,25 @@ describe('promotionBlockers — the checks promote-pod already had, still bindin
     expect(blockersFor(fit(), { clashes }).join(' ')).toMatch(/already exist on other pods/)
   })
 })
+
+// ONE POD TEXT PER TARGET LANGUAGE, at the two doors onto the serving slug
+// (Tom, 2026-09-20: "all pods will be exactly the same for the language").
+// Promoting a pod that has forked from its language puts a second version of that
+// language in front of learners, and nothing downstream would notice. There is no
+// --allow escape, for the same reason the known side has none.
+describe('one pod text per target language', () => {
+  it('refuses a staged pod whose lines differ from the language canon', () => {
+    const blockers = blockersFor(fit(), { langText: { off_canon: 4, lang_has_canon: true, canonical_lang_text: true } })
+    expect(blockers.some(b => /differ from this language's canonical pod text/.test(b))).toBe(true)
+  })
+
+  it('refuses a pod that matches but has never been bound to its language', () => {
+    const blockers = blockersFor(fit(), { langText: { off_canon: 0, lang_has_canon: true, canonical_lang_text: false } })
+    expect(blockers.some(b => /not bound to it/.test(b))).toBe(true)
+  })
+
+  it('says nothing about a language that has no canonical text yet', () => {
+    const blockers = blockersFor(fit(), { langText: { off_canon: 0, lang_has_canon: false, canonical_lang_text: false } })
+    expect(blockers.some(b => /language/.test(b))).toBe(false)
+  })
+})

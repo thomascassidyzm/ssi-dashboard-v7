@@ -1,3 +1,61 @@
+## 2026-09-20 — pods: one text per target language, and the key that makes it structural
+
+**Tom's ruling, verbatim, 16:34Z.** "No, this is all wrong. This is complete garbage. There's no way
+that courses should be different. That's the whole point. I've been talking about this for weeks
+now... All courses will be exactly the same for the language. Sorry, all pods will be exactly the
+same for the language. It's completely unacceptable to have lots of different versions of the
+language... And you also need to make a note. This has been in the documentation of four weeks."
+
+**The four-week provenance he is pointing at.** This was already doctrine and already written down.
+`tools/pods/CLAUDE.md` records the ruling as 2026-08-13 — "pods are per LANGUAGE, not per course" —
+and `database/migrations/20260813b_estate_map_pods_per_language.sql` made the collapse measurable in
+`estate_map()` the same day. `tools/pods/pod1-regen-queue-by-language.cjs` (2026-08-23) carries his
+words "They will be per language I think. Because POD1 is based on languages not courses", and
+`services/pod-voice-picks.cjs` (2026-09-19) carries "Of course you know that pods are per language
+and not per course?". Five weeks of documents, and the store was still keyed by `course_code` at
+every layer. That gap is what the anger is about.
+
+**His refinement, 16:36Z, which is the model.** "The canonical already is there as a canonical
+course. It just happens to be expressed in English." So there is ONE canonical 231-line story —
+`canonical_pod_scenarios`, `pod_slug='pod-1'`, `variant_key IS NULL`, in English, with a literal
+`[target language]` placeholder on the five lines that name what is being learnt — and ONE
+translation of it per target language. A course's copy is a candidate translation, not a rival
+canon.
+
+**What the texts actually were.** Measured against the live database that afternoon: the audit that
+prompted this had compared two different stories. Held `pod-1-231` target text against the live
+231-line `*_for_eng` pod of the same language, joined on `global_order`, gives ZERO differing
+sentences for deu, eus, fra, ita, spa and zho. There was nothing divergent to discard. The
+complaint was never that the texts differed; it was that nothing prevented them from differing.
+
+**So the deliverable is the key, not a de-duplication.** `canonical_pod_target_text` holds one
+translation per target language, keyed by `split_part(course_code,'_for_',1)` — the same expression
+`targetLangFromCourseCode()` and `poolKeysForCourse()` already use, which keeps regional variants as
+distinct languages (spa vs spa_mx, cym_n vs cym_s, fra vs fra_ca, ara vs ara_eg vs ara_sy). Each row
+points at the canonical English line it translates. `listening_pods.canonical_lang_text` binds a pod
+to it, and binding is refused unless the pod already matches line for line, so a boolean can never
+rewrite somebody's live pod. `known_text` stays per course: the learner's own language legitimately
+differs.
+
+**Enforced in the database, not in four JS surfaces.** A rule guarded at one door is not guarded —
+jobs #91 and #93 are the history. The one layer the Popty tools, the learning app, the booth router
+and a stray psql session all share is Postgres, so the guard is a trigger there. It PROPAGATES
+rather than refuses: an edit to one course's bound pod moves the canon row and every sibling pod of
+that language inside the same transaction. An artist correcting a French line in the booth is
+correcting French, not `fra_for_eng`, and that sits on Tom's own 2026-09-12 exemption that a booth
+text correction does not make the slot a new sentence.
+
+**What did not change.** No course's serving pod was flipped and no learner-facing text moved:
+re-keying the store and changing what a learner hears are two different acts, and the second one
+goes through `pod-switchover.cjs` with its progress migration. Nothing was deleted. No audio was
+rendered.
+
+Migration: `database/changes/20260920_pod_one_text_per_target_language.sql`.
+Backfill: `tools/pods/bind-pod-text-to-language.cjs`. Tests:
+`tools/pods/pod-one-text-per-language.test.cjs`, `services/shared/pod-language-text.test.cjs`.
+
+---
+
 ## 2026-09-19 — listening-lab: the ten-visit ladder, and the end of the "eternal" top rung (job #286·A)
 
 **Tom's ruling, verbatim.** "ok listening lab is better but each stage should repeat once - for

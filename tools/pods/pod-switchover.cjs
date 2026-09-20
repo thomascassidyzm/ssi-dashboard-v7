@@ -313,6 +313,18 @@ function readinessBlockers (counts, { rehearsal = false } = {}) {
   if (num(counts.no_target_audio) > 0) blockers.push(`${counts.no_target_audio} staged sentences have no target audio`)
   if (num(counts.no_known_text) > 0) blockers.push(`${counts.no_known_text} staged sentences have no known text`)
   if (num(counts.no_known_audio) > 0) blockers.push(`${counts.no_known_audio} staged sentences have no known audio`)
+  // ONE POD TEXT PER TARGET LANGUAGE (Tom, 2026-09-20: "all pods will be exactly the
+  // same for the language"). A staged pod that holds the canonical story but is NOT
+  // bound to its language's canon is the fork about to happen: promoting it puts a
+  // second version of that language in front of learners, and nothing downstream would
+  // notice. `off_canon` counts lines that differ from the language text; `unbound` is
+  // the pod declining to be the language at all. Bind it with
+  // tools/pods/bind-pod-text-to-language.cjs, which refuses unless it already matches.
+  if (num(counts.off_canon) > 0) {
+    blockers.push(`${counts.off_canon} staged sentences differ from this language's canonical pod text — one pod text per target language (Tom, 2026-09-20)`)
+  } else if (counts.lang_has_canon && !counts.canonical_lang_text) {
+    blockers.push('this language has a canonical pod text and the staged pod is not bound to it — run tools/pods/bind-pod-text-to-language.cjs')
+  }
   return blockers
 }
 
@@ -409,6 +421,24 @@ async function main () {
        from listening_pod_sentences where pod_id = $1`,
     [`${COURSE}:${STAGED}`]
   )
+  // The language-text facts the readiness predicate needs, read beside the rest.
+  const { rows: [lt] } = await db.query(
+    `select coalesce(p.canonical_lang_text, false) canonical_lang_text,
+            exists (select 1 from canonical_pod_target_text c
+                     where c.pod_slug = 'pod-1'
+                       and c.target_lang = split_part(p.course_code, '_for_', 1)) lang_has_canon,
+            (select count(*) from listening_pod_sentences s
+               left join canonical_pod_target_text c
+                 on c.pod_slug = 'pod-1'
+                and c.target_lang = split_part(p.course_code, '_for_', 1)
+                and c.global_order = s.global_order
+              where s.pod_id = p.id
+                and c.target_text is not null
+                and s.target_text is distinct from c.target_text) off_canon
+       from listening_pods p where p.id = $1`,
+    [`${COURSE}:${STAGED}`]
+  )
+  Object.assign(s, lt || {})
   const liveN = await countOf(LIVE)
 
   log(`${COURSE}: live ${LIVE}=${liveN} sentences, staged ${STAGED}=${s.n} sentences`)

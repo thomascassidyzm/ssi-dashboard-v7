@@ -265,6 +265,36 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
           throw new Error(`DRIFT ${w.line.id}: expected one draft row carrying the words verified, matched ${r.rowCount}; batch rolled back`)
         }
         written++
+
+        // A VERDICT IS ABOUT THE LANGUAGE, NOT THE COURSE (Tom, 2026-09-20: "all
+        // pods will be exactly the same for the language"). Every bound pod of this
+        // target language holds these exact words at this exact line — the database
+        // guarantees it — so a verifier that read them once has read them for all of
+        // them. Approving only this course's row would leave the identical French
+        // sentence sitting as unread draft in every other French course, and the next
+        // pass would pay an LLM to read it again and could reach a different verdict.
+        // Matched on the WORDS as well as the line, so a row whose text moved under us
+        // is left alone rather than credited with a reading of something else.
+        //
+        // TARGET SIDE ONLY. known_text is legitimately per course — it is the
+        // learner's own language — so a known-side verdict stays where it was made.
+        if (DRAFT_SIDE === 'target') await db.query(
+          `UPDATE listening_pod_sentences sib
+              SET target_text_approved_at = CASE WHEN $3 THEN now() ELSE NULL END,
+                  target_text_approved_by = CASE WHEN $3 THEN $4::text ELSE NULL END,
+                  target_text_review      = $5::jsonb,
+                  updated_at              = now()
+             FROM listening_pods sp, listening_pods mine
+            WHERE sib.pod_id = sp.id
+              AND mine.id = $6
+              AND sp.canonical_lang_text AND mine.canonical_lang_text
+              AND split_part(sp.course_code, '_for_', 1) = split_part(mine.course_code, '_for_', 1)
+              AND sib.global_order = (select global_order from listening_pod_sentences where id = $1)
+              AND sib.target_text = $2
+              AND sib.id <> $1
+              AND sib.target_text_draft
+              AND sib.target_text_approved_at IS NULL`,
+          [w.line.id, w.line.draft_text, w.approve, APPROVED_BY, JSON.stringify(w.review), POD])
       }
       await db.query('COMMIT')
     } catch (e) {

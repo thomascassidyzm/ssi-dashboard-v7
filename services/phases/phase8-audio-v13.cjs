@@ -8364,6 +8364,28 @@ app.post('/generate-pods/:courseCode', async (req, res) => {
         })
       }
       logger.info(`[Pods] PICK ok ${courseCode}: ${required.map((r) => `${r.language}/${r.gender}`).join(', ')}`)
+
+      // ── THE ONE-TEXT-PER-LANGUAGE GATE (Tom's ruling, 2026-09-20) ────────
+      // "All pods will be exactly the same for the language." The store makes a
+      // fork impossible; this refuses to SPEND on one that predates the store.
+      // Same exemptions as the pick gate above: sample and link-only never reach
+      // here, and a language with no canonical text yet is not refused.
+      const podLangText = require('../shared/pod-language-text.cjs')
+      for (const pod of pods) {
+        const facts = await podLangText.readLanguageTextFacts(supabase, courseCode, pod.id)
+        const refusal = podLangText.languageTextRefusal(facts)
+        if (refusal) {
+          logger.warn(`[Pods] TEXT REFUSED ${courseCode}: ${refusal.reason}`)
+          return res.status(409).json({
+            error: refusal.reason,
+            course_code: courseCode,
+            pod_id: pod.id,
+            target_lang: facts.targetLang,
+            lines_off_canon: facts.offCanon,
+            message: refusal.message,
+          })
+        }
+      }
     }
 
     // LANGUAGE-LEVEL REUSE FOR EVERY POD (Tom, 2026-09-13). No canon ceremony,

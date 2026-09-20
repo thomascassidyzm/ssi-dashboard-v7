@@ -158,7 +158,7 @@ function retailOf (course, id) {
  * Returns every failure, so one run tells you everything wrong rather than one
  * thing at a time.
  */
-function promotionBlockers ({ rows, srcId, course, fromSlug, clashes = [], allow = {} }) {
+function promotionBlockers ({ rows, srcId, course, fromSlug, clashes = [], allow = {}, langText = {} }) {
   const { drafts: ALLOW_DRAFTS = false, emptyTarget: ALLOW_EMPTY_TARGET = 0, missingAudio: ALLOW_MISSING_AUDIO = false } = allow
   const retail = (id) => retailOf(course, id)
   const blockers = []
@@ -194,6 +194,12 @@ function promotionBlockers ({ rows, srcId, course, fromSlug, clashes = [], allow
     no_target_audio: ALLOW_MISSING_AUDIO ? 0 : rows.filter(r => !r.target_audio_id).length,
     no_known_text: rows.filter(r => !trimmed(r.known_text)).length,
     no_known_audio: rows.filter(r => !r.known_audio_id).length,
+    // ONE POD TEXT PER TARGET LANGUAGE (Tom, 2026-09-20). Read beside the rows and
+    // handed straight to the shared predicate, so both doors onto the serving slug
+    // refuse the same fork. NO --allow escape, for the same reason the known side has
+    // none: a promotion that puts a second version of a language in front of learners
+    // has no legitimate case — bind the pod instead.
+    ...langText,
   }
   // The zero-row case is already said above, in this tool's own words.
   blockers.push(...readinessBlockers(counts).filter(b => b !== 'staged pod has no sentences'))
@@ -245,6 +251,20 @@ async function main () {
     const blockers = promotionBlockers({
       rows: srcRows, srcId, course: COURSE, fromSlug: FROM, clashes,
       allow: { drafts: ALLOW_DRAFTS, emptyTarget: ALLOW_EMPTY_TARGET, missingAudio: ALLOW_MISSING_AUDIO },
+      langText: (await db.query(
+        `select coalesce(p.canonical_lang_text, false) canonical_lang_text,
+                exists (select 1 from canonical_pod_target_text c
+                         where c.pod_slug = 'pod-1'
+                           and c.target_lang = split_part(p.course_code, '_for_', 1)) lang_has_canon,
+                (select count(*)::int from listening_pod_sentences s
+                   left join canonical_pod_target_text c
+                     on c.pod_slug = 'pod-1'
+                    and c.target_lang = split_part(p.course_code, '_for_', 1)
+                    and c.global_order = s.global_order
+                  where s.pod_id = p.id
+                    and c.target_text is not null
+                    and s.target_text is distinct from c.target_text) off_canon
+           from listening_pods p where p.id = $1`, [srcId])).rows[0] || {},
     })
 
     // Never silent about reachability: a dry run states what learners will be
