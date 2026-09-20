@@ -1,0 +1,22 @@
+[Unit]
+Description=Nightly rebuild of the round map the learner app walks (course_round_index)
+Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/refresh-round-index.cjs
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean
+ExecStart=/usr/bin/node /home/tomcassidy/SSi/ssi-dashboard-v7-clean/tools/round-index/nightly.cjs
+# Two grouped aggregates and one REFRESH ... CONCURRENTLY over ~120k rows. The
+# work is all Postgres-side, but this box is four cores carrying Tom's chat, ten
+# Popty services and the render queue: back seat, and a hard cap so a wedged
+# refresh can never sit on the box until morning.
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=30min
+# Exit 2 means it could not run, and it has already posted a notice saying so by
+# then. Read the log, not systemd's opinion of the unit.
+SuccessExitStatus=0 2
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/ssi-round-index-unit.log
+StandardError=append:/home/tomcassidy/.local/log/ssi-round-index-unit.log
