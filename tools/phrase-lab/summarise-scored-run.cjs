@@ -102,23 +102,44 @@ function block(title, pairs) {
   return out.join('\n');
 }
 
+// A POOL EXHAUSTION is not a generator finding — see splitErrors' callers.
+const POOL_WINDOW = /session limit|rate.?limit|usage limit|429/i;
+function splitErrors(errored) {
+  return {
+    exhausted: errored.filter((l) => POOL_WINDOW.test(String(l.error))),
+    realErrors: errored.filter((l) => !POOL_WINDOW.test(String(l.error))),
+  };
+}
+
 function runLogSummary(runDir) {
   const p = path.join(runDir, 'candidates', 'run-log.jsonl');
   if (!fs.existsSync(p)) return '_no run log found_';
   const lines = fs.readFileSync(p, 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
   const errored = lines.filter((l) => !l.ok);
   const blocked = lines.filter((l) => l.ok && l.blocked);
+  // A POOL EXHAUSTION is not a generator finding. The CLI returning "you've hit
+  // your session limit" says the account ran out of window, and counting those
+  // beside unparseable-output errors would report the pool's state as though it
+  // were the prompt's quality. Split them; the basket is simply not yet done and
+  // the run resumes onto it.
+  const { exhausted, realErrors } = splitErrors(errored);
   const out = [`${lines.length} baskets attempted — ${lines.filter((l) => l.ok && !l.blocked).length} generated clean, `
-    + `**${blocked.length} BLOCKED by the gate**, **${errored.length} errored** (unparseable model output or a thrown call).`, ''];
+    + `**${blocked.length} BLOCKED by the gate**, **${realErrors.length} errored** on unparseable model output or a thrown call`
+    + (exhausted.length ? `, and **${exhausted.length} did not run at all because the account hit its pool window** `
+      + `(not a generator finding; those baskets are simply still to do and the run resumes onto them).` : '.'), ''];
   if (blocked.length) {
     out.push('| blocked basket | seed | failing gates | declaration floors |', '|---|---|---|---|');
     for (const b of blocked) out.push(`| ${b.lego_id} | ${b.seed} | ${(b.failingGates || []).join(', ') || '—'} | ${(b.declarationFloors || []).join(', ') || '—'} |`);
     out.push('');
   }
-  if (errored.length) {
+  if (realErrors.length) {
     out.push('| errored basket | seed | error |', '|---|---|---|');
-    for (const e of errored) out.push(`| ${e.lego_id} | ${e.seed} | ${String(e.error).slice(0, 120)} |`);
+    for (const e of realErrors) out.push(`| ${e.lego_id} | ${e.seed} | ${String(e.error).slice(0, 120)} |`);
     out.push('');
+  }
+  if (exhausted.length) {
+    const seeds = [...new Set(exhausted.map((e) => e.seed))].sort((a, b) => a - b);
+    out.push(`Pool-window casualties touched seeds ${seeds[0]}-${seeds[seeds.length - 1]} (${exhausted.length} baskets).`, '');
   }
   const times = lines.filter((l) => l.elapsedMs).map((l) => l.elapsedMs / 1000);
   if (times.length) out.push(`Median basket ${Math.round(times.sort((a, b) => a - b)[Math.floor(times.length / 2)])}s.`, '');
@@ -184,4 +205,5 @@ function main() {
   console.log(claimHonesty(rows) + '\n');
 }
 
-main();
+if (require.main === module) main();
+module.exports = { splitErrors };
