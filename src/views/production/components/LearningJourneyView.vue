@@ -1085,7 +1085,7 @@ const itemFlagTitle = (item: ScriptItem): string => {
     case 'debut-audio':
       return `No ${rolesPhrase(item.missingAudioRoles)} audio for this LEGO — the player skips the debut cycle only; the rest of the round plays.`
     case 'seed-audio':
-      return 'The player needs voice 1 on this seed sentence; without it it substitutes a use phrase, so this row never plays.'
+      return `No ${rolesPhrase(item.missingAudioRoles)} audio on this seed sentence — the whole-seed visit is a full prompt → gap → voice 1 → voice 2 cycle, so without every clip the player substitutes a use phrase and this row never plays.`
     case 'phrase-audio':
     default:
       return `No ${rolesPhrase(item.missingAudioRoles)} audio for this phrase — the player skips this row.`

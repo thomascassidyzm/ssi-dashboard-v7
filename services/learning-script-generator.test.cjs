@@ -23,7 +23,9 @@ const {
   applyLearnerPhraseAudioGate,
   numberRounds,
   FIBONACCI,
-  SEED_PHASE_START_OFFSET,
+  SEED_REVIEW_START_OFFSET,
+  REVIEW_OFFSET_CEILING,
+  reviewOffsets,
   DEFAULT_SCRIPT_SHAPE,
 } = require('./learning-script-generator.cjs')
 
@@ -77,42 +79,38 @@ describe('calculateSpacedRepReviews — offset expansion from config shape', () 
   })
 })
 
-// --- spaced-rep seed-sentence extension (post-89) --------------------------
+// --- the rung ladder: 1..89 then 144, and nothing past it -------------------
 
-describe('FIBONACCI series extension past the historical tail', () => {
-  it('extends past 89 to span a full course (finite — no clamp-and-repeat)', () => {
+describe('reviewOffsets — the code ceiling on the configured tail', () => {
+  it('trims the live config row to the eleven rungs a review can fire at', () => {
+    // The live algorithm_config.script_shape row still carries the long
+    // Fibonacci tail; BOTH generators trim it in code, not in the row.
+    expect(reviewOffsets(FIBONACCI)).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144])
+    expect(REVIEW_OFFSET_CEILING).toBe(233)
+  })
+
+  it('keeps the fallback series intact — the ceiling is the filter, not the row', () => {
     expect(FIBONACCI.slice(9)).toEqual([89, 144, 233, 377, 610, 987, 1597, 2584])
-    // The series terminates at 2584 (first Fibonacci term past ~2000 LEGOs).
-    expect(FIBONACCI[FIBONACCI.length - 1]).toBe(2584)
   })
 
-  it('schedules reviews at the mid-tail offsets when the course is long enough', () => {
-    // Round 378 reaches offsets up to 377 (378-610 < 1 breaks before 610).
-    const reviews = calculateSpacedRepReviews(378, FIBONACCI)
-    const offsetsUsed = reviews.map(r => 378 - r.legoIndex)
-    expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377])
-  })
-
-  it('reviews the earliest LEGO late in a full-length course (offset 2584 → round 1)', () => {
-    // A 2585-round course still reviews round 1 at the final offset.
-    const reviews = calculateSpacedRepReviews(2585, FIBONACCI)
+  it('schedules nothing past 144 however long the course runs', () => {
+    // Round 2585 would once have reviewed round 1 at offset 2584.
+    const reviews = calculateSpacedRepReviews(2585, reviewOffsets(FIBONACCI))
     const offsetsUsed = reviews.map(r => 2585 - r.legoIndex)
-    expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584])
-    expect(reviews[reviews.length - 1].legoIndex).toBe(1)
+    expect(offsetsUsed).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144])
   })
 })
 
-describe('reviewItemIsSeed — the 89 → 144 boundary', () => {
-  it('SEED_PHASE_START_OFFSET is 144 (the first term past 89)', () => {
-    expect(SEED_PHASE_START_OFFSET).toBe(144)
+describe('reviewItemIsSeed — the whole-seed rungs', () => {
+  it('SEED_REVIEW_START_OFFSET is 89 (Tom, 2026-09-20)', () => {
+    expect(SEED_REVIEW_START_OFFSET).toBe(89)
   })
 
-  it('the 89-step is still a use-phrase; 144 and beyond are seeds', () => {
-    expect(reviewItemIsSeed(89)).toBe(false)   // last use-phrase
-    expect(reviewItemIsSeed(143)).toBe(false)
-    expect(reviewItemIsSeed(144)).toBe(true)    // first seed
-    expect(reviewItemIsSeed(233)).toBe(true)
-    expect(reviewItemIsSeed(377)).toBe(true)
+  it('1..55 stay LEGO-level; 89 and 144 are the whole seed', () => {
+    expect(reviewItemIsSeed(55)).toBe(false)
+    expect(reviewItemIsSeed(88)).toBe(false)
+    expect(reviewItemIsSeed(89)).toBe(true)
+    expect(reviewItemIsSeed(144)).toBe(true)
   })
 })
 
@@ -269,14 +267,13 @@ describe('numberRounds — an audio gap never costs a round NUMBER', () => {
 })
 
 // ---------------------------------------------------------------------------
-// Seed-phase review for GRADUATED seeds (parity with the learner app,
-// generateLearningScript.ts:1251 / :1439).
+// WHOLE-SEED visits for GRADUATED seeds (parity with the learner app).
 //
 // A graduated seed drops out of USE-PHRASE spaced rep but stays eligible for
-// SEED-PHASE production review (skip offset >= SEED_PHASE_START_OFFSET, where
-// the review item is the full parent seed sentence). Popty used to skip a
-// graduated seed from spaced rep ENTIRELY, losing every seed-phase review.
-// This fixture pins BOTH halves: the >=144 seed review is emitted, the <144
+// the whole-seed visit (skip offset >= SEED_REVIEW_START_OFFSET, where the
+// review item is the full parent seed sentence). Popty used to skip a
+// graduated seed from spaced rep ENTIRELY, losing every one of them. This
+// fixture pins BOTH halves: the 89/144 seed visits are emitted, the sub-89
 // use-phrase review of a graduated seed is still suppressed.
 // ---------------------------------------------------------------------------
 
@@ -376,7 +373,7 @@ function makeFakeSupabase({ legoRows, phraseRows, seedRows }) {
   }
 }
 
-describe('generateLearningScript — graduated seeds keep their seed-phase reviews', () => {
+describe('generateLearningScript — graduated seeds keep their whole-seed visits', () => {
   const fixture = makeFixture()
   const supabase = makeFakeSupabase(fixture)
 
@@ -384,7 +381,7 @@ describe('generateLearningScript — graduated seeds keep their seed-phase revie
   // graduated long ago (LEGO ordinal 1 vs current 145, graduation offset 30).
   const run = () => generateLearningScript(supabase, COURSE, 20, 140)
 
-  it('emits the >=144 review as the graduated seed\'s full sentence', async () => {
+  it('emits the 144 rung as the graduated seed\'s full sentence', async () => {
     const { rounds } = await run()
     const round145 = rounds.find(r => r.roundNumber === 145)
     expect(round145).toBeTruthy()
@@ -405,10 +402,16 @@ describe('generateLearningScript — graduated seeds keep their seed-phase revie
 
     // Offset 34 → round 111; that seed graduated (ordinal 111 vs 144 at the
     // last graduation check, gap 33 >= 30) so no use-phrase review is due.
-    for (const offset of [34, 55, 89]) {
+    for (const offset of [34, 55]) {
       const review = round145.items.find(i => i.type === 'review' && i.legoIndex === 145 - offset)
       expect(review, `offset ${offset} must stay suppressed`).toBeUndefined()
     }
+
+    // 89 is now a WHOLE-SEED rung, so the graduated seed at round 56 comes
+    // back as its own sentence rather than being suppressed.
+    const at89 = round145.items.find(i => i.type === 'review' && i.legoIndex === 56)
+    expect(at89.reviewItemKind).toBe('seed')
+    expect(at89.known_text).toBe('seed sentence 56')
 
     // Offset 21 → round 124, NOT yet graduated: an ordinary use-phrase review,
     // which since 2026-08-30 renders as the LEGO plus its whole USE basket
@@ -523,12 +526,21 @@ describe('annotatePlayerDelivery — per-row flags', () => {
     expect(out[1].missingAudioRoles).toEqual(['target2'])
   })
 
-  it('needs only target1 for a seed-sentence review, and says so when it is absent', () => {
-    const ok = annotatePlayerDelivery(
+  it('needs ALL THREE clips for a whole-seed visit — it is a four-phase cycle, not a flash', () => {
+    // The retired target-only sandwich needed target1 alone; the whole-seed
+    // visit is known prompt → gap → voice 1 → voice 2 (Tom, 2026-09-20).
+    const half = annotatePlayerDelivery(
       [mkItem('review', { reviewItemKind: 'seed', known_audio_uuid: null, target2_audio_uuid: null })],
       { lego: fullLego }
     )
-    expect(ok[0].playerCanDeliver).toBe(true)
+    expect(half[0].playerCanDeliver).toBe(false)
+    expect(half[0].missingAudioRoles).toEqual(['known', 'target2'])
+
+    const whole = annotatePlayerDelivery(
+      [mkItem('review', { reviewItemKind: 'seed' })],
+      { lego: fullLego }
+    )
+    expect(whole[0].playerCanDeliver).toBe(true)
 
     const bad = annotatePlayerDelivery(
       [mkItem('review', { reviewItemKind: 'seed', target1_audio_uuid: null })],
@@ -1055,5 +1067,105 @@ describe('gloss alignment on a row', () => {
         { span: 1, known: '' }, { span: 1, known: '' }, { span: 1, known: '' },
       ])
     })
+  })
+})
+
+// ---------------------------------------------------------------------------
+// WHOLE-SEED visits fire ONCE PER SEED (Tom, 2026-09-20: "you're going to get
+// the whole seed four or five times in a row" — the thing this prevents).
+//
+// A four-LEGO seed occupies four consecutive rounds, so per-LEGO keying would
+// bring the same sentence back in four rounds running at rung 89 and again at
+// 144. Only the seed's LAST LEGO — its anchor — speaks for it.
+// ---------------------------------------------------------------------------
+
+const LEGOS_PER_SEED = 4
+const mLegoId = (s, l) => 'S' + String(s).padStart(4, '0') + 'L' + String(l).padStart(2, '0')
+
+function makeMultiLegoFixture(seedCount = 60) {
+  const legoRows = []
+  const phraseRows = []
+  const seedRows = []
+  for (let s = 1; s <= seedCount; s++) {
+    seedRows.push({
+      seed_number: s,
+      known_text: `seed sentence ${s}`,
+      target_text: `saatzsatz ${s}`,
+      known_audio_id: `sk-${s}`,
+      target1_audio_id: `st1-${s}`,
+      target2_audio_id: `st2-${s}`,
+    })
+    for (let l = 1; l <= LEGOS_PER_SEED; l++) {
+      legoRows.push({
+        lego_id: mLegoId(s, l),
+        seed_number: s,
+        lego_index: l,
+        type: 'A',
+        is_new: true,
+        known_text: `lego ${s}.${l}`,
+        target_text: `zielwort ${s}.${l}`,
+        known_audio_id: `k-${s}-${l}`,
+        target1_audio_id: `t1-${s}-${l}`,
+        target2_audio_id: `t2-${s}-${l}`,
+        presentation_audio_id: `p-${s}-${l}`,
+      })
+      phraseRows.push({
+        id: `b-${s}-${l}`, course_code: COURSE, seed_number: s, lego_index: l, position: 1,
+        phrase_role: 'build', known_text: `build ${s}.${l}`, target_text: `bauen ${s}.${l}`,
+        known_audio_id: `bk-${s}-${l}`, target1_audio_id: `bt1-${s}-${l}`, target2_audio_id: `bt2-${s}-${l}`,
+      })
+      for (let u = 1; u <= 2; u++) {
+        phraseRows.push({
+          id: `u-${s}-${l}-${u}`, course_code: COURSE, seed_number: s, lego_index: l, position: 1 + u,
+          phrase_role: 'use', known_text: `use ${s}.${l}.${u}`, target_text: `nutzen ${s}.${l}.${u}`,
+          known_audio_id: `uk-${s}-${l}-${u}`, target1_audio_id: `ut1-${s}-${l}-${u}`, target2_audio_id: `ut2-${s}-${l}-${u}`,
+        })
+      }
+    }
+  }
+  return { legoRows, phraseRows, seedRows }
+}
+
+describe('generateLearningScript — the whole seed comes back once per seed', () => {
+  // Seed 1 takes rounds 1-4, so offset 89 reaches it across rounds 90-93 —
+  // one round per LEGO. Only round 93 (its LEGO 4, the anchor) may emit.
+  const run = () => generateLearningScript(makeFakeSupabase(makeMultiLegoFixture()), COURSE, 12, 85)
+
+  it('emits ONE whole-seed visit for a four-LEGO seed at rung 89, on its anchor LEGO', async () => {
+    const { rounds } = await run()
+    const visits = rounds
+      .filter(r => r.roundNumber >= 90 && r.roundNumber <= 93)
+      .flatMap(r => r.items.map(i => ({ ...i, round: r.roundNumber })))
+      .filter(i => i.reviewItemKind === 'seed' && i.seedNumber === 1)
+
+    expect(visits).toHaveLength(1)
+    expect(visits[0].round).toBe(93)
+    expect(visits[0].legoId).toBe(mLegoId(1, LEGOS_PER_SEED))
+    expect(visits[0].reviewOffset).toBe(89)
+    // It is the parent SENTENCE, served as an ordinary four-phase cycle.
+    expect(visits[0].known_text).toBe('seed sentence 1')
+    expect(visits[0].target_text).toBe('saatzsatz 1')
+    expect(visits[0].known_audio_uuid).toBe('sk-1')
+    expect(visits[0].target2_audio_uuid).toBe('st2-1')
+  })
+
+  it('emits NOTHING at rung 89 for the seed\'s non-anchor LEGOs', async () => {
+    // The whole seed speaks for all of its parts at this rung, so a non-anchor
+    // LEGO's 89-slot is silent rather than falling back to a use-phrase — the
+    // learner does exactly this.
+    const { rounds } = await run()
+    for (const round of [90, 91, 92]) {
+      const at89 = rounds.find(r => r.roundNumber === round)
+        .items.filter(i => i.type === 'review' && i.reviewOf === round - 89)
+      expect(at89, `round ${round} has no 89-rung item`).toHaveLength(0)
+    }
+    // ...while the shorter rungs in those rounds are untouched.
+    const round90 = rounds.find(r => r.roundNumber === 90)
+    expect(round90.items.some(i => i.type === 'review' && i.reviewOf === 89)).toBe(true)
+  })
+
+  it('runs the ladder the learner runs — rungs 1..89 and 144, nothing past it', async () => {
+    const { stats } = await run()
+    expect(stats.spacedRepOffsets).toEqual([1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144])
   })
 })

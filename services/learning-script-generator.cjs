@@ -39,10 +39,15 @@
  * 1. INTRO  - presentation audio ("The Japanese for X is...")
  * 2. DEBUT  - the LEGO itself
  * 3. BUILD  - up to maxBuildPhrases (syllable-sorted; USE fill after reserving)
- * 4. REVIEW - spaced rep at script_shape.spacedRepOffsets (max
- *             maxSpacedRepPhrases, N-1 gets n1PhraseCount, round-robin
- *             one LEGO per offset via legoState.lastRound; the slot renders
- *             as the LEGO + its whole USE basket, never one drawn phrase)
+ * 4. REVIEW - spaced rep at script_shape.spacedRepOffsets, trimmed by
+ *             reviewOffsets() to rungs 1..89,144 (max maxSpacedRepPhrases,
+ *             N-1 gets n1PhraseCount, round-robin one LEGO per offset via
+ *             legoState.lastRound; the slot renders as the LEGO + its whole
+ *             USE basket, never one drawn phrase). At 89 and 144 the WHOLE
+ *             SEED sentence returns instead, once per seed (anchor LEGO only)
+ *             and outside the phrase budget — Tom's ruling, 2026-09-20.
+ *   Whole-seed parity: ssi-learning-app dev 9d077979 (job #312, 2026-09-20),
+ *   "the whole seed comes back at 89 and 144, keyed per seed".
  * 5. CONSOLIDATE - useConsolidationCount reserved USE phrases
  * then consecutive-duplicate dedup. Fully deterministic, no randomness.
  */
@@ -63,43 +68,47 @@ const {
 } = require('./learning-modes.cjs')
 
 // FALLBACK spaced-rep offsets — used ONLY when algorithm_config.script_shape
-// is missing. The live config row (which the learner app reads) is the truth;
-// as of 2026-06-10 it was [1,2,3,5,8,13,21,34,55,89].
-//
-// EXTENDED 2026-06-30 past the historical tail (…,55,89) with 144,233,377 to
-// carry spaced repetition into the SEED-SENTENCE phase: a review whose skip
-// offset reaches SEED_PHASE_START_OFFSET (144) shows the full parent seed
-// sentence instead of a use-phrase (the 89-step stays the last use-phrase).
-//
-// EXTENDED AGAIN 2026-06-30 to 610,987,1597,2584 so the series SPANS A FULL
-// COURSE. The skip offset is "rounds since a LEGO debuted" ≈ "how many LEGOs
-// ago", and full courses run ~1200–2000 LEGOs (≈668 seeds, lang-pair dependent).
-// At 377 the memory horizon was only 377 rounds: a LEGO learned early stopped
-// being reviewed ~1000+ rounds before the course ended, so the entire front of
-// a course went cold. 2584 is the first Fibonacci term past 2000, so even the
-// earliest LEGO keeps getting (seed-phase) reviews until the longest course ends.
-//
-// TERMINAL BEHAVIOUR — FINITE, NO clamp-and-repeat. The series ends at 2584 (its
-// last term). Clamp-and-repeat was rejected because it would be a no-op here:
-// calculateSpacedRepReviews keys reviews by target round and dedupes (seenLegos),
-// so a repeated final offset collapses onto the same already-seen LEGO and emits
-// nothing. To span even longer courses, append further Fibonacci terms (4181…).
+// is missing. The LIVE config row (which the learner app reads too) carries
+// the long Fibonacci tail [1…2584]; both sides trim it in CODE, not in the
+// row — see reviewOffsets/REVIEW_OFFSET_CEILING below.
 const FIBONACCI = [1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584]
 
-// First skip offset (rounds since a LEGO debuted) at which the spaced-rep review
-// item switches from a use-phrase to the FULL PARENT SEED SENTENCE. 144 is the
-// first Fibonacci term past the historical tail, so the 89-step remains the last
-// use-phrase. One-line tunable — the whole seed-phase boundary lives here.
-const SEED_PHASE_START_OFFSET = 144
+// SPACED REP STOPS BELOW THIS OFFSET. 144 is the last rung a seed ever gets
+// (Tom, 2026-09-20). Everything at 233 and past it is retired: a seed that has
+// had both whole-seed visits comes back through the cups listening interlude
+// and through nothing else.
+//
+// Applied as a CODE ceiling rather than by shortening the config row, exactly
+// as the learner does it (@ssi/core REVIEW_OFFSET_CEILING) — the live
+// script_shape row still carries the full tail, and reviewOffsets() is the one
+// filter both generators run their configured offsets through.
+const REVIEW_OFFSET_CEILING = 233
+
+/** The configured offsets a review may actually fire at — PURE. */
+function reviewOffsets(offsets) {
+  return (offsets || []).filter(o => o < REVIEW_OFFSET_CEILING)
+}
+
+// FIRST WHOLE-SEED RUNG. At offsets 89 and 144 the review is no longer a
+// use-phrase from one LEGO: it is that LEGO's whole parent SEED sentence,
+// served as an ordinary four-phase production cycle (known prompt → gap →
+// target voice 1 → target voice 2 — Tom's round invariant, 2026-09-20), and it
+// fires ONCE PER SEED at each rung however many LEGOs the seed carries. Rungs
+// 1..55 are untouched: still LEGO-level use-phrase reviews.
+//
+// The anchor is the seed's LAST LEGO, so the sentence lands after all of its
+// parts have had their own airings; the seed's other LEGOs emit NOTHING at
+// these rungs, which is what stops a four-LEGO seed coming back four rounds
+// running. (Was 144-and-up with per-LEGO keying until 2026-09-20.)
+const SEED_REVIEW_START_OFFSET = 89
 
 /**
- * Is a review at this skip offset in the seed-sentence phase? — PURE.
+ * Is a review at this skip offset a WHOLE-SEED visit? — PURE.
  * The skip offset is `roundNumber - reviewedRound` (how many rounds since the
- * reviewed LEGO debuted). At/after SEED_PHASE_START_OFFSET the review renders
- * the parent seed sentence; before it, a use-phrase.
+ * reviewed LEGO debuted).
  */
 function reviewItemIsSeed(reviewOffset) {
-  return reviewOffset >= SEED_PHASE_START_OFFSET
+  return reviewOffset >= SEED_REVIEW_START_OFFSET
 }
 
 // Fallback round shape (mirrors the learner's behaviour when its own config
@@ -668,10 +677,11 @@ function annotatePlayerDelivery(items, ctx = {}) {
       }
     }
 
-    // Seed-sentence reviews need only the seed's target1; without it the
-    // player silently substitutes a use-phrase, so this row never plays.
-    const roles = (item.type === 'review' && item.reviewItemKind === 'seed') ? ['target1'] : ALL_AUDIO_ROLES
-    const missing = missingAudioRoles(item, roles)
+    // A whole-seed visit is an ORDINARY four-phase cycle (known prompt → gap →
+    // target voice 1 → target voice 2), so it is judged on all three clips like
+    // any other row — it is NOT the retired target-only sandwich. Short of any
+    // of them the player substitutes a use-phrase and this row never plays.
+    const missing = missingAudioRoles(item, ALL_AUDIO_ROLES)
     if (missing.length === 0) return { ...item, playerCanDeliver: true }
 
     return {
@@ -965,7 +975,7 @@ async function loadIntroductionAudio(supabase, courseCode, legoIds) {
  * seed_number). The seed sentence text is course_seeds.{known_text,target_text}
  * — surfaced here under the original_known / original_target names the seed
  * helper expects (the breakdown record fields in SEED_REVIEW_EXTENSION_PLAN A1).
- * Used by the seed-sentence review phase (skip offset >= SEED_PHASE_START_OFFSET).
+ * Used by the whole-seed visit (skip offset >= SEED_REVIEW_START_OFFSET).
  */
 async function loadSeedSentences(supabase, courseCode) {
   const map = new Map()
@@ -1063,7 +1073,10 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     reviewMaxKnownSyllables, reviewFilterMaxRound, filterBuildPhrases,
     phraseRepeatCount, repeatedCycleTypes,
   } = await loadAlgorithmConfig(supabase, mode)
-  const SPACED_REP_OFFSETS = scriptShape.spacedRepOffsets
+  // Offsets run through the SHARED ceiling (reviewOffsets, above): the live
+  // config row still carries the long Fibonacci tail, and 144 is the last rung
+  // a seed ever gets. Same filter, same value, as the learner's @ssi/core.
+  const SPACED_REP_OFFSETS = reviewOffsets(scriptShape.spacedRepOffsets)
   const MAX_BUILD_PHRASES = scriptShape.maxBuildPhrases
   const CONSOLIDATE_COUNT = scriptShape.useConsolidationCount
   const MAX_SPACED_REP_PHRASES = scriptShape.maxSpacedRepPhrases
@@ -1075,7 +1088,7 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const byPhraseLength = (a, b) => syllablesOf(a) - syllablesOf(b)
 
   // Pre-load extra LEGOs before offset for spaced-rep lookback
-  // (max offset = 89 with the live config, 55 with the fallback)
+  // (max offset = 144, the last whole-seed rung)
   const maxFibLookback = Math.max(...SPACED_REP_OFFSETS)
   const lookbackStart = Math.max(0, offset - maxFibLookback)
   const lookbackCount = offset - lookbackStart  // how many extra LEGOs to pre-process
@@ -1167,10 +1180,26 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
   const legoIds = legos.map(l => l.lego.id)
   const introAudioMap = await loadIntroductionAudio(supabase, courseCode, legoIds)
 
-  // Parent seed sentences for the extended (post-89) spaced-rep phase: a review
-  // whose skip offset reaches SEED_PHASE_START_OFFSET shows the seed sentence
-  // instead of a use-phrase. Loaded once, keyed by seed id.
+  // Parent seed sentences for the WHOLE-SEED rungs: a review whose skip offset
+  // reaches SEED_REVIEW_START_OFFSET shows the seed sentence instead of a
+  // use-phrase. Loaded once, keyed by seed id.
   const seedSentenceMap = await loadSeedSentences(supabase, courseCode)
+
+  // WHOLE-SEED ANCHORS: the one LEGO per seed that speaks for the whole seed at
+  // offsets 89 and 144 — its LAST introduced LEGO, so the sentence lands after
+  // all of its parts have had their own airings. Every other LEGO of that seed
+  // emits NOTHING at those rungs, which is what keeps a four-LEGO seed from
+  // coming back four rounds running (Tom, 2026-09-20). Built over the FULL
+  // course list, never the window, so a lookback LEGO is judged the same way.
+  const seedAnchorLegos = new Set()
+  {
+    const lastBySeed = new Map()
+    for (const rec of allLegoRecords) {
+      const prev = lastBySeed.get(rec.seed.seed_number)
+      if (!prev || rec.lego.id > prev) lastBySeed.set(rec.seed.seed_number, rec.lego.id)
+    }
+    for (const id of lastBySeed.values()) seedAnchorLegos.add(id)
+  }
 
   // Graduation tracking (spaced-rep exclusion only — NO listening emission).
   // Mirrors the learner: graduation is anchored to absolute LEGO position in
@@ -1380,7 +1409,12 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
     const seenReviewLegos = new Set()
 
     for (const review of reviews) {
-      if (reviewCount >= MAX_SPACED_REP_PHRASES) break
+      // The two WHOLE-SEED rungs sit OUTSIDE MAX_SPACED_REP_PHRASES. They come
+      // last in offset order and the nine use-phrase reviews ahead of them can
+      // fill the budget on their own, so budgeting them would mean rung 144
+      // almost never fires — which is not what was ruled (learner parity).
+      const isSeedRung = reviewItemIsSeed(n - review.legoIndex)
+      if (!isSeedRung && reviewCount >= MAX_SPACED_REP_PHRASES) break
 
       const reviewRound = review.legoIndex
 
@@ -1395,28 +1429,28 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
 
       if (!reviewLegoState) continue
       const reviewOffset = n - review.legoIndex
-      // Graduated seeds drop out of USE-PHRASE review but stay eligible for
-      // SEED-PHASE production review (offset >= SEED_PHASE_START_OFFSET) —
-      // nothing truly retires (generateLearningScript.ts:1251,1439).
-      if (graduatedSeeds.has(reviewLegoState.lego.seed.seed_number) && !reviewItemIsSeed(reviewOffset)) continue
+      // Graduated seeds drop out of USE-PHRASE review but stay eligible for the
+      // whole-seed visit — nothing truly retires.
+      if (graduatedSeeds.has(reviewLegoState.lego.seed.seed_number) && !isSeedRung) continue
       if (seenReviewLegos.has(reviewLegoState.legoId)) continue
       seenReviewLegos.add(reviewLegoState.legoId)
 
-      // Seed-sentence phase: once the skip offset reaches SEED_PHASE_START_OFFSET
-      // (144+), the review item switches from a use-phrase to the FULL PARENT
-      // SEED SENTENCE. The 89-step stays a use-phrase. Clustering (successive
-      // LEGOs crossing the threshold => same seed a few rounds running) is
-      // DESIRED — no de-clustering/dedup here. Falls back to the use-phrase path
-      // if the seed record is missing (never render an empty seed card).
+      // WHOLE-SEED rungs (89 and 144): the review item is the FULL PARENT SEED
+      // SENTENCE instead of a use-phrase, ONCE PER SEED — only the seed's
+      // anchor LEGO speaks for it, so a multi-LEGO seed comes back once per
+      // rung rather than once per LEGO. Falls back to the use-phrase path if
+      // the seed record is missing (never render an empty seed card).
       //
-      // Learner view also honours the player's seed-audio gate
-      // (generateLearningScript.ts:1316): without the seed's first target voice
-      // the player falls back to a use-phrase, so the preview must too — else
-      // it shows a review cycle the learner never hears, and counts a round as
+      // Learner view also honours the player's seed-audio gate: the whole-seed
+      // visit is an ordinary four-phase cycle, so without ALL THREE clips the
+      // player falls back to a use-phrase and the preview must too — else it
+      // shows a review cycle the learner never hears, and counts a round as
       // playable that the player finds empty.
-      if (reviewItemIsSeed(reviewOffset)) {
+      if (isSeedRung) {
+        if (!seedAnchorLegos.has(reviewLegoState.legoId)) continue
         const seed = seedSentenceFor(reviewLegoState.legoId, seedSentenceMap)
-        if (seed && (!learnerView || seed.target1_audio_uuid)) {
+        const seedFullyVoiced = seed && seed.known_audio_uuid && seed.target1_audio_uuid && seed.target2_audio_uuid
+        if (seed && (!learnerView || seedFullyVoiced)) {
           const seedPhraseId = getPhraseId(seed.known_text, seed.target_text)
           reviewIndices.push(review.legoIndex)
           if (!usedPhrasesInRound.has(seedPhraseId)) {
@@ -1438,14 +1472,14 @@ async function generateLearningScript(supabase, courseCode, maxLegos = 50, offse
               known_audio_uuid: seed.known_audio_uuid,
               target1_audio_uuid: seed.target1_audio_uuid,
               target2_audio_uuid: seed.target2_audio_uuid,
-              hasAudio: !!(seed.known_audio_uuid && seed.target1_audio_uuid),
+              hasAudio: !!seedFullyVoiced,
             })
             reviewCount++
           }
           continue
         }
         if (!seed) {
-          logger.warn(`Seed-phase review (offset ${reviewOffset}) for ${reviewLegoState.legoId} has no parent seed sentence (${reviewLegoState.legoId.slice(0, 5)}) — falling back to use-phrase.`)
+          logger.warn(`Whole-seed visit (offset ${reviewOffset}) for ${reviewLegoState.legoId} has no parent seed sentence (${reviewLegoState.legoId.slice(0, 5)}) — falling back to use-phrase.`)
         }
       }
 
@@ -1719,7 +1753,9 @@ module.exports = {
   missingIntroAudioRoles,
   numberRounds,
   FIBONACCI,
-  SEED_PHASE_START_OFFSET,
+  SEED_REVIEW_START_OFFSET,
+  REVIEW_OFFSET_CEILING,
+  reviewOffsets,
   DEFAULT_SCRIPT_SHAPE,
   DEFAULT_LISTENING,
 }
