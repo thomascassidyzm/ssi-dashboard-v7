@@ -96,14 +96,19 @@ async function main() {
     }
   }
 
+  // PAIRED ONLY. A live arm counted over every basket in the range and a
+  // candidate arm counted over the handful that were generated are not the same
+  // population, and comparing them would be the baseline-quoted-as-a-result
+  // mistake in a different coat.
+  const haveBoth = new Set(rows.filter(r => r.source === 'candidate').map(r => r.lego_id));
   const agg = (src) => {
-    const rs = rows.filter(r => r.source === src && r.reuses);
+    const rs = rows.filter(r => r.source === src && r.reuses && haveBoth.has(r.lego_id));
     if (!rs.length) return null;
     const mean = (f) => +(rs.reduce((n, r) => n + f(r), 0) / rs.length).toFixed(3);
     return { baskets: rs.length, early_share: mean(r => r.early_share), mean_age: mean(r => r.mean_age),
              distinct_per_basket: mean(r => r.distinct), reuses_per_phrase: mean(r => r.reuses / r.phrases) };
   };
-  const summary = { course, from, to, early_band: `seeds 1-${earlyTo}`, live: agg('live'), candidate: agg('candidate') };
+  const summary = { course, from, to, paired_only: true, early_band: `seeds 1-${earlyTo}`, live: agg('live'), candidate: agg('candidate') };
   console.log(JSON.stringify(summary, null, 2));
   if (jsonOut) { fs.writeFileSync(jsonOut, JSON.stringify({ summary, rows }, null, 2)); console.log(`wrote ${jsonOut}`); }
 }
