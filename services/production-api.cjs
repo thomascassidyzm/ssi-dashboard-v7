@@ -378,6 +378,16 @@ function isLoopbackDirectRequest(req) {
   return isLoopback && !req.headers['x-forwarded-for'] && !req.headers['x-real-ip']
 }
 
+// Control-plane gate — see services/shared/control-plane-gate.cjs. The funnel
+// puts these routes on the public internet; same-host mesh callers are
+// unaffected, everyone else must be an admin.
+const { createControlPlaneGate, loopbackOnly } = require('./shared/control-plane-gate.cjs')
+const requireAdminOrLoopback = createControlPlaneGate({
+  isLoopbackDirect: isLoopbackDirectRequest,
+  requireAdmin,
+})
+const requireSameHost = loopbackOnly(isLoopbackDirectRequest)
+
 // Resolve the calling dashboard user WITHOUT writing a response. Tries, in
 // order: Supabase JWT → learners (popty_user/ssi_admin/god), legacy dashboard
 // session id, then Supabase JWT email → dashboard_users (the client's OTP
@@ -2478,13 +2488,13 @@ app.post('/api/mission-control/jobs/:jobId/clear', async (req, res) => {
 
 // PM2 service management routes - keep proxying to orchestrator for now
 // These are admin-only and rarely used; can be migrated later
-app.get('/api/services', proxyOrchestrator)
-app.post('/api/services/:name/restart', proxyOrchestrator)
-app.get('/api/services/:name/logs', proxyOrchestrator)
-app.post('/api/deploy', proxyOrchestrator)
+app.get('/api/services', requireAdminOrLoopback, proxyOrchestrator)
+app.post('/api/services/:name/restart', requireAdminOrLoopback, proxyOrchestrator)
+app.get('/api/services/:name/logs', requireAdminOrLoopback, proxyOrchestrator)
+app.post('/api/deploy', requireAdminOrLoopback, proxyOrchestrator)
 // Repair fallback — only offered after a deploy has failed on the target machine
-app.post('/api/deploy/repair', proxyOrchestrator)
-app.get('/api/deploy/history', proxyOrchestrator)
+app.post('/api/deploy/repair', requireAdminOrLoopback, proxyOrchestrator)
+app.get('/api/deploy/history', requireAdminOrLoopback, proxyOrchestrator)
 
 // Get content stats for all courses (seeds, legos, baskets counts)
 // Used by dashboard course listings to show real counts
@@ -6867,7 +6877,7 @@ function emitToRoom(courseCode, event, data) {
 
 // Internal emit endpoint - for phase servers to emit WebSocket events
 // POST /api/production/internal/emit
-app.post('/api/production/internal/emit', (req, res) => {
+app.post('/api/production/internal/emit', requireSameHost, (req, res) => {
   const { courseCode, event, data } = req.body
 
   if (!courseCode || !event) {
@@ -11582,6 +11592,7 @@ async function pm2SaveIfHealthy({ waitMs = 10000, minUptimeMs = 5000 } = {}) {
 
 // GET /api/admin/agents — list all iTerm2 sessions with their status
 app.get('/api/admin/agents', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   try {
     const { stdout } = await execFileAsync('osascript', ['-e', `
       tell application "iTerm"
@@ -11625,6 +11636,7 @@ app.get('/api/admin/agents', async (req, res) => {
 // POST /api/admin/agents/kill — kill specific sessions by PID, or all idle ones
 // Body: { pids: [123, 456] } or { idle: true } to kill all at-prompt sessions
 app.post('/api/admin/agents/kill', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   try {
     const { pids, idle } = req.body || {}
 
@@ -11671,6 +11683,7 @@ app.post('/api/admin/agents/kill', async (req, res) => {
 
 // POST /api/admin/agents/kill-all — kill all claude processes then close iTerm windows
 app.post('/api/admin/agents/kill-all', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   try {
     // Step 1: Find and kill all claude processes (except our own node process)
     const { stdout: psList } = await execFileAsync('bash', ['-c', 'ps aux | grep "[c]laude" | awk \'{print $2}\''])
@@ -11704,6 +11717,7 @@ app.post('/api/admin/agents/kill-all', async (req, res) => {
 // GET /api/admin/system — system stats (RAM, CPU, uptime)
 const os = require('os')
 app.get('/api/admin/system', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const totalMem = os.totalmem()
   const freeMem = os.freemem()
   const usedMem = totalMem - freeMem
@@ -11737,6 +11751,7 @@ app.get('/api/admin/system', async (req, res) => {
 
 // GET /api/admin/pm2 — pm2 process list with watch status
 app.get('/api/admin/pm2', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   try {
     const { stdout } = await execFileAsync('bash', ['-c', 'pm2 jlist'])
     const procs = JSON.parse(stdout)
@@ -12182,6 +12197,7 @@ async function linuxRebootReadiness() {
 // GET /api/admin/system-health — RAM, load, PM2 process snapshot, reboot readiness
 // Read-only; no auth (same posture as /health).
 app.get('/api/admin/system-health', async (req, res) => {
+  if (!await requireAdmin(req, res)) return
   const os = require('os')
   const health = {
     hostname: os.hostname(),
