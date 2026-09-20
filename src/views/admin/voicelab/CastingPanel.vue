@@ -31,7 +31,7 @@ import { planCast, commitCast } from './stagedCast'
 import { planPicks, commitPicks } from './stagedPicks'
 import {
   ROLES, SLOT_ORDER, isFixedEnglish, FIXED_ENGLISH,
-  shelfFor, accentsOf, filterShelf, rolesFor,
+  shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel,
   stageRole, stageClear, unstageRole, stagedCount, stagedEntry, isStagedOn as candidateIsStagedOn,
   stageHouseEnglish, castFacts, podFacts, rowSummary, sortRows, labVoiceId, providerLabel,
 } from './casting'
@@ -476,7 +476,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
                       @click="hear(c.voiceId)"
                     >{{ playing === c.voiceId ? '■' : rendering === c.voiceId ? '·' : sampleOf(c.voiceId) ? '▶' : '▷' }}</button>
                     <span class="cast-voice-main">
-                      <span class="cast-voice-name">{{ c.name.split(' — ')[0] }}</span>
+                      <span class="cast-voice-name">{{ cloneLabel(c) }}</span>
                       <span v-if="c.owned" class="ui-pill ui-hue-quiet">our clone</span>
                       <span class="cast-sub">
                         {{ c.gender ? (c.gender === 'f' ? 'female' : 'male') : 'gender not listed' }}

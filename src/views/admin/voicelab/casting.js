@@ -154,6 +154,23 @@ export function accentsOf (voices) {
     .map(([accent, count]) => ({ accent, count, label: accent ? accent.replace(/-/g, ' ') : 'accent not listed' }))
 }
 
+/**
+ * A CANDIDATE'S HUMAN NAME. Cartesia carries a vendor `name` for every voice it
+ * publishes; a voice this estate CLONED through the lab was named at clone time
+ * with whatever slug was to hand (`aran_english_003`), never a proper display
+ * name, so it rendered — in the picker AND in search — as that raw id (Tom,
+ * 2026-09-20, hunting for "aran" and finding nothing). Humanise a slug-shaped
+ * name into `Person (clone)`; leave a real vendor name untouched.
+ */
+export function cloneLabel (c) {
+  const raw = String((c && c.name) || '').split(' — ')[0].trim()
+  if (!raw) return raw
+  if (!/^[a-z][a-z0-9]*(_[a-z0-9]+)+$/i.test(raw)) return raw
+  const person = raw.split('_')[0]
+  const cap = person.charAt(0).toUpperCase() + person.slice(1)
+  return c && c.owned ? `${cap} (clone)` : cap
+}
+
 /** LANGUAGE + GENDER + ACCENT, plus a free-text search over what the vendor says. */
 export function filterShelf (voices, { gender = '', accent = null, query = '' } = {}) {
   const q = String(query || '').trim().toLowerCase()
@@ -162,7 +179,7 @@ export function filterShelf (voices, { gender = '', accent = null, query = '' } 
     if (gender && v.gender && v.gender !== gender) return false
     if (accent !== null && accent !== undefined && (v.accent || '') !== accent) return false
     if (!q) return true
-    const hay = [v.name, v.accent, v.country, v.tagline, v.description, ...(v.otherAccents || [])].filter(Boolean).join(' ').toLowerCase()
+    const hay = [v.name, cloneLabel(v), v.voiceId, v.accent, v.country, v.tagline, v.description, ...(v.otherAccents || [])].filter(Boolean).join(' ').toLowerCase()
     return hay.includes(q)
   })
 }

@@ -4,7 +4,7 @@
  */
 import { describe, it, expect } from 'vitest'
 import {
-  ROLES, isAmericanEnglish, shelfFor, accentsOf, filterShelf, rolesFor,
+  ROLES, isAmericanEnglish, shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel,
   stageRole, stageClear, unstageRole, stagedCount, castFacts, podFacts, rowSummary, isFixedEnglish, podVoiceOf,
   POD_ROLES, stageHouseEnglish, stagedEntry, isStagedOn, FIXED_ENGLISH,
 } from './casting'
@@ -63,6 +63,20 @@ describe('"select from Cartesia by Language + gender + accent"', () => {
   it('filters by accent and searches the vendor description', () => {
     expect(filterShelf(voices, { accent: 'mexican' }).map((v) => v.voiceId)).toEqual(['cartesia_c'])
     expect(filterShelf(voices, { query: 'guadalajara' }).map((v) => v.voiceId)).toEqual(['cartesia_c'])
+  })
+})
+
+describe('a clone with no vendor display name is still findable by search (Tom, 2026-09-20: searched "aran", got nothing)', () => {
+  const aran = { voiceId: 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe', name: 'aran_english_003 — this estate\'s Cartesia clone', kind: 'cartesia', engine: 'cartesia', gender: 'm', owned: true }
+  it('humanises a slug-shaped vendor name into "Person (clone)"', () => {
+    expect(cloneLabel(aran)).toBe('Aran (clone)')
+  })
+  it('leaves a real vendor name untouched', () => {
+    expect(cloneLabel({ name: 'Skylar — Cartesia' })).toBe('Skylar')
+  })
+  it('"aran" finds the clone by its id even though nothing calls it "Aran" in the vendor fields', () => {
+    const voices = [aran, cart('other', { name: 'Skylar — Cartesia' })]
+    expect(filterShelf(voices, { query: 'aran' }).map((v) => v.voiceId)).toEqual(['cartesia_33890587-a29f-4416-ba61-2615c74f92fe'])
   })
 })
 
