@@ -187,6 +187,20 @@ describe('content-write surface manifest', () => {
       + 'and the rounds they add stay invisible to the learner app. Add the flag:\n'
       + unflagged.join('\n')).toEqual([]);
 
+    // The helper list is an EXCUSE, not a flag. Without this check it only
+    // silenced the over-flag half, so deleting `legos: true` from
+    // POST /api/build/redo-undo/:courseCode passed silently — the route scanner
+    // cannot see restoreSnapshot()'s write, so the under-flag half above never
+    // looks at it either, and the one route the list exists to protect was the
+    // one route nothing protected. A key here must therefore be FLAGGED.
+    const helperUnflagged = [...LEGO_WRITERS_VIA_HELPERS.keys()].filter(key => !flagged.has(key));
+    expect(helperUnflagged, 'These routes write course_legos through a lib/ helper — that is '
+      + 'why they are listed in LEGO_WRITERS_VIA_HELPERS — but they are NOT flagged `legos: true` '
+      + 'in content-write-surfaces.cjs, so course_round_index is never refreshed after them and '
+      + 'the rounds they restore stay invisible to the learner app. Add the flag (or, if the route '
+      + 'genuinely no longer writes legos, drop it from LEGO_WRITERS_VIA_HELPERS too):\n'
+      + helperUnflagged.join('\n')).toEqual([]);
+
     const overflagged = [...flagged].filter(key =>
       !derived.get(key)?.tables.has('course_legos') && !LEGO_WRITERS_VIA_HELPERS.has(key));
     expect(overflagged, 'These surfaces are flagged `legos: true` but no longer write '

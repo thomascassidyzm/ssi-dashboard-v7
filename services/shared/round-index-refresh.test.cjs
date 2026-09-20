@@ -8,7 +8,8 @@
  *
  * So the case that gets a test is the seam itself: a successful write to a
  * lego-writing surface must produce exactly one refresh, a phrase-only surface
- * must produce none, a failed write must produce none, and a burst must
+ * must produce none, a FAILED lego write must still produce one (the lego row
+ * commits before the phrase write that throws), and a burst must
  * COALESCE — because a refresh per seed on a 90-seed build is the failure shape
  * that would get this reverted.
  *
@@ -70,6 +71,36 @@ describe('requestRoundIndexRefresh', () => {
     expect(ran.length).toBe(2);
   });
 
+  it('never runs two refreshes at once — a mid-flight request only marks pending', async () => {
+    // REFRESH MATERIALIZED VIEW CONCURRENTLY takes ~0.8s against the live view.
+    // Before this fix a request arriving mid-run armed its own timer without
+    // looking at inFlight, so a second REFRESH started on a second connection
+    // while the first was still going: the same work twice, and the coalescing
+    // this module exists for defeated exactly when the build is busiest.
+    let active = 0, maxActive = 0, release;
+    refresh.__setRefreshImpl(() => {
+      active++; maxActive = Math.max(maxActive, active); ran.push(Date.now());
+      const done = () => { active--; };
+      if (ran.length > 1) { const p = Promise.resolve(); return p.then(done); }
+      return new Promise(r => { release = r; }).then(done);
+    }, quiet);
+
+    const first = refresh.requestRoundIndexRefresh('fra_for_eng', { immediate: true });
+    await new Promise(r => setTimeout(r, 5));
+    // immediate, because DEBOUNCE_MS is read at module load (2000ms) and the
+    // race is not about the debounce: a tools/ sweep asking for an immediate
+    // refresh while a route's refresh is running is a real pairing, and it is
+    // the one that used to arm a 0ms timer straight on top of the live run.
+    for (let i = 0; i < 5; i++) refresh.requestRoundIndexRefresh('fra_for_eng', { immediate: true });
+    await new Promise(r => setTimeout(r, 30));
+    expect(maxActive, 'a second refresh started while the first was still running').toBe(1);
+
+    release();
+    await first;
+    await refresh.flushRoundIndexRefresh();
+    expect(ran.length).toBe(2);   // still covered: one run after the last write
+  });
+
   it('never rejects into the caller when the refresh fails, and says so', async () => {
     refresh.__setRefreshImpl(async () => { throw new Error('no such view'); }, quiet);
     const r = await refresh.requestRoundIndexRefresh('fra_for_eng', { immediate: true });
@@ -113,8 +144,24 @@ describe('content-edit-gate refreshes the round map by construction', () => {
     expect(ran.length).toBe(0);
   });
 
-  it('asks for nothing when the write failed', async () => {
-    await drive('POST', '/api/seed/complete', { status: 400, body: { course_code: 'fra_for_eng' } });
+  it('STILL asks for a refresh when the write failed — legos commit before the error', async () => {
+    // seed-complete.cjs writes the lego row and THEN its phrases (/api/lego,
+    // /api/batch, /api/seed/complete all have that shape). A phrase failure
+    // throws to the catch and answers 500, and a ZUT check answers 400, with
+    // the lego already committed. Refreshing only on 2xx skipped precisely
+    // those cases and left the map short of content that had landed.
+    await drive('POST', '/api/seed/complete', { status: 500, body: { course_code: 'fra_for_eng' } });
+    await refresh.flushRoundIndexRefresh();
+    expect(ran.length).toBe(1);
+
+    ran = [];
+    await drive('POST', '/api/batch', { status: 400, body: { course_code: 'fra_for_eng' } });
+    await refresh.flushRoundIndexRefresh();
+    expect(ran.length).toBe(1);
+  });
+
+  it('asks for nothing when a phrase-only surface fails — no lego could have landed', async () => {
+    await drive('POST', '/api/qa/mark-checked', { status: 500, body: { course_code: 'fra_for_eng' } });
     await refresh.flushRoundIndexRefresh();
     expect(ran.length).toBe(0);
   });
@@ -140,5 +187,33 @@ describe('content-edit-gate refreshes the round map by construction', () => {
       await refresh.flushRoundIndexRefresh();
       expect(ran.length, `${s.method} ${s.path} refreshed the round map but writes no legos`).toBe(0);
     }
+  });
+});
+
+// ─── a script that awaits a refresh and then exits must get the refresh ──────
+
+describe('an immediate refresh survives an otherwise-empty event loop', () => {
+  it('runs before node exits, with nothing else holding the loop open', () => {
+    // The timer used to be unref'd unconditionally, so node saw nothing keeping
+    // the loop alive and exited BEFORE the refresh ran — the exact shape of
+    // tools/gle-lego-reorder-2026-09-09.cjs and
+    // tools/course-optimization/duplicate-course-teaching-layer-2026-09-02.cjs,
+    // which await requestRoundIndexRefresh(..., {immediate:true}) as their last
+    // act and then print "COMMITTED, course_round_index refreshed" over a
+    // refresh that never happened.
+    //
+    // A child process is the only honest way to test this: inside vitest the
+    // runner's own handles keep the loop alive and an unref'd timer passes.
+    const { execFileSync } = require('child_process');
+    const mod = require('path').join(__dirname, 'round-index-refresh.cjs');
+    const script = `
+      const r = require(${JSON.stringify(mod)});
+      r.__setRefreshImpl(async () => { process.stdout.write('REFRESHED'); },
+                         { log() {}, warn() {}, error() {} });
+      r.requestRoundIndexRefresh('fra_for_eng', { immediate: true })
+        .then(() => process.stdout.write('|AWAITED'));
+    `;
+    const out = execFileSync(process.execPath, ['-e', script], { encoding: 'utf8', timeout: 20000 });
+    expect(out, 'node exited before the immediate refresh ran').toBe('REFRESHED|AWAITED');
   });
 });

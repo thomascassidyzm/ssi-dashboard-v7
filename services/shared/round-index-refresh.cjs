@@ -94,7 +94,23 @@ let runCount = 0;               // observable by tests: how many refreshes ran
 function newPending() {
   let resolve;
   const promise = new Promise(r => { resolve = r; });
-  return { promise, resolve, courses: new Set(), reasons: new Set() };
+  // `immediate` is not just "no debounce": it means a caller is AWAITING this
+  // refresh and may be about to exit, so the timer must hold the event loop
+  // open. See the unref decision in requestRoundIndexRefresh().
+  return { promise, resolve, courses: new Set(), reasons: new Set(), immediate: false };
+}
+
+/**
+ * Arm the debounce timer. An unref'd timer lets a process exit before the
+ * refresh has run — harmless for a long-lived server, fatal for a tools/ script
+ * whose last act is `await requestRoundIndexRefresh(..., {immediate:true})`:
+ * node sees nothing keeping the loop alive and exits, the refresh never runs,
+ * and the script reports success over a stale round map. So a batch that
+ * anybody is waiting on keeps its timer REFERENCED.
+ */
+function armTimer(delay, batch) {
+  timer = setTimeout(runPending, delay);
+  if (!batch?.immediate) timer.unref?.();
 }
 
 async function runPending() {
@@ -127,10 +143,7 @@ async function runPending() {
   // A write that arrived while we were running gets its own run: the view must
   // be refreshed after the LAST write, not after the one that happened to start
   // the refresh.
-  if (pending && !timer) {
-    timer = setTimeout(runPending, DEBOUNCE_MS);
-    timer.unref?.();
-  }
+  if (pending && !timer) armTimer(DEBOUNCE_MS, pending);
 }
 
 /**
@@ -155,10 +168,18 @@ function requestRoundIndexRefresh(courseCode, opts = {}) {
   if (courseCode) pending.courses.add(courseCode);
   if (opts.reason) pending.reasons.add(opts.reason);
 
-  const delay = opts.immediate ? 0 : DEBOUNCE_MS;
+  if (opts.immediate) pending.immediate = true;
+
+  // A run already executing owns the view. Arming a timer now would start a
+  // SECOND concurrent REFRESH MATERIALIZED VIEW CONCURRENTLY over the same
+  // ~0.8s statement — two connections doing the same work, and the coalescing
+  // this module exists for quietly defeated. Recording the intent is enough:
+  // runPending's tail re-arms the timer when the current run finishes, so this
+  // write is still covered, after it.
+  if (inFlight) return pending.promise;
+
   if (timer) clearTimeout(timer);
-  timer = setTimeout(runPending, delay);
-  timer.unref?.();
+  armTimer(opts.immediate ? 0 : DEBOUNCE_MS, pending);
   return pending.promise;
 }
 

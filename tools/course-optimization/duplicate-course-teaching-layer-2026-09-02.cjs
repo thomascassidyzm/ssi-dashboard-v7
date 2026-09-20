@@ -23,7 +23,7 @@
  */
 require('dotenv').config()
 const fs = require('fs')
-const { requestRoundIndexRefresh } = require('../../services/shared/round-index-refresh.cjs')
+const { requestRoundIndexRefresh, flushRoundIndexRefresh } = require('../../services/shared/round-index-refresh.cjs')
 const path = require('path')
 const { createClient } = require('@supabase/supabase-js')
 
@@ -149,6 +149,9 @@ async function insertChunked(table, rows) {
     // (Tom's ruling, 2026-09-20 — the refresh belongs to the write, not to a
     // nightly). immediate, and awaited, because this script exits.
     const rr = await requestRoundIndexRefresh(DEST, { immediate: true, reason: 'duplicate-course-teaching-layer' })
+    // Belt and braces before exit: awaiting covers this request, flush covers
+    // anything still outstanding.
+    await flushRoundIndexRefresh()
     log.roundIndexRefresh = rr
     if (!rr.ok) console.error(`round-index refresh FAILED: ${rr.error}`)
   }

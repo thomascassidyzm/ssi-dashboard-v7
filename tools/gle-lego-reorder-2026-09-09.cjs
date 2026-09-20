@@ -32,7 +32,7 @@
 //   node tools/gle-lego-reorder-2026-09-09.cjs --learner-map
 
 const fs = require('fs');
-const { requestRoundIndexRefresh } = require('../services/shared/round-index-refresh.cjs');
+const { requestRoundIndexRefresh, flushRoundIndexRefresh } = require('../services/shared/round-index-refresh.cjs');
 const path = require('path');
 const { Client } = require('pg');
 const { serviceIdentity } = require('../services/shared/editor-identity.cjs');
@@ -240,6 +240,9 @@ UPDATE lego_progress p SET lego_id = m.new_id FROM m
       // with every other lego write path (Tom's ruling, 2026-09-20) — this used
       // to be an inline REFRESH here, the only one in the estate.
       const r = await requestRoundIndexRefresh(COURSE, { immediate: true, reason: 'gle-lego-reorder' });
+      // Belt and braces before a script that is about to exit: awaiting the
+      // promise covers this request, flush covers anything still outstanding.
+      await flushRoundIndexRefresh();
       console.log(r.ok ? 'COMMITTED, course_round_index refreshed' : `COMMITTED, but round-index refresh FAILED: ${r.error}`);
     } else {
       await client.query('ROLLBACK');

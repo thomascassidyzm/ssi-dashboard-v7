@@ -17,8 +17,9 @@
 //   3. If a handler returns 2xx without having called .record(), the gate
 //      records a default event on response finish. Coverage is not left to a
 //      handler remembering.
-//   4. If the surface is flagged `legos: true` and the handler returned 2xx, it
-//      asks for a course_round_index refresh — the round map the learner app
+//   4. If the surface is flagged `legos: true`, it asks — on ANY response, 2xx
+//      or not, because those handlers commit legos before they can still fail —
+//      for a course_round_index refresh — the round map the learner app
 //      walks — so a course cannot ship with a map shorter than its own content
 //      (Tom's ruling, 2026-09-20). This lives HERE, in the one middleware every
 //      content write already passes through, precisely so it cannot be
@@ -149,7 +150,21 @@ function contentEditGate({ supabase, service, logger = console }) {
       // already gone, so the ~0.8s refresh costs the caller nothing, and the
       // helper coalesces a burst of seed submissions into one run. It never
       // rejects, so this cannot turn a successful write into a failure.
-      if (surface.legos && res.statusCode >= 200 && res.statusCode < 300) {
+      //
+      // ON ANY RESPONSE, NOT ONLY A 2xx. The lego-writing handlers commit the
+      // lego row and THEN write its phrases (seed-complete.cjs /api/lego,
+      // /api/batch, /api/seed/complete all have that shape), so a phrase
+      // failure answers 500 — or a ZUT check answers 400 — with legos already
+      // in the table. Gating the refresh on 2xx skipped exactly those cases and
+      // left the map short of content that had landed: the afr_for_eng failure
+      // again, reached by the error path. The alternative, a
+      // req.contentEdit.legosWritten signal set after each successful lego
+      // upsert, means threading a flag through seven route files and every
+      // lib/ helper that writes legos (redo-snapshot's restoreSnapshot has no
+      // req at all) — and it drifts the moment somebody adds the eighth. A
+      // wasted refresh on a failed write costs one coalesced ~0.8s statement
+      // off the caller's path; a missed one costs a silently short course.
+      if (surface.legos) {
         requestRoundIndexRefresh(
           courseCodeFrom(params, req.path || req.url, req.body) || courseCode,
           { reason: surfaceLabel },
