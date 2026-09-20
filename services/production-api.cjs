@@ -388,6 +388,16 @@ const requireAdminOrLoopback = createControlPlaneGate({
 })
 const requireSameHost = loopbackOnly(isLoopbackDirectRequest)
 
+// Softer sibling of the control-plane gate: ANY signed-in dashboard user, or a
+// same-host mesh caller. Used on writes that editors legitimately perform
+// (creating a course, stopping a build, pushing course-configs, flipping a
+// voice's status) — the point is only that an anonymous caller off the funnel
+// cannot do them. Deliberately NOT requireAdmin: that would lock editors out.
+const requireDashboardUserOrLoopback = createControlPlaneGate({
+  isLoopbackDirect: isLoopbackDirectRequest,
+  requireAdmin: requireDashboardUser,
+})
+
 // Resolve the calling dashboard user WITHOUT writing a response. Tries, in
 // order: Supabase JWT → learners (popty_user/ssi_admin/god), legacy dashboard
 // session id, then Supabase JWT email → dashboard_users (the client's OTP
@@ -1900,7 +1910,7 @@ app.get('/api/courses', async (req, res) => {
 })
 
 // Create new course - DATABASE-FIRST (APML v14)
-app.post('/api/courses/create', async (req, res) => {
+app.post('/api/courses/create', requireDashboardUserOrLoopback, async (req, res) => {
   const { courseCode, displayName, knownLanguage, sourceLanguage, targetLanguage, seedStart, seedEnd, seedCount } = req.body
 
   // Accept both knownLanguage (new) and sourceLanguage (legacy)
@@ -2360,7 +2370,7 @@ app.get('/api/mission-control/jobs', async (req, res) => {
  * POST /api/mission-control/jobs/:jobId/stop
  * Stop a job - proxies to course-builder for build jobs, Phase 8 for audio jobs
  */
-app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
+app.post('/api/mission-control/jobs/:jobId/stop', requireDashboardUserOrLoopback, async (req, res) => {
   const { jobId } = req.params
 
   // Parse job ID: {courseCode}-{type}
@@ -2402,7 +2412,7 @@ app.post('/api/mission-control/jobs/:jobId/stop', async (req, res) => {
  * POST /api/mission-control/jobs/:jobId/resume
  * Resume a stalled job - spawns a new agent to continue the build
  */
-app.post('/api/mission-control/jobs/:jobId/resume', async (req, res) => {
+app.post('/api/mission-control/jobs/:jobId/resume', requireDashboardUserOrLoopback, async (req, res) => {
   const { jobId } = req.params
   const { terminal = 'iTerm2' } = req.body || {}
 
@@ -2436,7 +2446,7 @@ app.post('/api/mission-control/jobs/:jobId/resume', async (req, res) => {
  * POST /api/mission-control/jobs/:jobId/clear
  * Clear/dismiss a stalled job from the active jobs list
  */
-app.post('/api/mission-control/jobs/:jobId/clear', async (req, res) => {
+app.post('/api/mission-control/jobs/:jobId/clear', requireDashboardUserOrLoopback, async (req, res) => {
   const { jobId } = req.params
 
   // Parse job ID: {courseCode}-{type}
@@ -6816,7 +6826,7 @@ app.post('/api/production/voices/register-human', async (req, res) => {
 // Update voice status (activate/deactivate)
 // PATCH /api/production/voices/:voiceId/status
 // Body: { isActive: boolean }
-app.patch('/api/production/voices/:voiceId/status', async (req, res) => {
+app.patch('/api/production/voices/:voiceId/status', requireDashboardUserOrLoopback, async (req, res) => {
   try {
     const { voiceId } = req.params
     const { isActive } = req.body
@@ -9779,7 +9789,7 @@ app.get('/api/production/course-configs/status', async (req, res) => {
 
 // POST /api/production/course-configs/push
 // Push course-configs commits to remote
-app.post('/api/production/course-configs/push', async (req, res) => {
+app.post('/api/production/course-configs/push', requireDashboardUserOrLoopback, async (req, res) => {
   try {
     logger.info('Pushing course-configs to remote...')
     const result = publishManifestService.pushToRemote()

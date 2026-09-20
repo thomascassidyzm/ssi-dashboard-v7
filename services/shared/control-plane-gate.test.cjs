@@ -122,7 +122,17 @@ describe('production-api control-plane routes carry a gate', () => {
     "app.get('/api/deploy/history', requireAdminOrLoopback",
     "app.post('/api/production/internal/emit', requireSameHost",
   ]
-  it.each(MIDDLEWARE_GATED)('%s', (needle) => {
+  // Writes an editor legitimately performs: any signed-in dashboard user, or
+  // a same-host caller — never an anonymous caller off the funnel.
+  const USER_GATED = [
+    "app.post('/api/courses/create', requireDashboardUserOrLoopback",
+    "app.post('/api/mission-control/jobs/:jobId/stop', requireDashboardUserOrLoopback",
+    "app.post('/api/mission-control/jobs/:jobId/resume', requireDashboardUserOrLoopback",
+    "app.post('/api/mission-control/jobs/:jobId/clear', requireDashboardUserOrLoopback",
+    "app.post('/api/production/course-configs/push', requireDashboardUserOrLoopback",
+    "app.patch('/api/production/voices/:voiceId/status', requireDashboardUserOrLoopback",
+  ]
+  it.each([...MIDDLEWARE_GATED, ...USER_GATED])('%s', (needle) => {
     expect(src.includes(needle)).toBe(true)
   })
 
