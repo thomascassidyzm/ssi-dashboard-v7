@@ -7,6 +7,16 @@ Wants=network-online.target
 Type=simple
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
 Environment=NODE_OPTIONS=--max-old-space-size=4096
+# THE ROUND MAP NEEDS THE DATABASE SECRET (2026-09-20).
+# content-edit-gate asks round-index-refresh.cjs to REFRESH MATERIALIZED VIEW
+# course_round_index as the last act of every lego write. That refresh runs on
+# its OWN pg connection, not the Supabase client, and .env.psql is gitignored —
+# provisioned per machine, so it exists in the shared checkout and NOT in the
+# deployment one this unit runs from. Without this line every refresh died with
+# "cannot read .../ssi-dashboard-v7-clean-prod/.env.psql (ENOENT)": the code
+# loaded, fired on every write, and refreshed nothing. Verified live on a
+# throwaway write, 2026-09-20. Same line, same reason, as ssi-round-index.service.
+Environment=ROUND_INDEX_ENV_PSQL=/home/tomcassidy/SSi/ssi-dashboard-v7-clean/.env.psql
 Environment=PRODUCTION_API_PORT=3470
 # ONE-WRITER GUARD — Camberley Mac is the live production writer.
 # Leave this off on watson-1 until real cutover. See docs/watson-1-environment.md

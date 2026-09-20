@@ -19,6 +19,16 @@ Type=simple
 # clean tree carries it too and the cutover loses no behaviour.
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
 Environment=NODE_OPTIONS=--max-old-space-size=4096
+# THE ROUND MAP NEEDS THE DATABASE SECRET (2026-09-20).
+# content-edit-gate asks round-index-refresh.cjs to REFRESH MATERIALIZED VIEW
+# course_round_index as the last act of every lego write. That refresh runs on
+# its OWN pg connection, not the Supabase client, and .env.psql is gitignored —
+# provisioned per machine, so it exists in the shared checkout and NOT in the
+# deployment one this unit runs from. Without this line every refresh died with
+# "cannot read .../ssi-dashboard-v7-clean-prod/.env.psql (ENOENT)": the code
+# loaded, fired on every write, and refreshed nothing. Verified live on a
+# throwaway write, 2026-09-20. Same line, same reason, as ssi-round-index.service.
+Environment=ROUND_INDEX_ENV_PSQL=/home/tomcassidy/SSi/ssi-dashboard-v7-clean/.env.psql
 Environment=COURSE_BUILDER_PORT=3471
 # watson-1 is LINUX. Every agent-spawn route defaults to
 # `ctx.SPAWN_MODE === 'headless' ? 'headless' : terminal` with terminal
