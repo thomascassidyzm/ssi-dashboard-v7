@@ -79,13 +79,13 @@ const GAP_FIELDS = [
 // ── config fallbacks ────────────────────────────────────────────────────────
 // Used only when the course has no saved `pods` config row.
 const FALLBACK_STAGE_PLAYLIST = {
-  1: ['ps', 'explainer', 'ps'],
-  2: ['ps', 'trans', 'ps'],
-  3: ['ps', 'trans', 'ps', 'ps2x'],
-  4: ['ps', 'trans', 'ps2x', 'ps2x'],
-  5: ['ps', 'trans', 'ps2x'],
-  6: ['ps2x', 'trans', 'ps2x'],
-  7: ['ps', 'ps2x'],
+  1: ['ps', 'trans', 'ps', 'ps'],
+  2: ['ps', 'trans', 'ps', 'ps2x'],
+  3: ['ps', 'trans', 'ps2x', 'ps2x'],
+  4: ['ps', 'trans', 'ps2x'],
+  5: ['ps2x', 'trans', 'ps2x'],
+  6: ['ps', 'ps2x'],
+  7: ['ps2x', 'ps2x'],
   8: ['ps2x', 'ps2x'],
   9: ['ps2x'],
 }
@@ -93,6 +93,14 @@ const FALLBACK_STAGE_PLAYLIST = {
 // The ladder specified with Tom on 2026-07-01: the separate whole-sentence
 // explainer stage removed, and a t·k·t·t opener before 2× enters. (It also
 // ran the Stage-0 breakdown twice; Stage 0 is retired, 2026-09-19.)
+// NINE RUNGS since 2026-09-20 (job #318). Tom, 2026-09-19: stages 1 to 8 are
+// visited ONCE each, stage 9 TWICE, then the sentence retires - ten visits in
+// total. The ladder used to stop at eight, so the terminal rung absorbed three
+// visits and there was no stage 9 at all. Stage 8 repeating stage 7's paired
+// 2x rung is a default that makes the descent smooth, not Tom's ruling - he
+// ruled the count and the terminal's two visits, not the new rung's content.
+// This is the ladder now live in the `pods` row of algorithm_config and
+// mirrored in DEFAULT_PODS in the learning app.
 const PROPOSED_STAGE_PLAYLIST = {
   1: ['ps', 'trans', 'ps', 'ps'], //     t · k · t · t
   2: ['ps', 'trans', 'ps', 'ps2x'], //   t · k · t · t@2×
@@ -101,7 +109,8 @@ const PROPOSED_STAGE_PLAYLIST = {
   5: ['ps2x', 'trans', 'ps2x'], //       t@2× · k · t@2×
   6: ['ps', 'ps2x'], //                  t · t@2×
   7: ['ps2x', 'ps2x'], //                t@2× · t@2×
-  8: ['ps2x'], //                        t@2×  (eternal)
+  8: ['ps2x', 'ps2x'], //                t@2× · t@2×
+  9: ['ps2x'], //                        t@2×  (terminal - two visits, then retires)
 }
 
 // ── role display ────────────────────────────────────────────────────────────
@@ -952,7 +961,8 @@ const ladderRungs = computed(() => {
 
   // the speed ramp: the locked engine cascade (Stages 2–8) on the whole turn
   const GLYPH = { ps: 't', trans: 'k', ps2x: 't@2×' }
-  for (let es = 2; es <= 8; es++) {
+  const lastEngineStage = Object.keys(PROPOSED_STAGE_PLAYLIST).length
+  for (let es = 2; es <= lastEngineStage; es++) {
     const pat = PROPOSED_STAGE_PLAYLIST[es] || []
     rungs.push({
       label: `Stage ${stageN} · turn — engine Stage ${es}`,
