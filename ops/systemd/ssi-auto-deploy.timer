@@ -1,0 +1,15 @@
+[Unit]
+Description=Poll origin/main every 2 minutes and fast-forward the served Popty checkout
+Documentation=file:///home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/deploy/auto-deploy-prod.cjs
+
+[Timer]
+# A poll, not a webhook (Tom, 2026-09-20): simpler than standing up a listener
+# and a secret on this box for one push-to-main event. 2 minutes is the ceiling
+# on how long "main = served checkout" can ever be false.
+OnBootSec=1min
+OnUnitActiveSec=2min
+AccuracySec=15sec
+Unit=ssi-auto-deploy.service
+
+[Install]
+WantedBy=timers.target
