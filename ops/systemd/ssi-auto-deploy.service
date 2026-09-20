@@ -11,6 +11,15 @@ Type=oneshot
 # or none. The prod checkout tracks main, so the script that keeps it on
 # main is read from the copy that is actually guaranteed to be on main.
 WorkingDirectory=/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod
+# The 20:40:52 first-ever tick MODULE_NOT_FOUND'd: this unit was installed
+# (timer started, first tick fired at OnBootSec) before the prod checkout had
+# ever been fast-forwarded past the commit that added this very script, so
+# node had nothing to require. ExecStartPre blind-fast-forwards ONLY when the
+# script is missing — a one-time bootstrap, harmless and near-instant on every
+# later tick once the file exists (the `test -f` short-circuits). It skips the
+# dirty/diverge checks the script itself does, which is fine for a first-ever
+# run: there is no served process yet for a bad fast-forward to disrupt.
+ExecStartPre=/bin/bash -c 'test -f tools/deploy/auto-deploy-prod.cjs || (echo "bootstrap: script not yet in prod checkout, fast-forwarding blind" && git fetch origin main && git merge --ff-only origin/main)'
 ExecStart=/usr/bin/node /home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod/tools/deploy/auto-deploy-prod.cjs
 # Exit 2 means a restarted unit did not come back active, or the poll itself
 # could not run — it has already posted a notice by then. Read the log.

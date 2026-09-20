@@ -39,6 +39,52 @@ const SURFACE = process.env.CS_SURFACE || 'http://localhost:4317';
 const CHANNEL_CWD = '/home/tomcassidy/SSi/ssi-dashboard-v7-clean';
 const LOG = process.env.AUTO_DEPLOY_LOG || '/home/tomcassidy/.local/log/ssi-auto-deploy.log';
 const DIRTY_MARK = '/home/tomcassidy/.local/log/ssi-auto-deploy.dirty-notice';
+// Written ONLY after every unit in UNITS comes back active. Read on the next
+// tick as "what HEAD is actually live", never inferred from git alone — see
+// the pure functions below for why comparing HEAD to origin/main was the bug.
+const DEPLOYED_MARK = process.env.AUTO_DEPLOY_DEPLOYED_MARK || '/home/tomcassidy/.local/log/ssi-auto-deploy.deployed-sha';
+// Dedup for the "still down" notice: only speak when the failing SET changes.
+const FAILED_MARK = process.env.AUTO_DEPLOY_FAILED_MARK || '/home/tomcassidy/.local/log/ssi-auto-deploy.failed-units';
+
+/*
+ * ── Pure decision logic (the part a test can hold still) ───────────────────
+ *
+ * The bug this replaces: the old tick compared HEAD to origin/main and did
+ * nothing at all once they matched — including on every tick after a restart
+ * had silently failed. A failed unit stayed down forever because nothing
+ * downstream of "up to date" ever looked at systemctl again. These three
+ * functions are the fix, kept pure so the logic is provable without a git
+ * checkout, a systemd user session, or a network call.
+ */
+
+/** True once every named unit answered `systemctl is-active` truthy. */
+function allActive (activeByUnit) {
+  return Object.values(activeByUnit).every(Boolean);
+}
+
+/**
+ * Which units to (re)start this tick, given what's active RIGHT NOW.
+ *
+ * - HEAD has moved past what we last recorded as fully deployed → this is a
+ *   fresh deploy; restart everything, regardless of current health, because
+ *   a unit that happens to be "active" is still running the OLD code.
+ * - HEAD matches the last fully-deployed marker → nothing moved, so only
+ *   retry whichever units are not currently active.
+ */
+function unitsToRestart (headSha, deployedSha, activeByUnit) {
+  const units = Object.keys(activeByUnit);
+  if (deployedSha !== headSha) return units;
+  return units.filter((u) => !activeByUnit[u]);
+}
+
+/**
+ * The marker value to write for this tick. Advances to HEAD only when every
+ * unit is active afterwards; otherwise stays at whatever it was, so a still-
+ * failing unit is retried again next tick instead of being marked done.
+ */
+function nextDeployedSha (headSha, deployedSha, activeByUnitAfter) {
+  return allActive(activeByUnitAfter) ? headSha : deployedSha;
+}
 
 const noNotice = process.argv.includes('--no-notice');
 
@@ -79,23 +125,37 @@ async function notify(text) {
   } catch (e) { log(`notice FAILED: ${e.message}\n${text}`); }
 }
 
+function isActive(unit) {
+  try { execFileSync('systemctl', ['--user', 'is-active', '--quiet', unit]); return true; }
+  catch { return false; }
+}
+
 function restartUnit(unit) {
   execFileSync('systemctl', ['--user', 'restart', unit], { stdio: 'pipe' });
   // Give the ExecStartPre syntax guard + startup a moment, then check it held.
   const deadline = Date.now() + 15000;
   let active = false;
   while (Date.now() < deadline) {
-    try {
-      execFileSync('systemctl', ['--user', 'is-active', '--quiet', unit]);
-      active = true;
-      break;
-    } catch { /* not active yet */ }
+    if (isActive(unit)) { active = true; break; }
     execFileSync('sleep', ['1']);
   }
   return active;
 }
 
-(async () => {
+function readMark(file) {
+  try { return fs.readFileSync(file, 'utf8').trim() || null; } catch { return null; }
+}
+
+function writeMark(file, value) {
+  try { fs.mkdirSync(path.dirname(file), { recursive: true }); fs.writeFileSync(file, value); }
+  catch (e) { log(`could not write ${file}: ${e.message}`); }
+}
+
+function clearMark(file) {
+  try { fs.unlinkSync(file); } catch { /* nothing to clear */ }
+}
+
+async function main() {
   let status;
   try {
     git(['fetch', 'origin', 'main']);
@@ -125,46 +185,91 @@ function restartUnit(unit) {
 
   const before = git(['rev-parse', 'HEAD']);
   const remote = git(['rev-parse', 'origin/main']);
-  if (before === remote) {
-    log(`up to date at ${before.slice(0, 7)}`);
-    process.exit(0);
-  }
+  let after = before;
+  let commits = [];
 
-  let isAncestor = true;
-  try { git(['merge-base', '--is-ancestor', before, remote]); } catch { isAncestor = false; }
-  if (!isAncestor) {
-    log(`DIVERGED: served checkout at ${before.slice(0, 7)} is not an ancestor of origin/main (${remote.slice(0, 7)}) — cannot fast-forward`);
-    await notify(`Auto-deploy: ${PROD_DIR} has diverged from origin/main (${before.slice(0, 7)} vs ${remote.slice(0, 7)}) and cannot be fast-forwarded. This needs a human — never force-resetting a served checkout automatically.`);
-    process.exit(0);
-  }
+  if (before !== remote) {
+    let isAncestor = true;
+    try { git(['merge-base', '--is-ancestor', before, remote]); } catch { isAncestor = false; }
+    if (!isAncestor) {
+      log(`DIVERGED: served checkout at ${before.slice(0, 7)} is not an ancestor of origin/main (${remote.slice(0, 7)}) — cannot fast-forward`);
+      await notify(`Auto-deploy: ${PROD_DIR} has diverged from origin/main (${before.slice(0, 7)} vs ${remote.slice(0, 7)}) and cannot be fast-forwarded. This needs a human — never force-resetting a served checkout automatically.`);
+      process.exit(0);
+    }
 
-  log(`fast-forwarding ${before.slice(0, 7)} → ${remote.slice(0, 7)}`);
-  git(['merge', '--ff-only', 'origin/main']);
-  const after = git(['rev-parse', 'HEAD']);
-  const commits = git(['log', '--oneline', `${before}..${after}`]).split('\n').filter(Boolean);
+    log(`fast-forwarding ${before.slice(0, 7)} → ${remote.slice(0, 7)}`);
+    git(['merge', '--ff-only', 'origin/main']);
+    after = git(['rev-parse', 'HEAD']);
+    commits = git(['log', '--oneline', `${before}..${after}`]).split('\n').filter(Boolean);
+  }
 
   // REBUILD_FRONTEND: nothing to do here today — the Vue/Vite dashboard is a
   // Vercel SPA that deploys itself on push to main and is never served from
   // this checkout's dist/. If that changes, rebuild it here before restarting
   // the units below, not after.
 
-  const results = {};
-  for (const unit of UNITS) {
-    results[unit] = restartUnit(unit);
+  // Comparing HEAD to origin/main (the old check) only ever notices a NEW
+  // commit — a restart that failed on a HEAD we've already seen went
+  // unnoticed forever. Compare instead to the last HEAD we know every unit
+  // came up healthy for, and re-derive what's active right now regardless.
+  const deployedSha = readMark(DEPLOYED_MARK);
+  const activeBefore = Object.fromEntries(UNITS.map((u) => [u, isActive(u)]));
+  const toRestart = unitsToRestart(after, deployedSha, activeBefore);
+
+  const activeAfter = { ...activeBefore };
+  for (const unit of toRestart) activeAfter[unit] = restartUnit(unit);
+  const failed = UNITS.filter((u) => !activeAfter[u]);
+
+  const newDeployedSha = nextDeployedSha(after, deployedSha, activeAfter);
+  if (newDeployedSha !== deployedSha) writeMark(DEPLOYED_MARK, newDeployedSha);
+
+  if (after === before && toRestart.length === 0) {
+    log(`up to date and healthy at ${after.slice(0, 7)}`);
+    process.exit(0);
   }
-  const failed = Object.entries(results).filter(([, ok]) => !ok).map(([u]) => u);
 
-  log(`deployed ${before.slice(0, 7)}→${after.slice(0, 7)} (${commits.length} commit(s)); restarted ${UNITS.join(', ')}; failed=${failed.join(',') || 'none'}`);
+  log(
+    `${after === before ? 'no new commit' : `deployed ${before.slice(0, 7)}→${after.slice(0, 7)} (${commits.length} commit(s))`}; ` +
+    `${toRestart.length ? `restarted ${toRestart.join(', ')}` : 'no restart needed'}; failed=${failed.join(',') || 'none'}`
+  );
 
-  const lines = [
-    `Auto-deploy: origin/main advanced (${before.slice(0, 7)} → ${after.slice(0, 7)}, ${commits.length} commit${commits.length === 1 ? '' : 's'}). Served checkout fast-forwarded.`,
-    ...commits.slice(0, 10).map((c) => `  ${c}`),
-    '',
-    failed.length
-      ? `${failed.join(', ')} did NOT come back active after restart — needs a look now, not tomorrow.`
-      : `${UNITS.join(', ')} restarted and active.`,
-  ];
-  await notify(lines.join('\n'));
+  // Dedup the "still down" notice on the failing SET, not on the tick — a
+  // unit that stays down for an hour gets one line, not thirty.
+  const failedDigest = failed.slice().sort().join(',');
+  const lastFailedDigest = readMark(FAILED_MARK);
+  if (failed.length) {
+    if (failedDigest !== lastFailedDigest) {
+      writeMark(FAILED_MARK, failedDigest);
+      const lines = after === before
+        ? [`Auto-deploy: ${failed.join(', ')} still not active at ${after.slice(0, 7)} — retried this tick and it's still down. Needs a look now, not tomorrow.`]
+        : [
+            `Auto-deploy: origin/main advanced (${before.slice(0, 7)} → ${after.slice(0, 7)}, ${commits.length} commit${commits.length === 1 ? '' : 's'}). Served checkout fast-forwarded.`,
+            ...commits.slice(0, 10).map((c) => `  ${c}`),
+            '',
+            `${failed.join(', ')} did NOT come back active after restart — needs a look now, not tomorrow. Will keep retrying every tick.`,
+          ];
+      await notify(lines.join('\n'));
+    } else {
+      log(`same failing set (${failedDigest}) as last notice — retried quietly`);
+    }
+  } else {
+    if (lastFailedDigest) clearMark(FAILED_MARK);
+    if (after !== before) {
+      const lines = [
+        `Auto-deploy: origin/main advanced (${before.slice(0, 7)} → ${after.slice(0, 7)}, ${commits.length} commit${commits.length === 1 ? '' : 's'}). Served checkout fast-forwarded.`,
+        ...commits.slice(0, 10).map((c) => `  ${c}`),
+        '',
+        `${UNITS.join(', ')} restarted and active.`,
+      ];
+      await notify(lines.join('\n'));
+    } else if (lastFailedDigest) {
+      await notify(`Auto-deploy: ${toRestart.join(', ')} came back active on retry at ${after.slice(0, 7)}. All clear.`);
+    }
+  }
 
   process.exit(failed.length ? 2 : 0);
-})();
+}
+
+if (require.main === module) main();
+
+module.exports = { allActive, unitsToRestart, nextDeployedSha };
