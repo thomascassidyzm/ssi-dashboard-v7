@@ -47,6 +47,7 @@ const { Client } = require('pg')
 const { SERVING_POD_SLUGS } = require('./serving-slug.cjs')
 const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { evidencePath } = require('../lib/evidence-path.cjs')
+const { draftFlagsFor } = require('./pod-draft-flags.cjs')
 
 const SURFACE = 'tools/pods/build-canonical-231-pod.cjs'
 const APPLY = process.argv.includes('--apply')
@@ -170,6 +171,13 @@ async function loadSide(db, spec) {
     const g = r.global_order
     const ov = overrides[String(g)] || {}
     const isNameLine = LANGUAGE_NAME_LINES.includes(g)
+    // Did a MODEL write any of this row's words? The five language-name lines are
+    // rewritten from an override a model drafted, or derived by substitution — new
+    // learner-facing words either way. Job #309: the relabel path did not pass
+    // --draft=known, so those rows were stored target_text_draft:false and the
+    // verifier's WHERE clause could not see them. This flag is computed from what
+    // actually happened to the row, not from a flag the caller remembered to pass.
+    let machineKnown = false, machineTarget = false
 
     let k = known.text.get(g)
     let t = target.text.get(g)
@@ -180,16 +188,16 @@ async function loadSide(db, spec) {
       if (needKnownSub) {
         if (!norm(ov.known)) problems.push(`${g}: --substitute names the known side but no override given (this line names the language being learnt)`)
         else if (norm(ov.known) === norm(k)) problems.push(`${g}: known override is identical to the source line — it still names the wrong language`)
-        else k = ov.known
+        else { k = ov.known; machineKnown = true }
       }
       if (needTargetSub && !norm(ov.target) && TARGET_LANG_EN && target.side === 'known') {
         const derived = String(t).replace(/\bGerman\b/g, TARGET_LANG_EN)
         if (norm(derived) === norm(t)) problems.push(`${g}: substituting German → ${TARGET_LANG_EN} changed nothing; the line does not name a language`)
-        else t = derived
+        else { t = derived; machineTarget = true }
       } else if (needTargetSub) {
         if (!norm(ov.target)) problems.push(`${g}: --substitute names the target side but no override given`)
         else if (norm(ov.target) === norm(t)) problems.push(`${g}: target override is identical to the source line`)
-        else t = ov.target
+        else { t = ov.target; machineTarget = true }
       }
     } else {
       // An override outside the five name lines means somebody has misread the shape.
@@ -221,10 +229,20 @@ async function loadSide(db, spec) {
       // rendered until a verifier has read it — so it carries the flag, and
       // target_text_review records which side the draft is actually on. Flagged in the
       // report as a deliberate stretch of the column's name, not an accident.
-      target_text_draft: DRAFT_SIDE === 'known'
-        || (CARRY_TARGET_DRAFT && target.side === 'target' && !!(target.draft && target.draft.get(g) && target.draft.get(g).draft)),
-      draft_side: DRAFT_SIDE === 'known' ? 'known'
-        : (CARRY_TARGET_DRAFT && target.side === 'target' && target.draft && target.draft.get(g) && target.draft.get(g).draft ? 'target' : null),
+      // The draft flags are ONE decision, held in pod-draft-flags.cjs so the
+      // builder and its test cannot drift apart. Job #309: a row a model wrote
+      // words into is a draft whatever --draft says, so it lands in the
+      // verifier's selection — on the relabel path that is the five name lines
+      // and nothing else, five lines to verify rather than 231. And draft_side
+      // is the SECOND, independent record of the same fact, which the promote
+      // gate reads as well, so a future path that forgets one flag still cannot
+      // ship unreviewed text.
+      ...draftFlagsFor({
+        draftSide: DRAFT_SIDE,
+        carryTargetDraft: CARRY_TARGET_DRAFT,
+        targetRowIsDraft: target.side === 'target' && !!(target.draft && target.draft.get(g) && target.draft.get(g).draft),
+        machineKnown, machineTarget,
+      }),
     })
   }
 

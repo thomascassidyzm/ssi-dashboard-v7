@@ -273,6 +273,35 @@ function planInflightFold ({ course, liveSlug, retiredSlug, promoteTo, plannedKe
  * known side bind there would break rehearsals for no safety gain (Tom's framing, 2026-09-02).
  * The zero-sentence blocker is NOT content readiness and binds in every mode.
  */
+/**
+ * Has a row's CURRENT text been read by a verifier? Job #309's second door.
+ *
+ * `target_text_draft` is the flag the verifier and the render gate read — and it
+ * is a flag somebody has to remember to set. The relabel path in
+ * run-canonical-231-build.cjs did not, so five model-written lines per course sat
+ * target_text_draft:false and walked past both. So the gate reads a SECOND,
+ * independently-written record of the same fact:
+ *
+ *   • draft_side set and target_text_approved_at null — a machine wrote this row
+ *     and nobody has approved it, whatever the draft flag says;
+ *   • a target_text_review whose text snapshot no longer matches the row — the
+ *     approval on file was given to different words.
+ *
+ * Pure, so it is testable without a database.
+ */
+function isUnreviewedMachineText (row) {
+  if (!row) return false
+  if (row.target_text_draft) return true
+  if (row.draft_side && !row.target_text_approved_at) return true
+  const review = row.target_text_review
+  if (review && typeof review === 'object') {
+    const was = (v) => String(v == null ? '' : v).trim()
+    if (was(review.known_text_at_check) && was(review.known_text_at_check) !== was(row.known_text)) return true
+    if (was(review.target_text_at_check) && was(review.target_text_at_check) !== was(row.target_text)) return true
+  }
+  return false
+}
+
 function readinessBlockers (counts, { rehearsal = false } = {}) {
   const num = (v) => Number(v || 0)
   const blockers = []
@@ -280,6 +309,7 @@ function readinessBlockers (counts, { rehearsal = false } = {}) {
   if (rehearsal) return blockers
   if (num(counts.no_text) > 0) blockers.push(`${counts.no_text} staged sentences have no target text`)
   if (num(counts.draft) > 0) blockers.push(`${counts.draft} staged sentences are still marked draft`)
+  if (num(counts.unreviewed) > 0) blockers.push(`${counts.unreviewed} staged sentences carry machine-written text no verifier has approved`)
   if (num(counts.no_target_audio) > 0) blockers.push(`${counts.no_target_audio} staged sentences have no target audio`)
   if (num(counts.no_known_text) > 0) blockers.push(`${counts.no_known_text} staged sentences have no known text`)
   if (num(counts.no_known_audio) > 0) blockers.push(`${counts.no_known_audio} staged sentences have no known audio`)
@@ -371,6 +401,9 @@ async function main () {
             count(*) filter (where coalesce(btrim(target_text),'') = '') no_text,
             count(*) filter (where coalesce(btrim(known_text),'') = '') no_known_text,
             count(*) filter (where target_text_draft) draft,
+            count(*) filter (where not coalesce(target_text_draft, false)
+                               and draft_side is not null
+                               and target_text_approved_at is null) unreviewed,
             count(*) filter (where target_audio_id is null) no_target_audio,
             count(*) filter (where known_audio_id is null) no_known_audio
        from listening_pod_sentences where pod_id = $1`,
@@ -642,7 +675,7 @@ async function main () {
   await db.end()
 }
 
-module.exports = { planInflightFold, readinessBlockers }
+module.exports = { planInflightFold, readinessBlockers, isUnreviewedMachineText }
 
 if (require.main === module) {
   main().catch(e => { console.error('FAILED:', e.message); process.exit(1) })
