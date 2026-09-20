@@ -94,7 +94,7 @@ const { Client } = require('pg')
 // ONE definition of content readiness, shared with the other door onto the live slug.
 // Do not reimplement it here: two implementations of one rule is how the known-side
 // hole of 2026-09-02 came back (docs/pods/known-side-gate-2026-09-02.md).
-const { readinessBlockers } = require('./pod-switchover.cjs')
+const { readinessBlockers, isUnreviewedMachineText } = require('./pod-switchover.cjs')
 
 const has = (n) => process.argv.includes(`--${n}`)
 const arg = (n) => {
@@ -185,6 +185,12 @@ function promotionBlockers ({ rows, srcId, course, fromSlug, clashes = [], allow
     no_text: ALLOW_EMPTY_TARGET >= rows.filter(r => !trimmed(r.target_text)).length
       ? 0 : rows.filter(r => !trimmed(r.target_text)).length,
     draft: ALLOW_DRAFTS ? 0 : rows.filter(r => r.target_text_draft).length,
+    // The second door (job #309). Independent of target_text_draft on purpose: the
+    // hole this closes was a path that forgot to set that flag, so a gate reading
+    // only it waved five model-written lines per course through as clean. No
+    // --allow escape: nobody has a documented waiver for shipping learner-facing
+    // text no verifier has read.
+    unreviewed: rows.filter(r => !r.target_text_draft && isUnreviewedMachineText(r)).length,
     no_target_audio: ALLOW_MISSING_AUDIO ? 0 : rows.filter(r => !r.target_audio_id).length,
     no_known_text: rows.filter(r => !trimmed(r.known_text)).length,
     no_known_audio: rows.filter(r => !r.known_audio_id).length,
