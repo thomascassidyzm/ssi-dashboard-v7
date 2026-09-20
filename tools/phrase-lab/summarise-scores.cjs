@@ -38,6 +38,9 @@ function loadRows (dir) {
 function pair (rows) {
   const by = new Map();
   for (const r of rows) {
+    // A row with no axes is a SKIP (qa-report found nothing to score) — it is
+    // not a zero and must not be averaged as one.
+    if (!r.axes || typeof r.composite !== 'number') continue;
     if (!by.has(r.lego_id)) by.set(r.lego_id, { lego_id: r.lego_id, seed: r.seed, lego: r.lego });
     by.get(r.lego_id)[r.source] = r;
   }

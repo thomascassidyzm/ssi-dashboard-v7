@@ -28,6 +28,7 @@ while [ "$s" -le "$TO" ]; do
   e=$(( s + CHUNK - 1 )); [ "$e" -gt "$TO" ] && e=$TO
   echo "=== CHUNK seeds $s-$e  $(date -u +%H:%M:%SZ) ==="
   node tools/phrase-lab/run-course-v3.cjs "$COURSE" --from "$s" --to "$e" --out "$CAND" --concurrency "$CONC"
+  gen_rc=$?
   for n in $(seq "$s" "$e"); do
     d="$CAND/seed-$(printf %04d "$n")"
     [ -d "$d" ] || continue
@@ -35,6 +36,12 @@ while [ "$s" -le "$TO" ]; do
       --json "$SCORES/seed-$(printf %04d "$n").json" > "$SCORES/seed-$(printf %04d "$n").txt" 2>&1
     tail -4 "$SCORES/seed-$(printf %04d "$n").txt"
   done
+  # Exit 3 = the pool stopped serving. Score this chunk, then stop: every
+  # later chunk would fail the same way, and a run that keeps going turns one
+  # limit into a hundred identical errors and a COMPLETE it has not earned.
+  if [ "$gen_rc" -eq 3 ]; then
+    echo "=== pool exhausted during seeds $s-$e — stopping after scoring this chunk ==="; break
+  fi
   s=$(( e + 1 ))
 done
 echo "=== RUN COMPLETE $(date -u +%H:%M:%SZ) ==="

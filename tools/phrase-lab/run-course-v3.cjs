@@ -41,6 +41,21 @@ require('dotenv').config({ quiet: true });
 const { createClient } = require('@supabase/supabase-js');
 const { generateLegoPhrases } = require('../../services/course-builder/lib/phrase-generation.cjs');
 
+/**
+ * A POOL THAT HAS STOPPED SERVING IS NOT A PER-BASKET FAILURE — it is the end
+ * of the run. The 2026-09-20 German run proved why this matters: the account
+ * hit its rolling five-hour session limit at seed 64 and the loop cheerfully
+ * spawned and failed the remaining 56 baskets in seconds, "completing" a range
+ * it had generated nothing for. Nothing was lost (a failed basket writes no
+ * file, so the range resumes), but the run reported COMPLETE and the log filled
+ * with 56 identical errors where one line and a stop belonged.
+ */
+function isPoolExhausted (message) {
+  return /session limit|usage limit|rate limit|quota|429|credit balance/i.test(String(message || ''));
+}
+/** Exit code that means "the pool stopped serving", so a wrapper can stop too. */
+const POOL_EXHAUSTED_EXIT = 3;
+
 const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i === -1 ? d : process.argv[i + 1]; };
 
 async function main() {
@@ -69,7 +84,7 @@ async function main() {
 
   const logPath = path.join(out, 'run-log.jsonl');
   fs.mkdirSync(out, { recursive: true });
-  let done = 0, blocked = 0, errored = 0;
+  let done = 0, blocked = 0, errored = 0, exhausted = null;
   const queue = pending.slice();
 
   async function worker() {
@@ -100,12 +115,23 @@ async function main() {
           lego_index: l.lego_index, ok: false, error: e.message,
         }) + '\n');
         console.log(`[${done + errored}/${pending.length}] ${l.lego_id} ERROR ${e.message}`);
+        if (isPoolExhausted(e.message)) {
+          exhausted = e.message;
+          queue.length = 0;   // drain: every remaining basket would fail the same way
+          return;
+        }
       }
     }
   }
 
   await Promise.all(Array.from({ length: conc }, worker));
   console.log(`\ngenerated ${done} (${blocked} blocked by the gate), ${errored} errored. log: ${logPath}`);
+  if (exhausted) {
+    console.log(`POOL EXHAUSTED — stopping with ${queue.length ? queue.length : 'the rest of'} the range ungenerated: ${exhausted}`);
+    process.exitCode = POOL_EXHAUSTED_EXIT;
+  }
 }
 
-main().catch(e => { console.error(e); process.exit(1); });
+if (require.main === module) main().catch(e => { console.error(e); process.exit(1); });
+
+module.exports = { isPoolExhausted, POOL_EXHAUSTED_EXIT };
