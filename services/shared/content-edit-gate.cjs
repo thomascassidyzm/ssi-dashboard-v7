@@ -17,6 +17,14 @@
 //   3. If a handler returns 2xx without having called .record(), the gate
 //      records a default event on response finish. Coverage is not left to a
 //      handler remembering.
+//   4. If the surface is flagged `legos: true` and the handler returned 2xx, it
+//      asks for a course_round_index refresh — the round map the learner app
+//      walks — so a course cannot ship with a map shorter than its own content
+//      (Tom's ruling, 2026-09-20). This lives HERE, in the one middleware every
+//      content write already passes through, precisely so it cannot be
+//      forgotten by the next route somebody adds; the alternative, a call at
+//      the bottom of each handler, is the shape that let afr_for_eng sit nine
+//      rounds short for weeks. See services/shared/round-index-refresh.cjs.
 //
 // TRANSITION MODE (CONTENT_EDIT_IDENTITY_MODE)
 //   'enforce' — no identity, no write. Full stop.
@@ -36,6 +44,7 @@
 const { resolveEditorIdentity, isTrustedLoopback } = require('./editor-identity.cjs');
 const { recordContentEdit } = require('./content-edit-log.cjs');
 const { findSurface, courseCodeFrom } = require('./content-write-surfaces.cjs');
+const { requestRoundIndexRefresh } = require('./round-index-refresh.cjs');
 
 const UNDECLARED = Object.freeze({
   kind: 'service',
@@ -136,6 +145,17 @@ function contentEditGate({ supabase, service, logger = console }) {
 
     // Safety net: a 2xx from a handler that never recorded still gets an event.
     res.on('finish', () => {
+      // The round map, refreshed by construction. Fire-and-log: the response has
+      // already gone, so the ~0.8s refresh costs the caller nothing, and the
+      // helper coalesces a burst of seed submissions into one run. It never
+      // rejects, so this cannot turn a successful write into a failure.
+      if (surface.legos && res.statusCode >= 200 && res.statusCode < 300) {
+        requestRoundIndexRefresh(
+          courseCodeFrom(params, req.path || req.url, req.body) || courseCode,
+          { reason: surfaceLabel },
+        ).catch(() => {});
+      }
+
       if (eventId || recording) return;
       // A record-only GET logs only when its handler actually initialised
       // something. Without this, every page load would file an edit.

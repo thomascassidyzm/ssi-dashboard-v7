@@ -32,6 +32,7 @@
 //   node tools/gle-lego-reorder-2026-09-09.cjs --learner-map
 
 const fs = require('fs');
+const { requestRoundIndexRefresh } = require('../services/shared/round-index-refresh.cjs');
 const path = require('path');
 const { Client } = require('pg');
 const { serviceIdentity } = require('../services/shared/editor-identity.cjs');
@@ -235,9 +236,11 @@ UPDATE lego_progress p SET lego_id = m.new_id FROM m
     if (apply) {
       await client.query('COMMIT');
       // course_round_index is what round-map.ts reads; CONCURRENTLY cannot run
-      // inside a transaction, so it follows the commit.
-      await client.query('REFRESH MATERIALIZED VIEW CONCURRENTLY course_round_index');
-      console.log('COMMITTED, course_round_index refreshed');
+      // inside a transaction, so it follows the commit. One mechanism, shared
+      // with every other lego write path (Tom's ruling, 2026-09-20) — this used
+      // to be an inline REFRESH here, the only one in the estate.
+      const r = await requestRoundIndexRefresh(COURSE, { immediate: true, reason: 'gle-lego-reorder' });
+      console.log(r.ok ? 'COMMITTED, course_round_index refreshed' : `COMMITTED, but round-index refresh FAILED: ${r.error}`);
     } else {
       await client.query('ROLLBACK');
       console.log('DRY RUN — rolled back');
