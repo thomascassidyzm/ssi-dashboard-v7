@@ -74,9 +74,19 @@ describe('a clone with no vendor display name is still findable by search (Tom, 
   it('leaves a real vendor name untouched', () => {
     expect(cloneLabel({ name: 'Skylar — Cartesia' })).toBe('Skylar')
   })
-  it('"aran" finds the clone by its id even though nothing calls it "Aran" in the vendor fields', () => {
-    const voices = [aran, cart('other', { name: 'Skylar — Cartesia' })]
-    expect(filterShelf(voices, { query: 'aran' }).map((v) => v.voiceId)).toEqual(['cartesia_33890587-a29f-4416-ba61-2615c74f92fe'])
+  it('searches the raw voiceId when the display name does not contain it', () => {
+    const clone = cart('aran_english_003', { name: 'Private voice', owned: true })
+    const query = 'aran_english_003'
+    expect(clone.name.toLowerCase()).not.toContain(query)
+    expect(filterShelf([clone, cart('other')], { query })).toEqual([clone])
+  })
+  it('searches the humanised clone label absent from the raw name and voiceId', () => {
+    const clone = { ...aran, name: 'aran_english_003' }
+    const query = 'Aran (clone)'
+    expect(clone.name.toLowerCase()).not.toContain(query.toLowerCase())
+    expect(clone.voiceId.toLowerCase()).not.toContain(query.toLowerCase())
+    expect(cloneLabel(clone)).toBe(query)
+    expect(filterShelf([clone, cart('other')], { query })).toEqual([clone])
   })
 })
 
