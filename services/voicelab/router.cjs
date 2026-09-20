@@ -1472,26 +1472,97 @@ function mount (app, deps) {
    * a slot the render path reads, and "never touch a voice that is currently
    * cast without saying so plainly first" is the whole of the safety here.
    */
+  /**
+   * WHAT DELETING THIS VOICE WOULD DO, BEFORE ANYTHING IS DONE. SPENDS NOTHING.
+   *
+   * Tom, 2026-09-20: "can I delete clones - I have 3 of my voice and I only
+   * want to keep one". Two SELECTs, no writes: which slots hold it, how many
+   * rendered clips already speak with it, and therefore WHICH OF THE TWO
+   * DELETIONS it qualifies for. The screen puts that sentence in front of him
+   * before the button, because "this voice speaks 790 clips that already exist"
+   * is the fact that decides which button it should be.
+   */
+  app.get('/api/voicelab/voices/:voiceId/removal', async (req, res) => {
+    if (!await requireDashboardUser(req, res)) return
+    try {
+      res.json(await removalFacts(String(req.params.voiceId || '').trim()))
+    } catch (err) { fail(res, err, `removal-facts ${req.params.voiceId}`) }
+  })
+
+  /**
+   * The shared read behind the preflight and the delete itself, so the sentence
+   * shown to a human and the rule the route enforces cannot come apart.
+   *
+   * `mode` is the ONLY deletion this voice may have:
+   *   'remove' — nothing has ever been rendered with it and no slot holds it:
+   *              the clone goes at Cartesia and the `voices` row goes.
+   *   'retire' — clips exist. The row is DEACTIVATED and nothing else happens:
+   *              no clip is deleted, none is re-pointed, and nothing is ever
+   *              re-rendered (Tom's hard rule, 2026-09-20 — "we also must NOT
+   *              re-render any old audio"). The voice leaves every picker and
+   *              cannot be cast again; its 790 clips play tomorrow exactly as
+   *              they play today.
+   *   'blocked' — a slot still holds it. Clear the slot first.
+   */
+  async function removalFacts (voiceId) {
+    if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+    const { data: voice } = await supabase()
+      .from('voices').select('voice_id, display_name, human_name, is_active').eq('voice_id', voiceId).maybeSingle()
+    const { data: cast } = await supabase()
+      .from('voice_language_roles').select('language, slot, gender, rank').eq('voice_id', voiceId)
+    const { count: clips } = await supabase()
+      .from('course_audio').select('id', { count: 'exact', head: true }).eq('voice_id', voiceId)
+    const castInto = (cast || []).map((c) => `${c.slot} ${c.language}/${c.gender}/rank${c.rank}`)
+    const clipCount = clips || 0
+    const mode = castInto.length ? 'blocked' : (clipCount > 0 ? 'retire' : 'remove')
+    return {
+      voiceId,
+      name: voice ? (voice.display_name || voice.human_name || voice.voice_id) : voiceId,
+      known: Boolean(voice),
+      active: voice ? voice.is_active !== false : null,
+      castInto,
+      clips: clipCount,
+      mode,
+      // The words the screen says. Written here so the API and the button agree.
+      sentence: castInto.length
+        ? `Still cast into ${castInto.length} slot(s) — ${castInto.join(', ')}. Clear those first.`
+        : (clipCount > 0
+          ? `This voice speaks ${clipCount.toLocaleString('en-GB')} clips that already exist — they will not change. Retiring it takes it out of every picker and nothing is re-rendered.`
+          : 'Nothing has been rendered with this voice. It can be deleted outright, here and at Cartesia.'),
+    }
+  }
+
   app.delete('/api/voicelab/voices/:voiceId', async (req, res) => {
     const user = await requireAdmin(req, res)
     if (!user) return
     try {
       const voiceId = String(req.params.voiceId || '').trim()
-      if (!voiceId) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+      const asked = String(req.query.mode || '').trim() || null
+      const facts = await removalFacts(voiceId)
 
-      const { data: cast } = await supabase()
-        .from('voice_language_roles').select('language, slot, gender, rank').eq('voice_id', voiceId)
-      if (cast && cast.length) {
-        const where = cast.map((c) => `${c.slot} ${c.language}/${c.gender}/rank${c.rank}`).join(', ')
+      if (facts.mode === 'blocked') {
         throw Object.assign(new Error(
-          `${voiceId} is cast into ${cast.length} slot(s) — ${where}. Clear those slots first; removing a cast voice would empty them without saying so.`,
+          `${voiceId} is cast into ${facts.castInto.length} slot(s) — ${facts.castInto.join(', ')}. Clear those slots first; removing a cast voice would empty them without saying so.`,
         ), { status: 409 })
       }
+      // A HARD DELETE IS REFUSED THE MOMENT A CLIP EXISTS. Not because the
+      // clips would break — they are S3 objects and a `voices` row is not on
+      // their read path — but because the row is the only record of WHO is
+      // speaking in 790 places, and deleting it turns that into an unknown.
+      if (asked === 'remove' && facts.mode === 'retire') {
+        throw Object.assign(new Error(
+          `${voiceId} already speaks ${facts.clips} rendered clips, so it is retired rather than deleted: the clips stay exactly as they are and the voice leaves every picker. Ask for mode=retire.`,
+        ), { status: 409 })
+      }
+      const mode = asked === 'retire' ? 'retire' : facts.mode
 
-      // Historic clips keep playing whatever happens to the row, so this is not
-      // a check that blocks — it is a fact the operator is told before they act.
-      const { count: clipCount } = await supabase()
-        .from('course_audio').select('id', { count: 'exact', head: true }).eq('voice_id', voiceId)
+      if (mode === 'retire') {
+        const { error } = await supabase().from('voices').update({ is_active: false, updated_at: new Date().toISOString() }).eq('voice_id', voiceId)
+        if (error) throw Object.assign(new Error(error.message), { status: 400 })
+        registry.invalidate()
+        logger.log?.(`[voicelab] retired voice ${voiceId} by ${who(user)} — ${facts.clips} existing clips untouched`)
+        return res.json({ ok: true, voiceId, mode: 'retire', atCartesia: null, existingClips: facts.clips })
+      }
 
       let atCartesia = null
       if (/^cartesia_/.test(voiceId)) {
@@ -1501,7 +1572,7 @@ function mount (app, deps) {
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
       params.invalidateCartesiaCatalogue()
       logger.log?.(`[voicelab] removed voice ${voiceId} by ${who(user)}${atCartesia ? ' (and at Cartesia)' : ''}`)
-      res.json({ ok: true, voiceId, atCartesia, existingClips: clipCount || 0 })
+      res.json({ ok: true, voiceId, mode: 'remove', atCartesia, existingClips: facts.clips })
     } catch (err) { fail(res, err, `remove-voice ${req.params.voiceId}`) }
   })
 
