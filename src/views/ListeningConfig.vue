@@ -55,7 +55,7 @@
         </div>
 
         <div class="field-block">
-          <label>Per-seed sandwich <span class="hint">what each seed plays in the poured cup · tap a pill to cycle its role · ↔ reorder · default: V1 → known → V2 → V1·2×</span></label>
+          <label>Per-seed sandwich <span class="hint">what each seed plays in the poured cup · tap a pill to cycle its role · ↔ reorder · default: V1 → known → V1 → V2</span></label>
           <L1PlaylistEditor :modelValue="seedPlaylist" @update:modelValue="setSeedPlaylist" />
           <p class="row-desc l1-roles-key">
             <strong>V1</strong> target voice 1 · <strong>V2</strong> target voice 2 · <strong>known</strong> the meaning (known-language clip) · <strong>·2×</strong> double-speed stretch rep. A seed with no second voice plays V1 for V2; no known audio drops the known slot.
@@ -267,7 +267,12 @@ const seedLastRound = computed(() => {
 const totalSeeds = computed(() => seedLastRound.value.size)
 
 // Per-seed sandwich playlist (admin-tunable; saved on the 'listening' row).
-const DEFAULT_SEED_PLAYLIST = ['t1', 'known', 't2', 't1x2']
+// Mirrors DEFAULT_SEED_PLAYLIST in the learning app's useLayer1Scheduler.ts.
+// V1 → known → V1 → V2 (Tom, 2026-09-20, listening on staging): voice 2 closes
+// the sentence, so no voice repeats across the join into the next one. This
+// copy had drifted — it still carried the @2× stretch rep the app cut on
+// 2026-07-14, a role Layer1SlotRole no longer has.
+const DEFAULT_SEED_PLAYLIST = ['t1', 'known', 't1', 't2']
 const seedPlaylist = computed(() => drafts.listening?.seedPlaylist || DEFAULT_SEED_PLAYLIST)
 function setSeedPlaylist(next) {
   if (drafts.listening) drafts.listening.seedPlaylist = next
@@ -640,7 +645,7 @@ function backfillDefaults(d) {
     d.listening.listeningUseStagePlaylist = false
   }
   // Per-seed sandwich — default to the comprehensible-input order. Mirrors
-  // DEFAULT_SEED_PLAYLIST in useLayer1Scheduler.ts (V1 → known → V2 → V1·2×).
+  // DEFAULT_SEED_PLAYLIST in useLayer1Scheduler.ts (V1 → known → V1 → V2).
   if (!Array.isArray(d.listening.seedPlaylist) || !d.listening.seedPlaylist.length) {
     d.listening.seedPlaylist = [...DEFAULT_SEED_PLAYLIST]
   }
@@ -737,8 +742,10 @@ const PlaylistEditor = defineComponent({
 
 // ============================================================================
 // L1PlaylistEditor — the per-seed sandwich. Roles map to Layer1SlotRole in
-// useLayer1Scheduler.ts (t1/t2 = target voices, t1x2/t2x2 = same at 2×, known =
-// the meaning clip). Reuses the pod pill colours (target = ps, known = trans,
+// useLayer1Scheduler.ts (t1/t2 = target voices, known = the meaning clip).
+// NOTE: t1x2/t2x2 stay in the role cycle only so an already-saved row still
+// renders its pills — the app cut the @2× stretch rep on 2026-07-14 and
+// buildSeedPlays now DROPS those slots, so saving one plays nothing. Reuses the pod pill colours (target = ps, known = trans,
 // 2× = ps2x) so it reads consistently. Tap a pill to cycle role, ← → reorder,
 // × remove, + add.
 // ============================================================================
