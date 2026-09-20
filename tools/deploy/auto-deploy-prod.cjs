@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /*
  * auto-deploy-prod.cjs — makes "main = served checkout" true by construction.
+ * (Proof commit, job #396: a trivial line for the timer alone to deploy.)
  *
  * Tom, 2026-09-20, after the Voice Lab fix sat merged on origin/main for hours
  * while the served checkout (ssi-dashboard-v7-clean-prod) stayed behind it:
