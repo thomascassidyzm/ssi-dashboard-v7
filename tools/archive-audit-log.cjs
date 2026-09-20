@@ -4,9 +4,11 @@
  *
  * Why: content_audit_log is the row-level recovery store (the thing that lets
  * us restore an old_row after a bad bulk write — it's saved the listening pods
- * twice). But at ~690k rows/day it bloats Postgres fast; the operational DB
- * can't hold long history (queries already time out at ~5M rows). The fix is
- * two tiers:
+ * twice). But it bloats Postgres fast — measured 2026-09-20: 4.31M rows, 24 GB
+ * (20 GB of it TOASTed old_row), 77% of the whole database, ~66k rows and
+ * ~375 MB a day on average with 600k-row incident days — and the operational
+ * DB can't hold long history (queries already time out at ~5M rows). The fix
+ * is two tiers:
  *
  *   HOT  (Postgres, --hot-days, everything)  → fast, drives the Maintenance UI
  *                                              and same-week "oops" recovery.
@@ -23,7 +25,17 @@
  * these same NDJSON files. Round-trips.
  *
  * Scheduling: pg_cron CANNOT write to S3, so run this from an external
- * scheduler (Vercel cron / pm2 / system cron), nightly, e.g.:
+ * scheduler. Two exist: services/production-api.cjs arms a 03:00 UTC run when
+ * AUDIT_ARCHIVE_CRON=on (30-minute cap, inside the API process), and — the one
+ * actually live on watson-1 since 2026-09-20 (survey A5) — a crontab line at
+ * 03:10 UTC running this file from the production checkout under
+ * `flock -n ~/.local/state/ssi-audit-archive.lock`, logging to
+ * ~/.local/log/ssi-audit-archive.log. The lock matters: two runs on the same
+ * day would race the manifest (the second, shorter upload overwrites the first
+ * under the same key while the first has already pruned), so never run two
+ * copies of this without it. Cron was chosen over the in-process opt-in so the
+ * first 63-day catch-up (~4.1M rows, ~23 GB) was not cut at 30 minutes and no
+ * production API restart was needed.
  *   node tools/archive-audit-log.cjs --hot-days=14 --prune --execute
  *
  * Usage:
