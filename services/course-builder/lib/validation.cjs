@@ -6,7 +6,7 @@
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
 const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
-const { augmentVocabForSeparables } = require('./separable-verbs.cjs');
+const { augmentVocabForSeparables, phraseContainsLego } = require('./separable-verbs.cjs');
 // KNOWN-side mirror of the target-side lego_containment check: a BUILD phrase must contain the
 // known-side word its LEGO teaches, tolerating inflection but never a different lexeme (2026-08-26).
 const { checkBuildTeachesWord, checkBuildBasketTeachesWord } = require('./build-teaches-word.cjs');
@@ -1159,7 +1159,15 @@ function checkBuildRecombination(lego, courseCode, seedNumber, priorVocab) {
     const target = p.target || '';
     const nT = normalizeForContainment(target);
     // Component rows (don't contain the lego) are filtered elsewhere — skip.
-    if (!chinese ? !checkWordContainment(legoTarget, target) : !nT.includes(nL)) return;
+    // Under Kai's deu_for_eng separable-verb ruling (2026-09-21) a split
+    // realisation of the LEGO's verb contains the LEGO; before this, every split
+    // BUILD row was skipped here and a joined-infinitive LEGO ("vorhaben") whose
+    // builds all conjugate it ("ich habe nicht vor …") scored 0 recombining.
+    const contains = phraseContainsLego({
+      courseCode, seedNumber, legoTarget, phraseTarget: target,
+      baseline: (lt, pt) => (chinese ? normalizeForContainment(pt).includes(normalizeForContainment(lt)) : checkWordContainment(lt, pt)),
+    });
+    if (!contains) return;
     const { cls, detail } = classifyBuildPhrase(target, legoTarget, useStemNorms, i === 0);
     if (cls === 'bare-repeat' || cls === 'comma-tag' || cls === 'use-stem+tag') {
       rejects.push({ target, known: p.known, class: cls, detail });

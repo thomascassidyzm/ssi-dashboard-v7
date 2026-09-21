@@ -5,6 +5,10 @@
 
 const { normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
 const { getTargetLang, getCharsPerSyllable, isParticle, isChinese } = require('./language-config.cjs');
+// deu_for_eng separable verbs (Kai's ruling 2026-09-21): a split realisation of the
+// LEGO's verb IS the LEGO used in a phrase, so it counts toward the BUILD/USE
+// floors wherever the ruling admits that shape. Off for every other course.
+const { phraseContainsLego } = require('./separable-verbs.cjs');
 
 // Phrase role prefixes for deterministic IDs
 const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' };
@@ -160,12 +164,17 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   // Filter out component phrases — for character-based languages (Thai, Chinese, Japanese, Korean)
   // use substring containment; for space-delimited languages use word-based containment.
   const charBased = isChinese(courseCode);
-  const containsLego = (phraseTarget) => {
-    if (charBased) {
-      return normalizeForContainment(phraseTarget).includes(normalizeForContainment(legoTarget));
-    }
-    return checkWordContainment(legoTarget, phraseTarget);
-  };
+  const baseline = (lt, pt) => (charBased
+    ? normalizeForContainment(pt).includes(normalizeForContainment(lt))
+    : checkWordContainment(lt, pt));
+  // Under Kai's deu_for_eng ruling a phrase that realises the LEGO's separable
+  // verb split ("ich stimme zu" under "zustimmen") contains the LEGO; before this
+  // it was excluded here as a "component phrase" and the seed-83 basket Kai
+  // ruled for could never meet its own BUILD floor. Byte-for-byte the old
+  // predicate for every other course and every LEGO without a separable verb.
+  const containsLego = (phraseTarget) => phraseContainsLego({
+    courseCode, seedNumber, legoTarget, phraseTarget: phraseTarget || '', baseline,
+  });
   const buildContaining = buildRaw.filter(p => containsLego(p.target || ''));
   const useContaining = useRaw.filter(p => containsLego(p.target || ''));
   const buildComponents = buildRaw.length - buildContaining.length;

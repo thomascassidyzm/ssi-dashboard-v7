@@ -146,6 +146,17 @@ async function loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chines
  * caches. Hold it across a run; a fresh one per LEGO would re-read the whole
  * prior-LEGO table each time.
  */
+/** The seed's target text, cached per seed on the course ctx. */
+async function seedTargetOf(supabase, courseCode, seedNumber, ctx) {
+  ctx.seedTargetCache = ctx.seedTargetCache || new Map();
+  if (ctx.seedTargetCache.has(seedNumber)) return ctx.seedTargetCache.get(seedNumber);
+  const { data } = await supabase.from('course_seeds').select('target_text')
+    .eq('course_code', courseCode).eq('seed_number', seedNumber).maybeSingle();
+  const t = data ? data.target_text : null;
+  ctx.seedTargetCache.set(seedNumber, t);
+  return t;
+}
+
 function makeCourseCtx(supabase, courseCode) {
   const knownLang = courseCode.replace(/_v\d+$/, '').split('_for_')[1];
   return {
@@ -255,7 +266,14 @@ async function checkPhraseSet(entry, ctx) {
 
   {
     const allPhrases = [...build, ...use];
-    const violations = allPhrases.length ? checkVocabViolations(allPhrases, withLego, courseCode, { seedNumber }) : [];
+    // The seed's own target is a heard text: seed-complete.cjs passes it as
+    // extraTexts on the v3 path, and the separable-verb augmentation derives the
+    // finite piece of a split verb from it ("stimme" from "Ich stimme dem zu").
+    // Without it this replay refused the seed-83 basket the ruling describes.
+    const seedTarget = entry.seedTarget || await seedTargetOf(supabase, courseCode, seedNumber, ctx);
+    const violations = allPhrases.length
+      ? checkVocabViolations(allPhrases, withLego, courseCode, { seedNumber, extraTexts: seedTarget ? [seedTarget] : [] })
+      : [];
     if (violations.length > 0) fail('vocab', { violations: violations.slice(0, 5), total: violations.length });
     else pass('vocab', { vocabSize: withLego.size });
   }
@@ -288,7 +306,15 @@ async function checkPhraseSet(entry, ctx) {
       gates.knownSide = { pass: null, unchecked: true, reason: contract ? 'contract known_lang mismatch' : 'no pair-contract found' };
     } else {
       const knownCtx = ctx.knownCtxCache.get(seedNumber) || await (async () => {
-        const c = await buildKnownSideSeedCtx(supabase, courseCode, seedNumber, [{ known: legoKnown, target: legoTarget, components: entry.components }], contract);
+        // Same-seed siblings count as given English, exactly as their target
+        // vocab counts above: a live /seed/complete submits the whole seed, so
+        // "together" (S0133L03) is known to the phrases of S0133L01. Without this
+        // the replay flagged sibling words as breaches.
+        const { data: sibs } = await supabase.from('course_legos').select('lego_index,known_text,target_text,components')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber);
+        const current = [{ known: legoKnown, target: legoTarget, components: entry.components }];
+        for (const s of sibs || []) if (s.lego_index !== legoIndex) current.push({ known: s.known_text, target: s.target_text, components: s.components });
+        const c = await buildKnownSideSeedCtx(supabase, courseCode, seedNumber, current, contract);
         ctx.knownCtxCache.set(seedNumber, c);
         return c;
       })();
