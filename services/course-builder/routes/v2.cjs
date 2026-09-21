@@ -16,6 +16,7 @@ const { claudeConfigExport } = require('../../shared/claude-config.cjs');
 
 const { isChinese, getGoldenSeedCount } = require('../lib/language-config.cjs');
 const { normalizeForZUT, normalizeForStorage, normalizeForContainment, extractVocab } = require('../lib/text-normalization.cjs');
+const { phraseContainsLego } = require('../lib/separable-verbs.cjs'); // deu_for_eng separable verbs, Kai's ruling 2026-09-21
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, checkBuildUsePhrases, generateBuildupPhrases, isBareLegoPhrase, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadCourseVocab, loadTranslationVocab, addToCourseVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 const { checkTiling, checkVocabViolations, formatDecompositionPatterns, loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
@@ -77,9 +78,10 @@ function runSeedChecks(seed, seedLegos, phrasesByLegoKey, cumulativeVocab, cours
     // Containment check
     const legoTargetNorm = normalizeForContainment(lego.target_text);
     const buildUsePhrases = legoPhrases.filter(p => p.phrase_role === 'build' || p.phrase_role === 'use');
-    const containmentFails = buildUsePhrases.filter(p =>
-      !normalizeForContainment(p.target_text).includes(legoTargetNorm)
-    );
+    const containmentFails = buildUsePhrases.filter(p => !phraseContainsLego({
+      courseCode, seedNumber: lego.seed_number, legoTarget: lego.target_text, phraseTarget: p.target_text,
+      baseline: (lt, pt) => normalizeForContainment(pt).includes(legoTargetNorm),
+    }));
     if (containmentFails.length > 0) {
       issues.push(`${legoLabel}: ${containmentFails.length} phrase(s) fail containment`);
     }
@@ -103,7 +105,7 @@ function runSeedChecks(seed, seedLegos, phrasesByLegoKey, cumulativeVocab, cours
 
     // Vocab check on phrases (against prior + this seed's vocab)
     const phraseTargets = buildUsePhrases.map(p => ({ target: p.target_text }));
-    const vocabViolations = checkVocabViolations(phraseTargets, vocabWithSeed, courseCode);
+    const vocabViolations = checkVocabViolations(phraseTargets, vocabWithSeed, courseCode, { seedNumber: lego.seed_number, extraTexts: [seed.target_text] });
     if (vocabViolations.length > 0) {
       issues.push(`${legoLabel}: vocab violations in ${vocabViolations.length} phrase(s)`);
     }
@@ -747,7 +749,7 @@ module.exports = function(ctx) {
           ...build.map(p => ({ target: p.target_text || p.target })),
           ...use.map(p => ({ target: p.target_text || p.target }))
         ];
-        const vocabViolations = checkVocabViolations(allPhrases, vocabSet, courseCode);
+        const vocabViolations = checkVocabViolations(allPhrases, vocabSet, courseCode, { seedNumber: seed_number });
         if (vocabViolations.length > 0) {
           errors.push({
             entry: entryLabel,
@@ -772,9 +774,10 @@ module.exports = function(ctx) {
 
         // 4. Check LEGO containment — phrase target must contain LEGO target
         const legoTargetNorm = normalizeForContainment(lego.target_text);
-        const containmentFails = allPhrases.filter(p =>
-          !normalizeForContainment(p.target).includes(legoTargetNorm)
-        );
+        const containmentFails = allPhrases.filter(p => !phraseContainsLego({
+          courseCode, seedNumber: seed_number, legoTarget: lego.target_text, phraseTarget: p.target,
+          baseline: (lt, pt) => normalizeForContainment(pt).includes(legoTargetNorm),
+        }));
         if (containmentFails.length > 0) {
           errors.push({
             entry: entryLabel,

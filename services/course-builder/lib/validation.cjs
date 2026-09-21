@@ -6,6 +6,7 @@
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
 const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
+const { augmentVocabForSeparables } = require('./separable-verbs.cjs');
 // KNOWN-side mirror of the target-side lego_containment check: a BUILD phrase must contain the
 // known-side word its LEGO teaches, tolerating inflection but never a different lexeme (2026-08-26).
 const { checkBuildTeachesWord, checkBuildBasketTeachesWord } = require('./build-teaches-word.cjs');
@@ -250,9 +251,20 @@ function checkPhraseComplexity(phrases, courseCode, seedNumber = 999) {
  * For space-delimited languages: DP word-sequence tiling against known chunks.
  * For Chinese/Japanese (no spaces): DP character-sequence tiling.
  */
-function checkVocabViolations(phrases, vocabSet, courseCode) {
+/**
+ * @param {object} [opts]
+ * @param {number} [opts.seedNumber] — when given, the deu_for_eng separable-verb
+ *   ruling (separable-verbs.cjs) adds the split/joined pieces the learner has
+ *   heard by this seed to the chunk set. Without it: exactly the old behaviour.
+ * @param {string[]} [opts.extraTexts] — texts heard at this seed but not yet in
+ *   vocabSet (the current seed's own target), same derivation.
+ */
+function checkVocabViolations(phrases, vocabSet, courseCode, opts = {}) {
   const chinese = isChinese(courseCode);
   const violations = [];
+  if (opts.seedNumber != null && !chinese) {
+    vocabSet = augmentVocabForSeparables(vocabSet, courseCode, opts.seedNumber, { extraTexts: opts.extraTexts });
+  }
 
   if (chinese) {
     for (const phrase of phrases) {

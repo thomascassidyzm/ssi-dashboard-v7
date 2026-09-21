@@ -11,6 +11,9 @@ const { Router } = require('express');
 // Lib imports
 const { isChinese, getGoldenSeedCount, getLanguageName, getLangFamily, checkLegoSyllables } = require('../lib/language-config.cjs');
 const { extractVocab, normalizeForContainment, normalizePhrase, checkWordContainment, normalizeSubmissionCasing } = require('../lib/text-normalization.cjs');
+// deu_for_eng separable verbs (Kai's ruling 2026-09-21): containment asks this
+// module; the exact-match baseline is passed in and decides everywhere else.
+const { phraseContainsLego } = require('../lib/separable-verbs.cjs');
 const {
   makePhraseId, computePhraseRole, computeLegoPosition,
   extractNgrams, usesBuildUseFormat, checkBuildUsePhrases,
@@ -516,9 +519,10 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       if (phrases && phrases.length > 0 && !skipBaskets && !allowValidationBypass(req.body)) {
         const legoTargetNorm = normalizeForContainment(target);
-        const containmentFails = phrases.filter(p =>
-          !normalizeForContainment(p.target).includes(legoTargetNorm)
-        );
+        const containmentFails = phrases.filter(p => !phraseContainsLego({
+          courseCode: course_code, seedNumber: seed, legoTarget: target, phraseTarget: p.target,
+          baseline: (lt, pt) => normalizeForContainment(pt).includes(legoTargetNorm),
+        }));
         if (containmentFails.length > 0) {
           console.log(`✗ ${legoId}: REJECTED - ${containmentFails.length} phrases missing LEGO target "${target}"`);
           return res.status(400).json({
@@ -531,7 +535,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           });
         }
 
-        const violations = checkVocabViolations(phrases, vocabSet, course_code);
+        const violations = checkVocabViolations(phrases, vocabSet, course_code, { seedNumber: seed });
         if (violations.length > 0) {
           console.log(`✗ ${legoId}: REJECTED - Vocabulary violations:`);
           violations.forEach(v => console.log(`   "${v.phrase}" uses unknown: [${v.unknown}]`));
@@ -1298,7 +1302,7 @@ module.exports = function seedCompleteRoutes(ctx) {
           }
 
           if (allPhrases.length > 0) {
-            const violations = checkVocabViolations(allPhrases, vocabSet, course_code);
+            const violations = checkVocabViolations(allPhrases, vocabSet, course_code, { seedNumber: seed_number, extraTexts: [target_text] });
             if (violations.length > 0) {
               vocabViolations.push({
                 lego_id: legoId,
@@ -1313,15 +1317,14 @@ module.exports = function seedCompleteRoutes(ctx) {
               const charBased = isChinese(course_code);
               const useWordContainment = !charBased && req.query.strict_containment !== 'true';
               const legoTargetNorm = normalizeForContainment(lego.target);
-              const containmentFails = allPhrases.filter(p => {
-                if (charBased) {
-                  return !normalizeForContainment(p.target).includes(legoTargetNorm);
-                }
-                if (useWordContainment) {
-                  return !checkWordContainment(lego.target, p.target);
-                }
-                return !normalizeForContainment(p.target).includes(legoTargetNorm);
-              });
+              const baseline = (lt, pt) => {
+                if (charBased) return normalizeForContainment(pt).includes(legoTargetNorm);
+                if (useWordContainment) return checkWordContainment(lt, pt);
+                return normalizeForContainment(pt).includes(legoTargetNorm);
+              };
+              const containmentFails = allPhrases.filter(p => !phraseContainsLego({
+                courseCode: course_code, seedNumber: seed_number, legoTarget: lego.target, phraseTarget: p.target, baseline,
+              }));
               if (containmentFails.length > 0) {
                 const mode = charBased ? 'substring' : (useWordContainment ? 'word-based' : 'substring');
                 errors.push({
@@ -1423,9 +1426,12 @@ module.exports = function seedCompleteRoutes(ctx) {
                 rejected: f.gate.rejects,
               });
               // Containment ran in section 3 before escalation — enforce it on fresh rows here.
-              fresh = (fresh || []).filter(p => chinese
-                ? normalizeForContainment(p.target).includes(normalizeForContainment(f.lego.target))
-                : checkWordContainment(f.lego.target, p.target));
+              fresh = (fresh || []).filter(p => phraseContainsLego({
+                courseCode: course_code, seedNumber: seed_number, legoTarget: f.lego.target, phraseTarget: p.target,
+                baseline: (lt, pt) => (chinese
+                  ? normalizeForContainment(pt).includes(normalizeForContainment(lt))
+                  : checkWordContainment(lt, pt)),
+              }));
               if (fresh && fresh.length > 0) {
                 const candidate = { ...f.lego, build: [...keptBuild, ...fresh] };
                 const regate = checkBuildRecombination(candidate, course_code, seed_number, f.priorVocab);
@@ -1434,7 +1440,7 @@ module.exports = function seedCompleteRoutes(ctx) {
                 if (f.lego.type === 'M' && f.lego.components) {
                   for (const comp of f.lego.components) extractVocab(comp.target, chinese).forEach(v => withLego.add(v));
                 }
-                const freshViolations = checkVocabViolations(fresh, withLego, course_code);
+                const freshViolations = checkVocabViolations(fresh, withLego, course_code, { seedNumber: seed_number, extraTexts: [target_text] });
                 if (regate.valid && freshViolations.length === 0) {
                   f.lego.build = candidate.build;
                   escalated = true;

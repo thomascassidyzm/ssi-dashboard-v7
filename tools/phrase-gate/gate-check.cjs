@@ -46,6 +46,12 @@ const {
   stemKnownGloss, tokenizeKnown,
 } = require('../../services/course-builder/lib/validation.cjs');
 const { courseFamily } = require('../../services/course-builder/lib/course-family.cjs');
+// Kai's deu_for_eng separable-verb ruling (2026-09-21): the containment and vocab
+// gates ask this module where a split or joined verb is admitted; the taught
+// seed carries one extra gate, separableContrast. Everything else is untouched.
+const {
+  phraseContainsLego, checkSeparableContainment, checkSeparableContrast, checkSeparableLegoShape,
+} = require('../../services/course-builder/lib/separable-verbs.cjs');
 
 /** Tom's BUILD count, 2026-08-28. Four is the target; three is accepted. */
 const BUILD_MIN = 3;
@@ -53,7 +59,7 @@ const BUILD_MAX = 4;
 
 const GATE_NAMES = [
   'bareLego', 'buildCountSpec', 'buildUseFloors', 'containment',
-  'vocab', 'buildRecombination', 'zut', 'knownSide',
+  'vocab', 'buildRecombination', 'zut', 'knownSide', 'separableContrast',
 ];
 
 // ─── Known-side seed context ────────────────────────────────────────────
@@ -202,13 +208,32 @@ async function checkPhraseSet(entry, ctx) {
   // ── LEGO containment (seed-complete.cjs §3) ──
   {
     const legoTargetNorm = normalizeForContainment(legoTarget);
-    const containmentFails = [...build, ...use].filter(p => (chinese
-      ? !normalizeForContainment(p.target).includes(legoTargetNorm)
-      : !checkWordContainment(legoTarget, p.target)));
+    const baseline = (lt, pt) => (chinese
+      ? normalizeForContainment(pt).includes(legoTargetNorm)
+      : checkWordContainment(lt, pt));
+    // Under the deu_for_eng ruling a separable verb may be realised split or
+    // joined where the seed position permits; elsewhere `baseline` decides.
+    const verdicts = [...build, ...use].map(p => ({
+      p, v: checkSeparableContainment({ courseCode, seedNumber, legoTarget, phraseTarget: p.target, baseline }),
+    }));
+    const containmentFails = verdicts.filter(x => !x.v.pass);
     if (containmentFails.length > 0) {
-      fail('containment', { failing: containmentFails.length, examples: containmentFails.slice(0, 3).map(p => p.target) });
+      fail('containment', {
+        failing: containmentFails.length,
+        examples: containmentFails.slice(0, 3).map(x => x.p.target),
+        reasons: containmentFails.slice(0, 3).map(x => x.v.reason).filter(Boolean),
+      });
     } else pass('containment');
   }
+
+  // ── separable-verb contrast (Kai 2026-09-21, clause 4): only at the taught seed ──
+  {
+    const c = checkSeparableContrast(courseCode, seedNumber, legoTarget, [...build, ...use]);
+    if (c.checked && !c.pass) fail('separableContrast', c);
+    else if (c.checked) pass('separableContrast', c);
+  }
+  // Clause 8, reported not gated: a separable-verb LEGO introduced split.
+  const separableLegoShape = checkSeparableLegoShape(courseCode, seedNumber, legoTarget);
 
   // ── vocab set: prior seeds + DB siblings of this seed + this LEGO's own ──
   const vocabSet = ctx.vocabCache.get(seedNumber) || await (async () => {
@@ -230,7 +255,7 @@ async function checkPhraseSet(entry, ctx) {
 
   {
     const allPhrases = [...build, ...use];
-    const violations = allPhrases.length ? checkVocabViolations(allPhrases, withLego, courseCode) : [];
+    const violations = allPhrases.length ? checkVocabViolations(allPhrases, withLego, courseCode, { seedNumber }) : [];
     if (violations.length > 0) fail('vocab', { violations: violations.slice(0, 5), total: violations.length });
     else pass('vocab', { vocabSize: withLego.size });
   }
@@ -287,6 +312,7 @@ async function checkPhraseSet(entry, ctx) {
     courseCode, seedNumber, legoIndex, legoKnown, legoTarget,
     buildCount: build.length, useCount: use.length,
     overallPass, failingGates, gates,
+    ...(separableLegoShape ? { separableLegoShape } : {}),
   };
 }
 
@@ -308,7 +334,9 @@ function failureFeedback(result) {
       case 'zut':
         lines.push(`zut: ${g.total} phrase(s) collide with an existing known->target mapping: ${JSON.stringify(g.collisions)}`); break;
       case 'containment':
-        lines.push(`containment: ${g.failing} phrase(s) do not contain the LEGO's target: ${(g.examples || []).join(' | ')}`); break;
+        lines.push(`containment: ${g.failing} phrase(s) do not contain the LEGO's target: ${(g.examples || []).join(' | ')}${(g.reasons || []).length ? ` — ${g.reasons.join('; ')}` : ''}`); break;
+      case 'separableContrast':
+        lines.push(`separableContrast: this is the seed where the German split is taught — the set has ${g.split} split and ${g.joined} joined realisation(s) of ${(g.verbs || []).join(', ')}; write at least ${g.required} of EACH, very short`); break;
       case 'bareLego':
         lines.push(`bareLego: ${g.detail}`); break;
       case 'buildUseFloors':
@@ -325,4 +353,6 @@ function failureFeedback(result) {
 module.exports = {
   GATE_NAMES, BUILD_MIN, BUILD_MAX,
   makeCourseCtx, checkPhraseSet, failureFeedback,
+  // exported for read-only replays (tools/phrase-gate/separable-dry-run.cjs)
+  loadTranslationVocab, loadSameSeedSiblingVocab,
 };

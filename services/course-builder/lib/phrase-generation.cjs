@@ -42,6 +42,7 @@ const { scoreSet } = require(path.join(__dirname, '../../../tools/phrase-lab/sco
 const { makeCourseCtx, checkPhraseSet, failureFeedback } = require(path.join(__dirname, '../../../tools/phrase-gate/gate-check.cjs'));
 const { computeDeclaration, checkDeclaration, recordDeclaration, frameSection } =
   require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
+const { separableSection } = require('./separable-verbs.cjs');
 
 /**
  * THE GATE IS A PRECONDITION, NOT AN INSTRUCTION. Tom's ruling on A-294,
@@ -191,7 +192,11 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // AVAILABLE/BLOCKED inventory and the doctrine; the declaration adds the
   // frame pool and the basket brief. Same object in the prompt and in QA, so
   // the two cannot drift apart.
-  const prompt = basePrompt + frameSection(declaration);
+  // Kai's deu_for_eng separable-verb ruling (2026-09-21), merged the same way:
+  // the section and the gate read one policy object, so the instruction the
+  // builder gets and the check its output meets cannot drift apart. Empty for
+  // every other course.
+  const prompt = basePrompt + frameSection(declaration) + separableSection(courseCode, seedNumber, lego);
 
   const started = Date.now();
   const gateCtx = runGate ? makeCourseCtx(supabase, courseCode) : null;
