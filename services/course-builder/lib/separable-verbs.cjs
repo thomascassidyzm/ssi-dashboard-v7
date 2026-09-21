@@ -101,8 +101,13 @@ const RULED_SPLIT_INTRODUCTIONS = Object.freeze({
  * generation input. Keyed by the seed whose presentation carries it. Applied
  * by a human at the fixes stage (the presentation clips are TTS renders and
  * go through the audio-pass queue). Nothing in this module, and nothing in
- * any prompt, quotes these; a test asserts that. "[word in English]" in the
- * seed-83 line is the LEGO's known text, completed by the human who applies it.
+ * any prompt, quotes these; a test asserts that. Both lines are FINAL and are
+ * placed VERBATIM: the seed-83 line REPLACES the whole template frame ("The
+ * German for: '…', as in — '…', is:") rather than sitting inside it. NOTE for
+ * whoever re-applies them: phase8's staleness guard keeps a pending
+ * presentation row only if it quotes the LEGO's current known_text — the
+ * seed-83 line does ('to agree'); the seed-92 line does not, so it lives on the
+ * LINKED row in place, never on a pending row (job #501, 2026-09-21).
  */
 const HUMAN_AUTHORED_TEXT = Object.freeze({
   author: 'Kai',
@@ -111,9 +116,11 @@ const HUMAN_AUTHORED_TEXT = Object.freeze({
   appliedBy: 'a human at the fixes stage — never the build agent',
   bySeed: Object.freeze({
     [TAUGHT_SEED]: Object.freeze({
-      where: 'the presentation of the seed-83 LEGO, before "which is:"',
+      where: 'the WHOLE presentation line of the seed-83 LEGO — it replaces the template frame, and ends with its own lead-in to the target',
+      // Kai's final wording, 2026-09-21 (his own edit of the earlier draft;
+      // applied live by job #501). Verbatim — character for character.
       text: 'Often in German, you will hear some kinds of words split into two pieces in sentences. ' +
-            'Listen out for that in the phrases as you practice how to say \'[word in English]\', which is:',
+            'Listen out for that. The German for \'to agree\' is:',
     }),
     [DOORS_OPEN_SEED]: Object.freeze({
       where: 'before the first LEGO of seed 92',
