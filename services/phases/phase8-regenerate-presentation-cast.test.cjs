@@ -6,15 +6,17 @@
 // sibling /regenerate-presentation never did, and read the voice frozen into
 // courses.voice_config at build time instead.
 //
-// What that cost, found live on 2026-09-21 while adding LEGO S0001L06 to
-// deu_for_eng: the stored presentation voice is "gfzdpspr5fdp" (provider xai,
-// retired), so the provider policy refused the render —
-//   "the configured voice ... cannot be carried onto azure ... Re-cast this
-//    role's voice in voice_config."
-// — while voice_language_roles had held the right answer (eng/presentation
-// rank 0, Tom's Cartesia clone) the whole time. Every xAI-era course was in the
-// same position: no new LEGO could ever get a presentation clip, and an intro
-// cycle with no presentation audio plays with an empty prompt.
+// ALIGNMENT, NOT A CURE, AND THE DIFFERENCE IS THE POINT. `presentation` is in
+// EXCLUDED_ROLES in services/shared/language-voice-cast.cjs, so resolving the
+// cast leaves the presentation block exactly as stored. Found live on
+// 2026-09-21 while adding LEGO S0001L06 to deu_for_eng: the stored presentation
+// voice is "gfzdpspr5fdp" (provider xai, retired), the provider policy refuses
+// the render — "the configured voice ... cannot be carried onto azure ...
+// Re-cast this role's voice in voice_config" — and it still does with this line
+// in place. What the line buys is that the route stops being the reason: when
+// somebody re-casts the course, or moves `presentation` into CAST_ROLES (its
+// own header calls the exclusion "a DEFAULT chosen 2026-08-29, not a ruling
+// from Tom"), this handler will honour it without being touched again.
 //
 // This asserts the rule where it is made rather than describing it elsewhere.
 

@@ -5197,20 +5197,38 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     }
 
     // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29) — the
-    // same line its sibling /regenerate-lego has carried since that ruling, and
-    // this handler renders audio, so it needs it for the same reason. Without
-    // it the handler read whatever voice was frozen into courses.voice_config
-    // when the course was built, which for every xAI-era course is a retired
-    // provider: deu_for_eng/presentation asked for "gfzdpspr5fdp" (xai) and the
-    // provider policy refused the render outright —
-    //   "the configured voice \"gfzdpspr5fdp\" (provider \"xai\") cannot be
-    //    carried onto azure … Re-cast this role's voice in voice_config."
-    // — so a LEGO added to such a course could never get a presentation clip,
-    // and its intro cycle played with an empty prompt. The cast table already
-    // holds the answer (eng/presentation rank 0 = Tom's Cartesia clone); the
-    // route simply never asked it. Found 2026-09-21 adding S0001L06 to
-    // deu_for_eng. With no rows in voice_language_roles this returns the very
-    // same object, byte for byte, and nothing about this path changes.
+    // same line its sibling /regenerate-lego has carried since that ruling.
+    // This handler renders audio, so it reads the RESOLVED config rather than
+    // whatever was frozen into courses.voice_config when the course was built.
+    //
+    // READ THIS BEFORE ASSUMING IT UNBLOCKS A PRESENTATION RENDER — IT DOES
+    // NOT, TODAY. `presentation` is in EXCLUDED_ROLES in
+    // services/shared/language-voice-cast.cjs ("the course's own presenter, not
+    // a specimen of the language it teaches"), so resolveVoiceConfig returns the
+    // presentation block untouched. On an xAI-era course that means the stored
+    // voice is still a retired provider and the render is still refused:
+    //   deu_for_eng/presentation asks for "gfzdpspr5fdp" (xai) →
+    //   "[provider-policy] the configured voice ... cannot be carried onto
+    //    azure ... Re-cast this role's voice in voice_config."
+    // Found 2026-09-21 adding LEGO S0001L06 to deu_for_eng: the new LEGO could
+    // not be given a presentation clip at all. It is NOT silent — the player
+    // resolves an intro prompt as `presentation_id || known_id`
+    // (packages/player-vue/src/providers/backendCyclesToRounds.ts) — but the
+    // learner hears the bare known text instead of the narration.
+    //
+    // The two ways out are both somebody's decision, not this route's: re-cast
+    // THIS course's presentation voice in courses.voice_config (the course
+    // builder's call per course), or move `presentation` into CAST_ROLES, which
+    // that module's own header says is "a DEFAULT chosen 2026-08-29, not a
+    // ruling from Tom: one word from him moves it". The cast table already
+    // names the English narrator of record (eng / slot=presentation / rank 0 =
+    // Tom's Cartesia clone), so the answer exists; nothing is allowed to reach
+    // for it yet.
+    //
+    // So this line is alignment, not a fix: it makes the route honour the cast
+    // the moment the cast has anything to say about presentation, and with no
+    // rows in voice_language_roles it returns the very same object, byte for
+    // byte, changing nothing about this path.
     course.voice_config = await voiceConfigService.resolveVoiceConfig({
       voiceConfig: course.voice_config, course, courseCode,
     })
