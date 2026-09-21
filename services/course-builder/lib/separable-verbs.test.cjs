@@ -259,6 +259,13 @@ describe('the prompt never carries learner-facing text (Kai: "the build agent sh
     expect(HUMAN_AUTHORED_TEXT.appliedBy).toMatch(/human/);
     expect(Object.keys(HUMAN_AUTHORED_TEXT.bySeed).map(Number)).toEqual([TAUGHT_SEED, DOORS_OPEN_SEED]);
     expect(HUMAN_AUTHORED_TEXT.bySeed[TAUGHT_SEED].text).toMatch(/^Often in German, you will hear some kinds of words split into two pieces/);
+    // Kai's FINAL wording (his own edit, 2026-09-21): the line ends with its own
+    // lead-in to the target and replaces the template frame outright. The
+    // earlier draft ended "…how to say '[word in English]', which is:".
+    expect(HUMAN_AUTHORED_TEXT.bySeed[TAUGHT_SEED].text).toBe(
+      "Often in German, you will hear some kinds of words split into two pieces in sentences. Listen out for that. The German for 'to agree' is:");
+    expect(HUMAN_AUTHORED_TEXT.bySeed[DOORS_OPEN_SEED].text).toBe(
+      'As it happens, you already know quite a few words that can be split, so we will start throwing those into the mix from now on.');
     expect(HUMAN_AUTHORED_TEXT.bySeed[DOORS_OPEN_SEED].text).toMatch(/throwing those into the mix from now on\.$/);
     expect(Object.isFrozen(HUMAN_AUTHORED_TEXT.bySeed)).toBe(true);
   });
