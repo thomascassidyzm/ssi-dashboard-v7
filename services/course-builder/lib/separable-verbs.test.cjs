@@ -16,11 +16,18 @@
  */
 import { describe, it, expect } from 'vitest';
 import { checkWordContainment } from './text-normalization.cjs';
+import * as SV from './separable-verbs.cjs';
 import {
   SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH,
   VERBS, separablePolicy, separableVerbsIn, checkSeparableContainment, phraseContainsLego,
   augmentVocabForSeparables, checkSeparableLegoShape, checkSeparableContrast, separableSection,
+  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
 } from './separable-verbs.cjs';
+import {
+  STRUCTURAL_CHECK_TYPE, CHECK_TYPE_CHANGE_FILE, QUOTED_SEEDS, PRECEDENTS, FEATURES,
+  featuresFor, closestPrecedent, structuralStop, buildStructuralFlag, raiseStructuralFlag,
+} from './structural-features.cjs';
+import { readFileSync } from 'node:fs';
 
 const C = 'deu_for_eng';
 const shapes = (t) => separableVerbsIn(t).map(v => `${v.lemma}:${v.realisation}`);
@@ -202,9 +209,195 @@ describe('the prompt says what the gate checks', () => {
     expect(separableSection(C, 16, { target_text: 'zurückkommen' })).toMatch(/JOINED, exactly as the LEGO writes it/);
     expect(separableSection(C, 42, { target_text: 'fing an' })).toMatch(/Keep it SPLIT exactly/);
   });
-  it('carries the lesson wording at seed 83 and the doors-open line from 92', () => {
-    expect(separableSection(C, TAUGHT_SEED, { target_text: 'zustimmen', known_text: 'to agree' })).toMatch(/Often in German, you will hear some kinds of words split/);
-    expect(separableSection(C, 300, { target_text: 'hinlegen' })).toMatch(/you already know quite a few words that can be split/);
+  it('still says a human has written the line at 83, and keeps the consistency rule from 92', () => {
+    expect(separableSection(C, TAUGHT_SEED, { target_text: 'zustimmen', known_text: 'to agree' })).toMatch(/A human has written the one-line explanation/);
+    expect(separableSection(C, 300, { target_text: 'hinlegen' })).toMatch(/human-written line/);
     expect(separableSection(C, 300, { target_text: 'hinlegen' })).toMatch(/Never split for variety/);
+  });
+});
+
+// ─── Kai, 2026-09-21 (job #491): the build agent does not write explanations ──
+
+// tolerant of the pre-#491 module so the fail-without run counts failures rather than crashing at load
+const HUMAN_LINES = Object.values(HUMAN_AUTHORED_TEXT?.bySeed || {}).map(t => t.text);
+const PROMPT_CASES = [
+  [16, { target_text: 'zurückkommen' }], [SPLIT_EXCEPTION_SEED, { target_text: 'fing an' }],
+  [TAUGHT_SEED, { target_text: 'zustimmen', known_text: 'to agree' }], [88, { target_text: 'aufhören' }],
+  [DOORS_OPEN_SEED, { target_text: 'anrufen' }], [300, { target_text: 'hinlegen' }], [300, { target_text: 'letzte Nacht' }],
+];
+
+describe('the prompt never carries learner-facing text (Kai: "the build agent shouldn\'t be writing explanations")', () => {
+  it('quotes neither of Kai\'s two lines, nor any fragment of them, in any mode', () => {
+    for (const [seed, lego] of PROMPT_CASES) {
+      const section = separableSection(C, seed, lego);
+      for (const line of HUMAN_LINES) {
+        expect(section, `seed ${seed}`).not.toContain(line);
+        // a fragment is as bad as the whole: the two distinctive clauses
+        expect(section, `seed ${seed}`).not.toMatch(/split into two pieces|throwing those into the mix/);
+      }
+    }
+  });
+  it('tells the model, in every non-empty section, that it writes phrases only and never an explanation', () => {
+    for (const [seed, lego] of PROMPT_CASES) {
+      const section = separableSection(C, seed, lego);
+      if (section === '') continue;
+      expect(section, `seed ${seed}`).toContain(NO_EXPLANATION_LINE);
+    }
+    expect(NO_EXPLANATION_LINE).toMatch(/a human writes that/);
+  });
+  it('the policy records WHERE a line is needed (83 and 92) and never the text', () => {
+    expect(EXPLANATION_SEEDS).toEqual([TAUGHT_SEED, DOORS_OPEN_SEED]);
+    expect(separablePolicy(C, TAUGHT_SEED).explanationNeeded).toBe(true);
+    expect(separablePolicy(C, DOORS_OPEN_SEED).explanationNeeded).toBe(true);
+    for (const seed of [16, 42, 84, 91, 93, 300]) expect(separablePolicy(C, seed).explanationNeeded, `seed ${seed}`).toBe(false);
+    for (const seed of [TAUGHT_SEED, DOORS_OPEN_SEED]) {
+      for (const v of Object.values(separablePolicy(C, seed))) expect(String(v)).not.toMatch(/split into two pieces|throwing those into the mix/);
+    }
+  });
+  it('holds Kai\'s two wordings as a frozen record for deu_for_eng, keyed by seed, applied by a human', () => {
+    expect(HUMAN_AUTHORED_TEXT).toMatchObject({ author: 'Kai', ruled: '2026-09-21', course: 'deu_for_eng' });
+    expect(HUMAN_AUTHORED_TEXT.appliedBy).toMatch(/human/);
+    expect(Object.keys(HUMAN_AUTHORED_TEXT.bySeed).map(Number)).toEqual([TAUGHT_SEED, DOORS_OPEN_SEED]);
+    expect(HUMAN_AUTHORED_TEXT.bySeed[TAUGHT_SEED].text).toMatch(/^Often in German, you will hear some kinds of words split into two pieces/);
+    expect(HUMAN_AUTHORED_TEXT.bySeed[DOORS_OPEN_SEED].text).toMatch(/throwing those into the mix from now on\.$/);
+    expect(Object.isFrozen(HUMAN_AUTHORED_TEXT.bySeed)).toBe(true);
+  });
+  it('the old prompt-facing constants are gone, so nothing can import the text into a prompt by its old name', () => {
+    expect(SV.LESSON_TEXT_TAUGHT_SEED).toBeUndefined();
+    expect(SV.DOORS_OPEN_TEXT).toBeUndefined();
+  });
+});
+
+// ─── The flag path: an unruled course STOPS and asks, citing the precedent ──
+
+const SEEDS = [
+  { seed_number: 83, target_text: 'Ich stimme dem zu, was du über deinen Freund gesagt hast', known_text: 'I agree with what you said about your friend' },
+  { seed_number: 5, target_text: 'ich bin müde', known_text: 'I am tired' },
+  { seed_number: 42, target_text: 'Ich fing an, mich besser zu fühlen als letzte Nacht', known_text: 'I was starting to feel better than last night' },
+  { seed_number: 16, target_text: 'er will später mit allen anderen zurückkommen', known_text: 'he wants to come back later with everyone else' },
+  { seed_number: 67, target_text: 'ich will aufhören', known_text: 'I want to stop' },
+  { seed_number: 122, target_text: 'es fängt an, sich leichter anzufühlen', known_text: 'it is starting to feel easier' },
+  { seed_number: 200, target_text: 'wann fängst du an?', known_text: 'when do you start?' },
+  { seed_number: 524, target_text: 'Ich rufe dich in drei oder vier Minuten zurück', known_text: 'I will call you back in three or four minutes' },
+];
+const UNRULED = ['deu_at_for_eng', 'deu_ch_for_eng', 'deu_for_cym', 'deu_for_jpn', 'deu_for_zho'];
+
+describe('precedents — the German ruling is #1, in a shape the next language is compared against', () => {
+  it('precedent #1 is deu_for_eng separable verbs, Kai, 2026-09-21, with its stages at 42 / 83 / 92', () => {
+    const p = PRECEDENTS[0];
+    expect(p).toMatchObject({ number: 1, feature: 'separable-verbs', language: 'deu', course: 'deu_for_eng', ruledBy: 'Kai', ruled: '2026-09-21' });
+    expect(p.stages.map(s => s.seed)).toEqual([SPLIT_EXCEPTION_SEED, TAUGHT_SEED, TAUGHT_SEED + 1, DOORS_OPEN_SEED]);
+    expect(p.whatItDid.length).toBeGreaterThanOrEqual(4);
+    expect(p.humanText).toEqual(HUMAN_AUTHORED_TEXT);
+  });
+  it('closestPrecedent matches feature then language, and returns null for a feature never ruled on', () => {
+    expect(closestPrecedent('separable-verbs', 'deu_at_for_eng').number).toBe(1);
+    expect(closestPrecedent('separable-verbs', 'nld_for_eng').number).toBe(1); // same feature, other language: still the closest
+    expect(closestPrecedent('noun-classes', 'swa_for_eng')).toBeNull();
+  });
+  it('the feature reader covers German only, so a Spanish course sees no feature and a German one sees separable verbs', () => {
+    expect(featuresFor('spa_for_eng')).toEqual([]);
+    for (const c of UNRULED) expect(featuresFor(c), c).toEqual(['separable-verbs']);
+    expect(FEATURES['separable-verbs'].description).toMatch(/prefix detaches/);
+  });
+});
+
+describe('structuralStop — the builder stops for an unruled course and never for a ruled one', () => {
+  it('stops every unruled German-target course whose LEGO or seed carries a separable verb', () => {
+    for (const c of UNRULED) {
+      expect(structuralStop(c, { target_text: 'zurückkommen' }, null), c).toMatchObject({ feature: 'separable-verbs' });
+      expect(structuralStop(c, { target_text: 'später' }, { target_text: 'er will später zurückkommen' }), `${c} seed-only`).toMatchObject({ feature: 'separable-verbs' });
+    }
+  });
+  it('does not stop deu_for_eng (ruled), a plain German LEGO and seed, or another language', () => {
+    expect(structuralStop(C, { target_text: 'zurückkommen' }, SEEDS[3])).toBeNull();
+    expect(structuralStop('deu_for_jpn', { target_text: 'letzte Nacht' }, { target_text: 'ich habe letzte Nacht gut geschlafen' })).toBeNull();
+    expect(structuralStop('spa_for_eng', { target_text: 'llamar' }, { target_text: 'quiero llamar' })).toBeNull();
+  });
+});
+
+describe('the flag carries the four things Kai asked for', () => {
+  const flag = buildStructuralFlag('deu_for_jpn', 'separable-verbs', SEEDS);
+  it('(a) the feature in plain English', () => {
+    expect(flag).toMatchObject({ kind: 'structural-feature', feature: 'separable-verbs', courseCode: 'deu_for_jpn', language: 'deu' });
+    expect(flag.description).toMatch(/^Separable verbs: /);
+  });
+  it('(b) the first seeds, quoted in full, target and known, in seed order, capped at QUOTED_SEEDS with the total counted', () => {
+    expect(flag.firstSeeds.map(s => s.seed_number)).toEqual([16, 42, 67, 83, 122, 200]);
+    expect(flag.firstSeeds.length).toBe(QUOTED_SEEDS);
+    expect(flag.totalSeedsWithFeature).toBe(7);
+    expect(flag.firstSeeds[1]).toEqual({ seed_number: 42, target: SEEDS[2].target_text, known: SEEDS[2].known_text, shapes: ['anfangen:split'] });
+  });
+  it('(c) the closest prior ruling and what it did', () => {
+    expect(flag.precedents).toHaveLength(1);
+    expect(flag.precedents[0]).toMatchObject({ number: 1, course: 'deu_for_eng', ruledBy: 'Kai' });
+    expect(flag.precedents[0].whatItDid.join(' ')).toMatch(/introduced joined/i);
+  });
+  it('(d) a recommendation drawn from the precedent that names this course\'s candidate seeds and decides nothing', () => {
+    expect(flag.recommendation).toMatch(/precedent #1/);
+    expect(flag.recommendation).toMatch(/Seed 42 is the first seed whose sentence is itself split/);
+    expect(flag.recommendation).toMatch(/Seed 83 is the next split sentence/);
+    expect(flag.recommendation).toMatch(/until Kai has ruled/);
+    expect(flag.decidedBy).toMatch(/Kai/);
+  });
+  it('composes no learner-facing text anywhere the builder could read it back', () => {
+    for (const field of [flag.description, flag.recommendation, flag.builderMustNot]) {
+      expect(field).not.toMatch(/split into two pieces|throwing those into the mix/);
+    }
+  });
+  it('with no precedent the flag says so instead of inventing one', () => {
+    const none = { ...flag, precedents: [] };
+    expect(none.precedents).toEqual([]);
+    expect(closestPrecedent('separable-verbs', 'deu_for_jpn')).not.toBeNull();
+  });
+});
+
+/** A chainable fake of the two Supabase calls raiseStructuralFlag makes. */
+function fakeSupabase({ open = [], insertError = null } = {}) {
+  const inserted = [];
+  const q = (result) => {
+    const chain = new Proxy({}, { get: (_, k) => k === 'then' ? (res, rej) => Promise.resolve(result).then(res, rej) : () => chain });
+    return chain;
+  };
+  return {
+    inserted,
+    from: (table) => ({
+      select: () => q({ data: open, error: null }),
+      insert: (row) => { inserted.push({ table, row }); return q(insertError ? { data: null, error: insertError } : { data: { id: 'flag-1', ...row }, error: null }); },
+    }),
+  };
+}
+
+describe('raiseStructuralFlag — one course_qa_flags row, the repo\'s existing human-review mechanism', () => {
+  const flag = buildStructuralFlag('deu_for_zho', 'separable-verbs', SEEDS);
+  it('inserts one row: check_type structural_feature, severity error, the flag as details, the first seed as seed_number', async () => {
+    const sb = fakeSupabase();
+    const r = await raiseStructuralFlag(sb, flag);
+    expect(r.raised).toBe(true);
+    expect(sb.inserted).toHaveLength(1);
+    expect(sb.inserted[0]).toMatchObject({ table: 'course_qa_flags', row: { course_code: 'deu_for_zho', check_type: STRUCTURAL_CHECK_TYPE, severity: 'error', seed_number: 16 } });
+    expect(sb.inserted[0].row.details).toBe(flag);
+    expect(sb.inserted[0].row.issue).toMatch(/needs Kai's ruling/);
+  });
+  it('does not duplicate an open flag for the same course and feature', async () => {
+    const sb = fakeSupabase({ open: [{ id: 'already', flagged_at: 'x' }] });
+    const r = await raiseStructuralFlag(sb, flag);
+    expect(r).toMatchObject({ raised: false, existing: { id: 'already' } });
+    expect(sb.inserted).toHaveLength(0);
+  });
+  it('throws LOUDLY, naming the change file, when the DB does not yet admit the check_type', async () => {
+    const sb = fakeSupabase({ insertError: { code: '23514', message: 'violates check constraint "course_qa_flags_check_type_check"' } });
+    await expect(raiseStructuralFlag(sb, flag)).rejects.toThrow(CHECK_TYPE_CHANGE_FILE);
+  });
+});
+
+describe('the v3 door stops before the model is called', () => {
+  it('phrase-generation.cjs consults structuralStop before its first claudeChat call and returns blocked with the flag', () => {
+    const src = readFileSync(new URL('./phrase-generation.cjs', import.meta.url), 'utf8');
+    const stopAt = src.indexOf('structuralStop(courseCode, lego, seed)');
+    const modelAt = src.indexOf('await claudeChat(');
+    expect(stopAt).toBeGreaterThan(-1);
+    expect(modelAt).toBeGreaterThan(stopAt);
+    expect(src.slice(stopAt, modelAt)).toMatch(/blocked: true, stoppedFor: flag/);
   });
 });

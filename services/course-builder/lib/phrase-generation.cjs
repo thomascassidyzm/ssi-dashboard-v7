@@ -43,6 +43,10 @@ const { makeCourseCtx, checkPhraseSet, failureFeedback } = require(path.join(__d
 const { computeDeclaration, checkDeclaration, recordDeclaration, frameSection } =
   require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 const { separableSection } = require('./separable-verbs.cjs');
+// Kai, 2026-09-21 (job #491): a structural feature whose first showing is a
+// pedagogy decision STOPS the build for an unruled course and is raised to
+// a human with its precedents. The builder never decides it.
+const { structuralStop, buildStructuralFlag, loadCourseSeeds, raiseStructuralFlag } = require('./structural-features.cjs');
 
 /**
  * THE GATE IS A PRECONDITION, NOT AN INSTRUCTION. Tom's ruling on A-294,
@@ -170,6 +174,29 @@ function retryPrompt(basePrompt, phrases, reasons) {
 async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
   const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
+
+  // STOP AND SURFACE, before any model call. An unruled course whose LEGO or
+  // seed carries a feature that needs a staged introduction (separable verbs
+  // are the first) is not generated for: the flag goes to course_qa_flags for
+  // Kai, and comes back in this result as `stoppedFor` whatever the DB did.
+  const stop = structuralStop(courseCode, lego, seed);
+  if (stop) {
+    const flag = buildStructuralFlag(courseCode, stop.feature, await loadCourseSeeds(supabase, courseCode));
+    let flagRaised;
+    try { flagRaised = await raiseStructuralFlag(supabase, flag); }
+    catch (e) { flagRaised = { raised: false, error: e.message }; }
+    console.warn(`[phrase-generation] ${courseCode} S${seedNumber}L${legoIndex} STOPPED: ${stop.feature} needs Kai's ruling — ` +
+      (flagRaised.raised ? `flag ${flagRaised.row.id} raised` : flagRaised.existing ? `flag ${flagRaised.existing.id} already open` : `flag NOT stored: ${flagRaised.error}`));
+    return {
+      courseCode, seedNumber, legoIndex: Number(legoIndex), legoId: lego.lego_id,
+      legoKnown: lego.known_text, legoTarget: lego.target_text,
+      seedKnown: seed?.known_text || null, seedTarget: seed?.target_text || null,
+      model: null, promptChars: 0, elapsedMs: 0, build: [], use: [],
+      gate: { overallPass: false, failingGates: ['structuralFeature'], structuralFeature: stop },
+      score: null, declaration: null, declarationCheck: null, declarationPath: null,
+      blocked: true, stoppedFor: flag, flagRaised, attempts: [],
+    };
+  }
 
   // THE DECLARATION, computed and RECORDED before the model is called (Tom's
   // acceptance condition, 2026-09-05). It states the derived teaching job, the

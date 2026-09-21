@@ -106,6 +106,28 @@
 
           <!-- Issue -->
           <div class="text-xs text-faint">{{ flag.issue }}</div>
+
+          <!-- A structural-feature flag (Kai, 2026-09-21): the build stopped and is
+               asking for a ruling. Show the four things the flag carries. -->
+          <div v-if="flag.details?.kind === 'structural-feature'" class="mt-2 text-xs space-y-2">
+            <div class="text-muted">{{ flag.details.description }}</div>
+            <div>
+              <div class="text-faint mb-1">First seeds carrying it ({{ flag.details.totalSeedsWithFeature }} in the course):</div>
+              <div v-for="s in flag.details.firstSeeds" :key="s.seed_number" class="ml-2">
+                <span class="font-mono text-faint">S{{ s.seed_number }}</span>
+                <span class="text-ink bidi-isolate ml-1" :dir="dirFor(s.target)">{{ s.target }}</span>
+                <span class="text-faint mx-1">&mdash;</span>
+                <span class="text-muted">{{ s.known }}</span>
+              </div>
+            </div>
+            <div v-for="p in flag.details.precedents" :key="p.id">
+              <div class="text-faint">Precedent #{{ p.number }} — {{ p.course }}, {{ p.ruledBy }} {{ p.ruled }}:</div>
+              <ul class="ml-4 list-disc text-muted">
+                <li v-for="(w, i) in p.whatItDid" :key="i">{{ w }}</li>
+              </ul>
+            </div>
+            <div><span class="text-faint">Recommendation:</span> <span class="text-muted">{{ flag.details.recommendation }}</span></div>
+          </div>
         </div>
 
         <!-- Dismiss button -->
@@ -193,6 +215,7 @@ function typeClass(type) {
     variety: 'bg-purple-500/20 text-purple-400',
     build_quality: 'bg-cyan-500/20 text-cyan-400',
     meaning_mismatch: 'bg-orange-500/20 text-orange-400',
+    structural_feature: 'bg-red-500/20 text-red-400',
   }
   return map[type] || 'bg-surface-3/20 text-muted'
 }

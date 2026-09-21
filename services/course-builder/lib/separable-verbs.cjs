@@ -7,14 +7,14 @@
  *   2. Exception: seed 42 ("Ich fing an, ...") keeps "fing an" SPLIT every
  *      time — until seed 92.
  *   3. Seed 83 ("Ich stimme dem zu, ...") is where the split is TAUGHT. Its
- *      LEGO is introduced JOINED with a short learner-facing explanation
- *      (LESSON_TEXT_TAUGHT_SEED below).
+ *      LEGO is introduced JOINED with a short learner-facing explanation that
+ *      a HUMAN writes (HUMAN_AUTHORED_TEXT below holds Kai's wording).
  *   4. Under the seed-83 LEGO the practice phrases carry BOTH forms: lots of
  *      very short split phrases, lots of very short joined phrases, plenty of
  *      USE phrases showcasing the pattern. Volume and contrast, not
  *      explanation.
  *   5. No explanation at seed 84 — same verb, negated; drilling does the work.
- *   6. Seed 92 OPENS THE DOORS with one line (DOORS_OPEN_TEXT below).
+ *   6. Seed 92 OPENS THE DOORS with one line, also human-written.
  *   7. From seed 92 any previously introduced separable verb may appear split
  *      or joined freely — including seed 42's.
  *   8. Every separable verb introduced after that is INTRODUCED JOINED —
@@ -29,6 +29,16 @@
  * chunks, so a standalone prefix ("zurück") that no LEGO carries on its own was
  * an unknown word. Both gates now ask this module — and ONLY where the ruling
  * permits the other shape. Everywhere else they behave exactly as before.
+ *
+ * THE BUILD AGENT DOES NOT WRITE EXPLANATIONS (Kai, 2026-09-21, job #491):
+ * "The build agent shouldn't be writing explanations... it should be
+ * something to flag to a human for now." So the policy object records WHERE
+ * an explanation is needed (explanationNeeded), the prompt tells the model
+ * that a human has written it and forbids composing one, and the two
+ * wordings live here only as DATA — Kai's text, applied by a human at the
+ * fixes stage. The prompt never carries them. A later staged-introduction
+ * question for a NEW course is not decided here either: it is raised to Kai
+ * by structural-features.cjs, citing this ruling as its first precedent.
  *
  * SCOPE. deu_for_eng (and its _vN successors) only. Other German-target courses
  * are not covered by the ruling and get the old exact-match behaviour; a
@@ -66,19 +76,34 @@ const TAUGHT_VERB = 'zustimmen';
 const CONTRAST_MIN_EACH = 2;
 
 /**
- * Clause 3: the learner-facing explanation that goes with the seed-83 LEGO's
- * presentation. "[word in English]" is the LEGO's known text. This is the
- * wording of record; the content pass that rewrites the seed-83 LEGO reads it
- * from here rather than retyping it.
+ * KAI'S HUMAN-AUTHORED LEARNER-FACING TEXT for deu_for_eng — a RECORD, not a
+ * generation input. Keyed by the seed whose presentation carries it. Applied
+ * by a human at the fixes stage (the presentation clips are TTS renders and
+ * go through the audio-pass queue). Nothing in this module, and nothing in
+ * any prompt, quotes these; a test asserts that. "[word in English]" in the
+ * seed-83 line is the LEGO's known text, completed by the human who applies it.
  */
-const LESSON_TEXT_TAUGHT_SEED =
-  'Often in German, you will hear some kinds of words split into two pieces in sentences. ' +
-  'Listen out for that in the phrases as you practice how to say';
+const HUMAN_AUTHORED_TEXT = Object.freeze({
+  author: 'Kai',
+  ruled: '2026-09-21',
+  course: 'deu_for_eng',
+  appliedBy: 'a human at the fixes stage — never the build agent',
+  bySeed: Object.freeze({
+    [TAUGHT_SEED]: Object.freeze({
+      where: 'the presentation of the seed-83 LEGO, before "which is:"',
+      text: 'Often in German, you will hear some kinds of words split into two pieces in sentences. ' +
+            'Listen out for that in the phrases as you practice how to say \'[word in English]\', which is:',
+    }),
+    [DOORS_OPEN_SEED]: Object.freeze({
+      where: 'before the first LEGO of seed 92',
+      text: 'As it happens, you already know quite a few words that can be split, ' +
+            'so we will start throwing those into the mix from now on.',
+    }),
+  }),
+});
 
-/** Clause 6: the one line at seed 92. */
-const DOORS_OPEN_TEXT =
-  'As it happens, you already know quite a few words that can be split, ' +
-  'so we will start throwing those into the mix from now on.';
+/** Every seed whose presentation needs a human-written line. */
+const EXPLANATION_SEEDS = Object.freeze(Object.keys(HUMAN_AUTHORED_TEXT.bySeed).map(Number));
 
 // ─── Lexicon ──────────────────────────────────────────────────────────────
 
@@ -295,10 +320,13 @@ function rulingApplies(courseCode) {
 function separablePolicy(courseCode, seedNumber) {
   if (!rulingApplies(courseCode)) return { applies: false, mode: 'off' };
   const n = Number(seedNumber);
-  if (n >= DOORS_OPEN_SEED) return { applies: true, mode: 'free', freeVerbs: 'all' };
-  if (n === TAUGHT_SEED) return { applies: true, mode: 'both', freeVerbs: [TAUGHT_VERB], contrastRequired: true };
-  if (n > TAUGHT_SEED) return { applies: true, mode: 'taught-verb', freeVerbs: [TAUGHT_VERB] };
-  return { applies: true, mode: 'lego-shape', freeVerbs: [], splitException: n === SPLIT_EXCEPTION_SEED };
+  // explanationNeeded says WHERE a human-written line belongs (seeds 83 and
+  // 92). It never carries the text: that is HUMAN_AUTHORED_TEXT, a record.
+  const explanationNeeded = EXPLANATION_SEEDS.includes(n);
+  if (n >= DOORS_OPEN_SEED) return { applies: true, mode: 'free', freeVerbs: 'all', explanationNeeded };
+  if (n === TAUGHT_SEED) return { applies: true, mode: 'both', freeVerbs: [TAUGHT_VERB], contrastRequired: true, explanationNeeded };
+  if (n > TAUGHT_SEED) return { applies: true, mode: 'taught-verb', freeVerbs: [TAUGHT_VERB], explanationNeeded };
+  return { applies: true, mode: 'lego-shape', freeVerbs: [], splitException: n === SPLIT_EXCEPTION_SEED, explanationNeeded };
 }
 
 function verbIsFree(policy, lemma) {
@@ -451,6 +479,15 @@ function checkSeparableContrast(courseCode, seedNumber, legoTarget, phrases) {
 // ─── The prompt: what the builder is told ─────────────────────────────────
 
 /**
+ * Kai, 2026-09-21: the build agent does not write explanations. Every section
+ * this module emits ends with this line, so the model is told in every mode.
+ */
+const NO_EXPLANATION_LINE =
+  'YOU WRITE PHRASES ONLY. Never write a presentation line, an explanation, a note, a gloss in brackets ' +
+  'or any other prose addressed to the learner about splitting verbs, in any field — a human writes that. ' +
+  'A phrase that explains rather than practises is refused.';
+
+/**
  * The section merged into the v3 phrase prompt for a ruled course. Empty for
  * everything else, and empty for a LEGO without a separable verb before seed
  * 92 (nothing to say). Same policy object as the gates, so the instruction and
@@ -471,7 +508,7 @@ function separableSection(courseCode, seedNumber, lego) {
       L.push(`This LEGO carries ${names}. Use it JOINED, exactly as the LEGO writes it, in every phrase — after a modal, with zu, as a participle, or verb-final in a subordinate clause. Do NOT split it (no "ich ... an", no "wir ... zurück"). The learner has not yet been told that German splits verbs; that is taught at seed ${TAUGHT_SEED}. A split phrase here fails the gate.`);
     }
   } else if (policy.mode === 'both') {
-    L.push(`THIS IS THE SEED WHERE THE SPLIT IS TAUGHT. The LEGO is ${names || 'the taught verb ' + TAUGHT_VERB}. The learner has just been told: "${LESSON_TEXT_TAUGHT_SEED} [${lego.known_text || lego.known || ''}]".`);
+    L.push(`THIS IS THE SEED WHERE THE SPLIT IS TAUGHT. The LEGO is ${names || 'the taught verb ' + TAUGHT_VERB}. A human has written the one-line explanation the learner hears with this LEGO's presentation; you are not shown it and you do not write one.`);
     L.push('');
     L.push(`Write BOTH shapes, and lots of each: VERY SHORT split phrases ("ich stimme zu", "ich stimme dem zu", "ich stimme nicht zu"), VERY SHORT joined phrases wherever the build range allows (after a modal, with zu), and USE phrases that showcase the pattern. Volume and contrast teach this, not explanation — put no explanation in a phrase. At least ${CONTRAST_MIN_EACH} split and ${CONTRAST_MIN_EACH} joined across the set, or the gate refuses it.`);
     L.push('');
@@ -482,17 +519,19 @@ function separableSection(courseCode, seedNumber, lego) {
       L.push(`This LEGO carries ${names} — keep that shape exactly.`);
     }
   } else {
-    L.push(`From seed ${DOORS_OPEN_SEED} the learner has been told: "${DOORS_OPEN_TEXT}" Any separable verb already introduced may now appear SPLIT or JOINED${legoVerbs.length ? ` — including this LEGO's ${names}` : ''}.`);
+    L.push(`From seed ${DOORS_OPEN_SEED} the learner has been told, in a human-written line, that words they already know may now be split. Any separable verb already introduced may now appear SPLIT or JOINED${legoVerbs.length ? ` — including this LEGO's ${names}` : ''}.`);
     L.push('');
     L.push('CONSISTENCY IS THE WHOLE POINT: split it where German splits it (finite verb in a main clause, prefix at the end) and keep it joined where German joins it (after a modal, with zu, as a participle, verb-final in a subordinate clause). The learner is inducing the real rule from your phrases; a split or a join in the wrong place teaches a false one. Never split for variety.');
   }
+  L.push('');
+  L.push(NO_EXPLANATION_LINE);
   L.push('');
   return L.join('\n');
 }
 
 module.exports = {
   SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH,
-  LESSON_TEXT_TAUGHT_SEED, DOORS_OPEN_TEXT,
+  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
   SEPARABLE_PREFIXES, VERBS, LEXICON,
   rulingApplies, separablePolicy, parseJoined, separableVerbsIn,
   checkSeparableContainment, phraseContainsLego, augmentVocabForSeparables,
