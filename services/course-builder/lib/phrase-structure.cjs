@@ -5,9 +5,12 @@
 
 const { normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
 const { getTargetLang, getCharsPerSyllable, isParticle, isChinese } = require('./language-config.cjs');
-// deu_for_eng separable verbs (Kai's ruling 2026-09-21): a split realisation of the
-// LEGO's verb IS the LEGO used in a phrase, so it counts toward the BUILD/USE
-// floors wherever the ruling admits that shape. Off for every other course.
+// Kai's deu_for_eng separable-verb ruling (2026-09-21). The floor counter below
+// decides what IS a BUILD/USE phrase by asking whether it contains the LEGO, so
+// it needs the same admission the containment gate got — otherwise every split
+// phrase at seed 83 ("ich stimme zu" under LEGO "zustimmen") is silently counted
+// as a component and the basket fails its own floor. Same policy object, no
+// second lexicon; unruled courses and seeds fall through to `baseline`.
 const { phraseContainsLego } = require('./separable-verbs.cjs');
 
 // Phrase role prefixes for deterministic IDs
@@ -159,7 +162,6 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const buildRaw = lego.build || [];
   const useRaw = lego.use || [];
   const legoTarget = (lego.target || '').trim();
-  const legoTargetNorm = normalizeForContainment(legoTarget);
 
   // Filter out component phrases — for character-based languages (Thai, Chinese, Japanese, Korean)
   // use substring containment; for space-delimited languages use word-based containment.
@@ -167,13 +169,8 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const baseline = (lt, pt) => (charBased
     ? normalizeForContainment(pt).includes(normalizeForContainment(lt))
     : checkWordContainment(lt, pt));
-  // Under Kai's deu_for_eng ruling a phrase that realises the LEGO's separable
-  // verb split ("ich stimme zu" under "zustimmen") contains the LEGO; before this
-  // it was excluded here as a "component phrase" and the seed-83 basket Kai
-  // ruled for could never meet its own BUILD floor. Byte-for-byte the old
-  // predicate for every other course and every LEGO without a separable verb.
   const containsLego = (phraseTarget) => phraseContainsLego({
-    courseCode, seedNumber, legoTarget, phraseTarget: phraseTarget || '', baseline,
+    courseCode, seedNumber, legoTarget, phraseTarget, baseline,
   });
   const buildContaining = buildRaw.filter(p => containsLego(p.target || ''));
   const useContaining = useRaw.filter(p => containsLego(p.target || ''));

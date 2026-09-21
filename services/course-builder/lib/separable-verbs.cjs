@@ -76,12 +76,38 @@ const TAUGHT_VERB = 'zustimmen';
 const CONTRAST_MIN_EACH = 2;
 
 /**
+ * RULED EXCEPTIONS TO CLAUSE 8 (Kai, 2026-09-21, job #502). Clause 8 says a
+ * separable verb introduced after seed 92 is introduced JOINED. These two
+ * LEGOs are introduced SPLIT, as whole-seed M-LEGOs, and that is deliberate:
+ * no new verb arrives with them. "ausmachen" was introduced joined at seed 63
+ * ("dass es dir nichts ausmacht") and split at 155 ("es macht mir nichts aus")
+ * and 190 ("macht es dir etwas aus"); seeds 653 and 667 add only a politeness
+ * variant (Ihnen … gnädige Frau) and a number variant (euch allen) of that
+ * known expression. Kai on the whole-seed shape: "That's the whole seed I
+ * guess, but it'll have to do if it can't be split more. It's so late in the
+ * course, so it'll be fine, the learner can handle it." Kai on the known side:
+ * NO "(formal)" tag and no parenthetical of any kind — the formality is carried
+ * by the word "madam" inside the LEGO. A later agent that "fixes" either of
+ * these back to a joined form, or adds a tag, is reverting a ruling.
+ * Keyed by seed number → the lemma the exception covers.
+ */
+const RULED_SPLIT_INTRODUCTIONS = Object.freeze({
+  653: Object.freeze({ lemma: 'ausmachen', lego: 'macht es Ihnen etwas aus, gnädige Frau', known: 'do you mind madam' }),
+  667: Object.freeze({ lemma: 'ausmachen', lego: 'macht es euch allen etwas aus', known: 'do you all mind' }),
+});
+
+/**
  * KAI'S HUMAN-AUTHORED LEARNER-FACING TEXT for deu_for_eng — a RECORD, not a
  * generation input. Keyed by the seed whose presentation carries it. Applied
  * by a human at the fixes stage (the presentation clips are TTS renders and
  * go through the audio-pass queue). Nothing in this module, and nothing in
- * any prompt, quotes these; a test asserts that. "[word in English]" in the
- * seed-83 line is the LEGO's known text, completed by the human who applies it.
+ * any prompt, quotes these; a test asserts that. Both lines are FINAL and are
+ * placed VERBATIM: the seed-83 line REPLACES the whole template frame ("The
+ * German for: '…', as in — '…', is:") rather than sitting inside it. NOTE for
+ * whoever re-applies them: phase8's staleness guard keeps a pending
+ * presentation row only if it quotes the LEGO's current known_text — the
+ * seed-83 line does ('to agree'); the seed-92 line does not, so it lives on the
+ * LINKED row in place, never on a pending row (job #501, 2026-09-21).
  */
 const HUMAN_AUTHORED_TEXT = Object.freeze({
   author: 'Kai',
@@ -90,9 +116,11 @@ const HUMAN_AUTHORED_TEXT = Object.freeze({
   appliedBy: 'a human at the fixes stage — never the build agent',
   bySeed: Object.freeze({
     [TAUGHT_SEED]: Object.freeze({
-      where: 'the presentation of the seed-83 LEGO, before "which is:"',
+      where: 'the WHOLE presentation line of the seed-83 LEGO — it replaces the template frame, and ends with its own lead-in to the target',
+      // Kai's final wording, 2026-09-21 (his own edit of the earlier draft;
+      // applied live by job #501). Verbatim — character for character.
       text: 'Often in German, you will hear some kinds of words split into two pieces in sentences. ' +
-            'Listen out for that in the phrases as you practice how to say \'[word in English]\', which is:',
+            'Listen out for that. The German for \'to agree\' is:',
     }),
     [DOORS_OPEN_SEED]: Object.freeze({
       where: 'before the first LEGO of seed 92',
@@ -236,6 +264,14 @@ const CLAUSE_PUNCT = /[.,!?;:¿¡«»""''„“”‘’()…—–]+/g;
 const CLAUSE_CONJ = new Set([
   'und', 'oder', 'aber', 'denn', 'sondern', // coordinating
   'wenn', 'dass', 'weil', 'ob', 'bevor', 'nachdem', 'obwohl', 'als', 'während', 'damit', 'bis', 'falls', 'sobald', // a new clause starts
+  // Relative and interrogative openers. The comma before them is obligatory in
+  // German and the seed texts carry it — but live PHRASE rows often do not
+  // ("Ich stimme dem zu was du gestern gesagt hast", S0083L01U01), and without
+  // them the prefix in front of the missing comma reads as mid-clause and the
+  // split goes undetected. Only w-words: an article after a prefix ("an der
+  // Ecke") is exactly the false positive the clause-final rule exists to stop.
+  'was', 'wer', 'wen', 'wem', 'wessen', 'wo', 'wohin', 'woher',
+  'wie', 'warum', 'wieso', 'weshalb', 'wann', 'welche', 'welcher', 'welches',
 ]);
 function clauseEndFlags(text) {
   const raw = String(text || '').toLowerCase().replace(CLAUSE_PUNCT, ' | ').split(/\s+/).filter(Boolean);
@@ -437,6 +473,51 @@ function augmentVocabForSeparables(vocabSet, courseCode, seedNumber, extra = {})
   return out;
 }
 
+// ─── The tiling gate ──────────────────────────────────────────────────────
+
+/**
+ * The extra WORDS a seed's tiling check may use, given this seed's LEGOs.
+ *
+ * checkTiling asks "can the seed sentence be rebuilt from its LEGOs (plus
+ * earlier vocabulary), word by word?". Clause 3 breaks that for seed 83 the
+ * moment the LEGO is introduced JOINED: the LEGO is "zustimmen", one word, but
+ * the seed says "Ich stimme dem zu" — so "stimme" and "zu" are untiled and the
+ * seed the ruling is FOR is the seed the gate refuses. The same thing waits at
+ * seed 618 ("fühlt … an") whenever Kai rules on it.
+ *
+ * So, driven by the SAME policy object as the containment and vocabulary gates
+ * and only where that policy admits the other shape: a joined separable-verb
+ * LEGO also lends the pieces of its split realisation — the prefix, and the
+ * finite forms of its stem — and a split one also lends its joined lemma. No
+ * second lexicon, no second notion of which seeds are free: mode 'lego-shape'
+ * (seeds 1..82 outside the exception) yields nothing at all, so every seed the
+ * ruling has not reached tiles exactly as it did before.
+ *
+ * @param {string} courseCode
+ * @param {number} seedNumber
+ * @param {string[]} legoTargets  this seed's LEGO (and component) targets
+ * @returns {Set<string>} extra tileable words; empty unless the policy admits
+ */
+function separableTilingPieces(courseCode, seedNumber, legoTargets) {
+  const out = new Set();
+  const policy = separablePolicy(courseCode, seedNumber);
+  if (!policy.applies || policy.mode === 'lego-shape') return out;
+
+  for (const target of legoTargets || []) {
+    for (const v of separableVerbsIn(target)) {
+      if (!verbIsFree(policy, v.lemma)) continue;
+      const lex = LEXICON.get(v.lemma);
+      if (!lex) continue;
+      out.add(lex.prefix);
+      out.add(lex.lemma);
+      // A split realisation puts SOME finite form of the stem in the sentence;
+      // which one is the seed's business, not ours.
+      for (const f of lex.forms.finite) out.add(f);
+    }
+  }
+  return out;
+}
+
 // ─── Clause 8: the shape a NEW LEGO may take ──────────────────────────────
 
 /**
@@ -446,8 +527,13 @@ function augmentVocabForSeparables(vocabSet, courseCode, seedNumber, extra = {})
  */
 function checkSeparableLegoShape(courseCode, seedNumber, legoTarget) {
   if (!rulingApplies(courseCode)) return null;
-  const split = separableVerbsIn(legoTarget).filter(v => v.realisation === 'split');
+  let split = separableVerbsIn(legoTarget).filter(v => v.realisation === 'split');
   if (split.length === 0 || Number(seedNumber) === SPLIT_EXCEPTION_SEED) return null;
+  // Kai's ruled split introductions (job #502): the exception covers ONE lemma
+  // at ONE seed; any other split verb in that LEGO is still reported.
+  const ruled = RULED_SPLIT_INTRODUCTIONS[Number(seedNumber)];
+  if (ruled) split = split.filter(v => v.lemma !== ruled.lemma);
+  if (split.length === 0) return null;
   return {
     seedNumber: Number(seedNumber), legoTarget, verbs: split.map(v => v.lemma),
     finding: `LEGO "${legoTarget}" introduces ${split.map(v => v.lemma).join(', ')} SPLIT; the ruling introduces every separable verb JOINED (seed 42 is the one exception)`,
@@ -531,9 +617,10 @@ function separableSection(courseCode, seedNumber, lego) {
 
 module.exports = {
   SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH,
-  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
+  RULED_SPLIT_INTRODUCTIONS, HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
   SEPARABLE_PREFIXES, VERBS, LEXICON,
   rulingApplies, separablePolicy, parseJoined, separableVerbsIn,
   checkSeparableContainment, phraseContainsLego, augmentVocabForSeparables,
+  separableTilingPieces,
   checkSeparableLegoShape, checkSeparableContrast, separableSection,
 };

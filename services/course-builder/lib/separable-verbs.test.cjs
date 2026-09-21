@@ -18,11 +18,13 @@ import { describe, it, expect } from 'vitest';
 import { checkWordContainment } from './text-normalization.cjs';
 import * as SV from './separable-verbs.cjs';
 import {
-  SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH,
+  SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH, RULED_SPLIT_INTRODUCTIONS,
   VERBS, separablePolicy, separableVerbsIn, checkSeparableContainment, phraseContainsLego,
   augmentVocabForSeparables, checkSeparableLegoShape, checkSeparableContrast, separableSection,
-  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
+  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE, separableTilingPieces,
 } from './separable-verbs.cjs';
+import { checkTiling, checkVocabViolations } from './validation.cjs';
+import { checkBuildUsePhrases } from './phrase-structure.cjs';
 import {
   STRUCTURAL_CHECK_TYPE, CHECK_TYPE_CHANGE_FILE, QUOTED_SEEDS, PRECEDENTS, FEATURES,
   featuresFor, closestPrecedent, structuralStop, buildStructuralFlag, raiseStructuralFlag,
@@ -259,6 +261,13 @@ describe('the prompt never carries learner-facing text (Kai: "the build agent sh
     expect(HUMAN_AUTHORED_TEXT.appliedBy).toMatch(/human/);
     expect(Object.keys(HUMAN_AUTHORED_TEXT.bySeed).map(Number)).toEqual([TAUGHT_SEED, DOORS_OPEN_SEED]);
     expect(HUMAN_AUTHORED_TEXT.bySeed[TAUGHT_SEED].text).toMatch(/^Often in German, you will hear some kinds of words split into two pieces/);
+    // Kai's FINAL wording (his own edit, 2026-09-21): the line ends with its own
+    // lead-in to the target and replaces the template frame outright. The
+    // earlier draft ended "…how to say '[word in English]', which is:".
+    expect(HUMAN_AUTHORED_TEXT.bySeed[TAUGHT_SEED].text).toBe(
+      "Often in German, you will hear some kinds of words split into two pieces in sentences. Listen out for that. The German for 'to agree' is:");
+    expect(HUMAN_AUTHORED_TEXT.bySeed[DOORS_OPEN_SEED].text).toBe(
+      'As it happens, you already know quite a few words that can be split, so we will start throwing those into the mix from now on.');
     expect(HUMAN_AUTHORED_TEXT.bySeed[DOORS_OPEN_SEED].text).toMatch(/throwing those into the mix from now on\.$/);
     expect(Object.isFrozen(HUMAN_AUTHORED_TEXT.bySeed)).toBe(true);
   });
@@ -399,6 +408,163 @@ describe('the v3 door stops before the model is called', () => {
     expect(stopAt).toBeGreaterThan(-1);
     expect(modelAt).toBeGreaterThan(stopAt);
     expect(src.slice(stopAt, modelAt)).toMatch(/blocked: true, stoppedFor: flag/);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE TILING GATE (job #497, applying Kai's clause 3 to the live seed-83 LEGO).
+//
+// Clause 3 says seed 83 introduces the verb JOINED. The seed sentence realises
+// it SPLIT. checkTiling asks "is every word of the seed covered by its LEGOs?",
+// so the moment S0083L01 becomes "zustimmen" the words "stimme" and "zu" are
+// untiled and the gate refuses the very seed the ruling is for. These assertions
+// fail against the pre-#497 checkTiling (no opts argument, no derived pieces)
+// and pass after it — run both ways before believing them.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('tiling — a joined LEGO tiles its own split seed, but only where the policy says so', () => {
+  const SEED_83 = 'Ich stimme dem zu, was du über deinen Freund gesagt hast';
+  // Everything seed 83 needs except the verb, as prior vocabulary.
+  const prior = ['ich', 'dem', 'was', 'du', 'gesagt', 'hast'];
+  const legos = [{ target: 'zustimmen', type: 'A' }, { target: 'über deinen Freund', type: 'A' }];
+
+  it('seed 83 tiles from the JOINED lego, because the split pieces are derived', () => {
+    const r = checkTiling(SEED_83, legos, C, prior, { seedNumber: 83 });
+    expect(r).toEqual({ valid: true });
+  });
+
+  it('the derived pieces are the prefix, the lemma and the stem\'s finite forms', () => {
+    const pieces = separableTilingPieces(C, 83, ['zustimmen']);
+    expect(pieces.has('zu')).toBe(true);
+    expect(pieces.has('stimme')).toBe(true);
+    expect(pieces.has('stimmt')).toBe(true);
+    expect(pieces.has('zustimmen')).toBe(true);
+  });
+
+  it('WITHOUT a seed number the old behaviour stands — the caller opted out', () => {
+    const r = checkTiling(SEED_83, legos, C, prior);
+    expect(r.valid).toBe(false);
+    expect(r.untiled).toContain('stimme');
+  });
+
+  it('a seed the ruling has NOT reached lends nothing: same LEGO at seed 60 still fails', () => {
+    expect([...separableTilingPieces(C, 60, ['zustimmen'])]).toEqual([]);
+    expect(checkTiling(SEED_83, legos, C, prior, { seedNumber: 60 }).valid).toBe(false);
+  });
+
+  it('another German-target course is untouched — no ruling, no pieces', () => {
+    expect([...separableTilingPieces('deu_for_spa', 83, ['zustimmen'])]).toEqual([]);
+  });
+
+  it('only the verbs the policy frees: at seed 83 that is zustimmen alone', () => {
+    expect([...separableTilingPieces(C, 83, ['zurückrufen'])]).toEqual([]);
+    expect(separableTilingPieces(C, 92, ['zurückrufen']).has('zurück')).toBe(true);
+  });
+});
+
+describe('a relative clause opener ends the clause, so the prefix in front of it is split', () => {
+  // Live rows S0083L01U01 / U06 drop the comma German requires before "was".
+  // Without the opener list the prefix reads as mid-clause and the split is
+  // invisible to the gate — the two phrases would fail containment under the
+  // reshaped LEGO even though they are the drilling the ruling asks for.
+  it('"ich stimme dem zu was du gesagt hast" reads SPLIT', () => {
+    expect(shapes('Ich stimme dem zu was du gestern darüber gesagt hast')).toEqual(['zustimmen:split']);
+  });
+  it('and so does the comma-ed form it should have been', () => {
+    expect(shapes('Ich stimme dem zu, was du gestern darüber gesagt hast')).toEqual(['zustimmen:split']);
+  });
+  it('an ARTICLE after a prefix is still not a clause end — "an der Ecke" stays silent', () => {
+    expect(shapes('wir biegen an der Ecke links ab')).toEqual(['abbiegen:split']);
+    expect(shapes('ich denke an der Ecke')).toEqual([]);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE FLOOR COUNTER (job #497). checkBuildUsePhrases decides what IS a BUILD or
+// USE phrase by asking whether it contains the LEGO — its own containment test,
+// separate from the gate's. Without the same admission, every split phrase at
+// the taught seed is counted as a "component phrase" and excluded, so the basket
+// the ruling asks for fails its own 3-BUILD floor. Red before #497, green after.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('phrase-count floors count a split realisation as a real BUILD phrase', () => {
+  const basket = {
+    idx: 1, type: 'A', known: 'to agree', target: 'zustimmen',
+    build: [
+      { known: 'I agree', target: 'ich stimme zu' },
+      { known: "I don't agree", target: 'ich stimme nicht zu' },
+      { known: 'I want to agree', target: 'ich will zustimmen' },
+    ],
+    use: [
+      { known: 'I agree with you', target: 'Ich stimme dir zu' },
+      { known: "I don't agree with you", target: 'Ich stimme dir nicht zu' },
+      { known: 'I think I agree with you', target: 'Ich denke, ich stimme dir zu' },
+      { known: 'I want to agree with you', target: 'Ich will dir zustimmen' },
+      { known: 'I can agree with you today', target: 'Ich kann dir heute zustimmen' },
+    ],
+  };
+  it('at seed 83 the split phrases count: 3 BUILD, 5 USE, no components', () => {
+    const r = checkBuildUsePhrases(basket, C, TAUGHT_SEED);
+    expect(r.valid).toBe(true);
+    expect(r.details).toMatchObject({ build: 3, use: 5, components: 0 });
+  });
+  it('at a seed the ruling has not reached they are excluded, exactly as before', () => {
+    const r = checkBuildUsePhrases(basket, C, 60);
+    expect(r.valid).toBe(false);
+    expect(r.details.components).toBe(5);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// JOB #502 — the three deu_for_eng seeds that taught the wrong word (Kai's
+// rulings, 2026-09-21). Seed 618 gets a JOINED LEGO realised split in the seed;
+// seeds 653 and 667 get whole-seed M-LEGOs that are ruled exceptions to clause 8.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('seed 618 — "sich anfühlen wie" is introduced joined and the seed realises it split', () => {
+  const SEED_618 = 'es fühlt sich nicht wie eine lange Zeit an';
+  const prior = ['es', 'nicht', 'eine', 'zeit'];
+  const legos = [{ target: 'lange', type: 'A' }, { target: 'sich anfühlen wie', type: 'M', components: [] }];
+
+  it('tiles: "fühlt" and "an" are derived from the joined LEGO at seed 618', () => {
+    expect(checkTiling(SEED_618, legos, C, prior, { seedNumber: 618 })).toEqual({ valid: true });
+  });
+  it('would NOT tile without the derived pieces — the old "fühlt" LEGO was the only thing that made it pass', () => {
+    const r = checkTiling(SEED_618, legos, C, prior);
+    expect(r.valid).toBe(false);
+    expect(r.untiled).toContain('fühlt');
+    expect(r.untiled).toContain('an');
+  });
+  it('the seed sentence is the only place "fühlt" is heard, so the vocab gate must be lent it (extraTexts, as seed-complete.cjs does)', () => {
+    const vocab = new Set(['es', 'nicht', 'eine', 'zeit', 'lange', 'kann', 'sich', 'wie', 'sich anfühlen wie']);
+    const phrases = [{ target: 'es fühlt sich wie eine lange Zeit an' }, { target: 'es kann sich wie eine lange Zeit anfühlen' }];
+    const without = checkVocabViolations(phrases, vocab, C, { seedNumber: 618 });
+    expect(without.map(v => v.phrase)).toEqual(['es fühlt sich wie eine lange Zeit an']);
+    const withSeed = checkVocabViolations(phrases, vocab, C, { seedNumber: 618, extraTexts: [SEED_618] });
+    expect(withSeed).toEqual([]);
+  });
+  it('containment admits both shapes under the joined LEGO after seed 92', () => {
+    const args = { courseCode: C, seedNumber: 618, legoTarget: 'sich anfühlen wie' };
+    expect(phraseContainsLego({ ...args, phraseTarget: 'es fühlt sich nicht wie eine lange Zeit an' })).toBe(true);
+    expect(phraseContainsLego({ ...args, phraseTarget: 'es kann sich wie eine lange Zeit anfühlen' })).toBe(true);
+    expect(phraseContainsLego({ ...args, phraseTarget: 'sie fühlt sich hier gut' })).toBe(false); // no "wie", no anfühlen
+  });
+});
+
+describe('seeds 653 and 667 — ruled split introductions of ausmachen (clause 8 exceptions)', () => {
+  it('the two whole-seed LEGOs are not reported as clause-8 findings', () => {
+    for (const [seed, r] of Object.entries(RULED_SPLIT_INTRODUCTIONS)) {
+      expect(separableVerbsIn(r.lego).map(v => `${v.lemma}:${v.realisation}`)).toEqual(['ausmachen:split']);
+      expect(checkSeparableLegoShape(C, Number(seed), r.lego)).toBeNull();
+    }
+  });
+  it('the exception is one lemma at one seed: another split verb there, or the same LEGO elsewhere, is still reported', () => {
+    expect(checkSeparableLegoShape(C, 653, 'rufe zurück')).toMatchObject({ verbs: ['zurückrufen'] });
+    expect(checkSeparableLegoShape(C, 654, RULED_SPLIT_INTRODUCTIONS[653].lego)).toMatchObject({ verbs: ['ausmachen'] });
+  });
+  it('Kai: no "(formal)" tag, no parenthetical of any kind — the formality is the word "madam"', () => {
+    for (const r of Object.values(RULED_SPLIT_INTRODUCTIONS)) {
+      expect(r.known).not.toMatch(/[()\[\]]/);
+      expect(r.lego).not.toMatch(/[()\[\]]/);
+    }
+    expect(RULED_SPLIT_INTRODUCTIONS[653].known).toMatch(/madam/);
   });
 });
 
