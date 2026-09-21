@@ -68,6 +68,10 @@ const veracity = require('../audio-veracity.cjs')
 const { claudeChat, HAIKU_MODEL } = require('../shared/claude-cli.cjs')
 const presentationAuthor = require('./presentation-author.cjs')
 const { planPresentationRefresh, newestRenderedPresentation } = require('./presentation-refresh-plan.cjs')
+// Human-authored presentation lines (Kai's ruling 2026-09-21, job #506): keyed to
+// the LEGO, never template-overwritten, never silently skipped, maintained by an
+// agent when the LEGO moves, escalated to Kai only on a concept break.
+const humanAuthored = require('../shared/human-authored-presentations.cjs')
 const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pass-queue.cjs')
 // Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
@@ -1069,9 +1073,25 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   )
   let missingPresentation = 0
   const toAuthor = []
+  // HUMAN-AUTHORED LINES (Kai, 2026-09-21, job #506). A marked LEGO is never
+  // authored from the template or the frame judge: its words come from the
+  // mark, and every marked LEGO in scope gets a line in humanAuthoredReport so
+  // the caller can say what happened to it. If the marks cannot be read we do
+  // not guess — the staleness purge below is skipped for the run (a purge that
+  // cannot tell a human's line from a stale template row must not run).
+  let presentationMarks = new Map()
+  let marksUnreadable = null
+  try {
+    presentationMarks = await humanAuthored.loadMarks(supabase, courseCode)
+  } catch (markErr) {
+    marksUnreadable = markErr.message
+    logger.warn(`getAudioNeeds(${courseCode}): human-authored presentation marks unreadable (${markErr.message}) — no pending-presentation purge this run`)
+  }
+  const humanAuthoredReport = []
   for (const lego of (newLegos || [])) {
     if (!lego.presentation_audio_id && !legoIdsWithPresentation.has(lego.lego_id)) {
       missingPresentation++
+      if (presentationMarks.has(lego.lego_id)) continue  // its words come from the mark — see Step 3b
       if (!legoIdsWithPendingPres.has(lego.lego_id) && !isPunctuationOnly(lego.known_text)) {
         toAuthor.push({
           lego_id: lego.lego_id,
@@ -1197,7 +1217,10 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   // to purge, and their LEGO is re-authored from live data in the same run.
   const stalePendingIds = []
   let freshPendingRows = pendingPresRows || []
-  if (freshPendingRows.length) {
+  let freshMarkedLegoIds = new Set((pendingPresRows || []).filter(r => r.lego_id && presentationMarks.has(r.lego_id) && humanAuthored.pendingRowIsFresh(r, presentationMarks.get(r.lego_id))).map(r => r.lego_id))
+  if (freshPendingRows.length && marksUnreadable) {
+    logger.warn(`getAudioNeeds(${courseCode}): skipping the pending-presentation staleness check — marks unreadable (${marksUnreadable}); proceeding with stored texts`)
+  } else if (freshPendingRows.length) {
     try {
       const template = await getOrCreatePresentationTemplate(course.known_lang)
       const kIdx = template.indexOf('{known}')
@@ -1225,6 +1248,12 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
         const isFreshPending = (r) => {
           const text = r.text || ''
           if (r.lego_id) {
+            // THE SECOND DOOR (job #506): a human-authored line need not quote
+            // its LEGO — seed 92's does not — so the quote rule below would
+            // purge it. A marked pending row is fresh iff it carries the
+            // mark's words; an old template row under a marked LEGO is stale.
+            const mark = presentationMarks.get(r.lego_id)
+            if (mark) return humanAuthored.pendingRowIsFresh(r, mark)
             const lego = legoById.get(r.lego_id)
             if (!lego || !lego.known_text) return false  // orphaned pending row — lego gone
             const variants = [lego.known_text]
@@ -1285,7 +1314,11 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
         // picks their phrases up once the purge lands.
         const toReauthor = [...staleLegoIds].filter(id =>
           !freshLegoIds.has(id) && !legoIdsWithPresentation.has(id) && legoById.has(id)
+          && !presentationMarks.has(id)  // a marked LEGO is re-queued from its mark (Step 3b), never re-authored
         )
+        // Step 3b: marked LEGOs whose pending row(s) were all stale template
+        // rows (or which had none) get their human words back from the mark.
+        freshMarkedLegoIds = freshLegoIds
         if (toReauthor.length) {
           const items = toReauthor
             .map(id => legoById.get(id))
@@ -1319,6 +1352,20 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
       // Fail open: the staleness check must never block audio status/generation.
       logger.warn(`Pending-presentation staleness check failed (${staleErr.message}) — proceeding with stored texts`)
     }
+  }
+
+  // Step 3b (job #506): every marked LEGO in scope — its words from the mark
+  // when nothing rendered or fresh-pending carries them, and a plain-English
+  // line about it either way. Never the template, never the frame judge.
+  if (presentationMarks.size) {
+    const scopedLegos = (newLegos || []).filter(l => presentationMarks.has(l.lego_id))
+    const marked = humanAuthored.markedNeeds({
+      marks: presentationMarks, legos: scopedLegos, course,
+      legoIdsWithPresentation, freshPendingLegoIds: freshMarkedLegoIds,
+    })
+    toGenerate.push(...marked.toGenerate)
+    humanAuthoredReport.push(...marked.report)
+    for (const r of marked.report) logger.info(`getAudioNeeds(${courseCode}): ${r.message}`)
   }
 
   for (const pres of freshPendingRows) {
@@ -1464,6 +1511,9 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
     // Items in a human-only language: real work, waiting on a person, never on
     // TTS. Surfaced rather than dropped so "missing" never reads as "covered".
     humanOnlyHeld: heldForHumans,
+    // One line per human-authored presentation in scope, in plain English —
+    // never silently skipped (Kai, 2026-09-21, job #506).
+    humanAuthored: humanAuthoredReport,
     // The text stage is folded into /generate — never gate on it again.
     readyForGenerate: true,
     presentationStatus
@@ -2552,6 +2602,23 @@ app.post('/generate/:courseCode', async (req, res) => {
       logger.warn(`Pre-generate link failed: ${linkErr.message}`)
     }
 
+    // Step A2 (job #506): human-authored presentation lines whose LEGO has
+    // moved are judged (keep / reword / escalate) BEFORE we work out what to
+    // render, so a render never speaks a line that no longer fits its LEGO.
+    // Dry runs judge nothing; they report what a live run would judge.
+    let humanAuthoredOutcomes = []
+    try {
+      const resolved = await humanAuthored.resolveForCourse(supabase, course, { dryRun, by: 'phase8 /generate' })
+      humanAuthoredOutcomes = resolved.outcomes
+      for (const o of humanAuthoredOutcomes) {
+        emitProgress(supabase, courseCode, `Human-authored presentation ${o.lego_id}: ${o.outcome} — ${o.message}`, { phase: 'audio', action: 'human-authored-presentation', lego_id: o.lego_id, outcome: o.outcome })
+      }
+    } catch (haErr) {
+      // Loud, and fatal to the run: rendering on unresolved marks is exactly
+      // the silent-overwrite the ruling forbids.
+      throw new Error(`human-authored presentation lines could not be resolved for ${courseCode}: ${haErr.message}`)
+    }
+
     // Step B: Find what still needs generating (after linking)
     const audioNeeds = await getAudioNeeds(courseCode, releaseTarget, course, false, scopeSeeds)
 
@@ -2755,7 +2822,8 @@ app.post('/generate/:courseCode', async (req, res) => {
         wouldCopy: audioNeeds.toCopy?.length || 0,
         wouldPurgeStalePresentations: audioNeeds.stalePendingIds?.length || 0,
         samples: uniqueNeeded.slice(0, 10),
-        authorSamples: (audioNeeds.toAuthor || []).slice(0, 5)
+        authorSamples: (audioNeeds.toAuthor || []).slice(0, 5),
+        humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])]
       })
     }
 
@@ -3211,7 +3279,9 @@ app.post('/generate/:courseCode', async (req, res) => {
         phrase_id: f.phrase_id || null,
         chunk: f.chunk,
         issue: f.issue
-      }))
+      })),
+      // What happened to every human-authored presentation line (job #506).
+      humanAuthored: [...humanAuthoredOutcomes, ...(audioNeeds.humanAuthored || [])]
     })
 
   } catch (error) {
@@ -4285,6 +4355,33 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
 
     logger.info(`Context sources: ${contextFromSeed} seed, ${contextFromUse} USE phrase, ${contextNone} no context`)
 
+    // HUMAN-AUTHORED LINES NEVER GET THE TEMPLATE (Kai, 2026-09-21, job #506).
+    // Every mark on the course is resolved here — not only the LEGOs this run
+    // selected, because a LEGO edit (edit-cascade calls this route) leaves the
+    // old rows in place and the default filter above would skip it. Unchanged
+    // LEGO: the human words stand and, if the rendered clip does not carry
+    // them, a pending row is queued below exactly as for any changed text
+    // ("human-authored wording kept, audio queued"). Changed LEGO: an agent
+    // judges keep / reword / escalate and applies it. Every outcome is in the
+    // response and the log; a dry run judges nothing and says so.
+    const haResolved = await humanAuthored.resolveForCourse(supabase, course, { dryRun, by: 'phase8 /regenerate-presentations' })
+    let humanAuthoredSwapped = 0
+    for (const pres of presentations) {
+      const words = haResolved.textFor(pres.lego_id)
+      if (words == null) continue
+      pres.presentation_text = words
+      pres.human_authored = true
+      pres.context_source = 'human-authored'
+      humanAuthoredSwapped++
+    }
+    const humanAuthoredReport = haResolved.outcomes.map(o => ({
+      ...o,
+      inThisRun: presentations.some(p => p.lego_id === o.lego_id),
+    }))
+    if (humanAuthoredReport.length) {
+      logger.info(`[HumanAuthored] ${humanAuthoredReport.length} human-authored presentation line(s) on ${courseCode}; ${humanAuthoredSwapped} in this run carry the human words instead of the template`)
+    }
+
     const contextStats = {
       fromSeed: contextFromSeed,
       fromUsePhrase: contextFromUse,
@@ -4314,6 +4411,7 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
         count: presentations.length,
         componentCount: componentPresentations.length,
         contextStats,
+        humanAuthored: humanAuthoredReport,
         sample: presentations.slice(0, 10),  // Show first 10 LEGO presentations
         componentSample: componentPresentations.slice(0, 5)  // Show first 5 component presentations
       })
@@ -4758,7 +4856,8 @@ app.post('/regenerate-presentations/:courseCode', async (req, res) => {
       componentNewRecords: compNewRecords,
       componentUnchanged: compTextUnchanged,
       contextStats,
-      message: `${presentations.length} LEGO presentations processed (${supersededLegoIds.length} text changed — replacements queued alongside the existing clips, nothing deleted, no slot silenced — ${unchangedLegoIds.size} unchanged, ${presentations.length - supersededLegoIds.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
+      humanAuthored: humanAuthoredReport,
+      message: `${humanAuthoredReport.length ? `${humanAuthoredReport.length} human-authored line(s): ${humanAuthoredReport.map(o => `${o.lego_id} ${o.outcome}`).join(', ')}. ` : ''}${presentations.length} LEGO presentations processed (${supersededLegoIds.length} text changed — replacements queued alongside the existing clips, nothing deleted, no slot silenced — ${unchangedLegoIds.size} unchanged, ${presentations.length - supersededLegoIds.length - unchangedLegoIds.size} new). ${componentPresentations.length} component presentations processed (${compNewRecords} new, ${compTextUnchanged} unchanged). Run regenerate-role with role=presentation to generate audio.`
     })
 
     emitProgress(supabase, courseCode, `Presentation text regenerated: ${presentations.length} LEGOs, ${componentPresentations.length} components — ready for audio generation`, { phase: 'audio', action: 'regenerate-presentations', legos: presentations.length, components: componentPresentations.length })
@@ -5258,14 +5357,48 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     const seedNumber = parseInt(legoMatch[1], 10)
     const legoIndex = parseInt(legoMatch[2], 10)
 
-    // 3. Find the existing presentation row for THIS lego (the only row we touch)
-    const { data: existingRow } = await supabase
+    // 3. Find the existing presentation row for THIS lego (the only row we touch).
+    //    A LEGO can carry several rows (make-before-break leaves the superseded
+    //    clip beside its replacement; a pending text row can sit beside both).
+    //    .maybeSingle() over those errored and the route then INSERTED a fourth
+    //    — which is how S0083L01 grew three rows. Prefer the row that already
+    //    carries the words we are about to speak, else the newest rendered one.
+    const { data: existingRows } = await supabase
       .from('course_audio')
-      .select('id, text, s3_key, origin, voice_id')
+      .select('id, text, s3_key, origin, voice_id, created_at')
       .eq('course_code', courseCode)
       .eq('role', 'presentation')
       .eq('lego_id', legoId)
-      .maybeSingle()
+
+    // HUMAN-AUTHORED LINE (Kai, 2026-09-21, job #506): its words come from the
+    // mark, never from a stale row and never from the template. A caller that
+    // supplies different words is editing the line: the mark is RETAINED and
+    // updated with the new words (who, when, why), before any row is written —
+    // the DB trigger refuses the row write in the other order.
+    const presentationMark = await humanAuthored.loadMark(supabase, courseCode, legoId)
+    let humanAuthoredNote = null
+    if (presentationMark) {
+      const supplied = (typeof providedText === 'string' && providedText.trim()) ? providedText.trim() : null
+      if (supplied && !humanAuthored.sameWords(supplied, presentationMark.text)) {
+        const { data: legoRow } = await supabase.from('course_legos').select('known_text, target_text')
+          .eq('course_code', courseCode).eq('seed_number', seedNumber).eq('lego_index', legoIndex).maybeSingle()
+        await humanAuthored.recordWordingEdit(supabase, presentationMark, {
+          text: supplied, by: req.body?.editedBy || req.get('x-agent-id') || req.get('x-service-name') || 'phase8 /regenerate-presentation caller',
+          why: 'new wording supplied to /regenerate-presentation', lego: legoRow || null,
+        })
+        humanAuthoredNote = `human-authored line: wording edited and the mark retained (was: "${presentationMark.text}")`
+      } else {
+        humanAuthoredNote = 'human-authored line: wording kept from the mark, audio re-rendered'
+      }
+      logger.info(`[Regen Presentation] ${courseCode}/${legoId} ${humanAuthoredNote}`)
+    }
+    const wantedWords = presentationMark
+      ? ((typeof providedText === 'string' && providedText.trim()) ? providedText.trim() : presentationMark.text)
+      : ((typeof providedText === 'string' && providedText.trim()) ? providedText.trim() : null)
+    const existingRow = (existingRows || []).find(r => wantedWords && humanAuthored.sameWords(r.text, wantedWords))
+      || newestRenderedPresentation(existingRows || [])
+      || (existingRows || [])[existingRows ? existingRows.length - 1 : 0]
+      || null
 
     // PRECIOUS-AUDIO GUARD: human recordings are irreplaceable — never TTS over them.
     if (existingRow?.origin === 'human') {
@@ -5283,7 +5416,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     //    - else compute a default the same way the bulk path does (short template)
     let presentationText = (typeof providedText === 'string' && providedText.trim())
       ? providedText.trim()
-      : (existingRow?.text || null)
+      : (presentationMark ? presentationMark.text : (existingRow?.text || null))
 
     if (!presentationText) {
       // No row and no text supplied — compute default from template + lego known_text.
@@ -5528,7 +5661,8 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       audio_id: audioRowId,
       duration_ms: durationMs,
       text: presentationText,
-      created: !existingRow
+      created: !existingRow,
+      ...(humanAuthoredNote ? { humanAuthored: humanAuthoredNote } : {})
     })
 
   } catch (error) {

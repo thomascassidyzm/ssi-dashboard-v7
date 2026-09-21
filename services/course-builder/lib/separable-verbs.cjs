@@ -103,11 +103,19 @@ const RULED_SPLIT_INTRODUCTIONS = Object.freeze({
  * go through the audio-pass queue). Nothing in this module, and nothing in
  * any prompt, quotes these; a test asserts that. Both lines are FINAL and are
  * placed VERBATIM: the seed-83 line REPLACES the whole template frame ("The
- * German for: '…', as in — '…', is:") rather than sitting inside it. NOTE for
- * whoever re-applies them: phase8's staleness guard keeps a pending
- * presentation row only if it quotes the LEGO's current known_text — the
- * seed-83 line does ('to agree'); the seed-92 line does not, so it lives on the
- * LINKED row in place, never on a pending row (job #501, 2026-09-21).
+ * German for: '…', as in — '…', is:") rather than sitting inside it.
+ *
+ * BOTH LINES ARE MARKED LIVE as human-authored in human_authored_presentations
+ * (job #506, 2026-09-21; tools/course-optimization/mark-human-authored-
+ * presentations.cjs puts the mark on from this record). The mark, not this
+ * constant, is what the pipeline reads: a course-wide regeneration keeps the
+ * marked words instead of the template, the pending-row staleness check keeps
+ * a marked row whether or not it quotes its LEGO (the seed-92 line does not),
+ * a DB trigger refuses any write of other words to the marked LEGO's
+ * presentation row, and when the LEGO under a line moves an agent judges
+ * keep / reword / escalate-to-Kai and applies it —
+ * services/shared/human-authored-presentations.cjs. So if Kai rewords a line,
+ * the mark carries the live wording and this record becomes history.
  */
 const HUMAN_AUTHORED_TEXT = Object.freeze({
   author: 'Kai',

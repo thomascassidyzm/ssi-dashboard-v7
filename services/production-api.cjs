@@ -43,6 +43,7 @@ const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
 const castingRights = require('./voice-engine/casting-rights.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
+const humanAuthoredPresentations = require('./shared/human-authored-presentations.cjs')
 
 // =============================================================================
 // MANIFEST CACHING
@@ -2825,13 +2826,25 @@ app.get('/api/production/:courseCode/presentation/:legoId', async (req, res) => 
       }
     }
 
+    // A human-authored line (Kai, 2026-09-21, job #506) shows its OWN words —
+    // the mark is the source of truth, whatever a stale row or the template says.
+    let humanAuthoredMark = null
+    try {
+      humanAuthoredMark = await humanAuthoredPresentations.loadMark(db, courseCode, legoId)
+    } catch (markErr) {
+      logger.warn(`human-authored mark unreadable for ${courseCode}/${legoId}: ${markErr.message}`)
+    }
+
     const isPending = !data?.s3_key || data.s3_key.startsWith('pending/')
     res.json({
       success: true,
       lego_id: legoId,
       exists: !!data,
-      text: data?.text || suggested,
-      is_suggested: !data && !!suggested,
+      text: humanAuthoredMark ? humanAuthoredMark.text : (data?.text || suggested),
+      is_suggested: !humanAuthoredMark && !data && !!suggested,
+      human_authored: humanAuthoredMark
+        ? { author: humanAuthoredMark.author, authored_on: humanAuthoredMark.authored_on, source: humanAuthoredMark.source, reconciled_at: humanAuthoredMark.reconciled_at, decisions: humanAuthoredMark.decisions }
+        : null,
       audio_id: data?.id || null,
       duration_ms: data?.duration_ms || null,
       hasAudio: !!data && !isPending
