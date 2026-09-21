@@ -75,6 +75,17 @@ const routes = [
   },
   // Admin hub — platform-wide tooling (Configs, Insights, Activity,
   // Maintenance, Users). Not per-course; gating is RLS/component-level.
+  // SSi HQ — the company overview (Tom and Aran, 2026-09-21). Company numbers,
+  // so requiresAdmin, not merely requiresAuth: an editor or a recorder with a
+  // Popty login must not see the company's finances. The SERVER gate on
+  // /api/hq is the one that matters (services/api/hq-routes.cjs); this keeps a
+  // non-admin from landing on a page that could only ever show them a refusal.
+  {
+    path: '/hq',
+    name: 'Hq',
+    component: () => import('../views/Hq.vue'),
+    meta: { title: 'SSi HQ', requiresAuth: true, requiresAdmin: true }
+  },
   {
     path: '/admin',
     name: 'Admin',
@@ -987,6 +998,13 @@ router.beforeEach(async (to, from, next) => {
     if (courseList.length === 1) {
       return next(`/production/${courseList[0]}/journey`)
     }
+  }
+
+  // Admin-only pages. One meta flag, checked in the one guard — never a second
+  // role mechanism. The server gate behind the page is the real one; this is
+  // what stops a non-admin landing on a page made only of refusals.
+  if (to.meta.requiresAdmin && !isAdmin.value) {
+    return next({ name: 'Home' })
   }
 
   // Course scoping: a course-scoped route needs membership of THAT course
