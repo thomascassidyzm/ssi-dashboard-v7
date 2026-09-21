@@ -161,8 +161,13 @@ function makeCourseCtx(supabase, courseCode) {
  * Run every gate over ONE generated LEGO set.
  *
  * @param {object} entry {courseCode, seedNumber, legoIndex, legoId, legoKnown,
- *                        legoTarget, components?, phrases:[{role,known,target}]}
+ *                        legoTarget, components?, seedTarget?, phrases:[{role,known,target}]}
  *                       — or {build:[], use:[]} instead of `phrases`.
+ *                       `seedTarget` is the seed's own sentence: the live route
+ *                       (seed-complete.cjs, extraTexts) lets it lend the split
+ *                       pieces of a separable verb it realises — seed 618 is the
+ *                       only place "fühlt" is heard, in the seed itself — so a
+ *                       replay without it is stricter than the gate it replays.
  * @param {object} ctx   from makeCourseCtx
  * @returns {object} {overallPass, failingGates:[], gates:{}}
  */
@@ -255,7 +260,8 @@ async function checkPhraseSet(entry, ctx) {
 
   {
     const allPhrases = [...build, ...use];
-    const violations = allPhrases.length ? checkVocabViolations(allPhrases, withLego, courseCode, { seedNumber }) : [];
+    const extraTexts = entry.seedTarget ? [entry.seedTarget] : [];
+    const violations = allPhrases.length ? checkVocabViolations(allPhrases, withLego, courseCode, { seedNumber, extraTexts }) : [];
     if (violations.length > 0) fail('vocab', { violations: violations.slice(0, 5), total: violations.length });
     else pass('vocab', { vocabSize: withLego.size });
   }
