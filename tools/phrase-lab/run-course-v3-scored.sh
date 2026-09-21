@@ -36,11 +36,14 @@ while [ "$s" -le "$TO" ]; do
       --json "$SCORES/seed-$(printf %04d "$n").json" > "$SCORES/seed-$(printf %04d "$n").txt" 2>&1
     tail -4 "$SCORES/seed-$(printf %04d "$n").txt"
   done
-  # Exit 3 = the pool stopped serving. Score this chunk, then stop: every
-  # later chunk would fail the same way, and a run that keeps going turns one
-  # limit into a hundred identical errors and a COMPLETE it has not earned.
-  if [ "$gen_rc" -eq 3 ]; then
-    echo "=== pool exhausted during seeds $s-$e — stopping after scoring this chunk ==="; break
+  # ANY non-zero exit ends the run, after this chunk is scored. A per-basket
+  # failure is caught and logged inside the generator and never reaches here,
+  # so a non-zero exit means the run itself could not proceed: exit 3 is an
+  # exhausted pool, and anything else is the environment (on 2026-09-21 it was
+  # Supabase refusing to answer, and the wrapper raced through twelve chunks in
+  # four seconds generating nothing and then printed RUN COMPLETE).
+  if [ "$gen_rc" -ne 0 ]; then
+    echo "=== generator exited $gen_rc during seeds $s-$e — stopping after scoring this chunk ==="; break
   fi
   s=$(( e + 1 ))
 done
