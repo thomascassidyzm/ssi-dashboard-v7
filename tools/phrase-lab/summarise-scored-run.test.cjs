@@ -32,3 +32,14 @@ assert.strictEqual(exhausted.length + realErrors.length, errored.length, 'no fai
 assert.strictEqual(splitErrors([{ lego_id: 'X', error: 'boom' }]).exhausted.length, 0);
 
 console.log('summarise-scored-run: 4/4 assertions pass — pool windows are not counted as generator errors');
+
+// An ERROR STUB is not a basket. qa-report writes {seed, error} with no lego_id
+// when its own database read fails; a transient Supabase schema-cache outage on
+// 2026-09-21 stubbed 25 previously-good seed files that way, and the summariser
+// crashed on them. Counting a stub as a row would be worse than crashing: a
+// SCORING outage would read as content that scored badly.
+const { isMeasurement } = require('./summarise-scored-run.cjs');
+assert.strictEqual(isMeasurement({ seed: 47, error: 'Could not query the database for the schema cache. Retrying.' }), false);
+assert.strictEqual(isMeasurement({ seed: 47, lego_id: 'fra_for_eng:S0047L01', composite: 0.8 }), true);
+assert.strictEqual(isMeasurement(undefined), false);
+console.log('summarise-scored-run: error stubs are excluded from measurements');

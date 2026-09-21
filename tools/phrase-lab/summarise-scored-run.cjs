@@ -30,12 +30,26 @@ const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i === -
 const mean = (xs) => (xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : NaN);
 const f3 = (x) => (Number.isFinite(x) ? x.toFixed(3) : '—');
 
+// A scored row IS a measurement; an error stub is the ABSENCE of one.
+const isMeasurement = (row) => Boolean(row && row.lego_id);
+
 function loadRows(scoresDir) {
   const rows = [];
+  const stubs = [];
   for (const f of fs.readdirSync(scoresDir).filter((f) => f.endsWith('.json')).sort()) {
     const j = JSON.parse(fs.readFileSync(path.join(scoresDir, f), 'utf8'));
-    for (const r of j.rows || []) rows.push(r);
+    // qa-report writes an ERROR STUB row — {seed, error} with no lego_id — when
+    // its own database read fails. A transient Supabase schema-cache outage on
+    // 2026-09-21 stubbed 25 previously-good seed files this way. A stub is the
+    // absence of a measurement, never a basket: drop it here and count it, so a
+    // scoring outage can never be read as content that scored badly.
+    for (const r of j.rows || []) (isMeasurement(r) ? rows : stubs).push({ ...r, file: f });
   }
+  if (stubs.length) {
+    console.error(`note: ${stubs.length} seed score file(s) are ERROR STUBS from a failed scorer read `
+      + `(${[...new Set(stubs.map((s2) => s2.file))].slice(0, 3).join(', ')}…) — excluded; re-score those seeds.`);
+  }
+  rows.stubs = stubs;
   return rows;
 }
 
@@ -206,4 +220,4 @@ function main() {
 }
 
 if (require.main === module) main();
-module.exports = { splitErrors };
+module.exports = { splitErrors, isMeasurement };
