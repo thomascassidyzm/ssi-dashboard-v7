@@ -5196,6 +5196,24 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       return res.status(404).json({ error: `Course not found: ${courseCode}` })
     }
 
+    // THE LANGUAGE CAST IS APPLIED ONCE, HERE (Tom's ruling, 2026-08-29) — the
+    // same line its sibling /regenerate-lego has carried since that ruling, and
+    // this handler renders audio, so it needs it for the same reason. Without
+    // it the handler read whatever voice was frozen into courses.voice_config
+    // when the course was built, which for every xAI-era course is a retired
+    // provider: deu_for_eng/presentation asked for "gfzdpspr5fdp" (xai) and the
+    // provider policy refused the render outright —
+    //   "the configured voice \"gfzdpspr5fdp\" (provider \"xai\") cannot be
+    //    carried onto azure … Re-cast this role's voice in voice_config."
+    // — so a LEGO added to such a course could never get a presentation clip,
+    // and its intro cycle played with an empty prompt. The cast table already
+    // holds the answer (eng/presentation rank 0 = Tom's Cartesia clone); the
+    // route simply never asked it. Found 2026-09-21 adding S0001L06 to
+    // deu_for_eng. With no rows in voice_language_roles this returns the very
+    // same object, byte for byte, and nothing about this path changes.
+    course.voice_config = await voiceConfigService.resolveVoiceConfig({
+      voiceConfig: course.voice_config, course, courseCode,
+    })
     const knownLang = canonicalLanguage(course.known_lang)
     const voiceConfig = course.voice_config || {}
     const voiceSettings = voiceConfig.voices?.presentation || {}
