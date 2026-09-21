@@ -5,6 +5,13 @@
 
 const { normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
 const { getTargetLang, getCharsPerSyllable, isParticle, isChinese } = require('./language-config.cjs');
+// Kai's deu_for_eng separable-verb ruling (2026-09-21). The floor counter below
+// decides what IS a BUILD/USE phrase by asking whether it contains the LEGO, so
+// it needs the same admission the containment gate got — otherwise every split
+// phrase at seed 83 ("ich stimme zu" under LEGO "zustimmen") is silently counted
+// as a component and the basket fails its own floor. Same policy object, no
+// second lexicon; unruled courses and seeds fall through to `baseline`.
+const { phraseContainsLego } = require('./separable-verbs.cjs');
 
 // Phrase role prefixes for deterministic IDs
 const ROLE_PREFIX = { component: 'C', build: 'B', use: 'U' };
@@ -155,17 +162,16 @@ function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const buildRaw = lego.build || [];
   const useRaw = lego.use || [];
   const legoTarget = (lego.target || '').trim();
-  const legoTargetNorm = normalizeForContainment(legoTarget);
 
   // Filter out component phrases — for character-based languages (Thai, Chinese, Japanese, Korean)
   // use substring containment; for space-delimited languages use word-based containment.
   const charBased = isChinese(courseCode);
-  const containsLego = (phraseTarget) => {
-    if (charBased) {
-      return normalizeForContainment(phraseTarget).includes(normalizeForContainment(legoTarget));
-    }
-    return checkWordContainment(legoTarget, phraseTarget);
-  };
+  const baseline = (lt, pt) => (charBased
+    ? normalizeForContainment(pt).includes(normalizeForContainment(lt))
+    : checkWordContainment(lt, pt));
+  const containsLego = (phraseTarget) => phraseContainsLego({
+    courseCode, seedNumber, legoTarget, phraseTarget, baseline,
+  });
   const buildContaining = buildRaw.filter(p => containsLego(p.target || ''));
   const useContaining = useRaw.filter(p => containsLego(p.target || ''));
   const buildComponents = buildRaw.length - buildContaining.length;

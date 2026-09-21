@@ -24,6 +24,7 @@ import {
   HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE, separableTilingPieces,
 } from './separable-verbs.cjs';
 import { checkTiling } from './validation.cjs';
+import { checkBuildUsePhrases } from './phrase-structure.cjs';
 import {
   STRUCTURAL_CHECK_TYPE, CHECK_TYPE_CHANGE_FILE, QUOTED_SEEDS, PRECEDENTS, FEATURES,
   featuresFor, closestPrecedent, structuralStop, buildStructuralFlag, raiseStructuralFlag,
@@ -467,5 +468,40 @@ describe('a relative clause opener ends the clause, so the prefix in front of it
   it('an ARTICLE after a prefix is still not a clause end — "an der Ecke" stays silent', () => {
     expect(shapes('wir biegen an der Ecke links ab')).toEqual(['abbiegen:split']);
     expect(shapes('ich denke an der Ecke')).toEqual([]);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE FLOOR COUNTER (job #497). checkBuildUsePhrases decides what IS a BUILD or
+// USE phrase by asking whether it contains the LEGO — its own containment test,
+// separate from the gate's. Without the same admission, every split phrase at
+// the taught seed is counted as a "component phrase" and excluded, so the basket
+// the ruling asks for fails its own 3-BUILD floor. Red before #497, green after.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('phrase-count floors count a split realisation as a real BUILD phrase', () => {
+  const basket = {
+    idx: 1, type: 'A', known: 'to agree', target: 'zustimmen',
+    build: [
+      { known: 'I agree', target: 'ich stimme zu' },
+      { known: "I don't agree", target: 'ich stimme nicht zu' },
+      { known: 'I want to agree', target: 'ich will zustimmen' },
+    ],
+    use: [
+      { known: 'I agree with you', target: 'Ich stimme dir zu' },
+      { known: "I don't agree with you", target: 'Ich stimme dir nicht zu' },
+      { known: 'I think I agree with you', target: 'Ich denke, ich stimme dir zu' },
+      { known: 'I want to agree with you', target: 'Ich will dir zustimmen' },
+      { known: 'I can agree with you today', target: 'Ich kann dir heute zustimmen' },
+    ],
+  };
+  it('at seed 83 the split phrases count: 3 BUILD, 5 USE, no components', () => {
+    const r = checkBuildUsePhrases(basket, C, TAUGHT_SEED);
+    expect(r.valid).toBe(true);
+    expect(r.details).toMatchObject({ build: 3, use: 5, components: 0 });
+  });
+  it('at a seed the ruling has not reached they are excluded, exactly as before', () => {
+    const r = checkBuildUsePhrases(basket, C, 60);
+    expect(r.valid).toBe(false);
+    expect(r.details.components).toBe(5);
   });
 });
