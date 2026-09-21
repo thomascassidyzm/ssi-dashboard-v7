@@ -58,7 +58,7 @@ function runSeedChecks(seed, seedLegos, phrasesByLegoKey, cumulativeVocab, cours
 
   // 1. Tiling check — against vocab from prior seeds only
   const tilingLegos = seedLegos.map(l => ({ target: l.target_text, type: l.type, components: l.components }));
-  const tilingResult = checkTiling(seed.target_text, tilingLegos, courseCode, cumulativeVocab);
+  const tilingResult = checkTiling(seed.target_text, tilingLegos, courseCode, cumulativeVocab, { seedNumber: seed.seed_number });
   if (!tilingResult.valid) {
     issues.push(`Tiling: ${tilingResult.message}`);
   }
@@ -189,7 +189,7 @@ module.exports = function(ctx) {
         type: l.type,
         components: l.components
       }));
-      const tilingResult = checkTiling(targetText, tilingLegos, courseCode, vocabSet);
+      const tilingResult = checkTiling(targetText, tilingLegos, courseCode, vocabSet, { seedNumber });
       if (!tilingResult.valid) {
         return res.status(400).json({
           error: 'TILING_FAILED',

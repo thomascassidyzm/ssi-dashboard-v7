@@ -236,6 +236,14 @@ const CLAUSE_PUNCT = /[.,!?;:¿¡«»""''„“”‘’()…—–]+/g;
 const CLAUSE_CONJ = new Set([
   'und', 'oder', 'aber', 'denn', 'sondern', // coordinating
   'wenn', 'dass', 'weil', 'ob', 'bevor', 'nachdem', 'obwohl', 'als', 'während', 'damit', 'bis', 'falls', 'sobald', // a new clause starts
+  // Relative and interrogative openers. The comma before them is obligatory in
+  // German and the seed texts carry it — but live PHRASE rows often do not
+  // ("Ich stimme dem zu was du gestern gesagt hast", S0083L01U01), and without
+  // them the prefix in front of the missing comma reads as mid-clause and the
+  // split goes undetected. Only w-words: an article after a prefix ("an der
+  // Ecke") is exactly the false positive the clause-final rule exists to stop.
+  'was', 'wer', 'wen', 'wem', 'wessen', 'wo', 'wohin', 'woher',
+  'wie', 'warum', 'wieso', 'weshalb', 'wann', 'welche', 'welcher', 'welches',
 ]);
 function clauseEndFlags(text) {
   const raw = String(text || '').toLowerCase().replace(CLAUSE_PUNCT, ' | ').split(/\s+/).filter(Boolean);
@@ -437,6 +445,51 @@ function augmentVocabForSeparables(vocabSet, courseCode, seedNumber, extra = {})
   return out;
 }
 
+// ─── The tiling gate ──────────────────────────────────────────────────────
+
+/**
+ * The extra WORDS a seed's tiling check may use, given this seed's LEGOs.
+ *
+ * checkTiling asks "can the seed sentence be rebuilt from its LEGOs (plus
+ * earlier vocabulary), word by word?". Clause 3 breaks that for seed 83 the
+ * moment the LEGO is introduced JOINED: the LEGO is "zustimmen", one word, but
+ * the seed says "Ich stimme dem zu" — so "stimme" and "zu" are untiled and the
+ * seed the ruling is FOR is the seed the gate refuses. The same thing waits at
+ * seed 618 ("fühlt … an") whenever Kai rules on it.
+ *
+ * So, driven by the SAME policy object as the containment and vocabulary gates
+ * and only where that policy admits the other shape: a joined separable-verb
+ * LEGO also lends the pieces of its split realisation — the prefix, and the
+ * finite forms of its stem — and a split one also lends its joined lemma. No
+ * second lexicon, no second notion of which seeds are free: mode 'lego-shape'
+ * (seeds 1..82 outside the exception) yields nothing at all, so every seed the
+ * ruling has not reached tiles exactly as it did before.
+ *
+ * @param {string} courseCode
+ * @param {number} seedNumber
+ * @param {string[]} legoTargets  this seed's LEGO (and component) targets
+ * @returns {Set<string>} extra tileable words; empty unless the policy admits
+ */
+function separableTilingPieces(courseCode, seedNumber, legoTargets) {
+  const out = new Set();
+  const policy = separablePolicy(courseCode, seedNumber);
+  if (!policy.applies || policy.mode === 'lego-shape') return out;
+
+  for (const target of legoTargets || []) {
+    for (const v of separableVerbsIn(target)) {
+      if (!verbIsFree(policy, v.lemma)) continue;
+      const lex = LEXICON.get(v.lemma);
+      if (!lex) continue;
+      out.add(lex.prefix);
+      out.add(lex.lemma);
+      // A split realisation puts SOME finite form of the stem in the sentence;
+      // which one is the seed's business, not ours.
+      for (const f of lex.forms.finite) out.add(f);
+    }
+  }
+  return out;
+}
+
 // ─── Clause 8: the shape a NEW LEGO may take ──────────────────────────────
 
 /**
@@ -535,5 +588,6 @@ module.exports = {
   SEPARABLE_PREFIXES, VERBS, LEXICON,
   rulingApplies, separablePolicy, parseJoined, separableVerbsIn,
   checkSeparableContainment, phraseContainsLego, augmentVocabForSeparables,
+  separableTilingPieces,
   checkSeparableLegoShape, checkSeparableContrast, separableSection,
 };

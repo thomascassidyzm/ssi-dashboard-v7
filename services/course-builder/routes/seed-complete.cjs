@@ -1233,7 +1233,7 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       // 2. TILING VALIDATION (always runs — even golden seeds must tile)
       {
-        const tilingResult = checkTiling(target_text, legos, course_code, vocabSet);
+        const tilingResult = checkTiling(target_text, legos, course_code, vocabSet, { seedNumber: seed_number });
         if (!tilingResult.valid) {
           errors.push({
             type: 'tiling',

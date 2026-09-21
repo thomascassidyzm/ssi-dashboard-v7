@@ -6,7 +6,7 @@
 
 const { isChinese, getTargetLang, getCharThresholds, getGoldenSeedCount, CHARS_PER_SYLLABLE, PREPOSITIONS } = require('./language-config.cjs');
 const { extractVocab, normalizeForZUT, normalizeForStorage, normalizeForContainment, checkWordContainment } = require('./text-normalization.cjs');
-const { augmentVocabForSeparables } = require('./separable-verbs.cjs');
+const { augmentVocabForSeparables, separableTilingPieces } = require('./separable-verbs.cjs');
 // KNOWN-side mirror of the target-side lego_containment check: a BUILD phrase must contain the
 // known-side word its LEGO teaches, tolerating inflection but never a different lexeme (2026-08-26).
 const { checkBuildTeachesWord, checkBuildBasketTeachesWord } = require('./build-teaches-word.cjs');
@@ -102,18 +102,32 @@ const METHODOLOGY_HINTS = {
  * Non-Chinese: derives words from those units, checks each seed word is covered.
  * Chinese: DP segmentation to check the seed can be composed from LEGO targets.
  */
-function checkTiling(seedTarget, legos, courseCode, existingVocab) {
+function checkTiling(seedTarget, legos, courseCode, existingVocab, opts = {}) {
   const chinese = isChinese(courseCode);
   const legoTargets = existingVocab ? new Set(existingVocab) : new Set();
+  const ownTargets = [];
 
   for (const lego of legos) {
     extractVocab(lego.target, chinese).forEach(v => legoTargets.add(v));
+    ownTargets.push(lego.target);
     if (lego.type === 'M' && lego.components) {
       for (const comp of lego.components) {
         extractVocab(comp.target, chinese).forEach(v => legoTargets.add(v));
+        ownTargets.push(comp.target);
       }
     }
   }
+
+  // Kai's deu_for_eng separable-verb ruling (2026-09-21), clause 3: from seed 83
+  // the LEGO is the JOINED verb ("zustimmen") while the seed sentence realises it
+  // SPLIT ("Ich stimme dem zu"), so the seed cannot tile from its own LEGO word.
+  // The same policy object that admits the other shape to the containment and
+  // vocabulary gates lends the pieces here; where it admits nothing — every seed
+  // and every course the ruling does not reach — this adds nothing and tiling is
+  // byte-for-byte what it was. `opts.seedNumber` is what selects the policy: a
+  // caller that does not pass one gets the old behaviour.
+  const derived = separableTilingPieces(courseCode, opts.seedNumber, ownTargets);
+  for (const piece of derived) legoTargets.add(piece);
 
   if (chinese) {
     const normalized = normalizeForStorage(seedTarget, true);

@@ -21,8 +21,9 @@ import {
   SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH,
   VERBS, separablePolicy, separableVerbsIn, checkSeparableContainment, phraseContainsLego,
   augmentVocabForSeparables, checkSeparableLegoShape, checkSeparableContrast, separableSection,
-  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
+  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE, separableTilingPieces,
 } from './separable-verbs.cjs';
+import { checkTiling } from './validation.cjs';
 import {
   STRUCTURAL_CHECK_TYPE, CHECK_TYPE_CHANGE_FILE, QUOTED_SEEDS, PRECEDENTS, FEATURES,
   featuresFor, closestPrecedent, structuralStop, buildStructuralFlag, raiseStructuralFlag,
@@ -399,5 +400,72 @@ describe('the v3 door stops before the model is called', () => {
     expect(stopAt).toBeGreaterThan(-1);
     expect(modelAt).toBeGreaterThan(stopAt);
     expect(src.slice(stopAt, modelAt)).toMatch(/blocked: true, stoppedFor: flag/);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// THE TILING GATE (job #497, applying Kai's clause 3 to the live seed-83 LEGO).
+//
+// Clause 3 says seed 83 introduces the verb JOINED. The seed sentence realises
+// it SPLIT. checkTiling asks "is every word of the seed covered by its LEGOs?",
+// so the moment S0083L01 becomes "zustimmen" the words "stimme" and "zu" are
+// untiled and the gate refuses the very seed the ruling is for. These assertions
+// fail against the pre-#497 checkTiling (no opts argument, no derived pieces)
+// and pass after it — run both ways before believing them.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('tiling — a joined LEGO tiles its own split seed, but only where the policy says so', () => {
+  const SEED_83 = 'Ich stimme dem zu, was du über deinen Freund gesagt hast';
+  // Everything seed 83 needs except the verb, as prior vocabulary.
+  const prior = ['ich', 'dem', 'was', 'du', 'gesagt', 'hast'];
+  const legos = [{ target: 'zustimmen', type: 'A' }, { target: 'über deinen Freund', type: 'A' }];
+
+  it('seed 83 tiles from the JOINED lego, because the split pieces are derived', () => {
+    const r = checkTiling(SEED_83, legos, C, prior, { seedNumber: 83 });
+    expect(r).toEqual({ valid: true });
+  });
+
+  it('the derived pieces are the prefix, the lemma and the stem\'s finite forms', () => {
+    const pieces = separableTilingPieces(C, 83, ['zustimmen']);
+    expect(pieces.has('zu')).toBe(true);
+    expect(pieces.has('stimme')).toBe(true);
+    expect(pieces.has('stimmt')).toBe(true);
+    expect(pieces.has('zustimmen')).toBe(true);
+  });
+
+  it('WITHOUT a seed number the old behaviour stands — the caller opted out', () => {
+    const r = checkTiling(SEED_83, legos, C, prior);
+    expect(r.valid).toBe(false);
+    expect(r.untiled).toContain('stimme');
+  });
+
+  it('a seed the ruling has NOT reached lends nothing: same LEGO at seed 60 still fails', () => {
+    expect([...separableTilingPieces(C, 60, ['zustimmen'])]).toEqual([]);
+    expect(checkTiling(SEED_83, legos, C, prior, { seedNumber: 60 }).valid).toBe(false);
+  });
+
+  it('another German-target course is untouched — no ruling, no pieces', () => {
+    expect([...separableTilingPieces('deu_for_spa', 83, ['zustimmen'])]).toEqual([]);
+  });
+
+  it('only the verbs the policy frees: at seed 83 that is zustimmen alone', () => {
+    expect([...separableTilingPieces(C, 83, ['zurückrufen'])]).toEqual([]);
+    expect(separableTilingPieces(C, 92, ['zurückrufen']).has('zurück')).toBe(true);
+  });
+});
+
+describe('a relative clause opener ends the clause, so the prefix in front of it is split', () => {
+  // Live rows S0083L01U01 / U06 drop the comma German requires before "was".
+  // Without the opener list the prefix reads as mid-clause and the split is
+  // invisible to the gate — the two phrases would fail containment under the
+  // reshaped LEGO even though they are the drilling the ruling asks for.
+  it('"ich stimme dem zu was du gesagt hast" reads SPLIT', () => {
+    expect(shapes('Ich stimme dem zu was du gestern darüber gesagt hast')).toEqual(['zustimmen:split']);
+  });
+  it('and so does the comma-ed form it should have been', () => {
+    expect(shapes('Ich stimme dem zu, was du gestern darüber gesagt hast')).toEqual(['zustimmen:split']);
+  });
+  it('an ARTICLE after a prefix is still not a clause end — "an der Ecke" stays silent', () => {
+    expect(shapes('wir biegen an der Ecke links ab')).toEqual(['abbiegen:split']);
+    expect(shapes('ich denke an der Ecke')).toEqual([]);
   });
 });
