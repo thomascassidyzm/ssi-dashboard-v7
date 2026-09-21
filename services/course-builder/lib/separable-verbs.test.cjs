@@ -18,12 +18,12 @@ import { describe, it, expect } from 'vitest';
 import { checkWordContainment } from './text-normalization.cjs';
 import * as SV from './separable-verbs.cjs';
 import {
-  SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH,
+  SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH, RULED_SPLIT_INTRODUCTIONS,
   VERBS, separablePolicy, separableVerbsIn, checkSeparableContainment, phraseContainsLego,
   augmentVocabForSeparables, checkSeparableLegoShape, checkSeparableContrast, separableSection,
   HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE, separableTilingPieces,
 } from './separable-verbs.cjs';
-import { checkTiling } from './validation.cjs';
+import { checkTiling, checkVocabViolations } from './validation.cjs';
 import { checkBuildUsePhrases } from './phrase-structure.cjs';
 import {
   STRUCTURAL_CHECK_TYPE, CHECK_TYPE_CHANGE_FILE, QUOTED_SEEDS, PRECEDENTS, FEATURES,
@@ -510,5 +510,144 @@ describe('phrase-count floors count a split realisation as a real BUILD phrase',
     const r = checkBuildUsePhrases(basket, C, 60);
     expect(r.valid).toBe(false);
     expect(r.details.components).toBe(5);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────
+// JOB #502 — the three deu_for_eng seeds that taught the wrong word (Kai's
+// rulings, 2026-09-21). Seed 618 gets a JOINED LEGO realised split in the seed;
+// seeds 653 and 667 get whole-seed M-LEGOs that are ruled exceptions to clause 8.
+// ─────────────────────────────────────────────────────────────────────────────
+describe('seed 618 — "sich anfühlen wie" is introduced joined and the seed realises it split', () => {
+  const SEED_618 = 'es fühlt sich nicht wie eine lange Zeit an';
+  const prior = ['es', 'nicht', 'eine', 'zeit'];
+  const legos = [{ target: 'lange', type: 'A' }, { target: 'sich anfühlen wie', type: 'M', components: [] }];
+
+  it('tiles: "fühlt" and "an" are derived from the joined LEGO at seed 618', () => {
+    expect(checkTiling(SEED_618, legos, C, prior, { seedNumber: 618 })).toEqual({ valid: true });
+  });
+  it('would NOT tile without the derived pieces — the old "fühlt" LEGO was the only thing that made it pass', () => {
+    const r = checkTiling(SEED_618, legos, C, prior);
+    expect(r.valid).toBe(false);
+    expect(r.untiled).toContain('fühlt');
+    expect(r.untiled).toContain('an');
+  });
+  it('the seed sentence is the only place "fühlt" is heard, so the vocab gate must be lent it (extraTexts, as seed-complete.cjs does)', () => {
+    const vocab = new Set(['es', 'nicht', 'eine', 'zeit', 'lange', 'kann', 'sich', 'wie', 'sich anfühlen wie']);
+    const phrases = [{ target: 'es fühlt sich wie eine lange Zeit an' }, { target: 'es kann sich wie eine lange Zeit anfühlen' }];
+    const without = checkVocabViolations(phrases, vocab, C, { seedNumber: 618 });
+    expect(without.map(v => v.phrase)).toEqual(['es fühlt sich wie eine lange Zeit an']);
+    const withSeed = checkVocabViolations(phrases, vocab, C, { seedNumber: 618, extraTexts: [SEED_618] });
+    expect(withSeed).toEqual([]);
+  });
+  it('containment admits both shapes under the joined LEGO after seed 92', () => {
+    const args = { courseCode: C, seedNumber: 618, legoTarget: 'sich anfühlen wie' };
+    expect(phraseContainsLego({ ...args, phraseTarget: 'es fühlt sich nicht wie eine lange Zeit an' })).toBe(true);
+    expect(phraseContainsLego({ ...args, phraseTarget: 'es kann sich wie eine lange Zeit anfühlen' })).toBe(true);
+    expect(phraseContainsLego({ ...args, phraseTarget: 'sie fühlt sich hier gut' })).toBe(false); // no "wie", no anfühlen
+  });
+});
+
+describe('seeds 653 and 667 — ruled split introductions of ausmachen (clause 8 exceptions)', () => {
+  it('the two whole-seed LEGOs are not reported as clause-8 findings', () => {
+    for (const [seed, r] of Object.entries(RULED_SPLIT_INTRODUCTIONS)) {
+      expect(separableVerbsIn(r.lego).map(v => `${v.lemma}:${v.realisation}`)).toEqual(['ausmachen:split']);
+      expect(checkSeparableLegoShape(C, Number(seed), r.lego)).toBeNull();
+    }
+  });
+  it('the exception is one lemma at one seed: another split verb there, or the same LEGO elsewhere, is still reported', () => {
+    expect(checkSeparableLegoShape(C, 653, 'rufe zurück')).toMatchObject({ verbs: ['zurückrufen'] });
+    expect(checkSeparableLegoShape(C, 654, RULED_SPLIT_INTRODUCTIONS[653].lego)).toMatchObject({ verbs: ['ausmachen'] });
+  });
+  it('Kai: no "(formal)" tag, no parenthetical of any kind — the formality is the word "madam"', () => {
+    for (const r of Object.values(RULED_SPLIT_INTRODUCTIONS)) {
+      expect(r.known).not.toMatch(/[()\[\]]/);
+      expect(r.lego).not.toMatch(/[()\[\]]/);
+    }
+    expect(RULED_SPLIT_INTRODUCTIONS[653].known).toMatch(/madam/);
+  });
+});
+
+describe('BUILD/USE floors — a split realisation counts as the LEGO used in a phrase (job #499, 2026-09-21)', () => {
+  // Kai's seed-83 basket as it stands live: 4 BUILD (2 split, 2 joined), 8 USE.
+  // The floor check excluded every split phrase as a "component phrase" and
+  // reported "BUILD: need 3+, got 2" — refusing the shape the ruling orders.
+  const { checkBuildUsePhrases } = require('./phrase-structure.cjs');
+  const seed83 = {
+    idx: 1, target: 'zustimmen',
+    build: [
+      { known: 'I agree', target: 'ich stimme zu' },
+      { known: "I don't agree", target: 'ich stimme nicht zu' },
+      { known: 'I want to agree', target: 'ich will zustimmen' },
+      { known: "I don't want to agree", target: 'ich will nicht zustimmen' },
+    ],
+    use: [
+      { known: 'I agree with you', target: 'Ich stimme dir zu' },
+      { known: "I don't agree with you", target: 'Ich stimme dir nicht zu' },
+      { known: 'I think I agree with you', target: 'Ich denke, ich stimme dir zu' },
+      { known: 'I agree with you today', target: 'Ich stimme dir heute zu' },
+      { known: 'I want to agree with you', target: 'Ich will dir zustimmen' },
+      { known: "I don't want to agree with you", target: 'Ich will dir nicht zustimmen' },
+      { known: 'I can agree with you today', target: 'Ich kann dir heute zustimmen' },
+      { known: "I don't know if I can agree with you", target: 'Ich weiß nicht, ob ich dir zustimmen kann' },
+    ],
+  };
+  it('the live seed-83 basket meets its floors: split phrases count', () => {
+    const r = checkBuildUsePhrases(seed83, C, TAUGHT_SEED);
+    expect(r.valid).toBe(true);
+    expect(r.details.build).toBe(4);
+    expect(r.details.use).toBe(8);
+  });
+  it('a joined LEGO introduced after the doors open (kennenlernen at seed 133) counts its split drills', () => {
+    const lego = {
+      idx: 1, target: 'kennenlernen',
+      build: [
+        { known: 'you get to know people', target: 'man lernt Leute kennen' },
+        { known: 'you get to know someone', target: 'man lernt jemanden kennen' },
+        { known: 'I want to get to know you', target: 'ich will dich kennenlernen' },
+      ],
+      use: [
+        { known: 'you get to know new people when you talk', target: 'man lernt neue Leute kennen, wenn man spricht' },
+        { known: 'I want to get to know you better', target: 'ich will dich besser kennenlernen' },
+        { known: 'you get to know a language when you use it', target: 'man lernt eine Sprache kennen, wenn man sie benutzt' },
+        { known: 'we want to get to know the city', target: 'wir wollen die Stadt kennenlernen' },
+        { known: 'you get to know yourself when you learn something new', target: 'man lernt sich selbst kennen, wenn man etwas Neues lernt' },
+      ],
+    };
+    expect(checkBuildUsePhrases(lego, C, 133).valid).toBe(true);
+  });
+  it('CONTROL: the same basket in another course still excludes the split phrases (the ruling is deu_for_eng only)', () => {
+    const r = checkBuildUsePhrases(seed83, 'nld_for_eng', TAUGHT_SEED);
+    expect(r.valid).toBe(false);
+    expect(r.error).toMatch(/BUILD: need 3\+, got 2/);
+  });
+  it('CONTROL: a phrase that lacks the verb in any shape is still excluded', () => {
+    const r = checkBuildUsePhrases({ ...seed83, build: seed83.build.map(p => ({ ...p, target: 'ich will dir helfen' })) }, C, TAUGHT_SEED);
+    expect(r.valid).toBe(false);
+  });
+});
+
+describe('BUILD recombination — split BUILD rows are the LEGO recombined, not component rows (job #499)', () => {
+  const { checkBuildRecombination } = require('./validation.cjs');
+  const prior = new Set(['ich', 'habe', 'nicht', 'zu', 'verlieren', 'was', 'er', 'weil', 'mehr', 'zu lernen']);
+  const lego = {
+    idx: 1, target: 'vorhaben',
+    build: [
+      { known: "I'm not planning to lose", target: 'ich habe nicht vor zu verlieren' },
+      { known: 'what he is planning', target: 'was er vorhat' },
+      { known: "I'm planning to learn more", target: 'ich habe vor, mehr zu lernen' },
+      { known: "because I'm not planning to lose", target: 'weil ich nicht vorhabe zu verlieren' },
+    ],
+    use: [],
+  };
+  it('a joined-infinitive LEGO whose BUILD rows conjugate it recombines (seed 496, doors open)', () => {
+    const r = checkBuildRecombination(lego, C, 496, prior);
+    expect(r.recombining).toBe(4);
+    expect(r.valid).toBe(true);
+  });
+  it('CONTROL: another course still sees no containment and 0 recombining', () => {
+    const r = checkBuildRecombination(lego, 'nld_for_eng', 496, prior);
+    expect(r.recombining).toBe(0);
+    expect(r.valid).toBe(false);
   });
 });

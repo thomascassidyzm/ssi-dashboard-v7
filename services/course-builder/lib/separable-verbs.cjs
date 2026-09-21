@@ -76,6 +76,27 @@ const TAUGHT_VERB = 'zustimmen';
 const CONTRAST_MIN_EACH = 2;
 
 /**
+ * RULED EXCEPTIONS TO CLAUSE 8 (Kai, 2026-09-21, job #502). Clause 8 says a
+ * separable verb introduced after seed 92 is introduced JOINED. These two
+ * LEGOs are introduced SPLIT, as whole-seed M-LEGOs, and that is deliberate:
+ * no new verb arrives with them. "ausmachen" was introduced joined at seed 63
+ * ("dass es dir nichts ausmacht") and split at 155 ("es macht mir nichts aus")
+ * and 190 ("macht es dir etwas aus"); seeds 653 and 667 add only a politeness
+ * variant (Ihnen … gnädige Frau) and a number variant (euch allen) of that
+ * known expression. Kai on the whole-seed shape: "That's the whole seed I
+ * guess, but it'll have to do if it can't be split more. It's so late in the
+ * course, so it'll be fine, the learner can handle it." Kai on the known side:
+ * NO "(formal)" tag and no parenthetical of any kind — the formality is carried
+ * by the word "madam" inside the LEGO. A later agent that "fixes" either of
+ * these back to a joined form, or adds a tag, is reverting a ruling.
+ * Keyed by seed number → the lemma the exception covers.
+ */
+const RULED_SPLIT_INTRODUCTIONS = Object.freeze({
+  653: Object.freeze({ lemma: 'ausmachen', lego: 'macht es Ihnen etwas aus, gnädige Frau', known: 'do you mind madam' }),
+  667: Object.freeze({ lemma: 'ausmachen', lego: 'macht es euch allen etwas aus', known: 'do you all mind' }),
+});
+
+/**
  * KAI'S HUMAN-AUTHORED LEARNER-FACING TEXT for deu_for_eng — a RECORD, not a
  * generation input. Keyed by the seed whose presentation carries it. Applied
  * by a human at the fixes stage (the presentation clips are TTS renders and
@@ -514,8 +535,13 @@ function separableTilingPieces(courseCode, seedNumber, legoTargets) {
  */
 function checkSeparableLegoShape(courseCode, seedNumber, legoTarget) {
   if (!rulingApplies(courseCode)) return null;
-  const split = separableVerbsIn(legoTarget).filter(v => v.realisation === 'split');
+  let split = separableVerbsIn(legoTarget).filter(v => v.realisation === 'split');
   if (split.length === 0 || Number(seedNumber) === SPLIT_EXCEPTION_SEED) return null;
+  // Kai's ruled split introductions (job #502): the exception covers ONE lemma
+  // at ONE seed; any other split verb in that LEGO is still reported.
+  const ruled = RULED_SPLIT_INTRODUCTIONS[Number(seedNumber)];
+  if (ruled) split = split.filter(v => v.lemma !== ruled.lemma);
+  if (split.length === 0) return null;
   return {
     seedNumber: Number(seedNumber), legoTarget, verbs: split.map(v => v.lemma),
     finding: `LEGO "${legoTarget}" introduces ${split.map(v => v.lemma).join(', ')} SPLIT; the ruling introduces every separable verb JOINED (seed 42 is the one exception)`,
@@ -599,7 +625,7 @@ function separableSection(courseCode, seedNumber, lego) {
 
 module.exports = {
   SPLIT_EXCEPTION_SEED, TAUGHT_SEED, DOORS_OPEN_SEED, TAUGHT_VERB, CONTRAST_MIN_EACH,
-  HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
+  RULED_SPLIT_INTRODUCTIONS, HUMAN_AUTHORED_TEXT, EXPLANATION_SEEDS, NO_EXPLANATION_LINE,
   SEPARABLE_PREFIXES, VERBS, LEXICON,
   rulingApplies, separablePolicy, parseJoined, separableVerbsIn,
   checkSeparableContainment, phraseContainsLego, augmentVocabForSeparables,
