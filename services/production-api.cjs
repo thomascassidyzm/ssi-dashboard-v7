@@ -6704,6 +6704,16 @@ require('./api/audio-repair-routes.cjs').mount(app, { requireAdmin, requireDashb
 require('./voicelab/router.cjs').mount(app, { requireAdmin, requireDashboardUser, logger })
 
 // =============================================================================
+// SSi HQ — GET /api/hq
+// =============================================================================
+// The company as a table of functions plus the key numbers, derived on every
+// read from public.hq_facts(). ADMIN ONLY, and server-side only: the browser
+// never touches Supabase for company numbers, because new tables arrive
+// grant-open to anon. A number with no readable source comes back as an honest
+// blank, never as zero — asserted in services/api/hq-routes.test.cjs.
+require('./api/hq-routes.cjs').mount(app, { requireAdmin, supabase: () => supabaseClient.getClient(), logger })
+
+// =============================================================================
 // TAIL-TRUNCATION SCAN — /api/audio/tail-scan/*
 // =============================================================================
 // A whole-course tail scan is one S3 GET plus one ffmpeg decode per clip, so it
