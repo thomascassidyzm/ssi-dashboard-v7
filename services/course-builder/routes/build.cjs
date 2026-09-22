@@ -13,6 +13,19 @@ const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 
+/**
+ * Names the first seed-grid read that cannot be trusted (errored or no data
+ * array), or null. Shared intent with src/services/seed-grid-state.js.
+ */
+function seedGridReadFailure(reads) {
+  for (const [name, res] of Object.entries(reads)) {
+    if (!res || res.error || !Array.isArray(res.data)) {
+      return { read: name, error: res?.error || new Error(`${name} read returned no data`) };
+    }
+  }
+  return null;
+}
+
 module.exports = function (ctx) {
   const router = Router();
 
@@ -373,22 +386,34 @@ module.exports = function (ctx) {
         .from('courses').select('seed_count').eq('course_code', courseCode).single();
       const maxSeed = courseData?.seed_count || 300;
 
-      const { data: seeds } = await ctx.supabase
+      // A FAILED READ MEANS "COULD NOT LOOK", NOT "FOUND NOTHING" (job #693,
+      // diagnosed in #686): before this, a failed/cancelled phrases read was
+      // treated as an empty list and every seed came back 'under-threshold'.
+      // Now any failed read answers 503 with no grid at all.
+      const seedsRes = await ctx.supabase
         .from('course_seeds').select('seed_number, decomposed_at, approved_at, flagged_at')
         .eq('course_code', courseCode).lte('seed_number', maxSeed).order('seed_number');
-
-      const { data: legoCounts } = await ctx.supabase
+      const legosRes = await ctx.supabase
         .from('course_legos').select('seed_number')
         .eq('course_code', courseCode).lte('seed_number', maxSeed);
-
-      const { data: phraseCounts } = await ctx.supabase
+      const phrasesRes = await ctx.supabase
         .from('course_practice_phrases').select('seed_number')
         .eq('course_code', courseCode).lte('seed_number', maxSeed);
-
       // Count USE phrases per seed:lego to detect under-threshold LEGOs
-      const { data: usePhrasesRaw } = await ctx.supabase
+      const useRes = await ctx.supabase
         .from('course_practice_phrases').select('seed_number, lego_index')
         .eq('course_code', courseCode).eq('phrase_role', 'use').lte('seed_number', maxSeed);
+      const newLegosRes = await ctx.supabase
+        .from('course_legos').select('seed_number, lego_index')
+        .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', maxSeed);
+
+      const failed = seedGridReadFailure({ seeds: seedsRes, legos: legosRes, phrases: phrasesRes, usePhrases: useRes, newLegos: newLegosRes });
+      if (failed) {
+        console.warn(`[build] seed-grid ${courseCode}: ${failed.read} read failed, refusing to compute state:`, failed.error?.message || failed.error);
+        return res.status(503).json({ ok: false, unavailable: true, error: `seed grid unavailable: ${failed.read} read failed` });
+      }
+      const seeds = seedsRes.data, legoCounts = legosRes.data, phraseCounts = phrasesRes.data;
+      const usePhrasesRaw = useRes.data, newLegosDetailed = newLegosRes.data;
 
       const usePerLego = {};
       for (const p of usePhrasesRaw || []) {
@@ -398,11 +423,6 @@ module.exports = function (ctx) {
 
       // Find seeds with any new LEGO below 4 USE phrases
       const underThresholdSeeds = new Set();
-      const newLegos = (legoCounts || []);
-      // We need lego_index too — re-query with is_new filter
-      const { data: newLegosDetailed } = await ctx.supabase
-        .from('course_legos').select('seed_number, lego_index')
-        .eq('course_code', courseCode).eq('is_new', true).lte('seed_number', maxSeed);
       for (const l of newLegosDetailed || []) {
         if (l.seed_number <= 3) continue; // seeds 1-3 excluded from backfill
         const key = `${l.seed_number}:${l.lego_index}`;
@@ -1436,3 +1456,4 @@ Apply gloss-edits (DIFFERENTIATE) first. Re-run the detector to confirm the coun
 
   return router;
 };
+module.exports.seedGridReadFailure = seedGridReadFailure;

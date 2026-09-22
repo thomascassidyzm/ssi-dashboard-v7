@@ -6,6 +6,7 @@
  */
 
 import { createClient } from '@supabase/supabase-js'
+import { computeSeedGridState } from './seed-grid-state'
 
 // Support both VITE_ (local dev) and NEXT_PUBLIC_ (Vercel Supabase integration) prefixes
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || import.meta.env.NEXT_PUBLIC_SUPABASE_URL
@@ -392,43 +393,13 @@ export async function getSeedGrid(courseCode) {
       .eq('course_code', courseCode)
   ])
 
-  if (seedsRes.error || !seedsRes.data) return []
-
-  const legosBySeed = {}
-  for (const l of legosRes.data || []) legosBySeed[l.seed_number] = (legosBySeed[l.seed_number] || 0) + 1
-  const phrasesBySeed = {}
-  for (const p of phrasesRes.data || []) phrasesBySeed[p.seed_number] = (phrasesBySeed[p.seed_number] || 0) + 1
-
-  // USE phrase threshold check (same as useBuildMonitor)
-  const newLegos = new Set()
-  for (const l of legosRes.data || []) {
-    if (l.is_new) newLegos.add(l.seed_number + ':' + l.lego_index)
-  }
-  const useCounts = {}
-  for (const p of phrasesRes.data || []) {
-    if (p.phrase_role === 'use') {
-      const key = p.seed_number + ':' + p.lego_index
-      if (newLegos.has(key)) useCounts[key] = (useCounts[key] || 0) + 1
-    }
-  }
-  const underThreshold = new Set()
-  for (const key of newLegos) {
-    const seedNum = parseInt(key.split(':')[0])
-    if (seedNum > 3 && (useCounts[key] || 0) < 4) underThreshold.add(seedNum)
-  }
-
-  return seedsRes.data.map(s => {
-    const legos = legosBySeed[s.seed_number] || 0
-    const phrases = phrasesBySeed[s.seed_number] || 0
-    let status
-    if (s.flagged_at) status = 'flagged'
-    else if (s.decomposed_at && underThreshold.has(s.seed_number)) status = 'under-threshold'
-    else if (s.approved_at) status = 'complete'
-    else if (s.decomposed_at) status = 'drafted'
-    else if (legos > 0) status = 'building'
-    else status = 'empty'
-    return { seed: s.seed_number, status, legos, phrases }
+  // A failed or cancelled read is "could not look", not "found nothing" —
+  // throw so the caller keeps its previous grid (job #693, diagnosed in #686).
+  const grid = computeSeedGridState({ seedsRes, legosRes, phrasesRes }, {
+    onReadFailure: (read, error) => console.warn(`[Supabase] getSeedGrid: ${read} read failed for ${courseCode}, keeping previous grid:`, error?.message || error)
   })
+  if (!grid) throw new Error(`Seed grid unavailable for ${courseCode}: a read failed`)
+  return grid
 }
 
 /**
