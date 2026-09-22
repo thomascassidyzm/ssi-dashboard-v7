@@ -37,6 +37,15 @@
         <router-link to="/canonical/metagraph" class="inline-block px-3 py-1.5 rounded border border-line bg-surface text-xs text-muted hover:text-ink hover:border-muted">
           See the graph itself, with these scripts as overlays through it →
         </router-link>
+        <a
+          href="https://staging.saysomethingin.app/admin/script-ladder"
+          target="_blank"
+          rel="noopener"
+          class="inline-block px-3 py-1.5 rounded border border-line bg-surface text-xs text-muted hover:text-ink hover:border-muted"
+          title="The whole Script mode order and conventions for a language, in the learner app, for SSi admins"
+        >
+          Script of the script ↗
+        </a>
       </div>
 
       <div class="text-xs text-faint mb-6 border border-line rounded px-3 py-2 bg-surface leading-relaxed space-y-1.5 max-w-4xl">
