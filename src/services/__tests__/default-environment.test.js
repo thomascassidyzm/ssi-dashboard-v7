@@ -42,3 +42,32 @@ describe('shouldFallBackToDefault', () => {
     }
   })
 })
+
+// Deborah, 2026-09-22: a probe that lands inside a deploy restart must not be
+// the last word. See PROBE_ATTEMPTS in the module.
+import { probeUntilAlive } from '../default-environment.js'
+
+describe('probeUntilAlive', () => {
+  const noSleep = async () => {}
+
+  it('answers yes as soon as one attempt succeeds', async () => {
+    const answers = [false, true]
+    const probe = async () => answers.shift()
+    expect(await probeUntilAlive(probe, { attempts: 3, sleep: noSleep })).toBe(true)
+    expect(answers).toEqual([])
+  })
+
+  it('answers no only after every attempt failed', async () => {
+    let calls = 0
+    const probe = async () => { calls++; return false }
+    expect(await probeUntilAlive(probe, { attempts: 3, sleep: noSleep })).toBe(false)
+    expect(calls).toBe(3)
+  })
+
+  it('waits between attempts but not after the last', async () => {
+    const waits = []
+    const probe = async () => false
+    await probeUntilAlive(probe, { attempts: 3, delayMs: 7, sleep: async (ms) => { waits.push(ms) } })
+    expect(waits).toEqual([7, 7])
+  })
+})

@@ -32,3 +32,39 @@ export function shouldFallBackToDefault({
   if (currentEnv === defaultEnv) return false
   return true
 }
+
+/**
+ * How many times, and how far apart, the switcher asks a backend "are you
+ * there?" before it paints the dot red.
+ *
+ * The gap this closes (Deborah, reviewing from outside the tailnet, 2026-09-22):
+ * the served Popty API is restarted by the auto-deploy timer every time main
+ * moves — five times in the half hour she was trying to work — and each
+ * restart leaves it unreachable for a couple of seconds. The dot was probed
+ * ONCE, on page load, and never again, so a page opened inside one of those
+ * windows stayed red until somebody thought to reload; and choosing another
+ * machine only snapped her back here, because every other option is a
+ * personal tunnel that is dead from outside. Three tries two seconds apart
+ * outlast a routine restart; a machine that is genuinely off still fails all
+ * three and the fallback logic above sees exactly what it saw before.
+ */
+export const PROBE_ATTEMPTS = 3
+export const PROBE_RETRY_MS = 2000
+/** While the dot is red, ask again this often, so it heals without a reload. */
+export const PROBE_RECHECK_MS = 15000
+
+/**
+ * Run `probe` (async → boolean) until it says yes or the attempts run out.
+ * `sleep` is injectable so a test can hold time still.
+ */
+export async function probeUntilAlive(probe, {
+  attempts = PROBE_ATTEMPTS,
+  delayMs = PROBE_RETRY_MS,
+  sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)),
+} = {}) {
+  for (let attempt = 1; attempt <= attempts; attempt++) {
+    if (await probe()) return true
+    if (attempt < attempts) await sleep(delayMs)
+  }
+  return false
+}

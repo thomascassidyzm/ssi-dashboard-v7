@@ -81,8 +81,8 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
-import { shouldFallBackToDefault } from '@/services/default-environment.js'
+import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import { shouldFallBackToDefault, probeUntilAlive, PROBE_RECHECK_MS } from '@/services/default-environment.js'
 
 const ENVIRONMENTS = {
   tom: {
@@ -250,38 +250,73 @@ async function switchEnvironment() {
   window.location.reload()
 }
 
-async function checkConnection() {
+// One "are you there?" — the unit the retrying probe repeats. Failure here
+// is either a non-2xx or the browser giving up (refused, timed out, CORS).
+async function probeOnce() {
+  const url = currentApiUrl.value
+  // ngrok proxy uses /health, local API uses /api/health
+  const healthPath = selectedEnv.value === 'api' ? '/api/health' : '/health'
   try {
-    const url = currentApiUrl.value
-    // ngrok proxy uses /health, local API uses /api/health
-    const healthPath = selectedEnv.value === 'api' ? '/api/health' : '/health'
     const response = await fetch(`${url}${healthPath}`, {
       headers: {
         'ngrok-skip-browser-warning': 'true'
       },
       signal: AbortSignal.timeout(5000)
     })
-
-    if (response.ok) {
-      connectionStatus.value = {
-        connected: true,
-        message: `Connected to ${ENVIRONMENTS[selectedEnv.value].name}`
-      }
-      return true
-    }
-    connectionStatus.value = {
-      connected: false,
-      message: 'Server error'
-    }
-    return false
+    return response.ok ? true : 'Server error'
   } catch (error) {
-    connectionStatus.value = {
-      connected: false,
-      message: 'Connection failed'
-    }
-    return false
+    return 'Connection failed'
   }
 }
+
+// Retries before it calls the machine dead: a routine deploy restart is a
+// couple of seconds long and must not paint the dot red for the rest of the
+// page's life. See PROBE_ATTEMPTS in services/default-environment.js.
+async function checkConnection() {
+  let lastFailure = 'Connection failed'
+  const alive = await probeUntilAlive(async () => {
+    const result = await probeOnce()
+    if (result === true) return true
+    lastFailure = result
+    return false
+  })
+  if (alive) {
+    stopRechecking()
+    connectionStatus.value = {
+      connected: true,
+      message: `Connected to ${ENVIRONMENTS[selectedEnv.value].name}`
+    }
+    return true
+  }
+  connectionStatus.value = {
+    connected: false,
+    message: lastFailure
+  }
+  startRechecking()
+  return false
+}
+
+// A red dot keeps asking. When the machine answers again the dot goes green
+// on its own, with a note that the page's own data may still need a reload —
+// we never reload for the person, they may be mid-edit.
+let recheckTimer = null
+function startRechecking() {
+  if (recheckTimer) return
+  recheckTimer = setInterval(async () => {
+    if (await probeOnce() !== true) return
+    stopRechecking()
+    connectionStatus.value = {
+      connected: true,
+      message: `Reconnected to ${ENVIRONMENTS[selectedEnv.value].name} — reload the page if it loaded empty`
+    }
+  }, PROBE_RECHECK_MS)
+}
+function stopRechecking() {
+  if (!recheckTimer) return
+  clearInterval(recheckTimer)
+  recheckTimer = null
+}
+onBeforeUnmount(stopRechecking)
 
 async function deploy() {
   if (deploying.value || repairing.value) return
