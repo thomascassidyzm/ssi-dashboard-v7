@@ -28,8 +28,9 @@
 //   3. NOT-SPEAKER PAIRS ARE REMOVED. A pair is only usable when its m/f difference is the SPEAKER's gender.
 //      The detectors also "feminised" third-person verbs (वह चाहता/चाहती = he/she), ergative object agreement
 //      (मैंने फ़िल्म देखी) and impersonal frames (मुझे लगता है, मुझे लग रहा है, मुझे विश्वास नहीं हो रहा). Every
-//      such pair was found by the pair-agreement judge (services/known-gender/pair-speaker-agreement.cjs, Claude
-//      CLI over all 3,036 gendered rows) plus the Shuchita rulebook's frame rules, and is listed with its reason
+//      such pair was found by the pair-agreement judge (services/known-gender/pair-speaker-agreement.cjs on branch
+//      cs/941-hindi-proofreading-judge — proofreading-check code stays OFF main by Kai's ruling 2026-09-23 22:28Z;
+//      Claude CLI over all 3,036 gendered rows) plus the Shuchita rulebook's frame rules, and is listed with its reason
 //      in eng-for-hin-gendered-pairs-not-speaker-2026-09-23.json. Removing the pair changes NO live text: the
 //      row keeps its proofread wording and is voiced by the neutral hash like any other neutral line.
 //      This is also where the four real "gender errors" of d/d8edb3da §4 land (3 × मुझे लग रही है, 1 × मुझे
