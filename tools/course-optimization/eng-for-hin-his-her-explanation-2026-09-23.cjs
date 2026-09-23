@@ -34,8 +34,13 @@
 //       template-overwrite it and no purge can drop it;
 //    2. a PENDING course_audio presentation row in the presentation voice (Kriti), exactly as
 //       job #845·H attached the कल "as in" introductions — s3_key pending/…, nothing rendered.
-//  The line ENDS with the course's ordinary Frame B introduction (the majority form here,
-//  1,960 of 2,972 rows), so it still does the presentation's job and leads into the English.
+//  The line ENDS with the course's ORDINARY bare introduction — Frame A, "अंग्रेज़ी में — 'X' — में :",
+//  the form 1,012 live eng_for_hin presentations use — so it still does the presentation's job
+//  and leads into the English. It first went out (#870·H, 14:35Z) ending in Frame B, the "as in —
+//  '<seed>'" form; KAI'S CORRECTION (2026-09-23, job #877·H): "No need for the as in, it makes it
+//  needlessly long. But do follow the usual pattern of 'is: ...'". Re-running with --apply on a
+//  LEGO that already carries the mark EDITS the mark (recordWordingEdit) and then the pending row,
+//  in that order, because the DB trigger admits only the mark's words on the row.
 //
 //  Then seed 20 is unapproved (approved_at = NULL) so Shuchita sees it: the Hindi is a
 //  NON-NATIVE DRAFT and she is the reviewer.
@@ -51,6 +56,9 @@ const SWEEP = 'eng-for-hin-his-her-explanation-2026-09-23';
 const SURFACE = `tools/course-optimization/${SWEEP}.cjs`;
 const JOB = '#870·H';
 const HINDI_TEMPLATE = "{target_lang_name} में — '{known}' — जैसे — '{seed}' — में :";
+/** Frame A of that template, as presentation-author's stripSeedClause renders it — the bare "is:" form. */
+const HINDI_FRAME_A = "{target_lang_name} में — '{known}' — में :";
+const JOB_TRIM = '#877·H';
 const TARGET_LANG_NAME = 'अंग्रेज़ी';
 
 // The explanation, in Hindi, spoken by Kriti before the ordinary introduction.
@@ -63,7 +71,7 @@ const EXPLANATION =
 const BACK_TRANSLATION =
   "In English, the way you say 'his/her name' changes a little, depending on whether you are talking about a man or a woman. " +
   "To teach you both ways, the woman's voice will talk about a woman, and the man's voice about a man. " +
-  "In English, 'his/her name', as in 'You want to learn his name quickly.', is:";
+  "In English, 'his/her name' is:";
 
 // Kai: "No grammar". A learner-facing line never carries a grammar term, Hindi or English.
 const GRAMMAR_TERMS = ['व्याकरण', 'सर्वनाम', 'लिंग', 'संज्ञा', 'विशेषण', 'पुल्लिंग', 'स्त्रीलिंग', 'possessive', 'pronoun', 'gender', 'grammar', 'noun'];
@@ -83,26 +91,25 @@ function firstHisHer(legos) {
   };
 }
 
-/** Frame B introduction, byte-identical to presentation-author's renderIntro for this template. */
-function planIntro(chunk, seedKnown, template = HINDI_TEMPLATE) {
+/** Frame A (bare) introduction, byte-identical to presentation-author's renderIntro({ frame: 'A' }) for this template. */
+function planIntro(chunk, template = HINDI_FRAME_A) {
   return template
     .replace(/\{target_lang_name\}/g, TARGET_LANG_NAME)
     .replace(/\{known\}/g, chunk)
-    .replace(/\{seed\}/g, seedKnown || '')
     .replace(/\s{2,}/g, ' ')
     .trim();
 }
 
-function planLineText(chunk, seedKnown) { return `${EXPLANATION} ${planIntro(chunk, seedKnown)}`; }
+function planLineText(chunk) { return `${EXPLANATION} ${planIntro(chunk)}`; }
 
 /** The rails the line must pass — each a reason the line would be wrong for a learner or for the machinery. */
-function lineProblems(text, { chunk, seedKnown }) {
+function lineProblems(text, { chunk }) {
   const problems = [];
   if (/[A-Za-z]/.test(text)) problems.push('carries Latin letters — the Hindi voice would read English aloud');
   if (/[()[\]]/.test(text)) problems.push('carries brackets (canon K11)');
   for (const g of GRAMMAR_TERMS) if (text.toLowerCase().includes(g)) problems.push(`names a grammar term: ${g}`);
   if (!text.includes(`'${chunk}'`)) problems.push('does not quote the chunk');
-  if (!text.includes(`'${seedKnown}'`)) problems.push('does not quote its own seed (Frame B)');
+  if (/जैसे/.test(text)) problems.push("carries the 'as in' (जैसे) clause — Kai 2026-09-23: needlessly long; end in the bare 'is:' form");
   if (!text.endsWith(':')) problems.push('does not end with the introduction colon that leads into the English');
   if (text.split('।').length - 1 > 4) problems.push('too long — Kai asked for a quick mention');
   return problems;
@@ -125,9 +132,8 @@ function planLine({ legos, seeds }) {
   if (!isPossessiveHisHer(lego.target_text)) throw new Error(`${lego.lego_id} "${lego.target_text}": his/her is not a possessive here; refusing`);
   const seed = seeds.find((s) => s.seed_number === lego.seed_number);
   if (!seed) throw new Error(`seed ${lego.seed_number}: not live — refusing`);
-  if (!seed.known_text.includes(lego.known_text)) throw new Error(`${lego.lego_id}: seed ${lego.seed_number} does not contain "${lego.known_text}" — Frame B would misquote; refusing`);
-  const text = planLineText(lego.known_text, seed.known_text);
-  const problems = lineProblems(text, { chunk: lego.known_text, seedKnown: seed.known_text });
+  const text = planLineText(lego.known_text);
+  const problems = lineProblems(text, { chunk: lego.known_text });
   if (problems.length) throw new Error(`the line fails its own rails: ${problems.join('; ')}`);
   const sameChunkElsewhere = legos.filter((l) => l.known_text === lego.known_text && l.lego_id !== lego.lego_id).map((l) => `${l.lego_id} → ${l.target_text}${l.is_new ? '' : ' (not new)'}`);
   return {
@@ -168,7 +174,7 @@ async function main() {
   const seedNums = [...new Set(legos.filter((l) => carriesHisHer(l.target_text)).map((l) => l.seed_number))].slice(0, 5);
   const seeds = must(await supabase.from('course_seeds').select('seed_number, known_text, target_text, approved_at').eq('course_code', COURSE).in('seed_number', seedNums), 'seeds');
   const plan = planLine({ legos, seeds });
-  const real = presentationAuthor.renderIntro({ frame: 'B', template: HINDI_TEMPLATE, targetLangName: langName, chunk: plan.known_text, seed: plan.seed_known });
+  const real = presentationAuthor.renderIntro({ frame: 'A', template: HINDI_TEMPLATE, targetLangName: langName, chunk: plan.known_text, seed: plan.seed_known });
   if (!plan.text.endsWith(real)) throw new Error(`renderIntro disagrees with the plan\n  real: ${real}\n  plan: ${plan.text}`);
 
   const existingMark = await ha.loadMark(supabase, COURSE, plan.lego_id);
@@ -186,10 +192,10 @@ async function main() {
   if (APPLY) {
     const identity = serviceIdentity(SWEEP, { role: 'content-sweep' });
     const eventId = await recordContentEdit(supabase, {
-      identity, courseCode: COURSE, surface: SURFACE, operation: 'presentation-human-authored-line',
+      identity, courseCode: COURSE, surface: SURFACE, operation: existingMark ? 'presentation-human-authored-line-reword' : 'presentation-human-authored-line',
       scope: { seed_numbers: [plan.seed], lego_ids: [plan.lego_id], rows: 1 },
       detail: {
-        job: JOB, ask: "Kai 2026-09-23: in the first his/her presentation, say in Hindi that English says it differently for a man and a woman; no grammar",
+        job: existingMark ? JOB_TRIM : JOB, ask: "Kai 2026-09-23: in the first his/her presentation, say in Hindi that English says it differently for a man and a woman; no grammar",
         modelled_on: "Kai 2026-08-25 and 2026-09-02 (d/aab243eb): the woman's voice talks about a woman, the man's voice about a man",
         lego: { lego_id: plan.lego_id, known_text: plan.known_text, target_text: plan.target_text }, text: plan.text, back_translation: plan.back_translation,
         first_his: plan.first_his, first_her: plan.first_her, rendered: false, reviewer: 'Shuchita (seed unapproved)',
@@ -197,22 +203,38 @@ async function main() {
     });
     out.edit_event_id = eventId;
     const lego = legos.find((l) => l.lego_id === plan.lego_id);
-    // 1. The mark, first — the trigger then admits only these words on this LEGO's presentation row.
-    const mark = await ha.markHumanAuthored(supabase, {
-      courseCode: COURSE, legoId: plan.lego_id, text: plan.text, lego, by: `${SURFACE} (${JOB})`,
-      author: `agent draft for Kai (${JOB}), modelled on Kai's wording of 2026-08-25/2026-09-02; Hindi non-native, reviewer Shuchita`,
-      authoredOn: '2026-09-23', source: `${SURFACE}; Kai's ask 2026-09-23; ${JOB}`,
-      why: "Kai's ask 2026-09-23: explain in Hindi, at the first his/her LEGO, why the two English voices say different things",
-    });
-    out.mark = mark;
-    // 2. The pending row, in the presentation voice, exactly as #845·H attached the कल introductions.
     const voiceId = presentationAuthor.resolvePresentationVoiceId(course);
-    const row = {
-      course_code: COURSE, text: plan.text, text_normalized: normalizeForAudio(plan.text),
-      language: course.known_lang, role: 'presentation', voice_id: voiceId, origin: 'tts',
-      s3_key: `pending/${randomUUID().toUpperCase()}.mp3`, lego_id: plan.lego_id,
-    };
-    must(await supabase.from('course_audio').upsert([row], { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true }), 'pending presentation row');
+    const stalePending = existingRows.filter((r) => r.s3_key.startsWith('pending/') && r.voice_id === voiceId && !ha.sameWords(r.text, plan.text));
+    if (existingMark && ha.sameWords(existingMark.text, plan.text) && !stalePending.length) {
+      console.log('\nmark and pending row already carry this wording — nothing to write');
+      out.noop = true;
+    } else if (existingMark) {
+      // 1. Edit the mark FIRST — the trigger admits only the mark's words on this LEGO's presentation row.
+      out.mark = await ha.recordWordingEdit(supabase, existingMark, {
+        text: plan.text, lego, by: `${SURFACE} (${JOB_TRIM})`,
+        why: `Kai's correction 2026-09-23 (${JOB_TRIM}): "No need for the as in, it makes it needlessly long. But do follow the usual pattern of 'is: ...'" — same explanation, Frame A ending`,
+      });
+      // 2. Re-word the pending row in place (s3_key pending/…, nothing rendered) — never a second pending row.
+      for (const r of stalePending) {
+        must(await supabase.from('course_audio').update({ text: plan.text, text_normalized: normalizeForAudio(plan.text) }).eq('id', r.id), `re-word pending row ${r.id}`);
+      }
+      out.reworded_pending_rows = stalePending.map((r) => r.id);
+    } else {
+      // 1. The mark, first — the trigger then admits only these words on this LEGO's presentation row.
+      out.mark = await ha.markHumanAuthored(supabase, {
+        courseCode: COURSE, legoId: plan.lego_id, text: plan.text, lego, by: `${SURFACE} (${JOB})`,
+        author: `agent draft for Kai (${JOB}), modelled on Kai's wording of 2026-08-25/2026-09-02; Hindi non-native, reviewer Shuchita`,
+        authoredOn: '2026-09-23', source: `${SURFACE}; Kai's ask 2026-09-23; ${JOB}`,
+        why: "Kai's ask 2026-09-23: explain in Hindi, at the first his/her LEGO, why the two English voices say different things",
+      });
+      // 2. The pending row, in the presentation voice, exactly as #845·H attached the कल introductions.
+      const row = {
+        course_code: COURSE, text: plan.text, text_normalized: normalizeForAudio(plan.text),
+        language: course.known_lang, role: 'presentation', voice_id: voiceId, origin: 'tts',
+        s3_key: `pending/${randomUUID().toUpperCase()}.mp3`, lego_id: plan.lego_id,
+      };
+      must(await supabase.from('course_audio').upsert([row], { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true }), 'pending presentation row');
+    }
     out.pending_voice_id = voiceId;
     // 3. Unapprove the seed — Shuchita reviews the draft.
     must(await supabase.from('course_seeds').update({ approved_at: null, last_edit_event_id: eventId }).eq('course_code', COURSE).eq('seed_number', plan.seed), 'unapprove seed');
@@ -236,7 +258,7 @@ async function main() {
   console.log(`\nevidence: ${ev}`);
 }
 
-module.exports = { COURSE, HINDI_TEMPLATE, EXPLANATION, BACK_TRANSLATION, GRAMMAR_TERMS, carriesHisHer, isPossessiveHisHer, firstHisHer, planIntro, planLineText, lineProblems, planLine };
+module.exports = { COURSE, HINDI_TEMPLATE, HINDI_FRAME_A, EXPLANATION, BACK_TRANSLATION, GRAMMAR_TERMS, carriesHisHer, isPossessiveHisHer, firstHisHer, planIntro, planLineText, lineProblems, planLine };
 if (require.main === module) {
   main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
 }
