@@ -524,6 +524,23 @@ describe('the KNOWN slot — one language, two jobs (Deborah + Kai, 2026-09-23)'
     expect(decisions.find((x) => x.role === 'known').slot).toBe('phrase');
   });
 
+  // Kai, 2026-09-23 14:16Z (job #863): English is Charlotte EVERYWHERE, no
+  // Gemma. This is the live shape of the eng/f cast after that ruling — known
+  // and phrase rows both Charlotte — and the assertion is that the known-slot
+  // mechanism, left in place, resolves BOTH jobs to her.
+  it('Charlotte everywhere: with the known AND phrase rows both Charlotte, known and target1 both resolve to her', () => {
+    const charlotteEverywhere = cast(
+      slotRow('phrase', 'eng', 'f', 0, 'cartesia_charlotte'),
+      slotRow('known', 'eng', 'f', 0, 'cartesia_charlotte'),
+      slotRow('phrase', 'eng', 'm', 0, 'cartesia_en-m-1'),
+    );
+    const known = applyLanguageCast({ voiceConfig: femaleKnown(), course: forEng, voices: engVoices, roles: charlotteEverywhere });
+    expect(known.config.voices.known.voiceId).toBe('cartesia_charlotte');
+    const target = applyLanguageCast({ voiceConfig: engTarget(), course: engFor, voices: engVoices, roles: charlotteEverywhere });
+    expect(target.config.voices.target1.voiceId).toBe('cartesia_charlotte');
+    expect(target.decisions.find((x) => x.role === 'target1').slot).toBe('phrase');
+  });
+
   it('keeps the gender axis: a course cast with a MALE English prompt is untouched by a female known row', () => {
     const maleKnown = { voices: { known: { name: 'Tom', voiceId: 'gfzdpspr5fdp', language: 'en', provider: 'xai', settings: { speed: 1 } } } };
     const { config } = applyLanguageCast({ voiceConfig: maleKnown, course: forEng, voices: engVoices, roles: theRuling });
