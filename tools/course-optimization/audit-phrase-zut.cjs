@@ -32,9 +32,29 @@
 //                        used ONLY by component rows where those components still disagree
 //                        with each other on target. Reported for visibility into what's now
 //                        silently exempted, per-component, target-language-only.
-require('dotenv').config()
-const { supabase } = require('../../services/supabase-client.cjs')
+//
+// scan-course CHECK 10 (ZUT conflicts), as a runnable per-course step:
+//
+//   node tools/course-optimization/audit-phrase-zut.cjs <course_code> [<course_code> ...]
+//   node tools/course-optimization/audit-phrase-zut.cjs ita_for_eng --overlay pre-fix.json
+//
+// With no course argument it still runs the original spa_for_eng/fra_for_eng pair.
+// It is READ-ONLY and its output is a READING LIST, not a verdict (Kai, 2026-09-09):
+// the rules above are deliberately NOT widened for any language — soft conflicts are
+// human judgement and tiny inflection differences are not defects (Kai's standing
+// ruling: the ZUT checker is good enough). The only per-language freedom the check
+// has is which course it reads.
+//
+// --overlay <file>  applies {changes:[{id, known_from, target_from}]} — the shape a
+//   content_edit_events.detail row already has — to the live rows BEFORE auditing, so
+//   a fixed defect can be put back on paper and the check proven to catch it (the
+//   ita_for_eng sapere/conoscere pass of 2026-09-10 is the calibration case).
+// It prints its own coverage: rows read per table, rows skipped and why. A check
+// that hides what it skipped is not a check (Kai's rule: detectors print coverage).
+// JSON goes to the evidence store (tools/lib/evidence-path.cjs), never the tracked tree.
+require('dotenv').config({ quiet: true })
 const { normalizeForContainment } = require('../../services/course-builder/lib/text-normalization.cjs')
+const { evidencePath } = require('../lib/evidence-path.cjs')
 
 const nk = s => (s || '').toLowerCase().trim().replace(/[.?!,，。？！、]+$/, '')
 const nt = s => (s || '').replace(/[\s。，？！、.?!,]/g, '')
@@ -49,7 +69,7 @@ const ntCI = s => nt(s).toLowerCase()
 // genuine word-level collisions for reporting — NOT part of the live gate.
 const ntStrict = s => ntCI(s).replace(/[¿¡«»"'’]/g, '')
 
-async function fetchAll(table, courseCode, cols) {
+async function fetchAll(supabase, table, courseCode, cols) {
   const PAGE = 1000
   let all = [], from = 0
   for (;;) {
@@ -63,33 +83,44 @@ async function fetchAll(table, courseCode, cols) {
   return all
 }
 
-async function auditCourse(courseCode) {
-  const [legos, phrases] = await Promise.all([
-    fetchAll('course_legos', courseCode, 'id, known_text, target_text, seed_number'),
-    fetchAll('course_practice_phrases', courseCode, 'id, known_text, target_text, seed_number, phrase_role'),
-  ])
-  const rows = [
+// Put an edit event's `from` sides back onto the live rows. Only ids present in
+// `changes` are touched; a null `*_from` means that side was not edited.
+function applyOverlay(phrases, overlay) {
+  if (!overlay || !Array.isArray(overlay.changes)) return { phrases, applied: 0, missing: [] }
+  const byId = new Map(overlay.changes.map(c => [c.id, c]))
+  let applied = 0
+  const out = phrases.map(r => {
+    const c = byId.get(r.id)
+    if (!c) return r
+    applied++
+    return {
+      ...r,
+      known_text: c.known_from != null ? c.known_from : r.known_text,
+      target_text: c.target_from != null ? c.target_from : r.target_text,
+    }
+  })
+  const seen = new Set(phrases.map(r => r.id))
+  return { phrases: out, applied, missing: overlay.changes.map(c => c.id).filter(id => !seen.has(id)) }
+}
+
+// The check itself, over rows already in memory. Pure: no DB, no clock, so a test
+// can hand it a pre-fix and a post-fix picture of the same seeds.
+//   legos:   [{id, known_text, target_text, seed_number}]
+//   phrases: [{id, known_text, target_text, seed_number, phrase_role}]
+//   seeds:   [{seed_number, target_text}]  (only needed for component membership)
+function auditRows({ legos, phrases, seeds = [] }) {
+  const tagged = [
     ...legos.map(r => ({ ...r, table: 'course_legos', phrase_role: null })),
     ...phrases.map(r => ({ ...r, table: 'course_practice_phrases' })),
-  ].filter(r => r.known_text && r.target_text)
+  ]
+  const rows = tagged.filter(r => r.known_text && r.target_text)
+  const skippedEmptySide = tagged.length - rows.length
 
   const isComponent = r => r.phrase_role === 'component'
 
-  // ── Target-membership check (new) ──────────────────────────────────────
+  // ── Target-membership check ────────────────────────────────────────────
   const componentRows = rows.filter(isComponent)
-  const seedNumbers = [...new Set(componentRows.map(r => r.seed_number))]
-  let seedTargetByNumber = new Map()
-  if (seedNumbers.length) {
-    const seeds = []
-    const PAGE = 1000
-    for (let i = 0; i < seedNumbers.length; i += PAGE) {
-      const { data, error } = await supabase.from('course_seeds').select('seed_number, target_text')
-        .eq('course_code', courseCode).in('seed_number', seedNumbers.slice(i, i + PAGE))
-      if (error) throw error
-      seeds.push(...data)
-    }
-    seedTargetByNumber = new Map(seeds.map(s => [s.seed_number, s.target_text]))
-  }
+  const seedTargetByNumber = new Map(seeds.map(s => [s.seed_number, s.target_text]))
   const membershipFailures = []
   let membershipNoSeedContext = 0
   for (const r of componentRows) {
@@ -157,6 +188,15 @@ async function auditCourse(courseCode) {
   }
 
   return {
+    coverage: {
+      legosRead: legos.length,
+      phrasesRead: phrases.length,
+      rowsScanned: rows.length,
+      skippedEmptySide,
+      componentRows: componentRows.length,           // exempt on the known side by ruling
+      knownSideRows: rows.length - componentRows.length,
+      componentRowsNoSeedContext: membershipNoSeedContext,
+    },
     totalRows: rows.length,
     totalComponentRows: componentRows.length,
     totalDistinctKnowns: byKnown.size,
@@ -167,11 +207,46 @@ async function auditCourse(courseCode) {
   }
 }
 
+async function auditCourse(courseCode, { overlay = null } = {}) {
+  const { supabase } = require('../../services/supabase-client.cjs')
+  const [legos, phrasesLive] = await Promise.all([
+    fetchAll(supabase, 'course_legos', courseCode, 'id, known_text, target_text, seed_number'),
+    fetchAll(supabase, 'course_practice_phrases', courseCode, 'id, known_text, target_text, seed_number, phrase_role'),
+  ])
+  const { phrases, applied, missing } = applyOverlay(phrasesLive, overlay)
+  const seedNumbers = [...new Set(phrases.filter(r => r.phrase_role === 'component').map(r => r.seed_number))]
+  const seeds = []
+  const PAGE = 1000
+  for (let i = 0; i < seedNumbers.length; i += PAGE) {
+    const { data, error } = await supabase.from('course_seeds').select('seed_number, target_text')
+      .eq('course_code', courseCode).in('seed_number', seedNumbers.slice(i, i + PAGE))
+    if (error) throw error
+    seeds.push(...data)
+  }
+  const result = auditRows({ legos, phrases, seeds })
+  result.overlay = overlay ? { applied, missing } : null
+  return result
+}
+
+function parseArgs(argv) {
+  const courses = [], opts = { overlay: null, tag: '' }
+  for (let i = 0; i < argv.length; i++) {
+    if (argv[i] === '--overlay') opts.overlay = JSON.parse(require('fs').readFileSync(argv[++i], 'utf8'))
+    else if (argv[i] === '--tag') opts.tag = argv[++i]
+    else if (argv[i].startsWith('--')) throw new Error(`unknown flag ${argv[i]}`)
+    else courses.push(argv[i])
+  }
+  return { courses: courses.length ? courses : ['spa_for_eng', 'fra_for_eng'], opts }
+}
+
 async function main() {
-  for (const course of ['spa_for_eng', 'fra_for_eng']) {
-    const result = await auditCourse(course)
-    const { totalRows, totalComponentRows, totalDistinctKnowns, bidirectional, targetSideCollision, membershipFailures, membershipNoSeedContext } = result
+  const { courses, opts } = parseArgs(process.argv.slice(2))
+  for (const course of courses) {
+    const result = await auditCourse(course, { overlay: opts.overlay })
+    const { coverage, totalRows, totalComponentRows, totalDistinctKnowns, bidirectional, targetSideCollision, membershipFailures, membershipNoSeedContext } = result
     console.log(`\n=== ${course}: ${totalRows} rows (${totalComponentRows} component), ${totalDistinctKnowns} distinct normalized knowns ===`)
+    console.log(`  coverage: read ${coverage.legosRead} legos + ${coverage.phrasesRead} phrases; scanned ${coverage.rowsScanned}; skipped ${coverage.skippedEmptySide} (empty known or target side); ${coverage.componentRows} component rows exempt on the known side, ${coverage.componentRowsNoSeedContext} of them with no seed to check membership against`)
+    if (result.overlay) console.log(`  overlay: ${result.overlay.applied} rows put back to their pre-edit text${result.overlay.missing.length ? `; ${result.overlay.missing.length} overlay ids not in the course: ${result.overlay.missing.join(', ')}` : ''}`)
     console.log(`  [1] bidirectional (non-component vs non-component, unchanged):`)
     console.log(`      gate-exact: ${bidirectional.violations.length}  case-insensitive: ${bidirectional.violationsCI.length}  strict: ${bidirectional.violationsStrict.length}`)
     console.log(`  [2] target-membership failures (component target_text not in its seed's target sentence): ${membershipFailures.length}`)
@@ -199,9 +274,11 @@ async function main() {
     }
     if (targetSideCollision.violationsStrict.length > 30) console.log(`  ... and ${targetSideCollision.violationsStrict.length - 30} more`)
 
+    const outPath = evidencePath(`tools/course-optimization/zut-audit-${course}${opts.tag ? '-' + opts.tag : ''}.json`)
     require('fs').writeFileSync(
-      require('path').join(__dirname, `zut-audit-${course}.json`),
+      outPath,
       JSON.stringify({
+        coverage,
         counts: {
           bidirectional: { gateExact: bidirectional.violations.length, caseInsensitive: bidirectional.violationsCI.length, strict: bidirectional.violationsStrict.length },
           targetMembershipFailures: membershipFailures.length,
@@ -212,7 +289,10 @@ async function main() {
         targetSideCollisionStrict: targetSideCollision.violationsStrict,
       }, null, 2)
     )
+    console.log(`  json: ${outPath}`)
   }
 }
 
-main().catch(e => { console.error('FATAL:', e.message); process.exit(1) })
+module.exports = { auditRows, applyOverlay, nk, nt, ntCI, ntStrict }
+
+if (require.main === module) main().catch(e => { console.error('FATAL:', e.message); process.exit(1) })
