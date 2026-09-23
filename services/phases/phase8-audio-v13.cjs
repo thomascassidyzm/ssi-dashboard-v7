@@ -76,7 +76,53 @@ const { emitProgress } = require('../shared/emit-progress.cjs')
 const { fulfillAudioPassRequests, queueAudioPass } = require('../shared/audio-pass-queue.cjs')
 // Kai's relink voice-match ruling, 2026-08-19 — a relink may only ever land a
 // clip whose voice matches the course voice config for that role.
-const { resolveVoices, isRelinkAllowed, RelinkRefusalLedger } = require('../shared/relink-voice-guard.cjs')
+const { resolveVoices, isRelinkAllowed, RelinkRefusalLedger, bareVoiceId } = require('../shared/relink-voice-guard.cjs')
+// GENDERED KNOWN LANGUAGES (Kai's design, 2026-09-23; #883·H). When a course's
+// voice_config gives the known (or presentation) role a `byGender` block, the
+// voice a known-side TEXT renders on is a function of that text: bound to its
+// grammar where course_gender_expansions holds a speaker-gender pair for it,
+// hash-split otherwise. Rule and shape: services/shared/known-voice-gender.cjs.
+// Inert on every course without byGender — the context below is null there
+// and every call site falls through to the role voice exactly as before.
+const knownVoiceGender = require('../shared/known-voice-gender.cjs')
+const _knownGenderCtxMemo = new Map() // courseCode -> { at, ctx }
+const KNOWN_GENDER_CTX_TTL_MS = 60_000
+/**
+ * The per-course context the gendered-known rule needs, or null when the
+ * course has not opted in (no byGender on known or presentation). Loads the
+ * stored known-side pairs and, for presentation, the LEGO known texts; the
+ * rule itself is knownVoiceGender.buildKnownGenderContext. Memoised briefly —
+ * a /generate run asks per item.
+ */
+async function knownGenderContextFor(courseCode, voices) {
+  const wantsKnown = knownVoiceGender.roleHasGenderedVoices(voices, 'known')
+  const wantsPres = knownVoiceGender.roleHasGenderedVoices(voices, 'presentation')
+  if (!wantsKnown && !wantsPres) return null
+  const hit = _knownGenderCtxMemo.get(courseCode)
+  if (hit && Date.now() - hit.at < KNOWN_GENDER_CTX_TTL_MS) return { ...hit.ctx, voices }
+  const pairs = []
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await supabase.from('course_gender_expansions')
+      .select('expanded_m, expanded_f').eq('course_code', courseCode).eq('text_side', 'known').range(from, from + 999)
+    if (error) throw new Error(`course_gender_expansions (known side): ${error.message}`)
+    pairs.push(...(data || []))
+    if (!data || data.length < 1000) break
+  }
+  const legos = []
+  if (wantsPres) {
+    for (let from = 0; ; from += 1000) {
+      const { data, error } = await supabase.from('course_legos').select('lego_id, known_text').eq('course_code', courseCode).range(from, from + 999)
+      if (error) throw new Error(`course_legos (known text for presentation gender): ${error.message}`)
+      legos.push(...(data || []))
+      if (!data || data.length < 1000) break
+    }
+  }
+  const ctx = knownVoiceGender.buildKnownGenderContext({ courseCode, voices, pairs, legos })
+  _knownGenderCtxMemo.set(courseCode, { at: Date.now(), ctx })
+  return { ...ctx, voices }
+}
+const knownVoiceEntryForClip = knownVoiceGender.knownVoiceEntryForClip
+const knownVoiceIdForClip = knownVoiceGender.knownVoiceIdForClip
 const { selectProvider } = require('../shared/tts-provider-policy.cjs')
 
 /**
@@ -416,7 +462,7 @@ async function getExistingAudioSet(courseCode) {
   // may have been written by old code that stripped ?! (we now preserve them)
   const { data, error } = await supabase
     .from('course_audio')
-    .select('text, language, role, s3_key')
+    .select('text, language, role, s3_key, voice_id')
     .eq('course_code', courseCode)
     .not('s3_key', 'like', 'pending/%')
     .limit(100000)
@@ -429,16 +475,29 @@ async function getExistingAudioSet(courseCode) {
   // key -> s3_key of the row that satisfies it. Kept alongside the membership
   // set so a caller can ask storage whether that object is actually there —
   // a DB row is a claim about audio, not proof of it.
+  // key → [{ s3_key, voice_id }]. `has(key, wantedVoice)` with a wanted voice
+  // answers "is there a clip of this text IN THAT VOICE" — the question a
+  // gendered known side has to ask (a male-form line with only a female-voice
+  // clip is NOT linkable, it is missing). Without a wanted voice the answer is
+  // voice-blind, exactly as before.
   const innerSet = new Map()
   for (const a of (data || [])) {
     const norm = normalizeText(a.text)
     const key = `${norm}|${a.language}|${a.role}`
-    if (!innerSet.has(key)) innerSet.set(key, a.s3_key)
+    if (!innerSet.has(key)) innerSet.set(key, [])
+    innerSet.get(key).push({ s3_key: a.s3_key, voice_id: a.voice_id || null })
+  }
+  const sameVoice = (a, b) => a && b && bareVoiceId(a) === bareVoiceId(b)
+  const pick = (key, wantedVoice) => {
+    const list = innerSet.get(key)
+    if (!list || !list.length) return null
+    if (!wantedVoice) return list[0]
+    return list.find(c => sameVoice(c.voice_id, wantedVoice)) || null
   }
 
   const existingSet = {
-    has(key) { return innerSet.has(key) },
-    s3KeyFor(key) { return innerSet.get(key) || null },
+    has(key, wantedVoice) { return !!pick(key, wantedVoice) },
+    s3KeyFor(key, wantedVoice) { const c = pick(key, wantedVoice); return c ? c.s3_key : null },
     get size() { return innerSet.size }
   }
   logger.info(`getExistingAudioSet(${courseCode}): ${data?.length || 0} rows, ${innerSet.size} unique keys`)
@@ -1136,12 +1195,16 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   // the object that row names is really in storage. Storage is asked here, on
   // the linkable set only (bounded, usually tens), so "missing" on the
   // dashboard means "no audio exists", never "the row was never bound".
+  // Gendered known languages: a known slot is linkable only if a clip exists
+  // in the voice its TEXT resolves to. Null context = voice-blind, as before.
+  const needsGenderCtx = await knownGenderContextFor(courseCode, (course.voice_config || {}).voices || {})
   const linkable = []      // { text, lang, role, key, s3Key }
   const toGenerate = []
   for (const item of unlinked) {
     const key = `${normalizeText(item.text)}|${item.lang}|${item.role}`
-    if (existingSet.has(key)) {
-      linkable.push({ ...item, key, s3Key: existingSet.s3KeyFor(key) })
+    const wantedVoice = needsGenderCtx ? knownVoiceIdForClip(needsGenderCtx, { role: item.role, text: item.text }) : null
+    if (existingSet.has(key, wantedVoice)) {
+      linkable.push({ ...item, key, s3Key: existingSet.s3KeyFor(key, wantedVoice) })
     } else {
       toGenerate.push({ text: item.text, language: item.lang, role: item.role })
     }
@@ -1920,6 +1983,27 @@ async function linkAudioIds(courseCode) {
   }
 
   // Try RPC first (single DB round-trip, handles normalization correctly)
+  // Gendered known languages: the SQL RPC compares every known clip against
+  // ONE configured voice (audio_configured_voice), so with two known voices it
+  // would refuse every clip in the second voice and link nothing. The JS batch
+  // asks the per-text question (services/shared/known-voice-gender.cjs), so a
+  // course with byGender voices links through it and never through the RPC.
+  try {
+    const { data: gCourse } = await supabase.from('courses').select('voice_config').eq('course_code', courseCode).single()
+    const gVoices = (gCourse && gCourse.voice_config && gCourse.voice_config.voices) || {}
+    if (knownVoiceGender.roleHasGenderedVoices(gVoices, 'known') || knownVoiceGender.roleHasGenderedVoices(gVoices, 'presentation')) {
+      logger.info(`linkAudioIds: ${courseCode} has gendered known voices — linking through the per-text JS batch, not the one-voice RPC`)
+      const result = await linkAudioIdsBatch(courseCode)
+      const presResult = await linkPresentationAudio(courseCode)
+      const compPresResult = await linkComponentPresentationAudio(courseCode)
+      result.presentations = presResult.linked || 0
+      result.component_presentations = compPresResult.linked || 0
+      result.total = (result.total || 0) + result.presentations + result.component_presentations
+      return result
+    }
+  } catch (e) {
+    logger.warn(`linkAudioIds: could not read voice_config for the gendered-known check (${e.message}) — continuing with RPC`)
+  }
   const { data, error } = await supabase.rpc('link_all_audio_ids', {
     p_course_code: courseCode
   })
@@ -1987,11 +2071,16 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   // target_lang so the resolver need not fetch the course a second time.
   const { data: voiceCourse } = await supabase
     .from('courses').select('course_code, known_lang, target_lang, voice_config').eq('course_code', courseCode).single()
-  const wantedVoices = resolveVoices({
-    voice_config: await voiceConfigService.resolveVoiceConfig({
-      voiceConfig: (voiceCourse || {}).voice_config, course: voiceCourse, courseCode,
-    }),
+  const resolvedVoiceConfig = await voiceConfigService.resolveVoiceConfig({
+    voiceConfig: (voiceCourse || {}).voice_config, course: voiceCourse, courseCode,
   })
+  const wantedVoices = resolveVoices({ voice_config: resolvedVoiceConfig })
+  // Gendered known languages: the wanted voice for a known/presentation clip is
+  // the one its TEXT resolves to, so a male-form line in the female voice is a
+  // mismatch even though both voices are "the course's". Null context = the
+  // single role voice, as before.
+  const linkGenderCtx = await knownGenderContextFor(courseCode, (resolvedVoiceConfig || {}).voices || {})
+  const wantedVoiceForClip = (a) => knownVoiceIdForClip(linkGenderCtx, { role: a.role, text: a.text, legoId: a.lego_id }) || wantedVoices[a.role]
   const ledger = new RelinkRefusalLedger(courseCode)
 
   // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! — so
@@ -1999,7 +2088,7 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   // "..." recording). origin + created_at let pickPreferredAudioRow favour human > newest.
   let audioQuery = supabase
     .from('course_audio')
-    .select('id, text, language, role, s3_key, origin, created_at, voice_id')
+    .select('id, text, language, role, s3_key, origin, created_at, voice_id, lego_id')
     .eq('course_code', courseCode)
     .not('s3_key', 'like', 'pending/%')
     .limit(100000)
@@ -2021,7 +2110,7 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
     const norm = normalizeForAudio(a.text)
     if (!norm) continue
     const key = `${norm}|${a.language}|${a.role}`
-    const verdict = isRelinkAllowed({ role: a.role, wantedVoice: wantedVoices[a.role], candidate: a })
+    const verdict = isRelinkAllowed({ role: a.role, wantedVoice: wantedVoiceForClip(a), candidate: a })
     if (!verdict.ok) {
       if (!rejectedMap.has(key)) rejectedMap.set(key, { row: a, verdict })
       continue
@@ -2747,9 +2836,18 @@ app.post('/generate/:courseCode', async (req, res) => {
       if (language) return { ...item, language }
       return { ...item, identityError: `cannot canonicalise language ${JSON.stringify(item.language)} — fix the course's known_lang/target_lang` }
     }
+    // Gendered known languages: a known/presentation item's voice follows its
+    // TEXT when the course has byGender voices (null context otherwise — the
+    // role voice, exactly as before).
+    const knownGenderCtx = await knownGenderContextFor(courseCode, voices)
+    const voiceForItem = (item) => {
+      const gendered = knownVoiceIdForClip(knownGenderCtx, { role: item.role, text: item.text, legoId: item.lego_id })
+      if (gendered) return gendered
+      return item.role === 'presentation' ? presentationVoiceId : getVoiceForRole(item.role)
+    }
     const needed = audioNeeds.toGenerate.map(item => withCanonicalLanguage({
       ...item,
-      voiceId: item.role === 'presentation' ? presentationVoiceId : getVoiceForRole(item.role),
+      voiceId: voiceForItem(item),
       speed: getSpeedForRole(item.role)
     }))
 
@@ -5817,7 +5915,11 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
       // bare name here mints a row no link/dedup pass can match to its siblings.
       // Config may hold either form, so normalise both ways: prefixed for storage,
       // bare for TTS dispatch.
-      const voiceSettings = voices?.[role] || {}
+      // Gendered known languages: a known line's voice follows its text when the
+      // course has byGender voices (services/shared/known-voice-gender.cjs);
+      // otherwise the role entry, exactly as before.
+      const genderedKnown = isKnown ? knownVoiceEntryForClip(await knownGenderContextFor(courseCode, voices), { role, text }) : null
+      const voiceSettings = (genderedKnown && genderedKnown.voice) || voices?.[role] || {}
       const rawVoice = voiceSettings.voiceId || (typeof voices?.[role] === 'string' ? voices[role] : null)
       if (!rawVoice) {
         return res.status(400).json({ error: `No voice configured for role: ${role}` })
@@ -6228,7 +6330,11 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
       // Resolve voice for this role (voiceId / provider / speed) — same
       // canonicalisation as /regenerate-phrase, so the stored voice_id matches
       // what every link/dedup pass expects.
-      const voiceSettings = voices?.[role] || {}
+      // Gendered known languages: a known line's voice follows its text when the
+      // course has byGender voices (services/shared/known-voice-gender.cjs);
+      // otherwise the role entry, exactly as before.
+      const genderedKnown = isKnown ? knownVoiceEntryForClip(await knownGenderContextFor(courseCode, voices), { role, text }) : null
+      const voiceSettings = (genderedKnown && genderedKnown.voice) || voices?.[role] || {}
       const rawVoice = voiceSettings.voiceId || (typeof voices?.[role] === 'string' ? voices[role] : null)
       if (!rawVoice) {
         return res.status(400).json({ error: `No voice configured for role: ${role}` })

@@ -649,7 +649,15 @@ async function savePracticePhrase(courseCode, seedNumber, legoIndex, phraseData,
   const legoTargetForGuard = options.primaryLegoTarget
     || phraseData.legoTarget
     || await lookupLegoTarget(courseCode, seedNumber, legoIndex);
-  if (legoTargetForGuard && isBareLegoPhrase(targetText, legoTargetForGuard)) {
+  // THE ONE EXCEPTION: a gendered-known sibling (Kai's design, 2026-09-23;
+  // services/known-gender/gendered-known-plan.cjs). Its target IS the LEGO's,
+  // but its KNOWN text is the other speaker-gender form of the LEGO's own
+  // known text, and that is the lesson — same English whoever asks. The
+  // player claims phrases by known|target, so this row is heard. It carries
+  // metadata.gender_variant_of naming the LEGO it mirrors.
+  const phraseMeta = phraseData.metadata || {};
+  const isGenderVariant = !!phraseMeta.gender_variant_of;
+  if (legoTargetForGuard && !isGenderVariant && isBareLegoPhrase(targetText, legoTargetForGuard)) {
     logger.warn(
       `Refused bare-LEGO practice phrase ${courseCode} S${seedNumber}L${legoIndex} pos ${position}: ` +
       `"${targetText}" IS the LEGO. A practice phrase uses the LEGO in a phrase with ` +
