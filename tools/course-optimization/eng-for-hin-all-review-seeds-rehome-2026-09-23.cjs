@@ -215,6 +215,10 @@ async function main() {
     console.log(`  ✓ ${row.id} pos ${row.position}: ${row.known_text} → ${row.target_text}   (seed ${r.seed} → ${r.host})`);
   }
   must(await sb.from('course_seeds').update({ approved_at: null, last_edit_event_id: eventId }).eq('course_code', COURSE).in('seed_number', hostSeeds), 'unapprove hosts');
+  // The learner app caches the bundle by courses.content_version (#933·H): a phrase insert alone bumps nothing, so bump it here.
+  const { bumpCourseVersion } = require('../../services/shared/course-version.cjs');
+  const bumped = await bumpCourseVersion(sb, COURSE, 'minor');
+  console.log(`course version bumped: ${JSON.stringify(bumped)}`);
   console.log(`host seeds unapproved for the proofreader: ${hostSeeds.join(', ')} (the source seeds carry no edited row)`);
   const mine = `4 all-review seed sentences re-homed as use phrases (Kai's rule, job ${JOB}, 2026-09-23): ${REHOMES.map(phraseId).map(id => id.split(':')[1]).join(', ')} — 4 English clips in Charlotte, 4 Hindi prompts in Kriti, none rendered`;
   must(await sb.from('audio_pass_requests').update({ reason: `${pending.reason} + ${mine}`, metadata: { ...pending.metadata, job932Rehome: { editEventId: eventId, snapshotBatch: snap.batchId, phraseIds: inserted.map(r => r.id) } }, updated_at: new Date().toISOString() }).eq('id', pending.id), 'audio-pass append');
