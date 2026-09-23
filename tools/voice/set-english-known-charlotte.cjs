@@ -2,6 +2,13 @@
 /**
  * THE DEFAULT ENGLISH FEMALE VOICE, SPLIT BY JOB.
  *
+ * ── SUPERSEDED (Kai, 2026-09-23 14:16Z, job #863) ───────────────────────────
+ * English is Charlotte EVERYWHERE, no Gemma. The known-slot row this tool
+ * writes is KEPT (it is the mechanism), but the phrase slot no longer holds
+ * Gemma — see tools/voice/set-english-charlotte-everywhere.cjs, which is the
+ * live apply/revert. The pre-flight below therefore accepts either Gemma or
+ * Charlotte in the phrase slot. The original reasoning follows, as history.
+ *
  * Deborah and Kai's ruling, 2026-09-23 (Kai: "apply the ruling to all the
  * courses"): when English is the TARGET — a learner learning English — the
  * female voice is Cartesia "Gemma - Decisive Agent", because she varies her
@@ -81,8 +88,8 @@ async function main() {
   // ── PRE-FLIGHT: the phrase slot must still say Gemma, or the ruling's other half is not in place.
   const { rows: [phrase] } = await c.query(
     "select voice_id from voice_language_roles where slot='phrase' and language='eng' and gender='f' and rank=0");
-  if (!phrase || phrase.voice_id !== GEMMA) {
-    throw new Error(`('eng','f','phrase',0) is ${phrase ? phrase.voice_id : 'EMPTY'}, expected Gemma ${GEMMA} — the target half of the ruling is not in place; refusing to write the known half over an unknown state`);
+  if (!phrase || (phrase.voice_id !== GEMMA && phrase.voice_id !== CHARLOTTE.voice_id)) {
+    throw new Error(`('eng','f','phrase',0) is ${phrase ? phrase.voice_id : 'EMPTY'}, expected Gemma ${GEMMA} (the 12:30Z split) or Charlotte ${CHARLOTTE.voice_id} (the 14:16Z Charlotte-everywhere ruling, job #863) — refusing to write the known half over an unknown state`);
   }
   log.steps.push({ step: 'preflight', phraseSlotF0: phrase.voice_id });
 

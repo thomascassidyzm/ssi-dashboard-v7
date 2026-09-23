@@ -145,7 +145,16 @@ function slotOfRow(r) { return r.slot || 'phrase'; }
 /**
  * ── THE KNOWN SLOT: one language, two jobs, two voices ──────────────────────
  *
- * Deborah and Kai's ruling, 2026-09-23: the default English female voice is
+ * SUPERSEDED FOR ENGLISH (Kai, 2026-09-23 14:16Z, job #863): English is
+ * Charlotte EVERYWHERE, known and target alike, no Gemma. Tom adds that the
+ * app now controls playback speed and gaps, so one clip per text can serve
+ * both roles and separate known/target recordings are no longer wanted. The
+ * MECHANISM below stays — the known slot is a general facility, and today the
+ * eng/f known row and the eng/f phrase row both say Charlotte, so the two jobs
+ * resolve to one voice. tools/voice/set-english-charlotte-everywhere.cjs is
+ * the apply/revert for that state. The history that built the slot follows.
+ *
+ * Deborah and Kai's earlier ruling, 2026-09-23 (12:30Z): the default English female voice is
  * Gemma when English is the TARGET (a learner learning English hears her vary
  * her delivery) and Charlotte when English is the KNOWN prompt language (the
  * voice that says the English line before the learner answers in French).

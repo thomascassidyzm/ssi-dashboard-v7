@@ -538,9 +538,11 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
   const phraseRoles = roles.filter((r) => (r.slot || 'phrase') === 'phrase')
   const guideRoles = roles.filter(isGuide)
   // The KNOWN slot: the phrase voice this language uses when it is a course's
-  // KNOWN side (Deborah + Kai, 2026-09-23: Charlotte prompts in English,
-  // Gemma teaches it). Read by services/shared/language-voice-cast.cjs for the
+  // KNOWN side. Read by services/shared/language-voice-cast.cjs for the
   // `known` role ahead of the phrase slot; empty means "same as phrase".
+  // (Deborah + Kai, 2026-09-23 12:30Z, cast Charlotte here and Gemma in the
+  // phrase slot; Kai's 14:16Z ruling the same day made English Charlotte
+  // EVERYWHERE, so for eng/f both rows now say Charlotte — job #863.)
   const knownRoles = roles.filter((r) => r.slot === 'known')
 
   const slots = {}
