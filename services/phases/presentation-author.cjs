@@ -201,12 +201,51 @@ function stripSeedClauseStructurally(template) {
     .trim()
 }
 
-/** Render the intro text for one item under the chosen frame. */
-function renderIntro({ frame, template, targetLangName, chunk, seed }) {
-  const base = frame === 'A' ? stripSeedClause(template) : template
+/**
+ * GENDERED KNOWN LANGUAGES: THE INTRO QUOTES BOTH FORMS (Kai's ruling,
+ * 2026-09-23 20:23Z, job #941·H). On a two-known-voice course a gendered LEGO
+ * debuts in the female form, and its introduction — always in the female
+ * voice — names BOTH forms: "the English for 'चाहती हूँ' or 'चाहता हूँ' is:".
+ * The template's quoted {known} slot becomes q{known}q <or> q{known_m}q, with
+ * the quote characters the template itself uses, so the line reads like the
+ * rest of the course's intros. The "or" word is per known language; a language
+ * not listed gets a plain slash, which is at least honest aloud.
+ *
+ * Returns the template unchanged when it has no {known} slot. The {known_m}
+ * placeholder is filled by renderIntro from chunkForms.m.
+ */
+const OR_WORD = { hin: 'या', urd: 'یا', pan: 'ਜਾਂ', mar: 'किंवा', guj: 'કે', ben: 'বা', ita: 'o', spa: 'o', por: 'ou', fra: 'ou', deu: 'oder', pol: 'lub', rus: 'или', ces: 'nebo', heb: 'או', ara: 'أو' }
+function expandGenderedKnownSlot(template, knownLang) {
+  const kIdx = template.indexOf('{known}')
+  if (kIdx === -1) return template
+  const kEnd = kIdx + '{known}'.length
+  const isQuote = (ch) => Boolean(ch) && /[^\p{L}\p{N}\s]/u.test(ch)
+  const q1 = isQuote(template[kIdx - 1]) ? template[kIdx - 1] : ''
+  const q2 = isQuote(template[kEnd]) ? template[kEnd] : ''
+  const or = OR_WORD[knownLang] || '/'
+  const slot = `${q1}{known}${q2} ${or} ${q1}{known_m}${q2}`
+  return template.slice(0, kIdx - q1.length) + slot + template.slice(kEnd + q2.length)
+}
+
+/**
+ * Render the intro text for one item under the chosen frame.
+ * `chunkForms` ({ f, m }) is set only on a gendered-known course for a LEGO
+ * whose known text is one side of a stored speaker-gender pair: the intro
+ * then quotes the female form first and the male form after it.
+ */
+function renderIntro({ frame, template, targetLangName, chunk, seed, chunkForms = null, knownLang = null }) {
+  let base = frame === 'A' ? stripSeedClause(template) : template
+  let known = chunk
+  let knownM = ''
+  if (chunkForms && chunkForms.f && chunkForms.m) {
+    base = expandGenderedKnownSlot(base, knownLang)
+    known = chunkForms.f
+    knownM = chunkForms.m
+  }
   return base
     .replace(/\{target_lang_name\}/g, targetLangName)
-    .replace(/\{known\}/g, chunk)
+    .replace(/\{known_m\}/g, knownM)
+    .replace(/\{known\}/g, known)
     .replace(/\{seed\}/g, seed || '')
     .replace(/\s{2,}/g, ' ')
     .trim()
@@ -242,7 +281,7 @@ function introChunk(knownText) {
  * affordance showing an un-authored LEGO — renders the same course-correct line
  * instead of inventing its own.
  */
-async function defaultIntroText(supabase, { knownLang, targetLang, knownText }) {
+async function defaultIntroText(supabase, { knownLang, targetLang, knownText, chunkForms = null }) {
   const template = await getOrCreatePresentationTemplate(
     supabase, knownLang, localisedLangName(knownLang, 'eng')
   )
@@ -251,7 +290,9 @@ async function defaultIntroText(supabase, { knownLang, targetLang, knownText }) 
     template,
     targetLangName: localisedLangName(targetLang, knownLang),
     chunk: introChunk(knownText),
-    seed: ''
+    seed: '',
+    chunkForms,
+    knownLang
   })
 }
 
@@ -371,7 +412,7 @@ async function authorPresentations(supabase, course, items, { template, targetLa
       authored.push({
         ...item,
         frame,
-        text: renderIntro({ frame, template, targetLangName, chunk: item.chunk, seed: item.seed })
+        text: renderIntro({ frame, template, targetLangName, chunk: item.chunk, seed: item.seed, chunkForms: item.chunkForms || null, knownLang: course && course.known_lang })
       })
     })
     for (const f of batchFlags) {
@@ -446,6 +487,8 @@ function resolvePresentationVoiceId(course) {
 module.exports = {
   getOrCreatePresentationTemplate,
   stripSeedClause,
+  expandGenderedKnownSlot,
+  OR_WORD,
   renderIntro,
   localisedLangName,
   introChunk,

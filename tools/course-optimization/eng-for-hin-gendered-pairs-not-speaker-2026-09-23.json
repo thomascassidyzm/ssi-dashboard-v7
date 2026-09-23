@@ -1,0 +1,412 @@
+[
+ {
+  "m": "काम करता है",
+  "f": "काम करती है",
+  "correct": "काम करता है",
+  "why": "English 'works' is third person; the gender belongs to the seed's subject, not the speaker (use करती है if the subject is female)",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0197L02",
+  "english": "works",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "जो चाहता था",
+  "f": "जो चाहती थी",
+  "correct": "जो चाहता था",
+  "why": "relative जो agrees with its third-person antecedent, not the speaker",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0231L02",
+  "english": "who wanted",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "जो याद रख सकता है",
+  "f": "जो याद रख सकती है",
+  "correct": "जो याद रख सकता है",
+  "why": "relative जो with है is a third-person antecedent, not the speaker",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0232L02",
+  "english": "who can remember",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने वादा किया कि वह नहीं चुनेगा",
+  "f": "उसने वादा किया कि वह नहीं चुनेगी",
+  "correct": "उसने वादा किया कि वह नहीं चुनेगा",
+  "why": "चुनेगा/चुनेगी agrees with 'he', not the speaker",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0535L01",
+  "english": "he made a promise that he wouldn't choose",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "नहीं कर सकता",
+  "f": "नहीं कर सकती",
+  "correct": "नहीं कर सकता",
+  "why": "the subject is 'he', so सकता agrees with a third person, not the speaker",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0352L02",
+  "english": "he wouldn't be able to",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे अभी तक उसका नाम याद नहीं आ रहा।",
+  "f": "मुझे अभी तक उसका नाम याद नहीं आ रही।",
+  "correct": "मुझे अभी तक उसका नाम याद नहीं आ रहा।",
+  "why": "आ रहा agrees with the masculine noun नाम, so आ रही is wrong",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0060L03U02",
+  "english": "I can't remember his name yet",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे लगता है वह बहुत उदार थी",
+  "f": "मुझे लगती है वह बहुत उदार थी",
+  "correct": "मुझे लगता है वह बहुत उदार थी",
+  "why": "मुझे लगता है is impersonal, so लगती है is ungrammatical",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0147L01B02",
+  "english": "I think she was very kind",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे लगता है वह बहुत उदार थी, जब उसने मुझे आज सुबह देखा।",
+  "f": "मुझे लगती है वह बहुत उदार थी, जब उसने मुझे आज सुबह देखा।",
+  "correct": "मुझे लगता है वह बहुत उदार थी, जब उसने मुझे आज सुबह देखा।",
+  "why": "मुझे लगता है is impersonal, so लगती है is ungrammatical",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0147L02U04",
+  "english": "I think she was very kind when she saw me this morning",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह आधा भुगतान करना चाहता है।",
+  "f": "उसने कहा कि वह आधा भुगतान करना चाहती है।",
+  "correct": "उसने कहा कि वह आधा भुगतान करना चाहता है।",
+  "why": "the verb agrees with 'he', a third person; the F form wrongly makes it 'she'",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01U03",
+  "english": "he said that he wants to pay half",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह शुरू करना चाहता है।",
+  "f": "उसने कहा कि वह शुरू करना चाहती है।",
+  "correct": "उसने कहा कि वह शुरू करना चाहता है।",
+  "why": "the verb agrees with 'he', a third person; the F form wrongly makes it 'she'",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01B03",
+  "english": "he said that he wants to start",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह सीखना चाहता है।",
+  "f": "उसने कहा कि वह सीखना चाहती है।",
+  "correct": "उसने कहा कि वह सीखना चाहता है।",
+  "why": "the verb agrees with 'he', a third person; the F form wrongly makes it 'she'",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01U02",
+  "english": "he said that he wants to learn",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह घर जाना चाहता है।",
+  "f": "उसने कहा कि वह घर जाना चाहती है।",
+  "correct": "उसने कहा कि वह घर जाना चाहता है।",
+  "why": "the verb agrees with 'he', a third person; the F form wrongly makes it 'she'",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01U05",
+  "english": "he said that he wants to go home",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह भुगतान करना चाहता है।",
+  "f": "उसने कहा कि वह भुगतान करना चाहती है।",
+  "correct": "उसने कहा कि वह भुगतान करना चाहता है।",
+  "why": "the verb agrees with 'he', a third person; the F form wrongly makes it 'she'",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01B01",
+  "english": "he said that he wants to pay",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह भुगतान करना नहीं चाहता।",
+  "f": "उसने कहा कि वह भुगतान करना नहीं चाहती।",
+  "correct": "उसने कहा कि वह भुगतान करना नहीं चाहती।",
+  "why": "the verb agrees with 'she', a third person; the M form is wrong",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01B01",
+  "english": "she said that she doesn't want to pay",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह ख़त्म करना नहीं चाहता।",
+  "f": "उसने कहा कि वह ख़त्म करना नहीं चाहती।",
+  "correct": "उसने कहा कि वह ख़त्म करना नहीं चाहती।",
+  "why": "the verb agrees with 'she', a third person; the M form is wrong",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01B02",
+  "english": "she said that she doesn't want to finish",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह शुरू करना नहीं चाहता।",
+  "f": "उसने कहा कि वह शुरू करना नहीं चाहती।",
+  "correct": "उसने कहा कि वह शुरू करना नहीं चाहती।",
+  "why": "चाहता/चाहती agrees with the third-person subject वह, and the English says she",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01B03",
+  "english": "she said that she doesn't want to start",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह चलना नहीं चाहता।",
+  "f": "उसने कहा कि वह चलना नहीं चाहती।",
+  "correct": "उसने कहा कि वह चलना नहीं चाहती।",
+  "why": "the verb agrees with a third-person subject, and the English says she",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01U02",
+  "english": "she said that she doesn't want to come",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह सीखना नहीं चाहता।",
+  "f": "उसने कहा कि वह सीखना नहीं चाहती।",
+  "correct": "उसने कहा कि वह सीखना नहीं चाहती।",
+  "why": "the verb agrees with a third-person subject, and the English says she",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01U04",
+  "english": "she said that she doesn't want to learn",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह ख़त्म करना चाहता है।",
+  "f": "उसने कहा कि वह ख़त्म करना चाहती है।",
+  "correct": "उसने कहा कि वह ख़त्म करना चाहता है।",
+  "why": "the verb agrees with a third-person subject, and the English says he",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01B02",
+  "english": "he said that he wants to finish",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह जाना चाहता है।",
+  "f": "उसने कहा कि वह जाना चाहती है।",
+  "correct": "उसने कहा कि वह जाना चाहता है।",
+  "why": "the verb agrees with a third-person subject, and the English says he",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01U01",
+  "english": "he said that he wants to go",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह चलना चाहता है।",
+  "f": "उसने कहा कि वह चलना चाहती है।",
+  "correct": "उसने कहा कि वह चलना चाहता है।",
+  "why": "the verb agrees with a third-person subject, and the English says he",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L01U04",
+  "english": "he said that he wants to come",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह आपको कुछ नया दिखाना चाहता है।",
+  "f": "उसने कहा कि वह आपको कुछ नया दिखाना चाहती है।",
+  "correct": "उसने कहा कि वह आपको कुछ नया दिखाना चाहता है।",
+  "why": "the verb agrees with a third-person subject, and the English says he",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0301L02U05",
+  "english": "he said that he wants to show you something new",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह जाना नहीं चाहता।",
+  "f": "उसने कहा कि वह जाना नहीं चाहती।",
+  "correct": "उसने कहा कि वह जाना नहीं चाहती।",
+  "why": "the verb agrees with a third-person subject, and the English says she",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01U01",
+  "english": "she said that she doesn't want to go",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह घर जाना नहीं चाहता।",
+  "f": "उसने कहा कि वह घर जाना नहीं चाहती।",
+  "correct": "उसने कहा कि वह घर जाना नहीं चाहती।",
+  "why": "the verb agrees with a third-person subject, and the English says she",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01U03",
+  "english": "she said that she doesn't want to go home",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह ग़ैर मिलनसार नहीं दिखना चाहता।",
+  "f": "उसने कहा कि वह ग़ैर मिलनसार नहीं दिखना चाहती।",
+  "correct": "उसने कहा कि वह ग़ैर मिलनसार नहीं दिखना चाहती।",
+  "why": "the verb agrees with a third-person subject, and the English says she",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L01U05",
+  "english": "she said that she doesn't want to seem unfriendly",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह यहाँ रहना नहीं चाहता।",
+  "f": "उसने कहा कि वह यहाँ रहना नहीं चाहती।",
+  "correct": "उसने कहा कि वह यहाँ रहना नहीं चाहती।",
+  "why": "the verb agrees with a third-person subject, and the English says she",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0302L02U02",
+  "english": "she said that she doesn't want to live here",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह बैठना चाहता है।",
+  "f": "उसने कहा कि वह बैठना चाहती है।",
+  "correct": "उसने कहा कि वह बैठना चाहता है।",
+  "why": "the verb agrees with a third-person subject, and the English says he",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0303L03U04",
+  "english": "he said that he wants to sit down",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह काम करना चाहता है।",
+  "f": "उसने कहा कि वह काम करना चाहती है।",
+  "correct": "उसने कहा कि वह काम करना चाहता है।",
+  "why": "the verb agrees with a third-person subject, and the English says he",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0304L03U03",
+  "english": "he said that he wants to work",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "उसने कहा कि वह घर से काम करना चाहता है।",
+  "f": "उसने कहा कि वह घर से काम करना चाहती है।",
+  "correct": "उसने कहा कि वह घर से काम करना चाहता है।",
+  "why": "the verb agrees with a third-person subject, and the English says he",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0304L04U03",
+  "english": "he said that he wants to work from home",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "यह एक नया नज़रिया हो सकता है।",
+  "f": "यह एक नया नज़रिया हो सकता है。",
+  "correct": "यह एक नया नज़रिया हो सकता है।",
+  "why": "no gender difference at all; F only ends in a stray CJK full stop 。",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0442L03B02",
+  "english": "it might be a new approach",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "यह एक नज़रिया लगता है।",
+  "f": "यह एक नज़रिया लगता है。",
+  "correct": "यह एक नज़रिया लगता है।",
+  "why": "no gender difference at all; F only ends in a stray CJK full stop 。",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0441L01U04",
+  "english": "that sounds like an approach",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे नहीं लगता कि उसे कुछ बेचने की ज़रूरत है",
+  "f": "मुझे नहीं लगती कि उसे कुछ बेचने की ज़रूरत है",
+  "correct": "मुझे नहीं लगता कि उसे कुछ बेचने की ज़रूरत है",
+  "why": "मुझे लगता is impersonal, so लगती is wrong Hindi",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0326L01U05",
+  "english": "I don't think that she needs to sell something",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे लगता है वह वहाँ हो सकता है।",
+  "f": "मुझे लगती है वह वहाँ हो सकता है।",
+  "correct": "मुझे लगता है वह वहाँ हो सकता है।",
+  "why": "मुझे लगता is impersonal, so लगती is wrong Hindi",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0456L01B01",
+  "english": "I think he might be there",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे नहीं लगता कि वह वहाँ हो सकता है।",
+  "f": "मुझे नहीं लगती कि वह वहाँ हो सकता है।",
+  "correct": "मुझे नहीं लगता कि वह वहाँ हो सकता है।",
+  "why": "मुझे लगता is impersonal, so लगती is wrong Hindi",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0456L01U01",
+  "english": "I don't think that he might be there",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे लगता है कि एकमात्र असली उम्मीद यह है कि वह ठीक हो जाएगा।",
+  "f": "मुझे लगती है कि एकमात्र असली उम्मीद यह है कि वह ठीक हो जाएगा।",
+  "correct": "मुझे लगता है कि एकमात्र असली उम्मीद यह है कि वह ठीक हो जाएगा।",
+  "why": "मुझे लगता is impersonal, so लगती is wrong Hindi",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0482L01U01",
+  "english": "I think that the only real hope is that he's going to be okay",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे लगता है कि वह मुझे बताने की कोशिश कर रहा है।",
+  "f": "मुझे लगती है कि वह मुझे बताने की कोशिश कर रहा है।",
+  "correct": "मुझे लगता है कि वह मुझे बताने की कोशिश कर रहा है।",
+  "why": "मुझे लगता है is impersonal and does not change for gender; लगती है is wrong",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "eng_for_hin:S0222L01U01",
+  "english": "I think that he's trying to tell me",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे लग रहा है कि इससे बहुत मदद मिलेगी।",
+  "f": "मुझे लग रही है कि इससे बहुत मदद मिलेगी।",
+  "correct": "मुझे लग रहा है कि इससे बहुत मदद मिलेगी।",
+  "why": "रहा agrees with the impersonal frame (मुझे लग रहा है), not the speaker — Shuchita H-FRAMES seed 114",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0172L01 use row",
+  "english": "I feel as if that would be very helpful",
+  "source": "Shuchita rulebook H-FRAMES (d/d8edb3da §4)"
+ },
+ {
+  "m": "मुझे लग रहा है कि आप दूसरे लोगों की तरह हैं।",
+  "f": "मुझे लग रही है कि आप दूसरे लोगों की तरह हैं।",
+  "correct": "मुझे लग रहा है कि आप दूसरे लोगों की तरह हैं।",
+  "why": "impersonal frame, रहा does not move with the speaker",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0128L01 use row",
+  "english": "I feel as if you're like other people",
+  "source": "Shuchita rulebook H-FRAMES (d/d8edb3da §4)"
+ },
+ {
+  "m": "मुझे लग रहा है कि मेरे दिमाग़ में बहुत सारे विचार घूम रहे हैं।",
+  "f": "मुझे लग रही है कि मेरे दिमाग़ में बहुत सारे विचार घूम रहे हैं।",
+  "correct": "मुझे लग रहा है कि मेरे दिमाग़ में बहुत सारे विचार घूम रहे हैं।",
+  "why": "impersonal frame",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0131L02 use row",
+  "english": "I feel as if there are too many ideas going around in my head",
+  "source": "Shuchita rulebook H-FRAMES (d/d8edb3da §4)"
+ },
+ {
+  "m": "मुझे विश्वास नहीं हो रहा",
+  "f": "मुझे विश्वास नहीं हो रही",
+  "correct": "मुझे विश्वास नहीं हो रहा",
+  "why": "रहा agrees with विश्वास (m.), not the speaker — Shuchita H-FRAMES seed 526",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0526L01",
+  "english": "I'm finding it hard to believe",
+  "source": "Shuchita rulebook H-FRAMES (d/d8edb3da §4)"
+ },
+ {
+  "m": "मुझे लगता है कि मैंने सप्ताहांत में एक फ़िल्म देखा।",
+  "f": "मुझे लगता है कि मैंने सप्ताहांत में एक फ़िल्म देखी।",
+  "correct": "मुझे लगता है कि मैंने सप्ताहांत में एक फ़िल्म देखी।",
+  "why": "ergative: देखी agrees with फ़िल्म (f.), the \"male form\" देखा is wrong Hindi — Shuchita H-FEM-AGREEMENT seed 464",
+  "verdict": "NOT_SPEAKER",
+  "example_row": "S0221L03 use row",
+  "english": "I think that I watched a film at the weekend",
+  "source": "Shuchita rulebook H-FEM-AGREEMENT (d/d8edb3da §4)"
+ }
+]

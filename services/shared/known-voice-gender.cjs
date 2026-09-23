@@ -18,24 +18,24 @@
  *     the link RPC links slots by normalised text, so the voice has to be a
  *     function of the TEXT or two renders of the same course would disagree.
  *
- *  2. GENDERED known lines (the grammar moves with the speaker) exist as TWO
- *     FULL SEPARATE PHRASES with the same target — the male form and the
- *     female form — and the male form is ALWAYS spoken by the male voice, the
- *     female form ALWAYS by the female voice. No voice ever reads a line in
- *     the other gender's grammar. The pairing is recorded in
- *     course_gender_expansions with text_side='known' (original_text is one of
- *     the two forms, expanded_m/expanded_f are the pair); a text that matches
- *     either side of a stored pair takes that side's gender.
+ *  2. GENDERED known lines (the grammar moves with the speaker) exist as ONE
+ *     phrase in ONE form — the male-speaker form OR the female-speaker form,
+ *     never both (Kai, 2026-09-23 20:13Z; Tom: no doubling). The male form is
+ *     ALWAYS spoken by the male voice, the female form ALWAYS by the female
+ *     voice: no voice ever reads a line in the other gender's grammar. The
+ *     pairing is recorded in course_gender_expansions with text_side='known'
+ *     (expanded_m/expanded_f are the pair); a text that matches either side of
+ *     a stored pair takes that side's gender. Which side a phrase gets is the
+ *     balanced split in services/known-gender/gendered-known-plan.cjs, applied
+ *     ONCE and stamped on the row (metadata.known_gender); after that the text
+ *     itself carries the decision and this rule needs no special case.
  *
- *  2b. THE SPLIT APPLIES TO PRACTICE PHRASES ONLY (Kai, 2026-09-23, second
- *     ruling): presentations stay in the female voice, and a LEGO's debut and
- *     a seed's line are not practice phrases. So a known text that is a LEGO's
- *     or a seed's known text is ANCHORED female unless its grammar binds it
- *     (a pair beats an anchor: a male-form seed line is still spoken by the
- *     male voice, never by a female voice in male grammar). A gendered LEGO
- *     debuts in the FEMALE form and voice, and its male form is the FIRST
- *     build phrase after the debut, in the male voice, same target — see
- *     services/known-gender/gendered-known-plan.cjs.
+ *  2b. LEGO DEBUTS AND SEEDS. A gendered LEGO debuts in the FEMALE form; its
+ *     introduction stays in the female voice and quotes BOTH forms
+ *     (presentation-author.cjs expandGenderedKnownSlot). Gendered seed lines
+ *     are split half and half like phrases. A neutral LEGO or seed line is
+ *     ANCHORED female (the split is for practice phrases); a pair beats an
+ *     anchor, so a male-form seed line is spoken by the male voice.
  *
  * NOTHING RANDOM IN THE APP. The player's ordinary phrase selection is what
  * mixes the two variants (see the proposal published with job #883·H for
@@ -256,6 +256,19 @@ function knownVoiceEntryForClip(ctx, { role, text, legoId }) {
   return null
 }
 
+/**
+ * Both forms of a gendered LEGO's known text, for its INTRODUCTION (Kai,
+ * 2026-09-23 20:23Z: presentations stay in the female voice and quote both
+ * forms — see presentation-author.cjs expandGenderedKnownSlot). Null when the
+ * course has one known voice or the text is neutral, so every other course
+ * renders its intros exactly as before.
+ */
+function genderedChunkForms(ctx, text) {
+  if (!ctx || !ctx.wantsKnown || !ctx.index) return null
+  const hit = ctx.index.get(normalizeKnownKey(text))
+  return hit ? { f: hit.f, m: hit.m } : null
+}
+
 /** Canonical voice id ('cartesia_<uuid>' spelling) for a clip under the rule, or null to fall through. */
 function knownVoiceIdForClip(ctx, clip) {
   const r = knownVoiceEntryForClip(ctx, clip)
@@ -270,6 +283,7 @@ module.exports = {
   buildAnchorSet,
   knownVoiceEntryForClip,
   knownVoiceIdForClip,
+  genderedChunkForms,
   normalizeKnownKey,
   fnv1a32,
   hashGender,

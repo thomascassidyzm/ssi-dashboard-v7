@@ -131,23 +131,6 @@ describe('savePracticePhrase — bare-LEGO guard', () => {
     expect(upserted).toHaveLength(2)          // the third was the bare LEGO
   })
 
-  it('THE ONE EXCEPTION: a gendered-known sibling of the LEGO writes, marked gender_variant_of (Kai 2026-09-23, #883·H)', async () => {
-    // same target as the LEGO, known text is the other speaker-gender form — the lesson itself
-    const result = await savePracticePhrase('eng_for_hin', 1, 2, {
-      knownText: 'चाहती हूँ', targetText: 'want', position: 5,
-      metadata: { format: 'build_use', gender_variant_of: 'S0001L02', known_gender: 'f' },
-    }, { primaryLegoTarget: 'want' })
-    expect(result).not.toBeNull()
-    expect(upserted).toHaveLength(1)
-    expect(upserted[0].metadata.gender_variant_of).toBe('S0001L02')
-  })
-  it('an UNMARKED bare phrase is still refused — the exception is the mark, not the course', async () => {
-    const result = await savePracticePhrase('eng_for_hin', 1, 2, {
-      knownText: 'चाहती हूँ', targetText: 'want', position: 6,
-    }, { primaryLegoTarget: 'want' })
-    expect(result).toBeNull()
-    expect(upserted).toHaveLength(0)
-  })
   it('ABSTAINS when the LEGO cannot be read — a DB hiccup must not block real writes', async () => {
     legoLookupThrows = true
     const result = await savePracticePhrase('spa_for_eng', 9, 1, {
