@@ -143,6 +143,39 @@ function slotForRole(role) { return isGuideRole(role) ? 'guide' : 'phrase'; }
 function slotOfRow(r) { return r.slot || 'phrase'; }
 
 /**
+ * ── THE KNOWN SLOT: one language, two jobs, two voices ──────────────────────
+ *
+ * Deborah and Kai's ruling, 2026-09-23: the default English female voice is
+ * Gemma when English is the TARGET (a learner learning English hears her vary
+ * her delivery) and Charlotte when English is the KNOWN prompt language (the
+ * voice that says the English line before the learner answers in French).
+ *
+ * The phrase slot cannot say that. It is keyed (language, gender, rank) and
+ * the resolver read it for `known` and `target1` alike, so the 2026-09-04 cast
+ * made Gemma BOTH the English prompt on 74 *_for_eng courses and the English
+ * answer on 18 eng_for_* courses. The alternative was a per-course override on
+ * every *_for_eng course — the 94 copies Tom's 2026-08-29 ruling exists to
+ * abolish — so the distinction lives in the cast table instead: the `known`
+ * slot is the phrase voice a language uses WHEN IT IS THE COURSE'S KNOWN SIDE.
+ *
+ * Precedence for the `known` role: a `known` row for (language, gender) wins;
+ * with none, the `phrase` row applies exactly as before. Nothing about
+ * `target1`/`target2` reads the known slot, and a language with no known row
+ * resolves byte-for-byte as it did before this landed. The gender axis is kept,
+ * which is what leaves the six courses deliberately cast with a male English
+ * prompt (deu/fra/fra_ca/por_br/spa_mx/pdc → Tom's clone) untouched: they read
+ * (eng, m) and the ruling wrote (eng, f).
+ */
+const KNOWN_SLOT = 'known';
+
+/** The cast slots a role reads, in order of precedence; the first row that resolves wins. */
+function castSlotsForRole(role) {
+  if (isGuideRole(role)) return ['guide'];
+  if (role === 'known') return [KNOWN_SLOT, 'phrase'];
+  return ['phrase'];
+}
+
+/**
  * Which language a role speaks — as a CAST ENTITY, not as a base tag.
  *
  * `known`, and both guide roles, speak the course's KNOWN language.
@@ -329,10 +362,16 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [], human
     const language = languageForRole(role, course);
     if (!language) { decisions.push({ role, source: 'stored', reason: 'no language on course' }); continue; }
 
-    const slot = slotForRole(role);
     // A guide has no gender axis; reading one would be inventing a key.
-    const gender = slot === 'guide' ? null : genderForRole(role, roleConfig, voiceGenderById);
-    const cast = pickCastVoice(roles, voiceById, language, gender, slot);
+    const gender = isGuideRole(role) ? null : genderForRole(role, roleConfig, voiceGenderById);
+    // The known role reads the `known` slot first, then the phrase slot — see
+    // KNOWN_SLOT above. `slot` in the decision names the one that answered.
+    let slot = slotForRole(role);
+    let cast = null;
+    for (const candidate of castSlotsForRole(role)) {
+      cast = pickCastVoice(roles, voiceById, language, gender, candidate);
+      if (cast) { slot = candidate; break; }
+    }
     if (!cast) {
       decisions.push({
         role, slot, language, gender,
@@ -380,6 +419,8 @@ module.exports = {
   providerOfVoice,
   isGuideRole,
   slotForRole,
+  castSlotsForRole,
+  KNOWN_SLOT,
   CAST_ROLES,
   EXCLUDED_ROLES,
   exclusionReason,

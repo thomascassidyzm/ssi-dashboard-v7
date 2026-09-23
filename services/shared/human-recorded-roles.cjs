@@ -194,14 +194,16 @@ function humanRolesForCourse({ course, voiceConfig = null, humanRows = [], roles
  *
  * @param {object}   args
  * @param {string}   args.language
- * @param {string}   [args.slot]     'phrase' (default) or 'guide'
+ * @param {string}   [args.slot]     'phrase' (default), 'known' (the known role only) or 'guide'
  * @param {object[]} args.courses    course rows { course_code, target_lang, known_lang, voice_config }
  * @param {object[]} [args.humanRows] course_human_recorded_roles rows
  * @returns {{courses: Array, roles: string[], total: number}}
  */
 function humanRecordedForLanguage({ language, slot = 'phrase', courses = [], humanRows = [] }) {
   const lang = String(language || '').trim();
-  const wanted = slot === 'guide' ? ['instruction', 'encouragement'] : [...PHRASE_ROLES];
+  const wanted = slot === 'guide' ? ['instruction', 'encouragement']
+    : slot === 'known' ? ['known']            // the known slot reaches the known role alone
+      : [...PHRASE_ROLES];
   const affected = [];
   for (const c of courses) {
     // Which of the wanted roles this cast would actually reach on this course.

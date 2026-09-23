@@ -470,3 +470,85 @@ describe('applyLanguageCast — the dialect is its own language', () => {
     expect(config.voices.target1.voiceId).toBe('cartesia_moritz');
   });
 });
+
+describe('the KNOWN slot — one language, two jobs (Deborah + Kai, 2026-09-23)', () => {
+  // A course taught FROM English: `known` is the English prompt voice.
+  const forEng = { course_code: 'fra_for_eng', known_lang: 'eng', target_lang: 'fra' };
+  // A course teaching English: target1 is the English answer voice.
+  const engFor = { course_code: 'eng_for_hin', known_lang: 'hin', target_lang: 'eng' };
+  const engVoices = [
+    ...voices,
+    { voice_id: 'cartesia_gemma', gender: 'f', tts_engine: 'cartesia', is_active: true, display_name: 'Gemma' },
+    { voice_id: 'cartesia_charlotte', gender: 'f', tts_engine: 'cartesia', is_active: true, display_name: 'Charlotte' },
+    { voice_id: 'cartesia_hi-f-1', gender: 'f', tts_engine: 'cartesia', is_active: true, display_name: 'Kriti' },
+  ];
+  const femaleKnown = () => ({
+    voices: {
+      known: { name: 'Sonia', voiceId: 'en-GB-SoniaNeural', language: 'en', provider: 'azure', settings: { speed: 1 } },
+      target1: { name: 'Eve', voiceId: 'eve', language: 'fr', provider: 'xai', settings: { speed: 1 } },
+    },
+  });
+  const engTarget = () => ({
+    voices: {
+      known: { name: 'Kriti', voiceId: 'cartesia_hi-f-1', language: 'hi', provider: 'cartesia', settings: { speed: 1 } },
+      target1: { name: 'Olivia', voiceId: 'bedd6226', language: 'en', provider: 'xai', settings: { speed: 1 } },
+    },
+  });
+  const slotRow = (slot, language, gender, rank, voice_id) => ({ slot, language, gender, rank, voice_id });
+  const theRuling = cast(
+    slotRow('phrase', 'eng', 'f', 0, 'cartesia_gemma'),     // English as the TARGET → Gemma
+    slotRow('known', 'eng', 'f', 0, 'cartesia_charlotte'),  // English as the KNOWN prompt → Charlotte
+    slotRow('phrase', 'eng', 'm', 0, 'cartesia_en-m-1'),
+  );
+
+  it('the known role of a *_for_eng course reads the KNOWN slot before the phrase slot', () => {
+    const { config, decisions } = applyLanguageCast({ voiceConfig: femaleKnown(), course: forEng, voices: engVoices, roles: theRuling });
+    expect(config.voices.known.voiceId).toBe('cartesia_charlotte');
+    const d = decisions.find((x) => x.role === 'known');
+    expect(d.source).toBe('language-cast');
+    expect(d.slot).toBe('known');
+  });
+
+  it('target1 of an eng_for_* course never reads the known slot — it stays Gemma', () => {
+    const { config, decisions } = applyLanguageCast({ voiceConfig: engTarget(), course: engFor, voices: engVoices, roles: theRuling });
+    expect(config.voices.target1.voiceId).toBe('cartesia_gemma');
+    expect(decisions.find((x) => x.role === 'target1').slot).toBe('phrase');
+  });
+
+  it('with NO known row the known role falls to the phrase slot, exactly as before', () => {
+    const { config, decisions } = applyLanguageCast({
+      voiceConfig: femaleKnown(), course: forEng, voices: engVoices,
+      roles: cast(slotRow('phrase', 'eng', 'f', 0, 'cartesia_gemma')),
+    });
+    expect(config.voices.known.voiceId).toBe('cartesia_gemma');
+    expect(decisions.find((x) => x.role === 'known').slot).toBe('phrase');
+  });
+
+  it('keeps the gender axis: a course cast with a MALE English prompt is untouched by a female known row', () => {
+    const maleKnown = { voices: { known: { name: 'Tom', voiceId: 'gfzdpspr5fdp', language: 'en', provider: 'xai', settings: { speed: 1 } } } };
+    const { config } = applyLanguageCast({ voiceConfig: maleKnown, course: forEng, voices: engVoices, roles: theRuling });
+    expect(config.voices.known.voiceId).toBe('cartesia_en-m-1');
+  });
+
+  it('a known row alone (no phrase row) still resolves the known role', () => {
+    const { config } = applyLanguageCast({
+      voiceConfig: femaleKnown(), course: forEng, voices: engVoices,
+      roles: cast(slotRow('known', 'eng', 'f', 0, 'cartesia_charlotte')),
+    });
+    expect(config.voices.known.voiceId).toBe('cartesia_charlotte');
+  });
+
+  it('the human-voice guard still outranks the known slot', () => {
+    const cym = { course_code: 'cym_n_for_eng', known_lang: 'eng', target_lang: 'cym' };
+    const humanRows = [{ course_code: 'cym_n_for_eng', role: 'known', target_lang: 'cym', known_lang: 'eng', clips: 5000, voices: ['human_aran'], a_voice_id: 'human_aran' }];
+    const { decisions } = applyLanguageCast({ voiceConfig: femaleKnown(), course: cym, voices: engVoices, roles: theRuling, humanRows });
+    expect(decisions.find((x) => x.role === 'known').source).toBe('human-recorded');
+  });
+
+  it('names the slots each role reads, in order', () => {
+    expect(pkg.castSlotsForRole('known')).toEqual(['known', 'phrase']);
+    expect(pkg.castSlotsForRole('target1')).toEqual(['phrase']);
+    expect(pkg.castSlotsForRole('instruction')).toEqual(['guide']);
+    expect(pkg.KNOWN_SLOT).toBe('known');
+  });
+});

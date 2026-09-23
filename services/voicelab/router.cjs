@@ -478,7 +478,7 @@ function mount (app, deps) {
     })
     // How many courses this cast could reach AT ALL, so "all of them are human"
     // is a fact rather than an impression.
-    const reach = slot === 'guide'
+    const reach = (slot === 'guide' || slot === 'known')
       ? list.filter((c) => c.known_lang === language).length
       : list.filter((c) => c.target_lang === language || c.known_lang === language).length
     return { ...affected, reach, blocked: reach > 0 && affected.total >= reach }
@@ -503,7 +503,8 @@ function mount (app, deps) {
       const gender = slot === 'guide' ? null : (req.body || {}).gender
       if (!language) throw Object.assign(new Error('language is required'), { status: 400 })
 
-      if (slot === 'phrase' && !registry.GENDERS.includes(gender)) {
+      // 'known' is gendered exactly like 'phrase' (services/shared/language-voice-cast.cjs KNOWN_SLOT).
+      if (slot !== 'guide' && !registry.GENDERS.includes(gender)) {
         throw Object.assign(new Error(`gender must be one of ${registry.GENDERS.join(', ')}`), { status: 400 })
       }
       const r = Number(rank)
@@ -1591,14 +1592,14 @@ function mount (app, deps) {
       // A guide slot is keyed by (language, rank) alone, so clearing one does
       // not need — and must not require — a gender the caller has no business
       // knowing.
-      if (!language || !Number.isInteger(rank) || (slot === 'phrase' && !registry.GENDERS.includes(gender))) {
+      if (!language || !Number.isInteger(rank) || (slot !== 'guide' && !registry.GENDERS.includes(gender))) {
         throw Object.assign(new Error('language and rank are required, plus gender for a phrase slot'), { status: 400 })
       }
       let q = supabase()
         .from('voice_language_roles')
         .delete()
         .eq('slot', slot).eq('language', language).eq('rank', rank)
-      if (slot === 'phrase') q = q.eq('gender', gender)
+      if (slot !== 'guide') q = q.eq('gender', gender)
       const { error } = await q
       if (error) throw Object.assign(new Error(error.message), { status: 400 })
       logger.log?.(`[voicelab] cleared ${slot} ${language}/${gender || '-'}/rank${rank} by ${who(user)}`)
