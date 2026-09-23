@@ -13,7 +13,9 @@
 //   S0339L02  A  उसे चोट लगी है     → he's hurt himself    the injured sense. The Hindi has no piece for "himself" (उसे चोट लगी है
 //                                                          is simply "he got hurt"), so the English side GROWS to match — a LEGO grows
 //                                                          on both sides; "he's hurt" alone never appears, so it can never read causative.
-//   S0339L03  "himself" | खुद को    DELETED — used nowhere else in the course; its Hindi was the causative reflexive.
+//   S0339L03  "himself" | खुद को    MERGED into L02 (Kai, 22:03Z: never delete a LEGO — re-cut or merge into a neighbour). "himself" is in the
+//                                                          seed English and is now taught inside L02; खुद को was never in the seed Hindi (it was the causative
+//                                                          reflexive), and "himself"/खुद को appear nowhere else in the course.
 // Phrases: every causative row is deleted (Kai: "just delete the possibly problematic ones"); the four "he's hurt himself …" English
 // lines the old basket had are kept with their Hindi rewritten to the injured sense; five fresh lines from taught chunks only
 // (I think 123, I'm afraid 183, no 96, yes 97, today 7). No bare-LEGO row. No English line duplicated anywhere in the course.
@@ -343,7 +345,7 @@ async function main() {
   const postRed = (post.json?.failures || []);
   console.log(`validator after, from seed 339: ${post.json?.seeds_passed}/${post.json?.seeds_checked} pass, ${postRed.length} red`);
   if (postRed.length) throw new Error(`RED after apply: ${JSON.stringify(postRed)} — undo with POST /api/build/redo-undo/${COURSE} (snapshot ${snap.batchId})`);
-  const mine = `seed 339 re-cut: "he's hurt" → injured sense (S0339L02 उसे चोट लगी है → he's hurt himself, S0339L03 himself deleted; Kai's ruling, job ${JOB}, 2026-09-23) — seed Hindi बहुत→काफ़ी null-audio, 9 new L02 rows null-audio on the Hindi side (4 English lines relinked), 2 pending Frame A intros (S0339L01, S0339L02)`;
+  const mine = `seed 339 re-cut: "he's hurt" → injured sense (S0339L02 उसे चोट लगी है → he's hurt himself, S0339L03 himself merged into it; Kai's ruling, job ${JOB}, 2026-09-23) — seed Hindi बहुत→काफ़ी null-audio, 9 new L02 rows null-audio on the Hindi side (4 English lines relinked), 2 pending Frame A intros (S0339L01, S0339L02)`;
   must(await sb.from('audio_pass_requests').update({ reason: `${pending.reason} + ${mine}`, metadata: { ...pending.metadata, job965HesHurt: { editEventId: eventId, snapshotBatch: snap.batchId, presentations: presRows.flatMap(p => p.rows.map(r => r.id)) } }, updated_at: new Date().toISOString() }).eq('id', pending.id), 'audio-pass append');
   console.log(`audio pass: appended to pending request ${pending.id}`);
   out.eventId = eventId; out.snapshot = snap; out.after = after.map(l => ({ lego_id: l.lego_id, known: l.known_text, target: l.target_text, is_new: l.is_new })); out.audioRestore = plan; out.presentations = presRows; out.cascade = cascade.json;

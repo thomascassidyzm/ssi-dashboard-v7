@@ -1,7 +1,7 @@
 // The one test that proves the change (Kai's ruling, 2026-09-23 22:00Z, job #965·H): "he's hurt" is the INJURED sense and never
 // sits over the causative उसने चोट पहुँचाई है ("he has hurt someone"). Pre-fix: the live LEGO S0339L02 and 17 of its basket's rows pair
 // injured-sense English (he's hurt / hurt himself / hurt) with चोट पहुँचा-. Post-fix: no row does; the one hurt LEGO is उसे चोट लगी है
-// → "he's hurt himself"; every phrase contains its LEGO on both sides; no bare row; no duplicate English; the seed's English is
+// → "he's hurt himself" with the old "himself" LEGO merged into it (never deleted); every phrase contains its LEGO on both sides; no bare row; no duplicate English; the seed's English is
 // untouched; the one downstream row the cut breaks (S0345L02U05) tiles from "he's not ready" + "to leave". Offline: no DB.
 import { describe, it, expect } from 'vitest';
 const T = require('./eng-for-hin-seed-339-hes-hurt-injured-2026-09-23.cjs');
@@ -17,7 +17,8 @@ describe("eng_for_hin seed 339: he's hurt is the injured sense", () => {
     expect(T.causativeUnderInjured(T.allRows())).toEqual([]);
     expect(T.LEGOS.filter(l => /hurt/.test(l.target))).toEqual([expect.objectContaining({ idx: 2, type: 'A', known: 'उसे चोट लगी है', target: "he's hurt himself" })]);
     expect(T.allRows().filter(r => /\bhurt\b/i.test(r.target)).every(r => /चोट लगी है/u.test(r.known))).toBe(true);
-    expect(T.LEGOS.some(l => l.target === 'himself')).toBe(false);
+    expect(T.LEGOS.some(l => l.target === 'himself')).toBe(false); // merged, not deleted (Kai 22:03Z: never delete a LEGO)
+    expect(T.LEGOS.find(l => l.idx === 2).target).toContain('himself'); // "himself" from the seed is still taught, inside L02
   });
   it('the seed keeps its English, gains काफ़ी on the Hindi side, and both LEGOs sit in it', () => {
     expect(T.NEW_SEED.target).toBe(T.OLD_SEED.target);
