@@ -33,9 +33,9 @@ describe('buildGenderedKnownPlan', () => {
   it('assigns a gender to every row, pair-bound where the grammar moves and hash-split otherwise', () => {
     expect(plan.assignments.length).toBe(seeds.length + legos.length + phrases.length)
     const byId = Object.fromEntries(plan.assignments.map(a => [a.id, a]))
-    expect(byId['S0001L02']).toMatchObject({ gender: 'm', source: 'pair' })
+    expect(byId['S0001L02']).toMatchObject({ gender: 'f', source: 'pair', known_text: 'चाहती हूँ' }) // flipped to the female form
     expect(byId[`${C}:S0001L02U02`]).toMatchObject({ gender: 'f', source: 'pair' })
-    expect(byId['S0001L03'].source).toBe('hash')
+    expect(byId['S0001L03'].source).toBe('anchor')
     expect(plan.counts.genderedRows).toBe(6) // seed, L02, C01, B01, U01, U02
   })
 
@@ -57,12 +57,31 @@ describe('buildGenderedKnownPlan', () => {
     expect(plan.siblings.find(s => s.metadata.gender_variant_of === `${C}:S0001L01C01`)).toBeUndefined()
   })
 
-  it('a gendered LEGO keeps ONE LEGO and gets its counterpart as a marked BUILD phrase under it', () => {
+  it('a gendered LEGO debuts in the FEMALE form (flipped) and its MALE form is the FIRST build phrase (Kai, 2026-09-23)', () => {
+    expect(plan.legoFlips).toEqual([{ lego_id: 'S0001L02', seed_number: 1, lego_index: 2, from: 'चाहता हूँ', to: 'चाहती हूँ', target_text: 'want' }])
+    expect(plan.assignments.find(a => a.id === 'S0001L02')).toMatchObject({ known_text: 'चाहती हूँ', gender: 'f', source: 'pair' })
     const l = plan.siblings.find(s => s.metadata.gender_variant_of === 'S0001L02')
-    expect(l).toMatchObject({ phrase_role: 'build', known_text: 'चाहती हूँ', target_text: 'want', known_gender: 'f', lego_index: 2 })
-    expect(l.metadata.gender_variant_kind).toBe('lego')
+    expect(l).toMatchObject({ phrase_role: 'build', known_text: 'चाहता हूँ', target_text: 'want', known_gender: 'm', lego_index: 2, position: 0 })
+    expect(l.metadata).toMatchObject({ gender_variant_kind: 'lego', first_build_after_debut: true })
     expect(l.id).toBe(`${C}:S0001L02B03`) // B02 went to the phrase sibling above
-    expect(l.position).toBe(5)
+    expect(plan.counts.legoFlips).toBe(1)
+  })
+
+  it('a flip is refused when another LEGO already owns the female form under a different target (ZUT)', () => {
+    const legos2 = [...legos, { lego_id: 'S0002L01', seed_number: 2, lego_index: 1, known_text: 'चाहती हूँ', target_text: 'wants' }]
+    const p2 = buildGenderedKnownPlan({ courseCode: C, seeds, legos: legos2, phrases, pairs })
+    expect(p2.legoFlips).toEqual([])
+    expect(p2.counts.legoFlipsRefusedZut).toBe(1)
+    expect(p2.skipped.find(x => x.originId === 'S0001L02').reason).toMatch(/flip refused/)
+    expect(p2.siblings.find(s => s.metadata.gender_variant_of === 'S0001L02')).toBeUndefined()
+  })
+
+  it('neutral LEGO and seed lines are anchored FEMALE — the split is for practice phrases only', () => {
+    const byId = Object.fromEntries(plan.assignments.map(a => [a.id, a]))
+    expect(byId['S0001L03']).toMatchObject({ gender: 'f', source: 'anchor' })
+    expect(byId['S0001L01']).toMatchObject({ gender: 'f', source: 'anchor' })
+    // a practice phrase with a neutral text is still hash-split
+    expect(byId[`${C}:S0001L03U01`].source).toBe('hash')
   })
 
   it('a gendered seed gets its counterpart as a USE phrase under the seed\'s last LEGO', () => {
@@ -73,11 +92,9 @@ describe('buildGenderedKnownPlan', () => {
 
   it('counts render work over DISTINCT texts and separates the sibling share', () => {
     expect(plan.render.clipsTotal).toBe(plan.render.clips.m + plan.render.clips.f)
-    expect(plan.render.siblingClips).toBe(plan.siblings.length)
-    expect(plan.render.siblingChars).toBe(plan.siblings.reduce((n, s) => n + s.known_text.length, 0))
-    // 'चाहता हूँ' sits on L02 and on C01: one clip, not two
-    const male = plan.assignments.filter(a => a.known_text === 'चाहता हूँ')
-    expect(male.length).toBe(2)
+    // the male-form first build 'चाहता हूँ' is also C01's text: one clip serves both, so siblingClips < siblings
+    expect(plan.render.siblingClips).toBeLessThan(plan.siblings.length)
+    expect(plan.render.siblingClips).toBe(2)
   })
 
   it('is deterministic — the same inputs give the same plan', () => {

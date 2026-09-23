@@ -17,14 +17,30 @@
  *                          renumbering positions would touch every later row.
  *   component phrase    → NO sibling. Components are never introduced (Tom,
  *                          2026-08-06); they reach the learner as tiles only.
- *   LEGO                → the LEGO row is the ONE LEGO (a second LEGO would
- *                          double the round map). Its counterpart is a BUILD
- *                          phrase under it: known = other form, target = the
- *                          LEGO target. By target alone that is a "bare LEGO"
- *                          phrase, which the submit path drops as teaching
- *                          nothing — here it teaches the gender lesson, so it
- *                          carries metadata.gender_variant_of = <lego_id> and
- *                          the bare-LEGO rule must read that mark.
+ *   LEGO                → KAI'S RULING (2026-09-23, approved): the debut is in
+ *                          the FEMALE form and voice, consistent with the
+ *                          female-only presentation, and the MALE form of the
+ *                          same LEGO is the FIRST build phrase straight after
+ *                          the debut, male voice, same target. So a LEGO whose
+ *                          stored known text is the male form is FLIPPED to the
+ *                          female form (legoFlips), and the male form becomes a
+ *                          BUILD phrase at position 0 under it. By target alone
+ *                          that is a "bare LEGO" phrase, which the submit path
+ *                          drops as teaching nothing — here it teaches the
+ *                          gender lesson, so it carries
+ *                          metadata.gender_variant_of = <lego_id> and the
+ *                          bare-LEGO rule reads that mark. Why position 0 is
+ *                          enough for "first": the player sorts builds by
+ *                          TARGET syllables (stable) and every build contains
+ *                          the LEGO target, so the male form — same target as
+ *                          the LEGO — is the shortest build; position 0 wins
+ *                          any tie. The LEGO stays ONE LEGO: no is_new, no new
+ *                          round. A flip is refused (recorded, not applied)
+ *                          when another LEGO already carries the female form
+ *                          under a different target (a ZUT collision).
+ *   neutral LEGO / seed → anchored FEMALE: the split is for practice phrases
+ *                          only (Kai's second ruling); a pair still beats the
+ *                          anchor, so a male-form seed line is voiced male.
  *   seed                → seeds are one row per seed number, so the counterpart
  *                          is a USE phrase under the seed's LAST LEGO with the
  *                          seed's target, marked gender_variant_of = <seed_id>.
@@ -40,7 +56,7 @@
  */
 
 const {
-  buildKnownGenderIndex, knownGenderForText, counterpartForText, normalizeKnownKey,
+  buildKnownGenderIndex, knownGenderForText, counterpartForText, normalizeKnownKey, buildAnchorSet, F, M,
 } = require('../shared/known-voice-gender.cjs')
 const { makePhraseId, computeLegoPosition } = require('../course-builder/lib/phrase-structure.cjs')
 
@@ -63,6 +79,14 @@ function pairKey(known, target) { return `${normalizeKnownKey(known)}|${normTarg
 function buildGenderedKnownPlan({ courseCode, seeds = [], legos = [], phrases = [], pairs = [], salt }) {
   const index = buildKnownGenderIndex(pairs)
   const hashSalt = salt === undefined ? courseCode : salt
+  const anchors = buildAnchorSet([...legos.map(l => l.known_text), ...seeds.map(sd => sd.known_text)])
+  // known text → LEGOs carrying it (for the ZUT check on a flip)
+  const legosByKnown = new Map()
+  for (const l of legos) {
+    const k = normalizeKnownKey(l.known_text)
+    if (!legosByKnown.has(k)) legosByKnown.set(k, [])
+    legosByKnown.get(k).push(l)
+  }
 
   // ── every existing known|target in the course, so a counterpart that is
   //    already authored is recognised rather than duplicated ──
@@ -103,48 +127,59 @@ function buildGenderedKnownPlan({ courseCode, seeds = [], legos = [], phrases = 
   // ── assignments: one entry per content row ──
   const assignments = []
   const siblings = []
+  const legoFlips = [] // { lego_id, seed_number, lego_index, from, to, target_text }
   const skipped = [] // gendered rows that got no sibling, with the reason
   const counts = {
     rows: { seed: 0, lego: 0, phrase: 0, component: 0 },
     byGender: { m: 0, f: 0 },
-    bySource: { pair: 0, hash: 0 },
+    bySource: { pair: 0, anchor: 0, hash: 0 },
     genderedRows: 0,
     siblingsPlanned: { fromPhrase: 0, fromLego: 0, fromSeed: 0 },
     siblingsSkippedExisting: 0,
+    legoFlips: 0,
+    legoFlipsRefusedZut: 0,
+    legoFirstBuildAlreadyAuthored: 0,
   }
 
   const planned = new Set() // known|target of siblings already planned, so two rows with the same text add one sibling
 
-  const addSibling = ({ from, kind, seedNumber, legoIndex, role, known, target, gender, originId }) => {
+  const addSibling = ({ from, kind, seedNumber, legoIndex, role, known, target, gender, originId, first = false }) => {
     const key = pairKey(known, target)
-    if (existing.has(key)) { counts.siblingsSkippedExisting++; skipped.push({ originId, reason: 'counterpart already authored', known, target }); return }
+    if (existing.has(key)) {
+      counts.siblingsSkippedExisting++
+      if (first) counts.legoFirstBuildAlreadyAuthored++
+      skipped.push({ originId, reason: first ? 'male form already authored as a phrase — must be moved to position 0 by hand' : 'counterpart already authored', known, target })
+      return
+    }
     if (planned.has(key)) return // another row with the same text already planned it
     planned.add(key)
     const k = legoKey(seedNumber, legoIndex)
     if (!perLego.has(k)) perLego.set(k, { maxPos: 0, roleMax: { build: 0, use: 0, component: 0 }, legoId: null, target: null })
     const b = perLego.get(k)
     b.roleMax[role] += 1
-    b.maxPos += 1
+    if (!first) b.maxPos += 1
     const legoTarget = (legoByKey.get(k) || {}).target_text || target
     siblings.push({
       id: makePhraseId(courseCode, seedNumber, legoIndex, role, b.roleMax[role]),
       course_code: courseCode,
       seed_number: seedNumber,
       lego_index: legoIndex,
-      position: b.maxPos,
+      // position 0 = "the first build after the debut" (Kai's ruling); the
+      // column allows 0 and the player sorts by target syllables first anyway.
+      position: first ? 0 : b.maxPos,
       known_text: known,
       target_text: target,
       phrase_role: role,
       known_gender: gender,
       lego_position: computeLegoPosition(target, legoTarget),
-      metadata: { format: 'build_use', gender_variant_of: originId, gender_variant_kind: kind, known_gender: gender },
+      metadata: { format: 'build_use', gender_variant_of: originId, gender_variant_kind: kind, known_gender: gender, ...(first ? { first_build_after_debut: true } : {}) },
       from,
     })
     counts.siblingsPlanned[from] += 1
   }
 
   const assign = (kind, row, id, text) => {
-    const g = knownGenderForText(text, index, { salt: hashSalt })
+    const g = knownGenderForText(text, index, { salt: hashSalt, anchors })
     counts.rows[kind] += 1
     counts.byGender[g.gender] += 1
     counts.bySource[g.source] += 1
@@ -165,12 +200,33 @@ function buildGenderedKnownPlan({ courseCode, seeds = [], legos = [], phrases = 
     })
   }
   for (const l of legos) {
-    const g = assign('lego', l, l.lego_id, l.known_text)
+    const g0 = knownGenderForText(l.known_text, index, { salt: hashSalt, anchors })
+    let debutText = l.known_text
+    if (g0.source === 'pair' && g0.gender === M) {
+      // Flip the debut to the female form — unless another LEGO already owns
+      // that known text under a different target (ZUT), in which case the
+      // LEGO keeps its male form and the flip is recorded as refused.
+      const female = g0.pair.f
+      const clash = (legosByKnown.get(normalizeKnownKey(female)) || []).find(x => x.lego_id !== l.lego_id && normTarget(x.target_text) !== normTarget(l.target_text))
+      if (clash) {
+        counts.legoFlipsRefusedZut++
+        skipped.push({ originId: l.lego_id, reason: `flip refused: "${female}" already maps to "${clash.target_text}" on ${clash.lego_id}`, known: female, target: l.target_text })
+      } else {
+        legoFlips.push({ lego_id: l.lego_id, seed_number: l.seed_number, lego_index: l.lego_index, from: l.known_text, to: female, target_text: l.target_text })
+        counts.legoFlips++
+        existing.delete(pairKey(l.known_text, l.target_text))
+        existing.add(pairKey(female, l.target_text))
+        debutText = female
+      }
+    }
+    const g = assign('lego', { ...l, known_text: debutText }, l.lego_id, debutText)
     if (g.source !== 'pair') continue
-    const other = counterpartForText(l.known_text, index)
+    // the male form is the FIRST build phrase after the debut (Kai's ruling)
+    const male = g.pair.m
+    if (normalizeKnownKey(male) === normalizeKnownKey(debutText)) continue // flip refused: debut stays male, no sibling
     addSibling({
       from: 'fromLego', kind: 'lego', seedNumber: l.seed_number, legoIndex: l.lego_index, role: 'build',
-      known: other.text, target: l.target_text, gender: other.gender, originId: l.lego_id,
+      known: male, target: l.target_text, gender: M, originId: l.lego_id, first: true,
     })
   }
   for (const s of seeds) {
@@ -205,7 +261,7 @@ function buildGenderedKnownPlan({ courseCode, seeds = [], legos = [], phrases = 
   render.clipsTotal = render.clips.m + render.clips.f
   render.charsTotal = render.chars.m + render.chars.f
 
-  return { courseCode, salt: hashSalt, counts, render, assignments, siblings, skipped, indexSize: index.size }
+  return { courseCode, salt: hashSalt, counts, render, assignments, siblings, legoFlips, skipped, indexSize: index.size }
 }
 
 module.exports = { buildGenderedKnownPlan, pairKey, PAIRABLE_PHRASE_ROLES }

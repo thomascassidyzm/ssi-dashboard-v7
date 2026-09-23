@@ -38,6 +38,7 @@ const { buildKnownGenderIndex, normalizeKnownKey, roleHasGenderedVoices, voiceId
 const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs')
 const { queueAudioPass } = require('../../services/shared/audio-pass-queue.cjs')
+const { requestRoundIndexRefresh, flushRoundIndexRefresh } = require('../../services/shared/round-index-refresh.cjs')
 
 const argv = process.argv.slice(2)
 const flag = (name) => argv.includes(name)
@@ -147,9 +148,10 @@ async function main() {
   console.log(`
 ── ${courseCode} gendered-known plan ──
 known lines (rows):        ${c.rows.seed} seeds + ${c.rows.lego} legos + ${c.rows.phrase} phrases + ${c.rows.component} components
-  voiced male / female:    ${c.byGender.m} / ${c.byGender.f}   (pair-bound ${c.bySource.pair}, hash-split ${c.bySource.hash})
+  voiced male / female:    ${c.byGender.m} / ${c.byGender.f}   (pair-bound ${c.bySource.pair}, anchored female (LEGO/seed) ${c.bySource.anchor}, hash-split ${c.bySource.hash})
 gendered rows:             ${c.genderedRows}
-sibling phrases to add:    ${plan.siblings.length}  (from phrases ${c.siblingsPlanned.fromPhrase}, from legos ${c.siblingsPlanned.fromLego}, from seeds ${c.siblingsPlanned.fromSeed}; counterpart already authored ${c.siblingsSkippedExisting})
+gendered LEGOs flipped to the female form (debut): ${c.legoFlips}  (refused on ZUT ${c.legoFlipsRefusedZut}; male form already a phrase ${c.legoFirstBuildAlreadyAuthored})
+sibling phrases to add:    ${plan.siblings.length}  (from phrases ${c.siblingsPlanned.fromPhrase}, from legos ${c.siblingsPlanned.fromLego} as FIRST build, from seeds ${c.siblingsPlanned.fromSeed}; counterpart already authored ${c.siblingsSkippedExisting})
 render (distinct texts):   ${r.clipsTotal} clips = ${r.clips.m} male + ${r.clips.f} female; ${r.charsTotal.toLocaleString()} chars (${plan.budget.shareOfMonth}% of 8M/month)
   of which siblings:       ${r.siblingClips} clips, ${r.siblingChars.toLocaleString()} chars
 voice_config known byGender: ${plan.voices.knownHasByGender} (${plan.voices.knownVoiceIds.join(', ') || 'none'})
@@ -159,13 +161,28 @@ plan → ${planFile}`)
 
   // ── apply: insert siblings, identity-stamped, then queue the audio pass ──
   if (!fs.existsSync(path.join(outDir, 'plan-latest.json'))) throw new Error('apply refused: no dry-run plan on disk')
-  if (!plan.siblings.length) { console.log('apply: nothing to insert'); return }
+  if (!plan.siblings.length && !plan.legoFlips.length) { console.log('apply: nothing to do'); return }
   const identity = serviceIdentity('gendered-known-variants', { role: 'content-tool' })
   const eventId = await recordContentEdit(supabase, {
-    identity, courseCode, surface: 'tools/course-optimization/gendered-known-variants.cjs', operation: 'insert',
-    scope: { phrase_ids: plan.siblings.map(s => s.id) },
-    detail: { kind: 'gendered-known-siblings', count: plan.siblings.length, plan: planFile },
+    identity, courseCode, surface: 'tools/course-optimization/gendered-known-variants.cjs', operation: 'update',
+    scope: { phrase_ids: plan.siblings.map(s => s.id), lego_ids: plan.legoFlips.map(f => f.lego_id) },
+    detail: { kind: 'gendered-known-siblings', siblings: plan.siblings.length, legoFlips: plan.legoFlips.length, plan: planFile },
   })
+  // 1. LEGO debuts to the female form (Kai's ruling). The text-change trigger
+  //    nulls/relinks the known audio; the round index is refreshed because a
+  //    LEGO row changed (Tom's rule, 2026-09-20). A flip is a one-column update
+  //    on a row whose id, target and position do not move.
+  let flipped = 0
+  for (const f of plan.legoFlips) {
+    const { error: upErr, data } = await supabase.from('course_legos')
+      .update({ known_text: f.to, last_edit_event_id: eventId })
+      .eq('course_code', courseCode).eq('lego_id', f.lego_id).eq('known_text', f.from).select('lego_id')
+    if (upErr) throw new Error(`flip ${f.lego_id} failed: ${upErr.message} (flipped so far ${flipped}, event ${eventId})`)
+    if (!data || !data.length) { console.warn(`flip ${f.lego_id}: text no longer "${f.from}" — skipped`); continue }
+    flipped++
+  }
+  if (flipped) { requestRoundIndexRefresh(courseCode); await flushRoundIndexRefresh() }
+  console.log(`applied: ${flipped} LEGO debuts flipped to the female form`)
   let inserted = 0
   for (let i = 0; i < plan.siblings.length; i += 200) {
     const rows = plan.siblings.slice(i, i + 200).map(s => ({
@@ -179,7 +196,7 @@ plan → ${planFile}`)
     if (insErr) throw new Error(`insert failed at batch ${i / 200 + 1}: ${insErr.message} (inserted so far: ${inserted}, event ${eventId})`)
     inserted += rows.length
   }
-  await queueAudioPass(supabase, { courseCode, reason: `gendered-known-variants: ${inserted} sibling phrases inserted (event ${eventId}); render nothing until approved`, requestedBy: identity.label, metadata: { event_id: eventId, plan: planFile } })
+  await queueAudioPass(supabase, { courseCode, reason: `gendered-known-variants: ${flipped} LEGO debuts flipped to the female form, ${inserted} sibling phrases inserted (event ${eventId}); render nothing until approved`, requestedBy: identity.label, metadata: { event_id: eventId, plan: planFile } })
   console.log(`applied: ${inserted} sibling phrases inserted (content_edit_events ${eventId}); audio pass queued, nothing rendered`)
 }
 

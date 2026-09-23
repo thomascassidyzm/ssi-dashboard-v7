@@ -108,16 +108,23 @@ async function knownGenderContextFor(courseCode, voices) {
     pairs.push(...(data || []))
     if (!data || data.length < 1000) break
   }
+  // LEGO and seed known texts are anchored female (the split is for practice
+  // phrases only — Kai, 2026-09-23), and a presentation follows its LEGO.
   const legos = []
-  if (wantsPres) {
-    for (let from = 0; ; from += 1000) {
-      const { data, error } = await supabase.from('course_legos').select('lego_id, known_text').eq('course_code', courseCode).range(from, from + 999)
-      if (error) throw new Error(`course_legos (known text for presentation gender): ${error.message}`)
-      legos.push(...(data || []))
-      if (!data || data.length < 1000) break
-    }
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await supabase.from('course_legos').select('lego_id, known_text').eq('course_code', courseCode).range(from, from + 999)
+    if (error) throw new Error(`course_legos (known texts for the gendered-known rule): ${error.message}`)
+    legos.push(...(data || []))
+    if (!data || data.length < 1000) break
   }
-  const ctx = knownVoiceGender.buildKnownGenderContext({ courseCode, voices, pairs, legos })
+  const seeds = []
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await supabase.from('course_seeds').select('known_text').eq('course_code', courseCode).range(from, from + 999)
+    if (error) throw new Error(`course_seeds (known texts for the gendered-known rule): ${error.message}`)
+    seeds.push(...(data || []))
+    if (!data || data.length < 1000) break
+  }
+  const ctx = knownVoiceGender.buildKnownGenderContext({ courseCode, voices, pairs, legos, seeds })
   _knownGenderCtxMemo.set(courseCode, { at: Date.now(), ctx })
   return { ...ctx, voices }
 }

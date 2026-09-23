@@ -27,6 +27,16 @@
  *     the two forms, expanded_m/expanded_f are the pair); a text that matches
  *     either side of a stored pair takes that side's gender.
  *
+ *  2b. THE SPLIT APPLIES TO PRACTICE PHRASES ONLY (Kai, 2026-09-23, second
+ *     ruling): presentations stay in the female voice, and a LEGO's debut and
+ *     a seed's line are not practice phrases. So a known text that is a LEGO's
+ *     or a seed's known text is ANCHORED female unless its grammar binds it
+ *     (a pair beats an anchor: a male-form seed line is still spoken by the
+ *     male voice, never by a female voice in male grammar). A gendered LEGO
+ *     debuts in the FEMALE form and voice, and its male form is the FIRST
+ *     build phrase after the debut, in the male voice, same target — see
+ *     services/known-gender/gendered-known-plan.cjs.
+ *
  * NOTHING RANDOM IN THE APP. The player's ordinary phrase selection is what
  * mixes the two variants (see the proposal published with job #883·H for
  * exactly how deterministic that selection is).
@@ -115,10 +125,19 @@ function buildKnownGenderIndex(rows) {
  * is a fact about its grammar; 'hash' means the text is neutral and the coin
  * decided.
  */
-function knownGenderForText(text, index, { salt = '' } = {}) {
-  const hit = index && index.get(normalizeKnownKey(text))
+function knownGenderForText(text, index, { salt = '', anchors = null } = {}) {
+  const key = normalizeKnownKey(text)
+  const hit = index && index.get(key)
   if (hit) return { gender: hit.gender, source: 'pair', pair: { m: hit.m, f: hit.f } }
+  if (anchors && anchors.has(key)) return { gender: F, source: 'anchor' }
   return { gender: hashGender(text, salt), source: 'hash' }
+}
+
+/** The set of known texts anchored female: every LEGO's and every seed's known text. */
+function buildAnchorSet(texts) {
+  const out = new Set()
+  for (const t of texts || []) { const k = normalizeKnownKey(t); if (k) out.add(k) }
+  return out
 }
 
 /** The other form of a gendered text, or null when the text is neutral. */
@@ -161,8 +180,8 @@ function knownVoiceForGender(voices, role, gender) {
  * `text` — the intro narrates a LEGO, so it follows the LEGO's grammar, not
  * its own template wording.
  */
-function resolveKnownVoiceForText({ voices, role = 'known', text, index, salt = '' }) {
-  const { gender, source } = knownGenderForText(text, index, { salt })
+function resolveKnownVoiceForText({ voices, role = 'known', text, index, salt = '', anchors = null }) {
+  const { gender, source } = knownGenderForText(text, index, { salt, anchors })
   const voice = knownVoiceForGender(voices, role, gender)
   return { voice, gender, source }
 }
@@ -208,12 +227,13 @@ const { tryCanonicalVoiceId } = require('./clip-identity.cjs')
  *   { wantsKnown, wantsPres, index, salt, legoKnownText: Map<lego_id, known_text> }
  * Pure: hand it rows.
  */
-function buildKnownGenderContext({ courseCode, voices, pairs = [], legos = [] }) {
+function buildKnownGenderContext({ courseCode, voices, pairs = [], legos = [], seeds = [] }) {
   const wantsKnown = roleHasGenderedVoices(voices, 'known')
   const wantsPres = roleHasGenderedVoices(voices, 'presentation')
   const legoKnownText = new Map()
   for (const l of legos) if (l && l.lego_id) legoKnownText.set(l.lego_id, l.known_text)
-  return { wantsKnown, wantsPres, index: buildKnownGenderIndex(pairs), salt: courseCode, legoKnownText }
+  const anchors = buildAnchorSet([...legos.map(l => l && l.known_text), ...seeds.map(sd => sd && sd.known_text)])
+  return { wantsKnown, wantsPres, index: buildKnownGenderIndex(pairs), salt: courseCode, legoKnownText, anchors }
 }
 
 /**
@@ -226,12 +246,12 @@ function buildKnownGenderContext({ courseCode, voices, pairs = [], legos = [] })
 function knownVoiceEntryForClip(ctx, { role, text, legoId }) {
   if (!ctx) return null
   if (role === 'known' && ctx.wantsKnown) {
-    return resolveKnownVoiceForText({ voices: ctx.voices, role, text, index: ctx.index, salt: ctx.salt })
+    return resolveKnownVoiceForText({ voices: ctx.voices, role, text, index: ctx.index, salt: ctx.salt, anchors: ctx.anchors })
   }
   if (role === 'presentation' && ctx.wantsPres) {
     const legoText = legoId ? ctx.legoKnownText.get(legoId) : null
     if (!legoText) return null
-    return resolveKnownVoiceForText({ voices: ctx.voices, role, text: legoText, index: ctx.index, salt: ctx.salt })
+    return resolveKnownVoiceForText({ voices: ctx.voices, role, text: legoText, index: ctx.index, salt: ctx.salt, anchors: ctx.anchors })
   }
   return null
 }
@@ -247,6 +267,7 @@ function knownVoiceIdForClip(ctx, clip) {
 module.exports = {
   M, F,
   buildKnownGenderContext,
+  buildAnchorSet,
   knownVoiceEntryForClip,
   knownVoiceIdForClip,
   normalizeKnownKey,

@@ -148,6 +148,13 @@ describe('per-clip resolution — what phase8 asks', () => {
     expect(kvg.knownVoiceIdForClip(c2, { role: 'presentation', text: 'अंग्रेज़ी में — …' })).toBeNull()
   })
 
+  it('LEGO and seed texts are anchored female unless their grammar binds them (split is for practice phrases only)', () => {
+    const c4 = { ...kvg.buildKnownGenderContext({ courseCode: 'eng_for_hin', voices: VOICES, pairs: PAIRS, legos: [{ lego_id: 'S0001L03', known_text: 'अब' }], seeds: [{ known_text: 'मैं कोशिश कर रहा हूँ।' }] }), voices: VOICES }
+    expect(kvg.knownVoiceEntryForClip(c4, { role: 'known', text: 'अब' })).toMatchObject({ gender: 'f', source: 'anchor' })
+    expect(kvg.knownVoiceEntryForClip(c4, { role: 'known', text: 'मैं कोशिश कर रहा हूँ।' })).toMatchObject({ gender: 'm', source: 'pair' })
+    expect(kvg.knownVoiceEntryForClip(c4, { role: 'known', text: 'आपके साथ' }).source).toBe('hash')
+  })
+
   it('a course with no byGender builds a context that wants nothing', () => {
     const c3 = kvg.buildKnownGenderContext({ courseCode: 'spa_for_eng', voices: { known: { voiceId: 'azure_x', provider: 'azure' } }, pairs: [], legos: [] })
     expect(c3).toMatchObject({ wantsKnown: false, wantsPres: false })
