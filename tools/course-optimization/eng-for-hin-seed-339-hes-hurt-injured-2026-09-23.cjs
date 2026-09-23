@@ -227,6 +227,22 @@ function audioRestorePlan(oldPhrases, newPhrases) {
   return plan;
 }
 
+/**
+ * After the cascade, /seed/complete rebuilt S0339L01's component rows from the LEGO's components array, whose first entry reads
+ * काफी (no nukta) while the LEGO and the row that was live before both read काफ़ी. The row goes back to काफ़ी, with the clip that
+ * says काफ़ी (a3d1636c, the link it carried before the cut). Idempotent; runs on apply and on any later run.
+ */
+const C01 = { id: `${COURSE}:S0339L01C01`, known: 'काफ़ी', rebuilt: 'काफी', known_audio_id: 'a3d1636c-c035-429b-9087-fdd0149b0d4d' };
+async function tidyC01(sb) {
+  const row = must(await sb.from('course_practice_phrases').select('id, known_text, known_audio_id').eq('course_code', COURSE).eq('id', C01.id).maybeSingle(), 'C01');
+  if (!row || row.known_text !== C01.rebuilt) return false;
+  const clip = must(await sb.from('course_audio').select('id, text').eq('id', C01.known_audio_id).maybeSingle(), 'C01 clip');
+  if (!clip || clip.text !== C01.known) throw new Error(`clip ${C01.known_audio_id} is not the काफ़ी clip — refusing`);
+  must(await sb.from('course_practice_phrases').update({ known_text: C01.known, known_audio_id: C01.known_audio_id }).eq('course_code', COURSE).eq('id', C01.id).eq('known_text', C01.rebuilt), 'C01 tidy');
+  console.log(`  S0339L01C01 काफी → काफ़ी, clip ${C01.known_audio_id} relinked`);
+  return true;
+}
+
 async function main() {
   const apply = process.argv.includes('--apply');
   const rowsAt = process.argv.indexOf('--rows');
@@ -237,7 +253,7 @@ async function main() {
   if (offline.length) throw new Error(`offline rules: ${offline.join('; ')}`);
   console.log(`offline: ${causativeUnderInjured(OLD_PHRASES.concat([{ id: 'S0339L02', known: OLD_LEGOS[1].known, target: OLD_LEGOS[1].target }])).length} live rows carry the causative under injured English; 0 after; every phrase contains its LEGO on both sides; no bare row; no duplicate English`);
   const g = await guard(sb);
-  if (g.problems.length === 1 && g.problems[0] === 'already applied') { console.log('already applied. Nothing to do.'); return; }
+  if (g.problems.length === 1 && g.problems[0] === 'already applied') { console.log(`already applied. ${await tidyC01(sb) ? 'C01 tidied.' : 'Nothing to do.'}`); return; }
   for (const p of g.problems) console.error(`BLOCKED  ${p}`);
   if (g.problems.length) { console.error('\nBLOCKED — live state differs. Nothing written.'); process.exit(1); }
 
@@ -322,6 +338,7 @@ async function main() {
   const newPhrases = must(await sb.from('course_practice_phrases').select('*').eq('course_code', COURSE).eq('seed_number', SEED), 'phrases after');
   const plan = audioRestorePlan(g.phrases, newPhrases);
   for (const p of plan) must(await sb.from('course_practice_phrases').update(p.set).eq('course_code', COURSE).eq('id', p.id), `restore ${p.id}`);
+  await tidyC01(sb);
   console.log(`clip links restored: ${plan.filter(p => p.kind === 'byte-identical').length} byte-identical rows (all links + metadata), ${plan.filter(p => p.kind === 'english-line').length} English lines the old basket had (target links only)`);
 
   // 4. pending Frame A intros in the presentation voice for both LEGOs (the mastered ones quote the old causative seed line)
@@ -352,5 +369,5 @@ async function main() {
   const ev = evidencePath(`tools/course-optimization/${SWEEP}.json`); fs.writeFileSync(ev, JSON.stringify(out, null, 1)); console.log(`evidence: ${ev}`);
 }
 
-module.exports = { COURSE, SEED, OLD_SEED, NEW_SEED, SEED_345_REWORD, EXPECTED_CAUSED, OLD_LEGOS, OLD_PHRASES, OLD_L02_PHRASES, OLD_L03_PHRASES, HURT, HURT_BUILD, HURT_USE, LEGOS, CAUSATIVE, INJURED_ENGLISH, causativeUnderInjured, containsInOrder, legoWordsInSeed, allRows, newRows, offlineCheck, audioRestorePlan };
+module.exports = { C01, tidyC01, COURSE, SEED, OLD_SEED, NEW_SEED, SEED_345_REWORD, EXPECTED_CAUSED, OLD_LEGOS, OLD_PHRASES, OLD_L02_PHRASES, OLD_L03_PHRASES, HURT, HURT_BUILD, HURT_USE, LEGOS, CAUSATIVE, INJURED_ENGLISH, causativeUnderInjured, containsInOrder, legoWordsInSeed, allRows, newRows, offlineCheck, audioRestorePlan };
 if (require.main === module) main().catch((e) => { console.error(e.stack || e.message); process.exit(1); });
