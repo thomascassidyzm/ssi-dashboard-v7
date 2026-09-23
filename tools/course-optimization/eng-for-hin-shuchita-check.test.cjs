@@ -6,9 +6,17 @@
 // `beforeFlagged` drops to 0) and to pass with them in place.
 import { describe, it, expect } from 'vitest';
 const { RULES, runDeterministic } = require('./eng-for-hin-shuchita-rulebook.cjs');
-const { calibrate, normaliseInput } = require('./eng-for-hin-shuchita-check.cjs');
+const { calibrate, normaliseInput, parseJudgeReply, crossSeedContext, judgePrompt } = require('./eng-for-hin-shuchita-check.cjs');
 
 const det = RULES.filter(r => r.kind === 'deterministic');
+
+describe('the published counts', () => {
+  it('is 32 deterministic + 6 judged rules (the #891 page said 33; corrected by #900·H)', () => {
+    expect(det).toHaveLength(32);
+    expect(RULES.filter(r => r.kind === 'judged')).toHaveLength(6);
+    expect(RULES).toHaveLength(38);
+  });
+});
 
 describe('her own before/after pairs (474 lines from 221 redo notes)', () => {
   const rep = calibrate();
@@ -16,14 +24,21 @@ describe('her own before/after pairs (474 lines from 221 redo notes)', () => {
     expect(rep.pairs).toBeGreaterThan(400);
     expect(rep.beforeCoveragePct).toBeGreaterThanOrEqual(20);
   });
+  // Seen to fail (job #900·H) with the four note-fragment pairs un-marked in the fixture: H-SUBJECT-PRONOUN
+  // flagged "and CPM सकता हूँ" and H-FRAMES flagged "later CMP में → on should be one phrase बाद में" —
+  // her shorthand notes mis-aligned as lines, which the earlier ≤-before tolerance let through.
   for (const r of rep.rules) {
-    const rule = det.find(x => x.id === r.rule);
-    it(`${r.rule} never contradicts her: after-lines it flags ≤ before-lines it flags`, () => {
-      expect(r.afterFlagged).toBeLessThanOrEqual(Math.max(r.beforeFlagged, rule.id === 'H-NUKTA' ? 99 : 0));
+    it(`${r.rule} never contradicts her: no after-line it flags${r.rule === 'H-NUKTA' ? ' (except her un-dotted यकीन)' : ''}`, () => {
+      expect(r.afterFlagged).toBe(r.rule === 'H-NUKTA' ? r.afterFlagged : 0);
     });
   }
+  it('exactly the four note fragments are excluded, and they are named in the fixture', () => {
+    expect(rep.excludedNoteFragments).toBe(4);
+    expect(rep.pairs).toBe(470);
+  });
   it('H-NUKTA false positives are only her own un-dotted typing of यकीन (the seed-99 ruling wins)', () => {
     const n = rep.rules.find(r => r.rule === 'H-NUKTA');
+    expect(n.afterFlagged).toBeGreaterThan(0);
     expect(n.afterFalse.every(f => /यकीन/.test(f.known))).toBe(true);
   });
 });
@@ -105,5 +120,54 @@ describe('batch input (the 92-cut LEGO batch and the gendered phrase design)', (
     expect(rows).toHaveLength(2);
     expect(rows[1].role).toBe('use');
     expect(runDeterministic(rows[1]).map(h => h.rule)).toContain('H-NUKTA');
+  });
+});
+
+describe('the judged pass: silence is not approval (job #900·H, after Astra\'s cold verify)', () => {
+  // Seen to fail on the #891 code, where `j.hits || []` read {} as a clean seed.
+  it('an empty {} reply is an error, not a clean seed', () => {
+    expect(parseJudgeReply(348, '{}').error).toMatch(/no "hits" array/);
+  });
+  it('prose with no JSON, truncated JSON, and hits of the wrong shape are errors', () => {
+    expect(parseJudgeReply(1, 'The seed looks fine to me.').error).toMatch(/no JSON/);
+    expect(parseJudgeReply(1, '{"hits":[{"id":"x"').error).toBeDefined();
+    expect(parseJudgeReply(1, '{"hits":"none"}').error).toBeDefined();
+    expect(parseJudgeReply(1, '{"hits":null}').error).toBeDefined();
+  });
+  it('only {"hits":[…]} is a verdict; an empty array is clean', () => {
+    expect(parseJudgeReply(1, 'Here you go:\n{"hits":[]}')).toEqual({ seed: 1, hits: [] });
+    expect(parseJudgeReply(1, '{"hits":[{"id":"S0348L02","rule":"J-FIDELITY","message":"m","proposed":null,"confidence":"high"}]}').hits).toHaveLength(1);
+  });
+});
+
+describe('the judged pass sees other seeds (seed 348 vs seed 201)', () => {
+  const seed348 = [
+    { seed: 348, id: 'S0348L02', role: 'lego', known: 'क्या होने वाला है', target: 'what was going to happen' },
+    { seed: 348, id: 'eng_for_hin:S0348L02B01', role: 'build', known: 'मुझे नहीं पता क्या होने वाला है', target: "I didn't know what was going to happen" },
+  ];
+  const course = [
+    ...seed348,
+    { seed: 201, id: 'S0201L03', role: 'lego', known: 'क्या होने वाला है', target: 'what is going to happen' },
+    { seed: 201, id: 'eng_for_hin:S0201L03U02', role: 'use', known: 'मुझे यक़ीन नहीं है कि क्या होने वाला है।', target: "I'm not sure what is going to happen" },
+    { seed: 12, id: 'eng_for_hin:S0012L01C01', role: 'component', known: 'क्या होने वाला है', target: 'what is going to happen' },
+    { seed: 400, id: 'S0400L01', role: 'lego', known: 'क्या होगा', target: 'what was going to happen' },
+  ];
+  // Seen to fail on the #891 code: judgeSeed took the seed's rows only, so nothing outside seed 348 reached the judge.
+  it('same Hindi with a different English elsewhere is surfaced as a fidelity clash, ignoring punctuation and case', () => {
+    const ctx = crossSeedContext(seed348, course);
+    const clash = ctx.filter(c => c.kind === 'same-hindi-different-english');
+    expect(clash.map(c => c.id)).toEqual(['S0201L03']);
+    expect(clash[0].seed).toBe(201);
+  });
+  it('same English under different Hindi elsewhere is shown too, but labelled as allowed', () => {
+    const ctx = crossSeedContext(seed348, course);
+    expect(ctx.filter(c => c.kind === 'same-english-different-hindi').map(c => c.id)).toEqual(['S0400L01']);
+    expect(judgePrompt(348, seed348, ctx)).toMatch(/ELSEWHERE IN THE COURSE[\s\S]*seed 201 S0201L03 \[same-hindi-different-english\] क्या होने वाला है → what is going to happen/);
+  });
+  it('the seed\'s own rows and component rows never count as context', () => {
+    expect(crossSeedContext(seed348, course).some(c => c.seed === 348 || c.role === 'component')).toBe(false);
+  });
+  it('the prompt says so when there is nothing elsewhere', () => {
+    expect(judgePrompt(5, seed348.slice(0, 1), [])).toMatch(/no other seed shares/);
   });
 });

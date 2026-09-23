@@ -12,6 +12,9 @@
 //     474 before/after pairs are in eng-for-hin-shuchita-calibration.json. HIGH confidence.
 // Where the two phases disagree, Phase 2 wins (it is later, explicit and signed).
 //
+// COUNT: 32 deterministic rules + 6 judged rules (the #891 commit message and its published page
+// said 33 deterministic; that was a miscount, corrected by job #900·H — the test pins 32 + 6).
+//
 // HONESTY RULE (Kai): where her intent is ambiguous the rule says so in `confidence` and `note`,
 // and the checker reports it as a question, not a fix. No rule here was invented; each carries the
 // seed(s) it came from. A rule marked `kind: 'judged'` cannot be decided by pattern-matching and

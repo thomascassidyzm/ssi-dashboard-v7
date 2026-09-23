@@ -14,7 +14,11 @@
 // audio-pass request, APPENDING to any pending reason. Never renders TTS. Never touches approved_at:
 // these edits are her own rulings applied, not new content — the report says which seeds were touched.
 //
-//   node tools/course-optimization/eng-for-hin-shuchita-apply-2026-09-23.cjs --hits hits.json [--seeds 128,132] [--apply]
+//   node tools/course-optimization/eng-for-hin-shuchita-apply-2026-09-23.cjs --hits hits.json [--seeds 128,132] [--rules H-NUKTA] [--apply]
+//
+// --rules restricts the sweep to the named rule ids (job #900·H: the course-wide nukta pass Kai
+// approved on 2026-09-23 must apply H-NUKTA and nothing else, however many other 'fix' hits the
+// 280 seeds carry). The audio-pass reason names the rules applied.
 
 'use strict';
 const path = require('path');
@@ -26,9 +30,9 @@ const args = process.argv.slice(2);
 const opt = (n) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : null; };
 const APPLY = args.includes('--apply');
 
-function selectFixes(hitsFile, seedsFilter) {
+function selectFixes(hitsFile, seedsFilter, rulesFilter = null) {
   const hits = JSON.parse(fs.readFileSync(hitsFile, 'utf8')).hits || [];
-  const fixes = hits.filter(h => h.kind === 'deterministic' && h.severity === 'fix' && h.proposed && (h.proposed.known || h.proposed.target) && h.role !== 'seed');
+  const fixes = hits.filter(h => h.kind === 'deterministic' && h.severity === 'fix' && h.proposed && (h.proposed.known || h.proposed.target) && h.role !== 'seed' && (!rulesFilter || rulesFilter.includes(h.rule)));
   const byId = {};
   for (const h of fixes) {
     if (seedsFilter && !seedsFilter.includes(h.seed)) continue;
@@ -54,7 +58,8 @@ function applyOnTop(working, original, proposed) {
 async function main() {
   const hitsFile = opt('--hits'); if (!hitsFile) throw new Error('--hits <file> required');
   const seedsFilter = opt('--seeds') ? opt('--seeds').split(',').map(Number) : null;
-  const fixes = selectFixes(hitsFile, seedsFilter);
+  const rulesFilter = opt('--rules') ? opt('--rules').split(',') : null;
+  const fixes = selectFixes(hitsFile, seedsFilter, rulesFilter);
   console.log(`${APPLY ? 'APPLY' : 'DRY RUN'}: ${fixes.length} row(s) across seeds ${[...new Set(fixes.map(f => f.seed))].sort((a, b) => a - b).join(' ') || '-'}`);
   for (const f of fixes) console.log(`  ${f.id} [${f.rules.join(',')}]\n     ${f.known} → ${f.target}\n     ${f.newKnown} → ${f.newTarget}`);
   if (!fixes.length) return;
@@ -97,7 +102,8 @@ async function main() {
   // audio pass: append, never replace (the #880·H rail)
   const { appendAudioPassReason } = require('./eng-for-hin-mark-21-348-new-2026-09-23.cjs');
   const pending = must(await supabase.from('audio_pass_requests').select('id,reason').eq('course_code', COURSE).eq('status', 'pending').order('created_at', { ascending: false }).limit(1), 'pending audio pass');
-  const reason = `${SWEEP}: ${fixes.length} Hindi spelling row(s) in seeds ${seeds.join(',')}`;
+  const rulesApplied = [...new Set(fixes.flatMap(f => f.rules))].join(',');
+  const reason = `${SWEEP} (${rulesApplied}): ${fixes.length} row(s) in ${seeds.length} seed(s)${seeds.length <= 12 ? ' ' + seeds.join(',') : ''} — text only, no TTS; Kai approved the course-wide nukta 2026-09-23 16:30Z`;
   if (pending && pending.length) {
     must(await supabase.from('audio_pass_requests').update({ reason: appendAudioPassReason(pending[0].reason || '', reason) }).eq('id', pending[0].id), 'append audio pass reason');
     console.log('audio pass: appended to pending request', pending[0].id);

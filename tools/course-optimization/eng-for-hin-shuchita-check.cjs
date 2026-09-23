@@ -24,6 +24,16 @@
 //
 // Exit code: 0 clean, 1 hits, 2 error. A seed is "clean" only with zero deterministic hits AND
 // (if --judge) zero judged hits — the re-approval bar in the brief.
+//
+// THE JUDGED PASS (fixed 2026-09-23, job #900·H, after Astra's cold verify of #891):
+//   - a judge reply that is not {"hits":[…]} — empty {}, no JSON, bad JSON, hits missing or not
+//     an array — is a J-ERROR hit on that seed, never a clean seed. Silence is not approval.
+//   - each judge call carries CROSS-SEED CONTEXT: every other row in the course whose Hindi
+//     matches a row of this seed (same prompt, different English elsewhere → a ZUT / fidelity
+//     clash, e.g. seed 348 "क्या होने वाला है → what was going to happen" against seed 201 "… →
+//     what is going to happen") and every row whose English matches (same answer, different
+//     Hindi elsewhere — allowed, but the judge should see it). Built from the whole course when
+//     the DB is reachable; from the batch alone under --input without a DB.
 
 'use strict';
 const path = require('path');
@@ -99,7 +109,11 @@ async function unapprovedSeeds(sb) {
 // ---------------------------------------------------------------------------------------------
 function calibrate() {
   const fx = JSON.parse(fs.readFileSync(path.join(__dirname, 'eng-for-hin-shuchita-calibration.json'), 'utf8'));
-  const pairs = fx.pairs;
+  // Four pairs are her note text mis-aligned as an "after" line ("and CPM सकता हूँ", "later CMP में →
+  // on should be one phrase …"): her shorthand for a component row, not a line she wrote. They are
+  // kept in the fixture, marked note_fragment, and excluded here so a false "after" hit is a real one.
+  const pairs = fx.pairs.filter(p => !p.note_fragment);
+  const excluded = fx.pairs.length - pairs.length;
   const per = {};
   for (const r of RULES.filter(r => r.kind === 'deterministic')) per[r.id] = { rule: r.id, precedentSeeds: [...new Set(r.precedent.map(p => p.seed))], beforeFlagged: 0, afterFlagged: 0, beforeOnPrecedentSeed: 0, afterFalse: [] };
   let anyBefore = 0;
@@ -110,12 +124,12 @@ function calibrate() {
     for (const h of b) { per[h.rule].beforeFlagged++; if (per[h.rule].precedentSeeds.includes(p.seed)) per[h.rule].beforeOnPrecedentSeed++; }
     for (const h of a) { per[h.rule].afterFlagged++; if (per[h.rule].afterFalse.length < 5) per[h.rule].afterFalse.push({ seed: p.seed, known: p.after.known, target: p.after.target, message: h.message }); }
   }
-  const report = { pairs: pairs.length, beforeLinesFlaggedByAnyRule: anyBefore, beforeCoveragePct: Math.round(1000 * anyBefore / pairs.length) / 10, rules: Object.values(per) };
+  const report = { pairs: pairs.length, excludedNoteFragments: excluded, beforeLinesFlaggedByAnyRule: anyBefore, beforeCoveragePct: Math.round(1000 * anyBefore / pairs.length) / 10, rules: Object.values(per) };
   return report;
 }
 
 function printCalibration(rep) {
-  console.log(`Calibration: ${rep.pairs} before/after pairs from her notes; deterministic rules flag ${rep.beforeLinesFlaggedByAnyRule} of the "before" lines (${rep.beforeCoveragePct}%). The rest of her corrections are judged rules (word order, calque, fidelity) — see --judge.`);
+  console.log(`Calibration: ${rep.pairs} before/after pairs from her notes (${rep.excludedNoteFragments} note fragments excluded); deterministic rules flag ${rep.beforeLinesFlaggedByAnyRule} of the "before" lines (${rep.beforeCoveragePct}%). The rest of her corrections are judged rules (word order, calque, fidelity) — see --judge.`);
   console.log('rule'.padEnd(24), 'before✓'.padEnd(9), 'on-own-seed'.padEnd(12), 'after✗ (false positives)');
   for (const r of rep.rules) console.log(r.rule.padEnd(24), String(r.beforeFlagged).padEnd(9), String(r.beforeOnPrecedentSeed).padEnd(12), String(r.afterFlagged), r.afterFalse.length ? '  e.g. seed ' + r.afterFalse[0].seed + ': ' + r.afterFalse[0].message : '');
 }
@@ -123,11 +137,67 @@ function printCalibration(rep) {
 // ---------------------------------------------------------------------------------------------
 // Judged rules via the Claude CLI (never the SDK)
 // ---------------------------------------------------------------------------------------------
-function judgeSeed(seed, rows) {
-  const { execFileSync } = require('child_process');
+const normText = (t) => String(t || '').toLowerCase().replace(/[।.,!?;:"'\u2018\u2019\u201c\u201d()\-]/g, ' ').replace(/\s+/g, ' ').trim();
+
+/**
+ * Cross-seed context for the judge: rows from OTHER seeds that share a Hindi prompt or an English
+ * answer with a row of this seed. Same Hindi → different English elsewhere is the fidelity clash
+ * the single-seed judge could never see (seed 348 vs seed 201). Pure; tested.
+ */
+function crossSeedContext(seedRows, courseRows, { maxPerRow = 6 } = {}) {
+  const seed = seedRows.length ? seedRows[0].seed : null;
+  const byKnown = new Map(), byTarget = new Map();
+  for (const r of courseRows) {
+    if (r.seed === seed || r.role === 'component') continue;
+    const k = normText(r.known), t = normText(r.target);
+    if (k) (byKnown.get(k) || byKnown.set(k, []).get(k)).push(r);
+    if (t) (byTarget.get(t) || byTarget.set(t, []).get(t)).push(r);
+  }
+  const out = [];
+  const seen = new Set();
+  for (const r of seedRows) {
+    if (r.role === 'component') continue;
+    const k = normText(r.known), t = normText(r.target);
+    const sameKnown = (byKnown.get(k) || []).filter(o => normText(o.target) !== t);
+    const sameTarget = (byTarget.get(t) || []).filter(o => normText(o.known) !== k);
+    for (const [kind, list] of [['same-hindi-different-english', sameKnown], ['same-english-different-hindi', sameTarget]]) {
+      for (const o of list.slice(0, maxPerRow)) {
+        const key = `${r.id}|${o.id}|${kind}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        out.push({ forRow: r.id, kind, seed: o.seed, id: o.id, role: o.role, known: o.known, target: o.target });
+      }
+    }
+  }
+  return out;
+}
+
+function judgePrompt(seed, rows, context) {
   const rules = judgedRules().map(r => `## ${r.id} — ${r.title}\n${r.note || ''}\nHer precedents:\n${r.precedent.map(p => `- seed ${p.seed}: ${p.before ? `BEFORE ${p.before} → ` : ''}AFTER ${p.after}${p.note ? ` (${p.note})` : ''}`).join('\n')}`).join('\n\n');
   const lines = rows.map(r => `${r.id} [${r.role}] ${r.known} → ${r.target}`).join('\n');
-  const prompt = `You are standing in for Shuchita, the native Hindi proofreader of the SaySomethingin course "English for Hindi speakers" (Hindi is the KNOWN prompt, English is the TARGET answer). She is no longer available. Judge the rows of seed ${seed} below ONLY against the rules she actually made, listed with her own precedents. Do not invent rules. Where her intent would be ambiguous, say "ambiguous" rather than ruling.\n\n${rules}\n\nROWS (id [role] Hindi → English):\n${lines}\n\nReply with JSON only: {"hits":[{"id":"<row id>","rule":"<rule id>","message":"<one line: what is wrong, in her terms>","proposed":{"known":"<Hindi, or null>","target":"<English, or null>"},"confidence":"high|medium|ambiguous"}]}. An empty hits array means the seed is clean under her judged rules.`;
+  const ctx = context.length
+    ? `\n\nELSEWHERE IN THE COURSE (other seeds sharing a Hindi prompt or an English answer with a row above — a SAME Hindi prompt reaching a DIFFERENT English answer is a J-FIDELITY clash; the same English under different Hindi is allowed):\n${context.map(c => `${c.forRow} ↔ seed ${c.seed} ${c.id} [${c.kind}] ${c.known} → ${c.target}`).join('\n')}`
+    : '\n\nELSEWHERE IN THE COURSE: no other seed shares a Hindi prompt or an English answer with these rows.';
+  return `You are standing in for Shuchita, the native Hindi proofreader of the SaySomethingin course "English for Hindi speakers" (Hindi is the KNOWN prompt, English is the TARGET answer). She is no longer available. Judge the rows of seed ${seed} below ONLY against the rules she actually made, listed with her own precedents. Do not invent rules. Where her intent would be ambiguous, say "ambiguous" rather than ruling.\n\n${rules}\n\nROWS (id [role] Hindi → English):\n${lines}${ctx}\n\nReply with JSON only: {"hits":[{"id":"<row id>","rule":"<rule id>","message":"<one line: what is wrong, in her terms>","proposed":{"known":"<Hindi, or null>","target":"<English, or null>"},"confidence":"high|medium|ambiguous"}]}. An empty hits array means the seed is clean under her judged rules. Always include the "hits" key, even when it is empty.`;
+}
+
+/**
+ * The only way a judge reply counts as a verdict is {"hits":[…]} with hits an array. {} , prose,
+ * truncated JSON, or hits of any other shape is an error — the seed is NOT clean. Pure; tested.
+ */
+function parseJudgeReply(seed, out) {
+  const text = String(out || '');
+  const m = text.match(/\{[\s\S]*\}/);
+  if (!m) return { seed, error: 'no JSON in judge reply', raw: text.slice(0, 2000) };
+  let j;
+  try { j = JSON.parse(m[0]); } catch (e) { return { seed, error: 'bad JSON in judge reply', raw: text.slice(0, 2000) }; }
+  if (!j || typeof j !== 'object' || !Array.isArray(j.hits)) return { seed, error: 'judge reply has no "hits" array (an empty {} is not a verdict)', raw: text.slice(0, 2000) };
+  return { seed, hits: j.hits };
+}
+
+function judgeSeed(seed, rows, context = []) {
+  const { execFileSync } = require('child_process');
+  const prompt = judgePrompt(seed, rows, context);
   // The estate's nested-CLI convention: services/shared/claude-config.cjs pins the config dir and
   // the OAuth token (a worker's own $CLAUDE_CONFIG_DIR is not logged in for nested calls).
   const { claudeEnv } = require('../../services/shared/claude-config.cjs');
@@ -135,10 +205,23 @@ function judgeSeed(seed, rows) {
   const homes = [process.env.HOME, (() => { try { return require('os').userInfo().homedir; } catch (e) { return null; } })()].filter(Boolean);
   const candidates = [process.env.CLAUDE_BIN, ...homes.map(h => path.join(h, '.local', 'bin', 'claude'))].filter(Boolean);
   const bin = candidates.find(c => fs.existsSync(c)) || 'claude';
-  const out = execFileSync(bin, ['--print', '--output-format', 'text'], { input: prompt, env, maxBuffer: 8 * 1024 * 1024, timeout: 300000 }).toString();
-  const m = out.match(/\{[\s\S]*\}/);
-  if (!m) return { seed, error: 'no JSON in judge reply', raw: out.slice(0, 2000) };
-  try { return { seed, ...JSON.parse(m[0]) }; } catch (e) { return { seed, error: 'bad JSON in judge reply', raw: out.slice(0, 2000) }; }
+  let out;
+  try {
+    out = execFileSync(bin, ['--print', '--output-format', 'text'], { input: prompt, env, maxBuffer: 8 * 1024 * 1024, timeout: 300000 }).toString();
+  } catch (e) {
+    return { seed, error: 'judge call failed: ' + (e.message || String(e)).split('\n')[0], raw: '' };
+  }
+  return parseJudgeReply(seed, out);
+}
+
+/** Every non-component row of the course, for cross-seed context (one read, ~13k rows). */
+async function courseRows(sb) {
+  const legos = await pageAll(sb.from('course_legos').select('lego_id, seed_number, known_text, target_text').eq('course_code', COURSE).order('seed_number'));
+  const phrases = await pageAll(sb.from('course_practice_phrases').select('id, seed_number, phrase_role, known_text, target_text').eq('course_code', COURSE).neq('phrase_role', 'component').order('seed_number'));
+  return [
+    ...legos.map(l => ({ seed: l.seed_number, id: l.lego_id, role: 'lego', known: l.known_text, target: l.target_text })),
+    ...phrases.map(p => ({ seed: p.seed_number, id: p.id, role: p.phrase_role, known: p.known_text, target: p.target_text })),
+  ];
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -173,10 +256,12 @@ async function main() {
   }
 
   let rows = [];
+  let sb = null;
   if (opt('--input')) {
     rows = normaliseInput(JSON.parse(fs.readFileSync(opt('--input'), 'utf8')));
+    if (has('--judge')) { try { sb = await supabaseClient(); } catch (e) { console.error('note: no DB for cross-seed context (' + e.message + '); judging against the batch alone'); } }
   } else {
-    const sb = await supabaseClient();
+    sb = await supabaseClient();
     if (opt('--seeds')) rows = await rowsForSeeds(sb, opt('--seeds').split(',').map(Number));
     else if (opt('--since')) rows = await rowsSince(sb, opt('--since'));
     else if (has('--unapproved')) rows = await rowsForSeeds(sb, await unapprovedSeeds(sb));
@@ -187,9 +272,14 @@ async function main() {
   const hits = [];
   for (const r of rows) for (const h of runDeterministic(r)) hits.push({ kind: 'deterministic', seed: r.seed, id: r.id, role: r.role, known: r.known, target: r.target, ...h });
   if (has('--judge')) {
+    // cross-seed context comes from the whole course when we can read it, plus the batch itself
+    // (a batch row not yet in the DB still clashes with another batch row)
+    const course = sb ? await courseRows(sb) : [];
+    const pool = [...course.filter(c => !rows.some(r => r.id === c.id)), ...rows];
     for (const seed of seeds) {
-      const j = judgeSeed(seed, rows.filter(r => r.seed === seed && r.role !== 'component'));
-      if (j.error) { hits.push({ kind: 'judged', seed, id: '-', role: '-', known: '', target: '', rule: 'J-ERROR', message: j.error + ': ' + (j.raw || '').slice(0, 300), proposed: null }); continue; }
+      const seedRows = rows.filter(r => r.seed === seed && r.role !== 'component');
+      const j = judgeSeed(seed, seedRows, crossSeedContext(seedRows, pool));
+      if (j.error || !Array.isArray(j.hits)) { hits.push({ kind: 'judged', seed, id: '-', role: '-', known: '', target: '', rule: 'J-ERROR', message: j.error + ': ' + (j.raw || '').slice(0, 300), proposed: null }); continue; }
       for (const h of (j.hits || [])) {
         const row = rows.find(r => r.id === h.id) || {};
         const rule = RULES.find(x => x.id === h.rule);
@@ -206,4 +296,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch(e => { console.error('CHECK FAILED:', e.message); process.exit(2); });
-module.exports = { calibrate, normaliseInput, toMarkdown };
+module.exports = { calibrate, normaliseInput, toMarkdown, parseJudgeReply, crossSeedContext, judgePrompt };
