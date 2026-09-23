@@ -24,6 +24,7 @@ const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cj
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
+const { rehomeAllReviewSeed, paddedBlocksToDemote } = require('../lib/all-review-seed.cjs'); // all-review seeds: re-home, never pad (Kai, 2026-09-23)
 
 // ---------------------------------------------------------------------------
 // Validation-sweep helpers (extracted from the /v2/validate loop so the sweep
@@ -375,6 +376,21 @@ module.exports = function(ctx) {
           }
         }
 
+
+        // KAI'S RULE (2026-09-23, job #932·H): a seed whose ONLY non-duplicate LEGO is a block glued from earlier LEGO
+        // pairs is an all-review seed. The block is not new — it exists to keep the seed alive — so it is demoted to a
+        // duplicate here and the seed's sentence is re-homed below (5c). Rule and test: ../lib/all-review-seed.cjs.
+        if (newCount === 1) {
+          const priorPairs = [...knownLegoMap.values()].filter(l => l.seed_number < draft.seed_number);
+          const dupIds = new Set([...legoStatuses].filter(([, st]) => st !== 'new').map(([idx]) => `S${String(draft.seed_number).padStart(4, '0')}L${String(idx).padStart(2, '0')}`));
+          for (const d of paddedBlocksToDemote(draftLegos.map(l => ({ ...l, seed_number: draft.seed_number })), dupIds, priorPairs)) {
+            const lego = draftLegos.find(l => `S${String(draft.seed_number).padStart(4, '0')}L${String(l.idx).padStart(2, '0')}` === d.lego_id);
+            legoStatuses.set(lego.idx, 'duplicate');
+            knownLegoMap.delete(normalizeForZUT(lego.known));
+            newCount--; totalDeduplicated++;
+            console.log(`  ${d.lego_id}: padded block (${d.pieces.join(' + ')}) — demoted, seed ${draft.seed_number} is all-review and will be re-homed`);
+          }
+        }
         dedupResults.set(draft.seed_number, legoStatuses);
 
         if (newCount === 0 && draftLegos.length > 0 && collisions.filter(c => c.seed_number === draft.seed_number).length === 0) {
@@ -525,75 +541,14 @@ module.exports = function(ctx) {
           }
         }
 
-        // 5c. Handle empty seeds — attach seed sentence as USE phrase to highest-indexed introducing LEGO
+        // 5c. All-review seed: re-home its sentence under the LEGO that completes its coverage — never a padded block.
+        // Kai's ruling 2026-09-23 (job #932·H); rule, reasons and test in ../lib/all-review-seed.cjs. Throws on a
+        // failed insert: the old copy of this block swallowed its error and keyed its lookup on the whole string, so it
+        // wrote nothing for eng_for_hin on 2 Sept 2026 and nobody knew (d/aa26b755).
         if (emptySeedNumbers.includes(draft.seed_number)) {
-          const { data: allNewLegos } = await ctx.supabase
-            .from('course_legos')
-            .select('seed_number, lego_index, target_text')
-            .eq('course_code', courseCode)
-            .eq('is_new', true)
-            .lt('seed_number', draft.seed_number)
-            .order('seed_number');
-
-          const wordIntroducedBy = {};
-          for (const l of (allNewLegos || [])) {
-            const words = extractVocab(l.target_text, chinese);
-            for (const w of words) {
-              if (!wordIntroducedBy[w]) {
-                wordIntroducedBy[w] = { seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text };
-              }
-            }
-          }
-
-          const seedWords = extractVocab(draft.target_text, chinese);
-          let bestSeedNum = -1, bestLegoIdx = -1, bestLegoTarget = null;
-
-          for (const w of seedWords) {
-            const intro = wordIntroducedBy[w];
-            if (!intro) continue;
-            if (intro.seed_number > bestSeedNum || (intro.seed_number === bestSeedNum && intro.lego_index > bestLegoIdx)) {
-              bestSeedNum = intro.seed_number;
-              bestLegoIdx = intro.lego_index;
-              bestLegoTarget = intro.target_text;
-            }
-          }
-
-          if (bestSeedNum >= 0 && isBareLegoPhrase(draft.target_text, bestLegoTarget)) {
-            console.log(`  Empty seed ${draft.seed_number} skipped — its sentence IS the LEGO "${bestLegoTarget}", which the learner already meets at debut`);
-          } else if (bestSeedNum >= 0) {
-            const { data: existingPhrases } = await ctx.supabase
-              .from('course_practice_phrases')
-              .select('position, phrase_role')
-              .eq('course_code', courseCode)
-              .eq('seed_number', bestSeedNum)
-              .eq('lego_index', bestLegoIdx);
-
-            const maxPos = existingPhrases?.reduce((max, p) => Math.max(max, p.position), 0) || 0;
-            const existingUseCount = existingPhrases?.filter(p => p.phrase_role === 'use').length || 0;
-
-            const usePhraseRow = {
-              id: makePhraseId(courseCode, bestSeedNum, bestLegoIdx, 'use', existingUseCount + 1),
-              course_code: courseCode,
-              seed_number: bestSeedNum,
-              lego_index: bestLegoIdx,
-              position: maxPos + 1,
-              known_text: draft.known_text,
-              target_text: draft.target_text,
-              word_count: draft.target_text.length,
-              lego_count: (draft.known_text.match(/\s+/g) || []).length + 1,
-              phrase_role: 'use',
-              connected_lego_ids: [],
-              lego_position: computeLegoPosition(draft.target_text, bestLegoTarget),
-              metadata: { format: 'build_use', source: 'seed_sentence', source_seed: draft.seed_number, score: 8 },
-              status: 'draft',
-              version: 1,
-              last_edit_event_id: eventId
-            };
-            await ctx.supabase.from('course_practice_phrases').insert(usePhraseRow);
-            // Build-time phrase decomposition. Non-blocking — see writer module.
-            await decoratePhrasesWithDecomposition(ctx.supabase, [usePhraseRow]);
-            console.log(`  Empty seed ${draft.seed_number} -> USE phrase for S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`);
-          }
+          const rehome = await rehomeAllReviewSeed(ctx.supabase, { course_code: courseCode, seed_number: draft.seed_number, known_text: draft.known_text, target_text: draft.target_text, eventId });
+          // Build-time phrase decomposition. Non-blocking — see writer module.
+          if (rehome.outcome === 'rehomed') await decoratePhrasesWithDecomposition(ctx.supabase, [rehome.row]);
         }
 
         seedsWritten++;

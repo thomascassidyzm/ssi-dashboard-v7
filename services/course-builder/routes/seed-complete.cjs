@@ -89,6 +89,7 @@ const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
+const { rehomeAllReviewSeed, paddedBlocksToDemote, loadPriorNewLegos } = require('../lib/all-review-seed.cjs'); // all-review seeds: re-home, never pad (Kai, 2026-09-23)
 const {
   isBlockedByCheckpoint, getCheckpointStatus, getCheckpointConfig,
   isCheckpointRequired, approveCheckpoint, isQAPending,
@@ -1198,6 +1199,23 @@ module.exports = function seedCompleteRoutes(ctx) {
         }
       }
 
+
+      // KAI'S RULE (2026-09-23, job #932·H): a seed whose ONLY non-duplicate LEGO is a block glued from earlier LEGO
+      // pairs (both sides tile exactly from taught pieces) is an all-review seed. The block exists only to keep the
+      // seed alive, so it is demoted to a duplicate here — no baskets, is_new = false — and the seed's sentence is
+      // re-homed at the end of the write (never padded). Rule, reasons and test: ../lib/all-review-seed.cjs.
+      if (!isDraft) {
+        const idOf = (l) => `${seedId}L${String(l.idx).padStart(2, '0')}`;
+        const dupIds = new Set(duplicateLegos.map(d => d.lego_id));
+        const demote = paddedBlocksToDemote(legos.map(l => ({ ...l, seed_number })), dupIds, await loadPriorNewLegos(ctx.supabase, course_code, seed_number));
+        for (const d of demote) {
+          const lego = legos.find(l => idOf(l) === d.lego_id);
+          duplicateLegos.push({ lego_id: d.lego_id, known: lego.known, target: lego.target, original: d.pieces.join('+'), padded_block: true });
+          warnings.push({ type: 'padded_block', lego_id: d.lego_id, pieces: d.pieces, message: `${d.lego_id} is glued from taught LEGOs (${d.pieces.join(' + ')}) and is the seed's only new LEGO — demoted; the seed is all-review and its sentence is re-homed under ${d.pieces[d.pieces.length - 1]} instead (Kai, 2026-09-23)` });
+          console.log(`  ${d.lego_id}: padded block (${d.pieces.join(' + ')}) — demoted, seed is all-review`);
+        }
+      }
+
       if (zutViolations.length > 0) {
         errors.push({
           type: 'zut',
@@ -2124,91 +2142,12 @@ module.exports = function seedCompleteRoutes(ctx) {
         console.log(`  ${legoId}: ${lego.known} → ${lego.target} (${allPhraseRows.length} phrases${buildupInfo})`);
       }
 
-      // EMPTY SEED HANDLING: add seed sentence as USE phrase for newest-word LEGO
+      // ALL-REVIEW SEED: every LEGO a duplicate. Re-home the sentence under the LEGO that completes its coverage —
+      // never a padded block. Kai's ruling 2026-09-23 (job #932·H); rule, reasons and test in ../lib/all-review-seed.cjs.
+      // Throws on a failed insert: the old copy here swallowed its error and keyed its lookup on the whole string.
       if (skippedDuplicates === legos.length && skippedDuplicates > 0) {
-        const { data: allNewLegos } = await ctx.supabase
-          .from('course_legos')
-          .select('seed_number, lego_index, target_text')
-          .eq('course_code', course_code)
-          .eq('is_new', true)
-          .lt('seed_number', seed_number)
-          .order('seed_number');
-
-        const wordIntroducedBy = {};
-        for (const l of (allNewLegos || [])) {
-          const words = extractVocab(l.target_text, chinese);
-          for (const w of words) {
-            if (!wordIntroducedBy[w]) {
-              wordIntroducedBy[w] = { seed_number: l.seed_number, lego_index: l.lego_index, target_text: l.target_text };
-            }
-          }
-        }
-
-        const seedWords = extractVocab(target_text, chinese);
-        let bestSeedNum = -1;
-        let bestLegoIdx = -1;
-        let bestLegoTarget = null;
-
-        for (const w of seedWords) {
-          const intro = wordIntroducedBy[w];
-          if (!intro) continue;
-          if (intro.seed_number > bestSeedNum ||
-              (intro.seed_number === bestSeedNum && intro.lego_index > bestLegoIdx)) {
-            bestSeedNum = intro.seed_number;
-            bestLegoIdx = intro.lego_index;
-            bestLegoTarget = intro.target_text;
-          }
-        }
-
-        if (bestSeedNum >= 0) {
-          const bestLegoId = `S${String(bestSeedNum).padStart(4,'0')}L${String(bestLegoIdx).padStart(2,'0')}`;
-
-          const { data: existingPhrases } = await ctx.supabase
-            .from('course_practice_phrases')
-            .select('position, phrase_role')
-            .eq('course_code', course_code)
-            .eq('seed_number', bestSeedNum)
-            .eq('lego_index', bestLegoIdx);
-
-          const maxPos = existingPhrases?.reduce((max, p) => Math.max(max, p.position), 0) || 0;
-          const existingUseCount = existingPhrases?.filter(p => p.phrase_role === 'use').length || 0;
-
-          const { error: seedPhraseError } = await ctx.supabase
-            .from('course_practice_phrases')
-            .insert({
-              id: makePhraseId(course_code, bestSeedNum, bestLegoIdx, 'use', existingUseCount + 1),
-              course_code,
-              seed_number: bestSeedNum,
-              lego_index: bestLegoIdx,
-              position: maxPos + 1,
-              known_text: known_text,
-              target_text: target_text,
-              word_count: target_text.length,
-              lego_count: (known_text.match(/\s+/g) || []).length + 1,
-              phrase_role: 'use',
-              connected_lego_ids: [],
-              lego_position: computeLegoPosition(target_text, bestLegoTarget),
-              metadata: {
-                format: 'build_use',
-                source: 'seed_sentence',
-                source_seed: seed_number,
-                score: 8,
-              },
-              introduce: true,
-              status: 'draft',
-              version: 1,
-              last_edit_event_id: eventId,
-            });
-
-          if (seedPhraseError) {
-            console.warn(`  ⚠ Could not add seed as USE phrase: ${seedPhraseError.message}`);
-          } else {
-            totalPhrases++;
-            console.log(`  ✓ Empty seed → USE phrase for ${bestLegoId} (${bestLegoTarget})`);
-          }
-        } else {
-          console.log(`  ⚠ Empty seed but no introducing LEGO found for any word`);
-        }
+        const rehome = await rehomeAllReviewSeed(ctx.supabase, { course_code, seed_number, known_text, target_text, eventId });
+        if (rehome.outcome === 'rehomed') totalPhrases++;
       }
 
       console.log(`\n✓ ${seedId} COMPLETE`);
