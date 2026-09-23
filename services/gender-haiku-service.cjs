@@ -417,13 +417,13 @@ async function loadGenderMap(courseCode, supabase) {
 
   for (const row of rows) {
     if (row.expanded_f) {
-      map.set(`${row.original_text}|${row.language}|target1`, {
+      map.set(genderMapKey(row.original_text, row.language, 'target1'), {
         expandedText: row.expanded_f,
         wasModified: true
       })
     }
     if (row.expanded_m) {
-      map.set(`${row.original_text}|${row.language}|target2`, {
+      map.set(genderMapKey(row.original_text, row.language, 'target2'), {
         expandedText: row.expanded_m,
         wasModified: true
       })
@@ -433,7 +433,33 @@ async function loadGenderMap(courseCode, supabase) {
   return map
 }
 
+// The ONE key shape shared by the loader above and every render route in phase8.
+// expanded_f is target1's reading and expanded_m is target2's, so the voice cast
+// on each slot decides which reading is spoken.
+function genderMapKey(text, language, role) {
+  return `${text}|${language}|${role}`
+}
+
+/**
+ * The text a voice should actually SPEAK for a stored clip text, or null when the
+ * course has no expansion row for it. Every phase8 render route resolves through
+ * this, whatever the language: GENDERED_LANGUAGES gates only the Haiku EXPANDER,
+ * never the render-time substitution of hand-added rows.
+ *
+ * NOTE for anyone auditing audio (job #884, 2026-09-23): course_audio.text keeps
+ * the ORIGINAL text — it is the lookup key — never the expanded one. A Charlotte
+ * (target1) clip whose text column says "his name" was SPOKEN as "her name" when
+ * an expansion row exists; the phase8 log's `Gender: "…" → "…"` line is the record
+ * of what went to TTS. Counting "his name" in course_audio.text measures nothing.
+ */
+function storedGenderReading(genderMap, text, language, role) {
+  const hit = genderMap && genderMap.get(genderMapKey(text, language, role))
+  return hit?.wasModified ? hit.expandedText : null
+}
+
 module.exports = {
+  genderMapKey,
+  storedGenderReading,
   batchGenderExpand,
   analyzeAndExpand,
   processAndStore,
