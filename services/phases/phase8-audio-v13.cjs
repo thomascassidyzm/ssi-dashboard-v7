@@ -1581,6 +1581,11 @@ async function processInParallel(items, processor, concurrency = CONCURRENCY) {
  */
 async function masterAudio(audioBuffer, ttsText, opts = {}) {
   const targetLufs = Number.isFinite(Number(opts.targetLufs)) ? Number(opts.targetLufs) : -16.0
+  // A PER-VOICE OFFSET (Kai, 2026-09-23: Charlotte +5 dB) arrives here as
+  // opts.targetLufs from voiceConfigService.masteringOptsFor(voiceId), read off
+  // voices.loudness_offset_db. Every voice without one passes {} and masters at
+  // -16 exactly as before; the true-peak limiter downstream is untouched.
+  if (opts.loudnessOffsetDb) logger.debug(`masterAudio: per-voice offset ${opts.loudnessOffsetDb > 0 ? '+' : ''}${opts.loudnessOffsetDb} dB → target ${targetLufs} LUFS`)
   const tempDir = await fs.mkdtemp(path.join(os.tmpdir(), 'audio-master-'))
   const rawPath = path.join(tempDir, 'raw.mp3')
   const masteredPath = path.join(tempDir, 'mastered.mp3')
@@ -3043,7 +3048,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         // Note: xAI does not expose an API-level speed parameter, so xAI audio
         // is always generated at natural speed. Downstream cadence playback speed
         // adjustments are applied in the player, not at TTS time.
-        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceName))
         return { buffer, durationMs, wordBoundaries }
       }
 
@@ -3688,7 +3693,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         }
 
         // Master audio: normalize loudness and extract duration
-        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceId))
         return { buffer, durationMs, wordBoundaries }
       }
 
@@ -5148,7 +5153,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       }
 
       // 6. Master audio
-      const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+      const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceId))
       return { buffer, durationMs, wordBoundaries }
     }
 
@@ -5523,7 +5528,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       }
 
       // 6. Master audio (−16 LUFS, duration)
-      const { buffer, durationMs } = await masterAudio(rawAudioBuffer, presentationText)
+      const { buffer, durationMs } = await masterAudio(rawAudioBuffer, presentationText, await voiceConfigService.masteringOptsFor(voiceId))
       return { buffer, durationMs, wordBoundaries }
     }
 
@@ -5949,7 +5954,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         }
 
         // Master audio (−16 LUFS, duration).
-        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceName))
         return { buffer, durationMs, wordBoundaries }
       }
 
@@ -6347,7 +6352,7 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
         }
 
         // Master audio (−16 LUFS, duration).
-        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceName))
         return { buffer, durationMs, wordBoundaries }
       }
 
@@ -6833,7 +6838,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           throw new Error(`Unknown TTS provider: ${provider}`)
         }
 
-        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS)
+        const { buffer, durationMs } = await masterAudio(rawAudioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceName))
         return { buffer, durationMs, wordBoundaries }
       }
 

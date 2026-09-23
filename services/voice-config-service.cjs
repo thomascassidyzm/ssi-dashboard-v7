@@ -14,6 +14,7 @@ const { bumpCourseVersion } = require('./shared/course-version.cjs');
 const { voiceSpellings } = require('./shared/clip-identity-lookup.cjs');
 const { selectProvider } = require('./shared/tts-provider-policy.cjs');
 const { applyLanguageCast, CAST_ROLES } = require('./shared/language-voice-cast.cjs');
+const voiceLoudness = require('./shared/voice-loudness.cjs');
 const consentGate = require('./shared/voice-consent-gate.cjs');
 const { loadHumanRecordedRoles } = require('./shared/human-recorded-roles.cjs');
 const { COURSE_CAST_FIELDS } = require('./shared/cast-language-key.cjs');
@@ -225,7 +226,8 @@ async function loadCast() {
     // the guard standing, so Welsh is protected even with no view at all.
     const [roles, voices, humanRows, courses] = await Promise.all([
       supabase.from('voice_language_roles').select('language, gender, rank, voice_id, slot'),
-      supabase.from('voices').select('voice_id, gender, tts_engine, is_active, display_name, human_name'),
+      // loudness_offset_db rides on the same read: services/shared/voice-loudness.cjs
+      supabase.from('voices').select('voice_id, gender, tts_engine, is_active, display_name, human_name, loudness_offset_db'),
       loadHumanRecordedRoles(supabase),
       // ── THE DIALECT COLUMNS, FETCHED ONCE FOR THE WHOLE ESTATE ───────────
       // A cast is keyed on the DIALECT entity (Tom, 2026-08-31), which is read
@@ -259,6 +261,22 @@ async function loadCast() {
 }
 
 /** Testing seam: drop the cache so a cast made this second is seen at once. */
+/**
+ * The mastering options for a clip about to be rendered in `voiceId`:
+ * `{ targetLufs }` — the house target plus the voice's own offset from
+ * `voices.loudness_offset_db` (services/shared/voice-loudness.cjs; Kai's
+ * 2026-09-23 ruling: Charlotte +5 dB). Read from the same cached cast read as
+ * everything else, so a 12,000-clip render costs no extra query. A voice with
+ * no offset gets exactly the options every caller passed before: none that
+ * change anything.
+ */
+async function masteringOptsFor(voiceId, provider = null) {
+  const { voices } = await loadCast();
+  const offset = voiceLoudness.loudnessOffsetDb(voices, voiceId, provider);
+  if (!offset) return {};
+  return { targetLufs: voiceLoudness.masteringTargetLufs(offset), loudnessOffsetDb: offset };
+}
+
 function _clearCastCache() { castCache = { at: 0, roles: [], voices: [], humanRows: [], dialects: new Map() }; }
 
 /**
@@ -1044,6 +1062,7 @@ module.exports = {
   // pod path can pick a KNOWN-language voice by gender from the same rows the
   // resolver reads, rather than a second query that could disagree with it.
   loadCast,
+  masteringOptsFor,
   loadVoiceConfig,
   loadStoredVoiceConfig,
   resolveVoiceConfig,

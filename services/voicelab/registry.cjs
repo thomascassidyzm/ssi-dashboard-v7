@@ -531,8 +531,17 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
   // a 'phrase' default, and reading a missing value as anything else would let
   // an old row silently become a guide.
   const isGuide = (r) => r.slot === 'guide'
-  const phraseRoles = roles.filter((r) => !isGuide(r))
+  // ONLY phrase rows are phrase rows. This used to be "everything that is not
+  // a guide", which silently read a `presentation` row (Tom, 2026-09-10) and,
+  // from 2026-09-23, a `known` row as a phrase slot — the eng/f/rank0 tile
+  // would have shown Charlotte (the known-side voice) in Gemma's place.
+  const phraseRoles = roles.filter((r) => (r.slot || 'phrase') === 'phrase')
   const guideRoles = roles.filter(isGuide)
+  // The KNOWN slot: the phrase voice this language uses when it is a course's
+  // KNOWN side (Deborah + Kai, 2026-09-23: Charlotte prompts in English,
+  // Gemma teaches it). Read by services/shared/language-voice-cast.cjs for the
+  // `known` role ahead of the phrase slot; empty means "same as phrase".
+  const knownRoles = roles.filter((r) => r.slot === 'known')
 
   const slots = {}
   for (const g of GENDERS) {
@@ -574,6 +583,25 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
   // flag without ever turning a complete language red.
   const backedUpGenders = GENDERS.filter((g) => slots[g].slice(COMPLETE_RANKS).some((s) => s.filled && s.active !== false))
   const hasFullBackup = backedUpGenders.length === GENDERS.length
+
+  // ── THE KNOWN SLOT ────────────────────────────────────────────────────────
+  // Gendered like the phrase slots, primary rank only, and NEVER part of
+  // completeness: an empty known slot means the phrase voice prompts too.
+  const knownSlots = {}
+  for (const g of GENDERS) {
+    const role = knownRoles.find((r) => r.gender === g && r.rank === 0)
+    const voice = role ? voiceById.get(role.voice_id) : null
+    knownSlots[g] = {
+      rank: 0,
+      filled: Boolean(voice),
+      active: voice ? voice.is_active !== false : null,
+      voiceId: role ? role.voice_id : null,
+      voiceName: voice ? (voice.display_name || voice.human_name || voice.voice_id) : null,
+      engine: voice ? (voice.tts_engine || null) : null,
+      notes: role ? role.notes : null,
+      assignedBy: role ? role.assigned_by : null,
+    }
+  }
 
   // ── THE GUIDE SLOT ────────────────────────────────────────────────────────
   // One voice per language, not a pair: ranks only, no gender axis. `gender` on
@@ -673,6 +701,10 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
     // `knownCourses` is what makes the slot legible on the row of a language
     // nobody teaches from: 0 means nobody hears instructions in it.
     knownCourses,
+    known: {
+      slots: knownSlots,
+      cast: GENDERS.some((g) => knownSlots[g].filled && knownSlots[g].active !== false),
+    },
     guide: {
       slots: guideSlots,
       cast: guideSlots.some((s) => s.filled && s.active !== false),
@@ -1144,7 +1176,12 @@ async function cachedBuild (db, opts = {}) {
   return { ...payload, builtAt: CACHE.builtAt, cached: false, ageMs: 0 }
 }
 
-/** The casting slots this registry knows about. 'phrase' is the default in the DB. */
-const SLOTS = Object.freeze(['phrase', 'guide'])
+/**
+ * The casting slots this registry knows about. 'phrase' is the default in the
+ * DB; 'known' is the phrase voice for a language standing on a course's KNOWN
+ * side (2026-09-23), gendered like 'phrase'. 'presentation' exists in the DB
+ * check constraint but is written by its own route, not the slot endpoint.
+ */
+const SLOTS = Object.freeze(['phrase', 'known', 'guide'])
 
 module.exports = { build, cachedBuild, invalidate, CACHE_TTL_MS, paceOf, describeLanguage, catalogueFacts, catalogueFactsById, providerOfRole, providersInUse, providerDefaultFor, statusFor, rankName, sameLang, voiceKind, castable, cartesiaCandidates, guideCandidates, ownedCloneIds, ownedFirst, dropRetired, guideVoicesInUse, REQUIRED_RANKS, GUIDE_RANKS, COMPLETE_RANKS, GENDERS, SLOTS }
