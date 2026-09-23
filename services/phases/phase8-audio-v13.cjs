@@ -2992,10 +2992,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       // Gender expansion for target language audio
       // Pre-computed by Haiku (or regex fallback for marker-based text)
       let textForTTS = item.text
-      const genderKey = `${item.text}|${item.language}|${item.role}`
-      const genderResult = genderMap.get(genderKey)
-      if (genderResult?.wasModified) {
-        textForTTS = genderResult.expandedText
+      const storedReading = genderHaikuService.storedGenderReading(genderMap, item.text, item.language, item.role)
+      if (storedReading) {
+        textForTTS = storedReading
         logger.info(`Gender: "${item.text}" → "${textForTTS}" (${item.role})`)
       } else if ((item.role === 'target1' || item.role === 'target2') && genderService.hasGenderMarker(item.text)) {
         // Fallback: text with explicit markers like "cansado(a)" — use regex expander
@@ -3639,10 +3638,9 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       // Gender expansion for target language audio
       // Pre-computed by Haiku (or regex fallback for marker-based text)
       let textForTTS = item.text
-      const genderKey = `${item.text}|${language}|${role}`
-      const genderResult = genderMap.get(genderKey)
-      if (genderResult?.wasModified) {
-        textForTTS = genderResult.expandedText
+      const storedReading = genderHaikuService.storedGenderReading(genderMap, item.text, language, role)
+      if (storedReading) {
+        textForTTS = storedReading
         logger.info(`Gender: "${item.text}" → "${textForTTS}" (${role})`)
       } else if ((role === 'target1' || role === 'target2') && genderService.hasGenderMarker(item.text)) {
         // Fallback: text with explicit markers like "cansado(a)" — use regex expander
@@ -5095,9 +5093,9 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     if (role === 'target1' || role === 'target2') {
       try {
         const gmap = await loadGenderMapMemo(courseCode, supabase)
-        const gr = gmap.get(`${text}|${lang}|${role}`)
-        if (gr?.wasModified) {
-          textForTTS = gr.expandedText
+        const storedReading = genderHaikuService.storedGenderReading(gmap, text, lang, role)
+        if (storedReading) {
+          textForTTS = storedReading
           logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
         }
       } catch (e) {
@@ -5899,9 +5897,9 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
       if (role === 'target1' || role === 'target2') {
         try {
           const gmap = await loadGenderMapMemo(courseCode, supabase)
-          const gr = gmap.get(`${text}|${language}|${role}`)
-          if (gr?.wasModified) {
-            textForTTS = gr.expandedText
+          const storedReading = genderHaikuService.storedGenderReading(gmap, text, language, role)
+          if (storedReading) {
+            textForTTS = storedReading
             logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
           }
         } catch (e) {
@@ -6298,9 +6296,9 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
       if (role === 'target1' || role === 'target2') {
         try {
           const gmap = await loadGenderMapMemo(courseCode, supabase)
-          const gr = gmap.get(`${text}|${language}|${role}`)
-          if (gr?.wasModified) {
-            textForTTS = gr.expandedText
+          const storedReading = genderHaikuService.storedGenderReading(gmap, text, language, role)
+          if (storedReading) {
+            textForTTS = storedReading
             logger.info(`Gender: "${text}" → "${textForTTS}" (${role})`)
           }
         } catch (e) {
@@ -6799,10 +6797,9 @@ app.post('/generate-components/:courseCode', async (req, res) => {
 
       // Gender expansion
       let textForTTS = item.text
-      const genderKey = `${item.text}|${item.language}|${item.role}`
-      const genderResult = genderMap.get(genderKey)
-      if (genderResult?.wasModified) {
-        textForTTS = genderResult.expandedText
+      const storedReading = genderHaikuService.storedGenderReading(genderMap, item.text, item.language, item.role)
+      if (storedReading) {
+        textForTTS = storedReading
       } else if ((item.role === 'target1' || item.role === 'target2') && genderService.hasGenderMarker(item.text)) {
         const markerResult = genderService.analyzeAndExpand(item.text, item.language, item.role)
         if (markerResult.wasModified) textForTTS = markerResult.expandedText
