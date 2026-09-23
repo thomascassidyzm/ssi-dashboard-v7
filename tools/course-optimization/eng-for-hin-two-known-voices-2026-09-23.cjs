@@ -8,8 +8,16 @@
 // (services/known-gender/gendered-known-plan.cjs, tools/course-optimization/gendered-known-variants.cjs); this
 // tool is the course-specific run: it puts the PAIR LIST OF RECORD in order first, then the voices, then applies.
 //
-// THE PAIR LIST. course_gender_expansions (text_side='known') held 2,564 machine pairs from 2026-09-03 (job
-// #200·E) and cs/883 detected 678 more on 2026-09-23 (Claude CLI, verified by re-asking) that were never stored.
+// THE PAIR LIST — THE SOURCE OF TRUTH IS WHAT THE DASHBOARD SHOWS (Kai, 2026-09-23 20:26Z). The Popty seed view
+// shows the other-gender wording of a known line through src/services/supabase.js getGenderPairs, which reads
+// course_gender_expansions (text_side='known') and keys the pair on the EXACT original_text / expanded_m /
+// expanded_f (the same rule as gender-haiku-service loadGenderMap). That table is the pair list this tool uses;
+// nothing else stores a second form (no column on the row, no variants table, no inline markup). It held 2,564
+// pairs from 2026-09-03 (job #200·E, machine-written); they cover 2,155 of the 2,753 gendered phrase rows, 120
+// of 145 gendered seeds and 88 of 138 gendered LEGOs. cs/883 detected 678 more pairs on 2026-09-23 (Claude CLI,
+// verified by re-asking) ONLY for texts with no stored pair, so a stored pair always wins by construction; where
+// the detector was probed against 214 stored pairs it agreed on 210 and was wrong on the other 4 (the stored
+// forms stand — see verify-stored-pairs.json in the evidence dir). The 678 were never stored, and are stored here.
 // Nobody has read the female forms: Shuchita proofread the LIVE (male) texts, not the pair list. Three things
 // make the list usable:
 //   1. NUKTA: Kai's course-wide nukta ruling (16:30Z, 459 rows) moved the live spelling after the pairs were
