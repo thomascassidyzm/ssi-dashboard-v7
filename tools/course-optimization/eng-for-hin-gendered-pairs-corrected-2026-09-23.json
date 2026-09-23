@@ -1,0 +1,22 @@
+[
+ {
+  "m": "मैं आपसे इसलिए नहीं मिलना चाहता था।",
+  "f_was": "मैं आपसे इसलिए नहीं मिलनी चाहती थी।",
+  "f": "मैं आपसे इसलिए नहीं मिलना चाहती थी।",
+  "why": "चाहती थी is right, but the infinitive must stay मिलना because it has no object to agree with, so मिलनी is wrong",
+  "example_row": "S0127",
+  "english": "That isn't why I wanted to see you.",
+  "pair_source": "detector",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ },
+ {
+  "m": "मुझे लगता है मैं जितना चाहता था, उससे पहले ही जाग गया",
+  "f_was": "मुझे लगता है मैं जितना चाहती थी, उससे पहले ही जाग गया",
+  "f": "मुझे लगता है मैं जितना चाहती थी, उससे पहले ही जाग गई",
+  "why": "the F form changes चाहती but leaves जाग गया masculine, so it is wrong Hindi",
+  "example_row": "eng_for_hin:S0144L02B02",
+  "english": "I think I woke earlier than I wanted to",
+  "pair_source": "STORED (dashboard pair)",
+  "source": "pair-speaker-agreement judge (Claude CLI, opus), 2026-09-23"
+ }
+]

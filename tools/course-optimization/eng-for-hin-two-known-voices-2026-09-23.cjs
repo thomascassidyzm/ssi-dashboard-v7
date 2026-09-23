@@ -58,6 +58,16 @@ const COURSE = 'eng_for_hin';
 const JOB = '#941·H';
 const SWEEP = 'eng-for-hin-two-known-voices-2026-09-23';
 const NOT_SPEAKER_FILE = path.join(__dirname, 'eng-for-hin-gendered-pairs-not-speaker-2026-09-23.json');
+// Two pairs whose female form feminised the speaker correctly but ALSO moved a word that must not move (a
+// participle with no object to agree with, an unfeminised second verb). The judge's corrected form is mechanical
+// and certain (मिलना never inflects; a woman who woke says जाग गई), so the pair is kept with its f corrected.
+const CORRECTED_FILE = path.join(__dirname, 'eng-for-hin-gendered-pairs-corrected-2026-09-23.json');
+// Shuchita's own precedent (seed 642, H-SIR-MADAM): "आप बहुत अच्छा कर रही हैं, मैडम" — the verb agrees with the
+// addressee and madam is a woman. Two live rows still carry रहे हैं before मैडम; the pair-agreement judge
+// flagged the same thing. Not a gender-of-speaker question, a plain error under her rule, fixed on the row.
+const LIVE_FIXES = [
+  { from: 'मुझे लगता है कि आप बहुत अच्छा कर रहे हैं, मैडम।', to: 'मुझे लगता है कि आप बहुत अच्छा कर रही हैं, मैडम।', why: 'H-SIR-MADAM, Shuchita seed 642' },
+];
 const DETECT_FILE = process.env.ENG_FOR_HIN_DETECT_FILE
   || path.join(process.env.HOME || '', 'ssi-evidence', 'ssi-dashboard-v7', 'tools', 'course-optimization', 'gendered-known-variants', 'eng_for_hin', 'detect-2026-09-23T15-23-21-074Z-retried.json');
 
@@ -99,13 +109,21 @@ function planPairFixes(storedPairs, detectResults, notSpeaker) {
   const notKeys = new Map();
   for (const n of notSpeaker) { notKeys.set(normalizeKnownKey(nukta(n.m)), n); notKeys.set(normalizeKnownKey(nukta(n.f)), n); }
   const removals = [];
+  const corrected = fs.existsSync(CORRECTED_FILE) ? JSON.parse(fs.readFileSync(CORRECTED_FILE, 'utf8')) : [];
+  const corrKeys = new Map(corrected.map(c => [normalizeKnownKey(nukta(c.m)), c]));
+  const corrections = []; // stored rows to update, or inserts to amend
+  for (const p of storedPairs) {
+    const c = corrKeys.get(normalizeKnownKey(nukta(p.expanded_m)));
+    if (c && nukta(p.expanded_f) !== c.f) corrections.push({ id: p.id, from: p.expanded_f, to: c.f, why: c.why });
+  }
+  for (const r of inserts) { const c = corrKeys.get(normalizeKnownKey(r.expanded_m)); if (c) r.expanded_f = c.f; }
   for (const p of storedPairs) {
     const hit = notKeys.get(normalizeKnownKey(nukta(p.expanded_m))) || notKeys.get(normalizeKnownKey(nukta(p.expanded_f)));
     if (hit) removals.push({ id: p.id, m: p.expanded_m, f: p.expanded_f, why: hit.why, source: hit.source });
   }
   const insertsKept = inserts.filter(r => !(notKeys.has(normalizeKnownKey(r.expanded_m)) || notKeys.has(normalizeKnownKey(r.expanded_f))));
   const insertsDropped = inserts.length - insertsKept.length;
-  return { nuktaUpdates, inserts: insertsKept, insertsDropped, removals };
+  return { nuktaUpdates, inserts: insertsKept, insertsDropped, removals, corrections };
 }
 
 async function applyPairFixes(sb, fixes) {
@@ -120,6 +138,10 @@ async function applyPairFixes(sb, fixes) {
     const { error } = await sb.from('course_gender_expansions').upsert(batch, { onConflict: 'course_code,original_text,text_side' });
     if (error) throw new Error(`pair insert batch ${i}: ${error.message}`);
     inserted += batch.length;
+  }
+  for (const c of fixes.corrections) {
+    const { error } = await sb.from('course_gender_expansions').update({ expanded_f: c.to }).eq('id', c.id);
+    if (error) throw new Error(`pair correction ${c.id}: ${error.message}`);
   }
   for (const r of fixes.removals) {
     const { error } = await sb.from('course_gender_expansions').delete().eq('id', r.id).eq('course_code', COURSE).eq('text_side', 'known');
@@ -158,7 +180,7 @@ async function main() {
   // ── 1. the pair list ──
   let loaded = await G.loadCourse(sb, COURSE);
   const fixes = planPairFixes(loaded.storedPairs, detect, notSpeaker);
-  console.log(`pair list: ${loaded.storedPairs.length} stored; nukta updates ${fixes.nuktaUpdates.length}, detected pairs to store ${fixes.inserts.length} (${fixes.insertsDropped} dropped as not-speaker), not-speaker removals ${fixes.removals.length} (from ${notSpeaker.length} listed)`);
+  console.log(`pair list: ${loaded.storedPairs.length} stored; nukta updates ${fixes.nuktaUpdates.length}, detected pairs to store ${fixes.inserts.length} (${fixes.insertsDropped} dropped as not-speaker), not-speaker removals ${fixes.removals.length} (from ${notSpeaker.length} listed), f-form corrections on stored pairs ${fixes.corrections.length}`);
   fs.writeFileSync(path.join(outDir, `pair-fixes-${stamp}.json`), JSON.stringify(fixes, null, 1));
   if (APPLY) {
     const r = await applyPairFixes(sb, fixes);
@@ -171,6 +193,22 @@ async function main() {
       ...loaded.storedPairs.filter(p => !removedIds.has(p.id)).map(p => ({ ...p, expanded_m: nukta(p.expanded_m), expanded_f: nukta(p.expanded_f) })),
       ...fixes.inserts,
     ].filter(p => normalizeKnownKey(p.expanded_m) !== normalizeKnownKey(p.expanded_f));
+  }
+
+  // ── 1b. live Hindi fixes under Shuchita's own precedents (text only, identity-stamped through the same event as the plan? no: their own event) ──
+  const liveHits = loaded.phrases.filter(p => LIVE_FIXES.some(f => p.known_text === f.from));
+  console.log(`live fixes (H-SIR-MADAM): ${liveHits.length} row(s): ${liveHits.map(p => p.id).join(', ') || 'none'}`);
+  if (APPLY && liveHits.length) {
+    const { serviceIdentity } = require('../../services/shared/editor-identity.cjs');
+    const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs');
+    const identity = serviceIdentity(SWEEP, { role: 'content-tool' });
+    const ev = await recordContentEdit(sb, { identity, courseCode: COURSE, surface: `tools/course-optimization/${SWEEP}.cjs`, operation: 'update', scope: { phrase_ids: liveHits.map(p => p.id) }, detail: { kind: 'sir-madam-agreement', fixes: LIVE_FIXES } });
+    for (const p of liveHits) {
+      const f = LIVE_FIXES.find(x => x.from === p.known_text);
+      const { error } = await sb.from('course_practice_phrases').update({ known_text: f.to, last_edit_event_id: ev }).eq('course_code', COURSE).eq('id', p.id).eq('known_text', f.from);
+      if (error) throw new Error(`live fix ${p.id}: ${error.message}`);
+    }
+    loaded = await G.loadCourse(sb, COURSE);
   }
 
   // ── 2. the voices ──
