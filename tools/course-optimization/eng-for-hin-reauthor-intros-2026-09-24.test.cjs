@@ -8,7 +8,7 @@ const T = require('./eng-for-hin-reauthor-intros-2026-09-24.cjs');
 const { renderIntro, introChunk } = require('../../services/phases/presentation-author.cjs');
 
 const OLD = "{target_lang_name} में — '{known}' — जैसे — '{seed}' — में :";
-const NEW = "{target_lang_name} में — '{known}' — जैसे — '{seed}' — है :";
+const NEW = "{target_lang_name} में — '{known}' — जैसे इस वाक्य में — '{seed}' — को कहते हैं :";  // Astra #21·I
 const L = 'अंग्रेज़ी';
 const row = (o) => ({ human: false, chunkForms: null, seed: null, ...o });
 
@@ -26,12 +26,12 @@ describe('eng_for_hin intros mirror their LEGOs and end in "is:"', () => {
 
   it('post-fix: the corrected template renders lines that pass, in every frame', () => {
     const a = renderIntro({ frame: 'A', template: NEW, targetLangName: L, chunk: 'लेकिन', seed: '' });
-    expect(a).toBe("अंग्रेज़ी में — 'लेकिन' — है :");
+    expect(a).toBe("अंग्रेज़ी में — 'लेकिन' — को कहते हैं :");
     expect(T.lineProblems(row({ known_text: 'लेकिन', frame: 'A', text: a }), introChunk)).toEqual([]);
 
     const seed = 'मैं कल आपसे कुछ पूछना चाहता था।';
     const b = renderIntro({ frame: 'B', template: NEW, targetLangName: L, chunk: 'कल', seed });
-    expect(b).toBe(`अंग्रेज़ी में — 'कल' — जैसे — '${seed}' — है :`);
+    expect(b).toBe(`अंग्रेज़ी में — 'कल' — जैसे इस वाक्य में — '${seed}' — को कहते हैं :`);
     expect(T.lineProblems(row({ known_text: 'कल', frame: 'B', seed, text: b }), introChunk)).toEqual([]);
     expect(T.isKalFamily('कल')).toBe(true);
     expect(T.isKalFamily('कल रात के मुक़ाबले')).toBe(true);
@@ -39,7 +39,7 @@ describe('eng_for_hin intros mirror their LEGOs and end in "is:"', () => {
 
     const chunkForms = { f: 'मैं चाहती हूँ', m: 'मैं चाहता हूँ' };
     const g = renderIntro({ frame: 'A', template: NEW, targetLangName: L, chunk: chunkForms.f, seed: '', chunkForms, knownLang: 'hin' });
-    expect(g).toBe("अंग्रेज़ी में — 'मैं चाहती हूँ' या 'मैं चाहता हूँ' — है :");
+    expect(g).toBe("अंग्रेज़ी में — 'मैं चाहती हूँ' या 'मैं चाहता हूँ' — को कहते हैं :");
     expect(T.quotedChunk(g)).toBe('मैं चाहती हूँ');   // the female form is the LEGO's known_text, quoted first
     expect(T.lineProblems(row({ known_text: chunkForms.f, frame: 'A', chunkForms, text: g }), introChunk)).toEqual([]);
   });
@@ -50,7 +50,7 @@ describe('eng_for_hin intros mirror their LEGOs and end in "is:"', () => {
     const oldBare = renderIntro({ frame: 'A', template: OLD, targetLangName: L, chunk: 'उसका नाम', seed: '' });
     const newBare = renderIntro({ frame: 'A', template: NEW, targetLangName: L, chunk: 'उसका नाम', seed: '' });
     const out = T.humanLineWithNewTail(mark, oldBare, newBare);
-    expect(out).toBe(explanation + "अंग्रेज़ी में — 'उसका नाम' — है :");
+    expect(out).toBe(explanation + "अंग्रेज़ी में — 'उसका नाम' — को कहते हैं :");
     expect(out.startsWith(explanation)).toBe(true);
     expect(T.lineProblems(row({ known_text: 'उसका नाम', frame: 'human', human: true, text: out }), introChunk)).toEqual([]);
     // already followed → unchanged; a line with some other ending is left alone (null), never rewritten

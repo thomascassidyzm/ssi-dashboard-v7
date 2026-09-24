@@ -9,6 +9,12 @@
 // (#941·H) nulled, have no intro at all.
 //
 // WHAT THIS DOES — text only, renders nothing, deletes no S3 asset.
+// TEMPLATE (cross-family read, Astra #21·I, 2026-09-24): the trailing "में" is "in" and cannot mean "is"; the minimal "है :"
+// reads clipped and, on a whole-sentence chunk, can sound as if the Hindi sentence itself is in English. Installed instead:
+//   A: {target_lang_name} में — '{known}' — को कहते हैं :                                   ("in English, 'X' is said:")
+//   B: {target_lang_name} में — '{known}' — जैसे इस वाक्य में — '{seed}' — को कहते हैं :   ("…as in this sentence 'S'…")
+// No native has read it yet — Shuchita's next pass, or a Hindi reviewer, should hear one clip before the joint render.
+//
 //   plan   (default): reads the live course and writes a PLAN — one proposed intro per is_new LEGO — through the same
 //          authoring code phase8 /generate uses (services/phases/presentation-author.cjs: renderIntro over the course's
 //          known-language template; the Sonnet frame judge only for LEGOs that never had an intro; the frame of an
@@ -46,7 +52,7 @@ const SWEEP = 'eng-for-hin-reauthor-intros-2026-09-24';
 const SURFACE = `tools/course-optimization/${SWEEP}.cjs`;
 const RULING = `Kai, 2026-09-24 (job ${JOB}): every eng_for_hin LEGO introduction quotes its current LEGO; the template's dangling "में :" ending is replaced by the ordinary "is:" ending; stale intro audio is unlinked, never deleted; new intros wait for the joint Kriti render`;
 
-/** The defect: a Hindi intro ending in "में :" ("in :") — the machine template's tail, where "है :" ("is:") was meant. */
+/** The defect: a Hindi intro ending in "में :" ("in :") — the machine template's tail, where "is:" was meant. */
 const DEFECT_TAIL = /में\s*:\s*$/u;
 /** The chunk an intro quotes: the first dash-quoted slot, which is the {known} slot in every frame of the Hindi template. */
 function quotedChunk(text) {
@@ -155,7 +161,9 @@ async function buildPlan(sb, { framesFrom = null, templateOverride = null } = {}
   const previousFrames = new Map();
   // A previous plan's frames are reused only where they were KEPT or PINNED; a frame the judge (or its offline fallback)
   // decided is decided again, so a re-plan after a failed judge run does not freeze the fallback.
-  if (framesFrom) for (const r of JSON.parse(fs.readFileSync(framesFrom, 'utf8')).rows) if (r.source && r.source !== 'judged' && !r.human) previousFrames.set(r.lego_id, r.frame);
+  // --keep-judged also reuses the judge's frames (a re-plan for a template change only; the judge decides frames, not words).
+  const keepJudged = process.argv.includes('--keep-judged');
+  if (framesFrom) for (const r of JSON.parse(fs.readFileSync(framesFrom, 'utf8')).rows) if (r.source && (keepJudged || r.source !== 'judged') && !r.human) previousFrames.set(r.lego_id, r.frame);
 
   const bareA = (chunk, t) => renderIntro({ frame: 'A', template: t, targetLangName, chunk, seed: '' });
   const oldTail = "{target_lang_name} में — '{known}' — जैसे — '{seed}' — में :";  // the template the marks were written against
@@ -180,7 +188,7 @@ async function buildPlan(sb, { framesFrom = null, templateOverride = null } = {}
     }
     const item = { lego_id: lego.lego_id, chunk, form: lego.target_text, seed_number: lego.seed_number, seed: base.seed, chunkForms, _base: base };
     if (isKalFamily(lego.known_text)) { item.forceFrame = 'B'; item._source = 'pinned:कल'; }
-    else if (previousFrames.has(lego.lego_id)) { item.forceFrame = previousFrames.get(lego.lego_id); item._source = 'kept:previous-plan'; }
+    else if (previousFrames.has(lego.lego_id)) { item.forceFrame = previousFrames.get(lego.lego_id); item._source = prior ? 'kept:previous-plan' : 'judged:previous-plan'; }
     else if (prior) { item.forceFrame = priorFrame(prior.text); item._source = `kept:${prior.linked ? 'linked' : isPending(prior) ? 'pending' : 'unlinked'} intro`; }
     else item._source = 'judged';
     items.push(item);
@@ -219,7 +227,7 @@ async function buildPlan(sb, { framesFrom = null, templateOverride = null } = {}
     proposed_B: rows.filter(r => r.frame === 'B').length,
     proposed_human: rows.filter(r => r.human).length,
     gendered_both_forms: rows.filter(r => r.chunkForms).length,
-    judged: rows.filter(r => r.source === 'judged').length,
+    judged: rows.filter(r => r.source.startsWith('judged')).length,
     unchanged_pending: rows.filter(r => r.prior && r.prior.pending && r.prior.text === r.text).length,
     author_flags: flags.length,
     shared_text_groups: sharedText.length,
@@ -371,8 +379,10 @@ async function apply(sb, plan) {
   const identity = serviceIdentity(SWEEP, { role: 'content-sweep' });
   const seedsTouched = [...new Set(plan.rows.map(r => r.seed_number))].sort((a, b) => a - b);
   // Whole-course snapshot (~7.5 MB of LEGO+phrase JSON) in chunks of 100 seeds — one PostgREST insert per chunk; every batch id is in the event.
-  const snapBatches = [];
-  for (let i = 0; i < seedsTouched.length; i += 100) {
+  // --snapshot-batches <ids> resumes an interrupted apply on the snapshot it already took (the course is unchanged in the
+  // ways the snapshot records: no seed/LEGO/phrase text moved), rather than writing another 7.5 MB of before-images.
+  const snapBatches = arg('--snapshot-batches') ? arg('--snapshot-batches').split(',') : [];
+  for (let i = 0; snapBatches.length === 0 && i < seedsTouched.length; i += 100) {
     const s = await snapshotSeeds(sb, COURSE, seedsTouched.slice(i, i + 100), { reason: 'presentation-reauthor', notes: `${RULING}. Links only — no seed/LEGO/phrase text changes (chunk ${Math.floor(i / 100) + 1}). Undo: POST /api/build/redo-undo/${COURSE}.` });
     snapBatches.push(s.batchId);
   }
@@ -387,7 +397,7 @@ async function apply(sb, plan) {
       dropped_pending_placeholders: dropPending.map(p => ({ id: p.row.id, text: p.row.text, voice_id: p.row.voice_id, lego_id: p.row.lego_id, kept_row: p.keptRow, why: p.why || 'another Kriti row already carries the new words' })),
       legacy_intro_rows: legacyRows, human_authored: plan.rows.filter(r => r.human).map(r => ({ lego_id: r.lego_id, from: r.markText, to: r.text })) },
   });
-  console.log(`edit event ${eventId}; snapshot batch ${snap.batchId} (${seedsTouched.length} seeds)`);
+  console.log(`edit event ${eventId}; snapshot batch ${snap.batchId} (${seedsTouched.length} seeds${arg('--snapshot-batches') ? ', reused' : ''})`);
 
   // 1. Human-authored tails — the mark first, then its row (the trigger refuses the other order).
   for (const r of plan.rows.filter(x => x.human && x.tailFollowed)) {
@@ -402,7 +412,11 @@ async function apply(sb, plan) {
   for (const p of dropPending) must(await sb.from('course_audio').delete().eq('id', p.row.id).like('s3_key', 'pending/%'), `drop placeholder ${p.row.id}`);
   // 3. New pending rows keyed to their LEGO.
   const toInsert = insertRows.map(r => ({ course_code: COURSE, text: r.text, text_normalized: normalizeForAudio(r.text), language: live.course.known_lang, role: 'presentation', voice_id: presVoice, origin: 'tts', s3_key: `pending/${randomUUID().toUpperCase()}.mp3`, lego_id: r.lego_id }));
-  for (let i = 0; i < toInsert.length; i += 200) must(await sb.from('course_audio').upsert(toInsert.slice(i, i + 200), { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true }), 'insert pending');
+  // 25 rows per statement: the audio_autolink trigger runs per row and a 200-row upsert hit the pooler's statement timeout.
+  for (let i = 0; i < toInsert.length; i += 25) {
+    must(await sb.from('course_audio').upsert(toInsert.slice(i, i + 25), { onConflict: 'course_code,text_normalized,language,role,voice_id', ignoreDuplicates: true }), 'insert pending');
+    if ((i / 25) % 10 === 0) console.log(`  inserted ${Math.min(i + 25, toInsert.length)}/${toInsert.length}`);
+  }
   // 4. Unlink: FK, stale clip lego_id, legacy rows — each drop logged.
   const drops = [];
   for (const u of unlinkFk) {
