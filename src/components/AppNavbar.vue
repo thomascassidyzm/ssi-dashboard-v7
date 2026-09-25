@@ -30,7 +30,9 @@
           <span class="summary-sep">&middot;</span>
           <span class="summary-value">{{ inProductionCount }}</span> in production
         </span>
-        <div class="navbar-env-deploy">
+        <!-- The machine switcher carries Deploy: admin only (Tom, 2026-09-25).
+             The module still runs its import-time api_base_url pin for everyone. -->
+        <div v-if="isAdmin" class="navbar-env-deploy">
           <EnvironmentSwitcher />
           <RemoteControl />
         </div>
@@ -46,9 +48,6 @@
             </router-link>
             <router-link v-if="isAdmin" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
               Users
-            </router-link>
-            <router-link v-else-if="hasDashboardAccess" to="/users" class="user-dropdown-item" @click="showUserMenu = false">
-              Invite Recorder
             </router-link>
             <button @click="showPasswordModal = true; showUserMenu = false" class="user-dropdown-item">
               {{ hasPassword ? 'Change password' : 'Set password' }}
@@ -260,7 +259,7 @@ const courseCrumb = computed(() => {
 
 // PRIMARY tabs — always visible everywhere; active state comes from which
 // declared section owns the current route.
-const primaryTabs = computed(() => declaredPrimaryTabs(route))
+const primaryTabs = computed(() => declaredPrimaryTabs(route, { isAdmin: isAdmin.value }))
 
 // SECTION sub-tabs — the owning section's own destinations, second row.
 // Badges are supplied here because they are live counts, not declarations.
@@ -268,7 +267,7 @@ const sectionTabs = computed(() =>
   declaredSectionTabs(route, {
     activeCourses: activeCourseCount.value > 0 ? activeCourseCount.value : null,
     auditStale: auditStaleDays.value ? `${auditStaleDays.value}d` : null
-  })
+  }, { isAdmin: isAdmin.value })
 )
 
 onMounted(() => {

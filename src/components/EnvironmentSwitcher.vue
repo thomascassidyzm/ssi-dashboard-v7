@@ -12,6 +12,7 @@
         <option value="ssi">SSi Machine</option>
         <option value="watson">SSi Machine (Cloud)</option>
         <option value="api">API Server</option>
+        <option v-if="ENVIRONMENTS.preview" value="preview">Preview backend</option>
       </select>
       <div class="select-arrow">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -83,59 +84,14 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import { shouldFallBackToDefault, probeUntilAlive, PROBE_RECHECK_MS } from '@/services/default-environment.js'
+import * as machineEnvironment from '@/services/machineEnvironment.js'
+import { pinMachineEnvironment } from '@/services/machineEnvironment.js'
 
-const ENVIRONMENTS = {
-  tom: {
-    name: "Tom's Machine",
-    url: 'https://popty.ngrok.app',
-    machineProfile: 'tom'
-  },
-  kai: {
-    name: "Kai's Machine",
-    url: 'https://kai-lizard-function.ngrok-free.dev',
-    machineProfile: 'kai'
-  },
-  ssi: {
-    name: "SSi Machine",
-    url: 'https://ssi-machine.ngrok.app',
-    machineProfile: 'kai'  // Similar specs to Kai's machine (8GB RAM)
-  },
-  watson: {
-    name: 'SSi Machine (Cloud)',
-    url: 'https://watson-1.tail4968cb.ts.net:8443',  // Tailscale Funnel → production-api :3470 on watson-1
-    machineProfile: 'default'  // watson-1 has 15GB RAM — matches the 16GB 'default' profile
-  },
-  api: {
-    name: 'API Server',
-    url: 'http://localhost:3470',  // Production API (consolidated Jan 2026)
-    machineProfile: 'default'  // API mode will use default until we add API-specific profiles
-  }
-}
-
-// SYNCHRONOUS: Ensure localStorage is set BEFORE any async code runs
-// This prevents race conditions with production store loading
-// Default environment can be set via VITE_DEFAULT_ENVIRONMENT in .env (kai, tom, watson or api).
-// This module writes api_base_url on import, so THIS is what a browser with no stored
-// preference actually gets. Unset: a local checkout talks to its own API; anything else
-// (popty.app included) talks to watson-1, the always-on cloud machine.
-const isLocalHost = typeof window !== 'undefined' &&
-  (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')
-const DEFAULT_ENV = import.meta.env.VITE_DEFAULT_ENVIRONMENT || (isLocalHost ? 'api' : 'watson')
-const savedEnv = localStorage.getItem('ssi_environment')
-const initialEnv = (savedEnv && ENVIRONMENTS[savedEnv]) ? savedEnv : DEFAULT_ENV
-if (!savedEnv) {
-  localStorage.setItem('ssi_environment', DEFAULT_ENV)
-}
-const expectedUrl = ENVIRONMENTS[initialEnv].url
-const expectedProfile = ENVIRONMENTS[initialEnv].machineProfile
-if (localStorage.getItem('api_base_url') !== expectedUrl) {
-  localStorage.setItem('api_base_url', expectedUrl)
-  console.log(`[EnvironmentSwitcher] Initialized api_base_url to: ${expectedUrl}`)
-}
-if (localStorage.getItem('ssi_machine_profile') !== expectedProfile) {
-  localStorage.setItem('ssi_machine_profile', expectedProfile)
-  console.log(`[EnvironmentSwitcher] Initialized machine_profile to: ${expectedProfile}`)
-}
+// The machine list and the synchronous api_base_url pin live in one plain
+// module so main.js can run the pin for EVERYONE — this component renders for
+// admins only (it carries Deploy), and a <script setup> body runs per instance.
+const { ENVIRONMENTS, DEFAULT_ENV, isLocalHost } = machineEnvironment
+const initialEnv = pinMachineEnvironment()
 
 const selectedEnv = ref(initialEnv)
 const connectionStatus = ref({ connected: false, message: 'Checking...' })

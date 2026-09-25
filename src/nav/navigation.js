@@ -53,7 +53,11 @@ export function matchesAny(patterns, route) {
 export const PRIMARY_TABS = [
   { id: 'courses', label: 'Courses', to: '/courses', description: 'The course library, the canonical browsers, and every working surface inside a course.' },
   { id: 'pedagogy', label: 'Pedagogy', to: '/pedagogy', description: "The founder's teaching model — what a LEGO is, the extraction heuristics, and ZUT." },
-  { id: 'admin', label: 'Admin', to: '/admin', description: 'The platform room — labs, insights, activity, maintenance, users, recording and builds.' }
+  // adminOnly: a community builder (role editor) never sees the platform room
+  // (Tom, 2026-09-25, "fix both" on job #183's findings). The router guard
+  // refuses the routes themselves — see isAdminOnlyRoute below — and the
+  // server refuses every admin API; hiding the tab is only the courtesy.
+  { id: 'admin', label: 'Admin', to: '/admin', adminOnly: true, description: 'The platform room — labs, insights, activity, maintenance, users, recording and builds.' }
 ]
 
 // ---------------------------------------------------------------------------
@@ -246,14 +250,23 @@ export const SECTIONS = [
     primary: 'courses',
     owns: ['/production*'],
     when: (route) => route.path.startsWith('/production/') && !!route.params?.courseCode,
-    items: (route) => [
-      {
-        label: 'Overview',
-        to: `/production/${route.params.courseCode}`,
-        match: ['@ProductionDashboard'],
-        description: 'One course\'s hub — text, audio, recording and QA, each as a card.'
-      }
-    ]
+    // A COMMUNITY BUILDER NEVER GOES VIA THE OVERVIEW (Tom, 2026-09-25: "we
+    // don't use course overview for community users … We go from course
+    // journey and each link goes to the place they actually do stuff"). Their
+    // one course door is the Journey; admins keep the Overview hub.
+    items: (route, viewer = {}) => viewer.isAdmin === false
+      ? [{
+          label: 'Journey',
+          to: `/production/${route.params.courseCode}/journey`,
+          match: ['@LeaderJourney'],
+          description: 'The course journey — record, proofread or build, each straight to where the work is done.'
+        }]
+      : [{
+          label: 'Overview',
+          to: `/production/${route.params.courseCode}`,
+          match: ['@ProductionDashboard'],
+          description: 'One course\'s hub — text, audio, recording and QA, each as a card.'
+        }]
   },
   {
     // The courses library and the canonical data browsers, one row.
@@ -348,8 +361,23 @@ export function isPrimaryActive(primaryId, route) {
   return !!section && section.primary === primaryId
 }
 
-export function primaryTabs(route) {
-  return PRIMARY_TABS.map((t) => ({
+/**
+ * Is this route part of the Admin tab's territory? Derived from the same
+ * declaration the tab is, so the lock and the nav cannot disagree: whatever
+ * lights up Admin is admin-only. The one exception is the Android test build,
+ * which is for everyone with a Popty login (recordists are exactly who we hand
+ * test APKs to).
+ */
+export const ADMIN_TERRITORY_OPEN_TO_ALL = ['/builds']
+export function isAdminOnlyRoute(route) {
+  if (ADMIN_TERRITORY_OPEN_TO_ALL.includes(route.path)) return false
+  const section = sectionFor(route)
+  return !!section && section.primary === 'admin'
+}
+
+/** viewer: { isAdmin } — omitted means an admin, which is what the guard test reads. */
+export function primaryTabs(route, viewer = {}) {
+  return PRIMARY_TABS.filter((t) => !(t.adminOnly && viewer.isAdmin === false)).map((t) => ({
     label: t.label,
     to: t.to,
     active: isPrimaryActive(t.id, route)
@@ -370,19 +398,19 @@ export function matchOf(item) {
   return item.match ?? [item.to]
 }
 
-function itemsOf(section, route) {
-  return typeof section.items === 'function' ? section.items(route) : section.items
+function itemsOf(section, route, viewer) {
+  return typeof section.items === 'function' ? section.items(route, viewer) : section.items
 }
 
 /** The sub-tab row for the current route: the owning section's items. */
-export function sectionTabs(route, badges = {}) {
+export function sectionTabs(route, badges = {}, viewer = {}) {
   const section = sectionFor(route)
   if (!section) return []
   // A section that declares itself solo renders no row: its primary tab is the
   // destination, and a one-tab bar repeating it is noise.
   if (section.soloTab) return []
   // hubOnly items are doors on the hub page, not siblings in the row.
-  return itemsOf(section, route).filter((item) => !item.hubOnly).map((item) => ({
+  return itemsOf(section, route, viewer).filter((item) => !item.hubOnly).map((item) => ({
     label: item.label,
     to: item.to,
     active: matchOf(item).includes('*') ? true : matchesAny(matchOf(item), route),

@@ -35,6 +35,7 @@ import AuthVerify from '../views/AuthVerify.vue'
 import { useAuth } from '../composables/useAuth'
 import { LEGACY_LAB_REDIRECTS } from './legacyLabRedirects'
 import { retiredPodSlugRedirect } from './retiredPodSlugs'
+import { isAdminOnlyRoute } from '../nav/navigation'
 
 // Production Suite v2.1 Components (APML-generated) - Now the default
 const ScriptViewer = () => import('../views/production/ScriptViewer.vue')
@@ -986,6 +987,25 @@ router.beforeEach(async (to, from, next) => {
     }
 
     return next()
+  }
+
+  // THE PLATFORM ROOM IS ADMIN-ONLY (Tom, 2026-09-25, "fix both" on job
+  // #183: an editor saw the Admin tab and /admin rendered its cards). Whatever
+  // the nav declaration files under the Admin tab is refused here for a
+  // non-admin — one rule, read off the same declaration the tab is drawn from,
+  // so a new admin page is locked the moment it is declared. The server
+  // refuses every admin API on its own; this stops a page made of refusals.
+  if (!isAdmin.value && isAdminOnlyRoute(to)) {
+    return next({ name: 'Home' })
+  }
+
+  // A COMMUNITY BUILDER NEVER GOES VIA THE COURSE OVERVIEW (Tom, 2026-09-25:
+  // "we don't use course overview for community users … Maybe we don't ever
+  // go VIA the course overview page. We go from course journey"). Every link
+  // into a course — the picker, the crumb, a bookmark, a back button — that
+  // would land an editor on the overview lands them on the journey instead.
+  if (!isAdmin.value && to.name === 'ProductionDashboard' && to.params.courseCode && to.params.courseCode !== 'new') {
+    return next({ name: 'LeaderJourney', params: { courseCode: to.params.courseCode }, replace: true })
   }
 
   // Single-course editors land straight in that course's guided journey

@@ -6,6 +6,10 @@ import App from './App.vue'
 import router from './router'
 import { installAuthFetch } from './services/authFetch'
 import { installChunkReloadRecovery } from './router/chunkRecovery'
+import { pinMachineEnvironment } from './services/machineEnvironment'
+
+// Which machine this browser talks to — before any request, for every role.
+pinMachineEnvironment()
 
 // Attach the dashboard session token to all API-bound fetch() calls —
 // course-scoped routes are auth-gated server-side. Must install before
