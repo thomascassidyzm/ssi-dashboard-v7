@@ -175,8 +175,16 @@ app.use(cors({
 // This is the same code the standalone process on port 8461 runs — one lab,
 // two roots — mounted READ-AND-JUDGE ONLY: it never generates candidates here,
 // because a generation pass is real spend and belongs to a deliberate local act.
-// Reached from the dashboard at /admin/configs/basket.
-app.use('/api/basket-lab', require('../labs/basket-lab/server.cjs').mount('/api/basket-lab', { readOnly: true }))
+// Reached from the dashboard at /admin/labs/basket.
+// ADMIN-ONLY (Tom, 2026-09-25: "Lock it, shouldn't be public"): the funnel puts
+// this mount on the internet, so the gate runs first — requireAdmin, or the
+// short-lived cookie a requireAdmin-minted ticket buys the dashboard's iframe
+// (services/shared/basket-lab-gate.cjs). Same-host callers pass, as elsewhere.
+const basketLabGate = require('./shared/basket-lab-gate.cjs').createBasketLabGate({
+  isLoopbackDirect: isLoopbackDirectRequest, requireAdmin,
+})
+app.post('/api/basket-lab-ticket', basketLabGate.mintTicket)
+app.use('/api/basket-lab', basketLabGate.gate, require('../labs/basket-lab/server.cjs').mount('/api/basket-lab', { readOnly: true }))
 
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
 

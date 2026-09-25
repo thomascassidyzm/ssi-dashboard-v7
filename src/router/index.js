@@ -657,7 +657,8 @@ const routes = [
     path: '/admin/labs/basket',
     name: 'BasketLab',
     component: () => import('../views/admin/BasketLab.vue'),
-    meta: { title: 'Basket Lab - Admin' }
+    // Admin-only, matching the API's lock on /api/basket-lab (2026-09-25).
+    meta: { title: 'Basket Lab - Admin', requiresAuth: true, requiresAdmin: true }
   },
   {
     // Capture A/B — record the same line under each mic profile and measure

@@ -69,6 +69,28 @@ const src = computed(() => {
   return `${b}?course=${encodeURIComponent(course.value)}&seed=${encodeURIComponent(seed.value)}${t}`
 })
 
+// ADMIN-ONLY (2026-09-25). The API refuses the lab to anyone who is not a
+// signed-in admin, and a frame cannot send the Authorization header, so an
+// authenticated fetch (authFetch adds the header) mints a 60-second ticket
+// and the frame opens /enter with it, which sets the lab's own cookie and
+// redirects to the page. After the first load the cookie carries every
+// navigation inside the frame. See services/shared/basket-lab-gate.cjs.
+const entered = ref(false)
+const ticket = ref(null)
+async function mintTicket () {
+  const r = await fetch(`${apiBase.value}/api/basket-lab-ticket`, {
+    method: 'POST', headers: { 'ngrok-skip-browser-warning': 'true' }
+  })
+  if (!r.ok) throw new Error(`ticket ${r.status}`)
+  return (await r.json()).ticket
+}
+const enterUrl = (t, target) =>
+  `${apiBase.value}/api/basket-lab/enter?t=${encodeURIComponent(t)}&next=${encodeURIComponent(target.slice(`${apiBase.value}/api/basket-lab`.length))}`
+const frameSrc = computed(() => (entered.value || !ticket.value) ? src.value : enterUrl(ticket.value, src.value))
+async function openFullScreen () {
+  window.open(enterUrl(await mintTicket(), src.value), '_blank', 'noopener')
+}
+
 function show () {
   router.replace({ query: { course: course.value, seed: seed.value, view: view.value } })
 }
@@ -82,6 +104,7 @@ onMounted(async () => {
       headers: { 'ngrok-skip-browser-warning': 'true' }
     })
     reachable.value = r.ok
+    if (r.ok) ticket.value = await mintTicket()
   } catch {
     reachable.value = false
   }
@@ -129,7 +152,7 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
         </select>
       </label>
       <button type="submit">show</button>
-      <a v-if="reachable" :href="src" target="_blank" rel="noopener">open full screen &rarr;</a>
+      <a v-if="reachable" href="#" @click.prevent="openFullScreen">open full screen &rarr;</a>
     </form>
 
     <p v-if="reachable === false" class="bl-gap">
@@ -143,7 +166,7 @@ onBeforeUnmount(() => { themeObserver?.disconnect(); themeObserver = null })
 
     <p v-else-if="reachable === null" class="bl-gap muted">checking the API for the lab…</p>
 
-    <iframe v-else class="bl-frame" :src="src" title="Basket Lab"></iframe>
+    <iframe v-else class="bl-frame" :src="frameSrc" title="Basket Lab" @load="entered = !!ticket"></iframe>
 
     <p class="bl-note">
       Candidate <b>generation is not offered here</b> — a pass shells out to the Claude CLI, is real
