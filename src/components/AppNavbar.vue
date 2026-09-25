@@ -3,7 +3,7 @@
     <div class="navbar-inner">
       <!-- Left: Popty brand (→ Home) + course breadcrumb -->
       <div class="navbar-left">
-        <router-link to="/" class="navbar-brand">Popty</router-link>
+        <router-link :to="homeTo" class="navbar-brand">Popty</router-link>
         <span v-if="courseCrumb" class="navbar-crumb">
           <span class="crumb-sep">/</span>
           <span class="crumb-current">{{ courseCrumb }}</span>
@@ -12,6 +12,18 @@
 
       <!-- Center: persistent primary nav -->
       <nav class="navbar-tabs">
+        <!-- An editor's always-there way back to the three cards (Tom, 2026-09-25):
+             first in the row every page carries, so it is there at 390 too. -->
+        <router-link
+          v-if="!isAdmin"
+          :to="homeTo"
+          class="tab-item navbar-home"
+          :class="{ active: route.name === 'LeaderJourney' }"
+          data-nav="home"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 9.5V20h13V9.5" /></svg>
+          Home
+        </router-link>
         <router-link
           v-for="tab in primaryTabs"
           :key="tab.label"
@@ -128,7 +140,7 @@ import { useAuth } from '../composables/useAuth'
 import EnvironmentSwitcher from './EnvironmentSwitcher.vue'
 import RemoteControl from './RemoteControl.vue'
 import CourseSwitcherDropdown from './CourseSwitcherDropdown.vue'
-import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs } from '../nav/navigation'
+import { primaryTabs as declaredPrimaryTabs, sectionTabs as declaredSectionTabs, editorHomeTo } from '../nav/navigation'
 
 const route = useRoute()
 const router = useRouter()
@@ -261,6 +273,9 @@ const courseCrumb = computed(() => {
 // declared section owns the current route.
 const primaryTabs = computed(() => declaredPrimaryTabs(route, { isAdmin: isAdmin.value }))
 
+// Home / the wordmark: an editor's way back to the journey's three cards.
+const homeTo = computed(() => editorHomeTo(route, { isAdmin: isAdmin.value, courses: learner.value?.courses }))
+
 // SECTION sub-tabs — the owning section's own destinations, second row.
 // Badges are supplied here because they are live counts, not declarations.
 const sectionTabs = computed(() =>
@@ -336,6 +351,9 @@ onUnmounted(() => {
 .navbar-brand:hover {
   opacity: 0.8;
 }
+
+.navbar-home { display: inline-flex; align-items: center; gap: 0.35rem; }
+.navbar-home svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 .navbar-crumb {
   display: inline-flex;

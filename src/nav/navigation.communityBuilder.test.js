@@ -11,7 +11,7 @@
 // tab owns is refused to an editor — including a page added to it tomorrow.
 import { describe, it, expect } from 'vitest'
 import router from '../router/index.js'
-import { isAdminOnlyRoute, primaryTabs, sectionTabs } from './navigation.js'
+import { isAdminOnlyRoute, primaryTabs, sectionTabs, editorHomeTo } from './navigation.js'
 
 const at = (path) => router.resolve(path)
 
@@ -38,5 +38,23 @@ describe('a builder\'s one course door is the journey, never the overview', () =
     const route = at('/production/cat_for_gle/pods')
     expect(sectionTabs(route, {}, { isAdmin: false }).map((t) => t.to)).toEqual(['/production/cat_for_gle/journey'])
     expect(sectionTabs(route, {}, { isAdmin: true }).map((t) => t.to)).toEqual(['/production/cat_for_gle'])
+  })
+})
+
+describe('Home takes a community builder back to the three cards', () => {
+  const editor = (courses) => ({ isAdmin: false, courses })
+  it('on a course page: that course\'s journey, all three cards open', () => {
+    expect(editorHomeTo(at('/production/cym_for_eng/text'), editor(['cym_for_eng', 'spa_for_eng'])))
+      .toEqual({ path: '/production/cym_for_eng/journey', query: { cards: 'all' } })
+  })
+  it('off a course page with one course: that course\'s journey', () => {
+    expect(editorHomeTo(at('/courses'), editor(['cym_for_eng'])))
+      .toEqual({ path: '/production/cym_for_eng/journey', query: { cards: 'all' } })
+  })
+  it('off a course page with several courses: the hub, to pick one', () => {
+    expect(editorHomeTo(at('/courses'), editor(['cym_for_eng', 'spa_for_eng']))).toBe('/')
+  })
+  it('an admin\'s Home stays the hub', () => {
+    expect(editorHomeTo(at('/production/cym_for_eng/text'), { isAdmin: true })).toBe('/')
   })
 })

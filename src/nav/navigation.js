@@ -426,3 +426,19 @@ export function hubCards(sectionId) {
     .filter((item) => item.hub)
     .map((item) => ({ title: item.hub.title || item.label, to: item.to, ...item.hub }))
 }
+
+/**
+ * WHERE "HOME" TAKES A COMMUNITY BUILDER (Tom, 2026-09-25: "always easy to get
+ * back to these three cards" — the Home link and the Popty wordmark on every
+ * editor page). Home is the course journey's three cards, opened in full
+ * (?cards=all) even when a pick is remembered: the course in the URL if there
+ * is one, else their only course, else the Home hub (a multi-course editor
+ * needs the picker first). An admin's Home stays the hub.
+ * viewer: { isAdmin, courses }.
+ */
+export function editorHomeTo(route, viewer = {}) {
+  if (viewer.isAdmin !== false) return '/'
+  const courses = Array.isArray(viewer.courses) ? viewer.courses : []
+  const code = route?.params?.courseCode || (courses.length === 1 ? courses[0] : null)
+  return code ? { path: `/production/${code}/journey`, query: { cards: 'all' } } : '/'
+}

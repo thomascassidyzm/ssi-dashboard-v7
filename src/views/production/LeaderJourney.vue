@@ -10,26 +10,27 @@
         <button v-if="pick && !choosing" type="button" class="pick-change" @click="choosing = true">Change</button>
         <button v-else-if="pick && choosing" type="button" class="pick-change" @click="choosing = false">Keep {{ pickedCard.short }}</button>
       </div>
+      <!-- TITLE ONLY, THE WHOLE CARD IS THE TAP (Tom, 2026-09-25): no
+           explanation line, no link lines, no footer — an icon, an accent and
+           his three sentences. Anything the cards used to carry as extra links
+           lives in the steps below. -->
       <div class="pick-cards" :class="{ single: pick && !choosing }">
-        <div
+        <router-link
           v-for="card in visibleCards"
           :key="card.key"
+          :to="card.to"
           class="pick-card"
           :class="[card.key, { picked: card.key === pick }]"
+          :data-card="card.key"
+          @click="choose(card.key)"
         >
-          <router-link :to="card.to" class="pick-main" :data-card="card.key" @click="choose(card.key)">
-            <span class="pick-title">{{ card.title }}</span>
-            <span class="pick-sub">{{ card.sub }}</span>
-            <span class="pick-go">{{ card.action }} <span aria-hidden="true">&rarr;</span></span>
-          </router-link>
-          <router-link
-            v-for="extra in card.extras"
-            :key="extra.label"
-            :to="extra.to"
-            class="pick-extra"
-            @click="choose(card.key)"
-          >{{ extra.label }} <span aria-hidden="true">&rarr;</span></router-link>
-        </div>
+          <span class="pick-icon" aria-hidden="true">
+            <svg v-if="card.key === 'record'" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" /></svg>
+            <svg v-else-if="card.key === 'proofread'" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></svg>
+            <svg v-else viewBox="0 0 24 24"><rect x="3" y="13" width="8" height="7" rx="1.2" /><rect x="13" y="13" width="8" height="7" rx="1.2" /><rect x="8" y="4" width="8" height="7" rx="1.2" /></svg>
+          </span>
+          <span class="pick-title">{{ card.title }}</span>
+        </router-link>
       </div>
     </section>
 
@@ -97,7 +98,7 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
@@ -109,6 +110,7 @@ const props = defineProps({
 })
 
 const router = useRouter()
+const route = useRoute()
 const store = useProductionStore()
 const { learner, isAdmin } = useAuth()
 const apiBase = getApiUrl()
@@ -283,40 +285,15 @@ const castTo = computed(() => ({ path: `/production/${props.courseCode}/pods`, q
 
 const cards = computed(() => {
   const code = props.courseCode
-  const record = myVoiceId.value
-    ? {
-        to: { name: 'RecordistRoom', params: { voiceId: myVoiceId.value }, query: { course: code } },
-        sub: 'Your booth: the lines waiting on your voice, one at a time.',
-        action: 'Open my booth',
-        extras: [{ label: 'Ask someone else to record', to: castTo.value }],
-      }
-    : {
-        to: castTo.value,
-        sub: 'Name a voice — yours or someone else’s — add their email, and send them the link to their booth.',
-        action: 'Set up the voices',
-        extras: [],
-      }
-  return JOURNEY_CARDS.map(c => {
-    if (c.key === 'record') return { ...c, ...record }
-    if (c.key === 'proofread') {
-      return {
-        ...c,
-        to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } },
-        sub: 'Read the course in the order a learner meets it, and fix anything that reads wrong.',
-        action: 'Start reading',
-        extras: podDraftTotal.value > 0
-          ? [{ label: `${podDraftTotal.value} pod line${podDraftTotal.value === 1 ? '' : 's'} nobody has read yet`, to: { path: `/production/${code}/pods`, query: { drafts: '1' } } }]
-          : [],
-      }
-    }
-    return {
-      ...c,
-      to: `/production/${code}/text`,
-      sub: 'Translate the sentences and break them into the building blocks the course teaches with.',
-      action: 'Open the builder',
-      extras: [],
-    }
-  })
+  const recordTo = myVoiceId.value
+    ? { name: 'RecordistRoom', params: { voiceId: myVoiceId.value }, query: { course: code } }
+    : castTo.value
+  const to = {
+    record: recordTo,
+    proofread: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } },
+    build: `/production/${code}/text`,
+  }
+  return JOURNEY_CARDS.map(c => ({ ...c, to: to[c.key] }))
 })
 
 // The pick: remembered per login (journeyPick.js says where and why), shown
@@ -332,6 +309,10 @@ function choose(key) {
   writePick(pickEmail.value, key)
 }
 const pickedCard = computed(() => JOURNEY_CARDS.find(c => c.key === pick.value) || JOURNEY_CARDS[0])
+// HOME RETURNS TO ALL THREE: the navbar's Home and the Popty wordmark send an
+// editor here with ?cards=all, which opens the three cards even when a pick is
+// remembered (Tom, 2026-09-25: "always easy to get back to these three cards").
+watch(() => route.query.cards, (v) => { if (v === 'all') choosing.value = true }, { immediate: true })
 const visibleCards = computed(() =>
   pick.value && !choosing.value ? cards.value.filter(c => c.key === pick.value) : cards.value)
 
@@ -415,7 +396,10 @@ const steps = computed(() => {
       : (flaggedCount.value > 0 ? `${flaggedCount.value} items need a look` : 'No open issues'),
     links: [
       { label: 'Review issues', to: `/production/${code}/phrase-qa`, primary: true },
-      { label: 'Read the course in order', to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } } }
+      { label: 'Read the course in order', to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } } },
+      ...(podDraftTotal.value > 0
+        ? [{ label: `${podDraftTotal.value} pod line${podDraftTotal.value === 1 ? '' : 's'} nobody has read yet`, to: { path: `/production/${code}/pods`, query: { drafts: '1' } } }]
+        : [])
     ]
   }
 
@@ -429,6 +413,7 @@ const steps = computed(() => {
       : 'No human voices assigned yet',
     links: [
       { label: 'Open the recording room', to: recordRoomTo.value, primary: true },
+      { label: 'Ask someone else to record', to: castTo.value },
       { label: 'Manage your team & voices', to: `/production/${code}/team` },
       { label: 'See the reading plan', to: `/production/${code}/recording-optimizer` }
     ]
@@ -694,52 +679,91 @@ const currentStepKey = computed(() => {
   cursor: pointer;
 }
 .journey-header .pick-change { margin-top: 0.6rem; }
-.pick-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.pick-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
 .pick-cards.single { grid-template-columns: minmax(0, 1fr); }
+/* One accent per door. Title text stays paper-white on a dark card (well past
+   4.5:1); the accent only colours the icon, the edge and the glow. */
+.pick-card.record { --pick-accent: #fb7185; --pick-rgb: 251, 113, 133; }
+.pick-card.proofread { --pick-accent: #38bdf8; --pick-rgb: 56, 189, 248; }
+.pick-card.build { --pick-accent: #fbbf24; --pick-rgb: 251, 191, 36; }
 .pick-card {
+  position: relative;
   display: flex;
   flex-direction: column;
-  background: var(--color-shadow, var(--surface));
-  border: 1px solid var(--color-graphite, var(--surface-3));
-  border-radius: 12px;
-  overflow: hidden;
-}
-.pick-card.picked { border-color: var(--color-emerald, #06ffa5); }
-:root[data-theme="light"] .pick-card { border-color: var(--line); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06); }
-:root[data-theme="light"] .pick-card.picked { border-color: #059669; }
-.pick-main {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  padding: 1.1rem 1.2rem;
+  align-items: flex-start;
+  gap: 0.9rem;
+  min-height: 150px;
+  padding: 1.3rem 1.3rem 1.4rem;
+  border-radius: 16px;
   text-decoration: none;
-  flex: 1;
-  min-height: 48px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(var(--pick-rgb), 0.22), transparent 60%),
+    linear-gradient(160deg, rgba(var(--pick-rgb), 0.08), rgba(255, 255, 255, 0.02)),
+    var(--color-shadow, var(--surface));
+  border: 1px solid rgba(var(--pick-rgb), 0.35);
+  box-shadow: 0 0 0 0 rgba(var(--pick-rgb), 0);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
 }
+/* The shine: a soft diagonal sheen that slides across on hover. */
+.pick-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.10) 50%, transparent 65%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.pick-card:hover, .pick-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(var(--pick-rgb), 0.8);
+  box-shadow: 0 10px 28px -8px rgba(var(--pick-rgb), 0.45);
+  outline: none;
+}
+.pick-card:hover::after, .pick-card:focus-visible::after { transform: translateX(100%); }
+.pick-card:focus-visible { box-shadow: 0 0 0 3px rgba(var(--pick-rgb), 0.7); }
+.pick-card:active { transform: translateY(0) scale(0.98); box-shadow: 0 4px 14px -6px rgba(var(--pick-rgb), 0.5); }
+.pick-card.picked { border-color: var(--pick-accent); }
+.pick-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(var(--pick-rgb), 0.16);
+  color: var(--pick-accent);
+  box-shadow: inset 0 0 0 1px rgba(var(--pick-rgb), 0.35);
+}
+.pick-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 .pick-title {
   font-family: var(--font-ui, 'Josefin Sans', sans-serif);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.35rem;
+  line-height: 1.2;
+  font-weight: 700;
   color: var(--color-paper, var(--ink));
 }
-.pick-sub { font-size: 0.84rem; color: var(--color-paper-dim, var(--muted)); }
-.pick-go { font-size: 0.85rem; color: var(--color-emerald, #06ffa5); margin-top: auto; padding-top: 0.3rem; }
-:root[data-theme="light"] .pick-go { color: #047857; }
-.pick-extra {
-  font-size: 0.8rem;
-  padding: 0.7rem 1.2rem;
-  border-top: 1px solid var(--color-graphite, var(--line));
-  color: var(--color-paper-dim, var(--muted));
-  text-decoration: none;
+/* Light: the pale accents fail on white, so darken them; keep the tint. */
+:root[data-theme="light"] .pick-card.record { --pick-accent: #be123c; }
+:root[data-theme="light"] .pick-card.proofread { --pick-accent: #0369a1; }
+:root[data-theme="light"] .pick-card.build { --pick-accent: #b45309; }
+:root[data-theme="light"] .pick-card { background: radial-gradient(120% 90% at 0% 0%, rgba(var(--pick-rgb), 0.18), transparent 60%), var(--surface); }
+@media (prefers-reduced-motion: reduce) {
+  .pick-card, .pick-card::after { transition: none; }
+  .pick-card:hover, .pick-card:active { transform: none; }
 }
-.pick-extra:hover, .pick-main:hover .pick-title { color: var(--color-paper, var(--ink)); }
 
 .journey-step.na { opacity: 0.5; }
 .step-marker.na { border-style: dashed; }
 .step-status.na { font-style: italic; }
 
 @media (max-width: 640px) {
-  .pick-cards { grid-template-columns: minmax(0, 1fr); }
+  .pick-cards { grid-template-columns: minmax(0, 1fr); gap: 0.7rem; }
+  /* A phone stacks the three: icon beside the title, a shorter card. */
+  .pick-card { flex-direction: row; align-items: center; min-height: 84px; padding: 1rem 1.1rem; gap: 1rem; }
+  .pick-title { font-size: 1.2rem; }
   .step-head { flex-direction: column; gap: 0.2rem; }
   .step-status { white-space: normal; }
 }
