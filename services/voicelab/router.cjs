@@ -191,6 +191,31 @@ function mount (app, deps) {
     }
   }
 
+  // ── THE LAB IS AN ADMIN ROOM; THE CONSENT DOORS ARE NOT ───────────────────
+  // Tom, 2026-09-25 ("fix both", job #183): a community builder's token used to
+  // read /languages and /pod-voices whole — every voice on the estate and the
+  // email addresses of the people behind them. Every route here is admin-only
+  // EXCEPT the doors a builder's own screens open: the consent wording and
+  // declaration (ConsentStep, from the cast panel and the course voice page),
+  // self-consent to one's own clone, and hearing/confirming a clone
+  // (CloneConfirm, from the team page). Those keep their own gates below.
+  // One rule at the router's edge, so a route added tomorrow is locked by
+  // default instead of open by default. router.admin-lock.test.cjs holds it.
+  const COMMUNITY_DOORS = [
+    ['GET', /^\/consent-wording$/],
+    ['POST', /^\/voices\/[^/]+\/consent-declaration$/],
+    ['POST', /^\/voices\/[^/]+\/consent-self$/],
+    ['GET', /^\/voices\/[^/]+\/confirmation$/],
+    ['POST', /^\/voices\/[^/]+\/confirmation$/],
+  ]
+  app.use('/api/voicelab', async (req, res, next) => {
+    if (req.method === 'OPTIONS') return next()
+    if (COMMUNITY_DOORS.some(([m, re]) => m === req.method && re.test(req.path))) return next()
+    allowQueryToken(req)
+    if (!(await requireAdmin(req, res))) return
+    next()
+  })
+
   // ── PARAMETERS ────────────────────────────────────────────────────────────
   // ── EVERY LAB WRITE FORGETS THE HELD LANGUAGES VIEW ──────────────────────
   // Casting a slot, clearing one, cloning, registering, recording consent,
