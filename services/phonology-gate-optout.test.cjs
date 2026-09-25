@@ -57,3 +57,28 @@ describe('phonologySuspects — the gate is on unless a caller says otherwise', 
     expect(phonologySuspects('azure', { language: 'de-AT' })).toBeNull()
   })
 })
+
+describe('/generate carries the same per-request opt-out (Kai 2026-09-25, job #283)', () => {
+  // The handler is a 900-line closure over a live Supabase client, so this pins
+  // the wiring at source level: the flag is read per request, defaults ON, and
+  // reaches BOTH gated provider arms of THIS route — not /regenerate-role's.
+  const fs = require('fs')
+  const path = require('path')
+  const src = fs.readFileSync(path.join(__dirname, 'phases/phase8-audio-v13.cjs'), 'utf8')
+  const handler = src.slice(src.indexOf("app.post('/generate/:courseCode'"), src.indexOf("app.post('/regenerate-role/:courseCode'"))
+
+  it('reads the flag per request and only an explicit false turns it off', () => {
+    expect(handler).toMatch(/const phonologyGate = req\.body\.phonologyGate !== false/)
+  })
+
+  it('passes it to the Cartesia and the xAI render calls', () => {
+    const cartesia = handler.slice(handler.indexOf("generateWithRetry(textForTTS, 'cartesia'"))
+    const xai = handler.slice(handler.indexOf("generateWithRetry(textForTTS, 'xai'"))
+    expect(cartesia.slice(0, cartesia.indexOf('}))'))).toMatch(/phonologyGate/)
+    expect(xai.slice(0, xai.indexOf('}))'))).toMatch(/phonologyGate/)
+  })
+
+  it('records every clip it publishes ungated, for the check-after pass', () => {
+    expect(handler).toMatch(/if \(!phonologyGate && \(provider === 'cartesia' \|\| provider === 'xai'\)\) \{\s*recordPhonologyDeferred\(/)
+  })
+})

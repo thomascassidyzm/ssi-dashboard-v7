@@ -2607,6 +2607,20 @@ app.get('/inventory/:courseCode', async (req, res) => {
 // POST GENERATE - Generate missing audio (requires approval)
 // =============================================================================
 
+// Ledger of clips /generate published with the phonology gate deferred
+// (phonologyGate:false). One JSON line per clip, outside the repo tree. The
+// check-after pass reads it; nothing else writes it.
+function phonologyDeferredLedgerPath (courseCode) {
+  return require('../../tools/lib/evidence-path.cjs').evidencePath(`phonology-deferred/${courseCode}.jsonl`)
+}
+function recordPhonologyDeferred (courseCode, row) {
+  try {
+    fs.appendFileSync(phonologyDeferredLedgerPath(courseCode), JSON.stringify({ at: new Date().toISOString(), ...row }) + '\n')
+  } catch (e) {
+    logger.error(`[/generate] could not record phonology-deferred clip ${row.audio_id}: ${e.message}`)
+  }
+}
+
 app.post('/generate/:courseCode', async (req, res) => {
   try {
     const { courseCode } = req.params
@@ -2624,6 +2638,17 @@ app.post('/generate/:courseCode', async (req, res) => {
     const runStartedAt = new Date().toISOString()
 
     const { dryRun = false, limit = 50000, concurrency: requestedConcurrency, roles: requestedRoles, seeds: requestedSeeds, authorScope: requestedAuthorScope } = req.body  // High default for bulk generation
+    // `phonologyGate: false` DEFERS the inline whisper language check to a
+    // check-after pass; it never drops it. Same opt-out, same default (ON) as
+    // /regenerate-role — see the long comment there for why the gate is a ~7
+    // clips/min ceiling on this box. Asked for by name, per request, so every
+    // other caller of this shared service is unchanged. Every clip a deferred
+    // run publishes is written to a ledger (phonologyDeferredLedgerPath) so the
+    // check-after has an exact list to verify, rather than a created_at guess.
+    // The pre-publish VERACITY sampler still runs. Kai 2026-09-25 22:28Z,
+    // eng_for_hin "voice now, check after" (job #283).
+    const phonologyGate = req.body.phonologyGate !== false
+    if (!phonologyGate) logger.warn(`[/generate] ${courseCode}: phonology gate DEFERRED by request — every published clip goes to ${phonologyDeferredLedgerPath(courseCode)} for the check-after pass`)
     const authorScope = ['all', 'lego', 'none'].includes(requestedAuthorScope) ? requestedAuthorScope : 'all'
     // Optional incremental scope: restrict generation to specific seed numbers.
     const scopeSeeds = Array.isArray(requestedSeeds) && requestedSeeds.length
@@ -3142,6 +3167,7 @@ app.post('/generate/:courseCode', async (req, res) => {
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
+            phonologyGate,
           }))
         } else if (provider === 'cartesia') {
           // `locale`, not `language` — Cartesia's docs prefer it, and the BCP-47
@@ -3152,7 +3178,8 @@ app.post('/generate/:courseCode', async (req, res) => {
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
-            speed
+            speed,
+            phonologyGate,
           }))
         } else {
           throw new Error(`Unknown TTS provider: ${provider}`)
@@ -3242,6 +3269,13 @@ app.post('/generate/:courseCode', async (req, res) => {
         .single()
 
       if (insertError) throw insertError
+
+      if (!phonologyGate && (provider === 'cartesia' || provider === 'xai')) {
+        recordPhonologyDeferred(courseCode, {
+          audio_id: insertedAudio?.id || null, s3_key: s3Key, role: item.role, voice_id: item.voiceId,
+          language: item.language, text: item.text, tts_text: textForTTS, run_started_at: runStartedAt,
+        })
+      }
 
       // For presentation audio, immediately bind to its consumers using the
       // ID we just got (course_legos FK + lego_introductions, or phrase FK)
@@ -3387,6 +3421,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       failed: results.failed,
       cancelled: wasCancelled,
       veracity: results.veracity,
+      phonologyGate,
       errors: results.errors.slice(0, 10),
       linked,
       copied: copyBucketResult.copied,
