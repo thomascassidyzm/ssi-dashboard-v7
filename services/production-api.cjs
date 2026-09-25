@@ -163,6 +163,19 @@ const io = new Server(httpServer, {
 // thought required. Ordered before every route so it wraps them all.
 app.use(compression())
 
+// A PREVIEW BACKEND IS SERVED OVER THE TAILNET (a 100.x address), and Chrome
+// refuses a public page (the Vercel preview) calling a private address unless
+// the preflight says so. Only a preview unit sets POPTY_PREVIEW; production,
+// on the public funnel, never needs it and never sends it.
+if (process.env.POPTY_PREVIEW === '1') {
+  app.use((req, res, next) => {
+    if (req.method === 'OPTIONS' && req.headers['access-control-request-private-network']) {
+      res.set('Access-Control-Allow-Private-Network', 'true')
+    }
+    next()
+  })
+}
+
 app.use(cors({
   origin: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
