@@ -5178,7 +5178,14 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
 
     const { role, text, language } = audioRecord
     const voiceConfig = course.voice_config || {}
-    const voiceSettings = voiceConfig.voices?.[role] || {}
+    // Gendered known languages (known-voice-gender.cjs): a known clip's voice
+    // follows its text, as on the bulk path and /regenerate-phrase. Without
+    // this, re-rolling a Rehan (m) eng_for_hin clip re-voiced it as Kriti (f),
+    // the role's default entry. Inert on every course without byGender.
+    const genderedKnown = role === 'known'
+      ? knownVoiceEntryForClip(await knownGenderContextFor(courseCode, voiceConfig.voices || {}), { role, text })
+      : null
+    const voiceSettings = (genderedKnown && genderedKnown.voice) || voiceConfig.voices?.[role] || {}
     const voiceId = voiceSettings.voiceId || voiceConfig[role]
     const voiceProvider = decideProvider({ ...voiceSettings, voiceId }, { courseCode, role, language })
     const speed = voiceSettings.settings?.speed || 1.0
