@@ -161,14 +161,22 @@ module.exports = function createPodsCastRouter({
     return out
   }
 
-  /** Roster humans holding this course (voice ids minted by the team flow). */
-  async function fetchRosterVoices(db, courseCode) {
+  /**
+   * Roster humans holding this course (voice ids minted by the team flow).
+   *
+   * The '*' holders are SSi staff, offered on every course so staff can be
+   * cast anywhere — but only to a caller who is staff too. A community editor
+   * sees their own course's people and nobody else's name or email (job #189,
+   * 2026-09-25: a builder on cat_for_gle was handed Aran's, Kai's and Tom's).
+   */
+  async function fetchRosterVoices(db, courseCode, caller) {
+    const callerIsStaff = !!caller && (caller.role === 'admin' || caller.courses === '*')
     const { data, error } = await db
       .from('dashboard_users')
       .select('email, name, role, courses, voice_id')
     if (error) throw error
     return (data || [])
-      .filter(u => u.voice_id && (u.courses === '*' || (Array.isArray(u.courses) && u.courses.includes(courseCode))))
+      .filter(u => u.voice_id && ((u.courses === '*' && callerIsStaff) || (Array.isArray(u.courses) && u.courses.includes(courseCode))))
       .sort((a, b) => (a.email < b.email ? -1 : 1))
       .map(u => ({
         voiceId: u.voice_id,
@@ -212,7 +220,7 @@ module.exports = function createPodsCastRouter({
         // Addendum 2026-06-11: generation-side colouring present ⇒ consume it
         // verbatim; the solver below is only a fallback proposal.
         generationColouring: hasGenerationColouring(pods),
-        rosterVoices: await fetchRosterVoices(db, courseCode),
+        rosterVoices: await fetchRosterVoices(db, courseCode, req.dashboardUser),
       }
       // What a course gets with nobody configuring anything: two voices, one
       // male one female (Tom 2026-08-06). The panel prefills from this, so the
