@@ -101,6 +101,9 @@ async function resolveHuman(supabase, token) {
           label: popty.name || user.email,
           email: user.email,
           role: popty.role || null,
+          // The grant, so the content gate can ask "may this person shape THIS
+          // course?" — see mayShapeCourse in content-edit-gate.cjs.
+          courses: popty.courses ?? null,
           verified: true,
         };
       }

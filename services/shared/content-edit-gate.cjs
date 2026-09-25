@@ -63,6 +63,41 @@ const UNDECLARED = Object.freeze({
   verified: false,
 });
 
+// WHO MAY SHAPE A COURSE'S TEXT (Tom, 2026-09-25). A cast recorder — a login
+// whose dashboard_users row is role 'recorder', which is exactly what saving a
+// pod cast provisions for the artist's email — may record, and may correct the
+// target words of their own POD lines through the booth or the pods door. They
+// may never edit a seed, a LEGO or a practice phrase: "seeds and legos and
+// phrases are immutable. The sentences they might say can be flexed in the
+// pods." Every surface on the manifest writes seeds, LEGOs or phrases, so a
+// recorder is refused here, on all of them, before any handler runs.
+//
+// And a human writing to a course needs a GRANT on that course (admin, '*', or
+// the course in their list). Casting never counts: it admits a person to a
+// course's pages, not to its text, and production-api's course gate admits by
+// casting first — so without this check an editor of one course who is also
+// cast on another could rewrite the second one's phrases.
+function mayShapeCourse(identity, courseCode) {
+  if (!identity || identity.kind !== 'human') return { ok: true }
+  if (identity.role === 'recorder') {
+    return {
+      ok: false,
+      code: 'RECORDER_CANNOT_EDIT_CONTENT',
+      error: 'A recording voice cannot change a course\'s sentences, LEGOs or phrases. '
+        + 'Record the lines as they stand; the words of your own pod lines can be corrected from your booth.',
+    }
+  }
+  if (!courseCode || courseCode === 'unknown' || identity.role === 'admin') return { ok: true }
+  const courses = identity.courses
+  const granted = courses === '*' || (Array.isArray(courses) && courses.includes(courseCode))
+  if (granted) return { ok: true }
+  return {
+    ok: false,
+    code: 'NO_GRANT_ON_COURSE',
+    error: `${identity.email || 'This login'} is not an editor of ${courseCode}, so it cannot change that course's text.`,
+  }
+}
+
 function mode() {
   return process.env.CONTENT_EDIT_IDENTITY_MODE === 'enforce' ? 'enforce' : 'observe';
 }
@@ -111,9 +146,18 @@ function contentEditGate({ supabase, service, logger = console }) {
       }
     }
 
-    req.editorIdentity = identity;
-
     const courseCode = courseCodeFrom(params, req.path || req.url, req.body) || 'unknown';
+
+    // A record-only surface is a READ; it never refuses (see above).
+    if (!surface.recordOnly) {
+      const may = mayShapeCourse(identity, courseCode);
+      if (!may.ok) {
+        logger.warn?.(`[content-edit-gate] REFUSED ${req.method} ${req.path} — ${identity.email || identity.id}: ${may.code}`);
+        return res.status(403).json({ error: may.error, code: may.code, surface: `${surface.service}:${surface.method} ${surface.path}` });
+      }
+    }
+
+    req.editorIdentity = identity;
     const surfaceLabel = `${surface.service}:${surface.method} ${surface.path}`;
 
     // An internal hop (edit-cascade re-posting to /seed/complete, say) is part of
@@ -211,4 +255,4 @@ function contentEditGate({ supabase, service, logger = console }) {
   };
 }
 
-module.exports = { contentEditGate, UNDECLARED };
+module.exports = { contentEditGate, mayShapeCourse, UNDECLARED };
