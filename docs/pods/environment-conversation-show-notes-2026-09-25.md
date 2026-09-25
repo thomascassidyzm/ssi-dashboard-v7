@@ -4,7 +4,7 @@ Recorded in North Wales, looking out over the Menai towards Ynys Môn. The conve
 
 ## One line changed in the text
 
-- **The data centre's water.** Aran said it would take water from the Menai Strait. On the developer's own account it takes Dŵr Cymru mains drinking water: a "most likely" 700,000 litres a day, up to almost 12 million at peak. Only clean rainwater would go into the Strait. The line now says "taking mains water". [North Wales Chronicle](https://www.northwaleschronicle.co.uk/news/26562052.developers-data-centre-near-caernarfon-defend-plans/)
+- **The data centre's water.** Aran said it would take water from the Menai Strait. On the developer's own account it takes Dŵr Cymru mains drinking water: a "most likely" 700,000 litres a day, up to almost 12 million at peak. Only clean rainwater would go into the Strait. The English keeps his words; the Italian translation says mains water ("l'acqua della rete idrica"). [North Wales Chronicle](https://www.northwaleschronicle.co.uk/news/26562052.developers-data-centre-near-caernarfon-defend-plans/)
 
 ## Worth knowing
 

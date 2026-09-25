@@ -80,7 +80,9 @@ async function ingest() {
       hosts: [{ name: 'Tom' }, { name: 'Aran' }],
       format: 'Two-host topic conversation, as recorded, unpolished',
       source: 'podcast-tom-aran/01-environment-checked.md',
-      note: 'Tom 2026-09-25: no polishing. Only Siri mishearings fixed; "taking mains water" replaces "taking water from the Menai".',
+      // Tom 2026-09-25: "Menai straits was what Aran said - but the claim in his head was wrong."
+      // So the English keeps his words and only the Italian says mains water.
+      note: 'Tom 2026-09-25: no polishing. Only Siri mishearings fixed. The English keeps Aran\'s "taking water from Menai Straits"; the Italian says mains water ("l\'acqua della rete idrica").',
       sections: [{ label: 'Chapter 1', title: "L'ambiente", number: 1, subtitle: 'the environment', sentence_count: text.rows.length }],
     },
   })
