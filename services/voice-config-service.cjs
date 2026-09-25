@@ -26,6 +26,8 @@ const supabaseKey = process.env.SUPABASE_SERVICE_KEY;
 let supabase = null;
 if (supabaseUrl && supabaseKey) {
   supabase = createClient(supabaseUrl, supabaseKey, {
+    // Recordist emails come back from the vault on read (recordist-email-vault.cjs).
+    global: { fetch: require('./shared/recordist-email-vault.cjs').vaultFetch() },
     auth: {
       persistSession: false,
       autoRefreshToken: false,

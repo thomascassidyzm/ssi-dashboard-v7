@@ -14,6 +14,7 @@
  */
 
 const { createClient } = require('@supabase/supabase-js')
+const { vaultFetch } = require('./shared/recordist-email-vault.cjs')
 const createLogger = require('./shared/logger.cjs')
 const { generateSampleId, normalizeText: uuidNormalizeText } = require('./uuid-v11.cjs')
 const { normalizeForAudio } = require('./shared/text-normalize.cjs')
@@ -29,9 +30,12 @@ if (!supabaseUrl || !supabaseKey) {
   logger.warn('Missing SUPABASE_URL or SUPABASE_SERVICE_KEY')
 }
 
-// Service role client - bypasses RLS for server-side admin operations
+// Service role client - bypasses RLS for server-side admin operations.
+// vaultFetch puts recordist emails back into voice_config / policy voices on
+// read — they are kept out of the anon-readable JSON (recordist-email-vault.cjs).
 const supabase = supabaseUrl && supabaseKey
   ? createClient(supabaseUrl, supabaseKey, {
+      global: { fetch: vaultFetch(globalThis.fetch, { logger }) },
       auth: {
         persistSession: false,
         autoRefreshToken: false,
