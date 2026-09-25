@@ -1205,11 +1205,21 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   // Gendered known languages: a known slot is linkable only if a clip exists
   // in the voice its TEXT resolves to. Null context = voice-blind, as before.
   const needsGenderCtx = await knownGenderContextFor(courseCode, (course.voice_config || {}).voices || {})
+  // THE NEEDS PASS ASKS THE SAME QUESTION THE RELINK GATE ASKS (2026-09-25, job
+  // #181·I). The gate (linkAudioIds → isRelinkAllowed) refuses a clip whose
+  // voice is not the one the role resolves to; until this line the needs pass
+  // asked a voice-blind question for every non-gendered role, so a NULL slot
+  // whose only clip was in a retired voice was "linkable" here, refused there,
+  // and never rendered — eng_for_hin carried 2,152 such slots (1,068 target1,
+  // 1,038 target2, 46 known) across every fill pass since the voice changes.
+  // Same resolver as the gate (relink-voice-guard resolveVoices); a role with
+  // no configured voice stays voice-blind, exactly as before.
+  const wantedRoleVoices = resolveVoices(course)
   const linkable = []      // { text, lang, role, key, s3Key }
   const toGenerate = []
   for (const item of unlinked) {
     const key = `${normalizeText(item.text)}|${item.lang}|${item.role}`
-    const wantedVoice = needsGenderCtx ? knownVoiceIdForClip(needsGenderCtx, { role: item.role, text: item.text }) : null
+    const wantedVoice = (needsGenderCtx ? knownVoiceIdForClip(needsGenderCtx, { role: item.role, text: item.text }) : null) || wantedRoleVoices[item.role] || null
     if (existingSet.has(key, wantedVoice)) {
       linkable.push({ ...item, key, s3Key: existingSet.s3KeyFor(key, wantedVoice) })
     } else {
