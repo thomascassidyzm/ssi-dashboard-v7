@@ -1,22 +1,60 @@
 <template>
   <div class="leader-journey">
+    <!-- THREE DOORS FIRST (Tom and Aran, 2026-09-25): "a kind of simplification
+         and a permission to be just doing that thing". Each card goes STRAIGHT
+         to where that work is done; the pick is remembered, shown alone, and
+         changed with one tap. The numbered steps below stay as the map. -->
+    <section class="pick" aria-label="What do you want to do?" data-surface="journey-three-cards-2026-09-25">
+      <div class="pick-head">
+        <h2 class="journey-title">{{ pick && !choosing ? 'Carry on' : 'What do you want to do?' }}</h2>
+        <button v-if="pick && !choosing" type="button" class="pick-change" @click="choosing = true">Change</button>
+        <button v-else-if="pick && choosing" type="button" class="pick-change" @click="choosing = false">Keep {{ pickedCard.short }}</button>
+      </div>
+      <div class="pick-cards" :class="{ single: pick && !choosing }">
+        <div
+          v-for="card in visibleCards"
+          :key="card.key"
+          class="pick-card"
+          :class="[card.key, { picked: card.key === pick }]"
+        >
+          <router-link :to="card.to" class="pick-main" :data-card="card.key" @click="choose(card.key)">
+            <span class="pick-title">{{ card.title }}</span>
+            <span class="pick-sub">{{ card.sub }}</span>
+            <span class="pick-go">{{ card.action }} <span aria-hidden="true">&rarr;</span></span>
+          </router-link>
+          <router-link
+            v-for="extra in card.extras"
+            :key="extra.label"
+            :to="extra.to"
+            class="pick-extra"
+            @click="choose(card.key)"
+          >{{ extra.label }} <span aria-hidden="true">&rarr;</span></router-link>
+        </div>
+      </div>
+    </section>
+
     <header class="journey-header">
       <h2 class="journey-title">Your course, step by step</h2>
       <p class="journey-intro">
-        This page walks you from first translation to a published course. Work down the list —
-        each step shows where you are and takes you to the right place.
+        {{ pick && !showAllSteps
+          ? `The steps for ${pickedCard.gerund}. Nothing here has to be done in order.`
+          : 'The whole journey, from first translation to a published course. Each step shows where you are and takes you to the right place.' }}
       </p>
+      <button v-if="pick" type="button" class="pick-change" @click="showAllSteps = !showAllSteps">
+        {{ showAllSteps ? `Just the ${pickedCard.short} steps` : 'Show the whole journey' }}
+      </button>
     </header>
 
     <ol class="journey-steps">
       <li
-        v-for="step in steps"
+        v-for="step in shownSteps"
         :key="step.key"
         class="journey-step"
-        :class="{ current: step.key === currentStepKey, done: step.state === 'done' }"
+        :class="{ current: step.key === currentStepKey, done: step.state === 'done', na: step.state === 'na' }"
       >
         <div class="step-marker" :class="step.state">
           <span v-if="step.state === 'done'">&#10003;</span>
+          <span v-else-if="step.state === 'na'">&ndash;</span>
           <span v-else>{{ step.num }}</span>
         </div>
 
@@ -36,7 +74,7 @@
             </li>
           </ul>
 
-          <div class="step-links">
+          <div v-if="step.links.length" class="step-links">
             <router-link
               v-for="link in step.links"
               :key="link.label"
@@ -63,6 +101,8 @@ import { useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
+import { useAuth } from '@/composables/useAuth'
+import { readPick, writePick, JOURNEY_CARDS, stepsForPick } from './journeyPick.js'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
@@ -70,6 +110,7 @@ const props = defineProps({
 
 const router = useRouter()
 const store = useProductionStore()
+const { learner, isAdmin } = useAuth()
 const apiBase = getApiUrl()
 const headers = { 'ngrok-skip-browser-warning': 'true' }
 
@@ -86,6 +127,8 @@ const stats = ref(null)        // { total_seeds, completed_seeds, seeds_with_leg
 const flaggedCount = ref(null) // number | null (unknown)
 const audioStats = ref(null)   // { total, existing, missing }
 const voiceConfig = ref(null)  // { voices: { target1, target2, known, presentation } }
+const humanVoiceOnly = ref(false) // the course's standing no-TTS rule (server's answer)
+const podDraftTotal = ref(0)      // pod lines still a machine draft nobody has read
 const coverage = ref(null)     // synthesis-engine coverage payload (shape owned by the engine build)
 const engineInstalled = ref(false)
 const loadError = ref(false)
@@ -123,8 +166,12 @@ async function loadAll() {
       .catch(() => {}),
 
     fetchJson(`${apiBase}/api/courses/${props.courseCode}/voice-config`)
-      .then(d => { voiceConfig.value = d.config || d })
+      .then(d => { voiceConfig.value = d.config || d; humanVoiceOnly.value = d.humanVoiceOnly === true })
       .catch(() => {}),
+
+    fetchJson(`${apiBase}/api/production/${props.courseCode}/pods/drafts`)
+      .then(d => { podDraftTotal.value = d.total || 0 })
+      .catch(() => { podDraftTotal.value = 0 }),
 
     // The synthesis engine lands in a parallel build — a 404 here simply means
     // "not installed yet" and the step renders its coming-soon state.
@@ -217,6 +264,76 @@ const voiceSlots = computed(() => {
 const humanSlotCount = computed(() =>
   ['target1', 'target2'].filter(k => voiceConfig.value?.voices?.[k]?.provider === 'human').length
 )
+
+// A HUMAN-VOICE COURSE: the standing no-TTS rule names it, or both of its
+// voices are real people. Read from the voice data the page already loads —
+// no new flag. Its computer-voice step is greyed out, with the reason said.
+const isHumanVoiceCourse = computed(() => humanVoiceOnly.value || humanSlotCount.value >= 2)
+
+// --- The three cards --------------------------------------------------------
+// The caller's own voice on THIS course, from the casting the server attached
+// to their identity (/api/auth/me). With one, "record" opens their booth; with
+// none, it opens the cast, where they name a voice — theirs or anyone's.
+const myVoiceId = computed(() => {
+  const casting = learner.value?.casting
+  const mine = Array.isArray(casting) ? casting.find(c => c && c.courseCode === props.courseCode && c.voiceId) : null
+  return mine ? mine.voiceId : null
+})
+const castTo = computed(() => ({ path: `/production/${props.courseCode}/pods`, query: { cast: '1' } }))
+
+const cards = computed(() => {
+  const code = props.courseCode
+  const record = myVoiceId.value
+    ? {
+        to: { name: 'RecordistRoom', params: { voiceId: myVoiceId.value }, query: { course: code } },
+        sub: 'Your booth: the lines waiting on your voice, one at a time.',
+        action: 'Open my booth',
+        extras: [{ label: 'Ask someone else to record', to: castTo.value }],
+      }
+    : {
+        to: castTo.value,
+        sub: 'Name a voice — yours or someone else’s — add their email, and send them the link to their booth.',
+        action: 'Set up the voices',
+        extras: [],
+      }
+  return JOURNEY_CARDS.map(c => {
+    if (c.key === 'record') return { ...c, ...record }
+    if (c.key === 'proofread') {
+      return {
+        ...c,
+        to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } },
+        sub: 'Read the course in the order a learner meets it, and fix anything that reads wrong.',
+        action: 'Start reading',
+        extras: podDraftTotal.value > 0
+          ? [{ label: `${podDraftTotal.value} pod line${podDraftTotal.value === 1 ? '' : 's'} nobody has read yet`, to: { path: `/production/${code}/pods`, query: { drafts: '1' } } }]
+          : [],
+      }
+    }
+    return {
+      ...c,
+      to: `/production/${code}/text`,
+      sub: 'Translate the sentences and break them into the building blocks the course teaches with.',
+      action: 'Open the builder',
+      extras: [],
+    }
+  })
+})
+
+// The pick: remembered per login (journeyPick.js says where and why), shown
+// alone once made, changed with one tap.
+const pick = ref(null)
+const choosing = ref(false)
+const showAllSteps = ref(false)
+const pickEmail = computed(() => learner.value?.email || '')
+watch(pickEmail, (email) => { pick.value = readPick(email) }, { immediate: true })
+function choose(key) {
+  pick.value = key
+  choosing.value = false
+  writePick(pickEmail.value, key)
+}
+const pickedCard = computed(() => JOURNEY_CARDS.find(c => c.key === pick.value) || JOURNEY_CARDS[0])
+const visibleCards = computed(() =>
+  pick.value && !choosing.value ? cards.value.filter(c => c.key === pick.value) : cards.value)
 
 // --- Synthesis coverage roll-up ----------------------------------------------
 // Target slots from the engine's per-slot array (prefer the human-assigned
@@ -317,18 +434,29 @@ const steps = computed(() => {
     ]
   }
 
-  const synthesize = {
-    key: 'synthesize', num: 5,
-    title: 'Build the full audio',
-    blurb: 'Your recordings are stitched together so every practice phrase is heard in your team’s voices — nobody has to read thousands of lines.',
-    state: synthDone.value ? 'done' : (engineInstalled.value ? 'active' : 'pending'),
-    statusText: engineInstalled.value
-      ? (synthSummary.value || 'Ready')
-      : 'Waiting for recordings',
-    links: [
-      { label: 'Open the stitching studio', to: `/production/${code}/synthesis`, primary: true }
-    ]
-  }
+  const synthesize = isHumanVoiceCourse.value
+    ? {
+        // GREYED OUT FOR A HUMAN-VOICE COURSE (Tom, 2026-09-25: the "build the
+        // full audio" step "could be grayed out"). Said plainly, not hidden.
+        key: 'synthesize', num: 5,
+        title: 'Build the full audio',
+        blurb: 'Not needed for this course: it is recorded by people, so there is no computer voice to build.',
+        state: 'na',
+        statusText: 'Not needed — people record this course',
+        links: []
+      }
+    : {
+        key: 'synthesize', num: 5,
+        title: 'Build the full audio',
+        blurb: 'Your recordings are stitched together so every practice phrase is heard in your team’s voices — nobody has to read thousands of lines.',
+        state: synthDone.value ? 'done' : (engineInstalled.value ? 'active' : 'pending'),
+        statusText: engineInstalled.value
+          ? (synthSummary.value || 'Ready')
+          : 'Waiting for recordings',
+        links: [
+          { label: 'Open the stitching studio', to: `/production/${code}/synthesis`, primary: true }
+        ]
+      }
 
   const qa = {
     key: 'qa', num: 6,
@@ -351,18 +479,27 @@ const steps = computed(() => {
     statusText: courseStatus.value === 'live'
       ? 'Live — learners can use it'
       : (courseStatus.value === 'beta' ? 'In beta — open to testers' : 'Not published yet'),
-    links: [
-      { label: 'Open course settings', to: `/production/${code}`, primary: true }
-    ]
+    // Community builders never go via the overview (Tom, 2026-09-25), and
+    // community courses have no settings to open — so the link is admins' only.
+    links: isAdmin.value
+      ? [{ label: 'Open course settings', to: `/production/${code}`, primary: true }]
+      : []
   }
 
   return [translate, decompose, verify, record, synthesize, qa, publish]
 })
 
+const shownSteps = computed(() => {
+  if (!pick.value || showAllSteps.value) return steps.value
+  const keys = stepsForPick(pick.value)
+  return steps.value.filter(s => keys.includes(s.key))
+})
+
 // The first step that still needs attention (skipping the not-yet-installed
-// synthesis engine so it never blocks the highlight).
+// synthesis engine, and a step this course does not need, so neither blocks
+// the highlight).
 const currentStepKey = computed(() => {
-  const next = steps.value.find(s => s.state !== 'done' && s.state !== 'pending')
+  const next = shownSteps.value.find(s => s.state !== 'done' && s.state !== 'pending' && s.state !== 'na')
   return next ? next.key : null
 })
 </script>
@@ -543,7 +680,66 @@ const currentStepKey = computed(() => {
 }
 :root[data-theme="light"] .journey-note { color: #b45309; }
 
+/* ── The three cards ─────────────────────────────────────────────────── */
+.pick { margin-bottom: 2rem; }
+.pick-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+.pick-change {
+  background: none;
+  border: 1px solid var(--color-graphite, var(--line));
+  border-radius: 999px;
+  color: var(--color-paper, var(--ink));
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+  min-height: 36px;
+  cursor: pointer;
+}
+.journey-header .pick-change { margin-top: 0.6rem; }
+.pick-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.75rem; }
+.pick-cards.single { grid-template-columns: minmax(0, 1fr); }
+.pick-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-shadow, var(--surface));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  border-radius: 12px;
+  overflow: hidden;
+}
+.pick-card.picked { border-color: var(--color-emerald, #06ffa5); }
+:root[data-theme="light"] .pick-card { border-color: var(--line); box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06); }
+:root[data-theme="light"] .pick-card.picked { border-color: #059669; }
+.pick-main {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 1.1rem 1.2rem;
+  text-decoration: none;
+  flex: 1;
+  min-height: 48px;
+}
+.pick-title {
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-paper, var(--ink));
+}
+.pick-sub { font-size: 0.84rem; color: var(--color-paper-dim, var(--muted)); }
+.pick-go { font-size: 0.85rem; color: var(--color-emerald, #06ffa5); margin-top: auto; padding-top: 0.3rem; }
+:root[data-theme="light"] .pick-go { color: #047857; }
+.pick-extra {
+  font-size: 0.8rem;
+  padding: 0.7rem 1.2rem;
+  border-top: 1px solid var(--color-graphite, var(--line));
+  color: var(--color-paper-dim, var(--muted));
+  text-decoration: none;
+}
+.pick-extra:hover, .pick-main:hover .pick-title { color: var(--color-paper, var(--ink)); }
+
+.journey-step.na { opacity: 0.5; }
+.step-marker.na { border-style: dashed; }
+.step-status.na { font-style: italic; }
+
 @media (max-width: 640px) {
+  .pick-cards { grid-template-columns: minmax(0, 1fr); }
   .step-head { flex-direction: column; gap: 0.2rem; }
   .step-status { white-space: normal; }
 }

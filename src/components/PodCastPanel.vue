@@ -48,6 +48,17 @@
                  it. A cast artist opening this page never sees another
                  artist's link. -->
             <div v-if="canSendLinks" class="flex items-center gap-1.5 flex-shrink-0">
+              <!-- THE EDITOR SENDS THE LINK (Tom, 2026-09-25: "they create the
+                   voice, they add an email address, they send them the link which
+                   goes to the booth"). A pre-addressed email from the editor's
+                   own mail app: Popty holds no mail service of its own, and the
+                   message comes from someone the recorder knows. -->
+              <a
+                v-if="a.email"
+                :href="emailLinkHref(a)"
+                class="email-link text-[11px] px-2 py-1 rounded border border-emerald-700 text-emerald-300 hover:border-emerald-500"
+                :title="`Email ${a.email} their booth link`"
+              >Email link</a>
               <button
                 @click="copyRecordLink(a.voiceId)"
                 class="copy-link text-[11px] px-2 py-1 rounded border border-line text-ink hover:border-emerald-500"
@@ -657,6 +668,29 @@ const allocation = computed(() => {
 // /record/:course?podVoice= shape keep working: the router redirects them.
 function recordLink(voiceId) {
   return `${window.location.origin}/r/${encodeURIComponent(voiceId)}?course=${encodeURIComponent(props.courseCode)}`
+}
+
+/**
+ * mailto: for one cast voice — pre-addressed, with the booth link and the two
+ * ways back in (the same link again, or signing in to Popty with this email,
+ * which lands on the booth: /my-recording resolves the login to its voice).
+ */
+function emailLinkHref(a) {
+  const link = recordLink(a.voiceId)
+  const first = String(a.name || '').trim().split(/\s+/)[0]
+  const subject = 'Your recording booth on Popty'
+  const body = [
+    first ? `Hi ${first},` : 'Hi,',
+    '',
+    'Here is your recording booth. It has the lines I would love you to record, one at a time:',
+    '',
+    link,
+    '',
+    'You can open this link again whenever you like. Or sign in at Popty with this email address, and it takes you straight back to your booth.',
+    '',
+    'Thank you!',
+  ].join('\n')
+  return `mailto:${encodeURIComponent(a.email)}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
 }
 
 async function copyRecordLink(voiceId) {

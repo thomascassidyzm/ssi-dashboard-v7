@@ -14,6 +14,13 @@ try {
 }
 
 // https://vite.dev/config/
+// Vercel preview branches that run against a backend of their own, served from
+// a worktree on watson-1 over the tailnet. A branch not listed here (and main,
+// always) talks to the machine the switcher picks, exactly as before.
+const PREVIEW_BACKENDS = {
+  'preview/popty-community-builders': 'https://watson-1.tail4968cb.ts.net:8471',
+}
+
 export default defineConfig({
   plugins: [
     vue(),
@@ -52,7 +59,10 @@ export default defineConfig({
   },
   envPrefix: ['VITE_', 'NEXT_PUBLIC_'],
   define: {
-    __GIT_COMMIT__: JSON.stringify(gitCommit)
+    __GIT_COMMIT__: JSON.stringify(gitCommit),
+    // A preview branch built on Vercel talks to its OWN backend, never to
+    // production (src/services/machineEnvironment.js). Empty everywhere else.
+    __POPTY_PREVIEW_API__: JSON.stringify(PREVIEW_BACKENDS[process.env.VERCEL_GIT_COMMIT_REF] || '')
   },
   server: {
     port: 5173,
