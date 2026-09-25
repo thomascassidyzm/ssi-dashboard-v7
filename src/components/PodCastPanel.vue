@@ -27,7 +27,7 @@
         <h3 class="text-xs font-semibold text-ink">Your cast</h3>
         <span class="text-[11px] text-emerald-300 cast-status">saved ✓ — record links are live</span>
       </div>
-      <div class="grid gap-2 sm:grid-cols-2 mt-2">
+      <div class="grid gap-2 grid-cols-1 sm:grid-cols-2 mt-2">
         <div v-for="a in allocation" :key="a.voiceId" class="cast-row bg-canvas/60 border border-line rounded p-3">
           <!-- flex-wrap + min-w-0: `truncate` alone cannot shrink a flex child
                below its content width, so next to the flex-shrink-0 button pair
@@ -47,7 +47,7 @@
                  identity, so only the course's editor - who cast them - sees
                  it. A cast artist opening this page never sees another
                  artist's link. -->
-            <div v-if="canSendLinks" class="flex items-center gap-1.5 flex-shrink-0">
+            <div v-if="canSendLinks" class="flex items-center gap-1.5 flex-wrap min-w-0">
               <!-- THE EDITOR SENDS THE LINK (Tom, 2026-09-25: "they create the
                    voice, they add an email address, they send them the link which
                    goes to the booth"). A pre-addressed email from the editor's
