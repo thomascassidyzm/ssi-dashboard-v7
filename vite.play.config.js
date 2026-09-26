@@ -48,5 +48,9 @@ export default mergeConfig(base, {
     strictPort: true,
     allowedHosts: true,
     fs: { strict: false }, // node_modules is a link to the shared install, outside this tree
+    // The page is on the door, not on this port: its live-reload socket goes back through the door.
+    hmr: process.env.PLAY_PUBLIC_ORIGIN
+      ? { protocol: 'wss', host: new URL(process.env.PLAY_PUBLIC_ORIGIN).hostname, clientPort: Number(new URL(process.env.PLAY_PUBLIC_ORIGIN).port || 443) }
+      : undefined,
   },
 })
