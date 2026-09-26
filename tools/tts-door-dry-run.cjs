@@ -17,7 +17,7 @@
  *                         need rendered (the ~1% course-specific lines).
  *
  * Load: one paged read per content table, then batched text_normalized lookups
- * (BATCH keys per query, sequential) — never a full course_audio scan.
+ * (size-capped key lists per query, sequential) — never a full course_audio scan.
  *
  * Clip index (job #391): for every slot it also asks the question the live door
  * now asks — public.clip_index for (language, words), plus this course's own
@@ -39,16 +39,33 @@ const { clipTextKey } = require('../services/shared/clip-index.cjs')
 const { tryCanonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
-const BATCH = 150
+// Batches are cut by URL-ENCODED size, not count: an .in() list rides in the
+// query string, and Devanagari/Han text encodes ~9x — 150 texts answered 400
+// and 40 long seeds still broke the socket. MAX_KEY_CHARS keeps each request
+// well inside PostgREST's URL limit.
+const MAX_KEY_CHARS = 5000
+function chunksBySize(items, size = s => encodeURIComponent(s).length) {
+  const out = []
+  let cur = [], n = 0
+  for (const it of items) {
+    const k = size(it) + 3
+    if (cur.length && n + k > MAX_KEY_CHARS) { out.push(cur); cur = []; n = 0 }
+    cur.push(it); n += k
+  }
+  if (cur.length) out.push(cur)
+  return out
+}
 const COLUMNS = 'id, course_code, text, text_normalized, language, voice_id, role, s3_key, origin, veracity_pass'
 
 const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
 
+let stage = 'start'
+const mark = st => { stage = st; process.stderr.write(`[dry-run] ${new Date().toISOString()} ${st}\n`) }
 async function pagedAll(build) {
   const out = []
   for (let from = 0; ; from += 1000) {
     const { data, error } = await build().range(from, from + 999)
-    if (error) throw new Error(error.message)
+    if (error) throw new Error(`${stage} (offset ${from}): ${error.message}`)
     out.push(...(data || []))
     if (!data || data.length < 1000) return out
   }
@@ -76,11 +93,16 @@ async function main() {
   const asJson = process.argv.includes('--json')
   if (!courseCode) { console.error('usage: node tools/tts-door-dry-run.cjs <course_code> [--json]'); process.exit(2) }
 
+  mark('voices')
   const { course, voices } = await courseVoices(courseCode)
+  mark('content tables')
+  // Each read is ordered along a (course_code, …) index: ordering
+  // practice phrases by id walked the whole table's pkey filtering by course and
+  // hit the 15s statement timeout on the live DB (2026-09-26, job #391).
   const [seeds, legos, phrases] = await Promise.all([
     pagedAll(() => db.from('course_seeds').select('known_text, target_text').eq('course_code', courseCode).order('seed_number')),
     pagedAll(() => db.from('course_legos').select('lego_id, known_text, target_text').eq('course_code', courseCode).order('lego_id')),
-    pagedAll(() => db.from('course_practice_phrases').select('id, known_text, target_text').eq('course_code', courseCode).order('id')),
+    pagedAll(() => db.from('course_practice_phrases').select('id, known_text, target_text').eq('course_code', courseCode).order('seed_number').order('lego_index').order('position')),
   ])
 
   // Gendered known voices (Hindi known = Kriti + Rehan, one per line): the same
@@ -109,11 +131,13 @@ async function main() {
     if (voices.target2) add('target2', row.target_text)
   }
 
+  mark(`course_audio lookups for ${slots.size} slots`)
   // Batched lookups by text across every course.
   const texts = [...new Set([...slots.values()].map(s => s.text))]
   const byText = new Map()
-  for (let i = 0; i < texts.length; i += BATCH) {
-    const chunk = texts.slice(i, i + BATCH)
+  const textChunks = chunksBySize(texts, t => audioKeyCandidates(t).reduce((n, k) => n + encodeURIComponent(k).length + 3, 0))
+  for (let i = 0; i < textChunks.length; i++) {
+    const chunk = textChunks[i]
     const keys = [...new Set(chunk.flatMap(t => audioKeyCandidates(t)))]
     const rows = await pagedAll(() => db.from('course_audio').select(COLUMNS).in('text_normalized', keys).not('s3_key', 'like', 'pending/%').order('id'))
     for (const r of rows) {
@@ -121,10 +145,11 @@ async function main() {
       if (!byText.has(k)) byText.set(k, [])
       byText.get(k).push(r)
     }
-    if (!asJson && (i / BATCH) % 20 === 0) process.stderr.write(`  looked up ${Math.min(i + BATCH, texts.length)}/${texts.length} texts\r`)
+    if (i % 100 === 0) process.stderr.write(`  course_audio batch ${i + 1}/${textChunks.length}\n`)
     await sleep(50)
   }
 
+  mark('clip_index lookups')
   // The clip index, batched by language: (language, text_key) -> the canonical
   // row of every voice holding those words.
   const idxRows = new Map()
@@ -136,8 +161,7 @@ async function main() {
   }
   for (const [language, keySet] of byLang) {
     const keys = [...keySet]
-    for (let i = 0; i < keys.length; i += BATCH) {
-      const chunk = keys.slice(i, i + BATCH)
+    for (const chunk of chunksBySize(keys)) {
       const rows = await pagedAll(() => db.from('clip_index').select(`text_key, voice_id, course_audio!inner(${COLUMNS})`).eq('language', language).in('text_key', chunk).order('text_key').order('voice_id'))
       for (const r of rows) {
         const k = `${language}|${r.text_key}`
