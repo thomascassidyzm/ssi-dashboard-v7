@@ -95,7 +95,12 @@ async function generatePreviewSample(options) {
   console.log(`[Preview] Generating: "${text.substring(0, 30)}..." with ${ttsConfig.provider}`);
 
   const startTime = Date.now();
-  const { audioBuffer } = await ttsService.generate(text, ttsConfig.provider, ttsConfig);
+  // A preview is an AUDITION at the one TTS door (exempt from the cast gate,
+  // never from the lookup).
+  const { audioBuffer } = await ttsService.generate(text, ttsConfig.provider, {
+    ...ttsConfig,
+    door: { ...(ttsConfig.door || {}), audition: true },
+  });
   const generationTime = Date.now() - startTime;
 
   // Upload to staging

@@ -187,20 +187,42 @@ describe('the one reuse path includes the course itself', () => {
   it('findSiblingCourseClip answers from the own course when asked to, and never matches a question to a statement', async () => {
     const tables = engForHinState({ genderedKnown: false })
     const { app } = load({ tables })
-    const own = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', 'target1', CHARLOTTE, { includeOwnCourse: true })
+    const own = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', CHARLOTTE, { includeOwnCourse: true })
     expect(own && own.course_code).toBe(COURSE_CODE)
-    const otherOnly = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', 'target1', CHARLOTTE)
+    const otherOnly = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', CHARLOTTE)
     expect(otherOnly).toBeNull()
-    const question = await app.findSiblingCourseClip(COURSE_CODE, 'heard?', 'eng', 'target1', CHARLOTTE, { includeOwnCourse: true })
+    const question = await app.findSiblingCourseClip(COURSE_CODE, 'heard?', 'eng', CHARLOTTE, { includeOwnCourse: true })
     expect(question).toBeNull()
   })
 
-  it('a clip in another voice is not a match (E1: voice identity keys a take) — that slot renders once', async () => {
+  it('a recast course whose clips exist only in OLD voices renders nothing (r-2026-09-26-a-recast-applies-to-new-content)', async () => {
+    // Recast both English roles to a voice that has never said a word; every
+    // line exists in this course in the old Charlotte / tom_001 voices.
     const tables = engForHinState({ genderedKnown: false })
-    for (const a of tables.course_audio) if (a.text === 'heard' && a.role === 'target1') a.voice_id = 'cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca'
-    const { app, tts } = load({ tables })
-    await postGenerate(app, FILL)
-    expect(tts.calls).toEqual(['heard'])
+    const recast = { voiceId: 'cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca', provider: 'cartesia', name: 'New' }
+    tables.courses[0].voice_config.voices.target1 = recast
+    tables.courses[0].voice_config.voices.target2 = recast
+    const { app, tts, db } = load({ tables })
+    const r = await postGenerate(app, FILL)
+    expect(r.status).toBe(200)
+    expect(tts.calls).toEqual([])
+    expect(nullSlots(db)).toBe(0)
+  })
+
+  it('findSiblingCourseClip answers in any voice, preferring the asked voice; voiceBound keeps the old same-voice key', async () => {
+    const tables = engForHinState({ genderedKnown: false })
+    const { app } = load({ tables })
+    const NEW = 'cartesia_62ae83ad-4f6a-430b-af41-a9bede9286ca'
+    const any = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', NEW, { includeOwnCourse: true })
+    // A hit in an old voice; which of the course's two old takes is decided by
+    // id, never by role (Tom, 2026-09-26 21:45Z: NO ROLE).
+    expect([CHARLOTTE, TOM_001]).toContain(any && any.voice_id)
+    const asCharlotte = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', CHARLOTTE, { includeOwnCourse: true })
+    expect(asCharlotte.voice_id).toBe(CHARLOTTE)
+    const asTom = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', TOM_001, { includeOwnCourse: true })
+    expect(asTom.voice_id).toBe(TOM_001)
+    const bound = await app.findSiblingCourseClip(COURSE_CODE, 'heard', 'eng', NEW, { includeOwnCourse: true, voiceBound: true })
+    expect(bound).toBeNull()
   })
 })
 

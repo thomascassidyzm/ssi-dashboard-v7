@@ -70,24 +70,15 @@ async function renderXai({ voice, lang, text }) {
 }
 
 async function renderAzure({ voice, lang, text }) {
-  const key = process.env.AZURE_SPEECH_KEY || process.env.AZURE_TTS_KEY;
-  const region = process.env.AZURE_SPEECH_REGION || process.env.AZURE_TTS_REGION;
-  const esc = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
-  // Minimal SSML: the REST endpoint requires a document, so this is the smallest one
-  // that names a voice. No prosody, no breaks, no text rewriting.
-  const ssml = `<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="${lang}"><voice name="${voice}">${esc}</voice></speak>`;
-  const res = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`, {
-    method: 'POST',
-    headers: {
-      'Ocp-Apim-Subscription-Key': key,
-      'Content-Type': 'application/ssml+xml',
-      'X-Microsoft-OutputFormat': 'audio-24khz-160kbitrate-mono-mp3',
-      'User-Agent': 'ssi-a131-blind',
-    },
-    body: ssml,
+  // Through the one TTS door (services/tts-service.cjs speak), as an audition.
+  const { audioBuffer } = await require('../../services/tts-service.cjs').speak(text, 'azure', {
+    subscriptionKey: process.env.AZURE_SPEECH_KEY || process.env.AZURE_TTS_KEY,
+    region: process.env.AZURE_SPEECH_REGION || process.env.AZURE_TTS_REGION,
+    voiceName: voice,
+    speed: 1.0,
+    door: { audition: true, language: lang },
   });
-  if (!res.ok) throw new Error(`Azure ${res.status}: ${(await res.text()).slice(0, 300)}`);
-  return Buffer.from(await res.arrayBuffer());
+  return audioBuffer;
 }
 
 async function renderElevenLabs({ voice, text }) {

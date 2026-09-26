@@ -19,7 +19,7 @@
  * here. A bake-off must compare providers on identical input text; a
  * repo-specific pre-transform would silently advantage Azure.
  */
-const { envRef, httpSynthesise } = require('../lib/adapter-utils.cjs');
+const { envRef, doorSynthesise } = require('../lib/adapter-utils.cjs');
 
 /** The SDK enum value the repo uses, in its REST header spelling. */
 const OUTPUT_FORMAT = 'audio-16khz-32kbitrate-mono-mp3';
@@ -67,7 +67,7 @@ module.exports = {
 
     return {
       transport: 'http',
-      endpoint: `https://${region}.tts.speech.microsoft.com/cognitiveservices/v1`,
+      endpoint: `tts-service.speak (Azure ${region} behind the one TTS door)`,
       method: 'POST',
       headers: {
         'Ocp-Apim-Subscription-Key': envRef('AZURE_TTS_KEY'),
@@ -92,6 +92,15 @@ module.exports = {
   async synthesise(utterance, opts = {}) {
     // Key present on this box, so the spend gate inside httpSynthesise is the
     // only thing standing between phase 1 and a bill. It blocks even with --live.
-    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
+    return doorSynthesise(this, 'azure', {
+      text: utterance.text,
+      tts: {
+        subscriptionKey: process.env.AZURE_TTS_KEY || process.env.AZURE_SPEECH_KEY,
+        region: process.env.AZURE_TTS_REGION || process.env.AZURE_SPEECH_REGION,
+        voiceName: opts.voice,
+        speed: opts.speed != null ? opts.speed : 1.0,
+        door: { language: utterance.language || opts.language },
+      },
+    }, opts);
   },
 };

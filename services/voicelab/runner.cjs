@@ -61,9 +61,14 @@ function providerConfig (cfg, lang) {
   // ordinary one (services/shared/voice-consent-gate.cjs). It is passed through
   // rather than defaulted here, so a lab run cannot acquire it by accident.
   const forDecision = cfg.consentAudition ? { consentAudition: true } : {}
+  // Through the one TTS door as an AUDITION: a candidate voice may be heard
+  // before it is cast (the door's cast gate), but the door still answers with
+  // an existing recording when this voice has already said these words.
+  const door = { audition: true, language: lang ? (lang.locale || lang.azureLocale || lang.steer) : undefined }
   if (cfg.provider === 'azure') {
     return {
       ...forDecision,
+      door,
       subscriptionKey: process.env.AZURE_SPEECH_KEY,
       region: process.env.AZURE_SPEECH_REGION || 'westeurope',
       voiceName: cfg.voiceId,
@@ -73,6 +78,7 @@ function providerConfig (cfg, lang) {
   if (cfg.provider === 'cartesia') {
     return {
       ...forDecision,
+      door,
       apiKey: process.env.CARTESIA_API_KEY,
       voiceId: cfg.voiceId,
       // `locale`, not `language`: generateCartesia steers on locale and THROWS
@@ -118,7 +124,8 @@ async function renderOne ({ text, cfg }) {
   if (!lang && cfg.provider !== 'azure') throw Object.assign(new Error(`unknown language ${cfg.language}`), { status: 400 })
 
   const t0 = Date.now()
-  const { audioBuffer } = await generate(text, cfg.provider, providerConfig(cfg, lang))
+  const { audioBuffer, existingClip } = await generate(text, cfg.provider, providerConfig(cfg, lang))
+  if (existingClip) console.log(`[voicelab] "${String(text).slice(0, 40)}" answered by the existing ${existingClip.course_code} clip — knobs did not reach it`)
   const renderMs = Date.now() - t0
 
   const tm = Date.now()

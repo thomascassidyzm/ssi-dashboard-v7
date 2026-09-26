@@ -96,6 +96,24 @@ async function httpSynthesise(adapter, req, opts) {
 }
 
 /**
+ * The Cartesia/Azure synthesis path: through the one TTS door (tts-service
+ * speak), never a direct HTTP call — tools/check-tts-door.cjs fails the test
+ * run otherwise. Same order as httpSynthesise: credentials, spend gate, call.
+ * A bake-off compares FRESH takes, so a door answer that is an existing
+ * recording is refused rather than scored as though it were a new render.
+ */
+async function doorSynthesise(adapter, provider, config, opts) {
+  assertCredentialled(adapter);
+  assertSpendAllowed(adapter, opts);
+  const tts = require('../../../services/tts-service.cjs');
+  const out = await tts.speak(config.text, provider, config.tts);
+  if (out.existingClip) {
+    throw new Error(`${adapter.displayName}: "${String(config.text).slice(0, 40)}" is already a recording in this voice (${out.existingClip.course_code}) — a bake-off needs text that is not a course line`);
+  }
+  return { audioBuffer: out.audioBuffer, metadata: { via: 'tts-service.speak', provider } };
+}
+
+/**
  * Every adapter refuses to spend in phase 1. This is the belt to the --live
  * flag's braces: even --live hits this unless PHASE2_SPEND_APPROVED=1 is
  * exported by a human who has read the approval gate in CLAUDE.md.
@@ -134,5 +152,5 @@ function shortLang(iso3) {
 
 module.exports = {
   envRef, resolveHeaders, missingEnv, noCredentialError, assertCredentialled,
-  assertSpendAllowed, httpSynthesise, shortLang, ISO3_TO_SHORT,
+  assertSpendAllowed, httpSynthesise, doorSynthesise, shortLang, ISO3_TO_SHORT,
 };

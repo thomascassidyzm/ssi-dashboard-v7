@@ -67,9 +67,8 @@ const row = (over = {}) => ({
   ...over,
 })
 
-// NOTE: crossRole is deliberately NOT pinned here. Tom's 2026-08-07 ruling made
-// the key voice x text x language and nothing else, so role-agnostic is the
-// module default and the fixture must not quietly restore the old narrow one.
+// There is no role switch to pin: known and target are not told apart
+// (Tom, 2026-08-07; restated 2026-09-26 21:45Z, "NO ROLE").
 const opts = (over = {}) => ({ courseCode: 'fra_for_eng', voiceAliases: [], ...over })
 
 // ── the voice boundary ─────────────────────────────────────────────────────
@@ -138,10 +137,10 @@ describe('never cross a voice boundary', () => {
     expect(d.decision).toBe('REUSE_CROSS')
   })
 
-  it('crossRole:false restores the old strict same-role key when a caller wants it', () => {
+  it('a stale crossRole:false from an old caller changes nothing — the switch is deleted', () => {
     const t1 = clip({ role: 'target1', language: 'fra', voiceId: 'xai_eve' })
     const d = decideClip(t1, [row({ role: 'target2', language: 'fra', voice_id: 'xai_eve' })], opts({ crossRole: false }))
-    expect(d.decision).toBe('RENDER')
+    expect(d.decision).toBe('REUSE_CROSS')
   })
 })
 
@@ -496,8 +495,8 @@ describe('role-agnostic, direction-agnostic reuse (Tom: voice x text x language,
   // which Tom retired: "playback speed is a player concern, not a baked-in
   // render concern … stop treating rendered pace as a reason for distinct
   // clips." New renders are at one canonical pace, so an Azure source is now
-  // borrowable across roles like any other. See isSpeedTrustedVoice for what
-  // this costs on clips already in the estate, and Tom's waiver of that cost.
+  // borrowable across roles like any other; Tom waived the cost on clips already
+  // in the estate. The guard itself is now deleted (Tom, 2026-09-26 21:45Z).
   it('now CROSSES a role on an Azure source — the baked-speed guard is retired', () => {
     const d = decideClip(
       clip({ role: 'known', voiceId: 'azure_en-GB-SoniaNeural' }),
@@ -508,25 +507,8 @@ describe('role-agnostic, direction-agnostic reuse (Tom: voice x text x language,
     expect(d.source.role).toBe('target2')
   })
 
-  it('the baked-speed guard is retired — every voice crosses roles now', () => {
-    // Was: Azure-shaped ids answered false because their pace was unverifiable.
-    // Tom retired the distinction on 2026-08-29 along with the cadence
-    // multiplier that created it; the function is kept as a constant so the
-    // six call sites keep a written record of the rule that used to be here.
-    expect(planner.isSpeedTrustedVoice('gfzdpspr5fdp')).toBe(true)
-    expect(planner.isSpeedTrustedVoice('eve')).toBe(true)
-    expect(planner.isSpeedTrustedVoice('azure_en-GB-SoniaNeural')).toBe(true)
-    expect(planner.isSpeedTrustedVoice('en-GB-SoniaNeural')).toBe(true)
-    expect(planner.isSpeedTrustedVoice('fr-CA-SylvieNeural')).toBe(true)
-  })
-
-  it('crossRole:false restores strict same-role matching', () => {
-    const d = decideClip(
-      clip({ role: 'known', voiceId: 'xai_eve' }),
-      [row({ role: 'target2' })],
-      opts({ crossRole: false })
-    )
-    expect(d.decision).toBe('RENDER')
+  it('the baked-speed guard is deleted, not kept as a constant', () => {
+    expect(planner.isSpeedTrustedVoice).toBeUndefined()
   })
 })
 

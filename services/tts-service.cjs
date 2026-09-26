@@ -25,6 +25,8 @@ const { assertSelectableProvider } = require('./shared/tts-provider-policy.cjs')
 const consentGate = require('./shared/voice-consent-gate.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
+const { identityFromConfig, findExistingClip, clipLibrary } = require('./shared/clip-library.cjs');
+const { assertCastVoice } = require('./shared/voice-cast-gate.cjs');
 
 // Shared keep-alive agent for REST TTS providers (xAI, ElevenLabs). Without it
 // every clip opens a fresh TLS connection — a 14k-clip run churns 14k+
@@ -826,17 +828,11 @@ function pcm16ToWav(pcm, sampleRate, channels) {
 
 
 /**
- * Generate speech using specified TTS provider
- * @param {string} text - Text to synthesize
- * @param {string} provider - TTS provider ('elevenlabs' | 'azure' | 'xai' | 'cartesia')
- * @param {object} config - Provider-specific configuration
- * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
+ * The gates every request passes before anything else — child voices, human-voice
+ * courses, consent, retired providers. They run BEFORE the clip lookup, so a
+ * refused voice is refused whether or not a clip of it already exists.
  */
-async function generate(text, provider, config) {
-  if (!text || text.trim() === '') {
-    throw new Error('Text cannot be empty');
-  }
-
+async function assertMayRender(provider, config) {
   assertNotChildVoice(config);
   assertNotHumanVoiceCourse(config);
   // NO CONSENT, NO SPEECH (Tom, 2026-08-31). See assertConsentedVoice above.
@@ -853,7 +849,13 @@ async function generate(text, provider, config) {
   // voice-id resolution, playback, relink or any read path, and no historic
   // xai_ clip is affected — see services/shared/tts-provider-policy.cjs.
   assertSelectableProvider(provider, 'tts-service.generate');
+}
 
+/**
+ * ONE provider call, no lookup, no retry. PRIVATE — reachable only through
+ * speak(), which asks the clip library first. Never export it.
+ */
+async function renderOnce(text, provider, config) {
   switch (provider) {
     case 'elevenlabs':
       return await generateElevenLabs(text, config);
@@ -1031,7 +1033,7 @@ function phonologySuspects(provider, config) {
  * @param {number} maxRetries - Maximum retry attempts
  * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
-async function generateWithRetry(text, provider, config, maxRetries = 3) {
+async function renderWithRetry(text, provider, config, maxRetries = 3) {
   let lastError = null;
   const suspects = phonologySuspects(provider, config);
   if (suspects && !PHONO_GATE_ON && !phonoGateWarned) {
@@ -1041,7 +1043,7 @@ async function generateWithRetry(text, provider, config, maxRetries = 3) {
 
   for (let attempt = 0; attempt < maxRetries; attempt++) {
     try {
-      const result = await generate(text, provider, config);
+      const result = await renderOnce(text, provider, config);
       if (suspects && PHONO_GATE_ON) {
         const detected = await detectSpokenLanguage(result.audioBuffer);
         if (detected && suspects.has(detected)) {
@@ -1072,6 +1074,104 @@ async function generateWithRetry(text, provider, config, maxRetries = 3) {
 
   throw new Error(`TTS generation failed after ${maxRetries} attempts: ${lastError.message}`);
 }
+
+// ─── THE DOOR ────────────────────────────────────────────────────────────────
+
+/**
+ * THE ONE TTS DOOR. Every Cartesia/Azure render in the estate comes through here
+ * (generate / generateWithRetry are this function under their old names), and
+ * tools/check-tts-door.cjs fails the test run if any other file calls a TTS API.
+ *
+ * Tom, 2026-09-26: "when I say something I expect it to be turned into code and
+ * used… we build deterministic systems so the stupidity of agents can't cost us
+ * 300 USD in one day." The day before, a fill loop paid Cartesia 7.6M characters
+ * to re-render 19,225 clips that were already in storage (job #382).
+ *
+ * So, in order:
+ *   1. the gates (assertMayRender);
+ *   2. NAME the clip: language + words (and the voice a render would use). A
+ *      request the door cannot name is refused — it cannot be looked up, so it
+ *      is never rendered;
+ *   3. ask EVERY course's clips (services/shared/clip-library.cjs) for these
+ *      words in this language, in ANY voice — a recast applies to new content
+ *      only (Tom, 2026-09-26, r-2026-09-26-a-recast-applies-to-new-content). A
+ *      hit is returned as that clip — its bytes, plus `existingClip` (the row,
+ *      whose voice_id may differ from the one asked for) so a caller that can
+ *      point at it by id does so — and costs 0 characters;
+ *   4. only on a miss, and only in a voice the language's cast lists
+ *      (services/shared/voice-cast-gate.cjs), pay the provider.
+ *
+ * Context rides on `config.door` (all optional):
+ *   courseCode        — the course asking (its own clip wins a tie);
+ *   intro             — the slot being filled is an intro: only this course's
+ *                       own clip answers (Tom, 2026-08-07, intros rendered fresh).
+ *                       There is no `role`: a clip is language + words + voice,
+ *                       and known/target are never told apart (Tom, 2026-09-26 21:45Z);
+ *   replacing         — s3 keys / ids a regenerate is replacing; never handed back;
+ *   language          — the language, when the provider config cannot say it;
+ *   voiceBound        — answer only with a clip in THIS voice (pods: a
+ *                       conversation's speakers are told apart by voice);
+ *   dryRun            — look up only; never fetch bytes, never render;
+ *   audition          — a candidate voice being heard (Voice Lab, bake-offs):
+ *                       exempt from the cast gate, NEVER from the lookup.
+ *
+ * Returns { audioBuffer, wordBoundaries, wordTimings, existingClip, charsSpent }.
+ */
+async function speak(text, provider, config = {}, maxRetries = 3) {
+  if (!text || String(text).trim() === '') {
+    throw new Error('Text cannot be empty');
+  }
+  await assertMayRender(provider, config);
+
+  const door = config.door || {};
+  const { language, voiceId } = identityFromConfig(provider, config);
+  if (!language || !voiceId) {
+    if (provider === 'cartesia' && !(config.locale || config.language) && !door.language) {
+      throw new Error(`Cartesia TTS requires an explicit BCP-47 locale (voice ${config.voiceId}, text: "${String(text).slice(0, 40)}")`);
+    }
+    throw new Error(`TTS door: cannot name this clip (${!language ? 'language' : 'voice id'} unknown; ${provider} ${config.voiceId || config.voiceName || '?'}, text: "${String(text).slice(0, 40)}") — a line the door cannot look up is never rendered. Pass config.door.language.`);
+  }
+
+  const lib = clipLibrary();
+  const existing = await findExistingClip({
+    text,
+    language,
+    voiceId,
+    ownCourseOnly: !!door.intro,
+    courseCode: door.courseCode || config.courseCode || null,
+    replacing: [].concat(door.replacing || []),
+    voiceBound: !!door.voiceBound,
+  }, lib);
+
+  const chars = String(text).length;
+  if (existing) {
+    doorStats.resolved++;
+    return {
+      audioBuffer: door.dryRun ? null : await lib.bytes(existing),
+      wordBoundaries: existing.word_boundaries || null,
+      wordTimings: existing.word_timings || null,
+      existingClip: existing,
+      charsSpent: 0,
+    };
+  }
+  await assertCastVoice(language, voiceId, { audition: !!door.audition });
+  if (door.dryRun) {
+    doorStats.wouldRender++;
+    doorStats.wouldSpendChars += chars;
+    return { audioBuffer: null, wordBoundaries: null, wordTimings: null, existingClip: null, charsSpent: 0, wouldSpendChars: chars };
+  }
+  const out = await renderWithRetry(text, provider, config, maxRetries);
+  doorStats.rendered++;
+  doorStats.charsSpent += chars;
+  return { ...out, existingClip: null, charsSpent: chars };
+}
+
+/** What this process's door has done — resolved from the library vs paid for. */
+const doorStats = { resolved: 0, rendered: 0, charsSpent: 0, wouldRender: 0, wouldSpendChars: 0 };
+
+/** The old names. Same door. `generate` is a single attempt. */
+const generate = (text, provider, config) => speak(text, provider, config, 1);
+const generateWithRetry = speak;
 
 /**
  * Get cadence speed multiplier
@@ -1108,13 +1208,13 @@ function getVoiceForRole(role, voiceMapping) {
 module.exports = {
   isKnownSideOfHumanVoiceCourse,
   assertConsentedVoice,
+  // THE DOOR, and its two old names. The per-provider render functions are
+  // deliberately NOT exported: nothing outside speak() may call a provider.
+  speak,
   generate,
   generateWithRetry,
+  doorStats,
   isRetriableTtsError,
-  generateElevenLabs,
-  generateAzure,
-  generateXai,
-  generateCartesia,
   parseCartesiaSse,
   pcm16ToWav,
   CARTESIA_DEFAULT_SPEED,

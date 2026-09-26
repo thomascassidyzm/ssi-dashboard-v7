@@ -7,145 +7,31 @@
 
 const fs = require('fs-extra');
 const path = require('path');
-const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const langService = require('./language-code-service.cjs');
 const { ellipsisToSSMLBreaks } = require('./shared/ellipsis-ssml.cjs');
-const consentGate = require('./shared/voice-consent-gate.cjs');
 
 // Configuration from environment
 const AZURE_SPEECH_KEY = process.env.AZURE_SPEECH_KEY;
 const AZURE_SPEECH_REGION = process.env.AZURE_SPEECH_REGION || 'westeurope';
 
-// Rate limiting
-let lastRequestTime = 0;
-const MIN_REQUEST_INTERVAL = 5; // 5ms between requests = 200 req/s (Azure's 200 TPS limit, sequential processing)
 
-// Synthesizer Connection Pool (reuse connections to avoid exhaustion)
-// Microsoft recommends reusing synthesizers to avoid connection overhead
-const synthesizerPool = {
-  available: [],
-  inUse: 0,
-  MIN_POOL_SIZE: 2,   // Pre-warm minimum connections
-  MAX_POOL_SIZE: 8,   // Maximum concurrent connections
-  created: 0
-};
+// Synthesis is NOT done here any more. Every Azure render goes through the one
+// TTS door (tts-service.speak), which asks every course's clips before paying
+// for a new one (Tom, 2026-09-26). This module keeps the Azure-specific text
+// helpers (SSML, short-word hint, regeneration variation), voice listing, and
+// thin door-routed wrappers under its old function names.
+function tts() { return require('./tts-service.cjs'); } // lazy: tts-service requires this module
 
-/**
- * Create a new synthesizer instance
- * @returns {object} Azure SpeechSynthesizer instance
- */
-function createSynthesizer() {
-  const speechConfig = initSpeechConfig();
-  const synthesizer = new sdk.SpeechSynthesizer(speechConfig, null);
-  synthesizerPool.created++;
-  return synthesizer;
-}
-
-/**
- * Get a synthesizer from the pool (or create new if pool empty)
- * @returns {object} Azure SpeechSynthesizer instance
- */
-function borrowSynthesizer() {
-  if (synthesizerPool.available.length > 0) {
-    const synthesizer = synthesizerPool.available.pop();
-    synthesizerPool.inUse++;
-    return synthesizer;
-  }
-
-  // Create new if under max pool size
-  if (synthesizerPool.created < synthesizerPool.MAX_POOL_SIZE) {
-    synthesizerPool.inUse++;
-    return createSynthesizer();
-  }
-
-  // Pool exhausted - return null (caller should retry)
-  return null;
-}
-
-/**
- * Return a synthesizer to the pool for reuse
- * @param {object} synthesizer - Azure SpeechSynthesizer instance
- */
-function returnSynthesizer(synthesizer) {
-  synthesizerPool.inUse--;
-
-  if (synthesizerPool.available.length < synthesizerPool.MAX_POOL_SIZE) {
-    // Return to pool for reuse
-    synthesizerPool.available.push(synthesizer);
-  } else {
-    // Pool full - close this instance
-    synthesizer.close();
-    synthesizerPool.created--;
-  }
-}
-
-/**
- * Pre-warm the connection pool
- */
-function prewarmPool() {
-  if (synthesizerPool.available.length === 0 && synthesizerPool.created === 0) {
-    console.log(`[Azure TTS] Pre-warming connection pool (${synthesizerPool.MIN_POOL_SIZE} connections)...`);
-    for (let i = 0; i < synthesizerPool.MIN_POOL_SIZE; i++) {
-      synthesizerPool.available.push(createSynthesizer());
-    }
-  }
-}
-
-/**
- * Clean up all pooled connections (call on shutdown)
- */
-function closePool() {
-  console.log(`[Azure TTS] Closing connection pool (${synthesizerPool.created} total connections)...`);
-  for (const synthesizer of synthesizerPool.available) {
-    synthesizer.close();
-  }
-  synthesizerPool.available = [];
-  synthesizerPool.created = 0;
-  synthesizerPool.inUse = 0;
-}
-
-// Pre-warm pool only when needed (not on module load)
-// prewarmPool(); // Disabled - worker uses single persistent synthesizer
-
-// Clean up pool on process exit
-process.on('exit', closePool);
-process.on('SIGINT', () => {
-  closePool();
-  process.exit(0);
-});
-process.on('SIGTERM', () => {
-  closePool();
-  process.exit(0);
-});
-
-/**
- * Initialize Azure Speech SDK config
- */
-function initSpeechConfig() {
+function azureConfig(voiceName, speed, extra = {}) {
   if (!AZURE_SPEECH_KEY || !AZURE_SPEECH_REGION) {
     throw new Error('Azure Speech credentials not found. Set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env');
   }
-
-  const speechConfig = sdk.SpeechConfig.fromSubscription(AZURE_SPEECH_KEY, AZURE_SPEECH_REGION);
-  speechConfig.speechSynthesisOutputFormat = sdk.SpeechSynthesisOutputFormat.Audio24Khz96KBitRateMonoMp3;
-
-  return speechConfig;
+  return { subscriptionKey: AZURE_SPEECH_KEY, region: AZURE_SPEECH_REGION, voiceName, speed, ...extra };
 }
 
-/**
- * Rate limit requests
- */
-async function rateLimitRequest() {
-  const now = Date.now();
-  const timeSinceLastRequest = now - lastRequestTime;
-
-  if (timeSinceLastRequest < MIN_REQUEST_INTERVAL) {
-    const delay = MIN_REQUEST_INTERVAL - timeSinceLastRequest;
-    await new Promise(resolve => setTimeout(resolve, delay));
-  }
-
-  lastRequestTime = Date.now();
-}
+/** Kept for callers that still call them; there is no pool behind the door. */
+function prewarmPool() {}
+function closePool() {}
 
 /**
  * Build SSML with speed control
@@ -306,46 +192,10 @@ function applyRegenerationVariation(text, attemptNumber = 0) {
  * @returns {Promise<boolean>} True if successful
  */
 async function generateAudio(text, voiceName, outputPath, speed = 1.0) {
-  // NO CONSENT, NO SPEECH (Tom, 2026-08-31). Azure speaks vendor stock voices,
-  // so in practice this gate passes everything it sees — but this service is
-  // called DIRECTLY by welcome-service, phase8-audio-from-baskets, the
-  // orchestrator's preview route and voice-discovery-service, every one of which
-  // walks past tts-service.generate(). A structural guard on the door beats a
-  // reassurance about who currently walks through it.
-  await consentGate.assertConsentedForRender(String(voiceName), { provider: 'azure', context: 'azure.generateAudio' });
-  await rateLimitRequest();
-
-  return new Promise((resolve, reject) => {
-    try {
-      const speechConfig = initSpeechConfig();
-      const audioConfig = sdk.AudioConfig.fromAudioFileOutput(outputPath);
-      const synthesizer = new sdk.SpeechSynthesizer(speechConfig, audioConfig);
-
-      const ssml = buildSSML(text, voiceName, speed);
-
-      synthesizer.speakSsmlAsync(
-        ssml,
-        result => {
-          synthesizer.close();
-
-          if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-            resolve(true);
-          } else if (result.reason === sdk.ResultReason.Canceled) {
-            const cancellation = sdk.CancellationDetails.fromResult(result);
-            reject(new Error(`Azure TTS canceled: ${cancellation.reason} - ${cancellation.errorDetails}`));
-          } else {
-            reject(new Error(`Azure TTS failed with reason: ${result.reason}`));
-          }
-        },
-        error => {
-          synthesizer.close();
-          reject(new Error(`Azure TTS error: ${error}`));
-        }
-      );
-    } catch (error) {
-      reject(error);
-    }
-  });
+  // Through the door: consent, then every course's clips, then (only on a miss) Azure.
+  const { audioBuffer } = await tts().speak(text, 'azure', azureConfig(voiceName, speed), 1);
+  await fs.writeFile(outputPath, audioBuffer);
+  return true;
 }
 
 /**
@@ -364,76 +214,14 @@ async function generateAudio(text, voiceName, outputPath, speed = 1.0) {
  * @returns {Promise<Buffer>} Audio buffer
  */
 async function generateSpeech(text, voiceName, language, options = {}) {
-  // NO CONSENT, NO SPEECH (Tom, 2026-08-31). Azure speaks vendor stock voices,
-  // so in practice this gate passes everything it sees — but this service is
-  // called DIRECTLY by welcome-service, phase8-audio-from-baskets, the
-  // orchestrator's preview route and voice-discovery-service, every one of which
-  // walks past tts-service.generate(). A structural guard on the door beats a
-  // reassurance about who currently walks through it.
-  await consentGate.assertConsentedForRender(String(voiceName), { provider: 'azure', context: 'azure.generateSpeech' });
-  const speed = options.rate || 1.0;
-  const regenerationAttempt = options.regenerationAttempt || 0;
-
-  // Apply variation for regeneration (doesn't affect database, only TTS input)
-  // Then apply the short-word hint so single-char / very short words get
-  // pronounced as words instead of letter names. Both transforms are
-  // TTS-input-only and are NEVER persisted.
-  let ttsText = applyRegenerationVariation(text, regenerationAttempt);
-  ttsText = applyShortWordHint(ttsText);
-
-  await rateLimitRequest();
-
-  // Retry logic for pool exhaustion
-  const MAX_POOL_RETRIES = 10;
-  const POOL_RETRY_DELAY = 100; // ms
-
-  for (let attempt = 0; attempt < MAX_POOL_RETRIES; attempt++) {
-    const synthesizer = borrowSynthesizer();
-
-    if (!synthesizer) {
-      // Pool exhausted - wait and retry
-      if (attempt < MAX_POOL_RETRIES - 1) {
-        await new Promise(resolve => setTimeout(resolve, POOL_RETRY_DELAY));
-        continue;
-      } else {
-        throw new Error('Azure TTS connection pool exhausted after retries');
-      }
-    }
-
-    // Got a synthesizer from pool
-    try {
-      const ssml = buildSSML(ttsText, voiceName, speed);
-
-      const audioBuffer = await new Promise((resolve, reject) => {
-        synthesizer.speakSsmlAsync(
-          ssml,
-          result => {
-            if (result.reason === sdk.ResultReason.SynthesizingAudioCompleted) {
-              // Return the audio data as a buffer
-              resolve(Buffer.from(result.audioData));
-            } else if (result.reason === sdk.ResultReason.Canceled) {
-              const cancellation = sdk.CancellationDetails.fromResult(result);
-              reject(new Error(`Azure TTS canceled: ${cancellation.reason} - ${cancellation.errorDetails}`));
-            } else {
-              reject(new Error(`Azure TTS failed with reason: ${result.reason}`));
-            }
-          },
-          error => {
-            reject(new Error(`Azure TTS error: ${error}`));
-          }
-        );
-      });
-
-      // Success - return synthesizer to pool and return audio
-      returnSynthesizer(synthesizer);
-      return audioBuffer;
-
-    } catch (error) {
-      // Error - return synthesizer to pool and rethrow
-      returnSynthesizer(synthesizer);
-      throw error;
-    }
-  }
+  // Through the door. `language` is now used: it names the clip if the voice
+  // name cannot. The regeneration variation is applied by the Azure renderer
+  // behind the door, never persisted.
+  const { audioBuffer } = await tts().speak(text, 'azure', azureConfig(voiceName, options.rate || 1.0, {
+    regenerationAttempt: options.regenerationAttempt || 0,
+    door: language ? { language } : undefined,
+  }), 1);
+  return audioBuffer;
 }
 
 /**
@@ -472,39 +260,19 @@ async function generateAudioWithRetry(text, voiceName, outputPath, speed = 1.0, 
  * @returns {Promise<Array>} Array of voice objects
  */
 async function listVoices(languageCode = null) {
-  const speechConfig = initSpeechConfig();
-  const synthesizer = new sdk.SpeechSynthesizer(speechConfig);
-
-  return new Promise((resolve, reject) => {
-    synthesizer.getVoicesAsync(
-      result => {
-        synthesizer.close();
-
-        if (result.reason === sdk.ResultReason.VoicesListRetrieved) {
-          let voices = result.voices;
-
-          // Filter by language if specified
-          if (languageCode) {
-            const localeFilter = getAzureLocale(languageCode);
-            voices = voices.filter(v => v.locale.toLowerCase().startsWith(localeFilter.toLowerCase()));
-          }
-
-          resolve(voices.map(v => ({
-            name: v.shortName,
-            displayName: v.localName,
-            locale: v.locale,
-            gender: v.gender
-          })));
-        } else {
-          reject(new Error(`Failed to retrieve voices: ${result.reason}`));
-        }
-      },
-      error => {
-        synthesizer.close();
-        reject(new Error(`Error listing voices: ${error}`));
-      }
-    );
+  if (!AZURE_SPEECH_KEY || !AZURE_SPEECH_REGION) {
+    throw new Error('Azure Speech credentials not found. Set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env');
+  }
+  const res = await fetch(`https://${AZURE_SPEECH_REGION}.tts.speech.microsoft.com/cognitiveservices/voices/list`, {
+    headers: { 'Ocp-Apim-Subscription-Key': AZURE_SPEECH_KEY },
   });
+  if (!res.ok) throw new Error(`Failed to retrieve voices: HTTP ${res.status}`);
+  let voices = await res.json();
+  if (languageCode) {
+    const localeFilter = getAzureLocale(languageCode);
+    voices = voices.filter(v => String(v.Locale).toLowerCase().startsWith(localeFilter.toLowerCase()));
+  }
+  return voices.map(v => ({ name: v.ShortName, displayName: v.LocalName, locale: v.Locale, gender: v.Gender }));
 }
 
 /**
@@ -546,12 +314,7 @@ async function testVoice(voiceName, text = "Hello, this is a test.", speed = 1.0
  * @returns {object} Pool stats
  */
 function getPoolStats() {
-  return {
-    available: synthesizerPool.available.length,
-    inUse: synthesizerPool.inUse,
-    total: synthesizerPool.created,
-    maxSize: synthesizerPool.MAX_POOL_SIZE
-  };
+  return { available: 0, inUse: 0, total: 0, maxSize: 0 };
 }
 
 module.exports = {

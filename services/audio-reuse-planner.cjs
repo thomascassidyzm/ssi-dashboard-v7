@@ -48,14 +48,13 @@
  * query drops the clone's English coverage from 32 clips to 3 — a narrow query
  * would have argued against the very voice the widening exists to find.
  *
- * ONE physical exception, not a policy one: Azure BAKES the configured `speed`
- * into the stored MP3 (services/shared/clone-copy-match.cjs), and course_audio
- * has no persisted per-row speed, so an Azure clip's pace cannot be verified
- * after the fact. Crossing roles on an Azure source could therefore import a
- * clip rendered at 0.85x into a 1.0x slot. xAI and ElevenLabs have no working
- * speed parameter at all, so every clip on them is 1x and role-crossing is
- * free. The guard is engine-shaped, not role-shaped. Pass { crossRole: false }
- * to restore strict same-role matching everywhere.
+ * There is no role anywhere in it, and no switch to put one back (Tom,
+ * 2026-09-26 21:45Z): "target and known voices are not distinguished AT ALL —
+ * a voice's phrase is matched to the voice and the text and the language and
+ * NO ROLE; the app plays the voices at different speeds." The old Azure
+ * baked-speed guard (isSpeedTrustedVoice, retired 2026-08-29) and the
+ * `crossRole` option are deleted. A slot's role still names the SLOT being
+ * filled — which is how `freshRoles` (intros are never borrowed) works.
  *
  * ── THE LANGUAGE-NAME FILTER (Tom, 2026-08-07) ────────────────────────────
  *
@@ -210,45 +209,6 @@ function voiceLabel(voiceId) {
  */
 // (implementation: services/shared/relink-voice-guard.cjs)
 
-/**
- * Can this voice's clips be borrowed into a slot with a different role?
- *
- * ── RETIRED, 2026-08-29, BY TOM'S RULING ───────────────────────────────────
- * "Playback speed is a player concern, not a baked-in render concern — the
- * same clip plays faster when used as the known language and slower as the
- * target, so stop treating rendered pace as a reason for distinct clips."
- *
- * This guard was the last place in the estate where rendered pace WAS a reason
- * for distinct clips. Its reasoning was sound and is now obsolete rather than
- * wrong, so it is recorded rather than deleted:
- *
- *   xAI exposes no speed parameter and ElevenLabs never sends one, so every
- *   clip on either is 1x. Azure BAKES the configured rate into the SSML and
- *   so into the stored MP3, and course_audio persists no per-row speed — an
- *   Azure clip's pace could not be verified after the fact, so crossing roles
- *   on one might import a 0.85x render into a 1.0x slot. Unknown ids were
- *   untrusted as the safe default.
- *
- * What changes in practice: from 2026-08-29 every new render is at one
- * canonical pace (getEffectiveSpeed in services/voice-config-service.cjs no
- * longer applies a cadence multiplier), so for anything rendered from now on
- * the distinction this guarded does not exist. For clips ALREADY in the estate
- * it does: an old Azure clip rendered at a 0.8x 'slow' cadence can now be
- * borrowed into a role it would previously have been re-rendered for, and will
- * play at its baked 0.8x until it is next re-rendered. Tom waived that
- * explicitly on 2026-08-29: "I don't care if anything notionally breaks,
- * because these courses are already made — it's only going to affect
- * regeneration, or replacement."
- *
- * The function survives, always answering true, because six call sites read it
- * and a constant with this note attached is a better record of a retired rule
- * than six deletions and no explanation. There is nothing to put a per-row
- * speed in: course_audio has no speed column, and inventing one is a migration
- * this ruling does not need.
- */
-function isSpeedTrustedVoice(voiceId) {
-  return true
-}
 
 /* voiceCandidates: see services/shared/relink-voice-guard.cjs */
 
@@ -257,10 +217,10 @@ function isSpeedTrustedVoice(voiceId) {
  * convention); the DB-convention variants are handled at LOOKUP time by
  * audioKeyCandidates, not here — this key only has to be stable within one run.
  */
-function clipKey({ role, language, voiceId, text }, { crossRole = false } = {}) {
+function clipKey({ role, language, voiceId, text }) {
+  // role here is the SLOT being enumerated, never part of a lookup.
   const langGroup = languageCandidates(language)[0] || language
-  const rolePart = crossRole ? '*' : role
-  return `${rolePart}|${langGroup}|${voiceId}|${normalizeForAudio(text)}`
+  return `${role}|${langGroup}|${voiceId}|${normalizeForAudio(text)}`
 }
 
 /**
@@ -374,7 +334,7 @@ function roundsInBand (rounds, fromRound = 1, roundCount = Infinity) {
 }
 
 async function enumerateRoundClips(supabase, courseCode, roundCount, options = {}) {
-  const { crossRole = false, mode, fromRound = 1 } = options
+  const { mode, fromRound = 1 } = options
 
   const { data: course, error: courseErr } = await supabase
     .from('courses')
@@ -461,7 +421,7 @@ async function enumerateRoundClips(supabase, courseCode, roundCount, options = {
 
   const addPlay = (spec, holder, roundNumber) => {
     if (!isSayable(spec.text)) return
-    const key = clipKey(spec, { crossRole })
+    const key = clipKey(spec)
     let clip = clips.get(key)
     if (!clip) {
       clip = {
@@ -705,7 +665,6 @@ async function findCandidates(supabase, clips, { batchSize = 100 } = {}) {
 function decideClip(clip, candidates, opts = {}) {
   const {
     courseCode,
-    crossRole = true,           // Tom's key is voice x text x language and nothing else
     voiceAliases = [],
     languageFilter = null,      // from buildLanguageNameFilter()
     preferredSourceCourses = [],// e.g. ['deu_for_eng'] — queried first, not as an afterthought
@@ -773,18 +732,12 @@ function decideClip(clip, candidates, opts = {}) {
   // about it. Borrowing across a voice change is a voice-identity change, which
   // is Tom's taste call and never this code's.
   const viable = []
-  const rejected = { voice: 0, language: 0, role: 0, pending: 0, languageName: 0, foreignIntro: 0 }
+  const rejected = { voice: 0, language: 0, pending: 0, languageName: 0, foreignIntro: 0 }
   for (const row of candidates) {
     const v = voicesMatch(clip.voiceId, row.voice_id, voiceAliases)
     if (!v.match) { rejected.voice++; continue }
     if (!sameLanguage(clip.language, row.language)) { rejected.language++; continue }
     if (!row.s3_key || row.s3_key.startsWith('pending/')) { rejected.pending++; continue }
-    // Role-agnostic by default. The ONE exception is physical, not editorial:
-    // Azure bakes speed into the MP3 and course_audio does not persist it, so a
-    // cross-role Azure borrow could import a 0.85x render into a 1.0x slot.
-    if (row.role !== clip.role) {
-      if (!crossRole || !isSpeedTrustedVoice(row.voice_id)) { rejected.role++; continue }
-    }
     // A candidate naming a foreign language never enters, whatever course or
     // role it came from — an eng_for_hin line saying "The Hindi for ..." is an
     // English clip on the right voice and would otherwise match.
@@ -809,7 +762,6 @@ function decideClip(clip, candidates, opts = {}) {
     const why = []
     if (rejected.voice) why.push(`${rejected.voice} on another voice`)
     if (rejected.language) why.push(`${rejected.language} in another language`)
-    if (rejected.role) why.push(`${rejected.role} blocked by the Azure baked-speed guard`)
     if (rejected.languageName) why.push(`${rejected.languageName} naming a foreign language`)
     if (rejected.foreignIntro) why.push(`${rejected.foreignIntro} in another course (intros are never borrowed)`)
     if (rejected.pending) why.push(`${rejected.pending} with no rendered audio`)
@@ -944,12 +896,12 @@ function decideClip(clip, candidates, opts = {}) {
  * writes nothing, and is safe to run at any time.
  */
 async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
-  const { crossRole = true, voiceAliases = [], mode, codeService = null,
+  const { voiceAliases = [], mode, codeService = null,
           preferredSourceCourses = [], rebuild = false, freshRoles = [], fromRound = 1,
           distrustOwnBefore = null } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
-    supabase, courseCode, roundCount, { crossRole: false, mode, fromRound }
+    supabase, courseCode, roundCount, { mode, fromRound }
   )
   const { knownName, targetName } = courseLanguageNames(course, codeService)
   const languageFilter = buildLanguageNameFilter({ knownName, targetName })
@@ -989,7 +941,7 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
   const decided = []
   for (const clip of clips.values()) {
     const d = decideClip(clip, candidates.get(clip.clipKey) || [], {
-      courseCode, crossRole, voiceAliases, languageFilter, preferredSourceCourses, rebuild, freshRoles,
+      courseCode, voiceAliases, languageFilter, preferredSourceCourses, rebuild, freshRoles,
       distrustOwnBefore, ownRevisedSince,
     })
     decided.push({
@@ -1053,7 +1005,6 @@ async function buildReusePlan(supabase, courseCode, roundCount, options = {}) {
     targetLang: course.target_lang,
     voices,
     voiceAliases,
-    crossRole,
     freshRoles,
     shape,
     summary,
@@ -1114,7 +1065,7 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
   } = options
 
   const { clips, shape, voices, course } = await enumerateRoundClips(
-    supabase, courseCode, roundCount, { crossRole: false, fromRound }
+    supabase, courseCode, roundCount, { fromRound }
   )
 
   const { knownName, targetName } = courseLanguageNames(course, codeService)
@@ -1150,9 +1101,6 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
       if (!sameLanguage(n.language, row.language)) continue
       if (!row.s3_key || row.s3_key.startsWith('pending/')) continue
       if (languageFilter.namedLanguage(row.text)) { excludedCandidateRows++; continue }
-      // Role-agnostic, with the same Azure baked-speed guard reuse uses, so the
-      // table never promises coverage reuse would then refuse to take.
-      if (row.role !== n.role && !isSpeedTrustedVoice(row.voice_id)) continue
 
       let t = tally.get(row.voice_id)
       if (!t) {
@@ -1200,7 +1148,6 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
       voiceId: t.voiceId,
       voiceFamily: fam.family,
       provider: /^(xai|azure|elevenlabs|google)_/.exec(t.voiceId)?.[1] || 'legacy/bare',
-      speedTrusted: isSpeedTrustedVoice(t.voiceId),
       byLayer,
       overall: { needed: totalNeeded, covered: t.covered.size, pct: pct(t.covered.size, totalNeeded) },
       borrowable: t.borrowable.size,
@@ -1229,13 +1176,11 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
         voiceFamily: famName, voiceIds: [], providers: new Set(),
         byLayer: {}, covered: new Set(), borrowable: new Set(),
         viaTargetRoles: new Set(), sourceCourses: new Map(), isCurrent: false,
-        speedTrusted: false,
       }
       families.set(famName, f)
     }
     f.voiceIds.push(t.voiceId)
     f.providers.add(/^(xai|azure|elevenlabs|google)_/.exec(t.voiceId)?.[1] || 'legacy/bare')
-    f.speedTrusted = f.speedTrusted || isSpeedTrustedVoice(t.voiceId)
     if (Object.values(voices).includes(t.voiceId)) f.isCurrent = true
     for (const k of t.covered) f.covered.add(k)
     for (const k of t.borrowable) f.borrowable.add(k)
@@ -1261,7 +1206,6 @@ async function buildCoverageTable(supabase, courseCode, roundCount, options = {}
       voiceFamily: f.voiceFamily,
       voiceIds: f.voiceIds.slice().sort(),
       provider: [...f.providers].sort().join(' / '),
-      speedTrusted: f.speedTrusted,
       byLayer,
       overall: { needed: totalNeeded, covered: f.covered.size, pct: pct(f.covered.size, totalNeeded) },
       borrowable: f.borrowable.size,
@@ -1746,7 +1690,6 @@ module.exports = {
   buildLanguageNameFilter,
   courseLanguageNames,
   voiceFamilyOf,
-  isSpeedTrustedVoice,
   LANGUAGE_NAME_FLOOR,
   // applying
   applyReusePlan,

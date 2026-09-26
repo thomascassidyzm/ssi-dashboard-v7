@@ -236,11 +236,23 @@ async function castLanguages(db) {
 }
 
 // ── RENDER + TIME ───────────────────────────────────────────────────────────
+// Every render goes through the one TTS door (tts.speak). This tool measures
+// VOICES, not recordings (Tom, 2026-08-29), so a door answer that is an
+// existing clip is refused here rather than measured: pick a sentence that is
+// not a course line.
 async function renderOne(voice, text, iso3) {
+  const out = await renderViaDoor(voice, text, iso3);
+  if (out.existingClip) {
+    throw new Error(`"${text.slice(0, 40)}" is already a recording in this voice (${out.existingClip.course_code}) — a pace measurement needs a sentence that is not a course line`);
+  }
+  return out;
+}
+
+async function renderViaDoor(voice, text, iso3) {
   const provider = providerOf(voice);
   const locale = bcp47(voice, iso3);
   if (provider === 'azure') {
-    return tts.generateAzure(text, {
+    return tts.speak(text, 'azure', {
       subscriptionKey: process.env.AZURE_SPEECH_KEY || process.env.AZURE_TTS_KEY,
       region: process.env.AZURE_SPEECH_REGION || process.env.AZURE_TTS_REGION,
       // Azure wants the FULL locale-prefixed name ('en-US-JennyNeural'), which
@@ -251,22 +263,24 @@ async function renderOne(voice, text, iso3) {
     });
   }
   if (provider === 'cartesia') {
-    return tts.generateCartesia(text, {
+    return tts.speak(text, 'cartesia', {
       apiKey: process.env.CARTESIA_API_KEY,
       voiceId: String(voice.voice_id).replace(/^cartesia_/, ''),
       locale: locale || 'auto',
       speed: 1.0,
+      door: { language: iso3 },
     });
   }
   if (provider === 'elevenlabs') {
-    return tts.generateElevenLabs(text, {
+    return tts.speak(text, 'elevenlabs', {
       apiKey: process.env.ELEVENLABS_API_KEY,
       voiceId: String(voice.voice_id).replace(/^elevenlabs_/, ''),
       speed: 1.0,
+      door: { language: iso3 },
     });
   }
   if (provider === 'xai') {
-    return tts.generateXai(text, {
+    return tts.speak(text, 'xai', {
       apiKey: process.env.XAI_API_KEY,
       // The ID, never the display name: xAI's clones are addressed by id
       // ('gfzdpspr5fdp'), and sending tts_voice_name gets a 404 ("Voice 'Tom'

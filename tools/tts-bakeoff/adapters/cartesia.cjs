@@ -12,7 +12,7 @@
  * Welsh convincingly is DEAD for canonical course work") that is a documented
  * failure, not a suspicion. Recorded here so it cannot be lost.
  */
-const { envRef, httpSynthesise, shortLang } = require('../lib/adapter-utils.cjs');
+const { envRef, doorSynthesise, shortLang } = require('../lib/adapter-utils.cjs');
 
 const DEFAULT_MODEL = 'sonic-3.5';
 /** Cartesia's own pinning story: sonic-3.5 floats, sonic-3.5-YYYY-MM-DD is pinned. */
@@ -71,7 +71,7 @@ module.exports = {
 
     return {
       transport: 'http',
-      endpoint: 'https://api.cartesia.ai/tts/bytes',
+      endpoint: 'tts-service.speak (Cartesia /tts/bytes behind the one TTS door)',
       method: 'POST',
       headers: {
         Authorization: `Bearer ${envRef('CARTESIA_API_KEY')}`,
@@ -88,7 +88,20 @@ module.exports = {
     // Credentials first (the honest message is "no key"), then the spend gate,
     // then the real call. Wired for phase 2: the day the key lands this works,
     // and until Tom clears PHASE2_SPEND_APPROVED it still refuses to spend.
-    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
+    // Through the one TTS door (the output format is the door's mp3, not this
+    // request's wav — the request above is the record of what was asked).
+    const lang = utterance.language || opts.language;
+    return doorSynthesise(this, 'cartesia', {
+      text: utterance.text,
+      tts: {
+        apiKey: process.env.CARTESIA_API_KEY,
+        voiceId: opts.voice,
+        locale: shortLang(lang),
+        modelId: opts.model || DEFAULT_MODEL,
+        ...(opts.speed != null ? { speed: opts.speed } : {}),
+        door: { language: lang },
+      },
+    }, opts);
   },
 };
 

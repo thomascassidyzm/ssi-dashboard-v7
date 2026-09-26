@@ -200,10 +200,6 @@ const {
   tryCanonicalVoiceId,
   PROVIDER_ALIASES,
 } = require('../shared/clip-identity.cjs')
-// The Azure baked-speed guard, RETIRED 2026-08-29 by Tom's one-canonical-pace
-// ruling and now a constant. Still imported from the planner so the per-clip
-// lookup below and the batch planner can never drift apart on it.
-const { isSpeedTrustedVoice } = require('../audio-reuse-planner.cjs')
 const { pickCastVoice, providerOfVoice } = require('../shared/language-voice-cast.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
@@ -562,9 +558,17 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
 }
 
 /**
- * Cross-course reuse: a rendered clip of this exact text, language and voice in
- * ANY other course, whose S3 object we can point a new row at instead of paying
- * to render it again. This is the query the content-addressed design is built
+ * Cross-course reuse: a rendered clip of this exact text and language, in ANY
+ * voice, in ANY other course, whose S3 object we can point a new row at instead
+ * of paying to render it again.
+ *
+ * ── ANY VOICE (Tom, 2026-09-26 21:31Z, r-2026-09-26-a-recast-applies-to-new-content)
+ * A recast applies to NEW content only: if these words exist in this language
+ * in any voice anywhere, that clip answers; the cast voice (`voiceId`) is only
+ * a preference among hits and the voice of a render when nothing exists. This
+ * supersedes the voice-identity key (E1). The same rule runs in the TTS door
+ * (services/shared/clip-library.cjs). `opts.voiceBound` restores the old
+ * same-voice match for a caller whose speakers are told apart by voice. This is the query the content-addressed design is built
  * on — every miss is a duplicate paid render.
  *
  * It used to .eq() one spelling of language and one of voice, so it could not
@@ -573,42 +577,29 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  * falling straight through to TTS. Both predicates are now canonical JS matches
  * over a small candidate set, and more than one candidate is normal, not fatal.
  *
- * ── A-137 (Tom, 2026-08-18): THE KEY IS ROLE-AGNOSTIC ──────────────────────
- * "SAME voice pool per language, regardless of role … of course the same - the
- * player will play the voices at different speeds when necessary." Register
- * differences between the instructional known side and target material are a
- * PLAYBACK-SPEED concern, not a casting one, so `role` is no longer part of the
- * reuse key. This restates the ruling already carried by
- * services/audio-reuse-planner.cjs from 2026-08-07 — an English sentence spoken
- * as target2 in eng_for_hin IS coverage for the English known side of
- * fra_for_eng — and brings this per-clip lookup into line with that planner.
- *
- * There USED TO BE one exception, physical rather than editorial: Azure bakes
- * the configured `speed` into the stored MP3 and course_audio persists no
- * per-row speed, so an Azure clip's pace could not be verified after the fact.
- * Tom retired it on 2026-08-29 — "playback speed is a player concern, not a
- * baked-in render concern … stop treating rendered pace as a reason for
- * distinct clips" — and with the cadence multiplier gone from
- * getEffectiveSpeed, every new render is at one pace and the exception has
- * nothing left to describe. isSpeedTrustedVoice is kept as a constant carrying
- * that record; see services/audio-reuse-planner.cjs.
- *
- * Same-role rows are preferred over cross-role ones when both exist, so the
- * widening can only ever ADD a hit, never redirect an existing one.
+ * ── NO ROLE (Tom, 2026-09-26 21:45Z) ────────────────────────────────────────
+ * "target and known voices are not distinguished AT ALL — a voice's phrase is
+ * matched to the voice and the text and the language and NO ROLE; the app
+ * plays the voices at different speeds." A clip recorded as known in one course
+ * answers a target slot in another, and vice versa. This function takes no role
+ * and reads no row's role; the only tie-break is the preferred voice (then this
+ * course's own row, which writes nothing, then id). The crossRole switch and
+ * the Azure baked-speed gate (isSpeedTrustedVoice) are gone with it. The one
+ * exception is keyed on the SLOT, not the row: an intro slot passes
+ * `ownCourseOnly` (Tom, 2026-08-07, intros rendered fresh).
  *
  * Strict matching (no permissive branch): a false positive here would link the
  * WRONG audio to a learner-facing slot.
  *
  * @param {object} [opts]
- * @param {boolean} [opts.crossRole=true]  false restores strict same-role matching
  * @param {string[]} [opts.excludeS3Keys]  objects this caller must not be handed
  *                                         back — the repair paths pass the bytes
  *                                         they are replacing, so a re-render
  *                                         request can never be answered with the
  *                                         very clip it was asked to replace.
  */
-async function findSiblingCourseClip(courseCode, text, language, role, voiceId, opts = {}) {
-  const { crossRole = true, excludeS3Keys = [], includeOwnCourse = false } = opts
+async function findSiblingCourseClip(courseCode, text, language, voiceId, opts = {}) {
+  const { excludeS3Keys = [], includeOwnCourse = false, ownCourseOnly = false, voiceBound = false } = opts
   // Normalise ONCE. `audioKeyCandidates(normalizeForAudio(text))` collapsed
   // internal whitespace before handing the text to normalizeForDb, whose whole
   // job is to be byte-identical to SQL normalize_text() — which does NOT
@@ -626,7 +617,8 @@ async function findSiblingCourseClip(courseCode, text, language, role, voiceId, 
   let q = supabase
     .from('course_audio')
     .select('id, course_code, text, s3_key, duration_ms, word_boundaries, language, voice_id, role, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker')
-  if (!includeOwnCourse) q = q.neq('course_code', courseCode)
+  if (ownCourseOnly) q = q.eq('course_code', courseCode)
+  else if (!includeOwnCourse) q = q.neq('course_code', courseCode)
   const { data, error } = await q
     .in('text_normalized', audioKeyCandidates(text))
     .not('s3_key', 'like', 'pending/%')
@@ -634,11 +626,11 @@ async function findSiblingCourseClip(courseCode, text, language, role, voiceId, 
   if (error) throw new Error(`sibling-clip lookup failed: ${error.message}`)
   const rows = data || []
   // A full page means the answer may be TRUNCATED — the largest text group
-  // estate-wide was 142 rows when this was sized, but dropping `role` from the
-  // query widens the group, and a silent truncation reads exactly like a cache
-  // miss. Say so rather than let it become one.
+  // estate-wide was 142 rows when this was sized, but any-voice, any-course
+  // matching widens the group, and a silent truncation reads exactly like a
+  // cache miss. Say so rather than let it become one.
   if (rows.length >= SIBLING_LOOKUP_LIMIT) {
-    logger.warn(`[Reuse] sibling lookup hit the ${SIBLING_LOOKUP_LIMIT}-row page for "${String(text).slice(0, 40)}" (${language}/${role}) — result may be truncated`)
+    logger.warn(`[Reuse] sibling lookup hit the ${SIBLING_LOOKUP_LIMIT}-row page for "${String(text).slice(0, 40)}" (${language}) — result may be truncated`)
   }
   const excluded = new Set(excludeS3Keys.filter(Boolean))
   // The WORDS must match as the linker keys them (normalizeForAudio keeps ?/!):
@@ -650,14 +642,15 @@ async function findSiblingCourseClip(courseCode, text, language, role, voiceId, 
     !excluded.has(row.s3_key) &&
     row.text != null && normalizeForAudio(row.text) === want &&
     sameLanguage(language, row.language) &&
-    sameVoice(voiceId, row.voice_id))
-  // This course's own row for this role first: it IS the slot's clip, and
-  // pointing at it writes nothing.
-  return (includeOwnCourse && usable.find(row => row.course_code === courseCode && row.role === role)) ||
-    usable.find(row => row.role === role) ||
-    (crossRole
-      ? usable.find(row => row.role !== role && isSpeedTrustedVoice(row.voice_id)) || null
-      : null)
+    (!voiceBound || sameVoice(voiceId, row.voice_id)))
+  // The preferred voice first; then this course's own row (it IS the slot's
+  // clip, pointing at it writes nothing); then id, so the answer is stable.
+  const rank = row => [sameVoice(voiceId, row.voice_id) ? 0 : 1, row.course_code === courseCode ? 0 : 1]
+  usable.sort((a, b) => {
+    const ra = rank(a), rb = rank(b)
+    return (ra[0] - rb[0]) || (ra[1] - rb[1]) || String(a.id).localeCompare(String(b.id))
+  })
+  return usable[0] || null
 }
 
 /**
@@ -675,9 +668,9 @@ async function findSiblingCourseClip(courseCode, text, language, role, voiceId, 
  */
 const siblingLookupStats = { hits: 0, misses: 0, errors: 0, lastError: null, lastErrorAt: null }
 
-async function lookupSiblingClip(courseCode, text, language, role, voiceId, opts = {}) {
+async function lookupSiblingClip(courseCode, text, language, voiceId, opts = {}) {
   try {
-    const clip = await findSiblingCourseClip(courseCode, text, language, role, voiceId, opts)
+    const clip = await findSiblingCourseClip(courseCode, text, language, voiceId, opts)
     if (clip) { siblingLookupStats.hits++; return { status: 'hit', clip, error: null } }
     siblingLookupStats.misses++
     return { status: 'miss', clip: null, error: null }
@@ -685,7 +678,7 @@ async function lookupSiblingClip(courseCode, text, language, role, voiceId, opts
     siblingLookupStats.errors++
     siblingLookupStats.lastError = e.message
     siblingLookupStats.lastErrorAt = new Date().toISOString()
-    logger.error(`[Reuse] LOOKUP FAILED — rendering instead of reusing (${courseCode} ${role} "${String(text).slice(0, 40)}"): ${e.message}`)
+    logger.error(`[Reuse] LOOKUP FAILED — rendering instead of reusing (${courseCode} "${String(text).slice(0, 40)}"): ${e.message}`)
     return { status: 'error', clip: null, error: e.message }
   }
 }
@@ -746,19 +739,33 @@ async function attachClipToNullSlots(courseCode, text, role, audioId) {
 }
 
 /**
+ * Whether an existing clip already IS this slot's row, so pointing at it writes
+ * nothing. This is about the WRITE, not the lookup: the clip was chosen with no
+ * regard to role, and a clip another slot type recorded still answers — it just
+ * gets a pointer row filed under the slot being filled (course_audio's unique
+ * key carries the slot, so it cannot be the same row).
+ */
+function isThisSlotsOwnRow(clip, courseCode, slot) {
+  return clip.course_code === courseCode && clip.role === slot
+}
+
+/**
  * Per-request reuse switches, honoured identically by every render path.
  *
  *   reuse: false      render fresh, ask the store nothing. The escape hatch for
  *                     "I want NEW bytes", e.g. an operator who believes every
  *                     existing take of this line is bad.
- *   crossRole: false  strict same-role matching, i.e. the pre-A-137 key.
  *
- * Both default ON, because a cache miss is the only reason to occupy the xAI
+ * There is no role switch: known and target are not told apart (Tom,
+ * 2026-09-26 21:45Z), so the old `crossRole: false` escape hatch is gone and a
+ * body that still sends it is ignored.
+ *
+ * Default ON, because a cache miss is the only reason to occupy the xAI
  * queue and that is the whole point of A-137.
  */
 function reuseOptsFromRequest(req) {
   const body = (req && req.body) || {}
-  return { enabled: body.reuse !== false, crossRole: body.crossRole !== false }
+  return { enabled: body.reuse !== false }
 }
 
 /**
@@ -767,7 +774,7 @@ function reuseOptsFromRequest(req) {
  */
 function newReuseCounters() {
   // ownCourse: items answered by this course's own existing row — no render, no write (job #383).
-  return { reused: 0, crossRole: 0, lookupErrors: 0, linkErrors: 0, ownCourse: 0 }
+  return { reused: 0, lookupErrors: 0, linkErrors: 0, ownCourse: 0 }
 }
 
 /**
@@ -803,16 +810,18 @@ async function reuseSiblingIntoCourse({
   if (opts.enabled === false) return null
   if (!voiceId || !text) return null
 
-  const lookup = await lookupSiblingClip(courseCode, text, language, role, voiceId, {
-    crossRole: opts.crossRole !== false,
+  const lookup = await lookupSiblingClip(courseCode, text, language, voiceId, {
     excludeS3Keys,
+    ownCourseOnly: role === 'presentation',
   })
   if (lookup.status === 'error') { if (counters) counters.lookupErrors++; return null }
   const sibling = lookup.clip
   if (!sibling?.s3_key) return null
 
   const payload = {
-    voice_id: voiceId,
+    // The row names the voice that SPEAKS the clip — under any-voice reuse
+    // that may not be the voice the caller would have rendered in.
+    voice_id: sibling.voice_id || voiceId,
     origin: 'tts',
     s3_key: sibling.s3_key,
     duration_ms: sibling.duration_ms,
@@ -859,12 +868,8 @@ async function reuseSiblingIntoCourse({
     return null
   }
 
-  if (counters) {
-    counters.reused++
-    if (sibling.role !== role) counters.crossRole++
-  }
-  const crossed = sibling.role !== role ? ` [cross-role from ${sibling.role}]` : ''
-  logger.info(`[${label}] reused sibling clip for ${role} "${String(text).slice(0, 40)}" → ${sibling.s3_key} (no render)${crossed}`)
+  if (counters) counters.reused++
+  logger.info(`[${label}] reused sibling clip for ${role} "${String(text).slice(0, 40)}" → ${sibling.s3_key} (no render)`)
   return {
     audioId: row.id,
     s3Key: sibling.s3_key,
@@ -3066,7 +3071,6 @@ app.post('/generate/:courseCode', async (req, res) => {
     const results = { success: 0, failed: 0, errors: [] }
     // A-137 cross-course reuse: on unless this request asked for fresh bytes.
     const reuseOpts = reuseOptsFromRequest(req)
-    const allowCrossRole = reuseOpts.crossRole
     results.reuse = newReuseCounters()
     // Slots this pass filled — by the reuse guard directly, and by the linker
     // below. A pass that fills none is a loop's signature (see noProgress).
@@ -3153,21 +3157,21 @@ app.post('/generate/:courseCode', async (req, res) => {
       // -----------------------------------------------------------------------
       // THE ONE REUSE PATH — per language, never per course (Tom: recordings
       // are per language; course rows only point at them). Any clip of these
-      // words, in this language and this voice, in ANY course including this
+      // words, in this language, in ANY voice (recast = new content only, Tom 2026-09-26), in ANY course including this
       // one, whatever role it was rendered under (A-137), answers the item:
       // this course points at it and nothing is rendered.
       //
       // Unconditional on a fill pass (job #383). reuse:false used to switch
       // this off, and a fill pass has no business rendering words the language
-      // already holds in this voice — fresh bytes are what /regenerate-* is for.
+      // already holds in any voice — fresh bytes are what /regenerate-* is for.
       // Fails CLOSED: a lookup or pointer-write error fails this item (free,
       // retried next pass) instead of falling through to a paid render.
       // -----------------------------------------------------------------------
       {
         if (!reuseOpts.enabled) logger.warn(`[Reuse] reuse:false ignored on a fill pass — ${item.role} "${item.text.substring(0, 40)}"`)
         const lookup = await lookupSiblingClip(
-          courseCode, item.text, item.language, item.role, item.voiceId,
-          { crossRole: allowCrossRole, includeOwnCourse: true })
+          courseCode, item.text, item.language, item.voiceId,
+          { includeOwnCourse: true, ownCourseOnly: item.role === 'presentation' })
         if (lookup.status === 'error') {
           results.reuse.lookupErrors++
           throw new Error(`reuse lookup failed, not rendering blind: ${lookup.error}`)
@@ -3175,7 +3179,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         const clip = lookup.clip
         if (clip?.s3_key) {
           let audioId = null
-          if (clip.course_code === courseCode && clip.role === item.role) {
+          if (isThisSlotsOwnRow(clip, courseCode, item.role)) {
             // This course's own row for this slot: point at it, write nothing.
             audioId = clip.id
             results.reuse.ownCourse++
@@ -3188,7 +3192,7 @@ app.post('/generate/:courseCode', async (req, res) => {
                 text_normalized: normalizeForAudio(item.text),
                 language: item.language,
                 role: item.role,
-                voice_id: item.voiceId,
+                voice_id: clip.voice_id || item.voiceId, // the voice that speaks the clip (any-voice reuse)
                 origin: 'tts',
                 s3_key: clip.s3_key,
                 duration_ms: clip.duration_ms,
@@ -3205,7 +3209,6 @@ app.post('/generate/:courseCode', async (req, res) => {
             }
             audioId = pointer.id
             results.reuse.reused++
-            if (clip.role !== item.role) results.reuse.crossRole++
           }
           const n = item.role === 'presentation'
             ? (await bindPresentationAudio(item, audioId, clip.duration_ms), 1)
@@ -3250,6 +3253,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         spendCap.charge(textForTTS)
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+            door: { courseCode, intro: item.role === 'presentation' },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceName,
@@ -3257,12 +3261,14 @@ app.post('/generate/:courseCode', async (req, res) => {
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+            door: { courseCode, intro: item.role === 'presentation' },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+            door: { courseCode, intro: item.role === 'presentation' },
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
@@ -3274,6 +3280,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           // honours it and pinning it halves the take-to-take duration wander on
           // short text; the tts-service defaults it to 1.0 if a caller omits it.
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            door: { courseCode, intro: item.role === 'presentation' },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
@@ -3914,6 +3921,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (voiceProvider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+            door: { courseCode, intro: role === 'presentation', replacing: [item.s3_key] },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceId,
@@ -3925,18 +3933,21 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
           }))
         } else if (voiceProvider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+            door: { courseCode, intro: role === 'presentation', replacing: [item.s3_key] },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceId,
             speed
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+            door: { courseCode, intro: role === 'presentation', replacing: [item.s3_key] },
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceId,
             language: toBcp47(language),
           }))
         } else if (voiceProvider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            door: { courseCode, intro: role === 'presentation', replacing: [item.s3_key] },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceId,
             locale: ttsLocaleForRole(course, role, language),
@@ -5378,6 +5389,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       let rawAudioBuffer, wordBoundaries
       if (voiceProvider === 'azure') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid] },
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -5386,18 +5398,21 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
         }))
       } else if (voiceProvider === 'elevenlabs') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid] },
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
         }))
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid] },
           apiKey: process.env.XAI_API_KEY,
           voiceId: voiceId,
           language: toBcp47(lang),
         }))
       } else if (voiceProvider === 'cartesia') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+          door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid] },
           apiKey: process.env.CARTESIA_API_KEY,
           voiceId: voiceId,
           locale: ttsLocaleForRole(course, role, lang),
@@ -5754,6 +5769,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       let rawAudioBuffer, wordBoundaries
       if (voiceProvider === 'azure') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'azure', {
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
           subscriptionKey: process.env.AZURE_SPEECH_KEY,
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName: voiceId,
@@ -5761,18 +5777,21 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
         }))
       } else if (voiceProvider === 'elevenlabs') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'elevenlabs', {
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
           apiKey: process.env.ELEVENLABS_API_KEY,
           voiceId: voiceId,
           speed
         }))
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
           apiKey: process.env.XAI_API_KEY,
           voiceId: voiceId,
           language: toBcp47(knownLang)
         }))
       } else if (voiceProvider === 'cartesia') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'cartesia', {
+          door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
           apiKey: process.env.CARTESIA_API_KEY,
           voiceId: voiceId,
           locale: toBcp47(knownLang),
@@ -6184,6 +6203,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (voiceProvider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName,
@@ -6191,18 +6211,21 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           }))
         } else if (voiceProvider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(language)
           }))
         } else if (voiceProvider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, role, language),
@@ -6586,6 +6609,7 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (voiceProvider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key] },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName,
@@ -6593,18 +6617,21 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
           }))
         } else if (voiceProvider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key] },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key] },
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(language)
           }))
         } else if (voiceProvider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key] },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, role, language),
@@ -7015,15 +7042,15 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       // pass, fail-closed (job #383).
       {
         const lookup = await lookupSiblingClip(
-          courseCode, item.text, item.language, item.role, item.voiceId,
-          { crossRole: reuseOpts.crossRole, includeOwnCourse: true })
+          courseCode, item.text, item.language, item.voiceId,
+          { includeOwnCourse: true, ownCourseOnly: item.role === 'presentation' })
         if (lookup.status === 'error') {
           results.reuse.lookupErrors++
           throw new Error(`reuse lookup failed, not rendering blind: ${lookup.error}`)
         }
         const siblingAudio = lookup.clip
 
-        if (siblingAudio?.s3_key && siblingAudio.course_code === courseCode && siblingAudio.role === item.role) {
+        if (siblingAudio?.s3_key && isThisSlotsOwnRow(siblingAudio, courseCode, item.role)) {
           results.reuse.ownCourse++
           updateWork(item.text, true)
           return { success: true, item, shared: true }
@@ -7037,7 +7064,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
               text_normalized: normalizeForAudio(item.text),
               language: item.language,
               role: item.role,
-              voice_id: item.voiceId,
+              voice_id: siblingAudio.voice_id || item.voiceId, // the voice that speaks the clip (any-voice reuse)
               origin: 'tts',
               s3_key: siblingAudio.s3_key,
               duration_ms: siblingAudio.duration_ms,
@@ -7051,9 +7078,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
           if (!insertError && insertedAudio) {
             updateWork(item.text, true)
             results.reuse.reused++
-            const crossed = siblingAudio.role !== item.role ? ` [cross-role from ${siblingAudio.role}]` : ''
-            if (crossed) results.reuse.crossRole++
-            logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (sibling)${crossed}`)
+            logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (sibling)`)
             return { success: true, item, shared: true }
           }
           results.reuse.linkErrors++
@@ -7082,23 +7107,27 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+            door: { courseCode, intro: item.role === 'presentation' },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName, speed
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+            door: { courseCode, intro: item.role === 'presentation' },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName, speed
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+            door: { courseCode, intro: item.role === 'presentation' },
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
           }))
         } else if (provider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+            door: { courseCode, intro: item.role === 'presentation' },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
@@ -7971,10 +8000,12 @@ function buildPodTTSConfig(voice, language, courseCode) {
  *
  * Preference among several estate-wide matches (taste-safe default, flagged in
  * the 2026-09-13 report): a clip a LIVE sibling pod of the same slug already
- * serves (`opts.preferIds`) first, then a same-role clip, then a cross-role clip
- * that clears the Azure baked-speed guard — unchanged from before.
+ * serves (`opts.preferIds`) first, then a clip in the preferred voice. Never by
+ * role: known and target are not told apart (Tom, 2026-09-26 21:45Z). The
+ * pod's own voice binding (a target line only in its speaker's voice) is set by
+ * the caller per pod TRACK via `shareVoices`, never read off a stored row.
  */
-async function findAudioRowForClip(courseCode, text, language, role, voiceId, opts = {}) {
+async function findAudioRowForClip(courseCode, text, language, voiceId, opts = {}) {
   // Normalise ONCE — normalizeForAudio collapses internal whitespace and
   // normalizeForDb must not, so pre-normalising made the DB-convention candidate
   // unreachable for any text carrying a double space. Same fix as
@@ -7986,18 +8017,13 @@ async function findAudioRowForClip(courseCode, text, language, role, voiceId, op
   // render followed for words the estate already spoke.
   const acceptableTexts = new Set([text, ...(opts.altTexts || [])].filter(Boolean))
   const keys = [...new Set([...acceptableTexts].flatMap(audioKeyCandidates))]
-  // A-137: the CROSS-COURSE read is role-agnostic — one voice pool per language
-  // regardless of role — so a pod's known track can be answered by the identical
-  // line already rendered as a main-course known/target clip in the same voice.
-  // The OWN-course read stays role-scoped: within a course the role IS the slot.
-  // Cross-role candidates are then filtered by the Azure baked-speed guard below,
-  // exactly as the planner does.
+  // Neither read is scoped by role: a pod line is answered by the identical
+  // words already rendered as any main-course known/target clip.
   const readCandidates = async (scopeToCourse) => {
     let q = supabase
       .from('course_audio')
       .select('id, course_code, text, language, voice_id, s3_key, role')
-    if (scopeToCourse) q = q.eq('course_code', courseCode).eq('role', role)
-    else if (opts.crossRole === false) q = q.eq('role', role)
+    if (scopeToCourse) q = q.eq('course_code', courseCode)
     const { data, error } = await q.in('text_normalized', keys).limit(SIBLING_LOOKUP_LIMIT)
     if (error) {
       // Fail CLOSED: a swallowed lookup error used to fall through to the upsert,
@@ -8042,23 +8068,19 @@ async function findAudioRowForClip(courseCode, text, language, role, voiceId, op
   // SOME live pod-1 sibling — the #511 report's "all 215 by fra/spa" overstated.
   const preferIds = opts.preferIds instanceof Set ? opts.preferIds : null
   const servedBySibling = preferIds ? shareable.filter(row => preferIds.has(row.id)) : []
-  const ranked = [...servedBySibling, ...shareable.filter(row => !servedBySibling.includes(row))]
-  // Same role first, so widening the key can only ADD a hit, never redirect an
-  // existing one. A cross-role borrow must clear the Azure baked-speed guard:
-  // Azure bakes `speed` into the MP3 and course_audio persists no per-row speed,
-  // so its pace is unverifiable after the fact; xAI and ElevenLabs are always 1x.
-  return ranked.find(row => row.role === role) ||
-    ranked.find(row => row.role !== role && isSpeedTrustedVoice(row.voice_id)) ||
-    null
+  const inVoice = (row) => (sameVoice(voiceId, row.voice_id) ? 0 : 1)
+  const ranked = [...servedBySibling.sort((a, b) => inVoice(a) - inVoice(b)),
+    ...shareable.filter(row => !servedBySibling.includes(row)).sort((a, b) => inVoice(a) - inVoice(b))]
+  return ranked[0] || null
 }
 
 /**
- * Look up existing course_audio by (course_code, text_normalized, language, role, voice_id).
+ * Look up existing course_audio by (course_code, text_normalized, language, voice_id).
  * Returns the audio row's id if a match exists, else null.
  * See findAudioRowForClip for `opts` (`scope: 'language'` for the pod path).
  */
-async function findExistingAudio(courseCode, text, language, role, voiceId, opts) {
-  const row = await findAudioRowForClip(courseCode, text, language, role, voiceId, opts)
+async function findExistingAudio(courseCode, text, language, voiceId, opts) {
+  const row = await findAudioRowForClip(courseCode, text, language, voiceId, opts)
   return row?.id || null
 }
 
@@ -8200,7 +8222,7 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
   // same conflict key, so the row (and every link to its id) is kept and just
   // gets fresh audio + word_boundaries. Used by the Take G rescue pass.
   const existingRow = await findAudioRowForClip(
-    courseCode, ttsText, identityLanguage, role, voice && voice.voice_id, {
+    courseCode, ttsText, identityLanguage, voice && voice.voice_id, {
       scope: 'language',
       altTexts: [text],
       shareVoices: track === 'known',
@@ -8244,7 +8266,7 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
     activeVoice = voice
     let audioBuffer, wordBoundaries, wordTimings = null
     try {
-      const ttsConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+      const ttsConfig = { ...buildPodTTSConfig(activeVoice, cue, courseCode), door: { courseCode, voiceBound: true } }
       ;({ audioBuffer, wordBoundaries, wordTimings = null } = await ttsService.generateWithRetry(ttsText, provider, ttsConfig))
     } catch (primaryErr) {
       // xAI is PRIMARY (more natural voices); Azure is the safety net. Only fall
@@ -8266,7 +8288,7 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
       logger.info(`[Pods] fallback xAI→Azure for ${sentenceId || '?'} ${kind} voice=${azureVoice.voice_id} (${primaryErr.message})`)
       provider = 'azure'
       activeVoice = azureVoice
-      const azureConfig = buildPodTTSConfig(activeVoice, cue, courseCode)
+      const azureConfig = { ...buildPodTTSConfig(activeVoice, cue, courseCode), door: { courseCode, voiceBound: true } }
       try {
         // An Azure rescue has no word timings; whatever the failed primary
         // attempt may have set must not travel with somebody else's bytes.
@@ -8579,7 +8601,7 @@ app.get('/plan-pods/:courseCode', async (req, res) => {
         const language = track === 'target' ? ctx.targetLang : ctx.knownLang
         const role = track === 'target' ? 'target1' : 'known'
         for (const m of missing[track]) {
-          const found = await findAudioRowForClip(courseCode, podTtsText(m.text), canonicalLanguage(language), role, m.voice_id, {
+          const found = await findAudioRowForClip(courseCode, podTtsText(m.text), canonicalLanguage(language), m.voice_id, {
             scope: 'language', altTexts: [m.text], shareVoices: track === 'known', preferIds: sibling.ids,
           })
           if (found) {
@@ -9155,20 +9177,24 @@ async function reuseRenderClip(courseCode, clip, stats) {
     let rawAudioBuffer, wordBoundaries
     if (provider === 'azure') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
+        door: { courseCode, intro: clip.role === 'presentation' },
         subscriptionKey: process.env.AZURE_SPEECH_KEY,
         region: process.env.AZURE_SPEECH_REGION || 'westeurope',
         voiceName, speed: 1.0,
       }))
     } else if (provider === 'elevenlabs') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
+        door: { courseCode, intro: clip.role === 'presentation' },
         apiKey: process.env.ELEVENLABS_API_KEY, voiceId: voiceName, speed: 1.0,
       }))
     } else if (provider === 'xai') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
+        door: { courseCode, intro: clip.role === 'presentation' },
         apiKey: process.env.XAI_API_KEY, voiceId: voiceName, language: toBcp47(clip.language),
       }))
     } else if (provider === 'cartesia') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
+        door: { courseCode, intro: clip.role === 'presentation' },
         apiKey: process.env.CARTESIA_API_KEY, voiceId: voiceName, locale: toBcp47(clip.language), speed: 1.0,
       }))
     } else {
@@ -9371,12 +9397,11 @@ app.get('/reuse-plan/:courseCode', async (req, res) => {
     const { courseCode } = req.params
     const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.query.rounds, 10) || 10))
     const fromRound = Math.max(1, Math.min(rounds, parseInt(req.query.fromRound, 10) || 1))
-    const crossRole = req.query.crossRole !== 'false'
     const voiceAliases = parseVoiceAliases(req.query.voiceAliases)
     const verifyBytes = req.query.verifyBytes !== 'false'
 
     const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
-      crossRole, voiceAliases, fromRound,
+      voiceAliases, fromRound,
       freshRoles: parseFreshRoles(req.query.freshRoles),
       codeService: { getName: getLangEnglishName },
       preferredSourceCourses: preferredSourcesFor(courseCode, req.query.preferredSources),
@@ -9395,7 +9420,6 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const rounds = Math.max(1, Math.min(MAX_ROUNDS, parseInt(req.body?.rounds, 10) || 10))
   const fromRound = Math.max(1, Math.min(rounds, parseInt(req.body?.fromRound, 10) || 1))
   const dryRun = req.body?.dryRun !== false
-  const crossRole = req.body?.crossRole !== false
   const rebuild = req.body?.rebuild === true
   const voiceAliases = parseVoiceAliases(req.body?.voiceAliases)
   // Own-course clips older than this date are not a reuse source — see the long
@@ -9426,7 +9450,7 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
   const execute = async () => {
     try {
       const plan = await reusePlanner.buildReusePlan(supabase, courseCode, rounds, {
-        crossRole, voiceAliases, rebuild, fromRound, distrustOwnBefore,
+        voiceAliases, rebuild, fromRound, distrustOwnBefore,
         freshRoles: parseFreshRoles(req.body?.freshRoles),
         codeService: { getName: getLangEnglishName },
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),

@@ -2172,6 +2172,9 @@ app.post('/api/voices/preview', async (req, res) => {
         region: azureRegion,
         voiceName: voiceId,
         speed: speed || 1.0,
+        // A voice preview is an AUDITION at the one TTS door: exempt from the
+        // cast gate (a voice is heard before it is cast), never from the lookup.
+        door: { audition: true, language: language || undefined },
       })
       audioBuffer = result.audioBuffer
     } else if (provider === 'elevenlabs') {
@@ -2180,7 +2183,8 @@ app.post('/api/voices/preview', async (req, res) => {
         return res.status(500).json({ success: false, error: 'ElevenLabs not configured (ELEVENLABS_API_KEY not set)' })
       }
       const result = await ttsService.generateWithRetry(text, 'elevenlabs', {
-        apiKey, voiceId, speed: speed || 1.0
+        apiKey, voiceId, speed: speed || 1.0,
+        door: { audition: true, language: language || undefined },
       })
       audioBuffer = result.audioBuffer
     } else if (provider === 'xai') {

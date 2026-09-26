@@ -96,7 +96,7 @@ function glueGroups(rawGroups) {
         // render the bare surface; store under the "[atom] " key like
         // breakdown-flat (existing rows reused via the same normalised key)
         const key = `[atom] ${surface}`
-        const existing = await p8.findExistingAudio(COURSE, key, lang, ROLE, VOICE.voice_id)
+        const existing = await p8.findExistingAudio(COURSE, key, lang, VOICE.voice_id)
         if (existing) { reused++; continue }
         const res = await p8.generatePodAudio({ courseCode: COURSE, text: surface, language: lang, role: ROLE, voice: VOICE })
         const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')

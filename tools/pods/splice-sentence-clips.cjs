@@ -526,7 +526,7 @@ if (!COURSE) {
       // for. Restored by tools/pods/restore-clobbered-clip-pointers.cjs.
       const existing = []
       for (const t of tSents) {
-        existing.push(await p8.findExistingAudio(COURSE, t, targetLang, 'target1', voiceId))
+        existing.push(await p8.findExistingAudio(COURSE, t, targetLang, voiceId))
       }
       const needSplice = existing.some((id) => !id)
 

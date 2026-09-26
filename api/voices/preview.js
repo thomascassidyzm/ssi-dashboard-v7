@@ -1,6 +1,6 @@
 /**
  * POST /api/voices/preview
- * Generate a preview audio sample using Azure TTS
+ * Generate a preview audio sample using Azure TTS, through the one TTS door
  *
  * Body:
  *   - text: Text to synthesize (required)
@@ -12,6 +12,7 @@
  */
 
 import consentGate from '../../services/shared/voice-consent-gate.cjs';
+import tts from '../../services/tts-service.cjs';
 import { getSupabase } from '../lib/supabase.js';
 
 const AZURE_SPEECH_REGION = process.env.AZURE_SPEECH_REGION || 'westeurope';
@@ -66,70 +67,35 @@ export default async function handler(req, res) {
       return res.status(409).json({ error: err.message, code: err.code || 'NO_RECORDED_CONSENT' });
     }
 
-    console.log('[Preview] Generating:', { voiceId, textLength: text.length, style, rate });
+    console.log('[Preview] Generating:', { voiceId, textLength: text.length, rate });
 
-    // Extract locale from voiceId (e.g., 'es-ES' from 'es-ES-ElviraNeural')
-    const locale = voiceId.split('-').slice(0, 2).join('-');
-
-    // Build SSML
-    let ssml = `<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='${locale}'>`;
-    ssml += `<voice name='${voiceId}'>`;
-
-    // Add prosody for rate adjustment if specified
-    if (rate && rate !== '1.0' && rate !== '1') {
-      ssml += `<prosody rate='${rate}'>`;
+    // Through the one TTS door (services/tts-service.cjs speak), as an
+    // audition: the door answers with an existing clip when this voice has
+    // already said these words, and never lets anything call Azure directly.
+    // `style` is no longer honoured — the door's Azure renderer emits no
+    // mstts:express-as, and a preview claiming a style it did not apply would lie.
+    let out;
+    try {
+      out = await tts.speak(text, 'azure', {
+        subscriptionKey: AZURE_SPEECH_KEY,
+        region: AZURE_SPEECH_REGION,
+        voiceName: voiceId,
+        speed: Number(rate) > 0 ? Number(rate) : 1.0,
+        door: { audition: true },
+      }, 1);
+    } catch (err) {
+      console.error('[Preview] TTS door refused or failed:', err.message);
+      return res.status(502).json({ error: 'TTS error', message: err.message });
     }
-
-    // Add express-as for style if specified
-    if (style) {
-      ssml += `<mstts:express-as xmlns:mstts='http://www.w3.org/2001/mstts' style='${style}'>`;
-      ssml += escapeXml(text);
-      ssml += `</mstts:express-as>`;
-    } else {
-      ssml += escapeXml(text);
-    }
-
-    if (rate && rate !== '1.0' && rate !== '1') {
-      ssml += `</prosody>`;
-    }
-
-    ssml += `</voice></speak>`;
-
-    console.log('[Preview] SSML:', ssml.slice(0, 200) + '...');
-
-    // Call Azure TTS API
-    const response = await fetch(
-      `https://${AZURE_SPEECH_REGION}.tts.speech.microsoft.com/cognitiveservices/v1`,
-      {
-        method: 'POST',
-        headers: {
-          'Ocp-Apim-Subscription-Key': AZURE_SPEECH_KEY,
-          'Content-Type': 'application/ssml+xml',
-          'X-Microsoft-OutputFormat': 'audio-24khz-96kbitrate-mono-mp3',
-          'User-Agent': 'SSi-Dashboard-Voice-Preview'
-        },
-        body: ssml
-      }
-    );
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('[Preview] Azure TTS error:', response.status, errorText);
-      return res.status(response.status).json({
-        error: 'Azure TTS error',
-        status: response.status,
-        message: errorText
-      });
-    }
+    const audioBuffer = out.audioBuffer;
 
     // Stream audio back to client
-    const audioBuffer = await response.arrayBuffer();
 
-    console.log('[Preview] Generated', audioBuffer.byteLength, 'bytes of audio');
+    console.log('[Preview] Generated', audioBuffer.length, 'bytes of audio', out.existingClip ? '(existing clip)' : '');
 
     res.setHeader('Content-Type', 'audio/mpeg');
-    res.setHeader('Content-Length', audioBuffer.byteLength);
-    res.send(Buffer.from(audioBuffer));
+    res.setHeader('Content-Length', audioBuffer.length);
+    res.send(audioBuffer);
 
   } catch (err) {
     console.error('[Preview] Error:', err.message);
@@ -138,14 +104,4 @@ export default async function handler(req, res) {
       message: err.message
     });
   }
-}
-
-// Escape special XML characters
-function escapeXml(text) {
-  return text
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&apos;');
 }

@@ -12,12 +12,16 @@
 
 import { describe, it, expect } from 'vitest'
 
+// Every render now passes the one TTS door, which asks the clip library first.
+// These tests are about what happens on a MISS, so the library is empty.
+const clipLibraryModule = require('./shared/clip-library.cjs')
+clipLibraryModule.useClipLibrary(clipLibraryModule.memoryClipLibrary([]))
+
 const {
   assertAudibleResponse,
   isRetriableTtsError,
   recordXaiOutcome,
   getXaiHealth,
-  generateXai,
   TTS_MIN_AUDIO_MS,
   isKnownSideOfHumanVoiceCourse,
 } = require('./tts-service.cjs')
@@ -121,25 +125,9 @@ describe('xAI degradation pacing', () => {
  * look perfectly correct in the database. An explicit 'auto' is still allowed:
  * that is deliberate, Tom-validated tuning for pod explainers.
  */
-describe('generateXai language steering', () => {
-  const cfg = (extra) => ({ apiKey: 'k', voiceId: 'ara', ...extra })
-
-  it('throws when no language is passed at all', async () => {
-    await expect(generateXai('come stai', cfg())).rejects.toThrow(/explicit BCP-47 language/)
-  })
-
-  it('throws on an empty-string language', async () => {
-    await expect(generateXai('come stai', cfg({ language: '' }))).rejects.toThrow(/explicit BCP-47 language/)
-  })
-
-  it('does not throw on an explicit auto (deliberate explainer tuning)', async () => {
-    // Kept off the network by handing it an over-length text: the request is
-    // refused by the length guard AFTER the language guard has already let
-    // 'auto' through. If the language guard fired, this message would differ.
-    await expect(generateXai('x'.repeat(15001), cfg({ language: 'auto' })))
-      .rejects.toThrow(/limited to 15000 characters/)
-  })
-})
+// generateXai's steering tests were removed on 2026-09-26: xAI is retired from
+// selection (Tom, 2026-08-27) and the one TTS door refuses it before anything
+// else, so no request can reach that code — see services/shared/tts-provider-policy.test.cjs.
 
 // ─── Cartesia, wired forward-only 2026-08-27 ──────────────────────────────────
 //
@@ -292,8 +280,10 @@ describe('the phonology gate covers cartesia, not just xai', () => {
  * new provider with the older, softer behaviour would have quietly reopened the
  * hole for every Cartesia course.
  */
-describe('generateCartesia locale steering', () => {
-  const { generateCartesia } = require('./tts-service.cjs')
+describe('generateCartesia locale steering (through the door)', () => {
+  // The per-provider renderers are no longer exported: nothing may call a
+  // provider except through speak(). generate() is speak() with one attempt.
+  const generateCartesia = (text, config) => require('./tts-service.cjs').generate(text, 'cartesia', config)
   const cfg = (extra) => ({ apiKey: 'k', voiceId: '8fef4d59-0a7e-4ad2-a261-6a3bb50734d2', ...extra })
 
   it('throws when no locale is passed at all', async () => {

@@ -68,10 +68,11 @@ if(require.main===module)(async()=>{
   for(const [k,text] of Object.entries(LINES)){
    const raw=`${OUT}/raw/${k}_${v.letter}.mp3`, clip=`${OUT}/clips/${k}_${v.letter}.mp3`;
    if(!fs.existsSync(raw)){
-    const r=await fetch('https://api.cartesia.ai/tts/bytes',{method:'POST',headers:{Authorization:'Bearer '+process.env.CARTESIA_API_KEY,'Cartesia-Version':'2026-08-14','Content-Type':'application/json'},
-     body:JSON.stringify({model_id:'sonic-3.6',transcript:text,voice:{mode:'id',id:v.id},locale:v.locale,generation_config:{speed:1.0},output_format:{container:'mp3',sample_rate:24000,bit_rate:128000}})});
-    if(!r.ok){console.error('FAIL',v.name,k,r.status,await r.text());rec.clips[k]={error:r.status};continue;}
-    fs.writeFileSync(raw,Buffer.from(await r.arrayBuffer()));
+    // Through the one TTS door (services/tts-service.cjs speak), as an audition.
+    let out;
+    try{ out=await require('../../services/tts-service.cjs').speak(text,'cartesia',{apiKey:process.env.CARTESIA_API_KEY,voiceId:v.id,locale:v.locale,modelId:'sonic-3.6',speed:1.0,sampleRate:24000,bitRate:128000,door:{audition:true}}); }
+    catch(e){console.error('FAIL',v.name,k,e.message);rec.clips[k]={error:e.message};continue;}
+    fs.writeFileSync(raw,out.audioBuffer);
    }
    const lv=levelClip(raw,clip);
    const dur=execFileSync('ffprobe',['-v','error','-show_entries','format=duration','-of','csv=p=0',clip]).toString().trim();

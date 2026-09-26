@@ -78,25 +78,17 @@ function joinSample (parts, dir) {
 }
 
 async function render (text, voiceId) {
-  const res = await fetch('https://api.cartesia.ai/tts/bytes', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.CARTESIA_API_KEY}`,
-      'Cartesia-Version': RENDER.apiVersion,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model_id: RENDER.model,
-      transcript: text,
-      voice: { mode: 'id', id: voiceId },
-      generation_config: { speed: RENDER.speed },
-      output_format: { container: 'mp3', sample_rate: RENDER.sampleRate, bit_rate: RENDER.bitRate },
-      locale: RENDER.locale,
-    }),
-    signal: AbortSignal.timeout(120000),
+  // Through the one TTS door (services/tts-service.cjs speak), as an audition.
+  const { audioBuffer: buf } = await require('../../services/tts-service.cjs').speak(text, 'cartesia', {
+    apiKey: process.env.CARTESIA_API_KEY,
+    voiceId,
+    modelId: RENDER.model,
+    speed: RENDER.speed,
+    sampleRate: RENDER.sampleRate,
+    bitRate: RENDER.bitRate,
+    locale: RENDER.locale,
+    door: { audition: true },
   })
-  if (!res.ok) throw new Error(`Cartesia TTS ${res.status}: ${(await res.text()).slice(0, 300)}`)
-  const buf = Buffer.from(await res.arrayBuffer())
   if (buf.length < 2000) throw new Error(`suspiciously short render (${buf.length} bytes) for "${text.slice(0, 30)}"`)
   return buf
 }
