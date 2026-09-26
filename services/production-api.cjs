@@ -3121,10 +3121,11 @@ async function startLegacyAudioGeneration(courseCode, jobId, manifest) {
     const knownLang = course.known_lang
 
     // Load audio records
-    const { data: dbAudio } = await client
+    // PAGED: a bare select stops at PostgREST's 60,000 rows (job #383).
+    const dbAudio = await require('./shared/paged-read.cjs').readAllPages(() => client
       .from('course_audio')
       .select('id, text, text_normalized, language, role, duration_ms, lego_id, s3_key')
-      .eq('course_code', courseCode)
+      .eq('course_code', courseCode))
 
     // Build lookup maps
     const audioLookup = new Map()

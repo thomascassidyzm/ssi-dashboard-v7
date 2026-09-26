@@ -19,6 +19,7 @@ const PHASE8 = path.resolve(__dirname, '..', 'phase8-audio-v13.cjs')
  * @param {object} [o.tables]     in-memory rows per table
  * @param {Set}    [o.s3Objects]  keys HeadObject answers for
  * @param {object} [o.tts]        a tts-service double; default THROWS on any call
+ * @param {number} [o.maxRows]    emulate PostgREST max-rows (silent truncation)
  * @param {object} [o.doubles]    { '<module path suffix>': realModule => replacement }
  *                                for any other edge a scenario has to cut —
  *                                e.g. '/audio-processor.cjs' (ffmpeg) or
@@ -26,13 +27,13 @@ const PHASE8 = path.resolve(__dirname, '..', 'phase8-audio-v13.cjs')
  *                                real module so a double can wrap rather than
  *                                re-implement it.
  */
-function loadPhase8({ tables = {}, s3Objects = new Set(), tts: ttsOverride, doubles = {} } = {}) {
+function loadPhase8({ tables = {}, s3Objects = new Set(), tts: ttsOverride, doubles = {}, maxRows = null } = {}) {
   // Blow away any cached copy so each scenario gets a clean module instance.
   for (const k of Object.keys(require.cache)) {
     if (k.includes('/services/') || k.includes('@supabase')) delete require.cache[k]
   }
 
-  const supabase = makeFakeSupabase(tables)
+  const supabase = makeFakeSupabase(tables, { maxRows })
 
   const tts = ttsOverride || {
     calls: [],

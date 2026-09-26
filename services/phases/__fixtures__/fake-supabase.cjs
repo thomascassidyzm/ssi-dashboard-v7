@@ -39,6 +39,7 @@ class Query {
   }
 
   eq(col, val) { this.filters.push(r => r[col] === val); return this }
+  neq(col, val) { this.filters.push(r => r[col] !== val); return this }
   is(col, val) {
     if (val !== null) throw new Error('fake-supabase: .is() only models null')
     this.filters.push(r => r[col] === null || r[col] === undefined)
@@ -53,6 +54,7 @@ class Query {
     return this
   }
   not(col, op, pat) {
+    if (op === 'is' && pat === null) { this.filters.push(r => r[col] !== null && r[col] !== undefined); return this }
     if (op !== 'like') throw new Error(`fake-supabase: .not(${op}) not modelled`)
     const rx = new RegExp('^' + pat.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/%/g, '.*') + '$')
     this.filters.push(r => !rx.test(String(r[col] ?? '')))
@@ -62,6 +64,8 @@ class Query {
   limit(n) { this._limit = n; return this }
   range(from, to) { this._range = [from, to]; return this }
   single() { this._single = true; return this }
+  maybeSingle() { this._single = true; return this }
+  insert(rows) { this._op = 'insert'; this._rows = Array.isArray(rows) ? rows : [rows]; return this }
 
   upsert(rows, opts = {}) {
     this._op = 'upsert'
@@ -90,6 +94,12 @@ class Query {
 
   _run() {
     if (this._op === 'upsert') return this._runUpsert()
+    if (this._op === 'insert') {
+      const t = this.db.tables[this.table] || (this.db.tables[this.table] = [])
+      const fresh = this._rows.map(r => ({ id: `row-${++this.db.seq}`, ...r }))
+      t.push(...fresh)
+      return { data: this._single ? fresh[0] : fresh, error: null }
+    }
     if (this._op === 'update') {
       // A `beforeUpdate` hook on the db can refuse the write (return an
       // Error) — stands in for a failed PostgREST update in tests.
@@ -112,6 +122,9 @@ class Query {
     const count = rows.length
     if (this._range) rows = rows.slice(this._range[0], this._range[1] + 1)
     if (this._limit != null) rows = rows.slice(0, this._limit)
+    // PostgREST's max-rows: the server silently truncates ANY select to this
+    // many rows, whatever .limit() asked for (60,000 on the SSi project).
+    if (this.db.maxRows != null) rows = rows.slice(0, this.db.maxRows)
     if (this.headOnly) return { data: null, error: null, count }
     if (this._single) return { data: rows[0] || null, error: null, count }
     return { data: rows.map(r => ({ ...r })), error: null, count }
@@ -153,9 +166,10 @@ class Query {
   }
 }
 
-function makeFakeSupabase(tables = {}) {
+function makeFakeSupabase(tables = {}, { maxRows = null } = {}) {
   const db = {
     tables,
+    maxRows,
     seq: 0,
     stats: { inserted: 0, dupIgnored: 0, deleted: 0 },
   }

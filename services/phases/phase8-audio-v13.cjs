@@ -33,6 +33,7 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
+const { readAllPages } = require('../shared/paged-read.cjs')
 const { decideCopy } = require('../shared/clone-copy-match.cjs')
 const { buildSourceIndex } = require('../shared/clone-copy-index.cjs')
 const createLogger = require('../shared/logger.cjs')
@@ -455,26 +456,19 @@ function refuseComponentPresentation(where) {
 }
 
 /**
- * Fetch ALL existing audio for a course from course_audio.
- * Avoids pagination entirely — uses a single query with high limit.
- * Supabase PostgREST supports up to ~100k rows per request with select.
- * We deduplicate into a Set anyway, so even if Supabase returns some overlap, it's fine.
+ * Fetch ALL existing audio for a course from course_audio, PAGED — a single
+ * select is silently capped at PostgREST's 60,000 rows (see shared/paged-read.cjs).
  * @param {string} courseCode
  * @returns {Set} Set of "normalizedText|language|role" keys for existing audio
  */
 async function getExistingAudioSet(courseCode) {
-  // Fetch in one large batch — course_audio per course is typically 10k-30k rows
-  // Using .limit() avoids the 1000-row default without needing ORDER BY
   // Fetch raw `text` column so we can normalize it ourselves — text_normalized
   // may have been written by old code that stripped ?! (we now preserve them)
-  const { data, error } = await supabase
+  const data = await readAllPages(() => supabase
     .from('course_audio')
-    .select('text, language, role, s3_key, voice_id')
+    .select('id, text, language, role, s3_key, voice_id')
     .eq('course_code', courseCode)
-    .not('s3_key', 'like', 'pending/%')
-    .limit(100000)
-
-  if (error) throw error
+    .not('s3_key', 'like', 'pending/%'))
 
   // Exact matching only. "emin misin?" and "emin misin" are DIFFERENT audio files
   // because ? changes TTS intonation (question vs statement).
@@ -614,16 +608,26 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  *                                         very clip it was asked to replace.
  */
 async function findSiblingCourseClip(courseCode, text, language, role, voiceId, opts = {}) {
-  const { crossRole = true, excludeS3Keys = [] } = opts
+  const { crossRole = true, excludeS3Keys = [], includeOwnCourse = false } = opts
   // Normalise ONCE. `audioKeyCandidates(normalizeForAudio(text))` collapsed
   // internal whitespace before handing the text to normalizeForDb, whose whole
   // job is to be byte-identical to SQL normalize_text() — which does NOT
   // collapse it. So a row stored with a double space was unreachable by the
   // DB-convention candidate. Measured blast radius when found: 94 rows.
-  const { data, error } = await supabase
+  //
+  // includeOwnCourse (job #383): recordings are per LANGUAGE, the course only
+  // points at them, so the course asking is just one more course that may
+  // already hold the line. Excluding it is what let the eng_for_hin fill loop
+  // (job #382) re-render 19,225 of its OWN clips 265,957 times: this lookup
+  // could not see them, the 60k-capped linker could not see them either, and
+  // every pass paid Cartesia for words already in storage. The fill paths
+  // (/generate, /generate-components) ask with it on; the /regenerate-* paths
+  // keep the old other-courses-only question.
+  let q = supabase
     .from('course_audio')
-    .select('s3_key, duration_ms, word_boundaries, language, voice_id, role, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker')
-    .neq('course_code', courseCode)
+    .select('id, course_code, text, s3_key, duration_ms, word_boundaries, language, voice_id, role, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker')
+  if (!includeOwnCourse) q = q.neq('course_code', courseCode)
+  const { data, error } = await q
     .in('text_normalized', audioKeyCandidates(text))
     .not('s3_key', 'like', 'pending/%')
     .limit(SIBLING_LOOKUP_LIMIT)
@@ -637,12 +641,20 @@ async function findSiblingCourseClip(courseCode, text, language, role, voiceId, 
     logger.warn(`[Reuse] sibling lookup hit the ${SIBLING_LOOKUP_LIMIT}-row page for "${String(text).slice(0, 40)}" (${language}/${role}) — result may be truncated`)
   }
   const excluded = new Set(excludeS3Keys.filter(Boolean))
+  // The WORDS must match as the linker keys them (normalizeForAudio keeps ?/!):
+  // text_normalized's SQL convention strips a trailing '?', so without this a
+  // question could be answered with a statement's intonation.
+  const want = normalizeForAudio(text)
   const usable = rows.filter(row =>
     row.s3_key &&
     !excluded.has(row.s3_key) &&
+    row.text != null && normalizeForAudio(row.text) === want &&
     sameLanguage(language, row.language) &&
     sameVoice(voiceId, row.voice_id))
-  return usable.find(row => row.role === role) ||
+  // This course's own row for this role first: it IS the slot's clip, and
+  // pointing at it writes nothing.
+  return (includeOwnCourse && usable.find(row => row.course_code === courseCode && row.role === role)) ||
+    usable.find(row => row.role === role) ||
     (crossRole
       ? usable.find(row => row.role !== role && isSpeedTrustedVoice(row.voice_id)) || null
       : null)
@@ -679,6 +691,61 @@ async function lookupSiblingClip(courseCode, text, language, role, voiceId, opts
 }
 
 /**
+ * The render budget of one fill pass: RUN_SPEND_FACTOR x the characters it
+ * planned to render, floored so a tiny pass survives a veracity re-render.
+ * charge() is called immediately before every provider call and throws once
+ * the budget would be exceeded — the money is never spent. A healthy pass
+ * never gets near it; the #382 loop's shape (rendering what already exists,
+ * pass after pass) cannot happen inside one pass once reuse holds, so this is
+ * the backstop for the render path misbehaving in a way nobody has named yet.
+ */
+const RUN_SPEND_FACTOR = 1.5
+const RUN_SPEND_FLOOR = 2000
+function runSpendCap(plannedItems) {
+  const planned = (plannedItems || []).reduce((n, i) => n + String(i.text || '').length, 0)
+  const cap = { planned, budget: Math.max(RUN_SPEND_FLOOR, Math.ceil(RUN_SPEND_FACTOR * planned)), spent: 0, tripped: null }
+  cap.charge = (text) => {
+    const chars = String(text || '').length
+    if (cap.tripped || cap.spent + chars > cap.budget) {
+      cap.tripped = cap.tripped || `render budget reached: planned ${planned} chars, spent ${cap.spent}, budget ${cap.budget} (${RUN_SPEND_FACTOR}x)`
+      throw new Error(`spend cap: ${cap.tripped}`)
+    }
+    cap.spent += chars
+  }
+  return cap
+}
+
+// role → [table, text column, FK column] for every text-keyed slot.
+const TEXT_SLOT_COLUMNS = {
+  known:   [['course_practice_phrases', 'known_text', 'known_audio_id'], ['course_legos', 'known_text', 'known_audio_id'], ['course_seeds', 'known_text', 'known_audio_id']],
+  target1: [['course_practice_phrases', 'target_text', 'target1_audio_id'], ['course_legos', 'target_text', 'target1_audio_id'], ['course_seeds', 'target_text', 'target1_audio_id']],
+  target2: [['course_practice_phrases', 'target_text', 'target2_audio_id'], ['course_legos', 'target_text', 'target2_audio_id'], ['course_seeds', 'target_text', 'target2_audio_id']],
+}
+
+/**
+ * Attach an existing clip to every still-NULL slot carrying exactly this text in
+ * this role. Direct, so the attach never depends on a later whole-course linker
+ * pass being able to see the clip. Rows spelt differently but normalising to
+ * the same key are left to the (paged) linker that closes every pass.
+ * Returns the number of slots filled. Never overwrites a filled slot.
+ */
+async function attachClipToNullSlots(courseCode, text, role, audioId) {
+  let attached = 0
+  for (const [table, textCol, audioCol] of (TEXT_SLOT_COLUMNS[role] || [])) {
+    const { data, error } = await supabase
+      .from(table)
+      .update({ [audioCol]: audioId })
+      .eq('course_code', courseCode)
+      .eq(textCol, text)
+      .is(audioCol, null)
+      .select(audioCol)
+    if (error) { logger.warn(`[ReuseGuard] attach ${table}.${audioCol} failed: ${error.message}`); continue }
+    attached += (data || []).length
+  }
+  return attached
+}
+
+/**
  * Per-request reuse switches, honoured identically by every render path.
  *
  *   reuse: false      render fresh, ask the store nothing. The escape hatch for
@@ -699,7 +766,8 @@ function reuseOptsFromRequest(req) {
  * not a belief. `lookupErrors` is the one that used to be invisible.
  */
 function newReuseCounters() {
-  return { reused: 0, crossRole: 0, lookupErrors: 0, linkErrors: 0 }
+  // ownCourse: items answered by this course's own existing row — no render, no write (job #383).
+  return { reused: 0, crossRole: 0, lookupErrors: 0, linkErrors: 0, ownCourse: 0 }
 }
 
 /**
@@ -833,11 +901,11 @@ async function checkPresentationReadiness(courseCode, releaseTarget, seeds = nul
 
   // 2) All presentation rows in course_audio for this course
   //    (pending OR generated — both count as "ready", since /generate will TTS pending ones)
-  const { data: presRows } = await supabase
+  const presRows = await readAllPages(() => supabase
     .from('course_audio')
-    .select('lego_id, text_normalized')
+    .select('id, lego_id, text_normalized')
     .eq('course_code', courseCode)
-    .eq('role', 'presentation')
+    .eq('role', 'presentation'))
 
   const legoIdsWithPres = new Set((presRows || []).map(p => p.lego_id).filter(Boolean))
 
@@ -1122,11 +1190,11 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   if (scopeSeeds) newLegosQuery = newLegosQuery.in('seed_number', scopeSeeds)
   const { data: newLegos } = await newLegosQuery
 
-  const { data: rawPresentations } = await supabase
+  const rawPresentations = await readAllPages(() => supabase
     .from('course_audio')
-    .select('lego_id, s3_key')
+    .select('id, lego_id, s3_key')
     .eq('course_code', courseCode)
-    .eq('role', 'presentation')
+    .eq('role', 'presentation'))
   const legoIdsWithPresentation = new Set(
     (rawPresentations || []).filter(p => !p.s3_key || !p.s3_key.startsWith('pending/')).map(p => p.lego_id).filter(Boolean)
   )
@@ -1261,12 +1329,12 @@ async function getAudioNeeds(courseCode, releaseTarget, course, forceGenerate = 
   // Step 3: Pending presentation rows — concrete texts in course_audio waiting for TTS.
   // These were created by /regenerate-presentations (the "Generate Missing Presentation Text"
   // button) and have s3_key LIKE 'pending/%'. /generate will TTS them.
-  const { data: pendingPresRowsRaw } = await supabase
+  const pendingPresRowsRaw = await readAllPages(() => supabase
     .from('course_audio')
     .select('id, text, language, voice_id, lego_id')
     .eq('course_code', courseCode)
     .eq('role', 'presentation')
-    .like('s3_key', 'pending/%')
+    .like('s3_key', 'pending/%'))
   // Scope pending presentations to the requested seeds.
   // LEGO presentations: parse seed from lego_id. Component presentations have
   // lego_id=null, so scope them by matching their "as in — '<parent>'" context to
@@ -2103,15 +2171,23 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
   // Load audio map keyed by normalizeForAudio(raw text) — which PRESERVES ?/! — so
   // question/exclamation intonation is significant (a "...?" phrase won't link to a
   // "..." recording). origin + created_at let pickPreferredAudioRow favour human > newest.
-  let audioQuery = supabase
-    .from('course_audio')
-    .select('id, text, language, role, s3_key, origin, created_at, voice_id, lego_id')
-    .eq('course_code', courseCode)
-    .not('s3_key', 'like', 'pending/%')
-    .limit(100000)
-  if (humanOnly) audioQuery = audioQuery.eq('origin', 'human')
-  const { data: audioRows, error: audioErr } = await audioQuery
-  if (audioErr) throw new Error(`Failed to load course_audio: ${audioErr.message}`)
+  // PAGED. This read was `.limit(100000)` and PostgREST handed back 60,000 of
+  // eng_for_hin's 91,245 rows; every clip past the cap was unlinkable, so its
+  // slot stayed NULL and the next /generate paid to render it again (job #382).
+  let audioRows
+  try {
+    audioRows = await readAllPages(() => {
+      let q = supabase
+        .from('course_audio')
+        .select('id, text, language, role, s3_key, origin, created_at, voice_id, lego_id')
+        .eq('course_code', courseCode)
+        .not('s3_key', 'like', 'pending/%')
+      if (humanOnly) q = q.eq('origin', 'human')
+      return q
+    })
+  } catch (audioErr) {
+    throw new Error(`Failed to load course_audio: ${audioErr.message}`)
+  }
 
   if (humanOnly && !(audioRows || []).length) return result
 
@@ -2271,12 +2347,15 @@ async function linkAudioIdsBatch(courseCode, opts = {}) {
 // =============================================================================
 async function linkPresentationAudio(courseCode) {
   // Get all presentation audio that has lego_id set (filter pending client-side)
-  const { data: rawPres, error: presError } = await supabase
-    .from('course_audio')
-    .select('id, lego_id, s3_key, voice_id, created_at')
-    .eq('course_code', courseCode)
-    .eq('role', 'presentation')
-    .not('lego_id', 'is', null)
+  let rawPres = [], presError = null
+  try {
+    rawPres = await readAllPages(() => supabase
+      .from('course_audio')
+      .select('id, lego_id, s3_key, voice_id, created_at')
+      .eq('course_code', courseCode)
+      .eq('role', 'presentation')
+      .not('lego_id', 'is', null))
+  } catch (e) { presError = e }
   const presentations = (rawPres || []).filter(p => !p.s3_key || !p.s3_key.startsWith('pending/'))
 
   if (presError || !presentations?.length) {
@@ -2989,7 +3068,14 @@ app.post('/generate/:courseCode', async (req, res) => {
     const reuseOpts = reuseOptsFromRequest(req)
     const allowCrossRole = reuseOpts.crossRole
     results.reuse = newReuseCounters()
-    if (!reuseOpts.enabled) logger.warn(`[Reuse] DISABLED for this run by request — every clip will be rendered`)
+    // Slots this pass filled — by the reuse guard directly, and by the linker
+    // below. A pass that fills none is a loop's signature (see noProgress).
+    results.attached = 0
+    // SPEND CAP — an invariant of the render, not a monitor (job #383). A fill
+    // pass may spend at most RUN_SPEND_FACTOR x the characters it set out to
+    // render (headroom for veracity re-renders); past that it is rendering
+    // something it never planned to, and it stops.
+    const spendCap = runSpendCap(uniqueNeeded)
     // Pre-publish veracity gate (services/audio-veracity.cjs). ON by default;
     // announceStatus prints one LOUD line if it is off or cannot run, so
     // "published unchecked" can never be mistaken for "published clean".
@@ -3065,57 +3151,69 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
 
       // -----------------------------------------------------------------------
-      // Cross-course audio sharing: reuse S3 files from sibling courses
-      // If another course already has audio for the same text+language+voice —
-      // whatever ROLE it was rendered under (A-137) — create a new course_audio
-      // row pointing to the same S3 file and skip TTS entirely.
+      // THE ONE REUSE PATH — per language, never per course (Tom: recordings
+      // are per language; course rows only point at them). Any clip of these
+      // words, in this language and this voice, in ANY course including this
+      // one, whatever role it was rendered under (A-137), answers the item:
+      // this course points at it and nothing is rendered.
+      //
+      // Unconditional on a fill pass (job #383). reuse:false used to switch
+      // this off, and a fill pass has no business rendering words the language
+      // already holds in this voice — fresh bytes are what /regenerate-* is for.
+      // Fails CLOSED: a lookup or pointer-write error fails this item (free,
+      // retried next pass) instead of falling through to a paid render.
       // -----------------------------------------------------------------------
-      if (reuseOpts.enabled) {
+      {
+        if (!reuseOpts.enabled) logger.warn(`[Reuse] reuse:false ignored on a fill pass — ${item.role} "${item.text.substring(0, 40)}"`)
         const lookup = await lookupSiblingClip(
-          courseCode, item.text, item.language, item.role, item.voiceId, { crossRole: allowCrossRole })
-        if (lookup.status === 'error') results.reuse.lookupErrors++
-        const siblingAudio = lookup.clip
-
-        if (siblingAudio?.s3_key) {
-          // Reuse existing S3 file — just insert a new course_audio row
-          const { data: insertedAudio, error: insertError } = await supabase
-            .from('course_audio')
-            .upsert({
-              course_code: courseCode,
-              text: item.text,
-              text_normalized: normalizeForAudio(item.text),
-              language: item.language,
-              role: item.role,
-              voice_id: item.voiceId,
-              origin: 'tts',
-              s3_key: siblingAudio.s3_key,
-              duration_ms: siblingAudio.duration_ms,
-              lego_id: item.lego_id || null,
-              word_boundaries: siblingAudio.word_boundaries || null
-            }, {
-              onConflict: 'course_code,text_normalized,language,role,voice_id'
-            })
-            .select('id')
-            .single()
-
-          if (!insertError && insertedAudio) {
-            // Link presentation audio if needed (FK + lego_introductions)
-            if (item.role === 'presentation' && insertedAudio.id) {
-              await bindPresentationAudio(item, insertedAudio.id, siblingAudio.duration_ms)
+          courseCode, item.text, item.language, item.role, item.voiceId,
+          { crossRole: allowCrossRole, includeOwnCourse: true })
+        if (lookup.status === 'error') {
+          results.reuse.lookupErrors++
+          throw new Error(`reuse lookup failed, not rendering blind: ${lookup.error}`)
+        }
+        const clip = lookup.clip
+        if (clip?.s3_key) {
+          let audioId = null
+          if (clip.course_code === courseCode && clip.role === item.role) {
+            // This course's own row for this slot: point at it, write nothing.
+            audioId = clip.id
+            results.reuse.ownCourse++
+          } else {
+            const { data: pointer, error: pointerError } = await supabase
+              .from('course_audio')
+              .upsert({
+                course_code: courseCode,
+                text: item.text,
+                text_normalized: normalizeForAudio(item.text),
+                language: item.language,
+                role: item.role,
+                voice_id: item.voiceId,
+                origin: 'tts',
+                s3_key: clip.s3_key,
+                duration_ms: clip.duration_ms,
+                lego_id: item.lego_id || null,
+                word_boundaries: clip.word_boundaries || null
+              }, {
+                onConflict: 'course_code,text_normalized,language,role,voice_id'
+              })
+              .select('id')
+              .single()
+            if (pointerError || !pointer) {
+              results.reuse.linkErrors++
+              throw new Error(`pointer to existing clip ${clip.s3_key} failed, not rendering blind: ${pointerError?.message || 'no row'}`)
             }
-            updateWork(item.text, true)
+            audioId = pointer.id
             results.reuse.reused++
-            const crossed = siblingAudio.role !== item.role ? ` [cross-role from ${siblingAudio.role}]` : ''
-            if (crossed) results.reuse.crossRole++
-            logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (reused from sibling course)${crossed}`)
-            return { success: true, item, shared: true }
+            if (clip.role !== item.role) results.reuse.crossRole++
           }
-          // The link failed, so this item still has no audio. Falling through to
-          // TTS is right; doing it silently is what hid the failure before.
-          if (insertError) {
-            logger.warn(`[Reuse] link of sibling ${siblingAudio.s3_key} failed (${insertError.message}) — rendering instead`)
-            results.reuse.linkErrors++
-          }
+          const n = item.role === 'presentation'
+            ? (await bindPresentationAudio(item, audioId, clip.duration_ms), 1)
+            : await attachClipToNullSlots(courseCode, item.text, item.role, audioId)
+          results.attached += n
+          updateWork(item.text, true)
+          logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." → ${clip.course_code === courseCode ? 'own' : clip.course_code} clip, ${n} slot(s) attached, no render`)
+          return { success: true, item, shared: true }
         }
       }
 
@@ -3149,6 +3247,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       // repeat lives in here; nothing outside it is allowed to publish.
       const renderAndMaster = async () => {
         let rawAudioBuffer, wordBoundaries
+        spendCap.charge(textForTTS)
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
@@ -3281,7 +3380,12 @@ app.post('/generate/:courseCode', async (req, res) => {
       // ID we just got (course_legos FK + lego_introductions, or phrase FK)
       if (item.role === 'presentation' && insertedAudio?.id) {
         await bindPresentationAudio(item, insertedAudio.id, durationMs)
+        results.attached++
         logger.info(`Bound presentation audio ${insertedAudio.id} to ${item.lego_id || `phrase ${item.phrase_id}`}`)
+      } else if (insertedAudio?.id) {
+        // Attach the clip we just paid for to its slots NOW, so a render can
+        // never be left for a later whole-course pass to find (job #383).
+        results.attached += await attachClipToNullSlots(courseCode, item.text, item.role, insertedAudio.id)
       }
 
       updateWork(item.text, true)
@@ -3309,6 +3413,10 @@ app.post('/generate/:courseCode', async (req, res) => {
         new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
       ])
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
+      if (spendCap.tripped && !currentWork.cancelled) {
+        logger.error(`[SpendCap] ${courseCode}: ${spendCap.tripped} — stopping this pass`)
+        currentWork.cancelled = true
+      }
 
       for (let j = 0; j < batchResults.length; j++) {
         const result = batchResults[j]
@@ -3414,7 +3522,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     emitProgress(supabase, courseCode, `${statusWord}: ${results.success}/${uniqueNeeded.length} generated${results.failed > 0 ? `, ${results.failed} failed` : ''}${linked > 0 ? `, ${linked} audio IDs linked` : ''} — ${vLine}`, { phase: 'audio', action: 'generate-complete', success: results.success, failed: results.failed, linked, veracity: results.veracity })
 
     res.json({
-      status: wasCancelled ? 'cancelled' : 'completed',
+      status: spendCap.tripped ? 'spend-capped' : wasCancelled ? 'cancelled' : 'completed',
       courseCode,
       total: uniqueNeeded.length,
       success: results.success,
@@ -3424,6 +3532,12 @@ app.post('/generate/:courseCode', async (req, res) => {
       phonologyGate,
       errors: results.errors.slice(0, 10),
       linked,
+      // Slots this pass filled, by reuse, by render or by the closing linker.
+      // A driver re-posting /generate stops on attached === 0: a pass that
+      // fills nothing will fill nothing next time either (job #383).
+      attached: results.attached + linked,
+      reuse: results.reuse,
+      spend: { plannedChars: spendCap.planned, budgetChars: spendCap.budget, spentChars: spendCap.spent, capped: spendCap.tripped },
       copied: copyBucketResult.copied,
       copyFailed: copyBucketResult.failed,
       authored: authoredIntros.length,
@@ -3600,19 +3714,12 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
       if (limit) existingAudio = existingAudio.slice(0, limit)
       audioToRegenerate = existingAudio
     } else {
-      // Get all audio for this role
-      let allQuery = supabase
+      // Get all audio for this role — PAGED (a bare select stops at 60,000 rows)
+      audioToRegenerate = await readAllPages(() => supabase
         .from('course_audio')
         .select('id, text, text_normalized, language, role, voice_id, s3_key, origin')
         .eq('course_code', courseCode)
-        .eq('role', role)
-
-      if (limit) allQuery = allQuery.limit(limit)
-
-      const { data: existingAudio, error: audioError } = await allQuery
-
-      if (audioError) throw audioError
-      audioToRegenerate = existingAudio || []
+        .eq('role', role), { max: limit ? Number(limit) : Infinity })
     }
 
     if (audioToRegenerate.length === 0) {
@@ -4199,8 +4306,8 @@ app.post('/prepare-presentations-scoped/:courseCode', async (req, res) => {
       presVoice?.voiceId ? presVoice?.provider : undefined)
 
     // Existing presentation rows — so we ONLY add what's genuinely missing.
-    const { data: existingPres } = await supabase.from('course_audio')
-      .select('lego_id, text_normalized').eq('course_code', courseCode).eq('role', 'presentation')
+    const existingPres = await readAllPages(() => supabase.from('course_audio')
+      .select('id, lego_id, text_normalized').eq('course_code', courseCode).eq('role', 'presentation'))
     const existingLegoIds = new Set((existingPres || []).map(p => p.lego_id).filter(Boolean))
     const existingTextNorms = new Set((existingPres || []).map(p => p.text_normalized))
 
@@ -6903,14 +7010,24 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         }
       }
 
-      // Cross-course sharing — role-agnostic (A-137), lookup failures counted
-      if (reuseOpts.enabled) {
+      // THE ONE REUSE PATH, per language (see /generate): any course
+      // including this one, role-agnostic (A-137), unconditional on a fill
+      // pass, fail-closed (job #383).
+      {
         const lookup = await lookupSiblingClip(
           courseCode, item.text, item.language, item.role, item.voiceId,
-          { crossRole: reuseOpts.crossRole })
-        if (lookup.status === 'error') results.reuse.lookupErrors++
+          { crossRole: reuseOpts.crossRole, includeOwnCourse: true })
+        if (lookup.status === 'error') {
+          results.reuse.lookupErrors++
+          throw new Error(`reuse lookup failed, not rendering blind: ${lookup.error}`)
+        }
         const siblingAudio = lookup.clip
 
+        if (siblingAudio?.s3_key && siblingAudio.course_code === courseCode && siblingAudio.role === item.role) {
+          results.reuse.ownCourse++
+          updateWork(item.text, true)
+          return { success: true, item, shared: true }
+        }
         if (siblingAudio?.s3_key) {
           const { data: insertedAudio, error: insertError } = await supabase
             .from('course_audio')
@@ -6939,10 +7056,8 @@ app.post('/generate-components/:courseCode', async (req, res) => {
             logger.info(`Shared: ${item.role} - "${item.text.substring(0, 40)}..." (sibling)${crossed}`)
             return { success: true, item, shared: true }
           }
-          if (insertError) {
-            logger.warn(`[Reuse] link of sibling ${siblingAudio.s3_key} failed (${insertError.message}) — rendering instead`)
-            results.reuse.linkErrors++
-          }
+          results.reuse.linkErrors++
+          throw new Error(`pointer to existing clip ${siblingAudio.s3_key} failed, not rendering blind: ${insertError?.message || 'no row'}`)
         }
       }
 

@@ -460,6 +460,7 @@ describe('findSiblingCourseClip — the query that saves the money', () => {
     state.audioRows = [{
       id: 'SIB-1',
       course_code: 'spa_for_eng',
+      text: 'Hello',  // course_audio.text is NOT NULL live; the reuse lookup compares the words
       text_normalized: 'hello',
       language: 'en-GB',
       role: 'known',
