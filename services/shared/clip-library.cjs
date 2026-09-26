@@ -46,6 +46,7 @@
 
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
+const clipIndex = require('./clip-index.cjs')
 
 const PAGE = 1000
 const MAX_PAGES = 20
@@ -127,8 +128,16 @@ function supabaseClipLibrary({ supabase, s3, bucket } = {}) {
     }
     return client
   }
+  let source = null
   return {
     name: 'supabase',
+    // The clip index first (services/shared/clip-index.cjs): one keyed read of
+    // public.clip_index for (language, words), falling back to the paged
+    // course_audio question below only when the index cannot answer.
+    async resolve(want, pick) {
+      if (!source) source = clipIndex.supabaseClipSource(db(), { indexedBy: 'door:write-through' })
+      return clipIndex.resolveClip(source, { ...want, includeOwnCourse: true }, pick)
+    },
     async candidates(text) {
       const keys = audioKeyCandidates(text)
       if (!keys.length) return []
@@ -192,9 +201,25 @@ function memoryClipLibrary(rows = [], bytesFor = () => Buffer.from('existing-cli
   }
 }
 
+/**
+ * A library backed by a clip-index source over fixed rows — tests and dry runs
+ * that must exercise the index path exactly as the live door does.
+ */
+function indexedMemoryClipLibrary({ index = [], rows = [] } = {}, bytesFor = () => Buffer.from('existing-clip')) {
+  const source = clipIndex.memoryClipSource({ index, rows })
+  return {
+    name: 'memory-indexed',
+    source,
+    async resolve(want, pick) { return clipIndex.resolveClip(source, { ...want, includeOwnCourse: true }, pick) },
+    async candidates(text) { return source.fallback(text, {}) },
+    async bytes(row) { return bytesFor(row) },
+  }
+}
+
 /** Look one request up. Returns the row that answers it, or null. */
 async function findExistingClip(want, lib = clipLibrary()) {
   if (!want.language || (want.voiceBound && !want.voiceId)) return null
+  if (typeof lib.resolve === 'function') return lib.resolve(want, rows => pickExistingClip(rows, want))
   const rows = await lib.candidates(want.text)
   return pickExistingClip(rows, want)
 }
@@ -207,4 +232,5 @@ module.exports = {
   useClipLibrary,
   supabaseClipLibrary,
   memoryClipLibrary,
+  indexedMemoryClipLibrary,
 }

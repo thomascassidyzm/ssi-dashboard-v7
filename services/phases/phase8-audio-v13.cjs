@@ -32,6 +32,8 @@ const path = require('path')
 const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
+const clipIndex = require('../shared/clip-index.cjs')
+const courseVoiceConfig = require('../shared/course-voice-config.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const { readAllPages } = require('../shared/paged-read.cjs')
 const { decideCopy } = require('../shared/clone-copy-match.cjs')
@@ -614,44 +616,41 @@ async function findSiblingCourseClip(courseCode, text, language, voiceId, opts =
   // every pass paid Cartesia for words already in storage. The fill paths
   // (/generate, /generate-components) ask with it on; the /regenerate-* paths
   // keep the old other-courses-only question.
-  let q = supabase
-    .from('course_audio')
-    .select('id, course_code, text, s3_key, duration_ms, word_boundaries, language, voice_id, role, veracity_checked_at, veracity_pass, veracity_reason, veracity_cer, veracity_attempts, veracity_checker')
-  if (ownCourseOnly) q = q.eq('course_code', courseCode)
-  else if (!includeOwnCourse) q = q.neq('course_code', courseCode)
-  const { data, error } = await q
-    .in('text_normalized', audioKeyCandidates(text))
-    .not('s3_key', 'like', 'pending/%')
-    .limit(SIBLING_LOOKUP_LIMIT)
-  if (error) throw new Error(`sibling-clip lookup failed: ${error.message}`)
-  const rows = data || []
-  // A full page means the answer may be TRUNCATED — the largest text group
-  // estate-wide was 142 rows when this was sized, but any-voice, any-course
-  // matching widens the group, and a silent truncation reads exactly like a
-  // cache miss. Say so rather than let it become one.
-  if (rows.length >= SIBLING_LOOKUP_LIMIT) {
-    logger.warn(`[Reuse] sibling lookup hit the ${SIBLING_LOOKUP_LIMIT}-row page for "${String(text).slice(0, 40)}" (${language}) — result may be truncated`)
-  }
+  // THE CLIP INDEX (services/shared/clip-index.cjs, job #391): one keyed read of
+  // public.clip_index for (language, words) across the estate, plus this
+  // course's own rows; the paged course_audio question runs only when the index
+  // cannot answer in the preferred voice, and what it finds is written through.
+  // No per-course scan and no row cap on the hit path. The pick rule below is
+  // unchanged — the index only decides which rows are fetched.
   const excluded = new Set(excludeS3Keys.filter(Boolean))
   // The WORDS must match as the linker keys them (normalizeForAudio keeps ?/!):
   // text_normalized's SQL convention strips a trailing '?', so without this a
   // question could be answered with a statement's intonation.
   const want = normalizeForAudio(text)
-  const usable = rows.filter(row =>
-    row.s3_key &&
-    !excluded.has(row.s3_key) &&
-    row.text != null && normalizeForAudio(row.text) === want &&
-    sameLanguage(language, row.language) &&
-    (!voiceBound || sameVoice(voiceId, row.voice_id)))
-  // The preferred voice first; then this course's own row (it IS the slot's
-  // clip, pointing at it writes nothing); then id, so the answer is stable.
-  const rank = row => [sameVoice(voiceId, row.voice_id) ? 0 : 1, row.course_code === courseCode ? 0 : 1]
-  usable.sort((a, b) => {
-    const ra = rank(a), rb = rank(b)
-    return (ra[0] - rb[0]) || (ra[1] - rb[1]) || String(a.id).localeCompare(String(b.id))
-  })
-  return usable[0] || null
+  const pick = rows => {
+    const usable = rows.filter(row =>
+      row.s3_key &&
+      !String(row.s3_key).startsWith('pending/') &&
+      !excluded.has(row.s3_key) &&
+      (ownCourseOnly ? row.course_code === courseCode : (includeOwnCourse || row.course_code !== courseCode)) &&
+      row.text != null && normalizeForAudio(row.text) === want &&
+      sameLanguage(language, row.language) &&
+      (!voiceBound || sameVoice(voiceId, row.voice_id)))
+    // The preferred voice first; then this course's own row (it IS the slot's
+    // clip, pointing at it writes nothing); then id, so the answer is stable.
+    const rank = row => [sameVoice(voiceId, row.voice_id) ? 0 : 1, row.course_code === courseCode ? 0 : 1]
+    usable.sort((a, b) => {
+      const ra = rank(a), rb = rank(b)
+      return (ra[0] - rb[0]) || (ra[1] - rb[1]) || String(a.id).localeCompare(String(b.id))
+    })
+    return usable[0] || null
+  }
+  if (!clipSource) clipSource = clipIndex.supabaseClipSource(supabase, { log: logger, indexedBy: 'phase8:write-through' })
+  return clipIndex.resolveClip(clipSource, { text, language, voiceId, courseCode, includeOwnCourse: true, ownCourseOnly }, pick)
 }
+let clipSource = null
+/** Tests point phase8's clip lookup at a memory source. */
+function useClipSource(source) { clipSource = source }
 
 /**
  * findSiblingCourseClip with the failure mode separated from the miss.
@@ -2810,7 +2809,10 @@ app.post('/generate/:courseCode', async (req, res) => {
       }
       return canonical
     }
-    const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
+    // Render speed: 1.0 on a course whose target voices carry an app-played
+    // playbackSpeed (Tom 2026-09-26: the app slows target voices; speed is
+    // never baked into audio); the legacy per-slot settings.speed otherwise.
+    const getSpeedForRole = (role) => courseVoiceConfig.renderSpeedFor(voiceConfig, role)
 
     // Step A: Try to link any unlinked audio before generating
     try {
@@ -3376,6 +3378,17 @@ app.post('/generate/:courseCode', async (req, res) => {
 
       if (insertError) throw insertError
 
+      // A clip just paid for enters the clip index in the same step, so the
+      // next course that needs these words in this language finds it with one
+      // keyed read (job #391). A failed index write is logged, never fatal:
+      // the course_audio row stands and the lookup's fallback still sees it.
+      if (insertedAudio?.id) {
+        await clipIndex.writeThrough(supabase, [{
+          id: insertedAudio.id, text: item.text, language: item.language, voice_id: item.voiceId,
+          s3_key: s3Key, origin: 'tts', veracity_pass: veracity.verdictColumns(gated.verdict, { checker: 'phase8-generate', attempts: gated.attempts }).veracity_pass,
+        }], 'phase8:render', logger)
+      }
+
       if (!phonologyGate && (provider === 'cartesia' || provider === 'xai')) {
         recordPhonologyDeferred(courseCode, {
           audio_id: insertedAudio?.id || null, s3_key: s3Key, role: item.role, voice_id: item.voiceId,
@@ -3866,7 +3879,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
     const sampleRate = veracity.startCourse(courseCode)
     logger.info(`[audio-veracity] ${courseCode}: sampling ${(sampleRate.rate * 100).toFixed(1)}% of clips (per-course ladder, relaxes every ${sampleRate.step_clips} clean sampled clips)`)
     // Use speed from voice config (everything is a parameter!)
-    const speed = voiceSettings.settings?.speed || 1.0
+    const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, role) // 1.0 on app-played speed (course-voice-config.cjs)
 
     // Helper to regenerate a single audio item
     const regenerateItem = async (item) => {
@@ -5299,7 +5312,7 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
     const voiceSettings = voiceConfig.voices?.[role] || {}
     const voiceId = voiceSettings.voiceId || voiceConfig[role]
     const voiceProvider = decideProvider({ ...voiceSettings, voiceId }, { courseCode, role, language })
-    const speed = voiceSettings.settings?.speed || 1.0
+    const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, role) // 1.0 on app-played speed (course-voice-config.cjs)
     // The identity spelling of the voice, as /regenerate-role and
     // /regenerate-presentation both compute it. This route referenced
     // storedVoiceId at its course_audio update without ever declaring it, so
@@ -5611,7 +5624,7 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
     const voiceSettings = voiceConfig.voices?.presentation || {}
     const voiceId = voiceSettings.voiceId || voiceConfig.presentation
     const voiceProvider = decideProvider({ ...voiceSettings, voiceId }, { courseCode, role: 'presentation', language: knownLang })
-    const speed = voiceSettings.settings?.speed || 1.0
+    const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, 'presentation') // 1.0 on app-played speed (course-voice-config.cjs)
 
     if (!voiceId) {
       return res.status(400).json({ error: 'No voice configured for role: presentation' })
@@ -6112,7 +6125,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
       }
       const voiceProvider = voiceId.slice(0, voiceId.indexOf('_'))
       const voiceName = voiceId.slice(voiceProvider.length + 1)
-      const speed = voiceSettings.settings?.speed || 1.0
+      const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, role) // 1.0 on app-played speed (course-voice-config.cjs)
 
       const column = PHRASE_AUDIO_COLUMN[role]
 
@@ -6527,7 +6540,7 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
       }
       const voiceProvider = voiceId.slice(0, voiceId.indexOf('_'))
       const voiceName = voiceId.slice(voiceProvider.length + 1)
-      const speed = voiceSettings.settings?.speed || 1.0
+      const speed = courseVoiceConfig.renderSpeedFor(voiceConfig, role) // 1.0 on app-played speed (course-voice-config.cjs)
 
       const column = LEGO_AUDIO_COLUMN[role]
       const textNormalized = normalizeForAudio(text)
@@ -6840,7 +6853,10 @@ app.post('/generate-components/:courseCode', async (req, res) => {
       }
       return canonical
     }
-    const getSpeedForRole = (role) => voices[role]?.settings?.speed || 1.0
+    // Render speed: 1.0 on a course whose target voices carry an app-played
+    // playbackSpeed (Tom 2026-09-26: the app slows target voices; speed is
+    // never baked into audio); the legacy per-slot settings.speed otherwise.
+    const getSpeedForRole = (role) => courseVoiceConfig.renderSpeedFor(voiceConfig, role)
 
     // Identity columns — canonical from here down, so the guard, the sibling
     // reuse read and the upsert all agree on one spelling.
@@ -9588,6 +9604,7 @@ module.exports.canonicalClipVoiceId = canonicalClipVoiceId
 module.exports.sameVoice = sameVoice
 module.exports.findSiblingCourseClip = findSiblingCourseClip
 module.exports.lookupSiblingClip = lookupSiblingClip
+module.exports.useClipSource = useClipSource
 module.exports.reuseSiblingIntoCourse = reuseSiblingIntoCourse
 module.exports.reuseOptsFromRequest = reuseOptsFromRequest
 module.exports.siblingLookupStats = siblingLookupStats
