@@ -41,10 +41,23 @@ const { evidencePath } = require('../../tools/lib/evidence-path.cjs')
 // and logged loudly. The nightly check tools/casting-access-report.cjs reads
 // this file beside booth-artists-day: a day with zero reaches or any refusal
 // is red, never silent. JSONL, one event per line, out of the repo tree.
+//
+// A PREVIEW IS NOT THE BOOTH (job #290·I, 2026-09-26). The evidence store is
+// shared by every checkout on this box, so a preview Production API run from a
+// worker's worktree (POPTY_PREVIEW=1) wrote into the ledger the nightly judges
+// main by. On 2026-09-25 job #189·I probed its preview with a test recorder to
+// PROVE a recorder is refused someone else's line and the cast; the rule refused
+// exactly as designed, and main went red for it. A preview runs unmerged code
+// against test courses: its events go to their own ledger and never reach the
+// nightly.
 const ACCESS_LEDGER_REL = 'ops/casting-access.jsonl'
+const PREVIEW_ACCESS_LEDGER_REL = 'ops/casting-access.preview.jsonl'
 let accessLedgerPath = null
 function accessLedger() {
-  if (!accessLedgerPath) accessLedgerPath = process.env.CASTING_ACCESS_LEDGER || evidencePath(ACCESS_LEDGER_REL)
+  if (!accessLedgerPath) {
+    accessLedgerPath = process.env.CASTING_ACCESS_LEDGER ||
+      evidencePath(process.env.POPTY_PREVIEW === '1' ? PREVIEW_ACCESS_LEDGER_REL : ACCESS_LEDGER_REL)
+  }
   return accessLedgerPath
 }
 const reachedToday = new Set()
