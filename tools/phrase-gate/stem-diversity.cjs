@@ -148,7 +148,19 @@ function checkStemDiversity({ legoKnown, build = [], use = [] }, shares = new Ma
 /** (b) the per-basket prompt section: what the course has already overused. */
 function overuseSection(shares, { top = 15, floor = 0.10 } = {}) {
   const list = [...shares.entries()].filter(([, v]) => v >= floor).sort((a, b) => b[1] - a[1]).slice(0, top);
-  if (!list.length) return '';
+  // The within-basket rule is ALWAYS stated: it is a gate on every basket, and a
+  // rule the model is never told is a retry paid for (187 of 517 ita retries).
+  if (!list.length) {
+    return `
+
+---
+
+## VARY THE BASKET
+
+Within your USE phrases, no three-word English stem and no word hugging the LEGO
+may appear more than ${WITHIN_MAX} times — the gate refuses more.
+`;
+  }
   const lines = list.map(([s, v]) => `- "${s}" — already in ${Math.round(v * 100)}% of the baskets around this point in the course${v > COURSE_BAN ? ': NOT AT ALL in this basket (the gate refuses it)' : v > COURSE_SHARE ? ': at most ONCE in this basket, and better not at all' : ': use sparingly'}`);
   return `
 

@@ -50,10 +50,12 @@ checklist around in your head as advice.
 
 ## GRAMMAR AND NATURALNESS, both sides
 
-Your known must be grammatical, natural British English. A LEGO's gloss is its
-meaning, not a string to paste: inflect the English where grammar needs it ("who
-speaks", "looking forward to coming back", "I'd like to feel"). The target side
-stays exactly as tiled. Your target must be something a native speaker would
+Your known must be grammatical, natural British English — built from the English
+forms EXACTLY as the AVAILABLE list gives them. No inflection allowance: "read" does
+not license "reading", "speak" does not license "speaks" (Tom, 2026-06-15, and the
+known-side gate enforces it). If the sentence you want needs an English form you
+have not been given, write a DIFFERENT sentence — never an ungrammatical one ("who
+speak", "looking forward to come"). The target side stays exactly as tiled. Your target must be something a native speaker would
 say. A USE phrase is exactly one sentence. Recency, position and pattern never
 justify a non-sequitur: two clauses in one phrase must belong in one breath. If a
 recent LEGO does not fit naturally, reach for an older one — a natural phrase
