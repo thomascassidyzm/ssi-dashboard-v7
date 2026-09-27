@@ -87,7 +87,7 @@ async function main() {
   const stemBaskets = [];
   for (const sd of (fs.existsSync(out) ? fs.readdirSync(out) : []).filter((d) => /^seed-\d+$/.test(d))) {
     for (const f of fs.readdirSync(path.join(out, sd)).filter((x) => x.endsWith('.json'))) {
-      try { const r = JSON.parse(fs.readFileSync(path.join(out, sd, f), 'utf8')); if (r.seedNumber > 10) stemBaskets.push({ seed: r.seedNumber, legoKnown: r.legoKnown, phrases: [...(r.build || []), ...(r.use || [])] }); } catch { /* mid-write */ }
+      try { const r = JSON.parse(fs.readFileSync(path.join(out, sd, f), 'utf8')); if (r.seedNumber > 10) stemBaskets.push({ seed: r.seedNumber, legoKnown: r.legoKnown, phrases: [...(r.build || []), ...(r.use || [])], use: r.use || [] }); } catch { /* mid-write */ }
     }
   }
   {
@@ -95,13 +95,21 @@ async function main() {
       .eq('course_code', course).lte('seed_number', 10).in('phrase_role', ['build', 'use']);
     const { data: earlyLegos } = await sb.from('course_legos').select('seed_number,lego_index,known_text').eq('course_code', course).lte('seed_number', 10);
     const by = new Map();
-    for (const p of early || []) { const k = `${p.seed_number}:${p.lego_index}`; (by.get(k) || by.set(k, []).get(k)).push({ known: p.known_text }); }
-    for (const l of earlyLegos || []) { const ph = by.get(`${l.seed_number}:${l.lego_index}`); if (ph) stemBaskets.push({ seed: l.seed_number, legoKnown: l.known_text, phrases: ph }); }
+    for (const p of early || []) { const k = `${p.seed_number}:${p.lego_index}`; (by.get(k) || by.set(k, []).get(k)).push({ known: p.known_text, role: p.phrase_role }); }
+    for (const l of earlyLegos || []) { const ph = by.get(`${l.seed_number}:${l.lego_index}`); if (ph) stemBaskets.push({ seed: l.seed_number, legoKnown: l.known_text, phrases: ph, use: ph.filter((x) => x.role === 'use') }); }
   }
   // Course-wide AND local: the higher of the two, centred on this invocation's range.
   const stemShares = windowedStemShares(stemBaskets, Math.round((from + to) / 2));
   const stemBasketCount = stemBaskets.length;
   console.log(`course-so-far stems: ${stemBasketCount} baskets, top ${[...stemShares.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([s, v]) => `"${s}" ${Math.round(v * 100)}%`).join(', ')}`);
+
+  // OPTION (a) PILOT (audit #423): --deal hands every basket a dealt recipe per
+  // USE slot, from frame/neighbour counters over THIS arm's candidates. One
+  // counters object per invocation, updated as slots are dealt.
+  const deal = process.argv.includes('--deal')
+    ? { counters: require('./slot-deal.cjs').countersFrom(stemBaskets) }
+    : null;
+  if (deal) console.log(`slot dealing ON: ${deal.counters.frames.size} frames, ${deal.counters.neighbours.size} neighbours counted`);
 
   const pending = legos.filter(l => !fs.existsSync(path.join(out, `seed-${String(l.seed_number).padStart(4, '0')}`, `${l.lego_id}.json`)));
   console.log(`${course} seeds ${from}-${to}: ${legos.length} baskets, ${legos.length - pending.length} already on disk, ${pending.length} to generate, concurrency ${conc}`);
@@ -120,7 +128,7 @@ async function main() {
       fs.mkdirSync(dir, { recursive: true });
       const started = Date.now();
       try {
-        const res = await generateLegoPhrases(sb, course, l.seed_number, l.lego_index, { timeout: 900000, stemShares });
+        const res = await generateLegoPhrases(sb, course, l.seed_number, l.lego_index, { timeout: 900000, stemShares, deal });
         // A BLOCKED set is a reject, never a candidate (Tom, 2026-09-27: vocab
         // and futureLego fails are rejects). It is kept for the record in a
         // sibling <out>-blocked tree — never beside the candidates, which the

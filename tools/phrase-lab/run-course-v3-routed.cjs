@@ -103,7 +103,8 @@ async function main() {
       const started = Date.now();
       const rc = await new Promise((resolve) => {
         const child = spawn(process.execPath, [path.join(__dirname, 'run-course-v3.cjs'), course,
-          '--from', String(chunk[0]), '--to', String(chunk[1]), '--out', out, '--concurrency', String(conc)],
+          '--from', String(chunk[0]), '--to', String(chunk[1]), '--out', out, '--concurrency', String(conc),
+          ...(process.argv.includes('--deal') ? ['--deal'] : [])],
         { env: { ...process.env, SSI_CLAUDE_CONFIG_DIR: path.join(accountsDir, pool) }, stdio: ['ignore', 'inherit', 'inherit'] });
         child.on('exit', (code) => resolve(code ?? 1));
       });

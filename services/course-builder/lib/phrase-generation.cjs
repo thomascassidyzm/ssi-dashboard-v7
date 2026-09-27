@@ -181,7 +181,10 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // `stemShares` (Map stem → share of the course's baskets containing it) is
   // the course-so-far view the runner computes (audit #423 (b)): it is shown to
   // the model as ALREADY OVERUSED and handed to the stemDiversity gate (d).
-  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, revise = null, stemShares = null } = opts;
+  // `deal` = { counters } — option (a) of audit #423, a PILOT: the runner's
+  // course-wide frame/neighbour counters, from which each USE slot is dealt a
+  // recipe (tools/phrase-lab/slot-deal.cjs). Absent, nothing changes.
+  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, revise = null, stemShares = null, deal = null } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   // STOP AND SURFACE, before any model call. An unruled course whose LEGO or
@@ -232,8 +235,14 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // the section and the gate read one policy object, so the instruction the
   // builder gets and the check its output meets cannot drift apart. Empty for
   // every other course.
+  let dealtSlots = null;
+  if (deal && declaration && declaration.applicable) {
+    const { dealSlots } = require(path.join(__dirname, '../../../tools/phrase-lab/slot-deal.cjs'));
+    dealtSlots = dealSlots(declaration, inventory, deal.counters, deal.slots || 6);
+  }
   const prompt = basePrompt + frameSection(declaration) + separableSection(courseCode, seedNumber, lego)
-    + (stemShares ? overuseSection(stemShares) : '');
+    + (stemShares ? overuseSection(stemShares) : '')
+    + (dealtSlots ? require(path.join(__dirname, '../../../tools/phrase-lab/slot-deal.cjs')).slotSection(dealtSlots, patternsById(declaration)) : '');
 
   const started = Date.now();
   const gateCtx = runGate ? makeCourseCtx(supabase, courseCode) : null;
@@ -243,10 +252,13 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   let score = null;
   let declarationCheck = null;
   let currentPrompt = revise ? retryPrompt(prompt, revise.phrases, revise.reasons) : prompt;
+  let declinedSlots = null;
 
   for (let attempt = 0; attempt <= (runGate ? MAX_GATE_RETRIES : 0); attempt += 1) {
     const raw = await claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS });
-    phrases = normalise(parseModelJson(raw));
+    const parsedRaw = parseModelJson(raw);
+    phrases = normalise(parsedRaw);
+    if (dealtSlots) declinedSlots = Array.isArray(parsedRaw.declined_slots) ? parsedRaw.declined_slots : [];
     if (!runGate) break;
 
     gate = await checkPhraseSet({
@@ -347,7 +359,16 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     declarationPath,
     blocked,
     attempts,
+    ...(dealtSlots ? { dealtSlots, declinedSlots } : {}),
   };
+}
+
+/** Frame id → {name, shape} for the dealt-slot recipes: seed patterns plus this basket's pod frames. */
+function patternsById(declaration) {
+  const out = {};
+  for (const p of require(path.join(__dirname, '../../../tools/frame-layer/patterns.cjs'))) out[p.id] = { name: p.name, shape: p.shape };
+  for (const p of (declaration.frame_pool && declaration.frame_pool.pod) || []) out[p.id] = { name: p.name, shape: `${p.position} position; you own "${(p.owned_via || []).join(' ')}"` };
+  return out;
 }
 
 module.exports = {
