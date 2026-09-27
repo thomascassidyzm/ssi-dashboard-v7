@@ -72,8 +72,12 @@ async function reviseWorker(course, ev, keys, conc) {
       const reasons = reasonsFor(v);
       let res;
       try {
+        // Same course-so-far stem view as the runner (audit #423 (b)+(d)), so a
+        // naturalness rewrite cannot reintroduce a house frame.
+        const { windowedStemShares, loadCandidateStemBaskets } = require('../phrase-gate/stem-diversity.cjs');
+        const stemShares = windowedStemShares(loadCandidateStemBaskets(path.join(ev, 'candidates')), orig.seedNumber);
         res = await generateLegoPhrases(supabase, course, orig.seedNumber, orig.legoIndex, {
-          timeout: 900000, revise: { phrases: { build: orig.build, use: orig.use }, reasons } });
+          timeout: 900000, stemShares, revise: { phrases: { build: orig.build, use: orig.use }, reasons } });
       } catch (e) {
         fs.appendFileSync(logPath, JSON.stringify({ key, ok: false, error: String(e.message).slice(0, 300) }) + '\n');
         continue;

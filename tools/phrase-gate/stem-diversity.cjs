@@ -87,6 +87,25 @@ function courseStemShares(baskets, { minBaskets = 5 } = {}) {
   return { shares, baskets: baskets.length };
 }
 
+/**
+ * THE COLLAPSE IS LOCAL. Course-wide, ita "he said that" is in 22% of baskets —
+ * under the cap — while it is in 73% of the baskets at seeds 330-380, which is
+ * the stretch a learner actually hears back to back. So the share a basket is
+ * judged against is the HIGHER of the course-wide share and the share among
+ * the baskets within WINDOW_SEEDS of it (both directions: a regeneration fills
+ * the whole course, and the neighbours on either side are what the learner
+ * hears around it).
+ */
+const WINDOW_SEEDS = 40;
+function windowedStemShares(baskets, centreSeed, opts = {}) {
+  const wide = courseStemShares(baskets, opts).shares;
+  const near = baskets.filter((b) => b.seed != null && Math.abs(b.seed - centreSeed) <= WINDOW_SEEDS);
+  const local = near.length >= 20 ? courseStemShares(near, { minBaskets: 3 }).shares : new Map();
+  const out = new Map(wide);
+  for (const [s, v] of local) if (v > (out.get(s) || 0)) out.set(s, v);
+  return out;
+}
+
 const WITHIN_MAX = 2;       // d1: a stem or collocate in at most 2 USE phrases of a basket
 const COURSE_SHARE = 0.25;  // d2: a stem in more than this share of baskets …
 const COURSE_CAP = 1;       //     … may appear at most once in this basket
@@ -120,7 +139,7 @@ function checkStemDiversity({ legoKnown, build = [], use = [] }, shares = new Ma
 function overuseSection(shares, { top = 15, floor = 0.10 } = {}) {
   const list = [...shares.entries()].filter(([, v]) => v >= floor).sort((a, b) => b[1] - a[1]).slice(0, top);
   if (!list.length) return '';
-  const lines = list.map(([s, v]) => `- "${s}" — already in ${Math.round(v * 100)}% of this course's baskets${v > COURSE_SHARE ? ': at most ONCE in this basket, and better not at all' : ': use sparingly'}`);
+  const lines = list.map(([s, v]) => `- "${s}" — already in ${Math.round(v * 100)}% of the baskets around this point in the course${v > COURSE_SHARE ? ': at most ONCE in this basket, and better not at all' : ': use sparingly'}`);
   return `
 
 ---
@@ -138,7 +157,25 @@ ${lines.join('\n')}
 `;
 }
 
+/** Every candidate basket in a run-course-v3 tree, as stem baskets (seeds 11+). */
+function loadCandidateStemBaskets(dir) {
+  const fs = require('fs');
+  const path = require('path');
+  const out = [];
+  if (!fs.existsSync(dir)) return out;
+  for (const sd of fs.readdirSync(dir).filter((d) => /^seed-\d+$/.test(d))) {
+    for (const f of fs.readdirSync(path.join(dir, sd)).filter((x) => x.endsWith('.json'))) {
+      try {
+        const r = JSON.parse(fs.readFileSync(path.join(dir, sd, f), 'utf8'));
+        if (r.seedNumber > 10) out.push({ seed: r.seedNumber, legoIndex: r.legoIndex, file: path.join(dir, sd, f), legoKnown: r.legoKnown, phrases: [...(r.build || []), ...(r.use || [])], raw: r });
+      } catch { /* mid-write */ }
+    }
+  }
+  return out;
+}
+
 module.exports = {
-  tokens, stemsOf, collocatesOf, courseStemShares, checkStemDiversity, overuseSection,
+  loadCandidateStemBaskets,
+  tokens, stemsOf, collocatesOf, courseStemShares, windowedStemShares, checkStemDiversity, overuseSection, WINDOW_SEEDS,
   WITHIN_MAX, COURSE_SHARE, COURSE_CAP,
 };

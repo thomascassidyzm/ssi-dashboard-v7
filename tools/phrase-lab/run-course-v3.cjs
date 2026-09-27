@@ -83,11 +83,11 @@ async function main() {
   // course as it will be) plus the live baskets of the hand-tweaked seeds 1-10
   // that v3 never replaces. Computed once per invocation; the routed driver
   // invokes per chunk, so the view tracks the course as it grows.
-  const { courseStemShares } = require('../phrase-gate/stem-diversity.cjs');
+  const { courseStemShares, windowedStemShares } = require('../phrase-gate/stem-diversity.cjs');
   const stemBaskets = [];
   for (const sd of (fs.existsSync(out) ? fs.readdirSync(out) : []).filter((d) => /^seed-\d+$/.test(d))) {
     for (const f of fs.readdirSync(path.join(out, sd)).filter((x) => x.endsWith('.json'))) {
-      try { const r = JSON.parse(fs.readFileSync(path.join(out, sd, f), 'utf8')); if (r.seedNumber > 10) stemBaskets.push({ legoKnown: r.legoKnown, phrases: [...(r.build || []), ...(r.use || [])] }); } catch { /* mid-write */ }
+      try { const r = JSON.parse(fs.readFileSync(path.join(out, sd, f), 'utf8')); if (r.seedNumber > 10) stemBaskets.push({ seed: r.seedNumber, legoKnown: r.legoKnown, phrases: [...(r.build || []), ...(r.use || [])] }); } catch { /* mid-write */ }
     }
   }
   {
@@ -96,9 +96,11 @@ async function main() {
     const { data: earlyLegos } = await sb.from('course_legos').select('seed_number,lego_index,known_text').eq('course_code', course).lte('seed_number', 10);
     const by = new Map();
     for (const p of early || []) { const k = `${p.seed_number}:${p.lego_index}`; (by.get(k) || by.set(k, []).get(k)).push({ known: p.known_text }); }
-    for (const l of earlyLegos || []) { const ph = by.get(`${l.seed_number}:${l.lego_index}`); if (ph) stemBaskets.push({ legoKnown: l.known_text, phrases: ph }); }
+    for (const l of earlyLegos || []) { const ph = by.get(`${l.seed_number}:${l.lego_index}`); if (ph) stemBaskets.push({ seed: l.seed_number, legoKnown: l.known_text, phrases: ph }); }
   }
-  const { shares: stemShares, baskets: stemBasketCount } = courseStemShares(stemBaskets);
+  // Course-wide AND local: the higher of the two, centred on this invocation's range.
+  const stemShares = windowedStemShares(stemBaskets, Math.round((from + to) / 2));
+  const stemBasketCount = stemBaskets.length;
   console.log(`course-so-far stems: ${stemBasketCount} baskets, top ${[...stemShares.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([s, v]) => `"${s}" ${Math.round(v * 100)}%`).join(', ')}`);
 
   const pending = legos.filter(l => !fs.existsSync(path.join(out, `seed-${String(l.seed_number).padStart(4, '0')}`, `${l.lego_id}.json`)));
