@@ -51,7 +51,10 @@ const { generateLegoPhrases } = require('../../services/course-builder/lib/phras
  * with 56 identical errors where one line and a stop belonged.
  */
 function isPoolExhausted (message) {
-  return /session limit|usage limit|rate limit|quota|429|credit balance/i.test(String(message || ''));
+  // "You've hit your weekly limit · resets 12am (UTC)" was NOT matched until
+  // 2026-09-27 (job #443): iCloud capped at ~10:05Z and 653 German baskets
+  // bounced in seven minutes, each logged as a basket error.
+  return /session limit|usage limit|weekly limit|hit your (\w+ )?limit|limit · resets|rate limit|quota|429|credit balance/i.test(String(message || ''));
 }
 /** Exit code that means "the pool stopped serving", so a wrapper can stop too. */
 const POOL_EXHAUSTED_EXIT = 3;
@@ -161,13 +164,17 @@ async function main() {
         }) + '\n');
         console.log(`[${done + errored}/${pending.length}] ${l.lego_id} ${res.blocked ? 'BLOCKED' : 'ok'} ${res.build.length}B/${res.use.length}U ${Math.round((Date.now() - started) / 1000)}s`);
       } catch (e) {
-        errored += 1;
+        // A pool that stopped serving is NOT a basket error: the basket has no
+        // file, so the next pass (on another pool) generates it. Logged as
+        // poolExhausted so a report can tell the two apart.
+        const capped = isPoolExhausted(e.message);
+        if (!capped) errored += 1;
         fs.appendFileSync(logPath, JSON.stringify({
           ts: new Date().toISOString(), lego_id: l.lego_id, seed: l.seed_number,
-          lego_index: l.lego_index, ok: false, error: e.message,
+          lego_index: l.lego_index, ok: false, ...(capped ? { poolExhausted: true } : {}), error: e.message,
         }) + '\n');
-        console.log(`[${done + errored}/${pending.length}] ${l.lego_id} ERROR ${e.message}`);
-        if (isPoolExhausted(e.message)) {
+        console.log(`[${done + errored}/${pending.length}] ${l.lego_id} ${capped ? 'POOL CAPPED' : 'ERROR'} ${e.message}`);
+        if (capped) {
           exhausted = e.message;
           queue.length = 0;   // drain: every remaining basket would fail the same way
           return;

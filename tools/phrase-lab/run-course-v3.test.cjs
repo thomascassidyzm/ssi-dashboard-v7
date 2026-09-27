@@ -23,3 +23,9 @@ test('an ordinary bad-output failure is a per-basket failure, not the end', () =
   assert.equal(isPoolExhausted("Expected property name or '}' in JSON at position 2"), false);
   assert.equal(isPoolExhausted(undefined), false);
 });
+
+test('the real WEEKLY-limit message ends the run (job #443: 653 German baskets bounced on it)', () => {
+  assert.equal(isPoolExhausted(
+    'claude --print --model opus failed (code=1, signal=none, killed=false) | stdout-head: '
+    + "You've hit your weekly limit · resets 12am (UTC)"), true);
+});

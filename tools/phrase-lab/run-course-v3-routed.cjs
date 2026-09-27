@@ -46,12 +46,70 @@ const { POOL_EXHAUSTED_EXIT } = require('./run-course-v3.cjs');
 const arg = (n, d = null) => { const i = process.argv.indexOf(n); return i === -1 ? d : process.argv[i + 1]; };
 const SURFACE = process.env.CS_SURFACE || 'http://localhost:4317';
 
-/** The resolver's own order, open pools only. Never a list maintained here. */
+const HEADERS = () => ({ 'x-cs-conv': process.env.CS_CONV_TOKEN || '' });
+/**
+ * POOL HOLDS — a capped pool is out until ITS reset, across courses and runs
+ * (job #443, 2026-09-27: after iCloud hit its weekly cap the driver kept
+ * handing it chunks, because the ladder still listed it open). One JSON file,
+ * pool → ISO time; read before every pick, written when a child exits 3.
+ */
+const HOLDS_FILE = process.env.POOL_HOLDS_FILE || path.join(os.homedir(), 'ssi-evidence', 'ssi-dashboard-v7', 'phrase-lab-pool-holds.json');
+const readHolds = () => { try { return JSON.parse(fs.readFileSync(HOLDS_FILE, 'utf8')); } catch { return {}; } };
+function holdPool(pool, untilIso, why) {
+  const h = readHolds();
+  h[pool] = { until: untilIso, why: String(why || '').slice(0, 200), at: new Date().toISOString() };
+  fs.mkdirSync(path.dirname(HOLDS_FILE), { recursive: true });
+  fs.writeFileSync(HOLDS_FILE, JSON.stringify(h, null, 2));
+}
+const held = (pool) => { const h = readHolds()[pool]; return !!h && Date.parse(h.until) > Date.now(); };
+
+/** The gauges, by email: { email → {five, seven, fiveReset, sevenReset} }. Empty on failure (the ladder still rules). */
+async function gauges() {
+  try {
+    const res = await fetch(`${SURFACE}/api/usage`, { headers: HEADERS() });
+    const j = await res.json();
+    const out = {};
+    for (const [email, v] of Object.entries(j.accounts || j)) {
+      if (!v || typeof v !== 'object') continue;
+      out[email] = { five: Number(v.five_hour_pct), seven: Number(v.seven_day_pct ?? v.weekly_all_pct_used),
+        fiveReset: v.five_hour_resets_at, sevenReset: v.seven_day_resets_at || v.weekly_all_resets_at };
+    }
+    return out;
+  } catch { return {}; }
+}
+
+/**
+ * The resolver's own order, open pools only — minus pools on hold, and minus
+ * pools whose own gauge already reads 100% (so a capped pool is never sent a
+ * chunk to bounce). Never a list maintained here.
+ */
 async function routedPools() {
-  const res = await fetch(`${SURFACE}/api/accounts/routing`, { headers: { 'x-cs-conv': process.env.CS_CONV_TOKEN || '' } });
+  const res = await fetch(`${SURFACE}/api/accounts/routing`, { headers: HEADERS() });
   if (!res.ok) throw new Error(`routing ladder unreadable: HTTP ${res.status}`);
   const j = await res.json();
-  return (j.urgencyOrder?.all || []).filter((a) => a.open && !a.heldForHuman).map((a) => a.name);
+  const g = await gauges();
+  return (j.urgencyOrder?.all || [])
+    .filter((a) => a.open && !a.heldForHuman && !held(a.name))
+    .filter((a) => { const x = g[a.email]; return !x || !(x.five >= 100 || x.seven >= 100); })
+    .map((a) => ({ name: a.name, email: a.email }));
+}
+
+/** When a pool reports capped, hold it until the reset its own gauge names. */
+async function holdUntilReset(pool, email, why) {
+  const x = (await gauges())[email] || {};
+  const weekly = /weekly/i.test(why) || x.seven >= 100;
+  const until = (weekly ? x.sevenReset : x.fiveReset) || new Date(Date.now() + 60 * 60 * 1000).toISOString();
+  holdPool(pool, until, why);
+  console.log(`=== ${pool} held until ${until} (${weekly ? 'weekly' : 'session'} cap)`);
+}
+
+/** The newest poolExhausted message in the runner's log, for the hold's reason. */
+function lastCapLine(out) {
+  try {
+    const rows = fs.readFileSync(path.join(out, 'run-log.jsonl'), 'utf8').trim().split('\n').slice(-50).map((l) => JSON.parse(l));
+    const r = rows.reverse().find((x) => x.poolExhausted);
+    return r ? r.error : 'pool exhausted';
+  } catch { return 'pool exhausted'; }
 }
 
 /** Seed chunks over [from, to]. */
@@ -111,8 +169,9 @@ async function main() {
       if (fatal || !queue.length) return;
       let order;
       try { order = await routedPools(); } catch (e) { fatal = e.message; return; }
-      const pool = order.find((a) => !exhausted.has(a) && !busy.has(a) && fs.existsSync(path.join(accountsDir, a)));
-      if (!pool) return; // no free open pool for this lane — the other lanes carry on
+      const pick = order.find((a) => !exhausted.has(a.name) && !busy.has(a.name) && fs.existsSync(path.join(accountsDir, a.name)));
+      if (!pick) return; // no free open pool for this lane — the other lanes carry on
+      const pool = pick.name;
       const chunk = queue.shift();
       if (!chunk) return;
       busy.add(pool);
@@ -132,7 +191,12 @@ async function main() {
       mine -= conc;
       fs.appendFileSync(logPath, JSON.stringify({ ts: new Date().toISOString(), pool, seeds: chunk, conc, rc, secs: Math.round((Date.now() - started) / 1000) }) + '\n');
       console.log(`=== seeds ${chunk[0]}-${chunk[1]} on ${pool} x${conc} rc=${rc} in ${Math.round((Date.now() - started) / 1000)}s`);
-      if (rc === POOL_EXHAUSTED_EXIT) { exhausted.add(pool); queue.unshift(chunk); continue; }
+      if (rc === POOL_EXHAUSTED_EXIT) {
+        exhausted.add(pool);
+        await holdUntilReset(pool, pick.email, lastCapLine(out, pool));
+        queue.unshift(chunk);
+        continue;
+      }
       if (rc !== 0) {
         const k = chunk.join('-');
         if (retried.has(k)) { fatal = `seeds ${k} failed twice (rc ${rc})`; return; }
