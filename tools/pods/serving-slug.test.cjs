@@ -56,7 +56,7 @@
 import { describe, it, expect } from 'vitest'
 
 const MOD = process.env.SERVING_SLUG_MODULE || './serving-slug.cjs'
-const { SERVING_POD_SLUGS, LISTENING_EXTRA_POD_SLUGS, servesLearners, learnersAtRisk, servingRefusal } = require(MOD)
+const { SERVING_POD_SLUGS, LISTENING_EXTRA_POD_SLUGS, RETIRED_POD_SLUGS, isRetiredPod, servesLearners, learnersAtRisk, servingRefusal } = require(MOD)
 
 const wording = {
   action: 'This does the thing,',
@@ -93,6 +93,24 @@ describe('servesLearners — the slugs the player resolves', () => {
     expect(SERVING_POD_SLUGS).not.toContain('method-pod')
     expect(servesLearners({ slug: 'method-pod', podType: 'core' })).toBe(true)
     expect(servesLearners({ slug: 'method-pod', podType: 'choice' })).toBe(false)
+    expect(servingRefusal(serving({ podId: 'ita_for_eng:method-pod', slug: 'method-pod' }))).toMatch(/SERVING slug/)
+  })
+
+  // Job #410 (2026-09-27, Tom: the Method pod "should be removed from the canonical pods
+  // as well"). RECORDED RED against 69f199413 — isRetiredPod is not a function.
+  it('knows the Method pod is retired, by every slug it has worn', () => {
+    for (const slug of ['method-pod', 'method-pod-43-scene', 'method-pod-chapters']) {
+      expect(RETIRED_POD_SLUGS).toContain(slug)
+      expect(isRetiredPod(slug)).toBe(true)
+    }
+    expect(isRetiredPod('ita_for_eng:method-pod')).toBe(true)
+    expect(isRetiredPod('pod-1')).toBe(false)
+    expect(isRetiredPod('ita_for_eng:pod-1')).toBe(false)
+    expect(isRetiredPod('')).toBe(false)
+  })
+
+  it('retired is not the same as safe to write — live still lists method-pod, so the guard still refuses', () => {
+    expect(isRetiredPod('method-pod')).toBe(true)
     expect(servingRefusal(serving({ podId: 'ita_for_eng:method-pod', slug: 'method-pod' }))).toMatch(/SERVING slug/)
   })
 

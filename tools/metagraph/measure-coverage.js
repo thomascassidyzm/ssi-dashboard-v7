@@ -44,7 +44,9 @@ function report (title, cov) {
 // `method-pod-43-scene` in the store now, so it is read from the store like the
 // rest — one home for the pods, no runtime markdown.
 const slugs = process.argv.slice(2).filter(a => !a.startsWith('-'))
-const podSlugs = slugs.length ? slugs : ['pod-1', 'method-pod-43-scene']
+// The Method Pod left the canonical set on 2026-09-27 (Tom: "should be removed from the
+// canonical pods as well"), so the default census is pod-1 alone.
+const podSlugs = slugs.length ? slugs : ['pod-1']
 
 const sb = require(path.join(root, 'services/supabase-client.cjs'))
 const client = sb.getClient()

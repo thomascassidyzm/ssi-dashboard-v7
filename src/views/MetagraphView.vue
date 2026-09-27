@@ -257,12 +257,10 @@ async function authedFetch (path, init = {}) {
 
 const LABELS = {
   'pod-1': 'POD 1',
-  'learning-flagship': 'Learning flagship',
-  'method-pod-chapters': 'Method Pod — chapters',
-  'method-pod-43-scene': 'Method Pod — 43 scenes'
+  'learning-flagship': 'Learning flagship'
 }
 
-const ORDER = ['pod-1', 'method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
+const ORDER = ['pod-1', 'learning-flagship']
 
 // THIS SET IS DELIBERATELY EMPTY, and that is the fix, not an oversight.
 // It used to hold two SACKED SLATES whose row numbers collided with this

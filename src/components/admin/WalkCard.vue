@@ -34,7 +34,7 @@ const targetLine = computed(() => {
 })
 const storeLine = computed(() => {
   if (w.value.inStore) return `${w.value.scenes} scenes · ${w.value.lines} lines in the canonical store`
-  if (w.value.status === 'parked') return w.value.livesIn || 'not in the canonical store'
+  if (w.value.status === 'parked' || w.value.status === 'retired') return w.value.livesIn || 'not in the canonical store'
   return 'not in the canonical store'
 })
 
@@ -172,7 +172,8 @@ const factsLine = computed(() => {
    hold yet, or a registry that disagrees with the database, recedes into a
    dashed outline instead of shouting in red. Red is gone from this file. */
 .st-authored { color: var(--muted); }
-.st-parked { color: var(--faint); }
+.st-parked,
+.st-retired { color: var(--faint); }
 .st-mapping-only,
 .st-draft,
 .st-ingestable,

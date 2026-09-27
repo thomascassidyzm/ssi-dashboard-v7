@@ -49,6 +49,24 @@ const SERVING_POD_SLUGS = ['pod-1']
 // same change that confirms live no longer does.
 const LISTENING_EXTRA_POD_SLUGS = ['method-pod']
 
+// Pods Tom has taken OUT of the canonical pod set, by every slug they have worn: the
+// listening pod (`method-pod`, ita_for_eng) and the two cuts that sat in the canonical
+// store. Tom, 2026-09-27: "should be removed from the canonical pods as well". Nothing
+// translates, renders, generates or counts a retired pod for any language. Its text and
+// audio are kept, not deleted: the store rows are in archive/pods-retired-2026-09-27/,
+// and the ita_for_eng listening pod keeps its clips because live still lists it.
+//
+// Retired is not the same as "safe to write": while a slug is also in
+// LISTENING_EXTRA_POD_SLUGS it is still served on live and the guard above still refuses.
+const RETIRED_POD_SLUGS = ['method-pod', 'method-pod-43-scene', 'method-pod-chapters']
+
+/** PURE. Is this pod out of the canonical set? Takes a slug or a `course:slug` pod id. */
+function isRetiredPod (slugOrPodId) {
+  const s = String(slugOrPodId || '')
+  const i = s.indexOf(':')
+  return RETIRED_POD_SLUGS.includes(i < 0 ? s : s.slice(i + 1))
+}
+
 /**
  * PURE. Would a core pod on this slug be resolved to a learner — in main flow OR as a
  * Listening Mode extra slot? Every door's question, asked once.
@@ -188,6 +206,8 @@ async function fetchServingSlug (client, courseCode) {
 module.exports = {
   SERVING_POD_SLUGS,
   LISTENING_EXTRA_POD_SLUGS,
+  RETIRED_POD_SLUGS,
+  isRetiredPod,
   servesLearners,
   learnersAtRisk,
   servingRefusal,

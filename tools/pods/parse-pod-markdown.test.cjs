@@ -27,8 +27,8 @@ const eq = (a, b, msg) => ok(a === b, `${msg} (got ${a}, want ${b})`)
 
 const CASES = [
   { slug: 'learning-flagship',    file: 'docs/pods/learning-flagship-pod-2026-08-30.md', unit: 'Chapter', lang: null,  turns: 367, sections: 11 },
-  { slug: 'method-pod-chapters',  file: 'docs/pods/method-pod-chapters-2026-08-30.md',   unit: 'Chapter', lang: 'ita', turns: 309, sections: 12 },
-  { slug: 'method-pod-43-scene',  file: 'docs/pods/method-pod-full-2026-08-30.md',       unit: 'Scene',   lang: 'ita', turns: 276, sections: 43 }
+  { slug: 'method-pod-chapters',  file: 'archive/pods-retired-2026-09-27/method-pod/method-pod-chapters-2026-08-30.md',   unit: 'Chapter', lang: 'ita', turns: 309, sections: 12 },
+  { slug: 'method-pod-43-scene',  file: 'archive/pods-retired-2026-09-27/method-pod/method-pod-full-2026-08-30.md',       unit: 'Scene',   lang: 'ita', turns: 276, sections: 43 }
 ]
 
 const parsed = {}

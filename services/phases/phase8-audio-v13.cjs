@@ -42,6 +42,7 @@ const createLogger = require('../shared/logger.cjs')
 const { identity: buildIdentity } = require('../shared/build-identity.cjs')
 const ttsService = require('../tts-service.cjs')
 const { toWordTimingsColumn } = require('../shared/word-timings.cjs')
+const { isRetiredPod } = require('../../tools/pods/serving-slug.cjs')
 // The language cast reader. phase8 does not go through loadVoiceConfig — it
 // reads course.voice_config off its own select — so it resolves explicitly.
 const voiceConfigService = require('../voice-config-service.cjs')
@@ -8434,8 +8435,15 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
 async function loadPodsForPlan(courseCode, podIds) {
   let podQuery = supabase.from('listening_pods').select('*').eq('course_code', courseCode)
   if (podIds && podIds.length) podQuery = podQuery.in('id', podIds)
-  const { data: pods, error: podsErr } = await podQuery
+  const { data: loaded, error: podsErr } = await podQuery
   if (podsErr) throw new Error(`load pods: ${podsErr.message}`)
+  // A retired pod is never rendered for any language (Tom, 2026-09-27: the Method pod
+  // "should be removed from the canonical pods as well") — asked for by id or not.
+  const pods = (loaded || []).filter(p => {
+    if (!isRetiredPod(p.slug || p.id)) return true
+    logger.info(`[Pods] ${p.id} is a retired pod — not planned, not rendered`)
+    return false
+  })
 
   // Load sentences for these pods in one go
   if (!pods || pods.length === 0) return []

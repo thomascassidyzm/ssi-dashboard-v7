@@ -37,15 +37,6 @@ export const CATEGORY_GROUPS = [
     blurb: 'The Learning flagship.',
   },
   {
-    id: 'method',
-    category: 'method-cut',
-    title: 'Method Pod — awaiting a choice',
-    // ONE decision, TWO realisations — rendered inside a single frame so the
-    // page cannot be read as offering two walks.
-    paired: true,
-    blurb: 'Two cuts of the same material, held against each other.',
-  },
-  {
     id: 'themed',
     category: 'themed',
     title: 'Themed — chosen',
@@ -59,6 +50,16 @@ export const PARKED_GROUP = {
   id: 'parked',
   title: 'Parked — real content, deliberately not canon',
   blurb: 'Pre-metagraph proofs of concept, living only in listening_pods. Visible so they stop being invisible, not so they can be treated as canon. Never ingested into the canonical store.',
+}
+
+// Tom, 2026-09-27 (r-2026-09-27-method-pod-ai-written-tom-aran): the Method Pod
+// "should be removed from the canonical pods as well". Retired walks are named here
+// so their absence from the store reads as a decision, not as a loss — and so a
+// retired slug that reappears in the store shows as drift.
+export const RETIRED_GROUP = {
+  id: 'retired',
+  title: 'Retired — out of the canonical pod set',
+  blurb: 'Taken out by Tom. Never ingested, translated, rendered or counted. The text is archived under archive/ and can be restored.',
 }
 
 export const UNREGISTERED_GROUP = {
@@ -109,7 +110,7 @@ export function decorateWalk (entry, { dbPods = [], targets = {}, coverage = {},
     // Surfaced loudly, on the same principle as the unregistered row: this page
     // never quietly resolves a contradiction between the two sources, because
     // the contradiction is the thing worth seeing.
-    drift: !!db && (entry.status === 'mapping-only' || entry.status === 'parked'),
+    drift: !!db && ['mapping-only', 'parked', 'retired'].includes(entry.status),
     // `size` is the registry's own measurement for a parked walk — dated, and
     // carrying the query it came from. Read, never recomputed.
     facts: entry.size || null,
@@ -130,7 +131,7 @@ export function buildGroups (corpora, { dbPods = [], targets = {}, coverage = {}
   const ctx = { dbPods, targets, coverage }
   const walks = (corpora.walks || []).map(w => decorateWalk(w, ctx))
 
-  const known = new Set((corpora.walks || []).map(w => w.slug))
+  const known = new Set([...(corpora.walks || []), ...(corpora.retired || [])].map(w => w.slug))
   const unregistered = dbPods
     .filter(p => !known.has(p.slug))
     .map(p => decorateWalk(
@@ -141,6 +142,7 @@ export function buildGroups (corpora, { dbPods = [], targets = {}, coverage = {}
   return [
     ...CATEGORY_GROUPS.map(g => ({ ...g, walks: walks.filter(w => w.category === g.category) })),
     { ...PARKED_GROUP, walks: (corpora.parked || []).map(p => decorateWalk(p, ctx)) },
+    { ...RETIRED_GROUP, walks: (corpora.retired || []).map(r => decorateWalk(r, ctx)) },
     { ...UNREGISTERED_GROUP, walks: unregistered },
   ].filter(g => g.walks.length)
 }

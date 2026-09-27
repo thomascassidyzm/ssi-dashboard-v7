@@ -1,6 +1,10 @@
 import { describe, it, expect } from 'vitest'
 import { buildGroups, decorateWalk, isIngestable } from './walkGroups.js'
 import CORPORA from '../../tools/pods/pod-corpora.json'
+import fs from 'node:fs'
+import path from 'node:path'
+
+const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../..')
 
 // The canonical store as it actually stood on 2026-09-01, AFTER the core canon
 // was renamed onto `pod-1`: four slugs, Italian on the two Method cuts and nowhere else.
@@ -45,11 +49,32 @@ describe('the walk registry, joined to the canonical store', () => {
     expect(text).not.toContain('sector pod')
   })
 
-  it('pairs the two Method cuts into one framed decision', () => {
-    const groups = buildGroups(CORPORA, { dbPods: DB_AFTER })
-    const method = groups.find(g => g.id === 'method')
-    expect(method.paired).toBe(true)
-    expect(method.walks.map(w => w.slug).sort()).toEqual(['method-pod-43-scene', 'method-pod-chapters'])
+  // Job #410 (2026-09-27, Tom: the Method pod "should be removed from the canonical pods
+  // as well"). RECORDED RED against 69f199413 — both cuts were authored walks under a
+  // 'method' group, and there was no retired list.
+  it('holds the Method cuts as RETIRED, never as walks to make', () => {
+    const retired = ['method-pod-43-scene', 'method-pod-chapters']
+    for (const slug of retired) {
+      expect(CORPORA.walks.map(w => w.slug)).not.toContain(slug)
+      expect(CORPORA.retired.map(r => r.slug)).toContain(slug)
+    }
+    const groups = buildGroups(CORPORA, { dbPods: [] })
+    expect(groups.find(g => g.id === 'method')).toBeUndefined()
+    const group = groups.find(g => g.id === 'retired')
+    expect(group.walks.map(w => w.slug).sort()).toEqual(retired)
+    for (const w of group.walks) expect(w.ingestable).toBe(false)
+  })
+
+  it('keeps every retired walk restorable — its corpus is on disk', () => {
+    for (const r of CORPORA.retired) {
+      expect(r.status).toBe('retired')
+      expect(fs.existsSync(path.join(ROOT, r.corpus))).toBe(true)
+    }
+  })
+
+  it('flags a retired walk that reappears in the store as drift', () => {
+    const groups = buildGroups(CORPORA, { dbPods: [{ slug: 'method-pod-43-scene', lines: 276, scenes: 43 }] })
+    expect(find(groups, 'method-pod-43-scene').drift).toBe(true)
   })
 
   it('carries the target counts it was given and claims none it was not', () => {
@@ -215,7 +240,7 @@ describe('registry-vs-database drift', () => {
   it('the live registry currently agrees with the live store', () => {
     // Nine canonical walks as of 2026-09-01; public-services is still authoring.
     const live = [
-      'pod-1', 'learning-flagship', 'method-pod-43-scene', 'method-pod-chapters',
+      'pod-1', 'learning-flagship',
       'health', 'retail', 'trades', 'hospitality', 'care-work',
     ].map(slug => ({ slug, lines: 1, scenes: 1 }))
     const groups = buildGroups(CORPORA, { dbPods: live })

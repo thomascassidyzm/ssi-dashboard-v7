@@ -79,17 +79,7 @@
           </div>
           <p class="text-xs text-muted mb-3 leading-relaxed max-w-2xl">{{ group.blurb }}</p>
 
-          <!-- The two Method cuts are ONE decision shown as two realisations,
-               so they are rendered inside one frame rather than as two walks. -->
-          <div v-if="group.paired" class="paired border rounded-lg p-3 sm:p-4">
-            <p class="text-xs text-muted font-semibold mb-3">
-              One decision, two realisations of the same material. Tom's choice is outstanding — picking one sacks the other.
-            </p>
-            <div class="grid gap-3 sm:grid-cols-2">
-              <WalkCard v-for="w in group.walks" :key="w.slug" :walk="w" />
-            </div>
-          </div>
-          <div v-else class="space-y-3">
+          <div class="space-y-3">
             <WalkCard v-for="w in group.walks" :key="w.slug" :walk="w" />
           </div>
         </section>
@@ -264,5 +254,4 @@ onMounted(load)
 /* One frame around the two Method cuts, so they read as one decision. The
    dashes here mean "not yet decided" — the same absence channel the metagraph
    and the walk cards use. */
-.paired { border-color: var(--faint); border-style: dashed; background: none; }
 </style>

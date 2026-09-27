@@ -1,3 +1,24 @@
+## 2026-09-27 — the Method Pod leaves the canonical pod set (job #410)
+
+**Tom's ruling (r-2026-09-27-method-pod-ai-written-tom-aran).** The Method Pod "should be removed from the
+canonical pods as well", which follows #408 retiring it from learners on dev and staging.
+
+**What moved.** The two cuts left the canonical store: `method-pod-43-scene` and `method-pod-chapters`,
+585 `canonical_pod_scenarios` rows and 152 `canonical_pod_walk_steps` rows. They never had target text in
+`canonical_pod_target_text`. They were archived before deletion to
+`archive/pods-retired-2026-09-27/method-pod/canonical-store-rows.restore.sql`, which was proven by a
+delete, restore and md5 round trip that came back byte-identical. The corpus markdown moved beside it.
+In `tools/pods/pod-corpora.json` both entries moved from `walks[]` to a new `retired[]` list, so nothing
+ingests, syncs or offers them. `RETIRED_POD_SLUGS` / `isRetiredPod` in `tools/pods/serving-slug.cjs` is
+the one list, and phase 8 skips a retired pod when it plans a render.
+
+**Deliberately left.** The `ita_for_eng:method-pod` listening pod (309 lines, every clip rendered) and its
+audio stay untouched, and `method-pod` stays in `LISTENING_EXTRA_POD_SLUGS`, because live (learning-app
+main) still lists it. Once live is promoted past RETIRED_POD_SLUGS, the next step is to take it out of
+the guard and archive that pod row. Metagraph shapes whose provenance is the Method Pod stay, because
+retiring a pod does not un-attest a shape. Nothing was queued for the Method Pod: no audio pass, build
+job or target-text rows.
+
 ## 2026-09-20 — content_audit_log tiering is live: cron on watson-1, not the in-process opt-in (survey A5, job #376)
 
 **What.** content_audit_log was 4.31M rows / 24 GB (77% of the database), never trimmed since 3 July.

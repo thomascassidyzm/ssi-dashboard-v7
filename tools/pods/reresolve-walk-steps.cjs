@@ -23,7 +23,8 @@ const { resolveShape } = require('./parse-pod-markdown.cjs')
 
 const REPO = path.resolve(__dirname, '../..')
 const EXECUTE = process.argv.includes('--execute')
-const SLUGS = ['method-pod-43-scene', 'method-pod-chapters', 'learning-flagship']
+// The two Method Pod cuts left the canonical store on 2026-09-27 (retired, archived).
+const SLUGS = ['learning-flagship']
 
 function loadStore () {
   const p = f => JSON.parse(fs.readFileSync(path.join(REPO, 'services/shared/metagraph', f), 'utf8'))

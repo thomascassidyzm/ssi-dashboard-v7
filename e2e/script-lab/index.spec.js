@@ -29,7 +29,7 @@ test('every walk, with its labels', async ({ page }) => {
   await signIn(page)
   await page.goto('/canonical/scripts')
 
-  // Every walk in the registry, plus the parked pair, is on the page.
+  // Every walk in the registry, plus the parked pair and the retired Method cuts, is on the page.
   for (const slug of [
     'pod-1', 'learning-flagship', 'method-pod-chapters', 'method-pod-43-scene',
     'health', 'retail', 'trades', 'hospitality', 'care-work', 'public-services',
@@ -45,7 +45,7 @@ test('every walk, with its labels', async ({ page }) => {
 
   // Status, read off the registry rather than off a remembered list — the third
   // time this bit: care-work was mapping-only at 11:29 and authored by 11:40.
-  for (const w of [...CORPORA.walks, ...CORPORA.parked]) {
+  for (const w of [...CORPORA.walks, ...CORPORA.parked, ...CORPORA.retired]) {
     await expect(page.locator(`[data-slug="${w.slug}"] .st-${w.status}`))
       .toHaveText(w.status.toUpperCase())
   }
@@ -59,11 +59,12 @@ test('every walk, with its labels', async ({ page }) => {
   // The Welsh health overlay is labelled wherever it appears.
   await expect(page.locator('[data-slug="health"] .st-draft')).toContainText('DRAFT FOR ARAN')
 
-  // The two Method cuts are ONE decision inside ONE frame.
-  const paired = page.locator('.paired')
-  await expect(paired).toContainText('One decision, two realisations')
-  await expect(paired.locator('[data-slug="method-pod-chapters"]')).toBeVisible()
-  await expect(paired.locator('[data-slug="method-pod-43-scene"]')).toBeVisible()
+  // The two Method cuts are RETIRED (Tom, 2026-09-27) — shown as retired, never offered.
+  await expect(page.locator('.paired')).toHaveCount(0)
+  for (const slug of ['method-pod-chapters', 'method-pod-43-scene']) {
+    await expect(page.locator(`[data-slug="${slug}"] .st-retired`)).toHaveText('RETIRED')
+    await expect(page.locator(`[data-slug="${slug}"]`).getByRole('link', { name: 'Open the script →' })).toHaveCount(0)
+  }
 
   // The object statement, with the variants that are its evidence.
   await expect(page.getByText('You are editing the canonical English master')).toBeVisible()
@@ -93,8 +94,6 @@ test('every walk, with its labels', async ({ page }) => {
 
   // The live store, read through the API: counts and Italian target text.
   await expect(page.locator('[data-slug="pod-1"]')).toContainText('22 scenes · 231 lines')
-  await expect(page.locator('[data-slug="method-pod-43-scene"]')).toContainText('Italian — 276 lines')
-  await expect(page.locator('[data-slug="method-pod-chapters"]')).toContainText('Italian — 309 lines')
   await expect(page.locator('[data-slug="learning-flagship"]')).toContainText('no target text')
 
   // INGESTABLE and DRIFT, asserted as INVARIANTS rather than as a fixed list.
