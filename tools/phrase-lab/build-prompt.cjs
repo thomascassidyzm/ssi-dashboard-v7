@@ -174,6 +174,9 @@ every \`target\` you write is ${targetLangName}.
 
 Seed ${seedNumber}: "${seed?.known_text}" -> "${seed?.target_text}"
 
+The seed sentence is shown for context. Its later LEGOs are NOT yet available;
+use only the AVAILABLE list.
+
 **The new LEGO you are writing phrases for:**
 
     ${L.lego_id}  [${L.type}]  "${L.known_text}"  ->  "${L.target_text}"
@@ -202,7 +205,7 @@ ${neg ? `*${spec.negative.note}*` : ''}
 
 ${avail.total} items. Columns: seed / known / target / lego id. The recency axis
 is measured against this ordering, so the top of this list is where the value is.
-${avail.truncated ? `\n(showing the ${avail.total - avail.truncated} most recent of ${avail.total}; the oldest ${avail.truncated} are omitted and you should not be reaching for them anyway)\n` : ''}
+${avail.truncated ? `\n(showing the ${avail.total - avail.truncated} most recent of ${avail.total}; the oldest ${avail.truncated} are omitted)\n` : ''}
 \`\`\`
 ${avail.text}
 \`\`\`

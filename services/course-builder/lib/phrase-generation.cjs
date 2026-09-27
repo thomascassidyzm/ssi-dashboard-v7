@@ -43,6 +43,7 @@ const { makeCourseCtx, checkPhraseSet, failureFeedback } = require(path.join(__d
 const { computeDeclaration, checkDeclaration, recordDeclaration, frameSection } =
   require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 const { separableSection } = require('./separable-verbs.cjs');
+const { overuseSection } = require(path.join(__dirname, '../../../tools/phrase-gate/stem-diversity.cjs'));
 // Kai, 2026-09-21 (job #491): a structural feature whose first showing is a
 // pedagogy decision STOPS the build for an unruled course and is raised to
 // a human with its precedents. The builder never decides it.
@@ -177,7 +178,10 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // floors cannot hear clunky lines). The first attempt is then the door's own
   // retry prompt with those reasons, so the rewrite keeps what was fine and
   // still has to clear every gate below. Absent, nothing changes.
-  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, revise = null } = opts;
+  // `stemShares` (Map stem → share of the course's baskets containing it) is
+  // the course-so-far view the runner computes (audit #423 (b)): it is shown to
+  // the model as ALREADY OVERUSED and handed to the stemDiversity gate (d).
+  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, revise = null, stemShares = null } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   // STOP AND SURFACE, before any model call. An unruled course whose LEGO or
@@ -228,7 +232,8 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   // the section and the gate read one policy object, so the instruction the
   // builder gets and the check its output meets cannot drift apart. Empty for
   // every other course.
-  const prompt = basePrompt + frameSection(declaration) + separableSection(courseCode, seedNumber, lego);
+  const prompt = basePrompt + frameSection(declaration) + separableSection(courseCode, seedNumber, lego)
+    + (stemShares ? overuseSection(stemShares) : '');
 
   const started = Date.now();
   const gateCtx = runGate ? makeCourseCtx(supabase, courseCode) : null;
@@ -254,6 +259,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
       components: lego.components,
       build: phrases.build,
       use: phrases.use,
+      stemShares: stemShares || undefined,
     }, gateCtx);
 
     // The scorer is the second half of "the gate conditions ... as well as the

@@ -60,7 +60,31 @@ const BUILD_MAX = 4;
 const GATE_NAMES = [
   'bareLego', 'buildCountSpec', 'buildUseFloors', 'containment',
   'vocab', 'futureLego', 'buildRecombination', 'zut', 'knownSide', 'separableContrast',
+  'stemDiversity', 'questionMark', 'knownLowerI',
 ];
+const { checkStemDiversity } = require('./stem-diversity.cjs');
+
+/**
+ * QUESTIONS KEEP THEIR "?" and "I" STAYS CAPITAL (audit #423 D2/D3, 2026-09-27).
+ * The prompt used to say "lower case throughout, no trailing full stops": the
+ * target lost its "?" on 80-91% of questions (stored and voiced as statements)
+ * and the English grew a lower-case "i" in 4-8% of rows. Storage keeps a "?"
+ * but never adds one, so this is where it is caught.
+ */
+const AUX = '(do|does|did|are|is|was|were|am|can|could|would|will|shall|should|have|has|may|might)';
+const SUBJ = "(you|he|she|it|we|they|i|there|this|that|your|my|his|her|our|their|the|anyone|someone|everyone)";
+function knownIsQuestion(known) {
+  const k = String(known || '').trim().toLowerCase().replace(/[’‘]/g, "'");
+  if (/\?$/.test(k)) return true;
+  if (new RegExp(`^(and |but |so |okay,? |yes,? |no,? |then )?${AUX}n?'?t? ${SUBJ}\\b`).test(k)) return true;
+  return new RegExp(`^(and |but |so |then )?(what|where|when|why|how|who|which)( [a-z']+)? ${AUX}n?'?t? `).test(k);
+}
+function questionMarkViolations(phrases) {
+  return phrases.filter((p) => knownIsQuestion(p.known) && (!/\?\s*$/.test(String(p.known).trim()) || !/[?？;]\s*$/.test(String(p.target).trim())));
+}
+function lowerIViolations(phrases) {
+  return phrases.filter((p) => /(^|[^\p{L}'’])i(['’](m|d|ll|ve))?(?![\p{L}'’])/u.test(String(p.known || '')));
+}
 
 /**
  * NO PHRASE MAY USE A LEGO THE LEARNER HAS NOT MET YET — Tom, 2026-09-27 (job
@@ -391,6 +415,22 @@ async function checkPhraseSet(entry, ctx) {
     }
   }
 
+  // ── stem diversity (audit #423 (b)+(d), Tom's GO 2026-09-27) ──
+  {
+    const sd = checkStemDiversity({ legoKnown, build, use }, entry.stemShares || new Map());
+    if (!sd.pass) fail('stemDiversity', sd);
+    else pass('stemDiversity');
+  }
+  // ── questions keep "?", "I" stays capital (audit #423 D2/D3) ──
+  {
+    const q = questionMarkViolations([...build, ...use]);
+    if (q.length) fail('questionMark', { total: q.length, examples: q.slice(0, 4).map((p) => `${p.known} → ${p.target}`) });
+    else pass('questionMark');
+    const li = lowerIViolations([...build, ...use]);
+    if (li.length) fail('knownLowerI', { total: li.length, examples: li.slice(0, 4).map((p) => p.known) });
+    else pass('knownLowerI');
+  }
+
   const overallPass = failingGates.length === 0 && gates.knownSide.pass !== false;
 
   return {
@@ -425,6 +465,12 @@ function failureFeedback(result) {
         lines.push(`containment: ${g.failing} phrase(s) do not contain the LEGO's target: ${(g.examples || []).join(' | ')}${(g.reasons || []).length ? ` — ${g.reasons.join('; ')}` : ''}`); break;
       case 'separableContrast':
         lines.push(`separableContrast: this is the seed where the German split is taught — the set has ${g.split} split and ${g.joined} joined realisation(s) of ${(g.verbs || []).join(', ')}; write at least ${g.required} of EACH, very short`); break;
+      case 'stemDiversity':
+        lines.push(`stemDiversity: ${[...(g.within || []).map((w) => `the ${w.kind} "${w.item}" is in ${w.count} USE phrases (at most 2)`), ...(g.course || []).map((c) => `"${c.stem}" is already in ${Math.round(c.share * 100)}% of this course's baskets and appears ${c.count} times here (at most once)`)].join('; ')} — rewrite those phrases on different frames`); break;
+      case 'questionMark':
+        lines.push(`questionMark: ${g.total} question(s) missing "?" on the English or the target side — every question keeps its "?" on BOTH sides: ${(g.examples || []).join(' | ')}`); break;
+      case 'knownLowerI':
+        lines.push(`knownLowerI: ${g.total} English prompt(s) with a lower-case "i" — write "I", "I'm", "I'd": ${(g.examples || []).join(' | ')}`); break;
       case 'bareLego':
         lines.push(`bareLego: ${g.detail}`); break;
       case 'buildUseFloors':
@@ -441,6 +487,7 @@ function failureFeedback(result) {
 module.exports = {
   GATE_NAMES, BUILD_MIN, BUILD_MAX,
   makeCourseCtx, checkPhraseSet, failureFeedback, futureTileViolations, isAfter,
+  knownIsQuestion, questionMarkViolations, lowerIViolations,
   // exported for read-only replays (tools/phrase-gate/separable-dry-run.cjs)
   loadTranslationVocab, loadSameSeedSiblingVocab,
 };
