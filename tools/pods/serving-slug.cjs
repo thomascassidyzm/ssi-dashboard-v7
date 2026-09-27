@@ -42,6 +42,11 @@
  * SERVING_POD_SLUGS, so `pickServingPod` / `fetchServingSlug` do NOT read the extra list.
  */
 const SERVING_POD_SLUGS = ['pod-1']
+// RETIRED 2026-09-27 (Tom, r-2026-09-27-method-pod-ai-written-tom-aran): the learning app
+// parks `method-pod` by name (RETIRED_POD_SLUGS in servedPod.ts) and drops it from the
+// offline bundle — on dev and staging first, on live only when that release is promoted.
+// It stays in this guard until then, because live still lists it; take it out here in the
+// same change that confirms live no longer does.
 const LISTENING_EXTRA_POD_SLUGS = ['method-pod']
 
 /**
