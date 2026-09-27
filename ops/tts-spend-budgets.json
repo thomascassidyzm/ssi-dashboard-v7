@@ -1,0 +1,14 @@
+{
+  "_read_by": "services/shared/tts-spend-guard.cjs (job #425). Characters, not dollars. A raise needs share, by, why and until; an anonymous or expired raise is ignored and the stop falls back to stopAtShareOfPool. Changing this file is a commit, so every raise is on the record.",
+  "providers": {
+    "cartesia": {
+      "monthlyPoolChars": 8000000,
+      "cycleStartDay": 1,
+      "dailyCapChars": 1000000,
+      "alertDailyChars": 300000,
+      "stopAtShareOfPool": 0.5
+    }
+  },
+  "repeat": { "maxPerKey": 6, "windowHours": 24 },
+  "divergence": { "factor": 1.25, "slackChars": 20000, "checkEveryMinutes": 10 }
+}

@@ -694,19 +694,47 @@ async function lookupSiblingClip(courseCode, text, language, voiceId, opts = {})
  */
 const RUN_SPEND_FACTOR = 1.5
 const RUN_SPEND_FLOOR = 2000
-function runSpendCap(plannedItems) {
+/**
+ * RENDER-TO-ATTACH BREAKER (job #425). A render exists to fill a slot; one
+ * clip usually fills one or more. Past RATIO_WARMUP provider calls, a pass
+ * whose calls outnumber the slots it has filled by more than
+ * RENDER_ATTACH_RATIO is paying for audio nothing will play — #382's passes
+ * 2-37 ran at ~60 renders per slot filled — and it stops. The warm-up absorbs
+ * the first batches, whose attaches land after their renders.
+ */
+const RENDER_ATTACH_RATIO = Number(process.env.PHASE8_RENDER_ATTACH_RATIO) || 1.2
+const RATIO_WARMUP = Number(process.env.PHASE8_RATIO_WARMUP) || 64
+function runSpendCap(plannedItems, { ceilingChars = Infinity, ratio = RENDER_ATTACH_RATIO, warmup = RATIO_WARMUP } = {}) {
   const planned = (plannedItems || []).reduce((n, i) => n + String(i.text || '').length, 0)
-  const cap = { planned, budget: Math.max(RUN_SPEND_FLOOR, Math.ceil(RUN_SPEND_FACTOR * planned)), spent: 0, tripped: null }
+  const ceiling = Number(ceilingChars) > 0 ? Number(ceilingChars) : Infinity
+  const cap = { planned, budget: Math.min(ceiling, Math.max(RUN_SPEND_FLOOR, Math.ceil(RUN_SPEND_FACTOR * planned))), spent: 0, renders: 0, tripped: null, tripKind: null }
   cap.charge = (text) => {
     const chars = String(text || '').length
     if (cap.tripped || cap.spent + chars > cap.budget) {
-      cap.tripped = cap.tripped || `render budget reached: planned ${planned} chars, spent ${cap.spent}, budget ${cap.budget} (${RUN_SPEND_FACTOR}x)`
+      if (!cap.tripped) { cap.tripKind = 'budget'; cap.tripped = `render budget reached: planned ${planned} chars, spent ${cap.spent}, budget ${cap.budget} (${Number.isFinite(ceiling) && cap.budget === ceiling ? 'caller ceiling' : `${RUN_SPEND_FACTOR}x`})` }
       throw new Error(`spend cap: ${cap.tripped}`)
     }
     cap.spent += chars
+    cap.renders++
+  }
+  // Call after each batch with every slot the pass has filled so far.
+  cap.checkProgress = (attached) => {
+    if (cap.tripped || cap.renders < warmup) return
+    if (cap.renders > ratio * Math.max(0, attached || 0)) {
+      cap.tripKind = 'render-attach'
+      cap.tripped = `render/attach breaker: ${cap.renders} provider calls have filled ${attached || 0} slots (limit ${ratio}x) — this pass is rendering audio nothing points at`
+    }
+  }
+  // A door refusal (services/shared/tts-spend-guard.cjs) stops the whole pass:
+  // every later item would be refused too, and the reason is a human's to read.
+  cap.noteGuardRefusal = (message) => {
+    if (cap.tripped) return
+    cap.tripKind = 'spend-guard'
+    cap.tripped = `door spend guard refused: ${String(message).slice(0, 300)}`
   }
   return cap
 }
+const isSpendGuardRefusal = (err) => /TTS spend guard \(402\)/.test(String(err?.message || err))
 
 // role → [table, text column, FK column] for every text-keyed slot.
 const TEXT_SLOT_COLUMNS = {
@@ -3050,6 +3078,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       return res.json({
         dryRun: true,
         wouldGenerate: uniqueNeeded.length + (audioNeeds.toAuthor?.length || 0),
+        // Upper bound on the characters this pass would send a provider (reuse
+        // can only lower it). A driver sets its budget against this (job #425).
+        wouldSpendChars: uniqueNeeded.reduce((n, i) => n + String(i.text || '').length, 0),
         wouldAuthor: audioNeeds.toAuthor?.length || 0,
         wouldCopy: audioNeeds.toCopy?.length || 0,
         wouldPurgeStalePresentations: audioNeeds.stalePendingIds?.length || 0,
@@ -3082,7 +3113,9 @@ app.post('/generate/:courseCode', async (req, res) => {
     // pass may spend at most RUN_SPEND_FACTOR x the characters it set out to
     // render (headroom for veracity re-renders); past that it is rendering
     // something it never planned to, and it stops.
-    const spendCap = runSpendCap(uniqueNeeded)
+    const spendCap = runSpendCap(uniqueNeeded, { ceilingChars: req.body.budgetChars })
+    results.midLinked = 0
+    const passJob = `phase8 /generate ${courseCode} ${runStartedAt}${req.body.job ? ` (${String(req.body.job).slice(0, 80)})` : ''}`
     // Pre-publish veracity gate (services/audio-veracity.cjs). ON by default;
     // announceStatus prints one LOUD line if it is off or cannot run, so
     // "published unchecked" can never be mistaken for "published clean".
@@ -3256,7 +3289,7 @@ app.post('/generate/:courseCode', async (req, res) => {
         spendCap.charge(textForTTS)
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceName,
@@ -3264,14 +3297,14 @@ app.post('/generate/:courseCode', async (req, res) => {
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob },
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
@@ -3283,7 +3316,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           // honours it and pinning it halves the take-to-take duration wander on
           // short text; the tts-service defaults it to 1.0 if a caller omits it.
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: item.role === 'presentation' },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
@@ -3434,6 +3467,8 @@ app.post('/generate/:courseCode', async (req, res) => {
         new Promise((_, reject) => setTimeout(() => reject(new Error(`Timed out after ${ms / 1000}s`)), ms))
       ])
       const batchResults = await Promise.allSettled(batch.map(item => withTimeout(() => generateItem(item))))
+      for (const r of batchResults) if (r.status === 'rejected' && isSpendGuardRefusal(r.reason)) spendCap.noteGuardRefusal(r.reason.message)
+      spendCap.checkProgress(results.attached + results.midLinked)
       if (spendCap.tripped && !currentWork.cancelled) {
         logger.error(`[SpendCap] ${courseCode}: ${spendCap.tripped} — stopping this pass`)
         currentWork.cancelled = true
@@ -3466,6 +3501,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       if (batchNum % 10 === 0) {
         try {
           const mid = await linkAudioIds(courseCode)
+          results.midLinked += mid.total || 0
           if (mid.total > 0) logger.info(`Mid-generation link: bound ${mid.total} audio IDs`)
         } catch (e) {
           logger.warn(`Mid-generation link failed: ${e.message}`)
@@ -3558,7 +3594,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       // fills nothing will fill nothing next time either (job #383).
       attached: results.attached + linked,
       reuse: results.reuse,
-      spend: { plannedChars: spendCap.planned, budgetChars: spendCap.budget, spentChars: spendCap.spent, capped: spendCap.tripped },
+      spend: { plannedChars: spendCap.planned, budgetChars: spendCap.budget, spentChars: spendCap.spent, providerCalls: spendCap.renders, capped: spendCap.tripped, tripKind: spendCap.tripKind },
       copied: copyBucketResult.copied,
       copyFailed: copyBucketResult.failed,
       authored: authoredIntros.length,
@@ -9622,3 +9658,4 @@ module.exports.resolvePodSpeakerVoice = resolvePodSpeakerVoice
 module.exports.getAudioNeeds = getAudioNeeds
 module.exports.classifyEnglishCopyBucket = classifyEnglishCopyBucket
 module.exports.executeCopyBucket = executeCopyBucket
+module.exports.runSpendCap = runSpendCap

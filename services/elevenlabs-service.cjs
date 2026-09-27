@@ -7,6 +7,7 @@
 
 const fetch = require('node-fetch');
 const consentGate = require('./shared/voice-consent-gate.cjs');
+const { spendGuard } = require('./shared/tts-spend-guard.cjs');
 const fs = require('fs-extra');
 
 // Configuration from environment
@@ -133,10 +134,16 @@ async function generateAudio(text, voiceId, outputPath, options = {}) {
     enablePriming = false
   } = options;
 
-  await rateLimitRequest();
-
   // Apply priming if enabled and language provided
   const finalText = (enablePriming && language) ? buildPriming(text, language) : text;
+
+  // Spend guard (job #425): this service walks past tts-service.speak (see the
+  // consent note above), so the ledger, budget and repeat check sit here too.
+  await spendGuard().beforeProviderCall({
+    provider: 'elevenlabs', voiceId: String(voiceId), language, text: finalText,
+    courseCode: options.courseCode || null, job: options.job || null,
+  });
+  await rateLimitRequest();
 
   const url = `${ELEVENLABS_API_URL}/text-to-speech/${voiceId}`;
 
@@ -321,10 +328,16 @@ async function generateSpeech(text, voiceId, options = {}) {
     enablePriming = false
   } = options;
 
-  await rateLimitRequest();
-
   // Apply priming if enabled and language provided
   const finalText = (enablePriming && language) ? buildPriming(text, language) : text;
+
+  // Spend guard (job #425): this service walks past tts-service.speak (see the
+  // consent note above), so the ledger, budget and repeat check sit here too.
+  await spendGuard().beforeProviderCall({
+    provider: 'elevenlabs', voiceId: String(voiceId), language, text: finalText,
+    courseCode: options.courseCode || null, job: options.job || null,
+  });
+  await rateLimitRequest();
 
   const url = `${ELEVENLABS_API_URL}/text-to-speech/${voiceId}`;
 

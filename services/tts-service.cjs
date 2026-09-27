@@ -27,6 +27,7 @@ const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 const { identityFromConfig, findExistingClip, clipLibrary } = require('./shared/clip-library.cjs');
 const { assertCastVoice } = require('./shared/voice-cast-gate.cjs');
+const { spendGuard } = require('./shared/tts-spend-guard.cjs');
 
 // Shared keep-alive agent for REST TTS providers (xAI, ElevenLabs). Without it
 // every clip opens a fresh TLS connection — a 14k-clip run churns 14k+
@@ -1041,7 +1042,18 @@ async function renderWithRetry(text, provider, config, maxRetries = 3) {
     console.warn(`[TTS] xAI phonology gate unavailable (${process.env.XAI_PHONO_GATE === '0' ? 'XAI_PHONO_GATE=0' : 'whisper-cli or model missing'}) — non-English xAI renders unchecked for language drift`);
   }
 
+  const door = config.door || {};
+  const { language, voiceId } = identityFromConfig(provider, config);
   for (let attempt = 0; attempt < maxRetries; attempt++) {
+    // THE SPEND GUARD (job #425): every attempt is billed, so every attempt is
+    // ledgered and budget-checked BEFORE it is sent. A refusal is thrown from
+    // outside the try, so it is never classified, retried or re-rolled.
+    await spendGuard().beforeProviderCall({
+      provider, voiceId, language, text, attempt: attempt + 1,
+      courseCode: door.courseCode || config.courseCode || null, job: door.job || null,
+    });
+    doorStats.providerCalls++;
+    doorStats.providerChars += String(text).length;
     try {
       const result = await renderOnce(text, provider, config);
       if (suspects && PHONO_GATE_ON) {
@@ -1167,7 +1179,10 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
 }
 
 /** What this process's door has done — resolved from the library vs paid for. */
-const doorStats = { resolved: 0, rendered: 0, charsSpent: 0, wouldRender: 0, wouldSpendChars: 0 };
+// providerCalls/providerChars count every billed ATTEMPT (retries and re-rolls
+// included); rendered/charsSpent count finished clips. #382's accounting knew
+// only the second, which undercounts whatever the retry loop re-sent.
+const doorStats = { resolved: 0, rendered: 0, charsSpent: 0, wouldRender: 0, wouldSpendChars: 0, providerCalls: 0, providerChars: 0 };
 
 /** The old names. Same door. `generate` is a single attempt. */
 const generate = (text, provider, config) => speak(text, provider, config, 1);

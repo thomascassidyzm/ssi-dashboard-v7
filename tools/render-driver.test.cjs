@@ -1,0 +1,67 @@
+/**
+ * The render driver against a fake phase8 (job #425). No network, no spend.
+ * The "#382 replay" fake returns exactly what passes 2-37 of the eng_for_hin
+ * loop reported: ~10,000 provider calls, ~160 slots attached, "completed".
+ * Run: npx vitest run tools/render-driver.test.cjs
+ */
+import { describe, it, expect } from 'vitest'
+const { runDriver } = require('./render-driver.cjs')
+
+function fakePhase8(passes, plan = { wouldGenerate: 19043, wouldSpendChars: 603664 }) {
+  const posted = []
+  let i = 0
+  return {
+    posted,
+    post: async (body) => {
+      posted.push(body)
+      if (body.dryRun) return { dryRun: true, ...plan }
+      return passes[Math.min(i++, passes.length - 1)]
+    },
+  }
+}
+const pass = (spentChars, providerCalls, attached, status = 'completed') => ({ status, attached, failed: 0, spend: { spentChars, providerCalls, capped: null } })
+
+describe('render driver', () => {
+  it('refuses to run without a character budget', async () => {
+    const f = fakePhase8([])
+    await expect(runDriver({ post: f.post })).rejects.toThrow(/budget-chars is required/)
+  })
+
+  it('without --go it only plans: one dry run, zero renders', async () => {
+    const f = fakePhase8([pass(1, 1, 1)])
+    const out = await runDriver({ post: f.post, budgetChars: 700000 })
+    expect(out.stopped).toMatch(/plan only/)
+    expect(f.posted.every(b => b.dryRun)).toBe(true)
+  })
+
+  it('refuses a plan bigger than the budget', async () => {
+    const f = fakePhase8([pass(1, 1, 1)])
+    const out = await runDriver({ post: f.post, budgetChars: 100000, go: true })
+    expect(out.stopped).toMatch(/plan needs up to 603664/)
+    expect(f.posted.filter(b => !b.dryRun)).toHaveLength(0)
+  })
+
+  it('the #382 replay: stops after the FIRST wasteful pass, not 36 passes later', async () => {
+    // Pass 1 of #382 was healthy (19,031 renders, ~19k slots); pass 2 was the first loop pass.
+    const f = fakePhase8([pass(603664, 19031, 19100), pass(344413, 12057, 160), pass(323246, 11179, 160)])
+    const out = await runDriver({ post: f.post, budgetChars: 8_000_000, go: true, maxPasses: 50 })
+    expect(out.passes).toBe(2)
+    expect(out.stopped).toMatch(/12057 provider calls for 160 slots/)
+    expect(out.spent).toBe(603664 + 344413)
+  })
+
+  it('posts each pass with what is left of the budget, and stops when it is spent', async () => {
+    const f = fakePhase8([pass(400, 10, 10), pass(400, 10, 10), pass(400, 10, 10)], { wouldGenerate: 30, wouldSpendChars: 900 })
+    const out = await runDriver({ post: f.post, budgetChars: 1000, go: true })
+    const renders = f.posted.filter(b => !b.dryRun)
+    expect(renders.map(b => b.budgetChars)).toEqual([1000, 600, 200])
+    expect(out.stopped).toMatch(/budget spent/)
+  })
+
+  it('stops on a pass that attached nothing, and on a service that does not report spend', async () => {
+    let f = fakePhase8([pass(100, 5, 0)])
+    expect((await runDriver({ post: f.post, budgetChars: 1e6, go: true })).stopped).toMatch(/attached 0/)
+    f = fakePhase8([{ status: 'completed', success: 10000, failed: 0 }])
+    expect((await runDriver({ post: f.post, budgetChars: 1e6, go: true })).stopped).toMatch(/did not report spend/)
+  })
+})

@@ -203,6 +203,11 @@ function convertSpeedToRate(speed = 1.0) {
 async function generateSpeech(text, voiceName, language, options = {}) {
   const { rate = 1.0, audioEncoding = 'MP3' } = options;
 
+  // Spend guard (job #425): ledger + budget + repeat check before Google bills.
+  await require('./shared/tts-spend-guard.cjs').spendGuard().beforeProviderCall({
+    provider: 'google', voiceId: voiceName, language, text,
+    courseCode: options.courseCode || null, job: options.job || null,
+  });
   await rateLimitRequest();
 
   // Determine language code
