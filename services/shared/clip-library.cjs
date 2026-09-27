@@ -205,8 +205,8 @@ function memoryClipLibrary(rows = [], bytesFor = () => Buffer.from('existing-cli
  * A library backed by a clip-index source over fixed rows — tests and dry runs
  * that must exercise the index path exactly as the live door does.
  */
-function indexedMemoryClipLibrary({ index = [], rows = [] } = {}, bytesFor = () => Buffer.from('existing-clip')) {
-  const source = clipIndex.memoryClipSource({ index, rows })
+function indexedMemoryClipLibrary({ index = [], rows = [], courses = [] } = {}, bytesFor = () => Buffer.from('existing-clip')) {
+  const source = clipIndex.memoryClipSource({ index, rows, courses })
   return {
     name: 'memory-indexed',
     source,

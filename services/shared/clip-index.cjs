@@ -25,6 +25,53 @@
 
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
+const { targetCastKey, knownCastKey, COURSE_CAST_FIELDS } = require('./cast-language-key.cjs')
+
+/**
+ * THE LANGUAGE OF A CLIP, REGION INCLUDED. Tom, 2026-09-26: "region is a
+ * different language - north/south welsh have very different accents, as does
+ * Mexican spanish". A Castilian clip is never held for a Mexican course, and a
+ * North Welsh clip never answers a South Welsh one — in ANY voice, because the
+ * lookup reuses across voices, so the voice cannot be what keeps them apart.
+ *
+ * The region is read from the COURSE the clip (or the request) belongs to, by
+ * the same rule the voice cast is keyed on (cast-language-key.cjs, Tom
+ * 2026-08-31 "dialects are different LANGUAGES"): courses.voice_pool_key /
+ * courses.dialect for the language a course teaches, courses.known_dialect for
+ * the language it is taught in. So 'spa_mx', 'cym_north', 'cym_south',
+ * 'deu_at', 'fra_ca' — and plain 'spa' for Castilian, which states no region.
+ * Never from course_audio.language (it carries the base tag, or a BCP-47 tag
+ * nobody reconciled) and never from the course code.
+ *
+ *   - the clip's language is the course's TARGET base  -> targetCastKey(course)
+ *   - the clip's language is the course's KNOWN base   -> knownCastKey(course)
+ *   - neither (an English line in spa_for_jpn)          -> the base: nothing
+ *     about its region is stated anywhere;
+ *   - both, and the two sides disagree on region       -> null: unnameable;
+ *   - no course row (a request with no course)          -> the base.
+ *
+ * @param {string} language  any spelling ('es-MX', 'spa', 'cy')
+ * @param {object|null} course  a courses row carrying COURSE_CAST_FIELDS
+ * @returns {string|null}
+ */
+function clipLanguageKey(language, course) {
+  const base = tryCanonicalLanguage(language)
+  if (!base) return null
+  if (!course) return base
+  const onTarget = tryCanonicalLanguage(course.target_lang) === base
+  const onKnown = tryCanonicalLanguage(course.known_lang) === base
+  const t = onTarget ? targetCastKey(course) : null
+  const k = onKnown ? knownCastKey(course) : null
+  if (t && k) return t === k ? t : null
+  return t || k || base
+}
+
+/** The base language of a clip language key ('spa_mx' -> 'spa'). */
+function baseOfClipLanguage(key) {
+  const k = String(key || '')
+  const cut = k.indexOf('_')
+  return cut === -1 ? k : k.slice(0, cut)
+}
 
 /**
  * THE TEXT OF A CLIP. Tom: "character by character". The key is the words as
@@ -48,14 +95,15 @@ function clipTextKey(text) {
  * 'auto' or whose voice is a sentinel cannot be named, so it is counted, not
  * indexed (tryCanonical* return null for those).
  */
-function indexEntryFor(row, indexedBy) {
+function indexEntryFor(row, indexedBy, courseOf = noCourses) {
   if (!row || !row.id) return { skip: 'no-row' }
   if (!row.s3_key || String(row.s3_key).startsWith('pending/')) return { skip: 'pending' }
   if (row.veracity_pass === false) return { skip: 'veracity-failed' }
   const text_key = clipTextKey(row.text)
   if (!text_key) return { skip: 'empty-text' }
-  const language = tryCanonicalLanguage(row.language)
-  if (!language) return { skip: 'language-unnamed' }
+  if (!tryCanonicalLanguage(row.language)) return { skip: 'language-unnamed' }
+  const language = clipLanguageKey(row.language, courseOf(row.course_code))
+  if (!language) return { skip: 'region-ambiguous' }
   const voice_id = tryCanonicalVoiceId(row.voice_id)
   if (!voice_id) return { skip: 'voice-unnamed' }
   return {
@@ -78,13 +126,16 @@ function betterCanonical(a, b) {
   return String(a.id) <= String(b.id) ? a : b
 }
 
+/** A course lookup that knows no course: every clip keys on its base language. */
+const noCourses = () => null
+
 /** One entry per key from a set of rows, canonical row winning. Returns { entries, collisions, skipped }. */
-function entriesFromRows(rows, indexedBy) {
+function entriesFromRows(rows, indexedBy, courseOf = noCourses) {
   const best = new Map()
   const skipped = {}
   let collisions = 0
   for (const row of rows || []) {
-    const e = indexEntryFor(row, indexedBy)
+    const e = indexEntryFor(row, indexedBy, courseOf)
     if (e.skip) { skipped[e.skip] = (skipped[e.skip] || 0) + 1; continue }
     const k = `${e.language}\u001f${e.text_key}\u001f${e.voice_id}`
     const prev = best.get(k)
@@ -154,8 +205,8 @@ async function fallbackRows(supabase, text, { courseCode = null, ownCourseOnly =
  * the clip is in course_audio, the fallback still finds it, and a cache write
  * must never fail a render or a link.
  */
-async function writeThrough(supabase, rows, indexedBy, log = console) {
-  const { entries } = entriesFromRows(rows, indexedBy)
+async function writeThrough(supabase, rows, indexedBy, log = console, courseOf = noCourses) {
+  const { entries } = entriesFromRows(rows, indexedBy, courseOf)
   if (!entries.length) return 0
   try {
     const { error } = await supabase
@@ -173,14 +224,39 @@ async function writeThrough(supabase, rows, indexedBy, log = console) {
 
 const stats = { indexHits: 0, fallbacks: 0, writtenThrough: 0, writeErrors: 0 }
 
+const COURSES_TTL_MS = 5 * 60 * 1000
+
+/**
+ * The courses table (~150 rows) as a lookup, cached. A code the cache does not
+ * hold forces ONE re-read — a course created a minute ago must not have its
+ * clips keyed region-free for five minutes. A read that fails THROWS: keying a
+ * clip without knowing its course's region is how a Castilian clip would be
+ * filed where a Mexican course finds it.
+ */
+function supabaseCourseLookup(supabase) {
+  let map = null, at = 0
+  const load = async () => {
+    const { data, error } = await supabase.from('courses').select(COURSE_CAST_FIELDS)
+    if (error) throw new Error(`clip index: courses unreadable (${error.message}) — refusing to key a clip without its region`)
+    map = new Map((data || []).map(c => [c.course_code, c])); at = Date.now()
+  }
+  return async (codes = []) => {
+    if (!map || Date.now() - at > COURSES_TTL_MS) await load()
+    else if (codes.some(c => c && !map.has(c))) await load()
+    return code => (code && map.get(code)) || null
+  }
+}
+
 /** The live source: clip_index + course_audio in Supabase. */
 function supabaseClipSource(supabase, { log = console, indexedBy = 'write-through' } = {}) {
+  const courses = supabaseCourseLookup(supabase)
   return {
     name: 'supabase',
+    courses,
     indexed: (language, text) => lookupIndexed(supabase, language, text),
     own: (courseCode, text) => ownCourseRows(supabase, courseCode, text),
     fallback: (text, opts) => fallbackRows(supabase, text, opts),
-    write: rows => writeThrough(supabase, rows, indexedBy, log),
+    write: async rows => writeThrough(supabase, rows, indexedBy, log, await courses(rows.map(r => r.course_code))),
   }
 }
 
@@ -189,8 +265,10 @@ function supabaseClipSource(supabase, { log = console, indexedBy = 'write-throug
  * clip_index entries ({ language, text_key, voice_id, audio_id }); `rows` is
  * course_audio. Written-through entries land in `index`, so a test can see them.
  */
-function memoryClipSource({ index = [], rows = [] } = {}) {
+function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
   const byId = new Map(rows.map(r => [r.id, r]))
+  const courseMap = new Map(courses.map(c => [c.course_code, c]))
+  const courseOf = code => (code && courseMap.get(code)) || null
   const calls = { indexed: 0, own: 0, fallback: 0 }
   const matches = (r, text) => {
     const keys = new Set(audioKeyCandidates(text))
@@ -201,6 +279,7 @@ function memoryClipSource({ index = [], rows = [] } = {}) {
     name: 'memory',
     index,
     calls,
+    async courses() { return courseOf },
     async indexed(language, text) {
       calls.indexed++
       const key = clipTextKey(text)
@@ -212,7 +291,7 @@ function memoryClipSource({ index = [], rows = [] } = {}) {
       return rows.filter(r => matches(r, text) && (!ownCourseOnly || r.course_code === courseCode))
     },
     async write(written) {
-      const { entries } = entriesFromRows(written, 'memory')
+      const { entries } = entriesFromRows(written, 'memory', courseOf)
       let n = 0
       for (const e of entries) {
         if (index.some(x => x.language === e.language && x.text_key === e.text_key && x.voice_id === e.voice_id)) continue
@@ -241,14 +320,23 @@ function memoryClipSource({ index = [], rows = [] } = {}) {
  * @param {(rows: object[]) => object|null} pick
  */
 async function resolveClip(source, want, pick) {
-  const language = tryCanonicalLanguage(want.language)
+  if (!tryCanonicalLanguage(want.language)) return pick([])
+  const courseOf = source.courses ? await source.courses([want.courseCode]) : noCourses
+  const language = clipLanguageKey(want.language, courseOf(want.courseCode))
   if (!language) return pick([])
+  // EVERY candidate, from every path, must be in the asked language INCLUDING
+  // ITS REGION — the pick rules compare base languages only, so this filter is
+  // what keeps a Castilian row from answering a Mexican slot.
+  const inLanguage = async rows => {
+    const of = source.courses ? await source.courses(rows.map(r => r && r.course_code)) : noCourses
+    return rows.filter(r => r && clipLanguageKey(r.language, of(r.course_code)) === language)
+  }
   if (want.ownCourseOnly) {
-    return pick(await source.fallback(want.text, { courseCode: want.courseCode, ownCourseOnly: true }))
+    return pick(await inLanguage(await source.fallback(want.text, { courseCode: want.courseCode, ownCourseOnly: true })))
   }
   const voice = want.voiceId ? tryCanonicalVoiceId(want.voiceId) : null
-  const indexed = await source.indexed(language, want.text)
-  const own = (want.includeOwnCourse && want.courseCode) ? await source.own(want.courseCode, want.text) : []
+  const indexed = await inLanguage(await source.indexed(language, want.text))
+  const own = (want.includeOwnCourse && want.courseCode) ? await inLanguage(await source.own(want.courseCode, want.text)) : []
   const first = pick(dedupeById([...own, ...indexed]))
   if (first && (!voice || tryCanonicalVoiceId(first.voice_id) === voice)) {
     stats.indexHits++
@@ -257,7 +345,7 @@ async function resolveClip(source, want, pick) {
   stats.fallbacks++
   const rows = await source.fallback(want.text, {})
   await source.write(rows)
-  return pick(dedupeById([...own, ...indexed, ...rows])) || first
+  return pick(dedupeById([...own, ...indexed, ...await inLanguage(rows)])) || first
 }
 
 function dedupeById(rows) {
@@ -266,6 +354,9 @@ function dedupeById(rows) {
 }
 
 module.exports = {
+  clipLanguageKey,
+  baseOfClipLanguage,
+  supabaseCourseLookup,
   clipTextKey,
   indexEntryFor,
   betterCanonical,

@@ -41,8 +41,8 @@ function row({ course, text, language, voice, role = 'target1', ...rest }) {
 const indexOf = rows => clipIndex.entriesFromRows(rows, 'test').entries
 
 let restoreFetch = null
-function door(rows, { index = indexOf(rows) } = {}) {
-  const lib = clipLib.indexedMemoryClipLibrary({ index, rows }, r => Buffer.from(`bytes-of-${r.id}`))
+function door(rows, { index = indexOf(rows), courses = [] } = {}) {
+  const lib = clipLib.indexedMemoryClipLibrary({ index, rows, courses }, r => Buffer.from(`bytes-of-${r.id}`))
   clipLib.useClipLibrary(lib)
   castGate.useCastRows([])
   const nodeFetch = require('node-fetch')
@@ -224,5 +224,72 @@ describe('rule 4: the ~1% course-specific known line is new per course; its targ
     const { svc, paid } = door(rows)
     await svc.speak('quiero hablar chino', 'cartesia', cfg(GIULIA, 'es-ES', { courseCode: 'zho_for_spa' }))
     expect(paid).toEqual(['quiero hablar chino'])
+  })
+})
+
+describe('rule 5: region is a different language (Tom, 2026-09-26: "north/south welsh have very different accents, as does Mexican spanish")', () => {
+  // Region is stated on the COURSE, exactly as the voice cast reads it
+  // (cast-language-key.cjs): voice_pool_key, dialect, known_dialect.
+  const course = (course_code, known_lang, target_lang, extra = {}) => ({ course_code, known_lang, target_lang, voice_pool_key: null, dialect: 'standard', known_dialect: null, ...extra })
+  const COURSES = [
+    course('spa_for_eng', 'eng', 'spa'),
+    course('spa_mx_for_eng', 'eng', 'spa', { voice_pool_key: 'spa_mx' }),
+    course('spa_mx_for_jpn', 'jpn', 'spa', { voice_pool_key: 'spa_mx' }),
+    course('cym_n_for_eng', 'eng', 'cym', { dialect: 'north' }),
+    course('cym_s_for_eng', 'eng', 'cym', { dialect: 'south' }),
+    course('spa_for_cym', 'cym', 'spa', { known_dialect: 'north' }),
+  ]
+  const courseOf = code => COURSES.find(c => c.course_code === code) || null
+  const castilian = row({ course: 'spa_for_eng', text: 'quiero hablar', language: 'spa', voice: GIULIA })
+  const northern = row({ course: 'cym_n_for_eng', text: 'dw i isio siarad', language: 'cym', voice: TOM })
+  const english = row({ course: 'spa_mx_for_eng', text: 'I want to speak', language: 'eng', voice: CHARLOTTE, role: 'known' })
+
+  it('the index keys a clip by its course\'s region: spa, spa_mx, cym_north, cym_south — and a known side by known_dialect', () => {
+    expect(clipIndex.clipLanguageKey('spa', courseOf('spa_for_eng'))).toBe('spa')
+    expect(clipIndex.clipLanguageKey('es-MX', courseOf('spa_mx_for_eng'))).toBe('spa_mx')
+    expect(clipIndex.clipLanguageKey('eng', courseOf('spa_mx_for_eng'))).toBe('eng')
+    expect(clipIndex.clipLanguageKey('cym', courseOf('cym_n_for_eng'))).toBe('cym_north')
+    expect(clipIndex.clipLanguageKey('cy', courseOf('cym_s_for_eng'))).toBe('cym_south')
+    expect(clipIndex.clipLanguageKey('cym', courseOf('spa_for_cym'))).toBe('cym_north')
+    expect(clipIndex.entriesFromRows([castilian, northern], 't', courseOf).entries.map(e => e.language).sort()).toEqual(['cym_north', 'spa'])
+  })
+
+  it('a Castilian clip is NOT held for a Mexican course — in any voice — so the Mexican line is new', async () => {
+    const { svc, paid } = door([castilian], { index: clipIndex.entriesFromRows([castilian], 't', courseOf).entries, courses: COURSES })
+    const out = await svc.speak('quiero hablar', 'cartesia', cfg(GIULIA, 'es-MX', { courseCode: 'spa_mx_for_eng' }))
+    expect(out.existingClip).toBeNull()
+    expect(paid).toEqual(['quiero hablar'])
+  })
+
+  it('North Welsh is not held for South Welsh, and South is not held for North', async () => {
+    const southern = row({ course: 'cym_s_for_eng', text: 'dw i isio siarad', language: 'cym', voice: TOM })
+    let d = door([northern], { index: clipIndex.entriesFromRows([northern], 't', courseOf).entries, courses: COURSES })
+    expect((await d.svc.speak('dw i isio siarad', 'cartesia', cfg(TOM, 'cy-GB', { courseCode: 'cym_s_for_eng' }))).existingClip).toBeNull()
+    restoreFetch()
+    d = door([southern], { index: clipIndex.entriesFromRows([southern], 't', courseOf).entries, courses: COURSES })
+    expect((await d.svc.speak('dw i isio siarad', 'cartesia', cfg(TOM, 'cy-GB', { courseCode: 'cym_n_for_eng' }))).existingClip).toBeNull()
+  })
+
+  it('a stale region-free index entry (as #391 wrote them) and the course_audio fallback both refuse the other region', async () => {
+    // The pre-fix index filed the Castilian row under 'spa'; the Mexican
+    // request must not see it via that entry nor via the fallback read.
+    const stale = [{ language: 'spa_mx', text_key: 'quiero hablar', voice_id: `cartesia_${GIULIA}`, audio_id: castilian.id }]
+    const { svc, source } = door([castilian], { index: stale, courses: COURSES })
+    const out = await svc.speak('quiero hablar', 'cartesia', cfg(GIULIA, 'es-MX', { courseCode: 'spa_mx_for_eng' }))
+    expect(out.existingClip).toBeNull()
+    expect(source.calls.fallback).toBe(1)
+    // …and what the fallback wrote through is keyed by the row's own region.
+    expect(source.index.filter(e => e.audio_id === castilian.id).map(e => e.language)).toContain('spa')
+  })
+
+  it('the same region still reuses across courses, and English known lines are unaffected by the target\'s region', async () => {
+    const mexican = row({ course: 'spa_mx_for_eng', text: 'quiero hablar', language: 'spa', voice: GIULIA })
+    const rows = [castilian, mexican, english]
+    const { svc, paid } = door(rows, { index: clipIndex.entriesFromRows(rows, 't', courseOf).entries, courses: COURSES })
+    const t = await svc.speak('quiero hablar', 'cartesia', cfg(GIULIA, 'es-MX', { courseCode: 'spa_mx_for_jpn' }))
+    const k = await svc.speak('I want to speak', 'cartesia', cfg(CHARLOTTE, 'en-GB', { courseCode: 'spa_for_eng' }))
+    expect(paid).toHaveLength(0)
+    expect(t.existingClip.id).toBe(mexican.id)
+    expect(k.existingClip.id).toBe(english.id)
   })
 })

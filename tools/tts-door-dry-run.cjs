@@ -35,7 +35,7 @@ const { createClient } = require('@supabase/supabase-js')
 const { audioKeyCandidates, normalizeForAudio } = require('../services/shared/text-normalize.cjs')
 const { identityFromConfig, pickExistingClip } = require('../services/shared/clip-library.cjs')
 const knownVoiceGender = require('../services/shared/known-voice-gender.cjs')
-const { clipTextKey } = require('../services/shared/clip-index.cjs')
+const { clipTextKey, clipLanguageKey, supabaseCourseLookup } = require('../services/shared/clip-index.cjs')
 const { tryCanonicalVoiceId } = require('../services/shared/clip-identity.cjs')
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 
@@ -123,7 +123,9 @@ async function main() {
     const provider = v.provider || (/^[a-z]{2,3}-[A-Za-z]{2,4}-\w+Neural$/.test(v.voiceId) ? 'azure' : 'cartesia')
     const id = identityFromConfig(provider, { voiceId: v.voiceId, voiceName: v.voiceId, door: { language } })
     const key = `${role}|${id.voiceId}|${normalizeForAudio(text)}`
-    if (!slots.has(key)) slots.set(key, { role, text, language: id.language, voiceId: id.voiceId })
+    // `language` is the clip's language WITH its region (spa_mx, cym_north);
+    // `base` is what the pick rule compares once rows are already in region.
+    if (!slots.has(key)) slots.set(key, { role, text, base: id.language, language: clipLanguageKey(id.language, course), voiceId: id.voiceId })
   }
   for (const row of [...seeds, ...legos, ...phrases]) {
     add('known', row.known_text)
@@ -172,12 +174,17 @@ async function main() {
     }
   }
 
+  // A row answers a slot only in the slot's language INCLUDING region (Tom,
+  // 2026-09-26: "region is a different language") — the same filter resolveClip runs.
+  const courseOf = await supabaseCourseLookup(db)()
+  const inRegion = (rows, language) => rows.filter(r => clipLanguageKey(r.language, courseOf(r.course_code)) === language)
+
   const tally = { slots: 0, resolved: 0, charsWouldSpend: 0, resolvedIfNew: 0, charsIfNew: 0, byRole: {} }
   const via = { index_same_voice: 0, index_other_voice: 0, own_course_row: 0, fallback_only_same_voice: 0, fallback_only_other_voice: 0, genuinely_new: 0, chars_would_spend: 0 }
   const misses = []
   for (const s of slots.values()) {
-    const rows = byText.get(normalizeForAudio(s.text)) || []
-    const want = { text: s.text, language: s.language, voiceId: s.voiceId, courseCode, ownCourseOnly: s.role === 'presentation' }
+    const rows = inRegion(byText.get(normalizeForAudio(s.text)) || [], s.language)
+    const want = { text: s.text, language: s.base, voiceId: s.voiceId, courseCode, ownCourseOnly: s.role === 'presentation' }
     const hit = s.language && s.voiceId ? pickExistingClip(rows, want) : null
     const hitElsewhere = s.language && s.voiceId ? pickExistingClip(rows.filter(r => r.course_code !== courseCode), want) : null
     const r = (tally.byRole[s.role] ||= { slots: 0, resolved: 0, resolvedIfNew: 0 })
@@ -188,7 +195,7 @@ async function main() {
     // The live door's question, via the index (resolveClip, batched).
     const sameVoice = row => tryCanonicalVoiceId(row.voice_id) === s.voiceId
     const own = rows.filter(x => x.course_code === courseCode)
-    const indexed = idxRows.get(`${s.language}|${clipTextKey(s.text)}`) || []
+    const indexed = inRegion(idxRows.get(`${s.language}|${clipTextKey(s.text)}`) || [], s.language)
     const first = s.language && s.voiceId && !want.ownCourseOnly ? pickExistingClip([...own, ...indexed], want) : null
     if (first && sameVoice(first)) {
       if (first.course_code === courseCode && !indexed.some(x => x.id === first.id)) via.own_course_row++
