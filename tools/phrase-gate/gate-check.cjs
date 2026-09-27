@@ -46,6 +46,8 @@ const {
   stemKnownGloss, tokenizeKnown,
 } = require('../../services/course-builder/lib/validation.cjs');
 const { courseFamily } = require('../../services/course-builder/lib/course-family.cjs');
+// The live route's own prior-seed vocabulary loader — the gate calls it rather than a copy.
+const { loadTranslationVocab: routeLoadTranslationVocab } = require('../../services/course-builder/lib/vocab-cache.cjs');
 // Kai's deu_for_eng separable-verb ruling (2026-09-21): the containment and vocab
 // gates ask this module where a split or joined verb is admitted; the taught
 // seed carries one extra gate, separableContrast. Everything else is untouched.
@@ -59,7 +61,7 @@ const BUILD_MAX = 4;
 
 const GATE_NAMES = [
   'bareLego', 'buildCountSpec', 'buildUseFloors', 'containment',
-  'vocab', 'futureLego', 'buildRecombination', 'zut', 'knownSide', 'separableContrast',
+  'vocab', 'buildRecombination', 'zut', 'knownSide', 'separableContrast',
   'stemDiversity', 'questionMark', 'knownLowerI',
 ];
 const { checkStemDiversity } = require('./stem-diversity.cjs');
@@ -87,34 +89,21 @@ function lowerIViolations(phrases) {
 }
 
 /**
- * NO PHRASE MAY USE A LEGO THE LEARNER HAS NOT MET YET — Tom, 2026-09-27 (job
- * #409), stated as absolute: a tile must come from a LEGO introduced STRICTLY
- * BEFORE the current one in course order, and that includes the LEGOs of the
- * same seed that come after it. The `vocab` gate below cannot see this: it
- * replays /seed/complete, which validates a whole seed at once and so lends
- * every sibling's words to every sibling (ita S0002L01 "I'm trying to learn"
- * borrowed S0002L02 "imparare" and passed). Two independent checks, either one
- * fails the set:
- *   - the phrase's own tiles naming a later LEGO id;
- *   - the target text not tiling from STRICTLY EARLIER vocabulary even though
- *     it tiles from the seed-wide one — the model need not admit the borrowing.
+ * THE LEGO-LEVEL VOCABULARY, as /seed/complete accumulates it: prior seeds, then
+ * this seed's LEGOs in index order up to (not including) this one → priorVocab;
+ * plus this LEGO and, for an M-LEGO, its components → withLego. Pure.
  */
-function legoOrder(id) {
-  const m = String(id || '').match(/S(\d+)L(\d+)/);
-  return m ? [Number(m[1]), Number(m[2])] : null;
-}
-function isAfter(id, seedNumber, legoIndex) {
-  const o = legoOrder(id);
-  return !!o && (o[0] > seedNumber || (o[0] === seedNumber && o[1] > legoIndex));
-}
-/** Pure: phrases whose tiles name a LEGO after (seedNumber, legoIndex). */
-function futureTileViolations(phrases, seedNumber, legoIndex) {
-  const out = [];
-  for (const p of phrases) {
-    const later = (p.tiles || []).filter((t) => isAfter(t.legoId, seedNumber, legoIndex)).map((t) => t.legoId);
-    if (later.length) out.push({ phrase: p.target, known: p.known, later });
+function cumulativeVocab(priorSeedVocab, siblings, legoIndex, legoTarget, components, chinese) {
+  const priorVocab = new Set(priorSeedVocab);
+  for (const sl of [...(siblings || [])].sort((a, b) => a.lego_index - b.lego_index)) {
+    if (sl.lego_index >= legoIndex) break;
+    extractVocab(sl.target_text, chinese).forEach((v) => priorVocab.add(v));
+    if (sl.type === 'M' && sl.components) for (const c of sl.components) extractVocab(c.target, chinese).forEach((v) => priorVocab.add(v));
   }
-  return out;
+  const withLego = new Set(priorVocab);
+  extractVocab(legoTarget, chinese).forEach((v) => withLego.add(v));
+  for (const c of components || []) extractVocab(c.target, chinese).forEach((v) => withLego.add(v));
+  return { priorVocab, withLego };
 }
 
 // ─── Known-side seed context ────────────────────────────────────────────
@@ -308,58 +297,40 @@ async function checkPhraseSet(entry, ctx) {
   // Clause 8, reported not gated: a separable-verb LEGO introduced split.
   const separableLegoShape = checkSeparableLegoShape(courseCode, seedNumber, legoTarget);
 
-  // ── vocab set: prior seeds + DB siblings of this seed + this LEGO's own ──
-  const vocabSet = ctx.vocabCache.get(seedNumber) || await (async () => {
-    const v = await loadTranslationVocab(supabase, courseCode, seedNumber);
-    const sib = await loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chinese);
-    sib.forEach(w => v.add(w));
-    ctx.vocabCache.set(seedNumber, v);
-    return v;
-  })();
-
-  // Snapshot BEFORE this LEGO's own vocab is folded in — the anti-template gate
-  // needs "previously introduced", not "including this LEGO".
-  const priorVocab = new Set(vocabSet);
-  const withLego = new Set(vocabSet);
-  extractVocab(legoTarget, chinese).forEach(v => withLego.add(v));
-  // Fold in so a later entry in the same seed sees it as an earlier LEGO,
-  // matching seed-complete.cjs's in-order accumulation.
-  withLego.forEach(v => vocabSet.add(v));
+  // ── vocab: EXACTLY what /seed/complete checks (routes/seed-complete.cjs §3) ──
+  // The live builder is LEGO-level: it sorts a seed's LEGOs by index and, for
+  // each one, adds that LEGO's vocabulary to the running set and only then
+  // checks that LEGO's phrases — so a phrase may use prior seeds (their LEGOs
+  // and their sentences, via the route's own loadTranslationVocab), EARLIER
+  // LEGOs of its own seed, and itself, never a later sibling. The seed sentence
+  // goes in as extraTexts, which only the separable-verb augmentation reads; it
+  // is not tiling vocabulary. Same function, same set, same options: no rule of
+  // this gate's own (Tom, 2026-09-27).
+  //
+  // Until 2026-09-27 this replay loaded EVERY sibling of the seed (copied from
+  // the single-LEGO /api/phrases path, seed-complete.cjs ~L505, which does the
+  // same), so a v3 phrase could borrow a later sibling and pass: ita S0002L01
+  // "I'm trying to learn" used S0002L02 "imparare". That was this gate's hole,
+  // not the live builder's.
+  ctx.priorSeedVocab = ctx.priorSeedVocab || new Map();
+  ctx.siblingRows = ctx.siblingRows || new Map();
+  if (!ctx.priorSeedVocab.has(seedNumber)) ctx.priorSeedVocab.set(seedNumber, await routeLoadTranslationVocab({ supabase }, courseCode, seedNumber));
+  if (!ctx.siblingRows.has(seedNumber)) {
+    const { data } = await supabase.from('course_legos').select('lego_index, target_text, type, components')
+      .eq('course_code', courseCode).eq('seed_number', seedNumber);
+    ctx.siblingRows.set(seedNumber, data || []);
+  }
+  const { priorVocab, withLego } = cumulativeVocab(ctx.priorSeedVocab.get(seedNumber), ctx.siblingRows.get(seedNumber),
+    legoIndex, legoTarget, entry.components, chinese);
 
   {
     const allPhrases = [...build, ...use];
-    // The seed's own target is a heard text: seed-complete.cjs passes it as
-    // extraTexts on the v3 path, and the separable-verb augmentation derives the
-    // finite piece of a split verb from it ("stimme" from "Ich stimme dem zu").
-    // Without it this replay refused the seed-83 basket the ruling describes.
     const seedTarget = entry.seedTarget || await seedTargetOf(supabase, courseCode, seedNumber, ctx);
     const violations = allPhrases.length
       ? checkVocabViolations(allPhrases, withLego, courseCode, { seedNumber, extraTexts: seedTarget ? [seedTarget] : [] })
       : [];
     if (violations.length > 0) fail('vocab', { violations: violations.slice(0, 5), total: violations.length });
     else pass('vocab', { vocabSize: withLego.size });
-
-    // ── futureLego (Tom 2026-09-27): strictly-earlier vocabulary only ──
-    const strictKey = `${seedNumber}:${legoIndex}`;
-    ctx.strictVocabCache = ctx.strictVocabCache || new Map();
-    const strict = ctx.strictVocabCache.get(strictKey) || await (async () => {
-      const v = await loadTranslationVocab(supabase, courseCode, seedNumber);
-      (await loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chinese, { beforeIndex: legoIndex })).forEach((w) => v.add(w));
-      ctx.strictVocabCache.set(strictKey, v);
-      return v;
-    })();
-    const strictWithLego = new Set(strict);
-    extractVocab(legoTarget, chinese).forEach((v) => strictWithLego.add(v));
-    for (const c of entry.components || []) extractVocab(c.target, chinese).forEach((v) => strictWithLego.add(v));
-    // extraTexts reaches only the separable-verb augmentation, never the vocab
-    // itself, so the seed's own sentence cannot smuggle a later sibling in.
-    const strictViolations = allPhrases.length
-      ? checkVocabViolations(allPhrases, strictWithLego, courseCode, { seedNumber, extraTexts: seedTarget ? [seedTarget] : [] })
-      : [];
-    const tileViolations = futureTileViolations(allPhrases, seedNumber, legoIndex);
-    const future = [...tileViolations, ...strictViolations.filter((v) => !tileViolations.some((t) => t.phrase === v.phrase))];
-    if (future.length > 0) fail('futureLego', { total: future.length, violations: future.slice(0, 5) });
-    else pass('futureLego');
   }
 
   // ── BUILD anti-template / recombination ──
@@ -456,9 +427,7 @@ function failureFeedback(result) {
       case 'knownSide':
         lines.push(`knownSide: ${g.total} phrase(s) use English the learner has not been given. ${(g.breaches || []).map(b => `"${b.known}" (${b.problem})`).join('; ')}`); break;
       case 'vocab':
-        lines.push(`vocab: ${g.total} phrase(s) use target words not yet introduced: ${JSON.stringify(g.violations)}`); break;
-      case 'futureLego':
-        lines.push(`futureLego: ${g.total} phrase(s) use a LEGO the learner has not met yet — only LEGOs from EARLIER seeds and EARLIER LEGOs of this seed may appear, never a later LEGO of this seed: ${JSON.stringify(g.violations)}`); break;
+        lines.push(`vocab: ${g.total} phrase(s) use target words not yet introduced — only LEGOs from earlier seeds and EARLIER LEGOs of this seed, as whole chunks: ${JSON.stringify(g.violations)}`); break;
       case 'zut':
         lines.push(`zut: ${g.total} phrase(s) collide with an existing known->target mapping: ${JSON.stringify(g.collisions)}`); break;
       case 'containment':
@@ -486,7 +455,7 @@ function failureFeedback(result) {
 
 module.exports = {
   GATE_NAMES, BUILD_MIN, BUILD_MAX,
-  makeCourseCtx, checkPhraseSet, failureFeedback, futureTileViolations, isAfter,
+  makeCourseCtx, checkPhraseSet, failureFeedback, cumulativeVocab,
   knownIsQuestion, questionMarkViolations, lowerIViolations,
   // exported for read-only replays (tools/phrase-gate/separable-dry-run.cjs)
   loadTranslationVocab, loadSameSeedSiblingVocab,
