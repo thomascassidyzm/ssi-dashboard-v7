@@ -72,6 +72,15 @@ describe('the walk registry, joined to the canonical store', () => {
     }
   })
 
+  // A retired card says retired and nothing more is owed on it. Both Method cuts
+  // kept "Tom's choice is outstanding" after #410 retired them, so the admin card
+  // still asked for a decision the retirement had already made (job #420).
+  it('leaves nothing outstanding on a retired walk card', () => {
+    for (const r of CORPORA.retired) {
+      expect(r.note).not.toMatch(/outstanding|choice is|awaiting|pending/i)
+    }
+  })
+
   it('flags a retired walk that reappears in the store as drift', () => {
     const groups = buildGroups(CORPORA, { dbPods: [{ slug: 'method-pod-43-scene', lines: 276, scenes: 43 }] })
     expect(find(groups, 'method-pod-43-scene').drift).toBe(true)
