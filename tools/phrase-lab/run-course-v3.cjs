@@ -85,9 +85,19 @@ async function main() {
   // invokes per chunk, so the view tracks the course as it grows.
   const { courseStemShares, windowedStemShares } = require('../phrase-gate/stem-diversity.cjs');
   const stemBaskets = [];
-  for (const sd of (fs.existsSync(out) ? fs.readdirSync(out) : []).filter((d) => /^seed-\d+$/.test(d))) {
-    for (const f of fs.readdirSync(path.join(out, sd)).filter((x) => x.endsWith('.json'))) {
-      try { const r = JSON.parse(fs.readFileSync(path.join(out, sd, f), 'utf8')); if (r.seedNumber > 10) stemBaskets.push({ seed: r.seedNumber, legoKnown: r.legoKnown, phrases: [...(r.build || []), ...(r.use || [])], use: r.use || [] }); } catch { /* mid-write */ }
+  // --view <dir>: another candidates tree to count as the course too (the
+  // slot-dealing pilot writes its third to its own tree but must see the rest
+  // of the course the other arm has written). Same seed in both → `out` wins.
+  const viewDirs = [out, ...(arg('--view') ? [arg('--view')] : [])];
+  const seenKeys = new Set();
+  for (const vd of viewDirs) for (const sd of (fs.existsSync(vd) ? fs.readdirSync(vd) : []).filter((d) => /^seed-\d+$/.test(d))) {
+    for (const f of fs.readdirSync(path.join(vd, sd)).filter((x) => x.endsWith('.json'))) {
+      if (vd !== out && fs.existsSync(path.join(out, sd, f))) continue;
+      // The other arm's version of THIS arm's own range is not this arm's course.
+      if (vd !== out && arg('--view-before') && Number(sd.slice(5)) >= Number(arg('--view-before'))) continue;
+      if (seenKeys.has(`${sd}/${f}`)) continue;
+      seenKeys.add(`${sd}/${f}`);
+      try { const r = JSON.parse(fs.readFileSync(path.join(vd, sd, f), 'utf8')); if (r.seedNumber > 10) stemBaskets.push({ seed: r.seedNumber, legoKnown: r.legoKnown, phrases: [...(r.build || []), ...(r.use || [])], use: r.use || [] }); } catch { /* mid-write */ }
     }
   }
   {
