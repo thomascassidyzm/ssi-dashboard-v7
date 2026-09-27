@@ -18,12 +18,18 @@ test('d1: one collocate hugging the LEGO in more than two USE phrases fails (deu
 });
 
 test('d2: a stem over 25% of nearby baskets may appear once, not twice', () => {
-  const shares = new Map([['he said that', 0.73]]);
+  const shares = new Map([['he said that', 0.28]]);
   const once = checkStemDiversity({ legoKnown: 'the key', build: [], use: [{ known: 'he said that the key is here' }, { known: 'I lost the key' }] }, shares);
   const twice = checkStemDiversity({ legoKnown: 'the key', build: [{ known: 'he said that the key' }], use: [{ known: 'he said that the key is here' }] }, shares);
   assert.strictEqual(once.pass, true);
   assert.strictEqual(twice.pass, false);
   assert.strictEqual(twice.course[0].stem, 'he said that');
+});
+
+test('above 30% a stem is refused outright, not merely capped', () => {
+  const r = checkStemDiversity({ legoKnown: 'the key', build: [], use: [{ known: 'did you see the key' }] }, new Map([['did you see', 0.33]]));
+  assert.strictEqual(r.pass, false);
+  assert.strictEqual(r.course[0].cap, 0);
 });
 
 test('the share judged is the higher of course-wide and the local window', () => {

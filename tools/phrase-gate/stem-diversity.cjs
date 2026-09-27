@@ -109,6 +109,15 @@ function windowedStemShares(baskets, centreSeed, opts = {}) {
 const WITHIN_MAX = 2;       // d1: a stem or collocate in at most 2 USE phrases of a basket
 const COURSE_SHARE = 0.25;  // d2: a stem in more than this share of baskets …
 const COURSE_CAP = 1;       //     … may appear at most once in this basket
+/**
+ * THE CEILING. "At most once" cannot lower a share: a stem already over 25%
+ * can still appear once in every basket. Measured on the (b)+(d) pilot (ita
+ * 381-400, 2026-09-27): the old house frames fell from 73% to under 23%, but a
+ * NEW frame ("did you see") emerged to 33% within the pilot itself. So above
+ * COURSE_BAN of the local window a stem is refused outright in this basket —
+ * 25% stays the soft target the prompt states, 30% becomes the hard ceiling.
+ */
+const COURSE_BAN = 0.30;
 
 /**
  * The gate. Pure. `shares` is a Map stem → course share (may be empty).
@@ -130,7 +139,8 @@ function checkStemDiversity({ legoKnown, build = [], use = [] }, shares = new Ma
   for (const p of [...build, ...use]) for (const s of stemsOf(p.known, legoKnown)) allCount.set(s, (allCount.get(s) || 0) + 1);
   for (const [s, k] of allCount) {
     const share = shares.get(s);
-    if (share !== undefined && share > COURSE_SHARE && k > COURSE_CAP) course.push({ stem: s, share: Number(share.toFixed(2)), count: k });
+    const cap = share === undefined ? Infinity : share > COURSE_BAN ? 0 : share > COURSE_SHARE ? COURSE_CAP : Infinity;
+    if (k > cap) course.push({ stem: s, share: Number(share.toFixed(2)), count: k, cap });
   }
   return { pass: !within.length && !course.length, within, course };
 }
@@ -139,7 +149,7 @@ function checkStemDiversity({ legoKnown, build = [], use = [] }, shares = new Ma
 function overuseSection(shares, { top = 15, floor = 0.10 } = {}) {
   const list = [...shares.entries()].filter(([, v]) => v >= floor).sort((a, b) => b[1] - a[1]).slice(0, top);
   if (!list.length) return '';
-  const lines = list.map(([s, v]) => `- "${s}" — already in ${Math.round(v * 100)}% of the baskets around this point in the course${v > COURSE_SHARE ? ': at most ONCE in this basket, and better not at all' : ': use sparingly'}`);
+  const lines = list.map(([s, v]) => `- "${s}" — already in ${Math.round(v * 100)}% of the baskets around this point in the course${v > COURSE_BAN ? ': NOT AT ALL in this basket (the gate refuses it)' : v > COURSE_SHARE ? ': at most ONCE in this basket, and better not at all' : ': use sparingly'}`);
   return `
 
 ---
@@ -148,7 +158,8 @@ function overuseSection(shares, { top = 15, floor = 0.10 } = {}) {
 
 Every basket is written separately, and they keep converging on the same few
 frames. These English stems are already everywhere in this course. A stem over
-${Math.round(COURSE_SHARE * 100)}% may appear at most once in your whole set (the gate refuses more); and
+${Math.round(COURSE_SHARE * 100)}% may appear at most once in your whole set, and one over ${Math.round(COURSE_BAN * 100)}% not at all
+(the gate refuses more); and
 within your USE phrases no three-word stem and no word hugging the LEGO may
 appear more than ${WITHIN_MAX} times. Find frames the course has NOT worn out yet —
 naturally: a plain natural sentence beats a contorted rare one.
@@ -177,5 +188,5 @@ function loadCandidateStemBaskets(dir) {
 module.exports = {
   loadCandidateStemBaskets,
   tokens, stemsOf, collocatesOf, courseStemShares, windowedStemShares, checkStemDiversity, overuseSection, WINDOW_SEEDS,
-  WITHIN_MAX, COURSE_SHARE, COURSE_CAP,
+  WITHIN_MAX, COURSE_SHARE, COURSE_CAP, COURSE_BAN,
 };

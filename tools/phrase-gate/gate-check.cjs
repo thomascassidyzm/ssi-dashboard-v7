@@ -435,7 +435,7 @@ function failureFeedback(result) {
       case 'separableContrast':
         lines.push(`separableContrast: this is the seed where the German split is taught — the set has ${g.split} split and ${g.joined} joined realisation(s) of ${(g.verbs || []).join(', ')}; write at least ${g.required} of EACH, very short`); break;
       case 'stemDiversity':
-        lines.push(`stemDiversity: ${[...(g.within || []).map((w) => `the ${w.kind} "${w.item}" is in ${w.count} USE phrases (at most 2)`), ...(g.course || []).map((c) => `"${c.stem}" is already in ${Math.round(c.share * 100)}% of the baskets around this point in the course and appears ${c.count} times here (at most once)`)].join('; ')} — rewrite those phrases on different frames`); break;
+        lines.push(`stemDiversity: ${[...(g.within || []).map((w) => `the ${w.kind} "${w.item}" is in ${w.count} USE phrases (at most 2)`), ...(g.course || []).map((c) => `"${c.stem}" is already in ${Math.round(c.share * 100)}% of the baskets around this point in the course and appears ${c.count} times here (at most ${c.cap === 0 ? 'zero — find another frame' : 'once'})`)].join('; ')} — rewrite those phrases on different frames`); break;
       case 'questionMark':
         lines.push(`questionMark: ${g.total} question(s) missing "?" on the English or the target side — every question keeps its "?" on BOTH sides: ${(g.examples || []).join(' | ')}`); break;
       case 'knownLowerI':
