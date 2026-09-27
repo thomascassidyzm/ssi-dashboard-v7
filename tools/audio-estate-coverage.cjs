@@ -20,6 +20,12 @@
  * course, from seeds, LEGOs and practice phrases — known, target1, target2 —
  * with the Hindi-style gendered known split applied exactly as phase8 does.
  *
+ * REGION (job #394, Tom 2026-09-26: "region is a different language"): every
+ * line is asked in its course's language WITH region (clipLanguageKey —
+ * spa_mx, cym_north), so a Castilian clip never counts as held for Mexican
+ * Spanish. The index must have been re-keyed first
+ * (tools/clip-index-backfill.cjs --region-rekey), then --refresh-index.
+ *
  * Load: clip_index is read once by primary-key keyset pages (never a scan
  * under one statement) and cached on disk; course content is read per course
  * by keyset pages. Every statement runs under a 15s timeout.
@@ -33,8 +39,7 @@ const { Client } = require('pg')
 const { normalizeForAudio } = require('../services/shared/text-normalize.cjs')
 const { identityFromConfig } = require('../services/shared/clip-library.cjs')
 const knownVoiceGender = require('../services/shared/known-voice-gender.cjs')
-const { clipTextKey } = require('../services/shared/clip-index.cjs')
-const { tryCanonicalLanguage } = require('../services/shared/clip-identity.cjs')
+const { clipTextKey, clipLanguageKey } = require('../services/shared/clip-index.cjs')
 const { isHumanVoiceCourse } = require('../services/shared/human-voice-courses.cjs')
 const { evidencePath } = require('./lib/evidence-path.cjs')
 
@@ -149,7 +154,7 @@ async function analyseCourse(client, course, index) {
     const provider = v.provider || (/^[a-z]{2,3}-[A-Za-z]{2,4}-\w+Neural$/.test(v.voiceId) ? 'azure' : 'cartesia')
     const id = identityFromConfig(provider, { voiceId: v.voiceId, voiceName: v.voiceId, door: { language } })
     const key = `${role}|${id.voiceId}|${normalizeForAudio(text)}`
-    if (!slots.has(key)) slots.set(key, { role, text, language: id.language, voiceId: id.voiceId })
+    if (!slots.has(key)) slots.set(key, { role, text, language: clipLanguageKey(id.language, course), voiceId: id.voiceId })
   }
   for (const row of [...seeds, ...legos, ...phrases]) {
     add('known', row.known_text)
@@ -181,17 +186,22 @@ async function analyseCourse(client, course, index) {
 
 /** Pod 1: the language's 231 canonical target lines, and each serving pod's lines, against the index. */
 async function analysePods(client, index, courses) {
+  // A pod's target_lang is split_part(course_code, '_for_', 1) ('cym_n',
+  // 'spa_mx'); its region is whatever the courses of that prefix state.
+  const podKey = lang => {
+    const c = courses.find(x => x.course_code.startsWith(`${lang}_for_`))
+    return clipLanguageKey(String(lang).split('_')[0], c || null)
+  }
   const { rows: canon } = await client.query(`SELECT target_lang, target_text FROM canonical_pod_target_text WHERE pod_slug = 'pod-1'`)
   const byLang = {}
   for (const r of canon) {
     const b = (byLang[r.target_lang] ||= { lines: 0, held_any: 0, missing: 0, missing_near: 0, chars_missing: 0, voices: {} })
     b.lines++
-    // canonical_pod_target_text keys regional variants ('ara_eg'); the index is region-free.
-    const have = index.byWords.get(`${tryCanonicalLanguage(r.target_lang)}\u001f${clipTextKey(r.target_text)}`)
+    const have = index.byWords.get(`${podKey(r.target_lang)}\u001f${clipTextKey(r.target_text)}`)
     if (have && have.size) { b.held_any++; for (const v of have) b.voices[v] = (b.voices[v] || 0) + 1 }
     else {
       b.missing++; b.chars_missing += [...String(r.target_text || '')].length
-      if (index.loose.has(`${tryCanonicalLanguage(r.target_lang)}\u001f${looseKey(r.target_text)}`)) b.missing_near++
+      if (index.loose.has(`${podKey(r.target_lang)}\u001f${looseKey(r.target_text)}`)) b.missing_near++
     }
   }
   const { rows: serving } = await client.query(`SELECT course_code, pod_id FROM serving_pod WHERE slug = 'pod-1'`)
@@ -210,7 +220,7 @@ async function analysePods(client, index, courses) {
     const side = (text, linked, lang) => {
       if (!text || !String(text).trim()) return 'empty'
       if (linked) return 'linked'
-      const have = index.byWords.get(`${tryCanonicalLanguage(lang)}\u001f${clipTextKey(text)}`)
+      const have = index.byWords.get(`${clipLanguageKey(lang, c)}\u001f${clipTextKey(text)}`)
       return have && have.size ? 'held_unlinked' : 'missing'
     }
     const t = { course_code, pod_id, status: c.new_app_status, lines: rows.length, known: {}, target: {}, chars_missing_known: 0, chars_missing_target: 0 }
@@ -235,7 +245,7 @@ async function main() {
     log(`clip_index: ${index.total} entries, ${index.byWords.size} distinct (language, words)`)
     const { rows: [ca] } = await client.query(`SELECT reltuples::bigint AS n FROM pg_class WHERE relname = 'course_audio'`)
     const { rows: courses } = await client.query(
-      `SELECT course_code, known_lang, target_lang, voice_config, new_app_status, status FROM courses ORDER BY course_code`)
+      `SELECT course_code, known_lang, target_lang, voice_pool_key, dialect, known_dialect, voice_config, new_app_status, status FROM courses ORDER BY course_code`)
     const perCourse = []
     for (const c of courses) {
       try { perCourse.push(await analyseCourse(client, c, index)); log(`  ${c.course_code}`) } catch (e) { perCourse.push({ course_code: c.course_code, error: e.message }); log(`  ${c.course_code} ERROR ${e.message}`) }
