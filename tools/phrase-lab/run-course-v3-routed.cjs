@@ -24,13 +24,20 @@
  * --per-pool concurrency. Total in flight = pools × per-pool. The safe figures
  * come from the measured ramp, not from assumption.
  *
+ * --box-target N: THE BOX IS THE LIMIT, NOT THE TOKENS (Tom, 2026-09-27: aim
+ * for close to 12 workers in play box-wide). Before each chunk the driver
+ * counts every `claude` process on the machine, subtracts the ones its own
+ * lanes are running, and gives the chunk only what is left of N (at least 1,
+ * at most --per-pool). Other people's workers arriving shrink this run; their
+ * leaving grows it back, chunk by chunk.
+ *
  * WRITES NOTHING TO THE DATABASE. Needs CS_CONV_TOKEN in the environment to
  * read the routing ladder.
  *
  *   CS_CONV_TOKEN=… node tools/phrase-lab/run-course-v3-routed.cjs ita_for_eng \
  *     --from 11 --to 668 --out <candidates-dir> --pools 3 --per-pool 8 --chunk 6
  */
-const { spawn } = require('child_process');
+const { spawn, execFileSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 const os = require('os');
@@ -69,6 +76,17 @@ async function main() {
   const busy = new Set();
   const retried = new Set();
   let fatal = null;
+  const boxTarget = +arg('--box-target', 0);
+  let mine = 0; // claude processes this driver's lanes have in flight
+
+  /** Workers this chunk may use: what is left of the box target, or --per-pool. */
+  function chunkConcurrency() {
+    if (!boxTarget) return perPool;
+    let all = 0;
+    try { all = Number(execFileSync('pgrep', ['-c', '-x', 'claude']).toString().trim()) || 0; } catch { all = 0; }
+    const others = Math.max(0, all - mine);
+    return Math.max(1, Math.min(perPool, boxTarget - others - mine));
+  }
 
   async function lane() {
     for (;;) {
@@ -80,16 +98,19 @@ async function main() {
       const chunk = queue.shift();
       if (!chunk) return;
       busy.add(pool);
+      const conc = chunkConcurrency();
+      mine += conc;
       const started = Date.now();
       const rc = await new Promise((resolve) => {
         const child = spawn(process.execPath, [path.join(__dirname, 'run-course-v3.cjs'), course,
-          '--from', String(chunk[0]), '--to', String(chunk[1]), '--out', out, '--concurrency', String(perPool)],
+          '--from', String(chunk[0]), '--to', String(chunk[1]), '--out', out, '--concurrency', String(conc)],
         { env: { ...process.env, SSI_CLAUDE_CONFIG_DIR: path.join(accountsDir, pool) }, stdio: ['ignore', 'inherit', 'inherit'] });
         child.on('exit', (code) => resolve(code ?? 1));
       });
       busy.delete(pool);
-      fs.appendFileSync(logPath, JSON.stringify({ ts: new Date().toISOString(), pool, seeds: chunk, perPool, rc, secs: Math.round((Date.now() - started) / 1000) }) + '\n');
-      console.log(`=== seeds ${chunk[0]}-${chunk[1]} on ${pool} rc=${rc} in ${Math.round((Date.now() - started) / 1000)}s`);
+      mine -= conc;
+      fs.appendFileSync(logPath, JSON.stringify({ ts: new Date().toISOString(), pool, seeds: chunk, conc, rc, secs: Math.round((Date.now() - started) / 1000) }) + '\n');
+      console.log(`=== seeds ${chunk[0]}-${chunk[1]} on ${pool} x${conc} rc=${rc} in ${Math.round((Date.now() - started) / 1000)}s`);
       if (rc === POOL_EXHAUSTED_EXIT) { exhausted.add(pool); queue.unshift(chunk); continue; }
       if (rc !== 0) {
         const k = chunk.join('-');
