@@ -70,7 +70,10 @@ function codexJudge(prompt, model) {
   const out = path.join(os.tmpdir(), `nat-judge-${process.pid}-${Date.now()}.txt`);
   return new Promise((resolve, reject) => {
     const env = { ...process.env, PATH: `${path.dirname(CODEX_BIN)}:${process.env.PATH}` };
-    const child = spawn(CODEX_BIN, ['exec', '--sandbox', 'read-only', '--skip-git-repo-check', '-C', os.tmpdir(), '-o', out, '-m', model, '-'],
+    // ONE CODEX CALL AT A TIME, BOX-WIDE, across every judge process this pass
+    // runs (the chain's and the slot pilot's): flock on one lock file.
+    const lock = path.join(os.homedir(), '.cs-codex-judge.lock');
+    const child = spawn('flock', [lock, CODEX_BIN, 'exec', '--sandbox', 'read-only', '--skip-git-repo-check', '-C', os.tmpdir(), '-o', out, '-m', model, '-'],
       { env, stdio: ['pipe', 'ignore', 'pipe'] });
     let err = '';
     child.stderr.on('data', (d) => { err += d; });
