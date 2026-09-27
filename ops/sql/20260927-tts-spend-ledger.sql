@@ -65,6 +65,10 @@ create table if not exists public.tts_spend_limit_log (
 revoke all on public.tts_spend_ledger, public.tts_spend_trips, public.tts_spend_limit_log from public, anon, authenticated;
 -- The ledger is append-only even for service_role: no DELETE, no TRUNCATE.
 grant select, insert, update on public.tts_spend_ledger, public.tts_spend_limit_log to service_role;
+-- Supabase's default privileges hand new tables ALL to service_role before this
+-- grant runs (seen live, job #440): take DELETE and TRUNCATE back explicitly so
+-- the grants say what the trigger enforces.
+revoke delete, truncate on public.tts_spend_ledger, public.tts_spend_limit_log from service_role;
 grant all on public.tts_spend_trips to service_role;   -- a human clears a trip by deleting its row
 revoke all on sequence public.tts_spend_ledger_id_seq, public.tts_spend_limit_log_id_seq from public, anon, authenticated;
 grant usage, select on sequence public.tts_spend_ledger_id_seq, public.tts_spend_limit_log_id_seq to service_role;

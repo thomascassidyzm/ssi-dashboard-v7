@@ -573,6 +573,14 @@ async function defaultNotify(entry) {
  * character; it needs an ADMIN key (sk_car_admin_…, play.cartesia.ai/keys/admin)
  * in CARTESIA_ADMIN_API_KEY. No such key is in this estate's .env today, so the
  * Cartesia reader is off until one is made.
+ *
+ * TESTED with the NORMAL key (CARTESIA_API_KEY, sk_car_…) on 2026-09-27, job
+ * #440, at Tom's ask: GET /usage/credits answered 401 "You must be logged in
+ * to access this endpoint" under both Cartesia-Version 2025-04-16 and
+ * 2026-08-14 (Bearer and X-API-Key alike); the same key answered GET /voices/
+ * 200 in the same minute, so the key is good and the endpoint wants more. The
+ * public API index lists /usage/credits under "Admin > Usage". /v1/usage/credits
+ * is 404. So: the normal key CANNOT read usage; an admin key is required.
  */
 function liveUsageReaders(env = process.env, { now = () => Date.now(), cycleStartDay = () => 1 } = {}) {
   const readers = {}
