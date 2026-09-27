@@ -79,13 +79,31 @@ async function main() {
   const boxTarget = +arg('--box-target', 0);
   let mine = 0; // claude processes this driver's lanes have in flight
 
-  /** Workers this chunk may use: what is left of the box target, or --per-pool. */
+  /** claude processes descended from this driver, counted from the process table (not from intent). */
+  function myClaudeCount() {
+    let rows = [];
+    try { rows = execFileSync('ps', ['-eo', 'pid=,ppid=,comm=']).toString().trim().split('\n').map((l) => l.trim().split(/\s+/)); } catch { return 0; }
+    const kids = new Map();
+    for (const [pid, ppid] of rows) (kids.get(ppid) || kids.set(ppid, []).get(ppid)).push(pid);
+    const comm = new Map(rows.map(([pid, , c]) => [pid, c]));
+    let n = 0; const stack = [String(process.pid)];
+    while (stack.length) { const p = stack.pop(); for (const k of kids.get(p) || []) { if (comm.get(k) === 'claude') n += 1; stack.push(k); } }
+    return n;
+  }
+
+  /**
+   * Workers this chunk may use: what is left of the box target after EVERY
+   * claude process on the box — other people's, and this driver's own already
+   * running — and the workers other lanes have reserved but not yet spawned.
+   */
   function chunkConcurrency() {
     if (!boxTarget) return perPool;
     let all = 0;
     try { all = Number(execFileSync('pgrep', ['-c', '-x', 'claude']).toString().trim()) || 0; } catch { all = 0; }
-    const others = Math.max(0, all - mine);
-    return Math.max(1, Math.min(perPool, boxTarget - others - mine));
+    const running = myClaudeCount();
+    const others = Math.max(0, all - running);
+    // Reserved = what the lanes asked for; whichever is larger of reserved and running is ours.
+    return Math.max(1, Math.min(perPool, boxTarget - others - Math.max(mine, running)));
   }
 
   async function lane() {
