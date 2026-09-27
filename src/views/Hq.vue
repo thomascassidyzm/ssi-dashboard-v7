@@ -165,14 +165,14 @@ onMounted(async () => {
 <style scoped>
 @import './hub.css';
 
-.state-line { color: #94a3b8; font-size: 0.95rem; padding: 2rem 0; }
-.state-line.error { color: #f87171; }
+.state-line { color: var(--muted); font-size: 0.95rem; padding: 2rem 0; }
+.state-line.error { color: var(--danger); }
 
-.section-note { color: #94a3b8; font-size: 0.85rem; margin: 0 0 1rem; max-width: 70ch; }
+.section-note { color: var(--muted); font-size: 0.85rem; margin: 0 0 1rem; max-width: 70ch; }
 
 .hq-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
 .hq-table th {
-  text-align: left; padding: 0.5rem 0.75rem; color: #64748b;
+  text-align: left; padding: 0.5rem 0.75rem; color: var(--faint);
   font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase;
   border-bottom: 1px solid rgba(148, 163, 184, 0.2);
 }
@@ -181,12 +181,12 @@ onMounted(async () => {
 .cell-name { font-weight: 600; color: #e2e8f0; white-space: nowrap; }
 .cell-owner { color: #f59e0b; font-size: 0.72rem; letter-spacing: 0.04em; white-space: nowrap; }
 .cell-trace { max-width: 46ch; }
-.trace-source { color: #94a3b8; font-size: 0.78rem; }
-.trace-detail { color: #64748b; font-size: 0.75rem; margin-top: 0.2rem; }
-.trace-gap { color: #f87171; font-size: 0.75rem; margin-top: 0.35rem; }
-.seen { color: #34d399; }
+.trace-source { color: var(--muted); font-size: 0.78rem; }
+.trace-detail { color: var(--faint); font-size: 0.75rem; margin-top: 0.2rem; }
+.trace-gap { color: var(--danger); font-size: 0.75rem; margin-top: 0.35rem; }
+.seen { color: var(--success); }
 .seen.stale { color: #f59e0b; }
-.blank { color: #f87171; }
+.blank { color: var(--danger); }
 
 .number-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
 .number-card {
@@ -194,19 +194,36 @@ onMounted(async () => {
   padding: 1rem; background: rgba(15, 23, 42, 0.45);
 }
 .number-card.unreadable { border-style: dashed; border-color: rgba(248, 113, 113, 0.3); }
-.number-label { color: #94a3b8; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
+.number-label { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.06em; }
 .number-value { font-size: 2rem; font-weight: 700; color: #e2e8f0; margin: 0.35rem 0; }
-.number-blank { font-size: 1rem; font-style: italic; color: #f87171; margin: 0.75rem 0; }
+.number-blank { font-size: 1rem; font-style: italic; color: var(--danger); margin: 0.75rem 0; }
 .direction { font-size: 0.8rem; font-weight: 600; margin-left: 0.5rem; }
-.direction.up { color: #34d399; }
-.direction.down { color: #f87171; }
-.direction.flat { color: #94a3b8; }
-.prior { color: #64748b; font-weight: 400; margin-left: 0.4rem; }
-.number-period, .number-source { color: #64748b; font-size: 0.72rem; }
+.direction.up { color: var(--success); }
+.direction.down { color: var(--danger); }
+.direction.flat { color: var(--muted); }
+.prior { color: var(--faint); font-weight: 400; margin-left: 0.4rem; }
+.number-period, .number-source { color: var(--faint); font-size: 0.72rem; }
 .number-reason { color: #fca5a5; font-size: 0.75rem; margin-top: 0.5rem; }
 .number-unlock { color: #93c5fd; font-size: 0.75rem; margin-top: 0.5rem; }
-.number-note { color: #64748b; font-size: 0.72rem; margin-top: 0.5rem; }
+.number-note { color: var(--faint); font-size: 0.72rem; margin-top: 0.5rem; }
 
-.hq-footer { color: #64748b; font-size: 0.75rem; margin: 2rem 0 4rem; max-width: 80ch; }
+.hq-footer { color: var(--faint); font-size: 0.75rem; margin: 2rem 0 4rem; max-width: 80ch; }
 .hq-footer a { color: #93c5fd; }
+/* LIGHT MODE (Aran, 2026-09-27: the key numbers were illegible). The dark rules
+   above were written for a dark canvas: a translucent slate card and near-white
+   text, which over the light canvas came out as pale text on a grey wash. The
+   colours with no token of their own (#e2e8f0, #cbd5e1, #f59e0b, #fca5a5,
+   #93c5fd) are re-pointed at the theme tokens here, and the card sits on the
+   opaque white surface, so every line clears WCAG AA. Hq.contrast.test.js
+   recomputes it from these declarations. Dark mode is untouched. */
+:root[data-theme="light"] .number-card { background: var(--surface); border-color: var(--line); }
+:root[data-theme="light"] .number-card.unreadable { border-color: var(--danger); }
+:root[data-theme="light"] .number-value { color: var(--ink); }
+:root[data-theme="light"] .number-reason { color: var(--danger); }
+:root[data-theme="light"] .number-unlock { color: var(--ink); }
+:root[data-theme="light"] .hq-table td { color: var(--ink); }
+:root[data-theme="light"] .cell-name { color: var(--ink); }
+:root[data-theme="light"] .cell-owner { color: var(--accent); }
+:root[data-theme="light"] .seen.stale { color: var(--accent); }
+:root[data-theme="light"] .hq-footer a { color: var(--accent); }
 </style>
