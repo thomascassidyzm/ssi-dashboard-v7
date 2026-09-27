@@ -734,6 +734,26 @@ function runSpendCap(plannedItems, { ceilingChars = Infinity, ratio = RENDER_ATT
   }
   return cap
 }
+/**
+ * NO BUDGET, NO PAID PASS (job #430). #425 let /generate run with budgetChars
+ * absent, and absent meant Infinity — the caller who forgot was the caller
+ * with no bound at all. Now a pass that would send more than
+ * SMALL_PASS_BUDGET_CHARS to a provider is refused (400 BUDGET_REQUIRED) unless
+ * the caller names its budget; a pass that small (a handful of re-renders from
+ * the dashboard) runs under that small budget, and says so in its response.
+ * The default is capped in code so an env var cannot turn it back into
+ * "unbounded".
+ */
+const SMALL_PASS_BUDGET_CHARS = Math.min(20000, Number(process.env.PHASE8_SMALL_PASS_BUDGET_CHARS) || 5000)
+function resolvePassBudget(requested, plannedChars) {
+  const n = Number(requested)
+  if (requested !== undefined && requested !== null && requested !== '') {
+    if (!(n > 0) || !Number.isFinite(n)) return { ok: false, error: `budgetChars must be a positive number of characters (got ${JSON.stringify(requested)})` }
+    return { ok: true, budgetChars: Math.floor(n), defaulted: false }
+  }
+  if (plannedChars <= SMALL_PASS_BUDGET_CHARS) return { ok: true, budgetChars: SMALL_PASS_BUDGET_CHARS, defaulted: true }
+  return { ok: false, error: `this pass would send up to ${plannedChars} characters to a TTS provider and no budgetChars was given — every paid pass above ${SMALL_PASS_BUDGET_CHARS} characters needs an explicit budget (use tools/render-driver.cjs, or POST budgetChars)` }
+}
 const isSpendGuardRefusal = (err) => /TTS spend guard \(402\)/.test(String(err?.message || err))
 
 // role → [table, text column, FK column] for every text-keyed slot.
@@ -3090,6 +3110,15 @@ app.post('/generate/:courseCode', async (req, res) => {
       })
     }
 
+    // No budget, no paid pass (job #430) — refused before any work starts.
+    const plannedPassChars = uniqueNeeded.reduce((n, i) => n + String(i.text || '').length, 0)
+    const passBudget = resolvePassBudget(req.body.budgetChars, plannedPassChars)
+    if (!passBudget.ok) {
+      logger.error(`[SpendCap] ${courseCode}: REFUSED — ${passBudget.error}`)
+      return res.status(400).json({ error: 'BUDGET_REQUIRED', message: passBudget.error, wouldSpendChars: plannedPassChars, smallPassBudgetChars: SMALL_PASS_BUDGET_CHARS })
+    }
+    if (passBudget.defaulted) logger.warn(`[SpendCap] ${courseCode}: no budgetChars given; a ${plannedPassChars}-char pass runs under the small-pass budget of ${SMALL_PASS_BUDGET_CHARS}`)
+
     // Start progress tracking
     startWork('generate', courseCode, uniqueNeeded.length)
 
@@ -3113,7 +3142,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // pass may spend at most RUN_SPEND_FACTOR x the characters it set out to
     // render (headroom for veracity re-renders); past that it is rendering
     // something it never planned to, and it stops.
-    const spendCap = runSpendCap(uniqueNeeded, { ceilingChars: req.body.budgetChars })
+    const spendCap = runSpendCap(uniqueNeeded, { ceilingChars: passBudget.budgetChars })
     results.midLinked = 0
     const passJob = `phase8 /generate ${courseCode} ${runStartedAt}${req.body.job ? ` (${String(req.body.job).slice(0, 80)})` : ''}`
     // Pre-publish veracity gate (services/audio-veracity.cjs). ON by default;
@@ -3286,10 +3315,13 @@ app.post('/generate/:courseCode', async (req, res) => {
       // repeat lives in here; nothing outside it is allowed to publish.
       const renderAndMaster = async () => {
         let rawAudioBuffer, wordBoundaries
-        spendCap.charge(textForTTS)
+        // The pass cap is charged per PROVIDER ATTEMPT (door.onAttempt, called by
+        // tts-service renderWithRetry before each billed send), so retries and
+        // re-rolls count against spendCap and the render/attach breaker (job
+        // #430); a door answer from the clip library is not charged at all.
         if (provider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName: voiceName,
@@ -3297,14 +3329,14 @@ app.post('/generate/:courseCode', async (req, res) => {
           }))
         } else if (provider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
@@ -3316,7 +3348,7 @@ app.post('/generate/:courseCode', async (req, res) => {
           // honours it and pinning it halves the take-to-take duration wander on
           // short text; the tts-service defaults it to 1.0 if a caller omits it.
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: item.role === 'presentation', job: passJob },
+            door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, item.role, item.language),
@@ -3594,7 +3626,7 @@ app.post('/generate/:courseCode', async (req, res) => {
       // fills nothing will fill nothing next time either (job #383).
       attached: results.attached + linked,
       reuse: results.reuse,
-      spend: { plannedChars: spendCap.planned, budgetChars: spendCap.budget, spentChars: spendCap.spent, providerCalls: spendCap.renders, capped: spendCap.tripped, tripKind: spendCap.tripKind },
+      spend: { plannedChars: spendCap.planned, budgetChars: spendCap.budget, budgetDefaulted: passBudget.defaulted, spentChars: spendCap.spent, providerCalls: spendCap.renders, capped: spendCap.tripped, tripKind: spendCap.tripKind },
       copied: copyBucketResult.copied,
       copyFailed: copyBucketResult.failed,
       authored: authoredIntros.length,
@@ -9659,3 +9691,5 @@ module.exports.getAudioNeeds = getAudioNeeds
 module.exports.classifyEnglishCopyBucket = classifyEnglishCopyBucket
 module.exports.executeCopyBucket = executeCopyBucket
 module.exports.runSpendCap = runSpendCap
+module.exports.resolvePassBudget = resolvePassBudget
+module.exports.SMALL_PASS_BUDGET_CHARS = SMALL_PASS_BUDGET_CHARS

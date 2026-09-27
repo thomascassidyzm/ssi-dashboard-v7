@@ -1044,18 +1044,26 @@ async function renderWithRetry(text, provider, config, maxRetries = 3) {
 
   const door = config.door || {};
   const { language, voiceId } = identityFromConfig(provider, config);
+  const guard = spendGuard();
   for (let attempt = 0; attempt < maxRetries; attempt++) {
+    // The CALLER's per-attempt charge first (phase8's pass cap, job #430): a
+    // pass that is out of budget refuses before it takes a ledger reservation.
+    if (typeof door.onAttempt === 'function') door.onAttempt(text, attempt + 1);
     // THE SPEND GUARD (job #425): every attempt is billed, so every attempt is
-    // ledgered and budget-checked BEFORE it is sent. A refusal is thrown from
-    // outside the try, so it is never classified, retried or re-rolled.
-    await spendGuard().beforeProviderCall({
+    // reserved in the shared ledger and budget-checked BEFORE it is sent. A
+    // refusal is thrown from outside the try, so it is never classified,
+    // retried or re-rolled.
+    const reservation = await guard.beforeProviderCall({
       provider, voiceId, language, text, attempt: attempt + 1,
       courseCode: door.courseCode || config.courseCode || null, job: door.job || null,
     });
     doorStats.providerCalls++;
     doorStats.providerChars += String(text).length;
+    let sent = false;
     try {
       const result = await renderOnce(text, provider, config);
+      sent = true;
+      guard.afterProviderCall(reservation, { ok: true });
       if (suspects && PHONO_GATE_ON) {
         const detected = await detectSpokenLanguage(result.audioBuffer);
         if (detected && suspects.has(detected)) {
@@ -1064,6 +1072,7 @@ async function renderWithRetry(text, provider, config, maxRetries = 3) {
       }
       return result;
     } catch (error) {
+      if (!sent) guard.afterProviderCall(reservation, { ok: false, error });
       lastError = error;
       const retriable = isRetriableTtsError(error);
       console.warn(`[TTS] Attempt ${attempt + 1}/${maxRetries} failed (${retriable ? 'retriable' : 'fatal'}): ${error.message}`);

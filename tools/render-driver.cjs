@@ -16,7 +16,7 @@
  *     wouldSpendChars. Without --go the driver prints that plan and exits; with
  *     --go it refuses a plan bigger than the budget.
  *   - after every pass, one JSON line to the log: chars spent, provider calls,
- *     slots attached, the host ledger's day/cycle totals.
+ *     slots attached, the shared ledger's day/cycle totals.
  *   - it STOPS on: budget spent; a pass that attached nothing; a pass whose
  *     provider calls outnumber attached slots by more than 1.2x (the #382
  *     signature: ~60x); a pass phase8 itself capped; a service that does not
@@ -40,7 +40,7 @@ const RATIO_LIMIT = 1.2
  * The loop, with its I/O injected so it is testable without phase8.
  * post(body) → parsed /generate response. Returns { stopped, passes, spent }.
  */
-async function runDriver({ post, log = () => {}, ledgerSnapshot = () => null, budgetChars, maxPasses = 5, go = false, base = {} }) {
+async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => null, budgetChars, maxPasses = 5, go = false, base = {} }) {
   if (!(Number(budgetChars) > 0)) throw new Error('render-driver: --budget-chars is required (a whole-run character budget); refusing to run without one')
   const plan = await post({ ...base, dryRun: true })
   log({ event: 'plan', wouldGenerate: plan.wouldGenerate, wouldSpendChars: plan.wouldSpendChars, budgetChars })
@@ -59,7 +59,7 @@ async function runDriver({ post, log = () => {}, ledgerSnapshot = () => null, bu
     const calls = Number(s.providerCalls) || 0
     const attached = Number(r.attached)
     spent += spentNow
-    log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, ledger: ledgerSnapshot() })
+    log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, ledger: await ledgerSnapshot() })
     if (!r.spend || typeof s.spentChars !== 'number') return stop('phase8 did not report spend for the pass (old service) — refusing to post another', pass, spent)
     if (r.status === 'spend-capped') return stop(`phase8 capped the pass: ${s.capped}`, pass, spent)
     if (!Number.isFinite(attached) || attached === 0) return stop(`pass ${pass} attached ${Number.isFinite(attached) ? 0 : 'nothing reported'} — the next pass would fill nothing either`, pass, spent)
@@ -101,7 +101,7 @@ async function main() {
   fs.mkdirSync(path.dirname(logPath), { recursive: true })
   const log = (e) => { const line = JSON.stringify({ at: new Date().toISOString(), course, ...e }); fs.appendFileSync(logPath, line + '\n'); console.log(line) }
   const { spendGuard } = require('../services/shared/tts-spend-guard.cjs')
-  const ledgerSnapshot = () => { try { return spendGuard().snapshot('cartesia') } catch (e) { return { error: e.message } } }
+  const ledgerSnapshot = async () => { try { return await spendGuard().snapshot('cartesia') } catch (e) { return { error: e.message } } }
   const post = async (body) => {
     const r = await fetch(`${P8}/generate/${course}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(24 * 3600e3) })
     const text = await r.text()

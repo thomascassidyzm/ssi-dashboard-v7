@@ -22,7 +22,8 @@ const guard = (o = {}) => createSpendGuard({
   logger: { warn() {}, error() {} },
 })
 const call = (g, text, extra = {}) => g.beforeProviderCall({ provider: 'cartesia', voiceId: 'cartesia_kriti', text, courseCode: 'eng_for_hin', job: 'test', ...extra })
-const ledger = () => fs.readFileSync(path.join(dir, 'ledger.jsonl'), 'utf8').trim().split('\n').map(JSON.parse)
+// The local mirror (job #430): an intent line ahead of each reservation, a call line after.
+const ledger = () => fs.readFileSync(path.join(dir, 'ledger.jsonl'), 'utf8').trim().split('\n').map(JSON.parse).filter(e => e.kind === 'call')
 
 describe('(a) ledger: every provider call is written down before it is made', () => {
   it('records provider, voice, chars, course, job and a text hash — never the text itself', async () => {
@@ -127,16 +128,17 @@ describe('(e) provider-side check: the provider\'s own count against the ledger'
 describe('(f) a human is told — once — when a guard trips or a line is crossed', () => {
   it('alerts on the trip, on the daily line and on 50% of the pool, each only once', async () => {
     const sent = []
-    const g = guard({ notify: (e) => sent.push(e), budgetPath: budgets({ providers: { cartesia: { monthlyPoolChars: 100, dailyCapChars: 60, alertDailyChars: 10, stopAtShareOfPool: 0.9 } } }) })
+    const g = guard({ notify: (e) => sent.push(e), budgetPath: budgets({ providers: { cartesia: { monthlyPoolChars: 100, dailyCapChars: 60, alertDailyChars: 10, raise: { stopAtShareOfPool: 0.9, by: 'test', why: 'alert lines below the stop', until: '2026-10-01' } } } }) })
     await call(g, 'x'.repeat(12))     // daily line
     await call(g, 'y'.repeat(40))     // 52% of pool
     await call(g, 'z')                // nothing new
     await expect(call(g, 'w'.repeat(20))).rejects.toThrow(/DAILY_CAP/)
     await expect(call(g, 'w'.repeat(20))).rejects.toThrow(/DAILY_CAP/)
-    const kinds = sent.map(s => s.key.split(':')[0])
+    const kinds = sent.map(s => s.key.split(':')[0]).filter(k => k !== 'usage-none')
     expect(kinds.filter(k => k === 'daily')).toHaveLength(1)
     expect(kinds.filter(k => k === 'pool')).toHaveLength(1)
     expect(kinds.filter(k => k === 'trip')).toHaveLength(1)
-    expect(fs.readFileSync(path.join(dir, 'ledger.alerts.jsonl'), 'utf8').trim().split('\n')).toHaveLength(3)
+    // (#430 adds a "no usage reader" line and a limits-in-force line — not counted here.)
+    expect(fs.readFileSync(path.join(dir, 'ledger.alerts.jsonl'), 'utf8').trim().split('\n').filter(l => !l.includes('usage-none') && !l.includes('"limits:'))).toHaveLength(3)
   })
 })

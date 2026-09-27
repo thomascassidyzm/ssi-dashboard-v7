@@ -62,6 +62,18 @@ function assertCredentialled(adapter) {
   if (missingEnv(adapter).length) throw noCredentialError(adapter);
 }
 
+/** The words a request bills for: what the vendor will speak. */
+function spendText(req) {
+  const b = req.body;
+  if (typeof b === 'string') return b.replace(/<[^>]+>/g, '');   // SSML: the spoken text, not the tags
+  return String(b?.text ?? b?.input ?? b?.transcript ?? JSON.stringify(b ?? ''));
+}
+function spendVoice(req, opts) {
+  const b = req.body && typeof req.body === 'object' ? req.body : {};
+  const v = b.voice_id ?? b.voice ?? b.voice_setting?.voice_id ?? opts.voice ?? null;
+  return v && typeof v === 'object' ? (v.id || JSON.stringify(v)) : v;
+}
+
 /**
  * The one HTTP synthesis path, shared by every vendor adapter.
  *
@@ -75,9 +87,21 @@ function assertCredentialled(adapter) {
 async function httpSynthesise(adapter, req, opts) {
   assertCredentialled(adapter);
   assertSpendAllowed(adapter, opts);
+  // THE SPEND GUARD (job #430): this is a paid provider call like any other, so
+  // it reserves in the shared ledger first — PHASE2_SPEND_APPROVED says a human
+  // approved a bake-off, not that it may run past the estate's caps.
+  const guard = require('../../../services/shared/tts-spend-guard.cjs').spendGuard();
+  const reservation = await guard.beforeProviderCall({
+    provider: adapter.id, voiceId: spendVoice(req, opts), text: spendText(req), job: opts.job || 'tts-bakeoff',
+  });
   const headers = resolveHeaders(req.headers, adapter.id);
   const payload = req.bodyKind === 'ssml' ? req.body : JSON.stringify(req.body);
-  const res = await fetch(req.endpoint, { method: req.method, headers, body: payload });
+  let res;
+  try { res = await fetch(req.endpoint, { method: req.method, headers, body: payload }); } catch (e) {
+    guard.afterProviderCall(reservation, { ok: false, error: e });
+    throw e;
+  }
+  guard.afterProviderCall(reservation, { ok: res.ok, error: res.ok ? null : new Error(String(res.status)) });
   if (!res.ok) throw new Error(`${adapter.displayName} ${res.status}: ${await res.text()}`);
 
   const meta = { http_status: res.status, content_type: res.headers.get('content-type') };

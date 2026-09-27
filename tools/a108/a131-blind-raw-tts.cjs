@@ -52,21 +52,15 @@ const CAST = [
 const ORDER = [6, 1, 9, 3, 7, 0, 4, 8, 2, 5];
 
 async function renderXai({ voice, lang, text }) {
-  const res = await fetch('https://api.x.ai/v1/tts', {
-    method: 'POST',
-    headers: {
-      Authorization: `Bearer ${process.env.XAI_API_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      text,
-      voice_id: voice,
-      language: lang,
-      output_format: { codec: 'mp3', sample_rate: 24000, bit_rate: 128000 },
-    }),
+  // Through the one TTS door (services/tts-service.cjs speak) since job #430:
+  // this file's own fetch to api.x.ai walked past the spend guard.
+  const { audioBuffer } = await require('../../services/tts-service.cjs').speak(text, 'xai', {
+    apiKey: process.env.XAI_API_KEY,
+    voiceId: voice,
+    language: lang,
+    door: { audition: true, language: lang },
   });
-  if (!res.ok) throw new Error(`xAI ${res.status}: ${(await res.text()).slice(0, 300)}`);
-  return Buffer.from(await res.arrayBuffer());
+  return audioBuffer;
 }
 
 async function renderAzure({ voice, lang, text }) {
@@ -81,18 +75,14 @@ async function renderAzure({ voice, lang, text }) {
   return audioBuffer;
 }
 
-async function renderElevenLabs({ voice, text }) {
-  const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voice}`, {
-    method: 'POST',
-    headers: {
-      Accept: 'audio/mpeg',
-      'Content-Type': 'application/json',
-      'xi-api-key': process.env.ELEVENLABS_API_KEY,
-    },
-    body: JSON.stringify({ text, model_id: 'eleven_multilingual_v2' }),
+async function renderElevenLabs({ voice, lang, text }) {
+  // Through the one TTS door, like the others (job #430).
+  const { audioBuffer } = await require('../../services/tts-service.cjs').speak(text, 'elevenlabs', {
+    apiKey: process.env.ELEVENLABS_API_KEY,
+    voiceId: voice,
+    door: { audition: true, language: lang },
   });
-  if (!res.ok) throw new Error(`ElevenLabs ${res.status}: ${(await res.text()).slice(0, 300)}`);
-  return Buffer.from(await res.arrayBuffer());
+  return audioBuffer;
 }
 
 const RENDERERS = { xai: renderXai, azure: renderAzure, elevenlabs: renderElevenLabs };

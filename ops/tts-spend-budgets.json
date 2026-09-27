@@ -1,5 +1,5 @@
 {
-  "_read_by": "services/shared/tts-spend-guard.cjs (job #425). Characters, not dollars. A raise needs share, by, why and until; an anonymous or expired raise is ignored and the stop falls back to stopAtShareOfPool. Changing this file is a commit, so every raise is on the record.",
+  "_read_by": "services/shared/tts-spend-guard.cjs (jobs #425, #430). Characters, not dollars. The committed BASELINE is DEFAULT_BUDGETS in that file; this file may LOWER any limit freely. Anything looser (a higher cap/pool/share/alert line/repeat limit, a shorter repeat window, a different cycleStartDay) counts only inside a raise block: { \"raise\": { \"<field>\": <value>, \"by\": \"<who>\", \"why\": \"<reason>\", \"until\": \"<ISO date, at most 31 days out>\" } } on that provider (or on repeat / divergence). An unsigned, expired or too-long raise is IGNORED and alerted. Every change in the limits in force is alerted and logged in the DB (tts_spend_limit_log). A TTS_SPEND_BUDGETS override file counts only with a top-level signed { by, why, until }.",
   "providers": {
     "cartesia": {
       "monthlyPoolChars": 8000000,
@@ -9,6 +9,13 @@
       "stopAtShareOfPool": 0.5
     }
   },
-  "repeat": { "maxPerKey": 6, "windowHours": 24 },
-  "divergence": { "factor": 1.25, "slackChars": 20000, "checkEveryMinutes": 10 }
+  "repeat": {
+    "maxPerKey": 6,
+    "windowHours": 24
+  },
+  "divergence": {
+    "factor": 1.25,
+    "slackChars": 20000,
+    "checkEveryMinutes": 10
+  }
 }

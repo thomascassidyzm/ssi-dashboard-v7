@@ -81,7 +81,7 @@ describe('a fill loop that keeps re-asking for lines it already holds', () => {
     const { svc, paid } = door({ failFirst: 2 })
     await svc.speak('her name', 'cartesia', cfg, 3)
     expect(paid).toHaveLength(3)
-    const lines = fs.readFileSync(path.join(dir, 'ledger.jsonl'), 'utf8').trim().split('\n').map(JSON.parse)
+    const lines = fs.readFileSync(path.join(dir, 'ledger.jsonl'), 'utf8').trim().split('\n').map(JSON.parse).filter(l => l.kind === 'call')
     expect(lines.map(l => l.attempt)).toEqual([1, 2, 3])
     expect(lines.every(l => l.course === 'eng_for_hin' && l.job === 'replay-382' && l.provider === 'cartesia')).toBe(true)
     expect(svc.doorStats.providerCalls).toBe(3)
@@ -92,5 +92,23 @@ describe('a fill loop that keeps re-asking for lines it already holds', () => {
     const { svc, paid } = door()
     await expect(svc.speak('her name', 'cartesia', cfg, 3)).rejects.toThrow(/DAILY_CAP/)
     expect(paid).toHaveLength(0)
+  })
+})
+
+describe('the caller is charged per ATTEMPT (job #430)', () => {
+  it('door.onAttempt runs before every billed attempt, retries included', async () => {
+    const { svc, paid } = door({ failFirst: 2 })
+    const charged = []
+    await svc.speak('her name', 'cartesia', { ...cfg, door: { ...cfg.door, onAttempt: (t, n) => charged.push(n) } }, 3)
+    expect(paid).toHaveLength(3)
+    expect(charged).toEqual([1, 2, 3])
+  })
+
+  it('an onAttempt that refuses (a pass out of budget) stops the call before the provider or the ledger is touched', async () => {
+    const { svc, paid } = door()
+    const onAttempt = () => { throw new Error('spend cap: render budget reached') }
+    await expect(svc.speak('her name', 'cartesia', { ...cfg, door: { ...cfg.door, onAttempt } }, 3)).rejects.toThrow(/spend cap/)
+    expect(paid).toHaveLength(0)
+    expect(fs.existsSync(path.join(dir, 'ledger.jsonl'))).toBe(false)
   })
 })

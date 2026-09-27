@@ -12,38 +12,48 @@
  *
  * #383 fixed that cause and put a per-pass cap in phase8 (runSpendCap). This
  * module is the layer that does NOT trust any caller to be right about what is
- * missing. It sits at the provider call itself — services/tts-service.cjs
- * renderWithRetry, services/elevenlabs-service.cjs, services/google-tts-service.cjs
- * — and, before EVERY attempt (a retry or a re-roll is billed like the first):
+ * missing. It sits at the provider call itself — the guarded doors listed in
+ * tools/check-tts-door.cjs GUARDED_DOORS — and, before EVERY attempt (a retry
+ * or a re-roll is billed like the first):
  *
- *   1. LEDGER    appends one line per provider call to a host-wide JSONL
- *                ledger: provider, voice, chars, course, job, text hash, pid.
- *                Written BEFORE the call, so a crash mid-call is still counted.
- *   2. BUDGET    refuses the call if it would take the provider's spend today
- *                past its daily cap, or this billing cycle past the stop share
- *                of the monthly pool (50% unless an explicit, dated, signed
- *                raise in ops/tts-spend-budgets.json says otherwise). Every
- *                process on the host reads the same ledger, so the budget is
- *                global, not per process.
- *   3. REPEAT    refuses the call if these same words, in this voice, from
- *                this provider have already been sent maxPerKey times inside
- *                the window — whatever the caller believes is missing. The
- *                #382 loop sent the median line 15 times; "her name" 41 times.
- *   4. PROVIDER  where the provider can report its own usage (ElevenLabs yes;
- *                Cartesia only once CARTESIA_USAGE_URL is configured), compares
- *                the provider's count with the ledger's; if the provider has
- *                billed materially more than the ledger recorded, something is
- *                spending outside this door and every render stops.
- *   5. ALERT     any refusal, and any first crossing of a daily alert line or
- *                of 50% / 80% of a pool, posts ONE line to a human (the command
- *                surface's needs-you), logs it loudly, and appends it to an
- *                alerts file beside the ledger. Never throws, never blocks.
+ *   1. RESERVE   one atomic call to the SHARED ledger (Supabase,
+ *                ops/sql/20260927-tts-spend-ledger.sql tts_spend_reserve):
+ *                under a per-provider advisory lock it checks the provider's
+ *                trip, its spend today against the daily cap, its spend this
+ *                billing cycle against the stop share of the monthly pool, and
+ *                how often these same words + voice + provider were sent in the
+ *                repeat window — and inserts the reservation in the SAME
+ *                transaction. Every host and every worker queues on one lock,
+ *                so none of them can overshoot a cap (job #430; #425's
+ *                host-local check-then-append could, on both counts).
+ *   2. MIRROR    a local JSONL, written AHEAD of the reservation (intent) and
+ *                after it (call / refused). It is a record for the host, never
+ *                the authority: nothing reads it to decide.
+ *   3. LIMITS    the committed baseline (DEFAULT_BUDGETS, in this file) holds
+ *                unless ops/tts-spend-budgets.json lowers it — or raises it
+ *                with a signed, dated, expiring raise (by / why / until, at most
+ *                RAISE_MAX_DAYS out). An unsigned raise is ignored and alerted;
+ *                an override file from TTS_SPEND_BUDGETS is ignored unless it is
+ *                signed. Every change in the limits in force is alerted here and
+ *                logged in the DB (tts_spend_limit_log) with the host.
+ *   4. PROVIDER  where the provider reports its own usage (ElevenLabs
+ *                /v1/user/subscription; Cartesia /usage/credits with an ADMIN
+ *                key), compares it with the ledger; if the provider has billed
+ *                materially more, something spends outside the door: the
+ *                provider is tripped on every host. If a configured reader
+ *                CANNOT be read, the guard fails closed past a small allowance
+ *                (tiny calls pass, runs stop) and says so.
+ *   5. ALERT     any refusal, any first crossing of a daily alert line or of
+ *                50% / 80% of a pool, any limits change, posts ONE line to a
+ *                human (the command surface's needs-you), logs it loudly, and
+ *                appends it to an alerts file beside the mirror.
  *
  * A refusal throws TtsSpendGuardError, whose message carries "(402)" so the
  * door's retry classifier treats it as a non-retriable client error — a
  * refused call is never re-rolled.
  *
- * Fail CLOSED: an unreadable budget file or an unwritable ledger refuses the
+ * Fail CLOSED throughout: an unreachable ledger DB, an unreadable budget file,
+ * an unwritable mirror, a malformed answer from the DB — each refuses the
  * render. A render the guard cannot account for is a render it cannot bound.
  */
 
@@ -55,33 +65,52 @@ const crypto = require('crypto')
 // ─── Configuration ──────────────────────────────────────────────────────────
 
 /**
- * Built-in budgets, used for any provider the budget file does not name.
- * Characters, not dollars (Kai reads TTS in characters against the pool).
- * cycleStartDay: the day of the month the provider's pool resets (UTC).
+ * THE COMMITTED BASELINE. Characters, not dollars (Kai reads TTS in characters
+ * against the pool). cycleStartDay: the day of the month the pool resets (UTC)
+ * — for Cartesia NOT KNOWN to this repo (job #430 gap); 1 until someone reads
+ * it off the Cartesia dashboard. The budget file may LOWER any of these freely;
+ * anything looser needs a signed raise.
  */
 const DEFAULT_BUDGETS = Object.freeze({
-  cartesia:   { monthlyPoolChars: 8_000_000, cycleStartDay: 1, dailyCapChars: 1_000_000, alertDailyChars: 300_000, stopAtShareOfPool: 0.5 },
-  elevenlabs: { monthlyPoolChars: 2_000_000, cycleStartDay: 1, dailyCapChars:   200_000, alertDailyChars:  50_000, stopAtShareOfPool: 0.5 },
-  xai:        { monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 },
-  azure:      { monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 },
-  google:     { monthlyPoolChars: 1_000_000, cycleStartDay: 1, dailyCapChars:   100_000, alertDailyChars:  30_000, stopAtShareOfPool: 0.5 },
+  cartesia:   Object.freeze({ monthlyPoolChars: 8_000_000, cycleStartDay: 1, dailyCapChars: 1_000_000, alertDailyChars: 300_000, stopAtShareOfPool: 0.5 }),
+  elevenlabs: Object.freeze({ monthlyPoolChars: 2_000_000, cycleStartDay: 1, dailyCapChars:   200_000, alertDailyChars:  50_000, stopAtShareOfPool: 0.5 }),
+  xai:        Object.freeze({ monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 }),
+  azure:      Object.freeze({ monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 }),
+  google:     Object.freeze({ monthlyPoolChars: 1_000_000, cycleStartDay: 1, dailyCapChars:   100_000, alertDailyChars:  30_000, stopAtShareOfPool: 0.5 }),
 })
+/** Any provider not named above (a bake-off candidate, a new vendor): the tightest. */
+const UNKNOWN_PROVIDER_BUDGET = Object.freeze({ monthlyPoolChars: 200_000, cycleStartDay: 1, dailyCapChars: 20_000, alertDailyChars: 5_000, stopAtShareOfPool: 0.5 })
 const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 6, windowHours: 24 })
 /** Pool shares at which a human is told, whatever the stop share is. */
 const POOL_ALERT_SHARES = [0.5, 0.8]
-/** Provider-vs-ledger: trip when the provider's delta exceeds ours by this factor AND this many chars. */
-const DEFAULT_DIVERGENCE = Object.freeze({ factor: 1.25, slackChars: 20_000, checkEveryMinutes: 10 })
+/**
+ * Provider-vs-ledger: trip when the provider's delta exceeds ours by this factor
+ * AND this many chars. unverifiedAllowanceChars: what one process may reserve
+ * while a CONFIGURED usage reader cannot be read — tiny calls pass, runs stop.
+ */
+const DEFAULT_DIVERGENCE = Object.freeze({ factor: 1.25, slackChars: 20_000, checkEveryMinutes: 10, unverifiedAllowanceChars: 20_000, retryUnreadableMinutes: 1 })
+/** A raise may not be dated further out than this: raises expire on their own. */
+const RAISE_MAX_DAYS = 31
+
+/**
+ * Which way is LOOSER for each limit — a value on the loose side of the
+ * baseline needs a signed raise. cycleStartDay loosens in either direction (a
+ * wrong reset day resets the count mid-cycle), so any change needs signing.
+ */
+const LOOSER = {
+  monthlyPoolChars: 'higher', dailyCapChars: 'higher', alertDailyChars: 'higher', stopAtShareOfPool: 'higher', cycleStartDay: 'any',
+  maxPerKey: 'higher', windowHours: 'lower',
+  factor: 'higher', slackChars: 'higher', checkEveryMinutes: 'higher', unverifiedAllowanceChars: 'higher', retryUnreadableMinutes: 'higher',
+}
 
 const REPO_ROOT = path.resolve(__dirname, '..', '..')
+const COMMITTED_BUDGET_PATH = path.join(REPO_ROOT, 'ops', 'tts-spend-budgets.json')
 
-function defaultLedgerPath() {
+function defaultMirrorPath() {
   if (process.env.TTS_SPEND_LEDGER) return process.env.TTS_SPEND_LEDGER
-  // Tests never write the host's real ledger.
+  // Tests never write the host's real mirror.
   if (process.env.VITEST) return path.join(os.tmpdir(), `tts-spend-ledger-test-${process.pid}.jsonl`)
   return path.join(os.homedir(), '.local', 'state', 'ssi-tts-spend', 'ledger.jsonl')
-}
-function defaultBudgetPath() {
-  return process.env.TTS_SPEND_BUDGETS || path.join(REPO_ROOT, 'ops', 'tts-spend-budgets.json')
 }
 
 class TtsSpendGuardError extends Error {
@@ -98,7 +127,7 @@ class TtsSpendGuardError extends Error {
 /** The loop key's text: case, punctuation and spacing do not make a new line. */
 function repeatTextKey(text) {
   return String(text || '').normalize('NFC').toLowerCase()
-    .replace(/[\s ]+/g, ' ')
+    .replace(/[\s ]+/g, ' ')
     .replace(/[.,!?;:"'“”‘’()\[\]{}…—–\-।॥¿¡。？！、，]/g, '')
     .trim()
 }
@@ -109,6 +138,7 @@ function textHash(text) {
   return crypto.createHash('sha1').update(String(text || '')).digest('hex').slice(0, 16)
 }
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
+const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
 /** The start (ms, UTC) of the billing cycle containing `ms`. */
 function cycleStart(ms, startDay = 1) {
@@ -119,118 +149,260 @@ function cycleStart(ms, startDay = 1) {
   return Date.UTC(y, m, day)
 }
 
+/** Is a raise block in force? { ok, why } — signed (by + why), dated, not expired, not too far out. */
+function raiseInForce(r, nowMs) {
+  if (!r || typeof r !== 'object') return { ok: false, why: 'no raise' }
+  if (!r.by || !r.why || !r.until) return { ok: false, why: 'a raise needs by, why and until' }
+  const until = Date.parse(r.until)
+  if (!Number.isFinite(until)) return { ok: false, why: `until "${r.until}" is not a date` }
+  if (until <= nowMs) return { ok: false, why: `expired ${r.until}`, expired: true }
+  if (until - nowMs > RAISE_MAX_DAYS * 86400e3) return { ok: false, why: `until ${r.until} is more than ${RAISE_MAX_DAYS} days out — raises must expire` }
+  return { ok: true }
+}
+
+const isLooser = (field, value, base) => {
+  const dir = LOOSER[field]
+  if (typeof value !== 'number' || !Number.isFinite(value)) return true   // garbage is never accepted
+  if (dir === 'higher') return value > base
+  if (dir === 'lower') return value < base
+  return value !== base
+}
+
 /**
- * The stop share in force for a provider now. A raise only counts while it is
- * in date and says who made it and why — an anonymous or expired raise is
- * ignored, so the default 50% comes back on its own.
+ * Merge one block of limits over its committed baseline. Tightening is free;
+ * loosening needs `raise` in force (fields named inside the raise block, or the
+ * legacy `raise.share` for stopAtShareOfPool). Returns { limits, notes }.
  */
+function applyLimits(base, block, nowMs, label) {
+  const limits = { ...base }
+  const notes = []
+  const raise = block && block.raise
+  const rs = raise ? raiseInForce(raise, nowMs) : { ok: false }
+  const requested = { ...(block || {}) }
+  delete requested.raise
+  if (raise) {
+    for (const [k, v] of Object.entries(raise)) if (k in LOOSER) requested[k] = v
+    if (typeof raise.share === 'number') requested.stopAtShareOfPool = raise.share
+  }
+  for (const [k, v] of Object.entries(requested)) {
+    if (!(k in LOOSER)) continue
+    if (!(k in base)) continue
+    if (!isLooser(k, v, base[k])) { limits[k] = v; continue }
+    const raisedHere = raise && (k in raise || (k === 'stopAtShareOfPool' && typeof raise.share === 'number'))
+    if (raisedHere && rs.ok && typeof v === 'number' && Number.isFinite(v)) { limits[k] = v; notes.push({ kind: 'raise', label, field: k, value: v, by: raise.by, why: raise.why, until: raise.until }); continue }
+    notes.push({ kind: 'ignored', label, field: k, value: v, why: raisedHere ? rs.why : 'looser than the committed baseline without a signed raise' })
+  }
+  if (limits.stopAtShareOfPool > 1) limits.stopAtShareOfPool = 1
+  return { limits, notes }
+}
+
+/** The stop share in force for a provider now (kept for callers of #425's API). */
 function effectiveStopShare(budget, nowMs) {
   const base = budget.stopAtShareOfPool ?? 0.5
   const r = budget.raise
-  if (!r || typeof r.share !== 'number' || !r.by || !r.why || !r.until) return { share: base, raised: false }
-  if (Date.parse(r.until) <= nowMs) return { share: base, raised: false, expired: true }
+  if (!r || typeof r.share !== 'number') return { share: base, raised: false }
+  const rs = raiseInForce(r, nowMs)
+  if (!rs.ok) return { share: base, raised: false, expired: !!rs.expired }
   return { share: Math.min(1, r.share), raised: true, by: r.by, until: r.until }
+}
+
+/**
+ * Read the limits in force: the committed baseline, then the budget file.
+ * `budgetPath` null = baseline only (tests). An override path from the env is
+ * honoured only when the file carries a signed, in-date `signed` block;
+ * otherwise the committed file is read instead and a note says why.
+ */
+function loadLimits({ budgetPath, envOverride, nowMs }) {
+  const notes = []
+  let file = {}
+  let source = budgetPath
+  if (envOverride) {
+    const f = readBudgetFile(envOverride)
+    const rs = raiseInForce(f.signed, nowMs)
+    if (rs.ok) { file = f; source = envOverride; notes.push({ kind: 'override', label: 'file', value: envOverride, by: f.signed.by, why: f.signed.why, until: f.signed.until }) }
+    else { notes.push({ kind: 'ignored', label: 'file', field: 'TTS_SPEND_BUDGETS', value: envOverride, why: `an override budget file must carry signed: { by, why, until } in date (${rs.why}) — using the committed file` }); source = budgetPath }
+  }
+  if (source === budgetPath && budgetPath && fs.existsSync(budgetPath)) file = readBudgetFile(budgetPath)
+  const providers = {}
+  const names = new Set([...Object.keys(DEFAULT_BUDGETS), ...Object.keys(file.providers || {})])
+  for (const p of names) {
+    const { limits, notes: n } = applyLimits(DEFAULT_BUDGETS[p] || UNKNOWN_PROVIDER_BUDGET, (file.providers || {})[p], nowMs, `providers.${p}`)
+    providers[p] = limits; notes.push(...n)
+  }
+  const rep = applyLimits(DEFAULT_REPEAT, file.repeat, nowMs, 'repeat'); notes.push(...rep.notes)
+  const div = applyLimits(DEFAULT_DIVERGENCE, file.divergence, nowMs, 'divergence'); notes.push(...div.notes)
+  return { providers, repeat: rep.limits, divergence: div.limits, notes, source }
+}
+function readBudgetFile(p) {
+  try { return JSON.parse(fs.readFileSync(p, 'utf8')) } catch (e) {
+    throw new TtsSpendGuardError('CONFIG', `budget file ${p} is unreadable (${e.message}) — refusing to render without a budget`)
+  }
+}
+
+// ─── Ledger stores ──────────────────────────────────────────────────────────
+//
+// A store is { reserve(req) → { ok, id?, code?, message?, today, cycle, seen },
+// settle(id, status, note), trip(provider, code, message), totals(provider,
+// cycleStartDay) → { today, cycle, tripped } }. reserve MUST be atomic: its
+// check and its insert cannot interleave with another reserve for the same
+// provider, in this process or any other.
+
+/**
+ * The authoritative store: the shared DB over PostgREST (service role). Every
+ * host that renders reads and writes the same rows.
+ */
+function supabaseSpendStore({ client, url = process.env.SUPABASE_URL, key = process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY } = {}) {
+  let c = client
+  const db = () => {
+    if (c) return c
+    if (!url || !key) throw new Error('no spend ledger database: SUPABASE_URL and a service-role key are not set')
+    const { createClient } = require('@supabase/supabase-js')
+    c = createClient(url, key, { auth: { persistSession: false } })
+    return c
+  }
+  const rpc = async (fn, args) => {
+    const { data, error } = await db().rpc(fn, args)
+    if (error) throw new Error(`${fn}: ${error.message}${error.code === 'PGRST202' ? ' — has ops/sql/20260927-tts-spend-ledger.sql been applied?' : ''}`)
+    return data
+  }
+  return {
+    kind: 'supabase',
+    async reserve(r) { return rpc('tts_spend_reserve', reserveArgs(r)) },
+    async settle(id, status, note) { await rpc('tts_spend_settle', { p_id: id, p_status: status, p_note: note || null }) },
+    async trip(provider, code, message) { await rpc('tts_spend_trip', { p_provider: provider, p_code: code, p_message: message, p_host: os.hostname() }) },
+    async totals(provider, cycleStartDay) { return rpc('tts_spend_totals', { p_provider: provider, p_cycle_start_day: cycleStartDay }) },
+  }
+}
+
+/** The same functions over a direct Postgres connection (node-postgres pool). */
+function pgSpendStore({ pool, connectionString = process.env.DATABASE_URL } = {}) {
+  let p = pool
+  const db = () => {
+    if (p) return p
+    if (!connectionString) throw new Error('no spend ledger database: DATABASE_URL is not set')
+    const { Pool } = require('pg')
+    p = new Pool({ connectionString, max: 4 })
+    return p
+  }
+  const call = async (sql, vals) => (await db().query(sql, vals)).rows[0]
+  return {
+    kind: 'pg',
+    async reserve(r) {
+      const a = reserveArgs(r)
+      const row = await call('select public.tts_spend_reserve($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17) as r',
+        [a.p_provider, a.p_voice, a.p_chars, a.p_repeat_key, a.p_text_hash, a.p_course, a.p_job, a.p_language, a.p_attempt, a.p_host, a.p_pid,
+          a.p_daily_cap, a.p_cycle_start_day, a.p_cycle_cap, a.p_repeat_max, a.p_repeat_window_hours, a.p_limits])
+      return row.r
+    },
+    async settle(id, status, note) { await call('select public.tts_spend_settle($1,$2,$3)', [id, status, note || null]) },
+    async trip(provider, code, message) { await call('select public.tts_spend_trip($1,$2,$3,$4)', [provider, code, message, os.hostname()]) },
+    async totals(provider, cycleStartDay) { return (await call('select public.tts_spend_totals($1,$2) as t', [provider, cycleStartDay])).t },
+    end() { return p && p.end() },
+  }
+}
+
+function reserveArgs(r) {
+  return {
+    p_provider: r.provider, p_voice: r.voice, p_chars: r.chars, p_repeat_key: r.key, p_text_hash: r.textHash,
+    p_course: r.course, p_job: r.job, p_language: r.language, p_attempt: r.attempt, p_host: os.hostname(), p_pid: process.pid,
+    p_daily_cap: r.limits.dailyCapChars, p_cycle_start_day: r.limits.cycleStartDay, p_cycle_cap: r.limits.cycleCapChars,
+    p_repeat_max: r.limits.maxPerKey, p_repeat_window_hours: r.limits.windowHours, p_limits: r.limits,
+  }
+}
+
+/**
+ * In-memory store with the SQL function's semantics, for tests. Stores are
+ * shared by name, so two guards given the same ledgerPath see one ledger (the
+ * way two hosts see one DB). reserve is synchronous inside, so it is atomic
+ * within the process — the property the DB lock gives across processes.
+ */
+const memoryStores = new Map()
+function memorySpendStore({ name, now = () => Date.now() } = {}) {
+  if (name && memoryStores.has(name)) return memoryStores.get(name)
+  const rows = []; const trips = new Map(); const limitLog = []
+  const sum = (provider, fromMs) => rows.filter(r => r.provider === provider && r.at >= fromMs).reduce((n, r) => n + r.chars, 0)
+  const store = {
+    kind: 'memory', rows, trips, limitLog,
+    async reserve(r) {
+      const t = now()
+      if (trips.has(r.provider)) { const tr = trips.get(r.provider); return { ok: false, code: 'TRIPPED', message: `renders are stopped for ${r.provider} since ${tr.at}: ${tr.message}. Clear: delete the trip row once a human has looked` } }
+      const dayStart = Date.parse(dayKey(t) + 'T00:00:00Z')
+      const today = sum(r.provider, dayStart)
+      const cycle = sum(r.provider, cycleStart(t, r.limits.cycleStartDay))
+      const seen = r.key ? rows.filter(x => x.key === r.key && x.kind === 'call' && x.at >= t - r.limits.windowHours * 3600e3).length : 0
+      const h = JSON.stringify(r.limits)
+      if (limitLog.filter(l => l.provider === r.provider).pop()?.h !== h) limitLog.push({ provider: r.provider, h, limits: r.limits })
+      if (today + r.chars > r.limits.dailyCapChars) return { ok: false, code: 'DAILY_CAP', today, cycle, seen, message: `today's ${r.provider} spend is ${today} chars; this call (${r.chars}) would pass the daily cap of ${r.limits.dailyCapChars}` }
+      if (cycle + r.chars > r.limits.cycleCapChars) return { ok: false, code: 'POOL_SHARE', today, cycle, seen, message: `this cycle's ${r.provider} spend is ${cycle} chars; this call (${r.chars}) would pass the cycle stop of ${r.limits.cycleCapChars}` }
+      if (r.key && seen >= r.limits.maxPerKey) return { ok: false, code: 'REPEAT', today, cycle, seen, message: `these words in voice ${r.voice || '?'} have already been sent ${seen} times in ${r.limits.windowHours}h (limit ${r.limits.maxPerKey}) — a caller is re-rendering what it already has` }
+      const id = rows.length + 1
+      rows.push({ id, at: t, kind: 'call', provider: r.provider, voice: r.voice, chars: r.chars, key: r.key, status: 'reserved' })
+      return { ok: true, id, today: today + r.chars, cycle: cycle + r.chars, seen: seen + 1 }
+    },
+    async settle(id, status) { const row = rows[id - 1]; if (row && row.status === 'reserved') row.status = status },
+    async trip(provider, code, message) { if (!trips.has(provider)) trips.set(provider, { code, message, at: new Date(now()).toISOString() }) },
+    async totals(provider, cycleStartDay) {
+      const t = now()
+      return { today: sum(provider, Date.parse(dayKey(t) + 'T00:00:00Z')), cycle: sum(provider, cycleStart(t, cycleStartDay)), tripped: trips.get(provider) || null }
+    },
+    /** Test helper: a row spent at a given time (the September seed, say). */
+    seed(provider, chars, atMs) { rows.push({ id: rows.length + 1, at: atMs, kind: 'seed', provider, chars, status: 'seed' }) },
+  }
+  if (name) memoryStores.set(name, store)
+  return store
+}
+
+/** The store a guard uses when none is injected. */
+function defaultStore(mirrorPath, now) {
+  if (process.env.VITEST) return memorySpendStore({ name: mirrorPath, now })
+  if (process.env.TTS_SPEND_STORE === 'pg') return pgSpendStore()
+  return supabaseSpendStore()
 }
 
 // ─── The guard ──────────────────────────────────────────────────────────────
 
 function createSpendGuard(opts = {}) {
   const now = opts.now || (() => Date.now())
-  const ledgerPath = opts.ledgerPath || defaultLedgerPath()
-  const alertsPath = opts.alertsPath || ledgerPath.replace(/\.jsonl$/, '') + '.alerts.jsonl'
-  const tripsPath = opts.tripsPath || ledgerPath.replace(/\.jsonl$/, '') + '.trips.json'
-  const budgetPath = opts.budgetPath === undefined ? defaultBudgetPath() : opts.budgetPath
+  const mirrorPath = opts.ledgerPath || defaultMirrorPath()
+  const alertsPath = opts.alertsPath || mirrorPath.replace(/\.jsonl$/, '') + '.alerts.jsonl'
+  const budgetPath = opts.budgetPath === undefined ? COMMITTED_BUDGET_PATH : opts.budgetPath
+  const envOverride = opts.budgetOverridePath === undefined ? (process.env.TTS_SPEND_BUDGETS || null) : opts.budgetOverridePath
+  const store = opts.store || defaultStore(mirrorPath, now)
   const notify = opts.notify || defaultNotify
   const usageReaders = opts.usageReaders || {}
   const log = opts.logger || console
 
-  // Aggregates rebuilt from the ledger, tailed incrementally so every process
-  // sees every other process's calls.
-  const state = { offset: 0, partial: '', day: new Map(), cycle: new Map(), keys: new Map(), pruneAt: 0 }
   const alerted = new Set()        // alert keys already sent by this process
-  const providerBase = new Map()   // provider -> { at, used, ledger }
-  const providerCheckedAt = new Map()
+  let lastLimitsHash = null
+  const usage = new Map()          // provider -> { checkedAt, ok, base, unverifiedChars }
 
-  function loadBudgets() {
-    let file = {}
-    if (budgetPath && fs.existsSync(budgetPath)) {
-      try { file = JSON.parse(fs.readFileSync(budgetPath, 'utf8')) } catch (e) {
-        throw new TtsSpendGuardError('CONFIG', `budget file ${budgetPath} is unreadable (${e.message}) — refusing to render without a budget`)
+  function limitsNow() {
+    const cfg = loadLimits({ budgetPath, envOverride, nowMs: now() })
+    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence }))
+    if (h !== lastLimitsHash) {
+      // Every change in the limits in force, and every raise or ignored
+      // loosening, is told — once per process per distinct set of limits.
+      if (lastLimitsHash !== null || cfg.notes.length) {
+        const said = cfg.notes.map(n => n.kind === 'ignored' ? `IGNORED ${n.label}.${n.field}=${n.value} (${n.why})` : n.kind === 'override' ? `override file ${n.value} signed by ${n.by} until ${n.until} (${n.why})` : `RAISED ${n.label}.${n.field}=${n.value} by ${n.by} until ${n.until} (${n.why})`).join('; ')
+        alert(`limits:${h}`, cfg.notes.some(n => n.kind === 'ignored') ? 'trip' : 'warn', `spend limits in force changed${lastLimitsHash ? '' : ' (at start)'} on ${os.hostname()} — ${said || 'back to the committed baseline'}`, { limitsHash: h })
       }
+      lastLimitsHash = h
     }
-    const providers = { ...DEFAULT_BUDGETS }
-    for (const [p, b] of Object.entries(file.providers || {})) providers[p] = { ...(DEFAULT_BUDGETS[p] || DEFAULT_BUDGETS.google), ...b }
-    return {
-      providers,
-      repeat: { ...DEFAULT_REPEAT, ...(file.repeat || {}) },
-      divergence: { ...DEFAULT_DIVERGENCE, ...(file.divergence || {}) },
-    }
+    return cfg
   }
 
-  function ingest(e) {
-    if (!e || e.kind !== 'call') return
-    const at = Date.parse(e.at)
-    const cfg = budgetsCache || { providers: DEFAULT_BUDGETS }
-    const b = cfg.providers[e.provider] || DEFAULT_BUDGETS.google
-    const dk = `${e.provider}|${dayKey(at)}`
-    state.day.set(dk, (state.day.get(dk) || 0) + (e.chars || 0))
-    const ck = `${e.provider}|${cycleStart(at, b.cycleStartDay)}`
-    state.cycle.set(ck, (state.cycle.get(ck) || 0) + (e.chars || 0))
-    if (e.key) { const a = state.keys.get(e.key) || []; a.push(at); state.keys.set(e.key, a) }
-  }
-
-  let budgetsCache = null
-  function refresh() {
-    budgetsCache = loadBudgets()
-    let fd
-    try { fd = fs.openSync(ledgerPath, 'r') } catch (e) {
-      if (e.code === 'ENOENT') return
-      throw new TtsSpendGuardError('LEDGER', `cannot read the spend ledger ${ledgerPath} (${e.message})`)
-    }
-    try {
-      const size = fs.fstatSync(fd).size
-      if (size < state.offset) { state.offset = 0; state.partial = ''; state.day.clear(); state.cycle.clear(); state.keys.clear() }
-      const buf = Buffer.alloc(1 << 20)
-      while (state.offset < size) {
-        const n = fs.readSync(fd, buf, 0, Math.min(buf.length, size - state.offset), state.offset)
-        if (n <= 0) break
-        state.offset += n
-        const chunk = state.partial + buf.toString('utf8', 0, n)
-        const lines = chunk.split('\n')
-        state.partial = lines.pop()
-        for (const l of lines) { if (l) { try { ingest(JSON.parse(l)) } catch { /* torn line: skip */ } } }
-      }
-    } finally { fs.closeSync(fd) }
-    if (now() > state.pruneAt) {
-      const cutoff = now() - budgetsCache.repeat.windowHours * 3600e3
-      for (const [k, a] of state.keys) { const kept = a.filter(t => t >= cutoff); if (kept.length) state.keys.set(k, kept); else state.keys.delete(k) }
-      state.pruneAt = now() + 600e3
-    }
-  }
-
-  function append(file, obj) {
-    fs.mkdirSync(path.dirname(file), { recursive: true })
-    fs.appendFileSync(file, JSON.stringify(obj) + '\n')
+  function mirror(obj) {
+    fs.mkdirSync(path.dirname(mirrorPath), { recursive: true })
+    fs.appendFileSync(mirrorPath, JSON.stringify(obj) + '\n')
   }
 
   function alert(key, level, message, detail = {}) {
     if (alerted.has(key)) return
     alerted.add(key)
-    const entry = { at: new Date(now()).toISOString(), level, key, message, ...detail, pid: process.pid }
-    try { append(alertsPath, entry) } catch { /* the log line below still says it */ }
+    const entry = { at: new Date(now()).toISOString(), level, message, ...detail, key, pid: process.pid }
+    try { fs.mkdirSync(path.dirname(alertsPath), { recursive: true }); fs.appendFileSync(alertsPath, JSON.stringify(entry) + '\n') } catch { /* the log line below still says it */ }
     ;(level === 'trip' ? log.error : log.warn).call(log, `[TtsSpendGuard] ${message}`)
     try { Promise.resolve(notify(entry)).catch(() => {}) } catch { /* never block a render on an alert */ }
-  }
-
-  function readTrips() {
-    try { return JSON.parse(fs.readFileSync(tripsPath, 'utf8')) } catch { return {} }
-  }
-  function writeTrip(provider, code, message) {
-    const trips = readTrips()
-    trips[provider] = { code, message, at: new Date(now()).toISOString(), clear: `delete ${tripsPath} (or its "${provider}" key) once a human has looked` }
-    try { append(tripsPath + '.log', trips[provider]) } catch {}
-    fs.mkdirSync(path.dirname(tripsPath), { recursive: true })
-    fs.writeFileSync(tripsPath, JSON.stringify(trips, null, 2))
   }
 
   function refuse(code, provider, message, detail) {
@@ -238,105 +410,139 @@ function createSpendGuard(opts = {}) {
     throw new TtsSpendGuardError(code, message, { provider, ...detail })
   }
 
-  /** Totals for a provider now: { today, cycle, pool, stopShare }. */
-  function totals(provider) {
-    const b = budgetsCache.providers[provider] || DEFAULT_BUDGETS.google
-    const t = now()
-    return {
-      budget: b,
-      today: state.day.get(`${provider}|${dayKey(t)}`) || 0,
-      cycle: state.cycle.get(`${provider}|${cycleStart(t, b.cycleStartDay)}`) || 0,
-      stop: effectiveStopShare(b, t),
+  function providerLimits(cfg, provider) {
+    const b = cfg.providers[provider] || UNKNOWN_PROVIDER_BUDGET
+    return { ...b, cycleCapChars: Math.floor(b.stopAtShareOfPool * b.monthlyPoolChars), maxPerKey: cfg.repeat.maxPerKey, windowHours: cfg.repeat.windowHours }
+  }
+
+  async function ledgerTotals(provider, b) {
+    try { return await store.totals(provider, b.cycleStartDay) } catch (e) {
+      throw new TtsSpendGuardError('LEDGER', `cannot read the spend ledger (${e.message}) — refusing to render unrecorded`, { provider })
     }
   }
 
-  async function checkProvider(provider, cfg) {
+  /**
+   * PROVIDER RECONCILIATION. No reader for the provider: warned once a day,
+   * the ledger stands alone. A reader that FAILS (or answers nonsense): this
+   * process may reserve at most unverifiedAllowanceChars until it reads again,
+   * then refuses — fail closed for runs, open for a tiny call.
+   */
+  async function checkProvider(provider, cfg, b, chars) {
     const reader = usageReaders[provider]
-    if (!reader) return
-    const last = providerCheckedAt.get(provider) || 0
-    if (now() - last < cfg.divergence.checkEveryMinutes * 60e3) return
-    providerCheckedAt.set(provider, now())
-    let usage
-    try { usage = await reader() } catch (e) {
-      alert(`usage-unreadable:${provider}:${dayKey(now())}`, 'warn', `${provider}: provider usage could not be read (${e.message}) — relying on the ledger alone`)
+    if (!reader) {
+      alert(`usage-none:${provider}:${dayKey(now())}`, 'warn', `${provider}: no provider-usage reader configured — spend is checked against the ledger alone (nothing can see spending outside the door)`, { provider })
       return
     }
-    if (!usage || typeof usage.usedChars !== 'number') return
-    const { cycle, budget, stop } = totals(provider)
-    const pool = usage.limitChars || budget.monthlyPoolChars
-    if (usage.usedChars >= stop.share * pool) {
-      writeTrip(provider, 'PROVIDER_POOL', `the provider itself reports ${usage.usedChars} of ${pool} chars used, past the ${Math.round(stop.share * 100)}% stop`)
-      refuse('PROVIDER_POOL', provider, `the provider reports ${usage.usedChars.toLocaleString()} of ${pool.toLocaleString()} characters used — past the ${Math.round(stop.share * 100)}% stop share`, { usedChars: usage.usedChars, pool })
+    const st = usage.get(provider) || { checkedAt: 0, ok: false, base: null, unverifiedChars: 0, everRead: false }
+    usage.set(provider, st)
+    const every = (st.ok ? cfg.divergence.checkEveryMinutes : cfg.divergence.retryUnreadableMinutes) * 60e3
+    if (now() - st.checkedAt >= every) {
+      st.checkedAt = now()
+      let u = null; let err = null
+      try { u = await reader() } catch (e) { err = e }
+      if (!err && (!u || typeof u.usedChars !== 'number' || !Number.isFinite(u.usedChars))) err = new Error(`reader answered ${JSON.stringify(u)}`)
+      if (err) {
+        st.ok = false
+        alert(`usage-unreadable:${provider}:${dayKey(now())}`, 'trip', `${provider}: provider usage could not be read (${err.message}) — calls continue only up to ${cfg.divergence.unverifiedAllowanceChars.toLocaleString()} chars per process until it can be read`, { provider })
+      } else {
+        st.ok = true; st.unverifiedChars = 0
+        const t = await ledgerTotals(provider, b)
+        const pool = u.limitChars || b.monthlyPoolChars
+        if (u.usedChars >= b.stopAtShareOfPool * pool) {
+          const msg = `the provider itself reports ${u.usedChars.toLocaleString()} of ${pool.toLocaleString()} characters used — past the ${Math.round(b.stopAtShareOfPool * 100)}% stop`
+          await store.trip(provider, 'PROVIDER_POOL', msg).catch(() => {})
+          refuse('PROVIDER_POOL', provider, msg, { usedChars: u.usedChars, pool })
+        }
+        if (!st.base) st.base = { used: u.usedChars, ledger: Number(t.cycle) || 0 }
+        else {
+          const providerDelta = u.usedChars - st.base.used
+          const ledgerDelta = (Number(t.cycle) || 0) - st.base.ledger
+          if (providerDelta > cfg.divergence.factor * ledgerDelta + cfg.divergence.slackChars) {
+            const msg = `provider billed ${providerDelta.toLocaleString()} chars since this process's baseline but the ledger recorded ${ledgerDelta.toLocaleString()} — something is spending outside the door`
+            await store.trip(provider, 'PROVIDER_DIVERGENCE', msg).catch(() => {})
+            refuse('PROVIDER_DIVERGENCE', provider, msg, { providerDelta, ledgerDelta })
+          }
+        }
+      }
     }
-    const base = providerBase.get(provider)
-    if (!base) { providerBase.set(provider, { used: usage.usedChars, ledger: cycle }); return }
-    const providerDelta = usage.usedChars - base.used
-    const ledgerDelta = cycle - base.ledger
-    if (providerDelta > cfg.divergence.factor * ledgerDelta + cfg.divergence.slackChars) {
-      const msg = `provider billed ${providerDelta.toLocaleString()} chars since this process's baseline but the ledger recorded ${ledgerDelta.toLocaleString()} — something is spending outside the door`
-      writeTrip(provider, 'PROVIDER_DIVERGENCE', msg)
-      refuse('PROVIDER_DIVERGENCE', provider, msg, { providerDelta, ledgerDelta })
+    if (!st.ok) {
+      if (st.unverifiedChars + chars > cfg.divergence.unverifiedAllowanceChars) {
+        refuse('USAGE_UNREADABLE', provider, `${provider}'s own usage cannot be read, and this process has already sent ${st.unverifiedChars.toLocaleString()} unverified chars (allowance ${cfg.divergence.unverifiedAllowanceChars.toLocaleString()}) — refusing a run it cannot reconcile`, { unverifiedChars: st.unverifiedChars })
+      }
+      st.unverifiedChars += chars
     }
   }
 
   /**
    * Call immediately before a paid provider call. Throws TtsSpendGuardError to
-   * refuse; otherwise records the call in the ledger and returns its entry.
+   * refuse; otherwise returns the reservation (pass it to afterProviderCall).
    * ctx: { provider, voiceId, text, courseCode, job, language, attempt }
    */
   async function beforeProviderCall(ctx) {
     const provider = String(ctx.provider || 'unknown')
     const text = String(ctx.text || '')
     const chars = text.length
-    refresh()
-    const cfg = budgetsCache
+    const cfg = limitsNow()
+    const b = providerLimits(cfg, provider)
 
-    const trip = readTrips()[provider]
-    if (trip) refuse('TRIPPED', provider, `renders are stopped for ${provider} since ${trip.at}: ${trip.message}. ${trip.clear}`, {})
+    await checkProvider(provider, cfg, b, chars)
 
-    const { today, cycle, budget, stop } = totals(provider)
-    const pool = budget.monthlyPoolChars
-    if (today + chars > budget.dailyCapChars) {
-      refuse('DAILY_CAP', provider, `today's ${provider} spend is ${today.toLocaleString()} chars; this call (${chars}) would pass the daily cap of ${budget.dailyCapChars.toLocaleString()}. Raise dailyCapChars in ${budgetPath} if a human approved more.`, { today, cap: budget.dailyCapChars })
-    }
-    if (cycle + chars > stop.share * pool) {
-      refuse('POOL_SHARE', provider, `this cycle's ${provider} spend is ${cycle.toLocaleString()} of a ${pool.toLocaleString()}-char pool; the stop is ${Math.round(stop.share * 100)}%${stop.raised ? ` (raised by ${stop.by} until ${stop.until})` : ''}. A raise needs share, by, why and until in ${budgetPath}.`, { cycle, pool, stopShare: stop.share })
-    }
     const key = repeatKey(provider, ctx.voiceId, text)
-    const seen = (state.keys.get(key) || []).filter(t => t >= now() - cfg.repeat.windowHours * 3600e3).length
-    if (seen >= cfg.repeat.maxPerKey) {
-      refuse('REPEAT', provider, `"${text.slice(0, 40)}" in ${ctx.voiceId || '?'} has already been sent ${seen} times in ${cfg.repeat.windowHours}h (limit ${cfg.repeat.maxPerKey}) — a caller is re-rendering what it already has`, { key, seen, course: ctx.courseCode || null, job: ctx.job || null })
-    }
-
-    await checkProvider(provider, cfg)
-
-    const entry = {
-      kind: 'call', at: new Date(now()).toISOString(), provider, voice: ctx.voiceId || null, chars,
+    const base = {
+      at: new Date(now()).toISOString(), provider, voice: ctx.voiceId || null, chars,
       course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null,
       language: ctx.language || null, text_hash: textHash(text), key, attempt: ctx.attempt || 1, pid: process.pid,
     }
-    try { append(ledgerPath, entry) } catch (e) {
-      throw new TtsSpendGuardError('LEDGER', `cannot write the spend ledger ${ledgerPath} (${e.message}) — refusing to render unrecorded`)
+    // WRITE-AHEAD: the host's own record of the attempt exists before the
+    // reservation is asked for. Unwritable = refuse.
+    try { mirror({ kind: 'intent', ...base }) } catch (e) {
+      throw new TtsSpendGuardError('LEDGER', `cannot write the spend mirror ${mirrorPath} (${e.message}) — refusing to render unrecorded`)
     }
-    // Our own line is counted by reading it back with everyone else's — never
-    // by skipping ahead, which would drop a neighbour's line appended meanwhile.
-    refresh()
+
+    let res
+    try {
+      res = await store.reserve({ provider, voice: base.voice, chars, key, textHash: base.text_hash, course: base.course, job: base.job, language: base.language, attempt: base.attempt, limits: b })
+    } catch (e) {
+      try { mirror({ kind: 'refused', code: 'LEDGER', ...base }) } catch {}
+      refuse('LEDGER', provider, `the shared spend ledger is unreachable (${e.message}) — refusing to render unrecorded`, {})
+    }
+    if (!res || typeof res.ok !== 'boolean') {
+      refuse('LEDGER', provider, `the shared spend ledger answered ${JSON.stringify(res)} — refusing to render on an answer it cannot read`, {})
+    }
+    if (!res.ok) {
+      try { mirror({ kind: 'refused', code: res.code, ...base }) } catch {}
+      const hint = res.code === 'POOL_SHARE' ? ` The stop is ${Math.round(b.stopAtShareOfPool * 100)}% of a ${b.monthlyPoolChars.toLocaleString()}-char pool; a raise needs by, why and until (at most ${RAISE_MAX_DAYS} days) in ops/tts-spend-budgets.json.`
+        : res.code === 'DAILY_CAP' ? ' Raise dailyCapChars only through a signed raise in ops/tts-spend-budgets.json.' : ''
+      refuse(res.code || 'REFUSED', provider, `${res.message || 'refused by the ledger'}.${hint}`, { key: res.code === 'REPEAT' ? key : undefined, today: res.today, cycle: res.cycle, seen: res.seen, course: base.course, job: base.job })
+    }
+    const entry = { kind: 'call', id: res.id, ...base }
+    try { mirror(entry) } catch { /* the reservation is in the DB; the intent line is on disk */ }
 
     // Alerts on crossing lines (once per process per line per day/cycle).
-    const after = totals(provider)
-    if (after.today >= budget.alertDailyChars) {
-      alert(`daily:${provider}:${dayKey(now())}`, 'warn', `${provider} spend today has reached ${after.today.toLocaleString()} chars (alert line ${budget.alertDailyChars.toLocaleString()}, cap ${budget.dailyCapChars.toLocaleString()})`, { provider })
+    const today = Number(res.today) || 0; const cycle = Number(res.cycle) || 0
+    if (today >= b.alertDailyChars) {
+      alert(`daily:${provider}:${dayKey(now())}`, 'warn', `${provider} spend today has reached ${today.toLocaleString()} chars (alert line ${b.alertDailyChars.toLocaleString()}, cap ${b.dailyCapChars.toLocaleString()})`, { provider })
     }
     for (const s of POOL_ALERT_SHARES) {
-      if (after.cycle >= s * pool) alert(`pool:${provider}:${s}:${cycleStart(now(), budget.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * after.cycle / pool)}% of its ${pool.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider })
+      if (cycle >= s * b.monthlyPoolChars) alert(`pool:${provider}:${s}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * cycle / b.monthlyPoolChars)}% of its ${b.monthlyPoolChars.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider })
     }
     return entry
   }
 
-  /** Read-only snapshot for a status route or a driver. */
-  function snapshot(provider) { refresh(); const t = totals(provider); return { provider, todayChars: t.today, cycleChars: t.cycle, pool: t.budget.monthlyPoolChars, dailyCap: t.budget.dailyCapChars, stopShare: t.stop.share, tripped: readTrips()[provider] || null } }
+  /** After the call: sent or failed. Best effort, never throws — the chars stay counted either way. */
+  function afterProviderCall(entry, { ok, error } = {}) {
+    if (!entry || entry.id == null) return
+    Promise.resolve().then(() => store.settle(entry.id, ok ? 'sent' : 'failed', error ? String(error.message || error).slice(0, 200) : null)).catch(() => {})
+  }
 
-  return { beforeProviderCall, snapshot, ledgerPath, alertsPath, tripsPath }
+  /** Read-only snapshot for a status route or a driver. */
+  async function snapshot(provider) {
+    const cfg = limitsNow(); const b = providerLimits(cfg, provider)
+    const t = await ledgerTotals(provider, b)
+    return { provider, todayChars: Number(t.today) || 0, cycleChars: Number(t.cycle) || 0, pool: b.monthlyPoolChars, dailyCap: b.dailyCapChars, stopShare: b.stopAtShareOfPool, tripped: t.tripped || null }
+  }
+
+  return { beforeProviderCall, afterProviderCall, snapshot, ledgerPath: mirrorPath, alertsPath, store }
 }
 
 // ─── Human alert: one line into the command surface's needs-you ────────────
@@ -360,31 +566,33 @@ async function defaultNotify(entry) {
 // ─── Provider usage readers ─────────────────────────────────────────────────
 
 /**
- * Readers return { usedChars, limitChars } for the current billing cycle, or
- * null when the provider cannot say. ElevenLabs publishes it
- * (GET /v1/user/subscription: character_count / character_limit). Cartesia's
- * usage endpoint could not be verified (its API docs sit behind a login, job
- * #425), so it is read only from CARTESIA_USAGE_URL when someone who has seen
- * the endpoint sets it, with the fields named by CARTESIA_USAGE_USED_FIELD /
- * CARTESIA_USAGE_LIMIT_FIELD.
+ * Readers return { usedChars, limitChars } for the current billing cycle.
+ * ElevenLabs: GET /v1/user/subscription (character_count / character_limit).
+ * Cartesia: GET /usage/credits (public API reference, read 2026-09-27, job
+ * #430) — credit usage between start_ts and end_ts, ~1 credit per TTS
+ * character; it needs an ADMIN key (sk_car_admin_…, play.cartesia.ai/keys/admin)
+ * in CARTESIA_ADMIN_API_KEY. No such key is in this estate's .env today, so the
+ * Cartesia reader is off until one is made.
  */
-function liveUsageReaders(env = process.env) {
+function liveUsageReaders(env = process.env, { now = () => Date.now(), cycleStartDay = () => 1 } = {}) {
   const readers = {}
   if (env.ELEVENLABS_API_KEY) {
     readers.elevenlabs = async () => {
-      const r = await fetch('https://api.elevenlabs.io/v1/user/subscription', { headers: { 'xi-api-key': env.ELEVENLABS_API_KEY } })
+      const r = await fetch('https://api.elevenlabs.io/v1/user/subscription', { headers: { 'xi-api-key': env.ELEVENLABS_API_KEY }, signal: AbortSignal.timeout(10000) })
       if (!r.ok) throw new Error(`elevenlabs subscription ${r.status}`)
       const j = await r.json()
       return { usedChars: j.character_count, limitChars: j.character_limit }
     }
   }
-  if (env.CARTESIA_API_KEY && env.CARTESIA_USAGE_URL) {
+  if (env.CARTESIA_ADMIN_API_KEY) {
     readers.cartesia = async () => {
-      const r = await fetch(env.CARTESIA_USAGE_URL, { headers: { Authorization: `Bearer ${env.CARTESIA_API_KEY}`, 'X-API-Key': env.CARTESIA_API_KEY, 'Cartesia-Version': env.CARTESIA_VERSION || '2025-04-16' } })
-      if (!r.ok) throw new Error(`cartesia usage ${r.status}`)
+      const start = new Date(cycleStart(now(), cycleStartDay('cartesia'))).toISOString()
+      const url = `https://api.cartesia.ai/usage/credits?start_ts=${encodeURIComponent(start)}&end_ts=${encodeURIComponent(new Date(now()).toISOString())}`
+      const r = await fetch(url, { headers: { Authorization: `Bearer ${env.CARTESIA_ADMIN_API_KEY}`, 'Cartesia-Version': env.CARTESIA_USAGE_VERSION || '2026-08-14' }, signal: AbortSignal.timeout(10000) })
+      if (!r.ok) throw new Error(`cartesia /usage/credits ${r.status}`)
       const j = await r.json()
-      const pick = (o, dotted) => String(dotted).split('.').reduce((v, k) => (v == null ? v : v[k]), o)
-      return { usedChars: Number(pick(j, env.CARTESIA_USAGE_USED_FIELD || 'used')), limitChars: Number(pick(j, env.CARTESIA_USAGE_LIMIT_FIELD || 'limit')) || null }
+      if (!Array.isArray(j?.data)) throw new Error('cartesia /usage/credits: no data array')
+      return { usedChars: j.data.reduce((n, b) => n + (Number(b.credits) || 0), 0), limitChars: null }
     }
   }
   return readers
@@ -394,7 +602,13 @@ function liveUsageReaders(env = process.env) {
 
 let shared = null
 function spendGuard() {
-  if (!shared) shared = createSpendGuard({ usageReaders: liveUsageReaders() })
+  if (!shared) {
+    shared = createSpendGuard({
+      usageReaders: liveUsageReaders(process.env, {
+        cycleStartDay: (p) => { try { return loadLimits({ budgetPath: COMMITTED_BUDGET_PATH, nowMs: Date.now() }).providers[p]?.cycleStartDay || 1 } catch { return 1 } },
+      }),
+    })
+  }
   return shared
 }
 /** Tests inject a guard (or null to rebuild the default). */
@@ -405,6 +619,12 @@ module.exports = {
   spendGuard,
   useSpendGuard,
   liveUsageReaders,
+  supabaseSpendStore,
+  pgSpendStore,
+  memorySpendStore,
+  loadLimits,
+  applyLimits,
+  raiseInForce,
   TtsSpendGuardError,
   repeatKey,
   repeatTextKey,
@@ -412,4 +632,6 @@ module.exports = {
   effectiveStopShare,
   DEFAULT_BUDGETS,
   DEFAULT_REPEAT,
+  DEFAULT_DIVERGENCE,
+  RAISE_MAX_DAYS,
 }

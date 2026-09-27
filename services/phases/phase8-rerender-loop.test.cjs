@@ -78,7 +78,9 @@ function ttsDouble() {
   const tts = {
     calls: [],
     chars: 0,
-    async generateWithRetry(text) {
+    async generateWithRetry(text, provider, cfg) {
+      // The real door charges the caller's pass cap before each billed attempt (job #430).
+      cfg?.door?.onAttempt?.(text, 1)
       tts.calls.push(text)
       tts.chars += String(text).length
       return { audioBuffer: Buffer.from('not really audio'), wordBoundaries: null }
