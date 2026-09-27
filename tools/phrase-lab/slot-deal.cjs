@@ -16,6 +16,13 @@
  * writes a natural phrase of its own. Declines are counted, not punished; the
  * gates and the naturalness judge sit behind it unchanged.
  *
+ * ONE AXIS PER SLOT. The first version dealt all three to every slot and the
+ * model declined 12 of 12 (ita 454-455, 2026-09-27) — "dovevamo cannot open an
+ * imperative, and quella finestra cannot sit next to it". A frame, a position
+ * and a neighbour chosen independently rarely share a natural sentence. So each
+ * slot is dealt ONE of them, rotating frame → neighbour → position, and the
+ * rest of the sentence is the model's.
+ *
  * Counters: { frames: Map id→uses, neighbours: Map legoId→uses } over the
  * arm's baskets so far — the runner builds them from the arm's candidates.
  */
@@ -66,12 +73,21 @@ function dealSlots(decl, inventory, counters, n = 6) {
     .filter((i) => i.kind === 'lego' && seed - i.seedNumber <= RECENT_SEEDS && String(i.target || '').trim().length >= 3)
     .sort((a, b) => uses(counters.neighbours, a.legoId) - uses(counters.neighbours, b.legoId) || b.seedNumber - a.seedNumber);
   const slots = [];
+  let fi = 0; let ni = 0;
   for (let i = 0; i < n; i++) {
-    const frame = frames.length ? frames[i % frames.length] : null;
-    const neighbour = recent[i] || null;
-    slots.push({ slot: i + 1, frame, position: POSITIONS[(i + seed) % 3], neighbour: neighbour ? { legoId: neighbour.legoId, known: neighbour.known, target: neighbour.target } : null });
-    if (frame) counters.frames.set(frame, uses(counters.frames, frame) + 1);
-    if (neighbour) counters.neighbours.set(neighbour.legoId, uses(counters.neighbours, neighbour.legoId) + 1);
+    const axis = ['frame', 'neighbour', 'position'][i % 3];
+    const slot = { slot: i + 1, axis, frame: null, position: null, neighbour: null };
+    if (axis === 'frame' && frames.length) {
+      slot.frame = frames[fi++ % frames.length];
+      counters.frames.set(slot.frame, uses(counters.frames, slot.frame) + 1);
+    } else if (axis === 'neighbour' && recent[ni]) {
+      const nb = recent[ni++];
+      slot.neighbour = { legoId: nb.legoId, known: nb.known, target: nb.target };
+      counters.neighbours.set(nb.legoId, uses(counters.neighbours, nb.legoId) + 1);
+    } else {
+      slot.position = 'filling'; // the position a tail-swap never reaches
+    }
+    slots.push(slot);
   }
   return slots;
 }
@@ -80,9 +96,9 @@ function dealSlots(decl, inventory, counters, n = 6) {
 function slotSection(slots, patternsById = {}) {
   if (!slots || !slots.length) return '';
   const line = (s) => {
-    const f = s.frame ? `frame ${s.frame}${patternsById[s.frame] ? ` ${patternsById[s.frame].name}: ${patternsById[s.frame].shape}` : ''}` : 'any frame';
-    const nb = s.neighbour ? `; use "${s.neighbour.known}" = "${s.neighbour.target}" (${s.neighbour.legoId}) next to the LEGO` : '';
-    return `- USE slot ${s.slot}: ${f}; ${POSITION_TEXT[s.position]}${nb}.`;
+    if (s.frame) return `- USE slot ${s.slot}: build it on frame ${s.frame}${patternsById[s.frame] ? ` ${patternsById[s.frame].name}: ${patternsById[s.frame].shape}` : ''}.`;
+    if (s.neighbour) return `- USE slot ${s.slot}: put "${s.neighbour.known}" = "${s.neighbour.target}" (${s.neighbour.legoId}) right next to the LEGO.`;
+    return `- USE slot ${s.slot}: ${POSITION_TEXT[s.position || 'filling']}.`;
   };
   return `
 
@@ -90,8 +106,9 @@ function slotSection(slots, patternsById = {}) {
 
 ## YOUR USE SLOTS — the course has dealt each one a recipe
 
-The course holds the whole distribution of frames and neighbours; these recipes
-spread them so no frame or neighbour is worn out. Write USE phrase N to slot N,
+The course holds the whole distribution of frames and neighbours; each slot is
+dealt ONE thing so no frame or neighbour is worn out. The rest of the sentence is
+yours. Write USE phrase N to slot N,
 and add "slot": N to it.
 
 ${slots.map(line).join('\n')}
