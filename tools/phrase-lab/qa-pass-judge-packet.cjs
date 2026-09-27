@@ -19,8 +19,11 @@
  *
  * READ-ONLY.
  *
+ * The sample is N baskets per course third (seeds 11+, thirds of the course's
+ * LEGO extent), evenly spaced, from a run-course-v3 candidates directory.
+ *
  * Usage:
- *   node tools/phrase-lab/qa-pass-judge-packet.cjs cym_s_for_eng --v3 v3.json --dir <outdir>
+ *   node tools/phrase-lab/qa-pass-judge-packet.cjs ita_for_eng --cands <candidates-dir> --per-third 15 --dir <outdir>
  */
 
 require('dotenv').config({ quiet: true });
@@ -34,8 +37,25 @@ async function main() {
   const argv = process.argv.slice(2);
   const courseCode = argv[0];
   const arg = (k) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : null);
-  const v3 = JSON.parse(fs.readFileSync(arg('--v3'), 'utf8')).filter((s) => !s.error);
   const dir = arg('--dir');
+  const perThird = Number(arg('--per-third') || 15);
+  const cands = arg('--cands');
+  const all = [];
+  for (const sd of fs.readdirSync(cands).filter((d) => /^seed-\d+$/.test(d))) {
+    for (const f of fs.readdirSync(path.join(cands, sd)).filter((x) => x.endsWith('.json'))) {
+      const r = JSON.parse(fs.readFileSync(path.join(cands, sd, f), 'utf8'));
+      if (r.seedNumber >= 11 && !r.blocked && (r.use || []).length) all.push(r);
+    }
+  }
+  all.sort((a, b) => a.seedNumber - b.seedNumber || a.legoIndex - b.legoIndex);
+  const maxSeed = all.length ? all[all.length - 1].seedNumber : 11;
+  const cut = [11, 11 + Math.floor((maxSeed - 10) / 3), 11 + Math.floor((2 * (maxSeed - 10)) / 3), maxSeed + 1];
+  const v3 = [];
+  ['early', 'mid', 'late'].forEach((third, i) => {
+    const pool = all.filter((r) => r.seedNumber >= cut[i] && r.seedNumber < cut[i + 1]);
+    const step = pool.length / perThird;
+    for (let k = 0; k < perThird && k < pool.length; k++) v3.push({ ...pool[Math.floor(k * step + step / 2)], third });
+  });
   const { supabase } = require('../../services/supabase-client.cjs');
   const { fetchLivePhrases } = require('./score.cjs');
 
