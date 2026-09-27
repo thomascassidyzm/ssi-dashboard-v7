@@ -96,7 +96,16 @@ async function main() {
       const started = Date.now();
       try {
         const res = await generateLegoPhrases(sb, course, l.seed_number, l.lego_index, { timeout: 900000 });
-        fs.writeFileSync(path.join(dir, `${l.lego_id}.json`), JSON.stringify(res, null, 2));
+        // A BLOCKED set is a reject, never a candidate (Tom, 2026-09-27: vocab
+        // and futureLego fails are rejects). It is kept for the record in a
+        // sibling <out>-blocked tree — never beside the candidates, which the
+        // scorers read wholesale — and, having no file here, it is generated
+        // afresh on the next pass over the range.
+        const target = res.blocked
+          ? path.join(`${out.replace(/\/$/, '')}-blocked`, `seed-${String(l.seed_number).padStart(4, '0')}`)
+          : dir;
+        fs.mkdirSync(target, { recursive: true });
+        fs.writeFileSync(path.join(target, `${l.lego_id}.json`), JSON.stringify(res, null, 2));
         if (res.blocked) blocked += 1;
         done += 1;
         fs.appendFileSync(logPath, JSON.stringify({
