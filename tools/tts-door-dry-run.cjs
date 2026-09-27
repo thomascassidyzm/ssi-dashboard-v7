@@ -123,8 +123,8 @@ async function main() {
     const provider = v.provider || (/^[a-z]{2,3}-[A-Za-z]{2,4}-\w+Neural$/.test(v.voiceId) ? 'azure' : 'cartesia')
     const id = identityFromConfig(provider, { voiceId: v.voiceId, voiceName: v.voiceId, door: { language } })
     const key = `${role}|${id.voiceId}|${normalizeForAudio(text)}`
-    // `language` is the clip's language WITH its region (spa_mx, cym_north);
-    // `base` is what the pick rule compares once rows are already in region.
+    // `language` is the clip's language code as its course names it (spa_mx,
+    // cym_n); `base` is what the pick rule compares once rows are already in it.
     if (!slots.has(key)) slots.set(key, { role, text, base: id.language, language: clipLanguageKey(id.language, course), voiceId: id.voiceId })
   }
   for (const row of [...seeds, ...legos, ...phrases]) {
@@ -174,8 +174,9 @@ async function main() {
     }
   }
 
-  // A row answers a slot only in the slot's language INCLUDING region (Tom,
-  // 2026-09-26: "region is a different language") — the same filter resolveClip runs.
+  // A row answers a slot only in the slot's own language code (Tom: "if it's a
+  // different target language in a course, then it counts as a different
+  // language") — the same filter resolveClip runs.
   const courseOf = await supabaseCourseLookup(db)()
   const inRegion = (rows, language) => rows.filter(r => clipLanguageKey(r.language, courseOf(r.course_code)) === language)
 

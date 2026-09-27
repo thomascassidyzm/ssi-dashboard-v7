@@ -25,46 +25,53 @@
 
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
-const { targetCastKey, knownCastKey, COURSE_CAST_FIELDS } = require('./cast-language-key.cjs')
-
 /**
- * THE LANGUAGE OF A CLIP, REGION INCLUDED. Tom, 2026-09-26: "region is a
- * different language - north/south welsh have very different accents, as does
- * Mexican spanish". A Castilian clip is never held for a Mexican course, and a
- * North Welsh clip never answers a South Welsh one — in ANY voice, because the
- * lookup reuses across voices, so the voice cannot be what keeps them apart.
+ * THE LANGUAGE OF A CLIP IS ITS COURSE'S LANGUAGE CODE. Tom, 2026-09-26/27:
+ * "region is a different language - north/south welsh have very different
+ * accents, as does Mexican spanish"; "no tags, the regions are different
+ * languages"; and the test: "if it's a different target language in a course,
+ * then it counts as a different language".
  *
- * The region is read from the COURSE the clip (or the request) belongs to, by
- * the same rule the voice cast is keyed on (cast-language-key.cjs, Tom
- * 2026-08-31 "dialects are different LANGUAGES"): courses.voice_pool_key /
- * courses.dialect for the language a course teaches, courses.known_dialect for
- * the language it is taught in. So 'spa_mx', 'cym_north', 'cym_south',
- * 'deu_at', 'fra_ca' — and plain 'spa' for Castilian, which states no region.
- * Never from course_audio.language (it carries the base tag, or a BCP-47 tag
- * nobody reconciled) and never from the course code.
+ * So there is no region tag and no mapping. The language code is the one the
+ * course itself is named by: the part of course_code before '_for_' is the
+ * language it teaches ('spa_mx', 'cym_n', 'cym_s', 'spa'), the part after is
+ * the language it is taught in ('eng', 'cym'). Two courses with different
+ * target codes never share a clip, in any voice — the lookup reuses across
+ * voices, so the voice cannot be what keeps them apart. This is the same code
+ * the pods already key their canonical text on (pod-language-text.cjs,
+ * split_part(course_code, '_for_', 1)). courses.target_lang cannot serve: it
+ * carries 'spa' for spa_mx_for_eng and 'cym' for both Welsh courses.
  *
- *   - the clip's language is the course's TARGET base  -> targetCastKey(course)
- *   - the clip's language is the course's KNOWN base   -> knownCastKey(course)
- *   - neither (an English line in spa_for_jpn)          -> the base: nothing
- *     about its region is stated anywhere;
- *   - both, and the two sides disagree on region       -> null: unnameable;
- *   - no course row (a request with no course)          -> the base.
+ * Which side a clip is on is read from its stored language against the
+ * course's target_lang / known_lang (course_audio.language is the base tag, or
+ * an unreconciled BCP-47 one — 'es-MX', 'cy'):
+ *   - the course's TARGET base -> the code before '_for_';
+ *   - the course's KNOWN base  -> the code after '_for_';
+ *   - both (eng_template)      -> the two codes if they agree, else null;
+ *   - neither (an English line in spa_for_jpn) -> the base code: no course
+ *     names it any other way;
+ *   - no course (a request with no course)     -> the base code.
  *
  * @param {string} language  any spelling ('es-MX', 'spa', 'cy')
- * @param {object|null} course  a courses row carrying COURSE_CAST_FIELDS
+ * @param {object|null} course  { course_code, known_lang, target_lang }
  * @returns {string|null}
  */
 function clipLanguageKey(language, course) {
   const base = tryCanonicalLanguage(language)
   if (!base) return null
-  if (!course) return base
-  const onTarget = tryCanonicalLanguage(course.target_lang) === base
-  const onKnown = tryCanonicalLanguage(course.known_lang) === base
-  const t = onTarget ? targetCastKey(course) : null
-  const k = onKnown ? knownCastKey(course) : null
+  if (!course || !course.course_code) return base
+  const cut = String(course.course_code).indexOf('_for_')
+  if (cut < 0) return base
+  const targetCode = course.course_code.slice(0, cut)
+  const knownCode = course.course_code.slice(cut + 5)
+  const t = tryCanonicalLanguage(course.target_lang) === base ? targetCode : null
+  const k = tryCanonicalLanguage(course.known_lang) === base ? knownCode : null
   if (t && k) return t === k ? t : null
   return t || k || base
 }
+
+/** The columns clipLanguageKey reads from a courses row. */
+const COURSE_LANGUAGE_FIELDS = 'course_code, known_lang, target_lang'
 
 /** The base language of a clip language key ('spa_mx' -> 'spa'). */
 function baseOfClipLanguage(key) {
@@ -103,7 +110,7 @@ function indexEntryFor(row, indexedBy, courseOf = noCourses) {
   if (!text_key) return { skip: 'empty-text' }
   if (!tryCanonicalLanguage(row.language)) return { skip: 'language-unnamed' }
   const language = clipLanguageKey(row.language, courseOf(row.course_code))
-  if (!language) return { skip: 'region-ambiguous' }
+  if (!language) return { skip: 'language-ambiguous' }
   const voice_id = tryCanonicalVoiceId(row.voice_id)
   if (!voice_id) return { skip: 'voice-unnamed' }
   return {
@@ -229,15 +236,15 @@ const COURSES_TTL_MS = 5 * 60 * 1000
 /**
  * The courses table (~150 rows) as a lookup, cached. A code the cache does not
  * hold forces ONE re-read — a course created a minute ago must not have its
- * clips keyed region-free for five minutes. A read that fails THROWS: keying a
- * clip without knowing its course's region is how a Castilian clip would be
+ * clips keyed by their base code for five minutes. A read that fails THROWS: keying a
+ * clip without knowing its course's language code is how a Castilian clip would be
  * filed where a Mexican course finds it.
  */
 function supabaseCourseLookup(supabase) {
   let map = null, at = 0
   const load = async () => {
-    const { data, error } = await supabase.from('courses').select(COURSE_CAST_FIELDS)
-    if (error) throw new Error(`clip index: courses unreadable (${error.message}) — refusing to key a clip without its region`)
+    const { data, error } = await supabase.from('courses').select(COURSE_LANGUAGE_FIELDS)
+    if (error) throw new Error(`clip index: courses unreadable (${error.message}) — refusing to key a clip without its course's language code`)
     map = new Map((data || []).map(c => [c.course_code, c])); at = Date.now()
   }
   return async (codes = []) => {
@@ -355,6 +362,7 @@ function dedupeById(rows) {
 
 module.exports = {
   clipLanguageKey,
+  COURSE_LANGUAGE_FIELDS,
   baseOfClipLanguage,
   supabaseCourseLookup,
   clipTextKey,

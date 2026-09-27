@@ -227,31 +227,31 @@ describe('rule 4: the ~1% course-specific known line is new per course; its targ
   })
 })
 
-describe('rule 5: region is a different language (Tom, 2026-09-26: "north/south welsh have very different accents, as does Mexican spanish")', () => {
-  // Region is stated on the COURSE, exactly as the voice cast reads it
-  // (cast-language-key.cjs): voice_pool_key, dialect, known_dialect.
-  const course = (course_code, known_lang, target_lang, extra = {}) => ({ course_code, known_lang, target_lang, voice_pool_key: null, dialect: 'standard', known_dialect: null, ...extra })
+describe('rule 5: a different target language in a course is a different language (Tom: "no tags, the regions are different languages"; "if it\'s a different target language in a course, then it counts as a different language")', () => {
+  // The code is the course's own: course_code before '_for_' for target lines,
+  // after it for known lines. courses.target_lang says 'spa'/'cym' for all of these.
+  const course = (course_code, known_lang, target_lang) => ({ course_code, known_lang, target_lang })
   const COURSES = [
     course('spa_for_eng', 'eng', 'spa'),
-    course('spa_mx_for_eng', 'eng', 'spa', { voice_pool_key: 'spa_mx' }),
-    course('spa_mx_for_jpn', 'jpn', 'spa', { voice_pool_key: 'spa_mx' }),
-    course('cym_n_for_eng', 'eng', 'cym', { dialect: 'north' }),
-    course('cym_s_for_eng', 'eng', 'cym', { dialect: 'south' }),
-    course('spa_for_cym', 'cym', 'spa', { known_dialect: 'north' }),
+    course('spa_mx_for_eng', 'eng', 'spa'),
+    course('spa_mx_for_jpn', 'jpn', 'spa'),
+    course('cym_n_for_eng', 'eng', 'cym'),
+    course('cym_s_for_eng', 'eng', 'cym'),
+    course('spa_for_cym', 'cym', 'spa'),
   ]
   const courseOf = code => COURSES.find(c => c.course_code === code) || null
   const castilian = row({ course: 'spa_for_eng', text: 'quiero hablar', language: 'spa', voice: GIULIA })
   const northern = row({ course: 'cym_n_for_eng', text: 'dw i isio siarad', language: 'cym', voice: TOM })
   const english = row({ course: 'spa_mx_for_eng', text: 'I want to speak', language: 'eng', voice: CHARLOTTE, role: 'known' })
 
-  it('the index keys a clip by its course\'s region: spa, spa_mx, cym_north, cym_south — and a known side by known_dialect', () => {
+  it('the index keys a clip by its course\'s own language code: spa, spa_mx, cym_n, cym_s — a known line by the code after _for_', () => {
     expect(clipIndex.clipLanguageKey('spa', courseOf('spa_for_eng'))).toBe('spa')
     expect(clipIndex.clipLanguageKey('es-MX', courseOf('spa_mx_for_eng'))).toBe('spa_mx')
     expect(clipIndex.clipLanguageKey('eng', courseOf('spa_mx_for_eng'))).toBe('eng')
-    expect(clipIndex.clipLanguageKey('cym', courseOf('cym_n_for_eng'))).toBe('cym_north')
-    expect(clipIndex.clipLanguageKey('cy', courseOf('cym_s_for_eng'))).toBe('cym_south')
-    expect(clipIndex.clipLanguageKey('cym', courseOf('spa_for_cym'))).toBe('cym_north')
-    expect(clipIndex.entriesFromRows([castilian, northern], 't', courseOf).entries.map(e => e.language).sort()).toEqual(['cym_north', 'spa'])
+    expect(clipIndex.clipLanguageKey('cym', courseOf('cym_n_for_eng'))).toBe('cym_n')
+    expect(clipIndex.clipLanguageKey('cy', courseOf('cym_s_for_eng'))).toBe('cym_s')
+    expect(clipIndex.clipLanguageKey('cym', courseOf('spa_for_cym'))).toBe('cym')
+    expect(clipIndex.entriesFromRows([castilian, northern], 't', courseOf).entries.map(e => e.language).sort()).toEqual(['cym_n', 'spa'])
   })
 
   it('a Castilian clip is NOT held for a Mexican course — in any voice — so the Mexican line is new', async () => {

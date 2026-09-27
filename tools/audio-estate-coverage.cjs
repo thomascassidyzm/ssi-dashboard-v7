@@ -20,9 +20,10 @@
  * course, from seeds, LEGOs and practice phrases — known, target1, target2 —
  * with the Hindi-style gendered known split applied exactly as phase8 does.
  *
- * REGION (job #394, Tom 2026-09-26: "region is a different language"): every
- * line is asked in its course's language WITH region (clipLanguageKey —
- * spa_mx, cym_north), so a Castilian clip never counts as held for Mexican
+ * LANGUAGE CODE (job #394, Tom: "if it's a different target language in a
+ * course, then it counts as a different language"): every line is asked in its
+ * course's own language code (clipLanguageKey — spa_mx, cym_n), so a
+ * Castilian clip never counts as held for Mexican
  * Spanish. The index must have been re-keyed first
  * (tools/clip-index-backfill.cjs --region-rekey), then --refresh-index.
  *
@@ -186,12 +187,8 @@ async function analyseCourse(client, course, index) {
 
 /** Pod 1: the language's 231 canonical target lines, and each serving pod's lines, against the index. */
 async function analysePods(client, index, courses) {
-  // A pod's target_lang is split_part(course_code, '_for_', 1) ('cym_n',
-  // 'spa_mx'); its region is whatever the courses of that prefix state.
-  const podKey = lang => {
-    const c = courses.find(x => x.course_code.startsWith(`${lang}_for_`))
-    return clipLanguageKey(String(lang).split('_')[0], c || null)
-  }
+  // A pod's target_lang is split_part(course_code, '_for_', 1) — already the code.
+  const podKey = lang => lang
   const { rows: canon } = await client.query(`SELECT target_lang, target_text FROM canonical_pod_target_text WHERE pod_slug = 'pod-1'`)
   const byLang = {}
   for (const r of canon) {
@@ -245,7 +242,7 @@ async function main() {
     log(`clip_index: ${index.total} entries, ${index.byWords.size} distinct (language, words)`)
     const { rows: [ca] } = await client.query(`SELECT reltuples::bigint AS n FROM pg_class WHERE relname = 'course_audio'`)
     const { rows: courses } = await client.query(
-      `SELECT course_code, known_lang, target_lang, voice_pool_key, dialect, known_dialect, voice_config, new_app_status, status FROM courses ORDER BY course_code`)
+      `SELECT course_code, known_lang, target_lang, voice_config, new_app_status, status FROM courses ORDER BY course_code`)
     const perCourse = []
     for (const c of courses) {
       try { perCourse.push(await analyseCourse(client, c, index)); log(`  ${c.course_code}`) } catch (e) { perCourse.push({ course_code: c.course_code, error: e.message }); log(`  ${c.course_code} ERROR ${e.message}`) }

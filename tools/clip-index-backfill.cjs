@@ -10,10 +10,11 @@
  *       # job #394: re-key every course whose language has a regional fork.
  *
  * REGION (Tom, 2026-09-26: "region is a different language"). A clip's
- * language key carries its course's region — clip-index.cjs clipLanguageKey,
- * read from courses.voice_pool_key / dialect / known_dialect. --region-rekey
+ * language key is its course's own language code — clip-index.cjs
+ * clipLanguageKey: the course_code before '_for_' for target lines ('spa_mx',
+ * 'cym_n'), after it for known lines. --region-rekey
  * walks, one course at a time, every course whose target or known base
- * language has a regional course anywhere (spa + spa_mx, cym + cym_north …):
+ * language is split across course codes anywhere (spa + spa_mx, cym + cym_n …):
  * the REGIONAL courses first — per batch it deletes any entry pointing at one
  * of the batch's rows under a language other than that row's key (the
  * region-free 'spa' entries #391 wrote for Mexican rows) and inserts the right
@@ -40,9 +41,8 @@
 const path = require('path')
 const fs = require('fs')
 const { Client } = require('pg')
-const { entriesFromRows, clipLanguageKey } = require('../services/shared/clip-index.cjs')
+const { entriesFromRows, clipLanguageKey, COURSE_LANGUAGE_FIELDS } = require('../services/shared/clip-index.cjs')
 const { tryCanonicalLanguage } = require('../services/shared/clip-identity.cjs')
-const { COURSE_CAST_FIELDS } = require('../services/shared/cast-language-key.cjs')
 
 const args = process.argv.slice(2)
 const arg = (name, dflt = null) => { const i = args.indexOf(name); return i >= 0 ? args[i + 1] : dflt }
@@ -96,7 +96,7 @@ async function main() {
   const client = new Client({ connectionString: databaseUrl(), statement_timeout: 15000, application_name: 'clip-index-backfill' })
   await client.connect()
   await client.query("SET statement_timeout = '15s'")
-  const { rows: courseRows } = await client.query(`SELECT ${COURSE_CAST_FIELDS} FROM courses`)
+  const { rows: courseRows } = await client.query(`SELECT ${COURSE_LANGUAGE_FIELDS} FROM courses`)
   const courses = new Map(courseRows.map(c => [c.course_code, c]))
   const courseOf = code => courses.get(code) || null
   const totals = { read: 0, inserted: 0, upgraded: 0, collisions: 0, dropped: 0, skipped: {}, batches: 0, slowestMs: 0 }
