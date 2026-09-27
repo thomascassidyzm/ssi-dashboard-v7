@@ -172,7 +172,12 @@ function retryPrompt(basePrompt, phrases, reasons) {
 }
 
 async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, opts = {}) {
-  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true } = opts;
+  // `revise` = { phrases: {build, use}, reasons: [..] } — a set a reader has
+  // already refused (the cross-family naturalness pass, Tom 2026-09-27: the
+  // floors cannot hear clunky lines). The first attempt is then the door's own
+  // retry prompt with those reasons, so the rewrite keeps what was fine and
+  // still has to clear every gate below. Absent, nothing changes.
+  const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true, revise = null } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
   // STOP AND SURFACE, before any model call. An unruled course whose LEGO or
@@ -232,7 +237,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   let gate = null;
   let score = null;
   let declarationCheck = null;
-  let currentPrompt = prompt;
+  let currentPrompt = revise ? retryPrompt(prompt, revise.phrases, revise.reasons) : prompt;
 
   for (let attempt = 0; attempt <= (runGate ? MAX_GATE_RETRIES : 0); attempt += 1) {
     const raw = await claudeChat(currentPrompt, { model: PHRASE_MODEL, timeout, thinkingTokens: THINKING_TOKENS });
