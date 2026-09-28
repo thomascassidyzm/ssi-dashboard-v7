@@ -6,7 +6,13 @@
       "cycleStartDay": 1,
       "dailyCapChars": 1000000,
       "alertDailyChars": 300000,
-      "stopAtShareOfPool": 0.5
+      "stopAtShareOfPool": 0.5,
+      "raise": {
+        "stopAtShareOfPool": 1.25,
+        "by": "Tom (via Watson)",
+        "why": "Tom 2026-09-28 14:50Z: allow Cartesia from now on with the new controls in place; we cannot stop generating audio for a month. Daily cap 1M and daily alert 300k unchanged.",
+        "until": "2026-10-28"
+      }
     }
   },
   "repeat": {
