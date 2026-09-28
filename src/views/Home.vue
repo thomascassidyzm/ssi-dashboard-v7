@@ -90,7 +90,7 @@
                Capture A/B was reachable from nowhere in src/ at all. A lab you
                can only arrive at sideways is one you arrive at not knowing what
                you have walked into. -->
-          <router-link to="/admin/labs" class="hub-card card-labs">
+          <router-link v-if="isAdmin" to="/admin/labs" class="hub-card card-labs">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -146,8 +146,8 @@
             </div>
           </router-link>
 
-          <!-- Admin -->
-          <router-link to="/admin" class="hub-card card-admin">
+          <!-- Admin — admins only (Tom, 2026-09-25); the route guard refuses it anyway. -->
+          <router-link v-if="isAdmin" to="/admin" class="hub-card card-admin">
             <div class="card-glow"></div>
             <div class="card-content">
               <div class="card-header">
@@ -193,7 +193,7 @@ const courseCount = computed(() => courses.value?.length || 0)
 // dashboard_users row is that claim; a login with no voice never sees the card,
 // and one that has a stale voice gets the page's own honest "no recording voice
 // for this login" rather than a queue that isn't theirs.
-const { learner, isRecorder } = useAuth()
+const { learner, isRecorder, isAdmin } = useAuth()
 const hasVoice = computed(() => !!learner.value?.voice_id || isRecorder.value)
 </script>
 

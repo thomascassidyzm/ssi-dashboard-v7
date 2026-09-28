@@ -185,7 +185,9 @@
            has no business sitting at eye level next to a state readout; Edit
            canonical is a different screen entirely. Neither is what anyone opens
            this page to do. -->
-      <details v-if="!loading && !error" class="pv-drawer mt-6 rounded-lg border border-line bg-surface">
+      <!-- Opened and scrolled to when the course journey's "I want to record"
+           card sends a builder here to cast a voice (?cast=1). -->
+      <details id="cast" ref="castDrawer" v-if="!loading && !error" :open="route.query.cast === '1'" class="pv-drawer mt-6 rounded-lg border border-line bg-surface">
         <summary class="pv-summary">Cast — who records each character</summary>
         <div class="px-1 pb-1">
           <PodCastPanel :course-code="courseCode" />
@@ -243,7 +245,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, watch, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 import { getApiUrl } from '@/services/api.js'
 import { useAuth } from '@/composables/useAuth.js'
@@ -255,6 +257,12 @@ import { podDisplayTitle, podDisplayLabel } from '@/lib/podDisplayName.js'
 import { voiceNamesFromCoverage, recordistNames } from '@/lib/recordistNames.js'
 
 const route = useRoute()
+const castDrawer = ref(null)
+// The journey's record card lands here with ?cast=1: bring the cast into view
+// once the page has drawn it, so the tap lands where the casting is done.
+watch([castDrawer, () => route.query.cast], ([el, cast]) => {
+  if (el && cast === '1') nextTick(() => el.scrollIntoView({ block: 'start', behavior: 'smooth' }))
+})
 const courseCode = route.params.courseCode
 const { getCourseName } = useCourses()
 

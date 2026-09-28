@@ -151,6 +151,52 @@ describe('the gate refuses a content write with no identity', () => {
   })
 })
 
+// A CAST RECORDER NEVER EDITS COURSE TEXT (Tom, 2026-09-25): "they CANNOT edit
+// any recordings they have been asked to make UNLESS they are doing the pod
+// recordings. So seeds and legos and phrases are immutable." Saving a pod cast
+// provisions a dashboard_users row { role: 'recorder', courses: [course] } for
+// the artist's email, and before this rule that row was a verified human the
+// gate let through — straight into the phrase and seed editors. Pod lines are
+// not on this manifest; they are edited through the booth and the pods door,
+// which have their own own-line rules.
+describe('a recorder and a login with no grant on the course are refused', () => {
+  function supabaseWith(row) {
+    return makeSupabase({
+      users: { [TOKEN]: { id: 'user-uuid-r', email: row.email } },
+      dashboardUsers: [row],
+    })
+  }
+  async function patchSeed(course) {
+    return fetch(`${base}/api/seed/${course}/1`, {
+      method: 'PATCH', headers: { ...BROWSER, Authorization: `Bearer ${TOKEN}` },
+      body: JSON.stringify({ target_text: 'x' }),
+    })
+  }
+
+  it('403s a cast recorder on the very course they are cast on, and never runs the handler', async () => {
+    let handlerRan = false
+    await listen(makeApp(supabaseWith({ email: 'artist@example.com', name: 'Artist', role: 'recorder', courses: ['cat_for_gle'], voice_id: null }),
+      { onWrite: () => { handlerRan = true } }))
+    const res = await patchSeed('cat_for_gle')
+    expect(res.status).toBe(403)
+    expect((await res.json()).code).toBe('RECORDER_CANNOT_EDIT_CONTENT')
+    expect(handlerRan).toBe(false)
+  })
+
+  it('403s an editor writing to a course they hold no grant on', async () => {
+    await listen(makeApp(supabaseWith({ email: 'builder@example.com', name: 'Builder', role: 'editor', courses: ['cat_for_gle'], voice_id: null })))
+    const res = await patchSeed('eng_for_hin')
+    expect(res.status).toBe(403)
+    expect((await res.json()).code).toBe('NO_GRANT_ON_COURSE')
+  })
+
+  it('lets that editor write to their own course', async () => {
+    await listen(makeApp(supabaseWith({ email: 'builder@example.com', name: 'Builder', role: 'editor', courses: ['cat_for_gle'], voice_id: null })))
+    const res = await patchSeed('cat_for_gle')
+    expect(res.status).toBe(200)
+  })
+})
+
 describe('the gate attributes a write it allows', () => {
   it('records a verified human from a Supabase session', async () => {
     const sb = supabaseWithHuman()

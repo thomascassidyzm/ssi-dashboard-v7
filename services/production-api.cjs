@@ -163,6 +163,19 @@ const io = new Server(httpServer, {
 // thought required. Ordered before every route so it wraps them all.
 app.use(compression())
 
+// A PREVIEW BACKEND IS SERVED OVER THE TAILNET (a 100.x address), and Chrome
+// refuses a public page (the Vercel preview) calling a private address unless
+// the preflight says so. Only a preview unit sets POPTY_PREVIEW; production,
+// on the public funnel, never needs it and never sends it.
+if (process.env.POPTY_PREVIEW === '1') {
+  app.use((req, res, next) => {
+    if (req.method === 'OPTIONS' && req.headers['access-control-request-private-network']) {
+      res.set('Access-Control-Allow-Private-Network', 'true')
+    }
+    next()
+  })
+}
+
 app.use(cors({
   origin: true,
   methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
@@ -1964,6 +1977,11 @@ app.post('/api/courses/create', requireDashboardUserOrLoopback, async (req, res)
       ? parseInt(seedCount, 10)
       : (Number.isFinite(Number(seedEnd)) ? parseInt(seedEnd, 10) : 668)
 
+    // ONE name, saved and answered: the response used to rebuild its own label
+    // from `sourceLanguage`, which a caller sending `known` leaves undefined —
+    // "cat for undefined speakers" (job #183) beside a correctly saved name.
+    const savedDisplayName = displayName || `${languageCodeService.getName(targetLanguage) || targetLanguage} for ${languageCodeService.getName(known) || known} Speakers`
+
     // Insert into Supabase courses table
     const { error: dbError } = await supabase
       .from('courses')
@@ -1971,7 +1989,7 @@ app.post('/api/courses/create', requireDashboardUserOrLoopback, async (req, res)
         course_code: courseCode,
         known_lang: known,
         target_lang: targetLanguage,
-        display_name: displayName || `${languageCodeService.getName(targetLanguage) || targetLanguage} for ${languageCodeService.getName(known) || known} Speakers`,
+        display_name: savedDisplayName,
         status: 'draft',
         seed_count: resolvedSeedCount
       })
@@ -1989,7 +2007,7 @@ app.post('/api/courses/create', requireDashboardUserOrLoopback, async (req, res)
     res.json({
       success: true,
       courseCode,
-      displayName: displayName || `${targetLanguage} for ${sourceLanguage} speakers`,
+      displayName: savedDisplayName,
       sourceLanguage,
       targetLanguage,
       seedRange: { start: seedStart || 1, end: seedEnd || resolvedSeedCount },
@@ -2017,7 +2035,11 @@ app.get('/api/courses/:courseCode/voice-config', async (req, res) => {
     // language-cast resolution, which this screen would otherwise save back
     // into the course row and freeze (Tom's ruling, 2026-08-29).
     const config = await voiceConfigService.loadStoredVoiceConfig(courseCode)
-    res.json({ success: true, config })
+    // humanVoiceOnly: the standing no-TTS rule for this course (Welsh, Breton,
+    // pdc — services/shared/human-voice-courses.cjs), so the course journey
+    // can grey out the TTS step with the same answer the render gate gives.
+    const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs')
+    res.json({ success: true, config, humanVoiceOnly: isHumanVoiceCourse(courseCode) })
   } catch (error) {
     logger.error(`[VoiceConfig] Error loading config for ${courseCode}:`, error)
     res.status(500).json({ success: false, error: error.message })

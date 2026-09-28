@@ -28,6 +28,7 @@
 // Import this. Do not write another one.
 
 import { getApiUrl } from '@/services/api'
+import { PREVIEW_API } from '@/services/machineEnvironment'
 
 export function recordingApiBase() {
   // ON popty.app THE PROXY ALWAYS WINS — checked BEFORE the pin, deliberately.
@@ -48,6 +49,9 @@ export function recordingApiBase() {
   // does — and a preview page reaching out to watson-1 directly is refused by
   // the browser exactly as popty.app's would be. Without this, staging a
   // recordist change could never be verified in a real browser.
+  // A preview build's booth talks to the preview backend: vercel.json's
+  // same-origin rewrite for /api/recording points at PRODUCTION.
+  if (PREVIEW_API) return PREVIEW_API
   if (typeof window !== 'undefined') {
     const host = window.location.hostname
     if (host === 'popty.app' || host.endsWith('.vercel.app')) return ''

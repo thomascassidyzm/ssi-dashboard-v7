@@ -1,22 +1,61 @@
 <template>
   <div class="leader-journey">
+    <!-- THREE DOORS FIRST (Tom and Aran, 2026-09-25): "a kind of simplification
+         and a permission to be just doing that thing". Each card goes STRAIGHT
+         to where that work is done; the pick is remembered, shown alone, and
+         changed with one tap. The numbered steps below stay as the map. -->
+    <section class="pick" aria-label="What do you want to do?" data-surface="journey-three-cards-2026-09-25">
+      <div class="pick-head">
+        <h2 class="journey-title">{{ pick && !choosing ? 'Carry on' : 'What do you want to do?' }}</h2>
+        <button v-if="pick && !choosing" type="button" class="pick-change" @click="choosing = true">Change</button>
+        <button v-else-if="pick && choosing" type="button" class="pick-change" @click="choosing = false">Keep {{ pickedCard.short }}</button>
+      </div>
+      <!-- TITLE ONLY, THE WHOLE CARD IS THE TAP (Tom, 2026-09-25): no
+           explanation line, no link lines, no footer — an icon, an accent and
+           his three sentences. Anything the cards used to carry as extra links
+           lives in the steps below. -->
+      <div class="pick-cards" :class="{ single: pick && !choosing }">
+        <router-link
+          v-for="card in visibleCards"
+          :key="card.key"
+          :to="card.to"
+          class="pick-card"
+          :class="[card.key, { picked: card.key === pick }]"
+          :data-card="card.key"
+          @click="choose(card.key)"
+        >
+          <span class="pick-icon" aria-hidden="true">
+            <svg v-if="card.key === 'record'" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" /><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7" /></svg>
+            <svg v-else-if="card.key === 'proofread'" viewBox="0 0 24 24"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12Z" /><circle cx="12" cy="12" r="3" /></svg>
+            <svg v-else viewBox="0 0 24 24"><rect x="3" y="13" width="8" height="7" rx="1.2" /><rect x="13" y="13" width="8" height="7" rx="1.2" /><rect x="8" y="4" width="8" height="7" rx="1.2" /></svg>
+          </span>
+          <span class="pick-title">{{ card.title }}</span>
+        </router-link>
+      </div>
+    </section>
+
     <header class="journey-header">
       <h2 class="journey-title">Your course, step by step</h2>
       <p class="journey-intro">
-        This page walks you from first translation to a published course. Work down the list —
-        each step shows where you are and takes you to the right place.
+        {{ pick && !showAllSteps
+          ? `The steps for ${pickedCard.gerund}. Nothing here has to be done in order.`
+          : 'The whole journey, from first translation to a published course. Each step shows where you are and takes you to the right place.' }}
       </p>
+      <button v-if="pick" type="button" class="pick-change" @click="showAllSteps = !showAllSteps">
+        {{ showAllSteps ? `Just the ${pickedCard.short} steps` : 'Show the whole journey' }}
+      </button>
     </header>
 
     <ol class="journey-steps">
       <li
-        v-for="step in steps"
+        v-for="step in shownSteps"
         :key="step.key"
         class="journey-step"
-        :class="{ current: step.key === currentStepKey, done: step.state === 'done' }"
+        :class="{ current: step.key === currentStepKey, done: step.state === 'done', na: step.state === 'na' }"
       >
         <div class="step-marker" :class="step.state">
           <span v-if="step.state === 'done'">&#10003;</span>
+          <span v-else-if="step.state === 'na'">&ndash;</span>
           <span v-else>{{ step.num }}</span>
         </div>
 
@@ -36,7 +75,7 @@
             </li>
           </ul>
 
-          <div class="step-links">
+          <div v-if="step.links.length" class="step-links">
             <router-link
               v-for="link in step.links"
               :key="link.label"
@@ -59,17 +98,21 @@
 
 <script setup>
 import { ref, computed, onMounted, watch } from 'vue'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { getApiUrl } from '@/services/api'
 import { isConfigured as isSupabaseConfigured, getQASummary } from '@/services/supabase'
 import { useProductionStore } from '@/stores/production'
+import { useAuth } from '@/composables/useAuth'
+import { readPick, writePick, JOURNEY_CARDS, stepsForPick } from './journeyPick.js'
 
 const props = defineProps({
   courseCode: { type: String, required: true }
 })
 
 const router = useRouter()
+const route = useRoute()
 const store = useProductionStore()
+const { learner, isAdmin } = useAuth()
 const apiBase = getApiUrl()
 const headers = { 'ngrok-skip-browser-warning': 'true' }
 
@@ -86,6 +129,8 @@ const stats = ref(null)        // { total_seeds, completed_seeds, seeds_with_leg
 const flaggedCount = ref(null) // number | null (unknown)
 const audioStats = ref(null)   // { total, existing, missing }
 const voiceConfig = ref(null)  // { voices: { target1, target2, known, presentation } }
+const humanVoiceOnly = ref(false) // the course's standing no-TTS rule (server's answer)
+const podDraftTotal = ref(0)      // pod lines still a machine draft nobody has read
 const coverage = ref(null)     // synthesis-engine coverage payload (shape owned by the engine build)
 const engineInstalled = ref(false)
 const loadError = ref(false)
@@ -123,8 +168,12 @@ async function loadAll() {
       .catch(() => {}),
 
     fetchJson(`${apiBase}/api/courses/${props.courseCode}/voice-config`)
-      .then(d => { voiceConfig.value = d.config || d })
+      .then(d => { voiceConfig.value = d.config || d; humanVoiceOnly.value = d.humanVoiceOnly === true })
       .catch(() => {}),
+
+    fetchJson(`${apiBase}/api/production/${props.courseCode}/pods/drafts`)
+      .then(d => { podDraftTotal.value = d.total || 0 })
+      .catch(() => { podDraftTotal.value = 0 }),
 
     // The synthesis engine lands in a parallel build — a 404 here simply means
     // "not installed yet" and the step renders its coming-soon state.
@@ -218,6 +267,55 @@ const humanSlotCount = computed(() =>
   ['target1', 'target2'].filter(k => voiceConfig.value?.voices?.[k]?.provider === 'human').length
 )
 
+// A HUMAN-VOICE COURSE: the standing no-TTS rule names it, or both of its
+// voices are real people. Read from the voice data the page already loads —
+// no new flag. Its computer-voice step is greyed out, with the reason said.
+const isHumanVoiceCourse = computed(() => humanVoiceOnly.value || humanSlotCount.value >= 2)
+
+// --- The three cards --------------------------------------------------------
+// The caller's own voice on THIS course, from the casting the server attached
+// to their identity (/api/auth/me). With one, "record" opens their booth; with
+// none, it opens the cast, where they name a voice — theirs or anyone's.
+const myVoiceId = computed(() => {
+  const casting = learner.value?.casting
+  const mine = Array.isArray(casting) ? casting.find(c => c && c.courseCode === props.courseCode && c.voiceId) : null
+  return mine ? mine.voiceId : null
+})
+const castTo = computed(() => ({ path: `/production/${props.courseCode}/pods`, query: { cast: '1' } }))
+
+const cards = computed(() => {
+  const code = props.courseCode
+  const recordTo = myVoiceId.value
+    ? { name: 'RecordistRoom', params: { voiceId: myVoiceId.value }, query: { course: code } }
+    : castTo.value
+  const to = {
+    record: recordTo,
+    proofread: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } },
+    build: `/production/${code}/text`,
+  }
+  return JOURNEY_CARDS.map(c => ({ ...c, to: to[c.key] }))
+})
+
+// The pick: remembered per login (journeyPick.js says where and why), shown
+// alone once made, changed with one tap.
+const pick = ref(null)
+const choosing = ref(false)
+const showAllSteps = ref(false)
+const pickEmail = computed(() => learner.value?.email || '')
+watch(pickEmail, (email) => { pick.value = readPick(email) }, { immediate: true })
+function choose(key) {
+  pick.value = key
+  choosing.value = false
+  writePick(pickEmail.value, key)
+}
+const pickedCard = computed(() => JOURNEY_CARDS.find(c => c.key === pick.value) || JOURNEY_CARDS[0])
+// HOME RETURNS TO ALL THREE: the navbar's Home and the Popty wordmark send an
+// editor here with ?cards=all, which opens the three cards even when a pick is
+// remembered (Tom, 2026-09-25: "always easy to get back to these three cards").
+watch(() => route.query.cards, (v) => { if (v === 'all') choosing.value = true }, { immediate: true })
+const visibleCards = computed(() =>
+  pick.value && !choosing.value ? cards.value.filter(c => c.key === pick.value) : cards.value)
+
 // --- Synthesis coverage roll-up ----------------------------------------------
 // Target slots from the engine's per-slot array (prefer the human-assigned
 // ones — those are the voices the leader's team records). Shared by the
@@ -298,7 +396,10 @@ const steps = computed(() => {
       : (flaggedCount.value > 0 ? `${flaggedCount.value} items need a look` : 'No open issues'),
     links: [
       { label: 'Review issues', to: `/production/${code}/phrase-qa`, primary: true },
-      { label: 'Read the course in order', to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } } }
+      { label: 'Read the course in order', to: { name: 'ScriptViewer', params: { courseCode: code }, query: { view: 'journey' } } },
+      ...(podDraftTotal.value > 0
+        ? [{ label: `${podDraftTotal.value} pod line${podDraftTotal.value === 1 ? '' : 's'} nobody has read yet`, to: { path: `/production/${code}/pods`, query: { drafts: '1' } } }]
+        : [])
     ]
   }
 
@@ -312,23 +413,35 @@ const steps = computed(() => {
       : 'No human voices assigned yet',
     links: [
       { label: 'Open the recording room', to: recordRoomTo.value, primary: true },
+      { label: 'Ask someone else to record', to: castTo.value },
       { label: 'Manage your team & voices', to: `/production/${code}/team` },
       { label: 'See the reading plan', to: `/production/${code}/recording-optimizer` }
     ]
   }
 
-  const synthesize = {
-    key: 'synthesize', num: 5,
-    title: 'Build the full audio',
-    blurb: 'Your recordings are stitched together so every practice phrase is heard in your team’s voices — nobody has to read thousands of lines.',
-    state: synthDone.value ? 'done' : (engineInstalled.value ? 'active' : 'pending'),
-    statusText: engineInstalled.value
-      ? (synthSummary.value || 'Ready')
-      : 'Waiting for recordings',
-    links: [
-      { label: 'Open the stitching studio', to: `/production/${code}/synthesis`, primary: true }
-    ]
-  }
+  const synthesize = isHumanVoiceCourse.value
+    ? {
+        // GREYED OUT FOR A HUMAN-VOICE COURSE (Tom, 2026-09-25: the "build the
+        // full audio" step "could be grayed out"). Said plainly, not hidden.
+        key: 'synthesize', num: 5,
+        title: 'Build the full audio',
+        blurb: 'Not needed for this course: it is recorded by people, so there is no computer voice to build.',
+        state: 'na',
+        statusText: 'Not needed — people record this course',
+        links: []
+      }
+    : {
+        key: 'synthesize', num: 5,
+        title: 'Build the full audio',
+        blurb: 'Your recordings are stitched together so every practice phrase is heard in your team’s voices — nobody has to read thousands of lines.',
+        state: synthDone.value ? 'done' : (engineInstalled.value ? 'active' : 'pending'),
+        statusText: engineInstalled.value
+          ? (synthSummary.value || 'Ready')
+          : 'Waiting for recordings',
+        links: [
+          { label: 'Open the stitching studio', to: `/production/${code}/synthesis`, primary: true }
+        ]
+      }
 
   const qa = {
     key: 'qa', num: 6,
@@ -351,18 +464,27 @@ const steps = computed(() => {
     statusText: courseStatus.value === 'live'
       ? 'Live — learners can use it'
       : (courseStatus.value === 'beta' ? 'In beta — open to testers' : 'Not published yet'),
-    links: [
-      { label: 'Open course settings', to: `/production/${code}`, primary: true }
-    ]
+    // Community builders never go via the overview (Tom, 2026-09-25), and
+    // community courses have no settings to open — so the link is admins' only.
+    links: isAdmin.value
+      ? [{ label: 'Open course settings', to: `/production/${code}`, primary: true }]
+      : []
   }
 
   return [translate, decompose, verify, record, synthesize, qa, publish]
 })
 
+const shownSteps = computed(() => {
+  if (!pick.value || showAllSteps.value) return steps.value
+  const keys = stepsForPick(pick.value)
+  return steps.value.filter(s => keys.includes(s.key))
+})
+
 // The first step that still needs attention (skipping the not-yet-installed
-// synthesis engine so it never blocks the highlight).
+// synthesis engine, and a step this course does not need, so neither blocks
+// the highlight).
 const currentStepKey = computed(() => {
-  const next = steps.value.find(s => s.state !== 'done' && s.state !== 'pending')
+  const next = shownSteps.value.find(s => s.state !== 'done' && s.state !== 'pending' && s.state !== 'na')
   return next ? next.key : null
 })
 </script>
@@ -543,7 +665,105 @@ const currentStepKey = computed(() => {
 }
 :root[data-theme="light"] .journey-note { color: #b45309; }
 
+/* ── The three cards ─────────────────────────────────────────────────── */
+.pick { margin-bottom: 2rem; }
+.pick-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.75rem; }
+.pick-change {
+  background: none;
+  border: 1px solid var(--color-graphite, var(--line));
+  border-radius: 999px;
+  color: var(--color-paper, var(--ink));
+  font-size: 0.8rem;
+  padding: 0.35rem 0.9rem;
+  min-height: 36px;
+  cursor: pointer;
+}
+.journey-header .pick-change { margin-top: 0.6rem; }
+.pick-cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; }
+.pick-cards.single { grid-template-columns: minmax(0, 1fr); }
+/* One accent per door. Title text stays paper-white on a dark card (well past
+   4.5:1); the accent only colours the icon, the edge and the glow. */
+.pick-card.record { --pick-accent: #fb7185; --pick-rgb: 251, 113, 133; }
+.pick-card.proofread { --pick-accent: #38bdf8; --pick-rgb: 56, 189, 248; }
+.pick-card.build { --pick-accent: #fbbf24; --pick-rgb: 251, 191, 36; }
+.pick-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  min-height: 150px;
+  padding: 1.3rem 1.3rem 1.4rem;
+  border-radius: 16px;
+  text-decoration: none;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 0% 0%, rgba(var(--pick-rgb), 0.22), transparent 60%),
+    linear-gradient(160deg, rgba(var(--pick-rgb), 0.08), rgba(255, 255, 255, 0.02)),
+    var(--color-shadow, var(--surface));
+  border: 1px solid rgba(var(--pick-rgb), 0.35);
+  box-shadow: 0 0 0 0 rgba(var(--pick-rgb), 0);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+/* The shine: a soft diagonal sheen that slides across on hover. */
+.pick-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, transparent 35%, rgba(255, 255, 255, 0.10) 50%, transparent 65%);
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  pointer-events: none;
+}
+.pick-card:hover, .pick-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: rgba(var(--pick-rgb), 0.8);
+  box-shadow: 0 10px 28px -8px rgba(var(--pick-rgb), 0.45);
+  outline: none;
+}
+.pick-card:hover::after, .pick-card:focus-visible::after { transform: translateX(100%); }
+.pick-card:focus-visible { box-shadow: 0 0 0 3px rgba(var(--pick-rgb), 0.7); }
+.pick-card:active { transform: translateY(0) scale(0.98); box-shadow: 0 4px 14px -6px rgba(var(--pick-rgb), 0.5); }
+.pick-card.picked { border-color: var(--pick-accent); }
+.pick-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: rgba(var(--pick-rgb), 0.16);
+  color: var(--pick-accent);
+  box-shadow: inset 0 0 0 1px rgba(var(--pick-rgb), 0.35);
+}
+.pick-icon svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.pick-title {
+  font-family: var(--font-ui, 'Josefin Sans', sans-serif);
+  font-size: 1.35rem;
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-paper, var(--ink));
+}
+/* Light: the pale accents fail on white, so darken them; keep the tint. */
+:root[data-theme="light"] .pick-card.record { --pick-accent: #be123c; }
+:root[data-theme="light"] .pick-card.proofread { --pick-accent: #0369a1; }
+:root[data-theme="light"] .pick-card.build { --pick-accent: #b45309; }
+:root[data-theme="light"] .pick-card { background: radial-gradient(120% 90% at 0% 0%, rgba(var(--pick-rgb), 0.18), transparent 60%), var(--surface); }
+@media (prefers-reduced-motion: reduce) {
+  .pick-card, .pick-card::after { transition: none; }
+  .pick-card:hover, .pick-card:active { transform: none; }
+}
+
+.journey-step.na { opacity: 0.5; }
+.step-marker.na { border-style: dashed; }
+.step-status.na { font-style: italic; }
+
 @media (max-width: 640px) {
+  .pick-cards { grid-template-columns: minmax(0, 1fr); gap: 0.7rem; }
+  /* A phone stacks the three: icon beside the title, a shorter card. */
+  .pick-card { flex-direction: row; align-items: center; min-height: 84px; padding: 1rem 1.1rem; gap: 1rem; }
+  .pick-title { font-size: 1.2rem; }
   .step-head { flex-direction: column; gap: 0.2rem; }
   .step-status { white-space: normal; }
 }
