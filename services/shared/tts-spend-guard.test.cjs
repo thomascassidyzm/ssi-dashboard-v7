@@ -213,7 +213,7 @@ describe('(h) the standing hold: 100,000 chars a day across all providers (Tom 2
   // The COMMITTED budget file, not a fixture: this is the rule as it ships.
   const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
 
-  for (const provider of ['cartesia', 'azure', 'elevenlabs', 'xai', 'google']) {
+  for (const provider of ['cartesia', 'azure', 'xai', 'google']) {
     it(`${provider}: a 100,001-char day is refused, naming Tom's go`, async () => {
       const g = guard({ budgetPath: committed })
       const err = await call(g, 'x'.repeat(100_001), { provider }).catch(e => e)
@@ -241,5 +241,28 @@ describe('(h) the standing hold: 100,000 chars a day across all providers (Tom 2
   it('without a hold block the old signed-raise hint still stands', async () => {
     const g = guard({ budgetPath: budgets({ providers: { cartesia: { dailyCapChars: 25, alertDailyChars: 1e9 } } }) })
     await expect(call(g, 'a'.repeat(30))).rejects.toThrow(/Raise dailyCapChars only through a signed raise/)
+  })
+})
+
+describe('(i) a retired provider is refused outright (Tom 2026-09-28: "We don\'t use Eleven Labs any more", job #575)', () => {
+  const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
+
+  it('ElevenLabs: even a one-character call is refused, saying it is retired', async () => {
+    const g = guard({ budgetPath: committed })
+    const err = await call(g, 'a', { provider: 'elevenlabs', voiceId: 'el_x' }).catch(e => e)
+    expect(err.code).toBe('RETIRED')
+    expect(err.message).toMatch(/ElevenLabs retired \(Tom 2026-09-28\)/)
+    expect(fs.existsSync(path.join(dir, 'ledger.jsonl')) ? ledger() : []).toHaveLength(0)
+  })
+
+  it('the committed file carries no ElevenLabs alert line above the baseline (none the guard would ignore)', async () => {
+    const f = JSON.parse(fs.readFileSync(committed, 'utf8'))
+    expect(f.providers.elevenlabs.dailyCapChars).toBe(0)
+    expect(f.providers.elevenlabs.alertDailyChars).toBeUndefined()
+  })
+
+  it('other providers still render', async () => {
+    const g = guard({ budgetPath: committed })
+    await expect(call(g, 'Croeso.', { provider: 'azure', voiceId: 'azure_x' })).resolves.toBeTruthy()
   })
 })
