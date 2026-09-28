@@ -290,5 +290,5 @@ async function main() {
   fs.writeFileSync(f, JSON.stringify(log, null, 2)); console.log(`Wrote ${f}`);
   await pg.end(); process.exit(problems.length ? 2 : 0);
 }
-module.exports = { CHANGES, LEGOS, SEEDS, FRAMES, classifyRow, phraseContainsLego, words };
+module.exports = { CHANGES, LEGOS, SEEDS, FRAMES, classifyRow, phraseContainsLego, words, newVocabulary, contains };
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1); });
