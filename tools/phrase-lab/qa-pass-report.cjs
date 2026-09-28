@@ -69,7 +69,7 @@ async function main() {
   const floorsRow = (ps, side) => ({ n: ps.length, pass: ps.filter((p) => p[side].pass).length, comp: mean(ps.map((p) => p[side].composite)) });
 
   // ── laziness index ──
-  const sr = fs.readdirSync(ev).filter((f) => /^stem-reuse-.*\.json$/.test(f)).sort().pop();
+  const sr = fs.readdirSync(ev).filter((f) => /^stem-reuse-\d{4}-\d\d-\d\d\.json$/.test(f)).sort().pop();
   const srRows = sr ? JSON.parse(fs.readFileSync(path.join(ev, sr), 'utf8')).filter((r) => r.seed >= 11 && r.chanceEarlyShare) : [];
   const lazy = (rows, arm) => mean(rows.filter((r) => r[arm] && r[arm].earlyStemShare != null).map((r) => r[arm].earlyStemShare / r.chanceEarlyShare).filter(Number.isFinite));
 
