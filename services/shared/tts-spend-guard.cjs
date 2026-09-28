@@ -88,6 +88,16 @@ const POOL_ALERT_SHARES = [0.5, 0.8]
  * AND this many chars. unverifiedAllowanceChars: what one process may reserve
  * while a CONFIGURED usage reader cannot be read — tiny calls pass, runs stop.
  */
+/**
+ * Providers whose missing usage reader is a KNOWN LIMIT rather than a
+ * decision: said ONCE per host (the alerts log remembers it), never re-raised
+ * daily. Cartesia's /usage/credits answers only an admin key (401 on the normal
+ * key: job #440, re-checked job #515); with CARTESIA_ADMIN_API_KEY set the
+ * reader switches on and this never fires.
+ */
+const KNOWN_USAGE_LIMITS = Object.freeze({
+  cartesia: 'Cartesia shows account usage (/usage/credits) only to an ADMIN key, and this estate has only the normal key (401) — so Cartesia spend is checked against our ledger alone and anything spent outside the door (another script, a colleague, the playground) is invisible. Known limit, said once and not raised again; set CARTESIA_ADMIN_API_KEY (play.cartesia.ai/keys/admin) and the provider check switches on by itself.',
+})
 const DEFAULT_DIVERGENCE = Object.freeze({ factor: 1.25, slackChars: 20_000, checkEveryMinutes: 10, unverifiedAllowanceChars: 20_000, retryUnreadableMinutes: 1 })
 /** A raise may not be dated further out than this: raises expire on their own. */
 const RAISE_MAX_DAYS = 31
@@ -429,6 +439,15 @@ function createSpendGuard(opts = {}) {
    */
   async function checkProvider(provider, cfg, b, chars) {
     const reader = usageReaders[provider]
+    if (!reader && KNOWN_USAGE_LIMITS[provider]) {
+      const key = `usage-known-limit:${provider}`
+      if (alerted.has(key)) return
+      let saidBefore = false
+      try { saidBefore = fs.readFileSync(alertsPath, 'utf8').includes(`"key":"${key}"`) } catch { /* no log yet */ }
+      if (saidBefore) { alerted.add(key); return }
+      alert(key, 'warn', `${provider}: ${KNOWN_USAGE_LIMITS[provider]}`, { provider })
+      return
+    }
     if (!reader) {
       alert(`usage-none:${provider}:${dayKey(now())}`, 'warn', `${provider}: no provider-usage reader configured — spend is checked against the ledger alone (nothing can see spending outside the door)`, { provider })
       return
@@ -641,5 +660,6 @@ module.exports = {
   DEFAULT_BUDGETS,
   DEFAULT_REPEAT,
   DEFAULT_DIVERGENCE,
+  KNOWN_USAGE_LIMITS,
   RAISE_MAX_DAYS,
 }

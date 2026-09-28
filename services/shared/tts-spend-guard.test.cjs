@@ -125,6 +125,19 @@ describe('(e) provider-side check: the provider\'s own count against the ledger'
   })
 })
 
+describe('(e2) a provider whose usage cannot be read is a known limit, said once per host', () => {
+  it('Cartesia with no admin key: told once, not again in a new process or on a new day', async () => {
+    const sent = []
+    await call(guard({ notify: (e) => sent.push(e) }), 'one')
+    await call(guard({ notify: (e) => sent.push(e) }), 'two')   // a fresh process on the same host
+    clock += 2 * 86_400_000                                      // and days later
+    await call(guard({ notify: (e) => sent.push(e) }), 'three')
+    const told = sent.filter(s => s.provider === 'cartesia' && /usage/.test(s.key))
+    expect(told.map(s => s.key)).toEqual(['usage-known-limit:cartesia'])
+    expect(told[0].message).toMatch(/Known limit.*CARTESIA_ADMIN_API_KEY/)
+  })
+})
+
 describe('(f) a human is told — once — when a guard trips or a line is crossed', () => {
   it('alerts on the trip, on the daily line and on 50% of the pool, each only once', async () => {
     const sent = []
@@ -134,11 +147,11 @@ describe('(f) a human is told — once — when a guard trips or a line is cross
     await call(g, 'z')                // nothing new
     await expect(call(g, 'w'.repeat(20))).rejects.toThrow(/DAILY_CAP/)
     await expect(call(g, 'w'.repeat(20))).rejects.toThrow(/DAILY_CAP/)
-    const kinds = sent.map(s => s.key.split(':')[0]).filter(k => k !== 'usage-none')
+    const kinds = sent.map(s => s.key.split(':')[0]).filter(k => !k.startsWith('usage-'))
     expect(kinds.filter(k => k === 'daily')).toHaveLength(1)
     expect(kinds.filter(k => k === 'pool')).toHaveLength(1)
     expect(kinds.filter(k => k === 'trip')).toHaveLength(1)
     // (#430 adds a "no usage reader" line and a limits-in-force line — not counted here.)
-    expect(fs.readFileSync(path.join(dir, 'ledger.alerts.jsonl'), 'utf8').trim().split('\n').filter(l => !l.includes('usage-none') && !l.includes('"limits:'))).toHaveLength(3)
+    expect(fs.readFileSync(path.join(dir, 'ledger.alerts.jsonl'), 'utf8').trim().split('\n').filter(l => !l.includes('"usage-') && !l.includes('"limits:'))).toHaveLength(3)
   })
 })
