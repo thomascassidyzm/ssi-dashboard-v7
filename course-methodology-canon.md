@@ -914,6 +914,8 @@ This is what **PR1** exists for: a tiny explanation, authored by hand in a fixes
 ---
 
 
+**K30 — Known-side English that DROPS "that" before a clause the target introduces with *che* ("I think we need…" over *penso che dobbiamo…*, "I hope she comes" over *spero che venga*, "he said he was tired" over *ha detto che era stanco*) is fine as it stands. It is how the seeds are translated. Do not sweep.** · **HARD (do not sweep)** · **Kai, 2026-09-28**, ruling on pattern P1 of the #632·I downstream audit (d/197f2605): *"English that drops 'that' (I think we need…, I hope she comes, he said he was tired) over Italian che is fine as it stands. It's how the seeds are translated. Do not sweep."* · The audit counted 174 *penso che* rows and hundreds more under *sono sicuro che* / *ha detto che* / *so che* / *pensavo che* / *spero che* where the English says no "that"; under **K25** every one would move to a stiff "I think that we need…" (**K16**). Kai's line is that the natural English is the prompt, the learner supplies *che* from the pattern, and the LEGO *I think | penso* is the standalone form, *I think that | penso che* the clause-taking one · **How to apply:** a bare-"that" English over a *che* clause is NOT a finding for any checker, and no pass rewrites one; a NEW phrase may be written either way, with the natural English preferred.
+
 ## 5. Audio and text agreement
 
 **A1 — The clip must speak the text it is linked to.** · **HARD** · *Stated in no doctrine file at all* — it exists only as the intent behind Check 18 · The learner hears one thing and reads another.
