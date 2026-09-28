@@ -45,5 +45,14 @@
     "factor": 1.25,
     "slackChars": 20000,
     "checkEveryMinutes": 10
-  }
+  },
+  "jobRaises": [
+    {
+      "job": "#578",
+      "extraDailyChars": 450000,
+      "by": "Tom (explicit go in chat, 2026-09-28 18:49Z, via Watson)",
+      "why": "Tom: 'I think these are small enough to be done in one go, now' - render the held audio_pass_requests backlog (54 courses, <=370k chars before reuse; first-render courses, Arabic and gle_for_eng excluded). Job-scoped: draws on its own allowance, never on the 100k daily cap other jobs use.",
+      "until": "2026-09-28T23:59:59Z"
+    }
+  ]
 }

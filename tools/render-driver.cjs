@@ -87,11 +87,13 @@ function arg(name, dflt) {
 
 async function main() {
   const course = arg('course')
-  if (!course) { console.error('usage: render-driver.cjs --course <code> --budget-chars <n> [--go] [--roles a,b] [--concurrency n] [--max-passes n] [--job label]'); process.exit(2) }
+  if (!course) { console.error('usage: render-driver.cjs --course <code> --budget-chars <n> [--go] [--roles a,b] [--concurrency n] [--max-passes n] [--job label] [--author-scope none|lego|all]'); process.exit(2) }
   const P8 = process.env.PHASE8_URL || 'http://localhost:3465'
   const job = arg('job', process.env.TTS_SPEND_JOB || null)
   const base = {
-    authorScope: 'none',
+    // 'none' by default: authoring intro text is a spend the caller names. 'lego'
+    // authors missing LEGO intros only (a LEGO without its intro cannot play).
+    authorScope: ['none', 'lego', 'all'].includes(arg('author-scope')) ? arg('author-scope') : 'none',
     ...(arg('roles') ? { roles: String(arg('roles')).split(',') } : {}),
     concurrency: Number(arg('concurrency', 4)),
     ...(job ? { job } : {}),
