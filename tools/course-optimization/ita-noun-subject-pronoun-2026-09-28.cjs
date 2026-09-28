@@ -117,7 +117,7 @@ const LEGOS = [
   { id: 'S0485L01', target: 'mi renderebbe più felice', seed: 'nothing would make me happier than to get away', subject: { kind: 'wh', text: 'nothing' }, standalone: true,
     note: 'suggest re-cutting to "nothing would make me happier | niente mi renderebbe più felice" (B02 already reads so)' },
   { id: 'S0511L03', target: 'ha impiegato diverse ore', seed: 'the news took several hours to reach everyone in the office', subject: { kind: 'noun', text: 'the news' }, standalone: true, fragments: ['S0511L03B01'] },
-  // S0609L02 was REVERSED by job #579·I (Kai, 2026-09-28): the subject is the agreeing noun 'la cosa', so K28 does not apply — re-cut to take the noun (ita-seed-609-recut-2026-09-28.cjs). This tool's guard now refuses the row.
+  // S0609L02 was REVERSED by job #579·I (Kai, 2026-09-28): the subject is the agreeing noun 'la cosa', so K28 does not apply — re-cut to 'the sensible thing to do' + 'to ask', sarebbe stata left to phrases (ita-seed-609-recut-2026-09-28.cjs). This tool's guard now refuses the row.
   { id: 'S0609L02', target: 'sarebbe stata chiedere', seed: 'the sensible thing to do would have been to ask', subject: { kind: 'noun', text: 'the sensible thing to do' }, standalone: true, fragments: ['S0609L02B01'],
     note: '"it would have been to ask" is the rule applied; if it reads oddly to you the alternative is a re-cut to "the sensible thing would have been to ask" (B02)' },
   { id: 'S0614L01', target: 'vive', seed: "it's near where your family live", subject: { kind: 'noun', text: 'your family' }, standalone: true, ambiguous: true,

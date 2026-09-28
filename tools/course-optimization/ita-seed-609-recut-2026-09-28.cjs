@@ -2,38 +2,35 @@
 'use strict';
 // tools/course-optimization/ita-seed-609-recut-2026-09-28.cjs
 //
-// ita_for_eng — SEED 609 re-cut under Kai's ruling (2026-09-28, job #579·I):
-//   "I think we can just cut it up differently. Chiedere, to ask works fine as a lego."
+// ita_for_eng — SEED 609 re-cut under Kai's rulings (2026-09-28, job #579·I).
 //
 // Seed 609 "the sensible thing to do would have been to ask" → "la cosa sensata da fare sarebbe stata
-// chiedere". L02 read "would have been to ask | sarebbe stata chiedere"; job #577·I gave it "it" under
-// K28, which does not apply here: the subject of *sarebbe stata* is the NOUN "la cosa" in the same
-// seed, and *stata* is feminine BECAUSE it agrees with that noun. The fragment was broken on both
-// sides — "it would have been to ask" is not in the seed and is not natural English, and "sarebbe
-// stata chiedere" hands the learner a feminine participle with no feminine noun to agree with (K27).
-// K28's limit: the pronoun is added only where the Italian subject is implied by the verb, never
-// where an agreeing noun subject exists — there the LEGO takes the NOUN.
+// chiedere". Job #577·I had made L02 "it would have been to ask | sarebbe stata chiedere" under K28,
+// which does not apply here: the subject of *sarebbe stata* is the NOUN "la cosa", and *stata* is
+// feminine because it agrees with it. K28's limit: the pronoun is added only where the Italian subject
+// is implied by the verb, never where an agreeing noun subject exists.
 //
-// THE CUT: L01 "to ask | chiedere" unchanged (Kai). L02 becomes "the sensible thing to do would have
-// been | la cosa sensata da fare sarebbe stata", components "the sensible thing to do | la cosa
-// sensata da fare" + "would have been | sarebbe stata". The two LEGOs tile the seed on both sides.
-// The smaller cut (noun phrase and "would have been" as two LEGOs) was REJECTED: a bare "would have
-// been | sarebbe stata" LEGO is the very defect being fixed — a feminine participle cut away from its
-// noun, and a gloss naming nobody (K26). Seed 608 already taught every word ("sensible | sensata",
-// "it would have been | sarebbe stata", "the thing to do | la cosa da fare"), and no LEGO in the
-// course teaches the new L02 pair on both sides, so it stays NEW: what is new is the structure — the
-// noun subject in front of "sarebbe stata" (608 had the verb first, subject implied).
+// PASS 1 (commit 09edd7cef, Kai: "Chiedere, to ask works fine as a lego") cut L02 to "the sensible
+//   thing to do would have been | la cosa sensata da fare sarebbe stata". Kai then asked for the big
+//   part SMALLER (19:00Z) and ruled the final cut — THIS FILE NOW APPLIES THAT, from pass 1's state:
 //
-// Every phrase under L02 is brought to CONTAIN the LEGO contiguously on both sides (O12), from
-// vocabulary taught by seed 609; U01 (the seed) does not move. The four "the important / best / first
-// / most sensible thing would have been to ask" rows cannot contain the LEGO and are re-textured in
-// place, never deleted. Nothing elsewhere in the course carries the old gloss.
+// PASS 2 — TWO LEGOs only, in the existing slots (never delete a LEGO; L01 keeps "to ask", so the
+//   learner progress already filed under that slot stays true):
+//     L01  to ask | chiedere                                         (unchanged)
+//     L02  the sensible thing to do | la cosa sensata da fare        (the S0243L02 "thing to eat | cosa
+//          da mangiare" shape; components "the sensible thing | la cosa sensata" + "to do | da fare")
+//   NO "would have been" LEGO. Kai: *sarebbe stato* is already taught (S0544L02; *sarebbe stata* itself
+//   is S0608L02 "it would have been"), so *sarebbe stata* is carried by PHRASES: a form already taught
+//   in another gender/number is practised in phrases, not given its own LEGO. So "would have been /
+//   sarebbe stata" is deliberately in no LEGO of 609 (the tiling gate passes on taught vocabulary).
+//   Phrases: L02's rows show "the sensible thing to do would have been … | la cosa sensata da fare
+//   sarebbe stata …" (already so after pass 1; its bare fragment and components move). L01 gains
+//   "would have been to ask | sarebbe stata chiedere" rows, each with its agreeing noun (the best / the
+//   first / the most sensible thing), plus the full seed — four L01 rows re-textured in place.
 //
-// AFTER THE EDIT (the #577·I pipeline): English slots of changed rows are detached and filled by
-// ita-sonia-temporary-fill SCOPE=ids (temporary Sonia cast, restored byte-identical); Italian
-// target1/target2 are linked to an existing Elsa/Benigno clip or rendered through the guarded door;
-// the L02 intro is re-mirrored by ita-intro-mirror-fix in a FRESH process (the cast gate caches for
-// 60 s); component intro links are unlinked (components are never introduced); seed 609 unapproved.
+// AFTER THE EDIT: English slots of changed rows detached → ita-sonia-temporary-fill SCOPE=ids
+// (temporary Sonia, cast restored byte-identical); Italian linked to existing Elsa/Benigno clips or
+// rendered; the L02 intro re-mirrored by ita-intro-mirror-fix in a FRESH process; seed 609 unapproved.
 //
 //   node tools/course-optimization/ita-seed-609-recut-2026-09-28.cjs            # dry run
 //   APPLY=1 node tools/course-optimization/ita-seed-609-recut-2026-09-28.cjs    # apply + Italian audio
@@ -48,7 +45,7 @@ const SEED = 609;
 const SWEEP = 'ita-seed-609-recut-2026-09-28';
 const SURFACE = `tools/course-optimization/${SWEEP}.cjs`;
 const JOB = '#579·I';
-const RULING = 'Kai, 2026-09-28 (job #579·I): "I think we can just cut it up differently. Chiedere, to ask works fine as a lego." S0609L02 re-cut to "the sensible thing to do would have been | la cosa sensata da fare sarebbe stata" so the feminine agreement has its noun (K28 limit); every phrase under it contains the LEGO (O12); seed 609 unapproved';
+const RULING = 'Kai, 2026-09-28 19:00Z (job #579·I): seed 609 is TWO LEGOs — "the sensible thing to do | la cosa sensata da fare" (S0243L02 shape) and "to ask | chiedere"; no would-have-been LEGO: sarebbe stato is already taught (S0544L02), so sarebbe stata is carried by phrases (a form already taught in another gender/number is practised in phrases, not given its own LEGO); several phrases per LEGO show it, plus the full seed; seed 609 unapproved';
 const ELSA = { voiceId: 'azure_it-IT-ElsaNeural', voiceName: 'it-IT-ElsaNeural' };
 const BENIGNO = { voiceId: 'azure_it-IT-BenignoNeural', voiceName: 'it-IT-BenignoNeural' };
 const AZURE_VOICE_IDS = { target1: ['azure_it-IT-ElsaNeural', 'it-IT-ElsaNeural'], target2: ['azure_it-IT-BenignoNeural', 'it-IT-BenignoNeural'] };
@@ -68,33 +65,42 @@ function uncovered(seed, legos) {
   return { known: k.trim(), target: t.trim() };
 }
 /**
- * K28's limit. A LEGO whose target carries a participle that AGREES with a noun subject of its seed
- * must carry that noun; a pronoun is licensed only where no such noun exists (subject implied by the verb).
+ * K28's limit / K27. Any row carrying the participle that agrees with the seed's noun subject must carry
+ * that noun: "sarebbe stata chiedere" alone is a feminine form with nothing to agree with.
  */
-function agreementCarriesItsNoun(lego, { participle, noun }) {
-  return !containsChunk(lego.target, participle) || containsChunk(lego.target, noun);
+function agreementCarriesItsNoun(row, { participle, noun }) {
+  return !containsChunk(row.target, participle) || new RegExp(`\\b${noun}\\b`).test(norm(row.target));
 }
-const AGREEMENT_609 = { participle: 'stata', noun: 'la cosa' };
+const AGREEMENT_609 = { participle: 'stata', noun: 'cosa' };
 
 // ── The changes ────────────────────────────────────────────────────────────────────────
 const SEED_609 = { known: 'the sensible thing to do would have been to ask', target: 'la cosa sensata da fare sarebbe stata chiedere' };
-const L01 = { known: 'to ask', target: 'chiedere' };
-const OLD_L02 = { known: 'it would have been to ask', target: 'sarebbe stata chiedere', components: [{ known: 'it would have been', target: 'sarebbe stata' }, { known: 'to ask', target: 'chiedere' }] };
-const NEW_L02 = { known: 'the sensible thing to do would have been', target: 'la cosa sensata da fare sarebbe stata', components: [{ known: 'the sensible thing to do', target: 'la cosa sensata da fare' }, { known: 'would have been', target: 'sarebbe stata' }] };
+/** The piece of the seed Kai ruled into NO LEGO — carried by phrases (taught at S0544L02 / S0608L02). */
+const CARRIED_BY_PHRASES = { known: 'would have been', target: 'sarebbe stata' };
+const L01 = { id: 'S0609L01', known: 'to ask', target: 'chiedere', components: [] };
+/** #577·I's cut, for the record and the test (never applied again). */
+const ORIGINAL_L02 = { known: 'it would have been to ask', target: 'sarebbe stata chiedere', components: [{ known: 'it would have been', target: 'sarebbe stata' }, { known: 'to ask', target: 'chiedere' }] };
+/** Pass 1's L02 — the live BEFORE of this pass. */
+const OLD_L02 = { id: 'S0609L02', known: 'the sensible thing to do would have been', target: 'la cosa sensata da fare sarebbe stata', components: [{ known: 'the sensible thing to do', target: 'la cosa sensata da fare' }, { known: 'would have been', target: 'sarebbe stata' }] };
+const NEW_L02 = { id: 'S0609L02', known: 'the sensible thing to do', target: 'la cosa sensata da fare', components: [{ known: 'the sensible thing', target: 'la cosa sensata' }, { known: 'to do', target: 'da fare' }] };
+const LEGOS_AFTER = { S0609L01: L01, S0609L02: NEW_L02 };
 
 const CHANGES = [
-  { id: 'S0609L02C01', role: 'component', before: { known: 'would have been', target: 'sarebbe stata' }, after: { known: 'the sensible thing to do', target: 'la cosa sensata da fare' } },
-  { id: 'S0609L02C02', role: 'component', before: { known: 'to ask', target: 'chiedere' }, after: { known: 'would have been', target: 'sarebbe stata' } },
-  { id: 'S0609L02B01', role: 'build', before: { known: 'it would have been to ask', target: 'sarebbe stata chiedere' }, after: { known: 'the sensible thing to do would have been', target: 'la cosa sensata da fare sarebbe stata' } },
-  { id: 'S0609L02B02', role: 'build', before: { known: 'the sensible thing would have been to ask', target: 'la cosa sensata sarebbe stata chiedere' }, after: { known: 'the sensible thing to do would have been to ask', target: 'la cosa sensata da fare sarebbe stata chiedere' } },
-  { id: 'S0609L02B03', role: 'build', before: { known: 'the important thing would have been to ask', target: 'la cosa importante sarebbe stata chiedere' }, after: { known: 'the sensible thing to do would have been to wait', target: 'la cosa sensata da fare sarebbe stata aspettare' } },
-  { id: 'S0609L02U02', role: 'use', before: { known: 'the best thing would have been to ask', target: 'la cosa migliore sarebbe stata chiedere' }, after: { known: 'I think the sensible thing to do would have been to ask', target: 'penso che la cosa sensata da fare sarebbe stata chiedere' } },
-  { id: 'S0609L02U03', role: 'use', before: { known: 'the most sensible thing would have been to ask', target: 'la cosa più sensata sarebbe stata chiedere' }, after: { known: 'the sensible thing to do would have been to ask my mother', target: 'la cosa sensata da fare sarebbe stata chiedere a mia madre' } },
-  { id: 'S0609L02U04', role: 'use', before: { known: 'the first thing would have been to ask', target: 'la prima cosa sarebbe stata chiedere' }, after: { known: 'the sensible thing to do would have been to ask his friend', target: 'la cosa sensata da fare sarebbe stata chiedere al suo amico' } },
-  { id: 'S0609L02U05', role: 'use', before: { known: 'at the time the sensible thing would have been to ask', target: 'in quel periodo la cosa sensata sarebbe stata chiedere' }, after: { known: 'at the time the sensible thing to do would have been to ask', target: 'in quel periodo la cosa sensata da fare sarebbe stata chiedere' } },
+  // L02: its bare fragment and components follow the smaller LEGO
+  { id: 'S0609L02C01', lego: 'S0609L02', role: 'component', before: { known: 'the sensible thing to do', target: 'la cosa sensata da fare' }, after: { known: 'the sensible thing', target: 'la cosa sensata' } },
+  { id: 'S0609L02C02', lego: 'S0609L02', role: 'component', before: { known: 'would have been', target: 'sarebbe stata' }, after: { known: 'to do', target: 'da fare' } },
+  { id: 'S0609L02B01', lego: 'S0609L02', role: 'build', before: { known: 'the sensible thing to do would have been', target: 'la cosa sensata da fare sarebbe stata' }, after: { known: 'the sensible thing to do', target: 'la cosa sensata da fare' } },
+  // L01: "would have been to ask" with its agreeing noun, and the full seed (Kai)
+  { id: 'S0609L01B02', lego: 'S0609L01', role: 'build', before: { known: 'the sensible thing to ask', target: 'la cosa sensata da chiedere' }, after: { known: 'the best thing would have been to ask', target: 'la cosa migliore sarebbe stata chiedere' } },
+  { id: 'S0609L01U04', lego: 'S0609L01', role: 'use', before: { known: 'do you need to ask?', target: 'hai bisogno di chiedere?' }, after: { known: 'the first thing would have been to ask', target: 'la prima cosa sarebbe stata chiedere' } },
+  { id: 'S0609L01U06', lego: 'S0609L01', role: 'use', before: { known: 'I want to ask something', target: 'voglio chiedere qualcosa' }, after: { known: 'the most sensible thing would have been to ask', target: 'la cosa più sensata sarebbe stata chiedere' } },
+  { id: 'S0609L01U08', lego: 'S0609L01', role: 'use', before: { known: 'you can ask his friend', target: 'puoi chiedere al suo amico' }, after: { known: SEED_609.known, target: SEED_609.target } },
 ];
-/** Rows under L02 that already contain the new LEGO and do not move. */
-const KEPT = [{ id: 'S0609L02U01', role: 'use', known: SEED_609.known, target: SEED_609.target }];
+/** Rows that already contain their LEGO after this pass and do not move. */
+const KEPT = [
+  ...['B01', 'B03', 'U02', 'U03', 'U05', 'U07', 'U09'].map(x => ({ id: `S0609L01${x}`, lego: 'S0609L01' })),
+  ...['B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05'].map(x => ({ id: `S0609L02${x}`, lego: 'S0609L02' })),
+];
 for (const c of CHANGES) { c.knownChanged = norm(c.before.known) !== norm(c.after.known); c.targetChanged = norm(c.before.target) !== norm(c.after.target); }
 
 // ── Live ────────────────────────────────────────────────────────────────────────────────
@@ -119,32 +125,38 @@ async function guardLive(pg, problems, log) {
   if (!l1 || l1.known_text !== L01.known || l1.target_text !== L01.target) problems.push(`S0609L01 reads "${l1?.known_text}" → "${l1?.target_text}"`);
   if (!l2 || l2.known_text !== OLD_L02.known || l2.target_text !== OLD_L02.target) problems.push(`S0609L02 reads "${l2?.known_text}" → "${l2?.target_text}"`);
   if (l2 && JSON.stringify(l2.components) !== JSON.stringify(OLD_L02.components)) problems.push(`S0609L02 components are ${JSON.stringify(l2.components)}`);
-  log.oldIntroL02 = l2?.presentation_audio_id || null;
-  const { rows: under } = await pg.query(`SELECT split_part(id,':',2) id, phrase_role, known_text, target_text FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2 AND id LIKE $3 ORDER BY position`, [COURSE, SEED, `${COURSE}:S0609L02%`]);
+  const { rows: under } = await pg.query(`SELECT split_part(id,':',2) id, phrase_role, known_text, target_text FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2 ORDER BY position`, [COURSE, SEED]);
   const byId = Object.fromEntries(under.map(r => [r.id, r]));
   for (const c of CHANGES) { const r = byId[c.id]; if (!r || r.known_text !== c.before.known || r.target_text !== c.before.target || r.phrase_role !== c.role) problems.push(`${c.id} reads "${r?.known_text}" → "${r?.target_text}" (${r?.phrase_role}) — expected "${c.before.known}" → "${c.before.target}"`); }
-  for (const k of KEPT) { const r = byId[k.id]; if (!r || r.known_text !== k.known || r.target_text !== k.target) problems.push(`${k.id} reads "${r?.known_text}" → "${r?.target_text}"`); }
-  for (const r of under) if (!CHANGES.some(c => c.id === r.id) && !KEPT.some(k => k.id === r.id)) problems.push(`${r.id} "${r.known_text}" is under S0609L02 but not planned`);
-  // Concurrency: another surface editing seed 609 in the last 24 h, other than the finished #577·I pass whose after-state is our BEFORE.
+  for (const k of KEPT) { const r = byId[k.id]; if (!r) problems.push(`${k.id} missing`); else { k.known = r.known_text; k.target = r.target_text; k.role = r.phrase_role; } }
+  for (const r of under) if (!CHANGES.some(c => c.id === r.id) && !KEPT.some(k => k.id === r.id)) problems.push(`${r.id} "${r.known_text}" is under seed 609 but not planned`);
+  // Concurrency: another surface editing seed 609 in the last 24 h, other than the finished passes whose after-state is our BEFORE.
   const FINISHED = ['ita-noun-subject-pronoun-2026-09-28', 'ita-intro-mirror-fix-2026-09-28', 'ita-sonia-temporary-fill-2026-09-28'];
   const { rows: ev } = await pg.query(`SELECT id, surface, operation FROM content_edit_events WHERE course_code=$1 AND occurred_at > now() - interval '24 hours' AND surface NOT LIKE '%' || $2 || '%' AND NOT (surface LIKE ANY($5)) AND (scope->'seed_numbers' ?| $3::text[] OR scope->'lego_ids' ?| $4::text[])`,
     [COURSE, SWEEP, [String(SEED)], ['S0609L01', 'S0609L02'], FINISHED.map(f => `%${f}%`)]);
   for (const e of ev) problems.push(`another surface touched seed 609 today: ${e.surface} ${e.operation} (${e.id}) — re-read before writing`);
 }
 async function guards(pg, problems, log) {
-  if (legoInSeed(SEED_609, OLD_L02)) problems.push('the old L02 is in the seed — nothing to fix');
-  if (!legoInSeed(SEED_609, NEW_L02)) problems.push('the new L02 is not a piece of seed 609 on both sides');
-  if (!componentsTile(NEW_L02)) problems.push('new components do not tile the LEGO');
-  if (!agreementCarriesItsNoun(NEW_L02, AGREEMENT_609)) problems.push('the new L02 carries "stata" without "la cosa"');
+  for (const l of [L01, NEW_L02]) {
+    if (!legoInSeed(SEED_609, l)) problems.push(`${l.id} is not a piece of seed 609 on both sides`);
+    if (l.components.length && !componentsTile(l)) problems.push(`${l.id} components do not tile the LEGO`);
+  }
   log.coverage = uncovered(SEED_609, [NEW_L02, L01]);
-  if (log.coverage.known || log.coverage.target) problems.push(`seed not fully covered: "${log.coverage.known}" / "${log.coverage.target}"`);
-  for (const c of CHANGES) if (c.role !== 'component' && !(containsChunk(c.after.known, NEW_L02.known) && containsChunk(c.after.target, NEW_L02.target))) problems.push(`${c.id} after does not contain the LEGO`);
+  if (log.coverage.known !== CARRIED_BY_PHRASES.known || log.coverage.target !== CARRIED_BY_PHRASES.target) problems.push(`seed coverage: uncovered "${log.coverage.known}" / "${log.coverage.target}" — expected exactly the phrase-carried "would have been / sarebbe stata"`);
+  // O12: every non-component row contains its LEGO, contiguously, both sides; K27: every "stata" has its "cosa"
+  const rowsAfter = [...CHANGES.map(c => ({ id: c.id, lego: c.lego, role: c.role, ...c.after })), ...KEPT];
+  for (const r of rowsAfter) {
+    const l = LEGOS_AFTER[r.lego];
+    if (r.role !== 'component' && !(containsChunk(r.known, l.known) && containsChunk(r.target, l.target))) problems.push(`${r.id} "${r.known}" does not contain ${r.lego} "${l.known}"`);
+    if (!agreementCarriesItsNoun(r, AGREEMENT_609)) problems.push(`${r.id} "${r.target}" carries "stata" without its noun`);
+  }
   if (CHANGES.filter(c => c.role === 'component').map(c => `${c.after.known}|${c.after.target}`).join('/') !== NEW_L02.components.map(c => `${c.known}|${c.target}`).join('/')) problems.push('component rows do not match the LEGO components');
-  // L27(2): is the new pair already taught? duplicate only if BOTH sides match
+  log.phrasesCarrying = rowsAfter.filter(r => containsChunk(r.target, CARRIED_BY_PHRASES.target)).map(r => r.id);
+  // L27(2): the new L02 pair already a LEGO? duplicate only if BOTH sides match
   const { rows: dup } = await pg.query('SELECT lego_id, known_text, target_text FROM course_legos WHERE course_code=$1 AND lego_id<>$2 AND (lower(known_text)=lower($3) OR lower(target_text)=lower($4))', [COURSE, 'S0609L02', NEW_L02.known, NEW_L02.target]);
   log.sameEitherSide = dup;
   if (dup.some(d => norm(d.known_text) === norm(NEW_L02.known) && norm(d.target_text) === norm(NEW_L02.target))) problems.push(`the new L02 is already taught: ${JSON.stringify(dup)}`);
-  // no new vocabulary: every word taught by seed 609 (L01 "chiedere" lands earlier in the same seed)
+  // no new vocabulary: every word taught by seed 609 (sensata at S0608L01)
   log.vocab = {};
   for (const c of CHANGES) {
     const nk = await newVocabulary(pg, SEED, c.after.known, 'known'), nt = await newVocabulary(pg, SEED, c.after.target, 'target');
@@ -166,8 +178,7 @@ async function guards(pg, problems, log) {
     }
   }
   problems.push(...log.zut);
-  // O12 course-wide: the old gloss anywhere else
-  const { rows: old } = await pg.query(`SELECT split_part(id,':',2) id, known_text FROM course_practice_phrases WHERE course_code=$1 AND (known_text ~* 'would have been to ask' OR target_text ~* 'sarebbe stata chiedere') AND seed_number<>$2`, [COURSE, SEED]);
+  const { rows: old } = await pg.query(`SELECT split_part(id,':',2) id, known_text FROM course_practice_phrases WHERE course_code=$1 AND (known_text ~* 'it would have been to ask' OR target_text ~* '^sarebbe stata chiedere') AND seed_number<>$2`, [COURSE, SEED]);
   log.oldGlossElsewhere = old;
 }
 
@@ -306,5 +317,5 @@ async function main() {
   fs.writeFileSync(f, JSON.stringify(log, null, 2)); console.log(`Wrote ${f}`);
   await pg.end(); process.exit(log.problems.length ? 2 : 0);
 }
-module.exports = { containsChunk, legoInSeed, componentsTile, uncovered, agreementCarriesItsNoun, AGREEMENT_609, SEED_609, L01, OLD_L02, NEW_L02, CHANGES, KEPT };
+module.exports = { containsChunk, legoInSeed, componentsTile, uncovered, agreementCarriesItsNoun, AGREEMENT_609, SEED_609, CARRIED_BY_PHRASES, L01, ORIGINAL_L02, OLD_L02, NEW_L02, LEGOS_AFTER, CHANGES, KEPT };
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1); });
