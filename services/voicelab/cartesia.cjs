@@ -72,6 +72,9 @@ function headers (extra = {}) {
 async function registerVoice (db, { voiceId, name, language, gender = null, notes = null, isClone = false, registeredBy = null, consentRecord = null }) {
   const bare = String(voiceId || '').replace(/^cartesia_/, '').trim()
   if (!bare) throw Object.assign(new Error('voiceId is required'), { status: 400 })
+  // A surface My-Voice clone is a personal voice, never a course voice (#587). Every route that
+  // puts a Cartesia voice into `voices` comes through here, so this is the one place to refuse it.
+  require('./surface-clones.cjs').assertNotSurfaceClone(bare, name)
 
   const code = policy.toCartesiaLangCode(language)
   if (!code) throw Object.assign(new Error(`Cannot register a voice without a language it speaks (got "${language}")`), { status: 400 })
