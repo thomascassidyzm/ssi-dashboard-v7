@@ -32,6 +32,11 @@
 // byte-identical; Charlotte re-voice list, canon A23); the edited seeds are unapproved (new phrases arrive unchecked);
 // check-intro-mirror --strict; audit-phrase-zut strict must stay at 56.
 //
+// SUPERSEDED THE SAME NIGHT (Kai, 22:23Z): S0348L01 is NOT NEW and the player never plays a not-new basket (canon P25),
+// so the seven 348 rows this tool added were MOVED under S0201L03 / S0340L01 and the two S0201L02 rows deleted by
+// tools/course-optimization/ita-rehome-drill-phrases-under-new-legos-2026-09-28.cjs. The 84/107/162/208 rows stand
+// (their LEGOs are new). This file's BEFORE/AFTER pins the 22:27Z state and is kept as the record of that step.
+//
 //   node tools/course-optimization/ita-seed-348-non-voleva-sapere-phrases-2026-09-28.cjs            # dry run
 //   APPLY=1 node tools/course-optimization/ita-seed-348-non-voleva-sapere-phrases-2026-09-28.cjs    # apply + Italian audio
 
