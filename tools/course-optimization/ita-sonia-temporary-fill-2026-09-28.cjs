@@ -32,6 +32,7 @@
 //   node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs             # dry run: scope + cast snapshot, no cast change
 //   APPLY=1 BATCH=50 node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs   # one batch, cast restored at the end
 //   SCOPE=course APPLY=1 BATCH=50 node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs   # whole course
+//   SCOPE=ids IDS=ita_for_eng:S0544L02U01,… APPLY=1 node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs   # named rows only
 
 const path = require('path');
 const fs = require('fs');
@@ -55,6 +56,17 @@ async function engCast(pg) {
 const sameCast = (a, b) => a.length === b.length && a.every((r, i) => castKey(r) === castKey(b[i]));
 
 async function scope(pg) {
+  if (process.env.SCOPE === 'ids') {
+    // SCOPE=ids IDS=<comma list of phrase ids / lego ids> (job #546·I): fill ONLY the named rows, so a
+    // pass running beside other jobs never sweeps up slots they are about to fill themselves.
+    const ids = String(process.env.IDS || '').split(',').map(s => s.trim()).filter(Boolean);
+    if (!ids.length) throw new Error('SCOPE=ids needs IDS=<comma list>');
+    const { rows } = await pg.query(
+      `SELECT 'course_practice_phrases' AS tbl, id, seed_number, known_text, 'ids' AS grp FROM course_practice_phrases WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL AND id = ANY($2)
+       UNION ALL SELECT 'course_legos', lego_id, seed_number, known_text, 'ids' FROM course_legos WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL AND lego_id = ANY($2)
+       ORDER BY 3, 2`, [COURSE, ids]);
+    return { slots: rows, outOfScope: { phrases: 0, legos: 0 } };
+  }
   if (process.env.SCOPE === 'course') {
     const { rows } = await pg.query(
       `SELECT 'course_practice_phrases' AS tbl, id, seed_number, known_text, 'course' AS grp FROM course_practice_phrases WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL
