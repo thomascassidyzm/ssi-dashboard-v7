@@ -23,7 +23,7 @@
  * skipped, so a killed run costs only what it had not yet finished.
  *
  * Usage:
- *   node tools/phrase-lab/generate.cjs --course spa_for_eng --model claude-opus-5 \
+ *   node tools/phrase-lab/generate.cjs --course spa_for_eng --model opus \
  *     --targets targets.json --out opus.json
  */
 

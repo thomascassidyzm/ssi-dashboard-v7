@@ -83,7 +83,7 @@ if (!POD) {
   process.exit(1)
 }
 const MODEL = arg('model') || 'opus'
-const MODEL_ID = arg('model-id') || 'claude-opus-5'
+const MODEL_ID = arg('model-id') || require('../../services/shared/claude-cli.cjs').latestModelId(MODEL) // family-only (#654): the stamp names the version the family resolves to today
 const BATCH_SIZE = Number(arg('batch') || 16)
 const LIMIT = Number(arg('limit') || 0)   // 0 = no limit; for a small smoke run
 const APPROVED_BY = `verifier:${MODEL_ID}`

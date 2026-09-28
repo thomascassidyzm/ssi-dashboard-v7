@@ -427,7 +427,7 @@ Follow the instructions in the system prompt exactly. Return ONLY valid JSON.`;
       known_code: knownCode,
       target_code: targetCode,
       brief,
-      generated_by: 'claude-opus-4-5',
+      generated_by: 'opus',
       prompt_version: '1.2.0',
       generated_at: new Date().toISOString()
     };
@@ -462,7 +462,7 @@ Follow the instructions in the system prompt exactly. Return ONLY valid JSON.`;
       known_code: knownCode,
       target_code: targetCode,
       brief,
-      generated_by: 'claude-sonnet-4'
+      generated_by: 'sonnet'
     });
 
   } catch (error) {
