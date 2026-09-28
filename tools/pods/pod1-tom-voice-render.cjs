@@ -312,12 +312,12 @@ async function main () {
       row.duration_ms = v.row.duration_ms
       row.veracity = v.row.veracity_pass === null ? 'not_sampled' : (v.row.veracity_pass ? 'pass' : 'fail')
 
-      // 2b. THE CLIP MUST SPEAK ENGLISH. Text gates bound what we SEND; only the
-      //     waveform bounds what the clone SAID. Per-slot, not sampled: the
-      //     policy is absolute. Still before the swap, so a failure costs a
-      //     render and leaves the learner on the old clip.
+      // 2b. REPORT ONLY. The English-only policy is enforced on the TEXT by
+      //     tom-voice-language-gate.cjs before anything is sent. Whisper's
+      //     language ID is recorded on the row and never vetoes (Tom, 2026-09-28,
+      //     r-2026-09-28-no-automatic-whisper-stt-check-may).
       const lang = await assertEnglishAudio(v.row.s3_key)
-      if (!lang.ok) throw new Error(`language: ${lang.why}`)
+      if (!lang.ok) console.warn(`  REPORT ONLY — ${line.sentence_id}: ${lang.why}`)
       row.audio_language = lang.lang
       row.audio_language_p = lang.p
 

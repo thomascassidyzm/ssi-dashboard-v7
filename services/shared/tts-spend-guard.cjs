@@ -161,6 +161,13 @@ function textHash(text) {
 }
 // Refusals that hold until the billing cycle resets: alerted once per caller per cycle.
 const CYCLE_STOPS = new Set(['POOL_SHARE', 'PROVIDER_POOL'])
+/**
+ * TOM'S STOP (job #676, Tom 2026-09-28 23:40Z: "stop ALL audio generation").
+ * One row with provider '*' in tts_spend_trips refuses every reservation, every
+ * provider, every host (ops/sql/20260928-tts-spend-tom-stop.sql). The switch is
+ * tools/tts-stop.cjs; only Tom lifts it.
+ */
+const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -404,6 +411,8 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
     kind: 'memory', rows, trips, limitLog,
     async reserve(r) {
       const t = now()
+      // Tom's stop (job #676): a '*' trip stops every provider — mirrors tts_spend_reserve.
+      if (trips.has('*')) { const tr = trips.get('*'); return { ok: false, code: 'STOPPED_BY_TOM', message: `audio generation stopped by Tom since ${tr.at}: ${tr.message}. Only Tom lifts it` } }
       if (trips.has(r.provider)) { const tr = trips.get(r.provider); return { ok: false, code: 'TRIPPED', message: `renders are stopped for ${r.provider} since ${tr.at}: ${tr.message}. Clear: delete the trip row once a human has looked` } }
       const dayStart = Date.parse(dayKey(t) + 'T00:00:00Z')
       const today = sum(r.provider, dayStart)
@@ -524,6 +533,9 @@ function createSpendGuard(opts = {}) {
    * refusal still throws, and is still in the log and the mirror.
    */
   function tripAlertKey(code, provider, detail) {
+    // Tom's stop (job #676): Tom imposed it, so he is told at most once per host
+    // per day — never a card per refused clip, provider or short-lived script.
+    if (code === STOPPED_BY_TOM) return { key: `trip:${STOPPED_BY_TOM}:${dayKey(now())}`, cycle: false, once: true }
     if (CYCLE_STOPS.has(code)) {
       const caller = detail?.job || detail?.course || 'unnamed caller'
       return { key: `trip:${code}:${provider}:cycle-${new Date(cycleStart(now(), providerCycleDay(provider))).toISOString().slice(0, 10)}:${caller}`, caller, cycle: true }
@@ -534,7 +546,7 @@ function createSpendGuard(opts = {}) {
   function refuse(code, provider, message, detail) {
     const t = tripAlertKey(code, provider, detail)
     const said = t.cycle ? `${provider}: ${message} Caller: ${t.caller}. Said once for this caller this cycle; its further refusals are logged, not raised.` : `${provider}: ${message}`
-    alert(t.key, 'trip', said, { provider, code, ...detail }, { oncePerHost: t.cycle })
+    alert(t.key, 'trip', said, { provider, code, ...detail }, { oncePerHost: t.cycle || !!t.once })
     throw new TtsSpendGuardError(code, message, { provider, ...detail })
   }
 

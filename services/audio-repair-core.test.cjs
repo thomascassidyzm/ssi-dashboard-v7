@@ -230,12 +230,27 @@ describe('propose', () => {
     expect(cand.veracity_pass).toBe(true)
   })
 
-  it('a candidate that fails verification is refused, and the DB is bit-identical', async () => {
+  // Flipped 2026-09-28 (job #678). This used to assert a TTS candidate with a
+  // failing whisper verdict was refused. Tom's ruling: no automatic STT check may
+  // veto TTS audio. The verdict rides on the candidate; a person listens.
+  it('a TTS candidate whisper disagrees with is still proposed, with that verdict on it — rendered once', async () => {
+    const d2 = seedDb()
+    const { core: c2 } = makeCore(d2, { verdict: { checked: true, pass: false, reason: 'missing final word', cer: 0.9 } })
+    const r = await c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' })
+    expect(r.candidateId).toBeTruthy()
+    const [cand] = d2.snapshot().audio_repair_candidates
+    expect(cand.veracity_pass).toBe(false)
+    expect(cand.notes.attempts).toHaveLength(1)   // no re-roll on a whisper verdict
+  })
+
+  it('a HUMAN upload whisper disagrees with is still refused — human recordings keep the full check', async () => {
     const d2 = seedDb()
     const before = d2.snapshot()
     const { core: c2 } = makeCore(d2, { verdict: { checked: true, pass: false, reason: 'missing final word', cer: 0.9 } })
-    await expect(c2.propose({ courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'tts', actor: 'test' }))
-      .rejects.toThrow(/candidate/i)
+    await expect(c2.propose({
+      courseCode: 'deu_for_eng', audioId: CLIP.id, source: 'upload',
+      buffer: Buffer.alloc(40000, 2), filename: 'take-3.wav', actor: 'tom',
+    })).rejects.toThrow(/words missing/i)
     expect(d2.snapshot()).toEqual(before)
   })
 
