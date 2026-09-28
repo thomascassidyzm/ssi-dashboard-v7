@@ -246,7 +246,12 @@ function loadLimits({ budgetPath, envOverride, nowMs }) {
   }
   const rep = applyLimits(DEFAULT_REPEAT, file.repeat, nowMs, 'repeat'); notes.push(...rep.notes)
   const div = applyLimits(DEFAULT_DIVERGENCE, file.divergence, nowMs, 'divergence'); notes.push(...div.notes)
-  return { providers, repeat: rep.limits, divergence: div.limits, notes, source }
+  // A standing HOLD (Tom 2026-09-28, job #569: "there should be no big audio
+  // jobs going at all"): the budget file lowers every daily cap to a small-job
+  // ceiling and names who lifts it. Its message rides every DAILY_CAP refusal,
+  // so whoever hits the cap reads that the answer is Tom's go, not a workaround.
+  const hold = file.hold && typeof file.hold.message === 'string' ? { by: file.hold.by || null, since: file.hold.since || null, message: file.hold.message } : null
+  return { providers, repeat: rep.limits, divergence: div.limits, notes, source, hold }
 }
 function readBudgetFile(p) {
   try { return JSON.parse(fs.readFileSync(p, 'utf8')) } catch (e) {
@@ -565,7 +570,7 @@ function createSpendGuard(opts = {}) {
     if (!res.ok) {
       try { mirror({ kind: 'refused', code: res.code, ...base }) } catch {}
       const hint = res.code === 'POOL_SHARE' ? ` The stop is ${Math.round(b.stopAtShareOfPool * 100)}% of a ${b.monthlyPoolChars.toLocaleString()}-char pool; a raise needs by, why and until (at most ${RAISE_MAX_DAYS} days) in ops/tts-spend-budgets.json.`
-        : res.code === 'DAILY_CAP' ? ' Raise dailyCapChars only through a signed raise in ops/tts-spend-budgets.json.' : ''
+        : res.code === 'DAILY_CAP' ? (cfg.hold ? ` HELD: ${cfg.hold.message}` : ' Raise dailyCapChars only through a signed raise in ops/tts-spend-budgets.json.') : ''
       refuse(res.code || 'REFUSED', provider, `${res.message || 'refused by the ledger'}.${hint}`, { key: res.code === 'REPEAT' ? key : undefined, today: res.today, cycle: res.cycle, seen: res.seen, course: base.course, job: base.job })
     }
     const entry = { kind: 'call', id: res.id, ...base }

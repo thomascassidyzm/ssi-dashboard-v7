@@ -42,9 +42,15 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
   try {
     const { data: existing } = await supabase
       .from('audio_pass_requests')
-      .select('id, metadata')
+      .select('id, metadata, status')
       .eq('course_code', courseCode)
-      .eq('status', 'pending')
+      // A HELD request (Tom 2026-09-28, job #569: "no big audio jobs going at
+      // all") is still the course's open request: a new text edit joins it and
+      // it STAYS held. Opening a fresh pending row beside it would quietly undo
+      // the hold. Releasing a hold is setting status back to 'pending' by hand.
+      .in('status', ['pending', 'held'])
+      .order('created_at')
+      .limit(1)
       .maybeSingle()
 
     if (existing) {
@@ -68,8 +74,8 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
         })
         .eq('id', existing.id)
       if (error) throw error
-      logger.info(`Touched pending audio-pass request for ${courseCode} (${reason})`)
-      return { queued: false, touched: true, id: existing.id }
+      logger.info(`Touched ${existing.status} audio-pass request for ${courseCode} (${reason})`)
+      return { queued: false, touched: true, id: existing.id, held: existing.status === 'held' }
     }
 
     const { data, error } = await supabase

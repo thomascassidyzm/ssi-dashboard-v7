@@ -208,3 +208,30 @@ describe('(f3) a limits change is said once per host, not on every restart (job 
     expect(limitCards()).toHaveLength(2)
   })
 })
+
+describe('(h) the standing hold: no big audio jobs (Tom 2026-09-28, job #569)', () => {
+  // The COMMITTED budget file, not a fixture: this is the rule as it ships.
+  const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
+  const big = 'x'.repeat(20_001)
+
+  for (const provider of ['cartesia', 'azure', 'elevenlabs', 'xai', 'google']) {
+    it(`${provider}: a request over 20,000 chars in one day is refused, naming Tom's go`, async () => {
+      const g = guard({ budgetPath: committed })
+      const err = await call(g, big, { provider }).catch(e => e)
+      expect(err.code).toBe('DAILY_CAP')
+      expect(err.message).toMatch(/HELD: .*TOM'S EXPLICIT GO/)
+    })
+  }
+
+  it('a small one-off clip passes, and a run of them stops at the 20,000-char ceiling', async () => {
+    const g = guard({ budgetPath: committed })
+    await expect(call(g, 'Croeso i Voice Lab.')).resolves.toBeTruthy()
+    await call(g, 'y'.repeat(19_000))
+    await expect(call(g, 'z'.repeat(2_000))).rejects.toThrow(/DAILY_CAP.*HELD/)
+  })
+
+  it('without a hold block the old signed-raise hint still stands', async () => {
+    const g = guard({ budgetPath: budgets({ providers: { cartesia: { dailyCapChars: 25, alertDailyChars: 1e9 } } }) })
+    await expect(call(g, 'a'.repeat(30))).rejects.toThrow(/Raise dailyCapChars only through a signed raise/)
+  })
+})
