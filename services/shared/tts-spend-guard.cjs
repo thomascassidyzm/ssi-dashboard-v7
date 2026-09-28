@@ -242,6 +242,12 @@ function loadLimits({ budgetPath, envOverride, nowMs }) {
   const names = new Set([...Object.keys(DEFAULT_BUDGETS), ...Object.keys(file.providers || {})])
   for (const p of names) {
     const { limits, notes: n } = applyLimits(DEFAULT_BUDGETS[p] || UNKNOWN_PROVIDER_BUDGET, (file.providers || {})[p], nowMs, `providers.${p}`)
+    // A RETIRED provider (Tom 2026-09-28, job #575: "We don't use Eleven Labs
+    // any more"): the budget file names it with a reason, and every call to it
+    // is refused before the ledger is touched. Switching a provider off is a
+    // tightening, so it needs no signature; switching it back on is deleting it.
+    const block = (file.providers || {})[p]
+    if (block && typeof block.retired === 'string' && block.retired.trim()) limits.retired = block.retired.trim()
     providers[p] = limits; notes.push(...n)
   }
   const rep = applyLimits(DEFAULT_REPEAT, file.repeat, nowMs, 'repeat'); notes.push(...rep.notes)
@@ -549,6 +555,8 @@ function createSpendGuard(opts = {}) {
     const chars = text.length
     const cfg = limitsNow()
     const b = providerLimits(cfg, provider)
+
+    if (b.retired) refuse('RETIRED', provider, b.retired, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
 
     await checkProvider(provider, cfg, b, chars, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
 
