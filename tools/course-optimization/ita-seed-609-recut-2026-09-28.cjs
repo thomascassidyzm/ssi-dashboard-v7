@@ -20,13 +20,20 @@
 //     L02  the sensible thing to do | la cosa sensata da fare        (the S0243L02 "thing to eat | cosa
 //          da mangiare" shape; components "the sensible thing | la cosa sensata" + "to do | da fare")
 //   NO "would have been" LEGO. Kai: *sarebbe stato* is already taught (S0544L02; *sarebbe stata* itself
-//   is S0608L02 "it would have been"), so *sarebbe stata* is carried by PHRASES: a form already taught
-//   in another gender/number is practised in phrases, not given its own LEGO. So "would have been /
+//   is S0608L02 "it would have been"), so *sarebbe stata* is carried by PHRASES: an alternative-gender
+//   version of a taught form MAY be dropped as a LEGO when it causes problems like this, especially late
+//   in the course (a permission, not a rule — Kai's wording, 19:06Z). So "would have been /
 //   sarebbe stata" is deliberately in no LEGO of 609 (the tiling gate passes on taught vocabulary).
 //   Phrases: L02's rows show "the sensible thing to do would have been … | la cosa sensata da fare
 //   sarebbe stata …" (already so after pass 1; its bare fragment and components move). L01 gains
 //   "would have been to ask | sarebbe stata chiedere" rows, each with its agreeing noun (the best / the
 //   first / the most sensible thing), plus the full seed — four L01 rows re-textured in place.
+//
+// PASS 3 (Kai, 19:06Z) — "the best / first thing would have been to ask" read thin; he asked for
+//   FEMININE subjects the learner already knows, where natural, for variety. Taught by 609: "the best
+//   choice | la scelta migliore" (S0116L02) and "the best idea | la migliore idea" (seed 163). L01B02
+//   and L01U04 take them; "the most sensible thing …" and the full seed stay. No LEGO moves in pass 3.
+//   CHANGES below is pass 3; PASS2_CHANGES is kept for the record and the test.
 //
 // AFTER THE EDIT: English slots of changed rows detached → ita-sonia-temporary-fill SCOPE=ids
 // (temporary Sonia, cast restored byte-identical); Italian linked to existing Elsa/Benigno clips or
@@ -45,7 +52,7 @@ const SEED = 609;
 const SWEEP = 'ita-seed-609-recut-2026-09-28';
 const SURFACE = `tools/course-optimization/${SWEEP}.cjs`;
 const JOB = '#579·I';
-const RULING = 'Kai, 2026-09-28 19:00Z (job #579·I): seed 609 is TWO LEGOs — "the sensible thing to do | la cosa sensata da fare" (S0243L02 shape) and "to ask | chiedere"; no would-have-been LEGO: sarebbe stato is already taught (S0544L02), so sarebbe stata is carried by phrases (a form already taught in another gender/number is practised in phrases, not given its own LEGO); several phrases per LEGO show it, plus the full seed; seed 609 unapproved';
+const RULING = 'Kai, 2026-09-28 19:00Z (job #579·I): seed 609 is TWO LEGOs — "the sensible thing to do | la cosa sensata da fare" (S0243L02 shape) and "to ask | chiedere"; no would-have-been LEGO: sarebbe stato is already taught (S0544L02), so sarebbe stata is carried by phrases (an alternative-gender version of a taught form may be dropped as a LEGO when it causes problems, especially late in the course — Kai 19:06Z); several phrases per LEGO show it, plus the full seed; seed 609 unapproved';
 const ELSA = { voiceId: 'azure_it-IT-ElsaNeural', voiceName: 'it-IT-ElsaNeural' };
 const BENIGNO = { voiceId: 'azure_it-IT-BenignoNeural', voiceName: 'it-IT-BenignoNeural' };
 const AZURE_VOICE_IDS = { target1: ['azure_it-IT-ElsaNeural', 'it-IT-ElsaNeural'], target2: ['azure_it-IT-BenignoNeural', 'it-IT-BenignoNeural'] };
@@ -71,7 +78,7 @@ function uncovered(seed, legos) {
 function agreementCarriesItsNoun(row, { participle, noun }) {
   return !containsChunk(row.target, participle) || new RegExp(`\\b${noun}\\b`).test(norm(row.target));
 }
-const AGREEMENT_609 = { participle: 'stata', noun: 'cosa' };
+const AGREEMENT_609 = { participle: 'stata', noun: '(?:cosa|scelta|idea)' };
 
 // ── The changes ────────────────────────────────────────────────────────────────────────
 const SEED_609 = { known: 'the sensible thing to do would have been to ask', target: 'la cosa sensata da fare sarebbe stata chiedere' };
@@ -85,7 +92,7 @@ const OLD_L02 = { id: 'S0609L02', known: 'the sensible thing to do would have be
 const NEW_L02 = { id: 'S0609L02', known: 'the sensible thing to do', target: 'la cosa sensata da fare', components: [{ known: 'the sensible thing', target: 'la cosa sensata' }, { known: 'to do', target: 'da fare' }] };
 const LEGOS_AFTER = { S0609L01: L01, S0609L02: NEW_L02 };
 
-const CHANGES = [
+const PASS2_CHANGES = [
   // L02: its bare fragment and components follow the smaller LEGO
   { id: 'S0609L02C01', lego: 'S0609L02', role: 'component', before: { known: 'the sensible thing to do', target: 'la cosa sensata da fare' }, after: { known: 'the sensible thing', target: 'la cosa sensata' } },
   { id: 'S0609L02C02', lego: 'S0609L02', role: 'component', before: { known: 'would have been', target: 'sarebbe stata' }, after: { known: 'to do', target: 'da fare' } },
@@ -96,12 +103,18 @@ const CHANGES = [
   { id: 'S0609L01U06', lego: 'S0609L01', role: 'use', before: { known: 'I want to ask something', target: 'voglio chiedere qualcosa' }, after: { known: 'the most sensible thing would have been to ask', target: 'la cosa più sensata sarebbe stata chiedere' } },
   { id: 'S0609L01U08', lego: 'S0609L01', role: 'use', before: { known: 'you can ask his friend', target: 'puoi chiedere al suo amico' }, after: { known: SEED_609.known, target: SEED_609.target } },
 ];
+const byIdP2 = Object.fromEntries(PASS2_CHANGES.map(c => [c.id, c.after]));
+/** Pass 3: feminine subjects already taught, for variety (Kai, 19:06Z). Before = pass 2's after. */
+const CHANGES = [
+  { id: 'S0609L01B02', lego: 'S0609L01', role: 'build', before: byIdP2.S0609L01B02, after: { known: 'the best choice would have been to ask', target: 'la scelta migliore sarebbe stata chiedere' }, taughtBy: 'S0116L02 the best choice | la scelta migliore' },
+  { id: 'S0609L01U04', lego: 'S0609L01', role: 'use', before: byIdP2.S0609L01U04, after: { known: 'the best idea would have been to ask', target: 'la migliore idea sarebbe stata chiedere' }, taughtBy: 'seed 163 "the best idea | la migliore idea" (S0163…), idea S0123L01' },
+];
 /** Rows that already contain their LEGO after this pass and do not move. */
 const KEPT = [
-  ...['B01', 'B03', 'U02', 'U03', 'U05', 'U07', 'U09'].map(x => ({ id: `S0609L01${x}`, lego: 'S0609L01' })),
-  ...['B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05'].map(x => ({ id: `S0609L02${x}`, lego: 'S0609L02' })),
+  ...['B01', 'B03', 'U02', 'U03', 'U05', 'U06', 'U07', 'U08', 'U09'].map(x => ({ id: `S0609L01${x}`, lego: 'S0609L01' })),
+  ...['C01', 'C02', 'B01', 'B02', 'B03', 'U01', 'U02', 'U03', 'U04', 'U05'].map(x => ({ id: `S0609L02${x}`, lego: 'S0609L02' })),
 ];
-for (const c of CHANGES) { c.knownChanged = norm(c.before.known) !== norm(c.after.known); c.targetChanged = norm(c.before.target) !== norm(c.after.target); }
+for (const c of [...PASS2_CHANGES, ...CHANGES]) { c.knownChanged = norm(c.before.known) !== norm(c.after.known); c.targetChanged = norm(c.before.target) !== norm(c.after.target); }
 
 // ── Live ────────────────────────────────────────────────────────────────────────────────
 async function newVocabulary(pg, seed, text, side) {
@@ -123,8 +136,8 @@ async function guardLive(pg, problems, log) {
   const l1 = legos.find(l => l.lego_id === 'S0609L01'), l2 = legos.find(l => l.lego_id === 'S0609L02');
   if (legos.length !== 2) problems.push(`seed 609 has ${legos.length} LEGOs, expected two`);
   if (!l1 || l1.known_text !== L01.known || l1.target_text !== L01.target) problems.push(`S0609L01 reads "${l1?.known_text}" → "${l1?.target_text}"`);
-  if (!l2 || l2.known_text !== OLD_L02.known || l2.target_text !== OLD_L02.target) problems.push(`S0609L02 reads "${l2?.known_text}" → "${l2?.target_text}"`);
-  if (l2 && JSON.stringify(l2.components) !== JSON.stringify(OLD_L02.components)) problems.push(`S0609L02 components are ${JSON.stringify(l2.components)}`);
+  if (!l2 || l2.known_text !== NEW_L02.known || l2.target_text !== NEW_L02.target) problems.push(`S0609L02 reads "${l2?.known_text}" → "${l2?.target_text}"`);
+  if (l2 && JSON.stringify(l2.components) !== JSON.stringify(NEW_L02.components)) problems.push(`S0609L02 components are ${JSON.stringify(l2.components)}`);
   const { rows: under } = await pg.query(`SELECT split_part(id,':',2) id, phrase_role, known_text, target_text FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2 ORDER BY position`, [COURSE, SEED]);
   const byId = Object.fromEntries(under.map(r => [r.id, r]));
   for (const c of CHANGES) { const r = byId[c.id]; if (!r || r.known_text !== c.before.known || r.target_text !== c.before.target || r.phrase_role !== c.role) problems.push(`${c.id} reads "${r?.known_text}" → "${r?.target_text}" (${r?.phrase_role}) — expected "${c.before.known}" → "${c.before.target}"`); }
@@ -150,7 +163,7 @@ async function guards(pg, problems, log) {
     if (r.role !== 'component' && !(containsChunk(r.known, l.known) && containsChunk(r.target, l.target))) problems.push(`${r.id} "${r.known}" does not contain ${r.lego} "${l.known}"`);
     if (!agreementCarriesItsNoun(r, AGREEMENT_609)) problems.push(`${r.id} "${r.target}" carries "stata" without its noun`);
   }
-  if (CHANGES.filter(c => c.role === 'component').map(c => `${c.after.known}|${c.after.target}`).join('/') !== NEW_L02.components.map(c => `${c.known}|${c.target}`).join('/')) problems.push('component rows do not match the LEGO components');
+  if (rowsAfter.filter(r => r.role === 'component').map(r => `${r.known}|${r.target}`).join('/') !== NEW_L02.components.map(c => `${c.known}|${c.target}`).join('/')) problems.push('component rows do not match the LEGO components');
   log.phrasesCarrying = rowsAfter.filter(r => containsChunk(r.target, CARRIED_BY_PHRASES.target)).map(r => r.id);
   // L27(2): the new L02 pair already a LEGO? duplicate only if BOTH sides match
   const { rows: dup } = await pg.query('SELECT lego_id, known_text, target_text FROM course_legos WHERE course_code=$1 AND lego_id<>$2 AND (lower(known_text)=lower($3) OR lower(target_text)=lower($4))', [COURSE, 'S0609L02', NEW_L02.known, NEW_L02.target]);
@@ -187,17 +200,13 @@ async function applyContent(pg, supabase, log) {
   const { serviceIdentity } = require('../../services/shared/editor-identity.cjs');
   const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs');
   const identity = serviceIdentity(SWEEP, { role: 'content-sweep' });
-  const legoEvent = await recordContentEdit(supabase, { identity, courseCode: COURSE, surface: SURFACE, operation: 'lego-edit', scope: { seed_numbers: [SEED], lego_ids: ['S0609L02'], rows: 1 }, detail: { ruling: RULING, job: JOB, from: OLD_L02, to: NEW_L02 } });
+  const legoEvent = null; // pass 3 moves no LEGO
   const phraseEvent = await recordContentEdit(supabase, { identity, courseCode: COURSE, surface: SURFACE, operation: 'phrase-edit', scope: { seed_numbers: [SEED], phrase_ids: CHANGES.map(c => `${COURSE}:${c.id}`), rows: CHANGES.length },
     detail: { ruling: RULING, job: JOB, changes: CHANGES.map(c => ({ id: `${COURSE}:${c.id}`, role: c.role, known_from: c.before.known, target_from: c.before.target, known_to: c.after.known, target_to: c.after.target })) } });
   const unapproveEvent = await recordContentEdit(supabase, { identity, courseCode: COURSE, surface: SURFACE, operation: 'unapprove', scope: { seed_numbers: [SEED], rows: 1 }, detail: { why: 'L02 re-cut and its phrases rewritten under Kai\'s ruling of 2026-09-28; needs his read', job: JOB, approved_at_before: log.seedApprovedBefore } });
   log.events = { legoEvent, phraseEvent, unapproveEvent };
   await pg.query('BEGIN');
   try {
-    // 1. L02 re-textured in place (never deleted). Both sides move: every clip link cleared and re-filled; the intro is re-mirrored after.
-    const l = await pg.query('UPDATE course_legos SET known_text=$1, target_text=$2, components=$3, known_audio_id=NULL, target1_audio_id=NULL, target2_audio_id=NULL, target1_duration_ms=NULL, target2_duration_ms=NULL, last_edit_event_id=$4, updated_at=now() WHERE course_code=$5 AND lego_id=$6 AND known_text=$7 AND target_text=$8',
-      [NEW_L02.known, NEW_L02.target, JSON.stringify(NEW_L02.components), legoEvent, COURSE, 'S0609L02', OLD_L02.known, OLD_L02.target]);
-    if (l.rowCount !== 1) throw new Error(`S0609L02: ${l.rowCount} rows`);
     // 2. Phrase rows re-textured in place; a side whose words did not move keeps its clips.
     for (const c of CHANGES) {
       const u = await pg.query(`UPDATE course_practice_phrases SET known_text=$1, target_text=$2, word_count=$3, lego_count=$4,
@@ -297,7 +306,7 @@ async function main() {
   await guardLive(pg, log.problems, log);
   if (!log.problems.length) await guards(pg, log.problems, log);
   console.log('\nPLAN:');
-  console.log(`  S0609L02  "${OLD_L02.known}" → "${OLD_L02.target}"  ⇒  "${NEW_L02.known}" → "${NEW_L02.target}"  components ${NEW_L02.components.map(c => `${c.known}→${c.target}`).join(' | ')}`);
+  console.log(`  LEGOs unchanged: S0609L01 "${L01.known}" | S0609L02 "${NEW_L02.known}" (${NEW_L02.components.map(c => c.known).join(' + ')})`);
   for (const c of CHANGES) console.log(`  ${c.id.padEnd(12)} "${c.before.known}" → "${c.before.target}"  ⇒  "${c.after.known}" → "${c.after.target}"`);
   console.log(`  unapprove seed ${SEED} (approved_at before: ${log.seedApprovedBefore})`);
   if (log.sameEitherSide?.length) console.log(`  same English or Italian as another LEGO (one side only — not a duplicate): ${JSON.stringify(log.sameEitherSide)}`);
@@ -317,5 +326,5 @@ async function main() {
   fs.writeFileSync(f, JSON.stringify(log, null, 2)); console.log(`Wrote ${f}`);
   await pg.end(); process.exit(log.problems.length ? 2 : 0);
 }
-module.exports = { containsChunk, legoInSeed, componentsTile, uncovered, agreementCarriesItsNoun, AGREEMENT_609, SEED_609, CARRIED_BY_PHRASES, L01, ORIGINAL_L02, OLD_L02, NEW_L02, LEGOS_AFTER, CHANGES, KEPT };
+module.exports = { PASS2_CHANGES, containsChunk, legoInSeed, componentsTile, uncovered, agreementCarriesItsNoun, AGREEMENT_609, SEED_609, CARRIED_BY_PHRASES, L01, ORIGINAL_L02, OLD_L02, NEW_L02, LEGOS_AFTER, CHANGES, KEPT };
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1); });
