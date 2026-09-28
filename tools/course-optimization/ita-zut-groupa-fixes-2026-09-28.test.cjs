@@ -101,3 +101,17 @@ test('dirlo alone is glossed "say that" everywhere it stands alone (61, 644, 659
   assert.strictEqual(alone.length, 2);
   for (const x of alone) assert.strictEqual(x.after.known, 'say that');
 });
+
+// ── Kai's sharpened rule: the old gloss is gone from EVERY phrase in the course ──
+const GS = require('./ita-zut-groupa-gloss-sweep-2026-09-28.cjs');
+test('gloss sweep: every bare-dirlo phrase that said "say it" now says "say that", and the formal one avoids the seed-61 clash', () => {
+  for (const p of GS.PHRASES) {
+    assert.match(p.before.known, /say it/);
+    assert.match(p.after.known, /say that/);
+    assert.doesNotMatch(p.after.known, /say it/);
+    assert.match(p.after.target, /\bdirlo\b/);
+  }
+  const formal = GS.PHRASES.find(p => p.id === 'S0644L01U04');
+  assert.notStrictEqual(formal.after.known.toLowerCase(), 'could you say that again?', 'would collide with S0061L03U01 potresti dirlo di nuovo?');
+  assert.match(formal.after.known, /sir\?$/); assert.match(formal.after.target, /, signore\?$/);
+});
