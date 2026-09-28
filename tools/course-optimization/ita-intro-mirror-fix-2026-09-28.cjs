@@ -315,6 +315,10 @@ async function main() {
     const actors = A.all('--exclude-actor');
     const excluded = await excludedSeeds(pg, actors);
     const P = await plan(pg);
+    // --only-seeds 347,367 (job #622·I): an edit job re-mirrors ITS seeds only — every other seed is held,
+    // so a pass running beside sibling edit jobs never re-authors an intro they are about to change.
+    const only = A.all('--only-seeds').flatMap((s) => String(s).split(',')).map(Number).filter(Number.isFinite);
+    if (only.length) for (const it of P.items) if (!only.includes(it.seed)) excluded.add(it.seed);
     const L = P.census.legos, C = P.census.components;
     console.log(`\n══ ${COURSE}: intro mirror fix — ${APPLY ? 'APPLY' : 'PLAN (dry run)'} ══`);
     console.log(`before: legos ${L.with_intro} with intro / ${L.mismatch} mismatch / ${L.new_without_intro} silent new / ${L.guarded} guarded; components ${C.with_intro} with intro / ${C.mismatch} mismatch; li diverge ${L.li_diverges}; keyed stale ${L.keyed_stale}`);
