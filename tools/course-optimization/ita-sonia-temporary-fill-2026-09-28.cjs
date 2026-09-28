@@ -26,8 +26,9 @@
 // scope and are counted in the evidence file, never filled.
 //
 // SCOPE=course (Kai, 2026-09-28, job #529: "fill the 43 silent English prompt slots elsewhere in
-// ita_for_eng, plus any Job 1 creates") = EVERY NULL known slot in the course, phrases and legos,
-// grouped 'course'. Presentation (intro) slots stay out of scope in both modes.
+// ita_for_eng, plus any Job 1 creates") = EVERY NULL known slot in the course, phrases, legos and
+// (since job #543, whose pronoun pass changed four seed sentences) seeds, grouped 'course'.
+// Presentation (intro) slots stay out of scope in both modes.
 //
 //   node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs             # dry run: scope + cast snapshot, no cast change
 //   APPLY=1 BATCH=50 node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs   # one batch, cast restored at the end
@@ -71,6 +72,7 @@ async function scope(pg) {
     const { rows } = await pg.query(
       `SELECT 'course_practice_phrases' AS tbl, id, seed_number, known_text, 'course' AS grp FROM course_practice_phrases WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL
        UNION ALL SELECT 'course_legos', lego_id, seed_number, known_text, 'course' FROM course_legos WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL
+       UNION ALL SELECT 'course_seeds', seed_id, seed_number, known_text, 'course' FROM course_seeds WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL
        ORDER BY 3, 2`, [COURSE]);
     return { slots: rows, outOfScope: { phrases: 0, legos: 0 } };
   }
@@ -105,7 +107,7 @@ async function fill(pg, supabase, slots, log) {
   for (const slot of slots) {
     const entry = { id: slot.id, tbl: slot.tbl, seed: slot.seed_number, grp: slot.grp, text: slot.known_text };
     log.filled.push(entry);
-    const idCol = slot.tbl === 'course_legos' ? 'lego_id' : 'id';
+    const idCol = slot.tbl === 'course_legos' ? 'lego_id' : slot.tbl === 'course_seeds' ? 'seed_id' : 'id';
     try {
       // An existing Sonia clip anywhere answers first (voiceBound: never another voice).
       const { rows: have } = await pg.query(
