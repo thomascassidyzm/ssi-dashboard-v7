@@ -13,12 +13,25 @@
 const { execFile } = require('child_process')
 const { claudeEnv } = require('./claude-config.cjs')
 
-// The installed `claude` CLI's own alias resolution for 'haiku' can lag
-// behind Anthropic's model retirements (seen 2026-07: CLI 2.0.8 resolved
-// 'haiku' -> retired 'claude-3-5-haiku-20241022', a 404). Pin an explicit,
-// verified-working model id instead of trusting the CLI's alias — one env
-// var to bump the next time Haiku is retired.
-const HAIKU_MODEL = process.env.CLAUDE_HAIKU_MODEL || 'claude-haiku-4-5-20251001'
+// FAMILY NAMES ONLY (Tom, 2026-09-28, r-2026-09-28-models-are-named-by-family-only; job #654).
+// The pin this replaced existed because a stale CLI (2.0.8, 2026-07) resolved 'haiku' to a
+// retired model. watson-1 now keeps Claude Code current every 6h (command-surface
+// ops/claude-cli-update.js), so the alias IS the latest and a pinned id is what rots.
+// CLAUDE_HAIKU_MODEL stays as a rollback lever only.
+const HAIKU_MODEL = process.env.CLAUDE_HAIKU_MODEL || 'haiku'
+
+// The id a family resolves to on this box, for PROVENANCE stamps (who approved/wrote a row).
+// Read from the catalogue cache the command surface writes per installed CLI version
+// (~/.cache/cs-model-catalog/<ver>.json, from the binary's own latest_per_family table), so
+// Popty never keeps its own table. Falls back to the family alias rather than inventing an id.
+function latestModelId(family) {
+  const fs = require('fs'), path = require('path'), os = require('os')
+  try {
+    const ver = path.basename(fs.realpathSync(path.join(os.homedir(), '.local', 'bin', 'claude')))
+    const cat = JSON.parse(fs.readFileSync(path.join(os.homedir(), '.cache', 'cs-model-catalog', `${ver}.json`), 'utf8'))
+    return cat[String(family).replace(/\[.*$/, '')] || family
+  } catch { return family }
+}
 
 /**
  * Call Claude via CLI and return the text response.
@@ -92,4 +105,19 @@ function claudeChat(prompt, options = {}) {
   })
 }
 
-module.exports = { claudeChat, HAIKU_MODEL }
+// THE MODEL THAT ACTUALLY ANSWERED (#675, Astra #664 finding 3). A provenance stamp is a claim
+// about the past, so it is read from the run, never predicted from a catalogue: `claude --print
+// --output-format json` returns `modelUsage`, keyed by every model id that served the call. The
+// primary is the one that wrote the most output (a CLI may use a small model for housekeeping).
+// Returns { text, model, models, isError } — model is null when the output carries no usage
+// (non-JSON, or an error before any model ran), and the caller must then say so, not guess.
+function parseCliJson(raw) {
+  let j = null
+  try { j = JSON.parse(String(raw).trim()) } catch { /* not JSON — CLI error text */ }
+  if (!j || typeof j !== 'object') return { text: String(raw || ''), model: null, models: [], isError: true }
+  const usage = j.modelUsage && typeof j.modelUsage === 'object' ? j.modelUsage : {}
+  const models = Object.keys(usage).sort((a, b) => (usage[b].outputTokens || 0) - (usage[a].outputTokens || 0))
+  return { text: typeof j.result === 'string' ? j.result : '', model: models[0] || null, models, isError: !!j.is_error }
+}
+
+module.exports = { claudeChat, HAIKU_MODEL, latestModelId, parseCliJson }
