@@ -68,3 +68,36 @@ test('seed 642 never says aiutarla — it is first taught at seed 645', () => {
     assert.ok(!/\byou\b/.test(p.after.known), `${p.id} English still promises a "you" the Italian does not carry`);
   }
 });
+
+// ── Kai's same-day follow-up: seed 208 "come dirlo" and "dirlo" alone ─────────
+const FU = require('./ita-zut-groupa-followup-2026-09-28.cjs');
+const FU_COUNTERPARTS = {
+  legos: [
+    { id: 'S0056L02', seed_number: 56, known_text: 'how to say', target_text: 'come dire' },
+    { id: 'S0208L02', seed_number: 208, known_text: 'how to say it', target_text: 'come dirlo' },
+    { id: 'S0061L02', seed_number: 61, known_text: 'say that', target_text: 'dirlo' },
+  ],
+  phrases: [
+    { id: 'ita_for_eng:S0208L02B01', seed_number: 208, phrase_role: 'build', known_text: 'how to say it', target_text: 'come dirlo' },
+  ],
+};
+function fuPicture(side) {
+  const legos = [...FU_COUNTERPARTS.legos, ...FU.LEGOS.map(l => ({ id: l.id, seed_number: Number(l.id.slice(1, 5)), known_text: l[side].known, target_text: l[side].target }))];
+  const phrases = [...FU_COUNTERPARTS.phrases, ...FU.PHRASES.map(p => ({ id: `ita_for_eng:${p.id}`, seed_number: Number(p.id.slice(1, 5)),
+    phrase_role: p.id.includes('C') ? 'component' : 'build', known_text: p[side].known, target_text: p[side].target }))];
+  return auditRows({ legos, phrases, seeds: [] }).bidirectional.violationsStrict.map(v => v.known_norm).sort();
+}
+test('208: "how to say" and "say it" were ZUT flags before, and are gone after', () => {
+  assert.deepStrictEqual(fuPicture('before'), ['how to say', 'say it']);
+  assert.deepStrictEqual(fuPicture('after'), []);
+});
+test('208: every build under S0208L02 reads the LEGO pair, and only B01 is the debut', () => {
+  for (const p of FU.PHRASES.filter(p => p.id.startsWith('S0208L02'))) assert.deepStrictEqual(p.after, { known: 'how to say it', target: 'come dirlo' });
+  assert.deepStrictEqual(FU.INTRODUCE_FALSE.sort(), ['S0208L02B02', 'S0208L02B03', 'S0208L02B04']);
+  assert.ok(!FU.INTRODUCE_FALSE.includes('S0208L02B01'));
+});
+test('dirlo alone is glossed "say that" everywhere it stands alone (61, 644, 659)', () => {
+  const alone = [...FU.LEGOS, ...FU.PHRASES].filter(x => x.after.target === 'dirlo');
+  assert.strictEqual(alone.length, 2);
+  for (const x of alone) assert.strictEqual(x.after.known, 'say that');
+});
