@@ -80,7 +80,61 @@ async function recordContentEdit(supabase, {
     .single();
 
   if (error) throw new Error(`content_edit_events insert failed: ${error.message}`);
+  armIntroMirrorAtExit({ identity, courseCode, operation, scope });
   return data.id;
+}
+
+// ─── THE INTRO MIRROR RUNS WHEN A SWEEP EXITS (Kai's ruling, 2026-09-28, job #557·I) ──────────
+//
+// A recurring defect: a tools/ sweep edits a LEGO or component and its introduction (the
+// presentation clip that quotes it) is left saying the old words. The rule lives in
+// services/shared/intro-mirror.cjs and the command is tools/check-intro-mirror.cjs. This is
+// the wiring: the moment a SERVICE identity (serviceIdentity() — the tools/ sweeps; HTTP routes
+// carry human/agent identities and are not touched) records an edit naming seeds or LEGOs, ONE
+// process 'exit' hook is armed for that course. At exit it runs the check, synchronously, over the
+// union of every seed the process named, in --strict mode, and on a mismatch prints the rows and
+// sets the exit code to 2 — so a job that broke a mirror fails loudly even after it called
+// process.exit(0) itself (an 'exit' listener may still change process.exitCode: probed 2026-09-28).
+//
+// Why at exit and not here: the event id this function returns is stamped ONTO the rows the
+// caller is about to write, so at this moment the edit has not happened yet and there is nothing
+// to check. Exit is the first moment the job's whole outcome is on disk.
+//
+// Opt out with INTRO_MIRROR_AT_EXIT=0 (a job that knowingly leaves an intro for phase8 to author
+// says so in its report instead). Never armed under vitest.
+const introMirrorScopes = new Map(); // courseCode -> Set(seed_number)
+let introMirrorArmed = false;
+const SEED_FROM_LEGO = /^S(\d{4})/;
+function armIntroMirrorAtExit({ identity, courseCode, operation, scope }) {
+  if (process.env.INTRO_MIRROR_AT_EXIT === '0' || process.env.VITEST) return;
+  if (!identity || identity.kind !== 'service') return;
+  if (/unapprove|approve|audio|link|flag/i.test(String(operation))) return;
+  const seeds = new Set((scope?.seed_numbers || []).map(Number).filter(Number.isFinite));
+  for (const id of (scope?.lego_ids || [])) { const m = SEED_FROM_LEGO.exec(String(id)); if (m) seeds.add(Number(m[1])); }
+  for (const id of (scope?.phrase_ids || [])) { const m = /S(\d{4})L\d{2}C\d{2}$/.exec(String(id)); if (m) seeds.add(Number(m[1])); }
+  if (!seeds.size) return;
+  if (!introMirrorScopes.has(courseCode)) introMirrorScopes.set(courseCode, new Set());
+  for (const s of seeds) introMirrorScopes.get(courseCode).add(s);
+  if (introMirrorArmed) return;
+  introMirrorArmed = true;
+  process.on('exit', runIntroMirrorAtExit);
+}
+function runIntroMirrorAtExit() {
+  const { spawnSync } = require('child_process');
+  const path = require('path');
+  const script = process.env.INTRO_MIRROR_CHECK_SCRIPT || path.join(__dirname, '..', '..', 'tools', 'check-intro-mirror.cjs');
+  for (const [courseCode, seeds] of introMirrorScopes) {
+    const list = [...seeds].sort((a, b) => a - b).join(',');
+    const r = spawnSync(process.execPath, [script, courseCode, '--seeds', list, '--strict'], { encoding: 'utf8', timeout: 120000 });
+    if (r.status === 0) {
+      process.stderr.write(`[intro-mirror] ${courseCode} seeds ${list}: every intro mirrors its text\n`);
+      continue;
+    }
+    process.stderr.write(`\n[intro-mirror] ✗✗✗ THIS JOB LEFT AN INTRODUCTION THAT DOES NOT MIRROR ITS TEXT (${courseCode}, seeds ${list}) — exit code forced to 2.\n`);
+    process.stderr.write(`Fix it before reporting: re-author the line (the LEGO's known text, quoted), link a clip that speaks it, or say in the report that phase8 will author it.\n`);
+    process.stderr.write(String(r.stdout || '') + String(r.stderr || '') + '\n');
+    process.exitCode = 2;
+  }
 }
 
 /**
@@ -109,4 +163,4 @@ async function recordFromRequest(supabase, req, { courseCode, surface, operation
   });
 }
 
-module.exports = { recordContentEdit, stampEditEvent, recordFromRequest, assertIdentity };
+module.exports = { recordContentEdit, stampEditEvent, recordFromRequest, assertIdentity, armIntroMirrorAtExit };

@@ -123,7 +123,9 @@ export default defineConfig({
       'tools/pod-recast-target-pair.test.cjs',
       'tools/pod-voice-pool-reorder.test.cjs',
       'tools/pods/parse-pod-markdown.test.cjs',
-      'tools/pods/splice-sentence-clips.test.cjs'
+      'tools/pods/splice-sentence-clips.test.cjs',
+      'tools/check-intro-mirror.test.cjs',
+      'services/shared/content-edit-log.intro-mirror.test.cjs'
     ]
   }
 })
