@@ -23,6 +23,7 @@ const { buildAzureSSMLBody } = require('./shared/ellipsis-ssml.cjs');
 const { isHumanVoiceCourse } = require('./shared/human-voice-courses.cjs');
 const { assertSelectableProvider } = require('./shared/tts-provider-policy.cjs');
 const consentGate = require('./shared/voice-consent-gate.cjs');
+const surfaceClones = require('./voicelab/surface-clones.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
 const { identityFromConfig, findExistingClip, clipLibrary } = require('./shared/clip-library.cjs');
@@ -245,6 +246,9 @@ function assertNotChildVoice(config) {
 async function assertConsentedVoice(config, provider = null) {
   const voiceId = config?.voiceId || config?.voice_id || config?.voiceName;
   if (!voiceId) return;
+  // A surface My-Voice clone speaks in a course only while its owner permits it (#587/#595): checked
+  // here, not just at casting, so the owner's withdrawal stops new audio at the next render.
+  surfaceClones.assertNotSurfaceClone(String(voiceId));
   // ONE NARROW EXCEPTION (Tom, 2026-08-31): the person hearing their own clone
   // so they can confirm or reject it. Without it the confirmation step
   // deadlocks — the clone cannot be rendered until it is confirmed, and cannot
