@@ -83,10 +83,13 @@ if (!POD) {
   process.exit(1)
 }
 const MODEL = arg('model') || 'opus'
-const MODEL_ID = arg('model-id') || require('../../services/shared/claude-cli.cjs').latestModelId(MODEL) // family-only (#654): the stamp names the version the family resolves to today
+// The stamp names the model that ACTUALLY answered each batch, read from the CLI's own result
+// metadata (#675) — never a prediction from a catalogue. When a run's output carries no usage the
+// stamp says so ("<family>?unconfirmed") rather than inventing an id.
+const { parseCliJson } = require('../../services/shared/claude-cli.cjs')
 const BATCH_SIZE = Number(arg('batch') || 16)
 const LIMIT = Number(arg('limit') || 0)   // 0 = no limit; for a small smoke run
-const APPROVED_BY = `verifier:${MODEL_ID}`
+const approvedBy = (served) => `verifier:${served}`
 // Which column holds the machine draft. `target` is the *_for_eng shape this tool was
 // born with; `known` is the eng_for_* shape, where English is the settled side.
 const DRAFT_SIDE = (arg('draft-side') || 'target').toLowerCase()
@@ -150,18 +153,20 @@ function runClaude(brief, tag) {
     // working credential is the OAuth token that helper injects.
     // PATH: `bash -c` is not a login shell, so ~/.local/bin is off PATH and a
     // bare `claude` is "command not found" — the CLI is installed there.
-    const cmd = `export PATH="$HOME/.local/bin:$PATH" && ${claudeConfigExport()} && cat '${briefFile}' | claude --print --model ${MODEL} > '${outFile}' 2>&1`
+    const cmd = `export PATH="$HOME/.local/bin:$PATH" && ${claudeConfigExport()} && cat '${briefFile}' | claude --print --model ${MODEL} --output-format json > '${outFile}' 2> '${outFile}.err'`
     const env = claudeEnv({ ...process.env })
 
     const proc = spawn('bash', ['-c', cmd], { stdio: 'pipe', env, cwd: REPO })
     let stderr = ''
     proc.stderr.on('data', d => { stderr += d.toString() })
     proc.on('close', (code) => {
-      let raw = ''
+      let raw = '', errText = ''
       try { raw = fs.readFileSync(outFile, 'utf8') } catch { /* nothing written */ }
+      try { errText = fs.readFileSync(`${outFile}.err`, 'utf8') } catch { /* none */ }
       try { fs.rmSync(dir, { recursive: true, force: true }) } catch { /* best effort */ }
-      if (code !== 0 && !raw) return reject(new Error(`claude exited ${code}: ${stderr.slice(0, 300)}`))
-      resolve(raw)
+      const r = parseCliJson(raw)
+      if (r.isError || !r.text) return reject(new Error(`claude exited ${code}: ${(r.text || raw || errText || stderr).slice(0, 300)}`))
+      resolve({ text: r.text, served: r.model || `${MODEL}?unconfirmed` })
     })
   })
 }
@@ -205,17 +210,21 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
   }
 
   const batches = chunk(lines, BATCH_SIZE)
-  console.error(`[verify-pod-text] ${POD}: ${lines.length} unapproved draft(s) in ${batches.length} batch(es), model ${MODEL_ID}${APPLY ? '' : ' — DRY RUN'}`)
+  console.error(`[verify-pod-text] ${POD}: ${lines.length} unapproved draft(s) in ${batches.length} batch(es), model ${MODEL} (each batch stamped with the id that answered)${APPLY ? '' : ' — DRY RUN'}`)
 
   const byId = new Map(lines.map(l => [l.id, l]))
   const log = []
   let ok = 0, flagged = 0, unjudged = 0, written = 0
+  const servedSeen = new Set()
 
   for (const [i, batch] of batches.entries()) {
     const checkedAt = new Date().toISOString()
-    let verdicts
+    let verdicts, served
     try {
-      verdicts = parseVerdicts(await runClaude(buildBrief(batch, targetLang, referenceLang), `batch-${i + 1}`))
+      const out = await runClaude(buildBrief(batch, targetLang, referenceLang), `batch-${i + 1}`)
+      served = out.served
+      servedSeen.add(served)
+      verdicts = parseVerdicts(out.text)
     } catch (e) {
       console.error(`[verify-pod-text] batch ${i + 1}/${batches.length} FAILED: ${e.message} — its lines stay unapproved`)
       for (const l of batch) { unjudged++; log.push({ id: l.id, verdict: 'unjudged', reason: e.message }) }
@@ -232,7 +241,7 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
       const review = {
         verdict: isOk ? 'ok' : 'flagged',
         reason: isOk ? null : String(v.reason || 'flagged without a reason'),
-        model: MODEL_ID,
+        model: served,
         checked_at: checkedAt,
         known_text_at_check: line.known_text,
         target_text_at_check: line.target_text,
@@ -260,7 +269,7 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
                   target_text_review      = $5::jsonb,
                   updated_at              = now()
             WHERE id = $1 AND ${DRAFT_COL} = $2 AND target_text_draft`,
-          [w.line.id, w.line.draft_text, w.approve, APPROVED_BY, JSON.stringify(w.review)])
+          [w.line.id, w.line.draft_text, w.approve, approvedBy(served), JSON.stringify(w.review)])
         if (r.rowCount !== 1) {
           throw new Error(`DRIFT ${w.line.id}: expected one draft row carrying the words verified, matched ${r.rowCount}; batch rolled back`)
         }
@@ -294,7 +303,7 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
               AND sib.id <> $1
               AND sib.target_text_draft
               AND sib.target_text_approved_at IS NULL`,
-          [w.line.id, w.line.draft_text, w.approve, APPROVED_BY, JSON.stringify(w.review), POD])
+          [w.line.id, w.line.draft_text, w.approve, approvedBy(served), JSON.stringify(w.review), POD])
       }
       await db.query('COMMIT')
     } catch (e) {
@@ -307,7 +316,7 @@ const chunk = (arr, n) => Array.from({ length: Math.ceil(arr.length / n) }, (_, 
 
   await db.end()
 
-  const summary = { pod: POD, model: MODEL_ID, draft_side: DRAFT_SIDE, draft_lang: targetLang, reference_lang: referenceLang, total: lines.length, ok, flagged, unjudged, rows_written: APPLY ? written : 0 }
+  const summary = { pod: POD, model: MODEL, served: [...servedSeen], draft_side: DRAFT_SIDE, draft_lang: targetLang, reference_lang: referenceLang, total: lines.length, ok, flagged, unjudged, rows_written: APPLY ? written : 0 }
   const outFile = evidencePath(`docs/pods/verify-pod-text-${slugSafe}-${APPLY ? 'applied' : 'dryrun'}-log.json`)
   fs.writeFileSync(outFile, JSON.stringify({ mode: APPLY ? 'APPLIED' : 'DRY_RUN', summary, log }, null, 2))
   console.log(JSON.stringify({ mode: APPLY ? 'APPLIED' : 'DRY_RUN', summary, log_file: outFile }, null, 2))

@@ -105,4 +105,19 @@ function claudeChat(prompt, options = {}) {
   })
 }
 
-module.exports = { claudeChat, HAIKU_MODEL, latestModelId }
+// THE MODEL THAT ACTUALLY ANSWERED (#675, Astra #664 finding 3). A provenance stamp is a claim
+// about the past, so it is read from the run, never predicted from a catalogue: `claude --print
+// --output-format json` returns `modelUsage`, keyed by every model id that served the call. The
+// primary is the one that wrote the most output (a CLI may use a small model for housekeeping).
+// Returns { text, model, models, isError } — model is null when the output carries no usage
+// (non-JSON, or an error before any model ran), and the caller must then say so, not guess.
+function parseCliJson(raw) {
+  let j = null
+  try { j = JSON.parse(String(raw).trim()) } catch { /* not JSON — CLI error text */ }
+  if (!j || typeof j !== 'object') return { text: String(raw || ''), model: null, models: [], isError: true }
+  const usage = j.modelUsage && typeof j.modelUsage === 'object' ? j.modelUsage : {}
+  const models = Object.keys(usage).sort((a, b) => (usage[b].outputTokens || 0) - (usage[a].outputTokens || 0))
+  return { text: typeof j.result === 'string' ? j.result : '', model: models[0] || null, models, isError: !!j.is_error }
+}
+
+module.exports = { claudeChat, HAIKU_MODEL, latestModelId, parseCliJson }
