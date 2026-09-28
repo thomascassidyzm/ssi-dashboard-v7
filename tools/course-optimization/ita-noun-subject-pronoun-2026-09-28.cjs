@@ -96,8 +96,9 @@ function decideLego({ subject, standalone }) {
 const LEGOS = [
   { id: 'S0126L03', target: 'sta cambiando', seed: 'this work is changing the shape of my brain', subject: { kind: 'noun', text: 'this work' }, standalone: true,
     fragments: ['S0126L03B01', 'S0126L03B02', 'S0126L04B04'] },
-  { id: 'S0131L04', target: 'mi girano', seed: 'there are too many ideas going around in my head', subject: { kind: 'noun', text: 'too many ideas' }, standalone: false,
-    note: '"going around" is an -ing fragment; "they go around | mi girano" would be a re-gloss, not a pronoun — your call' },
+  // S0131L04 was RULED by Kai (2026-09-28 22:42Z, job #630·I): "they're going around in my head | mi girano in testa" — the pronoun added and the LEGO grown to the chunk; applied by ita-seed-131-in-testa-2026-09-28.cjs. Listed here as settled so a re-run reads the live row as it now stands.
+  { id: 'S0131L04', target: 'mi girano in testa', seed: 'there are too many ideas going around in my head', subject: { kind: 'noun', text: 'too many ideas' }, standalone: false,
+    note: 'RULED (#630·I): "they\'re going around in my head | mi girano in testa" — already applied, nothing to do here' },
   { id: 'S0151L01', target: 'non era', seed: "that wasn't what I was hoping would happen", subject: { kind: 'pronoun', text: 'that' }, standalone: true, zutHeld: true },
   { id: 'S0159L01', target: 'non è', seed: "that isn't what I'm trying to say", subject: { kind: 'pronoun', text: 'that' }, standalone: true, zutHeld: true },
   { id: 'S0229L02', target: 'ti aiuterebbe', seed: 'that woman would help you if she could', subject: { kind: 'noun', text: 'that woman' }, standalone: true, fragments: ['S0229L02B01'] },
