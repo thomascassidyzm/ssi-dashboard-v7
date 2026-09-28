@@ -2001,8 +2001,57 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
 // Quarantine — a durable record plus the failing bytes, never a silent skip
 // ---------------------------------------------------------------------------
 
+// ONE ledger per machine, not one per checkout. Until 2026-09-28 this sat under
+// the checkout (scripts/audio-veracity-quarantine), so every worktree started
+// blind to what the gate had already refused: ita "ha detto qualcos'altro?" was
+// rendered, refused and quarantined 3x per voice in one worktree, then again on
+// a re-run, then asked for by a third worktree — until the TTS spend guard's
+// repeat limit (6 in 24h) stopped it (job #674). The ledger is what lets
+// renderChecked refuse to pay twice for the same failure, so it has to be shared.
+// Under vitest the default is a per-process temp dir (as tts-spend-guard does):
+// a test's quarantine must never become a real refusal.
 const QUARANTINE_DIR = process.env.AUDIO_VERACITY_QUARANTINE_DIR
-  || path.join(__dirname, '..', 'scripts', 'audio-veracity-quarantine')
+  || (process.env.VITEST ? path.join(os.tmpdir(), `veracity-quarantine-test-${process.pid}`)
+    : path.join(os.homedir(), '.local', 'state', 'ssi-audio-veracity', 'quarantine'))
+
+/** Resolved per call so tests (and a caller that sets the env late) are honoured. */
+function quarantineDir () {
+  return process.env.AUDIO_VERACITY_QUARANTINE_DIR || QUARANTINE_DIR
+}
+
+/**
+ * How long a quarantine stands as the gate's answer for the same words in the
+ * same voice. A deterministic provider (Azure, and Cartesia at fixed settings)
+ * returns the same audio for the same input, so the checker hears the same thing
+ * and refuses again: the re-render is spend with no chance of a different
+ * result. A week covers every re-run and follow-up job; a checker fix is the
+ * reason to try again sooner, and AUDIO_VERACITY_RETRY_QUARANTINED=1 says so
+ * explicitly for one run.
+ */
+const QUARANTINE_MEMORY_MS = 7 * 24 * 3600 * 1000
+
+/**
+ * The most recent quarantine of these words in this voice and language within
+ * the memory window, or null. Needs a voice: without one a refusal in another
+ * voice could wrongly stand in, so no voice = no memory (render as before).
+ */
+function priorQuarantine ({ text, language, voiceId, now = Date.now() }) {
+  if (!voiceId || process.env.AUDIO_VERACITY_RETRY_QUARANTINED === '1') return null
+  let raw
+  try { raw = fs.readFileSync(path.join(quarantineDir(), 'quarantine.jsonl'), 'utf8') } catch { return null }
+  const want = normalise(text)
+  let hit = null
+  for (const line of raw.split('\n')) {
+    if (!line.includes(String(voiceId))) continue
+    let e
+    try { e = JSON.parse(line) } catch { continue }
+    if (e.voiceId !== voiceId || e.language !== language || normalise(e.text) !== want) continue
+    const at = Date.parse(e.quarantined_at)
+    if (!(now - at < QUARANTINE_MEMORY_MS)) continue
+    if (!hit || at > Date.parse(hit.quarantined_at)) hit = e
+  }
+  return hit
+}
 
 /**
  * Park a clip that failed every attempt. The audio is kept so it can be
@@ -2014,7 +2063,7 @@ const QUARANTINE_DIR = process.env.AUDIO_VERACITY_QUARANTINE_DIR
 function quarantine (record, audioBuffer, logger = console) {
   try {
     const course = String(record.courseCode || 'unknown').replace(/[^\w.-]/g, '_')
-    const dir = path.join(QUARANTINE_DIR, course)
+    const dir = path.join(quarantineDir(), course)
     fs.mkdirSync(dir, { recursive: true })
     const stamp = new Date().toISOString().replace(/[:.]/g, '-')
     const slug = crypto.createHash('sha1')
@@ -2026,7 +2075,7 @@ function quarantine (record, audioBuffer, logger = console) {
       fs.writeFileSync(audioPath, audioBuffer)
     }
     const entry = { quarantined_at: new Date().toISOString(), audio_path: audioPath, ...record }
-    fs.appendFileSync(path.join(QUARANTINE_DIR, 'quarantine.jsonl'), JSON.stringify(entry) + '\n')
+    fs.appendFileSync(path.join(quarantineDir(), 'quarantine.jsonl'), JSON.stringify(entry) + '\n')
     return { dir, audioPath }
   } catch (e) {
     ;(logger.error || logger.log || console.error).call(logger,
@@ -2404,10 +2453,23 @@ async function renderChecked (o) {
     return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
   }
 
+  // ALREADY REFUSED: these words in this voice failed every attempt recently.
+  // Rendering them again buys the same audio and the same refusal, so answer
+  // from the ledger for nothing — the kept audio is still there to listen to.
+  const prior = priorQuarantine({ text: expectedText, language, voiceId: meta.voiceId })
+  if (prior) {
+    const pv = Array.isArray(prior.verdicts) ? prior.verdicts[prior.verdicts.length - 1] : null
+    const verdict = { checked: true, pass: false, reason: 'already_quarantined', cer: pv?.cer ?? null, decode: pv?.decode ?? null, priorReason: pv?.reason ?? null }
+    warn(`[audio-veracity] ${label}: already QUARANTINED in voice ${meta.voiceId} at ${prior.quarantined_at} (heard ${JSON.stringify(String(pv?.decode ?? '').slice(0, 60))}) — NOT re-rendered, nothing spent.${prior.audio_path ? ` Audio kept at ${prior.audio_path}` : ''} AUDIO_VERACITY_RETRY_QUARANTINED=1 re-renders after a checker fix.`)
+    return { published: false, verdict, attempts: 0, verdicts: [], quarantine: { dir: null, audioPath: prior.audio_path || null, prior: true } }
+  }
+
   const verdicts = []
   let last = null
+  let used = 0
   for (let attempt = 1; attempt <= attempts; attempt++) {
     last = await render(attempt)
+    used = attempt
     const verdict = await check(last.buffer, expectedText, language, { meta })
     verdicts.push({ attempt, ...verdict, decode: verdict.decode })
     // Tell the sampler before anything else acts on the verdict: a failure has to
@@ -2440,7 +2502,13 @@ async function renderChecked (o) {
       }
       return { published: true, ...last, verdict, attempts: attempt, verdicts }
     }
-    warn(`[audio-veracity] ${label}: FAILED attempt ${attempt}/${attempts} — ${verdict.reason}, CER ${verdict.cer}, heard ${JSON.stringify(String(verdict.decode).slice(0, 60))}${attempt < attempts ? ' — re-rendering' : ''}`)
+    // SAME FAILURE TWICE: the re-render was heard exactly as the one before it,
+    // so the provider is giving back the same audio and a third try buys the
+    // same answer. Re-rolls exist for transient damage, which decodes differently.
+    const prev = verdicts.length > 1 ? verdicts[verdicts.length - 2] : null
+    const repeated = prev && normalise(prev.decode) === normalise(verdict.decode)
+    warn(`[audio-veracity] ${label}: FAILED attempt ${attempt}/${attempts} — ${verdict.reason}, CER ${verdict.cer}, heard ${JSON.stringify(String(verdict.decode).slice(0, 60))}${repeated ? ' — heard identically to the last attempt, stopping' : attempt < attempts ? ' — re-rendering' : ''}`)
+    if (repeated) break
   }
 
   // Every attempt failed. Nothing is uploaded, nothing is inserted, nothing is
@@ -2450,11 +2518,11 @@ async function renderChecked (o) {
     ...meta,
     text: expectedText,
     language,
-    attempts,
+    attempts: used,
     verdicts: verdicts.map(v => ({ attempt: v.attempt, reason: v.reason, cer: v.cer, decode: v.decode })),
   }, last?.buffer, logger)
-  err(`[audio-veracity] ${label}: QUARANTINED after ${attempts} attempts — NOT published.${q?.audioPath ? ` Audio kept at ${q.audioPath}` : ''}`)
-  return { published: false, verdict: verdicts[verdicts.length - 1], attempts, verdicts, quarantine: q }
+  err(`[audio-veracity] ${label}: QUARANTINED after ${used} attempts — NOT published.${q?.audioPath ? ` Audio kept at ${q.audioPath}` : ''}`)
+  return { published: false, verdict: verdicts[verdicts.length - 1], attempts: used, verdicts, quarantine: q }
 }
 
 /** One line for a log or a completion message. */
@@ -2531,5 +2599,8 @@ module.exports = {
   MIN_EDIT_DISTANCE,
   WHISPER_ISO1,
   QUARANTINE_DIR,
+  quarantineDir,
+  priorQuarantine,
+  QUARANTINE_MEMORY_MS,
   _resetAnnouncement,
 }

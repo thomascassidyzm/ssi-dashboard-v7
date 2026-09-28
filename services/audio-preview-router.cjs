@@ -192,8 +192,8 @@ async function fetchAllPages (queryFor) {
   }
 }
 
-const QUARANTINE_DIR = process.env.AUDIO_VERACITY_QUARANTINE_DIR
-  || path.join(__dirname, '..', 'scripts', 'audio-veracity-quarantine')
+// The one machine-wide ledger the gate writes (services/audio-veracity.cjs).
+const { quarantineDir } = require('./audio-veracity.cjs')
 
 /**
  * Human wording for a stored verdict reason. The page must never print a bare
@@ -456,7 +456,7 @@ module.exports = function createAudioPreviewRouter ({ getDb, logger = console })
   router.get('/quarantine', async (req, res) => {
     try {
       const { courseCode } = req.params
-      const ledger = path.join(QUARANTINE_DIR, 'quarantine.jsonl')
+      const ledger = path.join(quarantineDir(), 'quarantine.jsonl')
       if (!fs.existsSync(ledger)) {
         return res.json({ entries: [], ledgerPresent: false, unparsedLines: 0 })
       }
