@@ -63,7 +63,7 @@ const COURSE = 'ita_for_eng';
 const SWEEP = 'ita-stranded-subjunctive-legos-2026-09-28';
 const SURFACE = `tools/course-optimization/${SWEEP}.cjs`;
 const RULING = 'Kai, 2026-09-28 (job #520): a subjunctive (or other dependent verb form) LEGO is expanded to include its trigger — "come se fossi pronto" = "as if I were ready" — never re-glossed as a fragment; all cases in ita_for_eng';
-const DO_NOT_TOUCH = new Set([116, 376, 403, 410, 478, 618, 642, 343, 519]); // job #519·I
+const DO_NOT_TOUCH = new Set([116, 376, 403, 410, 478, 618, 642, 343, 519, 208]); // job #519·I (208 added by Kai, 2026-09-28)
 
 const L = (seed, idx) => ({ seed, idx, legoId: `S${String(seed).padStart(4, '0')}L${String(idx).padStart(2, '0')}` });
 const c = (target, known) => ({ target, known });
