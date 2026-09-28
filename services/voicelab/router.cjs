@@ -38,6 +38,7 @@ const { baseLanguageOfCastKey } = require('../shared/cast-language-key.cjs')
 const content = require('./content.cjs')
 const registry = require('./registry.cjs')
 const cartesia = require('./cartesia.cjs')
+const surfaceClones = require('./surface-clones.cjs')
 const samples = require('./samples.cjs')
 const podVoices = require('./pod-voices.cjs')
 const picksStore = require('../pod-voice-picks.cjs')
@@ -598,6 +599,9 @@ function mount (app, deps) {
       // THE CLIENT CANNOT GET ROUND IT. The screen hides and disables the
       // control, but this is the endpoint that writes the row, so a hand-rolled
       // curl, a stale tab or a future screen that forgets all get the same 409.
+      // A surface My-Voice clone is refused even if a `voices` row for it already exists (#587).
+      surfaceClones.assertNotSurfaceClone(String(voiceId))
+
       await consentGate.assertConsented(String(voiceId), {
         db: supabase(),
         context: `cast ${slot} ${language}`,
@@ -703,6 +707,7 @@ function mount (app, deps) {
       // that does not exist would create a row that fails at render time, which
       // is the false-green this whole screen exists to prevent.
       const meta = await cartesia.fetchVoice(voiceId)
+      surfaceClones.assertNotSurfaceClone(voiceId, meta.name) // Cartesia's own name, whatever the caller renames it to (#587)
       const voice = await cartesia.registerVoice(supabase(), {
         voiceId,
         name: name || meta.name,
