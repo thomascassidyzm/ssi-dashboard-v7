@@ -55,6 +55,17 @@ function exact(s) {
   return String(s || '').replace(/[’‘`´]/g, "'").replace(/\s+/g, ' ').trim()
 }
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+/**
+ * Does `text` contain `chunk` as whole words? 'here' is not in 'where' (the substring test said it
+ * was — S0138L01). Scripts without word spaces (CJK) fall back to plain containment.
+ */
+function containsWords(text, chunk) {
+  const t = fold(text), c = fold(chunk)
+  if (!c) return false
+  if (!/\s/.test(c) && !/[\p{L}]/u.test(c)) return t.includes(c)
+  if (/[\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}]/u.test(c)) return t.includes(c)
+  return new RegExp(`(^|[^\\p{L}\\p{N}])${escapeRe(c)}(?=[^\\p{L}\\p{N}]|$)`, 'u').test(t)
+}
 
 /**
  * Compile a template into anchored regexes: one per (frame, gendered) variant. A slot becomes a
@@ -136,7 +147,7 @@ function verdict({ introText, knownText, compiled, mark = null, chunkForms = nul
   } else if (quoted !== chunk) {
     reasons.push(fold(quoted) === fold(chunk) ? 'chunk-case' : 'chunk')
   }
-  if (parsed.frame === 'B' && parsed.seed != null && !fold(parsed.seed).includes(fold(chunk))) reasons.push('context')
+  if (parsed.frame === 'B' && parsed.seed != null && !containsWords(parsed.seed, chunk)) reasons.push('context')
   if (mark) {
     if (exact(mark.text) !== exact(introText)) reasons.push('guarded-text')
   }
@@ -159,8 +170,8 @@ function expectedLine({ template, targetLangName, knownText, priorText = null, c
   let frame = prior ? (prior.frame === 'B' ? 'B' : 'A') : (contextText ? 'B' : 'A')
   let seed = null
   if (frame === 'B') {
-    if (prior && prior.seed != null && fold(prior.seed).includes(fold(chunk))) seed = prior.seed
-    else if (contextText && fold(contextText).includes(fold(chunk))) seed = contextText
+    if (prior && prior.seed != null && containsWords(prior.seed, chunk)) seed = prior.seed
+    else if (contextText && containsWords(contextText, chunk)) seed = contextText
     else frame = 'A'
   }
   return { frame, text: renderIntro({ frame, template, targetLangName, chunk, seed: seed || '', chunkForms, knownLang }) }
@@ -272,4 +283,4 @@ async function checkCourse(pg, courseCode, opts = {}) {
   return out
 }
 
-module.exports = { fold, exact, quotes, compileTemplate, parseIntro, verdict, expectedLine, checkCourse, loadTemplates, UUID_RE }
+module.exports = { fold, exact, quotes, containsWords, compileTemplate, parseIntro, verdict, expectedLine, checkCourse, loadTemplates, UUID_RE }

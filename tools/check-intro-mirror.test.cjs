@@ -26,6 +26,13 @@ test('frame B context that no longer demonstrates the chunk is a mismatch', () =
   const r = v("The Italian for: 'to stop doing', as in — 'he wants to stop talking', is:", 'to stop doing')
   assert.equal(r.status, 'mismatch'); assert.deepEqual(r.reasons, ['context'])
 })
+test("context containment is by whole words: 'here' is not inside 'where' (S0138L01)", () => {
+  const r = v("The Italian for: 'here', as in — 'I think this was where she was talking', is:", 'here')
+  assert.equal(r.status, 'mismatch'); assert.deepEqual(r.reasons, ['context'])
+  assert.equal(v("The Italian for: 'here', as in — 'I live here now', is:", 'here').status, 'mirror')
+  assert.equal(M.containsWords("I'm afraid I don't know", "I'm afraid"), true)
+  assert.equal(M.containsWords('那是一个错误', '错误'), true)
+})
 test('frame A mirrors; frame A with the wrong chunk does not', () => {
   assert.equal(v("The Italian for: 'we wanted', is:", 'we wanted').status, 'mirror')
   const r = v("The Italian for: 'we wanted to', is:", 'we wanted')
