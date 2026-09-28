@@ -25,7 +25,7 @@ const { assertSelectableProvider } = require('./shared/tts-provider-policy.cjs')
 const consentGate = require('./shared/voice-consent-gate.cjs');
 const surfaceClones = require('./voicelab/surface-clones.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
-const { applyRegenerationVariation, applyShortWordHint } = require('./azure-tts-service.cjs');
+const { applyRegenerationVariation, applyShortWordHint, applyElisionSpaceHint } = require('./azure-tts-service.cjs');
 const { identityFromConfig, findExistingClip, clipLibrary } = require('./shared/clip-library.cjs');
 const { assertCastVoice } = require('./shared/voice-cast-gate.cjs');
 const { spendGuard } = require('./shared/tts-spend-guard.cjs');
@@ -425,10 +425,12 @@ async function generateAzure(text, config) {
 
   // Apply variation for regeneration (Azure is deterministic), then apply
   // the language-aware short-word hint so single chars / very short words
-  // get pronounced as words instead of letter names. Both transforms are
-  // TTS-input-only and are NEVER persisted.
+  // get pronounced as words instead of letter names, then the elision-space
+  // hint so an elided word Azure is known to swallow ("qualcos'altro") is
+  // spoken. All three transforms are TTS-input-only and are NEVER persisted.
   let ttsText = applyRegenerationVariation(text, regenerationAttempt);
   ttsText = applyShortWordHint(ttsText);
+  ttsText = applyElisionSpaceHint(ttsText);
 
   if (!subscriptionKey) {
     throw new Error('Azure subscription key is required');
