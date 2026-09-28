@@ -19,14 +19,19 @@
 // byte-identical to the snapshot. Only known_audio_id slots are touched — presentation
 // (intro) slots are never in scope. Nothing is deleted; clips already linked are never replaced.
 //
-// SCOPE = NULL known slots in: seed 519 (this job), the three rows #519·I left silent
+// SCOPE (default) = NULL known slots in: seed 519 (this job), the three rows #519·I left silent
 // (S0642L01U03, S0642L01U04, S0208L01U02), and every seed job #520·I edited
 // (content_edit_events, 2026-09-28: 47 72 114 115 118 119 151 152 185 204 261 281 291 292 346
 // 419 497 506 508 526 597 598 655 668). Other silent English slots in the course are OUT of
 // scope and are counted in the evidence file, never filled.
 //
+// SCOPE=course (Kai, 2026-09-28, job #529: "fill the 43 silent English prompt slots elsewhere in
+// ita_for_eng, plus any Job 1 creates") = EVERY NULL known slot in the course, phrases and legos,
+// grouped 'course'. Presentation (intro) slots stay out of scope in both modes.
+//
 //   node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs             # dry run: scope + cast snapshot, no cast change
 //   APPLY=1 BATCH=50 node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs   # one batch, cast restored at the end
+//   SCOPE=course APPLY=1 BATCH=50 node tools/course-optimization/ita-sonia-temporary-fill-2026-09-28.cjs   # whole course
 
 const path = require('path');
 const fs = require('fs');
@@ -50,6 +55,13 @@ async function engCast(pg) {
 const sameCast = (a, b) => a.length === b.length && a.every((r, i) => castKey(r) === castKey(b[i]));
 
 async function scope(pg) {
+  if (process.env.SCOPE === 'course') {
+    const { rows } = await pg.query(
+      `SELECT 'course_practice_phrases' AS tbl, id, seed_number, known_text, 'course' AS grp FROM course_practice_phrases WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL
+       UNION ALL SELECT 'course_legos', lego_id, seed_number, known_text, 'course' FROM course_legos WHERE course_code=$1 AND known_audio_id IS NULL AND known_text IS NOT NULL
+       ORDER BY 3, 2`, [COURSE]);
+    return { slots: rows, outOfScope: { phrases: 0, legos: 0 } };
+  }
   const { rows } = await pg.query(
     `SELECT 'course_practice_phrases' AS tbl, id, seed_number, known_text,
             CASE WHEN seed_number=519 THEN '519' WHEN id = ANY($2) THEN '519I' ELSE '520' END AS grp
