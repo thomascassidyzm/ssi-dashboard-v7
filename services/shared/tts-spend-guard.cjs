@@ -250,7 +250,14 @@ function loadLimits({ budgetPath, envOverride, nowMs }) {
   // jobs going at all"): the budget file lowers every daily cap to a small-job
   // ceiling and names who lifts it. Its message rides every DAILY_CAP refusal,
   // so whoever hits the cap reads that the answer is Tom's go, not a workaround.
-  const hold = file.hold && typeof file.hold.message === 'string' ? { by: file.hold.by || null, since: file.hold.since || null, message: file.hold.message } : null
+  // Tom 2026-09-28 (job #570): the hold's limit is ONE daily figure across every
+  // provider together (Cartesia + Azure + the rest), not per provider — so the
+  // hold may carry combinedDailyCapChars, checked against the sum of today's
+  // spend on all of them. Each provider's own dailyCapChars stays the atomic
+  // backstop; the combined sum is read, not locked, so concurrent hosts can
+  // overshoot it by at most one in-flight clip each.
+  const combined = file.hold && Number.isFinite(file.hold.combinedDailyCapChars) && file.hold.combinedDailyCapChars > 0 ? file.hold.combinedDailyCapChars : null
+  const hold = file.hold && typeof file.hold.message === 'string' ? { by: file.hold.by || null, since: file.hold.since || null, message: file.hold.message, combinedDailyCapChars: combined } : null
   return { providers, repeat: rep.limits, divergence: div.limits, notes, source, hold }
 }
 function readBudgetFile(p) {
@@ -544,6 +551,15 @@ function createSpendGuard(opts = {}) {
     const b = providerLimits(cfg, provider)
 
     await checkProvider(provider, cfg, b, chars, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
+
+    if (cfg.hold && cfg.hold.combinedDailyCapChars) {
+      const cap = cfg.hold.combinedDailyCapChars
+      let combined = 0
+      for (const p of Object.keys(cfg.providers)) combined += Number((await ledgerTotals(p, providerLimits(cfg, p))).today) || 0
+      if (combined + chars > cap) {
+        refuse('DAILY_CAP', provider, `today's spend across all TTS providers is ${combined} chars; this call (${chars}) would pass the combined daily cap of ${cap}. HELD: ${cfg.hold.message}`, { today: combined, course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
+      }
+    }
 
     const key = repeatKey(provider, ctx.voiceId, text)
     const base = {

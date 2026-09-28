@@ -1,16 +1,17 @@
 {
   "_read_by": "services/shared/tts-spend-guard.cjs (jobs #425, #430). Characters, not dollars. The committed BASELINE is DEFAULT_BUDGETS in that file; this file may LOWER any limit freely. Anything looser (a higher cap/pool/share/alert line/repeat limit, a shorter repeat window, a different cycleStartDay) counts only inside a raise block: { \"raise\": { \"<field>\": <value>, \"by\": \"<who>\", \"why\": \"<reason>\", \"until\": \"<ISO date, at most 31 days out>\" } } on that provider (or on repeat / divergence). An unsigned, expired or too-long raise is IGNORED and alerted. Every change in the limits in force is alerted and logged in the DB (tts_spend_limit_log). A TTS_SPEND_BUDGETS override file counts only with a top-level signed { by, why, until }.",
   "hold": {
-    "by": "Tom (via Watson, job #569)",
+    "by": "Tom (via Watson, jobs #569, #570)",
     "since": "2026-09-28",
-    "message": "Tom ruled 2026-09-28: no big audio jobs at all. Every provider's daily cap is a small-job ceiling of 20,000 chars (one-off clips pass; a course or pod render does not). Raising it needs TOM'S EXPLICIT GO for that job - then a signed raise { dailyCapChars, by, why, until } on the provider in ops/tts-spend-budgets.json. Do not split the job to fit under the cap."
+    "combinedDailyCapChars": 100000,
+    "message": "Tom ruled 2026-09-28: the TTS daily limit is 100,000 characters in total across all providers (Cartesia + Azure + the rest), and no big audio jobs. Going above it needs TOM'S EXPLICIT GO for that job - then a signed raise { dailyCapChars, by, why, until } on the provider and a raised combinedDailyCapChars here. Do not split the job to fit under the cap."
   },
   "providers": {
     "cartesia": {
       "monthlyPoolChars": 8000000,
       "cycleStartDay": 1,
-      "dailyCapChars": 20000,
-      "alertDailyChars": 10000,
+      "dailyCapChars": 100000,
+      "alertDailyChars": 75000,
       "stopAtShareOfPool": 0.5,
       "raise": {
         "stopAtShareOfPool": 1.25,
@@ -20,20 +21,20 @@
       }
     },
     "azure": {
-      "dailyCapChars": 20000,
-      "alertDailyChars": 10000
+      "dailyCapChars": 100000,
+      "alertDailyChars": 75000
     },
     "elevenlabs": {
-      "dailyCapChars": 20000,
-      "alertDailyChars": 10000
+      "dailyCapChars": 100000,
+      "alertDailyChars": 75000
     },
     "xai": {
-      "dailyCapChars": 20000,
-      "alertDailyChars": 10000
+      "dailyCapChars": 100000,
+      "alertDailyChars": 75000
     },
     "google": {
-      "dailyCapChars": 20000,
-      "alertDailyChars": 10000
+      "dailyCapChars": 100000,
+      "alertDailyChars": 30000
     }
   },
   "repeat": {
