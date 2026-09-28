@@ -83,7 +83,7 @@ async function main() {
   const argv = process.argv.slice(2);
   const arg = (k, d) => (argv.includes(k) ? argv[argv.indexOf(k) + 1] : d);
   const file = arg('--file');
-  const model = arg('--model', 'claude-sonnet-5');
+  const model = arg('--model', 'sonnet');
   const sample = Number(arg('--sample', '0'));
   if (!file) { console.error('usage: --file <sets.json> [--sample N] [--out out.json]'); process.exit(1); }
 

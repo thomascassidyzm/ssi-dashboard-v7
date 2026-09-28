@@ -28,6 +28,7 @@ Examples:
 
 import json
 import os
+import subprocess
 import sys
 from pathlib import Path
 from anthropic import Anthropic
@@ -83,6 +84,24 @@ RESPOND WITH JSON:
 
 Be thorough and flag EVERY issue you find!"""
 
+def latest_haiku_id() -> str:
+    """The latest Haiku this box can call, from the SHARED latest-in-family helper
+    (services/shared/claude-cli.cjs latestModelId, which reads the installed Claude Code's own
+    catalogue) — family names only, Tom 2026-09-28 (#675). This script calls the raw API, which
+    needs an id, not the bare family name; when the helper cannot answer, it says so loudly and
+    uses the API's own rolling alias rather than a pinned snapshot."""
+    helper = Path(__file__).resolve().parents[2] / "services" / "shared" / "claude-cli.cjs"
+    try:
+        out = subprocess.run(["node", "-e", f"process.stdout.write(require({str(helper)!r}).latestModelId('haiku'))"],
+                             capture_output=True, text=True, timeout=30).stdout.strip()
+    except Exception as e:  # node missing, helper moved
+        out = f"({e})"
+    if out.startswith("claude-"):
+        return out
+    print(f"WARNING: latest-in-family helper gave no haiku id ({out or 'empty'}); using the API alias claude-haiku-4-5", file=sys.stderr)
+    return "claude-haiku-4-5"
+
+
 def validate_with_haiku(client, baskets_sample: dict, target_lang: str = "spanish",
                        source_lang: str = "english") -> dict:
     """Send baskets to Haiku for validation"""
@@ -91,7 +110,7 @@ def validate_with_haiku(client, baskets_sample: dict, target_lang: str = "spanis
 
     try:
         message = client.messages.create(
-            model="claude-haiku-4-5-20251001",
+            model=latest_haiku_id(),
             max_tokens=4000,
             temperature=0,
             messages=[

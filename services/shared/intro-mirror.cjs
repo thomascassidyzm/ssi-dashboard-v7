@@ -112,13 +112,16 @@ function parseIntro(text, compiled) {
   // No template fits (a human line, an older template, a "…, when it's someone…" gloss): a free
   // line. It mirrors when it QUOTES the chunk somewhere — verdict() tests that — so `known` is
   // left null here. A line with no quote character at all cannot quote anything: unparsed.
-  if (/['‘’「]/u.test(t)) return { frame: 'free', gendered: false, known: null, seed: null, known_m: null, by: 'quote' }
+  if (/['‘’「"“”]/u.test(t)) return { frame: 'free', gendered: false, known: null, seed: null, known_m: null, by: 'quote' }
   return null
 }
-/** Does a free-form line quote this chunk, as 'chunk' with a quote on each side? */
+/** Does a free-form line quote this chunk, as 'chunk' / "chunk" / “chunk” / 「chunk」 with a quote on each
+ *  side? Double quotes joined the list on 2026-09-28 (job #644·I): Kai's own line for ita_for_eng S0376L02
+ *  reads `The Italian for "anywhere" in a negative phrase like 'I didn't go anywhere', is:` — a human line
+ *  keeps the human's punctuation, and the rule only ever said the line must QUOTE its LEGO. */
 function quotes(text, chunk) {
   const f = fold(text), c = fold(chunk)
-  return c.length > 0 && (f.includes(`'${c}'`) || f.includes(`「${c}」`))
+  return c.length > 0 && (f.includes(`'${c}'`) || f.includes(`"${c}"`) || f.includes(`“${c}”`) || f.includes(`「${c}」`))
 }
 
 /**

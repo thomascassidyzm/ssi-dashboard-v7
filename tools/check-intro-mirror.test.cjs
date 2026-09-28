@@ -87,3 +87,18 @@ test('every expected line mirrors under its own verdict', () => {
     assert.equal(v(e.text, known).status, 'mirror', e.text)
   }
 })
+
+// Kai's own line for ita_for_eng S0376L02 (2026-09-28, job #644·I) quotes the LEGO in DOUBLE quotes:
+//   The Italian for "anywhere" in a negative phrase like 'I didn't go anywhere', is:
+// A chunk quoted in "…" (or “…”) is quoted. The rule ("the line quotes its LEGO") never said which
+// quote mark, and a human line reads exactly as the human wrote it.
+test('a free-form human line that quotes the chunk in double quotes mirrors', () => {
+  const line = `The Italian for "anywhere" in a negative phrase like 'I didn't go anywhere', is:`
+  const r = v(line, 'anywhere', { mark: { text: line } })
+  assert.equal(r.status, 'mirror'); assert.deepEqual(r.reasons, []); assert.equal(r.parsed.frame, 'free')
+  const curly = v(`The Italian for “anywhere” in a negative phrase like 'I didn't go anywhere', is:`, 'anywhere')
+  assert.equal(curly.status, 'mirror')
+  // and a double-quoted line that quotes the WRONG chunk is still a mismatch
+  const wrong = v(`The Italian for "somewhere" in a negative phrase like 'I didn't go anywhere', is:`, 'anywhere')
+  assert.equal(wrong.status, 'mismatch'); assert.deepEqual(wrong.reasons, ['chunk'])
+})

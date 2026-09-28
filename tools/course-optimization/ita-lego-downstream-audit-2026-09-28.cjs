@@ -44,6 +44,37 @@ const RULING = 'Kai, 2026-09-28 19:30Z: whenever a LEGO changes, all later phras
 
 const norm = (s) => (s || '').toLowerCase().replace(/[’‘]/g, "'").replace(/[.?!,;:]+/g, ' ').replace(/\s+/g, ' ').trim();
 const containsWords = (hay, needle) => !!needle && (' ' + norm(hay) + ' ').includes(' ' + norm(needle) + ' ');
+// K31 (Kai, 2026-09-28, #632·I pattern P2): a phrase still contains its LEGO when only non / ancora / già / solo — or,
+// on the English side, their counterparts and a quantifier such as "many of" — sits INSIDE it. Named exception like
+// L28; no phrase is rewritten for it. The intervener is dropped from the PHRASE and the contiguous test re-run.
+const INTERVENERS = {
+  target: ['non', 'ancora', 'già', 'solo'],
+  known: ['not', "n't", 'yet', 'already', 'just', 'only', 'many of', 'some of', 'all of', 'most of', 'a lot of', 'a few of', 'much of', 'any of'],
+};
+// Only an intervener the LEGO itself does not contain is dropped ("non ho visto" keeps its non). Boundaries are
+// whitespace, not \b, because \b fails after an accented vowel (già).
+const containsLegoWithInterveners = (hay, needle, side) => {
+  if (!needle || containsWords(hay, needle)) return false;
+  const n = ' ' + norm(needle) + ' ';
+  const drop = INTERVENERS[side].filter((w) => !n.includes(' ' + w + ' '));
+  if (!drop.length) return false;
+  const re = new RegExp('(?:^|\\s)(?:' + drop.map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|') + ')(?=\\s|$)', 'g');
+  return containsWords(norm(hay).replace(re, ' '), needle);
+};
+// K32 (Kai, 2026-09-28, #632·I pattern P3): a formal LEGO keeps sir/madam (signore/signora); its phrases treat it as
+// cut — the LEGO minus its trailing sir/madam, or a NAMED core where the seed's other LEGO carries the rest — and add
+// sir/madam back at the END of every phrase, on both sides. Both sides are judged together: a phrase that holds the
+// core but does not end in the honorific fails on BOTH sides.
+const FORMAL_CORES = { S0644L01: { known: 'could you', target: 'potrebbe' } }; // Kai on 644: "ignore the sir"
+const containsFormalLego = (p, L, legoId) => {
+  const formal = /\b(sir|madam)\b/i.test(L.known_text) || /\b(signore|signora)\b/i.test(L.target_text);
+  if (!formal) return { known: false, target: false };
+  const core = FORMAL_CORES[legoId] || { known: norm(L.known_text).replace(/\s*\b(sir|madam)$/, '').trim(), target: norm(L.target_text).replace(/\s*\b(signore|signora)$/, '').trim() };
+  const lk = (L.known_text.match(/\b(sir|madam)\b/i) || [])[1]?.toLowerCase(), rk = (p.known_text.match(/\b(sir|madam)\s*[?!.]*\s*$/i) || [])[1]?.toLowerCase();
+  const ok = (!core.known || containsWords(p.known_text, core.known)) && (!core.target || containsWords(p.target_text, core.target))
+    && /\b(sir|madam)\s*[?!.]*\s*$/i.test(p.known_text) && /\b(signore|signora)\s*[?!.]*\s*$/i.test(p.target_text) && (!lk || lk === rk);
+  return { known: ok, target: ok };
+};
 const pairKey = (k, t) => norm(k) + ' || ' + norm(t);
 const legoIdOf = (seed, idx) => `S${String(seed).padStart(4, '0')}L${String(idx).padStart(2, '0')}`;
 const pos = (seed, idx, p = 0) => seed * 1e6 + idx * 1e3 + p;
@@ -80,6 +111,8 @@ function foldChanges(events, liveLegos) {
     else if (d.edits) for (const x of d.edits) rec(x.id, x.before, x.after, e.surface);
     else if (d.changes && d.changes[0] && d.changes[0].legos) for (const ch of d.changes) for (const u of ch.legos.update) rec(legoIdOf(ch.seed, u.idx), u.from, u.to, e.surface);
     else if (d.changes && d.changes[0] && d.changes[0].known_from !== undefined) for (const c of d.changes) { if (c.kind === 'components') continue; rec(c.id, { known: c.known_from, target: c.target }, { known: c.known_to, target: c.target }, e.surface); }
+    // changes[{id, from:{known,target}, to:{known,target}}] — the shape ita-152-grow-lavrei and ita-159-that-isnt write (job #673·I: the audit was blind to both until this clause).
+    else if (d.changes && d.changes[0] && d.changes[0].from && d.changes[0].to && d.changes[0].from.known !== undefined) for (const c of d.changes) rec(c.id || single, c.from, c.to, e.surface);
     else if (d.legos && d.legos[0] && d.legos[0].known_from !== undefined) for (const c of d.legos) { const L = liveLegos[c.id]; if (L) rec(c.id, { known: c.known_from, target: L.target_text }, { known: c.known_to, target: L.target_text }, e.surface); }
   }
   return Object.values(chain).map((c) => {
@@ -112,8 +145,9 @@ function audit({ legos, phrases, changes }) {
     }
     const L = legos.find((l) => l.lego_id === c.id);
     for (const p of phrases.filter((p) => p.seed_number === c.seed && p.lego_index === +c.id.slice(6) && !isComponent(p))) {
-      const okT = containsWords(p.target_text, L.target_text) || (/dire$/.test(L.target_text) && containsWords(p.target_text.replace(/\bdir(lo|la|li|le|mi|ti|ci|vi|gli)\b/g, 'dire'), L.target_text)); // L28: dire + clitic
-      const okK = containsWords(p.known_text, L.known_text);
+      const okT = containsWords(p.target_text, L.target_text) || (/dire$/.test(L.target_text) && containsWords(p.target_text.replace(/\bdir(lo|la|li|le|mi|ti|ci|vi|gli)\b/g, 'dire'), L.target_text)) // L28: dire + clitic
+        || containsLegoWithInterveners(p.target_text, L.target_text, 'target') || containsFormalLego(p, L, c.id).target; // K31 interveners; K32 formal sir/madam
+      const okK = containsWords(p.known_text, L.known_text) || containsLegoWithInterveners(p.known_text, L.known_text, 'known') || containsFormalLego(p, L, c.id).known;
       if (!okT || !okK) out.F.push({ id: p.id, lego: c.id, legoKnown: L.known_text, legoTarget: L.target_text, known: p.known_text, target: p.target_text, miss: `${okK ? '' : 'known '}${okT ? '' : 'target'}`.trim() });
     }
   }
@@ -168,5 +202,5 @@ async function main() {
   await pg.end();
 }
 
-module.exports = { norm, containsWords, pairKey, staleBareFragments, rowToDrop, foldChanges, audit, isComponent };
+module.exports = { norm, containsWords, containsLegoWithInterveners, containsFormalLego, INTERVENERS, FORMAL_CORES, pairKey, staleBareFragments, rowToDrop, foldChanges, audit, isComponent };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
