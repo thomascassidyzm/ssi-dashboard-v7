@@ -102,6 +102,15 @@ const KNOWN_USAGE_LIMITS = Object.freeze({
 })
 const NO_READER_LIMIT = 'no provider-usage reader is configured, so its spend is checked against our ledger alone and anything spent outside the door is invisible. Known limit, said once and not raised again; a reader for it in liveUsageReaders (and the credential that reader needs) switches the provider check on.'
 const DEFAULT_DIVERGENCE = Object.freeze({ factor: 1.25, slackChars: 20_000, checkEveryMinutes: 10, unverifiedAllowanceChars: 20_000, retryUnreadableMinutes: 1 })
+/** A job raise names its job the way the estate writes it: "#578". */
+const JOB_TOKEN = /^#\d+$/
+/** Does a call's job text (ctx.job / TTS_SPEND_JOB) belong to this job token? "#578" matches "... (job #578)" and "#578·I", never "#5780". */
+function jobMatches(jobText, token) {
+  if (!jobText || !token) return false
+  return new RegExp(`${token.replace('#', '#')}(?!\\d)`).test(String(jobText))
+}
+/** How long a read of a job's spend today is reused before the ledger is asked again. */
+const JOB_SPEND_CACHE_MS = 30_000
 /** A raise may not be dated further out than this: raises expire on their own. */
 const RAISE_MAX_DAYS = 31
 
@@ -264,7 +273,26 @@ function loadLimits({ budgetPath, envOverride, nowMs }) {
   // overshoot it by at most one in-flight clip each.
   const combined = file.hold && Number.isFinite(file.hold.combinedDailyCapChars) && file.hold.combinedDailyCapChars > 0 ? file.hold.combinedDailyCapChars : null
   const hold = file.hold && typeof file.hold.message === 'string' ? { by: file.hold.by || null, since: file.hold.since || null, message: file.hold.message, combinedDailyCapChars: combined } : null
-  return { providers, repeat: rep.limits, divergence: div.limits, notes, source, hold }
+  // JOB-SCOPED RAISES (Tom 2026-09-28, job #578): Tom's explicit go for ONE
+  // job above the daily cap must not become a looser cap for everybody. A raise
+  // here names the job ("#578") and a character allowance of its OWN for today;
+  // that job's calls draw on the allowance instead of the daily caps, and every
+  // other caller is checked as though the job's spend today had never happened
+  // (its caps are lifted by exactly what the job has spent). So Tom's go cannot
+  // starve a job he triggers later the same day, and nothing else gets looser.
+  // Signed, dated and expiring like every raise; a malformed one is ignored and alerted.
+  const jobRaises = []
+  for (const r of Array.isArray(file.jobRaises) ? file.jobRaises : []) {
+    const rs = raiseInForce(r, nowMs)
+    const shaped = r && typeof r.job === 'string' && JOB_TOKEN.test(r.job.trim()) && Number.isFinite(r.extraDailyChars) && r.extraDailyChars > 0
+    if (rs.ok && shaped) {
+      jobRaises.push({ job: r.job.trim(), extraDailyChars: r.extraDailyChars, by: r.by, why: r.why, until: r.until })
+      notes.push({ kind: 'raise', label: `jobRaises[${r.job.trim()}]`, field: 'extraDailyChars', value: r.extraDailyChars, by: r.by, why: r.why, until: r.until })
+    } else {
+      notes.push({ kind: 'ignored', label: 'jobRaises', field: String(r && r.job), value: r && r.extraDailyChars, why: rs.ok ? 'a job raise needs job "#NNN" and a positive extraDailyChars' : rs.why })
+    }
+  }
+  return { providers, repeat: rep.limits, divergence: div.limits, notes, source, hold, jobRaises }
 }
 function readBudgetFile(p) {
   try { return JSON.parse(fs.readFileSync(p, 'utf8')) } catch (e) {
@@ -304,6 +332,18 @@ function supabaseSpendStore({ client, url = process.env.SUPABASE_URL, key = proc
     async settle(id, status, note) { await rpc('tts_spend_settle', { p_id: id, p_status: status, p_note: note || null }) },
     async trip(provider, code, message) { await rpc('tts_spend_trip', { p_provider: provider, p_code: code, p_message: message, p_host: os.hostname() }) },
     async totals(provider, cycleStartDay) { return rpc('tts_spend_totals', { p_provider: provider, p_cycle_start_day: cycleStartDay }) },
+    /** Chars spent today (UTC) under a job token, by provider. Paged: a job's day can be thousands of rows. */
+    async jobToday(token) {
+      const from = new Date(Date.parse(dayKey(Date.now()) + 'T00:00:00Z')).toISOString()
+      const byProvider = {}
+      for (let off = 0; ; off += 1000) {
+        const { data, error } = await db().from('tts_spend_ledger').select('provider,chars,job').gte('at', from).ilike('job', `%${token}%`).order('id').range(off, off + 999)
+        if (error) throw new Error(`tts_spend_ledger: ${error.message}`)
+        for (const r of data || []) if (jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + (Number(r.chars) || 0)
+        if (!data || data.length < 1000) break
+      }
+      return byProvider
+    },
   }
 }
 
@@ -330,6 +370,12 @@ function pgSpendStore({ pool, connectionString = process.env.DATABASE_URL } = {}
     async settle(id, status, note) { await call('select public.tts_spend_settle($1,$2,$3)', [id, status, note || null]) },
     async trip(provider, code, message) { await call('select public.tts_spend_trip($1,$2,$3,$4)', [provider, code, message, os.hostname()]) },
     async totals(provider, cycleStartDay) { return (await call('select public.tts_spend_totals($1,$2) as t', [provider, cycleStartDay])).t },
+    async jobToday(token) {
+      const { rows } = await db().query(`select provider, job, chars from public.tts_spend_ledger where at >= date_trunc('day', now() at time zone 'UTC') at time zone 'UTC' and job like $1`, [`%${token}%`])
+      const byProvider = {}
+      for (const r of rows) if (jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + (Number(r.chars) || 0)
+      return byProvider
+    },
     end() { return p && p.end() },
   }
 }
@@ -338,7 +384,7 @@ function reserveArgs(r) {
   return {
     p_provider: r.provider, p_voice: r.voice, p_chars: r.chars, p_repeat_key: r.key, p_text_hash: r.textHash,
     p_course: r.course, p_job: r.job, p_language: r.language, p_attempt: r.attempt, p_host: os.hostname(), p_pid: process.pid,
-    p_daily_cap: r.limits.dailyCapChars, p_cycle_start_day: r.limits.cycleStartDay, p_cycle_cap: r.limits.cycleCapChars,
+    p_daily_cap: r.dailyCap != null ? r.dailyCap : r.limits.dailyCapChars, p_cycle_start_day: r.limits.cycleStartDay, p_cycle_cap: r.limits.cycleCapChars,
     p_repeat_max: r.limits.maxPerKey, p_repeat_window_hours: r.limits.windowHours, p_limits: r.limits,
   }
 }
@@ -365,15 +411,22 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
       const seen = r.key ? rows.filter(x => x.key === r.key && x.kind === 'call' && x.at >= t - r.limits.windowHours * 3600e3).length : 0
       const h = JSON.stringify(r.limits)
       if (limitLog.filter(l => l.provider === r.provider).pop()?.h !== h) limitLog.push({ provider: r.provider, h, limits: r.limits })
-      if (today + r.chars > r.limits.dailyCapChars) return { ok: false, code: 'DAILY_CAP', today, cycle, seen, message: `today's ${r.provider} spend is ${today} chars; this call (${r.chars}) would pass the daily cap of ${r.limits.dailyCapChars}` }
+      const dailyCap = r.dailyCap != null ? r.dailyCap : r.limits.dailyCapChars
+      if (today + r.chars > dailyCap) return { ok: false, code: 'DAILY_CAP', today, cycle, seen, message: `today's ${r.provider} spend is ${today} chars; this call (${r.chars}) would pass the daily cap of ${dailyCap}` }
       if (cycle + r.chars > r.limits.cycleCapChars) return { ok: false, code: 'POOL_SHARE', today, cycle, seen, message: `this cycle's ${r.provider} spend is ${cycle} chars; this call (${r.chars}) would pass the cycle stop of ${r.limits.cycleCapChars}` }
       if (r.key && seen >= r.limits.maxPerKey) return { ok: false, code: 'REPEAT', today, cycle, seen, message: `these words in voice ${r.voice || '?'} have already been sent ${seen} times in ${r.limits.windowHours}h (limit ${r.limits.maxPerKey}) — a caller is re-rendering what it already has` }
       const id = rows.length + 1
-      rows.push({ id, at: t, kind: 'call', provider: r.provider, voice: r.voice, chars: r.chars, key: r.key, status: 'reserved' })
+      rows.push({ id, at: t, kind: 'call', provider: r.provider, voice: r.voice, chars: r.chars, key: r.key, job: r.job || null, status: 'reserved' })
       return { ok: true, id, today: today + r.chars, cycle: cycle + r.chars, seen: seen + 1 }
     },
     async settle(id, status) { const row = rows[id - 1]; if (row && row.status === 'reserved') row.status = status },
     async trip(provider, code, message) { if (!trips.has(provider)) trips.set(provider, { code, message, at: new Date(now()).toISOString() }) },
+    async jobToday(token) {
+      const from = Date.parse(dayKey(now()) + 'T00:00:00Z')
+      const byProvider = {}
+      for (const r of rows) if (r.at >= from && jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + r.chars
+      return byProvider
+    },
     async totals(provider, cycleStartDay) {
       const t = now()
       return { today: sum(provider, Date.parse(dayKey(t) + 'T00:00:00Z')), cycle: sum(provider, cycleStart(t, cycleStartDay)), tripped: trips.get(provider) || null }
@@ -408,10 +461,23 @@ function createSpendGuard(opts = {}) {
   const alerted = new Set()        // alert keys already sent by this process
   let lastLimitsHash = null
   const usage = new Map()          // provider -> { checkedAt, ok, base, unverifiedChars }
+  const jobSpend = new Map()       // job token -> { at, byProvider } (ledger read, topped up by this process's own reservations)
+
+  async function jobSpentToday(token) {
+    const c = jobSpend.get(token)
+    if (c && c.day === dayKey(now()) && now() - c.at < JOB_SPEND_CACHE_MS) return c.byProvider
+    let byProvider
+    try { byProvider = await store.jobToday(token) } catch (e) {
+      throw new TtsSpendGuardError('LEDGER', `cannot read job ${token}'s spend today from the ledger (${e.message}) — refusing to render unrecorded`, {})
+    }
+    jobSpend.set(token, { at: now(), day: dayKey(now()), byProvider })
+    return byProvider
+  }
+  const sumChars = (byProvider) => Object.values(byProvider).reduce((n, v) => n + (Number(v) || 0), 0)
 
   function limitsNow() {
     const cfg = loadLimits({ budgetPath, envOverride, nowMs: now() })
-    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence }))
+    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence, j: cfg.jobRaises }))
     if (h !== lastLimitsHash) {
       // Every change in the limits in force, and every raise or ignored
       // loosening, is told — ONCE PER HOST per distinct change (limits + notes),
@@ -560,8 +626,28 @@ function createSpendGuard(opts = {}) {
 
     await checkProvider(provider, cfg, b, chars, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
 
-    if (cfg.hold && cfg.hold.combinedDailyCapChars) {
-      const cap = cfg.hold.combinedDailyCapChars
+    // Job-scoped raises (see loadLimits). The raised job spends from its own
+    // allowance; everyone else's caps are lifted by exactly what it has spent.
+    const jobText = ctx.job || process.env.TTS_SPEND_JOB || null
+    const raisedJob = cfg.jobRaises.find(r => jobMatches(jobText, r.job)) || null
+    let dailyCap = null
+    let combinedCap = cfg.hold && cfg.hold.combinedDailyCapChars ? cfg.hold.combinedDailyCapChars : null
+    if (raisedJob) {
+      const spent = sumChars(await jobSpentToday(raisedJob.job))
+      if (spent + chars > raisedJob.extraDailyChars) {
+        refuse('DAILY_CAP', provider, `job ${raisedJob.job} has spent ${spent} chars today under Tom's signed raise; this call (${chars}) would pass its allowance of ${raisedJob.extraDailyChars} (raise by ${raisedJob.by}, until ${raisedJob.until})`, { course: ctx.courseCode || null, job: jobText })
+      }
+      dailyCap = Number.MAX_SAFE_INTEGER
+      combinedCap = null
+    } else if (cfg.jobRaises.length) {
+      let extraHere = 0; let extraAll = 0
+      for (const r of cfg.jobRaises) { const s = await jobSpentToday(r.job); extraHere += Number(s[provider]) || 0; extraAll += sumChars(s) }
+      dailyCap = b.dailyCapChars + extraHere
+      if (combinedCap) combinedCap += extraAll
+    }
+
+    if (combinedCap) {
+      const cap = combinedCap
       let combined = 0
       for (const p of Object.keys(cfg.providers)) combined += Number((await ledgerTotals(p, providerLimits(cfg, p))).today) || 0
       if (combined + chars > cap) {
@@ -583,7 +669,7 @@ function createSpendGuard(opts = {}) {
 
     let res
     try {
-      res = await store.reserve({ provider, voice: base.voice, chars, key, textHash: base.text_hash, course: base.course, job: base.job, language: base.language, attempt: base.attempt, limits: b })
+      res = await store.reserve({ provider, voice: base.voice, chars, key, textHash: base.text_hash, course: base.course, job: base.job, language: base.language, attempt: base.attempt, limits: b, dailyCap })
     } catch (e) {
       try { mirror({ kind: 'refused', code: 'LEDGER', ...base }) } catch {}
       refuse('LEDGER', provider, `the shared spend ledger is unreachable (${e.message}) — refusing to render unrecorded`, {})
@@ -598,6 +684,7 @@ function createSpendGuard(opts = {}) {
       refuse(res.code || 'REFUSED', provider, `${res.message || 'refused by the ledger'}.${hint}`, { key: res.code === 'REPEAT' ? key : undefined, today: res.today, cycle: res.cycle, seen: res.seen, course: base.course, job: base.job })
     }
     const entry = { kind: 'call', id: res.id, ...base }
+    if (raisedJob) { const c = jobSpend.get(raisedJob.job); if (c) c.byProvider[provider] = (Number(c.byProvider[provider]) || 0) + chars }
     try { mirror(entry) } catch { /* the reservation is in the DB; the intent line is on disk */ }
 
     // Alerts on crossing lines (once per process per line per day/cycle).
@@ -715,6 +802,7 @@ module.exports = {
   loadLimits,
   applyLimits,
   raiseInForce,
+  jobMatches,
   TtsSpendGuardError,
   repeatKey,
   repeatTextKey,

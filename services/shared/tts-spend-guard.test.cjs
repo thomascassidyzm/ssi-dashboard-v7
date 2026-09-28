@@ -266,3 +266,38 @@ describe('(i) a retired provider is refused outright (Tom 2026-09-28: "We don\'t
     await expect(call(g, 'Croeso.', { provider: 'azure', voiceId: 'azure_x' })).resolves.toBeTruthy()
   })
 })
+
+describe('(j) a job-scoped raise: Tom\'s go for ONE job above the cap starves nobody (Tom 2026-09-28, job #578)', () => {
+  const held = (jobRaises) => budgets({
+    hold: { by: 'Tom', since: '2026-09-26', combinedDailyCapChars: 100, message: 'held' },
+    providers: { cartesia: { dailyCapChars: 100, alertDailyChars: 1e9 }, azure: { dailyCapChars: 100, alertDailyChars: 1e9 } },
+    jobRaises,
+  })
+  const go = { job: '#578', extraDailyChars: 1000, by: 'Tom', why: 'render the held backlog in one go', until: '2026-09-26T23:59:59Z' }
+
+  it('the raised job renders past the daily cap, from its own allowance', async () => {
+    const g = guard({ budgetPath: held([go]) })
+    await expect(call(g, 'a'.repeat(600), { job: 'phase8 /generate x (job #578)' })).resolves.toBeTruthy()
+    await expect(call(g, 'b'.repeat(300), { provider: 'azure', voiceId: 'az', job: 'phase8 /generate y (job #578)' })).resolves.toBeTruthy()
+    const err = await call(g, 'c'.repeat(200), { job: 'job #578' }).catch(e => e)
+    expect(err.code).toBe('DAILY_CAP')
+    expect(err.message).toMatch(/job #578 has spent 900 chars today .* allowance of 1000/)
+  })
+
+  it('every other caller keeps the whole ordinary cap, as though the raised job had spent nothing', async () => {
+    const g = guard({ budgetPath: held([go]) })
+    await call(g, 'a'.repeat(900), { job: 'job #578' })
+    await expect(call(g, 'd'.repeat(90), { job: 'job #600' })).resolves.toBeTruthy()
+    const err = await call(g, 'e'.repeat(20), { job: 'job #600' }).catch(e => e)
+    expect(err.code).toBe('DAILY_CAP')
+  })
+
+  it('only that job: "#5780" is not "#578", and an expired or unsigned raise lifts nothing', async () => {
+    const g = guard({ budgetPath: held([go]) })
+    expect((await call(g, 'f'.repeat(150), { job: 'job #5780' }).catch(e => e)).code).toBe('DAILY_CAP')
+    const expired = guard({ budgetPath: held([{ ...go, until: '2026-09-25T23:59:59Z' }]) })
+    expect((await call(expired, 'g'.repeat(150), { job: 'job #578' }).catch(e => e)).code).toBe('DAILY_CAP')
+    const unsigned = guard({ budgetPath: held([{ job: '#578', extraDailyChars: 1000, until: go.until }]) })
+    expect((await call(unsigned, 'h'.repeat(150), { job: 'job #578' }).catch(e => e)).code).toBe('DAILY_CAP')
+  })
+})
