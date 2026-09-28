@@ -136,6 +136,21 @@ describe('(e2) a provider whose usage cannot be read is a known limit, said once
     expect(told.map(s => s.key)).toEqual(['usage-known-limit:cartesia'])
     expect(told[0].message).toMatch(/Known limit.*CARTESIA_ADMIN_API_KEY/)
   })
+
+  it('Azure, and any provider with no reader: told once, naming what would switch the check on (job #521)', async () => {
+    const sent = []
+    for (const provider of ['azure', 'google']) {
+      const extra = { provider, voiceId: `${provider}_v` }
+      await call(guard({ notify: (e) => sent.push(e) }), 'one', extra)
+      await call(guard({ notify: (e) => sent.push(e) }), 'two', extra)
+      clock += 2 * 86_400_000
+      await call(guard({ notify: (e) => sent.push(e) }), 'three', extra)
+    }
+    const told = sent.filter(s => /usage/.test(s.key))
+    expect(told.map(s => s.key)).toEqual(['usage-known-limit:azure', 'usage-known-limit:google'])
+    expect(told[0].message).toMatch(/Known limit.*Cost Management.*AZURE_CLIENT_SECRET/)
+    expect(told[1].message).toMatch(/Known limit.*liveUsageReaders/)
+  })
 })
 
 describe('(f) a human is told — once — when a guard trips or a line is crossed', () => {

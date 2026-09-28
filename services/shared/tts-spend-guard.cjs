@@ -89,15 +89,18 @@ const POOL_ALERT_SHARES = [0.5, 0.8]
  * while a CONFIGURED usage reader cannot be read — tiny calls pass, runs stop.
  */
 /**
- * Providers whose missing usage reader is a KNOWN LIMIT rather than a
- * decision: said ONCE per host (the alerts log remembers it), never re-raised
- * daily. Cartesia's /usage/credits answers only an admin key (401 on the normal
- * key: job #440, re-checked job #515); with CARTESIA_ADMIN_API_KEY set the
- * reader switches on and this never fires.
+ * A provider with no usage reader is a KNOWN LIMIT, never a decision: said ONCE
+ * per host (the alerts log remembers it across processes and days), never
+ * re-raised daily (job #515 for Cartesia, #521 for Azure and every other).
+ * Each entry names what would switch the provider check on; a provider not
+ * listed gets NO_READER_LIMIT. Cartesia's /usage/credits answers only an admin
+ * key (401 on the normal key: job #440, re-checked job #515).
  */
 const KNOWN_USAGE_LIMITS = Object.freeze({
+  azure: 'Azure Speech has no usage reader here: the AZURE_SPEECH_KEY can synthesise but cannot see the account\'s usage or bill, so Azure spend is checked against our ledger alone and anything spent outside the door (another script, a colleague, Speech Studio) is invisible. Known limit, said once and not raised again. What would switch the provider check on: a reader in liveUsageReaders on Azure Monitor (the Speech resource\'s SynthesizedCharacters metric) or Azure Cost Management (the Speech meter\'s cost this cycle), plus the credential it needs — an Entra service principal (AZURE_TENANT_ID, AZURE_CLIENT_ID, AZURE_CLIENT_SECRET) granted Monitoring Reader or Cost Management Reader on the subscription, and AZURE_SPEECH_RESOURCE_ID naming the resource.',
   cartesia: 'Cartesia shows account usage (/usage/credits) only to an ADMIN key, and this estate has only the normal key (401) — so Cartesia spend is checked against our ledger alone and anything spent outside the door (another script, a colleague, the playground) is invisible. Known limit, said once and not raised again; set CARTESIA_ADMIN_API_KEY (play.cartesia.ai/keys/admin) and the provider check switches on by itself.',
 })
+const NO_READER_LIMIT = 'no provider-usage reader is configured, so its spend is checked against our ledger alone and anything spent outside the door is invisible. Known limit, said once and not raised again; a reader for it in liveUsageReaders (and the credential that reader needs) switches the provider check on.'
 const DEFAULT_DIVERGENCE = Object.freeze({ factor: 1.25, slackChars: 20_000, checkEveryMinutes: 10, unverifiedAllowanceChars: 20_000, retryUnreadableMinutes: 1 })
 /** A raise may not be dated further out than this: raises expire on their own. */
 const RAISE_MAX_DAYS = 31
@@ -464,24 +467,20 @@ function createSpendGuard(opts = {}) {
   }
 
   /**
-   * PROVIDER RECONCILIATION. No reader for the provider: warned once a day,
-   * the ledger stands alone. A reader that FAILS (or answers nonsense): this
+   * PROVIDER RECONCILIATION. No reader for the provider: a known limit, said
+   * once per host, the ledger stands alone. A reader that FAILS (or answers nonsense): this
    * process may reserve at most unverifiedAllowanceChars until it reads again,
    * then refuses — fail closed for runs, open for a tiny call.
    */
   async function checkProvider(provider, cfg, b, chars, who = {}) {
     const reader = usageReaders[provider]
-    if (!reader && KNOWN_USAGE_LIMITS[provider]) {
+    if (!reader) {
       const key = `usage-known-limit:${provider}`
       if (alerted.has(key)) return
       let saidBefore = false
       try { saidBefore = fs.readFileSync(alertsPath, 'utf8').includes(`"key":"${key}"`) } catch { /* no log yet */ }
       if (saidBefore) { alerted.add(key); return }
-      alert(key, 'warn', `${provider}: ${KNOWN_USAGE_LIMITS[provider]}`, { provider })
-      return
-    }
-    if (!reader) {
-      alert(`usage-none:${provider}:${dayKey(now())}`, 'warn', `${provider}: no provider-usage reader configured — spend is checked against the ledger alone (nothing can see spending outside the door)`, { provider })
+      alert(key, 'warn', `${provider}: ${KNOWN_USAGE_LIMITS[provider] || NO_READER_LIMIT}`, { provider })
       return
     }
     const st = usage.get(provider) || { checkedAt: 0, ok: false, base: null, unverifiedChars: 0, everRead: false }
