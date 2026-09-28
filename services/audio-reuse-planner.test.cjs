@@ -851,19 +851,23 @@ describe('verdict cache — whisper is the dominant cost, and bands re-ask the s
     expect(band2.clips[0].heard.pass).toBe(true)
   })
 
-  it('a cached DAMAGED verdict still promotes the clip to RENDER — the cache changes cost, never outcome', async () => {
+  // Flipped 2026-09-28 (job #678): this used to assert the damaged clip was
+  // promoted to RENDER. Tom's ruling: no automatic STT check may trigger a
+  // re-render of TTS audio — the verdict is reported, the decision stands.
+  it('a DAMAGED verdict is reported on the clip and never changes its decision — cached or not', async () => {
     const cache = mkCache()
     const c = { n: 0 }
     const band1 = planWith([sat()])
     await verifyPlanVeracity(band1, { fetchObject: async () => Buffer.from('x'), veracity: mkVeracity(FAIL, c), verdictCache: cache })
-    expect(band1.clips[0].decision).toBe('RENDER')
+    expect(band1.clips[0].decision).toBe('SATISFIED')
+    expect(band1.clips[0].heard.pass).toBe(false)
+    expect(band1.heard.failed).toBe(1)
 
     const band2 = planWith([sat()])
     await verifyPlanVeracity(band2, { fetchObject: async () => { throw new Error('must not fetch') }, veracity: mkVeracity(FAIL, c), verdictCache: cache })
     expect(c.n).toBe(1)
-    expect(band2.clips[0].decision).toBe('RENDER')
-    expect(band2.clips[0].decisionBeforeVeracity).toBe('SATISFIED')
-    expect(band2.summary.render).toBe(1)
+    expect(band2.clips[0].decision).toBe('SATISFIED')
+    expect(band2.summary.render).toBe(0)
   })
 
   it('different TEXT against the same object is a different question, and is decoded', async () => {

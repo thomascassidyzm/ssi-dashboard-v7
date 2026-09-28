@@ -318,6 +318,11 @@ function createRepairCore (deps) {
     let candidateBuffer = null
     let durationMs = null
     let attemptLog = []
+    // The whisper verdict may reject only a HUMAN upload. On a TTS candidate it
+    // is recorded and never a fault — no re-roll, no rejection (Tom, 2026-09-28,
+    // r-2026-09-28-no-automatic-whisper-stt-check-may; full STT checks are for
+    // human recordings, ssi-stt-sampling-doctrine). Level, length and tail stay.
+    const sttFault = (verdict) => (source === 'upload' ? verdict : null)
 
     if (source === 'upload') {
       if (!buffer || !buffer.length) throw new RepairError('upload carried no bytes', 'empty_upload')
@@ -350,13 +355,13 @@ function createRepairCore (deps) {
         const level = await verify.measure(out.buffer)
         const verdict = await verify.veracity(out.buffer, useText, row.language)
         const tail = await tailOf(out.buffer)
-        const fault = faultOf(out.durationMs, level, verdict, tail)
-        attemptLog.push({ attempt, durationMs: out.durationMs, level, tail, fault })
+        const fault = faultOf(out.durationMs, level, sttFault(verdict), tail)
+        attemptLog.push({ attempt, durationMs: out.durationMs, level, tail, fault, verdict })
         last = { ...out, level, verdict, tail }
         if (!fault) break
         logger.log?.(`[repair] ${audioId} attempt ${attempt}: ${fault} — re-roll`)
       }
-      const fault = faultOf(last.durationMs, last.level, last.verdict, last.tail)
+      const fault = faultOf(last.durationMs, last.level, sttFault(last.verdict), last.tail)
       if (fault) {
         throw new RepairError(
           `no attempt produced a clean candidate (${fault}, last ${last.durationMs}ms)`,
@@ -371,7 +376,7 @@ function createRepairCore (deps) {
     const level = await verify.measure(candidateBuffer)
     const verdict = await verify.veracity(candidateBuffer, useText, row.language)
     const tail = await tailOf(candidateBuffer)
-    const fault = faultOf(durationMs, level, verdict, tail)
+    const fault = faultOf(durationMs, level, sttFault(verdict), tail)
     if (fault) {
       throw new RepairError(`candidate rejected: ${fault} (${durationMs}ms)`,
         'candidate_failed_verification')

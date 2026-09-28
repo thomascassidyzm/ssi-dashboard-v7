@@ -893,24 +893,21 @@ describe('quarantine', () => {
   })
 })
 
-describe('renderChecked — the publish decision', () => {
-  // These tests are about the GATE's decision, not about which clips the sampler
-  // picks, so they run with sampling pinned open. Graduated sampling has its own
-  // block below. Before 2026-08-13 there was no sampler and every clip was checked,
-  // which is why these calls used to need no `sampler` at all.
+describe('renderChecked — render once, sample, report; never a veto (Tom, 2026-09-28)', () => {
+  // Tom's ruling r-2026-09-28-no-automatic-whisper-stt-check-may: no automatic
+  // STT check may veto a TTS render or trigger a re-render. Until job #678 these
+  // tests asserted the opposite — re-render on failure, quarantine after three,
+  // refuse words already quarantined. They were flipped deliberately.
   const always = V.createSampler({ first: 1, trusted: 1, floor: 1 })
   const buf = (s) => Buffer.from(s)
   const passing = async () => ({ pass: true, checked: true, reason: 'ok', cer: 0.02, decode: 'hallo' })
   const failing = async () => ({ pass: false, checked: true, reason: 'cer_above_threshold', cer: 0.8, decode: 'ha' })
   const quiet = { info: () => {}, warn: () => {}, error: () => {}, log: () => {} }
-  // Every quarantine these tests cause goes to a throwaway ledger, never the
-  // machine's: the gate now READS that ledger, so a stray test entry would
-  // silently refuse a real render for a week.
   let qdir
   beforeEach(() => { qdir = fs.mkdtempSync(path.join(os.tmpdir(), 'veracity-rc-q-')); process.env.AUDIO_VERACITY_QUARANTINE_DIR = qdir })
   afterEach(() => { delete process.env.AUDIO_VERACITY_QUARANTINE_DIR; try { fs.rmSync(qdir, { recursive: true, force: true }) } catch {} })
 
-  it('publishes a clip that passes first time, with one render', async () => {
+  it('publishes a clip that passes, with one render', async () => {
     let renders = 0
     const stats = V.newStats()
     const r = await V.renderChecked({
@@ -924,98 +921,51 @@ describe('renderChecked — the publish decision', () => {
     expect(stats).toMatchObject({ checked: 1, passed: 1, failed: 0, rerendered: 0, quarantined: 0 })
   })
 
-  it('re-renders a failing clip and publishes the attempt that passes', async () => {
+  it('a FAILED check publishes the one render as-is — no re-render, no quarantine, verdict recorded', async () => {
     let renders = 0
     const stats = V.newStats()
     const r = await V.renderChecked({
       sampler: always,
       render: async () => { renders++; return { buffer: buf(`a${renders}`), durationMs: 900 } },
-      expectedText: 'hallo', language: 'deu', stats, logger: quiet,
-      check: async (b) => (String(b) === 'a1' ? failing() : passing()),
-    })
-    expect(r.published).toBe(true)
-    expect(String(r.buffer)).toBe('a2')
-    expect(renders).toBe(2)
-    expect(stats.rerendered).toBe(1)
-    expect(stats.quarantined).toBe(0)
-  })
-
-  it('quarantines after the attempt budget and refuses to hand back a buffer', async () => {
-    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'veracity-rc-'))
-    let renders = 0
-    const stats = V.newStats()
-    // Each attempt heard DIFFERENTLY (transient damage), so the whole budget is spent.
-    let heard = 0
-    const r = await V.renderChecked({
-      sampler: always,
-      render: async () => { renders++; return { buffer: buf('bad'), durationMs: 200 } },
-      expectedText: 'hallo', language: 'deu', stats, logger: quiet,
-      check: async () => ({ pass: false, checked: true, reason: 'cer_above_threshold', cer: 0.8, decode: `ha ${++heard}` }),
-      meta: { courseCode: 'tst_for_eng', role: 'target1' },
-    })
-    expect(r.published).toBe(false)
-    expect(r.buffer).toBeUndefined()          // nothing publishable comes back
-    expect(renders).toBe(V.DEFAULT_ATTEMPTS)  // 1 render + 2 retries by default
-    expect(stats.quarantined).toBe(1)
-    expect(stats.failed).toBe(1)
-    expect(r.verdicts).toHaveLength(V.DEFAULT_ATTEMPTS)
-    try { fs.rmSync(dir, { recursive: true, force: true }) } catch {}
-  })
-
-  // Job #674 (2026-09-28): ita "ha detto qualcos'altro?" was heard as "ha detto
-  // altro?" on every Azure render — same bytes, same decode — and was paid for 3x
-  // per voice per run, across re-runs and worktrees, until the spend guard's
-  // 6-in-24h repeat limit refused it.
-  it('stops re-rendering when a re-render is heard exactly as the one before it', async () => {
-    let renders = 0
-    const r = await V.renderChecked({
-      sampler: always,
-      render: async () => { renders++; return { buffer: buf('same'), durationMs: 200 } },
-      expectedText: "ha detto qualcos'altro?", language: 'ita', check: failing, logger: quiet,
+      expectedText: "ha detto qualcos'altro?", language: 'ita', check: failing, attempts: 3, stats, logger: quiet,
       meta: { courseCode: 'tst_for_eng', role: 'target1', voiceId: 'it-IT-ElsaNeural' },
     })
-    expect(r.published).toBe(false)
-    expect(renders).toBe(2)
-    expect(r.attempts).toBe(2)
+    expect(r.published).toBe(true)
+    expect(String(r.buffer)).toBe('a1')
+    expect(renders).toBe(1)
+    expect(r.attempts).toBe(1)
+    expect(stats).toMatchObject({ checked: 1, failed: 1, rerendered: 0, quarantined: 0 })
+    // The report lands on the row: a sampled failure is visible, not hidden.
+    expect(V.verdictColumns(r.verdict).veracity_pass).toBe(false)
+    // Nothing was written to a quarantine ledger.
+    expect(fs.existsSync(path.join(qdir, 'quarantine.jsonl'))).toBe(false)
   })
 
-  it('never pays again for words already quarantined in the same voice', async () => {
-    let renders = 0
-    const opts = (voiceId) => ({
-      sampler: always,
-      render: async () => { renders++; return { buffer: buf('same'), durationMs: 200 } },
-      expectedText: "ha detto qualcos'altro?", language: 'ita', check: failing, logger: quiet,
-      meta: { courseCode: 'tst_for_eng', role: 'target1', voiceId },
-    })
-    await V.renderChecked(opts('it-IT-ElsaNeural'))
-    const spent = renders
-    // Same words (punctuation aside), same voice, a later run: answered from the ledger.
-    const again = await V.renderChecked({ ...opts('it-IT-ElsaNeural'), expectedText: "Ha detto qualcos'altro" })
-    expect(renders).toBe(spent)
-    expect(again.published).toBe(false)
-    expect(again.verdict.reason).toBe('already_quarantined')
-    expect(again.attempts).toBe(0)
-    expect(again.quarantine.audioPath).toBeTruthy()
-    // Another voice is its own question and still renders.
-    await V.renderChecked(opts('it-IT-BenignoNeural'))
-    expect(renders).toBeGreaterThan(spent)
-    // An explicit retry (after a checker fix) renders again.
-    const before = renders
-    process.env.AUDIO_VERACITY_RETRY_QUARANTINED = '1'
-    try { await V.renderChecked(opts('it-IT-ElsaNeural')) } finally { delete process.env.AUDIO_VERACITY_RETRY_QUARANTINED }
-    expect(renders).toBeGreaterThan(before)
-  })
-
-  it('honours a custom attempt budget', async () => {
+  it('an old quarantine ledger entry refuses nothing', async () => {
+    fs.writeFileSync(path.join(qdir, 'quarantine.jsonl'), JSON.stringify({
+      quarantined_at: new Date().toISOString(), text: "ha detto qualcos'altro?", language: 'ita', voiceId: 'it-IT-ElsaNeural',
+    }) + '\n')
     let renders = 0
     const r = await V.renderChecked({
       sampler: always,
-      render: async () => { renders++; return { buffer: buf('bad'), durationMs: 200 } },
-      expectedText: 'hallo', language: 'deu', check: failing, attempts: 1, logger: quiet,
-      meta: { courseCode: 'tst_for_eng' },
+      render: async () => { renders++; return { buffer: buf('a'), durationMs: 900 } },
+      expectedText: "ha detto qualcos'altro?", language: 'ita', check: passing, logger: quiet,
+      meta: { courseCode: 'tst_for_eng', role: 'target1', voiceId: 'it-IT-ElsaNeural' },
     })
-    expect(r.published).toBe(false)
+    expect(r.published).toBe(true)
     expect(renders).toBe(1)
+  })
+
+  it('a check that throws costs nothing: published, recorded as unchecked', async () => {
+    const stats = V.newStats()
+    const r = await V.renderChecked({
+      sampler: always,
+      render: async () => ({ buffer: buf('a'), durationMs: 900 }),
+      expectedText: 'hallo', language: 'deu', stats, logger: quiet,
+      check: async () => { throw new Error('whisper exploded') },
+    })
+    expect(r.published).toBe(true)
+    expect(stats.unchecked).toBe(1)
   })
 
   it('publishes when it could not check — but counts it as UNCHECKED, never as a pass', async () => {
@@ -1028,10 +978,19 @@ describe('renderChecked — the publish decision', () => {
       check: async () => ({ pass: null, checked: false, reason: 'unchecked_no_whisper', cer: null, decode: null }),
     })
     expect(r.published).toBe(true)
-    expect(renders).toBe(1)                   // no pointless re-render when blind
+    expect(renders).toBe(1)
     expect(stats.unchecked).toBe(1)
     expect(stats.passed).toBe(0)
     expect(stats.checked).toBe(0)
+  })
+
+  it('SPOT_SAMPLER (and its old name ALWAYS_SAMPLER) samples one clip in ten, not every clip', () => {
+    expect(V.ALWAYS_SAMPLER).toBe(V.SPOT_SAMPLER)
+    V._resetSpotSampler()
+    let picked = 0
+    for (let i = 0; i < 100; i++) if (V.SPOT_SAMPLER.shouldCheck()) picked++
+    expect(picked).toBe(100 / V.SPOT_SAMPLE_EVERY)
+    expect(V.SPOT_SAMPLE_EVERY).toBeGreaterThanOrEqual(10)
   })
 })
 
@@ -1212,7 +1171,7 @@ describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 20
     expect(stats.unchecked).toBe(0)
   })
 
-  it('a sampled failure still quarantines — sampling changes WHICH clips are checked, not what a failure means', async () => {
+  it('a sampled failure is REPORTED, never quarantined — sampling changes which clips are listened to, never whether a render ships', async () => {
     const always = V.createSampler({ first: 1, trusted: 1, floor: 1 })
     always.startCourse('a')
     const stats = V.newStats()
@@ -1222,8 +1181,9 @@ describe('graduated sampling — per COURSE (Tom, 2026-08-13; scope corrected 20
       check: failing, attempts: 2,
       expectedText: 'hallo', language: 'deu', stats, logger: quiet,
     })
-    expect(r.published).toBe(false)
-    expect(stats.quarantined).toBe(1)
+    expect(r.published).toBe(true)
+    expect(stats.quarantined).toBe(0)
+    expect(stats.failed).toBe(1)
   })
 })
 

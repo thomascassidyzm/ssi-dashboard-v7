@@ -338,8 +338,10 @@ async function main () {
       // A near-silent take is the dropout this catches cheaply; mastering targets
       // -16 LUFS, so anything below -25 never came out of the mastering chain right.
       if (row.after.lufs < -25) throw new Error(`new clip is ${row.after.lufs} LUFS — near-silent, not published`)
+      // REPORT ONLY — whisper's language ID never vetoes a render (Tom,
+      // 2026-09-28); English-only is enforced on the text before sending.
       const lang = assertEnglishFile(newMp3)
-      if (!lang.ok) throw new Error(`language: ${lang.why}`)
+      if (!lang.ok) console.warn(`  REPORT ONLY — ${s.id}: ${lang.why}`)
       row.audio_language = lang.lang
       row.audio_language_p = lang.p
 

@@ -1327,8 +1327,8 @@ async function verifyPlanBytes(plan, { headObject, concurrency = 8, minBytes = 1
 }
 
 /**
- * LISTEN to every clip this plan intends to keep, and promote the damaged ones
- * to RENDER.
+ * LISTEN to every clip this plan intends to keep, and REPORT what was heard.
+ * It never changes a decision (Tom, 2026-09-28) — see the end of the function.
  *
  * `verifyPlanBytes` asks whether an object exists. This asks whether it says
  * what the COURSE says it should say. Those are different questions, and the
@@ -1345,8 +1345,7 @@ async function verifyPlanBytes(plan, { headObject, concurrency = 8, minBytes = 1
  * `fetchObject(s3Key) -> Buffer` and the veracity module are injected so the
  * caller owns the S3 client and this file stays testable. A check that cannot
  * be made (whisper missing, download failed) is recorded as `unknown` and
- * NEVER treated as a failure — an unanswerable question must not trigger a
- * re-render, the same rule verifyPlanBytes follows for missing objects.
+ * NEVER treated as a failure.
  *
  * `verdictCache` (optional, `{ get(key), set(key, verdict) }`) removes DUPLICATE
  * decodes. Whisper is the dominant cost of this whole exercise, and bands re-ask
@@ -1421,15 +1420,11 @@ async function verifyPlanVeracity(plan, { fetchObject, veracity, concurrency = 4
   }
   await Promise.all(Array.from({ length: Math.min(concurrency, Math.max(1, targets.length)) }, worker))
 
-  for (const clip of plan.clips) {
-    if (clip.heard?.pass === false) {
-      clip.decisionBeforeVeracity = clip.decision
-      clip.decision = 'RENDER'
-      clip.reason = `${clip.reason}; but the audio is damaged (${clip.heard.reason}) — heard ${JSON.stringify(String(clip.heard.decode || '').slice(0, 60))}`
-      clip.reuseSource = null
-    }
-  }
-  recountPlan(plan)
+  // REPORT ONLY. Until 2026-09-28 a failed decode flipped the clip to RENDER.
+  // Tom's ruling that day (r-2026-09-28-no-automatic-whisper-stt-check-may): no
+  // automatic STT check may trigger a re-render of TTS audio. The verdict stays
+  // on `clip.heard` and in `plan.heard` for a person to listen to; the plan's
+  // decisions are exactly what they were before listening.
   plan.heard = summary
   return summary
 }

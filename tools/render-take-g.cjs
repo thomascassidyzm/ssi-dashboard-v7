@@ -229,7 +229,9 @@ function detectClipLang(mp3) {
 
 // closest to the exact seam count wins; spurious mid gaps break ties; a
 // phonology fail loses to ANY gap outcome (a wrong-language take is unusable)
-const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - need) * 10 + m.mid)
+// Seam gaps only. Whisper's language guess is recorded and never scores, re-rolls
+// or picks a take (Tom, 2026-09-28, r-2026-09-28-no-automatic-whisper-stt-check-may).
+const gateScore = (m, need) => -(Math.abs(m.big - need) * 10 + m.mid)
 
 ;(async () => {
   const POD_ID = await servingPodId(supabase, COURSE)  // the pod this course SERVES, resolved — never a literal slug
@@ -244,7 +246,7 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
   const knownBase = toBcp47(COURSE.split('_for_')[1] || 'eng').split('-')[0]
   const SUSPECT_LANGS = new Set(['en', knownBase].filter((l) => l && l !== targetBase))
   console.log(PHONO_GATE && SUSPECT_LANGS.size
-    ? `phonology gate ON: re-roll when whisper detects ${[...SUSPECT_LANGS].join('/')} instead of ${targetBase}`
+    ? `phonology REPORT ON: log (never re-roll) when whisper detects ${[...SUSPECT_LANGS].join('/')} instead of ${targetBase}`
     : `phonology gate OFF (${SUSPECT_LANGS.size ? 'whisper-cli or model missing — takes unchecked for language drift' : 'target is the known language'})`)
 
   let q = supabase.from('listening_pod_sentences')
@@ -312,12 +314,12 @@ const gateScore = (m, need) => (m.phonoFail ? -1000 : 0) - (Math.abs(m.big - nee
             const detected = PHONO_GATE && SUSPECT_LANGS.size ? await detectClipLang(m.file) : null
             const phonoFail = !!(detected && SUSPECT_LANGS.has(detected))
             if (phonoFail) {
-              phonoRerolls++
-              console.log(`S${s.global_order} g${gi} attempt ${attempt}: phonology FAIL — whisper detected '${detected}' for "${cued.slice(0, 40)}" → re-roll`)
+              phonoRerolls++  // counts REPORTS now; the name is kept for the summary line
+              console.log(`S${s.global_order} g${gi} attempt ${attempt}: REPORT ONLY — whisper detected '${detected}' for "${cued.slice(0, 40)}"`)
             }
             const cand = { ...m, attempt, phonoFail, detected }
             if (!best || gateScore(cand, need) > gateScore(best, need)) best = cand
-            if (m.big === need && m.mid === 0 && !phonoFail) {
+            if (m.big === need && m.mid === 0) {
               gatePassed++
               gateLog.push({ turn: s.global_order, group: gi, id, units: g.length, verdict: 'pass', attempts: attempt, gaps: m.gaps, detected })
               ledgerSet(lkey, { verdict: 'pass', id, units: g.length, attempts: attempt, gaps: m.gaps, detected, rerendered: freshFlags[gi] })

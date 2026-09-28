@@ -921,18 +921,16 @@ function isRetriableTtsError(error) {
   return true;
 }
 
-// ---- xAI phonology gate (whisper language auto-detect) --------------------
+// ---- xAI/Cartesia phonology SAMPLE (whisper language auto-detect) ---------
 // xAI's multilingual voices are English-dominant and can render a non-English
 // text with English phonology even with an explicit `language` sent
-// ('Come stai' → English 'come'; ita pilot 2026-07-10). The gate re-rolls a
-// render whose detected spoken language is a suspect (English or an explicit
-// config.suspectLanguages entry) instead of the steered language, and fails
-// the item after the retry budget — a wrong-language clip must never be
-// written (zero-tolerance audio bar). Same measurement as
-// tools/render-take-g.cjs; wired here so EVERY xAI call site is covered.
+// ('Come stai' → English 'come'; ita pilot 2026-07-10). From 2026-07-11 to
+// 2026-09-28 this was a gate that re-rolled and failed such renders. It is now
+// a sampled, report-only check (Tom, 2026-09-28: no automatic STT check may veto
+// or re-render TTS audio): one render in ten is listened to and a suspect
+// language (English or config.suspectLanguages) is logged, never acted on.
 // Skipped when whisper-cli/model are absent (logged once), when the steered
-// language is English/auto (no cross-language risk to detect), or when
-// XAI_PHONO_GATE=0.
+// language is English/auto, or when XAI_PHONO_GATE=0.
 const WHISPER_BIN = process.env.WHISPER
   || (fs.existsSync('/opt/homebrew/bin/whisper-cli') ? '/opt/homebrew/bin/whisper-cli' : 'whisper-cli');
 const WHISPER_MODEL = process.env.WHISPER_MODEL
@@ -940,6 +938,10 @@ const WHISPER_MODEL = process.env.WHISPER_MODEL
 const FFMPEG_BIN = process.env.FFMPEG || (fs.existsSync('/opt/homebrew/bin/ffmpeg') ? '/opt/homebrew/bin/ffmpeg' : 'ffmpeg');
 const PHONO_GATE_ON = process.env.XAI_PHONO_GATE !== '0' && fs.existsSync(WHISPER_BIN) && fs.existsSync(WHISPER_MODEL);
 let phonoGateWarned = false;
+// One render in ten is listened to, report-only. See renderWithRetry.
+const PHONO_SAMPLE_EVERY = 10;
+let phonoSampleCounter = 0;
+function phonoShouldSample() { return (phonoSampleCounter++ % PHONO_SAMPLE_EVERY) === 0; }
 
 // Bounded whisper concurrency: each detection spawns a multi-threaded
 // process; an unbounded fan-out (TTS concurrency can be 20) would thrash the
@@ -1027,10 +1029,9 @@ function phonologySuspects(provider, config) {
  * and, if every attempt comes back silent, throws — the caller never persists a
  * stub. This is the fix for the 2026-08-03 French batch.
  *
- * xAI renders steered to a non-English language additionally pass the
- * phonology gate above: a take whose detected spoken language is suspect is
- * re-rolled within the same retry budget, and the final failure throws so the
- * caller never persists a wrong-language clip.
+ * xAI and Cartesia renders steered to a non-English language are SAMPLED by
+ * the phonology check above — one in ten, report-only. It never re-rolls and
+ * never throws (Tom, 2026-09-28).
  *
  * @param {string} text - Text to synthesize
  * @param {string} provider - TTS provider
@@ -1068,10 +1069,15 @@ async function renderWithRetry(text, provider, config, maxRetries = 3) {
       const result = await renderOnce(text, provider, config);
       sent = true;
       guard.afterProviderCall(reservation, { ok: true });
-      if (suspects && PHONO_GATE_ON) {
+      // REPORT ONLY, SAMPLED (Tom, 2026-09-28, r-2026-09-28-no-automatic-whisper-stt-check-may:
+      // no automatic STT check may veto or re-render TTS audio; STT on TTS is
+      // sampling, never 100%). Until job #678 this re-rolled every suspect take
+      // and threw after the budget. Now one render in PHONO_SAMPLE_EVERY is
+      // listened to, a suspect language is logged, and the render is returned.
+      if (suspects && PHONO_GATE_ON && phonoShouldSample()) {
         const detected = await detectSpokenLanguage(result.audioBuffer);
         if (detected && suspects.has(detected)) {
-          throw new Error(`phonology gate: whisper detected '${detected}' instead of '${config.language}' for "${String(text).slice(0, 40)}"`);
+          console.warn(`[TTS] REPORT ONLY — phonology sample: whisper heard '${detected}' for a '${config.locale || config.language}' render of "${String(text).slice(0, 40)}". Returned as rendered; a person listens before anything is re-rendered.`);
         }
       }
       return result;
@@ -1256,6 +1262,7 @@ module.exports = {
   // phonology gate internals, exported for tests/tools
   detectSpokenLanguage,
   phonologySuspects,
+  PHONO_SAMPLE_EVERY,
   // empty-response gate + xAI pacing internals, exported for tests/tools
   assertAudibleResponse,
   recordXaiOutcome,
