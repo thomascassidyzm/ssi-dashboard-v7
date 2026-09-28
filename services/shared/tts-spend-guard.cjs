@@ -396,10 +396,13 @@ function createSpendGuard(opts = {}) {
     const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence }))
     if (h !== lastLimitsHash) {
       // Every change in the limits in force, and every raise or ignored
-      // loosening, is told — once per process per distinct set of limits.
+      // loosening, is told — ONCE PER HOST per distinct change (limits + notes),
+      // so a service restart does not re-raise the same raise (job #533: the
+      // Cartesia 125% raise re-carded on every Popty auto-deploy restart).
       if (lastLimitsHash !== null || cfg.notes.length) {
         const said = cfg.notes.map(n => n.kind === 'ignored' ? `IGNORED ${n.label}.${n.field}=${n.value} (${n.why})` : n.kind === 'override' ? `override file ${n.value} signed by ${n.by} until ${n.until} (${n.why})` : `RAISED ${n.label}.${n.field}=${n.value} by ${n.by} until ${n.until} (${n.why})`).join('; ')
-        alert(`limits:${h}`, cfg.notes.some(n => n.kind === 'ignored') ? 'trip' : 'warn', `spend limits in force changed${lastLimitsHash ? '' : ' (at start)'} on ${os.hostname()} — ${said || 'back to the committed baseline'}`, { limitsHash: h })
+        const changeKey = sha(JSON.stringify({ h, n: cfg.notes }))
+        alert(`limits:${changeKey}`, cfg.notes.some(n => n.kind === 'ignored') ? 'trip' : 'warn', `spend limits in force changed${lastLimitsHash ? '' : ' (at start)'} on ${os.hostname()} — ${said || 'back to the committed baseline'}`, { limitsHash: h }, { oncePerHost: true })
       }
       lastLimitsHash = h
     }

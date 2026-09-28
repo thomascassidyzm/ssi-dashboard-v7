@@ -195,3 +195,16 @@ describe('(f2) a pool stop is raised once per caller per cycle, not on every ref
     expect(trips()).toHaveLength(2)                                           // a new caller is news
   })
 })
+
+describe('(f3) a limits change is said once per host, not on every restart (job #533)', () => {
+  it('a restarted process with the same raise says nothing; a new raise is said', async () => {
+    const sent = []
+    const b = (share) => budgets({ providers: { cartesia: { monthlyPoolChars: 10 ** 6, dailyCapChars: 10 ** 6, raise: { stopAtShareOfPool: share, by: 'Tom', why: 'test', until: '2026-10-28' } } } })
+    const limitCards = () => sent.filter(e => String(e.key).startsWith('limits:'))
+    await call(guard({ notify: (e) => sent.push(e), budgetPath: b(1.25) }), 'hello')
+    await call(guard({ notify: (e) => sent.push(e), budgetPath: b(1.25) }), 'hello again')
+    expect(limitCards()).toHaveLength(1)
+    await call(guard({ notify: (e) => sent.push(e), budgetPath: b(1.1) }), 'hello once more')
+    expect(limitCards()).toHaveLength(2)
+  })
+})
