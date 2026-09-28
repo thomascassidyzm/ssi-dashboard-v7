@@ -147,6 +147,8 @@ function repeatKey(provider, voiceId, text) {
 function textHash(text) {
   return crypto.createHash('sha1').update(String(text || '')).digest('hex').slice(0, 16)
 }
+// Refusals that hold until the billing cycle resets: alerted once per caller per cycle.
+const CYCLE_STOPS = new Set(['POOL_SHARE', 'PROVIDER_POOL'])
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -406,18 +408,48 @@ function createSpendGuard(opts = {}) {
     fs.appendFileSync(mirrorPath, JSON.stringify(obj) + '\n')
   }
 
-  function alert(key, level, message, detail = {}) {
+  // Has ANY process on this host already said this key? (the alerts file is
+  // per host). A service restart must not re-raise what was already said.
+  function saidOnHost(key) {
+    try { return fs.readFileSync(alertsPath, 'utf8').includes(`"key":${JSON.stringify(key)}`) } catch { return false }
+  }
+
+  function alert(key, level, message, detail = {}, { oncePerHost = false } = {}) {
     if (alerted.has(key)) return
     alerted.add(key)
+    if (oncePerHost && saidOnHost(key)) return
     const entry = { at: new Date(now()).toISOString(), level, message, ...detail, key, pid: process.pid }
     try { fs.mkdirSync(path.dirname(alertsPath), { recursive: true }); fs.appendFileSync(alertsPath, JSON.stringify(entry) + '\n') } catch { /* the log line below still says it */ }
     ;(level === 'trip' ? log.error : log.warn).call(log, `[TtsSpendGuard] ${message}`)
     try { Promise.resolve(notify(entry)).catch(() => {}) } catch { /* never block a render on an alert */ }
   }
 
+  /**
+   * A pool stop holds until the cycle resets, so every further call from the
+   * same caller is refused for the same reason. Specimen (job #516): an editor
+   * saving cat_for_eng phrases in the Popty script editor asked phase8 for one
+   * 17-20 char known clip per save; each save past the stop, and each phase8
+   * restart, posted a fresh needs-you card. Now the human is told ONCE per
+   * caller (job, else course) per provider per cycle on this host; every later
+   * refusal still throws, and is still in the log and the mirror.
+   */
+  function tripAlertKey(code, provider, detail) {
+    if (CYCLE_STOPS.has(code)) {
+      const caller = detail?.job || detail?.course || 'unnamed caller'
+      return { key: `trip:${code}:${provider}:cycle-${new Date(cycleStart(now(), providerCycleDay(provider))).toISOString().slice(0, 10)}:${caller}`, caller, cycle: true }
+    }
+    return { key: `trip:${code}:${provider}:${dayKey(now())}:${detail?.key || ''}`, cycle: false }
+  }
+
   function refuse(code, provider, message, detail) {
-    alert(`trip:${code}:${provider}:${dayKey(now())}:${detail?.key || ''}`, 'trip', `${provider}: ${message}`, { provider, code, ...detail })
+    const t = tripAlertKey(code, provider, detail)
+    const said = t.cycle ? `${provider}: ${message} Caller: ${t.caller}. Said once for this caller this cycle; its further refusals are logged, not raised.` : `${provider}: ${message}`
+    alert(t.key, 'trip', said, { provider, code, ...detail }, { oncePerHost: t.cycle })
     throw new TtsSpendGuardError(code, message, { provider, ...detail })
+  }
+
+  function providerCycleDay(provider) {
+    try { return providerLimits(limitsNow(), provider).cycleStartDay || 1 } catch { return 1 }
   }
 
   function providerLimits(cfg, provider) {
@@ -437,7 +469,7 @@ function createSpendGuard(opts = {}) {
    * process may reserve at most unverifiedAllowanceChars until it reads again,
    * then refuses — fail closed for runs, open for a tiny call.
    */
-  async function checkProvider(provider, cfg, b, chars) {
+  async function checkProvider(provider, cfg, b, chars, who = {}) {
     const reader = usageReaders[provider]
     if (!reader && KNOWN_USAGE_LIMITS[provider]) {
       const key = `usage-known-limit:${provider}`
@@ -470,7 +502,7 @@ function createSpendGuard(opts = {}) {
         if (u.usedChars >= b.stopAtShareOfPool * pool) {
           const msg = `the provider itself reports ${u.usedChars.toLocaleString()} of ${pool.toLocaleString()} characters used — past the ${Math.round(b.stopAtShareOfPool * 100)}% stop`
           await store.trip(provider, 'PROVIDER_POOL', msg).catch(() => {})
-          refuse('PROVIDER_POOL', provider, msg, { usedChars: u.usedChars, pool })
+          refuse('PROVIDER_POOL', provider, msg, { usedChars: u.usedChars, pool, course: who.course, job: who.job })
         }
         if (!st.base) st.base = { used: u.usedChars, ledger: Number(t.cycle) || 0 }
         else {
@@ -504,7 +536,7 @@ function createSpendGuard(opts = {}) {
     const cfg = limitsNow()
     const b = providerLimits(cfg, provider)
 
-    await checkProvider(provider, cfg, b, chars)
+    await checkProvider(provider, cfg, b, chars, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
 
     const key = repeatKey(provider, ctx.voiceId, text)
     const base = {

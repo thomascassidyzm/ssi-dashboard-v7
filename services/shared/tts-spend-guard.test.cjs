@@ -155,3 +155,28 @@ describe('(f) a human is told — once — when a guard trips or a line is cross
     expect(fs.readFileSync(path.join(dir, 'ledger.alerts.jsonl'), 'utf8').trim().split('\n').filter(l => !l.includes('"usage-') && !l.includes('"limits:'))).toHaveLength(3)
   })
 })
+
+describe('(f2) a pool stop is raised once per caller per cycle, not on every refused call (job #516)', () => {
+  it('an editor saving phrase after phrase past the stop, across a service restart: one card, then one more only for a new caller or a new cycle', async () => {
+    const sent = []
+    const b = budgets({ providers: { cartesia: { monthlyPoolChars: 100, dailyCapChars: 1000, alertDailyChars: 1e9, stopAtShareOfPool: 0.5 } } })
+    const phase8 = () => guard({ budgetPath: b, notify: (e) => sent.push(e) })
+    const edit = (g, text, course = 'cat_for_eng') => call(g, text, { courseCode: course, job: null })
+    let g = phase8()
+    await edit(g, 'x'.repeat(50))                                             // reaches the stop
+    await expect(edit(g, 'I need to know it')).rejects.toThrow(/POOL_SHARE/)
+    clock += 30 * 60e3
+    await expect(edit(g, "I don't need to know it")).rejects.toThrow(/POOL_SHARE/)
+    g = phase8()                                                              // phase8 restarted
+    clock += 30 * 60e3
+    await expect(edit(g, 'you know what I want')).rejects.toThrow(/POOL_SHARE/)
+    clock += 2 * 86_400_000                                                   // days later, same cycle
+    await expect(edit(phase8(), 'another save')).rejects.toThrow(/POOL_SHARE/)
+    const trips = () => sent.filter(s => s.code === 'POOL_SHARE')
+    expect(trips()).toHaveLength(1)
+    expect(trips()[0].message).toMatch(/Caller: cat_for_eng\. Said once/)
+
+    await expect(edit(phase8(), 'a different course', 'spa_for_eng')).rejects.toThrow(/POOL_SHARE/)
+    expect(trips()).toHaveLength(2)                                           // a new caller is news
+  })
+})
