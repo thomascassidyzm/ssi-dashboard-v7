@@ -655,6 +655,8 @@ Pairs with **L21** (sometimes the answer is to add more, not less) and **R0.3** 
 
 **Why keep the LEGO rather than grow it.** The seed's own cut was sound and **L2** says a chunk grows only to the size that makes it meaningful and no further. What was wrong was the *phrases*' failure to carry the condition, and phrases are the cheaper, more local thing to fix (**R0.3**) · **This is K23(d) generalised past two-sense words:** a form that is only right in context must carry its context in every prompt, everywhere in the course — and **P16** is why the sweep is course-wide, since a USE phrase replays cold at any later point · **PR3** is the presentation that tells the learner the frame exists.
 
+**The intro gives the past frame when the LEGO's gloss relies on it — worked example, S0544L02.** "it would be difficult → sarebbe stato difficile" is right *only* after a past frame; heard bare, the learner would expect *sarebbe difficile*. Kai's ruling (2026-09-28 19:15Z, job #580·I): the LEGO stays unchanged, and its introduction carries a demonstration sentence that supplies the frame — *The Italian for 'it would be difficult' in phrases like 'he said it would be difficult' is:* — built only from taught words, preferably one of the LEGO's own phrases. That line was already on the LEGO as a human-marked (guarded) presentation written by job #546·I under Kai's template, so #580·I changed nothing and the strict intro-mirror check holds. The rule generalises: whenever a LEGO's gloss is licensed by a frame the LEGO itself does not contain, the intro's "as in / in phrases like" sentence must show that frame.
+
 
 ---
 
