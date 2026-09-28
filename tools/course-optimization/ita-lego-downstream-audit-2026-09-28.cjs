@@ -111,6 +111,8 @@ function foldChanges(events, liveLegos) {
     else if (d.edits) for (const x of d.edits) rec(x.id, x.before, x.after, e.surface);
     else if (d.changes && d.changes[0] && d.changes[0].legos) for (const ch of d.changes) for (const u of ch.legos.update) rec(legoIdOf(ch.seed, u.idx), u.from, u.to, e.surface);
     else if (d.changes && d.changes[0] && d.changes[0].known_from !== undefined) for (const c of d.changes) { if (c.kind === 'components') continue; rec(c.id, { known: c.known_from, target: c.target }, { known: c.known_to, target: c.target }, e.surface); }
+    // changes[{id, from:{known,target}, to:{known,target}}] — the shape ita-152-grow-lavrei and ita-159-that-isnt write (job #673·I: the audit was blind to both until this clause).
+    else if (d.changes && d.changes[0] && d.changes[0].from && d.changes[0].to && d.changes[0].from.known !== undefined) for (const c of d.changes) rec(c.id || single, c.from, c.to, e.surface);
     else if (d.legos && d.legos[0] && d.legos[0].known_from !== undefined) for (const c of d.legos) { const L = liveLegos[c.id]; if (L) rec(c.id, { known: c.known_from, target: L.target_text }, { known: c.known_to, target: L.target_text }, e.surface); }
   }
   return Object.values(chain).map((c) => {
