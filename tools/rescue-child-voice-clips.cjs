@@ -283,8 +283,10 @@ async function rescueCourse(course, log) {
           if (!PHONO_GATE) { verdict = 'unchecked'; break }
           detected = await detectClipLang(mp3)
           if (detected == null || detected === knownBase) { verdict = detected ? 'pass' : 'unchecked'; break }
+          // REPORT ONLY — whisper's language guess never re-rolls (Tom, 2026-09-28).
           verdict = 'phonology-fail'
-          console.log(`  attempt ${attempt} detected '${detected}' (want ${knownBase}) → re-roll: "${text}"`)
+          console.log(`  REPORT ONLY — whisper detected '${detected}' (want ${knownBase}); kept: "${text}"`)
+          break
         }
         if (verdict === 'tail-click-fail' || verdict === 'phonology-fail') {
           console.log(`  GATE FAIL after ${GATE_ATTEMPTS} takes — linked anyway (best effort), FLAG FOR EARS: "${text}" → ${newId}`)

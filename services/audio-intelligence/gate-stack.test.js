@@ -33,12 +33,12 @@ describe('disposition — null refuses', () => {
   it('REFUSES a clip a refusing gate could not measure — unchecked is not passed', () => {
     const d = disposition([
       pass('speech-span'),
-      gateResult('phonology', { pass: null, available: false, reason: 'no whisper on this box' }),
+      gateResult('loudness', { pass: null, available: false, reason: 'no ffmpeg on this box' }),
     ])
     expect(d.admit).toBe(false)
     expect(d.outcome).toBe('quarantined')
-    expect(d.refusedBy).toContain('phonology')
-    expect(d.unmeasured).toContain('phonology')
+    expect(d.refusedBy).toContain('loudness')
+    expect(d.unmeasured).toContain('loudness')
     expect(d.reason).toMatch(/could not be measured/)
   })
 
@@ -60,8 +60,8 @@ describe('disposition — null refuses', () => {
   })
 
   it('distinguishes DOES NOT APPLY from CANNOT MEASURE — the same gate, opposite dispositions', () => {
-    const notApplicable = disposition([gateResult('phonology', { applicable: false })])
-    const cannotMeasure = disposition([gateResult('phonology', { pass: null, available: false })])
+    const notApplicable = disposition([gateResult('loudness', { applicable: false })])
+    const cannotMeasure = disposition([gateResult('loudness', { pass: null, available: false })])
     expect(notApplicable.admit).toBe(true)
     expect(cannotMeasure.admit).toBe(false)
   })
@@ -79,6 +79,19 @@ describe('disposition — null refuses', () => {
     const d = disposition([gateResult('syllable-rate', { pass: null, refusing: false })])
     expect(d.admit).toBe(true)
     expect(d.refusedBy).toEqual([])
+  })
+
+  // Tom, 2026-09-28 (r-2026-09-28-no-automatic-whisper-stt-check-may): no
+  // automatic STT check may veto TTS audio. The two whisper tiers are advisory.
+  it('the whisper tiers (words, phonology) never refuse — failed or unmeasured', () => {
+    const failed = disposition([pass('speech-span'),
+      gateResult('words', { pass: false, reason: 'CER 0.8' }),
+      gateResult('phonology', { pass: false, reason: 'heard en' })])
+    expect(failed.admit).toBe(true)
+    expect(failed.advisory).toEqual(['words', 'phonology'])
+    const unmeasured = disposition([gateResult('words', { pass: null, available: false }), gateResult('phonology', { pass: null, available: false })])
+    expect(unmeasured.admit).toBe(true)
+    expect(unmeasured.refusedBy).toEqual([])
   })
 
   it('carries the role, because a measurement must say which job it is doing', () => {

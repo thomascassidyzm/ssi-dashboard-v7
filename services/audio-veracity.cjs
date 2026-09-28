@@ -2001,13 +2001,12 @@ async function checkAudioVeracity (input, expectedText, language, opts = {}) {
 // Quarantine — a durable record plus the failing bytes, never a silent skip
 // ---------------------------------------------------------------------------
 
-// ONE ledger per machine, not one per checkout. Until 2026-09-28 this sat under
-// the checkout (scripts/audio-veracity-quarantine), so every worktree started
-// blind to what the gate had already refused: ita "ha detto qualcos'altro?" was
-// rendered, refused and quarantined 3x per voice in one worktree, then again on
-// a re-run, then asked for by a third worktree — until the TTS spend guard's
-// repeat limit (6 in 24h) stopped it (job #674). The ledger is what lets
-// renderChecked refuse to pay twice for the same failure, so it has to be shared.
+// ONE ledger per machine, not one per checkout (job #674). Since 2026-09-28
+// (job #678) renderChecked no longer quarantines anything — Tom's ruling
+// r-2026-09-28-no-automatic-whisper-stt-check-may: no automatic STT check may
+// veto or re-render TTS audio. The ledger stays readable because the audio
+// preview page lists what the old gate refused, and quarantine() stays for
+// tools that park evidence by hand.
 // Under vitest the default is a per-process temp dir (as tts-spend-guard does):
 // a test's quarantine must never become a real refusal.
 const QUARANTINE_DIR = process.env.AUDIO_VERACITY_QUARANTINE_DIR
@@ -2020,41 +2019,7 @@ function quarantineDir () {
 }
 
 /**
- * How long a quarantine stands as the gate's answer for the same words in the
- * same voice. A deterministic provider (Azure, and Cartesia at fixed settings)
- * returns the same audio for the same input, so the checker hears the same thing
- * and refuses again: the re-render is spend with no chance of a different
- * result. A week covers every re-run and follow-up job; a checker fix is the
- * reason to try again sooner, and AUDIO_VERACITY_RETRY_QUARANTINED=1 says so
- * explicitly for one run.
- */
-const QUARANTINE_MEMORY_MS = 7 * 24 * 3600 * 1000
-
-/**
- * The most recent quarantine of these words in this voice and language within
- * the memory window, or null. Needs a voice: without one a refusal in another
- * voice could wrongly stand in, so no voice = no memory (render as before).
- */
-function priorQuarantine ({ text, language, voiceId, now = Date.now() }) {
-  if (!voiceId || process.env.AUDIO_VERACITY_RETRY_QUARANTINED === '1') return null
-  let raw
-  try { raw = fs.readFileSync(path.join(quarantineDir(), 'quarantine.jsonl'), 'utf8') } catch { return null }
-  const want = normalise(text)
-  let hit = null
-  for (const line of raw.split('\n')) {
-    if (!line.includes(String(voiceId))) continue
-    let e
-    try { e = JSON.parse(line) } catch { continue }
-    if (e.voiceId !== voiceId || e.language !== language || normalise(e.text) !== want) continue
-    const at = Date.parse(e.quarantined_at)
-    if (!(now - at < QUARANTINE_MEMORY_MS)) continue
-    if (!hit || at > Date.parse(hit.quarantined_at)) hit = e
-  }
-  return hit
-}
-
-/**
- * Park a clip that failed every attempt. The audio is kept so it can be
+ * Park a clip as evidence. The audio is kept so it can be
  * listened to — a quarantined clip is evidence, and the one thing the findings
  * are explicit they could not do is listen (findings §7).
  * Never throws: losing the record is bad, killing the render is worse.
@@ -2323,24 +2288,28 @@ function samplerState () {
 }
 
 /**
- * A sampler that checks EVERY clip and banks no trust — for the single-clip,
- * human-triggered repair routes (regenerate-single/-phrase/-lego/-presentation).
+ * The sampler for SINGLE-CLIP work — the repair routes and the one-off course
+ * edit scripts. Until 2026-09-28 this was ALWAYS_SAMPLER and checked every clip,
+ * and because a failed check re-rendered and then refused the clip, every Italian
+ * edit Kai's jobs made went through a 100% Whisper veto (job #678). Tom's rulings:
+ * STT on TTS audio is 10% sampling, never 100% and never a veto
+ * (ssi-stt-sampling-doctrine, 2026-08-24; r-2026-09-28-no-automatic-whisper-stt-check-may).
  *
- * Graduated sampling exists to make BULK affordable. It is exactly wrong on the
- * repair path: at the 0.2% floor a one-clip regenerate is checked essentially
- * never, and that is the one render where someone is deliberately replacing a
- * clip they believe is bad. One whisper decode per button press is nothing.
- *
- * Deliberately NOT the process-wide sampler: startCourse() would reset the
- * every-Nth counter and bank a bogus clean course, so one person fixing a clip
- * in ScriptViewer would corrupt the trust accounting of a bulk run happening in
- * the same process at the same time. This one holds no state and touches none.
+ * So it samples every tenth clip, process-wide, and banks no trust: it holds its
+ * own counter so a person fixing one clip never touches the trust accounting of a
+ * bulk run in the same process. The old export name is kept so the committed
+ * scripts that pass it keep working — they now get sampling, not a gate.
  */
-const ALWAYS_SAMPLER = Object.freeze({
-  shouldCheck: () => true,
-  recordVerdict: () => ({ rate: 1, snapped: false }),
-  state: () => ({ course: null, rate: 1, courses_started: 0, step: 0, clean_since_step: 0, step_clips: 0, sampled_this_course: 0, failed_this_course: 0 }),
+const SPOT_SAMPLE_EVERY = 10
+let spotCounter = 0
+const SPOT_SAMPLER = Object.freeze({
+  shouldCheck: () => (spotCounter++ % SPOT_SAMPLE_EVERY) === 0,
+  recordVerdict: () => ({ rate: 1 / SPOT_SAMPLE_EVERY, snapped: false }),
+  state: () => ({ course: null, rate: 1 / SPOT_SAMPLE_EVERY, courses_started: 0, step: 0, clean_since_step: 0, step_clips: 0, sampled_this_course: 0, failed_this_course: 0 }),
 })
+/** @deprecated name — it no longer checks always. See SPOT_SAMPLER. */
+const ALWAYS_SAMPLER = SPOT_SAMPLER
+function _resetSpotSampler () { spotCounter = 0 }
 
 // ---------------------------------------------------------------------------
 // Persisting the verdict — the difference between a claim and a measurement
@@ -2396,133 +2365,81 @@ function verdictColumns (verdict, o = {}) {
 }
 
 // ---------------------------------------------------------------------------
-// The gate itself — render, check, re-render, quarantine
+// Render once, publish, and sample-check for the report
 // ---------------------------------------------------------------------------
 
 /**
- * DEFAULT: the first render plus 2 more attempts, then quarantine.
- * A default, not a ruling. Two re-rolls is what tools/repair-silent-clips.cjs
- * uses for the same class of transient provider damage.
- */
-const DEFAULT_ATTEMPTS = Number(process.env.AUDIO_VERACITY_ATTEMPTS || 3)
-
-/**
- * Render a clip and refuse to hand it back unless it passes the gate.
+ * Render a clip ONCE and hand it back for publishing. If the sampler picks it,
+ * Whisper listens and the verdict is RECORDED — on the returned verdict, in the
+ * stats, and (through verdictColumns) on the course_audio row — and nothing else.
  *
- * THE ONE PLACE the publish decision is made. Callers get either audio that is
- * safe to publish, or `published: false` and a clip that has already been
- * quarantined — they never get a failing buffer with a warning attached,
- * because a warning next to a returned buffer is a buffer that gets published.
+ * TOM'S RULINGS, and they are the whole design of this function:
+ *   - "we do NOT use automatic checks on listening content" (2026-09-28,
+ *     r-2026-09-28-no-automatic-whisper-stt-check-may): no automatic STT check
+ *     may veto a TTS render or trigger a re-render.
+ *   - STT on TTS audio = 10% graduated sampling, never 100%, never a hard veto;
+ *     full STT checks are for HUMAN recordings (ssi-stt-sampling-doctrine,
+ *     2026-08-24). Voice-match and VAD are the hard gates, and they live
+ *     elsewhere.
+ *
+ * HISTORY, so nobody rebuilds it: from 2026-08-04 this was a gate — render,
+ * check, re-render up to 3x, quarantine and refuse. The per-render gate was
+ * switched off for bulk bands on 2026-08-08, came back inside this function with
+ * graduated sampling on 2026-08-13 still carrying the re-render and quarantine,
+ * reached 100% on the single-clip paths on 2026-08-17 (ALWAYS_SAMPLER), and was
+ * copied into every ita_for_eng edit script in September. Whisper refusing
+ * correct Italian and re-rendering it 3x per voice is how it was found (#674).
+ * The veto is gone; services/stt-report-only.test.cjs fails if it comes back.
+ *
+ * `published` is always true and `attempts` is always 1; both stay in the
+ * return shape because ~40 committed callers read them. `o.attempts` is ignored.
  *
  * @param {object} o
  * @param {() => Promise<{buffer:Buffer, durationMs:number, wordBoundaries?:any}>} o.render
- *        renders AND masters one attempt. Called up to `attempts` times.
- *        Must return the buffer that would ACTUALLY be published — mastering
- *        is part of what can damage a clip, so the gate checks its output.
+ *        renders AND masters the clip. Called exactly once.
  * @param {string} o.expectedText  the text sent to TTS, POST gender expansion.
- *        Using the pre-expansion text false-alarms on every gendered clip.
  * @param {string} o.language      course_audio.language
- * @param {object} [o.meta]        recorded on the quarantine entry
+ * @param {object} [o.meta]        labels the log line
  * @param {object} [o.stats]       a newStats() object to fold counts into
- * @returns {Promise<{published:boolean, buffer?:Buffer, durationMs?:number,
- *                    wordBoundaries?:any, verdict:object, attempts:number,
- *                    verdicts:object[], quarantine?:object}>}
+ * @returns {Promise<{published:true, buffer:Buffer, durationMs:number,
+ *                    wordBoundaries?:any, verdict:object, attempts:1, verdicts:object[]}>}
  */
 async function renderChecked (o) {
   const { render, expectedText, language, meta = {}, stats, logger = console } = o
-  const attempts = Number(o.attempts || DEFAULT_ATTEMPTS)
   // Test seam only. Production callers never pass this.
   const check = o.check || checkAudioVeracity
   const warn = (m) => (logger.warn || logger.log || console.warn).call(logger, m)
-  const err = (m) => (logger.error || logger.log || console.error).call(logger, m)
   const info = (m) => (logger.info || logger.log || console.log).call(logger, m)
   const label = `${meta.role || '?'} "${String(expectedText).slice(0, 40)}"`
-  // The run's graduated sampler by default. Production callers pass one only to
-  // opt a whole path out of sampling — see ALWAYS_SAMPLER, used by the
-  // single-clip repair routes. Tests pass their own.
   const sampler = o.sampler || runSampler
 
-  // GRADUATED SAMPLING (Tom, 2026-08-13). Clips the sampler passes over are
-  // rendered once and published with veracity_pass NULL — honestly "not checked",
-  // never a fabricated pass. `not_sampled` is its own counter so a deliberate
-  // policy skip can never be read as the gate failing to run.
+  const rendered = await render(1)
+
   if (!sampler.shouldCheck()) {
-    const rendered = await render(1)
     const verdict = { checked: false, pass: null, reason: 'not_sampled' }
     recordVerdict(stats, verdict)
     return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
   }
 
-  // ALREADY REFUSED: these words in this voice failed every attempt recently.
-  // Rendering them again buys the same audio and the same refusal, so answer
-  // from the ledger for nothing — the kept audio is still there to listen to.
-  const prior = priorQuarantine({ text: expectedText, language, voiceId: meta.voiceId })
-  if (prior) {
-    const pv = Array.isArray(prior.verdicts) ? prior.verdicts[prior.verdicts.length - 1] : null
-    const verdict = { checked: true, pass: false, reason: 'already_quarantined', cer: pv?.cer ?? null, decode: pv?.decode ?? null, priorReason: pv?.reason ?? null }
-    warn(`[audio-veracity] ${label}: already QUARANTINED in voice ${meta.voiceId} at ${prior.quarantined_at} (heard ${JSON.stringify(String(pv?.decode ?? '').slice(0, 60))}) — NOT re-rendered, nothing spent.${prior.audio_path ? ` Audio kept at ${prior.audio_path}` : ''} AUDIO_VERACITY_RETRY_QUARANTINED=1 re-renders after a checker fix.`)
-    return { published: false, verdict, attempts: 0, verdicts: [], quarantine: { dir: null, audioPath: prior.audio_path || null, prior: true } }
+  // A check that throws must never cost the render: report it as unchecked.
+  let verdict
+  try {
+    verdict = await check(rendered.buffer, expectedText, language, { meta })
+  } catch (e) {
+    verdict = { checked: false, pass: null, reason: 'check_failed', detail: e.message }
   }
-
-  const verdicts = []
-  let last = null
-  let used = 0
-  for (let attempt = 1; attempt <= attempts; attempt++) {
-    last = await render(attempt)
-    used = attempt
-    const verdict = await check(last.buffer, expectedText, language, { meta })
-    verdicts.push({ attempt, ...verdict, decode: verdict.decode })
-    // Tell the sampler before anything else acts on the verdict: a failure has to
-    // snap the rate back for the clips that follow, whether or not a re-render
-    // rescues this one.
-    const snap = sampler.recordVerdict(verdict)
-    if (snap.snapped) {
-      warn(`[audio-veracity] sample failed on ${label} — sampling rate snapped back to `
-        + `${(snap.rate * 100).toFixed(1)}% for the rest of this course`)
-    }
-    // The relaxation is as worth saying out loud as the snap-back: it is the
-    // moment the run starts paying less, and a reader of the log should be able
-    // to see WHY the checked count stops climbing.
-    if (snap.relaxed) {
-      info(`[audio-veracity] ${meta.courseCode || 'course'}: sample clean — relaxing to `
-        + `${(snap.rate * 100).toFixed(2)}% (rung ${snap.step})`)
-    }
-
-    if (!verdict.checked) {
-      // NOT a pass — an admission. Publish (the alternative is halting the
-      // estate on a missing binary) but never let it count as verified.
-      recordVerdict(stats, verdict)
-      return { published: true, ...last, verdict, attempts: attempt, verdicts }
-    }
-    if (verdict.pass) {
-      recordVerdict(stats, verdict)
-      if (attempt > 1 && stats) stats.rerendered++
-      if (attempt > 1) {
-        warn(`[audio-veracity] ${label}: passed on attempt ${attempt}/${attempts} (CER ${verdict.cer}) — first render was defective and was NOT published`)
-      }
-      return { published: true, ...last, verdict, attempts: attempt, verdicts }
-    }
-    // SAME FAILURE TWICE: the re-render was heard exactly as the one before it,
-    // so the provider is giving back the same audio and a third try buys the
-    // same answer. Re-rolls exist for transient damage, which decodes differently.
-    const prev = verdicts.length > 1 ? verdicts[verdicts.length - 2] : null
-    const repeated = prev && normalise(prev.decode) === normalise(verdict.decode)
-    warn(`[audio-veracity] ${label}: FAILED attempt ${attempt}/${attempts} — ${verdict.reason}, CER ${verdict.cer}, heard ${JSON.stringify(String(verdict.decode).slice(0, 60))}${repeated ? ' — heard identically to the last attempt, stopping' : attempt < attempts ? ' — re-rendering' : ''}`)
-    if (repeated) break
+  recordVerdict(stats, verdict)
+  const snap = sampler.recordVerdict(verdict)
+  if (snap.relaxed) {
+    info(`[audio-veracity] ${meta.courseCode || 'course'}: sample clean — relaxing to `
+      + `${(snap.rate * 100).toFixed(2)}% (rung ${snap.step})`)
   }
-
-  // Every attempt failed. Nothing is uploaded, nothing is inserted, nothing is
-  // bound — and the clip is parked with its audio so it can be listened to.
-  if (stats) { stats.checked++; stats.failed++; stats.quarantined++ }
-  const q = quarantine({
-    ...meta,
-    text: expectedText,
-    language,
-    attempts: used,
-    verdicts: verdicts.map(v => ({ attempt: v.attempt, reason: v.reason, cer: v.cer, decode: v.decode })),
-  }, last?.buffer, logger)
-  err(`[audio-veracity] ${label}: QUARANTINED after ${used} attempts — NOT published.${q?.audioPath ? ` Audio kept at ${q.audioPath}` : ''}`)
-  return { published: false, verdict: verdicts[verdicts.length - 1], attempts: used, verdicts, quarantine: q }
+  if (verdict.checked === true && verdict.pass === false) {
+    if (stats) stats.flagged = (stats.flagged || 0) + 1
+    warn(`[audio-veracity] REPORT ONLY — sampled ${label} heard as ${JSON.stringify(String(verdict.decode ?? '').slice(0, 60))} `
+      + `(${verdict.reason}, CER ${verdict.cer}). Published as rendered; a person listens before anything is re-rendered.`)
+  }
+  return { published: true, ...rendered, verdict, attempts: 1, verdicts: [verdict] }
 }
 
 /** One line for a log or a completion message. */
@@ -2530,9 +2447,7 @@ function formatStats (stats) {
   if (!stats) return 'veracity: no data'
   const bits = [
     `${stats.checked} checked`,
-    `${stats.failed} failed`,
-    `${stats.rerendered} re-rendered`,
-    `${stats.quarantined} quarantined`,
+    `${stats.failed} flagged for a listen (report only — published as rendered)`,
     `${stats.unchecked} UNCHECKED`,
   ]
   // Sampling state belongs on the same line as the counts, or "12 checked" out of
@@ -2548,7 +2463,6 @@ function formatStats (stats) {
 
 module.exports = {
   renderChecked,
-  DEFAULT_ATTEMPTS,
   checkAudioVeracity,
   verdictFromDecode,
   verifyVerdict,
@@ -2583,6 +2497,9 @@ module.exports = {
   recordVerdict,
   createSampler,
   ALWAYS_SAMPLER,
+  SPOT_SAMPLER,
+  SPOT_SAMPLE_EVERY,
+  _resetSpotSampler,
   startCourse,
   resetSampler,
   samplerState,
@@ -2600,7 +2517,5 @@ module.exports = {
   WHISPER_ISO1,
   QUARANTINE_DIR,
   quarantineDir,
-  priorQuarantine,
-  QUARANTINE_MEMORY_MS,
   _resetAnnouncement,
 }
