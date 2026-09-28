@@ -786,6 +786,9 @@ This is what **PR1** exists for: a tiny explanation, authored by hand in a fixes
 
 ---
 
+**K25 — THE PERSON MUST MATCH ON BOTH SIDES. Where the target has a FINITE verb that marks person and no other expressed subject, the known side carries the subject pronoun.** · **HARD** · **Kai, 2026-09-28 (job #573·I), after catching it twice** — S0599L01C01 read "would have been" over *sarebbe stato* (seed 599 is first person: *sarei stato*, job #544) and S0201L01 read "wanted" over *volevamo* (job #572) · An Italian *volevamo* tells the learner "we"; an English "wanted" tells them nothing, so the prompt cannot be answered without guessing — a ZUT failure in the known language (K2), and the same defect wherever the target conjugates for person · **Exclusions, his:** infinitives, imperatives ("come here" = *vieni qui* — English imperatives have no subject), participles and gerunds, impersonal *si*/*ci* constructions where English naturally has none, and answers or fragments where the English subject is genuinely elided in natural speech — list those, do not edit them · **Fix on the KNOWN side only**, choosing the pronoun from the target's person; a 3rd singular takes he/she/it from the seed or LEGO context, and if that is undecidable it goes to Kai with the sentence · A component must still tile its LEGO on both sides after the pronoun is added; adjust consistently with the LEGO · **Check:** `tools/course-optimization/ita-missing-subject-2026-09-28.cjs` (ita_for_eng; calibrated on the two rows above via `--calibrate`, prints coverage, lists borderline rows rather than editing them). Not yet generalised to other target languages.
+
+
 ## 5. Audio and text agreement
 
 **A1 — The clip must speak the text it is linked to.** · **HARD** · *Stated in no doctrine file at all* — it exists only as the intent behind Check 18 · The learner hears one thing and reads another.
