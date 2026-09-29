@@ -1176,6 +1176,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     courseCode: door.courseCode || config.courseCode || null,
     replacing: [].concat(door.replacing || []),
     voiceBound: !!door.voiceBound,
+    readOnly: !!door.dryRun,
   }, lib);
 
   const chars = String(text).length;

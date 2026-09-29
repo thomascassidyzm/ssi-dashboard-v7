@@ -605,7 +605,7 @@ async function humanRowAtAudioKey(courseCode, textNormalized, language, role, vo
  *                                         very clip it was asked to replace.
  */
 async function findSiblingCourseClip(courseCode, text, language, voiceId, opts = {}) {
-  const { excludeS3Keys = [], includeOwnCourse = false, ownCourseOnly = false, voiceBound = false } = opts
+  const { excludeS3Keys = [], includeOwnCourse = false, ownCourseOnly = false, voiceBound = false, readOnly = false } = opts
   // Normalise ONCE. `audioKeyCandidates(normalizeForAudio(text))` collapsed
   // internal whitespace before handing the text to normalizeForDb, whose whole
   // job is to be byte-identical to SQL normalize_text() — which does NOT
@@ -650,7 +650,7 @@ async function findSiblingCourseClip(courseCode, text, language, voiceId, opts =
     return usable[0] || null
   }
   if (!clipSource) clipSource = clipIndex.supabaseClipSource(supabase, { log: logger, indexedBy: 'phase8:write-through' })
-  return clipIndex.resolveClip(clipSource, { text, language, voiceId, courseCode, includeOwnCourse: true, ownCourseOnly }, pick)
+  return clipIndex.resolveClip(clipSource, { text, language, voiceId, courseCode, includeOwnCourse: true, ownCourseOnly, readOnly }, pick)
 }
 let clipSource = null
 /** Tests point phase8's clip lookup at a memory source. */
@@ -866,6 +866,7 @@ async function reuseSiblingIntoCourse({
     excludeS3Keys,
     ownCourseOnly: role === 'presentation',
     ...(lookupOpts || {}),
+    readOnly,
   })
   if (lookup.status === 'error') { if (counters) counters.lookupErrors++; return null }
   const sibling = lookup.clip

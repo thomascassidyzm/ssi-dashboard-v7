@@ -21,8 +21,12 @@ const ident = (o = {}) => ({ courseCode: 'ita_for_eng', text: TEXT, language: 'i
 function setup(rows) {
   const tables = { course_audio: rows.map(r => ({ ...r })) }
   const { phase8, supabase, s3 } = loadPhase8({ tables })
-  phase8.useClipSource(clipIndex.memoryClipSource({ rows: tables.course_audio, courses: [] }))
+  const src = clipIndex.memoryClipSource({ rows: tables.course_audio, courses: [] })
   const writes = []
+  // The clip-index source's write() is a write too (production upserts clip_index).
+  const srcWrite = src.write.bind(src)
+  src.write = async (r) => { writes.push('clip_index.write'); return srcWrite(r) }
+  phase8.useClipSource(src)
   const orig = supabase.from.bind(supabase)
   supabase.from = (t) => {
     const q = orig(t)
@@ -54,6 +58,6 @@ describe('render route library step (#708)', () => {
     const { phase8, writes } = setup([row({ id: 'b1', course_code: 'other_for_eng', s3_key: 'mastered/SIB.mp3' })])
     const out = await phase8.linkClipForRender(ident())
     expect(out).toMatchObject({ s3Key: 'mastered/SIB.mp3' })
-    expect(writes).toEqual(['course_audio.upsert'])
+    expect(writes).toEqual(['clip_index.write', 'course_audio.upsert'])
   })
 })

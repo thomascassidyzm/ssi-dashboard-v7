@@ -325,7 +325,7 @@ function memoryClipSource({ index = [], rows = [], courses = [] } = {}) {
  *      for, the keyed course_audio fallback — whose rows are written through.
  *
  * @param {object} source  supabaseClipSource(...) or memoryClipSource(...)
- * @param {object} want    { text, language (any spelling), voiceId?, courseCode?, includeOwnCourse?, ownCourseOnly? }
+ * @param {object} want    { text, language (any spelling), voiceId?, courseCode?, includeOwnCourse?, ownCourseOnly?, readOnly? }
  * @param {(rows: object[]) => object|null} pick
  */
 async function resolveClip(source, want, pick) {
@@ -353,7 +353,8 @@ async function resolveClip(source, want, pick) {
   }
   stats.fallbacks++
   const rows = await source.fallback(want.text, {})
-  await source.write(rows)
+  // readOnly (a dry run): answer from what was read, write nothing anywhere.
+  if (!want.readOnly) await source.write(rows)
   return pick(dedupeById([...own, ...indexed, ...await inLanguage(rows)])) || first
 }
 
