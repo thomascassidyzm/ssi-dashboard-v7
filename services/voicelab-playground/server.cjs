@@ -301,7 +301,9 @@ function readBody (req) {
   })
 }
 
-const server = http.createServer(async (req, res) => {
+const chainContext = require('../shared/chain-context.cjs')
+const server = http.createServer((req, res) => chainContext.run(`voicelab ${req.method} ${(req.url || '').split('?')[0]}`, () => handleRequest(req, res)))
+async function handleRequest(req, res) {
   const url = new URL(req.url, `http://${req.headers.host || 'localhost'}`)
 
   try {
@@ -381,7 +383,7 @@ const server = http.createServer(async (req, res) => {
     console.error('[voicelab] error', err)
     return json(res, err.status || 500, { error: err.message || String(err) })
   }
-})
+}
 
 // Listen first, read the estate second: the census query is a nicety and must never be
 // what stands between a restart and a working page. Until it lands, the menu is the

@@ -132,12 +132,34 @@ function findTicketIssuers(files) {
   return out
 }
 
+/**
+ * THE CHAIN MARKER (job #702, Tom 2026-09-29: one route for audio). Only Popty's
+ * own servers and the entry may put a flow inside the chain; a script that
+ * requires chain-context to give itself entry has bypassed the one route.
+ */
+const CHAIN_USERS = new Set([
+  'services/shared/chain-context.cjs', 'services/shared/chain-test-setup.cjs', 'services/shared/door-ticket.cjs',
+  'services/shared/audio-render-entry.cjs', 'services/phases/phase8-audio-v13.cjs', 'services/production-api.cjs', 'services/orchestration/orchestrator.cjs', 'services/voicelab-playground/server.cjs',
+  'tools/check-tts-door.cjs',
+])
+/** Pure: files other than Popty's servers and the entry that touch the chain marker. */
+function findChainUsers(files) {
+  const out = []
+  for (const [file, text] of Object.entries(files)) {
+    if (CHAIN_USERS.has(file) || isTest(file)) continue
+    text.split('\n').forEach((line, i) => {
+      if (/chain-context(\.cjs)?['"]/.test(line)) out.push({ file, line: i + 1, kind: 'enters the audio chain outside the one route (POST /api/audio/render)', text: line.trim().slice(0, 140) })
+    })
+  }
+  return out
+}
+
 function scanRepo(root = ROOT) {
   const files = {}
   for (const f of trackedFiles(root)) {
     try { files[f] = fs.readFileSync(path.join(root, f), 'utf8') } catch { /* deleted in the worktree */ }
   }
-  return [...findBypasses(files), ...findTicketIssuers(files)]
+  return [...findBypasses(files), ...findTicketIssuers(files), ...findChainUsers(files)]
 }
 
 module.exports = { DOOR, GUARDED_DOORS, ALLOWED, BAKEOFF_ADAPTERS, SYNTHESIS_CALLS, TICKET_ISSUERS, findBypasses, findTicketIssuers, scanRepo }

@@ -111,6 +111,8 @@ export default defineConfig({
   },
   publicDir: 'public',
   test: {
+    // Guard/door suites mint spend tickets, which exist only inside the audio chain (job #702).
+    setupFiles: ['./services/shared/chain-test-setup.cjs'],
     // Real vitest specs only — exclude playwright's e2e/*.spec.js (run via
     // `npx playwright test` against their own per-folder playwright.config.js,
     // not vitest) and stray gitignored worktree/scratch checkouts that

@@ -32,6 +32,7 @@
 
 const { clipTextKey } = require('./clip-index.cjs')
 const { tryCanonicalVoiceId } = require('./clip-identity.cjs')
+const chain = require('./chain-context.cjs')
 
 /** A lookup older than this is not evidence about the library now. */
 const TICKET_TTL_MS = 15 * 60 * 1000
@@ -49,6 +50,8 @@ function voiceKey(v) {
  * gate fails the run if any other file calls it.
  */
 function issueTicket({ language, voiceId, text, inLibrary = [], replacing = [], now = Date.now() }) {
+  // One route for audio (Tom 2026-09-29): no ticket, so no paid call, outside the Popty chain.
+  if (!chain.inChain()) return null
   const t = Object.freeze({
     language: language || null,
     voiceKey: voiceKey(voiceId),
@@ -66,6 +69,7 @@ function issueTicket({ language, voiceId, text, inLibrary = [], replacing = [], 
  * Returns { code, message } — the guard turns it into a refusal.
  */
 function ticketProblem(ticket, { voiceId, text, now = Date.now() }) {
+  if (!ticket && !chain.inChain()) return { code: 'NOT_IN_CHAIN', message: 'this render did not come through the one Popty audio chain — call POST /api/audio/render (node tools/audio/render.cjs …), never a provider or tts-service directly' }
   if (!ticket) return { code: 'NO_DOOR', message: 'no proof of a clip-library lookup came with this call — every paid render must first ask the library (services/shared/clip-library.cjs lookupForRender)' }
   if (typeof ticket !== 'object' || !issued.has(ticket)) return { code: 'NO_DOOR', message: 'the ticket on this call was not issued by the clip-library lookup — a hand-made ticket proves nothing' }
   if (now - ticket.issuedAt > TICKET_TTL_MS) return { code: 'NO_DOOR', message: `the clip-library lookup behind this call is ${Math.round((now - ticket.issuedAt) / 60000)} minutes old — look again` }
