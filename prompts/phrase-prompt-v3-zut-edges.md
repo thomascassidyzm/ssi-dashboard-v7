@@ -48,6 +48,19 @@ checklist around in your head as advice.
 
 ---
 
+## GRAMMAR AND NATURALNESS, both sides
+
+Your known must be grammatical, natural British English — built from the English
+forms EXACTLY as the AVAILABLE list gives them. No inflection allowance: "read" does
+not license "reading", "speak" does not license "speaks" (Tom, 2026-06-15, and the
+known-side gate enforces it). If the sentence you want needs an English form you
+have not been given, write a DIFFERENT sentence — never an ungrammatical one ("who
+speak", "looking forward to come"). The target side stays exactly as tiled. Your target must be something a native speaker would
+say. A USE phrase is exactly one sentence. Recency, position and pattern never
+justify a non-sequitur: two clauses in one phrase must belong in one breath. If a
+recent LEGO does not fit naturally, reach for an older one — a natural phrase
+with an old neighbour beats a clever one with a recent neighbour.
+
 ## THE GATE — ZUT, and it is the only hard constraint
 
 > **Does the learner know exactly which target-language words this prompt is
@@ -227,7 +240,8 @@ tiling — this is not bureaucracy, it is the phrase showing its work, and it is
 what makes both the gate and the edge count exact rather than guessed. `tiles`
 must concatenate, in order, to exactly the `target` string, and each tile's
 `known`/`target` must be a pair taken from the AVAILABLE list (or be the new
-LEGO itself).
+LEGO itself). A tile's `known` names which LEGO you used; it need not appear
+verbatim in your English.
 
 ```json
 {
@@ -247,7 +261,9 @@ LEGO itself).
 }
 ```
 
-Lower case throughout. No trailing full stops. No parentheses anywhere, ever —
-this course explains nothing; everything is learnt from examples in context. If a
-prompt needs disambiguating, make the English sentence naturally carry the
-distinction.
+Write each side as it would be printed mid-sentence: lower-case an ordinary first
+word, but keep the capital on "I", names, language names (Italian, German) and
+German nouns. Every question keeps its "?" on BOTH sides. Drop only a trailing
+full stop. No parentheses anywhere, ever — this course explains nothing;
+everything is learnt from examples in context. If a prompt needs disambiguating,
+make the English sentence naturally carry the distinction.
