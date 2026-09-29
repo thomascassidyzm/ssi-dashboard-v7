@@ -120,6 +120,16 @@ describe('regenerate-phrase asks for the requested voice only (job #741)', () =>
   })
 })
 
+describe('every explicit regenerate route is voice-bound (job #741)', () => {
+  it('no door literal that names `replacing` (regenerate-role/-single/-lego) omits voiceBound', () => {
+    const src = fs.readFileSync(path.join(__dirname, 'phases/phase8-audio-v13.cjs'), 'utf8')
+    // intro: true (regenerate-presentation) is own-course-only by the door itself, so it is already single-voice.
+    const literals = (src.match(/door: \{[^}\n]*replacing:[^}\n]*\}/g) || []).filter(l => !/intro: true/.test(l))
+    expect(literals.length).toBeGreaterThanOrEqual(12)
+    expect(literals.filter(l => !/voiceBound: true/.test(l))).toEqual([])
+  })
+})
+
 describe('the render route: voiceBound and re-record (job #741)', () => {
   const row = { id: 'MALE-ROW', course_code: 'deu_for_eng', role: 'target2', language: 'deu', voice_id: MALE_ID, s3_key: 'mastered/OLD.mp3', origin: 'tts', text: 'guten tag' }
   const rdeps = (svc, extra = {}) => {
