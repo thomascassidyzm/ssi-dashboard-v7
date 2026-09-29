@@ -1,0 +1,168 @@
+{
+ "name": "g3",
+ "legos": [
+  {
+   "lego": "S0169L01",
+   "fromKnown": "I",
+   "known": "me",
+   "phrases": {
+    "S0169L01B01": "me, I do not want",
+    "S0169L01B02": "me, I said",
+    "S0169L01B03": "me, I will do",
+    "S0169L01U01": "me, I don't understand",
+    "S0169L01U02": "me, I said that yesterday",
+    "S0169L01U03": "me, I will do it tomorrow",
+    "S0169L01U04": "me, I know what you want",
+    "S0169L01U05": "me, I do not want that"
+   }
+  },
+  {
+   "lego": "S0170L02",
+   "fromKnown": "telling",
+   "known": "to tell",
+   "phrases": {
+    "S0170L02B01": "to tell what you need",
+    "S0170L02B02": "to tell the truth",
+    "S0170L02B03": "to tell something",
+    "S0170L02U01": "I would like you to tell me what you need",
+    "S0170L02U02": "it is important to tell the truth",
+    "S0170L02U03": "it is good to tell what you need",
+    "S0170L02U04": "it is difficult to tell something",
+    "S0170L02U05": "it is not easy to tell the truth",
+    "S0170L02U06": "it is interesting to tell something in Basque"
+   }
+  },
+  {
+   "lego": "S0170L03",
+   "fromKnown": "I would like",
+   "known": "I'd like",
+   "phrases": {}
+  },
+  {
+   "lego": "S0171L01",
+   "fromKnown": "looking for",
+   "known": "look for",
+   "phrases": {}
+  },
+  {
+   "lego": "S0171L02",
+   "fromKnown": "helping",
+   "known": "help",
+   "phrases": {
+    "S0171L02B01": "to help now",
+    "S0171L02B02": "to help here",
+    "S0171L02B03": "to help a friend",
+    "S0171L02B04": "to help look for it",
+    "S0171L02U02": "do you want me to help?",
+    "S0171L02U03": "She wanted me to help",
+    "S0171L02U04": "I do not want to help",
+    "S0171L02U05": "Today I want to help"
+   }
+  },
+  {
+   "lego": "S0182L03",
+   "fromKnown": "have you seen them",
+   "known": "Have you seen",
+   "phrases": {}
+  },
+  {
+   "lego": "S0183L01",
+   "fromKnown": "excuse me",
+   "known": "I'm afraid",
+   "phrases": {
+    "S0183L01B01": "I'm afraid I am not sure",
+    "S0183L01B02": "I'm afraid I do not know",
+    "S0183L01B03": "I'm afraid I did not have time",
+    "S0183L01B04": "I'm afraid I am very tired",
+    "S0183L01U01": "I'm afraid I do not know where she wants to go",
+    "S0183L01U02": "I'm afraid I do not want to come today",
+    "S0183L01U03": "I'm afraid I do not have time this morning",
+    "S0183L01U04": "I'm afraid I am not very sure",
+    "S0183L01U05": "I'm afraid, do you want to help me?",
+    "S0183L01U06": "I'm afraid, I want to ask something"
+   }
+  },
+  {
+   "lego": "S0184L03",
+   "fromKnown": "I've seen them",
+   "known": "I saw them",
+   "phrases": {
+    "S0184L03B01": "I saw them today",
+    "S0184L03B02": "I saw them in the office",
+    "S0184L03B03": "I saw them here",
+    "S0184L03B04": "I saw them within one hour",
+    "S0184L03U01": "Yes I saw them today",
+    "S0184L03U02": "I saw them this morning",
+    "S0184L03U03": "Yes I saw them in the office",
+    "S0184L03U04": "I saw them somewhere",
+    "S0184L03U05": "I saw them in the office today",
+    "S0184L03U06": "I saw them here today"
+   }
+  },
+  {
+   "lego": "S0190L02",
+   "fromKnown": "can I ask you them",
+   "known": "if I ask you",
+   "phrases": {
+    "S0190L02B01": "do you mind if I ask you something today",
+    "S0190L02B02": "do you mind if I ask you something important",
+    "S0190L02B03": "do you mind if I ask you now",
+    "S0190L02U02": "do you mind if I ask you some questions today?",
+    "S0190L02U03": "do you mind if I ask you some questions about this?",
+    "S0190L02U04": "do you mind if I ask you some questions tomorrow?",
+    "S0190L02U05": "do you mind if I ask you tomorrow?"
+   }
+  },
+  {
+   "lego": "S0202L01",
+   "fromKnown": "nobody knew",
+   "known": "nobody was sure",
+   "components": [
+    {
+     "known": "nobody",
+     "target": "inork"
+    },
+    {
+     "known": "not",
+     "target": "ez"
+    },
+    {
+     "known": "was sure",
+     "target": "zekien"
+    }
+   ],
+   "phrases": {
+    "S0202L01B01": "nobody was sure where she was",
+    "S0202L01B02": "nobody was sure when it was going to happen",
+    "S0202L01B03": "nobody was sure what to do",
+    "S0202L01B04": "nobody was sure about how to answer",
+    "S0202L01U02": "nobody was sure what was going to happen",
+    "S0202L01U03": "nobody was sure when she wanted to meet",
+    "S0202L01U04": "nobody was sure where she wanted to go",
+    "S0202L01U05": "nobody was sure how to help",
+    "S0202L01U06": "nobody was sure what to say"
+   }
+  },
+  {
+   "lego": "S0202L02",
+   "fromKnown": "to the question",
+   "known": "the question",
+   "phrases": {}
+  },
+  {
+   "lego": "S0203L01",
+   "fromKnown": "helping",
+   "known": "to help",
+   "components": [
+    {
+     "known": "to help",
+     "target": "laguntzeko"
+    }
+   ],
+   "phrases": {
+    "S0203L01U01": "they say they want to come to help",
+    "S0203L01U04": "I would like to come to help"
+   }
+  }
+ ]
+}

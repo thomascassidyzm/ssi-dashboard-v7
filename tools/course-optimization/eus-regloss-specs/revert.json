@@ -1,0 +1,192 @@
+{
+ "name": "revert",
+ "legos": [
+  {
+   "lego": "S0204L04",
+   "fromKnown": "to help",
+   "known": "giving help",
+   "phrases": {
+    "S0204L04B01": "giving you help",
+    "S0204L04B02": "giving help tomorrow",
+    "S0204L04B03": "giving help today",
+    "S0204L04U01": "I wanted her giving you help for doing the arrangements",
+    "S0204L04U02": "giving help is important",
+    "S0204L04U03": "giving help is not easy",
+    "S0204L04U04": "giving you help is good",
+    "S0204L04U05": "she wanted giving help today",
+    "S0204L04U06": "giving help is a good idea"
+   },
+   "revert": true,
+   "exception": "ZUT: \"to help\" would map to laguntza ematea and to laguntzeko/lagundu"
+  },
+  {
+   "lego": "S0038L03",
+   "fromKnown": "about",
+   "known": "approximately",
+   "phrases": {
+    "S0038L03B01": "approximately a week",
+    "S0038L03B02": "I've spent approximately a week trying",
+    "S0038L03B03": "I've spent approximately a week speaking",
+    "S0038L03B04": "I want to practise for approximately a week",
+    "S0038L03U01": "I've been learning for approximately a week",
+    "S0038L03U02": "I've spent approximately a week learning Basque",
+    "S0038L03U03": "I've spent approximately a week trying to speak",
+    "S0038L03U04": "I would like to practise for approximately a week",
+    "S0038L03U05": "I want to be quiet for approximately a week",
+    "S0038L03U06": "You wanted to learn for approximately a week"
+   },
+   "revert": true,
+   "exception": "ZUT: \"about\" would map to inguru and buruz"
+  },
+  {
+   "lego": "S0099L03",
+   "fromKnown": "yourself",
+   "known": "to yourself",
+   "phrases": {},
+   "revert": true,
+   "exception": "ZUT: \"yourself\" would map to zeure buruari and zeure burua"
+  },
+  {
+   "lego": "S0087L01",
+   "fromKnown": "I don't know",
+   "known": "that I don't know",
+   "phrases": {},
+   "revert": true,
+   "exception": "ZUT: \"I don't know\" would map to ezagutzen ez dudan and ez dakit"
+  },
+  {
+   "lego": "S0184L03",
+   "fromKnown": "I saw them",
+   "known": "I've seen them",
+   "phrases": {
+    "S0184L03B01": "I've seen them today",
+    "S0184L03B02": "I've seen them in the office",
+    "S0184L03B03": "I've seen them here",
+    "S0184L03B04": "I've seen them within one hour",
+    "S0184L03U01": "Yes I've seen them today",
+    "S0184L03U02": "I've seen them this morning",
+    "S0184L03U03": "Yes I've seen them in the office",
+    "S0184L03U04": "I've seen them somewhere",
+    "S0184L03U05": "I've seen them in the office today",
+    "S0184L03U06": "I've seen them here today"
+   },
+   "revert": true,
+   "exception": "ZUT: \"I saw them\" would map to ikusi ditut and ikusi nituen"
+  },
+  {
+   "lego": "S0252L01",
+   "fromKnown": "to start",
+   "known": "for starting",
+   "phrases": {},
+   "revert": true,
+   "exception": "ZUT: \"to start\" would map to hasteko and hasi"
+  },
+  {
+   "lego": "S0204L01",
+   "fromKnown": "her",
+   "known": "she",
+   "phrases": {
+    "S0204L01B01": {
+     "known": "she wanted",
+     "target": "berak nahi zuen"
+    },
+    "S0204L01B02": {
+     "known": "she said",
+     "target": "berak esan zuen"
+    },
+    "S0204L01B03": {
+     "known": "she knew",
+     "target": "berak zekien"
+    },
+    "S0204L01U01": {
+     "known": "she wanted to help",
+     "target": "berak lagundu nahi zuen"
+    },
+    "S0204L01U02": {
+     "known": "she said the same thing",
+     "target": "berak gauza bera esan zuen"
+    },
+    "S0204L01U03": {
+     "known": "she knew what I wanted",
+     "target": "berak nahi nuena zekien"
+    },
+    "S0204L01U04": {
+     "known": "she asked a question",
+     "target": "berak galdera bat egin zuen"
+    },
+    "S0204L01U05": {
+     "known": "she wanted to learn Basque",
+     "target": "berak euskara ikasi nahi zuen"
+    },
+    "S0204L01U06": {
+     "known": "she wanted to speak with me",
+     "target": "berak nirekin hitz egin nahi zuen"
+    }
+   },
+   "revert": true,
+   "exception": "ZUT: \"her\" would map to berak and haren"
+  },
+  {
+   "lego": "S0269L03",
+   "fromKnown": "to wait",
+   "known": "to be waiting",
+   "phrases": {
+    "S0269L03B01": "waiting for your father",
+    "S0269L03B02": "waiting today",
+    "S0269L03B03": "waiting for you"
+   },
+   "revert": true,
+   "exception": "ZUT: \"to wait\" would map to zain egon and itxarotea"
+  },
+  {
+   "lego": "S0204L02",
+   "fromKnown": "you",
+   "known": "to you",
+   "phrases": {},
+   "revert": true,
+   "exception": "ZUT: \"you\" would map to zuri and zuk"
+  },
+  {
+   "lego": "S0246L01",
+   "fromKnown": "you",
+   "known": "to you",
+   "phrases": {},
+   "revert": true,
+   "exception": "ZUT: \"you\" would map to zuri and zuk"
+  },
+  {
+   "lego": "S0169L01",
+   "fromKnown": "me",
+   "known": "I",
+   "phrases": {
+    "S0169L01B01": "I do not want",
+    "S0169L01B02": "I said",
+    "S0169L01B03": "I will do",
+    "S0169L01U01": "I don't understand",
+    "S0169L01U02": "I said that yesterday",
+    "S0169L01U03": "I will do it tomorrow",
+    "S0169L01U04": "I know what you want",
+    "S0169L01U05": "I do not want that"
+   },
+   "revert": true,
+   "exception": "ZUT: \"me\" would map to nik and niri"
+  },
+  {
+   "lego": "S0171L02",
+   "fromKnown": "help",
+   "known": "helping",
+   "phrases": {
+    "S0171L02B01": "helping now",
+    "S0171L02B02": "helping here",
+    "S0171L02B03": "helping a friend",
+    "S0171L02B04": "looking for it and helping",
+    "S0171L02U02": "do you want helping?",
+    "S0171L02U03": "She wanted helping",
+    "S0171L02U04": "I do not want helping",
+    "S0171L02U05": "Today I want helping"
+   },
+   "revert": true,
+   "exception": "ZUT: \"help\" would map to laguntzea and laguntza"
+  }
+ ]
+}
