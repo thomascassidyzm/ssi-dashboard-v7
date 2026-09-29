@@ -30,10 +30,9 @@
  * Seed 376 is excluded (job #660·I is working on it).
  *
  * The spend guard's repeat key ignores apostrophes and punctuation, so a line
- * rendered six times today is refused; on that one refusal the tool sends the
- * hint's own output ("qualcos' altro", a different key) as the door text, which
- * is exactly the string Azure receives for every other clip anyway, and says so
- * in the log.
+ * already rendered its quota of times today is refused; the refusal is logged
+ * as a failure and the clip is left for another day (Kai, 2026-09-29: never
+ * work around the guard). The veracity gate gets TWO tries per text.
  *
  * Usage:
  *   node tools/course-optimization/ita-qualcosaltro-rerender-2026-09-28.cjs --plan
@@ -209,22 +208,15 @@ async function main() {
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName, speed, regenerationAttempt: attemptNo - 1,
         }
-        let out
-        try {
-          out = await ttsService.generateWithRetry(doorText, 'azure', cfg)
-        } catch (e) {
-          if (/REPEAT/.test(e.message) && doorText === textForTTS) {
-            doorText = applyElisionSpaceHint(textForTTS)
-            r.repeatCapped = `spend guard refused the canonical line (${e.message.slice(0, 90)}…); sent the hint's own output as the door text instead`
-            log(`  ${r.repeatCapped}`)
-            out = await ttsService.generateWithRetry(doorText, 'azure', cfg)
-          } else throw e
-        }
+        // Kai, 2026-09-29: never work around the spend guard's repeat cap — a
+        // refusal is recorded as "repeat-capped" and the clip is left for another day.
+        const out = await ttsService.generateWithRetry(doorText, 'azure', cfg)
         if (out.existingClip) throw new Error(`the door handed back an existing clip ${out.existingClip.id} instead of rendering — replacing list incomplete`)
         const { buffer, durationMs } = await phase8.masterAudio(out.audioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceName))
         return { buffer, durationMs, wordBoundaries: out.wordBoundaries }
       }
-      const gated = await veracity.renderChecked({ render, expectedText: textForTTS, language: LANG, sampler: veracity.ALWAYS_SAMPLER, logger: console, meta: { courseCode: COURSE, role, voiceId: voiceName, audio_uuid: c.id, originalText: c.text } })
+      // Two tries per text, no more (Kai, 2026-09-29): a text that fails whisper twice is listed as still failing.
+      const gated = await veracity.renderChecked({ render, expectedText: textForTTS, language: LANG, sampler: veracity.ALWAYS_SAMPLER, attempts: 2, logger: console, meta: { courseCode: COURSE, role, voiceId: voiceName, audio_uuid: c.id, originalText: c.text } })
       r.gate = { attempts: gated.attempts, verdict: gated.verdict }
       if (!gated.published) throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
       const afterFile = path.join(OUT, 'after', `${c.id}.mp3`)
