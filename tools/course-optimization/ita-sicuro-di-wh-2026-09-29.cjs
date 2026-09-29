@@ -71,6 +71,13 @@ function legoPosition(phraseTarget, legoTarget) {
   return null;
 }
 const short = (id) => String(id).replace(/^ita_for_eng:/, '');
+/**
+ * target1 (Elsa) speaks the row's FEMALE READING (course_gender_expansions.expanded_f → target1): only the speaker's
+ * own forms move — "sono sicuro" → "sicura", "sarò pronto" → "pronta"; "nessuno era sicuro" names somebody else.
+ */
+function femaleReading(target) {
+  return String(target).replace(/\b(sono) sicuro\b/g, '$1 sicura').replace(/\b(sarò) pronto\b/g, '$1 pronta');
+}
 const full = (id) => (String(id).startsWith(`${COURSE}:`) ? id : `${COURSE}:${id}`);
 
 // ── The plan ───────────────────────────────────────────────────────────────────────────────
@@ -366,7 +373,7 @@ async function verifyAudio(pg) {
     if (r.t1 && r.t2 && (r.t1 === r.t2 || (r.d1 === r.d2 && r.d1 != null))) probs.push(`${id}: target1 and target2 are the same clip or the same duration (${r.t1}/${r.t2}, ${r.d1}/${r.d2} ms)`);
     if (r.t1 && !voiceOk(VOICES.target1, r.v1) && !/xai_|elevenlabs/.test(r.v1 || '')) probs.push(`${id}: target1 voice ${r.v1}`);
     if (r.t2 && !voiceOk(VOICES.target2, r.v2) && !/xai_|elevenlabs/.test(r.v2 || '')) probs.push(`${id}: target2 voice ${r.v2}`);
-    if (r.t1 && norm(r.x1) !== norm(r.target_text)) probs.push(`${id}: target1 clip says "${r.x1}"`);
+    if (r.t1 && norm(r.x1) !== norm(r.target_text) && norm(r.x1) !== norm(femaleReading(r.target_text))) probs.push(`${id}: target1 clip says "${r.x1}"`);
     if (r.t2 && norm(r.x2) !== norm(r.target_text)) probs.push(`${id}: target2 clip says "${r.x2}"`);
   }
   const { rows: [p] } = await pg.query(`SELECT a.text FROM course_legos l LEFT JOIN course_audio a ON a.id::text=l.presentation_audio_id WHERE l.course_code=$1 AND l.lego_id=$2`, [COURSE, LEGO.id]);
@@ -464,4 +471,4 @@ async function main() {
 }
 
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
-module.exports = { endStateProblems, applyPlanToRows, planProblems, bareSicuroWh, sicuroDiWh, LEGO, EDITS, DELETES, ADDS, COMPONENTS, COMPONENT_ADDS, TEACH_SEED };
+module.exports = { femaleReading, endStateProblems, applyPlanToRows, planProblems, bareSicuroWh, sicuroDiWh, LEGO, EDITS, DELETES, ADDS, COMPONENTS, COMPONENT_ADDS, TEACH_SEED };
