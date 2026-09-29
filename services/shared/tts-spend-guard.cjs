@@ -740,13 +740,14 @@ function createSpendGuard(opts = {}) {
     if (raisedJob) { const c = jobSpend.get(raisedJob.job); if (c) c.byProvider[provider] = (Number(c.byProvider[provider]) || 0) + chars }
     try { mirror(entry) } catch { /* the reservation is in the DB; the intent line is on disk */ }
 
-    // Alerts on crossing lines (once per process per line per day/cycle).
+    // Alerts on crossing lines: once per HOST per line per day/cycle (job #695) — a
+    // service restart must not re-raise a crossing already said (95% Cartesia repeated per restart).
     const today = Number(res.today) || 0; const cycle = Number(res.cycle) || 0
     if (today >= b.alertDailyChars) {
-      alert(`daily:${provider}:${dayKey(now())}`, 'warn', `${provider} spend today has reached ${today.toLocaleString()} chars (alert line ${b.alertDailyChars.toLocaleString()}, cap ${b.dailyCapChars.toLocaleString()})`, { provider })
+      alert(`daily:${provider}:${dayKey(now())}`, 'warn', `${provider} spend today has reached ${today.toLocaleString()} chars (alert line ${b.alertDailyChars.toLocaleString()}, cap ${b.dailyCapChars.toLocaleString()})`, { provider }, { oncePerHost: true })
     }
     for (const s of POOL_ALERT_SHARES) {
-      if (cycle >= s * b.monthlyPoolChars) alert(`pool:${provider}:${s}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * cycle / b.monthlyPoolChars)}% of its ${b.monthlyPoolChars.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider })
+      if (cycle >= s * b.monthlyPoolChars) alert(`pool:${provider}:${s}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * cycle / b.monthlyPoolChars)}% of its ${b.monthlyPoolChars.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider }, { oncePerHost: true })
     }
     return entry
   }

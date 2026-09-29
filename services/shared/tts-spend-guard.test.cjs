@@ -325,3 +325,16 @@ describe("Tom's stop (job #676): one '*' trip stops every provider, and Tom is t
     await expect(call(g, 'ciao')).resolves.toMatchObject({ kind: 'call' })
   })
 })
+
+describe('daily alert fires once per host per real crossing, not per restart (job #695)', () => {
+  it('a second guard on the same host (a restarted service) does not re-say a crossing', async () => {
+    const said = []
+    const bp = budgets({ providers: { cartesia: { alertDailyChars: 5 } } })
+    const mk = () => guard({ budgetPath: bp, notify: (e) => { said.push(e.key) } })
+    await call(mk(), 'x'.repeat(10))
+    const first = said.filter(k => k.startsWith('daily:')).length
+    expect(first).toBe(1)
+    await call(mk(), 'y'.repeat(10))
+    expect(said.filter(k => k.startsWith('daily:')).length).toBe(1)
+  })
+})
