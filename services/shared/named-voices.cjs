@@ -78,4 +78,57 @@ function whyUnnamed(row) {
   return 'not-a-voice'
 }
 
-module.exports = { buildVoiceResolver, whyUnnamed }
+const CHUNK = 100
+const TTL_MS = 5 * 60 * 1000
+
+/**
+ * The same resolvers, for the WRITE side: every writer of clip_index that goes
+ * through clip-index.writeThrough (a lookup's fallback, the in-tray, phase8's
+ * write-back) files a clip under the identity the reconcile would give it, so the
+ * nightly does not drop what a lookup just wrote and the lookup does not rewrite
+ * what the nightly just dropped.
+ *
+ * Returns async rows => resolvers. The small tables (voices, the cast policy) are
+ * cached five minutes; attributions and spoken-text verdicts are read only for the
+ * rows in hand — the ones that could have one — in chunks small enough for a URL.
+ * A read that fails yields null: the caller falls back to the plain canonical
+ * identity it always used, never to a guess.
+ */
+function supabaseResolversFor(supabase, { log = console } = {}) {
+  let base = null, at = 0
+  const loadBase = async () => {
+    const [v, p] = await Promise.all([
+      supabase.from('voices').select('voice_id, tts_engine').limit(5000),
+      supabase.from('language_recording_policy').select('language, voices'),
+    ])
+    if (v.error) throw new Error(v.error.message)
+    if (p.error) throw new Error(p.error.message)
+    base = { voices: v.data || [], policyRows: p.data || [] }; at = Date.now()
+  }
+  const chunked = async (table, cols, ids) => {
+    const out = []
+    for (let i = 0; i < ids.length; i += CHUNK) {
+      const { data, error } = await supabase.from(table).select(cols).in('audio_id', ids.slice(i, i + CHUNK))
+      if (error) throw new Error(error.message)
+      out.push(...(data || []))
+    }
+    return out
+  }
+  return async rows => {
+    try {
+      if (!base || Date.now() - at > TTL_MS) await loadBase()
+      const unnamedPerson = rows.filter(r => r.origin === 'human' && !tryCanonicalVoiceId(r.voice_id)).map(r => r.id)
+      const gendered = rows.filter(r => r.origin === 'tts' && (r.role === 'target1' || r.role === 'target2')).map(r => r.id)
+      const [attributions, spoken] = await Promise.all([
+        unnamedPerson.length ? chunked('human_clip_attribution', 'audio_id, voice_id', unnamedPerson) : [],
+        gendered.length ? chunked('clip_spoken_text', 'audio_id, spoken_text', gendered) : [],
+      ])
+      return buildVoiceResolver({ ...base, attributions, spoken })
+    } catch (e) {
+      log.warn && log.warn(`[clip-index] named-voice resolvers unavailable (${e.message}) — indexing under the plain identity`)
+      return null
+    }
+  }
+}
+
+module.exports = { buildVoiceResolver, whyUnnamed, supabaseResolversFor }

@@ -25,6 +25,7 @@
 
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
+const { supabaseResolversFor } = require('./named-voices.cjs')
 /**
  * THE LANGUAGE OF A CLIP IS ITS COURSE'S LANGUAGE CODE. Tom, 2026-09-26/27:
  * "region is a different language - north/south welsh have very different
@@ -214,8 +215,8 @@ async function fallbackRows(supabase, text, { courseCode = null, ownCourseOnly =
  * the clip is in course_audio, the fallback still finds it, and a cache write
  * must never fail a render or a link.
  */
-async function writeThrough(supabase, rows, indexedBy, log = console, courseOf = noCourses) {
-  const { entries } = entriesFromRows(rows, indexedBy, courseOf)
+async function writeThrough(supabase, rows, indexedBy, log = console, courseOf = noCourses, resolvers = null) {
+  const { entries } = entriesFromRows(rows, indexedBy, courseOf, resolvers)
   if (!entries.length) return 0
   try {
     const { error } = await supabase
@@ -259,13 +260,14 @@ function supabaseCourseLookup(supabase) {
 /** The live source: clip_index + course_audio in Supabase. */
 function supabaseClipSource(supabase, { log = console, indexedBy = 'write-through' } = {}) {
   const courses = supabaseCourseLookup(supabase)
+  const resolversFor = supabaseResolversFor(supabase, { log })
   return {
     name: 'supabase',
     courses,
     indexed: (language, text) => lookupIndexed(supabase, language, text),
     own: (courseCode, text) => ownCourseRows(supabase, courseCode, text),
     fallback: (text, opts) => fallbackRows(supabase, text, opts),
-    write: async rows => writeThrough(supabase, rows, indexedBy, log, await courses(rows.map(r => r.course_code))),
+    write: async rows => writeThrough(supabase, rows, indexedBy, log, await courses(rows.map(r => r.course_code)), await resolversFor(rows)),
   }
 }
 
