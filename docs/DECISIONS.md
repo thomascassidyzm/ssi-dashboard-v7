@@ -25,12 +25,14 @@ additive and can be undone by deleting rows (rollback list in `database/changes/
   the listening sheet with `tools/voices/name-speaker-group.cjs`. Only two spellings the cast policy itself lists as
   aliases (`catrin_human`, `Aran`, `human_aran_cym_n_2`) and two `human_Aran` case variants were attributed.
 - Gendered takes: `course_audio.text` is the unexpanded label. Of 15,042 target takes whose expansion differs from the
-  label, 14,099 were written before the expansion existed and say the label (whisper, 18 of 18). 2,896 were
-  written after; an object date only NOMINATES them, because Italian rows Kai re-rendered on 2026-09 through the one
-  render route also carry a fresh object and still say the label (whisper, 4 of 4). A clip is filed under the
-  expansion only when whisper's decode is closer to it than to the label by at least a character; everything else
-  stays under its label, which is where it was. Whisper runs behind the estate's idle-priority semaphore (~10 s a
-  clip), so the nightly gives it a 100-minute budget and finishes the rest on later nights.
+  label, 14,099 were written before the expansion existed and say the label (whisper, 18 of 18). The other 2,896
+  were candidates; S3 dates put 235 of them before the expansion, and an object date only NOMINATES the remaining
+  2,661, because Italian rows Kai re-rendered on 2026-09 through the one render route also carry a fresh object and
+  still say the label (whisper, 4 of 4). Whisper then decided: 1,891 say the expansion (re-filed under it), 491 say
+  the label, 279 could not be told apart (one letter, or noise) and stay under their label, where they were. A clip
+  is re-filed only when whisper's decode is closer to the expansion than to the label by at least a character.
+  Whisper runs behind the estate's idle-priority semaphore (~10 s a clip, five hours for this set); the nightly
+  gives it a 100-minute budget so new gendered renders are picked up as they appear.
 
 **Reconcile.** `tools/voices/reconcile-library.cjs` walks `course_audio` in pkey batches and compares what each clip
 should be filed under with `clip_index`. Drift (missing + stale) is what a machine can fix and is repaired the same
