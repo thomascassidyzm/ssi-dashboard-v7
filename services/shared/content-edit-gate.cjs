@@ -53,6 +53,7 @@ const { findSurface, courseCodeFrom } = require('./content-write-surfaces.cjs');
 // destructured copy cannot be swapped, and the once-guard could then only be
 // asserted by proxy.
 const roundIndex = require('./round-index-refresh.cjs');
+const genderSync = require('./gender-expansion-sync.cjs');
 
 const UNDECLARED = Object.freeze({
   kind: 'service',
@@ -101,6 +102,13 @@ function mayShapeCourse(identity, courseCode) {
 function mode() {
   return process.env.CONTENT_EDIT_IDENTITY_MODE === 'enforce' ? 'enforce' : 'observe';
 }
+
+// Operations that can never change a target text, so they never ask for a gender
+// sync. Anything NOT listed here does — a new surface is covered by default.
+const NO_TEXT_OPERATIONS = new Set([
+  'approve', 'flag', 'unflag', 'qa-mark-checked', 'qa-reset', 'phrase-delete',
+  'course-wipe', 'course-delete', 'reset-translations',
+]);
 
 function contentEditGate({ supabase, service, logger = console }) {
   if (!supabase) throw new Error('contentEditGate needs a supabase client');
@@ -236,6 +244,26 @@ function contentEditGate({ supabase, service, logger = console }) {
     if (surface.legos) {
       res.on('finish', requestRefreshOnce);
       res.on('close', requestRefreshOnce);
+    }
+
+    // THE GENDER ROW FOLLOWS THE TEXT (job #821). Any surface may have changed a
+    // target text, and course_gender_expansions is keyed by that text, so after
+    // the response (any status: handlers commit before they can still fail) ask
+    // for the course's recently written texts to be given the rows they need.
+    // Fire-and-log and debounced — see services/shared/gender-expansion-sync.cjs.
+    // Record-only GETs and operations that write no text never trigger it.
+    const genderSyncSince = Date.now();
+    let genderSyncRequested = false;
+    function requestGenderSyncOnce() {
+      if (genderSyncRequested) return;
+      genderSyncRequested = true;
+      const code = courseCodeFrom(params, req.path || req.url, req.body) || courseCode;
+      if (code === 'unknown') return;
+      genderSync.requestGenderExpansionSync(code, { supabase, since: genderSyncSince, logger }).catch(() => {});
+    }
+    if (!surface.recordOnly && !NO_TEXT_OPERATIONS.has(surface.operation)) {
+      res.on('finish', requestGenderSyncOnce);
+      res.on('close', requestGenderSyncOnce);
     }
 
     // Safety net: a 2xx from a handler that never recorded still gets an event.

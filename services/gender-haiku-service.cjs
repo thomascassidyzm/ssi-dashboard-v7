@@ -77,6 +77,7 @@ You must NOT change:
 - Words like "monsieur"/"madame", "homme"/"femme" — these refer to other people
 - Meaning, word order, or word count — the output must have identical words except for speaker-agreement morphology
 - Past participles with avoir — these do NOT agree with the speaker (French rule)
+- Adjectives or participles on anyone or anything else: "I am tired" takes the female form, "the tired man" stays masculine. Only a word that agrees with / refers back to the speaker changes.
 
 If no speaker-agreement change is needed, return the original text EXACTLY as given, character for character.
 
@@ -99,6 +100,7 @@ You must NOT change:
 - Verb conjugations — Arabic 1st person past (ـتُ) and present (أ) do NOT change for gender
 - Third-person references — هو سعيد, هي جميلة, صديقي — leave exactly as-is
 - 2nd person forms — do NOT change أنتَ/أنتِ or verb forms addressing someone else
+- Adjectives or participles on anyone or anything else: "I am tired" takes the female form, "the tired man" (الرجل المتعب) stays masculine. Only a word that agrees with / refers back to the speaker changes.
 - Grammar errors — do NOT fix anything unrelated to speaker-agreement
 - Meaning, word order, or word count — output must have identical words except for speaker-agreement morphology
 
