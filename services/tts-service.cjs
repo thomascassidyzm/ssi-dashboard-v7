@@ -1190,7 +1190,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
       charsSpent: 0,
     };
   }
-  await assertCastVoice(language, voiceId, { audition: !!door.audition });
+  await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null });
   if (door.dryRun) {
     doorStats.wouldRender++;
     doorStats.wouldSpendChars += chars;

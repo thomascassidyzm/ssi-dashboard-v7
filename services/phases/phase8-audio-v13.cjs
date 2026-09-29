@@ -169,7 +169,7 @@ const { selectProvider } = require('../shared/tts-provider-policy.cjs')
  * Cartesia voice per language, they get a loud, readable error pointing at the
  * collapse, instead of a run of clips filed under the wrong voice.
  */
-function decideProvider(voiceSettings = {}, { courseCode, language, role } = {}) {
+function decideProvider(voiceSettings = {}, { courseCode, language, role, explicitProvider } = {}) {
   const held = voiceSettings.voiceId || voiceSettings.voice_id
   const decision = selectProvider({
     courseCode,
@@ -177,6 +177,7 @@ function decideProvider(voiceSettings = {}, { courseCode, language, role } = {})
     role,
     voiceId: held,
     configuredProvider: voiceSettings.provider,
+    explicitProvider,
   })
   if (held && decision.voiceId && decision.voiceId !== held) {
     throw new Error(
@@ -207,6 +208,7 @@ const {
   PROVIDER_ALIASES,
 } = require('../shared/clip-identity.cjs')
 const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
+const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
 // BASE tag for every regional course ('deu' for deu_at_for_eng), so computing
@@ -5369,11 +5371,15 @@ app.post('/render', async (req, res) => {
         // stored voice of another language. A voice the caller named is honoured as named.
         const roleLang = role === 'known' ? course.known_lang : course.target_lang
         const foreign = !voiceId && language && toIso3(language) !== toIso3(roleLang)
-        const foreignCast = foreign ? castVoiceForLanguage(await voiceConfigService.loadCast(), toIso3(language), settings.gender === 'm' ? 'm' : 'f') : null
-        const held = foreignCast ? foreignCast.voiceId.replace(POD_PROVIDER_PREFIX, '')
+        // Tom 2026-09-29: an English line in an EXISTING course speaks the voice that course already speaks English in
+        // (voice and provider together); the cast (Charlotte) is only for a course holding no English clip yet.
+        const courseVoice = !voiceId && toIso3(lang) === 'eng' ? await courseEnglishVoice(supabase, courseCode, role) : null
+        const foreignCast = foreign && !courseVoice ? castVoiceForLanguage(await voiceConfigService.loadCast(), toIso3(language), settings.gender === 'm' ? 'm' : 'f') : null
+        const held = courseVoice ? courseVoice.voiceId
+          : foreignCast ? foreignCast.voiceId.replace(POD_PROVIDER_PREFIX, '')
           : named ? named[2] : (voiceId || settings.voiceId || vc[role])
         if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
-        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang })
+        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: courseVoice ? courseVoice.provider : undefined })
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
