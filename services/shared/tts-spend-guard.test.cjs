@@ -16,11 +16,14 @@ beforeEach(() => {
   clock = Date.parse('2026-09-26T10:00:00Z')
 })
 const budgets = (obj) => { const p = path.join(dir, 'budgets.json'); fs.writeFileSync(p, JSON.stringify(obj)); return p }
-const guard = (o = {}) => createSpendGuard({
+// These tests exercise the per-provider caps with spends past 50k, so they lift the
+// TOTAL cap on their own store; it has its own file (tts-spend-total-cap.test.cjs).
+const guard = (o = {}) => uncapped(createSpendGuard({
   ledgerPath: path.join(dir, 'ledger.jsonl'), budgetPath: o.budgetPath ?? null,
   now: () => clock, notify: o.notify || (() => {}), usageReaders: o.usageReaders || {},
   logger: { warn() {}, error() {} },
-})
+}))
+function uncapped(g) { g.store.totalCapChars = Infinity; return g }
 // Every call carries a ticket from a real (empty) clip-library lookup (job #677):
 // the guard pays nobody who has not asked the library.
 const lookedUp = async (voiceId, text) => (await require('./clip-library.cjs').lookupForRender({ text, language: 'hin', voiceId, voiceBound: true }, require('./clip-library.cjs').memoryClipLibrary([]))).ticket
