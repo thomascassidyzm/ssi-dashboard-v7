@@ -7,6 +7,9 @@
  *   node tools/voices/reconcile-library.cjs                  # report only, writes nothing
  *   node tools/voices/reconcile-library.cjs --apply          # refresh spoken-text evidence, fill missing, drop stale
  *   node tools/voices/reconcile-library.cjs --after <uuid>   # resume a walk
+ *   node tools/voices/reconcile-library.cjs --apply --only-evidenced --no-evidence
+ *       # seconds, not an hour: only the clips a human or whisper has spoken for (attributions, spoken-text verdicts) —
+ *       # what to run right after naming a group
  *
  * Walks course_audio in primary-key order (never a scan of the index), asks
  * indexEntryFor with the named-voice resolvers what each clip should be filed
@@ -216,7 +219,7 @@ function s3Get(key) {
 
 // ── the walk ────────────────────────────────────────────────────────────────
 
-async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sleepMs = SLEEP_MS, maxBatches = Infinity } = {}) {
+async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sleepMs = SLEEP_MS, maxBatches = Infinity, onlyEvidenced = false } = {}) {
   const { resolvers, courseOf } = await loadContext(client)
   const t = { read: 0, ok: 0, missing: 0, stale: 0, unresolvable: 0, awaitingName: 0, notIndexable: {}, inserted: 0, dropped: 0, batches: 0, watermark: after }
   const awaiting = {}
@@ -224,7 +227,7 @@ async function reconcile(client, { apply = false, after = NIL, batch = BATCH, sl
   const unresolvableVoices = {}
   for (;;) {
     const { rows } = await client.query(
-      `SELECT id, course_code, text, language, role, voice_id, s3_key, origin, veracity_pass FROM course_audio WHERE id > $1 ORDER BY id LIMIT $2`, [t.watermark, batch])
+      `SELECT id, course_code, text, language, role, voice_id, s3_key, origin, veracity_pass FROM course_audio WHERE id > $1${onlyEvidenced ? ' AND id IN (SELECT audio_id FROM clip_spoken_text UNION SELECT audio_id FROM human_clip_attribution)' : ''} ORDER BY id LIMIT $2`, [t.watermark, batch])
     if (!rows.length) break
     t.read += rows.length
 
@@ -313,7 +316,7 @@ async function main() {
     const evidence = args.includes('--no-evidence') ? null : await refreshSpokenEvidence(client, { apply, par: Number(arg('--whisper-par', 2)) })
     log('spoken-text evidence', JSON.stringify(evidence))
     if (args.includes('--evidence-only')) { console.log(JSON.stringify({ apply, evidence }, null, 2)); return }
-    const report = await reconcile(client, { apply, after: arg('--after', NIL), maxBatches: Number(arg('--max-batches', Infinity)) })
+    const report = await reconcile(client, { apply, after: arg('--after', NIL), maxBatches: Number(arg('--max-batches', Infinity)), onlyEvidenced: args.includes('--only-evidenced') })
     // A read-only run's `missing` after evidence-not-applied is honest: it counts what apply would fix.
     console.log(JSON.stringify({ apply, evidence, ...report }, null, 2))
   } catch (e) {
