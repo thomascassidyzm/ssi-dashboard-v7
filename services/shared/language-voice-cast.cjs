@@ -419,7 +419,33 @@ function applyLanguageCast({ voiceConfig, course, roles = [], voices = [], human
   return { config: next || voiceConfig, decisions };
 }
 
+/**
+ * The cast voice for a language a role does NOT natively speak — an English
+ * prompt rendered on ita_for_eng's target1, say (job #758). Voice and provider
+ * come out of ONE cast row together, so a caller can never pair the cast's
+ * provider with a stored voice id of another language (Cartesia rejects an Azure
+ * id). Known slot first, then phrase, as castSlotsForRole('known') reads them.
+ * Returns { voiceId, provider, name, gender } or null when the language is uncast.
+ */
+function castVoiceForLanguage(cast, language, gender = 'f') {
+  if (!cast || !cast.roles || !language) return null;
+  const voiceById = new Map((cast.voices || []).map((v) => [v.voice_id, v]));
+  for (const slot of castSlotsForRole('known')) {
+    const pick = pickCastVoice(cast.roles, voiceById, language, gender, slot);
+    if (pick) {
+      return {
+        voiceId: pick.voice.voice_id,
+        provider: providerOfVoice(pick.voice),
+        name: pick.voice.display_name || pick.voice.human_name || pick.voice.voice_id,
+        gender,
+      };
+    }
+  }
+  return null;
+}
+
 module.exports = {
+  castVoiceForLanguage,
   applyLanguageCast,
   languageForRole,
   genderForRole,

@@ -206,7 +206,7 @@ const {
   tryCanonicalVoiceId,
   PROVIDER_ALIASES,
 } = require('../shared/clip-identity.cjs')
-const { pickCastVoice, providerOfVoice } = require('../shared/language-voice-cast.cjs')
+const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
 // BASE tag for every regional course ('deu' for deu_at_for_eng), so computing
@@ -5363,10 +5363,17 @@ app.post('/render', async (req, res) => {
         const settings = vc.voices?.[role] || {}
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
         const named = /^(azure|elevenlabs|xai|cartesia)_(.+)$/.exec(voiceId || '')
-        const held = named ? named[2] : (voiceId || settings.voiceId || vc[role])
-        if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
         const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
-        const provider = decideProvider({ ...settings, voiceId: held, ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang })
+        // Job #758: a line in a language this role does not natively speak (an English prompt on ita_for_eng's
+        // target1) takes that language's CAST voice — voice id AND provider from one cast row, never the role's
+        // stored voice of another language. A voice the caller named is honoured as named.
+        const roleLang = role === 'known' ? course.known_lang : course.target_lang
+        const foreign = !voiceId && language && toIso3(language) !== toIso3(roleLang)
+        const foreignCast = foreign ? castVoiceForLanguage(await voiceConfigService.loadCast(), toIso3(language), settings.gender === 'm' ? 'm' : 'f') : null
+        const held = foreignCast ? foreignCast.voiceId.replace(POD_PROVIDER_PREFIX, '')
+          : named ? named[2] : (voiceId || settings.voiceId || vc[role])
+        if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
+        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang })
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
