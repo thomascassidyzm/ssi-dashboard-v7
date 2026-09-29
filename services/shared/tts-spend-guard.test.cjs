@@ -109,6 +109,26 @@ describe('(c) idempotency: the same words, voice and provider are not bought ove
   })
 })
 
+describe('(c2) Tom-signed repeat exemption: one job, named words, once each, nothing else looser', () => {
+  const exemption = (o = {}) => ({ job: '#700', texts: ['her name'], by: 'Tom (explicit go in chat, 2026-09-29 00:44Z, via Watson)', why: 'finish the Italian audio', until: '2026-09-27T00:00:00Z', ...o })
+  const capped = async (g) => { for (let i = 0; i < 3; i++) await call(g, 'her name') }
+  it('lets the named job send the named words once past the cap, then refuses a second, and never opens the cap for anyone else or any other words', async () => {
+    const g = guard({ budgetPath: budgets({ repeatExemptions: [exemption()] }) })
+    await capped(g)
+    await expect(call(g, 'her name', { job: 'other' })).rejects.toThrow(/REPEAT/)
+    await expect(call(g, 'her name', { job: '#7000·I' })).rejects.toThrow(/REPEAT/)
+    await expect(call(g, 'her name', { job: '#700·I' })).resolves.toBeTruthy()
+    await expect(call(g, 'her name', { job: '#700·I' })).rejects.toThrow(/exempt call/)
+    for (let i = 0; i < 3; i++) await call(g, 'his name')
+    await expect(call(g, 'his name', { job: '#700·I' })).rejects.toThrow(/REPEAT/)
+  })
+  it('is ignored unless Tom signed it', async () => {
+    const g = guard({ budgetPath: budgets({ repeatExemptions: [exemption({ by: 'an agent' })] }) })
+    await capped(g)
+    await expect(call(g, 'her name', { job: '#700·I' })).rejects.toThrow(/REPEAT/)
+  })
+})
+
 describe('(e) provider-side check: the provider\'s own count against the ledger', () => {
   it('stops every render when the provider has billed far more than the ledger recorded, and the stop persists across processes', async () => {
     let used = 1_000_000
@@ -323,5 +343,18 @@ describe("Tom's stop (job #676): one '*' trip stops every provider, and Tom is t
     expect(sent.filter(e => e.code === 'STOPPED_BY_TOM')).toHaveLength(1)
     g.store.trips.delete('*')   // lifting is deleting the one row
     await expect(call(g, 'ciao')).resolves.toMatchObject({ kind: 'call' })
+  })
+})
+
+describe('daily alert fires once per host per real crossing, not per restart (job #695)', () => {
+  it('a second guard on the same host (a restarted service) does not re-say a crossing', async () => {
+    const said = []
+    const bp = budgets({ providers: { cartesia: { alertDailyChars: 5 } } })
+    const mk = () => guard({ budgetPath: bp, notify: (e) => { said.push(e.key) } })
+    await call(mk(), 'x'.repeat(10))
+    const first = said.filter(k => k.startsWith('daily:')).length
+    expect(first).toBe(1)
+    await call(mk(), 'y'.repeat(10))
+    expect(said.filter(k => k.startsWith('daily:')).length).toBe(1)
   })
 })

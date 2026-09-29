@@ -316,7 +316,25 @@ function loadLimits({ budgetPath, envOverride, nowMs }) {
       notes.push({ kind: 'ignored', label: 'jobRaises', field: String(r && r.job), value: r && r.extraDailyChars, why: rs.ok ? 'a job raise needs job "#NNN" and a positive extraDailyChars' : rs.why })
     }
   }
-  return { providers, repeat: rep.limits, divergence: div.limits, notes, source, hold, jobRaises }
+  // REPEAT EXEMPTIONS (Tom 2026-09-29, job #700): Tom's explicit go for ONE job to
+  // send named lines past the per-words repeat cap, a fixed number of times each
+  // (default once) and no more. It does not touch the repeat cap for anybody else
+  // or any other line, and it never touches the daily/total caps. Must be signed
+  // by Tom, dated and expiring; anything else is ignored and alerted.
+  const repeatExemptions = []
+  for (const r of Array.isArray(file.repeatExemptions) ? file.repeatExemptions : []) {
+    const rs = raiseInForce(r, nowMs)
+    const shaped = r && typeof r.job === 'string' && JOB_TOKEN.test(r.job.trim()) && Array.isArray(r.texts) && r.texts.length > 0 && r.texts.every(t => typeof t === 'string' && t.trim())
+    const byTom = r && typeof r.by === 'string' && /^\s*tom\b/i.test(r.by)
+    if (rs.ok && shaped && byTom) {
+      const maxCallsPerText = Number.isInteger(r.maxCallsPerText) && r.maxCallsPerText > 0 ? r.maxCallsPerText : 1
+      repeatExemptions.push({ job: r.job.trim(), texts: new Set(r.texts.map(repeatTextKey)), maxCallsPerText, since: Number.isFinite(Date.parse(r.since)) ? Date.parse(r.since) : 0, by: r.by, why: r.why, until: r.until })
+      notes.push({ kind: 'raise', label: `repeatExemptions[${r.job.trim()}]`, field: 'texts', value: r.texts.length, by: r.by, why: r.why, until: r.until })
+    } else {
+      notes.push({ kind: 'ignored', label: 'repeatExemptions', field: String(r && r.job), value: r && Array.isArray(r.texts) ? r.texts.length : 0, why: !rs.ok ? rs.why : !byTom ? 'a repeat exemption must be signed by Tom' : 'a repeat exemption needs job "#NNN" and a non-empty texts list' })
+    }
+  }
+  return { providers, repeat: rep.limits, divergence: div.limits, notes, source, hold, jobRaises, repeatExemptions }
 }
 function readBudgetFile(p) {
   try { return JSON.parse(fs.readFileSync(p, 'utf8')) } catch (e) {
@@ -368,6 +386,13 @@ function supabaseSpendStore({ client, url = process.env.SUPABASE_URL, key = proc
       }
       return byProvider
     },
+    /** Calls under a job token today on ONE repeat key (a repeat exemption's once-each count). */
+    async keyJobCallsToday(key, token, sinceMs = 0) {
+      const from = new Date(Math.max(sinceMs, Date.parse(dayKey(Date.now()) + 'T00:00:00Z'))).toISOString()
+      const { data, error } = await db().from('tts_spend_ledger').select('job').gte('at', from).eq('repeat_key', key).eq('kind', 'call').ilike('job', `%${token}%`)
+      if (error) throw new Error(`tts_spend_ledger: ${error.message}`)
+      return (data || []).filter(r => jobMatches(r.job, token)).length
+    },
   }
 }
 
@@ -399,6 +424,10 @@ function pgSpendStore({ pool, connectionString = process.env.DATABASE_URL } = {}
       const byProvider = {}
       for (const r of rows) if (jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + (Number(r.chars) || 0)
       return byProvider
+    },
+    async keyJobCallsToday(key, token, sinceMs = 0) {
+      const { rows } = await db().query(`select job from public.tts_spend_ledger where at >= greatest(date_trunc('day', now() at time zone 'UTC') at time zone 'UTC', $3::timestamptz) and repeat_key = $1 and kind = 'call' and job like $2`, [key, `%${token}%`, new Date(sinceMs).toISOString()])
+      return rows.filter(r => jobMatches(r.job, token)).length
     },
     end() { return p && p.end() },
   }
@@ -459,6 +488,10 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
       for (const r of rows) if (r.at >= from && jobMatches(r.job, token)) byProvider[r.provider] = (byProvider[r.provider] || 0) + r.chars
       return byProvider
     },
+    async keyJobCallsToday(key, token, sinceMs = 0) {
+      const from = Math.max(sinceMs, Date.parse(dayKey(now()) + 'T00:00:00Z'))
+      return rows.filter(r => r.at >= from && r.kind === 'call' && r.key === key && jobMatches(r.job, token)).length
+    },
     async totals(provider, cycleStartDay) {
       const t = now()
       return { today: sum(provider, Date.parse(dayKey(t) + 'T00:00:00Z')), cycle: sum(provider, cycleStart(t, cycleStartDay)), tripped: trips.get(provider) || null }
@@ -509,7 +542,7 @@ function createSpendGuard(opts = {}) {
 
   function limitsNow() {
     const cfg = loadLimits({ budgetPath, envOverride, nowMs: now() })
-    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence, j: cfg.jobRaises }))
+    const h = sha(JSON.stringify({ p: cfg.providers, r: cfg.repeat, d: cfg.divergence, j: cfg.jobRaises, x: cfg.repeatExemptions.map(e => [e.job, [...e.texts], e.maxCallsPerText, e.since]) }))
     if (h !== lastLimitsHash) {
       // Every change in the limits in force, and every raise or ignored
       // loosening, is told — ONCE PER HOST per distinct change (limits + notes),
@@ -720,9 +753,26 @@ function createSpendGuard(opts = {}) {
       throw new TtsSpendGuardError('LEDGER', `cannot write the spend mirror ${mirrorPath} (${e.message}) — refusing to render unrecorded`)
     }
 
+    // A Tom-signed repeat exemption for THIS job and THESE words lifts only the repeat
+    // cap for this one key, and only up to its own once-each count of the job's calls.
+    let reserveLimits = b
+    const exempt = cfg.repeatExemptions.find(e => jobMatches(jobText, e.job) && e.texts.has(repeatTextKey(text)))
+    if (exempt) {
+      let used
+      try { used = await store.keyJobCallsToday(key, exempt.job, exempt.since) } catch (e) {
+        try { mirror({ kind: 'refused', code: 'LEDGER', ...base }) } catch {}
+        refuse('LEDGER', provider, `cannot read job ${exempt.job}'s calls on these words from the ledger (${e.message}) — refusing to render unrecorded`, {})
+      }
+      if (used >= exempt.maxCallsPerText) {
+        try { mirror({ kind: 'refused', code: 'REPEAT', ...base }) } catch {}
+        refuse('REPEAT', provider, `job ${exempt.job} has already used its ${exempt.maxCallsPerText} exempt call(s) on these words in voice ${ctx.voiceId || '?'} today (Tom's exemption, until ${exempt.until}) — do not retry; a human listens first`, { key, course: base.course, job: base.job })
+      }
+      reserveLimits = { ...b, maxPerKey: 1_000_000 }
+    }
+
     let res
     try {
-      res = await store.reserve({ provider, voice: base.voice, chars, key, textHash: base.text_hash, course: base.course, job: base.job, language: base.language, attempt: base.attempt, limits: b, dailyCap })
+      res = await store.reserve({ provider, voice: base.voice, chars, key, textHash: base.text_hash, course: base.course, job: base.job, language: base.language, attempt: base.attempt, limits: reserveLimits, dailyCap })
     } catch (e) {
       try { mirror({ kind: 'refused', code: 'LEDGER', ...base }) } catch {}
       refuse('LEDGER', provider, `the shared spend ledger is unreachable (${e.message}) — refusing to render unrecorded`, {})
@@ -740,13 +790,14 @@ function createSpendGuard(opts = {}) {
     if (raisedJob) { const c = jobSpend.get(raisedJob.job); if (c) c.byProvider[provider] = (Number(c.byProvider[provider]) || 0) + chars }
     try { mirror(entry) } catch { /* the reservation is in the DB; the intent line is on disk */ }
 
-    // Alerts on crossing lines (once per process per line per day/cycle).
+    // Alerts on crossing lines: once per HOST per line per day/cycle (job #695) — a
+    // service restart must not re-raise a crossing already said (95% Cartesia repeated per restart).
     const today = Number(res.today) || 0; const cycle = Number(res.cycle) || 0
     if (today >= b.alertDailyChars) {
-      alert(`daily:${provider}:${dayKey(now())}`, 'warn', `${provider} spend today has reached ${today.toLocaleString()} chars (alert line ${b.alertDailyChars.toLocaleString()}, cap ${b.dailyCapChars.toLocaleString()})`, { provider })
+      alert(`daily:${provider}:${dayKey(now())}`, 'warn', `${provider} spend today has reached ${today.toLocaleString()} chars (alert line ${b.alertDailyChars.toLocaleString()}, cap ${b.dailyCapChars.toLocaleString()})`, { provider }, { oncePerHost: true })
     }
     for (const s of POOL_ALERT_SHARES) {
-      if (cycle >= s * b.monthlyPoolChars) alert(`pool:${provider}:${s}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * cycle / b.monthlyPoolChars)}% of its ${b.monthlyPoolChars.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider })
+      if (cycle >= s * b.monthlyPoolChars) alert(`pool:${provider}:${s}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * cycle / b.monthlyPoolChars)}% of its ${b.monthlyPoolChars.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider }, { oncePerHost: true })
     }
     return entry
   }

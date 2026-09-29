@@ -30,10 +30,9 @@
  * Seed 376 is excluded (job #660·I is working on it).
  *
  * The spend guard's repeat key ignores apostrophes and punctuation, so a line
- * rendered six times today is refused; on that one refusal the tool sends the
- * hint's own output ("qualcos' altro", a different key) as the door text, which
- * is exactly the string Azure receives for every other clip anyway, and says so
- * in the log.
+ * already rendered its quota of times today is refused; the refusal is logged
+ * as a failure and the clip is left for another day (Kai, 2026-09-29: never
+ * work around the guard). The veracity gate gets TWO tries per text.
  *
  * Usage:
  *   node tools/course-optimization/ita-qualcosaltro-rerender-2026-09-28.cjs --plan
@@ -89,6 +88,14 @@ const s3 = phase8.s3
 const S3_BUCKET = phase8.S3_BUCKET
 const log = (...a) => console.log(...a)
 
+/** Free probe of the Azure key: the voices list endpoint, no synthesis, no ledger row. */
+async function azureKeyState() {
+  const region = process.env.AZURE_SPEECH_REGION || 'westeurope'
+  try {
+    const res = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/voices/list`, { headers: { 'Ocp-Apim-Subscription-Key': process.env.AZURE_SPEECH_KEY || '' } })
+    return { ok: res.status === 200, status: res.status, region }
+  } catch (e) { return { ok: false, status: `network: ${e.message}`, region } }
+}
 async function s3Bytes(key) {
   const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: key }))
   const chunks = []
@@ -163,6 +170,17 @@ async function main() {
   for (const w of work) log(`  ${w.clip.id}  ${w.bareVoice.padEnd(20)}  rev${w.clip.audio_revision ?? 1}  "${w.clip.text}"${w.renderText && w.renderText !== w.clip.text ? `  → relabel "${w.renderText}"` : ''}  [${w.holders.length} holder${w.holders.length === 1 ? '' : 's'}]  ${w.status}`)
   if (MODE === 'plan') return
 
+  // Azure key pre-check (job #698, 2026-09-29: the key in .env began returning 401 in
+  // every region at ~00:40Z). A dead key must be found BEFORE the first reservation,
+  // because an accepted reservation whose provider call fails still counts against the
+  // repeat allowance. The voices list is free and needs no synthesis.
+  const keyState = await azureKeyState()
+  if (!keyState.ok) {
+    log(`BLOCKED ON KEY: Azure voices list returned ${keyState.status} for region ${keyState.region} — no render attempted, nothing reserved`)
+    const results = work.filter(w => w.status === 'render').map(w => ({ id: w.clip.id, text: w.clip.text, status: `blocked-on-key: Azure ${keyState.status}` }))
+    fs.writeFileSync(path.join(OUT, `blocked-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}.json`), JSON.stringify(results, null, 2))
+    return
+  }
   const { data: course } = await supabase.from('courses').select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect').eq('course_code', COURSE).single()
   course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode: COURSE })
   const gmap = await genderHaiku.loadGenderMap(COURSE, supabase)
@@ -209,22 +227,15 @@ async function main() {
           region: process.env.AZURE_SPEECH_REGION || 'westeurope',
           voiceName, speed, regenerationAttempt: attemptNo - 1,
         }
-        let out
-        try {
-          out = await ttsService.generateWithRetry(doorText, 'azure', cfg)
-        } catch (e) {
-          if (/REPEAT/.test(e.message) && doorText === textForTTS) {
-            doorText = applyElisionSpaceHint(textForTTS)
-            r.repeatCapped = `spend guard refused the canonical line (${e.message.slice(0, 90)}…); sent the hint's own output as the door text instead`
-            log(`  ${r.repeatCapped}`)
-            out = await ttsService.generateWithRetry(doorText, 'azure', cfg)
-          } else throw e
-        }
+        // Kai, 2026-09-29: never work around the spend guard's repeat cap — a
+        // refusal is recorded as "repeat-capped" and the clip is left for another day.
+        const out = await ttsService.generateWithRetry(doorText, 'azure', cfg)
         if (out.existingClip) throw new Error(`the door handed back an existing clip ${out.existingClip.id} instead of rendering — replacing list incomplete`)
         const { buffer, durationMs } = await phase8.masterAudio(out.audioBuffer, textForTTS, await voiceConfigService.masteringOptsFor(voiceName))
         return { buffer, durationMs, wordBoundaries: out.wordBoundaries }
       }
-      const gated = await veracity.renderChecked({ render, expectedText: textForTTS, language: LANG, sampler: veracity.ALWAYS_SAMPLER, logger: console, meta: { courseCode: COURSE, role, voiceId: voiceName, audio_uuid: c.id, originalText: c.text } })
+      // Two tries per text, no more (Kai, 2026-09-29): a text that fails whisper twice is listed as still failing.
+      const gated = await veracity.renderChecked({ render, expectedText: textForTTS, language: LANG, sampler: veracity.ALWAYS_SAMPLER, attempts: 2, logger: console, meta: { courseCode: COURSE, role, voiceId: voiceName, audio_uuid: c.id, originalText: c.text } })
       r.gate = { attempts: gated.attempts, verdict: gated.verdict }
       if (!gated.published) throw new Error(`veracity gate: quarantined after ${gated.attempts} attempts (${gated.verdict?.reason}, CER ${gated.verdict?.cer}, heard ${JSON.stringify(String(gated.verdict?.decode || '').slice(0, 60))})`)
       const afterFile = path.join(OUT, 'after', `${c.id}.mp3`)
@@ -253,6 +264,12 @@ async function main() {
     } catch (e) {
       r.status = `FAILED: ${e.message}`
       log(`  FAILED: ${e.message}`)
+      if (/401|Unauthorized|WebSocket upgrade failed|authentication/i.test(e.message)) {
+        log('  auth failure from Azure — stopping the run so no further reservation is burned (Kai/Tom, 2026-09-29)')
+        results.push(r)
+        for (const rest of work.slice(work.indexOf(w) + 1)) if (rest.status === 'render') results.push({ id: rest.clip.id, text: rest.clip.text, status: 'blocked-on-key: run stopped after an Azure auth failure' })
+        break
+      }
     }
     results.push(r)
   }
