@@ -3,7 +3,7 @@
  * the course already holds LINKS that clip (no store, no write); a dry run writes
  * nothing at all. Run: npx vitest run services/phases/phase8-render-route-link.test.cjs
  */
-import { describe, it, expect, beforeAll } from 'vitest'
+import { describe, it, expect, beforeAll, vi } from 'vitest'
 const { loadPhase8 } = require('./__fixtures__/phase8-sandbox.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
 
@@ -21,7 +21,8 @@ const ident = (o = {}) => ({ courseCode: 'ita_for_eng', text: TEXT, language: 'i
 function setup(rows) {
   const tables = { course_audio: rows.map(r => ({ ...r })) }
   const { phase8, supabase, s3 } = loadPhase8({ tables })
-  phase8.useClipSource(clipIndex.memoryClipSource({ rows: tables.course_audio, courses: [] }))
+  const source = clipIndex.memoryClipSource({ rows: tables.course_audio, courses: [] })
+  phase8.useClipSource(source)
   const writes = []
   const orig = supabase.from.bind(supabase)
   supabase.from = (t) => {
@@ -31,7 +32,7 @@ function setup(rows) {
     }
     return q
   }
-  return { phase8, s3, writes }
+  return { phase8, s3, writes, source }
 }
 
 describe('render route library step (#708)', () => {
@@ -55,5 +56,23 @@ describe('render route library step (#708)', () => {
     const out = await phase8.linkClipForRender(ident())
     expect(out).toMatchObject({ s3Key: 'mastered/SIB.mp3' })
     expect(writes).toEqual(['course_audio.upsert'])
+  })
+
+  it('dry-run fallback returns an unindexed library clip without writing the clip index (#711)', async () => {
+    const { phase8, source, writes, s3 } = setup([
+      row({ id: 'b1', course_code: 'ita_for_fra', s3_key: 'mastered/SIB.mp3' }),
+    ])
+    // Keep the real memory write: spying only on Supabase misses this side effect.
+    const indexWrite = vi.spyOn(source, 'write')
+    expect(source.index).toEqual([])
+
+    const out = await phase8.linkClipForRender(ident({ dryRun: true }))
+
+    expect(out).toMatchObject({ audioId: 'b1', s3Key: 'mastered/SIB.mp3' })
+    expect(source.calls.fallback).toBeGreaterThan(0)
+    expect(writes).toEqual([])
+    expect(s3.putCalls).toEqual([])
+    expect(indexWrite, 'dry run must not write through to clip_index').not.toHaveBeenCalled()
+    expect(source.index).toEqual([])
   })
 })
