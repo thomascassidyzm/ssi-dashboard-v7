@@ -1,3 +1,42 @@
+## 2026-09-29 — human recordings are named voices, and the library is reconciled nightly (job #703)
+
+**Tom's ruling (r-2026-09-29-human-recordings-enter-the-same-audio).** Human recordings are tracked as named voices
+(artist, language/dialect, gender, text) and enter the same library through an "add a recording" in-tray that is
+part of the one Popty chain.
+
+**Better × simpler × cheaper.** The registry is `voices` (one row per artist, two new columns: `clip_language`,
+`dialect`), read from `language_recording_policy` rather than typed a second time. The in-tray is
+`POST /api/audio/add-recording` beside `/api/audio/render`, and it stores through the booth's own take path
+(`handleRecordingUpload`, script mode) rather than a second uploader; the only change to that handler is
+`req.libraryArtistVoiceId`, set by the in-tray after it has checked the artist, never read from the body.
+Nothing rewrites `course_audio`: who spoke a clip is in `human_clip_attribution` (with its evidence), the words a
+clip says are in `clip_spoken_text`, and `clip_index` reads both. Cheaper than a rewrite because every write is
+additive and can be undone by deleting rows (rollback list in `database/changes/20260929_named_human_voices.sql`).
+
+**What the evidence allowed, and what it did not.**
+- Bare xAI ids (`b1a7441b97a1`, 15,212 rows, 90 ids) are the same voice as `xai_b1a7441b97a1`; the voices table names
+  them. Indexed under the canonical name, no `course_audio` change (renaming rows would orphan every lookup keyed by
+  the bare id in `voice_config`).
+- The 39,351 `legacy_import` Welsh takes have no speaker anywhere: not in S3 metadata (one bulk copy on 15 May 2025),
+  not in `recording_provenance` (starts June 2026), not in the import code. Pitch and timbre give the gender of each
+  voice and one unmistakable change of speaker (Welsh South voice 1, seed 130: 213 Hz to 178 Hz). They do NOT separate
+  two men: Aran's 2026 recordings sit 3–4 from the 2025 English narrator, the same distance as two windows of that
+  narrator ten seeds apart. So no legacy clip was named by machine. They are grouped (13 groups) and named by ear on
+  the listening sheet with `tools/voices/name-speaker-group.cjs`. Only two spellings the cast policy itself lists as
+  aliases (`catrin_human`, `Aran`, `human_aran_cym_n_2`) and two `human_Aran` case variants were attributed.
+- Gendered takes: `course_audio.text` is the unexpanded label. Of 15,042 target takes whose expansion differs from the
+  label, 14,099 were written before the expansion existed and say the label (whisper, 18 of 18). 2,896 were
+  written after; an object date only NOMINATES them, because Italian rows Kai re-rendered on 2026-09 through the one
+  render route also carry a fresh object and still say the label (whisper, 4 of 4). A clip is filed under the
+  expansion only when whisper's decode is closer to it than to the label by at least a character; everything else
+  stays under its label, which is where it was. Whisper runs behind the estate's idle-priority semaphore (~10 s a
+  clip), so the nightly gives it a 100-minute budget and finishes the rest on later nights.
+
+**Reconcile.** `tools/voices/reconcile-library.cjs` walks `course_audio` in pkey batches and compares what each clip
+should be filed under with `clip_index`. Drift (missing + stale) is what a machine can fix and is repaired the same
+night; takes awaiting a name and machine voices nothing names are listed by count and speak only when they grow.
+Unit files: `tools/voices/systemd/` (01:20 London).
+
 ## 2026-09-27 — the Method Pod leaves the canonical pod set (job #410)
 
 **Tom's ruling (r-2026-09-27-method-pod-ai-written-tom-aran).** The Method Pod "should be removed from the
