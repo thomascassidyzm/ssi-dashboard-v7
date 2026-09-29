@@ -1,0 +1,14 @@
+[Unit]
+Description=Nightly clip-library reconcile at 01:20 Europe/London
+
+[Timer]
+# 01:20 London: before the 03:00 SSi CI and the 03:30 nightly suite, so the walk
+# is finished (~50 min) long before they start.
+OnCalendar=*-*-* 01:20:00 Europe/London
+RandomizedDelaySec=300
+AccuracySec=1min
+Persistent=true
+Unit=ssi-voices-reconcile.service
+
+[Install]
+WantedBy=timers.target

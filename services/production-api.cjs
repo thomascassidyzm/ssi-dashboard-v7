@@ -5680,6 +5680,12 @@ async function handleRecordingUpload(req, res) {
       }
       if (!slotVoiceId && metadata?.voiceId) slotVoiceId = metadata.voiceId
     }
+    // THE IN-TRAY (POST /api/audio/add-recording, job #703) sets this on the request
+    // AFTER it has checked the named artist against the voices registry — same
+    // shape as req.recordistVoiceId for pods. A recording added to the library
+    // belongs to the artist who made it, whatever voice the home course casts on
+    // that slot. Never read from the body: a client cannot name its own voice here.
+    if (req.libraryArtistVoiceId) slotVoiceId = req.libraryArtistVoiceId
 
     // SCRIPT MODE: file the take as a course_audio row so it can actually be
     // served. Until 2026-08-19 this branch did not exist — script takes got
@@ -6540,6 +6546,82 @@ app.post('/api/audio/render', async (req, res) => {
   } catch (error) {
     logger.error('Render proxy error:', error)
     res.status(500).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
+  }
+})
+
+// THE IN-TRAY of the same chain (job #703, Tom 2026-09-29): a human recording is added
+// to the library as a NAMED voice — artist, language/dialect, gender, text — through the
+// booth's own take path, then indexed (services/shared/audio-intake-entry.cjs).
+// POST /api/audio/add-recording { artist | register, text, audio (base64), mimeType?, purpose,
+//                                  language?, gender?, courseCode?, role?, replace? }
+app.post('/api/audio/add-recording', async (req, res) => {
+  const intake = require('./shared/audio-intake-entry.cjs')
+  const clipIndex = require('./shared/clip-index.cjs')
+  const { tryCanonicalVoiceId, tryCanonicalLanguage } = require('./shared/clip-identity.cjs')
+  try {
+    const who = String(req.headers['x-agent-id'] || req.headers['x-service-name'] || '').trim()
+    if (!who) return res.status(401).json({ ok: false, code: 'IDENTITY_REQUIRED', error: 'say who is adding this: send x-agent-id (or x-service-name)' })
+    if (!supabaseClient.isInitialized()) return res.status(503).json({ ok: false, error: 'Supabase not initialized' })
+    const sb = supabaseClient.getClient()
+    const humanVoices = async () => {
+      const { data, error } = await sb.from('voices').select('voice_id, human_name, gender, clip_language, dialect, languages').eq('type', 'human').not('clip_language', 'is', null)
+      if (error) throw new Error(`voices registry unreadable: ${error.message}`)
+      return data || []
+    }
+    const out = await intake.addRecording({ ...(req.body || {}), requestedBy: who }, {
+      findArtist: async q => {
+        const all = await humanVoices(), k = q.toLowerCase()
+        const byId = all.filter(v => v.voice_id.toLowerCase() === k)
+        return byId.length ? byId : all.filter(v => (v.human_name || '').toLowerCase() === k)
+      },
+      registerArtist: async r => {
+        const slug = String(r.name).toLowerCase().normalize('NFKD').replace(/[^a-z0-9]+/g, '_').replace(/^_|_$/g, '')
+        const base = tryCanonicalLanguage(String(r.clip_language).split('_')[0])
+        if (!slug || !base) throw new intake.IntakeError(`cannot register "${r.name}" for clip_language "${r.clip_language}" — the language key starts with a language code (cym_n, deu_at)`)
+        const row = { voice_id: `human_${slug}_${r.clip_language}`, type: 'human', human_name: r.name, display_name: r.name, gender: r.gender || null,
+          languages: [base], clip_language: r.clip_language, dialect: r.dialect || null, is_active: true }
+        const { error } = await sb.from('voices').insert(row)
+        if (error) throw new intake.IntakeError(`registering ${r.name} failed: ${error.message}`, 409, 'REGISTER_FAILED')
+        return row
+      },
+      homeCourse: async (clipLanguage, courseCode) => {
+        const { data, error } = await sb.from('courses').select('course_code, target_lang, known_lang').ilike('course_code', `${clipLanguage}%`)
+        if (error) throw new Error(`courses unreadable: ${error.message}`)
+        const mine = (data || []).filter(c => c.course_code.startsWith(`${clipLanguage}_for_`))
+        const pick = courseCode ? mine.find(c => c.course_code === courseCode) : (mine.find(c => c.course_code === `${clipLanguage}_for_eng`) || mine[0])
+        if (!pick) throw new intake.IntakeError(courseCode ? `${courseCode} is not a ${clipLanguage} course` : `no ${clipLanguage} course to file a ${clipLanguage} recording in`, 409, 'NO_HOME_COURSE')
+        return pick
+      },
+      libraryHas: async ({ language, text, voiceId }) => {
+        const rows = await clipIndex.lookupIndexed(sb, language, text)
+        const hit = rows.find(r => tryCanonicalVoiceId(r.voice_id) === tryCanonicalVoiceId(voiceId))
+        return hit ? { audioId: hit.id } : null
+      },
+      store: async ({ courseCode, role, text, voiceId, artist, audio, mimeType, requestedBy }) => {
+        const captured = await new Promise(resolve => {
+          const fakeRes = { code: 200, status(c) { this.code = c; return this }, json(b) { resolve({ status: this.code, body: b }) } }
+          handleRecordingUpload({
+            params: { courseCode }, headers: {}, libraryArtistVoiceId: voiceId,
+            body: { audioData: audio, mimeType,
+              metadata: { mode: 'script', role, text, cadence: 'natural', voiceId, recordedBy: requestedBy, kind: role },
+              provenance: { recorded_by: requestedBy, speaker_dialect: artist.dialect || null } },
+          }, fakeRes)
+        })
+        if (captured.status >= 400 || !captured.body.success) throw new intake.IntakeError(`the take was refused: ${captured.body.error || captured.body.reason || captured.status}`, 422, 'TAKE_REFUSED', { body: captured.body })
+        const filing = captured.body.filing || {}
+        return { audioId: filing.filed ? filing.courseAudioId : null, s3Key: captured.body.s3Key, durationMs: captured.body.audioProcessing && captured.body.audioProcessing.durationMs, filing }
+      },
+      index: async audioId => {
+        const { data, error } = await sb.from('course_audio').select('id, course_code, text, language, voice_id, role, s3_key, origin, veracity_pass').eq('id', audioId).single()
+        if (error) throw new Error(`filed clip unreadable: ${error.message}`)
+        return clipIndex.supabaseClipSource(sb, { log: logger, indexedBy: 'intake' }).write([data])
+      },
+    })
+    res.json(out)
+  } catch (error) {
+    if (error instanceof intake.IntakeError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message, ...error.extra })
+    logger.error('Add-recording error:', error)
+    res.status(500).json({ ok: false, error: error.message })
   }
 })
 
