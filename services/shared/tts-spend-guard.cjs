@@ -176,7 +176,9 @@ const CYCLE_STOPS = new Set(['POOL_SHARE', 'PROVIDER_POOL'])
 const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
 /**
  * THE DAILY TOTAL CAP (job #692, Tom 2026-09-29 00:25Z: "limit it to 50,000
- * characters per day TOTAL without my express approval"). Enforced INSIDE
+ * characters per day TOTAL without my express approval"), raised to 100,000 by
+ * Tom 2026-09-29 14:31Z ("Maybe 100,000 characters per day automatic. Exceeding
+ * this needs approvals", job #844). Enforced INSIDE
  * tts_spend_reserve (ops/sql/20260929-tts-spend-total-cap.sql), summed over every
  * provider for the UTC day — the guard passes no figure, so no caller, budget
  * file or job raise can loosen it. Only a signed raise naming Tom, a row in
@@ -184,7 +186,7 @@ const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
  * mirrors it for tests.
  */
 const DAILY_TOTAL_CAP = 'DAILY_TOTAL_CAP'
-const TOTAL_DAILY_CAP_CHARS = 50_000
+const TOTAL_DAILY_CAP_CHARS = 100_000
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -784,7 +786,7 @@ function createSpendGuard(opts = {}) {
       try { mirror({ kind: 'refused', code: res.code, ...base }) } catch {}
       const hint = res.code === 'POOL_SHARE' ? ` The stop is ${Math.round(b.stopAtShareOfPool * 100)}% of a ${b.monthlyPoolChars.toLocaleString()}-char pool; a raise needs by, why and until (at most ${RAISE_MAX_DAYS} days) in ops/tts-spend-budgets.json.`
         : res.code === 'DAILY_CAP' ? (cfg.hold ? ` HELD: ${cfg.hold.message}` : ' Raise dailyCapChars only through a signed raise in ops/tts-spend-budgets.json.') : ''
-      refuse(res.code || 'REFUSED', provider, `${res.message || 'refused by the ledger'}.${hint}`, { key: res.code === 'REPEAT' ? key : undefined, today: res.today, cycle: res.cycle, seen: res.seen, course: base.course, job: base.job })
+      refuse(res.code || 'REFUSED', provider, `${res.message || 'refused by the ledger'}.${hint}`, { key: res.code === 'REPEAT' ? key : undefined, today: res.today, cycle: res.cycle, seen: res.seen, course: base.course, job: base.job, chars: res.code === 'DAILY_TOTAL_CAP' ? chars : undefined, voice: res.code === 'DAILY_TOTAL_CAP' ? base.voice : undefined, total: res.total, cap: res.cap })
     }
     const entry = { kind: 'call', id: res.id, ...base }
     if (raisedJob) { const c = jobSpend.get(raisedJob.job); if (c) c.byProvider[provider] = (Number(c.byProvider[provider]) || 0) + chars }
@@ -834,6 +836,28 @@ async function defaultNotify(entry) {
   if (process.env.CS_COOKIE) headers.Cookie = `cs_user=${process.env.CS_COOKIE}`
   const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 5000)
   try { await fetch(`${surface}/api/needs-you`, { method: 'POST', headers, body: JSON.stringify({ text }), signal: ctl.signal }) } finally { clearTimeout(t) }
+  if (entry.code === DAILY_TOTAL_CAP) await askWatsonForApproval(entry, surface, os.hostname()).catch(() => {})
+}
+
+/**
+ * The approval route for the daily total cap (job #844): one plain line into
+ * Tom's 令 Watson room asking for approval — chars requested and what for. Only
+ * Tom grants it (TOM_SAID_RAISE=yes node tools/tts-cap.cjs raise ...). Identity
+ * is the cron fleet's, as ops/staging-drop-notifier.js does; the alert is
+ * already once per host per day, so this is too. Fail-soft: never blocks a render.
+ */
+async function askWatsonForApproval(entry, surface, host) {
+  let headers = { 'Content-Type': 'application/json' }
+  try { headers = { ...headers, ...require('/home/tomcassidy/command-surface/ops/cs-cron-identity.js').identityHeaders(surface) } } catch { /* fail-soft */ }
+  const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 5000)
+  try {
+    const rooms = await (await fetch(`${surface}/api/rooms`, { headers, signal: ctl.signal })).json()
+    const jobId = (rooms.rooms || []).find(r => r.key === 'watson')?.convId
+    if (!jobId) return
+    const forWhat = [entry.course && `course ${entry.course}`, entry.job && `job ${entry.job}`, entry.provider && `provider ${entry.provider}`].filter(Boolean).join(', ') || 'an unnamed caller'
+    const text = `Audio approval needed for Tom: the ${Number(entry.cap || 100000).toLocaleString()}-char daily audio cap is reached (${Number(entry.total || 0).toLocaleString()} spent today, UTC). Requested: ${entry.chars != null ? entry.chars : '?'} more chars, for ${forWhat} (host ${host}). Only Tom can grant it: TOM_SAID_RAISE=yes node tools/tts-cap.cjs raise <capChars> <days> "<why>".`
+    await fetch(`${surface}/api/surface-notice`, { method: 'POST', headers, body: JSON.stringify({ jobId, text, relay: 'tts-cap-approval' }), signal: ctl.signal })
+  } finally { clearTimeout(t) }
 }
 
 // ─── Provider usage readers ─────────────────────────────────────────────────
