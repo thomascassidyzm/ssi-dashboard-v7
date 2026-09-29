@@ -8,6 +8,7 @@
  *
  *   node tools/tts-stop.cjs status   # is it on? what does it hold?
  *   node tools/tts-stop.cjs stop     # impose it (idempotent)
+ *   node tools/tts-stop.cjs guard    # re-vault every live key outside the guarded set (#695)
  *   node tools/tts-stop.cjs lift     # ONLY on Tom's word: undo both layers
  *
  * Two layers, because one does not reach everything:
@@ -35,12 +36,8 @@ const os = require('os')
 const path = require('path')
 const { execFileSync } = require('child_process')
 
-const HOME = os.homedir()
-const VAULT = path.join(HOME, '.local', 'state', 'ssi-tts-spend', 'tom-stop')
+const { HOME, TTS_KEY_LINE, PLACEHOLDER, VAULT, mayHoldLiveKey, liveKeyLines, keyFiles } = require('./lib/tts-key-guard.cjs')
 const MANIFEST = path.join(VAULT, 'manifest.json')
-const PLACEHOLDER = 'STOPPED-BY-TOM-2026-09-28-see-tools-tts-stop'
-/** The paid-TTS credentials. Not CARTESIA_ADMIN_API_KEY: that one only READS usage. */
-const TTS_KEY_LINE = /^(\s*(?:export\s+)?(?:CARTESIA_API_KEY\w*|AZURE_SPEECH_KEY|AZURE_TTS_KEY|ELEVENLABS_API_KEY|XAI_API_KEY)\s*=)(.*)$/
 const STOP_MESSAGE = "Tom ruled 2026-09-28 23:40Z: ALL audio generation is stopped, every provider (Cartesia, Azure, ElevenLabs, any other), every caller, every person, until the re-render problem is completely fixed (job #676)"
 /** Services that load the keys at boot: restarted on lift so they see them again. */
 const RESTART_ON_LIFT = ['popty-phase8-audio.service', 'popty-production-api.service', 'popty-course-builder-api.service']
@@ -52,28 +49,14 @@ function psql(sql) {
   return execFileSync('psql', [url.trim().replace(/^["']|["']$/g, ''), '-v', 'ON_ERROR_STOP=1', '-Atc', sql], { encoding: 'utf8' }).trim()
 }
 
-/** Every real (not symlinked, not example) .env file under $HOME holding a TTS key. */
-function keyFiles() {
-  let out = ''
-  try {
-    out = execFileSync('find', [HOME, '-maxdepth', '6', '-type', 'f', '-name', '.env*',
-      '-not', '-name', '*.example', '-not', '-path', '*/node_modules/*', '-not', '-path', '*/.cs-scratch/*', '-not', '-path', `${VAULT}/*`],
-    { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] })
-  } catch (e) { out = e.stdout || '' }
-  // The key backups in ~/.secrets are copied into checkouts by hand: hold them too.
-  const secrets = path.join(HOME, '.secrets')
-  if (fs.existsSync(secrets)) out += '\n' + fs.readdirSync(secrets).filter(n => n.endsWith('.env')).map(n => path.join(secrets, n)).join('\n')
-  return out.split('\n').filter(Boolean).filter(f => {
-    try { return fs.readFileSync(f, 'utf8').split('\n').some(l => TTS_KEY_LINE.test(l)) } catch { return false }
-  })
-}
-
 const loadManifest = () => { try { return JSON.parse(fs.readFileSync(MANIFEST, 'utf8')) } catch { return { files: {} } } }
 const saveManifest = (m) => { fs.mkdirSync(VAULT, { recursive: true, mode: 0o700 }); fs.writeFileSync(MANIFEST, JSON.stringify(m, null, 2), { mode: 0o600 }) }
 
-function neutraliseKeys() {
+/** `onlyUnguarded` (job #695): leave the real .env of a guarded checkout live, hold every other key. */
+function neutraliseKeys({ onlyUnguarded = false } = {}) {
   const m = loadManifest(); let changed = 0
   for (const f of keyFiles()) {
+    if (onlyUnguarded && mayHoldLiveKey(f)) continue
     const lines = fs.readFileSync(f, 'utf8').split('\n')
     const held = m.files[f] || []
     let touched = false
@@ -95,10 +78,17 @@ function neutraliseKeys() {
   return changed
 }
 
+/**
+ * Job #695: a lift restores keys ONLY to the guarded set (the real .env of a
+ * checkout holding the total-cap guard). Everything else stays held in the vault,
+ * because pre-guard code with a live key bypasses the daily cap entirely.
+ */
 function restoreKeys() {
   const m = loadManifest(); let restored = 0
+  const stillHeld = { files: {} }
   for (const [f, held] of Object.entries(m.files)) {
     if (!fs.existsSync(f)) { console.log(`  gone, skipped: ${f}`); continue }
+    if (!mayHoldLiveKey(f)) { stillHeld.files[f] = held; console.log(`  unguarded, kept held: ${f}`); continue }
     const lines = fs.readFileSync(f, 'utf8').split('\n')
     for (const h of held) {
       const name = (h.original.match(TTS_KEY_LINE) || [])[1]
@@ -110,16 +100,17 @@ function restoreKeys() {
     console.log(`  keys restored: ${f}`)
   }
   fs.renameSync(MANIFEST, `${MANIFEST}.lifted-${new Date().toISOString().replace(/[:.]/g, '-')}`)
+  if (Object.keys(stillHeld.files).length) saveManifest(stillHeld)
   return restored
 }
 
 function status() {
   const row = psql("select coalesce((select json_build_object('code', code, 'at', at, 'message', message)::text from tts_spend_trips where provider = '*'), '')")
   const held = Object.keys(loadManifest().files).length
-  const stillLive = keyFiles().filter(f => fs.readFileSync(f, 'utf8').split('\n').some(l => { const k = l.match(TTS_KEY_LINE); return k && k[2].trim() && !k[2].includes(PLACEHOLDER) }))
+  const stillLive = keyFiles().filter(f => liveKeyLines(f).length)
   console.log(row ? `STOP IS ON — ledger row: ${row}` : 'stop is OFF in the ledger (no * row)')
   console.log(`keys held in the vault: ${held} file(s); files on this host still holding a live TTS key: ${stillLive.length}`)
-  for (const f of stillLive) console.log(`  live key: ${f}`)
+  for (const f of stillLive) console.log(`  live key: ${f}${mayHoldLiveKey(f) ? ' (guarded, allowed)' : '  <-- UNGUARDED'}`)
   return { on: !!row, held, stillLive }
 }
 
@@ -127,6 +118,10 @@ const cmd = process.argv[2] || 'status'
 if (cmd === 'stop') {
   psql(`insert into tts_spend_trips (provider, code, message, host) values ('*', 'TOM_STOP', '${STOP_MESSAGE.replace(/'/g, "''")}', '${os.hostname()}') on conflict (provider) do nothing`)
   console.log(`ledger: stop row in place; keys neutralised in ${neutraliseKeys()} more file(s)`)
+  status()
+} else if (cmd === 'guard') {
+  // Job #695: the stop is untouched; this only re-vaults keys outside the guarded set.
+  console.log(`keys neutralised in ${neutraliseKeys({ onlyUnguarded: true })} unguarded file(s)`)
   status()
 } else if (cmd === 'lift') {
   if (process.env.TOM_SAID_LIFT !== 'yes') {
