@@ -89,3 +89,35 @@ describe('a gendered clip is re-filed only on an affirmative hearing', () => {
     expect(judge('bla bla bla bla', 'non voglio sentirmi nervoso', 'non voglio sentirmi nervosa')).toBe('undecided')
   })
 })
+
+describe('the write side files a clip under the same identity as the reconcile', () => {
+  const { supabaseResolversFor } = require('./shared/named-voices.cjs')
+  // a tiny stand-in for the supabase client: from(table).select().limit()/in() resolve to rows
+  const stub = (tables, fail = null) => ({
+    from: table => {
+      const q = { _rows: tables[table] || [] }
+      q.select = () => q
+      q.limit = () => Promise.resolve(fail ? { error: { message: fail } } : { data: q._rows })
+      q.in = (_col, ids) => Promise.resolve({ data: q._rows.filter(r => ids.includes(r.audio_id)) })
+      q.then = (res, rej) => Promise.resolve(fail ? { error: { message: fail } } : { data: q._rows }).then(res, rej)
+      return q
+    },
+  })
+  const tables = {
+    voices: [{ voice_id: 'b1a7441b97a1', tts_engine: 'xai' }],
+    language_recording_policy: POLICY,
+    human_clip_attribution: [{ audio_id: 'L1', voice_id: 'human_aran_cym_n' }],
+    clip_spoken_text: [{ audio_id: 'G1', spoken_text: 'ich bin müdee' }],
+  }
+  it('resolves attributed takes, bare ids and spoken words for the rows in hand', async () => {
+    const legacy = row({ id: 'L1', voice: 'legacy_import', origin: 'human' })
+    const gendered = row({ id: 'G1', voice: 'azure_x', language: 'deu', course: 'deu_for_eng', text: 'ich bin müde' })
+    const r = await supabaseResolversFor(stub(tables), { log: { warn() {} } })([legacy, gendered])
+    expect(clipIndex.indexEntryFor(legacy, 't', courseOf, r).voice_id).toBe('human_aran_cym_n')
+    expect(clipIndex.indexEntryFor(gendered, 't', courseOf, r).text_key).toBe('ich bin müdee')
+  })
+  it('an unreadable table means the plain identity it always used, never a guess', async () => {
+    const r = await supabaseResolversFor(stub(tables, 'boom'), { log: { warn() {} } })([row({ id: 'L1', voice: 'legacy_import', origin: 'human' })])
+    expect(r).toBeNull()
+  })
+})
