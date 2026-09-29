@@ -123,7 +123,8 @@ describe('regenerate-phrase asks for the requested voice only (job #741)', () =>
 describe('every explicit regenerate route is voice-bound (job #741)', () => {
   it('no door literal that names `replacing` (regenerate-role/-single/-lego) omits voiceBound', () => {
     const src = fs.readFileSync(path.join(__dirname, 'phases/phase8-audio-v13.cjs'), 'utf8')
-    const literals = src.match(/door: \{[^}\n]*replacing:[^}\n]*\}/g) || []
+    // intro: true (regenerate-presentation) is own-course-only by the door itself, so it is already single-voice.
+    const literals = (src.match(/door: \{[^}\n]*replacing:[^}\n]*\}/g) || []).filter(l => !/intro: true/.test(l))
     expect(literals.length).toBeGreaterThanOrEqual(12)
     expect(literals.filter(l => !/voiceBound: true/.test(l))).toEqual([])
   })
