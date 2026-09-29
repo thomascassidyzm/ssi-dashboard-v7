@@ -69,7 +69,7 @@ const baseOf = key => tryCanonicalLanguage(String(key || '').split('_')[0]) || t
  *   findArtist(nameOrId)     → [{ voice_id, human_name, gender, clip_language, dialect }]   (0, 1 or several)
  *   registerArtist(register) → the registered artist
  *   homeCourse(clipLanguage, courseCode?) → { course_code, target_lang, known_lang }   the course the clip is filed in
- *   libraryHas({ language, text, voiceId }) → { audioId } | null
+ *   libraryHas({ language, course, text, voiceId }) → { audioId } | null   (the index key is the COURSE's language code — clip-index.clipLanguageKey — which is the artist's clip_language for every real course but not for the zzz test courses)
  *   store({ courseCode, role, text, voiceId, artist, audio, mimeType, requestedBy })  → { audioId, s3Key, durationMs, filing }
  *   index(audioId)           → number of index entries written
  */
@@ -106,7 +106,7 @@ async function addRecording(input, deps) {
 
     // 2. LIBRARY
     const course = await deps.homeCourse(artist.clip_language, req.courseCode)
-    const held = await deps.libraryHas({ language: clipLanguage, text: req.text, voiceId: artist.voice_id })
+    const held = await deps.libraryHas({ language: clipLanguage, course, text: req.text, voiceId: artist.voice_id })
     if (held && !req.replace) {
       return { ok: true, source: 'library', filed: false, audioId: held.audioId, voiceId: artist.voice_id, artist: artist.human_name, language: clipLanguage, purpose: req.purpose, requestedBy: req.requestedBy }
     }
