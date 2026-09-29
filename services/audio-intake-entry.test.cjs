@@ -45,6 +45,13 @@ describe('add a recording', () => {
     expect(d.calls.store).toHaveLength(0)
   })
 
+  it('asks the library with the home course too, so the key is the course\'s language code', async () => {
+    let asked
+    const d = deps({ libraryHas: async a => { asked = a; return null } })
+    await addRecording(base, d)
+    expect(asked).toMatchObject({ language: 'cym_n', course: COURSE, voiceId: 'human_aran_cym_n' })
+  })
+
   it('--replace stores a new take even when the library has one', async () => {
     const d = deps({ libraryHas: async () => ({ audioId: 'OLD' }) })
     expect((await addRecording({ ...base, replace: true }, d)).source).toBe('recorded')

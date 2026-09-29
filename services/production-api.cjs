@@ -6601,8 +6601,9 @@ app.post('/api/audio/add-recording', async (req, res) => {
         if (!pick) throw new intake.IntakeError(`no ${clipLanguage} course to file a ${clipLanguage} recording in — name one with courseCode`, 409, 'NO_HOME_COURSE')
         return pick
       },
-      libraryHas: async ({ language, text, voiceId }) => {
-        const rows = await clipIndex.lookupIndexed(sb, language, text)
+      libraryHas: async ({ language, course, text, voiceId }) => {
+        const key = clipIndex.clipLanguageKey(String(language).split('_')[0], course) || language
+        const rows = await clipIndex.lookupIndexed(sb, key, text)
         const hit = rows.find(r => tryCanonicalVoiceId(r.voice_id) === tryCanonicalVoiceId(voiceId))
         return hit ? { audioId: hit.id } : null
       },
