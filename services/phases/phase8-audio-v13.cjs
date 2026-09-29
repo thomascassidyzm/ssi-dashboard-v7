@@ -33,6 +33,8 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
+const { renderClip, RenderRequestError } = require('../shared/audio-render-entry.cjs')
+const chainContext = require('../shared/chain-context.cjs')
 const courseVoiceConfig = require('../shared/course-voice-config.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
 const { readAllPages } = require('../shared/paged-read.cjs')
@@ -221,6 +223,7 @@ const SIBLING_LOOKUP_LIMIT = Math.max(200, Math.min(5000,
 const app = express()
 app.use(cors())
 app.use(express.json())
+app.use(chainContext.middleware)   // every phase8 request is inside the one audio chain (job #702)
 
 const PORT = process.env.PHASE8_PORT || 3465  // Always use PHASE8_PORT, not generic PORT
 // Bind loopback-only by default. watson-1 has a public IP, so a bare listen()
@@ -5308,6 +5311,69 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
   } catch (error) {
     logger.error('Link presentation audio error:', error)
     res.status(500).json({ error: error.message })
+  }
+})
+
+// =============================================================================
+// POST RENDER - THE ONE ENTRY INTO THE AUDIO CHAIN (job #702, Tom 2026-09-29)
+// =============================================================================
+// Body: { courseCode, role, text, purpose, requestedBy, language?, voiceId?, legoId?, dryRun? }
+// Library first → spend guard → one render (no retries) → master → S3 →
+// course_audio row → clip_index. Orchestration and the rule live in
+// services/shared/audio-render-entry.cjs; this handler only wires its deps to
+// the pieces this file already owns. The text is rendered VERBATIM (no gender
+// expansion): the caller names the exact words to be spoken.
+app.post('/render', async (req, res) => {
+  try {
+    const out = await renderClip(req.body || {}, {
+      resolve: async ({ courseCode, role, language, voiceId }) => {
+        if (isHumanVoiceCourse(courseCode)) throw new RenderRequestError(`${courseCode} is a human-voice-only course — no TTS (Tom's ruling 2026-07-25)`, 409, 'HUMAN_VOICE_COURSE')
+        const { data: course } = await supabase.from('courses')
+          .select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect')
+          .eq('course_code', courseCode).single()
+        if (!course) throw new RenderRequestError(`Course not found: ${courseCode}`, 404, 'NO_COURSE')
+        course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
+        const vc = course.voice_config || {}
+        const settings = vc.voices?.[role] || {}
+        const held = voiceId || settings.voiceId || vc[role]
+        if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
+        const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
+        const provider = decideProvider({ ...settings, voiceId: held, ...(voiceId ? { provider: undefined } : {}) }, { courseCode, role, language: lang })
+        const speed = courseVoiceConfig.renderSpeedFor(vc, role)
+        const providerConfig =
+          provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
+          : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed }
+          : provider === 'xai' ? { apiKey: process.env.XAI_API_KEY, voiceId: held, language: toBcp47(lang) }
+          : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed }
+          : null
+        if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
+        return { language: canonicalLanguage(lang), voiceId: canonicalClipVoiceId(held, provider), provider, providerConfig }
+      },
+      link: async ({ courseCode, text, language, role, voiceId, legoId }) => {
+        const reused = await reuseSiblingIntoCourse({ courseCode, text, language, role, voiceId, legoId, opts: { enabled: true }, label: 'Render' })
+        return reused ? { audioId: reused.audioId, s3Key: reused.s3Key, durationMs: reused.durationMs } : null
+      },
+      speak: (text, provider, cfg, tries) => ttsService.speak(text, provider, cfg, tries),
+      store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries }) => {
+        const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
+        const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
+        await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
+        const { data: row, error } = await supabase.from('course_audio').upsert({
+          course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId,
+          lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: wordBoundaries || null,
+        }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single()
+        if (error) throw new Error(`course_audio write failed after the render was paid for: ${error.message} (object ${s3Key} is in S3)`)
+        await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], 'phase8:render', logger)
+        return { audioId: row.id, s3Key, durationMs }
+      },
+    })
+    res.json(out)
+  } catch (error) {
+    if (error instanceof RenderRequestError) return res.status(error.status).json({ ok: false, code: error.code, error: error.message })
+    // A spend-guard refusal is a 402 carrying its own code; anything else is a 500.
+    const refused = /\(402\)/.test(error.message)
+    logger.error('Render error:', error)
+    res.status(refused ? 402 : 500).json({ ok: false, code: error.code || (refused ? 'REFUSED' : 'RENDER_FAILED'), error: error.message })
   }
 })
 

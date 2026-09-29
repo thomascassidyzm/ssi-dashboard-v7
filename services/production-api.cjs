@@ -200,6 +200,7 @@ app.post('/api/basket-lab-ticket', basketLabGate.mintTicket)
 app.use('/api/basket-lab', basketLabGate.gate, require('../labs/basket-lab/server.cjs').mount('/api/basket-lab', { readOnly: true }))
 
 app.use(express.json({ limit: '50mb' }))  // Large limit for manifests with 20k+ audio entries
+app.use(require('./shared/chain-context.cjs').middleware)   // every Popty request is inside the one audio chain (job #702)
 
 // Disable ALL caching on API responses during development
 app.use((req, res, next) => {
@@ -6522,6 +6523,23 @@ app.post('/api/audio/regenerate-role/:courseCode', async (req, res) => {
   } catch (error) {
     logger.error('Error in regenerate-role:', error)
     res.status(500).json({ error: error.message })
+  }
+})
+
+// THE ONE ROUTE FOR AUDIO (job #702, Tom 2026-09-29): any agent or worker asks
+// Popty for a line of audio here — library first, spend guard, one render, write
+// back (services/shared/audio-render-entry.cjs). The caller must say who it is:
+// x-agent-id / x-service-name, which lands in the ledger as requestedBy.
+// POST /api/audio/render  { courseCode, role, text, purpose, language?, voiceId?, legoId?, dryRun? }
+app.post('/api/audio/render', async (req, res) => {
+  try {
+    const who = String(req.headers['x-agent-id'] || req.headers['x-service-name'] || '').trim()
+    if (!who) return res.status(401).json({ ok: false, code: 'IDENTITY_REQUIRED', error: 'say who is asking: send x-agent-id (or x-service-name)' })
+    const response = await proxyToPhase8('POST', '/render', { ...(req.body || {}), requestedBy: who })
+    res.status(response.status).json(response.data)
+  } catch (error) {
+    logger.error('Render proxy error:', error)
+    res.status(500).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
   }
 })
 

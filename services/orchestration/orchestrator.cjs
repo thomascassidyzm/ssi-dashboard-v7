@@ -175,6 +175,7 @@ io.on('connection', (socket) => {
   });
 });
 
+app.use(require('../shared/chain-context.cjs').middleware)   // Popty's own request: inside the one audio chain (job #702)
 app.use(cors({
   origin: [
     'http://localhost:5173',
