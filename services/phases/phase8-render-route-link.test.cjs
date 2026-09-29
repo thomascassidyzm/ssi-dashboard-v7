@@ -54,6 +54,16 @@ describe('render route library step (#708)', () => {
     expect(writes).toEqual([])
   })
 
+  it('a dry run through the door lookup (readOnly) writes nothing to the clip index', async () => {
+    const src = clipIndex.memoryClipSource({ rows: [row({ id: 'b1', course_code: 'other_for_eng', s3_key: 'mastered/SIB.mp3' })], courses: [] })
+    let writes = 0; const w = src.write.bind(src); src.write = async r => { writes++; return w(r) }
+    const want = { text: TEXT, language: 'ita', voiceId: VOICE, courseCode: 'ita_for_eng', includeOwnCourse: true }
+    await clipIndex.resolveClip(src, { ...want, readOnly: true }, rs => rs[0] || null)
+    expect(writes).toBe(0)
+    await clipIndex.resolveClip(src, want, rs => rs[0] || null)
+    expect(writes).toBe(1)
+  })
+
   it('a real request against another course\'s clip still links it (one upsert)', async () => {
     const { phase8, writes } = setup([row({ id: 'b1', course_code: 'other_for_eng', s3_key: 'mastered/SIB.mp3' })])
     const out = await phase8.linkClipForRender(ident())
