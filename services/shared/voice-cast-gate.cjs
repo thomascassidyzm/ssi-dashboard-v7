@@ -13,6 +13,9 @@
  *     answers first — a recast applies to new content only (Tom, 2026-09-26,
  *     r-2026-09-26-a-recast-applies-to-new-content; a voice change never
  *     re-renders existing audio, 2026-09-20), so the old clips stay as they are.
+ *   - A voice the COURSE ALREADY SPEAKS in that language is allowed for that
+ *     course (Tom, 2026-09-29 10:17Z): existing courses keep their English voice
+ *     until cloned voices replace it wholesale; the cast is for new courses.
  *   - An audition (door.audition) is exempt: hearing a candidate voice is how a
  *     voice gets cast in the first place.
  *   - A failed read of the cast refuses the render. Not knowing the cast is not
@@ -42,6 +45,26 @@ function castAllowsVoice(language, voiceId, rows) {
 const TTL_MS = 60_000
 let injected = null
 let cache = null
+let injectedHolder = null
+
+/** Tests inject who holds what; null restores the live read. */
+function useCourseVoiceHolder(fn) { injectedHolder = fn }
+
+/**
+ * Does this course already hold a clip in this language in this voice? A course
+ * keeps speaking the voice it already speaks until cloned voices replace it
+ * wholesale (Tom, 2026-09-29 10:17Z) — a new line matches, it does not introduce
+ * a second English voice beside the first.
+ */
+async function courseHoldsVoice(courseCode, language, voiceId) {
+  if (injectedHolder) return injectedHolder(courseCode, language, voiceId)
+  if (process.env.VITEST || !courseCode) return false
+  const { createClient } = require('@supabase/supabase-js')
+  const db = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
+  const { data, error } = await db.from('course_audio').select('id').eq('course_code', courseCode).eq('language', language).eq('voice_id', voiceId).limit(1)
+  if (error) throw new Error(`TTS door: cannot read the course's clips (${error.message}) — refusing to render`)
+  return !!(data && data.length)
+}
 
 /** Tests (and dry runs) inject the rows; null restores the live read. */
 function useCastRows(rows) { injected = rows; cache = null }
@@ -63,12 +86,13 @@ async function castRows() {
 }
 
 /** Throws (403) when a new render would use a voice the language's cast does not list. */
-async function assertCastVoice(language, voiceId, { audition = false } = {}) {
+async function assertCastVoice(language, voiceId, { audition = false, courseCode = null } = {}) {
   if (audition) return
   const { allowed, cast } = castAllowsVoice(language, voiceId, await castRows())
+  if (!allowed && courseCode && await courseHoldsVoice(courseCode, language, voiceId)) return
   if (!allowed) {
     throw new Error(`Voice not cast for ${language} (403): ${voiceId} may not render new ${language} audio; the cast is ${cast.join(', ')}. Cast it in the Voice Lab, or audition it (door.audition).`)
   }
 }
 
-module.exports = { castAllowsVoice, castRowLanguage, assertCastVoice, useCastRows }
+module.exports = { castAllowsVoice, castRowLanguage, assertCastVoice, useCastRows, useCourseVoiceHolder }
