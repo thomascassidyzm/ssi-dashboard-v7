@@ -69,7 +69,8 @@ async function main() {
   let client, snap
   try {
     client = await connect()
-    const evidence = await refreshSpokenEvidence(client, { apply: true })
+    // whisper runs behind the estate's idle-priority semaphore (~10 s a clip): a night gets a budget, and what is left is tomorrow's
+    const evidence = await refreshSpokenEvidence(client, { apply: true, budgetMs: Number(process.env.VOICES_WHISPER_BUDGET_MIN || 100) * 60000 })
     const r = await reconcile(client, { apply: true })
     snap = { generated_at: new Date().toISOString(), evidence, ...r }
   } catch (e) {

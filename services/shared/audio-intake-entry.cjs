@@ -91,26 +91,34 @@ async function addRecording(input, deps) {
       artist = await deps.registerArtist(r)
     }
     if (req.gender && artist.gender && req.gender !== artist.gender) throw new IntakeError(`${artist.human_name} is registered as gender ${artist.gender}, this recording says ${req.gender}`, 409, 'GENDER_MISMATCH')
+    // The clip's language key is the artist's own (cym_n) unless the request names ANOTHER language the
+    // registry says they speak — an artist who voices the English prompt files it under 'eng'.
+    let clipLanguage = artist.clip_language
     if (req.language) {
       const same = req.language.includes('_') ? req.language === artist.clip_language : baseOf(req.language) === baseOf(artist.clip_language)
-      if (!same) throw new IntakeError(`${artist.human_name} records ${artist.clip_language}; this recording says ${req.language} — a different dialect is a different language here`, 409, 'LANGUAGE_MISMATCH')
+      if (!same) {
+        // a dialect key (cym_s) that is not the artist's own is a different language, whatever else they speak
+        const speaks = !req.language.includes('_') && (artist.languages || []).some(l => baseOf(l) === baseOf(req.language))
+        if (!speaks) throw new IntakeError(`${artist.human_name} records ${artist.clip_language}; this recording says ${req.language} — a different dialect is a different language here, and ${artist.human_name} is not registered as speaking ${req.language}`, 409, 'LANGUAGE_MISMATCH')
+        clipLanguage = baseOf(req.language)
+      }
     }
 
     // 2. LIBRARY
     const course = await deps.homeCourse(artist.clip_language, req.courseCode)
-    const held = await deps.libraryHas({ language: artist.clip_language, text: req.text, voiceId: artist.voice_id })
+    const held = await deps.libraryHas({ language: clipLanguage, text: req.text, voiceId: artist.voice_id })
     if (held && !req.replace) {
-      return { ok: true, source: 'library', filed: false, audioId: held.audioId, voiceId: artist.voice_id, artist: artist.human_name, language: artist.clip_language, purpose: req.purpose, requestedBy: req.requestedBy }
+      return { ok: true, source: 'library', filed: false, audioId: held.audioId, voiceId: artist.voice_id, artist: artist.human_name, language: clipLanguage, purpose: req.purpose, requestedBy: req.requestedBy }
     }
 
     // 3. STORE — the booth's own path, under the artist's voice
-    const role = req.role || (baseOf(course.known_lang) === baseOf(artist.clip_language) ? 'known' : 'target1')
+    const role = req.role || (baseOf(clipLanguage) === baseOf(course.known_lang) && baseOf(clipLanguage) !== baseOf(course.target_lang) ? 'known' : 'target1')
     const stored = await deps.store({ courseCode: course.course_code, role, text: req.text, voiceId: artist.voice_id, artist, audio: req.audio, mimeType: req.mimeType, requestedBy: req.requestedBy })
     if (!stored || !stored.audioId) throw new IntakeError(`the recording was saved but not filed as a clip${stored && stored.filing && stored.filing.message ? ': ' + stored.filing.message : ''}`, 502, 'NOT_FILED', { stored })
 
     // 4. INDEX
     const indexed = await deps.index(stored.audioId)
-    return { ok: true, source: 'recorded', filed: true, audioId: stored.audioId, s3Key: stored.s3Key || null, durationMs: stored.durationMs || null, courseCode: course.course_code, role, voiceId: artist.voice_id, artist: artist.human_name, language: artist.clip_language, indexed, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
+    return { ok: true, source: 'recorded', filed: true, audioId: stored.audioId, s3Key: stored.s3Key || null, durationMs: stored.durationMs || null, courseCode: course.course_code, role, voiceId: artist.voice_id, artist: artist.human_name, language: clipLanguage, indexed, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
   })
 }
 

@@ -141,14 +141,15 @@ function judgeHeard(heard, label, expansion, characterErrorRate, normalise) {
   return 'undecided'
 }
 
-async function refreshSpokenEvidence(client, { apply, par = 2, limit = 0, headPar = 6 } = {}) {
+async function refreshSpokenEvidence(client, { apply, par = 2, limit = 0, headPar = 6, budgetMs = 0 } = {}) {
+  const deadline = budgetMs ? Date.now() + budgetMs : Infinity
   const veracity = require('../../services/audio-veracity.cjs')
   const evidenceLog = path.join(EVIDENCE_DIR, 'spoken-text-decodes.jsonl')
   fs.mkdirSync(EVIDENCE_DIR, { recursive: true })
   await client.query("SET statement_timeout = '120s'")
   const { rows } = await client.query(CANDIDATES_SQL + (limit ? ` LIMIT ${limit}` : ''))
   await client.query("SET statement_timeout = '15s'")
-  const tally = { candidates: rows.length, before_expansion: 0, says_expansion: 0, says_label: 0, undecided: 0, unreadable: 0 }
+  const tally = { candidates: rows.length, before_expansion: 0, says_expansion: 0, says_label: 0, undecided: 0, unreadable: 0, left_for_tomorrow: 0 }
   const verdicts = []
   const flush = async () => {
     if (!apply || !verdicts.length) return
@@ -179,7 +180,7 @@ async function refreshSpokenEvidence(client, { apply, par = 2, limit = 0, headPa
   const iso1Of = lang => veracity.WHISPER_ISO1[lang] || null
   let j = 0, done = 0
   await Promise.all(Array.from({ length: par }, async () => {
-    while (j < nominated.length) {
+    while (j < nominated.length && Date.now() < deadline) {
       const r = nominated[j++]
       let verdict = 'undecided', heard = null
       try {
@@ -198,6 +199,7 @@ async function refreshSpokenEvidence(client, { apply, par = 2, limit = 0, headPa
     }
   }))
   await flush()
+  tally.left_for_tomorrow = Math.max(0, nominated.length - j)
   return tally
 }
 
@@ -308,7 +310,7 @@ async function main() {
   const apply = args.includes('--apply')
   const client = await connect()
   try {
-    const evidence = args.includes('--no-evidence') ? null : await refreshSpokenEvidence(client, { apply })
+    const evidence = args.includes('--no-evidence') ? null : await refreshSpokenEvidence(client, { apply, par: Number(arg('--whisper-par', 2)) })
     log('spoken-text evidence', JSON.stringify(evidence))
     if (args.includes('--evidence-only')) { console.log(JSON.stringify({ apply, evidence }, null, 2)); return }
     const report = await reconcile(client, { apply, after: arg('--after', NIL), maxBatches: Number(arg('--max-batches', Infinity)) })

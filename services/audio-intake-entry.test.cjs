@@ -7,13 +7,14 @@
 import { describe, it, expect } from 'vitest'
 const { addRecording, IntakeError } = require('./shared/audio-intake-entry.cjs')
 
-const ARAN = { voice_id: 'human_aran_cym_n', human_name: 'Aran', gender: 'm', clip_language: 'cym_n', dialect: 'north' }
+const ARAN = { voice_id: 'human_aran_cym_n', human_name: 'Aran', gender: 'm', clip_language: 'cym_n', dialect: 'north', languages: ['cym', 'eng'] }
+const CATRIN = { voice_id: 'human_catrin_cym_n', human_name: 'Catrin', gender: 'f', clip_language: 'cym_n', dialect: 'north', languages: ['cym'] }
 const CERYS = { voice_id: 'human_cerys_matthews_cym_s', human_name: 'Cerys Matthews', gender: null, clip_language: 'cym_s', dialect: 'south' }
 const COURSE = { course_code: 'cym_n_for_eng', target_lang: 'cym', known_lang: 'eng' }
 
 function deps(over = {}) {
   const calls = { store: [], index: [], register: [] }
-  const artists = [ARAN, CERYS]
+  const artists = [ARAN, CATRIN, CERYS]
   return {
     calls,
     findArtist: async q => artists.filter(a => a.voice_id === q || a.human_name.toLowerCase() === q.toLowerCase()),
@@ -60,6 +61,14 @@ describe('add a recording', () => {
     await expect(addRecording({ ...base, language: 'cym_s' }, d)).rejects.toMatchObject({ code: 'LANGUAGE_MISMATCH' })
     await expect(addRecording({ ...base, language: 'cym' }, d)).resolves.toMatchObject({ ok: true })
     expect(d.calls.store).toHaveLength(1)
+  })
+
+  it('an artist who is registered as speaking English files an English line as the known prompt, under eng', async () => {
+    const d = deps()
+    const out = await addRecording({ ...base, language: 'eng', text: 'I want to speak Welsh' }, d)
+    expect(out).toMatchObject({ ok: true, language: 'eng' })
+    expect(d.calls.store[0]).toMatchObject({ role: 'known', voiceId: 'human_aran_cym_n' })
+    await expect(addRecording({ ...base, artist: 'Catrin', language: 'eng' }, deps())).rejects.toMatchObject({ code: 'LANGUAGE_MISMATCH' })
   })
 
   it('refuses an artist nobody has registered, and says how to add one', async () => {

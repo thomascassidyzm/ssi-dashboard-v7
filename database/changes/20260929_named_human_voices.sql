@@ -43,6 +43,8 @@ CREATE TABLE IF NOT EXISTS human_speaker_groups (
   est_gender     text,                       -- from pitch: f | m — evidence, not a name
   f0_median_hz   numeric,
   clip_count     integer NOT NULL,
+  seed_lo        integer,                    -- the stretch of the course its clips' words come from
+  seed_hi        integer,
   sample_audio_ids uuid[] NOT NULL DEFAULT '{}',
   voice_id       text,                       -- NULL = not yet named
   named_by       text,

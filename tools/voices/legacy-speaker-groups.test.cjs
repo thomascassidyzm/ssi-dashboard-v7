@@ -27,7 +27,7 @@ describe('splitSlot', () => {
   })
 
   it('a voice that changes at seed 130 is split there, and nowhere else', () => {
-    const { groups } = splitSlot(clipsFor([[0, 130, speaker(215, 0.9)], [130, 300, speaker(185, 0.2)]], 30))
+    const { groups } = splitSlot(clipsFor([[0, 130, speaker(218, 1.6)], [130, 300, speaker(172, 0.1)]], 30))
     expect(groups).toHaveLength(2)
     const seeds = g => g.clips.filter(c => c.seed != null).map(c => c.seed)
     const [a, b] = groups.sort((x, y) => Math.min(...seeds(x)) - Math.min(...seeds(y)))
@@ -36,7 +36,7 @@ describe('splitSlot', () => {
   })
 
   it('a clip whose words are not in the course joins the group it sounds like', () => {
-    const { groups } = splitSlot(clipsFor([[0, 130, speaker(215, 0.9)], [130, 300, speaker(185, 0.2)]], 30))
+    const { groups } = splitSlot(clipsFor([[0, 130, speaker(218, 1.6)], [130, 300, speaker(172, 0.1)]], 30))
     const first = groups.find(g => g.clips.some(c => c.seed === 5))
     expect(first.clips.filter(c => c.id.startsWith('u')).length).toBeGreaterThan(20)
   })

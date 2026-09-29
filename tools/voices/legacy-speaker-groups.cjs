@@ -23,8 +23,7 @@
  *     WINDOW_MERGE_DISTANCE apart. A group under MIN_GROUP_SHARE of the slot is
  *     absorbed into its nearest neighbour — one odd window is a bad day, not a person.
  *   - A clip whose words are not in the course (12% of them) joins the nearest group by sound.
- *   - A slot with no course positions at all is split by k-means only if the
- *     split is clean (silhouette >= KMEANS_MIN_SILHOUETTE); otherwise it is one group.
+ *   - A slot with no course positions at all (the shared English instructions) is one group.
  * est_gender is the group's median pitch — evidence for the sheet, never a name
  * and never written to a voice.
  */
@@ -36,11 +35,18 @@ const args = process.argv.slice(2)
 const arg = (n, d = null) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d }
 const WINDOW_SEEDS = 10
 const MIN_WINDOW_CLIPS = 8
-const WINDOW_MERGE_DISTANCE = 3.2
+// Why 5.5: this feature space (pitch + long-term timbre) puts two adult men who are
+// certainly different people — Aran's 2026 home recordings and the 2025 English
+// narrator — only 3–4 apart, and one speaker's windows drift 1–2.5 with the words
+// spoken. Anything under ~5 is therefore noise or an undecidable difference, and a
+// split there would hand a person a group to name that is not a group. At 5.5 the
+// one break that is unmistakable survives: cym_s target 1 at seed 130 (215 Hz → 178 Hz,
+// distance 6.0). A hidden second voice of similar pitch is what the SPREAD-OUT sample
+// clips on the listening sheet are for: an ear catches it where this cannot.
+const WINDOW_MERGE_DISTANCE = 5.5
 const MIN_GROUP_SHARE = 0.04
-const KMEANS_MIN_SILHOUETTE = 0.28
 const LTAS_WEIGHT = 0.35
-const SAMPLES_PER_GROUP = 5
+const SAMPLE_QUANTILES = [0.1, 0.4, 0.7, 0.95]
 
 const vecOf = d => [12 * Math.log2(d.f0 / 100), ...d.ltas.map(x => x * LTAS_WEIGHT)]
 const dist = (a, b) => Math.sqrt(a.reduce((s, x, i) => s + (x - b[i]) ** 2, 0))
@@ -104,35 +110,11 @@ function splitSlot(clips) {
       near.clips.push({ ...c, basisOverride: 'acoustic-nearest' })
     }
   } else {
+    // no course positions to go by, and pitch + timbre cannot separate same-gender speakers (see
+    // WINDOW_MERGE_DISTANCE) — one group, and the sheet's spread-out samples say whether it holds two voices
     groups = [{ clips: usable, basis: 'one-voice' }]
-    const two = kmeans2(usable.map(c => c.vec))
-    if (two && two.silhouette >= KMEANS_MIN_SILHOUETTE) {
-      groups = [0, 1].map(k => ({ clips: usable.filter((_, i) => two.labels[i] === k), basis: 'acoustic-kmeans' })).filter(g => g.clips.length)
-    }
   }
   return { groups, unusable: clips.length - usable.length }
-}
-
-function kmeans2(X) {
-  if (X.length < 40) return null
-  let a = X[0], b = X.reduce((far, x) => (dist(x, a) > dist(far, a) ? x : far), X[0])
-  let labels = []
-  for (let it = 0; it < 30; it++) {
-    labels = X.map(x => (dist(x, a) <= dist(x, b) ? 0 : 1))
-    const A = X.filter((_, i) => labels[i] === 0), B = X.filter((_, i) => labels[i] === 1)
-    if (!A.length || !B.length) return null
-    a = centroid(A); b = centroid(B)
-  }
-  const sample = X.map((_, i) => i).filter((_, i) => i % Math.ceil(X.length / 300) === 0)
-  let s = 0, n = 0
-  for (const i of sample) {
-    const own = sample.filter(j => j !== i && labels[j] === labels[i]), other = sample.filter(j => labels[j] !== labels[i])
-    if (!own.length || !other.length) continue
-    const av = arr => arr.reduce((t, j) => t + dist(X[i], X[j]), 0) / arr.length
-    const A = av(own), B = av(other)
-    s += (B - A) / Math.max(A, B); n++
-  }
-  return { labels, silhouette: n ? s / n : 0 }
 }
 
 const genderOf = f0 => (f0 < 165 ? 'm' : f0 >= 185 ? 'f' : null)
@@ -192,7 +174,18 @@ async function main() {
         if (!cs.length) return
         const c = centroid(cs.map(x => x.vec)), f0 = median(cs.map(x => x.f0))
         const seeds = cs.map(x => x.seed).filter(s => s != null)
-        const samples = cs.filter(x => x.ms && x.ms >= 1200 && x.ms <= 6000).sort((a, b) => dist(a.vec, c) - dist(b.vec, c)).slice(0, SAMPLES_PER_GROUP)
+        // samples spread across the group's stretch of the course (by seed where known), each the most
+        // representative clip of its neighbourhood — so a second voice hiding in the group is heard
+        let playable = cs.filter(x => x.ms && x.ms >= 1200 && x.ms <= 6000)
+        if (playable.length < 8) playable = cs.filter(x => x.ms && x.ms >= 1200 && x.ms <= 20000) // shared instructions run long
+        if (playable.length < 8) playable = cs // no durations recorded on some rows: sound, not length, picks the samples
+        const ordered = playable.slice().sort((a, b) => (a.seed == null ? 1e9 : a.seed) - (b.seed == null ? 1e9 : b.seed))
+        const samples = []
+        for (const q of SAMPLE_QUANTILES) {
+          const mid = Math.floor(q * (ordered.length - 1)), span = Math.max(8, Math.floor(ordered.length * 0.03))
+          const near = ordered.slice(Math.max(0, mid - span), mid + span + 1).filter(x => !samples.includes(x)).sort((a, b) => dist(a.vec, c) - dist(b.vec, c))[0]
+          if (near) samples.push(near)
+        }
         out.push({ group_id: `${slot}.g${i + 1}`, slot, course: cs[0].course, role: cs[0].role, lang: cs[0].lang, n: cs.length, unusableInSlot: unusable, f0, gender: genderOf(f0),
           seedRange: seeds.length ? [Math.min(...seeds), Math.max(...seeds)] : null, basis: g.basis, samples: samples.map(s => s.id), clips: cs })
       })
@@ -205,9 +198,9 @@ async function main() {
     await client.query('DELETE FROM human_speaker_groups WHERE voice_id IS NULL')
     for (const g of out) {
       await client.query(
-        `INSERT INTO human_speaker_groups (group_id, course_code, role, language, est_gender, f0_median_hz, clip_count, sample_audio_ids)
-         VALUES ($1, $2, $3, $4, $5, $6, $7, $8::uuid[]) ON CONFLICT (group_id) DO NOTHING`,
-        [g.group_id, g.course, g.role, g.lang, g.gender, g.f0.toFixed(1), g.n, g.samples])
+        `INSERT INTO human_speaker_groups (group_id, course_code, role, language, est_gender, f0_median_hz, clip_count, sample_audio_ids, seed_lo, seed_hi)
+         VALUES ($1, $2, $3, $4, $5, $6, $7, $8::uuid[], $9, $10) ON CONFLICT (group_id) DO NOTHING`,
+        [g.group_id, g.course, g.role, g.lang, g.gender, g.f0.toFixed(1), g.n, g.samples, g.seedRange ? g.seedRange[0] : null, g.seedRange ? g.seedRange[1] : null])
       for (let k = 0; k < g.clips.length; k += 1000) {
         const b = g.clips.slice(k, k + 1000)
         await client.query(
