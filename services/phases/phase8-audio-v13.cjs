@@ -34,6 +34,7 @@ const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
 const { renderClip, RenderRequestError } = require('../shared/audio-render-entry.cjs')
+const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
 const chainContext = require('../shared/chain-context.cjs')
 const courseVoiceConfig = require('../shared/course-voice-config.cjs')
 const { pickPreferredAudioRow } = require('../shared/audio-link-preference.cjs')
@@ -5331,10 +5332,11 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
  * writes nothing. Job #708: the route used to ask other courses only, so its own
  * clips were invisible and a real request re-mastered and re-stored them.
  */
-async function linkClipForRender({ courseCode, text, language, role, voiceId, legoId, dryRun }) {
+async function linkClipForRender({ courseCode, text, language, role, voiceId, legoId, dryRun, voiceBound }) {
   const base = { courseCode, text, language, role, voiceId, legoId, opts: { enabled: true }, label: 'Render', readOnly: !!dryRun }
+  // voiceBound: this voice's clip or nothing — the male slot never links the female clip of the same words.
   const reused = (await reuseSiblingIntoCourse({ ...base, lookupOpts: { includeOwnCourse: true, ownCourseOnly: true, voiceBound: true } }))
-    || (await reuseSiblingIntoCourse(base))
+    || (await reuseSiblingIntoCourse(voiceBound ? { ...base, lookupOpts: { voiceBound: true } } : base))
   return reused ? { audioId: reused.audioId, s3Key: reused.s3Key, durationMs: reused.durationMs } : null
 }
 
@@ -5359,10 +5361,12 @@ app.post('/render', async (req, res) => {
         course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode })
         const vc = course.voice_config || {}
         const settings = vc.voices?.[role] || {}
-        const held = voiceId || settings.voiceId || vc[role]
+        // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
+        const named = /^(azure|elevenlabs|xai|cartesia)_(.+)$/.exec(voiceId || '')
+        const held = named ? named[2] : (voiceId || settings.voiceId || vc[role])
         if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
         const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
-        const provider = decideProvider({ ...settings, voiceId: held, ...(voiceId ? { provider: undefined } : {}) }, { courseCode, role, language: lang })
+        const provider = decideProvider({ ...settings, voiceId: held, ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang })
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
@@ -5375,6 +5379,31 @@ app.post('/render', async (req, res) => {
       },
       link: linkClipForRender,
       speak: (text, provider, cfg, tries) => ttsService.speak(text, provider, cfg, tries),
+      loadClip: async (audioId) => {
+        const { data, error } = await supabase.from('course_audio').select('id, course_code, role, language, voice_id, s3_key, origin, text').eq('id', audioId).maybeSingle()
+        if (error) throw new Error(`course_audio unreadable: ${error.message}`)
+        return data
+      },
+      // Make before break: new object uploaded and HEADed alive BEFORE the row points at it; the old object is retained.
+      replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, requestedBy, purpose }) => {
+        let newKey = s3Key, durationMs = null
+        const said = spokenText || text
+        if (!newKey) {
+          const m = await masterAudio(audioBuffer, said, await voiceConfigService.masteringOptsFor(voiceId))
+          durationMs = m.durationMs
+          newKey = `mastered/${uuidv4().toUpperCase()}.mp3`
+          await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: newKey, Body: m.buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
+        }
+        const out = await swapClipInPlace({
+          supabase, audioId: replaceAudioId, newS3Key: newKey, durationMs,
+          patch: { origin: 'tts', voice_id: voiceId, word_boundaries: wordBoundaries || null },
+          source: 'audio-render-rerecord', acceptedBy: `${requestedBy} via /api/audio/render`, reason: purpose,
+          verifyObject: async (k) => { try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: k })); return true } catch { return false } },
+          logger,
+        })
+        // clip_index points at the row by audio_id, and the id never moves — nothing to re-index.
+        return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
+      },
       store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries }) => {
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
@@ -6313,6 +6342,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           courseCode, text, language, role, voiceId,
           legoId: phrase.lego_id || null,
           counters: reuseCounters, opts: reuseOpts, label: 'Regen Phrase',
+          lookupOpts: PHRASE_REUSE_LOOKUP,
         })
         if (reused) {
           const { error: reuseBindError } = await supabase
@@ -6361,7 +6391,7 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         let rawAudioBuffer, wordBoundaries
         if (voiceProvider === 'azure') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'azure', {
-            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
             subscriptionKey: process.env.AZURE_SPEECH_KEY,
             region: process.env.AZURE_SPEECH_REGION || 'westeurope',
             voiceName,
@@ -6369,21 +6399,21 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
           }))
         } else if (voiceProvider === 'elevenlabs') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'elevenlabs', {
-            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
             apiKey: process.env.ELEVENLABS_API_KEY,
             voiceId: voiceName,
             speed
           }))
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
-            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
             apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(language)
           }))
         } else if (voiceProvider === 'cartesia') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {
-            door: { courseCode, intro: role === 'presentation', replacing: [phrase[column]] },
+            door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
             apiKey: process.env.CARTESIA_API_KEY,
             voiceId: voiceName,
             locale: ttsLocaleForRole(course, role, language),
