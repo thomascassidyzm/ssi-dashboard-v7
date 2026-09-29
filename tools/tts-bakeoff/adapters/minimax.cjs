@@ -93,6 +93,6 @@ module.exports = {
     // Credentials first (the honest message is "no key"), then the spend gate,
     // then the real call. Wired for phase 2: the day the key lands this works,
     // and until Tom clears PHASE2_SPEND_APPROVED it still refuses to spend.
-    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
+    return httpSynthesise(this, this.buildRequest(utterance, opts), { ...opts, language: utterance.language || opts.language });
   },
 };

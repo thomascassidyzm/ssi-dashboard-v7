@@ -47,6 +47,7 @@
 const { normalizeForAudio, audioKeyCandidates } = require('./text-normalize.cjs')
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
 const clipIndex = require('./clip-index.cjs')
+const { issueTicket } = require('./door-ticket.cjs')
 
 const PAGE = 1000
 const MAX_PAGES = 20
@@ -79,18 +80,7 @@ function identityFromConfig(provider, config = {}) {
  * @param {object} want    { text, language, voiceId?, courseCode?, ownCourseOnly?, replacing?: string[], voiceBound? }
  */
 function pickExistingClip(rows, want) {
-  const words = normalizeForAudio(want.text)
-  const excluded = new Set((want.replacing || []).filter(Boolean).map(String))
-  const usable = (rows || []).filter(row =>
-    row && row.s3_key &&
-    !String(row.s3_key).startsWith('pending/') &&
-    !excluded.has(String(row.s3_key)) && !excluded.has(String(row.id)) &&
-    row.veracity_pass !== false &&
-    row.text != null && normalizeForAudio(row.text) === words &&
-    tryCanonicalLanguage(row.language) === want.language &&
-    (!want.voiceBound || tryCanonicalVoiceId(row.voice_id) === want.voiceId) &&
-    // An intro slot is answered only by its own course (Tom, 2026-08-07).
-    (!want.ownCourseOnly || (want.courseCode != null && row.course_code === want.courseCode)))
+  const usable = usableClips(rows, want)
   if (!usable.length) return null
   // The requested voice first — the one real preference. Then, among equals,
   // this course's own row (pointing at it writes nothing), a human take over a
@@ -106,6 +96,22 @@ function pickExistingClip(rows, want) {
     return String(a.id).localeCompare(String(b.id))
   }
   return usable.slice().sort(cmp)[0]
+}
+
+/** Every candidate row that may answer this request — the rule pickExistingClip ranks. */
+function usableClips(rows, want) {
+  const words = normalizeForAudio(want.text)
+  const excluded = new Set((want.replacing || []).filter(Boolean).map(String))
+  return (rows || []).filter(row =>
+    row && row.s3_key &&
+    !String(row.s3_key).startsWith('pending/') &&
+    !excluded.has(String(row.s3_key)) && !excluded.has(String(row.id)) &&
+    row.veracity_pass !== false &&
+    row.text != null && normalizeForAudio(row.text) === words &&
+    tryCanonicalLanguage(row.language) === want.language &&
+    (!want.voiceBound || tryCanonicalVoiceId(row.voice_id) === want.voiceId) &&
+    // An intro slot is answered only by its own course (Tom, 2026-08-07).
+    (!want.ownCourseOnly || (want.courseCode != null && row.course_code === want.courseCode)))
 }
 
 const COLUMNS = 'id, course_code, text, language, voice_id, s3_key, origin, duration_ms, word_boundaries, word_timings, veracity_pass'
@@ -218,16 +224,40 @@ function indexedMemoryClipLibrary({ index = [], rows = [], courses = [] } = {}, 
 
 /** Look one request up. Returns the row that answers it, or null. */
 async function findExistingClip(want, lib = clipLibrary()) {
-  if (!want.language || (want.voiceBound && !want.voiceId)) return null
-  if (typeof lib.resolve === 'function') return lib.resolve(want, rows => pickExistingClip(rows, want))
-  const rows = await lib.candidates(want.text)
-  return pickExistingClip(rows, want)
+  return (await lookupForRender(want, lib)).clip
+}
+
+/**
+ * THE LOOKUP A RENDER NEEDS (job #677). Asks the library exactly as
+ * findExistingClip always has and returns { clip, ticket }:
+ *   - clip   the row that answers the request, or null;
+ *   - ticket on a miss only — the proof of lookup the spend guard demands
+ *            (services/shared/door-ticket.cjs). It records every usable clip IN
+ *            THE REQUESTED VOICE the lookup saw and the caller is not replacing,
+ *            so if a pick rule ever lets such a clip slip past, the guard refuses
+ *            the render as a duplicate instead of paying for it.
+ * This is the only place a ticket is issued; tools/check-tts-door.cjs holds it to that.
+ */
+async function lookupForRender(want, lib = clipLibrary()) {
+  if (!want.language || (want.voiceBound && !want.voiceId)) return { clip: null, ticket: null }
+  const seen = []
+  const pickSeen = rows => { seen.push(...(rows || [])); return pickExistingClip(rows, want) }
+  let clip
+  if (typeof lib.resolve === 'function') clip = await lib.resolve(want, pickSeen)
+  else clip = pickSeen(await lib.candidates(want.text))
+  if (clip) return { clip, ticket: null }
+  const byId = new Map()
+  for (const r of usableClips(seen, { ...want, voiceBound: true })) if (r && !byId.has(r.id)) byId.set(r.id, r)
+  const ticket = issueTicket({ language: want.language, voiceId: want.voiceId, text: want.text, inLibrary: [...byId.values()], replacing: want.replacing })
+  return { clip: null, ticket }
 }
 
 module.exports = {
   identityFromConfig,
   pickExistingClip,
+  usableClips,
   findExistingClip,
+  lookupForRender,
   clipLibrary,
   useClipLibrary,
   supabaseClipLibrary,

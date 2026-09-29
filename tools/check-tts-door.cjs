@@ -111,15 +111,36 @@ function findBypasses(files) {
   return out
 }
 
+/**
+ * PROOF OF LOOKUP (job #677). The spend guard pays only against a ticket from
+ * services/shared/door-ticket.cjs, and a ticket means "the clip library was asked
+ * and had nothing" only if the library lookup is the one thing that issues it.
+ * So issueTicket( may appear in exactly these files (and in tests).
+ */
+const TICKET_ISSUERS = new Set(['services/shared/door-ticket.cjs', 'services/shared/clip-library.cjs', 'tools/check-tts-door.cjs'])
+const isTest = (file) => /\.test\.(c|m)?js$/.test(file)
+
+/** Pure: files other than the library lookup that mint a door ticket. */
+function findTicketIssuers(files) {
+  const out = []
+  for (const [file, text] of Object.entries(files)) {
+    if (TICKET_ISSUERS.has(file) || isTest(file)) continue
+    text.split('\n').forEach((line, i) => {
+      if (/\bissueTicket\s*\(/.test(line)) out.push({ file, line: i + 1, kind: 'door ticket minted outside the clip-library lookup', text: line.trim().slice(0, 140) })
+    })
+  }
+  return out
+}
+
 function scanRepo(root = ROOT) {
   const files = {}
   for (const f of trackedFiles(root)) {
     try { files[f] = fs.readFileSync(path.join(root, f), 'utf8') } catch { /* deleted in the worktree */ }
   }
-  return findBypasses(files)
+  return [...findBypasses(files), ...findTicketIssuers(files)]
 }
 
-module.exports = { DOOR, GUARDED_DOORS, ALLOWED, BAKEOFF_ADAPTERS, SYNTHESIS_CALLS, findBypasses, scanRepo }
+module.exports = { DOOR, GUARDED_DOORS, ALLOWED, BAKEOFF_ADAPTERS, SYNTHESIS_CALLS, TICKET_ISSUERS, findBypasses, findTicketIssuers, scanRepo }
 
 if (require.main === module) {
   const offenders = scanRepo()
