@@ -2,7 +2,7 @@
 const fs = require('fs'); const E = process.argv[2];
 const rows = JSON.parse(fs.readFileSync(`${E}/analysis/rows.json`)); const V = {};
 for (const l of fs.readFileSync(`${E}/judge/verdicts.jsonl`, 'utf8').trim().split('\n')) { const v = JSON.parse(l); V[v.key] = v; }
-const PICK = [['ita', 'S0142L03', 'Sonnet worse'], ['ita', 'S0501L02', 'Sonnet worse'], ['ita', 'S0198L01', 'both flagged, Sonnet much more'], ['fra', 'S0322L02', 'Sonnet worse'], ['deu', 'S0063L02', 'Sonnet worse'], ['deu', 'S0511L06', 'Opus worse'], ['spa', 'S0121L03', 'Opus worse'], ['fra', 'S0607L02', 'Opus worse'], ['spa', 'S0193L01', 'both clean'], ['deu', 'S0350L03', 'both clean']];
+const PICK = [['ita', 'S0142L03', 'Sonnet worse'], ['ita', 'S0533L03', 'Sonnet worse'], ['spa', 'S0209L02', 'Sonnet worse'], ['deu', 'S0566L04', 'Sonnet worse'], ['fra', 'S0322L02', 'Sonnet worse'], ['fra', 'S0358L02', 'Opus worse'], ['spa', 'S0178L02', 'Opus worse'], ['ita', 'S0176L03', 'Opus worse'], ['deu', 'S0350L03', 'both clean'], ['ita', 'S0466L02', 'both clean']];
 const out = [];
 PICK.forEach(([lang, key, why], i) => {
   const r = rows.find((x) => x.lang === lang && x.key === key);
