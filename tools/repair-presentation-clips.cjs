@@ -158,12 +158,17 @@ async function renderVerified (row, tmpDir) {
     const silent = level && level.meanDb < SILENCE_MEAN_DB
     const nearSilent = level && level.peakDb < NEAR_SILENCE_PEAK_DB
     const short = durationMs < FLOOR_MS
+    // REPORT ONLY: whisper's verdict rides along and never re-rolls a render
+    // (Tom, 2026-09-28, r-2026-09-28-no-automatic-whisper-stt-check-may).
+    // Level and length are the hard gates here.
     const verdict = await veracity.checkAudioVeracity(buffer, row.text, row.language)
-    const wrongWords = verdict.checked === true && verdict.pass === false
+    if (verdict.checked === true && verdict.pass === false) {
+      console.log(`      REPORT ONLY — whisper heard ${JSON.stringify(String(verdict.decode || '').slice(0, 60))} (${verdict.reason}); not re-rolled`)
+    }
 
     last = { buffer, durationMs, level, verdict }
-    if (!silent && !nearSilent && !short && !wrongWords) return last
-    console.log(`      attempt ${attempt}: ${silent ? 'SILENT' : nearSilent ? 'NEAR-SILENT' : short ? 'TOO SHORT' : 'WORDS MISSING'} — re-roll`)
+    if (!silent && !nearSilent && !short) return last
+    console.log(`      attempt ${attempt}: ${silent ? 'SILENT' : nearSilent ? 'NEAR-SILENT' : 'TOO SHORT'} — re-roll`)
   }
   throw new Error(`no attempt produced clean speech (last ${last.durationMs}ms)`)
 }

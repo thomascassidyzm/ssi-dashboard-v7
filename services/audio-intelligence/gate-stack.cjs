@@ -97,14 +97,20 @@ function toIso1 (language) {
  */
 const ABSOLUTE_SYLLABLES_PER_SECOND_FLOOR = 9
 
+/** The whisper (STT) tiers. Advisory by ruling — see GATES. */
+const STT_TIERS = new Set(['phonology', 'words'])
+
 /** The ordered stack. `refusing: false` means recorded-but-never-blocking. */
 const GATES = [
   { id: 'speech-span', refusing: true, what: 'where the speech actually is' },
   { id: 'loudness', refusing: true, what: 'integrated LUFS in band, true peak under the ceiling' },
   { id: 'tail-shape', refusing: true, what: 'did the voice stop, or was it cut' },
   { id: 'syllable-rate', refusing: true, what: 'could this voice say those syllables in that time' },
-  { id: 'phonology', refusing: true, what: 'is it the right language' },
-  { id: 'words', refusing: true, what: 'are the right words in there' },
+  // The two whisper tiers are ADVISORY: recorded, never blocking (Tom, 2026-09-28,
+  // r-2026-09-28-no-automatic-whisper-stt-check-may — no automatic STT check may
+  // veto TTS audio). services/stt-report-only.test.cjs pins this.
+  { id: 'phonology', refusing: false, what: 'is it the right language' },
+  { id: 'words', refusing: false, what: 'are the right words in there' },
 ]
 
 /**
@@ -127,7 +133,8 @@ function gateResult (id, r) {
     // calibrated:false is "it ran, but its numbers are not fitted for this clip" —
     // recorded, advisory, never blocking.
     calibrated: r.calibrated === undefined ? null : r.calibrated,
-    refusing: r.refusing === undefined ? spec.refusing : r.refusing,
+    // A whisper tier can never be switched back to refusing by a caller.
+    refusing: STT_TIERS.has(id) ? false : (r.refusing === undefined ? spec.refusing : r.refusing),
     reason: r.reason || '',
     detail: r.detail || null,
   }

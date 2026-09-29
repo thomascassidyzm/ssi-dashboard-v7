@@ -307,3 +307,18 @@ describe('(j) a job-scoped raise: Tom\'s go for ONE job above the cap starves no
     expect((await call(unsigned, 'h'.repeat(150), { job: 'job #578' }).catch(e => e)).code).toBe('DAILY_CAP')
   })
 })
+
+describe("Tom's stop (job #676): one '*' trip stops every provider, and Tom is told once", () => {
+  it('refuses every provider — including one nobody has named — with STOPPED_BY_TOM, one card per host per day', async () => {
+    const sent = []
+    const g = guard({ notify: (e) => sent.push(e) })
+    g.store.trips.set('*', { code: 'TOM_STOP', message: 'test stop', at: '2026-09-28T23:44:00Z' })
+    for (const provider of ['cartesia', 'azure', 'a-vendor-nobody-listed']) {
+      await expect(call(g, 'ciao', { provider })).rejects.toMatchObject({ code: 'STOPPED_BY_TOM' })
+    }
+    await expect(call(guard({ notify: (e) => sent.push(e) }), 'ciao', { provider: 'azure' })).rejects.toThrow(/audio generation stopped by Tom/)
+    expect(sent.filter(e => e.code === 'STOPPED_BY_TOM')).toHaveLength(1)
+    g.store.trips.delete('*')   // lifting is deleting the one row
+    await expect(call(g, 'ciao')).resolves.toMatchObject({ kind: 'call' })
+  })
+})

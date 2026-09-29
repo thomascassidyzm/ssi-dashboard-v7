@@ -1,8 +1,9 @@
 /**
  * THE PHONOLOGY GATE'S OPT-OUT, AND THE THING THAT MUST STAY TRUE ABOUT IT.
  *
- * The gate (services/tts-service.cjs) runs whisper over every Cartesia and xAI
- * render and re-rolls one whose detected spoken language is English. It exists
+ * The check (services/tts-service.cjs) runs whisper over a SAMPLE of Cartesia and
+ * xAI renders and logs one whose detected spoken language is English — report
+ * only since 2026-09-28, never a re-roll (Tom's ruling). It exists
  * for English-dominant multilingual clones handed a cross-language line — xAI
  * reading Italian 'come stai' as English 'come', 2026-07-10 — and it is a real
  * defence, not ceremony.

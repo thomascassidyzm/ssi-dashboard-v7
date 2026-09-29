@@ -162,6 +162,46 @@ function applyShortWordHint(text) {
   return text;
 }
 
+/**
+ * Elision-space hint — Azure swallows an elided Italian word when it is
+ * written closed up.
+ *
+ * Kai listened (2026-09-28, ita_for_eng S0360L01 "ha detto qualcos'altro?"):
+ * every Azure clip of it, June and September alike, on it-IT-ElsaNeural AND
+ * it-IT-BenignoNeural, says "ha detto altro?" — the engine drops "qualcos'"
+ * entirely. The 2026-09-10 question-mark pass had already measured the same
+ * and found the remedy: a single space after the apostrophe ("qualcos' altro")
+ * makes both voices say the word; whisper then hears "qualcos'altro" and the
+ * veracity gate passes at CER ~0. Re-probed on both voices 2026-09-28 (job
+ * #668·I) with the same result. Kai's first guess, "qualcosaltro", could not
+ * be probed that day (the spend guard's repeat key ignores apostrophes, so it
+ * counted as the already-capped canonical line) and "qualcosa altro" is a
+ * different, wrong word, so the space is the fix.
+ *
+ * This is a TTS-INPUT-ONLY transform, exactly like applyShortWordHint above:
+ * the learner-facing target_text and course_audio.text keep the correct
+ * Italian spelling "qualcos'altro", and only the string sent to Azure gains
+ * the space. It is NEVER stored. It is a table, not a rule, because the
+ * other elided forms in the same course — d'accordo, l'uomo, l'anno,
+ * all'aperto, com'è — were checked on 2026-09-10 and render correctly, so
+ * only the word that was proved defective is touched. Add a row only with a
+ * whisper-checked probe on every voice the word is rendered on.
+ *
+ * @param {string} text - Original text
+ * @returns {string} Text with the space inserted (or unchanged)
+ */
+const AZURE_ELISION_SPACE_HINTS = Object.freeze([
+  // qualcos'altro → qualcos' altro (it-IT Elsa + Benigno, probed 2026-09-10 and 2026-09-28)
+  { pattern: /\bqualcos'(?=[aeiouàèéìòù])/gi, replace: "qualcos' " },
+]);
+
+function applyElisionSpaceHint(text) {
+  if (!text) return text;
+  let out = String(text);
+  for (const { pattern, replace } of AZURE_ELISION_SPACE_HINTS) out = out.replace(pattern, replace);
+  return out;
+}
+
 function applyRegenerationVariation(text, attemptNumber = 0) {
   if (attemptNumber === 0) {
     return text; // First attempt uses original
@@ -330,5 +370,7 @@ module.exports = {
   prewarmPool,
   applyRegenerationVariation,
   applyShortWordHint,
+  applyElisionSpaceHint,
+  AZURE_ELISION_SPACE_HINTS,
   REGENERATION_VARIATIONS
 };

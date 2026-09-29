@@ -233,8 +233,11 @@ function sentenceTexts(row) {
         detected = await detectClipLang(mp3)
         if (detected == null) { verdict = 'unchecked'; break }
         if (!SUSPECT.has(detected)) { verdict = 'pass'; break }
-        verdict = 'phonology-fail'
-        console.log(`S${j.row.global_order} ${j.slot}: attempt ${attempt} detected '${detected}' → re-roll`)
+        // REPORT ONLY — whisper's language guess never re-rolls (Tom, 2026-09-28,
+        // r-2026-09-28-no-automatic-whisper-stt-check-may). Flag it for ears.
+        verdict = 'phonology-flag'
+        console.log(`S${j.row.global_order} ${j.slot}: REPORT ONLY — whisper detected '${detected}'; kept, flag for ears`)
+        break
       }
 
       // 3. relink.
@@ -250,7 +253,7 @@ function sentenceTexts(row) {
         if (upErr) throw new Error(`relink sentence[${j.slot}]: ${upErr.message}`)
         j.row.sentence_audio_ids = sids // later jobs on the same row build on this
       }
-      if (verdict === 'phonology-fail' || verdict === 'tail-click-fail') {
+      if (verdict === 'phonology-flag' || verdict === 'tail-click-fail') {
         gateFailed++
         console.log(`S${j.row.global_order} ${j.slot}: GATE FAIL after ${GATE_ATTEMPTS} takes (last '${detected}') — linked anyway (best effort), FLAG FOR EARS: "${j.text}" → ${newId}`)
       } else {

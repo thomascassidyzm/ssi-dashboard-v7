@@ -42,3 +42,14 @@ test('foldChanges reads every event shape the day\'s tools wrote into one before
   const c = T.foldChanges(events, live);
   assert.deepEqual(c.map((x) => [x.id, x.first.known, x.now.known, x.net]), [['S0047L01', 'I think that', 'I think', true], ['S0061L02', 'say that', 'say it', true], ['S0201L03', 'happen', 'what was going to happen', true]]);
 });
+
+test("foldChanges reads the changes[{id, from, to}] shape (ita-152-grow-lavrei / ita-159-that-isnt) — job #673·I found the audit blind to it", () => {
+  const live = { S0159L01: { lego_id: 'S0159L01', known_text: "that isn't", target_text: 'non è', is_new: true } };
+  const events = [{ surface: 'tools/course-optimization/ita-159-that-isnt-2026-09-28.cjs', operation: 'lego-edit', scope: { lego_ids: ['S0159L01'], seed_numbers: [159] },
+    detail: { changes: [{ id: 'S0159L01', from: { known: "isn't", target: 'non è', components: null }, to: { known: "that isn't", target: 'non è', components: [{ known: "that isn't", target: 'non è' }] } }] } }];
+  const c = T.foldChanges(events, live);
+  assert.equal(c.length, 1, 'BEFORE the clause: 0 — the event was silently skipped');
+  assert.deepEqual(c[0].first, { known: "isn't", target: 'non è' });
+  assert.equal(c[0].net, true);
+  assert.equal(c[0].liveDiffersFromLastEvent, false);
+});

@@ -3367,19 +3367,14 @@ app.post('/generate/:courseCode', async (req, res) => {
         return { buffer, durationMs, wordBoundaries }
       }
 
-      // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
-      // Audio is not staged: the S3 upload and the course_audio row below make
-      // this clip learner-facing immediately (Tom, 2026-08-04). So the check
-      // happens HERE — after mastering, because mastering is part of what can
-      // damage a clip, and before anything is written.
+      // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
+      // The run's graduated sampler (10% opening) listens to some clips after
+      // mastering and records the verdict on the row. It never vetoes and never
+      // re-renders: Tom, 2026-09-28, "we do NOT use automatic checks on
+      // listening content" (and ssi-stt-sampling-doctrine, 2026-08-24).
       //
       // Checked against textForTTS, not item.text: the gender-expanded string
       // is what the voice was actually asked to say.
-      //
-      // A failing clip is re-rendered and re-checked; if it still fails it is
-      // quarantined (durable record + the audio, services/audio-veracity.cjs)
-      // and this item fails the batch item — never publishes, never silently
-      // vanishes from the report.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
@@ -4045,9 +4040,7 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         return { buffer, durationMs, wordBoundaries }
       }
 
-      // PRE-PUBLISH VERACITY GATE — see the same block in /generate. This path
-      // overwrites a live row's s3_key, so a defective render here replaces
-      // working audio with broken audio in front of learners.
+      // RENDER ONCE, SAMPLE FOR THE REPORT — see the same block in /generate.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
@@ -5509,17 +5502,15 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       return { buffer, durationMs, wordBoundaries }
     }
 
-    // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
-    // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
-    // on one clip they believe is bad, so it is exactly the render you want
-    // checked, and at the graduated floor it would be checked essentially never.
-    // It also banks no trust and holds no counter, so a single repair cannot
-    // disturb a bulk run's sampling in the same process.
+    // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
+    // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
+    // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
+    // single-clip render in ten and records what it heard on the row.
     const gated = await veracity.renderChecked({
       render: renderAndMaster,
       expectedText: textForTTS,
       language: lang,
-      sampler: veracity.ALWAYS_SAMPLER,
+      sampler: veracity.SPOT_SAMPLER,
       logger,
       meta: { courseCode, role, voiceId, audio_uuid: audioUuid, originalText: text },
     })
@@ -5888,17 +5879,15 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       return { buffer, durationMs, wordBoundaries }
     }
 
-    // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
-    // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
-    // on one clip they believe is bad, so it is exactly the render you want
-    // checked, and at the graduated floor it would be checked essentially never.
-    // It also banks no trust and holds no counter, so a single repair cannot
-    // disturb a bulk run's sampling in the same process.
+    // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
+    // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
+    // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
+    // single-clip render in ten and records what it heard on the row.
     const gated = await veracity.renderChecked({
       render: renderAndMaster,
       expectedText: presentationText,
       language: knownLang,
-      sampler: veracity.ALWAYS_SAMPLER,
+      sampler: veracity.SPOT_SAMPLER,
       logger,
       meta: { courseCode, role: 'presentation', voiceId, lego_id: legoId, originalText: presentationText },
     })
@@ -6322,17 +6311,15 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         return { buffer, durationMs, wordBoundaries }
       }
 
-      // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
-      // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
-      // on one clip they believe is bad, so it is exactly the render you want
-      // checked, and at the graduated floor it would be checked essentially never.
-      // It also banks no trust and holds no counter, so a single repair cannot
-      // disturb a bulk run's sampling in the same process.
+      // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
+      // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
+      // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
+      // single-clip render in ten and records what it heard on the row.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
         language: language,
-        sampler: veracity.ALWAYS_SAMPLER,
+        sampler: veracity.SPOT_SAMPLER,
         logger,
         meta: { courseCode, role, voiceId: voiceName, phrase_id: phraseId, originalText: text },
       })
@@ -6728,17 +6715,15 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
         return { buffer, durationMs, wordBoundaries }
       }
 
-      // ── PRE-PUBLISH VERACITY GATE ──────────────────────────────────────────
-      // ALWAYS_SAMPLER, not the run sampler: this is a human pressing regenerate
-      // on one clip they believe is bad, so it is exactly the render you want
-      // checked, and at the graduated floor it would be checked essentially never.
-      // It also banks no trust and holds no counter, so a single repair cannot
-      // disturb a bulk run's sampling in the same process.
+      // ── RENDER ONCE, SAMPLE FOR THE REPORT ─────────────────────────────────
+      // renderChecked never vetoes and never re-renders (Tom, 2026-09-28: no
+      // automatic STT check may veto TTS audio). SPOT_SAMPLER listens to one
+      // single-clip render in ten and records what it heard on the row.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
         language: language,
-        sampler: veracity.ALWAYS_SAMPLER,
+        sampler: veracity.SPOT_SAMPLER,
         logger,
         meta: { courseCode, role, voiceId: voiceName, lego_id: legoId, originalText: text },
       })
@@ -7226,7 +7211,7 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         return { buffer, durationMs, wordBoundaries }
       }
 
-      // PRE-PUBLISH VERACITY GATE — see the same block in /generate.
+      // RENDER ONCE, SAMPLE FOR THE REPORT — see the same block in /generate.
       const gated = await veracity.renderChecked({
         render: renderAndMaster,
         expectedText: textForTTS,
@@ -8396,12 +8381,11 @@ async function generatePodAudio({ courseCode, text, language, ttsLanguageCue, ro
     }
   }
 
-  // ── PRE-PUBLISH VERACITY GATE ────────────────────────────────────────────
-  // Same gate, same sampler, same reasoning as /generate: pod clips are
-  // published straight to learners by the upsert below, so the check happens
-  // after mastering and before anything is written. /generate-pods calls
-  // veracity.startCourse() so pods take part in the run's graduated sampling
-  // rather than paying for a whisper decode on every clip.
+  // ── RENDER ONCE, SAMPLE FOR THE REPORT ───────────────────────────────────
+  // Same as /generate: the run's graduated sampler listens to some pod clips
+  // and records what it heard; it never vetoes or re-renders listening content
+  // (Tom, 2026-09-28). /generate-pods calls veracity.startCourse() so pods take
+  // part in the run's graduated sampling.
   //
   // Checked against ttsText, not text: the " … " pause cue is what the voice
   // was actually asked to say, and it is the canonical text stored below.
@@ -9244,7 +9228,7 @@ async function reuseFetchObject(s3Key) {
 
 /**
  * Render ONE clip from the plan. Deliberately the same recipe /generate uses —
- * gender expansion, master, PRE-PUBLISH VERACITY GATE, S3, course_audio upsert —
+ * gender expansion, master, sampled report-only STT, S3, course_audio upsert —
  * and reading the COURSE text the planner supplied, never course_audio.text.
  * The precious-audio guard is honoured: a human recording at this key is never
  * overwritten.
@@ -9548,11 +9532,9 @@ app.post('/reuse-apply/:courseCode', async (req, res) => {
         preferredSourceCourses: preferredSourcesFor(courseCode, req.body?.preferredSources),
       })
       await reusePlanner.verifyPlanBytes(plan, { headObject: reuseHeadObject })
-      // Optional: LISTEN to the clips the plan means to keep, against the
-      // course's own text, and promote the damaged ones to RENDER. Off by
-      // default because it costs a whisper decode per incumbent clip; on for
-      // the fra_for_eng last-word repair, which is the only way a clip that is
-      // present, alive and wrong gets caught (Tom, 2026-08-07).
+      // Optional: LISTEN to the clips the plan means to keep and REPORT what was
+      // heard on run.plan.heard. It never promotes a clip to RENDER (Tom,
+      // 2026-09-28: no automatic STT check may trigger a re-render).
       if (req.body?.verifyIncumbents === true) {
         const verdictCache = loadVerdictCache()
         const heard = await reusePlanner.verifyPlanVeracity(plan, {
