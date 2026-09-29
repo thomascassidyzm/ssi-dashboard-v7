@@ -88,6 +88,14 @@ const s3 = phase8.s3
 const S3_BUCKET = phase8.S3_BUCKET
 const log = (...a) => console.log(...a)
 
+/** Free probe of the Azure key: the voices list endpoint, no synthesis, no ledger row. */
+async function azureKeyState() {
+  const region = process.env.AZURE_SPEECH_REGION || 'westeurope'
+  try {
+    const res = await fetch(`https://${region}.tts.speech.microsoft.com/cognitiveservices/voices/list`, { headers: { 'Ocp-Apim-Subscription-Key': process.env.AZURE_SPEECH_KEY || '' } })
+    return { ok: res.status === 200, status: res.status, region }
+  } catch (e) { return { ok: false, status: `network: ${e.message}`, region } }
+}
 async function s3Bytes(key) {
   const r = await s3.send(new GetObjectCommand({ Bucket: S3_BUCKET, Key: key }))
   const chunks = []
@@ -162,6 +170,17 @@ async function main() {
   for (const w of work) log(`  ${w.clip.id}  ${w.bareVoice.padEnd(20)}  rev${w.clip.audio_revision ?? 1}  "${w.clip.text}"${w.renderText && w.renderText !== w.clip.text ? `  → relabel "${w.renderText}"` : ''}  [${w.holders.length} holder${w.holders.length === 1 ? '' : 's'}]  ${w.status}`)
   if (MODE === 'plan') return
 
+  // Azure key pre-check (job #698, 2026-09-29: the key in .env began returning 401 in
+  // every region at ~00:40Z). A dead key must be found BEFORE the first reservation,
+  // because an accepted reservation whose provider call fails still counts against the
+  // repeat allowance. The voices list is free and needs no synthesis.
+  const keyState = await azureKeyState()
+  if (!keyState.ok) {
+    log(`BLOCKED ON KEY: Azure voices list returned ${keyState.status} for region ${keyState.region} — no render attempted, nothing reserved`)
+    const results = work.filter(w => w.status === 'render').map(w => ({ id: w.clip.id, text: w.clip.text, status: `blocked-on-key: Azure ${keyState.status}` }))
+    fs.writeFileSync(path.join(OUT, `blocked-${new Date().toISOString().slice(0, 19).replace(/[:T]/g, '-')}.json`), JSON.stringify(results, null, 2))
+    return
+  }
   const { data: course } = await supabase.from('courses').select('course_code, voice_config, known_lang, target_lang, voice_pool_key, dialect, known_dialect').eq('course_code', COURSE).single()
   course.voice_config = await voiceConfigService.resolveVoiceConfig({ voiceConfig: course.voice_config, course, courseCode: COURSE })
   const gmap = await genderHaiku.loadGenderMap(COURSE, supabase)
@@ -245,6 +264,12 @@ async function main() {
     } catch (e) {
       r.status = `FAILED: ${e.message}`
       log(`  FAILED: ${e.message}`)
+      if (/401|Unauthorized|WebSocket upgrade failed|authentication/i.test(e.message)) {
+        log('  auth failure from Azure — stopping the run so no further reservation is burned (Kai/Tom, 2026-09-29)')
+        results.push(r)
+        for (const rest of work.slice(work.indexOf(w) + 1)) if (rest.status === 'render') results.push({ id: rest.clip.id, text: rest.clip.text, status: 'blocked-on-key: run stopped after an Azure auth failure' })
+        break
+      }
     }
     results.push(r)
   }
