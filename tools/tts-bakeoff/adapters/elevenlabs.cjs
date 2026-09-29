@@ -77,6 +77,6 @@ module.exports = {
   },
 
   async synthesise(utterance, opts = {}) {
-    return httpSynthesise(this, this.buildRequest(utterance, opts), opts);
+    return httpSynthesise(this, this.buildRequest(utterance, opts), { ...opts, language: utterance.language || opts.language });
   },
 };

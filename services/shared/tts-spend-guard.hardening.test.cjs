@@ -21,12 +21,21 @@ beforeEach(() => {
 afterEach(() => { delete process.env.TTS_SPEND_BUDGETS })
 
 const budgets = (obj, name = 'budgets.json') => { const p = path.join(dir, name); fs.writeFileSync(p, JSON.stringify(obj)); return p }
-const guard = (o = {}) => createSpendGuard({
+// These tests exercise the per-provider caps with spends past 50k, so they lift the
+// TOTAL cap on their own store; it has its own file (tts-spend-total-cap.test.cjs).
+const guard = (o = {}) => uncapped(createSpendGuard({
   ledgerPath: path.join(dir, 'ledger.jsonl'), now: () => clock,
   notify: o.notify || (() => {}), usageReaders: o.usageReaders || {}, logger: { warn() {}, error() {} },
   ...('budgetPath' in o ? { budgetPath: o.budgetPath } : {}),
-})
-const call = (g, text, extra = {}) => g.beforeProviderCall({ provider: 'cartesia', voiceId: 'cartesia_kriti', text, courseCode: 'eng_for_hin', job: 'test', ...extra })
+}))
+function uncapped(g) { g.store.totalCapChars = Infinity; return g }
+// Every call carries a ticket from a real (empty) clip-library lookup (job #677):
+// the guard pays nobody who has not asked the library.
+const lookedUp = async (voiceId, text) => (await require('./clip-library.cjs').lookupForRender({ text, language: 'hin', voiceId, voiceBound: true }, require('./clip-library.cjs').memoryClipLibrary([]))).ticket
+const call = async (g, text, extra = {}) => {
+  const ctx = { provider: 'cartesia', voiceId: 'cartesia_kriti', text, courseCode: 'eng_for_hin', job: 'test', ...extra }
+  return g.beforeProviderCall({ ticket: await lookedUp(ctx.voiceId, ctx.text), ...ctx })
+}
 const settle = (ps) => Promise.allSettled(ps).then(rs => ({ ok: rs.filter(r => r.status === 'fulfilled').length, refused: rs.filter(r => r.status === 'rejected') }))
 
 describe('#3+4 concurrent callers cannot overshoot a cap or the repeat limit', () => {

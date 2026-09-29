@@ -26,7 +26,7 @@ const consentGate = require('./shared/voice-consent-gate.cjs');
 const surfaceClones = require('./voicelab/surface-clones.cjs');
 const sdk = require('microsoft-cognitiveservices-speech-sdk');
 const { applyRegenerationVariation, applyShortWordHint, applyElisionSpaceHint } = require('./azure-tts-service.cjs');
-const { identityFromConfig, findExistingClip, clipLibrary } = require('./shared/clip-library.cjs');
+const { identityFromConfig, lookupForRender, clipLibrary } = require('./shared/clip-library.cjs');
 const { assertCastVoice } = require('./shared/voice-cast-gate.cjs');
 const { spendGuard } = require('./shared/tts-spend-guard.cjs');
 
@@ -1041,7 +1041,7 @@ function phonologySuspects(provider, config) {
  * @param {number} maxRetries - Maximum retry attempts
  * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data + word boundary timing
  */
-async function renderWithRetry(text, provider, config, maxRetries = 3) {
+async function renderWithRetry(text, provider, config, maxRetries = 3, ticket = null) {
   let lastError = null;
   const suspects = phonologySuspects(provider, config);
   if (suspects && !PHONO_GATE_ON && !phonoGateWarned) {
@@ -1063,6 +1063,8 @@ async function renderWithRetry(text, provider, config, maxRetries = 3) {
     const reservation = await guard.beforeProviderCall({
       provider, voiceId, language, text, attempt: attempt + 1,
       courseCode: door.courseCode || config.courseCode || null, job: door.job || null,
+      // Proof that speak() asked the clip library and it had no clip (job #677).
+      ticket,
     });
     doorStats.providerCalls++;
     doorStats.providerChars += String(text).length;
@@ -1166,7 +1168,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
   }
 
   const lib = clipLibrary();
-  const existing = await findExistingClip({
+  const { clip: existing, ticket } = await lookupForRender({
     text,
     language,
     voiceId,
@@ -1193,7 +1195,7 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
     doorStats.wouldSpendChars += chars;
     return { audioBuffer: null, wordBoundaries: null, wordTimings: null, existingClip: null, charsSpent: 0, wouldSpendChars: chars };
   }
-  const out = await renderWithRetry(text, provider, config, maxRetries);
+  const out = await renderWithRetry(text, provider, config, maxRetries, ticket);
   doorStats.rendered++;
   doorStats.charsSpent += chars;
   return { ...out, existingClip: null, charsSpent: chars };

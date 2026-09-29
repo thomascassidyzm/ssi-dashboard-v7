@@ -16,12 +16,21 @@ beforeEach(() => {
   clock = Date.parse('2026-09-26T10:00:00Z')
 })
 const budgets = (obj) => { const p = path.join(dir, 'budgets.json'); fs.writeFileSync(p, JSON.stringify(obj)); return p }
-const guard = (o = {}) => createSpendGuard({
+// These tests exercise the per-provider caps with spends past 50k, so they lift the
+// TOTAL cap on their own store; it has its own file (tts-spend-total-cap.test.cjs).
+const guard = (o = {}) => uncapped(createSpendGuard({
   ledgerPath: path.join(dir, 'ledger.jsonl'), budgetPath: o.budgetPath ?? null,
   now: () => clock, notify: o.notify || (() => {}), usageReaders: o.usageReaders || {},
   logger: { warn() {}, error() {} },
-})
-const call = (g, text, extra = {}) => g.beforeProviderCall({ provider: 'cartesia', voiceId: 'cartesia_kriti', text, courseCode: 'eng_for_hin', job: 'test', ...extra })
+}))
+function uncapped(g) { g.store.totalCapChars = Infinity; return g }
+// Every call carries a ticket from a real (empty) clip-library lookup (job #677):
+// the guard pays nobody who has not asked the library.
+const lookedUp = async (voiceId, text) => (await require('./clip-library.cjs').lookupForRender({ text, language: 'hin', voiceId, voiceBound: true }, require('./clip-library.cjs').memoryClipLibrary([]))).ticket
+const call = async (g, text, extra = {}) => {
+  const ctx = { provider: 'cartesia', voiceId: 'cartesia_kriti', text, courseCode: 'eng_for_hin', job: 'test', ...extra }
+  return g.beforeProviderCall({ ticket: await lookedUp(ctx.voiceId, ctx.text), ...ctx })
+}
 // The local mirror (job #430): an intent line ahead of each reservation, a call line after.
 const ledger = () => fs.readFileSync(path.join(dir, 'ledger.jsonl'), 'utf8').trim().split('\n').map(JSON.parse).filter(e => e.kind === 'call')
 

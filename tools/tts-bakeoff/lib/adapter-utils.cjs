@@ -90,9 +90,22 @@ async function httpSynthesise(adapter, req, opts) {
   // THE SPEND GUARD (job #430): this is a paid provider call like any other, so
   // it reserves in the shared ledger first — PHASE2_SPEND_APPROVED says a human
   // approved a bake-off, not that it may run past the estate's caps.
+  // LIBRARY FIRST (job #677): the guard pays nobody who has not asked the clip
+  // library, so the bake-off asks too — for the utterance's language, the words
+  // it will send and the vendor's voice. A take that already exists in that voice
+  // is refused, exactly as doorSynthesise refuses one: a bake-off scores fresh takes.
+  const { lookupForRender } = require('../../../services/shared/clip-library.cjs');
+  const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('../../../services/shared/clip-identity.cjs');
+  const text = spendText(req);
+  const rawVoice = spendVoice(req, opts);
+  const language = opts.language ? tryCanonicalLanguage(opts.language) : null;
+  if (!language) throw new Error(`${adapter.displayName}: cannot name this clip (language ${opts.language || 'unknown'}) — a line the clip library cannot be asked about is never rendered`);
+  const voiceId = (rawVoice && tryCanonicalVoiceId(rawVoice, { provider: adapter.id })) || rawVoice;
+  const { clip, ticket } = await lookupForRender({ text, language, voiceId, voiceBound: true });
+  if (clip) throw new Error(`${adapter.displayName}: "${String(text).slice(0, 40)}" is already in the clip library in this voice (${clip.course_code}) — a bake-off needs a fresh take`);
   const guard = require('../../../services/shared/tts-spend-guard.cjs').spendGuard();
   const reservation = await guard.beforeProviderCall({
-    provider: adapter.id, voiceId: spendVoice(req, opts), text: spendText(req), job: opts.job || 'tts-bakeoff',
+    provider: adapter.id, voiceId, language, text, job: opts.job || 'tts-bakeoff', ticket,
   });
   const headers = resolveHeaders(req.headers, adapter.id);
   const payload = req.bodyKind === 'ssml' ? req.body : JSON.stringify(req.body);

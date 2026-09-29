@@ -61,6 +61,7 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 const crypto = require('crypto')
+const { ticketProblem } = require('./door-ticket.cjs')
 
 // ─── Configuration ──────────────────────────────────────────────────────────
 
@@ -80,7 +81,12 @@ const DEFAULT_BUDGETS = Object.freeze({
 })
 /** Any provider not named above (a bake-off candidate, a new vendor): the tightest. */
 const UNKNOWN_PROVIDER_BUDGET = Object.freeze({ monthlyPoolChars: 200_000, cycleStartDay: 1, dailyCapChars: 20_000, alertDailyChars: 5_000, stopAtShareOfPool: 0.5 })
-const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 6, windowHours: 24 })
+// maxPerKey 3 (job #677, was 6): one slot's veracity re-rolls (audio-veracity
+// renderChecked, 3 attempts). Tonight's specimen: #626·I's "ha detto qualcos'altro?"
+// was quarantined 3× on its LEGO slot, then re-rolled 3× more on a phrase slot with
+// the same words, because a rejected take never reaches the library. After three
+// takes of the same words in one voice, a fourth needs a human to listen first.
+const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 3, windowHours: 24 })
 /** Pool shares at which a human is told, whatever the stop share is. */
 const POOL_ALERT_SHARES = [0.5, 0.8]
 /**
@@ -168,6 +174,17 @@ const CYCLE_STOPS = new Set(['POOL_SHARE', 'PROVIDER_POOL'])
  * tools/tts-stop.cjs; only Tom lifts it.
  */
 const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
+/**
+ * THE DAILY TOTAL CAP (job #692, Tom 2026-09-29 00:25Z: "limit it to 50,000
+ * characters per day TOTAL without my express approval"). Enforced INSIDE
+ * tts_spend_reserve (ops/sql/20260929-tts-spend-total-cap.sql), summed over every
+ * provider for the UTC day — the guard passes no figure, so no caller, budget
+ * file or job raise can loosen it. Only a signed raise naming Tom, a row in
+ * tts_spend_total_cap_raises (tools/tts-cap.cjs raise). The memory store below
+ * mirrors it for tests.
+ */
+const DAILY_TOTAL_CAP = 'DAILY_TOTAL_CAP'
+const TOTAL_DAILY_CAP_CHARS = 50_000
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -405,10 +422,12 @@ function reserveArgs(r) {
 const memoryStores = new Map()
 function memorySpendStore({ name, now = () => Date.now() } = {}) {
   if (name && memoryStores.has(name)) return memoryStores.get(name)
-  const rows = []; const trips = new Map(); const limitLog = []
+  const rows = []; const trips = new Map(); const limitLog = []; const totalCapRaises = []
   const sum = (provider, fromMs) => rows.filter(r => r.provider === provider && r.at >= fromMs).reduce((n, r) => n + r.chars, 0)
   const store = {
-    kind: 'memory', rows, trips, limitLog,
+    kind: 'memory', rows, trips, limitLog, totalCapRaises,
+    /** Test knob: older tests spend far more than 50k in one day to exercise the per-provider caps, so they lift this on their own store. */
+    totalCapChars: TOTAL_DAILY_CAP_CHARS,
     async reserve(r) {
       const t = now()
       // Tom's stop (job #676): a '*' trip stops every provider — mirrors tts_spend_reserve.
@@ -421,6 +440,10 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
       const h = JSON.stringify(r.limits)
       if (limitLog.filter(l => l.provider === r.provider).pop()?.h !== h) limitLog.push({ provider: r.provider, h, limits: r.limits })
       const dailyCap = r.dailyCap != null ? r.dailyCap : r.limits.dailyCapChars
+      const total = rows.filter(x => x.kind === 'call' && x.at >= dayStart).reduce((n, x) => n + x.chars, 0)
+      const raised = totalCapRaises.filter(x => /^\s*tom\b/i.test(x.by) && x.why && x.until > t && x.until <= x.at + 31 * 86400e3).reduce((m, x) => Math.max(m, x.capChars), 0)
+      const totalCap = Math.max(store.totalCapChars, raised)
+      if (total + r.chars > totalCap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total, cap: totalCap, message: `daily audio cap reached; only Tom can approve more (${total} chars spent today across all providers, this call is ${r.chars}, the cap is ${totalCap}; UTC day). Do not retry and do not split the job` }
       if (today + r.chars > dailyCap) return { ok: false, code: 'DAILY_CAP', today, cycle, seen, message: `today's ${r.provider} spend is ${today} chars; this call (${r.chars}) would pass the daily cap of ${dailyCap}` }
       if (cycle + r.chars > r.limits.cycleCapChars) return { ok: false, code: 'POOL_SHARE', today, cycle, seen, message: `this cycle's ${r.provider} spend is ${cycle} chars; this call (${r.chars}) would pass the cycle stop of ${r.limits.cycleCapChars}` }
       if (r.key && seen >= r.limits.maxPerKey) return { ok: false, code: 'REPEAT', today, cycle, seen, message: `these words in voice ${r.voice || '?'} have already been sent ${seen} times in ${r.limits.windowHours}h (limit ${r.limits.maxPerKey}) — a caller is re-rendering what it already has` }
@@ -535,6 +558,8 @@ function createSpendGuard(opts = {}) {
   function tripAlertKey(code, provider, detail) {
     // Tom's stop (job #676): Tom imposed it, so he is told at most once per host
     // per day — never a card per refused clip, provider or short-lived script.
+    // Tom's total cap (job #692): once per host per day, whoever hits it and however often.
+    if (code === DAILY_TOTAL_CAP) return { key: `trip:${DAILY_TOTAL_CAP}:${dayKey(now())}`, cycle: false, once: true }
     if (code === STOPPED_BY_TOM) return { key: `trip:${STOPPED_BY_TOM}:${dayKey(now())}`, cycle: false, once: true }
     if (CYCLE_STOPS.has(code)) {
       const caller = detail?.job || detail?.course || 'unnamed caller'
@@ -625,7 +650,8 @@ function createSpendGuard(opts = {}) {
   /**
    * Call immediately before a paid provider call. Throws TtsSpendGuardError to
    * refuse; otherwise returns the reservation (pass it to afterProviderCall).
-   * ctx: { provider, voiceId, text, courseCode, job, language, attempt }
+   * ctx: { provider, voiceId, text, courseCode, job, language, attempt, ticket }
+   * ticket: from clip-library.lookupForRender — required (job #677).
    */
   async function beforeProviderCall(ctx) {
     const provider = String(ctx.provider || 'unknown')
@@ -635,6 +661,21 @@ function createSpendGuard(opts = {}) {
     const b = providerLimits(cfg, provider)
 
     if (b.retired) refuse('RETIRED', provider, b.retired, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
+
+    // LIBRARY FIRST (job #677, Tom 2026-09-28 23:41Z: "I spent an evening building
+    // a proper clips library and … the code is not using it"). No provider is paid
+    // unless the clip library was asked for these words in this voice and had
+    // nothing: ctx.ticket is issued only by clip-library.lookupForRender on a miss
+    // (services/shared/door-ticket.cjs). NO_DOOR = no lookup (a bypass);
+    // IN_LIBRARY = the lookup saw this clip in this voice (a duplicate). Both are
+    // checked before any budget or ledger work, and neither is ever re-rolled.
+    {
+      const problem = ticketProblem(ctx.ticket, { voiceId: ctx.voiceId, text })   // freshness is wall-clock time, not the guard's budget clock
+      if (problem) {
+        const caller = ctx.job || process.env.TTS_SPEND_JOB || ctx.courseCode || 'unnamed caller'
+        refuse(problem.code, provider, problem.message, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null, key: `${problem.code}:${caller}` })
+      }
+    }
 
     await checkProvider(provider, cfg, b, chars, { course: ctx.courseCode || null, job: ctx.job || process.env.TTS_SPEND_JOB || null })
 
@@ -816,6 +857,7 @@ module.exports = {
   raiseInForce,
   jobMatches,
   TtsSpendGuardError,
+  TOTAL_DAILY_CAP_CHARS,
   repeatKey,
   repeatTextKey,
   cycleStart,
