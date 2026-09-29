@@ -1,0 +1,25 @@
+[Unit]
+Description=Nightly reconcile of the clip library against course_audio (named voices, spoken words; target drift 0)
+Documentation=file:///home/tomcassidy/SSi/popty-qa-nightly/tools/voices/reconcile-library.cjs
+
+[Service]
+Type=oneshot
+# The detached QA worktree refreshed to origin/main before every run — the same
+# arrangement as ssi-sibling-identity, so it always executes the code that landed.
+WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+# S3 credentials (the spoken-text check HEADs objects) and the database URL
+EnvironmentFile=/home/tomcassidy/SSi/ssi-dashboard-v7-clean/.env
+ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/voices/nightly.cjs
+# One walk over ~2.6M rows in 2,000-row pkey batches with a pause between them
+# (~50 min); the live Supabase is shared by learners, staging, Popty and red, so
+# this takes the back seat and has a hard cap.
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=3h
+SuccessExitStatus=0 2
+OOMScoreAdjust=500
+StandardOutput=append:/home/tomcassidy/.local/log/ssi-voices-reconcile-unit.log
+StandardError=append:/home/tomcassidy/.local/log/ssi-voices-reconcile-unit.log

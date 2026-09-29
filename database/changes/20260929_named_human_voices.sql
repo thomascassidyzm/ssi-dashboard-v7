@@ -25,7 +25,7 @@ COMMENT ON COLUMN voices.dialect IS 'Display dialect of a human artist (north, s
 CREATE TABLE IF NOT EXISTS human_clip_attribution (
   audio_id      uuid PRIMARY KEY REFERENCES course_audio(id) ON DELETE CASCADE,
   voice_id      text NOT NULL,
-  basis         text NOT NULL,      -- policy-alias | named-by-ear | acoustic-anchor
+  basis         text NOT NULL,      -- policy-alias | voice-id-spelling | named-by-ear
   group_id      text,               -- human_speaker_groups.group_id when the basis is a group
   attributed_by text NOT NULL,
   attributed_at timestamptz NOT NULL DEFAULT now()
