@@ -857,6 +857,7 @@ async function reuseSiblingIntoCourse({
   courseCode, text, language, role, voiceId,
   legoId = null, updateRowId = null, excludeS3Keys = [],
   counters = null, opts = {}, label = 'Reuse', extraColumns = null,
+  lookupOpts = null, readOnly = false,
 }) {
   if (opts.enabled === false) return null
   if (!voiceId || !text) return null
@@ -864,10 +865,18 @@ async function reuseSiblingIntoCourse({
   const lookup = await lookupSiblingClip(courseCode, text, language, voiceId, {
     excludeS3Keys,
     ownCourseOnly: role === 'presentation',
+    ...(lookupOpts || {}),
   })
   if (lookup.status === 'error') { if (counters) counters.lookupErrors++; return null }
   const sibling = lookup.clip
   if (!sibling?.s3_key) return null
+
+  // The route's own-course hit: the slot's row already points at this clip, so
+  // there is nothing to write. readOnly (a dry run) never writes either.
+  const isOwnSlot = sibling.course_code === courseCode && sibling.role === role && sibling.id
+  if (readOnly || isOwnSlot) {
+    return { audioId: sibling.id || null, s3Key: sibling.s3_key, durationMs: sibling.duration_ms, wordBoundaries: sibling.word_boundaries || null, fromRole: sibling.role, crossedRole: sibling.role !== role, voiceId: sibling.voice_id || voiceId, written: false }
+  }
 
   const payload = {
     // The row names the voice that SPEAKS the clip — under any-voice reuse
@@ -5314,6 +5323,20 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
   }
 })
 
+/**
+ * The route's library step. Own course first (voice-bound: this course already
+ * holds THIS voice's clip → the slot's row is returned, nothing written), then
+ * every other course (linked into the slot). A dry run looks the same way and
+ * writes nothing. Job #708: the route used to ask other courses only, so its own
+ * clips were invisible and a real request re-mastered and re-stored them.
+ */
+async function linkClipForRender({ courseCode, text, language, role, voiceId, legoId, dryRun }) {
+  const base = { courseCode, text, language, role, voiceId, legoId, opts: { enabled: true }, label: 'Render', readOnly: !!dryRun }
+  const reused = (await reuseSiblingIntoCourse({ ...base, lookupOpts: { includeOwnCourse: true, ownCourseOnly: true, voiceBound: true } }))
+    || (await reuseSiblingIntoCourse(base))
+  return reused ? { audioId: reused.audioId, s3Key: reused.s3Key, durationMs: reused.durationMs } : null
+}
+
 // =============================================================================
 // POST RENDER - THE ONE ENTRY INTO THE AUDIO CHAIN (job #702, Tom 2026-09-29)
 // =============================================================================
@@ -5349,10 +5372,7 @@ app.post('/render', async (req, res) => {
         if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
         return { language: canonicalLanguage(lang), voiceId: canonicalClipVoiceId(held, provider), provider, providerConfig }
       },
-      link: async ({ courseCode, text, language, role, voiceId, legoId }) => {
-        const reused = await reuseSiblingIntoCourse({ courseCode, text, language, role, voiceId, legoId, opts: { enabled: true }, label: 'Render' })
-        return reused ? { audioId: reused.audioId, s3Key: reused.s3Key, durationMs: reused.durationMs } : null
-      },
+      link: linkClipForRender,
       speak: (text, provider, cfg, tries) => ttsService.speak(text, provider, cfg, tries),
       store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries }) => {
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
@@ -9730,6 +9750,7 @@ module.exports.findSiblingCourseClip = findSiblingCourseClip
 module.exports.lookupSiblingClip = lookupSiblingClip
 module.exports.useClipSource = useClipSource
 module.exports.reuseSiblingIntoCourse = reuseSiblingIntoCourse
+module.exports.linkClipForRender = linkClipForRender
 module.exports.reuseOptsFromRequest = reuseOptsFromRequest
 module.exports.siblingLookupStats = siblingLookupStats
 module.exports.resolvePodSpeakerVoice = resolvePodSpeakerVoice

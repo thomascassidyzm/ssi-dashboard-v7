@@ -69,7 +69,7 @@ async function renderClip(input, deps) {
 
     // 1. library first
     const linked = await deps.link(ident)
-    if (linked) return { ok: true, source: 'library', charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }
+    if (linked) return { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }
 
     const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun } }
     // 2 + 3. the door → guard → one provider attempt
