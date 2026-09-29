@@ -78,7 +78,7 @@ describe.skipIf(!ADMIN)('the shared ledger under real concurrency (job #430)', (
     // Limits come from the committed baseline; a 100-char cap comes from a lower daily cap via the store request.
     const orig = store.reserve.bind(store)
     store.reserve = (r) => orig({ ...r, provider: 'guarded', limits: { ...r.limits, dailyCapChars: 100 } })
-    const out = await Promise.allSettled(Array.from({ length: 40 }, (_, i) => g.beforeProviderCall({ provider: 'guarded', voiceId: 'v', text: `line ${String(i).padStart(5, '0')}` })))   // 10 chars each
+    const out = await Promise.allSettled(Array.from({ length: 40 }, (_, i) => (async () => { const text = `line ${String(i).padStart(5, '0')}`; const { lookupForRender, memoryClipLibrary } = require('./clip-library.cjs'); const { ticket } = await lookupForRender({ text, language: 'eng', voiceId: 'v', voiceBound: true }, memoryClipLibrary([])); return g.beforeProviderCall({ provider: 'guarded', voiceId: 'v', text, ticket }) })()))   // 10 chars each
     expect(out.filter(r => r.status === 'fulfilled')).toHaveLength(10)
   })
 

@@ -50,7 +50,7 @@ function door({ failFirst = 0 } = {}) {
 beforeEach(() => {
   dir = fs.mkdtempSync(path.join(os.tmpdir(), 'spend-door-'))
   const budgetPath = path.join(dir, 'budgets.json')
-  fs.writeFileSync(budgetPath, JSON.stringify({ repeat: { maxPerKey: 6, windowHours: 24 } }))
+  fs.writeFileSync(budgetPath, JSON.stringify({ repeat: { maxPerKey: 3, windowHours: 24 } }))
   guardMod.useSpendGuard(guardMod.createSpendGuard({
     ledgerPath: path.join(dir, 'ledger.jsonl'), budgetPath, notify() {}, logger: { warn() {}, error() {} },
   }))
@@ -61,7 +61,7 @@ const cfg = { apiKey: 'k', voiceId: KRITI, locale: 'hi-IN', phonologyGate: false
 const LINES = ['her name', 'मैं ठीक हूँ', 'मुझे लगता है कि यह बेवकूफ़ी है']
 
 describe('a fill loop that keeps re-asking for lines it already holds', () => {
-  it('37 passes over the same 3 lines pay for at most 6 renders a line — not 37', async () => {
+  it('37 passes over the same 3 lines pay for at most 3 renders a line — not 37 (the committed limit since job #677)', async () => {
     const { svc, paid } = door()
     let refused = 0
     for (let pass = 0; pass < 37; pass++) {
@@ -72,9 +72,9 @@ describe('a fill loop that keeps re-asking for lines it already holds', () => {
         }
       }
     }
-    // Old door: 111 paid renders. Guarded door: 18, then every call refused.
-    expect(paid).toHaveLength(LINES.length * 6)
-    expect(refused).toBe(LINES.length * (37 - 6))
+    // Old door: 111 paid renders. Guarded door: 9, then every call refused.
+    expect(paid).toHaveLength(LINES.length * 3)
+    expect(refused).toBe(LINES.length * (37 - 3))
   })
 
   it('every provider ATTEMPT is ledgered — a retry is billed, so it is counted', async () => {

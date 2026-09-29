@@ -87,7 +87,7 @@ module.exports = {
 
   async synthesise(utterance, opts = {}) {
     const req = this.buildRequest(utterance, opts);
-    const { audioBuffer, metadata } = await httpSynthesise(this, req, opts);
+    const { audioBuffer, metadata } = await httpSynthesise(this, req, { ...opts, language: utterance.language || opts.language });
     const bytesPerSecond = Math.max(1, Math.round(req.body.output_format.bit_rate / 8));
     return {
       audioBuffer,
