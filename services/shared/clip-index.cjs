@@ -102,16 +102,18 @@ function clipTextKey(text) {
  * 'auto' or whose voice is a sentinel cannot be named, so it is counted, not
  * indexed (tryCanonical* return null for those).
  */
-function indexEntryFor(row, indexedBy, courseOf = noCourses) {
+function indexEntryFor(row, indexedBy, courseOf = noCourses, resolvers = null) {
   if (!row || !row.id) return { skip: 'no-row' }
   if (!row.s3_key || String(row.s3_key).startsWith('pending/')) return { skip: 'pending' }
   if (row.veracity_pass === false) return { skip: 'veracity-failed' }
-  const text_key = clipTextKey(row.text)
+  // `resolvers` (services/shared/named-voices.cjs) is how a clip whose voice or words are
+  // not what course_audio stores gets its true identity; absent, nothing changes.
+  const text_key = clipTextKey(resolvers && resolvers.spokenText ? resolvers.spokenText(row) : row.text)
   if (!text_key) return { skip: 'empty-text' }
   if (!tryCanonicalLanguage(row.language)) return { skip: 'language-unnamed' }
   const language = clipLanguageKey(row.language, courseOf(row.course_code))
   if (!language) return { skip: 'language-ambiguous' }
-  const voice_id = tryCanonicalVoiceId(row.voice_id)
+  const voice_id = resolvers && resolvers.voiceOf ? resolvers.voiceOf(row) : tryCanonicalVoiceId(row.voice_id)
   if (!voice_id) return { skip: 'voice-unnamed' }
   return {
     language, text_key, voice_id,
@@ -137,12 +139,12 @@ function betterCanonical(a, b) {
 const noCourses = () => null
 
 /** One entry per key from a set of rows, canonical row winning. Returns { entries, collisions, skipped }. */
-function entriesFromRows(rows, indexedBy, courseOf = noCourses) {
+function entriesFromRows(rows, indexedBy, courseOf = noCourses, resolvers = null) {
   const best = new Map()
   const skipped = {}
   let collisions = 0
   for (const row of rows || []) {
-    const e = indexEntryFor(row, indexedBy, courseOf)
+    const e = indexEntryFor(row, indexedBy, courseOf, resolvers)
     if (e.skip) { skipped[e.skip] = (skipped[e.skip] || 0) + 1; continue }
     const k = `${e.language}\u001f${e.text_key}\u001f${e.voice_id}`
     const prev = best.get(k)
