@@ -688,5 +688,5 @@ async function main() {
   } finally { await pg.end(); }
 }
 
-module.exports = { plan, applyPlanToRows, endStateProblems, S513, S151, S607, containsWords, sameWords, phraseContainsLego, isDuplicate, legoPosition, englishIdsToFill };
+module.exports = { renderSoniaPresentation, plan, applyPlanToRows, endStateProblems, S513, S151, S607, containsWords, sameWords, phraseContainsLego, isDuplicate, legoPosition, englishIdsToFill };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

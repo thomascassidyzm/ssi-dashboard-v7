@@ -109,6 +109,26 @@ describe('(c) idempotency: the same words, voice and provider are not bought ove
   })
 })
 
+describe('(c2) Tom-signed repeat exemption: one job, named words, once each, nothing else looser', () => {
+  const exemption = (o = {}) => ({ job: '#700', texts: ['her name'], by: 'Tom (explicit go in chat, 2026-09-29 00:44Z, via Watson)', why: 'finish the Italian audio', until: '2026-09-27T00:00:00Z', ...o })
+  const capped = async (g) => { for (let i = 0; i < 3; i++) await call(g, 'her name') }
+  it('lets the named job send the named words once past the cap, then refuses a second, and never opens the cap for anyone else or any other words', async () => {
+    const g = guard({ budgetPath: budgets({ repeatExemptions: [exemption()] }) })
+    await capped(g)
+    await expect(call(g, 'her name', { job: 'other' })).rejects.toThrow(/REPEAT/)
+    await expect(call(g, 'her name', { job: '#7000·I' })).rejects.toThrow(/REPEAT/)
+    await expect(call(g, 'her name', { job: '#700·I' })).resolves.toBeTruthy()
+    await expect(call(g, 'her name', { job: '#700·I' })).rejects.toThrow(/exempt call/)
+    for (let i = 0; i < 3; i++) await call(g, 'his name')
+    await expect(call(g, 'his name', { job: '#700·I' })).rejects.toThrow(/REPEAT/)
+  })
+  it('is ignored unless Tom signed it', async () => {
+    const g = guard({ budgetPath: budgets({ repeatExemptions: [exemption({ by: 'an agent' })] }) })
+    await capped(g)
+    await expect(call(g, 'her name', { job: '#700·I' })).rejects.toThrow(/REPEAT/)
+  })
+})
+
 describe('(e) provider-side check: the provider\'s own count against the ledger', () => {
   it('stops every render when the provider has billed far more than the ledger recorded, and the stop persists across processes', async () => {
     let used = 1_000_000

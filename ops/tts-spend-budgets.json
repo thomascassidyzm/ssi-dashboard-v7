@@ -54,5 +54,49 @@
       "why": "Tom: 'I think these are small enough to be done in one go, now' - render the held audio_pass_requests backlog (54 courses, <=370k chars before reuse; first-render courses, Arabic and gle_for_eng excluded). Job-scoped: draws on its own allowance, never on the 100k daily cap other jobs use.",
       "until": "2026-09-28T23:59:59Z"
     }
+  ],
+  "repeatExemptions": [
+    {
+      "job": "#668",
+      "texts": [
+        "ha detto qualcos'altro?",
+        "ha detto qualcos' altro?",
+        "non era davanti a qualcos'altro",
+        "non era davanti a qualcos' altro",
+        "non era un negozio, era qualcos'altro",
+        "non era un negozio, era qualcos' altro"
+      ],
+      "maxCallsPerText": 1,
+      "since": "2026-09-29T00:45:00Z",
+      "by": "Tom (explicit go in chat, 2026-09-29 00:44Z, via Watson)",
+      "why": "Kai's ita_for_eng qualcos'altro re-renders, blocked only by the per-words repeat cap (3/day, already used up in Elsa and Benigno by the listening page and the earlier attempts). Once each per voice, the qualcos tool (#668, run by #700) only; stays inside the 50k/day total cap.",
+      "until": "2026-09-30T00:00:00Z"
+    },
+    {
+      "job": "#700",
+      "texts": [
+        "avrei fatto la stessa cosa per te",
+        "avrei fatto tutto",
+        "avrei fatto tutto per te",
+        "fa male quando muovo la testa su e giù",
+        "ha detto che le fa male la testa",
+        "ho detto che fa più male quando muovo la testa su e giù",
+        "mi fa davvero male la testa",
+        "mi fa male la testa",
+        "mi fa male la testa quando muovo",
+        "mi fa molto male la testa",
+        "non era facile",
+        "non fa più male quando muovo la testa su e giù",
+        "penso che avrei fatto quello",
+        "se avessi saputo, avrei fatto la stessa cosa",
+        "ti fa male la testa?",
+        "ti fa molto male la testa?"
+      ],
+      "maxCallsPerText": 1,
+      "since": "2026-09-29T00:45:00Z",
+      "by": "Tom (explicit go in chat, 2026-09-29 00:44Z, via Watson)",
+      "why": "Kai's pending ita_for_eng Italian clips (seeds 513, 607 and S0086L01U08): every line was sent 3x between 00:38 and 00:40Z on Azure keys that returned 401, so no audio came back and the repeat cap is used up. Once each per voice, job #700 only, the listed lines only; inside the 50k/day total cap.",
+      "until": "2026-09-30T00:00:00Z"
+    }
   ]
 }
