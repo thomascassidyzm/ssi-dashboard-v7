@@ -6585,11 +6585,20 @@ app.post('/api/audio/add-recording', async (req, res) => {
         return row
       },
       homeCourse: async (clipLanguage, courseCode) => {
+        const base = tryCanonicalLanguage(String(clipLanguage).split('_')[0]) || clipLanguage
+        if (courseCode) {
+          // a named course must teach the artist's language (its target, e.g. the zzz test courses whose codes are not zzz_for_*)
+          const { data, error } = await sb.from('courses').select('course_code, target_lang, known_lang').eq('course_code', courseCode).maybeSingle()
+          if (error) throw new Error(`courses unreadable: ${error.message}`)
+          const teaches = data && (tryCanonicalLanguage(data.target_lang) || data.target_lang) === base
+          if (!teaches) throw new intake.IntakeError(`${courseCode} is not a ${clipLanguage} course`, 409, 'NO_HOME_COURSE')
+          return data
+        }
         const { data, error } = await sb.from('courses').select('course_code, target_lang, known_lang').ilike('course_code', `${clipLanguage}%`)
         if (error) throw new Error(`courses unreadable: ${error.message}`)
         const mine = (data || []).filter(c => c.course_code.startsWith(`${clipLanguage}_for_`))
-        const pick = courseCode ? mine.find(c => c.course_code === courseCode) : (mine.find(c => c.course_code === `${clipLanguage}_for_eng`) || mine[0])
-        if (!pick) throw new intake.IntakeError(courseCode ? `${courseCode} is not a ${clipLanguage} course` : `no ${clipLanguage} course to file a ${clipLanguage} recording in`, 409, 'NO_HOME_COURSE')
+        const pick = mine.find(c => c.course_code === `${clipLanguage}_for_eng`) || mine[0]
+        if (!pick) throw new intake.IntakeError(`no ${clipLanguage} course to file a ${clipLanguage} recording in — name one with courseCode`, 409, 'NO_HOME_COURSE')
         return pick
       },
       libraryHas: async ({ language, text, voiceId }) => {
