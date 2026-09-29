@@ -6244,6 +6244,21 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
     const effectiveKnown = (typeof knownText === 'string') ? knownText : phrase.known_text
     const effectiveTarget = (typeof targetText === 'string') ? targetText : phrase.target_text
 
+    // 3b. The phrase's female/male reading must exist BEFORE the render looks for it:
+    //     course_gender_expansions is keyed by the text, so an edited (or new) phrase
+    //     has no row until this writes one. An existing row — a hand fix included —
+    //     is never touched (gender-haiku-service.ensureExpansionForText). A failure
+    //     here never blocks the render: it speaks the plain text as it always did.
+    if (requestedRoles.some(r => r !== 'known')) {
+      try {
+        const ensured = await genderHaikuService.ensureExpansionForText(courseCode, effectiveTarget, supabase)
+        if (ensured.status === 'written' || ensured.status === 'llm-failed') logger.info(`[Regen Phrase] gender expansion for ${phraseId}: ${ensured.status}`)
+        _gmapMemo = { courseCode: null, at: 0, map: null }   // a row may have been written by another process (the edit PATCH); read fresh
+      } catch (e) {
+        logger.warn(`[Regen Phrase] gender expansion refresh failed for ${phraseId}: ${e.message}`)
+      }
+    }
+
     // 4. Regenerate each requested role. Reuses the EXACT recipe of the bulk role
     //    path: gender expansion (target only) → provider TTS → master → S3 → mint
     //    course_audio row with NEW text → rebind phrase pointer.

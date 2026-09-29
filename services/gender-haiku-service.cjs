@@ -65,7 +65,8 @@ function buildPrompt(items, language, role) {
 function buildRomancePrompt(numberedPhrases, langName, gender) {
   return `You adjust ${langName} text so it sounds natural when spoken by a ${gender} speaker.
 
-The ONLY thing you may change is grammatical agreement with the first-person speaker (je/I):
+The ONLY thing you may change is grammatical agreement with the first-person speaker (je/I). Kai's rule: a female form only applies where the word refers back to the speaker.
+
 - Adjectives describing the speaker: content→contente, prêt→prête, seul→seule
 - Past participles with être where the subject is the speaker: je suis allé→je suis allée
 - Fragments where the speaker is implied: "fatigué" → "fatiguée" (for female)
@@ -88,7 +89,8 @@ Respond with JSON only, no markdown: {"results": [{"i": 1, "t": "adjusted or ori
 function buildArabicPrompt(numberedPhrases, gender) {
   return `You adjust Arabic text so it sounds natural when spoken by a ${gender} speaker.
 
-The ONLY things you may change are grammatical forms that must agree with the first-person speaker (أنا):
+The ONLY things you may change are grammatical forms that must agree with the first-person speaker (أنا). Kai's rule: a female form only applies where the word refers back to the speaker.
+
 - Predicate adjectives describing the speaker: أنا سعيد→أنا سعيدة, أنا مستعد→أنا مستعدة (for female)
 - Active/passive participles used as predicates about the speaker: أنا مسافر→أنا مسافرة, أنا متأكد→أنا متأكدة (for female)
 - Standalone adjective fragments where the speaker is implied: "متعب" → "متعبة" (for female)
@@ -149,7 +151,8 @@ async function callHaikuBatch(items, language, role) {
       return items.map(item => ({
         text: item.text,
         expandedText: item.text,
-        wasModified: false
+        wasModified: false,
+        failed: true
       }))
     }
 
@@ -171,7 +174,8 @@ async function callHaikuBatch(items, language, role) {
     return items.map(item => ({
       text: item.text,
       expandedText: item.text,
-      wasModified: false
+      wasModified: false,
+      failed: true
     }))
   }
 }
@@ -249,7 +253,8 @@ async function batchGenderExpand(items) {
   for (const r of results) {
     resultMap.set(r.key, {
       expandedText: r.expandedText,
-      wasModified: r.wasModified
+      wasModified: r.wasModified,
+      ...(r.failed ? { failed: true } : {})
     })
   }
 
@@ -392,6 +397,70 @@ async function processAndStore(courseCode, supabase) {
   return { total: uniqueTexts.length, modified: rows.length, elapsed }
 }
 
+// In-flight refreshes, so an edit's fire-and-forget and the regenerate that follows it
+// share ONE model call instead of racing two.
+const _refreshing = new Map()
+
+/**
+ * Make sure ONE target text has the expansion row it needs — the edit-time and
+ * new-phrase-time counterpart of processAndStore (which rebuilds a whole course).
+ *
+ * course_gender_expansions is keyed by the text itself (course, original_text,
+ * text_side), so a phrase whose target text changes has NO row for its new text
+ * until something writes one: the row made on 15 Jul described the old wording and
+ * the new wording was spoken with no female form. This writes that row, in the
+ * shape gender-prep-coordinator writes (expanded_f / expanded_m only where they
+ * differ from the text; text_side 'target').
+ *
+ * HAND FIXES ARE NEVER OVERWRITTEN. A row already present for this exact text is
+ * in sync with its source by construction (the source text IS the key), whoever
+ * wrote it, so it is left alone whatever it says: status 'exists'. The insert is
+ * ignoreDuplicates for the same reason — a row that appears between the check and
+ * the write (Kai's room, a concurrent edit) wins. The row for the OLD text is
+ * left where it is; nothing here deletes anything.
+ *
+ * A model failure writes nothing and says so ('llm-failed'), so a later call
+ * tries again rather than filing "no variants" for a text nobody analysed.
+ *
+ * @returns {Promise<{status: 'written'|'exists'|'no-variants'|'not-gendered'|'skipped'|'llm-failed', row?: object}>}
+ */
+async function ensureExpansionForText(courseCode, text, supabase) {
+  if (!courseCode || typeof text !== 'string' || !text.trim()) return { status: 'skipped' }
+  const k = `${courseCode}|${text}`
+  if (_refreshing.has(k)) return _refreshing.get(k)
+  const p = (async () => {
+    const { data: course } = await supabase.from('courses')
+      .select('target_lang, needs_gender_prep').eq('course_code', courseCode).maybeSingle()
+    if (!course) return { status: 'skipped' }
+    // Same test as the gender-prep endpoint: an explicit flag wins, else the language decides.
+    const gendered = course.needs_gender_prep === true ||
+      (course.needs_gender_prep == null && GENDERED_LANGUAGES.includes(course.target_lang))
+    if (!gendered || !LANG_NAMES[course.target_lang]) return { status: 'not-gendered' }
+    const language = course.target_lang
+
+    const { data: existing, error: readErr } = await supabase.from('course_gender_expansions')
+      .select('id').eq('course_code', courseCode).eq('original_text', text).eq('text_side', 'target').limit(1)
+    if (readErr) throw new Error(`gender expansions unreadable: ${readErr.message}`)
+    if (existing && existing.length) return { status: 'exists' }
+
+    const map = await batchGenderExpand([{ text, language, role: 'target1' }, { text, language, role: 'target2' }])
+    const f = map.get(`${text}|${language}|target1`), m = map.get(`${text}|${language}|target2`)
+    if (f?.failed || m?.failed) return { status: 'llm-failed' }
+    const row = {
+      course_code: courseCode, original_text: text, language, text_side: 'target',
+      expanded_f: f?.wasModified ? f.expandedText : null,
+      expanded_m: m?.wasModified ? m.expandedText : null,
+    }
+    if (!row.expanded_f && !row.expanded_m) return { status: 'no-variants' }
+    const { error } = await supabase.from('course_gender_expansions')
+      .upsert(row, { onConflict: 'course_code,original_text,text_side', ignoreDuplicates: true })
+    if (error) throw new Error(`gender expansion write failed: ${error.message}`)
+    return { status: 'written', row }
+  })().finally(() => _refreshing.delete(k))
+  _refreshing.set(k, p)
+  return p
+}
+
 /**
  * Load pre-computed gender expansions from DB for use at TTS time.
  * Returns a Map keyed by `${text}|${language}|${role}` for O(1) lookups.
@@ -463,6 +532,7 @@ module.exports = {
   batchGenderExpand,
   analyzeAndExpand,
   processAndStore,
+  ensureExpansionForText,
   loadGenderMap,
   GENDERED_LANGUAGES,
   // Exported for testing

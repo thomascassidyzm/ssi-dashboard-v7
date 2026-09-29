@@ -9001,6 +9001,15 @@ app.patch('/api/production/:courseCode/phrase/:phraseId', async (req, res) => {
 
     logger.info(`Updated phrase ${phraseId} in ${courseCode}: ${JSON.stringify(updateData)}`)
 
+    // A changed target text has no gender expansion row until one is written (the
+    // table is keyed by the text). Not awaited: the editor never waits on a model
+    // call, and a regenerate pressed next shares this same in-flight refresh.
+    if (typeof target_text === 'string' && target_text !== existingPhrase.target_text) {
+      genderHaikuService.ensureExpansionForText(courseCode, target_text, supabase)
+        .then(r => logger.info(`Gender expansion for edited ${phraseId}: ${r.status}`))
+        .catch(e => logger.warn(`Gender expansion refresh failed for edited ${phraseId}: ${e.message}`))
+    }
+
     // Emit WebSocket event for real-time updates
     io.to(`course:${courseCode}`).emit('phrase_updated', {
       courseCode,
