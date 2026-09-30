@@ -52,7 +52,8 @@ function validate(input) {
     dryRun: !!input.dryRun,
     // Answer only with a clip in THIS voice. A two-voice phrase's male and female
     // slots are told apart by voice alone; any-voice reuse files one in the other.
-    voiceBound: !!input.voiceBound,
+    // DEFAULT ON (job #944): reuse matches voice identity; only an explicit voiceBound:false opts out.
+    voiceBound: input.voiceBound !== false,
     // RE-RECORD: replace this course_audio row's bytes in place (same id, next
     // audio_revision). The library is never asked to answer it.
     replaceAudioId: input.replaceAudioId ? String(input.replaceAudioId) : null,
