@@ -62,7 +62,14 @@ async function plan(supabase, a) {
   const out = [];
   for (const b of targets) {
     console.log(`→ ${b.lego_id} "${b.known_text}" → "${b.target_text}" (${b.reason}; ${b.build} BUILD / ${b.use} USE)`);
-    const r = await generateLegoPhrases(supabase, a.course, b.seed_number, b.lego_index);
+    let r;
+    try { r = await generateLegoPhrases(supabase, a.course, b.seed_number, b.lego_index); }
+    catch (err) {
+      // one LEGO's crash is that LEGO's finding, never the end of the run
+      console.log(`  ERROR ${err.message}`);
+      out.push({ ...b, model: null, blocked: true, failingGates: ['error'], reasons: [err.message], build: [], use: [] });
+      continue;
+    }
     const e = { ...b, model: r.model, blocked: r.blocked, failingGates: r.gate?.failingGates || [],
       reasons: (r.attempts || []).slice(-1)[0]?.reasons || [], build: r.build, use: r.use, declarationPass: r.declarationCheck?.pass ?? null };
     console.log(`  ${r.blocked ? 'BLOCKED ' + e.failingGates.join(',') : 'gate PASS'} — ${r.build.length} BUILD / ${r.use.length} USE on ${r.model}`);

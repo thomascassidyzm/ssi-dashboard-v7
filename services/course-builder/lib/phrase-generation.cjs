@@ -304,6 +304,8 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     // attempt, but it never causes one.
     const floorReasons = [
       ...failureFeedback(gate),
+      // `|| []`: a failing declaration without rewrite instructions crashed the whole run
+      // (tur_for_eng S0010L04, job #906) instead of retrying on the gate's own reasons.
       ...(declPass ? [] : (declarationCheck.rewrite_instructions || [])),
     ];
     const reasons = floorReasons.length
