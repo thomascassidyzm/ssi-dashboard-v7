@@ -925,11 +925,14 @@ module.exports = function(ctx) {
 
       if (legoErr) throw new Error(legoErr.message);
 
-      // Count LEGOs that have at least one phrase
+      // Count LEGOs that have at least one PRACTICE phrase. Component rows are tiling
+      // glosses, not practice: counting them reported a debut with no BUILD or USE as
+      // done (job #906 — the full rule is services/shared/debut-practice.cjs).
       const { data: legosWithPhrases, error: phraseErr } = await ctx.supabase
         .from('course_practice_phrases')
         .select('seed_number, lego_index')
-        .eq('course_code', courseCode);
+        .eq('course_code', courseCode)
+        .in('phrase_role', ['build', 'use']);
 
       if (phraseErr) throw new Error(phraseErr.message);
 
