@@ -64,7 +64,11 @@ function providerConfig (cfg, lang) {
   // Through the one TTS door as an AUDITION: a candidate voice may be heard
   // before it is cast (the door's cast gate), but the door still answers with
   // an existing recording when this voice has already said these words.
-  const door = { audition: true, language: lang ? (lang.locale || lang.azureLocale || lang.steer) : undefined }
+  // voiceBound: an audition answers with THIS voice's clip or renders it. Without
+  // it the door's lookup falls back to ANY voice that has said these words (Elvira's
+  // take of a course line) and hands it back as the candidate's sample, so Thiago,
+  // Marcos, Marta and Maite all played Elvira (job #954).
+  const door = { audition: true, voiceBound: true, language: lang ? (lang.locale || lang.azureLocale || lang.steer) : undefined }
   if (cfg.provider === 'azure') {
     return {
       ...forDecision,
