@@ -23,6 +23,7 @@
  */
 
 const { randomUUID } = require('crypto');
+const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 
 const SNAPSHOT_TABLE = 'seed_redo_snapshots';
 
@@ -187,16 +188,9 @@ async function restoreSnapshot(supabase, { courseCode, seedNumber, snapshotId, d
     };
   }
 
-  // Phrases first (FK onto course_legos), then LEGOs.
-  const { error: delPhraseErr } = await supabase
-    .from('course_practice_phrases').delete()
-    .eq('course_code', courseCode).eq('seed_number', snap.seed_number);
-  if (delPhraseErr) throw new Error(`Undo failed deleting current phrases: ${delPhraseErr.message}`);
-
-  const { error: delLegoErr } = await supabase
-    .from('course_legos').delete()
-    .eq('course_code', courseCode).eq('seed_number', snap.seed_number);
-  if (delLegoErr) throw new Error(`Undo failed deleting current LEGOs: ${delLegoErr.message}`);
+  // Phrases and LEGOs together, one transaction (wipe-seed-teaching.cjs, job #912).
+  try { await wipeSeedTeaching(supabase, courseCode, [snap.seed_number]); }
+  catch (e) { throw new Error(`Undo failed deleting the current seed: ${e.message}`); }
 
   if (legos.length) {
     const { error } = await supabase.from('course_legos').insert(legos);

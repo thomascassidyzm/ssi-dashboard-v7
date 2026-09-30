@@ -2,8 +2,9 @@
 'use strict';
 // tools/course-optimization/regenerate-debut-practice.cjs
 //
-// Writes practice phrases for every DEBUT LEGO that has none, or has no USE phrase — the two cases
-// the release gate blocks (services/shared/debut-practice.cjs; Tom, 2026-09-30, job #906).
+// Writes practice phrases for every DEBUT LEGO that has none — no BUILD and no USE beyond the bare
+// LEGO, the one case the release gate blocks (services/shared/debut-practice.cjs; Tom, 2026-09-30,
+// jobs #906/#910). A BUILD-only debut is practised and is not a target unless named with --lego.
 //
 // The phrases come from phrase v3 (lib/phrase-generation.cjs, in-process: the real prompt, Opus,
 // the real gates — floors, containment, earlier-siblings-only vocabulary, ZUT, known side — and the
@@ -84,6 +85,7 @@ async function apply(pg, supabase, p, cut, { p7 = false } = {}) {
   const { makePhraseId, computeLegoPosition } = require('../../services/course-builder/lib/phrase-structure.cjs');
   const { serviceIdentity } = require('../../services/shared/editor-identity.cjs');
   const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs');
+  const { changeEntry, phraseChangesDetail } = require('../../services/shared/phrase-change-log.cjs');
   const course = p.course;
   // --p7 (Kai's fix-time remedy, canon P7): a debut that cannot stand in a complete sentence
   // until a later LEGO of its seed is taught takes BUILD fragments only, and is written when the
@@ -103,10 +105,12 @@ async function apply(pg, supabase, p, cut, { p7 = false } = {}) {
   for (const c of cutIds) if (!ok.some((e) => c.includes(e.lego_id))) throw new Error(`--cut ${c} is not a row of a LEGO being regenerated`);
 
   const rows = [];
+  const cutBefore = []; // FULL rows about to be deleted, read before any write (job #920: Kai reviews these)
   for (const e of ok) {
     const { rows: [lego] } = await pg.query('SELECT is_new, known_text, target_text FROM course_legos WHERE course_code=$1 AND seed_number=$2 AND lego_index=$3', [course, e.seed_number, e.lego_index]);
     if (!lego || !lego.is_new || lego.target_text !== e.target_text || lego.known_text !== e.known_text) throw new Error(`${e.lego_id} changed since the plan — re-plan`);
-    const { rows: have } = await pg.query('SELECT id, position, phrase_role, target_text FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2 AND lego_index=$3', [course, e.seed_number, e.lego_index]);
+    const { rows: have } = await pg.query('SELECT id, course_code, seed_number, lego_index, lego_id, position, phrase_role, known_text, target_text FROM course_practice_phrases WHERE course_code=$1 AND seed_number=$2 AND lego_index=$3', [course, e.seed_number, e.lego_index]);
+    cutBefore.push(...have.filter((h) => cutIds.includes(h.id)));
     const kept = have.filter((h) => !cutIds.includes(h.id));
     const seen = new Set(kept.filter((h) => h.phrase_role !== 'component').map((h) => normT(h.target_text)));
     let pos = Math.max(0, ...have.map((h) => h.position));
@@ -126,8 +130,11 @@ async function apply(pg, supabase, p, cut, { p7 = false } = {}) {
   const identity = serviceIdentity(SWEEP, { role: 'content-sweep' });
   const rec = (operation, scope, detail) => recordContentEdit(supabase, { identity, courseCode: course, surface: SURFACE, operation, scope, detail: { ruling: RULING, job: JOB, ...detail } });
   const insEvent = await rec('phrase-insert', { seed_numbers: seeds, lego_ids: ok.map((e) => e.lego_id), phrase_ids: rows.map((r) => r.id), rows: rows.length },
-    { generator: 'phrase v3', model: ok[0].model, rows: rows.map((r) => ({ id: r.id, known: r.known, target: r.target })) });
-  const cutEvent = cutIds.length ? await rec('phrase-delete', { seed_numbers: seeds, phrase_ids: cutIds, rows: cutIds.length }, { why: 'replaced by the v3 basket; read and judged defective', ids: cutIds }) : null;
+    phraseChangesDetail(rows.map((r) => changeEntry(null, { id: r.id, course_code: course, seed_number: r.seed, lego_index: r.idx, lego_id: r.lego, phrase_role: r.role, position: r.position, known_text: r.known, target_text: r.target })),
+      { generator: 'phrase v3', model: ok[0].model, rows: rows.map((r) => ({ id: r.id, known: r.known, target: r.target })) }));
+  if (cutBefore.length !== cutIds.length) throw new Error(`--cut: read ${cutBefore.length} of ${cutIds.length} rows before deleting — refusing`);
+  const cutEvent = cutIds.length ? await rec('phrase-delete', { seed_numbers: seeds, phrase_ids: cutIds, rows: cutIds.length },
+    phraseChangesDetail(cutBefore.map((b) => changeEntry(b, null)), { why: 'replaced by the v3 basket; read and judged defective', ids: cutIds })) : null;
   const { rows: appr } = await pg.query('SELECT seed_number FROM course_seeds WHERE course_code=$1 AND seed_number = ANY($2) AND approved_at IS NOT NULL', [course, seeds]);
   const toUnapprove = appr.map((s) => s.seed_number);
   const unEvent = toUnapprove.length ? await rec('unapprove', { seed_numbers: toUnapprove, rows: toUnapprove.length }, { why: 'phrases added; edits unapprove their seed' }) : null;
@@ -173,5 +180,5 @@ async function main() {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
   try { console.log('APPLIED', JSON.stringify(await apply(pg, supabase, p, a.cut, { p7: a.p7 }))); } finally { await pg.end(); }
 }
-module.exports = { normT };
+module.exports = { normT, apply };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

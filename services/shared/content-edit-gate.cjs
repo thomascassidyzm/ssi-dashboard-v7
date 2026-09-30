@@ -189,6 +189,7 @@ function contentEditGate({ supabase, service, logger = console }) {
         scope,
         detail,
         requestId: req.headers['x-request-id'] || null,
+        fromRequest: true, // the server never exits: no sweep exit hook here (content-edit-log.cjs)
       }).then(id => { eventId = id; return id; })
         .catch(err => { recording = null; throw err; });
       return recording;

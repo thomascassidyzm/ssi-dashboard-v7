@@ -96,6 +96,17 @@ function makeDb(initial = {}) {
 
   return {
     tables, failures, opLog,
+    // public.wipe_seed_teaching: phrases and LEGOs of the seeds, one transaction (job #912)
+    async rpc(name, { p_course, p_seeds }) {
+      if (name !== 'wipe_seed_teaching') throw new Error(`unsupported rpc ${name}`)
+      const hit = (r) => r.course_code === p_course && (p_seeds == null || p_seeds.includes(r.seed_number))
+      const phrases = tables.course_practice_phrases.filter(hit).length
+      const legos = tables.course_legos.filter(hit).length
+      tables.course_practice_phrases = tables.course_practice_phrases.filter(r => !hit(r))
+      tables.course_legos = tables.course_legos.filter(r => !hit(r))
+      opLog.push({ op: 'wipe_seed_teaching', table: 'course_legos', n: legos })
+      return { data: { phrases_deleted: phrases, legos_deleted: legos }, error: null }
+    },
     from(table) {
       if (!tables[table]) tables[table] = []
       return {
@@ -237,7 +248,7 @@ describe('restoreSnapshot — the undo', () => {
     expect(stripGenerated({ id: 'x', lego_id: 'S0007L01' })).toEqual({ id: 'x' })
   })
 
-  it('deletes phrases before LEGOs and restores LEGOs before phrases (FK order)', async () => {
+  it('tears the seed down in one transaction and restores LEGOs before phrases (FK order, job #912 debut guard)', async () => {
     const db = seededDb()
     await redoThenReplace(db)
     db.opLog.length = 0
@@ -247,8 +258,7 @@ describe('restoreSnapshot — the undo', () => {
       .filter(o => ['course_legos', 'course_practice_phrases'].includes(o.table))
       .map(o => `${o.op}:${o.table}`)
     expect(seq).toEqual([
-      'delete:course_practice_phrases',
-      'delete:course_legos',
+      'wipe_seed_teaching:course_legos',
       'insert:course_legos',
       'insert:course_practice_phrases',
     ])

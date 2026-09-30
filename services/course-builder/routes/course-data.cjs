@@ -11,6 +11,7 @@ const { loadCourseVocab, loadTranslationVocab } = require('../lib/vocab-cache.cj
 const { getCheckpointStatus, CHECKPOINT_SEEDS } = require('../lib/checkpoint.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { calculateLegoBalanceScores } = require('../lib/validation.cjs');
+const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 
 // ─── Inline helpers (not yet extracted to a lib module) ──────────────
 
@@ -990,11 +991,14 @@ USE:
       if (req.contentEdit) await req.contentEdit.record({ scope: { course_code: courseCode } });
 
       const results = {};
+      // LEGOs and phrases go first, whole seeds per transaction (wipe-seed-teaching.cjs, job #912):
+      // a batched phrase delete would leave debuts empty between batches and be refused.
+      const wiped = await wipeSeedTeaching(ctx.supabase, courseCode, null);
+      results.course_practice_phrases = wiped.phrases_deleted;
+      results.course_legos = wiped.legos_deleted;
       const tables = [
         'course_qa_flags',
         'build_jobs',
-        'course_practice_phrases',
-        'course_legos',
         'course_seed_drafts',
         'course_seeds',
         'course_audio',
@@ -1104,7 +1108,11 @@ USE:
         results[table] = totalDeleted;
       }
 
-      // Delete seeds (cascades to legos + phrases)
+      // LEGOs and phrases, whole seeds per transaction (wipe-seed-teaching.cjs, job #912), then the seeds.
+      const wiped = await wipeSeedTeaching(ctx.supabase, courseCode, null);
+      results.course_practice_phrases = wiped.phrases_deleted;
+      results.course_legos = wiped.legos_deleted;
+
       let seedsDeleted = 0;
       let batch;
       do {

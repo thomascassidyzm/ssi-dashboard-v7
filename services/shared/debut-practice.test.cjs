@@ -21,10 +21,22 @@ const S0190 = {
 }
 
 describe('auditDebutPractice', () => {
-  it('blocks a debut with BUILD rows but no USE anywhere — bare-LEGO rows not counted', () => {
+  it('BUILD or USE counts (Tom 11:14Z, job #910): a debut with real BUILD rows and no USE is practised — reported, never blocked', () => {
     const a = auditDebutPractice(S0190.legos, S0190.phrases)
-    expect(a.blocking).toHaveLength(1)
-    expect(a.blocking[0]).toMatchObject({ lego_id: 'S0190L01', reason: 'NO_USE', build: 2, use: 0, bare: 2 })
+    expect(a.blocking).toEqual([])
+    expect(a.thin.find((t) => t.lego_id === 'S0190L01')).toMatchObject({ noUse: true, build: 2, use: 0, bare: 2 })
+    // ita_for_eng S0001L02 parlare as it stands: one BUILD "voglio parlare", no USE — #906 counted it missing
+    const s1 = auditDebutPractice(
+      [L(1, 1, true, 'I want', 'voglio'), L(1, 2, true, 'to speak', 'parlare')],
+      [P(1, 2, 'build', 'parlare'), P(1, 2, 'build', 'voglio parlare')],
+    )
+    expect(s1.blocking).toEqual([])
+    expect(s1.thin).toMatchObject([{ lego_id: 'S0001L02', build: 1, use: 0, bare: 1, noUse: true }])
+  })
+
+  it('still blocks a debut whose only BUILD rows are the bare LEGO', () => {
+    const a = auditDebutPractice([L(1, 2, true, 'to speak', 'parlare')], [P(1, 2, 'build', 'parlare'), P(1, 2, 'build', 'Parlare.')])
+    expect(a.blocking).toMatchObject([{ lego_id: 'S0001L02', reason: 'UNPRACTISED', bare: 2 }])
   })
 
   it('lets a later sibling carry it: S0190L02 U08, the seed sentence, contains S0190L01 (P7)', () => {
@@ -37,7 +49,40 @@ describe('auditDebutPractice', () => {
       [L(20, 1, true, 'I want', 'voglio'), L(20, 2, true, 'to eat', 'mangiare')],
       [...builds(20, 1, 3), P(20, 1, 'use', 'voglio mangiare adesso'), ...builds(20, 2, 3)],
     )
-    expect(early.blocking.map((b) => b.lego_id)).toEqual(['S0020L02'])
+    expect(early.blocking).toEqual([])
+    expect(early.thin.find((t) => t.lego_id === 'S0020L02')).toMatchObject({ noUse: true })
+  })
+
+  it('a later sibling never EXEMPTS a debut with no real phrase (job #909: 49 gle debuts like S0053L01-L04 slipped through)', () => {
+    const a = auditDebutPractice(
+      [L(53, 1, true, 'I have', 'tá agam'), L(53, 2, true, 'a book', 'leabhar')],
+      [P(53, 1, 'build', 'tá agam'), ...builds(53, 2, 3), P(53, 2, 'use', 'tá agam leabhar anois')],
+    )
+    expect(a.blocking).toMatchObject([{ lego_id: 'S0053L01', reason: 'UNPRACTISED', bare: 1 }])
+    expect(a.blocking[0].carried_by).toBeUndefined()
+  })
+
+  it('carrying is whole-word: a debut "a" is not carried by "cat"', () => {
+    const a = auditDebutPractice(
+      [L(30, 1, true, 'to', 'a'), L(30, 2, true, 'the cat', 'il gatto')],
+      [P(30, 1, 'build', 'a casa'), ...builds(30, 2, 3), P(30, 2, 'use', 'il gatto mangia')],
+    )
+    expect(a.thin.find((t) => t.lego_id === 'S0030L01').carried_by).toBeUndefined()
+    const b = auditDebutPractice([L(30, 1, true, 'to', 'a'), L(30, 2, true, 'the cat', 'il gatto')],
+      [P(30, 1, 'build', 'a casa'), ...builds(30, 2, 3), { ...P(30, 2, 'use', 'il gatto va a casa'), id: 'x:S0030L02U01' }])
+    expect(b.thin.find((t) => t.lego_id === 'S0030L01')).toMatchObject({ carried_by: 'x:S0030L02U01' })
+  })
+
+  it("job #887·I's exact cut of S0190L01: USE moved forward, L02U08 present — reported BUILD-only and carried; the same cut taken one step further (real BUILDs gone) blocks despite U08", () => {
+    // before #887·I: two real BUILDs, two bare rows, five USE rows under L01; the sweep moved all five USE to S0202L03
+    const before = [...S0190.phrases, ...uses(190, 1, 5), { ...P(190, 2, 'use', 'ti dispiace se ti faccio alcune domande?'), id: 'ita_for_eng:S0190L02U08' }]
+    const after = before.filter((p) => !(p.lego_index === 1 && p.phrase_role === 'use'))
+    expect(auditDebutPractice(S0190.legos, before).thin.find((t) => t.lego_id === 'S0190L01').noUse).toBeUndefined()
+    const cut = auditDebutPractice(S0190.legos, after)
+    expect(cut.blocking).toEqual([]) // Tom 11:14Z: two real BUILD phrases are practice
+    expect(cut.thin.find((t) => t.lego_id === 'S0190L01')).toMatchObject({ build: 2, use: 0, noUse: true, carried_by: 'ita_for_eng:S0190L02U08' })
+    const stripped = after.filter((p) => !(p.lego_index === 1 && /dopo|quello/.test(p.target_text)))
+    expect(auditDebutPractice(S0190.legos, stripped).blocking).toMatchObject([{ lego_id: 'S0190L01', reason: 'UNPRACTISED', bare: 2 }])
   })
 
   it('blocks a debut with nothing, and a debut whose only rows are the bare LEGO', () => {
@@ -97,17 +142,14 @@ function fakeSupabase({ legos, phrases }) {
 }
 
 describe('releaseGate', () => {
-  it('refuses beta/live while a debut has no USE, and never gates demotion', async () => {
-    const sb = fakeSupabase(S0190)
+  it('lets a BUILD-only debut through (job #910) and refuses beta/live only on a debut with no real practice', async () => {
+    expect((await releaseGate(fakeSupabase(S0190), 'ita_for_eng', 'released')).allowed).toBe(true)
+    const empty = { legos: S0190.legos, phrases: S0190.phrases.filter((p) => !(p.lego_index === 1 && !/dispiace se ti faccio$/.test(p.target_text))) }
+    const sb = fakeSupabase(empty)
     const live = await releaseGate(sb, 'ita_for_eng', 'released')
     expect(live.allowed).toBe(false)
-    expect(live.blocking.map((b) => b.lego_id)).toEqual(['S0190L01'])
+    expect(live.blocking.map((b) => [b.lego_id, b.reason])).toEqual([['S0190L01', 'UNPRACTISED']])
     expect((await releaseGate(sb, 'ita_for_eng', 'beta')).allowed).toBe(false)
     expect((await releaseGate(sb, 'ita_for_eng', 'draft'))).toEqual({ allowed: true, gated: false })
-  })
-
-  it('lets the course through once the debut has its USE phrases', async () => {
-    const fixed = { legos: S0190.legos, phrases: [...S0190.phrases, ...uses(190, 1, 5)] }
-    expect((await releaseGate(fakeSupabase(fixed), 'ita_for_eng', 'released')).allowed).toBe(true)
   })
 })

@@ -1,0 +1,19 @@
+[Unit]
+Description=Daily alarm: debut LEGOs with no practice in learner-facing courses (job #912)
+
+[Service]
+Type=oneshot
+# Runs the code that LANDED: the detached QA worktree ssi-sibling-identity uses, refreshed to origin/main.
+WorkingDirectory=/home/tomcassidy/SSi/popty-qa-nightly
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly fetch --quiet origin main
+ExecStartPre=/usr/bin/git -C /home/tomcassidy/SSi/popty-qa-nightly checkout --quiet --detach origin/main
+ExecStart=/usr/bin/node /home/tomcassidy/SSi/popty-qa-nightly/tools/qa/debut-practice/nightly.cjs
+# One SQL call, ~20s, all Postgres-side. Back seat and a hard cap regardless.
+Nice=15
+IOSchedulingClass=idle
+CPUWeight=20
+TimeoutStartSec=20min
+# Exit 2 = could not run, and it has already said so in Watson's room.
+SuccessExitStatus=0 2
+StandardOutput=append:/home/tomcassidy/.local/log/ssi-debut-practice-unit.log
+StandardError=append:/home/tomcassidy/.local/log/ssi-debut-practice-unit.log

@@ -2710,14 +2710,14 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
     // above come back: it reads the course and needs nobody to sign anything.
     // Tom, 2026-09-30: a debut LEGO (is_new=true) NEEDS practice phrases, and a
     // course cannot be released while one lacks them. Moving to beta or live is
-    // refused (409) while any debut is unpractised or has no USE phrase at its
-    // seed-position floor — services/shared/debut-practice.cjs holds the rule and
+    // refused (409) while any debut has no real practice phrase — BUILD or USE
+    // counts, the bare LEGO never does (Tom 11:14Z, job #910) — services/shared/debut-practice.cjs holds the rule and
     // its reasons. Demotion is never gated.
     const gate = await releaseGate(supabaseClient.getClient(), courseCode, dbStatus)
     if (!gate.allowed) {
       logger.warn(`Refused ${courseCode} → ${dbStatus}: ${gate.blocking.length} debut LEGO(s) without practice`)
       return res.status(409).json({
-        error: `${courseCode} cannot move to ${uiStatus}: ${gate.blocking.length} debut LEGO(s) have no practice phrases (or no USE phrase). Every is_new LEGO needs phrases when it is introduced.`,
+        error: `${courseCode} cannot move to ${uiStatus}: ${gate.blocking.length} debut LEGO(s) have no practice phrase (no BUILD or USE beyond the bare LEGO). Every is_new LEGO needs phrases when it is introduced.`,
         code: 'DEBUT_WITHOUT_PRACTICE',
         blocking: gate.blocking.slice(0, 50).map(describeBlocking),
         blocking_total: gate.blocking.length,
