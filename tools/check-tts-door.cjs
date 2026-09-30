@@ -139,7 +139,7 @@ function findTicketIssuers(files) {
  */
 const CHAIN_USERS = new Set([
   'services/shared/chain-context.cjs', 'services/shared/chain-test-setup.cjs', 'services/shared/door-ticket.cjs',
-  'services/shared/audio-render-entry.cjs', 'services/phases/phase8-audio-v13.cjs', 'services/production-api.cjs', 'services/orchestration/orchestrator.cjs', 'services/voicelab-playground/server.cjs',
+  'services/shared/audio-render-entry.cjs', 'services/shared/audio-intake-entry.cjs', 'services/phases/phase8-audio-v13.cjs', 'services/production-api.cjs', 'services/orchestration/orchestrator.cjs', 'services/voicelab-playground/server.cjs',
   'tools/check-tts-door.cjs',
 ])
 /** Pure: files other than Popty's servers and the entry that touch the chain marker. */
