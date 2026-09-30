@@ -126,7 +126,7 @@ async function fetchAllLegos(supabase, courseCode) {
  * rather than just a count — a block a learner cannot see the reason for is a
  * block nobody can act on.
  */
-function buildMappingTable(legos) {
+function buildMappingTable(legos, { includeComponents = true } = {}) {
   const k2t = new Map();
   const t2k = new Map();
   const add = (k, t, src) => {
@@ -142,6 +142,7 @@ function buildMappingTable(legos) {
   };
   for (const l of legos) {
     add(l.known_text, l.target_text, l.lego_id);
+    if (!includeComponents) continue;
     for (const c of l.components || []) add(c.known, c.target, `${l.lego_id}#c`);
   }
   return { k2t, t2k };
@@ -184,6 +185,15 @@ async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
   const legos = await fetchAllLegos(supabase, courseCode);
   if (!legos.length) throw new Error(`no LEGOs found for ${courseCode}`);
   const table = buildMappingTable(legos);
+  // A LEGO's availability is judged against LEGOs only. A component's known
+  // side is a literal tiling gloss and never flags anything else (Tom,
+  // 2026-07-04: component rows are "exempt from ZUT in known language"; K22,
+  // 2026-09-08: the test is the delivered prompt, not the component words).
+  // Without this, ita_for_eng seed 22's component "speak -> parlano" (inside
+  // "who speak -> che parlano") blocked "to speak -> parlare" from seed 1 on,
+  // so the generator could not write "voglio parlare con te" at seed 1.
+  // Components themselves are still judged against the full table.
+  const legoTable = buildMappingTable(legos, { includeComponents: false });
 
   const introduced = legos.filter(
     (l) => l.seed_number < seedNumber || (l.seed_number === seedNumber && l.lego_index < legoIndex)
@@ -191,7 +201,7 @@ async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
 
   const items = [];
   for (const l of introduced) {
-    const d = determinism(table, l.known_text, l.target_text);
+    const d = determinism(legoTable, l.known_text, l.target_text);
     items.push({
       kind: 'lego',
       legoId: l.lego_id,
