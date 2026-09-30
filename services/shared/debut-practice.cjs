@@ -27,6 +27,12 @@
 // the sentence arrives with the next LEGO; ita_for_eng S0190L01 inside S0190L02U08) says so
 // with carried_by, so a reader can tell a P7 basket from a basket a cut emptied of USE.
 
+// WRITE-TIME GUARD (job #912, Tom 11:35Z: live courses "can't ever move off being alive", so a status
+// gate never fires for them): the DATABASE refuses, at commit, any write on any course that MAKES a
+// debut unpractised — trigger debut_keeps_practice, database/migrations/20260930_debut_practice_guard.sql,
+// the SQL twin of UNPRACTISED below, pinned to it by services/shared/debut-practice-guard.db.test.js.
+// Debuts already empty are grandfathered there and named daily by tools/qa/debut-practice/nightly.cjs.
+
 // What is REPORTED and never blocks: a debut below its full floor but not empty
 // (THIN — canon P10/P23, Kai's ruling that coverage counts stay warnings), a not-new
 // LEGO carrying phrases nobody hears (DARK — P25), and is_new flags that disagree
