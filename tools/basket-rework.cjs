@@ -143,6 +143,12 @@ async function vocabUpTo(course, seed, legoIndex) {
   }
 
   // ── apply ──
+  // This tool writes without recordContentEdit, so it arms the debut-practice exit check itself:
+  // a plan that deletes a debut's last real phrase fails the run (content-edit-log.cjs, job #910).
+  require('../services/shared/content-edit-log.cjs').armDebutPracticeAtExit({
+    identity: { kind: 'service', id: 'basket-rework', label: 'basket-rework', verified: false },
+    courseCode: course, operation: 'basket-rework', scope: { seed_numbers: plan.baskets.map((b) => b.seed) },
+  });
   const snapshot = { applied_at: null, course_code: course, before: [], actions: [] };
   for (const b of plan.baskets) {
     const { data: existing, error } = await sb.from('course_practice_phrases').select('*')

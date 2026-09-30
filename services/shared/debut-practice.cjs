@@ -10,16 +10,23 @@
 // generateLearningScript.ts). So a debut with no USE phrase is presented and then
 // never enters spaced repetition, and a not-new LEGO's basket is never played at all.
 //
-// What BLOCKS (the release gate, the sweep exit check):
+// What BLOCKS (the release gate, the sweep exit check) — ONE thing:
 //   - UNPRACTISED  — a debut whose seed-position floor asks for phrases and which has
-//                    no BUILD or USE row that practises it;
-//   - NO_USE       — a debut whose floor asks for USE and which has none, so it never
-//                    reaches spaced repetition — UNLESS a USE phrase of a later new LEGO
-//                    of the same seed carries it (P7: fragments first, the sentence
-//                    arrives with the next LEGO). ita_for_eng S0190L01 is that case.
+//                    no real practice phrase at all: no BUILD and no USE row beyond the
+//                    bare LEGO itself. Nothing exempts it — not even a later sibling's USE
+//                    that contains it (job #909: that exemption let 49 Irish debuts with
+//                    zero real rows through, e.g. gle S0053L01-L04).
+// BUILD OR USE COUNTS (Tom, 2026-09-30 11:14Z, job #910): "Let's not make an artificial
+// boundary cause meaningful problems in accounting." ita_for_eng S0001L02 parlare has
+// BUILD "voglio parlare" with audio; #906's NO_USE block counted it missing. A debut with
+// BUILD rows and no USE is practised — it is reported (THIN, noUse:true), never blocked.
 // A row whose target IS the bare LEGO never counts — it is the LEGO, not practice
 // of it (phrase-structure.cjs partitionBareLegoPhrases, the same rule the writers use).
-//
+// CARRIED is a REPORT, never an exemption: a BUILD-only debut whose LEGO appears, as whole
+// words, inside a USE phrase of a LATER new LEGO of the same seed (P7 — fragments first,
+// the sentence arrives with the next LEGO; ita_for_eng S0190L01 inside S0190L02U08) says so
+// with carried_by, so a reader can tell a P7 basket from a basket a cut emptied of USE.
+
 // What is REPORTED and never blocks: a debut below its full floor but not empty
 // (THIN — canon P10/P23, Kai's ruling that coverage counts stay warnings), a not-new
 // LEGO carrying phrases nobody hears (DARK — P25), and is_new flags that disagree
@@ -35,6 +42,24 @@ const normPair = (s) => String(s || '').toLowerCase()
   .replace(/\s+/g, ' ').trim();
 
 const legoIdOf = (l) => l.lego_id || `S${String(l.seed_number).padStart(4, '0')}L${String(l.lego_index).padStart(2, '0')}`;
+
+// Whole-word containment on the normalised text: the LEGO's words appear contiguously in the
+// phrase, bounded by spaces or the ends. normalizeForContainment already folds punctuation.
+// Scripts written without spaces (Chinese, Japanese, Thai) have no word boundary to test, so
+// there the containment is plain.
+const UNSPACED_SCRIPT = /[\u0E00-\u0E7F\u3040-\u30FF\u3400-\u9FFF]/;
+function containsWholeWords(phrase, lego) {
+  const p = ` ${phrase} `.replace(/\s+/g, ' ');
+  const l = String(lego || '').replace(/\s+/g, ' ').trim();
+  if (l === '') return false;
+  return UNSPACED_SCRIPT.test(l) ? p.includes(l) : p.includes(` ${l} `);
+}
+
+/** The first USE phrase of a LATER new LEGO of the same seed that contains this LEGO as whole words. */
+function carrierOf(lego, seedUses) {
+  const lt = normalizeForContainment(lego.target_text || '');
+  return (seedUses || []).find((u) => u.lego_index > lego.lego_index && containsWholeWords(u.t, lt)) || null;
+}
 
 /**
  * Pure audit of one course.
@@ -84,19 +109,12 @@ function auditDebutPractice(legos, phrases) {
     debuts += 1;
     const { minBuild, minUse } = phraseFloor(l.seed_number, l.lego_index);
     entry.minBuild = minBuild; entry.minUse = minUse;
-    // CARRIED: a debut that cannot yet stand in a complete sentence of its own is practised
-    // with BUILD fragments and reaches spaced repetition inside the USE phrases of a LATER new
-    // LEGO of the same seed — Kai's P7 remedy, and ita_for_eng S0190L01's real shape: "do you
-    // mind if I ask you" has no complete sentence until "questions" (L02) is taught, and L02's
-    // seed-sentence USE carries it. Only a later sibling counts: an earlier one cannot contain it.
-    const lt = normalizeForContainment(l.target_text || '');
-    const carrier = use === 0 && lt
-      ? (seedUse.get(l.seed_number) || []).find((u) => u.lego_index > l.lego_index && u.t.includes(lt))
-      : null;
+    // CARRIED (reported, never exempting — see the header): whole-word containment, so a
+    // debut "a" is not carried by "cat", and only a debut that already has real practice.
+    const carrier = use === 0 && build > 0 ? carrierOf(l, seedUse.get(l.seed_number)) : null;
     if (carrier) entry.carried_by = carrier.id || `L${String(carrier.lego_index).padStart(2, '0')}`;
-    if (minBuild + minUse > 0 && build + use === 0 && !carrier) blocking.push({ ...entry, reason: 'UNPRACTISED' });
-    else if (minUse > 0 && use === 0 && !carrier) blocking.push({ ...entry, reason: 'NO_USE' });
-    else if (build < minBuild || use < minUse) thin.push(entry);
+    if (minBuild + minUse > 0 && build + use === 0) blocking.push({ ...entry, reason: 'UNPRACTISED' });
+    else if (build < minBuild || use < minUse) thin.push(minUse > 0 && use === 0 ? { ...entry, noUse: true } : entry);
   }
 
   // is_new against first appearance: one debut per distinct known/target pair, at its first row.
@@ -173,7 +191,7 @@ const LEARNER_FACING = new Set(['beta', 'released', 'live']);
 
 /**
  * THE RELEASE GATE. A course cannot be moved to beta or live while any debut LEGO
- * is unpractised or has no USE phrase. Demotion (to draft/testing) is never gated.
+ * has no real practice phrase (BUILD or USE, never the bare LEGO). Demotion (to draft/testing) is never gated.
  * Returns {allowed, blocking, thinCount, darkCount}.
  */
 async function releaseGate(supabase, courseCode, targetStatus) {
@@ -190,12 +208,10 @@ async function releaseGate(supabase, courseCode, targetStatus) {
 }
 
 function describeBlocking(b) {
-  const why = b.reason === 'UNPRACTISED'
-    ? 'no practice phrase at all'
-    : `no USE phrase (${b.build} BUILD${b.bare ? `, ${b.bare} bare-LEGO row(s) not counted` : ''}) — never enters spaced repetition`;
+  const why = `no practice phrase at all${b.bare ? ` (${b.bare} bare-LEGO row(s) not counted)` : ''}`;
   return `${b.lego_id} "${b.known_text}" → "${b.target_text}": ${why}`;
 }
 
 module.exports = {
-  auditDebutPractice, checkCourseDebutPractice, releaseGate, describeBlocking, normPair, LEARNER_FACING,
+  auditDebutPractice, checkCourseDebutPractice, releaseGate, describeBlocking, normPair, LEARNER_FACING, containsWholeWords,
 };
