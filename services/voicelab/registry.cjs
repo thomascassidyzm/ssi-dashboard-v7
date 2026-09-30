@@ -737,11 +737,10 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       .filter((v) => v.is_active !== false)
       .filter((v) => castable(v))
       .filter((v) => (v.languages || []).some((l) => sameLang(l, base)))
-      // OUR OWN CLONES STAY LISTED EVEN WHEN CAST (Tom, 2026-09-20: Aran's
-      // clone cast as Second Male must still be offerable as Guide). Every
-      // other voice drops off the list once cast, so the picker isn't cluttered
-      // with voices that have nothing left to offer.
-      .filter((v) => owned.has(v.voice_id) || !roles.some((r) => r.voice_id === v.voice_id))
+      // EVERY CAST VOICE STAYS LISTED (Tom, 2026-09-30: Charlotte was cast
+      // Female but absent from the Cartesia list). This used to drop every
+      // non-owned voice once it held a role; a cast voice vanishing from the
+      // list it was cast from is the bug. The screen marks which slot holds it.
       // `pace` rides along on the candidate too, so the numbers are visible on
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
@@ -910,10 +909,6 @@ function cartesiaCandidates (code, catalogue, roles) {
       owned: Boolean(v.owner),
       ...catalogueFacts(v),
     }))
-    // OUR OWN CLONES STAY LISTED EVEN WHEN CAST — see the matching guard on the
-    // registered-voice path above; the same clone can reach the estate through
-    // either path depending on whether it has picked up a `voices` row yet.
-    .filter((c) => c.owned || !roles.some((r) => r.voice_id === c.voiceId))
 }
 
 /**

@@ -31,7 +31,7 @@ import { planCast, commitCast } from './stagedCast'
 import { planPicks, commitPicks } from './stagedPicks'
 import {
   ROLES, SLOT_ORDER, isFixedEnglish, FIXED_ENGLISH,
-  shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel,
+  shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel, castRolesOf,
   stageRole, stageClear, unstageRole, stagedCount, stagedEntry, isStagedOn as candidateIsStagedOn,
   stageHouseEnglish, castFacts, podFacts, rowSummary, sortRows, labVoiceId, providerLabel,
 } from './casting'
@@ -478,6 +478,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
                     <span class="cast-voice-main">
                       <span class="cast-voice-name">{{ cloneLabel(c) }}</span>
                       <span v-if="c.owned" class="ui-pill ui-hue-quiet">our clone</span>
+                      <span v-for="r in castRolesOf(facts, c.voiceId)" :key="r.key" class="ui-pill cast-is-cast">cast: {{ r.label }}</span>
                       <span class="cast-sub">
                         {{ c.gender ? (c.gender === 'f' ? 'female' : 'male') : 'gender not listed' }}
                         · {{ c.accent ? c.accent.replace(/-/g, ' ') : 'accent not listed' }}<template v-if="c.country"> · {{ c.country }}</template>
@@ -595,6 +596,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
 .cast-voice:hover { background: var(--surface-2); }
 .cast-voice-main { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 0.05rem; }
 .cast-voice-name { font-size: 0.9rem; }
+.cast-is-cast { border: 1px solid #ec4899; color: #ec4899; }
 .cast-voice-main .ui-pill { align-self: flex-start; font-size: 0.65rem; }
 .cast-voice-desc { font-size: 0.75rem; color: var(--muted); opacity: 0.85; }
 .cast-targets { display: flex; gap: 0.25rem; flex: none; }
