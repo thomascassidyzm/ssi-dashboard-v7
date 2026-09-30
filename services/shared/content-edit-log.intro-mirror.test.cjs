@@ -15,12 +15,14 @@ function child({ checkExit, kind = 'service', operation = 'lego-edit', scope = {
   const dir = fs.mkdtempSync(path.join(process.env.CS_SCRATCH || os.tmpdir(), 'intro-mirror-'))
   const stub = path.join(dir, 'check.cjs')
   fs.writeFileSync(stub, `console.log('stub check saw', process.argv.slice(2).join(' ')); process.exit(${checkExit})`)
+  // the debut-practice exit check (armed by the same edit) is stubbed clean: this file tests the mirror
+  const okStub = path.join(dir, 'debut-ok.cjs'); fs.writeFileSync(okStub, 'process.exit(0)')
   const prog = `
     const { recordContentEdit } = require(${JSON.stringify(LOG)});
     const supabase = { from: () => ({ insert: () => ({ select: () => ({ single: async () => ({ data: { id: 'evt' }, error: null }) }) }) }) };
     recordContentEdit(supabase, { identity: { kind: ${JSON.stringify(kind)}, id: 'x', label: 'x', verified: true }, courseCode: 'ita_for_eng', surface: 't', operation: ${JSON.stringify(operation)}, scope: ${JSON.stringify(scope)} })
       .then(() => process.exit(0));`
-  const r = spawnSync(process.execPath, ['-e', prog], { encoding: 'utf8', env: { ...process.env, INTRO_MIRROR_CHECK_SCRIPT: stub, VITEST: '', ...env } })
+  const r = spawnSync(process.execPath, ['-e', prog], { encoding: 'utf8', env: { ...process.env, INTRO_MIRROR_CHECK_SCRIPT: stub, DEBUT_PRACTICE_CHECK_SCRIPT: okStub, VITEST: '', ...env } })
   return { code: r.status, out: r.stdout + r.stderr }
 }
 

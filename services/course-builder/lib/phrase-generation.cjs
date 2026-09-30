@@ -175,6 +175,22 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
   const { timeout = DEFAULT_TIMEOUT_MS, proposedLego, gate: runGate = true } = opts;
   const { prompt: basePrompt, inventory, lego, seed } = await buildPrompt(supabase, courseCode, seedNumber, Number(legoIndex), { proposedLego });
 
+  // A NOT-NEW LEGO GETS NO PHRASES (Tom, 2026-09-30; canon P25). The player builds
+  // a round only for an is_new LEGO, so a basket written under a not-new one is never
+  // heard — and the write door (POST /api/v2/phrases) refuses it anyway. Refuse here,
+  // before paying for a model call: phrases worth drilling go under a NEW LEGO.
+  if (lego && lego.is_new === false && !lego.proposed) {
+    return {
+      courseCode, seedNumber, legoIndex: Number(legoIndex), legoId: lego.lego_id,
+      legoKnown: lego.known_text, legoTarget: lego.target_text,
+      seedKnown: seed?.known_text || null, seedTarget: seed?.target_text || null,
+      model: null, promptChars: 0, elapsedMs: 0, build: [], use: [],
+      gate: { overallPass: false, failingGates: ['notNew'], notNew: { reason: 'is_new=false: this LEGO has no introduction and its basket is never played (P25) — write phrases under a new LEGO instead' } },
+      score: null, declaration: null, declarationCheck: null, declarationPath: null,
+      blocked: true, attempts: [],
+    };
+  }
+
   // STOP AND SURFACE, before any model call. An unruled course whose LEGO or
   // seed carries a feature that needs a staged introduction (separable verbs
   // are the first) is not generated for: the flag goes to course_qa_flags for

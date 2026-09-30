@@ -138,26 +138,24 @@ function usesBuildUseFormat(lego) {
 /**
  * Validate BUILD/USE phrase structure per ralph-methodology.md.
  */
+/**
+ * The seed-position phrase floor for a DEBUT LEGO — the one ramp every write
+ * path and the release gate read (services/shared/debut-practice.cjs), so the
+ * number a builder is held to at submission and the number a course is held
+ * to at release cannot drift apart. S1L1 needs nothing (there is nothing to
+ * combine it with yet); the rest of S1-S3 one of each; S4 on 3 BUILD + 5 USE.
+ */
+function phraseFloor(seedNumber, legoIndex) {
+  if (seedNumber === 1 && legoIndex === 1) return { minBuild: 0, minUse: 0 };
+  if (seedNumber <= 3) return { minBuild: 1, minUse: 1 };
+  return { minBuild: 3, minUse: 5 };
+}
+
 function checkBuildUsePhrases(lego, courseCode, seedNumber) {
   const charsPerSyllable = getCharsPerSyllable(courseCode);
 
   // Graduated requirements
-  let minBuild = 3;
-  let minUse = 5;
-
-  if (seedNumber === 1 && lego.idx === 1) {
-    minBuild = 0;
-    minUse = 0;
-  } else if (seedNumber === 1) {
-    minBuild = 1;
-    minUse = 1;
-  } else if (seedNumber <= 3) {
-    minBuild = 1;
-    minUse = 1;
-  } else if (seedNumber <= 5) {
-    minBuild = 3;
-    minUse = 5;
-  }
+  const { minBuild, minUse } = phraseFloor(seedNumber, lego.idx);
 
   const buildRaw = lego.build || [];
   const useRaw = lego.use || [];
@@ -334,6 +332,7 @@ module.exports = {
   isBareLegoPhrase,
   partitionBareLegoPhrases,
   checkBuildUsePhrases,
+  phraseFloor,
   getMeaningfulComponents,
   generateBuildupPhrases,
 };

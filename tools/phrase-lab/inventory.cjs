@@ -107,7 +107,7 @@ async function fetchAllLegos(supabase, courseCode) {
   for (;;) {
     const { data, error } = await supabase
       .from('course_legos')
-      .select('lego_id,seed_number,lego_index,type,known_text,target_text,components')
+      .select('lego_id,seed_number,lego_index,type,is_new,known_text,target_text,components')
       .eq('course_code', courseCode)
       .order('seed_number', { ascending: true })
       .order('lego_index', { ascending: true })

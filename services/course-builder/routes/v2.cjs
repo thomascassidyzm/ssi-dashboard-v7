@@ -724,15 +724,20 @@ module.exports = function(ctx) {
 
         // 3. Check vocab violations — scoped to vocabulary available at this seed
         // Load vocab for this seed (cached per-seed within request to avoid redundant queries)
-        if (!vocabBySeed.has(seed_number)) {
+        const vocabKey = `${seed_number}:${lego_index}`;
+        if (!vocabBySeed.has(vocabKey)) {
           // loadTranslationVocab uses .lt (strictly less than) — prior seeds only
           const seedVocab = await loadTranslationVocab(ctx, courseCode, seed_number);
-          // Add current seed's LEGOs (already finalized in course_legos)
+          // Add this seed's LEGOs UP TO AND INCLUDING this one — never a later
+          // sibling (canon P2; seed-complete.cjs accumulates in idx order for
+          // exactly this). Adding the whole seed let S0190L01's phrases lean on
+          // "domande", its own seed's L02 (job #906, 2026-09-30).
           const { data: currentSeedLegos } = await ctx.supabase
             .from('course_legos')
             .select('target_text, type, components')
             .eq('course_code', courseCode)
-            .eq('seed_number', seed_number);
+            .eq('seed_number', seed_number)
+            .lte('lego_index', lego_index);
           for (const l of currentSeedLegos || []) {
             extractVocab(l.target_text, chinese).forEach(v => seedVocab.add(v));
             if (l.type === 'M' && l.components) {
@@ -741,9 +746,9 @@ module.exports = function(ctx) {
               }
             }
           }
-          vocabBySeed.set(seed_number, seedVocab);
+          vocabBySeed.set(vocabKey, seedVocab);
         }
-        const vocabSet = vocabBySeed.get(seed_number);
+        const vocabSet = vocabBySeed.get(vocabKey);
 
         const allPhrases = [
           ...build.map(p => ({ target: p.target_text || p.target })),

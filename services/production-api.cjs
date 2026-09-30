@@ -12,6 +12,7 @@ const { normalizeForAudio } = require('./shared/text-normalize.cjs')
 const { isPunctuationOnly } = require('./shared/text-classification.cjs')
 const { identity: buildIdentity } = require('./shared/build-identity.cjs')
 const { fetchAuditStats } = require('./shared/audit-stats.cjs')
+const { releaseGate, describeBlocking } = require('./shared/debut-practice.cjs')
 
 const logger = createLogger('ProductionAPI')
 
@@ -2704,6 +2705,25 @@ app.post('/api/production/:courseCode/status', async (req, res) => {
     // is enforced in the database, so it holds for a hand-written UPDATE too —
     // which is how four draft courses were served as beta for a month while
     // this endpoint's gate, standing right here, never saw the write.
+    //
+    // ONE AUTOMATIC CONTENT GATE DOES STAND HERE, and it is not the manual gate
+    // above come back: it reads the course and needs nobody to sign anything.
+    // Tom, 2026-09-30: a debut LEGO (is_new=true) NEEDS practice phrases, and a
+    // course cannot be released while one lacks them. Moving to beta or live is
+    // refused (409) while any debut is unpractised or has no USE phrase at its
+    // seed-position floor — services/shared/debut-practice.cjs holds the rule and
+    // its reasons. Demotion is never gated.
+    const gate = await releaseGate(supabaseClient.getClient(), courseCode, dbStatus)
+    if (!gate.allowed) {
+      logger.warn(`Refused ${courseCode} → ${dbStatus}: ${gate.blocking.length} debut LEGO(s) without practice`)
+      return res.status(409).json({
+        error: `${courseCode} cannot move to ${uiStatus}: ${gate.blocking.length} debut LEGO(s) have no practice phrases (or no USE phrase). Every is_new LEGO needs phrases when it is introduced.`,
+        code: 'DEBUT_WITHOUT_PRACTICE',
+        blocking: gate.blocking.slice(0, 50).map(describeBlocking),
+        blocking_total: gate.blocking.length,
+        fix: `node tools/check-debut-practice.cjs ${courseCode} lists them; node tools/course-optimization/regenerate-debut-practice.cjs ${courseCode} writes them through phrase v3.`,
+      })
+    }
     const updatedCourse = await supabaseClient.updateCourseStatus(courseCode, dbStatus, newAppStatus)
     logger.info(`Updated ${courseCode} status to ${dbStatus} (new_app_status: ${newAppStatus})`)
 
