@@ -191,13 +191,13 @@ const TOTAL_DAILY_CAP_CHARS = 100_000
  * THE TOM-APPROVED RUN TIER (job #913, Tom 2026-09-30 11:38Z: "If other people want
  * to generate audio, we still have 100,000 character cap. But if I am approving a
  * run, we can just go ahead and do it. It would probably be sensible to have a cap
- * at something like maybe 300,000"). A tts_spend_total_cap_raises row naming a job
+ * at something like maybe 300,000"; raised to 1,000,000 by Tom's ruling r-2026-09-30-audio-automatic-cap-stays-100-000: automatic stays 100k for everyone, a run Tom approves may go to 1M/day"). A tts_spend_total_cap_raises row naming a job
  * ('#913') is Tom's approval for that one run: its calls spend from their own
  * allowance, never above this ceiling, and the automatic 100k is counted without
  * them. Nothing — approved or not — takes a UTC day past the ceiling. Written only
  * by tools/tts-cap.cjs approve.
  */
-const TOTAL_DAILY_CEILING_CHARS = 300_000
+const TOTAL_DAILY_CEILING_CHARS = 1_000_000
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 

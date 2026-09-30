@@ -77,9 +77,9 @@ describe('the 100,000-char daily total cap', () => {
   })
 })
 
-describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 100k, an approved run up to 300k)', () => {
+describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 100k, an approved run up to 1M, ruling 2026-09-30)', () => {
   const until = t0 + 5 * 86400e3
-  const approve = (store, job, capChars = 300000, by = 'Tom (in chat)') => store.totalCapRaises.push({ capChars, by, why: 'Irish gaps render', until, at: t0, job })
+  const approve = (store, job, capChars = 1000000, by = 'Tom (in chat)') => store.totalCapRaises.push({ capChars, by, why: 'Irish gaps render', until, at: t0, job })
   it('an approved job runs past 100k on its own allowance; everyone else still gets their automatic 100k', async () => {
     const { call, store } = setup()
     approve(store, '#913')
@@ -88,17 +88,17 @@ describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 100k, a
     await expect(call('azure', word(2000, 'c'), { job: 'someone else' })).rejects.toThrow(/daily audio cap reached; only Tom can approve more/)
     await call('cartesia', word(40000, 'd'), { job: '#913·A' })
   })
-  it('nothing passes the 300k ceiling, approved or not, and an approval cannot name more than the ceiling', async () => {
+  it('nothing passes the 1M ceiling, approved or not, and an approval cannot name more than the ceiling', async () => {
     const { call, store } = setup()
-    approve(store, '#913', 900000)
-    await call('cartesia', word(290000, 'a'), { job: '#913' })
+    approve(store, '#913', 9000000)
+    await call('cartesia', word(990000, 'a'), { job: '#913' })
     await expect(call('cartesia', word(20000, 'b'), { job: '#913' })).rejects.toThrow(/hard daily ceiling/)
     await expect(call('azure', word(20000, 'c'), { job: 'other' })).rejects.toThrow(/hard daily ceiling/)
   })
   it('the approval is the job it names only (#9130 is not #913), and must be signed by Tom', async () => {
     const { call, store } = setup()
     approve(store, '#913')
-    approve(store, '#77', 300000, 'Dom')
+    approve(store, '#77', 1000000, 'Dom')
     await call('cartesia', word(100000, 'a'), { job: '#9130' })
     await expect(call('cartesia', 'hi', { job: '#9130' })).rejects.toThrow(/daily audio cap reached/)
     await expect(call('cartesia', 'hi', { job: '#77' })).rejects.toThrow(/daily audio cap reached/)

@@ -17,14 +17,14 @@
  *
  *   node tools/tts-cap.cjs status
  *   TOM_SAID_RAISE=yes node tools/tts-cap.cjs raise <capChars> <days<=31> "<why, in Tom's words>"
- *   TOM_SAID_APPROVE=yes node tools/tts-cap.cjs approve "#NNN" <capChars<=300000> <days<=31> "<why, in Tom's words>"
+ *   TOM_SAID_APPROVE=yes node tools/tts-cap.cjs approve "#NNN" <capChars<=1000000> <days<=31> "<why, in Tom's words>"
  */
 const fs = require('fs')
 const os = require('os')
 const path = require('path')
 const { execFileSync } = require('child_process')
 
-const CEILING = 300000
+const CEILING = 1000000
 const signed = (t = '') => `${t}by ~* '^\\s*tom\\M' and nullif(btrim(${t}why), '') is not null and ${t}until > now() and ${t}until <= ${t}at + interval '31 days'`
 
 function psql(sql) {
