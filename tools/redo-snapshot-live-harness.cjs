@@ -16,6 +16,7 @@
 
 require('dotenv').config()
 const { createClient } = require('@supabase/supabase-js')
+const { wipeSeedTeaching } = require('../services/shared/wipe-seed-teaching.cjs')
 const {
   snapshotSeeds, latestSnapshots, restoreSnapshot, formatSnapshotForBrief,
 } = require('../services/course-builder/lib/redo-snapshot.cjs')
@@ -31,8 +32,7 @@ function check(label, cond, detail = '') {
 }
 
 async function teardown() {
-  await sb.from('course_practice_phrases').delete().eq('course_code', COURSE)
-  await sb.from('course_legos').delete().eq('course_code', COURSE)
+  await wipeSeedTeaching(sb, COURSE, null)
   await sb.from('course_seeds').delete().eq('course_code', COURSE)
   await sb.from('seed_redo_snapshots').delete().eq('course_code', COURSE)
   await sb.from('courses').delete().eq('course_code', COURSE)
@@ -84,8 +84,7 @@ async function main() {
     JSON.stringify(snapshots[0]))
 
   console.log('\n2. The redo endpoint\'s destructive step')
-  await sb.from('course_practice_phrases').delete().eq('course_code', COURSE).eq('seed_number', SEED)
-  await sb.from('course_legos').delete().eq('course_code', COURSE).eq('seed_number', SEED)
+  await wipeSeedTeaching(sb, COURSE, [SEED])
   await sb.from('course_seeds').update({ decomposed_at: null, approved_at: null, flagged_at: null })
     .eq('course_code', COURSE).eq('seed_number', SEED)
   const { count: goneLegos } = await sb.from('course_legos').select('id', { count: 'exact', head: true })

@@ -12,6 +12,7 @@ const { spawnInTerminal } = require('../lib/agent-spawner.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { snapshotSeeds, listSnapshots, restoreSnapshot } = require('../lib/redo-snapshot.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
+const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 
 /**
  * Names the first seed-grid read that cannot be trusted (errored or no data
@@ -176,16 +177,9 @@ module.exports = function (ctx) {
           })
         : null;
 
-      // Execute the wipe
-      const { count: phrasesDeleted } = await ctx.supabase
-        .from('course_practice_phrases').delete({ count: 'exact' })
-        .eq('course_code', courseCode)
-        .gte('seed_number', from_seed).lte('seed_number', to_seed);
-
-      const { count: legosDeleted } = await ctx.supabase
-        .from('course_legos').delete({ count: 'exact' })
-        .eq('course_code', courseCode)
-        .gte('seed_number', from_seed).lte('seed_number', to_seed);
+      // Execute the wipe — phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912)
+      const { phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
+        await wipeSeedTeaching(ctx.supabase, courseCode, rangeSeeds);
 
       const { count: seedsReset } = await ctx.supabase
         .from('course_seeds').update({ decomposed_at: null, approved_at: null, last_edit_event_id: eventId }, { count: 'exact' })
@@ -248,13 +242,8 @@ module.exports = function (ctx) {
       let totalSeedsReset = 0;
 
       for (const seedNum of seedNumbers) {
-        const { count: phrasesDeleted } = await ctx.supabase
-          .from('course_practice_phrases').delete({ count: 'exact' })
-          .eq('course_code', courseCode).eq('seed_number', seedNum);
-
-        const { count: legosDeleted } = await ctx.supabase
-          .from('course_legos').delete({ count: 'exact' })
-          .eq('course_code', courseCode).eq('seed_number', seedNum);
+        const { phrases_deleted: phrasesDeleted, legos_deleted: legosDeleted } =
+          await wipeSeedTeaching(ctx.supabase, courseCode, [seedNum]);
 
         const { count: seedsReset } = await ctx.supabase
           .from('course_seeds').update({ decomposed_at: null, approved_at: null, flagged_at: null, last_edit_event_id: eventId }, { count: 'exact' })

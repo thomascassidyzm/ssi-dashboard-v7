@@ -33,6 +33,7 @@ const { Router } = require('express');
 
 const { isChinese } = require('../lib/language-config.cjs');
 const { extractVocab } = require('../lib/text-normalization.cjs');
+const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 
 const SELF_URL = process.env.COURSE_BUILDER_SELF_URL
   || `http://localhost:${process.env.COURSE_BUILDER_PORT || 3471}`;
@@ -277,8 +278,7 @@ module.exports = function(ctx) {
 
       // ── Restore helper (best-effort transactional rollback) ────────────────
       const restore = async () => {
-        await ctx.supabase.from('course_practice_phrases').delete().eq('course_code', courseCode).eq('seed_number', seed_number);
-        await ctx.supabase.from('course_legos').delete().eq('course_code', courseCode).eq('seed_number', seed_number);
+        await wipeSeedTeaching(ctx.supabase, courseCode, [seed_number]);
         if (snapshot.legos.length) await ctx.supabase.from('course_legos').insert(snapshot.legos);
         if (snapshot.phrases.length) await ctx.supabase.from('course_practice_phrases').insert(snapshot.phrases);
         await ctx.supabase
@@ -311,8 +311,7 @@ module.exports = function(ctx) {
         .eq('seed_number', seed_number);
       if (updErr) throw new Error(`Failed to update seed target: ${updErr.message}`);
 
-      await ctx.supabase.from('course_practice_phrases').delete().eq('course_code', courseCode).eq('seed_number', seed_number);
-      await ctx.supabase.from('course_legos').delete().eq('course_code', courseCode).eq('seed_number', seed_number);
+      await wipeSeedTeaching(ctx.supabase, courseCode, [seed_number]);
 
       // ── Re-insert the new breakdown through the existing gate path ──────────
       // /seed/complete runs tiling/ZUT/vocab/count gates atomically, assigns

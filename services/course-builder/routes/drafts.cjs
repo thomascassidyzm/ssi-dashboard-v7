@@ -9,6 +9,7 @@ const { normalizePhrase, normalizeForZUT, normalizeForStorage, normalizeForConta
 const { makePhraseId, computePhraseRole, computeLegoPosition, usesBuildUseFormat, generateBuildupPhrases, partitionBareLegoPhrases } = require('../lib/phrase-structure.cjs');
 const { loadTranslationVocab, invalidateVocabCache } = require('../lib/vocab-cache.cjs');
 const { loadGenderVariantLicence, isLicensedGenderVariant } = require('../lib/validation.cjs');
+const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 
 module.exports = function(ctx) {
   const router = Router();
@@ -307,20 +308,9 @@ Submit each fixed seed: curl -s -X POST "http://localhost:3471/api/seed/complete
         : null;
 
       if (draftSeedList.length > 0) {
-        // Delete phrases first (FK dependency)
-        const { error: delPhraseErr } = await ctx.supabase
-          .from('course_practice_phrases')
-          .delete()
-          .eq('course_code', courseCode)
-          .in('seed_number', draftSeedList);
-        if (delPhraseErr) console.warn(`  Warning: phrase cleanup: ${delPhraseErr.message}`);
-
-        const { error: delLegoErr } = await ctx.supabase
-          .from('course_legos')
-          .delete()
-          .eq('course_code', courseCode)
-          .in('seed_number', draftSeedList);
-        if (delLegoErr) console.warn(`  Warning: LEGO cleanup: ${delLegoErr.message}`);
+        // Phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912).
+        try { await wipeSeedTeaching(ctx.supabase, courseCode, draftSeedList); }
+        catch (e) { console.warn(`  Warning: seed cleanup: ${e.message}`); }
 
         console.log(`  Cleaned old LEGOs/phrases for ${draftSeedList.length} drafted seeds`);
       }

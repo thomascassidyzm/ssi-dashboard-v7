@@ -1825,7 +1825,10 @@ end tell`;
         await supabase.from('course_qa_flags').delete().in('id', flagIds);
       }
       if (phraseIds.length > 0) {
-        await supabase.from('course_practice_phrases').delete().in('id', phraseIds);
+        // The database refuses a delete that would leave a debut LEGO with no practice (job #912);
+        // say so rather than report the phrases gone and advance the pipeline over them.
+        const { error: delPhraseErr } = await supabase.from('course_practice_phrases').delete().in('id', phraseIds);
+        if (delPhraseErr) throw delPhraseErr;
       }
 
       console.log(`[QA-APPROVE] Deleted ${phraseIds.length} flagged phrases, ${flagIds.length} flags for ${courseCode}`);

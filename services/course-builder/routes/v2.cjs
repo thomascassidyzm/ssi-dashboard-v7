@@ -24,6 +24,7 @@ const { getBuildProgress, startBuildManager } = require('../lib/build-manager.cj
 const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
+const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 
 // ---------------------------------------------------------------------------
 // Validation-sweep helpers (extracted from the /v2/validate loop so the sweep
@@ -454,19 +455,9 @@ module.exports = function(ctx) {
       // STEP 5: Clean up old LEGOs/phrases for drafted seeds, then write LEGOs only (NO phrases)
       const draftSeedList = [...draftedSeedNumbers];
       if (draftSeedList.length > 0) {
-        const { error: delPhraseErr } = await ctx.supabase
-          .from('course_practice_phrases')
-          .delete()
-          .eq('course_code', courseCode)
-          .in('seed_number', draftSeedList);
-        if (delPhraseErr) console.warn(`  Warning: phrase cleanup: ${delPhraseErr.message}`);
-
-        const { error: delLegoErr } = await ctx.supabase
-          .from('course_legos')
-          .delete()
-          .eq('course_code', courseCode)
-          .in('seed_number', draftSeedList);
-        if (delLegoErr) console.warn(`  Warning: LEGO cleanup: ${delLegoErr.message}`);
+        // Phrases and LEGOs in one transaction (wipe-seed-teaching.cjs, job #912).
+        try { await wipeSeedTeaching(ctx.supabase, courseCode, draftSeedList); }
+        catch (e) { console.warn(`  Warning: seed cleanup: ${e.message}`); }
 
         console.log(`  Cleaned old LEGOs/phrases for ${draftSeedList.length} drafted seeds`);
       }
