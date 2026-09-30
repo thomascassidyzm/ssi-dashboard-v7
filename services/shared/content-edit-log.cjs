@@ -54,7 +54,7 @@ function assertIdentity(identity) {
  * @returns {Promise<string>} event id
  */
 async function recordContentEdit(supabase, {
-  identity, courseCode, surface, operation, scope = {}, detail = {}, requestId = null,
+  identity, courseCode, surface, operation, scope = {}, detail = {}, requestId = null, fromRequest = false,
 } = {}) {
   assertIdentity(identity);
   if (!courseCode) throw new Error('recordContentEdit() needs a courseCode');
@@ -81,7 +81,7 @@ async function recordContentEdit(supabase, {
 
   if (error) throw new Error(`content_edit_events insert failed: ${error.message}`);
   armIntroMirrorAtExit({ identity, courseCode, operation, scope });
-  armDebutPracticeAtExit({ identity, courseCode, operation, scope });
+  if (!fromRequest) armDebutPracticeAtExit({ identity, courseCode, operation, scope });
   return data.id;
 }
 
@@ -146,29 +146,39 @@ function runIntroMirrorAtExit() {
 // reached spaced repetition, and nothing said so. The sweep guarded its DELETES ("keeps at least
 // 6") but not the source basket of its MOVES — a guard each sweep has to remember is not a guard.
 //
-// So the rule is wired here, once, for every tools/ sweep: the moment a SERVICE identity records an
-// edit naming seeds, LEGOs or phrases, ONE exit hook is armed for that course; at exit it runs
-// tools/check-debut-practice.cjs --strict over every seed the process named, and if any debut LEGO
-// there is left unpractised or without a USE phrase it prints them and forces exit code 2 — the
-// same shape as the intro mirror above. The sweep must then regenerate the basket
-// (tools/course-optimization/regenerate-debut-practice.cjs) or report the gap. There is no opt-out:
-// "must regenerate or flag" is the ruling, and a failed exit IS the flag. HTTP routes carry
-// human/agent identities and are covered by the release gate (production-api status route) and
-// the standing checker instead. Never armed under vitest.
-const debutScopes = new Map(); // courseCode -> Set(seed_number)
+// So the rule is wired here, once, for every process that records an edit OUTSIDE an HTTP request
+// (every tools/ sweep, whatever identity it names — job #910 widened it from service identities
+// only): ONE exit hook is armed for that course; at exit it runs tools/check-debut-practice.cjs
+// --strict over every seed the process named — or over the WHOLE course when the event names no
+// seed, LEGO or phrase id (job #910: a seedless scope used to arm nothing) — and if any debut LEGO
+// there is left with no real practice phrase (BUILD or USE — Tom 11:14Z, job #910) it prints them
+// and forces exit code 2 — the same shape as the intro mirror above. The sweep must then regenerate
+// the basket (tools/course-optimization/regenerate-debut-practice.cjs) or report the gap. There is
+// no opt-out: "must regenerate or flag" is the ruling, and a failed exit IS the flag.
+//
+// WHAT IT CANNOT SEE, plainly: (1) HTTP routes — the server never exits, so they record with
+// fromRequest and are covered only by the release gate (production-api status route) and the
+// standing checker; (2) any process that deletes practice rows without calling recordContentEdit at
+// all (raw SQL, psql, a script that skips the logger — tools/basket-rework.cjs arms this hook itself
+// for that reason; tools/course-optimization/duplicate-course-teaching-layer-2026-09-02.cjs does not). For those
+// the backstop is `node tools/check-debut-practice.cjs --all`. Never armed under vitest.
+const debutScopes = new Map(); // courseCode -> Set(seed_number) | 'ALL'
 let debutArmed = false;
 const SEED_FROM_ANY_ID = /S(\d{4})L\d{2}/;
 function armDebutPracticeAtExit({ identity, courseCode, operation, scope }) {
   if (process.env.VITEST) return;
-  if (!identity || identity.kind !== 'service') return;
+  if (!identity) return;
   if (/unapprove|approve|audio|link|flag/i.test(String(operation))) return;
   const seeds = new Set((scope?.seed_numbers || []).map(Number).filter(Number.isFinite));
   for (const id of [...(scope?.lego_ids || []), ...(scope?.phrase_ids || [])]) {
     const m = SEED_FROM_ANY_ID.exec(String(id)); if (m) seeds.add(Number(m[1]));
   }
-  if (!seeds.size) return;
-  if (!debutScopes.has(courseCode)) debutScopes.set(courseCode, new Set());
-  for (const s of seeds) debutScopes.get(courseCode).add(s);
+  const held = debutScopes.get(courseCode);
+  if (!seeds.size || held === 'ALL') debutScopes.set(courseCode, 'ALL');
+  else {
+    if (!held) debutScopes.set(courseCode, new Set());
+    for (const s of seeds) debutScopes.get(courseCode).add(s);
+  }
   if (debutArmed) return;
   debutArmed = true;
   process.on('exit', runDebutPracticeAtExit);
@@ -178,14 +188,15 @@ function runDebutPracticeAtExit() {
   const path = require('path');
   const script = process.env.DEBUT_PRACTICE_CHECK_SCRIPT || path.join(__dirname, '..', '..', 'tools', 'check-debut-practice.cjs');
   for (const [courseCode, seeds] of debutScopes) {
-    const list = [...seeds].sort((a, b) => a - b).join(',');
-    const r = spawnSync(process.execPath, [script, courseCode, '--seeds', list, '--strict'], { encoding: 'utf8', timeout: 120000 });
+    const list = seeds === 'ALL' ? 'ALL' : [...seeds].sort((a, b) => a - b).join(',');
+    const scopeArgs = seeds === 'ALL' ? [] : ['--seeds', list];
+    const r = spawnSync(process.execPath, [script, courseCode, ...scopeArgs, '--strict'], { encoding: 'utf8', timeout: 300000 });
     if (r.status === 0) {
       process.stderr.write(`[debut-practice] ${courseCode} seeds ${list}: every debut LEGO still has practice\n`);
       continue;
     }
     process.stderr.write(`\n[debut-practice] ✗✗✗ THIS JOB LEFT A DEBUT LEGO WITHOUT PRACTICE (${courseCode}, seeds ${list}) — exit code forced to 2.\n`);
-    process.stderr.write(`Regenerate the basket (node tools/course-optimization/regenerate-debut-practice.cjs ${courseCode} --seeds ${list}) or name the gap in the report.\n`);
+    process.stderr.write(`Regenerate the basket (node tools/course-optimization/regenerate-debut-practice.cjs ${courseCode}${seeds === 'ALL' ? '' : ` --seeds ${list}`}) or name the gap in the report.\n`);
     process.stderr.write(String(r.stdout || '') + String(r.stderr || '') + '\n');
     process.exitCode = 2;
   }
@@ -214,6 +225,7 @@ async function recordFromRequest(supabase, req, { courseCode, surface, operation
     scope,
     detail,
     requestId: req.headers?.['x-request-id'] || null,
+    fromRequest: true,
   });
 }
 

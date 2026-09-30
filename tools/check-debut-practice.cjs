@@ -9,8 +9,8 @@
 //   node tools/check-debut-practice.cjs --all                        # every course, one line each
 //
 // READ-ONLY. The rule and its reasons are in services/shared/debut-practice.cjs (Tom, 2026-09-30):
-// a debut with no practice, or with no USE phrase, BLOCKS — it is the same check the release gate
-// runs; thin baskets, dark not-new baskets and is_new flags that disagree with first appearance are
+// a debut with no real practice phrase (no BUILD and no USE beyond the bare LEGO) BLOCKS — it is
+// the same check the release gate runs; BUILD-only debuts (noUse), thin baskets, dark not-new baskets and is_new flags that disagree with first appearance are
 // REPORTED. recordContentEdit() runs this with --strict at exit for the seeds a sweep names, so a
 // sweep that empties a debut's basket fails loudly (services/shared/content-edit-log.cjs).
 const path = require('path')
@@ -34,8 +34,7 @@ function args(argv) {
 function line(r) {
   const n = r.isNew
   return `${r.courseCode.padEnd(20)} debuts ${String(r.debuts).padStart(5)}  BLOCKING ${String(r.blocking.length).padStart(4)}` +
-    `  (unpractised ${r.blocking.filter(b => b.reason === 'UNPRACTISED').length}, no USE ${r.blocking.filter(b => b.reason === 'NO_USE').length})` +
-    `  thin ${String(r.thin.length).padStart(4)}  dark ${String(r.dark.length).padStart(3)}` +
+    `  thin ${String(r.thin.length).padStart(4)} (BUILD-only ${r.thin.filter(t => t.noUse).length})  dark ${String(r.dark.length).padStart(3)}` +
     (n ? `  is_new: repeat ${n.repeatNew.length}, first-not-new ${n.firstNotNew.length}, never-debuted ${n.neverDebuted.length}` : '')
 }
 

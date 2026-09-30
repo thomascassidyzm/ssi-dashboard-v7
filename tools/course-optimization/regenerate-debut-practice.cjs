@@ -2,8 +2,9 @@
 'use strict';
 // tools/course-optimization/regenerate-debut-practice.cjs
 //
-// Writes practice phrases for every DEBUT LEGO that has none, or has no USE phrase — the two cases
-// the release gate blocks (services/shared/debut-practice.cjs; Tom, 2026-09-30, job #906).
+// Writes practice phrases for every DEBUT LEGO that has none — no BUILD and no USE beyond the bare
+// LEGO, the one case the release gate blocks (services/shared/debut-practice.cjs; Tom, 2026-09-30,
+// jobs #906/#910). A BUILD-only debut is practised and is not a target unless named with --lego.
 //
 // The phrases come from phrase v3 (lib/phrase-generation.cjs, in-process: the real prompt, Opus,
 // the real gates — floors, containment, earlier-siblings-only vocabulary, ZUT, known side — and the
