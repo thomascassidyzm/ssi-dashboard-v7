@@ -150,7 +150,8 @@ export default defineConfig({
       'tools/pods/parse-pod-markdown.test.cjs',
       'tools/pods/splice-sentence-clips.test.cjs',
       'tools/check-intro-mirror.test.cjs',
-      'services/shared/content-edit-log.intro-mirror.test.cjs'
+      'services/shared/content-edit-log.intro-mirror.test.cjs',
+      'services/shared/content-edit-log.debut-practice.test.cjs'
     ]
   }
 })

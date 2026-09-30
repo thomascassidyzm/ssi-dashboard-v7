@@ -128,11 +128,18 @@ async function loadTranslationVocab(supabase, courseCode, upToSeedNumber) {
   return vocabSet;
 }
 
-async function loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chinese) {
+// EARLIER siblings only. seed-complete.cjs sorts a seed's LEGOs by idx and
+// accumulates vocab as it goes "so an L2 phrase cannot use L3's vocab" (canon P2:
+// never a later sibling, no forward references). This replay used to fold in
+// EVERY sibling of the seed, so v3 passed ita_for_eng S0190L01 "ti dispiace se ti
+// faccio" phrases built on "domande" — L02 of the same seed, not yet taught
+// (job #906, 2026-09-30).
+async function loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chinese, legoIndex) {
   const vocab = new Set();
   const { data: siblingLegos } = await supabase.from('course_legos')
-    .select('target_text, type, components').eq('course_code', courseCode).eq('seed_number', seedNumber);
+    .select('lego_index, target_text, type, components').eq('course_code', courseCode).eq('seed_number', seedNumber);
   for (const sl of siblingLegos || []) {
+    if (legoIndex != null && !(sl.lego_index < legoIndex)) continue;
     extractVocab(sl.target_text, chinese).forEach(v => vocab.add(v));
     if (sl.type === 'M' && sl.components) {
       for (const c of sl.components) extractVocab(c.target, chinese).forEach(v => vocab.add(v));
@@ -251,12 +258,18 @@ async function checkPhraseSet(entry, ctx) {
   // Clause 8, reported not gated: a separable-verb LEGO introduced split.
   const separableLegoShape = checkSeparableLegoShape(courseCode, seedNumber, legoTarget);
 
-  // ── vocab set: prior seeds + DB siblings of this seed + this LEGO's own ──
-  const vocabSet = ctx.vocabCache.get(seedNumber) || await (async () => {
+  // ── vocab set: prior seeds + EARLIER siblings of this seed + this LEGO's own ──
+  // Cached per seed AND lego: the sibling cut depends on this LEGO's index.
+  const vocabKey = `${seedNumber}:${legoIndex}`;
+  const vocabSet = ctx.vocabCache.get(vocabKey) || await (async () => {
     const v = await loadTranslationVocab(supabase, courseCode, seedNumber);
-    const sib = await loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chinese);
+    const sib = await loadSameSeedSiblingVocab(supabase, courseCode, seedNumber, chinese, legoIndex);
     sib.forEach(w => v.add(w));
-    ctx.vocabCache.set(seedNumber, v);
+    // a proposed seed not yet in the DB: earlier entries of this run fold in (below)
+    for (const [idx, words] of (ctx.foldedBySeed?.get(seedNumber) || new Map())) {
+      if (idx < legoIndex) words.forEach(w => v.add(w));
+    }
+    ctx.vocabCache.set(vocabKey, v);
     return v;
   })();
 
@@ -265,9 +278,15 @@ async function checkPhraseSet(entry, ctx) {
   const priorVocab = new Set(vocabSet);
   const withLego = new Set(vocabSet);
   extractVocab(legoTarget, chinese).forEach(v => withLego.add(v));
-  // Fold in so a later entry in the same seed sees it as an earlier LEGO,
-  // matching seed-complete.cjs's in-order accumulation.
-  withLego.forEach(v => vocabSet.add(v));
+  // Fold in so a LATER entry in the same seed sees it as an earlier LEGO,
+  // matching seed-complete.cjs's in-order accumulation — and only a later one.
+  ctx.foldedBySeed = ctx.foldedBySeed || new Map();
+  if (!ctx.foldedBySeed.has(seedNumber)) ctx.foldedBySeed.set(seedNumber, new Map());
+  ctx.foldedBySeed.get(seedNumber).set(legoIndex, new Set(withLego));
+  for (const [k, v] of ctx.vocabCache) {
+    const [s, i] = String(k).split(':').map(Number);
+    if (s === seedNumber && i > legoIndex) withLego.forEach(w => v.add(w));
+  }
 
   {
     const allPhrases = [...build, ...use];

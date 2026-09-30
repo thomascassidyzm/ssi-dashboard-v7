@@ -81,6 +81,7 @@ async function recordContentEdit(supabase, {
 
   if (error) throw new Error(`content_edit_events insert failed: ${error.message}`);
   armIntroMirrorAtExit({ identity, courseCode, operation, scope });
+  armDebutPracticeAtExit({ identity, courseCode, operation, scope });
   return data.id;
 }
 
@@ -137,6 +138,59 @@ function runIntroMirrorAtExit() {
   }
 }
 
+// ─── EVERY DEBUT KEEPS ITS PRACTICE: CHECKED WHEN A SWEEP EXITS (Tom, 2026-09-30) ─────────────
+//
+// The defect this catches: job #887·I (2026-09-29) MOVED all five USE phrases of ita_for_eng
+// S0190L01 forward to S0202L03 because they used "una domanda" before it was taught. The move was
+// right; it left the debut "do you mind if I ask you" with no USE phrase at all, so it never
+// reached spaced repetition, and nothing said so. The sweep guarded its DELETES ("keeps at least
+// 6") but not the source basket of its MOVES — a guard each sweep has to remember is not a guard.
+//
+// So the rule is wired here, once, for every tools/ sweep: the moment a SERVICE identity records an
+// edit naming seeds, LEGOs or phrases, ONE exit hook is armed for that course; at exit it runs
+// tools/check-debut-practice.cjs --strict over every seed the process named, and if any debut LEGO
+// there is left unpractised or without a USE phrase it prints them and forces exit code 2 — the
+// same shape as the intro mirror above. The sweep must then regenerate the basket
+// (tools/course-optimization/regenerate-debut-practice.cjs) or report the gap. There is no opt-out:
+// "must regenerate or flag" is the ruling, and a failed exit IS the flag. HTTP routes carry
+// human/agent identities and are covered by the release gate (production-api status route) and
+// the standing checker instead. Never armed under vitest.
+const debutScopes = new Map(); // courseCode -> Set(seed_number)
+let debutArmed = false;
+const SEED_FROM_ANY_ID = /S(\d{4})L\d{2}/;
+function armDebutPracticeAtExit({ identity, courseCode, operation, scope }) {
+  if (process.env.VITEST) return;
+  if (!identity || identity.kind !== 'service') return;
+  if (/unapprove|approve|audio|link|flag/i.test(String(operation))) return;
+  const seeds = new Set((scope?.seed_numbers || []).map(Number).filter(Number.isFinite));
+  for (const id of [...(scope?.lego_ids || []), ...(scope?.phrase_ids || [])]) {
+    const m = SEED_FROM_ANY_ID.exec(String(id)); if (m) seeds.add(Number(m[1]));
+  }
+  if (!seeds.size) return;
+  if (!debutScopes.has(courseCode)) debutScopes.set(courseCode, new Set());
+  for (const s of seeds) debutScopes.get(courseCode).add(s);
+  if (debutArmed) return;
+  debutArmed = true;
+  process.on('exit', runDebutPracticeAtExit);
+}
+function runDebutPracticeAtExit() {
+  const { spawnSync } = require('child_process');
+  const path = require('path');
+  const script = process.env.DEBUT_PRACTICE_CHECK_SCRIPT || path.join(__dirname, '..', '..', 'tools', 'check-debut-practice.cjs');
+  for (const [courseCode, seeds] of debutScopes) {
+    const list = [...seeds].sort((a, b) => a - b).join(',');
+    const r = spawnSync(process.execPath, [script, courseCode, '--seeds', list, '--strict'], { encoding: 'utf8', timeout: 120000 });
+    if (r.status === 0) {
+      process.stderr.write(`[debut-practice] ${courseCode} seeds ${list}: every debut LEGO still has practice\n`);
+      continue;
+    }
+    process.stderr.write(`\n[debut-practice] ✗✗✗ THIS JOB LEFT A DEBUT LEGO WITHOUT PRACTICE (${courseCode}, seeds ${list}) — exit code forced to 2.\n`);
+    process.stderr.write(`Regenerate the basket (node tools/course-optimization/regenerate-debut-practice.cjs ${courseCode} --seeds ${list}) or name the gap in the report.\n`);
+    process.stderr.write(String(r.stdout || '') + String(r.stderr || '') + '\n');
+    process.exitCode = 2;
+  }
+}
+
 /**
  * Record the event and hand back the id to stamp onto the rows being written.
  * Callers add `last_edit_event_id: eventId` to the update/insert payload they
@@ -163,4 +217,4 @@ async function recordFromRequest(supabase, req, { courseCode, surface, operation
   });
 }
 
-module.exports = { recordContentEdit, stampEditEvent, recordFromRequest, assertIdentity, armIntroMirrorAtExit };
+module.exports = { recordContentEdit, stampEditEvent, recordFromRequest, assertIdentity, armIntroMirrorAtExit, armDebutPracticeAtExit };
