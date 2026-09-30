@@ -119,20 +119,6 @@ export const SECTIONS = [
         }
       },
       {
-        // SSi HQ (Tom and Aran, 2026-09-21). The company, not the courses:
-        // Insights is production insight, this is the business.
-        label: 'SSi HQ',
-        to: '/hq',
-        hub: {
-          badge: 'company',
-          description: 'The company as a table of functions — owner, cadence, last seen — and the key numbers, derived live. What cannot be read says so.',
-          action: 'Open SSi HQ',
-          accent: '#38bdf8',
-          glow: 'rgba(56, 189, 248, 0.15)',
-          icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg>'
-        }
-      },
-      {
         label: 'Insights',
         to: '/insights',
         hub: {
@@ -311,6 +297,7 @@ export const SECTIONS = [
 // ---------------------------------------------------------------------------
 export const OUTSIDE_NAV = [
   { path: '/', why: 'the Home hub itself — the brand link is its door' },
+  { path: '/hq', why: 'SSi HQ moved to the learning app — a one-line note for old bookmarks' },
   { path: '/pipeline', why: 'the old pipeline board, kept reachable by URL while the nav settles' },
   { path: '/monitor', why: 'agent monitor — opened from Activity, not a top-level destination' },
   { path: '/monitor/:courseCode', why: 'agent monitor for one course — opened from Activity' },

@@ -76,16 +76,13 @@ const routes = [
   },
   // Admin hub — platform-wide tooling (Configs, Insights, Activity,
   // Maintenance, Users). Not per-course; gating is RLS/component-level.
-  // SSi HQ — the company overview (Tom and Aran, 2026-09-21). Company numbers,
-  // so requiresAdmin, not merely requiresAuth: an editor or a recorder with a
-  // Popty login must not see the company's finances. The SERVER gate on
-  // /api/hq is the one that matters (services/api/hq-routes.cjs); this keeps a
-  // non-admin from landing on a page that could only ever show them a refusal.
+  // SSi HQ moved to the learning app (Tom, 2026-09-30). /hq here is only a
+  // short note with a link, so old bookmarks land somewhere that explains.
   {
     path: '/hq',
     name: 'Hq',
-    component: () => import('../views/Hq.vue'),
-    meta: { title: 'SSi HQ', requiresAuth: true, requiresAdmin: true }
+    component: () => import('../views/HqMoved.vue'),
+    meta: { title: 'SSi HQ has moved', requiresAuth: true, requiresAdmin: true }
   },
   {
     path: '/admin',
