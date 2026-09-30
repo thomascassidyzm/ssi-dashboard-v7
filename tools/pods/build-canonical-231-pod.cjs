@@ -48,6 +48,9 @@ const { SERVING_POD_SLUGS } = require('./serving-slug.cjs')
 const { serviceIdentity } = require('../../services/shared/editor-identity.cjs')
 const { evidencePath } = require('../lib/evidence-path.cjs')
 const { draftFlagsFor } = require('./pod-draft-flags.cjs')
+const {
+  LANGUAGE_NAME_LINES: NAME_LINES, languageNameFor, splitCourse, checkLanguageNameLines, loadSiblingLines,
+} = require('./pod-language-names.cjs')
 
 const SURFACE = 'tools/pods/build-canonical-231-pod.cjs'
 const APPLY = process.argv.includes('--apply')
@@ -63,7 +66,7 @@ const arg = (n) => {
  * list cannot quietly go stale: if the reference and a source differ anywhere else, the
  * run aborts rather than carrying a line that names the wrong language at a learner.
  */
-const LANGUAGE_NAME_LINES = [33, 94, 95, 221, 226]
+const LANGUAGE_NAME_LINES = NAME_LINES   // one list, owned by pod-language-names.cjs
 
 const COURSE = arg('course')
 const POD_SLUG = arg('pod-slug') || 'pod-1-231'
@@ -81,7 +84,7 @@ const TITLE = arg('title')
  * itself rather than asking for five hand-written overrides per course. Asserted: the
  * substitution must actually change the line, or the run aborts.
  */
-const TARGET_LANG_EN = arg('target-lang-en')
+const TARGET_LANG_EN = arg('target-lang-en') || languageNameFor(`${(COURSE || '').split('_for_')[0]}_for_eng`)
 const DRAFT_SIDE = (arg('draft') || 'none').toLowerCase()       // none | known  (see PROVISIONAL below)
 /**
  * Carry the target source's own draft/approval state rather than stamping every copied
@@ -186,7 +189,16 @@ async function loadSide(db, spec) {
 
     if (isNameLine) {
       if (needKnownSub) {
-        if (!norm(ov.known)) problems.push(`${g}: --substitute names the known side but no override given (this line names the language being learnt)`)
+        // The lookup (pod-language-names.cjs) replaces the throwaway override file: when the known
+        // side comes from a pod that names ANOTHER target in this course's known language, swap
+        // the source's name for this course's. An explicit override still wins.
+        const srcCourse = splitCourse(String(known.podId).split(':')[0])
+        const srcName = srcCourse && srcCourse.knownLang === (splitCourse(COURSE) || {}).knownLang
+          ? languageNameFor(known.podId.split(':')[0]) : null
+        const ownName = languageNameFor(COURSE)
+        if (!norm(ov.known) && srcName && ownName && k != null && String(k).includes(srcName)) {
+          k = String(k).split(srcName).join(ownName); machineKnown = true
+        } else if (!norm(ov.known)) problems.push(`${g}: --substitute names the known side but no override given (this line names the language being learnt)`)
         else if (norm(ov.known) === norm(k)) problems.push(`${g}: known override is identical to the source line — it still names the wrong language`)
         else { k = ov.known; machineKnown = true }
       }
@@ -244,6 +256,14 @@ async function loadSide(db, spec) {
         machineKnown, machineTarget,
       }),
     })
+  }
+
+  // THE GATE (job #952): whatever route the five lines took, the finished plan must name THIS
+  // course's language — never [target language], never blank, never a sibling's identical text.
+  {
+    const lines = {}
+    for (const p of plan) if (LANGUAGE_NAME_LINES.includes(p.global_order)) lines[p.global_order] = p.known_text
+    problems.push(...checkLanguageNameLines({ course: COURSE, lines, siblings: await loadSiblingLines(db, COURSE) }))
   }
 
   const idSet = new Set(plan.map(p => p.id))

@@ -95,6 +95,7 @@ const { Client } = require('pg')
 // Do not reimplement it here: two implementations of one rule is how the known-side
 // hole of 2026-09-02 came back (docs/pods/known-side-gate-2026-09-02.md).
 const { readinessBlockers, isUnreviewedMachineText } = require('./pod-switchover.cjs')
+const { nameLineProblemsForRows, loadSiblingLines } = require('./pod-language-names.cjs')
 
 const has = (n) => process.argv.includes(`--${n}`)
 const arg = (n) => {
@@ -158,7 +159,7 @@ function retailOf (course, id) {
  * Returns every failure, so one run tells you everything wrong rather than one
  * thing at a time.
  */
-function promotionBlockers ({ rows, srcId, course, fromSlug, clashes = [], allow = {}, langText = {} }) {
+function promotionBlockers ({ rows, srcId, course, fromSlug, clashes = [], allow = {}, langText = {}, nameLineProblems = [] }) {
   const { drafts: ALLOW_DRAFTS = false, emptyTarget: ALLOW_EMPTY_TARGET = 0, missingAudio: ALLOW_MISSING_AUDIO = false } = allow
   const retail = (id) => retailOf(course, id)
   const blockers = []
@@ -200,6 +201,8 @@ function promotionBlockers ({ rows, srcId, course, fromSlug, clashes = [], allow
     // none: a promotion that puts a second version of a language in front of learners
     // has no legitimate case — bind the pod instead.
     ...langText,
+    // The five "I'm learning <language>" lines (job #952): no --allow escape either.
+    name_line_problems: nameLineProblems,
   }
   // The zero-row case is already said above, in this tool's own words.
   blockers.push(...readinessBlockers(counts).filter(b => b !== 'staged pod has no sentences'))
@@ -251,6 +254,8 @@ async function main () {
     const blockers = promotionBlockers({
       rows: srcRows, srcId, course: COURSE, fromSlug: FROM, clashes,
       allow: { drafts: ALLOW_DRAFTS, emptyTarget: ALLOW_EMPTY_TARGET, missingAudio: ALLOW_MISSING_AUDIO },
+      nameLineProblems: nameLineProblemsForRows({
+        course: COURSE, rows: srcRows, siblings: await loadSiblingLines(db, COURSE) }),
       langText: (await db.query(
         `select coalesce(p.canonical_lang_text, false) canonical_lang_text,
                 exists (select 1 from canonical_pod_target_text c

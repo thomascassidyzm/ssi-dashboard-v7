@@ -302,6 +302,8 @@ function isUnreviewedMachineText (row) {
   return false
 }
 
+const { nameLineProblemsForRows, loadSiblingLines } = require('./pod-language-names.cjs')
+
 function readinessBlockers (counts, { rehearsal = false } = {}) {
   const num = (v) => Number(v || 0)
   const blockers = []
@@ -325,6 +327,10 @@ function readinessBlockers (counts, { rehearsal = false } = {}) {
   } else if (counts.lang_has_canon && !counts.canonical_lang_text) {
     blockers.push('this language has a canonical pod text and the staged pod is not bound to it — run tools/pods/bind-pod-text-to-language.cjs')
   }
+  // THE FIVE "I'M LEARNING <language>" LINES (job #952). `name_line_problems` is the plain-English
+  // list from pod-language-names.cjs — computed by each door from the pod's own rows, empty for a
+  // pod that is not a canonical 231. Both doors onto the serving slug run this same predicate.
+  for (const p of counts.name_line_problems || []) blockers.push(`language-name lines: ${p}`)
   return blockers
 }
 
@@ -439,6 +445,11 @@ async function main () {
     [`${COURSE}:${STAGED}`]
   )
   Object.assign(s, lt || {})
+  {
+    const { rows: nameRows } = await db.query(
+      `select global_order, known_text from listening_pod_sentences where pod_id = $1`, [`${COURSE}:${STAGED}`])
+    s.name_line_problems = nameLineProblemsForRows({ course: COURSE, rows: nameRows, siblings: await loadSiblingLines(db, COURSE) })
+  }
   const liveN = await countOf(LIVE)
 
   log(`${COURSE}: live ${LIVE}=${liveN} sentences, staged ${STAGED}=${s.n} sentences`)
