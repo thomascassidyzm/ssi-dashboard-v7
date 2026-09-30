@@ -209,3 +209,29 @@ describe('the render route: voiceBound and re-record (job #741)', () => {
     expect(calls.replace).toEqual([])
   })
 })
+
+describe('voice identity is the DEFAULT on the render route (job #944)', () => {
+  const { providerForVoice } = require('./shared/render-voice-provider.cjs')
+  it('validate defaults voiceBound on; only an explicit false opts out', () => {
+    const { validate } = require('./shared/audio-render-entry.cjs')
+    const b = { courseCode: 'c', role: 'target1', text: 't', purpose: 'p', requestedBy: 'x' }
+    expect(validate(b).voiceBound).toBe(true)
+    expect(validate({ ...b, voiceBound: false }).voiceBound).toBe(false)
+  })
+  it('the default reaches the door: a female clip of the same words does not answer an unflagged request', async () => {
+    const { svc, paid } = door([female()])
+    const d = { resolve: async () => ({ language: 'deu', voiceId: MALE_ID, provider: 'cartesia', providerConfig: cfgMale() }),
+      link: async () => null, speak: (t, p, c, n) => svc.speak(t, p, c, n),
+      store: async () => ({ audioId: 'n', s3Key: 'k', durationMs: 1 }) }
+    const out = await renderClip({ courseCode: 'deu_for_eng', role: 'target2', text: 'guten tag', purpose: 'p', requestedBy: 't' }, d)
+    expect(out.source).toBe('rendered')
+    expect(paid).toEqual(['guten tag'])
+  })
+  it('a bare Azure voice name is Azure, a UUID is Cartesia, a course role keeps its stored provider', () => {
+    expect(providerForVoice('en-GB-SoniaNeural')).toBe('azure')
+    expect(providerForVoice('zh-CN-XiaoxiaoMultilingualNeural')).toBe('azure')
+    expect(providerForVoice(KRITI)).toBe('cartesia')
+    expect(providerForVoice('Leni', { voiceId: 'Leni', provider: 'Azure' })).toBe('azure')
+    expect(providerForVoice('Leni')).toBeUndefined()
+  })
+})

@@ -209,6 +209,7 @@ const {
 } = require('../shared/clip-identity.cjs')
 const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
+const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
 // The BCP-47 steer a TARGET-side render sends. courses.target_lang carries the
 // BASE tag for every regional course ('deu' for deu_at_for_eng), so computing
@@ -5334,11 +5335,11 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
  * writes nothing. Job #708: the route used to ask other courses only, so its own
  * clips were invisible and a real request re-mastered and re-stored them.
  */
-async function linkClipForRender({ courseCode, text, language, role, voiceId, legoId, dryRun, voiceBound }) {
+async function linkClipForRender({ courseCode, text, language, role, voiceId, legoId, dryRun, voiceBound = true }) {
   const base = { courseCode, text, language, role, voiceId, legoId, opts: { enabled: true }, label: 'Render', readOnly: !!dryRun }
   // voiceBound: this voice's clip or nothing — the male slot never links the female clip of the same words.
   const reused = (await reuseSiblingIntoCourse({ ...base, lookupOpts: { includeOwnCourse: true, ownCourseOnly: true, voiceBound: true } }))
-    || (await reuseSiblingIntoCourse(voiceBound ? { ...base, lookupOpts: { voiceBound: true } } : base))
+    || (await reuseSiblingIntoCourse(voiceBound ? { ...base, lookupOpts: { voiceBound: true } } : base)) // voice identity is the default (job #944); only an explicit voiceBound:false takes any voice
   return reused ? { audioId: reused.audioId, s3Key: reused.s3Key, durationMs: reused.durationMs } : null
 }
 
@@ -5379,7 +5380,7 @@ app.post('/render', async (req, res) => {
           : foreignCast ? foreignCast.voiceId.replace(POD_PROVIDER_PREFIX, '')
           : named ? named[2] : (voiceId || settings.voiceId || vc[role])
         if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
-        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: courseVoice ? courseVoice.provider : undefined })
+        const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: courseVoice ? courseVoice.provider : (foreignCast ? undefined : providerForVoice(held, settings)) })
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }

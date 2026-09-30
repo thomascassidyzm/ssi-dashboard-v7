@@ -26,10 +26,10 @@ const opt = f => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : unde
 const body = {
   courseCode: opt('--course'), role: opt('--role'), text: opt('--text'), purpose: opt('--purpose'),
   language: opt('--lang'), voiceId: opt('--voice'), legoId: opt('--lego'), dryRun: argv.includes('--dry-run'),
-  voiceBound: argv.includes('--voice-bound'), replaceAudioId: opt('--replace'), spokenText: opt('--spoken'), job: opt('--job'),
+  voiceBound: !argv.includes('--any-voice'), replaceAudioId: opt('--replace'), spokenText: opt('--spoken'), job: opt('--job'),
 }
 const missing = ['courseCode', 'role', 'text', 'purpose'].filter(k => !body[k])
-if (missing.length) { console.error(`usage: render.cjs --course C --role R --text T --purpose P [--voice V] [--lang L] [--lego ID] [--dry-run] [--voice-bound] [--replace AUDIO_ID [--spoken TEXT]]\nmissing: ${missing.join(', ')}`); process.exit(1) }
+if (missing.length) { console.error(`usage: render.cjs --course C --role R --text T --purpose P [--voice V] [--lang L] [--lego ID] [--dry-run] [--any-voice] [--replace AUDIO_ID [--spoken TEXT]]\nmissing: ${missing.join(', ')}`); process.exit(1) }
 const base = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 ;(async () => {
   const res = await fetch(`${base}/api/audio/render`, {
