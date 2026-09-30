@@ -126,7 +126,7 @@ async function fetchAllLegos(supabase, courseCode) {
  * rather than just a count — a block a learner cannot see the reason for is a
  * block nobody can act on.
  */
-function buildMappingTable(legos) {
+function buildMappingTable(legos, { withComponents = true } = {}) {
   const k2t = new Map();
   const t2k = new Map();
   const add = (k, t, src) => {
@@ -142,6 +142,7 @@ function buildMappingTable(legos) {
   };
   for (const l of legos) {
     add(l.known_text, l.target_text, l.lego_id);
+    if (!withComponents) continue;
     for (const c of l.components || []) add(c.known, c.target, `${l.lego_id}#c`);
   }
   return { k2t, t2k };
@@ -183,7 +184,17 @@ function determinism(table, known, target) {
 async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
   const legos = await fetchAllLegos(supabase, courseCode);
   if (!legos.length) throw new Error(`no LEGOs found for ${courseCode}`);
+  // A component's known side is a literal tiling gloss the learner is never
+  // prompted with, so it may never make a LEGO ambiguous — Tom's ruling
+  // 2026-07-04: component rows are "exempt from ZUT in known language — but not
+  // in target language". Without this, ita_for_eng's "who speak" -> "che
+  // parlano" component gloss "speak -> parlano" (seed 22) blocked the seed-1
+  // LEGO "to speak -> parlare", and "with you" -> "con te" was left with
+  // nothing to be practised against (job #905). LEGOs are adjudicated on the
+  // LEGO-only table; a component that is itself used as a tile still has to be
+  // unambiguous against everything, so components keep the full table.
   const table = buildMappingTable(legos);
+  const legoTable = buildMappingTable(legos, { withComponents: false });
 
   const introduced = legos.filter(
     (l) => l.seed_number < seedNumber || (l.seed_number === seedNumber && l.lego_index < legoIndex)
@@ -191,7 +202,7 @@ async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
 
   const items = [];
   for (const l of introduced) {
-    const d = determinism(table, l.known_text, l.target_text);
+    const d = determinism(legoTable, l.known_text, l.target_text);
     items.push({
       kind: 'lego',
       legoId: l.lego_id,
