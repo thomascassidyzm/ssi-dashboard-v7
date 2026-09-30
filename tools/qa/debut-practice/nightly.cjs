@@ -31,6 +31,9 @@ const STATE = process.env.DEBUT_PRACTICE_STATE || '/home/tomcassidy/.local/state
 const NOTICE = process.env.WATSON_NOTICE || '/home/tomcassidy/command-surface/ops/watson-notice.js';
 const LEARNER_FACING = ['beta', 'released', 'live']; // services/shared/debut-practice.cjs LEARNER_FACING
 const NAME_CAP = 40;
+// Tom, ruling r-2026-09-30-welsh-courses-hand-recorded-: Welsh is hand-recorded — "do not worry about
+// Welsh at all". Out of the alarm and its Monday backlog; the database write guard stays on for them.
+const isWelsh = (code) => /^cym_/.test(code);
 
 function dbUrl() {
   if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
@@ -48,7 +51,7 @@ async function readGaps() {
     const { rows } = await c.query(
       `SELECT g.course_code, g.lego_id, g.known_text, g.target_text
          FROM debut_practice_gaps(ARRAY(SELECT course_code FROM courses WHERE status::text = ANY ($1))) g`, [LEARNER_FACING]);
-    return rows;
+    return rows.filter((g) => !isWelsh(g.course_code));
   } finally { await c.end().catch(() => {}); }
 }
 
@@ -109,5 +112,5 @@ async function main(argv) {
   if (text) say(text, noNotice); else log('quiet — nothing new went empty');
 }
 
-module.exports = { compose };
+module.exports = { compose, isWelsh };
 if (require.main === module) main(process.argv.slice(2));

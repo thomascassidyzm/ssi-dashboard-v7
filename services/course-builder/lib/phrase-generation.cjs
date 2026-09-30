@@ -304,7 +304,7 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     // attempt, but it never causes one.
     const floorReasons = [
       ...failureFeedback(gate),
-      ...(declPass ? [] : declarationCheck.rewrite_instructions),
+      ...(declPass ? [] : (declarationCheck.rewrite_instructions || [])),
     ];
     const reasons = floorReasons.length
       ? [...floorReasons, ...(declarationCheck.claim_instructions || [])]
