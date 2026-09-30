@@ -7,6 +7,8 @@
  *   RE-RECORD one clip in its own voice (make-before-break, old object kept, next audio_revision):
  *        node tools/audio/render.cjs --course C --role R --text STORED_TEXT --replace <course_audio id> [--spoken "what to say"] --purpose P
  *   --voice-bound: answer only with a clip in this voice (a two-voice phrase's slots).
+ *   --job "#913": the job this render belongs to; a Tom-approved job (tools/tts-cap.cjs approve)
+ *        spends from its own allowance up to the 300k/day ceiling instead of the automatic 100k.
  *
  *   node tools/audio/render.cjs --course ita_for_eng --role target1 \
  *        --text "ha detto qualcos'altro?" --purpose "kai: seed 376 fix" [--voice <id>] [--lang ita] [--dry-run]
@@ -24,7 +26,7 @@ const opt = f => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : unde
 const body = {
   courseCode: opt('--course'), role: opt('--role'), text: opt('--text'), purpose: opt('--purpose'),
   language: opt('--lang'), voiceId: opt('--voice'), legoId: opt('--lego'), dryRun: argv.includes('--dry-run'),
-  voiceBound: argv.includes('--voice-bound'), replaceAudioId: opt('--replace'), spokenText: opt('--spoken'),
+  voiceBound: argv.includes('--voice-bound'), replaceAudioId: opt('--replace'), spokenText: opt('--spoken'), job: opt('--job'),
 }
 const missing = ['courseCode', 'role', 'text', 'purpose'].filter(k => !body[k])
 if (missing.length) { console.error(`usage: render.cjs --course C --role R --text T --purpose P [--voice V] [--lang L] [--lego ID] [--dry-run] [--voice-bound] [--replace AUDIO_ID [--spoken TEXT]]\nmissing: ${missing.join(', ')}`); process.exit(1) }

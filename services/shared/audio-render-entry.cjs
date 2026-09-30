@@ -59,7 +59,12 @@ function validate(input) {
     // What to SAY when it differs from the stored text (qualcos'altro-style
     // pronunciation fixes). The stored text is never changed by it.
     spokenText: input.spokenText ? String(input.spokenText) : null,
+    // The job this render belongs to ("#913"). It rides into the spend ledger, and a
+    // job Tom has approved (tools/tts-cap.cjs approve) spends from its own
+    // allowance up to the 300k ceiling instead of the automatic 100k (job #913).
+    job: input.job ? String(input.job).slice(0, 100) : null,
   }
+  if (out.job && !/#\d+/.test(out.job)) throw new RenderRequestError('job names the job the way the estate writes it, e.g. "#913"')
   if (out.spokenText && !out.replaceAudioId) throw new RenderRequestError('spokenText only applies to a re-record — name replaceAudioId')
   if (out.spokenText && out.spokenText.length > 1000) throw new RenderRequestError('spokenText longer than 1,000 characters — this is one clip, not a script')
   return out
@@ -89,7 +94,7 @@ async function renderClip(input, deps) {
     const linked = await deps.link(ident)
     if (linked) return { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }
 
-    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound } }
+    const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, job: req.job } }
     // 2 + 3. the door → guard → one provider attempt
     const out = await deps.speak(req.text, r.provider, cfg, 1)
     if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, purpose: req.purpose, requestedBy: req.requestedBy }
@@ -120,7 +125,7 @@ async function rerecord(req, deps) {
   const r = await deps.resolve({ ...req, language: row.language, voiceId: row.voice_id })
   const ident = { ...req, language: r.language, voiceId: r.voiceId }
   // voiceBound + replacing: the door can only answer with a same-voice clip other than the one being replaced.
-  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.s3_key] } }
+  const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: true, replacing: [row.s3_key], job: req.job } }
   const out = await deps.speak(said, r.provider, cfg, 1)
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }

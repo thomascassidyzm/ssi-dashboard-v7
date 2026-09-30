@@ -187,6 +187,17 @@ const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
  */
 const DAILY_TOTAL_CAP = 'DAILY_TOTAL_CAP'
 const TOTAL_DAILY_CAP_CHARS = 100_000
+/**
+ * THE TOM-APPROVED RUN TIER (job #913, Tom 2026-09-30 11:38Z: "If other people want
+ * to generate audio, we still have 100,000 character cap. But if I am approving a
+ * run, we can just go ahead and do it. It would probably be sensible to have a cap
+ * at something like maybe 300,000"). A tts_spend_total_cap_raises row naming a job
+ * ('#913') is Tom's approval for that one run: its calls spend from their own
+ * allowance, never above this ceiling, and the automatic 100k is counted without
+ * them. Nothing — approved or not — takes a UTC day past the ceiling. Written only
+ * by tools/tts-cap.cjs approve.
+ */
+const TOTAL_DAILY_CEILING_CHARS = 300_000
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -457,8 +468,9 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
   const sum = (provider, fromMs) => rows.filter(r => r.provider === provider && r.at >= fromMs).reduce((n, r) => n + r.chars, 0)
   const store = {
     kind: 'memory', rows, trips, limitLog, totalCapRaises,
-    /** Test knob: older tests spend far more than 50k in one day to exercise the per-provider caps, so they lift this on their own store. */
+    /** Test knobs: older tests spend far more than 50k in one day to exercise the per-provider caps, so they lift these on their own store. */
     totalCapChars: TOTAL_DAILY_CAP_CHARS,
+    totalCeilingChars: TOTAL_DAILY_CEILING_CHARS,
     async reserve(r) {
       const t = now()
       // Tom's stop (job #676): a '*' trip stops every provider — mirrors tts_spend_reserve.
@@ -471,10 +483,25 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
       const h = JSON.stringify(r.limits)
       if (limitLog.filter(l => l.provider === r.provider).pop()?.h !== h) limitLog.push({ provider: r.provider, h, limits: r.limits })
       const dailyCap = r.dailyCap != null ? r.dailyCap : r.limits.dailyCapChars
-      const total = rows.filter(x => x.kind === 'call' && x.at >= dayStart).reduce((n, x) => n + x.chars, 0)
-      const raised = totalCapRaises.filter(x => /^\s*tom\b/i.test(x.by) && x.why && x.until > t && x.until <= x.at + 31 * 86400e3).reduce((m, x) => Math.max(m, x.capChars), 0)
-      const totalCap = Math.max(store.totalCapChars, raised)
-      if (total + r.chars > totalCap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total, cap: totalCap, message: `daily audio cap reached; only Tom can approve more (${total} chars spent today across all providers, this call is ${r.chars}, the cap is ${totalCap}; UTC day). Do not retry and do not split the job` }
+      // Two tiers under one ceiling — mirrors tts_spend_reserve (ops/sql/20260930-tts-spend-tom-approved-run.sql).
+      const signed = (x) => /^\s*tom\b/i.test(x.by) && x.why && x.until > t && x.until <= x.at + 31 * 86400e3
+      const todays = rows.filter(x => x.kind === 'call' && x.at >= dayStart)
+      const total = todays.reduce((n, x) => n + x.chars, 0)
+      const approvals = totalCapRaises.filter(x => x.job && signed(x))
+      const raised = totalCapRaises.filter(x => !x.job && signed(x)).reduce((m, x) => Math.max(m, x.capChars), 0)
+      const approvedAll = todays.filter(x => approvals.some(a => jobMatches(x.job, a.job))).reduce((n, x) => n + x.chars, 0)
+      const approval = approvals.filter(a => jobMatches(r.job, a.job)).sort((a, b) => b.capChars - a.capChars)[0]
+      const ceiling = store.totalCeilingChars
+      if (total + r.chars > ceiling) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total, cap: ceiling, message: `the hard daily ceiling is reached (${total} chars spent today across all providers, this call is ${r.chars}, the ceiling is ${ceiling} even for a Tom-approved run; UTC day). Do not retry and do not split the job` }
+      if (approval) {
+        const here = todays.filter(x => jobMatches(x.job, approval.job)).reduce((n, x) => n + x.chars, 0)
+        const cap = Math.min(approval.capChars, ceiling)
+        if (here + r.chars > cap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: here, cap, message: `Tom-approved run ${approval.job} has spent ${here} chars today; this call (${r.chars}) would pass its approval of ${cap} (by ${approval.by}, until ${new Date(approval.until).toISOString()}; UTC day). Do not retry and do not split the job` }
+      } else {
+        const totalCap = Math.min(ceiling, Math.max(store.totalCapChars, raised))
+        const auto = total - approvedAll
+        if (auto + r.chars > totalCap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: auto, cap: totalCap, message: `daily audio cap reached; only Tom can approve more (${auto} chars spent today across all providers outside Tom-approved runs, this call is ${r.chars}, the cap is ${totalCap}; UTC day). Do not retry and do not split the job` }
+      }
       if (today + r.chars > dailyCap) return { ok: false, code: 'DAILY_CAP', today, cycle, seen, message: `today's ${r.provider} spend is ${today} chars; this call (${r.chars}) would pass the daily cap of ${dailyCap}` }
       if (cycle + r.chars > r.limits.cycleCapChars) return { ok: false, code: 'POOL_SHARE', today, cycle, seen, message: `this cycle's ${r.provider} spend is ${cycle} chars; this call (${r.chars}) would pass the cycle stop of ${r.limits.cycleCapChars}` }
       if (r.key && seen >= r.limits.maxPerKey) return { ok: false, code: 'REPEAT', today, cycle, seen, message: `these words in voice ${r.voice || '?'} have already been sent ${seen} times in ${r.limits.windowHours}h (limit ${r.limits.maxPerKey}) — a caller is re-rendering what it already has` }
@@ -933,6 +960,7 @@ module.exports = {
   jobMatches,
   TtsSpendGuardError,
   TOTAL_DAILY_CAP_CHARS,
+  TOTAL_DAILY_CEILING_CHARS,
   repeatKey,
   repeatTextKey,
   cycleStart,
