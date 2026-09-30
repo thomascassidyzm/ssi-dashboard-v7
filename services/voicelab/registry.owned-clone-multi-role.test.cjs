@@ -22,10 +22,10 @@ const catalogue = {
   ],
 }
 
-test('a voice already cast into a role disappears from the candidate list', () => {
+test('a voice already cast into a role STAYS on the candidate list (Charlotte, Tom 2026-09-30)', () => {
   const roles = [{ voice_id: 'cartesia_stock-id', slot: 'phrase' }]
   const out = cartesiaCandidates('eng', catalogue, roles)
-  assert.ok(!out.some((c) => c.voiceId === 'cartesia_stock-id'), 'an ordinary voice cast already should not reappear')
+  assert.ok(out.some((c) => c.voiceId === 'cartesia_stock-id'), 'a cast voice must remain listed')
 })
 
 test('an owned clone stays listed even when already cast — findable for the guide role too', () => {
@@ -52,7 +52,7 @@ test('describeLanguage keeps a cast owned clone on the registered path, without 
   assert.equal(matches[0].registered, true, 'a catalogue fallback must not mask loss of the registered candidate')
   assert.equal(matches[0].owned, true)
   assert.equal(matches[0].name, clone.display_name)
-  assert.ok(!out.candidates.some((c) => c.voiceId === voices[1].voice_id), 'a cast stock voice still drops out')
+  assert.ok(out.candidates.some((c) => c.voiceId === voices[1].voice_id), 'a cast stock voice stays listed')
 })
 
 test('guideCandidates merges a catalogue-only owned clone ahead of unregistered in-use and registered voices', () => {

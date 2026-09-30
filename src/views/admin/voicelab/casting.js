@@ -155,20 +155,19 @@ export function accentsOf (voices) {
 }
 
 /**
- * A CANDIDATE'S HUMAN NAME. Cartesia carries a vendor `name` for every voice it
- * publishes; a voice this estate CLONED through the lab was named at clone time
- * with whatever slug was to hand (`aran_english_003`), never a proper display
- * name, so it rendered — in the picker AND in search — as that raw id (Tom,
- * 2026-09-20, hunting for "aran" and finding nothing). Humanise a slug-shaped
- * name into `Person (clone)`; leave a real vendor name untouched.
+ * A CANDIDATE'S NAME — ONE NAME PER VOICE, THE SAME EVERYWHERE (Tom,
+ * 2026-09-30: cast slots said tom_001 / aran_english_003 while the list said
+ * "Tom (clone)" for every clone, so he could not tell which was cast). The
+ * vendor name is the name; the id-bearing slug of a clone is never humanised.
+ * The picker, the cast slots and the staged lines all read this spelling.
  */
 export function cloneLabel (c) {
-  const raw = String((c && c.name) || '').split(' — ')[0].trim()
-  if (!raw) return raw
-  if (!/^[a-z][a-z0-9]*(_[a-z0-9]+)+$/i.test(raw)) return raw
-  const person = raw.split('_')[0]
-  const cap = person.charAt(0).toUpperCase() + person.slice(1)
-  return c && c.owned ? `${cap} (clone)` : cap
+  return String((c && c.name) || '').split(' — ')[0].trim()
+}
+
+/** Which role keys currently hold this voice, read off the language's cast facts. */
+export function castRolesOf (facts, voiceId) {
+  return ROLES.filter((r) => facts && facts[r.key] && facts[r.key].state !== 'empty' && facts[r.key].state !== 'na' && facts[r.key].voiceId === voiceId)
 }
 
 /** LANGUAGE + GENDER + ACCENT, plus a free-text search over what the vendor says. */

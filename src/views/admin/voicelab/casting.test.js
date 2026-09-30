@@ -4,7 +4,7 @@
  */
 import { describe, it, expect } from 'vitest'
 import {
-  ROLES, isAmericanEnglish, shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel,
+  ROLES, isAmericanEnglish, shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel, castRolesOf, castFacts,
   stageRole, stageClear, unstageRole, stagedCount, castFacts, podFacts, rowSummary, isFixedEnglish, podVoiceOf,
   POD_ROLES, stageHouseEnglish, stagedEntry, isStagedOn, FIXED_ENGLISH,
 } from './casting'
@@ -68,8 +68,9 @@ describe('"select from Cartesia by Language + gender + accent"', () => {
 
 describe('a clone with no vendor display name is still findable by search (Tom, 2026-09-20: searched "aran", got nothing)', () => {
   const aran = { voiceId: 'cartesia_33890587-a29f-4416-ba61-2615c74f92fe', name: 'aran_english_003 — this estate\'s Cartesia clone', kind: 'cartesia', engine: 'cartesia', gender: 'm', owned: true }
-  it('humanises a slug-shaped vendor name into "Person (clone)"', () => {
-    expect(cloneLabel(aran)).toBe('Aran (clone)')
+  it('shows a clone by its id-bearing name, exactly as the cast slot does', () => {
+    expect(cloneLabel(aran)).toBe('aran_english_003')
+    expect(cloneLabel({ name: 'tom_001', owned: true })).not.toBe(cloneLabel({ name: 'tom_002', owned: true }))
   })
   it('leaves a real vendor name untouched', () => {
     expect(cloneLabel({ name: 'Skylar — Cartesia' })).toBe('Skylar')
@@ -79,15 +80,7 @@ describe('a clone with no vendor display name is still findable by search (Tom, 
     const query = 'aran_english_003'
     expect(clone.name.toLowerCase()).not.toContain(query)
     expect(filterShelf([clone, cart('other')], { query })).toEqual([clone])
-  })
-  it('searches the humanised clone label absent from the raw name and voiceId', () => {
-    const clone = { ...aran, name: 'aran_english_003' }
-    const query = 'Aran (clone)'
-    expect(clone.name.toLowerCase()).not.toContain(query.toLowerCase())
-    expect(clone.voiceId.toLowerCase()).not.toContain(query.toLowerCase())
-    expect(cloneLabel(clone)).toBe(query)
-    expect(filterShelf([clone, cart('other')], { query })).toEqual([clone])
-  })
+})
 })
 
 describe('"I can\'t edit any of the voice assignments here" — English is cast like every other language', () => {
@@ -206,5 +199,14 @@ describe('every row states plainly what is cast', () => {
     expect(pod.genders[0].speaking[0]).toMatchObject({ name: 'Ara', provider: 'xAI' })
     expect(pod.genders[0].pick).toMatchObject({ name: 'Bella', provider: 'Cartesia' })
     expect(pod.genders[0].drifted).toBe(true)
+  })
+})
+
+describe('the list marks the row that is cast in each slot (Tom, 2026-09-30: Charlotte cast Female, not findable)', () => {
+  const lang = { knownCourses: 0, slots: { f: [{ rank: 0, filled: true, voiceId: 'cartesia_charlotte', voiceName: 'Charlotte', engine: 'cartesia', active: true }], m: [] }, guide: { slots: [] } }
+  it('names every role holding a voice, and none for an uncast one', () => {
+    const facts = castFacts(lang)
+    expect(castRolesOf(facts, 'cartesia_charlotte').map((r) => r.label)).toEqual(['Female'])
+    expect(castRolesOf(facts, 'cartesia_other')).toEqual([])
   })
 })
