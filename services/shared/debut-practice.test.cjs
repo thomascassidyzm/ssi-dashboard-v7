@@ -21,10 +21,23 @@ const S0190 = {
 }
 
 describe('auditDebutPractice', () => {
-  it('blocks a debut with BUILD rows but no USE — the S0190L01 case, bare-LEGO rows not counted', () => {
+  it('blocks a debut with BUILD rows but no USE anywhere — bare-LEGO rows not counted', () => {
     const a = auditDebutPractice(S0190.legos, S0190.phrases)
     expect(a.blocking).toHaveLength(1)
     expect(a.blocking[0]).toMatchObject({ lego_id: 'S0190L01', reason: 'NO_USE', build: 2, use: 0, bare: 2 })
+  })
+
+  it('lets a later sibling carry it: S0190L02 U08, the seed sentence, contains S0190L01 (P7)', () => {
+    const withSeedSentence = [...S0190.phrases, { ...P(190, 2, 'use', 'ti dispiace se ti faccio alcune domande?'), id: 'ita_for_eng:S0190L02U08' }]
+    const a = auditDebutPractice(S0190.legos, withSeedSentence)
+    expect(a.blocking).toEqual([])
+    expect(a.thin.find((t) => t.lego_id === 'S0190L01')).toMatchObject({ carried_by: 'ita_for_eng:S0190L02U08' })
+    // an EARLIER sibling never carries: L01's own USE cannot stand in for L02
+    const early = auditDebutPractice(
+      [L(20, 1, true, 'I want', 'voglio'), L(20, 2, true, 'to eat', 'mangiare')],
+      [...builds(20, 1, 3), P(20, 1, 'use', 'voglio mangiare adesso'), ...builds(20, 2, 3)],
+    )
+    expect(early.blocking.map((b) => b.lego_id)).toEqual(['S0020L02'])
   })
 
   it('blocks a debut with nothing, and a debut whose only rows are the bare LEGO', () => {

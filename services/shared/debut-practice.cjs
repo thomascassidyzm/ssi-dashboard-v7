@@ -14,8 +14,9 @@
 //   - UNPRACTISED  — a debut whose seed-position floor asks for phrases and which has
 //                    no BUILD or USE row that practises it;
 //   - NO_USE       — a debut whose floor asks for USE and which has none, so it never
-//                    reaches spaced repetition (the ita_for_eng S0190L01 case: four
-//                    BUILD rows, two of them the bare LEGO, zero USE).
+//                    reaches spaced repetition — UNLESS a USE phrase of a later new LEGO
+//                    of the same seed carries it (P7: fragments first, the sentence
+//                    arrives with the next LEGO). ita_for_eng S0190L01 is that case.
 // A row whose target IS the bare LEGO never counts — it is the LEGO, not practice
 // of it (phrase-structure.cjs partitionBareLegoPhrases, the same rule the writers use).
 //
@@ -26,6 +27,7 @@
 // phrase-structure.cjs phraseFloor and nothing here restates it.
 
 const { phraseFloor, isBareLegoPhrase } = require('../course-builder/lib/phrase-structure.cjs');
+const { normalizeForContainment } = require('../course-builder/lib/text-normalization.cjs');
 
 const normPair = (s) => String(s || '').toLowerCase()
   .replace(/[’`]/g, "'")
@@ -55,6 +57,16 @@ function auditDebutPractice(legos, phrases) {
   const dark = [];
   let debuts = 0;
 
+  // USE rows of each seed's NEW LEGOs, for the carried-by-a-later-sibling test below.
+  const seedUse = new Map();
+  for (const l of ordered) {
+    if (!l.is_new) continue;
+    if (!seedUse.has(l.seed_number)) seedUse.set(l.seed_number, []);
+    for (const p of byLego.get(`${l.seed_number}:${l.lego_index}`) || []) {
+      if (p.phrase_role === 'use') seedUse.get(l.seed_number).push({ lego_index: l.lego_index, id: p.id, t: normalizeForContainment(p.target_text || '') });
+    }
+  }
+
   for (const l of ordered) {
     const rows = byLego.get(`${l.seed_number}:${l.lego_index}`) || [];
     const practising = rows.filter((p) => !isBareLegoPhrase(p.target_text, l.target_text));
@@ -72,8 +84,18 @@ function auditDebutPractice(legos, phrases) {
     debuts += 1;
     const { minBuild, minUse } = phraseFloor(l.seed_number, l.lego_index);
     entry.minBuild = minBuild; entry.minUse = minUse;
-    if (minBuild + minUse > 0 && build + use === 0) blocking.push({ ...entry, reason: 'UNPRACTISED' });
-    else if (minUse > 0 && use === 0) blocking.push({ ...entry, reason: 'NO_USE' });
+    // CARRIED: a debut that cannot yet stand in a complete sentence of its own is practised
+    // with BUILD fragments and reaches spaced repetition inside the USE phrases of a LATER new
+    // LEGO of the same seed — Kai's P7 remedy, and ita_for_eng S0190L01's real shape: "do you
+    // mind if I ask you" has no complete sentence until "questions" (L02) is taught, and L02's
+    // seed-sentence USE carries it. Only a later sibling counts: an earlier one cannot contain it.
+    const lt = normalizeForContainment(l.target_text || '');
+    const carrier = use === 0 && lt
+      ? (seedUse.get(l.seed_number) || []).find((u) => u.lego_index > l.lego_index && u.t.includes(lt))
+      : null;
+    if (carrier) entry.carried_by = carrier.id || `L${String(carrier.lego_index).padStart(2, '0')}`;
+    if (minBuild + minUse > 0 && build + use === 0 && !carrier) blocking.push({ ...entry, reason: 'UNPRACTISED' });
+    else if (minUse > 0 && use === 0 && !carrier) blocking.push({ ...entry, reason: 'NO_USE' });
     else if (build < minBuild || use < minUse) thin.push(entry);
   }
 
@@ -135,7 +157,7 @@ async function checkCourseDebutPractice(supabase, courseCode, { seeds = null } =
   for (let i = 0; i < seedNums.length; i += WINDOW) {
     const win = seedNums.slice(i, i + WINDOW);
     const rows = await pageAll(() => supabase.from('course_practice_phrases')
-      .select('seed_number,lego_index,position,phrase_role,target_text')
+      .select('id,seed_number,lego_index,position,phrase_role,target_text')
       .eq('course_code', courseCode).in('seed_number', win).in('phrase_role', ['build', 'use'])
       .order('seed_number').order('lego_index').order('position'));
     phrases.push(...rows);
