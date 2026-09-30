@@ -2,7 +2,7 @@
 //
 // A COMMUNITY BUILDER SEES NO PLATFORM ROOM AND NO COURSE OVERVIEW
 // (Tom, 2026-09-25). Job #183 signed in as an ordinary `editor` and found the
-// Admin tab, and /admin rendering cards for Insights, Users, SSi HQ and Labs.
+// Admin tab, and /admin rendering cards for Insights, Users and Labs.
 // Tom: "fix both". And for the course: "we don't use course overview for
 // community users … We go from course journey".
 //
@@ -11,12 +11,12 @@
 // tab owns is refused to an editor — including a page added to it tomorrow.
 import { describe, it, expect } from 'vitest'
 import router from '../router/index.js'
-import { isAdminOnlyRoute, primaryTabs, sectionTabs, editorHomeTo } from './navigation.js'
+import { isAdminOnlyRoute, primaryTabs, sectionTabs, editorHomeTo, hubCards } from './navigation.js'
 
 const at = (path) => router.resolve(path)
 
 describe('the Admin tab\'s territory is admin-only', () => {
-  it.each(['/admin', '/admin/labs', '/admin/labs/voice', '/admin/recording', '/insights', '/users', '/hq', '/jobs', '/maintenance', '/stocktake'])(
+  it.each(['/admin', '/admin/labs', '/admin/labs/voice', '/admin/recording', '/insights', '/users', '/jobs', '/maintenance', '/stocktake'])(
     '%s is admin-only',
     (path) => { expect(isAdminOnlyRoute(at(path))).toBe(true) },
   )
@@ -56,5 +56,12 @@ describe('Home takes a community builder back to the three cards', () => {
   })
   it('an admin\'s Home stays the hub', () => {
     expect(editorHomeTo(at('/production/cym_for_eng/text'), { isAdmin: true })).toBe('/')
+  })
+})
+
+describe('SSi HQ moved to the learning app (2026-09-30)', () => {
+  it('has no entry in the Admin hub', () => {
+    expect(hubCards('admin').map((c) => c.title)).not.toContain('SSi HQ')
+    expect(hubCards('admin').length).toBeGreaterThan(0)
   })
 })
