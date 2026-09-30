@@ -53,6 +53,13 @@
       "by": "Tom (explicit go in chat, 2026-09-28 18:49Z, via Watson)",
       "why": "Tom: 'I think these are small enough to be done in one go, now' - render the held audio_pass_requests backlog (54 courses, <=370k chars before reuse; first-render courses, Arabic and gle_for_eng excluded). Job-scoped: draws on its own allowance, never on the 100k daily cap other jobs use.",
       "until": "2026-09-28T23:59:59Z"
+    },
+    {
+      "job": "#913",
+      "extraDailyChars": 300000,
+      "by": "Tom (in chat, 2026-09-30 11:38Z, via Watson)",
+      "why": "Tom: 'If other people want to generate audio, we still have 100,000 character cap. But if I am approving a run, we can just go ahead and do it. It would probably be sensible to have a cap at something like maybe 300,000' (ruling recorded 2026-09-30). Job #913 renders only the gle_for_eng practice phrases with no existing Irish recording. Job-scoped: lifts the per-provider caps for #913 alone; the total is held by its tts_spend_total_cap_raises approval row, never above 300k/day.",
+      "until": "2026-10-14T23:59:59Z"
     }
   ],
   "repeatExemptions": [

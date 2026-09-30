@@ -28,7 +28,7 @@ const guard = (o = {}) => uncapped(createSpendGuard({
   notify: o.notify || (() => {}), usageReaders: o.usageReaders || {}, logger: { warn() {}, error() {} },
   ...('budgetPath' in o ? { budgetPath: o.budgetPath } : {}),
 }))
-function uncapped(g) { g.store.totalCapChars = Infinity; return g }
+function uncapped(g) { g.store.totalCapChars = Infinity; g.store.totalCeilingChars = Infinity; return g }
 // Every call carries a ticket from a real (empty) clip-library lookup (job #677):
 // the guard pays nobody who has not asked the library.
 const lookedUp = async (voiceId, text) => (await require('./clip-library.cjs').lookupForRender({ text, language: 'hin', voiceId, voiceBound: true }, require('./clip-library.cjs').memoryClipLibrary([]))).ticket
