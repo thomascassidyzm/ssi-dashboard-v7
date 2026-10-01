@@ -100,7 +100,7 @@ async function main() {
   } catch (e) { await pg.query('ROLLBACK'); throw e; }
   await require('../../services/shared/round-index-refresh.cjs').refreshNow();
   const { queueAudioPass } = require('../../services/shared/audio-pass-queue.cjs');
-  const pass = await queueAudioPass(supabase, { courseCode: COURSE, requestedBy: `@${SWEEP}`, reason: `job ${JOB}: 8 phrases re-texted for Deborah's findings; 20 slots await /api/audio/render`, metadata: { job: JOB, seeds: SEEDS, rows: ROWS.length } });
+  const pass = await queueAudioPass(supabase, { courseCode: COURSE, requestedBy: `@${SWEEP}`, reason: `job ${JOB}: 8 phrases re-texted for Deborah's findings; 20 slots await /api/audio/render`, metadata: { seeds: SEEDS, rows: ROWS.length }, append: true, metadataKey: SWEEP });
   console.log(`APPLIED. unapproveEvent=${unapproveEvent} audioPass=${JSON.stringify(pass)}`);
   await pg.end();
 }

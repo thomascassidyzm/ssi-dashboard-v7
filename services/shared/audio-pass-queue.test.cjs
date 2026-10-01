@@ -43,4 +43,11 @@ describe('queueAudioPass and a held request', () => {
     expect(r.queued).toBe(true)
     expect(sb.rows.filter(x => x.status === 'pending')).toHaveLength(1)
   })
+
+  it('append: joining an open request keeps its reason and requester, metadata under its own key', async () => {
+    const sb = fakeSupabase([{ id: 'p1', course_code: 'cat_for_eng', status: 'pending', reason: 'Earlier pronunciation repairs', requested_by: 'X', metadata: { rows: 99 } }])
+    await queueAudioPass(sb, { courseCode: 'cat_for_eng', reason: 'job 46: 8 phrases', requestedBy: '@sweep', metadata: { rows: 8 }, append: true, metadataKey: 'cat-deborah' })
+    expect(sb.rows).toHaveLength(1)
+    expect(sb.rows[0]).toMatchObject({ reason: 'Earlier pronunciation repairs; job 46: 8 phrases', requested_by: 'X', metadata: { rows: 99, 'cat-deborah': { rows: 8 } } })
+  })
 })
