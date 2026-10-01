@@ -50,4 +50,11 @@ describe('queueAudioPass and a held request', () => {
     expect(sb.rows).toHaveLength(1)
     expect(sb.rows[0]).toMatchObject({ reason: 'Earlier pronunciation repairs; job 46: 8 phrases', requested_by: 'X', metadata: { rows: 99, 'cat-deborah': { rows: 8 } } })
   })
+
+  it('append: with no open request the insert also nests metadata under its key', async () => {
+    const sb = fakeSupabase([])
+    await queueAudioPass(sb, { courseCode: 'cat_for_eng', reason: 'job 46', metadata: { rows: 8 }, append: true, metadataKey: 'sweep' })
+    expect(sb.rows).toHaveLength(1)
+    expect(sb.rows[0].metadata).toEqual({ sweep: { rows: 8 } })
+  })
 })
