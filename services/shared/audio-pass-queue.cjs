@@ -22,7 +22,7 @@ const logger = createLogger('AudioPassQueue')
  * Idempotent: one pending row per course; a repeat call updates reason/metadata.
  * Never throws — a content pass must not fail because the queue write did.
  */
-async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null, metadata = {} }) {
+async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null, metadata = {}, append = false, metadataKey = null }) {
   // Human-voice courses never enter a render queue, and an audio_pass_request IS
   // a render queue entry — phase8 /generate fulfils it. This is the route by which
   // an ordinary Welsh text edit would have quietly proposed synthesis over Aran's
@@ -42,7 +42,7 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
   try {
     const { data: existing } = await supabase
       .from('audio_pass_requests')
-      .select('id, metadata, status')
+      .select('id, metadata, status, reason, requested_by')
       .eq('course_code', courseCode)
       // A HELD request (Tom 2026-09-28, job #569: "no big audio jobs going at
       // all") is still the course's open request: a new text edit joins it and
@@ -64,14 +64,22 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
       // concatenated onto it by hand to avoid destroying that record.)
       // If your pass is adding to a row that may already exist, read the current
       // reason first and append to it rather than passing your own text alone.
+      // `append: true` is the safe way to join a request someone else opened: the
+      // open request's reason gains this pass's reason (not replaced), its requester
+      // is kept, and this pass's metadata goes under its own `metadataKey` instead
+      // of overwriting shared keys. Default behaviour is unchanged for old callers.
+      const patch = append
+        ? {
+            reason: !existing.reason ? reason
+              : existing.reason.includes(reason) ? existing.reason
+              : `${existing.reason}; ${reason}`,
+            requested_by: existing.requested_by || requestedBy,
+            metadata: { ...(existing.metadata || {}), [metadataKey || 'passes']: metadata },
+          }
+        : { reason, requested_by: requestedBy, metadata: { ...existing.metadata, ...metadata } }
       const { error } = await supabase
         .from('audio_pass_requests')
-        .update({
-          reason,
-          requested_by: requestedBy,
-          metadata: { ...existing.metadata, ...metadata },
-          updated_at: new Date().toISOString()
-        })
+        .update({ ...patch, updated_at: new Date().toISOString() })
         .eq('id', existing.id)
       if (error) throw error
       logger.info(`Touched ${existing.status} audio-pass request for ${courseCode} (${reason})`)
