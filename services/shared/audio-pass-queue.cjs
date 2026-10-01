@@ -88,7 +88,7 @@ async function queueAudioPass(supabase, { courseCode, reason, requestedBy = null
 
     const { data, error } = await supabase
       .from('audio_pass_requests')
-      .insert({ course_code: courseCode, reason, requested_by: requestedBy, metadata })
+      .insert({ course_code: courseCode, reason, requested_by: requestedBy, metadata: append ? { [metadataKey || 'passes']: metadata } : metadata })
       .select('id')
       .single()
     if (error) throw error
