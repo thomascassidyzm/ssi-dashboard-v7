@@ -116,7 +116,7 @@ async function main () {
       return
     }
     const canon = (await db.query('select id, global_order, speaker, english_text from canonical_pod_scenarios where pod_slug=$1 order by global_order', [SLUG])).rows
-    const wanted = (arg('langs') || '').split(',').filter(Boolean)
+    const wanted = [...new Set((arg('langs') || '').split(',').filter(Boolean))]
     for (const lang of wanted) {
       if (!BIG_TEN_TARGETS.includes(lang)) { console.log(`${lang}: not a big-ten target — skipped`); continue }
       if (counts[lang]) { console.log(`${lang}: already has ${counts[lang]} lines — never re-translated`); continue }
