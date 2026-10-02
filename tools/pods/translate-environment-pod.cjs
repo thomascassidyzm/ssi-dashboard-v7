@@ -32,11 +32,30 @@ const SOURCE_POD = 'ita_for_eng:environment-conversation'
 // The premium "big ten" targets (packages/core/src/pricing/access.ts BIG_10); eng is the source.
 // Order is the schedule's wave order; Arabic is last (Aran leads Arabic).
 const BIG_TEN_TARGETS = ['ita', 'spa', 'fra', 'deu', 'por', 'zho', 'jpn', 'kor', 'ara']
+// Job #263 (Tom 2026-10-01): the 16 further pod-1 languages/variants. 'eng' is the canonical English copied verbatim,
+// exactly as pod-1 did (its eng rows equal english_text). Same store, same shape, same adopted_from=NULL as the big ten.
+const EXTRA_TARGETS = ['cat', 'cym_n', 'cym_s', 'eus', 'fra_ca', 'gle', 'hin', 'hrv', 'isl', 'nld', 'ron', 'spa_mx', 'swe', 'por_br', 'ara_eg', 'eng']
+const ALL_TARGETS = [...BIG_TEN_TARGETS, ...EXTRA_TARGETS]
 const LANG_NAME = {
   spa: 'Spanish (neutral Castilian-leaning, European)', fra: 'French (France)', deu: 'German (standard, informal du)',
   por: 'Portuguese (European)', zho: 'Chinese (Simplified, Mandarin, natural spoken register)',
   jpn: 'Japanese (natural spoken register, no romaji)', kor: 'Korean (natural informal-polite speech, 해요체)',
   ara: 'Arabic (Modern Standard Arabic, conversational tone, Arabic script)',
+  cat: 'Catalan (standard, natural spoken register)',
+  cym_n: 'North Walian Welsh (Cymraeg y Gogledd: use northern forms such as "dw i", "rwyt ti"/"ti", "gen i", "mae gen i", "isio", "(dd)im", "rŵan", "lle" and northern vocabulary and pronunciation-led spellings; natural spoken register, informal ti)',
+  cym_s: 'South Walian Welsh (Cymraeg y De: use southern forms such as "'+"'da fi"+'", "moyn"/"ishe", "nawr", "fi'+"'n"+'", "chi/ti", "gwd", "mas", "lan", "'+"'na"+'" and southern vocabulary; natural spoken register, informal ti; deliberately different from the northern form wherever the dialects differ)',
+  eus: 'Basque (Euskara Batua, natural spoken register, standard zu forms, no hika)',
+  fra_ca: 'Canadian French (Quebec; natural Québécois spoken register, Quebec vocabulary and idiom, tu-form)',
+  gle: 'Irish (Gaeilge, standard Caighdeán with natural spoken register)',
+  hin: 'Hindi (Devanagari script, natural spoken register, informal tum/tu-neutral, common English loanwords kept where natural)',
+  hrv: 'Croatian (standard, natural spoken register)',
+  isl: 'Icelandic (natural spoken register)',
+  nld: 'Dutch (Netherlands, natural spoken register, informal je/jij)',
+  ron: 'Romanian (natural spoken register, informal tu)',
+  spa_mx: 'Mexican Spanish (natural Mexican spoken register and vocabulary, tú, ustedes not vosotros)',
+  swe: 'Swedish (natural spoken register, informal du)',
+  por_br: 'Brazilian Portuguese (natural Brazilian spoken register and vocabulary, você/tu-neutral, gerund forms)',
+  ara_eg: 'Egyptian Arabic (Masri colloquial, Arabic script, natural spoken Cairene register; NOT Modern Standard Arabic)',
 }
 const CHUNK = 45
 const arg = (n) => { const a = process.argv.find(x => x.startsWith(`--${n}=`)); return a ? a.split('=').slice(1).join('=') : null }
@@ -112,16 +131,16 @@ async function main () {
     const n = await ensureCanon(db)
     const counts = await langCounts(db)
     if (process.argv.includes('--status')) {
-      console.log(JSON.stringify({ canonicalEnglishLines: n, languages: counts, remaining: BIG_TEN_TARGETS.filter(l => !counts[l]) }))
+      console.log(JSON.stringify({ canonicalEnglishLines: n, languages: counts, remaining: ALL_TARGETS.filter(l => !counts[l]) }))
       return
     }
     const canon = (await db.query('select id, global_order, speaker, english_text from canonical_pod_scenarios where pod_slug=$1 order by global_order', [SLUG])).rows
     const wanted = [...new Set((arg('langs') || '').split(',').filter(Boolean))]
     for (const lang of wanted) {
-      if (!BIG_TEN_TARGETS.includes(lang)) { console.log(`${lang}: not a big-ten target — skipped`); continue }
+      if (!ALL_TARGETS.includes(lang)) { console.log(`${lang}: not a pod target — skipped`); continue }
       if (counts[lang]) { console.log(`${lang}: already has ${counts[lang]} lines — never re-translated`); continue }
       if (!APPLY) { console.log(`${lang}: would translate ${canon.length} lines (dry run: no model call)`); continue }
-      const text = await translateLang(lang, canon)
+      const text = lang === 'eng' ? canon.map(r => r.english_text) : await translateLang(lang, canon)
       await db.query('begin')
       try {
         for (let i = 0; i < canon.length; i++) {
