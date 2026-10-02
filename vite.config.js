@@ -19,6 +19,11 @@ try {
 // always) talks to the machine the switcher picks, exactly as before.
 const PREVIEW_BACKENDS = {
   'preview/popty-community-builders': 'https://watson-1.tail4968cb.ts.net:8471',
+  // THE STAGING TIER (staging.popty.app serves this branch; Tom, 2026-10-02). Its backend is the
+  // staging production-api on 3490, mounted at /staging on the same public funnel (:8443) that
+  // popty.app uses, so a phone anywhere can reach it. NB it runs against the LIVE Supabase,
+  // shared with production: staging is for reviewing CODE, not for data isolation.
+  'deploy/staging': 'https://watson-1.tail4968cb.ts.net:8443/staging',
 }
 
 // A preview branch's Vercel build has no env of its own (the project's

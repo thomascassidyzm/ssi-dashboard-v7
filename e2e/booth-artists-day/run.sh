@@ -3,7 +3,7 @@
 # staging down, fixture unresettable, any assertion failing — all non-zero, so
 # the nightly line goes red rather than could-not-run. Run from the repo root.
 #
-#   REFRESH_STAGING=1 sh e2e/booth-artists-day/run.sh   # nightly: bring ~/wt-staging to origin/main first
+#   REFRESH_STAGING=1 sh e2e/booth-artists-day/run.sh   # nightly: bring ~/wt-staging to origin/deploy/staging first
 #   sh e2e/booth-artists-day/run.sh                      # just run against staging as it stands
 #
 # Staging is the pair of user units on this box: cs-long-staging-api (production-api
@@ -49,10 +49,22 @@ LINE_COUNT=$(node -e 'process.stdout.write(String(require("./e2e/booth-artists-d
 
 if [ "${REFRESH_STAGING:-0}" = 1 ]; then
   sh e2e/booth-artists-day/ensure-staging.sh "$STAGING_DIR" "$(pwd)" || exit 1
+  # THE VERDICT THE DAILY PROMOTION READS (tools/promote-staging.cjs): one line per run, naming the
+  # exact staging SHA this run tested and its exit code, written however the run ends — a run that
+  # dies after staging was provisioned is a RED line for that SHA, not silence. Staging is only
+  # promoted to main when the line for its current SHA is green.
+  VERDICT_SHA=$(cd "$STAGING_DIR" && git rev-parse HEAD)
+  VERDICTS_FILE=${SSI_EVIDENCE_ROOT:-$HOME/ssi-evidence/ssi-dashboard-v7}/e2e/booth-artists-day/verdicts.jsonl
+  write_verdict() {
+    rc=$?
+    mkdir -p "$(dirname "$VERDICTS_FILE")"
+    printf '{"sha":"%s","rc":%s,"at":"%s"}\n' "$VERDICT_SHA" "$rc" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$VERDICTS_FILE"
+  }
+  trap write_verdict EXIT
   want=$(cd "$STAGING_DIR" && git rev-parse --short=8 HEAD)
   have=$(node -e "try{console.log(require('$STAGING_DIR/dist/version.json').version)}catch{console.log('')}")
   if [ "$want" != "$have" ]; then
-    echo "staging SPA is at '$have', main is $want — building"
+    echo "staging SPA is at '$have', deploy/staging is $want — building"
     ( cd "$STAGING_DIR" && NODE_OPTIONS=--max-old-space-size=8192 node_modules/.bin/vite build > "$STAGING_DIR/staging-build.log" 2>&1 ) || die "vite build failed in $STAGING_DIR (see staging-build.log)"
   fi
   start_unit cs-long-staging-api.service "PRODUCTION_API_PORT=3490 AUDIT_ARCHIVE_CRON=off TAIL_REPAIR_MODE=flag node services/production-api.cjs > $STAGING_DIR/staging-api.log 2>&1"

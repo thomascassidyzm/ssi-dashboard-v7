@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily Popty staging -> main promotion
+
+[Timer]
+# The nightly booth-artists-day check runs ~02:00 UTC (command-surface ci-checks) and writes its
+# verdict for the staging SHA; 07:00 UTC leaves it hours to finish, before Tom's day starts.
+OnCalendar=*-*-* 07:00:00 UTC
+Persistent=true
+
+[Install]
+WantedBy=timers.target

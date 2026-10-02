@@ -4,7 +4,7 @@
 #   sh e2e/booth-artists-day/ensure-staging.sh <staging-dir> [repo-root]
 #
 # Staging is a git worktree of this repo living outside it (default ~/wt-staging), with its
-# node_modules and .env linked to the shared checkout's real ones, fast-forwarded to origin/main.
+# node_modules and .env linked to the shared checkout's real ones, fast-forwarded to origin/$BRANCH (deploy/staging).
 # It used to be made by hand, once, in September 2026 — and on the night of 2026-09-15 it went
 # missing and the nightly booth check went red with "no staging tree", which is a true statement
 # about the box and tells nobody anything about the booth. Environment a human made by hand once
@@ -61,5 +61,12 @@ if [ "$cur" != "$BRANCH" ]; then
   echo "ensure-staging: $DIR was on '$cur'; switched back to $BRANCH"
 fi
 
-( cd "$DIR" && git fetch -q origin main && git merge --ff-only origin/main >/dev/null ) \
-  || die "could not fast-forward $DIR to origin/main"
+# Staging tracks ITS OWN branch (deploy/staging), not main — since 2026-10-02 workers land on
+# deploy/staging and the daily promotion (tools/promote-staging.cjs) moves main up from it, so
+# "staging = origin/main" would test yesterday's code and never the change under review. A branch
+# that does not exist on origin yet (the first provision, a test branch) is left where it is.
+git -C "$DIR" fetch -q origin "$BRANCH" 2>/dev/null
+if git -C "$DIR" show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
+  ( cd "$DIR" && git merge --ff-only "origin/$BRANCH" >/dev/null ) \
+    || die "could not fast-forward $DIR to origin/$BRANCH"
+fi

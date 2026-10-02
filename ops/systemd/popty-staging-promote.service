@@ -1,0 +1,12 @@
+[Unit]
+Description=Promote Popty staging (deploy/staging) to main when the booth check is green and no journey file changed
+
+[Service]
+Type=oneshot
+# Runs from the staging tree: it is the checkout guaranteed to hold tools/promote-staging.cjs
+# once the tier has landed, and the script only fetches and pushes refs (no checkout, no merge).
+WorkingDirectory=/home/tomcassidy/wt-staging
+ExecStart=/usr/bin/node tools/promote-staging.cjs --repo /home/tomcassidy/wt-staging
+TimeoutStartSec=2min
+StandardOutput=append:/home/tomcassidy/.local/log/popty-staging-promote.log
+StandardError=append:/home/tomcassidy/.local/log/popty-staging-promote.log

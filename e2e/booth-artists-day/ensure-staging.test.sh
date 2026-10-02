@@ -72,6 +72,15 @@ echo "$out" | grep -q "public/stray.html" && ok "message names the untracked fil
 [ -f "$DIR/public/stray.html" ] && [ "$(git -C "$DIR" rev-parse HEAD)" = "$before" ] && ok "tree untouched" || bad "tree changed under an untracked file"
 rm -f "$DIR/public/stray.html"
 
+echo "staging follows its OWN branch (origin/deploy/staging), not main — the 2026-10-02 tier"
+rm -f "$DIR/public/stray.html"
+AHEAD=$(git -C "$REPO" commit-tree "$(git -C "$REPO" rev-parse 'origin/main^{tree}')" -p "$(git -C "$REPO" rev-parse origin/main)" -m "test: staging is ahead of main")
+git -C "$REPO" update-ref "refs/remotes/origin/$BR" "$AHEAD"
+STAGING_BRANCH=$BR sh "$REPO/e2e/booth-artists-day/ensure-staging.sh" "$DIR" "$REPO" >/dev/null 2>&1
+have=$(git -C "$DIR" rev-parse HEAD 2>/dev/null || echo none)
+[ "$have" = "$AHEAD" ] && ok "staging fast-forwarded to origin/$BR, past main" || bad "staging is at $have, origin/$BR is $AHEAD (still tracking main?)"
+git -C "$REPO" update-ref -d "refs/remotes/origin/$BR"
+
 echo
 [ "$fails" -eq 0 ] && { echo "ensure-staging: all checks passed"; exit 0; }
 echo "ensure-staging: $fails check(s) FAILED"; exit 1
