@@ -34,7 +34,7 @@ const JOB = '#356';
 const SWEEP = 'spa-italian-rules-apply-2026-10-02';
 const SURFACE = `tools/course-optimization/${SWEEP}.cjs`;
 const RULING = 'Kai 2026-10-02 (job #356): apply to spa_for_eng only what is clearly the same as his Italian rulings — P26 (#635·I), K41 (#936·I/#937·I), P27/K14, K32 (#639·I), one-off grammar with the correct form taught — holding everything else';
-const CAST = { known: ['xai_eve', 'eve'], target1: ['azure_es-ES-ElviraNeural', 'es-ES-ElviraNeural'], target2: ['azure_es-ES-AlvaroNeural', 'es-ES-AlvaroNeural'], presentation: ['xai_eve', 'eve'] };
+const CAST = { known: ['xai_eve', 'eve', 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'], target1: ['azure_es-ES-ElviraNeural', 'es-ES-ElviraNeural'], target2: ['azure_es-ES-AlvaroNeural', 'es-ES-AlvaroNeural'], presentation: ['xai_eve', 'eve'] };
 
 // ── pure rules (the test exercises these) ─────────────────────────────────────────────────────────────
 /** Spanish-safe normaliser: the Italian one leaves ¿ ¡ on, so "¿tienes" never equals "tienes". */
