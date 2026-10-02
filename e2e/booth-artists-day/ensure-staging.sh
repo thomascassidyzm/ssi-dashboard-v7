@@ -51,7 +51,7 @@ done
 # dist, so staging would serve it. --untracked-files=all lists each file, not just its directory;
 # .gitignore is still respected.
 status=$(git -C "$DIR" status --porcelain --untracked-files=all) || die "could not read git status of $DIR"
-dirty=$(printf '%s\n' "$status" | sed 's/^...//' | tr '\n' ' ')
+dirty=$(printf '%s' "$status" | sed 's/^...//' | tr '\n' ' ')
 if [ -n "$dirty" ]; then
   die "$DIR has uncommitted or untracked changes ($dirty) — refusing to switch branch or fast-forward; commit or discard them by hand"
 fi
