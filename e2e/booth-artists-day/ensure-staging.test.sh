@@ -63,6 +63,15 @@ echo "$out" | grep -q "services/production-api.cjs" && ok "message names the dir
 git -C "$DIR" checkout -q -- services/production-api.cjs
 git -C "$DIR" checkout -q "$BR"; git -C "$DIR" branch -D "$STRAY" >/dev/null 2>&1
 
+echo "an untracked file in a tracked-clean staging tree is refused, and left exactly as it was"
+echo "<p>stray</p>" > "$DIR/public/stray.html"
+before=$(git -C "$DIR" rev-parse HEAD)
+out=$(STAGING_BRANCH=$BR sh "$REPO/e2e/booth-artists-day/ensure-staging.sh" "$DIR" "$REPO" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && ok "exited non-zero" || bad "exited 0 with an untracked file in the tree"
+echo "$out" | grep -q "public/stray.html" && ok "message names the untracked file" || bad "message does not name the untracked file: $out"
+[ -f "$DIR/public/stray.html" ] && [ "$(git -C "$DIR" rev-parse HEAD)" = "$before" ] && ok "tree untouched" || bad "tree changed under an untracked file"
+rm -f "$DIR/public/stray.html"
+
 echo
 [ "$fails" -eq 0 ] && { echo "ensure-staging: all checks passed"; exit 0; }
 echo "ensure-staging: $fails check(s) FAILED"; exit 1

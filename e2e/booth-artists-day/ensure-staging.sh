@@ -47,9 +47,12 @@ done
 # stray branch loses nothing, a checkout never deletes commits. A dirty tree refuses, loudly.
 # Uncommitted edits make a switch or fast-forward unsafe: run.sh restarts the API from this tree
 # straight after, so it would serve stray code. Refuse before touching anything (review #278).
-if ! { git -C "$DIR" diff --quiet && git -C "$DIR" diff --cached --quiet; }; then
-  dirty=$( { git -C "$DIR" diff --name-only; git -C "$DIR" diff --cached --name-only; } | sort -u | tr '\n' ' ')
-  die "$DIR has uncommitted changes ($dirty) — refusing to switch branch or fast-forward; commit or discard them by hand"
+# Untracked files count too: run.sh rebuilds and Vite copies an untracked public/stray.html into
+# dist, so staging would serve it. --untracked-files=all lists each file, not just its directory;
+# .gitignore is still respected.
+dirty=$(git -C "$DIR" status --porcelain --untracked-files=all | sed 's/^...//' | tr '\n' ' ')
+if [ -n "$dirty" ]; then
+  die "$DIR has uncommitted or untracked changes ($dirty) — refusing to switch branch or fast-forward; commit or discard them by hand"
 fi
 cur=$(git -C "$DIR" rev-parse --abbrev-ref HEAD 2>/dev/null || true)
 if [ "$cur" != "$BRANCH" ]; then
