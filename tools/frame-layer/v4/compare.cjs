@@ -16,7 +16,7 @@ const LANG = { fra_for_eng: 'French', deu_for_eng: 'German', gle_for_eng: 'Irish
 const name = (id) => `${id} ${(PATTERNS.find(p => p.id === id) || {}).name || ''}`;
 
 function main() {
-  const files = fs.readdirSync(EVIDENCE).filter(f => /^v4-.*\.json$/.test(f)).sort();
+  const files = fs.readdirSync(EVIDENCE).filter(f => /^v4-.*\.json$/.test(f) && !f.includes('.candidates-')).sort();
   const cache = {};
   const rows = [], examples = [];
   for (const f of files) {

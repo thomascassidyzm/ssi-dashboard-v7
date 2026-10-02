@@ -25,7 +25,7 @@ function sample(arr, n, rnd) { const a = [...arr]; for (let i = a.length - 1; i 
 
 function build(course, n = 30) {
   const rnd = mulberry32(468);
-  const files = fs.readdirSync(EVIDENCE).filter(f => f.startsWith(`v4-${course}-`) && f.endsWith('.json'));
+  const files = fs.readdirSync(EVIDENCE).filter(f => f.startsWith(`v4-${course}-`) && f.endsWith('.json') && !f.includes('.candidates-'));
   const v4 = files.flatMap(f => { const o = JSON.parse(fs.readFileSync(path.join(EVIDENCE, f), 'utf8')); return o.kept.map(p => ({ ...p, region: o.region })); });
   const regions = files.map(f => JSON.parse(fs.readFileSync(path.join(EVIDENCE, f), 'utf8')).region);
   const data = loadCourse(course);
