@@ -15,9 +15,11 @@
  *      the frame it carries, is the brief's spine. The model is told to cover
  *      every available frame across the region's phrases, each phrase being a
  *      new LEGO inside a frame carried by old material.
- *   2. GENERATE. One model call per region (claude --print, opus — the same
- *      family and tier that wrote the live v3 Irish rows, so the comparison is
- *      of designs, not of models). Never the Anthropic SDK.
+ *   2. GENERATE. One model call per region via claude --print, never the
+ *      Anthropic SDK. Model: FABLE (family name) — Tom named it for this work
+ *      (#471, 2026-10-02); the Irish pilot (#468) ran on Opus. Effort is LOW:
+ *      the Opus calls spent ~34k thinking tokens per region because
+ *      MAX_THINKING_TOKENS alone did not bite; --effort is the lever that does.
  *   3. GATE, mechanically, never trusting a claim:
  *        - every phrase contains its LEGO on both sides;
  *        - the target tiles from whole chunks available to THAT basket
@@ -34,8 +36,13 @@
  *
  * Token discipline: every call's usage is recorded; the run refuses to start a
  * new model call once --budget tokens have been spent. No unbounded loops.
+ * Every candidate set is written to disk the moment the call returns, BEFORE
+ * any gate or retry — #468 lost a 60k-token French set because the retry was
+ * refused by the budget and the script only saved at the end. A refused retry
+ * now gates and saves what the first call produced.
  *
  * Usage: node tools/frame-layer/v4/generate-v4.cjs <course> <start> <end> [--dry] [--budget 400000]
+ * Env: V4_MODEL (fable) · V4_EFFORT (low) · V4_LEDGER (token-ledger.json, in the evidence dir)
  */
 const fs = require('fs');
 const path = require('path');
@@ -48,7 +55,9 @@ const { scoreWindow, stripInterjections, framesOf } = require('./window-coverage
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '468-frame-diversity');
-const MODEL = process.env.V4_MODEL || 'opus';
+const MODEL = process.env.V4_MODEL || 'fable';
+const EFFORT = process.env.V4_EFFORT || 'low';
+const LEDGER_FILE = process.env.V4_LEDGER || 'token-ledger.json';
 const CLAUDE = '/home/tomcassidy/.local/bin/claude';
 const BUILD_FLOOR = 4, USE_FLOOR = 5;
 
@@ -161,14 +170,21 @@ Reply with JSON only, no prose, no code fence:
 }
 
 // ---------- the model call ----------
-function callModel(prompt, { timeoutMs = 1200000 } = {}) {
-  const { claudeEnv } = require(path.join(ROOT, 'services', 'shared', 'claude-config.cjs'));
-  const args = ['--print', '--model', MODEL, '--output-format', 'json', '--tools', '',
+// The CLI invocation, exported so a test can assert the model and the effort
+// bound without spending a token. --effort is what bounds thinking on Fable
+// and Opus (probe 2026-10-02: fable + low → thinking_tokens 0 on a planning
+// prompt); MAX_THINKING_TOKENS is kept as belt-and-braces but was shown not to
+// bite on Opus in #468.
+function claudeArgs() {
+  return ['--print', '--model', MODEL, '--effort', EFFORT, '--output-format', 'json', '--tools', '',
     '--system-prompt', 'You write practice phrases for a language course. You follow the rails exactly and reply with JSON only.',
     '--exclude-dynamic-system-prompt-sections'];
+}
+
+function callModel(prompt, { timeoutMs = 1200000 } = {}) {
+  const { claudeEnv } = require(path.join(ROOT, 'services', 'shared', 'claude-config.cjs'));
+  const args = claudeArgs();
   const t0 = Date.now();
-  // Thinking is capped: the shakedown region spent 41k output tokens of which
-  // ~34k were thinking, for 216 phrases. 3,000 is enough to plan a basket.
   const env = { ...claudeEnv(process.env), MAX_THINKING_TOKENS: String(process.env.V4_THINKING || 3000) };
   let raw;
   try {
@@ -180,7 +196,8 @@ function callModel(prompt, { timeoutMs = 1200000 } = {}) {
   if (j.is_error) throw new Error(`model error: ${String(j.result).slice(0, 300)}`);
   const u = j.usage || {};
   const usage = { input: u.input_tokens || 0, cache_create: u.cache_creation_input_tokens || 0, cache_read: u.cache_read_input_tokens || 0,
-    output: u.output_tokens || 0, cost_usd: j.total_cost_usd || 0, model: Object.keys(j.modelUsage || {})[0] || null, ms: Date.now() - t0 };
+    output: u.output_tokens || 0, thinking: (u.output_tokens_details || {}).thinking_tokens ?? null,
+    cost_usd: j.total_cost_usd || 0, model: Object.keys(j.modelUsage || {})[0] || null, effort: EFFORT, ms: Date.now() - t0 };
   usage.total = usage.input + usage.cache_create + usage.cache_read + usage.output;
   const m = String(j.result || '').match(/\{[\s\S]*\}/);
   if (!m) throw new Error('no JSON in model output: ' + String(j.result).slice(0, 300));
@@ -271,13 +288,15 @@ async function run(course, start, end, { dry = false, budget = 400000 } = {}) {
 
   // CUMULATIVE budget across every region of the pilot: a ledger in the evidence
   // dir, read before each call. Tom's cap for the whole pilot is ~400k tokens.
-  const ledger = path.join(EVIDENCE, 'token-ledger.json');
+  const ledger = path.join(EVIDENCE, LEDGER_FILE);
   const readLedger = () => { try { return JSON.parse(fs.readFileSync(ledger, 'utf8')); } catch { return { total: 0, calls: [] }; } };
   let spent = 0;
   const call = (p, label) => {
     const L = readLedger();
     if (L.total >= budget) throw new Error(`pilot budget ${budget} tokens exhausted (ledger ${L.total}) before ${course} ${start}-${end} ${label}`);
     const r = callModel(p);
+    // SAVE FIRST: the raw candidate set hits disk before the ledger, the gates or any retry.
+    persistCandidates(file, label, r);
     spent += r.usage.total;
     L.total += r.usage.total; L.calls.push({ course, start, end, label, ...r.usage, at: new Date().toISOString() });
     fs.writeFileSync(ledger, JSON.stringify(L, null, 1));
@@ -297,8 +316,13 @@ async function run(course, start, end, { dry = false, budget = 400000 } = {}) {
       reasons: [...new Set(g.rejected.filter(r => r.seed_number === f.lego.seed_number && r.lego_index === +f.lego.lego_index).flatMap(r => r.reasons))].slice(0, 6)
         .concat([`had ${f.build} BUILD and ${f.use} USE after gating; needs ${BUILD_FLOOR}+${USE_FLOOR}`]) }));
     const p2 = buildPrompt({ course, region: [start, end], seeds, newLegos: failing.map(f => f.lego), allChunks, available, carriers, retry });
-    const c2 = call(p2, 'retry');
-    const g2 = gate(c2, { course, data, newLegos, liveZut, available });
+    let c2 = null;
+    try { c2 = call(p2, 'retry'); } catch (e) {
+      // A refused retry (budget) is a finding, never a lost set: gate and save the first call's phrases.
+      if (!/budget/.test(e.message)) throw e;
+      out.retry_refused = e.message; console.log(`  retry refused: ${e.message}`);
+    }
+    const g2 = c2 ? gate(c2, { course, data, newLegos, liveZut, available }) : { kept: [], rejected: [] };
     const failIds = new Set(failing.map(f => f.id));
     const keepOld = g.kept.filter(p => !failIds.has(`S${p.seed_number}L${p.lego_index}`));
     const oldForFailing = g.kept.filter(p => failIds.has(`S${p.seed_number}L${p.lego_index}`));
@@ -321,7 +345,14 @@ async function run(course, start, end, { dry = false, budget = 400000 } = {}) {
   return out;
 }
 
-module.exports = { run, gate, tiles, knownSideCheck, buildPrompt, carriersByFrame };
+/** Candidate set to disk, named by call: v4-<course>-<s>-<e>.candidates-<label>.json */
+function persistCandidates(file, label, r) {
+  const p = file.replace(/\.json$/, `.candidates-${label}.json`);
+  fs.writeFileSync(p, JSON.stringify({ label, saved: new Date().toISOString(), usage: r.usage, phrases: r.phrases }, null, 1));
+  return p;
+}
+
+module.exports = { run, gate, tiles, knownSideCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
 
 if (require.main === module) {
   const args = process.argv.slice(2);
