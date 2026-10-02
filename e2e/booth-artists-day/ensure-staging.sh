@@ -50,7 +50,8 @@ done
 # Untracked files count too: run.sh rebuilds and Vite copies an untracked public/stray.html into
 # dist, so staging would serve it. --untracked-files=all lists each file, not just its directory;
 # .gitignore is still respected.
-dirty=$(git -C "$DIR" status --porcelain --untracked-files=all | sed 's/^...//' | tr '\n' ' ')
+status=$(git -C "$DIR" status --porcelain --untracked-files=all) || die "could not read git status of $DIR"
+dirty=$(printf '%s\n' "$status" | sed 's/^...//' | tr '\n' ' ')
 if [ -n "$dirty" ]; then
   die "$DIR has uncommitted or untracked changes ($dirty) — refusing to switch branch or fast-forward; commit or discard them by hand"
 fi
