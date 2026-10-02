@@ -11,6 +11,16 @@ const JOURNEY_PATH_PATTERNS = [
   /^src\/components\/(RecordDoor|AudioRecorder)/,
   /^src\/components\/production\/autocue\/recording\//,
   /^src\/services\/recordingApi\.js$/,
+  // What those views IMPORT is the journey too (review #290: a change to useTapRecorder.js alone
+  // promoted past the hold, though RecordistRoom.vue runs on it). The recording composables, the
+  // recordist view's own directory, the whole autocue tree, and the small libs/utils the
+  // recordist, pod and build views pull in. Re-audit with: grep the imports of the views above.
+  /^src\/composables\/(useTapRecorder|useContinuousRecorder|useStoredClip|useRecordistQueue|useAudioUpload|useAutocueState|autocue-)/,
+  /^src\/views\/recordist\//,
+  /^src\/components\/production\/autocue\//,
+  /^src\/lib\/(recordistNames|podDisplayName|servingPod|podPlayQueue|podArcCompose|podAtoms|podEngine)/,
+  /^src\/utils\/(textDirection|caretFromPoint|breakdownMarkers|voiceSlots)/,
+  /^src\/components\/(PodCastPanel|explainer\/)/,
   // Build cards / pods / proofreading and the builder entrances.
   /^src\/views\/(NetworkBuilder|AppBuilds|PublicAndroidBuild|Pod|CanonicalPod)/,
   /proofread/i,
