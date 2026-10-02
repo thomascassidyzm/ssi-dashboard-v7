@@ -45,6 +45,12 @@ done
 # A stray session once checked its own branch out in this tree (2026-10-02, job #263) and the
 # fast-forward below then diverged. The tree is staging's, so put it back on its branch; the
 # stray branch loses nothing, a checkout never deletes commits. A dirty tree refuses, loudly.
+# Uncommitted edits make a switch or fast-forward unsafe: run.sh restarts the API from this tree
+# straight after, so it would serve stray code. Refuse before touching anything (review #278).
+if ! { git -C "$DIR" diff --quiet && git -C "$DIR" diff --cached --quiet; }; then
+  dirty=$( { git -C "$DIR" diff --name-only; git -C "$DIR" diff --cached --name-only; } | sort -u | tr '\n' ' ')
+  die "$DIR has uncommitted changes ($dirty) — refusing to switch branch or fast-forward; commit or discard them by hand"
+fi
 cur=$(git -C "$DIR" rev-parse --abbrev-ref HEAD 2>/dev/null || true)
 if [ "$cur" != "$BRANCH" ]; then
   git -C "$DIR" checkout -q "$BRANCH" || die "$DIR is on '$cur', not $BRANCH, and could not be switched back"

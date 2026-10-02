@@ -52,6 +52,17 @@ else
   [ -f "$TMP/occupied/file.txt" ] && ok "refused, and left it alone" || bad "refused but touched it"
 fi
 
+echo "a dirty staging tree on a stray branch is refused, and left exactly as it was"
+STRAY=$BR-stray
+git -C "$DIR" checkout -q -b "$STRAY"
+echo "// stray edit" >> "$DIR/services/production-api.cjs"
+out=$(STAGING_BRANCH=$BR sh "$REPO/e2e/booth-artists-day/ensure-staging.sh" "$DIR" "$REPO" 2>&1); rc=$?
+[ "$rc" -ne 0 ] && ok "exited non-zero" || bad "exited 0 with uncommitted edits in the tree"
+[ "$(git -C "$DIR" rev-parse --abbrev-ref HEAD)" = "$STRAY" ] && ok "original branch still checked out" || bad "switched branch under a dirty tree"
+echo "$out" | grep -q "services/production-api.cjs" && ok "message names the dirty file" || bad "message does not name the dirty file: $out"
+git -C "$DIR" checkout -q -- services/production-api.cjs
+git -C "$DIR" checkout -q "$BR"; git -C "$DIR" branch -D "$STRAY" >/dev/null 2>&1
+
 echo
 [ "$fails" -eq 0 ] && { echo "ensure-staging: all checks passed"; exit 0; }
 echo "ensure-staging: $fails check(s) FAILED"; exit 1
