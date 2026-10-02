@@ -42,5 +42,14 @@ for link in node_modules .env; do
   echo "ensure-staging: linked $link -> $src"
 done
 
+# A stray session once checked its own branch out in this tree (2026-10-02, job #263) and the
+# fast-forward below then diverged. The tree is staging's, so put it back on its branch; the
+# stray branch loses nothing, a checkout never deletes commits. A dirty tree refuses, loudly.
+cur=$(git -C "$DIR" rev-parse --abbrev-ref HEAD 2>/dev/null || true)
+if [ "$cur" != "$BRANCH" ]; then
+  git -C "$DIR" checkout -q "$BRANCH" || die "$DIR is on '$cur', not $BRANCH, and could not be switched back"
+  echo "ensure-staging: $DIR was on '$cur'; switched back to $BRANCH"
+fi
+
 ( cd "$DIR" && git fetch -q origin main && git merge --ff-only origin/main >/dev/null ) \
   || die "could not fast-forward $DIR to origin/main"
