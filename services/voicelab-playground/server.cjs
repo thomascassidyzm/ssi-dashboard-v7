@@ -50,7 +50,7 @@ const PORT = Number(process.env.VOICELAB_PORT || 4790)
 const CLIP_DIR = process.env.VOICELAB_CLIP_DIR || path.join(__dirname, '../../scripts/voicelab-playground-clips')
 const LEDGER = path.join(CLIP_DIR, 'ledger.jsonl')
 const MAX_CHARS = 300
-const DAILY_CHAR_CEILING = Number(process.env.VOICELAB_DAILY_CHARS || 60000) // ≈ $0.90/day at xAI rates
+const DAILY_CHAR_CEILING = Number(process.env.VOICELAB_DAILY_CHARS || 260000) // ≈ $0.90/day at xAI rates
 const XAI_USD_PER_MILLION_CHARS = 15
 
 fs.mkdirSync(CLIP_DIR, { recursive: true })

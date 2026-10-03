@@ -53,7 +53,7 @@ const LIMITS = {
   maxCharsPerSentence: 300,
   maxSentencesPerBatch: 20,
   maxConfigs: 2,
-  dailyCharCeiling: Number(process.env.VOICELAB_DAILY_CHARS || 60000), // characters/day across every provider
+  dailyCharCeiling: Number(process.env.VOICELAB_DAILY_CHARS || 260000), // characters/day across every provider
 }
 
 /**

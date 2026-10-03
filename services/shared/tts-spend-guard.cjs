@@ -186,7 +186,7 @@ const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
  * mirrors it for tests.
  */
 const DAILY_TOTAL_CAP = 'DAILY_TOTAL_CAP'
-const TOTAL_DAILY_CAP_CHARS = 100_000
+const TOTAL_DAILY_CAP_CHARS = 260_000 // Tom 2026-10-03 (job #574): 8M/month ÷ 30; was 100,000
 /**
  * THE TOM-APPROVED RUN TIER (job #913, Tom 2026-09-30 11:38Z: "If other people want
  * to generate audio, we still have 100,000 character cap. But if I am approving a
@@ -882,7 +882,7 @@ async function askWatsonForApproval(entry, surface, host) {
     const jobId = (rooms.rooms || []).find(r => r.key === 'watson')?.convId
     if (!jobId) return
     const forWhat = [entry.course && `course ${entry.course}`, entry.job && `job ${entry.job}`, entry.provider && `provider ${entry.provider}`].filter(Boolean).join(', ') || 'an unnamed caller'
-    const text = `Audio approval needed for Tom: the ${Number(entry.cap || 100000).toLocaleString()}-char daily audio cap is reached (${Number(entry.total || 0).toLocaleString()} spent today, UTC). Requested: ${entry.chars != null ? entry.chars : '?'} more chars, for ${forWhat} (host ${host}). Only Tom can grant it: TOM_SAID_RAISE=yes node tools/tts-cap.cjs raise <capChars> <days> "<why>".`
+    const text = `Audio approval needed for Tom: the ${Number(entry.cap || TOTAL_DAILY_CAP_CHARS).toLocaleString()}-char daily audio cap is reached (${Number(entry.total || 0).toLocaleString()} spent today, UTC). Requested: ${entry.chars != null ? entry.chars : '?'} more chars, for ${forWhat} (host ${host}). Only Tom can grant it: TOM_SAID_RAISE=yes node tools/tts-cap.cjs raise <capChars> <days> "<why>".`
     await fetch(`${surface}/api/surface-notice`, { method: 'POST', headers, body: JSON.stringify({ jobId, text, relay: 'tts-cap-approval' }), signal: ctl.signal })
   } finally { clearTimeout(t) }
 }
