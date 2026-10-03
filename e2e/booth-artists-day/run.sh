@@ -19,6 +19,26 @@ export E2E_API_BASE="$API" E2E_BASE_URL="$SPA" E2E_SHOTS="$SHOTS"
 
 die() { echo "booth-artists-day-browser: $*" >&2; exit 1; }
 
+# THE VERDICT THE DAILY PROMOTION READS (tools/promote-staging.cjs): one line per run, naming the
+# staging SHA this run tested and its exit code, written however the run ends. The trap is armed
+# HERE, before the prerequisite checks, the fixture reset and the staging refresh, because every one
+# of those can fail — and a run that dies before the trap exists writes no red line, which leaves
+# yesterday's green for the same SHA eligible for promotion (review #290). VERDICT_SHA starts as the
+# SHA staging is at right now and is re-read after the refresh; if staging has no tree yet there is
+# no SHA to name and nothing a promotion could be reading, so no line is written.
+VERDICT_SHA=""
+if [ "${REFRESH_STAGING:-0}" = 1 ]; then
+  VERDICTS_FILE=${SSI_EVIDENCE_ROOT:-$HOME/ssi-evidence/ssi-dashboard-v7}/e2e/booth-artists-day/verdicts.jsonl
+  VERDICT_SHA=$(cd "$STAGING_DIR" 2>/dev/null && git rev-parse HEAD 2>/dev/null) || VERDICT_SHA=""
+  write_verdict() {
+    rc=$?
+    [ -n "$VERDICT_SHA" ] || return 0
+    mkdir -p "$(dirname "$VERDICTS_FILE")"
+    printf '{"sha":"%s","rc":%s,"at":"%s"}\n' "$VERDICT_SHA" "$rc" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$VERDICTS_FILE"
+  }
+  trap write_verdict EXIT
+fi
+
 # The staging pair are TRANSIENT systemd units (systemd-run), so a reboot takes them with it and
 # `systemctl restart` then fails on a unit that no longer exists — which is how a box that rebooted
 # at 20:25 made the 02:04 booth check red. Restart it if it is there, start it if it is not; either
@@ -49,18 +69,7 @@ LINE_COUNT=$(node -e 'process.stdout.write(String(require("./e2e/booth-artists-d
 
 if [ "${REFRESH_STAGING:-0}" = 1 ]; then
   sh e2e/booth-artists-day/ensure-staging.sh "$STAGING_DIR" "$(pwd)" || exit 1
-  # THE VERDICT THE DAILY PROMOTION READS (tools/promote-staging.cjs): one line per run, naming the
-  # exact staging SHA this run tested and its exit code, written however the run ends — a run that
-  # dies after staging was provisioned is a RED line for that SHA, not silence. Staging is only
-  # promoted to main when the line for its current SHA is green.
   VERDICT_SHA=$(cd "$STAGING_DIR" && git rev-parse HEAD)
-  VERDICTS_FILE=${SSI_EVIDENCE_ROOT:-$HOME/ssi-evidence/ssi-dashboard-v7}/e2e/booth-artists-day/verdicts.jsonl
-  write_verdict() {
-    rc=$?
-    mkdir -p "$(dirname "$VERDICTS_FILE")"
-    printf '{"sha":"%s","rc":%s,"at":"%s"}\n' "$VERDICT_SHA" "$rc" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$VERDICTS_FILE"
-  }
-  trap write_verdict EXIT
   want=$(cd "$STAGING_DIR" && git rev-parse --short=8 HEAD)
   have=$(node -e "try{console.log(require('$STAGING_DIR/dist/version.json').version)}catch{console.log('')}")
   if [ "$want" != "$have" ]; then
