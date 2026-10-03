@@ -175,16 +175,35 @@ function addSample (voiceId, sample) {
   samples.value = { ...cur, samples: { ...(cur.samples || {}), [voiceId]: sample }, missing: (cur.missing || []).filter((v) => v !== voiceId) }
 }
 
+// iOS Safari only lets audio.play() run inside the tap that asked for it; after
+// an await (clipUrl reads the session token, a render fetches) the gesture is
+// gone and play() rejects with NotAllowedError. So the ONE shared element is
+// unlocked (a silent clip, played synchronously) before any await, and the real
+// src is swapped in afterwards — an unlocked element keeps its permission.
+const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAA='
+function unlockedAudio () {
+  if (audio) { audio.onended = null; audio.onerror = null; audio.pause() } else audio = new Audio()
+  audio.src = SILENT_WAV
+  audio.play().catch(() => {})
+  return audio
+}
+
+// A playback failure belongs to that one voice's row. It must never reach the
+// panel-level `error`, which used to replace the whole language table.
+const playErrors = ref({})
+function setPlayError (voiceId, msg) { playErrors.value = { ...playErrors.value, [voiceId]: msg } }
+
 /** One <audio> for the page — two voices at once is not a comparison. */
 async function play (voiceId, url) {
-  if (audio) { audio.pause(); audio = null }
-  if (playing.value === voiceId) { playing.value = ''; return }
+  if (playing.value === voiceId) { if (audio) audio.pause(); playing.value = ''; return }
+  const el = unlockedAudio()
+  setPlayError(voiceId, '')
   const src = /^https?:/.test(url) ? url : await clipUrl(url)
-  audio = new Audio(src)
-  audio.onended = () => { playing.value = '' }
-  audio.onerror = () => { playing.value = ''; error.value = `Could not play ${voiceId}.` }
+  el.onended = () => { playing.value = '' }
+  el.onerror = () => { playing.value = ''; setPlayError(voiceId, `Could not play ${voiceId}.`) }
+  el.src = src
   playing.value = voiceId
-  audio.play().catch((e) => { playing.value = ''; error.value = e.message })
+  el.play().catch((e) => { playing.value = ''; setPlayError(voiceId, e.message) })
 }
 
 /**
@@ -197,13 +216,14 @@ async function hear (voiceId) {
   if (s) return play(voiceId, s.url)
   const l = lang.value
   if (!l || rendering.value) return
+  unlockedAudio() // keep this tap's gesture across the render await
   rendering.value = voiceId
   error.value = ''
   try {
     const out = await api.renderVoiceClip(l.code, voiceId, 0)
     addSample(voiceId, { url: out.clip.url, durationMs: out.clip.durationMs || null, free: false, cached: true })
     await play(voiceId, out.clip.url)
-  } catch (e) { error.value = e.message }
+  } catch (e) { setPlayError(voiceId, e.message) }
   rendering.value = ''
 }
 
@@ -338,7 +358,8 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
     </div>
 
     <p v-if="error" class="vl-err">{{ error }}</p>
-    <p v-else-if="loading" class="vl-muted">Reading every language's cast…</p>
+    <template v-for="(msg, key) in playErrors" :key="'pe:' + key"><p v-if="msg" class="vl-err">{{ key }}: {{ msg }}</p></template>
+    <p v-if="loading" class="vl-muted">Reading every language's cast…</p>
 
     <div v-else class="cast-scroll">
     <p v-if="refreshing" class="vl-muted cast-refreshing">refreshing…</p>
@@ -498,6 +519,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
                         · {{ c.accent ? c.accent.replace(/-/g, ' ') : 'accent not listed' }}<template v-if="c.country"> · {{ c.country }}</template>
                         <template v-if="!sampleOf(c.voiceId)"> · {{ lineChars }} chars to hear</template>
                       </span>
+                      <span v-if="playErrors[c.voiceId]" class="vl-err">{{ playErrors[c.voiceId] }}</span>
                       <span v-if="c.tagline || c.description" class="cast-voice-desc">{{ short(c.tagline || c.description) }}</span>
                     </span>
                     <span v-if="consentBlock(c)" class="cast-sub cast-warn" :title="consentBlock(c)">consent needed — see the legacy view</span>

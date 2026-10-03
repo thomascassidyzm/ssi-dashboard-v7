@@ -321,14 +321,38 @@ function lineFor (lang) { return (samplesByLang.value[lang.code] || {}).line || 
 async function play (lang, voiceId) {
   const sample = samplesFor(lang)[voiceId]
   if (!sample) return
-  if (audio) { audio.pause(); audio = null }
-  if (playing.value === voiceId) { playing.value = ''; return }
-  const src = /^https?:/.test(sample.url) ? sample.url : await clipUrl(sample.url)
-  audio = new Audio(src)
-  audio.onended = () => { playing.value = '' }
-  audio.onerror = () => { playing.value = ''; error.value = `Could not play the sample for ${voiceId}.` }
-  playing.value = voiceId
-  audio.play().catch((e) => { playing.value = ''; error.value = e.message })
+  if (playing.value === voiceId) { stopAudio(); playing.value = ''; return }
+  return startAudio(voiceId, sample.url, `Could not play the sample for ${voiceId}.`)
+}
+
+// iOS Safari only lets audio.play() run inside the tap that asked for it; after
+// an await (clipUrl reads the session token) the gesture is gone and play()
+// rejects with NotAllowedError. So the ONE shared element is created and
+// unlocked (a silent clip, played synchronously) before any await, and the real
+// src is swapped in afterwards — an unlocked element keeps its permission.
+const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAA='
+function unlockedAudio () {
+  if (audio) { audio.onended = null; audio.onerror = null; audio.pause() } else audio = new Audio()
+  audio.src = SILENT_WAV
+  audio.play().catch(() => {})
+  return audio
+}
+function stopAudio () { if (audio) { audio.onended = null; audio.onerror = null; audio.pause() } }
+
+// A playback failure is that one row's problem: it must never reach the
+// panel-level `error`, which sits above the language table.
+const playErrors = ref({})
+function setPlayError (key, msg) { playErrors.value = { ...playErrors.value, [key]: msg } }
+
+async function startAudio (key, url, failMsg) {
+  const el = unlockedAudio()
+  setPlayError(key, '')
+  const src = /^https?:/.test(url) ? url : await clipUrl(url)
+  el.onended = () => { playing.value = '' }
+  el.onerror = () => { playing.value = ''; setPlayError(key, failMsg) }
+  el.src = src
+  playing.value = key
+  el.play().catch((e) => { playing.value = ''; setPlayError(key, e.message) })
 }
 
 /** Opening a language loads its samples once; closing stops whatever is sounding. */
@@ -1222,6 +1246,7 @@ async function hearVoice (lang, { voiceId, lineIndex = 0 }) {
   if (known && known.url) return playClip(key, known.url)
   if (lineIndex === 0 && samplesFor(lang)[voiceId]) return play(lang, voiceId)
 
+  unlockedAudio() // this tap must own the audio element before the render await
   renderingClip.value = clipsByVoice.value[voiceId] ? key : voiceId
   error.value = ''
   try {
@@ -1244,14 +1269,8 @@ async function hearVoice (lang, { voiceId, lineIndex = 0 }) {
 
 /** One <audio> for the page, exactly as `play` uses — two voices at once is not a comparison. */
 async function playClip (key, url) {
-  if (audio) { audio.pause(); audio = null }
-  if (playing.value === key) { playing.value = ''; return }
-  const src = /^https?:/.test(url) ? url : await clipUrl(url)
-  audio = new Audio(src)
-  audio.onended = () => { playing.value = '' }
-  audio.onerror = () => { playing.value = ''; error.value = `Could not play ${key}.` }
-  playing.value = key
-  audio.play().catch((e) => { playing.value = ''; error.value = e.message })
+  if (playing.value === key) { stopAudio(); playing.value = ''; return }
+  return startAudio(key, url, `Could not play ${key}.`)
 }
 
 // UN-CREATING A VOICE is one flow now, not two. This used to be a second,
@@ -2557,6 +2576,7 @@ function auditionList (lang) {
                      Tom's correction, 2026-08-31: VOICE is per language, TEXT
                      is per course. So the line is shown WITH the course it came
                      from, never as "the" line for the language. -->
+                <p v-for="(msg, key) in playErrors" v-show="msg" :key="'pe:' + key" class="vl-error">{{ key.split(':')[0] }}: {{ msg }}</p>
                 <div class="vl-sample-line">
                   <template v-if="lineFor(lang)">
                     <p class="vl-line-text" :lang="lang.code">{{ lineFor(lang).text }}</p>
