@@ -78,12 +78,24 @@ function validate(input) {
  *   link({...req, language, voiceId})   → { audioId, s3Key, voiceId } | null   library hit linked into the course row
  *   speak(text, provider, config, maxRetries) → { audioBuffer, wordBoundaries, existingClip, charsSpent }   the ONE door
  *   store({...req, language, voiceId, audioBuffer, wordBoundaries}) → { audioId, s3Key, durationMs }   master + S3 + course_audio row + clip_index
+ *   linkLego({courseCode, legoId, audioId}) → { linked, previous }   optional; presentation role + legoId only, never in a dry run
  * Re-record only (replaceAudioId):
  *   loadClip(audioId) → { id, course_code, role, language, voice_id, s3_key, origin } | null
  *   replace({...ident, replaceAudioId, s3Key?, audioBuffer?, wordBoundaries?}) → { audioId, s3Key, durationMs, revision }
  *        make-before-break: master + upload the new object (or take an existing library clip's key), verify it is
  *        alive, THEN swap the row onto it (versioned). The old object is retained, never deleted here.
  */
+/**
+ * A presentation clip is only heard when course_legos.presentation_audio_id points
+ * at it, so a presentation render that names its LEGO binds it itself (job #394·J
+ * had to link 43 by hand). Repoint only — the previous clip is never deleted.
+ */
+async function bindPresentation(req, result, deps) {
+  if (req.role !== 'presentation' || !req.legoId || req.dryRun || !deps.linkLego || !result.audioId) return result
+  const { linked } = await deps.linkLego({ courseCode: req.courseCode, legoId: req.legoId, audioId: result.audioId })
+  return { ...result, legoLinked: !!linked }
+}
+
 async function renderClip(input, deps) {
   const req = validate(input)
   return chain.run(`render:${req.requestedBy}`, async () => {
@@ -93,7 +105,7 @@ async function renderClip(input, deps) {
 
     // 1. library first
     const linked = await deps.link(ident)
-    if (linked) return { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }
+    if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
 
     const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, job: req.job } }
     // 2 + 3. the door → guard → one provider attempt
@@ -102,11 +114,11 @@ async function renderClip(input, deps) {
     if (out.existingClip) {
       // A clip appeared between our lookup and the door's own: link it, spend nothing.
       const again = await deps.link(ident)
-      if (again) return { ok: true, source: 'library', charsSpent: 0, ...again, purpose: req.purpose, requestedBy: req.requestedBy }
+      if (again) return bindPresentation(req, { ok: true, source: 'library', charsSpent: 0, ...again, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
     }
     // 4. write back
     const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries })
-    return { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }
+    return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
 }
 
@@ -136,4 +148,13 @@ async function rerecord(req, deps) {
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...swapped, ...echo }
 }
 
-module.exports = { renderClip, validate, RenderRequestError }
+/**
+ * The language a role natively speaks in a course. Presentation clips are
+ * known-language audio, so presentation resolves to the known side with 'known';
+ * target1/target2 stay target-language and keep the cast gate's full strictness.
+ */
+function roleNativeLanguage(role, course) {
+  return role === 'known' || role === 'presentation' ? course.known_lang : course.target_lang
+}
+
+module.exports = { roleNativeLanguage, renderClip, validate, RenderRequestError }
