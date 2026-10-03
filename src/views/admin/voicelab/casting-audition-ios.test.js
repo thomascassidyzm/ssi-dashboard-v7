@@ -19,6 +19,10 @@ for (const f of ['CastingPanel.vue', 'LanguagesPanel.vue']) {
       expect(fn.indexOf('unlockedAudio()')).toBeGreaterThan(-1)
       expect(fn.indexOf('unlockedAudio()')).toBeLessThan(fn.indexOf('await clipUrl'))
     })
+    it('clears the playing mark when unlockedAudio pauses an existing element', () => {
+      const fn = src.slice(src.indexOf('function unlockedAudio'), src.indexOf('audio.src = SILENT_WAV'))
+      expect(fn).toMatch(/audio\.pause\(\);\s*playing\.value = ''/)
+    })
     it('never feeds a play rejection into the panel-level error', () => {
       expect(src).not.toMatch(/\.play\(\)\.catch\(\(e\) => \{[^}]*error\.value/)
       expect(src).not.toMatch(/onerror = \(\) => \{[^}]*[^a-zA-Z]error\.value/)

@@ -74,8 +74,22 @@ async function notifyHold(text, state) {
   } catch (e) { console.error(`notice FAILED (${e.message}): ${text}`); return false }
 }
 
+const USAGE = 'usage: node tools/promote-staging.cjs [--dry-run] [--no-notice] [--repo <dir>] [--approve] [--help|-h]'
+const KNOWN_FLAGS = ['--dry-run', '--no-notice', '--repo', '--approve', '--help', '-h']
+
+/** null = fine to run; otherwise the usage text to print. --help/-h and any unknown flag must never reach git (job #524 promoted on --help). */
+function usageProblem(args) {
+  const repoValue = args.indexOf('--repo') + 1
+  const unknown = args.filter((a, i) => !(args.includes('--repo') && i === repoValue) && !KNOWN_FLAGS.includes(a))
+  if (args.includes('--help') || args.includes('-h')) return USAGE
+  if (unknown.length) return `unknown argument: ${unknown.join(' ')}\n${USAGE}`
+  return null
+}
+
 async function main() {
   const args = process.argv.slice(2)
+  const problem = usageProblem(args)
+  if (problem) { console.log(problem); return args.includes('--help') || args.includes('-h') ? 0 : 2 }
   const flag = (f) => args.includes(f)
   const repo = args.includes('--repo') ? args[args.indexOf('--repo') + 1] : path.join(os.homedir(), 'wt-staging')
   const git = (...a) => execFileSync('git', a, { cwd: repo, encoding: 'utf8' }).trim()
@@ -106,5 +120,5 @@ async function main() {
   return d.action === 'hold' && d.kind === 'diverged' ? 1 : 0
 }
 
-module.exports = { decide, VERDICT_MAX_AGE_MS }
+module.exports = { decide, usageProblem, VERDICT_MAX_AGE_MS }
 if (require.main === module) main().then((c) => process.exit(c), (e) => { console.error(e); process.exit(1) })
