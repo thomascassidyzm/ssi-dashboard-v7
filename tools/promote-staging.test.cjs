@@ -25,3 +25,18 @@ test("Tom's approval of exactly this sha releases a journey hold, another sha do
   assert.strictEqual(decide({ ...files, approvedSha: base.stagingSha }).action, 'promote')
   assert.strictEqual(decide({ ...files, approvedSha: 'c'.repeat(40) }).action, 'hold')
 })
+
+test('--help / -h / unknown flags print usage and never touch git or push', () => {
+  const { spawnSync } = require('node:child_process')
+  const fs = require('node:fs'), os = require('node:os'), path = require('node:path')
+  // a fake `git` first on PATH that records every call: any call at all fails the test
+  const dir = fs.mkdtempSync(path.join(process.env.TMPDIR || os.tmpdir(), 'promote-help-'))
+  const log = path.join(dir, 'git-calls')
+  fs.writeFileSync(path.join(dir, 'git'), `#!/bin/sh\necho "$@" >> ${log}\nexit 0\n`, { mode: 0o755 })
+  for (const args of [['--help'], ['-h'], ['--bogus'], ['--dry-run', '--hepl']]) {
+    const r = spawnSync(process.execPath, [path.join(__dirname, 'promote-staging.cjs'), ...args], { env: { ...process.env, PATH: `${dir}:${process.env.PATH}` }, encoding: 'utf8' })
+    assert.match(r.stdout, /usage:/, args.join(' '))
+    assert.strictEqual(r.status, args[0].startsWith('--h') || args[0] === '-h' ? 0 : 2, args.join(' '))
+  }
+  assert.strictEqual(fs.existsSync(log), false, 'git was called')
+})
