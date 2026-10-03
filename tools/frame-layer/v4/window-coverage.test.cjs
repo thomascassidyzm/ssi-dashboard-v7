@@ -66,3 +66,8 @@ test('coverage is over the AVAILABLE frames, not all 31', () => {
   assert.deepStrictEqual(r.missing_ids, ['P17']);
   assert.strictEqual(r.coverage, 0.667);
 });
+
+test('"No one wants to go" keeps its "No" — it is the P23 negation frame, not a stapled opener', () => {
+  assert.deepStrictEqual(stripInterjections('No one wants to go'), { text: 'No one wants to go', stripped: [] });
+  assert.deepStrictEqual(stripInterjections('No, I want to go').stripped, ['no']);
+});

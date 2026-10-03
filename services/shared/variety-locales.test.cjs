@@ -23,3 +23,7 @@ test('Azure carries its locale in its id', () => {
   const out = orderForVariety([c('ar-AE-HamdanNeural', 'azure'), c('ar-EG-SalmaNeural', 'azure')], 'ara_eg')
   assert.equal(out[0].voiceId, 'ar-EG-SalmaNeural')
 })
+
+test('a provider-prefixed Azure id still carries its locale', () => {
+  assert.equal(localeOfCandidate(c('azure_fr-CA-SylvieNeural', 'azure')), 'fr-CA')
+})

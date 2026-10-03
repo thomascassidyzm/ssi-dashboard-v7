@@ -257,7 +257,7 @@ describe('a variety finds its own regional voices (Tom, 2026-10-03: "the voices 
 
   it('says so out loud when neither provider has the locale, and when the variety has no locale at all', () => {
     const lang = { code: 'ara_sy', dialectOf: 'ara', regionLocales: ['ar-SY'], candidates: [cart('gulf', { accentLocale: 'ar-AE' })] }
-    expect(regionNote(lang, shelfFor(lang))).toMatch(/No ar-SY voice at Cartesia or Azure/)
+    expect(regionNote(lang, shelfFor(lang))).toMatch(/No ar-SY voice registered in Popty from Cartesia or Azure/)
     const welsh = { code: 'cym_north', dialectOf: 'cym', dialectName: 'North Welsh', regionLocales: [], candidates: [] }
     expect(regionNote(welsh, shelfFor(welsh))).toMatch(/no locale of its own/)
     expect(regionNote({ code: 'fra', dialectOf: null }, null)).toBeNull()
@@ -265,6 +265,7 @@ describe('a variety finds its own regional voices (Tom, 2026-10-03: "the voices 
 
   it('reads an Azure voice\'s locale off its id', () => {
     expect(localeOf(az('fr-CA-SylvieNeural'))).toBe('fr-CA')
+    expect(localeOf(az('azure_fr-CA-SylvieNeural'))).toBe('fr-CA')
     expect(localeOf({ voiceId: 'cartesia_x' })).toBeNull()
   })
 

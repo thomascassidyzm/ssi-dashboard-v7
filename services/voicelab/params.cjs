@@ -163,6 +163,7 @@ let cartesiaReadAt = 0
 // list an hour later. Casting a voice that no longer exists is a render failure
 // wearing a green tick, so the list is now at worst five minutes stale.
 const CARTESIA_CATALOGUE_TTL_MS = 5 * 60 * 1000
+const CARTESIA_MAX_PAGES = 200
 
 async function loadCartesiaCatalogue () {
   const key = process.env.CARTESIA_API_KEY
@@ -171,8 +172,10 @@ async function loadCartesiaCatalogue () {
   let url = 'https://api.cartesia.ai/voices/?limit=100'
   let pages = 0
   try {
-    // Paginate, but bounded: a runaway cursor must not hold a page request open.
-    while (url && pages < 10) {
+    // Follow the cursor to the end. The cap is only a runaway guard (a cursor that
+    // never terminates), far above the real catalogue; at 10 pages it silently cut
+    // the catalogue off at 1,000 voices. Hitting it is logged, never silent.
+    while (url && pages < CARTESIA_MAX_PAGES) {
       const res = await fetch(url, {
         headers: { Authorization: `Bearer ${key}`, 'Cartesia-Version': CARTESIA_API_VERSION },
         signal: AbortSignal.timeout(15000),
@@ -213,6 +216,7 @@ async function loadCartesiaCatalogue () {
         ? `https://api.cartesia.ai/voices/?limit=100&starting_after=${encodeURIComponent(body.next_page)}`
         : null
     }
+    if (url) console.warn(`[voicelab] Cartesia /voices still had more pages after the ${CARTESIA_MAX_PAGES}-page cap — catalogue is TRUNCATED`)
   } catch (e) {
     cartesiaNote = `Cartesia /voices failed (${String(e.message).split('\n')[0]}) — catalogue omitted`
     return

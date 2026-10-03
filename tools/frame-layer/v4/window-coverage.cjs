@@ -54,7 +54,10 @@ function stripInterjections(known) {
   const stripped = [];
   for (let guard = 0; guard < 5; guard++) {
     const low = s.toLowerCase();
-    const hit = INTERJECTIONS.find(w => low === w || low.startsWith(w + ',') || low.startsWith(w + ' ') || low.startsWith(w + '.') || low.startsWith(w + '!'));
+    // "no one wants to go" is a negated subject (the P23 frame), not "no," + a clause:
+    // keep "no one" together before a standalone "no" is allowed to match.
+    const hit = INTERJECTIONS.find(w => (low === w || low.startsWith(w + ',') || low.startsWith(w + ' ') || low.startsWith(w + '.') || low.startsWith(w + '!'))
+      && !(w === 'no' && /^no one\b/.test(low)));
     if (!hit) break;
     stripped.push(hit);
     s = s.slice(hit.length).replace(/^[\s,.!]+/, '');

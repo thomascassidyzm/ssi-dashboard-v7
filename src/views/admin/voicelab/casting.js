@@ -123,7 +123,7 @@ export function localeOf (c) {
   if (!c) return null
   if (c.locale) return String(c.locale)
   if (c.accentLocale) return String(c.accentLocale)
-  const m = /^([a-z]{2,3})-([A-Z]{2})-/.exec(String(c.voiceId || ''))
+  const m = /^([a-z]{2,3})-([A-Z]{2})-/.exec(String(c.voiceId || '').replace(/^azure_/, ''))
   return m ? `${m[1]}-${m[2]}` : null
 }
 
@@ -196,15 +196,15 @@ export function regionNote (lang, shelf) {
   const r = shelf && shelf.regional
   const unlabelled = r && !r.cartesiaLabelled
   if (!r || !r.count) {
-    if (unlabelled) return `No ${tag} voice at Azure; this server has not loaded Cartesia's locale labels, so Cartesia is unchecked here — base-language voices below.`
-    return `No ${tag} voice at Cartesia or Azure — only the base-language voices below exist for this variety.`
+    if (unlabelled) return `No ${tag} voice registered in Popty at Azure; this server has not loaded Cartesia's locale labels, so Cartesia is unchecked here — base-language voices below.`
+    return `No ${tag} voice registered in Popty from Cartesia or Azure — only the base-language voices below are castable for this variety.`
   }
   const parts = []
   if (r.cartesia) parts.push(`${r.cartesia} at Cartesia`)
   if (r.azure) parts.push(`${r.azure} at Azure`)
   const missing = []
   if (!r.cartesia) missing.push(unlabelled ? "Cartesia's locale labels not loaded on this server" : 'Cartesia has none')
-  if (!r.azure && r.cartesia) missing.push('Azure listed none to cast')
+  if (!r.azure && r.cartesia) missing.push('none registered in Popty from Azure')
   return `${r.count} ${tag} voice${r.count === 1 ? '' : 's'} first (${parts.join(', ')}${missing.length ? '; ' + missing.join(', ') : ''}), then the base-language voices.`
 }
 

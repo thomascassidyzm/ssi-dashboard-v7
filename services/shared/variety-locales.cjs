@@ -37,7 +37,7 @@ function localesForVariety(castKey) {
 function localeOfCandidate(c) {
   if (!c) return null;
   if (c.accentLocale) return String(c.accentLocale);
-  const m = /^([a-z]{2,3})-([A-Z]{2})-/.exec(String(c.voiceId || ''));
+  const m = /^([a-z]{2,3})-([A-Z]{2})-/.exec(String(c.voiceId || '').replace(/^azure_/, ''));
   return m ? `${m[1]}-${m[2]}` : null;
 }
 
