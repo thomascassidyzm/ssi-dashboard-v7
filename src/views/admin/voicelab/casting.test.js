@@ -7,6 +7,7 @@ import {
   ROLES, isAmericanEnglish, shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel, castRolesOf, castFacts,
   stageRole, stageClear, unstageRole, stagedCount, podFacts, rowSummary, isFixedEnglish, podVoiceOf,
   POD_ROLES, stageHouseEnglish, stagedEntry, isStagedOn, FIXED_ENGLISH, sortRows, inheritedFrom,
+  regionNote, localeOf,
 } from './casting'
 
 const cart = (id, extra = {}) => ({ voiceId: `cartesia_${id}`, name: `${id} — Cartesia`, kind: 'cartesia', engine: 'cartesia', gender: 'f', accent: 'british', accentLocale: 'en-GB', ...extra })
@@ -228,5 +229,44 @@ describe('a language variety is its own row, and a copied voice says so (Tom, 20
     const spa = { code: 'spa', courses: 3, released: 1, slots: {} }
     const out = sortRows([ca, spa, fra], (l) => l.code).map((l) => l.code)
     expect(out).toEqual(['fra', 'fra_ca', 'spa'])
+  })
+})
+
+describe('a variety finds its own regional voices (Tom, 2026-10-03: "the voices are usually named like CA")', () => {
+  const fr = (id, locale, extra = {}) => cart(id, { accent: null, accentLocale: locale, ...extra })
+  const az = (id) => ({ voiceId: id, name: id.split('-')[2].replace('Neural', ''), kind: 'azure', engine: 'azure', gender: null })
+  const quebec = (candidates) => ({ code: 'fra_ca', dialectOf: 'fra', dialectName: 'Quebec French', regionLocales: ['fr-CA'], candidates })
+
+  it('lists the fr-CA voices first, tagged, then the base-language voices', () => {
+    const shelf = shelfFor(quebec([fr('paris', 'fr-FR'), fr('montreal', 'fr-CA'), fr('lyon', 'fr-FR')]))
+    expect(shelf.voices.map((v) => v.voiceId)).toEqual(['cartesia_montreal', 'cartesia_paris', 'cartesia_lyon'])
+    expect(shelf.voices[0]).toMatchObject({ regional: true, locale: 'fr-CA' })
+    expect(shelf.voices[1].regional).toBeUndefined()
+  })
+
+  it('offers Azure regional voices only for a locale Cartesia has none of', () => {
+    const withBoth = shelfFor(quebec([fr('montreal', 'fr-CA'), az('fr-CA-SylvieNeural')]))
+    expect(withBoth.voices.map((v) => v.voiceId)).toEqual(['cartesia_montreal'])
+    const azureOnly = shelfFor({ code: 'ara_eg', dialectOf: 'ara', regionLocales: ['ar-EG'], candidates: [cart('gulf', { accentLocale: 'ar-AE' }), az('ar-EG-SalmaNeural')] })
+    expect(azureOnly.voices[0]).toMatchObject({ voiceId: 'ar-EG-SalmaNeural', regional: true, locale: 'ar-EG' })
+    expect(regionNote(azureOnly.regional && { code: 'ara_eg', dialectOf: 'ara', regionLocales: ['ar-EG'] }, azureOnly)).toMatch(/Cartesia has none/)
+  })
+
+  it('says so out loud when neither provider has the locale, and when the variety has no locale at all', () => {
+    const lang = { code: 'ara_sy', dialectOf: 'ara', regionLocales: ['ar-SY'], candidates: [cart('gulf', { accentLocale: 'ar-AE' })] }
+    expect(regionNote(lang, shelfFor(lang))).toMatch(/No ar-SY voice at Cartesia or Azure/)
+    const welsh = { code: 'cym_north', dialectOf: 'cym', dialectName: 'North Welsh', regionLocales: [], candidates: [] }
+    expect(regionNote(welsh, shelfFor(welsh))).toMatch(/no locale of its own/)
+    expect(regionNote({ code: 'fra', dialectOf: null }, null)).toBeNull()
+  })
+
+  it('reads an Azure voice\'s locale off its id', () => {
+    expect(localeOf(az('fr-CA-SylvieNeural'))).toBe('fr-CA')
+    expect(localeOf({ voiceId: 'cartesia_x' })).toBeNull()
+  })
+
+  it('leaves a plain language exactly as it was', () => {
+    const lang = { code: 'fra', dialectOf: null, candidates: [fr('paris', 'fr-FR'), fr('montreal', 'fr-CA')] }
+    expect(shelfFor(lang).voices.map((v) => v.voiceId)).toEqual(['cartesia_paris', 'cartesia_montreal'])
   })
 })

@@ -31,7 +31,7 @@ import { planCast, commitCast } from './stagedCast'
 import { planPicks, commitPicks } from './stagedPicks'
 import {
   ROLES, SLOT_ORDER, isFixedEnglish, FIXED_ENGLISH,
-  shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel, castRolesOf,
+  shelfFor, regionNote, accentsOf, filterShelf, rolesFor, cloneLabel, castRolesOf,
   stageRole, stageClear, unstageRole, stagedCount, stagedEntry, isStagedOn as candidateIsStagedOn,
   stageHouseEnglish, castFacts, podFacts, rowSummary, sortRows, labVoiceId, providerLabel,
 } from './casting'
@@ -110,6 +110,7 @@ const facts = computed(() => (lang.value ? factsOf(lang.value) : {}))
 const podView = computed(() => podFacts(pod.value))
 const shelf = computed(() => (lang.value && !lang.value.human ? shelfFor(lang.value) : { provider: null, fallback: false, voices: [] }))
 const accents = computed(() => accentsOf(shelf.value.voices))
+const regionLine = computed(() => (lang.value ? regionNote(lang.value, shelf.value) : null))
 const shown = computed(() => filterShelf(shelf.value.voices, { gender: gender.value, accent: accent.value, query: query.value }))
 const nStaged = computed(() => stagedCount(staged.value))
 
@@ -449,6 +450,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
                 </div>
 
                 <!-- THE PICKER — Cartesia by gender and accent; Azure only as the fallback. -->
+                <p v-if="regionLine" class="cast-note cast-region">{{ regionLine }}</p>
                 <div class="cast-filters">
                   <span class="cast-shelf">
                     <template v-if="shelf.provider === 'cartesia'">Cartesia · {{ shelf.voices.length }} voice{{ shelf.voices.length === 1 ? '' : 's' }}</template>
@@ -489,6 +491,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
                     <span class="cast-voice-main">
                       <span class="cast-voice-name">{{ cloneLabel(c) }}</span>
                       <span v-if="c.owned" class="ui-pill ui-hue-quiet">our clone</span>
+                      <span v-if="c.regional" class="ui-pill ui-hue-info" :title="`a ${c.locale} voice, as the provider labels it`">{{ c.locale }} · regional</span>
                       <span v-for="r in castRolesOf(facts, c.voiceId)" :key="r.key" class="ui-pill cast-is-cast">cast: {{ r.label }}</span>
                       <span class="cast-sub">
                         {{ c.gender ? (c.gender === 'f' ? 'female' : 'male') : 'gender not listed' }}

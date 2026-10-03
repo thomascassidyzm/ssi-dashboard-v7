@@ -67,6 +67,7 @@ const path = require('path')
 const policy = require('../shared/tts-provider-policy.cjs')
 const { isHumanVoiceLang } = require('../shared/human-voice-courses.cjs')
 const { humanRecordedForLanguage, loadHumanRecordedRoles } = require('../shared/human-recorded-roles.cjs')
+const { localesForVariety, orderForVariety } = require('../shared/variety-locales.cjs')
 const { targetCastEntities, targetCastKey, knownCastKey, baseLanguageOfCastKey, isDialectCastKey, COURSE_CAST_FIELDS } = require('../shared/cast-language-key.cjs')
 const consent = require('./consent.cjs')
 const { tryCanonicalVoiceId, PROVIDER_ALIASES } = require('../shared/clip-identity.cjs')
@@ -658,6 +659,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
     // The dialect's own name, read from its courses. Null on a plain row, where
     // the UI's ordinary code-to-name lookup already has the answer.
     dialectName: dialectOf ? dialectLabel(langCourses) : null,
+    regionLocales: dialectOf ? localesForVariety(code) : [],
     courses: langCourses.length,
     released: langCourses.filter((c) => c.status === 'released').length,
     // The pace every voice in this language is compared against, and the exact
@@ -733,7 +735,9 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
     // OWNED FIRST, THEN THE CAP. The sort happens BEFORE the slice, which is
     // what makes "always findable" true rather than merely intended: an owned
     // clone cannot be the 81st row of an English list of 431.
-    candidates: ownedFirst(dedupeByVoiceId(voices
+    // A variety's own regional voices lead (variety-locales.cjs), BEFORE the cap, so a
+    // fr-CA voice cannot be the 81st row of a French list.
+    candidates: orderForVariety(ownedFirst(dedupeByVoiceId(voices
       .filter((v) => v.is_active !== false)
       .filter((v) => castable(v))
       .filter((v) => (v.languages || []).some((l) => sameLang(l, base)))
@@ -745,7 +749,7 @@ function describeLanguage ({ code, baseCode = null, dialectOf = null, castKeySou
       // a language nobody has cast yet — which, until casting is populated, is
       // every language.
       .map((v) => ({ voiceId: v.voice_id, name: v.display_name || v.human_name || v.voice_id, kind: voiceKind(v), engine: v.tts_engine || null, gender: v.gender || null, registered: true, owned: owned.has(v.voice_id), pace: paceOf(v), consent: consent.describe(v), ...catalogueFactsById(v.voice_id, catalogue) }))
-      .concat(dropRetired(cartesiaCandidates(base, catalogue, roles), voices))))
+      .concat(dropRetired(cartesiaCandidates(base, catalogue, roles), voices)))), code)
       .slice(0, 80),
   }
 }

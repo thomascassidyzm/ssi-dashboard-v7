@@ -118,14 +118,16 @@ function offerable (c) {
   return true
 }
 
-/**
- * THE PICKER'S SHELF for one language. CARTESIA FIRST, ALWAYS; Azure appears
- * ONLY when Cartesia has no voice for the language. Estate-owned clones (the
- * vendor's own `owner` flag) sort to the top so no cap can cut them.
- */
-export function shelfFor (lang) {
-  const all = (lang && lang.candidates) || []
-  const clean = all.filter(offerable).filter((c) => !isAmericanEnglish(c))
+/** The locale a voice is labelled with: the vendor's accent locale, else the locale prefix of an Azure id. */
+export function localeOf (c) {
+  if (!c) return null
+  if (c.locale) return String(c.locale)
+  if (c.accentLocale) return String(c.accentLocale)
+  const m = /^([a-z]{2,3})-([A-Z]{2})-/.exec(String(c.voiceId || ''))
+  return m ? `${m[1]}-${m[2]}` : null
+}
+
+function baseShelf (clean) {
   const cartesia = clean.filter((c) => providerOf(c) === 'cartesia')
   if (cartesia.length) {
     return {
@@ -136,6 +138,68 @@ export function shelfFor (lang) {
   }
   const azure = clean.filter((c) => providerOf(c) === 'azure')
   return { provider: azure.length ? 'azure' : null, fallback: true, voices: azure }
+}
+
+/**
+ * THE PICKER'S SHELF for one language. CARTESIA FIRST, ALWAYS; Azure appears
+ * ONLY when Cartesia has no voice for the language. Estate-owned clones (the
+ * vendor's own `owner` flag) sort to the top so no cap can cut them.
+ *
+ * A VARIETY FINDS ITS OWN REGIONAL VOICES FIRST (Tom, 2026-10-03: "the voices
+ * are usually named like CA"). Providers label a regional voice by locale, so a
+ * variety with `regionLocales` (services/shared/variety-locales.cjs) lists the
+ * voices of exactly those locales ahead of the base language's — Cartesia's for
+ * a locale when it has any, Azure's only for a locale Cartesia has none of —
+ * each tagged `regional`. `regional` holds the per-provider facts the panel
+ * states out loud, including "no regional voice anywhere".
+ */
+export function shelfFor (lang) {
+  const all = (lang && lang.candidates) || []
+  const clean = all.filter(offerable).filter((c) => !isAmericanEnglish(c))
+  const base = baseShelf(clean)
+  const locales = (lang && lang.regionLocales) || []
+  if (!locales.length) return base
+  const mine = clean.filter((c) => locales.includes(localeOf(c)))
+  const cartesia = mine.filter((c) => providerOf(c) === 'cartesia')
+  const cartesiaLocales = new Set(cartesia.map(localeOf))
+  const azure = mine.filter((c) => providerOf(c) === 'azure' && !cartesiaLocales.has(localeOf(c)))
+  const sortOwned = (v) => v.slice().sort((a, b) => Number(Boolean(b.owned)) - Number(Boolean(a.owned)))
+  const regional = [...sortOwned(cartesia), ...azure].map((c) => ({ ...c, regional: true, locale: localeOf(c) }))
+  const taken = new Set(regional.map((c) => c.voiceId))
+  return {
+    ...base,
+    voices: [...regional, ...base.voices.filter((c) => !taken.has(c.voiceId))],
+    regional: {
+      locales,
+      count: regional.length,
+      cartesia: mine.filter((c) => providerOf(c) === 'cartesia').length,
+      azure: mine.filter((c) => providerOf(c) === 'azure').length,
+    },
+  }
+}
+
+/**
+ * One plain sentence on what the provider offers THIS variety, for the panel.
+ * Null for a language that is not a variety.
+ */
+export function regionNote (lang, shelf) {
+  if (!lang || !lang.dialectOf) return null
+  const locales = lang.regionLocales || []
+  if (!locales.length) {
+    return `${lang.dialectName || lang.code} has no locale of its own at Cartesia or Azure — only the base-language voices below exist for it.`
+  }
+  const tag = locales.join(' / ')
+  const r = shelf && shelf.regional
+  if (!r || !r.count) {
+    return `No ${tag} voice at Cartesia or Azure — only the base-language voices below exist for this variety.`
+  }
+  const parts = []
+  if (r.cartesia) parts.push(`${r.cartesia} at Cartesia`)
+  if (r.azure) parts.push(`${r.azure} at Azure`)
+  const missing = []
+  if (!r.cartesia) missing.push('Cartesia has none')
+  if (!r.azure && r.cartesia) missing.push('Azure listed none to cast')
+  return `${r.count} ${tag} voice${r.count === 1 ? '' : 's'} first (${parts.join(', ')}${missing.length ? '; ' + missing.join(', ') : ''}), then the base-language voices.`
 }
 
 /**
