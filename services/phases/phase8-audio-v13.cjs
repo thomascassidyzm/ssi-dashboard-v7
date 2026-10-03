@@ -33,7 +33,7 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
-const { renderClip, RenderRequestError } = require('../shared/audio-render-entry.cjs')
+const { renderClip, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
 const chainContext = require('../shared/chain-context.cjs')
 const courseVoiceConfig = require('../shared/course-voice-config.cjs')
@@ -5328,6 +5328,15 @@ app.post('/link-presentation-audio/:courseCode', async (req, res) => {
   }
 })
 
+/** Point ONE course's LEGO at its presentation clip. Idempotent; the old clip row is left alone. */
+async function linkLegoPresentation({ courseCode, legoId, audioId }) {
+  const { data, error } = await supabase.from('course_legos').update({ presentation_audio_id: audioId })
+    .eq('course_code', courseCode).eq('lego_id', legoId).select('lego_id, presentation_audio_id')
+  if (error) throw new Error(`course_legos.presentation_audio_id link failed: ${error.message}`)
+  if (!data || !data.length) throw new RenderRequestError(`no LEGO ${legoId} in ${courseCode} to link the presentation clip to`, 404, 'NO_LEGO')
+  return { linked: true }
+}
+
 /**
  * The route's library step. Own course first (voice-bound: this course already
  * holds THIS voice's clip → the slot's row is returned, nothing written), then
@@ -5366,11 +5375,13 @@ app.post('/render', async (req, res) => {
         const settings = vc.voices?.[role] || {}
         // A named voice may arrive as the stored, provider-prefixed id (`cartesia_<uuid>`), as a re-record does.
         const named = /^(azure|elevenlabs|xai|cartesia)_(.+)$/.exec(voiceId || '')
-        const lang = language || (role === 'known' ? course.known_lang : course.target_lang)
+        // Presentation clips are known-language audio (the intro is spoken to the learner in their own language),
+        // so the presentation role resolves to the known side like 'known' — never target1/target2 (job #483).
+        const lang = language || roleNativeLanguage(role, course)
         // Job #758: a line in a language this role does not natively speak (an English prompt on ita_for_eng's
         // target1) takes that language's CAST voice — voice id AND provider from one cast row, never the role's
         // stored voice of another language. A voice the caller named is honoured as named.
-        const roleLang = role === 'known' ? course.known_lang : course.target_lang
+        const roleLang = roleNativeLanguage(role, course)
         const foreign = !voiceId && language && toIso3(language) !== toIso3(roleLang)
         // Tom 2026-09-29: an English line in an EXISTING course speaks the voice that course already speaks English in
         // (voice and provider together); the cast (Charlotte) is only for a course holding no English clip yet.
@@ -5392,6 +5403,7 @@ app.post('/render', async (req, res) => {
         return { language: canonicalLanguage(lang), voiceId: canonicalClipVoiceId(held, provider), provider, providerConfig }
       },
       link: linkClipForRender,
+      linkLego: linkLegoPresentation,
       speak: (text, provider, cfg, tries) => ttsService.speak(text, provider, cfg, tries),
       loadClip: async (audioId) => {
         const { data, error } = await supabase.from('course_audio').select('id, course_code, role, language, voice_id, s3_key, origin, text').eq('id', audioId).maybeSingle()
