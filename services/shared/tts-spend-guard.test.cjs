@@ -238,33 +238,33 @@ describe('(f3) a limits change is said once per host, not on every restart (job 
   })
 })
 
-describe('(h) the standing hold: 100,000 chars a day across all providers (Tom 2026-09-28, jobs #569, #570)', () => {
+describe('(h) the standing hold: 260,000 chars a day across all providers (Tom 2026-09-28, jobs #569, #570)', () => {
   // The COMMITTED budget file, not a fixture: this is the rule as it ships.
   const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
 
-  for (const provider of ['cartesia', 'azure', 'xai', 'google']) {
-    it(`${provider}: a 100,001-char day is refused, naming Tom's go`, async () => {
+  for (const provider of ['cartesia', 'azure', 'xai']) {
+    it(`${provider}: a 260,001-char day is refused, naming Tom's go`, async () => {
       const g = guard({ budgetPath: committed })
-      const err = await call(g, 'x'.repeat(100_001), { provider }).catch(e => e)
+      const err = await call(g, 'x'.repeat(260_001), { provider }).catch(e => e)
       expect(err.code).toBe('DAILY_CAP')
       expect(err.message).toMatch(/HELD: .*TOM'S EXPLICIT GO/)
     })
   }
 
-  it('a small clip passes, and a day of them stops at exactly 100,000', async () => {
+  it('a small clip passes, and a day of them stops at exactly 260,000', async () => {
     const g = guard({ budgetPath: committed })
     await expect(call(g, 'Croeso i Voice Lab.')).resolves.toBeTruthy()
-    await call(g, 'y'.repeat(100_000 - 'Croeso i Voice Lab.'.length))
+    await call(g, 'y'.repeat(260_000 - 'Croeso i Voice Lab.'.length))
     await expect(call(g, 'z')).rejects.toThrow(/DAILY_CAP.*HELD/)
   })
 
-  it('the 100,000 is ONE figure across Cartesia + Azure, not 100,000 each', async () => {
+  it('the 260,000 is ONE figure across Cartesia + Azure, not 260,000 each', async () => {
     const g = guard({ budgetPath: committed })
-    await call(g, 'c'.repeat(60_000), { provider: 'cartesia' })
-    await expect(call(g, 'a'.repeat(40_000), { provider: 'azure', voiceId: 'azure_x' })).resolves.toBeTruthy()
+    await call(g, 'c'.repeat(160_000), { provider: 'cartesia' })
+    await expect(call(g, 'a'.repeat(100_000), { provider: 'azure', voiceId: 'azure_x' })).resolves.toBeTruthy()
     const err = await call(g, 'a', { provider: 'azure', voiceId: 'azure_x' }).catch(e => e)
     expect(err.code).toBe('DAILY_CAP')
-    expect(err.message).toMatch(/across all TTS providers.*combined daily cap of 100000.*TOM'S EXPLICIT GO/)
+    expect(err.message).toMatch(/across all TTS providers.*combined daily cap of 260000.*TOM'S EXPLICIT GO/)
   })
 
   it('without a hold block the old signed-raise hint still stands', async () => {

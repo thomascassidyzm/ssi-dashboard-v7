@@ -332,7 +332,8 @@ async function play (lang, voiceId) {
 // src is swapped in afterwards — an unlocked element keeps its permission.
 const SILENT_WAV = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAIlYAAESsAAACABAAZGF0YQAAAAA='
 function unlockedAudio () {
-  if (audio) { audio.onended = null; audio.onerror = null; audio.pause() } else audio = new Audio()
+  // pausing drops the old handlers, so nothing else would ever clear its 'playing' mark
+  if (audio) { audio.onended = null; audio.onerror = null; audio.pause(); playing.value = '' } else audio = new Audio()
   audio.src = SILENT_WAV
   audio.play().catch(() => {})
   return audio
