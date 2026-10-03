@@ -249,7 +249,10 @@ describe('a variety finds its own regional voices (Tom, 2026-10-03: "the voices 
     expect(withBoth.voices.map((v) => v.voiceId)).toEqual(['cartesia_montreal'])
     const azureOnly = shelfFor({ code: 'ara_eg', dialectOf: 'ara', regionLocales: ['ar-EG'], candidates: [cart('gulf', { accentLocale: 'ar-AE' }), az('ar-EG-SalmaNeural')] })
     expect(azureOnly.voices[0]).toMatchObject({ voiceId: 'ar-EG-SalmaNeural', regional: true, locale: 'ar-EG' })
-    expect(regionNote(azureOnly.regional && { code: 'ara_eg', dialectOf: 'ara', regionLocales: ['ar-EG'] }, azureOnly)).toMatch(/Cartesia has none/)
+    expect(regionNote({ code: 'ara_eg', dialectOf: 'ara', regionLocales: ['ar-EG'] }, azureOnly)).toMatch(/Cartesia has none/)
+    // a server that never loaded Cartesia's catalogue must not claim Cartesia has none
+    const blind = { code: 'fra_ca', dialectOf: 'fra', regionLocales: ['fr-CA'], candidates: [cart('x', { accentLocale: null }), az('fr-CA-SylvieNeural')] }
+    expect(regionNote(blind, shelfFor(blind))).toMatch(/not loaded on this server/)
   })
 
   it('says so out loud when neither provider has the locale, and when the variety has no locale at all', () => {

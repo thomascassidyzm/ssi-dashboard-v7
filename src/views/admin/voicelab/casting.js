@@ -172,6 +172,10 @@ export function shelfFor (lang) {
     regional: {
       locales,
       count: regional.length,
+      // False when no Cartesia voice states ANY locale: the server never loaded
+      // Cartesia's catalogue (no working key), so "Cartesia has none" would be a
+      // guess dressed as a fact.
+      cartesiaLabelled: clean.some((c) => providerOf(c) === 'cartesia' && localeOf(c)),
       cartesia: mine.filter((c) => providerOf(c) === 'cartesia').length,
       azure: mine.filter((c) => providerOf(c) === 'azure').length,
     },
@@ -190,14 +194,16 @@ export function regionNote (lang, shelf) {
   }
   const tag = locales.join(' / ')
   const r = shelf && shelf.regional
+  const unlabelled = r && !r.cartesiaLabelled
   if (!r || !r.count) {
+    if (unlabelled) return `No ${tag} voice at Azure; this server has not loaded Cartesia's locale labels, so Cartesia is unchecked here — base-language voices below.`
     return `No ${tag} voice at Cartesia or Azure — only the base-language voices below exist for this variety.`
   }
   const parts = []
   if (r.cartesia) parts.push(`${r.cartesia} at Cartesia`)
   if (r.azure) parts.push(`${r.azure} at Azure`)
   const missing = []
-  if (!r.cartesia) missing.push('Cartesia has none')
+  if (!r.cartesia) missing.push(unlabelled ? "Cartesia's locale labels not loaded on this server" : 'Cartesia has none')
   if (!r.azure && r.cartesia) missing.push('Azure listed none to cast')
   return `${r.count} ${tag} voice${r.count === 1 ? '' : 's'} first (${parts.join(', ')}${missing.length ? '; ' + missing.join(', ') : ''}), then the base-language voices.`
 }
