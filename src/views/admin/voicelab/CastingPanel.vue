@@ -41,6 +41,9 @@ defineProps({ params: { type: Object, default: null } })
 const langs = ref([])
 const pods = ref(new Map())
 const loading = ref(true)
+const refreshing = ref(false)
+const baseOf = (l) => (l && l.dialectOf ? langs.value.find((x) => x.code === l.dialectOf) || null : null)
+const factsOf = (l) => castFacts(l, baseOf(l))
 const error = ref('')
 const search = ref('')
 const onlyGaps = ref(false)
@@ -61,8 +64,12 @@ const staged = ref({ slots: {}, picks: {} })
 const saving = ref(false)
 const saveReport = ref(null)
 
+// `loading` gates the table only until the first read lands. A later load (a
+// save, Refresh) swaps the rows in place: hiding the table would empty every
+// language, drop scroll and close the open panel on each pick (Tom, 2026-10-03).
 async function load ({ force = false } = {}) {
-  loading.value = true
+  loading.value = !langs.value.length
+  refreshing.value = true
   error.value = ''
   try {
     const [l, p] = await Promise.all([
@@ -75,6 +82,7 @@ async function load ({ force = false } = {}) {
     error.value = e.message
   } finally {
     loading.value = false
+    refreshing.value = false
   }
 }
 onMounted(load)
@@ -89,7 +97,7 @@ const rows = computed(() => {
     .filter((l) => {
       if (!onlyGaps.value) return true
       if (l.human) return false
-      const f = castFacts(l)
+      const f = factsOf(l)
       const pod = podFacts(podOf(l))
       return f.male.state !== 'cast' || f.female.state !== 'cast' || pod.genders.some((g) => !g.pick)
     })
@@ -98,7 +106,7 @@ const rows = computed(() => {
 
 const lang = computed(() => langs.value.find((l) => l.code === open.value) || null)
 const pod = computed(() => (lang.value ? podOf(lang.value) : null))
-const facts = computed(() => (lang.value ? castFacts(lang.value) : {}))
+const facts = computed(() => (lang.value ? factsOf(lang.value) : {}))
 const podView = computed(() => podFacts(pod.value))
 const shelf = computed(() => (lang.value && !lang.value.human ? shelfFor(lang.value) : { provider: null, fallback: false, voices: [] }))
 const accents = computed(() => accentsOf(shelf.value.voices))
@@ -325,13 +333,14 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
     <div class="cast-controls">
       <input v-model="search" class="cast-search" placeholder="Find a language…" />
       <label class="cast-gaps"><input type="checkbox" v-model="onlyGaps" /> only languages still missing a voice</label>
-      <button class="vl-btn" :disabled="loading" @click="load({ force: true })">Refresh</button>
+      <button class="vl-btn" :disabled="loading || refreshing" @click="load({ force: true })">Refresh</button>
     </div>
 
     <p v-if="error" class="vl-err">{{ error }}</p>
     <p v-else-if="loading" class="vl-muted">Reading every language's cast…</p>
 
     <div v-else class="cast-scroll">
+    <p v-if="refreshing" class="vl-muted cast-refreshing">refreshing…</p>
     <table class="cast-table">
       <thead>
         <tr><th>Language</th><th>Male</th><th>Female</th><th>Second male</th><th>Guide</th><th>Pod voice</th></tr>
@@ -349,11 +358,12 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
             <td v-if="l.human" colspan="5" class="cast-sentence">Human recordings only — nothing synthetic is ever cast here.</td>
 
             <template v-else>
-              <td v-for="r in ROLES" :key="r.key" class="cast-cell" :class="castFacts(l)[r.key].state">
-                <template v-if="castFacts(l)[r.key].state === 'na'"><span class="cast-na">—</span></template>
+              <td v-for="r in ROLES" :key="r.key" class="cast-cell" :class="factsOf(l)[r.key].state">
+                <template v-if="factsOf(l)[r.key].state === 'na'"><span class="cast-na">—</span></template>
                 <template v-else>
-                  <span>{{ castFacts(l)[r.key].text }}</span>
-                  <span v-if="castFacts(l)[r.key].accent" class="cast-sub">{{ castFacts(l)[r.key].accent.replace(/-/g, ' ') }}</span>
+                  <span>{{ factsOf(l)[r.key].text }}</span>
+                  <span v-if="factsOf(l)[r.key].inherited" class="cast-sub">inherited from {{ factsOf(l)[r.key].inherited.from }}, not picked</span>
+                  <span v-if="factsOf(l)[r.key].accent" class="cast-sub">{{ factsOf(l)[r.key].accent.replace(/-/g, ' ') }}</span>
                 </template>
               </td>
               <td class="cast-cell cast-pod">
@@ -385,6 +395,7 @@ function short (s, n = 90) { const t = String(s || '').trim(); return t.length >
                   <span class="cast-card-fact">
                     <button v-if="facts[r.key].voiceId && sampleOf(facts[r.key].voiceId)" class="cast-play" :class="{ on: playing === facts[r.key].voiceId }" @click="play(facts[r.key].voiceId, sampleOf(facts[r.key].voiceId).url)">{{ playing === facts[r.key].voiceId ? '■' : '▶' }}</button>
                     {{ facts[r.key].text }}
+                    <span v-if="facts[r.key].inherited" class="cast-sub">· inherited from {{ facts[r.key].inherited.from }}, not picked for this variety</span>
                   </span>
                   <span v-if="stagedFor(r)" class="cast-card-staged">
                     → {{ stagedFor(r).action === 'clear' ? 'cleared' : stagedFor(r).voiceName.split(' — ')[0] }} <em>unsaved</em>

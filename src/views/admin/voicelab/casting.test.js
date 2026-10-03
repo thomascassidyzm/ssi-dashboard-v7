@@ -5,8 +5,8 @@
 import { describe, it, expect } from 'vitest'
 import {
   ROLES, isAmericanEnglish, shelfFor, accentsOf, filterShelf, rolesFor, cloneLabel, castRolesOf, castFacts,
-  stageRole, stageClear, unstageRole, stagedCount, castFacts, podFacts, rowSummary, isFixedEnglish, podVoiceOf,
-  POD_ROLES, stageHouseEnglish, stagedEntry, isStagedOn, FIXED_ENGLISH,
+  stageRole, stageClear, unstageRole, stagedCount, podFacts, rowSummary, isFixedEnglish, podVoiceOf,
+  POD_ROLES, stageHouseEnglish, stagedEntry, isStagedOn, FIXED_ENGLISH, sortRows, inheritedFrom,
 } from './casting'
 
 const cart = (id, extra = {}) => ({ voiceId: `cartesia_${id}`, name: `${id} — Cartesia`, kind: 'cartesia', engine: 'cartesia', gender: 'f', accent: 'british', accentLocale: 'en-GB', ...extra })
@@ -208,5 +208,25 @@ describe('the list marks the row that is cast in each slot (Tom, 2026-09-30: Cha
     const facts = castFacts(lang)
     expect(castRolesOf(facts, 'cartesia_charlotte').map((r) => r.label)).toEqual(['Female'])
     expect(castRolesOf(facts, 'cartesia_other')).toEqual([])
+  })
+})
+
+describe('a language variety is its own row, and a copied voice says so (Tom, 2026-10-03)', () => {
+  const slot = (voiceId, gender = 'm', rank = 0) => ({ rank, filled: true, voiceId, voiceName: voiceId, engine: 'cartesia', active: true, gender })
+  const fra = { code: 'fra', courses: 4, released: 1, slots: { m: [slot('cartesia_a')], f: [slot('cartesia_b', 'f')] } }
+  const ca = { code: 'fra_ca', dialectOf: 'fra', courses: 1, released: 0, slots: { m: [slot('cartesia_a')], f: [slot('cartesia_z', 'f')] } }
+  it('marks a variety voice identical to its base as inherited, not picked', () => {
+    const f = castFacts(ca, fra)
+    expect(f.male.inherited).toEqual({ from: 'fra' })
+    expect(f.female.inherited).toBe(null)
+  })
+  it('never marks anything inherited without a base', () => {
+    expect(castFacts(ca).male.inherited).toBe(null)
+    expect(inheritedFrom(fra, fra, ROLES[0])).toBe(false)
+  })
+  it('sits a variety directly under its base, not at the bottom of the list', () => {
+    const spa = { code: 'spa', courses: 3, released: 1, slots: {} }
+    const out = sortRows([ca, spa, fra], (l) => l.code).map((l) => l.code)
+    expect(out).toEqual(['fra', 'fra_ca', 'spa'])
   })
 })

@@ -77,8 +77,9 @@ const saveReport = ref(null)
 
 const GENDER_LABEL = { f: 'female', m: 'male' }
 
+// First read only gates the table; later loads swap rows in place (no flash, scroll and open row kept).
 async function load ({ force = false } = {}) {
-  loading.value = true
+  loading.value = !rows.value.length
   error.value = ''
   try {
     const out = await api.podVoices({ force })

@@ -321,11 +321,23 @@ export function providerLabel (p) {
   return s || 'unknown'
 }
 
+/** True when a variety's voice in this role is identical to its base language's. */
+export function inheritedFrom (lang, base, role) {
+  if (!lang || !base || !lang.dialectOf || base.code !== lang.dialectOf) return false
+  const pick = (l) => {
+    const list = role.slot === 'guide' ? (l.guide && l.guide.slots) || [] : (l.slots && l.slots[role.gender]) || []
+    const s = list.find((x) => x.rank === role.rank)
+    return s && s.filled ? s.voiceId : null
+  }
+  const mine = pick(lang)
+  return Boolean(mine && mine === pick(base))
+}
+
 /**
  * WHAT IS CAST, AS ONE PLAIN FACT PER ROLE. Read cold: a name and a provider,
  * or the words "nothing cast". Never an ambiguous blank.
  */
-export function castFacts (lang) {
+export function castFacts (lang, base = null) {
   const out = {}
   for (const r of ROLES) {
     const list = r.slot === 'guide' ? (lang.guide && lang.guide.slots) || [] : (lang.slots && lang.slots[r.gender]) || []
@@ -339,6 +351,11 @@ export function castFacts (lang) {
         provider: providerLabel(s.engine || s.kind),
         accent: s.accent || null,
         text: `${s.voiceName} · ${providerLabel(s.engine || s.kind)}${s.active === false ? ' · deactivated' : ''}`,
+        // A variety (fra_ca, spa_mx…) is its own language and is cast on its own.
+        // When its voice is the very voice its base language holds in the same
+        // role, nobody picked it for THIS variety — it is a copy, and a copy is
+        // said out loud, never shown as a pick (Tom, 2026-10-03).
+        inherited: inheritedFrom(lang, base, r) ? { from: base.code } : null,
       }
     } else {
       out[r.key] = { state: 'empty', text: 'nothing cast' }
@@ -379,8 +396,18 @@ export function rowSummary (lang, podRow) {
 
 /** Tom's order for the rows: live courses first, then course count, then the name. */
 export function sortRows (rows, nameOf) {
-  return rows.slice().sort((a, b) =>
+  const cmp = (a, b) =>
     (a.released > 0 ? 0 : 1) - (b.released > 0 ? 0 : 1) ||
     (b.courses || 0) - (a.courses || 0) ||
-    String(nameOf(a)).localeCompare(String(nameOf(b))))
+    String(nameOf(a)).localeCompare(String(nameOf(b)))
+  // A variety sits directly under its base language, so French and Canadian
+  // French read as neighbours rather than as one row and a stray.
+  const present = new Set(rows.map((r) => r.code))
+  const tops = rows.filter((r) => !(r.dialectOf && present.has(r.dialectOf))).sort(cmp)
+  const out = []
+  for (const t of tops) {
+    out.push(t)
+    out.push(...rows.filter((r) => r.dialectOf === t.code).sort(cmp))
+  }
+  return out
 }

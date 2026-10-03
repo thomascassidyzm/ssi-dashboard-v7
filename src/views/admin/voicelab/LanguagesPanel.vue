@@ -1267,8 +1267,9 @@ async function playClip (key, url) {
 // `auditionClips` ref went with the single `cloneResult` it belonged to — both
 // were one-at-a-time state on a screen whose whole purpose is now comparison.
 
+// First read only gates the table; later loads swap rows in place (no flash, scroll and open row kept).
 async function load ({ force = false } = {}) {
-  loading.value = true
+  loading.value = !data.value
   error.value = ''
   try {
     data.value = await api.languages({ force })
