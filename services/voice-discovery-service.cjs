@@ -253,9 +253,19 @@ function toBcp47(languageCode) {
     return 'ar';
   }
   // Convert legacy ISO 639-3 to ISO 639-1 where needed
+  // Every ISO 639-3 code a Cartesia course on the estate teaches, to its 639-1 tag. Cartesia
+  // refuses a three-letter locale outright ("unsupported locale 'swe'"), so a language missing
+  // here cannot render a single clip through /api/audio/render: job #535 found eleven of them
+  // (Swedish, Danish, Norwegian, Croatian, Romanian, Bulgarian, Ukrainian, Greek, Hebrew,
+  // Arabic, Thai) failing every line. Codes with no 639-1 tag (cym, gle, hak…) fall through as
+  // they always have.
   const map = { spa: 'es', eng: 'en', fra: 'fr', deu: 'de', ita: 'it',
                 por: 'pt', jpn: 'ja', kor: 'ko', nld: 'nl', rus: 'ru',
-                vie: 'vi', hin: 'hi', ben: 'bn', tur: 'tr', pol: 'pl' };
+                vie: 'vi', hin: 'hi', ben: 'bn', tur: 'tr', pol: 'pl',
+                swe: 'sv', dan: 'da', nor: 'no', hrv: 'hr', ron: 'ro', bul: 'bg', ukr: 'uk',
+                ell: 'el', heb: 'he', ara: 'ar', tha: 'th', ces: 'cs', hun: 'hu', fin: 'fi',
+                ind: 'id', msa: 'ms', tgl: 'tl', kat: 'ka', slk: 'sk', urd: 'ur', tam: 'ta',
+                tel: 'te', kan: 'kn', mar: 'mr', guj: 'gu', pan: 'pa', mal: 'ml' };
 
   // A REGIONAL cast key is its own language, not a suffix to throw away
   // ('deu_at', 'spa_mx', 'fra_ca'). Two letters after the underscore is an

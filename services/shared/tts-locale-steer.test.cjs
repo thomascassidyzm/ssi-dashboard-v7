@@ -83,3 +83,18 @@ describe('toBcp47 — regional cast keys', () => {
     expect(toBcp47('gle_munster')).toBe('gle')
   })
 })
+
+describe('toBcp47 — every Cartesia language on the estate gets a two-letter tag (job #535)', () => {
+  // Cartesia rejects a three-letter locale: "unsupported locale 'swe'". These eleven failed every
+  // line of the /guess game's stand-in render on 2026-10-03; red on the fifteen-entry table.
+  it('maps the ISO 639-3 codes Cartesia courses teach to ISO 639-1', () => {
+    const expected = { swe: 'sv', dan: 'da', nor: 'no', hrv: 'hr', ron: 'ro', bul: 'bg', ukr: 'uk', ell: 'el', heb: 'he', ara: 'ar', tha: 'th', ces: 'cs', hun: 'hu', fin: 'fi' }
+    for (const [iso3, tag] of Object.entries(expected)) expect(toBcp47(iso3), iso3).toBe(tag)
+  })
+  it('steers a Swedish target render with sv, and a regional fork of a newly mapped language with its region', () => {
+    const SWEDISH = { course_code: 'swe_for_eng', known_lang: 'eng', target_lang: 'swe', voice_pool_key: null, dialect: 'standard', known_dialect: null }
+    expect(ttsLocaleForRole(SWEDISH, 'target1', 'swe')).toBe('sv')
+    expect(toBcp47('ara_sy')).toBe('ar-SY')
+    expect(toBcp47('nor_nn')).toBe('no-NN')
+  })
+})
