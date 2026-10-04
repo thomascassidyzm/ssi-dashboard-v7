@@ -157,7 +157,7 @@ function roleNativeLanguage(role, course) {
   return role === 'known' || role === 'presentation' ? course.known_lang : course.target_lang
 }
 
-/** The course_audio patch a re-record writes. Timings only when supplied: undefined leaves the row's own untouched, never wipes them. */
+/** The course_audio patch a re-record writes. Timings only when supplied. Note swapClipInPlace nulls word_timings unless the patch brings them (they describe bytes), so every branch that moves s3_key must supply the new bytes' timings. */
 function rerecordPatch({ voiceId, wordBoundaries, wordTimings }) {
   return { origin: 'tts', voice_id: voiceId, ...(wordBoundaries !== undefined && { word_boundaries: wordBoundaries || null }), ...(wordTimings !== undefined && { word_timings: wordTimings || null }) }
 }
