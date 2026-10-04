@@ -136,7 +136,7 @@ export default async function handler(req, res) {
       .from('course_audio')
       .select('id, text, s3_key')
       .eq('course_code', courseCode)
-      .eq('role', 'pod_explainer')
+      .eq('role', 'pod_atom')
       .in('voice_id', EXPLAINER_VOICE_IDS)
     if (caErr) return res.status(500).json({ error: caErr.message })
 

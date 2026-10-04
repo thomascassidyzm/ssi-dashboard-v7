@@ -58,7 +58,7 @@ export async function loadPodAtomClipMaps(
   const targetClipMap = new Map<string, string>()
   const [legoRes, atomRes] = await Promise.all([
     supabase.from('pod_legos').select('lego_key, explainer_audio_id').eq('course_code', courseCode),
-    supabase.from('course_audio').select('id, text').eq('course_code', courseCode).eq('role', 'pod_explainer').like('text', '[atom] %'),
+    supabase.from('course_audio').select('id, text').eq('course_code', courseCode).eq('role', 'pod_atom').like('text', '[atom] %'),
   ])
   for (const l of (legoRes.data || []) as Array<{ lego_key: string; explainer_audio_id: string | null }>) {
     if (l.explainer_audio_id) glossMap.set(l.lego_key, l.explainer_audio_id)

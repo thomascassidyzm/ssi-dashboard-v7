@@ -53,7 +53,7 @@ function partitionAtomMap(atomMap, sentenceTexts) {
   const POD_ID = await servingPodId(sb, COURSE)  // the pod this course SERVES, resolved — never a literal slug
   const [{ data: legos }, { data: atomClips }] = await Promise.all([
     sb.from('pod_legos').select('lego_key, explainer_audio_id').eq('course_code', COURSE),
-    sb.from('course_audio').select('id, text').eq('course_code', COURSE).eq('role', 'pod_explainer').like('text', '[atom] %'),
+    sb.from('course_audio').select('id, text').eq('course_code', COURSE).eq('role', 'pod_atom').like('text', '[atom] %'),
   ])
   const glossMap = new Map(), targetClipMap = new Map()
   for (const l of legos || []) if (l.explainer_audio_id) glossMap.set(l.lego_key, l.explainer_audio_id)

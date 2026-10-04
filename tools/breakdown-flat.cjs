@@ -80,9 +80,9 @@ async function ensureAtomSlice(surface) {
   const nk = norm(key)
   if (sliceInFlight.has(nk)) return sliceInFlight.get(nk)
   const p = (async () => {
-    const { data: ex } = await supabase.from('course_audio').select('id').eq('course_code', COURSE).eq('role', ROLE).eq('text_normalized', nk).limit(1).maybeSingle()
+    const { data: ex } = await supabase.from('course_audio').select('id').eq('course_code', COURSE).eq('role', 'pod_atom').eq('text_normalized', nk).limit(1).maybeSingle()
     if (ex) return ex.id
-    const res = await p8.generatePodAudio({ courseCode: COURSE, text: surface, language: ATOM_LANG, role: ROLE, voice: ATOM_VOICE })
+    const res = await p8.generatePodAudio({ courseCode: COURSE, text: surface, language: ATOM_LANG, role: 'pod_atom', voice: ATOM_VOICE })
     await supabase.from('course_audio').update({ text: key, text_normalized: nk }).eq('id', res.id)
     return res.id
   })()

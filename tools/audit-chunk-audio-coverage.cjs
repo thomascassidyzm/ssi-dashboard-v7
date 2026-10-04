@@ -85,7 +85,7 @@ async function loadTargetClipMap(courseCode) {
     .from('course_audio')
     .select('text')
     .eq('course_code', courseCode)
-    .eq('role', 'pod_explainer')
+    .eq('role', 'pod_atom')
     .like('text', '[atom] %')
   for (const row of data || []) map.add(normSurface(row.text.slice('[atom] '.length)))
   return map

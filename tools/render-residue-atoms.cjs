@@ -7,7 +7,7 @@
  * never had the June atom-clip sweep, so their residue groups would play
  * SILENCE at sub-sentence rungs. This fills that fallback with real audio.
  *
- * Same conventions as breakdown-flat.cjs: role pod_explainer, text
+ * Same conventions as breakdown-flat.cjs: role pod_atom, text
  * "[atom] <surface>" (rendered as the bare surface), course target1 voice —
  * loadStage0ClipMaps resolves them with no Lab changes.
  *
@@ -25,7 +25,7 @@ const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SER
 
 const { XAI_OFFICIAL } = require('../services/shared/xai-catalogue.cjs')
 
-const ROLE = 'pod_explainer'
+const ROLE = 'pod_atom'
 const base = (l) => String(l || '').toLowerCase().split('-')[0]
 const SENTENCE_PUNCT = /[.!?…。！？]/
 
