@@ -9,13 +9,13 @@
       </p>
     </header>
 
-    <p v-if="error" class="err">{{ error }}</p>
-    <p v-else-if="loading" class="note">Loading…</p>
-
     <router-link to="/guess-text" class="doc guess-link">
       <span class="title">The /guess game: its text</span>
       <span class="blurb">The reveal lines, the Read more notes and the place notes, edit it and Save: it goes live straight away.</span>
     </router-link>
+
+    <p v-if="error" class="err">{{ error }}</p>
+    <p v-else-if="loading" class="note">Loading…</p>
 
     <ul v-else class="docs">
       <li v-for="d in docs" :key="d.id">
