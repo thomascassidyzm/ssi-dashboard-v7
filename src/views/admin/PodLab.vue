@@ -41,7 +41,7 @@ import ConsentStep from './voicelab/ConsentStep.vue'
 import { buildMainStage } from '../../lib/podEngine'
 // Popty's own atom lookups (not vendored) — the fusion-shapes explorer's, not
 // the retired Stage-0 ladder's.
-import { resolveAtoms } from '../../lib/podAtoms'
+import { loadPodAtomClipMap, resolveAtoms } from '../../lib/podAtoms'
 // Sample generation goes to Popty's backend (phase-8 proxy), not the Vercel
 // /api routes the rest of this page uses — same helper pair as PodDetailView.
 import { getApiUrl } from '@/services/api.js'
@@ -126,6 +126,7 @@ const loading = ref(false)
 const error = ref('')
 const sentences = ref([]) // listening_pod_sentences rows
 const selectedIdx = ref(0)
+const targetClipMap = ref(new Map())
 const fineKnownMap = ref(new Map()) // text_normalized → pod_fine_known clip id
 
 // mirror of services/shared/text-normalize.cjs normalizeForAudio — every
@@ -293,6 +294,10 @@ async function loadCourse(courseCode) {
     // asking Tom to approve that casting on the strength of it, is a lie in
     // exactly the place a judgement is being made.
     await loadClipVoices(sb, sentences.value)
+
+    // Course-wide per-atom '[atom] <target>' clips (role pod_atom) — the
+    // fallback when a chunk has no Take-G slice.
+    targetClipMap.value = await loadPodAtomClipMap(sb, courseCode)
 
     // Fine-known clips: plain English per unit gloss / window translation,
     // text-keyed (same normalisation as course_audio.text_normalized).
@@ -506,7 +511,7 @@ const shapeAtoms = computed(() => {
   const s = selectedSentence.value
   if (!s) return []
   const map = usingFine.value ? s.atom_map_fine : s.atom_map
-  const resolved = resolveAtoms(map)
+  const resolved = resolveAtoms(map, targetClipMap.value)
   // carry the Take G ms spans through (resolveAtoms keeps atom+passthrough in
   // order, so a positional zip against the same filter is exact)
   const src = (map || []).filter((e) => e.kind === 'atom' || e.kind === 'passthrough')
@@ -749,6 +754,8 @@ const ladderRungs = computed(() => {
         approx: false,
       }
     }
+    const atomClips = us.map((a) => a.targetClipId)
+    if (atomClips.some(Boolean)) return { clips: atomClips, approx: us.length > 1 }
     if (wholeClip) return { clips: [wholeClip], approx: true }
     return { clips: [], approx: false }
   }
@@ -798,7 +805,7 @@ const ladderRungs = computed(() => {
     const take = takes[gi] || (single ? s.target_audio_id : null)
     // no natural take (the glue-merged turns): the group's full Take G is the
     // real, correctly-voiced render of exactly this sentence — gaps and all
-    const clips = take ? clipList(take) : takegIds[gi] ? [takegIds[gi]] : []
+    const clips = take ? clipList(take) : takegIds[gi] ? [takegIds[gi]] : g.map((a) => a.targetClipId)
     return {
       kind: 'group',
       text: g.map((a) => a.targetSurface).join(' '),
@@ -834,7 +841,7 @@ const ladderRungs = computed(() => {
     // per sentence: natural take, else its Take G, else butted unit clips
     const perGroup = gs.map((g, i) => {
       const t = tks[i] || takegIds[span.start + i]
-      return t ? clipList(t) : []
+      return t ? clipList(t) : g.map((a) => a.targetClipId)
     })
     const clips = perGroup.flat()
     return {

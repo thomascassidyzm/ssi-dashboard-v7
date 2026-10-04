@@ -9,7 +9,8 @@
  * PodLab's ladder now falls back through (services/../src/views/admin/
  * PodLab.vue `resolveChunkClips`):
  *   exact  — a Take-G ms-precise slice of the group's whole-sentence take
- *   approx — no slice, but the group's whole-sentence take/Take-G covers it
+ *   approx — no slice, but a per-atom target clip (course_audio '[atom] …')
+ *            or the group's whole-sentence take/Take-G covers it
  *   none   — nothing playable at any tier (would have been a dead play
  *            control before the fallback fix)
  *
@@ -25,6 +26,7 @@ const courseFilter = process.argv[2] || null
 
 const SENTENCE_PUNCT = /[.!?。！？]/
 const ELLIPSIS_RE = /…/
+const normSurface = (s) => (s || '').toLowerCase().replace(/\s+/g, ' ').trim()
 
 // ── mirrors PodLab.vue atomBoundaries/atomGroups/sLegoSpansFromBounds ──────
 function atomBoundaries(text, atoms) {
@@ -63,16 +65,31 @@ function sLegoSpans(atoms, bounds, gStart, gEnd) {
   return ranges
 }
 
-// Sub-tags the 'approx' tier — 'approx-wholetake' is the free re-alignment
-// opportunity (source audio already exists; only the ms slice is missing — a
-// cut, not a fresh render).
-function tierFor(us, takeg, wholeAvailable) {
+// Sub-tags the 'approx' tier by WHICH fallback carried it — 'approx-wholetake'
+// is the free re-alignment opportunity (source audio already exists; only the
+// ms slice is missing — a cut, not a fresh render); 'approx-atomclip' already
+// has per-unit clips and needs nothing further.
+function tierFor(us, takeg, wholeAvailable, targetClipMap) {
   const sliced = takeg && us.every((a) => a.target_start_ms != null && a.target_end_ms != null)
   if (sliced) return 'exact'
+  const atomClips = us.map((a) => targetClipMap.has(normSurface(a.target_surface)))
+  if (atomClips.some(Boolean)) return 'approx-atomclip'
   if (wholeAvailable) return 'approx-wholetake'
   return 'none'
 }
 const tierBucket = (t) => (t === 'exact' ? 'exact' : t === 'none' ? 'none' : 'approx')
+
+async function loadTargetClipMap(courseCode) {
+  const map = new Set()
+  const { data } = await supabase
+    .from('course_audio')
+    .select('text')
+    .eq('course_code', courseCode)
+    .eq('role', 'pod_atom')
+    .like('text', '[atom] %')
+  for (const row of data || []) map.add(normSurface(row.text.slice('[atom] '.length)))
+  return map
+}
 
 async function auditPod(pod) {
   const { data: rows, error } = await supabase
@@ -82,6 +99,7 @@ async function auditPod(pod) {
     .order('global_order', { ascending: true })
   if (error) throw error
 
+  const targetClipMap = await loadTargetClipMap(pod.course_code)
 
   const counts = { exact: 0, approx: 0, none: 0 }
   const missing = [] // tier 'none' — genuine gaps, no source audio anywhere: TTS/recording candidates
@@ -113,7 +131,7 @@ async function auditPod(pod) {
       const wholeAvailable = !!(takeg || sentTakes[gi] || (groups.length === 1 && s.target_audio_id))
       spans.forEach((span) => {
         const us = g.slice(span.start, span.end + 1)
-        const tier = tierFor(us, takeg, wholeAvailable)
+        const tier = tierFor(us, takeg, wholeAvailable, targetClipMap)
         counts[tierBucket(tier)]++
         const text = us.map((a) => a.target_surface).join(' ')
         if (tier === 'none') {
