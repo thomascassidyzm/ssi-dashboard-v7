@@ -88,8 +88,8 @@ vi.mock('../../lib/podEngine', () => ({
   buildMainStage: () => [],
 }))
 vi.mock('../../lib/podAtoms', () => ({
-  loadPodAtomClipMaps: async () => ({ glossMap: new Map(), targetClipMap: new Map() }),
   resolveAtoms: () => [],
+  loadPodAtomClipMap: async () => new Map(),
 }))
 
 const CASTING = {

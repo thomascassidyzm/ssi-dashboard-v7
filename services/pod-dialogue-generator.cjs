@@ -480,10 +480,7 @@ async function upsertPodRow({ podId, courseCode, podSlug, targetLanguage, canoni
 
 /** Upsert a generated scene's sentences (idempotent by id). Generated/regenerated
  *  text never carries old audio — null the audio so nothing stale survives the
- *  text change (it gets re-recorded downstream). The deprecated explainer
- *  columns are nulled for the same reason and nothing refills them: leaving an
- *  old explainer attached to new text would make the row lie, so the wipe stays
- *  even though explainers were retired on 2026-08-24. */
+ *  text change (it gets re-recorded downstream). */
 async function writeSceneSentences({ podId, scene, lines }) {
   const rows = lines.map(l => ({
     id: `${podId}:SC${pad2(scene.number)}-S${pad3(l.sentence_number)}`,
@@ -497,9 +494,6 @@ async function writeSceneSentences({ podId, scene, lines }) {
     jump_in: normaliseJumpIn(l.jump_in),
     target_audio_id: null,
     known_audio_id: null,
-    explainer_text: null,
-    explainer_audio_id: null,
-    explainer_decomposition: null,
   }))
   const { error } = await supabase.from('listening_pod_sentences').upsert(rows, { onConflict: 'id' })
   if (error) throw new Error(`sentence upsert (scene ${scene.number}): ${error.message}`)

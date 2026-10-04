@@ -4688,7 +4688,7 @@ function pickServingPodPerCourse (pods) {
  *  an ORDER BY can repeat or skip rows. */
 async function fetchAllPodSentences (supabase, podIds, { withSplitArrays = false } = {}) {
   const cols = 'id, pod_id, scene_number, sentence_number, global_order, beat_label, speaker, ' +
-    'target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id' +
+    'target_text, known_text, target_audio_id, known_audio_id' +
     (withSplitArrays ? ', sentence_audio_ids, sentence_known_audio_ids, takeg_audio_ids' : '')
   const out = []
   const PAGE = 1000
@@ -4814,7 +4814,7 @@ app.get('/api/pod-scripts/:courseCode', async (req, res) => {
     if (wantClips) {
       const ids = new Set()
       for (const r of rows) {
-        for (const f of ['target_audio_id', 'known_audio_id', 'explainer_audio_id']) if (r[f]) ids.add(r[f])
+        for (const f of ['target_audio_id', 'known_audio_id']) if (r[f]) ids.add(r[f])
         for (const f of ['sentence_audio_ids', 'sentence_known_audio_ids', 'takeg_audio_ids']) {
           for (const id of r[f] || []) if (id) ids.add(id)
         }
