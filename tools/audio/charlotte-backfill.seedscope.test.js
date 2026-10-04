@@ -41,3 +41,29 @@ describe('daily queue order', () => {
     expect(buildQueue(codes, false).some(e => /male$/.test(e[2][1]) && e[2][1] !== 'xai-female')).toBe(false)
   })
 })
+describe('no unscoped pass while scoped work remains (#621)', () => {
+  const { runQueue } = req('./charlotte-backfill-daily.cjs')
+  it('budget 250: seed 1 = 300 chars skipped, seed 101 = 100 chars is NOT rendered', () => {
+    const calls = []
+    // fake tool: scoped call sees only seed 1 (300 > 250, skipped); an unscoped call would see seed 101 and spend 100
+    const run = (course, roles, budget, extra) => {
+      const scoped = extra.includes('--seeds'); calls.push({ course, scoped })
+      return scoped ? { out: 'x: 1 old clips linked\ndone 0 clips (0 from library), 0 slots repointed, 0 chars spent; 1 remain.\nOUTSTANDING 1\n', status: 0 }
+                    : { out: '100 chars spent\nOUTSTANDING 0\n', status: 0 }
+    }
+    const left = runQueue(buildQueue(['ita_for_eng'], false), 250, run, () => {}, () => {})
+    expect(calls.some(c => !c.scoped)).toBe(false)
+    expect(left).toBe(250)
+  })
+  it('still runs unscoped passes once every scoped call reports OUTSTANDING 0', () => {
+    const calls = []
+    const run = (c, r, b, extra) => { calls.push(extra.includes('--seeds')); return { out: 'OUTSTANDING 0\n', status: 0 } }
+    runQueue(buildQueue(['ita_for_eng'], false), 250, run, () => {}, () => {})
+    expect(calls.includes(false)).toBe(true)
+  })
+  it('unreadable scoped output counts as outstanding', () => {
+    const calls = []
+    runQueue(buildQueue(['ita_for_eng'], false), 250, (c, r, b, e) => { calls.push(e.includes('--seeds')); return { out: '', status: 0 } }, () => {}, () => {})
+    expect(calls.includes(false)).toBe(false)
+  })
+})

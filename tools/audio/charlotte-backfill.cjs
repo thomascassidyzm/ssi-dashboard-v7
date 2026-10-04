@@ -208,10 +208,10 @@ async function main() {
   const work = await workFor(pg, course, roles, pass.sql, maxSeed)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
-  let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null
+  let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null, genderSkipped = 0, slotRefused = 0
   for (const w of work) {
     // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
-    if (voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); continue }
+    if (voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
     if (spent + w.chars > budget) { if (spent === 0 && budget === 0) break; continue }
     const r = await render(course, w, dryRun, pass.target)
     if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); break }
@@ -228,10 +228,12 @@ async function main() {
     // a slot the DB refuses (e.g. a trigger) is logged and skipped; the old pointer simply stays
     for (const s of w.slots) {
       try { if (await setPointer(db, s, w.oldId, r.audioId, eventId)) slotsMoved++ }
-      catch (e) { console.log('SLOT-REFUSED', s.tbl, s.key, e.message.slice(0, 120)); fs.appendFileSync(ledger, JSON.stringify({ kind: 'slot-refused', oldId: w.oldId, slot: s, error: e.message }) + '\n') }
+      catch (e) { refused = true; slotRefused++; console.log('SLOT-REFUSED', s.tbl, s.key, e.message.slice(0, 120)); fs.appendFileSync(ledger, JSON.stringify({ kind: 'slot-refused', oldId: w.oldId, slot: s, error: e.message }) + '\n') }
     }
     done++; if (r.source === 'library') free++
   }
+  // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded
+  console.log(`OUTSTANDING ${Math.max(0, work.length - done - genderSkipped) + slotRefused}`)
   console.log(`done ${done} clips (${free} from library), ${slotsMoved} slots repointed, ${spent} chars spent; ${work.length - done} remain. ledger ${ledger}`)
   await pg.end()
 }

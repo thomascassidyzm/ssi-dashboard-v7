@@ -35,6 +35,30 @@ function buildQueue(codes, malePass) {
   return [...passes(true), ...passes(false)]
 }
 const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
+const runTool = (course, roles, budget, extra) => {
+  const r = spawnSync('node', [TOOL, '--course', course, '--roles', roles, '--budget', String(budget), ...extra], { encoding: 'utf8' })
+  return { out: (r.stdout || '') + (r.stderr || ''), status: r.status }
+}
+/**
+ * Walks the queue spending down `budget`; returns what is left. While ANY scoped (--seeds) call still owes work — skipped for budget,
+ * failed, verify-failed, slot-refused, or its output unreadable — every unscoped pass is skipped, so later seeds never get spend while
+ * seeds 1-100 wait (lane review #620). `run(course, roles, budget, extra)` -> { out, status } is injected so this is a test.
+ */
+function runQueue(queue, budget, run, log = console.log, write = s => process.stdout.write(s)) {
+  let scopedOutstanding = false
+  for (const [course, roles, extra = []] of queue) {
+    if (budget < 200) break
+    const scoped = extra.includes('--seeds')
+    if (!scoped && scopedOutstanding) { log(`skipping unscoped ${course} ${extra.join(' ')}: seeds 1-${SEED_SCOPE} work remains`); continue }
+    const { out, status } = run(course, roles, budget, extra)
+    write(out.split('\n').filter(l => /^(done|REFUSED|FAIL|VERIFY-FAIL|SLOT-REFUSED|5 failures|Error)/.test(l) || /: \d+ old clips/.test(l)).join('\n') + '\n')
+    const m = /(\d+) chars spent/.exec(out); budget -= m ? Number(m[1]) : 0
+    const o = /^OUTSTANDING (\d+)/m.exec(out)
+    if (scoped && (!o || Number(o[1]) > 0 || status !== 0)) scopedOutstanding = true
+    if (/REFUSED \(the answer/.test(out) || status !== 0) { log('stopping for today:', status !== 0 ? `exit ${status}` : 'spend guard refused'); break }
+  }
+  return budget
+}
 
 if (require.main === module) (async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
@@ -45,19 +69,9 @@ if (require.main === module) (async () => {
   let budget = Math.max(0, Math.min(DAILY_MAX, CAP - spent - MARGIN))
   console.log(`[${new Date().toISOString()}] spent today ${spent}; this run's budget ${budget}`)
   const codes = courses.map(c => c.course_code)
-  // xAI-voiced FEMALE English first (clicks heard by ear, Tom 2026-10-04): ita_for_eng, then every other course; male voices are NEVER mapped to Charlotte
-  // (Tom 2026-10-04: English is two voices); the general pass below is female-only, males belong to the MALE_PASS=1 pass.
-  const xaiRoles = c => (/^eng_for_/.test(c) ? 'target1,target2' : 'known,presentation')
   const queue = buildQueue(codes, process.env.MALE_PASS === '1')
-  for (const [course, roles, extra = []] of queue) {
-    if (budget < 200) break
-    const r = spawnSync('node', [TOOL, '--course', course, '--roles', roles, '--budget', String(budget), ...extra], { encoding: 'utf8' })
-    const out = (r.stdout || '') + (r.stderr || '')
-    process.stdout.write(out.split('\n').filter(l => /^(done|REFUSED|FAIL|VERIFY-FAIL|SLOT-REFUSED|5 failures|Error)/.test(l) || /: \d+ old clips/.test(l)).join('\n') + '\n')
-    const m = /(\d+) chars spent/.exec(out); budget -= m ? Number(m[1]) : 0
-    if (/REFUSED \(the answer/.test(out) || r.status !== 0) { console.log('stopping for today:', r.status !== 0 ? `exit ${r.status}` : 'spend guard refused'); break }
-  }
+  budget = await runQueue(queue, budget, runTool)
   console.log(`[${new Date().toISOString()}] run over; budget left ${budget}`)
 })().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { buildQueue, SEED_SCOPE }
+module.exports = { buildQueue, runQueue, SEED_SCOPE }
