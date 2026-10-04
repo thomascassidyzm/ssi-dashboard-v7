@@ -87,7 +87,7 @@ function voiceGender(voiceId, castMap) {
 
 // Roles where a single voice speaks the line (so voice gender must match the
 // line's speaker gender). Excludes known-language & narration roles.
-const SPOKEN_ROLES = new Set(['target1', 'target2', 'pod_take_g', 'pod_explainer'])
+const SPOKEN_ROLES = new Set(['target1', 'target2', 'pod_take_g'])
 
 async function fetchAllAudio(courseCode) {
   let rows = [], from = 0, page = 1000

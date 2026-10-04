@@ -299,7 +299,6 @@ function buildPodScript ({ pod, rows, track = 'target', clips = null }) {
   const audioFor = (r) => ({
     target: clipRef(r.target_audio_id),
     known: clipRef(r.known_audio_id),
-    explainer: clipRef(r.explainer_audio_id),
     target_splits: (r.sentence_audio_ids || []).map(clipRef).filter(Boolean),
     known_splits: (r.sentence_known_audio_ids || []).map(clipRef).filter(Boolean),
     // present so the arrays can be told apart from "column not selected"

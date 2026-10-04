@@ -132,7 +132,7 @@
         />
 
         <div class="field-block">
-          <label>Stage playlists <span class="hint">one visit per stage, the top stage takes whatever is left, then the sentence retires out of the lap · per-stage rounds box overrides the default duration · ⓘ = explainer (plays INSTEAD of the translation; sentences without one fall back to EN in that slot)</span></label>
+          <label>Stage playlists <span class="hint">one visit per stage, the top stage takes whatever is left, then the sentence retires out of the lap · per-stage rounds box overrides the default duration</span></label>
           <p v-if="podLadder" class="ladder-summary" :class="{ 'ladder-summary--bad': podLadder.overrun }">
             <strong>{{ podLadder.total }} visits</strong> per sentence:
             <span v-for="(r, i) in podLadder.rows" :key="r.stage">{{ i ? ' · ' : '' }}stage {{ r.stage }} ×{{ r.visits }}</span>
@@ -219,7 +219,7 @@ const { isAdmin, learner: currentUser } = useAuth()
 // listening/speaking ratio reads script_shape) but renders no editor for them.
 //
 // ROLE_SPEED drives the pod-stage audition playback rate (Layer-2 preview).
-const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0, explainer: 1.0 }
+const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0 }
 // The audio proxy lives on saysomethingin.app (CORS *). popty.app doesn't
 // serve /api/audio so we hit the deployed learning-app endpoint directly.
 const AUDIO_BASE = 'https://saysomethingin.app/api/audio'
@@ -298,13 +298,7 @@ const auditionExamplePodSentence = computed(() => {
 async function playPodPlaylistForSentence(playlist, sentence) {
   if (currentAudio) { try { currentAudio.pause() } catch {} }
   for (const role of playlist) {
-    // Mirrors the runtime: explainer slot falls back to the translation when
-    // the sentence has no explainer audio (fully-repeat lines, vocab codas).
-    const id = role === 'explainer'
-      ? (sentence.explainer_audio_id || sentence.known_audio_id)
-      : role === 'trans'
-        ? sentence.known_audio_id
-        : sentence.target_audio_id
+    const id = role === 'trans' ? sentence.known_audio_id : sentence.target_audio_id
     const url = audioUrl(id)
     if (!url) continue
     await new Promise((resolve) => {
@@ -369,7 +363,7 @@ async function loadCoursePreview(courseCode) {
       if (podId) {
         const { data: podRows, error: podErr } = await sb
           .from('listening_pod_sentences')
-          .select('global_order, target_text, known_text, target_audio_id, known_audio_id, explainer_audio_id, atom_map, sentence_audio_ids, sentence_known_audio_ids')
+          .select('global_order, target_text, known_text, target_audio_id, known_audio_id, atom_map, sentence_audio_ids, sentence_known_audio_ids')
           .eq('pod_id', podId)
           .order('global_order', { ascending: true })
         if (podErr) throw podErr
@@ -669,13 +663,10 @@ const PlaylistEditor = defineComponent({
   },
   emits: ['update:modelValue'],
   setup(props, { emit }) {
-    // ps* = target sentence at varying speeds, trans = known-language gloss,
-    // explainer = the per-sentence Stage-1 narration that decomposes the
-    // target into LEGO-sized chunks ("buona means good, sera means afternoon,
-    // come stai means how are you doing"). See migration
-    // 20260519_listening_pod_explainer_columns.sql.
-    const ROLES = ['ps08x', 'ps', 'ps15x', 'ps2x', 'trans', 'explainer']
-    const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN', explainer: 'ⓘ' }
+    // ps* = target sentence at varying speeds, trans = known-language gloss.
+    // (No explainer role: pod explainer clips were removed 2026-10-04.)
+    const ROLES = ['ps08x', 'ps', 'ps15x', 'ps2x', 'trans']
+    const ROLE_LABEL = { ps08x: '0.8×', ps: '1×', ps15x: '1.5×', ps2x: '2×', trans: 'EN' }
 
     function update(next) { emit('update:modelValue', next) }
     function cycle(idx) {
@@ -1045,7 +1036,6 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 :deep(.role-pill.role-ps15x) { background: #fb923c; color: #431407; }
 :deep(.role-pill.role-ps2x)  { background: #f97316; color: #431407; }
 :deep(.role-pill.role-trans) { background: #6b7280; color: #f9fafb; }
-:deep(.role-pill.role-explainer) { background: #f59e0b; color: #422006; }
 :deep(.pill-num) {
   background: rgba(0,0,0,0.18);
   color: inherit;
@@ -1446,7 +1436,6 @@ h1 { font-size: 1.25rem; margin: 0 0 0.25rem; letter-spacing: -0.01em; }
 .preview-pill.role-ps15x { background: #fb923c; color: #431407; }
 .preview-pill.role-ps2x  { background: #f97316; color: #431407; }
 .preview-pill.role-trans { background: #6b7280; color: #f9fafb; }
-.preview-pill.role-explainer { background: #f59e0b; color: #422006; }
 .preview-sequence {
   margin-left: auto;
   background: transparent;
