@@ -13,29 +13,25 @@
  * podStageComposition.ts.)
  */
 
-export const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0, explainer: 1.0 }
+export const ROLE_SPEED = { ps08x: 0.8, ps: 1.0, ps15x: 1.5, ps2x: 2.0, trans: 1.0 }
 
 // ── stages 1-N (port of podStageComposition.buildMainStage) ──────────────────
 function buildMainStage(sentence, stage, playlist) {
   const plays = []
   for (let j = 0; j < playlist.length; j++) {
     let role = playlist[j]
-    if (role === 'explainer' && !sentence.explainer_audio_id) {
-      if (playlist.includes('trans')) continue
-      role = 'trans'
-    }
     if (role === 'trans' && !sentence.known_audio_id) continue
-    const isTrans = role === 'trans', isExp = role === 'explainer'
-    const audioId = isExp ? sentence.explainer_audio_id : isTrans ? sentence.known_audio_id : sentence.target_audio_id
+    const isTrans = role === 'trans'
+    const audioId = isTrans ? sentence.known_audio_id : sentence.target_audio_id
     if (!audioId) continue
     plays.push({ playRole: role, audioId, text: isTrans ? sentence.known_text : sentence.target_text, playbackSpeed: ROLE_SPEED[role] ?? 1 })
   }
   if (!plays.length) return []
   // end-on-target invariant — never strand the learner on the known language
   const last = plays[plays.length - 1]
-  if (last.playRole === 'trans' || last.playRole === 'explainer') {
+  if (last.playRole === 'trans') {
     if (sentence.target_audio_id) {
-      const lastT = [...plays].reverse().find((p) => p.playRole !== 'trans' && p.playRole !== 'explainer')
+      const lastT = [...plays].reverse().find((p) => p.playRole !== 'trans')
       const closeRole = lastT?.playRole ?? 'ps'
       plays.push({ playRole: closeRole, audioId: sentence.target_audio_id, text: sentence.target_text, playbackSpeed: ROLE_SPEED[closeRole] ?? 1 })
     }
@@ -80,7 +76,7 @@ export function composeArc(sentence, podsStagePlaylist) {
 
   units.forEach((u, ui) => {
     const prefix = units.length > 1 ? `S${ui + 1}·` : ''
-    const sentLike = { target_audio_id: u.targetAudioId, known_audio_id: u.knownAudioId, explainer_audio_id: null, target_text: u.targetText, known_text: u.knownText }
+    const sentLike = { target_audio_id: u.targetAudioId, known_audio_id: u.knownAudioId, target_text: u.targetText, known_text: u.knownText }
 
     // STAGES 1..N — ascending, per sentence
     for (const stage of stages) {

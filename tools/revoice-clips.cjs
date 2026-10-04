@@ -166,7 +166,7 @@ const LINK_TABLES = [
   { table: 'course_legos', cols: ['known_audio_id', 'target1_audio_id', 'target2_audio_id'], durations: true },
   { table: 'course_practice_phrases', cols: ['known_audio_id', 'target1_audio_id', 'target2_audio_id'], durations: true },
   { table: 'course_seeds', cols: ['known_audio_id', 'target1_audio_id', 'target2_audio_id'], durations: false },
-  { table: 'listening_pod_sentences', cols: ['known_audio_id', 'target_audio_id', 'explainer_audio_id', 'note_audio_id'], durations: false },
+  { table: 'listening_pod_sentences', cols: ['known_audio_id', 'target_audio_id', 'note_audio_id'], durations: false },
   { table: 'lego_introductions', cols: ['presentation_audio_id'], durations: false },
 ]
 /** No FK, so a delete silently strands the uuid inside the array. Refuse instead. */

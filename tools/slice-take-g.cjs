@@ -70,49 +70,7 @@ async function download(s3Key, dest) {
   await fs.promises.writeFile(dest, Buffer.from(await res.Body.transformToByteArray()))
 }
 
-const alnum = (s) => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}\p{M}]/gu, '')
-
-// pad into a gap: a third of it each side, capped — the rest stays as margin
-const PAD_MS = Number(process.env.SLICE_PAD_MS || 150)
-const pad = (gapMs) => Math.max(0, Math.min(PAD_MS, Math.round(gapMs / 3)))
-
-/** Per-unit padded spans from word/gap edges. edges[i] = {end of speech i,
- *  start of speech i+1}; spans need not tile — windows span first-start to
- *  last-end and keep the interior gaps. */
-function paddedSpans(speech, durMs) {
-  return speech.map((sp, i) => {
-    const prevGap = i === 0 ? null : { from: speech[i - 1].end, to: sp.start }
-    const nextGap = i === speech.length - 1 ? null : { from: sp.end, to: speech[i + 1].start }
-    return {
-      start: prevGap ? Math.round(sp.start - pad(sp.start - prevGap.from)) : 0,
-      end: nextGap ? Math.round(sp.end + pad(nextGap.to - sp.end)) : Math.round(durMs),
-    }
-  })
-}
-
-/**
- * Per-unit spans from Azure word-boundary events (exact — no audio
- * inspection): consume boundary words until each unit's surface is
- * reconstructed (alnum-normalised). Gate: every unit must reconstruct
- * exactly and all words must be consumed. Returns null when the boundaries
- * don't tile the group (caller falls back to silence detection).
- */
-function spansFromWordBoundaries(wb, group, durMs) {
-  const words = (wb || []).filter((w) => alnum(w.text))
-  if (!words.length) return null
-  const speech = []
-  let wi = 0
-  for (const a of group) {
-    const want = alnum(a.target_surface)
-    let got = ''
-    const start = wi
-    while (wi < words.length && got.length < want.length) { got += alnum(words[wi].text); wi++ }
-    if (got !== want) return null
-    speech.push({ start: words[start].offset, end: words[wi - 1].offset + (words[wi - 1].duration || 0) })
-  }
-  if (wi !== words.length) return null
-  return paddedSpans(speech, durMs)
-}
+const { spansFromWordBoundaries, spansFromWordTimings, paddedSpans } = require('../services/shared/take-g-spans.cjs')
 
 function ffSilences(file, noise = NOISE, minSil = MIN_SIL_S) {
   return new Promise((res, rej) => {
@@ -145,7 +103,7 @@ function ffSilences(file, noise = NOISE, minSil = MIN_SIL_S) {
   if (error) { console.error(error.message); process.exit(1) }
 
   const clipIds = [...new Set((sents || []).flatMap((s) => s.takeg_audio_ids || []).filter(Boolean))]
-  const { data: clips } = await supabase.from('course_audio').select('id, s3_key, duration_ms, word_boundaries').in('id', clipIds)
+  const { data: clips } = await supabase.from('course_audio').select('id, s3_key, duration_ms, word_boundaries, word_timings').in('id', clipIds)
   const clipById = new Map((clips || []).map((c) => [c.id, c]))
   const tmp = await fs.promises.mkdtemp(path.join(os.tmpdir(), 'takeg-'))
 
@@ -174,19 +132,21 @@ function ffSilences(file, noise = NOISE, minSil = MIN_SIL_S) {
       const clip = clipById.get(clipId)
       if (!clip || !clip.s3_key) { console.log(`S${s.global_order} g${gi}: ✗ clip row/s3_key missing`); failGroups++; continue }
 
-      // exact path: Azure word boundaries stored on the clip → no audio needed
-      if (clip.word_boundaries && clip.duration_ms) {
-        const wbSpans = spansFromWordBoundaries(clip.word_boundaries, g, clip.duration_ms)
+      // exact path: word timings stored on the clip (Azure word_boundaries, or
+      // Cartesia word_timings — Cartesia takes have no pauses to detect) → no audio needed
+      if (clip.duration_ms && (clip.word_boundaries || clip.word_timings)) {
+        const wbSpans = (clip.word_boundaries && spansFromWordBoundaries(clip.word_boundaries, g, clip.duration_ms))
+          || (clip.word_timings && spansFromWordTimings(clip.word_timings, g, clip.duration_ms))
         if (wbSpans) {
           for (let ui = 0; ui < g.length; ui++) {
             const mi = mapIdx[offsets[gi] + ui]
             map[mi] = { ...map[mi], target_start_ms: wbSpans[ui].start, target_end_ms: wbSpans[ui].end }
           }
           okGroups++; touched = true
-          if (dry) console.log(`S${s.global_order} g${gi}: ✓ ${g.length} units (word-boundaries) — ${wbSpans.map((x) => `${x.start}-${x.end}`).join(' | ')}`)
+          if (dry) console.log(`S${s.global_order} g${gi}: ✓ ${g.length} units (word timings) — ${wbSpans.map((x) => `${x.start}-${x.end}`).join(' | ')}`)
           continue
         }
-        console.log(`S${s.global_order} g${gi}: word boundaries don't tile — falling back to silence detect`)
+        console.log(`S${s.global_order} g${gi}: word timings don't tile — falling back to silence detect`)
       }
 
       const f = path.join(tmp, `${clipId}.mp3`)

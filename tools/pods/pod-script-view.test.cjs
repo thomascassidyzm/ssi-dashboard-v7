@@ -192,14 +192,12 @@ describe('audio refs', () => {
       ...line(2, 1, 'Anna'),
       target_audio_id: U1,
       known_audio_id: U2,
-      explainer_audio_id: U3,
       sentence_audio_ids: [U1, U4],
       sentence_known_audio_ids: [],
     }, line(2, 2, 'Guest')]
     const clips = {
       [U1]: { text: 'ciao', voice_id: 'ara', audio_revision: 3 },
       [U2]: { text: 'hello', voice_id: 'eng', audio_revision: 1 },
-      [U3]: { text: 'explain', voice_id: 'eng' },
       // U4 deliberately absent from course_audio — a dangling split reference
     }
     const v = buildPodScript({ pod: { ...pod, speakers: cast({ Anna: [ARA, 'f'], Guest: [LEO, 'm'] }) }, rows, clips })
@@ -208,7 +206,7 @@ describe('audio refs', () => {
     expect(l.audio.target.url).toBe(`${AUDIO_BASE}/${U1}.v3`)
     expect(AUDIO_BASE).toMatch(/^https:\/\/saysomethingin\.app\/api\/audio$/)
     expect(l.audio.known.url).toBe(`${AUDIO_BASE}/${U2}`)
-    expect(l.audio.explainer.url).toBe(`${AUDIO_BASE}/${U3}`)
+    expect(l.audio.explainer).toBeUndefined()
 
     // splits keep the row's own order, and each is individually addressable
     expect(l.audio.target_splits.map(c => c.ref)).toEqual([`${U1}.v3`, U4])

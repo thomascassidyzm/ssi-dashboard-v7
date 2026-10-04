@@ -342,10 +342,8 @@
 
                   <!-- No explainer button. Tom, 2026-08-24: "Explainers do not
                        exist anymore. We don't do them. Learners never hear them
-                       in app. Let's deprecate them completely." The payload may
-                       still carry line.audio.explainer for historical rows; this
-                       page never renders it, so nothing here can be auditioned
-                       that no learner hears. -->
+                       in app. Let's deprecate them completely." Removed from the
+                       data and the payload 2026-10-04. -->
                 </div>
 
                 <div v-if="playError && playErrorId === lastTried" class="text-danger text-xs mt-1">{{ playError }}</div>
