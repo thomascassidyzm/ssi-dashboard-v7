@@ -115,6 +115,36 @@ function jobMatches(jobText, token) {
   if (!jobText || !token) return false
   return new RegExp(`${token.replace('#', '#')}(?!\\d)`).test(String(jobText))
 }
+/**
+ * COMMISSIONED WORK PASSES; ONLY RUNAWAYS STOP (Tom 2026-10-04, ruling
+ * r-2026-10-04-the-tts-spend-guard-exists: "The guard is to protect runaways. Not work I've
+ * commissioned"). Job #656 was refused by the 3-sends repeat limit. A render whose job text names
+ * a "#NNN" that is a LIVE surface job skips the repeat limit's low number and the automatic
+ * per-provider / daily soft caps (JS dailyCap, and the DB's 260k automatic total cap via
+ * limits.commissioned). It still meets the hard daily ceiling (300,000 in tts_spend_reserve) and
+ * a repeat ceiling of its own — 10 identical sends in 24h is a loop, not a commission.
+ * "Live" is verified against the surface (GET /api/jobs rows carry job = the #NNN), never
+ * trusted from the string; an unreachable surface means unattributed limits apply.
+ */
+const COMMISSIONED_REPEAT_MAX = 10
+const COMMISSIONED_CACHE_MS = 15_000
+function surfaceCommissionChecker({ surface = process.env.CS_SURFACE || 'http://localhost:4317', now = () => Date.now(), fetchImpl = (...a) => fetch(...a) } = {}) {
+  let cache = { at: -Infinity, live: new Set() }
+  return async function isCommissioned(jobText) {
+    const nums = [...String(jobText || '').matchAll(/#(\d+)(?!\d)/g)].map(m => Number(m[1]))
+    if (!nums.length) return false
+    if (now() - cache.at >= COMMISSIONED_CACHE_MS) {
+      const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 3000)
+      try {
+        const r = await fetchImpl(`${surface}/api/jobs?owner=all`, { signal: ctl.signal })
+        if (!r.ok) return false
+        const body = await r.json()
+        cache = { at: now(), live: new Set((body.jobs || []).filter(j => j && j.status === 'running' && Number.isFinite(Number(j.job))).map(j => Number(j.job))) }
+      } catch { return false } finally { clearTimeout(t) }
+    }
+    return nums.some(n => cache.live.has(n))
+  }
+}
 /** How long a read of a job's spend today is reused before the ledger is asked again. */
 const JOB_SPEND_CACHE_MS = 30_000
 /** A raise may not be dated further out than this: raises expire on their own. */
@@ -498,7 +528,7 @@ function memorySpendStore({ name, now = () => Date.now() } = {}) {
         const here = todays.filter(x => jobMatches(x.job, approval.job)).reduce((n, x) => n + x.chars, 0)
         const cap = Math.min(approval.capChars, ceiling)
         if (here + r.chars > cap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: here, cap, message: `Tom-approved run ${approval.job} has spent ${here} chars today; this call (${r.chars}) would pass its approval of ${cap} (by ${approval.by}, until ${new Date(approval.until).toISOString()}; UTC day). Do not retry and do not split the job` }
-      } else {
+      } else if (!r.limits.commissioned) {
         const totalCap = Math.min(ceiling, Math.max(store.totalCapChars, raised))
         const auto = total - approvedAll
         if (auto + r.chars > totalCap) return { ok: false, code: DAILY_TOTAL_CAP, today, cycle, seen, total: auto, cap: totalCap, message: `daily audio cap reached; only Tom can approve more (${auto} chars spent today across all providers outside Tom-approved runs, this call is ${r.chars}, the cap is ${totalCap}; UTC day). Do not retry and do not split the job` }
@@ -551,6 +581,7 @@ function createSpendGuard(opts = {}) {
   const store = opts.store || defaultStore(mirrorPath, now)
   const notify = opts.notify || defaultNotify
   const usageReaders = opts.usageReaders || {}
+  const isCommissioned = opts.isCommissioned || (process.env.VITEST ? async () => false : surfaceCommissionChecker({ now }))
   const log = opts.logger || console
 
   const alerted = new Set()        // alert keys already sent by this process
@@ -800,6 +831,16 @@ function createSpendGuard(opts = {}) {
       reserveLimits = { ...b, maxPerKey: 1_000_000 }
     }
 
+    // A live commissioned job (see COMMISSIONED_REPEAT_MAX): soft caps and the low repeat limit lift; ceiling and loop stop stay.
+    let commissioned = false
+    if (!exempt && !raisedJob) {
+      try { commissioned = await isCommissioned(jobText) } catch { commissioned = false }
+      if (commissioned) {
+        reserveLimits = { ...b, maxPerKey: COMMISSIONED_REPEAT_MAX, commissioned: true }
+        dailyCap = Number.MAX_SAFE_INTEGER
+      }
+    }
+
     let res
     try {
       res = await store.reserve({ provider, voice: base.voice, chars, key, textHash: base.text_hash, course: base.course, job: base.job, language: base.language, attempt: base.attempt, limits: reserveLimits, dailyCap })
@@ -962,6 +1003,8 @@ module.exports = {
   TtsSpendGuardError,
   TOTAL_DAILY_CAP_CHARS,
   TOTAL_DAILY_CEILING_CHARS,
+  COMMISSIONED_REPEAT_MAX,
+  surfaceCommissionChecker,
   repeatKey,
   repeatTextKey,
   cycleStart,
