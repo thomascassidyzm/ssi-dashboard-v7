@@ -8,8 +8,7 @@
  * so this never takes the last MARGIN chars and never more than DAILY_MAX in one day. 100,000 is the AUTOMATIC
  * cap; the 300,000 Tom-approved run is NOT assumed — if Tom signs it (tools/tts-cap.cjs approve "#573" ...),
  * raise CAP/DAILY_MAX via env: CAP=300000 DAILY_MAX=250000.
- * Order (Tom 2026-10-04): female xAI English first (see xaiFirst); then (Tom 2026-10-03): ita_for_eng English first; then every other *_for_eng known side; then the English
- * target side of eng_for_*. Target-side Azure in other languages is NOT automated here: casting is Tom's.
+ * Order: see buildQueue (seeds 1-100 first, xAI then Azure, ita_for_eng first; then the rest). Roles: known+presentation of *_for_eng, target1+target2 of eng_for_*. Target-side Azure in other languages is NOT automated here: casting is Tom's.
  * A spend-guard refusal ends the day's run quietly (the refusal is the answer; tomorrow's run resumes).
  */
 const path = require('path')
@@ -18,9 +17,26 @@ require('dotenv').config({ path: path.join(__dirname, '../../.env.psql') })
 const { Client } = require('pg')
 
 const CAP = Number(process.env.CAP || 100000), DAILY_MAX = Number(process.env.DAILY_MAX || 60000), MARGIN = Number(process.env.MARGIN || 10000)
+/**
+ * The order of the day (Tom 2026-10-04): SEEDS 1-SEED_SCOPE of every course first — xAI female+male (ita_for_eng, then every other
+ * English-bearing course), then Azure (and any remaining female/male) within the same seeds — and only once seeds 1-100 are exhausted
+ * (each scoped call finds nothing and spends nothing) the rest of the course as before. Male slots -> tom_001, only when malePass.
+ * Exported and pure so the order is a test, not a comment.
+ */
+const SEED_SCOPE = 100
+const xaiRoles = c => (/^eng_for_/.test(c) ? 'target1,target2' : 'known,presentation')
+function buildQueue(codes, malePass) {
+  const english = [...(codes.includes('ita_for_eng') ? ['ita_for_eng'] : []), ...codes.filter(c => /_for_eng$|^eng_for_/.test(c) && c !== 'ita_for_eng')]
+  const pass = (voices, scope) => english.map(c => [c, xaiRoles(c), ['--voices', voices, ...(scope ? ['--seeds', `1-${SEED_SCOPE}`] : [])]])
+  const passes = scope => [
+    ...pass('xai-female', scope), ...(malePass ? pass('xai-male', scope) : []),
+    ...pass('general', scope), ...(malePass ? pass('male', scope) : []),   // general = every female voice (Azure + xAI), male = every male voice
+  ]
+  return [...passes(true), ...passes(false)]
+}
 const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
 
-;(async () => {
+if (require.main === module) (async () => {
   const pg = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   await pg.connect()
   const { rows: [{ spent }] } = await pg.query(`select coalesce(sum(chars),0)::int spent from tts_spend_ledger where kind='call' and at >= date_trunc('day', now() at time zone 'UTC') at time zone 'UTC'`)
@@ -32,21 +48,7 @@ const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
   // xAI-voiced FEMALE English first (clicks heard by ear, Tom 2026-10-04): ita_for_eng, then every other course; male voices are NEVER mapped to Charlotte
   // (Tom 2026-10-04: English is two voices); the general pass below is female-only, males belong to the MALE_PASS=1 pass.
   const xaiRoles = c => (/^eng_for_/.test(c) ? 'target1,target2' : 'known,presentation')
-  const xaiFirst = [
-    ...(codes.includes('ita_for_eng') ? ['ita_for_eng'] : []),
-    ...codes.filter(c => /_for_eng$|^eng_for_/.test(c) && c !== 'ita_for_eng'),
-  ].map(c => [c, xaiRoles(c), ['--voices', 'xai-female']])
-  const queue = [
-    ...xaiFirst,
-    ...(codes.includes('ita_for_eng') ? [['ita_for_eng', 'known,presentation']] : []),
-    ...codes.filter(c => /_for_eng$/.test(c) && c !== 'ita_for_eng').map(c => [c, 'known,presentation']),
-    ...codes.filter(c => /^eng_for_/.test(c)).map(c => [c, 'target1,target2']),
-  ]
-  // MALE pass -> tom_001 (Tom 2026-10-04). READY BUT DISABLED: runs only with MALE_PASS=1 in the environment (Tom's go).
-  if (process.env.MALE_PASS === '1') {
-    const maleFirst = [...(codes.includes('ita_for_eng') ? ['ita_for_eng'] : []), ...codes.filter(c => /_for_eng$|^eng_for_/.test(c) && c !== 'ita_for_eng')]
-    queue.unshift(...maleFirst.map(c => [c, xaiRoles(c), ['--voices', 'xai-male']]), ...maleFirst.map(c => [c, xaiRoles(c), ['--voices', 'male']]))
-  }
+  const queue = buildQueue(codes, process.env.MALE_PASS === '1')
   for (const [course, roles, extra = []] of queue) {
     if (budget < 200) break
     const r = spawnSync('node', [TOOL, '--course', course, '--roles', roles, '--budget', String(budget), ...extra], { encoding: 'utf8' })
@@ -57,3 +59,5 @@ const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
   }
   console.log(`[${new Date().toISOString()}] run over; budget left ${budget}`)
 })().catch(e => { console.error(e); process.exit(1) })
+
+module.exports = { buildQueue, SEED_SCOPE }

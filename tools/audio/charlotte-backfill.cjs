@@ -17,6 +17,7 @@
  *   node tools/audio/charlotte-backfill.cjs --course ita_for_eng --undo [--limit 50]
  *   node tools/audio/charlotte-backfill-daily.cjs           # the daily unit: calls this tool course by course inside today's cap headroom
  *   node tools/audio/charlotte-backfill.cjs --course ita_for_eng --voices male|xai-male ...   # MALE pass -> tom_001 (not in the daily timer)
+ *   ... --seeds 1-100   # scope any run/--plan to clips first heard in seeds 1-100
  *   node tools/audio/charlotte-backfill.cjs --plan            # estate census of what is left, per course
  */
 const fs = require('fs')
@@ -36,9 +37,9 @@ const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app
 const SLOT_COL = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id', presentation: 'presentation_audio_id' }
 // GENDER IS EXPLICIT (Tom 2026-10-04: English is TWO voices; female slots -> Charlotte, male slots -> tom_001; a male slot must
 // NEVER become Charlotte, it would collapse target V1/V2 into one voice). A voice id is stripped of its xai_/azure_ prefix and looked
-// up in these two lists; anything in neither list (bedd6226 "Olivia" is f in the voices table but was named male in the brief, so
-// it is deliberately unclassified; unknown Azure names; bare "azure_") is SKIPPED by both passes.
-const FEMALE_NAMES = ['eve', 'eve_q', 'ara', 'ara_q', 'en-GB-SoniaNeural', 'en-GB-LibbyNeural', 'en-GB-MiaNeural', 'en-GB-BellaNeural',
+// up in these two lists; anything in neither list (unknown Azure names; bare "azure_") is SKIPPED by both passes.
+// bedd6226 is "Olivia", gender f in the voices table (Tom 2026-10-04: trust the table), so it is FEMALE.
+const FEMALE_NAMES = ['bedd6226', 'eve', 'eve_q', 'ara', 'ara_q', 'en-GB-SoniaNeural', 'en-GB-LibbyNeural', 'en-GB-MiaNeural', 'en-GB-BellaNeural',
   'en-GB-HollieNeural', 'en-GB-MaisieNeural', 'en-GB-AbbiNeural', 'en-GB-AdaMultilingualNeural', 'en-US-JennyNeural', 'en-US-SerenaMultilingualNeural']
 const MALE_NAMES = ['leo', 'sal', 'rex', 'comp:leo', 'gfzdpspr5fdp', 'en-GB-RyanNeural', 'en-GB-OliverNeural', 'en-GB-OllieMultilingualNeural',
   'en-GB-AlfieNeural', 'en-GB-ThomasNeural', 'en-GB-NoahNeural', 'en-GB-ElliotNeural']
@@ -50,7 +51,7 @@ const genderSql = names => `(regexp_replace(ca.voice_id, '^(xai_|azure_)', '') i
 const FEMALE_VOICE = genderSql(FEMALE_NAMES)
 const MALE_VOICE = genderSql(MALE_NAMES)
 // Female xAI only (the xai-female pass): eve/ara, incl. the eve_q variant, xai_/bare.
-const FEMALE_XAI = `(ca.voice_id ~ '^(xai_)?(eve|ara)(_q)?$')`
+const FEMALE_XAI = `(ca.voice_id ~ '^(xai_)?(eve|ara|bedd6226)(_q)?$')`
 const MALE_XAI = `(ca.voice_id ~ '^(xai_)?(leo|sal|rex|gfzdpspr5fdp)$')`
 // The general pass is FEMALE ONLY; BAD_VOICE kept as the exported name of "what the Charlotte passes may select".
 const BAD_VOICE = FEMALE_VOICE
@@ -76,7 +77,11 @@ async function slotsFor(pg, course, role) {
 }
 
 /** Old clips still linked, with their slots: [{oldId, text, role, chars, slots:[{tbl,key,col}], pos}] in course order. */
-async function workFor(pg, course, roles, voiceSql = BAD_VOICE) {
+/** '1-100' -> 100 (the highest seed in scope), undefined when no scope. A clip is in scope when its FIRST slot is at or before it. */
+const parseSeedScope = v => { if (v == null) return undefined; const m = /^(?:1-)?(\d+)$/.exec(String(v)); if (!m || !Number(m[1])) throw new Error(`bad --seeds ${v}; use 1-N`); return Number(m[1]) }
+/** Keep only work first heard within seeds 1..maxSeed (a clip shared with later seeds still counts: its first hearing is early). */
+const inSeedScope = (work, maxSeed) => (maxSeed == null ? work : work.filter(w => w.pos != null && w.pos <= maxSeed))
+async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed) {
   const out = []
   for (const role of roles) {
     const slots = await slotsFor(pg, course, role)
@@ -93,7 +98,7 @@ async function workFor(pg, course, roles, voiceSql = BAD_VOICE) {
     }
     out.push(...by.values())
   }
-  return out.sort((a, b) => (a.pos ?? 1e9) - (b.pos ?? 1e9) || a.oldId.localeCompare(b.oldId))
+  return inSeedScope(out, maxSeed).sort((a, b) => (a.pos ?? 1e9) - (b.pos ?? 1e9) || a.oldId.localeCompare(b.oldId))
 }
 
 async function render(course, w, dryRun, target = CHARLOTTE) {
@@ -159,14 +164,18 @@ async function main() {
   await pg.connect()
   if (has('--plan')) {
     const { rows } = await pg.query(`select course_code from courses order by 1`)
-    console.log('course | old clips still linked | distinct chars to render')
+    const maxSeed = parseSeedScope(opt('--seeds'))
+    const sum = w => w.reduce((n, x) => n + x.chars, 0)
+    console.log(`course | scope${maxSeed ? ` seeds 1-${maxSeed}` : ' all seeds'} | female old clips (chars) | male old clips (chars)`)
+    let tf = 0, tm = 0
     for (const { course_code } of rows) {
       const all = ['known', 'presentation', 'target1', 'target2']
-      const w = await workFor(pg, course_code, all)
-      const f = await workFor(pg, course_code, all, FEMALE_XAI)
-      const m = await workFor(pg, course_code, all, MALE_VOICE)
-      if (w.length || m.length) console.log(`${course_code} | ${w.length} female->Charlotte | ${w.reduce((n, x) => n + x.chars, 0)} | female xAI ${f.length} | male->tom_001 ${m.length} (${m.reduce((n, x) => n + x.chars, 0)} chars)`)
+      const f = await workFor(pg, course_code, all, FEMALE_VOICE, maxSeed)
+      const m = await workFor(pg, course_code, all, MALE_VOICE, maxSeed)
+      tf += sum(f); tm += sum(m)
+      if (f.length || m.length) console.log(`${course_code} | female->Charlotte ${f.length} (${sum(f)} chars) | male->tom_001 ${m.length} (${sum(m)} chars)`)
     }
+    console.log(`TOTAL female ${tf} chars, male ${tm} chars`)
     return pg.end()
   }
   const course = opt('--course'); if (!course) { console.error('--course required'); process.exit(1) }
@@ -195,9 +204,10 @@ async function main() {
   const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
   const passName = opt('--voices', 'general'); const pass = PASSES[passName]
   if (!pass) { console.error(`unknown --voices ${passName}; one of ${Object.keys(PASSES)}`); process.exit(1) }
-  const work = await workFor(pg, course, roles, pass.sql)
+  const maxSeed = parseSeedScope(opt('--seeds'))
+  const work = await workFor(pg, course, roles, pass.sql, maxSeed)
   const total = work.reduce((n, x) => n + x.chars, 0)
-  console.log(`${course} ${roles}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
+  console.log(`${course} ${roles}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null
   for (const w of work) {
     // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
@@ -227,4 +237,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TOM_001, CHARLOTTE }
+module.exports = { parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TOM_001, CHARLOTTE }
