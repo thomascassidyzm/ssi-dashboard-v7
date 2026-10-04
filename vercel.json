@@ -40,6 +40,15 @@
       ]
     },
     {
+      "source": "/api/guess-text-published",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, s-maxage=60, stale-while-revalidate=300"
+        }
+      ]
+    },
+    {
       "source": "/api/copy-published",
       "headers": [
         {
@@ -49,7 +58,7 @@
       ]
     },
     {
-      "source": "/((?!assets/|api/copy-published).*)",
+      "source": "/((?!assets/|api/copy-published|api/guess-text-published).*)",
       "headers": [
         {
           "key": "Cache-Control",
