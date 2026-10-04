@@ -31,7 +31,16 @@ function seed() {
 const get = async (handler, query) => { const res = createFakeRes(); await handler({ method: 'GET', query, headers: { authorization: 'Bearer x' } }, res); return res }
 const post = async (body) => { const res = createFakeRes(); await admin({ method: 'POST', query: {}, body, headers: { authorization: 'Bearer x' } }, res); return res }
 
-beforeEach(() => { n = 0; seed() })
+// The SQL function guess_text_save, as the database runs it: ONE step — supersede + insert, or nothing.
+const saveFn = ({ p_known, p_kind, p_item, p_content, p_who }, db) => {
+  const rows = db.tables.guess_text_items
+  if (db.failSave) return { data: null, error: { message: 'boom' } }
+  rows.filter(r => r.known_lang === p_known && r.kind === p_kind && r.item_id === p_item && r.state === 'live').forEach(r => { r.state = 'superseded' })
+  const ins = { id: 100 + (n = (n || 0) + 1), known_lang: p_known, kind: p_kind, item_id: p_item, content: p_content, state: 'live', source: 'editor', edited_by: p_who, created_at: 'now', approved_by: p_who, approved_at: 'now' }
+  rows.push(ins)
+  return { data: [{ id: ins.id, created_at: ins.created_at }], error: null }
+}
+beforeEach(() => { n = 0; seed(); state.db.rpcs.guess_text_save = saveFn })
 
 describe('public read path', () => {
   it('returns live text only — never a draft or a superseded row', async () => {
@@ -69,6 +78,18 @@ describe('editor', () => {
     expect(rows.find(r => r.content === 'Aran says this')).toMatchObject({ state: 'live', source: 'editor', edited_by: 'aran@ssi.app', approved_by: 'aran@ssi.app' })
     expect(rows.find(r => r.id === 3).state).toBe('superseded')
     expect(rows.filter(r => r.item_id === 'cym' && r.state === 'live')).toHaveLength(1)
+  })
+  it('a save is ONE database call: no separate supersede then insert for a crash to fall between', async () => {
+    await post({ action: 'save', known: 'eng', kind: 'tell', id: 'cym', content: 'X' })
+    const writes = state.db.calls.filter(c => c.op === 'update' || c.op === 'insert')
+    expect(writes).toHaveLength(0)
+    expect(state.db.calls.filter(c => c.rpc === 'guess_text_save')).toHaveLength(1)
+  })
+  it('a failed save leaves the old text live, so the public read never falls back', async () => {
+    state.db.failSave = true
+    const res = await post({ action: 'save', known: 'eng', kind: 'tell', id: 'cym', content: 'X' })
+    expect(res.statusCode).toBe(500)
+    expect((await get(published, { known: 'eng' })).body.items.tell.cym).toBe('LIVE cym tell')
   })
   it('cannot invent an item id', async () => {
     expect((await post({ action: 'save', known: 'eng', kind: 'tell', id: 'zzz', content: 'x' })).statusCode).toBe(404)
