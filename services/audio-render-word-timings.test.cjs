@@ -35,6 +35,6 @@ describe('render route keeps word timings', () => {
     const route = src.slice(src.indexOf("app.post('/render'"), src.indexOf("app.post('/regenerate-single"))
     expect(route).toMatch(/provider === 'cartesia' \? \{[^}]*wordTimings: true/)
     expect(route).toMatch(/word_timings: toWordTimingsColumn\(wordTimings\)/)
-    expect(route).toMatch(/word_timings: wordTimings \|\| null/)
+    expect(route).toMatch(/rerecordPatch\(\{ voiceId, wordBoundaries, wordTimings \}\)/)
   })
 })
