@@ -2,8 +2,10 @@
  * The rules for the /guess game's text, as pure functions over rows, so the editor endpoint
  * and the public learner endpoint cannot disagree about what is live.
  *
- * Three kinds of text, each keyed by a STABLE item id and by the KNOWN language it is
+ * Five kinds of text, each keyed by a STABLE item id and by the KNOWN language it is
  * written in, so the game can be localised later by adding rows for another known language:
+ *   game        the game's OWN words: modes, prompts, buttons, feedback, score and share lines, the
+ *               mini-lesson lines. id = a stable key (chooser_title, btn_next); {placeholders} are kept
  *   tell        the one-line reveal under each answer          id = language key ('gle', 'cym_s')
  *   pair        a Read more "Easily mistaken for" line         id = 'a|b' (the order the game's list uses)
  *   place_note  the light line under the place (speakers)      id = place key
@@ -14,7 +16,7 @@
  * At most one live row per item. Learners read live rows only.
  */
 
-export const KINDS = ['tell', 'pair', 'place_note', 'place_where'];
+export const KINDS = ['game', 'tell', 'pair', 'place_note', 'place_where'];
 export const DEFAULT_KNOWN = 'eng';
 const MAX_CHARS = 600;
 const ITEM_ID_RE = /^[a-z0-9_]+(\|[a-z0-9_]+)?$/;

@@ -26,6 +26,9 @@ function seed() {
     row(4, 'eng', 'pair', 'gle|cym', 'LIVE pair', 'live'),
     row(5, 'eng', 'tell', 'old', 'SUPERSEDED', 'superseded'),
     row(6, 'cym', 'tell', 'gle', 'LIVE gle in Welsh', 'live'),
+    row(7, 'eng', 'game', 'streak_badge', '{n} in a row', 'live'),
+    row(8, 'eng', 'game', 'btn_next', 'Next', 'live'),
+    row(9, 'cym', 'game', 'btn_next', 'Nesaf', 'live'),
   ] }, { defaults: { guess_text_items: (rows) => ({ id: 100 + (n = (n || 0) + 1), created_at: 'now', state: 'draft', approved_by: null }) } })
 }
 const get = async (handler, query) => { const res = createFakeRes(); await handler({ method: 'GET', query, headers: { authorization: 'Bearer x' } }, res); return res }
@@ -106,5 +109,29 @@ describe('editor', () => {
     expect(gle.live.content).toBe('LIVE gle tell')
     expect(gle.draft).toBeUndefined()
     expect(res.body.items.find(i => i.id === 'old')).toBeUndefined()
+  })
+})
+
+describe('game text: the game\'s own words', () => {
+  it('is served live, with {placeholders} intact, in the same payload as the explanations', async () => {
+    const res = await get(published, { known: 'eng' })
+    expect(res.body.items.game).toEqual({ streak_badge: '{n} in a row', btn_next: 'Next' })
+    expect(res.body.items.tell.gle).toBe('LIVE gle tell')
+  })
+  it('a known language overrides item by item and takes English for the rest', async () => {
+    const res = await get(published, { known: 'cym_s' })
+    expect(res.body.items.game).toEqual({ btn_next: 'Nesaf', streak_badge: '{n} in a row' })
+  })
+  it('the editor lists it, and a save goes live as history-keeping, like any other kind', async () => {
+    const list = await get(admin, { known: 'eng' })
+    expect(list.body.kinds[0]).toBe('game')
+    expect(list.body.items.filter(i => i.kind === 'game').map(i => i.id)).toEqual(['streak_badge', 'btn_next'])
+    const res = await post({ action: 'save', known: 'eng', kind: 'game', id: 'btn_next', content: 'On we go' })
+    expect(res.statusCode).toBe(200)
+    expect((await get(published, { known: 'eng' })).body.items.game.btn_next).toBe('On we go')
+    expect(state.db.tables.guess_text_items.filter(r => r.kind === 'game' && r.item_id === 'btn_next' && r.known_lang === 'eng').map(r => r.state).sort()).toEqual(['live', 'superseded'])
+  })
+  it('an unseeded game id cannot be conjured', async () => {
+    expect((await post({ action: 'save', known: 'eng', kind: 'game', id: 'not_a_key', content: 'x' })).statusCode).toBe(404)
   })
 })

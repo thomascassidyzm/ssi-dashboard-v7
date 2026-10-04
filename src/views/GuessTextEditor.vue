@@ -3,14 +3,23 @@
     <header>
       <h1>The /guess game: its text</h1>
       <p class="note">
-        The reveal line under each answer, the Read more "Easily mistaken for" lines and the place notes.
+        First the <b>Game text</b>: the game's own words, such as the mode names and blurbs, the buttons, the feedback and score lines,
+        the share text and the mini-lesson lines. Then the language explanations: the reveal line under each answer, the Read more
+        "Easily mistaken for" lines and the place notes. Words in curly brackets, like {language} or {n}, are filled in by the game: keep them.
         Edit a box and press Save: the new text is live straight away, stamped with your name and the time.
         The wording it replaces is kept as history. Known language: <b>{{ known }}</b>.
       </p>
     </header>
 
     <div class="gt-bar">
-      <button v-for="k in kinds" :key="k.id" type="button" class="tab" :class="{ on: kind === k.id }" @click="kind = k.id">
+      <span class="grp">Game text</span>
+      <button v-for="k in kinds.filter(x => x.group === 'game')" :key="k.id" type="button" class="tab" :class="{ on: kind === k.id }" @click="kind = k.id">
+        {{ k.label }} <span class="count">{{ countFor(k.id) }}</span>
+      </button>
+    </div>
+    <div class="gt-bar">
+      <span class="grp">Language explanations</span>
+      <button v-for="k in kinds.filter(x => x.group === 'lang')" :key="k.id" type="button" class="tab" :class="{ on: kind === k.id }" @click="kind = k.id">
         {{ k.label }} <span class="count">{{ countFor(k.id) }}</span>
       </button>
     </div>
@@ -32,6 +41,7 @@
             <div class="lbl">Edit (Save goes live)</div>
             <textarea v-model="edits[key(it)]" rows="3" spellcheck="false" :placeholder="it.live ? it.live.content : ''" @focus="seedEdit(it)"></textarea>
             <div v-if="hasParens(edits[key(it)])" class="warn">This text has parentheses. The course has none, ever.</div>
+            <div v-if="lostHoles(it).length" class="warn">The game fills in {{ lostHoles(it).join(' ') }}: this text no longer has it.</div>
             <div class="acts">
               <button type="button" class="btn primary" :disabled="busy || !changed(it)" @click="save(it)">Save</button>
             </div>
@@ -53,12 +63,13 @@ import { useAuth } from '../composables/useAuth'
 const { getAccessToken } = useAuth()
 const known = 'eng'
 const kinds = [
-  { id: 'tell', label: 'Reveal lines' },
-  { id: 'pair', label: 'Read more' },
-  { id: 'place_note', label: 'Place notes' },
-  { id: 'place_where', label: 'Place names' },
+  { id: 'game', label: 'Game text', group: 'game' },
+  { id: 'tell', label: 'Reveal lines', group: 'lang' },
+  { id: 'pair', label: 'Read more', group: 'lang' },
+  { id: 'place_note', label: 'Place notes', group: 'lang' },
+  { id: 'place_where', label: 'Place names', group: 'lang' },
 ]
-const kind = ref('tell')
+const kind = ref('game')
 const items = ref([])
 const edits = reactive({})
 const search = ref('')
@@ -69,6 +80,9 @@ const statusIsError = ref(false)
 
 const key = bufferKey
 const hasParens = (s) => /[()]/.test(s || '')
+/** The {placeholders} the live text has and the box has lost: the game would print a gap or the bare word. */
+const holesOf = (s) => [...new Set(String(s || '').match(/\{\w+\}/g) || [])]
+const lostHoles = (it) => (edits[key(it)] === undefined ? [] : holesOf(baseline(it)).filter(h => !String(edits[key(it)]).includes(h)))
 const countFor = (k) => items.value.filter(i => i.kind === k).length
 const shown = computed(() => {
   const q = search.value.trim().toLowerCase()
@@ -132,6 +146,7 @@ h1 { font-size: 18px; margin: 0 0 6px; font-weight: 600; }
 .tab, .btn { font: inherit; font-size: 14px; padding: 8px 12px; border: 1px solid rgba(128,128,128,.45); border-radius: 8px; background: transparent; color: inherit; cursor: pointer; }
 .tab.on, .btn.primary { background: #1e8449; border-color: #1e8449; color: #fff; }
 .btn:disabled { opacity: .4; cursor: default; }
+.grp { font-size: 13px; font-weight: 600; opacity: .7; min-width: 150px; }
 .count { opacity: .7; font-size: 12px; }
 .search { flex: 1; min-width: 140px; font: inherit; font-size: 14px; padding: 8px; border: 1px solid rgba(128,128,128,.45); border-radius: 8px; background: transparent; color: inherit; }
 .chk { font-size: 13px; }
