@@ -28,12 +28,29 @@ describe('charlotte-backfill undo ledger, re-swap after undo', () => {
   })
 })
 
-// job #608: --plan hid courses whose only pending female xAI clips were bare eve_q/ara_q
-describe('charlotte-backfill BAD_VOICE covers FEMALE_XAI', () => {
-  const { BAD_VOICE, FEMALE_XAI } = createRequire(import.meta.url)('./charlotte-backfill.cjs')
-  it('embeds FEMALE_XAI, so bare eve_q/ara_q are in the plan selector', () => {
-    expect(BAD_VOICE).toContain(FEMALE_XAI)
-    const re = new RegExp(FEMALE_XAI.match(/'(.*)'/)[1])
+// job #608 / #614: the Charlotte passes select FEMALE voices only; a male slot must never become Charlotte
+describe('charlotte-backfill gender filter', () => {
+  const m = createRequire(import.meta.url)('./charlotte-backfill.cjs')
+  it('classifies by voice identity, prefix-agnostic; unknown is null', () => {
+    for (const id of ['eve', 'xai_eve', 'xai_eve_q', 'ara_q', 'azure_en-GB-SoniaNeural', 'en-GB-LibbyNeural']) expect(m.voiceGender(id)).toBe('f')
+    for (const id of ['leo', 'xai_leo', 'xai_sal', 'rex', 'gfzdpspr5fdp', 'xai_gfzdpspr5fdp', 'azure_en-GB-RyanNeural', 'en-GB-OliverNeural']) expect(m.voiceGender(id)).toBe('m')
+    for (const id of ['bedd6226', 'xai_bedd6226', 'azure_', 'xai_f15c6a6a', 'azure_en-GB-NewNeural', '', null]) expect(m.voiceGender(id)).toBeNull()
+  })
+  it('the general pass SQL lists no male or unknown voice; the male pass lists no female', () => {
+    for (const id of ['leo', 'sal', 'rex', 'gfzdpspr5fdp', 'bedd6226', 'en-GB-RyanNeural']) expect(m.BAD_VOICE).not.toContain(`'${id}'`)
+    for (const id of ['eve', 'ara', 'en-GB-SoniaNeural']) expect(m.MALE_VOICE).not.toContain(`'${id}'`)
+    expect(m.BAD_VOICE).toContain("'en-GB-SoniaNeural'")
+    expect(m.BAD_VOICE).toBe(m.FEMALE_VOICE)
+  })
+  it('xai-female regex covers eve/ara (incl. _q) and never leo/sal/rex/clones', () => {
+    const re = new RegExp(m.FEMALE_XAI.match(/'(.*)'/)[1])
     for (const id of ['eve_q', 'ara_q', 'xai_eve_q', 'eve', 'ara']) expect(re.test(id)).toBe(true)
+    for (const id of ['leo', 'xai_sal', 'rex', 'gfzdpspr5fdp', 'xai_bedd6226']) expect(re.test(id)).toBe(false)
+  })
+  it('every pass renders to its own voice, and only for its own gender', () => {
+    expect(m.PASSES.general).toMatchObject({ target: m.CHARLOTTE, gender: 'f' })
+    expect(m.PASSES['xai-female']).toMatchObject({ target: m.CHARLOTTE, gender: 'f' })
+    expect(m.PASSES.male).toMatchObject({ target: m.TOM_001, gender: 'm' })
+    expect(m.PASSES['xai-male']).toMatchObject({ target: m.TOM_001, gender: 'm' })
   })
 })

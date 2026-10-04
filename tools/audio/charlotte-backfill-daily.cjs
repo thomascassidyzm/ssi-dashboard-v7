@@ -29,8 +29,8 @@ const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
   let budget = Math.max(0, Math.min(DAILY_MAX, CAP - spent - MARGIN))
   console.log(`[${new Date().toISOString()}] spent today ${spent}; this run's budget ${budget}`)
   const codes = courses.map(c => c.course_code)
-  // xAI-voiced FEMALE English first (clicks heard by ear, Tom 2026-10-04): ita_for_eng, then every other course; male xAI
-  // (Tom's clones, leo/sal/rex) is not mapped here; it stays in the general pass below exactly as before.
+  // xAI-voiced FEMALE English first (clicks heard by ear, Tom 2026-10-04): ita_for_eng, then every other course; male voices are NEVER mapped to Charlotte
+  // (Tom 2026-10-04: English is two voices); the general pass below is female-only, males belong to the MALE_PASS=1 pass.
   const xaiRoles = c => (/^eng_for_/.test(c) ? 'target1,target2' : 'known,presentation')
   const xaiFirst = [
     ...(codes.includes('ita_for_eng') ? ['ita_for_eng'] : []),
@@ -42,6 +42,11 @@ const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
     ...codes.filter(c => /_for_eng$/.test(c) && c !== 'ita_for_eng').map(c => [c, 'known,presentation']),
     ...codes.filter(c => /^eng_for_/.test(c)).map(c => [c, 'target1,target2']),
   ]
+  // MALE pass -> tom_001 (Tom 2026-10-04). READY BUT DISABLED: runs only with MALE_PASS=1 in the environment (Tom's go).
+  if (process.env.MALE_PASS === '1') {
+    const maleFirst = [...(codes.includes('ita_for_eng') ? ['ita_for_eng'] : []), ...codes.filter(c => /_for_eng$|^eng_for_/.test(c) && c !== 'ita_for_eng')]
+    queue.unshift(...maleFirst.map(c => [c, xaiRoles(c), ['--voices', 'xai-male']]), ...maleFirst.map(c => [c, xaiRoles(c), ['--voices', 'male']]))
+  }
   for (const [course, roles, extra = []] of queue) {
     if (budget < 200) break
     const r = spawnSync('node', [TOOL, '--course', course, '--roles', roles, '--budget', String(budget), ...extra], { encoding: 'utf8' })

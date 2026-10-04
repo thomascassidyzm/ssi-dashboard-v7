@@ -16,6 +16,7 @@
  *   node tools/audio/charlotte-backfill.cjs --course ita_for_eng --roles known,presentation --budget 25000 [--dry-run]
  *   node tools/audio/charlotte-backfill.cjs --course ita_for_eng --undo [--limit 50]
  *   node tools/audio/charlotte-backfill-daily.cjs           # the daily unit: calls this tool course by course inside today's cap headroom
+ *   node tools/audio/charlotte-backfill.cjs --course ita_for_eng --voices male|xai-male ...   # MALE pass -> tom_001 (not in the daily timer)
  *   node tools/audio/charlotte-backfill.cjs --plan            # estate census of what is left, per course
  */
 const fs = require('fs')
@@ -33,12 +34,34 @@ const JOB = '#573'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio'
 const SLOT_COL = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id', presentation: 'presentation_audio_id' }
-// Female xAI presets (eve, ara; xai_/bare, incl. the eve_q variant). Tom's clones (gfzdpspr5fdp, bedd6226) and leo/sal/rex are male:
-// their mapping is Tom's separate decision, so the xai-female pass never touches them.
+// GENDER IS EXPLICIT (Tom 2026-10-04: English is TWO voices; female slots -> Charlotte, male slots -> tom_001; a male slot must
+// NEVER become Charlotte, it would collapse target V1/V2 into one voice). A voice id is stripped of its xai_/azure_ prefix and looked
+// up in these two lists; anything in neither list (bedd6226 "Olivia" is f in the voices table but was named male in the brief, so
+// it is deliberately unclassified; unknown Azure names; bare "azure_") is SKIPPED by both passes.
+const FEMALE_NAMES = ['eve', 'eve_q', 'ara', 'ara_q', 'en-GB-SoniaNeural', 'en-GB-LibbyNeural', 'en-GB-MiaNeural', 'en-GB-BellaNeural',
+  'en-GB-HollieNeural', 'en-GB-MaisieNeural', 'en-GB-AbbiNeural', 'en-GB-AdaMultilingualNeural', 'en-US-JennyNeural', 'en-US-SerenaMultilingualNeural']
+const MALE_NAMES = ['leo', 'sal', 'rex', 'comp:leo', 'gfzdpspr5fdp', 'en-GB-RyanNeural', 'en-GB-OliverNeural', 'en-GB-OllieMultilingualNeural',
+  'en-GB-AlfieNeural', 'en-GB-ThomasNeural', 'en-GB-NoahNeural', 'en-GB-ElliotNeural']
+const bareVoice = id => String(id || '').replace(/^(xai_|azure_)/, '')
+/** 'f' | 'm' | null (unknown: skipped). */
+const voiceGender = id => (FEMALE_NAMES.includes(bareVoice(id)) ? 'f' : MALE_NAMES.includes(bareVoice(id)) ? 'm' : null)
+const sqlList = names => names.map(n => `'${n}'`).join(',')
+const genderSql = names => `(regexp_replace(ca.voice_id, '^(xai_|azure_)', '') in (${sqlList(names)}))`
+const FEMALE_VOICE = genderSql(FEMALE_NAMES)
+const MALE_VOICE = genderSql(MALE_NAMES)
+// Female xAI only (the xai-female pass): eve/ara, incl. the eve_q variant, xai_/bare.
 const FEMALE_XAI = `(ca.voice_id ~ '^(xai_)?(eve|ara)(_q)?$')`
-// xAI and Azure voice ids, prefixed or bare. Anything else (Cartesia, ElevenLabs, human) is left alone.
-// Built FROM FEMALE_XAI so a bare eve_q/ara_q can never be selected by the daily pass yet hidden from --plan (job #608).
-const BAD_VOICE = `(ca.voice_id ~ '^(xai_|azure_)' or ca.voice_id ~ 'Neural$' or ca.voice_id in ('gfzdpspr5fdp','bedd6226','leo','sal','comp:leo') or ${FEMALE_XAI})`
+const MALE_XAI = `(ca.voice_id ~ '^(xai_)?(leo|sal|rex|gfzdpspr5fdp)$')`
+// The general pass is FEMALE ONLY; BAD_VOICE kept as the exported name of "what the Charlotte passes may select".
+const BAD_VOICE = FEMALE_VOICE
+const TOM_001 = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+/** Pass table: which old voices a pass selects, which voice it renders in, which gender a swap's OLD voice must have. */
+const PASSES = {
+  general: { sql: FEMALE_VOICE, target: CHARLOTTE, gender: 'f' },
+  'xai-female': { sql: FEMALE_XAI, target: CHARLOTTE, gender: 'f' },
+  male: { sql: MALE_VOICE, target: TOM_001, gender: 'm' },
+  'xai-male': { sql: MALE_XAI, target: TOM_001, gender: 'm' },
+}
 
 const argv = process.argv.slice(2)
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
@@ -73,21 +96,21 @@ async function workFor(pg, course, roles, voiceSql = BAD_VOICE) {
   return out.sort((a, b) => (a.pos ?? 1e9) - (b.pos ?? 1e9) || a.oldId.localeCompare(b.oldId))
 }
 
-async function render(course, w, dryRun) {
+async function render(course, w, dryRun, target = CHARLOTTE) {
   const res = await fetch(`${POPTY}/api/audio/render`, {
     method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-573-charlotte-backfill' },
-    body: JSON.stringify({ courseCode: course, role: w.role, text: w.text, language: 'eng', voiceId: CHARLOTTE, job: JOB, dryRun,
-      purpose: 'Tom 2026-10-03: English re-render on Charlotte (xAI clicks / Azure replacement), job #573' }),
+    body: JSON.stringify({ courseCode: course, role: w.role, text: w.text, language: 'eng', voiceId: target, job: JOB, dryRun,
+      purpose: target === CHARLOTTE ? 'Tom 2026-10-03: English re-render on Charlotte (xAI clicks / Azure replacement), job #573' : 'Tom 2026-10-04: English male slot re-render on tom_001, job #573/#614' }),
   })
   const body = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
   return { status: res.status, ...body }
 }
 
 /** Alive and correct-voiced, or no swap. */
-async function verifyNew(pg, audioId) {
+async function verifyNew(pg, audioId, target = CHARLOTTE) {
   const { rows: [r] } = await pg.query('select voice_id, s3_key, duration_ms, audio_revision from course_audio where id = $1', [audioId])
   if (!r) return 'row missing'
-  if (r.voice_id !== CHARLOTTE && r.voice_id !== CHARLOTTE_BARE) return `voice is ${r.voice_id}`
+  if (r.voice_id !== target && r.voice_id !== target.replace(/^cartesia_/, '')) return `voice is ${r.voice_id}`
   if (!r.s3_key || r.s3_key.startsWith('pending/')) return 'no object'
   const ref = r.audio_revision > 1 ? `${audioId}.v${r.audio_revision}` : audioId
   const res = await fetch(`${AUDIO_BASE}/${ref}`, { headers: { 'User-Agent': 'job-573' } })
@@ -141,7 +164,8 @@ async function main() {
       const all = ['known', 'presentation', 'target1', 'target2']
       const w = await workFor(pg, course_code, all)
       const f = await workFor(pg, course_code, all, FEMALE_XAI)
-      if (w.length) console.log(`${course_code} | ${w.length} | ${w.reduce((n, x) => n + x.chars, 0)} | female xAI ${f.length}`)
+      const m = await workFor(pg, course_code, all, MALE_VOICE)
+      if (w.length || m.length) console.log(`${course_code} | ${w.length} female->Charlotte | ${w.reduce((n, x) => n + x.chars, 0)} | female xAI ${f.length} | male->tom_001 ${m.length} (${m.reduce((n, x) => n + x.chars, 0)} chars)`)
     }
     return pg.end()
   }
@@ -153,7 +177,8 @@ async function main() {
   if (has('--undo')) {
     const all = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
     // nothing marks a swap line itself undone, so pending swaps are derived from the ledger order (each undo line cancels one earlier swap)
-    const lines = pendingSwaps(all).reverse()
+    // --only-gender m: revert just the swaps whose OLD voice was male (job #614: a male slot must never be Charlotte)
+    const onlyG = opt('--only-gender'); const lines = pendingSwaps(all).filter(e => !onlyG || voiceGender(e.oldVoice) === onlyG).reverse()
     let n = 0; const limit = Number(opt('--limit', 1e9))
     const eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill --undo', operation: 'update', detail: { why: 'undo job #573 pointer swaps', ledger } })
     for (const e of lines) {
@@ -168,19 +193,22 @@ async function main() {
 
   const roles = opt('--roles', 'known,presentation').split(',')
   const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
-  const xaiFemale = opt('--voices') === 'xai-female' // xAI-first pass (Tom 2026-10-04: clicks heard by ear in xAI English)
-  const work = await workFor(pg, course, roles, xaiFemale ? FEMALE_XAI : BAD_VOICE)
+  const passName = opt('--voices', 'general'); const pass = PASSES[passName]
+  if (!pass) { console.error(`unknown --voices ${passName}; one of ${Object.keys(PASSES)}`); process.exit(1) }
+  const work = await workFor(pg, course, roles, pass.sql)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null
   for (const w of work) {
+    // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
+    if (voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); continue }
     if (spent + w.chars > budget) { if (spent === 0 && budget === 0) break; continue }
-    const r = await render(course, w, dryRun)
+    const r = await render(course, w, dryRun, pass.target)
     if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); break }
     if (!r.ok) { console.log('FAIL', w.oldId, r.code, r.error); if (++failures >= 5) { console.log('5 failures — stopping'); break } continue }
     if (dryRun) { spent += r.wouldSpendChars || 0; done++; continue }
     failures = 0; spent += r.charsSpent || 0
-    const bad = await verifyNew(pg, r.audioId)
+    const bad = await verifyNew(pg, r.audioId, pass.target)
     if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); continue }
     // write-ahead: the ledger line exists before the first pointer moves
     const entry = { kind: 'swap', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, source: r.source, charsSpent: r.charsSpent || 0, slots: w.slots, text: w.text, at: new Date().toISOString() }
@@ -199,4 +227,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI }
+module.exports = { swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TOM_001, CHARLOTTE }
