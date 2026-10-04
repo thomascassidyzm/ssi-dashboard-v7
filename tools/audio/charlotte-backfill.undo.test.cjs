@@ -54,3 +54,17 @@ describe('charlotte-backfill gender filter', () => {
     expect(m.PASSES['xai-male']).toMatchObject({ target: m.TOM_001, gender: 'm' })
   })
 })
+
+// job #626: target-voice passes. V1/V2 stay two distinct voices, and the pass tag lets --undo --only-pass revert one pass of a shared ledger.
+describe('charlotte-backfill target-voice passes', () => {
+  const { TARGET_PASSES, PASSES } = createRequire(import.meta.url)('./charlotte-backfill.cjs')
+  it('ita target1 is cast female and target2 male, each locked to its own role', () => {
+    expect(TARGET_PASSES['ita-target1']).toMatchObject({ role: 'target1', castGender: 'f' })
+    expect(TARGET_PASSES['ita-target2']).toMatchObject({ role: 'target2', castGender: 'm' })
+    expect(PASSES['ita-target1'].sql).toContain("!~ '^cartesia_'") // never re-renders a clip already on Cartesia
+  })
+  it('pass tag selects only that pass among pending swaps', () => {
+    const ledger = [{ kind: 'swap', oldId: 'a', newId: 'A', pass: 'general', slots: [] }, { kind: 'swap', oldId: 'b', newId: 'B', pass: 'ita-target1', slots: [] }]
+    expect(pendingSwaps(ledger).filter(e => e.pass === 'ita-target1').map(e => e.oldId)).toEqual(['b'])
+  })
+})

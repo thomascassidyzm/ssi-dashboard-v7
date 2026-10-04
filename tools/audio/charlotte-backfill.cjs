@@ -4,6 +4,12 @@
  * new Cartesia voices"). A Tom-triggered, incremental backfill — voice change never re-renders on its
  * own (HARD RULE 2026-09-20); this tool is the separate, Tom-triggered pass.
  *
+ * TARGET-VOICE PASSES (job #626, Tom 2026-10-04: Italian Azure targets are jarring next to Charlotte): --voices ita-target1 / ita-target2
+ * select a language's non-Cartesia TARGET clips (Azure, xAI, bare ids) for that role and render them in the language's CAST voice read
+ * from voice_language_roles at run time (phrase slot: f rank 0 -> target1, m rank 0 -> target2, so V1/V2 stay two distinct voices).
+ * No cast row = stop and report, never invent one. Clips already on a Cartesia voice are left alone. Same ledger, spend guard and undo
+ * (--undo --only-pass ita-target1 reverts just that pass).
+ *
  * What it does, per OLD clip still linked from a course's content rows (English, TTS, xAI or Azure):
  *   1. renders the SAME stored text in Charlotte through Popty's ONE route (POST /api/audio/render, which is
  *      library-first, spend-guarded, one render, no retries) — never touches a provider itself;
@@ -64,6 +70,19 @@ const PASSES = {
   'xai-male': { sql: MALE_XAI, target: TOM_001, gender: 'm' },
 }
 
+/** Target-voice passes: language + role are fixed by the pass; the new voice is the language's cast voice for the role's gender. */
+const TARGET_PASSES = {
+  'ita-target1': { langs: ['ita', 'it'], role: 'target1', castGender: 'f' },
+  'ita-target2': { langs: ['ita', 'it'], role: 'target2', castGender: 'm' },
+}
+for (const [name, t] of Object.entries(TARGET_PASSES)) PASSES[name] = { sql: `(ca.voice_id !~ '^cartesia_')`, target: null, gender: null, ...t }
+/** The cast voice (full cartesia_ id) for a language/gender, rank 0 of the phrase slot; null when nobody has cast one. */
+async function castVoice(pg, lang, gender) {
+  const { rows: [r] } = await pg.query(`select vlr.voice_id from voice_language_roles vlr join voices v using (voice_id)
+    where vlr.slot = 'phrase' and vlr.language = $1 and vlr.gender = $2 and vlr.rank = 0 and v.is_active and vlr.voice_id like 'cartesia\_%'`, [lang, gender])
+  return r ? r.voice_id : null
+}
+
 const argv = process.argv.slice(2)
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const has = f => argv.includes(f)
@@ -81,14 +100,14 @@ async function slotsFor(pg, course, role) {
 const parseSeedScope = v => { if (v == null) return undefined; const m = /^(?:1-)?(\d+)$/.exec(String(v)); if (!m || !Number(m[1])) throw new Error(`bad --seeds ${v}; use 1-N`); return Number(m[1]) }
 /** Keep only work first heard within seeds 1..maxSeed (a clip shared with later seeds still counts: its first hearing is early). */
 const inSeedScope = (work, maxSeed) => (maxSeed == null ? work : work.filter(w => w.pos != null && w.pos <= maxSeed))
-async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed) {
+async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed, langs = ['eng', 'en']) {
   const out = []
   for (const role of roles) {
     const slots = await slotsFor(pg, course, role)
     const ids = [...new Set(slots.map(s => s.old_id))]
     if (!ids.length) continue
     const { rows } = await pg.query(`select ca.id::text, ca.text, ca.voice_id from course_audio ca
-       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language in ('eng','en') and ca.origin = 'tts' and ca.role = $3 and ${voiceSql}`, [ids, course, role])
+       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language = any($4::text[]) and ca.origin = 'tts' and ca.role = $3 and ${voiceSql}`, [ids, course, role, langs])
     const bad = new Map(rows.map(r => [r.id, r]))
     const by = new Map()
     for (const s of slots) {
@@ -101,11 +120,11 @@ async function workFor(pg, course, roles, voiceSql = BAD_VOICE, maxSeed) {
   return inSeedScope(out, maxSeed).sort((a, b) => (a.pos ?? 1e9) - (b.pos ?? 1e9) || a.oldId.localeCompare(b.oldId))
 }
 
-async function render(course, w, dryRun, target = CHARLOTTE) {
+async function render(course, w, dryRun, target = CHARLOTTE, language = 'eng') {
   const res = await fetch(`${POPTY}/api/audio/render`, {
     method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-573-charlotte-backfill' },
-    body: JSON.stringify({ courseCode: course, role: w.role, text: w.text, language: 'eng', voiceId: target, job: JOB, dryRun,
-      purpose: target === CHARLOTTE ? 'Tom 2026-10-03: English re-render on Charlotte (xAI clicks / Azure replacement), job #573' : 'Tom 2026-10-04: English male slot re-render on tom_001, job #573/#614' }),
+    body: JSON.stringify({ courseCode: course, role: w.role, text: w.text, language, voiceId: target, job: JOB, dryRun,
+      purpose: language !== 'eng' ? `Tom 2026-10-04: ${language} ${w.role} Azure/xAI -> cast Cartesia voice, pilot job #626` : target === CHARLOTTE ? 'Tom 2026-10-03: English re-render on Charlotte (xAI clicks / Azure replacement), job #573' : 'Tom 2026-10-04: English male slot re-render on tom_001, job #573/#614' }),
   })
   const body = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }))
   return { status: res.status, ...body }
@@ -187,7 +206,8 @@ async function main() {
     const all = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
     // nothing marks a swap line itself undone, so pending swaps are derived from the ledger order (each undo line cancels one earlier swap)
     // --only-gender m: revert just the swaps whose OLD voice was male (job #614: a male slot must never be Charlotte)
-    const onlyG = opt('--only-gender'); const lines = pendingSwaps(all).filter(e => !onlyG || voiceGender(e.oldVoice) === onlyG).reverse()
+    const onlyG = opt('--only-gender'); const onlyP = opt('--only-pass')
+    const lines = pendingSwaps(all).filter(e => (!onlyG || voiceGender(e.oldVoice) === onlyG) && (!onlyP || e.pass === onlyP)).reverse()
     let n = 0; const limit = Number(opt('--limit', 1e9))
     const eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill --undo', operation: 'update', detail: { why: 'undo job #573 pointer swaps', ledger } })
     for (const e of lines) {
@@ -200,35 +220,41 @@ async function main() {
     console.log(`undone ${n} swaps`); return pg.end()
   }
 
-  const roles = opt('--roles', 'known,presentation').split(',')
-  const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
   const passName = opt('--voices', 'general'); const pass = PASSES[passName]
   if (!pass) { console.error(`unknown --voices ${passName}; one of ${Object.keys(PASSES)}`); process.exit(1) }
+  const roles = pass.role ? [pass.role] : opt('--roles', 'known,presentation').split(',')
+  const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
   const maxSeed = parseSeedScope(opt('--seeds'))
-  const work = await workFor(pg, course, roles, pass.sql, maxSeed)
+  let target = pass.target, language = 'eng'
+  if (pass.castGender) {
+    language = pass.langs[0]
+    target = await castVoice(pg, language, pass.castGender)
+    if (!target) { console.log(`NO CAST: ${language} has no active Cartesia phrase-slot voice for gender ${pass.castGender}; nothing rendered`); return pg.end() }
+  }
+  const work = await workFor(pg, course, roles, pass.sql, maxSeed, pass.langs)
   const total = work.reduce((n, x) => n + x.chars, 0)
-  console.log(`${course} ${roles}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
+  console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null, genderSkipped = 0, slotRefused = 0
   for (const w of work) {
     // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
-    if (voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
+    if (pass.gender && voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
     if (spent + w.chars > budget) { if (spent === 0 && budget === 0) break; continue }
-    const r = await render(course, w, dryRun, pass.target)
+    const r = await render(course, w, dryRun, target, language)
     if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); break }
     if (!r.ok) { console.log('FAIL', w.oldId, r.code, r.error); if (++failures >= 5) { console.log('5 failures — stopping'); break } continue }
     if (dryRun) { spent += r.wouldSpendChars || 0; done++; continue }
     failures = 0; spent += r.charsSpent || 0
-    const bad = await verifyNew(pg, r.audioId, pass.target)
+    const bad = await verifyNew(pg, r.audioId, target)
     if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); continue }
     // write-ahead: the ledger line exists before the first pointer moves
-    const entry = { kind: 'swap', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, source: r.source, charsSpent: r.charsSpent || 0, slots: w.slots, text: w.text, at: new Date().toISOString() }
+    const entry = { kind: 'swap', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, pass: passName, source: r.source, charsSpent: r.charsSpent || 0, slots: w.slots, text: w.text, at: new Date().toISOString() }
     fs.appendFileSync(ledger, JSON.stringify(entry) + '\n')
     if (!eventId) eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill', operation: 'update',
       detail: { why: 'Tom 2026-10-03 English->Charlotte backfill, job #573; old ids in ledger', ledger } })
     // a slot the DB refuses (e.g. a trigger) is logged and skipped; the old pointer simply stays
     for (const s of w.slots) {
       try { if (await setPointer(db, s, w.oldId, r.audioId, eventId)) slotsMoved++ }
-      catch (e) { refused = true; slotRefused++; console.log('SLOT-REFUSED', s.tbl, s.key, e.message.slice(0, 120)); fs.appendFileSync(ledger, JSON.stringify({ kind: 'slot-refused', oldId: w.oldId, slot: s, error: e.message }) + '\n') }
+      catch (e) { slotRefused++; console.log('SLOT-REFUSED', s.tbl, s.key, e.message.slice(0, 120)); fs.appendFileSync(ledger, JSON.stringify({ kind: 'slot-refused', oldId: w.oldId, slot: s, error: e.message }) + '\n') }
     }
     done++; if (r.source === 'library') free++
   }
@@ -239,4 +265,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TOM_001, CHARLOTTE }
+module.exports = { parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, CHARLOTTE }
