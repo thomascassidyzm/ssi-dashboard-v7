@@ -45,7 +45,9 @@
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, onBeforeUnmount } from 'vue'
+import { onBeforeRouteLeave } from 'vue-router'
+import { bufferKey, baselineOf, reconcileBuffers, anyDirty } from '../lib/guessTextBuffers'
 import { useAuth } from '../composables/useAuth'
 
 const { getAccessToken } = useAuth()
@@ -65,7 +67,7 @@ const busy = ref(false)
 const status = ref('')
 const statusIsError = ref(false)
 
-const key = (it) => `${it.kind}|${it.id}`
+const key = bufferKey
 const hasParens = (s) => /[()]/.test(s || '')
 const countFor = (k) => items.value.filter(i => i.kind === k).length
 const shown = computed(() => {
@@ -74,7 +76,7 @@ const shown = computed(() => {
     && (!q || i.id.toLowerCase().includes(q) || (i.live?.content || '').toLowerCase().includes(q)))
 })
 // The box starts as the live text, so Save always means "this exact text".
-const baseline = (it) => (it.live ? it.live.content : '')
+const baseline = baselineOf
 const stamp = (t) => (t ? new Date(t).toLocaleString() : '')
 const seedEdit = (it) => { if (edits[key(it)] === undefined) edits[key(it)] = baseline(it) }
 const changed = (it) => edits[key(it)] !== undefined && edits[key(it)].trim() !== baseline(it).trim() && edits[key(it)].trim() !== ''
@@ -82,34 +84,44 @@ const changed = (it) => edits[key(it)] !== undefined && edits[key(it)].trim() !=
 function say(msg, err = false) { status.value = msg; statusIsError.value = err }
 async function headers() { const t = await getAccessToken(); return { 'Content-Type': 'application/json', ...(t ? { Authorization: `Bearer ${t}` } : {}) } }
 
-async function load() {
+async function load(submitted = {}) {
   loading.value = true
   try {
     const res = await fetch(`/api/guess-text?known=${known}`, { headers: await headers() })
     if (!res.ok) throw new Error(`${res.status} ${(await res.json().catch(() => ({}))).error || ''}`)
-    items.value = (await res.json()).items
-    for (const it of items.value) edits[key(it)] = baseline(it)
+    const oldBase = Object.fromEntries(items.value.map(it => [key(it), baseline(it)]))
+    const fresh = (await res.json()).items
+    reconcileBuffers(edits, oldBase, fresh, submitted)
+    items.value = fresh
   } catch (e) {
     say(`Could not load: ${e.message}. Reload the page; nothing has been lost.`, true)
   } finally { loading.value = false }
 }
 
-async function act(body, done) {
+async function act(body, done, submitted) {
   busy.value = true
   try {
     const res = await fetch('/api/guess-text', { method: 'POST', headers: await headers(), body: JSON.stringify({ known, ...body }) })
     const data = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(data.error || res.status)
     say(done(data))
-    await load()
+    await load(submitted)
   } catch (e) {
     say(`NOT DONE: ${e.message}. Your text is still in the box.`, true)
   } finally { busy.value = false }
 }
 
-const save = (it) => act({ action: 'save', kind: it.kind, id: it.id, content: edits[key(it)] }, () => `${it.id} is saved and live.`)
+const save = (it) => {
+  const content = edits[key(it)]
+  return act({ action: 'save', kind: it.kind, id: it.id, content }, () => `${it.id} is saved and live.`, { [key(it)]: content })
+}
 
-onMounted(load)
+const LEAVE_MSG = 'You have edits that are not saved. Leave anyway?'
+const beforeUnload = (e) => { if (anyDirty(edits, items.value)) { e.preventDefault(); e.returnValue = '' } }
+onBeforeRouteLeave(() => (anyDirty(edits, items.value) ? window.confirm(LEAVE_MSG) : true))
+
+onMounted(() => { load(); window.addEventListener('beforeunload', beforeUnload) })
+onBeforeUnmount(() => window.removeEventListener('beforeunload', beforeUnload))
 </script>
 
 <style scoped>

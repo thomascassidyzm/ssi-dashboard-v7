@@ -5397,7 +5397,7 @@ app.post('/render', async (req, res) => {
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
           : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed }
           : provider === 'xai' ? { apiKey: process.env.XAI_API_KEY, voiceId: held, language: toBcp47(lang) }
-          : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed }
+          : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed, wordTimings: true /* #643: word-by-word display needs timings on every Cartesia clip */ }
           : null
         if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
         return { language: canonicalLanguage(lang), voiceId: canonicalClipVoiceId(held, provider), provider, providerConfig }
@@ -5411,7 +5411,7 @@ app.post('/render', async (req, res) => {
         return data
       },
       // Make before break: new object uploaded and HEADed alive BEFORE the row points at it; the old object is retained.
-      replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, requestedBy, purpose }) => {
+      replace: async ({ replaceAudioId, courseCode, text, spokenText, language, voiceId, s3Key, audioBuffer, wordBoundaries, wordTimings, requestedBy, purpose }) => {
         let newKey = s3Key, durationMs = null
         const said = spokenText || text
         if (!newKey) {
@@ -5422,7 +5422,7 @@ app.post('/render', async (req, res) => {
         }
         const out = await swapClipInPlace({
           supabase, audioId: replaceAudioId, newS3Key: newKey, durationMs,
-          patch: { origin: 'tts', voice_id: voiceId, word_boundaries: wordBoundaries || null },
+          patch: { origin: 'tts', voice_id: voiceId, word_boundaries: wordBoundaries || null, word_timings: wordTimings || null },
           source: 'audio-render-rerecord', acceptedBy: `${requestedBy} via /api/audio/render`, reason: purpose,
           verifyObject: async (k) => { try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: k })); return true } catch { return false } },
           logger,
@@ -5430,13 +5430,14 @@ app.post('/render', async (req, res) => {
         // clip_index points at the row by audio_id, and the id never moves — nothing to re-index.
         return { audioId: replaceAudioId, s3Key: newKey, durationMs, revision: out.revision }
       },
-      store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries }) => {
+      store: async ({ courseCode, text, language, role, voiceId, legoId, audioBuffer, wordBoundaries, wordTimings }) => {
         const { buffer, durationMs } = await masterAudio(audioBuffer, text, await voiceConfigService.masteringOptsFor(voiceId))
         const s3Key = `mastered/${uuidv4().toUpperCase()}.mp3`
         await s3.send(new PutObjectCommand({ Bucket: S3_BUCKET, Key: s3Key, Body: buffer, ContentType: 'audio/mpeg', CacheControl: AUDIO_CACHE_CONTROL }))
         const { data: row, error } = await supabase.from('course_audio').upsert({
           course_code: courseCode, text, text_normalized: normalizeForAudio(text), language, role, voice_id: voiceId,
           lego_id: legoId, origin: 'tts', s3_key: s3Key, duration_ms: durationMs, word_boundaries: wordBoundaries || null,
+          word_timings: toWordTimingsColumn(wordTimings), // NULL for non-Cartesia; replaces stale timings on an upsert over new bytes
         }, { onConflict: 'course_code,text_normalized,language,role,voice_id' }).select().single()
         if (error) throw new Error(`course_audio write failed after the render was paid for: ${error.message} (object ${s3Key} is in S3)`)
         await clipIndex.writeThrough(supabase, [{ id: row.id, text, language, voice_id: voiceId, s3_key: s3Key, origin: 'tts' }], 'phase8:render', logger)

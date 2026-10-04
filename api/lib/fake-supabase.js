@@ -28,6 +28,14 @@ export function createFakeSupabase(tables = {}, { defaults = {} } = {}) {
     // Force an error from a table's next operation: { [table]: { message } }
     errors: {},
     calls: [],
+    // Stored procedures: { [name]: (args, db) => ({ data, error }) } — an rpc is ONE atomic call.
+    rpcs: {},
+    rpc(name, args) {
+      db.calls.push({ rpc: name, args })
+      const fn = db.rpcs[name]
+      if (!fn) throw new Error(`fake-supabase: rpc ${name} is not defined — add it to db.rpcs`)
+      return Promise.resolve(fn(args, db))
+    },
     from(table) {
       if (!db.tables[table]) db.tables[table] = []
       return new Query(db, table)
