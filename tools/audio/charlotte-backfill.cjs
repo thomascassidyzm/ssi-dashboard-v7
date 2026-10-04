@@ -110,6 +110,10 @@ async function setPointer(db, s, from, to, eventId) {
   return data && data.length === 1
 }
 
+const swapKey = e => `${e.oldId}|${e.newId}`
+/** Swaps the ledger already shows undone: the keys of its kind:'undo' lines. */
+const undoneSet = lines => new Set(lines.filter(e => e.kind === 'undo').map(swapKey))
+
 async function main() {
   const pg = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   await pg.connect()
@@ -128,13 +132,18 @@ async function main() {
   const identity = serviceIdentity('charlotte-backfill-573')
 
   if (has('--undo')) {
-    const lines = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse).reverse() : []
+    const all = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
+    // nothing marks a swap line itself undone, so the done set is read from the kind:'undo' lines, keyed by swap identity
+    const done = undoneSet(all)
+    const lines = all.filter(e => e.kind === 'swap' && !done.has(swapKey(e))).reverse()
     let n = 0; const limit = Number(opt('--limit', 1e9))
     const eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill --undo', operation: 'update', detail: { why: 'undo job #573 pointer swaps', ledger } })
     for (const e of lines) {
-      if (e.kind !== 'swap' || e.undone || n >= limit) continue
-      for (const s of e.slots) await setPointer(db, s, e.newId, e.oldId, eventId)
-      fs.appendFileSync(ledger, JSON.stringify({ kind: 'undo', oldId: e.oldId, newId: e.newId, at: new Date().toISOString() }) + '\n'); n++
+      if (n >= limit) break
+      let moved = 0
+      for (const s of e.slots) if (await setPointer(db, s, e.newId, e.oldId, eventId)) moved++
+      fs.appendFileSync(ledger, JSON.stringify({ kind: 'undo', oldId: e.oldId, newId: e.newId, at: new Date().toISOString() }) + '\n')
+      if (moved) n++ // a swap whose slots changed nothing is closed in the ledger but not reported as undone
     }
     console.log(`undone ${n} swaps`); return pg.end()
   }
@@ -169,4 +178,6 @@ async function main() {
   console.log(`done ${done} clips (${free} from library), ${slotsMoved} slots repointed, ${spent} chars spent; ${work.length - done} remain. ledger ${ledger}`)
   await pg.end()
 }
-main().catch(e => { console.error(e); process.exit(1) })
+if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
+
+module.exports = { swapKey, undoneSet }

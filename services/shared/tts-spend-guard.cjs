@@ -195,9 +195,10 @@ const TOTAL_DAILY_CAP_CHARS = 260_000 // Tom 2026-10-03 (job #574): 8M/month ÷ 
  * ('#913') is Tom's approval for that one run: its calls spend from their own
  * allowance, never above this ceiling, and the automatic 100k is counted without
  * them. Nothing — approved or not — takes a UTC day past the ceiling. Written only
- * by tools/tts-cap.cjs approve.
+ * by tools/tts-cap.cjs approve. Job #596: the JS ceiling is 300,000 to match the stricter DB function
+ * (ops/sql/20261003-tts-spend-total-cap-260k.sql v_ceiling); the DB ceiling was not raised.
  */
-const TOTAL_DAILY_CEILING_CHARS = 1_000_000
+const TOTAL_DAILY_CEILING_CHARS = 300_000
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
