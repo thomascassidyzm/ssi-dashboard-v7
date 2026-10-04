@@ -14,7 +14,7 @@
 
     <router-link to="/guess-text" class="doc guess-link">
       <span class="title">The /guess game: its text</span>
-      <span class="blurb">The reveal lines, the Read more notes and the place notes, each with a live version and a draft.</span>
+      <span class="blurb">The reveal lines, the Read more notes and the place notes, edit it and Save: it goes live straight away.</span>
     </router-link>
 
     <ul v-else class="docs">

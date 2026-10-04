@@ -5,8 +5,8 @@
  *   200 { known, fallbackFrom: null | 'eng', items: { tell: {id: text}, pair: {...}, place_note: {...}, place_where: {...} } }
  *
  * The one rule it keeps: it returns state='live' rows and nothing else. The state filter is on
- * the query, and liveMap() drops anything else a second time. A draft is unreachable here; there
- * is no parameter that asks for one. A known language with no text gets English, item by item;
+ * the query, and liveMap() drops anything else a second time. A legacy draft or superseded row is
+ * unreachable here; there is no parameter that asks for one. A known language with no text gets English, item by item;
  * the game itself falls back to the text bundled in its build if this fails, so a failure here
  * is never a blank game.
  */

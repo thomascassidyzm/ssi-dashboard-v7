@@ -1,10 +1,9 @@
 /**
- * The /guess text store: a draft is never served, only an explicit approval makes it live.
+ * The /guess text store: a save is live at once (Tom 2026-10-04), history is kept, learners read live only.
  *
- *  1. THE PUBLIC ENDPOINT NEVER RETURNS A DRAFT (or a superseded row) — the humanised draft
- *     seeded beside the live text must be unreachable by learners until Aran approves it.
- *  2. SAVING WRITES A DRAFT AND LEAVES THE LIVE TEXT ALONE.
- *  3. APPROVING PROMOTES THE DRAFT, KEEPS THE OLD LIVE ROW AS HISTORY, AND NAMES THE APPROVER.
+ *  1. THE PUBLIC ENDPOINT RETURNS LIVE TEXT ONLY — never a legacy draft or a superseded row.
+ *  2. SAVING MAKES THE NEW TEXT LIVE, KEEPS THE OLD LIVE ROW AS HISTORY, AND STAMPS WHO AND WHEN.
+ *  3. THE DRAFT/APPROVE ACTIONS ARE GONE.
  *  4. A KNOWN LANGUAGE WITH NO TEXT GETS ENGLISH; one with its own text overrides item by item.
  */
 import { describe, it, expect, beforeEach, vi } from 'vitest'
@@ -54,36 +53,29 @@ describe('public read path', () => {
 })
 
 describe('editor', () => {
-  it('save writes a draft and the live text is unchanged', async () => {
+  it('save is live at once, supersedes the old live row and stamps who and when', async () => {
     const res = await post({ action: 'save', known: 'eng', kind: 'tell', id: 'cym', content: 'Aran says this' })
     expect(res.body.ok).toBe(true)
-    const pub = await get(published, { known: 'eng' })
-    expect(pub.body.items.tell.cym).toBe('LIVE cym tell')
+    expect((await get(published, { known: 'eng' })).body.items.tell.cym).toBe('Aran says this')
     const rows = state.db.tables.guess_text_items
-    expect(rows.find(r => r.content === 'Aran says this')).toMatchObject({ state: 'draft', source: 'editor', edited_by: 'aran@ssi.app' })
-  })
-  it('a second save supersedes the first draft, leaving one draft per item', async () => {
-    await post({ action: 'save', known: 'eng', kind: 'tell', id: 'gle', content: 'second' })
-    const drafts = state.db.tables.guess_text_items.filter(r => r.kind === 'tell' && r.item_id === 'gle' && r.state === 'draft')
-    expect(drafts.map(d => d.content)).toEqual(['second'])
+    expect(rows.find(r => r.content === 'Aran says this')).toMatchObject({ state: 'live', source: 'editor', edited_by: 'aran@ssi.app', approved_by: 'aran@ssi.app' })
+    expect(rows.find(r => r.id === 3).state).toBe('superseded')
+    expect(rows.filter(r => r.item_id === 'cym' && r.state === 'live')).toHaveLength(1)
   })
   it('cannot invent an item id', async () => {
     expect((await post({ action: 'save', known: 'eng', kind: 'tell', id: 'zzz', content: 'x' })).statusCode).toBe(404)
   })
-  it('approve promotes the draft, keeps the old live as history and names the approver', async () => {
-    await post({ action: 'approve', known: 'eng', kind: 'tell', id: 'gle' })
-    const rows = state.db.tables.guess_text_items
-    expect(rows.find(r => r.id === 2)).toMatchObject({ state: 'live', approved_by: 'aran@ssi.app' })
-    expect(rows.find(r => r.id === 1).state).toBe('superseded')
-    expect((await get(published, { known: 'eng' })).body.items.tell.gle).toBe('DRAFT gle tell')
-  })
-  it('approve-all promotes every draft, and nothing is promoted before it is called', async () => {
+  it('there is no approve, approve-all or discard any more', async () => {
+    for (const action of ['approve', 'approve-all', 'discard']) {
+      expect((await post({ action, known: 'eng', kind: 'tell', id: 'gle' })).statusCode).toBe(400)
+    }
     expect((await get(published, { known: 'eng' })).body.items.tell.gle).toBe('LIVE gle tell')
-    const res = await post({ action: 'approve-all', known: 'eng' })
-    expect(res.body.approved).toBe(1)
   })
-  it('the editor listing shows live and draft side by side', async () => {
+  it('the editor listing shows the live text only', async () => {
     const res = await get(admin, { known: 'eng' })
-    expect(res.body.items.find(i => i.id === 'gle')).toMatchObject({ live: { content: 'LIVE gle tell' }, draft: { content: 'DRAFT gle tell' } })
+    const gle = res.body.items.find(i => i.id === 'gle')
+    expect(gle.live.content).toBe('LIVE gle tell')
+    expect(gle.draft).toBeUndefined()
+    expect(res.body.items.find(i => i.id === 'old')).toBeUndefined()
   })
 })

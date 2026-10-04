@@ -6,7 +6,8 @@
  *   2. the humanised draft published for Aran -> state 'draft', one per item it rewrites
  *      (tools/guess-text/seed-draft-2026-10-04.json, taken verbatim from the draft document; lines it left
  *      word-for-word identical to live are not stored as drafts, since approving them would change nothing)
- * Idempotent: an item that already has a row in that state is left alone. Never promotes a draft.
+ * HISTORICAL: superseded by promote-drafts.cjs (job #632, Tom 2026-10-04: the humanised text is live). Do NOT re-run
+ * against the live table: it would re-insert the drafts. Idempotent otherwise.
  *   node tools/guess-text/seed.cjs [--dry]
  */
 const fs = require('fs'), path = require('path')

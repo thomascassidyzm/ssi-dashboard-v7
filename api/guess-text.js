@@ -2,18 +2,13 @@
  * The /guess game's text, edited in Popty (the canonical home; the game reads it back from
  * api/guess-text-published.js). Behind the Popty sign-in, like the Copy area.
  *
- *   GET  /api/guess-text?known=eng                     → { known, items: [{ kind, id, live, draft }] }
- *   POST /api/guess-text   { action:'save',        known, kind, id, content }  → write the DRAFT for one item
- *   POST /api/guess-text   { action:'approve',     known, kind, id }           → draft becomes live
- *   POST /api/guess-text   { action:'approve-all', known, kind? }              → every draft (of a kind) becomes live
- *   POST /api/guess-text   { action:'discard',     known, kind, id }           → drop the draft
+ *   GET  /api/guess-text?known=eng                     → { known, items: [{ kind, id, live }] }
+ *   POST /api/guess-text   { action:'save', known, kind, id, content }  → the new text is LIVE at once
  *
- * SAVE NEVER PUBLISHES. Editing, and the seeded humanised draft, only ever write state='draft';
- * a learner reads state='live' rows alone. Approving is a deliberate act, stamped with who did
- * it; the replaced live row is kept as 'superseded', so nothing is lost and every change has a name.
- * Nothing in this file promotes a draft on its own.
- *
- * Every write records the editor's email (verified Popty JWT) in edited_by / approved_by.
+ * SAVE IS LIVE (Tom 2026-10-04: no draft/approve step; /guess is not public yet, so no review gate).
+ * A save writes a new state='live' row stamped with who and when (edited_by, approved_by/at), and the
+ * row it replaces is kept as 'superseded', so nothing is lost and every change has a name.
+ * The friendlier (humanised) wording is the canonical live text; the pre-humanised wording is history.
  */
 import { verifySupabaseJWT } from './lib/auth.js';
 import { getSupabase } from './lib/supabase.js';
@@ -30,19 +25,6 @@ async function requireUser(req, res) {
 }
 
 const COLS = 'id, known_lang, kind, item_id, content, state, source, edited_by, created_at, approved_by, approved_at';
-
-/** Make `draft` the live row for its item; the old live row (if any) is kept as superseded. */
-async function promote(supabase, draft, who) {
-  const { known_lang, kind, item_id } = draft;
-  const { data: lives, error: e1 } = await supabase.from(TABLE).select('id').eq('known_lang', known_lang).eq('kind', kind).eq('item_id', item_id).eq('state', 'live');
-  if (e1) return e1;
-  for (const l of lives || []) {
-    const { error } = await supabase.from(TABLE).update({ state: 'superseded' }).eq('id', l.id);
-    if (error) return error;
-  }
-  const { error } = await supabase.from(TABLE).update({ state: 'live', approved_by: who, approved_at: new Date().toISOString() }).eq('id', draft.id);
-  return error || null;
-}
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -79,42 +61,22 @@ export default async function handler(req, res) {
     const { data: existing, error: e0 } = await supabase.from(TABLE).select('id, state').eq('known_lang', known).eq('kind', kind).eq('item_id', id);
     if (e0) return res.status(500).json({ error: e0.message });
     if (known === DEFAULT_KNOWN && !(existing || []).length) return res.status(404).json({ error: `No such item: ${kind} ${id}` });
-    for (const r of (existing || []).filter(r => r.state === 'draft')) {
+    // Retire the old live row first, then insert the new live one; if the insert fails, put the old one back.
+    const olds = (existing || []).filter(r => r.state === 'live')
+    for (const r of olds) {
       const { error } = await supabase.from(TABLE).update({ state: 'superseded' }).eq('id', r.id);
       if (error) return res.status(500).json({ error: error.message });
     }
+    const now = new Date().toISOString();
     const { data, error } = await supabase.from(TABLE)
-      .insert({ known_lang: known, kind, item_id: id, content, state: 'draft', source: 'editor', edited_by: who })
+      .insert({ known_lang: known, kind, item_id: id, content, state: 'live', source: 'editor', edited_by: who, approved_by: who, approved_at: now })
       .select('id, created_at').single();
-    if (error) return res.status(500).json({ error: error.message });
-    return res.json({ ok: true, draftId: Number(data.id), savedAt: data.created_at });
-  }
-
-  if (action === 'approve' || action === 'discard') {
-    if (!KINDS.includes(kind) || typeof id !== 'string') return res.status(400).json({ error: 'kind and id are required' });
-    const { data, error } = await supabase.from(TABLE).select(COLS).eq('known_lang', known).eq('kind', kind).eq('item_id', id).eq('state', 'draft');
-    if (error) return res.status(500).json({ error: error.message });
-    const draft = (data || [])[0];
-    if (!draft) return res.status(404).json({ error: 'No draft for that item' });
-    const err = action === 'approve'
-      ? await promote(supabase, draft, who)
-      : (await supabase.from(TABLE).update({ state: 'superseded' }).eq('id', draft.id)).error;
-    if (err) return res.status(500).json({ error: err.message });
-    return res.json({ ok: true, action });
-  }
-
-  if (action === 'approve-all') {
-    if (kind !== undefined && !KINDS.includes(kind)) return res.status(400).json({ error: 'bad kind' });
-    const { data, error } = await supabase.from(TABLE).select(COLS).eq('known_lang', known).eq('state', 'draft');
-    if (error) return res.status(500).json({ error: error.message });
-    let approved = 0;
-    for (const d of (data || []).filter(d => !kind || d.kind === kind)) {
-      const err = await promote(supabase, d, who);
-      if (err) return res.status(500).json({ error: err.message, approved });
-      approved++;
+    if (error) {
+      for (const r of olds) await supabase.from(TABLE).update({ state: 'live' }).eq('id', r.id);
+      return res.status(500).json({ error: error.message });
     }
-    return res.json({ ok: true, approved });
+    return res.json({ ok: true, id: Number(data.id), savedAt: data.created_at });
   }
 
-  return res.status(400).json({ error: 'action must be save, approve, approve-all or discard' });
+  return res.status(400).json({ error: 'action must be save' });
 }

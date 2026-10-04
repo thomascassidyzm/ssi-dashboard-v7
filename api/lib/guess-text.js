@@ -9,10 +9,9 @@
  *   place_note  the light line under the place (speakers)      id = place key
  *   place_where the place in two or three words                id = place key
  *
- * A row is a version: state 'live' (approved, what learners read), 'draft' (proposed, never
- * served), or 'superseded' (history). At most one live and one draft per item. Saving only
- * ever writes a draft; a draft becomes live only when somebody approves it. Nothing here
- * promotes a draft by itself.
+ * A row is a version: state 'live' (what learners read) or 'superseded' (history); 'draft' is a
+ * legacy state the table still allows but nothing writes any more (Tom 2026-10-04: saves go live).
+ * At most one live row per item. Learners read live rows only.
  */
 
 export const KINDS = ['tell', 'pair', 'place_note', 'place_where'];
@@ -23,7 +22,7 @@ const KNOWN_RE = /^[a-z]{3}$/;
 
 export function validKnown(known) { return typeof known === 'string' && KNOWN_RE.test(known); }
 
-/** An error string, or null when the item may be saved as a draft. */
+/** An error string, or null when the item may be saved. */
 export function validateItem({ kind, item_id, content }) {
   if (!KINDS.includes(kind)) return `kind must be one of ${KINDS.join(', ')}`;
   if (typeof item_id !== 'string' || !ITEM_ID_RE.test(item_id)) return 'bad item id';
@@ -59,16 +58,16 @@ export function withFallback(knownRows, engRows, known) {
   return { items: own, fallbackFrom: used ? DEFAULT_KNOWN : null };
 }
 
-/** The editor's view: one entry per item, its live text and its draft side by side, in seed order. */
+/** The editor's view: one entry per item with its live text, in seed order. */
 export function itemsForEditor(rows) {
   const by = new Map();
   for (const r of [...(rows || [])].sort((a, b) => Number(a.id) - Number(b.id))) {
-    if (r.state === 'superseded') continue;
+    if (r.state !== 'live') continue;
     const key = `${r.kind}\u0000${r.item_id}`;
-    if (!by.has(key)) by.set(key, { kind: r.kind, id: r.item_id, live: null, draft: null });
+    if (!by.has(key)) by.set(key, { kind: r.kind, id: r.item_id, live: null });
     const slot = by.get(key);
     const v = { content: r.content, editedBy: r.edited_by ?? null, source: r.source, at: r.created_at, approvedBy: r.approved_by ?? null, approvedAt: r.approved_at ?? null };
-    if (r.state === 'live') slot.live = v; else slot.draft = v;
+    slot.live = v;
   }
   return [...by.values()];
 }
