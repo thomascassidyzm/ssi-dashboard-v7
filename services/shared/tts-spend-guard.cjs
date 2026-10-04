@@ -123,8 +123,10 @@ function jobMatches(jobText, token) {
  * per-provider / daily soft caps (JS dailyCap, and the DB's 260k automatic total cap via
  * limits.commissioned). It still meets the hard daily ceiling (300,000 in tts_spend_reserve) and
  * a repeat ceiling of its own — 10 identical sends in 24h is a loop, not a commission.
- * "Live" is verified against the surface (GET /api/jobs rows carry job = the #NNN), never
- * trusted from the string; an unreachable surface means unattributed limits apply.
+ * The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
+ * job = the #NNN), never trusting the string alone; it does not verify the job commissioned
+ * this particular render. That is the accepted trade-off (Watson): the 10-repeat limit and the
+ * 300k ceiling remain the runaway stops. An unreachable surface means unattributed limits apply.
  */
 const COMMISSIONED_REPEAT_MAX = 10
 const COMMISSIONED_CACHE_MS = 15_000

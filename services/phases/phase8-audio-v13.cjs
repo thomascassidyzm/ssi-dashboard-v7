@@ -33,7 +33,7 @@ const os = require('os')
 const { bumpCourseVersion, bumpCourseRevalidation } = require('../shared/course-version.cjs')
 const { normalizeForAudio, audioKeyCandidates } = require('../shared/text-normalize.cjs')
 const clipIndex = require('../shared/clip-index.cjs')
-const { renderClip, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
+const { renderClip, rerecordPatch, roleNativeLanguage, RenderRequestError } = require('../shared/audio-render-entry.cjs')
 const { phraseRenderDoor, PHRASE_REUSE_LOOKUP } = require('../shared/phrase-render-door.cjs')
 const chainContext = require('../shared/chain-context.cjs')
 const courseVoiceConfig = require('../shared/course-voice-config.cjs')
@@ -5422,7 +5422,7 @@ app.post('/render', async (req, res) => {
         }
         const out = await swapClipInPlace({
           supabase, audioId: replaceAudioId, newS3Key: newKey, durationMs,
-          patch: { origin: 'tts', voice_id: voiceId, word_boundaries: wordBoundaries || null, word_timings: wordTimings || null },
+          patch: rerecordPatch({ voiceId, wordBoundaries, wordTimings }),
           source: 'audio-render-rerecord', acceptedBy: `${requestedBy} via /api/audio/render`, reason: purpose,
           verifyObject: async (k) => { try { await s3.send(new HeadObjectCommand({ Bucket: S3_BUCKET, Key: k })); return true } catch { return false } },
           logger,

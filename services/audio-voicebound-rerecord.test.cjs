@@ -169,6 +169,24 @@ describe('the render route: voiceBound and re-record (job #741)', () => {
     expect(calls.replace[0].voiceId).toBe(MALE_ID)
   })
 
+  it('a re-record answered by a same-voice library clip hands that clip\'s word timings to replace (job #664)', async () => {
+    const wt = [{ word: 'guten', start: 0, end: 0.3 }]
+    const { svc, paid } = door([clip({ id: 'LIB', course: 'deu_for_eng', text: 'guten tag', language: 'deu', voice: MALE_ID, extra: { s3_key: 'mastered/LIB.mp3', word_timings: wt, word_boundaries: null } })])
+    const { deps, calls } = rdeps(svc)
+    const out = await renderClip(req(), deps)
+    expect(out.source).toBe('library')
+    expect(paid).toEqual([])
+    expect(calls.replace[0].s3Key).toBe('mastered/LIB.mp3')
+    expect(calls.replace[0].wordTimings).toEqual(wt)
+  })
+
+  it('rerecordPatch leaves timings untouched when not supplied, writes them (or null) when supplied (job #664)', () => {
+    const { rerecordPatch } = require('./shared/audio-render-entry.cjs')
+    expect(rerecordPatch({ voiceId: 'v' })).toEqual({ origin: 'tts', voice_id: 'v' })
+    expect(rerecordPatch({ voiceId: 'v', wordTimings: [1] })).toMatchObject({ word_timings: [1] })
+    expect(rerecordPatch({ voiceId: 'v', wordTimings: null })).toMatchObject({ word_timings: null })
+  })
+
   it('spokenText is what the voice says; the stored text is untouched', async () => {
     const { svc, paid } = door([])
     const { deps, calls } = rdeps(svc)

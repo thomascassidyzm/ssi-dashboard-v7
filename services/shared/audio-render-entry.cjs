@@ -143,7 +143,7 @@ async function rerecord(req, deps) {
   const echo = { purpose: req.purpose, requestedBy: req.requestedBy, replaceAudioId: row.id, spoken: said }
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const swapped = out.existingClip
-    ? await deps.replace({ ...ident, replaceAudioId: row.id, s3Key: out.existingClip.s3_key })
+    ? await deps.replace({ ...ident, replaceAudioId: row.id, s3Key: out.existingClip.s3_key, wordBoundaries: out.wordBoundaries || null, wordTimings: out.wordTimings || null })   // the row now points at the library clip's bytes, so it takes that clip's timings with it
     : await deps.replace({ ...ident, replaceAudioId: row.id, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...swapped, ...echo }
 }
@@ -157,4 +157,9 @@ function roleNativeLanguage(role, course) {
   return role === 'known' || role === 'presentation' ? course.known_lang : course.target_lang
 }
 
-module.exports = { roleNativeLanguage, renderClip, validate, RenderRequestError }
+/** The course_audio patch a re-record writes. Timings only when supplied: undefined leaves the row's own untouched, never wipes them. */
+function rerecordPatch({ voiceId, wordBoundaries, wordTimings }) {
+  return { origin: 'tts', voice_id: voiceId, ...(wordBoundaries !== undefined && { word_boundaries: wordBoundaries || null }), ...(wordTimings !== undefined && { word_timings: wordTimings || null }) }
+}
+
+module.exports = { rerecordPatch, roleNativeLanguage, renderClip, validate, RenderRequestError }
