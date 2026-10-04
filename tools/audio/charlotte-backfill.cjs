@@ -33,12 +33,12 @@ const JOB = '#573'
 const POPTY = (process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')
 const AUDIO_BASE = process.env.LEARNER_AUDIO_BASE || 'https://saysomethingin.app/api/audio'
 const SLOT_COL = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id', presentation: 'presentation_audio_id' }
-// xAI and Azure voice ids, prefixed or bare. Anything else (Cartesia, ElevenLabs, human) is left alone.
-const BAD_VOICE = `(ca.voice_id ~ '^(xai_|azure_)' or ca.voice_id ~ 'Neural$' or ca.voice_id in ('gfzdpspr5fdp','bedd6226','eve','leo','ara','sal','comp:leo'))`
-
 // Female xAI presets (eve, ara; xai_/bare, incl. the eve_q variant). Tom's clones (gfzdpspr5fdp, bedd6226) and leo/sal/rex are male:
 // their mapping is Tom's separate decision, so the xai-female pass never touches them.
 const FEMALE_XAI = `(ca.voice_id ~ '^(xai_)?(eve|ara)(_q)?$')`
+// xAI and Azure voice ids, prefixed or bare. Anything else (Cartesia, ElevenLabs, human) is left alone.
+// Built FROM FEMALE_XAI so a bare eve_q/ara_q can never be selected by the daily pass yet hidden from --plan (job #608).
+const BAD_VOICE = `(ca.voice_id ~ '^(xai_|azure_)' or ca.voice_id ~ 'Neural$' or ca.voice_id in ('gfzdpspr5fdp','bedd6226','leo','sal','comp:leo') or ${FEMALE_XAI})`
 
 const argv = process.argv.slice(2)
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
@@ -199,4 +199,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { swapKey, undoneSet, pendingSwaps }
+module.exports = { swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI }

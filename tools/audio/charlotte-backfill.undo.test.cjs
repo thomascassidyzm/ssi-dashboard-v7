@@ -27,3 +27,13 @@ describe('charlotte-backfill undo ledger, re-swap after undo', () => {
     expect(undoneSet(ledger).has(swapKey(ledger[0]))).toBe(false)
   })
 })
+
+// job #608: --plan hid courses whose only pending female xAI clips were bare eve_q/ara_q
+describe('charlotte-backfill BAD_VOICE covers FEMALE_XAI', () => {
+  const { BAD_VOICE, FEMALE_XAI } = createRequire(import.meta.url)('./charlotte-backfill.cjs')
+  it('embeds FEMALE_XAI, so bare eve_q/ara_q are in the plan selector', () => {
+    expect(BAD_VOICE).toContain(FEMALE_XAI)
+    const re = new RegExp(FEMALE_XAI.match(/'(.*)'/)[1])
+    for (const id of ['eve_q', 'ara_q', 'xai_eve_q', 'eve', 'ara']) expect(re.test(id)).toBe(true)
+  })
+})
