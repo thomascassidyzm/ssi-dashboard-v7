@@ -111,8 +111,21 @@ async function setPointer(db, s, from, to, eventId) {
 }
 
 const swapKey = e => `${e.oldId}|${e.newId}`
-/** Swaps the ledger already shows undone: the keys of its kind:'undo' lines. */
-const undoneSet = lines => new Set(lines.filter(e => e.kind === 'undo').map(swapKey))
+/** Swaps still to undo, read in ledger order: each undo line cancels one EARLIER swap with the same key, so a swap re-made after its undo stays pending. */
+function pendingSwaps(lines) {
+  const open = new Map() // key -> swap entries not yet cancelled
+  for (const e of lines) {
+    if (e.kind === 'swap') open.set(swapKey(e), [...(open.get(swapKey(e)) || []), e])
+    else if (e.kind === 'undo') (open.get(swapKey(e)) || []).pop()
+  }
+  const pending = new Set([...open.values()].flat())
+  return lines.filter(e => pending.has(e))
+}
+/** Keys with no swap still pending: the ledger shows them fully undone. */
+const undoneSet = lines => {
+  const pendingKeys = new Set(pendingSwaps(lines).map(swapKey))
+  return new Set(lines.filter(e => e.kind === 'swap' && !pendingKeys.has(swapKey(e))).map(swapKey))
+}
 
 async function main() {
   const pg = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
@@ -133,9 +146,8 @@ async function main() {
 
   if (has('--undo')) {
     const all = fs.existsSync(ledger) ? fs.readFileSync(ledger, 'utf8').trim().split('\n').filter(Boolean).map(JSON.parse) : []
-    // nothing marks a swap line itself undone, so the done set is read from the kind:'undo' lines, keyed by swap identity
-    const done = undoneSet(all)
-    const lines = all.filter(e => e.kind === 'swap' && !done.has(swapKey(e))).reverse()
+    // nothing marks a swap line itself undone, so pending swaps are derived from the ledger order (each undo line cancels one earlier swap)
+    const lines = pendingSwaps(all).reverse()
     let n = 0; const limit = Number(opt('--limit', 1e9))
     const eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill --undo', operation: 'update', detail: { why: 'undo job #573 pointer swaps', ledger } })
     for (const e of lines) {
@@ -180,4 +192,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { swapKey, undoneSet }
+module.exports = { swapKey, undoneSet, pendingSwaps }
