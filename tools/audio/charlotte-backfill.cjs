@@ -36,6 +36,10 @@ const SLOT_COL = { known: 'known_audio_id', target1: 'target1_audio_id', target2
 // xAI and Azure voice ids, prefixed or bare. Anything else (Cartesia, ElevenLabs, human) is left alone.
 const BAD_VOICE = `(ca.voice_id ~ '^(xai_|azure_)' or ca.voice_id ~ 'Neural$' or ca.voice_id in ('gfzdpspr5fdp','bedd6226','eve','leo','ara','sal','comp:leo'))`
 
+// Female xAI presets (eve, ara; xai_/bare, incl. the eve_q variant). Tom's clones (gfzdpspr5fdp, bedd6226) and leo/sal/rex are male:
+// their mapping is Tom's separate decision, so the xai-female pass never touches them.
+const FEMALE_XAI = `(ca.voice_id ~ '^(xai_)?(eve|ara)(_q)?$')`
+
 const argv = process.argv.slice(2)
 const opt = (f, d) => { const i = argv.indexOf(f); return i >= 0 ? argv[i + 1] : d }
 const has = f => argv.includes(f)
@@ -49,14 +53,14 @@ async function slotsFor(pg, course, role) {
 }
 
 /** Old clips still linked, with their slots: [{oldId, text, role, chars, slots:[{tbl,key,col}], pos}] in course order. */
-async function workFor(pg, course, roles) {
+async function workFor(pg, course, roles, voiceSql = BAD_VOICE) {
   const out = []
   for (const role of roles) {
     const slots = await slotsFor(pg, course, role)
     const ids = [...new Set(slots.map(s => s.old_id))]
     if (!ids.length) continue
     const { rows } = await pg.query(`select ca.id::text, ca.text, ca.voice_id from course_audio ca
-       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language in ('eng','en') and ca.origin = 'tts' and ca.role = $3 and ${BAD_VOICE}`, [ids, course, role])
+       where ca.id = any($1::uuid[]) and ca.course_code = $2 and ca.language in ('eng','en') and ca.origin = 'tts' and ca.role = $3 and ${voiceSql}`, [ids, course, role])
     const bad = new Map(rows.map(r => [r.id, r]))
     const by = new Map()
     for (const s of slots) {
@@ -134,8 +138,10 @@ async function main() {
     const { rows } = await pg.query(`select course_code from courses order by 1`)
     console.log('course | old clips still linked | distinct chars to render')
     for (const { course_code } of rows) {
-      const w = await workFor(pg, course_code, ['known', 'presentation', 'target1', 'target2'])
-      if (w.length) console.log(`${course_code} | ${w.length} | ${w.reduce((n, x) => n + x.chars, 0)}`)
+      const all = ['known', 'presentation', 'target1', 'target2']
+      const w = await workFor(pg, course_code, all)
+      const f = await workFor(pg, course_code, all, FEMALE_XAI)
+      if (w.length) console.log(`${course_code} | ${w.length} | ${w.reduce((n, x) => n + x.chars, 0)} | female xAI ${f.length}`)
     }
     return pg.end()
   }
@@ -162,7 +168,8 @@ async function main() {
 
   const roles = opt('--roles', 'known,presentation').split(',')
   const budget = Number(opt('--budget', 0)); const dryRun = has('--dry-run')
-  const work = await workFor(pg, course, roles)
+  const xaiFemale = opt('--voices') === 'xai-female' // xAI-first pass (Tom 2026-10-04: clicks heard by ear in xAI English)
+  const work = await workFor(pg, course, roles, xaiFemale ? FEMALE_XAI : BAD_VOICE)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
   let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null

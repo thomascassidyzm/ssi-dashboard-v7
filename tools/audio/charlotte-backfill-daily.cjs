@@ -8,7 +8,7 @@
  * so this never takes the last MARGIN chars and never more than DAILY_MAX in one day. 100,000 is the AUTOMATIC
  * cap; the 300,000 Tom-approved run is NOT assumed — if Tom signs it (tools/tts-cap.cjs approve "#573" ...),
  * raise CAP/DAILY_MAX via env: CAP=300000 DAILY_MAX=250000.
- * Order (Tom 2026-10-03): ita_for_eng English first; then every other *_for_eng known side; then the English
+ * Order (Tom 2026-10-04): female xAI English first (see xaiFirst); then (Tom 2026-10-03): ita_for_eng English first; then every other *_for_eng known side; then the English
  * target side of eng_for_*. Target-side Azure in other languages is NOT automated here: casting is Tom's.
  * A spend-guard refusal ends the day's run quietly (the refusal is the answer; tomorrow's run resumes).
  */
@@ -29,14 +29,22 @@ const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
   let budget = Math.max(0, Math.min(DAILY_MAX, CAP - spent - MARGIN))
   console.log(`[${new Date().toISOString()}] spent today ${spent}; this run's budget ${budget}`)
   const codes = courses.map(c => c.course_code)
+  // xAI-voiced FEMALE English first (clicks heard by ear, Tom 2026-10-04): ita_for_eng, then every other course; male xAI
+  // (Tom's clones, leo/sal/rex) is not mapped here; it stays in the general pass below exactly as before.
+  const xaiRoles = c => (/^eng_for_/.test(c) ? 'target1,target2' : 'known,presentation')
+  const xaiFirst = [
+    ...(codes.includes('ita_for_eng') ? ['ita_for_eng'] : []),
+    ...codes.filter(c => /_for_eng$|^eng_for_/.test(c) && c !== 'ita_for_eng'),
+  ].map(c => [c, xaiRoles(c), ['--voices', 'xai-female']])
   const queue = [
+    ...xaiFirst,
     ...(codes.includes('ita_for_eng') ? [['ita_for_eng', 'known,presentation']] : []),
     ...codes.filter(c => /_for_eng$/.test(c) && c !== 'ita_for_eng').map(c => [c, 'known,presentation']),
     ...codes.filter(c => /^eng_for_/.test(c)).map(c => [c, 'target1,target2']),
   ]
-  for (const [course, roles] of queue) {
+  for (const [course, roles, extra = []] of queue) {
     if (budget < 200) break
-    const r = spawnSync('node', [TOOL, '--course', course, '--roles', roles, '--budget', String(budget)], { encoding: 'utf8' })
+    const r = spawnSync('node', [TOOL, '--course', course, '--roles', roles, '--budget', String(budget), ...extra], { encoding: 'utf8' })
     const out = (r.stdout || '') + (r.stderr || '')
     process.stdout.write(out.split('\n').filter(l => /^(done|REFUSED|FAIL|VERIFY-FAIL|SLOT-REFUSED|5 failures|Error)/.test(l) || /: \d+ old clips/.test(l)).join('\n') + '\n')
     const m = /(\d+) chars spent/.exec(out); budget -= m ? Number(m[1]) : 0
