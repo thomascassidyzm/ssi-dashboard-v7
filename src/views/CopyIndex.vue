@@ -12,6 +12,11 @@
     <p v-if="error" class="err">{{ error }}</p>
     <p v-else-if="loading" class="note">Loading…</p>
 
+    <router-link to="/guess-text" class="doc guess-link">
+      <span class="title">The /guess game: its text</span>
+      <span class="blurb">The reveal lines, the Read more notes and the place notes, each with a live version and a draft.</span>
+    </router-link>
+
     <ul v-else class="docs">
       <li v-for="d in docs" :key="d.id">
         <router-link :to="`/copy/${d.id}`" class="doc">
@@ -76,6 +81,7 @@ h1 { font-size: 18px; margin: 0 0 6px; font-weight: 600; }
   border: 1px solid rgba(128, 128, 128, 0.35); border-radius: 10px;
   color: inherit; text-decoration: none;
 }
+.guess-link { margin-top: 18px; }
 .title { font-size: 16px; font-weight: 600; }
 .blurb { font-size: 14px; opacity: 0.75; line-height: 1.5; }
 .meta { font-size: 13px; opacity: 0.6; }

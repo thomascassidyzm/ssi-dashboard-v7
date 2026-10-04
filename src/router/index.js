@@ -384,6 +384,13 @@ const routes = [
     component: () => import('../views/CopyEditor.vue'),
     meta: { title: 'Copy' }
   },
+  // The /guess game's text: reveal lines, Read more notes, place notes. Live vs draft per item.
+  {
+    path: '/guess-text',
+    name: 'GuessTextEditor',
+    component: () => import('../views/GuessTextEditor.vue'),
+    meta: { title: 'Guess game text' }
+  },
   // Permanent alias: this link is already in an editor's inbox. Never remove it.
   {
     path: '/htw-copy',
