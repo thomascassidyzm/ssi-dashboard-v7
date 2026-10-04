@@ -1,0 +1,13 @@
+[Unit]
+Description=Popty STAGING API (:3490) — proxies renders to STAGING phase8 (:3495), not prod phase8
+Wants=popty-staging-phase8.service
+After=popty-staging-phase8.service
+
+[Service]
+WorkingDirectory=/home/tomcassidy/wt-staging
+Environment=PRODUCTION_API_PORT=3490 AUDIT_ARCHIVE_CRON=off TAIL_REPAIR_MODE=flag PHASE8_URL=http://localhost:3495
+ExecStart=/usr/bin/bash -lc 'exec node services/production-api.cjs >> /home/tomcassidy/wt-staging/staging-api.log 2>&1'
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

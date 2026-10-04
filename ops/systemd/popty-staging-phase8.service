@@ -1,0 +1,11 @@
+[Unit]
+Description=Popty STAGING phase8 audio (:3495) — runs the deploy/staging tree, so staging renders get fixes prod phase8 (:3465) lacks
+
+[Service]
+WorkingDirectory=/home/tomcassidy/wt-staging
+Environment=PHASE8_PORT=3495 TAIL_REPAIR_MODE=flag
+ExecStart=/usr/bin/bash -lc 'exec node services/phases/phase8-audio-v13.cjs >> /home/tomcassidy/wt-staging/staging-phase8.log 2>&1'
+Restart=on-failure
+
+[Install]
+WantedBy=default.target

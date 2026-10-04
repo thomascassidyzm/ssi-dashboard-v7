@@ -5964,7 +5964,8 @@ async function proxyToPhase8(method, path, body = null) {
   return new Promise((resolve, reject) => {
     const options = {
       hostname: 'localhost',
-      port: 3465,
+      // PHASE8_URL decides which phase8 this API talks to (staging API → :3495); default prod :3465.
+      port: Number(new URL(process.env.PHASE8_URL || 'http://localhost:3465').port) || 3465,
       path,
       method,
       headers: {
