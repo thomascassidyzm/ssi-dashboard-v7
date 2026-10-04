@@ -117,7 +117,7 @@ async function renderClip(input, deps) {
       if (again) return bindPresentation(req, { ok: true, source: 'library', charsSpent: 0, ...again, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
     }
     // 4. write back
-    const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries })
+    const stored = await deps.store({ ...ident, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
     return bindPresentation(req, { ok: true, source: 'rendered', charsSpent: out.charsSpent, ...stored, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
   })
 }
@@ -144,7 +144,7 @@ async function rerecord(req, deps) {
   if (req.dryRun) return { ok: true, source: out.existingClip ? 'library' : 'would-render', dryRun: true, wouldSpendChars: out.wouldSpendChars || 0, charsSpent: 0, ...echo }
   const swapped = out.existingClip
     ? await deps.replace({ ...ident, replaceAudioId: row.id, s3Key: out.existingClip.s3_key })
-    : await deps.replace({ ...ident, replaceAudioId: row.id, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries })
+    : await deps.replace({ ...ident, replaceAudioId: row.id, audioBuffer: out.audioBuffer, wordBoundaries: out.wordBoundaries, wordTimings: out.wordTimings || null })
   return { ok: true, source: out.existingClip ? 'library' : 'rendered', charsSpent: out.charsSpent, ...swapped, ...echo }
 }
 
