@@ -5389,7 +5389,7 @@ app.post('/render', async (req, res) => {
         const foreignCast = foreign && !courseVoice ? castVoiceForLanguage(await voiceConfigService.loadCast(), toIso3(language), settings.gender === 'm' ? 'm' : 'f') : null
         const held = courseVoice ? courseVoice.voiceId
           : foreignCast ? foreignCast.voiceId.replace(POD_PROVIDER_PREFIX, '')
-          : named ? named[2] : (voiceId || settings.voiceId || vc[role])
+          : named ? named[2] : String(voiceId || settings.voiceId || vc[role] || '').replace(/^(azure|elevenlabs|xai|cartesia)_/, '') // a cast-resolved course voice is stored provider-prefixed; the provider wants the bare id (job #651)
         if (!held) throw new RenderRequestError(`No voice configured for role ${role} in ${courseCode} — name voiceId`, 400, 'NO_VOICE')
         const provider = decideProvider({ ...settings, voiceId: held, ...(foreignCast ? { provider: foreignCast.provider } : {}), ...(voiceId ? { provider: named ? named[1] : undefined } : {}) }, { courseCode, role, language: lang, explicitProvider: courseVoice ? courseVoice.provider : (foreignCast ? undefined : providerForVoice(held, settings)) })
         const speed = courseVoiceConfig.renderSpeedFor(vc, role)
