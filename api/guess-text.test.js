@@ -47,6 +47,14 @@ describe('public read path', () => {
     const none = await get(published, { known: 'fra' })
     expect(none.body.items.tell.gle).toBe('LIVE gle tell')
   })
+  it.each([['cym_s', 'cym'], ['cym_n', 'cym'], ['ga', 'gle']])('accepts the player\'s locale code %s as %s, falling back to English per item', async (code, lang) => {
+    state.db.tables.guess_text_items.push(row(50, lang, 'tell', 'zzz', 'OWN ' + lang, 'live'))
+    const res = await get(published, { known: code })
+    expect(res.statusCode).toBe(200)
+    expect(res.body.known).toBe(code)
+    expect(res.body.items.tell.zzz).toBe('OWN ' + lang)
+    expect(res.body.items.tell.cym).toBe('LIVE cym tell')
+  })
   it('refuses a malformed known language', async () => {
     expect((await get(published, { known: 'e;n' })).statusCode).toBe(400)
   })

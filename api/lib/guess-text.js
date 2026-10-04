@@ -20,6 +20,18 @@ const MAX_CHARS = 600;
 const ITEM_ID_RE = /^[a-z0-9_]+(\|[a-z0-9_]+)?$/;
 const KNOWN_RE = /^[a-z]{3}$/;
 
+// The player names its known language by interface-locale code (ga, cym_n, cym_s); the table is keyed by
+// the three-letter course language. Map the aliases; any other well-formed code is looked up as itself
+// and, having no rows, gets English item by item.
+const KNOWN_ALIAS = { ga: 'gle', cy: 'cym', cym_n: 'cym', cym_s: 'cym' };
+const PLAYER_KNOWN_RE = /^[a-z]{2,3}(_[a-z]{1,3})?$/;
+
+/** The table's known_lang for a player-sent code, or null when the code is malformed. */
+export function normaliseKnown(known) {
+  if (typeof known !== 'string' || !PLAYER_KNOWN_RE.test(known)) return null;
+  return KNOWN_ALIAS[known] || (KNOWN_RE.test(known) ? known : null) || known.slice(0, 3);
+}
+
 export function validKnown(known) { return typeof known === 'string' && KNOWN_RE.test(known); }
 
 /** An error string, or null when the item may be saved. */

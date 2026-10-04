@@ -11,7 +11,7 @@
  * is never a blank game.
  */
 import { getSupabase } from './lib/supabase.js';
-import { DEFAULT_KNOWN, validKnown, withFallback } from './lib/guess-text.js';
+import { DEFAULT_KNOWN, normaliseKnown, withFallback } from './lib/guess-text.js';
 
 const TABLE = 'guess_text_items';
 
@@ -22,8 +22,9 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
   if (req.method !== 'GET') { res.setHeader('Cache-Control', 'no-store'); return res.status(405).json({ error: 'Method not allowed' }); }
 
-  const known = req.query?.known || DEFAULT_KNOWN;
-  if (!validKnown(known)) { res.setHeader('Cache-Control', 'no-store'); return res.status(400).json({ error: 'known must be a three-letter language code' }); }
+  const asked = req.query?.known || DEFAULT_KNOWN;
+  const known = normaliseKnown(asked);
+  if (!known) { res.setHeader('Cache-Control', 'no-store'); return res.status(400).json({ error: 'known must be a language code such as eng, ga or cym_s' }); }
 
   const supabase = getSupabase();
   if (!supabase) { res.setHeader('Cache-Control', 'no-store'); return res.status(500).json({ error: 'Database not configured' }); }
@@ -38,5 +39,5 @@ export default async function handler(req, res) {
   }
 
   res.setHeader('Cache-Control', 'public, s-maxage=60, stale-while-revalidate=300');
-  return res.json({ known, ...withFallback(own.data || [], eng.data || [], known) });
+  return res.json({ known: asked, ...withFallback(own.data || [], eng.data || [], known) });
 }
