@@ -6,7 +6,7 @@
  *   POST /api/guess-text   { action:'save', known, kind, id, content }  → the new text is LIVE at once
  *
  * SAVE IS LIVE (Tom 2026-10-04: no draft/approve step; /guess is not public yet, so no review gate).
- * A save writes a new state='live' row stamped with who and when (edited_by, approved_by/at), and the
+ * A save (the guess_text_save SQL function, atomic) writes a new state='live' row stamped with who and when (edited_by, approved_by/at), and the
  * row it replaces is kept as 'superseded', so nothing is lost and every change has a name.
  * The friendlier (humanised) wording is the canonical live text; the pre-humanised wording is history.
  */
@@ -58,24 +58,15 @@ export default async function handler(req, res) {
     if (bad) return res.status(400).json({ error: bad });
     // An item is only editable once it exists (seeded): the editor cannot conjure new ids,
     // so the game's stable item ids stay the only keys.
-    const { data: existing, error: e0 } = await supabase.from(TABLE).select('id, state').eq('known_lang', known).eq('kind', kind).eq('item_id', id);
+    const { data: existing, error: e0 } = await supabase.from(TABLE).select('id').eq('known_lang', known).eq('kind', kind).eq('item_id', id);
     if (e0) return res.status(500).json({ error: e0.message });
     if (known === DEFAULT_KNOWN && !(existing || []).length) return res.status(404).json({ error: `No such item: ${kind} ${id}` });
-    // Retire the old live row first, then insert the new live one; if the insert fails, put the old one back.
-    const olds = (existing || []).filter(r => r.state === 'live')
-    for (const r of olds) {
-      const { error } = await supabase.from(TABLE).update({ state: 'superseded' }).eq('id', r.id);
-      if (error) return res.status(500).json({ error: error.message });
-    }
-    const now = new Date().toISOString();
-    const { data, error } = await supabase.from(TABLE)
-      .insert({ known_lang: known, kind, item_id: id, content, state: 'live', source: 'editor', edited_by: who, approved_by: who, approved_at: now })
-      .select('id, created_at').single();
-    if (error) {
-      for (const r of olds) await supabase.from(TABLE).update({ state: 'live' }).eq('id', r.id);
-      return res.status(500).json({ error: error.message });
-    }
-    return res.json({ ok: true, id: Number(data.id), savedAt: data.created_at });
+    // ONE transaction in the database (supersede the old live row + insert the new one), so a crash
+    // between the two can never leave the item with no live text. See tools/guess-text/setup-save-fn.cjs.
+    const { data, error } = await supabase.rpc('guess_text_save', { p_known: known, p_kind: kind, p_item: id, p_content: content, p_who: who })
+    if (error) return res.status(500).json({ error: error.message });
+    const saved = Array.isArray(data) ? data[0] : data
+    return res.json({ ok: true, id: Number(saved.id), savedAt: saved.created_at });
   }
 
   return res.status(400).json({ error: 'action must be save' });
