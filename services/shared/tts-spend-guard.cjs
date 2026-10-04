@@ -795,7 +795,14 @@ function createSpendGuard(opts = {}) {
       if (combinedCap) combinedCap += extraAll
     }
 
-    if (combinedCap) {
+    // Resolved BEFORE the combined cap: a live commissioned job skips that soft cap (Tom's ruling
+    // r-2026-10-04-the-tts-spend-guard-exists); the 300k ceiling and the repeat stop still apply in reserve().
+    let commissionedJob = false
+    if (!raisedJob) {
+      try { commissionedJob = await isCommissioned(jobText) } catch { commissionedJob = false }
+    }
+
+    if (combinedCap && !commissionedJob) {
       const cap = combinedCap
       let combined = 0
       for (const p of Object.keys(cfg.providers)) combined += Number((await ledgerTotals(p, providerLimits(cfg, p))).today) || 0
@@ -834,10 +841,8 @@ function createSpendGuard(opts = {}) {
     }
 
     // A live commissioned job (see COMMISSIONED_REPEAT_MAX): soft caps and the low repeat limit lift; ceiling and loop stop stay.
-    let commissioned = false
     if (!exempt && !raisedJob) {
-      try { commissioned = await isCommissioned(jobText) } catch { commissioned = false }
-      if (commissioned) {
+      if (commissionedJob) {
         reserveLimits = { ...b, maxPerKey: COMMISSIONED_REPEAT_MAX, commissioned: true }
         dailyCap = Number.MAX_SAFE_INTEGER
       }

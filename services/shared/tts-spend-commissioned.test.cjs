@@ -50,6 +50,31 @@ describe('commissioned jobs', () => {
   })
 })
 
+describe('the held combined cap (hold.combinedDailyCapChars) is a soft cap too', () => {
+  it('a live commissioned job under the 300k ceiling passes it; an uncommissioned caller is refused', async () => {
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'commissioned-hold-'))
+    const budgetPath = path.join(dir, 'b.json')
+    fs.writeFileSync(budgetPath, JSON.stringify({
+      hold: { by: 'Tom', since: '2026-10-03', combinedDailyCapChars: 260_000, message: 'held' },
+      providers: { cartesia: { dailyCapChars: 1e9, alertDailyChars: 1e9 } },
+    }))
+    const store = memorySpendStore({ name: dir, now: () => t0 })
+    store.totalCapChars = Infinity
+    const g = createSpendGuard({
+      ledgerPath: path.join(dir, 'l.jsonl'), budgetPath, now: () => t0, store, notify() {}, logger: { warn() {}, error() {} },
+      isCommissioned: async (j) => /#656/.test(String(j || '')),
+    })
+    const call = async (text, job) => {
+      const voiceId = 'cartesia_82db1f84'
+      const { ticket } = await clipLibrary.lookupForRender({ text, language: 'hin', voiceId, voiceBound: true }, clipLibrary.memoryClipLibrary([]))
+      return g.beforeProviderCall({ provider: 'cartesia', voiceId, text, ticket, courseCode: 'x', job })
+    }
+    await call('a'.repeat(259_900), 'other')
+    await expect(call('b'.repeat(200), 'other2')).rejects.toMatchObject({ code: 'DAILY_CAP' })
+    await expect(call('c'.repeat(200), '#656·I')).resolves.toBeTruthy()
+  })
+})
+
 describe('surfaceCommissionChecker', () => {
   const mk = (jobs, ok = true) => surfaceCommissionChecker({ now: () => 1, fetchImpl: async () => ({ ok, json: async () => ({ jobs }) }) })
   it('only a RUNNING surface job counts; a string alone or a finished job does not', async () => {
