@@ -234,23 +234,28 @@ async function main() {
   const work = await workFor(pg, course, roles, pass.sql, maxSeed, pass.langs)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
-  let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null, genderSkipped = 0, slotRefused = 0
-  for (const w of work) {
-    // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
-    if (pass.gender && voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
-    if (spent + w.chars > budget) { if (spent === 0 && budget === 0) break; continue }
+  let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null, eventPromise = null, genderSkipped = 0, slotRefused = 0
+  // CONCURRENCY (job #797): CONCURRENCY parallel renders through the same route (library-first, guard, verify, write-ahead ledger unchanged).
+  // Budget is RESERVED (w.chars) before a render starts so parallel workers can never overshoot it; `one` releases the reservation when
+  // nothing was spent, or trues it up to the real charge. A rate-limit answer (429 / "rate"/"concurren") halves the live concurrency and
+  // requeues the clip after a back-off; the route itself never retries.
+  let live = Math.max(1, Number(process.env.CONCURRENCY || 1)), active = 0, stop = false, idx = 0
+  const requeue = []
+  const isRate = r => r.status === 429 || /rate.?limit|too many|concurren/i.test(`${r.code || ''} ${r.error || ''}`)
+  const one = async w => {
     const r = await render(course, w, dryRun, target, language)
-    if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); break }
-    if (!r.ok) { console.log('FAIL', w.oldId, r.code, r.error); if (++failures >= 5) { console.log('5 failures — stopping'); break } continue }
-    if (dryRun) { spent += r.wouldSpendChars || 0; done++; continue }
-    failures = 0; spent += r.charsSpent || 0
+    if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { spent -= w.chars; console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); stop = true; return }
+    if (isRate(r)) { spent -= w.chars; live = Math.max(1, Math.floor(live / 2)); console.log(`RATE-LIMITED ${r.status} ${r.code || ''}: concurrency now ${live}; requeued`); requeue.push(w); await new Promise(res => setTimeout(res, 5000)); return }
+    if (!r.ok) { spent -= w.chars; console.log('FAIL', w.oldId, r.code, r.error); if (++failures >= 5) { console.log('5 failures — stopping'); stop = true } return }
+    if (dryRun) { spent += (r.wouldSpendChars || 0) - w.chars; done++; return }
+    failures = 0; spent += (r.charsSpent || 0) - w.chars // true-up of the reservation
     const bad = await verifyNew(pg, r.audioId, target)
-    if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); continue }
+    if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); return }
     // write-ahead: the ledger line exists before the first pointer moves
     const entry = { kind: 'swap', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, pass: passName, source: r.source, charsSpent: r.charsSpent || 0, slots: w.slots, text: w.text, at: new Date().toISOString() }
     fs.appendFileSync(ledger, JSON.stringify(entry) + '\n')
-    if (!eventId) eventId = await recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill', operation: 'update',
-      detail: { why: 'Tom 2026-10-03 English->Charlotte backfill, job #573; old ids in ledger', ledger } })
+    if (!eventId) { eventPromise = eventPromise || recordContentEdit(db, { identity, courseCode: course, surface: 'tools:audio/charlotte-backfill', operation: 'update',
+      detail: { why: 'Tom 2026-10-03 English->Charlotte backfill, job #573; old ids in ledger', ledger } }); eventId = await eventPromise }
     // a slot the DB refuses (e.g. a trigger) is logged and skipped; the old pointer simply stays
     for (const s of w.slots) {
       try { if (await setPointer(db, s, w.oldId, r.audioId, eventId)) slotsMoved++ }
@@ -258,6 +263,27 @@ async function main() {
     }
     done++; if (r.source === 'library') free++
   }
+  const next = () => {
+    for (;;) {
+      const w = requeue.length ? requeue.shift() : work[idx++]
+      if (!w) return null
+      // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
+      if (pass.gender && voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
+      if (spent + w.chars > budget) { if (spent === 0 && budget === 0) return null; continue }
+      return w
+    }
+  }
+  await new Promise(resolve => {
+    const pump = () => {
+      while (!stop && active < live) {
+        const w = next(); if (!w) break
+        spent += w.chars; active++ // reserve
+        one(w).catch(e => { spent -= w.chars; console.log('FAIL', w.oldId, e.message); if (++failures >= 5) stop = true }).finally(() => { active--; pump() })
+      }
+      if (active === 0 && (stop || (!requeue.length && idx >= work.length))) resolve()
+    }
+    pump()
+  })
   // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded
   console.log(`OUTSTANDING ${Math.max(0, work.length - done - genderSkipped) + slotRefused}`)
   console.log(`done ${done} clips (${free} from library), ${slotsMoved} slots repointed, ${spent} chars spent; ${work.length - done} remain. ledger ${ledger}`)
