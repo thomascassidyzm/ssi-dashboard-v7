@@ -48,6 +48,13 @@
   },
   "jobRaises": [
     {
+      "job": "#573",
+      "extraDailyChars": 800000,
+      "by": "Tom (explicit go in the job #797 brief, 2026-10-04 23:58Z: daily TTS cap raised to 1M for 3 days, 'caps are ours')",
+      "why": "Finish the ita_for_eng Cartesia re-voice (job #759 driver, charlotte-backfill calls render with job #573): ~1.07M chars outstanding. Job-scoped: draws on its own allowance; every other job keeps the 260k cap.",
+      "until": "2026-10-08T00:00:00Z"
+    },
+    {
       "job": "#578",
       "extraDailyChars": 450000,
       "by": "Tom (explicit go in chat, 2026-09-28 18:49Z, via Watson)",
