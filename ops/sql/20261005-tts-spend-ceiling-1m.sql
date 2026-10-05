@@ -130,6 +130,3 @@ end $function$;
 
 commit;
 notify pgrst, 'reload schema';
-
-commit;
-notify pgrst, 'reload schema';
