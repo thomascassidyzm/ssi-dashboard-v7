@@ -178,6 +178,10 @@ const undoneSet = lines => {
   return new Set(lines.filter(e => e.kind === 'swap' && !pendingKeys.has(swapKey(e))).map(swapKey))
 }
 
+const RATE_RETRY_CAP = 5
+// counts one more rate-limit answer on this clip; true while it may still be requeued
+function rateRetry(w) { w.rl = (w.rl || 0) + 1; return w.rl < RATE_RETRY_CAP }
+
 async function main() {
   const pg = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   await pg.connect()
@@ -245,7 +249,12 @@ async function main() {
   const one = async w => {
     const r = await render(course, w, dryRun, target, language)
     if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { spent -= w.chars; console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); stop = true; return }
-    if (isRate(r)) { spent -= w.chars; live = Math.max(1, Math.floor(live / 2)); console.log(`RATE-LIMITED ${r.status} ${r.code || ''}: concurrency now ${live}; requeued`); requeue.push(w); await new Promise(res => setTimeout(res, 5000)); return }
+    if (isRate(r)) {
+      spent -= w.chars; live = Math.max(1, Math.floor(live / 2))
+      if (rateRetry(w)) { console.log(`RATE-LIMITED ${r.status} ${r.code || ''}: concurrency now ${live}; requeued (${w.rl}/${RATE_RETRY_CAP})`); requeue.push(w); await new Promise(res => setTimeout(res, 5000)); return }
+      // a clip that keeps answering 429 must not loop forever (the Italian driver spawns this with no timeout): after the cap it is an ordinary FAIL
+      console.log('FAIL', w.oldId, r.code, r.error, `(rate-limited ${w.rl}x, dropped)`); if (++failures >= 5) { console.log('5 failures — stopping'); stop = true } return
+    }
     if (!r.ok) { spent -= w.chars; console.log('FAIL', w.oldId, r.code, r.error); if (++failures >= 5) { console.log('5 failures — stopping'); stop = true } return }
     if (dryRun) { spent += (r.wouldSpendChars || 0) - w.chars; done++; return }
     failures = 0; spent += (r.charsSpent || 0) - w.chars // true-up of the reservation
@@ -291,4 +300,4 @@ async function main() {
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, CHARLOTTE }
+module.exports = { RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, CHARLOTTE }
