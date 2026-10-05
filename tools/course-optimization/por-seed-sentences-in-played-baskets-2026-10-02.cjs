@@ -121,5 +121,5 @@ async function main() {
   fs.mkdirSync(path.dirname(f), { recursive: true }); fs.writeFileSync(f, JSON.stringify(log, null, 2)); console.log(`Wrote ${f}`);
   await pg.end();
 }
-module.exports = { reusableSeedAudio, planPor, CAST, HOLD };
+module.exports = { reusableSeedAudio, planPor, load, CAST, HOLD };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
