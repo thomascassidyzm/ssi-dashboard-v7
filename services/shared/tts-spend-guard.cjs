@@ -121,12 +121,12 @@ function jobMatches(jobText, token) {
  * commissioned"). Job #656 was refused by the 3-sends repeat limit. A render whose job text names
  * a "#NNN" that is a LIVE surface job skips the repeat limit's low number and the automatic
  * per-provider / daily soft caps (JS dailyCap, and the DB's 260k automatic total cap via
- * limits.commissioned). It still meets the hard daily ceiling (300,000 in tts_spend_reserve) and
+ * limits.commissioned). It still meets the hard daily ceiling (1,000,000 in tts_spend_reserve) and
  * a repeat ceiling of its own — 10 identical sends in 24h is a loop, not a commission.
  * The checker verifies ONLY that the #NNN names a live surface job (GET /api/jobs rows carry
  * job = the #NNN), never trusting the string alone; it does not verify the job commissioned
  * this particular render. That is the accepted trade-off (Watson): the 10-repeat limit and the
- * 300k ceiling remain the runaway stops. An unreachable surface means unattributed limits apply.
+ * 1M ceiling remain the runaway stops. An unreachable surface means unattributed limits apply.
  */
 const COMMISSIONED_REPEAT_MAX = 10
 const COMMISSIONED_CACHE_MS = 15_000
@@ -227,10 +227,10 @@ const TOTAL_DAILY_CAP_CHARS = 260_000 // Tom 2026-10-03 (job #574): 8M/month ÷ 
  * ('#913') is Tom's approval for that one run: its calls spend from their own
  * allowance, never above this ceiling, and the automatic 100k is counted without
  * them. Nothing — approved or not — takes a UTC day past the ceiling. Written only
- * by tools/tts-cap.cjs approve. Job #596: the JS ceiling is 300,000 to match the stricter DB function
- * (ops/sql/20261003-tts-spend-total-cap-260k.sql v_ceiling); the DB ceiling was not raised.
+ * by tools/tts-cap.cjs approve. Job #859 (Tom 2026-10-05): ceiling raised to 1,000,000, JS and DB together; was 300,000 (job #596)
+ * (ops/sql/20261005-tts-spend-ceiling-1m.sql v_ceiling).
  */
-const TOTAL_DAILY_CEILING_CHARS = 300_000
+const TOTAL_DAILY_CEILING_CHARS = 1_000_000
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -796,7 +796,7 @@ function createSpendGuard(opts = {}) {
     }
 
     // Resolved BEFORE the combined cap: a live commissioned job skips that soft cap (Tom's ruling
-    // r-2026-10-04-the-tts-spend-guard-exists); the 300k ceiling and the repeat stop still apply in reserve().
+    // r-2026-10-04-the-tts-spend-guard-exists); the 1M ceiling and the repeat stop still apply in reserve().
     let commissionedJob = false
     if (!raisedJob) {
       try { commissionedJob = await isCommissioned(jobText) } catch { commissionedJob = false }

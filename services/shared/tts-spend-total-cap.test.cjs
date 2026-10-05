@@ -77,7 +77,7 @@ describe('the 260,000-char daily total cap', () => {
   })
 })
 
-describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 260k, an approved run up to the ceiling, 300k since job #596)', () => {
+describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 260k, an approved run up to the ceiling, 1M since job #859)', () => {
   const until = t0 + 5 * 86400e3
   const approve = (store, job, capChars = 1000000, by = 'Tom (in chat)') => store.totalCapRaises.push({ capChars, by, why: 'Irish gaps render', until, at: t0, job })
   it('an approved job runs past 260k on its own allowance; everyone else still gets their automatic 260k', async () => {
@@ -88,10 +88,10 @@ describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 260k, a
     await expect(call('azure', word(2000, 'c'), { job: 'someone else' })).rejects.toThrow(/daily audio cap reached; only Tom can approve more/)
     await call('cartesia', word(5000, 'd'), { job: '#913·A' })
   })
-  it('nothing passes the 300k ceiling, approved or not, and an approval cannot name more than the ceiling', async () => {
+  it('nothing passes the 1M ceiling, approved or not, and an approval cannot name more than the ceiling', async () => {
     const { call, store } = setup()
     approve(store, '#913', 9000000)
-    await call('cartesia', word(290000, 'a'), { job: '#913' })
+    await call('cartesia', word(990000, 'a'), { job: '#913' })
     await expect(call('cartesia', word(20000, 'b'), { job: '#913' })).rejects.toThrow(/hard daily ceiling/)
     await expect(call('azure', word(20000, 'c'), { job: 'other' })).rejects.toThrow(/hard daily ceiling/)
   })
@@ -106,14 +106,14 @@ describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 260k, a
   })
 })
 
-// job #596: the JS ceiling matches the stricter DB function (ops/sql/20261003-tts-spend-total-cap-260k.sql v_ceiling 300000)
+// job #859: the JS ceiling matches the DB function (ops/sql/20261005-tts-spend-ceiling-1m.sql v_ceiling 1000000)
 describe('hard ceiling matches the DB', () => {
-  it('is 300000, the DB v_ceiling, never above it', async () => {
+  it('is 1000000, the DB v_ceiling, never above it', async () => {
     const { TOTAL_DAILY_CEILING_CHARS } = await import('./tts-spend-guard.cjs')
     const fs = await import('node:fs')
-    const sql = fs.readFileSync(new URL('../../ops/sql/20261003-tts-spend-total-cap-260k.sql', import.meta.url), 'utf8')
+    const sql = fs.readFileSync(new URL('../../ops/sql/20261005-tts-spend-ceiling-1m.sql', import.meta.url), 'utf8')
     const db = Number(/v_ceiling constant bigint := (\d+)/.exec(sql)[1])
-    expect(db).toBe(300000)
+    expect(db).toBe(1000000)
     expect(TOTAL_DAILY_CEILING_CHARS).toBeLessThanOrEqual(db)
   })
 })
