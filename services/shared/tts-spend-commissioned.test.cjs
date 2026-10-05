@@ -1,7 +1,7 @@
 /**
  * Commissioned jobs pass; only runaways stop (job #661, Tom 2026-10-04).
  * A render whose job text names a LIVE surface job skips the 3-sends repeat limit and the
- * automatic soft caps; it still meets a 10-send loop stop and the 300,000 hard ceiling.
+ * automatic soft caps; it still meets a 10-send loop stop and the 1,000,000 hard ceiling.
  * Run: npx vitest run services/shared/tts-spend-commissioned.test.cjs
  */
 import { describe, it, expect } from 'vitest'
@@ -40,18 +40,18 @@ describe('commissioned jobs', () => {
     for (let i = 0; i < 3; i++) await call('words b', '#999')
     await expect(call('words b', '#999')).rejects.toMatchObject({ code: 'REPEAT' })
   })
-  it('skips the automatic 260k total cap but not the 300k ceiling', async () => {
+  it('skips the automatic 260k total cap but not the 1M ceiling', async () => {
     const { call, store } = setup()
     store.totalCapChars = 260_000
     await call('a'.repeat(250_000), 'other')
     await expect(call('b'.repeat(20_000), 'other2')).rejects.toMatchObject({ code: 'DAILY_TOTAL_CAP' })
     await call('c'.repeat(20_000), '#656')                      // 270k: past the soft cap, commissioned
-    await expect(call('d'.repeat(40_000), '#656')).rejects.toMatchObject({ code: 'DAILY_TOTAL_CAP' })   // would pass 300k
+    await expect(call('d'.repeat(740_000), '#656')).rejects.toMatchObject({ code: 'DAILY_TOTAL_CAP' })   // would pass 1M
   })
 })
 
 describe('the held combined cap (hold.combinedDailyCapChars) is a soft cap too', () => {
-  it('a live commissioned job under the 300k ceiling passes it; an uncommissioned caller is refused', async () => {
+  it('a live commissioned job under the 1M ceiling passes it; an uncommissioned caller is refused', async () => {
     const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'commissioned-hold-'))
     const budgetPath = path.join(dir, 'b.json')
     fs.writeFileSync(budgetPath, JSON.stringify({
