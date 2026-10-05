@@ -498,9 +498,12 @@
         </ol>
       </div>
 
-      <!-- Hear the STORED clip of the line just read: the served bytes, never
-           the local blob. If it will not play, that failure is what shows —
-           a green tick over an unplayable clip is the whole bug. -->
+      <!-- Hear the line just read, at once. While the upload is in flight the
+           button plays the in-browser take and WEARS THE LABEL "RAW LOCAL", so
+           background noise is caught before moving on with no wait for the
+           server. The moment the clip is stored it switches to the stored bytes
+           (tag STORED). A failed upload says NOT SAVED — a green tick over an
+           unplayable clip is the whole bug, so local never passes for stored. -->
       <div v-if="lastLine" class="hear-bar">
         <span class="hear-label">You just read
           <span class="hear-text">{{ plainText(lastLine.text) }}</span>
@@ -510,7 +513,7 @@
             :stored-url="storedUrlFor(lastLine.id)"
             :pending="isPending(lastLine.id)"
             :failed="hasFailed(lastLine.id)"
-            :allow-local="false"
+            :local-url="localUrlFor(lastLine.id)"
             :is-playing="playingId === lastLine.id"
             @toggle="togglePlay(lastLine.id)"
           />
@@ -603,7 +606,7 @@
 
       <div v-if="sessionLines.length" class="listen-back">
         <h3>Listen back</h3>
-        <p class="listen-note">These play the clip stored on the server, not your local recording.
+        <p class="listen-note">A take plays straight from this device while it uploads, tagged RAW LOCAL, then from the server once saved.
           Tap <strong>Raw vs processed</strong> on any of them to hear the untouched original first
           and the mastered version second.</p>
         <ul>
@@ -615,7 +618,7 @@
                   :stored-url="storedUrlFor(l.id)"
                   :pending="isPending(l.id)"
                   :failed="hasFailed(l.id)"
-                  :allow-local="false"
+                  :local-url="localUrlFor(l.id)"
                   :is-playing="playingId === l.id"
                   @toggle="togglePlay(l.id)"
                 />
@@ -1555,6 +1558,27 @@ function storedUrlFor(lineId) {
   if (line?.rerecordWanted) return null
   return line?.clipUrl ? recordistClipUrl(props.voiceId, lineId) : null  // a take from a previous session
 }
+// THE TAKE JUST MADE, PLAYABLE AT ONCE. The in-browser blob of this session's
+// take, by object URL, offered only while the stored clip is not yet there and
+// the upload has not failed. Never offered once stored (the stored bytes are the
+// truth) and never for a failed take (the button must say NOT SAVED).
+const localTakeUrls = new Map()
+const localTakeVersion = ref(0)
+function localUrlFor(lineId) {
+  localTakeVersion.value // reactive dependency: a new take re-evaluates this
+  if (queue.failed.has(lineId) || queue.saved.has(lineId)) return null
+  return localTakeUrls.get(lineId) || null
+}
+function rememberLocalTake(lineId, blob) {
+  const old = localTakeUrls.get(lineId)
+  if (old) URL.revokeObjectURL(old)
+  try { localTakeUrls.set(lineId, URL.createObjectURL(blob)) } catch { localTakeUrls.delete(lineId) }
+  localTakeVersion.value++
+}
+function forgetLocalTakes() {
+  for (const u of localTakeUrls.values()) URL.revokeObjectURL(u)
+  localTakeUrls.clear()
+}
 function isPending(lineId) {
   // `isUnsent` is the durable answer — it covers takes carried over from a
   // previous session, which sessionIds knows nothing about.
@@ -1716,7 +1740,7 @@ function releaseMic() {
 function togglePlay(lineId) {
   playbackError.value = null
   if (playingId.value === lineId) { stopPlayback(); return }
-  const url = storedUrlFor(lineId)
+  const url = storedUrlFor(lineId) || localUrlFor(lineId)
   if (!url) return
   stopPlayback()
   // Hold the mic BEFORE a byte plays. Doing it after would leave the first
@@ -1852,6 +1876,7 @@ function commit(i, blob, hadSpeech) {
   // was still double-counting a re-read.
   const firstTakeOfThisLine = !sessionIds.value.includes(line.id)
   queue.queueTake({ voiceId: props.voiceId, lineId: line.id, text: line.text, blob, micLabel: micLabel() })
+  rememberLocalTake(line.id, blob)
   doneIds.value.add(line.id)
   doneIds.value = new Set(doneIds.value)
   if (firstTakeOfThisLine) sessionIds.value = [...sessionIds.value, line.id]
@@ -2379,6 +2404,7 @@ onBeforeUnmount(() => {
   stopPlayback()
   if (recorder.isRecording.value) recorder.stop()
   queue.teardown()
+  forgetLocalTakes()
 })
 
 watch(() => props.voiceId, load, { immediate: true })
