@@ -25,6 +25,11 @@ const TIERS = [100, 200, 300, 400, 500, null] // null = unscoped (the whole rest
 const PASSES = [['ita-target1', 'target1'], ['ita-target2', 'target2'], ['general', 'known,presentation'], ['male', 'known,presentation']]
 const TOOL = path.join(__dirname, 'charlotte-backfill.cjs')
 let stuck = 0
+/** Pass output -> { outstanding, skippedBudget }. Budget-skipped clips are owed but merely unaffordable today: not a failure (job #834). */
+function parsePass(out) {
+  const o = /^OUTSTANDING (\d+)/m.exec(out), k = /^SKIPPED-BUDGET (\d+)/m.exec(out)
+  return o ? { outstanding: Number(o[1]), skippedBudget: k ? Number(k[1]) : 0 } : null
+}
 const log = (...a) => console.log(`[${new Date().toISOString()}]`, ...a)
 
 async function spentToday() {
@@ -36,14 +41,14 @@ async function spentToday() {
 const sleep = ms => new Promise(r => setTimeout(r, ms))
 const msToNextUtcDay = () => { const n = new Date(); return Date.UTC(n.getUTCFullYear(), n.getUTCMonth(), n.getUTCDate() + 1, 0, 3) - n.getTime() }
 
-;(async () => {
+if (require.main === module) (async () => {
   for (;;) {
     let outstanding = 0, stopped = false
     const budget0 = Math.max(0, CAP - (await spentToday()) - MARGIN)
     let budget = budget0
     log(`round start: budget ${budget0} (cap ${CAP}, margin ${MARGIN})`)
     for (const tier of TIERS) {
-      let tierOutstanding = 0
+      let tierOutstanding = 0, tierSkipped = 0
       for (const [voices, roles] of PASSES) {
         if (budget < 200) { stopped = true; break }
         const args = [TOOL, '--course', COURSE, '--voices', voices, '--roles', roles, '--budget', String(budget), ...(tier ? ['--seeds', `1-${tier}`] : [])]
@@ -51,11 +56,12 @@ const msToNextUtcDay = () => { const n = new Date(); return Date.UTC(n.getUTCFul
         const out = (r.stdout || '') + (r.stderr || '')
         console.log(out.split('\n').filter(l => /^(done|REFUSED|FAIL|VERIFY-FAIL|SLOT-REFUSED|5 failures|NO CAST|Error)|: \d+ old clips/.test(l)).join('\n'))
         const spent = /(\d+) chars spent/.exec(out); budget -= spent ? Number(spent[1]) : 0
-        const o = /^OUTSTANDING (\d+)/m.exec(out)
+        const o = parsePass(out)
         if (!o || r.status !== 0) { log(`pass ${voices} tier ${tier} unreadable/exit ${r.status}; stopping the round`); stopped = true; break }
-        tierOutstanding += Number(o[1])
+        tierOutstanding += o.outstanding - o.skippedBudget; tierSkipped += o.skippedBudget
         if (/REFUSED \(the answer/.test(out)) { log('spend guard refused: stopping for today'); stopped = true; break }
       }
+      if (tierSkipped > 0) { log(`tier ${tier}: ${tierSkipped} clips do not fit today's budget: stopping for today`); stopped = true }
       if (stopped) { outstanding = 1; break }
       if (tierOutstanding > 0) { outstanding = tierOutstanding; break } // a tier owes work (verify/failure): do not run later seeds past it
     }
@@ -66,3 +72,5 @@ const msToNextUtcDay = () => { const n = new Date(); return Date.UTC(n.getUTCFul
     log(`sleeping ${Math.round(wait / 60e3)} min`); await sleep(wait)
   }
 })().catch(e => { console.error(e); process.exit(1) })
+
+module.exports = { parsePass }
