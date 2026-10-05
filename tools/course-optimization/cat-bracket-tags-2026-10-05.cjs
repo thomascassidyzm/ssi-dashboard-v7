@@ -86,7 +86,7 @@ function resolve(L) {
     phrases[id] = { id, role: cur.phrase_role, seed: cur.seed_number, lego_index: cur.lego_index, before: { known: cur.known_text, target: cur.target_text }, after: { known, target } };
   }
   const deletes = {};
-  for (const [id, why] of Object.entries(D.DELETES)) { const cur = L.phrases[id]; if (!cur) throw new Error(`delete ${id} missing`); deletes[id] = { id, why, role: cur.phrase_role, seed: cur.seed_number, before: { known: cur.known_text, target: cur.target_text } }; }
+  for (const [id, why] of Object.entries(D.DELETES)) { const cur = L.phrases[id]; if (!cur) continue; /* already deleted by an earlier run */ deletes[id] = { id, why, role: cur.phrase_role, seed: cur.seed_number, before: { known: cur.known_text, target: cur.target_text } }; }
   return { legos, phrases, deletes };
 }
 
@@ -302,6 +302,13 @@ async function main() {
   }
   const R = resolve(L);
   const g = guards(L, R);
+  if (process.env.ONLY_PASS2 === '1') {
+    // Kai's B addendum (2026-10-05): write only the ten LEGOs grown to their noun, their phrases and deletes —
+    // the rest of the plan is already live and is guarded above, not re-written.
+    const keep = new Set(D.PASS2);
+    for (const k of ['legos', 'phrases', 'deletes']) for (const id of Object.keys(R[k])) if (!keep.has(id.slice(0, 8))) delete R[k][id];
+    for (const id of Object.keys(R.phrases)) { const p = R.phrases[id]; if (p.before.known === p.after.known && p.before.target === p.after.target) delete R.phrases[id]; }
+  }
   console.log(`${COURSE} ${SWEEP} — ${log.mode}: ${Object.keys(R.legos).length} LEGO rows (${Object.values(R.legos).filter((l) => !l.componentsOnly).length} re-texted), ${Object.keys(R.phrases).length} phrases, ${Object.keys(R.deletes).length} deletes, ${D.HELD.length} held`);
   console.log(`PROBLEMS (${g.probs.length}):\n  ${g.probs.join('\n  ')}`);
   console.log(`NOTES (${g.notes.length}):\n  ${g.notes.join('\n  ')}`);

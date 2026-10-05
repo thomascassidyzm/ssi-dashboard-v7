@@ -80,19 +80,19 @@ const LEGOS = {
   S0290L01: { group: 'A', known: 'he knows', target: 'ell sap', comps: [['he', 'ell'], ['knows', 'sap']], why: "'(he/she knows)' — the seed's ell comes in (K26)" },
 
   // ── B: masc / fem / plural — tag dropped ─────────────────────────────────────────────────────────
-  S0083L02: { group: 'B', known: 'your', demo: 'your friend', why: 'masc. dropped; every phrase has amic' },
-  S0084L01: { group: 'B', known: 'my', demo: 'my friend', why: 'masc. dropped; every phrase has amic' },
+  S0083L02: { group: 'B+', known: 'your friend', target: 'el teu amic', comps: [['your', 'el teu'], ['friend', 'amic']], why: "masc. dropped; 'your' alone mapped to el teu and teva (S0125L01) — grown to the seed's 'your friend' (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
+  S0084L01: { group: 'B+', known: 'my friend', target: 'el meu amic', comps: [['my', 'el meu'], ['friend', 'amic']], why: "masc. dropped; 'my' alone mapped to el meu / meva / meves — grown to the seed's 'my friend' (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
   S0085L01: { group: 'B', known: 'this', demo: 'this evening', why: "fem. and the wrong '/ these' dropped; every phrase has a feminine noun" },
   S0103L02: { group: 'B', known: 'many', demo: 'many words', why: 'fem. dropped; phrases have paraules' },
-  S0106L06: { group: 'B', known: 'happy', why: 'plural dropped; every phrase has sentir-nos (we)' },
-  S0109L01: { group: 'B', known: 'new', demo: 'new words', why: 'pl. fem. dropped; every phrase has paraules' },
-  S0111L01: { group: 'B', known: 'new', demo: 'something new', why: 'fem. sing. dropped; every phrase has alguna cosa' },
+  S0106L06: { group: 'B+', known: 'we need to feel happy', target: 'necessitem sentir-nos feliços', comps: [['we need to feel', 'necessitem sentir-nos'], ['happy', 'feliços']], why: "plural dropped; 'happy' alone mapped to feliç (S0145L01) — grown to the seed's 'we … need to feel happy', whose 'we' selects the plural; contains L05 (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
+  S0109L01: { group: 'B+', known: 'new words', target: 'paraules noves', comps: [['words', 'paraules'], ['new', 'noves']], why: "pl. fem. dropped; 'new' alone mapped to noves and nova (S0111L01) — grown to the seed's 'new words' (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
+  S0111L01: { group: 'B+', known: 'something new', target: 'alguna cosa nova', comps: [['something', 'alguna cosa'], ['new', 'nova']], why: "fem. sing. dropped; 'new' alone mapped to nova and noves — grown to the seed's 'something new' (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
   S0122L03: { group: 'B', known: 'excited', why: 'masc. and the slash dropped (intro already said excited)' },
-  S0125L01: { group: 'B', known: 'your', demo: 'your idea', why: 'fem. dropped; phrases have idea / manera' },
+  S0125L01: { group: 'B+', known: 'your idea', target: 'la teva idea', comps: [['your', 'la teva'], ['idea', 'idea']], why: "fem. dropped; 'your' alone mapped to teva and el teu — grown to the seed's 'your idea' (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
   S0125L02: { group: 'B', known: 'very good', demo: 'your idea was very good', why: 'fem. dropped; phrases given the feminine noun (idea) where they had none (K27)' },
   S0134L03: { group: 'B', known: 'them', why: 'masc. pl. dropped' },
-  S0135L01: { group: 'B', known: 'good', why: 'masc. dropped; the phrases have no noun, and bo is the default (K27)' },
-  S0136L03: { group: 'B', known: 'my friend', demo: "she's my friend", why: "fem. dropped; every phrase has she" },
+  S0135L01: { group: 'B+', known: 'so good', target: 'tan bo', comps: [['so', 'tan'], ['good', 'bo']], why: "masc. dropped; 'good' alone mapped to bo and bona (S0189L01) — grown to the seed's 'so good'. 189 cannot grow: 'a good idea | una bona idea' is already S0124L01 (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
+  S0136L03: { group: 'B+', known: "she's my friend", target: 'és la meva amiga', comps: [['she is', 'és'], ['my', 'la meva'], ['friend', 'amiga']], why: "fem. dropped; 'my friend' alone mapped to la meva amiga and el meu amic — grown to the seed's 'she's my friend', whose she selects amiga (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
   S0143L01: { group: 'B', known: 'same', demo: 'the same thing', why: 'fem. dropped; phrases given cosa where they had no noun (K27)' },
   S0156L01: { group: 'B', known: 'a', demo: 'a friend', why: 'masculine dropped; phrases have amic / poc' },
   S0161L02: { group: 'B', known: 'that', demo: 'that book', why: 'm. dropped; phrases given a masculine noun where aquell stood alone (K27)' },
@@ -100,9 +100,9 @@ const LEGOS = {
   S0182L01: { group: 'B', known: 'my', demo: 'my keys', why: 'f. pl. dropped; every phrase has coses' },
   S0183L02: { group: 'A', known: "I haven't seen them", target: 'no les he vistes', comps: [['not', 'no'], ['them', 'les'], ['I have seen', 'he vistes']], why: "'seen (f.pl.) / them (f.)': vistes agrees with les, so les comes in — a bare 'seen' would map to vistes" },
   S0189L01: { group: 'B', known: 'good', demo: 'a good idea', why: 'f. dropped; every phrase has idea' },
-  S0232L01: { group: 'B', known: 'old', demo: 'an old woman', why: 'feminine dropped; every phrase has dona' },
+  S0232L01: { group: 'B+', known: 'an old woman', target: 'una dona vella', comps: [['a woman', 'una dona'], ['old', 'vella']], why: "feminine dropped; 'old' alone mapped to vella and vell (S0231L01) — grown to the seed's 'an old woman' (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
   S0237L03: { group: 'B', known: 'of the', why: 'masc dropped; every phrase has cap de setmana' },
-  S0246L01: { group: 'B', known: 'busy', demo: 'she was too busy', why: 'feminine dropped; phrases given she / dona where they had none' },
+  S0246L01: { group: 'B+', known: 'she was too busy', target: 'estava massa ocupada', comps: [['she was', 'estava'], ['too', 'massa'], ['busy', 'ocupada']], why: "feminine dropped; 'busy' alone mapped to ocupada and ocupat (S0192L01) — grown to the seed's 'she was too busy' (Kai 2026-10-05 addendum: where the bare word left one English over two Catalan forms, grow to the seed's noun when easy)" },
   S0257L02: { group: 'B', known: 'blue', demo: 'that blue thing', why: 'feminine dropped; every phrase has cosa' },
   S0268L04: { group: 'B', known: 'last', demo: 'last week', why: 'feminine and the slash dropped; every phrase has setmana' },
   S0283L01: { group: 'B', known: 'which', why: "'(ones)' (plural) dropped; phrases are plural (amics / ones)" },
@@ -127,8 +127,6 @@ const PHRASES = {
   // 73 more to
   S0073L01B01: ['more to', 'molt per'],
   // 83/84 your/my (masc)
-  S0083L02B01: ['your', 'el teu'],
-  S0084L01B01: ['my', 'el meu'],
   // 85 L02 I don't know those people
   S0085L02B01: ["I don't know those people", 'no conec aquesta gent'],
   S0085L02B02: ["I don't know those people yet", 'encara no conec aquesta gent'],
@@ -266,7 +264,6 @@ const PHRASES = {
   S0136L02U05: ['you can ask her something now', 'li pots preguntar alguna cosa ara'],
   S0136L02U06: ['you can ask her tomorrow', 'li pots preguntar demà'],
   // 136 L03 my friend
-  S0136L03B01: ['my friend', 'la meva amiga'],
   S0136L03C01: ['friend', 'amiga'],
   // 137 to be perfect
   S0137L02B02: ["it's better to be perfect", 'és millor ser perfecte'],
@@ -363,7 +360,6 @@ const PHRASES = {
   S0238L01U06: ['I think he wanted you to tell me', "crec que volia que tu m'ho diguessis"],
   S0238L01U07: ['he wanted you to tell me tomorrow', "volia que tu m'ho diguessis demà"],
   // 246 busy ; I wanted her to help you
-  S0246L01B02: ['she was too busy', 'estava massa ocupada'],
   S0246L01U01: ['the woman was too busy', 'la dona estava massa ocupada'],
   S0246L02B01: ['I wanted her to help you', "volia que ella t'ajudés"],
   S0246L02B02: ['I wanted her to help you today', "volia que ella t'ajudés avui"],
@@ -428,6 +424,40 @@ const PHRASES = {
   // 300 unfriendly
   S0300L02B01: ["she's a bit unfriendly", 'és una mica antipàtica'],
   S0300L02B03: ["she's very unfriendly", 'és molt antipàtica'],
+  // B+ (Kai's addendum, 2026-10-05): the bare word grown to its seed noun
+  S0083L02B01: ["your friend", "el teu amic"],
+  S0083L02B02: ["about your friend", "sobre el teu amic"],
+  S0083L02B03: ["with your friend", "amb el teu amic"],
+  S0083L02B04: ["your friend today", "el teu amic avui"],
+  S0084L01B01: ["my friend", "el meu amic"],
+  S0084L01B02: ["about my friend", "sobre el meu amic"],
+  S0084L01B03: ["with my friend", "amb el meu amic"],
+  S0084L01B04: ["my friend today", "el meu amic avui"],
+  S0106L06B01: ["we need to feel happy", "necessitem sentir-nos feliços"],
+  S0106L06B02: ["we need to feel happy now", "necessitem sentir-nos feliços ara"],
+  S0106L06B03: ["we need to feel happy today", "necessitem sentir-nos feliços avui"],
+  S0106L06U05: ["I think we need to feel happy", "crec que necessitem sentir-nos feliços"],
+  S0109L01B01: ["new words", "paraules noves"],
+  S0109L01B02: ["learn new words", "aprendre paraules noves"],
+  S0111L01B01: ["something new", "alguna cosa nova"],
+  S0111L01B02: ["I want something new", "vull alguna cosa nova"],
+  S0125L01B01: ["your idea", "la teva idea"],
+  S0125L01B02: ["your idea was important", "la teva idea era important"],
+  S0125L01U05: ["I like your idea", "m'agrada la teva idea"],
+  S0135L01B01: ["so good", "tan bo"],
+  S0135L01B02: ["it's so good", "és tan bo"],
+  // knock-on: 'so good' over tan bé — the English says 'so well'
+  S0129L01B01: ["so well", "tan bé"],
+  S0135L01U04: ["that is so good", "això és tan bo"],
+  S0135L01U05: ["he is so good at this", "ell és tan bo en això"],
+  S0136L03B01: ["she's my friend", "és la meva amiga"],
+  S0136L03B02: ["yes, she's my friend", "sí, és la meva amiga"],
+  S0232L01B01: ["an old woman", "una dona vella"],
+  S0232L01B02: ["there's an old woman", "hi ha una dona vella"],
+  S0232L01U05: ["an old woman is trying to help me", "una dona vella intenta ajudar-me"],
+  S0246L01B01: ["she was too busy", "estava massa ocupada"],
+  S0246L01B02: ["she was too busy today", "avui estava massa ocupada"],
+  S0246L01B03: ["she was too busy to speak", "estava massa ocupada per parlar"],
   // C: component rows elsewhere — brackets dropped
   S0015L03C02: ['you speak', 'parlis'],
   S0061L04C02: ['it', 'ho'],
@@ -455,6 +485,7 @@ const COMPONENT_JSON_STRIPS = {
 };
 
 const DELETES = {
+  S0106L06U07: 'exact duplicate of U06',
   S0087L01U05: "cannot carry 'people I don't know' in words taught by round 221 without repeating U01–U03",
   S0108L03U05: "cannot contain 'we didn't hope to wake' naturally ('it's hard to wake up at midnight')",
   S0108L03U06: "'I don't want us to wake up early' cannot contain the grown LEGO",
@@ -496,4 +527,7 @@ const HELD = [
     rec: "Making L02 not-new would darken its 8 phrases (P25). Options: L02 = 'I want you to be | vull que estiguis' — but 'vull' is not in seed 129 (L26). So: merge L02 into L03 and move L02's phrases ('vull que estiguis bé', 'que estiguis a punt') under L03 where they contain it, or delete them." },
 ];
 
-module.exports = { COURSE, LEGOS, PHRASES, COMPONENT_JSON_STRIPS, DELETES, HELD };
+// Second pass (Kai's B addendum): only these LEGOs (and their phrases) are written by ONLY_PASS2=1.
+const PASS2 = ['S0083L02', 'S0084L01', 'S0106L06', 'S0109L01', 'S0111L01', 'S0125L01', 'S0135L01', 'S0136L03', 'S0232L01', 'S0246L01', 'S0129L01'];
+
+module.exports = { PASS2, COURSE, LEGOS, PHRASES, COMPONENT_JSON_STRIPS, DELETES, HELD };
