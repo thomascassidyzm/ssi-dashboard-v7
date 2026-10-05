@@ -182,6 +182,61 @@ const RATE_RETRY_CAP = 5
 // counts one more rate-limit answer on this clip; true while it may still be requeued
 function rateRetry(w) { w.rl = (w.rl || 0) + 1; return w.rl < RATE_RETRY_CAP }
 
+/**
+ * The render loop, with every side effect injected (render / verify / commit) so a test can stub them.
+ * CONCURRENCY (job #797): `concurrency` parallel renders. Budget is RESERVED (w.chars) before a render starts so parallel workers can never
+ * overshoot it; `one` releases the reservation when nothing was spent, or trues it up to the real charge. A rate-limit answer (429 /
+ * "rate"/"concurren") halves the live concurrency and requeues the clip after a back-off; the route itself never retries.
+ * SETTLEMENT (job #834): once the route has answered ok the reservation is trued up to the real charge and w.settled is set; from then
+ * on the money is spent for good, so a later throw (verify, ledger, DB) must NOT refund it. Only an unsettled clip is refunded.
+ * budgetSkipped counts clips passed over because they do not fit the remaining budget: owed work, but not a failure.
+ */
+async function runBudgeted(work, { budget, dryRun = false, gender = null, concurrency = 1, render: doRender, verify, commit, backoffMs = 5000 }) {
+  let spent = 0, done = 0, failures = 0, genderSkipped = 0, budgetSkipped = 0
+  let live = Math.max(1, concurrency), active = 0, stop = false, idx = 0
+  const requeue = []
+  const isRate = r => r.status === 429 || /rate.?limit|too many|concurren/i.test(`${r.code || ''} ${r.error || ''}`)
+  const one = async w => {
+    const r = await doRender(w)
+    if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { spent -= w.chars; console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); stop = true; return }
+    if (isRate(r)) {
+      spent -= w.chars; live = Math.max(1, Math.floor(live / 2))
+      if (rateRetry(w)) { console.log(`RATE-LIMITED ${r.status} ${r.code || ''}: concurrency now ${live}; requeued (${w.rl}/${RATE_RETRY_CAP})`); requeue.push(w); await new Promise(res => setTimeout(res, backoffMs)); return }
+      // a clip that keeps answering 429 must not loop forever (the Italian driver spawns this with no timeout): after the cap it is an ordinary FAIL
+      console.log('FAIL', w.oldId, r.code, r.error, `(rate-limited ${w.rl}x, dropped)`); if (++failures >= 5) { console.log('5 failures — stopping'); stop = true } return
+    }
+    if (!r.ok) { spent -= w.chars; console.log('FAIL', w.oldId, r.code, r.error); if (++failures >= 5) { console.log('5 failures — stopping'); stop = true } return }
+    if (dryRun) { spent += (r.wouldSpendChars || 0) - w.chars; w.settled = true; done++; return }
+    failures = 0; spent += (r.charsSpent || 0) - w.chars; w.settled = true // true-up of the reservation; the charge is now final
+    const bad = await verify(r)
+    if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); return }
+    await commit(w, r)
+    done++
+  }
+  const next = () => {
+    for (;;) {
+      const w = requeue.length ? requeue.shift() : work[idx++]
+      if (!w) return null
+      // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
+      if (gender && voiceGender(w.oldVoice) !== gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
+      if (spent + w.chars > budget) { if (spent === 0 && budget === 0) return null; budgetSkipped++; continue }
+      return w
+    }
+  }
+  await new Promise(resolve => {
+    const pump = () => {
+      while (!stop && active < live) {
+        const w = next(); if (!w) break
+        spent += w.chars; active++ // reserve
+        one(w).catch(e => { if (!w.settled) spent -= w.chars; console.log('FAIL', w.oldId, e.message); if (++failures >= 5) stop = true }).finally(() => { active--; pump() })
+      }
+      if (active === 0 && (stop || (!requeue.length && idx >= work.length))) resolve()
+    }
+    pump()
+  })
+  return { spent, done, genderSkipped, budgetSkipped }
+}
+
 async function main() {
   const pg = new Client({ connectionString: process.env.DATABASE_URL, ssl: { rejectUnauthorized: false } })
   await pg.connect()
@@ -238,28 +293,8 @@ async function main() {
   const work = await workFor(pg, course, roles, pass.sql, maxSeed, pass.langs)
   const total = work.reduce((n, x) => n + x.chars, 0)
   console.log(`${course} ${roles}${target && pass.castGender ? ` -> ${target}` : ''}${maxSeed ? ` seeds 1-${maxSeed}` : ''} ${passName}: ${work.length} old clips linked, ${total} chars; budget ${budget}${dryRun ? ' (dry run)' : ''}`)
-  let spent = 0, done = 0, free = 0, failures = 0, slotsMoved = 0, eventId = null, eventPromise = null, genderSkipped = 0, slotRefused = 0
-  // CONCURRENCY (job #797): CONCURRENCY parallel renders through the same route (library-first, guard, verify, write-ahead ledger unchanged).
-  // Budget is RESERVED (w.chars) before a render starts so parallel workers can never overshoot it; `one` releases the reservation when
-  // nothing was spent, or trues it up to the real charge. A rate-limit answer (429 / "rate"/"concurren") halves the live concurrency and
-  // requeues the clip after a back-off; the route itself never retries.
-  let live = Math.max(1, Number(process.env.CONCURRENCY || 1)), active = 0, stop = false, idx = 0
-  const requeue = []
-  const isRate = r => r.status === 429 || /rate.?limit|too many|concurren/i.test(`${r.code || ''} ${r.error || ''}`)
-  const one = async w => {
-    const r = await render(course, w, dryRun, target, language)
-    if (r.status === 402 || r.code === 'DAILY_TOTAL_CAP' || r.code === 'REPEAT' || r.code === 'NOT_IN_CHAIN') { spent -= w.chars; console.log(`REFUSED (the answer, not retried): ${r.code} ${r.error}`); stop = true; return }
-    if (isRate(r)) {
-      spent -= w.chars; live = Math.max(1, Math.floor(live / 2))
-      if (rateRetry(w)) { console.log(`RATE-LIMITED ${r.status} ${r.code || ''}: concurrency now ${live}; requeued (${w.rl}/${RATE_RETRY_CAP})`); requeue.push(w); await new Promise(res => setTimeout(res, 5000)); return }
-      // a clip that keeps answering 429 must not loop forever (the Italian driver spawns this with no timeout): after the cap it is an ordinary FAIL
-      console.log('FAIL', w.oldId, r.code, r.error, `(rate-limited ${w.rl}x, dropped)`); if (++failures >= 5) { console.log('5 failures — stopping'); stop = true } return
-    }
-    if (!r.ok) { spent -= w.chars; console.log('FAIL', w.oldId, r.code, r.error); if (++failures >= 5) { console.log('5 failures — stopping'); stop = true } return }
-    if (dryRun) { spent += (r.wouldSpendChars || 0) - w.chars; done++; return }
-    failures = 0; spent += (r.charsSpent || 0) - w.chars // true-up of the reservation
-    const bad = await verifyNew(pg, r.audioId, target)
-    if (bad) { console.log('VERIFY-FAIL', w.oldId, '->', r.audioId, bad, '— old pointer kept'); return }
+  let free = 0, slotsMoved = 0, eventId = null, eventPromise = null, slotRefused = 0
+  const commit = async (w, r) => {
     // write-ahead: the ledger line exists before the first pointer moves
     const entry = { kind: 'swap', course, role: w.role, oldId: w.oldId, newId: r.audioId, oldVoice: w.oldVoice, pass: passName, source: r.source, charsSpent: r.charsSpent || 0, slots: w.slots, text: w.text, at: new Date().toISOString() }
     fs.appendFileSync(ledger, JSON.stringify(entry) + '\n')
@@ -270,34 +305,19 @@ async function main() {
       try { if (await setPointer(db, s, w.oldId, r.audioId, eventId)) slotsMoved++ }
       catch (e) { slotRefused++; console.log('SLOT-REFUSED', s.tbl, s.key, e.message.slice(0, 120)); fs.appendFileSync(ledger, JSON.stringify({ kind: 'slot-refused', oldId: w.oldId, slot: s, error: e.message }) + '\n') }
     }
-    done++; if (r.source === 'library') free++
+    if (r.source === 'library') free++
   }
-  const next = () => {
-    for (;;) {
-      const w = requeue.length ? requeue.shift() : work[idx++]
-      if (!w) return null
-      // belt and braces: the SQL and the JS lists agree, but a male slot must never reach Charlotte even if they drift
-      if (pass.gender && voiceGender(w.oldVoice) !== pass.gender) { console.log('GENDER-SKIP', w.oldId, w.oldVoice); genderSkipped++; continue }
-      if (spent + w.chars > budget) { if (spent === 0 && budget === 0) return null; continue }
-      return w
-    }
-  }
-  await new Promise(resolve => {
-    const pump = () => {
-      while (!stop && active < live) {
-        const w = next(); if (!w) break
-        spent += w.chars; active++ // reserve
-        one(w).catch(e => { spent -= w.chars; console.log('FAIL', w.oldId, e.message); if (++failures >= 5) stop = true }).finally(() => { active--; pump() })
-      }
-      if (active === 0 && (stop || (!requeue.length && idx >= work.length))) resolve()
-    }
-    pump()
+  const { spent, done, genderSkipped, budgetSkipped } = await runBudgeted(work, {
+    budget, dryRun, gender: pass.gender, concurrency: Number(process.env.CONCURRENCY || 1),
+    render: w => render(course, w, dryRun, target, language), verify: r => verifyNew(pg, r.audioId, target), commit,
   })
   // machine line for the daily driver: work still owed in THIS scope (budget-skipped, failed, verify-failed, refused, unreached); never-doable gender skips excluded
+  // SKIPPED-BUDGET is the part of OUTSTANDING that is merely unaffordable today (not a failure): the daily driver sleeps to the next UTC day on it
   console.log(`OUTSTANDING ${Math.max(0, work.length - done - genderSkipped) + slotRefused}`)
+  console.log(`SKIPPED-BUDGET ${budgetSkipped}`)
   console.log(`done ${done} clips (${free} from library), ${slotsMoved} slots repointed, ${spent} chars spent; ${work.length - done} remain. ledger ${ledger}`)
   await pg.end()
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1) })
 
-module.exports = { RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, CHARLOTTE }
+module.exports = { runBudgeted, RATE_RETRY_CAP, rateRetry, parseSeedScope, inSeedScope, swapKey, undoneSet, pendingSwaps, BAD_VOICE, FEMALE_XAI, MALE_XAI, FEMALE_VOICE, MALE_VOICE, voiceGender, PASSES, TARGET_PASSES, TOM_001, CHARLOTTE }
