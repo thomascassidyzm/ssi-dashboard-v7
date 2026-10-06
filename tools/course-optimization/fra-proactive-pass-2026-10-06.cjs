@@ -301,6 +301,23 @@ async function apply(pg, supabase, p, log) {
   await refreshNow();
 }
 
+/** PASS=cache355: job #355 re-texted 146 rows before the cache rule existed (commit 499ca6377); their cached
+ *  decomposition / display tiling / gloss segments still describe the old words. Drop them (NULL = "rebuild me"). */
+async function cache355(pg, supabase, APPLY) {
+  const { serviceIdentity } = require('../../services/shared/editor-identity.cjs');
+  const { recordContentEdit } = require('../../services/shared/content-edit-log.cjs');
+  const { rows: evs } = await pg.query(`SELECT detail FROM content_edit_events WHERE course_code=$1 AND surface LIKE '%fra-italian-rules-apply-2026-10-02%' AND operation='phrase-edit'`, [COURSE]);
+  const ids = [...new Set(evs.flatMap((e) => (e.detail.changes || []).map((c) => c.id)))];
+  const { rows } = await pg.query(`SELECT id FROM course_practice_phrases WHERE course_code=$1 AND id = ANY($2) AND (decomposition IS NOT NULL OR display_tiling IS NOT NULL OR known_gloss_segments IS NOT NULL)`, [COURSE, ids]);
+  console.log(`CACHE355: ${ids.length} rows re-texted by #355; ${rows.length} still hold a cache`);
+  if (!APPLY || !rows.length) return;
+  const ev = await recordContentEdit(supabase, { identity: serviceIdentity(SWEEP, { role: 'content-sweep' }), courseCode: COURSE, surface: SURFACE, operation: 'phrase-cache-clear',
+    scope: { phrase_ids: rows.map((r) => r.id), rows: rows.length }, detail: { job: JOB, why: 'job #355 re-texted these rows and left decomposition/display_tiling caches describing the pre-edit words' } });
+  const r = await pg.query(`UPDATE course_practice_phrases SET decomposition=NULL, decomposition_course_version=NULL, display_tiling=NULL, display_tiling_version=NULL, known_gloss_segments=NULL, last_edit_event_id=$1, updated_at=now()
+    WHERE course_code=$2 AND id = ANY($3)`, [ev, COURSE, rows.map((x) => x.id)]);
+  console.log(`CACHE355: cleared ${r.rowCount}`);
+}
+
 async function main() {
   const APPLY = process.env.APPLY === '1';
   const PASS = process.env.PASS || 'lego';
@@ -308,6 +325,7 @@ async function main() {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
   const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } });
   const log = { sweep: SWEEP, job: JOB, pass: PASS, apply: APPLY, started: new Date().toISOString() };
+  if (PASS === 'cache355') { await cache355(pg, supabase, APPLY); await pg.end(); return; }
   const db = await load(pg);
   const p = PASS === 'sweep' ? planSweep(db) : planLego(db);
   log.zut = zutGate(db, p);
