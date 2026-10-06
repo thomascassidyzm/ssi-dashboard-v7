@@ -138,18 +138,18 @@ function phrasesFrom(table, P, out, held) {
 }
 function deletesFrom(table, P, out) {
   for (const [id, e] of Object.entries(table)) {
-    if (table === SWEEP_PHRASES && !e.delete) continue;
+    if (table !== LEGO_PASS_DELETES && !e.delete) continue;
     const p = P[id];
     if (!p) continue; // already gone
     if (p.known_text !== e.from[0] || p.target_text !== e.from[1]) throw new Error(`${id}: live "${p.known_text} | ${p.target_text}" is not the reviewed "${e.from.join(' | ')}"`);
     out.push({ id, seed: p.seed_number, why: e.why, role: p.phrase_role, before: e.from });
   }
 }
-function planSweep(db) {
+function planSweep(db, table = SWEEP_PHRASES) {
   const P = Object.fromEntries(db.phrases.map((p) => [p.sid, p]));
   const phraseChanges = [], deletes = [], held = [];
-  phrasesFrom(SWEEP_PHRASES, P, phraseChanges, held);
-  deletesFrom(SWEEP_PHRASES, P, deletes);
+  phrasesFrom(table, P, phraseChanges, held);
+  deletesFrom(table, P, deletes);
   return { legoChanges: [], phraseChanges, deletes, held };
 }
 
@@ -192,10 +192,10 @@ async function load(pg) {
 }
 
 /** ONE route, dry run then ONE real call. Returns the clip id, verified to speak these words; throws on any refusal. */
-async function clip(pg, { role, text, legoId, purpose }, log) {
+async function clip(pg, { role, text, legoId, purpose, voiceId }, log) {
   const call = async (dryRun) => {
     const r = await fetch(`${(process.env.POPTY_URL || 'http://localhost:3470').replace(/\/$/, '')}/api/audio/render`, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': `${SWEEP} (job ${JOB})` },
-      body: JSON.stringify({ courseCode: COURSE, role, text, purpose, job: JOB, dryRun, ...(legoId ? { legoId } : {}) }) });
+      body: JSON.stringify({ courseCode: COURSE, role, text, purpose, job: JOB, dryRun, ...(legoId ? { legoId } : {}), ...(voiceId ? { voiceId } : {}) }) });
     return { status: r.status, body: await r.json().catch(() => ({})) };
   };
   const dry = await call(true);
@@ -219,6 +219,29 @@ function legoLinks(c) {
   if (c.clips?.target2) out.target2_audio_id = c.clips.target2;
   if (!c.intro && c.presentation) out.presentation_audio_id = c.presentation;
   return out;
+}
+
+/** fra_for_eng's intro voice of record: voice_config.voices.presentation = tom_001 (Tom, 2026-09-10). Named, because the
+ *  route's "voice the course already speaks English in" lookup counts only Azure/Cartesia clips: fra's 1,499 Tom intros
+ *  are on the retired xAI clone, so 6 Charlotte intros outvoted them and job #329's first 25 intros came out Charlotte. */
+const INTRO_VOICE = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2';
+
+/** PASS=intro-voice: re-render, on INTRO_VOICE, every K41 intro this job made in another voice (make-before-break: the
+ *  route binds the new clip to the LEGO; the old clip is kept, never deleted). */
+async function introVoice(pg, APPLY, log) {
+  const { rows } = await pg.query(`SELECT l.lego_id, a.text, a.voice_id FROM course_legos l JOIN course_audio a ON a.id::text = l.presentation_audio_id
+    WHERE l.course_code=$1 AND l.lego_id = ANY($2) AND a.voice_id <> $3 ORDER BY l.lego_id`, [COURSE, K41_LEGOS, INTRO_VOICE]);
+  console.log(`INTRO-VOICE: ${rows.length} intros not on ${INTRO_VOICE}`);
+  if (!APPLY) return;
+  log.clips = [];
+  for (const r of rows) {
+    const id = await clip(pg, { role: 'presentation', text: r.text, legoId: r.lego_id, voiceId: INTRO_VOICE, purpose: `job ${JOB}: intro on the course's intro voice (tom_001), ${r.lego_id}` }, log);
+    const { rows: [a] } = await pg.query('SELECT voice_id FROM course_audio WHERE id=$1', [id]);
+    if (a.voice_id !== INTRO_VOICE) throw new Error(`${r.lego_id}: route answered in ${a.voice_id}`);
+    await pg.query('UPDATE course_legos SET presentation_audio_id=$1 WHERE course_code=$2 AND lego_id=$3', [id, COURSE, r.lego_id]);
+    await pg.query('UPDATE lego_introductions SET presentation_audio_id=$1, audio_uuid=$1, updated_at=now() WHERE course_code=$2 AND lego_id=$3', [id, COURSE, r.lego_id]);
+  }
+  console.log(`INTRO-VOICE: ${log.clips.length} re-rendered (${log.clips.reduce((s, c) => s + c.chars, 0)} chars)`);
 }
 
 const CACHE_NULL = 'decomposition=NULL, decomposition_course_version=NULL, display_tiling=NULL, display_tiling_version=NULL, known_gloss_segments=NULL, qa_checked=NULL';
@@ -291,7 +314,7 @@ async function apply(pg, supabase, p, log) {
 
   // 4. intros: the new words, rendered and bound by the route; lego_introductions follows (the player's script cache reads it)
   for (const c of p.legoChanges.filter((x) => x.intro)) {
-    const id = await clip(pg, { role: 'presentation', text: c.intro.after, legoId: c.id, purpose: `job ${JOB}: ${c.rule} intro ${c.id}` }, log);
+    const id = await clip(pg, { role: 'presentation', text: c.intro.after, legoId: c.id, voiceId: INTRO_VOICE, purpose: `job ${JOB}: ${c.rule} intro ${c.id}` }, log);
     const { rows: [l] } = await pg.query('SELECT presentation_audio_id FROM course_legos WHERE course_code=$1 AND lego_id=$2', [COURSE, c.id]);
     if (String(l.presentation_audio_id) !== String(id)) await pg.query('UPDATE course_legos SET presentation_audio_id=$1 WHERE course_code=$2 AND lego_id=$3', [id, COURSE, c.id]);
     await pg.query('UPDATE lego_introductions SET presentation_audio_id=$1, audio_uuid=$1, updated_at=now() WHERE course_code=$2 AND lego_id=$3', [id, COURSE, c.id]);
@@ -325,9 +348,10 @@ async function main() {
   const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
   const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } });
   const log = { sweep: SWEEP, job: JOB, pass: PASS, apply: APPLY, started: new Date().toISOString() };
+  if (PASS === 'intro-voice') { await introVoice(pg, APPLY, log); await pg.end(); return; }
   if (PASS === 'cache355') { await cache355(pg, supabase, APPLY); await pg.end(); return; }
   const db = await load(pg);
-  const p = PASS === 'sweep' ? planSweep(db) : planLego(db);
+  const p = PASS === 'sweep' ? planSweep(db) : PASS === 'followup' ? planSweep(db, require('./fra-proactive-pass-2026-10-06.followup.cjs')) : planLego(db);
   log.zut = zutGate(db, p);
   log.plan = p;
   console.log(`${PASS.toUpperCase()} ${APPLY ? 'APPLY' : 'DRY RUN'}: LEGOs ${p.legoChanges.length}, phrases ${p.phraseChanges.length}, deletes ${p.deletes.length}, held ${p.held.length}; ZUT strict simulated ${log.zut.before} → ${log.zut.after}`);
