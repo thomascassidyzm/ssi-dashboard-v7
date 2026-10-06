@@ -26,7 +26,8 @@
 //
 //   node tools/course-optimization/fra-italian-rules-apply-2026-10-02.cjs           # dry run: plan + ZUT simulation
 //   APPLY=1 node …                                                                   # write
-//   AUDIO=1 node …                                                                   # audio pass only (idempotent)
+//   AUDIO=1 FROM=<applied json> node …                                               # audio pass only (idempotent): library links, would-renders counted
+//   AUDIO=1 RENDER=1 FROM=<applied json> node …                                      # …and render the rest ONCE each via the route (job #329)
 
 const path = require('path');
 const fs = require('fs');
@@ -265,10 +266,10 @@ async function apply(pg, supabase, p, log) {
 }
 
 // Audio: every empty slot on a row this job wrote → route dryRun; library → link (free); else counted.
-async function audioPass(pg, ids, log) {
+async function audioPass(pg, ids, log, { render = false } = {}) {
   const ROLE = { known_audio_id: 'known', target1_audio_id: 'target1', target2_audio_id: 'target2' };
   const { rows } = await pg.query('SELECT id, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id FROM course_practice_phrases WHERE course_code=$1 AND id = ANY($2) ORDER BY id', [COURSE, ids.map(full)]);
-  const out = { slots: 0, library: 0, wouldRender: [], refused: [] };
+  const out = { slots: 0, library: 0, wouldRender: [], rendered: [], refused: [] };
   const call = async (body) => { const r = await fetch('http://localhost:3470/api/audio/render', { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-agent-id': `${SWEEP} (job ${JOB})` }, body: JSON.stringify(body) }); return { status: r.status, body: await r.json().catch(() => ({})) }; };
   for (const r of rows) for (const [col, role] of Object.entries(ROLE)) {
     if (r[col]) continue;
@@ -277,11 +278,15 @@ async function audioPass(pg, ids, log) {
     const body = { courseCode: COURSE, role, text, purpose: `job ${JOB} Italian-rules pass: ${short(r.id)}`, dryRun: true };
     const dry = await call(body);
     if (dry.status !== 200 || !dry.body.ok) { out.refused.push({ id: short(r.id), role, text, status: dry.status, answer: dry.body }); continue; }
-    if (dry.body.source !== 'library') { out.wouldRender.push({ id: short(r.id), role, text, chars: dry.body.wouldSpendChars || text.length }); continue; }
-    const real = await call({ ...body, dryRun: false });
-    if (real.status !== 200 || real.body.source !== 'library' || !real.body.audioId) { out.refused.push({ id: short(r.id), role, text, status: real.status, answer: real.body }); continue; }
+    if (dry.body.source !== 'library' && !render) { out.wouldRender.push({ id: short(r.id), role, text, chars: dry.body.wouldSpendChars || text.length }); continue; }
+    // RENDER=1 (job #329, Kai's spend OK 6 Oct): a would-render is rendered ONCE through the route; a refusal is recorded, never retried.
+    const real = await call({ ...body, dryRun: false, purpose: render ? `job #329 finishing ${JOB}: ${short(r.id)}` : body.purpose });
+    if (real.status !== 200 || !real.body.ok || !real.body.audioId || (!render && real.body.source !== 'library')) { out.refused.push({ id: short(r.id), role, text, status: real.status, answer: real.body }); if (render && real.status !== 200) break; continue; }
+    // the audio_autolink trigger may already have linked the slot; the guarded UPDATE then touches nothing, which is fine
     await pg.query(`UPDATE course_practice_phrases SET ${col}=$1 WHERE course_code=$2 AND id=$3 AND ${col} IS NULL`, [real.body.audioId, COURSE, r.id]);
-    out.library++;
+    const { rows: [now] } = await pg.query(`SELECT ${col} AS a FROM course_practice_phrases WHERE course_code=$1 AND id=$2`, [COURSE, r.id]);
+    if (!now.a) { out.refused.push({ id: short(r.id), role, text, status: 'unlinked', answer: real.body }); continue; }
+    if (real.body.source === 'library') out.library++; else out.rendered.push({ id: short(r.id), role, text, audioId: real.body.audioId, chars: real.body.charsSpent });
   }
   log.audio = out; return out;
 }
@@ -297,8 +302,8 @@ async function main() {
   if (AUDIO) {
     const prev = JSON.parse(fs.readFileSync(process.env.FROM, 'utf8'));
     const ids = [...prev.plan.edits.map((e) => e.id), ...prev.plan.inserts.map((r) => r.id)];
-    const a = await audioPass(pg, ids, log);
-    console.log(`AUDIO: ${a.slots} empty slots; ${a.library} linked from the library; ${a.wouldRender.length} would render (${a.wouldRender.reduce((s, x) => s + x.chars, 0)} chars); ${a.refused.length} refused`);
+    const a = await audioPass(pg, ids, log, { render: process.env.RENDER === '1' });
+    console.log(`AUDIO: ${a.slots} empty slots; ${a.library} linked from the library; ${a.rendered.length} rendered (${a.rendered.reduce((s, x) => s + (x.chars || 0), 0)} chars); ${a.wouldRender.length} would render (${a.wouldRender.reduce((s, x) => s + x.chars, 0)} chars); ${a.refused.length} refused`);
     console.log(`Wrote ${evidence('audio')}`); await pg.end(); return;
   }
   const db = await load(pg);

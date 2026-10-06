@@ -44,6 +44,9 @@ const stripBrackets = (s) => String(s).replace(/\s*\([^)]*\)/g, '').replace(/\s+
 const containsSeq = (hay, needle) => ` ${norm(hay)} `.includes(` ${norm(needle)} `);
 /** the target of a phrase contains the LEGO target; Catalan elision/hyphen/clitic spellings are whole tokens. */
 const containsTarget = (hay, needle) => containsSeq(hay, needle);
+/** A phrase's cached decomposition / display tiling / known_gloss_segments describe BOTH its sentences: any change to
+ *  either side (English-only included — "so good"→"so well") makes them describe words the row no longer says. */
+const textChanged = (before, after) => norm(before.known) !== norm(after.known) || norm(before.target) !== norm(after.target);
 function introFor(known, demo) { return demo ? `The Catalan for: '${known}', as in — '${demo}', is:` : `The Catalan for: '${known}', is:`; }
 function legoPosition(phraseTarget, legoTarget) {
   const p = norm(phraseTarget), l = norm(legoTarget);
@@ -206,11 +209,18 @@ async function applyContent(pg, supabase, R, L, log) {
   try {
     for (const l of leg) {
       const old = L.legos[l.id];
-      const r = await pg.query(`UPDATE course_legos SET known_text=$1, target_text=$2, components=$3, last_edit_event_id=$4, updated_at=now()
+      const r = await pg.query(`UPDATE course_legos SET known_text=$1, target_text=$2, components=$3, known_gloss_segments=NULL, last_edit_event_id=$4, updated_at=now()
         WHERE course_code=$5 AND lego_id=$6 AND known_text=$7 AND target_text=$8 RETURNING known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id`,
         [l.after.known, l.after.target, JSON.stringify(l.after.components), Ev.lego, COURSE, l.id, l.before.known, l.before.target]);
       if (r.rowCount !== 1) throw new Error(`${l.id}: ${r.rowCount} rows`);
       await restore(pg, 'course_legos', 'lego_id', l.id, old, r.rows[0], ['known_audio_id', 'target1_audio_id', 'target2_audio_id', 'presentation_audio_id'], log);
+      // Every OTHER phrase whose cached decomposition carries this LEGO's old gloss (S0073L01 "for / to (purpose)" sat in
+      // 121 phrases) now teaches a tag the LEGO no longer has: drop it so the backfill rebuilds it from the new LEGO text.
+      if (textChanged(l.before, l.after)) {
+        const d = await pg.query(`UPDATE course_practice_phrases SET decomposition=NULL, decomposition_course_version=NULL, display_tiling=NULL, display_tiling_version=NULL, known_gloss_segments=NULL, updated_at=now()
+          WHERE course_code=$1 AND decomposition IS NOT NULL AND decomposition::jsonb @> $2::jsonb`, [COURSE, JSON.stringify([{ legoId: l.id }])]);
+        log.cachesDropped = (log.cachesDropped || 0) + d.rowCount;
+      }
     }
     for (const d of del) {
       const r = await pg.query('DELETE FROM course_practice_phrases WHERE course_code=$1 AND id=$2 AND known_text=$3 AND target_text=$4', [COURSE, full(d.id), d.before.known, d.before.target]);
@@ -219,11 +229,11 @@ async function applyContent(pg, supabase, R, L, log) {
     for (const p of phr) {
       const old = L.phrases[p.id]; const comp = p.role === 'component';
       const legoT = R.legos[legoOfPhrase(p.id)]?.after.target || L.legos[legoOfPhrase(p.id)].target_text;
-      const tChanged = norm(p.before.target) !== norm(p.after.target);
+      const tChanged = textChanged(p.before, p.after);
       const r = await pg.query(`UPDATE course_practice_phrases SET known_text=$1, target_text=$2,
           word_count=CASE WHEN $3 THEN $4 ELSE word_count END, lego_count=CASE WHEN $3 AND NOT $5 THEN $6 ELSE lego_count END,
           lego_position=CASE WHEN $3 AND NOT $5 THEN $7 ELSE lego_position END,
-          qa_checked=NULL, decomposition=CASE WHEN $3 THEN NULL ELSE decomposition END, decomposition_course_version=CASE WHEN $3 THEN NULL ELSE decomposition_course_version END,
+          qa_checked=NULL, known_gloss_segments=CASE WHEN $3 THEN NULL ELSE known_gloss_segments END, decomposition=CASE WHEN $3 THEN NULL ELSE decomposition END, decomposition_course_version=CASE WHEN $3 THEN NULL ELSE decomposition_course_version END,
           display_tiling=CASE WHEN $3 THEN NULL ELSE display_tiling END, display_tiling_version=CASE WHEN $3 THEN NULL ELSE display_tiling_version END,
           last_edit_event_id=$8, updated_at=now() WHERE course_code=$9 AND id=$10 AND known_text=$11 AND target_text=$12
           RETURNING known_audio_id, target1_audio_id, target2_audio_id`,
@@ -337,5 +347,5 @@ async function main() {
   console.log(`APPLIED. seeds ${log.touchedSeeds.length}, unapproved ${log.unapproved.length}, relinked same-voice ${log.relinked.length}, old clip kept ${log.restored.length}, audioPass ${JSON.stringify(log.audioPass)}`);
   await pg.end();
 }
-module.exports = { norm, containsSeq, stripBrackets, introFor, hasBracket };
+module.exports = { textChanged, norm, containsSeq, stripBrackets, introFor, hasBracket };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
