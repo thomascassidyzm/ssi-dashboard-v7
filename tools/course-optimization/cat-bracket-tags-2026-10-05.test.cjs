@@ -46,3 +46,26 @@ test('live cat_for_eng holds the pass', { skip: !process.env.DATABASE_URL && 'no
     }
   } finally { await pg.end(); }
 });
+
+// Job #20 (lane review #19·K): the first apply cleared caches only when the TARGET changed, so English-only edits
+// ("so good"→"so well") and every phrase that merely CARRIES a re-texted LEGO kept the old bracketed gloss.
+test('a change to either language invalidates the phrase caches', () => {
+  const { textChanged } = require('./cat-bracket-tags-2026-10-05.cjs');
+  assert.ok(textChanged({ known: 'so good', target: 'tan bé' }, { known: 'so well', target: 'tan bé' }), 'English-only edit');
+  assert.ok(textChanged({ known: 'my (feminine)', target: 'meva' }, { known: 'my', target: 'meva' }), 'bracket dropped');
+  assert.ok(textChanged({ known: 'a', target: 'poc' }, { known: 'a', target: 'poc temps' }), 'target-only edit');
+  assert.ok(!textChanged({ known: 'So well.', target: 'tan bé' }, { known: 'so well', target: 'tan bé' }), 'punctuation/case alone');
+});
+
+test('live: no decomposition under cat_for_eng carries a bracketed gloss for a re-texted LEGO', { skip: !process.env.DATABASE_URL && 'no DATABASE_URL' }, async () => {
+  const { Client } = require('pg');
+  const pg = new Client({ connectionString: process.env.DATABASE_URL }); await pg.connect();
+  try {
+    const { rows } = await pg.query(`SELECT p.id, e->>'known' dk, l.known_text lk FROM course_practice_phrases p CROSS JOIN LATERAL jsonb_array_elements(p.decomposition::jsonb) e
+      JOIN course_legos l ON l.course_code=p.course_code AND l.lego_id=e->>'legoId'
+      WHERE p.course_code=$1 AND p.decomposition IS NOT NULL AND l.lego_id = ANY($2) AND btrim(e->>'known') <> l.known_text AND e->>'known' <> ''`, [D.COURSE, Object.keys(D.LEGOS)]);
+    assert.deepEqual(rows.slice(0, 5), [], `${rows.length} stale decomposition glosses`);
+    const { rows: ph } = await pg.query(`SELECT id FROM course_practice_phrases WHERE course_code=$1 AND decomposition::text ~ '\\(' AND id = ANY($2)`, [D.COURSE, Object.keys(D.PHRASES).map((i) => `${D.COURSE}:${i}`)]);
+    assert.deepEqual(ph, [], 'edited phrases still carry a bracketed decomposition');
+  } finally { await pg.end(); }
+});
