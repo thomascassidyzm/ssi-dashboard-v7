@@ -1,5 +1,9 @@
 <template>
   <AppNavbar />
+  <!-- Hidden (sandbox) course: never mistakable for the live one, on any course page. -->
+  <div v-if="sandboxCode" class="sandbox-banner" role="status">
+    <strong>Hidden / Sandbox</strong> — {{ courseName(sandboxCode) }} ({{ sandboxCode }}) is hidden from learners. It is not the live course.
+  </div>
   <router-view />
 
   <!-- Theme toggle now lives in the account menu (AppNavbar) — see ThemeToggle item there. -->
@@ -12,14 +16,38 @@
 </template>
 
 <script setup>
+import { computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import AppNavbar from './components/AppNavbar.vue'
+import { courseName, isSandboxCourse } from './utils/languageNames'
+import { getServerCourseRow } from './services/supabase'
 
 const route = useRoute()
+
+// Any route naming a course. Ask the server once per code, so a direct visit to
+// a sandbox course page learns it is hidden (and its display_name) without
+// having passed through the Course Library.
+const routeCourse = computed(() => route.params.courseCode || route.params.code || null)
+const asked = new Set()
+watch(routeCourse, (code) => {
+  if (code && !asked.has(code)) {
+    asked.add(code)
+    getServerCourseRow(code)
+  }
+}, { immediate: true })
+const sandboxCode = computed(() => (isSandboxCourse(routeCourse.value) ? routeCourse.value : null))
 const gitCommit = __GIT_COMMIT__
 </script>
 
 <style scoped>
+.sandbox-banner {
+  padding: 8px 16px;
+  font-size: 13px;
+  text-align: center;
+  color: #78350f;
+  background: #fbbf24;
+  border-bottom: 2px solid #b45309;
+}
 .build-label {
   position: fixed;
   bottom: 12px;
