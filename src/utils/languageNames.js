@@ -158,6 +158,22 @@ let apiNamesLoaded = false
  */
 export const nameVersion = ref(0)
 
+/** code → { display_name, is_hidden } for hidden courses seen so far (reactive). */
+export const sandboxCourses = ref({})
+
+/** Record a loaded course row; only hidden ones are remembered. */
+export function registerCourseRow(row) {
+  if (!row?.course_code || !(row.is_hidden || row.visibility === 'hidden')) return
+  sandboxCourses.value = {
+    ...sandboxCourses.value,
+    [row.course_code]: { display_name: row.display_name || '', is_hidden: true }
+  }
+}
+
+export function isSandboxCourse(code) {
+  return !!(code && sandboxCourses.value[code]?.is_hidden)
+}
+
 /**
  * Fetch the CSV-backed name list. Safe to call repeatedly; runs once.
  * The API module reads localStorage as it loads, so it is pulled in here
@@ -229,6 +245,11 @@ export function languageName(code) {
  * untouched.
  */
 export function courseName(code) {
+  // A hidden (sandbox) course carries its own display_name — "Welsh (North) v2 —
+  // sandbox" — because the code alone names it as the live course (cym_nv2 reads
+  // as plain Welsh). Registered when the course row is loaded.
+  const sandbox = code && sandboxCourses.value[code]
+  if (sandbox?.display_name) return sandbox.display_name
   if (!code || !code.includes('_for_')) return code || ''
   const i = code.indexOf('_for_')
   const target = code.slice(0, i)
