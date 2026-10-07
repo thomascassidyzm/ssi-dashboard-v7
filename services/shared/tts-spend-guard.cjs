@@ -73,7 +73,9 @@ const { ticketProblem } = require('./door-ticket.cjs')
  * anything looser needs a signed raise.
  */
 const DEFAULT_BUDGETS = Object.freeze({
-  cartesia:   Object.freeze({ monthlyPoolChars: 8_000_000, cycleStartDay: 1, dailyCapChars: 1_000_000, alertDailyChars: 300_000, stopAtShareOfPool: 0.5 }),
+  // Cartesia (Tom 2026-10-07, r-2026-10-07-tts-daily-cap-is-a-runaway): renews on the 23rd; the 8M pool is an ALLOWANCE, not a stop —
+  // overage ($38/M chars) is fine, so there is no cycle stop; passing 8M sends one notice to Watson (overageAllowed).
+  cartesia:   Object.freeze({ monthlyPoolChars: 8_000_000, cycleStartDay: 23, dailyCapChars: 1_000_000, alertDailyChars: 300_000, stopAtShareOfPool: 0.5, overageAllowed: true }),
   elevenlabs: Object.freeze({ monthlyPoolChars: 2_000_000, cycleStartDay: 1, dailyCapChars:   200_000, alertDailyChars:  50_000, stopAtShareOfPool: 0.5 }),
   xai:        Object.freeze({ monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 }),
   azure:      Object.freeze({ monthlyPoolChars: 5_000_000, cycleStartDay: 1, dailyCapChars:   500_000, alertDailyChars: 150_000, stopAtShareOfPool: 0.5 }),
@@ -89,6 +91,9 @@ const UNKNOWN_PROVIDER_BUDGET = Object.freeze({ monthlyPoolChars: 200_000, cycle
 const DEFAULT_REPEAT = Object.freeze({ maxPerKey: 3, windowHours: 24 })
 /** Pool shares at which a human is told, whatever the stop share is. */
 const POOL_ALERT_SHARES = [0.5, 0.8]
+/** cycleCapChars for a provider whose allowance may be overrun (overageAllowed): no cycle stop. */
+const NO_CYCLE_STOP_CHARS = 1e12
+const POOL_OVERAGE = 'POOL_OVERAGE'
 /**
  * Provider-vs-ledger: trip when the provider's delta exceeds ours by this factor
  * AND this many chars. unverifiedAllowanceChars: what one process may reserve
@@ -218,7 +223,7 @@ const STOPPED_BY_TOM = 'STOPPED_BY_TOM'
  * mirrors it for tests.
  */
 const DAILY_TOTAL_CAP = 'DAILY_TOTAL_CAP'
-const TOTAL_DAILY_CAP_CHARS = 260_000 // Tom 2026-10-03 (job #574): 8M/month ÷ 30; was 100,000
+const TOTAL_DAILY_CAP_CHARS = 1_000_000 // Tom 2026-10-07 (job #147): a runaway guard far above the monthly average, not the average itself; was 260,000
 /**
  * THE TOM-APPROVED RUN TIER (job #913, Tom 2026-09-30 11:38Z: "If other people want
  * to generate audio, we still have 100,000 character cap. But if I am approving a
@@ -230,7 +235,7 @@ const TOTAL_DAILY_CAP_CHARS = 260_000 // Tom 2026-10-03 (job #574): 8M/month ÷ 
  * by tools/tts-cap.cjs approve. Job #859 (Tom 2026-10-05): ceiling raised to 1,000,000, JS and DB together; was 300,000 (job #596)
  * (ops/sql/20261005-tts-spend-ceiling-1m.sql v_ceiling).
  */
-const TOTAL_DAILY_CEILING_CHARS = 1_000_000
+const TOTAL_DAILY_CEILING_CHARS = 2_000_000 // Tom 2026-10-07 (job #147): keeps the approved-run tier above the 1M automatic base
 const dayKey = (ms) => new Date(ms).toISOString().slice(0, 10)
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex')
 
@@ -278,6 +283,8 @@ function applyLimits(base, block, nowMs, label) {
     for (const [k, v] of Object.entries(raise)) if (k in LOOSER) requested[k] = v
     if (typeof raise.share === 'number') requested.stopAtShareOfPool = raise.share
   }
+  // overageAllowed (a provider whose allowance may be overrun, no cycle stop) can be switched OFF freely — that is a tightening; never on.
+  if (requested.overageAllowed === false && base.overageAllowed) limits.overageAllowed = false
   for (const [k, v] of Object.entries(requested)) {
     if (!(k in LOOSER)) continue
     if (!(k in base)) continue
@@ -677,7 +684,7 @@ function createSpendGuard(opts = {}) {
 
   function providerLimits(cfg, provider) {
     const b = cfg.providers[provider] || UNKNOWN_PROVIDER_BUDGET
-    return { ...b, cycleCapChars: Math.floor(b.stopAtShareOfPool * b.monthlyPoolChars), maxPerKey: cfg.repeat.maxPerKey, windowHours: cfg.repeat.windowHours }
+    return { ...b, cycleCapChars: b.overageAllowed ? NO_CYCLE_STOP_CHARS : Math.floor(b.stopAtShareOfPool * b.monthlyPoolChars), maxPerKey: cfg.repeat.maxPerKey, windowHours: cfg.repeat.windowHours }
   }
 
   async function ledgerTotals(provider, b) {
@@ -718,7 +725,7 @@ function createSpendGuard(opts = {}) {
         st.ok = true; st.unverifiedChars = 0
         const t = await ledgerTotals(provider, b)
         const pool = u.limitChars || b.monthlyPoolChars
-        if (u.usedChars >= b.stopAtShareOfPool * pool) {
+        if (!b.overageAllowed && u.usedChars >= b.stopAtShareOfPool * pool) {
           const msg = `the provider itself reports ${u.usedChars.toLocaleString()} of ${pool.toLocaleString()} characters used — past the ${Math.round(b.stopAtShareOfPool * 100)}% stop`
           await store.trip(provider, 'PROVIDER_POOL', msg).catch(() => {})
           refuse('PROVIDER_POOL', provider, msg, { usedChars: u.usedChars, pool, course: who.course, job: who.job })
@@ -877,6 +884,9 @@ function createSpendGuard(opts = {}) {
     for (const s of POOL_ALERT_SHARES) {
       if (cycle >= s * b.monthlyPoolChars) alert(`pool:${provider}:${s}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has used ${Math.round(100 * cycle / b.monthlyPoolChars)}% of its ${b.monthlyPoolChars.toLocaleString()}-char pool this cycle (line ${s * 100}%)`, { provider }, { oncePerHost: true })
     }
+    if (b.overageAllowed && cycle > b.monthlyPoolChars) {
+      alert(`overage:${provider}:${cycleStart(now(), b.cycleStartDay)}`, 'warn', `${provider} has passed its ${b.monthlyPoolChars.toLocaleString()}-char allowance this cycle (${cycle.toLocaleString()} used since the ${b.cycleStartDay}th): overage billing has begun. No stop — this is a notice`, { provider, code: POOL_OVERAGE }, { oncePerHost: true })
+    }
     return entry
   }
 
@@ -913,6 +923,7 @@ async function defaultNotify(entry) {
   const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 5000)
   try { await fetch(`${surface}/api/needs-you`, { method: 'POST', headers, body: JSON.stringify({ text }), signal: ctl.signal }) } finally { clearTimeout(t) }
   if (entry.code === DAILY_TOTAL_CAP) await askWatsonForApproval(entry, surface, os.hostname()).catch(() => {})
+  if (entry.code === POOL_OVERAGE) await tellWatson(surface, `Cartesia overage has begun: ${entry.message} (host ${os.hostname()}).`).catch(() => {})
 }
 
 /**
@@ -922,7 +933,7 @@ async function defaultNotify(entry) {
  * is the cron fleet's, as ops/staging-drop-notifier.js does; the alert is
  * already once per host per day, so this is too. Fail-soft: never blocks a render.
  */
-async function askWatsonForApproval(entry, surface, host) {
+async function tellWatson(surface, text) {
   let headers = { 'Content-Type': 'application/json' }
   try { headers = { ...headers, ...require('/home/tomcassidy/command-surface/ops/cs-cron-identity.js').identityHeaders(surface) } } catch { /* fail-soft */ }
   const ctl = new AbortController(); const t = setTimeout(() => ctl.abort(), 5000)
@@ -930,10 +941,14 @@ async function askWatsonForApproval(entry, surface, host) {
     const rooms = await (await fetch(`${surface}/api/rooms`, { headers, signal: ctl.signal })).json()
     const jobId = (rooms.rooms || []).find(r => r.key === 'watson')?.convId
     if (!jobId) return
-    const forWhat = [entry.course && `course ${entry.course}`, entry.job && `job ${entry.job}`, entry.provider && `provider ${entry.provider}`].filter(Boolean).join(', ') || 'an unnamed caller'
-    const text = `Audio approval needed for Tom: the ${Number(entry.cap || TOTAL_DAILY_CAP_CHARS).toLocaleString()}-char daily audio cap is reached (${Number(entry.total || 0).toLocaleString()} spent today, UTC). Requested: ${entry.chars != null ? entry.chars : '?'} more chars, for ${forWhat} (host ${host}). Only Tom can grant it: TOM_SAID_RAISE=yes node tools/tts-cap.cjs raise <capChars> <days> "<why>".`
     await fetch(`${surface}/api/surface-notice`, { method: 'POST', headers, body: JSON.stringify({ jobId, text, relay: 'tts-cap-approval' }), signal: ctl.signal })
   } finally { clearTimeout(t) }
+}
+
+async function askWatsonForApproval(entry, surface, host) {
+  const forWhat = [entry.course && `course ${entry.course}`, entry.job && `job ${entry.job}`, entry.provider && `provider ${entry.provider}`].filter(Boolean).join(', ') || 'an unnamed caller'
+  const text = `Audio approval needed for Tom: the ${Number(entry.cap || TOTAL_DAILY_CAP_CHARS).toLocaleString()}-char daily audio cap is reached (${Number(entry.total || 0).toLocaleString()} spent today, UTC). Requested: ${entry.chars != null ? entry.chars : '?'} more chars, for ${forWhat} (host ${host}). Only Tom can grant it: TOM_SAID_RAISE=yes node tools/tts-cap.cjs raise <capChars> <days> "<why>".`
+  await tellWatson(surface, text)
 }
 
 // ─── Provider usage readers ─────────────────────────────────────────────────

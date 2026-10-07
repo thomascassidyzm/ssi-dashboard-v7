@@ -145,10 +145,10 @@ describe('#8 damage to local files cannot reopen a provider', () => {
 describe('September\'s spend before the ledger counts toward the monthly stop', () => {
   it('with the #382 drain seeded, Cartesia is stopped at 50% of 8M until the pool resets', async () => {
     clock = Date.parse('2026-09-27T10:00:00Z')      // the day after the drain: today's cap is clear
-    const g = guard()
+    const g = guard({ budgetPath: budgets({ providers: { cartesia: { overageAllowed: false } } }) })
     g.store.seed('cartesia', 7_631_695, Date.parse('2026-09-26T12:00:00Z'))
     await expect(call(g, 'hello')).rejects.toThrow(/POOL_SHARE/)
-    clock = Date.parse('2026-10-01T00:05:00Z')
+    clock = Date.parse('2026-10-23T00:05:00Z')      // Cartesia renews on the 23rd
     await expect(call(g, 'hello')).resolves.toBeTruthy()
   })
 })
