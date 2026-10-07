@@ -12,6 +12,7 @@ import { mount, flushPromises } from '@vue/test-utils'
 
 const queueTake = vi.fn()
 const savedTakes = vi.hoisted(() => new Map())
+const pending = vi.hoisted(() => ({ n: null }))
 const rec = vi.hoisted(() => ({
   beginLine: null, discardLine: null, endLine: null,
 }))
@@ -30,7 +31,7 @@ vi.mock('@/composables/useRecordistQueue', () => ({
     isUnsent: () => false, attach: vi.fn(), teardown: vi.fn(),
     queueTake: (take) => { savedTakes.set(take.lineId, true); return queueTake(take) },
     markFailed: vi.fn(),
-    pendingCount: ref(0), savedCount: ref(0), failedCount: ref(0),
+    pendingCount: pending.n || (pending.n = ref(0)), savedCount: ref(0), failedCount: ref(0),
     saved: reactive(savedTakes), failed: new Map(),
     flush: vi.fn(), retryFailed: vi.fn(),
   }),
@@ -85,6 +86,7 @@ async function recordOneAndStop(w) {
 describe('setup check: Submit on the done card', () => {
   beforeEach(() => {
     savedTakes.clear()
+    if (pending.n) pending.n.value = 0
     rec.beginLine = vi.fn()
     rec.discardLine = vi.fn().mockResolvedValue(undefined)
     rec.endLine = vi.fn(() => Promise.resolve(new Blob([new Uint8Array(4096)], { type: 'audio/webm' })))
@@ -133,5 +135,21 @@ describe('setup check: Submit on the done card', () => {
     reactive(savedTakes).set('line-5', true)
     await flushPromises()
     expect(w.text()).toContain('Submit my setup check')
+  })
+
+  it('ten captures with uploads held pending: neither Submit nor still-to-record (review #850)', async () => {
+    stub({ setup: { status: 'open' } }, 10)
+    const w = mount(RecordistRoom, { props: { voiceId: 'human_dan_pack' }, global: { stubs: { RouterLink: { template: '<a><slot/></a>' } } } })
+    await until(() => w.find('.btn-begin').exists(), 'the ready card')
+    pending.n.value = 10 // all ten captured, none uploaded yet
+    await w.find('.btn-begin').trigger('click')
+    await until(() => w.find('.ctl-next').exists(), 'the stage')
+    await wait(300)
+    await w.find('.ctl-next').trigger('click')
+    await flushPromises()
+    if (w.find('.btn-finish').exists()) await w.find('.btn-finish').trigger('click')
+    await until(() => w.find('.rc-card').exists(), 'the done card')
+    expect(w.text()).not.toContain('Submit my setup check')
+    expect(w.text()).not.toMatch(/record at least|still to record/)
   })
 })

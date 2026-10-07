@@ -169,7 +169,7 @@
           <span>We'll open your full script once we've listened. You can close this page.</span>
         </template>
         <template v-else>
-          <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>
+          <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT || queue.pendingCount.value > 0 ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>
           <span v-if="voice.pack.setup.status === 'changes' && voice.pack.setup.note" class="setup-note">From us: {{ voice.pack.setup.note }}</span>
           <button v-if="voice.recorded >= SETUP_MIN_SUBMIT" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
             {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
@@ -2337,8 +2337,11 @@ const setupEnough = computed(() => setupRecorded.value >= SETUP_MIN_SUBMIT)
 const canSubmitSetupHere = computed(() =>
   setupOpen.value && queue.pendingCount.value === 0 && failedList.value.length === 0
     && sessionLines.value.length > 0 && setupEnough.value)
+// Never tell an artist to record what they have recorded (review #850): while
+// takes are captured but not yet uploaded (network outage), say nothing about
+// what is left; the upload banner explains. Submit waits on the same count.
 const setupIncompleteHere = computed(() =>
-  setupOpen.value && sessionLines.value.length > 0 && !setupEnough.value)
+  setupOpen.value && queue.pendingCount.value === 0 && sessionLines.value.length > 0 && !setupEnough.value)
 const setupError = ref(null)
 async function submitSetup() {
   setupSubmitting.value = true
