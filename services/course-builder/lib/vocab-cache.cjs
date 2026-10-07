@@ -5,6 +5,7 @@
 
 const { isChinese } = require('./language-config.cjs');
 const { extractVocab } = require('./text-normalization.cjs');
+const { loadRunningOrder, filterSeedsBefore } = require('../../shared/running-order.cjs');
 
 /**
  * Get cache entry, updating access time. Returns null if expired or missing.
@@ -101,23 +102,23 @@ function addToCourseVocab(ctx, courseCode, lego) {
 async function loadTranslationVocab(ctx, courseCode, upToSeedNumber) {
   const chinese = isChinese(courseCode);
   const vocabSet = new Set();
+  // "Prior" = earlier in the course's running order; for a course without one, seed_number < N.
+  const order = await loadRunningOrder(ctx.supabase, courseCode);
 
-  const { data: seeds } = await ctx.supabase
+  const { data: seeds } = await filterSeedsBefore(ctx.supabase
     .from('course_seeds')
     .select('target_text')
-    .eq('course_code', courseCode)
-    .lt('seed_number', upToSeedNumber)
+    .eq('course_code', courseCode), order, upToSeedNumber)
     .not('target_text', 'is', null);
 
   for (const seed of seeds || []) {
     extractVocab(seed.target_text, chinese).forEach(v => vocabSet.add(v));
   }
 
-  const { data: legos } = await ctx.supabase
+  const { data: legos } = await filterSeedsBefore(ctx.supabase
     .from('course_legos')
     .select('target_text, type, components')
-    .eq('course_code', courseCode)
-    .lt('seed_number', upToSeedNumber)
+    .eq('course_code', courseCode), order, upToSeedNumber)
     .order('seed_number')
     .order('lego_index');
 
@@ -136,16 +137,17 @@ async function loadTranslationVocab(ctx, courseCode, upToSeedNumber) {
 /**
  * Load the introduced-LEGO list (known → target pairs, introduction order)
  * for server-side vocab injection. Paginated — course_legos can exceed the
- * supabase 1000-row default.
+ * supabase 1000-row default. Up to and including upToSeedNumber, or strictly before it with
+ * { exclusive: true }; "before" is the running order when the course has one (job #949).
  */
-async function loadIntroducedLegoPairs(ctx, courseCode, upToSeedNumber) {
+async function loadIntroducedLegoPairs(ctx, courseCode, upToSeedNumber, { exclusive = false } = {}) {
   const pairs = [];
+  const order = await loadRunningOrder(ctx.supabase, courseCode);
   for (let from = 0; ; from += 1000) {
-    const { data, error } = await ctx.supabase
+    const { data, error } = await filterSeedsBefore(ctx.supabase
       .from('course_legos')
       .select('seed_number, lego_index, known_text, target_text')
-      .eq('course_code', courseCode)
-      .lte('seed_number', upToSeedNumber)
+      .eq('course_code', courseCode), order, upToSeedNumber, { inclusive: !exclusive })
       .order('seed_number')
       .order('lego_index')
       .range(from, from + 999);
@@ -153,6 +155,8 @@ async function loadIntroducedLegoPairs(ctx, courseCode, upToSeedNumber) {
     pairs.push(...(data || []));
     if (!data || data.length < 1000) break;
   }
+  // Introduction order: running order when the course has one (the page order above is by id).
+  if (order) pairs.sort((a, b) => order.positionOf.get(a.seed_number) - order.positionOf.get(b.seed_number) || a.lego_index - b.lego_index);
   return pairs.map(l => ({ seed: l.seed_number, idx: l.lego_index, known: l.known_text, target: l.target_text }));
 }
 

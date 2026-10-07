@@ -41,6 +41,7 @@
 
 const { phraseFloor, isBareLegoPhrase } = require('../course-builder/lib/phrase-structure.cjs');
 const { normalizeForContainment } = require('../course-builder/lib/text-normalization.cjs');
+const { loadRunningOrder, orderKey } = require('./running-order.cjs');
 
 const normPair = (s) => String(s || '').toLowerCase()
   .replace(/[’`]/g, "'")
@@ -71,9 +72,13 @@ function carrierOf(lego, seedUses) {
  * Pure audit of one course.
  * @param {Array} legos    rows {seed_number, lego_index, is_new, known_text, target_text[, lego_id]}
  * @param {Array} phrases  rows {seed_number, lego_index, phrase_role, target_text} (components are ignored)
+ * @param {object} [opts]
+ * @param {object|null} [opts.order]  the course's running order (services/shared/running-order.cjs),
+ *   when it has one: LEGOs are walked in running order and seeds dropped from it are not audited
+ *   (job #949). Omitted/null = seed-number order, as always.
  * @returns {{debuts, blocking, thin, dark, isNew:{repeatNew, firstNotNew, neverDebuted}}}
  */
-function auditDebutPractice(legos, phrases) {
+function auditDebutPractice(legos, phrases, { order = null } = {}) {
   const byLego = new Map();
   for (const p of phrases || []) {
     if (p.phrase_role !== 'build' && p.phrase_role !== 'use') continue;
@@ -82,7 +87,9 @@ function auditDebutPractice(legos, phrases) {
     byLego.get(k).push(p);
   }
 
-  const ordered = [...(legos || [])].sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
+  const ordered = [...(legos || [])]
+    .filter((l) => !order || order.positionOf.has(l.seed_number))
+    .sort((a, b) => orderKey(order, a.seed_number) - orderKey(order, b.seed_number) || a.lego_index - b.lego_index);
   const blocking = [];
   const thin = [];
   const dark = [];
@@ -186,7 +193,7 @@ async function checkCourseDebutPractice(supabase, courseCode, { seeds = null } =
       .order('seed_number').order('lego_index').order('position'));
     phrases.push(...rows);
   }
-  const audit = auditDebutPractice(legos, phrases);
+  const audit = auditDebutPractice(legos, phrases, { order: await loadRunningOrder(supabase, courseCode) });
   // A seed-scoped read cannot see first appearances elsewhere in the course.
   if (seeds && seeds.length) audit.isNew = null;
   return { courseCode, seeds: seeds || null, ...audit };
