@@ -14,6 +14,7 @@ const { Router } = require('express');
 const { getLanguageName } = require('../lib/language-config.cjs');
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { emitProgress, emitProgressThrottled } = require('../../shared/emit-progress.cjs');
+const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 
 module.exports = function (ctx) {
   const router = Router();
@@ -47,11 +48,8 @@ module.exports = function (ctx) {
       return { initialized: false, count: existingCount };
     }
 
-    // Get canonical seeds (English)
-    const { data: canonical, error: canonicalError } = await supabase
-      .from('canonical_seeds')
-      .select('seed_number, source_text')
-      .order('seed_number');
+    // Get canonical seeds (English) — the course's own list if one is assigned
+    const { data: canonical, error: canonicalError } = await fetchCanonicalSeeds(supabase, courseCode);
 
     if (canonicalError || !canonical || canonical.length === 0) {
       throw new Error('Failed to fetch canonical seeds: ' + (canonicalError?.message || 'no data'));
@@ -198,10 +196,8 @@ module.exports = function (ctx) {
     });
 
     // Get canonical text for reference
-    const { data: canonical } = await supabase
-      .from('canonical_seeds')
-      .select('seed_number, source_text')
-      .in('seed_number', needsTranslation.map(s => s.seed_number));
+    const { data: canonical } = await fetchCanonicalSeeds(
+      supabase, courseCode, needsTranslation.map(s => s.seed_number));
 
     const canonicalMap = {};
     (canonical || []).forEach(c => {
@@ -294,10 +290,7 @@ module.exports = function (ctx) {
     const seedNumbers = filtered.map(s => s.seed_number);
     let canonicalMap = {};
     if (seedNumbers.length > 0) {
-      const { data: canonical } = await supabase
-        .from('canonical_seeds')
-        .select('seed_number, source_text')
-        .in('seed_number', seedNumbers);
+      const { data: canonical } = await fetchCanonicalSeeds(supabase, courseCode, seedNumbers);
 
       (canonical || []).forEach(c => {
         canonicalMap[c.seed_number] = c.source_text.replace(/\{target\}/g, targetLangName);

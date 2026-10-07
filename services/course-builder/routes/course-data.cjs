@@ -12,6 +12,7 @@ const { getCheckpointStatus, CHECKPOINT_SEEDS } = require('../lib/checkpoint.cjs
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { calculateLegoBalanceScores } = require('../lib/validation.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
+const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 
 // ─── Inline helpers (not yet extracted to a lib module) ──────────────
 
@@ -1145,10 +1146,7 @@ USE:
       const targetLang = parts[0] || '';
       const knownLang = parts[1] || '';
 
-      const { data: canonical, error: canonicalErr } = await ctx.supabase
-        .from('canonical_seeds')
-        .select('seed_number, source_text')
-        .order('seed_number');
+      const { data: canonical, error: canonicalErr } = await fetchCanonicalSeeds(ctx.supabase, courseCode);
 
       let seedsCreated = 0;
       if (canonical && canonical.length > 0 && !canonicalErr) {

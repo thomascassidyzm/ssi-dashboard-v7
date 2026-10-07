@@ -87,6 +87,7 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
 }
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
+const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 const {
@@ -303,10 +304,7 @@ async function initializeCourseSeeds(ctx, courseCode, req = null) {
     return { initialized: false, count: existingCount };
   }
 
-  const { data: canonical, error: canonicalError } = await ctx.supabase
-    .from('canonical_seeds')
-    .select('seed_number, source_text')
-    .order('seed_number');
+  const { data: canonical, error: canonicalError } = await fetchCanonicalSeeds(ctx.supabase, courseCode);
 
   if (canonicalError || !canonical || canonical.length === 0) {
     throw new Error('Failed to fetch canonical seeds: ' + (canonicalError?.message || 'no data'));
