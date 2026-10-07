@@ -1,0 +1,257 @@
+{
+ "id": "X",
+ "version": "2026-10-07.2",
+ "title": "SSi exchange codex: the 6 exchange-grain conversational frames (X1-X6)",
+ "purpose": "The definitions a model (Haiku family) uses to say which exchange frames an ADJACENT PAIR (or triple) of turns inside one scene instantiates. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language). A separate codex from D because the unit tagged is different: D tags one turn, X tags a rendered exchange 'A: ... || B: ...'. Mixing the grains in one codex would let a turn-grain frame fire on an exchange text and vice versa. The X-ids are pinned to tools/frame-layer/dialogue-patterns.cjs.",
+ "task": "You tag short exchanges from a spoken-dialogue corpus (a language course's conversation pods, and clinical health-sector conversations) with exchange frames",
+ "request": "Each numbered item is an exchange: two adjacent turns 'A: <first turn> || B: <second turn>', sometimes with a third turn '|| A: <third turn>'. For EACH numbered exchange, give the X-frame ids it instantiates, per the codex. Never output O: this codex has no openers.",
+ "example": "Example: 3: A asks yes/no; B opens with yes + elaboration => X2",
+ "general_rules": [
+  "An exchange frame is a relation BETWEEN turns: what B's turn does in reply to A's turn. Judge the relation, never the presence of a word in one turn.",
+  "A and B are adjacent turns in the same scene. Usually different people speak; if B's turn plainly continues A's own speech (same speaker going on), no exchange frame fires.",
+  "Only the turns shown count. Do not imagine a turn that is not there.",
+  "Multi-label, and frames co-occur often: 'A: Could I see some ID, please? || B: Of course. Here's my passport.' fires BOTH X2 (the 'of course' answers the request-question) AND X5 (the handover). Always check every frame; never stop at the first that fires. Many exchanges fire none.",
+  "When unsure whether a borderline case fires, follow the frame's boundary rules; if they do not settle it, do not fire."
+ ],
+ "frames_heading": "X-FRAMES",
+ "output": "One line per exchange: '<number>: <tokens>' where tokens are X-frame ids, or '-' when there is nothing. Example: '12: X2 X5'.",
+ "frames": [
+  {
+   "id": "X1",
+   "name": "reciprocal return",
+   "shape": "[WH-Q] -> [A] + and you ? -> [A]",
+   "definition": "A asks B a question; B ANSWERS it and RETURNS the same question to A (and you? / what about you? / and what do you do?). When a third turn is shown, X1 additionally requires that third turn to answer the returned question rather than ask something new.",
+   "positives": [
+    "A: What's your name? || B: My name is Anna. And you?",
+    "A: Where are you from? || B: I'm from Manchester, but I live in London now. And you?",
+    "A: Where are you from? || B: I'm from Manchester. And you? || A: I'm from France.",
+    "A: How are you? || B: Fine, thanks. And yourself?",
+    "A: What do you do? || B: I'm a nurse. And what do you do?"
+   ],
+   "near_misses": [
+    {
+     "text": "A: What's your name? || B: My name is Anna.",
+     "why": "answered, not returned"
+    },
+    {
+     "text": "A: I'm a teacher. || B: And you like it?",
+     "why": "A asked nothing; B asks a new question"
+    },
+    {
+     "text": "A: Where are you from? || B: I'm from Leeds. And you? || A: What time is it?",
+     "why": "the third turn does not answer the return"
+    },
+    {
+     "text": "A: Shall we go? || B: You and me?",
+     "why": "no answer, no return"
+    },
+    {
+     "text": "A: Are you tired? || B: Yes. How about a coffee?",
+     "why": "a proposal, not a return"
+    }
+   ],
+   "boundary": [
+    "B must both answer and return.",
+    "With a third turn shown, the third turn must answer the return."
+   ]
+  },
+  {
+   "id": "X2",
+   "name": "polar response to a question",
+   "shape": "[POLAR Q] -> yes|no , [CLAUSE]",
+   "definition": "A asks a question (normally a yes/no question, or an offer or request phrased as a question); B's turn OPENS with a polar answer (yes, no, yeah, of course, certainly, I'm afraid not), with or without an elaboration.",
+   "positives": [
+    "A: Are you going to work? || B: Yes, I've got a busy day today.",
+    "A: Excuse me, is this seat taken? || B: No, it's free. Please, go ahead.",
+    "A: Would you like the menu? || B: Yes, please.",
+    "A: Did you have a long day? || B: Yes, very. I'm very tired now.",
+    "A: Could I see some ID, please? || B: Of course. Here's my passport."
+   ],
+   "near_misses": [
+    {
+     "text": "A: Where are you from? || B: I'm from France.",
+     "why": "no polar answer"
+    },
+    {
+     "text": "A: I'm going home. || B: Yes, me too.",
+     "why": "A asked no question"
+    },
+    {
+     "text": "A: Is this seat taken? || B: No one's sitting there.",
+     "why": "'no one' is a pronoun, not an answer particle"
+    },
+    {
+     "text": "A: Thank you so much. || B: No problem.",
+     "why": "a downgrade of thanks (X6), not a polar answer"
+    },
+    {
+     "text": "A: Can I help? || B: I'm looking for the station.",
+     "why": "answered without a polar particle"
+    }
+   ],
+   "boundary": [
+    "A's turn must contain a question (a yes/no question, or a request or offer phrased as a question) that B's polar particle answers.",
+    "B's turn must actually OPEN with a polar particle (yes, no, yeah, of course, certainly, sure, I'm afraid not). 'Best not', 'Deal', 'Right' and other replies without a particle do not fire.",
+    "X2 fires alongside X5 when B says 'of course' / 'yes' and hands something over."
+   ]
+  },
+  {
+   "id": "X3",
+   "name": "repair",
+   "shape": "[TURN] -> non-understanding + request -> [REFORMULATION]",
+   "definition": "B signals that A's turn was NOT understood or not heard and asks for repetition, slowing down or clarification: sorry?, pardon?, I didn't catch that, I don't understand, what do you mean?, could you say that again (more slowly)?",
+   "positives": [
+    "A: I'm a nurse, at the hospital just round the corner. And you? || B: I'm sorry, I didn't understand you. Could you say that again more slowly?",
+    "A: It's the third on the left past the lights. || B: Sorry, could you repeat that?",
+    "A: Take it twice daily with food. || B: Pardon?",
+    "A: We need a fasting sample. || B: What do you mean, fasting?",
+    "A: The 42 goes from stand C. || B: I didn't quite catch that."
+   ],
+   "near_misses": [
+    {
+     "text": "A: Is this seat taken? || B: Sorry, yes, it is.",
+     "why": "an apology, not a repair; A was understood"
+    },
+    {
+     "text": "A: If it gets worse, ring 111. || B: What should I be looking out for, exactly?",
+     "why": "asks for more information, A's words were understood"
+    },
+    {
+     "text": "A: Do you understand? || B: Yes, I understand.",
+     "why": "understanding confirmed"
+    },
+    {
+     "text": "A: My mother doesn't understand English. || B: I can help her.",
+     "why": "about someone else's understanding"
+    },
+    {
+     "text": "A: Could you say that again? || B: Of course. I'm a nurse.",
+     "why": "B is the one REFORMULATING; the repair request is in A"
+    }
+   ],
+   "boundary": [
+    "The non-understanding must be B's, about the WORDS of A's immediately preceding turn: B did not hear or could not follow them.",
+    "A follow-up question asking for MORE information ('What should I look out for?', 'How long does it take?') is NOT repair.",
+    "An echo question that B then answers ('In myself? Tired, doctor.') is NOT repair.",
+    "A general comment about A's speed or B's level, not asking A to repeat or rephrase, does not fire."
+   ]
+  },
+  {
+   "id": "X4",
+   "name": "instruction -> read-back",
+   "shape": "[INSTRUCTION] -> [INSTRUCTION REPEATED] + receipt",
+   "definition": "A gives an instruction or information (not a question); B MARKS RECEIPT of it (got it, understood, noted, that's right) and/or SAYS IT BACK; or A asks B to say it back and B's confirmation of the read-back is marked ('word perfect', 'exactly right').",
+   "positives": [
+    "A: Two tablets, twice a day, after food. || B: Got it. Two after breakfast and two after tea.",
+    "A: Bring the form back on Monday. || B: Understood, Monday.",
+    "A: Now say the three things back to me. || B: Rest, drink water, and call if the pain gets worse.",
+    "A: Rest, fluids, and call if it gets worse. || B: Word perfect.",
+    "A: Platform four, change at Cardiff. || B: Platform four, change at Cardiff. Thanks."
+   ],
+   "near_misses": [
+    {
+     "text": "A: Take two tablets. || B: Why two?",
+     "why": "a question, not receipt"
+    },
+    {
+     "text": "A: Do you want the receipt? || B: Got it, thanks.",
+     "why": "A asked a question, it was not an instruction"
+    },
+    {
+     "text": "A: Turn left at the lights. || B: I don't understand.",
+     "why": "non-receipt (X3)"
+    },
+    {
+     "text": "A: It's a chest infection, very common this time of year. || B: Ah, right. That makes sense, I suppose.",
+     "why": "a general acknowledgement of news, no receipt formula or read-back"
+    },
+    {
+     "text": "A: I got the job! || B: Well done.",
+     "why": "news, not an instruction"
+    }
+   ],
+   "boundary": [
+    "B's turn must explicitly mark receipt (got it, understood, noted, that's right, exactly right, word perfect) or repeat the content of A's instruction back.",
+    "General acknowledgements do NOT fire: 'right', 'ah right', 'OK', 'right you are', 'that makes sense', 'I see', plain thanks."
+   ]
+  },
+  {
+   "id": "X5",
+   "name": "order -> deictic handover",
+   "shape": "[ORDER|REQUEST] -> here you are | here's [NP]",
+   "definition": "B HANDS OVER or POINTS OUT a physical thing in the situation (here you are, here's your coffee, there's the machine), in reply to what A ordered, requested or needs.",
+   "positives": [
+    "A: Yes, please. || B: Here's your coffee.",
+    "A: Could I pay by card? Do you have contactless? || B: Of course. There's the machine.",
+    "A: Four single tickets to town, please. || B: Here you are.",
+    "A: Can I see the menu? || B: Here it is.",
+    "A: I'm ready to go home. || B: Here's your medication and your discharge sheet."
+   ],
+   "near_misses": [
+    {
+     "text": "A: What do you think? || B: Here's what I think.",
+     "why": "presents an idea"
+    },
+    {
+     "text": "A: Do you have any painkillers? || B: Yes, they're down that aisle, on the left.",
+     "why": "directions to where the goods are, nothing handed over or pointed out at hand"
+    },
+    {
+     "text": "A: Where are we? || B: Here we are, the station.",
+     "why": "arrival announcement"
+    },
+    {
+     "text": "A: Two coffees, please. || B: Of course. Anything else?",
+     "why": "no handover yet"
+    },
+    {
+     "text": "A: Do you have the keys? || B: No, I left them at home.",
+     "why": "nothing handed over"
+    }
+   ],
+   "boundary": [
+    "Fires only when B gives an object to A or points out an object present right there ('There's the machine', 'The machine is just here').",
+    "Directions to somewhere else ('they're down that aisle', 'it's on the corner') do NOT fire."
+   ]
+  },
+  {
+   "id": "X6",
+   "name": "thanks -> downgrade",
+   "shape": "thank you -> not at all | no problem | you're welcome",
+   "definition": "A THANKS B; B DOWNGRADES the thanks: not at all, no problem, you're welcome, no trouble, any time, my pleasure, don't mention it, that's alright.",
+   "positives": [
+    "A: Thank you so much. || B: Not at all.",
+    "A: Thanks for your help. || B: No problem, any time.",
+    "A: Thank you, love. || B: You're welcome.",
+    "A: That's very kind of you. || B: My pleasure.",
+    "A: Thanks for waiting. || B: That's alright, no trouble."
+   ],
+   "near_misses": [
+    {
+     "text": "A: Thank you very much. Goodbye. || B: Goodbye.",
+     "why": "farewell returned, thanks not downgraded"
+    },
+    {
+     "text": "A: Can you help me? || B: No problem.",
+     "why": "A did not thank; B grants a request"
+    },
+    {
+     "text": "A: Thanks. || B: Thanks.",
+     "why": "returned thanks, no downgrade"
+    },
+    {
+     "text": "A: Thank you. || B: Here's your change.",
+     "why": "handover, no downgrade"
+    },
+    {
+     "text": "A: Sorry I'm late. || B: Not at all.",
+     "why": "A apologised, not thanked"
+    }
+   ],
+   "boundary": [
+    "A's turn must contain thanks and B's downgrade must answer THAT thanks.",
+    "'None taken' answers 'no offence', not thanks, and does not fire."
+   ]
+  }
+ ]
+}

@@ -19,6 +19,20 @@ installTags({
   // matrix clauses pattern-diversity cuts out of the phrases above
   "she'd have driven": ['P17'], 'would you have driven': ['P17', 'P20'],
 });
+// None of these known texts is a pod dialogue shape (D-frames: greetings, thanks, read-backs…).
+const { D_CODEX } = require('./dialogue-patterns.cjs');
+installTags(Object.fromEntries([...require('./frame-tagger.cjs').defaultCache().map.keys()].map(k => [k, []])), D_CODEX);
+// The S7 outcomes on the Spanish TARGET side (split-codex-spa.json): habría + participle = S7A, hubiera(s) = S7B.
+const A = ['S7A'], B = ['S7B'], AB = ['S7A', 'S7B'];
+installTags({
+  'conducido': [], 'habría conducido a casa': A, 'habría conducido': A, 'habría conducido de manera segura': A,
+  'habría conducido si me lo hubieras dicho': AB, 'habría conducido si me hubieras dicho lo cansado que estabas': AB,
+  'habría conducido pero estaba cansado': A, 'habría conducido si me hubieras dicho eso': AB, 'habría conducido hasta allí': A,
+  'si hubiera conducido': B, 'habrías conducido': A, 'habría conducido si hubiera estado más cerca': AB,
+  'si hubieras conducido habríamos llegado antes': AB, 'ella habría conducido pero nadie se lo pidió': A,
+  'conducido por otra persona habría sido más fácil': A, 'si él hubiera conducido el coche yo habría estado más contento': AB,
+  '¿habrías conducido tan lejos?': A,
+}, require('./split-codex-spa.json'));
 // ids unique, ordered, and each carries a shape
 const ids = PATTERNS.map(p => p.id);
 if (new Set(ids).size !== ids.length) { fail++; console.log('FAIL duplicate pattern ids'); }

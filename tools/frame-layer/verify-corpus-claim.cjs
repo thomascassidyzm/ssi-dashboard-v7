@@ -24,7 +24,8 @@ require('dotenv').config({ quiet: true });
 const { createClient } = require('@supabase/supabase-js');
 const path = require('path');
 const { loadPodCanon, pageAll } = require('./corpus.cjs');
-const { inventory, loadSectorSource, SECTOR_SOURCES, stalenessOf } = require('./extract-dialogue-patterns.cjs');
+const { inventory, prepareInventory, loadSectorSource, SECTOR_SOURCES, stalenessOf } = require('./extract-dialogue-patterns.cjs');
+const { ensureTagged, knownLanguageName } = require('./frame-tagger.cjs');
 const PATTERNS = require('./patterns.cjs');
 
 const ROOT = path.join(__dirname, '..', '..');
@@ -46,7 +47,7 @@ async function main() {
   // 1: the seed side
   const seeds = await pageAll(sb, 'course_seeds', 'seed_number,known_text',
     q => q.eq('course_code', course).order('seed_number'));
-  await require('./frame-tagger.cjs').ensureTagged(seeds.map(s => s.known_text || ''));
+  await ensureTagged(seeds.map(s => s.known_text), { knownLanguage: knownLanguageName(course) }); // model-tagged, cached
   const unmatched = seeds.filter(s => !PATTERNS.some(p => p.test(s.known_text))).length;
   const ep = require(path.join(ROOT, 'docs/frame-layer/english-pattern-inventory.json'));
   console.log(`SEEDS (${course}): live ${seeds.length} seeds, ${unmatched} unmatched by any P* frame`);
@@ -73,6 +74,7 @@ async function main() {
       console.log(`sector source ${s}: ${dup}/${r.rows.length} rows already in canon — NOT added (double-count guard)`);
     } else extraSector.push(...r.rows);
   }
+  await prepareInventory([...canon, ...extraSector]);
   const liveInv = inventory([...canon, ...extraSector], {
     pods: livePods, sector_sources: [], sector_unparsed: 0, canon_max_updated_at: maxUpd,
   });

@@ -30,156 +30,82 @@
  * TEXT and carries the seed numbers it is known by — a course inherits a tag by
  * matching text, never by matching seed number.
  *
- * DETERMINISTIC, NO LLM. Position-class matchers over surface form plus the
- * frame layer's own signatures. Where a class cannot be decided mechanically it
- * is left untagged and counted, never guessed: an untagged sentence is an
- * honest hole in a filler pool, and a wrongly-tagged one is poison in it.
+ * A MODEL CLASSIFIES, NEVER A REGEX (Tom, 2026-10-07,
+ * r-2026-10-07-never-use-regex-to-classify-language). This file used to say
+ * "DETERMINISTIC, NO LLM" and match position classes with regexes over the
+ * surface form; that is overruled. The classes are now DEFINED in
+ * could-occupy-codex.json and CLASSIFIED by frame-tagger.cjs, a Haiku-family
+ * model reading those definitions, cached per known text, so a run is
+ * repeatable from the cache. What did NOT change: every tag is a
+ * COULD-OCCUPY, never attestation, and the codex is written CONSERVATIVE —
+ * a class fires on evidence in the sentence itself. An untagged sentence is
+ * an honest hole in a filler pool; a wrongly-tagged one is poison in it.
+ *
+ * C0 "any turn" is a WORD COUNT (three words or more), not a classification
+ * of language, so it is computed here and is not in the codex.
  */
-const PATTERNS = require('./patterns.cjs');
-const { SENTENCE_FRAMES } = require('./dialogue-patterns.cjs');
-const D = Object.fromEntries(SENTENCE_FRAMES.map(f => [f.id, f]));
-const P = Object.fromEntries(PATTERNS.map(f => [f.id, f]));
+const { framesOf, ensureTagged } = require('./frame-tagger.cjs');
+const C_CODEX = require('./could-occupy-codex.json');
 
 const T = (s) => String(s || '').trim();
-const isQ = (s) => /\?/.test(T(s));
-const re = (r) => (s) => r.test(T(s));
+const wordCount = (s) => T(s).split(' ').filter(Boolean).length;
 
 /**
- * POSITION CLASSES. Each is a mechanically-decidable property of ONE sentence,
- * mapped to the shape positions that property could fill. The mapping is read
- * off `services/shared/metagraph/nodes.json` position names, never invented:
- * `positions` lists `NODE#index` exactly as the store spells them.
+ * POSITION CLASSES. Each is a property of ONE sentence, mapped to the shape
+ * positions that property could fill. The mapping is read off
+ * `services/shared/metagraph/nodes.json` position names, never invented:
+ * `positions` lists `NODE#index` exactly as the store spells them. The
+ * mapping is DATA and stays here; what a class MEANS is its codex definition.
  *
- * `test` is a predicate over the known-side text. Deliberately CONSERVATIVE:
- * a class fires on evidence in the sentence itself, so a sentence that could
- * fill a position "with enough imagination" stays untagged.
+ * `test` is a cache lookup (throws for an untagged text): run
+ * `ensureCouldOccupyTagged(texts)` first.
  */
+const POSITIONS = {
+  C1: ['N3#1', 'N2#1'],
+  C2: ['N9#1', 'N4#1'],
+  C3: ['N4#1', 'N2#2'],
+  C4: ['N5#1', 'N13#1', 'N12#2', 'N8#1'],
+  C5: ['N6#2'],
+  // NOT N5#2 "A+return": that position is an answer PLUS the reciprocal
+  // return, and no seed carries return material. Leaving it empty is the
+  // honest reading; filling it with plain answers would be the frame error
+  // the whole design exists to prevent.
+  C6: ['N3#2', 'N12#3'],
+  C7: ['N3#2', 'N9#2', 'N12#3'],
+  C8: ['N7#2', 'N9#2', 'N15#2'],
+  C9: ['N7#2', 'N15#2', 'N11#2'],
+  C10: ['N7#1', 'N306#1'],
+  C11: ['N7#4', 'N8#3', 'N4#4', 'N11#6'],
+  C12: ['N4#2', 'N12#4', 'N12#6'],
+  C13: ['N4#3', 'N2#7'],
+  C14: ['N10#2', 'N2#7'],
+  C15: ['N10#1', 'N11#2'],
+  C16: ['N11#1', 'N11#3'],
+  C17: ['N12#1', 'N908#1'],
+  C18: ['N13#2'],
+  C19: ['N14#1', 'N15#1', 'N303#1'],
+  C20: ['N909#1', 'N302#2'],
+  C21: ['N1#1', 'N1#2'],
+  C22: ['N2#6'],
+  C24: ['N13#1'],
+  C23: ['N15#4', 'N17#3'],
+};
+
 const CLASSES = [
-  { id: 'C1', name: 'availability question',
-    positions: ['N3#1', 'N2#1'],
-    test: (s) => isQ(s) && /\b(is there|are there|have you got|do you have|got any|do you sell|is that|do you know if)\b/i.test(s) },
-
-  { id: 'C2', name: 'possibility / permission question',
-    positions: ['N9#1', 'N4#1'],
-    test: (s) => isQ(s) && /\b(can i|could i|may i|is it possible|would it be|am i allowed|do you mind if|is it (ok|okay|alright)|can we|could we)\b/i.test(s) },
-
-  { id: 'C3', name: 'request of the other',
-    positions: ['N4#1', 'N2#2'],
-    test: (s) => (isQ(s) && /\b(can you|could you|would you|will you|do you want to|would you mind)\b/i.test(s))
-              || /^(please\b|don't\b)/i.test(T(s)) },
-
-  { id: 'C4', name: 'wh-question / elicitation',
-    positions: ['N5#1', 'N13#1', 'N12#2', 'N8#1'],
-    test: (s) => isQ(s) && P.P21.test(s) },
-
-  { id: 'C5', name: 'repair initiation',
-    positions: ['N6#2'],
-    test: re(/\b(say that again|didn'?t (quite )?catch|don'?t understand|what do you mean|come again|more slowly|repeat that|speak more slowly)\b/i) },
-
-  { id: 'C6', name: 'plain answer / report',
-    // NOT N5#2 "A+return": that position is an answer PLUS the reciprocal
-    // return, and no seed carries return material. Leaving it empty is the
-    // honest reading; filling it with plain answers would be the frame error
-    // the whole design exists to prevent.
-    positions: ['N3#2', 'N12#3'],
-    test: (s) => !isQ(s) && !/^(please\b|don't\b)/i.test(T(s)) && T(s).split(/\s+/).length >= 3 },
-
-  { id: 'C7', name: 'hedged answer — roughly, and it depends',
-    positions: ['N3#2', 'N9#2', 'N12#3'],
-    // "about" and "around" are approximators only in front of a quantity — as
-    // bare prepositions ("thinking about how to answer") they are not hedges,
-    // and the probe caught them tagging plain reports as hedged answers.
-    test: (s) => !isQ(s) && (/\b(maybe|perhaps|probably|possibly|more or less|i think|i'?m not sure|it depends|sort of|kind of|roughly|i suppose|might)\b/i.test(s)
-              || /\b(about|around)\s+(\d|a |an |half|ten|twenty|thirty|forty|fifty|a hundred)/i.test(s)) },
-
-  { id: 'C8', name: "can't comply, with a reason",
-    positions: ['N7#2', 'N9#2', 'N15#2'],
-    test: (s) => !isQ(s) && /\b(can'?t|cannot|couldn'?t|won'?t|don'?t want to|not able to|unable)\b/i.test(s)
-              && /\b(because|but|so|since|as i|i'?ve got|i have to)\b/i.test(s) },
-
-  { id: 'C9', name: 'decline / counter with an account',
-    positions: ['N7#2', 'N15#2', 'N11#2'],
-    test: (s) => !isQ(s) && /\b(but|although|even though|actually|on the other hand|i don'?t think|i'?m not sure that)\b/i.test(s)
-              && T(s).split(/\s+/).length >= 5 },
-
-  { id: 'C10', name: 'proposal',
-    positions: ['N7#1', 'N306#1'],
-    test: re(/\b(shall we|let'?s|why don'?t we|do you want to|would you like to|we could|we should|how about)\b/i) },
-
-  { id: 'C11', name: 'acceptance / uptake',
-    positions: ['N7#4', 'N8#3', 'N4#4', 'N11#6'],
-    test: (s) => D.D2.test(s) || D.D7.test(s) },
-
-  { id: 'C12', name: 'instruction / advice',
-    positions: ['N4#2', 'N12#4', 'N12#6'],
-    // ADDRESSED TO THE OTHER, or nothing. "I'm going to try to explain" and
-    // "they want to make sure" are not instructions, and the probe caught both:
-    // the lexis has to carry a second-person addressee or open the sentence.
-    test: (s) => !isQ(s) && (P.P26.test(s)
-              || /\b(you (need|have|ought) to|you should|you must|you'?ll need to)\b/i.test(s)
-              || /^(make sure|remember to|don'?t forget)\b/i.test(T(s))) },
-
-  { id: 'C13', name: 'read-back / receipt',
-    positions: ['N4#3', 'N2#7'],
-    test: (s) => D.D10.test(s) },
-
-  { id: 'C14', name: 'thanks / downgrade',
-    positions: ['N10#2', 'N2#7'],
-    test: (s) => D.D3.test(s) },
-
-  { id: 'C15', name: 'compliment / positive assessment of the other',
-    positions: ['N10#1', 'N11#2'],
-    test: re(/\b(you'?re (very|so|really)|that'?s (very|really|so) (kind|good|nice|clever)|you look|well done|you'?ve done)\b/i) },
-
-  { id: 'C16', name: 'self-downgrade',
-    positions: ['N11#1', 'N11#3'],
-    test: re(/\b(i'?m not very good|i'?m only|i don'?t speak (it )?(very )?well|i'?m still learning|i'?m no good|my \w+ (is|isn'?t) (very )?good)\b/i) },
-
-  { id: 'C17', name: 'trouble declaration',
-    positions: ['N12#1', 'N908#1'],
-    // a bare "feeling X" tagged "she saw me feeling nervous" as a trouble
-    // declaration; the trouble has to be the SPEAKER'S and named.
-    test: (s) => !isQ(s) && /\b(i'?ve got a (bad|sore|terrible)|i have a (bad|sore|terrible)|i'?m (worried|ill|sick|not feeling|feeling (ill|sick|unwell|dizzy))|it hurts|there'?s a problem|i can'?t sleep|my \w+ hurts)\b/i.test(s) },
-
-  { id: 'C18', name: 'not-knowing, held',
-    positions: ['N13#2'],
-    test: re(/\b(i don'?t know|i'?ve no idea|i have no idea|i'?m not sure|i can'?t remember|nobody knows)\b/i) },
-
-  { id: 'C19', name: 'claim / generalisation',
-    positions: ['N14#1', 'N15#1', 'N303#1'],
-    // "nobody" was in this lexis and tagged "No nobody told me." as a claim: a
-    // negative-polarity pronoun in a plain report is not a generalisation.
-    test: (s) => !isQ(s) && /\b(always|never|everyone|everybody|people (who|are|always|don'?t)|it'?s important|the thing is|in general|usually|generally)\b/i.test(s) },
-
-  { id: 'C20', name: 'anecdote opener',
-    positions: ['N909#1', 'N302#2'],
-    // "last time we talked" is not an anecdote opener; a dated past narrative is.
-    test: (s) => !isQ(s) && /\b(when i was|the other day|last (week|night|year)|years ago|i remember)\b/i.test(s) },
-
-  { id: 'C21', name: 'greeting / ritual open or close',
-    positions: ['N1#1', 'N1#2'],
-    test: (s) => D.D1.test(s) },
-
-  { id: 'C22', name: 'reckoning',
-    positions: ['N2#6'],
-    test: (s) => D.D9.test(s) },
-
-  { id: 'C24', name: 'polar question',
-    positions: ['N13#1'],
-    test: (s) => isQ(s) && !P.P21.test(s) },
-
+  ...C_CODEX.frames.map(f => ({ id: f.id, name: f.name, definition: f.definition,
+    positions: POSITIONS[f.id] || [],
+    test: (s) => !!T(s) && framesOf(s, C_CODEX).includes(f.id) })),
   { id: 'C0', name: 'any turn — the generic first position',
     // N6/N17/N907 all open with a bare "turn": any utterance can be the thing
     // that later gets repaired, interrupted or misread. TRUE, and vacuous on
     // its own, so it is marked generic alongside C6 and never counted as
     // coverage.
     positions: ['N6#1', 'N17#1', 'N907#1'],
-    test: (s) => T(s).split(/\s+/).length >= 3 },
-
-  { id: 'C23', name: 'explicit park',
-    positions: ['N15#4', 'N17#3'],
-    test: re(/\b(let'?s (leave|come back to) (it|that)|we'?ll talk about (it|that) (later|another time)|another time|park (it|that))\b/i) },
+    test: (s) => wordCount(s) >= 3 },
 ];
+
+/** Tag every known text the could-occupy classes will read (Haiku, cached). */
+const ensureCouldOccupyTagged = (texts, opts = {}) => ensureTagged(texts, { ...opts, codex: C_CODEX });
 
 /** Tag one known-side sentence. Returns [] when nothing fires — an honest hole. */
 function tag(text) {
@@ -222,7 +148,7 @@ function tagCorpus(entries) {
   return { rows, byPosition };
 }
 
-module.exports = { CLASSES, tag, tagCorpus, isSpecific, GENERIC };
+module.exports = { CLASSES, POSITIONS, C_CODEX, tag, tagCorpus, isSpecific, GENERIC, ensureCouldOccupyTagged };
 
 /** The human read beside the machine-readable companion, per this directory's convention. */
 function renderMd(out) {
@@ -233,7 +159,7 @@ function renderMd(out) {
   const empty = Object.entries(fp).filter(([, v]) => v.specific_fillers === 0);
   L.push(`# Could-occupy tagging (known language: ${out.known_language})`);
   L.push('');
-  L.push(`Generated ${out.generated.slice(0, 10)} from \`course_seeds\` across ${out.source.courses_read} ${out.known_language}-known courses (${out.source.seed_rows_read} rows → **${out.source.distinct_known_texts} distinct known texts**), tagged against the shape store \`${out.source.shape_store}\`. Read-only, deterministic, no LLM.`);
+  L.push(`Generated ${out.generated.slice(0, 10)} from \`course_seeds\` across ${out.source.courses_read} ${out.known_language}-known courses (${out.source.seed_rows_read} rows → **${out.source.distinct_known_texts} distinct known texts**), tagged against the shape store \`${out.source.shape_store}\`. Read-only; classes tagged by a Haiku-family model from \`could-occupy-codex.json\` (${out.source.classifier}).`);
   L.push('');
   L.push(`**COULD-OCCUPY, NEVER ATTESTATION.** ${out.what_this_is}`);
   L.push('');
@@ -247,7 +173,7 @@ function renderMd(out) {
   L.push('|---|---|---:|---|');
   for (const [k, v] of filled) {
     const ex = v.examples[0];
-    L.push(`| \`${k}\` | ${v.node_name} / ${v.position} | ${v.specific_fillers} | ${ex ? '"' + String(ex.known_text).replace(/\|/g, '\\|') + '"' : '—'} |`);
+    L.push(`| \`${k}\` | ${v.node_name} / ${v.position} | ${v.specific_fillers} | ${ex ? '"' + String(ex.known_text).replaceAll('|', '\\|') + '"' : '—'} |`);
   }
   L.push('');
   L.push(`## The ${empty.length} positions with no specific filler — the honest holes`);
@@ -277,7 +203,7 @@ if (require.main === module) {
   const mg = require(path.join(__dirname, '..', '..', 'services', 'shared', 'metagraph', 'index.cjs'));
   const ROOT = path.join(__dirname, '..', '..');
   const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY);
-  const norm = (s) => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}' ]/gu, ' ').replace(/\s+/g, ' ').trim();
+  const { norm } = require('./availability.cjs'); // the frame layer's one text normaliser (plumbing, not classification)
   const args = process.argv.slice(2);
   const arg = (n, d) => { const i = args.indexOf(n); return i >= 0 ? args[i + 1] : d; };
   const KNOWN = arg('--known', 'eng');
@@ -304,6 +230,13 @@ if (require.main === module) {
       key: e.key, known_text: e.known_text, course_count: e.courses.size,
       seed_numbers: [...e.seeds].sort((a, b) => a - b),
     })).sort((a, b) => b.course_count - a.course_count || a.key.localeCompare(b.key));
+
+    const { knownLanguageName } = require('./frame-tagger.cjs');
+    const lang = knownLanguageName(`x_for_${KNOWN}`);
+    const toTag = SAMPLE ? entries.filter((_, i) => i % Math.max(1, Math.floor(entries.length / 40)) === 0) : entries;
+    const ledger = await ensureCouldOccupyTagged(toTag.map(e => e.known_text), { knownLanguage: lang });
+    console.error(`tagged ${ledger.missing} new text(s) in ${ledger.calls} call(s), $${ledger.cost_usd.toFixed(3)}`);
+    if (ledger.untagged.length) throw new Error(`${ledger.untagged.length} text(s) came back untagged; refusing to write a pool with holes the model left`);
 
     if (SAMPLE) {
       const step = Math.max(1, Math.floor(entries.length / 40));
@@ -332,6 +265,7 @@ if (require.main === module) {
         seed_rows_read: rows.length,
         distinct_known_texts: entries.length,
         shape_store: 'services/shared/metagraph/nodes.json (docs/pods/shape-graph-2026-08-30.md)',
+        classifier: `${C_CODEX.id} codex ${C_CODEX.version}, haiku`,
         keying: 'by normalised known TEXT, never by seed number — there is ONE canonical seed set, identical by definition, but a course’s KNOWN TEXT is derived and legitimately differentiated per pair, so a course inherits a tag by matching text',
       },
       counts: {
@@ -361,7 +295,7 @@ if (require.main === module) {
     };
     const at = path.join(ROOT, 'docs', 'frame-layer', `could-occupy-${KNOWN}.json`);
     fs.writeFileSync(at, JSON.stringify(out, null, 1));
-    fs.writeFileSync(at.replace(/\.json$/, '.md'), renderMd(out));
+    fs.writeFileSync(at.slice(0, -'.json'.length) + '.md', renderMd(out));
     console.log(`${out.source.seed_rows_read} seed rows across ${out.source.courses_read} ${KNOWN}-known courses → ${entries.length} distinct known texts`);
     console.log(`specifically tagged ${out.counts.tagged_specifically}, generic-only ${out.counts.generic_only}, untagged ${out.counts.untagged}`);
     console.log(`shape positions: ${out.counts.positions_with_a_SPECIFIC_filler} of ${out.counts.positions_in_store} have a specific filler`);

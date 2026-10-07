@@ -33,7 +33,7 @@
 
 const path = require('path');
 const { generateLegoPhrases, buildPhrasePrompt, PHRASE_MODEL } = require('../lib/phrase-generation.cjs');
-const { computeDeclaration, checkDeclaration } =
+const { computeDeclaration, checkDeclaration, tagForCheck } =
   require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 
 module.exports = function phrasesV3Routes(ctx) {
@@ -89,6 +89,7 @@ module.exports = function phrasesV3Routes(ctx) {
           .select('phrase_role,known_text,target_text')
           .eq('course_code', req.params.courseCode).eq('seed_number', seed).eq('lego_index', lego);
         if (dbErr) throw new Error(dbErr.message);
+        await tagForCheck(declaration, data || []); // frames are model-tagged, cached per text
         check = checkDeclaration(declaration, data || []);
       }
       res.json({ ok: true, declaration, check });

@@ -1,0 +1,1701 @@
+[
+ {
+  "gid": "D-001",
+  "set": "dev",
+  "why": "random",
+  "text": "Nothing for me, thanks. I feel a bit sick, to be honest.",
+  "gold": {
+   "frames": [
+    "D3"
+   ],
+   "note": "'Nothing for me, thanks' is a polite refusal with thanks. No item is ordered, so not D8."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-002",
+  "set": "dev",
+  "why": "random",
+  "text": "Right you are. Nothing after midnight.",
+  "gold": {
+   "frames": [
+    "D10",
+    "D12"
+   ],
+   "note": "'Right you are' is a compliance commitment. 'Nothing after midnight' reads the instruction back, which marks receipt."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-003",
+  "set": "dev",
+  "why": "random",
+  "text": "I feel a bit dizzy when I stand up. Is that normal?",
+  "gold": {
+   "frames": [],
+   "note": "Asks whether it is normal; this is not a reassurance."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-004",
+  "set": "dev",
+  "why": "random",
+  "text": "Do you know where I can get a ticket in the station?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-005",
+  "set": "dev",
+  "why": "random",
+  "text": "Good. And the follow-up letter comes in the post - ring us if it's not here within two weeks.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "Borderline: sentence-initial 'Good.' is an evaluative uptake of the previous turn."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-006",
+  "set": "dev",
+  "why": "random",
+  "text": "Every minute? And how long does it take, all in?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-007",
+  "set": "dev",
+  "why": "random",
+  "text": "Lovely. Where shall I put my things? I've brought my own pillow.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-008",
+  "set": "dev",
+  "why": "random",
+  "text": "I'm from Manchester, but I live in London now. And you?",
+  "gold": {
+   "frames": [
+    "D6"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-009",
+  "set": "dev",
+  "why": "random",
+  "text": "I will. It's good to see a doctor learning, mind. Fair play.",
+  "gold": {
+   "frames": [
+    "D7",
+    "D12"
+   ],
+   "note": "Borderline: 'Fair play.' is praise of the other, like 'well done'."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-010",
+  "set": "dev",
+  "why": "random",
+  "text": "Good morning. What can I get you?",
+  "gold": {
+   "frames": [
+    "D1"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-011",
+  "set": "dev",
+  "why": "random",
+  "text": "Good to know it's written down somewhere official.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "Borderline: 'Good to know' is an evaluative uptake of the information given; it could arguably be D10 receipt."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-012",
+  "set": "dev",
+  "why": "random",
+  "text": "Here's what happens next: I'll examine you now, we'll take some bloods, and I'll come back to you myself before lunch with a plan. You won't be left wondering.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": "'Here's what happens next' presents an idea, not a thing (no D5). 'I'll...' announces a plan, not compliance (no D12). 'You won't be left wondering' reassures."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-013",
+  "set": "dev",
+  "why": "random",
+  "text": "Perfect. Let me just watch you take those, and then I can sign them off.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-014",
+  "set": "dev",
+  "why": "random",
+  "text": "She's better at the details than me, these days.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-015",
+  "set": "dev",
+  "why": "random",
+  "text": "I will. Fair play for saying so.",
+  "gold": {
+   "frames": [
+    "D7",
+    "D12"
+   ],
+   "note": "Borderline: 'Fair play for saying so' is praise-uptake of the other's remark."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-016",
+  "set": "dev",
+  "why": "random",
+  "text": "Fire away, bach.",
+  "gold": {
+   "frames": [],
+   "note": "'Fire away' grants permission with an imperative; it is not a polar particle."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-017",
+  "set": "dev",
+  "why": "random",
+  "text": "Fair enough! If today's scan is clear and you stay this well overnight, then tomorrow it is.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "'Fair enough!' is uptake. The conditional 'tomorrow it is' is not a clear compliance commitment, so not D12."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-018",
+  "set": "dev",
+  "why": "random",
+  "text": "Understood. I'll wait for you.",
+  "gold": {
+   "frames": [
+    "D10",
+    "D12"
+   ],
+   "note": "'I'll wait for you' complies with an implied instruction."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-019",
+  "set": "dev",
+  "why": "random",
+  "text": "Am I speaking slowly enough for you now?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-020",
+  "set": "dev",
+  "why": "random",
+  "text": "And what is the wifi password?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-021",
+  "set": "dev",
+  "why": "random",
+  "text": "Are you with me all day, then? It's nice to see a friendly face.",
+  "gold": {
+   "frames": [],
+   "note": "'Nice to see a friendly face' is not a ritual greeting formula."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-022",
+  "set": "dev",
+  "why": "random",
+  "text": "Written down would be lovely. I don't trust my memory these days.",
+  "gold": {
+   "frames": [],
+   "note": "'Lovely' does not open the sentence; it accepts an offer and is not an uptake assessment."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-023",
+  "set": "dev",
+  "why": "random",
+  "text": "I need to take a little blood now. Sharp scratch coming...",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-024",
+  "set": "dev",
+  "why": "random",
+  "text": "Everything looks normal, but your blood sugar was a little on the high side.",
+  "gold": {
+   "frames": [],
+   "note": "This reports results; it does not normalise a worry."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-025",
+  "set": "dev",
+  "why": "random",
+  "text": "Any allergies that you know of? Any medication you're taking?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-026",
+  "set": "dev",
+  "why": "random",
+  "text": "What I think is happening is a chest infection - that's the cough and the tiredness.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-027",
+  "set": "dev",
+  "why": "random",
+  "text": "Chicken it is. And shall I put you down for the sponge and custard? You look like a pudding man to me.",
+  "gold": {
+   "frames": [
+    "D10"
+   ],
+   "note": "Borderline: 'Chicken it is' marks receipt of the patient's choice."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-028",
+  "set": "dev",
+  "why": "random",
+  "text": "Here's your medication. One in the morning, one at night, with food. Any questions?",
+  "gold": {
+   "frames": [
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-029",
+  "set": "dev",
+  "why": "random",
+  "text": "Can you tell me where the toilet is?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-030",
+  "set": "dev",
+  "why": "random",
+  "text": "Every day with my breakfast, regular as clockwork.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-031",
+  "set": "dev",
+  "why": "random",
+  "text": "Nothing's wrong - it's routine. The tablets can be hard on kidneys, so we keep an eye. All finished, look - press on that for me.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": "'Nothing's wrong - it's routine' reassures the patient; 'press on that' is an instruction, not a handover"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-032",
+  "set": "dev",
+  "why": "random",
+  "text": "Does the bus leave from here?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-033",
+  "set": "dev",
+  "why": "random",
+  "text": "Yes, of course. The machine is just here.",
+  "gold": {
+   "frames": [
+    "D2",
+    "D5"
+   ],
+   "note": "'The machine is just here' points out a physical object to the other, the same move as 'There's the machine'"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-034",
+  "set": "dev",
+  "why": "random",
+  "text": "So here's the plan: a week of antibiotics, plenty of rest and fluids, and I want to hear from you if you're not clearly better by Friday.",
+  "gold": {
+   "frames": [],
+   "note": "'here's the plan' presents an idea, not a thing"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-035",
+  "set": "dev",
+  "why": "random",
+  "text": "It's not very far. Maybe three or four miles.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-036",
+  "set": "dev",
+  "why": "random",
+  "text": "About two weeks ago. It's there all the time, more or less.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-037",
+  "set": "dev",
+  "why": "random",
+  "text": "How much does it cost to get a bus into town?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-038",
+  "set": "dev",
+  "why": "random",
+  "text": "After tea. It's a date.",
+  "gold": {
+   "frames": [
+    "D12"
+   ],
+   "note": "'It's a date' accepts a proposal, like 'Deal'"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-039",
+  "set": "dev",
+  "why": "random",
+  "text": "Thank you, that's good to know. I need to learn more words, and I need to practise listening. I don't understand people very well when they don't speak slowly.",
+  "gold": {
+   "frames": [
+    "D3"
+   ],
+   "note": "'that's good to know' follows the thanks and does not open the sentence, parallel to 'Thanks, that's really helpful'"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-040",
+  "set": "dev",
+  "why": "random",
+  "text": "Makes sense. What do I do if it's the weekend, though?",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "'Makes sense' is a sentence-opening evaluative uptake of the explanation; D10 not fired"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-041",
+  "set": "dev",
+  "why": "enriched:D1",
+  "text": "Good morning, how are you feeling? Any pain overnight?",
+  "gold": {
+   "frames": [
+    "D1"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-042",
+  "set": "dev",
+  "why": "enriched:D1",
+  "text": "Ten at the café — perfect. See you Saturday!",
+  "gold": {
+   "frames": [
+    "D1",
+    "D7",
+    "D10"
+   ],
+   "note": "'Ten at the café' reads back the arrangement; 'perfect' is the uptake; D12 not fired"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-043",
+  "set": "dev",
+  "why": "enriched:D1",
+  "text": "Good afternoon. What can I get you?",
+  "gold": {
+   "frames": [
+    "D1"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-044",
+  "set": "dev",
+  "why": "enriched:D1",
+  "text": "Welcome. Please follow me. Here are the menus.",
+  "gold": {
+   "frames": [
+    "D1",
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-045",
+  "set": "dev",
+  "why": "enriched:D2",
+  "text": "No, we only take cash.",
+  "gold": {
+   "frames": [
+    "D2"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-046",
+  "set": "dev",
+  "why": "enriched:D2",
+  "text": "Yes, can I have a glass of water as well, please.",
+  "gold": {
+   "frames": [
+    "D2"
+   ],
+   "note": "The request has a verb (can I have), so no D8"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-047",
+  "set": "dev",
+  "why": "enriched:D2",
+  "text": "Of course, no problem. Not very long — how long is that, exactly?",
+  "gold": {
+   "frames": [
+    "D2",
+    "D7"
+   ],
+   "note": "'Of course, no problem' grants a request; 'exactly' here is a precision adverb inside a question"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-048",
+  "set": "dev",
+  "why": "enriched:D2",
+  "text": "Chwarae teg i chi! Of course, that's fine. We'll manage together.",
+  "gold": {
+   "frames": [
+    "D2",
+    "D7",
+    "D11"
+   ],
+   "note": "'Chwarae teg' is praise uptake; 'that's fine... we'll manage together' reassures; 'of course' taken as agreeing"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-049",
+  "set": "dev",
+  "why": "enriched:D3",
+  "text": "Thank you - it catches me out everywhere, the dairy.",
+  "gold": {
+   "frames": [
+    "D3"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-050",
+  "set": "dev",
+  "why": "enriched:D3",
+  "text": "Diolch, that's very kind. And remember, if anything I say isn't clear, just stop me - any time at all.",
+  "gold": {
+   "frames": [
+    "D3"
+   ],
+   "note": "'Diolch' and 'that's very kind' both express thanks to the interlocutor"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-051",
+  "set": "dev",
+  "why": "enriched:D3",
+  "text": "Thank you. And do you have any painkillers for children?",
+  "gold": {
+   "frames": [
+    "D3"
+   ],
+   "note": "'And do you have...' asks a new question, not a return"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-052",
+  "set": "dev",
+  "why": "enriched:D3",
+  "text": "Thank you. That's one less thing to fret about.",
+  "gold": {
+   "frames": [
+    "D3"
+   ],
+   "note": "'one less thing to fret about' voices the speaker's own relief and does not reassure the other"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-053",
+  "set": "dev",
+  "why": "enriched:D4",
+  "text": "I'm sorry, my son lost his ticket.",
+  "gold": {
+   "frames": [
+    "D4"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-054",
+  "set": "dev",
+  "why": "enriched:D4",
+  "text": "I'm sorry, I don't have any cash.",
+  "gold": {
+   "frames": [
+    "D4"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-055",
+  "set": "dev",
+  "why": "enriched:D4",
+  "text": "Excuse me, do you know how to get to the nearest supermarket?",
+  "gold": {
+   "frames": [
+    "D4"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-056",
+  "set": "dev",
+  "why": "enriched:D4",
+  "text": "Hello! I'm sorry but I can't talk at the moment. I need to go home now. Can we talk tomorrow?",
+  "gold": {
+   "frames": [
+    "D1",
+    "D4"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-057",
+  "set": "dev",
+  "why": "enriched:D5",
+  "text": "Here are your tablets for this morning - the two white ones now.",
+  "gold": {
+   "frames": [
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-058",
+  "set": "dev",
+  "why": "enriched:D5",
+  "text": "Here's your coffee.",
+  "gold": {
+   "frames": [
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-059",
+  "set": "dev",
+  "why": "enriched:D5",
+  "text": "Here are your tablets for this morning. Have you got some water there? Just the two white ones now, the other one's after lunch.",
+  "gold": {
+   "frames": [
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-060",
+  "set": "dev",
+  "why": "enriched:D5",
+  "text": "Of course. There's the machine.",
+  "gold": {
+   "frames": [
+    "D2",
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-061",
+  "set": "dev",
+  "why": "enriched:D6",
+  "text": "Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+  "gold": {
+   "frames": [
+    "D2",
+    "D6"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-062",
+  "set": "dev",
+  "why": "enriched:D6",
+  "text": "My name is Anna. And you?",
+  "gold": {
+   "frames": [
+    "D6"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-063",
+  "set": "dev",
+  "why": "enriched:D6",
+  "text": "Hello, I'm Siân, one of the nurses on today. And you are?",
+  "gold": {
+   "frames": [
+    "D1",
+    "D6"
+   ],
+   "note": "'And you are?' hands the name-introduction topic back to the other, like 'My name is Anna. And you?'"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-064",
+  "set": "dev",
+  "why": "enriched:D6",
+  "text": "I'm a nurse, at the hospital just round the corner. And you?",
+  "gold": {
+   "frames": [
+    "D6"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-065",
+  "set": "dev",
+  "why": "enriched:D7",
+  "text": "That's really helpful. One more thing - have you ever had anything like this before?",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "'That's really helpful' with no thanks formula is evaluative uptake (D7), not D3"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-066",
+  "set": "dev",
+  "why": "enriched:D7",
+  "text": "Perfect. And the district nurse will call on Thursday to check the dressing - you don't need to do anything, she'll just come to the house.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-067",
+  "set": "dev",
+  "why": "enriched:D7",
+  "text": "Ah, right. That makes sense, I suppose.",
+  "gold": {
+   "frames": [],
+   "note": "'Ah, right. That makes sense' is a weak acknowledgement; no D10 formula or read-back and no listed D7 assessment, so nothing fires"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-068",
+  "set": "dev",
+  "why": "enriched:D7",
+  "text": "That's worth knowing. Sit back down a minute. Dizziness when you stand can be the tablets, or just lying down too long - I'll check your blood pressure sitting and standing.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "'That's worth knowing' is evaluative uptake; 'I'll check...' is the speaker's own plan, not compliance"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-069",
+  "set": "dev",
+  "why": "enriched:D8",
+  "text": "Four single tickets to town, please.",
+  "gold": {
+   "frames": [
+    "D8"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-070",
+  "set": "dev",
+  "why": "enriched:D8",
+  "text": "Crisps will do nicely — salted, please.",
+  "gold": {
+   "frames": [
+    "D8"
+   ],
+   "note": "'salted, please' is a verbless order like 'Large, please.'"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-071",
+  "set": "dev",
+  "why": "enriched:D8",
+  "text": "Two return tickets to town, please.",
+  "gold": {
+   "frames": [
+    "D8"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-072",
+  "set": "dev",
+  "why": "enriched:D8",
+  "text": "Just two coffees, please. Decaf for me.",
+  "gold": {
+   "frames": [
+    "D8"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-073",
+  "set": "dev",
+  "why": "enriched:D9",
+  "text": "That's eight pound forty altogether.",
+  "gold": {
+   "frames": [
+    "D9"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-074",
+  "set": "dev",
+  "why": "enriched:D9",
+  "text": "Here we are. That's twelve pound fifty.",
+  "gold": {
+   "frames": [
+    "D9"
+   ],
+   "note": "'Here we are' is not a clear handover (codex treats it as an arrival announcement)"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-075",
+  "set": "dev",
+  "why": "enriched:D10",
+  "text": "Not on my watch. Chicken it is, and I'll make sure it's noted properly.",
+  "gold": {
+   "frames": [
+    "D11",
+    "D12"
+   ],
+   "note": "'Not on my watch' eases the other's worry; 'I'll make sure it's noted' commits to the implied request"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-076",
+  "set": "dev",
+  "why": "enriched:D10",
+  "text": "Noted. Pop your shirt back on and have a seat, and I'll tell you what I'm thinking.",
+  "gold": {
+   "frames": [
+    "D10"
+   ],
+   "note": "'I'll tell you what I'm thinking' announces a plan, not compliance"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-077",
+  "set": "dev",
+  "why": "enriched:D10",
+  "text": "Instead of, not as well as. Got it. There's a lot to keep track of, isn't there?",
+  "gold": {
+   "frames": [
+    "D10"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-078",
+  "set": "dev",
+  "why": "enriched:D10",
+  "text": "That's noted. It means there are one or two antibiotics we'll avoid - and plenty of others we can use safely.",
+  "gold": {
+   "frames": [
+    "D10"
+   ],
+   "note": "The follow-up reassurance is implicit with no formula, so D11 is not fired"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-079",
+  "set": "dev",
+  "why": "enriched:D11",
+  "text": "Look away, that's fine - lots of people do. Tell me about your grandchildren, and it'll be done before you know it.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": "'that's fine - lots of people do' normalises; it does not open the sentence, so not D7"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-080",
+  "set": "dev",
+  "why": "enriched:D11",
+  "text": "Then we'll take it extra slow, and I won't let go of you. To the door and back today, nothing heroic.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": "Borderline: reassurance aimed at the other's fear; 'we'll take it slow' is a plan, not compliance"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-081",
+  "set": "dev",
+  "why": "enriched:D11",
+  "text": "You'll be asleep for all of it, and someone's with you every single minute. Nervous is completely normal.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-082",
+  "set": "dev",
+  "why": "enriched:D11",
+  "text": "Of course, no problem at all. English it is. Let's get you sorted.",
+  "gold": {
+   "frames": [
+    "D2",
+    "D7",
+    "D11"
+   ],
+   "note": "'Of course' grants the request; 'no problem at all' is uptake and a downgrade, per the codex examples"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-083",
+  "set": "dev",
+  "why": "enriched:D12",
+  "text": "I'll take that challenge. For her, if nothing else.",
+  "gold": {
+   "frames": [
+    "D12"
+   ],
+   "note": "Accepts the other's proposal or challenge"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-084",
+  "set": "dev",
+  "why": "enriched:D12",
+  "text": "Right you are. On the couch, is it?",
+  "gold": {
+   "frames": [
+    "D12"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-085",
+  "set": "dev",
+  "why": "enriched:D12",
+  "text": "Right you are. Glad it's some use.",
+  "gold": {
+   "frames": [
+    "D12"
+   ],
+   "note": "'Glad it's some use' is not a listed D11 downgrade formula"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-086",
+  "set": "dev",
+  "why": "enriched:D12",
+  "text": "An hour. Righto. I might have a little sleep.",
+  "gold": {
+   "frames": [
+    "D10",
+    "D12"
+   ],
+   "note": "'An hour.' reads back the information before 'Righto'"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H031",
+  "set": "held-out",
+  "why": "enriched:D1",
+  "text": "Hello. Can you take me to the train station, please?",
+  "gold": {
+   "frames": [
+    "D1"
+   ],
+   "note": "The request has a finite verb, so it is not D8."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H032",
+  "set": "held-out",
+  "why": "enriched:D1",
+  "text": "Hello, come in, take a seat. What can I do for you today?",
+  "gold": {
+   "frames": [
+    "D1"
+   ],
+   "note": "'Take a seat' is an invitation, not a handover of a thing."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H033",
+  "set": "held-out",
+  "why": "enriched:D2",
+  "text": "Of course. Water first, and let's sort this pillow out properly while I'm here. Lean forward for me a second.",
+  "gold": {
+   "frames": [
+    "D2"
+   ],
+   "note": "'Of course' grants the request. 'Water first' names no thing being handed over."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H034",
+  "set": "held-out",
+  "why": "enriched:D2",
+  "text": "Yes, I've got a busy day today. I hope you have a good day. See you later.",
+  "gold": {
+   "frames": [
+    "D1",
+    "D2"
+   ],
+   "note": "'I hope you have a good day' is a wish, not a greeting. 'See you later' fires D1."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H035",
+  "set": "held-out",
+  "why": "enriched:D3",
+  "text": "Thank you. Maybe it does add up after all. I still feel nervous — but a little less than when we started talking.",
+  "gold": {
+   "frames": [
+    "D3"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H036",
+  "set": "held-out",
+  "why": "enriched:D3",
+  "text": "Before lunch. Thank you, doctor. That's all I wanted - to know what's happening.",
+  "gold": {
+   "frames": [
+    "D3",
+    "D10"
+   ],
+   "note": "'Before lunch.' is a short echo of the doctor's arrangement, so it counts as a read-back."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H037",
+  "set": "held-out",
+  "why": "enriched:D4",
+  "text": "I'm sorry I can't speak very quickly.",
+  "gold": {
+   "frames": [
+    "D4"
+   ],
+   "note": "This is the speaker's own apology and it opens the sentence."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H038",
+  "set": "held-out",
+  "why": "enriched:D4",
+  "text": "Oh — hold on. There's the sign: six miles to town. It's further than I thought. I'm sorry.",
+  "gold": {
+   "frames": [
+    "D4"
+   ],
+   "note": "The sign is recalled in narration, not pointed out to the hearer, so not D5. 'I'm sorry.' is an apology."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H039",
+  "set": "held-out",
+  "why": "enriched:D5",
+  "text": "Here are your tablets. Just the two white ones now, the other's after lunch.",
+  "gold": {
+   "frames": [
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H040",
+  "set": "held-out",
+  "why": "enriched:D5",
+  "text": "Here's your medication and your discharge sheet. Any questions before you go?",
+  "gold": {
+   "frames": [
+    "D5"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H041",
+  "set": "held-out",
+  "why": "enriched:D7",
+  "text": "Excellent - and your chest sounds much better too. Let's get that scan done this morning and aim for home tomorrow.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "'Let's get that scan done' announces a plan; it is not compliance, so not D12."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H042",
+  "set": "held-out",
+  "why": "enriched:D7",
+  "text": "I need to take a little blood from you now. Sharp scratch coming... well done, all finished. Just press on that for me.",
+  "gold": {
+   "frames": [
+    "D7"
+   ],
+   "note": "'Well done' praises the patient and opens the move after the ellipsis. It does not explicitly ease worry, so not D11."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H043",
+  "set": "held-out",
+  "why": "enriched:D8",
+  "text": "Good morning. Two Americanos and a cup of tea, please.",
+  "gold": {
+   "frames": [
+    "D1",
+    "D8"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H044",
+  "set": "held-out",
+  "why": "enriched:D8",
+  "text": "The chicken, please. I'm starving.",
+  "gold": {
+   "frames": [
+    "D8"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H045",
+  "set": "held-out",
+  "why": "enriched:D10",
+  "text": "A sign — well then, six it is. I've clearly never looked. Go on — what happened next?",
+  "gold": {
+   "frames": [
+    "D10"
+   ],
+   "note": "'A sign... six it is' echoes the other's information and marks receipt. Borderline."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H046",
+  "set": "held-out",
+  "why": "enriched:D10",
+  "text": "Breathless sitting still, blood, fever that won't shift. I've got it.",
+  "gold": {
+   "frames": [
+    "D10"
+   ],
+   "note": "A read-back echo followed by the receipt formula 'I've got it'."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H047",
+  "set": "held-out",
+  "why": "enriched:D11",
+  "text": "You're not wasting my time at all - this is exactly what I'm here for. Tell me about the pain.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": "This eases the patient's worry about wasting the doctor's time. 'Exactly' is not used as an opening assessment."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H048",
+  "set": "held-out",
+  "why": "enriched:D11",
+  "text": "You should be confident already. I think you're doing much better than you realise. I feel comfortable speaking with you, and I'm not talking very slowly.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": "'You're doing much better than you realise' reassures the other."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H049",
+  "set": "held-out",
+  "why": "enriched:D12",
+  "text": "Tomorrow, all being well. I'll settle for that.",
+  "gold": {
+   "frames": [
+    "D10",
+    "D12"
+   ],
+   "note": "'Tomorrow' echoes the plan. 'I'll settle for that' accepts the proposal; borderline for D12."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H050",
+  "set": "held-out",
+  "why": "enriched:D12",
+  "text": "Right you are.",
+  "gold": {
+   "frames": [
+    "D12"
+   ],
+   "note": "'Right you are' is listed under D12. There is no read-back echo, so not D10."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H001",
+  "set": "held-out",
+  "why": "random",
+  "text": "It was 48. We like under 42, and diabetes starts at 48 - so you're right at the doorstep. Which makes this exactly the moment to act, while it's still easy.",
+  "gold": {
+   "frames": [],
+   "note": "'exactly' is a precision adverb inside the sentence, not an opening uptake"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H002",
+  "set": "held-out",
+  "why": "random",
+  "text": "I'm going to give you a course of antibiotics. Take one twice a day, morning and evening, and finish the whole course even if you feel better.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H003",
+  "set": "held-out",
+  "why": "random",
+  "text": "You spoke a little too quickly, so I'm not sure if I understood.",
+  "gold": {
+   "frames": [],
+   "note": "voices uncertainty, not a receipt or an apology formula"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H004",
+  "set": "held-out",
+  "why": "random",
+  "text": "Third of March, nineteen forty-one. I'm no spring chicken.",
+  "gold": {
+   "frames": [],
+   "note": "answers with a date; not a read-back of something the other gave"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H005",
+  "set": "held-out",
+  "why": "random",
+  "text": "Before we begin - English isn't my first language. If I say anything that isn't clear, please stop me, because it's important you understand everything. And I'll do the same if I don't follow you.",
+  "gold": {
+   "frames": [],
+   "note": "'I'll do the same' is the speaker's own offer, not compliance with a request"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H006",
+  "set": "held-out",
+  "why": "random",
+  "text": "It's just a little frustrating when I can't think quickly enough to express myself properly. But I know that I need to keep practising if I want to speak more confidently.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H007",
+  "set": "held-out",
+  "why": "random",
+  "text": "Three things. Breathless just sitting still. Coughing up blood. Or a fever that won't come down with paracetamol. Any of those - same day, no waiting.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H008",
+  "set": "held-out",
+  "why": "random",
+  "text": "If it gets worse, or if you start to feel breathless or feverish, I want you to come straight back or ring 111. Don't wait for your appointment.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H009",
+  "set": "held-out",
+  "why": "random",
+  "text": "Could I see the wine list? I want a glass of wine.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H010",
+  "set": "held-out",
+  "why": "random",
+  "text": "My son and his little one, if the traffic behaves itself.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H011",
+  "set": "held-out",
+  "why": "random",
+  "text": "Where are you from, if you don't mind me asking?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H012",
+  "set": "held-out",
+  "why": "random",
+  "text": "What do you mean, nought to ten? I never know how to answer that.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H013",
+  "set": "held-out",
+  "why": "random",
+  "text": "Back for lunch. Right. That helps, that does.",
+  "gold": {
+   "frames": [
+    "D10"
+   ],
+   "note": "'Back for lunch' echoes the arrangement just given; 'Right' and 'That helps' are weak acknowledgements"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H014",
+  "set": "held-out",
+  "why": "random",
+  "text": "Do you have crisps, or nuts, or anything?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H015",
+  "set": "held-out",
+  "why": "random",
+  "text": "Left arm's fine. The cuff will squeeze for a few seconds now, then it lets go.",
+  "gold": {
+   "frames": [],
+   "note": "'Left arm's fine' accepts the arm rather than evaluating the other's turn; borderline D7, not fired"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H016",
+  "set": "held-out",
+  "why": "random",
+  "text": "Do I need an appointment, or just turn up?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H017",
+  "set": "held-out",
+  "why": "random",
+  "text": "Would you have a look? No rush — I'm waiting on my coffee anyway.",
+  "gold": {
+   "frames": [
+    "D11"
+   ],
+   "note": "'No rush' eases pressure on the other, so it counts as reassurance"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H018",
+  "set": "held-out",
+  "why": "random",
+  "text": "Are you taking any medication at the moment? Anything over the counter? Any allergies that you know of?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H019",
+  "set": "held-out",
+  "why": "random",
+  "text": "I'd like the nurse to take some blood today, and we'll have results by Friday.",
+  "gold": {
+   "frames": [],
+   "note": "announces a plan; not compliance"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H020",
+  "set": "held-out",
+  "why": "random",
+  "text": "Then we'll go through it slowly, all three of us. Now, what's brought you in?",
+  "gold": {
+   "frames": [],
+   "note": "'we'll go through it' announces a plan; not compliance"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H021",
+  "set": "held-out",
+  "why": "random",
+  "text": "I'm just going to take your blood pressure and temperature. Can you roll up your sleeve for me?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H022",
+  "set": "held-out",
+  "why": "random",
+  "text": "It was there at Christmas, now you say it. Maybe before, even.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H023",
+  "set": "held-out",
+  "why": "random",
+  "text": "Do you want to pay by cash or card or put it on the room?",
+  "gold": {
+   "frames": [],
+   "note": "asks how to pay; no amount stated"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H024",
+  "set": "held-out",
+  "why": "random",
+  "text": "How much are you taking? What's this one for?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H025",
+  "set": "held-out",
+  "why": "random",
+  "text": "Are they all right to take with food?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H026",
+  "set": "held-out",
+  "why": "random",
+  "text": "Do you have any snacks?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "D-H027",
+  "set": "held-out",
+  "why": "random",
+  "text": "You read my mind. Sponge and custard, lovely.",
+  "gold": {
+   "frames": [],
+   "note": "'lovely' does not open its sentence, so no D7; the echo accepts an offer rather than reading back an instruction"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H028",
+  "set": "held-out",
+  "why": "random",
+  "text": "Thank you for saying. I'll double-check the chart with the pharmacist right now, and I won't give you anything until we're certain.",
+  "gold": {
+   "frames": [
+    "D3",
+    "D12"
+   ],
+   "note": "'I'll double-check' commits in response to the patient's implied concern"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H029",
+  "set": "held-out",
+  "why": "random",
+  "text": "You'd tell me straight. Good. That's all I ask, doctor.",
+  "gold": {
+   "frames": [
+    "D7",
+    "D10"
+   ],
+   "note": "'You'd tell me straight' reads back the doctor's undertaking; 'Good.' opens a sentence as evaluative uptake"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "D-H030",
+  "set": "held-out",
+  "why": "random",
+  "text": "That makes me feel a little worried.",
+  "gold": {
+   "frames": [],
+   "note": "voices worry; does not reassure"
+  },
+  "source": "pod-1"
+ }
+]

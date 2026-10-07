@@ -1,0 +1,938 @@
+{
+ "id": "C",
+ "version": "2026-10-07.2",
+ "title": "SSi could-occupy codex: position classes of a single sentence (C1-C24)",
+ "purpose": "The definitions a model (Haiku family) uses to say which conversational POSITION CLASSES a course's known-side sentence could fill if a turn were built around it. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language). Could-occupy, never attestation: a seed has no turn around it. The C-ids and their shape-position mapping are pinned to tools/frame-layer/could-occupy.cjs; C0 'any turn' is a word count and is not in this codex.",
+ "task": "You classify sentences from a language course (the KNOWN side of seed sentences) by the conversational move each sentence could make if someone said it in a conversation",
+ "request": "For EACH numbered sentence, give the class ids it belongs to, per the codex. Never output O: this codex has no openers.",
+ "example": "Example: 5: yes/no question; asks permission 'can I' => C2 C24",
+ "general_rules": [
+  "A class is a property of the sentence ITSELF, read off its own words: the move it would make if said to someone. Be CONSERVATIVE: fire a class only on evidence in the sentence, never because it could fit 'with enough imagination'. A wrongly-tagged sentence poisons a filler pool; an untagged one is an honest hole.",
+  "Judge the move and the meaning, never the presence of a word: 'I don't understand why she left' is not a repair (C5); 'thinking about how to answer' is not a hedge (C7).",
+  "Multi-label: a sentence can fire several classes ('Can I ask you something before you leave?' fires C2 and C24). Many sentences fire only C6, and one- or two-word fragments ('Woman.', 'An idea.', 'Badly.') usually fire nothing.",
+  "Questions are recognised by grammar and the question mark; a statement with a question mark is still a question. A question is never C6. EVERY yes/no question fires C24, also when it fires C1, C2 or C3 ('Can I have something to drink please?' fires C2 AND C24).",
+  "The sentence is the known side of a course and may be in a language other than English; apply the same meanings.",
+  "When unsure whether a borderline case fires, follow the class's boundary rules; if they do not settle it, do not fire."
+ ],
+ "frames_heading": "POSITION CLASSES",
+ "output": "One line per sentence: '<number>: <tokens>' where tokens are class ids, or '-' when there is nothing. Example: '12: C2 C24'.",
+ "frames": [
+  {
+   "id": "C1",
+   "name": "availability question",
+   "shape": "is there | have you got | do you have | do you sell [NP] ?",
+   "definition": "A QUESTION asking whether something is available, exists nearby or is held: is there / are there, have you got, do you have, got any, do you sell, do you know if there is.",
+   "positives": [
+    "Is there a bank near here?",
+    "Do you have any snacks?",
+    "Have you got a room for tonight?",
+    "Are there any trains after midnight?",
+    "Do you sell stamps?"
+   ],
+   "near_misses": [
+    {
+     "text": "There is a bank near here.",
+     "why": "a statement"
+    },
+    {
+     "text": "Do you have to go now?",
+     "why": "'have to' = obligation"
+    },
+    {
+     "text": "Do you have time to talk?",
+     "why": "asks the other's time as a request, not availability of a thing or place"
+    },
+    {
+     "text": "Is there anything you want to tell me?",
+     "why": "an elicitation, not availability"
+    },
+    {
+     "text": "Have you got children yourself?",
+     "why": "a personal question about family, not availability of a thing, service or place"
+    }
+   ],
+   "boundary": [
+    "Availability of a thing, service or place; 'is that ...?' identification questions do not fire."
+   ]
+  },
+  {
+   "id": "C2",
+   "name": "possibility / permission question",
+   "shape": "can I | could I | may I | is it possible | do you mind if ... ?",
+   "definition": "A QUESTION asking permission for the SPEAKER (or speaker's group) to do something, or whether something is possible: can I, could I, may I, can we, could we, is it possible to, would it be OK, am I allowed to, do you mind if I, is it alright if.",
+   "positives": [
+    "Can I ask you something before you leave?",
+    "Could I pay by card?",
+    "Is it possible to change my ticket?",
+    "Do you mind if I sit here?",
+    "May we come in?"
+   ],
+   "near_misses": [
+    {
+     "text": "Can you help me?",
+     "why": "asks the OTHER to act (C3)"
+    },
+    {
+     "text": "I can ask him tomorrow.",
+     "why": "a statement"
+    },
+    {
+     "text": "Could it be true?",
+     "why": "speculation, not permission or practical possibility"
+    },
+    {
+     "text": "Can I really be so stupid?",
+     "why": "rhetorical self-question"
+    },
+    {
+     "text": "Is it possible that he lied?",
+     "why": "asks about likelihood of a fact, not a possibility to act"
+    }
+   ],
+   "boundary": [
+    "The action asked about is the speaker's own (I/we) or an arrangement ('is it possible to...')."
+   ]
+  },
+  {
+   "id": "C3",
+   "name": "request of the other",
+   "shape": "can you | could you | would you (mind) [VP] ? | please [VP] | don't [VP]",
+   "definition": "The speaker asks or tells the OTHER to do (or not do) something as a request: can you / could you / would you / will you ... ?, would you mind ...?, a sentence opening with 'please' + verb, or a sentence opening with a negative command 'don't ...'.",
+   "positives": [
+    "Could you say that again more slowly?",
+    "Can you tell me how far it is into town?",
+    "Would you mind closing the window?",
+    "Please wait here.",
+    "Don't tell anyone."
+   ],
+   "near_misses": [
+    {
+     "text": "Can you speak French?",
+     "why": "asks about ability, not a request"
+    },
+    {
+     "text": "Would you like a coffee?",
+     "why": "an offer, not a request"
+    },
+    {
+     "text": "You could try the other shop.",
+     "why": "a suggestion statement (C12 if advice)"
+    },
+    {
+     "text": "I don't like it.",
+     "why": "not a command"
+    },
+    {
+     "text": "Will you be there tomorrow?",
+     "why": "asks for information"
+    }
+   ],
+   "boundary": [
+    "Ability questions ('can you swim?') and offers ('would you like...?') do not fire.",
+    "'Do you want to [VP]?' fires C3 only when it invites the other to do something with the speaker (and then also C10)."
+   ]
+  },
+  {
+   "id": "C4",
+   "name": "wh-question / elicitation",
+   "shape": "what | where | when | who | why | how | which ... ?",
+   "definition": "A DIRECT question built on a question word (what, where, when, who, whose, why, how, which, how much/many/long/far), eliciting content rather than yes/no.",
+   "positives": [
+    "Why are you learning her name?",
+    "Where are you from?",
+    "How far is it into town?",
+    "What do you do?",
+    "Which one do you want?"
+   ],
+   "near_misses": [
+    {
+     "text": "I know where he lives.",
+     "why": "embedded question in a statement"
+    },
+    {
+     "text": "Do you know where the station is?",
+     "why": "a polar question with an embedded wh-clause (C24)"
+    },
+    {
+     "text": "When I was young, I lived in Spain.",
+     "why": "'when' as a subordinator"
+    },
+    {
+     "text": "What a lovely day!",
+     "why": "an exclamation"
+    },
+    {
+     "text": "Can you tell me what time it is?",
+     "why": "a request with an embedded question (C3, C24)"
+    }
+   ],
+   "boundary": [
+    "The question word opens the main question; embedded wh-clauses in a polar question do not fire C4."
+   ]
+  },
+  {
+   "id": "C5",
+   "name": "repair initiation",
+   "shape": "say that again | I didn't catch | I don't understand | what do you mean",
+   "definition": "The speaker signals NOT UNDERSTANDING or not hearing what was just said and seeks repetition or clarification: could you say that again, I didn't (quite) catch that, I don't understand (you), what do you mean, more slowly please, can you repeat that.",
+   "positives": [
+    "Could you say that again a little more slowly?",
+    "I'm sorry, I didn't catch your name.",
+    "I don't understand what you mean.",
+    "What do you mean by that?",
+    "Can you speak more slowly, please?"
+   ],
+   "near_misses": [
+    {
+     "text": "I don't understand why she left.",
+     "why": "puzzlement about the world, not about what was just said"
+    },
+    {
+     "text": "She didn't catch the bus.",
+     "why": "'catch' a bus"
+    },
+    {
+     "text": "I said it again and again.",
+     "why": "report"
+    },
+    {
+     "text": "He doesn't understand English.",
+     "why": "third person's ability"
+    },
+    {
+     "text": "I mean it.",
+     "why": "no repair"
+    }
+   ],
+   "boundary": [
+    "Must concern the interlocutor's immediately preceding words."
+   ]
+  },
+  {
+   "id": "C6",
+   "name": "plain answer / report",
+   "shape": "[DECLARATIVE CLAUSE]",
+   "definition": "A full DECLARATIVE statement (subject + verb, at least three words) that tells or reports something and could answer a question: not a question, not a command or request. True of most statements; it is a generic class.",
+   "positives": [
+    "It's on the other side of that yellow line.",
+    "I'm from Manchester.",
+    "We've only got drinks.",
+    "I started to think about it carefully last month.",
+    "She told me she has driven that car."
+   ],
+   "near_misses": [
+    {
+     "text": "Where are you from?",
+     "why": "a question"
+    },
+    {
+     "text": "Please wait here.",
+     "why": "a command"
+    },
+    {
+     "text": "Don't forget your keys.",
+     "why": "a command"
+    },
+    {
+     "text": "The red car.",
+     "why": "a fragment without a verb"
+    },
+    {
+     "text": "Very well.",
+     "why": "a two-word fragment"
+    }
+   ],
+   "boundary": [
+    "Imperatives ('Make sure you...', 'Remember to...') are not C6, and nor is advice addressed to the other ('you need to do it before you go' is C12 only).",
+    "A stand-alone 'because' clause that answers a why-question ('Because I want to meet people.') IS C6.",
+    "Exclamations that are full clauses ('That's wonderful!') do fire C6."
+   ]
+  },
+  {
+   "id": "C7",
+   "name": "hedged answer: roughly, and it depends",
+   "shape": "maybe | probably | I think | it depends | about [QUANTITY] ...",
+   "definition": "A STATEMENT (not a question) whose claim is HEDGED by the speaker: maybe, perhaps, probably, possibly, might, I think / I suppose / I'm not sure (as hedges on the claim), it depends, sort of, kind of, more or less, roughly, or 'about/around' in front of a quantity ('about a week', 'around ten').",
+   "positives": [
+    "I've been learning for about a week.",
+    "Maybe three or four miles.",
+    "I'm not sure if I can remember the whole sentence.",
+    "It probably depends on the weather.",
+    "I think she's coming tomorrow."
+   ],
+   "near_misses": [
+    {
+     "text": "I started to think about it carefully last month.",
+     "why": "'about' as a bare preposition, 'think' as a real verb of thinking"
+    },
+    {
+     "text": "Might I ask a question?",
+     "why": "a question"
+    },
+    {
+     "text": "It's a kind of bread.",
+     "why": "'kind of' = type of"
+    },
+    {
+     "text": "I think about you every day.",
+     "why": "'think about' = consider, no hedge on a claim"
+    },
+    {
+     "text": "We talked about the weather.",
+     "why": "'about' = topic"
+    }
+   ],
+   "boundary": [
+    "'about/around' hedge only before a quantity, number or time.",
+    "'I think' hedges only when it introduces an opinion or uncertain claim."
+   ]
+  },
+  {
+   "id": "C8",
+   "name": "can't comply, with a reason",
+   "shape": "I can't [VP] because | but | I've got to ...",
+   "definition": "A STATEMENT in which the speaker (or speaker's side) says they CANNOT or WILL NOT do something AND gives a reason in the same sentence: can't / cannot / couldn't / won't / don't want to / not able to + because / but / so / since / as / I've got to / I have to.",
+   "positives": [
+    "I'm sorry but I can't talk at the moment, I need to go home.",
+    "I can't come tomorrow because I'm working.",
+    "I won't be there, I've got to see the doctor.",
+    "I couldn't call you as my phone was dead.",
+    "We can't stay long, we have to catch the train."
+   ],
+   "near_misses": [
+    {
+     "text": "I can't swim.",
+     "why": "no reason given"
+    },
+    {
+     "text": "Can't you see I'm busy?",
+     "why": "a question"
+    },
+    {
+     "text": "I can't wait to see you.",
+     "why": "eagerness idiom, nothing declined"
+    },
+    {
+     "text": "I can't believe it.",
+     "why": "an exclamation of surprise, no compliance at stake"
+    },
+    {
+     "text": "I didn't go because it rained.",
+     "why": "a past report of not going, no can't/won't"
+    }
+   ],
+   "boundary": [
+    "Both parts are required: inability/refusal AND a reason."
+   ]
+  },
+  {
+   "id": "C9",
+   "name": "decline / counter with an account",
+   "shape": "[CLAUSE] but | although | actually | I don't think ...",
+   "definition": "A STATEMENT of at least five words that pushes back, disagrees, qualifies or declines with an account: contrastive but / although / even though / actually / on the other hand, or a disagreeing 'I don't think...' / 'I'm not sure that...'.",
+   "positives": [
+    "I'm from Manchester, but I live in London now.",
+    "I teach English, but not in a school.",
+    "Actually, I'd rather stay at home tonight.",
+    "I don't think that's a good idea.",
+    "It's cheap, although it's a long way from the centre."
+   ],
+   "near_misses": [
+    {
+     "text": "With milk but with no sugar.",
+     "why": "a fragment, under five words of clause"
+    },
+    {
+     "text": "But why?",
+     "why": "a question"
+    },
+    {
+     "text": "I don't think so.",
+     "why": "fewer than five words"
+    },
+    {
+     "text": "Is it actually true?",
+     "why": "a question"
+    },
+    {
+     "text": "I think it's a good idea.",
+     "why": "agreeing, no counter"
+    }
+   ],
+   "boundary": [
+    "Needs a contrast or disagreement and at least five words."
+   ]
+  },
+  {
+   "id": "C10",
+   "name": "proposal",
+   "shape": "shall we | let's | why don't we | how about | we could | do you want to ...",
+   "definition": "The speaker PROPOSES a joint or suggested course of action: shall we, let's, why don't we, how about (+ action), we could, we should, do you want to / would you like to (invitation to do something).",
+   "positives": [
+    "Shall we meet at eight?",
+    "But let's talk on Saturday.",
+    "Why don't we take the bus?",
+    "How about a coffee after work?",
+    "Would you like to come with us?"
+   ],
+   "near_misses": [
+    {
+     "text": "Let me think.",
+     "why": "'let me' asks room for the speaker, not a joint plan"
+    },
+    {
+     "text": "How about you?",
+     "why": "a reciprocal return"
+    },
+    {
+     "text": "We should have left earlier.",
+     "why": "regret about the past"
+    },
+    {
+     "text": "Would you like a coffee?",
+     "why": "an offer of a thing, not of a joint action"
+    },
+    {
+     "text": "They let us in.",
+     "why": "'let' = allow"
+    }
+   ],
+   "boundary": [
+    "Offers of things ('would you like some tea?') do not fire; invitations to an activity do."
+   ]
+  },
+  {
+   "id": "C11",
+   "name": "acceptance / uptake",
+   "shape": "yes | of course | great | perfect | no problem ...",
+   "definition": "The sentence OPENS with an acceptance, polar response or evaluative uptake that responds to someone: yes, no, of course, certainly, absolutely, great, perfect, lovely, excellent, no problem, that's fine, good idea, exactly, how interesting.",
+   "positives": [
+    "Yes, please.",
+    "Of course, no problem at all.",
+    "Great, I'll see you there.",
+    "No, I'm busy tomorrow.",
+    "Perfect, that's exactly what I wanted."
+   ],
+   "near_misses": [
+    {
+     "text": "No one came.",
+     "why": "'no one' is a pronoun"
+    },
+    {
+     "text": "It was a great party.",
+     "why": "assessment inside a report, not opening uptake"
+    },
+    {
+     "text": "Exactly two hours later, he left.",
+     "why": "'exactly' = precisely"
+    },
+    {
+     "text": "Great Britain is an island.",
+     "why": "proper noun"
+    },
+    {
+     "text": "Of course he knows, he's his father.",
+     "why": "emphasis inside a statement, not uptake of a prior move"
+    }
+   ],
+   "boundary": [
+    "Must open the sentence and respond to a prior move."
+   ]
+  },
+  {
+   "id": "C12",
+   "name": "instruction / advice",
+   "shape": "[IMPERATIVE] | you need to | you should | make sure | remember to ...",
+   "definition": "A STATEMENT or IMPERATIVE addressed TO THE OTHER telling them what to do: an imperative ('Take two tablets', 'Turn left'), 'you need to / have to / ought to / should / must / you'll need to', or opening 'make sure', 'remember to', 'don't forget'.",
+   "positives": [
+    "You should ask yourself why it's not working.",
+    "Take two tablets after breakfast.",
+    "Make sure you lock the door.",
+    "You'll need to bring your passport.",
+    "Don't forget to call your mother."
+   ],
+   "near_misses": [
+    {
+     "text": "I'm going to try to explain what I mean.",
+     "why": "first-person intention"
+    },
+    {
+     "text": "They want to make sure it works.",
+     "why": "third person, not addressed"
+    },
+    {
+     "text": "I need to go home now.",
+     "why": "the speaker's own obligation"
+    },
+    {
+     "text": "Should I call him?",
+     "why": "a question"
+    },
+    {
+     "text": "And I want you to speak Norwegian with me tomorrow.",
+     "why": "states the speaker's wish; not an instruction or advice form"
+    }
+   ],
+   "boundary": [
+    "Must carry a second-person addressee (explicit 'you' or an imperative)."
+   ]
+  },
+  {
+   "id": "C13",
+   "name": "read-back / receipt",
+   "shape": "got it | understood | that's right ...",
+   "definition": "The speaker MARKS RECEIPT of an instruction or information: got it, understood, noted, that's right, exactly right, word perfect.",
+   "positives": [
+    "Got it.",
+    "Understood, Monday at nine.",
+    "That's right.",
+    "Noted, thank you.",
+    "Exactly right, two after each meal."
+   ],
+   "near_misses": [
+    {
+     "text": "I don't understand.",
+     "why": "non-receipt (C5)"
+    },
+    {
+     "text": "I got it yesterday.",
+     "why": "'got' = obtained"
+    },
+    {
+     "text": "That's right next to the bank.",
+     "why": "'right' = location"
+    },
+    {
+     "text": "Did you understand?",
+     "why": "a question"
+    },
+    {
+     "text": "He understood everything.",
+     "why": "a report"
+    }
+   ],
+   "boundary": [
+    "Only the speaker's own receipt formula."
+   ]
+  },
+  {
+   "id": "C14",
+   "name": "thanks / downgrade",
+   "shape": "thank you | thanks ...",
+   "definition": "The speaker THANKS the other: thank you, thanks, much obliged, I appreciate it, that's very kind of you.",
+   "positives": [
+    "Thank you very much.",
+    "Thanks for your help.",
+    "I'm very well, thank you.",
+    "I really appreciate it.",
+    "That's very kind of you."
+   ],
+   "near_misses": [
+    {
+     "text": "Thanks to you, I missed the bus.",
+     "why": "'thanks to' = because of"
+    },
+    {
+     "text": "I forgot to thank her.",
+     "why": "report"
+    },
+    {
+     "text": "Say thank you.",
+     "why": "instruction to thank"
+    },
+    {
+     "text": "He is very kind.",
+     "why": "describes a third person"
+    },
+    {
+     "text": "The thank-you note arrived.",
+     "why": "names an object"
+    }
+   ],
+   "boundary": [
+    "The speaker's own thanks only."
+   ]
+  },
+  {
+   "id": "C15",
+   "name": "compliment / positive assessment of the other",
+   "shape": "you're (very|so) [ADJ] | well done | you look [ADJ] ...",
+   "definition": "The speaker PRAISES or POSITIVELY ASSESSES THE OTHER person or what they did: you're very kind / so clever, that's very kind of you, you look great, well done, you've done really well, your French is very good.",
+   "positives": [
+    "You're very kind.",
+    "Well done, that's further than yesterday.",
+    "You look lovely today.",
+    "Your Spanish is really good.",
+    "You've done a great job."
+   ],
+   "near_misses": [
+    {
+     "text": "You're very late.",
+     "why": "not positive"
+    },
+    {
+     "text": "You look tired.",
+     "why": "not positive"
+    },
+    {
+     "text": "The steak is well done.",
+     "why": "cooking term"
+    },
+    {
+     "text": "She's very clever.",
+     "why": "about a third person"
+    },
+    {
+     "text": "This is a lovely city.",
+     "why": "about the world, not the other"
+    }
+   ],
+   "boundary": [
+    "The praise must be aimed at the addressee or their work."
+   ]
+  },
+  {
+   "id": "C16",
+   "name": "self-downgrade",
+   "shape": "I'm not very good | I don't speak it very well | I'm still learning ...",
+   "definition": "The speaker PLAYS DOWN their own skill or standing: I'm not very good (at it), I'm only a beginner, I don't speak it very well, I'm still learning, I'm no good at, my Spanish isn't very good.",
+   "positives": [
+    "I'm not very good at maths.",
+    "I don't speak it very well yet.",
+    "I'm still learning, sorry.",
+    "My Welsh isn't very good.",
+    "I don't know how to say enough different words yet."
+   ],
+   "near_misses": [
+    {
+     "text": "He's not very good at football.",
+     "why": "a third person"
+    },
+    {
+     "text": "I'm still waiting for the bus.",
+     "why": "not about skill"
+    },
+    {
+     "text": "I'm learning [target language].",
+     "why": "a plain report of learning, no downgrade"
+    },
+    {
+     "text": "I'm not very hungry.",
+     "why": "not about skill"
+    },
+    {
+     "text": "I speak a little Dutch now.",
+     "why": "a progress report, not modesty"
+    }
+   ],
+   "boundary": [
+    "About the speaker's own ability or standing, as modesty."
+   ]
+  },
+  {
+   "id": "C17",
+   "name": "trouble declaration",
+   "shape": "I've got a bad [N] | I'm (ill|worried) | it hurts | there's a problem ...",
+   "definition": "The SPEAKER declares their own trouble, pain, illness, worry or a problem they have: I've got a bad back, I'm not feeling well, I'm worried, it hurts, my head hurts, I can't sleep, there's a problem with my room.",
+   "positives": [
+    "I've got a terrible headache.",
+    "I'm not feeling very well.",
+    "It hurts when I cough.",
+    "There's a problem with my room.",
+    "I can't sleep at night."
+   ],
+   "near_misses": [
+    {
+     "text": "She was very kind when she saw me feeling nervous.",
+     "why": "narrative description, not the speaker declaring a current trouble"
+    },
+    {
+     "text": "Does it hurt?",
+     "why": "a question"
+    },
+    {
+     "text": "He's ill.",
+     "why": "a third person"
+    },
+    {
+     "text": "There's no problem.",
+     "why": "denies a problem"
+    },
+    {
+     "text": "I was worried you wouldn't come.",
+     "why": "a past worry, now resolved"
+    }
+   ],
+   "boundary": [
+    "The trouble is the speaker's own and named, in the present."
+   ]
+  },
+  {
+   "id": "C18",
+   "name": "not-knowing, held",
+   "shape": "I don't know | I've no idea | I'm not sure | I can't remember ...",
+   "definition": "The speaker STATES THEY DO NOT KNOW or cannot remember something: I don't know, I've no idea, I have no idea, I'm not sure, I can't remember, nobody knows.",
+   "positives": [
+    "I don't know how to say that.",
+    "I've no idea where he is.",
+    "I'm not sure if I can remember the whole sentence.",
+    "I can't remember her name.",
+    "Nobody knows why."
+   ],
+   "near_misses": [
+    {
+     "text": "I know where he lives.",
+     "why": "knowing"
+    },
+    {
+     "text": "Do you know the way?",
+     "why": "a question"
+    },
+    {
+     "text": "I don't know him very well.",
+     "why": "acquaintance with a person, not a missing piece of information"
+    },
+    {
+     "text": "I'm sure he's right.",
+     "why": "certainty"
+    },
+    {
+     "text": "Remember to call.",
+     "why": "instruction"
+    }
+   ],
+   "boundary": [
+    "Lack of information or memory, said by the speaker.",
+    "'I'm not sure if/whether ...' fires C18 (and C7)."
+   ]
+  },
+  {
+   "id": "C19",
+   "name": "claim / generalisation",
+   "shape": "always | never | everyone | people ... | it's important | in general",
+   "definition": "A STATEMENT making a general claim beyond one event: with always, never (as a generalisation), everyone, everybody, people (in general), usually, generally, in general, it's important to, the thing is.",
+   "positives": [
+    "People always say that.",
+    "It's important to drink water.",
+    "Everyone needs a holiday.",
+    "I never eat meat.",
+    "Generally, the trains are on time."
+   ],
+   "near_misses": [
+    {
+     "text": "No, nobody told me.",
+     "why": "a negative pronoun in a plain report"
+    },
+    {
+     "text": "Do you always do that?",
+     "why": "a question"
+    },
+    {
+     "text": "Everyone came to the party last night.",
+     "why": "one event"
+    },
+    {
+     "text": "I've never been to Spain.",
+     "why": "a personal experience report, not a general claim"
+    },
+    {
+     "text": "The people next door are nice.",
+     "why": "specific people"
+    }
+   ],
+   "boundary": [
+    "A habit or truth stated as general; single past events do not fire."
+   ]
+  },
+  {
+   "id": "C20",
+   "name": "anecdote opener",
+   "shape": "when I was [X] | the other day | last week | years ago | I remember ...",
+   "definition": "A STATEMENT that opens or sets up a personal past narrative with a dated or framed past: when I was young, the other day, last week/night/year, years ago, I remember (when).",
+   "positives": [
+    "When I was a child, I lived by the sea.",
+    "The other day I saw your brother.",
+    "Last week we went to Cardiff.",
+    "Years ago, this was a farm.",
+    "I remember the first time I came here."
+   ],
+   "near_misses": [
+    {
+     "text": "Last time we talked, you were ill.",
+     "why": "refers to a previous conversation, not a narrative"
+    },
+    {
+     "text": "When are you leaving?",
+     "why": "a question"
+    },
+    {
+     "text": "I'll see you next week.",
+     "why": "future"
+    },
+    {
+     "text": "Remember to call me.",
+     "why": "instruction"
+    },
+    {
+     "text": "When I'm tired I sleep.",
+     "why": "a general present, not a past narrative"
+    }
+   ],
+   "boundary": [
+    "Needs a framed past that a story could follow."
+   ]
+  },
+  {
+   "id": "C21",
+   "name": "greeting / ritual open or close",
+   "shape": "hello | good morning | goodbye | see you ...",
+   "definition": "The speaker ritually opens or closes an encounter: hello, hi, good morning/afternoon/evening, welcome, pleased/nice to meet you, goodbye, bye, good night, see you later/tomorrow.",
+   "positives": [
+    "Good morning.",
+    "See you tomorrow.",
+    "Nice to meet you.",
+    "Goodbye, and thank you.",
+    "Hello, how are you?"
+   ],
+   "near_misses": [
+    {
+     "text": "Did you have a good morning?",
+     "why": "asks about the morning"
+    },
+    {
+     "text": "I said goodbye to my family.",
+     "why": "report"
+    },
+    {
+     "text": "I'll see you there later.",
+     "why": "arranges a meeting at a place; not a parting formula"
+    },
+    {
+     "text": "It's a good evening for a walk.",
+     "why": "description"
+    },
+    {
+     "text": "Welcome is the wrong word.",
+     "why": "talked about"
+    }
+   ],
+   "boundary": [
+    "The speaker's own greeting or farewell."
+   ]
+  },
+  {
+   "id": "C22",
+   "name": "reckoning",
+   "shape": "that's [AMOUNT OF MONEY] ( altogether )",
+   "definition": "The speaker STATES AN AMOUNT OF MONEY OWED or a total price: that's eight pounds forty, that'll be five euros, it comes to twelve pounds.",
+   "positives": [
+    "That's eight pound forty altogether.",
+    "That'll be five euros.",
+    "It comes to twelve pounds.",
+    "That's ten dollars, please.",
+    "Altogether that's twenty pounds."
+   ],
+   "near_misses": [
+    {
+     "text": "How much is it?",
+     "why": "asks"
+    },
+    {
+     "text": "I paid ten pounds.",
+     "why": "past report"
+    },
+    {
+     "text": "It's three miles.",
+     "why": "not money"
+    },
+    {
+     "text": "That's my money.",
+     "why": "no amount owed"
+    },
+    {
+     "text": "It costs too much.",
+     "why": "no total stated"
+    }
+   ],
+   "boundary": [
+    "A sum the hearer owes or a transaction total."
+   ]
+  },
+  {
+   "id": "C23",
+   "name": "explicit park",
+   "shape": "let's leave it | we'll talk about it later | another time ...",
+   "definition": "The speaker explicitly PUTS A TOPIC OR TASK ASIDE for later: let's leave it (there), let's come back to that, we'll talk about it later / another time, another time, let's park that.",
+   "positives": [
+    "Let's leave it for now.",
+    "We'll talk about it another time.",
+    "Let's come back to that later.",
+    "Maybe another time.",
+    "We can discuss it tomorrow."
+   ],
+   "near_misses": [
+    {
+     "text": "Leave it on the table.",
+     "why": "physical placing"
+    },
+    {
+     "text": "I'll come back tomorrow.",
+     "why": "returning in person"
+    },
+    {
+     "text": "Where did you park?",
+     "why": "parking a car"
+    },
+    {
+     "text": "Let's talk about it now.",
+     "why": "not deferred"
+    },
+    {
+     "text": "Another coffee, please.",
+     "why": "'another' = one more"
+    }
+   ],
+   "boundary": [
+    "A topic or task is deferred, explicitly."
+   ]
+  },
+  {
+   "id": "C24",
+   "name": "polar question",
+   "shape": "[AUX] [SUBJ] ... ?",
+   "definition": "A YES/NO question (including questions with an embedded wh-clause, tag questions and declarative questions with a question mark), i.e. any question that is NOT a direct wh-question.",
+   "positives": [
+    "Do you speak Spanish all day?",
+    "Is this seat taken?",
+    "Can you tell me how far it is into town?",
+    "You're French?",
+    "Did you have a long day?"
+   ],
+   "near_misses": [
+    {
+     "text": "Where are you from?",
+     "why": "a wh-question (C4)"
+    },
+    {
+     "text": "I wonder if he's coming.",
+     "why": "embedded question in a statement"
+    },
+    {
+     "text": "Ask him if he's coming.",
+     "why": "command"
+    },
+    {
+     "text": "How far is it?",
+     "why": "wh-question"
+    },
+    {
+     "text": "He asked whether I was tired.",
+     "why": "reported question"
+    }
+   ],
+   "boundary": [
+    "C24 and C4 never both fire on the same single question; a sentence with two questions may fire both."
+   ]
+  }
+ ]
+}

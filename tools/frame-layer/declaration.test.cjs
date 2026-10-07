@@ -11,6 +11,9 @@
  * caught 5 of 36 that way); a non-English known side gets an honest pass-through
  * rather than a fabricated verdict.
  */
+// Frames, could-occupy classes and split outcomes are model-tagged (frame-tagger.cjs);
+// this test reads the recorded tags in fixtures/declaration.tags.json and never calls a model.
+require('./fixture-tags.cjs').installFixture('declaration');
 const { checkDeclaration, frameSection, legoKey } = require('./declaration.cjs');
 const { frameSig, matrixClause } = require('./pattern-diversity.cjs');
 

@@ -53,9 +53,9 @@
 const fs = require('fs');
 const path = require('path');
 const { loadCorpus, knownSideIsEnglish } = require('./corpus.cjs');
-const { deriveJob, splitsForBasket } = require('./derive-seed-job.cjs');
+const { deriveJob, prepareJob, splitsForBasket } = require('./derive-seed-job.cjs');
 const { availableVocab, attestedFrames, instantiableFrameSet, expensiveClassFor } = require('./availability.cjs');
-const { score, frameSig, matrixClause, FLOORS, MERGED } = require('./pattern-diversity.cjs');
+const { score, prepareScoring, frameSig, matrixClause, FLOORS, MERGED } = require('./pattern-diversity.cjs');
 
 const ROOT = path.join(__dirname, '..', '..');
 const DECLARATIONS_DIR = process.env.PHRASE_DECLARATIONS_DIR
@@ -76,12 +76,14 @@ const legoKey = (course, seed, legoIndex) =>
 async function computeDeclaration(sb, course, seed, legoIndex, { proposedLego = null, corpus = null } = {}) {
   const k = Number(legoIndex);
   if (!knownSideIsEnglish(course)) {
-    // Honest refusal, not a thinner pool: every matcher below is an English
-    // regex and would silently report "no frames" rather than "cannot see".
+    // Honest refusal, not a thinner pool: the frames are model-tagged now and
+    // read any known language, but the floors below (matrix clause, skeleton,
+    // LEGO position) still split English text, and would silently report "no
+    // variety" rather than "cannot see".
     return {
       declares: false, applicable: false,
       course, seed: Number(seed), lego_index: k, lego_id: legoKey(course, seed, k),
-      reason: `known side of ${course} is not English; the frame layer's patterns are English regexes and would report absence where the truth is blindness`,
+      reason: `known side of ${course} is not English; the floors (matrix clause, skeletons, LEGO position) split English text and would report absence where the truth is blindness`,
       computed_at: new Date().toISOString(),
     };
   }
@@ -105,6 +107,7 @@ async function computeDeclaration(sb, course, seed, legoIndex, { proposedLego = 
   }
   if (!lego) throw new Error(`no lego ${k} on seed ${seed} of ${course} (and no proposal given)`);
 
+  await prepareJob({ course, seedRow, ownLegos, priorSeeds });
   const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
   const splits = splitsForBasket(job, k);
 
@@ -174,6 +177,17 @@ function recordDeclaration(decl, dir = DECLARATIONS_DIR) {
  * `phrase_role`, `known_text`, `target_text` and optionally `frame` (the
  * model's claim — audited here, never believed).
  */
+/**
+ * checkDeclaration is a pure, sync function, and the frames and split outcomes
+ * it re-derives are classified by a model (frame-tagger.cjs, Tom 2026-10-07),
+ * so its caller awaits this first. A no-op where checkDeclaration would not
+ * look at the phrases at all.
+ */
+async function tagForCheck(decl, phrases) {
+  if (!decl || !decl.applicable) return;
+  await prepareScoring((phrases || []).filter(p => p && p.phrase_role !== 'component'), { course: decl.course });
+}
+
 function checkDeclaration(decl, phrases) {
   if (!decl || !decl.applicable) {
     return { checked: false, pass: null,
@@ -341,5 +355,5 @@ function frameSection(decl) {
   ].join('\n');
 }
 
-module.exports = { computeDeclaration, checkDeclaration, recordDeclaration, frameSection,
+module.exports = { computeDeclaration, checkDeclaration, tagForCheck, recordDeclaration, frameSection,
                    rewriteInstructions, claimInstructions, legoKey, DECLARATIONS_DIR };
