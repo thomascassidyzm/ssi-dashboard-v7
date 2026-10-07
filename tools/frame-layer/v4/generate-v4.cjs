@@ -191,7 +191,7 @@ function buildGapPrompt({ course, region, seeds, newLegos, allChunks, missing, c
   const vocab = allChunks.map(c => `S${c.seed_number}: ${c.known_text}=${c.target_text}`).join('; ');
   return `You are adding practice phrases to an SSi ${LANG} course (known side English, target side ${LANG}). Seeds ${region[0]}-${region[1]}.
 
-THE GAP. These seeds' existing practice phrases never use the FRAMES listed below, although the learner already owns the material to make them. Write NEW phrases that use those frames. Each phrase practises one of the NEW LEGOs listed under the seeds (it must contain that LEGO exactly), put in concert with the taught material that carries the frame. Aim for ${perFrame} phrases per frame, spread over different LEGOs; mostly USE, a few BUILD. Skip a frame rather than force it.
+THE GAP. These seeds' existing practice phrases never use the FRAMES listed below, although the learner already owns the material to make them. Write NEW phrases that use those frames. Each phrase practises one of the NEW LEGOs listed under the seeds (it must contain that LEGO exactly), put in concert with the taught material that carries the frame. Write ${perFrame} phrases per frame — at least ${perFrame * missing.length} phrases in all — spread over different LEGOs; mostly USE, a few BUILD. A frame may use any LEGO in the list; only skip a frame if no LEGO can carry it.
 
 NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on the front ("thank you,", "of course", "unfortunately", "no problem", "great", "well", "so", "really", "yes,", "no,"). A phrase that begins with one is refused.
 
@@ -424,28 +424,39 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
     const t = norm(r.target_text);
     if (!liveZut.get(k).some(x => x.target === t)) liveZut.get(k).push({ target: t, target_text: r.target_text, seed: r.seed_number });
   }
-  const prompt = buildGapPrompt({ course, region: [start, end], seeds, newLegos, allChunks, missing, carriers });
   const file = path.join(EVIDENCE, `v4gap-${course}-${start}-${end}.json`);
+  // A second pass ACCUMULATES: earlier kept candidates count as live (ZUT, duplicates)
+  // and stay in the file; the missing list is what the earlier passes left uncovered.
+  const prior = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
+  const priorKept = prior ? prior.kept : [];
+  const pass = prior ? (prior.calls || []).length + 1 : 1;
+  const prompt = buildGapPrompt({ course, region: [start, end], seeds, newLegos, allChunks, missing, carriers });
+  for (const r of priorKept) {
+    const k = norm(r.known_text); if (!liveZut.has(k)) liveZut.set(k, []);
+    liveZut.get(k).push({ target: norm(r.target_text), target_text: r.target_text, seed: r.seed_number });
+  }
   const out = { course, region: [start, end], mode: 'gaps', generated: new Date().toISOString(), model: MODEL, effort: EFFORT,
     available_frames: available, missing_frames: missing, missing_source: missingIn ? 'supplied' : 'regex', new_legos: newLegos.length,
-    prompt_chars: prompt.length, before, calls: [], kept: [], rejected: [], after: null };
+    prompt_chars: prompt.length, before: prior ? prior.before : before, calls: prior ? prior.calls : [], kept: [...priorKept], rejected: prior ? prior.rejected : [], after: null,
+    passes: [...(prior?.passes || []), { pass, missing }] };
   console.log(`${course} ${start}-${end} GAPS: ${newLegos.length} LEGOs, missing ${missing.join(' ')}, prompt ${prompt.length} chars`);
   if (dry) { fs.writeFileSync(file.replace('.json', '.prompt.txt'), prompt); return out; }
   if (!missing.length) { fs.writeFileSync(file, JSON.stringify(out, null, 1)); return out; }
   const ledger = path.join(EVIDENCE, LEDGER_FILE);
   const L = (() => { try { return JSON.parse(fs.readFileSync(ledger, 'utf8')); } catch { return { total: 0, calls: [] }; } })();
   if (L.total >= budget) throw new Error(`budget ${budget} tokens exhausted (ledger ${L.total})`);
+  const label = pass === 1 ? 'gaps' : `gaps-${pass}`;
   const r = callModel(prompt);
-  persistCandidates(file, 'gaps', r);
-  L.total += r.usage.total; L.calls.push({ course, start, end, label: 'gaps', ...r.usage, at: new Date().toISOString() });
+  persistCandidates(file, label, r);
+  L.total += r.usage.total; L.calls.push({ course, start, end, label, ...r.usage, at: new Date().toISOString() });
   fs.writeFileSync(ledger, JSON.stringify(L, null, 1));
-  out.calls.push({ label: 'gaps', candidates: r.phrases.length, ...r.usage });
+  out.calls.push({ label, candidates: r.phrases.length, ...r.usage });
   const g = gate(r.phrases, { course, data, newLegos, liveZut, available, additive: true });
-  out.kept = g.kept; out.rejected = g.rejected;
-  out.after = scoreWindow([...livePhrases, ...g.kept], available, { rarefyN: 60 });
-  out.tokens_spent = r.usage.total;
+  out.kept.push(...g.kept); out.rejected.push(...g.rejected.map(x => ({ ...x, pass })));
+  out.after = scoreWindow([...livePhrases, ...out.kept], available, { rarefyN: 60 });
+  out.tokens_spent = out.calls.reduce((a, c) => a + c.total, 0);
   fs.writeFileSync(file, JSON.stringify(out, null, 1));
-  console.log(`  ${r.phrases.length} candidates → kept ${g.kept.length}, rejected ${g.rejected.length}; coverage ${before.coverage} → ${out.after.coverage} (${before.used}→${out.after.used}/${available.length}); ${r.usage.total} tokens (${r.usage.output} out)`);
+  console.log(`  pass ${pass}: ${r.phrases.length} candidates → kept ${g.kept.length}, rejected ${g.rejected.length}; coverage ${out.before.coverage} → ${out.after.coverage} (${out.before.used}→${out.after.used}/${available.length}); ${r.usage.total} tokens (${r.usage.output} out)`);
   return out;
 }
 

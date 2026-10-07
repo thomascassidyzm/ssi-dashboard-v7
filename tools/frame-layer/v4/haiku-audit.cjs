@@ -161,7 +161,7 @@ function loadAudit(dir) {
   return m;
 }
 
-module.exports = { buildPrompt, parseReply, loadAudit, frameList };
+module.exports = { buildPrompt, parseReply, loadAudit, frameList, callModel };
 
 if (require.main === module) {
   const a = process.argv.slice(2);

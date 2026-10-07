@@ -25,6 +25,18 @@ const { loadAudit } = require('./haiku-audit.cjs');
 const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '31-fra-frame-coverage');
 const IDS = PATTERNS.map(p => p.id);
 
+/**
+ * HYBRID tagger, from the #31 hand check of 50 disagreements (fra_for_eng):
+ * where only Haiku fired it was right 14/14 (2 ambiguous) — the regexes miss
+ * "don't", "there's", "I have tried"; where only the regex fired it was 17-17,
+ * the regex right on frames whose fixed material IS a keyword (modals, going
+ * to, hope, although) and wrong on structural frames (relative that, matrix
+ * know/say with no clause, like-as-preposition, "as if"). So: Haiku's frames,
+ * plus the regex's on the keyword frames only.
+ */
+const KEYWORD_FRAMES = new Set(['P1', 'P2', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9', 'P11', 'P15', 'P17', 'P24', 'P25', 'P28']);
+const hybrid = (h, r) => [...new Set([...(h || []), ...r.filter(f => KEYWORD_FRAMES.has(f))])].sort((a, b) => +a.slice(1) - +b.slice(1));
+
 function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
 
 function scoreSets(sets, available) {
@@ -88,7 +100,7 @@ function compare(course, sampleN = 50) {
   for (let round = 0; sample.length < sampleN && round < 200; round++)
     for (const id of order) { if (sample.length >= sampleN) break; const d = byFrame.get(id)[round]; if (d) sample.push(d); }
 
-  const tagH = r => r.H || [], tagR = r => r.R;
+  const tagH = r => r.H || [], tagR = r => r.R, tagX = r => hybrid(r.H, r.R);
   const out = {
     course, generated: new Date().toISOString(), rows: rows.length, haiku_tagged_rows: tagged.length,
     exact_set_agreement: +(exact / tagged.length).toFixed(3),
@@ -97,6 +109,7 @@ function compare(course, sampleN = 50) {
     windows: {
       regex: { w10: windows(rows, inv, tagR, 10), w20: windows(rows, inv, tagR, 20) },
       haiku: { w10: windows(tagged, inv, tagH, 10), w20: windows(tagged, inv, tagH, 20) },
+      hybrid: { w10: windows(tagged, inv, tagX, 10), w20: windows(tagged, inv, tagX, 20) },
     },
     frames_per_phrase: { regex: +(tagged.reduce((a, r) => a + r.R.length, 0) / tagged.length).toFixed(2), haiku: +(tagged.reduce((a, r) => a + r.H.length, 0) / tagged.length).toFixed(2) },
   };
@@ -105,7 +118,7 @@ function compare(course, sampleN = 50) {
   return { out, sample };
 }
 
-module.exports = { compare, scoreSets };
+module.exports = { compare, scoreSets, hybrid, KEYWORD_FRAMES, windows };
 
 if (require.main === module) {
   const a = process.argv.slice(2);
@@ -116,5 +129,6 @@ if (require.main === module) {
   console.log('frame  both  H-only  R-only  kappa  name');
   for (const [id, f] of Object.entries(out.per_frame)) console.log(`${id.padEnd(4)} ${String(f.both).padStart(5)} ${String(f.haiku_only).padStart(7)} ${String(f.regex_only).padStart(7)}  ${String(f.kappa).padStart(5)}  ${f.name}`);
   const mean = (ws) => +(ws.reduce((x, w) => x + w.coverage, 0) / ws.length).toFixed(3);
-  console.log(`mean w20 coverage: regex ${mean(out.windows.regex.w20)}, haiku ${mean(out.windows.haiku.w20)}; sample ${sample.length}`);
+  console.log(`mean w20 coverage: regex ${mean(out.windows.regex.w20)}, haiku ${mean(out.windows.haiku.w20)}, hybrid ${mean(out.windows.hybrid.w20)}; sample ${sample.length}`);
+  for (const t of ['regex', 'hybrid']) console.log(t, 'weakest w10:', [...out.windows[t].w10].sort((a, b) => a.coverage - b.coverage || a.rarefied_at_60 - b.rarefied_at_60).slice(0, 8).map(w => `${w.start}-${w.end} ${w.coverage} (${w.used}/${w.available}, n${w.phrases})`).join(' · '));
 }
