@@ -44,3 +44,13 @@ test('an item the model never answers properly is reported untagged, not cached'
   assert.strictEqual(cache.has('some phrase'), false);
   assert.deepStrictEqual(ledger.untagged, ['some phrase']);
 });
+
+test('every cached row carries the parser generation and a time, so an old parser\'s rows can be found', () => {
+  const fs = require('fs'), os = require('os'), path = require('path');
+  const dir = fs.mkdtempSync(path.join(process.env.CS_SCRATCH || os.tmpdir(), 'tagcache-'));
+  const cache = new T.TagCache({ dir });
+  cache.put([['I want to go', { frames: ['P1'], opener: false }]], 'haiku');
+  const row = JSON.parse(fs.readFileSync(cache.file, 'utf8').trim());
+  assert.strictEqual(row.parser, 2);
+  assert.ok(!Number.isNaN(Date.parse(row.at)));
+});

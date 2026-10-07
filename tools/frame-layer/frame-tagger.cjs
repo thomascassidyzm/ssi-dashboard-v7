@@ -44,6 +44,13 @@ const STORE = process.env.FRAME_TAG_STORE
 
 /** The cache key normalises whitespace and case only: the model sees the text as written. */
 const words = (s) => String(s || '').replaceAll('\t', ' ').replaceAll('\n', ' ').replaceAll('\r', ' ').split(' ').filter(Boolean);
+/**
+ * Reply-parser generation, stamped on every cached row (with its time) so a
+ * future parser fix can name exactly which rows an old parser wrote. 2 = the
+ * strict parser of review #115 (only ids, O and '-' are answers); rows with no
+ * stamp predate it and were all re-asked (retag:'115' / '115b').
+ */
+const PARSER = 2;
 const ANALYSE = process.env.FRAME_TAG_ANALYSE !== '0'; // default ON: gold F1 0.77 -> 0.92 at equal tokens (2026-10-07)
 /** Strip markdown/punctuation marks a model puts round an id: '**P1**', 'P23.', '(P5)'. Plumbing over the reply format. */
 const MARKS = new Set(['*', '.', ';', ':', '(', ')', '[', ']', '`', '"', "'"]);
@@ -170,7 +177,7 @@ class TagCache {
     fs.mkdirSync(path.dirname(this.file), { recursive: true });
     const lines = entries.map(([text, tag]) => {
       this.map.set(keyOf(text), tag);
-      return JSON.stringify({ k: keyOf(text), text, frames: tag.frames, opener: tag.opener, model });
+      return JSON.stringify({ k: keyOf(text), text, frames: tag.frames, opener: tag.opener, model, parser: PARSER, at: new Date().toISOString() });
     });
     if (lines.length) fs.appendFileSync(this.file, lines.join('\n') + '\n');
   }

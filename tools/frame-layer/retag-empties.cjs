@@ -35,7 +35,7 @@ async function retag(codex, { dry = false, parallel = 6 } = {}) {
     const tag = fresh.get(t);
     if (!tag) continue;
     if (tag.frames.length || tag.opener) changed++;
-    lines.push(JSON.stringify({ k: T.keyOf(t), text: t, frames: tag.frames, opener: tag.opener, model: 'haiku', retag: '115' }));
+    lines.push(JSON.stringify({ k: T.keyOf(t), text: t, frames: tag.frames, opener: tag.opener, model: 'haiku', retag: '115', parser: 2, at: new Date().toISOString() }));
   }
   fs.appendFileSync(cache.file, lines.join('\n') + '\n');
   return { codex: codex.id, version: codex.version, empties: empties.length, changed, untagged: ledger.untagged.length, tokens: ledger.tokens };
