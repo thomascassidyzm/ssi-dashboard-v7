@@ -92,20 +92,41 @@ async function previewReset({ voiceId, language, spellings, connect = defaultCon
 }
 
 /**
- * SECURITY (job #889, review #887): the artist path of Re-record all is
+ * SECURITY (job #889/#895, review #887): the artist path of Re-record all is
  * unauthenticated (the booth link IS the voice id, and voice ids are guessable),
  * so it must never be able to silence audio learners can hear. Returns the
- * learner-reachable courses (released / live / beta) in which this voice has
- * clips; non-empty means only an admin may reset. Deliberately by the clip's
- * course, not by slot: over-refusing costs an admin click, under-refusing
+ * learner-reachable courses (released / live / beta) that either OWN a clip of
+ * this voice or REFERENCE one through any slot applyReset clears (scalar or
+ * array; pod slots count via their parent pod's course) — one clip can be
+ * linked across courses, so ownership alone is not enough. Non-empty means only
+ * an admin may reset. Over-refusing costs an admin click; under-refusing
  * silences a live course.
  */
+const REACHABLE_SQL = `(co.status = 'released' or co.new_app_status in ('live','beta') or co.visibility = 'beta')`
+
 async function liveCoursesForVoice({ language, spellings, connect = defaultConnect }) {
-  return withClient(connect, async (c) => (await c.query(
-    `select distinct ca.course_code from course_audio ca join courses co using (course_code)
-      where ca.language = $1 and ca.voice_id = any($2)
-        and (co.status = 'released' or co.new_app_status in ('live','beta') or co.visibility = 'beta')`,
-    [language, spellings])).rows.map((r) => r.course_code))
+  return withClient(connect, async (c) => {
+    const ids = (await c.query(
+      'select id from course_audio where language = $1 and voice_id = any($2)', [language, spellings])).rows.map((r) => r.id)
+    if (!ids.length) return []
+    const live = new Set()
+    const owners = await c.query(
+      `select distinct ca.course_code from course_audio ca join courses co using (course_code)
+        where ca.id = any($1) and ${REACHABLE_SQL}`, [ids])
+    for (const r of owners.rows) live.add(r.course_code)
+    for (const [table, cols] of [...SCALAR_SLOTS, ...ARRAY_SLOTS]) {
+      for (const col of cols) {
+        const isArray = ARRAY_SLOTS.some(([t, cs]) => t === table && cs.includes(col))
+        const match = isArray ? `t.${col} && $1::uuid[]` : slotMatch(table, col).replace(col, `t.${col}`)
+        const from = table === 'listening_pod_sentences'
+          ? `listening_pod_sentences t join listening_pods lp on lp.id = t.pod_id join courses co on co.course_code = lp.course_code`
+          : `${table} t join courses co on co.course_code = t.course_code`
+        const res = await c.query(`select distinct co.course_code from ${from} where ${match} and ${REACHABLE_SQL}`, [ids])
+        for (const r of res.rows) live.add(r.course_code)
+      }
+    }
+    return [...live].sort()
+  })
 }
 
 async function applyReset({ voiceId, language, spellings, actor, reason = null, connect = defaultConnect }) {
@@ -182,4 +203,4 @@ async function restoreReset({ resetId, actor, connect = defaultConnect }) {
   })
 }
 
-module.exports = { liveCoursesForVoice, previewReset, applyReset, restoreReset, ARCHIVE_PREFIX, SCALAR_SLOTS }
+module.exports = { liveCoursesForVoice, ARRAY_SLOTS, previewReset, applyReset, restoreReset, ARCHIVE_PREFIX, SCALAR_SLOTS }
