@@ -92,6 +92,13 @@ const routes = [
   },
   // Human recording, Tom's side: the per-language flag, the coverage bar, and
   // the link to send each recordist. Normal auth — only the /r/ surface is open.
+  // One voice artist's tools: the setup-check review and Re-record all.
+  {
+    path: '/admin/recording/voice/:voiceId',
+    name: 'RecordistTools',
+    component: () => import('../views/RecordistTools.vue'),
+    meta: { title: 'Voice artist tools - Admin' }
+  },
   {
     path: '/admin/recording',
     name: 'AdminRecording',
