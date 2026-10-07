@@ -9,23 +9,34 @@
  * The cache loads last-write-wins, so the new answer replaces the old.
  *
  * Usage: node tools/frame-layer/retag-empties.cjs [codex.json ...] [--dry]
- * Prints, per codex: empties found, how many came back with frames.
+ * Prints, per codex: suspect answers found, how many came back with frames.
  */
 const fs = require('fs');
 const path = require('path');
 const T = require('./frame-tagger.cjs');
 
+/**
+ * Which cached answers might a malformed reply have produced? EVERY answer with
+ * no frames, whatever its opener flag: the old parser read "O unable to
+ * classify" as {frames:[], opener:true} (review #128), not only as a bare
+ * negative. Judged on each key's LATEST row; a row the strict parser wrote
+ * (parser >= 2) or a re-ask under it (retag '115'/'115b') is trusted, so
+ * running this twice re-asks nothing twice.
+ */
+function selectSuspects(rows) {
+  const latest = new Map();
+  for (const r of rows) latest.set(r.k, r);
+  return [...latest.values()].filter(r => !r.frames.length && !(r.parser >= 2) && !['115', '115b'].includes(r.retag));
+}
+
 async function retag(codex, { dry = false, parallel = 6 } = {}) {
   const cache = T.defaultCache(codex);
-  const empties = [];
-  if (fs.existsSync(cache.file)) {
-    const last = new Map();
-    for (const line of fs.readFileSync(cache.file, 'utf8').split('\n')) {
-      if (!line) continue;
-      try { const r = JSON.parse(line); last.set(r.k, r); } catch { /* torn line */ }
-    }
-    for (const r of last.values()) if (!r.frames.length && !r.opener) empties.push(r.text);
+  const rows = [];
+  if (fs.existsSync(cache.file)) for (const line of fs.readFileSync(cache.file, 'utf8').split('\n')) {
+    if (!line) continue;
+    try { rows.push(JSON.parse(line)); } catch { /* torn line */ }
   }
+  const empties = selectSuspects(rows).map(r => r.text);
   if (dry || !empties.length) return { codex: codex.id, version: codex.version, empties: empties.length, changed: 0 };
   const fresh = new T.MemoryCache();
   const ledger = await T.ensureTagged(empties, { codex, cache: fresh, parallel, log: () => {} });
@@ -34,7 +45,7 @@ async function retag(codex, { dry = false, parallel = 6 } = {}) {
   for (const t of empties) {
     const tag = fresh.get(t);
     if (!tag) continue;
-    if (tag.frames.length || tag.opener) changed++;
+    if (tag.frames.length) changed++;
     lines.push(JSON.stringify({ k: T.keyOf(t), text: t, frames: tag.frames, opener: tag.opener, model: 'haiku', retag: '115', parser: 2, at: new Date().toISOString() }));
   }
   fs.appendFileSync(cache.file, lines.join('\n') + '\n');
@@ -48,4 +59,4 @@ if (require.main === module) {
   (async () => { for (const c of codexes) console.log(JSON.stringify(await retag(c, { dry: a.includes('--dry') }))); })()
     .catch(e => { console.error(e.message); process.exit(1); });
 }
-module.exports = { retag };
+module.exports = { retag, selectSuspects };
