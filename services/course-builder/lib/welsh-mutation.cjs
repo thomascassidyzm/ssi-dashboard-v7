@@ -6,8 +6,8 @@
  *   ZUT fork. Kai's target-side bound (canon K8, 2026-08-28): "a mild softening mutation ... is
  *   acceptable because it's barely perceptible to a learner, but nothing more than that."
  *
- * ONLY the soft mutation. Nasal (c→ngh, t→nh, p→mh, b→m, d→n, g→ng) and aspirate (c→ch, t→th,
- * p→ph, h- before a vowel) are NOT folded here: nobody has ruled them already-taught, and Kai
+ * ONLY the soft mutation (and the mi/fe particle that causes it — see PREVERBAL). Nasal (c→ngh,
+ * t→nh, p→mh, b→m, d→n, g→ng) and aspirate (c→ch, t→th, p→ph, h- before a vowel) are NOT folded here: nobody has ruled them already-taught, and Kai
  * calls c→ngh "a big jump" (2026-08-26). Such a pair stays what it always was: a ZUT fork.
  *
  * Applies only to courses whose TARGET is Welsh (course code "cym_…"); every other course gets
@@ -62,6 +62,12 @@ function isWelshTarget(courseCode) {
   return typeof courseCode === 'string' && courseCode.startsWith('cym_');
 }
 
+// The affirmative preverbal particles. "mi fedra i" IS "medra i": the particle is what causes
+// the soft mutation, and North Welsh drops it freely (Aran's own example, medra/fedra:
+// "I can" was taught at seed 26 as "mi fedra i"). Dropped only from the FRONT of a target, and
+// only when the other target lacks it, so "i mi" (to me) is never touched.
+const PREVERBAL = new Set(['mi', 'fe']);
+
 /**
  * True when two DIFFERENT target texts are the same words in the same order, each word equal or
  * a soft-mutation variant of its partner. False for non-Welsh courses and for identical texts
@@ -69,8 +75,10 @@ function isWelshTarget(courseCode) {
  */
 function isSoftMutationVariant(courseCode, targetA, targetB) {
   if (!isWelshTarget(courseCode)) return false;
-  const ta = String(targetA || '').split(/\s+/).map(normWord).filter(Boolean);
-  const tb = String(targetB || '').split(/\s+/).map(normWord).filter(Boolean);
+  let ta = String(targetA || '').split(/\s+/).map(normWord).filter(Boolean);
+  let tb = String(targetB || '').split(/\s+/).map(normWord).filter(Boolean);
+  if (ta.length === tb.length + 1 && PREVERBAL.has(ta[0])) ta = ta.slice(1);
+  else if (tb.length === ta.length + 1 && PREVERBAL.has(tb[0])) tb = tb.slice(1);
   if (ta.length === 0 || ta.length !== tb.length) return false;
   if (ta.join(' ') === tb.join(' ')) return false;
   return ta.every((w, i) => w === tb[i] || softEquivalentWords(w, tb[i]));

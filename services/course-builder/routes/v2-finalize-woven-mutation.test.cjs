@@ -97,12 +97,15 @@ describe('isSoftMutationVariant', () => {
     expect(isSoftMutationVariant(C, 'gorffen', 'orffen')).toBe(true);
     expect(isSoftMutationVariant(C, 'llyfr', 'lyfr')).toBe(true);
     expect(isSoftMutationVariant(C, 'trio', 'drio')).toBe(true);
+    expect(isSoftMutationVariant(C, 'mi fedra i', 'medra i')).toBe(true);   // Aran's medra/fedra
+    expect(isSoftMutationVariant(C, 'medra i', 'mi fedra i')).toBe(true);
   });
   it('does not fold nasal or aspirate mutation, different words, or non-Welsh courses', () => {
     expect(isSoftMutationVariant(C, 'Cymraeg', 'Nghymraeg')).toBe(false);
     expect(isSoftMutationVariant(C, 'cath', 'chath')).toBe(false);
     expect(isSoftMutationVariant(C, 'siop', 'siopa')).toBe(false);
     expect(isSoftMutationVariant(C, 'Cymraeg', 'Cymraeg')).toBe(false);
+    expect(isSoftMutationVariant(C, 'i mi', 'i')).toBe(false);
     expect(isSoftMutationVariant('fra_for_eng', 'Cymraeg', 'Gymraeg')).toBe(false);
   });
 });
