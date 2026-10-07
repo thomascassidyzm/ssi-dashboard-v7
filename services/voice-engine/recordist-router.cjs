@@ -1851,6 +1851,14 @@ module.exports = function createRecordistRouter({
       }
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
+      // The artist door has no secret (link = voice id, guessable), so it may
+      // only touch a voice that no learner can hear. Admins are not limited.
+      if (asArtist) {
+        const live = await rerecordAll.liveCoursesForVoice({ language: recordist.language, spellings: recordist.spellings })
+        if (live.length) {
+          return res.status(403).json({ error: 'This voice is live to learners; ask an admin to reset it.', liveCourses: live })
+        }
+      }
       const out = await rerecordAll.applyReset({
         voiceId: recordist.voiceId, language: recordist.language, spellings: recordist.spellings,
         actor: asArtist ? `artist:${recordist.voiceId}` : adminActor(user), reason: typeof req.body.reason === 'string' ? req.body.reason.slice(0, 300) : null,
