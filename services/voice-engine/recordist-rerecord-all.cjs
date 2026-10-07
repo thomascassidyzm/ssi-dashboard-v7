@@ -91,6 +91,23 @@ async function previewReset({ voiceId, language, spellings, connect = defaultCon
   })
 }
 
+/**
+ * SECURITY (job #889, review #887): the artist path of Re-record all is
+ * unauthenticated (the booth link IS the voice id, and voice ids are guessable),
+ * so it must never be able to silence audio learners can hear. Returns the
+ * learner-reachable courses (released / live / beta) in which this voice has
+ * clips; non-empty means only an admin may reset. Deliberately by the clip's
+ * course, not by slot: over-refusing costs an admin click, under-refusing
+ * silences a live course.
+ */
+async function liveCoursesForVoice({ language, spellings, connect = defaultConnect }) {
+  return withClient(connect, async (c) => (await c.query(
+    `select distinct ca.course_code from course_audio ca join courses co using (course_code)
+      where ca.language = $1 and ca.voice_id = any($2)
+        and (co.status = 'released' or co.new_app_status in ('live','beta') or co.visibility = 'beta')`,
+    [language, spellings])).rows.map((r) => r.course_code))
+}
+
 async function applyReset({ voiceId, language, spellings, actor, reason = null, connect = defaultConnect }) {
   return withClient(connect, async (c) => {
     await c.query('begin')
@@ -165,4 +182,4 @@ async function restoreReset({ resetId, actor, connect = defaultConnect }) {
   })
 }
 
-module.exports = { previewReset, applyReset, restoreReset, ARCHIVE_PREFIX, SCALAR_SLOTS }
+module.exports = { liveCoursesForVoice, previewReset, applyReset, restoreReset, ARCHIVE_PREFIX, SCALAR_SLOTS }

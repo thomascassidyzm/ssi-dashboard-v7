@@ -13,10 +13,13 @@ const rerecordAll = require('./recordist-rerecord-all.cjs')
 queue.resolveRecordist = async (_db, id) =>
   id === 'human_dan_cym_s' ? { voiceId: id, language: 'cym', spellings: [id, 'dan_cym_s'] } : null
 const calls = []
+let liveFor = []
+rerecordAll.liveCoursesForVoice = async () => liveFor
 rerecordAll.applyReset = async (a) => { calls.push(a); return { resetId: 'r1', archived: 3, slotsEmptied: 3 } }
 const createRecordistRouter = require('./recordist-router.cjs')
 
 async function post(voice, body) {
+  liveFor = body.__live || []; delete body.__live
   const app = express()
   app.use(express.json())
   app.use('/api/recording', createRecordistRouter({
@@ -52,5 +55,13 @@ test('asArtist still needs confirm, and an unknown voice is 404', async () => {
   calls.length = 0
   assert.strictEqual((await post('human_dan_cym_s', { asArtist: true })).status, 400)
   assert.strictEqual((await post('human_nobody_cym_s', { confirm: true, asArtist: true })).status, 404)
+  assert.strictEqual(calls.length, 0)
+})
+
+test('SECURITY #887: anonymous asArtist on a voice live to learners is refused, nothing archived', async () => {
+  calls.length = 0
+  const r = await post('human_dan_cym_s', { confirm: true, asArtist: true, __live: ['cym_s_for_eng'] })
+  assert.strictEqual(r.status, 403)
+  assert.match(r.json.error, /live to learners; ask an admin/)
   assert.strictEqual(calls.length, 0)
 })
