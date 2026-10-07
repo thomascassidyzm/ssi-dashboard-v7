@@ -50,14 +50,16 @@ const keyOf = (text) => words(text).join(' ').toLowerCase();
 // ---------------------------------------------------------------- prompt
 function renderCodex(codex = CODEX) {
   const lines = [codex.title, '', 'GENERAL RULES'];
-  codex.general_rules.forEach(r => lines.push(`- ${r}`));
-  lines.push('', 'KNOWN SIDE IN A LANGUAGE OTHER THAN ENGLISH');
-  codex.non_english_known_side.forEach(r => lines.push(`- ${r}`));
-  lines.push('', 'FRAMES');
+  (codex.general_rules || []).forEach(r => lines.push(`- ${r}`));
+  if (codex.non_english_known_side) {
+    lines.push('', 'KNOWN SIDE IN A LANGUAGE OTHER THAN ENGLISH');
+    codex.non_english_known_side.forEach(r => lines.push(`- ${r}`));
+  }
+  lines.push('', codex.frames_heading || 'FRAMES');
   for (const f of codex.frames) {
     lines.push('', `${f.id} ${f.name}  (shape: ${f.shape})`, `  Definition: ${f.definition}`,
-      `  Fires: ${f.positives.map(p => `"${p}"`).join('; ')}`,
-      `  Does not fire: ${f.near_misses.map(n => `"${n.text}" (${n.why})`).join('; ')}`);
+      `  Fires: ${(f.positives || []).map(p => `"${p}"`).join('; ')}`,
+      `  Does not fire: ${(f.near_misses || []).map(n => `"${n.text}" (${n.why})`).join('; ')}`);
     if (f.boundary && f.boundary.length) lines.push(`  Boundary: ${f.boundary.join(' ')}`);
     if (f.other_languages) lines.push(`  Other languages: ${f.other_languages}`);
   }
