@@ -1,0 +1,1056 @@
+[
+ {
+  "gid": "X-001",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Can you tell me how far it is into town? || B: It's not very far. Maybe three or four miles.",
+  "gold": {
+   "frames": [],
+   "note": "A's 'Can you tell me...' is answered with content, not a polar particle"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-002",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Are you eating tonight? || B: I'm not sure if I'm hungry. Do you have a menu?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-003",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Good. Right, I've got everything I need. Let's have a look at you. || B: Right you are. On the couch, is it?",
+  "gold": {
+   "frames": [],
+   "note": "'Right you are' is a general acknowledgement, not a listed receipt marker or read-back; unsure, so not fired"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-004",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Perfect. Anything you're not sure about, that's what the bell's for - don't sit there worrying quietly. || B: Thank you, bach. I feel better already.",
+  "gold": {
+   "frames": [],
+   "note": "plain thanks to an instruction is not receipt"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-005",
+  "set": "dev",
+  "why": "random",
+  "text": "A: That's better. You've a knack with pillows. || B: Right, you're all set. I'll be past again in an hour or so anyway.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-006",
+  "set": "dev",
+  "why": "random",
+  "text": "A: First I just need to check your details. Can you tell me your date of birth? || B: Third of March, nineteen forty-one. I'm no spring chicken.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-007",
+  "set": "dev",
+  "why": "random",
+  "text": "A: I think so, but you'll have to look to make sure. || B: I also need to get some sunscreen and some toothpaste.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-008",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Good morning, Sarah! || B: Good morning. How are you?",
+  "gold": {
+   "frames": [],
+   "note": "A greeted and asked nothing, so B's question is not a return"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-009",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Good morning, how are you feeling? Any pain overnight? || B: When exactly can I go home, doctor? I've been in a week now.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-010",
+  "set": "dev",
+  "why": "random",
+  "text": "A: I can't do today - I'm picking the grandchildren up at three. Can I come back tomorrow? || B: Tomorrow's fine - book at the desk on your way out. Mornings are quietest.",
+  "gold": {
+   "frames": [],
+   "note": "'Tomorrow's fine' grants the request without a polar particle"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-011",
+  "set": "dev",
+  "why": "random",
+  "text": "A: If it gets worse, or you feel breathless or feverish, come straight back or ring 111. || B: What should I be looking out for, exactly? How bad is bad?",
+  "gold": {
+   "frames": [],
+   "note": "a question back, not receipt"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-012",
+  "set": "dev",
+  "why": "random",
+  "text": "A: That's the new one the doctor started yesterday - for your blood pressure. It's instead of the old blue one, not as well as. || B: Instead of, not as well as. Got it. There's a lot to keep track of, isn't there?",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-013",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Are we going to be late? || B: I promise I won't be late.",
+  "gold": {
+   "frames": [],
+   "note": "answered without a polar particle"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-014",
+  "set": "dev",
+  "why": "random",
+  "text": "A: What's this new one for? I don't recognise it. || B: That's the new one the doctor started yesterday - for your blood pressure. It's instead of the old blue one, not as well as.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-015",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Are you with me all day, then? It's nice to see a friendly face. || B: I'm here till eight tonight, so you're stuck with me. And if I'm not about, any of the team can help you.",
+  "gold": {
+   "frames": [],
+   "note": "answered without a polar particle"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-016",
+  "set": "dev",
+  "why": "random",
+  "text": "A: From half-past seven until ten o'clock. We have fruit and cereals or a cooked breakfast. || B: Wonderful. Is it possible for us to have a late check-out?",
+  "gold": {
+   "frames": [],
+   "note": "'Wonderful' is uptake, not receipt"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-017",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Crisps will do nicely — salted, please. || B: Here's your coffee — and your crisps.",
+  "gold": {
+   "frames": [
+    "X5"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-018",
+  "set": "dev",
+  "why": "random",
+  "text": "A: What is that over there? || B: Would you like to order some drinks?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-019",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Tomorrow's fine - book at the desk on your way out. Mornings are quietest. || B: Do I need an appointment, or just turn up?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-020",
+  "set": "dev",
+  "why": "random",
+  "text": "A: What's in the soup? I can't have dairy. || B: Let me check the card... the soup has cream in it, so we'll steer clear. The chicken's safe. And I'll flag the dairy with the kitchen so it's on all your meals from now on.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-021",
+  "set": "dev",
+  "why": "random",
+  "text": "A: No, it's free. Please, go ahead. || B: How far is it into town?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-022",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Of course. Here's my passport. || B: Lovely. The room is on the third floor, room 709.",
+  "gold": {
+   "frames": [],
+   "note": "A hands over, not B; 'Lovely' is no receipt marker"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-023",
+  "set": "dev",
+  "why": "random",
+  "text": "A: I'm ever so nervous. Will I be asleep for the whole thing? || B: You'll be asleep for all of it, and someone's with you every single minute. Nervous is completely normal.",
+  "gold": {
+   "frames": [],
+   "note": "answered without a polar particle"
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-024",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Is it okay if I sit here? || B: Is it okay if we put this here?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-025",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Lovely. Where shall I put my things? I've brought my own pillow. || B: Your things go in the cupboard there - and valuables are best going home with the family, if that's possible.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-026",
+  "set": "dev",
+  "why": "random",
+  "text": "A: But if you can speak slowly I think we'll be able to manage. || B: You spoke a little too quickly, so I'm not sure if I understood.",
+  "gold": {
+   "frames": [],
+   "note": "B's hedged non-understanding does not clearly target A's request to speak slowly; unsure, so not fired"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-027",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Oh — hold on. There's the sign: six miles to town. It's further than I thought. I'm sorry. || B: Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way.",
+  "gold": {
+   "frames": [],
+   "note": "A apologised and did not thank"
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-028",
+  "set": "dev",
+  "why": "random",
+  "text": "A: Yes, please. || B: Here's your coffee.",
+  "gold": {
+   "frames": [
+    "X5"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-029",
+  "set": "dev",
+  "why": "random",
+  "text": "A: That helps me more than you'd think. Let me ask a few more, then I'll take a proper look. || B: Whatever you need, doctor.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-030",
+  "set": "dev",
+  "why": "enriched:X1",
+  "text": "A: Excuse me. Hello. What's your name? || B: My name is Anna. And you?",
+  "gold": {
+   "frames": [
+    "X1"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-031",
+  "set": "dev",
+  "why": "enriched:X1",
+  "text": "A: This is a lovely city. What do you do? || B: I'm a nurse, at the hospital just round the corner. And you?",
+  "gold": {
+   "frames": [
+    "X1"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-032",
+  "set": "dev",
+  "why": "enriched:X1",
+  "text": "A: Pleased to meet you too. Where are you from? || B: I'm from Manchester, but I live in London now. And you?",
+  "gold": {
+   "frames": [
+    "X1"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-033",
+  "set": "dev",
+  "why": "enriched:X2",
+  "text": "A: A lot of people do - it's the most natural thing when you feel better. But the full course, every time. Deal? || B: Deal. Full course, scout's honour.",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": "'Deal' is an acceptance, not a polar particle, so no X2. 'Full course' reads back the instruction."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-034",
+  "set": "dev",
+  "why": "enriched:X2",
+  "text": "A: Hello. Can you take me to the train station, please? || B: Yes, of course. It may take some time, there's a lot of traffic at the moment.",
+  "gold": {
+   "frames": [
+    "X2"
+   ],
+   "note": "A request phrased as a question, answered with 'Yes, of course'. Nothing is handed over."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-035",
+  "set": "dev",
+  "why": "enriched:X2",
+  "text": "A: Excuse me, do you know how to get to the nearest supermarket? || B: Yes, it's about a ten minute walk. Go straight along this road.",
+  "gold": {
+   "frames": [
+    "X2"
+   ],
+   "note": "Directions only, so no X5."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-036",
+  "set": "dev",
+  "why": "enriched:X2",
+  "text": "A: Can I still have a glass of wine with these? || B: Best not with these - alcohol can make the side effects worse. One week off won't hurt.",
+  "gold": {
+   "frames": [],
+   "note": "'Best not' is not a polar answer particle."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-037",
+  "set": "dev",
+  "why": "enriched:X2",
+  "text": "A: Am I speaking slowly enough for you now? || B: Yes, thank you. It's easier talking to just one person. It's a bit difficult thinking of something to say, though. I'm not sure what to say, but I feel as if I can speak enough to start having conversations.",
+  "gold": {
+   "frames": [
+    "X2"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-038",
+  "set": "dev",
+  "why": "enriched:X3",
+  "text": "A: Hello, I'm Siân, one of the nurses on today. And you are? || B: Sorry, love, what was your name again? I'm terrible with names.",
+  "gold": {
+   "frames": [
+    "X3"
+   ],
+   "note": "B did not catch or keep the name and asks for it again. B gives no answer, so no X1."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-039",
+  "set": "dev",
+  "why": "enriched:X3",
+  "text": "A: It's down there on the right. || B: Can you say that again?",
+  "gold": {
+   "frames": [
+    "X3"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-040",
+  "set": "dev",
+  "why": "enriched:X3",
+  "text": "A: That's right, I did - and there's nothing to be alarmed about. We'll go through it all now. How have you been feeling in yourself? || B: In myself? Tired, doctor. Tired all the time, if I'm honest.",
+  "gold": {
+   "frames": [],
+   "note": "The echo 'In myself?' is followed straight away by an answer. It is not a repair request, and there is no polar particle."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-041",
+  "set": "dev",
+  "why": "enriched:X3",
+  "text": "A: How's your pain now? Nought to ten, ten being the worst you can imagine? || B: What do you mean, nought to ten? I never know how to answer that.",
+  "gold": {
+   "frames": [
+    "X3"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-042",
+  "set": "dev",
+  "why": "enriched:X3",
+  "text": "A: I'm a nurse, at the hospital just round the corner. And you? || B: I'm sorry, I didn't understand you. I'm learning [target language]. Could you say that again more slowly?",
+  "gold": {
+   "frames": [
+    "X3"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-043",
+  "set": "dev",
+  "why": "enriched:X4",
+  "text": "A: So what I think is happening is a chest infection. That's why you've been coughing and feeling so tired. It's very common at this time of year. || B: Ah, right. That makes sense, I suppose.",
+  "gold": {
+   "frames": [],
+   "note": "'Ah, right. That makes sense' is uptake of an explanation. There is no explicit receipt of an instruction and no read-back."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-044",
+  "set": "dev",
+  "why": "enriched:X4",
+  "text": "A: Of course. There's an infection in the tubes of your lungs - a bug, basically. That's what's causing the cough and the tiredness. The tablets will kill the bug. || B: A bug in the tubes. Right. Now I understand you.",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": "'A bug in the tubes' says the content back."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-045",
+  "set": "dev",
+  "why": "enriched:X4",
+  "text": "A: Here are your tablets for this morning. Have you got some water there? Just the two white ones now, the other one's after lunch. || B: Righto. I've still got the water from breakfast here.",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": "Borderline: 'Righto' is taken as a receipt marker for the dosing instruction. The water answer has no polar particle, and A, not B, hands over the tablets."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-046",
+  "set": "dev",
+  "why": "enriched:X4",
+  "text": "A: I was surprised too — but there's a sign on the road that says six. I saw it myself from the bus. || B: A sign — well then, six it is. I've clearly never looked. Go on — what happened next?",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": "Borderline: B says the information back and accepts it ('A sign... six it is')."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-047",
+  "set": "dev",
+  "why": "enriched:X4",
+  "text": "A: Take them with food, that protects the stomach. And if they still upset you, ring us rather than just stopping - stopping halfway is how infections come back stronger. || B: Ring rather than stop. I'll admit, I just stopped them last time.",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-048",
+  "set": "dev",
+  "why": "enriched:X5",
+  "text": "A: Could I pay by card? || B: Yes, of course. The machine is just here.",
+  "gold": {
+   "frames": [
+    "X2",
+    "X5"
+   ],
+   "note": "'The machine is just here' points out a physical object."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-049",
+  "set": "dev",
+  "why": "enriched:X5",
+  "text": "A: Could I pay by card? Do you have contactless? || B: Of course. There's the machine.",
+  "gold": {
+   "frames": [
+    "X2",
+    "X5"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-050",
+  "set": "dev",
+  "why": "enriched:X5",
+  "text": "A: I'm not sure if I'm hungry. Do you have a menu? || B: Yes, of course. Here it is. The fish and chips are very good.",
+  "gold": {
+   "frames": [
+    "X2",
+    "X5"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-051",
+  "set": "dev",
+  "why": "enriched:X5",
+  "text": "A: Welcome. Yes, you have a double room for three nights. Could I see some ID, please? || B: Of course. Here's my passport.",
+  "gold": {
+   "frames": [
+    "X2",
+    "X5"
+   ],
+   "note": "'Of course' answers the request phrased as a question, and the passport is handed over."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-052",
+  "set": "dev",
+  "why": "enriched:X5",
+  "text": "A: Excuse me. Do you have any painkillers? || B: Yes, they're down that aisle, on the left.",
+  "gold": {
+   "frames": [
+    "X2"
+   ],
+   "note": "This is a direction to a location, not a handover."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-053",
+  "set": "dev",
+  "why": "enriched:X6",
+  "text": "A: Thank you, you've been very helpful. I'm very grateful. || B: You're welcome. Are you here on holiday? You speak very good [target language].",
+  "gold": {
+   "frames": [
+    "X6"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-054",
+  "set": "dev",
+  "why": "enriched:X6",
+  "text": "A: Thank you, love. No offence meant - I'm just tired today. || B: None taken at all. Right - first, I just need to take your blood pressure.",
+  "gold": {
+   "frames": [],
+   "note": "'None taken' answers 'no offence', not the thanks, so there is no thanks downgrade."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H031",
+  "set": "held-out",
+  "why": "enriched:X2",
+  "text": "A: I'm sorry, I didn't understand you. I'm learning [target language]. Could you say that again more slowly? || B: Yes, of course. I'm a nurse. I work at the hospital. It's near here. And what do you do?",
+  "gold": {
+   "frames": [
+    "X2"
+   ],
+   "note": "A's repair request is phrased as a question and B opens with 'Yes, of course'. X3 doesn't fire because the repair is in A. X1 doesn't fire because A asked no question for B to return."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H032",
+  "set": "held-out",
+  "why": "enriched:X2",
+  "text": "A: Are they all right to take with food? || B: Yes, with or after food is best.",
+  "gold": {
+   "frames": [
+    "X2"
+   ],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H033",
+  "set": "held-out",
+  "why": "enriched:X3",
+  "text": "A: When did it start? Does anything make it better or worse? || B: Do you mean the pain or the dizziness? Because they started at different times.",
+  "gold": {
+   "frames": [
+    "X3"
+   ],
+   "note": "Borderline: 'Do you mean X or Y?' asks what A's 'it' refers to, which is a clarification request about A's words, not a request for more information."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H034",
+  "set": "held-out",
+  "why": "enriched:X3",
+  "text": "A: What I think is happening is a chest infection - that's the cough and the tiredness. || B: Sorry, could you explain that again? What does that mean, exactly?",
+  "gold": {
+   "frames": [
+    "X3"
+   ],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H035",
+  "set": "held-out",
+  "why": "enriched:X4",
+  "text": "A: I'm going to give you a course of antibiotics. Take one twice a day, morning and evening, and finish the whole course even if you feel better. || B: Righto. Twice a day, morning and evening. Finish the lot.",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": "'Righto' alone would not fire, but B repeats the instruction back."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H036",
+  "set": "held-out",
+  "why": "enriched:X4",
+  "text": "A: Just the rash, all up my arms. No swelling that I remember. || B: That's noted. It means there are one or two antibiotics we'll avoid - and plenty of others we can use safely.",
+  "gold": {
+   "frames": [
+    "X4"
+   ],
+   "note": "A gives information and B marks receipt with 'noted'."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H001",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: That makes me feel a little worried. || B: When you talk quickly, it makes me feel stupid.",
+  "gold": {
+   "frames": [],
+   "note": "A complaint about B's speed; B neither asks A to repeat nor rephrase, so it is not X3."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H002",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Yes, a very long day. It started on the bus this morning — I found out town is six miles away. I nearly got off to walk it! || B: Six miles? Are you sure? I've always thought it was much closer than that.",
+  "gold": {
+   "frames": [],
+   "note": "'Six miles? Are you sure?' is a doubting echo of news A was understood to say, so it is not X3."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H003",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: That's a useful distinction. Has there been any weight loss, any fevers, night sweats? || B: Now you mention it, my trousers are looser on me. I thought that was a good thing.",
+  "gold": {
+   "frames": [],
+   "note": "A asks a yes/no question, but B answers without opening on a polar particle, so it is not X2."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H004",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Don't be — you said maybe, and maybe was right. Six is too far for me. I'll stay in this seat and ride the whole way. || B: Do that. It's the last stop, anyway — you can't miss it.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H005",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: To the door and back, then, if you're holding on. || B: Every step. Well done, you - that's further than yesterday. We'll do it again after tea.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H006",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Most people at this stage do. I'll get the nurse to book you into the lifestyle clinic - practical help, nobody's going to lecture you. || B: No lectures - good. I get plenty of those at home.",
+  "gold": {
+   "frames": [],
+   "note": "'No lectures - good' echoes and evaluates one detail of A's news. It is not a read-back of an instruction and has no receipt formula, so it is not X4."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H007",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: It's hot today, again. || B: Is the water warm?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H008",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: A sign — well then, six it is. I've clearly never looked. Go on — what happened next? || B: Coffee, crisps, and a friend I'm seeing on Saturday. And now — bed. Good night!",
+  "gold": {
+   "frames": [],
+   "note": "B answers A's WH-question; there is no polar particle and no return."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H009",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: I honestly don't know — today's delivery is still in its boxes. There might be crisps in there; there might not. || B: Would you have a look? No rush — I'm waiting on my coffee anyway.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H010",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: I promise we won't be late. || B: I'd like two scoops of ice-cream, please.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H011",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Three or four miles — I could walk that. I might get off at the next stop, then, and walk the rest. It's a nice morning for it. || B: Oh — hold on. There's the sign: six miles to town. It's further than I thought. I'm sorry.",
+  "gold": {
+   "frames": [],
+   "note": "'There's the sign' points out an object, but not in reply to anything A ordered, requested or needs, so it is not X5."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H012",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: I'd like a black coffee, please. || B: Do you want regular or large?",
+  "gold": {
+   "frames": [],
+   "note": "B asks a follow-up question; nothing is handed over yet."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H013",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: That's not so bad. Tighter than my husband's handshake, mind. || B: It's 135 over 80 today - much better. The doctor will be pleased with that.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H014",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Worse than this morning, definitely. And I couldn't sleep with it. || B: Then let's get on top of it. I'll bring you something now, and we'll keep it regular so it doesn't build up again.",
+  "gold": {
+   "frames": [],
+   "note": "'I'll bring you something now' promises a future handover, so it is not X5."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H015",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as I can, but I might need to ask for help now and then, if that's alright. || B: Where are you learning, then? Are you doing the classes?",
+  "gold": {
+   "frames": [],
+   "note": "'If that's alright' is not a question, and B asks a new question."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H016",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: First time! You're hired. Usually I'm like a pin cushion. || B: I'll take the compliment. That's you done - the doctor will have the results tomorrow.",
+  "gold": {
+   "frames": [],
+   "note": "A pays a compliment, not thanks, so it is not X6."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H017",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Written down would be lovely. I don't trust my memory these days. || B: Leave it with me - it'll be there in black and white by your bed.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H018",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Before we start - I'm learning Welsh at the moment, so I'll try to stay in Welsh as much as possible. If we get stuck, I might ask you to speak English, or call a colleague who's more confident. Is that alright? || B: Chwarae teg i chi, doctor. That's fine by me. We'll muddle through.",
+  "gold": {
+   "frames": [],
+   "note": "B agrees to 'Is that alright?' but opens with 'Chwarae teg i chi', not a polar particle, so it is not X2."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H019",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Of course. Which arm do you want? || B: Left arm's fine. The cuff will squeeze for a few seconds now, then it lets go.",
+  "gold": {
+   "frames": [],
+   "note": "A's question is a WH-question, and the 'Of course' is in A's turn, so it is not X2."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H020",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Where are you from, if you don't mind me asking? || B: I'm from the Philippines - from Manila. I've been in Wales three years now.",
+  "gold": {
+   "frames": [],
+   "note": "B answers but does not return the question, so it is not X1."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H021",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: I'd like a large glass of white wine, please. || B: Can I have a small glass of red wine?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H022",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: You're not wasting my time at all - this is exactly what I'm here for. Tell me about the pain. || B: Well, the pain in my side is the main one. The other thing can wait.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H023",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Is that correct? Am I correct? || B: Am I wrong about that?",
+  "gold": {
+   "frames": [],
+   "note": "B answers a question with a question and gives no polar particle."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H024",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Three or four days. I can cope with that. || B: So here's the plan: a week of antibiotics, plenty of rest and fluids, and I want to hear from you if you're not clearly better by Friday.",
+  "gold": {
+   "frames": [],
+   "note": "'Here's the plan' presents an idea, not an object, so it is not X5."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H025",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Fair enough! If today's scan is clear and you stay this well overnight, then tomorrow it is. || B: That's the best news I've had all week.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H026",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: I'd like takeaway, please. || B: Could I have two white coffees and two black coffees and one of those, please?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H027",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Not on my watch. Chicken it is, and I'll make sure it's noted properly. || B: You're very good. Ta, love.",
+  "gold": {
+   "frames": [],
+   "note": "B thanks A here; there is no downgrade of thanks."
+  },
+  "source": "health-sector-conversations-v3"
+ },
+ {
+  "gid": "X-H028",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Do you have crisps, or nuts, or anything? || B: I honestly don't know — today's delivery is still in its boxes. There might be crisps in there; there might not.",
+  "gold": {
+   "frames": [],
+   "note": "B answers with 'I honestly don't know' and no polar particle, so it is not X2."
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H029",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: Yes, the salmon and the risotto are both gluten-free. We also have some salads. || B: And what would you recommend tonight?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "pod-1"
+ },
+ {
+  "gid": "X-H030",
+  "set": "held-out",
+  "why": "random",
+  "text": "A: I don't like to make a fuss, that's my trouble. I'll leave it and leave it. || B: Listen - the people who worry about making a fuss are exactly the ones who should ring. Promise me you will.",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "source": "health-sector-conversations-v3"
+ }
+]

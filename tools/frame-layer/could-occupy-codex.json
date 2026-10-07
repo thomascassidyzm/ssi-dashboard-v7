@@ -1,6 +1,6 @@
 {
  "id": "C",
- "version": "2026-10-07.1",
+ "version": "2026-10-07.2",
  "title": "SSi could-occupy codex: position classes of a single sentence (C1-C24)",
  "purpose": "The definitions a model (Haiku family) uses to say which conversational POSITION CLASSES a course's known-side sentence could fill if a turn were built around it. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language). Could-occupy, never attestation: a seed has no turn around it. The C-ids and their shape-position mapping are pinned to tools/frame-layer/could-occupy.cjs; C0 'any turn' is a word count and is not in this codex.",
  "task": "You classify sentences from a language course (the KNOWN side of seed sentences) by the conversational move each sentence could make if someone said it in a conversation",
@@ -10,7 +10,7 @@
   "A class is a property of the sentence ITSELF, read off its own words: the move it would make if said to someone. Be CONSERVATIVE: fire a class only on evidence in the sentence, never because it could fit 'with enough imagination'. A wrongly-tagged sentence poisons a filler pool; an untagged one is an honest hole.",
   "Judge the move and the meaning, never the presence of a word: 'I don't understand why she left' is not a repair (C5); 'thinking about how to answer' is not a hedge (C7).",
   "Multi-label: a sentence can fire several classes ('Can I ask you something before you leave?' fires C2 and C24). Many sentences fire only C6, and one- or two-word fragments ('Woman.', 'An idea.', 'Badly.') usually fire nothing.",
-  "Questions are recognised by grammar and the question mark; a statement with a question mark is still a question. A question is never C6.",
+  "Questions are recognised by grammar and the question mark; a statement with a question mark is still a question. A question is never C6. EVERY yes/no question fires C24, also when it fires C1, C2 or C3 ('Can I have something to drink please?' fires C2 AND C24).",
   "The sentence is the known side of a course and may be in a language other than English; apply the same meanings.",
   "When unsure whether a borderline case fires, follow the class's boundary rules; if they do not settle it, do not fire."
  ],
@@ -47,8 +47,8 @@
      "why": "an elicitation, not availability"
     },
     {
-     "text": "Have you got used to the weather?",
-     "why": "'got used to' is not possession"
+     "text": "Have you got children yourself?",
+     "why": "a personal question about family, not availability of a thing, service or place"
     }
    ],
    "boundary": [
@@ -243,7 +243,8 @@
     }
    ],
    "boundary": [
-    "Imperatives ('Make sure you...', 'Remember to...') are not C6.",
+    "Imperatives ('Make sure you...', 'Remember to...') are not C6, and nor is advice addressed to the other ('you need to do it before you go' is C12 only).",
+    "A stand-alone 'because' clause that answers a why-question ('Because I want to meet people.') IS C6.",
     "Exclamations that are full clauses ('That's wonderful!') do fire C6."
    ]
   },
@@ -468,8 +469,8 @@
      "why": "a question"
     },
     {
-     "text": "You were right.",
-     "why": "addresses the other, but no instruction"
+     "text": "And I want you to speak Norwegian with me tomorrow.",
+     "why": "states the speaker's wish; not an instruction or advice form"
     }
    ],
    "boundary": [
@@ -600,7 +601,7 @@
     "I don't speak it very well yet.",
     "I'm still learning, sorry.",
     "My Welsh isn't very good.",
-    "I'm only a beginner."
+    "I don't know how to say enough different words yet."
    ],
    "near_misses": [
     {
@@ -620,8 +621,8 @@
      "why": "not about skill"
     },
     {
-     "text": "You're still learning.",
-     "why": "about the other"
+     "text": "I speak a little Dutch now.",
+     "why": "a progress report, not modesty"
     }
    ],
    "boundary": [
@@ -701,7 +702,8 @@
     }
    ],
    "boundary": [
-    "Lack of information or memory, said by the speaker."
+    "Lack of information or memory, said by the speaker.",
+    "'I'm not sure if/whether ...' fires C18 (and C7)."
    ]
   },
   {
@@ -802,8 +804,8 @@
      "why": "report"
     },
     {
-     "text": "I'll see you at six at the station.",
-     "why": "an arrangement"
+     "text": "I'll see you there later.",
+     "why": "arranges a meeting at a place; not a parting formula"
     },
     {
      "text": "It's a good evening for a walk.",

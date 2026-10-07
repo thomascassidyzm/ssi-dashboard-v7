@@ -1,6 +1,6 @@
 {
  "id": "S-spa",
- "version": "2026-10-07.1",
+ "version": "2026-10-07.2",
  "title": "SSi split-outcome codex, Spanish target side: which side of each structural split a Spanish phrase uses",
  "purpose": "The definitions a model (Haiku family) uses to say which OUTCOMES of the pair's structural splits a Spanish TARGET text carries. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language): these were target_re regexes in split-matchers.cjs; they are now defined here and classified by a model. One codex per target language because the outcomes are facts about that language's grammar; the id carries the language (S-spa) so a French or Welsh split codex can sit beside it without sharing a cache. Outcome ids (S1A, S1B, ...) are pinned to tools/frame-layer/split-matchers.cjs.",
  "task": "You read Spanish phrases from a language course and say which grammatical outcomes they use",
@@ -9,7 +9,7 @@
  "general_rules": [
   "An outcome is a GRAMMATICAL CHOICE the phrase actually makes: a verb, mood or construction that is present in the Spanish text. Judge the grammar, never a string: 'pide' is pedir, 'piensa' is pensar, 'espero' can be esperar = hope or wait.",
   "Phrases are often fragments (LEGOs and building blocks): 'habría', 'quiero que', 'antes de salir'. Tag the construction the fragment shows. A bare 'quiero que' already shows querer que (S1B) even with no verb after it.",
-  "Check EVERY phrase against EVERY outcome; a phrase can carry several outcomes, of the same split or of different splits ('no creo que sepa' fires S4B and S9A). Many phrases carry none.",
+  "Check EVERY phrase against EVERY outcome and list ALL that apply; a long phrase often carries four or five (a ser, an estar, a relative clause and a podría in one sentence). Never drop an outcome because another one fired. Many phrases carry none.",
   "Accents may be missing in course text ('podria', 'esta'); read the intended word.",
   "When unsure, follow the outcome's boundary rules; if they do not settle it, do not fire."
  ],
@@ -357,7 +357,8 @@
     }
    ],
    "boundary": [
-    "Only relative clauses count; complement clauses after verbs (decir que, creer que) do not."
+    "Only relative clauses count; complement clauses after verbs (decir que, creer que) do not.",
+    "Free relatives count: 'lo que esperaba', 'lo menos que podría hacer', 'el que quiero' fire S5A when the verb is indicative (a conditional counts as indicative here)."
    ]
   },
   {

@@ -1,0 +1,2376 @@
+[
+ {
+  "gid": "S-spa-091",
+  "set": "dev",
+  "why": "enriched:S9B",
+  "text": "el hombre joven que está sentado allí conoce a tu amigo",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S9B",
+    "S11A",
+    "S12B"
+   ],
+   "note": "'que está sentado' is an indicative relative about a specific man; 'conoce a tu amigo' has a personal 'a' before a human direct object"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-092",
+  "set": "dev",
+  "why": "enriched:S9B",
+  "text": "Mi amigo quiere conocer personas a las que les gusta ver la televisión y practicar",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S5A",
+    "S8A",
+    "S9B"
+   ],
+   "note": "'a las que les gusta' is an indicative relative and a dative gustar; 'conocer personas' has no personal 'a', so S11A does not fire"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-093",
+  "set": "dev",
+  "why": "enriched:S10A",
+  "text": "Claro que puedes preguntarle porque es mi amiga y quiere ayudarte",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S10A",
+    "S12A"
+   ],
+   "note": "'Claro que' is a set phrase, not a relative"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-094",
+  "set": "dev",
+  "why": "enriched:S10A",
+  "text": "Él trabaja aquí y quería preguntarte algo sobre eso ayer",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S10A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-095",
+  "set": "dev",
+  "why": "enriched:S10A",
+  "text": "preguntaste dónde estaba",
+  "gold": {
+   "frames": [
+    "S10A",
+    "S12B"
+   ],
+   "note": "'dónde estaba' is an indirect question, not a relative clause"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-096",
+  "set": "dev",
+  "why": "enriched:S10B",
+  "text": "Mi hermana me dijo que quería pedir ayuda con lo mismo",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S10B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-097",
+  "set": "dev",
+  "why": "enriched:S10B",
+  "text": "¿Qué harías si te pidiera que me ayudaras a entender esto?",
+  "gold": {
+   "frames": [
+    "S10B"
+   ],
+   "note": "'pidiera' is the imperfect subjunctive of pedir"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-098",
+  "set": "dev",
+  "why": "enriched:S10B",
+  "text": "Conocí a alguien que quería pedir ayuda con lo mismo que tú",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S5A",
+    "S9B",
+    "S10B",
+    "S11A"
+   ],
+   "note": "'alguien que quería' takes an indicative, so the referent is specific (S5A); 'lo mismo que tú' is comparative"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-099",
+  "set": "dev",
+  "why": "enriched:S11A",
+  "text": "¿Por qué no quieres esperar a tu padre un rato?",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S11A"
+   ],
+   "note": "esperar here means 'wait for', so S2A does not fire; 'a tu padre' is a personal 'a'"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-100",
+  "set": "dev",
+  "why": "enriched:S11A",
+  "text": "Vi a tu hermana aquí hace un rato y quería hablar contigo",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S11A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-101",
+  "set": "dev",
+  "why": "enriched:S11A",
+  "text": "esta vez ella podría traer a su hermano",
+  "gold": {
+   "frames": [
+    "S6A",
+    "S11A"
+   ],
+   "note": "'esta vez' is a demonstrative, not estar; 'traer a su hermano' has a personal 'a' before a human direct object"
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-102",
+  "set": "dev",
+  "why": "enriched:S12A",
+  "text": "Es importante encontrar",
+  "gold": {
+   "frames": [
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-103",
+  "set": "dev",
+  "why": "enriched:S12A",
+  "text": "la esperanza real es importante",
+  "gold": {
+   "frames": [
+    "S12A"
+   ],
+   "note": "'esperanza' is a noun, not esperar"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-104",
+  "set": "dev",
+  "why": "enriched:S12A",
+  "text": "¿quién es ese chico?",
+  "gold": {
+   "frames": [
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-105",
+  "set": "dev",
+  "why": "enriched:S12B",
+  "text": "No está funcionando aquí",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-106",
+  "set": "dev",
+  "why": "enriched:S12B",
+  "text": "No estoy seguro de cuándo estaré listo",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-107",
+  "set": "dev",
+  "why": "enriched:S12B",
+  "text": "No estoy seguro de si puedo hablar español",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": "'puedo' is present indicative, which has no S6 outcome"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-001",
+  "set": "dev",
+  "why": "random",
+  "text": "Pienso que esta es la única manera de entender lo que quiero decir",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S4A",
+    "S5A",
+    "S12A"
+   ],
+   "note": "'esta es' is a demonstrative pronoun plus ser, not estar. 'querer decir' fires S1A."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-002",
+  "set": "dev",
+  "why": "random",
+  "text": "lo menos",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-003",
+  "set": "dev",
+  "why": "random",
+  "text": "Estoy muy contento con lo que he hecho ya",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-004",
+  "set": "dev",
+  "why": "random",
+  "text": "Todo está cambiando ahora",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-005",
+  "set": "dev",
+  "why": "random",
+  "text": "Ella quiere practicar español lo más frecuentemente posible",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-006",
+  "set": "dev",
+  "why": "random",
+  "text": "vivía solo",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-007",
+  "set": "dev",
+  "why": "random",
+  "text": "ponen música y la gente necesita descansar",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-008",
+  "set": "dev",
+  "why": "random",
+  "text": "Él quiere hablar",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-009",
+  "set": "dev",
+  "why": "random",
+  "text": "No disfruto parar en medio de algo que estoy empezando a entender",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-010",
+  "set": "dev",
+  "why": "random",
+  "text": "No quiero esperar",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "Here 'esperar' means wait and is an infinitive after querer, so S2A does not fire."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-011",
+  "set": "dev",
+  "why": "random",
+  "text": "Ideas en mi cabeza",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-012",
+  "set": "dev",
+  "why": "random",
+  "text": "Casi puedo recordar lo que quiero decir",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S5A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-013",
+  "set": "dev",
+  "why": "random",
+  "text": "mandar un mensaje",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-014",
+  "set": "dev",
+  "why": "random",
+  "text": "necesitamos quedarnos callados el mayor tiempo posible",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-015",
+  "set": "dev",
+  "why": "random",
+  "text": "habría pensado más si hubiera sido mi decisión",
+  "gold": {
+   "frames": [
+    "S7A",
+    "S7B",
+    "S12A"
+   ],
+   "note": "'hubiera sido' is the participle of ser."
+  },
+  "kind": "seed"
+ },
+ {
+  "gid": "S-spa-016",
+  "set": "dev",
+  "why": "random",
+  "text": "Pensé que era una buena idea empezar a hablar lo antes posible",
+  "gold": {
+   "frames": [
+    "S4A",
+    "S12A"
+   ],
+   "note": "'lo antes posible' is not antes de + infinitive."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-017",
+  "set": "dev",
+  "why": "random",
+  "text": "Quiero que me devuelvan mi dinero y voy a intentar hablar con ellos",
+  "gold": {
+   "frames": [
+    "S1B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-018",
+  "set": "dev",
+  "why": "random",
+  "text": "duele más que antes",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-019",
+  "set": "dev",
+  "why": "random",
+  "text": "Esperábamos empezar",
+  "gold": {
+   "frames": [
+    "S2A"
+   ],
+   "note": "esperar + infinitive here means hope/expect to start."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-020",
+  "set": "dev",
+  "why": "random",
+  "text": "peor",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-021",
+  "set": "dev",
+  "why": "random",
+  "text": "¿quieres azúcar en tu café?",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-022",
+  "set": "dev",
+  "why": "random",
+  "text": "Quiero hacer esto por ahora y pensar más en esto después",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-023",
+  "set": "dev",
+  "why": "random",
+  "text": "Está funcionando mejor de lo que esperaba",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S12B"
+   ],
+   "note": "In 'de lo que esperaba', 'lo que esperaba' is a free relative with indicative (borderline because of the comparative). esperar has no infinitive or que after it."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-024",
+  "set": "dev",
+  "why": "random",
+  "text": "No quiero interrumpir en este momento",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-025",
+  "set": "dev",
+  "why": "random",
+  "text": "el perro está sucio y mojado en el jardín",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-026",
+  "set": "dev",
+  "why": "random",
+  "text": "Me pregunto dónde va a reunirse conmigo hoy",
+  "gold": {
+   "frames": [
+    "S10A"
+   ],
+   "note": "Reflexive 'me pregunto' (I wonder) fires S10A."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-027",
+  "set": "dev",
+  "why": "random",
+  "text": "pasar mucho tiempo",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-028",
+  "set": "dev",
+  "why": "random",
+  "text": "Tomé un vaso o dos de agua antes de hablar contigo ayer",
+  "gold": {
+   "frames": [
+    "S3A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-029",
+  "set": "dev",
+  "why": "random",
+  "text": "Quiero intentar mejorar lo más posible en poco tiempo",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-030",
+  "set": "dev",
+  "why": "random",
+  "text": "Mi café",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-061",
+  "set": "dev",
+  "why": "enriched:S4A",
+  "text": "Pienso que estaré listo en menos de una hora si puedes esperar",
+  "gold": {
+   "frames": [
+    "S4A",
+    "S12B"
+   ],
+   "note": "'estaré' is estar. 'puedes esperar' is esperar = wait, with no infinitive after it."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-062",
+  "set": "dev",
+  "why": "enriched:S4B",
+  "text": "no pienso que pueda hacer eso",
+  "gold": {
+   "frames": [
+    "S4B",
+    "S6D"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-063",
+  "set": "dev",
+  "why": "enriched:S5A",
+  "text": "quien dijo que sería difícil tenía razón",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S12A"
+   ],
+   "note": "'quien dijo' is a free relative with an indicative verb about a specific person. 'dijo que' is a complementiser."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-064",
+  "set": "dev",
+  "why": "enriched:S5A",
+  "text": "Eres como alguien que conocía antes",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S9B",
+    "S12A"
+   ],
+   "note": "Relative 'alguien que conocía' is indicative and specific. There is no personal 'a' on the surface."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-065",
+  "set": "dev",
+  "why": "enriched:S5A",
+  "text": "La mayoría de las personas que conozco",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S9B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-066",
+  "set": "dev",
+  "why": "enriched:S5B",
+  "text": "una tienda donde pueda comprar",
+  "gold": {
+   "frames": [
+    "S5B",
+    "S6D"
+   ],
+   "note": "'donde pueda' is a relative with a subjunctive verb and a non-specific referent."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-067",
+  "set": "dev",
+  "why": "enriched:S5B",
+  "text": "Lo que haga",
+  "gold": {
+   "frames": [
+    "S5B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-068",
+  "set": "dev",
+  "why": "enriched:S5B",
+  "text": "quiero una tienda donde pueda comprar postales",
+  "gold": {
+   "frames": [
+    "S5B",
+    "S6D"
+   ],
+   "note": "'quiero una tienda' is querer + noun, not S1A."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-069",
+  "set": "dev",
+  "why": "enriched:S6A",
+  "text": "podría haberle pasado hace mucho tiempo",
+  "gold": {
+   "frames": [
+    "S6A"
+   ],
+   "note": "'haber' is an infinitive, not conditional habría."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-070",
+  "set": "dev",
+  "why": "enriched:S6A",
+  "text": "¿Podrías decir eso otra vez más despacio?",
+  "gold": {
+   "frames": [
+    "S6A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-071",
+  "set": "dev",
+  "why": "enriched:S6A",
+  "text": "¿podrían reducir los estudiantes que aceptan?",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S6A"
+   ],
+   "note": "'los estudiantes que aceptan' is an indicative relative."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-072",
+  "set": "dev",
+  "why": "enriched:S6B",
+  "text": "él no podía ver los cinco",
+  "gold": {
+   "frames": [
+    "S6B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-073",
+  "set": "dev",
+  "why": "enriched:S6B",
+  "text": "ella no podía usar la otra habitación",
+  "gold": {
+   "frames": [
+    "S6B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-074",
+  "set": "dev",
+  "why": "enriched:S6D",
+  "text": "para que podamos aprender",
+  "gold": {
+   "frames": [
+    "S6D"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-075",
+  "set": "dev",
+  "why": "enriched:S6D",
+  "text": "quiero que podamos hablar más",
+  "gold": {
+   "frames": [
+    "S1B",
+    "S6D"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-076",
+  "set": "dev",
+  "why": "enriched:S6D",
+  "text": "que pueda",
+  "gold": {
+   "frames": [
+    "S6D"
+   ],
+   "note": "'pueda' is unambiguously present subjunctive."
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-077",
+  "set": "dev",
+  "why": "enriched:S7A",
+  "text": "habría pensado más antes de que nos mudáramos a la ciudad",
+  "gold": {
+   "frames": [
+    "S3B",
+    "S7A"
+   ],
+   "note": "'pensado' has no 'que', so S4 does not fire."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-078",
+  "set": "dev",
+  "why": "enriched:S7A",
+  "text": "habría conducido pero estaba cansado",
+  "gold": {
+   "frames": [
+    "S7A",
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-079",
+  "set": "dev",
+  "why": "enriched:S7A",
+  "text": "Si hubiera sabido más lo habría hecho de manera diferente",
+  "gold": {
+   "frames": [
+    "S7A",
+    "S7B",
+    "S9A"
+   ],
+   "note": "The participle 'sabido' is a form of saber."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-080",
+  "set": "dev",
+  "why": "enriched:S7B",
+  "text": "si me lo hubieras dicho",
+  "gold": {
+   "frames": [
+    "S7B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-081",
+  "set": "dev",
+  "why": "enriched:S8A",
+  "text": "Me gusta esa cosa azul más que el bolso",
+  "gold": {
+   "frames": [
+    "S8A"
+   ],
+   "note": "'más que' is comparative, not relative."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-082",
+  "set": "dev",
+  "why": "enriched:S8A",
+  "text": "me gustó bastante su libro",
+  "gold": {
+   "frames": [
+    "S8A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-083",
+  "set": "dev",
+  "why": "enriched:S8A",
+  "text": "Me gusta mi café cuando tengo tiempo para relajarme un rato",
+  "gold": {
+   "frames": [
+    "S8A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-084",
+  "set": "dev",
+  "why": "enriched:S8B",
+  "text": "Me gustaría relajarme un rato y después puedo empezar",
+  "gold": {
+   "frames": [
+    "S8B"
+   ],
+   "note": "'después' here is a bare adverb, so S3 does not fire."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-085",
+  "set": "dev",
+  "why": "enriched:S8B",
+  "text": "Me gustaría poder practicar hablando todo el día",
+  "gold": {
+   "frames": [
+    "S8B"
+   ],
+   "note": "'poder' is an infinitive, not conditional."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-086",
+  "set": "dev",
+  "why": "enriched:S8B",
+  "text": "no me gustaría",
+  "gold": {
+   "frames": [
+    "S8B"
+   ],
+   "note": ""
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-087",
+  "set": "dev",
+  "why": "enriched:S9A",
+  "text": "Sí, sé que es difícil pero voy a intentar",
+  "gold": {
+   "frames": [
+    "S9A",
+    "S12A"
+   ],
+   "note": "Accented 'sé' here means 'I know'."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-088",
+  "set": "dev",
+  "why": "enriched:S9A",
+  "text": "Él no sabía cómo hacer esto",
+  "gold": {
+   "frames": [
+    "S9A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-089",
+  "set": "dev",
+  "why": "enriched:S9A",
+  "text": "Sé cómo hablar contigo",
+  "gold": {
+   "frames": [
+    "S9A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-090",
+  "set": "dev",
+  "why": "enriched:S9B",
+  "text": "Estoy intentando conocer a personas",
+  "gold": {
+   "frames": [
+    "S9B",
+    "S11A",
+    "S12B"
+   ],
+   "note": "'a personas' is a personal 'a' on a human direct object."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-031",
+  "set": "dev",
+  "why": "random",
+  "text": "hubieras",
+  "gold": {
+   "frames": [
+    "S7B"
+   ],
+   "note": "bare 'hubieras' counts"
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-032",
+  "set": "dev",
+  "why": "random",
+  "text": "Quiero explicar mejor que ahora",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "'mejor que ahora' is a comparative 'que', not S1B"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-033",
+  "set": "dev",
+  "why": "random",
+  "text": "Estoy un poco nervioso ahora mismo",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-034",
+  "set": "dev",
+  "why": "random",
+  "text": "Pienso que debería darle más tiempo para pensar en lo que quiere",
+  "gold": {
+   "frames": [
+    "S4A",
+    "S5A"
+   ],
+   "note": "'lo que quiere' is a relative with indicative; 'pensar en' does not fire S4"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-035",
+  "set": "dev",
+  "why": "random",
+  "text": "sabes",
+  "gold": {
+   "frames": [
+    "S9A"
+   ],
+   "note": ""
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-036",
+  "set": "dev",
+  "why": "random",
+  "text": "Vi a unos amigos el sábado por la noche y fue muy interesante",
+  "gold": {
+   "frames": [
+    "S11A",
+    "S12A"
+   ],
+   "note": "'fue muy interesante' means 'was', so it is ser"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-037",
+  "set": "dev",
+  "why": "random",
+  "text": "mucho antes de que paremos",
+  "gold": {
+   "frames": [
+    "S3B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-038",
+  "set": "dev",
+  "why": "random",
+  "text": "¿Estás aprendiendo cómo hablar lo más frecuentemente posible?",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": "'cómo hablar' is not antes/después de, so no S3"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-039",
+  "set": "dev",
+  "why": "random",
+  "text": "Definitivamente quiero intentar tener una conversación esta tarde",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "'esta tarde' is a demonstrative, not estar"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-040",
+  "set": "dev",
+  "why": "random",
+  "text": "hemos querido a menudo ir a un sitio un poco más cálido",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "adverb 'a menudo' sits between querido and ir, but it is still the querer + infinitive construction"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-041",
+  "set": "dev",
+  "why": "enriched:S1A",
+  "text": "quiero encontrar algo cerca del hotel",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-042",
+  "set": "dev",
+  "why": "enriched:S1A",
+  "text": "Quiero llevar a mis amigos allí",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S11A"
+   ],
+   "note": "'a mis amigos' is the human direct object of llevar"
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-043",
+  "set": "dev",
+  "why": "enriched:S1A",
+  "text": "Ella dijo que no quiere estar aquí y que quiere hacer otra cosa",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-044",
+  "set": "dev",
+  "why": "enriched:S1B",
+  "text": "sabía que querían que la gente les aprecie",
+  "gold": {
+   "frames": [
+    "S1B",
+    "S9A"
+   ],
+   "note": "no personal 'a' ('les' is a clitic)"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-045",
+  "set": "dev",
+  "why": "enriched:S1B",
+  "text": "Y quiero que hables español conmigo mañana",
+  "gold": {
+   "frames": [
+    "S1B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-046",
+  "set": "dev",
+  "why": "enriched:S1B",
+  "text": "¿Quieres que te ayude?",
+  "gold": {
+   "frames": [
+    "S1B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-047",
+  "set": "dev",
+  "why": "enriched:S2A",
+  "text": "Esperábamos trabajar hablando con otra persona",
+  "gold": {
+   "frames": [
+    "S2A"
+   ],
+   "note": "esperar = hope/expect + infinitive"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-048",
+  "set": "dev",
+  "why": "enriched:S2A",
+  "text": "Vi algo que no esperaba ver anoche",
+  "gold": {
+   "frames": [
+    "S2A",
+    "S5A"
+   ],
+   "note": "'no esperaba ver' means expect, not wait, so S2A fires; the relative 'algo que...' is indicative"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-049",
+  "set": "dev",
+  "why": "enriched:S2A",
+  "text": "Esperábamos despertarnos hablando con personas que hablan español",
+  "gold": {
+   "frames": [
+    "S2A",
+    "S5A"
+   ],
+   "note": "'personas que hablan' is a specific relative with indicative"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-050",
+  "set": "dev",
+  "why": "enriched:S2B",
+  "text": "Era algo que esperaba que pasara después de que termines",
+  "gold": {
+   "frames": [
+    "S2B",
+    "S3B",
+    "S5A",
+    "S12A"
+   ],
+   "note": "'algo que esperaba' is an indicative relative; 'esperaba que pasara' is S2B"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-051",
+  "set": "dev",
+  "why": "enriched:S2B",
+  "text": "Espero que puedas venir",
+  "gold": {
+   "frames": [
+    "S2B",
+    "S6D"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-052",
+  "set": "dev",
+  "why": "enriched:S2B",
+  "text": "Espero que empieces pronto porque quiero ir a casa",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S2B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-053",
+  "set": "dev",
+  "why": "enriched:S3A",
+  "text": "Pienso que es importante relajarme por un rato después de practicar mucho tiempo",
+  "gold": {
+   "frames": [
+    "S3A",
+    "S4A",
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-054",
+  "set": "dev",
+  "why": "enriched:S3A",
+  "text": "Quiero practicar un poco más antes de intentar hablar con otra persona",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S3A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-055",
+  "set": "dev",
+  "why": "enriched:S3A",
+  "text": "¿Te importa esperar un poco más antes de ir?",
+  "gold": {
+   "frames": [
+    "S3A"
+   ],
+   "note": "esperar here means wait with no infinitive, so no S2"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-056",
+  "set": "dev",
+  "why": "enriched:S3B",
+  "text": "Ella quiere explicar algo antes de que tenga que empezar",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S3B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-057",
+  "set": "dev",
+  "why": "enriched:S3B",
+  "text": "¿Puedo preguntarte algo importante antes de que te vayas esta tarde?",
+  "gold": {
+   "frames": [
+    "S3B",
+    "S10A"
+   ],
+   "note": "'esta tarde' is a demonstrative"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-058",
+  "set": "dev",
+  "why": "enriched:S3B",
+  "text": "Todavía quedaba poco tiempo antes de que tenga que irme",
+  "gold": {
+   "frames": [
+    "S3B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-059",
+  "set": "dev",
+  "why": "enriched:S4A",
+  "text": "pienso que él quiere sentarse",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S4A"
+   ],
+   "note": ""
+  },
+  "kind": "seed"
+ },
+ {
+  "gid": "S-spa-060",
+  "set": "dev",
+  "why": "enriched:S4A",
+  "text": "Pienso que sería agradable reunirse aquí otra vez esta noche",
+  "gold": {
+   "frames": [
+    "S4A",
+    "S12A"
+   ],
+   "note": "'sería' is ser; 'esta noche' is a demonstrative"
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H061",
+  "set": "held-out",
+  "why": "enriched:S9A",
+  "text": "que ella supiera",
+  "gold": {
+   "frames": [
+    "S9A"
+   ],
+   "note": "'supiera' is the imperfect subjunctive of saber; the bare 'que' has no visible governing verb, so nothing else fires."
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-H062",
+  "set": "held-out",
+  "why": "enriched:S9B",
+  "text": "No conozco a esas personas",
+  "gold": {
+   "frames": [
+    "S9B",
+    "S11A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H063",
+  "set": "held-out",
+  "why": "enriched:S9B",
+  "text": "Ella dijo que llegas a conocer a alguien cuando trabajas mucho con otra persona",
+  "gold": {
+   "frames": [
+    "S9B",
+    "S11A"
+   ],
+   "note": "'dijo que' is a complementiser, not a relative clause; 'con otra persona' is a preposition, not a personal 'a'."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H064",
+  "set": "held-out",
+  "why": "enriched:S10A",
+  "text": "Es importante entender lo que me preguntas antes de que conteste",
+  "gold": {
+   "frames": [
+    "S3B",
+    "S5A",
+    "S10A",
+    "S12A"
+   ],
+   "note": "'lo que me preguntas' is a relative clause with an indicative verb (S5A)."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H065",
+  "set": "held-out",
+  "why": "enriched:S10A",
+  "text": "deberías preguntarte por qué no está funcionando",
+  "gold": {
+   "frames": [
+    "S10A",
+    "S12B"
+   ],
+   "note": "Reflexive 'preguntarse' (to wonder) fires S10A per the boundary rule. 'deberías' is deber, not poder."
+  },
+  "kind": "seed"
+ },
+ {
+  "gid": "S-spa-H066",
+  "set": "held-out",
+  "why": "enriched:S10B",
+  "text": "Si te pidiera que me ayudaras, ¿qué harías?",
+  "gold": {
+   "frames": [
+    "S10B"
+   ],
+   "note": "'pidiera que' is pedir; 'harías' is hacer, so nothing else fires."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H067",
+  "set": "held-out",
+  "why": "enriched:S11A",
+  "text": "quería ver a unos viejos amigos",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S11A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H068",
+  "set": "held-out",
+  "why": "enriched:S11A",
+  "text": "vi a unos amigos",
+  "gold": {
+   "frames": [
+    "S11A"
+   ],
+   "note": ""
+  },
+  "kind": "seed"
+ },
+ {
+  "gid": "S-spa-H069",
+  "set": "held-out",
+  "why": "enriched:S12A",
+  "text": "ha sido importante",
+  "gold": {
+   "frames": [
+    "S12A"
+   ],
+   "note": "'sido' is the participle of ser."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H070",
+  "set": "held-out",
+  "why": "enriched:S12A",
+  "text": "Es bueno usar",
+  "gold": {
+   "frames": [
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H071",
+  "set": "held-out",
+  "why": "enriched:S12B",
+  "text": "Está intentando practicar con alguien más",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": "'con alguien más' is a prepositional phrase, not a personal 'a'."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H072",
+  "set": "held-out",
+  "why": "enriched:S12B",
+  "text": "está preocupada",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H001",
+  "set": "held-out",
+  "why": "random",
+  "text": "esa persona con la camisa verde",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H002",
+  "set": "held-out",
+  "why": "random",
+  "text": "delante de",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-H003",
+  "set": "held-out",
+  "why": "random",
+  "text": "te toca a ti ir",
+  "gold": {
+   "frames": [],
+   "note": "'a ti' doubles the dative of 'tocar'; it is not a personal 'a'."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H004",
+  "set": "held-out",
+  "why": "random",
+  "text": "Necesito mejorar lo más frecuentemente posible",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H005",
+  "set": "held-out",
+  "why": "random",
+  "text": "ella dijo que no quiere vivir en una ciudad",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "'dijo que' is a complementiser after decir, so no S5A; 'no quiere vivir' is S1A."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H006",
+  "set": "held-out",
+  "why": "random",
+  "text": "pensar en eso",
+  "gold": {
+   "frames": [],
+   "note": "'pensar en' means think about; there is no 'que'."
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-H007",
+  "set": "held-out",
+  "why": "random",
+  "text": "cuántos huevos cocidos",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H008",
+  "set": "held-out",
+  "why": "random",
+  "text": "ponen música",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-H009",
+  "set": "held-out",
+  "why": "random",
+  "text": "tardó mucho en llegar a todos",
+  "gold": {
+   "frames": [],
+   "note": "In 'llegar a todos' the 'a' marks a goal, not a direct object."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H010",
+  "set": "held-out",
+  "why": "random",
+  "text": "¿cuál es el más interesante?",
+  "gold": {
+   "frames": [
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H011",
+  "set": "held-out",
+  "why": "random",
+  "text": "¿podéis decirme qué queréis?",
+  "gold": {
+   "frames": [],
+   "note": "'queréis' takes the interrogative 'qué', not an infinitive or 'que'."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H012",
+  "set": "held-out",
+  "why": "random",
+  "text": "Me sorprende lo rápido que quieres hablar español",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "'lo rápido que' is the degree construction, so it is not treated as an S5A relative."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H013",
+  "set": "held-out",
+  "why": "random",
+  "text": "el primer día del trabajo",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H014",
+  "set": "held-out",
+  "why": "random",
+  "text": "Él quiere volver rápidamente",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H015",
+  "set": "held-out",
+  "why": "random",
+  "text": "necesito darte más tiempo",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H016",
+  "set": "held-out",
+  "why": "random",
+  "text": "es el tipo de cosa que necesitas pensar",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S12A"
+   ],
+   "note": "'que necesitas pensar' is a relative clause with an indicative verb."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H017",
+  "set": "held-out",
+  "why": "random",
+  "text": "Aunque quería ayudar",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H018",
+  "set": "held-out",
+  "why": "random",
+  "text": "no quiero perder",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H019",
+  "set": "held-out",
+  "why": "random",
+  "text": "Él solo quiere pagar la mitad de eso",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H020",
+  "set": "held-out",
+  "why": "random",
+  "text": "Estoy nervioso",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H021",
+  "set": "held-out",
+  "why": "random",
+  "text": "Empecé a practicar español por la noche la semana pasada",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H022",
+  "set": "held-out",
+  "why": "random",
+  "text": "no vayas atrás",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H023",
+  "set": "held-out",
+  "why": "random",
+  "text": "No me queda nada que decir y estoy intentando dejar de hablar ahora",
+  "gold": {
+   "frames": [
+    "S12B"
+   ],
+   "note": "'nada que decir' is que + infinitive with no finite relative verb, so neither S5A nor S5B."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H024",
+  "set": "held-out",
+  "why": "random",
+  "text": "no queremos caernos",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H025",
+  "set": "held-out",
+  "why": "random",
+  "text": "Quería darte más tiempo",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H026",
+  "set": "held-out",
+  "why": "random",
+  "text": "Llevo una semana aprendiendo español",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H027",
+  "set": "held-out",
+  "why": "random",
+  "text": "Nadie lo esperaba",
+  "gold": {
+   "frames": [],
+   "note": "'esperaba' means expect and takes a pronoun object, with no infinitive or 'que'."
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H028",
+  "set": "held-out",
+  "why": "random",
+  "text": "le dije mi número de habitación",
+  "gold": {
+   "frames": [],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H029",
+  "set": "held-out",
+  "why": "random",
+  "text": "fuiste a ayudar",
+  "gold": {
+   "frames": [],
+   "note": "'fuiste' is ir here, and 'ir a + infinitive' has no outcome."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H030",
+  "set": "held-out",
+  "why": "random",
+  "text": "¿quieren matar a esas hormigas?",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "Ants are not a human object, so the 'a' does not fire S11A."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H031",
+  "set": "held-out",
+  "why": "enriched:S1A",
+  "text": "ella quería cultivar algo",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H032",
+  "set": "held-out",
+  "why": "enriched:S1A",
+  "text": "¿Qué quieres hacer con tu amigo esta noche?",
+  "gold": {
+   "frames": [
+    "S1A"
+   ],
+   "note": "'esta noche' is the demonstrative 'esta', not estar."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H033",
+  "set": "held-out",
+  "why": "enriched:S1B",
+  "text": "quería que jugarais juntos más a menudo",
+  "gold": {
+   "frames": [
+    "S1B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H034",
+  "set": "held-out",
+  "why": "enriched:S1B",
+  "text": "Quería que me dijeras si podrías ayudarme el fin de semana",
+  "gold": {
+   "frames": [
+    "S1B",
+    "S6A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H035",
+  "set": "held-out",
+  "why": "enriched:S2A",
+  "text": "Ya he aprendido mucho más de lo que esperaba aprender",
+  "gold": {
+   "frames": [
+    "S2A",
+    "S5A"
+   ],
+   "note": "'esperaba aprender' is esperar = expect/hope + infinitive. 'lo que esperaba' is a free relative with an indicative verb."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H036",
+  "set": "held-out",
+  "why": "enriched:S2A",
+  "text": "Esperábamos empezar a hablar lo más rápido posible",
+  "gold": {
+   "frames": [
+    "S2A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H037",
+  "set": "held-out",
+  "why": "enriched:S2B",
+  "text": "espero que todos podáis ir",
+  "gold": {
+   "frames": [
+    "S2B",
+    "S6D"
+   ],
+   "note": "'podáis' is subjunctive, required after 'espero que'."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H038",
+  "set": "held-out",
+  "why": "enriched:S3A",
+  "text": "Mi madre quería darle algo a mi padre antes de irse",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S3A"
+   ],
+   "note": "'a mi padre' is an indirect object (darle algo), so S11A does not fire."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H039",
+  "set": "held-out",
+  "why": "enriched:S3A",
+  "text": "Podría ser un problema si no hablamos de esto antes de empezar",
+  "gold": {
+   "frames": [
+    "S3A",
+    "S6A",
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H040",
+  "set": "held-out",
+  "why": "enriched:S3B",
+  "text": "estoy demasiado cansado, pero quiero llegar allí antes de que sea tarde por la noche",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S3B",
+    "S12A",
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H041",
+  "set": "held-out",
+  "why": "enriched:S3B",
+  "text": "Ella quiere verte unos minutos antes de que te vayas",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S3B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H042",
+  "set": "held-out",
+  "why": "enriched:S4A",
+  "text": "Fue muy difícil pero pienso que lo estás haciendo bien",
+  "gold": {
+   "frames": [
+    "S4A",
+    "S12A",
+    "S12B"
+   ],
+   "note": "'Fue' here means 'was' (ser). 'estás haciendo' is progressive estar."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H043",
+  "set": "held-out",
+  "why": "enriched:S4A",
+  "text": "Es así, pienso que puedo aprender",
+  "gold": {
+   "frames": [
+    "S4A",
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H044",
+  "set": "held-out",
+  "why": "enriched:S4B",
+  "text": "no pienso que pueda hablar español",
+  "gold": {
+   "frames": [
+    "S4B",
+    "S6D"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H045",
+  "set": "held-out",
+  "why": "enriched:S5A",
+  "text": "No me siento contento cuando no puedo recordar las palabras que necesito",
+  "gold": {
+   "frames": [
+    "S5A"
+   ],
+   "note": "'las palabras que necesito' is a relative clause with an indicative verb. 'puedo' is present indicative, so no S6 outcome."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H046",
+  "set": "held-out",
+  "why": "enriched:S5A",
+  "text": "Quiero practicar la semana que viene",
+  "gold": {
+   "frames": [
+    "S1A",
+    "S5A"
+   ],
+   "note": "'la semana que viene' is a fixed expression but grammatically a relative clause with an indicative verb."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H047",
+  "set": "held-out",
+  "why": "enriched:S5B",
+  "text": "No conozco a muchas personas que hablen español pero mi amigo sí",
+  "gold": {
+   "frames": [
+    "S5B",
+    "S9B",
+    "S11A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H048",
+  "set": "held-out",
+  "why": "enriched:S5B",
+  "text": "alguien que conociera",
+  "gold": {
+   "frames": [
+    "S5B",
+    "S9B"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H049",
+  "set": "held-out",
+  "why": "enriched:S6A",
+  "text": "¿Podrías explicar por qué es bueno practicar?",
+  "gold": {
+   "frames": [
+    "S6A",
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H050",
+  "set": "held-out",
+  "why": "enriched:S6A",
+  "text": "y eso es lo menos que podría hacer",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S6A",
+    "S12A"
+   ],
+   "note": "'lo menos que podría hacer' is a relative clause with a conditional verb; the conditional is treated as indicative mood."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H051",
+  "set": "held-out",
+  "why": "enriched:S6B",
+  "text": "no podía estar de acuerdo con lo que dijo hace un momento",
+  "gold": {
+   "frames": [
+    "S5A",
+    "S6B",
+    "S12B"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H052",
+  "set": "held-out",
+  "why": "enriched:S6D",
+  "text": "es importante que podamos hablar",
+  "gold": {
+   "frames": [
+    "S6D",
+    "S12A"
+   ],
+   "note": "'podamos' is subjunctive, required after 'es importante que'."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H053",
+  "set": "held-out",
+  "why": "enriched:S6D",
+  "text": "para que pueda ir",
+  "gold": {
+   "frames": [
+    "S6D"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H054",
+  "set": "held-out",
+  "why": "enriched:S7A",
+  "text": "habríamos",
+  "gold": {
+   "frames": [
+    "S7A"
+   ],
+   "note": ""
+  },
+  "kind": "lego"
+ },
+ {
+  "gid": "S-spa-H055",
+  "set": "held-out",
+  "why": "enriched:S7A",
+  "text": "no me habría atrevido a eso",
+  "gold": {
+   "frames": [
+    "S7A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H056",
+  "set": "held-out",
+  "why": "enriched:S8A",
+  "text": "No sabía que es interesante que te guste ir en autobús",
+  "gold": {
+   "frames": [
+    "S8A",
+    "S9A",
+    "S12A"
+   ],
+   "note": "Subjunctive 'te guste' fires S8A under its boundary rule."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H057",
+  "set": "held-out",
+  "why": "enriched:S8A",
+  "text": "Es interesante que te guste ir en autobús ahora",
+  "gold": {
+   "frames": [
+    "S8A",
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ },
+ {
+  "gid": "S-spa-H058",
+  "set": "held-out",
+  "why": "enriched:S8B",
+  "text": "Antes de que te vayas, me gustaría que me dijeras lo que necesitas",
+  "gold": {
+   "frames": [
+    "S3B",
+    "S5A",
+    "S8B"
+   ],
+   "note": "'me gustaría que' is the conditional of gustar even without an infinitive, so S8B fires."
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H059",
+  "set": "held-out",
+  "why": "enriched:S8B",
+  "text": "Me gustaría saber qué es esa cosa azul de allí",
+  "gold": {
+   "frames": [
+    "S8B",
+    "S9A",
+    "S12A"
+   ],
+   "note": ""
+  },
+  "kind": "use"
+ },
+ {
+  "gid": "S-spa-H060",
+  "set": "held-out",
+  "why": "enriched:S9A",
+  "text": "Saber palabras diferentes",
+  "gold": {
+   "frames": [
+    "S9A"
+   ],
+   "note": ""
+  },
+  "kind": "build"
+ }
+]

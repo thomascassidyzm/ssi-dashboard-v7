@@ -1,6 +1,6 @@
 {
  "id": "D",
- "version": "2026-10-07.1",
+ "version": "2026-10-07.4",
  "title": "SSi dialogue codex: the 12 sentence-grain conversational frames (D1-D12)",
  "purpose": "The definitions a model (Haiku family) uses to say which conversational frames a pod TURN instantiates. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language): classified by a model reading these definitions, never by regex. The D-ids are stable and pinned to tools/frame-layer/dialogue-patterns.cjs, which keeps each frame's fixed_material, position and shape_nodes as data.",
  "task": "You tag turns from a spoken-dialogue corpus (a language course's conversation pods, and clinical health-sector conversations) with conversational frames",
@@ -284,13 +284,14 @@
      "why": "grammar term"
     },
     {
-     "text": "I had a great time.",
-     "why": "assessment inside a report, not uptake"
+     "text": "Ah, right. That makes sense, I suppose.",
+     "why": "a weak acknowledgement, not an evaluative assessment"
     }
    ],
    "boundary": [
     "The assessment opens a sentence and reacts to the previous turn or the situation just created.",
-    "'Well done' as praise of the other also fires D7 (and may fire D11 if it reassures)."
+    "'Well done' as praise of the other also fires D7 (and may fire D11 if it reassures).",
+    "Weak acknowledgements ('ah, right', 'I see', 'that makes sense', 'OK') are NOT D7."
    ]
   },
   {
@@ -374,13 +375,13 @@
    "id": "D10",
    "name": "read-back receipt",
    "shape": "[REPEATED INSTRUCTION] . got it | understood | will do",
-   "definition": "The speaker MARKS RECEIPT of an instruction or information, often by saying it back: got it, understood, noted, that's right, exactly right, word perfect (confirming the other's read-back), OK so I take two after food.",
+   "definition": "The speaker MARKS RECEIPT of an instruction, information or arrangement: a receipt formula (got it, understood, noted, that's right, exactly right, word perfect for the other's read-back) OR a READ-BACK that repeats the key content back as a short echo ('An hour.', 'Nothing after midnight.', 'Ten at the café', 'Two after breakfast'). A read-back fires D10 even with no receipt word.",
    "positives": [
     "Got it. Two tablets after breakfast.",
     "Understood.",
     "That's right, two after each meal.",
-    "Word perfect.",
-    "Noted, I'll bring it on Monday."
+    "Right you are. Nothing after midnight.",
+    "An hour. Righto."
    ],
    "near_misses": [
     {
@@ -406,20 +407,22 @@
    ],
    "boundary": [
     "Confirming the OTHER's correct read-back ('that's right', 'exactly right', 'word perfect') counts.",
-    "A bare 'OK' or 'right' as a discourse marker does not fire."
+    "A turn that OPENS with a short echo of a time, amount or arrangement the other has just given ('Before lunch.', 'Back for lunch.', 'Tomorrow, all being well.', 'An hour.') is a read-back, even when the rest of the turn moves on.",
+    "An echo that repeats the instruction or arrangement just given counts, even with no receipt word.",
+    "A bare 'OK', 'right', 'ah right', 'that makes sense' as acknowledgement does not fire."
    ]
   },
   {
    "id": "D11",
    "name": "reassurance / normalising",
    "shape": "don't worry | that's normal | you're doing [ADV]",
-   "definition": "The speaker REASSURES the other or normalises their worry or trouble: don't worry, nothing to worry about, that's (completely) normal, you're doing fine/well/marvellous, it's fine/alright/okay (said to reassure), not at all / no trouble / no problem (as a downgrade of thanks or apology).",
+   "definition": "The speaker REASSURES the other: a line whose purpose is to ease the other's worry, fear, embarrassment or sense of imposing. Formulas (don't worry, nothing to worry about, that's (completely) normal, you're doing fine/marvellous, it's fine / that's fine / that's alright said to reassure, no problem (at all), no rush, not at all, no trouble) AND reassurance in the speaker's own words ('Not on my watch.', 'We'll take it slow, I won't let go of you.', 'We'll manage together.').",
    "positives": [
     "Don't worry - there's a lot of us to remember.",
     "That's completely normal after an operation.",
     "A year? Well, you're doing marvellous.",
     "Not at all, it was a pleasure.",
-    "That's alright - just breathe normally."
+    "Then we'll take it extra slow, and I won't let go of you."
    ],
    "near_misses": [
     {
@@ -444,19 +447,20 @@
     }
    ],
    "boundary": [
-    "Must be addressed to the other to ease worry, embarrassment or thanks."
+    "Must be addressed to the other to ease worry, embarrassment or thanks.",
+    "A plain explanation of what will happen next is not reassurance unless it explicitly eases worry ('you don't need to worry', 'nothing's wrong')."
    ]
   },
   {
    "id": "D12",
    "name": "compliance commitment",
    "shape": "I will | I'll [VP] ( , then )",
-   "definition": "The speaker COMMITS to do what was asked, advised or agreed: I will, will do, righto, right you are, deal, I'll do that, I promise, I'll bring it on Monday (agreeing to a request).",
+   "definition": "The speaker COMMITS to do what was asked, advised, instructed or agreed, or ACCEPTS a proposal as a commitment: I will, will do, righto, right you are, deal, it's a date, I'll do that, I'll wait for you (when told to wait), I promise, I'll make sure it's noted.",
    "positives": [
     "Righto. Thank you, love.",
     "Will do.",
     "I will, thank you.",
-    "Deal. See you on Saturday.",
+    "After tea. It's a date.",
     "I promise I'll take them with food."
    ],
    "near_misses": [
