@@ -7,6 +7,7 @@
 
 import { createClient } from '@supabase/supabase-js'
 import { computeSeedGridState } from './seed-grid-state'
+import { registerCourseRow } from '../utils/languageNames'
 
 // Support both VITE_ (local dev) and NEXT_PUBLIC_ (Vercel Supabase integration) prefixes
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || import.meta.env.NEXT_PUBLIC_SUPABASE_URL
@@ -120,7 +121,10 @@ export async function getAllCourses() {
   // user's list comes from Popty's server, which returns every course they may open
   // (hidden ones carry is_hidden). Signed out, or server unreachable: anon read.
   const fromServer = await fetchFromServer('/api/library/courses')
-  if (fromServer?.courses) return fromServer.courses
+  if (fromServer?.courses) {
+    fromServer.courses.forEach(registerCourseRow)
+    return fromServer.courses
+  }
 
   const { data, error } = await supabase
     .from('courses')
@@ -149,8 +153,9 @@ async function fetchFromServer(path) {
 }
 
 /** One course row from the server (reaches hidden courses the anon key cannot). */
-async function getServerCourseRow(courseCode) {
+export async function getServerCourseRow(courseCode) {
   const body = await fetchFromServer(`/api/library/course/${encodeURIComponent(courseCode)}`)
+  if (body?.course) registerCourseRow(body.course)
   return body?.course || null
 }
 
