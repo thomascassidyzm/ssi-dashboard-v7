@@ -152,4 +152,24 @@ describe('setup check: Submit on the done card', () => {
     expect(w.text()).not.toContain('Submit my setup check')
     expect(w.text()).not.toMatch(/record at least|still to record/)
   })
+
+  it('ready card: Submit hidden while uploads are pending, shown when they have gone (review #854)', async () => {
+    stub({ setup: { status: 'open' }, recordedOnServer: true }, 10)
+    // the page-load count says 6 recorded; one more is captured but not uploaded
+    global.fetch = vi.fn().mockImplementation(() => Promise.resolve({
+      ok: true, status: 200,
+      json: async () => ({
+        displayName: 'Test Voice', languageName: 'Welsh', total: 10, recorded: 6, remaining: 4, pack: { setup: { status: 'open' } },
+        lines: Array.from({ length: 10 }, (_, i) => ({ id: `line-${i + 1}`, order: i + 1, text: `llinell ${i + 1}`, knownText: `line ${i + 1}`, recorded: i < 6, clipUrl: null, canEditText: true })),
+      }),
+    }))
+    pending.n.value = 2
+    const w = mount(RecordistRoom, { props: { voiceId: 'human_dan_pack' }, global: { stubs: { RouterLink: { template: '<a><slot/></a>' } } } })
+    await until(() => w.find('.btn-begin').exists(), 'the ready card')
+    expect(w.text()).not.toContain('Submit my setup check')
+    expect(w.text()).toContain('2 still uploading')
+    pending.n.value = 0
+    await flushPromises()
+    expect(w.text()).toContain('Submit my setup check')
+  })
 })

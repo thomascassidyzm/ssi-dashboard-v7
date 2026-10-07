@@ -197,8 +197,9 @@ module.exports = function createRecordistRouter({
     const measured = { ...(metrics.measured || {}) }
     delete measured[itemId] // a new take of this phrase has not been measured yet
     const patch = { metrics: { ...metrics, takes, measured } }
-    if (row.status === 'submitted' || row.status === 'changes') patch.status = 'open'
     if (row.status === 'approved') return
+    const next = setupCheck.statusAfterTake(row.status)
+    if (next !== row.status) patch.status = next
     await db().from('recordist_setup_checks').update(patch).eq('voice_id', row.voice_id)
   }
 
