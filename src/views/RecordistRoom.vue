@@ -680,6 +680,19 @@
         </ul>
       </div>
 
+      <!-- THE SETUP CHECK's Submit on the DONE card (job #844, review #843): the
+           ready card only knows the page-load count, so an artist who records
+           all ten in one sitting landed here with no way to send them. Offered
+           once nothing is pending or failed; the server still re-checks that
+           every phrase has a take. -->
+      <div v-if="canSubmitSetupHere" class="setup-card">
+        <strong>That's your setup check recorded.</strong>
+        <button class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+          {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
+        </button>
+        <span v-if="setupError" class="setup-note">{{ setupError }}</span>
+      </div>
+
       <button class="btn-ghost" @click="backToStart">Back to my lines</button>
     </section>
   </div>
@@ -2306,6 +2319,11 @@ function beforeUnloadGuard(e) {
 // THE SETUP CHECK's "I'm done" — only offered on a per-artist setup pack once
 // every phrase has a take. The server re-checks the count; this is the tap.
 const setupSubmitting = ref(false)
+const canSubmitSetupHere = computed(() => {
+  const setup = voice.value.pack && voice.value.pack.setup
+  return !!setup && (setup.status === 'open' || setup.status === 'changes')
+    && queue.pendingCount.value === 0 && failedList.value.length === 0 && sessionLines.value.length > 0
+})
 const setupError = ref(null)
 async function submitSetup() {
   setupSubmitting.value = true

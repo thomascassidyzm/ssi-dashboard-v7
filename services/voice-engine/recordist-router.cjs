@@ -1921,7 +1921,7 @@ module.exports = function createRecordistRouter({
       if (existing) return res.json({ created: false, status: existing.status, packVoiceId: setupCheck.packVoiceIdFor(existing.voice_id) })
       const queue = await buildQueue(db(), recordist, { includeRecorded: true })
       const phrases = setupCheck.pickSetupPhrases(queue.lines)
-      if (phrases.length < 3) return res.status(409).json({ error: 'This artist has too few lines of their own to draw a setup check from.' })
+      if (!setupCheck.isFullSetupSample(phrases)) return res.status(409).json({ error: `This artist has too few lines of their own to draw a ${setupCheck.SETUP_PHRASE_COUNT}-phrase setup check from.` })
       const { error } = await db().from('recordist_setup_checks').insert({
         voice_id: recordist.voiceId, language: recordist.language, phrases, created_by: adminActor(user),
       })
