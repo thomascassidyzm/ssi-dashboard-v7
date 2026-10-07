@@ -1022,7 +1022,7 @@ async function fetchSeeds(db, courseCodes) {
   try {
     return await pagedRead((from, to) => db
       .from('course_seeds')
-      .select('id, course_code, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .select('id, course_code, seed_number, status, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
       .in('course_code', courseCodes)
       .order('course_code', { ascending: true })
       .order('seed_number', { ascending: true })
@@ -1729,6 +1729,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // that is linked while its duplicate is not would otherwise read as
             // done and leave the duplicate empty for good.
             rep.seedFilledBy.push(fkVoice)
+            // One copy still new makes the shared line new.
+            if (seed.status !== 'released') rep.seedExisting = false
             duplicatesCollapsed += 1
             continue
           }
@@ -1755,6 +1757,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             seedId: seed.id,
             seedNumber: seed.seed_number,
             seedFilledBy: [fkVoice],
+            // A released seed is already in the course (its LEGOs and phrases
+            // are live, in this voice); the line only asks for the one
+            // whole-sentence take it lacks. Anything else is a genuinely new
+            // seed. The recordist's screen words the two differently.
+            seedExisting: seed.status === 'released',
             rerecordWanted: false,
           }
           seedSeen.set(key, line)
@@ -1996,6 +2003,9 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which seed sentence this is, for the surface to say so in words. Null
         // on every other kind of line.
         seedNumber: line.seedNumber || null,
+        // True when this seed is already released in the course and only lacks
+        // its whole-sentence take. Null on every other kind of line.
+        seedExisting: line.kind === 'seed' ? !!line.seedExisting : null,
         // HOW THIS LINE IS READ. 'gapped' — naturally but slowly, with dead
         // space around the words so a cut lands in silence — or 'natural', a
         // whole sentence at speaking pace. The booth draws it AND acts on it:

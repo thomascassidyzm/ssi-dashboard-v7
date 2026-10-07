@@ -242,3 +242,20 @@ test('a seed line is never editable from the booth', async () => {
       'a seed sentence is course content — the booth must not draw an Edit button that can only 403')
   }
 })
+
+test('a RELEASED seed is marked as already in the course; a draft seed is genuinely new', async () => {
+  // Aran recorded all 305 released North Welsh seeds believing they were new:
+  // they only lacked a whole-sentence take. The wire must say which is which.
+  const db = stubDb(fixture({
+    courses: [FIXTURE_COURSE],
+    seeds: [
+      seed('u1', 1, 'Zzz un', 'One', { status: 'released' }),
+      seed('u2', 2, 'Zzz dau', 'Two', { status: 'draft' }),
+    ],
+  }))
+  const tom = await resolveRecordist(db, 'human_tom_zzz')
+  const q = await buildQueue(db, tom)
+  const t1 = (n) => q.lines.find((l) => l.kind === 'seed' && l.role === 'target1' && l.seedNumber === n)
+  assert.equal(t1(1).seedExisting, true, 'released seed = existing, whole-sentence take only')
+  assert.equal(t1(2).seedExisting, false, 'draft seed = genuinely new')
+})

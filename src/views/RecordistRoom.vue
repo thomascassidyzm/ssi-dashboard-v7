@@ -837,6 +837,7 @@ const rosterRows = computed(() => lines.value.map(l => ({
   // to say otherwise. So this is simply "done".
   hasTake: isRecorded(l),
   kind: l.kind || 'pod',
+  section: sectionKeyOf(l),
   // WHICH BODY OF WORK. Only pod lines have one; everything else is null and
   // groups by its kind exactly as it always did.
   podSlug: l.podSlug || null,
@@ -878,6 +879,13 @@ const rosterRows = computed(() => lines.value.map(l => ({
 // already say out loud. A kind with no lines in it is
 // not shown at all — most recordists in the estate have only one or two of the
 // three, and an empty heading reading "0 lines" is a question with no answer.
+// The roster section a line belongs to: its kind, except that a seed already
+// released in the course is its own section (see SECTION_ORDER).
+function sectionKeyOf(l) {
+  const kind = l.kind || 'pod'
+  return kind === 'seed' && l.seedExisting ? 'seedexisting' : kind
+}
+
 const SECTION_ORDER = [
   // POD-1 IS ITS NAME. Tom, 2026-09-02: "we're interested in the PODS — the
   // conversations — we should call it POD-1, because that's the name we've been
@@ -901,6 +909,11 @@ const SECTION_ORDER = [
   // line Aran has already given us still sits here for Catrin -- correctly --
   // and it read to him as a sentence being asked for twice (Aran, 2026-09-11,
   // "dw i'n mynd i ddysgu Cymraeg"). The blurb now says whose take is missing.
+  // SEEDS ALREADY IN THE COURSE are not new (Aran recorded all 305 North Welsh
+  // ones believing they were): the course already plays them, built from his
+  // LEGO and phrase takes. All that is missing is the one take of the whole
+  // sentence. Same job as NEW SEEDS to the queue, a different heading to him.
+  { key: 'seedexisting', heading: 'Whole sentences — seeds already in the course', blurb: 'These sentences are already in the course. You have recorded the pieces and phrases inside them; what is missing is one reading of each whole sentence, at your natural pace. They are not new, and they do not bring new phrases to record.' },
   { key: 'seed', heading: 'NEW SEEDS', blurb: 'Course sentences that still need your voice. Every one of these is read by both voices, so some already have the other voice’s take. Each one will also bring more phrases to record later on.' },
   // TOM'S OWN SET, 2026-09-02: "ideally I just want the minimal phrase set,
   // that I can record so we can test the dice and splice approach." The
@@ -1015,7 +1028,7 @@ const rosterSections = computed(() => {
       const key = row.podSlug || ''
       if (!byPod.has(key)) byPod.set(key, { key: `pod:${key}`, ...podSectionFor(row), rows: [] })
       byPod.get(key).rows.push(row)
-    } else if (byKind.has(row.kind)) byKind.get(row.kind).push(row)
+    } else if (byKind.has(row.section)) byKind.get(row.section).push(row)
     else other.push(row)
   }
   const out = []
@@ -1072,7 +1085,7 @@ const handedOnNotes = computed(() => handedOn.value
 // so the map's headings and the stage's own words cannot drift apart.
 function sectionHeadingOf(line) {
   if (!line) return null
-  const kind = line.kind || 'pod'
+  const kind = sectionKeyOf(line)
   if (kind === 'pod') return podSectionFor(line).heading
   const named = SECTION_ORDER.find(s => s.key === kind)
   return named ? named.heading : 'Everything else'
@@ -1149,6 +1162,10 @@ const lineKindWords = computed(() => {
     return `The same line again - pause clearly at each ${'…'} (${marks}), then tap Next`
   }
   if (l.kind !== 'seed') return null
+  if (l.seedExisting) {
+    const whole = l.seedNumber ? `Whole sentence ${l.seedNumber}, already in the course` : 'Whole sentence, already in the course'
+    return l.role === 'known' ? `${whole} - English side` : (l.role === 'target2' ? `${whole} - second voice` : whole)
+  }
   const which = l.role === 'known' ? 'English side' : (l.role === 'target2' ? 'second voice' : null)
   const number = l.seedNumber ? `Seed sentence ${l.seedNumber}` : 'Seed sentence'
   return which ? `${number} - ${which}` : number
@@ -1662,12 +1679,12 @@ const alreadyRecorded = computed(() => lines.value.filter(l => l.clipUrl))
 // row needs from this screen is to SAY which category it is, so a list mixing
 // conversations, chunks and seed sentences reads as one thing rather than as an
 // unexplained jumble.
-const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', quarry: 'The minimal set', rerecord: 'MORE LINES' }
+const KIND_WORDS = { pod: 'POD-1', seed: 'NEW SEEDS', seedexisting: 'Whole sentences — seeds already in the course', quarry: 'The minimal set', rerecord: 'MORE LINES' }
 function kindWords(l) {
   // A pod line is named by ITS OWN pod, not by the word "pod": this list is
   // searchable, and "senedd" has to find the Senedd lines in it.
   if ((l.kind || 'pod') === 'pod') return podSectionFor(l).heading
-  return KIND_WORDS[l.kind] || 'Everything else'
+  return KIND_WORDS[sectionKeyOf(l)] || 'Everything else'
 }
 // THE ESTATE RULE, applied to a list rather than a dropdown (Tom, 2026-09-03:
 // "all dropdowns in popty, or in general in ANY of my work should have
