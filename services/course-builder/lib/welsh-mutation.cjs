@@ -77,10 +77,12 @@ function isSoftMutationVariant(courseCode, targetA, targetB) {
   if (!isWelshTarget(courseCode)) return false;
   let ta = String(targetA || '').split(/\s+/).map(normWord).filter(Boolean);
   let tb = String(targetB || '').split(/\s+/).map(normWord).filter(Boolean);
+  // Identical texts are the caller's ordinary duplicate — judged BEFORE the particle is stripped,
+  // so that "mi fedra i" vs "fedra i" (particle the only difference) still folds.
+  if (ta.join(' ') === tb.join(' ')) return false;
   if (ta.length === tb.length + 1 && PREVERBAL.has(ta[0])) ta = ta.slice(1);
   else if (tb.length === ta.length + 1 && PREVERBAL.has(tb[0])) tb = tb.slice(1);
   if (ta.length === 0 || ta.length !== tb.length) return false;
-  if (ta.join(' ') === tb.join(' ')) return false;
   return ta.every((w, i) => w === tb[i] || softEquivalentWords(w, tb[i]));
 }
 
