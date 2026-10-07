@@ -1,0 +1,663 @@
+# Job #22: hand chunking of the South HC block (cym_sv2_for_eng) submitted through POST /api/v2/decompose
+# then /api/v2/decompose/finalize (deploy/staging code). Line = HC number: known=target | ... ; {k=t;...} = M components.
+1: I want=dw i’n moyn | to speak=siarad | Welsh=Cymraeg | with you=gyda ti | now=nawr
+3: how=sut | to speak=siarad | as often as possible=mor aml â phosib{as often=mor aml;as possible=â phosib}
+4: how=sut | to say=ddweud | something=rhywbeth | in Welsh=yn Gymraeg
+5: I’m going to=dw i’n mynd i | to practice speaking=ymarfer siarad | someone else=rhywun arall{someone=rhywun;else=arall}
+6: I’m trying=dw i’n trio | to remember=cofio | a word=gair
+7: I want=dw i’n moyn | as hard as I can=mor galed ag y galla i{as hard=mor galed;as I can=ag y galla i} | today=heddiw
+8: I’m going to=dw i’n mynd i | to explain=esbonio | what I mean=beth dw i’n meddwl{what=beth;I mean=dw i’n meddwl}
+9: a little Welsh=bach o Gymraeg{a little=bach o;Welsh=Gymraeg} | now=nawr
+10: I’m not sure=dw i ddim yn siŵr | if=os | I can=galla i | remember the whole sentence=gofio’r frawddeg gyfan{remember=gofio;the=’r;sentence=frawddeg;whole=gyfan}
+11: I’d like to be able to=hoffen i allu{I’d like=hoffen i;to be able to=allu} | to speak=siarad | after you finish=ar ôl i ti gwpla{after=ar ôl;you=i ti;finish=gwpla}
+12: I wouldn’t like=fydden i ddim yn hoffi{I wouldn’t=fydden i ddim;like=yn hoffi} | guess=dyfalu | what’s going to happen=beth sy’n mynd i ddigwydd{what=beth;is going to=sy’n mynd i;happen=ddigwydd} | tomorrow=’fory
+13: you speak=ti’n siarad | Welsh=Cymraeg | very well=yn dda iawn
+14: you speak=ti’n siarad | Welsh=Cymraeg | all day=drwy’r dydd{through=drwy;the day=’r dydd}
+15: and I want you to speak=a dw i’n moyn i ti siarad{and=a;I want you to speak=dw i’n moyn i ti siarad} | Welsh=Cymraeg | with me=gyda fi | tomorrow=’fory
+16: he wants=ma fe’n moyn | to come back=dod nôl{to come=dod;back=nôl} | everyone else=pawb arall{everyone=pawb;else=arall} | later=nes ymlaen
+17: she wants=mae hi’n moyn | find out=ffeindio mas | what the answer is=beth yw’r ateb{what=beth;is the=yw’r;answer=ateb}
+18: we want=ŷn ni’n moyn | to meet=cwrdd | at six o’clock=am chwech o’r gloch{at=am;six=chwech;o’clock=o’r gloch} | tonight=heno
+19: but=ond | I don’t want=dw i ddim yn moyn | to stop=stopo
+20: you want=ti’n moyn | to learn=dysgu | his name quickly=ei enw fe’n glou{his name=ei enw fe;quickly=’n glou}
+21: why=pam | her name=ei henw hi{her=ei hi;name=henw}
+22: because=achos | I want=dw i’n moyn | to meet people=cwrdd â phobl{to meet=cwrdd â;people=phobl} | who speak=sy’n siarad | Welsh=Cymraeg
+23: I’m going to=dw i’n mynd i | to start=ddechrau | more=mwy | soon=cyn bo hir
+24: I’m not going to=dw i ddim yn mynd i | to be able to=allu | remember easily=cofio’n hawdd{remember=cofio;easily=’n hawdd}
+25: are you going to=wyt ti’n mynd i | help me=helpu fi | before I have to=cyn i fi orfod{before I=cyn i fi;have to=orfod}
+26: I like=dw i’n hoffi | feeling=teimlo | as if I’m=fel ’sen i | nearly ready to go=bron yn barod i fynd{nearly=bron;ready=yn barod;to go=i fynd}
+27: I don’t like=dw i ddim yn hoffi | to take=cymryd | too much time=gormod o amser | to answer=ateb
+28: it’s useful=mae’n ddefnyddiol | to start=dechrau | as soon as you can=cyn gynted ag y galli di{as soon=cyn gynted;as you can=ag y galli di}
+29: I’m looking forward to=dw i’n edrych ymlaen at | better=yn well | as soon as I can=cyn gynted ag y galla i{as soon=cyn gynted;as I can=ag y galla i}
+30: I wanted=o’n i’n moyn | to ask=gofyn | something=rhywbeth | yesterday=ddoe
+31: you wanted to speak=o’t ti’n moyn siarad{you wanted=o’t ti’n moyn;to speak=siarad} | with me=gyda fi | tonight=heno
+32: did you want?=o’t ti’n moyn? | to show=dangos | something=rhywbeth | me=i fi
+33: how long?=pa mor hir? | have you been learning?=wyt ti ’di bod yn dysgu? | Welsh=Cymraeg
+34: he doesn’t want=so fe’n moyn | to be quiet=bod yn dawel | when=pan | other people are here=mae pobl eraill yma{other people=pobl eraill;here=yma}
+35: she doesn’t want=dyw hi ddim yn moyn | read=darllen | anything=unrhywbeth | this afternoon=prynhawn ’ma
+36: we don’t want=so ni’n moyn | to interrupt=torri ar draws | the story=y stori
+37: I started=wnes i ddechrau | to think=meddwl | about it carefully=amdani’n ofalus{about it=amdani;carefully=’n ofalus} | last month=mis diwetha’
+38: I’ve been learning=dw i wedi bod yn dysgu | for about a week=am biti wythnos
+39: but=ond | I’m tired=dw i wedi blino | a little=bach | this morning=bore ’ma
+40: how do you feel?=sut wyt ti’n teimlo? | at the moment=ar hyn o bryd
+41: I feel okay=dw i’n teimlo’n iawn | but=ond | I’m starting to feel tired=dw i’n dechrau blino{I’m starting=dw i’n dechrau;to feel tired=blino}
+42: I was starting=o’n i’n dechrau | to feel better=teimlo’n well | than=na | last night=neithiwr
+43: I wasn’t thinking=do’n i ddim yn meddwl | about=am | how=sut | to answer=ateb
+44: or=neu | if=os | I need=dw i angen | to improve=gwella
+45: I don’t need=dw i ddim angen | to know=gwybod | everything=popeth
+46: but=ond | I don’t worry about=dw i ddim yn becso am{I don’t=dw i ddim;worry about=yn becso am} | making mistakes=wneud camgymeriadau{making=wneud;mistakes=camgymeriadau}
+47: because=achos | I think=dw i’n meddwl | that it’s a good thing=fod e’n beth da{that it’s=fod e’n;a good thing=beth da}
+48: I don’t care=sdim ots ’da fi | making mistakes=wneud camgymeriadau
+49: it’s like this=ma fe fel hyn | if=os | you know=ti’n gwybod | what I mean=beth dw i’n meddwl
+50: I’m not trying=dw i ddim yn trio | to finish=cwpla | as quickly as possible=mor glou â phosib{as quickly=mor glou;as possible=â phosib}
+51: I enjoy=dw i’n joio | things=pethau | interesting=diddorol | with my friends=gyda fy ffrindiau
+52: he wanted=oedd e’n moyn | to write=sgrifennu | a letter to=llythyr at | his friend=ei ffrind | last week=wythnos diwetha’
+53: she wanted=oedd hi’n moyn | to put=rhoi | his letter=ei lythyr e | in her bag=yn ei bag hi
+54: we wanted=o’n ni’n moyn | to give=rhoi | a little more time=ychydig mwy o amser
+55: I don’t enjoy=dw i ddim yn joio | waking up=dihuno | when=pan | I didn’t=wnes i ddim | sleep very well=cysgu’n dda iawn{sleep=cysgu;very well=’n dda iawn}
+56: so I can remember=er mwyn i fi allu cofio{so that=er mwyn;I can=i fi allu;remember=cofio} | how=sut | to say=ddweud | a few words=ychydig o eiriau
+57: I can’t=alla i ddim | to remember=cofio | how=sut | to say=ddweud | I wanted=o’n i’n moyn
+58: it’s interesting=mae’n ddiddorol | when=pan | you understand=ti’n deall | enough words=digon o eiriau{enough=digon;words=o eiriau}
+59: I know how to do=dw i’n gwybod sut i wneud{I know=dw i’n gwybod;how to do=sut i wneud} | what I need to do=beth dw i angen gwneud | next week=wythnos nesa’
+60: I don’t know=dw i ddim yn gwybod | how=sut | to say=ddweud | enough words=digon o eiriau | different=gwahanol | yet=eto
+61: could you say?=allet ti ddweud? | that=hynny | again=eto | a little more slowly=bach yn arafach
+62: I’m not sure=dw i ddim yn siŵr | if=os | I can=galla i | to help you=dy helpu di | at the same time=ar yr un pryd
+63: are you sure?=wyt ti’n siŵr? | you don’t mind=bod dim ots ’da ti | help me=helpu fi
+64: isn’t=so | to learn=dysgu | Welsh=Cymraeg | easy=yn hawdd | but=ond | it’s=mae’n | fun=hwyl
+65: it's important=mae’n bwysig | to take=cymryd | time=amser | to test yourself=brofi dy hunan
+66: it’s not difficult=dyw hi ddim yn anodd | to find the answer=ffeindio’r ateb
+67: why=pam | do you want?=wyt ti’n moyn? | to stop=stopo
+68: what=beth | looking for=chwilio amdano
+69: he didn’t want=doedd e ddim yn moyn | to look after=edrych ar ôl | the young dog=y ci ifanc | all afternoon=drwy’r prynhawn
+70: she didn’t want=doedd hi ddim yn moyn | tell me=dweud wrtha i | where it was=ble oedd e
+71: we didn’t want=do’n ni ddim yn moyn | to let anyone hear=gadael i neb glywed | truth=gwir
+72: I think=dw i’n meddwl | you’re doing=ti’n gwneud | very well=yn dda iawn
+73: thank you very much=diolch yn fawr | but=ond | I’ve got=mae gyda fi | more=fwy | to learn=ddysgu
+74: thank you very much=diolch yn fawr | help me=helpu fi | understand=ddeall
+75: have you got more?=oes gyda ti fwy? | to learn=ddysgu
+76: I’m very happy=dw i’n hapus iawn | how much=faint | I’ve learnt=dw i ’di dysgu | already=yn barod
+77: I’m surprised=dw i’n synnu | how quickly=pa mor glou | I’m starting=dw i’n dechrau | understand=deall
+78: I don't=dw i ddim | understand=deall | what you said=be’ ddwedest ti
+79: when did you start?=pryd wnest ti ddechrau?{when?=pryd;did you start?=wnest ti ddechrau} | to learn=dysgu
+80: I’m not sure=dw i ddim yn siŵr | when I’ll be ready=pryd fydda i’n barod{when=pryd;I’ll be ready=fydda i’n barod}
+81: when do you want?=pryd wyt ti’n moyn?{when?=pryd;do you want?=wyt ti’n moyn} | to start=dechrau
+82: I’m not going to=dw i ddim yn mynd i | to wait for you=aros amdanat ti | why not?=pam lai?
+83: I agree with=dw i’n cytuno gyda | what you said=be’ ddwedest ti | about your friend=am dy ffrind
+84: I don’t agree with=dw i ddim yn cytuno gyda | what he said=be’ ddwedodd e | about my friend=am fy ffrind
+85: those people=y bobl ’na
+86: it wasn’t possible=doedd e ddim yn bosib | unfortunately=yn anffodus
+87: people=pobl | are they?=ŷn nhw?
+88: I’m not ready=dw i ddim yn barod | yet=eto
+89: I think=dw i’n meddwl | a lot=llawer | in a short time=mewn amser byr
+90: if=os | you can=galli di | more slowly=yn arafach | that would be great=byddai hynny’n wych
+91: it’s difficult=mae’n anodd | to think=meddwl | quickly enough=yn ddigon clou | to answer=ateb | in time=mewn pryd
+92: I’d like=hoffen i | to keep on=gario ’mlaen | for a while=am dipyn
+93: it’s time to go=mae’n amser mynd | now=nawr
+94: this is the only way=dyma’r unig ffordd | it will work=fydd e’n gweithio
+95: are you ready?=wyt ti’n barod? | to go home=fynd gytre | on the next bus=ar y bws nesa’
+96: I’m not ready=dw i ddim yn barod | yet=eto | I need=dw i angen | a little more time=ychydig mwy o amser
+97: yes, I'm ready=ydw, dw i’n barod | as soon as you want=cyn gynted â ti’n moyn
+98: I should=dylen i | to consider=ystyried | to play=chwarae | something else=rhywbeth arall
+99: you should=dylet ti | to ask yourself=ofyn i dy hunan | why=pam | it’s not working=dyw e ddim yn gweithio
+100: you shouldn’t=ddylet ti ddim | worrying=becso | something similar=rhywbeth tebyg{something=rhywbeth;similar=tebyg}
+101: I enjoy=dw i’n joio | find out=ffeindio mas | more=mwy | about this language=am yr iaith ’ma
+102: we’re trying=ŷn ni’n trio | to say=dweud | that it’s not like that=fod e ddim fel ’na
+103: we’re not trying=so ni’n trio | to hear=clywed | many more words=llawer mwy o eiriau
+104: we need=ŷn ni angen | to change=newid | what we’re doing=beth ŷn ni’n gwneud
+105: that is why=dyna pam | he didn’t know=doedd e ddim yn gwybod | the answer=yr ateb
+106: we don’t need=so ni angen | to feel happy=teimlo’n hapus | we just need=ŷn ni jyst angen | to work hard=gweithio’n galed
+107: we hoped=o’n ni’n gobeithio | to see=gweld | what you were doing=beth o’t ti’n gwneud
+108: we didn’t hope=do’n ni ddim yn gobeithio | waking up=dihuno | in the middle of the night=yng nghanol y nos
+109: we must=mae rhaid i ni | to work hard=weithio’n galed | to learn=ddysgu | a lot of new words=llawer o eiriau newydd
+110: we’re friends=ŷn ni’n ffrindiau | after we finish=ar ôl i ni gwpla | I’d like=hoffen i | to relax=ymlacio
+111: when=pan | we learn=ŷn ni’n dysgu | something new=rhywbeth newydd | it changes=mae’n newid | our brain=ein hymennydd ni
+112: that was very interesting=oedd hynny’n ddiddorol iawn | and I wasn’t expecting it=a do’n i ddim yn disgwyl e{and=a;I wasn’t expecting it=do’n i ddim yn disgwyl e}
+113: why=pam | I can’t=alla i ddim | to remember=cofio | what you said=be’ ddwedest ti
+114: I feel=dw i’n teimlo | as if I’m=fel ’sen i | doing worse=gwneud yn waeth | today=heddiw | than yesterday=na ddoe
+115: I don’t feel=dw i ddim yn teimlo | as if I’m=fel ’sen i | to have a conversation=gael sgwrs
+116: this isn’t=dyw hwn ddim | the best choice=y dewis gorau | I could make=allen i wneud
+117: I’m definitely=dw i’n bendant | doing better=gwneud yn well | than I was=nag o’n i | last time=tro diwetha’ | we talked=wnaethon ni siarad | to each other=gyda’n gilydd
+118: I feel better=dw i’n teimlo’n well | than I felt=nag o’n i’n teimlo | when we were=pan o’n ni | in the pub=yn y dafarn
+119: can I ask=ga i ofyn | something=rhywbeth | before you leave=cyn i ti adael
+120: it’s interesting=mae’n ddiddorol | that you like=bo’ ti’n hoffi | to go by bus=mynd ar y bws
+121: it’s unusual=mae’n anarferol | that you don’t like=bo’ ti ddim yn hoffi | to use=defnyddio | your car=dy gar
+122: it’s starting=mae’n dechrau | to feel easier=teimlo’n haws | and I’m excited about=a dw i’n gyffrous am | how it’s going=sut mae’n mynd
+123: I think=dw i’n meddwl | a good idea=syniad da
+124: I thought=o’n i’n meddwl | a good idea=syniad da
+125: I believe=dw i’n credu | your idea=dy syniad di | was very good=wedi bod yn dda iawn
+126: this work is=mae’r gwaith ’ma’n | to change=newid | the shape of my brain=siâp fy ymennydd i
+127: that isn’t why=nid dyna pam | I wanted=o’n i’n moyn | to see you=dy weld di
+128: like=fel | someone=rhywun | I used to=o’n i’n arfer
+129: I’m so happy=dw i mor hapus | you’re doing=ti’n gwneud | so well=mor dda
+130: that was a surprise=oedd hynny’n syndod | because=achos | he’s my friend=mae e’n ffrind i fi
+131: there are=mae | too many ideas going around=gormod o syniadau’n mynd rownd{too many=gormod o;ideas=syniadau;going around=’n mynd rownd} | in my head=yn fy mhen
+132: that's=mae hynny’n | less exciting=llai cyffrous | than=na | what she was saying=beth oedd hi’n dweud
+133: you get to know=ti’n dod i nabod | someone=rhywun | very well=yn dda iawn | when=pan | you work together=ŷch chi’n gweithio gyda’ch gilydd{you work=ŷch chi’n gweithio;together=gyda’ch gilydd}
+134: it’s not a problem=dyw hi ddim yn broblem | when=pan | you work at something difficult=ti’n gweithio ar rywbeth anodd{you work=ti’n gweithio;at=ar;something difficult=rywbeth anodd} | with them=gyda nhw
+135: I don’t know=dw i ddim yn gwybod | why=pam | you think=ti’n meddwl | that it’s so good=fod e mor dda
+136: of course=wrth gwrs | you can ask her=gei di ofyn iddi hi | because=achos | she’s my friend=mae hi’n ffrind i fi
+137: it’s more important=mae’n bwysicach | to talk often=siarad yn aml | than=na | to be perfect=bod yn berffaith
+138: this was where=fan hyn oedd | my friend=fy ffrind | to meet us=cwrdd â ni
+139: I’m sorry=mae’n ddrwg ’da fi | that I=bo’ fi | to leave=gadael | so early=mor gynnar
+140: I’m sorry=mae’n ddrwg ’da fi | that I can’t see=bo’ fi ddim yn gallu gweld | what you’re trying=beth ti’n trio | to show me=dangos i fi
+141: no problem=dim problem | everything is okay=mae popeth yn iawn
+142: that's=mae hynny’n | very kind of you=garedig iawn ohonot ti | I’m grateful to you=dw i’n ddiolchgar i ti | for helping=am helpu
+143: it’s the same thing as=mae e’r un peth â | we were talking=o’n ni’n siarad | about it=amdano | earlier=gynne
+144: I woke earlier=wnes i ddihuno’n gynt | than I wanted=nag o’n i’n moyn | this morning=bore ’ma
+145: why=pam | you’re not happy=nag wyt ti’n hapus | any more=rhagor
+146: nothing seems=sdim byd i weld | since=ers | we tried to fix it=i ni drio’i drwsio fe
+147: she was very kind=oedd hi’n garedig iawn | when=pan | she saw me feeling nervous=welodd hi fi’n teimlo’n nerfus{she saw me=welodd hi fi;feeling nervous=’n teimlo’n nerfus}
+148: he wasn’t very patient=doedd e ddim yn amyneddgar iawn | when=pan | I couldn’t answer=o’n i ddim yn gallu ateb
+149: this isn’t=dyw hwn ddim | very difficult=yn anodd iawn | so=felly | I hope=dw i’n gobeithio | you’ll finish=byddi di’n cwpla | soon=cyn bo hir
+150: can you tell me?=alli di ddweud wrtha i? | what your name is=beth yw dy enw di
+151: that wasn’t what=nid hynny | I was hoping=o’n i’n gobeithio | would happen=fyddai’n digwydd
+152: I would have done it=bydden i wedi gwneud e | differently=’n wahanol | if I had known=’sen i wedi gwybod | what you wanted=beth o’t ti’n moyn
+153: I wouldn’t have said it=fydden i ddim wedi dweud e | exactly the same way=yn gwmws yr un ffordd
+154: where?=ble? | do you want?=wyt ti’n moyn? | to meet=cwrdd | on Saturday night=nos Sadwrn
+155: I don’t mind=sdim ots ’da fi | waiting=aros | for a few minutes=am gwpl o funudau | tomorrow morning=bore ’fory
+156: do you want?=wyt ti’n moyn? | to go to a restaurant=mynd i dŷ bwyta | tonight=heno
+157: I won’t be able to=fydda i ddim yn gallu | to be there=bod yno | next month=mis nesa’
+158: let’s=gadewch i ni | to talk=siarad | about something else=am rywbeth arall
+159: that isn’t what=nid hynny | I’m trying=dw i’n trio | to say=dweud
+160: how=sut | do you say=wyt ti’n dweud | this word=y gair ’ma | in Welsh=yn Gymraeg
+161: can you?=alli di? | give me that book=roi’r llyfr ’na i fi | on Sunday morning=fore dydd Sul
+162: what do you think about=be’ ti’n meddwl am | that=hynny
+163: I think=dw i’n meddwl | that it’s interesting=fod e’n ddiddorol
+164: a book=llyfr | interesting=diddorol
+165: but=ond | I’m not sure=dw i ddim yn siŵr | if=os | it’s true=yw e’n wir
+166: my name=fy enw i | isn’t very unusual=ddim yn anarferol iawn
+167: what=beth | do you need=wyt ti angen? | tomorrow afternoon=prynhawn ’fory
+168: and then=ac wedyn | I’ll be able to=bydda i’n gallu | to come and help=dod i helpu | later=nes ymlaen
+169: what=beth | do you want me to do?=wyt ti’n moyn i fi wneud?
+170: I’d like you to tell me=hoffen i i ti ddweud wrtha i | what you need=beth ti angen
+171: do you want me to help you=wyt ti’n moyn i fi dy helpu di | to look for it=i chwilio amdano fe
+172: that would be very helpful=byddai hynny’n help mawr
+173: no thank you=dim diolch | I can=galla i | to manage=ymdopi | on my own=ar fy mhen fy hunan
+174: can you?=alli di? | understand=ddeall | what I’m saying=beth dw i’n dweud
+175: what=beth | do you want?=wyt ti’n moyn? | on Sunday morning=fore dydd Sul
+176: I’ll ask him=gofynna i iddo fe | if he’ll be able to=os bydd e’n gallu | next year=flwyddyn nesa’
+177: I’ll ask her=gofynna i iddi hi | where she wants to go=ble mae hi’n moyn mynd
+178: I didn’t have time=ches i ddim amser | although I wanted=er bo’ fi’n moyn | to see you=dy weld di
+180: I’d like=hoffen i | read=ddarllen | my book=fy llyfr | for a while=am dipyn
+181: but=ond | I have to take=mae rhaid i fi fynd â | my mother to the doctor=fy mam at y doctor{my mother=fy mam;to the doctor=at y doctor}
+182: have you seen=wyt ti ’di gweld | my keys=fy allweddi i | anywhere=yn rhywle
+183: I’m afraid=dw i’n ofni | I haven’t seen them=bo’ fi heb eu gweld nhw
+184: I saw them=weles i nhw | in the office=yn y swyddfa | a while ago=sbel yn ôl
+185: I think=dw i’n meddwl | you left them=bo’ ti ’di gadael nhw | at work=yn y gwaith
+186: do you want?=wyt ti’n moyn? | to talk about=siarad am | something different=rywbeth gwahanol | next week=wythnos nesa’
+187: I’m happy=dw i’n hapus | so far=hyd yn hyn
+188: so=felly | I don’t need=dw i ddim angen | to change=newid
+189: yes that’s=ie, mae hynny’n | a good idea=syniad da
+190: do you mind if=oes ots ’da ti os | some questions=cwpl o gwestiynau
+191: I don’t mind=sdim ots ’da fi | at all=o gwbl
+192: I’m busy=dw i’n brysur | tomorrow night=nos ’fory
+193: I’m sorry=mae’n ddrwg ’da fi | but=ond | too busy=rhy brysur | today=heddiw
+194: what=beth | looking for=chwilio amdano
+195: I’m trying=dw i’n trio | to find the money=ffeindio’r arian | I left=wnes i adael | on the table=ar y bwrdd
+196: the latest idea=y syniad diweddara
+197: my son=fy mab | a teacher=athro
+198: my daughter=fy merch | for the council=i’r cyngor
+199: my friend=fy ffrind | used to work=yn arfer gweithio | in an office=mewn swyddfa
+200: they say=maen nhw’n dweud | that they want=bo’ nhw’n moyn | to make sure=gwneud yn siŵr | that we finish=bo’ ni’n cwpla | everything=popeth | in time=mewn pryd
+201: we wanted=o’n ni’n moyn | to know=gwybod | what was going=be’ oedd yn mynd | to happen=ddigwydd
+202: nobody was sure=doedd neb yn siŵr | how=sut | to answer=ateb | the question=y cwestiwn
+203: what would you do?=be’ fyddet ti’n gwneud? | if I asked you=’sen i’n gofyn i ti | help me=helpu fi
+204: I wanted her to help you=o’n i’n moyn iddi hi dy helpu di | to deal with the arrangements=i ddelio gyda’r trefniadau{to deal with=ddelio gyda;the arrangements=’r trefniadau}
+205: I’ve forgotten the word=dw i wedi anghofio’r gair | I was trying=o’n i’n trio | to say=dweud
+206: I enjoy the chance=dw i’n joio’r cyfle | to practice speaking=ymarfer siarad | with you=gyda ti
+207: you’ve done=ti wedi gwneud | what you needed to do=beth o’t ti angen gwneud
+208: I didn’t want=do’n i ddim yn moyn | to ask you=gofyn i ti | how=sut | to say it=ddweud e
+209: they want=maen nhw’n moyn | spend more time=hala mwy o amser | meeting as a group=cwrdd fel grŵp
+210: they think=maen nhw’n meddwl | that we need to=bo’ ni angen | to discuss=trafod | the problem=y broblem
+211: they told us=ddwedon nhw wrthon ni | that they didn’t want=bo’ nhw ddim yn moyn | to explain=esbonio
+212: they wanted=o’n nhw’n moyn | to ask for help=gofyn am help
+213: we don’t know=so ni’n gwybod | what they’re trying=beth maen nhw’n trio | achieve=cyflawni
+214: a good time=amser da | at the weekend=ar y penwythnos
+216: I saw=weles i | a few friends=ychydig o ffrindiau
+217: a glass or two=wydred neu ddau | of water=o ddŵr
+218: I didn't do=wnes i ddim gwneud | a lot=llawer | on Sunday=ddydd Sul
+221: I watched=wylies i | the football=y pêl-droed | and then=ac wedyn | a film=ffilm
+222: he’s trying=ma fe’n trio | tell me=dweud wrtha i | what he wants=beth mae e’n moyn
+223: he's going to=ma fe’n mynd i | to ask you=ofyn i ti | tomorrow=’fory
+224: he’s just started=ma fe newydd ddechrau | to learn=dysgu
+225: he would=byddai fe | to give=rhoi | an answer=ateb | if he could=’se fe’n gallu
+226: the man is=mae’r dyn | help me=helpu fi
+227: that man is=mae’r dyn ’na’n | to say=ddweud | something new=rhywbeth newydd
+228: that man has just started=mae’r dyn ’na newydd ddechrau | to practice speaking=ymarfer siarad
+229: that woman would=byddai’r fenyw ’na’n | to help you=dy helpu di | if she could=’se hi’n gallu
+230: I know=dw i’n nabod | a young man=dyn ifanc | who wants to work=sy’n moyn gweithio | with you=gyda ti
+231: I know=dw i’n nabod | an old man=hen ddyn | who wanted=oedd yn moyn | to ask for help=gofyn am help
+232: I know=dw i’n nabod | an old woman=hen fenyw | who can remember the answer=sy’n gallu cofio’r ateb{who can=sy’n gallu;remember the answer=cofio’r ateb}
+233: I know=dw i’n nabod | a young woman=menyw ifanc | who knows=sy’n nabod | your sister=dy chwaer di
+234: I met=wnes i gwrdd â | someone=rhywun | last night=neithiwr | who works=sy’n gweithio | with your brother=gyda dy frawd di
+235: I met=wnes i gwrdd â | someone who said=rhywun ddwedodd | that he wanted=fod e’n moyn | to tell you something=dweud rhywbeth wrthot ti
+236: I know=dw i’n nabod | someone who said=rhywun ddwedodd | that she was going to=bod hi’n mynd i | to try to help=drio helpu
+237: he wanted me to tell you=oedd e’n moyn i fi ddweud wrthot ti | before the weekend=cyn y penwythnos
+238: he wanted you to tell me=oedd e’n moyn i ti ddweud wrtha i | yesterday=ddoe
+239: my mother likes=mae fy mam yn hoffi | read=darllen
+240: my father=fy nhad | doesn’t like=ddim yn hoffi | to stop=stopo
+241: I don’t want=dw i ddim yn moyn | to give it to him=rhoi e iddo fe
+242: I want=dw i’n moyn | to give=rhoi | more time=mwy o amser
+243: I’m going to=dw i’n mynd i | to ask for=ofyn am | the same thing=yr un peth | to eat=fwyta
+245: I’m happy=dw i’n hapus | how much=faint | I've done=dw i ’di gwneud | in a short time=mewn amser byr
+246: I wanted her to help you=o’n i’n moyn iddi hi dy helpu di | but=ond | she was too busy=oedd hi’n rhy brysur
+247: I thought=o’n i’n meddwl | that book=y llyfr ’na | fairly good=eitha da
+248: I thought=o’n i’n meddwl | the film=y ffilm | complete rubbish=rwtsh llwyr | and I want=a dw i’n moyn | my money=fy arian i | back=nôl
+249: I want you to=dw i’n moyn i ti | help me before you go=helpu fi cyn i ti fynd{help me=helpu fi;before you go=cyn i ti fynd}
+250: can you?=alli di? | to say=ddweud | something else=rhywbeth arall | before I answer=cyn i fi ateb
+251: I don’t want=dw i ddim yn moyn | find out=ffeindio mas | until after we finish=nes ar ôl i ni gwpla{until=nes;after we finish=ar ôl i ni gwpla}
+252: when will you be ready=pryd fyddi di’n barod | to start=ddechrau
+253: I should=dylen i | to be ready=fod yn barod | in a few minutes=mewn cwpl o funudau
+254: I’ve been ready=dw i wedi bod yn barod | since=ers | this morning=bore ’ma
+255: when do you think=pryd wyt ti’n meddwl | you’ll be ready=fyddi di’n barod | to leave=adael
+256: I think=dw i’n meddwl | I’ll be ready=bydda i’n barod | in less than an hour=mewn llai nag awr
+257: I like=dw i’n hoffi | that blue thing=’r peth glas ’na
+258: that blue thing=’r peth glas ’na | over there=draw fanco
+259: an idea=syniad
+260: I don’t have the faintest idea=sdim syniad ’da fi o gwbl{I don’t have=sdim ’da fi;idea=syniad;at all=o gwbl}
+261: I think=dw i’n meddwl | it might be=falle fod e’n | something important=rhywbeth pwysig
+262: who was=pwy oedd | that man=y dyn ’na | you were talking to=o’t ti’n siarad gyda fe | yesterday=ddoe
+263: I don’t know=dw i ddim yn gwybod | who you mean=pwy ti’n meddwl
+264: an old man=hen ddyn
+265: a friend=ffrind
+266: an old friend of my father=hen ffrind i fy nhad{an old friend=hen ffrind;of my father=i fy nhad}
+267: have you heard from=wyt ti ’di clywed gan | your friend=dy ffrind
+268: she sent=halodd hi | two emails=ddau e-bost | to me=ata i | last week=wythnos diwetha’
+269: why=pam | don’t you want=nag wyt ti’n moyn | to wait for=aros am | your father=dy dad
+270: because=achos | I’m worried=dw i’n becso | that I’m going to=bo’ fi’n mynd i | to be late=fod yn hwyr
+271: would you like=hoffet ti? | to come with us=ddod gyda ni | next month=mis nesa’
+272: that sounds=mae hynny’n swno | like a great idea=fel syniad gwych
+273: unfortunately=yn anffodus | too much work=gormod o waith
+274: do you have to=oes rhaid i ti | to leave=adael | in a few days=mewn cwpl o ddyddiau
+275: longer=hirach
+276: I can=galla i | to stay=aros | here=fan hyn | a little longer=ychydig bach yn hirach
+277: an important meeting=cyfarfod pwysig | early next week=yn gynnar wythnos nesa’
+278: did you have to=oedd rhaid i ti | to finish=gwpla | everything=popeth | last night=neithiwr
+279: because=achos | there wasn’t much time left=doedd dim llawer o amser ar ôl{there wasn’t=doedd dim;much time=llawer o amser;left=ar ôl}
+280: only=dim ond | the most important job=y gwaith pwysica’ | I had to do=oedd rhaid i fi wneud
+281: do you mind if=oes ots ’da ti os | to finish=cwpla | my coffee=fy nghoffi | before you start=cyn i ti ddechrau
+282: that’s not=dyw hynny ddim | a problem=yn broblem
+283: which of your friends=pa rai o dy ffrindiau | who speak=sy’n siarad | Welsh=Cymraeg
+284: do you know?=wyt ti’n nabod? | my sister’s friend=ffrind fy chwaer
+285: she speaks=mae hi’n siarad | Welsh=Cymraeg
+286: people=pobl | who like=sy’n hoffi | to speak=siarad | Welsh=Cymraeg
+287: how many people=faint o bobl | do you know?=wyt ti’n nabod? | who like=sy’n hoffi | watching television=gwylio teledu
+288: most of the people=mae’r rhan fwya’ o’r bobl | I know=dw i’n nabod | watching television=gwylio teledu
+289: I wonder if=tybed ydy | to be there=fod yno | this afternoon=prynhawn ’ma
+290: I wonder if=tybed ydy | the answer=yr ateb
+291: I hope=dw i’n gobeithio | I’ll be able to=bydda i’n gallu | to speak=siarad | better=yn well | soon=cyn bo hir
+292: I hope=dw i’n gobeithio | you’ll be able to=byddi di’n gallu | to come=dod | to the party=i’r parti
+293: I must=mae rhaid i fi | find out=ffeindio mas | where he’s going to=ble mae e’n mynd i | to meet me=gwrdd â fi
+294: I don’t have enough time=sdim digon o amser ’da fi | to call you=dy ffonio di | tonight=heno
+295: I didn’t say=ddwedes i ddim | that I wanted=bo’ fi’n moyn | to finish=cwpla | in a day=mewn diwrnod
+296: I said=ddwedes i | that I=bo’ fi | a little more time=ychydig mwy o amser
+297: I don’t know many people=dw i ddim yn nabod llawer o bobl | who speak=sy’n siarad | Welsh=Cymraeg
+298: I’ve got nothing left=sdim byd ar ôl ’da fi | to say=ddweud
+299: he wants=ma fe’n moyn | to pay=talu | half=hanner
+300: she doesn’t want=dyw hi ddim yn moyn | to seem=ymddangos | unfriendly=yn anghyfeillgar
+301: he said that he=ddwedodd e fod e | to show=dangos | something=rhywbeth
+302: she said that she=ddwedodd hi bod hi | to live=byw | in a city=mewn dinas
+303: I think=dw i’n meddwl | that he wants=fod e’n moyn | to sit down=eistedd lawr
+304: I think=dw i’n meddwl | that she doesn’t want=bod hi ddim yn moyn | to work from home=gweithio o gytre
+305: woman=menyw
+306: I know=dw i’n nabod | that young woman=y fenyw ifanc ’na | who’s talking to=sy’n siarad gyda | your friend=dy ffrind
+307: I know=dw i’n nabod | that young man=y dyn ifanc ’na | who’s sitting=sy’n eistedd | over there=draw fanco
+308: she’s a friend of my mother=mae hi’n ffrind i fy mam
+309: I’ve never seen her=dw i erioed wedi gweld hi | before=o’r blaen
+310: she could=gallai hi | to write=sgrifennu | a story=stori | about that man=am y dyn ’na
+311: he couldn’t=doedd e ddim yn gallu | believe the three facts=credu’r tair ffaith | most important=bwysica’
+312: she said=ddwedodd hi | that she could=y byddai hi’n gallu | use the other room=defnyddio’r stafell arall | tomorrow night=nos ’fory
+313: he said=ddwedodd e | that he couldn’t=na fyddai fe’n gallu | watch all five games=gwylio’r pum gêm i gyd
+314: I think=dw i’n meddwl | that she could=y byddai hi’n gallu | to put it=rhoi e | on the table=ar y bwrdd
+315: I think=dw i’n meddwl | that he wasn’t able to=nag oedd e’n gallu | afford the car he wanted=fforddio’r car oedd e’n moyn{afford the car=fforddio’r car;he wanted=oedd e’n moyn}
+316: do you think?=wyt ti’n meddwl? | that she could=y byddai hi’n gallu | to bring her brother=dod â’i brawd | on Monday=ddydd Llun
+317: I think=dw i’n meddwl | that she could=y byddai hi’n gallu | if she wanted=’se hi’n moyn
+318: I don’t think=dw i ddim yn meddwl | that she could=y byddai hi’n gallu | this time=y tro ’ma
+319: she needs=mae hi angen | to move=symud | to a different country=i wlad wahanol
+320: he doesn’t need=dyw e ddim angen | buy=prynu | another television=teledu arall | this year=eleni
+321: a book=llyfr
+322: she said that she=ddwedodd hi bod hi | read=darllen | the same book=yr un llyfr
+323: he said that he=ddwedodd e fod e | to walk=cerdded | to school=i’r ysgol
+324: that student has=mae gyda’r fyfyrwraig ’na | both of her hands up=ei dwy law lan
+325: I think=dw i’n meddwl | that he needs=fod e angen | to consider=ystyried | ten possible problems=deg problem bosib
+326: I don’t think=dw i ddim yn meddwl | that she needs=bod hi angen | to sell the company=gwerthu’r cwmni
+327: do you think?=wyt ti’n meddwl? | that she needs=bod hi angen | to offer=cynnig | another way=ffordd arall
+328: I think=dw i’n meddwl | she ought to=y dylai hi
+330: I don’t think=dw i ddim yn meddwl | that it’s very important=fod e’n bwysig iawn
+331: she can’t=all hi ddim | provide all the answers=darparu’r atebion i gyd
+332: he can=gall e | build a new life=adeiladu bywyd newydd | for his sister=i’w chwaer
+333: she said that she=ddwedodd hi bod hi | to spend much time=hala llawer o amser | with the group=gyda’r grŵp
+334: he said that he=ddwedodd e fod e | to let you hold the kitten=gadael i ti ddala’r gath fach{to let you=gadael i ti;hold=ddala;the kitten=’r gath fach}
+335: I think=dw i’n meddwl | that he can=fod e’n gallu | to add=ychwanegu | some valuable ideas=rhai syniadau gwerthfawr
+336: I don’t think that she can=sa i’n meddwl bod hi’n gallu{I don’t think=sa i’n meddwl;that she can=bod hi’n gallu} | open=agor | the door=y drws
+337: do you think?=wyt ti’n meddwl? | that he can=fod e’n gallu | to keep on=cario ’mlaen | to play=chwarae
+338: badly=yn wael
+339: I think=dw i’n meddwl | he’s hurt himself=fod e ’di brifo’i hunan | quite badly=yn eitha gwael
+340: I’m sure=dw i’n siŵr | he’s going to be okay=fod e’n mynd i fod yn iawn
+341: I met=wnes i gwrdd â | someone=rhywun | a few days ago=ychydig ddyddiau yn ôl
+342: I met=wnes i gwrdd â | someone who said=rhywun ddwedodd | something=rywbeth
+343: who said=ddwedodd | that she’s worried about=bod hi’n becso am | the economy=yr economi
+344: who said=ddwedodd | that he’s happy=fod e’n hapus | to help you=dy helpu di
+345: who said=ddwedodd | that he’s not ready=fod e ddim yn barod | to leave=adael | yet=eto
+346: I wanted her to know=o’n i’n moyn iddi hi wybod | that I liked=bo’ fi’n hoffi | her book=ei llyfr hi
+347: he wanted=oedd e’n moyn | to know=gwybod | what was happening=be’ oedd yn digwydd | a week ago=wythnos yn ôl
+348: she didn’t want=doedd hi ddim yn moyn | to know=gwybod | what was going=be’ oedd yn mynd | to happen=ddigwydd
+349: did he want?=oedd e’n moyn? | to go out=mynd mas | on Friday night=nos Wener
+350: he wanted=oedd e’n moyn | to see=gweld | some old friends=rhai hen ffrindiau
+351: he didn’t want=doedd e ddim yn moyn | to leave me=fy ngadael i | on my own=ar fy mhen fy hunan
+352: even if he wanted to=hyd yn oed ’se fe’n moyn | he wouldn’t be able to=fyddai fe ddim yn gallu
+353: she needed=oedd hi angen | to run=rhedeg | around the field=o gwmpas y cae
+354: he didn’t need=doedd e ddim angen | to appear angry=ymddangos yn grac
+355: did she need?=oedd hi angen? | to talk to=siarad gyda | that woman you know=’r fenyw ’na ti’n nabod
+356: they had=oedd gyda nhw | something important=rywbeth pwysig | to discuss=drafod
+357: she just wanted=oedd hi jyst yn moyn | to send her a message=hala neges ati hi
+358: your friend said=ddwedodd dy ffrind di | that she couldn’t=bod hi ddim yn gallu | reach the top=cyrraedd y top
+359: your friend said=ddwedodd dy ffrind di | that he could=fod e’n gallu | turn left=troi i’r chwith
+360: did your friend say=ddwedodd dy ffrind di | anything else=unrhywbeth arall
+361: he was quiet=oedd e’n dawel
+362: no=naddo | rather quiet=braidd yn dawel | after you left=ar ôl i ti adael
+363: he felt like talking=oedd e’n teimlo fel siarad | a lot=llawer
+364: I heard=clywes i | that he didn’t like=fod e ddim yn hoffi | that place=’r lle ’na
+365: I didn't hear=chlywes i ddim | what she said=be’ ddwedodd hi | to him=wrtho fe
+366: did you hear=glywest ti | what he wanted=be’ oedd e’n moyn | to grow=tyfu
+367: nobody told me=ddwedodd neb wrtha i
+368: I heard=clywes i | that he wanted=fod e’n moyn | to grow=tyfu | tomatoes=tomatos
+369: I saw=weles i | several horses=sawl ceffyl | on the road=ar yr hewl
+370: I didn’t see anyone=weles i neb | that I knew=o’n i’n nabod
+371: I went to see=es i i weld | a film=ffilm | on Wednesday=ddydd Mercher
+372: did you see=welest ti | what she was trying=be’ oedd hi’n trio | to create=creu
+373: it was beautiful=oedd e’n brydferth
+374: I thought=o’n i’n meddwl | that it was very beautiful=fod e’n brydferth iawn
+375: I didn’t know=do’n i ddim yn gwybod | what she was doing=be’ oedd hi’n gwneud
+376: I didn’t go anywhere=es i ddim i unman | last month=mis diwetha’
+377: did you go anywhere=est ti i unman | in the world=yn y byd | last year=llynedd
+378: there wasn’t enough money=doedd dim digon o arian | for holidays=ar gyfer gwyliau
+379: I was lucky enough=o’n i’n ddigon lwcus | to travel to Africa=i deithio i Affrica
+380: I asked=wnes i ofyn | what she wanted=be’ oedd hi’n moyn | to include=cynnwys
+381: I didn’t ask=wnes i ddim gofyn | if he wanted=os oedd e’n moyn | to follow us=ein dilyn ni
+382: did you ask=wnest ti ofyn | where he wanted=ble oedd e’n moyn | to put it=rhoi e
+383: he said that he=ddwedodd e fod e | to put it=rhoi e | in the garden=yn yr ardd
+384: I couldn’t agree with=allen i ddim cytuno gyda | what he said=be’ ddwedodd e | a moment ago=eiliad yn ôl
+385: did you agree with her?=wnest ti gytuno gyda hi?
+386: I agreed with her=wnes i gytuno gyda hi
+387: I didn’t think=do’n i ddim yn meddwl | she was right=bod hi’n gywir
+388: that person=y person ’na | who works with you=sy’n gweithio gyda ti
+389: that person=y person ’na | over there=draw fanco
+390: the one who is standing=yr un sy’n sefyll | near the entrance=ar bwys y fynedfa
+391: the one who is walking=yr un sy’n cerdded | towards the bus=tuag at y bws
+392: that child=y plentyn ’na | with the black hair=gyda’r gwallt du | opposite the post office=gyferbyn â’r swyddfa bost
+393: that boy=y bachgen ’na | with the green shirt=gyda’r crys gwyrdd
+394: that girl=y ferch ’na | with the yellow dress=gyda’r ffrog felen
+395: we need=ŷn ni angen | turn left=troi i’r chwith | at the next corner=ar y gornel nesa
+396: we don’t need=so ni angen | to stand=sefyll | until everybody else is ready=nes bod pawb arall yn barod
+397: do we need?=ŷn ni angen? | to get ready=paratoi | soon=cyn bo hir
+398: we want=ŷn ni’n moyn | to become more patient=dod yn fwy amyneddgar | with our children=gyda’n plant ni
+399: we don’t want=so ni’n moyn | to lose hope=colli gobaith
+400: do we want?=ŷn ni’n moyn? | to eat=bwyta | something=rhywbeth | later=nes ymlaen
+401: it would be better=byddai’n well | to go straight home=mynd yn syth gytre{to go=mynd;straight=yn syth;home=gytre}
+402: yes it would be nice=ydyn, byddai’n braf{yes=ydyn;it would be nice=byddai’n braf} | to stop=stopo | somewhere for food=yn rhywle am fwyd{somewhere=yn rhywle;for food=am fwyd}
+403: we should=dylen ni | remain quiet=aros yn dawel | for as long as possible=mor hir â phosib
+404: we shouldn’t=ddylen ni ddim | to expect=dishgwl | to finish=cwpla | before Thursday=cyn dydd Iau
+405: should we=ddylen ni | to ask=ofyn | if we have to=os oes rhaid i ni | to book=fwcio
+406: I’m sure=dw i’n siŵr | it will be okay=bydd hi’n iawn
+407: shouldn’t we=ddylen ni ddim | to try=trio | to set a good example=gosod esiampl dda
+408: that's the best way=dyna’r ffordd orau | to make a happy family=i wneud teulu hapus
+409: it doesn’t matter=sdim ots | what we do=beth ŷn ni’n gwneud
+410: they still fight=maen nhw dal yn ymladd | with each other=gyda’i gilydd
+411: we’d like=hoffen ni | to reserve a table=gadw bwrdd | for four=i bedwar | tonight=heno
+412: we couldn’t=allen ni ddim | allow them to win=gadael iddyn nhw ennill | everything=popeth
+413: we could fall=gallen ni gwympo | if we go=os ŷn ni’n mynd | too close to the edge=yn rhy agos at yr ymyl
+414: could we have?=allen ni gael? | a bottle of red wine=potel o win coch | please=plîs
+415: that wouldn’t be a problem=fyddai hynny ddim yn broblem | if you ask me=os ti’n gofyn i fi
+416: they want=maen nhw’n moyn | to lead the way next year=arwain y ffordd flwyddyn nesa
+417: do they want?=ŷn nhw’n moyn? | to kill=lladd | those ants=y morgrug ’na
+418: they need=maen nhw angen | to serve the community=gwasanaethu’r gymuned
+419: if they want=os ŷn nhw’n moyn | people to like them=i bobl eu hoffi nhw
+420: they don’t need=so nhw angen | to ask=gofyn | how old he is=pa mor hen yw e
+421: because=achos | they know=maen nhw’n gwybod | already=yn barod | that he’s getting weak=fod e’n mynd yn wan
+422: a question=cwestiwn
+423: do they need?=ŷn nhw angen? | to ask=gofyn | such an obvious question=cwestiwn mor amlwg
+424: they’re wasting=maen nhw’n gwastraffu | everybody’s time=amser pawb
+425: they need=maen nhw angen | to make sure=gwneud yn siŵr | that they understand=bo’ nhw’n deall
+426: they would like=bydden nhw’n hoffi | to love each other=caru ei gilydd | but=ond | they’re unhappy=maen nhw’n anhapus
+427: they wouldn’t like=fydden nhw ddim yn hoffi | you to think=i ti feddwl | that they’re bored=bo’ nhw ’di diflasu
+428: would they like?=fydden nhw’n hoffi? | to visit us=ymweld â ni | on Tuesday=ddydd Mawrth
+429: that would be perfect=byddai hynny’n berffaith | for them=iddyn nhw
+430: that wouldn’t be possible=fyddai hynny ddim yn bosib
+431: they’re not ready=so nhw’n barod | yet=eto | but=ond | they’ll be ready=byddan nhw’n barod | soon=cyn bo hir
+432: they could=gallen nhw | mean=feddwl | that they want=bo’ nhw’n moyn | you to ask=i ti ofyn
+433: they couldn’t=allen nhw ddim | find out=ffeindio mas | when the film started=pryd ddechreuodd y ffilm
+434: could they?=allen nhw? | cut=dorri | the number of students=nifer y myfyrwyr | they take=maen nhw’n cymryd
+435: they could=gallen nhw | if they wanted=’sen nhw’n moyn
+436: there's a minimum number=mae ’na nifer lleiaf | they need=maen nhw angen
+437: they wanted=o’n nhw’n moyn | to raise=codi | as much as possible=gymaint â phosib | for charity=at elusen
+438: they didn’t want=do’n nhw ddim yn moyn | to decide=penderfynu | what he should do=beth ddylai fe wneud
+439: they don’t want=so nhw’n moyn | to die=marw
+440: they want=maen nhw’n moyn | to travel=teithio | while they’re still young=tra bo’ nhw dal yn ifanc
+441: an approach=dull
+442: did they want?=o’n nhw’n moyn? | to develop=datblygu | a new approach=dull newydd
+443: they wanted=o’n nhw’n moyn | to keep doing it=dal i wneud e | the same way=yn yr un ffordd
+444: yes they thought=oedden, o’n nhw’n meddwl{yes=oedden;they thought=o’n nhw’n meddwl} | it could be done=y gallai fe gael ei wneud | more efficiently=yn fwy effeithlon
+445: they will be able to=byddan nhw’n gallu | carry that suitcase=cario’r cês ’na
+446: they won’t be able to=fyddan nhw ddim yn gallu | break that window=torri’r ffenest ’na
+447: will they be able to?=fyddan nhw’n gallu? | drive us home=ein gyrru ni gytre | after the meal=ar ôl y pryd bwyd
+448: they’ll be happy=byddan nhw’n hapus | to help=helpu
+449: they said=ddwedon nhw | that they were almost ready=bo’ nhw bron yn barod
+450: they have to=mae rhaid iddyn nhw | catch the train=ddal y trên | themselves=eu hunain
+451: they said=ddwedon nhw | what they wanted to do=beth o’n nhw’n moyn gwneud
+452: they didn’t say=ddwedon nhw ddim | what they wanted to do=beth o’n nhw’n moyn gwneud
+453: did they say=ddwedon nhw | who they saw=pwy welon nhw | last night=neithiwr
+454: our friends came round=daeth ein ffrindiau ni draw | at about six o’clock=am biti chwech o’r gloch
+455: we had to leave=oedd rhaid i ni adael | because=achos | the children were tired=oedd y plant ’di blino
+456: he might be there=falle bydd e ’na | but=ond | it’s not very likely=dyw e ddim yn debygol iawn
+457: part of the=rhan o’r | problem=broblem | the number of different areas=nifer yr ardaloedd gwahanol
+458: it was all=oedd y cyfan | much easier=yn llawer haws | in the past=yn y gorffennol
+459: it wasn’t=doedd e ddim | in front of the blue sign=o flaen yr arwydd glas
+460: I want=dw i’n moyn | to find=ffeindio | shop=siop | near=ar bwys | hotel=gwesty
+461: shop=siop | where I can=lle alla i | buy=brynu | some postcards=cwpl o gardiau post
+462: my grandfather fought=wnaeth fy nhad-cu ymladd | in Italy=yn yr Eidal | during the war=yn ystod y rhyfel
+463: my room number=rhif fy ystafell
+464: I told her my room number=ddwedes i rif fy ystafell wrthi | once=unwaith | but=ond | she forgot=wnaeth hi anghofio
+465: next time=tro nesa | I will ask=gofynna i | her=iddi | what=beth | her name=ei henw hi
+466: let me=gad i fi | throw it=ei dwlid e | over=dros | wall=wal
+467: it’s next to=ma fe wrth ochr | the car park=y maes parcio
+468: a big world=fyd mawr
+469: but=ond | that doesn’t=so hynny’n | mean=meddwl | that we can’t=nag ŷn ni’n gallu | change it=ei newid e
+470: how high?=faint mor uchel? | do you want?=wyt ti’n moyn? | to climb=dringo | before we=cyn i ni | to stop=stopo
+471: do you want?=wyt ti’n moyn? | to stop=stopo | for a rest=am hoe{for=am;a rest=hoe}
+472: part of the=rhan o’r | problem=broblem | that we don't=nag ŷn ni’n | facts=ffeithiau
+473: I don’t want it=sa i’n moyn e
+474: I don’t=sa i | even=hyd yn oed | free=am ddim | offer=cynnig
+475: there are many reasons to=mae sawl rheswm dros | to consider=ystyried | wait=aros
+476: I’m waiting for=dw i’n aros am | end=ddiwedd | the second=yr ail | half=hanner
+477: he's been=ma fe wedi bod | sick=yn dost | since=ers | second day=ail ddiwrnod | holidays=gwyliau
+478: she has=ma gyda hi | heart=galon | so kind=mor garedig
+479: it’s the least=dyna’r lleiaf | I could=allen i
+480: whatever=ta beth | he says=ma fe’n dweud | it’s not=dyw e ddim | far=yn bell | ahead=o’n blaenau ni | now=nawr
+481: it’s the only real hope=dyna’r unig obaith go iawn | that we have left=sydd ar ôl i ni
+482: the only=yr unig | real=go iawn | hope=obaith | that they’re not=nag ŷn nhw | serious=o ddifri
+483: life isn’t=so bywyd | easy=yn hawdd | but=ond | it isn't=so fe | meant to be=i fod yn
+484: meant to be=i fod yn | a challenge=her
+485: nothing=dim byd | would=fyddai | make me=yn fy ngwneud i’n | happier=hapusach | than=na | to get away=dianc
+486: I think=dw i’n meddwl | your eyes are beautiful=bod dy lygaid di’n brydferth{that=bod;your eyes=dy lygaid di;beautiful=’n brydferth}
+487: it’s under=ma fe o dan | bridge=bont
+488: on=ar | other side=ochr arall | that yellow line=y llinell felen ’na
+489: if you don't=os na wnei di | a strong cup of=ddishgled gryf o | coffee=goffi | me=i fi | right now=yn syth
+490: then=yna | I will never=fydda i byth | trust anyone=ymddiried yn neb | ever again=byth eto
+491: I love=dw i’n dwlu ar | the way=y ffordd | you try=ti’n trio | to help=helpu
+492: which one=pa un | of those places=o’r llefydd yna | do you think?=wyt ti’n meddwl? | is the most=yw’r mwya | interesting=diddorol
+493: what=beth | will=fydd | coming next=yn dod nesa
+494: what is=beth sy’n | after=ar ôl | the first part=rhan gyntaf | show=sioe
+495: when it matters=pan mae ots
+496: planning=bwriadu | to lose=colli | when=pan | it really matters=mae wir ots
+497: that sounds=mae hynny’n swno | as though=fel | that you need=bo’ ti angen | get=cael | some sleep=bach o gwsg
+498: standing=sefyll | alone=ar ei ben ei hunan | over there=draw fanco | inside the=tu fewn i’r | entrance=fynedfa
+499: maybe=falle | we should=dylen ni | open=agor | the door=y drws | and close the window=a chau’r ffenest{and=a;close=chau;the window=’r ffenest}
+500: why=pam | don’t you want=nag wyt ti’n moyn | to sit=eistedd | between=rhwng | the two girls=y ddwy ferch
+501: if only I=tasen i ond | trust=ymddiried | in you=ynoch chi | to play=chwarae | together=gyda’ch gilydd | without arguing=heb ddadlau
+502: she almost=bu bron iddi | to get lost=fynd ar goll | because=achos | she turned left=iddi droi i’r chwith | instead of=yn lle | to the right=i’r dde
+503: I hate=mae’n gas ’da fi | trouble=trwbwl | but=ond | mine=fy un i | that one’s=yw hwnna
+504: I’m going to=dw i’n mynd i | run=redeg | across=ar draws | grass=glaswellt
+505: so that I don’t=i fi beidio | get=cael | left=fy ngadael | behind=ar ôl
+506: I used to=o’n i’n arfer | to live=byw | around here=ffor’ hyn | years=blynyddoedd | before we=cyn i ni | moved=symud
+507: we moved=symudon ni | to the city=i’r ddinas
+508: there’s no=does dim | point=pwynt | worrying=becso | you’re going to=ŷch chi’n mynd i | to pay=dalu
+509: I heard=clywes i | that you’re going to=bo’ chi’n mynd i | to pay=dalu | a new bed=wely newydd
+510: she’s gone=mae hi ’di mynd | look for=chwilio | somewhere=rywle | safe=diogel | park the car=barco’r car
+511: took=cymrodd | news=newyddion | several hours=sawl awr | to reach=gyrraedd | everyone=pawb | in the office=yn y swyddfa
+512: can you?=alli di? | hold the door open=ddala’r drws ar agor{hold=ddala;the door=’r drws;open=ar agor} | while I=tra bo’ fi’n | fetch=nôl | the keys=yr allweddi
+513: hurts most=brifo mwyaf | when I move=pan dw i’n symud | my head=fy mhen | up=lan | down=lawr
+514: I found the=ffeindies i’r | perfect house=tŷ perffaith | on the first day=ar y diwrnod cyntaf{on=ar;the first day=y diwrnod cyntaf}
+515: first day=ddiwrnod cyntaf | the new year=y flwyddyn newydd
+516: they both=y ddau ohonyn nhw | came=daeth | on their own=ar eu pennau eu hunain
+517: but=ond | they left=gadewon nhw | with each other=gyda’i gilydd
+518: I couldn’t=allen i ddim | imagine=dychmygu | myself=fy hunan | having=yn cael | exactly=gwmws | the same=yr un | problem=broblem
+519: I haven’t seen=sa i wedi gweld | their=eu | baby=babi | yet=eto
+520: it might have happened=gallai fe fod wedi digwydd | to the whole family=i’r teulu cyfan{to the=i’r;whole family=teulu cyfan}
+521: I’m afraid=dw i’n ofni | that you’ll=y byddi di’n | forget=anghofio | why we needed to=pam o’n ni angen | to stay here=aros yma
+522: let’s=gadewch i ni | agree=gytuno | it was stupid=oedd hi’n dwp | to tell the truth=dweud y gwir
+523: instead of=yn lle | giving=rhoi | an excuse=esgus
+524: I’ll=na i | call you=dy alw di | back=nôl | in=mhen | three=tair | four minutes=bedair munud
+525: to check=i weld | if you’ve been able=wyt ti wedi gallu | to finish=cwpla
+526: finding it=cael hi’n | hard to believe=anodd credu | that you can’t=nag wyt ti’n gallu | guess=dyfalu
+527: guess=dyfalu | who=pwy | that funny story=y stori ddoniol ’na
+528: probably=mwy na thebyg | I’m supposed to=dw i i fod i | to keep those things=gadw’r pethau ’na{to keep=gadw;those things=’r pethau ’na} | in another room=mewn stafell arall
+529: can you all?=allwch chi i gyd? | put your hands up=roi eich dwylo lan
+530: so I can count them=er mwyn i fi allu cyfri nhw{so that=er mwyn;I can=i fi allu;count=cyfri;them=nhw}
+531: it isn’t true=dyw hi ddim yn wir | that anyone can=bod unrhywun yn gallu | win=ennill | the game=y gêm
+532: unless=heblaw | they’re=bo’ nhw’n | lucky=lwcus
+533: she won’t=fydd hi ddim yn | listen to=gwrando ar | every word=bob gair | you say=ti’n dweud
+534: let’s not=gadewch i ni beidio | to go out=mynd mas | in this dreadful weather=yn y tywydd ofnadwy ’ma
+535: he made=wnaeth e | a promise=addewid | that he wouldn’t=na fyddai fe’n | choose=dewis | the wrong job=y swydd anghywir
+536: I used to=o’n i’n arfer | to think=meddwl | being crazy was bad=bod yn wallgo’n ddrwg{being=bod;crazy=yn wallgo;bad=’n ddrwg}
+537: but=ond | I was wrong=o’n i’n anghywir
+538: I don’t want to seem=sa i’n moyn ymddangos | as though=fel | that I don’t care=nagw i’n becso
+539: but=ond | it’s getting late=mae’n mynd yn hwyr
+540: I don’t mind=sdim ots ’da fi | if=os | you want=ti’n moyn | to leave=gadael | without the car=heb y car
+541: it’s a good idea=mae’n syniad da | to try=trio | breathe slowly=anadlu’n araf{to breathe=anadlu;slowly=’n araf}
+542: whenever=ta pryd | you feel angry=ti’n teimlo’n grac
+543: right=gywir
+544: whoever said=ta pwy ddwedodd | that she would be=y byddai hi’n | difficult=anodd | absolutely=yn gwbl | right=gywir
+545: your turn=dy dro di | take the=mynd â’r | clean clothes=dillad glân | upstairs=lan staer
+546: the dog is dirty=mae’r ci’n frwnt{the dog=’r ci;is dirty=’n frwnt} | and wet=ac yn wlyb
+547: because=achos | he's been=ma fe wedi bod | playing=yn chwarae | in the mud=yn y mwd
+548: I am feeling sad=dw i’n teimlo’n drist | at the moment=ar hyn o bryd
+549: because=achos | I must=mae rhaid i fi | to be quiet=fod yn dawel
+550: the end of the village=pen y pentref{end=pen;the village=y pentref}
+551: the church=yr eglwys | is ugly=yn salw
+552: the church=yr eglwys | at the other end of=ym mhen arall | the village=y pentref | is ugly=yn salw
+553: I think=dw i’n meddwl | the small church=yr eglwys fach | very ugly=salw iawn
+554: this towel isn’t dry=so’r tywel yma’n sych{isn’t=so;the towel=’r tywel;this=yma;dry=’n sych}
+555: tired=’di blino | too much=gormod | fetch=nôl | a new one=un newydd
+556: they play=maen nhw’n chwarae | music=cerddoriaeth | late at night=yn hwyr yn y nos
+557: I wish they wouldn’t play=hoffen i ’sen nhw ddim yn chwarae | such loud music=cerddoriaeth mor uchel
+558: it’s so late=mae hi mor hwyr | at night=yn y nos
+559: have you found=wyt ti ’di ffeindio | the path=’r llwybr | through the wood=drwy’r coed
+560: it goes=mae’n mynd | down=lawr | to the beach=i’r traeth
+561: I don’t care if=sa i’n becso os | it’s a fast car=yw e’n gar cyflym{it’s=yw e’n;a fast car=gar cyflym}
+562: I just want=dw i jyst yn moyn | to get there safely=cyrraedd ’na’n ddiogel{to get there=cyrraedd ’na;safely=’n ddiogel}
+563: I wouldn’t have been able to=fydden i ddim wedi gallu | to keep going=cario ’mlaen | any longer=yn hirach
+564: I wouldn’t have been able to=fydden i ddim wedi gallu | without your help=heb dy help di
+565: I’d have thought=bydden i wedi meddwl | about it more carefully=amdani’n fwy gofalus
+566: I’d have thought=bydden i wedi meddwl | more=mwy | if it had been=’se fe wedi bod | my choice=yn fy newis i
+567: it’s been lovely=mae hi wedi bod yn hyfryd | spending time=hala amser | outdoors=tu fas | watching the children play=yn gwylio’r plant yn chwarae
+568: I’m expecting=dw i’n dishgwl | to see an improvement=gweld gwelliant | next time=tro nesa | we meet=byddwn ni’n cwrdd
+569: have you decided=wyt ti ’di penderfynu | how much you’re willing to pay=faint wyt ti’n fodlon talu
+570: how much you’re willing to pay=faint wyt ti’n fodlon talu | for your ticket=am dy docyn di
+571: I’m not convinced=sa i’n siŵr | that would be=y byddai hynny’n | a very good idea=syniad da iawn
+572: have you forgotten=wyt ti ’di anghofio | what happened=beth ddigwyddodd | the last time=y tro diwetha’ | they visited us=wnaethon nhw ymweld â ni
+573: it’s the kind of thing=dyna’r math o beth | that makes the holidays very special=sy’n gwneud y gwyliau’n arbennig iawn{that makes=sy’n gwneud;the holidays=y gwyliau;very special=’n arbennig iawn}
+574: the holidays are very special=mae’r gwyliau’n arbennig iawn | for everyone=i bawb
+575: it’s been upsetting=mae hi wedi bod yn ofidus
+576: it has been=mae hi wedi bod | very upsetting=yn ofidus iawn | waiting=aros
+577: we’ve been waiting for=ŷn ni wedi bod yn aros am | the news=y newyddion | from the hospital=o’r ysbyty
+578: somewhere warmer=rhywle twymach
+579: we’ve often tried=ŷn ni’n aml wedi trio
+580: we’ve often wanted=ŷn ni’n aml wedi moyn | to take the children=mynd â’r plant | somewhere a little warmer=i rywle bach yn dwymach
+581: he’d like=byddai fe’n hoffi | to know=gwybod | a little more=bach mwy | what it’s like=sut beth yw e
+582: what’s it like=sut beth yw | to grow up here=tyfu lan yma{to grow up=tyfu lan;here=yma}
+583: what’s it like=sut beth yw | in this part of the world=yn y rhan yma o’r byd
+584: what’s it like=sut beth yw | to wake up=dihuno | every morning=bob bore | and see the mountains=a gweld y mynyddoedd
+585: I can see=dw i’n gallu gweld | the mountains=y mynyddoedd | out of my bedroom window=mas o ffenest fy stafell wely i
+586: I want=dw i’n moyn | twenty boiled eggs=ugain wy wedi’u berwi
+587: she used to insist=oedd hi’n arfer mynnu | that we had eggs=bo’ ni’n cael wyau | for supper=i swper
+588: so=felly | I wanted=o’n i’n moyn | to grow up=tyfu lan | and leave home=a gadael cartre
+589: she told me=ddwedodd hi wrtha i | she’d just seen=bod hi newydd weld | the last bus=y bws ola
+590: I saw=weles i | the last bus leaving=’r bws ola’n gadael | the station=yr orsaf
+591: she followed me=ddilynodd hi fi | down=lawr | to the shops=i’r siopau
+592: and along=ac ar hyd | the main road=y brif ffordd
+593: however much I argued=ta faint ddadleues i | I still had to=oedd dal rhaid i fi | share=rannu
+594: I had to=oedd rhaid i fi | share=rannu | my toys=fy nheganau | with my sister=gyda fy chwaer i
+595: I need=dw i angen | to lie down=gorwedd lawr | in the garden=yn yr ardd
+596: and I need=a dw i angen | to close my eyes=cau fy llygaid | for a while=am dipyn
+597: I suspect=dw i’n amau | that he’s heard=fod e wedi clywed | a hundred stories about it=cant o straeon amdani{a hundred stories=cant o straeon;about it=amdani}
+598: he’s heard=ma fe wedi clywed | a thousand stories=mil o straeon | about what they were doing=am beth o’n nhw’n gwneud
+599: I’d have been happy=bydden i wedi bod yn hapus | to drive=i yrru | if you’d told me=’set ti wedi dweud wrtha i
+600: I’d have driven=bydden i wedi gyrru | if you’d told me=’set ti wedi dweud wrtha i | how tired you were=faint o’t ti ’di blino
+601: we were talking=o’n ni’n siarad | about how=am sut | it all started=ddechreuodd e i gyd
+602: how it started=sut ddechreuodd e | in the first place=yn y lle cyntaf
+603: we didn’t have anywhere to live=doedd ’da ni ddim unman i fyw{we didn’t have anywhere=doedd ’da ni ddim unman;to live=i fyw} | at the time=ar y pryd
+604: she offered=wnaeth hi gynnig | to let us stay=gadael i ni aros | with her=gyda hi
+605: because=achos | we needed=o’n ni angen | help=help
+606: if I had known=’sen i wedi gwybod | at that time=bryd hynny | what I know now=beth dw i’n gwybod nawr | I’d have waited=bydden i wedi aros
+607: if I had known=’sen i wedi gwybod | I’d have done things differently=bydden i wedi gwneud pethau’n wahanol
+608: it would have been=byddai hi wedi bod | the sensible thing to do=y peth call i’w wneud
+609: the sensible thing to do=y peth call i’w wneud | would have been=fyddai wedi bod | to ask=gofyn
+610: he needs=ma fe angen | to look for work=chwilio am waith
+611: I would have been ready=bydden i wedi bod yn barod | to look=i chwilio | somewhere else=yn rhywle arall
+612: we would have bought=bydden ni wedi prynu | something=rhywbeth
+613: probably=mwy na thebyg | we would have bought=bydden ni wedi prynu | a house there=tŷ yno
+614: it’s near=ma fe ar bwys | where your family live=lle mae dy deulu di’n byw
+615: I thought=o’n i’n meddwl | that you were very brave=bo’ ti’n ddewr iawn | to say that=i ddweud hynny
+616: you were very brave=o’t ti’n ddewr iawn | to say=ddweud | that you thought that=bo’ ti’n meddwl hynny
+617: you thought=o’t ti’n meddwl | that it was a mistake=bod hi’n gamgymeriad
+618: it doesn’t feel like=dyw e ddim yn teimlo fel | a long time=amser hir
+619: it’s a long time=mae’n amser hir | since we saw each other=ers i ni weld ein gilydd
+620: it’s a very long time=mae’n amser hir iawn | since we saw each other=ers i ni weld ein gilydd | last=ddiwetha’
+621: I wouldn’t have dared=fydden i ddim wedi meiddio | to tell her=dweud wrthi | that it was broken=fod e wedi torri
+622: I knew=o’n i’n gwybod | that the children had broken it=bod y plant wedi’i dorri fe
+623: a cup of coffee=dishgled o goffi | or tea=neu de
+624: great=grêt | please=plîs
+625: do you want?=wyt ti’n moyn? | something to drink=rhywbeth i yfed
+626: I’m not thirsty=sdim syched arna i | thank you=diolch
+627: your coffee=dy goffi di | is ready=’n barod
+628: do you like?=wyt ti’n hoffi? | tea=te
+629: I like it=dw i’n hoffi fe | with milk=gyda llaeth | but without sugar=ond heb siwgr
+630: can I have=ga i | something to drink=rywbeth i yfed | please=plîs
+631: what would you like?=be’ hoffet ti?
+632: a glass of water=gwydred o ddŵr
+633: a large glass of water=gwydred mawr o ddŵr | would be=byddai | fine=yn iawn
+634: I’d like=hoffen i | one of those=un o’r rheina
+635: Jane’s bag=bag Jane | that one’s=yw hwnna
+636: I think=dw i’n meddwl | that that is Jane’s bag=taw bag Jane yw hwnna{that=taw;Jane’s bag=bag Jane;that one’s=yw hwnna}
+637: where is=ble mae | her bag=ei bag hi
+638: I’m trying=dw i’n trio | to think=meddwl
+639: with you sir=gyda chi syr
+640: the red one=yr un coch | it is=yw e
+641: I think=dw i’n meddwl | that it’s the red one=taw’r un coch | on that chair=ar y gadair ’na | it is=yw e
+642: how do you feel madam?=sut ŷch chi’n teimlo madam?
+643: do you want sir?=ŷch chi’n moyn syr?
+644: could you say that sir?=allech chi ddweud hynny syr?
+645: I can help you madam=galla i’ch helpu chi madam
+646: you’re doing something sir=ŷch chi’n gwneud rhywbeth syr
+647: you speak it madam=ŷch chi’n siarad hi madam
+648: what you said madam=be’ ddwedoch chi madam
+649: are you ready sir?=ŷch chi’n barod syr?
+650: do you want to go madam?=ŷch chi’n moyn mynd madam?
+651: what do you think madam?=be’ ŷch chi’n meddwl madam?
+652: what do you need sir?=be’ ŷch chi angen syr?
+653: do you mind madam?=oes ots ’da chi madam?
+654: I’m not sure=dw i ddim yn siŵr | if=os | I can help you, sir=galla i’ch helpu chi, syr
+655: I think=dw i’n meddwl | that you’re doing very well, madam=bo’ chi’n gwneud yn dda iawn, madam
+656: with you all=gyda chi i gyd
+657: how do you all feel?=sut ŷch chi i gyd yn teimlo?
+658: do you all want?=ŷch chi i gyd yn moyn?
+659: could you all say that?=allech chi i gyd ddweud hynny?
+660: I can help you all=galla i’ch helpu chi i gyd
+661: you’re all doing something=ŷch chi i gyd yn gwneud rhywbeth
+662: you all speak it=ŷch chi i gyd yn siarad hi
+663: what you all said=be’ ddwedoch chi i gyd
+664: are you all ready?=ŷch chi i gyd yn barod?
+665: do you all want to go?=ŷch chi i gyd yn moyn mynd?
+666: what do you all think?=be’ ŷch chi i gyd yn meddwl?
+667: do you all mind?=oes ots ’da chi i gyd?
+668: I hope=dw i’n gobeithio | you’ll all be able to=y byddwch chi i gyd yn gallu
