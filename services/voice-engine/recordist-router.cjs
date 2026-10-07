@@ -60,6 +60,8 @@ const { nextTakeGIds } = require('../shared/takeg-clip-contract.cjs')
 const { isSoloReaderPod, soloReaders, soloReaderIndex, soloReaderTakeGIds } = require('../shared/pod-solo-readers.cjs')
 const castingRights = require('./casting-rights.cjs')
 const { resolvePack, findItem } = require('./clone-source-pack.cjs')
+const setupCheck = require('./recordist-setup-check.cjs')
+const rerecordAll = require('./recordist-rerecord-all.cjs')
 const {
   takeKey,
   packPrefix,
@@ -165,6 +167,41 @@ module.exports = function createRecordistRouter({
   // so /r/pack-tom-clone loads the same screen Aran and Catrin read from, with
   // the same recorder, the same meter and the same play-it-back.
 
+  // ── SETUP CHECKS (job #838) ───────────────────────────────────────────────
+  // A setup check is a per-artist pack whose ten lines live in
+  // recordist_setup_checks. Everything that asks "is this voice id a pack"
+  // asks THIS, so the static pack and the per-artist packs share every branch.
+  async function loadSetupRow(voiceId) {
+    const { data, error } = await db().from('recordist_setup_checks').select('*').eq('voice_id', voiceId).maybeSingle()
+    if (error) throw new Error(`setup check read failed: ${error.message}`)
+    return data || null
+  }
+
+  async function resolveAnyPack(packVoiceId) {
+    const staticPack = resolvePack(packVoiceId)
+    if (staticPack) return staticPack
+    const inner = setupCheck.voiceIdFromPackVoiceId(packVoiceId)
+    if (!inner) return null
+    const row = await loadSetupRow(inner)
+    if (!row) return null
+    return setupCheck.packFromRow(row, { displayName: inner })
+  }
+
+  /** A setup-pack take: remember which device made it, and re-open a check that was waiting on a decision. */
+  async function noteSetupTake(pack, itemId, device, key) {
+    if (!pack.setup) return
+    const row = await loadSetupRow(pack.setup.voiceId)
+    if (!row) return
+    const metrics = row.metrics && typeof row.metrics === 'object' ? row.metrics : {}
+    const takes = { ...(metrics.takes || {}), [itemId]: { key, device: device || 'unknown', at: new Date().toISOString() } }
+    const measured = { ...(metrics.measured || {}) }
+    delete measured[itemId] // a new take of this phrase has not been measured yet
+    const patch = { metrics: { ...metrics, takes, measured } }
+    if (row.status === 'submitted' || row.status === 'changes') patch.status = 'open'
+    if (row.status === 'approved') return
+    await db().from('recordist_setup_checks').update(patch).eq('voice_id', row.voice_id)
+  }
+
   async function packQueueResponse(req, res, pack) {
     const includeRecorded = req.query.includeRecorded === '1' || req.query.includeRecorded === 'true'
     const objects = await s3.listObjects(packPrefix(pack.id))
@@ -179,7 +216,7 @@ module.exports = function createRecordistRouter({
       // Paragraphs with sentence pauses in them: stopping on the first pause
       // would cut the 25-second cloning sample in half. The page reads this.
       autoAdvance: pack.autoAdvance !== false,
-      pack: { id: pack.id, title: pack.title },
+      pack: { id: pack.id, title: pack.title, setup: pack.setup ? { status: pack.setup.status, voiceId: pack.setup.voiceId, note: pack.setup.note } : null },
       total: queue.total,
       recorded: queue.recorded,
       remaining: queue.remaining,
@@ -226,6 +263,7 @@ module.exports = function createRecordistRouter({
     if (overCap) {
       return res.status(409).json({ error: overCapMessage(item, seconds), seconds, maxSeconds: item.maxSeconds, storedKey: key })
     }
+    await noteSetupTake(pack, item.id, device, key)
     return res.json({
       ok: true,
       audioId: item.id,
@@ -302,7 +340,7 @@ module.exports = function createRecordistRouter({
 
   router.get('/voice/:voiceId', async (req, res) => {
     try {
-      const pack = resolvePack(req.params.voiceId)
+      const pack = await resolveAnyPack(req.params.voiceId)
       if (pack) return await packQueueResponse(req, res, pack)
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
@@ -354,7 +392,13 @@ module.exports = function createRecordistRouter({
       const narrowed = Boolean(scoped || podScope)
       const recordedInScope = narrowed ? lines.filter((l) => l.recorded).length : queue.recorded
       const totalInScope = narrowed ? lines.length : queue.total
+      const setupRow = await loadSetupRow(recordist.voiceId)
       res.json({
+        // Present while the full script is locked behind the setup check; the
+        // booth swaps Start for a card that opens it. Absent once approved.
+        setupCheck: setupCheck.locksScript(setupRow)
+          ? { status: setupRow.status, note: setupRow.review_note || null, packVoiceId: setupCheck.packVoiceIdFor(setupRow.voice_id) }
+          : null,
         course: scoped,
         // Echoed back for the same reason maxSeed is: a screen that reports the
         // scope it ASKED for rather than the one it got is a quiet lie.
@@ -1192,9 +1236,22 @@ module.exports = function createRecordistRouter({
   // ── 2. a take ──────────────────────────────────────────────────────────────
   router.post('/voice/:voiceId/take', async (req, res) => {
     try {
-      const pack = resolvePack(req.params.voiceId)
+      const pack = await resolveAnyPack(req.params.voiceId)
       const recordist = pack ? null : await recordistOr404(req, res)
       if (!pack && !recordist) return
+      // THE SETUP-CHECK LOCK (Tom, r-2026-10-07): until an admin approves the
+      // ten-phrase sample, no script take is accepted. 423, with words the
+      // booth can show as they are.
+      if (recordist) {
+        const check = await loadSetupRow(recordist.voiceId)
+        if (setupCheck.locksScript(check)) {
+          return res.status(423).json({
+            error: 'Before the full script, please record and submit your 10-phrase setup check. It opens as soon as it has been approved.',
+            reason: 'setup_check_required',
+            setupCheck: { status: check.status, packVoiceId: setupCheck.packVoiceIdFor(check.voice_id) },
+          })
+        }
+      }
 
       const isMultipart = String(req.headers['content-type'] || '').includes('multipart/form-data')
       // What recorded this take — the recordist's chosen mic and their browser.
@@ -1474,7 +1531,7 @@ module.exports = function createRecordistRouter({
           reason: 'bad_variant',
         })
       }
-      const pack = resolvePack(req.params.voiceId)
+      const pack = await resolveAnyPack(req.params.voiceId)
       if (pack) return await packClipResponse(req, res, pack)
       const recordist = await recordistOr404(req, res)
       if (!recordist) return
@@ -1754,6 +1811,164 @@ module.exports = function createRecordistRouter({
       })
     } catch (err) {
       logger.error(`[Recordist] text edit: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+
+  // ── 6. RE-RECORD ALL + SETUP CHECK (admin; job #838, Tom 2026-10-07) ───────
+  // Both are about ONE artist and both change what that artist sees, so both
+  // take requireAdmin. Nothing here deletes a take (recordist-rerecord-all.cjs).
+  function adminActor(user) { return (user && (user.email || user.id)) || 'admin' }
+
+  router.get('/voice/:voiceId/rerecord-all', async (req, res) => {
+    try {
+      if (requireAdmin && !(await requireAdmin(req, res))) return
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      res.json(await rerecordAll.previewReset({ voiceId: recordist.voiceId, language: recordist.language, spellings: recordist.spellings }))
+    } catch (err) {
+      logger.error(`[Recordist] rerecord-all preview: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/rerecord-all', async (req, res) => {
+    try {
+      const user = requireAdmin ? await requireAdmin(req, res) : { email: 'test' }
+      if (!user) return
+      if (!req.body || req.body.confirm !== true) {
+        return res.status(400).json({ error: 'Re-record all needs {"confirm": true}. GET the same path first to see what it would do.' })
+      }
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      const out = await rerecordAll.applyReset({
+        voiceId: recordist.voiceId, language: recordist.language, spellings: recordist.spellings,
+        actor: adminActor(user), reason: typeof req.body.reason === 'string' ? req.body.reason.slice(0, 300) : null,
+      })
+      logger.log(`[Recordist] re-record all for ${recordist.voiceId}: ${JSON.stringify(out)} by ${adminActor(user)}`)
+      res.json(out)
+    } catch (err) {
+      logger.error(`[Recordist] rerecord-all: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/rerecord-all/:resetId/restore', async (req, res) => {
+    try {
+      const user = requireAdmin ? await requireAdmin(req, res) : { email: 'test' }
+      if (!user) return
+      const out = await rerecordAll.restoreReset({ resetId: req.params.resetId, actor: adminActor(user) })
+      if (out.error) return res.status(out.status || 400).json({ error: out.error })
+      res.json(out)
+    } catch (err) {
+      logger.error(`[Recordist] rerecord-all restore: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // The setup check. GET = the review page's data (admin); POST = ask an artist
+  // for one (locks their script); POST …/decision = approve / ask again.
+  // The artist's own submit is link-is-identity, on the pack voice id.
+  router.get('/voice/:voiceId/setup-check', async (req, res) => {
+    try {
+      if (requireAdmin && !(await requireAdmin(req, res))) return
+      const row = await loadSetupRow(req.params.voiceId)
+      if (!row) return res.json({ exists: false })
+      const pack = setupCheck.packFromRow(row, { displayName: req.params.voiceId })
+      const objects = await s3.listObjects(packPrefix(pack.id))
+      const newest = indexTakes(objects, pack.id)
+      const metrics = row.metrics && typeof row.metrics === 'object' ? row.metrics : {}
+      const measured = { ...(metrics.measured || {}) }
+      let dirty = false
+      const items = []
+      for (const item of pack.items) {
+        const take = newest.get(item.id) || null
+        const entry = { id: item.id, text: item.text, recorded: !!take, url: null, device: (metrics.takes || {})[item.id]?.device || null, measures: null }
+        if (take) {
+          entry.url = await s3.getAudioSignedUrl(null, 3600, { s3Key: take.key })
+          if (!measured[item.id] || measured[item.id].key !== take.key) {
+            try {
+              const r = await fetch(entry.url)
+              const buf = Buffer.from(await r.arrayBuffer())
+              measured[item.id] = { key: take.key, ...(await setupCheck.measureTake(buf, 'audio/' + String(take.key).split('.').pop())) }
+              dirty = true
+            } catch (err) { logger.error(`[Recordist] setup-check measure ${item.id}: ${err.message}`) }
+          }
+          entry.measures = measured[item.id] || null
+        }
+        items.push(entry)
+      }
+      if (dirty) await db().from('recordist_setup_checks').update({ metrics: { ...metrics, measured } }).eq('voice_id', row.voice_id)
+      res.json({
+        exists: true, voiceId: row.voice_id, language: row.language, status: row.status,
+        submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
+        packVoiceId: pack.voiceId, items,
+      })
+    } catch (err) {
+      logger.error(`[Recordist] setup-check review: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/setup-check', async (req, res) => {
+    try {
+      const user = requireAdmin ? await requireAdmin(req, res) : { email: 'test' }
+      if (!user) return
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      const existing = await loadSetupRow(recordist.voiceId)
+      if (existing) return res.json({ created: false, status: existing.status, packVoiceId: setupCheck.packVoiceIdFor(existing.voice_id) })
+      const queue = await buildQueue(db(), recordist, { includeRecorded: true })
+      const phrases = setupCheck.pickSetupPhrases(queue.lines)
+      if (phrases.length < 3) return res.status(409).json({ error: 'This artist has too few lines of their own to draw a setup check from.' })
+      const { error } = await db().from('recordist_setup_checks').insert({
+        voice_id: recordist.voiceId, language: recordist.language, phrases, created_by: adminActor(user),
+      })
+      if (error) throw new Error(error.message)
+      res.json({ created: true, status: 'open', phrases: phrases.length, packVoiceId: setupCheck.packVoiceIdFor(recordist.voiceId) })
+    } catch (err) {
+      logger.error(`[Recordist] setup-check create: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  router.post('/voice/:voiceId/setup-check/decision', async (req, res) => {
+    try {
+      const user = requireAdmin ? await requireAdmin(req, res) : { email: 'test' }
+      if (!user) return
+      const decision = req.body && req.body.decision
+      if (decision !== 'approve' && decision !== 'changes') return res.status(400).json({ error: "decision must be 'approve' or 'changes'" })
+      const row = await loadSetupRow(req.params.voiceId)
+      if (!row) return res.status(404).json({ error: 'No setup check for this voice.' })
+      const note = typeof req.body.note === 'string' ? req.body.note.slice(0, 500) : null
+      const { error } = await db().from('recordist_setup_checks').update({
+        status: decision === 'approve' ? 'approved' : 'changes',
+        reviewed_by: adminActor(user), reviewed_at: new Date().toISOString(), review_note: note,
+      }).eq('voice_id', row.voice_id)
+      if (error) throw new Error(error.message)
+      res.json({ status: decision === 'approve' ? 'approved' : 'changes' })
+    } catch (err) {
+      logger.error(`[Recordist] setup-check decision: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // The artist's own "I'm done" — link-is-identity, addressed by the pack voice id.
+  router.post('/voice/:packVoiceId/submit', async (req, res) => {
+    try {
+      const pack = await resolveAnyPack(req.params.packVoiceId)
+      if (!pack || !pack.setup) return res.status(404).json({ error: 'No setup check at this link.' })
+      if (pack.setup.status === 'approved') return res.json({ status: 'approved' })
+      const objects = await s3.listObjects(packPrefix(pack.id))
+      const newest = indexTakes(objects, pack.id)
+      const missing = pack.items.filter((i) => !newest.has(i.id)).length
+      if (missing) return res.status(409).json({ error: `${missing} of the ${pack.items.length} phrases still need a take.`, missing })
+      const { error } = await db().from('recordist_setup_checks').update({ status: 'submitted', submitted_at: new Date().toISOString() }).eq('voice_id', pack.setup.voiceId)
+      if (error) throw new Error(error.message)
+      res.json({ status: 'submitted' })
+    } catch (err) {
+      logger.error(`[Recordist] setup-check submit: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

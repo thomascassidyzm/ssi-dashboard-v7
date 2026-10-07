@@ -146,10 +146,42 @@
            there is no line to pick, nothing to navigate to, and no second tap
            before recording is running. (The tap itself is not removable: a
            browser will not open a microphone without a user gesture.) -->
-      <button class="btn-begin" :disabled="startIndex === -1" @click="begin">
+      <!-- THE SETUP CHECK (Tom, r-2026-10-07: every voice artist submits a
+           10-phrase sample on their own setup before the full script). While
+           the server says the script is locked it sends `setupCheck`; Start is
+           replaced by the way into the ten phrases. On the sample's own page
+           (a per-artist pack) the same block carries Submit. -->
+      <div v-if="voice.setupCheck" class="setup-card">
+        <template v-if="voice.setupCheck.status === 'submitted'">
+          <strong>Thank you — your setup check is with us.</strong>
+          <span>We'll listen and open your full script as soon as it is approved. Nothing more to do.</span>
+        </template>
+        <template v-else>
+          <strong>First, a 10-phrase setup check.</strong>
+          <span>Record ten phrases on the microphone and in the room you will really use. We listen, and the full script opens as soon as it is approved.</span>
+          <span v-if="voice.setupCheck.status === 'changes' && voice.setupCheck.note" class="setup-note">From us: {{ voice.setupCheck.note }}</span>
+          <router-link :to="`/r/${voice.setupCheck.packVoiceId}`" class="btn-begin setup-go">Start the 10-phrase setup check</router-link>
+        </template>
+      </div>
+      <div v-if="voice.pack && voice.pack.setup && voice.pack.setup.status !== 'approved'" class="setup-card">
+        <template v-if="voice.pack.setup.status === 'submitted'">
+          <strong>Submitted — thank you.</strong>
+          <span>We'll open your full script once we've listened. You can close this page.</span>
+        </template>
+        <template v-else>
+          <strong>{{ voice.recorded }} of {{ voice.total }} phrases recorded.</strong>
+          <span v-if="voice.pack.setup.status === 'changes' && voice.pack.setup.note" class="setup-note">From us: {{ voice.pack.setup.note }}</span>
+          <button v-if="voice.remaining === 0" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+            {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
+          </button>
+          <span v-if="setupError" class="setup-note">{{ setupError }}</span>
+        </template>
+      </div>
+
+      <button v-if="!voice.setupCheck" class="btn-begin" :disabled="startIndex === -1" @click="begin">
         {{ startIndex === -1 ? 'Nothing left to read' : `Start recording — ${firstLinePreview}` }}
       </button>
-      <p v-if="startIndex === -1" class="note done">Everything is recorded. Tap any line on the map above to read it again.</p>
+      <p v-if="startIndex === -1 && !voice.setupCheck" class="note done">Everything is recorded. Tap any line on the map above to read it again.</p>
       <p v-if="micError" class="note error">{{ micError }}</p>
 
       <ol class="how-to">
@@ -2271,6 +2303,27 @@ function beforeUnloadGuard(e) {
 }
 
 // ── Load ────────────────────────────────────────────────────────────────────
+// THE SETUP CHECK's "I'm done" — only offered on a per-artist setup pack once
+// every phrase has a take. The server re-checks the count; this is the tap.
+const setupSubmitting = ref(false)
+const setupError = ref(null)
+async function submitSetup() {
+  setupSubmitting.value = true
+  setupError.value = null
+  try {
+    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/submit`, {
+      method: 'POST', headers: { 'ngrok-skip-browser-warning': 'true' },
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.error || `Could not submit (${res.status})`)
+    await load()
+  } catch (err) {
+    setupError.value = (err && err.message) || 'Could not submit — try again.'
+  } finally {
+    setupSubmitting.value = false
+  }
+}
+
 async function load() {
   phase.value = 'loading'
   loadError.value = null
@@ -2570,6 +2623,9 @@ kbd {
   color: var(--color-paper, #f4f4ef); font-size: 0.85rem; line-height: 1.45;
 }
 
+.setup-card { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem; margin: 0 0 1rem; border: 1px solid var(--color-gold, #d4a84b); border-radius: 10px; background: rgba(212, 168, 75, 0.08); }
+.setup-card .setup-note { color: var(--color-gold, #d4a84b); }
+.setup-card .setup-go { display: block; text-align: center; text-decoration: none; }
 .btn-begin {
   display: block; width: 100%;
   font-family: 'Josefin Sans', sans-serif; font-size: 1.15rem; font-weight: 700;

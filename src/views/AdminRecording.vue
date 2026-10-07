@@ -64,6 +64,7 @@
                  bar. Same affordance the pods page's cast card already carries,
                  deliberately worded and shaped the same. -->
             <a class="open-btn" :href="recordLink(v.voiceId)" target="_blank" rel="noopener">Open &#8599;</a>
+            <router-link class="open-btn" :to="`/admin/recording/voice/${encodeURIComponent(v.voiceId)}`">Setup check / Re-record all</router-link>
             <!-- THE THREE JOBS INSIDE ONE TOTAL, named as the booth names them
                  (Tom, 2026-09-02: POD-1 / new sentences / re-recording in this
                  course). Without it "441 lines" is a number with no shape, and
