@@ -371,6 +371,10 @@ module.exports = function(ctx) {
       const emptySeedNumbers = [];
       let totalDeduplicated = 0;
       const mutationDuplicates = [];
+      // Woven: a draft that debuts a LEGO EARLIER than a baseline LEGO of the same known text
+      // takes the debut; the later baseline row must stop being new, or the learner meets the
+      // same LEGO debut twice (lane review #115).
+      const demoteLaterBaseline = new Map();
 
       for (const draft of orderedDrafts) {
         advanceBaselineTo(draft.seed_number);
@@ -438,6 +442,11 @@ module.exports = function(ctx) {
               continue;
             }
             legoStatuses.set(lego.idx, 'new');
+            if (order) {
+              for (const l of baselineLegos) {
+                if (normalizeForZUT(l.known_text) === normKey) demoteLaterBaseline.set(`${l.seed_number}:${l.lego_index}`, l);
+              }
+            }
             knownLegoMap.set(normKey, {
               target_text: lego.target,
               known_text: lego.known,
@@ -664,6 +673,17 @@ module.exports = function(ctx) {
         if (seedsWritten % 50 === 0) {
           console.log(`  Progress: ${seedsWritten}/${drafts.length} seeds written`);
         }
+      }
+
+      for (const l of demoteLaterBaseline.values()) {
+        const { error: demoteError } = await ctx.supabase
+          .from('course_legos')
+          .update({ is_new: false, last_edit_event_id: eventId })
+          .eq('course_code', courseCode)
+          .eq('seed_number', l.seed_number)
+          .eq('lego_index', l.lego_index);
+        if (demoteError) throw new Error(`LEGO debut demotion failed: ${demoteError.message}`);
+        console.log(`  Debut moved earlier: S${l.seed_number}L${l.lego_index} "${l.known_text}" is no longer new`);
       }
 
       // STEP 6: Cleanup drafts
