@@ -7,7 +7,7 @@
 // @vitest-environment jsdom
 
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest'
-import { ref } from 'vue'
+import { ref, reactive } from 'vue'
 import { mount, flushPromises } from '@vue/test-utils'
 
 const queueTake = vi.fn()
@@ -31,7 +31,7 @@ vi.mock('@/composables/useRecordistQueue', () => ({
     queueTake: (take) => { savedTakes.set(take.lineId, true); return queueTake(take) },
     markFailed: vi.fn(),
     pendingCount: ref(0), savedCount: ref(0), failedCount: ref(0),
-    saved: savedTakes, failed: new Map(),
+    saved: reactive(savedTakes), failed: new Map(),
     flush: vi.fn(), retryFailed: vi.fn(),
   }),
 }))
@@ -61,12 +61,12 @@ async function until(cond, what, limit = 4000) {
   throw new Error(`gave up waiting for: ${what}`)
 }
 
-function stub(pack) {
+function stub(pack, n = 1) {
   global.fetch = vi.fn().mockImplementation(() => Promise.resolve({
     ok: true, status: 200,
     json: async () => ({
-      displayName: 'Test Voice', languageName: 'Welsh', total: 1, recorded: 0, remaining: 1, pack,
-      lines: [{ id: 'line-1', order: 1, text: 'llinell un', knownText: 'line one', recorded: false, clipUrl: null, canEditText: true }],
+      displayName: 'Test Voice', languageName: 'Welsh', total: n, recorded: 0, remaining: n, pack,
+      lines: Array.from({ length: n }, (_, i) => ({ id: `line-${i + 1}`, order: i + 1, text: `llinell ${i + 1}`, knownText: `line ${i + 1}`, recorded: false, clipUrl: null, canEditText: true })),
     }),
   }))
 }
@@ -109,5 +109,24 @@ describe('setup check: Submit on the done card', () => {
     await until(() => w.find('.btn-begin').exists(), 'the ready card')
     await recordOneAndStop(w)
     expect(w.text()).not.toContain('Submit my setup check')
+  })
+
+  it('ten-line pack: no Submit after one saved phrase, Submit once all ten are saved', async () => {
+    stub({ setup: { status: 'open' } }, 10)
+    const w = mount(RecordistRoom, { props: { voiceId: 'human_dan_pack' }, global: { stubs: { RouterLink: { template: '<a><slot/></a>' } } } })
+    await until(() => w.find('.btn-begin').exists(), 'the ready card')
+    await w.find('.btn-begin').trigger('click')
+    await until(() => w.find('.ctl-next').exists(), 'the stage')
+    await wait(300)
+    await w.find('.ctl-next').trigger('click')
+    await flushPromises()
+    // stop after one: leave the session via the finish control if offered
+    if (w.find('.btn-finish').exists()) await w.find('.btn-finish').trigger('click')
+    await until(() => w.find('.rc-card').exists(), 'the done card')
+    expect(w.text()).not.toContain('Submit my setup check')
+    expect(w.text()).toMatch(/\d+ of your setup check phrases are still to record/)
+    for (let i = 1; i <= 10; i++) reactive(savedTakes).set(`line-${i}`, true)
+    await flushPromises()
+    expect(w.text()).toContain('Submit my setup check')
   })
 })
