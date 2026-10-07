@@ -26,3 +26,19 @@ test('a candidate set is written to disk per call, before anything else can lose
   assert.deepStrictEqual(back.phrases, r.phrases);
   assert.ok(!fs.existsSync(file), 'the final region file is not what persists the raw set');
 });
+
+// #31: gap fill ADDS phrases to live baskets, so a candidate the live course
+// already carries (same English, same target) is refused there; a full-basket
+// run replaces baskets, so the same row is fine.
+test('additive gap fill refuses a phrase the live course already has', () => {
+  const lego = { seed_number: 5, lego_index: 1, known_text: 'I want', target_text: 'je veux', is_new: true };
+  const data = { legos: [lego, { seed_number: 1, lego_index: 1, known_text: 'to go', target_text: 'aller' },
+    { seed_number: 2, lego_index: 1, known_text: 'now', target_text: 'maintenant' }], components: [] };
+  const liveZut = new Map([['i want to go now', [{ target: 'je veux aller maintenant', target_text: 'je veux aller maintenant', seed: 5 }]]]);
+  const cand = [{ seed: 5, lego_index: 1, role: 'build', known: 'I want to go now', target: 'je veux aller maintenant' }];
+  const opts = { course: 'fra_for_eng', data, newLegos: [lego], liveZut, available: ['P1', 'P28'] };
+  assert.strictEqual(gen.gate(cand, opts).kept.length, 1);
+  const g = gen.gate(cand, { ...opts, additive: true });
+  assert.strictEqual(g.kept.length, 0);
+  assert.ok(g.rejected[0].reasons.includes('already in the course'));
+});

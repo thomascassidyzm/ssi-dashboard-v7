@@ -42,6 +42,7 @@
  * now gates and saves what the first call produced.
  *
  * Usage: node tools/frame-layer/v4/generate-v4.cjs <course> <start> <end> [--dry] [--budget 400000]
+ *        ... --gaps [--missing P5,P8]   additive gap fill: only the window's missing frames (runGaps)
  * Env: V4_MODEL (fable) · V4_EFFORT (low) · V4_LEDGER (token-ledger.json, in the evidence dir)
  */
 const fs = require('fs');
@@ -169,6 +170,54 @@ Reply with JSON only, no prose, no code fence:
 {"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P-id"}]}`;
 }
 
+// ---------- gap fill (#31, 2026-10-07: "Haiku audits, Opus fills the gaps") ----------
+// The window's live baskets stay as they are; the model writes ONLY phrases in
+// the frames the window is missing, each one practising one of the window's own
+// LEGOs. Additive, so the reviewer reads new rows only and no floor can drop.
+function buildGapPrompt({ course, region, seeds, newLegos, allChunks, missing, carriers, perFrame = 3 }) {
+  const target = course.split('_for_')[0];
+  const LANG = { fra: 'French', deu: 'German', gle: 'Irish', spa: 'Spanish', ita: 'Italian' }[target] || target;
+  const frameLines = missing.map(id => {
+    const p = PATTERNS.find(x => x.id === id);
+    const cs = (carriers[id] || []).map(c => `"${c.known_text}" = ${c.target_text}`).join(' · ');
+    return `  ${id} ${p.name}  ${p.shape}${cs ? `\n      taught material that carries it: ${cs}` : '\n      (no short taught carrier: build it from taught chunks only if you can, otherwise skip it)'}`;
+  }).join('\n');
+  const seedLines = seeds.map(s => {
+    const mine = newLegos.filter(l => l.seed_number === s.seed_number);
+    if (!mine.length) return null;
+    return `SEED ${s.seed_number}: "${s.known_text}" = ${s.target_text}\n` + mine.map(l =>
+      `  LEGO S${s.seed_number}L${l.lego_index}: "${l.known_text}" = ${l.target_text}  [${l.type}]`).join('\n');
+  }).filter(Boolean).join('\n');
+  const vocab = allChunks.map(c => `S${c.seed_number}: ${c.known_text}=${c.target_text}`).join('; ');
+  return `You are adding practice phrases to an SSi ${LANG} course (known side English, target side ${LANG}). Seeds ${region[0]}-${region[1]}.
+
+THE GAP. These seeds' existing practice phrases never use the FRAMES listed below, although the learner already owns the material to make them. Write NEW phrases that use those frames. Each phrase practises one of the NEW LEGOs listed under the seeds (it must contain that LEGO exactly), put in concert with the taught material that carries the frame. Aim for ${perFrame} phrases per frame, spread over different LEGOs; mostly USE, a few BUILD. Skip a frame rather than force it.
+
+NOT ALLOWED, and worth nothing: an interjection or discourse opener stapled on the front ("thank you,", "of course", "unfortunately", "no problem", "great", "well", "so", "really", "yes,", "no,"). A phrase that begins with one is refused.
+
+RAILS (checked mechanically after you write; a phrase that fails is dropped):
+- The phrase contains the LEGO's exact known text AND exact target text, as taught.
+- The target is built ONLY from whole taught chunks in VOCABULARY whose seed number is no later than the LEGO's own seed; from the LEGO's own seed, only LEGOs before it. No new word, no re-conjugation, no new contraction.
+- The known (English) side uses only the English glosses of taught chunks plus plain grammatical glue.
+- ZUT: one English prompt maps to exactly one ${LANG} form, everywhere in the course. Do not write an English line the course already renders another way.
+- No parentheses, no explanations, no grammar labels.
+- Informal register (tu) unless the sentence itself insists otherwise.
+- USE = one complete, natural sentence a native would say cold, out of context; never a fragment, never clunky.
+- BUILD = the LEGO plus one to three other chunks, short, fine as a fragment if it extends naturally into a full sentence.
+
+MISSING FRAMES:
+${frameLines}
+
+THE SEEDS AND THEIR NEW LEGOS:
+${seedLines}
+
+VOCABULARY (every chunk the learner owns by seed ${region[1]}, S<seed>: known=target):
+${vocab}
+
+Reply with JSON only, no prose, no code fence:
+{"phrases":[{"seed":${region[0]},"lego_index":1,"role":"build|use","known":"...","target":"...","frame":"P-id"}]}`;
+}
+
 // ---------- the model call ----------
 // The CLI invocation, exported so a test can assert the model and the effort
 // bound without spending a token. --effort is what bounds thinking on Fable
@@ -205,7 +254,7 @@ function callModel(prompt, { timeoutMs = 1200000 } = {}) {
 }
 
 // ---------- gates ----------
-function gate(cands, { course, data, newLegos, liveZut, available }) {
+function gate(cands, { course, data, newLegos, liveZut, available, additive = false }) {
   const kept = [], rejected = [];
   const seenKnown = new Map(), seenTarget = new Set();
   const legoOf = (c) => newLegos.find(l => l.seed_number === +c.seed && +l.lego_index === +c.lego_index);
@@ -237,6 +286,8 @@ function gate(cands, { course, data, newLegos, liveZut, available }) {
       const clash = live.find(x => x.target !== nt && (role === 'use' || x.seed <= lego.seed_number));
       if (clash) reasons.push(`ZUT: the course already renders "${known}" as "${clash.target_text}" (seed ${clash.seed})`);
     }
+    // Gap fill ADDS to the live baskets, so a phrase the course already carries adds nothing.
+    if (additive && live && live.some(x => x.target === nt)) reasons.push('already in the course');
     if (seenKnown.has(nk) && seenKnown.get(nk) !== nt) reasons.push('ZUT: same English already used with another target in this set');
     if (seenKnown.has(nk) && seenKnown.get(nk) === nt) reasons.push('duplicate');
     if (seenTarget.has(nt + '|' + role) && !reasons.includes('duplicate')) reasons.push('duplicate target');
@@ -260,7 +311,8 @@ function basketFloors(kept, newLegos) {
 }
 
 // ---------- main ----------
-async function run(course, start, end, { dry = false, budget = 400000 } = {}) {
+async function run(course, start, end, { dry = false, budget = 400000, gaps = false, missing: missingIn = null } = {}) {
+  if (gaps) return runGaps(course, start, end, { dry, budget, missingIn });
   fs.mkdirSync(EVIDENCE, { recursive: true });
   const data = loadCourse(course);
   const inv = inventory(course, data);
@@ -345,6 +397,58 @@ async function run(course, start, end, { dry = false, budget = 400000 } = {}) {
   return out;
 }
 
+/**
+ * GAP-FILL RUN: one call, additive. BEFORE = the live window's coverage; AFTER =
+ * live + the kept candidates, scored by the same matchers. `missingIn` lets an
+ * outside tagger (the Haiku audit) name the gaps; default is the regex scorer's.
+ */
+async function runGaps(course, start, end, { dry = false, budget = 120000, missingIn = null } = {}) {
+  fs.mkdirSync(EVIDENCE, { recursive: true });
+  const data = loadCourse(course);
+  const inv = inventory(course, data);
+  const available = availableAt(inv, end);
+  const seeds = data.seeds.filter(s => s.seed_number >= start && s.seed_number <= end);
+  const newLegos = data.legos.filter(l => l.seed_number >= start && l.seed_number <= end && l.is_new !== false);
+  const livePhrases = data.phrases.filter(p => p.seed_number >= start && p.seed_number <= end);
+  const before = scoreWindow(livePhrases, available, { rarefyN: 60 });
+  const missing = (missingIn || before.missing_ids).filter(f => available.includes(f));
+  const taughtBefore = [...data.legos, ...data.components].filter(c => c.seed_number < start);
+  const allChunks = [...data.legos, ...data.components].filter(c => c.seed_number <= end)
+    .filter((c, i, a) => a.findIndex(x => norm(x.known_text) === norm(c.known_text) && norm(x.target_text) === norm(c.target_text)) === i)
+    .sort((a, b) => a.seed_number - b.seed_number || a.lego_index - b.lego_index);
+  const carriers = carriersByFrame(taughtBefore, missing);
+  const liveZut = new Map();
+  for (const r of [...data.legos, ...data.phrases]) {
+    const k = norm(r.known_text); if (!k) continue;
+    if (!liveZut.has(k)) liveZut.set(k, []);
+    const t = norm(r.target_text);
+    if (!liveZut.get(k).some(x => x.target === t)) liveZut.get(k).push({ target: t, target_text: r.target_text, seed: r.seed_number });
+  }
+  const prompt = buildGapPrompt({ course, region: [start, end], seeds, newLegos, allChunks, missing, carriers });
+  const file = path.join(EVIDENCE, `v4gap-${course}-${start}-${end}.json`);
+  const out = { course, region: [start, end], mode: 'gaps', generated: new Date().toISOString(), model: MODEL, effort: EFFORT,
+    available_frames: available, missing_frames: missing, missing_source: missingIn ? 'supplied' : 'regex', new_legos: newLegos.length,
+    prompt_chars: prompt.length, before, calls: [], kept: [], rejected: [], after: null };
+  console.log(`${course} ${start}-${end} GAPS: ${newLegos.length} LEGOs, missing ${missing.join(' ')}, prompt ${prompt.length} chars`);
+  if (dry) { fs.writeFileSync(file.replace('.json', '.prompt.txt'), prompt); return out; }
+  if (!missing.length) { fs.writeFileSync(file, JSON.stringify(out, null, 1)); return out; }
+  const ledger = path.join(EVIDENCE, LEDGER_FILE);
+  const L = (() => { try { return JSON.parse(fs.readFileSync(ledger, 'utf8')); } catch { return { total: 0, calls: [] }; } })();
+  if (L.total >= budget) throw new Error(`budget ${budget} tokens exhausted (ledger ${L.total})`);
+  const r = callModel(prompt);
+  persistCandidates(file, 'gaps', r);
+  L.total += r.usage.total; L.calls.push({ course, start, end, label: 'gaps', ...r.usage, at: new Date().toISOString() });
+  fs.writeFileSync(ledger, JSON.stringify(L, null, 1));
+  out.calls.push({ label: 'gaps', candidates: r.phrases.length, ...r.usage });
+  const g = gate(r.phrases, { course, data, newLegos, liveZut, available, additive: true });
+  out.kept = g.kept; out.rejected = g.rejected;
+  out.after = scoreWindow([...livePhrases, ...g.kept], available, { rarefyN: 60 });
+  out.tokens_spent = r.usage.total;
+  fs.writeFileSync(file, JSON.stringify(out, null, 1));
+  console.log(`  ${r.phrases.length} candidates → kept ${g.kept.length}, rejected ${g.rejected.length}; coverage ${before.coverage} → ${out.after.coverage} (${before.used}→${out.after.used}/${available.length}); ${r.usage.total} tokens (${r.usage.output} out)`);
+  return out;
+}
+
 /** Candidate set to disk, named by call: v4-<course>-<s>-<e>.candidates-<label>.json */
 function persistCandidates(file, label, r) {
   const p = file.replace(/\.json$/, `.candidates-${label}.json`);
@@ -352,7 +456,7 @@ function persistCandidates(file, label, r) {
   return p;
 }
 
-module.exports = { run, gate, tiles, knownSideCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
+module.exports = { run, runGaps, buildGapPrompt, gate, tiles, knownSideCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
 
 if (require.main === module) {
   const args = process.argv.slice(2);
@@ -360,5 +464,7 @@ if (require.main === module) {
   const dry = args.includes('--dry');
   const bi = args.indexOf('--budget');
   const budget = bi >= 0 ? +args[bi + 1] : 400000;
-  run(pos[0], +pos[1], +pos[2], { dry, budget }).catch(e => { console.error(e.message); process.exit(1); });
+  const mi = args.indexOf('--missing');
+  const missing = mi >= 0 ? args[mi + 1].split(',').filter(Boolean) : null;
+  run(pos[0], +pos[1], +pos[2], { dry, budget, gaps: args.includes('--gaps'), missing }).catch(e => { console.error(e.message); process.exit(1); });
 }
