@@ -22,7 +22,8 @@ const path = require('path');
 const T = require('./frame-tagger.cjs');
 
 const VERSION = '2026-10-07.1';
-const words = (s) => String(s || '').replaceAll('\t', ' ').replaceAll('\n', ' ').split(' ').filter(Boolean);
+// The SAME splitter the cache key is built from (frame-tagger keyOf): a cut indexes exactly the words the key folds (review #119).
+const words = T.words;
 
 const SYSTEM = `You find where the MAIN (matrix) clause of a phrase ends. You reply with the requested lines only.
 

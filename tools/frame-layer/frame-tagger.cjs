@@ -251,7 +251,7 @@ const LANGUAGE_NAMES = { eng: 'English', hin: 'Hindi', tam: 'Tamil', kan: 'Kanna
   ita: 'Italian', ara: 'Arabic', deu: 'German', kor: 'Korean', zho: 'Chinese', yor: 'Yoruba', gle: 'Irish', cym: 'Welsh' };
 const knownLanguageName = (course) => LANGUAGE_NAMES[knownLanguageOf(course)] || knownLanguageOf(course);
 
-module.exports = { CODEX, FRAME_IDS, idsOf, MemoryCache, renderCodex, buildPrompt, parseReply, callModel, TagCache, useCache, defaultCache,
+module.exports = { words, CODEX, FRAME_IDS, idsOf, MemoryCache, renderCodex, buildPrompt, parseReply, callModel, TagCache, useCache, defaultCache,
   ensureTagged, tagOf, framesOf, hasOpener, keyOf, knownLanguageOf, knownLanguageName };
 
 if (require.main === module) {
