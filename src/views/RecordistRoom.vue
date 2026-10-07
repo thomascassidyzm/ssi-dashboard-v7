@@ -693,6 +693,10 @@
         <span v-if="setupError" class="setup-note">{{ setupError }}</span>
       </div>
 
+      <div v-else-if="setupIncompleteHere" class="setup-card">
+        <strong>{{ setupRemaining }} of your setup check {{ setupRemaining === 1 ? 'phrase is' : 'phrases are' }} still to record.</strong>
+      </div>
+
       <button class="btn-ghost" @click="backToStart">Back to my lines</button>
     </section>
   </div>
@@ -2319,11 +2323,19 @@ function beforeUnloadGuard(e) {
 // THE SETUP CHECK's "I'm done" — only offered on a per-artist setup pack once
 // every phrase has a take. The server re-checks the count; this is the tap.
 const setupSubmitting = ref(false)
-const canSubmitSetupHere = computed(() => {
+const setupOpen = computed(() => {
   const setup = voice.value.pack && voice.value.pack.setup
   return !!setup && (setup.status === 'open' || setup.status === 'changes')
-    && queue.pendingCount.value === 0 && failedList.value.length === 0 && sessionLines.value.length > 0
 })
+// A partial session (record 1 of 10, stop) must NOT read as finished (review
+// #846): every line of the pack needs a take, on the server or saved here.
+const setupRemaining = computed(() =>
+  lines.value.filter(l => !(l.recorded || queue.saved.has(l.id))).length)
+const canSubmitSetupHere = computed(() =>
+  setupOpen.value && queue.pendingCount.value === 0 && failedList.value.length === 0
+    && sessionLines.value.length > 0 && lines.value.length > 0 && setupRemaining.value === 0)
+const setupIncompleteHere = computed(() =>
+  setupOpen.value && sessionLines.value.length > 0 && setupRemaining.value > 0)
 const setupError = ref(null)
 async function submitSetup() {
   setupSubmitting.value = true
