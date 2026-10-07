@@ -984,6 +984,12 @@ async function policyVoicesForLanguage(db, language, { cache } = {}) {
   return { voices, spellings }
 }
 
+/**
+ * Seed statuses a recordist may be asked to read: 'released' (in the course)
+ * and 'approved' (golden-route sign-off). 'draft' is unreviewed text.
+ */
+const RECORDABLE_SEED_STATUSES = new Set(['released', 'approved'])
+
 /** Page through course_seeds for a set of courses. */
 /**
  * PostgREST caps one read at 1000 rows, so a big set is read in pages — and read
@@ -1718,6 +1724,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         const voiceId = seedCastEntry(course, policyVoices)[role].voiceId
 
         for (const seed of courseSeeds) {
+          // A recordist is never asked to record a sentence nobody has signed
+          // off. Machine-drafted seeds (job #740: 697 Welsh drafts, for Aran to
+          // review in the Seed Editor) carry target_text but status 'draft'.
+          if (!RECORDABLE_SEED_STATUSES.has(seed.status)) continue
           const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
           if (!text) continue
           const fkVoice = clipVoice.get(seed[`${role}_audio_id`]) || null

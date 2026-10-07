@@ -89,7 +89,7 @@ function fixture(seeds, audio) {
 
 test('a slot held by an IMPORTED clip is the very thing the artist was asked to replace', async () => {
   const db = fixture(
-    [{ id: 's1', course_code: 'live_a_for_eng', seed_number: 1, target_text: 'Zzz un', known_text: 'One', target1_audio_id: 'old', target2_audio_id: null, known_audio_id: null }],
+    [{ id: 's1', course_code: 'live_a_for_eng', seed_number: 1, status: 'released', target_text: 'Zzz un', known_text: 'One', target1_audio_id: 'old', target2_audio_id: null, known_audio_id: null }],
     [{ id: 'old', voice_id: 'legacy_import' }, { id: 'new', voice_id: 'human_tom_zzz' }],
   )
   const tom = await resolveRecordist(db, 'human_tom_zzz')
@@ -100,7 +100,7 @@ test('a slot held by an IMPORTED clip is the very thing the artist was asked to 
 
 test('a slot held by ANOTHER RECORDIST is still not ours to move', async () => {
   const db = fixture(
-    [{ id: 's1', course_code: 'live_a_for_eng', seed_number: 1, target_text: 'Zzz un', known_text: 'One', target1_audio_id: 'hers', target2_audio_id: null, known_audio_id: null }],
+    [{ id: 's1', course_code: 'live_a_for_eng', seed_number: 1, status: 'released', target_text: 'Zzz un', known_text: 'One', target1_audio_id: 'hers', target2_audio_id: null, known_audio_id: null }],
     [{ id: 'hers', voice_id: 'human_test_f_zzz' }, { id: 'new', voice_id: 'human_tom_zzz' }],
   )
   const tom = await resolveRecordist(db, 'human_tom_zzz')
@@ -111,7 +111,7 @@ test('a slot held by ANOTHER RECORDIST is still not ours to move', async () => {
 
 test('an empty slot still takes the take — the ordinary case is unchanged', async () => {
   const db = fixture(
-    [{ id: 's1', course_code: 'live_a_for_eng', seed_number: 1, target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null }],
+    [{ id: 's1', course_code: 'live_a_for_eng', seed_number: 1, status: 'released', target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null }],
     [{ id: 'new', voice_id: 'human_tom_zzz' }],
   )
   const tom = await resolveRecordist(db, 'human_tom_zzz')
@@ -123,8 +123,8 @@ test('an empty slot still takes the take — the ordinary case is unchanged', as
 test('a take never reaches a course whose seeds are in nobody\'s queue', async () => {
   const db = fixture(
     [
-      { id: 's1', course_code: 'live_a_for_eng', seed_number: 1, target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
-      { id: 's2', course_code: 'live_b_for_eng', seed_number: 1, target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
+      { id: 's1', course_code: 'live_a_for_eng', seed_number: 1, status: 'released', target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
+      { id: 's2', course_code: 'live_b_for_eng', seed_number: 1, status: 'released', target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
     ],
     [{ id: 'new', voice_id: 'human_tom_zzz' }],
   )
@@ -140,8 +140,8 @@ test('the collapse promise holds: every copy in HIS OWN courses moves together',
     language_recording_policy: POLICY,
     courses: [MINE, OTHER_MINE],
     course_seeds: [
-      { id: 's1', course_code: 'live_a_for_eng', seed_number: 1, target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
-      { id: 's2', course_code: 'live_c_for_eng', seed_number: 4, target_text: 'Zzz un.', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
+      { id: 's1', course_code: 'live_a_for_eng', seed_number: 1, status: 'released', target_text: 'Zzz un', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
+      { id: 's2', course_code: 'live_c_for_eng', seed_number: 4, status: 'released', target_text: 'Zzz un.', known_text: 'One', target1_audio_id: null, target2_audio_id: null, known_audio_id: null },
     ],
     course_audio: [{ id: 'new', voice_id: 'human_tom_zzz' }],
   })
