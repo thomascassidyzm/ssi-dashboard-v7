@@ -217,7 +217,9 @@ function legoLinks(c) {
   if (c.clips?.known) out.known_audio_id = c.clips.known;
   if (c.clips?.target1) out.target1_audio_id = c.clips.target1;
   if (c.clips?.target2) out.target2_audio_id = c.clips.target2;
-  if (!c.intro && c.presentation) out.presentation_audio_id = c.presentation;
+  // an English change carries the NEW intro, rendered before BEGIN (a refusal must leave the LEGO untouched)
+  if (c.intro) { if (c.clips?.presentation) out.presentation_audio_id = c.clips.presentation; }
+  else if (c.presentation) out.presentation_audio_id = c.presentation;
   return out;
 }
 
@@ -244,6 +246,9 @@ async function introVoice(pg, APPLY, log) {
   console.log(`INTRO-VOICE: ${log.clips.length} re-rendered (${log.clips.reduce((s, c) => s + c.chars, 0)} chars)`);
 }
 
+/** services/phrase-decomposer.cjs stores each block's legoId as the lego_id string (S0276L01), never the row uuid. */
+const decompositionNeedle = (c) => JSON.stringify([{ legoId: c.id }]);
+
 const CACHE_NULL = 'decomposition=NULL, decomposition_course_version=NULL, display_tiling=NULL, display_tiling_version=NULL, known_gloss_segments=NULL, qa_checked=NULL';
 
 async function apply(pg, supabase, p, log) {
@@ -258,6 +263,7 @@ async function apply(pg, supabase, p, log) {
   // 1. MAKE: every clip first. A refusal throws here, before any text has moved.
   for (const c of p.legoChanges) {
     c.clips = {};
+    if (c.intro) c.clips.presentation = await clip(pg, { role: 'presentation', text: c.intro.after, legoId: c.id, voiceId: INTRO_VOICE, purpose: `job ${JOB}: ${c.rule} intro ${c.id}` }, log);
     if (c.before.known !== c.after.known) c.clips.known = await clip(pg, { role: 'known', text: c.after.known, purpose: `job ${JOB}: ${c.rule} LEGO ${c.id} known` }, log);
     if (c.before.target !== c.after.target) {
       c.clips.target1 = await clip(pg, { role: 'target1', text: c.after.target, purpose: `job ${JOB}: ${c.rule} LEGO ${c.id} target1` }, log);
@@ -294,7 +300,8 @@ async function apply(pg, supabase, p, log) {
       const r = await pg.query(`UPDATE course_legos SET ${set.join(', ')} WHERE course_code=$${n - 3} AND lego_id=$${n - 2} AND known_text=$${n - 1} AND target_text=$${n}`, args);
       if (r.rowCount !== 1) throw new Error(`${c.id}: live text moved (${r.rowCount})`);
       // phrases whose cached decomposition carries this LEGO describe its old words
-      const d = await pg.query(`UPDATE course_practice_phrases SET ${CACHE_NULL}, updated_at=now() WHERE course_code=$1 AND decomposition IS NOT NULL AND decomposition::jsonb @> $2::jsonb`, [COURSE, JSON.stringify([{ legoId: c.uuid }])]);
+      const d = await pg.query(`UPDATE course_practice_phrases SET ${CACHE_NULL}, updated_at=now() WHERE course_code=$1 AND decomposition IS NOT NULL AND decomposition::jsonb @> $2::jsonb`, [COURSE, decompositionNeedle(c)]);
+      if (c.clips.presentation) await pg.query('UPDATE lego_introductions SET presentation_audio_id=$1, audio_uuid=$1, updated_at=now() WHERE course_code=$2 AND lego_id=$3', [c.clips.presentation, COURSE, c.id]);
       c.cacheCarriers = d.rowCount;
     }
     for (const c of p.phraseChanges) {
@@ -312,14 +319,6 @@ async function apply(pg, supabase, p, log) {
     await pg.query('COMMIT');
   } catch (e) { await pg.query('ROLLBACK'); throw e; }
 
-  // 4. intros: the new words, rendered and bound by the route; lego_introductions follows (the player's script cache reads it)
-  for (const c of p.legoChanges.filter((x) => x.intro)) {
-    const id = await clip(pg, { role: 'presentation', text: c.intro.after, legoId: c.id, voiceId: INTRO_VOICE, purpose: `job ${JOB}: ${c.rule} intro ${c.id}` }, log);
-    const { rows: [l] } = await pg.query('SELECT presentation_audio_id FROM course_legos WHERE course_code=$1 AND lego_id=$2', [COURSE, c.id]);
-    if (String(l.presentation_audio_id) !== String(id)) await pg.query('UPDATE course_legos SET presentation_audio_id=$1 WHERE course_code=$2 AND lego_id=$3', [id, COURSE, c.id]);
-    await pg.query('UPDATE lego_introductions SET presentation_audio_id=$1, audio_uuid=$1, updated_at=now() WHERE course_code=$2 AND lego_id=$3', [id, COURSE, c.id]);
-    c.clips.presentation = id;
-  }
   const { refreshNow } = require('../../services/shared/round-index-refresh.cjs');
   await refreshNow();
 }
@@ -368,5 +367,5 @@ async function main() {
   console.log(`Wrote ${out(APPLY ? 'applied' : 'dryrun')}`);
   await pg.end();
 }
-module.exports = { introFor, legoLinks, planLego, planSweep, simulate, zutGate, K41_LEGOS, K41_BUILDS, K32_LEGOS, LEGO_PASS_PHRASES, LEGO_PASS_DELETES, SWEEP_PHRASES };
+module.exports = { decompositionNeedle, introFor, legoLinks, planLego, planSweep, simulate, zutGate, K41_LEGOS, K41_BUILDS, K32_LEGOS, LEGO_PASS_PHRASES, LEGO_PASS_DELETES, SWEEP_PHRASES };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

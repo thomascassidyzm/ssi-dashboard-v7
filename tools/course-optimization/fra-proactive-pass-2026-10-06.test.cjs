@@ -14,6 +14,16 @@ test('an English change (K41) does not re-link the old intro — it quotes the o
   assert.deepStrictEqual(T.legoLinks(k41), { known_audio_id: 'k' });
 });
 
+test('an English change carries its NEW intro in the same UPDATE (rendered before BEGIN), never leaving the intro cleared', () => {
+  const k41 = { id: 'S0276L01', presentation: 'old', intro: { after: 'x' }, clips: { known: 'k', presentation: 'newintro' } };
+  assert.deepStrictEqual(T.legoLinks(k41), { known_audio_id: 'k', presentation_audio_id: 'newintro' });
+});
+
+test('cache invalidation matches decomposition blocks on the lego_id string the decomposer stores, not the row uuid', () => {
+  const c = { id: 'S0276L01', uuid: '11111111-2222-3333-4444-555555555555' };
+  assert.deepStrictEqual(JSON.parse(T.decompositionNeedle(c)), [{ legoId: 'S0276L01' }]);
+});
+
 test('the K32 plan records each LEGO\'s current intro', () => {
   const db = { legos: [{ id: 'u', lego_id: 'S0646L01', seed_number: 646, known_text: 'you are doing sir', target_text: 'vous faites', presentation_audio_id: 'P' }], phrases: [], seeds: [] };
   const c = T.planLego(db).legoChanges.find((x) => x.id === 'S0646L01');
