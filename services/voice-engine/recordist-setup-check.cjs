@@ -167,7 +167,19 @@ async function measureTake(buffer, mimeType, { exec = spawn } = {}) {
   }
 }
 
+/**
+ * What a take arriving on a setup pack does to the check's status. A take that
+ * lands AFTER Submit (a queued upload finishing late) is attached to the check
+ * but must never silently reset it: the artist was told "Submitted" (review
+ * #854). Only a check the admin sent back for changes reopens, because the
+ * artist is then re-recording on purpose. Approved is untouched.
+ */
+function statusAfterTake(status) {
+  return status === 'changes' ? 'open' : status
+}
+
 module.exports = {
+  statusAfterTake,
   SETUP_PACK_PREFIX,
   SETUP_PHRASE_COUNT,
   SETUP_MIN_SUBMIT,

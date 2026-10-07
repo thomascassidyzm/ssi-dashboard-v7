@@ -170,8 +170,10 @@
         </template>
         <template v-else>
           <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT || queue.pendingCount.value > 0 ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>
+          <span v-if="queue.pendingCount.value > 0" class="setup-note">{{ queue.pendingCount.value }} still uploading. You can submit once they have all gone up.</span>
+          <span v-else-if="queue.failed.size > 0" class="setup-note">{{ queue.failed.size }} did not upload yet. Retry them, then submit.</span>
           <span v-if="voice.pack.setup.status === 'changes' && voice.pack.setup.note" class="setup-note">From us: {{ voice.pack.setup.note }}</span>
-          <button v-if="voice.recorded >= SETUP_MIN_SUBMIT" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+          <button v-if="readyCanSubmit" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
             {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
           </button>
           <span v-if="setupError" class="setup-note">{{ setupError }}</span>
@@ -2342,6 +2344,10 @@ const canSubmitSetupHere = computed(() =>
 // what is left; the upload banner explains. Submit waits on the same count.
 const setupIncompleteHere = computed(() =>
   setupOpen.value && queue.pendingCount.value === 0 && sessionLines.value.length > 0 && !setupEnough.value)
+// The ready card's Submit (review #854): same guard as the done card. Submit
+// must never run ahead of captured takes still waiting to upload, or failed.
+const readyCanSubmit = computed(() =>
+  voice.value.recorded >= SETUP_MIN_SUBMIT && queue.pendingCount.value === 0 && queue.failed.size === 0)
 const setupError = ref(null)
 async function submitSetup() {
   setupSubmitting.value = true
