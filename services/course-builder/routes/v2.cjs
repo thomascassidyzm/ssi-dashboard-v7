@@ -25,6 +25,8 @@ const { fetchGoldenSeedExamples } = require('../lib/agent-spawner.cjs');
 const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
+const { loadRunningOrder, filterSeedsBefore, orderKey } = require('../../shared/running-order.cjs');
+const { isSoftMutationVariant } = require('../lib/welsh-mutation.cjs');
 
 // ---------------------------------------------------------------------------
 // Validation-sweep helpers (extracted from the /v2/validate loop so the sweep
@@ -294,30 +296,73 @@ module.exports = function(ctx) {
 
       const draftedSeedNumbers = new Set(drafts.map(d => d.seed_number));
 
+      // A woven course (job #949: a block of seeds >= 1000 played after an old seed) decides
+      // "already taught" by RUNNING ORDER, not seed number: the history of an HC block seed is
+      // the old seeds before the insert point plus the block seeds before it — never old
+      // 138-316, which play after the block. order === null for every other course, and then
+      // everything below is exactly what it always was (drafts in seed order, every
+      // non-drafted LEGO in the baseline up front).
+      const order = await loadRunningOrder(ctx.supabase, courseCode);
+      const orderedDrafts = order
+        ? [...drafts].sort((a, b) => orderKey(order, a.seed_number) - orderKey(order, b.seed_number))
+        : drafts;
+
       // STEP 2: Load baseline — existing LEGOs ONLY from seeds without drafts
-      const { data: existingLegos, error: legoErr } = await ctx.supabase
-        .from('course_legos')
-        .select('known_text, target_text, seed_number, lego_index, is_new')
-        .eq('course_code', courseCode)
-        .order('seed_number')
-        .order('lego_index');
+      // Paged: PostgREST caps a read at 1000 rows, and a baseline cut short silently re-introduces
+      // every LEGO past the cut as new.
+      const existingLegos = [];
+      for (let from = 0; ; from += 1000) {
+        const { data, error: legoErr } = await ctx.supabase
+          .from('course_legos')
+          .select('known_text, target_text, seed_number, lego_index, is_new')
+          .eq('course_code', courseCode)
+          .order('seed_number')
+          .order('lego_index')
+          .range(from, from + 999);
+        if (legoErr) throw new Error(`Failed to load existing LEGOs: ${legoErr.message}`);
+        existingLegos.push(...(data || []));
+        if (!data || data.length < 1000) break;
+      }
 
-      if (legoErr) throw new Error(`Failed to load existing LEGOs: ${legoErr.message}`);
-
-      const knownLegoMap = new Map();
+      const baselineLegos = [];
       for (const lego of existingLegos || []) {
         if (draftedSeedNumbers.has(lego.seed_number)) continue;
-        const normKey = normalizeForZUT(lego.known_text);
-        if (lego.is_new && !knownLegoMap.has(normKey)) {
-          knownLegoMap.set(normKey, {
-            target_text: lego.target_text,
-            known_text: lego.known_text,
-            seed_number: lego.seed_number,
-            lego_index: lego.lego_index
-          });
+        if (!lego.is_new) continue;
+        baselineLegos.push(lego);
+      }
+      const asEntry = (l) => ({ target_text: l.target_text, known_text: l.known_text, seed_number: l.seed_number, lego_index: l.lego_index });
+
+      // knownLegoMap = what is TAUGHT before the draft being judged (duplicate test).
+      // laterBaseline = woven only: baseline LEGOs that play LATER — not "taught" yet, but ZUT is
+      // content-keyed and unbounded, so a fork with one of them is still a collision.
+      const knownLegoMap = new Map();
+      const laterBaseline = new Map();
+      let baselineCursor = 0;
+      if (order) {
+        baselineLegos.sort((a, b) => (orderKey(order, a.seed_number) - orderKey(order, b.seed_number)) || (a.lego_index - b.lego_index));
+        for (const lego of baselineLegos) {
+          const k = normalizeForZUT(lego.known_text);
+          if (!laterBaseline.has(k)) laterBaseline.set(k, asEntry(lego));
+        }
+      } else {
+        for (const lego of baselineLegos) {
+          const normKey = normalizeForZUT(lego.known_text);
+          if (!knownLegoMap.has(normKey)) knownLegoMap.set(normKey, asEntry(lego));
         }
       }
-      console.log(`  Baseline: ${knownLegoMap.size} unique LEGOs from non-drafted seeds`);
+      // Woven: before judging the draft at `seedNumber`, move every baseline LEGO that plays
+      // earlier into the taught map.
+      const advanceBaselineTo = (seedNumber) => {
+        if (!order) return;
+        const at = orderKey(order, seedNumber);
+        while (baselineCursor < baselineLegos.length &&
+               orderKey(order, baselineLegos[baselineCursor].seed_number) < at) {
+          const lego = baselineLegos[baselineCursor++];
+          const k = normalizeForZUT(lego.known_text);
+          if (!knownLegoMap.has(k)) knownLegoMap.set(k, asEntry(lego));
+        }
+      };
+      console.log(`  Baseline: ${new Set(baselineLegos.map(l => normalizeForZUT(l.known_text))).size} unique LEGOs from non-drafted seeds${order ? ' (woven: judged by running order)' : ''}`);
       const genderLicence = await loadGenderVariantLicence(ctx.supabase, courseCode);
 
       // STEP 3: Process drafts — dedup + collision detection
@@ -325,8 +370,10 @@ module.exports = function(ctx) {
       const dedupResults = new Map();
       const emptySeedNumbers = [];
       let totalDeduplicated = 0;
+      const mutationDuplicates = [];
 
-      for (const draft of drafts) {
+      for (const draft of orderedDrafts) {
+        advanceBaselineTo(draft.seed_number);
         const draftLegos = draft.submission_data?.legos || [];
         const legoStatuses = new Map();
         let newCount = 0;
@@ -350,6 +397,12 @@ module.exports = function(ctx) {
             } else if (existingTarget === newTarget) {
               legoStatuses.set(lego.idx, 'duplicate');
               totalDeduplicated++;
+            } else if (isSoftMutationVariant(courseCode, existing.target_text, lego.target)) {
+              // Welsh: a soft-mutated form of a taught LEGO is already taught (Aran, 2026-10-07;
+              // lib/welsh-mutation.cjs). Same LEGO, not a ZUT fork.
+              legoStatuses.set(lego.idx, 'duplicate');
+              totalDeduplicated++;
+              mutationDuplicates.push({ seed_number: draft.seed_number, lego_idx: lego.idx, known: lego.known, target: lego.target, taught_as: existing.target_text, taught_at: existing.seed_number });
             } else {
               collisions.push({
                 seed_number: draft.seed_number,
@@ -365,6 +418,25 @@ module.exports = function(ctx) {
               legoStatuses.set(lego.idx, 'collision');
             }
           } else {
+            const later = laterBaseline.get(normKey);
+            if (later &&
+                normalizeForStorage(later.target_text) !== normalizeForStorage(lego.target) &&
+                !isLicensedGenderVariant(genderLicence, later.target_text, lego.target) &&
+                !isSoftMutationVariant(courseCode, later.target_text, lego.target)) {
+              collisions.push({
+                seed_number: draft.seed_number,
+                lego_known: lego.known,
+                lego_target: lego.target,
+                lego_idx: lego.idx,
+                conflicts_with: {
+                  target_text: later.target_text,
+                  seed_number: later.seed_number,
+                  lego_index: later.lego_index
+                }
+              });
+              legoStatuses.set(lego.idx, 'collision');
+              continue;
+            }
             legoStatuses.set(lego.idx, 'new');
             knownLegoMap.set(normKey, {
               target_text: lego.target,
@@ -465,7 +537,7 @@ module.exports = function(ctx) {
       let seedsWritten = 0;
       let legosIntroduced = 0;
 
-      for (const draft of drafts) {
+      for (const draft of orderedDrafts) {
         const draftLegos = draft.submission_data?.legos || [];
         const legoStatuses = dedupResults.get(draft.seed_number);
         let skippedDuplicates = 0;
@@ -518,12 +590,12 @@ module.exports = function(ctx) {
 
         // 5c. Handle empty seeds — attach seed sentence as USE phrase to highest-indexed introducing LEGO
         if (emptySeedNumbers.includes(draft.seed_number)) {
-          const { data: allNewLegos } = await ctx.supabase
+          // "Earlier" is the running order in a woven course; filterSeedsBefore is the old .lt otherwise.
+          const { data: allNewLegos } = await filterSeedsBefore(ctx.supabase
             .from('course_legos')
             .select('seed_number, lego_index, target_text')
             .eq('course_code', courseCode)
-            .eq('is_new', true)
-            .lt('seed_number', draft.seed_number)
+            .eq('is_new', true), order, draft.seed_number)
             .order('seed_number');
 
           const wordIntroducedBy = {};
@@ -542,7 +614,8 @@ module.exports = function(ctx) {
           for (const w of seedWords) {
             const intro = wordIntroducedBy[w];
             if (!intro) continue;
-            if (intro.seed_number > bestSeedNum || (intro.seed_number === bestSeedNum && intro.lego_index > bestLegoIdx)) {
+            const introKey = orderKey(order, intro.seed_number), bestKey = bestSeedNum < 0 ? -1 : orderKey(order, bestSeedNum);
+            if (introKey > bestKey || (introKey === bestKey && intro.lego_index > bestLegoIdx)) {
               bestSeedNum = intro.seed_number;
               bestLegoIdx = intro.lego_index;
               bestLegoTarget = intro.target_text;
@@ -620,6 +693,7 @@ module.exports = function(ctx) {
         seeds_written: seedsWritten,
         legos_introduced: legosIntroduced,
         legos_deduplicated: totalDeduplicated,
+        mutation_duplicates: mutationDuplicates.length > 0 ? mutationDuplicates : undefined,
         empty_seeds: emptySeedNumbers.length,
         empty_seed_numbers: emptySeedNumbers.length > 0 ? emptySeedNumbers : undefined,
         phrases_written: 0,
