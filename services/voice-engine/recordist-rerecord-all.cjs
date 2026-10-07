@@ -30,13 +30,17 @@ const crypto = require('crypto')
 const { databaseUrl } = require('../shared/round-index-refresh.cjs')
 const { invalidateLanguageQueueCache } = require('./recordist-queue-cache.cjs')
 
-/** The scalar slots that hold one clip id. Presentation text slot on legos is not a uuid. */
+/** The scalar slots that hold one clip id. */
 const SCALAR_SLOTS = Object.freeze([
   ['listening_pod_sentences', ['target_audio_id', 'known_audio_id', 'explainer_audio_id', 'note_audio_id']],
   ['course_seeds', ['target1_audio_id', 'target2_audio_id', 'known_audio_id']],
-  ['course_legos', ['target1_audio_id', 'target2_audio_id', 'known_audio_id']],
+  ['course_legos', ['target1_audio_id', 'target2_audio_id', 'known_audio_id', 'presentation_audio_id']],
   ['course_practice_phrases', ['target1_audio_id', 'target2_audio_id', 'known_audio_id', 'presentation_audio_id']],
 ])
+// course_legos.presentation_audio_id is a TEXT column holding a uuid string
+// (the schema's own comment says so), so it is matched by text, not by uuid[].
+const TEXT_SLOTS = Object.freeze(new Set(['course_legos.presentation_audio_id']))
+const slotMatch = (table, col) => (TEXT_SLOTS.has(`${table}.${col}`) ? `${col} = any($1::text[])` : `${col} = any($1)`)
 const ARRAY_SLOTS = Object.freeze([
   ['listening_pod_sentences', ['takeg_audio_ids', 'sentence_audio_ids', 'sentence_known_audio_ids']],
 ])
@@ -70,7 +74,7 @@ async function previewReset({ voiceId, language, spellings, connect = defaultCon
     if (ids.length) {
       for (const [table, cols] of SCALAR_SLOTS) {
         for (const col of cols) {
-          const n = (await c.query(`select count(*)::int n from ${table} where ${col} = any($1)`, [ids])).rows[0].n
+          const n = (await c.query(`select count(*)::int n from ${table} where ${slotMatch(table, col)}`, [ids])).rows[0].n
           if (n) slots[`${table}.${col}`] = n
         }
       }
@@ -101,11 +105,11 @@ async function applyReset({ voiceId, language, spellings, actor, reason = null, 
       const slots = []
       for (const [table, cols] of SCALAR_SLOTS) {
         for (const col of cols) {
-          const found = (await c.query(`select id from ${table} where ${col} = any($1)`, [ids])).rows
+          const found = (await c.query(`select id from ${table} where ${slotMatch(table, col)}`, [ids])).rows
           if (!found.length) continue
-          const was = (await c.query(`select id, ${col} as was from ${table} where ${col} = any($1)`, [ids])).rows
+          const was = (await c.query(`select id, ${col} as was from ${table} where ${slotMatch(table, col)}`, [ids])).rows
           for (const r of was) slots.push({ table, column: col, id: r.id, was: r.was })
-          await c.query(`update ${table} set ${col} = null where ${col} = any($1)`, [ids])
+          await c.query(`update ${table} set ${col} = null where ${slotMatch(table, col)}`, [ids])
         }
       }
       await c.query('update course_audio set voice_id = $1 || voice_id where id = any($2)', [tag, ids])

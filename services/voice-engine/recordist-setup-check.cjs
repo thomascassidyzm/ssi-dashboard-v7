@@ -52,6 +52,9 @@ const locksScript = (row) => !!row && row.status !== 'approved'
  * between — what a setup actually has to cope with. Lines too short or too long
  * to be a fair read are left out first. Pure.
  */
+/** A setup check is TEN phrases or it is not created: 3-9 lines is not the agreed sample (job #844). */
+function isFullSetupSample(phrases) { return Array.isArray(phrases) && phrases.length >= SETUP_PHRASE_COUNT }
+
 function pickSetupPhrases(lines, count = SETUP_PHRASE_COUNT) {
   const seen = new Set()
   const usable = []
@@ -161,6 +164,7 @@ async function measureTake(buffer, mimeType, { exec = spawn } = {}) {
 module.exports = {
   SETUP_PACK_PREFIX,
   SETUP_PHRASE_COUNT,
+  isFullSetupSample,
   SETUP_STATUSES,
   packIdFor,
   packVoiceIdFor,
