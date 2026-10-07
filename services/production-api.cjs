@@ -5539,6 +5539,27 @@ async function handleRecordingUpload(req, res) {
       })
     }
 
+    // STEADY-NOISE GATE (2026-10-07, Dan's 14:53 take of "Bore da, Sarah!"). The
+    // length ceiling above only fires on a take far longer than its line; a
+    // short take of pure rumble and hiss sails under it and, on an iPhone, reads
+    // as voice on the recorder's own meter. Needs no script text. Same placement
+    // and same three outcomes: refuse BEFORE the S3 PUT / slot swap, raw already
+    // archived, UNCHECKED logged and let through.
+    const noise = await speechGate.checkTakeIsNotSteadyNoise({ buffer: processedBuffer })
+    if (noise.checked === false) {
+      logger.warn(`[Upload] Steady-noise gate NOT RUN for ${audioId}: ${noise.reason} — saved UNCHECKED. ${JSON.stringify(noise.detail)}`)
+    } else if (noise.pass === false) {
+      logger.error(`[Upload] REFUSED steady-noise take ${audioId}: ${noise.reason} ${JSON.stringify(noise.detail)}`)
+      return res.status(422).json({
+        error: noise.message,
+        processed: true,
+        noSpeech: true,
+        reason: noise.reason,
+        detail: noise.detail,
+        rawKey: rawKey || null,
+      })
+    }
+
     // BOUNDARY GATE. The gate above asks whether there is a read in the take;
     // this one asks whether the read runs off the edge of the file. They are
     // different defects and neither check sees the other's: a truncated take

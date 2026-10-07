@@ -192,6 +192,8 @@ const MESSAGES = {
     "That take didn't capture any speech — check the right microphone is selected, then read the line again.",
   speech_span_far_exceeds_script:
     "That take came out far longer than the line, so it looks like it caught the room rather than your voice. It hasn't been saved — please read the line again.",
+  steady_noise_no_speech:
+    "We couldn't hear your voice on that one - it sounded like background noise. Please try again somewhere quiet.",
   speech_truncated_at_start:
     "That take starts right on your first word, so the beginning of it is cut off. It hasn't been saved — press record, take a breath, then read the line again.",
   speech_truncated_at_end:
@@ -537,9 +539,84 @@ async function checkTakeBoundaries ({ buffer, filePath, minMarginSec } = {}) {
   }
 }
 
+// ── STEADY NOISE (2026-10-07, Dan, "Bore da, Sarah!") ────────────────────────
+// A take that is the same level from end to end is a room, not a read. Dan's
+// 14:53 iPhone take was 3.3 s of rumble and hiss, short enough to sit inside
+// the length ceiling above, loud enough to read as "voice" on the recorder's
+// own level meter, and it replaced a good take in the slot. Measured on the
+// mastered bytes of 17 real takes (Dan on iPhone and a USB headset, Aran):
+//
+//   the noise take          speech -15.2 dB   noise -20.5 dB   range  5.3 dB
+//   every real read         range 27.2 - 71.3 dB (the 27 is a 1.1 s word)
+//
+// Speech has words and gaps between them; steady noise has neither, so the
+// spread between the loud and quiet frames separates them by a factor of five.
+// The line sits at BOUNDARY_MIN_RANGE_DB (12 dB) - the same "there is no
+// dynamic range to measure anything on" floor the boundary check already uses,
+// which there only means UNCHECKED and here means refused, because a take with
+// this little range has no read in it to be cut off.
+//
+// Not a spectral test, deliberately: the voice band alone cannot do it (Aran's
+// good takes carry 25-40% of their energy under 200 Hz on his microphone), and
+// a ratio that is fitted to one microphone refuses the next artist's.
+//
+// The raw original is archived before this runs, so a refusal loses nothing.
+
+/** Pure: what does this take's level spread say? Takes boundaryMargins' output. */
+function steadyNoiseVerdict (m) {
+  if (m.rangeDb == null) {
+    return { pass: null, checked: false, reason: 'unchecked_no_speech_level', message: null }
+  }
+  if (m.rangeDb < BOUNDARY_MIN_RANGE_DB) {
+    return { pass: false, checked: true, reason: 'steady_noise_no_speech', message: MESSAGES.steady_noise_no_speech }
+  }
+  return { pass: true, checked: true, reason: 'has_dynamic_range', message: null }
+}
+
+/**
+ * Is this take a read, or steady background noise? Same three-outcome contract
+ * as the other two checks: an UNCHECKED take is flagged by the caller, never
+ * refused.
+ */
+async function checkTakeIsNotSteadyNoise ({ buffer, filePath } = {}) {
+  const av = await decode.availability()
+  if (!av.available) {
+    return { pass: null, checked: false, reason: 'unchecked_no_decoder', message: null, detail: { missing: av.missing } }
+  }
+  let spilled = null
+  let d = null
+  try {
+    if (!filePath) {
+      if (!buffer) return { pass: null, checked: false, reason: 'unchecked_no_audio', message: null, detail: {} }
+      spilled = path.join(os.tmpdir(), `take-noise-${crypto.randomBytes(8).toString('hex')}.audio`)
+      fs.writeFileSync(spilled, buffer)
+    }
+    d = await decode.decode(filePath || spilled)
+  } catch (e) {
+    if (spilled) { try { fs.unlinkSync(spilled) } catch { /* already gone */ } }
+    return { pass: null, checked: false, reason: 'unchecked_decode_error', message: null, detail: { error: String(e && e.message).slice(0, 200) } }
+  }
+  try {
+    const m = boundaryMargins(d.samples, d.sampleRate)
+    const detail = {
+      durationSec: +m.totalSec.toFixed(3),
+      speechDb: m.speechDb == null ? null : +m.speechDb.toFixed(1),
+      noiseDb: m.noiseDb == null ? null : +m.noiseDb.toFixed(1),
+      dynamicRangeDb: m.rangeDb == null ? null : +m.rangeDb.toFixed(1),
+      minRangeDb: BOUNDARY_MIN_RANGE_DB,
+    }
+    return { ...steadyNoiseVerdict(m), detail }
+  } finally {
+    d.dispose()
+    if (spilled) { try { fs.unlinkSync(spilled) } catch { /* already gone */ } }
+  }
+}
+
 module.exports = {
   checkTakeHasSpeech,
   checkTakeBoundaries,
+  checkTakeIsNotSteadyNoise,
+  steadyNoiseVerdict,
   boundaryMargins,
   ceilingFor,
   languageForTake,

@@ -306,3 +306,41 @@ describe('checkTakeBoundaries — the operating point', () => {
     }
   })
 })
+
+// ── Steady noise (Dan's 14:53 take of "Bore da, Sarah!", 2026-10-07) ─────────
+// Real measurements on mastered bytes: the noise take had 5.3 dB between its
+// loud and quiet frames; 16 real reads (Dan iPhone + USB headset, Aran) had
+// 27.2-71.3 dB. These synthetic signals reproduce the two shapes.
+describe('steadyNoiseVerdict', () => {
+  const SR = 16000
+  const noise = (sec, amp, seed = 1) => {
+    const out = new Float32Array(Math.round(sec * SR))
+    let x = seed
+    for (let i = 0; i < out.length; i++) { x = (x * 1664525 + 1013904223) >>> 0; out[i] = ((x / 2 ** 32) - 0.5) * 2 * amp }
+    return out
+  }
+  const word = (sec, amp) => {
+    const out = new Float32Array(Math.round(sec * SR))
+    for (let i = 0; i < out.length; i++) out[i] = Math.sin(2 * Math.PI * 180 * i / SR) * amp
+    return out
+  }
+  const cat = (...a) => { const o = new Float32Array(a.reduce((n, x) => n + x.length, 0)); let p = 0; for (const x of a) { o.set(x, p); p += x.length } return o }
+
+  it('refuses a take that is loud steady rumble and hiss from end to end', () => {
+    const v = G.steadyNoiseVerdict(G.boundaryMargins(noise(3.3, 0.3), SR))
+    expect(v.pass).toBe(false)
+    expect(v.reason).toBe('steady_noise_no_speech')
+    expect(v.message).toBe("We couldn't hear your voice on that one - it sounded like background noise. Please try again somewhere quiet.")
+  })
+
+  it('accepts a read: words with room around them, even in a noisy room', () => {
+    const samples = cat(noise(0.4, 0.01), word(0.5, 0.4), noise(0.2, 0.01), word(0.6, 0.35), noise(0.4, 0.01))
+    expect(G.steadyNoiseVerdict(G.boundaryMargins(samples, SR)).pass).toBe(true)
+  })
+
+  it('says UNCHECKED, never refuses, when there is no level to read', () => {
+    const v = G.steadyNoiseVerdict({ rangeDb: null })
+    expect(v.pass).toBe(null)
+    expect(v.checked).toBe(false)
+  })
+})
