@@ -42,6 +42,7 @@ const takeSupersede = require('./take-supersede.cjs')
 const podsRegistration = require('./voice-engine/pods-registration.cjs')
 const podVoiceApprovals = require('./pod-voice-approvals.cjs')
 const { resolvePoptyIdentity, hasAdminRole } = require('./shared/popty-identity.cjs')
+const { coursesVisibleTo } = require('./shared/library-courses.cjs')
 const castingRights = require('./voice-engine/casting-rights.cjs')
 const presentationAuthor = require('./phases/presentation-author.cjs')
 const humanAuthoredPresentations = require('./shared/human-authored-presentations.cjs')
@@ -1064,6 +1065,37 @@ app.get('/api/production/schema/validate', async (req, res) => {
     res.json(results)
   } catch (err) {
     logger.error('Schema validation failed:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// COURSE LIBRARY — the courses THIS signed-in user may open, hidden (sandbox)
+// courses included. The browser's anon key cannot see visibility='hidden' rows
+// (RLS, which the learning app relies on), so the service role reads them here,
+// filtered by the same access rule as every :courseCode route. Read-only.
+app.get('/api/library/courses', async (req, res) => {
+  try {
+    const user = await resolveDashboardUserCached(req)
+    if (!user) return res.status(401).json({ error: 'Authentication required' })
+    const { data, error } = await supabaseClient.getClient().from('courses').select('*')
+    if (error) throw error
+    res.json({ courses: coursesVisibleTo(user, data) })
+  } catch (err) {
+    logger.error('Failed to get library courses:', err)
+    res.status(500).json({ error: err.message })
+  }
+})
+
+// One course row, hidden or not — for the course pages. :courseCode is gated by app.param above.
+app.get('/api/library/course/:courseCode', async (req, res) => {
+  try {
+    const { data, error } = await supabaseClient.getClient()
+      .from('courses').select('*').eq('course_code', req.params.courseCode).maybeSingle()
+    if (error) throw error
+    if (!data) return res.status(404).json({ error: 'Course not found' })
+    res.json({ course: { ...data, is_hidden: data.visibility === 'hidden' } })
+  } catch (err) {
+    logger.error('Failed to get library course:', err)
     res.status(500).json({ error: err.message })
   }
 })
