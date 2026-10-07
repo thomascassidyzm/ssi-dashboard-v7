@@ -2318,6 +2318,9 @@ async function rerecordAllMine() {
     })
     const body = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(body.error || `Could not start over (${res.status})`)
+    // Lines uploaded in this tab are no longer recorded: clear the screen's
+    // saved set so Start does not skip them.
+    queue.reset()
     await load()
   } catch (err) {
     rerecordError.value = (err && err.message) || 'Could not start over — try again.'

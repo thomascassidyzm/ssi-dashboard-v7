@@ -16,4 +16,7 @@ describe('RecordistRoom Re-record all', () => {
     expect(src).toContain("/rerecord-all`")
     expect(src).toMatch(/confirm: true, asArtist: true/)
   })
+  it('clears the queue saved lines after a successful reset, before reloading', () => {
+    expect(src).toMatch(/Could not start over[^\n]*\n[^\n]*\n[^\n]*\n\s*queue\.reset\(\)\s*\n\s*await load\(\)/)
+  })
 })
