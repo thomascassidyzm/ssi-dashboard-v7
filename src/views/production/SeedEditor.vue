@@ -33,6 +33,17 @@
       </div>
     </header>
 
+    <nav v-if="totalPages > 1" class="page-jump" :class="'page-jump-top'" aria-label="Jump to page">
+      <button
+        v-for="p in pageBoxes"
+        :key="p.page"
+        class="page-box"
+        :class="{ active: p.page === page }"
+        :aria-current="p.page === page ? 'page' : undefined"
+        @click="goToPage(p.page)"
+      >{{ p.label }}</button>
+    </nav>
+
     <!-- Table -->
     <div class="table-container">
       <table class="seed-table">
@@ -117,6 +128,17 @@
         </tbody>
       </table>
     </div>
+
+    <nav v-if="totalPages > 1" class="page-jump" :class="'page-jump-bottom'" aria-label="Jump to page">
+      <button
+        v-for="p in pageBoxes"
+        :key="p.page"
+        class="page-box"
+        :class="{ active: p.page === page }"
+        :aria-current="p.page === page ? 'page' : undefined"
+        @click="goToPage(p.page)"
+      >{{ p.label }}</button>
+    </nav>
 
     <!-- Pagination -->
     <div class="pagination">
@@ -249,6 +271,16 @@ const editInput = ref(null)
 const savedKey = ref(null)
 let savedTimer = null
 
+// One box per page, labelled with the row range it holds (rows of the current filter/search).
+const pageBoxes = computed(() => Array.from({ length: totalPages.value }, (_, i) => ({
+  page: i + 1,
+  label: `${i * PAGE_SIZE + 1}-${Math.min((i + 1) * PAGE_SIZE, total.value)}`
+})))
+function goToPage(n) {
+  if (n === page.value) return
+  page.value = n
+  loadSeeds()
+}
 const totalPages = computed(() => Math.max(1, Math.ceil(total.value / PAGE_SIZE)))
 const progressPercent = computed(() => {
   const denom = courseTotal.value || total.value
@@ -737,6 +769,22 @@ onMounted(loadSeeds)
   color: var(--color-paper-dim, var(--muted));
   font-style: italic;
 }
+
+/* Page-jump boxes */
+.page-jump { display: flex; flex-wrap: wrap; gap: 0.35rem; padding: 0.5rem 0; }
+.page-box {
+  font-family: var(--font-mono, 'IBM Plex Mono', monospace);
+  font-size: 0.72rem;
+  padding: 0.3rem 0.55rem;
+  background: var(--color-slate, var(--surface-2));
+  color: var(--color-paper, var(--ink));
+  border: 1px solid var(--color-graphite, var(--surface-3));
+  border-radius: 4px;
+  cursor: pointer;
+}
+.page-box:hover { background: var(--color-graphite, var(--surface-3)); }
+.page-box.active { background: var(--color-gold, #c9a227); color: #111; border-color: transparent; font-weight: 600; }
+:root[data-theme="light"] .page-box:not(.active) { border-color: var(--line); }
 
 /* Pagination */
 .pagination {
