@@ -188,7 +188,7 @@ class MemoryCache {
  * batch whose reply misses some lines retries those lines once on their own.
  * Returns a ledger: calls, tokens, untagged (texts the model never answered).
  */
-async function ensureTagged(texts, { codex = CODEX, cache = defaultCache(codex), batch = 120, parallel = 4, model = 'haiku',
+async function ensureTagged(texts, { codex = CODEX, cache = defaultCache(codex), batch = 40, parallel = 4, model = 'haiku', // batch 40: the size the gold set was measured at
   knownLanguage, log = (s) => process.stderr.write(s + '\n'), call = callModel } = {}) {
   const todo = [...new Set(texts.map(t => String(t || '').trim()).filter(Boolean))].filter(t => !cache.has(t));
   const ledger = { requested: texts.length, missing: todo.length, calls: 0, tokens: 0, output_tokens: 0, cost_usd: 0, untagged: [] };

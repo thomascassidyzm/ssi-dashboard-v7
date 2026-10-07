@@ -1,29 +1,24 @@
 #!/usr/bin/env node
-/** Cheap self-test for the pattern matchers. No DB, no network, single process. */
+/** Cheap self-test for the frame inventory and the pattern-diversity metric. No DB, no network, no model. */
 const PATTERNS = require('./patterns.cjs');
-const by = Object.fromEntries(PATTERNS.map(p => [p.id, p]));
 let fail = 0;
-const t = (id, text, want) => {
-  const got = by[id].test(text);
-  if (got !== want) { fail++; console.log(`FAIL ${id} ${want ? 'should' : 'should not'} match: ${text}`); }
-};
-// P1 want-chain
-t('P1', 'I want to speak Spanish with you now', true);
-t('P1', 'and I want you to speak Spanish with me tomorrow', true);
-t('P1', 'you speak Spanish very well', false);
-// P16 relative clause — must not fire on complementiser-that or interrogative who
-t('P16', 'because I want to meet people who speak Spanish', true);
-t('P16', 'I think that he needs to consider ten possible problems', false);
-t('P16', 'who said that she\'s worried about the economy', false);
-// P17 counterfactual
-t('P17', "I'd have driven if you'd told me how tired you were", true);
-t('P17', 'I want to speak Spanish with you now', false);
-// P20 / P21
-t('P20', 'Do you speak Spanish all day?', true);
-t('P20', 'I speak a little Spanish now', false);
-t('P21', 'Why are you learning her name?', true);
-// P27
-t('P27', "what's it like to live there?", true);
+// The frames are classified by Haiku reading frame-codex.json (r-2026-10-07-never-use-
+// regex-to-classify-language), so whether a frame fires on a sentence is measured on the
+// gold set (tools/frame-layer/gold/measure-gold.cjs), not asserted here: a unit test
+// cannot call a model. What this file still checks is the metric, given the tags the
+// codex calls for. Those tags are stated below, per text.
+const { installTags } = require('./tag-fixtures.cjs');
+installTags({
+  'driven': [], "I'd have driven home": ['P17'], "I'd have driven": ['P17'], "I'd have driven in a safe way": ['P17'],
+  "I'd have driven if you'd told me": ['P14', 'P17'], "I'd have driven if you'd told me how tired you were": ['P12', 'P14', 'P17', 'P22'],
+  "I'd have driven but I was tired": ['P15', 'P17'], "I'd have driven if you'd told me that": ['P14', 'P17'], "I'd have driven there": ['P17'],
+  "if I'd driven": ['P14', 'P17'], "you'd have driven": ['P17'], "I'd have driven if it had been closer": ['P14', 'P17', 'P24'],
+  "if you'd driven we would have arrived earlier": ['P14', 'P17', 'P28'], "she'd have driven but nobody asked her": ['P15', 'P17', 'P23'],
+  'driven by someone else it would have been easier': ['P17', 'P24', 'P30'], "if he'd driven the car I'd have been happier": ['P14', 'P17', 'P24'],
+  'would you have driven that far?': ['P17', 'P20'],
+  // matrix clauses pattern-diversity cuts out of the phrases above
+  "she'd have driven": ['P17'], 'would you have driven': ['P17', 'P20'],
+});
 // ids unique, ordered, and each carries a shape
 const ids = PATTERNS.map(p => p.id);
 if (new Set(ids).size !== ids.length) { fail++; console.log('FAIL duplicate pattern ids'); }

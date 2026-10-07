@@ -56,6 +56,10 @@ function availableVocab({ legos = [], components = [], seed, legoIndex = null })
  * The known side is NOT one canonical set across the estate — seed 1 has 116
  * distinct known texts across 130 courses, and cym_for_yor's known side is
  * Welsh — so any frame tally shared across the grid is simply wrong.
+ *
+ * Frames are classified by the frame tagger (Haiku reading frame-codex.json, in
+ * the seed's own known language); the caller tags first (v4/tag-course.cjs or
+ * frame-tagger ensureTagged) and an untagged seed throws.
  */
 function attestedFrames(priorSeeds = [], seedRow = null) {
   const first = new Map();

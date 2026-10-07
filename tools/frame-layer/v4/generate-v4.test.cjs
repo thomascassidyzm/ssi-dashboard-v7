@@ -9,6 +9,7 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const gen = require(process.env.GEN_PATH || './generate-v4.cjs');
+const { installTags } = require('../tag-fixtures.cjs');
 
 test('the generator call is Fable at low effort', () => {
   const args = gen.claudeArgs();
@@ -31,6 +32,7 @@ test('a candidate set is written to disk per call, before anything else can lose
 // already carries (same English, same target) is refused there; a full-basket
 // run replaces baskets, so the same row is fine.
 test('additive gap fill refuses a phrase the live course already has', () => {
+  installTags({ 'I want to go now': ['P1', 'P28'] });
   const lego = { seed_number: 5, lego_index: 1, known_text: 'I want', target_text: 'je veux', is_new: true };
   const data = { legos: [lego, { seed_number: 1, lego_index: 1, known_text: 'to go', target_text: 'aller' },
     { seed_number: 2, lego_index: 1, known_text: 'now', target_text: 'maintenant' }], components: [] };
@@ -41,4 +43,15 @@ test('additive gap fill refuses a phrase the live course already has', () => {
   const g = gen.gate(cand, { ...opts, additive: true });
   assert.strictEqual(g.kept.length, 0);
   assert.ok(g.rejected[0].reasons.includes('already in the course'));
+});
+
+test('the gate refuses a candidate the frame tagger marks as opening with a stapled interjection', () => {
+  installTags({ 'of course I want to go now': { frames: ['P1', 'P28'], opener: true } });
+  const lego = { seed_number: 5, lego_index: 1, known_text: 'I want', target_text: 'je veux', is_new: true };
+  const data = { legos: [lego, { seed_number: 1, lego_index: 1, known_text: 'to go', target_text: 'aller' },
+    { seed_number: 2, lego_index: 1, known_text: 'now', target_text: 'maintenant' }, { seed_number: 3, lego_index: 1, known_text: 'of course', target_text: 'bien sûr' }], components: [] };
+  const cand = [{ seed: 5, lego_index: 1, role: 'build', known: 'of course I want to go now', target: 'bien sûr je veux aller maintenant' }];
+  const g = gen.gate(cand, { course: 'fra_for_eng', data, newLegos: [lego], liveZut: new Map(), available: ['P1', 'P28'] });
+  assert.strictEqual(g.kept.length, 0);
+  assert.ok(g.rejected[0].reasons.some(r => r.startsWith('stapled opener')));
 });

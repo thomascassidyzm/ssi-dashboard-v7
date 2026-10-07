@@ -18,7 +18,7 @@
  *                  whether or not a seed has yet shown the whole shape.
  *   available      min of the two: the point from which a window may use it.
  *
- * The frames are the 31 seed-corpus P-frames (patterns.cjs). The 12 D-frames
+ * The frames are the 31 seed-corpus P-frames (frame-codex.json, via patterns.cjs). The 12 D-frames
  * and 6 X-frames of the pod corpus are reported for the count but are NOT
  * coverage frames: their fixed material ("thank you", "of course", "no
  * problem", "great") is exactly the interjection class #463 found v3 stapling
@@ -32,11 +32,15 @@ const path = require('path');
 const PATTERNS = require('../patterns.cjs');
 const { attestedFrames } = require('../availability.cjs');
 const { loadCourse } = require('./db.cjs');
+const { tagCourse } = require('./tag-course.cjs');
 
-/** P20 "question" fires on "?", which no cut chunk carries; a taught wh-word or a
- *  taught question opener ("do you want", "can I") licenses the shape. */
-const QUESTION_OPENER = /^(do|does|did|are|is|was|were|can|could|will|would|should|have|has|what|where|when|why|who|how|which)\b/i;
-
+/**
+ * Every row's known side is classified by the frame tagger (Haiku reading
+ * frame-codex.json). A cut chunk like "do you want" is a question by its word
+ * order even without "?", and the codex says so, so P20 needs no special case:
+ * until 2026-10-07 a regex of question openers stood in for that judgement.
+ * The caller tags first (tag-course.cjs); an untagged chunk throws.
+ */
 function combinationAvailability(legos, components) {
   const first = new Map();
   const rows = [...legos.map(l => ({ ...l, kind: 'lego' })), ...components.map(c => ({ ...c, kind: 'component' }))]
@@ -44,8 +48,7 @@ function combinationAvailability(legos, components) {
   for (const r of rows) {
     const k = String(r.known_text || '');
     for (const p of PATTERNS) {
-      const fires = p.id === 'P20' ? (QUESTION_OPENER.test(k.trim()) && k.trim().split(/\s+/).length >= 2) : p.test(k);
-      if (!fires) continue;
+      if (!k.trim() || !p.test(k)) continue;
       if (!first.has(p.id)) first.set(p.id, { seed: r.seed_number, via: `${r.kind} "${k}" → "${r.target_text}"` });
     }
   }
@@ -63,7 +66,7 @@ function inventory(course, data) {
       by_seed: s, by_combination: c ? c.seed : null, combination_via: c ? c.via : null,
       available: Number.isFinite(available) ? available : null,
       earlier_by_combination: (s != null && c && c.seed < s) ? s - c.seed : 0,
-      seed_count: data.seeds.filter(x => p.test(x.known_text || '')).length };
+      seed_count: data.seeds.filter(x => String(x.known_text || '').trim() && p.test(x.known_text)).length };
   });
   return { course, generated: new Date().toISOString(), seeds: data.seeds.length,
     frame_count: { seed_frames_P: PATTERNS.length, pod_sentence_frames_D: 12, pod_exchange_frames_X: 6, metagraph_shapes_N: 30 },
@@ -80,11 +83,13 @@ if (require.main === module) {
   const courses = process.argv.slice(2).filter(a => !a.startsWith('--'));
   const outDir = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '468-frame-diversity');
   fs.mkdirSync(outDir, { recursive: true });
-  for (const course of courses.length ? courses : ['fra_for_eng']) {
-    const inv = inventory(course, loadCourse(course));
+  (async () => { for (const course of courses.length ? courses : ['fra_for_eng']) {
+    const data = loadCourse(course);
+    await tagCourse(course, data);
+    const inv = inventory(course, data);
     fs.writeFileSync(path.join(outDir, `frame-inventory-${course}.json`), JSON.stringify(inv, null, 2));
     console.log(`${course}: ${inv.seeds} seeds; ${inv.frames.filter(f => f.available != null).length}/${inv.frames.length} frames ever available`);
     console.log('id    by_seed by_combo earlier  name');
     for (const f of inv.frames) console.log(`${f.id.padEnd(5)} ${String(f.by_seed ?? '-').padStart(7)} ${String(f.by_combination ?? '-').padStart(8)} ${String(f.earlier_by_combination).padStart(7)}  ${f.name}  ${f.combination_via ? '← ' + f.combination_via : ''}`);
-  }
+  } })().catch(e => { console.error(e.message); process.exit(1); });
 }

@@ -10,19 +10,23 @@ const { loadCourse } = require('./db.cjs');
 const { inventory, availableAt } = require('./frame-inventory.cjs');
 const { scoreWindow } = require('./window-coverage.cjs');
 const PATTERNS = require('../patterns.cjs');
+const { tagCourse } = require('./tag-course.cjs');
+const { ensureTagged } = require('../frame-tagger.cjs');
 
 const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '468-frame-diversity');
 const LANG = { fra_for_eng: 'French', deu_for_eng: 'German', gle_for_eng: 'Irish' };
 const name = (id) => `${id} ${(PATTERNS.find(p => p.id === id) || {}).name || ''}`;
 
-function main() {
+async function main() {
   const files = fs.readdirSync(EVIDENCE).filter(f => /^v4-.*\.json$/.test(f) && !f.includes('.candidates-')).sort();
   const cache = {};
   const rows = [], examples = [];
   for (const f of files) {
     const v4 = JSON.parse(fs.readFileSync(path.join(EVIDENCE, f), 'utf8'));
     const [start, end] = v4.region;
-    const data = cache[v4.course] || (cache[v4.course] = loadCourse(v4.course));
+    if (!cache[v4.course]) { cache[v4.course] = loadCourse(v4.course); await tagCourse(v4.course, cache[v4.course]); }
+    const data = cache[v4.course];
+    await ensureTagged((v4.kept || []).map(k => k.known_text));
     const inv = inventory(v4.course, data);
     const avail = availableAt(inv, end);
     const win = data.phrases.filter(p => p.seed_number >= start && p.seed_number <= end);
@@ -73,4 +77,4 @@ function main() {
   fs.writeFileSync(path.join(EVIDENCE, 'compare.md'), md.join('\n'));
   console.log(md.slice(0, 2 + rows.length * 4).join('\n'));
 }
-main();
+main().catch(e => { console.error(e.message); process.exit(1); });

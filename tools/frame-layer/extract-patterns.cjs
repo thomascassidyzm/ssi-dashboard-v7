@@ -14,6 +14,9 @@ require('dotenv').config({ quiet: true });
 const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
 const PATTERNS = require('./patterns.cjs');
+const { ensureTagged } = require('./frame-tagger.cjs');
+// Seeds are classified by the frame tagger (Haiku + frame-codex.json); tag before the sync classify().
+async function taggedSeeds(course) { const rows = await seeds(course); await ensureTagged(rows.map(r => r.known_text || '')); return rows; }
 
 const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY);
 
@@ -82,7 +85,7 @@ function toMarkdown(inv) {
   if (args[0] === '--compare') {
     const courses = args.slice(1);
     const invs = [];
-    for (const c of courses) invs.push(inventory(c, await seeds(c)));
+    for (const c of courses) invs.push(inventory(c, await taggedSeeds(c)));
     console.log('course\ttotal\t' + PATTERNS.map(p => p.id).join('\t'));
     for (const i of invs) {
       const by = Object.fromEntries(i.patterns.map(p => [p.id, p.seed_count]));
@@ -91,7 +94,7 @@ function toMarkdown(inv) {
     return;
   }
   const course = args.find(a => !a.startsWith('--')) || 'spa_for_eng';
-  const inv = inventory(course, await seeds(course));
+  const inv = inventory(course, await taggedSeeds(course));
   const jsonAt = args[args.indexOf('--json') + 1];
   const mdAt = args[args.indexOf('--md') + 1];
   if (args.includes('--json')) fs.writeFileSync(jsonAt, JSON.stringify(inv, null, 2));

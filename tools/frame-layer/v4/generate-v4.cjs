@@ -32,7 +32,7 @@
  *   4. FLOORS. A basket below 4 BUILD / 5 USE after gating goes back ONCE,
  *      with the gate's words quoted. One retry per region, hard cap.
  *   5. SCORE the region with window-coverage.cjs. Frames are re-derived from
- *      the matchers; the model's frame tag is recorded but never counted.
+ *      the frame tagger; the model's frame tag is recorded but never counted.
  *
  * Token discipline: every call's usage is recorded; the run refuses to start a
  * new model call once --budget tokens have been spent. No unbounded loops.
@@ -52,7 +52,11 @@ const PATTERNS = require('../patterns.cjs');
 const { availableVocab, norm } = require('../availability.cjs');
 const { loadCourse } = require('./db.cjs');
 const { inventory, availableAt } = require('./frame-inventory.cjs');
-const { scoreWindow, stripInterjections, framesOf } = require('./window-coverage.cjs');
+const { scoreWindow, hasOpener, framesOf } = require('./window-coverage.cjs');
+const { tagCourse } = require('./tag-course.cjs');
+const { ensureTagged, knownLanguageName } = require('../frame-tagger.cjs');
+/** Candidates are classified by the frame tagger before the (sync) gates read their frames and openers. */
+const tagCandidates = (course, cands) => ensureTagged(cands.map(c => String(c.known || '').trim()).filter(Boolean), { knownLanguage: knownLanguageName(course) });
 
 const ROOT = path.join(__dirname, '..', '..', '..');
 const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '468-frame-diversity');
@@ -268,8 +272,7 @@ function gate(cands, { course, data, newLegos, liveZut, available, additive = fa
     if (/[()]/.test(known + target)) reasons.push('parentheses');
     if (!norm(known).includes(norm(lego.known_text))) reasons.push(`known side does not contain the LEGO "${lego.known_text}"`);
     if (!norm(target).includes(norm(lego.target_text))) reasons.push(`target does not contain the LEGO "${lego.target_text}"`);
-    const { stripped } = stripInterjections(known);
-    if (stripped.length) reasons.push(`stapled opener "${stripped.join(', ')}"`);
+    if (known && hasOpener(known)) reasons.push('stapled opener (the frame tagger marks a detachable interjection at the front)');
     // per-basket vocabulary window
     const vocab = availableVocab({ legos: data.legos, components: data.components, seed: lego.seed_number, legoIndex: +lego.lego_index });
     vocab.push({ known_text: lego.known_text, target_text: lego.target_text });
@@ -292,7 +295,7 @@ function gate(cands, { course, data, newLegos, liveZut, available, additive = fa
     if (seenKnown.has(nk) && seenKnown.get(nk) === nt) reasons.push('duplicate');
     if (seenTarget.has(nt + '|' + role) && !reasons.includes('duplicate')) reasons.push('duplicate target');
     if (role === 'use' && tokens(known).length < 4) reasons.push('USE phrase too short to be a complete sentence');
-    const frames = framesOf(known).filter(f => available.includes(f));
+    const frames = known ? framesOf(known).filter(f => available.includes(f)) : [];
     const row = { seed_number: lego.seed_number, lego_index: +lego.lego_index, lego_known: lego.known_text, lego_target: lego.target_text,
       phrase_role: role, known_text: known, target_text: target, claimed_frame: c.frame || null, frames };
     if (reasons.length) { rejected.push({ ...row, reasons }); continue; }
@@ -315,6 +318,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   if (gaps) return runGaps(course, start, end, { dry, budget, missingIn });
   fs.mkdirSync(EVIDENCE, { recursive: true });
   const data = loadCourse(course);
+  await tagCourse(course, data);
   const inv = inventory(course, data);
   const available = availableAt(inv, end);
   const seeds = data.seeds.filter(s => s.seed_number >= start && s.seed_number <= end);
@@ -358,6 +362,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
   };
   console.log(`${course} ${start}-${end}: ${newLegos.length} new LEGOs, ${available.length} frames available, prompt ${prompt.length} chars`);
   let cands = call(prompt, 'generate');
+  await tagCandidates(course, cands);
   let g = gate(cands, { course, data, newLegos, liveZut, available });
   let floors = basketFloors(g.kept, newLegos);
   const failing = floors.filter(f => !f.ok);
@@ -369,7 +374,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
         .concat([`had ${f.build} BUILD and ${f.use} USE after gating; needs ${BUILD_FLOOR}+${USE_FLOOR}`]) }));
     const p2 = buildPrompt({ course, region: [start, end], seeds, newLegos: failing.map(f => f.lego), allChunks, available, carriers, retry });
     let c2 = null;
-    try { c2 = call(p2, 'retry'); } catch (e) {
+    try { c2 = call(p2, 'retry'); await tagCandidates(course, c2); } catch (e) {
       // A refused retry (budget) is a finding, never a lost set: gate and save the first call's phrases.
       if (!/budget/.test(e.message)) throw e;
       out.retry_refused = e.message; console.log(`  retry refused: ${e.message}`);
@@ -399,12 +404,13 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
 
 /**
  * GAP-FILL RUN: one call, additive. BEFORE = the live window's coverage; AFTER =
- * live + the kept candidates, scored by the same matchers. `missingIn` lets an
- * outside tagger (the Haiku audit) name the gaps; default is the regex scorer's.
+ * live + the kept candidates, scored by the same frame tagger. `missingIn` lets
+ * the caller name the gaps; default is what the tagger finds missing.
  */
 async function runGaps(course, start, end, { dry = false, budget = 120000, missingIn = null } = {}) {
   fs.mkdirSync(EVIDENCE, { recursive: true });
   const data = loadCourse(course);
+  await tagCourse(course, data);
   const inv = inventory(course, data);
   const available = availableAt(inv, end);
   const seeds = data.seeds.filter(s => s.seed_number >= start && s.seed_number <= end);
@@ -436,7 +442,7 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
     liveZut.get(k).push({ target: norm(r.target_text), target_text: r.target_text, seed: r.seed_number });
   }
   const out = { course, region: [start, end], mode: 'gaps', generated: new Date().toISOString(), model: MODEL, effort: EFFORT,
-    available_frames: available, missing_frames: missing, missing_source: missingIn ? 'supplied' : 'regex', new_legos: newLegos.length,
+    available_frames: available, missing_frames: missing, missing_source: missingIn ? 'supplied' : 'frame-tagger', new_legos: newLegos.length,
     prompt_chars: prompt.length, before: prior ? prior.before : before, calls: prior ? prior.calls : [], kept: [...priorKept], rejected: prior ? prior.rejected : [], after: null,
     passes: [...(prior?.passes || []), { pass, missing }] };
   console.log(`${course} ${start}-${end} GAPS: ${newLegos.length} LEGOs, missing ${missing.join(' ')}, prompt ${prompt.length} chars`);
@@ -451,6 +457,7 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   L.total += r.usage.total; L.calls.push({ course, start, end, label, ...r.usage, at: new Date().toISOString() });
   fs.writeFileSync(ledger, JSON.stringify(L, null, 1));
   out.calls.push({ label, candidates: r.phrases.length, ...r.usage });
+  await tagCandidates(course, r.phrases);
   const g = gate(r.phrases, { course, data, newLegos, liveZut, available, additive: true });
   out.kept.push(...g.kept); out.rejected.push(...g.rejected.map(x => ({ ...x, pass })));
   out.after = scoreWindow([...livePhrases, ...out.kept], available, { rarefyN: 60 });

@@ -46,6 +46,7 @@ async function main() {
   // 1: the seed side
   const seeds = await pageAll(sb, 'course_seeds', 'seed_number,known_text',
     q => q.eq('course_code', course).order('seed_number'));
+  await require('./frame-tagger.cjs').ensureTagged(seeds.map(s => s.known_text || ''));
   const unmatched = seeds.filter(s => !PATTERNS.some(p => p.test(s.known_text))).length;
   const ep = require(path.join(ROOT, 'docs/frame-layer/english-pattern-inventory.json'));
   console.log(`SEEDS (${course}): live ${seeds.length} seeds, ${unmatched} unmatched by any P* frame`);

@@ -14,18 +14,20 @@
  *                       by the window's last seed| / |frames AVAILABLE|
  *
  * AVAILABLE comes from frame-inventory.cjs (first seed, or first taught chunk
- * that carries the shape — whichever is earlier). USED means a P-frame matcher
- * fires on the phrase's known side AFTER any leading interjection has been
- * stripped off.
+ * that carries the shape — whichever is earlier). USED means the frame tagger
+ * (frame-tagger.cjs: Haiku reading frame-codex.json, cached per phrase text)
+ * says the phrase's known side instantiates the frame.
  *
  * INTERJECTIONS EARN NOTHING. #463 measured v3 buying position spread and
  * neighbour variety with "thank you,", "of course", "unfortunately", "no
  * problem" stapled to the front of a phrase: 22% of Irish v3 USE phrases open
  * that way against 2-5% elsewhere. A stapled opener is not a frame and it is
- * not a connection, so the matcher never sees it: "thank you, I want to go"
- * and "I want to go" fire exactly the same frames and the first gets nothing
- * for its opener. The test file asserts this against a naive position-spread
- * scorer, which pays for it.
+ * not a connection. The codex tells the tagger to mark a detachable opener O
+ * and tag only what follows it, so "thank you, I want to go" and "I want to
+ * go" carry the same frames and the first is counted as an interjection. Until
+ * 2026-10-07 this file stripped openers from a hand-kept word list; Tom's
+ * ruling r-2026-10-07-never-use-regex-to-classify-language moved that judgement
+ * to the model too (gold: opener accuracy 0.99).
  *
  * Fairness across volumes: live, v3 and v4 do not write the same number of
  * phrases in a window, and more phrases find more frames by luck. So beside
@@ -33,45 +35,17 @@
  * distinct frames found in a random sample of N phrases (N fixed, default 60,
  * averaged over 200 seeded draws). Two generators compared at the same N are
  * compared on what they DO with a phrase, not on how many they wrote.
+ *
+ * Every function here is SYNC and reads tags the caller has already fetched
+ * (`await tagCourse(...)` in tag-course.cjs, or `ensureTagged`). An untagged
+ * phrase throws: a cold cache must never read as a weak window.
  */
-const PATTERNS = require('../patterns.cjs');
+const T = require('../frame-tagger.cjs');
 
-// Fixed material of the pod D-frames (dialogue-patterns.cjs) plus the stapled
-// openers #463 found. Multi-word first, so "no problem" is stripped before "no".
-const INTERJECTIONS = [
-  'thank you very much', 'thanks very much', 'i am sorry but', "i'm sorry but", 'i am sorry', "i'm sorry",
-  'good morning', 'good afternoon', 'good evening', 'of course', 'no problem', 'here you are', 'here it is',
-  'excuse me', 'and you', 'what about you', 'got it', "don't worry", "that's normal", 'not at all',
-  'thank you', 'thanks', 'hello', 'hi', 'goodbye', 'bye', 'welcome', 'see you', 'sorry', 'please',
-  'lovely', 'perfect', 'great', 'understood', 'unfortunately', 'fortunately', 'well', 'oh', 'ok', 'okay',
-  'right', 'yes', 'no', 'really', 'actually', 'honestly', 'anyway', 'so', 'then', 'but', 'and', 'look', 'listen',
-].sort((a, b) => b.length - a.length);
-
-/** Strip every leading interjection (with its trailing comma/period). Returns
- *  the remainder and the list of what was stripped. */
-function stripInterjections(known) {
-  let s = String(known || '').trim();
-  const stripped = [];
-  for (let guard = 0; guard < 5; guard++) {
-    const low = s.toLowerCase();
-    // "no one wants to go" is a negated subject (the P23 frame), not "no," + a clause:
-    // keep "no one" together before a standalone "no" is allowed to match.
-    const hit = INTERJECTIONS.find(w => (low === w || low.startsWith(w + ',') || low.startsWith(w + ' ') || low.startsWith(w + '.') || low.startsWith(w + '!'))
-      && !(w === 'no' && /^no one\b/.test(low)));
-    if (!hit) break;
-    stripped.push(hit);
-    s = s.slice(hit.length).replace(/^[\s,.!]+/, '');
-    if (!s) break;
-  }
-  return { text: s, stripped };
-}
-
-/** Which P-frames does this phrase USE? (after the strip). */
-function framesOf(known, matchers = PATTERNS) {
-  const { text } = stripInterjections(known);
-  if (!text) return [];
-  return matchers.filter(p => p.test(text)).map(p => p.id);
-}
+/** Which P-frames does this phrase USE? An opener earns nothing (the tagger tags past it). */
+const framesOf = (known) => T.framesOf(known);
+/** Does the phrase open with a stapled interjection / discourse opener? */
+const hasOpener = (known) => T.hasOpener(known);
 
 /** Deterministic PRNG so rarefaction is reproducible. */
 function mulberry32(a) { return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
@@ -94,19 +68,18 @@ function rarefy(frameSets, n, draws = 200, seed = 42) {
  * Score one window. `phrases` = rows with known_text (and phrase_role);
  * `available` = frame ids available by the window's last seed.
  */
-function scoreWindow(phrases, available, { rarefyN = 60, matchers = PATTERNS } = {}) {
+function scoreWindow(phrases, available, { rarefyN = 60 } = {}) {
   const avail = new Set(available);
   const used = new Map();
   let interjected = 0;
   const frameSets = [];
   for (const p of phrases) {
-    const { stripped } = stripInterjections(p.known_text);
-    if (stripped.length) interjected++;
-    const fs = framesOf(p.known_text, matchers).filter(f => avail.has(f));
+    if (hasOpener(p.known_text)) interjected++;
+    const fs = framesOf(p.known_text).filter(f => avail.has(f));
     frameSets.push(fs);
     for (const f of fs) used.set(f, (used.get(f) || 0) + 1);
   }
-  const usedIds = [...used.keys()].sort((a, b) => +a.slice(1) - +b.slice(1));
+  const usedIds = T.FRAME_IDS.filter(f => used.has(f));
   const missing = available.filter(f => !avail.has(f) ? false : !used.has(f));
   return {
     phrases: phrases.length,
@@ -135,4 +108,4 @@ function scoreCourseWindows(phrases, availableAt, { size = 20, maxSeed = 668, ra
   return out;
 }
 
-module.exports = { INTERJECTIONS, stripInterjections, framesOf, scoreWindow, scoreCourseWindows, rarefy };
+module.exports = { framesOf, hasOpener, scoreWindow, scoreCourseWindows, rarefy };

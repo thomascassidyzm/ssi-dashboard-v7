@@ -12,7 +12,9 @@
  */
 const test = require('node:test');
 const assert = require('node:assert');
-const { scoreWindow, stripInterjections, framesOf } = require('./window-coverage.cjs');
+const { scoreWindow } = require('./window-coverage.cjs');
+const { installTags } = require('../tag-fixtures.cjs');
+const { CODEX } = require('../frame-tagger.cjs');
 const { walk } = require('../pattern-diversity.cjs');
 
 const clean = [
@@ -26,6 +28,16 @@ const stapled = [
   { known_text: 'no problem, we could go to the forest', phrase_role: 'use' },
 ];
 const AVAILABLE = ['P1', 'P4', 'P23', 'P28'];
+
+// What the frame tagger returns for these texts, per the codex: an opener is
+// marked O and tagged past, so the stapled text carries the clean text's frames.
+// (Whether Haiku actually does this is measured on the gold set: opener accuracy 0.99.)
+installTags({
+  'I want to go': ['P1'], 'I want to see the forest': ['P1'], 'we could go to the forest': ['P4'],
+  'thank you, I want to go': { frames: ['P1'], opener: true },
+  'unfortunately I want to see the forest': { frames: ['P1'], opener: true },
+  'no problem, we could go to the forest': { frames: ['P4'], opener: true },
+});
 
 // The naive scorer this rule is written against: v3's position axis. Lego "I want".
 function naivePositionSpread(phrases, lego) {
@@ -48,15 +60,12 @@ test('the v4 window scorer gives the stapled set exactly the clean set\'s frames
   assert.strictEqual(b.interjection_openers, 3);
 });
 
-test('"I am sorry but" does not buy the because/so/but frame', () => {
-  assert.ok(!framesOf('I am sorry but I want to go').includes('P15'));
-  assert.ok(framesOf('I want to go but I cannot').includes('P15'));
-});
-
-test('strip is bounded and leaves the remainder intact', () => {
-  assert.deepStrictEqual(stripInterjections('well, of course, I want to go'), { text: 'I want to go', stripped: ['well', 'of course'] });
-  assert.deepStrictEqual(stripInterjections('I want to go'), { text: 'I want to go', stripped: [] });
-  assert.deepStrictEqual(stripInterjections('nobody wants to go').stripped, []);
+test('the codex tells the tagger that openers earn nothing, with the hard cases spelled out', () => {
+  const rule = CODEX.general_rules.find(r => r.startsWith('OPENER'));
+  assert.ok(rule, 'the codex carries the opener rule');
+  for (const s of ["'no one came'", "'but for you'", "'thank you,'", "'no problem'"]) assert.ok(rule.includes(s), `opener rule names ${s}`);
+  const p15 = CODEX.frames.find(f => f.id === 'P15');
+  assert.ok(p15.near_misses.some(n => n.text.startsWith('but ') && n.why.includes('opener')), 'P15 names a leading "but" as an opener, not the frame');
 });
 
 test('coverage is over the AVAILABLE frames, not all 31', () => {
@@ -65,9 +74,4 @@ test('coverage is over the AVAILABLE frames, not all 31', () => {
   assert.deepStrictEqual(r.used_ids, ['P1', 'P4']);
   assert.deepStrictEqual(r.missing_ids, ['P17']);
   assert.strictEqual(r.coverage, 0.667);
-});
-
-test('"No one wants to go" keeps its "No" — it is the P23 negation frame, not a stapled opener', () => {
-  assert.deepStrictEqual(stripInterjections('No one wants to go'), { text: 'No one wants to go', stripped: [] });
-  assert.deepStrictEqual(stripInterjections('No, I want to go').stripped, ['no']);
 });
