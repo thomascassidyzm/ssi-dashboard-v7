@@ -189,6 +189,9 @@
                 <span class="status-pill px-2 py-0.5 rounded-full text-[11px] font-medium border" :class="getStatusClass(course.status)">
                   {{ statusLabel(course.status) }}
                 </span>
+                <span v-if="course.is_hidden" class="px-2 py-0.5 rounded-full text-[11px] font-medium border border-amber-500/40 text-amber-400 bg-amber-500/10" title="Hidden from learners — sandbox course, visible to you because you have access">
+                  Hidden
+                </span>
               </td>
             </tr>
           </tbody>
@@ -579,6 +582,7 @@ async function loadCourses() {
         course_code: c.course_code,
         display_name: c.display_name,
         status: c.status,
+        is_hidden: !!c.is_hidden,
         pricing_tier: c.pricing_tier || 'premium',
         seed_count: c.seed_count,
         seed_pairs: 0, lego_pairs: 0, phrases: 0,
