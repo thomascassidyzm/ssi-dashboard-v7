@@ -41,3 +41,24 @@ test('S114 / S134 forum rows: the mismatched pair goes, the tense is fixed on th
   assert.strictEqual(T.SWEEP_PHRASES.S0134L03B04.to[0], "I'm working at something difficult");
   assert.strictEqual(T.SWEEP_PHRASES.S0134L03B04.to[1], T.SWEEP_PHRASES.S0134L03B04.from[1]);
 });
+
+test('a refused known-audio render aborts the pass with the LEGO\'s presentation_audio_id untouched (the intro request carries no legoId)', async () => {
+  const legoRow = { presentation_audio_id: 'OLD-INTRO' };
+  const requests = [];
+  const realFetch = global.fetch;
+  // stands in for POST /api/audio/render: like the real route, a presentation request WITH a legoId binds at once
+  global.fetch = async (_url, init) => {
+    const b = JSON.parse(init.body); requests.push(b);
+    if (b.role === 'known') return { status: 402, json: async () => ({ ok: false, code: 'DAILY_TOTAL_CAP' }) };
+    if (b.role === 'presentation' && b.legoId && !b.dryRun) legoRow.presentation_audio_id = 'NEW-INTRO';
+    return { status: 200, json: async () => ({ ok: true, audioId: 'NEW-INTRO', source: 'rendered', charsSpent: 1 }) };
+  };
+  const pg = { query: async () => ({ rows: [{ id: 'NEW-INTRO', text: "The French for: 'to stay', is:", voice_id: 'tom_001', role: 'presentation' }] }) };
+  const c = { id: 'S0276L01', seed: 276, rule: 'K41', before: { known: 'stay', target: 'rester' }, after: { known: 'to stay', target: 'rester' }, intro: { after: "The French for: 'to stay', is:" } };
+  try {
+    await assert.rejects(T.apply(pg, null, { legoChanges: [c], phraseChanges: [], deletes: [] }, {}), /route refused/);
+  } finally { global.fetch = realFetch; }
+  assert.ok(requests.some((r) => r.role === 'presentation'), 'the intro was requested before the known clip');
+  assert.ok(requests.filter((r) => r.role === 'presentation').every((r) => !('legoId' in r)));
+  assert.strictEqual(legoRow.presentation_audio_id, 'OLD-INTRO');
+});
