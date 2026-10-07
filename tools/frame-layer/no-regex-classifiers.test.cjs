@@ -25,6 +25,7 @@ const { installTags, regexpCalls } = require('./tag-fixtures.cjs');
 const CLASSIFIERS = [
   'frame-tagger.cjs', 'patterns.cjs', 'v4/window-coverage.cjs', 'v4/frame-inventory.cjs',
   'dialogue-patterns.cjs', 'could-occupy.cjs', 'split-matchers.cjs',
+  'pattern-diversity.cjs', 'clause-cut.cjs',
 ];
 
 /**
@@ -32,7 +33,7 @@ const CLASSIFIERS = [
  * the matrix-clause cut) but must never BUILD a regex from data: the
  * `new RegExp(o.target_re)` split matchers lived here until 2026-10-07.
  */
-const NO_DYNAMIC_REGEX = ['derive-seed-job.cjs', 'pattern-diversity.cjs'];
+const NO_DYNAMIC_REGEX = ['derive-seed-job.cjs', 'extract-dialogue-patterns.cjs']; // the latter parses sector markdown with regex (plumbing); its register judgement is model-tagged
 
 function regexNodes(file) {
   const src = fs.readFileSync(path.join(__dirname, file), 'utf8').replace(/^#!.*\n/, '');
@@ -112,4 +113,26 @@ test('an untagged turn, exchange, sentence or target text throws rather than rea
   assert.throws(() => EXCHANGE_FRAMES[0].testPair('a', 'b'), /not tagged/);
   assert.throws(() => tag('never tagged at all'), /not tagged/);
   assert.throws(() => carries(spa.S1.outcomes[0], 'nunca'), /not tagged/);
+});
+
+test('the matrix-clause cut, the skeleton and the register run zero RegExp executions', () => {
+  const { installTags, installCuts } = require('./tag-fixtures.cjs');
+  installCuts({ "I'd have driven if you'd told me": 4, 'bread and butter please': 0 });
+  const { matrixClause, skeleton } = require('./pattern-diversity.cjs');
+  const { registerOf, registerKey, REGISTER_CODEX } = require('./extract-dialogue-patterns.cjs');
+  const barista = { speaker: 'Barista', scene_title: 'A Day of Greetings (iii) - 3 pm', english_text: "Here's your coffee." };
+  const friend = { speaker: 'Aran', scene_title: 'A Day of Greetings (i)', english_text: 'Good morning!' };
+  installTags({ [registerKey(barista)]: ['R1'], [registerKey(friend)]: [] }, REGISTER_CODEX);
+  let out;
+  const n = regexpCalls(() => {
+    out = [matrixClause("I'd have driven if you'd told me"), skeleton("I'd have driven if you'd told me"),
+      matrixClause('bread and butter please'), registerOf(barista), registerOf(friend), registerOf({ source: 'sector' })];
+  });
+  assert.strictEqual(n, 0);
+  assert.deepStrictEqual(out, ["I'd have driven", "i'd have driven | if you'd told me", 'bread and butter please', 'service', 'social', 'clinical']);
+});
+
+test('an uncut phrase throws rather than reading as one clause', () => {
+  require('./tag-fixtures.cjs').installCuts({});
+  assert.throws(() => require('./pattern-diversity.cjs').matrixClause('never cut but asked'), /has not been cut/);
 });

@@ -80,14 +80,19 @@ const MERGED = allSentenceMatchers();
 const { carries, ensureSplitsTagged } = require('./split-matchers.cjs');
 const { ensureTagged, knownLanguageName } = require('./frame-tagger.cjs');
 
-const WORD = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9' ]/g, ' ').split(/\s+/).filter(Boolean);
+/** Lower-case word tokens: letters a-z, digits and apostrophes; everything else separates. Plumbing, not classification. */
+const KEEP = new Set("abcdefghijklmnopqrstuvwxyz0123456789'");
+const WORD = (s) => [...String(s || '').toLowerCase()].map(ch => (KEEP.has(ch) ? ch : ' ')).join('').split(' ').filter(Boolean);
 
-/** [SPEC:worker] the matrix clause: everything before the first subordinator or coordinator. */
-const SUBORD = /\b(if|but|because|when|while|before|after|until|although|so that|and|that|though|unless)\b/i;
+/**
+ * The matrix clause: everything before the connective that opens the first
+ * subordinate or coordinate clause. WHERE that is, is judged by a Haiku-family
+ * model (clause-cut.cjs, cached per text); it used to be the first match of a
+ * subordinator regex, which also cut "bread and butter" and "that man".
+ */
+const { ensureCut, splitAtCut } = require('./clause-cut.cjs');
 function matrixClause(known) {
-  const m = SUBORD.exec(String(known || ''));
-  const head = m ? known.slice(0, m.index) : known;
-  return head.trim() || known;
+  return splitAtCut(known).matrix.trim() || String(known || '');
 }
 
 /**
@@ -107,11 +112,10 @@ function frameSig(known, matchers = MERGED) {
  * split outcomes on its TARGET text. Cached per text; cheap to call twice.
  */
 async function prepareScoring(phrases, { course = 'spa_for_eng', ...opts } = {}) {
+  const texts = (phrases || []).filter(p => p && String(p.known_text || '').trim()).map(p => p.known_text);
+  await ensureCut(texts, opts);   // the matrix clause is cut by the model before it is tagged
   const known = [];
-  for (const p of phrases || []) {
-    if (!p || !String(p.known_text || '').trim()) continue;
-    known.push(p.known_text, matrixClause(p.known_text));
-  }
+  for (const t of texts) known.push(t, matrixClause(t));
   const knownLanguage = knownLanguageName(course);
   await ensureTagged(known, { ...opts, knownLanguage });
   await ensureTagged(known, { ...opts, knownLanguage, codex: D_CODEX });
@@ -143,11 +147,10 @@ const FLOORS = { frame: 0.34, pos: 0.34, neigh: 0.30, junct: 0.50, split: 1.0 };
  * which is the tail-swap failure written as a number. `crossed_weak` reports the
  * laxer test (each outcome present at least once) so the two can be compared.
  */
-const first3 = (t) => String(t || '').toLowerCase().replace(/[^a-z0-9' ]/g, ' ').split(/\s+/).filter(Boolean).slice(0, 3).join(' ');
+const first3 = (t) => WORD(t).slice(0, 3).join(' ');
 function skeleton(known) {
-  const m = SUBORD.exec(String(known || ''));
-  return m ? `${first3(known.slice(0, m.index))} | ${m[0].toLowerCase()} ${first3(known.slice(m.index + m[0].length))}`
-           : `${first3(known)} |`;
+  const { matrix, connective, rest } = splitAtCut(known);
+  return connective ? `${first3(matrix)} | ${connective.toLowerCase()} ${first3(rest)}` : `${first3(known)} |`;
 }
 
 function crossesSplit(phrases, split) {

@@ -42,7 +42,7 @@ const fs = require('fs');
 const path = require('path');
 const PATTERNS = require('./patterns.cjs');
 const { SENTENCE_FRAMES, EXCHANGE_FRAMES, ensureDialogueTagged } = require('./dialogue-patterns.cjs');
-const { ensureTagged } = require('./frame-tagger.cjs');
+const { ensureTagged, framesOf } = require('./frame-tagger.cjs');
 
 const ROOT = path.join(__dirname, '..', '..');
 const DOCS = path.join(ROOT, 'docs', 'frame-layer');
@@ -57,24 +57,20 @@ const DEFAULT_PODS = ['pod-1'];
 const SECTOR_SOURCES = ['docs/sector-pods/source/health-sector-conversations-v3.md'];
 
 /**
- * Register comes MECHANICALLY from the attesting row — never hand-assigned.
- *
- * The design proposed reading it from `scene_title` alone. The corpus refutes
- * that on its own data: pod-1's counter transaction with the Barista ("Here's
- * your coffee.", row SC03-S09) sits inside the scene titled "A Day of Greetings
- * (iii) - 3 pm", so a title-only rule tags a service encounter as social. The
- * SPEAKER is the second mechanical signal and it is the reliable one: a ROLE
- * name (Barista, Waiter, Receptionist, Driver) is a service encounter; a
- * personal name is a social one. Both signals are read off the attesting row,
- * so nothing here is a judgement call.
+ * Register is read off the attesting row, never hand-assigned. Sector rows are
+ * clinical by SOURCE (a fact, not a judgement). For a pod turn, service vs
+ * social is judged by a Haiku-family model reading register-codex.json, from
+ * the row's speaker, scene title and the turn itself (Tom, 2026-10-07: no regex
+ * classifies language). The judgement used to be a regex over role names and
+ * scene words; the corpus had already shown why the scene alone misleads:
+ * pod-1's counter transaction with the Barista ("Here's your coffee.", row
+ * SC03-S09) sits inside the scene titled "A Day of Greetings (iii) - 3 pm".
  */
-const SERVICE_SCENES = /coffee|pub|restaurant|shop|hotel|chemist|direction|taxi|ticket|bank|market/i;
-const SERVICE_ROLES = /^(barista|waiter|waitress|bartender|receptionist|assistant|driver|shopkeeper|pharmacist|clerk|cashier|host|staff|local|guest|customer|passenger)\b/i;
+const REGISTER_CODEX = require('./register-codex.json');
+const registerKey = (row) => `${row.speaker || '?'} | ${row.scene_title || '?'} | ${row.english_text || ''}`;
 function registerOf(row) {
   if (row.source === 'sector') return 'clinical';
-  if (SERVICE_ROLES.test(row.speaker || '')) return 'service';
-  if (SERVICE_SCENES.test(row.scene_title || '')) return 'service';
-  return 'social';
+  return framesOf(registerKey(row), REGISTER_CODEX).includes('R1') ? 'service' : 'social';
 }
 
 async function loadCanon(sb, pods) {
@@ -215,6 +211,7 @@ async function prepareInventory(rows, opts = {}) {
   await ensureDialogueTagged({ turns,
     exchanges: adjacencyOf(dialogue).map(([a, b, c]) => [a.english_text, b.english_text, c && c.english_text]) },
   { ...opts, knownLanguage: 'English' });
+  await ensureTagged(dialogue.filter(r => r.source !== 'sector').map(registerKey), { ...opts, codex: REGISTER_CODEX });
 }
 function prevInScene(rows, row) {
   const i = rows.indexOf(row);
@@ -335,7 +332,7 @@ function stalenessOf(inv, liveMaxUpdatedAt) {
   return { known: true, stale: new Date(liveMaxUpdatedAt) > new Date(mined), mined, live: liveMaxUpdatedAt };
 }
 
-module.exports = { extract, inventory, prepareInventory, toMarkdown, loadSectorSource, registerOf, stalenessOf, DEFAULT_PODS, SECTOR_SOURCES };
+module.exports = { extract, inventory, prepareInventory, toMarkdown, loadSectorSource, registerOf, registerKey, REGISTER_CODEX, stalenessOf, DEFAULT_PODS, SECTOR_SOURCES };
 
 if (require.main === module) {
   const { createClient } = require('@supabase/supabase-js');

@@ -22,4 +22,10 @@ function regexpCalls(fn) {
   return n;
 }
 
-module.exports = { installTags, regexpCalls };
+/** Clause cuts for tests (clause-cut.cjs): { text: k }, k = number of the connective word opening the second clause, 0 = none. */
+function installCuts(map) {
+  const C = require('./clause-cut.cjs');
+  return C.useCutCache(new C.MemoryCutCache(map));
+}
+
+module.exports = { installTags, installCuts, regexpCalls };

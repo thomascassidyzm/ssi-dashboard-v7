@@ -1,0 +1,32 @@
+{
+ "id": "R",
+ "version": "2026-10-07.1",
+ "title": "SSi register codex: is a pod turn part of a SERVICE encounter?",
+ "purpose": "extract-dialogue-patterns.cjs reports which registers attest each dialogue frame. Sector (clinical) rows are clinical by source; every other pod turn is service or social, judged here by a Haiku-family model instead of a regex over speaker and scene names (r-2026-10-07-never-use-regex-to-classify-language).",
+ "task": "You decide whether a turn from a language-course dialogue belongs to a service encounter",
+ "request": "For EACH numbered item (speaker | scene | turn), give R1 if the turn is part of a service encounter, or - if it is social. Never output O.",
+ "example": "Example: 3: speaker is a barista serving coffee => R1",
+ "general_rules": [
+  "A SERVICE encounter is one where one person serves the other in a commercial or professional role: buying, ordering, paying, booking, checking in, asking a shop assistant, a pharmacist, a receptionist, a driver, a ticket clerk, a bank clerk, or asking a passer-by (a local) for directions.",
+  "The SPEAKER is the strongest signal: a role name (Barista, Waiter, Receptionist, Driver, Shopkeeper, Pharmacist, Clerk, Cashier, Staff, Local, Customer, Passenger, Guest) means a service encounter, and so does a personal name when the turn is plainly the customer side of one.",
+  "The SCENE title helps but can mislead: a counter transaction can sit inside a scene titled as greetings. Judge the turn in its scene, not the title alone.",
+  "Friends, family, colleagues or strangers chatting, greeting, catching up or making plans are SOCIAL (-)."
+ ],
+ "frames_heading": "REGISTERS",
+ "output": "One line per item: '<number>: <a few words> => R1' or '=> -'.",
+ "frames": [
+  {
+   "id": "R1", "name": "service encounter", "shape": "speaker in a serving role, or a customer addressing one",
+   "definition": "The turn belongs to a service encounter: someone serving (selling, taking an order, checking in, giving directions as a local) or the customer side of that exchange.",
+   "positives": ["Barista | A Day of Greetings (iii) - 3 pm | Here's your coffee.", "Waiter | At the restaurant | Are you ready to order?", "Tom | At the chemist | Have you got anything for a headache?", "Receptionist | Checking in | Your room is on the second floor.", "Local | Asking for directions | It's the second street on the left."],
+   "near_misses": [
+    {"text": "Aran | A Day of Greetings (i) | Good morning, how are you?", "why": "two people greeting socially"},
+    {"text": "Mum | At home | Do you want a coffee?", "why": "family offer, not a sale"},
+    {"text": "Sara | Meeting a friend at the coffee shop | It's so good to see you!", "why": "friends chatting in a café: the setting is commercial, the encounter is social"},
+    {"text": "Colleague | At work | Shall we have lunch?", "why": "colleagues, social"},
+    {"text": "Tom | Planning the weekend | We could go to the market.", "why": "talking ABOUT a shop is not a service encounter"}
+   ],
+   "boundary": ["The encounter type decides, not the place: friends in a café are social; a customer at the counter is service."]
+  }
+ ]
+}

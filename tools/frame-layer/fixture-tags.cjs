@@ -58,12 +58,15 @@ function installFixture(name) {
       fs.writeFileSync(fileOf(name, 'todo'), JSON.stringify(todo, null, 1) + '\n');
       process.stderr.write(`fixture ${name}: ${Object.values(todo).reduce((a, x) => a + x.length, 0)} untagged text(s) written to ${name}.todo.json\n`);
     });
+    require('./tag-fixtures.cjs').installCuts(fx.cuts || {});
     return;
   }
   // `versions` is provenance, not a gate: the tags are the test's stated
   // assumptions and stay valid input for the code under test whatever the
   // codex says today. Whether the MODEL still agrees is the gold set's job.
   for (const [id, codex] of Object.entries(CODEXES)) installTags((fx.tags || {})[id] || {}, codex);
+  // clause cuts (clause-cut.cjs): { text: number of the connective opening the second clause, 0 = none }
+  require('./tag-fixtures.cjs').installCuts(fx.cuts || {});
 }
 
 /** Tag a fixture's todo list with Haiku and fold it into the fixture. Costs model calls; never run by a test. */

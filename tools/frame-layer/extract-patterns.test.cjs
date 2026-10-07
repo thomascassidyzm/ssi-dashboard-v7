@@ -33,6 +33,14 @@ installTags({
   'conducido por otra persona habría sido más fácil': A, 'si él hubiera conducido el coche yo habría estado más contento': AB,
   '¿habrías conducido tan lejos?': A,
 }, require('./split-codex-spa.json'));
+// Where the model cuts the matrix clause (clause-cut.cjs): the number of the connective word, 0 = no second clause.
+require('./tag-fixtures.cjs').installCuts({
+  'driven': 0, "I'd have driven home": 0, "I'd have driven": 0, "I'd have driven in a safe way": 0, "I'd have driven there": 0,
+  "I'd have driven if you'd told me": 4, "I'd have driven if you'd told me how tired you were": 4, "I'd have driven but I was tired": 4,
+  "I'd have driven if you'd told me that": 4, "I'd have driven if it had been closer": 4, "she'd have driven but nobody asked her": 4,
+  "if I'd driven": 0, "you'd have driven": 0, "if you'd driven we would have arrived earlier": 0,
+  'driven by someone else it would have been easier': 0, "if he'd driven the car I'd have been happier": 0, 'would you have driven that far?': 0,
+});
 // ids unique, ordered, and each carries a shape
 const ids = PATTERNS.map(p => p.id);
 if (new Set(ids).size !== ids.length) { fail++; console.log('FAIL duplicate pattern ids'); }
