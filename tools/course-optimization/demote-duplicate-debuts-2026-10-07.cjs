@@ -151,6 +151,15 @@ function planCourse(db) {
   return out;
 }
 
+/** Everything APPLY acts on, in one comparable string: drift in any of it aborts (second read, #145·L). */
+function canonical(plan) {
+  const copies = plan.copies.map((c) => ({ id: c.id, position: c.position, for: c.for, home: c.home.lego_id, src: c.src_id || c.src.id,
+    known: c.known_text ?? c.src.known_text, target: c.target_text ?? c.src.target_text,
+    audio: [c.known_audio_id ?? c.src.known_audio_id, c.target1_audio_id ?? c.src.target1_audio_id, c.target2_audio_id ?? c.src.target2_audio_id] }));
+  const demote = plan.demote.map((d) => ({ id: d.id, keep: d.keep, known: d.known_text, target: d.target_text, basket: [...d.basket_ids].sort() }));
+  return JSON.stringify({ demote: demote.sort((a, b) => a.id.localeCompare(b.id)), copies: copies.sort((a, b) => a.id.localeCompare(b.id)) });
+}
+
 // ── live (read-only for the dry run) ─────────────────────────────────────────────────────────────────────────────
 function databaseUrl() {
   if (process.env.DATABASE_URL) return process.env.DATABASE_URL;
@@ -239,10 +248,10 @@ async function apply(planFile) {
     for (const [course, p] of Object.entries(plan.courses)) {
       if (!p.demote.length) continue;
       // DRIFT: re-plan from live and require the identical change set before anything is written
-      const live = planCourse(await loadCourse(pg, course));
-      const same = JSON.stringify(live.demote.map((d) => d.id).sort()) === JSON.stringify(p.demote.map((d) => d.id).sort())
-        && JSON.stringify(live.copies.map((c) => c.id).sort()) === JSON.stringify(p.copies.map((c) => c.id).sort());
-      if (!same) throw new Error(`${course}: live plan differs from ${planFile} — re-run the dry run`);
+      const liveDb = await loadCourse(pg, course);
+      const live = planCourse(liveDb);
+      if (canonical(live) !== canonical(p)) throw new Error(`${course}: live plan differs from ${planFile} (keeper, basket, copy source/home/position/audio) — re-run the dry run`);
+      if (liveDb.version.version !== p.before.course_version.version) throw new Error(`${course}: courses.version moved since the dry run — re-run it`);
       const event = await recordContentEdit(supabase, { identity, courseCode: course, surface: SURFACE, operation: 'lego-edit',
         scope: { seed_numbers: [...new Set(p.demote.map((d) => d.seed_number).concat(p.copies.map((c) => c.home.seed_number)))].sort((a, b) => a - b), lego_ids: p.demote.map((d) => d.lego_id), phrase_ids: p.copies.map((c) => c.id), rows: p.demote.length + p.copies.length },
         detail: { ruling: RULING, job: JOB, demote: p.demote.map((d) => ({ lego: d.lego_id, keep: d.keep, from: { is_new: true }, to: { is_new: false } })), add: p.copies.map((c) => ({ id: c.id, under: c.home.lego_id, copy_of: c.src_id })) } });
@@ -287,6 +296,9 @@ async function apply(planFile) {
   console.log(`APPLIED ${Object.keys(log.courses).length} courses. Audio: none needed (copies reuse their source clips). Log: ${path.join(EVIDENCE, `${SWEEP}-applied.json`)}`);
 }
 
+// ROLLBACK restores every editorial field (is_new, last_edit_event_id) and removes the copies. It does NOT wind back
+// courses.version (it bumps again, so phones drop cached lessons), content_stamp, row version/updated_at (triggers),
+// or the content_edit_events / content_audit_log rows, which are the audit trail by design.
 async function rollback(appliedFile) {
   const log = JSON.parse(fs.readFileSync(appliedFile, 'utf8'));
   if (log.mode !== 'APPLIED') throw new Error('PLAN must be the applied log');
@@ -335,5 +347,5 @@ async function main() {
   return dryRun(process.argv.slice(2));
 }
 
-module.exports = { planCourse, excludedCourse, containsTarget, JUDGEMENT_HOLD };
+module.exports = { planCourse, canonical, excludedCourse, containsTarget, JUDGEMENT_HOLD };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });

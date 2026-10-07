@@ -67,3 +67,11 @@ test('an earlier twin missing a clip, and any Welsh course, are held — never p
   assert.strictEqual(w.demote.length, 0);
   assert.ok(w.held.every((h) => h.why.some((y) => /Welsh/.test(y))));
 });
+
+test('APPLY\'s drift check notices a changed copy source even when every id is unchanged', () => {
+  const a = T.canonical(T.planCourse(course()));
+  const c = course();
+  c.phrases.find((p) => p.id === 'fra:S0010L01U02').target1_audio_id = 'other-clip';
+  assert.notStrictEqual(T.canonical(T.planCourse(c)), a);
+  assert.strictEqual(T.canonical(T.planCourse(course())), a);
+});
