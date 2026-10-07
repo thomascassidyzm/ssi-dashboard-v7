@@ -1,0 +1,48 @@
+{
+ "versions": {
+  "P": "2026-10-07.3",
+  "D": "2026-10-07.4"
+ },
+ "tags": {
+  "P": {
+   "I want to speak Spanish with you now": {
+    "frames": [
+     "P1",
+     "P28"
+    ],
+    "opener": false
+   },
+   "Yes, I've got a busy day today": {
+    "frames": [
+     "P28"
+    ],
+    "opener": true
+   },
+   "I want to a": {
+    "frames": [],
+    "opener": false
+   },
+   "I want to b": {
+    "frames": [],
+    "opener": false
+   },
+   "I want to c": {
+    "frames": [],
+    "opener": false
+   },
+   "I want to d": {
+    "frames": [],
+    "opener": false
+   }
+  },
+  "D": {
+   "Yes, I've got a busy day today": [
+    "D2"
+   ],
+   "I want to a": [],
+   "I want to b": [],
+   "I want to c": [],
+   "I want to d": []
+  }
+ }
+}

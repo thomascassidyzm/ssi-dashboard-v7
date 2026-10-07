@@ -13,6 +13,9 @@
  * targets contain "y tú", and whose only "tu" is the POSSESSIVE ("your"/"tu",
  * seed 121), a different word from the pronoun.
  */
+// Frames, could-occupy classes and split outcomes are model-tagged (frame-tagger.cjs);
+// this test reads the recorded tags in fixtures/instantiability.tags.json and never calls a model.
+require('./fixture-tags.cjs').installFixture('instantiability');
 const { instantiableFrameSet, availableVocab } = require('./availability.cjs');
 const { SENTENCE_FRAMES, EXCHANGE_FRAMES, allSentenceMatchers } = require('./dialogue-patterns.cjs');
 const FRAMES = [...SENTENCE_FRAMES, ...EXCHANGE_FRAMES];

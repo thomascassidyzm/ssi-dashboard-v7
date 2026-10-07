@@ -4,6 +4,9 @@
  * derivation, and per-LEGO-basket scoping of the floors.
  * No DB, no network, single process — the corpus is a handful of literals.
  */
+// Frames, could-occupy classes and split outcomes are model-tagged (frame-tagger.cjs);
+// this test reads the recorded tags in fixtures/derive-and-baskets.tags.json and never calls a model.
+require('./fixture-tags.cjs').installFixture('derive-and-baskets');
 const { deriveJob, splitsForBasket } = require('./derive-seed-job.cjs');
 const { scoreBaskets, score } = require('./pattern-diversity.cjs');
 let fail = 0;

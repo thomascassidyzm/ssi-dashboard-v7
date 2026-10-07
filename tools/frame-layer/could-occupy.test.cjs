@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 /** Could-occupy tagging — cheap self-test. No DB, no network, one process. */
+// Frames, could-occupy classes and split outcomes are model-tagged (frame-tagger.cjs);
+// this test reads the recorded tags in fixtures/could-occupy.tags.json and never calls a model.
+require('./fixture-tags.cjs').installFixture('could-occupy');
 const { CLASSES, tag, tagCorpus, isSpecific, GENERIC } = require('./could-occupy.cjs');
 const mg = require('../../services/shared/metagraph/index.cjs');
 
