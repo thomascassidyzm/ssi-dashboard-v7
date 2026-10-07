@@ -7,10 +7,11 @@
 //  (c) the FIRST LEGO in running order with the same English (normalizeForZUT) sits in an HC seed
 //      (id >= 1000), and its Welsh is identical (normalizeForStorage) or a soft-mutation variant
 //      (welsh-mutation.cjs, with the particle fix).
+// Set DUMP=<file> to write the counted LEGO ids (and the not-counted list) as JSON.
 // Reported separately, NOT counted: same Welsh under different English; and earlier sources that are
 // old seeds (re-teaches the live course already had before HC).
 const fs=require('fs');const S=process.env.CS_SCRATCH;
-const W='/home/tomcassidy/.cs-worktrees/ssi-dashboard-v7-clean/22-welsh-south-sandbox-replicate/services/course-builder/lib/';
+const W=require('path').join(__dirname,'../../services/course-builder/lib/')+'';
 const {normalizeForZUT:Z,normalizeForStorage:N}=require(W+'text-normalization.cjs');const {isSoftMutationVariant:M}=require(W+'welsh-mutation.cjs');
 const [c,keepCsv]=process.argv.slice(2);const code=`cym_${c}_for_eng`;const keep=new Set(keepCsv.split(',').map(Number));
 const L=JSON.parse(fs.readFileSync(`${S}/${c}_ordered.json`));const blockEnd=Math.max(...L.filter(l=>l.n>=1000).map(l=>l.p));
@@ -22,3 +23,4 @@ for(const l of L){const k=Z(l.k),t=N(l.t);
   if(!firstK.has(k))firstK.set(k,l); if(!firstT.has(t))firstT.set(t,l);}
 const seeds=a=>new Set(a.map(l=>l.n)).size;
 console.log(`${code}: COUNTED ${hit.length} LEGOs in ${seeds(hit)} seeds | same-Welsh-other-English ${sub.length} in ${seeds(sub)} | pre-existing old-course re-teach ${pre.length} in ${seeds(pre)}`);
+if(process.env.DUMP)fs.writeFileSync(process.env.DUMP,JSON.stringify({hit:hit.map(l=>l.id),sub:sub.map(l=>({n:l.n,i:l.i,k:l.k,t:l.t})),hitRows:hit.map(l=>({id:l.id,n:l.n,i:l.i,k:l.k,t:l.t,src:(firstK.get(Z(l.k))||{})}))},null,1));

@@ -31,3 +31,29 @@ describe('isSoftMutationVariant — the mi/fe particle', () => {
     expect(isSoftMutationVariant('spa_for_eng', 'mi fedra i', 'fedra i')).toBe(false);
   });
 });
+
+// Aran, 2026-10-07 (job #57): "Nasal and aspirate mutated forms stay NEW items." The re-teach marking of
+// the Welsh sandboxes (tools/course-optimization/weave-cym-reteach-count.cjs) relies on this: only the
+// soft mutation folds, so a nasal or aspirate form is a different, new item and is never marked taught.
+describe('isSoftMutationVariant — nasal and aspirate stay NEW (Aran ruling 2026-10-07)', () => {
+  it('soft mutation folds, as the control: gath = cath, ddiwrnod = diwrnod', () => {
+    expect(isSoftMutationVariant(C, 'gath', 'cath')).toBe(true);
+    expect(isSoftMutationVariant(C, 'ddiwrnod', 'diwrnod')).toBe(true);
+  });
+  it('nasal does not fold: nghath/cath, nhad/tad, mhen/pen, nhad/dad', () => {
+    for (const [a, b] of [['nghath', 'cath'], ['nhad', 'tad'], ['mhen', 'pen'], ['nghath', 'gath'], ['mhen', 'ben']]) {
+      expect(isSoftMutationVariant(C, a, b)).toBe(false);
+      expect(isSoftMutationVariant(C, b, a)).toBe(false);
+    }
+  });
+  it('aspirate does not fold: chath/cath, thad/tad, phen/pen, haf/af', () => {
+    for (const [a, b] of [['chath', 'cath'], ['thad', 'tad'], ['phen', 'pen'], ['haf', 'af']]) {
+      expect(isSoftMutationVariant(C, a, b)).toBe(false);
+      expect(isSoftMutationVariant(C, b, a)).toBe(false);
+    }
+  });
+  it('inside a phrase: fy nghath i stays different from fy nghath i / a cath one', () => {
+    expect(isSoftMutationVariant(C, 'fy nghath i', 'fy ngath i')).toBe(false);
+    expect(isSoftMutationVariant(C, 'ei chath hi', 'ei gath hi')).toBe(false);
+  });
+});
