@@ -263,7 +263,9 @@ async function apply(pg, supabase, p, log) {
   // 1. MAKE: every clip first. A refusal throws here, before any text has moved.
   for (const c of p.legoChanges) {
     c.clips = {};
-    if (c.intro) c.clips.presentation = await clip(pg, { role: 'presentation', text: c.intro.after, legoId: c.id, voiceId: INTRO_VOICE, purpose: `job ${JOB}: ${c.rule} intro ${c.id}` }, log);
+    // NO legoId: with one the route writes course_legos.presentation_audio_id at once, so a later refusal (the known clip below)
+    // would leave the old text under the new intro. Without it the route only returns the clip; the transactional UPDATE binds it.
+    if (c.intro) c.clips.presentation = await clip(pg, { role: 'presentation', text: c.intro.after, voiceId: INTRO_VOICE, purpose: `job ${JOB}: ${c.rule} intro ${c.id}` }, log);
     if (c.before.known !== c.after.known) c.clips.known = await clip(pg, { role: 'known', text: c.after.known, purpose: `job ${JOB}: ${c.rule} LEGO ${c.id} known` }, log);
     if (c.before.target !== c.after.target) {
       c.clips.target1 = await clip(pg, { role: 'target1', text: c.after.target, purpose: `job ${JOB}: ${c.rule} LEGO ${c.id} target1` }, log);
@@ -367,5 +369,5 @@ async function main() {
   console.log(`Wrote ${out(APPLY ? 'applied' : 'dryrun')}`);
   await pg.end();
 }
-module.exports = { decompositionNeedle, introFor, legoLinks, planLego, planSweep, simulate, zutGate, K41_LEGOS, K41_BUILDS, K32_LEGOS, LEGO_PASS_PHRASES, LEGO_PASS_DELETES, SWEEP_PHRASES };
+module.exports = { apply, decompositionNeedle, introFor, legoLinks, planLego, planSweep, simulate, zutGate, K41_LEGOS, K41_BUILDS, K32_LEGOS, LEGO_PASS_PHRASES, LEGO_PASS_DELETES, SWEEP_PHRASES };
 if (require.main === module) main().catch((e) => { console.error(e); process.exit(1); });
