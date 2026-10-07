@@ -1,0 +1,490 @@
+{
+ "id": "D",
+ "version": "2026-10-07.1",
+ "title": "SSi dialogue codex: the 12 sentence-grain conversational frames (D1-D12)",
+ "purpose": "The definitions a model (Haiku family) uses to say which conversational frames a pod TURN instantiates. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language): classified by a model reading these definitions, never by regex. The D-ids are stable and pinned to tools/frame-layer/dialogue-patterns.cjs, which keeps each frame's fixed_material, position and shape_nodes as data.",
+ "task": "You tag turns from a spoken-dialogue corpus (a language course's conversation pods, and clinical health-sector conversations) with conversational frames",
+ "request": "For EACH numbered turn, give the D-frame ids it instantiates, per the codex. Never output O: this codex has no openers.",
+ "example": "Example: 4: thanks; farewell 'goodbye' => D3 D1",
+ "general_rules": [
+  "A frame is a CONVERSATIONAL MOVE: what the speaker is DOING with these words in the conversation (greeting, thanking, apologising, handing something over). Judge the move, never the presence of a word. 'Thank you very much. Goodbye.' fires D3 and D1; 'thanks to the rain we stayed in' fires nothing.",
+  "A turn is often several sentences. Check EVERY sentence of the turn against EVERY frame and fire each frame that any sentence instantiates. 'Hello! I'm sorry but I can't talk at the moment.' fires D1 and D4.",
+  "Only the speaker's OWN move counts. A greeting, thanks or apology that is reported, quoted, described or talked about does not fire: 'I said hello to her', 'my mother always said thank you', 'say sorry to your brother'.",
+  "Multi-label: fire every frame the turn genuinely instantiates; many turns fire none ('I'm from Manchester.', 'It's not very far.').",
+  "The text may also be a phrase from a language course rather than a pod turn, and its language may not be English (a course's known side). Apply the same moves: Welsh 'diolch' is thanks (D3), Spanish 'perdone' is an attention-getter (D4).",
+  "Placeholders like [target language] or stage directions in brackets are part of the text; ignore them for tagging.",
+  "When unsure whether a borderline case fires, follow the frame's boundary rules; if they do not settle it, do not fire."
+ ],
+ "frames_heading": "D-FRAMES",
+ "output": "One line per turn: '<number>: <tokens>' where tokens are D-frame ids, or '-' when there is nothing. Example: '12: D3 D1'.",
+ "frames": [
+  {
+   "id": "D1",
+   "name": "ritual open/close",
+   "shape": "hello|good morning|goodbye|see you ( , [NAME] )",
+   "definition": "The speaker ritually OPENS or CLOSES an encounter: a greeting (hello, hi, good morning/afternoon/evening, welcome, pleased/nice/lovely to meet you) or a farewell (goodbye, bye, good night, see you later/tomorrow/then, take care as a parting).",
+   "positives": [
+    "Good morning, Sarah!",
+    "Thank you very much. Goodbye.",
+    "Yes, very. I'm very tired now. Good night. See you tomorrow.",
+    "Hello, my name's Siân, I'm one of the nurses looking after you today.",
+    "How interesting. Well, lovely to meet you."
+   ],
+   "near_misses": [
+    {
+     "text": "Did you have a good morning?",
+     "why": "asks about the morning; not a greeting"
+    },
+    {
+     "text": "I said hello to her at the station.",
+     "why": "reported greeting"
+    },
+    {
+     "text": "I'll see you at the station at six.",
+     "why": "arranges a meeting; not a parting formula"
+    },
+    {
+     "text": "Welcome back is what the sign says.",
+     "why": "talked about, not done"
+    },
+    {
+     "text": "Good, now breathe in for me.",
+     "why": "'good' as uptake, not 'good morning'"
+    }
+   ],
+   "boundary": [
+    "'See you then/later/tomorrow' closing a turn is a farewell and fires.",
+    "'Pleased to meet you (too)' and 'lovely to meet you' are ritual and fire.",
+    "'Good night' fires; 'a good night's sleep' does not."
+   ]
+  },
+  {
+   "id": "D2",
+   "name": "polar response + elaboration",
+   "shape": "yes|no|of course , [CLAUSE]",
+   "definition": "A sentence of the turn OPENS with a polar answer particle that answers or responds to the other speaker: yes, no, yeah, yep, nope, of course, certainly, absolutely, definitely, I'm afraid not, afraid so, sure (as a yes). Usually followed by an elaboration, but a bare particle counts.",
+   "positives": [
+    "Yes, I've got a busy day today.",
+    "No, it's free. Please, go ahead.",
+    "Yes, please.",
+    "Of course. There's the machine.",
+    "No, I'm sorry, I'm busy tomorrow."
+   ],
+   "near_misses": [
+    {
+     "text": "No one came to the party.",
+     "why": "'no one' is a pronoun, not an answer particle"
+    },
+    {
+     "text": "With milk but with no sugar.",
+     "why": "'no' as a determiner"
+    },
+    {
+     "text": "No problem at all.",
+     "why": "a reassurance / downgrade (D11, D7), not a polar answer"
+    },
+    {
+     "text": "I said yes to the job.",
+     "why": "reported"
+    },
+    {
+     "text": "Is it yes or no?",
+     "why": "the particles are talked about, not used to answer"
+    }
+   ],
+   "boundary": [
+    "The particle must open a sentence of the turn and work as an answer or response.",
+    "'Of course' fires D2 when it grants or agrees ('Of course. Would you like...'); it may also fire D7 when it is uptake of what was said.",
+    "'No problem' / 'no worries' are NOT D2."
+   ]
+  },
+  {
+   "id": "D3",
+   "name": "thanks / gratitude",
+   "shape": "thank you ( for [NP|VPing] ) | thanks ( , [CLAUSE] )",
+   "definition": "The speaker THANKS the other or expresses gratitude: thank you, thanks, cheers (as thanks), much obliged, I appreciate it, that's very kind of you, thank goodness (relief-gratitude).",
+   "positives": [
+    "Thank you very much. Goodbye.",
+    "I'm very well, thank you.",
+    "Righto. Thank you, love.",
+    "Thanks, that's really helpful.",
+    "That's very kind of you."
+   ],
+   "near_misses": [
+    {
+     "text": "Thanks to the rain, we stayed in.",
+     "why": "'thanks to' means 'because of'"
+    },
+    {
+     "text": "I didn't thank him.",
+     "why": "reported, not done"
+    },
+    {
+     "text": "Say thank you to your grandmother.",
+     "why": "an instruction to thank someone else"
+    },
+    {
+     "text": "He's very kind.",
+     "why": "describes a third person; no gratitude"
+    },
+    {
+     "text": "The thank-you cards are on the table.",
+     "why": "'thank-you' names an object"
+    }
+   ],
+   "boundary": [
+    "'No, thank you' (a polite refusal) fires D3 (and D2).",
+    "Relief formulas 'thank goodness/God' fire.",
+    "'That's very kind of you' fires only when said to the interlocutor as thanks."
+   ]
+  },
+  {
+   "id": "D4",
+   "name": "apology / attention-getter",
+   "shape": "excuse me , [CLAUSE|WH-Q] | (I'm) sorry , [CLAUSE]",
+   "definition": "The speaker APOLOGISES or GETS ATTENTION with a formula at the start of a sentence: excuse me, sorry, I'm sorry, pardon (me), forgive me. Includes 'Sorry?' / 'Pardon?' as a request to repeat.",
+   "positives": [
+    "Excuse me, is this seat taken?",
+    "Hello! I'm sorry but I can't talk at the moment.",
+    "I'm sorry, I didn't understand you.",
+    "Sorry, could you say that again?",
+    "Excuse me. Hello. What's your name?"
+   ],
+   "near_misses": [
+    {
+     "text": "I'm sorry to hear about your mother.",
+     "why": "sympathy, not an apology"
+    },
+    {
+     "text": "He said sorry to me.",
+     "why": "reported"
+    },
+    {
+     "text": "There's no excuse for that.",
+     "why": "'excuse' as a noun"
+    },
+    {
+     "text": "I feel sorry for him.",
+     "why": "pity"
+    },
+    {
+     "text": "Sorry is the hardest word.",
+     "why": "talked about"
+    }
+   ],
+   "boundary": [
+    "Must be the speaker's own apology or attention-getter, normally opening a sentence.",
+    "Sympathy ('sorry to hear that', 'sorry for your loss') does NOT fire."
+   ]
+  },
+  {
+   "id": "D5",
+   "name": "deictic handover",
+   "shape": "here's [NP] | here you are | here it is | there's [NP]",
+   "definition": "The speaker HANDS OVER or PRESENTS a physical thing in the situation, pointing at it: here you are, here it is, here's your coffee, here are the keys, there's the machine, there's your table.",
+   "positives": [
+    "Here's your coffee.",
+    "Here you are.",
+    "Of course. There's the machine.",
+    "Here's your medication and your discharge sheet.",
+    "Here are the tickets, two singles."
+   ],
+   "near_misses": [
+    {
+     "text": "Here's what I think.",
+     "why": "presents an idea, not a thing"
+    },
+    {
+     "text": "There's a problem with my room.",
+     "why": "existential 'there is', nothing handed over"
+    },
+    {
+     "text": "I live here.",
+     "why": "location"
+    },
+    {
+     "text": "Here we are, the station at last.",
+     "why": "announces arrival; nothing presented to the other"
+    },
+    {
+     "text": "There's no milk left.",
+     "why": "existential"
+    }
+   ],
+   "boundary": [
+    "Fires only for an object physically given or pointed out to the other in the situation.",
+    "Existential 'there is/are' does not fire."
+   ]
+  },
+  {
+   "id": "D6",
+   "name": "reciprocal return",
+   "shape": "[ANSWER] . and you ? | what about you ?",
+   "definition": "The speaker RETURNS the same question to the other, normally after answering it: and you?, and yourself?, what about you?, how about you?, and what do you do? (when it returns the question just asked).",
+   "positives": [
+    "My name is Anna. And you?",
+    "I'm from Manchester, but I live in London now. And you?",
+    "Yes, of course. I'm a nurse. It's near here. And what do you do?",
+    "Not bad, thanks. What about you?",
+    "I'm fine. And yourself?"
+   ],
+   "near_misses": [
+    {
+     "text": "I'm here with my wife and children.",
+     "why": "'and' joins nouns; no question returned"
+    },
+    {
+     "text": "How about we go on Saturday?",
+     "why": "a proposal, not a return"
+    },
+    {
+     "text": "You and your brother should come.",
+     "why": "no question"
+    },
+    {
+     "text": "And you can sit by the window.",
+     "why": "'and you' starts a statement"
+    },
+    {
+     "text": "What about the bill?",
+     "why": "raises a new topic, not a return"
+    }
+   ],
+   "boundary": [
+    "The question must be addressed back to the other and be the same question (or the same topic) they asked or would be asked."
+   ]
+  },
+  {
+   "id": "D7",
+   "name": "uptake assessment",
+   "shape": "[ASSESSMENT] . [CONTINUATION]",
+   "definition": "A sentence OPENS with a short evaluative uptake of what the other just said or did: excellent, lovely, perfect, great, wonderful, brilliant, marvellous, no problem, that's fine, good idea, exactly, how interesting, well done.",
+   "positives": [
+    "How interesting. Well, lovely to meet you.",
+    "Perfect, I'll take it.",
+    "Excellent choice.",
+    "Of course, no problem at all.",
+    "Lovely. Now hold still for me."
+   ],
+   "near_misses": [
+    {
+     "text": "This is a lovely city.",
+     "why": "assesses the world, not the other's turn, and does not open the sentence"
+    },
+    {
+     "text": "Great Britain is an island.",
+     "why": "proper noun"
+    },
+    {
+     "text": "It takes exactly two hours.",
+     "why": "'exactly' as a precision adverb"
+    },
+    {
+     "text": "The perfect tense is hard.",
+     "why": "grammar term"
+    },
+    {
+     "text": "I had a great time.",
+     "why": "assessment inside a report, not uptake"
+    }
+   ],
+   "boundary": [
+    "The assessment opens a sentence and reacts to the previous turn or the situation just created.",
+    "'Well done' as praise of the other also fires D7 (and may fire D11 if it reassures)."
+   ]
+  },
+  {
+   "id": "D8",
+   "name": "ellipted order",
+   "shape": "[NP] , please   (no finite verb)",
+   "definition": "An ORDER or REQUEST made with a noun phrase and 'please' but NO verb: the ellipsis is the frame. 'Two Americanos and a cup of tea, please.' 'A table for two, please.' 'Large, please.'",
+   "positives": [
+    "Good morning. Two Americanos and a cup of tea, please.",
+    "Four single tickets to town, please.",
+    "A table for two, please.",
+    "Just the bill, please.",
+    "Large, please."
+   ],
+   "near_misses": [
+    {
+     "text": "I'd like a coffee, please.",
+     "why": "has a verb (would like)"
+    },
+    {
+     "text": "Yes, please.",
+     "why": "a bare acceptance, no ordered item"
+    },
+    {
+     "text": "Please, go ahead.",
+     "why": "an imperative with a verb"
+    },
+    {
+     "text": "Can I have a glass of water, please?",
+     "why": "has a verb"
+    },
+    {
+     "text": "Tea, coffee and sandwiches are served at four.",
+     "why": "not an order"
+    }
+   ],
+   "boundary": [
+    "No finite or imperative verb in the ordering sentence.",
+    "The ordered item must be named."
+   ]
+  },
+  {
+   "id": "D9",
+   "name": "reckoning",
+   "shape": "that's [AMOUNT] ( altogether )",
+   "definition": "The speaker STATES THE AMOUNT OWED or the total price: that's eight pound forty, that'll be five euros, it comes to twelve pounds, that's ten dollars altogether.",
+   "positives": [
+    "That's eight pound forty altogether.",
+    "That'll be five euros, please.",
+    "It comes to twelve pounds fifty.",
+    "That's three pounds for the coffee.",
+    "Altogether that's twenty dollars."
+   ],
+   "near_misses": [
+    {
+     "text": "How much is it?",
+     "why": "asks the price"
+    },
+    {
+     "text": "I paid ten pounds for it.",
+     "why": "reports a past payment"
+    },
+    {
+     "text": "That's my bag.",
+     "why": "no amount"
+    },
+    {
+     "text": "It's about three or four miles.",
+     "why": "an amount, but not money owed"
+    },
+    {
+     "text": "The tickets cost too much.",
+     "why": "complaint about price, no total stated"
+    }
+   ],
+   "boundary": [
+    "Must state a sum of money the hearer owes or the total of a transaction."
+   ]
+  },
+  {
+   "id": "D10",
+   "name": "read-back receipt",
+   "shape": "[REPEATED INSTRUCTION] . got it | understood | will do",
+   "definition": "The speaker MARKS RECEIPT of an instruction or information, often by saying it back: got it, understood, noted, that's right, exactly right, word perfect (confirming the other's read-back), OK so I take two after food.",
+   "positives": [
+    "Got it. Two tablets after breakfast.",
+    "Understood.",
+    "That's right, two after each meal.",
+    "Word perfect.",
+    "Noted, I'll bring it on Monday."
+   ],
+   "near_misses": [
+    {
+     "text": "I don't understand.",
+     "why": "non-receipt; a repair (X3)"
+    },
+    {
+     "text": "I got it yesterday.",
+     "why": "'got' = obtained"
+    },
+    {
+     "text": "Did you get that?",
+     "why": "asks for receipt, does not mark it"
+    },
+    {
+     "text": "That's right next to the bank.",
+     "why": "'right' = location"
+    },
+    {
+     "text": "Right, let's start.",
+     "why": "discourse marker, nothing received"
+    }
+   ],
+   "boundary": [
+    "Confirming the OTHER's correct read-back ('that's right', 'exactly right', 'word perfect') counts.",
+    "A bare 'OK' or 'right' as a discourse marker does not fire."
+   ]
+  },
+  {
+   "id": "D11",
+   "name": "reassurance / normalising",
+   "shape": "don't worry | that's normal | you're doing [ADV]",
+   "definition": "The speaker REASSURES the other or normalises their worry or trouble: don't worry, nothing to worry about, that's (completely) normal, you're doing fine/well/marvellous, it's fine/alright/okay (said to reassure), not at all / no trouble / no problem (as a downgrade of thanks or apology).",
+   "positives": [
+    "Don't worry - there's a lot of us to remember.",
+    "That's completely normal after an operation.",
+    "A year? Well, you're doing marvellous.",
+    "Not at all, it was a pleasure.",
+    "That's alright - just breathe normally."
+   ],
+   "near_misses": [
+    {
+     "text": "I'm worried about the test.",
+     "why": "voices worry, does not reassure"
+    },
+    {
+     "text": "Is it alright if I sit here?",
+     "why": "a permission question"
+    },
+    {
+     "text": "It's not at all expensive.",
+     "why": "'not at all' as an intensifier"
+    },
+    {
+     "text": "The weather's fine today.",
+     "why": "describes the weather"
+    },
+    {
+     "text": "Normal service will resume.",
+     "why": "'normal' in a description"
+    }
+   ],
+   "boundary": [
+    "Must be addressed to the other to ease worry, embarrassment or thanks."
+   ]
+  },
+  {
+   "id": "D12",
+   "name": "compliance commitment",
+   "shape": "I will | I'll [VP] ( , then )",
+   "definition": "The speaker COMMITS to do what was asked, advised or agreed: I will, will do, righto, right you are, deal, I'll do that, I promise, I'll bring it on Monday (agreeing to a request).",
+   "positives": [
+    "Righto. Thank you, love.",
+    "Will do.",
+    "I will, thank you.",
+    "Deal. See you on Saturday.",
+    "I promise I'll take them with food."
+   ],
+   "near_misses": [
+    {
+     "text": "It will rain tomorrow.",
+     "why": "prediction"
+    },
+    {
+     "text": "I'll be thirty next week.",
+     "why": "prediction about the speaker, no commitment"
+    },
+    {
+     "text": "Will you help me?",
+     "why": "a request"
+    },
+    {
+     "text": "We'll do it again after tea.",
+     "why": "the speaker announces a plan to the other, not compliance with their request"
+    },
+    {
+     "text": "I'll have a coffee, please.",
+     "why": "an order, not compliance"
+    }
+   ],
+   "boundary": [
+    "The commitment responds to a request, instruction, advice or proposal from the other (stated or clearly implied by the turn).",
+    "Orders with 'I'll have' do not fire."
+   ]
+  }
+ ]
+}

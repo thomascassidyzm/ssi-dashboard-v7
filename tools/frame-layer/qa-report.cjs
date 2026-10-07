@@ -168,7 +168,7 @@ async function main() {
   require('dotenv').config({ quiet: true });
   const { createClient } = require('@supabase/supabase-js');
   const { loadCorpus, knownSideIsEnglish } = require('./corpus.cjs');
-  const { computeDeclaration, checkDeclaration } = require('./declaration.cjs');
+  const { computeDeclaration, checkDeclaration, tagForCheck } = require('./declaration.cjs');
 
   const arg = (name, dflt = null) => {
     const i = process.argv.indexOf(name);
@@ -230,6 +230,7 @@ async function main() {
       }
 
       for (const set of sets) {
+        await tagForCheck(decl, set.rows); // frames are model-tagged, cached per text
         const check = checkDeclaration(decl, set.rows);
         rows.push({
           source: set.source, source_file: set.source_file,

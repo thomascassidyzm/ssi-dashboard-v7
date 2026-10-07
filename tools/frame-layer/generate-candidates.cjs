@@ -21,8 +21,8 @@ require('dotenv').config({ quiet: true });
 const { createClient } = require('@supabase/supabase-js');
 const { execFileSync } = require('child_process');
 const fs = require('fs'), path = require('path');
-const { scoreBaskets } = require('./pattern-diversity.cjs');
-const { deriveJob, splitsForBasket } = require('./derive-seed-job.cjs');
+const { scoreBaskets, prepareScoring } = require('./pattern-diversity.cjs');
+const { deriveJob, prepareJob, splitsForBasket } = require('./derive-seed-job.cjs');
 const { loadCorpus, knownSideIsEnglish } = require('./corpus.cjs');
 const { availableVocab, attestedFrames, instantiableFrameSet, norm } = require('./availability.cjs');
 
@@ -246,6 +246,9 @@ async function main() {
   const seed = +seedArg;
   const { seedRow, legos, ownLegos, priorSeeds, priorLegos, priorComponents, components, phrases } = await loadCorpus(sb(), course, seed);
   if (!seedRow) throw new Error(`no seed ${seed} in ${course}`);
+  // Frames and split outcomes are model-tagged and cached per text (frame-tagger.cjs).
+  await prepareJob({ course, seedRow, ownLegos, priorSeeds });
+  await prepareScoring(phrases, { course });
   const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
   // per-course frame attestation — never the doc's spa-derived first_seed
   const attested = attestedFrames(priorSeeds, seedRow);
@@ -259,7 +262,7 @@ async function main() {
   const vocabFor = generateVocabWindow({ legos, components, seed });
   const liveScored = scoreBaskets(phrases, { legos: ownLegos, job, instantiableFrames: pool.length });
   if (!knownSideIsEnglish(course)) {
-    console.log(`NOTE: ${course} has a non-English known side; the frame layer's patterns are English regexes and will report nothing here.`);
+    console.log(`NOTE: ${course} has a non-English known side; the frames are model-tagged, but the floors split English text and will under-report variety here.`);
   }
   const mapping = Object.fromEntries(JSON.parse(fs.readFileSync(path.join(ROOT, 'docs/frame-layer/pair-mapping-classes.json'), 'utf8'))
     .patterns.map(p => [p.id, p.pairs[course]?.class]));
@@ -291,6 +294,7 @@ async function main() {
     for (const r of rejected) {
       console.log(`  REJECTED ${pad(r.lego_index)} "${r.known_text}" || "${r.target_text}" — untileable: ${r.untiled.join(', ')}`);
     }
+    await prepareScoring(ph, { course });
     const r = scoreBaskets(ph, { legos: ownLegos, job, instantiableFrames: pool.length });
     attempts.push({ pass: i + 1, seed_composite: r.seed_composite, seed_pass: r.seed_pass,
                     failing_baskets: r.failing_baskets, phrase_count: ph.length,

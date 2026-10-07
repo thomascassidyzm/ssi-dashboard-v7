@@ -26,8 +26,8 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { createClient } = require('@supabase/supabase-js');
-const { scoreBaskets } = require('../../tools/frame-layer/pattern-diversity.cjs');
-const { deriveJob } = require('../../tools/frame-layer/derive-seed-job.cjs');
+const { scoreBaskets, prepareScoring } = require('../../tools/frame-layer/pattern-diversity.cjs');
+const { deriveJob, prepareJob } = require('../../tools/frame-layer/derive-seed-job.cjs');
 const { loadCorpus, pairOf, knownSideIsEnglish } = require('../../tools/frame-layer/corpus.cjs');
 const { attestedFrames, expensiveClassFor } = require('../../tools/frame-layer/availability.cjs');
 const JOBS = require('./jobs.cjs');
@@ -136,6 +136,11 @@ async function analyse(course, seed) {
   if (!c.seedRow) {
     value = { course, seed, missing: true };
   } else {
+    // Frames and split outcomes are classified by a Haiku-family model and
+    // cached per text (tools/frame-layer/frame-tagger.cjs): tag before scoring.
+    const cand0 = candidatesFor(course, seed);
+    await prepareJob({ course, seedRow: c.seedRow, ownLegos: c.ownLegos, priorSeeds: c.priorSeeds });
+    await prepareScoring([...c.phrases, ...(cand0 && !cand0.broken ? cand0.phrases : [])], { course });
     const job = deriveJob({ course, seedRow: c.seedRow, ownLegos: c.ownLegos, priorSeeds: c.priorSeeds,
                             priorLegos: c.priorLegos, priorComponents: c.priorComponents });
     const attested = attestedFrames(c.priorSeeds, c.seedRow);

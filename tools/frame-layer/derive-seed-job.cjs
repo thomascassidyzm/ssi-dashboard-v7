@@ -45,10 +45,25 @@
  * READ-ONLY. Usage: node tools/frame-layer/derive-seed-job.cjs spa_for_eng 599
  */
 const PATTERNS = require('./patterns.cjs');
-const { splitsFor: splitMatchersFor } = require('./split-matchers.cjs');
+const { splitsFor: splitMatchersFor, carries, ensureSplitsTagged } = require('./split-matchers.cjs');
+const { ensureTagged, knownLanguageName } = require('./frame-tagger.cjs');
 
+// Both are cache lookups (frame-tagger.cjs): a model classified the text, no
+// regex did (Tom, 2026-10-07). deriveJob is sync, so its async caller runs
+// prepareJob first; an untagged text throws rather than deriving "no split".
 const framesOf = (known) => PATTERNS.filter(p => p.test(String(known || ''))).map(p => p.id);
-const fires = (re, text) => re != null && new RegExp(re, 'i').test(String(text || ''));
+const fires = (outcome, text) => carries(outcome, text);
+
+/**
+ * Tag everything deriveJob will read: P-frames on the seed's and every prior
+ * seed's KNOWN side, split outcomes on their TARGET side and on this seed's
+ * own LEGOs. Cached per text, so a second call costs nothing.
+ */
+async function prepareJob({ seedRow, ownLegos = [], priorSeeds = [], course = 'spa_for_eng' }, opts = {}) {
+  const seeds = [seedRow, ...priorSeeds].filter(Boolean);
+  await ensureTagged(seeds.map(s => s.known_text), { ...opts, knownLanguage: knownLanguageName(course) });
+  await ensureSplitsTagged(course, [...seeds.map(s => s.target_text), ...ownLegos.map(l => l.target_text)], opts);
+}
 
 const normT = (s) => String(s || '').toLowerCase().replace(/[^\p{L}\p{N}' ]/gu, ' ').replace(/\s+/g, ' ').trim();
 /** whole-word containment: "habría" is inside "lo habría hecho", not inside "habríamos". */
@@ -107,22 +122,24 @@ function deriveJob({ seedRow, ownLegos = [], priorSeeds = [], priorLegos = [], p
   const newSides = [], inPlay = [];
   for (const [sid, sp] of Object.entries(SPLITS)) {
     if (!here.includes(sp.pattern)) continue;
-    const carried = sp.outcomes.filter(o => fires(o.target_re, seedRow.target_text));
+    const carried = sp.outcomes.filter(o => fires(o, seedRow.target_text));
     if (!carried.length) continue;
     inPlay.push({ id: sid, name: sp.name, pattern: sp.pattern });
     for (const o of carried) {
-      const seenBefore = priorFrames.some(({ s, f }) => f.includes(sp.pattern) && fires(o.target_re, s.target_text));
+      const seenBefore = priorFrames.some(({ s, f }) => f.includes(sp.pattern) && fires(o, s.target_text));
       if (seenBefore) continue;
       // whose lego carries it?
-      const owners = ownLegos.filter(l => fires(o.target_re, l.target_text)).map(l => l.lego_index);
+      const owners = ownLegos.filter(l => fires(o, l.target_text)).map(l => l.lego_index);
       newSides.push({ split_id: sid, split_name: sp.name, pattern: sp.pattern,
-                      form: o.form, target_re: o.target_re, lego_indexes: owners });
+                      form: o.form, outcome: o.outcome, codex: o.codex, lego_indexes: owners });
     }
   }
+  // Every outcome has a codex definition now, so this is empty unless an
+  // outcome is ever listed without one; kept so a reader still sees the field.
   const unmatchable = Object.entries(SPLITS)
-    .filter(([, sp]) => here.includes(sp.pattern) && sp.outcomes.some(o => o.target_re == null))
+    .filter(([, sp]) => here.includes(sp.pattern) && sp.outcomes.some(o => !o.outcome))
     .map(([sid, sp]) => ({ id: sid, name: sp.name,
-      outcomes: sp.outcomes.filter(o => o.target_re == null).map(o => o.form) }));
+      outcomes: sp.outcomes.filter(o => !o.outcome).map(o => o.form) }));
 
   const atomisations = findAtomisations({ ownLegos, priorLegos, priorComponents });
 
@@ -152,11 +169,11 @@ function splitsForBasket(job, legoIndex) {
   if (!mine.length) return [];
   const bySplit = {};
   for (const s of mine) (bySplit[s.split_id] = bySplit[s.split_id] || { id: s.split_id, name: s.split_name, outcomes: [] })
-    .outcomes.push({ form: s.form, target_re: s.target_re });
+    .outcomes.push({ form: s.form, outcome: s.outcome, codex: s.codex });
   return Object.values(bySplit);
 }
 
-module.exports = { deriveJob, splitsForBasket, framesOf, findAtomisations };
+module.exports = { deriveJob, prepareJob, splitsForBasket, framesOf, findAtomisations };
 
 if (require.main === module) {
   require('dotenv').config({ quiet: true });
@@ -167,6 +184,7 @@ if (require.main === module) {
   (async () => {
     const { loadCorpus } = require('./corpus.cjs');
     const { seedRow, ownLegos, priorSeeds, priorLegos, priorComponents } = await loadCorpus(sb, course, seed);
+    await prepareJob({ seedRow, ownLegos, priorSeeds, course });
     const job = deriveJob({ seedRow, ownLegos, priorSeeds, priorLegos, priorComponents, course });
     console.log(`${course} seed ${seed}: ${seedRow.known_text}`);
     console.log(`\nVERDICT: ${job.verdict}\n${job.sentence}\n`);

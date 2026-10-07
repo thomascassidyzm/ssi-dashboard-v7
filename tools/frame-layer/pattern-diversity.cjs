@@ -75,8 +75,10 @@ const PATTERNS = require('./patterns.cjs');
  * cannot be matched against one phrase. A generator reaches them through their
  * `sentence_projection`.
  */
-const { allSentenceMatchers } = require('./dialogue-patterns.cjs');
+const { allSentenceMatchers, D_CODEX } = require('./dialogue-patterns.cjs');
 const MERGED = allSentenceMatchers();
+const { carries, ensureSplitsTagged } = require('./split-matchers.cjs');
+const { ensureTagged, knownLanguageName } = require('./frame-tagger.cjs');
 
 const WORD = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9' ]/g, ' ').split(/\s+/).filter(Boolean);
 
@@ -98,6 +100,24 @@ function frameSig(known, matchers = MERGED) {
   return ids.join('+') || '∅';
 }
 
+/**
+ * Tag everything score/scoreBaskets/frameSig will read (frame-tagger.cjs; a
+ * model classifies, Tom 2026-10-07): P- and D-frames on every phrase's KNOWN
+ * text and on its matrix clause (declaration.cjs claim-checks the clause),
+ * split outcomes on its TARGET text. Cached per text; cheap to call twice.
+ */
+async function prepareScoring(phrases, { course = 'spa_for_eng', ...opts } = {}) {
+  const known = [];
+  for (const p of phrases || []) {
+    if (!p || !String(p.known_text || '').trim()) continue;
+    known.push(p.known_text, matrixClause(p.known_text));
+  }
+  const knownLanguage = knownLanguageName(course);
+  await ensureTagged(known, { ...opts, knownLanguage });
+  await ensureTagged(known, { ...opts, knownLanguage, codex: D_CODEX });
+  await ensureSplitsTagged(course, (phrases || []).map(p => p && p.target_text), opts);
+}
+
 /** Where does the LEGO sit, and what are its immediate neighbours? */
 function walk(known, lego) {
   const w = WORD(known), l = WORD(lego);
@@ -113,10 +133,10 @@ function walk(known, lego) {
 const FLOORS = { frame: 0.34, pos: 0.34, neigh: 0.30, junct: 0.50, split: 1.0 };
 
 /**
- * Split crossing. `split` = { id, name, outcomes: [{form, target_re}] }.
+ * Split crossing. `split` = { id, name, outcomes: [{form, outcome, codex}] }.
  *
- * [SPEC:worker] An outcome is CARRIED by a phrase when its target-side matcher
- * fires. The split counts as CROSSED only when every outcome is carried by at
+ * [SPEC:worker] An outcome is CARRIED by a phrase when the model tagged its
+ * target text with that outcome (split-matchers.cjs `carries`, a cache lookup). The split counts as CROSSED only when every outcome is carried by at
  * least two DISTINCT known-side skeletons — first three words of the matrix
  * clause, plus first three words of whatever follows the subordinator. One
  * skeleton means the learner met that half of the split in exactly one shape,
@@ -132,8 +152,7 @@ function skeleton(known) {
 
 function crossesSplit(phrases, split) {
   const hit = split.outcomes.map(o => {
-    const re = new RegExp(o.target_re, 'i');
-    const matches = phrases.filter(p => re.test(p.target_text || ''));
+    const matches = phrases.filter(p => carries(o, p.target_text));
     const skeletons = [...new Set(matches.map(p => skeleton(p.known_text)))];
     return { form: o.form, phrases: matches.length, distinct_skeletons: skeletons.length, skeletons };
   });
@@ -278,7 +297,7 @@ const ID_ROLE = { component: 0, build: 1, use: 2 };
 const sortForId = (a, b) => (ID_ROLE[a.phrase_role] ?? 9) - (ID_ROLE[b.phrase_role] ?? 9)
   || ((a.position ?? 0) - (b.position ?? 0));
 
-module.exports = { score, scoreBaskets, withIds, frameSig, walk, matrixClause, skeleton, crossesSplit, FLOORS, MERGED };
+module.exports = { score, scoreBaskets, prepareScoring, withIds, frameSig, walk, matrixClause, skeleton, crossesSplit, FLOORS, MERGED };
 
 if (require.main === module) {
   require('dotenv').config({ quiet: true });
@@ -289,6 +308,9 @@ if (require.main === module) {
   const [course = 'spa_for_eng', seed = '599'] = process.argv.slice(2);
   (async () => {
     const { seedRow, ownLegos, priorSeeds, priorLegos, priorComponents, phrases } = await loadCorpus(sb, course, +seed);
+    const { prepareJob } = require('./derive-seed-job.cjs');
+    await prepareJob({ course, seedRow, ownLegos, priorSeeds });
+    await prepareScoring(phrases, { course });
     const job = deriveJob({ course, seedRow, ownLegos, priorSeeds, priorLegos, priorComponents });
     const { attestedFrames, availableVocab, instantiableFrameSet } = require('./availability.cjs');
     // The denominator is now the POOL, per basket — but the CLI scores a whole

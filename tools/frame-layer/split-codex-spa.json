@@ -1,0 +1,962 @@
+{
+ "id": "S-spa",
+ "version": "2026-10-07.1",
+ "title": "SSi split-outcome codex, Spanish target side: which side of each structural split a Spanish phrase uses",
+ "purpose": "The definitions a model (Haiku family) uses to say which OUTCOMES of the pair's structural splits a Spanish TARGET text carries. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language): these were target_re regexes in split-matchers.cjs; they are now defined here and classified by a model. One codex per target language because the outcomes are facts about that language's grammar; the id carries the language (S-spa) so a French or Welsh split codex can sit beside it without sharing a cache. Outcome ids (S1A, S1B, ...) are pinned to tools/frame-layer/split-matchers.cjs.",
+ "task": "You read Spanish phrases from a language course and say which grammatical outcomes they use",
+ "request": "For EACH numbered Spanish phrase, give the outcome ids it uses, per the codex. Never output O: this codex has no openers.",
+ "example": "Example: 6: quiero que + subjuntivo 'vengas'; sé (saber) => S1B S9A",
+ "general_rules": [
+  "An outcome is a GRAMMATICAL CHOICE the phrase actually makes: a verb, mood or construction that is present in the Spanish text. Judge the grammar, never a string: 'pide' is pedir, 'piensa' is pensar, 'espero' can be esperar = hope or wait.",
+  "Phrases are often fragments (LEGOs and building blocks): 'habría', 'quiero que', 'antes de salir'. Tag the construction the fragment shows. A bare 'quiero que' already shows querer que (S1B) even with no verb after it.",
+  "Check EVERY phrase against EVERY outcome; a phrase can carry several outcomes, of the same split or of different splits ('no creo que sepa' fires S4B and S9A). Many phrases carry none.",
+  "Accents may be missing in course text ('podria', 'esta'); read the intended word.",
+  "When unsure, follow the outcome's boundary rules; if they do not settle it, do not fire."
+ ],
+ "frames_heading": "SPLIT OUTCOMES",
+ "output": "One line per phrase: '<number>: <tokens>' where tokens are outcome ids, or '-' when there is nothing. Example: '12: S1B S9A'.",
+ "frames": [
+  {
+   "id": "S1A",
+   "name": "S1 want: querer + INFINITIVE",
+   "shape": "querer + INF",
+   "definition": "A form of querer (want) followed directly by an INFINITIVE: the wanter does the action. Includes clitics on the infinitive and negation.",
+   "positives": [
+    "quiero hablar español",
+    "¿quieres venir conmigo?",
+    "no quería decírtelo",
+    "queremos comprarla",
+    "quiero saber la verdad"
+   ],
+   "near_misses": [
+    {
+     "text": "quiero que vengas",
+     "why": "querer que + subjunctive (S1B)"
+    },
+    {
+     "text": "quiero un café",
+     "why": "querer + noun"
+    },
+    {
+     "text": "te quiero",
+     "why": "querer = love, no verb"
+    },
+    {
+     "text": "me gustaría ir",
+     "why": "gustaría, not querer (S8B)"
+    },
+    {
+     "text": "puedo hablar",
+     "why": "poder, not querer"
+    }
+   ],
+   "boundary": [
+    "An infinitive must follow querer (clitics allowed). A bare form of querer with no complement ('quiero', 'quieres') does NOT fire.",
+    "'querer decir' (to mean) fires S1A."
+   ]
+  },
+  {
+   "id": "S1B",
+   "name": "S1 want: querer que + SUBJUNCTIVE",
+   "shape": "querer que + SUBJ",
+   "definition": "A form of querer followed by 'que' (and normally a present or past subjunctive): wanting SOMEONE ELSE to do something.",
+   "positives": [
+    "quiero que hables español conmigo",
+    "quiero que",
+    "¿quieres que te ayude?",
+    "no quería que se fuera",
+    "queremos que vengáis"
+   ],
+   "near_misses": [
+    {
+     "text": "quiero hablar",
+     "why": "querer + infinitive (S1A)"
+    },
+    {
+     "text": "lo que quiero es dormir",
+     "why": "'lo que' relative before querer, no 'querer que'"
+    },
+    {
+     "text": "creo que quiere ir",
+     "why": "'que' belongs to creer"
+    },
+    {
+     "text": "espero que vengas",
+     "why": "esperar que (S2B)"
+    },
+    {
+     "text": "el que quiere",
+     "why": "relative 'que' before querer"
+    }
+   ],
+   "boundary": [
+    "'que' must follow querer as its complementiser."
+   ]
+  },
+  {
+   "id": "S2A",
+   "name": "S2 hope: esperar + INFINITIVE",
+   "shape": "esperar + INF",
+   "definition": "esperar meaning HOPE followed directly by an INFINITIVE: the hoper does the action.",
+   "positives": [
+    "espero verte pronto",
+    "esperamos volver el año que viene",
+    "esperaba encontrarlo",
+    "espero poder ayudarte",
+    "esperas ganar"
+   ],
+   "near_misses": [
+    {
+     "text": "espero que vengas",
+     "why": "esperar que (S2B)"
+    },
+    {
+     "text": "espero el autobús",
+     "why": "esperar = wait for + noun"
+    },
+    {
+     "text": "te espero aquí",
+     "why": "wait"
+    },
+    {
+     "text": "estoy esperando",
+     "why": "waiting, no infinitive"
+    },
+    {
+     "text": "quiero verte",
+     "why": "querer (S1A)"
+    }
+   ],
+   "boundary": [
+    "esperar = wait + a + infinitive ('espera a ver') does not fire."
+   ]
+  },
+  {
+   "id": "S2B",
+   "name": "S2 hope: esperar que + SUBJUNCTIVE",
+   "shape": "esperar que + SUBJ",
+   "definition": "esperar (hope) followed by 'que' and a subjunctive: hoping SOMEONE ELSE does something or something happens.",
+   "positives": [
+    "espero que tengas un buen día",
+    "espero que",
+    "esperamos que te guste",
+    "esperaba que vinieras",
+    "espero que no llueva"
+   ],
+   "near_misses": [
+    {
+     "text": "espero verte",
+     "why": "esperar + infinitive (S2A)"
+    },
+    {
+     "text": "espera a que llegue",
+     "why": "esperar a que = wait until, not hope"
+    },
+    {
+     "text": "quiero que vengas",
+     "why": "querer (S1B)"
+    },
+    {
+     "text": "creo que es verdad",
+     "why": "creer"
+    },
+    {
+     "text": "espero aquí",
+     "why": "wait"
+    }
+   ],
+   "boundary": [
+    "Only esperar = hope; 'esperar a que' (wait until) does not fire."
+   ]
+  },
+  {
+   "id": "S3A",
+   "name": "S3 before/after: antes de / después de + INFINITIVE",
+   "shape": "(antes|después) de + INF",
+   "definition": "antes de or después de followed directly by an INFINITIVE (same subject).",
+   "positives": [
+    "antes de salir",
+    "después de comer",
+    "antes de empezar a aprender",
+    "después de haberlo hecho",
+    "lávate las manos antes de cenar"
+   ],
+   "near_misses": [
+    {
+     "text": "antes de que empieces",
+     "why": "de que + subjunctive (S3B)"
+    },
+    {
+     "text": "antes de las tres",
+     "why": "de + noun phrase"
+    },
+    {
+     "text": "después de la cena",
+     "why": "de + noun"
+    },
+    {
+     "text": "antes",
+     "why": "bare adverb"
+    },
+    {
+     "text": "después te llamo",
+     "why": "adverb"
+    }
+   ],
+   "boundary": [
+    "The word after 'de' must be an infinitive (or haber + participle)."
+   ]
+  },
+  {
+   "id": "S3B",
+   "name": "S3 before/after: antes de que / después de que + SUBJUNCTIVE",
+   "shape": "(antes|después) de que + SUBJ",
+   "definition": "antes de que or después de que introducing a clause with its own subject (subjunctive after antes de que; subjunctive or indicative after después de que).",
+   "positives": [
+    "antes de que empieces",
+    "antes de que",
+    "después de que se fueron",
+    "antes de que llegue tu madre",
+    "después de que termines"
+   ],
+   "near_misses": [
+    {
+     "text": "antes de empezar",
+     "why": "de + infinitive (S3A)"
+    },
+    {
+     "text": "antes que nada",
+     "why": "fixed phrase 'antes que nada', no 'de que'"
+    },
+    {
+     "text": "después de la clase",
+     "why": "de + noun"
+    },
+    {
+     "text": "creo que antes",
+     "why": "no 'de que'"
+    },
+    {
+     "text": "ya que",
+     "why": "different conjunction"
+    }
+   ],
+   "boundary": [
+    "Requires 'de que' after antes/después."
+   ]
+  },
+  {
+   "id": "S4A",
+   "name": "S4 think that: pensar/creer que + INDICATIVE (affirmative)",
+   "shape": "pensar/creer que + IND",
+   "definition": "An AFFIRMATIVE (not negated) form of pensar or creer followed by 'que' (opinion: I think that...), normally with an indicative verb.",
+   "positives": [
+    "creo que es verdad",
+    "pienso que tienes razón",
+    "¿crees que va a llover?",
+    "creo que",
+    "ella cree que estás cansado"
+   ],
+   "near_misses": [
+    {
+     "text": "no creo que sea verdad",
+     "why": "negated matrix (S4B)"
+    },
+    {
+     "text": "pienso en ti",
+     "why": "pensar en = think about, no que"
+    },
+    {
+     "text": "pienso ir mañana",
+     "why": "pensar + infinitive = intend"
+    },
+    {
+     "text": "creo en Dios",
+     "why": "believe in"
+    },
+    {
+     "text": "quiero que vengas",
+     "why": "querer"
+    }
+   ],
+   "boundary": [
+    "A question 'crees que...?' is affirmative and fires S4A.",
+    "Negated matrix ('no creo que') is S4B, never S4A."
+   ]
+  },
+  {
+   "id": "S4B",
+   "name": "S4 think that: no pensar/creer que + SUBJUNCTIVE (negated)",
+   "shape": "no pensar/creer que + SUBJ",
+   "definition": "A NEGATED form of pensar or creer followed by 'que' (I don't think that...), normally with a subjunctive verb.",
+   "positives": [
+    "no creo que sea verdad",
+    "no pienso que tengas razón",
+    "no creo que",
+    "nunca pensé que fuera tan difícil",
+    "no cree que vengan"
+   ],
+   "near_misses": [
+    {
+     "text": "creo que no es verdad",
+     "why": "matrix affirmative, negation inside the clause (S4A)"
+    },
+    {
+     "text": "no pienso ir",
+     "why": "pensar + infinitive = intend"
+    },
+    {
+     "text": "no creo en eso",
+     "why": "believe in"
+    },
+    {
+     "text": "creo que sí",
+     "why": "affirmative"
+    },
+    {
+     "text": "no quiero que vengas",
+     "why": "querer (S1B)"
+    }
+   ],
+   "boundary": [
+    "The negation (no, nunca) must govern pensar/creer itself."
+   ]
+  },
+  {
+   "id": "S5A",
+   "name": "S5 relative clause: que + INDICATIVE (specific referent)",
+   "shape": "[NP] que + IND",
+   "definition": "A RELATIVE CLAUSE introduced by que (or quien, donde, el que) whose verb is INDICATIVE, describing a specific, known referent: 'el libro que compré', 'la mujer que vive aquí'.",
+   "positives": [
+    "el libro que compré ayer",
+    "la mujer que vive aquí",
+    "lo que querías",
+    "el chico que conocí en Madrid",
+    "la casa donde vivo"
+   ],
+   "near_misses": [
+    {
+     "text": "busco a alguien que hable inglés",
+     "why": "subjunctive, non-specific (S5B)"
+    },
+    {
+     "text": "creo que es verdad",
+     "why": "'que' as a complementiser, not a relative"
+    },
+    {
+     "text": "quiero que vengas",
+     "why": "complementiser"
+    },
+    {
+     "text": "más grande que tú",
+     "why": "comparative 'que'"
+    },
+    {
+     "text": "¿qué quieres?",
+     "why": "interrogative"
+    }
+   ],
+   "boundary": [
+    "Only relative clauses count; complement clauses after verbs (decir que, creer que) do not."
+   ]
+  },
+  {
+   "id": "S5B",
+   "name": "S5 relative clause: que + SUBJUNCTIVE (non-specific)",
+   "shape": "[NP] que + SUBJ",
+   "definition": "A RELATIVE CLAUSE whose verb is SUBJUNCTIVE because the referent is non-specific, hypothetical or non-existent: 'busco a alguien que hable inglés', 'no hay nada que pueda hacer', 'lo que quieras'.",
+   "positives": [
+    "busco a alguien que hable inglés",
+    "no hay nada que pueda hacer",
+    "haz lo que quieras",
+    "necesito un piso que tenga balcón",
+    "cualquier cosa que digas"
+   ],
+   "near_misses": [
+    {
+     "text": "conozco a alguien que habla inglés",
+     "why": "indicative, specific (S5A)"
+    },
+    {
+     "text": "quiero que hables",
+     "why": "complementiser + subjunctive, not relative (S1B)"
+    },
+    {
+     "text": "espero que vengas",
+     "why": "complementiser"
+    },
+    {
+     "text": "lo que quieres",
+     "why": "indicative"
+    },
+    {
+     "text": "antes de que llegue",
+     "why": "conjunction, not relative (S3B)"
+    }
+   ],
+   "boundary": [
+    "Only relative clauses; subjunctive after a complementiser 'que' does not fire."
+   ]
+  },
+  {
+   "id": "S6A",
+   "name": "S6 could: podría (conditional)",
+   "shape": "podría",
+   "definition": "A CONDITIONAL form of poder: podría, podrías, podríamos, podrían (could = would be able / polite request / possibility).",
+   "positives": [
+    "¿podrías ayudarme?",
+    "podría ser verdad",
+    "podríamos ir mañana",
+    "podría",
+    "no podrían venir"
+   ],
+   "near_misses": [
+    {
+     "text": "podía nadar",
+     "why": "imperfect (S6B)"
+    },
+    {
+     "text": "pudo terminar",
+     "why": "preterite (S6C)"
+    },
+    {
+     "text": "puedo ayudarte",
+     "why": "present indicative, no split outcome"
+    },
+    {
+     "text": "podrá venir",
+     "why": "future"
+    },
+    {
+     "text": "es posible",
+     "why": "no poder"
+    }
+   ],
+   "boundary": []
+  },
+  {
+   "id": "S6B",
+   "name": "S6 could: podía (imperfect)",
+   "shape": "podía",
+   "definition": "An IMPERFECT form of poder: podía, podías, podíamos, podían (could = was able, ongoing or habitual past ability).",
+   "positives": [
+    "cuando era niño podía nadar",
+    "no podía dormir",
+    "podíamos verlo",
+    "podía",
+    "¿podías oírme?"
+   ],
+   "near_misses": [
+    {
+     "text": "podría ser",
+     "why": "conditional (S6A)"
+    },
+    {
+     "text": "pude verlo",
+     "why": "preterite (S6C)"
+    },
+    {
+     "text": "puedo verlo",
+     "why": "present"
+    },
+    {
+     "text": "había podido",
+     "why": "pluperfect"
+    },
+    {
+     "text": "sabía nadar",
+     "why": "saber"
+    }
+   ],
+   "boundary": []
+  },
+  {
+   "id": "S6C",
+   "name": "S6 could: pudo/pude (preterite)",
+   "shape": "pude/pudo",
+   "definition": "A PRETERITE form of poder: pude, pudiste, pudo, pudimos, pudisteis, pudieron (could = managed to, on one occasion).",
+   "positives": [
+    "no pude venir",
+    "pudo terminar a tiempo",
+    "pudimos verlo",
+    "¿pudiste hablar con él?",
+    "no pudieron entrar"
+   ],
+   "near_misses": [
+    {
+     "text": "pudiera venir",
+     "why": "imperfect subjunctive, not preterite"
+    },
+    {
+     "text": "podía venir",
+     "why": "imperfect (S6B)"
+    },
+    {
+     "text": "podría venir",
+     "why": "conditional (S6A)"
+    },
+    {
+     "text": "puede venir",
+     "why": "present"
+    },
+    {
+     "text": "he podido",
+     "why": "perfect"
+    }
+   ],
+   "boundary": []
+  },
+  {
+   "id": "S6D",
+   "name": "S6 could: pueda (present subjunctive)",
+   "shape": "pueda",
+   "definition": "A PRESENT SUBJUNCTIVE form of poder: pueda, puedas, podamos, podáis, puedan.",
+   "positives": [
+    "espero que puedas venir",
+    "no creo que pueda",
+    "cuando puedas",
+    "para que podamos hablar",
+    "ojalá puedan venir"
+   ],
+   "near_misses": [
+    {
+     "text": "puedo venir",
+     "why": "present indicative 'puedo'"
+    },
+    {
+     "text": "puede ser",
+     "why": "present indicative 'puede'"
+    },
+    {
+     "text": "podemos ir",
+     "why": "present indicative 'podemos'"
+    },
+    {
+     "text": "podría venir",
+     "why": "conditional"
+    },
+    {
+     "text": "pudiera venir",
+     "why": "imperfect subjunctive"
+    }
+   ],
+   "boundary": [
+    "'podamos' and 'podáis' are subjunctive only when the context requires it; 'podemos' is indicative."
+   ]
+  },
+  {
+   "id": "S7A",
+   "name": "S7 double-'d: habría + PARTICIPLE (main clause)",
+   "shape": "habría + PP",
+   "definition": "A CONDITIONAL form of haber (habría, habrías, habríamos, habrían), the conditional perfect 'would have'. A bare 'habría' counts.",
+   "positives": [
+    "lo habría hecho",
+    "habría conducido",
+    "habría",
+    "¿habrías venido?",
+    "no habríamos sabido"
+   ],
+   "near_misses": [
+    {
+     "text": "si hubiera sabido",
+     "why": "pluperfect subjunctive (S7B)"
+    },
+    {
+     "text": "había comido",
+     "why": "pluperfect indicative"
+    },
+    {
+     "text": "habrá llegado",
+     "why": "future perfect"
+    },
+    {
+     "text": "hay que ir",
+     "why": "impersonal haber"
+    },
+    {
+     "text": "he hecho",
+     "why": "present perfect"
+    }
+   ],
+   "boundary": []
+  },
+  {
+   "id": "S7B",
+   "name": "S7 double-'d: hubiera(s) + PARTICIPLE (if-clause)",
+   "shape": "hubiera + PP",
+   "definition": "A form of the IMPERFECT SUBJUNCTIVE of haber (hubiera, hubieras, hubiéramos, hubieran, or -iese forms), the pluperfect subjunctive 'had (done)' in an if-clause or wish. A bare 'hubieras' counts.",
+   "positives": [
+    "si hubiera sabido",
+    "si me hubieras dicho",
+    "hubieras",
+    "ojalá hubiéramos ido",
+    "si hubiese llegado antes"
+   ],
+   "near_misses": [
+    {
+     "text": "habría sabido",
+     "why": "conditional (S7A)"
+    },
+    {
+     "text": "había sabido",
+     "why": "pluperfect indicative"
+    },
+    {
+     "text": "hubo un problema",
+     "why": "preterite existential 'hubo'"
+    },
+    {
+     "text": "si sabía",
+     "why": "no haber"
+    },
+    {
+     "text": "haya llegado",
+     "why": "present perfect subjunctive"
+    }
+   ],
+   "boundary": []
+  },
+  {
+   "id": "S8A",
+   "name": "S8 like: dative gustar (a X le gusta)",
+   "shape": "(a X) me/te/le/nos/les gusta(n)",
+   "definition": "gustar in the dative construction in the PRESENT or PAST indicative (not the conditional): me gusta, te gustan, le gustaba, nos gustó, a mi madre le gusta.",
+   "positives": [
+    "me gusta el café",
+    "¿te gustan los perros?",
+    "a mi hermano le gustaba leer",
+    "no nos gustó",
+    "les gusta"
+   ],
+   "near_misses": [
+    {
+     "text": "me gustaría ir",
+     "why": "conditional (S8B)"
+    },
+    {
+     "text": "me encanta",
+     "why": "encantar, not gustar"
+    },
+    {
+     "text": "el gusto es mío",
+     "why": "noun 'gusto'"
+    },
+    {
+     "text": "quiero ir",
+     "why": "querer"
+    },
+    {
+     "text": "mucho gusto",
+     "why": "greeting formula"
+    }
+   ],
+   "boundary": [
+    "Subjunctive 'que te guste' also fires S8A (it is not the conditional)."
+   ]
+  },
+  {
+   "id": "S8B",
+   "name": "S8 like: me gustaría + INFINITIVE",
+   "shape": "me gustaría + INF",
+   "definition": "The CONDITIONAL of gustar (gustaría, gustarían), normally 'me gustaría + infinitive' = I would like to.",
+   "positives": [
+    "me gustaría reservar una mesa",
+    "¿te gustaría venir?",
+    "me gustaría",
+    "nos gustaría saberlo",
+    "le gustaría hablar contigo"
+   ],
+   "near_misses": [
+    {
+     "text": "me gusta",
+     "why": "present (S8A)"
+    },
+    {
+     "text": "quisiera un café",
+     "why": "querer, not gustar"
+    },
+    {
+     "text": "me gustó",
+     "why": "past (S8A)"
+    },
+    {
+     "text": "quiero ir",
+     "why": "querer"
+    },
+    {
+     "text": "gusto",
+     "why": "noun"
+    }
+   ],
+   "boundary": []
+  },
+  {
+   "id": "S9A",
+   "name": "S9 know: saber (a fact, a skill)",
+   "shape": "saber",
+   "definition": "Any form of saber (sé, sabes, sabe, sabemos, saben, sabía, supe, sabré, sepa, saber...): knowing a fact or how to do something.",
+   "positives": [
+    "no sé",
+    "¿sabes dónde está?",
+    "sabía la respuesta",
+    "no creo que sepa",
+    "lo supe ayer"
+   ],
+   "near_misses": [
+    {
+     "text": "conozco a tu hermano",
+     "why": "conocer (S9B)"
+    },
+    {
+     "text": "se lo dije",
+     "why": "'se' pronoun, not 'sé'"
+    },
+    {
+     "text": "sabor",
+     "why": "noun 'taste'"
+    },
+    {
+     "text": "sé bueno",
+     "why": "'sé' = imperative of ser"
+    },
+    {
+     "text": "el sabor es dulce",
+     "why": "noun 'sabor'"
+    }
+   ],
+   "boundary": [
+    "Unaccented 'se' is the pronoun unless the text plainly means 'I know'.",
+    "'sabe a' (tastes of) does not fire."
+   ]
+  },
+  {
+   "id": "S9B",
+   "name": "S9 know: conocer (a person, a place)",
+   "shape": "conocer",
+   "definition": "Any form of conocer (conozco, conoces, conoce, conocí, conocía, conocer...): knowing or meeting a person, being familiar with a place or thing.",
+   "positives": [
+    "conozco a tu hermano",
+    "¿conoces Madrid?",
+    "la conocí en Barcelona",
+    "encantado de conocerte",
+    "no conocía el barrio"
+   ],
+   "near_misses": [
+    {
+     "text": "no sé",
+     "why": "saber (S9A)"
+    },
+    {
+     "text": "es muy conocido",
+     "why": "adjective 'conocido' (well known)"
+    },
+    {
+     "text": "el conocimiento",
+     "why": "noun"
+    },
+    {
+     "text": "reconozco su voz",
+     "why": "reconocer, a different verb"
+    },
+    {
+     "text": "desconocido",
+     "why": "adjective"
+    }
+   ],
+   "boundary": [
+    "Adjectival 'conocido' (well-known) does not fire; participle in a perfect ('he conocido') does."
+   ]
+  },
+  {
+   "id": "S10A",
+   "name": "S10 ask: preguntar (a question)",
+   "shape": "preguntar",
+   "definition": "Any form of preguntar (to ask a question, ask about): pregunto, preguntó, preguntarle, pregúntale.",
+   "positives": [
+    "le pregunté su nombre",
+    "¿puedo preguntarte algo?",
+    "pregúntale a tu madre",
+    "me preguntó si venía",
+    "preguntar"
+   ],
+   "near_misses": [
+    {
+     "text": "le pedí ayuda",
+     "why": "pedir (S10B)"
+    },
+    {
+     "text": "una pregunta",
+     "why": "noun"
+    },
+    {
+     "text": "hacer una pregunta",
+     "why": "noun after hacer"
+    },
+    {
+     "text": "respondí a su pregunta",
+     "why": "noun 'pregunta'"
+    },
+    {
+     "text": "contesté",
+     "why": "answer"
+    }
+   ],
+   "boundary": [
+    "The noun 'pregunta' does not fire; reflexive 'me pregunto' (I wonder) does fire."
+   ]
+  },
+  {
+   "id": "S10B",
+   "name": "S10 ask: pedir (for something)",
+   "shape": "pedir",
+   "definition": "Any form of pedir (to ask for, request, order): pido, pides, pide, pedí, pidió, pidieron, pida, pedir.",
+   "positives": [
+    "le pedí ayuda",
+    "voy a pedir un café",
+    "me pidió que viniera",
+    "¿qué vas a pedir?",
+    "pide la cuenta"
+   ],
+   "near_misses": [
+    {
+     "text": "le pregunté",
+     "why": "preguntar (S10A)"
+    },
+    {
+     "text": "el pedido",
+     "why": "noun 'order'"
+    },
+    {
+     "text": "despedir",
+     "why": "different verb (say goodbye)"
+    },
+    {
+     "text": "impedir",
+     "why": "different verb (prevent)"
+    },
+    {
+     "text": "una petición",
+     "why": "noun"
+    }
+   ],
+   "boundary": [
+    "Only pedir itself; despedir, impedir, medir do not fire."
+   ]
+  },
+  {
+   "id": "S11A",
+   "name": "S11 personal 'a': a + human direct object",
+   "shape": "[V] a [HUMAN DO]",
+   "definition": "The PERSONAL 'a' marking a human (or personified) DIRECT object of a verb: 'veo a María', 'conozco a tu hermano', 'busco a alguien', 'llama a tu madre'.",
+   "positives": [
+    "conozco a tu hermano",
+    "vi a María ayer",
+    "busco a alguien que hable inglés",
+    "llama a tu madre",
+    "¿esperas a alguien?"
+   ],
+   "near_misses": [
+    {
+     "text": "voy a Madrid",
+     "why": "direction 'a'"
+    },
+    {
+     "text": "voy a comer",
+     "why": "ir a + infinitive"
+    },
+    {
+     "text": "a las tres",
+     "why": "time"
+    },
+    {
+     "text": "le di el libro a Juan",
+     "why": "INDIRECT object (dative), not direct"
+    },
+    {
+     "text": "veo la casa",
+     "why": "non-human object, no 'a'"
+    }
+   ],
+   "boundary": [
+    "Indirect objects (dar/decir/enviar algo a alguien) do not fire.",
+    "'a mi hermano le gusta' (dative experiencer) does not fire."
+   ]
+  },
+  {
+   "id": "S12A",
+   "name": "S12 it is: ser",
+   "shape": "ser",
+   "definition": "Any form of ser (es, son, era, fue, será, sería, sea, ser, soy, eres, somos): identity, characteristic, time, origin, evaluation.",
+   "positives": [
+    "es fácil",
+    "era muy tarde",
+    "fue increíble",
+    "soy de Londres",
+    "no creo que sea verdad"
+   ],
+   "near_misses": [
+    {
+     "text": "está cansado",
+     "why": "estar (S12B)"
+    },
+    {
+     "text": "fue a Madrid",
+     "why": "'fue' = went (ir), not ser"
+    },
+    {
+     "text": "se fueron",
+     "why": "irse"
+    },
+    {
+     "text": "esto",
+     "why": "demonstrative, not a verb"
+    },
+    {
+     "text": "hay un problema",
+     "why": "haber"
+    }
+   ],
+   "boundary": [
+    "'fue/fueron/fuera' can be ir; fire S12A only when the meaning is 'was/were'."
+   ]
+  },
+  {
+   "id": "S12B",
+   "name": "S12 it is: estar",
+   "shape": "estar",
+   "definition": "Any form of estar (está, están, estaba, estuvo, estará, esté, estar, estoy, estás): location, state, progressive (estar + gerund).",
+   "positives": [
+    "está cansado",
+    "¿dónde está el baño?",
+    "estaba lloviendo",
+    "estoy aquí",
+    "lo cansado que estabas"
+   ],
+   "near_misses": [
+    {
+     "text": "es fácil",
+     "why": "ser (S12A)"
+    },
+    {
+     "text": "este libro",
+     "why": "demonstrative 'este'"
+    },
+    {
+     "text": "esta casa",
+     "why": "demonstrative 'esta' (no accent, before a noun)"
+    },
+    {
+     "text": "estación",
+     "why": "noun"
+    },
+    {
+     "text": "hay gente",
+     "why": "haber"
+    }
+   ],
+   "boundary": [
+    "Unaccented 'esta' before a noun is the demonstrative and does not fire."
+   ]
+  }
+ ]
+}

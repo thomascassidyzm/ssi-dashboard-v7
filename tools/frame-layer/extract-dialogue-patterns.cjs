@@ -41,7 +41,8 @@ require('dotenv').config({ quiet: true });
 const fs = require('fs');
 const path = require('path');
 const PATTERNS = require('./patterns.cjs');
-const { SENTENCE_FRAMES, EXCHANGE_FRAMES } = require('./dialogue-patterns.cjs');
+const { SENTENCE_FRAMES, EXCHANGE_FRAMES, ensureDialogueTagged } = require('./dialogue-patterns.cjs');
+const { ensureTagged } = require('./frame-tagger.cjs');
 
 const ROOT = path.join(__dirname, '..', '..');
 const DOCS = path.join(ROOT, 'docs', 'frame-layer');
@@ -159,13 +160,7 @@ function extract(rows) {
   });
 
   // --- PASS 2: exchange grain ----------------------------------------------
-  const adjacency = [];
-  for (let i = 1; i < dialogue.length; i++) {
-    const a = dialogue[i - 1], b = dialogue[i];
-    if (sceneKey(a) !== sceneKey(b)) continue;                 // scene boundary breaks adjacency
-    const c = dialogue[i + 1] && sceneKey(dialogue[i + 1]) === sceneKey(b) ? dialogue[i + 1] : null;
-    adjacency.push([a, b, c]);
-  }
+  const adjacency = adjacencyOf(dialogue);
   const exchange_frames = EXCHANGE_FRAMES.map(f => {
     const hits = adjacency.filter(([a, b, c]) =>
       f.testPair(a.english_text, b.english_text) &&
@@ -196,6 +191,31 @@ function extract(rows) {
 }
 
 const sceneKey = (r) => `${r.pod_slug}|${r.scene_number}`;
+/** Adjacent turns inside one scene, with the next turn when it is in the same scene. */
+function adjacencyOf(dialogue) {
+  const out = [];
+  for (let i = 1; i < dialogue.length; i++) {
+    const a = dialogue[i - 1], b = dialogue[i];
+    if (sceneKey(a) !== sceneKey(b)) continue;                 // scene boundary breaks adjacency
+    const c = dialogue[i + 1] && sceneKey(dialogue[i + 1]) === sceneKey(b) ? dialogue[i + 1] : null;
+    out.push([a, b, c]);
+  }
+  return out;
+}
+
+/**
+ * Every matcher extract() calls is a cache lookup over model tags (Tom,
+ * 2026-10-07: no regex classifies language): P- and D-frames on each turn, X
+ * on each adjacent pair (and on the triple where X1 fires). Run this first.
+ */
+async function prepareInventory(rows, opts = {}) {
+  const dialogue = rows.filter(isDialogue);
+  const turns = dialogue.map(r => r.english_text);
+  await ensureTagged(turns, { ...opts, knownLanguage: 'English' });
+  await ensureDialogueTagged({ turns,
+    exchanges: adjacencyOf(dialogue).map(([a, b, c]) => [a.english_text, b.english_text, c && c.english_text]) },
+  { ...opts, knownLanguage: 'English' });
+}
 function prevInScene(rows, row) {
   const i = rows.indexOf(row);
   return i > 0 && sceneKey(rows[i - 1]) === sceneKey(row) ? rows[i - 1] : null;
@@ -315,7 +335,7 @@ function stalenessOf(inv, liveMaxUpdatedAt) {
   return { known: true, stale: new Date(liveMaxUpdatedAt) > new Date(mined), mined, live: liveMaxUpdatedAt };
 }
 
-module.exports = { extract, inventory, toMarkdown, loadSectorSource, registerOf, stalenessOf, DEFAULT_PODS, SECTOR_SOURCES };
+module.exports = { extract, inventory, prepareInventory, toMarkdown, loadSectorSource, registerOf, stalenessOf, DEFAULT_PODS, SECTOR_SOURCES };
 
 if (require.main === module) {
   const { createClient } = require('@supabase/supabase-js');
@@ -336,6 +356,7 @@ if (require.main === module) {
       console.log(`${s}: ${r.rows.length} dialogue lines${r.unparsed ? `, ${r.unparsed} unparsed` : ''}`);
     }
     const maxUpdated = canon.reduce((a, r) => (r.updated_at > a ? r.updated_at : a), '');
+    await prepareInventory([...canon, ...sectorRows]);
     const inv = inventory([...canon, ...sectorRows], {
       pods, sector_sources: sectors, sector_unparsed: unparsed, canon_max_updated_at: maxUpdated,
     });

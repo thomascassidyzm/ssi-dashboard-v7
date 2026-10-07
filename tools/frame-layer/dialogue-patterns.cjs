@@ -44,192 +44,155 @@
  * frames; one frame appears in several shapes.
  */
 
-/** Sentence-grain frame. `re` may be a RegExp or a predicate over the row text. */
-const D = (id, name, shape, re, opts = {}) => ({
-  id, name, shape,
-  grain: 'sentence',
-  position: opts.position || 'either',          // initiating | response | either
-  fixed_material: opts.fixed_material || [],
-  shape_nodes: opts.shape_nodes || [],
-  notes: opts.notes || '',
-  test: typeof re === 'function' ? re : (t) => re.test(String(t || '')),
-  source: String(re),
-});
+/**
+ * NO REGEX (Tom, 2026-10-07, r-2026-10-07-never-use-regex-to-classify-language).
+ * Each frame used to carry a regex over the turn text. The frames are now
+ * DEFINED in dialogue-codex.json (D, one turn) and exchange-codex.json (X, an
+ * adjacent pair or triple) and CLASSIFIED by frame-tagger.cjs, a Haiku-family
+ * model reading those definitions, cached per text. What stays here is DATA
+ * the model never decides: position, fixed_material, shape_nodes,
+ * sentence_projection, notes.
+ *
+ * `test(text)` / `testPair(prev, cur)` / `testTriple(prev, cur, next)` keep
+ * their old signatures but are CACHE LOOKUPS that throw for untagged text, so
+ * an async caller runs `ensureDialogueTagged` first (extract-dialogue-patterns
+ * does). A silent false would report a cold cache as an absent frame.
+ *
+ * WHY X IS A SECOND CODEX, NOT MORE FRAMES IN D: the unit tagged is different.
+ * D reads one turn; X reads a rendered exchange "A: <prev> || B: <cur>". In one
+ * codex the model would be asked whether a single turn is a repair exchange,
+ * and the cache would hold turn texts and exchange texts under one key space.
+ */
+const { framesOf, ensureTagged } = require('./frame-tagger.cjs');
+const D_CODEX = require('./dialogue-codex.json');
+const X_CODEX = require('./exchange-codex.json');
+const defOf = (codex, id) => {
+  const f = codex.frames.find(x => x.id === id);
+  if (!f) throw new Error(`${codex.id} codex has no frame ${id}`);
+  return f;
+};
+const blank = (t) => !String(t || '').trim();
+
+/** Sentence-grain frame: definition from the D codex, data from here. */
+const D = (id, opts = {}) => {
+  const def = defOf(D_CODEX, id);
+  return {
+    id, name: def.name, shape: def.shape,
+    grain: 'sentence',
+    position: opts.position || 'either',          // initiating | response | either
+    fixed_material: opts.fixed_material || [],
+    shape_nodes: opts.shape_nodes || [],
+    notes: opts.notes || '',
+    definition: def.definition,
+    test: (t) => !blank(t) && framesOf(t, D_CODEX).includes(id),
+    source: `${D_CODEX.id} codex ${D_CODEX.version}`,
+  };
+};
 
 /**
- * Exchange-grain frame. `testPair(prev, cur)` is the required matcher; an
- * optional `testTriple(prev, cur, next)` tightens a three-turn shape. Both are
- * applied only WITHIN one scene — a scene boundary breaks adjacency, because
- * two unrelated conversations touching in `global_order` are not an exchange.
+ * The exchange as the X codex reads it. Speakers are rendered A/B because the
+ * matcher API carries texts only; a third turn (testTriple) is A again.
  */
-const X = (id, name, shape, opts) => ({
-  id, name, shape,
-  grain: 'exchange',
-  positions: opts.positions || [],
-  fixed_material: opts.fixed_material || [],
-  shape_nodes: opts.shape_nodes || [],
-  sentence_projection: opts.sentence_projection || null,
-  notes: opts.notes || '',
-  testPair: opts.testPair,
-  testTriple: opts.testTriple || null,
-});
+const exchangeText = (prev, cur, next) =>
+  `A: ${String(prev || '').trim()} || B: ${String(cur || '').trim()}` + (blank(next) ? '' : ` || A: ${String(next).trim()}`);
 
-// --- shared sub-matchers, so a frame's intent reads in one line -------------
 /**
- * A pod row is a TURN, and a turn is often several sentences: "Thank you very
- * much. Goodbye." carries two frames, and testing only the row's first word
- * loses the second every time. So a turn-opening matcher is applied to each
- * sentence of the turn, not to the turn. (This is the one place the pod grain
- * genuinely differs from the seed grain, where one seed is one sentence.)
+ * Exchange-grain frame. `testPair(prev, cur)` is the required matcher; X1's
+ * `testTriple(prev, cur, next)` tightens a three-turn shape. Both are applied
+ * only WITHIN one scene — a scene boundary breaks adjacency, because two
+ * unrelated conversations touching in `global_order` are not an exchange.
  */
-const SENTENCES = (t) => String(t || '').split(/(?<=[.!?…])[\s"'“”]+|\s+[-—]\s+/)
-  .map(s => s.replace(/^[\s"'“”(]+/, '').trim()).filter(Boolean);
-const OPENS = (re) => (t) => SENTENCES(t).some(s => re.test(s));
+const X = (id, opts = {}) => {
+  const def = defOf(X_CODEX, id);
+  const fires = (text) => framesOf(text, X_CODEX).includes(id);
+  return {
+    id, name: def.name, shape: def.shape,
+    grain: 'exchange',
+    positions: opts.positions || [],
+    fixed_material: opts.fixed_material || [],
+    shape_nodes: opts.shape_nodes || [],
+    sentence_projection: opts.sentence_projection || null,
+    notes: opts.notes || '',
+    definition: def.definition,
+    testPair: (prev, cur) => !blank(prev) && !blank(cur) && fires(exchangeText(prev, cur)),
+    testTriple: opts.triple ? (prev, cur, next) => !blank(prev) && !blank(cur) && !blank(next) && fires(exchangeText(prev, cur, next)) : null,
+  };
+};
 
 const SENTENCE_FRAMES = [
-  D('D1', 'ritual open/close',
-    "hello|good morning|goodbye|see you ( , [NAME] )",
-    OPENS(/^(hello|hi|hiya|good morning|good afternoon|good evening|good night|goodbye|bye|welcome|see you|morning|afternoon)\b/i),
-    { position: 'either', shape_nodes: ['N1'],
-      fixed_material: [['hello'], ['hi'], ['good morning'], ['good afternoon'], ['good evening'], ['goodbye'], ['bye'], ['welcome'], ['see you']],
-      notes: 'the frame the seed corpus cannot attest at all: no seed opens a conversation' }),
-
-  D('D2', 'polar response + elaboration',
-    "yes|no|of course , [CLAUSE]",
-    OPENS(/^(yes|no|yeah|nope|of course|certainly|absolutely|definitely|i'm afraid|afraid not)\b/i),
-    { position: 'response', shape_nodes: ['N2', 'N3', 'N9'],
-      fixed_material: [['yes'], ['no'], ['of course']],
-      notes: 'the strongest single argument for the whole design: the particle is cut early in essentially every pair, so the response register becomes reachable at almost zero cost' }),
-
-  D('D3', 'thanks / gratitude close',
-    "thank you ( for [NP|VPing] ) | thanks ( , [CLAUSE] )",
-    /\b(thank you|thanks|thank goodness|much obliged|i appreciate it|very kind of you)\b/i,
-    { position: 'either', shape_nodes: ['N2', 'N10'],
-      fixed_material: [['thank you'], ['thanks']] }),
-
-  D('D4', 'apology / attention-getter',
-    "excuse me , [CLAUSE|WH-Q] | (I'm) sorry , [CLAUSE]",
-    OPENS(/^(excuse me|sorry|i'm sorry|i am sorry|pardon|forgive me)\b/i),
-    { position: 'initiating', shape_nodes: ['N2', 'N6'],
-      fixed_material: [['excuse me'], ['sorry'], ["i'm sorry"]] }),
-
-  D('D5', 'deictic handover',
-    "here's [NP] | here you are | here it is | there's [NP]",
-    /\b(here you are|here it is|here we are|here'?s (your|the|my|a|an|one)|here are the|there'?s (the|your) \w+)\b/i,
-    { position: 'response', shape_nodes: ['N2'],
-      fixed_material: [['here you are'], ['here it is'], ["here's"], ['here is']],
-      notes: 'the physical hand-over move; the seeds have no deixis-in-situation at all' }),
-
-  D('D6', 'reciprocal return',
-    "[ANSWER] . and you ? | what about you ?",
-    /\b(and you|and yourself|what about you|how about you|and you\?)\s*\??/i,
-    { position: 'response', shape_nodes: ['N5'],
-      fixed_material: [['and you'], ['what about you']],
-      notes: 'the sentence projection of X1. THE WORKED CASE: spa_for_eng has cut no "and you", no "y tu", no bare "tu" — so this frame is unreachable for spa at every position, and the gate must say so' }),
-
-  D('D7', 'uptake assessment',
-    "[ASSESSMENT] . [CONTINUATION]",
-    OPENS(/^(excellent|lovely|perfect|great|wonderful|brilliant|no problem|that's fine|that's no|marvellous|good idea|exactly)\b/i),
-    { position: 'response', shape_nodes: ['N2', 'N8'],
-      fixed_material: [['lovely'], ['perfect'], ['great'], ['of course'], ['no problem']],
-      notes: 'same frame carries a service uptake ("Excellent choice") and a clinical graceful-switch ("Of course, no problem at all") — which is what the register tag is for' }),
-
-  D('D8', 'ellipted order',
-    "[NP] , please   (no finite verb)",
-    (t) => SENTENCES(t).some(s => /,\s*please\b/i.test(s)
-        && s.split(/\s+/).length >= 3
-        && !/^(yes|no|yeah|ok|okay)\b/i.test(s)
-        && !/\b(i'?ll|i would|can i|could i|may i|we'?ll|i want|i'd like|would like|have|take|follow|stop|tell|give|come|wait)\b/i.test(s)),
-    { position: 'initiating', shape_nodes: ['N2'],
-      fixed_material: [['please']],
-      notes: 'ellipsis IS the frame — "Four single tickets to town, please" has no verb and no seed looks like it' }),
-
-  D('D9', 'reckoning',
-    "that's [AMOUNT] ( altogether )",
-    /\b(that'?s|that will be|that'll be|comes to)\b[^.?!]*\b(pound|pounds|euro|euros|pence|p|dollars?)\b/i,
-    { position: 'initiating', shape_nodes: ['N2'],
-      fixed_material: [["that's"], ['that is']] }),
-
-  D('D10', 'read-back receipt',
-    "[REPEATED INSTRUCTION] . got it | understood | will do",
-    OPENS(/^(got it|understood|noted|word perfect|exactly right|that'?s right)\b/i),
-    { position: 'response', shape_nodes: ['N4'],
-      fixed_material: [['got it'], ['understood']],
-      notes: 'mined from the health source, as the design predicted the sector sources would add: the learner says the instruction back and marks receipt' }),
-
-  D('D11', 'reassurance / normalising',
-    "don't worry | that's normal | you're doing [ADV]",
-    /\b(don'?t worry|no need to worry|nothing to worry about|(is|are) (completely |perfectly )?normal|you'?re doing (fine|well|marvellous|grand)|it'?s (fine|alright|okay)\b|no trouble|not at all)\b/i,
-    { position: 'response', shape_nodes: ['N12'],
-      fixed_material: [["don't worry"], ["that's normal"], ['not at all']] }),
-
-  D('D12', 'compliance commitment',
-    "I will | I'll [VP] ( , then )",
-    OPENS(/^(i will|we will|will do|righto|right you are|deal|i'?ll do that|i promise)\b/i),
-    { position: 'response', shape_nodes: ['N4'],
-      fixed_material: [['i will'], ['will do'], ["i'll"]],
-      notes: 'the confirm position of N4; distinct from D10 because it commits forward rather than echoing back' }),
+  D('D1', { position: 'either', shape_nodes: ['N1'],
+    fixed_material: [['hello'], ['hi'], ['good morning'], ['good afternoon'], ['good evening'], ['goodbye'], ['bye'], ['welcome'], ['see you']],
+    notes: 'the frame the seed corpus cannot attest at all: no seed opens a conversation' }),
+  D('D2', { position: 'response', shape_nodes: ['N2', 'N3', 'N9'],
+    fixed_material: [['yes'], ['no'], ['of course']],
+    notes: 'the strongest single argument for the whole design: the particle is cut early in essentially every pair, so the response register becomes reachable at almost zero cost' }),
+  D('D3', { position: 'either', shape_nodes: ['N2', 'N10'],
+    fixed_material: [['thank you'], ['thanks']] }),
+  D('D4', { position: 'initiating', shape_nodes: ['N2', 'N6'],
+    fixed_material: [['excuse me'], ['sorry'], ["i'm sorry"]] }),
+  D('D5', { position: 'response', shape_nodes: ['N2'],
+    fixed_material: [['here you are'], ['here it is'], ["here's"], ['here is']],
+    notes: 'the physical hand-over move; the seeds have no deixis-in-situation at all' }),
+  D('D6', { position: 'response', shape_nodes: ['N5'],
+    fixed_material: [['and you'], ['what about you']],
+    notes: 'the sentence projection of X1. THE WORKED CASE: spa_for_eng has cut no "and you", no "y tu", no bare "tu" — so this frame is unreachable for spa at every position, and the gate must say so' }),
+  D('D7', { position: 'response', shape_nodes: ['N2', 'N8'],
+    fixed_material: [['lovely'], ['perfect'], ['great'], ['of course'], ['no problem']],
+    notes: 'same frame carries a service uptake ("Excellent choice") and a clinical graceful-switch ("Of course, no problem at all") — which is what the register tag is for' }),
+  D('D8', { position: 'initiating', shape_nodes: ['N2'],
+    fixed_material: [['please']],
+    notes: 'ellipsis IS the frame — "Four single tickets to town, please" has no verb and no seed looks like it' }),
+  D('D9', { position: 'initiating', shape_nodes: ['N2'],
+    fixed_material: [["that's"], ['that is']] }),
+  D('D10', { position: 'response', shape_nodes: ['N4'],
+    fixed_material: [['got it'], ['understood']],
+    notes: 'mined from the health source, as the design predicted the sector sources would add: the learner says the instruction back and marks receipt' }),
+  D('D11', { position: 'response', shape_nodes: ['N12'],
+    fixed_material: [["don't worry"], ["that's normal"], ['not at all']] }),
+  D('D12', { position: 'response', shape_nodes: ['N4'],
+    fixed_material: [['i will'], ['will do'], ["i'll"]],
+    notes: 'the confirm position of N4; distinct from D10 because it commits forward rather than echoing back' }),
 ];
 
 // --- exchange grain ---------------------------------------------------------
-const isQ = (t) => /\?/.test(String(t || ''));
-const fires = (frames, ids, t) => frames.filter(f => ids.includes(f.id)).some(f => f.test(t));
-const D_BY = Object.fromEntries(SENTENCE_FRAMES.map(f => [f.id, f]));
-
 const EXCHANGE_FRAMES = [
-  X('X1', 'reciprocal return',
-    "[WH-Q] -> [A] + and you ? -> [A]",
-    { positions: ['answer-plus-return', 'return-answer'],
-      fixed_material: [['and you'], ['what about you']],
-      sentence_projection: 'D6',
-      shape_nodes: ['N5'],
-      testPair: (prev, cur) => isQ(prev) && D_BY.D6.test(cur),
-      testTriple: (prev, cur, next) => isQ(prev) && D_BY.D6.test(cur) && !!next && !isQ(next),
-      notes: 'the design\'s worked case, quoted live from pod-1 SC06' }),
-
-  X('X2', 'polar-response-to-question',
-    "[POLAR Q] -> yes|no , [CLAUSE]",
-    { positions: ['question', 'polar-response'],
-      fixed_material: [['yes'], ['no'], ['of course']],
-      sentence_projection: 'D2',
-      shape_nodes: ['N3', 'N9'],
-      testPair: (prev, cur) => isQ(prev) && D_BY.D2.test(cur),
-      notes: 'the commonest exchange in the corpus and the cheapest to make instantiable' }),
-
-  X('X3', 'repair',
-    "[TURN] -> non-understanding + request -> [REFORMULATION]",
-    { positions: ['trouble-source', 'repair-initiation', 'reformulation'],
-      fixed_material: [['sorry'], ["i don't understand"], ['say that again']],
-      sentence_projection: 'D4',
-      shape_nodes: ['N6'],
-      testPair: (prev, cur) => !!prev && /\b(sorry|say (that )?again|didn'?t (quite )?catch|don'?t understand|what do you mean|come again|pardon|slow(ly| down)|repeat that)\b/i.test(String(cur || '')),
-      notes: 'the one exchange whose whole point is that the FIRST turn failed; a sentence-grain map cannot see it' }),
-
-  X('X4', 'instruction -> read-back',
-    "[INSTRUCTION] -> [INSTRUCTION REPEATED] + receipt",
-    { positions: ['instruct', 'read-back'],
-      fixed_material: [['got it'], ['understood'], ['i will']],
-      sentence_projection: 'D10',
-      shape_nodes: ['N4'],
-      testPair: (prev, cur) => !!prev && !isQ(prev) && D_BY.D10.test(cur),
-      notes: 'the safety-critical shape of the health source: the learner proves uptake by saying it back' }),
-
-  X('X5', 'order -> deictic handover',
-    "[ORDER|REQUEST] -> here you are | here's [NP]",
-    { positions: ['order', 'deliver'],
-      fixed_material: [['here you are'], ['here it is'], ["here's"]],
-      sentence_projection: 'D5',
-      shape_nodes: ['N2'],
-      testPair: (prev, cur) => !!prev && D_BY.D5.test(cur) }),
-
-  X('X6', 'thanks -> downgrade',
-    "thank you -> not at all | no problem | you're welcome",
-    { positions: ['thank', 'downgrade'],
-      fixed_material: [['not at all'], ['no problem'], ["you're welcome"]],
-      sentence_projection: 'D11',
-      shape_nodes: ['N10', 'N2'],
-      testPair: (prev, cur) => D_BY.D3.test(prev) && /\b(not at all|no problem|you'?re welcome|no trouble|any time|my pleasure|none taken|that'?s (quite )?alright)\b/i.test(String(cur || '')) }),
+  X('X1', { positions: ['answer-plus-return', 'return-answer'],
+    fixed_material: [['and you'], ['what about you']],
+    sentence_projection: 'D6', shape_nodes: ['N5'], triple: true,
+    notes: 'the design\'s worked case, quoted live from pod-1 SC06' }),
+  X('X2', { positions: ['question', 'polar-response'],
+    fixed_material: [['yes'], ['no'], ['of course']],
+    sentence_projection: 'D2', shape_nodes: ['N3', 'N9'],
+    notes: 'the commonest exchange in the corpus and the cheapest to make instantiable' }),
+  X('X3', { positions: ['trouble-source', 'repair-initiation', 'reformulation'],
+    fixed_material: [['sorry'], ["i don't understand"], ['say that again']],
+    sentence_projection: 'D4', shape_nodes: ['N6'],
+    notes: 'the one exchange whose whole point is that the FIRST turn failed; a sentence-grain map cannot see it' }),
+  X('X4', { positions: ['instruct', 'read-back'],
+    fixed_material: [['got it'], ['understood'], ['i will']],
+    sentence_projection: 'D10', shape_nodes: ['N4'],
+    notes: 'the safety-critical shape of the health source: the learner proves uptake by saying it back' }),
+  X('X5', { positions: ['order', 'deliver'],
+    fixed_material: [['here you are'], ['here it is'], ["here's"]],
+    sentence_projection: 'D5', shape_nodes: ['N2'] }),
+  X('X6', { positions: ['thank', 'downgrade'],
+    fixed_material: [['not at all'], ['no problem'], ["you're welcome"]],
+    sentence_projection: 'D11', shape_nodes: ['N10', 'N2'] }),
 ];
+
+/**
+ * Tag what the dialogue matchers will read: every turn against D, every
+ * adjacent pair against X, and — only where X1 fired on the pair — the
+ * triple that X1's testTriple reads. `exchanges` is [[prev, cur, next?], ...].
+ */
+async function ensureDialogueTagged({ turns = [], exchanges = [] } = {}, opts = {}) {
+  const ledgers = [await ensureTagged(turns, { ...opts, codex: D_CODEX })];
+  const pairs = exchanges.filter(([a, b]) => !blank(a) && !blank(b));
+  ledgers.push(await ensureTagged(pairs.map(([a, b]) => exchangeText(a, b)), { ...opts, codex: X_CODEX }));
+  const triples = pairs.filter(([a, b, c]) => !blank(c) && framesOf(exchangeText(a, b), X_CODEX).includes('X1'));
+  ledgers.push(await ensureTagged(triples.map(([a, b, c]) => exchangeText(a, b, c)), { ...opts, codex: X_CODEX }));
+  return ledgers;
+}
 
 /**
  * The MERGED matcher list the diversity metric and the generator both see.
@@ -242,4 +205,4 @@ function allSentenceMatchers() {
   return [...require('./patterns.cjs'), ...SENTENCE_FRAMES];
 }
 
-module.exports = { SENTENCE_FRAMES, EXCHANGE_FRAMES, allSentenceMatchers, D, X };
+module.exports = { SENTENCE_FRAMES, EXCHANGE_FRAMES, allSentenceMatchers, ensureDialogueTagged, exchangeText, D_CODEX, X_CODEX, D, X };

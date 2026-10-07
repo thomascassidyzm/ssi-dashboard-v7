@@ -74,13 +74,14 @@ const SYSTEM = (codex = CODEX) => `${codex.task || "You tag phrases from a langu
  * ("3: says+clause; shouldn't; => P7 P12 P23"). It costs output tokens and is
  * kept only if the gold set says it buys accuracy (gold/measure-gold.cjs).
  */
-function buildPrompt(items, { knownLanguage, analyse = ANALYSE } = {}) {
+function buildPrompt(items, { knownLanguage, analyse = ANALYSE, codex } = {}) {
   const lang = knownLanguage ? `The phrases are in ${knownLanguage}. ` : '';
+  // A codex without openers (D, X, C, S) states its own request and example.
   const form = analyse
     ? `<number>: <a few words naming each construction you see, separated by ;> => <O and/or frame ids, or ->
-Example: 7: but-opener; want + to-verb; don't; tomorrow => O P1 P23 P28`
+${(codex && codex.example) || "Example: 7: but-opener; want + to-verb; don't; tomorrow => O P1 P23 P28"}`
     : `<number>: <O and/or frame ids, or ->`;
-  return `${lang}For EACH numbered phrase, give the frame ids it instantiates, per the codex. Put O first if the phrase starts with a detachable opener. Reply with exactly one line per phrase, in order:
+  return `${lang}${(codex && codex.request) || 'For EACH numbered phrase, give the frame ids it instantiates, per the codex. Put O first if the phrase starts with a detachable opener.'} Reply with exactly one line per phrase, in order:
 ${form}
 
 PHRASES:
@@ -198,7 +199,7 @@ async function ensureTagged(texts, { codex = CODEX, cache = defaultCache(codex),
   for (let i = 0; i < todo.length; i += batch) batches.push(todo.slice(i, i + batch));
   let next = 0;
   const runOne = async (items, attempt) => {
-    const r = await call(buildPrompt(items, { knownLanguage }), { model, system });
+    const r = await call(buildPrompt(items, { knownLanguage, codex }), { model, system });
     ledger.calls++; ledger.tokens += r.usage.total; ledger.output_tokens += r.usage.output; ledger.cost_usd += r.usage.cost_usd;
     const tags = parseReply(r.text, items.length, idsOf(codex));
     cache.put(items.map((t, i) => [t, tags[i]]).filter(([, tag]) => tag), model);

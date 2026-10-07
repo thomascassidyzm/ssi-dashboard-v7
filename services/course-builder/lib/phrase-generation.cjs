@@ -40,7 +40,7 @@ if (!String(process.env.PATH || '').split(path.delimiter).includes(LOCAL_BIN)) {
 const { buildPrompt } = require(path.join(__dirname, '../../../tools/phrase-lab/build-prompt.cjs'));
 const { scoreSet } = require(path.join(__dirname, '../../../tools/phrase-lab/score.cjs'));
 const { makeCourseCtx, checkPhraseSet, failureFeedback } = require(path.join(__dirname, '../../../tools/phrase-gate/gate-check.cjs'));
-const { computeDeclaration, checkDeclaration, recordDeclaration, frameSection } =
+const { computeDeclaration, checkDeclaration, tagForCheck, recordDeclaration, frameSection } =
   require(path.join(__dirname, '../../../tools/frame-layer/declaration.cjs'));
 const { separableSection } = require('./separable-verbs.cjs');
 // Kai, 2026-09-21 (job #491): a structural feature whose first showing is a
@@ -287,10 +287,20 @@ async function generateLegoPhrases(supabase, courseCode, seedNumber, legoIndex, 
     // gate failures do, each carrying its own rewrite instruction — the tool
     // that satisfies this gate is the frame section merged into the prompt
     // above, shipped in the same commit (Tom's ruling on gates and tools).
-    declarationCheck = checkDeclaration(declaration, [
+    // The frames it re-derives are classified by a Haiku-family model and
+    // cached per text (tools/frame-layer/frame-tagger.cjs, Tom's 2026-10-07
+    // no-regex ruling), so the new phrases are tagged first. If tagging fails
+    // the check is reported as not run, never a reason to refuse phrases.
+    const declRows = [
       ...phrases.build.map((p) => ({ phrase_role: 'build', known_text: p.known, target_text: p.target, frame: p.frame })),
       ...phrases.use.map((p) => ({ phrase_role: 'use', known_text: p.known, target_text: p.target, frame: p.frame })),
-    ]);
+    ];
+    try {
+      if (tagForCheck) await tagForCheck(declaration, declRows);
+      declarationCheck = checkDeclaration(declaration, declRows);
+    } catch (e) {
+      declarationCheck = { checked: false, pass: null, reason: `declaration check failed: ${e.message}` };
+    }
     // CLAIM HONESTY DOES NOT BLOCK AND DOES NOT BURN AN ATTEMPT (Tom's ruling,
     // 2026-09-05). `declPass` is the CONTENT-FLOOR verdict alone; a wrong frame
     // tag is carried in `declarationCheck.claim_honesty` for a reader and never
