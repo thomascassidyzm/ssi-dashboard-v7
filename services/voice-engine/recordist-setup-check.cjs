@@ -37,6 +37,9 @@ const { extForMime } = require('./clone-source-store.cjs')
 
 const SETUP_PACK_PREFIX = 'pack-setup-'
 const SETUP_PHRASE_COUNT = 10
+// Tom 2026-10-07 (#848): "It should accept anything past 5 phrases." The pack is still
+// TEN lines; Submit needs only this many takes. The client mirrors it (RecordistRoom.vue).
+const SETUP_MIN_SUBMIT = 5
 const SETUP_STATUSES = Object.freeze(['open', 'submitted', 'approved', 'changes'])
 
 const packIdFor = (voiceId) => `setup-${voiceId}`
@@ -54,6 +57,9 @@ const locksScript = (row) => !!row && row.status !== 'approved'
  */
 /** A setup check is TEN phrases or it is not created: 3-9 lines is not the agreed sample (job #844). */
 function isFullSetupSample(phrases) { return Array.isArray(phrases) && phrases.length >= SETUP_PHRASE_COUNT }
+
+/** How many takes a submit is still short of SETUP_MIN_SUBMIT (0 = may submit). Pure. */
+function setupSubmitShortfall(takenCount) { return Math.max(0, SETUP_MIN_SUBMIT - (takenCount || 0)) }
 
 function pickSetupPhrases(lines, count = SETUP_PHRASE_COUNT) {
   const seen = new Set()
@@ -164,6 +170,8 @@ async function measureTake(buffer, mimeType, { exec = spawn } = {}) {
 module.exports = {
   SETUP_PACK_PREFIX,
   SETUP_PHRASE_COUNT,
+  SETUP_MIN_SUBMIT,
+  setupSubmitShortfall,
   isFullSetupSample,
   SETUP_STATUSES,
   packIdFor,

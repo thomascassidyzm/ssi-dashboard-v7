@@ -169,9 +169,9 @@
           <span>We'll open your full script once we've listened. You can close this page.</span>
         </template>
         <template v-else>
-          <strong>{{ voice.recorded }} of {{ voice.total }} phrases recorded.</strong>
+          <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>
           <span v-if="voice.pack.setup.status === 'changes' && voice.pack.setup.note" class="setup-note">From us: {{ voice.pack.setup.note }}</span>
-          <button v-if="voice.remaining === 0" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+          <button v-if="voice.recorded >= SETUP_MIN_SUBMIT" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
             {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
           </button>
           <span v-if="setupError" class="setup-note">{{ setupError }}</span>
@@ -694,7 +694,7 @@
       </div>
 
       <div v-else-if="setupIncompleteHere" class="setup-card">
-        <strong>{{ setupRemaining }} of your setup check {{ setupRemaining === 1 ? 'phrase is' : 'phrases are' }} still to record.</strong>
+        <strong>{{ setupRecorded }} of {{ lines.length }} recorded, record at least {{ SETUP_MIN_SUBMIT }}.</strong>
       </div>
 
       <button class="btn-ghost" @click="backToStart">Back to my lines</button>
@@ -2323,19 +2323,22 @@ function beforeUnloadGuard(e) {
 // THE SETUP CHECK's "I'm done" — only offered on a per-artist setup pack once
 // every phrase has a take. The server re-checks the count; this is the tap.
 const setupSubmitting = ref(false)
+// Tom 2026-10-07 (#848): Submit from this many saved phrases; the pack stays ten. Server mirror: SETUP_MIN_SUBMIT.
+const SETUP_MIN_SUBMIT = 5
 const setupOpen = computed(() => {
   const setup = voice.value.pack && voice.value.pack.setup
   return !!setup && (setup.status === 'open' || setup.status === 'changes')
 })
 // A partial session (record 1 of 10, stop) must NOT read as finished (review
-// #846): every line of the pack needs a take, on the server or saved here.
-const setupRemaining = computed(() =>
-  lines.value.filter(l => !(l.recorded || queue.saved.has(l.id))).length)
+// #846): a take counts once it is on the server or saved here.
+const setupRecorded = computed(() =>
+  lines.value.filter(l => l.recorded || queue.saved.has(l.id)).length)
+const setupEnough = computed(() => setupRecorded.value >= SETUP_MIN_SUBMIT)
 const canSubmitSetupHere = computed(() =>
   setupOpen.value && queue.pendingCount.value === 0 && failedList.value.length === 0
-    && sessionLines.value.length > 0 && lines.value.length > 0 && setupRemaining.value === 0)
+    && sessionLines.value.length > 0 && setupEnough.value)
 const setupIncompleteHere = computed(() =>
-  setupOpen.value && sessionLines.value.length > 0 && setupRemaining.value > 0)
+  setupOpen.value && sessionLines.value.length > 0 && !setupEnough.value)
 const setupError = ref(null)
 async function submitSetup() {
   setupSubmitting.value = true
