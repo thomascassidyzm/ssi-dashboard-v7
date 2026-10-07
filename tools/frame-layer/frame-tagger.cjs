@@ -45,6 +45,9 @@ const STORE = process.env.FRAME_TAG_STORE
 /** The cache key normalises whitespace and case only: the model sees the text as written. */
 const words = (s) => String(s || '').replaceAll('\t', ' ').replaceAll('\n', ' ').replaceAll('\r', ' ').split(' ').filter(Boolean);
 const ANALYSE = process.env.FRAME_TAG_ANALYSE !== '0'; // default ON: gold F1 0.77 -> 0.92 at equal tokens (2026-10-07)
+/** Strip markdown/punctuation marks a model puts round an id: '**P1**', 'P23.', '(P5)'. Plumbing over the reply format. */
+const MARKS = new Set(['*', '.', ';', ':', '(', ')', '[', ']', '`', '"', "'"]);
+function trimMarks(t) { let a = 0, b = t.length; while (a < b && MARKS.has(t[a])) a++; while (b > a && MARKS.has(t[b - 1])) b--; return t.slice(a, b); }
 const keyOf = (text) => words(text).join(' ').toLowerCase();
 
 // ---------------------------------------------------------------- prompt
@@ -102,7 +105,12 @@ function parseReply(text, n, ids = FRAME_IDS) {
     if (!Number.isInteger(num) || num < 1 || num > n) continue;
     const body = line.slice(colon + 1);
     const arrow = body.lastIndexOf('=>');
-    const tokens = words((arrow >= 0 ? body.slice(arrow + 2) : body).replaceAll(',', ' ')).map(t => t.toUpperCase());
+    const tokens = words((arrow >= 0 ? body.slice(arrow + 2) : body).replaceAll(',', ' ')).map(t => trimMarks(t).toUpperCase()).filter(Boolean);
+    // An answer is ONLY ids, O and '-'. Anything else ("unable to classify", an
+    // analysis with no '=>') is MALFORMED and stays null, so ensureTagged retries
+    // it rather than caching it as "no frames" (review #115: a malformed reply
+    // read as a negative made false coverage gaps). Empty needs an explicit '-' or O.
+    if (!tokens.length || !tokens.every(t => t === 'O' || t === '-' || ids.includes(t))) continue;
     const frames = [...new Set(tokens.filter(t => ids.includes(t)))].sort((a, b) => ids.indexOf(a) - ids.indexOf(b));
     out[num - 1] = { frames, opener: tokens.includes('O') };
   }
@@ -205,7 +213,9 @@ async function ensureTagged(texts, { codex = CODEX, cache = defaultCache(codex),
     cache.put(items.map((t, i) => [t, tags[i]]).filter(([, tag]) => tag), model);
     const gaps = items.filter((_, i) => !tags[i]);
     log(`  tagged ${items.length - gaps.length}/${items.length} (${r.usage.total} tokens, ${Math.round(r.usage.ms / 1000)}s)`);
+    // retry what the model left unanswered or malformed: once as a batch, then in tens
     if (gaps.length && attempt === 1) await runOne(gaps, 2);
+    else if (gaps.length && attempt === 2) for (let i = 0; i < gaps.length; i += 10) await runOne(gaps.slice(i, i + 10), 3);
     else ledger.untagged.push(...gaps);
   };
   const worker = async () => {
