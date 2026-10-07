@@ -18,11 +18,12 @@ function makeSupabase(rows) {
         return Promise.resolve({ data: b._single ? (data[0] || null) : data, error: null }).then(resolve, reject);
       },
     };
-    for (const m of ['select', 'eq', 'neq', 'in', 'lt', 'lte', 'gt', 'gte', 'not', 'is',
+    b.eq = (col, val) => { (b._eq ||= {})[col] = val; return b; };
+    for (const m of ['select', 'neq', 'in', 'lt', 'lte', 'gt', 'gte', 'not', 'is',
                      'order', 'limit', 'range', 'filter', 'match', 'or', 'delete']) b[m] = () => b;
     b.single = b.maybeSingle = () => { b._single = true; return b; };
     for (const m of ['insert', 'upsert', 'update']) {
-      b[m] = (payload) => { writes.push({ table, op: m, rows: Array.isArray(payload) ? payload : [payload] }); return b; };
+      b[m] = (payload) => { writes.push({ table, op: m, rows: Array.isArray(payload) ? payload : [payload], eq: (b._eq = {}) }); return b; };
     }
     return b;
   }
@@ -45,7 +46,9 @@ async function finalize(rows, courseCode) {
   res.json = (b) => { res.body = b; return res; };
   await handler({ params: { courseCode }, body: {}, headers: {} }, res);
   const legos = ctx.supabase._writes.filter(w => w.table === 'course_legos' && w.op === 'upsert').flatMap(w => w.rows);
-  return { res, isNew: Object.fromEntries(legos.map(l => [`${l.seed_number}:${l.known_text}`, l.is_new])) };
+  const demoted = ctx.supabase._writes.filter(w => w.table === 'course_legos' && w.op === 'update')
+    .map(w => ({ seed_number: w.eq.seed_number, lego_index: w.eq.lego_index, ...w.rows[0] }));
+  return { res, demoted, isNew: Object.fromEntries(legos.map(l => [`${l.seed_number}:${l.known_text}`, l.is_new])) };
 }
 
 const C = 'cym_tst_for_eng';
@@ -74,6 +77,12 @@ describe('v2 finalize in a woven Welsh course', () => {
   it('a LEGO that only a LATER seed in the running order teaches is new here', async () => {
     const { isNew } = await finalize({ course_seed_drafts: [draft1001], course_legos: baseline, course_running_order: order }, C);
     expect(isNew['1001:a shop']).toBe(true);
+  });
+
+  it('moving a debut earlier demotes the later matching baseline LEGO (no double debut, #115)', async () => {
+    const { demoted, isNew } = await finalize({ course_seed_drafts: [draft1001], course_legos: baseline, course_running_order: order }, C);
+    expect(isNew['1001:a shop']).toBe(true);
+    expect(demoted).toEqual([expect.objectContaining({ seed_number: 258, lego_index: 1, is_new: false })]);
   });
 
   it('a fork with a later seed is still a ZUT collision', async () => {
