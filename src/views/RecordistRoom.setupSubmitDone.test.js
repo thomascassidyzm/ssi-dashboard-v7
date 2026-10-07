@@ -92,9 +92,10 @@ describe('setup check: Submit on the done card', () => {
   afterEach(() => { vi.restoreAllMocks() })
 
   it('offers Submit once recording stops on an open setup pack, and posts to the submit route', async () => {
-    stub({ setup: { status: 'open' } })
+    stub({ setup: { status: 'open' } }, 5)
     const w = mount(RecordistRoom, { props: { voiceId: 'human_dan_pack' }, global: { stubs: { RouterLink: { template: '<a><slot/></a>' } } } })
     await until(() => w.find('.btn-begin').exists(), 'the ready card')
+    for (let i = 2; i <= 5; i++) savedTakes.set(`line-${i}`, true) // four saved earlier; this session records the fifth
     await recordOneAndStop(w)
     const submit = w.findAll('.setup-go').find(b => b.text().includes('Submit my setup check'))
     expect(submit, 'Submit on the done card').toBeTruthy()
@@ -111,7 +112,7 @@ describe('setup check: Submit on the done card', () => {
     expect(w.text()).not.toContain('Submit my setup check')
   })
 
-  it('ten-line pack: no Submit after one saved phrase, Submit once all ten are saved', async () => {
+  it('ten-line pack: no Submit at 4 saved, Submit at 5', async () => {
     stub({ setup: { status: 'open' } }, 10)
     const w = mount(RecordistRoom, { props: { voiceId: 'human_dan_pack' }, global: { stubs: { RouterLink: { template: '<a><slot/></a>' } } } })
     await until(() => w.find('.btn-begin').exists(), 'the ready card')
@@ -124,8 +125,12 @@ describe('setup check: Submit on the done card', () => {
     if (w.find('.btn-finish').exists()) await w.find('.btn-finish').trigger('click')
     await until(() => w.find('.rc-card').exists(), 'the done card')
     expect(w.text()).not.toContain('Submit my setup check')
-    expect(w.text()).toMatch(/\d+ of your setup check phrases are still to record/)
-    for (let i = 1; i <= 10; i++) reactive(savedTakes).set(`line-${i}`, true)
+    expect(w.text()).toMatch(/\d+ of 10 recorded, record at least 5/)
+    for (let i = 1; i <= 4; i++) reactive(savedTakes).set(`line-${i}`, true)
+    await flushPromises()
+    expect(w.text()).not.toContain('Submit my setup check')
+    expect(w.text()).toContain('4 of 10 recorded, record at least 5')
+    reactive(savedTakes).set('line-5', true)
     await flushPromises()
     expect(w.text()).toContain('Submit my setup check')
   })

@@ -28,6 +28,14 @@ test('setup check: only a full ten-phrase sample may be created (3-9 refused)', 
   assert.strictEqual(setup.isFullSetupSample(Array.from({ length: setup.SETUP_PHRASE_COUNT }, () => ({}))), true)
 })
 
+test('setup check: Submit needs 5 of the 10 takes (409 at 4, ok at 5)', () => {
+  assert.strictEqual(setup.SETUP_MIN_SUBMIT, 5)
+  assert.strictEqual(setup.SETUP_PHRASE_COUNT, 10)
+  assert.strictEqual(setup.setupSubmitShortfall(4), 1)
+  assert.strictEqual(setup.setupSubmitShortfall(0), 5)
+  for (const n of [5, 9, 10]) assert.strictEqual(setup.setupSubmitShortfall(n), 0)
+})
+
 test('re-record all: archives takes, empties slots, restore undoes it', { skip: !url }, async () => {
   const { Client } = require('pg')
   const client = new Client({ connectionString: url })

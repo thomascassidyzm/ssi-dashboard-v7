@@ -1962,8 +1962,9 @@ module.exports = function createRecordistRouter({
       if (pack.setup.status === 'approved') return res.json({ status: 'approved' })
       const objects = await s3.listObjects(packPrefix(pack.id))
       const newest = indexTakes(objects, pack.id)
-      const missing = pack.items.filter((i) => !newest.has(i.id)).length
-      if (missing) return res.status(409).json({ error: `${missing} of the ${pack.items.length} phrases still need a take.`, missing })
+      const taken = pack.items.filter((i) => newest.has(i.id)).length
+      const missing = setupCheck.setupSubmitShortfall(taken)
+      if (missing) return res.status(409).json({ error: `${taken} of ${pack.items.length} phrases recorded; record at least ${setupCheck.SETUP_MIN_SUBMIT} to submit.`, missing })
       const { error } = await db().from('recordist_setup_checks').update({ status: 'submitted', submitted_at: new Date().toISOString() }).eq('voice_id', pack.setup.voiceId)
       if (error) throw new Error(error.message)
       res.json({ status: 'submitted' })
