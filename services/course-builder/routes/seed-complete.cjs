@@ -31,6 +31,7 @@ const {
 // that has no registry row — i.e. all 130 today — and the checks then run the
 // single-course query they always ran.
 const { courseFamily } = require('../lib/course-family.cjs');
+const { loadRunningOrder, filterSeedsBefore, orderKey } = require('../../shared/running-order.cjs');
 // Script-aware segmentation + UNCHECKED reason codes, so the known-side gate can report that it
 // could not check rather than reporting a pass it never earned (2026-08-18).
 const { REASON: KS_REASON, segmentKnown } = require('../lib/known-side-script.cjs');
@@ -40,7 +41,14 @@ const { escalateBuildPhrases } = require('../lib/build-escalation.cjs');
 // Build a SEED-indexed known-side context (mirror of the round-indexed CLI ctx):
 // gloss-stems & construction/unit carriers keyed by debut SEED, from prior-seed
 // legos (DB) folded with the current submission's legos.
+//
+// In a course with a running order (job #949) "seed" here is the POSITION: prior legos are the
+// ones earlier in the running order, every debut is keyed by its position, and the caller checks
+// at ctx.atSeed. Without a running order orderKey() is the seed number itself, so this is the
+// function it always was.
 async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentLegos, contract) {
+  const order = await loadRunningOrder(supabase, courseCode);
+  const atSeed = orderKey(order, currentSeed);
   const prior = [];
   for (let from = 0; ; from += 1000) {
     // PostgREST offset paging without an ORDER BY can return the same row twice and
@@ -48,16 +56,16 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
     // >1000 prior ones. That makes the gate stricter than it should be: it rejects a
     // gloss the course really did introduce. Measured on fin_for_eng (1,425 legos),
     // it manufactured a false "unknown gloss" breach at S0644L01.
-    const { data, error } = await supabase.from('course_legos')
+    const { data, error } = await filterSeedsBefore(supabase.from('course_legos')
       .select('target_text,known_text,components,seed_number')
-      .eq('course_code', courseCode).lt('seed_number', currentSeed)
+      .eq('course_code', courseCode), order, currentSeed)
       .order('seed_number').order('lego_index').range(from, from + 999);
     if (error) throw new Error(error.message);
-    prior.push(...data);
+    prior.push(...(order ? data.map(l => ({ ...l, seed_number: orderKey(order, l.seed_number) })) : data));
     if (data.length < 1000) break;
   }
   const cur = (currentLegos || []).map(l => ({
-    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: currentSeed,
+    target_text: l.target, known_text: l.known, components: l.components || [], seed_number: atSeed,
   }));
   const all = [...prior, ...cur];
   const stemFirstPos = new Map();
@@ -83,10 +91,11 @@ async function buildKnownSideSeedCtx(supabase, courseCode, currentSeed, currentL
     consPos[con.id] = con.cluster ? (contract.clusterSeeds?.[con.cluster] ?? contract.clusterRounds?.[con.cluster] ?? Infinity) : carrierSeed(con.carrier);
   }
   const unitPos = (contract.glossUnits || []).map(u => ({ phrase: u.phrase, pos: carrierSeed(u.carrier) }));
-  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos };
+  return { ...compileKnownContract(contract), stemFirstPos, consPos, unitPos, atSeed };
 }
 const { recordActivity } = require('../lib/activity-tracker.cjs');
 const { isMarkdownSubmission, extractMarkdown, parseMarkdownSeed } = require('../lib/markdown-parser.cjs');
+const { fetchCanonicalSeeds } = require('../lib/canonical-source.cjs');
 const { bumpCourseVersion } = require('../../shared/course-version.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 const {
@@ -303,10 +312,7 @@ async function initializeCourseSeeds(ctx, courseCode, req = null) {
     return { initialized: false, count: existingCount };
   }
 
-  const { data: canonical, error: canonicalError } = await ctx.supabase
-    .from('canonical_seeds')
-    .select('seed_number, source_text')
-    .order('seed_number');
+  const { data: canonical, error: canonicalError } = await fetchCanonicalSeeds(ctx.supabase, courseCode);
 
   if (canonicalError || !canonical || canonical.length === 0) {
     throw new Error('Failed to fetch canonical seeds: ' + (canonicalError?.message || 'no data'));
@@ -1411,7 +1417,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             console.log(`⚡ ${f.legoId}: BUILD gate strike ${f.strikes} — escalating generation to Opus`);
             try {
               const priorPairs = [
-                ...await loadIntroducedLegoPairs(ctx, course_code, seed_number - 1),
+                ...await loadIntroducedLegoPairs(ctx, course_code, seed_number, { exclusive: true }),
                 ...legos.filter(l => l.idx < f.lego.idx).map(l => ({ known: l.known, target: l.target })),
               ];
               const rejectedNorms = new Set(f.gate.rejects.map(r => normalizeForContainment(r.target)));
@@ -1622,7 +1628,7 @@ module.exports = function seedCompleteRoutes(ctx) {
             else if (lego.phrases) basket = lego.phrases;
             for (const phrase of basket) {
               if (!phrase.known) continue;
-              const probs = checkKnownSide(phrase.known, seed_number, knownCtx);
+              const probs = checkKnownSide(phrase.known, knownCtx.atSeed, knownCtx);
               if (!probs.length) continue;
               // Vocab breaches BLOCK (2026-07-27 "yes I want to speak" fix): a prompt
               // using a known-language word never introduced at this position forks
@@ -2126,13 +2132,15 @@ module.exports = function seedCompleteRoutes(ctx) {
 
       // EMPTY SEED HANDLING: add seed sentence as USE phrase for newest-word LEGO
       if (skippedDuplicates === legos.length && skippedDuplicates > 0) {
-        const { data: allNewLegos } = await ctx.supabase
+        const runningOrder = await loadRunningOrder(ctx.supabase, course_code);
+        const { data: allNewLegos } = await filterSeedsBefore(ctx.supabase
           .from('course_legos')
           .select('seed_number, lego_index, target_text')
           .eq('course_code', course_code)
-          .eq('is_new', true)
-          .lt('seed_number', seed_number)
+          .eq('is_new', true), runningOrder, seed_number)
           .order('seed_number');
+        // First introduction = earliest in the running order, when the course has one (job #949).
+        if (runningOrder && allNewLegos) allNewLegos.sort((a, b) => orderKey(runningOrder, a.seed_number) - orderKey(runningOrder, b.seed_number) || a.lego_index - b.lego_index);
 
         const wordIntroducedBy = {};
         for (const l of (allNewLegos || [])) {
