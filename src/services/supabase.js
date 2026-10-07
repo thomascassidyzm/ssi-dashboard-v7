@@ -7,6 +7,7 @@
 
 import { createClient } from '@supabase/supabase-js'
 import { computeSeedGridState } from './seed-grid-state'
+import { registerCourseRow } from '../utils/languageNames'
 
 // Support both VITE_ (local dev) and NEXT_PUBLIC_ (Vercel Supabase integration) prefixes
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || import.meta.env.NEXT_PUBLIC_SUPABASE_URL
@@ -99,6 +100,9 @@ export async function getCourseInfo(courseCode) {
     .single()
 
   if (error) {
+    // Hidden (sandbox) courses are RLS-invisible to anon — ask the server.
+    const row = await getServerCourseRow(courseCode)
+    if (row) return row
     console.error('Failed to get course info:', error)
     return null
   }
@@ -113,12 +117,46 @@ export async function getCourseInfo(courseCode) {
 export async function getAllCourses() {
   if (!supabase) throw new Error('Supabase not configured')
 
+  // Hidden (sandbox) courses are invisible to the anon key by RLS, so a signed-in
+  // user's list comes from Popty's server, which returns every course they may open
+  // (hidden ones carry is_hidden). Signed out, or server unreachable: anon read.
+  const fromServer = await fetchFromServer('/api/library/courses')
+  if (fromServer?.courses) {
+    fromServer.courses.forEach(registerCourseRow)
+    return fromServer.courses
+  }
+
   const { data, error } = await supabase
     .from('courses')
     .select('*')
 
   if (error) throw new Error('Failed to load courses: ' + error.message)
   return data || []
+}
+
+/**
+ * GET a Popty server route with the current Supabase session. Returns parsed JSON,
+ * or null when signed out / not ok / unreachable (callers fall back to the anon read).
+ */
+async function fetchFromServer(path) {
+  try {
+    const { data: { session } } = await supabase.auth.getSession()
+    if (!session?.access_token) return null
+    const { getApiUrl } = await import('./api.js')
+    const res = await fetch(`${getApiUrl()}${path}`, {
+      headers: { Authorization: `Bearer ${session.access_token}`, 'ngrok-skip-browser-warning': 'true' }
+    })
+    return res.ok ? await res.json() : null
+  } catch {
+    return null
+  }
+}
+
+/** One course row from the server (reaches hidden courses the anon key cannot). */
+export async function getServerCourseRow(courseCode) {
+  const body = await fetchFromServer(`/api/library/course/${encodeURIComponent(courseCode)}`)
+  if (body?.course) registerCourseRow(body.course)
+  return body?.course || null
 }
 
 /**
@@ -523,9 +561,10 @@ export async function getGoldenReviewQueue(courseCode) {
     .eq('course_code', courseCode)
     .single()
 
-  if (error || !data) return { golden_decompositions: [], golden_seed_count: 10 }
+  const row = (error || !data) ? await getServerCourseRow(courseCode) : data
+  if (!row) return { golden_decompositions: [], golden_seed_count: 10 }
 
-  const qr = data.quality_rules || {}
+  const qr = row.quality_rules || {}
   return {
     golden_decompositions: qr.golden_decompositions || [],
     golden_seed_count: qr.golden_seed_count || 10,
@@ -546,8 +585,8 @@ export async function getVoiceConfig(courseCode) {
     .eq('course_code', courseCode)
     .single()
 
-  if (error || !data) return null
-  return data.voice_config || null
+  const row = (error || !data) ? await getServerCourseRow(courseCode) : data
+  return row?.voice_config || null
 }
 
 /**
