@@ -582,6 +582,7 @@ function _clearGenderVariantLicenceCache() { _genderLicenceCache.clear(); }
 // the whole family. No family (every course today) = the single-course query
 // these functions have always run. sector-helix §5b/§6; course-family.cjs.
 const { zutScope } = require('./course-family.cjs');
+const { loadRunningOrder, filterSeedsBefore } = require('../../shared/running-order.cjs');
 
 /**
  * Check for LEGO conflicts before insertion.
@@ -596,13 +597,15 @@ async function checkLegoConflict(supabase, courseCode, knownText, targetText, cu
   // or "after" anything here. ZUT is content-keyed, so it is unbounded across
   // the family: a fork is a fork whenever it lands.
   const scope = zutScope(courseCode, opts.family);
+  // "Before" on the authored course is its running order when it has one (job #949).
+  const order = currentSeedNumber !== null ? await loadRunningOrder(supabase, courseCode) : null;
   const fetchOne = async (code) => {
     let query = supabase
       .from('course_legos')
       .select('seed_number, lego_index, known_text, target_text, type')
       .eq('course_code', code)
       .eq('known_text', knownText);
-    if (code === courseCode && currentSeedNumber !== null) query = query.lt('seed_number', currentSeedNumber);
+    if (code === courseCode && currentSeedNumber !== null) query = filterSeedsBefore(query, order, currentSeedNumber);
     const { data, error } = await query;
     if (error) throw new Error(`Conflict check failed: ${error.message}`);
     // tagged with a key that is NOT a column, so the tag can never be confused
@@ -788,9 +791,10 @@ async function checkPhraseZUT(supabase, courseCode, phrases, currentSeedNumber =
   // Same widening as checkLegoConflict: the family is the input, the comparison
   // is untouched. Seed-number bound on the authored course only.
   const scope = zutScope(courseCode, opts.family);
+  const order = currentSeedNumber !== null ? await loadRunningOrder(supabase, courseCode) : null;
   const fetch = async (table, code) => {
     let q = supabase.from(table).select('known_text, target_text, seed_number').eq('course_code', code).in('known_text', [...new Set(rawKnowns)]);
-    if (code === courseCode && currentSeedNumber !== null) q = q.lt('seed_number', currentSeedNumber);
+    if (code === courseCode && currentSeedNumber !== null) q = filterSeedsBefore(q, order, currentSeedNumber);
     const { data } = await q;
     return (data || []).map(r => (code === courseCode ? r : { ...r, __course: code }));
   };
