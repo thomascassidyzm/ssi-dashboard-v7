@@ -984,6 +984,12 @@ async function policyVoicesForLanguage(db, language, { cache } = {}) {
   return { voices, spellings }
 }
 
+/**
+ * Seed statuses a recordist may be asked to read: 'released' (in the course)
+ * and 'approved' (golden-route sign-off). 'draft' is unreviewed text.
+ */
+const RECORDABLE_SEED_STATUSES = new Set(['released', 'approved'])
+
 /** Page through course_seeds for a set of courses. */
 /**
  * PostgREST caps one read at 1000 rows, so a big set is read in pages — and read
@@ -1022,7 +1028,7 @@ async function fetchSeeds(db, courseCodes) {
   try {
     return await pagedRead((from, to) => db
       .from('course_seeds')
-      .select('id, course_code, seed_number, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
+      .select('id, course_code, seed_number, status, known_text, target_text, known_audio_id, target1_audio_id, target2_audio_id')
       .in('course_code', courseCodes)
       .order('course_code', { ascending: true })
       .order('seed_number', { ascending: true })
@@ -1718,6 +1724,10 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
         const voiceId = seedCastEntry(course, policyVoices)[role].voiceId
 
         for (const seed of courseSeeds) {
+          // A recordist is never asked to record a sentence nobody has signed
+          // off. Machine-drafted seeds (job #740: 697 Welsh drafts, for Aran to
+          // review in the Seed Editor) carry target_text but status 'draft'.
+          if (!RECORDABLE_SEED_STATUSES.has(seed.status)) continue
           const text = String((role === 'known' ? seed.known_text : seed.target_text) || '').trim()
           if (!text) continue
           const fkVoice = clipVoice.get(seed[`${role}_audio_id`]) || null
@@ -1729,6 +1739,8 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             // that is linked while its duplicate is not would otherwise read as
             // done and leave the duplicate empty for good.
             rep.seedFilledBy.push(fkVoice)
+            // One copy still new makes the shared line new.
+            if (seed.status !== 'released') rep.seedExisting = false
             duplicatesCollapsed += 1
             continue
           }
@@ -1755,6 +1767,11 @@ async function buildLanguageLines(db, language, { quarryMaxSeed = DEFAULT_MAX_SE
             seedId: seed.id,
             seedNumber: seed.seed_number,
             seedFilledBy: [fkVoice],
+            // A released seed is already in the course (its LEGOs and phrases
+            // are live, in this voice); the line only asks for the one
+            // whole-sentence take it lacks. Anything else is a genuinely new
+            // seed. The recordist's screen words the two differently.
+            seedExisting: seed.status === 'released',
             rerecordWanted: false,
           }
           seedSeen.set(key, line)
@@ -1996,6 +2013,9 @@ async function finishQueue(db, recordist, mine, language, { includeRecorded = fa
         // Which seed sentence this is, for the surface to say so in words. Null
         // on every other kind of line.
         seedNumber: line.seedNumber || null,
+        // True when this seed is already released in the course and only lacks
+        // its whole-sentence take. Null on every other kind of line.
+        seedExisting: line.kind === 'seed' ? !!line.seedExisting : null,
         // HOW THIS LINE IS READ. 'gapped' — naturally but slowly, with dead
         // space around the words so a cut lands in silence — or 'natural', a
         // whole sentence at speaking pace. The booth draws it AND acts on it:
