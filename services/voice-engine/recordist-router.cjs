@@ -1837,7 +1837,14 @@ module.exports = function createRecordistRouter({
 
   router.post('/voice/:voiceId/rerecord-all', async (req, res) => {
     try {
-      const user = requireAdmin ? await requireAdmin(req, res) : { email: 'test' }
+      // THE ARTIST ON THEIR OWN VOICE (Tom 2026-10-07, job #885: Dan re-records
+      // himself). {"asArtist": true} takes the same door every artist route
+      // takes — link-is-identity — and acts on :voiceId and nothing else, so an
+      // artist can only ever reset the voice their own link names. Nothing is
+      // deleted, so the admin's restore route puts it all back.
+      const asArtist = !!req.body && req.body.asArtist === true
+      const user = asArtist ? { email: `artist:${req.params.voiceId}` }
+        : requireAdmin ? await requireAdmin(req, res) : { email: 'test' }
       if (!user) return
       if (!req.body || req.body.confirm !== true) {
         return res.status(400).json({ error: 'Re-record all needs {"confirm": true}. GET the same path first to see what it would do.' })
@@ -1846,7 +1853,7 @@ module.exports = function createRecordistRouter({
       if (!recordist) return
       const out = await rerecordAll.applyReset({
         voiceId: recordist.voiceId, language: recordist.language, spellings: recordist.spellings,
-        actor: adminActor(user), reason: typeof req.body.reason === 'string' ? req.body.reason.slice(0, 300) : null,
+        actor: asArtist ? `artist:${recordist.voiceId}` : adminActor(user), reason: typeof req.body.reason === 'string' ? req.body.reason.slice(0, 300) : null,
       })
       logger.log(`[Recordist] re-record all for ${recordist.voiceId}: ${JSON.stringify(out)} by ${adminActor(user)}`)
       res.json(out)

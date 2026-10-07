@@ -314,6 +314,16 @@
         <p v-if="playbackError" class="note error">{{ playbackError }}</p>
       </div>
 
+      <!-- RE-RECORD ALL, the artist's own (job #885, Tom 2026-10-07: Dan asked
+           for it, the admin page was the only place). Same route the admin
+           button calls, on THIS link's voice only. Nothing is deleted. -->
+      <div v-if="canRerecordAll" class="rerecord-all">
+        <button class="btn-ghost" type="button" :disabled="rerecordBusy" @click="rerecordAllMine">
+          {{ rerecordBusy ? 'Starting over…' : 'Re-record all' }}
+        </button>
+        <p v-if="rerecordError" class="note error">{{ rerecordError }}</p>
+      </div>
+
     </section>
 
     <!-- ── Recording: ONE line, big ───────────────────────────────────────── -->
@@ -2287,6 +2297,33 @@ async function recordOne(lineId) {
   index.value = i
   phase.value = 'recording'
   await settleThenReveal()
+}
+
+// RE-RECORD ALL, the artist's own. Offered only when this voice has takes to
+// start over from, never on a recording pack, and not while takes are still
+// waiting to upload (they would land after the reset and half-undo it).
+const rerecordBusy = ref(false)
+const rerecordError = ref(null)
+const canRerecordAll = computed(() =>
+  !voice.value.pack && voice.value.recorded > 0 && queue.pendingCount.value === 0)
+async function rerecordAllMine() {
+  if (!window.confirm('Re-record all?\n\nYour current takes are kept; you will record every line again from the top.')) return
+  rerecordBusy.value = true
+  rerecordError.value = null
+  try {
+    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(props.voiceId)}/rerecord-all`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'ngrok-skip-browser-warning': 'true' },
+      body: JSON.stringify({ confirm: true, asArtist: true, reason: 'Artist pressed Re-record all in the booth' }),
+    })
+    const body = await res.json().catch(() => ({}))
+    if (!res.ok) throw new Error(body.error || `Could not start over (${res.status})`)
+    await load()
+  } catch (err) {
+    rerecordError.value = (err && err.message) || 'Could not start over — try again.'
+  } finally {
+    rerecordBusy.value = false
+  }
 }
 
 async function backToStart() {
