@@ -1,0 +1,5370 @@
+[
+ {
+  "gid": "G041",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 303,
+  "known_text": "I think I need to look at that",
+  "target_text": "我觉得我需要看那个",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P9"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G042",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 233,
+  "known_text": "younger sister",
+  "target_text": "妹妹",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G043",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 592,
+  "known_text": "she arrived at the station, then left",
+  "target_text": "她到达车站，然后离开了",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "'then' is sequential, but it is on the P28 time-adverb list and places 'left' in time after arriving."
+  }
+ },
+ {
+  "gid": "G044",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 326,
+  "known_text": "sell off",
+  "target_text": "卖掉",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "Bare transitive phrasal verb with no object reads as a dictionary fragment, not a standalone command; P26 not fired."
+  }
+ },
+ {
+  "gid": "G045",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 410,
+  "known_text": "she said we shouldn't argue",
+  "target_text": "她说我们不应该争吵",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7",
+    "P12",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G046",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 457,
+  "known_text": "that's part of the answer",
+  "target_text": "那是答案的一部分",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G047",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 656,
+  "known_text": "you all did very well",
+  "target_text": "你们做得很好",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G048",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 273,
+  "known_text": "this won't work",
+  "target_text": "这不行",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G049",
+  "course": "ara_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 148,
+  "known_text": "he wasn't very patient when I couldn't answer",
+  "target_text": "لَمْ يَكُنْ صَبوراً جِدّاً عِنْدَما لَمْ أَسْتَطِعْ أَنْ أُجيب",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P13",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G050",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 373,
+  "known_text": "what she was trying to make was beautiful",
+  "target_text": "ما كانَتْ تُحاوِلُ أَنْ تَصْنَعَ كانَ جَميلاً",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3"
+   ],
+   "note": "Free relative 'what' has no head noun, so not P16; not interrogative, so not P22."
+  }
+ },
+ {
+  "gid": "G051",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 378,
+  "known_text": "no I didn't have enough money for holidays",
+  "target_text": "لا لَمْ يَكُنْ لَدَيَّ ما يَكْفي مِنَ المالِ لِلْعُطُلاتِ",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P23"
+   ],
+   "note": "Leading 'no' is an answer opener; 'enough' is not comparative."
+  }
+ },
+ {
+  "gid": "G052",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 30,
+  "known_text": "yesterday",
+  "target_text": "أَمْس",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "Bare time-adverb fragment, tagged by the shape it has."
+  }
+ },
+ {
+  "gid": "G053",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 53,
+  "known_text": "she wanted to put interesting things in her bag",
+  "target_text": "أَرادَتْ أَنْ تَضَعَ أَشْياءَ مُمْتِعَةٍ في حَقيبَتِها",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G054",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 408,
+  "known_text": "I want us to be a happy family",
+  "target_text": "أُريدُ أَنْ نَكونَ عائِلَةً سَعيدَةً",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": "Want + object + to-infinitive."
+  }
+ },
+ {
+  "gid": "G055",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 565,
+  "known_text": "I'm afraid more carefully",
+  "target_text": "أَخْشى بِعِنايَةٍ أَكْثَرَ",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P24"
+   ],
+   "note": "'more carefully' is comparative; 'I'm afraid' is not a frame."
+  }
+ },
+ {
+  "gid": "G056",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 127,
+  "known_text": "that isn't why I wanted to ask you",
+  "target_text": "لَيْسَ لِهٰذا السَّبَبِ أَرَدْتُ أَنْ أَسْأَلَكَ",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P23"
+   ],
+   "note": "'why' clause after 'isn't' is a reason free relative, not an embedded question complement; P22 not fired."
+  }
+ },
+ {
+  "gid": "G057",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 322,
+  "known_text": "she needs to read the same book this time",
+  "target_text": "تَحْتاجُ أَنْ تَقْرَأَ الكِتابَ نَفْسَهُ هذِهِ المَرَّةَ",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P28"
+   ],
+   "note": "'this time' is a time adjunct."
+  }
+ },
+ {
+  "gid": "G058",
+  "course": "jpn_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 121,
+  "known_text": "it's unusual that you don't like to use your car",
+  "target_text": "車を使わないのは珍しい",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P18",
+    "P23",
+    "P31"
+   ],
+   "note": "Plain 'like to' (not 'would like') expresses liking, so P31."
+  }
+ },
+ {
+  "gid": "G059",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 156,
+  "known_text": "I don't mind waiting at the restaurant",
+  "target_text": "レストランで待つのは気にしない",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23"
+   ],
+   "note": "'don't mind' is not among the P31 liking/preference verbs."
+  }
+ },
+ {
+  "gid": "G060",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 326,
+  "known_text": "he said he'll buy the company",
+  "target_text": "会社を買うって言ってた",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G061",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 593,
+  "known_text": "however much she does it",
+  "target_text": "どんなにやっても無理だと思う",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'however much' is a concessive clause; no frame covers it, and it is not P13 or P14."
+  }
+ },
+ {
+  "gid": "G062",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 112,
+  "known_text": "I wasn't expecting the explanation to be so simple",
+  "target_text": "説明がそんなに簡単だと予想してなかった",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P23"
+   ],
+   "note": "'so simple' means 'very' (not P15); expect is not a P9 opinion verb."
+  }
+ },
+ {
+  "gid": "G063",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 595,
+  "known_text": "she likes the garden",
+  "target_text": "庭が好きだと思う",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P31"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G064",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 177,
+  "known_text": "I want to go again",
+  "target_text": "もう一度行きたい。",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P28"
+   ],
+   "note": "'again' is a time adjunct."
+  }
+ },
+ {
+  "gid": "G065",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 414,
+  "known_text": "please give red wine",
+  "target_text": "赤ワインをください",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P26"
+   ],
+   "note": "Leading 'please' is the opener; the command still fires."
+  }
+ },
+ {
+  "gid": "G066",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 661,
+  "known_text": "madam is doing something",
+  "target_text": "奥様が何かされています",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G067",
+  "course": "cym_n_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 90,
+  "known_text": "do you like that book?",
+  "target_text": "wyt ti’n licio’r llyfr ’na?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P31"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G068",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 57,
+  "known_text": "I’m sorry, I didn’t know",
+  "target_text": "mae’n ddrwg gen i, do’n i ddim yn gwybod",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P23"
+   ],
+   "note": "'I'm sorry,' is treated as a detachable opener; 'didn't know' has no clause, so no P10."
+  }
+ },
+ {
+  "gid": "G069",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 115,
+  "known_text": "no, I watched the football for a short time",
+  "target_text": "naddo, wnes i wylio’r pêl-droed am amser byr",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P28"
+   ],
+   "note": "'for a short time' is a duration adjunct."
+  }
+ },
+ {
+  "gid": "G070",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 9,
+  "known_text": "to remember how to say something",
+  "target_text": "cofio sut i ddeud rhywbeth",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P22"
+   ],
+   "note": "'remember how to' is a wh + infinitive embedded question; the to-infinitive fragment is not P26."
+  }
+ },
+ {
+  "gid": "G071",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 229,
+  "known_text": "I’m willing to bring what I can",
+  "target_text": "dw i’n fodlon dod â beth medra i",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4"
+   ],
+   "note": "'what I can' is a free relative with no head noun, so not P16; 'willing to' is not P1."
+  }
+ },
+ {
+  "gid": "G072",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 241,
+  "known_text": "that’s what I thought you said about it",
+  "target_text": "dyna be’ o’n i’n meddwl i ti ddeud amdani",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9"
+   ],
+   "note": "'thought' takes the clause 'you said __'; 'said' has only a gapped object, so no P12; free relative, so no P16."
+  }
+ },
+ {
+  "gid": "G073",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 132,
+  "known_text": "you’ve learnt as much as possible in a short time",
+  "target_text": "ti ’di dysgu cymaint â phosib mewn amser byr",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P25",
+    "P28",
+    "P29"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G074",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 184,
+  "known_text": "to explain what they say that they want",
+  "target_text": "esbonio beth maen nhw’n deud bo’ nhw isio",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P22"
+   ],
+   "note": "explain + wh-clause; 'say that they want' is a reported clause; 'want' has only a gapped noun, so no P1."
+  }
+ },
+ {
+  "gid": "G075",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 164,
+  "known_text": "I remember when you wanted to learn something else",
+  "target_text": "dw i’n cofio pan oeddach chi isio dysgu rhywbeth arall",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P22"
+   ],
+   "note": "'remember when...' is an object clause, read as embedded rather than temporal P13."
+  }
+ },
+ {
+  "gid": "G076",
+  "course": "gle_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 327,
+  "known_text": "do you think that she needs to offer another way?",
+  "target_text": "an gceapann tú go gcaithfidh sí bealach eile a thairiscint?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P9",
+    "P20"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G077",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 151,
+  "known_text": "something you said would happen",
+  "target_text": "rud éigin a dúirt tú a tharlódh",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P16"
+   ],
+   "note": "Zero relative on 'something'; 'said' takes the clause '__ would happen'."
+  }
+ },
+ {
+  "gid": "G078",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 44,
+  "known_text": "if I need to speak Irish",
+  "target_text": "má chaithfidh mé labhairt Gaeilge",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P14"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G079",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 26,
+  "known_text": "I like feeling as if I'm ready to go",
+  "target_text": "is maith liom ag mothú go bhfuil mé réidh le himeacht",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P31"
+   ],
+   "note": "'as if' expresses manner, not P25 or P14."
+  }
+ },
+ {
+  "gid": "G080",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 137,
+  "known_text": "it's time to talk in irish",
+  "target_text": "Tá sé in am labhairt i nGaeilge",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'it's time to' has a non-evaluative noun, so not P18; 'time' is the predicate, not an adjunct."
+  }
+ },
+ {
+  "gid": "G001",
+  "course": "fra_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 474,
+  "known_text": "I don't even want it as a free offer",
+  "target_text": "Je n'en veux même pas comme offre gratuite",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23"
+   ],
+   "note": "want + pronoun object only, no verbal complement, so no P1"
+  }
+ },
+ {
+  "gid": "G002",
+  "course": "fra_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 317,
+  "known_text": "yes I think she could if she wanted to",
+  "target_text": "oui je pense qu'elle pourrait si elle voulait",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P1",
+    "P4",
+    "P9",
+    "P14"
+   ],
+   "note": "'yes' is an opener; elliptical 'could' and 'wanted to' each stand for an elided VP, so P4 and P1 still fire"
+  }
+ },
+ {
+  "gid": "G003",
+  "course": "fra_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 534,
+  "known_text": "let's not go outside in this dreadful weather",
+  "target_text": "n'allons pas dehors par ce temps épouvantable",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23",
+    "P26"
+   ],
+   "note": "'in this dreadful weather' is a circumstance, not a time adjunct"
+  }
+ },
+ {
+  "gid": "G004",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 324,
+  "known_text": "she needs to raise her hands",
+  "target_text": "elle doit lever les mains",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G005",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 333,
+  "known_text": "she wants to spend much time",
+  "target_text": "elle veut passer beaucoup de temps",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": "'much time' is the object, not a time adjunct"
+  }
+ },
+ {
+  "gid": "G006",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 405,
+  "known_text": "should we ask",
+  "target_text": "devrions-nous demander",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7",
+    "P20"
+   ],
+   "note": "inverted word order makes it a question even without '?'"
+  }
+ },
+ {
+  "gid": "G007",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 85,
+  "known_text": "I don't know the person",
+  "target_text": "je ne connais pas la personne",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23"
+   ],
+   "note": "know + person, no clause, so no P10"
+  }
+ },
+ {
+  "gid": "G008",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 572,
+  "known_text": "they visited us for a long time",
+  "target_text": "ils nous ont rendu visite longtemps",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G009",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 314,
+  "known_text": "she wants to put it on the table",
+  "target_text": "elle veut le mettre sur la table",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G010",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 170,
+  "known_text": "I'd like you to tell me if that's difficult",
+  "target_text": "je voudrais que vous me disiez si c'est difficile",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P12",
+    "P22"
+   ],
+   "note": "tell + if-clause is reported content and an embedded question; subject is 'that', so no P18"
+  }
+ },
+ {
+  "gid": "G011",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 102,
+  "known_text": "I wanted to say that it's not like before",
+  "target_text": "je voulais dire que ce n'est pas comme avant",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P12",
+    "P23",
+    "P27"
+   ],
+   "note": "'it's not like before' is resemblance (P27); 'before' is the object of 'like', not an adjunct"
+  }
+ },
+ {
+  "gid": "G012",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 282,
+  "known_text": "I think that's not a problem for him",
+  "target_text": "je pense que ce n'est pas un problème pour lui",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P23"
+   ],
+   "note": "subject is 'that', not 'it', so no P18"
+  }
+ },
+ {
+  "gid": "G013",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 447,
+  "known_text": "they could drive us home after the meal",
+  "target_text": "ils pourraient nous ramener à la maison après le repas",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P28"
+   ],
+   "note": "'after the meal' is preposition + noun, so a time adjunct, not P13"
+  }
+ },
+ {
+  "gid": "G014",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 257,
+  "known_text": "I really like that thing you did for me yesterday",
+  "target_text": "j'aime vraiment ce truc que tu as fait pour moi hier",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16",
+    "P28",
+    "P31"
+   ],
+   "note": "zero relative 'that thing you did'; 'yesterday' modifies the relative clause"
+  }
+ },
+ {
+  "gid": "G015",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 614,
+  "known_text": "near where my family lives",
+  "target_text": "près de là où ma famille habite",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "free relative 'where' has no head noun, so no P16; it is not interrogative either"
+  }
+ },
+ {
+  "gid": "G016",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 332,
+  "known_text": "he can build a new life",
+  "target_text": "il peut construire une nouvelle vie",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G017",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 597,
+  "known_text": "I suspect that he has heard",
+  "target_text": "je soupçonne qu'il a entendu",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P29"
+   ],
+   "note": "'suspect' is an opinion verb taking a that-clause, like suppose"
+  }
+ },
+ {
+  "gid": "G018",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 414,
+  "known_text": "a bottle please",
+  "target_text": "une bouteille s'il vous plaît",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "trailing 'please' on a noun phrase is not a command"
+  }
+ },
+ {
+  "gid": "G019",
+  "course": "spa_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 625,
+  "known_text": "Do you want something to drink?",
+  "target_text": "¿Quieres algo de beber?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20"
+   ],
+   "note": "want + noun ('something to drink'), so no P1; the infinitival modifier is not counted as P16"
+  }
+ },
+ {
+  "gid": "G020",
+  "course": "spa_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 138,
+  "known_text": "this was where my friend wanted to meet us",
+  "target_text": "aquí es donde mi amigo quería reunirse con nosotros",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": "headless 'where' clause, so no P16"
+  }
+ },
+ {
+  "gid": "G021",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 53,
+  "known_text": "He wants to put something in her bag",
+  "target_text": "Él quiere poner algo en su bolso",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G022",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 115,
+  "known_text": "I don't feel as if I'm ready to have a conversation yet but I know I need to keep going",
+  "target_text": "No siento como si estuviera listo para tener una conversación todavía pero sé que necesito seguir",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P10",
+    "P15",
+    "P23",
+    "P27",
+    "P28"
+   ],
+   "note": "'feel as if' is a manner comparison, so neither P9 nor P27 fires; 'keep going' is not a progressive [Opus review: feel as if + clause is P27, consistent with G098/G286]"
+  }
+ },
+ {
+  "gid": "G023",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 304,
+  "known_text": "I think that she doesn't want to work",
+  "target_text": "pienso que ella no quiere trabajar",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P9",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G024",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 437,
+  "known_text": "they wanted to raise something",
+  "target_text": "querían recaudar algo",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G025",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 112,
+  "known_text": "I think that was very interesting and I want to understand more",
+  "target_text": "Pienso que eso fue muy interesante y quiero entender más",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P9",
+    "P24"
+   ],
+   "note": "'understand more' is an adverbial comparative of degree, so P24 fires; subject is 'that', so no P18"
+  }
+ },
+ {
+  "gid": "G026",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 92,
+  "known_text": "I'd like to continue speaking with you",
+  "target_text": "Me gustaría seguir hablando contigo",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": "'continue speaking' is a gerund complement, not a progressive"
+  }
+ },
+ {
+  "gid": "G027",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 143,
+  "known_text": "I am not sure what we were talking about earlier",
+  "target_text": "No estoy seguro de lo que estábamos hablando antes",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P10",
+    "P22",
+    "P23",
+    "P28"
+   ],
+   "note": "'earlier' is a time adverb here, not a comparative"
+  }
+ },
+ {
+  "gid": "G028",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 296,
+  "known_text": "I said that I needed a little more time but I didn't say how much more",
+  "target_text": "Dije que necesitaba un poco más de tiempo pero no dije cuánto más",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P15",
+    "P22",
+    "P23",
+    "P24"
+   ],
+   "note": "'needed a little more time' is need + noun, so no P6; 'how much more' is an elided embedded question"
+  }
+ },
+ {
+  "gid": "G029",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 225,
+  "known_text": "I would give you something interesting to read",
+  "target_text": "te daría algo interesante para leer",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'something interesting to read' is an infinitival modifier, not a relative clause"
+  }
+ },
+ {
+  "gid": "G030",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 602,
+  "known_text": "how it started in the first place",
+  "target_text": "cómo empezó en primer lugar",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "bare wh-clause with no matrix verb, so not P22; not a direct question; 'in the first place' is not a time adjunct"
+  }
+ },
+ {
+  "gid": "G031",
+  "course": "deu_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 394,
+  "known_text": "that girl with the yellow dress",
+  "target_text": "das Mädchen mit dem gelben Kleid",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G032",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 274,
+  "known_text": "I think it would be better to talk about that in a few days",
+  "target_text": "Ich denke es wäre besser in ein paar Tagen über das zu reden",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P18",
+    "P24",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G033",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 146,
+  "known_text": "Nothing seems to be working now",
+  "target_text": "Nichts scheint jetzt zu funktionieren",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P23",
+    "P28"
+   ],
+   "note": "progressive infinitive 'to be working' counts as be + V-ing in progress"
+  }
+ },
+ {
+  "gid": "G034",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 36,
+  "known_text": "we don't want to interrupt the story",
+  "target_text": "wir wollen die Geschichte nicht unterbrechen",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G035",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 230,
+  "known_text": "I know a young man who wants to work with you",
+  "target_text": "Ich kenne einen jungen Mann, der mit dir arbeiten will",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P16"
+   ],
+   "note": "know + person, so no P10"
+  }
+ },
+ {
+  "gid": "G036",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 527,
+  "known_text": "she can guess who told",
+  "target_text": "sie kann raten, wer erzählt hat",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P22"
+   ],
+   "note": "'guess who told' is an embedded wh-question, not an opinion clause (P9)"
+  }
+ },
+ {
+  "gid": "G037",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 307,
+  "known_text": "the woman who sits",
+  "target_text": "die Frau, die sitzt",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G038",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 520,
+  "known_text": "that happened to her",
+  "target_text": "das ist ihr passiert",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "no head noun is present, so this is not read as a relative clause; demonstrative subject"
+  }
+ },
+ {
+  "gid": "G039",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 102,
+  "known_text": "I think you should try to do it like that tomorrow morning",
+  "target_text": "Ich denke du solltest versuchen es morgen früh so zu machen",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7",
+    "P9",
+    "P28"
+   ],
+   "note": "'like that' is manner, not P27"
+  }
+ },
+ {
+  "gid": "G040",
+  "course": "zho_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 315,
+  "known_text": "I think he can't afford the car he wants",
+  "target_text": "我觉得他买不起他想要的那辆车",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P9",
+    "P16",
+    "P23"
+   ],
+   "note": "zero relative: 'the car he wants'"
+  }
+ },
+ {
+  "gid": "G081",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 22,
+  "known_text": "to meet people and speak Irish",
+  "target_text": "bualadh le daoine agus Gaeilge a labhairt",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "Bare to-infinitive fragment; no frame."
+  }
+ },
+ {
+  "gid": "G082",
+  "course": "hak_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 636,
+  "known_text": "I think that that is Jane's bag.",
+  "target_text": "𠊎覺得該係Jane个袋仔。",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G083",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 88,
+  "known_text": "aren't you ready to go yet",
+  "target_text": "你還吂準備好去無",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P23",
+    "P28"
+   ],
+   "note": "No '?' but the word order is interrogative, so P20; 'yet' is P28."
+  }
+ },
+ {
+  "gid": "G084",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 519,
+  "known_text": "everyone likes the baby",
+  "target_text": "大家中意嬰兒",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P31"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G085",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 169,
+  "known_text": "what does someone else want me to do",
+  "target_text": "別人想𠊎做麼个",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P20",
+    "P21"
+   ],
+   "note": "want me to do = P1; the wh-question has interrogative order without '?'."
+  }
+ },
+ {
+  "gid": "G086",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 366,
+  "known_text": "the doctor will grow",
+  "target_text": "醫生會種",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "Plain 'will' future; no frame."
+  }
+ },
+ {
+  "gid": "G087",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 598,
+  "known_text": "the doctor knows what they were doing",
+  "target_text": "醫生知佢兜在做麼个",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P10",
+    "P22"
+   ],
+   "note": "The embedded wh-clause contains the progressive 'were doing'."
+  }
+ },
+ {
+  "gid": "G088",
+  "course": "kor_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 94,
+  "known_text": "this is the only way it will work",
+  "target_text": "이게 유일한 방법이에요",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16"
+   ],
+   "note": "Zero relative clause on the head noun 'the only way'."
+  }
+ },
+ {
+  "gid": "G089",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 527,
+  "known_text": "she knows to try to guess",
+  "target_text": "맞춰 봐요 알아요",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'know' takes a to-infinitive here, not a clause, so P10 does not fire."
+  }
+ },
+ {
+  "gid": "G090",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 573,
+  "known_text": "that makes holiday special",
+  "target_text": "휴가를 아주 특별하게 만드는",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "The target suggests a relative clause, but the known side has no head noun, so P16 does not fire."
+  }
+ },
+ {
+  "gid": "G091",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 534,
+  "known_text": "do you know it was dreadful?",
+  "target_text": "끔찍한 알아요?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P10",
+    "P18",
+    "P20"
+   ],
+   "note": "Declarative clause after know, so not P22; the embedded 'it was dreadful' is it + be + adjective."
+  }
+ },
+ {
+  "gid": "G092",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 582,
+  "known_text": "what's it like?",
+  "target_text": "어때요?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P21",
+    "P27"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G093",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 510,
+  "known_text": "she knows somewhere near here",
+  "target_text": "곳을 근처에서 알아요",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'know' + a place noun, not a clause."
+  }
+ },
+ {
+  "gid": "G094",
+  "course": "por_br_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 369,
+  "known_text": "I saw several horses on the road",
+  "target_text": "eu vi vários cavalos na estrada",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G095",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 311,
+  "known_text": "he couldn't believe in the three most important facts",
+  "target_text": "ele não conseguia acreditar nos três factos mais importantes",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P23",
+    "P24"
+   ],
+   "note": "'most important' is a superlative."
+  }
+ },
+ {
+  "gid": "G096",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 660,
+  "known_text": "all of you",
+  "target_text": "vocês",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G097",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 318,
+  "known_text": "this time she couldn't watch five games",
+  "target_text": "desta vez ela não podia ver cinco jogos",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P23",
+    "P28"
+   ],
+   "note": "'this time' read as a time adjunct modifying the predication."
+  }
+ },
+ {
+  "gid": "G098",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 497,
+  "known_text": "that sounds as though you need to get some sleep",
+  "target_text": "isso parece que você precisa dormir um pouco",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P27"
+   ],
+   "note": "'sounds as though' + clause treated as the equivalent of 'sounds like' + clause (resemblance), so P27."
+  }
+ },
+ {
+  "gid": "G099",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 508,
+  "known_text": "I'm sure, worrying about",
+  "target_text": "tenho certeza, se preocupar com",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'I'm sure' has no clause complement; 'worrying about' is an -ing fragment."
+  }
+ },
+ {
+  "gid": "G100",
+  "course": "tur_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 618,
+  "known_text": "it doesn't feel like a long time",
+  "target_text": "Uzun bir zaman gibi hissettirmiyor.",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23",
+    "P27"
+   ],
+   "note": "'a long time' is the complement of 'like', not a time adjunct."
+  }
+ },
+ {
+  "gid": "G101",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 162,
+  "known_text": "you think it is not very hard there",
+  "target_text": "orada çok zor değil düşünüyorsun",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P18",
+    "P23"
+   ],
+   "note": "'it is not very hard' inside the think-clause fires P18; 'there' is locative"
+  }
+ },
+ {
+  "gid": "G102",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 29,
+  "known_text": "are you going to help me as soon as possible",
+  "target_text": "mümkün olan en kısa sürede bana yardım edecek misin",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P20",
+    "P25"
+   ],
+   "note": "Inverted order makes it a question without '?'; 'as soon as possible' is P25"
+  }
+ },
+ {
+  "gid": "G103",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 280,
+  "known_text": "you had to finish the most important job",
+  "target_text": "en önemli işi bitirmen gerekti",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P24"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G104",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 68,
+  "known_text": "what is important",
+  "target_text": "ne önemli",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P21"
+   ],
+   "note": "Ambiguous with a free relative; the Turkish target 'ne önemli' points to a direct question"
+  }
+ },
+ {
+  "gid": "G105",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 142,
+  "known_text": "of course I'm grateful to you",
+  "target_text": "tabii ki sana minnettarım",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [],
+   "note": "'of course' is an opener; 'grateful to you' fires no frame"
+  }
+ },
+ {
+  "gid": "G106",
+  "course": "rus_for_eng",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 638,
+  "known_text": "I'm trying to think.",
+  "target_text": "Я пытаюсь думать.",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G107",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 274,
+  "known_text": "he should be here in a few days",
+  "target_text": "Он должен быть здесь через несколько дней",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7",
+    "P28"
+   ],
+   "note": "'should' here is expectation"
+  }
+ },
+ {
+  "gid": "G108",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 267,
+  "known_text": "your own friend",
+  "target_text": "своего друга",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G109",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 159,
+  "known_text": "that isn't what I want",
+  "target_text": "Это не то, что я хочу",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23"
+   ],
+   "note": "'what I want' is a free relative with no head noun, so not P16 or P22; want + pronoun is not P1"
+  }
+ },
+ {
+  "gid": "G110",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 128,
+  "known_text": "someone I know right now",
+  "target_text": "кто-то, кого я знаю сейчас",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16",
+    "P28"
+   ],
+   "note": "Zero relative on 'someone'"
+  }
+ },
+ {
+  "gid": "G111",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 73,
+  "known_text": "say thank you very much",
+  "target_text": "сказать большое спасибо",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P26"
+   ],
+   "note": "It can stand alone as an instruction; the formula 'thank you' is not treated as reported content for P12"
+  }
+ },
+ {
+  "gid": "G112",
+  "course": "eng_for_hin",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 468,
+  "known_text": "दुनिया बहुत बड़ी है।",
+  "target_text": "It's a big world.",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "The subject is 'duniya', not a dummy or situational 'it', so not P18"
+  }
+ },
+ {
+  "gid": "G113",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 199,
+  "known_text": "आप मेरे दोस्त से मिलना चाहते हैं जो एक ऑफ़िस में काम करता है।",
+  "target_text": "you want to meet my friend who works in an office",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P16"
+   ],
+   "note": "'kaam karta hai' is habitual, not progressive"
+  }
+ },
+ {
+  "gid": "G114",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 334,
+  "known_text": "उसने कहा कि वह आपको आज बिल्ली के बच्चे को गोद में लेने दे सकता है।",
+  "target_text": "he said that he can let you hold the kitten today",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P12",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G115",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 21,
+  "known_text": "आप आज क्यों मिलना चाहते हैं?",
+  "target_text": "why do you want to meet today?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P20",
+    "P21",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G116",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 418,
+  "known_text": "उन्हें कल समाज की सेवा करनी होगी।",
+  "target_text": "they need to serve the community tomorrow",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P28"
+   ],
+   "note": "'karni hogi' expresses obligation"
+  }
+ },
+ {
+  "gid": "G117",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 635,
+  "known_text": "क्या आपको लगता है कि वह जेन का बैग है?",
+  "target_text": "do you think that that is Jane's bag?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P20"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G118",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 482,
+  "known_text": "मुझे नहीं लगता कि एकमात्र असली उम्मीद यह है कि वह ख़ुश है।",
+  "target_text": "I don't think the only real hope is that he's happy",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P23"
+   ],
+   "note": "'ummeed' is a noun, so not P11"
+  }
+ },
+ {
+  "gid": "G119",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 499,
+  "known_text": "मेरे हिसाब से शायद हमें दरवाज़ा खोलना और खिड़की बंद कर देनी चाहिए।",
+  "target_text": "maybe we should open the door and close the window if you ask me",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7"
+   ],
+   "note": "'-ni chahiye' is advice; 'shayad' is an adverb, not P8; 'mere hisab se' is an adjunct, not a listed opener"
+  }
+ },
+ {
+  "gid": "G120",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 49,
+  "known_text": "बात यह है कि मुझे जल्दी सुधार लाने की ज़रूरत है",
+  "target_text": "it's like this, I need to improve quickly",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6"
+   ],
+   "note": "'zaroorat hai' + verb = need to; 'jaldi' means quickly (manner), so not P28; 'baat yah hai ki' is not P18 or P27"
+  }
+ },
+ {
+  "gid": "G141",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 259,
+  "known_text": "アイデア。",
+  "target_text": "idea",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "bare noun"
+  }
+ },
+ {
+  "gid": "G142",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 6,
+  "known_text": "できるだけスペイン語の話し方を思い出そうとしている",
+  "target_text": "estoy intentando recordar cómo hablar en español lo más posible",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P25"
+   ],
+   "note": "できるだけ treated as Japanese equivalent of 'as much as possible' (P25); 話し方 is a noun ('way of speaking'), not an embedded question"
+  }
+ },
+ {
+  "gid": "G143",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 192,
+  "known_text": "忙しいので行けません。残念ながら。",
+  "target_text": "estoy ocupado, así que me temo que no puedo ir",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P15",
+    "P23"
+   ],
+   "note": "trailing 残念ながら is not at the front, so not an opener; it is an adverb with no frame"
+  }
+ },
+ {
+  "gid": "G144",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 3,
+  "known_text": "できるだけ学ぶ",
+  "target_text": "aprender lo más posible",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P25"
+   ],
+   "note": "できるだけ = as much as possible (P25); bare 学ぶ is dictionary form, not imperative"
+  }
+ },
+ {
+  "gid": "G145",
+  "course": "cym_for_yor",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 343,
+  "known_text": "Ta ni ó sọ pé ó ń yọ́nú nípa ètò ọrọ̀-ajé?",
+  "target_text": "Pwy ddudodd bod hi'n poeni am yr economi?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P20",
+    "P21"
+   ],
+   "note": "ń yọ́nú read as a state of worry, not P3 in progress"
+  }
+ },
+ {
+  "gid": "G146",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 112,
+  "known_text": "Ìyẹn dùn púpọ̀ lálẹ́ àná",
+  "target_text": "Roedd hynna'n ddiddorol iawn neithiwr",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "subject is ìyẹn 'that', not 'it', so no P18"
+  }
+ },
+ {
+  "gid": "G147",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 300,
+  "known_text": "Mi ò fẹ́ jẹ́ ẹni tí kò ní inú rere",
+  "target_text": "Dw i ddim isio bod yn anghyfeillgar",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P16",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G148",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 286,
+  "known_text": "àwọn ènìyàn tí ó fẹ́ràn ṣíṣe iṣẹ́",
+  "target_text": "pobl sy'n licio gweithio",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16",
+    "P31"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G149",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 247,
+  "known_text": "mi ò dá mi lójú pé ìwé yẹn dùn",
+  "target_text": "Dw i ddim yn siŵr bod y llyfr yna'n ddiddorol",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P10",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G150",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 158,
+  "known_text": "mi ò fẹ́ sọ nípa nǹkan mìíràn báyìí",
+  "target_text": "dw i ddim isio siarad am rywbeth arall rŵan",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P23",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G151",
+  "course": "cat_for_spa",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 173,
+  "known_text": "¿Puedes entender lo que estoy diciendo?",
+  "target_text": "pots entendre el que estic dient?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P4",
+    "P20",
+    "P22"
+   ],
+   "note": "lo que after entender treated like 'what you mean' (P22), not a relative clause"
+  }
+ },
+ {
+  "gid": "G152",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 210,
+  "known_text": "ellos nos dijeron que quieren discutir el problema",
+  "target_text": "ells ens van dir que volen discutir el problema",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P12"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G153",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 217,
+  "known_text": "No hice mucho el sábado por la noche",
+  "target_text": "No vaig fer gaire dissabte a la nit",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G154",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 133,
+  "known_text": "con ellos",
+  "target_text": "amb ells",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G155",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 130,
+  "known_text": "ha",
+  "target_text": "ha",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "lone auxiliary with no participle, so no perfect"
+  }
+ },
+ {
+  "gid": "G156",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 133,
+  "known_text": "dijiste que no es un problema cuando trabajas en eso",
+  "target_text": "vas dir que no és un problema quan treballes en això",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P13",
+    "P18",
+    "P23"
+   ],
+   "note": "'no es un problema' = it's not a problem, with an evaluative NP (P18)"
+  }
+ },
+ {
+  "gid": "G157",
+  "course": "deu_for_zho",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 213,
+  "known_text": "我们不知道他们想做什么。",
+  "target_text": "Wir wissen nicht, was sie erreichen wollen.",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P10",
+    "P22",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G158",
+  "course": "deu_for_zho",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 35,
+  "known_text": "今天下午",
+  "target_text": "heute Nachmittag",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "time-phrase fragment, fired like 'for two hours'"
+  }
+ },
+ {
+  "gid": "G159",
+  "course": "deu_for_zho",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 100,
+  "known_text": "不用担心，太好了。",
+  "target_text": "keine Sorgen machen ist sehr gut",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P23"
+   ],
+   "note": "不用 = no need to (P6 negated); 太好了 is an exclamatory 'great!', not fired as P18"
+  }
+ },
+ {
+  "gid": "G160",
+  "course": "deu_for_zho",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 31,
+  "known_text": "你今天晚上和我说话",
+  "target_text": "du wolltest heute Abend mit mir sprechen",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "known side has no 'want' (the target's wolltest is not reflected), so no P1"
+  }
+ },
+ {
+  "gid": "G121",
+  "course": "kor_for_hin",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 626,
+  "known_text": "नहीं, मुझे प्यास नहीं है, धन्यवाद।",
+  "target_text": "아니요, 목마르지 않아요, 감사해요.",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P23"
+   ],
+   "note": "Leading नहीं is an answer opener; मुझे प्यास नहीं है fires P23. Trailing धन्यवाद earns nothing."
+  }
+ },
+ {
+  "gid": "G122",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 325,
+  "known_text": "वह संभावित बातें जानती है",
+  "target_text": "그녀는 가능한 것을 알아요",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "जानना takes a noun object, not a clause, so no P10."
+  }
+ },
+ {
+  "gid": "G123",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 390,
+  "known_text": "प्रवेश द्वार वहाँ है",
+  "target_text": "입구 저기 있어요",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "Locative 'the entrance is there', not existential, so no P19."
+  }
+ },
+ {
+  "gid": "G124",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 24,
+  "known_text": "मैं आसानी से एक शब्द याद करने की कोशिश कर रहा हूँ",
+  "target_text": "저는 쉽게 단어 하나를 기억하려고 해요",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3"
+   ],
+   "note": "कर रहा हूँ is the -raha progressive for an ongoing attempt."
+  }
+ },
+ {
+  "gid": "G125",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 89,
+  "known_text": "मुझे लगता है कि मैंने आज बहुत कुछ किया है",
+  "target_text": "오늘 많은 것을 했다고 생각해요",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P28",
+    "P29"
+   ],
+   "note": "लगता है कि + clause is P9; किया है with आज has a result-up-to-now perfect meaning."
+  }
+ },
+ {
+  "gid": "G126",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 351,
+  "known_text": "हमें अकेला छोड़ना",
+  "target_text": "우리를 혼자 두고",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "Infinitive -ना fragment; the target is a connective form, so it is not read as an imperative."
+  }
+ },
+ {
+  "gid": "G127",
+  "course": "zho_for_tam",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 370,
+  "known_text": "எனக்குத் தெரிந்த யாரையும் நான் பார்க்கவில்லை.",
+  "target_text": "我没有看到我认识的任何人。",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16",
+    "P23"
+   ],
+   "note": "எனக்குத் தெரிந்த is a prenominal relative clause modifying யாரையும்."
+  }
+ },
+ {
+  "gid": "G128",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 115,
+  "known_text": "நான் உங்களோடு ஒரு உரையாடல் நடத்த விரும்புகிறேன்",
+  "target_text": "我想跟你进行对话",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": "விரும்புகிறேன் takes an infinitive complement."
+  }
+ },
+ {
+  "gid": "G129",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 200,
+  "known_text": "நான் உறுதிப்படுத்த வேண்டும்",
+  "target_text": "我想确保",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6"
+   ],
+   "note": "Borderline: infinitive + வேண்டும் read as need/obligation, although the target uses 想."
+  }
+ },
+ {
+  "gid": "G130",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 83,
+  "known_text": "நீங்கள் சொன்னதை நான் ஒத்துக்கொள்ளவில்லை",
+  "target_text": "我不同意你说的",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23"
+   ],
+   "note": "சொன்னதை is a nominalised free relative with no head noun, so no P16; there is no reported content, so no P12."
+  }
+ },
+ {
+  "gid": "G131",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 198,
+  "known_text": "என் மகள் நல்லவள்",
+  "target_text": "我女儿很好",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "The subject is a noun, not 'it', so no P18."
+  }
+ },
+ {
+  "gid": "G132",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 19,
+  "known_text": "ஆனால் நான் விரும்பவில்லை",
+  "target_text": "但我不想",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P23"
+   ],
+   "note": "ஆனால் is an opener; விரும்பவில்லை has no verbal complement, so no P1."
+  }
+ },
+ {
+  "gid": "G133",
+  "course": "eng_for_jpn",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 652,
+  "known_text": "何がご入用ですか？",
+  "target_text": "what do you need sir?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P21"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G134",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 96,
+  "known_text": "今日は話す時間がありますか？",
+  "target_text": "do you have time to speak today?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16",
+    "P20",
+    "P28"
+   ],
+   "note": "Borderline: 話す時間 is a prenominal clause on a head noun. 時間がある means possession, so no P19."
+  }
+ },
+ {
+  "gid": "G135",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 40,
+  "known_text": "今のところどんな気分ですか",
+  "target_text": "how do you feel at the moment?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P21",
+    "P28"
+   ],
+   "note": "どんな気分 asks about feeling, a greeting-type question, not a description, so no P27."
+  }
+ },
+ {
+  "gid": "G136",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 139,
+  "known_text": "バスに乗るために早く出なければなりません",
+  "target_text": "I need to leave early to get the bus",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6"
+   ],
+   "note": "ために is a purpose infinitival, not a P15 connective. 早く ('early') is not counted as a P28 time adjunct."
+  }
+ },
+ {
+  "gid": "G137",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 59,
+  "known_text": "来週話す練習をする",
+  "target_text": "to practise speaking next week",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G138",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 199,
+  "known_text": "以前知っていた",
+  "target_text": "used to know",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "知っていた is a stative -ている, not progressive. 以前 is a time adjunct."
+  }
+ },
+ {
+  "gid": "G139",
+  "course": "spa_for_jpn",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 90,
+  "known_text": "もっとゆっくり話していただければ嬉しいです。",
+  "target_text": "Si puedes hablar más despacio eso sería genial.",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P14",
+    "P24"
+   ],
+   "note": "-ければ is a conditional; もっとゆっくり is comparative. 嬉しい has the speaker as subject, not 'it', so no P18."
+  }
+ },
+ {
+  "gid": "G140",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 124,
+  "known_text": "あなたが言ったことは面白かったです",
+  "target_text": "era interesante lo que dijiste",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16"
+   ],
+   "note": "Borderline: あなたが言ったこと has the head noun こと, so P16 fires. The subject is an explicit NP, not 'it', so no P18."
+  }
+ },
+ {
+  "gid": "G161",
+  "course": "deu_for_zho",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 210,
+  "known_text": "我想知道他们觉得什么。",
+  "target_text": "ich will wissen was sie denken",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P10",
+    "P22"
+   ],
+   "note": "知道 takes the wh-clause 他们觉得什么, so P10 and P22 fire. 觉得 has only 什么 as its object, not a clause, so no P9."
+  }
+ },
+ {
+  "gid": "G162",
+  "course": "deu_for_zho",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 132,
+  "known_text": "那真的很精彩。",
+  "target_text": "das ist sehr spannend",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "Borderline. The subject is 那, not 'it', but the codex lists 这……+很+adj as the Chinese P18 realisation, and 那 is the parallel demonstrative. [Opus review: demonstrative subject 那 does not fire P18; codex Chinese note corrected]"
+  }
+ },
+ {
+  "gid": "G163",
+  "course": "bre_for_fra",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 286,
+  "known_text": "Des gens qui aiment parler breton.",
+  "target_text": "Tud o deus plijadur gant komz brezhoneg.",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16",
+    "P31"
+   ],
+   "note": "aimer + infinitive means liking (P31), not wanting."
+  }
+ },
+ {
+  "gid": "G164",
+  "course": "bre_for_fra",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 16,
+  "known_text": "j'essaie de parler breton plus tard",
+  "target_text": "klask a ran komz brezhoneg diwezhatoc'h",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "'plus tard' means 'later', a time adverb, not a comparison, so no P24."
+  }
+ },
+ {
+  "gid": "G165",
+  "course": "bre_for_fra",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 156,
+  "known_text": "tu veux aller au restaurant ce soir ?",
+  "target_text": "c'hoant ac'hanout mont d'ar restaorant fenoz ?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P20",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G166",
+  "course": "bre_for_fra",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 71,
+  "known_text": "je n'ai pas envie de te dire la vérité",
+  "target_text": "n'am eus ket c'hoant lavaret ar wirionez dit",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P23"
+   ],
+   "note": "avoir envie de + infinitive is a want-chain. dire has a noun object, not a clause, so no P12."
+  }
+ },
+ {
+  "gid": "G167",
+  "course": "bre_for_fra",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 134,
+  "known_text": "tu devrais travailler sur quelque chose de difficile",
+  "target_text": "dleet ac'hanout laburiout war un dra diaes",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7"
+   ],
+   "note": "'quelque chose de difficile' is adjective modification, not a relative clause."
+  }
+ },
+ {
+  "gid": "G168",
+  "course": "bre_for_fra",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 97,
+  "known_text": "oui, je veux apprendre à parler breton",
+  "target_text": "ya, c'hoant am eus da zeskiñ komz brezhoneg",
+  "selected": "random",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P1"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G169",
+  "course": "ita_for_cym",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 481,
+  "known_text": "Dyma'r unig obaith go iawn sy gynnon ni ar ôl.",
+  "target_text": "È l'unica vera speranza che ci resta",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16"
+   ],
+   "note": "gobaith is the noun 'hope', so no P11. 'ar ôl' means 'left/remaining' here, not time."
+  }
+ },
+ {
+  "gid": "G170",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 16,
+  "known_text": "mae o isio siarad Eidaleg nes ymlaen",
+  "target_text": "vuole parlare italiano più tardi",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G171",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 4,
+  "known_text": "rhywbeth",
+  "target_text": "qualcosa",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G172",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 7,
+  "known_text": "trio",
+  "target_text": "provare",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "A bare verbnoun used as an infinitive gloss, not a command."
+  }
+ },
+ {
+  "gid": "G173",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 18,
+  "known_text": "dan ni isio siarad Eidaleg efo chdi",
+  "target_text": "vogliamo parlare italiano con te",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G174",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 12,
+  "known_text": "'swn i ddim yn licio dyfalu be sy'n mynd i ddigwydd fory",
+  "target_text": "non mi piacerebbe indovinare cosa succederà domani",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P2",
+    "P22",
+    "P23",
+    "P28"
+   ],
+   "note": "'swn i ddim yn licio + verbnoun = would not like to (P1). 'mynd i ddigwydd' is the going-to future (P2), not P3."
+  }
+ },
+ {
+  "gid": "G175",
+  "course": "eng_for_ara",
+  "kind": "seed",
+  "role": "seed",
+  "seed_number": 615,
+  "known_text": "اعتقدت أنك كنت شجاعاً جداً لقول ذلك.",
+  "target_text": "I thought you were very brave to say that.",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G176",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 192,
+  "known_text": "هل تريد أن تذهب إلى مطعم ليلة الغد؟",
+  "target_text": "do you want to go to a restaurant tomorrow night?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P20",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G177",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 117,
+  "known_text": "أنا بالتأكيد أحسن",
+  "target_text": "I'm definitely doing well",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P24"
+   ],
+   "note": "Borderline. أحسن is the elative form 'better', tagged as written, even though the target says 'doing well'."
+  }
+ },
+ {
+  "gid": "G178",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 77,
+  "known_text": "مدى سرعة بدئي",
+  "target_text": "how quickly I'm starting",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "A nominal construction ('extent of the speed of my starting') with no interrogative clause."
+  }
+ },
+ {
+  "gid": "G179",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 69,
+  "known_text": "هل يمكنك أن تعتني بها الليلة؟",
+  "target_text": "could you look after her tonight?",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P20",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G180",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 47,
+  "known_text": "من المفيد أن ترتكب الأخطاء عندما تتعلم",
+  "target_text": "it is useful to make mistakes when you learn",
+  "selected": "random",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P13",
+    "P18"
+   ],
+   "note": "من المفيد أن is Arabic's dedicated evaluative construction for 'it's useful to'."
+  }
+ },
+ {
+  "gid": "G181",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 29,
+  "known_text": "I'm looking forward to talking but I'm not going to be able to remember easily",
+  "target_text": "konuşmayı dört gözle bekliyorum ama kolayca hatırlayamayacağım",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P3",
+    "P5",
+    "P15",
+    "P23"
+   ],
+   "note": "'looking forward to talking' is a progressive (P3) and is not a liking verb; 'going to be able to' fires P2 and P5"
+  }
+ },
+ {
+  "gid": "G182",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 157,
+  "known_text": "I won't be able to wait for you",
+  "target_text": "não vou conseguir esperar por você",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P5",
+    "P23"
+   ],
+   "note": "'won't' is a plain future and adds only the negation"
+  }
+ },
+ {
+  "gid": "G183",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 301,
+  "known_text": "if you'll have been able to finish giving an excuse",
+  "target_text": "os byddi di wedi medru gorffen rhoi esgus",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P5",
+    "P14",
+    "P29"
+   ],
+   "note": "'will have been able' is a future perfect (P29); the if-clause fragment still fires P14"
+  }
+ },
+ {
+  "gid": "G184",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 23,
+  "known_text": "I'd like to be able to speak French very well soon",
+  "target_text": "j'aimerais pouvoir parler français très bien bientôt",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P5",
+    "P28"
+   ],
+   "note": "'very well' is not a comparison"
+  }
+ },
+ {
+  "gid": "G185",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 161,
+  "known_text": "On Sunday morning I hope to be able to speak better",
+  "target_text": "El domingo por la mañana espero poder hablar mejor",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P5",
+    "P11",
+    "P24",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G186",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 445,
+  "known_text": "I know they will be able to carry the suitcase",
+  "target_text": "sé que podrán llevar la maleta",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P5",
+    "P10"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G187",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 24,
+  "known_text": "i'm going to be able to speak Russian more",
+  "target_text": "Я скоро смогу говорить по-русски больше",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P5",
+    "P24"
+   ],
+   "note": "'speak Russian more' is a comparison of degree"
+  }
+ },
+ {
+  "gid": "G188",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 301,
+  "known_text": "if you'll have been able to say the truth",
+  "target_text": "os byddi di wedi medru deud y gwir",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P5",
+    "P14",
+    "P29"
+   ],
+   "note": "same shape as G183"
+  }
+ },
+ {
+  "gid": "G189",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 235,
+  "known_text": "I should have something to tell you before I have to go",
+  "target_text": "ba cheart dom rud éigin a insint duit sula gcaithfidh mé imeacht",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P7",
+    "P13"
+   ],
+   "note": "'should have something' uses main-verb have, so it is not counterfactual; the infinitival 'something to tell you' is not tagged as a relative clause"
+  }
+ },
+ {
+  "gid": "G190",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 566,
+  "known_text": "I wouldn't have been able to keep going if it had been my choice",
+  "target_text": "no habría podido seguir adelante si hubiera sido mi decisión",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P5",
+    "P14",
+    "P17",
+    "P23"
+   ],
+   "note": "counterfactual is P17, not P29; 'keep going' is not a progressive"
+  }
+ },
+ {
+  "gid": "G191",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 24,
+  "known_text": "voy a poder",
+  "target_text": "podré",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P4"
+   ],
+   "note": "ir a + infinitive is P2; poder is P4"
+  }
+ },
+ {
+  "gid": "G192",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 175,
+  "known_text": "parece que podrá ayudar antes de lo que esperaba",
+  "target_text": "sembla que podrà ajudar abans del que esperava",
+  "selected": "enriched:P5",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P9",
+    "P24",
+    "P28"
+   ],
+   "note": "'parece que' + clause treated like Hindi 'lagta hai ki' (P9); 'antes de lo que esperaba' = 'sooner than expected': comparative plus time adjunct"
+  }
+ },
+ {
+  "gid": "G193",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 432,
+  "known_text": "she possibly means something else",
+  "target_text": "她可能是想说别的",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'possibly' is an adverb, not a modal"
+  }
+ },
+ {
+  "gid": "G194",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 261,
+  "known_text": "it might",
+  "target_text": "pode",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P8"
+   ],
+   "note": "modal with elided VP"
+  }
+ },
+ {
+  "gid": "G195",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 152,
+  "known_text": "I would have done it without any problem",
+  "target_text": "teria feito sem problema",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P17"
+   ],
+   "note": "'without any problem' has no explicit negator"
+  }
+ },
+ {
+  "gid": "G196",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 261,
+  "known_text": "彼は私が探していた友達かもしれない",
+  "target_text": "he might be a friend I was looking for",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P8",
+    "P16"
+   ],
+   "note": "pre-nominal clause 私が探していた is a relative; ていた is in-progress (P3)"
+  }
+ },
+ {
+  "gid": "G197",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 116,
+  "known_text": "できるかもしれません",
+  "target_text": "podría",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P8"
+   ],
+   "note": "できる is plain can (P4), not P5"
+  }
+ },
+ {
+  "gid": "G198",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 127,
+  "known_text": "今日あなたに会えるかもしれません",
+  "target_text": "podría verte hoy",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P8",
+    "P28"
+   ],
+   "note": "potential 会える is P4"
+  }
+ },
+ {
+  "gid": "G199",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 109,
+  "known_text": "we must work to continue, I agree",
+  "target_text": "devam etmek için çalışmalıyız, katılıyorum",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P8"
+   ],
+   "note": "English 'must' is P8; 'I agree' has no clause"
+  }
+ },
+ {
+  "gid": "G200",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 20,
+  "known_text": "I must improve more",
+  "target_text": "rhaid i mi wella mwy",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P8",
+    "P24"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G241",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 395,
+  "known_text": "she said there's a corner",
+  "target_text": "角があるって言った",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P19"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G242",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 409,
+  "known_text": "she said there is a relationship",
+  "target_text": "関係があるって言ってた",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P19"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G243",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 145,
+  "known_text": "There is not any more",
+  "target_text": "Es gibt nicht mehr",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P19",
+    "P23"
+   ],
+   "note": "'any more' here means 'none left' (quantity), not a comparison or the time sense 'anymore', so neither P24 nor P28"
+  }
+ },
+ {
+  "gid": "G244",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 475,
+  "known_text": "I think there are many reasons to consider",
+  "target_text": "ich denke, dass es viele Gründe nachzudenken gibt",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P19"
+   ],
+   "note": "'reasons to consider' is an infinitival modifier, not a relative clause (P16)"
+  }
+ },
+ {
+  "gid": "G245",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 34,
+  "known_text": "other people are here today",
+  "target_text": "d'autres personnes sont ici aujourd'hui",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P28"
+   ],
+   "note": "'here' gives a location, not a time"
+  }
+ },
+ {
+  "gid": "G246",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 131,
+  "known_text": "There are many words in my head now",
+  "target_text": "Hay muchas palabras en mi cabeza ahora",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P19",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G247",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 283,
+  "known_text": "there is news from your friends",
+  "target_text": "arkadaşlarından haber var",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P19"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G248",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 195,
+  "known_text": "I think there's a different book on the table from yesterday",
+  "target_text": "テーブルには昨日とは違う本があると思う",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P19"
+   ],
+   "note": "'from yesterday' is what the book is compared with, not a time adjunct on the clause, so no P28"
+  }
+ },
+ {
+  "gid": "G249",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 294,
+  "known_text": "I think that there is enough time",
+  "target_text": "ceapaim go bhfuil go leor ama",
+  "selected": "enriched:P19",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P19"
+   ],
+   "note": "'enough time' is a noun object, not a time adjunct"
+  }
+ },
+ {
+  "gid": "G250",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 313,
+  "known_text": "she'd never seen all of them before",
+  "target_text": "前に全部見たことないって言ってた",
+  "selected": "enriched:P29",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23",
+    "P28",
+    "P29"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G251",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 598,
+  "known_text": "हमने हज़ार कहानियाँ सुनीं",
+  "target_text": "우리는 천 가지 이야기를 들었어요",
+  "selected": "enriched:P29",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "plain narrative past 'we heard a thousand stories'; no frame"
+  }
+ },
+ {
+  "gid": "G252",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 236,
+  "known_text": "I was going to ask you something yesterday but I have forgotten it",
+  "target_text": "Iba a preguntarte algo ayer pero lo he olvidado",
+  "selected": "enriched:P29",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P15",
+    "P28",
+    "P29"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G253",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 33,
+  "known_text": "how long have you been doing Japanese?",
+  "target_text": "どのくらい日本語をやってる？",
+  "selected": "enriched:P29",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P20",
+    "P21",
+    "P29"
+   ],
+   "note": "perfect progressive 'have been doing' counts as both progressive (P3) and perfect (P29)"
+  }
+ },
+ {
+  "gid": "G254",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 143,
+  "known_text": "ó jẹ́ nǹkan kan náà bí ohun tí a ti ń ṣe lálẹ́ àná",
+  "target_text": "Mae o'r un peth â be oedden ni'n gwneud neithiwr",
+  "selected": "enriched:P29",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P16",
+    "P28"
+   ],
+   "note": "'ohun tí...' is a relative clause with a head noun; 'ti ń' is past progressive; 'the same thing as' is not P25; P18 not fired because identity 'same' is not clearly evaluative"
+  }
+ },
+ {
+  "gid": "G255",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 104,
+  "known_text": "I’m very happy with what I’ve learnt",
+  "target_text": "dw i’n hapus iawn efo be’ dw i ’di dysgu",
+  "selected": "enriched:P29",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P29"
+   ],
+   "note": "'what I've learnt' is a free relative with no head noun, so no P16 or P22"
+  }
+ },
+ {
+  "gid": "G256",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 8,
+  "known_text": "dw i'n mynd i esbonio",
+  "target_text": "sto per spiegare",
+  "selected": "enriched:P2",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2"
+   ],
+   "note": "'mynd i' + verbnoun is the Welsh going-to future"
+  }
+ },
+ {
+  "gid": "G257",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 223,
+  "known_text": "वे कहते हैं कि वह रविवार को आपसे पूछने वाला है।",
+  "target_text": "they say he's going to ask you on Sunday",
+  "selected": "enriched:P2",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P12",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G258",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 12,
+  "known_text": "I wouldn't like to guess what's going to happen today or tomorrow",
+  "target_text": "níor mhaith liom buille faoi thuairim a thabhairt faoi cad atá chun tarlú inniu nó amárach",
+  "selected": "enriched:P2",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P2",
+    "P22",
+    "P23",
+    "P28"
+   ],
+   "note": "'guess' + wh-clause is an embedded question, not an opinion clause (P9)"
+  }
+ },
+ {
+  "gid": "G259",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 130,
+  "known_text": "I heard that you were going to wait last weekend",
+  "target_text": "clywes i bo’ ti’n mynd i aros penwythnos diwetha’",
+  "selected": "enriched:P2",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P28"
+   ],
+   "note": "'hear that' is not among the P12 reporting verbs"
+  }
+ },
+ {
+  "gid": "G260",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 28,
+  "known_text": "he is going as soon as he can",
+  "target_text": "그는 가능한 한 빨리 가요",
+  "selected": "enriched:P2",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P4",
+    "P13"
+   ],
+   "note": "'is going' is motion, so P3; 'as soon as he can' is a temporal clause, not the P25 idiom; the modal 'can' (verb elided) fires P4"
+  }
+ },
+ {
+  "gid": "G221",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 572,
+  "known_text": "I'm afraid they visited us",
+  "target_text": "أَخْشى أَنَّهُم زارونا فيها",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'I'm afraid' + clause: afraid/fear is not a P9 opinion verb or a P10 knowledge verb; not on the opener list"
+  }
+ },
+ {
+  "gid": "G222",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 292,
+  "known_text": "آمل أن تستطيع الحضور إلى الحفلة",
+  "target_text": "I hope you'll be able to come to the party",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P11"
+   ],
+   "note": "تستطيع is the ordinary can-verb, so P4 not P5"
+  }
+ },
+ {
+  "gid": "G223",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 482,
+  "known_text": "I hope they're not serious",
+  "target_text": "espero que no estén hablando en serio",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P11",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G224",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 129,
+  "known_text": "because you did",
+  "target_text": "yaptığın için",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P15"
+   ],
+   "note": "reason fragment; like 'because of the rain', the connective introduces a reason"
+  }
+ },
+ {
+  "gid": "G225",
+  "course": "bre_for_fra",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 145,
+  "known_text": "tu n'es pas parfait mais c'est plus important de parler souvent",
+  "target_text": "n'out ket perfet met pouezusoc'h eo komz alies",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P15",
+    "P18",
+    "P23",
+    "P24",
+    "P28"
+   ],
+   "note": "c'est + adj + de-inf is P18; plus important is P24"
+  }
+ },
+ {
+  "gid": "G226",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 58,
+  "known_text": "I can't remember easily but it is interesting today",
+  "target_text": "ní féidir liom cuimhneamh go héasca ach tá sé suimiúil inniu",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P15",
+    "P18",
+    "P23",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G227",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 277,
+  "known_text": "明日は大事な会議があるので、月の初めに来てほしいです",
+  "target_text": "I've got an important meeting tomorrow so I'd like you to come early",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P15",
+    "P19",
+    "P28"
+   ],
+   "note": "会議がある is the existential がある (P19); 〜てほしい = want someone to do (P1); 明日 and 月の初めに are time adjuncts"
+  }
+ },
+ {
+  "gid": "G228",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 246,
+  "known_text": "أردت أن أتحدث معها ولكنها كانت مشغولة جداً",
+  "target_text": "I wanted to talk to her but she was too busy",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P15"
+   ],
+   "note": "جداً = very, not P24"
+  }
+ },
+ {
+  "gid": "G229",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 153,
+  "known_text": "I tried to do exactly what he told me, but it was not easy at all and I needed more help",
+  "target_text": "bhí mé ag triail díreach cad a dúirt sé liom a dhéanamh, ach ní raibh sé éasca ar chor ar bith agus bhí níos mó cabhrú de dhíth orm",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P15",
+    "P18",
+    "P23",
+    "P24"
+   ],
+   "note": "'what he told me' is a free relative with no reported clause, so no P12/P16; need + noun is not P6"
+  }
+ },
+ {
+  "gid": "G230",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 152,
+  "known_text": "次は違うやり方でやれるように、今頑張っています",
+  "target_text": "I'm doing it differently now so I can do it better next time",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P4",
+    "P15",
+    "P28"
+   ],
+   "note": "やれる is potential (P4); ように = so that (P15); 頑張っています with 今 is in progress (P3)"
+  }
+ },
+ {
+  "gid": "G231",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 125,
+  "known_text": "あなたの英語は良かったので、もっと話してほしいです",
+  "target_text": "your English was good so I want to hear more",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P15",
+    "P24"
+   ],
+   "note": "話してほしい = want you to speak (P1)"
+  }
+ },
+ {
+  "gid": "G232",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 66,
+  "known_text": "it's not difficult but it's important",
+  "target_text": "難しくないけど大事",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P15",
+    "P18",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G233",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 300,
+  "known_text": "لا تريد أن تبدو غير ودية ولكنها مشغولة جداً",
+  "target_text": "she doesn't want to seem unfriendly but she didn't want to wait",
+  "selected": "enriched:P15",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P15",
+    "P23"
+   ],
+   "note": "غير ودية is a negative-prefix adjective; negation already comes from لا"
+  }
+ },
+ {
+  "gid": "G234",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 613,
+  "known_text": "know we probably would have bought a house there",
+  "target_text": "知𠊎兜大概會在該位買一間屋仔",
+  "selected": "enriched:P17",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P10",
+    "P17"
+   ],
+   "note": "'know' + clause fragment; not P26 (compare 'know the answer')"
+  }
+ },
+ {
+  "gid": "G235",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 153,
+  "known_text": "I wouldn't have said that",
+  "target_text": "Я бы не сказал это",
+  "selected": "enriched:P17",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P17",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G236",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 204,
+  "known_text": "I was hoping she would help you next year",
+  "target_text": "내년에 그녀가 도와주길 바랐어요",
+  "selected": "enriched:P17",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P11",
+    "P28"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G237",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 565,
+  "known_text": "I'd have thought so",
+  "target_text": "eu teria pensado isso",
+  "selected": "enriched:P17",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P9",
+    "P17"
+   ],
+   "note": "idiomatic, but the form is would have + pp with think so"
+  }
+ },
+ {
+  "gid": "G238",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 112,
+  "known_text": "he said he was expecting it to be very interesting and it was even better than that",
+  "target_text": "dúirt sé go raibh sé ag súil leis go mbeadh sé an-suimiúil agus bhí sé níos fearr ná sin",
+  "selected": "enriched:P17",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P12",
+    "P18",
+    "P24"
+   ],
+   "note": "'it was even better' = it + be + adjective (P18)"
+  }
+ },
+ {
+  "gid": "G239",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 600,
+  "known_text": "ask I'd have driven if you'd told me how tired you were",
+  "target_text": "問若係你同𠊎講你有幾悿，𠊎就會開車",
+  "selected": "enriched:P17",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P14",
+    "P17",
+    "P22"
+   ],
+   "note": "leading 'ask' is unclear as a command, so P26 not fired; told me how tired = P12+P22"
+  }
+ },
+ {
+  "gid": "G240",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 152,
+  "known_text": "私たちはもっと良い仕事をしたでしょう。一緒に取り組んでいたら",
+  "target_text": "we would have done it better if we had had more time to work together",
+  "selected": "enriched:P17",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P14",
+    "P17",
+    "P24"
+   ],
+   "note": "たら + でしょう read as unreal past; もっと良い = P24"
+  }
+ },
+ {
+  "gid": "G201",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 109,
+  "known_text": "we must speak as often as possible",
+  "target_text": "Мы должны говорить как можно чаще",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P8",
+    "P25",
+    "P28"
+   ],
+   "note": "'as often as possible' is an equative (P25) and also a frequency adjunct on 'speak' (P28)"
+  }
+ },
+ {
+  "gid": "G202",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 446,
+  "known_text": "यह वह खिड़की हो सकती है।",
+  "target_text": "it might be that window",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P8"
+   ],
+   "note": "'ho sakti hai' here means possibility ('might be'), so P8 rather than P4"
+  }
+ },
+ {
+  "gid": "G203",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 155,
+  "known_text": "数分間待っても構いませんか？",
+  "target_text": "are you sure you don't mind waiting for a few minutes?",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P23",
+    "P28"
+   ],
+   "note": "'-ても構いません' is a permission formula, not a conditional, so no P14; 'kamaimasen' is grammatically negated (P23); '数分間' is a duration adjunct"
+  }
+ },
+ {
+  "gid": "G204",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 261,
+  "known_text": "मुझे लगता है यह कुछ ज़रूरी हो सकता है",
+  "target_text": "그것이 뭔가 중요한 것일 수도 있다고 생각해요",
+  "selected": "enriched:P8",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P8",
+    "P9"
+   ],
+   "note": "'ho sakta hai' means possibility (P8); 'kuch zaroori' describes a thing, not a situation, so no P18"
+  }
+ },
+ {
+  "gid": "G205",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 528,
+  "known_text": "I'm probably supposed to be here",
+  "target_text": "je suis probablement censé être ici",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'be supposed to' is not listed under P6 or P7 and is not a passive event, so nothing fires; 'probably' and 'here' are not time adjuncts"
+  }
+ },
+ {
+  "gid": "G206",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 622,
+  "known_text": "we saw it was broken",
+  "target_text": "우리는 그것을 부서졌다고 알아요",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P10",
+    "P18"
+   ],
+   "note": "'saw' + clause means realised, so P10; 'it was broken' is a resultant-state adjective with subject it, so P18 and not P30"
+  }
+ },
+ {
+  "gid": "G207",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 444,
+  "known_text": "they thought it could be done in a better way",
+  "target_text": "pensaban que se podría hacer de una mejor manera",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P9",
+    "P24",
+    "P30"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G208",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 100,
+  "known_text": "you should be worried about my friend",
+  "target_text": "ba cheart duit a bheith buartha faoi mo chara",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7"
+   ],
+   "note": "'worried' is an adjective, not a passive"
+  }
+ },
+ {
+  "gid": "G209",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 462,
+  "known_text": "I told her my grandfather fought in Italy",
+  "target_text": "قُلْتُ لَها إِنَّ جَدّي حارَبَ في إِيطاليا",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G210",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 444,
+  "known_text": "it could be done in a way",
+  "target_text": "que podia ser feito de forma",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P30"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G211",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 76,
+  "known_text": "I'm not satisfied with this",
+  "target_text": "我对这个不满意",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23"
+   ],
+   "note": "'satisfied' is an adjective, not a passive"
+  }
+ },
+ {
+  "gid": "G212",
+  "course": "spa_for_jpn",
+  "kind": "lego",
+  "role": "M",
+  "seed_number": 267,
+  "known_text": "聞いた",
+  "target_text": "sabido de",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "plain past 'heard'; no construction"
+  }
+ },
+ {
+  "gid": "G213",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 264,
+  "known_text": "that was an old man you were talking to",
+  "target_text": "c'était un vieil homme à qui tu parlais",
+  "selected": "enriched:P30",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P16"
+   ],
+   "note": "zero relative 'an old man you were talking to'"
+  }
+ },
+ {
+  "gid": "G214",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 36,
+  "known_text": "I hope you won't interrupt her",
+  "target_text": "我希望你不要打断她",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P11",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G215",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 149,
+  "known_text": "nítorí náà mo retí pé o máa parí ní òwúrọ̀ yìí",
+  "target_text": "felly dw i'n gobeithio wnei di orffen bore 'ma",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P11",
+    "P28"
+   ],
+   "note": "leading 'nítorí náà' (so) has nothing before it, so it is an opener; 'retí pé' = hope that"
+  }
+ },
+ {
+  "gid": "G216",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 346,
+  "known_text": "I wanted her to know that I could do it",
+  "target_text": "je voulais qu'elle sache que je pouvais le faire",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P4",
+    "P10"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G217",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 29,
+  "known_text": "Mo ń retí láti dáhùn ní kíákíá",
+  "target_text": "dw i'n edrych ymlaen at ateb yn fuan",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P11"
+   ],
+   "note": "'ń' is the progressive marker; 'retí láti' = hope/expect to + verb, treated as P11; 'kíákíá' (quickly) is manner, not time"
+  }
+ },
+ {
+  "gid": "G218",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 568,
+  "known_text": "I'm expecting to see an improvement next time we meet",
+  "target_text": "espero ver una mejora la próxima vez que nos veamos",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P13"
+   ],
+   "note": "'expect' is not hope, so no P11; 'next time we meet' is a temporal clause like 'every time', so P13 rather than P28"
+  }
+ },
+ {
+  "gid": "G219",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 668,
+  "known_text": "I hope it is good",
+  "target_text": "j'espère que c'est bien",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P11",
+    "P18"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G220",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 295,
+  "known_text": "I hope I can finish this in a day",
+  "target_text": "我希望我一天就能完成这个",
+  "selected": "enriched:P11",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P4",
+    "P11",
+    "P28"
+   ],
+   "note": "'in a day' is a duration adjunct"
+  }
+ },
+ {
+  "gid": "G301",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 550,
+  "known_text": "someone else knows the very end",
+  "target_text": "別人知盡尾",
+  "selected": "enriched:P10",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "know + noun phrase ('the very end'), no clause, so no P10"
+  }
+ },
+ {
+  "gid": "G302",
+  "course": "hak_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 229,
+  "known_text": "everyone likes that woman",
+  "target_text": "大家中意該個婦人家",
+  "selected": "enriched:P31",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P31"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G303",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 29,
+  "known_text": "スペイン語を話す人々と知り合うのを楽しみにしています",
+  "target_text": "tengo ganas de conocer a personas que hablan español",
+  "selected": "enriched:P31",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P16"
+   ],
+   "note": "Prenominal relative clause スペイン語を話す人々 fires P16. 楽しみにしている means 'look forward to', which is not P31 liking, P1 wanting or P11 hope. Its -ている is a state, not progressive, so no P3."
+  }
+ },
+ {
+  "gid": "G261",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 7,
+  "known_text": "dw i'n mynd i drio",
+  "target_text": "sto per provare",
+  "selected": "enriched:P2",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2"
+   ],
+   "note": "Welsh 'mynd i' + VN means 'going to try', so this is the going-to future, not P3"
+  }
+ },
+ {
+  "gid": "G262",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 24,
+  "known_text": "I'm not going to be",
+  "target_text": "ní bheidh mé",
+  "selected": "enriched:P2",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P2",
+    "P23"
+   ],
+   "note": "'going to be' is going to + verb"
+  }
+ },
+ {
+  "gid": "G263",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 155,
+  "known_text": "I think it is a good idea to practise speaking for a while every day if you want to improve",
+  "target_text": "ceapaim gur smaoineamh maith é labhairt a chleachtadh ar feadh tamaill gach lá má tá tú ag iarraidh feabhsú",
+  "selected": "enriched:P14",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P9",
+    "P14",
+    "P18",
+    "P28"
+   ],
+   "note": "'it is a good idea to' is P18; 'for a while' and 'every day' are P28"
+  }
+ },
+ {
+  "gid": "G264",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 203,
+  "known_text": "எனக்கு உதவ உங்களைக் கேட்டால்",
+  "target_text": "如果我请你帮我",
+  "selected": "enriched:P14",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P14"
+   ],
+   "note": "Conditional -ஆல் ('if I ask'); 'ask you to help me' is a request with an infinitive complement, so P12"
+  }
+ },
+ {
+  "gid": "G265",
+  "course": "cym_n_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 304,
+  "known_text": "unless they're looking for somewhere",
+  "target_text": "onibai bod nhw'n chwilio am rywle",
+  "selected": "enriched:P14",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P14"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G266",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 352,
+  "known_text": "अगर वह चाहे तो भी यह अहम है।",
+  "target_text": "even if he wanted to it's important",
+  "selected": "enriched:P14",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P14",
+    "P18"
+   ],
+   "note": "चाहे has no verbal complement, so no P1; 'यह अहम है' evaluates a situation, so P18"
+  }
+ },
+ {
+  "gid": "G267",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 181,
+  "known_text": "I have to take my mother to the doctor as soon as possible",
+  "target_text": "Tengo que llevar a mi madre al médico lo antes posible",
+  "selected": "enriched:P25",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P25"
+   ],
+   "note": "'as soon as possible' is treated as the equative idiom P25, not a P28 adjunct"
+  }
+ },
+ {
+  "gid": "G268",
+  "course": "zho_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 518,
+  "known_text": "that's exactly the same",
+  "target_text": "那完全一样",
+  "selected": "enriched:P25",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "The subject is 'that', and 'the same' is not an as...as comparison"
+  }
+ },
+ {
+  "gid": "G269",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 99,
+  "known_text": "you want to learn Irish and you should practise speaking as often as possible",
+  "target_text": "tá tú ag iarraidh Gaeilge a fhoghlaim agus ba cheart duit labhairt a chleachtadh chomh minic agus is féidir",
+  "selected": "enriched:P25",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P7",
+    "P25"
+   ],
+   "note": "'as often as possible' is P25 only"
+  }
+ },
+ {
+  "gid": "G270",
+  "course": "ita_for_cym",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 3,
+  "known_text": "dw i'n trio siarad mor aml â phosib",
+  "target_text": "sto provando a parlare il più spesso possibile",
+  "selected": "enriched:P25",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P25"
+   ],
+   "note": "'mor aml â' is the equative; the Welsh periphrastic is not clearly 'right now', so no P3"
+  }
+ },
+ {
+  "gid": "G271",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 157,
+  "known_text": "So I'm going to practise talking with another person next month as much as possible",
+  "target_text": "Así que el mes que viene voy a practicar hablando con otra persona lo más frecuentemente posible",
+  "selected": "enriched:P25",
+  "gold": {
+   "opener": true,
+   "frames": [
+    "P2",
+    "P25",
+    "P28"
+   ],
+   "note": "Leading 'So' is an opener"
+  }
+ },
+ {
+  "gid": "G272",
+  "course": "spa_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 167,
+  "known_text": "What you need is to speak as frequently as possible",
+  "target_text": "Lo que necesitas es hablar lo más frecuentemente posible",
+  "selected": "enriched:P25",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P25"
+   ],
+   "note": "'What you need' is a free relative in a pseudo-cleft: no head noun (no P16) and not need + to-VP (no P6)"
+  }
+ },
+ {
+  "gid": "G273",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 28,
+  "known_text": "I like practising speaking as soon as possible",
+  "target_text": "is maith liom labhairt a chleachtadh chomh luath agus is féidir",
+  "selected": "enriched:P25",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P25",
+    "P31"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G274",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 440,
+  "known_text": "இளமையாக இருக்கும்போது",
+  "target_text": "在还年轻的时候",
+  "selected": "enriched:P13",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P13"
+   ],
+   "note": "-போது marks a 'when' clause"
+  }
+ },
+ {
+  "gid": "G275",
+  "course": "eng_for_ara",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 66,
+  "known_text": "أحتاج أن أجد شيئاً ما قبل أن أذهب",
+  "target_text": "I need to find something before I have to go",
+  "selected": "enriched:P13",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P13"
+   ],
+   "note": "أحتاج أن + verb = need to; قبل أن + verb = temporal clause"
+  }
+ },
+ {
+  "gid": "G276",
+  "course": "spa_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 147,
+  "known_text": "準備ができているとき彼女は私を見た",
+  "target_text": "ella me vio cuando estoy listo",
+  "selected": "enriched:P13",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P13"
+   ],
+   "note": "できている is stative here, not in progress, so no P3"
+  }
+ },
+ {
+  "gid": "G277",
+  "course": "tur_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 281,
+  "known_text": "before you start, I have to do this",
+  "target_text": "sen başlamadan önce bunu yapmam gerekiyor",
+  "selected": "enriched:P13",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P13"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G278",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 11,
+  "known_text": "learn after you finish",
+  "target_text": "учить после того, как ты закончишь",
+  "selected": "enriched:P13",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P13",
+    "P26"
+   ],
+   "note": "A subjectless bare verb that can stand alone as an instruction, so P26"
+  }
+ },
+ {
+  "gid": "G279",
+  "course": "eng_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 34,
+  "known_text": "जब दूसरे लोग यहाँ हों तो मैं चुप रहना नहीं चाहती।",
+  "target_text": "I don't want to be quiet when other people are here",
+  "selected": "enriched:P13",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P13",
+    "P23"
+   ],
+   "note": "जब...तो is a temporal clause; रहना नहीं चाहती = negated want + verb"
+  }
+ },
+ {
+  "gid": "G280",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 114,
+  "known_text": "Mo ń rílárà bíi pé mi ò ṣetán ní òwúrọ̀ yìí",
+  "target_text": "dw i'n teimlo fel taswn i ddim yn barod bore 'ma",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23",
+    "P27",
+    "P28"
+   ],
+   "note": "'feel like' + clause is P27; ń with a stative 'feel' is not clearly in progress, so no P3"
+  }
+ },
+ {
+  "gid": "G281",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 584,
+  "known_text": "what it's like to wake up here",
+  "target_text": "كَيْفَ يَبْدو أَنْ تَسْتَيْقِظَ هُنا",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P27"
+   ],
+   "note": "'what it's like' describes by resemblance (P27). No matrix verb is present, so P22 is not fired."
+  }
+ },
+ {
+  "gid": "G282",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 146,
+  "known_text": "kò dà bíi pé nǹkan kan ń ṣiṣẹ́ lónìí",
+  "target_text": "Does 'na ddim byd i weld yn gweithio heddiw",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P23",
+    "P27",
+    "P28"
+   ],
+   "note": "'dà bíi pé' = seem like + clause (P27). 'ń ṣiṣẹ́' means ongoing today, so it is progressive (P3)."
+  }
+ },
+ {
+  "gid": "G283",
+  "course": "eng_for_jpn",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 49,
+  "known_text": "今日はこんな感じです",
+  "target_text": "It's like this today",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P27",
+    "P28"
+   ],
+   "note": "こんな感じ = 'like this' (description by resemblance). 今日は works as a time adjunct, as the target shows."
+  }
+ },
+ {
+  "gid": "G284",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 146,
+  "known_text": "kò dà bíi pé nǹkan kan lónìí",
+  "target_text": "Does 'na ddim byd i weld heddiw",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P23",
+    "P27",
+    "P28"
+   ],
+   "note": "There is no existential verb in the Yoruba, so P19 is not fired."
+  }
+ },
+ {
+  "gid": "G285",
+  "course": "fra_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 477,
+  "known_text": "he's sick",
+  "target_text": "il est malade",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "The subject is 'he', not 'it', so P18 does not apply."
+  }
+ },
+ {
+  "gid": "G286",
+  "course": "ara_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 497,
+  "known_text": "that sounds as though you need to sleep",
+  "target_text": "يَبْدو أَنَّكَ تَحْتاجُ أَنْ تَنامَ",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P27"
+   ],
+   "note": "'sounds as though' + clause is the same resemblance construction as 'sounds like'."
+  }
+ },
+ {
+  "gid": "G287",
+  "course": "deu_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 136,
+  "known_text": "My friend is very good at German",
+  "target_text": "Meine Freundin ist sehr gut in Deutsch",
+  "selected": "enriched:P27",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G288",
+  "course": "kor_for_hin",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 167,
+  "known_text": "आज मुझे क्या करना है?",
+  "target_text": "오늘 무엇을 해야 해요?",
+  "selected": "enriched:P21",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P6",
+    "P20",
+    "P21",
+    "P28"
+   ],
+   "note": "-na hai expresses obligation here."
+  }
+ },
+ {
+  "gid": "G289",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 262,
+  "known_text": "con quien estabas",
+  "target_text": "amb qui estaves",
+  "selected": "enriched:P21",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "'quien' has no accent and there is no '?'. It is a free relative or embedded fragment with no head noun and no matrix verb. 'estabas' alone is not progressive."
+  }
+ },
+ {
+  "gid": "G290",
+  "course": "gle_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 169,
+  "known_text": "what do you want tonight",
+  "target_text": "cad atá tú ag iarraidh anocht",
+  "selected": "enriched:P21",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P21",
+    "P28"
+   ],
+   "note": "want + 'what' (a noun object), so P1 is not fired. Word order is interrogative even without '?'."
+  }
+ },
+ {
+  "gid": "G291",
+  "course": "kor_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 372,
+  "known_text": "did you see what she was trying to create?",
+  "target_text": "그녀가 뭘 만들려고 했는지 봤어요?",
+  "selected": "enriched:P21",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P3",
+    "P20",
+    "P22"
+   ],
+   "note": "see + wh-clause (P22). 'was trying' is progressive (P3)."
+  }
+ },
+ {
+  "gid": "G292",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 33,
+  "known_text": "¿Cuánto tiempo hace que quieres mostrarme algo?",
+  "target_text": "quant de temps fa que vols mostrar-me alguna cosa?",
+  "selected": "enriched:P21",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P1",
+    "P20",
+    "P21"
+   ],
+   "note": "The duration is the wh-topic itself, so P28 is not fired."
+  }
+ },
+ {
+  "gid": "G293",
+  "course": "deu_for_zho",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 255,
+  "known_text": "什么时候准备好走？",
+  "target_text": "wann du bereit bist zu gehen?",
+  "selected": "enriched:P21",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P20",
+    "P21"
+   ],
+   "note": "什么时候 is the question word, not a time adjunct."
+  }
+ },
+ {
+  "gid": "G294",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 201,
+  "known_text": "should be",
+  "target_text": "должно",
+  "selected": "enriched:P7",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G295",
+  "course": "por_br_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 534,
+  "known_text": "I think we shouldn't go outside in this dreadful weather",
+  "target_text": "acho que não vamos lá fora com este tempo horrível",
+  "selected": "enriched:P7",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P7",
+    "P9",
+    "P23"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G296",
+  "course": "cym_for_yor",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 158,
+  "known_text": "Jẹ́ kí a sinmi ní ọ̀sán yìí",
+  "target_text": "Gad i ni ymlacio pnawn 'ma",
+  "selected": "enriched:P26",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P26",
+    "P28"
+   ],
+   "note": "Jẹ́ kí a = let's."
+  }
+ },
+ {
+  "gid": "G297",
+  "course": "jpn_for_eng",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 403,
+  "known_text": "she said let's stay quiet",
+  "target_text": "静かにしていようって言った",
+  "selected": "enriched:P26",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P12",
+    "P26"
+   ],
+   "note": "The reported quotation contains a 'let's' imperative. Embedded frames are tagged, as in other reported content."
+  }
+ },
+ {
+  "gid": "G298",
+  "course": "rus_for_eng",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 158,
+  "known_text": "let's talk",
+  "target_text": "поговорим",
+  "selected": "enriched:P26",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P26"
+   ],
+   "note": ""
+  }
+ },
+ {
+  "gid": "G299",
+  "course": "cat_for_spa",
+  "kind": "phrase",
+  "role": "use",
+  "seed_number": 66,
+  "known_text": "No es muy difícil decir lo que quiero decir ahora",
+  "target_text": "No és molt difícil dir el que vull dir ara",
+  "selected": "enriched:P26",
+  "gold": {
+   "opener": false,
+   "frames": [
+    "P18",
+    "P23",
+    "P28"
+   ],
+   "note": "'querer decir' here means 'mean', so P1 is not fired. 'lo que' is a free relative with no head noun, so P16 is not fired."
+  }
+ },
+ {
+  "gid": "G300",
+  "course": "zho_for_tam",
+  "kind": "phrase",
+  "role": "build",
+  "seed_number": 502,
+  "known_text": "இங்கே வளைய",
+  "target_text": "在这里拐",
+  "selected": "enriched:P26",
+  "gold": {
+   "opener": false,
+   "frames": [],
+   "note": "வளைய is the infinitive form, not the imperative (வளை/வளையுங்கள்). 'here' is locative only."
+  }
+ }
+]

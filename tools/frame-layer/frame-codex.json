@@ -1,0 +1,1272 @@
+{
+ "id": "P",
+ "version": "2026-10-07.3",
+ "title": "SSi frame codex: the 31 seed frames (P1-P31)",
+ "purpose": "The definitions a model (Haiku family) uses to say which frames a phrase's KNOWN side instantiates. Tom 2026-10-07 (r-2026-10-07-never-use-regex-to-classify-language): frames are classified by a model reading these definitions, never by regex. The P-ids are stable and pinned to tools/frame-layer/patterns.cjs.",
+ "general_rules": [
+  "A frame is a CONSTRUCTION: a grammatical shape that carries a meaning. Judge the grammar and the meaning, never the presence of a word. 'I like it' is P31; 'it's like a dream' is not P31.",
+  "Check EVERY phrase against EVERY frame; in particular every not / n't / never / no-one / nothing fires P23, every question fires P20, and every time word or time phrase fires P28. Do not let a frame from a neighbouring phrase leak into this one.",
+  "Tag the KNOWN side of the phrase as written, whatever language it is in.",
+  "Multi-label: fire every frame the phrase genuinely instantiates. Many phrases fire 1-4 frames; some fire none ('the red car', 'my brother').",
+  "Fragments are normal (BUILD phrases are building blocks). Tag the shape the fragment actually has: 'want to go' fires P1 even without a subject; 'to go' fires nothing.",
+  "OPENER: a detachable discourse opener at the very front ('yes,', 'no,', 'well', 'so', 'and', 'but', 'oh', 'ok', 'thank you,', 'sorry,', 'of course', 'no problem', 'excuse me', 'great', 'actually', 'unfortunately', a vocative like 'Mary,') earns NO frame. Mark the phrase O and tag only what follows. It is an opener only if removing it leaves the rest of the phrase intact; 'no one came' and 'but for you' do not start with openers. A leading 'please' before a command is an opener and the command still fires P26.",
+  "Fire a frame only when its construction is the phrase's own: a word in another sense does not count ('a can of soup' is not P4, 'the month of May' is not P8, 'over there' is not P19).",
+  "When unsure whether a borderline case fires, follow the frame's boundary rules; if they do not settle it, do not fire."
+ ],
+ "non_english_known_side": [
+  "Frames are defined by construction and meaning, with English as the reference language because the 668 canonical seeds were written in English. On a known side in another language (Hindi in eng_for_hin and kor_for_hin, Tamil in zho_for_tam, Japanese in spa_for_jpn, Welsh in ita_for_cym, Yoruba in cym_for_yor, Spanish in cat_for_spa, Chinese in deu_for_zho, French in bre_for_fra, ...), fire a frame when the phrase uses THAT language's ordinary construction for the same meaning. Each frame lists the usual realisations under 'other_languages'.",
+  "Translate the meaning, not the words: Welsh 'dw i'n hoffi coffi' is P31 (liking) and is NOT P3, because the Welsh periphrastic present is the plain present there, not a progressive. French 'j'ai mangé' used as a plain past is NOT P29. Japanese 'たことがある' (experience) IS P29.",
+  "Where a language has no separate construction for an English-specific frame (P5 'be able to', P18 dummy 'it', P25 'as...as'), fire the frame only on that language's closest dedicated construction (Spanish 'ser capaz de' for P5; Hindi 'utna ... jitna' for P25; Hindi 'yah aasaan hai' for P18 when it evaluates a situation). If there is none, the frame simply does not occur in that course and that is correct.",
+  "Where English splits one meaning into two frames that another language merges (English must P8 / have to P6; French 'devoir' covers both), fire the frame that matches the meaning in context: obligation -> P6; advice -> P7; deduction or possibility ('il doit être là', 'puede que') -> P8."
+ ],
+ "output": "One line per phrase: '<number>: <tokens>' where tokens are an optional O (opener present) followed by frame ids, or '-' when there is nothing. Example: '12: O P1 P23 P28'.",
+ "frames": [
+  {
+   "id": "P1",
+   "name": "want-chain",
+   "shape": "[SUBJ] want(s) / would like to [VP]  |  [SUBJ] want(s) [SUBJ2] to [VP]",
+   "definition": "A verb of wanting (want, would like, 'd like, wish to, feel like + -ing) with a VERBAL complement: wanting to do something, or wanting someone to do something. Negated and questioned forms count.",
+   "positives": [
+    "I want to go home",
+    "do you want to come with us?",
+    "she doesn't want me to leave",
+    "I'd like to book a table",
+    "want to speak French"
+   ],
+   "near_misses": [
+    {
+     "text": "I want a coffee",
+     "why": "want + noun only, no verbal complement"
+    },
+    {
+     "text": "I like going there",
+     "why": "liking (P31), not wanting"
+    },
+    {
+     "text": "I hope to see you",
+     "why": "hope is P11"
+    },
+    {
+     "text": "would you like some tea?",
+     "why": "would like + noun only"
+    },
+    {
+     "text": "a want of money",
+     "why": "noun 'want'"
+    },
+    {
+     "text": "I'm trying to think",
+     "why": "try is not want"
+    },
+    {
+     "text": "I think I need to look at that",
+     "why": "need to = P6"
+    }
+   ],
+   "boundary": [
+    "Requires a verb after want/would like (to-infinitive, or object + to-infinitive, or 'feel like' + -ing).",
+    "'would like' + noun does not fire.",
+    "Only verbs of WANTING. try to, need to (P6), know to, expect to, mean to, decide to, plan to are NOT P1."
+   ],
+   "other_languages": "French vouloir/aimer bien + inf, Spanish querer + inf, Hindi chahna (jaana chahta hoon), Japanese -たい, Welsh eisiau + VN, Chinese 想/要 + verb."
+  },
+  {
+   "id": "P2",
+   "name": "going-to future",
+   "shape": "[SUBJ] (am|is|are) going to [VP]",
+   "definition": "'be going to' / 'gonna' + a VERB, expressing future or intention.",
+   "positives": [
+    "I'm going to call him",
+    "it's going to rain",
+    "are you going to stay?",
+    "we were going to leave early",
+    "going to buy a car"
+   ],
+   "near_misses": [
+    {
+     "text": "I'm going to Paris",
+     "why": "motion to a place: P3 progressive, not P2"
+    },
+    {
+     "text": "I will call him",
+     "why": "plain future, no frame"
+    },
+    {
+     "text": "I'm going home",
+     "why": "motion"
+    },
+    {
+     "text": "the going rate",
+     "why": "adjective"
+    },
+    {
+     "text": "I want to go to the shop",
+     "why": "P1; 'go to' is motion"
+    }
+   ],
+   "boundary": [
+    "Only when 'going to' is followed by a verb. Motion 'going to <place>' is P3.",
+    "P2 phrases do NOT also fire P3."
+   ],
+   "other_languages": "French aller + inf (je vais partir), Spanish ir a + inf, Portuguese ir + inf, Welsh mynd i + VN, Hindi -ne vala hai. A plain future tense (Hindi -ga, French futur simple, Chinese 会) does not fire."
+  },
+  {
+   "id": "P3",
+   "name": "progressive",
+   "shape": "[SUBJ] (am|is|are|was|were) [VPing]",
+   "definition": "be + verb-ing describing an action in progress (present or past progressive, including future-arrangement use 'I'm meeting her tomorrow').",
+   "positives": [
+    "I'm working now",
+    "she was waiting for you",
+    "what are you doing?",
+    "they're coming tomorrow",
+    "I'm trying to think"
+   ],
+   "near_misses": [
+    {
+     "text": "it's interesting",
+     "why": "-ing adjective, not a progressive (P18)"
+    },
+    {
+     "text": "I like swimming",
+     "why": "gerund object (P31)"
+    },
+    {
+     "text": "I'm going to call him",
+     "why": "going-to future: P2 only"
+    },
+    {
+     "text": "speaking French is hard",
+     "why": "gerund subject"
+    },
+    {
+     "text": "before leaving",
+     "why": "-ing after a preposition, no be"
+    }
+   ],
+   "boundary": [
+    "Needs be + V-ing with the -ing as a verb in progress.",
+    "be going to + verb is P2, not P3.",
+    "try, hope, expect, plan, wait, look forward in the progressive count: 'I'm trying to think', 'I was hoping she'd come', 'I'm looking forward to it' all fire P3."
+   ],
+   "other_languages": "Spanish estar + gerundio, French être en train de, Hindi -raha hai/-rahi thi, Japanese -ている in its in-progress meaning, Chinese 在/正在 + verb. Welsh 'yn' periphrasis is the ordinary present: fire only when the meaning is clearly ongoing right now ('dw i'n gweithio nawr')."
+  },
+  {
+   "id": "P4",
+   "name": "modal can/could",
+   "shape": "[SUBJ] can|can't|could|couldn't [VP]",
+   "definition": "The modal can/could (ability, permission, possibility, polite request), affirmative, negative or question.",
+   "positives": [
+    "I can't hear you",
+    "can I sit here?",
+    "could you help me?",
+    "she could swim when she was five",
+    "can speak French"
+   ],
+   "near_misses": [
+    {
+     "text": "I'm able to come",
+     "why": "P5"
+    },
+    {
+     "text": "a can of beans",
+     "why": "noun"
+    },
+    {
+     "text": "I may come",
+     "why": "P8"
+    },
+    {
+     "text": "it's possible",
+     "why": "no modal verb (P18)"
+    },
+    {
+     "text": "I know how to swim",
+     "why": "P10/P22, no modal"
+    }
+   ],
+   "boundary": [
+    "'could have' + past participle fires P4 and P17."
+   ],
+   "other_languages": "French pouvoir, Spanish poder, Hindi sakna, Japanese potential -える/-られる and ことができる, Chinese 能/会/可以, Welsh gallu/medru. Japanese potential verb forms are P4 wherever they appear, including negated and inside かもしれない: できる, 会える, 行けません, 話せる."
+  },
+  {
+   "id": "P5",
+   "name": "be able to",
+   "shape": "[SUBJ] ... be able to [VP]",
+   "definition": "The periphrasis 'be able to' / 'be unable to' + verb, any tense.",
+   "positives": [
+    "I won't be able to come",
+    "were you able to find it?",
+    "I'd like to be able to speak French",
+    "she's able to drive",
+    "to be able to help"
+   ],
+   "near_misses": [
+    {
+     "text": "I can come",
+     "why": "P4"
+    },
+    {
+     "text": "she's an able student",
+     "why": "adjective, no to-VP"
+    },
+    {
+     "text": "the ability to speak",
+     "why": "noun"
+    },
+    {
+     "text": "I managed to finish",
+     "why": "no 'able'"
+    },
+    {
+     "text": "it's possible to go",
+     "why": "P18"
+    }
+   ],
+   "boundary": [
+    "Only with 'able to'/'unable to' (or a language's dedicated equivalent)."
+   ],
+   "other_languages": "Spanish ser capaz de, French être capable de, Welsh gallu when phrased 'bod yn gallu' with future/infinitive sense. Plain can-verbs (pouvoir, poder, sakna) are P4."
+  },
+  {
+   "id": "P6",
+   "name": "have to / need to",
+   "shape": "[SUBJ] (have|has|had) to [VP]  |  [SUBJ] need(s) to [VP]",
+   "definition": "Obligation or necessity to do something: have to, has to, had to, need to, have got to, don't have to, needn't.",
+   "positives": [
+    "I have to go",
+    "you don't need to wait",
+    "she had to work late",
+    "do we have to pay?",
+    "I've got to leave"
+   ],
+   "near_misses": [
+    {
+     "text": "I have a car",
+     "why": "possession"
+    },
+    {
+     "text": "I need a car",
+     "why": "need + noun, no verb"
+    },
+    {
+     "text": "you must go",
+     "why": "P8 in English"
+    },
+    {
+     "text": "you should go",
+     "why": "P7"
+    },
+    {
+     "text": "I have finished",
+     "why": "perfect (P29)"
+    }
+   ],
+   "boundary": [
+    "Needs a verb after to. need + noun does not fire."
+   ],
+   "other_languages": "French il faut / devoir (obligation) / avoir besoin de + inf, Spanish tener que / hay que / necesitar + inf, Hindi -na hai / -na padta hai / -na chahiye when it is obligation not advice, Japanese -なければならない, Chinese 得/必须/需要 + verb, Welsh rhaid i."
+  },
+  {
+   "id": "P7",
+   "name": "should / ought",
+   "shape": "[SUBJ] should|shouldn't [VP]",
+   "definition": "Advice or expectation: should, shouldn't, ought to, had better.",
+   "positives": [
+    "you should rest",
+    "we shouldn't stay long",
+    "what should I do?",
+    "you ought to call her",
+    "you'd better hurry"
+   ],
+   "near_misses": [
+    {
+     "text": "you must rest",
+     "why": "P8"
+    },
+    {
+     "text": "you have to rest",
+     "why": "P6"
+    },
+    {
+     "text": "I'd like to rest",
+     "why": "P1"
+    },
+    {
+     "text": "I suggest resting",
+     "why": "no modal of advice"
+    },
+    {
+     "text": "shall we go?",
+     "why": "shall, not should"
+    }
+   ],
+   "boundary": [
+    "'should have' + past participle fires P7 and P17."
+   ],
+   "other_languages": "French devoir in conditional (tu devrais), Spanish deber (deberías), Hindi -na chahiye (advice), Japanese -たほうがいい / べき, Chinese 应该, Welsh dylai/dylet ti."
+  },
+  {
+   "id": "P8",
+   "name": "must / may / might",
+   "shape": "[SUBJ] must|may|might [VP]",
+   "definition": "The modals must, mustn't, may, might (obligation, permission, deduction or possibility).",
+   "positives": [
+    "you must be tired",
+    "it might rain",
+    "may I come in?",
+    "you mustn't touch that",
+    "he may be right"
+   ],
+   "near_misses": [
+    {
+     "text": "maybe he's right",
+     "why": "adverb, not a modal"
+    },
+    {
+     "text": "in May",
+     "why": "month"
+    },
+    {
+     "text": "with all his might",
+     "why": "noun"
+    },
+    {
+     "text": "I can come",
+     "why": "P4"
+    },
+    {
+     "text": "perhaps it will rain",
+     "why": "adverb"
+    }
+   ],
+   "boundary": [
+    "'might have'/'must have' + participle fires P8 and P17 only when counterfactual ('you might have told me'); deduction about the past ('he must have left') fires P8 and P29."
+   ],
+   "other_languages": "Deduction and possibility constructions: French il doit être / il se peut que, Spanish puede que / deber de, Hindi ho sakta hai (possibility), Japanese かもしれない / はずだ. Obligation in languages without a separate must is P6."
+  },
+  {
+   "id": "P9",
+   "name": "matrix think/believe",
+   "shape": "[SUBJ] think(s)/believe(s) (that) [CLAUSE]",
+   "definition": "A verb of opinion (think, believe, reckon, suppose, guess, imagine, feel = think) taking a CLAUSE (with or without 'that'), or the pro-forms 'so'/'not' standing for a clause.",
+   "positives": [
+    "I think it's too late",
+    "do you believe he'll come?",
+    "I don't think so",
+    "she thought that you were here",
+    "I reckon we should go"
+   ],
+   "near_misses": [
+    {
+     "text": "I'm thinking about the trip",
+     "why": "think about + noun, no clause"
+    },
+    {
+     "text": "what do you think?",
+     "why": "no complement clause"
+    },
+    {
+     "text": "I believe you",
+     "why": "believe + person"
+    },
+    {
+     "text": "I know he's here",
+     "why": "P10"
+    },
+    {
+     "text": "think of a number",
+     "why": "no clause (imperative P26)"
+    }
+   ],
+   "boundary": [
+    "A clause or so/not must follow."
+   ],
+   "other_languages": "French penser/croire que, Spanish creer/pensar que, Hindi sochna/lagta hai ki, Japanese と思う, Chinese 觉得/认为, Welsh meddwl bod."
+  },
+  {
+   "id": "P10",
+   "name": "matrix know/sure",
+   "shape": "[SUBJ] know(s)/(am|is) sure (that|if) [CLAUSE]",
+   "definition": "know, be sure, be certain, realise taking a CLAUSE complement (that-clause, if/whether-clause or wh-clause).",
+   "positives": [
+    "I know that he's busy",
+    "are you sure it's open?",
+    "I didn't know you were here",
+    "I'm not sure if she'll come",
+    "do you know where the station is?"
+   ],
+   "near_misses": [
+    {
+     "text": "I know him",
+     "why": "know + person"
+    },
+    {
+     "text": "I don't know",
+     "why": "no clause"
+    },
+    {
+     "text": "sure, let's go",
+     "why": "opener 'sure'"
+    },
+    {
+     "text": "make sure you lock it",
+     "why": "'make sure' is an instruction, not knowledge"
+    },
+    {
+     "text": "I know French",
+     "why": "know + noun"
+    }
+   ],
+   "boundary": [
+    "Requires a clause. With a wh- or if/whether clause it fires P10 and P22."
+   ],
+   "other_languages": "French savoir que / être sûr que, Spanish saber que / estar seguro de que, Hindi pata hai ki / maaloom hai ki / yakeen hai ki, Japanese と知っている / か分かる, Chinese 知道 + clause, Welsh gwybod bod."
+  },
+  {
+   "id": "P11",
+   "name": "matrix hope/wish",
+   "shape": "[SUBJ] hope(s)/wish(es) (that) [CLAUSE]",
+   "definition": "hope or wish (as verbs) taking a clause or a to-infinitive.",
+   "positives": [
+    "I hope you're well",
+    "I wish I could stay",
+    "we hope to see you soon",
+    "I hope so",
+    "she wishes she had more time"
+   ],
+   "near_misses": [
+    {
+     "text": "best wishes",
+     "why": "noun"
+    },
+    {
+     "text": "hopefully he'll come",
+     "why": "adverb"
+    },
+    {
+     "text": "I want to see you",
+     "why": "P1"
+    },
+    {
+     "text": "there's no hope",
+     "why": "noun (P19, P23)"
+    },
+    {
+     "text": "I'm waiting for you",
+     "why": "not hope"
+    }
+   ],
+   "boundary": [
+    "'hope so/not' counts."
+   ],
+   "other_languages": "French espérer / souhaiter que, Spanish esperar que / ojalá, Hindi ummeed hai ki / kaash, Japanese といいな / 願う, Chinese 希望, Welsh gobeithio."
+  },
+  {
+   "id": "P12",
+   "name": "matrix say/tell",
+   "shape": "[SUBJ] said/told [OBJ] (that) [CLAUSE]",
+   "definition": "Reported speech: say, tell, explain, mention, promise, ask (= request) introducing REPORTED CONTENT, a clause, a to-infinitive ('told me to wait') or a quotation.",
+   "positives": [
+    "he said he was tired",
+    "she told me to wait",
+    "tell him I'll be late",
+    "they say it's expensive",
+    "I promised I would help"
+   ],
+   "near_misses": [
+    {
+     "text": "what did you say?",
+     "why": "no reported content"
+    },
+    {
+     "text": "tell me your name",
+     "why": "tell + noun, no clause (P26 only)"
+    },
+    {
+     "text": "say it again",
+     "why": "no clause"
+    },
+    {
+     "text": "I can't tell the difference",
+     "why": "tell = distinguish"
+    },
+    {
+     "text": "as I said",
+     "why": "no reported clause"
+    }
+   ],
+   "boundary": [
+    "A reported clause, to-infinitive or quote must be present. With a wh-clause ('tell me where it is') it fires P12 and P22."
+   ],
+   "other_languages": "French dire que / dire de + inf, Spanish decir que, Hindi kahna ki / bataana ki, Japanese と言う, Chinese 说/告诉 + clause, Welsh dweud bod / dweud wrth ... am."
+  },
+  {
+   "id": "P13",
+   "name": "temporal clause",
+   "shape": "before|after|when|while|until [CLAUSE]",
+   "definition": "A subordinate clause of time opened by before, after, when, while, until, as soon as, once, since (time), every time: finite or -ing clause.",
+   "positives": [
+    "call me when you arrive",
+    "before you start",
+    "I'll wait until she comes",
+    "after eating, we left",
+    "as soon as I can"
+   ],
+   "near_misses": [
+    {
+     "text": "when are you coming?",
+     "why": "question word (P21)"
+    },
+    {
+     "text": "before Monday",
+     "why": "preposition + noun (P28)"
+    },
+    {
+     "text": "after the film",
+     "why": "preposition + noun (P28)"
+    },
+    {
+     "text": "since you're here, sit down",
+     "why": "since = because (P15)"
+    },
+    {
+     "text": "as soon as possible",
+     "why": "equative idiom (P25), no clause"
+    }
+   ],
+   "boundary": [
+    "A verb must follow the conjunction. 'when' introducing an indirect question is P22.",
+    "'remember when ...', 'know when ...' are embedded clauses (P22), not P13."
+   ],
+   "other_languages": "French quand / avant de / avant que / après / pendant que / jusqu'à ce que, Spanish cuando / antes de que / mientras, Hindi jab ... tab / se pehle / ke baad / -te hi, Japanese とき / 前に / 後で / まで, Chinese ……的时候 / 以前 / 以后, Welsh pan / cyn / ar ôl / tra / nes."
+  },
+  {
+   "id": "P14",
+   "name": "conditional if (real)",
+   "shape": "if [CLAUSE], [CLAUSE]",
+   "definition": "A condition clause: if, unless, even if, in case, as long as (conditional). Includes present-unreal 'if I were you'; past counterfactual 'if I had known' fires P14 and P17.",
+   "positives": [
+    "if it rains, we'll stay home",
+    "if you want",
+    "unless you're busy",
+    "even if he calls",
+    "what if she's right?"
+   ],
+   "near_misses": [
+    {
+     "text": "ask him if he's coming",
+     "why": "if = whether (P22)"
+    },
+    {
+     "text": "I don't know if it's open",
+     "why": "if = whether (P10, P22)"
+    },
+    {
+     "text": "as if nothing happened",
+     "why": "manner comparison"
+    },
+    {
+     "text": "if only",
+     "why": "wish formula without clause"
+    },
+    {
+     "text": "when it rains",
+     "why": "temporal (P13)"
+    }
+   ],
+   "boundary": [
+    "A fragment 'if you want' still fires: the condition clause is present."
+   ],
+   "other_languages": "French si, Spanish si / a menos que, Hindi agar ... to, Japanese -たら / -ば / なら, Chinese 如果/要是, Welsh os."
+  },
+  {
+   "id": "P15",
+   "name": "because / so / but",
+   "shape": "[CLAUSE] because|so|but [CLAUSE]",
+   "definition": "A connective linking two predications or a predication and a reason: because, because of, but, although, even though, though, so (= therefore), so that, since (= because), that's why.",
+   "positives": [
+    "I'm tired because I worked late",
+    "it's small but nice",
+    "although it's late, let's go",
+    "I left early so I wouldn't miss it",
+    "because of the rain"
+   ],
+   "near_misses": [
+    {
+     "text": "but I want to go",
+     "why": "leading 'but' is an opener (O); tag P1 only"
+    },
+    {
+     "text": "I'm so tired",
+     "why": "so = very"
+    },
+    {
+     "text": "so, what now?",
+     "why": "opener"
+    },
+    {
+     "text": "nothing but trouble",
+     "why": "but = except"
+    },
+    {
+     "text": "I think so",
+     "why": "so = pro-form (P9)"
+    }
+   ],
+   "boundary": [
+    "The connective must link material inside the phrase; a sentence-initial 'but/so/and' with nothing before it is an opener.",
+    "Every but / because / although / so (= therefore) that joins two parts INSIDE the phrase fires P15, also when the phrase is long."
+   ],
+   "other_languages": "French parce que / mais / bien que / donc, Spanish porque / pero / aunque / así que, Hindi kyonki / lekin / magar / isliye / phir bhi, Japanese から / ので / けど / でも (clause-linking), Chinese 因为 / 但是 / 所以 / 虽然, Welsh achos / ond / er / felly."
+  },
+  {
+   "id": "P16",
+   "name": "relative clause",
+   "shape": "[NP] who|that|which [VP]",
+   "definition": "A clause modifying a noun: who, whom, whose, which, that, where, when (relative), or a reduced/zero relative ('the book I bought', 'the man sitting there').",
+   "positives": [
+    "the man who lives next door",
+    "the book that I bought",
+    "the house where I grew up",
+    "the film you recommended",
+    "someone who speaks French"
+   ],
+   "near_misses": [
+    {
+     "text": "I think that he's right",
+     "why": "complementiser that (P9)"
+    },
+    {
+     "text": "that book is mine",
+     "why": "demonstrative"
+    },
+    {
+     "text": "who is that?",
+     "why": "question word (P21)"
+    },
+    {
+     "text": "I know what you mean",
+     "why": "embedded question/free relative (P10, P22), no head noun"
+    },
+    {
+     "text": "so that we can leave",
+     "why": "purpose connective (P15)"
+    }
+   ],
+   "boundary": [
+    "There must be a head noun or pronoun the clause modifies ('someone', 'something', 'the one' count).",
+    "A free relative with no head noun ('what you said', 'where my family lives', 'lo que quiero') is NOT P16."
+   ],
+   "other_languages": "French qui / que / où / dont, Spanish que / quien / donde, Hindi jo ... vah (correlative), Japanese pre-nominal clause (私が買った本), Chinese ……的 + noun (我买的书), Welsh a / sydd / y."
+  },
+  {
+   "id": "P17",
+   "name": "counterfactual",
+   "shape": "[SUBJ]'d have [VPpp] if [SUBJ]'d [VPpp]  (double-'d)",
+   "definition": "An unreal PAST: something that did not happen. would / could / should / might have + past participle, or if + had + past participle, or wish + had + past participle.",
+   "positives": [
+    "I would have called you",
+    "if I'd known, I'd have come",
+    "you should have told me",
+    "I could have helped",
+    "I wish I had stayed"
+   ],
+   "near_misses": [
+    {
+     "text": "I have called you",
+     "why": "plain perfect (P29)"
+    },
+    {
+     "text": "I would call you",
+     "why": "present conditional, not past unreal"
+    },
+    {
+     "text": "if I were you",
+     "why": "present unreal (P14)"
+    },
+    {
+     "text": "he must have left",
+     "why": "deduction about a real past (P8, P29)"
+    },
+    {
+     "text": "I had called her",
+     "why": "past perfect (P29)"
+    }
+   ],
+   "boundary": [
+    "Fires together with the modal's own frame (P4/P7/P8) and with P14 for the if-clause."
+   ],
+   "other_languages": "French conditionnel passé (j'aurais dû, si j'avais su), Spanish habría + participio / si hubiera, Hindi -ta (agar mujhe pata hota, to main aata), Japanese -ばよかった / -たらよかったのに, Chinese 要是早知道……就……, Welsh baswn i wedi / pe bawn i wedi."
+  },
+  {
+   "id": "P18",
+   "name": "It's-adjective",
+   "shape": "it's [ADJ] (to [VP] | that [CLAUSE])",
+   "definition": "Subject 'it' + be + an ADJECTIVE or an evaluative noun phrase (a good idea, a shame, a pity, a problem), optionally + to-VP or that-clause. Any tense, negated or questioned.",
+   "positives": [
+    "it's easy",
+    "it's hard to say",
+    "it was a good idea",
+    "is it far?",
+    "it's important that you come"
+   ],
+   "near_misses": [
+    {
+     "text": "it's raining",
+     "why": "progressive (P3)"
+    },
+    {
+     "text": "it's Peter",
+     "why": "a name, not evaluative"
+    },
+    {
+     "text": "it's five o'clock",
+     "why": "time, not an adjective"
+    },
+    {
+     "text": "that's great",
+     "why": "subject 'that'; often an opener"
+    },
+    {
+     "text": "it's here",
+     "why": "location"
+    },
+    {
+     "text": "this won't work",
+     "why": "subject 'this', no adjective"
+    },
+    {
+     "text": "my friend is very good at German",
+     "why": "subject is a noun, not 'it'"
+    }
+   ],
+   "boundary": [
+    "The grammatical subject must be the word 'it' (or the language's dummy/situational subject, e.g. French c'est, Spanish es with no subject). 'that is', 'this is', 'he is', 'my daughter is', 'the world is' + adjective do NOT fire P18.",
+    "Adjectives describing a referent called 'it' count ('it's red', 'it's too big')."
+   ],
+   "other_languages": "French c'est / il est + adj (c'est facile), Spanish es + adj with no expressed subject (es fácil), Hindi yah ... hai with an evaluative adjective about a situation (yah mushkil hai), Japanese adjective predicate with no expressed subject (難しい / 簡単です), Chinese 很 + adj with no expressed subject or with 它, Welsh mae'n + adj (mae'n hawdd). Demonstrative subjects (那, 这, ìyẹn, 'that', 'this') do not fire."
+  },
+  {
+   "id": "P19",
+   "name": "there is/are",
+   "shape": "there (is|are|was|were|will be) [NP]",
+   "definition": "Existential 'there' + be (any tense, modal or question): stating that something exists or is present.",
+   "positives": [
+    "there's a problem",
+    "is there a bank near here?",
+    "there were a lot of people",
+    "there won't be time",
+    "there might be a problem"
+   ],
+   "near_misses": [
+    {
+     "text": "over there",
+     "why": "locative there"
+    },
+    {
+     "text": "there he is",
+     "why": "presentational locative"
+    },
+    {
+     "text": "they're here",
+     "why": "pronoun they're"
+    },
+    {
+     "text": "go there",
+     "why": "locative"
+    },
+    {
+     "text": "I have a problem",
+     "why": "possession"
+    }
+   ],
+   "boundary": [
+    "Only the existential 'there'."
+   ],
+   "other_languages": "French il y a, Spanish hay / había, Hindi ... hai stating existence (mez par kitaab hai), Japanese がある / がいる, Chinese 有 (existential), Welsh mae ... / oes (mae problem)."
+  },
+  {
+   "id": "P20",
+   "name": "question",
+   "shape": "(do|did|are|is|can|would|wh-) ... ?",
+   "definition": "A direct question of any kind: yes/no, wh-, tag question, or an intonation question marked by '?'.",
+   "positives": [
+    "are you ready?",
+    "where do you live?",
+    "it's nice, isn't it?",
+    "you're coming?",
+    "can I help you"
+   ],
+   "near_misses": [
+    {
+     "text": "I wonder where he is",
+     "why": "indirect question (P22)"
+    },
+    {
+     "text": "ask him",
+     "why": "imperative"
+    },
+    {
+     "text": "tell me what you want",
+     "why": "embedded (P12, P22, P26)"
+    },
+    {
+     "text": "what a day!",
+     "why": "exclamation"
+    },
+    {
+     "text": "how nice!",
+     "why": "exclamation"
+    }
+   ],
+   "boundary": [
+    "A question without '?' still fires if its word order is interrogative ('can I help you')."
+   ],
+   "other_languages": "Any interrogative: question particles (Hindi kya, Japanese か, Chinese 吗/呢, Welsh question forms ydy/oes/wyt), inverted order, or '?' marking."
+  },
+  {
+   "id": "P21",
+   "name": "wh-question",
+   "shape": "[WH] ... ?",
+   "definition": "A direct question built on a wh-word: what, where, when, why, who, whom, whose, which, how (including how much, how many, how long). Always also P20.",
+   "positives": [
+    "what time is it?",
+    "where are you going?",
+    "why not?",
+    "how much is it?",
+    "which one do you want?"
+   ],
+   "near_misses": [
+    {
+     "text": "I know where it is",
+     "why": "embedded (P10, P22)"
+    },
+    {
+     "text": "the man who called",
+     "why": "relative (P16)"
+    },
+    {
+     "text": "when I arrive",
+     "why": "temporal clause (P13)"
+    },
+    {
+     "text": "how lovely!",
+     "why": "exclamation"
+    },
+    {
+     "text": "are you ready?",
+     "why": "yes/no question (P20 only)"
+    }
+   ],
+   "boundary": [
+    "Direct questions only."
+   ],
+   "other_languages": "Question words: French que/où/quand/pourquoi/qui/comment/combien, Spanish qué/dónde/cuándo/por qué/quién/cómo, Hindi kya/kahan/kab/kyon/kaun/kaise/kitna, Japanese 何/どこ/いつ/なぜ/誰/どう, Chinese 什么/哪里/什么时候/为什么/谁/怎么, Welsh beth/ble/pryd/pam/pwy/sut."
+  },
+  {
+   "id": "P22",
+   "name": "embedded question",
+   "shape": "[SUBJ] [VP] what|where|why|how [CLAUSE]",
+   "definition": "An interrogative clause (wh-clause, wh + to-infinitive, or if/whether clause) as the complement of a verb or adjective: know, ask, wonder, tell, remember, understand, decide, find out, explain, see, not sure, depends on.",
+   "positives": [
+    "I don't know where he is",
+    "ask her if she's coming",
+    "I wonder why",
+    "tell me what you want",
+    "I'm not sure how to do it"
+   ],
+   "near_misses": [
+    {
+     "text": "where is he?",
+     "why": "direct question (P20, P21)"
+    },
+    {
+     "text": "the place where I live",
+     "why": "relative (P16)"
+    },
+    {
+     "text": "call me when you arrive",
+     "why": "temporal (P13)"
+    },
+    {
+     "text": "if it rains we'll stay",
+     "why": "conditional (P14)"
+    },
+    {
+     "text": "I know that he left",
+     "why": "declarative that-clause (P10 only)"
+    }
+   ],
+   "boundary": [
+    "The embedded clause must be interrogative. 'I wonder why' with an elided clause still fires."
+   ],
+   "other_languages": "French je ne sais pas où / si, Spanish no sé dónde / si, Hindi pata nahin ki kahan / ki ... ya nahin, Japanese どこにいるか分からない (…か + verb), Chinese 不知道他在哪儿, Welsh dw i ddim yn gwybod ble / os."
+  },
+  {
+   "id": "P23",
+   "name": "negation",
+   "shape": "[SUBJ] (don't|doesn't|didn't|not|never) [VP]",
+   "definition": "Any negation inside the phrase: not / n't (don't, can't, isn't, won't), never, no + noun, nothing, nobody, no one, nowhere, none, neither, nor.",
+   "positives": [
+    "I don't understand",
+    "I can't come",
+    "never again",
+    "there's nothing here",
+    "no one knows"
+   ],
+   "near_misses": [
+    {
+     "text": "no, thank you",
+     "why": "'no' answer is an opener (O)"
+    },
+    {
+     "text": "no problem, I'll do it",
+     "why": "opener formula"
+    },
+    {
+     "text": "I'm unhappy",
+     "why": "negative prefix, not negation"
+    },
+    {
+     "text": "hardly anyone",
+     "why": "not an explicit negator"
+    },
+    {
+     "text": "I know",
+     "why": "know, not 'no'"
+    }
+   ],
+   "boundary": [
+    "'never' fires P23 and P28."
+   ],
+   "other_languages": "French ne ... pas / jamais / rien / personne, Spanish no / nunca / nada / nadie, Hindi nahin / mat / na / kabhi nahin, Japanese -ない / -ません, Chinese 不 / 没, Welsh ddim / byth / neb / dim byd."
+  },
+  {
+   "id": "P24",
+   "name": "comparative/superlative",
+   "shape": "more|less|-er than | the most|-est",
+   "definition": "Comparison of degree or quantity: -er / more / less / fewer (+ than), better, worse, and superlatives -est / most / least / best / worst.",
+   "positives": [
+    "it's bigger than mine",
+    "the best restaurant in town",
+    "I need more time",
+    "less expensive",
+    "faster than me"
+   ],
+   "near_misses": [
+    {
+     "text": "as big as mine",
+     "why": "equative (P25)"
+    },
+    {
+     "text": "I don't live there anymore",
+     "why": "anymore = time (P23, P28)"
+    },
+    {
+     "text": "most people agree",
+     "why": "most = majority quantifier"
+    },
+    {
+     "text": "I'd better go",
+     "why": "modal idiom (P7)"
+    },
+    {
+     "text": "I prefer tea",
+     "why": "preference verb (P31)"
+    }
+   ],
+   "boundary": [
+    "'more' + noun (more time) counts as comparison of quantity. 'once more' does not."
+   ],
+   "other_languages": "French plus / moins / meilleur / le plus, Spanish más / menos / mejor / el más, Hindi se zyada / sabse, Japanese より / 一番, Chinese 比 / 更 / 最, Welsh mwy / -ach / gorau."
+  },
+  {
+   "id": "P25",
+   "name": "as ... as",
+   "shape": "as [ADJ] as [X]",
+   "definition": "Equative comparison: as + adjective/adverb/much/many + as (including 'not as ... as' and the idiom 'as soon as possible').",
+   "positives": [
+    "as big as a house",
+    "not as easy as I thought",
+    "as soon as possible",
+    "as much as you want",
+    "as quickly as you can"
+   ],
+   "near_misses": [
+    {
+     "text": "as soon as I arrive",
+     "why": "temporal clause (P13)"
+    },
+    {
+     "text": "the same as yours",
+     "why": "'same as', not as...as"
+    },
+    {
+     "text": "as well as",
+     "why": "coordination"
+    },
+    {
+     "text": "as if he knew",
+     "why": "manner"
+    },
+    {
+     "text": "such as Paris",
+     "why": "example"
+    }
+   ],
+   "boundary": [
+    "Both 'as' must be present."
+   ],
+   "other_languages": "French aussi ... que / autant que, Spanish tan ... como / tanto como, Hindi utna ... jitna / ... jaisa, Japanese と同じくらい / ほど (negated), Chinese 跟……一样, Welsh mor ... â / cymaint â."
+  },
+  {
+   "id": "P26",
+   "name": "imperative",
+   "shape": "[VP] ... !  |  bare-V opening",
+   "definition": "A command, instruction or invitation addressed to the listener: bare verb ('come here'), negative ('don't go'), 'let's' / 'let me', 'please' + verb, emphatic 'do'.",
+   "positives": [
+    "come here",
+    "don't worry about it",
+    "let's go",
+    "please wait",
+    "tell me the truth"
+   ],
+   "near_misses": [
+    {
+     "text": "you should wait",
+     "why": "advice (P7)"
+    },
+    {
+     "text": "can you wait?",
+     "why": "request question (P4, P20)"
+    },
+    {
+     "text": "to wait",
+     "why": "infinitive fragment"
+    },
+    {
+     "text": "I let him go",
+     "why": "let with a subject"
+    },
+    {
+     "text": "waiting for you",
+     "why": "-ing fragment"
+    }
+   ],
+   "boundary": [
+    "A subjectless phrase starting with a bare verb fires P26 when it can stand alone as an instruction to the listener ('speak slowly', 'go home', 'eat something').",
+    "It does not fire for a 'to' infinitive, an -ing chunk, or a piece that only makes sense after a subject or modal and could never be said as a command ('want to go', 'be able to come', 'know the answer')."
+   ],
+   "other_languages": "Imperative mood: French viens / ne pars pas / allons-y, Spanish ven / no te vayas / vamos, Hindi jao / jaiye / mat jao / chalo, Japanese -てください / -て / -ないで / -ましょう, Chinese 请…… / 别…… / ……吧, Welsh dere / cer / paid â / gad i ni."
+  },
+  {
+   "id": "P27",
+   "name": "what's-it-like",
+   "shape": "what (is|was) [NP] like?  |  it's like [CLAUSE]",
+   "definition": "Asking for or giving a DESCRIPTION by resemblance: 'what is X like?', or be / look / sound / feel / seem + 'like' + noun or clause ('it's like a dream', 'it looks like rain').",
+   "positives": [
+    "what's the weather like?",
+    "what was it like?",
+    "it's like a dream",
+    "it looks like rain",
+    "that sounds as though you need sleep"
+   ],
+   "near_misses": [
+    {
+     "text": "I like it",
+     "why": "liking (P31)"
+    },
+    {
+     "text": "would you like tea?",
+     "why": "P1 / offer"
+    },
+    {
+     "text": "do it like that",
+     "why": "manner, no be/look/sound/feel/seem"
+    },
+    {
+     "text": "what do you like?",
+     "why": "liking question (P31, P21)"
+    },
+    {
+     "text": "how are you?",
+     "why": "greeting, not a description request"
+    },
+    {
+     "text": "he's sick",
+     "why": "plain description, no 'like'"
+    }
+   ],
+   "boundary": [
+    "Needs the word 'like' (or 'as if' / 'as though') after be / look / sound / feel / seem, or a question asking what something is like. A plain description ('he's sick', 'she's very good at German') is NOT P27.",
+    "Description questions in languages without 'like' fire when they ask what something is like ('¿cómo es tu casa?'), never for greetings."
+   ],
+   "other_languages": "French c'est comment ? / c'est comme, Spanish ¿cómo es? / es como, Hindi kaisa hai? (describe) / ... jaisa lagta hai, Japanese どんな……? / みたい / のよう, Chinese ……怎么样? / 像……一样, Welsh sut un yw / mae fel."
+  },
+  {
+   "id": "P28",
+   "name": "time adjunct",
+   "shape": "[CLAUSE] [TIME]",
+   "definition": "A time expression modifying the phrase: time adverbs (now, today, tomorrow, yesterday, tonight, soon, later, already, still, yet, again, ever, never, always, often, sometimes, usually, then, before, ago) and time phrases (next week, last night, at five, in the morning, on Monday, for two hours, every day, in a minute).",
+   "positives": [
+    "I'll call you tomorrow",
+    "I've already eaten",
+    "we always go there",
+    "see you next week",
+    "for two hours"
+   ],
+   "near_misses": [
+    {
+     "text": "I don't have time",
+     "why": "time as an object noun"
+    },
+    {
+     "text": "what time is it?",
+     "why": "time as the topic (P20, P21)"
+    },
+    {
+     "text": "first, open the box",
+     "why": "sequence, not time"
+    },
+    {
+     "text": "before you start",
+     "why": "temporal clause (P13), not an adjunct"
+    },
+    {
+     "text": "the weekend is nice",
+     "why": "time noun as subject"
+    }
+   ],
+   "boundary": [
+    "The time expression must modify the predication, not be its subject or object.",
+    "Place words (here, there, at home) are not time. 'how long' and 'how much time' asked as the question's topic do not fire P28."
+   ],
+   "other_languages": "Any time adverbial: French maintenant / demain / déjà / toujours, Spanish ahora / mañana / ya / siempre, Hindi ab / kal / abhi / hamesha / pehle, Japanese 今 / 明日 / もう / いつも, Chinese 现在 / 明天 / 已经 / 总是, Welsh nawr / yfory / eisoes / bob amser."
+  },
+  {
+   "id": "P29",
+   "name": "perfect",
+   "shape": "[SUBJ] (have|has|had) [VPpp]",
+   "definition": "Perfect aspect: have / has / had + past participle (present, past, future perfect and perfect infinitive 'to have done').",
+   "positives": [
+    "I've finished",
+    "have you ever been to Spain?",
+    "she hadn't seen it",
+    "we've lived here for years",
+    "I have tried"
+   ],
+   "near_misses": [
+    {
+     "text": "I have to go",
+     "why": "obligation (P6)"
+    },
+    {
+     "text": "I've got a car",
+     "why": "'have got' = possession"
+    },
+    {
+     "text": "I had lunch",
+     "why": "main verb have"
+    },
+    {
+     "text": "it was finished",
+     "why": "passive/adjective (P30)"
+    },
+    {
+     "text": "I finished",
+     "why": "simple past"
+    }
+   ],
+   "boundary": [
+    "Modal + have + participle fires P29 only for real-past deduction ('he must have left'); counterfactuals are P17.",
+    "A plain past tense in any language ('we heard a thousand stories', 'I told her') is NOT P29."
+   ],
+   "other_languages": "Fire only for PERFECT meaning (experience, result up to now, already/ever/just/since/for): French passé composé when it carries that meaning (j'ai déjà mangé), Spanish he + participio, Hindi -a hai / -chuka hai / liya hai, Japanese たことがある / もう……た, Chinese 过 / 了 with 已经, Welsh wedi (dw i wedi gorffen). Narrative past forms do not fire."
+  },
+  {
+   "id": "P30",
+   "name": "passive",
+   "shape": "[SUBJ] (is|was|were) [VPpp] (by [X])",
+   "definition": "Passive voice: be / get + past participle with the patient as subject ('it was made in France', 'he got arrested'), with or without 'by'.",
+   "positives": [
+    "it was built in 1900",
+    "the shop is closed on Sundays",
+    "he got arrested",
+    "French is spoken here",
+    "it was written by my brother"
+   ],
+   "near_misses": [
+    {
+     "text": "I'm tired",
+     "why": "adjective"
+    },
+    {
+     "text": "I'm interested in art",
+     "why": "adjective (P31)"
+    },
+    {
+     "text": "they've made it",
+     "why": "perfect active (P29)"
+    },
+    {
+     "text": "I'm married",
+     "why": "adjective"
+    },
+    {
+     "text": "it's broken",
+     "why": "resultant state adjective unless an event is meant"
+    },
+    {
+     "text": "I told her my grandfather fought in Italy",
+     "why": "active past"
+    }
+   ],
+   "boundary": [
+    "Fire when an action done to the subject is meant. Plain states (tired, married, worried, broken, closed as a state) do not fire unless a by-agent or event reading ('closed on Sundays') is clear.",
+    "An ordinary active past tense ('he fought in Italy', 'I heard') is NOT passive."
+   ],
+   "other_languages": "French être + participe passé (passive event) / se + verb passive, Spanish ser + participio / se vende, Hindi -ya jaata hai / -ya gaya, Japanese -られる (passive, not potential), Chinese 被, Welsh cael ei + VN."
+  },
+  {
+   "id": "P31",
+   "name": "like/enjoy (dative)",
+   "shape": "[SUBJ] like(s)/love(s)/enjoy(s) [NP|VPing]",
+   "definition": "Verbs of liking, preference or dislike with a noun or verb complement: like, love, enjoy, prefer, hate, can't stand, be fond of, be keen on, be interested in, be into.",
+   "positives": [
+    "I like coffee",
+    "do you enjoy swimming?",
+    "I prefer tea",
+    "she hates waiting",
+    "I'm interested in history"
+   ],
+   "near_misses": [
+    {
+     "text": "I'd like to go",
+     "why": "would like = P1"
+    },
+    {
+     "text": "it's like a dream",
+     "why": "resemblance (P27)"
+    },
+    {
+     "text": "do it like this",
+     "why": "manner preposition"
+    },
+    {
+     "text": "it's likely",
+     "why": "adjective likely"
+    },
+    {
+     "text": "I want coffee",
+     "why": "wanting"
+    }
+   ],
+   "boundary": [
+    "'love' and 'like' with a person as object still fire ('I love you')."
+   ],
+   "other_languages": "French aimer / adorer / préférer / détester, Spanish gustar / encantar / preferir (dative construction, hence the frame's name), Hindi pasand hai / achchha lagta hai, Japanese が好き / 楽しむ, Chinese 喜欢 / 爱, Welsh hoffi / licio / caru."
+  }
+ ]
+}
