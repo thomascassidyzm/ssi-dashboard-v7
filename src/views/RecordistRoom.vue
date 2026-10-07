@@ -2431,7 +2431,9 @@ async function load() {
     // RESUME. Anything left on the device by an earlier session — a tab closed
     // mid-upload, a phone that slept, a chalet with no signal — is picked up
     // here and starts going up before he reads a word.
-    queue.attach(props.voiceId)
+    // AWAITED: the ready card (and its Submit) must not appear with pendingCount
+    // still 0 while the device's IndexedDB queue has not been read yet.
+    await queue.attach(props.voiceId)
     doneIds.value = new Set()
     sessionIds.value = []
     lastLine.value = null
