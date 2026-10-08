@@ -42,7 +42,7 @@ describe('commissioned jobs', () => {
   })
   it('skips the automatic 260k total cap but not the 1M ceiling', async () => {
     const { call, store } = setup()
-    store.totalCapChars = 260_000
+    store.totalCapChars = 260_000; store.totalCeilingChars = 1_000_000
     await call('a'.repeat(250_000), 'other')
     await expect(call('b'.repeat(20_000), 'other2')).rejects.toMatchObject({ code: 'DAILY_TOTAL_CAP' })
     await call('c'.repeat(20_000), '#656')                      // 270k: past the soft cap, commissioned

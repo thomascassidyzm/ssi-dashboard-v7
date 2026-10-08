@@ -70,7 +70,7 @@ describe('(b) global budgets: daily cap and a stop share of the monthly pool', (
   })
 
   it('stops at 50% of the pool by default — the #382 loop would have stopped near 4M, not 7.6M', async () => {
-    const g = guard({ budgetPath: budgets({ providers: { cartesia: { monthlyPoolChars: 100, dailyCapChars: 1e9, alertDailyChars: 1e9 } } }) })
+    const g = guard({ budgetPath: budgets({ providers: { cartesia: { monthlyPoolChars: 100, dailyCapChars: 1e9, alertDailyChars: 1e9, overageAllowed: false } } }) })
     await call(g, 'x'.repeat(45))
     await expect(call(g, 'y'.repeat(10))).rejects.toThrow(/POOL_SHARE.*stop is 50%/)
   })
@@ -142,8 +142,17 @@ describe('(e) provider-side check: the provider\'s own count against the ledger'
   })
 
   it('stops when the provider itself reports usage past the stop share', async () => {
-    const g = guard({ usageReaders: { cartesia: async () => ({ usedChars: 7_600_000, limitChars: 8_000_000 }) } })
+    const g = guard({ budgetPath: budgets({ providers: { cartesia: { overageAllowed: false } } }), usageReaders: { cartesia: async () => ({ usedChars: 7_600_000, limitChars: 8_000_000 }) } })
     await expect(call(g, 'anything')).rejects.toThrow(/PROVIDER_POOL/)
+  })
+
+  it('Cartesia overage (Tom 2026-10-07): past 8M there is NO stop, ledger or provider side, and Watson gets one notice', async () => {
+    const sent = []
+    const g = guard({ notify: (e) => sent.push(e), usageReaders: { cartesia: async () => ({ usedChars: 8_500_000, limitChars: 8_000_000 }) } })
+    g.store.seed('cartesia', 8_000_100, clock - 2 * 86400e3)
+    await expect(call(g, 'hello')).resolves.toBeTruthy()
+    await expect(call(g, 'hello again')).resolves.toBeTruthy()
+    expect(sent.filter(e => e.code === 'POOL_OVERAGE')).toHaveLength(1)
   })
 
   it('an unreadable usage endpoint warns and falls back to the ledger, it does not block', async () => {
@@ -203,7 +212,7 @@ describe('(f) a human is told — once — when a guard trips or a line is cross
 describe('(f2) a pool stop is raised once per caller per cycle, not on every refused call (job #516)', () => {
   it('an editor saving phrase after phrase past the stop, across a service restart: one card, then one more only for a new caller or a new cycle', async () => {
     const sent = []
-    const b = budgets({ providers: { cartesia: { monthlyPoolChars: 100, dailyCapChars: 1000, alertDailyChars: 1e9, stopAtShareOfPool: 0.5 } } })
+    const b = budgets({ providers: { cartesia: { monthlyPoolChars: 100, dailyCapChars: 1000, alertDailyChars: 1e9, stopAtShareOfPool: 0.5, overageAllowed: false } } })
     const phase8 = () => guard({ budgetPath: b, notify: (e) => sent.push(e) })
     const edit = (g, text, course = 'cat_for_eng') => call(g, text, { courseCode: course, job: null })
     let g = phase8()
@@ -238,33 +247,33 @@ describe('(f3) a limits change is said once per host, not on every restart (job 
   })
 })
 
-describe('(h) the standing hold: 260,000 chars a day across all providers (Tom 2026-09-28, jobs #569, #570)', () => {
+describe('(h) the standing hold: 1,000,000 chars a day across all providers (Tom 2026-09-28, jobs #569, #570)', () => {
   // The COMMITTED budget file, not a fixture: this is the rule as it ships.
   const committed = path.join(__dirname, '..', '..', 'ops', 'tts-spend-budgets.json')
 
   for (const provider of ['cartesia', 'azure', 'xai']) {
-    it(`${provider}: a 260,001-char day is refused, naming Tom's go`, async () => {
+    it(`${provider}: a 1,000,001-char day is refused, naming Tom's go`, async () => {
       const g = guard({ budgetPath: committed })
-      const err = await call(g, 'x'.repeat(260_001), { provider }).catch(e => e)
+      const err = await call(g, 'x'.repeat(1_000_001), { provider }).catch(e => e)
       expect(err.code).toBe('DAILY_CAP')
       expect(err.message).toMatch(/HELD: .*TOM'S EXPLICIT GO/)
     })
   }
 
-  it('a small clip passes, and a day of them stops at exactly 260,000', async () => {
+  it('a small clip passes, and a day of them stops at exactly 1,000,000', async () => {
     const g = guard({ budgetPath: committed })
     await expect(call(g, 'Croeso i Voice Lab.')).resolves.toBeTruthy()
-    await call(g, 'y'.repeat(260_000 - 'Croeso i Voice Lab.'.length))
+    await call(g, 'y'.repeat(1_000_000 - 'Croeso i Voice Lab.'.length))
     await expect(call(g, 'z')).rejects.toThrow(/DAILY_CAP.*HELD/)
   })
 
-  it('the 260,000 is ONE figure across Cartesia + Azure, not 260,000 each', async () => {
+  it('the 1,000,000 is ONE figure across Cartesia + Azure, not 1,000,000 each', async () => {
     const g = guard({ budgetPath: committed })
-    await call(g, 'c'.repeat(160_000), { provider: 'cartesia' })
+    await call(g, 'c'.repeat(900_000), { provider: 'cartesia' })
     await expect(call(g, 'a'.repeat(100_000), { provider: 'azure', voiceId: 'azure_x' })).resolves.toBeTruthy()
     const err = await call(g, 'a', { provider: 'azure', voiceId: 'azure_x' }).catch(e => e)
     expect(err.code).toBe('DAILY_CAP')
-    expect(err.message).toMatch(/across all TTS providers.*combined daily cap of 260000.*TOM'S EXPLICIT GO/)
+    expect(err.message).toMatch(/across all TTS providers.*combined daily cap of 1000000.*TOM'S EXPLICIT GO/)
   })
 
   it('without a hold block the old signed-raise hint still stands', async () => {

@@ -3,34 +3,24 @@
   "hold": {
     "by": "Tom (via Watson, jobs #569, #570)",
     "since": "2026-09-28",
-    "combinedDailyCapChars": 260000,
-    "message": "Tom ruled 2026-09-28: the TTS daily limit is 260,000 characters in total (raised from 100,000 by Tom 2026-10-03, job #574: 8M/month / 30) across all providers (Cartesia + Azure + the rest), and no big audio jobs. Going above it needs TOM'S EXPLICIT GO for that job - then a signed raise { dailyCapChars, by, why, until } on the provider and a raised combinedDailyCapChars here. Do not split the job to fit under the cap."
+    "combinedDailyCapChars": 1000000,
+    "message": "Tom ruled 2026-10-07 (job #147, r-2026-10-07-tts-daily-cap-is-a-runaway): the automatic daily TTS cap is 1,000,000 characters in total across all providers - a runaway guard far above the monthly average, not the average; Cartesia overage is fine. Going above it needs TOM'S EXPLICIT GO for that job - then a signed raise { dailyCapChars, by, why, until } on the provider and a raised combinedDailyCapChars here. Do not split the job to fit under the cap."
   },
   "providers": {
     "cartesia": {
-      "monthlyPoolChars": 8000000,
-      "cycleStartDay": 1,
-      "dailyCapChars": 260000,
-      "alertDailyChars": 195000,
-      "stopAtShareOfPool": 0.5,
-      "raise": {
-        "stopAtShareOfPool": 1.25,
-        "by": "Tom (via Watson)",
-        "why": "Tom 2026-09-28 14:50Z: allow Cartesia from now on with the new controls in place; we cannot stop generating audio for a month. This raise is the Cartesia pool share only. Automatic daily spend is 260,000 chars across ALL providers (cap 260k, alert 195k per provider; Tom rulings r-2026-09-29-audio-tts-back-on-with-a, r-2026-09-28-audio-tts-daily-limit-is-100, job #908); anything beyond needs Tom's explicit go.",
-        "until": "2026-10-28"
-      }
+      "monthlyPoolChars": 8000000
     },
     "azure": {
-      "dailyCapChars": 260000,
-      "alertDailyChars": 195000
+      "dailyCapChars": 1000000,
+      "alertDailyChars": 300000
     },
     "elevenlabs": {
       "retired": "ElevenLabs retired (Tom 2026-09-28): \"We don't use Eleven Labs any more.\" Use Cartesia or Azure.",
       "dailyCapChars": 0
     },
     "xai": {
-      "dailyCapChars": 260000,
-      "alertDailyChars": 195000
+      "dailyCapChars": 1000000,
+      "alertDailyChars": 300000
     },
     "google": {
       "dailyCapChars": 100000,

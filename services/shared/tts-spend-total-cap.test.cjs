@@ -17,6 +17,7 @@ function setup() {
   let clock = t0
   const alerts = []
   const store = memorySpendStore({ name: dir, now: () => clock })
+  store.totalCapChars = 260000; store.totalCeilingChars = 1000000   // mechanism tests run on small figures; the real defaults are pinned in the last describe
   const g = createSpendGuard({ ledgerPath: path.join(dir, 'l.jsonl'), budgetPath: null, now: () => clock, store, notify: (e) => alerts.push(e), logger: { warn() {}, error() {} } })
   const call = async (provider, text, extra = {}) => {
     const voiceId = `${provider}_v`
@@ -106,14 +107,21 @@ describe('the Tom-approved run tier (job #913, Tom 2026-09-30: automatic 260k, a
   })
 })
 
-// job #859: the JS ceiling matches the DB function (ops/sql/20261005-tts-spend-ceiling-1m.sql v_ceiling 1000000)
-describe('hard ceiling matches the DB', () => {
-  it('is 1000000, the DB v_ceiling, never above it', async () => {
+// job #147 (Tom 2026-10-07): automatic base 1M, ceiling 2M, JS and DB together (ops/sql/20261007-tts-spend-base-1m.sql)
+describe('base cap and hard ceiling match the DB', () => {
+  it('automatic base is 1,000,000 in JS and in the DB function', async () => {
+    const { TOTAL_DAILY_CAP_CHARS } = await import('./tts-spend-guard.cjs')
+    const fs = await import('node:fs')
+    const sql = fs.readFileSync(new URL('../../ops/sql/20261007-tts-spend-base-1m.sql', import.meta.url), 'utf8')
+    expect(TOTAL_DAILY_CAP_CHARS).toBe(1000000)
+    expect(sql).toMatch(/greatest\(1000000, v_raised\)/)
+  })
+  it('is 2000000, the DB v_ceiling, never above it', async () => {
     const { TOTAL_DAILY_CEILING_CHARS } = await import('./tts-spend-guard.cjs')
     const fs = await import('node:fs')
-    const sql = fs.readFileSync(new URL('../../ops/sql/20261005-tts-spend-ceiling-1m.sql', import.meta.url), 'utf8')
+    const sql = fs.readFileSync(new URL('../../ops/sql/20261007-tts-spend-base-1m.sql', import.meta.url), 'utf8')
     const db = Number(/v_ceiling constant bigint := (\d+)/.exec(sql)[1])
-    expect(db).toBe(1000000)
+    expect(db).toBe(2000000)
     expect(TOTAL_DAILY_CEILING_CHARS).toBeLessThanOrEqual(db)
   })
 })
