@@ -1,7 +1,7 @@
 // PLAY SERVER config ([play-scaffold]: lives only on play-* branches; command-surface job #347).
 // The normal config, mounted under PLAY_BASE behind the command surface's :10000 door, with its
-// /api proxy unchanged (the production API) — the door refuses every write before it gets here —
-// and Supabase reached through the door's read-only ~supabase/ path (VITE_SUPABASE_URL, set by
+// /api proxy unchanged (the production API) — the door decides what may be written before it gets
+// here — and Supabase reached through the door's ~supabase/ path (VITE_SUPABASE_URL, set by
 // ops/play-copy.cjs serve). Never used by a production build.
 import { mergeConfig } from 'vite'
 import base from './vite.config.js'
@@ -11,7 +11,7 @@ const API_ORIGINS = (process.env.PLAY_API_ORIGINS || '').split(',').filter(Boole
 
 // First thing in <head>: (1) <base href> so the router, which reads it, keeps every page under
 // BASE; (2) calls the app aims at the production API's own address go to this origin instead,
-// through the door, which lets reads through and refuses writes (its Content-Security-Policy
+// through the door, which applies the project's write rule (its Content-Security-Policy
 // refuses any call that still tries to leave). (3) No service worker.
 const playHead = {
   name: 'play-head',
