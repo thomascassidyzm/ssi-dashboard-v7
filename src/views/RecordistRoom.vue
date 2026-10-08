@@ -155,6 +155,11 @@
         <template v-if="voice.setupCheck.status === 'submitted'">
           <strong>Thank you — your setup check is with us.</strong>
           <span>We'll listen and open your full script as soon as it is approved. Nothing more to do.</span>
+          <span v-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
+          <template v-else-if="voice.setupCheck.autoVerdict && voice.setupCheck.autoVerdict.verdict === 'retry'">
+            <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
+            <span v-for="r in voice.setupCheck.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
+          </template>
         </template>
         <template v-else>
           <strong>First, a 10-phrase setup check.</strong>
@@ -167,6 +172,11 @@
         <template v-if="voice.pack.setup.status === 'submitted'">
           <strong>Submitted — thank you.</strong>
           <span>We'll open your full script once we've listened. You can close this page.</span>
+          <span v-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'pass'" class="setup-note setup-verdict-pass">Our quick sound check: your recording sounds good.</span>
+          <template v-else-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'retry'">
+            <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
+            <span v-for="r in voice.pack.setup.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
+          </template>
         </template>
         <template v-else>
           <strong>{{ voice.recorded }} of {{ voice.total }} recorded{{ voice.recorded >= SETUP_MIN_SUBMIT || queue.pendingCount.value > 0 ? '' : `, record at least ${SETUP_MIN_SUBMIT}` }}.</strong>

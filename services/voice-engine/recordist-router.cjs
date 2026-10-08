@@ -205,6 +205,40 @@ module.exports = function createRecordistRouter({
     await db().from('recordist_setup_checks').update({ status: next }).eq('voice_id', row.voice_id).eq('status', row.status)
   }
 
+  /**
+   * Measure every newest take that is not yet measured at the current
+   * MEASURE_VERSION and judge the set (job #435). Returns {items, measured,
+   * verdict, dirty}; the caller persists. A take that cannot be fetched or
+   * measured is left unmeasured, which the judge ignores -- never failed.
+   */
+  async function measureAndJudgeSetup(row, pack, newest) {
+    const metrics = row.metrics && typeof row.metrics === 'object' ? row.metrics : {}
+    const measured = { ...(metrics.measured || {}) }
+    let dirty = false
+    const items = []
+    for (const item of pack.items) {
+      const take = newest.get(item.id) || null
+      const entry = { id: item.id, text: item.text, recorded: !!take, url: null, device: (metrics.takes || {})[item.id]?.device || null, measures: null }
+      if (take) {
+        entry.url = await s3.getAudioSignedUrl(null, 3600, { s3Key: take.key })
+        const have = measured[item.id]
+        if (!have || have.key !== take.key || have.v !== setupCheck.MEASURE_VERSION) {
+          try {
+            const r = await fetch(entry.url)
+            const buf = Buffer.from(await r.arrayBuffer())
+            measured[item.id] = { key: take.key, ...(await setupCheck.measureTake(buf, 'audio/' + String(take.key).split('.').pop())) }
+            dirty = true
+          } catch (err) { logger.error(`[Recordist] setup-check measure ${item.id}: ${err.message}`) }
+        }
+        entry.measures = measured[item.id] || null
+      }
+      items.push(entry)
+    }
+    const judged = setupCheck.judgeSetupCheck(Object.fromEntries(items.filter((i) => i.measures).map((i) => [i.id, i.measures])))
+    const verdict = { verdict: judged.verdict, reasons: judged.reasons, judged: judged.judged, perTake: judged.perTake, at: new Date().toISOString() }
+    return { items, measured, verdict, dirty, metrics }
+  }
+
   async function packQueueResponse(req, res, pack) {
     const includeRecorded = req.query.includeRecorded === '1' || req.query.includeRecorded === 'true'
     const objects = await s3.listObjects(packPrefix(pack.id))
@@ -219,7 +253,7 @@ module.exports = function createRecordistRouter({
       // Paragraphs with sentence pauses in them: stopping on the first pause
       // would cut the 25-second cloning sample in half. The page reads this.
       autoAdvance: pack.autoAdvance !== false,
-      pack: { id: pack.id, title: pack.title, setup: pack.setup ? { status: pack.setup.status, voiceId: pack.setup.voiceId, note: pack.setup.note } : null },
+      pack: { id: pack.id, title: pack.title, setup: pack.setup ? { status: pack.setup.status, voiceId: pack.setup.voiceId, note: pack.setup.note, autoVerdict: pack.setup.autoVerdict || null } : null },
       total: queue.total,
       recorded: queue.recorded,
       remaining: queue.remaining,
@@ -400,7 +434,7 @@ module.exports = function createRecordistRouter({
         // Present while the full script is locked behind the setup check; the
         // booth swaps Start for a card that opens it. Absent once approved.
         setupCheck: setupCheck.locksScript(setupRow)
-          ? { status: setupRow.status, note: setupRow.review_note || null, packVoiceId: setupCheck.packVoiceIdFor(setupRow.voice_id) }
+          ? { status: setupRow.status, note: setupRow.review_note || null, packVoiceId: setupCheck.packVoiceIdFor(setupRow.voice_id), autoVerdict: setupCheck.artistVerdict(setupRow) }
           : null,
         course: scoped,
         // Echoed back for the same reason maxSeed is: a screen that reports the
@@ -1932,32 +1966,13 @@ module.exports = function createRecordistRouter({
       const pack = setupCheck.packFromRow(row, { displayName: req.params.voiceId })
       const objects = await s3.listObjects(packPrefix(pack.id))
       const newest = indexTakes(objects, pack.id)
-      const metrics = row.metrics && typeof row.metrics === 'object' ? row.metrics : {}
-      const measured = { ...(metrics.measured || {}) }
-      let dirty = false
-      const items = []
-      for (const item of pack.items) {
-        const take = newest.get(item.id) || null
-        const entry = { id: item.id, text: item.text, recorded: !!take, url: null, device: (metrics.takes || {})[item.id]?.device || null, measures: null }
-        if (take) {
-          entry.url = await s3.getAudioSignedUrl(null, 3600, { s3Key: take.key })
-          if (!measured[item.id] || measured[item.id].key !== take.key) {
-            try {
-              const r = await fetch(entry.url)
-              const buf = Buffer.from(await r.arrayBuffer())
-              measured[item.id] = { key: take.key, ...(await setupCheck.measureTake(buf, 'audio/' + String(take.key).split('.').pop())) }
-              dirty = true
-            } catch (err) { logger.error(`[Recordist] setup-check measure ${item.id}: ${err.message}`) }
-          }
-          entry.measures = measured[item.id] || null
-        }
-        items.push(entry)
-      }
-      if (dirty) await db().from('recordist_setup_checks').update({ metrics: { ...metrics, measured } }).eq('voice_id', row.voice_id)
+      const { items, measured, verdict, dirty, metrics } = await measureAndJudgeSetup(row, pack, newest)
+      if (dirty) await db().from('recordist_setup_checks').update({ metrics: { ...metrics, measured, verdict } }).eq('voice_id', row.voice_id)
       res.json({
         exists: true, voiceId: row.voice_id, language: row.language, status: row.status,
         submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
         packVoiceId: pack.voiceId, items,
+        autoVerdict: verdict, verdictThresholds: setupCheck.SETUP_VERDICT,
       })
     } catch (err) {
       logger.error(`[Recordist] setup-check review: ${err.message}`)
@@ -2019,9 +2034,20 @@ module.exports = function createRecordistRouter({
       const taken = pack.items.filter((i) => newest.has(i.id)).length
       const missing = setupCheck.setupSubmitShortfall(taken)
       if (missing) return res.status(409).json({ error: `${taken} of ${pack.items.length} phrases recorded; record at least ${setupCheck.SETUP_MIN_SUBMIT} to submit.`, missing })
-      const { error } = await db().from('recordist_setup_checks').update({ status: 'submitted', submitted_at: new Date().toISOString() }).eq('voice_id', pack.setup.voiceId)
+      // The automatic verdict (job #435): analysis only, shown to the artist and
+      // the admin; it never approves, unlocks or blocks. If measuring fails the
+      // submit still goes through with no verdict.
+      let autoVerdict = null
+      let metricsPatch = null
+      try {
+        const row = await loadSetupRow(pack.setup.voiceId)
+        const r = await measureAndJudgeSetup(row, pack, newest)
+        autoVerdict = { verdict: r.verdict.verdict, reasons: r.verdict.reasons }
+        metricsPatch = { ...r.metrics, measured: r.measured, verdict: r.verdict }
+      } catch (err) { logger.error(`[Recordist] setup-check auto-verdict: ${err.message}`) }
+      const { error } = await db().from('recordist_setup_checks').update({ status: 'submitted', submitted_at: new Date().toISOString(), ...(metricsPatch ? { metrics: metricsPatch } : {}) }).eq('voice_id', pack.setup.voiceId)
       if (error) throw new Error(error.message)
-      res.json({ status: 'submitted' })
+      res.json({ status: 'submitted', autoVerdict })
     } catch (err) {
       logger.error(`[Recordist] setup-check submit: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })

@@ -11,6 +11,13 @@
       <button v-if="!check || !check.exists" class="rt-btn" :disabled="busy" @click="createCheck">Ask for a 10-phrase setup check</button>
       <template v-else>
         <p>Status: <strong>{{ check.status }}</strong><span v-if="check.reviewedBy"> — last decision by {{ check.reviewedBy }}</span></p>
+        <p v-if="check.autoVerdict" class="rt-verdict">
+          <span :class="check.autoVerdict.verdict === 'pass' ? 'rt-badge rt-pass' : 'rt-badge rt-retry'">Auto-verdict: {{ check.autoVerdict.verdict }}</span>
+          <span v-for="r in check.autoVerdict.reasons" :key="r"> · {{ r }}</span>
+          <span class="rt-device"> ({{ check.autoVerdict.judged }} takes judged; it never approves anything)</span>
+          <span v-if="check.verdictThresholds" class="rt-device"><br>Benchmark: accepted takes (Dan, Aran, Catrin, Tom) sit at noise floor -120 to -80 dB (retry above {{ check.verdictThresholds.NOISE_FLOOR_MAX_DB }}), clean by 61 to 107 dB (retry below {{ check.verdictThresholds.CLEAN_SNR_MIN_DB }}), loudest half-second -23 to -6 dB (retry below {{ check.verdictThresholds.SPEECH_MIN_DB }}), clipped samples at most 0.021% (retry above {{ check.verdictThresholds.CLIP_FRAC_MAX_PCT }}%).</span>
+        </p>
+        <p v-else class="rt-device">No auto-verdict yet: no take has been measured.</p>
         <p class="rt-link">Artist link: <code>{{ origin }}/r/{{ check.packVoiceId }}</code>
           <button class="rt-mini" @click="copy(`${origin}/r/${check.packVoiceId}`)">{{ copied ? 'Copied' : 'Copy' }}</button></p>
         <ol class="rt-items">
@@ -22,6 +29,12 @@
                 level {{ it.measures.levelDb }} dB · peak {{ it.measures.peakDb }} dB<span v-if="it.measures.peakDb > -1" class="rt-bad"> (clipped)</span>
                 · noise {{ it.measures.noiseDb }} dB · clean by {{ it.measures.snrDb }} dB
                 · bass {{ it.measures.bassDb }} dB · treble {{ it.measures.trebleDb }} dB
+                <template v-if="it.measures.floorDb != null">
+                  · floor {{ it.measures.floorDb }} dB · speech {{ it.measures.speechDb }} dB · clean by {{ it.measures.cleanSnrDb }} dB
+                  · clipped {{ it.measures.clippedSamples }} samples ({{ it.measures.clipFracPct }}%)
+                  · lead {{ it.measures.leadSec }}s · tail {{ it.measures.trailSec }}s · gated {{ Math.round((it.measures.gatedShare || 0) * 100) }}%
+                </template>
+                <span v-for="f in flagsFor(it.id)" :key="f" class="rt-bad"> · {{ f }}</span>
               </div>
               <div class="rt-device">{{ it.device || 'device not recorded' }}</div>
             </template>
@@ -64,6 +77,11 @@ const origin = window.location.origin
 const base = () => `${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}`
 
 const check = ref(null)
+const FLAG_WORDS = { clipping: 'clipping', noise: 'noisy', far: 'far from mic' }
+const flagsFor = (id) => {
+  const t = (check.value?.autoVerdict?.perTake || []).find((x) => x.id === id)
+  return t ? t.flags.map((f) => FLAG_WORDS[f] || f) : []
+}
 const preview = ref(null)
 const error = ref(null)
 const busy = ref(false)
@@ -140,6 +158,9 @@ h1 { font-family: 'Josefin Sans', sans-serif; font-size: 1.5rem; margin: 0.4rem 
 .rt-items audio { width: 100%; }
 .rt-nums, .rt-device { font-size: 0.82rem; color: var(--color-paper-dim, #c1c1bb); word-break: break-word; }
 .rt-bad { color: #ff9d9d; }
+.rt-badge { display: inline-block; padding: 0.1rem 0.5rem; border-radius: 999px; font-weight: 600; }
+.rt-pass { background: rgba(80, 200, 120, 0.2); color: #8fe0a8; }
+.rt-retry { background: rgba(255, 157, 157, 0.2); color: #ff9d9d; }
 .rt-note { width: 100%; min-height: 3.5rem; margin-top: 0.6rem; background: transparent; color: inherit; border: 1px solid rgba(255, 255, 255, 0.25); border-radius: 8px; padding: 0.5rem; font: inherit; }
 .rt-link code { word-break: break-all; }
 .rt-history { margin-top: 0.8rem; font-size: 0.88rem; }

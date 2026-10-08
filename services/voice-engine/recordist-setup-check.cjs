@@ -79,6 +79,12 @@ function pickSetupPhrases(lines, count = SETUP_PHRASE_COUNT) {
   return out.map((p, i) => ({ id: `p${String(i + 1).padStart(2, '0')}`, text: p.text }))
 }
 
+/** What the ARTIST may see of the automatic verdict: pass/retry and the hints, only while the check waits on us. */
+function artistVerdict(row) {
+  const v = row && row.status === 'submitted' && row.metrics && row.metrics.verdict
+  return v ? { verdict: v.verdict, reasons: v.reasons || [] } : null
+}
+
 /** The pack object clone-source's surface code understands. */
 function packFromRow(row, { displayName, languageName } = {}) {
   const phrases = Array.isArray(row.phrases) ? row.phrases : []
@@ -90,7 +96,7 @@ function packFromRow(row, { displayName, languageName } = {}) {
     autoAdvance: true,
     language: row.language,
     languageName: languageName || row.language,
-    setup: { voiceId: row.voice_id, status: row.status, note: row.review_note || null },
+    setup: { voiceId: row.voice_id, status: row.status, note: row.review_note || null, autoVerdict: artistVerdict(row) },
     items: phrases.map((p, i) => ({
       id: p.id,
       order: i + 1,
@@ -124,6 +130,139 @@ function runFfmpeg(file, filter, exec = spawn) {
 
 const round1 = (n) => (Number.isFinite(n) ? Math.round(n * 10) / 10 : null)
 
+// ── THE AUTOMATIC VERDICT (job #435, Tom 2026-10-08) ─────────────────────────
+// "work out if the general waveform shape and the signal-to-noise ratio was good,
+// we could then say, 'Yep, this is fine.'" Two outcomes only: pass, or try again
+// with ONE plain hint. A false fail irritates someone doing us a favour; a false
+// pass is seen by the admin anyway -> every threshold below sits well clear of the
+// worst ACCEPTED take, and ambiguity resolves to pass.
+//
+// CALIBRATED 2026-10-08 on the RAW stored bytes (webm/opus, as the booth uploads
+// them -- the same bytes a setup check holds) of 63 real accepted takes:
+//   Dan   (human_dan_cym_s, latest 24, iPhone, NS off / AGC off / EC on)
+//   Aran  (human_aran_cym_n, 13, Blue Snowball USB, NS on / AGC on)
+//   Catrin(human_catrinlliar_cym_n, 18) and Tom's 8 test takes on the Phone? settings
+//   (human_tom_zzz, 2026-10-08 ~11:02Z). Tom: Aran's and Dan's are "absolutely fine".
+// Observed per-take distributions (min / median / max), 20 ms RMS windows, 16 kHz mono:
+//   floorDb  (10th-percentile window)      Aran -100/-83/-80  Dan -94/-92/-84  Catrin -90/-87/-83  Tom -120/-120/-120
+//   speechDb (loudest 500 ms)              Aran -23/-16/-10   Dan -21/-17/-16  Catrin -16/-14/-6   Tom -20/-16/-13
+//   cleanSnrDb (speech - floor)            Aran 61/67/90      Dan 67/74/76     Catrin 70/74/77    Tom 100/104/107
+//   clipFrac (% of samples >= 0.99 FS)     all 0 except Catrin max 0.021, Tom max 0.011
+// The hard floor of the evidence: the booth uploads opus, which gates silence, so a
+// quiet-room floor reads -80 or lower and a RAW take can only reveal rooms that are
+// clearly noisy. That is the intent -- the check catches the clear cases.
+// NOT in the verdict (accepted takes break them, so they would false-fail): lead/trail
+// silence (Dan has takes that start at 0.00 s or end at 0.00 s), digital-silence gating
+// (opus gates 40-60% of windows in Dan's own accepted takes) and level pumping. They are
+// measured and shown to the admin only.
+const SETUP_VERDICT = Object.freeze({
+  /** Floor louder than this = a noisy room. Worst accepted: -80. */
+  NOISE_FLOOR_MAX_DB: -60,
+  /** Speech less than this far above the floor = noisy or far. Worst accepted: 61. */
+  CLEAN_SNR_MIN_DB: 45,
+  /** Loudest half-second quieter than this = too far from the mic. Worst accepted: -23. */
+  SPEECH_MIN_DB: -32,
+  /** More than this % of samples at full scale = audible clipping. Worst accepted: 0.021. */
+  CLIP_FRAC_MAX_PCT: 0.1,
+  /** A problem counts only if it recurs: this share of the measured takes, and at least MIN_TAKES of them. */
+  RECURS_SHARE: 0.3,
+  RECURS_MIN_TAKES: 2,
+})
+const MEASURE_VERSION = 2
+
+const SETUP_HINTS = Object.freeze({
+  clipping: 'Your voice is clipping: speak a touch quieter or move back slightly.',
+  noise: 'A bit too much background noise: try a quieter room.',
+  far: 'Quite far from the mic: try a little closer.',
+})
+
+const FLOOR_WINDOW = 320 // 20 ms at 16 kHz
+
+/**
+ * Waveform health of one take from its decoded samples (mono floats, -1..1). Pure.
+ * floorDb is the 10th-percentile 20 ms window; speechDb the mean power of the loudest
+ * 25 windows (500 ms) -- a one-word take still has half a second of voice.
+ */
+function analyseSamples(x, rate = 16000) {
+  const w = Math.max(1, Math.round(rate * 0.02))
+  const n = Math.floor(x.length / w)
+  if (n < 10) return null
+  let clipped = 0
+  for (let i = 0; i < x.length; i += 1) if (Math.abs(x[i]) >= 0.99) clipped += 1
+  const tr = new Array(n)
+  for (let k = 0; k < n; k += 1) {
+    let sum = 0
+    for (let i = 0; i < w; i += 1) { const v = x[k * w + i]; sum += v * v }
+    tr[k] = 10 * Math.log10(sum / w + 1e-12)
+  }
+  const sorted = [...tr].sort((a, b) => a - b)
+  const floorDb = sorted[Math.floor(0.1 * (n - 1))]
+  const top = sorted.slice(-Math.min(25, n))
+  const speechDb = 10 * Math.log10(top.reduce((a, v) => a + 10 ** (v / 10), 0) / top.length)
+  const active = speechDb - 25
+  const first = tr.findIndex((v) => v > active)
+  let last = -1
+  for (let k = n - 1; k >= 0; k -= 1) if (tr[k] > active) { last = k; break }
+  return {
+    floorDb: round1(floorDb),
+    speechDb: round1(speechDb),
+    cleanSnrDb: round1(speechDb - floorDb),
+    clipFracPct: Math.round((1000 * clipped) / x.length) / 10,
+    clippedSamples: clipped,
+    leadSec: first < 0 ? null : Math.round(first * 2) / 100,
+    trailSec: last < 0 ? null : Math.round((n - 1 - last) * 2) / 100,
+    gatedShare: Math.round((100 * tr.filter((v) => v < -85).length) / n) / 100,
+  }
+}
+
+function decodeMono16k(file, exec = spawn) {
+  return new Promise((resolve) => {
+    const p = exec('ffmpeg', ['-v', 'error', '-i', file, '-ac', '1', '-ar', '16000', '-f', 'f32le', '-'])
+    const chunks = []
+    p.stdout && p.stdout.on('data', (d) => chunks.push(d))
+    p.on('error', () => resolve(null))
+    p.on('close', () => {
+      const buf = Buffer.concat(chunks)
+      const len = Math.floor(buf.length / 4)
+      if (!len) return resolve(null)
+      const out = new Float32Array(len)
+      for (let i = 0; i < len; i += 1) out[i] = buf.readFloatLE(i * 4)
+      resolve(out)
+    })
+  })
+}
+
+/**
+ * Judge the setup takes. Input: measures by phrase id (or an array) as measureTake
+ * returns them. Output {verdict:'pass'|'retry', reasons:[plain recordist lines],
+ * perTake:[{id, flags:[...]}] , judged}. Takes with no new-style numbers are not
+ * judged (unmeasurable is never failed), and fewer than RECURS_MIN_TAKES judged takes
+ * is a pass. Pure.
+ */
+function judgeSetupCheck(measuresByPhrase, T = SETUP_VERDICT) {
+  const entries = Array.isArray(measuresByPhrase)
+    ? measuresByPhrase.map((m, i) => [m && m.id != null ? m.id : String(i), m])
+    : Object.entries(measuresByPhrase || {})
+  const perTake = []
+  const counts = { clipping: 0, noise: 0, far: 0 }
+  for (const [id, m] of entries) {
+    if (!m || !Number.isFinite(m.speechDb) || !Number.isFinite(m.floorDb)) continue
+    const flags = []
+    if (Number.isFinite(m.clipFracPct) && m.clipFracPct > T.CLIP_FRAC_MAX_PCT) flags.push('clipping')
+    if (m.floorDb > T.NOISE_FLOOR_MAX_DB || m.cleanSnrDb < T.CLEAN_SNR_MIN_DB) flags.push('noise')
+    if (m.speechDb < T.SPEECH_MIN_DB) flags.push('far')
+    for (const f of flags) counts[f] += 1
+    perTake.push({ id, flags })
+  }
+  const judged = perTake.length
+  const needed = Math.max(T.RECURS_MIN_TAKES, Math.ceil(T.RECURS_SHARE * judged))
+  const reasons = []
+  for (const key of ['clipping', 'noise', 'far']) {
+    if (judged >= T.RECURS_MIN_TAKES && counts[key] >= needed) reasons.push(SETUP_HINTS[key])
+  }
+  return { verdict: reasons.length ? 'retry' : 'pass', reasons, perTake, judged }
+}
+
 /**
  * Level, noise and tone of one take. Null fields where ffmpeg could not say —
  * an unmeasurable take is shown unmeasured, never failed.
@@ -142,17 +281,21 @@ async function measureTake(buffer, mimeType, { exec = spawn } = {}) {
     file = path.join(dir, `take.${extForMime(mimeType)}`)
     await writeFile(file, buffer)
     const stat = 'astats=measure_perchannel=none:measure_overall=Peak_level+RMS_level+RMS_trough'
-    const [all, low, high] = await Promise.all([
+    const [all, low, high, pcm] = await Promise.all([
       runFfmpeg(file, stat, exec),
       runFfmpeg(file, `lowpass=f=250,${stat}`, exec),
       runFfmpeg(file, `highpass=f=4000,${stat}`, exec),
+      decodeMono16k(file, exec),
     ])
     if (all === null) return null
     const a = parseAstats(all)
     const lo = low === null ? {} : parseAstats(low)
     const hi = high === null ? {} : parseAstats(high)
     const rel = (band) => (Number.isFinite(band.rms) && Number.isFinite(a.rms) ? round1(band.rms - a.rms) : null)
+    const wave = pcm ? analyseSamples(pcm) : null
     return {
+      v: MEASURE_VERSION,
+      ...(wave || {}),
       levelDb: round1(a.rms),
       peakDb: round1(a.peak),
       noiseDb: round1(a.trough),
@@ -193,4 +336,10 @@ module.exports = {
   pickSetupPhrases,
   packFromRow,
   measureTake,
+  analyseSamples,
+  artistVerdict,
+  judgeSetupCheck,
+  SETUP_VERDICT,
+  SETUP_HINTS,
+  MEASURE_VERSION,
 }
