@@ -19,7 +19,9 @@ DELETE FROM course_practice_phrases WHERE course_code = 'cym_nv2_for_eng' AND se
 DELETE FROM course_legos            WHERE course_code = 'cym_nv2_for_eng' AND seed_number >= 1000;
 SET CONSTRAINTS debut_keeps_practice IMMEDIATE;   -- the queued guard checks run here: no LEGO -> pass
 SET CONSTRAINTS debut_keeps_practice DEFERRED;
-INSERT INTO course_legos SELECT * FROM backup_cym_nv2_hc_legos_429;
+-- lego_id is a GENERATED column, so the restore names every other column.
+INSERT INTO course_legos (id, course_code, seed_number, lego_index, type, is_new, known_text, target_text, components, status, release_batch, version, updated_at, created_at, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms, target_text_roman, target_lego_id, known_gloss_segments, last_edit_event_id)
+  SELECT id, course_code, seed_number, lego_index, type, is_new, known_text, target_text, components, status, release_batch, version, updated_at, created_at, known_audio_id, target1_audio_id, target2_audio_id, presentation_audio_id, target1_duration_ms, target2_duration_ms, target_text_roman, target_lego_id, known_gloss_segments, last_edit_event_id FROM backup_cym_nv2_hc_legos_429;
 
 DO $$
 DECLARE dp int; dl int;

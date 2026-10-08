@@ -31,6 +31,7 @@ const path = require('path');
 const os = require('os');
 const { createClient } = require('@supabase/supabase-js');
 const { generateLegoPhrases, buildPhrasePrompt } = require('../../services/course-builder/lib/phrase-generation.cjs');
+const { isSameWelsh } = require('../../services/course-builder/lib/welsh-mutation.cjs');
 
 const COURSE = 'cym_nv2_for_eng';
 const BUILDER = process.env.COURSE_BUILDER_URL || 'http://localhost:3471';
@@ -60,9 +61,24 @@ async function pending() {
   const phr = await pageAll(() => sb.from('course_practice_phrases').select('seed_number,lego_index')
     .eq('course_code', COURSE).gte('seed_number', weave.block_start).order('id'));
   const done = new Set(phr.map((p) => `${p.seed_number}:${p.lego_index}`));
-  return legos.filter((l) => pos.has(l.seed_number) && !done.has(`${l.seed_number}:${l.lego_index}`))
-    .sort((a, b) => pos.get(a.seed_number) - pos.get(b.seed_number) || a.lego_index - b.lego_index);
+  // Aran, 2026-10-08: the same Welsh (identical or soft-mutated) taught EARLIER in the running
+  // order under other English is already taught (welsh-mutation.cjs isSameWelsh, the rule v2
+  // finalize now applies). A LEGO that rule catches gets no phrases here; it is named, not flipped.
+  const all = await pageAll(() => sb.from('course_legos').select('seed_number,lego_index,known_text,target_text')
+    .eq('course_code', COURSE).order('seed_number').order('lego_index'));
+  const key = (l) => [pos.get(l.seed_number) ?? Infinity, l.lego_index];
+  const before = (a, b) => key(a)[0] < key(b)[0] || (key(a)[0] === key(b)[0] && key(a)[1] < key(b)[1]);
+  SAME_WELSH_SKIPS.length = 0;
+  const out = [];
+  for (const l of legos) {
+    if (!pos.has(l.seed_number) || done.has(`${l.seed_number}:${l.lego_index}`)) continue;
+    const earlier = all.find((e) => pos.has(e.seed_number) && before(e, l) && isSameWelsh(COURSE, e.target_text, l.target_text));
+    if (earlier) { SAME_WELSH_SKIPS.push({ lego: l, taughtBy: earlier }); continue; }
+    out.push(l);
+  }
+  return out.sort((a, b) => pos.get(a.seed_number) - pos.get(b.seed_number) || a.lego_index - b.lego_index);
 }
+const SAME_WELSH_SKIPS = [];
 
 // The course-builder restarts on every main deploy (ssi-auto-deploy), so a write can meet a closed
 // socket. The write is an upsert on (course, seed, lego, position): retrying it is safe.
@@ -141,6 +157,9 @@ async function one(l) {
     todo = todo.filter((l) => seeds.includes(l.seed_number));
   } else if (!process.argv.includes('--all')) {
     throw new Error('say --seeds N or --all');
+  }
+  for (const { lego: l, taughtBy: e } of SAME_WELSH_SKIPS) {
+    console.log(`[skip] S${l.seed_number}L${l.lego_index} "${l.known_text}" = ${l.target_text}: same Welsh already taught at S${e.seed_number}L${e.lego_index} "${e.known_text}" = ${e.target_text} (Aran 2026-10-08) — no phrases`);
   }
   const conc = Number(arg('--concurrency') || 4);
   console.log(`[${AGENT}] ${todo.length} LEGOs over ${new Set(todo.map((l) => l.seed_number)).size} seeds, concurrency ${conc}`);
