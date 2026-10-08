@@ -1,3 +1,32 @@
+## 2026-10-08 — Phrase v4 gap fill across the paying courses: staged, gated, not landed (job #924)
+
+**Tom, 2026-10-08:** "identify the weak places in the courses and create more phrases … using the Popty gates
+to ensure full compliance with the methodology". Haiku measures each course's frame coverage, Opus `generate-v4
+--gaps` fills every weak 10-seed window (coverage < 50%, seeds 11+; up to two cumulative passes), and every
+candidate is then replayed through Popty's own `/api/seed/complete` gates (`tools/phrase-gate/gate-check.cjs`:
+bare-LEGO, containment, vocab-available-only, ZUT, known-side contract) plus a whole-course ZUT check, a
+cross-window ZUT check, the BUILD anti-template classifier, no parentheses and a tu-first register screen. A
+failure on any one is a cut, never a repair.
+
+**Not landed, and why.** There is no staging copy of course rows: Popty and the learner app share one Supabase,
+and every paying course is `beta` or `released`, so any row inserted into `course_practice_phrases` is served to
+learners immediately. The gated rows are staged as `staged-<course>.json` under
+`~/ssi-evidence/ssi-dashboard-v7/924-phrase-v4-all-courses/`. `tools/frame-layer/v4/apply-gap-fill.cjs` lands
+them additively (plain INSERT, ids continue past the highest existing, row count and a hash of every existing
+row asserted in one transaction, audio pass queued after). It refuses a beta or released course unless given
+`--tom-go "<Tom's words>"`. One look for Tom: a course-by-course go.
+
+**Paying courses** = premium, not community, beta or released, target in Tom's Big Ten (eng spa zho jpn kor ita
+deu fra por ara, variants included), Welsh excluded (r-2026-09-27). 43 on 2026-10-08. English-known: ara_eg ara
+ara_lb deu_at deu fra ita jpn kor por_br por spa spa_mx zho. Other known languages: deu_for_jpn deu_for_zho
+eng_for_{ara ben deu fra guj hin ita jpn kan kor mar pan por sin spa tam tel urd zho} fra_for_jpn fra_for_zho
+ita_for_jpn ita_for_zho spa_for_jpn spa_for_zho zho_for_gle zho_for_jpn.
+
+**Defaults taken.** Known languages without a pair-contract (deu, fra, ita, spa, por, zho, gle known) use a
+stricter fallback than the live route, which silently skips: every known-side word must already have been
+heard in that course by the LEGO's seed. French formal `vous`, Spanish `usted`, German mid-sentence `Sie` and
+Portuguese `o senhor` are cut unless the English says sir or madam.
+
 ## 2026-10-08 — German Pod 1 re-recorded one take per turn in Nico + Viktoria; Drill cut from the takes (job #216)
 
 **Tom's rulings.** r-2026-10-08-german-pods-drill-cuts-from-nico ("Let's make Pod-1 with these new voices"),
