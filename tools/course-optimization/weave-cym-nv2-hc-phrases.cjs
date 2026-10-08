@@ -17,7 +17,7 @@
  * whose LEGO is is_new and has no phrases yet, so a rerun resumes and never rewrites. A set the
  * gates still refuse after the door's retries is BLOCKED: recorded, never submitted.
  *
- * Usage:
+ * Usage (add --course cym_sv2_for_eng for the South sandbox; North is the default):
  *   node tools/course-optimization/weave-cym-nv2-hc-phrases.cjs --seeds 20 [--concurrency 4]
  *   node tools/course-optimization/weave-cym-nv2-hc-phrases.cjs --only-seeds 1003,1006 [--concurrency 4]
  *   node tools/course-optimization/weave-cym-nv2-hc-phrases.cjs --all [--concurrency 4]
@@ -33,10 +33,13 @@ const { createClient } = require('@supabase/supabase-js');
 const { generateLegoPhrases, buildPhrasePrompt } = require('../../services/course-builder/lib/phrase-generation.cjs');
 const { isSameWelsh } = require('../../services/course-builder/lib/welsh-mutation.cjs');
 
-const COURSE = 'cym_nv2_for_eng';
+// The two hidden Welsh sandboxes, and nothing else (South added for job #429, Aran 2026-10-08 21:45Z).
+const SANDBOXES = ['cym_nv2_for_eng', 'cym_sv2_for_eng'];
+const COURSE = (() => { const i = process.argv.indexOf('--course'); return i === -1 ? 'cym_nv2_for_eng' : process.argv[i + 1]; })();
+if (!SANDBOXES.includes(COURSE)) throw new Error(`refusing ${COURSE}: this driver writes only to ${SANDBOXES.join(' / ')}`);
 const BUILDER = process.env.COURSE_BUILDER_URL || 'http://localhost:3471';
 const AGENT = 'job-429-hc-phrases';
-const OUT = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/job-429/results');
+const OUT = path.join(os.homedir(), 'ssi-evidence/ssi-dashboard-v7/job-429', COURSE === 'cym_nv2_for_eng' ? 'results' : `results-${COURSE}`);
 
 const arg = (k) => { const i = process.argv.indexOf(k); return i === -1 ? null : process.argv[i + 1]; };
 const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } });
