@@ -3,7 +3,7 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
-const { judgeSetupCheck, analyseSamples, SETUP_HINTS, artistVerdict } = require('./recordist-setup-check.cjs')
+const { judgeSetupCheck, analyseSamples, SETUP_HINTS, artistVerdict, MEASURE_VERSION, isMeasuredVerdict } = require('./recordist-setup-check.cjs')
 
 const dan = (i) => ({ id: `p${i}`, floorDb: -92, speechDb: -20, cleanSnrDb: 72, clipFracPct: 0 })
 const set = (n, over = {}, which = () => true) =>
@@ -59,5 +59,18 @@ describe('analyseSamples', () => {
     const j = judgeSetupCheck(set(10, { clipFracPct: m.clipFracPct }))
     expect(j.verdict).toBe('retry')
     expect(j.reasons).toEqual([SETUP_HINTS.clipping])
+  })
+})
+
+describe('job #444 guards', () => {
+  it('measure version is bumped past the rounded-clipFracPct take shape', () => {
+    expect(MEASURE_VERSION).toBeGreaterThanOrEqual(3)
+  })
+  it('a legacy stored pass judged on one take is never shown as sounds good', () => {
+    const row = (judged) => ({ status: 'submitted', metrics: { verdict: { verdict: 'pass', reasons: [], judged } } })
+    expect(artistVerdict(row(1))).toBeNull()
+    expect(artistVerdict(row(2))).toEqual({ verdict: 'pass', reasons: [] })
+    expect(isMeasuredVerdict({ verdict: 'pass', judged: 1 })).toBe(false)
+    expect(isMeasuredVerdict({ verdict: 'retry', judged: 3 })).toBe(true)
   })
 })

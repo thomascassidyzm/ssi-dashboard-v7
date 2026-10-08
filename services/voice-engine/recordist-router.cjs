@@ -1972,7 +1972,7 @@ module.exports = function createRecordistRouter({
         exists: true, voiceId: row.voice_id, language: row.language, status: row.status,
         submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
         packVoiceId: pack.voiceId, items,
-        autoVerdict: verdict && verdict.verdict !== 'unmeasured' && verdict.judged !== 0 ? verdict : null, verdictThresholds: setupCheck.SETUP_VERDICT,
+        autoVerdict: setupCheck.isMeasuredVerdict(verdict) ? verdict : null, verdictThresholds: setupCheck.SETUP_VERDICT,
       })
     } catch (err) {
       logger.error(`[Recordist] setup-check review: ${err.message}`)

@@ -80,11 +80,14 @@ function pickSetupPhrases(lines, count = SETUP_PHRASE_COUNT) {
 }
 
 /** What the ARTIST may see of the automatic verdict: pass/retry and the hints, only while the check waits on us. */
+function isMeasuredVerdict(v) {
+  // 'unmeasured' and legacy stored passes judged on fewer than RECURS_MIN_TAKES takes are never shown: no false "sounds good".
+  return !!v && v.verdict !== 'unmeasured' && v.judged >= SETUP_VERDICT.RECURS_MIN_TAKES
+}
+
 function artistVerdict(row) {
   const v = row && row.status === 'submitted' && row.metrics && row.metrics.verdict
-  // 'unmeasured' (and legacy stored pass-with-nothing-judged) is never shown: no false "sounds good".
-  const measured = v && v.verdict !== 'unmeasured' && v.judged !== 0
-  return measured ? { verdict: v.verdict, reasons: v.reasons || [] } : null
+  return isMeasuredVerdict(v) ? { verdict: v.verdict, reasons: v.reasons || [] } : null
 }
 
 /** The pack object clone-source's surface code understands. */
@@ -170,7 +173,8 @@ const SETUP_VERDICT = Object.freeze({
   RECURS_SHARE: 0.3,
   RECURS_MIN_TAKES: 2,
 })
-const MEASURE_VERSION = 2
+// 3: clipFracPct stored unrounded (job #443); v2 takes kept the rounded value, so they must be remeasured.
+const MEASURE_VERSION = 3
 
 const SETUP_HINTS = Object.freeze({
   clipping: 'Your voice is clipping: speak a touch quieter or move back slightly.',
@@ -341,6 +345,7 @@ module.exports = {
   measureTake,
   analyseSamples,
   artistVerdict,
+  isMeasuredVerdict,
   judgeSetupCheck,
   SETUP_VERDICT,
   SETUP_HINTS,
