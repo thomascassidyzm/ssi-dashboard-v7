@@ -267,9 +267,14 @@ async function publish () {
       const key = `${e.rowId}:${p.i}`
       if (pub[key]) continue
       const tn = normalizeForAudio(p.text)
-      const { data: hit, error } = await sb.from('course_audio').select('id').eq('course_code', COURSE).eq('text_normalized', tn)
-        .eq('language', LANG).eq('role', 'target1').eq('voice_id', e.voiceId).maybeSingle()
+      // The database stores text_normalized with punctuation stripped ("et vous " for "Et vous ?") while normalizeForAudio keeps
+      // it, and a PostgREST eq filter loses trailing spaces: an exact eq never finds the row and the insert then hits
+      // unique_course_audio_per_voice (French #229). Compare on letters/digits/spaces only, in JS.
+      const plain = (x) => String(x || '').replace(/[^\p{L}\p{N}\s]/gu, '').replace(/\s+/g, ' ').trim()
+      const { data: cands, error } = await sb.from('course_audio').select('id,text_normalized').eq('course_code', COURSE)
+        .ilike('text_normalized', `${(String(tn).match(/^[\p{L}\p{N}]+/u) || [''])[0]}%`).eq('language', LANG).eq('role', 'target1').eq('voice_id', e.voiceId)
       if (error) throw error
+      const hit = (cands || []).find((c) => plain(c.text_normalized) === plain(tn))
       if (hit) { pub[key] = { id: hit.id, reused: true }; tally.reused++; if (GO) writeJ('published.json', pub); continue }
       if (!GO) { tally.wouldInsert++; continue }
       const body = fs.readFileSync(st(`pieces/${p.file}`))
