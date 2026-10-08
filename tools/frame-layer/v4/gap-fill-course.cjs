@@ -47,7 +47,8 @@ if (MAIN) {
 
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '..', '.env'), quiet: true });
 const { measure, WEAK } = require('./measure.cjs');
-const { runGaps } = require('./generate-v4.cjs');
+const { runGaps, knownHeardCheck } = require('./generate-v4.cjs');
+const NO_SPACE_KNOWN = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha']);
 const { loadCourse } = require('./db.cjs');
 const { scoreWindow } = require('./window-coverage.cjs');
 const { norm } = require('../availability.cjs');
@@ -157,7 +158,16 @@ async function gateStage() {
       // cannot lower a floor.
       for (const g of ['bareLego', 'containment', 'vocab', 'zut']) if (res.gates[g] && res.gates[g].pass === false) reasons.push(`popty:${g} ${JSON.stringify(res.gates[g]).slice(0, 200)}`);
       if (res.gates.knownSide.pass === false) reasons.push(`popty:knownSide ${JSON.stringify(res.gates.knownSide.breaches).slice(0, 200)}`);
-      if (res.gates.knownSide.pass === null) reasons.push(`popty:knownSide unchecked (${res.gates.knownSide.reason}) — cut, never waved through`);
+      if (res.gates.knownSide.pass === null) {
+        // No pair-contract for this known language: the live route skips the check
+        // silently. Here it never skips — every known word must already have been
+        // heard in this course by the LEGO's seed, or the row is cut.
+        const heard = [...data.seeds.filter(x => x.seed_number <= r.seed_number), ...data.legos, ...data.components]
+          .filter(x => x.seed_number < r.seed_number || (x.seed_number === r.seed_number && (x.lego_index == null || +x.lego_index <= +r.lego_index)))
+          .map(x => x.known_text);
+        const bad = knownHeardCheck(r.known_text, heard, NO_SPACE_KNOWN.has(course.split('_for_')[1].split('_')[0]));
+        if (bad.length) reasons.push(`knownSide (no contract; heard-words fallback): unheard ${bad.join(' ')}`);
+      }
       if (r.phrase_role === 'build') {
         const { cls } = classifyBuildPhrase(r.target_text, r.lego_target, liveUse(r), false);
         if (['bare-repeat', 'comma-tag', 'use-stem+tag'].includes(cls)) reasons.push(`popty:buildTemplate ${cls}`);
