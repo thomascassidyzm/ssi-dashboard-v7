@@ -1,3 +1,30 @@
+## 2026-10-08 — German Pod 1 re-recorded one take per turn in Nico + Viktoria; Drill cut from the takes (job #216)
+
+**Tom's rulings.** r-2026-10-08-german-pods-drill-cuts-from-nico ("Let's make Pod-1 with these new voices"),
+r-2026-09-30-pods-record-one-take-per-turn (one take serves Immersion and Drill; make it one button in Popty).
+
+**Better × simpler × cheaper.** `tools/pods/pod-rerecord.cjs` is Italian #938's hand-run chain as one tool, and
+it drops #938's Whisper pass: the render route now stores Cartesia's word timings on every clip (#643), so
+`tools/pods/drill-cuts.cjs` places each cut in the silence that overlaps the gap between the last word of one
+sentence and the first of the next (the #181 rule), cutting with splice.py's own windows. No transcription, no
+DP re-search, no second render. Spend is the takes only (12,210 chars for 231 turns).
+
+**Defaults taken where #181 and the app disagree (flagged here, not decided for Tom):**
+- **Drill units are whole sentences.** #181's approved page also cut sentences over 3.2 s at commas and joined
+  one-word sentences to a neighbour. Neither ships: the player pairs each Drill unit with an English sentence by
+  index (`podSentenceSplit.splitRowUnits`), and learner progress is filed under each row's unit count
+  (`switch-pod-clip-pointers.cjs` refuses a change). A comma piece has no English of its own, so it would play
+  with the wrong translation. Sub-sentence Drill needs English clips per piece first.
+- **Split stays split, unsplit stays unsplit.** Multi-sentence rows that are unsplit today still get sentence cuts
+  (they back the Drill fusion clips) but their unit count does not move.
+- **Drill fusion clips (`takeg_audio_ids`)** move to the new take (group = whole turn) or the sentence cut (group =
+  one sentence); a group joining part of a turn gets null, as in #938. Arrays the player already ignores are left.
+  `atom_map_fine` ms spans are nulled where the Take G moves — they measured the old take, and slice playback is off.
+- **Not live until Tom rules on the listen page.** The switch plan is built and dry-run clean; going live is
+  `node tools/pods/switch-pod-clip-pointers.cjs <plan> --apply`, which writes its own rollback file first.
+- **English known side untouched** (still xAI Olivia/Tom), out of this job's scope.
+- The stale `deu_for_eng` pod voice approval (fingerprint fc23454e474214a0, 2026-08-23, old xAI cast) was revoked.
+
 ## 2026-09-29 — human recordings are named voices, and the library is reconciled nightly (job #703)
 
 **Tom's ruling (r-2026-09-29-human-recordings-enter-the-same-audio).** Human recordings are tracked as named voices
