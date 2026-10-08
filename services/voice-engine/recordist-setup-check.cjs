@@ -82,7 +82,9 @@ function pickSetupPhrases(lines, count = SETUP_PHRASE_COUNT) {
 /** What the ARTIST may see of the automatic verdict: pass/retry and the hints, only while the check waits on us. */
 function artistVerdict(row) {
   const v = row && row.status === 'submitted' && row.metrics && row.metrics.verdict
-  return v ? { verdict: v.verdict, reasons: v.reasons || [] } : null
+  // 'unmeasured' (and legacy stored pass-with-nothing-judged) is never shown: no false "sounds good".
+  const measured = v && v.verdict !== 'unmeasured' && v.judged !== 0
+  return measured ? { verdict: v.verdict, reasons: v.reasons || [] } : null
 }
 
 /** The pack object clone-source's surface code understands. */
@@ -234,10 +236,10 @@ function decodeMono16k(file, exec = spawn) {
 
 /**
  * Judge the setup takes. Input: measures by phrase id (or an array) as measureTake
- * returns them. Output {verdict:'pass'|'retry', reasons:[plain recordist lines],
+ * returns them. Output {verdict:'pass'|'retry'|'unmeasured', reasons:[plain recordist lines],
  * perTake:[{id, flags:[...]}] , judged}. Takes with no new-style numbers are not
  * judged (unmeasurable is never failed), and fewer than RECURS_MIN_TAKES judged takes
- * is a pass. Pure.
+ * is 'unmeasured' (never a pass: nothing was checked). Pure.
  */
 function judgeSetupCheck(measuresByPhrase, T = SETUP_VERDICT) {
   const entries = Array.isArray(measuresByPhrase)
@@ -260,6 +262,7 @@ function judgeSetupCheck(measuresByPhrase, T = SETUP_VERDICT) {
   for (const key of ['clipping', 'noise', 'far']) {
     if (judged >= T.RECURS_MIN_TAKES && counts[key] >= needed) reasons.push(SETUP_HINTS[key])
   }
+  if (judged < T.RECURS_MIN_TAKES) return { verdict: 'unmeasured', reasons: [], perTake, judged }
   return { verdict: reasons.length ? 'retry' : 'pass', reasons, perTake, judged }
 }
 

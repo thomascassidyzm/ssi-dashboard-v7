@@ -17,7 +17,7 @@
           <span class="rt-device"> ({{ check.autoVerdict.judged }} takes judged; it never approves anything)</span>
           <span v-if="check.verdictThresholds" class="rt-device"><br>Benchmark: accepted takes (Dan, Aran, Catrin, Tom) sit at noise floor -120 to -80 dB (retry above {{ check.verdictThresholds.NOISE_FLOOR_MAX_DB }}), clean by 61 to 107 dB (retry below {{ check.verdictThresholds.CLEAN_SNR_MIN_DB }}), loudest half-second -23 to -6 dB (retry below {{ check.verdictThresholds.SPEECH_MIN_DB }}), clipped samples at most 0.021% (retry above {{ check.verdictThresholds.CLIP_FRAC_MAX_PCT }}%).</span>
         </p>
-        <p v-else class="rt-device">No auto-verdict yet: no take has been measured.</p>
+        <p v-else class="rt-device">No auto-verdict yet: no take has been measured (or too few could be), so listen yourself.</p>
         <p class="rt-link">Artist link: <code>{{ origin }}/r/{{ check.packVoiceId }}</code>
           <button class="rt-mini" @click="copy(`${origin}/r/${check.packVoiceId}`)">{{ copied ? 'Copied' : 'Copy' }}</button></p>
         <ol class="rt-items">
