@@ -50,4 +50,14 @@ describe('analyseSamples', () => {
     expect(m.clipFracPct).toBeGreaterThan(20)
     expect(m.floorDb).toBeLessThan(-100)
   })
+  it('keeps clipping unrounded so 0.14% is judged against the 0.1% limit, not rounded under it', () => {
+    const x = new Float32Array(32000)
+    for (let i = 0; i < 16000; i += 1) x[i] = 0.3 * Math.sin(i / 7)
+    for (let i = 0; i < 45; i += 1) x[i * 10] = 1 // 45 / 32000 = 0.14%
+    const m = analyseSamples(x)
+    expect(m.clipFracPct).toBeCloseTo(0.140625, 5)
+    const j = judgeSetupCheck(set(10, { clipFracPct: m.clipFracPct }))
+    expect(j.verdict).toBe('retry')
+    expect(j.reasons).toEqual([SETUP_HINTS.clipping])
+  })
 })

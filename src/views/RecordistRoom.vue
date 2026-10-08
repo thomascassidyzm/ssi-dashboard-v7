@@ -176,6 +176,10 @@
           <template v-else-if="voice.pack.setup.autoVerdict && voice.pack.setup.autoVerdict.verdict === 'retry'">
             <span class="setup-note setup-verdict-retry">Our quick sound check suggests a small change, so please try again:</span>
             <span v-for="r in voice.pack.setup.autoVerdict.reasons" :key="r" class="setup-note setup-verdict-reason">{{ r }}</span>
+            <button v-if="readyCanSubmit" class="btn-begin setup-go" :disabled="setupSubmitting" @click="submitSetup">
+              {{ setupSubmitting ? 'Sending…' : 'Submit my setup check' }}
+            </button>
+            <span v-if="setupError" class="setup-note">{{ setupError }}</span>
           </template>
         </template>
         <template v-else>
@@ -2376,7 +2380,13 @@ const setupSubmitting = ref(false)
 const SETUP_MIN_SUBMIT = 5
 const setupOpen = computed(() => {
   const setup = voice.value.pack && voice.value.pack.setup
-  return !!setup && (setup.status === 'open' || setup.status === 'changes')
+  return !!setup && (setup.status === 'open' || setup.status === 'changes' || setupRetryAsked.value)
+})
+// A submitted check whose automatic verdict said "try again" is the artist's to
+// re-record and resubmit (the server re-judges on every submit).
+const setupRetryAsked = computed(() => {
+  const setup = voice.value.pack && voice.value.pack.setup
+  return !!setup && setup.status === 'submitted' && !!setup.autoVerdict && setup.autoVerdict.verdict === 'retry'
 })
 // A partial session (record 1 of 10, stop) must NOT read as finished (review
 // #846): a take counts once it is on the server or saved here.

@@ -209,7 +209,7 @@ function analyseSamples(x, rate = 16000) {
     floorDb: round1(floorDb),
     speechDb: round1(speechDb),
     cleanSnrDb: round1(speechDb - floorDb),
-    clipFracPct: Math.round((1000 * clipped) / x.length) / 10,
+    clipFracPct: (100 * clipped) / x.length,
     clippedSamples: clipped,
     leadSec: first < 0 ? null : Math.round(first * 2) / 100,
     trailSec: last < 0 ? null : Math.round((n - 1 - last) * 2) / 100,

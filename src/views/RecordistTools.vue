@@ -31,7 +31,7 @@
                 · bass {{ it.measures.bassDb }} dB · treble {{ it.measures.trebleDb }} dB
                 <template v-if="it.measures.floorDb != null">
                   · floor {{ it.measures.floorDb }} dB · speech {{ it.measures.speechDb }} dB · clean by {{ it.measures.cleanSnrDb }} dB
-                  · clipped {{ it.measures.clippedSamples }} samples ({{ it.measures.clipFracPct }}%)
+                  · clipped {{ it.measures.clippedSamples }} samples ({{ Math.round(it.measures.clipFracPct * 100) / 100 }}%)
                   · lead {{ it.measures.leadSec }}s · tail {{ it.measures.trailSec }}s · gated {{ Math.round((it.measures.gatedShare || 0) * 100) }}%
                 </template>
                 <span v-for="f in flagsFor(it.id)" :key="f" class="rt-bad"> · {{ f }}</span>
