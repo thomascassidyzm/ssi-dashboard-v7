@@ -223,7 +223,7 @@
         <label class="toggle-row">
           <input type="radio" name="setup" value="phone" v-model="captureProfile" />
           <span><strong>Phone?</strong>
-            <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting.</small></span>
+            <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting. iPhone 16 or later for best results.</small></span>
         </label>
         <label class="toggle-row">
           <input type="radio" name="setup" value="pro" v-model="captureProfile" />

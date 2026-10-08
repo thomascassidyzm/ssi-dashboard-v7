@@ -119,7 +119,7 @@ describe('the booth asks one question about the setup', () => {
     const src = (await import('node:fs')).readFileSync('src/views/RecordistRoom.vue', 'utf8')
     expect(src).toContain('<strong>Phone?</strong>')
     expect(src).toContain('Recording with a professional plugged-in mic')
-    expect(src).toContain('Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting.')
+    expect(src).toContain('Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting. iPhone 16 or later for best results.')
     expect(src).not.toContain('Record the raw microphone')
     expect(w.vm.captureProfile).toBe('phone')
   })
