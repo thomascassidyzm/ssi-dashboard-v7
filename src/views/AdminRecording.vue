@@ -73,6 +73,25 @@
             <span v-if="kindParts(v).length" class="voice-kinds">
               <span v-for="k in kindParts(v)" :key="k.key" class="kind">{{ k.label }} {{ k.withTake }}/{{ k.total }}</span>
             </span>
+            <!-- WHO ASSIGNED THEM. A voice named by the language's policy and a
+                 voice merely cast on a course (no policy row: South Welsh's
+                 Dan) both belong on this page; this says which door it was. -->
+            <span v-if="v.assignedVia === 'cast'" class="voice-kinds">
+              <span class="kind">Cast on {{ (v.courses || []).join(', ') || 'a course' }}</span>
+            </span>
+            <button class="open-btn" @click="toggleTakes(v.voiceId)">
+              {{ takes[v.voiceId] ? 'Hide latest takes' : 'Latest takes' }}
+            </button>
+            <ul v-if="takes[v.voiceId]" class="takes">
+              <li v-if="takes[v.voiceId].loading">Loading…</li>
+              <li v-else-if="takes[v.voiceId].error" class="ar-error">{{ takes[v.voiceId].error }}</li>
+              <li v-else-if="!takes[v.voiceId].items.length">No takes yet.</li>
+              <li v-for="t in takes[v.voiceId].items" :key="t.audioId" class="take">
+                <span class="take-meta">{{ t.courseCode }} · {{ t.role }} · {{ new Date(t.recordedAt).toLocaleString() }}</span>
+                <span class="take-text">{{ t.text }}</span>
+                <audio v-if="t.url" :src="t.url" controls preload="none"></audio>
+              </li>
+            </ul>
           </li>
         </ul>
       </li>
@@ -97,6 +116,8 @@ const loading = ref(true)
 const error = ref(null)
 const saving = ref(null)
 const copied = ref(null)
+// voiceId -> { loading, error, items } while its latest-takes list is open.
+const takes = ref({})
 
 
 // The estate authorises /api/* off a Supabase bearer token, not a cookie —
@@ -169,6 +190,25 @@ async function load() {
   }
 }
 
+// The newest stored takes of one recordist, playable. Link-is-identity, like the
+// booth itself, so no bearer token is needed or sent.
+async function toggleTakes(voiceId) {
+  if (takes.value[voiceId]) {
+    const { [voiceId]: _closed, ...rest } = takes.value
+    takes.value = rest
+    return
+  }
+  takes.value = { ...takes.value, [voiceId]: { loading: true, error: null, items: [] } }
+  try {
+    const res = await fetch(`${apiBase()}/api/recording/voice/${encodeURIComponent(voiceId)}/latest-takes?limit=20`)
+    if (!res.ok) throw new Error(`Could not load takes (${res.status})`)
+    const data = await res.json()
+    takes.value = { ...takes.value, [voiceId]: { loading: false, error: null, items: data.takes || [] } }
+  } catch (err) {
+    takes.value = { ...takes.value, [voiceId]: { loading: false, error: (err && err.message) || 'Network error', items: [] } }
+  }
+}
+
 async function toggle(row, humanOnly) {
   saving.value = row.language
   try {
@@ -236,6 +276,10 @@ h1 { font-family: 'Josefin Sans', sans-serif; font-size: 1.6rem; margin: 0 0 0.3
    name, a count and a button, and wrapping mid-list reads as noise. */
 .voice-kinds { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 0.15rem 0.9rem; padding-left: 1.3rem; }
 .kind { color: var(--color-paper-dim, #c1c1bb); font-size: 0.72rem; font-family: 'IBM Plex Mono', monospace; }
+.takes { flex-basis: 100%; list-style: none; margin: 0; padding: 0 0 0 1.3rem; }
+.take { display: flex; flex-direction: column; gap: 0.15rem; padding: 0.4rem 0; border-top: 1px solid var(--color-graphite, #475569); }
+.take-meta { color: var(--color-paper-dim, #c1c1bb); font-size: 0.72rem; font-family: 'IBM Plex Mono', monospace; }
+.take audio { width: 100%; max-width: 420px; }
 .copy-btn {
   font-family: 'Josefin Sans', sans-serif; font-size: 0.78rem; font-weight: 600;
   color: var(--color-void, #0f172a); background: var(--color-emerald, #06ffa5);

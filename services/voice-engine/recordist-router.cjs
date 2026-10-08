@@ -16,6 +16,7 @@
  *   GET  /voice/:voiceId                    the by-language queue (recordist-queue.cjs)
  *   POST /voice/:voiceId/take               a take → the EXISTING upload seam
  *   GET  /voice/:voiceId/line/:lineId/clip  the STORED bytes, for playback
+ *   GET  /voice/:voiceId/latest-takes       newest stored takes, signed URLs (admin page)
  *   GET  /coverage                          per-language bar (every human_only language)
  *   GET  /languages  PUT /languages/:language   the policy itself (admin)
  *
@@ -1595,6 +1596,42 @@ module.exports = function createRecordistRouter({
       res.redirect(302, url)
     } catch (err) {
       logger.error(`[Recordist] clip: ${err.message}`)
+      res.status(err.status || 500).json({ error: err.message })
+    }
+  })
+
+  // ── 3a. the voice's newest stored takes ────────────────────────────────────
+  //
+  // Tom, 2026-10-08: the admin recording page must let him HEAR what each
+  // assigned recordist has just made. The line-keyed clip route above answers
+  // "play this line"; this answers "what did they record last", straight from
+  // course_audio by recording time, so it covers every kind of take (pod, seed,
+  // quarry, re-record) without walking the queue. Link-is-identity, exactly as
+  // the clip route: the voice id is the claim and the same signed URLs are minted.
+  router.get('/voice/:voiceId/latest-takes', async (req, res) => {
+    try {
+      const recordist = await recordistOr404(req, res)
+      if (!recordist) return
+      const limit = Math.min(Math.max(parseInt(req.query.limit, 10) || 10, 1), 50)
+      const { data, error } = await db()
+        .from('course_audio')
+        .select('id, course_code, role, text, s3_key, created_at')
+        .eq('language', recordist.language)
+        .in('voice_id', recordist.spellings)
+        .order('created_at', { ascending: false })
+        .limit(limit)
+      if (error) throw new Error(`latest takes read failed: ${error.message}`)
+      const takes = await Promise.all((data || []).map(async (r) => ({
+        audioId: r.id,
+        courseCode: r.course_code,
+        role: r.role,
+        text: r.text,
+        recordedAt: r.created_at,
+        url: r.s3_key ? await s3.getAudioSignedUrl(r.id, 3600, { s3Key: r.s3_key }) : null,
+      })))
+      res.json({ voiceId: recordist.voiceId, takes })
+    } catch (err) {
+      logger.error(`[Recordist] latest-takes: ${err.message}`)
       res.status(err.status || 500).json({ error: err.message })
     }
   })

@@ -2221,10 +2221,52 @@ function kindTally(lines) {
   return out
 }
 
+/**
+ * EVERY VOICE THAT IS ASSIGNED TO SOMEONE, whether or not a policy row names it.
+ *
+ * Tom, 2026-10-08: "/admin/recording should show all recording that is assigned
+ * to someone." The page was built from `language_recording_policy WHERE
+ * human_only` and from nothing else, so a recordist who is assigned by the other
+ * door — cast on a course in `voice_config.podCast` and named by no policy row
+ * (Dan, South Welsh; Catalan's two community voices) — had a working booth and
+ * no row on this page, and his 77 lines were counted as `unrouted` on Welsh. A
+ * policy language that is not human_only but names a voice (German, Finnish) was
+ * hidden for the same reason. Both are listed here.
+ *
+ * Returns `[{ language, policy|null }]`: every language with a human_only policy,
+ * every language whose policy names a voice, and every language holding a cast
+ * human voice. The cast voices themselves are resolved per language by
+ * castOnlyVoicesFor, through the ONE resolver the booth link uses.
+ */
+async function assignedLanguages(db, { cache } = {}) {
+  const policies = await loadPolicies(db, { cache })
+  const byLang = new Map()
+  for (const p of policies) {
+    if (p.human_only || Object.keys(p.voices || {}).length) byLang.set(p.language, p)
+  }
+  const { data, error } = await memoRead(cache, 'courses:list', () => db
+    .from('courses')
+    .select('course_code, target_lang, known_lang, voice_config, dialect'))
+  if (error) throw new Error(`course list failed: ${error.message}`)
+  const castVoices = new Map() // voiceId -> language
+  for (const c of data || []) {
+    let language
+    try { language = canonicalLanguage(c.target_lang) } catch { continue }
+    for (const entry of Object.values((c.voice_config && c.voice_config.podCast) || {})) {
+      if (!entry || typeof entry !== 'object' || !/^human_/.test(String(entry.voiceId || ''))) continue
+      if (!castVoices.has(entry.voiceId)) castVoices.set(entry.voiceId, language)
+    }
+  }
+  for (const language of new Set(castVoices.values())) {
+    if (!byLang.has(language)) byLang.set(language, null)
+  }
+  return { languages: [...byLang.entries()].map(([language, policy]) => ({ language, policy })), castVoices }
+}
+
 async function buildCoverage(db) {
   // ONE cache for this request, discarded with it. See memoRead.
   const cache = new Map()
-  const policies = await loadPolicies(db, { humanOnlyOnly: true, cache })
+  const { languages: assigned, castVoices } = await assignedLanguages(db, { cache })
 
   // CONCURRENTLY, because this is Tom's dashboard and it was costing him the
   // page. Done language-by-language it took 7.7s cold against the live estate —
@@ -2232,17 +2274,18 @@ async function buildCoverage(db) {
   // failed for whoever loaded it first with a cold cache. The languages share no
   // state, so the wall clock should be the slowest ONE, not the sum of all of
   // them. Same reasoning for the two voices inside a language.
-  const out = await Promise.all(policies.map(async (policy) => {
-    const voices = policy.voices || {}
+  const out = await Promise.all(assigned.map(async ({ language: langCode, policy }) => {
+    const voices = (policy && policy.voices) || {}
     // ONE pass over the language's pods, whatever the cast size — and it runs
     // even when the language has no cast at all, which is the only way pdc's
     // and bre's uncast lines are visible rather than reported as a flat zero.
-    const language = await cachedLanguageLines(db, policy.language, { cache })
+    const language = await cachedLanguageLines(db, langCode, { cache })
 
     const claimed = new Set()
-    const perVoice = (await Promise.all(Object.keys(voices).map(async (slot) => {
-      const recordist = await resolveRecordist(db, voices[slot].voiceId, { cache })
-      if (!recordist) return null
+    const seenVoices = new Set()
+    const tallyVoice = async (recordist) => {
+      if (!recordist || seenVoices.has(recordist.voiceId)) return null
+      seenVoices.add(recordist.voiceId)
       for (const spelling of recordist.spellings) claimed.add(spelling)
       // TOM'S PAGE SEES EVERYTHING. The artist's wire masks rejected history
       // (finishQueue's `maskRejectedHistory`, default on); this one must not, or
@@ -2257,6 +2300,10 @@ async function buildCoverage(db) {
         name: recordist.displayName,
         gender: recordist.gender,
         dialect: recordist.dialect,
+        // Which door assigned them: a policy slot, or a course cast with no
+        // policy row. The page says so, and lists the courses of a cast.
+        assignedVia: recordist.slot ? 'policy' : 'cast',
+        courses: Array.isArray(recordist.castCourses) ? recordist.castCourses : null,
         total: q.total,
         recorded: q.recorded,
         // ADDITIVE, AND IT IS WHY THIS FUNCTION CHANGED. `recorded` above is
@@ -2274,17 +2321,29 @@ async function buildCoverage(db) {
         // against each other line by line rather than only in aggregate.
         kinds: kindTally(q.lines),
       }
-    }))).filter(Boolean)
+    }
+
+    const policyVoices = await Promise.all(Object.keys(voices).map(async (slot) =>
+      tallyVoice(await resolveRecordist(db, voices[slot].voiceId, { cache }))))
+    // The cast-only voices of THIS language, after the policy ones so a voice a
+    // policy row also names is tallied once, as policy (seenVoices).
+    const castVoiceIds = [...castVoices].filter(([, l]) => l === langCode).map(([id]) => id)
+    const castTallies = await Promise.all(castVoiceIds.map(async (id) => {
+      const recordist = await resolveRecordist(db, id, { cache })
+      return recordist && recordist.language === langCode ? tallyVoice(recordist) : null
+    }))
+    const perVoice = [...policyVoices, ...castTallies].filter(Boolean)
 
     // Ordered so the bar does not reshuffle between two loads. Dialect first,
     // because a two-dialect language reads as two pairs, not four voices.
     perVoice.sort((a, b) =>
       String(a.dialect).localeCompare(String(b.dialect)) ||
-      String(a.gender).localeCompare(String(b.gender)))
+      String(a.gender).localeCompare(String(b.gender)) ||
+      String(a.voiceId).localeCompare(String(b.voiceId)))
 
-    // Lines NO POLICY VOICE OWNS: cast to a gender in a dialect this language
+    // Lines NO LISTED VOICE OWNS: cast to a gender in a dialect this language
     // has no voice for (the Southern Welsh backlog), or owned by a community
-    // voice the policy does not name. Counting them is what stops a fix from
+    // voice that is cast nowhere. Counting them is what stops a fix from
     // hiding what it moved. They are NOT folded into `uncast`, which means
     // something different and narrower — no gender on the speaker at all.
     let unrouted = 0
@@ -2297,9 +2356,9 @@ async function buildCoverage(db) {
     const withTake = perVoice.reduce((n, v) => n + v.withTake, 0)
     const again = perVoice.reduce((n, v) => n + v.again, 0)
     return {
-      language: policy.language,
-      languageName: languageName(policy.language),
-      humanOnly: true,
+      language: langCode,
+      languageName: languageName(langCode),
+      humanOnly: !!(policy && policy.human_only),
       total,
       recorded,
       // See takeTally: `recorded` is the narrow count, `withTake` is how much
@@ -2658,6 +2717,7 @@ async function clearRerecordWants({ db, recordist, text, sentenceId = null, keep
 }
 
 module.exports = {
+  assignedLanguages,
   clearRerecordWants,
   isTestFixtureCourse,
   takeGLineId,
