@@ -150,6 +150,7 @@ export default defineConfig({
       'tools/frame-layer/derive-and-baskets.test.cjs',
       'tools/frame-layer/extract-patterns.test.cjs',
       'tools/frame-layer/v4/apply-gap-fill.test.cjs',
+      'tools/frame-layer/v4/gap-fill-course.test.cjs',
       'tools/phrase-lab/score.test.cjs',
       'tools/pod-recast-target-pair.test.cjs',
       'tools/pod-voice-pool-reorder.test.cjs',

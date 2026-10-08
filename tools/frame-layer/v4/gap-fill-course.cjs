@@ -75,11 +75,13 @@ const REGISTER = {
   deu: /(^|[^.!?]\s)(Sie|Ihnen|Ihr|Ihre|Ihren|Ihrem|Ihrer)\b/,
   por: /\b(o senhor|a senhora|os senhores|as senhoras)\b/i,
 };
-function registerBreach(courseCode, target, known) {
+function registerBreach(courseCode, target, known, legoTarget = '') {
   const lang = courseCode.split('_for_')[0].split('_')[0];
   const re = REGISTER[lang];
   if (!re || !re.test(target)) return null;
-  if (/\b(sir|madam)\b/i.test(known)) return null; // vocatively marked — context insists
+  if (re.test(legoTarget)) return null; // the course itself teaches this form in the LEGO being practised
+  // vocatively marked, or plainly plural in the English — context insists
+  if (/\b(sir|madam|you all|all of you|you two|both of you|you guys)\b/i.test(known)) return null;
   const m = target.match(re);
   return `register: formal address "${(m[2] || m[0]).trim()}" without a vocative (tu-first)`;
 }
@@ -145,7 +147,7 @@ async function gateStage() {
     const lego = legoOf(r);
     if (!lego || lego.target_text !== r.lego_target || lego.known_text !== r.lego_known) reasons.push('LEGO changed or gone since generation');
     if (/[()]/.test(r.known_text + r.target_text)) reasons.push('parentheses');
-    const reg = registerBreach(course, r.target_text, r.known_text); if (reg) reasons.push(reg);
+    const reg = registerBreach(course, r.target_text, r.known_text, r.lego_target); if (reg) reasons.push(reg);
     const key = norm(r.known_text) + '|' + norm(r.target_text);
     if (seen.has(key)) reasons.push('duplicate of another candidate');
     if (conflicts.has(norm(r.known_text))) reasons.push('ZUT: same English given different targets across windows');
