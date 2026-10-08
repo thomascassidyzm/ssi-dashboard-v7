@@ -25,7 +25,15 @@ ita_for_jpn ita_for_zho spa_for_jpn spa_for_zho zho_for_gle zho_for_jpn.
 **Defaults taken.** Known languages without a pair-contract (deu, fra, ita, spa, por, zho, gle known) use a
 stricter fallback than the live route, which silently skips: every known-side word must already have been
 heard in that course by the LEGO's seed. French formal `vous`, Spanish `usted`, German mid-sentence `Sie` and
-Portuguese `o senhor` are cut unless the English says sir or madam.
+Portuguese `o senhor` are cut unless the English marks them (sir, madam, you all) or the
+practised LEGO itself teaches the form.
+
+**A quality judge after the gates.** An Astra cold read of 80 gated French rows (#17·M) cut 9 that every
+mechanical gate had passed: wrong tense, calques, stilted passives, arbitrary quotas. So every gated row now goes
+past an Opus judge (`tools/frame-layer/v4/quality-judge.cjs`) that checks meaning, a natural known side under the
+clunkiness law, and BUILD extensibility. Anything it flags is cut. On the same 80 rows it caught all 9 of Astra's
+cuts and 18 more, about a third in total. That is accepted: these are additions, so a cut loses nothing a
+learner has.
 
 ## 2026-10-08 — German Pod 1 re-recorded one take per turn in Nico + Viktoria; Drill cut from the takes (job #216)
 
