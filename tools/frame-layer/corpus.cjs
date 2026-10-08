@@ -5,6 +5,8 @@
  * history otherwise, and the admission diff would then call old frames new.
  * READ-ONLY.
  */
+const { loadRunningOrder, filterSeedsBefore } = require('../../services/shared/running-order.cjs');
+
 async function pageAll(sb, table, sel, apply) {
   const out = [];
   for (let from = 0; ; from += 1000) {
@@ -32,24 +34,31 @@ async function pageAll(sb, table, sel, apply) {
  * ignored when computing what a seed TEACHES.
  */
 async function loadCorpus(sb, course, seed) {
+  // "Before" is the RUNNING ORDER when the course has one (job #949): a Hadau Creiddiol block
+  // seed 1001+ follows old 137, so old 138+ are not its history. The reads below then hold only
+  // seeds at or before this one in that order, so "prior" is simply "not this seed". No running
+  // order -> the exact seed_number filters this always ran.
+  const order = await loadRunningOrder(sb, course);
+  const upTo = (q, inclusive) => filterSeedsBefore(q, order, seed, { inclusive });
+  const isPrior = order ? (n) => n !== seed : (n) => n < seed;
   const [{ data: seedRow }, legos, priorSeeds, phrases, components] = await Promise.all([
     sb.from('course_seeds').select('seed_number,known_text,target_text')
       .eq('course_code', course).eq('seed_number', seed).maybeSingle(),
     pageAll(sb, 'course_legos', 'seed_number,lego_id,lego_index,type,known_text,target_text',
-      q => q.eq('course_code', course).lte('seed_number', seed).order('seed_number').order('lego_index')),
+      q => upTo(q.eq('course_code', course), true).order('seed_number').order('lego_index')),
     pageAll(sb, 'course_seeds', 'seed_number,known_text,target_text',
-      q => q.eq('course_code', course).lt('seed_number', seed).order('seed_number')),
+      q => upTo(q.eq('course_code', course), false).order('seed_number')),
     pageAll(sb, 'course_practice_phrases', 'id,lego_index,position,phrase_role,known_text,target_text',
       q => q.eq('course_code', course).eq('seed_number', seed).order('lego_index').order('position')),
     // every component admitted at or before this seed — the availability layer
     pageAll(sb, 'course_practice_phrases', 'seed_number,lego_index,known_text,target_text',
-      q => q.eq('course_code', course).eq('phrase_role', 'component').lte('seed_number', seed)
+      q => upTo(q.eq('course_code', course).eq('phrase_role', 'component'), true)
              .order('seed_number').order('lego_index')),
   ]);
   return { seedRow, legos, priorSeeds, phrases, components,
            ownLegos: legos.filter(l => l.seed_number === seed),
-           priorLegos: legos.filter(l => l.seed_number < seed),
-           priorComponents: components.filter(c => c.seed_number < seed),
+           priorLegos: legos.filter(l => isPrior(l.seed_number)),
+           priorComponents: components.filter(c => isPrior(c.seed_number)),
            ownComponents: components.filter(c => c.seed_number === seed) };
 }
 

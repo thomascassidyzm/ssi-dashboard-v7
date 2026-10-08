@@ -61,6 +61,7 @@
 
 require('dotenv').config({ quiet: true });
 const fs = require('fs');
+const { loadRunningOrder, orderKey } = require('../../services/shared/running-order.cjs');
 
 const norm = (s) =>
   String(s || '')
@@ -183,6 +184,11 @@ function determinism(table, known, target) {
  */
 async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
   const legos = await fetchAllLegos(supabase, courseCode);
+  // "Introduced" is earlier in the RUNNING ORDER when the course has one (job #949; Aran's
+  // Hadau Creiddiol weave): a block seed 1001+ plays after old seed 137, so old 138-316 are
+  // NOT yet taught there however low their ids, and dropped seeds are nobody's history.
+  // No running order -> orderKey is the seed number and this is exactly the old filter.
+  const order = await loadRunningOrder(supabase, courseCode);
   if (!legos.length) throw new Error(`no LEGOs found for ${courseCode}`);
   // A component's known side is a literal tiling gloss the learner is never
   // prompted with, so it may never make a LEGO ambiguous — Tom's ruling
@@ -196,9 +202,11 @@ async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
   const table = buildMappingTable(legos);
   const legoTable = buildMappingTable(legos, { withComponents: false });
 
-  const introduced = legos.filter(
-    (l) => l.seed_number < seedNumber || (l.seed_number === seedNumber && l.lego_index < legoIndex)
-  );
+  const at = orderKey(order, seedNumber);
+  const introduced = legos.filter((l) => {
+    const k = orderKey(order, l.seed_number);
+    return k < at || (l.seed_number === seedNumber && l.lego_index < legoIndex);
+  });
 
   const items = [];
   for (const l of introduced) {
@@ -211,7 +219,7 @@ async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
       type: l.type,
       known: l.known_text,
       target: l.target_text,
-      recency: seedNumber - l.seed_number,
+      recency: at - orderKey(order, l.seed_number),
       ...d
     });
     for (const c of l.components || []) {
@@ -225,7 +233,7 @@ async function buildInventory(supabase, courseCode, seedNumber, legoIndex = 1) {
         type: 'C',
         known: c.known,
         target: c.target,
-        recency: seedNumber - l.seed_number,
+        recency: at - orderKey(order, l.seed_number),
         ...cd
       });
     }
