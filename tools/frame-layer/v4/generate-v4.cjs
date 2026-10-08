@@ -62,7 +62,7 @@ const ROOT = path.join(__dirname, '..', '..', '..');
 const EVIDENCE = process.env.V4_EVIDENCE || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '468-frame-diversity');
 const MODEL = process.env.V4_MODEL || 'fable';
 const EFFORT = process.env.V4_EFFORT || 'low';
-const LEDGER_FILE = process.env.V4_LEDGER || 'token-ledger.json';
+const LEDGER_FILE = 'token-ledger.json'; // default; V4_LEDGER is read per call so a driver can give each window its own (#924)
 const CLAUDE = '/home/tomcassidy/.local/bin/claude';
 const BUILD_FLOOR = 4, USE_FLOOR = 5;
 
@@ -373,7 +373,7 @@ async function run(course, start, end, { dry = false, budget = 400000, gaps = fa
 
   // CUMULATIVE budget across every region of the pilot: a ledger in the evidence
   // dir, read before each call. Tom's cap for the whole pilot is ~400k tokens.
-  const ledger = path.join(EVIDENCE, LEDGER_FILE);
+  const ledger = ledgerPath();
   const readLedger = () => { try { return JSON.parse(fs.readFileSync(ledger, 'utf8')); } catch { return { total: 0, calls: [] }; } };
   let spent = 0;
   const call = (p, label) => {
@@ -477,7 +477,7 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   console.log(`${course} ${start}-${end} GAPS: ${newLegos.length} LEGOs, missing ${missing.join(' ')}, prompt ${prompt.length} chars`);
   if (dry) { fs.writeFileSync(file.replace('.json', '.prompt.txt'), prompt); return out; }
   if (!missing.length) { fs.writeFileSync(file, JSON.stringify(out, null, 1)); return out; }
-  const ledger = path.join(EVIDENCE, LEDGER_FILE);
+  const ledger = ledgerPath();
   const L = (() => { try { return JSON.parse(fs.readFileSync(ledger, 'utf8')); } catch { return { total: 0, calls: [] }; } })();
   if (L.total >= budget) throw new Error(`budget ${budget} tokens exhausted (ledger ${L.total})`);
   const label = pass === 1 ? 'gaps' : `gaps-${pass}`;
@@ -496,6 +496,9 @@ async function runGaps(course, start, end, { dry = false, budget = 120000, missi
   return out;
 }
 
+/** The token ledger, resolved at CALL time: a driver sets V4_LEDGER per window. */
+function ledgerPath() { return path.join(EVIDENCE, process.env.V4_LEDGER || LEDGER_FILE); }
+
 /** Candidate set to disk, named by call: v4-<course>-<s>-<e>.candidates-<label>.json */
 function persistCandidates(file, label, r) {
   const p = file.replace(/\.json$/, `.candidates-${label}.json`);
@@ -503,7 +506,7 @@ function persistCandidates(file, label, r) {
   return p;
 }
 
-module.exports = { run, runGaps, buildGapPrompt, gate, tiles, knownSideCheck, knownHeardCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
+module.exports = { ledgerPath, run, runGaps, buildGapPrompt, gate, tiles, knownSideCheck, knownHeardCheck, buildPrompt, carriersByFrame, claudeArgs, persistCandidates, MODEL, EFFORT };
 
 if (require.main === module) {
   const args = process.argv.slice(2);

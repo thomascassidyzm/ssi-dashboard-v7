@@ -62,3 +62,11 @@ test('a non-English known side is checked against what the course has already sa
   assert.deepStrictEqual(gen.knownHeardCheck('我想去', ['我想', '去'], true), []);
   assert.deepStrictEqual(gen.knownHeardCheck('我想吃', ['我想', '去'], true), ['吃']);
 });
+
+test('the ledger is resolved per call, so each window gets its own budget (#924)', () => {
+  process.env.V4_LEDGER = 'ledger-301.json';
+  assert.strictEqual(path.basename(gen.ledgerPath()), 'ledger-301.json');
+  process.env.V4_LEDGER = 'ledger-311.json';
+  assert.strictEqual(path.basename(gen.ledgerPath()), 'ledger-311.json');
+  delete process.env.V4_LEDGER;
+});
