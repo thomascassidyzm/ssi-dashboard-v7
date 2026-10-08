@@ -1972,7 +1972,7 @@ module.exports = function createRecordistRouter({
         exists: true, voiceId: row.voice_id, language: row.language, status: row.status,
         submittedAt: row.submitted_at, reviewedBy: row.reviewed_by, reviewedAt: row.reviewed_at, note: row.review_note,
         packVoiceId: pack.voiceId, items,
-        autoVerdict: verdict, verdictThresholds: setupCheck.SETUP_VERDICT,
+        autoVerdict: verdict && verdict.verdict !== 'unmeasured' && verdict.judged !== 0 ? verdict : null, verdictThresholds: setupCheck.SETUP_VERDICT,
       })
     } catch (err) {
       logger.error(`[Recordist] setup-check review: ${err.message}`)
@@ -2042,7 +2042,7 @@ module.exports = function createRecordistRouter({
       try {
         const row = await loadSetupRow(pack.setup.voiceId)
         const r = await measureAndJudgeSetup(row, pack, newest)
-        autoVerdict = { verdict: r.verdict.verdict, reasons: r.verdict.reasons }
+        autoVerdict = r.verdict.verdict === 'unmeasured' ? null : { verdict: r.verdict.verdict, reasons: r.verdict.reasons }
         metricsPatch = { ...r.metrics, measured: r.measured, verdict: r.verdict }
       } catch (err) { logger.error(`[Recordist] setup-check auto-verdict: ${err.message}`) }
       const { error } = await db().from('recordist_setup_checks').update({ status: 'submitted', submitted_at: new Date().toISOString(), ...(metricsPatch ? { metrics: metricsPatch } : {}) }).eq('voice_id', pack.setup.voiceId)

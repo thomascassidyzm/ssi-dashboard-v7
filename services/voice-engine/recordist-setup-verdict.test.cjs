@@ -3,7 +3,7 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
-const { judgeSetupCheck, analyseSamples, SETUP_HINTS } = require('./recordist-setup-check.cjs')
+const { judgeSetupCheck, analyseSamples, SETUP_HINTS, artistVerdict } = require('./recordist-setup-check.cjs')
 
 const dan = (i) => ({ id: `p${i}`, floorDb: -92, speechDb: -20, cleanSnrDb: 72, clipFracPct: 0 })
 const set = (n, over = {}, which = () => true) =>
@@ -34,9 +34,11 @@ describe('judgeSetupCheck', () => {
   })
   it('leans to pass: one bad take, too few takes and unmeasured takes never fail', () => {
     expect(judgeSetupCheck(set(10, { floorDb: -40, cleanSnrDb: 20 }, (i) => i === 0)).verdict).toBe('pass')
-    expect(judgeSetupCheck(set(1, { floorDb: -40, cleanSnrDb: 20 })).verdict).toBe('pass')
-    expect(judgeSetupCheck({ p01: null, p02: { levelDb: -20 } }).verdict).toBe('pass')
-    expect(judgeSetupCheck(undefined).verdict).toBe('pass')
+    expect(judgeSetupCheck(set(1, { floorDb: -40, cleanSnrDb: 20 })).verdict).toBe('unmeasured')
+    expect(judgeSetupCheck({ p01: null, p02: { levelDb: -20 } }).verdict).toBe('unmeasured')
+    expect(judgeSetupCheck(undefined).verdict).toBe('unmeasured')
+    expect(artistVerdict({ status: 'submitted', metrics: { verdict: { verdict: 'unmeasured', reasons: [], judged: 0 } } })).toBeNull()
+    expect(artistVerdict({ status: 'submitted', metrics: { verdict: { verdict: 'pass', reasons: [], judged: 0 } } })).toBeNull()
   })
 })
 
