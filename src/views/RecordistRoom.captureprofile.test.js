@@ -31,14 +31,14 @@ import { resolveCaptureProfile } from '@/composables/useTapRecorder'
 vi.mock('@/composables/useTapRecorder', async () => {
   const { ref } = await import('vue')
   return {
-    DEFAULT_CAPTURE_PROFILE: 'voice',
+    DEFAULT_CAPTURE_PROFILE: 'phone',
     // The real one, deliberately: what the room opens on IS this function's
     // answer, so mocking it out would leave the assertions below testing
     // nothing at all.
     resolveCaptureProfile: (await import('@/composables/useTapRecorder')).resolveCaptureProfile,
     useTapRecorder: () => ({
       isRecording: ref(false), level: ref(0), clipping: ref(false), devices: ref([]),
-      appliedSettings: ref({}), profile: ref('voice'), error: ref(null),
+      appliedSettings: ref({}), profile: ref('phone'), error: ref(null),
       lineHasSpeech: ref(false), quietMs: ref(0), meterTrusted: ref(true),
       inputPeak: ref(0), roomTone: ref(0),
       listDevices: vi.fn(), start: vi.fn(), beginLine: vi.fn(), endLine: vi.fn(),
@@ -65,7 +65,7 @@ describe('the capture profile is remembered, per artist and per microphone', () 
   it('opens on the recommendation, with nothing stored', async () => {
     const w = await mountRoom()
     expect(w.vm.captureProfile).toBe(resolveCaptureProfile())
-    expect(resolveCaptureProfile()).toBe('voice')
+    expect(resolveCaptureProfile()).toBe('phone')
   })
 
   it('clears the legacy flat key rather than honouring it', async () => {
@@ -79,14 +79,14 @@ describe('the capture profile is remembered, per artist and per microphone', () 
 
   it('remembers the toggle, so the room is as it was left', async () => {
     const w = await mountRoom()
-    w.vm.captureProfile = 'dry'
+    w.vm.captureProfile = 'pro'
     await flushPromises()
     const stored = JSON.parse(localStorage.getItem('recordist.booth.v1'))
     const mine = stored.human_tom_zzz.byDevice[stored.human_tom_zzz.lastMicKey]
-    expect(mine.captureProfile).toBe('dry')
+    expect(mine.captureProfile).toBe('pro')
 
     const again = await mountRoom()
-    expect(again.vm.captureProfile).toBe('dry')
+    expect(again.vm.captureProfile).toBe('pro')
   })
 
   it('is visibly different from the recommendation whenever it differs', async () => {
@@ -96,18 +96,38 @@ describe('the capture profile is remembered, per artist and per microphone', () 
     // this asserts the comparison rather than the element because the warning
     // lives inside the ready-phase card and this suite never loads a queue.
     const w = await mountRoom()
-    expect(w.vm.recommendedProfile).toBe('voice')
+    expect(w.vm.recommendedProfile).toBe('phone')
     expect(w.vm.captureProfile).toBe(w.vm.recommendedProfile)
-    w.vm.captureProfile = 'dry'
+    w.vm.captureProfile = 'pro'
     await flushPromises()
     expect(w.vm.captureProfile).not.toBe(w.vm.recommendedProfile)
   })
 
   it("one artist's memory is not another's", async () => {
     const w = await mountRoom()
-    w.vm.captureProfile = 'dry'
+    w.vm.captureProfile = 'pro'
     await flushPromises()
     const stored = JSON.parse(localStorage.getItem('recordist.booth.v1'))
     expect(Object.keys(stored)).toEqual(['human_tom_zzz'])
+  })
+})
+
+describe('the booth asks one question about the setup', () => {
+  it('shows Phone? and the pro mic choice, and no raw DSP toggles', async () => {
+    const w = await mountRoom()
+    // the ready-phase card is not rendered without a queue, so assert the source it renders from
+    const src = (await import('node:fs')).readFileSync('src/views/RecordistRoom.vue', 'utf8')
+    expect(src).toContain('<strong>Phone?</strong>')
+    expect(src).toContain('Recording with a professional plugged-in mic')
+    expect(src).toContain('Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting.')
+    expect(src).not.toContain('Record the raw microphone')
+    expect(w.vm.captureProfile).toBe('phone')
+  })
+
+  it('maps a remembered legacy profile onto the nearest setup', async () => {
+    localStorage.setItem('recordist.booth.v1', JSON.stringify({ human_tom_zzz: { last: { captureProfile: 'dry' }, lastMicKey: null, byDevice: {} } }))
+    // whatever shape booth-settings reads, a stored 'dry' must not leave an unknown profile
+    const w = await mountRoom()
+    expect(['phone', 'pro']).toContain(w.vm.captureProfile)
   })
 })

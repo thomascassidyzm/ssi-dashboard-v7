@@ -219,20 +219,17 @@
         </select>
       </div>
 
-      <label class="toggle-row">
-        <input type="checkbox" :checked="captureProfile === 'dry'"
-               @change="captureProfile = $event.target.checked ? 'dry' : 'voice'" />
-        <span><strong>Record the raw microphone</strong>
-          <small>Off is right for almost everyone — the device cleans the sound up as it records, the way a voice
-            note does, and that is what a laptop or a phone microphone wants. Turn it on only for a proper studio
-            microphone. However you leave it, this room opens on it again next time, for this microphone.</small></span>
-      </label>
-      <!-- A remembered choice must never be an invisible one. This is the half
-           of the 2026-09-02 fix that survives the return of persistence. -->
-      <p v-if="captureProfile !== recommendedProfile" class="dry-warning">
-        Raw microphone is on, which is not the usual setting. Unless you are on a proper studio microphone,
-        takes may record much quieter than normal — turn it off.
-      </p>
+      <div class="setup-pick" role="radiogroup" aria-label="Phone?">
+        <label class="toggle-row">
+          <input type="radio" name="setup" value="phone" v-model="captureProfile" />
+          <span><strong>Phone?</strong>
+            <small>Hold at comfortable reading distance so you can clearly see the phone screen. About the distance you hold the phone when texting.</small></span>
+        </label>
+        <label class="toggle-row">
+          <input type="radio" name="setup" value="pro" v-model="captureProfile" />
+          <span><strong>Recording with a professional plugged-in mic</strong></span>
+        </label>
+      </div>
 
       <!-- THERE IS NO "RE-READ LINES I'VE ALREADY RECORDED" SWITCH ANY MORE.
            There was one here until 2026-09-12, remembered per artist across
@@ -2502,7 +2499,10 @@ async function load() {
 let settingsMicKey = null
 function applyBoothSettings(saved) {
   if (!saved) return
-  if (saved.captureProfile === 'dry' || saved.captureProfile === 'voice') captureProfile.value = saved.captureProfile
+  // Older rooms stored 'voice' (the old default) or 'dry' (someone who ticked
+  // raw for a studio mic); they land on the setup they were closest to.
+  if (saved.captureProfile === 'phone' || saved.captureProfile === 'pro') captureProfile.value = saved.captureProfile
+  else if (saved.captureProfile === 'dry') captureProfile.value = 'pro'
   if (typeof saved.autoAdvance === 'boolean') autoAdvance.value = saved.autoAdvance
   // The old re-read switch (`saved.includeRecorded`) is deliberately NOT read
   // back: a remembered tick of it is exactly what put Tom's Start button on a
@@ -2701,11 +2701,6 @@ kbd {
 .toggle-row input { margin-top: 0.2rem; width: 20px; height: 20px; accent-color: var(--color-emerald, #06ffa5); flex-shrink: 0; }
 .toggle-row strong { display: block; font-size: 0.95rem; }
 .toggle-row small { display: block; font-size: 0.8rem; color: var(--color-paper-dim, #c1c1bb); line-height: 1.45; margin-top: 0.15rem; }
-.dry-warning {
-  margin: -1rem 0 1.5rem; padding: 0.6rem 0.8rem; border-radius: 6px;
-  background: rgba(255, 176, 32, 0.12); border: 1px solid rgba(255, 176, 32, 0.45);
-  color: var(--color-paper, #f4f4ef); font-size: 0.85rem; line-height: 1.45;
-}
 
 .setup-card { display: flex; flex-direction: column; gap: 0.5rem; padding: 1rem; margin: 0 0 1rem; border: 1px solid var(--color-gold, #d4a84b); border-radius: 10px; background: rgba(212, 168, 75, 0.08); }
 .setup-card .setup-note { color: var(--color-gold, #d4a84b); }

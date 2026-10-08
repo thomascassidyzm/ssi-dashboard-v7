@@ -128,6 +128,22 @@ function pickMime() {
 // difference is not three booleans — on iOS it is which audio unit Safari
 // builds, and everything about the resulting signal follows from that.
 export const CAPTURE_PROFILES = {
+  // THE TWO SETUPS THE RECORDIST IS ASKED ABOUT (Tom, 2026-10-08). Everything
+  // else below is a lab profile for CaptureAB and nobody else.
+  //
+  // phone: Dan's proven settings, bare iPhone at reading distance, about half a
+  // metre. Echo cancellation ON, because on WebKit it is the flag that picks the
+  // voice audio unit and with it the gain staging a phone at that distance
+  // needs (see the header). Noise suppression and auto gain OFF: Aran listened
+  // to Dan's takes against his own, could not tell them apart, and Tom ruled
+  // both good enough as they are.
+  phone: { echoCancellation: true, noiseSuppression: false, autoGainControl: false },
+  // pro: a plugged-in USB or XLR mic. A proper mic sitting close gives a strong,
+  // clean signal, so it needs no browser gain, no gate eating quiet consonants,
+  // and no echo canceller colouring the tone (and on WebKit, echo cancellation
+  // true would swap in the voice unit and resample it). Everything off is the
+  // dry capture the server then masters.
+  pro: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
   // Apple's voice chain (VoiceProcessingIO): echo cancel, noise suppression,
   // and the gain staging that makes a phone at reading distance land at a
   // usable level. What a voice note effectively gets.
@@ -135,7 +151,9 @@ export const CAPTURE_PROFILES = {
   // The bare hardware tap (RemoteIO). No processing — and on iOS, no gain.
   dry: { echoCancellation: false, noiseSuppression: false, autoGainControl: false },
 }
-export const DEFAULT_CAPTURE_PROFILE = 'voice'
+export const DEFAULT_CAPTURE_PROFILE = 'phone'
+// The only two the recordist can choose between.
+export const RECORDIST_SETUPS = ['phone', 'pro']
 
 // THE RECOMMENDED PROFILE IS THE VOICE CHAIN, EVERYWHERE (Tom, 2026-09-04).
 //

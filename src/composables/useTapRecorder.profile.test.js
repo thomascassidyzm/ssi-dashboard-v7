@@ -59,15 +59,24 @@ beforeEach(() => {
 })
 
 describe('capture profile', () => {
-  it('asks for the voice-processed chain by default', async () => {
+  it("asks for Dan's proven phone settings by default: EC on, NS off, AGC off", async () => {
     const rec = useTapRecorder()
     await rec.start()
     expect(gumCalls[0].audio).toMatchObject({
       echoCancellation: true,
-      noiseSuppression: true,
-      autoGainControl: true,
+      noiseSuppression: false,
+      autoGainControl: false,
     })
-    expect(rec.profile.value).toBe('voice')
+    expect(rec.profile.value).toBe('phone')
+  })
+
+  it('the professional mic setup asks for no browser processing at all', async () => {
+    const rec = useTapRecorder()
+    await rec.start(null, 'pro')
+    expect(gumCalls[0].audio).toMatchObject({
+      echoCancellation: false, noiseSuppression: false, autoGainControl: false,
+    })
+    expect(rec.profile.value).toBe('pro')
   })
 
   it('never contradicts itself in the follow-up applyConstraints', async () => {
@@ -121,22 +130,22 @@ describe('capture profile', () => {
       'Mozilla/5.0 (Linux; Android 14; Pixel 8) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/151.0.0.0 Mobile Safari/537.36',
     ]
     for (const ua of agents) {
-      it(`gives the voice chain for ${ua.slice(0, 48)}...`, () => {
-        expect(resolveCaptureProfile(ua)).toBe('voice')
+      it(`gives the phone setup for ${ua.slice(0, 48)}...`, () => {
+        expect(resolveCaptureProfile(ua)).toBe('phone')
       })
     }
 
     it('reads nothing off the browser at all', () => {
       expect(resolveCaptureProfile('')).toBe(DEFAULT_CAPTURE_PROFILE)
       expect(resolveCaptureProfile()).toBe(DEFAULT_CAPTURE_PROFILE)
-      expect(DEFAULT_CAPTURE_PROFILE).toBe('voice')
+      expect(DEFAULT_CAPTURE_PROFILE).toBe('phone')
     })
   })
 
   it('reports the profile alongside what the browser actually gave back', async () => {
     const rec = useTapRecorder()
-    await rec.start(null, 'voice')
-    expect(rec.appliedSettings.value.profile).toBe('voice')
+    await rec.start(null, 'phone')
+    expect(rec.appliedSettings.value.profile).toBe('phone')
     expect(rec.appliedSettings.value.sampleRate).toBe(48000)
   })
 
