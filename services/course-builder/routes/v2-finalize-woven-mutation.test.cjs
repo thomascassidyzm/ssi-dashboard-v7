@@ -7,7 +7,7 @@
 
 import { describe, it, expect } from 'vitest'
 
-const { isSoftMutationVariant } = require('../lib/welsh-mutation.cjs');
+const { isSoftMutationVariant, isSameWelsh } = require('../lib/welsh-mutation.cjs');
 
 function makeSupabase(rows) {
   const writes = [];
@@ -95,6 +95,43 @@ describe('v2 finalize in a woven Welsh course', () => {
     const d = { ...draft1001, course_code: 'tst_for_eng' };
     const { res } = await finalize({ course_seed_drafts: [d], course_legos: baseline, course_running_order: [] }, 'tst_for_eng');
     expect(res.statusCode).toBe(409);
+  });
+});
+
+// Aran, 2026-10-08 11:59Z (job #429): the SAME WELSH under different English is already taught too.
+describe('v2 finalize: same Welsh, other English (Aran 2026-10-08)', () => {
+  const draft = {
+    course_code: C, seed_number: 1001, known_text: 'to raise it', target_text: 'codi fo',
+    validation_status: 'valid',
+    submission_data: { legos: [
+      { idx: 1, type: 'A', known: 'to raise', target: 'codi' },
+      { idx: 2, type: 'A', known: 'it (object)', target: 'fo' },
+    ] },
+  };
+  const base = [
+    { known_text: 'it', target_text: 'fo', seed_number: 1, lego_index: 1, is_new: true },          // taught before the block
+    { known_text: 'to get up', target_text: 'codi', seed_number: 258, lego_index: 1, is_new: true }, // old seed AFTER the block
+  ];
+  const ord = [ { seed_number: 1, position: 1 }, { seed_number: 1001, position: 2 }, { seed_number: 258, position: 3 } ];
+
+  it('a LEGO whose identical Welsh was taught earlier under other English is not new', async () => {
+    const { res, isNew } = await finalize({ course_seed_drafts: [draft], course_legos: base, course_running_order: ord }, C);
+    expect(res.statusCode).toBe(200);
+    expect(isNew['1001:it (object)']).toBe(false);
+  });
+
+  it('a later old LEGO with the same Welsh under other English stops being a debut', async () => {
+    const { demoted, isNew } = await finalize({ course_seed_drafts: [draft], course_legos: base, course_running_order: ord }, C);
+    expect(isNew['1001:to raise']).toBe(true);
+    expect(demoted).toEqual([expect.objectContaining({ seed_number: 258, lego_index: 1, is_new: false })]);
+  });
+
+  it('isSameWelsh: identical or soft-mutated, Welsh courses only', () => {
+    expect(isSameWelsh(C, 'codi', 'codi')).toBe(true);
+    expect(isSameWelsh(C, 'bydden ni’n licio', "bydden ni'n licio")).toBe(true);
+    expect(isSameWelsh(C, 'gwneud yn siŵr', 'wneud yn siŵr')).toBe(true);
+    expect(isSameWelsh(C, 'Cymraeg', 'Nghymraeg')).toBe(false);
+    expect(isSameWelsh('fra_for_eng', 'codi', 'codi')).toBe(false);
   });
 });
 

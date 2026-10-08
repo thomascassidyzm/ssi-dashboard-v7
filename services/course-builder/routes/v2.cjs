@@ -26,7 +26,7 @@ const { emitProgress } = require('../../shared/emit-progress.cjs');
 const { decoratePhrasesWithDecomposition } = require('../../phrase-decomposition-writer.cjs');
 const { wipeSeedTeaching } = require('../../shared/wipe-seed-teaching.cjs');
 const { loadRunningOrder, filterSeedsBefore, orderKey } = require('../../shared/running-order.cjs');
-const { isSoftMutationVariant } = require('../lib/welsh-mutation.cjs');
+const { isSoftMutationVariant, isSameWelsh } = require('../lib/welsh-mutation.cjs');
 
 // ---------------------------------------------------------------------------
 // Validation-sweep helpers (extracted from the /v2/validate loop so the sweep
@@ -441,10 +441,23 @@ module.exports = function(ctx) {
               legoStatuses.set(lego.idx, 'collision');
               continue;
             }
+            // Welsh: the same Welsh (identical or soft-mutated) taught earlier under OTHER English
+            // is already taught too (Aran, 2026-10-08; lib/welsh-mutation.cjs isSameWelsh).
+            const taughtWelsh = [...knownLegoMap.values(), ...(order ? baselineLegos.slice(0, baselineCursor) : baselineLegos)]
+              .find(e => isSameWelsh(courseCode, e.target_text, lego.target));
+            if (taughtWelsh) {
+              legoStatuses.set(lego.idx, 'duplicate');
+              totalDeduplicated++;
+              mutationDuplicates.push({ seed_number: draft.seed_number, lego_idx: lego.idx, known: lego.known, target: lego.target, taught_as: taughtWelsh.target_text, taught_known: taughtWelsh.known_text, taught_at: taughtWelsh.seed_number, rule: 'same-welsh-other-english' });
+              continue;
+            }
             legoStatuses.set(lego.idx, 'new');
             if (order) {
               for (const l of baselineLegos) {
-                if (normalizeForZUT(l.known_text) === normKey) demoteLaterBaseline.set(`${l.seed_number}:${l.lego_index}`, l);
+                if (normalizeForZUT(l.known_text) === normKey ||
+                    (isSameWelsh(courseCode, l.target_text, lego.target) && orderKey(order, l.seed_number) > orderKey(order, draft.seed_number))) {
+                  demoteLaterBaseline.set(`${l.seed_number}:${l.lego_index}`, l);
+                }
               }
             }
             knownLegoMap.set(normKey, {
