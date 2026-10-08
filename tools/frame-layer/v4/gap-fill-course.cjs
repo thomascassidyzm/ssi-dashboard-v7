@@ -181,6 +181,16 @@ async function gateStage() {
     seen.add(key);
     (reasons.length ? dropped : accepted).push(reasons.length ? { ...r, reasons } : r);
   }
+  // Quality judge (#17·M showed the mechanical gates pass ~1 in 9 rows a native ear cuts): every
+  // mechanically clean row is judged; a flagged row is cut, never repaired.
+  if (accepted.length && !process.argv.includes('--no-judge')) {
+    const { judgeRows, MODEL: JUDGE } = require('./quality-judge.cjs');
+    const verdicts = await judgeRows(course, accepted, DIR);
+    for (let i = accepted.length - 1; i >= 0; i--) {
+      const v = verdicts[i];
+      if (!v || v.cut) { dropped.push({ ...accepted[i], reasons: [`judge:${JUDGE} ${v ? v.why : 'no verdict'}`] }); accepted.splice(i, 1); }
+    }
+  }
   const { tagCourse } = require('./tag-course.cjs');
   const { ensureTagged, knownLanguageName } = require('../frame-tagger.cjs');
   await tagCourse(course, data, { log: () => {} });
