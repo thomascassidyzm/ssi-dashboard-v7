@@ -209,6 +209,17 @@ async function peakDb (file, start, dur) {
   const v = [...stderr.matchAll(/max_volume:\s*(-?[0-9.]+) dB/g)]
   return v.length ? parseFloat(v[v.length - 1][1]) : null
 }
+/** RMS level of every 10 ms frame of a clip, [{t, db}] (frame centre). */
+async function rmsFrames (file) {
+  const { stderr } = await execFileP('ffmpeg', ['-hide_banner', '-nostats', '-i', file, '-af', 'aresample=48000,asetnsamples=n=480,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level', '-f', 'null', '-'], { maxBuffer: 32 << 20 })
+  const out = []; let t = null
+  for (const line of stderr.split('\n')) {
+    let m
+    if ((m = /pts_time:([\d.]+)/.exec(line))) t = Number(m[1])
+    else if ((m = /RMS_level=(-?[\d.]+|-inf)/.exec(line)) && t != null) { out.push({ t: t + 0.005, db: m[1] === '-inf' ? -120 : Number(m[1]) }); t = null }
+  }
+  return out
+}
 const probe = async (f) => parseFloat((await execFileP('ffprobe', ['-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', f])).stdout)
 
 async function cut () {
@@ -230,7 +241,11 @@ async function cut () {
       const healed = JSON.parse((await execFileP('python3', [SPLICER, src, '--silences'])).stdout).healed
       const plan = cuts.planCuts(row.target_text, clip.word_timings, cuts.interiorGaps(healed, dur))
       if (!plan.ok) { refusals.push({ g: t.g, reason: plan.reason }); out[rowId] = { ...entry, refused: plan.reason }; continue }
-      const windows = cuts.pieceWindows(plan.cuts.map((c) => c.at), dur)
+      if (plan.cuts.some((c) => c.source === 'word-gap')) {
+        const frames = await rmsFrames(src)
+        plan.cuts = plan.cuts.map((c) => cuts.settleWordGapCut(c, clip.word_timings, frames))
+      }
+      const windows = cuts.pieceWindows(plan.cuts.map((c) => c.at), dur, plan.cuts.map((c) => (c.source === 'word-gap' ? 0 : undefined)))
       for (let i = 0; i < plan.units.length; i++) {
         const file = st(`pieces/${t.g}_${i}.mp3`)
         await execFileP('ffmpeg', cuts.ffmpegPieceArgs(src, windows[i], file))
@@ -241,7 +256,7 @@ async function cut () {
         // splice-sentence-clips.cjs's seam gate: an internal seam edge is room tone — under -35 dB and 20 dB below the piece's own peak.
         const loud = [head, tail].filter((x) => x != null && (x > -35 || x > peak - 20))
         entry.pieces.push({ i, text: plan.units[i].text, file: path.basename(file), ...windows[i], dur: d, cutSource: [plan.cuts[i - 1], plan.cuts[i]].filter(Boolean).map((c) => c.source),
-          headDb: head, tailDb: tail, peakDb: peak, seamOk: loud.length === 0, timings: cuts.pieceTimings(clip.word_timings, plan.units[i], windows[i]) })
+          cutDb: [plan.cuts[i - 1], plan.cuts[i]].filter(Boolean).map((c) => c.db ?? null), headDb: head, tailDb: tail, peakDb: peak, seamOk: loud.length === 0, timings: cuts.pieceTimings(clip.word_timings, plan.units[i], windows[i]) })
       }
     }
     out[rowId] = entry
@@ -267,7 +282,8 @@ async function publish () {
       const key = `${e.rowId}:${p.i}`
       if (pub[key]) continue
       const tn = normalizeForAudio(p.text)
-      const { data: hit, error } = await sb.from('course_audio').select('id').eq('course_code', COURSE).eq('text_normalized', tn)
+      // The DB trigger strips a trailing '?' etc. from text_normalized; JS normalizeForAudio keeps '?'. Ask for both.
+      const { data: hit, error } = await sb.from('course_audio').select('id').eq('course_code', COURSE).in('text_normalized', [...new Set([tn, tn.replace(/[.?!¿¡。？！]+$/u, '').trim()])])
         .eq('language', LANG).eq('role', 'target1').eq('voice_id', e.voiceId).maybeSingle()
       if (error) throw error
       if (hit) { pub[key] = { id: hit.id, reused: true }; tally.reused++; if (GO) writeJ('published.json', pub); continue }

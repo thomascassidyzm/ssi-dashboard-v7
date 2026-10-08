@@ -112,13 +112,31 @@ function planCuts (text, timings, gaps) {
   return { ok: true, units: sp.spans, cuts }
 }
 
-/** Pure: splice.py's piece windows for a list of cut points over a clip of `dur` seconds. */
-function pieceWindows (cutTimes, dur) {
+/**
+ * Pure: for a 'word-gap' cut (no pause long enough for splice.py), the quietest frame in the word gap.
+ * `frames` = [{t, db}] RMS levels over the take; looks within SLACK_S of the gap between the two words.
+ * Returns the cut with `at` moved there and `db` recorded, or unchanged when no frame falls in the window.
+ */
+function settleWordGapCut (cut, timings, frames) {
+  if (cut.source !== 'word-gap') return cut
+  const a = timings.ends[cut.after] - SLACK_S, b = timings.starts[cut.after + 1] + SLACK_S
+  let best = null
+  for (const f of frames) if (f.t >= a && f.t <= b && (!best || f.db < best.db)) best = f
+  return best ? { ...cut, at: best.t, db: best.db } : cut
+}
+
+/**
+ * Pure: splice.py's piece windows for a list of cut points over a clip of `dur` seconds. `pads[i]` overrides the
+ * pause kept either side of cut i — 0 for a word-gap cut, where there is no pause to keep and PAD would reach
+ * into the neighbouring word.
+ */
+function pieceWindows (cutTimes, dur, pads = []) {
   const bounds = [0, ...cutTimes, dur]
+  const pad = (j) => (pads[j] ?? PAD)
   const out = []
   for (let i = 0; i < bounds.length - 1; i++) {
-    const start = Math.max(0, bounds[i] - (i ? PAD : 0))
-    const end = Math.min(dur, bounds[i + 1] + (i + 1 < bounds.length - 1 ? PAD : 0))
+    const start = Math.max(0, bounds[i] - (i ? pad(i - 1) : 0))
+    const end = Math.min(dur, bounds[i + 1] + (i + 1 < bounds.length - 1 ? pad(i) : 0))
     out.push({ start, end })
   }
   return out
@@ -139,4 +157,4 @@ function pieceTimings (timings, unit, window) {
   return { source: timings.source || 'cartesia', cutFrom: 'take', words: idx.map((k) => timings.words[k]), starts: idx.map((k) => r(timings.starts[k])), ends: idx.map((k) => r(timings.ends[k])) }
 }
 
-module.exports = { BOUNDARY, EDGE, MERGE_S, PAD, FADE, sentencesOf, interiorGaps, gapForBoundary, sentenceSpans, planCuts, pieceWindows, ffmpegPieceArgs, pieceTimings }
+module.exports = { settleWordGapCut, BOUNDARY, EDGE, MERGE_S, PAD, FADE, sentencesOf, interiorGaps, gapForBoundary, sentenceSpans, planCuts, pieceWindows, ffmpegPieceArgs, pieceTimings }

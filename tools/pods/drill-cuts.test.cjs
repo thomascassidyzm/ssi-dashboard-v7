@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
-const { planCuts, pieceWindows, interiorGaps, pieceTimings } = require('./drill-cuts.cjs')
+const { planCuts, pieceWindows, interiorGaps, pieceTimings, settleWordGapCut } = require('./drill-cuts.cjs')
 
 // Real shape, from the approved Viktoria take of "Ja, ich hab heute einen langen Tag. Ich hoffe, du hast einen
 // schönen Tag. Bis später." (#173), with the silences made adversarial: the comma pause after "hoffe," is the
@@ -30,6 +30,11 @@ describe('drill-cuts planCuts (#181: anchored on word timings)', () => {
     expect(p.cuts.map((c) => c.source)).toEqual(['word-gap', 'word-gap'])
     expect(p.cuts[0].at).toBeCloseTo((2.52 + 2.757) / 2, 3)
   })
+  it('a word-gap cut settles on the quietest frame between the two words', () => {
+    const c = planCuts(text, timings, []).cuts[0]
+    const frames = [{ t: 2.40, db: -60 }, { t: 2.55, db: -30 }, { t: 2.62, db: -48 }, { t: 2.70, db: -40 }, { t: 2.90, db: -70 }]
+    expect(settleWordGapCut(c, timings, frames)).toMatchObject({ at: 2.62, db: -48 })
+  })
   it('refuses when the timed words are not the turn\'s words', () => {
     expect(planCuts(text, { ...timings, words: timings.words.slice(1) }, gaps).ok).toBe(false)
   })
@@ -42,6 +47,9 @@ describe('drill-cuts planCuts (#181: anchored on word timings)', () => {
 describe('drill-cuts pieces reproduce splice.py', () => {
   it('cuts at the point, keeps 50 ms either side, never past the clip', () => {
     expect(pieceWindows([1.0, 2.0], 3.0)).toEqual([{ start: 0, end: 1.05 }, { start: 0.95, end: 2.05 }, { start: 1.95, end: 3.0 }])
+  })
+  it('a word-gap cut keeps no pad, so neither piece reaches into the other word', () => {
+    expect(pieceWindows([1.0, 2.0], 3.0, [0])).toEqual([{ start: 0, end: 1.0 }, { start: 1.0, end: 2.05 }, { start: 1.95, end: 3.0 }])
   })
   it('interior gaps drop the clip edges and merge blips, as splice.py does', () => {
     expect(interiorGaps([[0, 0.12], [1.0, 1.2], [1.25, 1.4], [2.9, 3.0]], 3.0)).toEqual([[1.0, 1.4]])
