@@ -8,7 +8,9 @@
 #
 # THE DAILY CAP IS THIS SCRIPT'S OWN (job #504, 2026-10-09). The ledger's automatic cap is
 # 1,000,000/day since Tom's 10-07 "runaway guard" ruling, so it did not stop the 2026-10-09
-# run at 300,008 chars; the 260k/day figure is Watson's budget for this release. Before every
+# run at 300,008 chars; the daily figure is this release's own budget (260k until Tom's 2026-10-09
+# 18:09Z go on the held Indic-known courses raised it to 900k, under his 10-07 ruling that the
+# ledger's 1M/day is the runaway guard and overage is acceptable). Before every
 # course the script sums the UTC day's ledger (ALL renders, any job, any provider) and gives the
 # driver only what is left of DAILY_CAP_CHARS, as a hard per-pass cap (--partial).
 #
@@ -17,7 +19,7 @@
 # (never render blind).
 set -u
 P=${POPTY_DIR:-/home/tomcassidy/SSi/ssi-dashboard-v7-clean-prod}
-DAILY_CAP_CHARS=${DAILY_CAP_CHARS:-260000}
+DAILY_CAP_CHARS=${DAILY_CAP_CHARS:-900000}
 MIN_USEFUL_CHARS=${MIN_USEFUL_CHARS:-1500}   # below this a pass is not worth starting
 cd "$P" || exit 2
 # The driver's ledger snapshot and the spend guard read SUPABASE_* from the environment.
