@@ -1,3 +1,21 @@
+## 2026-10-09 — Phrase v4 landed in French and Bengali; new lines voiced (job #993)
+
+**Tom, 2026-10-09 09:32Z:** "Yes. Merge French and Bengali. Then we need to rebuild the audio. Bengali has not been settled so we want to leave the audio for that one for the Bengali voices - unless no options in Cartesia. And English is already settled as Tom and Charlotte in Cartesia".
+
+**Applied** with `apply-gap-fill.cjs --apply`: fra_for_eng +578 (16,047 → 16,625), eng_for_ben +315 (12,476 → 12,791). Snapshot and id-exact rollback in `~/ssi-evidence/ssi-dashboard-v7/993-apply-v4-fra-ben/`. course_round_index is LEGO-only, so no refresh.
+
+**Voiced** with `voice-gap-fill.cjs` through /api/audio/render, voice named per slot. English: Tom (tom_001) on male slots, Charlotte on female. French: the course's Eve/Leo are xAI and xAI cannot render any more, so new lines take Tom's French picks of 2026-10-08, Inaya (target1, f) and Erwan (target2, m). Bengali known side not voiced. Clips are attached to their own row by id, because the course linker matches the stored xAI voice and would refuse them.
+
+## 2026-10-09 — Phrase v4 vocabulary is checked at the exact inflected form (job #970)
+
+**Tom, 2026-10-09 (r-2026-10-09-phrase-vocabulary-is-checked-at-the):** a conjugation is vocabulary only if that specific form has appeared before; an earlier infinitive does not license it. Read with r-2026-09-27 (permitted vocabulary is LEGO-level and cumulative).
+
+**Finding.** The v4 target-side gate was already exact-form: `tiles()` tiled each phrase from WHOLE taught chunks (LEGO and component targets, spelt exactly, no stem, no lemma, no accent folding), and Popty's `checkVocabViolations` does the same. It is now `exact-form.cjs` with `exactFormCheck`, which names the offending form, and a test pins "nous espérions" rejected when only "espérer" is taught. No behaviour change, so the test passes on the old code too. The French example Tom saw is legitimate: "nous espérions" is a LEGO at fra_for_eng seed 107.
+
+**Re-gate of the staged rows** (`exact-form-regate.cjs`, read-only): fra 578, ben 315, kor 962, hin 304, ara_eg 1035 rows, all kept, none cut; coverage unchanged. Not landed, no course rows written.
+
+**Left as it was, flagged.** For English-known courses the KNOWN side check is stem-based (`stem()`), the controlled-language free class of ralph-methodology. Under a strict exact check only 7 of 2,575 staged rows miss, all on free-class forms (there's, does, where's). Tom has not ruled the known side.
+
 ## 2026-10-08 — Phrase v4 gap fill across the paying courses: staged, gated, not landed (job #924)
 
 **Tom, 2026-10-08:** "identify the weak places in the courses and create more phrases … using the Popty gates
@@ -1604,3 +1622,12 @@ After (57 scenes): 10 10 12 12 12 12 11 10 9 13 10 9 9 8 10 11 10 9 10 8 10 9 10
 **2026-09-29 — One route for audio: `POST /api/audio/render` (job #702, Tom 00:45Z: "Single route for audio from now on. Always. Popty is the only way to do it.").** Better: the library-first door, spend guard and write-back were already one chain but reachable only by importing tts-service, so ~40 course-edit scripts and revoice tools each re-implemented the tail (master, S3, row, index) or skipped it. Now one phase8 route (proxied on production-api, identity required) takes course, role, exact text, purpose and optional voice; it links a library hit for free, else renders once (maxRetries 1) and writes S3, `course_audio` and `clip_index`. Simpler: a chain marker (`services/shared/chain-context.cjs`, set by every Popty server request) is required for the door to issue a spend ticket, so a script calling `speak()` in its own process is refused (`NOT_IN_CHAIN`) before any character is sent; no per-script allowlist to maintain, and the existing scripts are retired by the guard rather than by deletion. Cheaper: nothing new to run and no second render path. Floor, stated: the marker proves where a call came from, not that a caller is honest, and `tools/check-tts-door.cjs` now fails any file outside Popty's servers that requires it; a script holding its own provider key is still only caught statically. Tests: `services/audio-render-chain.test.cjs` (the direct-render refusal fails on pre-fix code).
 
 **2026-10-08 — Setup check gets an automatic verdict: pass, or one plain hint (job #435, Tom: "work out if the general waveform shape and the signal-to-noise ratio was good").** Better: the artist is told straight after Submit, and the admin sees the numbers beside a benchmark. Simpler: a pure `judgeSetupCheck` over per-take measures, four named constants in `SETUP_VERDICT`. Cheaper: one extra decode per take at Submit, no schema change (stored in `recordist_setup_checks.metrics.verdict`). Calibrated on 63 real accepted takes (raw stored bytes: Dan 24, Aran 11, Catrin 18, Tom's 8 test takes); every one passes. Thresholds sit 15-20 dB clear of the worst accepted take (noise floor above -60 dBFS, clean-by under 45 dB, loudest half-second under -32 dBFS, more than 0.1% of samples at full scale), and a problem has to recur in 30% of the takes and at least two. Ambiguity passes. Deliberately NOT in the verdict: lead/tail silence, digital-silence gating and level pumping, because Dan's own accepted takes break them (opus gates 40-60% of his windows; some start or end at 0.00 s) and they would false-fail him. They are measured and shown to the admin. A pass does not approve or unlock anything; approval stays with the admin. Stated floor: the booth uploads opus, which hides a moderately noisy room, so the check only catches clearly noisy ones.
+## 2026-10-08 — French Pod 1 re-recorded one take per turn in Erwan + Inaya (job #229)
+
+Same chain as German (#216): `tools/pods/pod-rerecord.cjs fra_for_eng snapshot|render|cut|publish|plan|page`. 231 turns, 12,611 chars through
+`/api/audio/render` (dry run first, 0 refusals; day total ≈ 29k of the cap), 272 whole-sentence Drill cuts from the same takes (no comma cuts, no joins).
+- The old `fra_for_eng` voice approval (fingerprint 81ed5a8e7b854925, 2026-08-23, old xAI cast; it never recorded Juliette) was revoked — it described a
+  cast that no longer exists. Saved before revoking so it can be restored.
+- Fix in `publish`: the library lookup used an exact `text_normalized` eq, but the database stores it punctuation-stripped ("et vous ") and PostgREST drops
+  trailing spaces, so repeated sentences missed the dedup and hit `unique_course_audio_per_voice`. Now prefix-ilike + comparison on letters/digits in JS.
+- Not live: the switch plan is built (231/231 rows); going live is `switch-pod-clip-pointers.cjs <plan> --apply` after Tom listens.

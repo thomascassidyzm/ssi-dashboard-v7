@@ -6619,7 +6619,9 @@ app.post('/api/audio/render', async (req, res) => {
     res.status(response.status).json(response.data)
   } catch (error) {
     logger.error('Render proxy error:', error)
-    res.status(500).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
+    // Phase 8 restarting/down is retryable (voice-gap-fill re-asks on 503), not a 500.
+    const status = require('./shared/phase8-transport-error.cjs').isPhase8TransportError(error) ? 503 : 500
+    res.status(status).json({ ok: false, error: error.message || 'Phase 8 audio server not reachable' })
   }
 })
 

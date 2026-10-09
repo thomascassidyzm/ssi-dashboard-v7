@@ -105,29 +105,8 @@ function knownHeardCheck(known, heardTexts, noSpace) {
 }
 const useTooShort = (known, noSpace) => unitsOf(known, noSpace).length < (noSpace ? 6 : 4);
 
-// ---------- target tiling (same walk as the lab's tilesFromVocab) ----------
-function tiles(target, vocabTargets) {
-  const chunks = [...new Set(vocabTargets.map(norm).filter(Boolean))].sort((a, b) => b.length - a.length);
-  const words = norm(target).split(' ').filter(Boolean);
-  const memo = new Map();
-  const walk = (i) => {
-    if (i >= words.length) return [];
-    if (memo.has(i)) return memo.get(i);
-    let res = null;
-    for (const c of chunks) {
-      const cw = c.split(' ');
-      if (cw.length > words.length - i || !cw.every((w, j) => w === words[i + j])) continue;
-      const rest = walk(i + cw.length);
-      if (rest) { res = [c, ...rest]; break; }
-    }
-    memo.set(i, res);
-    return res;
-  };
-  const t = walk(0);
-  if (t) return { ok: true, tiling: t };
-  const owned = new Set(chunks.flatMap(c => c.split(' ')));
-  return { ok: false, untiled: [...new Set(words.filter(w => !owned.has(w)))] };
-}
+// ---------- target tiling: exact surface forms, see exact-form.cjs (Tom 2026-10-09) ----------
+const { exactFormCheck, tiles } = require('./exact-form.cjs');
 
 // ---------- the walk-back brief ----------
 function carriersByFrame(chunks, frameIds) {
@@ -303,8 +282,8 @@ function gate(cands, { course, data, newLegos, liveZut, available, additive = fa
     vocab.push({ known_text: lego.known_text, target_text: lego.target_text });
     vocab.push(...data.components.filter(x => x.seed_number === lego.seed_number && +x.lego_index === +lego.lego_index));
     // Scripts without spaces cannot be word-tiled here; Popty's vocab gate (tools/phrase-gate) tiles them by character.
-    const t = NO_SPACE.has(targetLangOf(course)) ? { ok: true } : tiles(target, vocab.map(v => v.target_text));
-    if (!t.ok) reasons.push(t.untiled.length ? `target uses untaught words: ${t.untiled.join(' ')}` : 'target does not tile from WHOLE taught chunks (a form or contraction never taught as a unit)');
+    const t = NO_SPACE.has(targetLangOf(course)) ? { ok: true } : exactFormCheck(target, vocab.map(v => v.target_text));
+    if (!t.ok) reasons.push(t.offending.length ? `target uses untaught words: ${t.offending.join(' ')}` : t.reason);
     const knownNoSpace = NO_SPACE.has(knownLangOf(course));
     let badKnown;
     if (knownLangOf(course) === 'eng') {
