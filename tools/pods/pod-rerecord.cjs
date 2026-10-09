@@ -41,6 +41,7 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env'), quiet
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), quiet: true })
 const { evidencePath } = require('../lib/evidence-path.cjs')
 const cuts = require('./drill-cuts.cjs')
+const { normalizeForAudio, normalizeForDb } = require('../../services/shared/text-normalize.cjs')
 
 const execFileP = promisify(execFile)
 const SPLICER = path.join(__dirname, 'splice.py')
@@ -268,16 +269,22 @@ async function cut () {
 }
 
 /**
- * Existing target1 clip for this voice whose text_normalized matches on letters/digits/spaces only.
- * Pages the whole (course, language, voice) set, so >1000 rows cannot truncate it and a leading '¿' gives no empty prefix.
+ * The DB's own key (normalize_text: lower, trim, rtrim of . ? ! ¿ ¡ 。 ？ ！) with whitespace collapsed, because the
+ * trigger leaves "et vous " for "Et vous ?" and PostgREST eq loses trailing spaces. INTERNAL punctuation is kept:
+ * a letters-only compare made French "1,5 euros" reuse a "15 euros" clip.
  */
-async function findExistingClip (sb, course, lang, tn, voiceId, plain) {
-  const want = plain(tn)
+const dbKey = (x) => normalizeForDb(x).replace(/\s+/g, ' ').trim()
+/**
+ * Existing target1 clip for this voice whose text_normalized equals the DB key of tn.
+ * Pages the whole (course, language, voice) set, so >1000 rows cannot truncate it.
+ */
+async function findExistingClip (sb, course, lang, tn, voiceId) {
+  const want = dbKey(tn)
   for (let from = 0; ; from += 1000) {
     const { data, error } = await sb.from('course_audio').select('id,text_normalized').eq('course_code', course).eq('language', lang)
       .eq('role', 'target1').eq('voice_id', voiceId).order('id').range(from, from + 999)
     if (error) throw error
-    const hit = (data || []).find((c) => plain(c.text_normalized) === want)
+    const hit = (data || []).find((c) => dbKey(c.text_normalized) === want)
     if (hit) return hit
     if (!data || data.length < 1000) return null
   }
@@ -287,7 +294,6 @@ async function publish () {
   const pub = readJ('published.json', {})
   const { createClient } = require('@supabase/supabase-js')
   const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
-  const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs')
   const clipIndex = require('../../services/shared/clip-index.cjs')
   const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
   const s3 = new S3Client({ region: process.env.AWS_REGION })
@@ -297,11 +303,9 @@ async function publish () {
       const key = `${e.rowId}:${p.i}`
       if (pub[key]) continue
       const tn = normalizeForAudio(p.text)
-      // The database stores text_normalized with punctuation stripped ("et vous " for "Et vous ?") while normalizeForAudio keeps
-      // it, and a PostgREST eq filter loses trailing spaces: an exact eq never finds the row and the insert then hits
-      // unique_course_audio_per_voice (French #229). Compare on letters/digits/spaces only, in JS.
-      const plain = (x) => String(x || '').replace(/[^\p{L}\p{N}\s]/gu, '').replace(/\s+/g, ' ').trim()
-      const hit = await findExistingClip(sb, COURSE, LANG, tn, e.voiceId, plain)
+      // An exact eq never finds the row (trigger strips trailing ?, PostgREST eq loses trailing spaces) and the insert then
+      // hits unique_course_audio_per_voice (French #229): compare in JS on the DB key (findExistingClip).
+      const hit = await findExistingClip(sb, COURSE, LANG, tn, e.voiceId)
       if (hit) { pub[key] = { id: hit.id, reused: true }; tally.reused++; if (GO) writeJ('published.json', pub); continue }
       if (!GO) { tally.wouldInsert++; continue }
       const body = fs.readFileSync(st(`pieces/${p.file}`))
