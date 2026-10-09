@@ -10,15 +10,25 @@ const DIR = process.argv[2] || path.join(process.env.HOME, 'ssi-evidence', 'ssi-
 const mean = (xs) => xs.length ? xs.reduce((a, b) => a + b, 0) / xs.length : null;
 const pct = (x) => x == null ? '–' : `${Math.round(x * 100)}%`;
 
+/**
+ * Rejected ROWS, not rejection reasons: a row can fail several gates and carry several reasons, and
+ * counting reasons overstated the cuts. Each dropped row counts once; it is a judge cut if any of
+ * its reasons is a judge one, otherwise a gate cut.
+ */
+function countDrops(staged) {
+  const dropped = staged.dropped_rows || [];
+  const judge = dropped.filter(d => (d.reasons || []).some(r => r.startsWith('judge'))).length;
+  return { gate: dropped.length - judge, judge };
+}
+
 const rows = [];
+function main() {
 for (const c of fs.readdirSync(DIR).sort()) {
   const f = path.join(DIR, c, `staged-${c}.json`);
   if (!fs.existsSync(f)) continue;
   const s = JSON.parse(fs.readFileSync(f, 'utf8'));
   const weak = fs.existsSync(path.join(DIR, c, 'windows.json')) ? JSON.parse(fs.readFileSync(path.join(DIR, c, 'windows.json'), 'utf8')).length : 0;
-  const r = s.drop_reasons || {};
-  const gate = Object.entries(r).filter(([k]) => !k.startsWith('judge')).reduce((a, [, v]) => a + v, 0);
-  const judge = Object.entries(r).filter(([k]) => k.startsWith('judge')).reduce((a, [, v]) => a + v, 0);
+  const { gate, judge } = countDrops(s);
   rows.push({ course: c, weak, live: s.live_rows_at_gate, cand: s.candidates, acc: s.accepted, build: s.by_role.build, use: s.by_role.use, gate, judge,
     before: mean(s.windows.map(w => w.coverage_before)), after: mean(s.windows.map(w => w.coverage_after)), tokens: s.opus_tokens || 0 });
 }
@@ -33,3 +43,6 @@ const none = rows.filter(r => !r.weak).map(r => r.course);
 console.log(out.join('\n'));
 if (none.length) console.log(`\nNo weak window (every 10-seed window already uses half or more of its available frames): ${none.join(', ')}.`);
 console.log(`\nOpus generation tokens across the fan-out: ${(T.tokens / 1e6).toFixed(1)}M.`);
+}
+module.exports = { countDrops };
+if (require.main === module) main();
