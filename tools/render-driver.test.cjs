@@ -111,4 +111,13 @@ describe('render driver transport and exit codes (#518)', () => {
     expect(run(4).status).toBe(0)
     expect(run(1).status).toBe(1)
   })
+
+  it('a pass phase8 stopped for a guard refusal or render/attach breaker is NOT a clean cap stop (exit 1, not 4)', async () => {
+    for (const tripKind of ['spend-guard', 'render-attach']) {
+      const p = { status: 'spend-capped', attached: 5, failed: 0, spend: { spentChars: 10, providerCalls: 5, capped: 'x', tripKind } }
+      expect((await runDriver({ ...fakePhase8([p]), budgetChars: 100000, go: true, partial: true })).capped).toBe(false)
+    }
+    const b = { status: 'spend-capped', attached: 5, failed: 0, spend: { spentChars: 10, providerCalls: 5, capped: 'x', tripKind: 'budget' } }
+    expect((await runDriver({ ...fakePhase8([b]), budgetChars: 100000, go: true, partial: true })).capped).toBe(true)
+  })
 })

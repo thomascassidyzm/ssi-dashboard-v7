@@ -66,7 +66,7 @@ async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => nu
     spent += spentNow
     log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, ledger: await ledgerSnapshot() })
     if (!r.spend || typeof s.spentChars !== 'number') return stop('phase8 did not report spend for the pass (old service) — refusing to post another', pass, spent)
-    if (r.status === 'spend-capped') return stop(`phase8 capped the pass: ${s.capped}`, pass, spent, false, true)
+    if (r.status === 'spend-capped') return stop(`phase8 capped the pass: ${s.capped}`, pass, spent, false, s.tripKind === 'budget')
     if (!Number.isFinite(attached) || attached === 0) return stop(`pass ${pass} attached ${Number.isFinite(attached) ? 0 : 'nothing reported'} — the next pass would fill nothing either`, pass, spent)
     if (calls > RATIO_LIMIT * attached) return stop(`pass ${pass} made ${calls} provider calls for ${attached} slots (> ${RATIO_LIMIT}x) — re-rendering what it already has`, pass, spent)
     if (spent >= budgetChars) return stop(`budget spent (${spent}/${budgetChars})`, pass, spent, false, true)
