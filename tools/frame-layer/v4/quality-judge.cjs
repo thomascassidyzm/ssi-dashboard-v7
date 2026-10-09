@@ -36,10 +36,30 @@ Reply with JSON only: {"cut":[{"n":<number>,"why":"<one line>"}]} — list only 
 ${lines}`;
 }
 
+/** The first balanced {...} that parses and carries "cut" — a reply can hold a second object or prose after it. */
+function firstJsonObject(text) {
+  const t = String(text || '');
+  for (let i = t.indexOf('{'); i >= 0; i = t.indexOf('{', i + 1)) {
+    let depth = 0, inStr = false, esc = false;
+    for (let j = i; j < t.length; j++) {
+      const ch = t[j];
+      if (inStr) { if (esc) esc = false; else if (ch === '\\') esc = true; else if (ch === '"') inStr = false; continue; }
+      if (ch === '"') inStr = true;
+      else if (ch === '{') depth++;
+      else if (ch === '}' && --depth === 0) {
+        try { const o = JSON.parse(t.slice(i, j + 1)); if (o && Array.isArray(o.cut)) return o; } catch { /* try the next brace */ }
+        break;
+      }
+    }
+  }
+  return null;
+}
+
+/** null when the reply carries no verdict at all — the caller cuts that batch rather than guessing. */
 function parseCuts(text, n) {
-  const m = String(text || '').match(/\{[\s\S]*\}/);
-  if (!m) throw new Error('judge: no JSON in reply');
-  const cut = (JSON.parse(m[0]).cut || []).filter(c => Number.isInteger(+c.n) && +c.n >= 1 && +c.n <= n);
+  const o = firstJsonObject(text);
+  if (!o) return null;
+  const cut = o.cut.filter(c => Number.isInteger(+c.n) && +c.n >= 1 && +c.n <= n);
   return new Map(cut.map(c => [+c.n, String(c.why || 'judge cut')]));
 }
 
@@ -57,7 +77,10 @@ async function judgeRows(course, rows, dir, { parallel = 4, log = console.log } 
       const r = await callModel(buildJudgePrompt(course, b), { model: MODEL, system: 'You are a strict native-speaker editor for a language course. Reply with JSON only.' });
       const cuts = parseCuts(r.text, b.length);
       tokens += r.usage.total;
-      const out = b.map((row, i) => ({ k: keyOf(row), cut: cuts.has(i + 1), why: cuts.get(i + 1) || null, model: r.usage.model }));
+      // No readable verdict: every row of the batch is cut (if in doubt — cut it out), never waved through.
+      const out = b.map((row, i) => (cuts
+        ? { k: keyOf(row), cut: cuts.has(i + 1), why: cuts.get(i + 1) || null, model: r.usage.model }
+        : { k: keyOf(row), cut: true, why: 'judge reply carried no readable verdict', model: r.usage.model }));
       fs.appendFileSync(file, out.map(o => JSON.stringify(o)).join('\n') + '\n');
       for (const o of out) cache.set(o.k, o);
     }
