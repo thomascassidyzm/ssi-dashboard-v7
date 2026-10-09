@@ -54,6 +54,24 @@ function planSlots(course, rows) {
   return slots;
 }
 
+/**
+ * A deploy restarts Popty under a long run (job #993's first run died on "fetch failed" when
+ * a push to main redeployed it). An UNREACHABLE server or a 502/503 is not a refusal, so it is
+ * waited out and the same request re-sent; the route is library-first, so a clip that was
+ * rendered before the connection dropped is linked on the re-ask, never paid for twice.
+ * Any answer the route actually gives — including a 402 refusal — is returned as it is.
+ */
+async function postRender(body, { tries = 40, waitMs = 15000 } = {}) {
+  for (let i = 1; ; i++) {
+    try {
+      const res = await fetch('http://localhost:3470/api/audio/render', { method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-993-voice-gap-fill' }, body: JSON.stringify(body) });
+      if (![502, 503, 504].includes(res.status) || i >= tries) return res;
+    } catch (e) { if (i >= tries) throw e; }
+    await new Promise(r => setTimeout(r, waitMs));
+  }
+}
+
 async function main() {
   const a = process.argv.slice(2);
   const course = a[0];
@@ -90,9 +108,7 @@ async function main() {
   async function worker() {
     while (next < slots.length && !stop) {
       const s = slots[next++];
-      const res = await fetch('http://localhost:3470/api/audio/render', { method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-agent-id': 'job-993-voice-gap-fill' },
-        body: JSON.stringify({ courseCode: course, role: s.role, text: s.text, voiceId: s.voiceId, purpose: `phrase v4 gap fill ${s.id}`, job: '#993' }) });
+      const res = await postRender({ courseCode: course, role: s.role, text: s.text, voiceId: s.voiceId, purpose: `phrase v4 gap fill ${s.id}`, job: '#993' });
       const body = await res.json().catch(() => ({ ok: false, error: `HTTP ${res.status}` }));
       if (!res.ok || !body.ok || !body.audioId) {
         tally.failed++; log.write(JSON.stringify({ ...s, status: res.status, body }) + '\n');
