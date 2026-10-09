@@ -18,6 +18,10 @@
 
 ## 2026-10-08 — Phrase v4 gap fill across the paying courses: staged, gated, not landed (job #924)
 
+**Outcome, 2026-10-09.** 500 weak windows filled across 36 courses (seven had none). 22,134 candidates: 427 cut
+by Popty's gates, 10,708 by the judge, 11,044 staged. French and eng_for_ben landed on Tom's go of 09:32Z
+(#993). Every other course is staged only and needs a per-course go.
+
 **Tom, 2026-10-08:** "identify the weak places in the courses and create more phrases … using the Popty gates
 to ensure full compliance with the methodology". Haiku measures each course's frame coverage, Opus `generate-v4
 --gaps` fills every weak 10-seed window (coverage < 50%, seeds 11+; up to two cumulative passes), and every
