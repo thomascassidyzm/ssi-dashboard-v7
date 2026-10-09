@@ -264,7 +264,11 @@ function callModel(prompt, { timeoutMs = 1200000 } = {}) {
   try {
     raw = execFileSync(CLAUDE, args, { input: prompt, env, encoding: 'utf8', timeout: timeoutMs, maxBuffer: 64 * 1024 * 1024 });
   } catch (e) {
-    throw new Error(`claude --print failed: ${String(e.stderr || e.message).slice(0, 400)}`);
+    // The CLI reports a usage limit on STDOUT as {is_error, result}; stderr is empty, so
+    // the old message carried only the command line and a limit looked like any failure (#924).
+    let said = '';
+    try { said = JSON.parse(String(e.stdout || '')).result || ''; } catch { said = String(e.stdout || '').slice(0, 300); }
+    throw new Error(`claude --print failed: ${said ? said + ' — ' : ''}${String(e.stderr || e.message).slice(0, 300)}`);
   }
   const j = JSON.parse(raw);
   if (j.is_error) throw new Error(`model error: ${String(j.result).slice(0, 300)}`);

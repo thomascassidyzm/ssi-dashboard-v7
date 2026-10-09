@@ -56,6 +56,13 @@ const { norm } = require('../availability.cjs');
 const FIRST_SEED = 11;
 const MAX_PASSES = 2;
 
+/**
+ * A refusal that will not clear by retrying the next window: a usage limit on the
+ * account, or a tag the tagger could not fetch (it only goes missing when the
+ * tagger's own calls were refused). Stop the course; a re-run resumes.
+ */
+const isUsageRefusal = (msg) => /limit|rate.?limit|quota|overloaded|429|usage|is not tagged/i.test(String(msg));
+
 /** Weak 10-seed windows, weakest first. Pure, so the selection rule is testable. */
 function pickWindows(m, { weak = WEAK, firstSeed = FIRST_SEED, max = Infinity } = {}) {
   return m.windows.all.w10
@@ -114,7 +121,7 @@ async function fill(m) {
         await runGaps(course, w.start, w.end, { budget, missingIn: prior ? left : null });
       } catch (e) {
         console.log(`  ${w.start}-${w.end} FAILED: ${e.message.slice(0, 300)}`);
-        if (/limit|rate|quota|overloaded|429|usage/i.test(e.message)) { console.log('model refused — stopping; re-run resumes'); process.exit(75); }
+        if (isUsageRefusal(e.message)) { console.log('model refused — stopping; re-run resumes'); process.exit(75); }
         break;
       }
     }
@@ -232,5 +239,5 @@ async function main() {
   await gateStage();
 }
 
-module.exports = { pickWindows, registerBreach, batchZutConflicts };
+module.exports = { isUsageRefusal, pickWindows, registerBreach, batchZutConflicts };
 if (MAIN) main().then(() => process.exit(0)).catch(e => { console.error(e.stack || e.message); process.exit(1); });
