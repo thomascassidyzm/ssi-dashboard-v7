@@ -72,3 +72,43 @@ describe('render driver', () => {
     expect((await runDriver({ post: f.post, budgetChars: 1e6, go: true })).stopped).toMatch(/did not report spend/)
   })
 })
+
+describe('render driver transport and exit codes (#518)', () => {
+  const http = require('http')
+  const { makePost, EXIT_BUDGET_CAP } = require('./render-driver.cjs')
+  const serve = (handler) => new Promise(r => { const s = http.createServer(handler); s.listen(0, '127.0.0.1', () => r(s)) })
+
+  it('makePost picks the transport from the URL protocol (http works; https is not forced onto http)', async () => {
+    const s = await serve((q, r) => { r.end('{"ok":1}') })
+    try { expect(await makePost(`http://127.0.0.1:${s.address().port}`, 'x')({})).toEqual({ ok: 1 }) } finally { s.close() }
+    const s2 = await serve((q, r) => r.end('{}'))
+    try { await expect(makePost(`https://127.0.0.1:${s2.address().port}`, 'x')({})).rejects.toThrow() } finally { s2.close() }
+  })
+
+  it('a connection dropped mid-response rejects instead of crashing', async () => {
+    const s = await serve((q, r) => { r.writeHead(200, { 'Content-Length': '1000' }); r.write('{"partial"'); setTimeout(() => r.socket.destroy(), 20) })
+    try { await expect(makePost(`http://127.0.0.1:${s.address().port}`, 'x')({})).rejects.toThrow() } finally { s.close() }
+  })
+
+  it('budget stops are flagged capped; other stops are not', async () => {
+    const capped = await runDriver({ ...fakePhase8([pass(100, 10, 10)]), budgetChars: 100, go: true, partial: true })
+    expect(capped.capped).toBe(true)
+    const nothing = await runDriver({ ...fakePhase8([pass(0, 0, 0)]), budgetChars: 100000, go: true })
+    expect(nothing.capped).toBe(false)
+    expect(EXIT_BUDGET_CAP).toBe(4)
+  })
+
+  it('wrapper: only driver exit 4 counts as a cap stop; other non-zero near the cap is a failure', () => {
+    const fs = require('fs'), cp = require('child_process'), os = require('os'), path = require('path')
+    const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'w518-'))
+    fs.mkdirSync(path.join(dir, 'tools/course-optimization'), { recursive: true })
+    fs.mkdirSync(path.join(dir, 'bin'))
+    fs.copyFileSync(path.join(__dirname, 'course-optimization/release-held-audio-355.sh'), path.join(dir, 'w.sh'))
+    // psql stub: first call (before the course) 0 spent, later calls 259000 (inside MIN_USEFUL of the cap)
+    fs.writeFileSync(path.join(dir, 'bin/psql'), `#!/bin/sh\nf=${dir}/n; n=$(cat $f 2>/dev/null || echo 0); echo $((n+1)) > $f; [ $n -eq 0 ] && echo 0 || echo 259000\n`, { mode: 0o755 })
+    fs.writeFileSync(path.join(dir, 'tools/render-driver.cjs'), 'process.exit(Number(process.env.RC))\n')
+    const run = (rc) => { fs.rmSync(path.join(dir, 'n'), { force: true }); return cp.spawnSync('bash', [path.join(dir, 'w.sh')], { env: { PATH: `${dir}/bin:${process.env.PATH}`, HOME: dir, POPTY_DIR: dir, DATABASE_URL: 'x', COURSES: 'a:1000', DAILY_CAP_CHARS: '260000', MIN_USEFUL_CHARS: '5000', RC: String(rc) }, encoding: 'utf8' }) }
+    expect(run(4).status).toBe(0)
+    expect(run(1).status).toBe(1)
+  })
+})

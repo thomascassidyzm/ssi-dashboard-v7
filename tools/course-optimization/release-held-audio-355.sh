@@ -50,14 +50,17 @@ for cb in $COURSES; do
   echo "[$(date -u +%FT%TZ)] $c budget=$b (day: $spent/$DAILY_CAP_CHARS)"
   out=$(node tools/render-driver.cjs --course "$c" --budget-chars "$b" --partial --go --max-passes 6 --job '#355' 2>&1); rc=$?
   echo "$out" | grep -E '"event":"(plan|pass|stop)"|render-driver:'
-  if [ $rc -ne 0 ]; then
-    # A driver stopped by the cap we handed it is not a failure; anything else is.
+  if [ $rc -eq 4 ]; then
+    # Exit 4 = the driver's explicit budget-cap stop (EXIT_BUDGET_CAP in render-driver.cjs).
+    # Only that is "the cap, until tomorrow"; any other non-zero exit is a failure, whatever the ledger says.
     after=$(spent_today) || after=0
+    echo "[$(date -u +%FT%TZ)] $c stopped at its budget cap (day: $after/$DAILY_CAP_CHARS)"
     if [ $((DAILY_CAP_CHARS - after)) -lt "$MIN_USEFUL_CHARS" ]; then
-      echo "[$(date -u +%FT%TZ)] $c stopped at the daily cap ($after/$DAILY_CAP_CHARS) — until tomorrow"
+      echo "[$(date -u +%FT%TZ)] daily cap reached — until tomorrow"
       [ -n "$FAILED" ] && { echo "driver failures earlier today:$FAILED"; exit 1; }
       exit 0
     fi
+  elif [ $rc -ne 0 ]; then
     echo "[$(date -u +%FT%TZ)] $c FAILED rc=$rc (see above) — continuing to next course"
     FAILED="$FAILED $c"
   fi
