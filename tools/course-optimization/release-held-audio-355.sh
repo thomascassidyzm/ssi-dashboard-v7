@@ -35,8 +35,9 @@ spent_today() {
   psql "$DATABASE_URL" -v ON_ERROR_STOP=1 -Atc "select coalesce(sum(chars),0) from tts_spend_ledger where kind='call' and at >= date_trunc('day', now() at time zone 'UTC') at time zone 'UTC'" 2>/dev/null
 }
 
+# (the nine Indic-known courses, #533: dry-run plans of 2026-10-09 18:22Z + ~10%)
 # course:budgetChars — budget is the dry-run plan (2026-10-09) plus ~10% headroom, further capped by the day's remainder.
-COURSES=${COURSES:-"zho_for_eng:17000 jpn_for_eng:17000 eng_for_por:6500 ita_for_eng:29000 ara_for_eng:42000 kor_for_eng:42000 deu_for_eng:59000 por_for_eng:59000 deu_at_for_eng:67000 eng_for_spa:94000 spa_mx_for_eng:100000 spa_for_eng:107000 por_br_for_eng:123000 eng_for_fra:1000 ara_eg_for_eng:426000 ara_lb_for_eng:419000"}
+COURSES=${COURSES:-"zho_for_eng:17000 jpn_for_eng:17000 eng_for_por:6500 ita_for_eng:29000 ara_for_eng:42000 kor_for_eng:42000 deu_for_eng:59000 por_for_eng:59000 deu_at_for_eng:67000 eng_for_spa:94000 spa_mx_for_eng:100000 spa_for_eng:107000 por_br_for_eng:123000 eng_for_fra:1000 eng_for_hin:20000 eng_for_sin:29500 eng_for_kan:32500 eng_for_tam:34500 eng_for_urd:50000 eng_for_guj:51000 eng_for_mar:51000 eng_for_tel:56500 eng_for_pan:64000 ara_eg_for_eng:426000 ara_lb_for_eng:419000"}
 FAILED=""
 for cb in $COURSES; do
   c=${cb%%:*}; b=${cb##*:}
