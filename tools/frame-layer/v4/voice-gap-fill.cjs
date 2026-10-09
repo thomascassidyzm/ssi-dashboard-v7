@@ -21,7 +21,7 @@
  *     which can no longer render (tts-provider-policy: xAI retired from selection). A new
  *     line is a true gap, so it takes Tom's picked French Cartesia voices of 2026-10-08,
  *     Inaya (f) / Erwan (m) — the same genders per role.
- *   - Bengali known lines: NOT voiced — Bengali voices are not settled.
+ *   - Bengali known lines: Ananya (f) / Rubel (m) by the neutral-line hash split (job #118).
  *
  * Usage: node tools/frame-layer/v4/voice-gap-fill.cjs <course> [--go] [--concurrency 4] [--limit N]
  *   default is a plan: counts and chars per slot, nothing rendered or written.
@@ -33,11 +33,19 @@ const TOM = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2';
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121';
 const INAYA = 'cartesia_5f83e88f-9b5a-4563-95c4-904f4b0036e9';
 const ERWAN = 'cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745';
+// Bengali known voices (Tom 2026-10-09 10:48Z, r-2026-10-09-bengali-voices-eng-for-ben-known):
+// Ananya (f) / Rubel (m), one form per phrase. The course has ONE known slot, so the voice is the
+// estate's neutral-line split (known-voice-gender.cjs hashGender, salted by course code) — a pure
+// function of the text, so the same line gets the same voice on every run.
+const ANANYA_BN = 'cartesia_48b9e1de-e2fa-4914-8b32-31c437813548';
+const RUBEL_BN = 'cartesia_2ba861ea-7cdc-43d1-8608-4045b5a41de5';
+const { hashGender } = require('../../../services/shared/known-voice-gender.cjs');
+const bengaliKnownVoice = (text, course) => (hashGender(text, course) === 'f' ? ANANYA_BN : RUBEL_BN);
 
 /** role → voice, per course. A role absent here is deliberately not voiced. */
 const SLOT_VOICES = {
   fra_for_eng: { known: TOM, target1: INAYA, target2: ERWAN },
-  eng_for_ben: { target1: CHARLOTTE, target2: TOM }, // known (Bengali) held: voices not settled
+  eng_for_ben: { known: bengaliKnownVoice, target1: CHARLOTTE, target2: TOM },
 };
 const COL = { known: 'known_audio_id', target1: 'target1_audio_id', target2: 'target2_audio_id' };
 const TEXT = { known: 'known_text', target1: 'target_text', target2: 'target_text' };
@@ -49,7 +57,8 @@ function planSlots(course, rows) {
   const slots = [];
   for (const r of rows) for (const [role, voiceId] of Object.entries(voices)) {
     if (r[COL[role]]) continue;
-    slots.push({ id: r.id, role, voiceId, text: r[TEXT[role]] });
+    const text = r[TEXT[role]];
+    slots.push({ id: r.id, role, voiceId: typeof voiceId === 'function' ? voiceId(text, course) : voiceId, text });
   }
   return slots;
 }
@@ -101,7 +110,7 @@ async function main() {
   const { recordContentEdit } = require(path.join(root, 'services', 'shared', 'content-edit-log.cjs'));
   const eventId = await recordContentEdit(supabase, { identity: serviceIdentity('v4-voice-gap-fill-993'), courseCode: course,
     surface: 'tools/frame-layer/v4/voice-gap-fill.cjs', operation: 'link-audio',
-    scope: { slots: slots.length }, detail: { voices: SLOT_VOICES[course], job: '#993' } });
+    scope: { slots: slots.length }, detail: { voices: SLOT_VOICES[course], job: '#993/#118' } });
   const log = fs.createWriteStream(path.join(out, `voice-log-${course}.jsonl`), { flags: 'a' });
   const tally = { library: 0, rendered: 0, linked: 0, failed: 0, chars: 0 };
   let next = 0, stop = null;
