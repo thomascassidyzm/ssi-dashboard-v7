@@ -1,3 +1,11 @@
+## 2026-10-09 — Phrase v4 landed in French and Bengali; new lines voiced (job #993)
+
+**Tom, 2026-10-09 09:32Z:** "Yes. Merge French and Bengali. Then we need to rebuild the audio. Bengali has not been settled so we want to leave the audio for that one for the Bengali voices - unless no options in Cartesia. And English is already settled as Tom and Charlotte in Cartesia".
+
+**Applied** with `apply-gap-fill.cjs --apply`: fra_for_eng +578 (16,047 → 16,625), eng_for_ben +315 (12,476 → 12,791). Snapshot and id-exact rollback in `~/ssi-evidence/ssi-dashboard-v7/993-apply-v4-fra-ben/`. course_round_index is LEGO-only, so no refresh.
+
+**Voiced** with `voice-gap-fill.cjs` through /api/audio/render, voice named per slot. English: Tom (tom_001) on male slots, Charlotte on female. French: the course's Eve/Leo are xAI and xAI cannot render any more, so new lines take Tom's French picks of 2026-10-08, Inaya (target1, f) and Erwan (target2, m). Bengali known side not voiced. Clips are attached to their own row by id, because the course linker matches the stored xAI voice and would refuse them.
+
 ## 2026-10-09 — Phrase v4 vocabulary is checked at the exact inflected form (job #970)
 
 **Tom, 2026-10-09 (r-2026-10-09-phrase-vocabulary-is-checked-at-the):** a conjugation is vocabulary only if that specific form has appeared before; an earlier infinitive does not license it. Read with r-2026-09-27 (permitted vocabulary is LEGO-level and cumulative).
