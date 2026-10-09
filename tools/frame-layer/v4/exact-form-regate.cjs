@@ -21,29 +21,42 @@ const { ensureTagged, knownLanguageName } = require('../frame-tagger.cjs');
 
 const RUN_DIR = process.env.V4_RUN_DIR || path.join(process.env.HOME, 'ssi-evidence', 'ssi-dashboard-v7', '924-phrase-v4-all-courses');
 
-function regateRows(rows, data) {
+// Same set generate-v4 uses: targets written without spaces tile by character.
+const NO_SPACE = new Set(['zho', 'jpn', 'yue', 'hak', 'nan', 'tha', 'lao', 'khm', 'mya']);
+const targetLangOf = (course) => String(course).split('_for_')[0].split('_')[0];
+
+function regateRows(rows, data, opts = {}) {
   const kept = [], cut = [];
   for (const r of rows) {
     const vocab = availableVocab({ legos: data.legos, components: data.components, seed: r.seed_number, legoIndex: +r.lego_index });
     vocab.push({ target_text: r.lego_target });
     vocab.push(...data.components.filter(x => x.seed_number === r.seed_number && +x.lego_index === +r.lego_index));
-    const c = exactFormCheck(r.target_text, vocab.map(v => v.target_text));
+    const c = exactFormCheck(r.target_text, vocab.map(v => v.target_text), { noSpace: !!opts.noSpace });
     if (c.ok) kept.push(r); else cut.push({ ...r, exact_form: { offending: c.offending, reason: c.reason } });
   }
   return { kept, cut };
 }
 
+/** `--dir <path>` is an option pair (its value is a directory, never a course). */
+function parseArgs(argv) {
+  const args = [...argv];
+  let dir = null;
+  const di = args.indexOf('--dir');
+  if (di >= 0) { dir = args[di + 1]; args.splice(di, 2); }
+  return { courses: args.filter(a => !a.startsWith('--')), dir };
+}
+
 async function main() {
-  const args = process.argv.slice(2);
-  const courses = args.filter(a => !a.startsWith('--'));
+  const { courses, dir: stagedDir } = parseArgs(process.argv.slice(2));
+  const baseDir = stagedDir ? path.resolve(stagedDir) : RUN_DIR;
   const summary = {};
   for (const course of courses) {
-    const dir = path.join(RUN_DIR, course);
+    const dir = path.join(baseDir, course);
     const staged = JSON.parse(fs.readFileSync(path.join(dir, `staged-${course}.json`), 'utf8'));
     const data = loadCourse(course);
     await tagCourse(course, data);
     await ensureTagged(staged.rows.map(r => r.known_text), { knownLanguage: knownLanguageName(course) });
-    const { kept, cut } = regateRows(staged.rows, data);
+    const { kept, cut } = regateRows(staged.rows, data, { noSpace: NO_SPACE.has(targetLangOf(course)) });
     const inv = inventory(course, data);
     const covers = (rows, w) => {
       const available = availableAt(inv, w.end);
@@ -64,7 +77,7 @@ async function main() {
     const s = summary[course];
     console.log(`${course}: ${s.rows_before} -> kept ${s.rows_kept}, cut ${s.rows_cut}; coverage ${s.coverage_before_cut.toFixed(3)} -> ${s.coverage_after_cut.toFixed(3)}`);
   }
-  fs.writeFileSync(path.join(RUN_DIR, 'exact-form-summary.json'), JSON.stringify(summary, null, 1));
+  fs.writeFileSync(path.join(baseDir, 'exact-form-summary.json'), JSON.stringify(summary, null, 1));
 }
 if (require.main === module) main().catch(e => { console.error(e); process.exit(1); });
-module.exports = { regateRows };
+module.exports = { regateRows, parseArgs };
