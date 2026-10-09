@@ -8,7 +8,13 @@
   },
   "providers": {
     "cartesia": {
-      "monthlyPoolChars": 8000000
+      "monthlyPoolChars": 8000000,
+      "raise": {
+        "monthlyPoolChars": 16000000,
+        "by": "Tom (2026-10-09, via Watson: Cartesia 8M credit grant after runaway)",
+        "why": "Cartesia granted 8M additional credits after the late-September runaway job (~6.5M spike on ~25 Sept), so this cycle's allowance is 16M, not 8M; the 'overage billing has begun' alert at 8,935,643 was an accounting error. The guard counts our own ledger since the 23rd, so the grant is modelled as a one-cycle pool raise; it expires with the cycle and must be re-signed if the credit carries over.",
+        "until": "2026-10-23T00:00:00Z"
+      }
     },
     "azure": {
       "dailyCapChars": 1000000,
