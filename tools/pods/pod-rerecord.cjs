@@ -41,6 +41,7 @@ require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env'), quiet
 require('dotenv').config({ path: path.join(__dirname, '..', '..', '.env.psql'), quiet: true })
 const { evidencePath } = require('../lib/evidence-path.cjs')
 const cuts = require('./drill-cuts.cjs')
+const { normalizeForAudio, normalizeForDb } = require('../../services/shared/text-normalize.cjs')
 
 const execFileP = promisify(execFile)
 const SPLICER = path.join(__dirname, 'splice.py')
@@ -209,6 +210,17 @@ async function peakDb (file, start, dur) {
   const v = [...stderr.matchAll(/max_volume:\s*(-?[0-9.]+) dB/g)]
   return v.length ? parseFloat(v[v.length - 1][1]) : null
 }
+/** RMS level of every 10 ms frame of a clip, [{t, db}] (frame centre). */
+async function rmsFrames (file) {
+  const { stderr } = await execFileP('ffmpeg', ['-hide_banner', '-nostats', '-i', file, '-af', 'aresample=48000,asetnsamples=n=480,astats=metadata=1:reset=1,ametadata=print:key=lavfi.astats.Overall.RMS_level', '-f', 'null', '-'], { maxBuffer: 32 << 20 })
+  const out = []; let t = null
+  for (const line of stderr.split('\n')) {
+    let m
+    if ((m = /pts_time:([\d.]+)/.exec(line))) t = Number(m[1])
+    else if ((m = /RMS_level=(-?[\d.]+|-inf)/.exec(line)) && t != null) { out.push({ t: t + 0.005, db: m[1] === '-inf' ? -120 : Number(m[1]) }); t = null }
+  }
+  return out
+}
 const probe = async (f) => parseFloat((await execFileP('ffprobe', ['-v', 'quiet', '-show_entries', 'format=duration', '-of', 'csv=p=0', f])).stdout)
 
 async function cut () {
@@ -230,7 +242,11 @@ async function cut () {
       const healed = JSON.parse((await execFileP('python3', [SPLICER, src, '--silences'])).stdout).healed
       const plan = cuts.planCuts(row.target_text, clip.word_timings, cuts.interiorGaps(healed, dur))
       if (!plan.ok) { refusals.push({ g: t.g, reason: plan.reason }); out[rowId] = { ...entry, refused: plan.reason }; continue }
-      const windows = cuts.pieceWindows(plan.cuts.map((c) => c.at), dur)
+      if (plan.cuts.some((c) => c.source === 'word-gap')) {
+        const frames = await rmsFrames(src)
+        plan.cuts = plan.cuts.map((c) => cuts.settleWordGapCut(c, clip.word_timings, frames))
+      }
+      const windows = cuts.pieceWindows(plan.cuts.map((c) => c.at), dur, plan.cuts.map((c) => (c.source === 'word-gap' ? 0 : undefined)))
       for (let i = 0; i < plan.units.length; i++) {
         const file = st(`pieces/${t.g}_${i}.mp3`)
         await execFileP('ffmpeg', cuts.ffmpegPieceArgs(src, windows[i], file))
@@ -241,7 +257,7 @@ async function cut () {
         // splice-sentence-clips.cjs's seam gate: an internal seam edge is room tone — under -35 dB and 20 dB below the piece's own peak.
         const loud = [head, tail].filter((x) => x != null && (x > -35 || x > peak - 20))
         entry.pieces.push({ i, text: plan.units[i].text, file: path.basename(file), ...windows[i], dur: d, cutSource: [plan.cuts[i - 1], plan.cuts[i]].filter(Boolean).map((c) => c.source),
-          headDb: head, tailDb: tail, peakDb: peak, seamOk: loud.length === 0, timings: cuts.pieceTimings(clip.word_timings, plan.units[i], windows[i]) })
+          cutDb: [plan.cuts[i - 1], plan.cuts[i]].filter(Boolean).map((c) => c.db ?? null), headDb: head, tailDb: tail, peakDb: peak, seamOk: loud.length === 0, timings: cuts.pieceTimings(clip.word_timings, plan.units[i], windows[i]) })
       }
     }
     out[rowId] = entry
@@ -252,12 +268,32 @@ async function cut () {
   for (const r of refusals) console.log(`  refused row ${r.g}: ${r.reason}`)
 }
 
+/**
+ * The DB's own key (normalize_text: lower, trim, rtrim of . ? ! ¿ ¡ 。 ？ ！) with whitespace collapsed, because the
+ * trigger leaves "et vous " for "Et vous ?" and PostgREST eq loses trailing spaces. INTERNAL punctuation is kept:
+ * a letters-only compare made French "1,5 euros" reuse a "15 euros" clip.
+ */
+const dbKey = (x) => normalizeForDb(x).replace(/\s+/g, ' ').trim()
+/**
+ * Existing target1 clip for this voice whose text_normalized equals the DB key of tn.
+ * Pages the whole (course, language, voice) set, so >1000 rows cannot truncate it.
+ */
+async function findExistingClip (sb, course, lang, tn, voiceId) {
+  const want = dbKey(tn)
+  for (let from = 0; ; from += 1000) {
+    const { data, error } = await sb.from('course_audio').select('id,text_normalized').eq('course_code', course).eq('language', lang)
+      .eq('role', 'target1').eq('voice_id', voiceId).order('id').range(from, from + 999)
+    if (error) throw error
+    const hit = (data || []).find((c) => dbKey(c.text_normalized) === want)
+    if (hit) return hit
+    if (!data || data.length < 1000) return null
+  }
+}
 async function publish () {
   const out = readJ('cuts.json'); if (!out) throw new Error('run cut first')
   const pub = readJ('published.json', {})
   const { createClient } = require('@supabase/supabase-js')
   const sb = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_SERVICE_KEY, { auth: { persistSession: false } })
-  const { normalizeForAudio } = require('../../services/shared/text-normalize.cjs')
   const clipIndex = require('../../services/shared/clip-index.cjs')
   const { S3Client, PutObjectCommand, HeadObjectCommand } = require('@aws-sdk/client-s3')
   const s3 = new S3Client({ region: process.env.AWS_REGION })
@@ -267,14 +303,9 @@ async function publish () {
       const key = `${e.rowId}:${p.i}`
       if (pub[key]) continue
       const tn = normalizeForAudio(p.text)
-      // The database stores text_normalized with punctuation stripped ("et vous " for "Et vous ?") while normalizeForAudio keeps
-      // it, and a PostgREST eq filter loses trailing spaces: an exact eq never finds the row and the insert then hits
-      // unique_course_audio_per_voice (French #229). Compare on letters/digits/spaces only, in JS.
-      const plain = (x) => String(x || '').replace(/[^\p{L}\p{N}\s]/gu, '').replace(/\s+/g, ' ').trim()
-      const { data: cands, error } = await sb.from('course_audio').select('id,text_normalized').eq('course_code', COURSE)
-        .ilike('text_normalized', `${(String(tn).match(/^[\p{L}\p{N}]+/u) || [''])[0]}%`).eq('language', LANG).eq('role', 'target1').eq('voice_id', e.voiceId)
-      if (error) throw error
-      const hit = (cands || []).find((c) => plain(c.text_normalized) === plain(tn))
+      // An exact eq never finds the row (trigger strips trailing ?, PostgREST eq loses trailing spaces) and the insert then
+      // hits unique_course_audio_per_voice (French #229): compare in JS on the DB key (findExistingClip).
+      const hit = await findExistingClip(sb, COURSE, LANG, tn, e.voiceId)
       if (hit) { pub[key] = { id: hit.id, reused: true }; tally.reused++; if (GO) writeJ('published.json', pub); continue }
       if (!GO) { tally.wouldInsert++; continue }
       const body = fs.readFileSync(st(`pieces/${p.file}`))
@@ -361,7 +392,7 @@ function page () {
   console.log(`page: ${path.join(outDir, 'index.html')} (${nT} takes, ${nP} cuts, ${flags.length} flagged)`)
 }
 
-module.exports = { speakerGenders, recastSpeakers, newTakeg, partitionUnits, glueLeadingInterjection }
+module.exports = { findExistingClip, speakerGenders, recastSpeakers, newTakeg, partitionUnits, glueLeadingInterjection }
 
 if (require.main === module) {
   const stages = { snapshot, render, cut, publish, plan, page }
