@@ -1,3 +1,13 @@
+## 2026-10-09 — Phrase v4 vocabulary is checked at the exact inflected form (job #970)
+
+**Tom, 2026-10-09 (r-2026-10-09-phrase-vocabulary-is-checked-at-the):** a conjugation is vocabulary only if that specific form has appeared before; an earlier infinitive does not license it. Read with r-2026-09-27 (permitted vocabulary is LEGO-level and cumulative).
+
+**Finding.** The v4 target-side gate was already exact-form: `tiles()` tiled each phrase from WHOLE taught chunks (LEGO and component targets, spelt exactly, no stem, no lemma, no accent folding), and Popty's `checkVocabViolations` does the same. It is now `exact-form.cjs` with `exactFormCheck`, which names the offending form, and a test pins "nous espérions" rejected when only "espérer" is taught. No behaviour change, so the test passes on the old code too. The French example Tom saw is legitimate: "nous espérions" is a LEGO at fra_for_eng seed 107.
+
+**Re-gate of the staged rows** (`exact-form-regate.cjs`, read-only): fra 578, ben 315, kor 962, hin 304, ara_eg 1035 rows, all kept, none cut; coverage unchanged. Not landed, no course rows written.
+
+**Left as it was, flagged.** For English-known courses the KNOWN side check is stem-based (`stem()`), the controlled-language free class of ralph-methodology. Under a strict exact check only 7 of 2,575 staged rows miss, all on free-class forms (there's, does, where's). Tom has not ruled the known side.
+
 ## 2026-10-08 — Phrase v4 gap fill across the paying courses: staged, gated, not landed (job #924)
 
 **Tom, 2026-10-08:** "identify the weak places in the courses and create more phrases … using the Popty gates
