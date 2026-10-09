@@ -2,7 +2,7 @@
 import { describe, it, expect } from 'vitest'
 import { createRequire } from 'module'
 const require = createRequire(import.meta.url)
-const { newTakeg, recastSpeakers } = require('./pod-rerecord.cjs')
+const { newTakeg, recastSpeakers, snapshotChanged } = require('./pod-rerecord.cjs')
 
 const u = (s) => ({ kind: 'atom', target_surface: s })
 const sent = (i) => `S${i}`
@@ -29,5 +29,18 @@ describe('pod-rerecord recastSpeakers', () => {
     const out = recastSpeakers(speakers, picks, 'deu')
     expect([out.Sarah.target.voice_id, out.Staff.target.voice_id, out.James.target.voice_id]).toEqual(['vik', 'nico', 'nico'])
     expect(out.Staff.gender).toBe('m')
+  })
+})
+
+describe('pod-rerecord snapshotChanged', () => {
+  const rows = [{ id: 'a', target_text: 'Hallo.' }]
+  const picks = { m: { voice_id: 'V1' }, f: { voice_id: 'V2' } }
+  it('a first snapshot, or an identical one, keeps earlier takes', () => {
+    expect(snapshotChanged(null, null, rows, picks)).toBe(false)
+    expect(snapshotChanged(rows, picks, rows, picks)).toBe(false)
+  })
+  it('a different pick or different words supersede them', () => {
+    expect(snapshotChanged(rows, picks, rows, { ...picks, m: { voice_id: 'V9' } })).toBe(true)
+    expect(snapshotChanged(rows, picks, [{ id: 'a', target_text: 'Hallo!' }], picks)).toBe(true)
   })
 })

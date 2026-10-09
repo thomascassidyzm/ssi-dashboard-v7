@@ -228,7 +228,11 @@ module.exports = function createRecordistRouter({
             const buf = Buffer.from(await r.arrayBuffer())
             measured[item.id] = { key: take.key, ...(await setupCheck.measureTake(buf, 'audio/' + String(take.key).split('.').pop())) }
             dirty = true
-          } catch (err) { logger.error(`[Recordist] setup-check measure ${item.id}: ${err.message}`) }
+          } catch (err) {
+            logger.error(`[Recordist] setup-check measure ${item.id}: ${err.message}`)
+            // The cached entry is for another take or an older MEASURE_VERSION: unmeasured, never judged on it.
+            if (measured[item.id]) { delete measured[item.id]; dirty = true }
+          }
         }
         entry.measures = measured[item.id] || null
       }

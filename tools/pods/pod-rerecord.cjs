@@ -129,6 +129,17 @@ function newTakeg (row, sentenceCount, takeId, sentenceClip) {
 // ── IO ──────────────────────────────────────────────────────────────────────────────────────────────────────
 async function pgClient () { const { Client } = require('pg'); const c = new Client({ connectionString: process.env.DATABASE_URL }); await c.connect(); return c }
 
+/** Pure: has the pod's cast or any turn's words changed since the snapshot the evidence directory was built on? */
+function snapshotChanged (prevRows, prevPicks, rows, picks) {
+  if (!prevRows || !prevPicks) return false
+  const voices = (p) => JSON.stringify(['m', 'f'].map((g) => (p && p[g] && p[g].voice_id) || null))
+  if (voices(prevPicks) !== voices(picks)) return true
+  const was = new Map(prevRows.map((r) => [r.id, r.target_text]))
+  return rows.some((r) => was.has(r.id) && was.get(r.id) !== r.target_text)
+}
+// Stage state derived from a snapshot: stale the moment the snapshot's picks or text move.
+const DERIVED = ['takes.json', 'takes-dry.json', 'cuts.json', 'cut-refusals.json', 'published.json', 'switch-plan.json', 'takes', 'pieces']
+
 async function snapshot () {
   const pg = await pgClient()
   const { rows } = await pg.query('select * from listening_pod_sentences where pod_id = $1 order by global_order', [POD_ID])
@@ -140,6 +151,14 @@ async function snapshot () {
   const drafts = rows.filter((r) => r.target_text_draft)
   if (drafts.length) throw new Error(`${drafts.length} drafted target lines — never render unread text`)
   recastSpeakers(pod.speakers, picks, LANG) // throws on an unplaceable speaker
+  // Takes, cuts and published clips are keyed by row id alone: after a new cast or new words they would be reused
+  // under the new picks and plan. Move them aside so every stage re-does its work for this snapshot.
+  if (snapshotChanged(readJ('rows-before.json'), readJ('picks.json'), rows, picks)) {
+    const aside = st(`superseded-${new Date().toISOString().replace(/[:.]/g, '-')}`)
+    fs.mkdirSync(aside, { recursive: true })
+    for (const f of DERIVED) if (fs.existsSync(st(f))) fs.renameSync(st(f), path.join(aside, f))
+    console.log(`picks or turn text changed since the last snapshot — earlier takes/cuts/plan moved to ${aside}`)
+  }
   writeJ('rows-before.json', rows); writeJ('speakers-before.json', pod.speakers); writeJ('picks.json', picks)
   console.log(`${POD_ID}: ${rows.length} rows, ${rows.reduce((a, r) => a + r.target_text.length, 0)} target chars; picks m=${picks.m.name} f=${picks.f.name} → ${DIR}`)
 }
@@ -372,7 +391,7 @@ function page () {
   console.log(`page: ${path.join(outDir, 'index.html')} (${nT} takes, ${nP} cuts, ${flags.length} flagged)`)
 }
 
-module.exports = { speakerGenders, recastSpeakers, newTakeg, partitionUnits, glueLeadingInterjection }
+module.exports = { snapshotChanged, speakerGenders, recastSpeakers, newTakeg, partitionUnits, glueLeadingInterjection }
 
 if (require.main === module) {
   const stages = { snapshot, render, cut, publish, plan, page }
