@@ -34,6 +34,13 @@ describe('render driver', () => {
     expect(f.posted.every(b => b.dryRun)).toBe(true)
   })
 
+  it('--partial renders what fits a day\'s remaining budget instead of refusing the bigger plan', async () => {
+    const f = fakePhase8([pass(90000, 3000, 3000, 'spend-capped')])
+    const out = await runDriver({ post: f.post, budgetChars: 100000, go: true, partial: true })
+    expect(out.stopped).not.toMatch(/plan needs up to/)
+    expect(f.posted.find(b => !b.dryRun).budgetChars).toBe(100000)   // phase8 enforces the day's budget inside the pass
+  })
+
   it('refuses a plan bigger than the budget', async () => {
     const f = fakePhase8([pass(1, 1, 1)])
     const out = await runDriver({ post: f.post, budgetChars: 100000, go: true })

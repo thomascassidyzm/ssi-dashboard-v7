@@ -790,6 +790,19 @@ async function attachClipToNullSlots(courseCode, text, role, audioId) {
     if (error) { logger.warn(`[ReuseGuard] attach ${table}.${audioCol} failed: ${error.message}`); continue }
     attached += (data || []).length
   }
+  // THE audio_autolink TRIGGER (AFTER INSERT ON course_audio) has usually filled
+  // the slots in the very statement that inserted the clip, so the NULL-only
+  // update above finds nothing left to fill. That is a slot FILLED, not a
+  // render nothing points at: count the slots already pointing at this clip.
+  // Without this the render/attach breaker read 402 calls vs 209 slots on
+  // por_for_eng (job #355, 2026-10-09) while every one of the clips was
+  // referenced, and stopped healthy passes.
+  if (attached === 0) {
+    for (const [table, textCol, audioCol] of (TEXT_SLOT_COLUMNS[role] || [])) {
+      const { data, error } = await supabase.from(table).select(audioCol).eq('course_code', courseCode).eq(textCol, text).eq(audioCol, audioId)
+      if (!error) attached += (data || []).length
+    }
+  }
   return attached
 }
 
@@ -9795,6 +9808,7 @@ if (!process.env.PHASE8_NO_LISTEN) {
 module.exports = app
 // Named exports for reuse from other audio-generation paths.
 module.exports.masterAudio = masterAudio
+module.exports.attachClipToNullSlots = attachClipToNullSlots
 module.exports.findExistingAudio = findExistingAudio
 module.exports.findAudioRowForClip = findAudioRowForClip
 module.exports.siblingPodClipIds = siblingPodClipIds

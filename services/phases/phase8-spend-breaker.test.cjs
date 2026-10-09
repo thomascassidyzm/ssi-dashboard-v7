@@ -177,3 +177,15 @@ describe('the pass cap counts every provider ATTEMPT, retries included (job #430
     expect(r.body.spend.spentChars).toBe(3 * lineChars)
   })
 })
+
+describe('attachClipToNullSlots counts slots the audio_autolink trigger already filled (job #355)', () => {
+  it('a slot already pointing at the clip is a filled slot, not a render nothing points at', async () => {
+    const t = freshCourse(2)
+    t.course_audio = [{ id: 'clip-1', course_code: COURSE_CODE, role: 'target1' }]
+    t.course_practice_phrases[0].target1_audio_id = 'clip-1'     // the trigger got there first
+    const { phase8 } = loadPhase8({ tables: t })
+    expect(await phase8.attachClipToNullSlots(COURSE_CODE, 'fresh line number 0', 'target1', 'clip-1')).toBe(1)
+    // a null slot is still filled and counted once
+    expect(await phase8.attachClipToNullSlots(COURSE_CODE, 'fresh line number 1', 'target1', 'clip-1')).toBe(1)
+  })
+})

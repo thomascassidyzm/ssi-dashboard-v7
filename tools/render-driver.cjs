@@ -40,14 +40,16 @@ const RATIO_LIMIT = 1.2
  * The loop, with its I/O injected so it is testable without phase8.
  * post(body) → parsed /generate response. Returns { stopped, passes, spent }.
  */
-async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => null, budgetChars, maxPasses = 5, go = false, base = {} }) {
+async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => null, budgetChars, maxPasses = 5, go = false, partial = false, base = {} }) {
   if (!(Number(budgetChars) > 0)) throw new Error('render-driver: --budget-chars is required (a whole-run character budget); refusing to run without one')
   const plan = await post({ ...base, dryRun: true })
   log({ event: 'plan', wouldGenerate: plan.wouldGenerate, wouldSpendChars: plan.wouldSpendChars, budgetChars })
   if (typeof plan.wouldSpendChars !== 'number') return stop('phase8 dry run does not report wouldSpendChars (old service) — refusing to run blind', 0, 0)
   if (!go) return stop('plan only (pass --go to render)', 0, 0)
-  if (plan.wouldGenerate === 0) return stop('nothing to render', 0, 0)
-  if (plan.wouldSpendChars > budgetChars) return stop(`plan needs up to ${plan.wouldSpendChars} chars, budget is ${budgetChars} — raise the budget with a human's approval or narrow --roles`, 0, 0)
+  if (plan.wouldGenerate === 0) return stop('nothing to render', 0, 0, true)
+  // --partial: the budget is a DAY's remaining allowance, not the course's need. Render what fits —
+  // phase8's own cap (budgetChars on every pass) is the hard stop — and let tomorrow's run continue.
+  if (plan.wouldSpendChars > budgetChars && !partial) return stop(`plan needs up to ${plan.wouldSpendChars} chars, budget is ${budgetChars} — raise the budget with a human's approval or narrow --roles`, 0, 0)
 
   let spent = 0
   for (let pass = 1; pass <= maxPasses; pass++) {
@@ -87,7 +89,7 @@ function arg(name, dflt) {
 
 async function main() {
   const course = arg('course')
-  if (!course) { console.error('usage: render-driver.cjs --course <code> --budget-chars <n> [--go] [--roles a,b] [--concurrency n] [--max-passes n] [--job label] [--author-scope none|lego|all]'); process.exit(2) }
+  if (!course) { console.error('usage: render-driver.cjs --course <code> --budget-chars <n> [--go] [--roles a,b] [--concurrency n] [--max-passes n] [--job label] [--partial] [--author-scope none|lego|all]'); process.exit(2) }
   const P8 = process.env.PHASE8_URL || 'http://localhost:3465'
   const job = arg('job', process.env.TTS_SPEND_JOB || null)
   const base = {
@@ -104,12 +106,20 @@ async function main() {
   const log = (e) => { const line = JSON.stringify({ at: new Date().toISOString(), course, ...e }); fs.appendFileSync(logPath, line + '\n'); console.log(line) }
   const { spendGuard } = require('../services/shared/tts-spend-guard.cjs')
   const ledgerSnapshot = async () => { try { return await spendGuard().snapshot('cartesia') } catch (e) { return { error: e.message } } }
-  const post = async (body) => {
-    const r = await fetch(`${P8}/generate/${course}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body), signal: AbortSignal.timeout(24 * 3600e3) })
-    const text = await r.text()
-    try { return JSON.parse(text) } catch { throw new Error(`phase8 ${r.status}: ${text.slice(0, 300)}`) }
-  }
-  const out = await runDriver({ post, log, ledgerSnapshot, budgetChars: Number(arg('budget-chars')), maxPasses: Number(arg('max-passes', 5)), go: !!arg('go', false), base })
+  // node:http, not fetch: fetch (undici) gives up on response headers after 5 minutes, and a
+  // pass takes longer. The driver then died with "fetch failed" while phase8 kept rendering the
+  // abandoned pass in the background, and the next course's pass ran on top of it (job #355).
+  const post = (body) => new Promise((resolve, reject) => {
+    const u = new URL(`${P8}/generate/${course}`)
+    const req = require('http').request({ hostname: u.hostname, port: u.port, path: u.pathname, method: 'POST', headers: { 'Content-Type': 'application/json' } }, (res) => {
+      let text = ''
+      res.on('data', c => { text += c })
+      res.on('end', () => { try { resolve(JSON.parse(text)) } catch { reject(new Error(`phase8 ${res.statusCode}: ${text.slice(0, 300)}`)) } })
+    })
+    req.on('error', reject)
+    req.end(JSON.stringify(body))
+  })
+  const out = await runDriver({ post, log, ledgerSnapshot, budgetChars: Number(arg('budget-chars')), maxPasses: Number(arg('max-passes', 5)), go: !!arg('go', false), partial: !!arg('partial', false), base })
   console.log(`render-driver: ${out.done ? 'DONE' : 'STOPPED'} — ${out.stopped}; ${out.passes} pass(es), ${out.spent} chars. Log: ${logPath}`)
   process.exit(out.done || out.stopped.startsWith('plan only') ? 0 : 1)
 }
