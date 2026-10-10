@@ -42,7 +42,8 @@ function clip({ course, text, language = 'eng', voice = CHARLOTTE, role = 'known
 let restoreFetch = null
 function door(rows, castRows = null) {
   clipLib.useClipLibrary(clipLib.memoryClipLibrary(rows, (row) => Buffer.from(`bytes-of-${row.id}`)))
-  castGate.useCastRows(castRows)
+  // A staged cast is Tom's cast (cast gate v2 counts only Tom-authored, non-draft rows).
+  castGate.useCastRows(castRows && castRows.map(r => ({ assigned_by: 'thomas.cassidy+ssi@gmail.com', ...r })))
   const nodeFetch = require('node-fetch')
   const mod = require.cache[require.resolve('node-fetch')]
   const original = mod.exports

@@ -7,7 +7,7 @@ import { describe, it, expect, afterEach } from 'vitest'
 import pkg from './course-english-voice.cjs'
 import gate from './voice-cast-gate.cjs'
 const { pickCourseVoice } = pkg
-const { assertCastVoice, useCastRows, useCourseVoiceHolder } = gate
+const { assertCastVoice, useCastRows, useCourseVoiceHolder, useCourseVoiceCensus } = gate
 
 describe('pickCourseVoice', () => {
   it('takes the voice most of the recent English clips are in, with its provider', () => {
@@ -29,17 +29,21 @@ describe('pickCourseVoice', () => {
 })
 
 describe('cast gate honours the voice the course already holds', () => {
-  const castRows = [{ language: 'eng', voice_id: 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121' }]
-  afterEach(() => { useCastRows(null); useCourseVoiceHolder(null) })
+  const castRows = [{ language: 'eng', voice_id: 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121', assigned_by: 'kai-ruling-2026-09-23-charlotte-everywhere' }]
+  afterEach(() => { useCastRows(null); useCourseVoiceHolder(null); useCourseVoiceCensus(null) })
   it('refuses Sonia for a course with no Sonia clip', async () => {
     useCastRows(castRows); useCourseVoiceHolder(async () => false)
     await expect(assertCastVoice('eng', 'azure_en-GB-SoniaNeural', { courseCode: 'new_course' })).rejects.toThrow(/not cast/)
   })
-  // Tom 2026-10-10 (r-2026-10-10-no-clip-is-rendered-in-any) narrows the 09-29 exemption to Cartesia:
-  // a course that already speaks English in Azure Sonia gets no NEW Sonia clip — the line is skipped.
-  it('refuses Sonia even for a course that already speaks English in Sonia (no Azure render, 2026-10-10)', async () => {
-    useCastRows(castRows); useCourseVoiceHolder(async (c, l, v) => c === 'ita_for_eng' && v === 'azure_en-GB-SoniaNeural')
-    await expect(assertCastVoice('eng', 'azure_en-GB-SoniaNeural', { courseCode: 'ita_for_eng' })).rejects.toMatchObject({ code: 'VOICE_NOT_CAST', reason: 'not-cartesia' })
+  // Tom 2026-10-10 (r-2026-10-10-new-phrase-audio-may-render-only): a course keeps an Azure voice only where
+  // its voices in that language are ALL Azure; a course whose English is mixed gets no new Sonia line.
+  it('Sonia renders for a course whose English is all Sonia; refused where its English is mixed', async () => {
+    useCastRows(castRows); useCourseVoiceHolder(async () => true)
+    useCourseVoiceCensus(async (c) => c === 'ita_for_eng'
+      ? [{ role: 'known', language: 'eng', voice_id: 'azure_en-GB-SoniaNeural', clips: 900 }]
+      : [{ role: 'known', language: 'eng', voice_id: 'azure_en-GB-SoniaNeural', clips: 900 }, { role: 'known', language: 'eng', voice_id: 'xai_eve', clips: 2 }])
+    await expect(assertCastVoice('eng', 'azure_en-GB-SoniaNeural', { courseCode: 'ita_for_eng' })).resolves.toBeUndefined()
+    await expect(assertCastVoice('eng', 'azure_en-GB-SoniaNeural', { courseCode: 'mixed_for_eng' })).rejects.toMatchObject({ code: 'VOICE_NOT_CAST', reason: 'not-cartesia' })
   })
   it('still allows a Cartesia voice the course already speaks, though the cast lists another', async () => {
     const tom = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'

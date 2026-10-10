@@ -55,6 +55,10 @@ async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => nu
   if (plan.wouldSpendChars > budgetChars && !partial) return stop(`plan needs up to ${plan.wouldSpendChars} chars, budget is ${budgetChars} — raise the budget with a human's approval or narrow --roles`, 0, 0)
 
   let spent = 0
+  // A plan whose lines are ALL ones the cast gate will not render (wouldSpendChars 0)
+  // still gets a pass — the library may fill them — but a pass that then attaches
+  // nothing has finished the course, not failed it (#689).
+  let lastPlan = plan
   for (let pass = 1; pass <= maxPasses; pass++) {
     const remaining = budgetChars - spent
     if (remaining <= 0) return stop(`budget spent (${spent}/${budgetChars})`, pass - 1, spent, false, true)
@@ -67,11 +71,13 @@ async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => nu
     log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, skippedUncast: r.skippedUncast ?? null, ledger: await ledgerSnapshot() })
     if (!r.spend || typeof s.spentChars !== 'number') return stop('phase8 did not report spend for the pass (old service) — refusing to post another', pass, spent)
     if (r.status === 'spend-capped') return stop(`phase8 capped the pass: ${s.capped}`, pass, spent, false, s.tripKind === 'budget')
+    if (Number.isFinite(attached) && attached === 0 && lastPlan.wouldSpendChars === 0 && calls === 0) return stop('done — only lines the cast gate will not render remain, and the library filled none of them', pass, spent, true)
     if (!Number.isFinite(attached) || attached === 0) return stop(`pass ${pass} attached ${Number.isFinite(attached) ? 0 : 'nothing reported'} — the next pass would fill nothing either`, pass, spent)
     if (calls > RATIO_LIMIT * attached) return stop(`pass ${pass} made ${calls} provider calls for ${attached} slots (> ${RATIO_LIMIT}x) — re-rendering what it already has`, pass, spent)
     if (spent >= budgetChars) return stop(`budget spent (${spent}/${budgetChars})`, pass, spent, false, true)
     const next = await post({ ...base, dryRun: true })
     if (!next.wouldGenerate) return stop('done — nothing left to render', pass, spent, true)
+    lastPlan = next
   }
   return stop(`--max-passes ${maxPasses} reached`, maxPasses, spent)
 

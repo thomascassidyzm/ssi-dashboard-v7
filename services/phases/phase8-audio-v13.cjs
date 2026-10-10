@@ -3106,10 +3106,10 @@ app.post('/generate/:courseCode', async (req, res) => {
     // render identical text for different LEGOs/components, and collapsing
     // them would silently drop one of the FK binds.
     logger.info(`Before dedup: ${needed.length} items (known=${needed.filter(n=>n.role==='known').length}, target1=${needed.filter(n=>n.role==='target1').length}, target2=${needed.filter(n=>n.role==='target2').length}, presentation=${needed.filter(n=>n.role==='presentation').length})`)
-    const uniqueNeeded = [...new Map(
+    const deduped = [...new Map(
       needed.map(n => [`${normalizeText(n.text)}|${n.language}|${n.role}${n.role === 'presentation' ? `|${n.lego_id || n.phrase_id || ''}` : ''}`, n])
-    ).values()].slice(0, limit)
-    logger.info(`After dedup: ${uniqueNeeded.length} unique items`)
+    ).values()]
+    logger.info(`After dedup: ${deduped.length} unique items`)
 
     // THE CAST GATE, PLANNED (Tom 2026-10-10 02:36Z, r-2026-10-10-no-clip-is-rendered-in-any:
     // "No clips should be being made in ANY course I haven't set Cartesia voices for").
@@ -3118,7 +3118,10 @@ app.post('/generate/:courseCode', async (req, res) => {
     // say so up front. Uncast items still go to the door — a library clip may
     // answer them for free — and a refusal is counted as skippedUncast, never as
     // a failure and never as planned spend.
-    const castPlan = await castGate.partitionByCast(uniqueNeeded, courseCode)
+    // The limit is applied AFTER the split, cast lines first (#689): a head of
+    // uncast lines must never fill the limit and starve the cast lines behind it.
+    const castPlan = castGate.limitCastFirst(await castGate.partitionByCast(deduped, courseCode), limit)
+    const uniqueNeeded = castPlan.items
     for (const s of castPlan.summary) logger.warn(`[CastGate] ${courseCode}: ${s.count} ${s.role} line(s) in ${s.language} will not be rendered (${s.voiceId}: ${s.reason}) — only a library clip can fill them`)
 
     // Load pre-computed gender expansions from DB.
@@ -3138,11 +3141,16 @@ app.post('/generate/:courseCode', async (req, res) => {
     if (dryRun) {
       return res.json({
         dryRun: true,
-        wouldGenerate: castPlan.cast.length + (audioNeeds.toAuthor?.length || 0),
+        // EVERY line the pass would take to the door, uncast included (#689): an
+        // uncast line can still be filled from the library, so a plan with only
+        // uncast lines left is not "nothing to do" — a driver that read it as
+        // done stopped before reuse ran.
+        wouldGenerate: castPlan.items.length + (audioNeeds.toAuthor?.length || 0),
         // Upper bound on the characters this pass would send a provider (reuse
-        // can only lower it). A driver sets its budget against this (job #425).
+        // can only lower it) — cast lines only, since the gate renders no other.
+        // A driver sets its budget against this (job #425).
         wouldSpendChars: castPlan.cast.reduce((n, i) => n + String(i.text || '').length, 0),
-        // Lines the cast gate will not render (Tom 2026-10-10), by role/language/voice.
+        // Lines in this pass the cast gate will not render (Tom 2026-10-10); `uncast` tallies the whole queue.
         wouldSkipUncast: castPlan.uncast.length,
         uncast: castPlan.summary,
         wouldAuthor: audioNeeds.toAuthor?.length || 0,

@@ -78,6 +78,23 @@ describe('render driver transport and exit codes (#518)', () => {
   const { makePost, EXIT_BUDGET_CAP } = require('./render-driver.cjs')
   const serve = (handler) => new Promise(r => { const s = http.createServer(handler); s.listen(0, '127.0.0.1', () => r(s)) })
 
+  // #689: wouldGenerate now counts uncast lines (the library may fill them), so a plan of only
+  // uncast lines is run once for reuse — and a pass that then attaches nothing is DONE, not failed.
+  it('a plan of only uncast lines gets one reuse pass and finishes done, not failed', async () => {
+    const f = fakePhase8([pass(0, 0, 0)], { wouldGenerate: 40, wouldSpendChars: 0, wouldSkipUncast: 40 })
+    const out = await runDriver({ post: f.post, budgetChars: 5000, go: true })
+    expect(f.posted.filter(b => !b.dryRun)).toHaveLength(1)
+    expect(out.done).toBe(true)
+    expect(out.stopped).toMatch(/only lines the cast gate will not render remain/)
+  })
+
+  it('a pass that attached nothing while renderable lines were planned is still a failure stop', async () => {
+    const f = fakePhase8([pass(0, 0, 0)], { wouldGenerate: 40, wouldSpendChars: 900 })
+    const out = await runDriver({ post: f.post, budgetChars: 5000, go: true })
+    expect(out.done).toBe(false)
+    expect(out.stopped).toMatch(/attached 0/)
+  })
+
   it('makePost picks the transport from the URL protocol (http works; https is not forced onto http)', async () => {
     const s = await serve((q, r) => { r.end('{"ok":1}') })
     try { expect(await makePost(`http://127.0.0.1:${s.address().port}`, 'x')({})).toEqual({ ok: 1 }) } finally { s.close() }

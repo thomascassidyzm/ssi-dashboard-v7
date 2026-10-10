@@ -1007,7 +1007,8 @@ async function speak(text, provider, config = {}, maxRetries = 3) {
       charsSpent: 0,
     };
   }
-  await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null });
+  // The intro SLOT (door.intro) is judged against the course's presentation voices, every other line against its lines (cast gate leg b).
+  await assertCastVoice(language, voiceId, { audition: !!door.audition, courseCode: door.courseCode || config.courseCode || null, intro: !!door.intro });
   if (door.dryRun) {
     doorStats.wouldRender++;
     doorStats.wouldSpendChars += chars;

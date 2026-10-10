@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 /**
  * CAST INVENTORY — for every course, per role, the voice phase8 /generate would
- * render a NEW line in, and whether the cast gate lets it (Tom 2026-10-10 02:36Z,
- * r-2026-10-10-no-clip-is-rendered-in-any: "No clips should be being made in ANY
- * course I haven't set Cartesia voices for").
+ * render a NEW line in, whether the cast gate lets it, and by which leg (Tom
+ * 2026-10-10, r-2026-10-10-new-phrase-audio-may-render-only: (a) Tom's Cartesia
+ * cast, or (b) a course whose voices in the language are all Azure, in those voices).
  *
  * Read-only: one read of courses, the cast and the voice config resolution
  * phase8 itself uses (voiceConfigService.resolveVoiceConfig, presentation-author),
@@ -48,8 +48,8 @@ async function inventory({ only = null } = {}) {
       if (role === 'presentation') { try { voiceId = presentationAuthor.resolvePresentationVoiceId({ ...course, voice_config: resolved }) } catch { voiceId = null } }
       else voiceId = roleVoice(voices, role)
       if (!voiceId) { out.push({ courseCode, role, language, voiceId: null, allowed: false, reason: 'no-voice-configured' }); continue }
-      const v = await castVerdict(language, voiceId, { courseCode })
-      out.push({ courseCode, role, language, voiceId, allowed: v.allowed, reason: v.reason })
+      const v = await castVerdict(language, voiceId, { courseCode, role })
+      out.push({ courseCode, role, language, voiceId, allowed: v.allowed, reason: v.reason, via: v.via || null })
     }
   }
   return out
@@ -59,7 +59,7 @@ if (require.main === module) {
   const only = arg('courses') ? String(arg('courses')).split(',') : null
   inventory({ only }).then(rows => {
     if (arg('json')) { console.log(JSON.stringify(rows, null, 1)); return }
-    for (const r of rows) console.log([r.courseCode, r.role, r.language, r.allowed ? 'RENDERS' : 'SKIPPED', r.reason || '', r.voiceId || ''].join('\t'))
+    for (const r of rows) console.log([r.courseCode, r.role, r.language, r.allowed ? 'RENDERS' : 'SKIPPED', r.reason || r.via || '', r.voiceId || ''].join('\t'))
   }).catch(e => { console.error(`cast-inventory: ${e.message}`); process.exit(1) })
 }
 
