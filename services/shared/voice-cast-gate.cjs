@@ -56,6 +56,25 @@ function castRowLanguage(raw) {
   return tryCanonicalLanguage(raw) || tryCanonicalLanguage(String(raw || '').split('_')[0])
 }
 
+/**
+ * Tom 2026-10-10 03:49Z (r-2026-10-10-tom-s-cartesia-cast-is-per-language-variety): "Not Canadian
+ * French!!! I haven't set that." His cast is per VARIETY. A cast row's key is 'fra' (the base) or
+ * 'fra_ca' (a variety); a variety's rows never cover the base and the base's never cover a variety.
+ * The course's variety is the side of its code ('fra_ca_for_eng' → target 'fra_ca') whose language
+ * is the one being rendered; a plain code side ('fra') is the base. (#700 reduced 'fra_ca' to 'fra'.)
+ */
+const rowKey = (raw) => String(raw || '').trim().toLowerCase().replace(/-/g, '_')
+function castKeyOf(language, courseCode) {
+  const m = /^(.+?)_for_(.+)$/.exec(String(courseCode || '').toLowerCase())
+  if (m) for (const side of [m[1], m[2]]) if (side.includes('_') && castRowLanguage(side) === language) return side
+  return language
+}
+/** Does this voice_language_roles row belong to cast key `key` — exactly, never by reduction? */
+function rowIsForKey(row, key) {
+  const k = rowKey(row.language)
+  return k.includes('_') ? k === key : (tryCanonicalLanguage(k) || k) === key
+}
+
 const isCartesiaVoice = (voiceId) => /^cartesia_/.test(String(voiceId || ''))
 const isAzureVoice = (voiceId) => /^azure_/.test(String(voiceId || ''))
 /** Tom 2026-10-10: xAI is banned outright — no xAI render, ever. */
@@ -96,7 +115,7 @@ const canonVoice = (v) => (v ? (tryCanonicalVoiceId(v) || String(v)) : null)
  *   reaches these)
  */
 function castAllowsVoice(language, voiceId, rows) {
-  const mine = (rows || []).filter(r => castRowLanguage(r.language) === language && isCartesiaVoice(canonVoice(r.voice_id)))
+  const mine = (rows || []).filter(r => rowIsForKey(r, language) && isCartesiaVoice(canonVoice(r.voice_id)))
   const cast = [...new Set(mine.filter(isTomCastRow).map(r => canonVoice(r.voice_id)))]
   const draftOnly = [...new Set(mine.filter(r => !isTomCastRow(r)).map(r => canonVoice(r.voice_id)))].filter(v => !cast.includes(v))
   const base = { cast, draftOnly }
@@ -228,22 +247,24 @@ async function castVerdict(language, voiceId, { audition = false, courseCode = n
   const rows = await castRows()
   if (rows === null) return { allowed: true, cast: [], reason: null, via: 'test' }   // un-injected test only
   voiceId = canonVoice(voiceId)
-  const v = castAllowsVoice(language, voiceId, rows)
-  if (v.allowed) return { ...v, via: 'tom-cast' }
-  if (v.reason === 'banned-provider') return v
+  const castKey = castKeyOf(language, courseCode)   // 'fra_ca' for a Canadian-French course, 'fra' for plain French
+  const v = castAllowsVoice(castKey, voiceId, rows)
+  if (v.allowed) return { ...v, castKey, via: 'tom-cast' }
+  if (v.reason === 'banned-provider') return { ...v, castKey }
   // Tom 2026-09-29: a course keeps the Cartesia voice it already speaks — never one only the draft named.
   if (v.reason === 'not-in-cast' && courseCode && !v.draftOnly.includes(voiceId) && await courseHoldsVoice(courseCode, language, voiceId)) {
-    return { ...v, allowed: true, reason: null, via: 'held-voice' }
+    return { ...v, castKey, allowed: true, reason: null, via: 'held-voice' }
   }
   // Leg (b): the course's existing voices in the language are all Azure, and this is one of them.
   if (isAzureVoice(voiceId) && courseCode) {
     const tomCast = v.cast.length > 0
     if (azureOnlyAllows(await courseProfile(courseCode), language, voiceId, role, tomCast)) return { ...v, allowed: true, reason: null, via: 'azure-only' }
   }
-  return v
+  return { ...v, castKey }
 }
 
-function refusalMessage(language, voiceId, { reason, cast }) {
+function refusalMessage(language, voiceId, { reason, cast, castKey }) {
+  language = castKey || language
   const tail = `(Tom 2026-10-10: new audio only in a language he has cast in Cartesia, or in a course whose voices in it are all Azure, in those voices)`
   if (reason === 'banned-provider') return `Voice not cast for ${language} (403): ${voiceId} is an xAI voice — xAI is banned outright (Tom 2026-10-10).`
   if (reason === 'draft-cast') return `Voice not cast for ${language} (403): ${language} has only the 2026-09-04 draft casting, which Tom never chose, so no ${language} clip is rendered (${voiceId} refused) ${tail}.`
@@ -308,6 +329,6 @@ function limitCastFirst({ cast, uncast, summary }, limit) {
 }
 
 module.exports = {
-  limitCastFirst, castAllowsVoice, castVerdict, partitionByCast, castRowLanguage, assertCastVoice, isCastRefusal, isCartesiaVoice, isAzureVoice,
+  limitCastFirst, castAllowsVoice, castKeyOf, castVerdict, partitionByCast, castRowLanguage, assertCastVoice, isCastRefusal, isCartesiaVoice, isAzureVoice,
   isTomCastRow, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseVoiceHolder, useCourseVoiceCensus,
 }

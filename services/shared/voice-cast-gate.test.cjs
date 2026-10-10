@@ -43,10 +43,10 @@ describe('castVerdict — leg (a), Tom\'s Cartesia cast', () => {
     useCastRows(rows); useCourseVoiceHolder(async () => true); useCourseVoiceCensus(async () => [])
     expect(await castVerdict('por', POR_DRAFT, { courseCode: 'por_br_for_eng', role: 'target1' })).toMatchObject({ allowed: false, reason: 'draft-cast' })
   })
-  it('Tom\'s German renders; a draft dialect voice that reduces to German does not, held or not', async () => {
+  it('Tom\'s German renders for German; a draft dialect voice does not, held or not', async () => {
     useCastRows(rows); useCourseVoiceHolder(async () => true)
-    expect(await castVerdict('deu', DEU_TOM, { courseCode: 'deu_at_for_eng' })).toMatchObject({ allowed: true, via: 'tom-cast' })
-    expect(await castVerdict('deu', DEU_AT_DRAFT, { courseCode: 'deu_at_for_eng' })).toMatchObject({ allowed: false, reason: 'not-in-cast' })
+    expect(await castVerdict('deu', DEU_TOM, { courseCode: 'deu_for_eng' })).toMatchObject({ allowed: true, via: 'tom-cast' })
+    expect(await castVerdict('deu', DEU_AT_DRAFT, { courseCode: 'deu_at_for_eng' })).toMatchObject({ allowed: false, reason: 'draft-cast' })
   })
   it('xAI is banned outright — even where the course is Azure-only otherwise', async () => {
     useCastRows(rows); useCourseVoiceCensus(async () => [{ role: 'target1', language: 'urd', voice_id: 'xai_eve', clips: 3 }])
@@ -55,6 +55,35 @@ describe('castVerdict — leg (a), Tom\'s Cartesia cast', () => {
   it('an audition is still heard', async () => {
     useCastRows([])
     expect(await castVerdict('sin', 'azure_si-LK-SameeraNeural', { audition: true })).toMatchObject({ allowed: true })
+  })
+})
+
+describe('castVerdict — Tom\'s cast is per VARIETY (#721: "Not Canadian French!!! I haven\'t set that")', () => {
+  const FRA = 'cartesia_ab636c8b-9960-4fb3-bb0c-b7b655fb9745'
+  const FRA_CA = 'cartesia_63fdecc2-4e1d-4aa3-a442-27204e3cd3b5'
+  const fraOnly = [tom('fra', FRA), draft('fra_ca', 'cartesia_draft-ca')]
+  it('fra_ca with only fra Tom-cast rows → refused uncast/draft; plain fra stays allowed', async () => {
+    useCastRows(fraOnly); useCourseVoiceCensus(async () => [])
+    expect(await castVerdict('fra', FRA, { courseCode: 'fra_ca_for_eng', role: 'target1' })).toMatchObject({ allowed: false, reason: 'draft-cast', castKey: 'fra_ca' })
+    useCastRows([tom('fra', FRA)])
+    expect(await castVerdict('fra', FRA, { courseCode: 'fra_ca_for_eng', role: 'target1' })).toMatchObject({ allowed: false, reason: 'uncast' })
+    expect(await castVerdict('fra', FRA, { courseCode: 'fra_for_eng', role: 'target1' })).toMatchObject({ allowed: true, via: 'tom-cast' })
+  })
+  it('a variety\'s Tom row covers that variety only, never the base', async () => {
+    useCastRows([tom('fra_ca', FRA_CA)]); useCourseVoiceCensus(async () => [])
+    expect(await castVerdict('fra', FRA_CA, { courseCode: 'fra_ca_for_eng' })).toMatchObject({ allowed: true, via: 'tom-cast' })
+    expect(await castVerdict('fra', FRA_CA, { courseCode: 'fra_for_eng' })).toMatchObject({ allowed: false, reason: 'uncast' })
+  })
+  it('a known-side variety is found too, and English (base rows, no variety) is unaffected', async () => {
+    useCastRows([tom('eng', CHARLOTTE), tom('spa', 'cartesia_s')]); useCourseVoiceCensus(async () => [])
+    expect(await castVerdict('spa', 'cartesia_s', { courseCode: 'eng_for_spa_mx' })).toMatchObject({ allowed: false, reason: 'uncast' })
+    expect(await castVerdict('eng', CHARLOTTE, { courseCode: 'spa_mx_for_eng' })).toMatchObject({ allowed: true })
+    expect(await castVerdict('eng', CHARLOTTE, { courseCode: 'fra_ca_for_eng' })).toMatchObject({ allowed: true })
+  })
+  it('the Azure-only leg stays per course, in a variety course', async () => {
+    useCastRows([tom('fra', FRA)])
+    useCourseVoiceCensus(async () => [{ role: 'target1', language: 'fra', voice_id: 'azure_fr-CA-SylvieNeural', clips: 5 }])
+    expect(await castVerdict('fra', 'azure_fr-CA-SylvieNeural', { courseCode: 'fra_ca_for_eng', role: 'target1' })).toMatchObject({ allowed: true, via: 'azure-only' })
   })
 })
 
