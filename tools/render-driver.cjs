@@ -46,7 +46,7 @@ const EXIT_BUDGET_CAP = 4
 async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => null, budgetChars, maxPasses = 5, go = false, partial = false, base = {} }) {
   if (!(Number(budgetChars) > 0)) throw new Error('render-driver: --budget-chars is required (a whole-run character budget); refusing to run without one')
   const plan = await post({ ...base, dryRun: true })
-  log({ event: 'plan', wouldGenerate: plan.wouldGenerate, wouldSpendChars: plan.wouldSpendChars, budgetChars })
+  log({ event: 'plan', wouldGenerate: plan.wouldGenerate, wouldSpendChars: plan.wouldSpendChars, budgetChars, wouldSkipUncast: plan.wouldSkipUncast ?? null, uncast: plan.uncast || [] })
   if (typeof plan.wouldSpendChars !== 'number') return stop('phase8 dry run does not report wouldSpendChars (old service) — refusing to run blind', 0, 0)
   if (!go) return stop('plan only (pass --go to render)', 0, 0)
   if (plan.wouldGenerate === 0) return stop('nothing to render', 0, 0, true)
@@ -64,7 +64,7 @@ async function runDriver({ post, log = () => {}, ledgerSnapshot = async () => nu
     const calls = Number(s.providerCalls) || 0
     const attached = Number(r.attached)
     spent += spentNow
-    log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, ledger: await ledgerSnapshot() })
+    log({ event: 'pass', pass, status: r.status, spentChars: spentNow, totalSpent: spent, budgetChars, providerCalls: calls, attached: Number.isFinite(attached) ? attached : null, tripKind: s.tripKind || null, failed: r.failed, skippedUncast: r.skippedUncast ?? null, ledger: await ledgerSnapshot() })
     if (!r.spend || typeof s.spentChars !== 'number') return stop('phase8 did not report spend for the pass (old service) — refusing to post another', pass, spent)
     if (r.status === 'spend-capped') return stop(`phase8 capped the pass: ${s.capped}`, pass, spent, false, s.tripKind === 'budget')
     if (!Number.isFinite(attached) || attached === 0) return stop(`pass ${pass} attached ${Number.isFinite(attached) ? 0 : 'nothing reported'} — the next pass would fill nothing either`, pass, spent)

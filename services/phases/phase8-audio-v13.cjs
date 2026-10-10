@@ -208,6 +208,7 @@ const {
   PROVIDER_ALIASES,
 } = require('../shared/clip-identity.cjs')
 const { pickCastVoice, providerOfVoice, castVoiceForLanguage } = require('../shared/language-voice-cast.cjs')
+const castGate = require('../shared/voice-cast-gate.cjs')
 const { courseEnglishVoice } = require('../shared/course-english-voice.cjs')
 const { providerForVoice } = require('../shared/render-voice-provider.cjs')
 const { castKeyForCourse } = require('../shared/cast-language-key.cjs')
@@ -3110,6 +3111,16 @@ app.post('/generate/:courseCode', async (req, res) => {
     ).values()].slice(0, limit)
     logger.info(`After dedup: ${uniqueNeeded.length} unique items`)
 
+    // THE CAST GATE, PLANNED (Tom 2026-10-10 02:36Z, r-2026-10-10-no-clip-is-rendered-in-any:
+    // "No clips should be being made in ANY course I haven't set Cartesia voices for").
+    // The door refuses every render outside the language's Cartesia cast
+    // (services/shared/voice-cast-gate.cjs); this only makes the plan and the log
+    // say so up front. Uncast items still go to the door — a library clip may
+    // answer them for free — and a refusal is counted as skippedUncast, never as
+    // a failure and never as planned spend.
+    const castPlan = await castGate.partitionByCast(uniqueNeeded, courseCode)
+    for (const s of castPlan.summary) logger.warn(`[CastGate] ${courseCode}: ${s.count} ${s.role} line(s) in ${s.language} will not be rendered (${s.voiceId}: ${s.reason}) — only a library clip can fill them`)
+
     // Load pre-computed gender expansions from DB.
     // Loaded UNCONDITIONALLY (2026-09-03). GENDERED_LANGUAGES means "this language
     // agrees with the SPEAKER's gender" and gates the Haiku expander; it is the wrong
@@ -3127,10 +3138,13 @@ app.post('/generate/:courseCode', async (req, res) => {
     if (dryRun) {
       return res.json({
         dryRun: true,
-        wouldGenerate: uniqueNeeded.length + (audioNeeds.toAuthor?.length || 0),
+        wouldGenerate: castPlan.cast.length + (audioNeeds.toAuthor?.length || 0),
         // Upper bound on the characters this pass would send a provider (reuse
         // can only lower it). A driver sets its budget against this (job #425).
-        wouldSpendChars: uniqueNeeded.reduce((n, i) => n + String(i.text || '').length, 0),
+        wouldSpendChars: castPlan.cast.reduce((n, i) => n + String(i.text || '').length, 0),
+        // Lines the cast gate will not render (Tom 2026-10-10), by role/language/voice.
+        wouldSkipUncast: castPlan.uncast.length,
+        uncast: castPlan.summary,
         wouldAuthor: audioNeeds.toAuthor?.length || 0,
         wouldCopy: audioNeeds.toCopy?.length || 0,
         wouldPurgeStalePresentations: audioNeeds.stalePendingIds?.length || 0,
@@ -3141,7 +3155,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     }
 
     // No budget, no paid pass (job #430) — refused before any work starts.
-    const plannedPassChars = uniqueNeeded.reduce((n, i) => n + String(i.text || '').length, 0)
+    const plannedPassChars = castPlan.cast.reduce((n, i) => n + String(i.text || '').length, 0)
     const passBudget = resolvePassBudget(req.body.budgetChars, plannedPassChars)
     if (!passBudget.ok) {
       logger.error(`[SpendCap] ${courseCode}: REFUSED — ${passBudget.error}`)
@@ -3161,7 +3175,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // Process items in parallel with concurrency limit
     logger.info(`Generating ${uniqueNeeded.length} audio files with concurrency=${concurrencyToUse}`)
 
-    const results = { success: 0, failed: 0, errors: [] }
+    const results = { success: 0, failed: 0, errors: [], skippedUncast: 0 }
     // A-137 cross-course reuse: on unless this request asked for fresh bytes.
     const reuseOpts = reuseOptsFromRequest(req)
     results.reuse = newReuseCounters()
@@ -3172,7 +3186,7 @@ app.post('/generate/:courseCode', async (req, res) => {
     // pass may spend at most RUN_SPEND_FACTOR x the characters it set out to
     // render (headroom for veracity re-renders); past that it is rendering
     // something it never planned to, and it stops.
-    const spendCap = runSpendCap(uniqueNeeded, { ceilingChars: passBudget.budgetChars })
+    const spendCap = runSpendCap(castPlan.cast, { ceilingChars: passBudget.budgetChars })
     results.midLinked = 0
     const passJob = `phase8 /generate ${courseCode} ${runStartedAt}${req.body.job ? ` (${String(req.body.job).slice(0, 80)})` : ''}`
     // Pre-publish veracity gate (services/audio-veracity.cjs). ON by default;
@@ -3534,6 +3548,10 @@ app.post('/generate/:courseCode', async (req, res) => {
         const result = batchResults[j]
         if (result.status === 'fulfilled') {
           results.success++
+        } else if (castGate.isCastRefusal(result.reason)) {
+          // Not cast in Cartesia (Tom 2026-10-10): skipped by design, logged once above.
+          results.skippedUncast++
+          updateWork(batch[j].text, false, 'skipped: voice not cast')
         } else {
           results.failed++
           const item = batch[j]
@@ -3640,6 +3658,9 @@ app.post('/generate/:courseCode', async (req, res) => {
       total: uniqueNeeded.length,
       success: results.success,
       failed: results.failed,
+      // Lines the cast gate refused to render (no Cartesia cast for that language/voice).
+      skippedUncast: results.skippedUncast,
+      uncast: castPlan.summary,
       cancelled: wasCancelled,
       veracity: results.veracity,
       phonologyGate,

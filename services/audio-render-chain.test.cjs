@@ -23,7 +23,7 @@ const clip = (o) => ({ id: o.id, course_code: o.course || 'ita_for_eng', text: o
 /** tts-service with node-fetch replaced by a stub that COUNTS what would be paid. */
 function door(rows = []) {
   clipLib.useClipLibrary(clipLib.memoryClipLibrary(rows))
-  castGate.useCastRows([])
+  castGate.useCastRows(null)  // the cast gate is not what this file tests
   const nodeFetch = require('node-fetch')
   const mod = require.cache[require.resolve('node-fetch')]
   const original = mod.exports

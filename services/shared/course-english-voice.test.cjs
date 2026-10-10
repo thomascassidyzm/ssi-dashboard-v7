@@ -35,8 +35,25 @@ describe('cast gate honours the voice the course already holds', () => {
     useCastRows(castRows); useCourseVoiceHolder(async () => false)
     await expect(assertCastVoice('eng', 'azure_en-GB-SoniaNeural', { courseCode: 'new_course' })).rejects.toThrow(/not cast/)
   })
-  it('allows Sonia for a course that already speaks English in Sonia', async () => {
+  // Tom 2026-10-10 (r-2026-10-10-no-clip-is-rendered-in-any) narrows the 09-29 exemption to Cartesia:
+  // a course that already speaks English in Azure Sonia gets no NEW Sonia clip — the line is skipped.
+  it('refuses Sonia even for a course that already speaks English in Sonia (no Azure render, 2026-10-10)', async () => {
     useCastRows(castRows); useCourseVoiceHolder(async (c, l, v) => c === 'ita_for_eng' && v === 'azure_en-GB-SoniaNeural')
-    await expect(assertCastVoice('eng', 'azure_en-GB-SoniaNeural', { courseCode: 'ita_for_eng' })).resolves.toBeUndefined()
+    await expect(assertCastVoice('eng', 'azure_en-GB-SoniaNeural', { courseCode: 'ita_for_eng' })).rejects.toMatchObject({ code: 'VOICE_NOT_CAST', reason: 'not-cartesia' })
+  })
+  it('still allows a Cartesia voice the course already speaks, though the cast lists another', async () => {
+    const tom = 'cartesia_8fef4d59-0a7e-4ad2-a261-6a3bb50734d2'
+    useCastRows(castRows); useCourseVoiceHolder(async (c, l, v) => c === 'spa_for_eng' && v === tom)
+    await expect(assertCastVoice('eng', tom, { courseCode: 'spa_for_eng' })).resolves.toBeUndefined()
+    await expect(assertCastVoice('eng', tom, { courseCode: 'new_course' })).rejects.toMatchObject({ reason: 'not-in-cast' })
+  })
+  it('a language whose only cast rows are not Cartesia is uncast', async () => {
+    useCastRows([{ language: 'urd', voice_id: 'azure_ur-PK-UzmaNeural' }]); useCourseVoiceHolder(async () => true)
+    await expect(assertCastVoice('urd', 'azure_ur-PK-UzmaNeural', { courseCode: 'eng_for_urd' })).rejects.toMatchObject({ reason: 'uncast' })
+  })
+  it('an empty cast table refuses every render; an audition is still heard', async () => {
+    useCastRows([]); useCourseVoiceHolder(async () => true)
+    await expect(assertCastVoice('sin', 'azure_si-LK-SameeraNeural', { courseCode: 'eng_for_sin' })).rejects.toMatchObject({ reason: 'uncast' })
+    await expect(assertCastVoice('sin', 'azure_si-LK-SameeraNeural', { audition: true })).resolves.toBeUndefined()
   })
 })
