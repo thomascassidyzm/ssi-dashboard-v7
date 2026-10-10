@@ -2244,16 +2244,7 @@ app.post('/api/voices/preview', async (req, res) => {
       })
       audioBuffer = result.audioBuffer
     } else if (provider === 'xai') {
-      const apiKey = process.env.XAI_API_KEY
-      if (!apiKey) {
-        return res.status(500).json({ success: false, error: 'xAI not configured (XAI_API_KEY not set)' })
-      }
-      const result = await ttsService.generateWithRetry(text, 'xai', {
-        apiKey,
-        voiceId,
-        language: language || 'auto',
-      })
-      audioBuffer = result.audioBuffer
+      return res.status(403).json({ success: false, error: 'xAI voice generation is banned (Tom 2026-10-10)' })
     } else {
       return res.status(400).json({ success: false, error: `Unknown provider: ${provider}` })
     }

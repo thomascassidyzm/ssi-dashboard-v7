@@ -113,7 +113,7 @@ function ttsOptionsFor (provider, voiceId, language) {
     }
   }
   if (provider === 'elevenlabs') return { apiKey: process.env.ELEVENLABS_API_KEY, voiceId }
-  return { apiKey: process.env.XAI_API_KEY, voiceId, language: bcp47(language) }
+  return { voiceId, language: bcp47(language) }
 }
 
 const storage = {

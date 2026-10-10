@@ -20,8 +20,6 @@ clipLibraryModule.useClipLibrary(clipLibraryModule.memoryClipLibrary([]))
 const {
   assertAudibleResponse,
   isRetriableTtsError,
-  recordXaiOutcome,
-  getXaiHealth,
   TTS_MIN_AUDIO_MS,
   isKnownSideOfHumanVoiceCourse,
 } = require('./tts-service.cjs')
@@ -94,25 +92,11 @@ describe('gate failures route through the existing retry budget', () => {
   })
 })
 
-describe('xAI degradation pacing', () => {
-  it('counts stubs against total requests for the batch report', () => {
-    const before = getXaiHealth()
-    recordXaiOutcome(true)
-    recordXaiOutcome(false)
-    const after = getXaiHealth()
-    expect(after.requests).toBe(before.requests + 2)
-    expect(after.stubs).toBe(before.stubs + 1)
-    expect(after.stubRate).toBeGreaterThan(0)
-  })
-
-  it('trips a cooldown when the stub rate over a full window spikes', () => {
-    const before = getXaiHealth().cooldowns
-    // A healthy run must not trip it...
-    for (let i = 0; i < 200; i++) recordXaiOutcome(true)
-    expect(getXaiHealth().cooldowns).toBe(before)
-    // ...but the 08-03 signature (rates climbing past 4%) must.
-    for (let i = 0; i < 200; i++) recordXaiOutcome(false)
-    expect(getXaiHealth().cooldowns).toBeGreaterThan(before)
+describe('xAI is banned (Tom 2026-10-10)', () => {
+  it('has no renderer: a request for provider xai is refused, not sent', async () => {
+    const svc = require('./tts-service.cjs')
+    expect(svc.getXaiHealth).toBeUndefined()
+    await expect(svc.generateWithRetry('bonjour', 'xai', { voiceId: 'leo', language: 'fr' })).rejects.toThrow(/\(403\)/)
   })
 })
 

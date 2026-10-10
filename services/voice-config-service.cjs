@@ -122,8 +122,7 @@ const DEFAULT_VOICE_CONFIG = {
       regionEnvVar: 'AZURE_SPEECH_REGION'
     },
     xai: {
-      enabled: true,
-      apiKeyEnvVar: 'XAI_API_KEY'
+      enabled: false // banned by Tom 2026-10-10; no key is read
     }
   },
 
@@ -821,12 +820,11 @@ function buildTTSConfig(voiceConfig, cadence, cadenceProfiles, opts = {}) {
     // for one of those clips looked like when it was made.
     //
     // voiceId may be a preset ('eve'|'ara'|'leo'|'rex'|'sal') OR a custom
-    // cloned voice id (e.g. 'gfzdpspr5fdp') — generateXai passes it through
+    // cloned voice id (e.g. 'gfzdpspr5fdp') — (xAI banned 2026-10-10; this branch only describes historic clips) it was passed through
     // verbatim. xAI has no speed param on /v1/tts; speed is applied downstream
     // in masterAudio, so it's advisory here (kept for symmetry with other roles).
     return {
       provider: 'xai',
-      apiKey: process.env.XAI_API_KEY,
       voiceId: voiceConfig.voiceId,
       language: voiceConfig.language || 'auto',
       speed: effectiveSpeed

@@ -138,7 +138,7 @@ function ttsOptionsFor (provider, voiceId, language) {
   if (provider === 'cartesia') return {
     apiKey: process.env.CARTESIA_API_KEY, voiceId, locale: toBcp47(language),
   }
-  return { apiKey: process.env.XAI_API_KEY, voiceId, language: toBcp47(language) }
+  return { voiceId, language: toBcp47(language) }
 }
 
 /** Render through the pipeline's own chain and prove the result carries speech. */

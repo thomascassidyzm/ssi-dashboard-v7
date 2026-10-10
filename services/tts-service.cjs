@@ -51,22 +51,6 @@ const ttsKeepAliveAgent = new https.Agent({
 // actually tears the request down and frees the socket and buffers.
 const TTS_FETCH_TIMEOUT_MS = Number(process.env.TTS_FETCH_TIMEOUT_MS || 90_000);
 
-// Bounded xAI concurrency: phase8 fans out at up to 20 clips, which xAI's
-// /v1/tts answers by queueing until requests blow the timeout (the guj passes
-// ran at ~50%+ "Timed out after 120s"). A few at a time keeps each request
-// inside the timeout instead of timing out en masse and re-stampeding.
-const XAI_MAX_CONCURRENT = Number(process.env.XAI_TTS_CONCURRENCY || 4);
-let xaiActive = 0;
-const xaiQueue = [];
-function xaiSlotAcquire() {
-  if (xaiActive < XAI_MAX_CONCURRENT) { xaiActive++; return Promise.resolve(); }
-  return new Promise(resolve => xaiQueue.push(resolve));
-}
-function xaiRelease() {
-  const next = xaiQueue.shift();
-  if (next) next(); else xaiActive--;
-}
-
 // ---- Empty-response gate ---------------------------------------------------
 // The 2026-08-03 French batch wrote 567 target2 + ~75 known clips that are
 // 2,016-byte MP3 stubs of pure silence (144/168/192 ms = 6/7/8 MP3 frames, the
@@ -119,76 +103,6 @@ function assertAudibleResponse(buffer, { provider, bytesPerSecond, text, voiceId
     `for voice=${voiceId || '?'} text="${String(text || '').slice(0, 40)}" — ` +
     `provider returned silence, not a render`
   );
-}
-
-// ---- xAI adaptive pacing ---------------------------------------------------
-// The concurrency cap above bounds INSTANTANEOUS load. The 08-03 signature was
-// different: degradation climbing with SUSTAINED run length and recovering when
-// the run tailed off. A concurrency cap alone cannot see that, so we watch the
-// gate's own failure rate and slow down exactly when the provider is misbehaving
-// — free on a healthy run, and the only signal we have, since we cannot see
-// xAI's side.
-//
-// We stay on xAI deliberately (Tom 2026-08-04: the cost and the voices are worth
-// it). The job of this code is to make xAI's bad minutes survivable, NEVER to
-// route around xAI.
-const XAI_STUB_WINDOW = Number(process.env.XAI_STUB_WINDOW || 50);
-const XAI_STUB_RATE_LIMIT = Number(process.env.XAI_STUB_RATE_LIMIT || 0.04);
-const XAI_COOLDOWN_MS = Number(process.env.XAI_COOLDOWN_MS || 60_000);
-const XAI_MIN_GAP_MS = Number(process.env.XAI_MIN_GAP_MS || 0);
-
-const xaiOutcomes = [];          // rolling window of booleans: true = audible
-let xaiCooldownUntil = 0;
-let xaiNextSlotAt = 0;
-const xaiHealth = { requests: 0, stubs: 0, cooldowns: 0 };
-
-/** Record one xAI response outcome and trip a cooldown if the stub rate spikes. */
-function recordXaiOutcome(audible) {
-  xaiHealth.requests++;
-  if (!audible) xaiHealth.stubs++;
-  xaiOutcomes.push(!!audible);
-  if (xaiOutcomes.length > XAI_STUB_WINDOW) xaiOutcomes.shift();
-  if (xaiOutcomes.length < XAI_STUB_WINDOW) return;
-
-  const stubs = xaiOutcomes.filter(ok => !ok).length;
-  const rate = stubs / xaiOutcomes.length;
-  if (rate < XAI_STUB_RATE_LIMIT || Date.now() < xaiCooldownUntil) return;
-
-  xaiCooldownUntil = Date.now() + XAI_COOLDOWN_MS;
-  xaiHealth.cooldowns++;
-  // Clear the window so the same spike can't re-trip the cooldown immediately —
-  // the next window is measured on post-cooldown behaviour.
-  xaiOutcomes.length = 0;
-  console.warn(
-    `[xAI TTS] stub rate ${(rate * 100).toFixed(1)}% over the last ${XAI_STUB_WINDOW} responses ` +
-    `— provider is degrading. Pausing xAI renders for ${Math.round(XAI_COOLDOWN_MS / 1000)}s.`
-  );
-}
-
-/** Health counters for a batch report. */
-function getXaiHealth() {
-  return { ...xaiHealth, stubRate: xaiHealth.requests ? xaiHealth.stubs / xaiHealth.requests : 0 };
-}
-
-/**
- * Acquire an xAI request slot, honouring the concurrency cap, the optional
- * inter-request gap, and any active degradation cooldown.
- *
- * The waits happen while HOLDING the slot, which is the point: during a cooldown
- * every slot sleeps, so the whole run pauses rather than queueing more load onto
- * a provider that is already failing.
- */
-async function xaiAcquire() {
-  await xaiSlotAcquire();
-  for (;;) {
-    const now = Date.now();
-    const waitUntil = Math.max(xaiCooldownUntil, XAI_MIN_GAP_MS ? xaiNextSlotAt : 0);
-    if (waitUntil <= now) {
-      if (XAI_MIN_GAP_MS) xaiNextSlotAt = now + XAI_MIN_GAP_MS;
-      return;
-    }
-    await new Promise(resolve => setTimeout(resolve, waitUntil - now));
-  }
 }
 
 // Child voices are NEVER allowed (Tom 2026-07-24: no kids' voices, ever — a
@@ -511,104 +425,6 @@ async function generateAzure(text, config) {
 }
 
 /**
- * Generate speech using xAI TTS
- * @param {string} text - Text to synthesize (may include expressive markup like [laugh], <whisper>)
- * @param {object} config - xAI configuration
- * @param {string} config.apiKey - xAI API key
- * @param {string} config.voiceId - Preset voice id ('eve' | 'ara' | 'leo' | 'rex' | 'sal', case-insensitive) OR a custom cloned voice_id (e.g. Tom's clones 'gfzdpspr5fdp', 'bedd6226') — xAI accepts both, this is not a fixed enum
- * @param {string} config.language - BCP-47 language code (e.g., 'es', 'en', 'pt-BR', 'ar-EG', 'auto')
- * @param {number} config.speed - Speech speed multiplier (applied client-side via SSML-like wrapping if supported)
- * @param {string} config.codec - Output codec: 'mp3' (default) | 'wav' | 'pcm' | 'mulaw' | 'alaw'
- * @param {number} config.sampleRate - Sample rate in Hz (default: 24000)
- * @param {number} config.bitRate - Bit rate in bps (default: 128000)
- * @returns {Promise<{audioBuffer: Buffer, wordBoundaries: Array|null}>} Audio data. Word boundaries are null — xAI does not provide them.
- */
-async function generateXai(text, config) {
-  const {
-    apiKey,
-    voiceId = 'eve',
-    codec = 'mp3',
-    sampleRate = 24000,
-    bitRate = 128000
-  } = config;
-
-  if (!apiKey) {
-    throw new Error('xAI API key is required');
-  }
-
-  if (text.length > 15000) {
-    throw new Error(`xAI TTS REST request limited to 15000 characters; got ${text.length}. Use streaming endpoint for longer content.`);
-  }
-
-  // A MISSING language is a HARD FAIL, never a warn. The multilingual voices are
-  // English-dominant and unsteered they read cross-language words with English
-  // phonology ('come stai' → English 'come'; ita pilot 2026-07-10), so a render
-  // that forgot to say which language it wanted is a defect, not a default. It
-  // used to default to 'auto' and log a warning nobody read — which is how a
-  // silently-wrong clip could reach a learner.
-  //
-  // An EXPLICIT 'auto' is still allowed: it is deliberate, Tom-validated tuning
-  // for pod explainers (tools/pod-voice-coverage.cjs resolveExplainerLanguage,
-  // 2026-06-07), where the cue is chosen, not forgotten. Warned, not failed.
-  if (!config.language) {
-    throw new Error(`xAI TTS requires an explicit BCP-47 language (voice ${voiceId}, text: "${String(text).slice(0, 40)}") — pass 'auto' deliberately if that is really what you want`);
-  }
-  const language = config.language;
-  if (language === 'auto') {
-    console.warn(`[xAI TTS] explicit language='auto' for voice ${voiceId} — English phonology is possible on cross-language text (text: "${String(text).slice(0, 40)}")`);
-  }
-
-  // Note: xAI currently does not document a speed parameter on the /v1/tts endpoint.
-  // Speed control is handled downstream via audio-processing (masterAudio stage).
-  // Expressive markup ([laugh], [sigh], <whisper>, <emphasis>) passes through text as-is.
-
-  const body = {
-    text,
-    voice_id: voiceId,
-    language,
-    output_format: {
-      codec,
-      sample_rate: sampleRate,
-      bit_rate: bitRate
-    }
-  };
-
-  await xaiAcquire();
-  try {
-    const response = await fetch('https://api.x.ai/v1/tts', {
-      method: 'POST',
-      agent: ttsKeepAliveAgent,
-      signal: AbortSignal.timeout(TTS_FETCH_TIMEOUT_MS),
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(body)
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      throw new Error(`xAI TTS API error (${response.status}): ${errorText}`);
-    }
-
-    const arrayBuffer = await response.arrayBuffer();
-    const audioBuffer = Buffer.from(arrayBuffer);
-    // Bit rate is ours to set (default 128 kbps), so the floor tracks it rather
-    // than assuming a constant.
-    const bytesPerSecond = Math.max(1, Math.round(bitRate / 8));
-    const audible = audioBuffer.length >= Math.round((TTS_MIN_AUDIO_MS / 1000) * bytesPerSecond);
-    recordXaiOutcome(audible);
-    assertAudibleResponse(audioBuffer, {
-      provider: 'xai', bytesPerSecond, text, voiceId,
-    });
-    return { audioBuffer, wordBoundaries: null };
-  } finally {
-    xaiRelease();
-  }
-}
-
-
-/**
  * Cartesia's default speed. Pinned, not left unset, and that is a measurement
  * rather than a preference: Cartesia carries no seed parameter and wanders
  * take-to-take on short text — median spread ~26% silence-trimmed, worst case
@@ -871,7 +687,8 @@ async function renderOnce(text, provider, config) {
       return await generateAzure(text, config);
 
     case 'xai':
-      return await generateXai(text, config);
+      // xAI voice generation is BANNED (Tom 2026-10-10). No renderer exists.
+      throw new Error('xAI TTS is banned (403): voice generation through xAI was removed 2026-10-10 (Tom). Existing xai_ clips still play; none is re-rendered.');
 
     case 'cartesia':
       return await generateCartesia(text, config);
@@ -1270,8 +1087,6 @@ module.exports = {
   PHONO_SAMPLE_EVERY,
   // empty-response gate + xAI pacing internals, exported for tests/tools
   assertAudibleResponse,
-  recordXaiOutcome,
-  getXaiHealth,
   TTS_MIN_AUDIO_MS,
   CHILD_VOICE_IDS,
   assertNotHumanVoiceCourse

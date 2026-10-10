@@ -218,7 +218,7 @@ async function renderAndMaster ({ text, language, voiceId, provider }) {
         voiceName: voiceId,
         speed: 1.0,
       }
-    : { apiKey: process.env.XAI_API_KEY, voiceId, language: lang.steer, codec: 'mp3' }
+    : { voiceId, language: lang.steer, codec: 'mp3' }
 
   const t0 = Date.now()
   const { audioBuffer } = await generate(text, provider, config)

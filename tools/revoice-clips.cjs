@@ -255,7 +255,6 @@ async function renderVerified(text, voice, language, tmpDir, tag, rateKey) {
   for (let attempt = 1; attempt <= ATTEMPTS; attempt++) {
     try {
       const { audioBuffer } = await ttsService.generateWithRetry(text, voice.provider, {
-        apiKey: process.env.XAI_API_KEY,
         voiceId: voice.voiceId,
         language: toBcp47(language),
       })
@@ -565,8 +564,6 @@ async function relink(links, newId, durationMs) {
   fs.writeFileSync(logPath, JSON.stringify(log, null, 2))
   console.log(`\n${revoiced} re-voiced, ${merged} merged, ${failed} failed, of ${jobs.length}.`)
   console.log(`${chars.toLocaleString()} characters of TTS.`)
-  const health = ttsService.getXaiHealth()
-  console.log(`xAI health this run: ${health.requests} responses, ${health.stubs} empty (${(health.stubRate * 100).toFixed(2)}%), ${health.cooldowns} cooldown(s).`)
   console.log(`log -> ${logPath}\n`)
   process.exit(failed ? 2 : 0)
 })().catch((e) => { console.error('ERR:', e.message); process.exit(1) })

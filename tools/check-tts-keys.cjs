@@ -13,11 +13,11 @@ const fs = require('fs')
 const os = require('os')
 const path = require('path')
 const { execFileSync } = require('child_process')
-const { keyFiles, liveKeyLines, mayHoldLiveKey, HOME } = require('./lib/tts-key-guard.cjs')
+const { keyFiles, liveKeyLines, bannedKeyLines, mayHoldLiveKey, HOME } = require('./lib/tts-key-guard.cjs')
 
 const STATE = path.join(HOME, '.local', 'state', 'ssi-tts-spend', 'key-check.json')
 
-function offenders() { return keyFiles().filter(f => liveKeyLines(f).length && !mayHoldLiveKey(f)).sort() }
+function offenders() { return keyFiles().filter(f => bannedKeyLines(f).length || (liveKeyLines(f).length && !mayHoldLiveKey(f))).sort() }
 
 async function main() {
   let bad = offenders()
@@ -32,7 +32,7 @@ async function main() {
   console.log(`LIVE TTS KEY OUTSIDE THE GUARDED SET:\n${now}`)
   if (now !== said) {
     const surface = process.env.CS_SURFACE || 'http://localhost:4317'
-    const text = `TTS KEYS: a live provider key is in ${bad.length} unguarded place(s) on ${os.hostname()} — code there bypasses the 50k daily cap: ${bad.join(', ')}. Fix: node tools/tts-stop.cjs guard`
+    const text = `TTS KEYS: a live provider key is in ${bad.length} unguarded place(s) on ${os.hostname()} — code there bypasses the 50k daily cap: ${bad.join(', ')}. Fix: node tools/tts-stop.cjs guard (an XAI_API_KEY line anywhere is the xAI ban, 2026-10-10: delete the line)`
     try { await fetch(`${surface}/api/needs-you`, { method: 'POST', headers: { 'Content-Type': 'application/json', Origin: surface }, body: JSON.stringify({ text }) }); fs.mkdirSync(path.dirname(STATE), { recursive: true }); fs.writeFileSync(STATE, JSON.stringify({ said: now })) } catch (e) { console.error(`could not post the alert: ${e.message}`) }
   }
   return 1

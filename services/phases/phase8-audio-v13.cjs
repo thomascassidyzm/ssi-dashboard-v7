@@ -3367,7 +3367,6 @@ app.post('/generate/:courseCode', async (req, res) => {
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
             door: { courseCode, intro: item.role === 'presentation', job: passJob, onAttempt: spendCap.charge },
-            apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
             phonologyGate,
@@ -4048,7 +4047,6 @@ app.post('/regenerate-role/:courseCode', async (req, res) => {
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
             door: { courseCode, intro: role === 'presentation', replacing: [item.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
-            apiKey: process.env.XAI_API_KEY,
             voiceId: voiceId,
             language: toBcp47(language),
           }))
@@ -5409,7 +5407,7 @@ app.post('/render', async (req, res) => {
         const providerConfig =
           provider === 'azure' ? { subscriptionKey: process.env.AZURE_SPEECH_KEY, region: process.env.AZURE_SPEECH_REGION || 'westeurope', voiceName: held, speed }
           : provider === 'elevenlabs' ? { apiKey: process.env.ELEVENLABS_API_KEY, voiceId: held, speed }
-          : provider === 'xai' ? { apiKey: process.env.XAI_API_KEY, voiceId: held, language: toBcp47(lang) }
+          : provider === 'xai' ? { voiceId: held, language: toBcp47(lang) }
           : provider === 'cartesia' ? { apiKey: process.env.CARTESIA_API_KEY, voiceId: held, locale: ttsLocaleForRole(course, role, lang), speed, wordTimings: true /* #643: word-by-word display needs timings on every Cartesia clip */ }
           : null
         if (!providerConfig) throw new RenderRequestError(`Unknown TTS provider: ${provider}`)
@@ -5637,7 +5635,6 @@ app.post('/regenerate-single/:courseCode/:audioUuid', async (req, res) => {
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
           door: { courseCode, intro: role === 'presentation', replacing: [audioRecord.s3_key, audioUuid], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
-          apiKey: process.env.XAI_API_KEY,
           voiceId: voiceId,
           language: toBcp47(lang),
         }))
@@ -6014,7 +6011,6 @@ app.post('/regenerate-presentation/:courseCode/:legoId', async (req, res) => {
       } else if (voiceProvider === 'xai') {
         ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(presentationText, 'xai', {
           door: { courseCode, intro: true, replacing: [existingRow?.s3_key] },
-          apiKey: process.env.XAI_API_KEY,
           voiceId: voiceId,
           language: toBcp47(knownLang)
         }))
@@ -6462,7 +6458,6 @@ app.post('/regenerate-phrase/:courseCode/:phraseId', async (req, res) => {
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
             door: phraseRenderDoor({ courseCode, role, replacing: [phrase[column]] }),
-            apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(language)
           }))
@@ -6866,7 +6861,6 @@ app.post('/regenerate-lego/:courseCode/:legoId', async (req, res) => {
         } else if (voiceProvider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
             door: { courseCode, intro: role === 'presentation', replacing: [boundAudio?.s3_key], voiceBound: true }, // an explicit regenerate asks for THIS voice's bytes — see phrase-render-door.cjs
-            apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(language)
           }))
@@ -7363,7 +7357,6 @@ app.post('/generate-components/:courseCode', async (req, res) => {
         } else if (provider === 'xai') {
           ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
             door: { courseCode, intro: item.role === 'presentation' },
-            apiKey: process.env.XAI_API_KEY,
             voiceId: voiceName,
             language: toBcp47(item.language),
           }))
@@ -8163,7 +8156,6 @@ function buildPodTTSConfig(voice, language, courseCode) {
   // depth behind the entry-point guards.
   const base = { voiceId: voice.voice_id, speed: 1.0, courseCode }
   if (voice.provider === 'xai') {
-    base.apiKey = process.env.XAI_API_KEY
     // Prefer the coverage-map locale carried on the voice (pt-PT, es-MX, ar-EG,
     // native fr/zh, …). toBcp47() strips region (pt-PT→pt=Brazilian), so only
     // use it as the fallback when a voice has no explicit locale.
@@ -9438,7 +9430,7 @@ async function reuseRenderClip(courseCode, clip, stats) {
     } else if (provider === 'xai') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'xai', {
         door: { courseCode, intro: clip.role === 'presentation' },
-        apiKey: process.env.XAI_API_KEY, voiceId: voiceName, language: toBcp47(clip.language),
+        voiceId: voiceName, language: toBcp47(clip.language),
       }))
     } else if (provider === 'cartesia') {
       ({ audioBuffer: rawAudioBuffer, wordBoundaries } = await ttsService.generateWithRetry(textForTTS, 'cartesia', {

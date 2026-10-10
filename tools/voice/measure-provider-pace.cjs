@@ -281,7 +281,6 @@ async function renderViaDoor(voice, text, iso3) {
   }
   if (provider === 'xai') {
     return tts.speak(text, 'xai', {
-      apiKey: process.env.XAI_API_KEY,
       // The ID, never the display name: xAI's clones are addressed by id
       // ('gfzdpspr5fdp'), and sending tts_voice_name gets a 404 ("Voice 'Tom'
       // not found"). Preset voices happen to have id === name, which is what
