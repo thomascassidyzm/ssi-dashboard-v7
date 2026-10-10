@@ -29,7 +29,8 @@ const COURSES = {
   gle_for_eng: { target_lang: 'gle', known_lang: 'eng', dialect: 'standard' },
   gle_munster_for_eng: { target_lang: 'gle', known_lang: 'eng', dialect: 'munster' },
 }
-beforeEach(() => useCourseCastRow(async (code) => COURSES[code] || null))
+const plainRow = (code) => { const [t, k] = String(code).split('_for_'); return { target_lang: t, known_lang: k } }
+beforeEach(() => useCourseCastRow(async (code) => COURSES[code] || plainRow(code)))
 afterEach(() => { useCastRows(null); useCourseCastRow(null); useCourseVoiceHolder(null); useCourseVoiceCensus(null) })
 
 describe('isTomCastRow — Tom\'s casting vs the 2026-09-04 draft', () => {
@@ -197,5 +198,13 @@ describe('partitionByCast + limitCastFirst — the phase8 plan', () => {
     expect(plan.items.map(i => i.text)).toEqual(['e0', 'e1', 's0'])
     expect(plan.summary[0].count).toBe(5)   // the tally is the whole queue's
     expect(limitCastFirst(await partitionByCast(items, 'eng_for_sin'), undefined).items).toHaveLength(7)
+  })
+})
+
+describe('a named course with no course row (lane review #728)', () => {
+  it('refuses instead of falling back to the base-language cast', async () => {
+    useCastRows([{ language: 'fra', voice_id: 'cartesia_f', assigned_by: 'thomas.cassidy+ssi@gmail.com' }])
+    useCourseCastRow(async () => null)
+    await expect(castVerdict('fra', 'cartesia_f', { courseCode: 'fra_ca_for_eng' })).rejects.toThrow(/no course row/)
   })
 })

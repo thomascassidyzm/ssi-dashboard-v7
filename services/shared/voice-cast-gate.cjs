@@ -217,14 +217,21 @@ async function courseHoldsVoice(courseCode, language, voiceId) {
 /** The course's cast-key columns (COURSE_CAST_FIELDS), cached a minute. A failed read refuses the render. */
 async function courseCastRow(courseCode) {
   if (!courseCode) return null
-  if (injectedCourseRow) return injectedCourseRow(courseCode)
+  if (injectedCourseRow) return mustHaveCourse(courseCode, await injectedCourseRow(courseCode))
   if (process.env.VITEST) return null
   const hit = courseRowCache.get(courseCode)
   if (hit && Date.now() - hit.at < TTL_MS) return hit.row
   const { data, error } = await liveDb().from('courses').select(COURSE_CAST_FIELDS).eq('course_code', courseCode).maybeSingle()
   if (error) throw new Error(`TTS door: cannot read the course's cast fields (${error.message}) — refusing to render`)
   courseRowCache.set(courseCode, { at: Date.now(), row: data || null })
-  return data || null
+  return mustHaveCourse(courseCode, data)
+}
+
+// A named course with no row cannot prove its variety, so it never falls back to the base-language
+// cast (lane review #728: fra_ca_for_eng with no course row was cleared by the plain fra cast).
+function mustHaveCourse(courseCode, row) {
+  if (!row) throw new Error(`TTS door: no course row for ${courseCode}, so its language variety is unknown — refusing to render`)
+  return row
 }
 
 /** The course's voices per language/role class (leg b), from course_clip_voices() (ops/sql/20261010-course-clip-voices.sql); cached a minute. */
