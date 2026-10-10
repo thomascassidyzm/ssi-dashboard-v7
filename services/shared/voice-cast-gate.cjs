@@ -220,7 +220,7 @@ async function courseCastRow(courseCode) {
   if (injectedCourseRow) return mustHaveCourse(courseCode, await injectedCourseRow(courseCode))
   if (process.env.VITEST) return null
   const hit = courseRowCache.get(courseCode)
-  if (hit && Date.now() - hit.at < TTL_MS) return hit.row
+  if (hit && Date.now() - hit.at < TTL_MS) return mustHaveCourse(courseCode, hit.row)
   const { data, error } = await liveDb().from('courses').select(COURSE_CAST_FIELDS).eq('course_code', courseCode).maybeSingle()
   if (error) throw new Error(`TTS door: cannot read the course's cast fields (${error.message}) — refusing to render`)
   courseRowCache.set(courseCode, { at: Date.now(), row: data || null })
