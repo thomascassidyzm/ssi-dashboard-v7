@@ -7,9 +7,9 @@
  * phase8 /generate plans with partitionByCast + limitCastFirst, so a refused line is logged once, never
  * counted as planned spend, and never starves the renderable lines behind it (#689).
  */
-import { describe, it, expect, afterEach } from 'vitest'
+import { describe, it, expect, afterEach, beforeEach } from 'vitest'
 import gate from './voice-cast-gate.cjs'
-const { partitionByCast, limitCastFirst, castVerdict, isTomCastRow, useCastRows, useCourseVoiceHolder, useCourseVoiceCensus } = gate
+const { partitionByCast, limitCastFirst, castVerdict, isTomCastRow, useCastRows, useCourseCastRow, useCourseVoiceHolder, useCourseVoiceCensus } = gate
 
 const TOM_ACCT = 'thomas.cassidy+ssi@gmail.com'
 const CHARLOTTE = 'cartesia_71a7ad14-091c-4e8e-a314-022ece01c121'
@@ -17,7 +17,20 @@ const DRAFT = 'draft casting 2026-09-04 — mechanical fill from the Cartesia ca
 const tom = (language, voice_id) => ({ language, voice_id, assigned_by: TOM_ACCT, notes: null })
 const draft = (language, voice_id) => ({ language, voice_id, assigned_by: 'e2e-pod-recording-test@ssi-test.invalid', notes: DRAFT })
 
-afterEach(() => { useCastRows(null); useCourseVoiceHolder(null); useCourseVoiceCensus(null) })
+// The courses' cast-key columns (#724): the gate resolves the key from these via cast-language-key.cjs,
+// exactly as Voice Lab and the selector do — never from the course-code spelling.
+const COURSES = {
+  fra_for_eng: { target_lang: 'fra', known_lang: 'eng' },
+  fra_ca_for_eng: { target_lang: 'fra', known_lang: 'eng', voice_pool_key: 'fra_ca' },
+  spa_mx_for_eng: { target_lang: 'spa', known_lang: 'eng', voice_pool_key: 'spa_mx' },
+  eng_for_spa_mx: { target_lang: 'eng', known_lang: 'spa', known_dialect: 'mx' },
+  deu_at_for_eng: { target_lang: 'deu', known_lang: 'eng', voice_pool_key: 'deu_at' },
+  por_br_for_eng: { target_lang: 'por', known_lang: 'eng', voice_pool_key: 'por_br' },
+  gle_for_eng: { target_lang: 'gle', known_lang: 'eng', dialect: 'standard' },
+  gle_munster_for_eng: { target_lang: 'gle', known_lang: 'eng', dialect: 'munster' },
+}
+beforeEach(() => useCourseCastRow(async (code) => COURSES[code] || null))
+afterEach(() => { useCastRows(null); useCourseCastRow(null); useCourseVoiceHolder(null); useCourseVoiceCensus(null) })
 
 describe('isTomCastRow — Tom\'s casting vs the 2026-09-04 draft', () => {
   it('Tom\'s Voice Lab account, a named ruling, or a "Tom …" note is a cast', () => {
@@ -84,6 +97,35 @@ describe('castVerdict — Tom\'s cast is per VARIETY (#721: "Not Canadian French
     useCastRows([tom('fra', FRA)])
     useCourseVoiceCensus(async () => [{ role: 'target1', language: 'fra', voice_id: 'azure_fr-CA-SylvieNeural', clips: 5 }])
     expect(await castVerdict('fra', 'azure_fr-CA-SylvieNeural', { courseCode: 'fra_ca_for_eng', role: 'target1' })).toMatchObject({ allowed: true, via: 'azure-only' })
+  })
+})
+
+describe('castVerdict — the key is Voice Lab\'s castKeyForCourse, not the course-code spelling (#724)', () => {
+  const GLE = 'cartesia_gle-base'
+  const GLE_M = 'cartesia_gle-munster'
+  it('a dialect course whose code says nothing (dialect column only) uses its variety row', async () => {
+    useCastRows([tom('gle_munster', GLE_M)]); useCourseVoiceCensus(async () => [])
+    expect(await castVerdict('gle', GLE_M, { courseCode: 'gle_munster_for_eng', role: 'target1' })).toMatchObject({ allowed: true, via: 'tom-cast', castKey: 'gle_munster' })
+  })
+  it('refusal: a dialect course is uncast when Tom cast only the base', async () => {
+    useCastRows([tom('gle', GLE)]); useCourseVoiceCensus(async () => [])
+    expect(await castVerdict('gle', GLE, { courseCode: 'gle_munster_for_eng', role: 'target1' })).toMatchObject({ allowed: false, reason: 'uncast', castKey: 'gle_munster' })
+  })
+  it('leakage: a Munster-only cast never authorises plain Irish', async () => {
+    useCastRows([tom('gle_munster', GLE_M)]); useCourseVoiceCensus(async () => [])
+    expect(await castVerdict('gle', GLE_M, { courseCode: 'gle_for_eng', role: 'target1' })).toMatchObject({ allowed: false, reason: 'uncast', castKey: 'gle' })
+  })
+  it('a course code with a variety spelling but no variety column is the base language', async () => {
+    useCastRows([tom('fra', 'cartesia_f')]); useCourseVoiceCensus(async () => [])
+    useCourseCastRow(async () => ({ target_lang: 'fra', known_lang: 'eng' }))
+    expect(await castVerdict('fra', 'cartesia_f', { courseCode: 'fra_ca_for_eng', role: 'target1' })).toMatchObject({ allowed: true, castKey: 'fra' })
+  })
+  it('English stays allowed on every course, dialect or not', async () => {
+    useCastRows([tom('eng', CHARLOTTE)]); useCourseVoiceCensus(async () => [])
+    for (const c of Object.keys(COURSES)) {
+      const lang = COURSES[c].known_lang === 'eng' ? 'eng' : 'eng'
+      expect(await castVerdict(lang, CHARLOTTE, { courseCode: c, role: 'known' }), c).toMatchObject({ allowed: true })
+    }
   })
 })
 

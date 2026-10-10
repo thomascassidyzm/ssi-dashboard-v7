@@ -49,6 +49,7 @@
  */
 
 const { tryCanonicalLanguage, tryCanonicalVoiceId } = require('./clip-identity.cjs')
+const { COURSE_CAST_FIELDS, castKeyForCourse, baseLanguageOfCastKey } = require('./cast-language-key.cjs')
 const logger = require('./logger.cjs')('CastGate')
 
 /** 'cym_n' / 'eng' / 'en-GB' → canonical language; dialect keys reduce to their language. */
@@ -57,16 +58,25 @@ function castRowLanguage(raw) {
 }
 
 /**
- * Tom 2026-10-10 03:49Z (r-2026-10-10-tom-s-cartesia-cast-is-per-language-variety): "Not Canadian
- * French!!! I haven't set that." His cast is per VARIETY. A cast row's key is 'fra' (the base) or
- * 'fra_ca' (a variety); a variety's rows never cover the base and the base's never cover a variety.
- * The course's variety is the side of its code ('fra_ca_for_eng' → target 'fra_ca') whose language
- * is the one being rendered; a plain code side ('fra') is the base. (#700 reduced 'fra_ca' to 'fra'.)
+ * Tom 2026-10-10 03:49Z (r-2026-10-10-tom-s-cartesia-cast-is-per-language-variety) and
+ * r-2026-10-10-voice-casting-is-done-by-language: casting is by LANGUAGE, each variety its own
+ * language, never by course. A cast row's key is 'fra' (base) or a variety ('fra_ca', 'gle_munster');
+ * variety rows and base rows never cover each other.
+ *
+ * The key is NOT read from the course-code spelling (#724): it comes from the SAME resolver the Voice
+ * Lab and the voice selector use — cast-language-key.cjs castKeyForCourse over the course's
+ * COURSE_CAST_FIELDS (target_lang, known_lang, dialect, voice_pool_key, known_dialect) — so gate, Voice
+ * Lab and selector agree by construction. The rendered side is whichever side (target first, then known)
+ * whose base language is the one being rendered.
  */
 const rowKey = (raw) => String(raw || '').trim().toLowerCase().replace(/-/g, '_')
-function castKeyOf(language, courseCode) {
-  const m = /^(.+?)_for_(.+)$/.exec(String(courseCode || '').toLowerCase())
-  if (m) for (const side of [m[1], m[2]]) if (side.includes('_') && castRowLanguage(side) === language) return side
+function castKeyOf(language, courseRow) {
+  if (courseRow) {
+    for (const side of ['target', 'known']) {
+      const key = castKeyForCourse(courseRow, side)
+      if (key && castRowLanguage(baseLanguageOfCastKey(key)) === language) return key
+    }
+  }
   return language
 }
 /** Does this voice_language_roles row belong to cast key `key` — exactly, never by reduction? */
@@ -171,10 +181,14 @@ let injected = null
 let cache = null
 let injectedHolder = null
 let injectedProfile = null
+let injectedCourseRow = null
+const courseRowCache = new Map()
 const profileCache = new Map()
 
 /** Tests inject who holds what; null restores the live read. */
 function useCourseVoiceHolder(fn) { injectedHolder = fn }
+/** Tests inject a course's cast fields: fn(courseCode) → row (COURSE_CAST_FIELDS) or null; null restores the live read. */
+function useCourseCastRow(fn) { injectedCourseRow = fn; courseRowCache.clear() }
 /** Tests inject a course's census rows: fn(courseCode) → rows; null restores the live read. */
 function useCourseVoiceCensus(fn) { injectedProfile = fn; profileCache.clear() }
 
@@ -198,6 +212,19 @@ async function courseHoldsVoice(courseCode, language, voiceId) {
   const { data, error } = await liveDb().from('course_audio').select('id').eq('course_code', courseCode).eq('language', language).eq('voice_id', voiceId).limit(1)
   if (error) throw new Error(`TTS door: cannot read the course's clips (${error.message}) — refusing to render`)
   return !!(data && data.length)
+}
+
+/** The course's cast-key columns (COURSE_CAST_FIELDS), cached a minute. A failed read refuses the render. */
+async function courseCastRow(courseCode) {
+  if (!courseCode) return null
+  if (injectedCourseRow) return injectedCourseRow(courseCode)
+  if (process.env.VITEST) return null
+  const hit = courseRowCache.get(courseCode)
+  if (hit && Date.now() - hit.at < TTL_MS) return hit.row
+  const { data, error } = await liveDb().from('courses').select(COURSE_CAST_FIELDS).eq('course_code', courseCode).maybeSingle()
+  if (error) throw new Error(`TTS door: cannot read the course's cast fields (${error.message}) — refusing to render`)
+  courseRowCache.set(courseCode, { at: Date.now(), row: data || null })
+  return data || null
 }
 
 /** The course's voices per language/role class (leg b), from course_clip_voices() (ops/sql/20261010-course-clip-voices.sql); cached a minute. */
@@ -247,7 +274,7 @@ async function castVerdict(language, voiceId, { audition = false, courseCode = n
   const rows = await castRows()
   if (rows === null) return { allowed: true, cast: [], reason: null, via: 'test' }   // un-injected test only
   voiceId = canonVoice(voiceId)
-  const castKey = castKeyOf(language, courseCode)   // 'fra_ca' for a Canadian-French course, 'fra' for plain French
+  const castKey = castKeyOf(language, await courseCastRow(courseCode))   // 'gle_munster', 'fra_ca', or the base — as Voice Lab resolves it
   const v = castAllowsVoice(castKey, voiceId, rows)
   if (v.allowed) return { ...v, castKey, via: 'tom-cast' }
   if (v.reason === 'banned-provider') return { ...v, castKey }
@@ -330,5 +357,5 @@ function limitCastFirst({ cast, uncast, summary }, limit) {
 
 module.exports = {
   limitCastFirst, castAllowsVoice, castKeyOf, castVerdict, partitionByCast, castRowLanguage, assertCastVoice, isCastRefusal, isCartesiaVoice, isAzureVoice,
-  isTomCastRow, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseVoiceHolder, useCourseVoiceCensus,
+  isTomCastRow, courseVoiceProfile, azureOnlyAllows, CastRefusal, useCastRows, useCourseCastRow, useCourseVoiceHolder, useCourseVoiceCensus,
 }
