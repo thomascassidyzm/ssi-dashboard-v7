@@ -3,7 +3,7 @@
  * Blind-listening pack builder.
  *
  *   node tools/tts-bakeoff/build-listening-pack.cjs \
- *     --in out/azure --in out/xai --in out/elevenlabs \
+ *     --in out/azure --in out/elevenlabs \
  *     --out packs/welsh-round-1 [--key packs/welsh-round-1-KEY.json] \
  *     [--pack-seed 7] [--no-grouping] [--max-repeats 3]
  *

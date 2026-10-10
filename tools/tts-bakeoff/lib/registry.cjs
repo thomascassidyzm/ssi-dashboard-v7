@@ -1,5 +1,5 @@
 /** Adapter registry. One entry per provider; order is report order. */
-const IDS = ['cartesia', 'chatterbox', 'minimax', 'openai', 'xai', 'azure', 'elevenlabs'];
+const IDS = ['cartesia', 'chatterbox', 'minimax', 'openai', 'azure', 'elevenlabs'];
 
 function load(id) {
   if (!IDS.includes(id)) {

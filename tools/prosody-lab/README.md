@@ -56,7 +56,3 @@ run WITHOUT `.env.psql`/S3/numpy (see docs/DECISIONS.md 2026-07-29):
   pairs via Supabase REST (anon key) + the public audio proxy + the JS
   extractor (`src/views/admin/vadProsody.js`, parity-verified mirror of
   prosody.py). Study anchors stay fixed; new pairs score on the same scale.
-- `remaster-vad-lab-clean.cjs` — re-renders the lab's xAI/clone clip sides
-  and masters them WITHOUT the compressor stage (the hiss source), into
-  `public/vad-lab-clean/` only. Needs `XAI_API_KEY` + ffmpeg + lame — run it
-  where the vault is reachable (Camberley), dry-run by default.

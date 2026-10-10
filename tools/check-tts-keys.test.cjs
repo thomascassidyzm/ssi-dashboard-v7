@@ -13,6 +13,12 @@ describe('xAI ban', () => {
     expect(bannedKeyLines(f)).toHaveLength(0)
   })
 
+  it('no .env.example in the repo carries an XAI_API_KEY line', () => {
+    const files = execFileSync('git', ['ls-files', '*.env.example', '*.env*.example', '.env.example'], { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean)
+    expect(files.length).toBeGreaterThan(0)
+    for (const f of files) expect(bannedKeyLines(path.join(ROOT, f)), f).toHaveLength(0)
+  })
+
   it('no production code reads XAI_API_KEY or calls api.x.ai', () => {
     const allowed = /(\.test\.|tools\/lib\/tts-key-guard|tools\/check-tts-keys|tools\/tts-stop|tools\/a108\/|tools\/prosody-lab\/|tools\/tts-bakeoff\/)/
     const out = execFileSync('git', ['grep', '-lE', 'process\\.env\\.XAI_API_KEY|api\\.x\\.ai', '--', 'services', 'tools'], { cwd: ROOT, encoding: 'utf8' }).split('\n').filter(Boolean)
