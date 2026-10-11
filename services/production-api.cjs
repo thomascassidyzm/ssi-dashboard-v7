@@ -1650,15 +1650,17 @@ app.get('/api/stats/:courseCode', async (req, res) => {
 // Course Builder runs on a separate service that handles osascript/iTerm launch
 const COURSE_BUILDER_URL = process.env.COURSE_BUILDER_URL || 'http://localhost:3471'
 
-// Course-code shape, e.g. spa_for_eng / eng_for_jpn. The proxy mounts below are
+// Course-code shape, including dialect and seed-count suffixes. The proxy mounts below are
 // wildcards (/api/build/*, /api/v2/*, …) so the app.param('courseCode') gate
 // never fires for them, and :courseCode sits in varying path positions. We
 // locate the scoped course by matching this shape against the path segments
 // (and, as a fallback, the JSON body) rather than by position.
-const PROXY_COURSE_CODE_RE = /^[a-z]{2,4}_for_[a-z]{2,4}$/
+const PROXY_COURSE_CODE_RE = /^[a-z0-9_-]+_for_[a-z0-9_-]+$/i
 
 function extractProxyCourseCode(req) {
-  for (const seg of (req.path || '').split('/')) {
+  for (const rawSegment of (req.path || '').split('/')) {
+    // Express decodes route parameters once; authorise that same course code.
+    const seg = decodeURIComponent(rawSegment)
     if (PROXY_COURSE_CODE_RE.test(seg)) return seg
   }
   const bodyCode = req.body && (req.body.course_code || req.body.courseCode)
