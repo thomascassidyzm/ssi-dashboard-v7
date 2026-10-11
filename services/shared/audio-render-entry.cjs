@@ -107,6 +107,14 @@ async function renderClip(input, deps) {
     const linked = await deps.link(ident)
     if (linked) return bindPresentation(req, { ok: true, source: 'library', ...(req.dryRun ? { dryRun: true } : {}), charsSpent: 0, ...linked, purpose: req.purpose, requestedBy: req.requestedBy }, deps)
 
+    // DICE AND SPLICE (job #516, Tom 2026-10-11): an English-known presentation intro is assembled from existing Charlotte clips
+    // (a missing piece is rendered once, here, and shared) — never rendered whole, which the voicing policy refuses. null = not
+    // a spliceable intro, so the normal path carries on.
+    if (req.role === 'presentation' && deps.spliceIntro) {
+      const spliced = await deps.spliceIntro({ ...req, ...ident })
+      if (spliced) return bindPresentation(req, { purpose: req.purpose, requestedBy: req.requestedBy, ...spliced }, deps)
+    }
+
     // slotRole: the same words already in this course role in another voice make this a re-voice — a re-record (Tom 2026-10-11).
     const cfg = { ...r.providerConfig, door: { ...(r.providerConfig.door || {}), courseCode: req.courseCode, language: r.language, dryRun: req.dryRun, voiceBound: req.voiceBound, slotRole: req.role, job: req.job } }
     // 2 + 3. the door → guard → one provider attempt
